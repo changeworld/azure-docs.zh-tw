@@ -1,5 +1,5 @@
 ---
-title: Azure AD 連線:為 Office 365 資源設定首選資料位置
+title: Azure AD Connect：設定 Office 365 資源的慣用資料位置
 description: 說明如何利用 Azure Active Directory Connect 同步處理，將 Office 365 使用者資源放在使用者附近。
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 723411191d0990583d039a0fc9651437480807b4
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80983257"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect 同步處理：設定 Office 365 資源的慣用資料位置
-本主題的目的是引導您瞭解如何在 Azure 活動目錄 (Azure AD) 連接同步中為首選數據位置配置屬性。當某人在 Office 365 中使用多地理功能時,可以使用此屬性指定使用者的 Office 365 資料的地理位置。 (「區域」** 與「地區」** 這兩個詞可交換使用。)
+本主題的目的是要引導您瞭解如何在 Azure Active Directory （Azure AD） Connect 同步處理中設定慣用資料位置的屬性。當有人使用 Office 365 中的多地理位置功能時，您可以使用這個屬性來指定使用者的 Office 365 資料地理位置。 (「區域」** 與「地區」** 這兩個詞可交換使用。)
 
 ## <a name="enable-synchronization-of-preferred-data-location"></a>啟用慣用資料位置的同步處理
 根據預設，使用者的 Office 365 資源會與 Azure AD 租用戶位於相同地區。 例如，如果您的租用戶位於北美洲，則使用者的 Exchange 信箱也會位於北美洲。 對於跨國組織，這可能不是最理想的情況。
@@ -32,11 +32,11 @@ ms.locfileid: "80983257"
 藉由設定 **preferredDataLocation** 屬性，您可以定義使用者的地區。 您可以讓使用者的 Office 365 資源 (例如信箱和 OneDrive) 位於與使用者相同的地區，且整個組織仍有一個租用戶。
 
 > [!IMPORTANT]
-> Multi-Geo 目前適用於具有活動企業協定且至少 500 個 Office 365 服務訂閱的客戶。 如需詳細資訊，請與您的 Microsoft 代表連絡。
+> 多地理位置目前可供具有有效 Enterprise 合約的客戶使用，以及至少500個 Office 365 服務訂閱。 如需詳細資訊，請與您的 Microsoft 代表連絡。
 >
 >
 
-Office 365 的所有地理位置列表可以在[數據位於何處?](https://aka.ms/datamaps)
+您可以在 [[您的資料位於何處？](https://aka.ms/datamaps)] 中找到所有適用于 Office 365 的地區清單。
 
 Office 365 中適用多地理位置功能的地區如下：
 
@@ -51,7 +51,7 @@ Office 365 中適用多地理位置功能的地區如下：
 | 日本 | JPN |
 | 南韓 | KOR |
 | 南非 | ZAF |
-| 瑞士 | 車 |
+| 瑞士 | 快取處理 |
 | 阿拉伯聯合大公國 | ARE |
 | United Kingdom | GBR |
 | 美國 | NAM |
@@ -67,14 +67,14 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 * 已擴充 Azure AD 連接器中**使用者**物件類型的結構描述，進而納入 **preferredDataLocation** 屬性。 此屬性的類型是單一值字串。
 * 已擴充 Metaverse 連接器中**人員**物件類型的結構描述，進而納入 **preferredDataLocation** 屬性。 此屬性的類型是單一值字串。
 
-依預設，**preferredDataLocation** 不會啟用同步處理。 這項功能適用於較大型組織。 Windows Server 2019 中的 Active Directory 架構具有一個屬性**msDS 首選 DataLocation,** 您應該用於此目的。 如果尚未更新 Active Directory 架構,但無法更新,則必須標識屬性以為使用者保留 Office 365 地理。 這在每個組織中皆不同。
+依預設，**preferredDataLocation** 不會啟用同步處理。 這項功能適用於較大型組織。 Windows Server 2019 中的 Active Directory 架構具有**preferredDataLocation**的屬性，您應該將此用於此用途。 如果您尚未更新 Active Directory 架構，也無法這麼做，則您必須識別一個屬性來保留使用者的 Office 365 地理位置。 這在每個組織中皆不同。
 
 > [!IMPORTANT]
 > Azure AD 允許使用 Azure AD PowerShell，直接設定**雲端使用者物件**上的 **preferredDataLocation** 屬性。 若要在**已同步處理的使用者物件**上設定這個屬性，您必須使用 Azure AD Connect。
 
 啟用同步處理之前：
 
-* 如果尚未將 Active Directory 架構升級到 2019,則決定將哪個本地活動目錄屬性用作源屬性。 此屬性的類型必須是**單一值字串**。
+* 如果您尚未將 Active Directory 架構升級為2019，請決定要使用哪一個內部部署 Active Directory 屬性作為來源屬性。 此屬性的類型必須是**單一值字串**。
 * 如果您先前已使用 Azure AD PowerShell 來設定 Azure AD 中現有**已同步處理的使用者物件**上的 **preferredDataLocation** 屬性，則必須將這些屬性值向下移植到內部部署 Active Directory 中對應的**使用者**物件內。
 
     > [!IMPORTANT]
@@ -97,20 +97,20 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 ![Synchronization Service Manager 的螢幕擷取畫面](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step1.png)
 
-## <a name="step-2-refresh-the-schema-for-active-directory"></a>步驟 2:刷新活動目錄的架構
-如果將 Active Directory 架構更新為 2019,並且 Connect 在架構擴展之前已安裝,則 Connect 架構緩存沒有更新的架構。 然後,必須從嚮導中刷新架構,以便該架構顯示在 UI 中。
+## <a name="step-2-refresh-the-schema-for-active-directory"></a>步驟2：重新整理 Active Directory 的架構
+如果您已將 Active Directory 架構更新為2019，且已在架構延伸模組之前安裝 Connect，則 Connect 架構快取不會有更新的架構。 接著，您必須重新整理 wizard 的架構，它才會出現在 UI 中。
 
-1. 從桌面啟動 Azure AD 連接精靈。
-2. 選擇「**刷新目錄架構」 選項**,然後按下 **「下一步**」 。
-3. 輸入 Azure AD 認證,然後按**下 「下一步**」。
-4. 在 **「刷新目錄架構」** 頁上,請確保選擇了所有林,然後單擊「**下一步**」。
-5. 完成後,關閉嚮導。
+1. 從桌面啟動 Azure AD Connect wizard。
+2. 選取 [重新整理**目錄架構**] 選項，然後按 **[下一步]**。
+3. 輸入您的 Azure AD 認證，然後按 **[下一步]**。
+4. 在 [重新整理**目錄架構**] 頁面上，確認已選取所有樹系，然後按 **[下一步]**。
+5. 完成時，請關閉嚮導。
 
-![連接精靈中刷新目錄架構的螢幕擷取](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-refreshschema.png)
+![在 Connect wizard 中重新整理目錄架構的螢幕擷取畫面](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-refreshschema.png)
 
-## <a name="step-3-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>步驟 3: 將源屬性加入到本地端的目錄連接器架構
-**僅當運行 Connect 版本 1.3.21 或更舊時,才需要此步驟。如果您在 1.4.18 或更新,則跳至步驟 5。**  
-並非所有 Azure AD 屬性都導入到本地活動目錄連接器空間。 如果您選擇使用的屬性預設不會同步處理，則需自行將它匯入。 若要在所匯入屬性的清單中新增來源屬性︰
+## <a name="step-3-add-the-source-attribute-to-the-on-premises-active-directory-connector-schema"></a>步驟3：將來源屬性新增至內部部署 Active Directory 連接器架構
+**只有在您執行 Connect version 1.3.21 或更舊版本時，才需要執行此步驟。如果您是在1.4.18 或更新版本，請跳到步驟5。**  
+並非所有 Azure AD 屬性都會匯入內部部署 Active Directory 連接器空間中。 如果您選擇使用的屬性預設不會同步處理，則需自行將它匯入。 若要在所匯入屬性的清單中新增來源屬性︰
 
 1. 選取 Synchronization Service Manager 中的 [連接器]**** 索引標籤。
 2. 以滑鼠右鍵按一下 [內部部署 Active Directory 連接器]，然後選取 [屬性]****。
@@ -120,25 +120,25 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 ![Synchronization Service Manager 和 [屬性] 對話方塊的螢幕擷取畫面](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step2.png)
 
-## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>步驟 4:**將 首選資料定位**加入 Azure AD 連接器架構
-**僅當運行 Connect 版本 1.3.21 或更舊時,才需要此步驟。如果您在 1.4.18 或更新,則跳至步驟 5。**  
+## <a name="step-4-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>步驟4：將**PreferredDataLocation**新增至 Azure AD 連接器架構
+**只有在您執行 Connect version 1.3.21 或更舊版本時，才需要執行此步驟。如果您是在1.4.18 或更新版本，請跳到步驟5。**  
 根據預設，系統不會將 **preferredDataLocation** 屬性匯入 Azure AD 連接器空間中。 若要將它新增至匯入的屬性清單：
 
 1. 選取 Synchronization Service Manager 中的 [連接器]**** 索引標籤。
-2. 右鍵按下 Azure AD 連接器,然後選擇**屬性**。
+2. 以滑鼠右鍵按一下 [Azure AD] 連接器，然後選取 [**屬性**]。
 3. 在彈出的對話方塊中，移至 [選取屬性]**** 索引標籤。
 4. 選取清單中的 **preferredDataLocation** 屬性。
 5. 若要儲存，請選取 [確定]****。
 
 ![Synchronization Service Manager 和 [屬性] 對話方塊的螢幕擷取畫面](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step3.png)
 
-## <a name="step-5-create-an-inbound-synchronization-rule"></a>步驟 5:建立入站同步規則
+## <a name="step-5-create-an-inbound-synchronization-rule"></a>步驟5：建立輸入同步處理規則
 輸入同步處理規則允許屬性值從內部部署 Active Directory 的來源屬性傳輸到 metaverse。
 
 1. 移至 [開始]**** >  [同步處理規則編輯器]**** 來啟動**同步處理規則編輯器**。
 2. 將搜尋篩選條件的 [方向]**** 設定為 [輸入]****。
 3. 若要建立新的輸入規則，請選取 [新增規則]****。
-4. 在 **'描述'** 選項卡下,提供以下設定:
+4. 在 [**描述**] 索引標籤下，提供下列設定：
 
     | 屬性 | 值 | 詳細資料 |
     | --- | --- | --- |
@@ -151,7 +151,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
     | 優先順序 | 選擇 1–99 之間的數字** | 1–99 已保留供自訂同步處理規則使用。 請勿挑選已由其他同步處理規則使用的值。 |
 
 5. 讓 [範圍篩選器]**** 保持空白，以便包含所有物件。 您可能需要根據 Azure AD Connect 部署來調整範圍篩選器。
-6. 跳到**轉換選項卡**,並實現以下轉換規則:
+6. 移至 [**轉換]** 索引標籤，並執行下列轉換規則：
 
     | 流程類型 | 目標屬性 | 來源 | 套用一次 | 合併類型 |
     | --- | --- | --- | --- | --- |
@@ -161,32 +161,32 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 ![建立輸入同步處理規則的螢幕擷取畫面](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step4.png)
 
-## <a name="step-6-create-an-outbound-synchronization-rule"></a>步驟 6:建立出站同步規則
-出站同步規則允許屬性值從元節流向 Azure AD 中**的首選 DataLocation**屬性:
+## <a name="step-6-create-an-outbound-synchronization-rule"></a>步驟6：建立輸出同步處理規則
+輸出同步處理規則允許屬性值從「元處理」流至 Azure AD 中的**preferredDataLocation**屬性：
 
-1. 跳到**同步規則編輯器**。
+1. 移至 [**同步處理規則編輯器**]。
 2. 將搜尋篩選條件的 [方向]**** 設定為 [輸出]****。
 3. 選取 [新增規則]****。
-4. 在 **'描述'** 選項卡下,提供以下設定:
+4. 在 [**描述**] 索引標籤下，提供下列設定：
 
     | 屬性 | 值 | 詳細資料 |
     | ----- | ------ | --- |
     | 名稱 | *提供名稱* | 例如，“Out to Azure AD – User preferredDataLocation” |
-    | 描述 | *提供說明* ||
+    | 描述 | *提供描述* ||
     | 連線系統 | 選取 Azure AD 連接器** ||
     | 連線系統物件類型 | **使用者** ||
     | Metaverse 物件類型 | **個人** ||
     | 連結類型 | **加入** ||
     | 優先順序 | 選擇 1–99 之間的數字** | 1–99 已保留供自訂同步處理規則使用。 請勿挑選已由其他同步處理規則使用的值。 |
 
-5. 跳到 **「範圍」篩選器**選項卡,並添加包含兩個子句的單個範圍篩選器組:
+5. 移至 [**範圍篩選器**] 索引標籤，並新增具有兩個子句的單一範圍篩選器群組：
 
     | 屬性 | 運算子 | 值 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
 
-    範圍篩選器會決定此輸出同步處理規則要套用至哪個 Azure AD 物件。 在此示例中,我們使用從"從"從"到 Azure AD + 用戶標識"OOB(開箱即用)同步規則的相同範圍篩選器。 它阻止同步規則應用於未從本地活動目錄同步**的用戶**物件。 您可能需要根據 Azure AD Connect 部署來調整範圍篩選器。
+    範圍篩選器會決定此輸出同步處理規則要套用至哪個 Azure AD 物件。 在此範例中，我們會使用來自「Out to Azure AD –使用者身分識別」 OOB （現成可用）同步處理規則的相同範圍篩選器。 它會防止將同步處理規則套用至未從內部部署 Active Directory 同步處理的**使用者**物件。 您可能需要根據 Azure AD Connect 部署來調整範圍篩選器。
 
 6. 移至 [轉換]**** 索引標籤，並實作下列轉換規則︰
 
@@ -198,7 +198,7 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 ![建立輸出同步處理規則的螢幕擷取畫面](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-step5.png)
 
-## <a name="step-7-run-full-synchronization-cycle"></a>第 7 步:執行完整同步週期
+## <a name="step-7-run-full-synchronization-cycle"></a>步驟7：執行完整的同步處理週期
 一般來說，必須經歷完整的同步處理週期。 這是因為您已將新的屬性同時新增至 Active Directory 和 Azure AD 連接器結構描述，並導入了自訂同步處理規則。 請先驗證變更，再將它們匯出至 Azure AD。 在手動執行構成完整同步處理週期的步驟時，您可以使用下列步驟來驗證變更。
 
 1. 在內部部署 Active Directory 連接器上執行 [完整匯入]****：
@@ -213,11 +213,11 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
 
 2. 在 Azure AD 連接器上執行 [完整匯入]****：
 
-   1. 右鍵按**下 Azure AD 連接器**,然後選擇 **「執行」 。。**
+   1. 以滑鼠右鍵按一下 [ **Azure AD] 連接器**，然後選取 [**執行**]。
    2. 在對話方塊中選取 [完整匯入]****，然後選取 [確定]****。
    3. 請等候作業完成。
 
-3. 驗證現有**User**物件的同步規則更改。
+3. 確認現有**使用者**物件上的同步處理規則變更。
 
    來自內部部署 Active Directory 的來源屬性和來自 Azure AD 的 **preferredDataLocation** 都已匯入各自的連接器空間中。 在繼續進行完整同步處理步驟之前，請先預覽內部部署 AD 連接器空間中的現有**使用者**物件。 您所挑選的物件應該要填入來源屬性。 若能成功預覽到 Metaverse 中已填入 **preferredDataLocation**，則表示您已正確設定同步處理規則。 如需如何進行預覽的相關資訊，請參閱[驗證變更](how-to-connect-sync-change-the-configuration.md#verify-the-change)。
 
@@ -237,22 +237,22 @@ Azure AD Connect 可對 1.1.524.0 版和更新版本之**使用者**物件的 **
         c. 若要檢視有變更要匯出的物件清單，請選取 [搜尋]****。 若要檢查給定物件的變更，請按兩下物件。<br>
         d. 確認變更符合預期。
 
-6. 在 Azure **AD 連接器**執行**中**執行
+6. 在**Azure AD 連接器**上執行**匯出**
 
-   1. 右鍵按**下 Azure AD 連接器**,然後選擇 **「執行」 。。**
+   1. 以滑鼠右鍵按一下 [ **Azure AD] 連接器**，然後選取 [**執行**]。
    2. 在 [執行連接器]**** 對話方塊中選取 [匯出]****，然後選取 [確定]****。
    3. 請等候作業完成。
 
 > [!NOTE]
 > 您可能會發現，上述步驟並未包含 Azure AD 連接器上的完整同步處理步驟，或是 Active Directory 連接器上的匯出步驟。 屬性值只會從內部部署 Active Directory 傳輸到 Azure AD，因此不需要這些步驟。
 
-## <a name="step-8-re-enable-sync-scheduler"></a>步驟 8: 重新開啟同步排程
+## <a name="step-8-re-enable-sync-scheduler"></a>步驟8：重新啟用同步排程器
 重新啟用內建的同步排程器︰
 
 1. 啟動 PowerShell 工作階段。
 2. 執行下列 Cmdlet 來重新啟用排程的同步處理︰`Set-ADSyncScheduler -SyncCycleEnabled $true`
 
-## <a name="step-9-verify-the-result"></a>第 9 步:驗證結果
+## <a name="step-9-verify-the-result"></a>步驟9：驗證結果
 現在該來確認組態，並且為您的使用者啟用它。
 
 1. 將地區新增至使用者的所選屬性。 本表格提供可用的地區清單。  

@@ -1,7 +1,7 @@
 ---
 title: Predicates 與 PredicateValidations
 titleSuffix: Azure AD B2C
-description: 通過使用 Azure 活動目錄 B2C 中的自訂策略,防止將格式不正確的數據添加到 Azure AD B2C 租戶。
+description: 使用 Azure Active Directory B2C 中的自訂原則，防止將格式不正確的資料新增至您的 Azure AD B2C 租使用者。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,27 +12,27 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80396895"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 與 PredicateValidations
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**謂詞**和**謂詞驗證**元素使您能夠執行驗證過程,以確保僅將格式正確的數據輸入 Azure 活動目錄 B2C (Azure AD B2C) 租戶。
+述詞和**PredicateValidations**元素可讓您執行驗證**程式，以**確保在您的 Azure Active Directory B2C （Azure AD B2C）租使用者中只輸入正確格式的資料。
 
 下圖顯示元素之間的關聯性：
 
-![顯示謂詞與謂詞驗證關係的圖表](./media/predicates/predicates.png)
+![顯示述詞和述詞驗證關聯性的圖表](./media/predicates/predicates.png)
 
 ## <a name="predicates"></a>述詞
 
 **Predicate** 元素會定義基本驗證來檢查宣告類型的值，並傳回 `true` 或 `false`。 您可以使用指定的 **Method** 元素及與該方法相關聯的一組 **Parameter** 元素來完成驗證。 例如，述詞可以檢查字串宣告值的長度是否介於所指定 Minimum 和 Maximum 參數的範圍內，或者字串宣告值是否包含字元集。 **UserHelpText** 元素會在檢查失敗時，為使用者提供錯誤訊息。 **UserHelpText** 元素的值可以使用[語言自訂](localization.md)進行當地語系化。
 
-**謂詞**元素必須直接出現在[構建塊](buildingblocks.md)元素中的 **「聲明架構**」元素之後。
+述**詞元素必須**緊接在[BuildingBlocks](buildingblocks.md)元素內的**ClaimsSchema**元素後面。
 
 **Predicates** 元素包含下列元素：
 
@@ -52,7 +52,7 @@ ms.locfileid: "80396895"
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| UserHelpText | 0:1 | (已棄用)如果檢查失敗,則給使用者發送錯誤消息。 |
+| UserHelpText | 0:1 | 不再如果檢查失敗，則為使用者提供錯誤訊息。 |
 | 參數 | 1:1 | 適用於字串驗證方法類型的參數。 |
 
 **Parameters** 元素包含下列元素：
@@ -67,11 +67,11 @@ ms.locfileid: "80396895"
 | ------- | ----------- | ----------- |
 | Id | 1:1 | 參數的識別碼。 |
 
-### <a name="predicate-methods"></a>謂詞方法
+### <a name="predicate-methods"></a>述詞方法
 
-#### <a name="islengthrange"></a>是長度範圍
+#### <a name="islengthrange"></a>IsLengthRange
 
-IsLengthRange 方法檢查字串聲明值的長度是否在指定的最小參數和最大參數範圍內。 謂字元素支援以下參數:
+IsLengthRange 方法會檢查字串宣告值的長度是否在指定的最小和最大參數範圍內。 述詞元素支援下列參數：
 
 | 參數 | 必要 | 描述 |
 | ------- | ----------- | ----------- |
@@ -79,7 +79,7 @@ IsLengthRange 方法檢查字串聲明值的長度是否在指定的最小參數
 | 最小值 | 是 | 必須輸入的最小字元數。 |
 
 
-下面的範例顯示了具有參數`Minimum``Maximum`並指定字串長度範圍的 IsLengthRange 方法:
+下列範例顯示具有參數`Minimum`的 IsLengthRange 方法，並`Maximum`指定字串的長度範圍：
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -90,9 +90,9 @@ IsLengthRange 方法檢查字串聲明值的長度是否在指定的最小參數
 </Predicate>
 ```
 
-#### <a name="matchesregex"></a>符合雷格ex
+#### <a name="matchesregex"></a>MatchesRegex
 
-MatchesRegex 方法檢查字串聲明值是否與正則表達式匹配。 謂字元素支援以下參數:
+MatchesRegex 方法會檢查字串宣告值是否符合正則運算式。 述詞元素支援下列參數：
 
 | 參數 | 必要 | 描述 |
 | ------- | ----------- | ----------- |
@@ -108,13 +108,13 @@ MatchesRegex 方法檢查字串聲明值是否與正則表達式匹配。 謂字
 </Predicate>
 ```
 
-#### <a name="includescharacters"></a>包括字元
+#### <a name="includescharacters"></a>IncludesCharacters
 
-"包括字元"方法檢查字串聲明值是否包含字元集。 謂字元素支援以下參數:
+IncludesCharacters 方法會檢查字串宣告值是否包含字元集。 述詞元素支援下列參數：
 
 | 參數 | 必要 | 描述 |
 | ------- | ----------- | ----------- |
-| CharacterSet | 是 | 可以輸入的字元集。 例如,小寫`a-z`字元、大寫字元`A-Z`、`0-9`數位或符號清單(`@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!`如 )。 |
+| CharacterSet | 是 | 可以輸入的一組字元。 例如`a-z`，小寫字元、大寫字元`A-Z`、數位`0-9`或符號清單（例如）。 `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` |
 
 下列範例顯示 `IncludesCharacters` 方法，以及可指定字元集的 `CharacterSet` 參數：
 
@@ -126,14 +126,14 @@ MatchesRegex 方法檢查字串聲明值是否與正則表達式匹配。 謂字
 </Predicate>
 ```
 
-#### <a name="isdaterange"></a>是日期
+#### <a name="isdaterange"></a>IsDateRange
 
-IsDateRange 方法檢查日期聲明值是否介於指定的最小參數和最大參數範圍之間。 謂字元素支援以下參數:
+IsDateRange 方法會檢查日期宣告值是否介於指定的最小和最大參數範圍之間。 述詞元素支援下列參數：
 
 | 參數 | 必要 | 描述 |
 | ------- | ----------- | ----------- |
-| 最大值 | 是 | 可以輸入的最大可能日期。 日期的格式遵循`yyyy-mm-dd`慣例`Today`或 。 |
-| 最小值 | 是 | 可以輸入的最小日期。 日期的格式遵循`yyyy-mm-dd`慣例`Today`或 。|
+| 最大值 | 是 | 可輸入的最大可能日期。 日期的格式會遵循`yyyy-mm-dd`慣例，或。 `Today` |
+| 最小值 | 是 | 可輸入的最小可能日期。 日期的格式會遵循`yyyy-mm-dd`慣例，或。 `Today`|
 
 下列範例顯示 `IsDateRange` 方法，以及可使用 `yyyy-mm-dd` 和 `Today` 格式來指定日期範圍的 `Minimum` 和 `Maximum` 參數。
 
@@ -150,7 +150,7 @@ IsDateRange 方法檢查日期聲明值是否介於指定的最小參數和最�
 
 當述詞定義驗證以針對宣告類型進行檢查時，**PredicateValidations** 會群組一組述詞，以形成可套用至宣告類型的使用者輸入驗證。 每個 **PredicateValidation** 元素均包含一組 **PredicateGroup** 元素，其中包含一組指向 **Predicate** 的 **PredicateReference** 元素。 若要通過驗證，宣告的值應該在所有的 **PredicateGroup** 下方，使用它們的 **PredicateReference** 元素組來傳遞任何述詞的所有測試。
 
-**謂詞驗證**元素必須直接出現在[構建塊](buildingblocks.md)元素中的**謂詞**元素之後。
+**PredicateValidations**元素必須緊接在[BuildingBlocks](buildingblocks.md)元素內的述**詞元素後面**。
 
 ```XML
 <PredicateValidations>
@@ -211,7 +211,7 @@ IsDateRange 方法檢查日期聲明值是否介於指定的最小參數和最�
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| MatchAtLeast | 否 | 指定值至少必須符合許多述詞定義，以用於要接受的輸入。 如果未指定,該值必須匹配所有謂詞定義。 |
+| MatchAtLeast | 否 | 指定值至少必須符合許多述詞定義，以用於要接受的輸入。 如果未指定，則值必須符合所有述詞定義。 |
 
 **PredicateReferences** 元素包含下列元素：
 
@@ -234,7 +234,7 @@ IsDateRange 方法檢查日期聲明值是否介於指定的最小參數和最�
 - 使用 `IncludesCharacters` 方法的 **Lowercase**，驗證密碼包含小寫字母。
 - 使用 `IncludesCharacters` 方法的 **Uppercase**，驗證密碼包含大寫字母。
 - 使用 `IncludesCharacters` 方法的 **Number**，驗證密碼包含數字。
-- **Symbol**使用方法`IncludesCharacters`的符號驗證密碼是否包含多個符號字元之一。
+- **符號**：使用`IncludesCharacters`方法，驗證密碼包含數個符號字元的其中一個。
 - 使用 `MatchesRegex` 方法的 **PIN**，驗證密碼只包含數字。
 - 使用 `MatchesRegex` 方法的 **AllowedAADCharacters**，驗證提供了只對密碼無效的字元。
 - 使用 `MatchesRegex` 方法的 **DisallowedWhitespace**，驗證密碼不是以空白字元開始或結尾。
@@ -380,7 +380,7 @@ IsDateRange 方法檢查日期聲明值是否介於指定的最小參數和最�
 
 以下顯示當 Azure AD B2C 顯示錯誤訊息時組織元素的方式：
 
-![謂詞和謂片語密碼複雜性圖示例](./media/predicates/predicates-pass.png)
+![述詞和 PredicateGroup 密碼複雜度範例的圖表](./media/predicates/predicates-pass.png)
 
 ## <a name="configure-a-date-range"></a>設定日期範圍
 
@@ -428,4 +428,4 @@ IsDateRange 方法檢查日期聲明值是否介於指定的最小參數和最�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何使用[Azure 活動目錄 B2C 中的自訂策略](custom-policy-password-complexity.md)使用謂詞驗證配置密碼複雜性。
+- 瞭解如何在使用述詞驗證[的 Azure Active Directory B2C 中，使用自訂原則來設定密碼複雜度](custom-policy-password-complexity.md)。

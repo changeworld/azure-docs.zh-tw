@@ -12,10 +12,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 1f19d258531e5368238cba72c986aede3f4a64ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80130828"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - 資料移動的安全性考量
@@ -94,7 +94,7 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 - 從「Azure 入口網站」/「複製精靈」透過 HTTPS 使用**純文字** (較不安全)。 認證會以純文字形式傳送到內部部署閘道。
 - **從複製精靈使用 JavaScript 密碼編譯程式庫**。
 - 使用 **Click-Once 型認證管理員應用程式**。 Click-Once 應用程式會在能夠存取閘道的內部部署電腦上執行，並為資料存放區設定認證。 此選項及下一個選項是最安全的選項。 認證管理員應用程式預設會在具有閘道的電腦上使用連接埠 8050 來進行安全通訊。  
-- 使用[新阿茲達工廠加密值電源](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue)Shell Cmdlet 加密憑據。 此 cmdlet 會使用閘道器設定用來加密認證的憑證。 您可以使用此 Cmdlet 返回的加密憑據，並將其添加到與[New-AzDataFactoryLinkService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) Cmdlet 一起使用的 JSON 檔中**的連接字串**的**加密憑據**元素，或在門戶中的資料工廠編輯器中的 JSON 程式碼片段中。 此選項及 Click-Once 應用程式是最安全的選項。 
+- 使用[AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) PowerShell Cmdlet 來加密認證。 此 cmdlet 會使用閘道器設定用來加密認證的憑證。 您可以使用這個指令程式所傳回的加密認證，並將它新增至 JSON 檔案中的**ConnectionString** **EncryptedCredential**元素，該檔案可與[AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) Cmdlet 搭配使用，或在入口網站中 Data Factory 編輯器的 json 程式碼片段中。 此選項及 Click-Once 應用程式是最安全的選項。 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>JavaScript 密碼編譯程式庫型加密
 您可以從[複製精靈](data-factory-copy-wizard.md)使用 [JavaScript 密碼編譯程式庫](https://www.microsoft.com/download/details.aspx?id=52439)來加密資料存放區認證。 當您選取此選項時，「複製精靈」會擷取閘道的公開金鑰，然後使用它來加密金鑰存放區認證。 這些認證會由閘道電腦解密，並受到 Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) 保護。
@@ -175,9 +175,9 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 
 - [Azure SQL Database](../../sql-database/sql-database-firewall-configure.md) 
 - [Azure SQL 資料倉儲](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
-- [Azure 資料湖存儲](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
-- [Azure 宇宙資料庫](../../cosmos-db/firewall-support.md)
-- [亞馬遜紅移](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Azure Data Lake 存放區](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
+- [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
@@ -188,7 +188,7 @@ Salesforce 支援「Shield 平台加密」，可加密所有檔案、附件、�
 **答：** 閘道會建立 HTTP 型連線來開啟網際網路。 必須開啟**輸出連接埠 443 和 80**，閘道才能建立此連線。 針對「認證管理員」應用程式，請只在電腦層級 (而非公司防火牆層級) 開啟**輸入連接埠 8050**。 如果使用 Azure SQL Database 或「Azure SQL 資料倉儲」作為來源/目的地，則也需要開啟 **1433** 連接埠。 如需詳細資訊，請參閱[防火牆組態及將 IP 位址加入允許清單](#firewall-configurations-and-whitelisting-ip-address-of gateway)一節。 
 
 **問：** 閘道有什麼憑證需求？
-**答：** 目前閘道必須要有認證管理員應用程式用來安全地設定資料存放區認證的憑證。 此憑證是閘道安裝程式所建立並設定的自我簽署憑證。 您可以使用自己的 TLS/SSL 憑證。 如需詳細資訊，請參閱 [Click-Once 認證管理員應用程式](#click-once-credentials-manager-app)一節。 
+**答：** 目前閘道必須要有認證管理員應用程式用來安全地設定資料存放區認證的憑證。 此憑證是閘道安裝程式所建立並設定的自我簽署憑證。 您可以改用自己的 TLS/SSL 憑證。 如需詳細資訊，請參閱 [Click-Once 認證管理員應用程式](#click-once-credentials-manager-app)一節。 
 
 ## <a name="next-steps"></a>後續步驟
 如需有關複製活動效能的資訊，請參閱[複製活動的效能及微調指南](data-factory-copy-activity-performance.md)。

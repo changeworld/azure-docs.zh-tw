@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 實驗室服務設置側重於深度學習的實驗室 |微軟文件
-description: 瞭解如何設置實驗室在 Linux 上教授 shell 腳本。
+title: 使用 Azure 實驗室服務設定以深度學習為焦點的實驗室 |Microsoft Docs
+description: 瞭解如何設定實驗室來教授 Linux 上的 shell 腳本。
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,51 +14,51 @@ ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
 ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81257754"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>使用 Azure 實驗室服務，設定以自然語言處理中的深度學習為焦點的實驗室
-本文介紹如何使用 Azure 實驗室服務設置側重於自然語言處理 (NLP) 深度學習的實驗室。 自然語言處理 (NLP) 是一種人工智慧 (AI) 形式，可讓電腦具有翻譯、語音辨識和其他語言理解功能。  
+本文說明如何使用 Azure 實驗室服務，設定以自然語言處理（NLP）深度學習為焦點的實驗室。 自然語言處理 (NLP) 是一種人工智慧 (AI) 形式，可讓電腦具有翻譯、語音辨識和其他語言理解功能。  
 
 參與 NLP 類別的學生可透過 Linux 虛擬機器 (VM) 了解如何運用神經網路演算法來開發深入學習模型，用以分析撰寫的人類語言。 
 
 ## <a name="lab-configuration"></a>實驗室組態
-要設置此實驗,需要 Azure 訂閱才能開始。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 獲得 Azure 訂閱後,可以在 Azure 實驗室服務中創建新的實驗室帳戶,也可以使用現有的實驗室帳戶。 有關創建新實驗室帳戶,請參閱以下教程:[設定實驗室帳戶的教程](tutorial-setup-lab-account.md)。
+若要設定此實驗室，您需要 Azure 訂用帳戶才能開始使用。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 擁有 Azure 訂用帳戶之後，您可以在 Azure 實驗室服務中建立新的實驗室帳戶，或使用現有的實驗室帳戶。 請參閱下列教學課程，以建立新的實驗室帳戶：[設定實驗室帳戶的教學](tutorial-setup-lab-account.md)課程。
  
-建立實驗室帳戶後,在實驗室帳戶中啟用以下設置: 
+建立實驗室帳戶之後，請啟用實驗室帳戶中的下列設定： 
 
 | 實驗室帳戶設定 | Instructions |
 | ----------- | ------------ |  
-| 市場映射 | 啟用適用於 Linux (Ubuntu) 映像的數據科學虛擬機器,以便在實驗室帳戶中使用。  有關說明,請參閱以下文章:[指定可供實驗室建立者使用的市場映像](specify-marketplace-images.md)。 | 
+| Marketplace 映射 | 啟用資料科學虛擬機器 for Linux （Ubuntu）映射以在實驗室帳戶中使用。  如需相關指示，請參閱下列文章：[指定可供實驗室建立者使用的 marketplace 映射](specify-marketplace-images.md)。 | 
 
-請按照[本教程](tutorial-setup-classroom-lab.md)建立新實驗室並應用以下設置:
+遵循[此教學](tutorial-setup-classroom-lab.md)課程來建立新的實驗室，並套用下列設定：
 
-| 實驗室設定 | 值/說明 | 
+| 實驗室設定 | 值/指示 | 
 | ------------ | ------------------ |
-| 虛擬機器 (VM) 大小 | 小型 GPU(計算)。 此大小最適合計算密集型和網路密集型應用,如人工智慧和深度學習。 |
-| VM 映像 | [Linux (Ubuntu) 的資料科學虛擬機器](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 此圖像為機器學習和數據科學提供了深度學習框架和工具。 要檢視此映像上已安裝工具的完整清單,請參閱以下文章[:DSVM 上包含哪些內容?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm) |
-| 開啟遠端桌面連線 | 啟用。 <p>啟用此設定將允許教師和學生使用遠端桌面 (RDP) 連接到虛擬機器 (VM)。</p><p>**重要提示**:RDP 已在用於 Linux 映像的數據科學虛擬機上安裝和配置。 因此,教師/學生可以通過RDP連接到VM,而無需執行任何其他步驟。 此外,如果您需要連接到圖形桌面,此映射已在虛擬機器上安裝[了 X2Go 伺服器](https://wiki.x2go.org/doku.php/doc:newtox2go)。 學生必須在其本地電腦上安裝 X2Go 客戶端,並且必須使用用戶端進行連接。 如需詳細資訊，請參閱下列指南： <ul><li>[如何存取 Linux 適用的資料科學虛擬機器](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[連接到樣本 VM 以安裝 RDP 和圖像軟體](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
+| 虛擬機器（VM）大小 | 小型 GPU （計算）。 此大小最適合用於計算密集型和網路密集型應用程式，例如人工智慧和深度學習。 |
+| VM 映射 | [適用于 Linux （Ubuntu）的資料科學虛擬機器](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 此映射提供適用于機器學習和資料科學的深度學習架構和工具。 若要查看此映射上已安裝工具的完整清單，請參閱下列文章： [DSVM 中包含的內容？](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm)。 |
+| 啟用遠端桌面連線 | 啟用。 <p>啟用此設定可讓教師和學生使用遠端桌面（RDP）連接到其虛擬機器（VM）。</p><p>**重要**：已在 Linux 映射的資料科學虛擬機器上安裝並設定 RDP。 因此，老師/學生可以透過 RDP 連線到 Vm，而不需要任何額外的步驟。 此外，如果您需要連接到圖形化桌面，此映射已在虛擬機器上安裝[X2Go 伺服器](https://wiki.x2go.org/doku.php/doc:newtox2go)。 學生必須在他們的本機電腦上安裝 X2Go 用戶端，而且必須使用用戶端進行連接。 如需詳細資訊，請參閱下列指南： <ul><li>[如何存取 Linux 適用的資料科學虛擬機器](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[連接到範本 VM 以安裝 RDP 和 GUI 套件](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
 
-用於 Linux 映像的資料科學虛擬機提供了此類課程所需的必要深度學習框架和工具。 因此,在範本電腦創建後,無需進一步自定義它。 它可以發佈供學生使用。 選擇範本頁上的 **「發布」** 按鈕,將範本發布到實驗室。  
+適用于 Linux 的資料科學虛擬機器映射會提供這類類別所需的必要深度學習架構和工具。 因此，範本機器建立之後，您就不需要進一步自訂它。 它可以發佈供學生使用。 選取 [範本] 頁面上的 [**發佈**] 按鈕，將範本發佈至實驗室。  
 
 ## <a name="cost"></a>成本
-如果要估計本實驗的成本,可以使用以下範例: 
+如果您想要估計此實驗室的成本，可以使用下列範例： 
 
-對於有 25 小時的預定上課時間和 10 小時作業或作業配額的班級,實驗室的價格為 - 25 名學生 = (20 + 10) 小時 = 139 實驗室單位 = 每小時 0.01 USD = 1042.5 USD
+針對25名學生的課程，其中有20小時的排程類別時間和10小時的家庭作業或指派配額，實驗室的價格為-25 個學生 * （20 + 10）小時 * 139 個實驗室單位 * 0.01 美元/小時 = 1042.5 美元
 
-有關定價的更多詳細資訊,請參閱[Azure 實驗室服務定價](https://azure.microsoft.com/pricing/details/lab-services/)。
+如需更多有關定價的詳細資訊，請參閱[Azure 實驗室服務定價](https://azure.microsoft.com/pricing/details/lab-services/)。
 
 ## <a name="conclusion"></a>結論
-本文將引導您完成為自然語言處理類創建實驗室的步驟。 您可以將類似的設置用於其他深度學習課程。
+本文逐步引導您建立自然語言處理類別的實驗室。 您可以針對其他深度學習類別使用類似的設定。
 
 ## <a name="next-steps"></a>後續步驟
-設定任何實驗室通常採取以下步驟:
+下一步是設定任何實驗室的一般步驟：
 
 - [新增使用者](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [設定配額](how-to-configure-student-usage.md#set-quotas-for-users)
-- [設定計劃](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
-- [電子郵件註冊連結給學生](how-to-configure-student-usage.md#send-invitations-to-users)。 
+- [設定排程](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab) 
+- [學生的電子郵件註冊連結](how-to-configure-student-usage.md#send-invitations-to-users)。 
 

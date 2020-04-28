@@ -12,10 +12,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80065003"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>資料管理閘道的版本資訊
@@ -40,7 +40,7 @@ ms.locfileid: "80065003"
 ## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>增強功能
 - 您可以新增 DNS 項目來將「服務匯流排」加入允許清單，而不是將所有 Azure IP 位址都加入防火牆的允許清單 (如有需要)。 您可以在 Azure 入口網站上找到各自的 DNS 項目 (Data Factory-> [製作和部署] -> [閘道] -> [serviceUrls] \(在 JSON 中)
-- HDFS 連接器現在通過跳過 TLS 驗證支援自簽名公共證書。
+- HDFS 連接器現在可讓您略過 TLS 驗證，以支援自我簽署的公開憑證。
 - 已修正︰更新期間的閘道離線問題 (因為時鐘誤差)
 
 

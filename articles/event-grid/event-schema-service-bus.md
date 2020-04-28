@@ -1,5 +1,5 @@
 ---
-title: Azure 服務匯流作事件網格源
+title: 做為事件方格來源 Azure 服務匯流排
 description: 描述 Azure Event Grid 中服務匯流排事件的屬性
 services: event-grid
 author: banisadr
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: babanisa
 ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393248"
 ---
-# <a name="azure-service-bus-as-an-event-grid-source"></a>Azure 服務匯流作事件網格源
+# <a name="azure-service-bus-as-an-event-grid-source"></a>做為事件方格來源 Azure 服務匯流排
 
 本文提供服務匯流排事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
@@ -79,20 +79,20 @@ ms.locfileid: "81393248"
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
 | subject | 字串 | 發行者定義事件主體的路徑。 |
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 事件的唯一識別碼。 |
-| data | 物件 (object) | blob 儲存體帳戶。 |
+| data | 物件 | blob 儲存體帳戶。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | namespaceName | 字串 | 資源所在的服務匯流排命名空間。 |
 | requestUri | 字串 | 要發出此事件的特定佇列或訂用帳戶 URI。 |
@@ -101,11 +101,11 @@ ms.locfileid: "81393248"
 | topicName | 字串 | 包含作用中訊息所屬之服務匯流排訂用帳戶的主題。 如果使用佇列則為 null 值。 |
 | subscriptionName | 字串 | 具有作用中訊息的服務匯流排訂用帳戶。 如果使用佇列則為 null 值。 |
 
-## <a name="tutorials-and-how-tos"></a>教學和如何
+## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
 |Title  |描述  |
 |---------|---------|
 | [教學課程：Azure 服務匯流排與 Azure 事件方格的整合範例](../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 事件方格會從服務匯流排主題傳送訊息至函式應用程式和邏輯應用程式。 |
-| [Azure 服務匯流排到事件網格整合](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | 整合服務匯流排與事件方格的概觀。 |
+| [Azure 服務匯流排至事件格線整合](../service-bus-messaging/service-bus-to-event-grid-integration-concept.md) | 整合服務匯流排與事件方格的概觀。 |
 
 ## <a name="next-steps"></a>後續步驟
 

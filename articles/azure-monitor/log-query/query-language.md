@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/11/2019
 ms.openlocfilehash: 6b81aba553fc775821c80631aa83bbb3e8ac63b5
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631789"
 ---
 # <a name="azure-monitor-log-queries"></a>Azure 監視器記錄查詢
@@ -21,7 +21,7 @@ Azure 監視器記錄以 Azure 資料總管為基礎建置，且 Azure 監視器
 
 ## <a name="getting-started"></a>開始使用
 
-- [開始使用 Azure 監視器日誌分析](get-started-portal.md)是編寫查詢和在 Azure 門戶中處理結果的一課。
+- [開始使用 Azure 監視器 Log Analytics](get-started-portal.md)是在 Azure 入口網站中撰寫查詢和使用結果的課程。
 - [開始使用 Azure 監視器記錄查詢](get-started-queries.md)是一堂使用 Azure 監視器記錄資料撰寫查詢的課程。
 
 ## <a name="concepts"></a>概念

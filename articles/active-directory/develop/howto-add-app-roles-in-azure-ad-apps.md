@@ -1,5 +1,5 @@
 ---
-title: 新增應用角色並從權杖中獲取它們 |蔚藍
+title: 新增應用程式角色，並從權杖取得它們 |Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何在 Azure Active Directory 註冊的應用程式中新增應用程式角色、將使用者和群組指派給這些角色，以及在權杖的 `roles` 中宣告接收它們。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 144fad249011d547ac6a8cf2d404cb3f8fe74f96
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884251"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在您的應用程式中新增應用程式角色，並且在權杖中接收這些角色
@@ -35,17 +35,17 @@ ms.locfileid: "80884251"
 ### <a name="declare-app-roles-using-azure-portal"></a>使用 Azure 入口網站宣告應用程式角色
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 在門戶工具列中選擇 **「目錄 + 訂閱**」圖示。
-1. 在 **"我的最愛**'或 **"所有目錄"** 清單中,選擇要註冊應用程式的"活動目錄"租戶。
+1. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示。
+1. 在 [我的最愛] 或 [**所有目錄** **]** 清單中，選擇您要註冊應用程式的 Active Directory 租使用者。
 1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]****。
 1. 在 [Azure Active Directory]**** 窗格中，選取 [應用程式註冊]**** 以檢視所有應用程式的清單。
-1. 選取您要在其中定義應用程式角色的應用程式。 然後選擇 **「清單**」。
+1. 選取您要在其中定義應用程式角色的應用程式。 然後選取 [**資訊清單**]。
 1. 找出 `appRoles` 設定並新增所有的應用程式角色，以編輯應用程式資訊清單。
 
      > [!NOTE]
-     > 此清單中的每個應用角色定義都必須在`id`屬性的清單上下文中具有不同的有效 GUID。
+     > 此資訊清單中的每個應用程式角色定義，在`id`屬性的資訊清單內容中都必須有不同的有效 GUID。
      >
-     > 每個`value`應用角色定義的屬性應與應用程式中的代碼中使用的字串完全匹配。 屬性`value`不能包含空格。 如果是,則在保存清單時將收到錯誤。
+     > 每`value`個應用程式角色定義的屬性應該完全符合應用程式中程式碼所使用的字串。 `value`屬性不能包含空格。 如果有，當您儲存資訊清單時，將會收到錯誤。
 
 1. 儲存資訊清單。
 
@@ -95,21 +95,21 @@ ms.locfileid: "80884251"
 "availableToOtherTenants": false,
 ```
 
-定義的角色數會影響應用程式清單的限制。 已在[清單限制](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits)頁上詳細討論了這些問題。
+定義的角色數目會影響應用程式資訊清單所擁有的限制。 它們已在 [[資訊清單限制](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits)] 頁面中詳細討論。
 
 ### <a name="assign-users-and-groups-to-roles"></a>將使用者和群組指派給角色
 
 在應用程式中新增應用程式角色之後，您即可將使用者和群組指派給這些角色。
 
-1. 在**Azure 的目錄**窗格中,從**Azure 的目錄**左邊瀏覽選單中選擇**企業應用程式**。
-1. 選擇 **「所有應用程式**」以查看所有應用程式的清單。
+1. 在 [ **Azure Active Directory** ] 窗格中，從**Azure Active Directory**左側導覽功能表中選取 [**企業應用程式**]。
+1. 選取 [**所有應用程式**] 以查看所有應用程式的清單。
 
      如果看不到您希望在此顯示的應用程式，請使用 [所有應用程式]**** 清單頂端的各種篩選條件來限制清單，或向下捲動清單以找出應用程式。
 
 1. 選取您想要在其中將使用者或安全性群組指派給角色的應用程式。
-1. 在應用程式的左側導航功能表中選擇 **「使用者和組**」窗格。
+1. 在應用程式的左側導覽功能表中，選取 [**使用者和群組**] 窗格。
 1. 在 [使用者和群組]**** 清單頂端，選取 [新增使用者]**** 按鈕，以開啟 [新增指派]**** 窗格。
-1. 從「**新增分配**」窗格中選擇 **「使用者」和「群組**」選擇器。
+1. 從 [**新增指派**] 窗格中選取 [**使用者和群組**] 選取器。
 
      隨即會顯示使用者和安全性群組清單，以及用來搜尋並找出特定使用者或群組的文字方塊。 此畫面可讓您一次選取多個使用者和群組。
 
@@ -121,7 +121,7 @@ ms.locfileid: "80884251"
 
 ## <a name="more-information"></a>詳細資訊
 
-- [使用應用程式角色&角色聲明向 ASP.NET核心 Web 應用新增授權](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
+- [使用應用程式角色 & 角色宣告將授權新增至 ASP.NET Core web 應用程式](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [在您的應用程式中使用安全性群組和應用程式角色 (影片)](https://www.youtube.com/watch?v=V8VUPixLSiM)
 - [Azure Active Directory 現在具有群組宣告和應用程式角色](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
 - [Azure Active Directory 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)

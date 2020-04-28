@@ -1,7 +1,7 @@
 ---
-title: 在自訂策略中定義電話因子技術設定檔
+title: 在自訂原則中定義電話要素技術設定檔
 titleSuffix: Azure AD B2C
-description: 在 Azure 活動目錄 B2C 中的自訂策略中定義電話因子技術配置檔。
+description: 在 Azure Active Directory B2C 的自訂原則中定義電話要素技術設定檔。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,29 +12,29 @@ ms.date: 03/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e2b30e8f6bcbe7c0e739455f4942712f68ff8404
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437457"
 ---
-# <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure 活動目錄 B2C 自訂策略中定義電話因子技術設定檔
+# <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義電話要素技術設定檔
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure 活動目錄 B2C(Azure AD B2C)支援註冊和驗證電話號碼。 此技術設定檔:
+Azure Active Directory B2C （Azure AD B2C）提供註冊和驗證電話號碼的支援。 此技術設定檔：
 
-- 提供使用者介面,以便與使用者進行交互以驗證或註冊電話號碼。
-- 支援電話呼叫和簡訊以驗證電話號碼。
-- 支援多個電話號碼。 用戶可以選擇要驗證的一個電話號碼。  
-- 返回聲明,指示使用者是否提供了新電話號碼。 可以使用此聲明來決定是否應將電話號碼保留到 Azure AD B2C 使用者配置檔。  
-- 使用[內容定義](contentdefinitions.md)來控制外觀。
+- 提供使用者介面來與使用者互動，以驗證或註冊電話號碼。
+- 支援撥打電話和文字訊息來驗證電話號碼。
+- 支援多個電話號碼。 使用者可以選取其中一個電話號碼進行驗證。  
+- 傳回宣告，指出使用者是否提供新的電話號碼。 您可以使用此宣告來決定是否要將電話號碼保存到 Azure AD B2C 的使用者設定檔。  
+- 會使用[內容定義](contentdefinitions.md)來控制外觀與風格。
 
 ## <a name="protocol"></a>通訊協定
 
-**Protocol** 元素的 **Name** 屬性必須設定為 `Proprietary`。 **處理程式**屬性必須包含 Azure AD B2C 用於電話因子的協定處理程式程式集的完全限定名稱:`Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+**Protocol** 元素的 **Name** 屬性必須設定為 `Proprietary`。 **Handler**屬性必須包含通訊協定處理常式元件的完整名稱，而 Azure AD B2C 用於電話因素：`Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
-下面的範例顯示了用於註冊和驗證的電話因子技術配置檔:
+下列範例顯示註冊和驗證的電話要素技術設定檔：
 
 ```XML
 <TechnicalProfile Id="PhoneFactor-InputOrVerify">
@@ -43,9 +43,9 @@ Azure 活動目錄 B2C(Azure AD B2C)支援註冊和驗證電話號碼。 此技�
 </TechnicalProfile>
 ```
 
-## <a name="input-claims-transformations"></a>輸入宣告轉譯
+## <a name="input-claims-transformations"></a>輸入宣告轉換
 
-InputClaims 轉換元素可能包含用於修改輸入聲明或生成新聲明的輸入聲明轉換的集合。 以下輸入聲明轉換生成一個`UserId`聲明,該聲明稍後用於輸入聲明集合。
+InputClaimsTransformations 元素可能包含輸入宣告轉換的集合，可用來修改輸入宣告或產生新的宣告。 下列輸入宣告轉換會產生`UserId`稍後在輸入宣告集合中使用的宣告。
 
 ```xml
 <InputClaimsTransformations>
@@ -55,14 +55,14 @@ InputClaims 轉換元素可能包含用於修改輸入聲明或生成新聲明�
 
 ## <a name="input-claims"></a>輸入宣告
 
-InputClaims 元素必須包含以下聲明。 您還可以將索賠的名稱映射到電話因子技術配置檔中定義的名稱。 
+InputClaims 元素必須包含下列宣告。 您也可以將宣告的名稱對應至電話要素技術設定檔中定義的名稱。 
 
 |  資料類型| 必要 | 描述 |
 | --------- | -------- | ----------- | 
-| 字串| 是 | 使用者的唯一識別碼。 宣告名稱或合作夥伴索賠類型必須設定為`UserId`。 此聲明不應包含個人可識別資訊。|
-| 字串| 是 | 聲明類型的清單。 每個聲明包含一個電話號碼。 如果任何輸入聲明不包含電話號碼,將詢問用戶註冊並驗證新電話號碼。 已驗證的電話號碼將作為輸出聲明返回。 如果其中一個輸入聲明包含電話號碼,則要求用戶驗證它。 如果多個輸入聲明包含電話號碼,則要求用戶選擇並驗證其中一個電話號碼。 |
+| 字串| 是 | 使用者的唯一識別碼。 宣告名稱或 PartnerClaimType 必須設定為`UserId`。 此宣告不應包含個人識別資訊。|
+| 字串| 是 | 宣告類型清單。 每個宣告都包含一個電話號碼。 如果任何輸入宣告未包含電話號碼，系統會要求使用者註冊並驗證新的電話號碼。 已驗證的電話號碼會以輸出宣告的形式傳回。 如果其中一個輸入宣告包含電話號碼，系統會要求使用者進行驗證。 如果有多個輸入宣告包含電話號碼，系統會要求使用者選擇並確認其中一個電話號碼。 |
 
-下面的示例演示了使用多個電話號碼。 有關詳細資訊,請參閱[範例原則](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa)。
+下列範例示範如何使用多個電話號碼。 如需詳細資訊，請參閱[範例原則](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa)。
 
 ```XML
 <InputClaims>
@@ -74,14 +74,14 @@ InputClaims 元素必須包含以下聲明。 您還可以將索賠的名稱映�
 
 ## <a name="output-claims"></a>輸出宣告
 
-「輸出索賠」元素包含電話因子技術配置檔返回的聲明清單。
+OutputClaims 元素包含電話要素技術設定檔傳回的宣告清單。
 
 |  資料類型| 必要 | 描述 |
 |  -------- | ----------- |----------- |
-| boolean | 是 | 指示使用者是否已輸入新電話號碼。 宣告名稱或合作夥伴索賠類型必須設定為`newPhoneNumberEntered`|
-| 字串| 是 | 已驗證的電話號碼。 宣告名稱或合作夥伴索賠類型必須設定為`Verified.OfficePhone`。|
+| boolean | 是 | 指出使用者是否已輸入新的電話號碼。 宣告名稱或 PartnerClaimType 必須設定為`newPhoneNumberEntered`|
+| 字串| 是 | 已驗證的電話號碼。 宣告名稱或 PartnerClaimType 必須設定為`Verified.OfficePhone`。|
 
-OutputClaims 轉換元素可能包含用於修改輸出聲明或生成新聲明的輸出聲明轉換元素的集合。
+OutputClaimsTransformations 元素可能包含 OutputClaimsTransformation 元素的集合，這些專案是用來修改輸出宣告，或產生新的宣告。
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
@@ -93,14 +93,14 @@ OutputClaims 轉換元素可能包含用於修改輸出聲明或生成新聲明�
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ContentDefinitionReferenceId | 是 | 與此技術設定檔相關聯的[內容定義](contentdefinitions.md)識別碼。 |
-| 手動電話號碼輸入允許| 否 | 指定是否允許用戶手動輸入電話號碼。 可能的值:`true``false`或 (預設值)。|
-| 設定.認證模式 | 否 | 驗證電話號碼的方法。 可能的值: `sms` `phone``mixed`、 或 (預設值)。|
-| 設定.自動撥號| 否| 指定技術設定檔是自動撥號還是自動發送 SMS。 可能的值:`true``false`或 (預設值)。 自動撥號要求將`setting.authenticationMode`中繼資料`sms`設定為`phone`或 。 輸入聲明集合必須具有單個電話號碼。 |
+| ManualPhoneNumberEntryAllowed| 否 | 指定是否允許使用者手動輸入電話號碼。 可能的值`true`：、 `false`或（預設）。|
+| 設定. authenticationMode | 否 | 驗證電話號碼的方法。 可能的值`sms`： `phone`、或`mixed` （預設）。|
+| 設定。自動撥號| 否| 指定技術設定檔是否應該自動撥號或自動傳送 SMS。 可能的值`true`：、 `false`或（預設）。 自動撥號需要將`setting.authenticationMode`中繼資料設定為`sms`、或`phone`。 輸入宣告集合必須有單一電話號碼。 |
 
 ### <a name="ui-elements"></a>UI 元素
 
-電話因子認證頁面使用者介面元素可以[當地語系化](localization-string-ids.md#azure-mfa-error-messages)。
+可以[當地語系化](localization-string-ids.md#azure-mfa-error-messages)[電話要素驗證] 頁面使用者介面元素。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 使用 MFA 初學者包檢查[社交和本地帳戶](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccountsWithMfa)。
+- 使用 MFA 入門套件來檢查[社交和本機帳戶](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccountsWithMfa)。

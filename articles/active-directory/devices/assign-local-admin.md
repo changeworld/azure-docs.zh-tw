@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure AD 聯接的設備上管理本地管理員
+title: 如何在已加入 Azure AD 的裝置上管理本機系統管理員
 description: 了解如何將 Azure 角色指派給 Windows 裝置的本機系統管理員群組。
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dc1812d955590ec0c7372e1311c9d69f93b9957c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128888"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>如何管理已加入 Azure AD 的裝置上的本機系統管理員群組
@@ -48,7 +48,7 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 在 Azure 入口網站中，您可以在 [裝置]**** 頁面上管理裝置管理員角色。 若要開啟 [裝置]**** 頁面：
 
 1. 以全域管理員身分登入 [Azure 入口網站](https://portal.azure.com)。
-1. 搜尋並選取 [Azure Active Directory]**。
+1. 搜尋並選取 [Azure Active Directory]  。
 1. 在 [管理]**** 區段中，按一下 [裝置]****。
 1. 在 [裝置]**** 頁面上，按一下 [裝置設定]****。
 
@@ -59,10 +59,10 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 >[!NOTE]
 > 此選項需要 Azure AD Premium 租用戶。 
 
-裝置管理員會指派給所有加入 Azure AD 的裝置。 您無法將裝置管理員的範圍設定為一組特定的裝置。 更新裝置管理員角色不一定會對受影響的使用者產生直接的影響。 在使用者已登錄的設備上，當發生以下*兩*個操作時，將發生特權更新：
+裝置管理員會指派給所有加入 Azure AD 的裝置。 您無法將裝置管理員的範圍設定為一組特定的裝置。 更新裝置管理員角色不一定會對受影響的使用者產生直接的影響。 在使用者已登入的裝置上，會在下列*兩個*動作發生時進行許可權更新：
 
-- Azure AD 已發出具有相應許可權的新主刷新權杖 4 小時。 
-- 使用者退出並重新登錄，而不是鎖定/解鎖，以刷新其設定檔。
+- 已為 Azure AD 傳遞4小時，以適當的許可權發出新的主要重新整理權杖。 
+- 使用者登出並登入，而不是鎖定/解除鎖定，以重新整理其設定檔。
 
 ## <a name="manage-regular-users"></a>管理一般使用者
 
@@ -75,7 +75,7 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 
 除了使用 Azure AD Join 程序以外，您也可以手動提高一般使用者的權限，使其成為一個特定裝置的本機系統管理員。 若要執行此步驟，您必須已是本機系統管理員群組的成員。 
 
-從**Windows 10 1709**版本開始，可以從 **"設置 -> 帳戶 -> 其他使用者**執行此任務。 選取 [新增工作或學校使用者]****，並且在 [使用者帳戶]**** 下輸入使用者的 UPN，然後選取 [帳戶類型]**** 下的 [管理員]**  
+從**Windows 10 1709**版本開始，您可以從 [**設定-> 帳戶-> 其他使用者**] 執行這項工作。 選取 [新增工作或學校使用者]****，並且在 [使用者帳戶]**** 下輸入使用者的 UPN，然後選取 [帳戶類型]**** 下的 [管理員]**  
  
 此外，您也可以使用命令提示字元來新增使用者：
 
@@ -93,4 +93,4 @@ Azure AD 也會將 Azure AD 裝置管理員角色新增至本機系統管理員�
 ## <a name="next-steps"></a>後續步驟
 
 - 若要取得在 Azure 入口網站中管理裝置的概觀，請參閱[使用 Azure 入口網站來管理裝置](device-management-azure-portal.md)
-- 要瞭解有關基於設備的條件訪問的資訊，請參閱[配置基於 Azure 活動目錄的設備條件訪問策略](../conditional-access/require-managed-devices.md)。
+- 若要深入瞭解裝置型條件式存取，請參閱[設定 Azure Active Directory 裝置型條件式存取原則](../conditional-access/require-managed-devices.md)。

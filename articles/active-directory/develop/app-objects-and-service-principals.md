@@ -1,5 +1,5 @@
 ---
-title: 應用& Azure AD 中的服務主體 |蔚藍
+title: 應用程式 & Azure AD 中的服務主體 |Azure
 titleSuffix: Microsoft identity platform
 description: 了解 Azure Active Directory 中應用程式物件與服務主體物件之間的關聯性。
 author: rwike77
@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
 ms.openlocfilehash: a636ff15da09bcf1891618d65270376f26fd3239
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885594"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的應用程式和服務主體物件
@@ -47,7 +47,7 @@ ms.locfileid: "80885594"
 
 ### <a name="application-object"></a>應用程式物件
 
-Azure AD 應用程式是由其唯一一個應用程式物件所定義，該物件位於應用程式註冊所在的 Azure AD 租用戶，也稱為應用程式的「主要」租用戶。 Microsoft 圖形[應用程式實體][MS-Graph-App-Entity]定義應用程式物件屬性的架構。
+Azure AD 應用程式是由其唯一一個應用程式物件所定義，該物件位於應用程式註冊所在的 Azure AD 租用戶，也稱為應用程式的「主要」租用戶。 Microsoft Graph[應用程式實體][MS-Graph-App-Entity]會定義應用程式物件屬性的架構。
 
 ### <a name="service-principal-object"></a>服務主體物件
 
@@ -55,7 +55,7 @@ Azure AD 應用程式是由其唯一一個應用程式物件所定義，該物�
 
 安全性主體會定義 Azure AD 租用戶中使用者/應用程式的存取原則和權限。 此動作可啟用核心功能，例如登入期間的使用者/應用程式驗證，以及資源存取期間的授權。
 
-當應用程式擁有權限可存取租用戶中的資源時 (通過註冊時或[同意](developer-glossary.md#consent))，服務主體物件就會隨即建立。 Microsoft 圖形[服務主體實體][MS-Graph-Sp-Entity]定義服務主體物件屬性的架構。
+當應用程式擁有權限可存取租用戶中的資源時 (通過註冊時或[同意](developer-glossary.md#consent))，服務主體物件就會隨即建立。 Microsoft Graph [ServicePrincipal 實體][MS-Graph-Sp-Entity]會定義服務主體物件屬性的架構。
 
 ### <a name="application-and-service-principal-relationship"></a>應用程式和服務主體關聯性
 
@@ -74,11 +74,11 @@ Azure AD 應用程式是由其唯一一個應用程式物件所定義，該物�
 
 下圖說明應用程式的應用程式物件與對應的服務主體物件之間的關係，是以一個稱為「HR 應用程式」 **** 的範例多租用戶應用程式為背景。 此範例案例中有三個 Azure AD 租用戶︰
 
-- **Adatum** - 開發**HR 應用程式的**公司使用的租戶
-- **Contoso** - Contoso 組織使用的租戶,它是**HR 應用**的消費者
+- **Adatum** -開發**HR 應用程式**之公司所使用的租使用者
+- **Contoso** -contoso 組織所使用的租使用者，其為**HR 應用程式**的取用者
 - **Fabrikam** - Fabrikam 組織所使用的租用戶，其亦會取用 **HR 應用程式**
 
-![應用物件和服務主體物件之間的關係](./media/app-objects-and-service-principals/application-objects-relationship.svg)
+![應用程式物件和服務主體物件之間的關聯性](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 
 在此範例案例中：
 
@@ -90,9 +90,9 @@ Azure AD 應用程式是由其唯一一個應用程式物件所定義，該物�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 您可以使用 Microsoft[圖形資源管理員](https://developer.microsoft.com/graph/graph-explorer)來查詢應用程式和服務主體物件。
-- 您可以使用 Microsoft 圖形[API、Azure 門戶][AZURE-Portal]的應用程式清單編輯器或 Azure [AD PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)存取應用程式的應用程式物件,由其 OData[應用程式實體][MS-Graph-App-Entity]表示。
-- 您可以通過 Microsoft 圖形 API 或[Azure AD PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)存取應用程式的服務主體物件,由其 OData [Service 主體實體][MS-Graph-Sp-Entity]表示。
+- 您可以使用[Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)來查詢應用程式和服務主體物件。
+- 您可以使用 Microsoft Graph API、 [Azure 入口網站的][AZURE-Portal]應用程式資訊清單編輯器，或[Azure AD PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)（以其 OData[應用程式實體][MS-Graph-App-Entity]表示）來存取應用程式的應用程式物件。
+- 您可以透過 Microsoft Graph API 或[Azure AD PowerShell Cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)來存取應用程式的服務主體物件，如其 OData [ServicePrincipal 實體][MS-Graph-Sp-Entity]所表示。
 
 <!--Image references-->
 

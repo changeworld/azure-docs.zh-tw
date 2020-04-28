@@ -1,6 +1,6 @@
 ---
-title: 呼叫 Web API 的 Web API - 微軟身份平臺 |蔚藍
-description: 瞭解如何建構除 Web API 的 Web API。
+title: 呼叫 web Api 的 web API-Microsoft 身分識別平臺 |Azure
+description: 瞭解如何建立呼叫 web Api 的 Web API。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,23 +12,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6bbd24978891efd147b0c317c1746d13961ce5e9
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885084"
 ---
-# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>呼叫 Web API 的 Web API:呼叫 API
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>呼叫 web Api 的 Web API：呼叫 API
 
-獲得權杖後,可以調用受保護的 Web API。 從 Web API 的控制器執行此操作。
+有了權杖之後，您就可以呼叫受保護的 Web API。 您可以從 Web API 的控制器執行此動作。
 
-## <a name="controller-code"></a>控制器代碼
+## <a name="controller-code"></a>控制器程式碼
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-以下代碼繼續範例代碼,該代碼顯示在[呼叫 Web API 的 Web API 中:取得應用的權杖](scenario-web-api-call-api-acquire-token.md)。 在 API 控制器的操作中呼叫代碼。 它調用名為*tolist 的*下游 API。
+下列程式碼會繼續在呼叫 web Api 的 Web API 中顯示的範例[程式碼：取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)。 程式碼會在 API 控制器的動作中呼叫。 它會呼叫名為*todolist*的下游 API。
 
-獲取權杖後,將其用作無記名令牌來調用下游 API。
+取得權杖之後，請使用它做為持有人權杖來呼叫下游 API。
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -58,9 +58,9 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 
 # <a name="java"></a>[Java](#tab/java)
 
-以下代碼繼續範例代碼,該代碼顯示在[呼叫 Web API 的 Web API 中:取得應用的權杖](scenario-web-api-call-api-acquire-token.md)。 在 API 控制器的操作中呼叫代碼。 它調用下游 API MS 圖形。
+下列程式碼會繼續在呼叫 web Api 的 Web API 中顯示的範例[程式碼：取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)。 程式碼會在 API 控制器的動作中呼叫。 它會呼叫下游 API MS Graph。
 
-獲取權杖後,將其用作無記名令牌來調用下游 API。
+取得權杖之後，請使用它做為持有人權杖來呼叫下游 API。
 
 ```Java
 private String callMicrosoftGraphMeEndpoint(String accessToken){
@@ -81,11 +81,11 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-使用 MSAL Python 展示此流的範例尚不可用。
+尚未提供使用 MSAL Python 來示範此流程的範例。
 
 ---
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [呼叫 Web API 的 Web API:移轉到生產](scenario-web-api-call-api-production.md)
+> [呼叫 web Api 的 Web API：移至生產環境](scenario-web-api-call-api-production.md)

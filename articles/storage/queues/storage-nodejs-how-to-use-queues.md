@@ -1,5 +1,5 @@
 ---
-title: 使用 Node.js 中的 Azure 佇列存儲 - Azure 存儲
+title: 使用 node.js 的 Azure 佇列儲存體-Azure 儲存體
 description: 了解如何使用 Azure 佇列服務來建立和刪除佇列，以及插入、取得和刪除訊息。 範例以 Node.js 撰寫。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
 ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060925"
 ---
-# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>使用 Azure 佇列服務從 Node.js 創建和刪除佇列
+# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>使用 Azure 佇列服務從 node.js 建立和刪除佇列
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本指南示範如何使用 Microsoft Azure 佇列服務執行常見案例。 這些範例使用 Node.js API 撰寫。 所涵蓋的案例包括「插入」****、「查看」****、「取得」**** 和「刪除」**** 佇列訊息，以及「建立和刪除佇列」****。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
@@ -82,8 +82,8 @@ queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
 
 如果建立佇列，則 `result.created` 為 true。 如果佇列已存在，則 `result.created` 為 false。
 
-### <a name="filters"></a>篩選器
-可以將選用性的篩選操作套用到使用 **QueueService** 執行的操作。 篩選操作可以包括日誌記錄、自動重試等。篩選器是實現具有簽名的方法的物件：
+### <a name="filters"></a>篩選條件
+可以將選用性的篩選操作套用到使用 **QueueService** 執行的操作。 篩選作業可包括記錄、自動重試等。篩選器是使用簽章來執行方法的物件：
 
 ```javascript
 function handle (requestOptions, next)
@@ -327,7 +327,7 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ## <a name="next-steps"></a>後續步驟
 了解佇列儲存體的基礎概念之後，請參考下列連結以了解有關更複雜的儲存工作。
 
-* 訪問[Azure 存儲團隊博客][Azure Storage Team Blog]。
+* 流覽[Azure 儲存體小組的 Blog][Azure Storage Team Blog]。
 * 請造訪 GitHub 上的 [Azure Storage SDK for Node][Azure Storage SDK for Node] 儲存機制。
 
 

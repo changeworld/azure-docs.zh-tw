@@ -1,5 +1,5 @@
 ---
-title: 容毀排除 Azure MFA NPS 延伸 - Azure 活動目錄
+title: 針對 Azure MFA NPS 擴充功能進行疑難排解-Azure Active Directory
 description: 協助您解決 Azure Multi-Factor Authentication NPS 擴充功能的問題
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653720"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解決 Azure Multi-Factor Authentication NPS 擴充功能的錯誤訊息
 
-如果您使用 Azure Multi-Factor Authentication NPS 擴充功能時發生錯誤，請使用本文以快速取得解決方案。 在安裝 NPS 擴展的伺服器上的 **「自訂檢視** > **伺服器角色** > **網路策略」和「存取服務**」下的事件檢視器中可以找到 NPS 擴展日誌。
+如果您使用 Azure Multi-Factor Authentication NPS 擴充功能時發生錯誤，請使用本文以快速取得解決方案。 在安裝 nps 擴充功能的伺服器上，您可以在 [**自訂視圖** > ] [**伺服器角色** > ] [**網路原則與存取服務**] 底下的事件檢視器中找到 nps 延伸模組記錄。
 
 ## <a name="troubleshooting-steps-for-common-errors"></a>為常見錯誤而設的疑難排解步驟
 
@@ -31,10 +31,10 @@ ms.locfileid: "80653720"
 | **ESTS_TOKEN_ERROR** | 請遵循[針對 Azure MFA NPS 擴充功能進行移難排解](howto-mfa-nps-extension.md#troubleshooting)中的指示來調查用戶端憑證和 ADAL 權杖問題。 |
 | **HTTPS_COMMUNICATION_ERROR** | NPS 伺服器無法接收來自 Azure MFA 的的回應。 請確定您的防火牆已開放讓 https://adnotifications.windowsazure.com 可雙向傳輸流量 |
 | **HTTP_CONNECT_ERROR** | 在執行 NPS 延伸模組的伺服器上，確認您可以連線到 `https://adnotifications.windowsazure.com` 和 `https://login.microsoftonline.com/`。 如果無法載入這些站台，請針對該伺服器上的連線進行移難排解。 |
-| **Azure MFA 的 NPS 擴充功能：** <br> Azure MFA 的 NPS 擴充功能只會針對狀態為 AccessAccept 的 Radius 要求執行次要驗證。 收到要求使用者名稱且回應狀態為 AccessReject 的要求時，忽略要求。 | 此錯誤通常會反應 AD 中的驗證失敗，或 NPS 伺服器無法收到 Azure AD 的回應。 請確定您的防火牆已開放讓 `https://adnotifications.windowsazure.com` 和 `https://login.microsoftonline.com` 使用連接埠 80 和 443 雙向傳輸流量。 也請您務必要檢查 [網路存取權限] 的 [撥入] 索引標籤中，設定是否設為 [透過 NPS 網路原則控制存取]。 如果未為使用者分配許可證,也會觸發此錯誤。 |
+| **Azure MFA 的 NPS 擴充功能：** <br> Azure MFA 的 NPS 擴充功能只會針對狀態為 AccessAccept 的 Radius 要求執行次要驗證。 收到要求使用者名稱且回應狀態為 AccessReject 的要求時，忽略要求。 | 此錯誤通常會反應 AD 中的驗證失敗，或 NPS 伺服器無法收到 Azure AD 的回應。 請確定您的防火牆已開放讓 `https://adnotifications.windowsazure.com` 和 `https://login.microsoftonline.com` 使用連接埠 80 和 443 雙向傳輸流量。 也請您務必要檢查 [網路存取權限] 的 [撥入] 索引標籤中，設定是否設為 [透過 NPS 網路原則控制存取]。 如果使用者未獲指派授權，此錯誤也會觸發。 |
 | **REGISTRY_CONFIG_ERROR** | 應用程式登錄中遺失機碼，可能是因為 [PowerShell 指令碼](howto-mfa-nps-extension.md#install-the-nps-extension)並未在安裝後執行。 錯誤訊息應包含遺失的機碼。 請確定您在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa 下有該機碼。 |
 | **REQUEST_FORMAT_ERROR** <br> RADIUS 要求中遺失必要的 RADIUS 使用者名稱\識別碼。請確定 NPS 會收到 RADIUS 要求 | 此錯誤通常反映的是安裝問題。 NPS 擴充功能必須安裝在可接收 RADIUS 要求的 NPS 伺服器。 NPS 伺服器若是作為 RDG 和 RRAS 等服務的相依項目安裝，則不會收到 RADIUS 要求。 NPS 擴充功能若透過這類安裝方式進行安裝就會無法運作，並會因為無法讀取來自驗證要求的詳細資料而發生錯誤。 |
-| **REQUEST_MISSING_CODE** | 請確定 NPS 和 NAS 伺服器之間的密碼加密協定支援您使用的次要驗證方法。 **PAP** 支援雲端中 Azure MFA 的所有驗證方法：通話、單向簡訊、行動裝置應用程式通知，和行動裝置應用程式驗證碼。 **CHAPV2**和**EAP**支援電話呼叫和行動應用程式通知。 |
+| **REQUEST_MISSING_CODE** | 請確定 NPS 和 NAS 伺服器之間的密碼加密協定支援您使用的次要驗證方法。 **PAP** 支援雲端中 Azure MFA 的所有驗證方法：通話、單向簡訊、行動裝置應用程式通知，和行動裝置應用程式驗證碼。 **CHAPV2**和**EAP**支援通話和行動裝置代理程式更新。 |
 | **USERNAME_CANONICALIZATION_ERROR** | 請確定使用者已存在於內部部署的 Active Directory 執行個體中，而且 NPS 服務有權存取目錄。 如果您使用跨樹系信任，請[連絡支援人員](#contact-microsoft-support)以取得進一步協助。 |
 
 ### <a name="alternate-login-id-errors"></a>替代登入識別碼錯誤
@@ -49,7 +49,7 @@ ms.locfileid: "80653720"
 
 | 錯誤碼 | 錯誤訊息 | 疑難排解步驟 |
 | ---------- | ------------- | --------------------- |
-| **存取被拒** | 呼叫者租用戶並沒有執行使用者驗證的存取權限 | 請檢查租用戶網域和使用者主要名稱 (UPN) 的網域是否相同。 例如，請確定 user@contoso.com 正在嘗試驗證的是 Contoso 租用戶。 UPN 代表 Azure 中有效的租用戶使用者。 |
+| **AccessDenied** | 呼叫者租用戶並沒有執行使用者驗證的存取權限 | 請檢查租用戶網域和使用者主要名稱 (UPN) 的網域是否相同。 例如，請確定 user@contoso.com 正在嘗試驗證的是 Contoso 租用戶。 UPN 代表 Azure 中有效的租用戶使用者。 |
 | **AuthenticationMethodNotConfigured** | 使用者未設定指定的驗證方法 | 請讓使用者根據[管理您的雙步驟驗證設定](../user-help/multi-factor-authentication-end-user-manage-settings.md)中的指示，來新增或驗證他們的驗證方法。 |
 | **AuthenticationMethodNotSupported** | 不支援指定的驗證方法。 | 請收集所有包含此錯誤的記錄，並[連絡支援人員](#contact-microsoft-support)。 當您連絡支援人員時，請提供使用者名稱和觸發錯誤的次要驗證方法。 |
 | **BecAccessDenied** | MSODS Bec 呼叫傳回拒絕存取，可能是因為使用者名稱未在租用戶中定義 | 使用者存在於 Active Directory 內部部署中，但未透過 AD Connect 同步至 Azure AD。 或者，租用戶遺失使用者。 請將使用者新增至 Azure AD，並讓使用者根據[管理您的雙步驟驗證設定](../user-help/multi-factor-authentication-end-user-manage-settings.md)中的指示，來新增他們的驗證方法。 |
@@ -87,7 +87,7 @@ ms.locfileid: "80653720"
 | **InvalidParameter** | 無法解析任何來自要求或 Msods 的 ProofData。 ProofData 不明 |
 | **InternalError** |  |
 | **OathCodePinIncorrect** |  |
-| **版本不支援** |  |
+| **VersionNotSupported** |  |
 | **MFAPinNotSetup** |  |
 
 ## <a name="next-steps"></a>後續步驟
@@ -96,9 +96,9 @@ ms.locfileid: "80653720"
 
 如果您的使用者[進行雙步驟驗證時發生問題](../user-help/multi-factor-authentication-end-user-troubleshoot.md)，請協助助他們自行診斷問題。
 
-### <a name="health-check-script"></a>執行狀況檢查文稿
+### <a name="health-check-script"></a>健全狀況檢查腳本
 
-在排除 NPS 擴展故障時[,Azure MFA NPS 擴展運行狀況檢查腳本](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)執行基本運行狀況檢查。 運行文稿並選擇選項 3。
+針對 NPS 擴充功能進行疑難排解時， [AZURE MFA NPS 擴充功能健全狀況檢查腳本](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)會執行基本的健全狀況檢查。 執行腳本，然後選擇 [選項 3]。
 
 ### <a name="contact-microsoft-support"></a>連絡 Microsoft 支援
 

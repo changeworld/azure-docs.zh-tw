@@ -1,6 +1,6 @@
 ---
-title: 解決條件訪問登錄問題的疑難排解 - Azure 活動目錄
-description: 本文介紹了條件訪問策略導致意外結果時應該怎麼做
+title: 針對使用條件式存取的登入問題進行疑難排解-Azure Active Directory
+description: 本文說明當條件式存取原則導致非預期的結果時該怎麼辦
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,70 +12,70 @@ manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdf1daca79f3ed20d9b7a89af20d74ff5f3148b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337437"
 ---
-# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>解決條件訪問登錄問題的疑難排解
+# <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>針對使用條件式存取的登入問題進行疑難排解
 
-本文中的資訊可用於使用錯誤訊息和 Azure AD 登錄日誌解決與條件訪問相關的意外登錄結果。
+本文中的資訊可用來針對使用錯誤訊息和 Azure AD 登入記錄檔的條件式存取相關的非預期登入結果進行疑難排解。
 
-## <a name="conditional-access-sign-in-interrupt"></a>條件訪問登錄中斷
+## <a name="conditional-access-sign-in-interrupt"></a>條件式存取登入中斷
 
-第一種方法是查看顯示的錯誤訊息。 對於使用 Web 瀏覽器時登錄的問題，錯誤頁本身包含詳細資訊。 僅此資訊可以描述問題所在，並可能建議解決問題。
+第一種方式是查看出現的錯誤訊息。 針對使用網頁瀏覽器登入時的問題，錯誤頁面本身會有詳細資訊。 這種資訊本身可能會描述問題所在，而且可能會建議解決方案。
 
-![需要登錄錯誤 - 符合設備的要求](./media/troubleshoot-conditional-access/image1.png)
+![需要登入符合錯誤的裝置](./media/troubleshoot-conditional-access/image1.png)
 
-在上述錯誤中，消息指出，應用程式只能從符合公司的行動裝置管理原則的設備或用戶端應用程式訪問。 在這種情況下，應用程式和設備不符合該策略。
+在上述錯誤中，訊息指出應用程式只能從符合公司的行動裝置管理原則的裝置或用戶端應用程式存取。 在此情況下，應用程式和裝置不會符合該原則。
 
-## <a name="azure-ad-sign-in-events"></a>Azure AD 登錄事件
+## <a name="azure-ad-sign-in-events"></a>Azure AD 登入事件
 
-獲取有關登錄中斷的詳細資訊的第二種方法是查看 Azure AD 登錄事件，以查看應用了哪些條件訪問策略或策略以及原因。
+若要取得登入中斷的詳細資訊，第二種方法是查看 Azure AD 登入事件，以查看已套用的條件式存取原則或原則，以及原因。
 
-按一下初始錯誤頁中的 **"更多詳細資訊**"，可以找到有關此問題的詳細資訊。 按一下 **"更多詳細資訊**"將顯示在搜索 Azure AD 登錄事件時有關使用者看到的特定故障事件或打開 Microsoft 支援事件時有用的故障排除資訊。
+在 [初始錯誤] 頁面中按一下 [**更多詳細資料**]，即可找到有關此問題的詳細資訊。 按一下 [**更多詳細資料**] 將會顯示疑難排解資訊，當您針對使用者看到的特定失敗事件或向 Microsoft 提出支援事件時，搜尋 Azure AD 登入事件時，會很有説明。
 
-![來自條件訪問的更多詳細資訊中斷了 Web 瀏覽器登錄。](./media/troubleshoot-conditional-access/image2.png)
+![來自條件式存取的更多詳細資料會中斷網頁瀏覽器登入。](./media/troubleshoot-conditional-access/image2.png)
 
-瞭解應用了哪些條件訪問策略或策略，以及為什麼執行以下操作。
+找出已套用的條件式存取原則或原則，以及為何要執行下列動作。
 
-1. 以全域管理員、安全管理員或全域讀取器身份登錄到**Azure 門戶**。
-1. 流覽到**Azure 活動目錄** > **登錄**。
-1. 查找要查看的登錄事件。 添加或刪除篩選器和列以篩選出不必要的資訊。
-   1. 添加篩選器以縮小範圍：
-      1. 當您要調查特定事件時 **，關聯 ID。**
-      1. **條件訪問**以查看策略失敗和成功。 將篩選器的範圍範圍範圍，以僅顯示限制結果的失敗。
-      1. **使用者名**以查看與特定使用者相關的資訊。
-      1. **日期**範圍為相關時間範圍。
+1. 以全域管理員、安全性系統管理員或全域讀取者身分登入**Azure 入口網站**。
+1. 流覽至**Azure Active Directory** > 登**入**。
+1. 尋找要供登入審查的事件。 新增或移除篩選器和資料行，以篩選掉不必要的資訊。
+   1. 新增篩選器以縮小範圍：
+      1. 當您有要調查的特定事件時的相互**關聯識別碼**。
+      1. **條件式存取**以查看原則失敗和成功。 將您的篩選範圍限定為只顯示失敗以限制結果。
+      1. [使用者**名稱**]，以查看與特定使用者相關的資訊。
+      1. 限時的**日期**範圍為問題的時間範圍。
 
-   ![在登錄日誌中選擇條件訪問篩選器](./media/troubleshoot-conditional-access/image3.png)
+   ![在登入記錄中選取條件式存取篩選](./media/troubleshoot-conditional-access/image3.png)
 
-1. 找到與使用者登錄失敗對應的登錄事件後，請選擇 **"條件訪問**"選項卡。"條件訪問"選項卡將顯示導致登錄中斷的特定策略或策略。
-   1. **"故障排除和支援**"選項卡中的資訊可能清楚地說明登錄失敗的原因，例如不符合合規性要求的設備。
-   1. 要進一步調查，請點擊**策略名稱**，深入瞭解策略的配置。 按一下 **"策略名稱"** 將顯示所選策略的"策略配置"使用者介面，以便進行審閱和編輯。
-   1. 用於條件訪問策略評估的**用戶端使用者****和設備詳細資訊**也可在登錄事件的 **"基本資訊**、**位置**、**設備資訊**、**身份驗證詳細資訊**"和 **"其他詳細資訊**"選項卡中提供。
+1. 一旦找到對應到使用者登入失敗的登入事件，請選取 [**條件式存取**] 索引標籤。[條件式存取] 索引標籤會顯示導致登入中斷的特定原則或原則。
+   1. [**疑難排解和支援**] 索引標籤中的資訊，可能會清楚指出登入失敗的原因，例如不符合合規性需求的裝置。
+   1. 若要進一步調查，請按一下**原則名稱**以向下切入原則的設定。 按一下**原則名稱**會顯示所選原則的原則設定使用者介面，以供審查和編輯。
+   1. 條件式存取原則評估所用的**用戶端使用者**和**裝置詳細資料**，也可以在 [**基本資訊**]、[**位置**]、[**裝置資訊**]、[**驗證詳細資料**] 和登入事件的**其他詳細資料**索引標籤中取得。
 
-   ![登錄事件條件訪問選項卡](./media/troubleshoot-conditional-access/image5.png)
+   ![[登入事件條件式存取] 索引標籤](./media/troubleshoot-conditional-access/image5.png)
 
-如果事件中的資訊不足以瞭解登錄結果或調整策略以獲得預期結果，則可能會打開支援事件。 導航到該登錄事件的**疑難排解和支援**選項卡，然後選擇 **"創建新的支援請求**"。
+如果事件中的資訊不足以瞭解登入結果，或調整原則以取得所需的結果，則可能會開啟支援事件。 流覽至該登入事件的 [**疑難排解及支援**] 索引標籤，然後選取 [**建立新的支援要求**]。
 
-![登錄事件的故障排除和支援選項卡](./media/troubleshoot-conditional-access/image6.png)
+![登入事件的 [疑難排解和支援] 索引標籤](./media/troubleshoot-conditional-access/image6.png)
 
-提交事件時，請在事件提交詳細資訊中提供請求 ID 以及登錄事件的時間和日期。 此資訊將允許 Microsoft 支援找到您關注的事件。
+提交事件時，請在事件提交詳細資料中提供登入事件的要求識別碼和時間和日期。 此資訊可讓 Microsoft 支援服務尋找您所關心的事件。
 
-### <a name="conditional-access-error-codes"></a>條件訪問錯誤代碼
+### <a name="conditional-access-error-codes"></a>條件式存取錯誤代碼
 
-| 登錄錯誤代碼 | 錯誤字串 |
+| 登入錯誤碼 | 錯誤字串 |
 | --- | --- |
-| 53000 | 設備不符合要求 |
-| 53001 | 設備未進入 |
-| 53002 | 應用程式使用isnotan批准應用程式 |
-| 53003 | 阻止條件訪問 |
-| 53004 | 校對 |
+| 53000 | DeviceNotCompliant |
+| 53001 | DeviceNotDomainJoined |
+| 53002 | ApplicationUsedIsNotAnApprovedApp |
+| 53003 | BlockedByConditionalAccess |
+| 53004 | ProofUpBlockedDueToRisk |
 
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure Active Directory 入口網站中的登入活動報告](../reports-monitoring/concept-sign-ins.md)
-- [使用"如果"工具對條件訪問進行故障排除](troubleshoot-conditional-access-what-if.md)
-- [Azure 活動目錄中的條件訪問](best-practices.md)最佳做法
+- [使用 What If 工具進行條件式存取的疑難排解](troubleshoot-conditional-access-what-if.md)
+- [Azure Active Directory 中的條件式存取](best-practices.md)最佳做法

@@ -1,5 +1,5 @@
 ---
-title: 將 Azure MFA 伺服器與 AD FS 2.0 - Azure 活動目錄一起使用
+title: 使用 Azure MFA Server 搭配 AD FS 2.0-Azure Active Directory
 description: 這是說明如何開始使用 Azure MFA 和 AD FS 2.0 的 Azure Multi-Factor Authentication 頁面。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c79a42bbd60d7a1857649cffc97ed7f0103fa16
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653506"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>設定 Azure Multi-Factor Authentication Server 以與 AD FS 2.0 搭配運作
@@ -25,7 +25,7 @@ ms.locfileid: "80653506"
 這份文件將說明如何搭配 AD FS 2.0 使用 Azure Multi-Factor Authentication Server。 如需 AD FS 的相關資訊，請參閱[搭配 Windows Server 2012 R2 AD FS 使用 Azure Multi-Factor Authentication Server 保護雲端和內部部署資源](howto-mfaserver-adfs-2012.md)。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起,Microsoft 將不再為新部署提供 MFA 伺服器。 希望用戶進行多重身份驗證的新客戶應使用基於雲的 Azure 多重身份驗證。 在 7 月 1 日之前啟動 MFA 伺服器的現有客戶將能夠像往常一樣下載最新版本、將來的更新並生成啟動認證。
+> 從2019年7月1日起，Microsoft 將不再為新的部署提供 MFA 伺服器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟動 MFA Server 的現有客戶將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
 
 ## <a name="secure-ad-fs-20-with-a-proxy"></a>使用 Proxy 保護 AD FS 2.0
 
@@ -33,33 +33,33 @@ ms.locfileid: "80653506"
 
 ### <a name="configure-iis-authentication"></a>設定 IIS 驗證
 
-1. 在 Azure 多重身份驗證伺服器中,按一下左側功能表中的**IIS 身份驗證**圖示。
+1. 在 Azure 多因素驗證服務器中，按一下左側功能表中的 [ **IIS 驗證**] 圖示。
 2. 按一下 [表單架構]**** 索引標籤。
-3. 按一下 **[新增]**。
+3. 按一下 **[新增]** 。
 
-   ![MFA 伺服器 IIS 認證視窗](./media/howto-mfaserver-adfs-2/setup1.png)
+   ![MFA Server IIS 驗證視窗](./media/howto-mfaserver-adfs-2/setup1.png)
 
-4. 要自動檢測使用者名、密碼和域變數,請在「自動設定基於表單的網站」`https://sso.contoso.com/adfs/ls`對話框中輸入登入網址(如 ),然後按一下「**確定**」。
+4. 若要自動偵測使用者名稱、密碼和網域變數，請在 [自動設定`https://sso.contoso.com/adfs/ls`表單架構網站] 對話方塊中輸入登入 URL （例如），然後按一下 **[確定]**。
 5. 如果所有使用者都已經或將要匯入到「伺服器」，且必須接受雙步驟驗證，請核取 [需要進行 Azure Multi-Factor Authentication 使用者比對]**** 方塊。 如果有大量使用者尚未匯入伺服器及/或將免除雙步驟驗證，請勿核取此方塊。
 6. 如果無法自動偵測頁面變數，請按一下 [自動設定表單架構網站] 對話方塊中的 [手動指定...]**** 按鈕。
-7. 在"添加基於表單的網站"對話框中,在"提交 URL"欄位中輸入 AD FS`https://sso.contoso.com/adfs/ls`登錄頁的 URL(如 ),然後輸入應用程式名稱(可選)。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
+7. 在 [新增表單架構網站] 對話方塊中，于 [提交 URL] 欄位中輸入 AD FS 登入頁面的 URL `https://sso.contoso.com/adfs/ls`（例如），然後輸入應用程式名稱（選擇性）。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
 8. 將要求格式設定為 **POST 或 GET**。
 9. 輸入使用者名稱變數 (ctl00$ContentPlaceHolder1$UsernameTextBox) 和密碼變數 (ctl00$ContentPlaceHolder1$PasswordTextBox)。 如果表單架構登入頁面顯示網域文字方塊，請輸入網域變數。 若要尋找登入頁面內的輸入方塊名稱，請移至網頁瀏覽器中的登入頁面，在頁面上按一下滑鼠右鍵，並選取 [檢視來源]****。
 10. 如果所有使用者都已經或將要匯入到「伺服器」，且必須接受雙步驟驗證，請核取 [需要進行 Azure Multi-Factor Authentication 使用者比對]**** 方塊。 如果有大量使用者尚未匯入伺服器及/或將免除雙步驟驗證，請勿核取此方塊。
 
-    ![將基於表單的網站加入 MFA 伺服器](./media/howto-mfaserver-adfs-2/manual.png)
+    ![將表單架構網站新增至 MFA Server](./media/howto-mfaserver-adfs-2/manual.png)
 
-11. 如需其他進階搜尋選項，請按一下 **[進階]** 以檢閱進階設定。 您可以進行的設定包括︰
+11. 按一下 [ **Advanced ...** ] 以檢閱進階設定。 您可以進行的設定包括︰
 
     - 選取自訂拒絕頁面檔案
     - 使用 Cookie 快取網站的成功驗證
     - 選取如何驗證主要認證
 
-12. 因為 AD FS Proxy 伺服器不可能加入網域，您可以使用 LDAP 連接到您的網域控制站，以便使用者匯入和預先驗證。 在「以表單的網站進階」 對話框中,按下 **「主身份驗證」** 選項卡,並為預身份驗證類型選擇**LDAP 繫結 。**
+12. 因為 AD FS Proxy 伺服器不可能加入網域，您可以使用 LDAP 連接到您的網域控制站，以便使用者匯入和預先驗證。 在 [Advanced Form 架構網站] 對話方塊中，按一下 [**主要驗證**] 索引標籤，並選取 [ **LDAP**系結] 作為預先驗證的驗證類型。
 13. 完成時，按一下 [確定]**** 以返回 [新增表單架構網站] 對話方塊。
 14. 按一下 [確定]**** 關閉對話方塊。
 15. 偵測到或已輸入 URL 和頁面變數後，網站資料就會顯示在表單架構面板中。
-16. 按下**本機模組**選項卡並選擇伺服器、AD FS 代理運行下的網站(如"默認網站"),或 AD FS 代理應用程式(如"adfs"下的"ls"),以在所需級別啟用 IIS 外掛程式。
+16. 按一下 [**原生模組**] 索引標籤，然後選取伺服器、AD FS proxy 執行所在的網站（例如 [預設的網站]），或 AD FS proxy 應用程式（例如 "adfs" 下的 "ls"），以在所需的層級啟用 IIS 外掛程式。
 17. 按一下畫面頂端的 [啟用 IIS 驗證]**** 方塊。
 
 現已啟用 IIS 驗證。
@@ -71,13 +71,13 @@ ms.locfileid: "80653506"
 1. 按一下 [目錄整合]**** 圖示。
 2. 在 [設定] 索引標籤上，選取 [使用特定 LDAP 設定]**** 選項按鈕。
 
-   ![為特定 LDAP 設定設定 LDAP 設定](./media/howto-mfaserver-adfs-2/ldap1.png)
+   ![設定特定 LDAP 設定的 LDAP 設定](./media/howto-mfaserver-adfs-2/ldap1.png)
 
 3. 按一下 **[編輯]**。
 4. 在 [編輯 LDAP 設定] 對話方塊的欄位中，填入連接到 AD 網域控制站所需的資訊。 欄位說明包含在 Azure Multi-Factor Authentication Server 說明檔中。
 5. 按一下 [測試]**** 按鈕來測試 LDAP 連接。
 
-   ![在 MFA 伺服器測試 LDAP 設定](./media/howto-mfaserver-adfs-2/ldap2.png)
+   ![在 MFA Server 中測試 LDAP 設定](./media/howto-mfaserver-adfs-2/ldap2.png)
 
 6. 如果 LDAP 連接測試成功，請按一下 [確定]****。
 
@@ -85,12 +85,12 @@ ms.locfileid: "80653506"
 
 1. 接著，按一下 [公司設定]**** 圖示，然後選取 [使用者名稱解析]**** 索引標籤。
 2. 選取 [使用 LDAP 唯一識別碼屬性來比對使用者名稱]**** 選項按鈕。
-3. 如果使用者以"域\使用者名"格式輸入其使用者名,則伺服器在創建 LDAP 查詢時需要能夠將域從使用者名上剝離。 這個動作可透過登錄設定完成。
-4. 開啟登錄編輯程式並移至 64 位元伺服器上的 HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor。 如果在 32 位伺服器上,請將「Wow6432Node」從路徑中取出。 創建稱為"UsernameCxz_stripPrefixDomain"的 DWORD 註冊表項並將值設置為 1。 Azure Multi-Factor Authentication 現已保護 AD FS Proxy。
+3. 如果使用者以「網域 \ 使用者名稱」格式輸入其使用者名稱，則在建立 LDAP 查詢時，伺服器必須能夠將網域從使用者名稱中去除。 這個動作可透過登錄設定完成。
+4. 開啟登錄編輯程式並移至 64 位元伺服器上的 HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor。 如果在32位伺服器上，請將 "Wow6432Node" 從路徑中取出。 建立名為 "UsernameCxz_stripPrefixDomain" 的 DWORD 登錄機碼，並將值設定為1。 Azure Multi-Factor Authentication 現已保護 AD FS Proxy。
 
-確定已將使用者從 Active Directory 匯入伺服器中。 如果要允許內部 IP 位址,請參閱[可信 IP 部分](#trusted-ips),以便在從這些位置登錄網站時不需要兩步驗證。
+確定已將使用者從 Active Directory 匯入伺服器中。 如果您想要允許內部 IP 位址，以便在從這些位置登入網站時不需要進行雙步驟驗證，請參閱[信任的 ip 一節](#trusted-ips)。
 
-![註冊表編輯器用於設定公司設定](./media/howto-mfaserver-adfs-2/reg.png)
+![用於設定公司設定的登錄編輯程式](./media/howto-mfaserver-adfs-2/reg.png)
 
 ## <a name="ad-fs-20-direct-without-a-proxy"></a>沒有 Proxy 的 AD FS 2.0 Direct
 
@@ -98,8 +98,8 @@ ms.locfileid: "80653506"
 
 1. 在 Azure Multi-Factor Authentication Server 內，按一下左功能表中的 [IIS 驗證]**** 圖示。
 2. 按一下 [HTTP]**** 索引標籤。
-3. 按一下 **[新增]**。
-4. 在「新增基本 URL」對話框中,在「基本 URL」欄位中輸入`https://sso.domain.com/adfs/ls/auth/integrated`AD FS 網站的 URL,其中執行 HTTP 身份驗證(如 ) 然後，輸入應用程式名稱 (選擇性)。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
+3. 按一下 **[新增]** 。
+4. 在 [新增基底 URL] 對話方塊中，于 [基底 URL] 欄位中輸入執行 HTTP 驗證`https://sso.domain.com/adfs/ls/auth/integrated`的 AD FS 網站 URL （例如）。 然後，輸入應用程式名稱 (選擇性)。 應用程式名稱會出現在 Azure Multi-Factor Authentication 報表中，而且可能顯示在簡訊或行動應用程式驗證訊息內。
 5. 如有需要，請調整 [閒置逾時] 和 [最大工作階段] 時間。
 6. 如果所有使用者都已經或將要匯入到「伺服器」，且必須接受雙步驟驗證，請核取 [需要進行 Azure Multi-Factor Authentication 使用者比對]**** 方塊。 如果有大量使用者尚未匯入伺服器及/或將免除雙步驟驗證，請勿核取此方塊。
 7. 如有需要，請核取 Cookie 快取方塊。
@@ -107,12 +107,12 @@ ms.locfileid: "80653506"
    ![沒有 Proxy 的 AD FS 2.0 Direct](./media/howto-mfaserver-adfs-2/noproxy.png)
 
 8. 按一下 [確定]  。
-9. 按下**本機模組**選項卡並選擇伺服器、網站(如"預設網站")或 AD FS 應用程式(如"adfs"下的"ls"),以在所需級別啟用 IIS 外掛程式。
+9. 按一下 [**原生模組**] 索引標籤，然後選取伺服器、網站（例如 [預設的網站]）或 AD FS 應用程式（例如 "adfs" 下的 "ls"），以在所需的層級啟用 IIS 外掛程式。
 10. 按一下畫面頂端的 [啟用 IIS 驗證]**** 方塊。
 
 Azure Multi-Factor Authentication 現已保護 AD FS。
 
-確定已將使用者從 Active Directory 匯入伺服器中。 如果要允許內部 IP 位址,請參閱可信 IP 部分,以便在從這些位置登錄網站時不需要兩步驗證。
+確定已將使用者從 Active Directory 匯入伺服器中。 如果您想要允許內部 IP 位址，以便在從這些位置登入網站時不需要進行雙步驟驗證，請參閱信任的 Ip 一節。
 
 ## <a name="trusted-ips"></a>信任的 IP
 
@@ -121,8 +121,8 @@ Azure Multi-Factor Authentication 現已保護 AD FS。
 ### <a name="to-configure-trusted-ips"></a>設定信任的 IP
 
 1. 在 [IIS 驗證] 區段中，按一下 [信任的 IP]**** 索引標籤。
-2. 按下 **"添加..."** 按鈕。
+2. 按一下 [**新增 ...** ] 按鈕。
 3. 當 [新增信任的 IP] 對話方塊出現時，請選取 [單一 IP]****、[IP 範圍]**** 或 [子網路]**** 選項按鈕的其中一個。
 4. 輸入應允許的 IP 位址、IP 位址範圍或子網。 如果輸入子網路，請選取適當的網路遮罩，然後按一下 [確定]**** 按鈕。
 
-![將受信任的 IP 設定為 MFA 伺服器](./media/howto-mfaserver-adfs-2/trusted.png)
+![設定信任的 Ip 至 MFA Server](./media/howto-mfaserver-adfs-2/trusted.png)

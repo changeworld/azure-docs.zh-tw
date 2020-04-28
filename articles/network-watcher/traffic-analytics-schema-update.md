@@ -1,6 +1,6 @@
 ---
-title: Azure 流量分析架構更新 - 2020 年 3 月 |微軟文件
-description: 在流量分析架構中使用新欄位的範例查詢。
+title: Azure 流量分析架構更新-2020 年3月 |Microsoft Docs
+description: 流量分析架構中新欄位的範例查詢。
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -14,23 +14,23 @@ ms.workload: infrastructure-services
 ms.date: 03/06/2020
 ms.author: vinigam
 ms.openlocfilehash: 4fe981576e3f6e58b0886d9c0d2eb2915d8b7720
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80396615"
 ---
-# <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>在流量分析架構(2019 年 8 月架構更新)中使用新欄位的範例查詢
+# <a name="sample-queries-with-new-fields-in-the-traffic-analytics-schema-august-2019-schema-update"></a>流量分析架構中新欄位的範例查詢（2019年8月架構更新）
 
-[流量分析紀錄架構](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema)包括以下新欄位 **:SrcPublicIPs_s、DestPublicIPs_s、NSGRule_s** ** **。 **DestPublicIPs_s** 新欄位提供有關源 IP 和目標 IP 的資訊,並簡化查詢。
+使用[分析記錄架構](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-schema)包含下列新欄位： **SrcPublicIPs_s**、 **DestPublicIPs_s** **NSGRule_s**。 新欄位提供來源和目的地 Ip 的相關資訊，並可簡化查詢。
 
-在接下來的幾個月里,以下老油田將被棄用:VMIP_s、Subscription_g、Region_s、NSGRules_s、Subnet_s、VM_s、NIC_s、PublicIPs_s、FlowCount_d。 **NIC_s** **VMIP_s** **Subscription_g** **Region_s** **NSGRules_s** **Subnet_s** **VM_s** **PublicIPs_s** **FlowCount_d**
+在接下來的幾個月中，下列較舊的欄位將會被取代： **VMIP_s**、 **Subscription_g**、 **Region_s**、 **NSGRules_s**、 **Subnet_s**、 **VM_s**、 **NIC_s**、 **PublicIPs_s**、 **FlowCount_d**。
 
-以下三個示例演示如何用新欄位替換舊欄位。
+下列三個範例示範如何以新的欄位取代舊的欄位。
 
-## <a name="example-1-vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-and-publicips_s-fields"></a>範例 1:VMIP_s、Subscription_g、Region_s、Subnet_s、VM_s、NIC_s和PublicIPs_s欄位
+## <a name="example-1-vmip_s-subscription_g-region_s-subnet_s-vm_s-nic_s-and-publicips_s-fields"></a>範例1： VMIP_s、Subscription_g、Region_s、Subnet_s、VM_s、NIC_s 和 PublicIPs_s 欄位
 
-我們不必從 Azure 公共和外部公共流的**FlowDirection_s**欄位中推斷源和目標案例。 對於網路虛擬設備,使用**FlowDirection_s**欄位也不合適。
+我們不需要從 AzurePublic 和 ExternalPublic 流程的 [ **FlowDirection_s** ] 欄位中推斷來源和目的地案例。 也不適合使用網路虛擬裝置的 [ **FlowDirection_s** ] 欄位。
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -72,13 +72,13 @@ SourcePublicIPsAggregated = iif(isnotempty(SrcPublicIPs_s), SrcPublicIPs_s, "N/A
 DestPublicIPsAggregated = iif(isnotempty(DestPublicIPs_s), DestPublicIPs_s, "N/A")
 ```
 
-## <a name="example-2-nsgrules_s-field"></a>範例 2:NSGRules_s欄位
+## <a name="example-2-nsgrules_s-field"></a>範例2： NSGRules_s 欄位
 
-舊欄位使用格式:
+舊欄位使用的格式如下：
 
-<索引值 0)>|<NSG_规则名称>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
+<索引值0） >|<NSG_ RuleName>|<Flow Direction>|<Flow Status>|<FlowCount ProcessedByRule>
 
-我們不再跨網路安全組 (NSG) 聚合數據。 在更新的架構中 **,NSGList_s**僅包含一個 NSG。 此外 **,NSGRules**只包含一個規則。 我們在此處和其他欄位中刪除了複雜的格式設置,如示例中所示。
+我們不會再透過網路安全性群組（NSG）來匯總資料。 在更新的架構中， **NSGList_s**只包含一個 NSG。 此外， **NSGRules**只包含一個規則。 我們已移除這裡和其他欄位中的複雜格式，如範例所示。
 
 ```Old Kusto query
 AzureNetworkAnalytics_CL
@@ -103,24 +103,24 @@ FlowStatus = FlowStatus_s,
 FlowCountProcessedByRule = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d
 ```
 
-## <a name="example-3-flowcount_d-field"></a>範例 3:FlowCount_d欄位
+## <a name="example-3-flowcount_d-field"></a>範例3： FlowCount_d 欄位
 
-因為我們不在整個 NSG 中支援數據,**因此FlowCount_d**只是:
+因為我們不會在 NSG 中散佈資料，所以**FlowCount_d**只是：
 
-**AllowedInFlows_d**** ** **AllowedOutFlows_d** AllowedInFlows_dDeniedInFlows_dAllowedOutFlows_dDeniedOutFlows_d  +  ** **  +   + 
+**AllowedInFlows_d** + **DeniedInFlows_d**DeniedInFlows_d + **AllowedOutFlows_d**AllowedOutFlows_d + **DeniedOutFlows_d**
 
-四個字段中只有一個為非零。 其他三個字段將為零。 欄位填充以指示捕獲流的 NIC 中的狀態和計數。
+只有四個欄位中的其中一個不是零。 其他三個欄位則為零。 欄位會填入，以指出在其中捕捉到流程的 NIC 中的狀態和計數。
 
-為了說明這些條件:
+若要說明這些條件：
 
-- 如果允許流,將填充其中一個"允許"前綴欄位。
-- 如果流被拒絕,將填充其中一個"已拒絕"前綴欄位。
-- 如果流是入站,將填充其中一個"InFlows_d"後綴欄位。
-- 如果流是出站,將填充其中一個"OutFlows_d"後綴欄位。
+- 如果允許流程，將會填入其中一個「允許」的前置欄位。
+- 如果流程遭到拒絕，則會填入其中一個「拒絕」的首碼欄位。
+- 如果流程為輸入，則會填入其中一個「InFlows_d」尾碼欄位。
+- 如果流程是輸出的，將會填入其中一個「OutFlows_d」尾碼欄位。
 
-根據條件,我們知道將填充四個字段中的哪一個。
+根據條件而定，我們知道將會填入四個欄位中的哪一個。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 若要取得常見問題的解答，請參閱[流量分析常見問題集](traffic-analytics-faq.md)。
-- 要檢視有關功能的詳細資訊,請參考[資料分析文件](traffic-analytics.md)。
+- 若要查看功能的詳細資料，請參閱使用[分析檔](traffic-analytics.md)。

@@ -1,6 +1,6 @@
 ---
-title: 將呼叫 Web API 的桌面應用移動到生產 - 微軟識別平臺 |蔚藍
-description: 瞭解如何將呼叫 Web API 的桌面應用移至生產
+title: 將桌面應用程式呼叫 web Api 移至生產環境-Microsoft 身分識別平臺 |Azure
+description: 瞭解如何將會呼叫 web Api 的桌面應用程式移至生產環境
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,37 +12,37 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882874"
 ---
-# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>呼叫 Web API 的桌面應用:移動到生產
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>呼叫 web Api 的桌面應用程式：移至生產環境
 
-在本文中,您將瞭解如何將調用 Web API 的桌面應用移動到生產。
+在本文中，您將瞭解如何將呼叫 web Api 的桌面應用程式移至生產環境。
 
 ## <a name="handle-errors-in-desktop-applications"></a>處理桌面應用程式中的錯誤
 
-在不同的流中,您已經學會了如何處理靜默流的錯誤,如代碼段所示。 您還看到,在某些情況下需要交互,如增量同意和條件訪問。
+在不同的流程中，您已瞭解如何處理無訊息流程的錯誤，如程式碼片段所示。 您也會看到需要進行互動的情況，如同在增量同意和條件式存取中。
 
-## <a name="have-the-user-consent-upfront-for-several-resources"></a>提前取得多個資源的使用者同意
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>讓使用者預先同意數個資源
 
 > [!NOTE]
-> 獲得多個資源的同意適用於 Microsoft 標識平臺,但對於 Azure 活動目錄 (Azure AD) B2C 則不有效。 Azure AD B2C 僅支援管理員同意,不支援使用者同意。
+> 獲得數項資源的同意，適用于 Microsoft 身分識別平臺，但不適用於 Azure Active Directory （Azure AD） B2C。 Azure AD B2C 僅支援管理員同意，而非使用者同意。
 
-使用 Microsoft 標識平臺 (v2.0) 終結點,不能一次獲取多個資源的權杖。 參數`scopes`只能包含單個資源的範圍。 您可以使用`extraScopesToConsent`參數確保使用者預先同意多個資源。
+您無法使用 Microsoft 身分識別平臺（v2.0）端點一次取得數個資源的權杖。 `scopes`參數只能包含單一資源的範圍。 您可以使用`extraScopesToConsent`參數，確保使用者已預先同意至數個資源。
 
-例如,您可能有兩個資源,每個資源有兩個作用域:
+例如，您可能有兩個具有兩個範圍的資源：
 
-- `https://mytenant.onmicrosoft.com/customerapi`與範圍`customer.read`與`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`與範圍`vendor.read`與`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi`使用範圍`customer.read`和`customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi`使用範圍`vendor.read`和`vendor.write`
 
-此範例中,`.WithAdditionalPromptToConsent`使用具有參數`extraScopesToConsent`的修飾符。
+在此範例中，請`.WithAdditionalPromptToConsent`使用具有`extraScopesToConsent`參數的修飾詞。
 
 例如：
 
-### <a name="in-msalnet"></a>在MSAL.NET
+### <a name="in-msalnet"></a>在 MSAL.NET 中
 
 ```csharp
 string[] scopesForCustomerApi = new string[]
@@ -63,7 +63,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
                      .ExecuteAsync();
 ```
 
-### <a name="in-msal-for-ios-and-macos"></a>在適用於 iOS 和 macOS 的 MSAL 中
+### <a name="in-msal-for-ios-and-macos"></a>適用于 iOS 和 macOS 的 MSAL
 
 Objective-C：
 
@@ -93,17 +93,17 @@ interactiveParameters.extraScopesToConsent = scopesForVendorApi
 application.acquireToken(with: interactiveParameters, completionBlock: { (result, error) in /* handle result */ })
 ```
 
-此調用獲取第一個 Web API 的訪問權杖。
+此呼叫會取得第一個 Web API 的存取權杖。
 
-當您需要調用第二個 Web API 時`AcquireTokenSilent`,呼叫 API。
+當您需要呼叫第二個 Web API 時，請`AcquireTokenSilent`呼叫 API。
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>每次應用運行時,Microsoft 個人帳戶都需要重新批准
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>每次執行應用程式時，Microsoft 個人帳戶都需要重新同意
 
-對於 Microsoft 個人帳戶使用者,在授權的每個本機用戶端(桌面或行動應用)調用上重新提示同意是預期行為。 本機客戶端標識本質上是不安全的,這與機密用戶端應用程式標識相悖。 機密用戶端應用程式與Microsoft識別平台交換機密,以證明其身份。 Microsoft 標識平台選擇在每次授權應用程式時提示使用者同意,以減輕消費者服務的這種不安全。
+針對 Microsoft 個人帳戶使用者，reprompting 在每個原生用戶端（桌面或行動應用程式）呼叫以授與授權是預期的行為。 Native client 身分識別原本就不安全，這違反了機密用戶端應用程式身分識別。 機密用戶端應用程式會與 Microsoft 身分識別平臺交換秘密，以證明其身分識別。 Microsoft 身分識別平臺選擇在每次授權應用程式時提示使用者同意，藉此減少取用者服務的安全。
 
 ## <a name="next-steps"></a>後續步驟
 

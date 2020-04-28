@@ -16,21 +16,21 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 052d99a819aee415d5e7ad6dc00b8c786af0f636
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811086"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>混合式身分識別目錄整合工具比較
 目錄整合工具已經經過多年的成長和發展。  
 
 
-- [FIM](https://docs.microsoft.com/previous-versions/windows/desktop/forefront-2010/ff182370%28v%3dvs.100%29)和[MIM](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016)仍然受支援,主要支援本地系統之間的同步。   FIM 和 MIM 都支援[FIM Windows Azure AD 連接器](https://docs.microsoft.com/previous-versions/mim/dn511001(v=ws.10)?redirectedfrom=MSDN),但不建議用於新部署 - 具有本地源(如 Notes 或 SAP HCM)的客戶應使用 MIM 填充活動目錄域服務 (AD DS),然後使用 Azure AD 連接同步或 Azure AD 連接雲端配置從 AD DS 同步到 Azure AD。
-- [Azure AD 連接同步](how-to-connect-sync-whatis.md)合併了之前在 DirSync 和 Azure AD 同步中發布的元件和功能,用於在 AD DS 林和 Azure AD 之間進行同步。  
-- [Azure AD Connect 雲端配置](../cloud-provisioning/what-is-cloud-provisioning.md)是一種新的 Microsoft 代理,用於從 AD DS 到 Azure AD 進行同步,適用於合併和獲取等方案,其中被收購公司的 AD 林與母公司的 AD 林隔離。
+- [FIM](https://docs.microsoft.com/previous-versions/windows/desktop/forefront-2010/ff182370%28v%3dvs.100%29)和[MIM](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016)仍然受支援，主要是啟用內部部署系統之間的同步處理。   Fim 和 MIM 都支援[Fim Windows Azure AD 連接器](https://docs.microsoft.com/previous-versions/mim/dn511001(v=ws.10)?redirectedfrom=MSDN)，但不建議用於新的部署-具有內部部署來源（例如附注或 SAP HCM）的客戶應該使用 MIM 來填入 Active Directory Domain Services （AD DS），然後使用 Azure AD Connect 同步或 Azure AD Connect 雲端布建，從 AD DS 同步處理至 Azure AD。
+- [Azure AD Connect 同步](how-to-connect-sync-whatis.md)處理會納入先前在 DirSync 和 Azure AD 同步中發行的元件和功能，以便在 AD DS 樹系與 Azure AD 之間進行同步處理。  
+- [Azure AD Connect 雲端](../cloud-provisioning/what-is-cloud-provisioning.md)布建是新的 Microsoft 代理程式，可從 AD DS 同步至 Azure AD，適用于合併和收購等案例，其中取得的公司 ad 樹系與父系公司的 ad 樹系隔離。
 
-要瞭解有關 Azure AD 連接同步和 Azure AD 連接雲端預配之間的區別,請參閱文章[「什麼是 Azure AD 連接雲端資源?](../cloud-provisioning/what-is-cloud-provisioning.md)
+若要深入瞭解 Azure AD Connect 同步處理和 Azure AD Connect 雲端布建之間的差異，請參閱[什麼是 Azure AD Connect 雲端](../cloud-provisioning/what-is-cloud-provisioning.md)布建？一文。
 
 ## <a name="next-steps"></a>後續步驟
 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

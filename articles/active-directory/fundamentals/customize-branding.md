@@ -1,5 +1,5 @@
 ---
-title: 向組織的登錄頁面添加品牌 - Azure AD
+title: 將商標新增至組織的登入頁面-Azure AD
 description: 以下相關指示說明如何將組織的商標新增至 Azure Active Directory 登入頁面。
 services: active-directory
 author: msaburnley
@@ -14,10 +14,10 @@ ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80049802"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>將商標新增至組織的 Azure Active Directory 登入頁面
@@ -29,10 +29,10 @@ ms.locfileid: "80049802"
 ## <a name="customize-your-azure-ad-sign-in-page"></a>自訂 Azure AD 登入頁面
 您可以自訂 Azure AD 登入頁面，該頁面會在使用者登入您組織的租用戶特定應用程式 (例如 `https://outlook.com/contoso.com`) 時或傳遞網域變數 (例如 `https://passwordreset.microsoftonline.com/?whr=contoso.com`) 時出現。
 
-當使用者訪問 www office.com\.等網站時，您的自訂品牌不會立即顯示。 使用者必須先登入，您的自訂商標才會出現。 使用者登錄後，品牌可能需要 15 分鐘或更長時間才能顯示。 
+當您的使用者前往 www\.office.com 之類的網站時，您的自訂商標不會立即出現。 使用者必須先登入，您的自訂商標才會出現。 在使用者登入之後，商標可能需要15分鐘或更長的時間才會出現。 
 
 > [!NOTE]
-> 所有商標元素均為選擇性使用。 舉例而言，如果您指定的橫幅標誌沒有背景影像，登入頁面會顯示您的標誌和目的地網站 (例如，Office 365) 的預設背景影像。<br><br>此外，登錄頁面品牌不會延續到個人 Microsoft 帳戶。 如果使用者或商務來賓使用個人 Microsoft 帳戶登入，其登入頁面將不會出現貴組織的商標。
+> 所有商標元素均為選擇性使用。 舉例而言，如果您指定的橫幅標誌沒有背景影像，登入頁面會顯示您的標誌和目的地網站 (例如，Office 365) 的預設背景影像。<br><br>此外，登入頁面商標不會攜帶至個人 Microsoft 帳戶。 如果使用者或商務來賓使用個人 Microsoft 帳戶登入，其登入頁面將不會出現貴組織的商標。
 
 ### <a name="to-customize-your-branding"></a>自訂您的商標
 1. 使用目錄的全域系統管理員帳戶登入 [Azure 入口網站](https://portal.azure.com/)。
@@ -46,37 +46,37 @@ ms.locfileid: "80049802"
     >[!Important]
     >在此頁面新增的所有自訂影像均有其影像大小 (像素) 限制，而且可能有檔案大小 (KB) 限制。 由於有所限制，很可能必須使用相片編輯程式來建立適當大小的影像。
 
-    - **常規設置**
+    - **一般設定**
 
         ![設定公司商標頁面，一般設定已完成](media/customize-branding/configure-company-branding-general-settings.png)
 
-        - **語言。** 語言會自動設為預設值，而且無法變更。
+        - **語言.** 語言會自動設為預設值，而且無法變更。
         
         - **登入頁面背景影像。** 請選取要做為登入頁面背景的 .png 或 .jpg 影像檔案。 
         
             影像大小不可超過 1920 x 1080 像素，且檔案大小必須小於 300 KB。
 
-        - **橫幅徽標。** 請選取 .png 或 .jpg 格式的標誌，標誌會在使用輸入使用者名稱後出現在登入頁面上，也會出現在 **My Apps** 入口網站頁面上。
+        - **橫幅標誌。** 請選取 .png 或 .jpg 格式的標誌，標誌會在使用輸入使用者名稱後出現在登入頁面上，也會出現在 **My Apps** 入口網站頁面上。
             
-            圖像不能高於 60 圖元或寬大於 280 圖元。 建議使用透明影像，因為背景可能會不符合您標誌的背景。 也建議不要在影像周圍加入邊框間距，否則會讓標誌看起來變小。
+            影像的高度不能大於60圖元或大於280圖元。 建議使用透明影像，因為背景可能會不符合您標誌的背景。 也建議不要在影像周圍加入邊框間距，否則會讓標誌看起來變小。
 
-        - **使用者名提示。** 輸入使用者忘記使用者名稱時，就會向使用者顯示的提示文字。 此文字必須是 Unicode，不可含有任何連結或程式碼，而且不可超過 64 個字元。 如果來賓是登入您的應用程式，建議不要加入此提示。
+        - **使用者名稱提示。** 輸入使用者忘記使用者名稱時，就會向使用者顯示的提示文字。 此文字必須是 Unicode，不可含有任何連結或程式碼，而且不可超過 64 個字元。 如果來賓是登入您的應用程式，建議不要加入此提示。
 
         - **登入頁面文字。** 請輸入會在登入頁面底部出現的文字。 您可以使用此文字來提供其他資訊，例如技術支援中心的電話號碼或法律聲明。 此文字必須是 Unicode，而且不可超過 256 個字元。 也建議不包含連結或 HTML 標記。
 
-    - **高級設置**
+    - **Advanced 設定**
             
         ![設定公司商標頁面，進階設定已完成](media/customize-branding/configure-company-branding-advanced-settings.png)   
 
-        - **登錄頁背景顏色。** 請指定十六進位色彩 (例如，白色是 #FFFFFF)，此色彩會在低頻寬連線的情況下代替背景影像。 建議使用橫幅標誌的主要顏色或貴組織的代表顏色。
+        - **登入頁面背景色彩。** 請指定十六進位色彩 (例如，白色是 #FFFFFF)，此色彩會在低頻寬連線的情況下代替背景影像。 建議使用橫幅標誌的主要顏色或貴組織的代表顏色。
 
-        - **方形標誌影像。** 選擇組織的徽標的 .png（首選）或 .jpg 圖像，以便在新的 Windows 10 企業設備的設置過程中向使用者顯示。 此影像只會用於 Windows 驗證，而且只有在租用戶使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 部署或做為其他 Windows 10 使用體驗的密碼輸入頁面時，才會向此租用戶顯示。 在某些情況下，它也可能出現在同意對話方塊中。
+        - **方形標誌影像。** 針對新的 Windows 10 企業版裝置，選取要在安裝過程中對使用者顯示之組織標誌的 .png （慣用）或 .jpg 影像。 此影像只會用於 Windows 驗證，而且只有在租用戶使用 [Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) 部署或做為其他 Windows 10 使用體驗的密碼輸入頁面時，才會向此租用戶顯示。 在某些情況下，它可能也會出現在同意對話方塊中。
         
-            圖像的大小不能大於 240x240 圖元，並且檔案大小必須小於 10 KB。 建議使用透明影像，因為背景可能會不符合您標誌的背景。 也建議不要在影像周圍加入邊框間距，否則會讓標誌看起來變小。
+            影像的大小不能大於240x240 圖元，而且檔案大小必須小於 10 KB。 建議使用透明影像，因為背景可能會不符合您標誌的背景。 也建議不要在影像周圍加入邊框間距，否則會讓標誌看起來變小。
     
-        - **方形標誌影像、暗色調佈景主題。** 與上述的方形標誌影像相同。 此標誌影像會取代深色背景下的方形標誌影像，例如，在全新體驗 (OOBE) 期間出現的 Windows 10 Azure AD 連結畫面。  如果您的徽標在白色、深藍色和黑色背景上看起來不錯，則無需添加此圖像。 
+        - **方形標誌影像、暗色調佈景主題。** 與上述的方形標誌影像相同。 此標誌影像會取代深色背景下的方形標誌影像，例如，在全新體驗 (OOBE) 期間出現的 Windows 10 Azure AD 連結畫面。  如果您的標誌在白色、深藍色和黑色背景上看起來不錯，您就不需要加入此影像。 
         
-        - **顯示保持登入選項。** 您可以選擇讓使用者繼續登錄到 Azure AD，直到顯式登出。如果選擇 **"否**"，則此選項將處於隱藏狀態，並且使用者必須在每次關閉和重新打開瀏覽器時登錄。
+        - **顯示保持登入選項。** 您可以選擇讓使用者保持登入 Azure AD，直到明確登出為止。如果您選擇 [**否**]，則會隱藏此選項，而且使用者必須在每次關閉並重新開啟瀏覽器時登入。
         
             >[!Note]
             >SharePoint Online 和 Office 2010 的某些功能取決於能夠選擇此選項以保持登入的使用者。 如果您將此選項設定為 [否]****，使用者可能就會在登入時看見額外和非預期的提示。
@@ -101,7 +101,7 @@ ms.locfileid: "80049802"
 
 3. 請在 [設定公司商標]**** 頁面上，按照本文的[自訂您的 Azure AD 登入頁面](#customize-your-azure-ad-sign-in-page)一節的說明，新增、移除或變更任何資訊。
 
-4. 選取 [儲存]****。
+4. 選取 [儲存]  。
 
    您對登入頁面商標所做的任何變更可能最多需要一個小時才會顯示。
 
@@ -118,7 +118,7 @@ ms.locfileid: "80049802"
 
 3. 請在 [設定公司商標]**** 頁面上，選取您的語言 (例如，法文)，然後按照本文的[自訂您的 Azure AD 登入頁面](#customize-your-azure-ad-sign-in-page)一節的說明，新增經過翻譯的資訊。
 
-4. 選取 [儲存]****。
+4. 選取 [儲存]  。
 
     [Contoso - 公司商標]**** 頁面會更新，以顯示新的法文設定。
 
@@ -127,7 +127,7 @@ ms.locfileid: "80049802"
 ## <a name="add-your-custom-branding-to-pages"></a>將您的自訂商標新增至頁面
 以文字 `?whr=yourdomainname` 修改 URL 結尾，將自訂商標新增至頁面。 這項修改適用於多個頁面，包括 Multi-Factor Authentication (MFA) 的設定頁面、自助式密碼重設 (SSPR) 設定頁面和登入頁面。
 
-**例子：**
+**範例：**
 
 **原始 URL：** https://aka.ms/MFASetup<br>
 **自訂 URL：**`https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com`

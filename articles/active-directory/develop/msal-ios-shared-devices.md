@@ -1,7 +1,7 @@
 ---
-title: iOS 裝置的共享裝置模式
+title: 適用於 iOS 裝置的共用裝置模式
 titleSuffix: Microsoft identity platform | Azure
-description: 瞭解如何啟用共用設備模式,以允許一線工作人員共用 iOS 設備
+description: 瞭解如何啟用共用裝置模式，以允許第一線背景工作角色共用 iOS 裝置
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -14,85 +14,85 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: 7cecbc48eb362c2c0f1741352e6f7f5f6ad40c9e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550249"
 ---
-# <a name="shared-device-mode-for-ios-devices"></a>iOS 裝置的共享裝置模式
+# <a name="shared-device-mode-for-ios-devices"></a>適用於 iOS 裝置的共用裝置模式
 
 > [!NOTE]
 > 這項功能處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-一線員工(如零售員工、機組人員和現場服務人員)通常使用共用行動裝置來執行任務。 如果使用者有意或無意共用其密碼或 PIN 以造訪共用裝置上的客戶和業務數據,則這些共享設備可能會帶來安全風險。
+第一線的工作者（例如零售協會、航班小組成員，以及現場服務工作者）通常會使用共用的行動裝置來執行其工作。 如果您的使用者刻意共用其密碼或 Pin，以存取共用裝置上的客戶和商務資料，這些共用裝置可能會帶來安全性風險。
 
-共用設備模式允許您將 iOS 13 或更高版本的設備配置為員工更輕鬆、更安全地共用設備。 員工可以快速登錄和訪問客戶資訊。 當他們完成輪班或任務后,他們可以註銷設備,並立即準備好供下一位員工使用。
+共用裝置模式可讓您設定 iOS 13 或更新版本的裝置，使其更容易且更安全地由員工共用。 員工可以快速登入並存取客戶資訊。 當他們完成其轉移或工作時，可以登出裝置，並立即準備好供下一位員工使用。
 
-共用設備模式還提供 Microsoft 標識支援的設備管理。
+共用裝置模式也會提供 Microsoft 以身分識別支援的裝置管理。
 
-此功能使用[微軟身份驗證器應用程式](../user-help/user-help-auth-app-overview.md)來管理裝置上的使用者,並分發[適用於蘋果設備的微軟企業 SSO 外掛程式](apple-sso-plugin.md)。
+這項功能會使用[Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md)來管理裝置上的使用者，以及散發[適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md)。
 
-## <a name="create-a-shared-device-mode-app"></a>建立共享裝置模式應用程式
+## <a name="create-a-shared-device-mode-app"></a>建立共用裝置模式應用程式
 
-要建立共享設備模式應用,開發人員和雲端裝置管理員將協同工作:
+若要建立共用裝置模式應用程式，開發人員和雲端裝置管理員會共同作業：
 
-1. **應用程式開發人員**編寫單帳戶應用(在共用設備模式下不支援多帳戶應用),並編寫代碼來處理共用設備註銷等內容。
+1. **應用程式開發人員**會撰寫單一帳戶應用程式（共用裝置模式中不支援多帳戶應用程式），並撰寫程式碼來處理像是共用裝置登出之類的專案。
 
-1. **設備管理員**使用Microsoft Intune等行動裝置管理 (MDM)供應商來管理其組織中的設備,準備要共用的設備。 MDM 將 Microsoft 身份驗證器應用推送到設備,並透過對裝置的設定檔更新打開每個裝置的「共用模式」。 此共用模式設置是更改設備上受支援應用的行為的原因。 MDM 提供者的此設定為裝置設定共享裝置模式,並啟用共用裝置模式所需的[Apple 裝置的 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md)。
+1. **裝置系統管理員**會使用行動裝置管理（MDM）提供者（如 Microsoft Intune）來準備要共用的裝置，以管理其組織中的裝置。 MDM 會將 Microsoft Authenticator 應用程式推送至裝置，並透過裝置的設定檔更新，為每個裝置開啟「共用模式」。 此共用模式設定會變更裝置上支援之應用程式的行為。 這項來自 MDM 提供者的設定會設定裝置的共用裝置模式，並為共用裝置模式所需的[Apple 裝置啟用 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md)。
 
-1. [**僅在公共預覽期間需要**]然後,具有[雲設備管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator)角色的用戶必須啟動[Microsoft 身份驗證器應用](../user-help/user-help-auth-app-overview.md),並將其設備加入組織。
+1. [**僅限公開預覽期間所需**]具有[雲端裝置管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator)角色的使用者必須啟動[Microsoft Authenticator 應用程式](../user-help/user-help-auth-app-overview.md)，並將其裝置加入組織。
 
-    在 Azure 門戶中設定組織角色的成員身份 **:Azure 活動目錄** > **角色和管理員** > **雲設備管理員**
+    若要在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory** > **角色和系統管理員** > **雲端裝置管理員**
 
-以下部分可説明您更新應用程式以支援共享設備模式。
+下列各節可協助您更新應用程式，以支援共用裝置模式。
 
-## <a name="use-intune-to-enable-shared-device-mode--sso-extension"></a>使用 Intune 啟用共用裝置模式& SSO 擴充
+## <a name="use-intune-to-enable-shared-device-mode--sso-extension"></a>使用 Intune 來啟用共用裝置模式 & SSO 擴充功能
 
 > [!NOTE]
-> 以下步驟僅在公共預覽期間是必需的。
+> 只有在公開預覽期間，才需要執行下列步驟。
 
-您的裝置需要配置為支援共享設備模式。 它必須安裝 iOS 13+ 並註冊 MDM。 MDM 設定需要開啟[適用於 Apple 裝置的 Microsoft SSO 外掛程式](apple-sso-plugin.md)。 要瞭解有關 SSO 擴充的更多,請參閱[Apple 影片](https://developer.apple.com/videos/play/tech-talks/301/)。
+您的裝置必須設定為支援共用裝置模式。 它必須已安裝 iOS 13 +，並已註冊 MDM。 MDM 設定也必須啟用[適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md)。 若要深入瞭解 SSO 延伸模組，請參閱[Apple 影片](https://developer.apple.com/videos/play/tech-talks/301/)。
 
-1. 在 Intune 設定門戶中,告訴裝置啟用具有以下配置[的 Apple 裝置的 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md):
+1. 在 Intune 設定入口網站中，告知裝置使用下列設定來啟用[Apple 裝置的 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md)：
 
-    - **型態**: 重定向
-    - **延伸代碼**: com.microsoft.azure 身份驗證器.sso 擴展
-    - **小組代碼**: SGGM6D27TK
-    - **網址**:https://login.microsoftonline.com
-    - 要設定的其他資料:
-      - 金鑰:共用裝置模式
+    - **類型**：重新導向
+    - **延伸模組識別碼**： azureauthenticator. ssoextension
+    - **小組識別碼**： SGGM6D27TK
+    - **Url**：https://login.microsoftonline.com
+    - 要設定的其他資料：
+      - 索引鍵： sharedDeviceMode
       - 類型：布林值
-      - 值: 正確
+      - 值： True
 
-    有關使用 Intune 進行設定的詳細資訊,請參考[Intune 設定文件](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)。
+    如需使用 Intune 設定的詳細資訊，請參閱[intune 設定檔](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)。
 
-1. 接下來,配置 MDM 以透過 MDM 設定檔將 Microsoft 身份驗證器應用推送到您的裝置。
+1. 接下來，設定您的 MDM 以透過 MDM 設定檔將 Microsoft Authenticator 應用程式推送至您的裝置。
 
-    設定以下設定選項以開啟共享裝置模式:
+    設定下列設定選項以開啟 [共用裝置模式]：
 
     - 設定 1：
-      - 金鑰:共用裝置模式
+      - 索引鍵： sharedDeviceMode
       - 類型：布林值
-      - 值: 正確
+      - 值： True
 
-## <a name="modify-your-ios-application-to-support-shared-device-mode"></a>變更 iOS 應用程式以支援共享裝置模式
+## <a name="modify-your-ios-application-to-support-shared-device-mode"></a>修改您的 iOS 應用程式以支援共用裝置模式
 
-您的用戶依賴您來確保其數據不會洩露給其他使用者。 以下各節提供有用的信號,以向應用程式指示發生了更改,應進行處理。
+您的使用者取決於您，以確保其資料不會洩漏給另一位使用者。 下列各節提供有用的指示，指出您的應用程式已發生變更，應加以處理。
 
-您負責在每次使用應用時檢查設備上的用戶狀態,然後清除前一個用戶的數據。 這包括如果在多任務處理中從後台重新載入它,則包括它。
+您必須負責在每次使用您的應用程式時檢查裝置上的使用者狀態，然後再清除先前的使用者資料。 這包括在多工中從背景重載的情況。
 
-在使用者更改時,應確保清除前一個用戶的數據,並刪除應用程式中顯示的任何緩存數據。 我們強烈建議您和您的公司在更新應用以支援共享設備模式後進行安全審查過程。
+在使用者變更時，您應該確定已清除前一個使用者的資料，並移除應用程式中顯示的任何快取資料。 我們強烈建議您和您的公司在更新您的應用程式以支援共用裝置模式後，進行安全性審查流程。
 
-### <a name="detect-shared-device-mode"></a>偵測共享裝置模式
+### <a name="detect-shared-device-mode"></a>偵測共用裝置模式
 
-檢測共用設備模式對於應用程式非常重要。 許多應用程式在共享設備上使用應用程式時,需要更改其使用者體驗 (UX)。 例如,您的應用程式可能具有"註冊"功能,這不適用於一線工作人員,因為它們可能已經具有帳戶。 如果數據處於共用設備模式,您可能還希望為應用程式處理數據添加額外的安全性。
+偵測共用裝置模式對您的應用程式很重要。 在共用裝置上使用應用程式時，許多應用程式都需要變更使用者體驗（UX）。 例如，您的應用程式可能會有「註冊」功能，這不適合第一線的背景工作角色，因為他們可能已經有帳戶。 如果您的應用程式是共用的裝置模式，您可能也會想要為其處理資料增加額外的安全性。
 
-使用`getDeviceInformationWithParameters:completionBlock:`中的 API`MSALPublicClientApplication`確定應用是否以共享設備模式在設備上運行。
+使用中`getDeviceInformationWithParameters:completionBlock:`的 API `MSALPublicClientApplication`來判斷應用程式是否在共用裝置模式的裝置上執行。
 
-以下代碼段顯示了使用`getDeviceInformationWithParameters:completionBlock:`API 的範例。
+下列程式碼片段顯示使用`getDeviceInformationWithParameters:completionBlock:` API 的範例。
 
 #### <a name="swift"></a>Swift
 
@@ -124,11 +124,11 @@ application.getDeviceInformation(with: nil, completionBlock: { (deviceInformatio
 }];
 ```
 
-### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>取得登入使用者並確定使用者是否在裝置上已變更
+### <a name="get-the-signed-in-user-and-determine-if-a-user-has-changed-on-the-device"></a>取得已登入的使用者，並判斷裝置上的使用者是否已變更
 
-支援共享設備模式的另一個重要部分是確定使用者在設備上的狀態,並在使用者已更改或設備上根本沒有使用者時清除應用程式數據。 您有責任確保數據不會洩露給其他使用者。
+支援共用裝置模式的另一個重要部分，是判斷裝置上的使用者狀態，並在使用者已變更或裝置上沒有任何使用者時清除應用程式資料。 您必須負責確保資料不會洩漏給另一位使用者。
 
-您可以使用`getCurrentAccountWithParameters:completionBlock:`API 查詢裝置上的登入帳戶。
+您可以使用`getCurrentAccountWithParameters:completionBlock:` API 來查詢裝置上目前已登入的帳戶。
 
 #### <a name="swift"></a>Swift
 
@@ -159,7 +159,7 @@ parameters.completionBlockQueue = dispatch_get_main_queue();
 
 ### <a name="globally-sign-in-a-user"></a>全域登入使用者
 
-當設備配置為共享設備時,應用程式可以調用`acquireTokenWithParameters:completionBlock:`API 登錄帳戶。 該帳戶將在帳戶中出現第一個應用簽名后,面向設備上的所有符合條件的應用在全球可用。
+當裝置設定為共用裝置時，您的應用程式可以呼叫`acquireTokenWithParameters:completionBlock:` API 來登入帳戶。 當第一個應用程式登入帳戶之後，裝置上的所有合格應用程式都可全域使用此帳戶。
 
 #### <a name="objective-c"></a>Objective-C
 
@@ -173,14 +173,14 @@ parameters.loginHint = self.loginHintTextField.text;
 
 ### <a name="globally-sign-out-a-user"></a>全域登出使用者
 
-以下代碼刪除登錄帳戶,並清除緩存的權杖,不僅從應用,而且從處於共用設備模式的設備。 但是,它不會清除應用程式*中的數據*。 您必須清除應用程式中的數據,以及清除應用程式可能向用戶顯示的任何緩存資料。
+下列程式碼會移除登入的帳戶，並從應用程式以外的裝置中清除快取的權杖，但也會從處於共用裝置模式的裝置中清除。 不過，它並不會從您的應用程式中清除*資料*。 您必須清除應用程式中的資料，並清除應用程式可能會向使用者顯示的任何快取資料。
 
 #### <a name="clear-browser-state"></a>清除瀏覽器狀態
 
 > [!NOTE]
-> 以下步驟僅在公共預覽期間是必需的。
+> 只有在公開預覽期間，才需要執行下列步驟。
 
-在此公共預覽版本中,適用於[Apple 設備的 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md)僅清除應用程式的狀態。 它不清除 Safari 瀏覽器上的狀態。 我們建議您手動清除瀏覽器會話,以確保不會留下使用者狀態的痕跡。 您可以使用下面顯示的可選`signoutFromBrowser`屬性清除任何 Cookie。 這將導致瀏覽器在設備上短暫啟動。
+在此公開預覽版本中，[適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式](apple-sso-plugin.md)只會清除應用程式的狀態。 它不會清除 Safari 瀏覽器上的狀態。 建議您手動清除瀏覽器會話，以確保不會留下任何使用者狀態的追蹤。 您可以使用如下所`signoutFromBrowser`示的選擇性屬性來清除任何 cookie。 這會導致瀏覽器在裝置上短暫啟動。
 
 #### <a name="swift"></a>Swift
 
@@ -223,6 +223,6 @@ signoutParameters.signoutFromBrowser = YES; // Only needed for Public Preview.
 
 ## <a name="next-steps"></a>後續步驟
 
-要檢視共享裝置模式在起作用,GitHub 上的以下代碼範例包括一個在共享裝置模式下在 iOS 裝置上執行一線輔助應用的範例:
+若要查看作用中的共用裝置模式，下列 GitHub 上的程式碼範例包含在 iOS 裝置上以共用裝置模式執行第一線背景工作應用程式的範例：
 
-[MSAL iOS 斯威夫特微軟圖形 API 範例](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)
+[MSAL iOS Swift Microsoft Graph API 範例](https://github.com/Azure-Samples/ms-identity-mobile-apple-swift-objc)

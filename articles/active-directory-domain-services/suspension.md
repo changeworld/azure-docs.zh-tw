@@ -1,6 +1,6 @@
 ---
-title: Azure AD 網域服務中的掛起域 |微軟文件
-description: 瞭解 Azure AD DS 託管域的不同運行狀況狀態以及如何還原掛起的域。
+title: Azure AD Domain Services 中的擱置網域 |Microsoft Docs
+description: 瞭解 Azure AD DS 受控網域的不同健全狀況狀態，以及如何還原已擱置的網域。
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,113 +12,113 @@ ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: iainfou
 ms.openlocfilehash: 42b26911c12b1e7c62444a6fb2ee68720b02a56b
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654597"
 ---
-# <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>瞭解執行狀況狀態並解析 Azure 的目錄網域服務中的掛起域
+# <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>瞭解健全狀況狀態，並在 Azure Active Directory Domain Services 中解決已擱置的網域
 
-當 Azure Active Directory Domain Services (Azure AD DS) 有很長的一段時間無法服務受控網域時，其會使該受控網域進入暫時停權狀態。 如果託管域保持掛起狀態,則會自動刪除它。 要保持 Azure AD DS 託管域正常執行並避免掛起,請盡可能快速解決任何警報。
+當 Azure Active Directory Domain Services (Azure AD DS) 有很長的一段時間無法服務受控網域時，其會使該受控網域進入暫時停權狀態。 如果受控網域仍處於暫停狀態，則會自動刪除。 若要讓您的 Azure AD DS 受控網域保持良好狀態，並避免暫停，請儘快解決所有警示。
 
-本文解釋託管域掛起的原因以及如何恢復掛起的域。
+本文說明受控網域的暫止原因，以及如何復原已暫停的網域。
 
-## <a name="overview-of-managed-domain-states"></a>託管域狀態概述
+## <a name="overview-of-managed-domain-states"></a>受控網域狀態的總覽
 
-在 Azure AD DS 託管域的生命週期中,有不同狀態指示其運行狀況。 如果託管域報告問題,請快速解決根本原因以阻止狀態繼續降級。
+透過 Azure AD DS 受控網域的生命週期，會有不同的狀態指出其健康狀態。 如果受控網域回報問題，請快速解決根本原因，讓狀態停止，使其無法繼續下降。
 
-![Azure AD DS 託管域需要暫停狀態進度](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
+![Azure AD DS 受控網域所需的狀態進展](media/active-directory-domain-services-suspension/suspension-timeline.PNG)
 
-Azure AD DS 託管域可以處於以下狀態之一:
+Azure AD DS 受控網域可能處於下列其中一種狀態：
 
 * [正在執行](#running-state)
 * [需要注意](#needs-attention-state)
-* [暫停](#suspended-state)
+* [掛](#suspended-state)
 * [刪除](#deleted-state)
 
 ## <a name="running-state"></a>執行狀態
 
-正確配置且運行且沒有問題的 Azure AD DS 託管域處於 *「正在運行」* 狀態。 這是託管域所需的狀態。
+已正確設定並在沒有問題的情況下執行的 Azure AD DS 受控網域會處於 [*正在*執行] 狀態。 這是受控網域所需的狀態。
 
 ### <a name="what-to-expect"></a>未來展望
 
-* Azure 平臺可以定期監視託管域的運行狀況。
-* 託管域的域控制器會定期進行修補和更新。
-* Azure 活動目錄的更改定期同步到託管域。
-* 對託管域進行定期備份。
+* Azure 平臺可以定期監視受控網域的健全狀況。
+* 受控網域的網域控制站會定期進行修補和更新。
+* Azure Active Directory 的變更會定期同步處理至受控網域。
+* 系統會針對受控網域執行定期備份。
 
 ## <a name="needs-attention-state"></a>需要注意狀態
 
-具有一個或多個需要修復問題的 Azure AD DS 託管域處於 *"需要注意"* 狀態。 託管域的運行狀況頁列出警報,並指示哪裡有問題。 某些警報是暫時性的,由 Azure 平台自動解析。 對於其他警報,您可以按照提供的解決方案步驟來解決此問題。 它有一個嚴重警報,打開[Azure 支援請求][azure-support]以獲取其他故障排除説明。
+具有一或多個需要修正之問題的 Azure AD DS 受控網域會處於*需要注意*狀態。 受控網域的健康情況頁面會列出警示，並指出發生問題的位置。 某些警示是暫時性的，而且會由 Azure 平臺自動解決。 針對其他警示，您可以遵循所提供的解決步驟來修正問題。 這是重大警示，請[開啟 Azure 支援要求][azure-support]以取得額外的疑難排解協助。
 
-警報的一個示例是,當有一個限制性的網路安全組。 在此配置中,Azure 平臺可能無法更新和監視託管域。 將生成警報,狀態更改為 *"需要注意*"。
+警示的其中一個範例是有限制的網路安全性群組。 在此設定中，Azure 平臺可能無法更新及監視受控網域。 系統會產生警示，且狀態會變更為 [*需要注意*]。
 
-有關詳細資訊,請參閱[如何對 Azure AD DS 託管域的警示進行故障排除][resolve-alerts]。
+如需詳細資訊，請參閱[如何針對 AZURE AD DS 受控網域的警示進行疑難排解][resolve-alerts]。
 
 ### <a name="what-to-expect"></a>未來展望
 
-當 Azure AD DS 託管域處於 *"需要注意"* 狀態時,Azure 平臺可能無法定期監視、修補、更新或備份數據。 在某些情況下,例如網路配置無效,託管域的域控制器可能無法到達。
+當 Azure AD DS 受控網域處於「*需要注意*」狀態時，Azure 平臺可能無法定期監視、修補、更新或備份資料。 在某些情況下（例如，使用不正確網路設定），可能無法連線到受控網域的網域控制站。
 
-* 託管域處於不正常狀態,在警報解決之前,可能會停止正在進行的運行狀況監視。
-* 無法修補或更新託管域的域控制器。
-* Azure 活動目錄的更改可能不會同步到託管域。
-* 可能無法執行託管域的備份。
-* 如果解決影響託管域的非關鍵警報,運行狀況應返回到 *「正在運行」* 狀態。
-* 對於 Azure 平台無法到達域控制器的配置問題,將觸發嚴重警報。 如果這些關鍵警報在 15 天內未解決,則託管域將進入*掛起*狀態。
+* 受控網域處於狀況不良的狀態，而持續的健康情況監視可能會停止，直到警示解決為止。
+* 無法修補或更新受控網域的網域控制站。
+* Azure Active Directory 的變更可能不會同步處理至受控網域。
+* 可能不會採用受控網域的備份。
+* 如果您解決影響受控網域的非重大警示，健康情況應會回到執行*中狀態。*
+* 針對 Azure 平臺無法連線到網域控制站的設定問題，會觸發重大警示。 如果這些重大警示未在15天內解決，受控網域就會進入「已*暫停*」狀態。
 
-## <a name="suspended-state"></a>暫停狀態
+## <a name="suspended-state"></a>暫止狀態
 
-Azure AD DS 託管域進入**掛起**狀態的原因如下:
+基於下列其中一個原因，Azure AD DS 受控網域進入**暫停**狀態：
 
 * 有一或多個重大警示未在 15 天內解決。
     * 重大警示可能是因為設定錯誤而使 Azure AD DS 所需資源的存取遭到封鎖而導致的。 例如，受控網域中的 [AADDS104：網路錯誤][alert-nsg]警示並未在 15 天內解決。
-* Azure 訂閱存在計費問題,或者 Azure 訂閱已過期。
+* Azure 訂用帳戶有帳單問題，或 Azure 訂用帳戶已過期。
 
-當 Azure 平台無法管理、監視、修補或備份域時,託管域將掛起。 託管域處於*掛起*狀態 15 天。 要維護對託管域的訪問,立即解決關鍵警報。
+當 Azure 平臺無法管理、監視、修補或備份網域時，受控網域就會暫停。 受控網域會維持在*暫停*狀態15天。 若要維護受控網域的存取權，請立即解決重大警示。
 
 ### <a name="what-to-expect"></a>未來展望
 
-當 Azure AD DS 託管域處於*掛起*狀態時,將經歷以下行為:
+當 Azure AD DS 受控網域處於「已*暫停*」狀態時，會發生下列行為：
 
-* 託管域的域控制器已取消預配,並且無法在虛擬網路中進行。
-* 安全 LDAP 透過網路對託管域的訪問(如果啟用)將停止工作。
-* 身份驗證到託管域、登錄到域加入的 VM 或通過 LDAP/LDAPS 進行連接時存在失敗。
-* 不再執行託管域的備份。
+* 受控網域的網域控制站已解除布建，且無法在虛擬網路內連線。
+* 安全 LDAP 透過網際網路存取受控網域（如果啟用）會停止運作。
+* 對受控網域進行驗證、登入已加入網域的 Vm，或透過 LDAP/LDAPS 進行連線時發生失敗。
+* 已不再採用受控網域的備份。
 * 與 Azure AD 的同步處理會停止。
 
 ### <a name="how-do-you-know-if-your-managed-domain-is-suspended"></a>如何得知您的受控網域已被暫時停權？
 
-在 Azure 門戶中,Azure AD DS 運行狀況頁上會顯示[一條警報][resolve-alerts],指出域已掛起。 網域的狀態還顯示*掛起*。
+您會在 Azure 入口網站中的 [Azure AD DS 健全狀況] 頁面上看到[警示][resolve-alerts]，指出網域已暫止。 網域的狀態也會顯示 [已*暫停*]。
 
 ### <a name="restore-a-suspended-domain"></a>還原暫時停權的網域
 
-要還原處於*掛起*狀態的 Azure AD DS 託管域的運行狀況,請完成以下步驟:
+若要還原處于「已*暫停*」狀態之 Azure AD DS 受控網域的健康情況，請完成下列步驟：
 
-1. 在 Azure 門戶中,搜尋並選擇**網域服務**。
-1. 從清單中選擇 Azure AD DS 託管域,如*aaddscontoso.com*,然後選擇 **「運行狀況**」。
-1. 根據掛起的原因選擇警報,如*AADDS503*或*AADDS504。*
-1. 選擇警報中提供的解決方法連結,然後按照步驟進行解析。
+1. 在 [Azure 入口網站中，搜尋並選取 [**網域服務**]。
+1. 從清單中選擇您的 Azure AD DS 受控網域（例如*aaddscontoso.com*），然後選取 [**健康**情況]。
+1. 視暫停的原因而定，選取警示，例如*AADDS503*或*AADDS504*。
+1. 選擇警示中提供的解決連結，並遵循步驟來解決此問題。
 
-只能將託管域還原到上次備份的日期。 上次備份的日期顯示在託管域的 **「運行狀況**」 頁上。 在上次備份之後發生的任何變更都將無法還原。 受控網域的備份最多儲存 30 天。 超過 30 天的備份會被刪除。
+受控網域只能還原到上次備份的日期。 上次備份的日期會顯示在受控網域的 [**健全狀況**] 頁面上。 在上次備份之後發生的任何變更都將無法還原。 受控網域的備份最多儲存 30 天。 超過 30 天的備份會被刪除。
 
-在託管域處於*掛起*狀態時解決警報后,打開 Azure[支援請求][azure-support]以返回到正常狀態。 如果備份少於 30 天,Azure 支援可以還原託管域。
+當您在受控網域處於「已*暫停*」狀態時解決警示之後，請[開啟 Azure 支援要求][azure-support]回到狀況良好狀態。 如果備份時間少於30天，Azure 支援可以還原受控網域。
 
 ## <a name="deleted-state"></a>已刪除狀態
 
-如果 Azure AD DS 託管域處於*掛起*狀態 15 天,則將其刪除。 此過程不可恢復。
+如果 Azure AD DS 受控網域處於*暫停*狀態15天，則會被刪除。 此進程無法復原。
 
 ### <a name="what-to-expect"></a>未來展望
 
-當 Azure AD DS 託管域進入 *「已刪除」* 狀態時,可以看到以下行為:
+當 Azure AD DS 受控網域進入*已刪除*狀態時，會看到下列行為：
 
 * 該受控網域的所有資源和備份都會被刪除。
-* 無法還原託管域,需要創建替換託管域以重用 Azure AD DS。
+* 您無法還原受控網域，且必須建立替代的受控網域，才能重複使用 Azure AD DS。
 * 將它刪除之後，您就不需繼續支付該受控網域的費用。
 
 ## <a name="next-steps"></a>後續步驟
 
-要保持 Azure AD DS 託管域的健康並盡量減少其掛起的風險,請瞭解如何[解決託管域的警報][resolve-alerts]。
+若要讓您的 Azure AD DS 受控網域保持良好狀態，並將它暫停的風險降到最低，請瞭解如何[解決受控網域的警示][resolve-alerts]。
 
 <!-- INTERNAL LINKS -->
 [alert-nsg]: alert-nsg.md

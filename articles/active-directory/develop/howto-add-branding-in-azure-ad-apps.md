@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.openlocfilehash: c5b63fb0b66c78b33fb073eca919ed55bd05107c
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884421"
 ---
 # <a name="branding-guidelines-for-applications"></a>應用程式的商標指導方針
@@ -63,13 +63,13 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 [取得應用程式] 連結必須將使用者重新導向到 Azure AD 授與存取權 (授權) 頁面，讓組織的系統管理員可授權您的應用程式來存取由 Microsoft 代管的組織資料。 [整合應用程式與 Azure Active Directory](quickstart-v1-integrate-apps-with-azure-ad.md) 一文中詳細討論存取權的要求方式。
 
-在管理員同意你的應用後,他們可以選擇將其添加到使用者的 Office 365 應用啟動器體驗(可從華夫[https://portal.office.com/myapps](https://portal.office.com/myapps)餅和 從 訪問) 如果您想要宣傳此功能，可以使用「將此應用程式加入至您的組織」之類的詞彙，並顯示類似下列範例的按鈕：
+在系統管理員同意您的應用程式之後，他們可以選擇將其新增至使用者的 Office 365 應用程式啟動器體驗（可從松餅[https://portal.office.com/myapps](https://portal.office.com/myapps)和存取）。 如果您想要宣傳此功能，可以使用「將此應用程式加入至您的組織」之類的詞彙，並顯示類似下列範例的按鈕：
 
 ![顯示 Microsoft 標誌和「新增至我的組織」文字的按鈕](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 不過，我們建議您撰寫說明文字，而不要依賴按鈕。 例如：
 
-> *如果您已經使用 Microsoft 的 Office 365 或其他業務服務,則可以授予<your_app_name>訪問組織的數據。這將允許使用者使用現有工作帳戶訪問<your_app_name>。*
+> *如果您已經使用 Microsoft 的 Office 365 或其他商務服務，您可以授與 <your_app_name> 存取貴組織的資料。這可讓您的使用者使用其現有的工作帳戶來存取 <your_app_name>。*
 
 若要下載官方 Microsoft 標誌並在您的應用程式中使用，請以滑鼠右鍵按一下您要使用的標誌，然後將其儲存到您的電腦。
 
@@ -102,7 +102,7 @@ Microsoft 不會在 Azure 或 Active Directory 品牌名稱上公開使用者，
 
 **建議**將「工作或學校帳戶」與「使用 Microsoft 登入」按鈕結合使用，以提供更多說明協助使用者了解是否可使用它。 **禁止** 使用「企業帳戶」、「商務帳戶」或「公司帳戶」之類的其他詞彙。
 
-**不要**使用"Office 365 ID"或"Azure ID"。 Office 365 也是 Microsoft 提供的消費型供應項目名稱，不會使用 Azure AD 進行驗證。
+**請勿**使用 "OFFICE 365 id" 或 "Azure id"。 Office 365 也是 Microsoft 提供的消費型供應項目名稱，不會使用 Azure AD 進行驗證。
 
 **禁止** 改變 Microsoft 標誌。
 

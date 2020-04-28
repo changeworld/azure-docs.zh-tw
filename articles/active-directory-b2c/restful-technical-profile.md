@@ -1,5 +1,5 @@
 ---
-title: 在自訂策略中定義 RESTful 技術設定檔
+title: 在自訂原則中定義 RESTful 技術設定檔
 titleSuffix: Azure AD B2C
 description: 定義 Azure Active Directory B2C 自訂原則中的 RESTful 技術設定檔。
 services: active-directory-b2c
@@ -12,17 +12,17 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 410f413fc8450c0ee33c3ca95e860a3e8de34107
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80332616"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的 RESTful 技術設定檔
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure 活動目錄 B2C（Azure AD B2C）支援集成您自己的 RESTful 服務。 Azure AD B2C 會在輸入宣告集合中將資料傳送至 RESTful 服務，並在輸出宣告集合中接收資料。 有關詳細資訊，請參閱在[Azure AD B2C 自訂策略中集成 REST API 聲明交換](custom-policy-rest-api-intro.md)。  
+Azure Active Directory B2C （Azure AD B2C）提供整合您自己的 RESTful 服務的支援。 Azure AD B2C 會在輸入宣告集合中將資料傳送至 RESTful 服務，並在輸出宣告集合中接收資料。 如需詳細資訊，請參閱[在您的 Azure AD B2C 自訂原則中整合 REST API 宣告交換](custom-policy-rest-api-intro.md)。  
 
 ## <a name="protocol"></a>通訊協定
 
@@ -51,20 +51,20 @@ Azure 活動目錄 B2C（Azure AD B2C）支援集成您自己的 RESTful 服務�
 
 **InputClaimsTransformations** 元素可能含有 **InputClaimsTransformation** 的集合，用於修改輸入宣告或產生新的輸入宣告，然後再傳送至 REST API。
 
-## <a name="send-a-json-payload"></a>發送 JSON 有效負載
+## <a name="send-a-json-payload"></a>傳送 JSON 承載
 
-REST API 技術設定檔允許您將複雜的 JSON 負載發送到終結點。
+REST API 技術設定檔可讓您將複雜的 JSON 承載傳送至端點。
 
-要發送複雜的 JSON 負載：
+若要傳送複雜的 JSON 承載：
 
-1. 使用[生成 Jon](json-transformations.md)聲明轉換構建 JSON 有效負載。
-1. 在 REST API 技術設定檔中：
-    1. 添加輸入聲明轉換，引用`GenerateJson`聲明轉換。
-    1. 將`SendClaimsIn`中繼資料選項設置為`body`
-    1. 將`ClaimUsedForRequestPayload`中繼資料選項設置為包含 JSON 負載的聲明的名稱。
-    1. 在輸入聲明中，添加對包含 JSON 負載的輸入聲明的引用。
+1. 使用[GenerateJson](json-transformations.md)宣告轉換來建立您的 JSON 承載。
+1. 在 [REST API 技術設定檔：
+    1. 使用`GenerateJson`宣告轉換的參考來新增輸入宣告轉換。
+    1. 將`SendClaimsIn`中繼資料選項設定為`body`
+    1. 將`ClaimUsedForRequestPayload`中繼資料選項設定為包含 JSON 承載的宣告名稱。
+    1. 在輸入宣告中，將參考新增至包含 JSON 承載的輸入宣告。
 
-以下示例`TechnicalProfile`使用協力廠商電子郵件服務（本例中為 SendGrid）發送驗證電子郵件。
+下列範例`TechnicalProfile`會使用協力廠商電子郵件服務（在此案例中為 SendGrid）來傳送驗證電子郵件。
 
 ```XML
 <TechnicalProfile Id="SendGrid">
@@ -114,15 +114,15 @@ REST API 技術設定檔允許您將複雜的 JSON 負載發送到終結點。
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | ServiceUrl | 是 | REST API 端點的 URL。 |
-| AuthenticationType | 是 | RESTful 宣告提供者正在執行的驗證類型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None` 值表示 REST API 並非匿名。 `Basic` 值表示 REST API 受到 HTTP 基本驗證保護。 只有經過驗證的使用者 (包括 Azure AD B2C) 才能存取您的 API。 `ClientCertificate` （建議）值表示 REST API 使用用戶端憑證身份驗證限制訪問。 只有具有適當證書的服務（例如 Azure AD B2C）才能訪問 API。 該`Bearer`值指示 REST API 使用用戶端 OAuth2 承載權杖限制訪問。 |
-| 允許不安全生產| 否| `AuthenticationType`指示是否可以`none`在生產環境中設置為`DeploymentMode`（[信任框架策略](trustframeworkpolicy.md)設置為`Production`， 或未指定）。 可能的值：true 或 false（預設值）。 |
-| SendClaimsIn | 否 | 指定輸入宣告如何傳送至 RESTful 宣告提供者。 可能的值：`Body` (預設)、`Form`、`Header` 或 `QueryString`。 `Body` 值是以 JSON 格式在要求本文中傳送的輸入宣告。 `Form` 值是以符號 '&' 分隔的金鑰值格式在要求本文中傳送的輸入宣告。 `Header` 值是在要求標題中傳送的輸入宣告。 `QueryString` 值是在要求查詢字串中傳送的輸入宣告。 每個引用的 HTTP 謂詞如下所示：<br /><ul><li>`Body`： 郵遞</li><li>`Form`： 郵遞</li><li>`Header`： 獲取</li><li>`QueryString`： 獲取</li></ul> |
-| ClaimsFormat | 否 | 當前未使用，可以忽略。 |
-| 請求有效負載的索賠| 否 | 包含要發送到 REST API 的負載的字串聲明的名稱。 |
-| DebugMode | 否 | 在偵錯模式中執行技術設定檔。 可能的值：`true`或`false`（預設值）。 在偵錯模式中，REST API 可以傳回更多資訊。 請參閱[返回錯誤訊息](#returning-error-message)部分。 |
-| 包括索賠解決索賠處理  | 否 | 對於輸入和輸出聲明，指定[索賠解析](claim-resolver-overview.md)是否包含在技術設定檔中。 可能的值：`true`或`false` （預設值）。 如果要在技術設定檔中使用聲明解析器，則將此解決方案設置為`true`。 |
-| 解決JsonPathinJonTokens  | 否 | 指示技術設定檔是否解析 JSON 路徑。 可能的值：`true`或`false`（預設值）。 使用此中繼資料可以從嵌套的 JSON 元素讀取資料。 在[輸出聲明](technicalprofiles.md#outputclaims)中，`PartnerClaimType`將 設置為要輸出的 JSON 路徑元素。 例如：`firstName.localized`或`data.0.to.0.email`。|
-| 使用聲明標記| 否| 包含無記名權杖的聲明的名稱。|
+| AuthenticationType | 是 | RESTful 宣告提供者正在執行的驗證類型。 可能的值：`None`、`Basic`、`Bearer` 或 `ClientCertificate`。 `None` 值表示 REST API 並非匿名。 `Basic` 值表示 REST API 受到 HTTP 基本驗證保護。 只有經過驗證的使用者 (包括 Azure AD B2C) 才能存取您的 API。 `ClientCertificate` （建議）值表示 REST API 使用用戶端憑證驗證來限制存取。 只有具有適當憑證（例如 Azure AD B2C）的服務才能存取您的 API。 `Bearer`值表示 REST API 使用用戶端 OAuth2 持有人權杖來限制存取。 |
+| AllowInsecureAuthInProduction| 否| 指出是否`AuthenticationType`可在生產環境中`none`設定為（`DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md)的設定為`Production`或未指定）。 可能的值： true 或 false （預設值）。 |
+| SendClaimsIn | 否 | 指定輸入宣告如何傳送至 RESTful 宣告提供者。 可能的值：`Body` (預設)、`Form`、`Header` 或 `QueryString`。 `Body` 值是以 JSON 格式在要求本文中傳送的輸入宣告。 `Form` 值是以符號 '&' 分隔的金鑰值格式在要求本文中傳送的輸入宣告。 `Header` 值是在要求標題中傳送的輸入宣告。 `QueryString` 值是在要求查詢字串中傳送的輸入宣告。 每個所叫用的 HTTP 指令動詞如下：<br /><ul><li>`Body`： POST</li><li>`Form`： POST</li><li>`Header`： GET</li><li>`QueryString`： GET</li></ul> |
+| ClaimsFormat | 否 | 目前未使用，可以忽略。 |
+| ClaimUsedForRequestPayload| 否 | 字串宣告的名稱，其中包含要傳送至 REST API 的承載。 |
+| DebugMode | 否 | 在偵錯模式中執行技術設定檔。 可能的值`true`：、 `false`或（預設）。 在偵錯模式中，REST API 可以傳回更多資訊。 請參閱傳回[錯誤訊息](#returning-error-message)一節。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值`true`：、 `false`  或（預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將`true`此設定為。 |
+| ResolveJsonPathsInJsonTokens  | 否 | 指出技術設定檔是否會解析 JSON 路徑。 可能的值`true`：、 `false`或（預設）。 使用此中繼資料，從嵌套的 JSON 元素讀取資料。 在[OutputClaim](technicalprofiles.md#outputclaims)中，將設定`PartnerClaimType`為您想要輸出的 JSON 路徑元素。 例如： `firstName.localized`、或`data.0.to.0.email`。|
+| UseClaimAsBearerToken| 否| 包含持有人權杖的宣告名稱。|
 
 ## <a name="cryptographic-keys"></a>密碼編譯金鑰
 
@@ -190,7 +190,7 @@ REST API 技術設定檔允許您將複雜的 JSON 負載發送到終結點。
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 承載身份驗證權杖 | 否 | OAuth 2.0 承載權杖。 |
+| BearerAuthenticationToken | 否 | OAuth 2.0 持有人權杖。 |
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -209,7 +209,7 @@ REST API 技術設定檔允許您將複雜的 JSON 負載發送到終結點。
 
 ## <a name="returning-error-message"></a>傳回錯誤訊息
 
-您的 REST API 可能需要傳回錯誤訊息，例如「CRM 系統中找不到使用者」。 如果發生錯誤，REST API 應返回 HTTP 4xx 錯誤訊息，例如 400（錯誤請求）或 409（衝突）回應狀態碼。 回應正文包含在 JSON 中格式化的錯誤訊息：
+您的 REST API 可能需要傳回錯誤訊息，例如「CRM 系統中找不到使用者」。 如果發生錯誤，REST API 應該會傳回 HTTP 4xx 錯誤訊息，例如400（不正確的要求）或409（衝突）回應狀態碼。 回應主體包含以 JSON 格式格式化的錯誤訊息：
 
 ```JSON
 {
@@ -225,9 +225,9 @@ REST API 技術設定檔允許您將複雜的 JSON 負載發送到終結點。
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| version | 是 | REST API 版本。 例如： 1.0.1 |
-| status | 是 | 必須為 409 |
-| 代碼 | 否 | RESTful 端點提供者的錯誤代碼，在啟用 `DebugMode` 時顯示。 |
+| version | 是 | 您的 REST API 版本。 例如：1.0。1 |
+| status | 是 | 必須是409 |
+| code | 否 | RESTful 端點提供者的錯誤代碼，在啟用 `DebugMode` 時顯示。 |
 | requestId | 否 | RESTful 端點提供者的要求識別碼，在啟用 `DebugMode` 時顯示。 |
 | userMessage | 是 | 向使用者顯示的錯誤訊息。 |
 | developerMessage | 否 | 問題的詳細描述及修復方式，在啟用 `DebugMode` 時顯示。 |
@@ -251,10 +251,10 @@ public class ResponseContent
 
 ## <a name="next-steps"></a>後續步驟
 
-有關使用 RESTful 技術設定檔的示例，請參閱以下文章：
+如需使用 RESTful 技術設定檔的範例，請參閱下列文章：
 
-- [在 Azure AD B2C 自訂策略中集成 REST API 聲明交換](custom-policy-rest-api-intro.md)
-- [演練：在 Azure AD B2C 使用者旅程中集成 REST API 聲明交換，作為使用者輸入的驗證](custom-policy-rest-api-claims-validation.md)
-- [演練：將 REST API 聲明交換添加到 Azure 活動目錄 B2C 中的自訂策略](custom-policy-rest-api-claims-validation.md)
+- [在您的 Azure AD B2C 自訂原則中整合 REST API 宣告交換](custom-policy-rest-api-intro.md)
+- [逐步解說：在您的 Azure AD B2C 使用者旅程圖中整合 REST API 宣告交換，做為使用者輸入的驗證](custom-policy-rest-api-claims-validation.md)
+- [逐步解說：在 Azure Active Directory B2C 中將 REST API 宣告交換新增至自訂原則](custom-policy-rest-api-claims-validation.md)
 - [保護您的 REST API 服務](secure-rest-api.md)
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure MFA 與 ADFS 保護資源 - Azure 活動目錄
+title: 使用 Azure MFA 和 ADFS 保護資源-Azure Active Directory
 description: 這是說明如何在雲端開始使用 Azure MFA 和 AD FS 的 Azure Multi-Factor Authentication 頁面。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5949fdce9d591a9c02c5c6c4fb2f1dde94c45d2
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654028"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>使用 Azure Multi-Factor Authentication 與 AD FS 保護雲端資源
@@ -28,13 +28,13 @@ ms.locfileid: "80654028"
 
 1. 開啟 [AD FS 管理]。
 2. 在左側選取 [信賴憑證者信任]****。
-3. 右鍵單擊**Microsoft Office 365 標識平台**並選擇 **「編輯聲明規則**」。
+3. 以滑鼠右鍵按一下 [ **Microsoft Office 365 身分識別平臺**]，然後選取 [**編輯宣告規則**]。
 
-   ![ADFS 主控台 - 相依方信託](./media/howto-mfa-adfs/trustedip1.png)
+   ![ADFS 主控台-信賴憑證者信任](./media/howto-mfa-adfs/trustedip1.png)
 
-4. 在「頒發轉換規則」時,按一下「**添加規則**」。
+4. 在 [發行轉換規則] 上，按一下 [**新增規則**]。
 
-   ![編輯發行轉轉規則](./media/howto-mfa-adfs/trustedip2.png)
+   ![編輯發行轉換規則](./media/howto-mfa-adfs/trustedip2.png)
 
 5. 在 [新增轉換宣告規則精靈] 上，從下拉式清單選取 [通過或篩選傳入宣告]****，然後按 [下一步]****。
 
@@ -42,7 +42,7 @@ ms.locfileid: "80654028"
 
 6. 指定規則的名稱。 
 7. 選取 [驗證方法參考]**** 做為傳入宣告類型。
-8. 選擇 **「傳遞所有聲明值**」 。
+8. 選取 [**傳遞所有宣告值**]。
     ![新增轉換宣告規則精靈](./media/howto-mfa-adfs/configurewizard.png)
 9. 按一下 [完成]  。 關閉 AD FS 管理主控台。
 
@@ -58,26 +58,26 @@ ms.locfileid: "80654028"
 
 1. 開啟 [AD FS 管理]。
 2. 在左側選取 [信賴憑證者信任]****。
-3. 右鍵單擊**Microsoft Office 365 標識平臺**並選擇 **"編輯聲明規則..."...**
-   ADFS 主控台![- 編輯 索賠規則](./media/howto-mfa-adfs/trustedip1.png)
-4. 在「頒發轉換規則」時,按一下「**添加規則」。**
-   ![](./media/howto-mfa-adfs/trustedip2.png)
+3. 以滑鼠右鍵按一下 [ **Microsoft Office 365 身分識別平臺**]，然後選取 [**編輯宣告規則 ...** ]
+   ADFS 主控台-編輯![宣告規則](./media/howto-mfa-adfs/trustedip1.png)
+4. 在 [發行轉換規則] 上，按一下 [**新增規則]。**
+    ![](./media/howto-mfa-adfs/trustedip2.png)
 5. 在 [新增轉換宣告規則精靈] 上，從下拉式清單選取 [通過或篩選傳入宣告]****，然後按 [下一步]****。
    ![新增轉換宣告規則精靈](./media/howto-mfa-adfs/trustedip3.png)
 6. 在 [宣告規則名稱] 旁邊的方塊中，命名您的規則。 例如：InsideCorpNet。
 7. 從 [連入宣告類型] 旁邊的下拉式清單中，選取 [位於公司網路之內]****。
-   ![新增企業網路內部索賠](./media/howto-mfa-adfs/trustedip4.png)
+   ![在公司網路宣告中新增](./media/howto-mfa-adfs/trustedip4.png)
 8. 按一下 [完成]  。
-9. 在「頒發轉換規則」時,按一下「**添加規則**」。
+9. 在 [發行轉換規則] 上，按一下 [**新增規則**]。
 10. 在 [新增轉換宣告規則精靈] 上，從下拉式清單選取 [使用自訂規則傳送宣告]****，然後按 [下一步]****。
 11. 在 [宣告規則名稱] 下的方塊中：輸入「保持使用者登入」**。
 12. 在 [自訂規則] 方塊中輸入：
 
         c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
             => issue(claim = c);
-    ![建立自訂宣告以保持使用者登入](./media/howto-mfa-adfs/trustedip5.png)
+    ![建立自訂宣告以讓使用者保持登入](./media/howto-mfa-adfs/trustedip5.png)
 13. 按一下 [完成]  。
-14. 按一下 [套用]****。
+14. 按一下 [套用]  。
 15. 按一下 [確定]  。
 16. 關閉 [AD FS 管理]。
 
@@ -86,12 +86,12 @@ ms.locfileid: "80654028"
 既然已經有宣告，我們可以開始設定信任的 IP。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選擇**Azure 的目錄** > **安全** > **條件存取** > **命名位置**。
-3. 從**條件存取 -指定位置**邊列選項卡中,選擇**設定受 MFA 信任的 IP**
+2. 選取 [ **Azure Active Directory** > **安全性** > **條件式存取** > ]，**名為 [位置**]。
+3. 從 [**條件式存取-命名位置**] 分頁中，選取 [**設定 MFA 信任的 ip** ]
 
-   ![Azure AD 條件存取命名位置 設定 MFA 受信任的 IP](./media/howto-mfa-adfs/trustedip6.png)
+   ![Azure AD 名為位置的條件式存取設定 MFA 信任的 Ip](./media/howto-mfa-adfs/trustedip6.png)
 
 4. 在 [服務設定] 頁面的 [信任的 IP]**** 下，選取 [對於來自內部網路之同盟使用者的要求略過多重要素驗證]****。  
-5. 按下 **「保存**」。
+5. 按一下 [**儲存**]。
 
-就這麼簡單！ 現在，當宣告來自公司內部網路之外時，Office 365 使用者同盟只需要使用 MFA。
+這樣就完成了！ 現在，當宣告來自公司內部網路之外時，Office 365 使用者同盟只需要使用 MFA。

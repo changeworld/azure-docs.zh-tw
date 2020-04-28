@@ -1,7 +1,7 @@
 ---
 title: 適用於 Android 裝置的共用裝置模式
 titleSuffix: Microsoft identity platform | Azure
-description: 瞭解如何啟用共用設備模式,以允許一線工作人員共用 Android 設備
+description: 瞭解如何啟用共用裝置模式，以允許第一線背景工作角色共用 Android 裝置
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
 ms.openlocfilehash: d9874e27c21906512c2f6c841767b4d6591dbeaf
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80550262"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>適用於 Android 裝置的共用裝置模式
@@ -27,43 +27,43 @@ ms.locfileid: "80550262"
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-一線員工(如零售員工、機組人員和現場服務人員)通常使用共用行動裝置完成工作。 當他們開始共享密碼或 PIN 號以造訪共享裝置上的客戶和業務數據時,這就成問題了。
+第一線的工作者（例如零售協會、航班小組成員，以及現場服務工作者）通常會使用共用的行動裝置來執行其工作。 當他們開始共用密碼或 pin 號碼以存取共用裝置上的客戶和商務資料時，就會發生問題。
 
-共用設備模式允許您配置 Android 設備,以便多個員工可以輕鬆共用該設備。 員工可以快速登錄和訪問客戶資訊。 當他們完成輪班或任務后,他們可以註銷設備,並且將立即為下一個員工使用做好準備。
+共用裝置模式可讓您設定 Android 裝置，讓多個員工可以輕鬆地共用它。 員工可以快速登入並存取客戶資訊。 當他們完成其轉移或工作時，可以登出裝置，並立即準備好供下一位員工使用。
 
-共用設備模式還提供 Microsoft 標識支援的設備管理。
+共用裝置模式也提供對裝置進行 Microsoft 身分識別支援的管理。
 
-要建立共享設備模式應用,開發人員和雲端裝置管理員將協同工作:
+若要建立共用裝置模式應用程式，開發人員和雲端裝置管理員會共同作業：
 
-- 開發人員編寫單帳戶應用(共用設備模式下不支援多帳戶應用),添加到`"shared_device_mode_supported": true`應用的配置,並編寫代碼來處理共用設備註銷等內容。
-- 設備管理員透過安裝身份驗證器應用並使用身分驗證器應用將設備設置為共用模式來準備要共用的設備。 只有處於[雲端裝置管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions)角色的使用者才能使用[身份驗證器應用](../user-help/user-help-auth-app-overview.md)將設備置於共用模式。 您可以通過 **:Azure 活動目錄** > **角色和管理員** > **雲設備管理員**在 Azure 門戶中配置組織角色的成員身份。
+- 開發人員撰寫單一帳戶應用程式（共用裝置模式中不支援多帳戶應用程式）、新增`"shared_device_mode_supported": true`至應用程式的設定，以及撰寫程式碼來處理像是共用裝置登出之類的專案。
+- 裝置系統管理員會藉由安裝驗證器應用程式來準備要共用的裝置，並使用驗證器應用程式將裝置設定為共用模式。 只有[雲端裝置系統管理員](../users-groups-roles/directory-assign-admin-roles.md#cloud-device-administrator-permissions)角色的使用者可以使用[驗證器應用程式](../user-help/user-help-auth-app-overview.md)，讓裝置進入共用模式。 您可以透過下列方式，在 Azure 入口網站中設定組織角色的成員資格： **Azure Active Directory** > **角色和系統管理員** > **雲端裝置管理員**。
 
- 本文主要集中於開發人員應該考慮的內容。
+ 本文主要著重于開發人員應該考慮的事項。
 
-## <a name="single-vs-multiple-account-applications"></a>單帳戶與多帳戶應用程式
+## <a name="single-vs-multiple-account-applications"></a>單一 vs 多重帳戶應用程式
 
-使用 Microsoft 身份驗證庫 SDK (MSAL) 編寫的應用程式可以管理單個帳戶或多個帳戶。 有關詳細資訊,請參閱[單帳戶模式或多帳戶模式](single-multi-account.md)。 適用於你的應用的 Microsoft 識別平臺功能因應用程式是在單帳戶模式還是多帳戶模式下運行而異。
+使用 Microsoft 驗證程式庫 SDK （MSAL）所撰寫的應用程式可以管理單一帳戶或多個帳戶。 如需詳細資訊，請參閱[單一帳戶模式或多帳戶模式](single-multi-account.md)。 您的應用程式可用的 Microsoft 身分識別平臺功能，會根據應用程式是以單一帳戶模式或多帳戶模式執行而有所不同。
 
-**共用裝置模式應用僅在單帳戶模式下工作**。
+**共用裝置模式應用程式只能在單一帳戶模式下工作**。
 
 > [!IMPORTANT]
-> 僅支援多帳戶模式的應用程式無法在共用設備上運行。 如果員工載入不支援單帳戶模式的應用,則它不會在共用設備上運行。
+> 僅支援多帳戶模式的應用程式不能在共用裝置上執行。 如果員工載入不支援單一帳戶模式的應用程式，它就不會在共用裝置上執行。
 >
-> 在 MSAL SDK 發佈之前編寫的應用以多帳戶模式運行,必須先更新以支援單帳戶模式,然後才能在共用模式設備上運行。
+> MSAL SDK 發行之前所撰寫的應用程式會以多帳戶模式執行，而且必須更新以支援單一帳戶模式，才能在共用模式裝置上執行。
 
-**支援單一帳號和多個帳戶**
+**同時支援單一帳戶和多個帳戶**
 
-可以構建應用以支援在個人設備和共享設備上運行。 如果應用當前支援多個帳戶,並且希望支援共享設備模式,請添加對單一帳戶模式的支援。
+您的應用程式可以建立為支援在個人裝置和共用裝置上執行。 如果您的應用程式目前支援多個帳戶，而您想要支援共用裝置模式，請新增單一帳戶模式的支援。
 
-您可能還希望應用根據運行的設備類型更改其行為。 用於`ISingleAccountPublicClientApplication.isSharedDevice()`確定何時在單一帳戶模式下運行。
+您可能也會想要讓您的應用程式根據其執行所在的裝置類型來變更其行為。 使用`ISingleAccountPublicClientApplication.isSharedDevice()`來判斷何時以單一帳戶模式執行。
 
-有兩個不同的介面表示應用程式打開的設備類型。 當您從 MSAL 的應用程式工廠請求應用程式實例時,將自動提供正確的應用程式物件。
+有兩個不同的介面，代表您的應用程式所在的裝置類型。 當您從 MSAL 的應用程式 factory 要求應用程式實例時，會自動提供正確的應用程式物件。
 
-以下物件模型說明瞭您可能會接收的物件類型以及它在共享裝置的上下文中的含義:
+下列物件模型說明您可能會收到的物件類型，以及它在共用裝置內容中的意義：
 
-![公開用戶端應用程式繼承模型](media/v2-shared-device-mode/ipublic-client-app-inheritance.png)
+![公用用戶端應用程式繼承模型](media/v2-shared-device-mode/ipublic-client-app-inheritance.png)
 
-獲取`PublicClientApplication`物件時,需要執行類型檢查並強制轉換為相應的介面。 以下代碼檢查多個帳戶模式或單帳戶模式,並適當地強制強制轉換應用程式物件:
+當您取得`PublicClientApplication`物件時，您必須進行型別檢查並轉換成適當的介面。 下列程式碼會檢查是否有多個帳戶模式或單一帳戶模式，並適當地轉換應用程式物件：
 
 ```java
 private IPublicClientApplication mApplication;
@@ -79,33 +79,33 @@ private IPublicClientApplication mApplication;
         }
 ```
 
-以下差異適用於應用是否在共享裝置或個人裝置上執行:
+下列差異取決於您的應用程式是在共用或個人裝置上執行：
 
 |  | 共用模式裝置  | 個人裝置 |
 |---------|---------|---------|
 | **帳戶**     | 單一帳戶 | 多個帳戶 |
 | **登入** | 全域 | 全域 |
-| **登出** | 全域 | 每個應用程式都可以控制登出是應用還是應用程式系列的本地。 |
-| **支援的帳戶類型** | 僅限工作帳戶 | 支援個人帳戶和工作帳戶  |
+| **登出** | 全域 | 每個應用程式都可以控制登出應用程式的本機或應用程式系列。 |
+| **支援的帳戶類型** | 僅限工作帳戶 | 支援個人和公司帳戶  |
 
-## <a name="why-you-may-want-to-only-support-single-account-mode"></a>為什麼您可能只想支援單一帳戶模式
+## <a name="why-you-may-want-to-only-support-single-account-mode"></a>為什麼您可能只想要支援單一帳戶模式
 
-如果您正在編寫僅用於使用共享設備的一線工作人員的應用,我們建議您將應用程式編寫為僅支援單帳戶模式。 這包括大部分以工作為主的應用程式，例如醫療記錄應用程式、發票應用程式，以及大多數的企業營運應用程式。 僅支援單帳戶模式即可簡化開發,因為您不需要實現屬於多帳戶應用的其他功能。
+如果您撰寫的應用程式只會用於使用共用裝置的第一線背景工作，我們建議您撰寫應用程式，只支援單一帳戶模式。 這包括大部分以工作為主的應用程式，例如醫療記錄應用程式、發票應用程式，以及大多數的企業營運應用程式。 僅支援單一帳戶模式可簡化開發，因為您不需要執行屬於多帳戶應用程式一部分的其他功能。
 
-## <a name="what-happens-when-the-device-mode-changes"></a>裝置模式變更時會發生什麼情況
+## <a name="what-happens-when-the-device-mode-changes"></a>當裝置模式變更時，會發生什麼事
 
-如果應用程式在多帳戶模式下運行,並且管理員將設備置於共用設備模式,則設備上的所有帳戶都將從應用程式清除,應用程式將轉換為單帳戶模式。
+如果您的應用程式是以多帳戶模式執行，而且系統管理員將裝置設為共用裝置模式，則會從應用程式清除裝置上的所有帳戶，而應用程式會轉換成單一帳戶模式。
 
-## <a name="shared-device-sign-out-and-the-overall-app-lifecycle"></a>共用裝置登出與整個應用程式生命週期
+## <a name="shared-device-sign-out-and-the-overall-app-lifecycle"></a>共用裝置登出和整體應用程式生命週期
 
-當使用者退出時,您需要採取措施保護用戶的隱私和數據。 例如,如果要構建醫療記錄應用,則需要確保當使用者退出以前顯示的患者記錄時被清除。 您的應用程式必須為此做好準備,並在每次進入前臺時進行檢查。
+當使用者登出時，您必須採取動作來保護使用者的隱私權和資料。 例如，如果您要建立醫療記錄應用程式，您會想要確保在使用者登出先前顯示的患者記錄時，會進行清除。 您的應用程式必須準備好進行此工作，並在每次進入前景時檢查。
 
-當應用使用 MSAL 在處於共用模式的設備上運行的應用中登出使用者時,將從應用和設備中刪除登錄帳戶和緩存權杖。
+當您的應用程式使用 MSAL 在共用模式的裝置上執行的應用程式中登出使用者時，會從應用程式和裝置中移除登入帳戶和快取權杖。
 
-下圖顯示了應用運行時可能發生的總體應用生命週期和常見事件。 該圖涵蓋從活動啟動、登錄和註銷帳戶的時間,以及暫停、恢復和停止活動等事件如何配合。
+下圖顯示應用程式執行時可能發生的整體應用程式生命週期和一般事件。 此圖表涵蓋活動啟動、登入和登出帳戶的時間，以及事件（例如暫停、繼續和停止活動）如何納入。
 
-![共用裝置應用生命週期](media/v2-shared-device-mode/lifecycle.png)
+![共用裝置應用程式生命週期](media/v2-shared-device-mode/lifecycle.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-在[Android 應用程式教程中嘗試使用共用設備模式](tutorial-v2-shared-device-mode.md),該教程演示如何在共用模式 Android 設備上運行一線輔助應用。
+請嘗試在[android 應用程式中使用共用裝置模式](tutorial-v2-shared-device-mode.md)教學課程，以瞭解如何在共用模式的 android 裝置上執行第一線 worker 應用程式。

@@ -1,5 +1,5 @@
 ---
-title: Windows 伺服器中包含 AD FS 的 Azure MFA 伺服器 - Azure 活動目錄
+title: Windows Server 中具有 AD FS 的 Azure MFA Server-Azure Active Directory
 description: 本文說明如何開始使用 Azure Multi-Factor Authentication 和 Windows Server 2012 R2 和 2016 中的 AD FS。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2777675d915d99b8c0e3c2a123b24ab60d41f672
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653358"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>設定 Azure Multi-Factor Authentication Server 以搭配 Windows Server 中的 AD FS 運作
@@ -25,7 +25,7 @@ ms.locfileid: "80653358"
 在本文中，我們將討論如何搭配 Windows Server 2012 R2 或 Windows Server 2016 中的 AD FS 使用 Azure Multi-Factor Authentication Server。 如需詳細資訊，請參閱 [搭配 AD FS 2.0 使用 Azure Multi-Factor Authentication Server 來保護雲端和內部部署資源](howto-mfaserver-adfs-2.md)。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起,Microsoft 將不再為新部署提供 MFA 伺服器。 希望用戶進行多重身份驗證的新客戶應使用基於雲的 Azure 多重身份驗證。 在 7 月 1 日之前啟動 MFA 伺服器的現有客戶將能夠像往常一樣下載最新版本、將來的更新並生成啟動認證。
+> 從2019年7月1日起，Microsoft 將不再為新的部署提供 MFA 伺服器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟動 MFA Server 的現有客戶將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
 
 ## <a name="secure-windows-server-ad-fs-with-azure-multi-factor-authentication-server"></a>使用 Azure Multi-Factor Authentication Server 保護 Windows Server AD FS
 
@@ -49,7 +49,7 @@ ms.locfileid: "80653358"
 3. 選取您想要為您的組織指定的任何其他選項。
 4. 按一下 [安裝 AD FS 配接器] ****。
 
-   ![從 MFA 伺服器主控台安裝 ADFS 配接器](./media/howto-mfaserver-adfs-2012/server.png)
+   ![從 MFA Server 主控台安裝 ADFS 介面卡](./media/howto-mfaserver-adfs-2012/server.png)
 
 5. 如果顯示 [Active Directory] 視窗，這代表兩件事情。 您的電腦已加入網域，而且用於保護 AD FS 配接器與 Multi-Factor Authentication 服務間通訊的 Active Directory 組態尚未完成。 按 [下一步]**** 自動完成此設定，或選取 [略過自動 Active Directory 設定並手動進行設定]**** 核取方塊。 按 [下一步]  。
 6. 如果顯示 [本機群組] 視窗，這代表兩件事情。 您的電腦未加入網域，而且用於保護 AD FS 配接器與 Multi-Factor Authentication 服務間通訊的本機群組組態尚未完成。 按 [下一步]**** 自動完成此設定，或選取 [略過自動本機群組設定並手動進行設定]**** 核取方塊。 按 [下一步]  。
@@ -63,7 +63,7 @@ ms.locfileid: "80653358"
 
 12. 若要使用最近登錄的配接器，請編輯 AD FS 中的通用驗證原則。 在 AD FS 管理主控台中，移至 [驗證原則] **** 節點。 在 [Multi-Factor Authentication]**** 區段中，按一下 [全域設定]**** 區段旁邊的 [編輯]**** 連結。 在 [編輯全域驗證原則]**** 視窗中，選取 [多重要素驗證]**** 作為其他驗證方法，然後按一下 [確定]****。 此配接器會登錄為 WindowsAzureMultiFactorAuthentication。 重新啟動 AD FS 服務，以讓登錄生效。
 
-![編輯全域身份驗證原則](./media/howto-mfaserver-adfs-2012/global.png)
+![編輯全域驗證原則](./media/howto-mfaserver-adfs-2012/global.png)
 
 此時，Multi-Factor Authentication Server 已設定為要搭配 AD FS 使用的其他驗證提供者。
 
@@ -84,8 +84,8 @@ ms.locfileid: "80653358"
 請遵循下列步驟來編輯 MultiFactorAuthenticationAdfsAdapter.config 檔案：
 
 1. 將 **UseWebServiceSdk** 節點設定為 **true**。  
-2. 將 **WebServiceSdkUrl** 的值設定為 Multi-Factor Authentication Web 服務 SDK 的 URL。 例如 *:HT:contoso.com/\/\/\<憑證名稱>/多因數AuthWebServiceSdk/PfWsSdk.asmx,* 其中*\<證書名稱>* 是證書的名稱。  
-3. 通過添加到`-ConfigurationFilePath &lt;path&gt;``Register-AdfsAuthenticationProvider`命令的末尾編輯寄存器多因素身份驗證 AdfsAdapter.ps1 腳*&lt;本&gt;*,其中 路徑是多因素身份驗證 AdfsAdapter.config 檔的完整路徑。
+2. 將 **WebServiceSdkUrl** 的值設定為 Multi-Factor Authentication Web 服務 SDK 的 URL。 例如： *HTTPs：\/\/contoso.com/\<certificatename>/multifactorauthwebservicesdk/pfwssdk.asmx*，其中* \<certificatename>* 是您的憑證名稱。  
+3. 藉由將新增`-ConfigurationFilePath &lt;path&gt;`至`Register-AdfsAuthenticationProvider`命令結尾來編輯 register-multifactorauthenticationadfsadapter.ps1 腳本，其中* &lt;path&gt; *是 multifactorauthenticationadfsadapter.config 檔案的完整路徑。
 
 ### <a name="configure-the-web-service-sdk-with-a-username-and-password"></a>以使用者名稱和密碼設定 Web 服務 SDK
 
@@ -134,19 +134,19 @@ ms.locfileid: "80653358"
 2. 在左側選取 [信賴憑證者信任]****。
 3. 以滑鼠右鍵按一下 [Microsoft Office 365 身分識別平台]****，然後選取 [編輯宣告規則...]****
 
-   ![在 ADFS 控制台中編輯聲明規則](./media/howto-mfaserver-adfs-2012/trustedip1.png)
+   ![在 ADFS 主控台中編輯宣告規則](./media/howto-mfaserver-adfs-2012/trustedip1.png)
 
 4. 在 [發佈轉換規則] 上，按一下 [新增規則]****
 
-   ![編輯 ADFS 控制中的轉換規則](./media/howto-mfaserver-adfs-2012/trustedip2.png)
+   ![編輯 ADFS 主控台中的轉換規則](./media/howto-mfaserver-adfs-2012/trustedip2.png)
 
 5. 在 [新增轉換宣告規則精靈] 上，從下拉式清單選取 [通過或篩選傳入宣告]****，然後按 [下一步]****。
 
-   ![新增轉換宣告規則精靈](./media/howto-mfaserver-adfs-2012/trustedip3.png)
+   ![新增轉換宣告規則嚮導](./media/howto-mfaserver-adfs-2012/trustedip3.png)
 
 6. 指定規則的名稱。
 7. 選取 [驗證方法參考]**** 做為傳入宣告類型。
-8. 選擇 **「傳遞所有聲明值**」 。
+8. 選取 [**傳遞所有宣告值**]。
 
     ![新增轉換宣告規則精靈](./media/howto-mfaserver-adfs-2012/configurewizard.png)
 

@@ -1,7 +1,7 @@
 ---
-title: 設定受保護的 Web API 應用 |蔚藍
+title: 設定受保護的 Web API 應用程式 |Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解如何建構受保護的 Web API 並設定應用程式的代碼。
+description: 瞭解如何建立受保護的 Web API，並設定應用程式的程式碼。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,34 +13,34 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 073eca94ad93c69811b02abe2c8649940a394e8e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882466"
 ---
-# <a name="protected-web-api-code-configuration"></a>受保護的 Web API:代碼設定
+# <a name="protected-web-api-code-configuration"></a>受保護的 Web API：程式碼設定
 
-要設定受保護 Web API 的代碼,您需要瞭解:
+若要設定受保護 Web API 的程式碼，您必須瞭解：
 
-- 什麼定義 API 作為受保護。
-- 如何配置無記名令牌。
+- 哪些內容會將 Api 定義為受保護。
+- 如何設定持有人權杖。
 - 如何驗證權杖。
 
-## <a name="what-defines-aspnet-and-aspnet-core-apis-as-protected"></a>哪些定義ASP.NET並將核心 API ASP.NET為受保護?
+## <a name="what-defines-aspnet-and-aspnet-core-apis-as-protected"></a>哪些專案會將 ASP.NET 和 ASP.NET Core Api 定義為受保護？
 
-與 Web 應用一樣,ASP.NET 和 ASP.NET 核心 Web API 受到保護,因為它們的控制器操作是使用 **[授權]** 屬性預固定的。 僅當使用授權標識調用 API 時,才能呼叫控制器操作。
+就像 web 應用程式一樣，ASP.NET 和 ASP.NET Core web Api 會受到保護，因為其控制器動作前面會加上 **[授權]** 屬性。 只有在使用授權的身分識別呼叫 API 時，才能呼叫控制器動作。
 
 請考慮下列問題：
 
-- 只有應用才能調用 Web API。 API 如何知道調用它的應用的標識?
-- 如果應用代表使用者調用 API,則使用者的身份是什麼?
+- 只有應用程式可以呼叫 Web API。 API 如何得知呼叫它的應用程式的身分識別？
+- 如果應用程式代表使用者呼叫 API，使用者的身分識別會是什麼？
 
 ## <a name="bearer-token"></a>持有人權杖
 
-調用應用時在標頭中設置的承載令牌包含有關應用標識的資訊。 它還保存有關使用者的資訊,除非 Web 應用接受來自守護程序應用的服務到服務調用。
+呼叫應用程式時，標頭中所設定的持有人權杖會保存應用程式身分識別的相關資訊。 它也會保存使用者的相關資訊，除非 web 應用程式接受來自 daemon 應用程式的服務對服務呼叫。
 
-下面是一個 C# 代碼範例,該範例顯示客戶端在取得了用於 .NET 的 Microsoft 身份驗證函式庫的權杖後呼叫 API (MSAL.NET):
+以下是一個 c # 程式碼範例，它會顯示用戶端在取得權杖並搭配適用于 .NET 的 Microsoft 驗證程式庫（MSAL.NET）後呼叫 API：
 
 ```csharp
 var scopes = new[] {$"api://.../access_as_user"};
@@ -55,13 +55,13 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> 用戶端應用程式將承載令牌請求到*Web API 的*Microsoft 識別平台終結點。 Web API 是唯一應驗證權杖並查看它包含的聲明的應用程式。 用戶端應用絕不應嘗試在權杖中檢查聲明。
+> 用戶端應用程式會向 Microsoft 身分識別平臺端點要求*Web API*的持有人權杖。 Web API 是唯一應驗證權杖並查看其所包含之宣告的應用程式。 用戶端應用程式應該永遠不會嘗試檢查權杖中的宣告。
 >
-> 將來,Web API 可能要求對權杖進行加密。 此要求將阻止訪問可以查看訪問權杖的用戶端應用。
+> 未來，Web API 可能需要加密權杖。 這項需求會防止可查看存取權杖的用戶端應用程式存取。
 
-## <a name="jwtbearer-configuration"></a>JwtBearer 設定
+## <a name="jwtbearer-configuration"></a>Microsoft.aspnetcore.authentication.jwtbearer 設定
 
-本節介紹如何配置無記名令牌。
+本節說明如何設定持有人權杖。
 
 ### <a name="config-file"></a>組態檔
 
@@ -91,24 +91,24 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 }
 ```
 
-### <a name="code-initialization"></a>代碼初始化
+### <a name="code-initialization"></a>程式碼初始化
 
-當在包含 **[授權]** 屬性的控制器操作上調用應用時,ASP.NET和 ASP.NET酷睿從授權標頭的承載令牌中提取訪問權杖。 然後,訪問令牌將轉發到 JwtBearer 中間件,後者調用 .NET 的 Microsoft 標識模型擴展。
+在保存 **[授權]** 屬性的控制器動作上呼叫應用程式時，ASP.NET 和 ASP.NET Core 會從授權標頭的持有人權杖中解壓縮存取權杖。 存取權杖接著會轉送到 Microsoft.aspnetcore.authentication.jwtbearer 中介軟體，這會呼叫適用于 .NET 的 Microsoft Microsoft.identitymodel 延伸模組。
 
-在ASP.NET核心中,此中間件在Startup.cs檔中初始化。
+在 ASP.NET Core 中，這個中介軟體會在 Startup.cs 檔案中初始化。
 
 ```csharp
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 ```
 
-此指令將中間件新增到 Web API 中:
+此指示會將中介軟體新增至 Web API：
 
 ```csharp
  services.AddAuthentication(AzureADDefaults.JwtBearerAuthenticationScheme)
          .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
 ```
 
- 目前,ASP.NET核心範本創建 Azure 活動目錄 (Azure AD) Web API,這些 API 登錄到組織或任何組織內的使用者。 他們不使用個人帳戶登錄使用者。 但是,您可以通過將此代碼添加到Startup.cs來更改範本以使用 Microsoft 識別平台終結點:
+ 目前，ASP.NET Core 範本會建立 Azure Active Directory （Azure AD） web Api，以便在您的組織或任何組織內登入使用者。 他們不會以個人帳戶登入使用者。 但您可以藉由將下列程式碼新增至 Startup.cs，將範本變更為使用 Microsoft 身分識別平臺端點：
 
 ```csharp
 services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationScheme, options =>
@@ -130,44 +130,44 @@ services.Configure<JwtBearerOptions>(AzureADDefaults.JwtBearerAuthenticationSche
 });
 ```
 
-前面的代碼段是從 Microsoft 中 ASP.NET 核心 Web API 增量教學中提取的[。](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63) **AddProtectedWebApi**方法比代碼段顯示的多,是從Startup.cs調用的。
+上述程式碼片段會從 WebApiServiceCollectionExtensions 中的 ASP.NET Core Web API 累加式教學課程解壓縮，[網址為 L50-L63](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/154282843da2fc2958fad151e2a11e521e358d42/Microsoft.Identity.Web/WebApiServiceCollectionExtensions.cs#L50-L63)。 會從 Startup.cs 呼叫**AddProtectedWebApi**方法（其執行的程式碼片段大於）。
 
 ## <a name="token-validation"></a>權杖驗證
 
-在前面的代碼段中,JwtBearer 中間件(如 Web 應用中的 OpenID Connect 中間件)根據`TokenValidationParameters`的值驗證權杖。 根據需要解密權杖,提取聲明,並驗證簽名。 然後,中間件通過檢查此數據來驗證權杖:
+在先前的程式碼片段中，Microsoft.aspnetcore.authentication.jwtbearer 中介軟體（例如 web 應用程式中的 OpenID Connect 中介軟體）會根據的值`TokenValidationParameters`來驗證權杖。 權杖會視需要解密，宣告會解壓縮，並驗證簽章。 然後中介軟體會藉由檢查此資料來驗證權杖：
 
-- 訪問群體:權杖是 Web API 的目標。
-- Sub:它是為允許調用 Web API 的應用發布的。
-- 頒發者:它由受信任的安全權杖服務 (STS) 頒發。
-- 過期:其存留期在範圍內。
-- 簽名:沒有被篡改。
+- 物件：權杖是以 Web API 為目標。
+- Sub：它是針對允許呼叫 Web API 的應用程式發出的。
+- 簽發者：它是由信任的 Security Token Service （STS）所發行。
+- 到期：其存留期在範圍內。
+- 簽章：不會遭到篡改。
 
-也可以有特殊的驗證。 例如,可以驗證簽名金鑰(嵌入權杖時)是否受信任,並且令牌未重播。 最後,某些協定需要特定的驗證。
+也可以進行特殊驗證。 例如，當內嵌在權杖中的簽章金鑰是受信任的，而且該權杖並未重新執行時，就可以進行驗證。 最後，某些通訊協定需要特定驗證。
 
 ### <a name="validators"></a>驗證程式
 
-驗證步驟在驗證器中捕獲,驗證器由 .NET 開源庫[的 Microsoft 標識模型擴展](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet)提供。 認證器在函式庫源檔案 Microsoft 中定義[。](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs)
+驗證步驟會在[Microsoft Microsoft.identitymodel Extensions for .net](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet)開放原始碼程式庫所提供的驗證程式中加以捕捉。 驗證程式是在程式庫原始程式檔[（microsoft.identitymodel](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/master/src/Microsoft.IdentityModel.Tokens/Validators.cs)）中定義。
 
-下表描述了驗證程式:
+下表描述驗證程式：
 
 | 驗證器 | 描述 |
 |---------|---------|
-| **驗證受眾** | 確保權杖適用於為您驗證權杖的應用程式。 |
-| **驗證發行者** | 確保權杖由受信任的 STS 頒發,這意味著它來自您信任的人。 |
-| **驗證簽章者簽署金鑰** | 確保驗證權杖的應用程式信任用於對權杖進行簽名的金鑰。 有一個特殊情況,其中密鑰嵌入在令牌中。 但這種情況通常不會出現。 |
-| **驗證存留期** | 確保權杖仍然或已有效。 驗證器檢查權杖的存留期是否位於**之前**指定的範圍內,並且**過期**聲明。 |
-| **驗證簽章** | 確保權杖未被篡改。 |
-| **驗證權碼重播** | 確保不重播權杖。 一些一次性使用協定有一個特例。 |
+| **ValidateAudience** | 確保權杖適用于為您驗證權杖的應用程式。 |
+| **ValidateIssuer** | 確保權杖是由信任的 STS 所發行，這表示它是來自您信任的人。 |
+| **ValidateIssuerSigningKey** | 確保驗證權杖的應用程式信任用來簽署權杖的金鑰。 有一個特殊的案例，即金鑰內嵌在權杖中。 但這種情況通常不會發生。 |
+| **ValidateLifetime** | 確保權杖仍然有效或已生效。 驗證程式會檢查權杖的存留期是否在**notbefore**和**expires**宣告所指定的範圍內。 |
+| **ValidateSignature** | 確保 token 尚未遭到篡改。 |
+| **ValidateTokenReplay** | 確保不會重新執行 token。 有些 onetime 使用的通訊協定有特殊的案例。 |
 
-驗證器與**令牌驗證參數**類的屬性相關聯。 屬性從ASP.NET和ASP.NET核心配置初始化。
+驗證程式與**TokenValidationParameters**類別的屬性相關聯。 這些屬性會從 ASP.NET 初始化，並 ASP.NET Core 設定。
 
-在大多數情況下,您不需要更改參數。 不是單個租戶的應用是例外。 這些 Web 應用接受來自任何組織或個人 Microsoft 帳戶的使用者。 在這種情況下,必須驗證頒發者。
+在大部分的情況下，您不需要變更參數。 不是單一租使用者的應用程式是例外狀況。 這些 web 應用程式會接受來自任何組織或個人 Microsoft 帳戶的使用者。 在此情況下，必須驗證簽發者。
 
-## <a name="token-validation-in-azure-functions"></a>Azure 函數中的權杖驗證
+## <a name="token-validation-in-azure-functions"></a>Azure Functions 中的權杖驗證
 
-您還可以在 Azure 函數中驗證傳入訪問權杖。 您可以在[Microsoft .NET、NodeJS](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)和[NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)[Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)中尋找此類驗證的範例。
+您也可以在 Azure Functions 中驗證傳入的存取權杖。 您可以在[Microsoft .net](https://github.com/Azure-Samples/ms-identity-dotnet-webapi-azurefunctions)、 [NodeJS](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-azurefunctions)和[Python](https://github.com/Azure-Samples/ms-identity-python-webapi-azurefunctions)中找到這類驗證的範例。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [驗證代碼中的範圍和應用程式角色](scenario-protected-web-api-verification-scope-app-roles.md)
+> [在程式碼中驗證範圍和應用程式角色](scenario-protected-web-api-verification-scope-app-roles.md)

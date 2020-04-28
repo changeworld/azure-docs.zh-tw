@@ -1,6 +1,6 @@
 ---
-title: 從守護程序應用調用 Web API - 微軟身份平臺 |蔚藍
-description: 瞭解如何建構 Web API 的守護程式應用程式
+title: 從 daemon 應用程式呼叫 Web API-Microsoft 身分識別平臺 |Azure
+description: 瞭解如何建立可呼叫 web Api 的 daemon 應用程式
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e440628526dada7655cc71f63fc9fff006cc5ef5
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885441"
 ---
-# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>呼叫 Web API 的守護程式應用程式 - 從應用呼叫 Web API
+# <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>呼叫 web Api 的 Daemon 應用程式-從應用程式呼叫 Web API
 
-.NET 守護程序應用可以調用 Web API。 .NET 守護程序應用還可以調用多個預先批准的 Web API。
+.NET daemon 應用程式可以呼叫 Web API。 .NET daemon 應用程式也可以呼叫數個預先核准的 web Api。
 
-## <a name="calling-a-web-api-from-a-daemon-application"></a>從守護程式應用程式呼叫 Web API
+## <a name="calling-a-web-api-from-a-daemon-application"></a>從 daemon 應用程式呼叫 Web API
 
-以下是如何使用權碼呼叫 API:
+以下說明如何使用權杖來呼叫 API：
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -61,25 +61,25 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ---
 
-## <a name="calling-several-apis"></a>呼叫多個 API
+## <a name="calling-several-apis"></a>呼叫數個 Api
 
-對於守護程序應用,您調用的 Web API 需要預先批准。 守護程序應用沒有增量同意。 (沒有使用者交互。租戶管理員需要提前為應用程式和所有 API 許可權提供同意。 如果要呼叫多個 API,則需要為每個資源取得一個權杖,每次呼`AcquireTokenForClient`叫 。 MSAL 將使用應用程式令牌緩存來避免不必要的服務調用。
+對於 daemon 應用程式，您呼叫的 web Api 必須經過預先核准。 沒有 daemon 應用程式的增量同意。 （沒有使用者互動）。租使用者系統管理員必須事先為應用程式和所有 API 許可權提供同意。 如果您想要呼叫數個 Api，每次呼叫`AcquireTokenForClient`時，您都需要取得每個資源的權杖。 MSAL 會使用應用程式權杖快取來避免不必要的服務呼叫。
 
 ## <a name="next-steps"></a>後續步驟
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [守護程式應用程式 - 移動到生產](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
+> [Daemon 應用程式-移至生產環境](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [守護程式應用程式 - 移動到生產](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
+> [Daemon 應用程式-移至生產環境](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [守護程式應用程式 - 移動到生產](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
+> [Daemon 應用程式-移至生產環境](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-production?tabs=java)
 
 ---

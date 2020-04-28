@@ -1,5 +1,5 @@
 ---
-title: 應用的服務條款和隱私聲明 |蔚藍
+title: 應用程式的服務條款和隱私權聲明 |Azure
 description: 了解如何為註冊使用 Azure AD 的應用程式，設定服務條款和隱私權聲明。
 services: active-directory
 author: rwike77
@@ -13,13 +13,13 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja
 ms.custom: aaddev
 ms.openlocfilehash: 40e7a05505bc501c1c622e627a6d97cc57db1cfa
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80884234"
 ---
-# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何:為應用配置服務條款和隱私聲明
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：設定應用程式的服務條款和隱私權聲明
 
 開發人員所建置和管理的應用程式若與 Azure Active Directory (Azure AD) 和 Microsoft 帳戶整合，就應該包含應用程式服務條款和隱私權聲明的連結。 使用者會透過使用者同意體驗看到服務條款和隱私權聲明。 服務條款和隱私權聲明可協助使用者了解應用程式是可信的。 對於面向使用者的多租用戶應用程式 (供多個目錄使用或可供任何 Microsoft 帳戶使用的應用程式) 來說，服務條款和隱私權聲明特別重要。
 
@@ -51,20 +51,20 @@ ms.locfileid: "80884234"
 
 準備好服務條款和隱私權聲明時，即可使用下列其中一種方法在應用程式中新增這些文件的連結：
 
-* [通過 Azure 門戶](#azure-portal)
+* [透過 Azure 入口網站](#azure-portal)
 * [使用應用程式物件 JSON](#app-object-json)
-* [使用微軟圖形 API](#msgraph-rest-api)
+* [使用 Microsoft Graph API](#msgraph-rest-api)
 
 ### <a name="using-the-azure-portal"></a><a name="azure-portal"></a>使用 Azure 入口網站
-按照 Azure 門戶中的這些步驟操作。
+請依照 Azure 入口網站中的步驟執行。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 瀏覽至 [應用程式註冊]**** 區段，然後選取應用程式。
-3. 打開 **"品牌"** 窗格。
+3. 開啟 [**商標**] 窗格。
 4. 填妥 [服務條款 URL]**** 和 [隱私權聲明 URL]**** 欄位。
 5. 儲存您的變更。
 
-    ![套用屬性包含服務條款和隱私聲明網址](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![應用程式屬性包含服務條款和隱私權聲明 Url](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="using-the-app-object-json"></a><a name="app-object-json"></a>使用應用程式物件 JSON
 
@@ -77,9 +77,9 @@ ms.locfileid: "80884234"
     }
 ```
 
-### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>使用微軟圖形 API
+### <a name="using-the-microsoft-graph-api"></a><a name="msgraph-rest-api"></a>使用 Microsoft Graph API
 
-要以程式設計方式更新所有應用,可以使用 Microsoft 圖形 API 更新所有應用,以包括指向服務條款和隱私聲明文檔的連結。
+若要以程式設計方式更新您所有的應用程式，您可以使用 Microsoft Graph API 來更新所有應用程式，以包含服務條款和隱私權聲明檔的連結。
 
 ```
 PATCH https://graph.microsoft.com/v1.0/applications/{application id}
@@ -97,4 +97,4 @@ PATCH https://graph.microsoft.com/v1.0/applications/{application id}
 
 > [!NOTE]
 > * 請小心避免覆寫已指派給下列欄位的預先存在值：`supportUrl`、`marketingUrl` 和 `logoUrl`
-> * 僅當使用 Azure AD 帳戶登錄時,Microsoft 圖形 API 才有效。 不支援 Microsoft 個人帳戶。
+> * Microsoft Graph API 僅適用于使用 Azure AD 帳戶登入時。 不支援 Microsoft 個人帳戶。

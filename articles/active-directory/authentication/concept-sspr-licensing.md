@@ -1,6 +1,6 @@
 ---
 title: 授權自助式密碼重設 - Azure Active Directory
-description: 瞭解 Azure 活動目錄自助密碼重置授權要求的差異
+description: 瞭解 Azure Active Directory 自助密碼重設授權需求的差異
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,50 +12,50 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45ca11af061e37cf4f804ce2d7ceed72a9448294
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393069"
 ---
-# <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure 活動目錄自助服務密碼重置的許可要求
+# <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Azure Active Directory 自助式密碼重設的授權需求
 
-為了減少使用者無法登錄到其設備或應用程式時的幫助台呼叫和工作效率損失,可以啟用 Azure 活動目錄 (Azure AD) 中的使用者帳戶進行自助服務密碼重置 (SSPR)。 構成 SSPR 的功能包括密碼更改、重置、解鎖和寫入本地目錄。 Office 365 和所有 Azure AD 使用者均可免費提供基本 SSPR 功能。
+當使用者無法登入其裝置或應用程式時，若要減少服務台電話並喪失生產力，可以啟用 Azure Active Directory （Azure AD）中的使用者帳戶，以進行自助式密碼重設（SSPR）。 組成 SSPR 的功能包括密碼變更、重設、解除鎖定，以及回寫至內部部署目錄。 Office 365 和所有 Azure AD 使用者都可以免費使用基本的 SSPR 功能。
 
-本文詳細介紹了自助服務密碼重置可以許可和使用的不同方式。 有關定價和計費的具體詳細資訊,請參閱[Azure AD 定價頁](https://azure.microsoft.com/pricing/details/active-directory/)。
+本文詳述自助式密碼重設的授權與使用方式。 如需定價和計費的特定詳細資料，請參閱[Azure AD 定價頁面](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ## <a name="compare-editions-and-features"></a>比較版本和功能
 
-SSPR 是每個使用者的許可。 為了保持合規性,組織需要為其使用者分配適當的許可證。
+SSPR 是依每位使用者授權。 為了維持合規性，組織必須將適當的授權指派給他們的使用者。
 
-下表概述了密碼更改、重置或本地寫回的不同 SSPR 方案,以及哪些 SKU 提供了該功能。
+下表概述密碼變更、重設或內部部署回寫的不同 SSPR 案例，以及哪些 Sku 提供此功能。
 
 | 功能 | Azure AD Free | Office 365 商務進階版 | Microsoft 365 商務版 | Azure AD Premium P1 或 P2 |
 | --- |:---:|:---:|:---:|:---:|
-| **只限雲的使用者密碼變更**<br />當 Azure AD 中的使用者知道其密碼並希望將其更改為新密碼時。 | ● | ● | ● | ● |
-| **只限雲的使用者密碼重置**<br />當 Azure AD 中的使用者忘記了其密碼並需要重置密碼時。 | | ● | ● | ● |
-| **混合使用者密碼變更或重置與上前寫**<br />當使用 Azure AD Connect 從本地目錄同步的 Azure AD 中的使用者想要更改或重置其密碼,並將新密碼寫回 on-prem 時。 | | | ● | ● |
+| **僅限雲端使用者密碼變更**<br />當 Azure AD 中的使用者知道他們的密碼，而且想要將它變更為新專案時。 | ● | ● | ● | ● |
+| **僅限雲端使用者密碼重設**<br />當 Azure AD 中的使用者忘記其密碼，而且需要重設它時。 | | ● | ● | ● |
+| **使用內部內部部署回寫進行混合式使用者密碼變更或重設**<br />當 Azure AD 中的使用者使用 Azure AD Connect 從內部部署目錄同步處理時，想要變更或重設其密碼，同時也將新密碼寫回內部內部部署。 | | | ● | ● |
 
 > [!WARNING]
-> 獨立 Office 365 許可計劃不支援 SSPR 與本地回寫。 這些 Office 365 許可計劃需要 Azure AD 高級 P1、高級 P2 或 Microsoft 365 業務才能正常工作。
+> 獨立 Office 365 授權方案不支援使用內部部署回寫進行 SSPR。 這些 Office 365 授權方案需要 Azure AD Premium P1、Premium P2 或 Microsoft 365 商務版，此功能才能運作。
 
-有關其他許可資訊(包括成本),請參閱以下頁面:
+如需其他授權資訊（包括成本），請參閱下列頁面：
 
 * [Azure Active Directory 價格](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Azure Active Directory 功能和功用](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
-* [企業移動性與安全性](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
+* [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 企業版](https://www.microsoft.com/microsoft-365/enterprise)
-* [微軟 365 業務](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
+* [Microsoft 365 商務版](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description)
 
 ## <a name="enable-group-or-user-based-licensing"></a>啟用以群組或使用者為基礎的授權
 
-Azure AD 支援基於組的許可。 系統管理員可以將大量授權指派給一群使用者，而不是一次指派一個授權。 如需詳細資訊，請參閱[指派、驗證授權及解決其問題](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)。
+Azure AD 支援以群組為基礎的授權。 系統管理員可以將大量授權指派給一群使用者，而不是一次指派一個授權。 如需詳細資訊，請參閱[指派、驗證授權及解決其問題](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses)。
 
-某些 Microsoft 服務並非在所有位置都可用。 在將許可證分配給使用者之前,管理員必須在使用者上指定 **「使用方式」位置**。 許可證分配可以在 Azure 門戶中的 **「使用者** > **設定檔** > **設定」** 部分下完成。 使用群組授權指派時，未指定使用位置的任何使用者在指派期間會繼承目錄的位置。**
+某些 Microsoft 服務無法在所有位置使用。 在授權可以指派給使用者之前，系統管理員必須指定使用者的 [**使用位置**] 屬性。 您可以在 Azure 入口網站的 [**使用者** > **設定檔** > **設定**] 區段下，完成授權指派。 使用群組授權指派時，未指定使用位置的任何使用者在指派期間會繼承目錄的位置。**
 
 ## <a name="next-steps"></a>後續步驟
 
-要開始使用 SSPR,請完成以下教學:
+若要開始使用 SSPR，請完成下列教學課程：
 
 > [!div class="nextstepaction"]
-> [教學:啟用自助服務密碼重置 (SSPR)](tutorial-enable-sspr.md)
+> [教學課程：啟用自助式密碼重設（SSPR）](tutorial-enable-sspr.md)

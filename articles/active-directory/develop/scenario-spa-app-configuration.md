@@ -1,6 +1,6 @@
 ---
-title: 設定單頁應用 - 微軟識別平臺 |蔚藍
-description: 瞭解如何建構單頁應用程式(應用程式的代碼設定)
+title: 設定單一頁面應用程式-Microsoft 身分識別平臺 |Azure
+description: 瞭解如何建立單一頁面應用程式（應用程式的程式碼設定）
 services: active-directory
 author: navyasric
 manager: CelesteDG
@@ -12,28 +12,28 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: f159105046231ba5fb4e458cdd70d930a411a920
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882330"
 ---
-# <a name="single-page-application-code-configuration"></a>單頁應用程式:代碼設定
+# <a name="single-page-application-code-configuration"></a>單一頁面應用程式：程式碼設定
 
-瞭解如何為單頁應用程式 (SPA) 設定代碼。
+瞭解如何為您的單一頁面應用程式（SPA）設定程式碼。
 
-## <a name="msal-libraries-that-support-implicit-flow"></a>支援隱式流的 MSAL 函式庫
+## <a name="msal-libraries-that-support-implicit-flow"></a>支援隱含流程的 MSAL 程式庫
 
-Microsoft 識別平臺提供以下 Microsoft 身份驗證庫 (MSAL) 函式庫,以便使用產業推薦的安全實務支援隱式流:
+Microsoft 身分識別平臺提供下列 Microsoft 驗證程式庫（MSAL）程式庫，可透過使用業界建議的安全性作法來支援隱含流程：
 
 | MSAL 程式庫 | 描述 |
 |--------------|--------------|
-| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | 普通 JavaScript 庫,用於透過 JavaScript 或 SPA 框架(如 Angular、Vue.js 和 React.js)構建的任何用戶端 Web 應用。 |
-| ![MSAL 角](media/sample-v2-code/logo_angular.png) <br/> [MSAL 角](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | 核心 MSAL.js 庫的包裝,以簡化通過 Angular 框架構建的單頁應用的使用。 |
+| ![MSAL.js](media/sample-v2-code/logo_js.png) <br/> [MSAL .js](https://github.com/AzureAD/microsoft-authentication-library-for-js)  | 一般的 JavaScript 程式庫，可用於透過 JavaScript 或 SPA 架構（例如，角度、Vue 及回應 .js）建立的任何用戶端 web 應用程式。 |
+| ![MSAL 角度](media/sample-v2-code/logo_angular.png) <br/> [MSAL 角度](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) | 核心 MSAL 程式庫的包裝函式，可簡化透過角度架構建立的單一頁面應用程式中使用。 |
 
 ## <a name="application-code-configuration"></a>應用程式代碼設定
 
-在 MSAL 庫中,應用程式註冊資訊在庫初始化期間作為配置傳遞。
+在 MSAL 程式庫中，應用程式註冊資訊會在程式庫初始化期間以設定的形式傳遞。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -50,7 +50,7 @@ const config = {
 const userAgentApplication = new UserAgentApplication(config);
 ```
 
-關於可設定選項的詳細資訊,請參閱[使用 MSAL.js 初始化應用程式](msal-js-initializing-client-applications.md)。
+如需可設定選項的詳細資訊，請參閱[使用 MSAL 初始化應用程式](msal-js-initializing-client-applications.md)。
 
 # <a name="angular"></a>[Angular](#tab/angular)
 

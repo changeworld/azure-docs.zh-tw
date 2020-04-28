@@ -1,5 +1,5 @@
 ---
-title: 使用 RADIUS RDG 與 Azure MFA 伺服器 - Azure 活動目錄
+title: 使用 RADIUS Azure Active Directory 的 RDG 和 Azure MFA Server
 description: 此 Azure Multi-Factor Authentication 頁面協助您部署使用 RADIUS 的遠端桌面 (RD) 閘道器和 Azure Multi-Factor Authentication Server。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,22 +12,22 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23e2f7424464860b647883be2441e903900cb266
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80652892"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>使用 RADIUS 的遠端桌面閘道和 Azure Multi-Factor Authentication Server
 
-通常,遠端桌面 (RD) 閘道使用本地[網路策略服務 (NPS)](https://docs.microsoft.com/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures)對使用者進行身份驗證。 本文說明如何將 RADIUS 要求從遠端桌面閘道器 (透過本機 NPS) 傳送至 Multi-Factor Authentication Server。 Azure MFA 和 RD 閘道的組合表示使用者可以從任何地方存取其工作環境，同時執行強式驗證。
+通常，遠端桌面（RD）閘道會使用局域[網路原則服務（NPS）](https://docs.microsoft.com/windows-server/networking/core-network-guide/core-network-guide#BKMK_optionalfeatures)來驗證使用者。 本文說明如何將 RADIUS 要求從遠端桌面閘道器 (透過本機 NPS) 傳送至 Multi-Factor Authentication Server。 Azure MFA 和 RD 閘道的組合表示使用者可以從任何地方存取其工作環境，同時執行強式驗證。
 
 由於 Server 2012 R2 不支援終端機服務的 Windows 驗證，請使用 RD 閘道和 RADIUS 來與 MFA Server 整合。
 
 在不同的伺服器上安裝 Azure Multi-Factor Authentication Server，由它代理將 RADIUS 要求傳回到遠端桌面閘道器伺服器上的 NPS。 NPS 驗證使用者名稱和密碼之後，它會將回應傳回給 Multi-Factor Authentication Server。 然後，MFA Server 會執行第二因素驗證，然後將結果傳回給閘道。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起,Microsoft 將不再為新部署提供 MFA 伺服器。 希望用戶進行多重身份驗證的新客戶應使用基於雲的 Azure 多重身份驗證。 在 7 月 1 日之前啟動 MFA 伺服器的現有客戶將能夠像往常一樣下載最新版本、將來的更新並生成啟動認證。
+> 從2019年7月1日起，Microsoft 將不再為新的部署提供 MFA 伺服器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟動 MFA Server 的現有客戶將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -56,7 +56,7 @@ RD 閘道器使用 NPS 將 RADIUS 要求傳送到 Azure Multi-Factor Authenticat
 1. 在 NPS 中，開啟左欄中的 [RADIUS 用戶端及伺服器]**** 功能表，然後選取 [遠端 RADIUS 伺服器群組]****。
 2. 選取 [TS 閘道伺服器群組]****。
 3. 移至 [負載平衡]**** 索引標籤。
-4. 在**認為要求被丟棄之前改變沒有回應的秒數**,以及伺服器在 30 到 60 秒之間**被識別不可用時請求之間的秒數**。 (如果您在驗證期間發現伺服器仍然逾時，您可以回到這裡並增加秒數。)
+4. 將 [**要求被捨棄前不回應的秒數**] 和 [**當伺服器識別為無法使用時，要求之間的秒數**] 變更為30到60秒。 (如果您在驗證期間發現伺服器仍然逾時，您可以回到這裡並增加秒數。)
 5. 移至 [驗證/帳戶]**** 索引標籤，檢查指定的 RADIUS 連接埠符合 Multi-Factor Authentication Server 所接聽的連接埠。
 
 ### <a name="prepare-nps-to-receive-authentications-from-the-mfa-server"></a>準備 NPS 以從 MFA Server 接收驗證
@@ -82,7 +82,7 @@ Azure Multi-Factor Authentication Server 設定為 RD 閘道器和 NPS 之間的
 3. 移至 [目標]**** 索引標籤，然後選取 [RADIUS 伺服器]**** 選項按鈕。
 4. 選取 [新增]**** 並輸入 NPS 伺服器的 IP 位址、共用密碼和連接埠。 除非使用中央 NPS，否則 RADIUS 用戶端和 RADIUS 目標相同。 共用密碼必須符合 NPS 伺服器的 RADIUS 用戶端區段中設定的共用密碼。
 
-![MFA 伺服器中的半徑身分驗證](./media/howto-mfaserver-nps-rdg/radius.png)
+![MFA Server 中的 Radius 驗證](./media/howto-mfaserver-nps-rdg/radius.png)
 
 ## <a name="next-steps"></a>後續步驟
 

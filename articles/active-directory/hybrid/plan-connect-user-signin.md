@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a08120b98c7a08bca50453df59df313b1645c5c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331258"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect 使用者登入選項
@@ -68,8 +68,8 @@ Azure AD 支援下列驗證方法：
 此外，您也可以針對公司網路中已加入網域的電腦上使用者啟用單一登入。 在使用單一登入的情況下，已啟用的使用者只需輸入使用者名稱，即可安全地存取雲端資源。
 ![傳遞驗證](./media/plan-connect-user-signin/pta.png)
 
-如需詳細資訊，請參閱
-- [直通身份驗證](how-to-connect-pta.md)
+如需詳細資訊，請參閱：
+- [傳遞驗證](how-to-connect-pta.md)
 - [單一登入](how-to-connect-sso.md)
 
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>使用新的或現有伺服器陣列搭配 Windows Server 2012 R2 中的 AD FS 建立的同盟
@@ -85,7 +85,7 @@ Azure AD 支援下列驗證方法：
 
 * 同盟伺服器的 Windows Server 2012 R2 伺服器。
 * Web 應用程式 Proxy 的 Windows Server 2012 R2 伺服器。
-* 一個 .pfx 檔，具有一個 TLS/SSL 憑證，用於預期的聯合服務名稱。 例如：fs.contoso.com。
+* 一個 .pfx 檔案，其中包含一個適用于您預定同盟服務名稱的 TLS/SSL 憑證。 例如：fs.contoso.com。
 
 如果要部署新的伺服器陣列或使用現有的伺服器陣列，您需要：
 
@@ -191,5 +191,5 @@ userPrincipalName 屬性是使用者登入 Azure AD 和 Office 365 時會使用�
 >
 
 ## <a name="next-steps"></a>後續步驟
-- 詳細瞭解[將本地標識與 Azure 活動目錄集成](whatis-hybrid-identity.md)。
-- 瞭解有關[Azure AD 連接設計概念](plan-connect-design-concepts.md)的更多內容。
+- 深入瞭解如何[整合您的內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。
+- 深入瞭解[Azure AD Connect 的設計概念](plan-connect-design-concepts.md)。

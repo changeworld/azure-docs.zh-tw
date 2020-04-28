@@ -1,5 +1,5 @@
 ---
-title: Azure MFA 使用者資料收集 - Azure 活動目錄
+title: Azure MFA 使用者資料收集-Azure Active Directory
 description: Azure Multi-Factor Authentication 會使用哪些資訊協助進行使用者驗證？
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653640"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication 使用者資料收集
@@ -116,7 +116,7 @@ MFA Server、NPS 擴充功能和 Windows Server 2016 Azure MFA AD FS Adapter 會
 - 完成原因
 - 已使用的略過
 
-變更(用於將使用者變更同步到 MFA 伺服器或 Azure AD):
+變更（用來同步處理 MFA Server 或 Azure AD 的使用者變更）：
 
 - 變更時間戳記
 - 使用者名稱
@@ -138,9 +138,9 @@ MFA Server、NPS 擴充功能和 Windows Server 2016 Azure MFA AD FS Adapter 會
 - 登入 MFA Server，瀏覽至 [使用者]**** 索引標籤，選取所需的使用者，然後按一下 [編輯]**** 按鈕。 建立每個索引標籤的螢幕擷取畫面 (Alt-PrtScn)，以便將目前的 MFA 設定提供給使用者。
 - 以 MFA Server 的命令列執行下列命令，根據您的安裝 `C:\Program Files\Multi-Factor Authentication Server\MultiFactorAuthGdpr.exe export <username>` 來變更路徑，以產生 JSON 格式的檔案。
 - 系統管理員也可以選擇使用 Web 服務 SDK GetUserGdpr 作業，匯出針對特定使用者收集的所有 MFA 雲端服務資訊，或合併到較大的報告解決方案之中。
-- 搜索`C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log`和「使用者名>」(\<包括搜尋中的報價)的任何備份,以查找要添加或更改的使用者記錄的所有實例。
-   - 通過取消選取的 MFA 伺服器 UX、紀錄記錄部分、紀錄檔選項卡中的 **「記錄使用者更改」**,可以限制(但不能消除)這些記錄。
-   - 如果配置了 syslog,並且在 MFA 伺服器 UX、日誌記錄部分、Syslog 選項卡中選中**了「日誌使用者更改」,** 則可以從 syslog 中收集日誌條目。
+- 搜尋`C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log`及任何「使用者\<名稱>」的備份（在搜尋中包含引號），以尋找所新增或變更之使用者記錄的所有實例。
+   - 在 [MFA Server UX]、[記錄] 區段、[記錄檔] 索引標籤中取消核取 [**記錄使用者變更**]，即可限制（但不能刪除）這些記錄。
+   - 若已設定 syslog，並已在 MFA Server UX [記錄] 區段的 [Syslog] 索引標籤中核取 [**記錄使用者變更]** ，則可以改為從 syslog 收集記錄專案。
 - 其他存在於 MultiFactorAuthSvc.log 使用者名稱以及其他與驗證企圖有關的 MFA Server 記錄檔，則視為仍在使用中，且與使用 MultiFactorAuthGdpr.exe export 或 Web Service SDK GetUserGdpr 所提供的資訊重複。
 
 ## <a name="delete-data-from-mfa-server"></a>刪除 MFA Server 中的資料

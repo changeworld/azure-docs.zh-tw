@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6e10d00ed90248319801974c7c1e7fadf835024b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407008"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>針對使用 Azure AD Connect 同步所執行的物件同步處理進行疑難排解
@@ -37,13 +37,13 @@ ms.locfileid: "81407008"
 4.  瀏覽至 [其他工作] 頁面，選取 [疑難排解]，然後按 [下一步]。
 5.  在 [疑難排解] 頁面上，按一下 [啟動]，以在 PowerShell 中啟動疑難排解功能表。
 6.  在主功能表中，選取 [針對物件同步處理進行疑難排解]。
-![排除物件同步故障](media/tshoot-connect-objectsync/objsynch11.png)
+![針對物件同步處理進行疑難排解](media/tshoot-connect-objectsync/objsynch11.png)
 
 ### <a name="troubleshooting-input-parameters"></a>針對輸入參數進行疑難排解
 疑難排解工作需要下列輸入參數：
 1.  **物件辨別名稱** – 這是需要疑難排解之物件的辨別名稱
 2.  **AD 連接器名稱** – 這是上述物件所在之 AD 樹系的名稱。
-3.  Azure AD 租戶![全域 管理員憑據全域管理員憑據](media/tshoot-connect-objectsync/objsynch1.png)
+3.  Azure AD 租使用者全域管理員![認證全域管理員認證](media/tshoot-connect-objectsync/objsynch1.png)
 
 ### <a name="understand-the-results-of-the-troubleshooting-task"></a>了解疑難排解工作的結果
 疑難排解工作會執行下列檢查：
@@ -75,7 +75,7 @@ ms.locfileid: "81407008"
 
 ### <a name="domain-is-configured-to-sync-but-is-missing-run-profilesrun-steps"></a>網域設定為要同步處理，但遺漏執行設定檔/執行步驟
 物件會因為網域遺漏執行設定檔/執行步驟而超出範圍。 在下列範例中，由於物件所屬的網域遺漏完整匯入執行設定檔的執行步驟，所以物件會超出同步範圍。
-![遺失設定檔](media/tshoot-connect-objectsync/objsynch6.png)
+![缺少執行設定檔](media/tshoot-connect-objectsync/objsynch6.png)
 
 ## <a name="object-is-filtered-due-to-ou-filtering"></a>因為 OU 篩選而篩選物件
 由於 OU 篩選設定所致，此物件會超出同步範圍。 在下列範例中，物件屬於 OU=NoSync,DC=bvtadwbackdc,DC=com。  這個 OU 不會包含在同步範圍內。</br>

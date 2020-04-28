@@ -1,7 +1,7 @@
 ---
 title: 新版 Azure 入口網站應用程式註冊體驗
 titleSuffix: Microsoft identity platform
-description: Azure 門戶中新的應用註冊體驗簡介
+description: Azure 入口網站中的新應用程式註冊體驗簡介
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,114 +14,114 @@ ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.openlocfilehash: 50c88dd1785bd9177219054fed3800ca725a5274
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154588"
 ---
-# <a name="the-new-azure-portal-app-registration-experience"></a>新的 Azure 門戶應用註冊體驗
+# <a name="the-new-azure-portal-app-registration-experience"></a>新的 Azure 入口網站應用程式註冊體驗
 
-Azure 門戶中的新[應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗有許多改進。 如果您更熟悉註冊或管理融合應用程式（稱為舊體驗）的應用程式註冊門戶 （apps.dev.microsoft.com） 體驗，本培訓指南將讓您開始使用新體驗。
+Azure 入口網站的新[應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)體驗中有許多改進。 如果您更熟悉應用程式註冊入口網站（apps.dev.microsoft.com）體驗來註冊或管理聚合式應用程式（稱為「舊體驗」），本訓練指南會協助您開始使用新的體驗。
 
-## <a name="whats-not-changing"></a>什麼沒有改變？
+## <a name="whats-not-changing"></a>什麼不會改變？
 
-- 您的應用程式和相關配置可以在新體驗中找到。 您無需再次註冊應用程式，應用程式的使用者也不需要再次登錄。
+- 您的應用程式和相關設定可以在新的體驗中找到。 您不需要再次註冊應用程式，應用程式的使用者也不需要再次登入。
 
     > [!NOTE]
-    > 您必須使用用於註冊應用程式以在 Azure 門戶中查找應用程式的帳戶登錄。 我們建議您通過比較設定檔中的電子郵件地址，在 Azure 門戶中檢查登錄使用者與登錄到應用程式註冊門戶的使用者匹配。
+    > 您必須使用您用來註冊應用程式的帳戶登入，才能在 Azure 入口網站中尋找它們。 我們建議您在 Azure 入口網站中檢查已登入的使用者是否符合已登入應用程式註冊入口網站的使用者，方法是比較您的設定檔中的電子郵件地址。
     >
-    > 在某些情況下，特別是當您使用帶有 Azure AD 電子郵件地址的個人 Microsoft 帳戶（例如 Outlook、Live、Xbox 等）登錄時，我們發現，當您從舊體驗轉到 Azure 門戶時，它會用相同的標記您進入其他帳戶電子郵件在 Azure AD 租戶中。 如果您仍然認為您的應用程式丟失，請登出並使用正確的帳戶登錄。
+    > 在某些情況下，特別是當您使用個人 Microsoft 帳戶（例如 Outlook、Live、Xbox 等等）登入 Azure AD 電子郵件地址時，我們發現當您從舊體驗中移至 Azure 入口網站時，它會將您的 Azure AD 租使用者中的電子郵件登入不同的帳戶。 如果您仍然認為應用程式遺失，請登出，然後使用正確的帳戶登入。
 
-- Azure 門戶中尚不支援使用個人 Microsoft 帳戶創建的即時 SDK 應用，在不久的將來將繼續保留舊體驗。
+- Azure 入口網站中尚不支援使用個人 Microsoft 帳戶建立的 Live SDK 應用程式，且將會在不久的未來繼續保留舊體驗。
 
-## <a name="key-changes"></a>主要更改
+## <a name="key-changes"></a>金鑰變更
 
--   在舊體驗中，應用預設註冊為支援所有組織帳戶（多租戶）和個人 Microsoft 帳戶的聚合應用。 無法通過舊體驗修改此功能，因此很難創建僅支援組織帳戶的應用（多租戶或單個租戶）。
-    新的體驗允許您註冊支援所有這些選項的應用。 [瞭解有關應用類型 的更多](active-directory-v2-registration-portal.md)資訊。
+-   在舊體驗中，應用程式預設會註冊為支援所有組織帳戶（多租使用者）以及個人 Microsoft 帳戶的聚合式應用程式。 這無法透過舊體驗進行修改，因此難以建立僅支援組織帳戶的應用程式（多租使用者或單一租使用者）。
+    新的體驗可讓您註冊支援所有這些選項的應用程式。 [深入瞭解應用程式類型](active-directory-v2-registration-portal.md)。
 
--   在新的體驗中，如果個人 Microsoft 帳戶也位於 Azure AD 租戶中，您將看到三個選項卡- 租戶中的所有應用程式、租戶中擁有的應用程式以及個人帳戶中的應用程式。 因此，如果您認為在個人 Microsoft 帳戶註冊的應用丟失，請查看**來自個人帳戶的應用程式**選項卡。
+-   在新的體驗中，如果您的個人 Microsoft 帳戶也在 Azure AD 租使用者中，您會看到三個索引標籤--租使用者中的所有應用程式、租使用者中擁有的應用程式，以及來自您個人帳戶的應用程式。 因此，如果您認為已向個人 Microsoft 帳戶註冊的應用程式遺失，請**從您的 [個人帳戶**] 索引標籤檢查應用程式。
 
--   在新的體驗中，您可以通過導航到設定檔並選擇交換器目錄，輕鬆地在租戶之間切換。
+-   在新體驗中，您可以流覽至您的設定檔並選擇 [切換目錄]，輕鬆地在租使用者之間切換。
 
 ## <a name="list-of-applications"></a>應用程式清單
 
--   新應用清單顯示通過 Azure 門戶中的舊應用註冊體驗（僅登錄 Azure AD 帳戶的應用）以及通過[應用程式註冊門戶](https://apps.dev.microsoft.com/)（同時登錄 Azure AD 和個人 Microsoft 帳戶的應用）註冊的應用程式。
+-   [新增應用程式] 清單會顯示透過 Azure 入口網站中的繼承應用程式註冊體驗（僅限登入 Azure AD 帳戶的應用程式），以及應用[程式註冊入口網站](https://apps.dev.microsoft.com/)（同時登入 Azure AD 和個人 Microsoft 帳戶的應用程式）登錄的應用程式。
 
--   新應用清單有兩個附加列：**在列上創建**，**證書&機密**列，顯示已在應用上註冊的憑據的狀態（當前、即將過期或過期）。
+-   新的應用程式清單有兩個額外的資料行： [在資料行和憑證**上建立**] **& [秘密**] 資料行，該資料行會顯示已在應用程式上註冊之認證的狀態（目前、即將過期或已過期）。
 
 ## <a name="new-app-registration"></a>新增應用程式註冊
 
-在舊體驗中，要註冊融合應用，您只需要提供名稱。 創建的應用註冊為支援所有組織目錄（多租戶）以及個人 Microsoft 帳戶的聚合應用。  無法通過舊體驗修改此功能，因此很難創建僅支援組織帳戶的應用（多租戶或單個租戶）。 [瞭解有關受支援帳戶類型詳細資訊](v2-supported-account-types.md)
+在舊體驗中，若要註冊聚合式應用程式，您只需要提供名稱。 已建立的應用程式已註冊為支援所有組織目錄（多租使用者）以及個人 Microsoft 帳戶的聚合式應用程式。  這無法透過舊體驗進行修改，因此難以建立僅支援組織帳戶的應用程式（多租使用者或單一租使用者）。 [深入瞭解支援的帳戶類型](v2-supported-account-types.md)
 
-在新體驗中，必須為應用提供名稱並選擇"支援帳戶類型"。 您可以選擇提供重定向 URI。
-如果提供重定向 URI，則需要指定它是 Web/公共的（本機/移動和桌面）。 有關如何使用新應用註冊體驗註冊應用的詳細資訊，請參閱[此快速入門](quickstart-register-app.md)。
+在新的體驗中，您必須提供應用程式的名稱，並選擇支援的帳戶類型。 您可以選擇性地提供重新導向 URI。
+如果您提供 [重新導向 URI]，則必須指定它是否為 web/公用（原生/行動裝置和桌面）。 如需如何使用新的應用程式註冊體驗來註冊應用程式的詳細資訊，請參閱[此快速入門](quickstart-register-app.md)。
 
-## <a name="app-management-page"></a>應用管理頁面
+## <a name="app-management-page"></a>應用程式管理頁面
 
-舊體驗具有用於融合應用的單個應用管理頁，該頁面包含以下部分：屬性、應用程式機密、平臺、擁有者、Microsoft 圖形許可權、設定檔和高級選項。
+舊版體驗具有適用于聚合式應用程式的單一應用程式管理頁面，其中包含下列各節：屬性、應用程式秘密、平臺、擁有者、Microsoft Graph 許可權、設定檔和 Advanced 選項。
 
-Azure 門戶中的新體驗將這些功能表示為單獨的頁面。 您可以在其中找到等效功能：
+Azure 入口網站中的新體驗，會將這些功能呈現在不同的頁面上。 您可以在這裡找到對等的功能：
 
--   屬性 - 名稱和應用程式 ID 位於"概述"頁上。
+-   屬性-[名稱] 和 [應用程式識別碼] 位於 [總覽] 頁面。
 
--   應用程式機密位於證書&機密頁上
+-   應用程式秘密位於 [憑證 & 秘密] 頁面
 
--   平台佈建位於身份驗證頁上
+-   [驗證] 頁面上的 [平臺設定]
 
--   Microsoft 圖形許可權與其他許可權一起位於 API 許可權頁上
+-   [API 許可權] 頁面上的 Microsoft Graph 許可權和其他許可權
 
--   個人資料位於品牌頁面上
+-   [個人資料] 位於 [商標] 頁面
 
--   高級選項 - 即時 SDK 支援位於身份驗證頁面上。
+-   Advanced option-Live SDK 支援位於 [驗證] 頁面。
 
-## <a name="application-secretscertificates--secrets"></a>應用程式機密/證書&機密
+## <a name="application-secretscertificates--secrets"></a>應用程式秘密/憑證 & 秘密
 
-在新的體驗中，**應用程式機密**已重命名為**證書&機密**。 此外，**公開金鑰**稱為**證書**，**密碼**稱為**用戶端機密**。 出於安全原因，我們選擇不將此功能引入新體驗中，因此，您無法再生成新的金鑰組。
+在新的體驗中，**應用程式密碼**已重新命名為**憑證 & 密碼**。 此外，**公開金鑰**稱為「**憑證**」，而「**密碼**」則稱為「**用戶端**密碼」。 基於安全性理由，我們選擇不要將此功能帶入新的體驗中，因此，您無法再產生新的金鑰組。
 
-## <a name="platformsauthentication-reply-urlsredirect-uris"></a>平臺/身份驗證：回復 URL/重定向 URI
-在舊體驗中，應用具有 Web、本機和 Web API 的平臺部分，用於配置重定向 URL、登出 URL 和隱式流。
+## <a name="platformsauthentication-reply-urlsredirect-uris"></a>平臺/驗證：回復 Url/重新導向 Uri
+在舊版的體驗中，應用程式具有 Web、原生和 Web API 的平臺區段，可設定重新導向 Url、登出 URL 和隱含流程。
 
-在新體驗中，可以在應用\'的身份驗證部分找到回復 URL。 此外，它們稱為重定向 URI，重定向 URI 的格式已更改。 它們需要與應用類型（Web 或公共用戶端 - 移動用戶端和桌面）相關聯。 [深入了解](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
+在新的體驗中，可以在應用程式\'的驗證一節找到回復 url。 此外，它們也稱為重新導向 Uri，而重新導向 Uri 的格式也已變更。 它們必須與應用程式類型（web 或公用用戶端-行動裝置和桌上型電腦）相關聯。 [深入了解](quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
-Web API 在"公開 API"頁中配置。
+Web Api 會在 [公開 API] 頁面中設定。
 
 > [!NOTE]
 > 試用新的驗證設定體驗，您可以在其中根據您要設為目標的平台或裝置來設定應用程式的設定。 [深入了解](quickstart-configure-app-access-web-apis.md#configure-platform-settings-for-your-application)
 
-## <a name="microsoft-graph-permissionsapi-permissions"></a>微軟圖形許可權/API 許可權
+## <a name="microsoft-graph-permissionsapi-permissions"></a>Microsoft Graph 許可權/API 許可權
 
--   在舊體驗中選擇 API 時，只能從 Microsoft 圖形 API 中進行選擇。 在新的體驗中，您可以從許多 Microsoft API 中進行選擇，包括 Microsoft 圖形、組織的 API 和 API，這三個選項卡顯示：Microsoft API、我的組織使用的 API 或我的 API。 組織使用選項卡搜索租戶中的服務主體的 API 上的搜索欄。
+-   選取舊版體驗中的 API 時，您可以選擇僅 Microsoft Graph Api。 在新的體驗中，您可以選擇許多 Microsoft Api，包括來自組織和 Api 的 Microsoft Graph、Api，這會顯示在三個索引標籤中： Microsoft Api、我的組織使用的 Api，或我的 Api。 我組織的 Api 上的搜尋列會使用索引標籤搜尋租使用者中的服務主體。
 
     > [!NOTE]
-    > 如果應用程式未與租戶關聯，則看不到此選項卡。 有關如何使用新體驗請求許可權的詳細資訊，請參閱[此快速入門](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/develop/quickstart-configure-app-access-web-apis.md)。
+    > 如果您的應用程式未與租使用者建立關聯，您將不會看到此索引標籤。 如需如何使用新的體驗來要求許可權的詳細資訊，請參閱[此快速入門](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/develop/quickstart-configure-app-access-web-apis.md)。
 
--   舊體驗沒有 **"授予許可權**"按鈕。 在新體驗中，應用的 API 許可權部分上有一個"授予同意"部分，該節帶有 **"授予管理員同意"** 按鈕。 只有管理員可以授予同意，並且此按鈕僅為管理員啟用。 當管理員選擇 **"授予管理員同意"** 按鈕時，將授予所有請求的版權管理員同意。
+-   舊體驗沒有 **[授與許可權**] 按鈕。 在新的體驗中，有一個 [授與同意] 區段，其中包含應用程式的 [API 許可權] 區段上的 **[授與管理員同意**] 按鈕。 只有系統管理員可以授與同意，且此按鈕僅針對管理員啟用。 當系統管理員選取 [**授與系統管理員同意**] 按鈕時，系統管理員同意會授與所有要求的許可權。
 
 ## <a name="profile"></a>設定檔
-在舊體驗中，設定檔具有徽標、主頁 URL、服務條款 URL 和隱私權聲明 URL 配置。 在新的體驗中，可以在"品牌"頁面找到這些。
+在舊體驗中，設定檔具有標誌、首頁 URL、服務條款 URL 及隱私權聲明 URL 設定。 在新的體驗中，您可以在商標頁面中找到這些功能。
 
 ## <a name="application-manifest"></a>應用程式資訊清單
-在新體驗中，清單頁面允許您編輯和更新應用的屬性。 如需詳細資訊，請參閱[應用程式資訊清單](reference-app-manifest.md)。
+在新體驗中，資訊清單頁面可讓您編輯和更新應用程式的屬性。 如需詳細資訊，請參閱[應用程式資訊清單](reference-app-manifest.md)。
 
-## <a name="new-ui"></a>新 UI
-對於以前只能使用清單編輯器或 API 設置或不存在的屬性，有新的 UI。
+## <a name="new-ui"></a>新增 UI
+先前只能使用資訊清單編輯器或 API 來設定屬性的新 UI，或不存在。
 
--   隱式授予流（身份驗證2Allow隱式流）可以在身份驗證頁面上找到。 與舊體驗不同，您可以啟用訪問權杖或 ID 權杖，或同時啟用這兩種權杖。
+-   您可以在 [驗證] 頁面上找到隱含授與流程（oauth2AllowImplicitFlow）。 不同于舊體驗，您可以啟用存取權杖或識別碼權杖，或兩者。
 
--   可通過"公開 API"頁配置由此 API 定義的作用域（auth2 許可權）和授權用戶端應用程式（預授權應用程式）。 有關如何將應用配置為 Web API 並公開許可權/作用域的詳細資訊，請參閱[此快速入門](quickstart-configure-app-expose-web-apis.md)。
+-   此 API 定義的範圍（oauth2Permissions）和授權的用戶端應用程式（preAuthorizedApplications）可以透過 [公開 API] 頁面來設定。 如需有關如何將應用程式設定為 Web API 並公開許可權/範圍的詳細資訊，請參閱[此快速入門](quickstart-configure-app-expose-web-apis.md)。
 
--   發佈商域（在[\'應用程式同意提示](application-consent-experience.md)符上向使用者顯示）可以在"品牌"邊欄選項卡頁面上找到。 有關如何配置發行者域的詳細資訊，請參閱[此操作操作](howto-configure-publisher-domain.md)。
+-   發行者網域（向使用者顯示在[應用\'程式的同意提示](application-consent-experience.md)中）可以在商標分頁頁面上找到。 如需有關如何設定發行者網域的詳細資訊，請參閱[此](howto-configure-publisher-domain.md)作法。
 
 ## <a name="limitations"></a>限制
 
-新體驗具有以下限制：
+新的體驗有下列限制：
 
--   新體驗尚不支援 Azure AD B2C 租戶的應用註冊。
+-   新的體驗尚不支援 Azure AD B2C 租使用者的應用程式註冊。
 
--   新體驗尚不支援使用個人 Microsoft 帳戶創建的即時 SDK 應用。
+-   新的體驗尚不支援以個人 Microsoft 帳戶建立的 Live SDK 應用程式。
 
--   UI 不支援更改受支援帳戶的值。 您需要使用應用清單，除非您\'在 Azure AD 單租戶和多租戶之間切換。
+-   在 UI 中不支援變更所支援帳戶的值。 您必須使用應用程式資訊清單，除非\'您在 Azure AD 單一租使用者和多租使用者之間切換。
 
    > [!NOTE]
-   > 如果您是 Azure AD 租戶中的個人 Microsoft 帳戶使用者，並且租戶管理員對 Azure 門戶的訪問受到限制，則可能會拒絕訪問。 但是，如果您在搜索欄中鍵入應用註冊或固定該快捷方式來訪問新體驗。
+   > 如果您是 Azure AD 租使用者中的個人 Microsoft 帳戶使用者，而且租使用者系統管理員已限制 Azure 入口網站的存取權，您可能會收到拒絕存取的許可權。 不過，如果您藉由在搜尋列中輸入應用程式註冊來流覽快捷方式，或將它釘選，您就能夠存取新的體驗。

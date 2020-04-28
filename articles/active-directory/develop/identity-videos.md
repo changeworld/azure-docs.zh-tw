@@ -1,6 +1,6 @@
 ---
-title: 微軟身份平台視頻 |蔚藍
-description: 有關現代身份驗證和 Microsoft 識別平台的視訊清單
+title: Microsoft 身分識別平臺影片 |Azure
+description: 關於新式驗證和 Microsoft 身分識別平臺的影片清單
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -13,30 +13,30 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 ms.openlocfilehash: e8c7ec6cf1d15e414a6db54d5bc2ad7e4994cd82
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991291"
 ---
 # <a name="microsoft-identity-platform-videos"></a>Microsoft 身分識別平台影片
 
-瞭解現代身份驗證、Microsoft 標識平臺和 Microsoft 身份驗證庫 (MSAL) 的基礎知識。
+瞭解新式驗證、Microsoft 身分識別平臺和 Microsoft 驗證程式庫（MSAL）的基本概念。
 
-## <a name="authentication-fundamentals"></a>認證基礎知識
+## <a name="authentication-fundamentals"></a>驗證基本概念
 
-如果您對身份供應商、安全權杖、聲明和受眾等概念很新,則此視頻系列是一個很好的起點。
+如果您不熟悉身分識別提供者、安全性權杖、宣告和物件等概念，這段影片是不錯的開端。
 ___
 
 :::row:::
     :::column:::
-        1 - 基礎知識:現代身份驗證的概念 (4:33)
+        1-基本：新式驗證的概念（4:33）
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
     :::column-end:::
      :::column:::
-        2 - Web 應用程式的現代身份驗證 (6:02)
+        2-web 應用程式的新式驗證（6:02）
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/tCNcG1lcCHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
@@ -44,13 +44,13 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        3 - Web 單點登入 (4:13)
+        3-Web 單一登入（4:13）
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/51B-jSOBF8U?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
     :::column-end:::
     :::column:::
-        4 - 聯合 Web 身份驗證 (6:19)
+        4-同盟 web 驗證（6:19）
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
@@ -58,27 +58,27 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        5 - 本機客戶端應用程式 - 第 1 部份 (8:12)
+        5-原生用戶端應用程式-第1部分（8:12）
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/OGMDnuDrAcQ?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
     :::column-end:::
     :::column:::
-        6 - 本機客戶端應用程式 - 第 2 部份 (5:33)
+        6-原生用戶端應用程式-第2部分（5:33）
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/2RE6IhXfmHY?list=PLLasX02E8BPD5vC2XHS_oHaMVmaeHHPLy]
     :::column-end:::
 :::row-end:::
 
-## <a name="microsoft-identity-platform-basics"></a>微軟身份平台基礎知識
+## <a name="microsoft-identity-platform-basics"></a>Microsoft 身分識別平臺基本概念
 
-瞭解 Microsoft 識別平臺、Microsoft 身份驗證庫 (MSAL) 的元件,以及這些元件如何與 Azure 活動目錄交互。 "一個開發問題"視頻的長度為 1-2 分鐘。
+瞭解 Microsoft 身分識別平臺的元件、Microsoft 驗證程式庫（MSAL），以及這些元件如何與 Azure Active Directory 互動。 一個開發問題影片的長度為1-2 分鐘。
 ___
 
 :::row:::
     :::column:::
-        微軟身份平台概述
+        Microsoft 身分識別平臺總覽
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/bNlcFuIo3r8]
@@ -90,13 +90,13 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        MSAL 函式庫簡介
+        MSAL 程式庫簡介
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/apbbx2n4tnU]
     :::column-end:::
     :::column:::
-        MSAL 如何簡化認證
+        MSAL 如何讓驗證變得更容易
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/yLVEBU9Z96Q]
@@ -104,13 +104,13 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        解釋的範圍
+        說明的範圍
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/eiPHOoLmGJs]
     :::column-end:::
     :::column:::
-        什麼是經紀人
+        什麼是訊息代理程式
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/Zd_Uubnu0U0]
@@ -118,13 +118,13 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        重定向 URI 功能
+        哪些重新導向 Uri
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/znSN_3JAuoU]
     :::column-end:::
     :::column:::
-        租戶解釋
+        租使用者說明
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/mDhT4Zv1fZU]
@@ -132,7 +132,7 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        Azure AD 的作用
+        Azure AD 的角色
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/zDEC7A5ZS2Q]
@@ -152,27 +152,27 @@ ___
         > [!VIDEO https://www.youtube.com/embed/E2OUluQQKSk]
     :::column-end:::
     :::column:::
-        SPA 與網路應用差異
+        SPA 和 web 應用程式差異
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/ZJirt7eTVw8?t=5]
     :::column-end:::
 :::row-end:::
 
-## <a name="migrate-from-v10-to-v20"></a>從 v1.0 移至 v2.0
+## <a name="migrate-from-v10-to-v20"></a>從 v1.0 遷移至 v2。0
 
-瞭解如何遷移到最新版本的 Microsoft 標識平臺,包括從活動目錄身份驗證庫 (ADAL) 移動到 MSAL。
+瞭解如何遷移至最新版本的 Microsoft 身分識別平臺，包括從 Active Directory 驗證程式庫（ADAL）移至 MSAL。
 ___
 
 :::row:::
     :::column:::
-        端點和移動到 v2.0 的好處
+        端點和移至 v2.0 的優點
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
      :::column:::
-        將 ADAL 程式庫移至 MSAL
+        將您的 ADAL 程式碼基底遷移至 MSAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/xgL_z9yCnrE]
@@ -180,13 +180,13 @@ ___
 :::row-end:::
 :::row:::
     :::column:::
-        為什麼從 ADAL 移轉到 MSAL
+        為何要從 ADAL 遷移至 MSAL
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/qpdC45tZYDg]
     :::column-end:::
     :::column:::
-        MSAL 優於 ADAL 的優勢
+        透過 ADAL 的 MSAL 優點
     :::column-end:::
     :::column:::
         > [!VIDEO https://www.youtube.com/embed/q-TDszj2O-4]

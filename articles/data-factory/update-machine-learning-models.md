@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 資料工廠更新機器學習模型
+title: 使用 Azure Data Factory 更新機器學習模型
 description: 說明如何使用 Azure Data Factory 和 Machine Learning 建立預測管線
 services: data-factory
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81409080"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用更新資源活動更新 Azure Machine Learning 模型
@@ -73,7 +73,7 @@ ms.locfileid: "81409080"
 
 實作重新定型模組和更新預測 Web 服務的整個程序會叫用下列步驟：
 
-- 使用**批次執行活動**叫用**定型 Web 服務**。 叫用定型 Web 服務與[使用 Azure Machine Learning 和 Data Factory 批次執行活動建立預測管線](transform-data-using-machine-learning.md)中說明的叫用預測 Web 服務相同。 培訓 Web 服務的輸出是 iLearner 檔,可用於更新預測 Web 服務。
+- 使用**批次執行活動**叫用**定型 Web 服務**。 叫用定型 Web 服務與[使用 Azure Machine Learning 和 Data Factory 批次執行活動建立預測管線](transform-data-using-machine-learning.md)中說明的叫用預測 Web 服務相同。 定型 Web 服務的輸出是 .Ilearner 檔案，您可以用來更新預測性 Web 服務。
 - 您可以使用 [更新資源活動]**** 來叫用**預測 Web 服務**的**更新資源端點**，以將 Web 服務更新為新定型的模型。
 
 ## <a name="azure-machine-learning-linked-service"></a>Azure Machine Learning 連結服務
@@ -274,9 +274,9 @@ Azure 儲存體會保留下列資料：
 
 * [U-SQL 活動](transform-data-using-data-lake-analytics.md)
 * [Hive 活動](transform-data-using-hadoop-hive.md)
-* [豬活動](transform-data-using-hadoop-pig.md)
+* [Pig 活動](transform-data-using-hadoop-pig.md)
 * [MapReduce 活動](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
-* [火花活動](transform-data-using-spark.md)
+* [Spark 活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
-* [預存程序活動](transform-data-using-stored-procedure.md)
+* [預存程式活動](transform-data-using-stored-procedure.md)

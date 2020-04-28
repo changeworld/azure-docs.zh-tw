@@ -19,15 +19,15 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0f3e521fb7668305ce511aaddd63ed2cce8dfed0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331729"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>使用 Azure AD Connect 管理與 Azure AD 的 AD FS 信任
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure AD Connect 可以管理內部部署 Active Directory Federation Service (AD FS) 與 Azure AD 之間的同盟。 本文提供下列內容的概觀：
 
@@ -105,7 +105,7 @@ Azure AD Connect 確保一律會使用一組正確的建議宣告規則來設定
 
 每次更新 Azure AD 信任設定時，Azure AD Connect 1.1.873.0 版或更新版本就會建立 Azure AD 信任設定的備份。 在 **%ProgramData%\AADConnect\ADFS** 上備份 Azure AD 信任設定。 檔案名稱格式如下：AadTrust-&lt;date&gt;-&lt;time&gt;.txt，例如，AadTrust-20180710-150216.txt
 
-![Azure AD 信任的示例備份螢幕截圖](./media/how-to-connect-azure-ad-trust/backup.png)
+![Azure AD 信任的備份範例的螢幕擷取畫面](./media/how-to-connect-azure-ad-trust/backup.png)
 
 您可以使用下列建議步驟來還原發行轉換規則
 

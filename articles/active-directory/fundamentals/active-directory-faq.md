@@ -14,10 +14,10 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f4a961e601949689db89f8819f0a1fe1c5a7b3a
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80875787"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>關於 Azure Active Directory 的常見問題集
@@ -27,17 +27,17 @@ Azure Active Directory (Azure AD) 是全方位的身分識別即服務 (IDaaS) �
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>存取 Azure 和 Azure Active Directory
-**問:為什麼在嘗試在 Azure 門戶中訪問 Azure AD 時,會獲得「未找到訂閱」?**
+**問：當我嘗試存取 Azure 入口網站中的 Azure AD 時，為什麼會收到「找不到訂用帳戶」？**
 
-**答：** 若要存取 Azure 入口網站，每位使用者都必須擁有 Azure 訂用帳戶的權限。 如果沒有付費 Office 365 或 Azure AD 訂閱,則需要啟動免費的 Azure[帳戶](https://azure.microsoft.com/free/
+**答：** 若要存取 Azure 入口網站，每位使用者都必須擁有 Azure 訂用帳戶的權限。 如果您沒有付費的 Office 365 或 Azure AD 訂用帳戶，您將需要啟用免費的[Azure 帳戶](https://azure.microsoft.com/free/
 )或付費訂閱。
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 * [Azure 訂用帳戶如何與 Azure Active Directory 產生關聯](active-directory-how-subscriptions-associated-directory.md)
 
 ---
-**問:Azure AD、Office 365 和 Azure 之間的關係是什麼?**
+**問： Azure AD、Office 365 和 Azure 之間的關係為何？**
 
 **答：** Azure AD 可提供您所有 Web 服務的常見身分識別和存取功能。 無論您是使用 Office 365、Microsoft Azure、Intune 或其他服務，您都已是使用 Azure AD 協助上述所有服務的登入和存取管理功能。
 
@@ -83,27 +83,27 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 
 **答：** 您只需要在內部部署目錄與 Azure AD 之間設定單一登入 (SSO)。 只要您透過 Azure AD 存取雲端應用程式，該服務就會自動讓使用者使用其內部部署認證正確地進行驗證。
 
-通過聯合解決方案(如 Active 目錄聯合服務 (AD FS))或配置密碼哈希同步,可以輕鬆地從本地實現 SSO。通過使用 Azure AD 連接配置精靈,可以輕鬆地部署這兩個選項。
+使用同盟解決方案（例如 Active Directory 同盟服務（AD FS），或藉由設定密碼雜湊同步處理，可以輕鬆地從內部部署執行 SSO。您可以使用 [Azure AD Connect 設定] wizard 輕鬆部署這兩個選項。
 
 如需詳細資訊，請參閱[整合內部部署身分識別與 Azure Active Directory](../hybrid/whatis-hybrid-identity.md)。
 
 ---
 **問︰Azure AD 是否可為組織中的使用者提供自助入口網站？**
 
-**答：** 是，Azure AD 可提供您 [Azure AD 存取面板](https://myapps.microsoft.com) ，以供使用者進行自助服務和應用程式存取。 如果您是 Office 365 客戶,則可以在[Office 365 門戶](https://portal.office.com)中找到許多相同的功能。
+**答：** 是，Azure AD 可提供您 [Azure AD 存取面板](https://myapps.microsoft.com) ，以供使用者進行自助服務和應用程式存取。 如果您是 Office 365 客戶，您可以在[office 365 入口網站](https://portal.office.com)中找到許多相同的功能。
 
 如需詳細資訊，請參閱[存取面板簡介](../user-help/active-directory-saas-access-panel-introduction.md)。
 
 ---
 **問︰Azure AD 是否會協助我管理內部部署基礎結構？**
 
-**答:** 是的。 Azure AD Premium Edition 可為您提供 Azure AD Connect Health。 Azure AD Connect Health 可協助您監視和了解內部部署身分識別基礎結構和同步處理服務。  
+**答：** 是的。 Azure AD Premium Edition 可為您提供 Azure AD Connect Health。 Azure AD Connect Health 可協助您監視和了解內部部署身分識別基礎結構和同步處理服務。  
 
 如需詳細資訊，請參閱[在雲端中監視內部部署身分識別基礎結構和同步處理服務](../hybrid/whatis-hybrid-identity-health.md)。  
 
 ---
 ## <a name="password-management"></a>密碼管理
-**問:是否可以在沒有密碼同步的情況下使用 Azure AD 密碼回寫?(在這種情況下,是否可以使用 Azure AD 自助服務密碼重置 (SSPR) 進行密碼寫回,而不是將密碼儲存在雲端中?)**
+**問：我是否可以使用 Azure AD 密碼回寫，而不需要密碼同步處理？（在此案例中，是否可以使用 Azure AD 的自助式密碼重設（SSPR）搭配密碼回寫，而不會將密碼儲存在雲端？）**
 
 **答：** 想要啟用回寫功能，並不需要將 Active Directory 密碼同步處理至 Azure AD。 在同盟環境中，Azure AD 單一登入 (SSO) 會依靠內部部署目錄來驗證使用者。 在這種情況下，並不需要在 Azure AD 中追蹤內部部署密碼。
 
@@ -123,7 +123,7 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 ---
 **問︰如果我在嘗試變更密碼時不記得現有的 Office 365/Azure AD 密碼，我可以做什麼？**
 
-**答:** 對於此類情況,有幾個選項。  使用自助式密碼重設 (SSPR) (如果可用的話)。  SSPR 能否運作取決於其設定方式。  有關詳細資訊,請參閱[密碼重置門戶的工作原理](../authentication/howto-sspr-deployment.md)。
+**答：** 在這種情況下，有幾個選項。  使用自助式密碼重設 (SSPR) (如果可用的話)。  SSPR 能否運作取決於其設定方式。  如需詳細資訊，請參閱[密碼重設入口網站的運作方式](../authentication/howto-sspr-deployment.md)。
 
 對於 Office 365 使用者，您的系統管理員可以使用[重設使用者密碼](https://support.office.com/article/Admins-Reset-user-passwords-7A5D073B-7FAE-4AA5-8F96-9ECD041ABA9C?ui=en-US&rs=en-US&ad=US)所述的步驟重設密碼。
 
@@ -139,9 +139,9 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 
 我們使用更複雜的策略來鎖定帳戶。  此策略是以要求的 IP 和所輸入的密碼為基礎。 鎖定持續期間也會根據它是攻擊的可能性而加長。  
 
-**問:某些(常見)密碼被拒絕,郵件「此密碼已多次使用」,這是否是指當前活動目錄中使用的密碼?**
+**問：某些（通用）密碼遭到拒絕，訊息為「此密碼已用太多次」，這是指目前 active directory 中使用的密碼嗎？**
 
-這是指全域通用的密碼,例如"密碼"和"123456"的任何變體。
+這是指全域通用的密碼，例如「密碼」和「123456」的任何變體。
 
 **問︰來自可疑來源 (殭屍網路、Tor 端點) 的登入要求是否會在 B2C 租用戶中遭到封鎖，或者需要基本或進階版本租用戶？**
 
@@ -158,9 +158,9 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 ---
 **問︰如果 Azure AD Marketplace 內沒有我需要的應用程式，該怎麼辦？**
 
-**答：** 若您使用 Azure AD Premium，就可以新增及設定您想要的任何應用程式。 根據應用程式的功能和首選項,您可以配置 SSO 和自動預配。  
+**答：** 若您使用 Azure AD Premium，就可以新增及設定您想要的任何應用程式。 視您應用程式的功能和喜好設定而定，您可以設定 SSO 和自動化布建。  
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 * [設定對不在 Azure Active Directory 應用程式庫中的應用程式的單一登入](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [使用 SCIM 以啟用從 Azure Active Directory 到應用程式的使用者和群組自動佈建](../app-provisioning/use-scim-to-provision-users-and-groups.md)
@@ -182,14 +182,14 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 
 **答：** Azure AD 針對驗證和授權支援許多標準化的通訊協定，例如 SAML 2.0、OpenID Connect、OAuth 2.0 和 WS-同盟。 Azure AD 也可針對僅支援表單型驗證的應用程式，支援密碼存放和自動化登入功能。  
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 * [Azure AD 的驗證案例](../develop/authentication-scenarios.md)
-* [活動目錄身分驗證協定](https://msdn.microsoft.com/library/azure/dn151124.aspx)
+* [Active Directory 驗證通訊協定](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 * [Azure AD 中應用程式的單一登入](../manage-apps/what-is-single-sign-on.md)
 
 ---
-**問:是否可以添加在本地運行的應用程式?**
+**問：我可以新增在內部部署環境中執行的應用程式嗎？**
 
 **答：** Azure AD 應用程式 Proxy 可讓您簡單又安全地存取您選擇的內部部署 Web 應用程式。 正如同存取 Azure AD 中的軟體即服務 (SaaS) 應用程式一般，相同的方式也可以用來存取這些應用程式。 並不需要 VPN 或變更網路基礎結構。  
 
@@ -198,18 +198,18 @@ Azure AD 付費服務 (例如 Enterprise Mobility + Security) 可透過全方位
 ---
 **問︰如何對存取特定應用程式的使用者要求 Multi-Factor Authentication？**
 
-**答:** 使用 Azure AD 條件存取,可以為每個應用程式分配唯一的存取策略。 您可以在原則中要求一律要進行 Multi-Factor Authentication，或在使用者未連線到區域網路時才進行。  
+**答：** 有了 Azure AD 條件式存取，您就可以為每個應用程式指派唯一的存取原則。 您可以在原則中要求一律要進行 Multi-Factor Authentication，或在使用者未連線到區域網路時才進行。  
 
 如需詳細資訊，請參閱[保護對 Office 365 及其他連接至 Azure Active Directory 之應用程式的存取](../conditional-access/overview.md)。
 
 ---
-**問:什麼是 SaaS 應用的自動使用者預配?**
+**問：什麼是 SaaS 應用程式的自動化使用者布建？**
 
 **答：** 使用 Azure AD 可讓您在許多熱門雲端 (SaaS) 應用程式中自動建立、維護和移除使用者身分識別。
 
-有關詳細資訊,請參閱使用[Azure 活動目錄 自動預配和取消預先用 SaaS 應用程式](../app-provisioning/user-provisioning.md)。
+如需詳細資訊，請參閱[使用 Azure Active Directory 自動化 SaaS 應用程式的使用者](../app-provisioning/user-provisioning.md)布建和解除布建。
 
 ---
 **問︰是否可以設定與 Azure AD 之間的安全 LDAP 連線？**
 
-**答:** 不。 Azure AD 不支援輕量級目錄存取協定 (LDAP) 協定或直接安全 LDAP。 但是,可以通過 Azure 網路在 Azure AD 租戶上啟用 Azure AD 域服務 (Azure AD DS) 實例,並正確配置網路安全組,以實現 LDAP 連接。 有關詳細資訊,請參閱為[Azure 活動目錄域服務託管域配置安全 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)
+**答：** 不。 Azure AD 不支援輕量型目錄存取協定（LDAP）通訊協定或直接安全 LDAP。 不過，您可以透過 Azure 網路功能適當設定網路安全性群組，在您的 Azure AD 租使用者上啟用 Azure AD Domain Services （Azure AD DS）實例，以達到 LDAP 連線能力。 如需詳細資訊，請參閱為[Azure Active Directory Domain Services 受控網域設定安全 LDAP](../../active-directory-domain-services/tutorial-configure-ldaps.md)

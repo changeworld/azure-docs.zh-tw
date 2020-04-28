@@ -1,7 +1,7 @@
 ---
 title: 適用於 Apple 裝置的 Microsoft 企業單一登入外掛程式
 titleSuffix: Microsoft identity platform | Azure
-description: 瞭解適用於 iOS 和 macOS 裝置的 Microsoft Azure 活動目錄 SSO 外掛程式。
+description: 瞭解適用于 iOS 和 macOS 裝置的 Microsoft Azure Active Directory SSO 外掛程式。
 services: active-directory
 author: brandwe
 manager: CelesteDG
@@ -14,51 +14,51 @@ ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.openlocfilehash: a6af1a78582ebf62aed82bad8fa06cac37f511ea
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982577"
 ---
-# <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>適用於 Apple 裝置的微軟企業 SSO 外掛程式(預覽版)
+# <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式（預覽）
 
 > [!NOTE]
 > 這項功能處於公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-*適用於 Apple 裝置的 Microsoft 企業 SSO 外掛程式*為 Azure 活動目錄 (Azure AD) 帳戶提供單個登錄 (SSO) 功能,適用於支援 Apple[企業單一登錄](https://developer.apple.com/documentation/authenticationservices)功能的所有應用程式。 微軟與蘋果密切合作,開發此外掛程式,以提高應用程式的可用性,同時提供蘋果和微軟所能提供的最佳保護。
+*適用于 apple 裝置的 Microsoft 企業 SSO 外掛程式*會在支援 Apple 的「[企業單一登入](https://developer.apple.com/documentation/authenticationservices)」功能的所有應用程式中，提供適用于 Azure Active Directory （Azure AD）帳戶的單一登入（SSO）。 Microsoft 與 Apple 密切合作來開發此外掛程式，以提高應用程式的可用性，同時提供 Apple 和 Microsoft 可以提供的最佳保護。
 
-在此公共預覽版本中,企業 SSO 外掛程式僅適用於 iOS 設備,並在某些 Microsoft 應用程式中分發。
+在此公開預覽版本中，企業 SSO 外掛程式僅適用于 iOS 裝置，並會散發在特定 Microsoft 應用程式中。
 
-我們首次使用企業 SSO 外掛程式是使用我們新的[共享設備模式](msal-ios-shared-devices.md)功能。
+第一次使用企業 SSO 外掛程式是使用新的「[共用裝置模式](msal-ios-shared-devices.md)」功能。
 
 ## <a name="features"></a>特性
 
-適用於 Apple 裝置的 Microsoft 企業 SSO 外掛程式具有以下優點:
+適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式提供下列優點：
 
-- 為支援 Apple 企業單一登入功能的所有應用程式的 Azure AD 帳戶提供 SSO。
-- 在 Microsoft 身份驗證器中自動交付,並且可以通過任何行動裝置管理 (MDM) 解決方案啟用。
+- 為所有支援 Apple 的「企業單一登入」功能的應用程式提供 Azure AD 帳戶的 SSO。
+- 會在 Microsoft Authenticator 中自動傳遞，並可由任何行動裝置管理（MDM）解決方案啟用。
 
 ## <a name="requirements"></a>需求
 
-要將 Microsoft 企業 SSO 外掛程式用於 Apple 設備,請:
+若要使用適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式：
 
-- 必須在設備上安裝 iOS 13.0 或更高版本。
-- 必須在設備上安裝為 Apple 設備提供 Microsoft 企業 SSO 外掛程式的 Microsoft 應用程式。 對於公共預覽,這些應用程式包括[微軟身份驗證器應用程式](../user-help/user-help-auth-app-overview.md)。
-- 設備必須註冊 MDM(例如,使用 Microsoft Intune)。
-- 必須將配置推送到設備,才能為設備上的 Apple 設備啟用 Microsoft 企業 SSO 外掛程式。 此安全約束是Apple要求的。
+- 裝置上必須安裝 iOS 13.0 或更新版本。
+- 為 Apple 裝置提供 Microsoft 企業 SSO 外掛程式的 Microsoft 應用程式必須安裝在裝置上。 在公開預覽中，這些應用程式包括[Microsoft Authenticator 應用](../user-help/user-help-auth-app-overview.md)程式。
+- 裝置必須註冊 MDM （例如，使用 Microsoft Intune）。
+- 設定必須推送至裝置，才能在裝置上啟用適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式。 Apple 需要此安全性條件約束。
 
-## <a name="enable-the-sso-extension-with-mobile-device-management-mdm"></a>使用行動裝置管理 (MDM) 啟用 SSO 擴充
+## <a name="enable-the-sso-extension-with-mobile-device-management-mdm"></a>使用行動裝置管理（MDM）啟用 SSO 擴充功能
 
-要為 Apple 設備啟用 Microsoft 企業 SSO 外掛程式,您的裝置需要透過 MDM 服務發送訊號。 由於 Microsoft 在[Microsoft 驗證器應用中](..//user-help/user-help-auth-app-overview.md)包含企業 SSO 外掛程式,請使用 MDM 設定應用以啟用 Microsoft 企業 SSO 外掛程式。
+若要啟用適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式，您的裝置必須透過 MDM 服務傳送信號。 由於 Microsoft 在[Microsoft Authenticator 應用程式](..//user-help/user-help-auth-app-overview.md)中包含企業 SSO 外掛程式，請使用您的 MDM 設定應用程式，以啟用 Microsoft 企業 SSO 外掛程式。
 
-使用以下參數為 Apple 裝置設定 Microsoft 企業 SSO 外掛程式:
+使用下列參數來設定適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式：
 
-- **型態**: 重定向
-- **群組代碼**:`com.microsoft.azureauthenticator.ssoextension`
-- **小組代碼**:`SGGM6D27TK`
-- **網址**:
+- **類型**：重新導向
+- **延伸模組識別碼**：`com.microsoft.azureauthenticator.ssoextension`
+- **小組識別碼**：`SGGM6D27TK`
+- **Url**：
   - `https://login.microsoftonline.com`
   - `https://login.windows.net`
   - `https://login.microsoft.com`
@@ -70,14 +70,14 @@ ms.locfileid: "80982577"
   - `https://login.usgovcloudapi.net`
   - `https://login-us.microsoftonline.com`
 
-您可以使用 Microsoft Intune 作為 MDM 服務,以簡化 Microsoft 企業 SSO 外掛程式的配置。 有關詳細資訊,請參閱[Intune 設定文件](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)。
+您可以使用 Microsoft Intune 作為 MDM 服務，以輕鬆設定 Microsoft 企業 SSO 外掛程式。 如需詳細資訊，請參閱[Intune 設定檔](https://docs.microsoft.com/intune/configuration/ios-device-features-settings)。
 
-## <a name="using-the-sso-extension-in-your-application"></a>在應用程式中使用 SSO 擴充
+## <a name="using-the-sso-extension-in-your-application"></a>在您的應用程式中使用 SSO 擴充功能
 
-適用於 Apple 裝置版本 1.1.0 及更高版本的[Microsoft 身份驗證庫 (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-objc)支援適用於 Apple 裝置的 Microsoft 企業 SSO 外掛程式。
+適用于 Apple 裝置版本1.1.0 和更新版本的[Microsoft 驗證程式庫（MSAL）](https://github.com/AzureAD/microsoft-authentication-library-for-objc)支援 apple 裝置的 microsoft 企業 SSO 外掛程式。
 
-如果您想支援 Microsoft 企業 SSO 外掛程式為 Apple 裝置提供的共享設備模式,請確保應用程式使用指定的最低要求版本的 MSAL。
+如果您想要支援適用于 Apple 裝置的 Microsoft 企業 SSO 外掛程式所提供的共用裝置模式，請確定您的應用程式使用所指定的最低必要版本 MSAL。
 
 ## <a name="next-steps"></a>後續步驟
 
-有關 iOS 上的共享裝置模式的詳細資訊,請參閱[iOS 裝置的共享裝置模式](msal-ios-shared-devices.md)。
+如需 iOS 上共用裝置模式的詳細資訊，請參閱[ios 裝置的共用裝置模式](msal-ios-shared-devices.md)。

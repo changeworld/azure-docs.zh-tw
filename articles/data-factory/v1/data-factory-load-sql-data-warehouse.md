@@ -1,5 +1,5 @@
 ---
-title: 將 TB 的資料載入 SQL 資料主目錄
+title: 將數 tb 的資料載入 SQL 資料倉儲
 description: 示範如何使用 Azure Data Factory 在 15 分鐘內將 1 TB 的資料載入至 Azure SQL 資料倉儲
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 0bef6b5e87e7f0964989db371014c305b97f1d12
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419301"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>使用 Data Factory 在 15 分鐘內將 1 TB 載入至 Azure SQL 資料倉儲
@@ -24,7 +24,7 @@ ms.locfileid: "81419301"
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[使用 Data Factory 從 Azure SQL 資料倉儲來回複製資料](../connector-azure-sql-data-warehouse.md)。
 
 
-[Azure SQL 資料倉庫](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)是一個基於雲的橫向擴展資料庫,能夠處理海量數據(包括關係數據和非關係數據)。  SQL 資料倉儲是以巨量平行處理 (MPP) 架構為基礎，最適用於企業資料倉儲工作負載。  它透過單獨調整儲存體和計算的彈性，來提供雲端彈性。
+[Azure SQL 資料倉儲](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)是以雲端為基礎、向外延展的資料庫，可處理大量資料，包括關聯式和非關聯式。  SQL 資料倉儲是以巨量平行處理 (MPP) 架構為基礎，最適用於企業資料倉儲工作負載。  它透過單獨調整儲存體和計算的彈性，來提供雲端彈性。
 
 現在，使用 Azure SQL 資料倉儲比之前使用 **Azure Data Factory** 還要簡單。  Azure Data Factory 是一個完全受控的雲端架構資料整合服務，可用來將現有系統的資料填入 SQL 資料倉儲，並節省評估 SQL 資料倉儲及建置分析解決方案的寶貴時間。 以下是使用 Azure Data Factory 將資料載入至 Azure SQL 資料倉儲的主要優點：
 
@@ -40,7 +40,7 @@ ms.locfileid: "81419301"
 > [!NOTE]
 >  如需從 Azure SQL 資料倉儲來回移動資料之 Data Factory 功能的一般資訊，請參閱[使用 Azure Data Factory 從 Azure SQL 資料倉儲來回移動資料](data-factory-azure-sql-data-warehouse-connector.md)一文。
 >
-> 您還可以使用可視化工作室、PowerShell 等構建管道。請參閱[教學:將資料從 Azure Blob 複製到 Azure SQL 資料庫](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md),以便快速演練有關在 Azure 資料工廠中使用複製活動的分步說明。  
+> 您也可以使用 Visual Studio、PowerShell 等來建立管線。如需使用 Azure Data Factory 中複製活動的逐步指示，請參閱[教學課程：將資料從 Azure Blob 複製到 Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 。  
 >
 >
 
@@ -111,12 +111,12 @@ ms.locfileid: "81419301"
   完成必要的步驟之後，即準備好使用複製精靈設定複製活動。
 
 ## <a name="launch-copy-wizard"></a>啟動複製精靈
-1. 登入 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 按一下左上角的 [建立資源]****，按一下 [智慧 + 分析]****，然後按一下 [Data Factory]****。
 3. 在 [新增 Data Factory]**** 窗格中：
 
    1. 輸入 **LoadIntoSQLDWDataFactory** 作為 [名稱]****。
-       Azure Data Factory 的名稱在全域必須是唯一的。 如果收到錯誤:**資料工廠名稱"LoadIntoSQLDWDataFactory"不可用**,請更改資料工廠的名稱(例如,您的姓名 LoadIntoSQLDWDataFactory),然後重試創建。 請參閱 [Data Factory - 命名規則](data-factory-naming-rules.md) 主題，以了解 Data Factory 成品的命名規則。  
+       Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤： **data factory 名稱 "LoadIntoSQLDWDataFactory" 無法使用**，請變更 data factory 的名稱（例如 yournameLoadIntoSQLDWDataFactory），然後嘗試重新建立。 請參閱 [Data Factory - 命名規則](data-factory-naming-rules.md) 主題，以了解 Data Factory 成品的命名規則。  
    2. 選取您的 Azure **訂用帳戶**。
    3. 針對資源群組，請執行下列其中一個步驟︰
       1. 選取 [使用現有的]**** 以選取現有的資源群組。
@@ -124,7 +124,7 @@ ms.locfileid: "81419301"
    4. 選取 Data Factory 的 [位置]****。
    5. 選取刀鋒視窗底部的 [釘選到儀表板]**** 核取方塊。  
    6. 按一下頁面底部的 [新增]  。
-4. 建立完成後,您將看到**資料工廠**邊欄選項卡,如下圖所示:
+4. 建立完成後，您會看到 [ **Data Factory** ] 分頁，如下圖所示：
 
    ![Data Factory 首頁](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
 5. 在 Data Factory 首頁，按一下 [資料複製]**** 圖格以啟動 [複製精靈]****。
@@ -160,7 +160,7 @@ ms.locfileid: "81419301"
 
     ![複製精靈 - 選取輸入資料夾](media/data-factory-load-sql-data-warehouse/select-input-folder.png)
 
-4. 按 [下一步]****，即會自動偵測檔案格式設定。  檢查以確保列分隔符是"*"而不是預設逗號""。"。  在預覽資料之後，請按 [下一步]****。
+4. 按 [下一步]****，即會自動偵測檔案格式設定。  請檢查並確定資料行分隔符號是 ' | '，而不是預設的逗號 '，'。  在預覽資料之後，請按 [下一步]****。
 
     ![複製精靈 - 檔案格式設定](media/data-factory-load-sql-data-warehouse/file-format-settings.png)
 
@@ -198,7 +198,7 @@ ms.locfileid: "81419301"
 
     您可以在右窗格的 [活動時段總管]**** 中檢視複製執行詳細資料，包括從來源讀取及寫入至目的地的資料量、期間，以及執行的平均輸送量。
 
-    從以下屏幕截圖中可以看出,將 1 TB 從 Azure Blob 存儲複製到 SQL 數據倉庫需要 14 分鐘,從而有效地實現了 1.22 GBps 輸送量!
+    如您在下列螢幕擷取畫面中所見，從 Azure Blob 儲存體複製 1 TB 到 SQL 資料倉儲花了14分鐘的時間，實際上達到 1.22 GBps 的輸送量！
 
     ![複製精靈 - 成功對話方塊](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 

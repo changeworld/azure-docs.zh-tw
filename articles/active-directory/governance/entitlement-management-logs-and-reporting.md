@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 監視器存檔&報表 ─ Azure AD 授權管理
-description: 瞭解如何在 Azure 活動目錄授權管理中使用 Azure 監視器存檔日誌和創建報表。
+title: 使用 Azure 監視器 Azure AD 的權利管理來封存 & 報告
+description: 瞭解如何使用 Azure Active Directory 權利管理中的 Azure 監視器來封存記錄和建立報表。
 services: active-directory
 documentationCenter: ''
 author: barclayn
@@ -17,79 +17,79 @@ ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d59a508d03730a51e793a5e30e2c99a91af77ce8
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81380176"
 ---
-# <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure 監視器中的存檔紀錄與 Azure AD 授權管理報告
+# <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure 監視器中的 Azure AD 權利管理封存記錄和報告
 
-Azure AD 在審核日誌中存儲審核事件長達 30 天。 但是,通過將審核數據路由到 Azure 儲存帳戶或使用 Azure 監視器,可以將審核數據保留的時間超過預設保留期(Azure [AD 存儲數據多長時間)](../reports-monitoring/reference-reports-data-retention.md)中概述。 然後,您可以使用工作簿、自定義查詢和報表來處理此數據。
+Azure AD 在 audit 記錄中儲存最多30天的 audit 事件。 不過，您可以將這些審核資料保留超過預設的保留期限（ [Azure AD 儲存報告資料的時間長度](../reports-monitoring/reference-reports-data-retention.md)所述），方法是將其路由傳送至 Azure 儲存體帳戶或使用 Azure 監視器。 接著，您可以使用活頁簿和自訂查詢以及此資料的報表。
 
 
-## <a name="configure-azure-ad-to-use-azure-monitor"></a>將 Azure AD 設定為使用 Azure 監視器
-在使用 Azure 監視器工作簿之前,必須配置 Azure AD 以將其審核日誌的副本發送到 Azure 監視器。
+## <a name="configure-azure-ad-to-use-azure-monitor"></a>設定 Azure AD 以使用 Azure 監視器
+使用 Azure 監視器活頁簿之前，您必須先設定 Azure AD，將其審核記錄的複本傳送至 Azure 監視器。
 
-存檔 Azure AD 稽核紀錄需要將 Azure 監視器保留在 Azure 訂閱中。 您可以在 Azure 監視器[中的 Azure AD 活動日誌](../reports-monitoring/concept-activity-logs-azure-monitor.md)中瞭解有關使用 Azure 監視的先決條件和估計成本。
+封存 Azure AD audit 記錄檔時，您必須在 Azure 訂用帳戶中具有 Azure 監視器。 您可以在 Azure 監視器中的[Azure AD 活動記錄中](../reports-monitoring/concept-activity-logs-azure-monitor.md)，閱讀更多有關必要條件和估計成本 Azure 監視器的詳細資訊。
 
-**先決條件角色**: 全域管理員
+必要條件角色：全域**系統**管理員
 
-1. 以全域管理員的使用者身份登錄到 Azure 門戶。請確保有權訪問包含 Azure 監視器工作區的資源組。
+1. 以身為全域管理員的使用者身分登入 Azure 入口網站。請確定您可以存取包含 Azure 監視器工作區的資源群組。
  
-1. 選擇**Azure 活動目錄**,然後單擊左側導航功能表中的「監視」下的 **「診斷設置**」 。 檢查是否已設置將審核日誌發送到該工作區。
+1. 選取**Azure Active Directory**然後在左側導覽功能表中，按一下 [監視] 下的 [**診斷設定**]。 檢查是否已有將 audit 記錄檔傳送至該工作區的設定。
 
-1. 如果尚未設置,請單擊「**添加診斷設置**」。。 使用文章中的說明[將 Azure AD 日誌與 Azure 監視器日誌集成](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md#send-logs-to-azure-monitor),將 Azure AD 審核日誌發送到 Azure 監視器工作區。
+1. 如果尚未設定，請按一下 [**新增診斷設定**]。 使用將[Azure AD 記錄與 Azure 監視器記錄整合](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md#send-logs-to-azure-monitor)一文中的指示，將 Azure AD audit 記錄檔傳送至 Azure 監視器工作區。
 
     ![診斷設定窗格](./media/entitlement-management-logs-and-reporting/audit-log-diagnostics-settings.png)
 
 
-1. 將日誌發送到 Azure 監視器後,選擇**日誌分析工作區**,然後選擇包含 Azure AD 審核紀錄的工作區。
+1. 將記錄檔傳送至 Azure 監視器之後，請選取 [ **Log Analytics 工作區**]，然後選取包含 Azure AD audit 記錄檔的工作區。
 
-1. 選擇**使用方式和估計成本**,然後按下 **「數據保留**」。 將滑塊更改為要保留數據的天數,以滿足審核要求。
+1. 選取 [**使用量和估計成本**]，然後按一下 [**資料保留期**]。 將滑杆變更為您想要保留資料的天數，以符合您的審核需求。
 
-    ![紀錄分析工作區窗格](./media/entitlement-management-logs-and-reporting/log-analytics-workspaces.png)
+    ![Log Analytics 工作區窗格](./media/entitlement-management-logs-and-reporting/log-analytics-workspaces.png)
 
-1. 稍後,要查看工作區中保留的日期範圍,可以使用*存檔日誌日期範圍*工作簿:  
+1. 稍後，若要查看工作區中保留的日期範圍，您可以使用 [封存的*記錄日期範圍*] 活頁簿：  
     
-    1. 選擇**Azure 活動目錄**,然後單擊**工作簿**。 
+    1. 選取**Azure Active Directory** ，然後按一下 [活頁**簿**]。 
     
-    1. 展開**Azure 活動目錄故障排除**部分,然後單擊 **「存檔日誌日期範圍**」。 
+    1. 展開 [ **Azure Active Directory 疑難排解**] 區段，然後按一下 [封存的**記錄日期範圍**]。 
 
 
-## <a name="view-events-for-an-access-package"></a>檢視存取套件的事件  
+## <a name="view-events-for-an-access-package"></a>查看存取封裝的事件  
 
-要檢視存取套件的事件,您必須有權存取基礎 Azure 監視器工作區(請參閱[管理 Azure 監視器中日誌資料和工作區的存取](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions))以及以下角色之一: 
+若要查看存取封裝的事件，您必須具有基礎 Azure 監視器工作區的存取權（如需資訊，請參閱[管理 Azure 監視器中記錄資料和工作區的存取權](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions)）和下列其中一個角色： 
 
 - 全域管理員  
 - 安全性系統管理員  
 - 安全性讀取者  
-- 報告閱讀器  
+- 報告讀取者  
 - 應用程式管理員  
 
-使用以下過程檢視事件: 
+使用下列程式來查看事件： 
 
-1. 在 Azure 門戶中,選擇**Azure 活動目錄**,然後單擊**工作簿**。 如果只有一個訂閱,則繼續執行步驟 3。 
+1. 在 [Azure 入口網站中，選取**Azure Active Directory**然後按一下 [活頁**簿**]。 如果您只有一個訂用帳戶，請移至步驟3。 
 
-1. 如果您有多個訂閱,請選擇包含工作區的訂閱。  
+1. 如果您有多個訂用帳戶，請選取包含工作區的訂用帳戶。  
 
-1. 選擇名為 *「訪問包活動*」的工作簿。 
+1. 選取名為 [*存取套件活動*] 的活頁簿。 
 
-1. 在該工作簿中,選擇時間範圍(如果不確定,則更改為**全部**),並從該時間範圍內具有活動的所有訪問包的下拉清單中選擇訪問包 ID。 將顯示與選定時間範圍內發生的訪問包相關的事件。  
+1. 在該活頁簿中，選取時間範圍（如果不確定，請變更為 [**全部**]），然後從在該時間範圍內有活動的所有存取套件的下拉式清單中選取存取套件識別碼。 將會顯示與所選時間範圍期間所發生之存取封裝相關的事件。  
 
-    ![檢視存取套件事件](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
+    ![查看存取套件事件](./media/entitlement-management-logs-and-reporting/view-events-access-package.png) 
 
-    每行包括時間、訪問包 ID、操作的名稱、物件 ID、UPN 以及啟動操作的使用者的顯示名稱。  JSON 中包含其他詳細資訊。   
+    每個資料列都包含時間、存取封裝識別碼、作業名稱、物件識別碼、UPN，以及啟動作業之使用者的顯示名稱。  JSON 中包含其他詳細資料。   
 
 
-## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>使用 Azure 門戶建立自訂 Azure 監視器查詢
-您可以在 Azure AD 審核事件(包括授權管理事件)上創建自己的查詢。  
+## <a name="create-custom-azure-monitor-queries-using-the-azure-portal"></a>使用 Azure 入口網站建立自訂 Azure 監視器查詢
+您可以針對 Azure AD 的 audit 事件建立自己的查詢，包括權利管理事件。  
 
-1. 在 Azure 門戶的 Azure 活動目錄中,按一下左側導航功能表中的「監視」部分下的 **「日誌」** 以創建新的查詢頁。
+1. 在 Azure 入口網站的 Azure Active Directory 中，按一下左側導覽功能表中 [監視] 區段底下的 [**記錄**]，以建立新的查詢頁面。
 
-1. 工作區應顯示在查詢頁的左上角。 如果有多個 Azure 監視器工作區,並且未顯示用於存儲 Azure AD 審核事件的工作區,請按兩下選擇**範圍**"。 然後,選擇正確的訂閱和工作區。
+1. 您的工作區應該會顯示在 [查詢] 頁面的左上方。 如果您有多個 Azure 監視器工作區，而且您用來儲存 Azure AD audit 事件的工作區並未顯示，請按一下 [**選取範圍**]。 然後，選取正確的訂用帳戶和工作區。
 
-1. 接下來,在查詢文本區域中,刪除字串「search +」並將其替換為以下查詢:
+1. 接下來，在 [查詢文字] 區域中刪除字串 "search *"，並將它取代為下列查詢：
 
     ```
     AuditLogs | where Category == "EntitlementManagement"
@@ -97,60 +97,60 @@ Azure AD 在審核日誌中存儲審核事件長達 30 天。 但是,通過將�
 
 1. 然後按一下 **[執行]**。 
 
-    ![點選「執行」開始查詢](./media/entitlement-management-logs-and-reporting/run-query.png)
+    ![按一下 [執行] 以啟動查詢](./media/entitlement-management-logs-and-reporting/run-query.png)
 
-默認情況下,該表將顯示從最後一小時開始用於授權管理的審核日誌事件。 您可以更改「時間範圍」設定以檢視較舊的事件。 但是,更改此設置將僅顯示 Azure AD 設定為將事件發送到 Azure 監視器後發生的事件。
+根據預設，資料表會顯示最後一個小時內的權利管理的審核記錄事件。 您可以變更 [時間範圍] 設定來查看較舊的事件。 不過，變更此設定只會顯示在 Azure AD 設定為將事件傳送至 Azure 監視器之後發生的事件。
 
-如果想知道 Azure 監視器中保持的最舊和最新的審核事件,請使用以下查詢:
+如果您想要知道 Azure 監視器中保留的最舊和最新的 audit 事件，請使用下列查詢：
 
 ```
 AuditLogs | where TimeGenerated > ago(3653d) | summarize OldestAuditEvent=min(TimeGenerated), NewestAuditEvent=max(TimeGenerated) by Type
 ```
 
-有關為 Azure 監視器中的稽核事件儲存的欄的詳細資訊,請參閱在[Azure 監視器 中解釋 Azure AD 稽核紀錄架構](../reports-monitoring/reference-azure-monitor-audit-log-schema.md)。
+如需 Azure 監視器中針對 audit 事件儲存之資料行的詳細資訊，請參閱[在 Azure 監視器中解讀 Azure AD audit logs 架構](../reports-monitoring/reference-azure-monitor-audit-log-schema.md)。
 
 ## <a name="create-custom-azure-monitor-queries-using-azure-powershell"></a>使用 Azure PowerShell 建立自訂 Azure 監視器查詢
 
-在將 Azure AD 設定為將日誌發送到 Azure 監視器後,可以通過 PowerShell 訪問日誌。 然後,從腳本或 PowerShell 命令行發送查詢,而無需成為租戶中的全域管理員。 
+設定 Azure AD 以將記錄檔傳送至 Azure 監視器之後，您可以透過 PowerShell 存取記錄。 然後，從腳本或 PowerShell 命令列傳送查詢，而不需要是租使用者中的全域管理員。 
 
-### <a name="ensure-the-user-or-service-principal-has-the-correct-role-assignment"></a>確保使用者或服務主體具有正確的角色分配
+### <a name="ensure-the-user-or-service-principal-has-the-correct-role-assignment"></a>確定使用者或服務主體具有正確的角色指派
 
-請確保您是要向 Azure AD 進行身份驗證的使用者或服務主體,在日誌分析工作區中處於相應的 Azure 角色中。 角色選項是日誌分析讀取器或日誌分析參與者。 如果您已在這些角色之一中,請跳過以[使用一個 Azure 訂閱檢索日誌分析 ID。](#retrieve-log-analytics-id-with-one-azure-subscription)
+請確定您（將向 Azure AD 驗證的使用者或服務主體）位於 Log Analytics 工作區中的適當 Azure 角色。 角色選項為 Log Analytics 讀取者或 Log Analytics 參與者。 如果您已經是這些角色的其中一個，請跳至[使用一個 Azure 訂用帳戶抓取 Log ANALYTICS 識別碼](#retrieve-log-analytics-id-with-one-azure-subscription)。
 
-要設定角色分配並建立查詢,請執行以下步驟:
+若要設定角色指派和建立查詢，請執行下列步驟：
 
-1. 在 Azure 門戶中,找到[紀錄分析工作區](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces
+1. 在 [Azure 入口網站中，找出[Log Analytics 工作區](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces
 )。
 
-1. 選擇**訪問控制 (IAM)。**
+1. 選取 **[存取控制（IAM）**]。
 
-1. 然後按下「**添加**」 以添加角色分配。
+1. 然後按一下 [**新增**] 以新增角色指派。
 
     ![新增角色指派](./media/entitlement-management-logs-and-reporting/workspace-set-role-assignment.png)
 
 ### <a name="install-azure-powershell-module"></a>安裝 Azure PowerShell 模組
 
-取得適當的角色分配後,啟動 PowerShell 並[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps?view=azps-3.3.0)(如果尚未分配),透過鍵入:
+一旦您擁有適當的角色指派，請啟動 PowerShell，然後再[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps?view=azps-3.3.0)（如果尚未這麼做），方法是輸入：
 
 ```azurepowershell
 install-module -Name az -allowClobber -Scope CurrentUser
 ```
     
-現在,您可以對 Azure AD 進行身份驗證,並檢索要查詢的日誌分析工作區的 ID。
+現在您已準備好向 Azure AD 進行驗證，並取出您所查詢的 Log Analytics 工作區識別碼。
 
-### <a name="retrieve-log-analytics-id-with-one-azure-subscription"></a>使用 Azure 訂閱檢索日誌分析 ID
-如果只有 Azure 訂閱和單一日誌分析工作區,則鍵入以下內容以驗證到 Azure AD、連接到該訂閱並檢索該工作區:
+### <a name="retrieve-log-analytics-id-with-one-azure-subscription"></a>使用一個 Azure 訂用帳戶取出 Log Analytics 識別碼
+如果您只有單一 Azure 訂用帳戶和單一 Log Analytics 工作區，請輸入下列內容以向 Azure AD 進行驗證、連線至該訂用帳戶，並取出該工作區：
  
 ```azurepowershell
 Connect-AzAccount
 $wks = Get-AzOperationalInsightsWorkspace
 ```
  
-### <a name="retrieve-log-analytics-id-with-multiple-azure-subscriptions"></a>使用多個 Azure 訂閱檢索紀錄分析 ID
+### <a name="retrieve-log-analytics-id-with-multiple-azure-subscriptions"></a>使用多個 Azure 訂用帳戶取出 Log Analytics 識別碼
 
- [獲取 Az 操作見解工作區](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace)一次在一個訂閱中運行。 因此,如果您有多個 Azure 訂閱,則需要確保連接到具有 Azure AD 日誌的日誌分析工作區的訂閱。 
+ [AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace)會一次在一個訂用帳戶中運作。 因此，如果您有多個 Azure 訂用帳戶，您會想要確定您連線的是具有 Log Analytics 工作區的 Azure AD 記錄。 
  
- 以下 cmdlet 顯示訂閱清單,並尋找具有紀錄分析工作區的訂閱 ID:
+ 下列 Cmdlet 會顯示訂用帳戶的清單，並尋找具有 Log Analytics 工作區的訂用帳戶識別碼：
  
 ```azurepowershell
 Connect-AzAccount
@@ -158,21 +158,21 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-您可以使用 命令(`Connect-AzAccount –Subscription $subs[0].id`如 )重新驗證 PowerShell 工作階段並將其關聯到該訂閱。 要瞭解有關如何從 PowerShell 進行身份驗證(包括非互動式)的更多詳細資訊,請參閱[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
+您可以使用之類的命令，重新驗證您的 PowerShell 會話，並將`Connect-AzAccount –Subscription $subs[0].id`其與該訂用帳戶產生關聯。 若要深入瞭解如何從 PowerShell 向 Azure 進行驗證（包括非互動），請參閱[使用 Azure PowerShell 登入](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
 )。
 
-如果該訂閱中有多個日誌分析工作區,則 cmdlet [Get-Az 操作見解工作區](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace)將返回工作區清單。 然後,您可以找到具有 Azure AD 日誌的日誌。 此`CustomerId`cmdlet 傳回的欄位與日誌分析工作區概述中的 Azure 門戶中顯示的「工作區 ID」的值相同。
+如果您在該訂用帳戶中有多個 Log Analytics 工作區，則 Cmdlet [AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace)會傳回工作區清單。 接著，您可以找到具有 Azure AD 記錄的帳戶。 此`CustomerId` Cmdlet 所傳回的欄位與 Log Analytics 工作區中的 Azure 入口網站中顯示的「工作區識別碼」的值相同。
  
 ```powershell
 $wks = Get-AzOperationalInsightsWorkspace
 $wks | ft CustomerId, Name
 ```
 
-### <a name="send-the-query-to-the-log-analytics-workspace"></a>將查詢傳送到紀錄分析工作區
-最後,在確定工作區后,可以使用[Invoke-Az 操作見解查詢](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-)向該工作區發送 Kusto 查詢。 這些查詢是用[Kusto 查詢語言](https://docs.microsoft.com/azure/kusto/query/)編寫的。
+### <a name="send-the-query-to-the-log-analytics-workspace"></a>將查詢傳送至 Log Analytics 工作區
+最後，一旦您識別出工作區之後，您就可以使用[AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
+)將 Kusto 查詢傳送至該工作區。 這些查詢是以[Kusto 查詢語言](https://docs.microsoft.com/azure/kusto/query/)撰寫。
  
-例如,可以從日誌分析工作區檢索審核事件記錄的日期範圍,使用 PowerShell cmdlet 發送查詢,如下所示:
+例如，您可以從 Log Analytics 工作區取出 audit 事件記錄的日期範圍，並使用 PowerShell Cmdlet 來傳送類似下列的查詢：
  
 ```powershell
 $aQuery = "AuditLogs | where TimeGenerated > ago(3653d) | summarize OldestAuditEvent=min(TimeGenerated), NewestAuditEvent=max(TimeGenerated) by Type"
@@ -180,7 +180,7 @@ $aResponse = Invoke-AzOperationalInsightsQuery -WorkspaceId $wks[0].CustomerId -
 $aResponse.Results |ft
 ```
 
-您還可以使用以下查詢檢索授權管理事件:
+您也可以使用如下的查詢來抓取權利管理事件：
 
 ```azurepowershell
 $bQuery = 'AuditLogs | where Category == "EntitlementManagement"'

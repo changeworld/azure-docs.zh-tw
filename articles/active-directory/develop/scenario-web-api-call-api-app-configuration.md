@@ -1,7 +1,7 @@
 ---
-title: 設定呼叫 Web API 的 Web API |蔚藍
+title: 設定呼叫 web Api 的 Web API |Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解如何建構 Web API 的 Web API(應用程式的代碼設定)
+description: 瞭解如何建立呼叫 web Api 的 Web API （應用程式的程式碼設定）
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,23 +13,23 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 38e319efb100d326d55f6f821e7c903306a7c7d0
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991002"
 ---
-# <a name="a-web-api-that-calls-web-apis-code-configuration"></a>呼叫 Web API 的 Web API:代碼設定
+# <a name="a-web-api-that-calls-web-apis-code-configuration"></a>呼叫 web Api 的 Web API：程式碼設定
 
-註冊 Web API 後,可以配置應用程式的代碼。
+註冊 Web API 之後，您可以設定應用程式的程式碼。
 
-用於設定 Web API 以便呼叫下遊 Web API 的代碼基於用於保護 Web API 的代碼。 有關詳細資訊,請參閱受保護的[Web API:應用設定](scenario-protected-web-api-app-configuration.md)。
+您用來設定 Web API 的程式碼，讓它呼叫下游 web Api 建置於用來保護 Web API 的程式碼之上。 如需詳細資訊，請參閱[Protected Web API：應用程式](scenario-protected-web-api-app-configuration.md)設定。
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-## <a name="code-subscribed-to-ontokenvalidated"></a>訂閱到 OnToken 驗證的代碼
+## <a name="code-subscribed-to-ontokenvalidated"></a>已訂閱 OnTokenValidated 的程式碼
 
-除了任何受保護的 Web API 的程式碼設定外,還需要訂閱呼叫 API 時收到的無記名權杖的驗證:
+在任何受保護 web Api 的程式碼設定上，您必須訂閱在呼叫您的 API 時所收到的持有人權杖驗證：
 
 ```csharp
 /// <summary>
@@ -64,18 +64,18 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 }
 ```
 
-## <a name="on-behalf-of-flow"></a>代表流程
+## <a name="on-behalf-of-flow"></a>代理者流程
 
-新增帳戶從Jwt()方法需要:
+AddAccountToCacheFromJwt （）方法必須：
 
-- 實例化 Microsoft 身份驗證庫 (MSAL) 機密用戶端應用程式。
-- 呼叫 `AcquireTokenOnBehalf` 方法。 此調用將用戶端為 Web API 取得的無記名權杖與同一使用者的無記名權杖交換,但它具有 API 呼叫下遊 API。
+- 將 Microsoft 驗證程式庫（MSAL）機密用戶端應用程式具現化。
+- 呼叫 `AcquireTokenOnBehalf` 方法。 此呼叫會將用戶端為 Web API 所取得的持有人權杖，與相同使用者的持有人權杖交換，但它具有 API 呼叫下游 API。
 
-### <a name="instantiate-a-confidential-client-application"></a>實體化機密客戶端應用程式
+### <a name="instantiate-a-confidential-client-application"></a>具現化機密用戶端應用程式
 
-此流僅在機密用戶端流中可用,因此受保護的 Web API 透過`WithClientSecret`或方法向[機密用戶端應用程式生成器類](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)提供客戶端認證(`WithCertificate`用戶端金鑰或憑證)。
+此流程僅適用于機密用戶端流程，因此受保護的 Web API 會透過`WithClientSecret`或`WithCertificate`方法，將用戶端認證（用戶端密碼或憑證）提供給[ConfidentialClientApplicationBuilder 類別](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder)。
 
-![I 機密用戶端應用程式方法清單](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
+![IConfidentialClientApplication 方法的清單](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
 ```csharp
 IConfidentialClientApplication app;
@@ -93,20 +93,20 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 #endif
 ```
 
-最後,機密用戶端應用程式無需通過用戶端機密或證書來證明其身份,而是可以使用用戶端斷言來證明其身份。
-有關此進階方案的詳細資訊,請參閱[機密客戶端斷言](msal-net-client-assertions.md)。
+最後，機密用戶端應用程式可以使用用戶端判斷提示來證明其身分識別，而不是透過用戶端密碼或憑證來證明其身分識別。
+如需這個 advanced 案例的詳細資訊，請參閱[機密用戶端判斷](msal-net-client-assertions.md)提示。
 
-### <a name="how-to-call-on-behalf-of"></a>如何代表
+### <a name="how-to-call-on-behalf-of"></a>如何呼叫代理者
 
-通過在`IConfidentialClientApplication`介面上調用[收購權杖代理方法](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder)進行代表 (OBO) 調用。
+您可以在`IConfidentialClientApplication`介面上呼叫[AcquireTokenOnBehalf 方法](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder)，以進行代理者（OBO）呼叫。
 
-類`UserAssertion`是從 Web API 從其自己的用戶端接收的承載令牌生成的。 有[兩個建構函數](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet):
-* 採用 JSON Web 權杖 (JWT) 無記名權杖的權杖
-* 一種採用任何類型的使用者斷言,另一種安全權杖,其類型隨後在名為附加參數中指定`assertionType`
+`UserAssertion`類別是從本身用戶端的 Web API 所收到的持有人權杖所建立。 有[兩種構造](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)函式：
+* 一個使用 JSON Web 權杖（JWT）持有人權杖
+* 其中一個會採用任何類型的使用者判斷提示，另一種安全性權杖，其型別接著會在名為的其他參數中指定`assertionType`
 
-![使用者斷言屬性和方法](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
+![UserAssertion 屬性和方法](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-實際上,OBO 流通常用於獲取下游 API 的權杖並將其儲存在MSAL.NET使用者權杖快取中。 執行此操作是為了 Web API 的其他部分以後可以``AcquireTokenOnSilent``調用 的[重寫](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet)來呼叫下游 API。 如果需要,此調用具有刷新令牌的效果。
+實際上，OBO 流程通常用來取得下游 API 的權杖，並將它儲存在 MSAL.NET 使用者權杖快取中。 您可以這樣做，讓 Web API 的其他部分稍後可以在的[覆寫](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet)上``AcquireTokenOnSilent``呼叫，以呼叫下游 api。 此呼叫具有重新整理權杖的效果（如有需要）。
 
 ```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
@@ -143,9 +143,9 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
 ```
 # <a name="java"></a>[Java](#tab/java)
 
-代表 (OBO) 串流用於獲取呼叫下游 Web API 的權杖。 在此流中,Web API 從用戶端應用程式接收具有使用者委派許可權的承載令牌,然後將此令牌交換為另一個訪問權杖以調用下游 Web API。
+代理者（OBO）流程是用來取得權杖，以呼叫下游 Web API。 在此流程中，您的 Web API 會從用戶端應用程式接收具有使用者委派許可權的持有人權杖，然後將此權杖交換給另一個存取權杖，以呼叫下游 Web API。
 
-以下代碼使用 Web`SecurityContextHolder`API 中的 Spring 安全框架來獲取經過驗證的承載權杖。 然後,它使用 MSAL Java`acquireToken`庫使用 調用`OnBehalfOfParameters`獲取下游 API 的權杖。 MSAL 快取緩權,以便對 API 的後續呼`acquireTokenSilently`叫可用於獲取緩存的權杖。
+下列程式碼會在 Web API 中使用`SecurityContextHolder`春季安全性架構，以取得已驗證的持有人權杖。 接著，它會使用 MSAL JAVA 程式庫，透過`acquireToken`呼叫來取得下游 API 的權杖`OnBehalfOfParameters`。 MSAL 會快取權杖，讓後續對 API 的呼叫可以`acquireTokenSilently`使用來取得緩存的權杖。
 
 ```Java
 @Component
@@ -212,19 +212,19 @@ class MsalAuthHelper {
 
 # <a name="python"></a>[Python](#tab/python)
 
-代表 (OBO) 串流用於獲取呼叫下游 Web API 的權杖。 在此流中,Web API 從用戶端應用程式接收具有使用者委派許可權的承載令牌,然後將此令牌交換為另一個訪問權杖以調用下游 Web API。
+代理者（OBO）流程是用來取得權杖，以呼叫下游 Web API。 在此流程中，您的 Web API 會從用戶端應用程式接收具有使用者委派許可權的持有人權杖，然後將此權杖交換給另一個存取權杖，以呼叫下游 Web API。
 
-Python Web API 需要使用一些中間件來驗證從用戶端收到的無記名權杖。 然後,Web API 可以使用 MSAL Python 庫調用[`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)方法獲取下游 API 的訪問權杖。 有關使用此 API 的範例,請參閱[GitHub 上的 Microsoft 身份驗證庫 for python 的測試程式](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)碼 。 另請參閱同一存儲庫中[討論問題 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53)的方法,該方法繞過了中間層應用程式的需求。
+Python Web API 必須使用一些中介軟體來驗證從用戶端收到的持有人權杖。 然後，Web API 可以藉由呼叫[`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of)方法，使用 MSAL Python 程式庫取得下游 API 的存取權杖。 如需使用此 API 的範例，請參閱[GitHub 上的 microsoft 驗證-適用于 python 的測試程式碼](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.2.0/tests/test_e2e.py#L429-L472)。 另請參閱此相同存放庫中的[問題 53](https://github.com/AzureAD/microsoft-authentication-library-for-python/issues/53)討論，以取得略過中介層應用程式需求的方法。
 
 ---
 
-您還可以在[Node.js 和 Azure 函數](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61)中看到 OBO 流實現的範例。
+您也可以在[node.js 和 Azure Functions](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61)中查看 OBO 流程執行的範例。
 
 ## <a name="protocol"></a>通訊協定
 
-有關 OBO 協定的詳細資訊,請參閱[Microsoft 識別平臺和 OAuth 2.0 代表流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)。
+如需 OBO 通訊協定的詳細資訊，請參閱[Microsoft 身分識別平臺和 OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)代理者流程。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [呼叫 Web API 的 Web API:取得應用的權杖](scenario-web-api-call-api-acquire-token.md)
+> [呼叫 web Api 的 Web API：取得應用程式的權杖](scenario-web-api-call-api-acquire-token.md)

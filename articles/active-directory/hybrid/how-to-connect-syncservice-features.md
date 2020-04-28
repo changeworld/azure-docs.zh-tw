@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80983070"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同步處理服務功能
@@ -89,16 +89,16 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 
 ## <a name="synchronize-userprincipalname-updates"></a>同步處理 userPrincipalName 更新
 
-從歷史上看,使用本地同步服務的 UserTheName 屬性的更新已被阻止,除非這兩個條件都為 true:
+在過去，除非這兩個條件都成立，否則會封鎖使用來自內部部署的同步處理服務之 UserPrincipalName 屬性的更新：
 
 * 使用者受到管理 (非同盟)。
 * 使用者尚未指派授權。
 
 > [!NOTE]
-> 從 2019 年 3 月起,允許對聯合使用者帳戶進行同步 UPN 更改。
+> 自2019年3月起，允許同步處理同盟使用者帳戶的 UPN 變更。
 > 
 
-啟用此功能允許同步引擎在用戶主體名稱在本地更改並使用密碼哈希同步或傳遞身份驗證時更新用戶主體名稱。
+啟用這項功能可讓同步處理引擎在內部部署變更時更新 userPrincipalName，而且您會使用密碼雜湊同步處理或傳遞驗證。
 
 在新建立的 Azure AD 目錄中，預設會開啟這項功能。 您可以執行下列項目，查看是否已啟用此功能︰  
 
@@ -116,5 +116,5 @@ Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $true
 
 ## <a name="see-also"></a>另請參閱
 
-* [Azure AD 連線同步](how-to-connect-sync-whatis.md)
-* [將本地識別與 Azure 的目錄整合](whatis-hybrid-identity.md)。
+* [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
+* [整合您的內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

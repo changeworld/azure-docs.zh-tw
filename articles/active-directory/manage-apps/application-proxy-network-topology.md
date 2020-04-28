@@ -1,5 +1,5 @@
 ---
-title: Azure AD 應用程式代理的網路拓撲注意事項
+title: Azure AD 應用程式 Proxy 的網路拓撲考慮
 description: 涵蓋使用 Azure AD 應用程式 Proxy 時的網路拓撲考量。
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eaceaf1f5e9b6e34ced5db39b61e607fffcb5953
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295127"
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>使用 Azure Active Directory 應用程式 Proxy 時的網路拓撲考量
@@ -39,9 +39,9 @@ ms.locfileid: "80295127"
 
 ## <a name="tenant-location-and-application-proxy-service"></a>租用戶位置與應用程式 Proxy 服務
 
-註冊 Azure AD 租戶時，租戶的區域由指定的國家/地區確定。 當您啟用應用程式 Proxy 時，租用戶的應用程式 Proxy 服務執行個體會選取或建立在與 Azure AD 租用戶位於相同區域或最近的區域。
+當您註冊 Azure AD 租使用者時，您租使用者的區域取決於您指定的國家/地區。 當您啟用應用程式 Proxy 時，租用戶的應用程式 Proxy 服務執行個體會選取或建立在與 Azure AD 租用戶位於相同區域或最近的區域。
 
-例如，如果 Azure AD 租戶的國家或地區是英國，則所有應用程式代理連接器都使用歐洲資料中心中的服務實例。 當使用者存取發佈的應用程式時，其流量會通過這個位置的應用程式 Proxy 服務執行個體。
+例如，如果您的 Azure AD 租使用者的國家或地區是英國，則所有的應用程式 Proxy 連接器都會使用歐洲資料中心的服務實例。 當使用者存取發佈的應用程式時，其流量會通過這個位置的應用程式 Proxy 服務執行個體。
 
 ## <a name="considerations-for-reducing-latency"></a>降低延遲的考量
 
@@ -78,7 +78,7 @@ ms.locfileid: "80295127"
 
 ## <a name="focus-your-optimization-strategy"></a>專注於最佳化策略
 
-您幾乎沒有辦法可以控制您的使用者與應用程式 Proxy 服務之間的連線。 使用者可以從家用網路、咖啡店或其他國家/地區訪問您的應用。 反之，您可以將應用程式 Proxy 服務與應用程式的應用程式 Proxy 連接器之連線最佳化。 請考慮將下列模式整合在您的環境中。
+您幾乎沒有辦法可以控制您的使用者與應用程式 Proxy 服務之間的連線。 使用者可以從家用網路、咖啡廳或不同的國家/地區存取您的應用程式。 反之，您可以將應用程式 Proxy 服務與應用程式的應用程式 Proxy 連接器之連線最佳化。 請考慮將下列模式整合在您的環境中。
 
 ### <a name="pattern-1-put-the-connector-close-to-the-application"></a>模式 1︰將連接器放在應用程式附近
 
@@ -86,7 +86,7 @@ ms.locfileid: "80295127"
 
 如果您的連接器需要能夠觀察網域控制站，此模式是有利的。 大部分的客戶會使用此模式，因為它非常適合大部分情節。 還可以將這個模式與模式 2 結合，以將服務與連接器之間的流量最佳化。
 
-### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>模式 2：利用與微軟對等互連的 ExpressRoute
+### <a name="pattern-2-take-advantage-of-expressroute-with-microsoft-peering"></a>模式2：利用 ExpressRoute 搭配 Microsoft 對等互連
 
 如果 ExpressRoute 已設定 Microsoft 對等互連，您可以對應用程式 Proxy 與連接器之間的流量利用更快速的 ExpressRoute 連線。 連接器仍在您的網路上，接近應用程式。
 
@@ -124,7 +124,7 @@ ms.locfileid: "80295127"
 
 這是簡單的模式。 將連接器放在應用程式附近，以最佳化躍點 3。 這是也很自然的選擇，因為連接器通常安裝在直視應用程式及資料中心以執行 KCD 作業。
 
-![顯示使用者、代理、連接器和應用的圖表均位於美國](./media/application-proxy-network-topology/application-proxy-pattern1.png)
+![顯示使用者、proxy、連接器和應用程式的圖表全都位於美國](./media/application-proxy-network-topology/application-proxy-pattern1.png)
 
 ### <a name="use-case-2"></a>使用案例 2
 
@@ -134,7 +134,7 @@ ms.locfileid: "80295127"
 
 同樣地，最常見的模式是最佳化躍點 3，您將連接器放在應用程式附近的位置。 躍點 3 通常不是高成本，如果全部都在相同區域內。 不過，躍點 1 可能會根據使用者所在的位置而更高成本，因為世界各地的使用者必須存取美國的應用程式 Proxy 執行個體。 值得注意的是，就散佈於全球的使用者而言，任何 Proxy 解決方案會有相似特性。
 
-![使用者遍佈全球，但其他一切都在美國](./media/application-proxy-network-topology/application-proxy-pattern2.png)
+![使用者會分散于全球，但其他所有專案則位於美國](./media/application-proxy-network-topology/application-proxy-pattern2.png)
 
 ### <a name="use-case-3"></a>使用案例 3
 
@@ -158,23 +158,23 @@ ms.locfileid: "80295127"
 
 連接器可放置於 Azure 資料中心。 因為連接器仍可透過私人網路直視應用程式和資料中心，躍點 3 會維持最佳化。 此外，躍點 2 已進一步最佳化。
 
-![Azure 資料中心中的連接器，連接器和應用之間的快速路由](./media/application-proxy-network-topology/application-proxy-pattern4.png)
+![Azure 資料中心內的連接器，連接器與應用程式之間的 ExpressRoute](./media/application-proxy-network-topology/application-proxy-pattern4.png)
 
 ### <a name="use-case-5"></a>使用案例 5
 
-**方案：** 該應用程式位於歐洲的一個組織網路中，具有應用程式代理實例和美國的大多數使用者。
+**案例：** 此應用程式位於歐洲的組織網路中，其中包含應用程式 Proxy 實例和美國大部分的使用者。
 
 **建議︰** 將連接器放置在應用程式附近。 因為美國使用者會存取剛好在相同區域中的應用程式 Proxy 執行個體，躍點 1 並不過於昂貴。 躍點 3 已最佳化。 請考慮使用 ExpressRoute 將躍點 2 最佳化。
 
-![圖表顯示美國的使用者和代理、歐洲連接器和應用](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
+![圖表顯示美國、連接器和在歐洲的應用程式中的使用者和 proxy](./media/application-proxy-network-topology/application-proxy-pattern5b.png)
 
-您也可以考慮在此情況下使用另一個變體。 如果組織中的大部分使用者不在美國，則可能您的網路也會延伸至美國。 將連接器放在美國，並使用專用的內部商業網路線到歐洲的應用。 如此一來，躍點 2 和躍點 3 便已最佳化。
+您也可以考慮在此情況下使用另一個變體。 如果組織中的大部分使用者不在美國，則可能您的網路也會延伸至美國。 將連接器放在美國，並使用歐洲境內應用程式的專用內部商業網路線。 如此一來，躍點 2 和躍點 3 便已最佳化。
 
-![圖表顯示美國的使用者、代理和連接器，歐洲的應用](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
+![圖表顯示美國、歐洲應用程式中的使用者、proxy 和連接器](./media/application-proxy-network-topology/application-proxy-pattern5c.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 - [啟用應用程式 Proxy](application-proxy-add-on-premises-application.md)
 - [啟用單一登入](application-proxy-configure-single-sign-on-with-kcd.md)
-- [啟用條件訪問](application-proxy-integrate-with-sharepoint-server.md)
+- [啟用條件式存取](application-proxy-integrate-with-sharepoint-server.md)
 - [使用應用程式 Proxy 疑難排解您遇到的問題](application-proxy-troubleshoot.md)

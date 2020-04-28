@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 8b7791c5c04e986b30959d2fcae17142fdd8b7ec
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418315"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory 的角色和權限
@@ -82,9 +82,9 @@ Azure Repos 和 GitHub 上的權限與 Data Factory 權限無關。 因此，具
   1. 指派資料處理站層級的內建**參與者**角色。
   2. 建立具有 **Microsoft.Resources/deployments/** 權限的自訂角色。 在資源群組層級對使用者指派這個自訂角色。
 
-- 允許使用者只能測試連結服務中的連線
+- 讓使用者只能在連結服務中測試連接
 
-    建立具有以下操作權限的自定義角色角色 **:Microsoft.DataFactory/Factory/getAroleValue/read**和**Microsoft.資料工廠/工廠/getDataPlaneAccess/read**。 在數據工廠資源上為使用者分配此自定義角色。
+    建立具有下列動作之許可權的自訂角色角色： **DataFactory/factory/getFeatureValue/read**和**DataFactory/factory/getDataPlaneAccess/read**。 為使用者在 data factory 資源上指派此自訂角色。
 
 - 讓使用者從 PowerShell 或 SDK 更新資料處理站，而不是在 Azure 入口網站中進行。
 

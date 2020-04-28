@@ -1,6 +1,6 @@
 ---
-title: 構建一個呼叫 Web API 的 Web API - 微軟身份平臺 |蔚藍
-description: 瞭解如何建構調用下游 Web API(概述)的 Web API。
+title: 建立呼叫 web Api 的 Web API-Microsoft 身分識別平臺 |Azure
+description: 瞭解如何建立呼叫下游 web Api 的 Web API （總覽）。
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,31 +12,31 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 88a0177755fbd913bdaaf0ecf3e12c62dee294c1
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885067"
 ---
-# <a name="scenario-a-web-api-that-calls-web-apis"></a>專案:呼叫 Web API 的 Web API
+# <a name="scenario-a-web-api-that-calls-web-apis"></a>案例：呼叫 web Api 的 Web API
 
-瞭解建構數據 Web API 的 Web API 所需的知識。
+瞭解建立呼叫 web Api 的 Web API 需要知道的事項。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-此方案(受保護的 Web API 呼叫 Web API)構建在「保護 Web API」方案之上。 要瞭解有關此基本方案的更多資訊,請參閱[方案:受保護的 Web API](scenario-protected-web-api-overview.md)。
+這種情況下，受保護的 Web API 會呼叫 web Api，建置於「保護 Web API」案例之上。 若要深入瞭解此基本案例，請參閱[案例：受保護的 Web API](scenario-protected-web-api-overview.md)。
 
 ## <a name="overview"></a>概觀
 
-- Web、桌面、移動或單頁應用程式用戶端(未在隨附的關係圖中表示)調用受保護的 Web API,並在其"授權"HTTP 標頭中提供 JSON Web 權杖 (JWT) 承載權杖。
-- 受保護的 Web API 驗證權杖並使用 Microsoft 身份驗證`AcquireTokenOnBehalfOf`庫 (MSAL) 方法從 Azure 活動目錄 (Azure AD) 請求另一個權杖,以便受保護的 Web API 可以代表使用者調用第二個 Web API 或下游 Web API。
-- 受保護的 Web API 也可以`AcquireTokenSilent`稍後呼叫代表同一使用者請求其他下游 API 的權杖。 `AcquireTokenSilent`在需要時刷新權杖。
+- Web、桌面、行動或單頁應用程式用戶端（未在隨附的圖表中表示）會呼叫受保護的 Web API，並在其「授權」 HTTP 標頭中提供 JSON Web Token （JWT）持有人權杖。
+- 受保護的 Web API 會驗證權杖，並使用 Microsoft 驗證程式庫（ `AcquireTokenOnBehalfOf` MSAL）方法，從 Azure Active Directory （Azure AD）要求另一個權杖，讓受保護的 Web API 可以代表使用者呼叫第二個 Web API 或下游 Web API。
+- 受保護的 Web API 也可以`AcquireTokenSilent`在稍後呼叫，以代表相同的使用者要求其他下游 api 的權杖。 `AcquireTokenSilent`視需要重新整理權杖。
 
-![呼叫 Web API 的 Web API 圖](media/scenarios/web-api.svg)
+![呼叫 Web API 之 Web API 的圖表](media/scenarios/web-api.svg)
 
-## <a name="specifics"></a>詳細資料
+## <a name="specifics"></a>瞭解
 
-與 API 許可權相關的應用註冊部分是經典內容。 應用配置涉及使用 OAuth 2.0 代表流將 JWT 承載權杖與下游 API 的權杖交換。 此令牌將添加到權杖快取中,在 Web API 的控制器中可用,然後它可以以靜默方式獲取權杖以呼叫下遊 API。
+與 API 許可權相關的應用程式註冊部分為傳統。 應用程式設定牽涉到使用 OAuth 2.0 代理者流程，針對下游 API 的權杖交換 JWT 持有人權杖。 此權杖會新增至權杖快取，在其中可在 Web API 的控制器中使用，然後可以無訊息地取得權杖以呼叫下游 Api。
 
 ## <a name="next-steps"></a>後續步驟
 

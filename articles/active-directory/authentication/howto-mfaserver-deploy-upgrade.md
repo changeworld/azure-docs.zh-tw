@@ -1,5 +1,5 @@
 ---
-title: 升級 Azure MFA 伺服器 - Azure 活動目錄
+title: 升級 Azure MFA Server-Azure Active Directory
 description: 將 Azure Multi-Factor Authentication Server 升級為較新版本的步驟和指引。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f242b4a7e984ceeb183547cb3a949927f3c91da
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80653109"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>升級為最新的 Azure Multi-Factor Authentication Server
@@ -25,7 +25,7 @@ ms.locfileid: "80653109"
 如果您要從 v6.x 或更舊版本升級為 v7.x 或更新版本，所有元件都會從 .NET 2.0 變更為 .NET 4.5。 所有元件也都需要 Microsoft Visual C++ 2015 可轉散發套件更新 1 或更新版本。 MFA Server 安裝程式會同時安裝這些元件的 x86 和 x64 版本 (如果尚未安裝)。 如果使用者入口網站和行動裝置應用程式 Web 服務在不同的伺服器上執行，則您需要先安裝這些套件，再升級這些元件。 您可以在 [Microsoft 下載中心](https://www.microsoft.com/download/)搜尋最新的 Microsoft Visual C++ 2015 可轉散發套件更新。 
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起,Microsoft 將不再為新部署提供 MFA 伺服器。 希望用戶進行多重身份驗證的新客戶應使用基於雲的 Azure 多重身份驗證。 在 7 月 1 日之前啟動 MFA 伺服器的現有客戶將能夠像往常一樣下載最新版本、將來的更新並生成啟動認證。
+> 從2019年7月1日起，Microsoft 將不再為新的部署提供 MFA 伺服器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟動 MFA Server 的現有客戶將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
 
 快速瀏覽升級步驟：
 
@@ -66,7 +66,7 @@ ms.locfileid: "80653109"
 ## <a name="upgrade-the-mobile-app-web-service"></a>升級行動裝置應用程式 Web 服務
 
 > [!NOTE]
-> 從早於 8.0 到 8.0° 的 Azure MFA 伺服器升級時,可以在升級後卸載行動應用 Web 服務
+> 從8.0 之前的 Azure MFA Server 版本升級至 8.0 + 時，可以在升級之後卸載行動裝置應用程式 web 服務
 
 ## <a name="upgrade-the-ad-fs-adapters"></a>升級 AD FS 配接器
 
@@ -98,15 +98,15 @@ ms.locfileid: "80653109"
 
    如果發生錯誤並指出「需要 Microsoft Visual C++ 2015 可轉散發套件更新 1 或更新版本」，可從[Microsoft 下載中心](https://www.microsoft.com/download/)下載並安裝最新的更新套件。 同時安裝 x86 和 x64 版本。
 
-3. 跳到**AD FS** > **認證原則** > **編輯全域多因素身份認證原則**。 取消勾選 **[WindowsAzureMultiFactorAuthentication]** 或 **[AzureMFAServerAuthentication]** \(根據目前安裝的版本而定)。
+3. 移至**AD FS** > **驗證原則** > **編輯全域多重要素驗證原則**。 取消勾選 **[WindowsAzureMultiFactorAuthentication]** 或 **[AzureMFAServerAuthentication]** \(根據目前安裝的版本而定)。
 
    完成此步驟之後，您必須先完成步驟 8，才能在此 AD FS 叢集中透過 MFA Server 進行雙步驟驗證。
 
-4. 執行 Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 指令碼來取消註冊舊版的 AD FS 配接器。 確保 *-name*參數("WindowsAzure 多重身份驗證"或"AzureMFAServer 身份驗證")與步驟 3 中顯示的名稱匹配。 這適用於相同 AD FS 叢集中的所有伺服器，因為有一個中央組態。
+4. 執行 Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 指令碼來取消註冊舊版的 AD FS 配接器。 請確定 *-Name*參數（"WindowsAzureMultiFactorAuthentication" 或 "AzureMFAServerAuthentication"）符合步驟3中所顯示的名稱。 這適用於相同 AD FS 叢集中的所有伺服器，因為有一個中央組態。
 5. 執行 Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell 指令碼來註冊新的 AD FS 配接器。 這適用於相同 AD FS 叢集中的所有伺服器，因為有一個中央組態。
 6. 在已從 AD FS 伺服器陣列中移除的每部伺服器上重新啟動 AD FS 服務。
 7. 將更新的伺服器加回 AD FS 伺服器陣列，並從該伺服器陣列中移除其他伺服器。
-8. 跳到**AD FS** > **認證原則** > **編輯全域多因素身份認證原則**。 勾選 [AzureMfaServerAuthentication]****。
+8. 移至**AD FS** > **驗證原則** > **編輯全域多重要素驗證原則**。 勾選 [AzureMfaServerAuthentication]****。
 9. 重複執行步驟 2 來更新現在已從 AD FS 伺服器陣列中移除的伺服器，然後在這些伺服器上重新啟動 AD FS 服務。
 10. 將這些伺服器加回 AD FS 伺服器陣列。
 
@@ -116,4 +116,4 @@ ms.locfileid: "80653109"
 
 * [將 MFA Server 與 Windows Server Active Directory 同步處理](howto-mfaserver-dir-ad.md)
 
-* [為應用程式設定 Windows 認證](howto-mfaserver-windows.md)
+* 為您的應用程式[設定 Windows 驗證](howto-mfaserver-windows.md)

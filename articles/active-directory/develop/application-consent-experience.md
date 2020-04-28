@@ -1,5 +1,5 @@
 ---
-title: Azure AD 應用同意體驗
+title: Azure AD 應用程式同意體驗
 titleSuffix: Microsoft identity platform
 description: 深入了解 Azure AD 同意的運作方式，以了解如何在管理和開發搭配 Azure AD 執行的應用程式時使用它
 services: active-directory
@@ -14,10 +14,10 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.openlocfilehash: e96442be50a075ebf2cd81bf1b6fb0f58f883bad
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80885577"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 應用程式同意體驗
@@ -44,7 +44,7 @@ ms.locfileid: "80885577"
 | # | 元件 | 目的 |
 | ----- | ----- | ----- |
 | 1 | 使用者識別碼 | 此識別碼代表所要求的用戶端應用程式使用者存取受保護的資源。 |
-| 2 | Title | 標題變更取決於使用者是否要進行使用者或管理員同意流程。 在使用者同意流程中，標題為「所要求權限」，而在管理員同意流程中，標題則會有額外一行「為組織接受」。 |
+| 2 | 標題 | 標題變更取決於使用者是否要進行使用者或管理員同意流程。 在使用者同意流程中，標題為「所要求權限」，而在管理員同意流程中，標題則會有額外一行「為組織接受」。 |
 | 3 | 應用程式標誌 | 此映像應為使用者提供視覺提示，說明此應用程式是否為使用者要存取的應用程式。 此映像由應用程式開發人員提供，且此映像的擁有權不得驗證。 |
 | 4 | 應用程式名稱 | 此值應可告知使用者要求存取其資料的應用程式為何。 請注意，此名稱由應用程式開發人員提供，且此應用程式名稱的擁有權不得驗證。 |
 | 5 | 發行者網域 | 此值應為使用者提供網域，以評估可信度。 此網域由應用程式開發人員提供，且此發行者網域的擁有權不得驗證。 |
@@ -83,4 +83,4 @@ ms.locfileid: "80885577"
 ## <a name="next-steps"></a>後續步驟
 - 取得有關 [Azure AD 同意架構如何實作同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)的逐步概觀。
 - 深入了解[多租用戶應用程式如何使用同意架構](active-directory-devhowto-multi-tenant-overview.md)來實作「使用者」與「系統管理員」同意，進而支援更進階的多層應用程式模式。
-- [瞭解如何設定應用程式的發行者網域](howto-configure-publisher-domain.md)。
+- 瞭解[如何設定應用程式的發行者網域](howto-configure-publisher-domain.md)。

@@ -1,6 +1,6 @@
 ---
-title: 開啟每個使用者多重身份認證 ─ Azure 的動作目錄
-description: 瞭解如何透過變更使用者狀態來啟用每個使用者的 Azure 多重身份驗證
+title: 啟用每個使用者的多重要素驗證-Azure Active Directory
+description: 瞭解如何藉由變更使用者狀態來啟用每位使用者的 Azure 多重要素驗證
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,93 +12,93 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e8ceaf13324864c7ec3df731c3e710815b0eba9
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81309789"
 ---
-# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>啟用每個使用者的 Azure 多重身份驗證,以確保登入事件
+# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>啟用每位使用者的 Azure 多因素驗證以保護登入事件
 
-通過在 Azure AD 中要求多重身份驗證,有兩種方法可以保護使用者登錄事件。 第一個選項是設置條件訪問策略,該策略需要在特定條件下進行多重身份驗證。 第二個選項是啟用每個用戶進行 Azure 多重身份驗證。 當使用者單獨啟用時,他們每次登錄時都會執行多重身份驗證(但有一些例外情況,例如,當他們從受信任的 IP 位址登錄時或_啟用記住的設備_功能時)。
+有兩種方式可以在 Azure AD 中要求多重要素驗證，以保護使用者登入事件。 第一個和慣用的選項是設定條件式存取原則，在某些情況下需要多重要素驗證。 第二個選項是為每個使用者啟用 Azure 多重要素驗證。 個別啟用使用者時，他們會在每次登入時執行多重要素驗證（但有一些例外，例如當他們從受信任的 IP 位址登入，或開啟已_記住的裝置_功能時）。
 
 > [!NOTE]
-> 建議使用條件訪問策略啟用 Azure 多重身份驗證。 不再建議更改使用者狀態,除非您的許可證不包含條件訪問,因為它要求使用者在每次登錄時執行 MFA。
+> 使用條件式存取原則來啟用 Azure 多重要素驗證是建議的方法。 除非您的授權不包含條件式存取，否則不建議變更使用者狀態，因為它會要求使用者在每次登入時執行 MFA。
 >
-> 要開始使用條件存取,請參閱[教學:使用 Azure 多重身份驗證保護使用者登入事件](tutorial-enable-azure-mfa.md)。
+> 若要開始使用條件式存取，請參閱[教學課程：使用 Azure 多重要素驗證保護使用者登入事件](tutorial-enable-azure-mfa.md)。
 
-## <a name="azure-multi-factor-authentication-user-states"></a>Azure 多重身份驗證使用者狀態
+## <a name="azure-multi-factor-authentication-user-states"></a>Azure 多重要素驗證使用者狀態
 
 Azure Multi-Factor Authentication 中的使用者帳戶具有下列三種不同狀態：
 
 > [!IMPORTANT]
-> 通過條件存取策略啟用 Azure 多重身份驗證不會更改使用者的狀態。 如果用戶顯示為禁用,請不要驚慌。 條件訪問不會更改狀態。
+> 透過條件式存取原則啟用 Azure 多重要素驗證並不會變更使用者的狀態。 如果使用者顯示為已停用，請不要驚慌。 條件式存取不會變更狀態。
 >
-> **如果使用條件訪問策略,則不應啟用或強制使用者。**
+> **如果您使用的是條件式存取原則，則不應啟用或強制執行使用者。**
 
 | 狀態 | 描述 | 受影響的非瀏覽器應用程式 | 受影響的瀏覽器應用程式 | 受影響的新式驗證 |
 |:---:| --- |:---:|:--:|:--:|
-| 已停用 | 未在 Azure 多重身份驗證中註冊的新用戶的默認狀態。 | 否 | 否 | 否 |
-| 啟用 | 用戶已註冊 Azure 多重身份驗證,但尚未註冊。 系統將在他們下一次登入時提示他們註冊。 | 否。  它們會繼續運作，直到註冊程序完成為止。 | 是。 會話過期后,需要 Azure 多重身份驗證註冊。| 是。 訪問權杖過期後,需要 Azure 多重身份驗證註冊。 |
-| 已強制 | 用戶已註冊並已完成 Azure 多重身份驗證的註冊過程。 | 是。 應用程式需要應用程式密碼。 | 是。 登錄時需要 Azure 多重身份驗證。 | 是。 登錄時需要 Azure 多重身份驗證。 |
+| 停用 | 未在 Azure 多因素驗證中註冊之新使用者的預設狀態。 | 否 | 否 | 否 |
+| 啟用 | 使用者已在 Azure 多因素驗證中註冊，但尚未註冊。 系統將在他們下一次登入時提示他們註冊。 | 不可以。  它們會繼續運作，直到註冊程序完成為止。 | 是。 會話到期之後，就必須註冊 Azure 多因素驗證。| 是。 存取權杖到期後，就必須註冊 Azure 多因素驗證。 |
+| 已強制 | 使用者已註冊，並已完成 Azure 多重要素驗證的註冊程式。 | 是。 應用程式需要應用程式密碼。 | 是。 登入時需要 Azure 多重要素驗證。 | 是。 登入時需要 Azure 多重要素驗證。 |
 
-使用者的狀態反映管理員是否已在 Azure 多重身份驗證中註冊它們,以及他們是否已完成註冊過程。
+使用者的狀態會反映系統管理員是否已在 Azure 多因素驗證中註冊他們，以及是否已完成註冊程式。
 
-所有使用者一開始都是「已停用」** 狀態。 在 Azure 多重身份驗證中註冊使用者時,其狀態將更改為*啟用*。 當已啟用的使用者登入並完成註冊程序之後，他們的狀態就會變更為「已強制」**。
+所有使用者一開始都是「已停用」** 狀態。 當您在 Azure 多因素驗證中註冊使用者時，其狀態會變更為 [*已啟用*]。 當已啟用的使用者登入並完成註冊程序之後，他們的狀態就會變更為「已強制」**。
 
 > [!NOTE]
-> 如果在已具有註冊詳細資訊(如電話或電子郵件)的用戶物件上重新啟用 MFA,則管理員需要讓該使用者通過 Azure 門戶或 PowerShell 重新註冊 MFA。 如果使用者不重新註冊,則其 MFA 狀態不會在 MFA 管理 UI 中從 *「已啟用」* 轉換到*強制*。
+> 如果在已有註冊詳細資料（例如電話或電子郵件）的使用者物件上重新啟用 MFA，則系統管理員必須讓該使用者透過 Azure 入口網站或 PowerShell 重新註冊 MFA。 如果使用者未重新註冊，其 MFA 狀態不會從 [*已啟用*] 轉換為 [mfa 管理] UI 中的 [*強制*]。
 
 ## <a name="view-the-status-for-a-user"></a>檢視使用者的狀態
 
-使用以下步驟存取 Azure 門戶頁,您可以在其中查看和管理使用者狀態:
+使用下列步驟來存取 [Azure 入口網站] 頁面，您可以在其中查看和管理使用者狀態：
 
-1. 以管理者登入[Azure 門戶](https://portal.azure.com)。
-1. 搜尋並選擇*Azure 活動目錄*,然後選擇 **「所有使用者」。**  >  ** **
-1. 選擇**多重身份認證**。 您可能需要向右滾動才能看到此功能表選項。 選擇下面的範例螢幕擷取以檢視完整的 Azure 門戶視窗和選單位置:[![](media/howto-mfa-userstates/selectmfa-cropped.png "從 Azure AD 中的「使用者」視窗選擇多重身份驗證")](media/howto-mfa-userstates/selectmfa.png#lightbox)
-1. 將打開一個新頁面,顯示用戶狀態,如以下示例所示。
-   ![顯示 Azure 多重身份驗證的範例使用者狀態資訊的螢幕截圖](./media/howto-mfa-userstates/userstate1.png)
+1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
+1. 搜尋並選取 [ *Azure Active Directory*]，然後選取 [**使用者** > ] [**所有使用者**]。
+1. 選取 [**多重要素驗證**]。 您可能需要向右移動，才能看到此功能表選項。 選取以下的範例螢幕擷取畫面，以查看完整的 Azure 入口網站視窗和功能表位置：[![](media/howto-mfa-userstates/selectmfa-cropped.png "從 Azure AD 的 [使用者] 視窗中選取 [多重要素驗證]")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. 隨即開啟新的頁面，其中會顯示使用者狀態，如下列範例所示。
+   ![顯示 Azure 多重要素驗證範例使用者狀態資訊的螢幕擷取畫面](./media/howto-mfa-userstates/userstate1.png)
 
 ## <a name="change-the-status-for-a-user"></a>變更使用者的狀態
 
-要更改使用者的 Azure 多重身份驗證狀態,完成以下步驟:
+若要變更使用者的 Azure 多重要素驗證狀態，請完成下列步驟：
 
 1. 使用上述步驟來取得 Azure Multi-Factor Authentication **使用者**頁面。
-1. 尋找要為 Azure 多重身份驗證啟用的使用者。 您可能需要將頂端的檢視變更為**使用者**。
-   ![選擇您要變更的狀態的使用者](./media/howto-mfa-userstates/enable1.png)
-1. 選中用戶名稱旁邊的複選框,以更改 其狀態。
-1. 在右方,在**快速步驟**下,選擇**啟用**或**關閉**。 在下面的範例中,使用者*John Smith*在其名稱旁邊進行了檢查,並且正在啟用![該檢查: 透過單擊「快速步驟選單上的啟用」啟用選定的使用者](./media/howto-mfa-userstates/user1.png)
+1. 尋找您想要為 Azure 多因素驗證啟用的使用者。 您可能需要將頂端的視圖變更為 [**使用者**]。
+   ![從 [使用者] 索引標籤選取要變更狀態的使用者](./media/howto-mfa-userstates/enable1.png)
+1. 核取使用者名稱旁的方塊，以變更的狀態。
+1. 在右手邊的 [**快速步驟**] 底下，選擇 [**啟用**] 或 [**停**用]。 在下列範例中，使用者*John Smith*在其名稱旁邊有核取，並已啟用使用： ![按一下 [快速步驟] 功能表上的 [啟用]，以啟用選取的使用者](./media/howto-mfa-userstates/user1.png)
 
    > [!TIP]
-   > *啟用*的使用者在註冊 Azure 多重身份驗證時會自動切換到 *「已強制*」。 不要手動將用戶狀態更改為 *「已執行*」。
+   > *已啟用*的使用者在註冊 Azure 多重要素驗證時，會自動切換為*強制執行*。 請勿以手動方式將使用者狀態變更為 [*強制*]。
 
 1. 在開啟的快顯視窗中確認您的選取項目。
 
-當您啟用使用者之後，請透過電子郵件通知他們。 告訴用戶顯示提示,要求他們在下次登錄時註冊。 此外，如果您的組織使用不支援新式驗證的非瀏覽器應用程式，他們就需要建立應用程式密碼。 有關詳細資訊,請參閱 Azure[多重身份驗證最終使用者指南](../user-help/multi-factor-authentication-end-user.md),以幫助他們開始。
+當您啟用使用者之後，請透過電子郵件通知他們。 告訴使用者出現提示，要求他們在下一次登入時註冊。 此外，如果您的組織使用不支援新式驗證的非瀏覽器應用程式，他們就需要建立應用程式密碼。 如需詳細資訊，請參閱[Azure 多因素驗證終端使用者指南](../user-help/multi-factor-authentication-end-user.md)，以協助他們開始使用。
 
 ## <a name="change-state-using-powershell"></a>使用 PowerShell 變更狀態
 
-要使用 Azure AD [PowerShell](/powershell/azure/overview)更改`$st.State`使用者狀態,可以更改使用者帳戶的參數。 使用者帳號有三種可能狀態:
+若要使用[Azure AD PowerShell](/powershell/azure/overview)來變更使用者狀態，您可以變更`$st.State`使用者帳戶的參數。 使用者帳戶有三種可能的狀態：
 
-* *啟用*
+* *已啟用*
 * *已強制*
 * *已停用*  
 
-請勿直接將使用者移至「已強制」** 狀態。 如果這樣做,非基於瀏覽器的應用將停止工作,因為使用者尚未通過 Azure 多重身份驗證註冊並獲得[應用密碼](howto-mfa-mfasettings.md#app-passwords)。
+請勿直接將使用者移至「已強制」** 狀態。 如果您這樣做，非瀏覽器型應用程式會停止運作，因為使用者未通過 Azure 多重要素驗證註冊並取得[應用程式密碼](howto-mfa-mfasettings.md#app-passwords)。
 
-要開始使用[安裝模組](/powershell/module/powershellget/install-module)安裝*MSOnline*模組,如下所示:
+若要開始，請使用[Install 模組](/powershell/module/powershellget/install-module)來安裝*MSOnline*模組，如下所示：
 
 ```PowerShell
 Install-Module MSOnline
 ```
 
-接下來,使用[連線 Msol 服務連線](/powershell/module/msonline/connect-msolservice):
+接下來，使用[connect-msolservice](/powershell/module/msonline/connect-msolservice)來連接：
 
 ```PowerShell
 Connect-MsolService
 ```
 
-下面的範例 PowerShell 文稿為*bsimon@contoso.com*名為的單個使用者啟用 MFA:
+下列 PowerShell 腳本範例會針對名為*bsimon@contoso.com*的個別使用者啟用 MFA：
 
 ```PowerShell
 $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
@@ -110,7 +110,7 @@ $sta = @($st)
 Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
 ```
 
-當您需要大量啟用使用者時，使用 PowerShell 是一個不錯的選項。 以下文本迴圈訪問使用者清單,並在其帳戶上啟用 MFA。 定義使用者帳戶在第一行中設定它,如下所示`$users`:
+當您需要大量啟用使用者時，使用 PowerShell 是一個不錯的選項。 下列腳本會對使用者清單執行迴圈，並在其帳戶上啟用 MFA。 定義使用者帳戶在第一行`$users`設定它，如下所示：
 
    ```PowerShell
    # Define your list of users to update state in bulk
@@ -126,21 +126,21 @@ Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirem
    }
    ```
 
-要關閉 MFA,以下範例取得有[Get-MsolUser](/powershell/module/msonline/get-msoluser)的使用者,然後移除使用[Set-MsolUser](/powershell/module/msonline/set-msoluser)為定義的使用者設定的任何*強身份驗證要求*:
+若要停用 MFA，下列範例會取得具有[set-msoluser](/powershell/module/msonline/get-msoluser)的使用者，然後使用[set-set-msoluser](/powershell/module/msonline/set-msoluser)移除已定義使用者的任何*StrongAuthenticationRequirements*集：
 
 ```PowerShell
 Get-MsolUser -UserPrincipalName bsimon@contoso.com | Set-MsolUser -StrongAuthenticationRequirements @()
 ```
 
-您還可以使用[Set-MsolUser](/powershell/module/msonline/set-msoluser)直接關閉使用者的 MFA,如下所示:
+您也可以使用[set-msoluser](/powershell/module/msonline/set-msoluser) ，直接停用使用者的 MFA，如下所示：
 
 ```PowerShell
 Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements @()
 ```
 
-## <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>將使用者從每個使用者 MFA 轉換為基於條件存取的 MFA
+## <a name="convert-users-from-per-user-mfa-to-conditional-access-based-mfa"></a>將使用者從每位使用者 MFA 轉換成以條件式存取為基礎的 MFA
 
-以下 PowerShell 可以説明您轉換為基於條件訪問的 Azure 多重身份驗證。
+下列 PowerShell 可協助您轉換成以條件式存取為基礎的 Azure 多重要素驗證。
 
 ```PowerShell
 # Sets the MFA requirement state
@@ -177,12 +177,12 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 ```
 
 > [!NOTE]
-> 我們最近更改了行為和此 PowerShell 腳本。 以前,腳本保存了 MFA 方法、禁用 MFA 並還原了這些方法。 現在,禁用的默認行為未清除方法,這不再需要。
+> 我們最近已變更此行為和此 PowerShell 腳本。 先前，腳本會儲存在 MFA 方法中，停用 MFA，並還原方法。 現在已不再需要，因為 disable 的預設行為並不會清除方法。
 >
-> 如果在已具有註冊詳細資訊(如電話或電子郵件)的用戶物件上重新啟用 MFA,則管理員需要讓該使用者通過 Azure 門戶或 PowerShell 重新註冊 MFA。 如果使用者不重新註冊,則其 MFA 狀態不會在 MFA 管理 UI 中從 *「已啟用」* 轉換到*強制*。
+> 如果在已有註冊詳細資料（例如電話或電子郵件）的使用者物件上重新啟用 MFA，則系統管理員必須讓該使用者透過 Azure 入口網站或 PowerShell 重新註冊 MFA。 如果使用者未重新註冊，其 MFA 狀態不會從 [*已啟用*] 轉換為 [mfa 管理] UI 中的 [*強制*]。
 
 ## <a name="next-steps"></a>後續步驟
 
-要設定 Azure 多重身份認證設定 (如信任的 IP、自訂語音郵件和欺詐警報),請參閱[設定 Azure 多重身份驗證設定](howto-mfa-mfasettings.md)。 要管理 Azure 多重身份驗證的使用者設定,請參閱[使用 Azure 多重身份驗證管理使用者設定](howto-mfa-userdevicesettings.md)。
+若要設定 Azure 多重要素驗證設定（例如信任的 Ip、自訂語音訊息和詐騙警示），請參閱[設定 Azure 多因素驗證設定](howto-mfa-mfasettings.md)。 若要管理 Azure 多因素驗證的使用者設定，請參閱[使用 Azure 多因素驗證來管理使用者設定](howto-mfa-userdevicesettings.md)。
 
-要瞭解提示使用者或未提示使用者執行 MFA 的原因,請參閱[Azure 多重身份驗證報告](howto-mfa-reporting.md#azure-ad-sign-ins-report)。
+若要瞭解為什麼會提示使用者執行 MFA，請參閱[Azure 多因素驗證報告](howto-mfa-reporting.md#azure-ad-sign-ins-report)。

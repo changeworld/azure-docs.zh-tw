@@ -1,7 +1,7 @@
 ---
-title: 建置呼叫 Web API 的移動應用 |蔚藍
+title: 建立會呼叫 web Api 的行動應用程式 |Azure
 titleSuffix: Microsoft identity platform | Azure
-description: 瞭解如何建構 Web API 的行動應用程式(概述)
+description: 瞭解如何建立呼叫 web Api 的行動應用程式（總覽）
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -14,15 +14,15 @@ ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 1f90f7f23fbdf10b91d8dfc7cd00cca83cd32fbc
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80882568"
 ---
-# <a name="scenario-mobile-application-that-calls-web-apis"></a>專案:呼叫 Web API 的行動應用程式
+# <a name="scenario-mobile-application-that-calls-web-apis"></a>案例：呼叫 web Api 的行動應用程式
 
-瞭解如何建構調用 Web API 的行動應用。
+瞭解如何建立會呼叫 web Api 的行動應用程式。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -30,35 +30,35 @@ ms.locfileid: "80882568"
 
 ## <a name="getting-started"></a>開始使用
 
-創建第一個移動應用程式並嘗試快速入門。
+建立您的第一個行動應用程式，並試用快速入門。
 
 > [!div class="nextstepaction"]
-> [快速入門:取得權杖並從 Android 應用呼叫 Microsoft 圖形 API](./quickstart-v2-android.md)
+> [快速入門：從 Android 應用程式取得權杖並呼叫 Microsoft Graph API](./quickstart-v2-android.md)
 >
-> [快速入門:取得權杖並從 iOS 應用呼叫 Microsoft 圖形 API](./quickstart-v2-ios.md)
+> [快速入門：從 iOS 應用程式取得權杖並呼叫 Microsoft Graph API](./quickstart-v2-ios.md)
 >
-> [快速入門:取得權杖,並從 Xamarin iOS 和 Android 應用程式呼叫 Microsoft 圖形 API](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
+> [快速入門：從 Xamarin iOS 和 Android 應用程式取得權杖並呼叫 Microsoft Graph API](https://github.com/Azure-Samples/active-directory-xamarin-native-v2)
 
 ## <a name="overview"></a>概觀
 
-個人化、無縫的用戶體驗對於移動應用至關重要。  Microsoft 身份平臺使行動開發人員能夠為 iOS 和 Android 使用者創建該體驗。 您的應用程式可以登錄 Azure 活動目錄 (Azure AD) 使用者、個人 Microsoft 帳戶使用者和 Azure AD B2C 使用者。 它還可以獲取權杖來代表他們調用 Web API。 為了實現這些流,我們將使用 Microsoft 身份驗證庫 (MSAL)。 MSAL 實作標準[OAuth2.0 授權代碼串流](v2-oauth2-auth-code-flow.md)。
+個人化、順暢的使用者體驗對行動應用程式而言是必要的。  Microsoft 身分識別平臺可讓行動開發人員建立適用于 iOS 和 Android 使用者的體驗。 您的應用程式可以登入 Azure Active Directory （Azure AD）使用者、個人 Microsoft 帳戶使用者和 Azure AD B2C 的使用者。 它也可以取得權杖來代表其呼叫 Web API。 若要執行這些流程，我們將使用 Microsoft 驗證程式庫（MSAL）。 MSAL 會實行業界標準的[oauth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)。
 
 ![精靈應用程式](./media/scenarios/mobile-app.svg)
 
-移動應用的注意事項:
+Mobile apps 的考慮：
 
-- **使用者體驗是關鍵**:允許使用者在請求登錄之前查看應用的價值。 僅請求所需的許可權。
-- **支援所有使用者配置**:許多行動業務使用者必須遵守條件存取策略和設備合規性策略。 請務必支援這些關鍵方案。
-- **實現單一登錄 (SSO):** 透過使用 MSAL 和 Microsoft 識別平臺,您可以透過裝置的瀏覽器或 Microsoft 身份驗證器(Android 上的 Intune 公司門戶)啟用單一登錄。
-- **實現共享設備模式**:使應用程式能夠在共用設備方案中使用,例如醫院、製造、零售和財務。 [閱讀有關支援共享裝置模式的資訊](msal-shared-devices.md)。
+- **使用者體驗是關鍵**：允許使用者在您要求登入之前查看應用程式的值。 只要求必要的許可權。
+- **支援所有使用者**設定：許多行動商務使用者必須遵守條件式存取原則和裝置合規性原則。 請務必支援這些主要案例。
+- **執行單一登入（SSO）**：藉由使用 MSAL 和 Microsoft 身分識別平臺，您可以透過裝置的瀏覽器或 Microsoft Authenticator （在 Android 上為 Intune 公司入口網站）啟用單一登入。
+- **執行共用裝置模式**：可讓您的應用程式在共用裝置案例中使用，例如醫院、製造、零售和財務。 [閱讀更多有關支援共用裝置模式的資訊](msal-shared-devices.md)。
 
-## <a name="specifics"></a>詳細資料
+## <a name="specifics"></a>瞭解
 
-在 Microsoft 識別平台上建置行動應用程式時,請記住以下注意事項:
+在 Microsoft 身分識別平臺上建立行動裝置應用程式時，請記住下列考慮：
 
-- 根據平臺的不同,使用者首次登錄時可能需要一些使用者交互。 例如,iOS 要求應用在首次通過 Microsoft 身份驗證器(Android 上的 Intune 公司門戶)首次使用 SSO 時顯示使用者交互。
-- 在 iOS 和 Android 上,MSAL 可能使用外部瀏覽器登錄使用者。 外部瀏覽器可能顯示在應用頂部。
-- 切勿在移動應用程式中使用機密。 在這些應用程式中,所有使用者都可以訪問機密。
+- 視平臺而定，使用者第一次登入時可能會需要進行某些使用者互動。 例如，iOS 要求應用程式在第一次透過 Microsoft Authenticator （在 Android 上為 Intune 公司入口網站）使用 SSO 時，顯示使用者互動。
+- 在 iOS 和 Android 上，MSAL 可能會使用外部瀏覽器來登入使用者。 外部瀏覽器可能會出現在您的應用程式頂端。
+- 永不使用行動應用程式中的秘密。 在這些應用程式中，所有使用者都可以存取秘密。
 
 ## <a name="next-steps"></a>後續步驟
 

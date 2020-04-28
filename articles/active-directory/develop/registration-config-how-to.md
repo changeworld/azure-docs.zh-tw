@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: 28d85736019a6fea6d977d813fdc1c9be6429748
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80883265"
 ---
 # <a name="how-to-configure-endpoints"></a>如何設定端點
 
 您可以在 [Azure 入口網站](https://portal.azure.com)尋找應用程式的驗證端點。
 
--   導覽[到 Azure 門戶](https://portal.azure.com)。
+-   流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
 
 -   從左方的瀏覽窗格，按一下 [Azure Active Directory]****。
 
@@ -33,4 +33,4 @@ ms.locfileid: "80883265"
 -   使用您所使用之驗證通訊協定特定的端點搭配應用程式識別碼，來製作您應用程式的特定驗證要求。
 
 ## <a name="next-steps"></a>後續步驟
-[Azure 活動目錄開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+[Azure Active Directory 開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

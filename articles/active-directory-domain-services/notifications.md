@@ -1,6 +1,6 @@
 ---
-title: Azure AD 網域服務的電子郵件通知 |微軟文件
-description: 讓您要設定電子郵件通知以提醒您 Azure 的目錄網域服務託管網域
+title: Azure AD Domain Services 的電子郵件通知 |Microsoft Docs '
+description: 瞭解如何設定電子郵件通知，以警示您 Azure Active Directory Domain Services 受控網域中的問題
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,77 +12,77 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
 ms.openlocfilehash: 8c6d59889e572893877f2178cade57e07aa91413
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80654794"
 ---
-# <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>為 Azure 活動目錄網域服務中的問題設定電子郵件通知
+# <a name="configure-email-notifications-for-issues-in-azure-active-directory-domain-services"></a>在 Azure Active Directory Domain Services 中設定問題的電子郵件通知
 
-Azure 活動目錄域服務 (Azure AD DS) 託管域的運行狀況由 Azure 平台監視。 Azure 門戶中的運行狀況狀態頁顯示託管域的任何警報。 為了確保及時回應問題,可以將電子郵件通知配置為在 Azure AD DS 託管域中檢測到運行狀況警報後立即報告。
+受 Azure 平臺監視的 Azure Active Directory Domain Services （Azure AD DS）受控網域的健康情況。 [Azure 入口網站中的 [健全狀況狀態] 頁面會顯示受控網域的任何警示。 若要確保及時回應問題，可以將電子郵件通知設定為在 Azure AD DS 受控網域中偵測到健康情況警示時立即進行報告。
 
-本文介紹如何為 Azure AD DS 託管域配置電子郵件通知收件者。
+本文說明如何設定 Azure AD DS 受控網域的電子郵件通知收件者。
 
-## <a name="email-notification-overview"></a>電子郵件通知概述
+## <a name="email-notification-overview"></a>電子郵件通知總覽
 
-要提醒您 Azure AD DS 託管域的問題,可以配置電子郵件通知。 這些電子郵件通知指定警報存在的 Azure AD DS 託管域,以及提供檢測時間和指向 Azure 門戶中運行狀況頁的連結。 然後,您可以按照提供的故障排除建議來解決問題。
+若要對 Azure AD DS 受控網域的問題發出警示，您可以設定電子郵件通知。 這些電子郵件通知會指定出現警示的 Azure AD DS 受控網域，以及提供偵測時間和 Azure 入口網站中 [健康情況] 頁面的連結。 接著，您可以遵循提供的疑難排解建議來解決問題。
 
-以下範例電子郵件通知指示在 Azure AD DS 託管域上生成了嚴重警告或警報:
+下列範例電子郵件通知表示在 Azure AD DS 受控網域上產生重大警告或警示：
 
 ![範例電子郵件通知](./media/active-directory-domain-services-alerts/email-alert.png)
 
 > [!WARNING]
-> 在按一下郵件中的連結之前,請務必確保電子郵件來自經過驗證的 Microsoft 寄件者。 電子郵件通知始終來自位址`azure-noreply@microsoft.com`。
+> 在您按一下郵件中的連結之前，請務必確定電子郵件來自已驗證的 Microsoft 寄件者。 電子郵件通知一律來自`azure-noreply@microsoft.com`位址。
 
 ### <a name="why-would-i-receive-email-notifications"></a>為什麼我會收到電子郵件通知？
 
-Azure AD DS 會發送有關託管域的重要更新的電子郵件通知。 這些通知僅適用於影響服務的緊急問題,應立即解決。 每個電子郵件通知都由 Azure AD DS 託管域上的警報觸發。 警報也顯示在 Azure 門戶中,可以在 Azure AD [DS 運行狀況頁上][check-health]查看。
+Azure AD DS 會針對受控網域的重要更新傳送電子郵件通知。 這些通知僅適用于影響服務且應立即解決的緊急問題。 每個電子郵件通知都是由 Azure AD DS 受控網域上的警示所觸發。 警示也會出現在 [Azure 入口網站中，而且可以在 [ [AZURE AD DS 健全狀況] 頁面][check-health]上查看。
 
-Azure AD DS 不會為廣告、更新或銷售目的發送電子郵件。
+Azure AD DS 不會傳送電子郵件，供廣告、更新或銷售之用。
 
 ### <a name="when-will-i-receive-email-notifications"></a>何時會收到電子郵件通知？
 
-在 Azure AD DS 託管域上發現[新警報][troubleshoot-alerts]時,將立即發送通知。 如果警報未解決,則每四天發送一次其他電子郵件通知作為提醒。
+在 Azure AD DS 受控網域上找到[新警示][troubleshoot-alerts]時，就會立即傳送通知。 如果警示未解決，則會每隔四天以提醒方式傳送額外的電子郵件通知。
 
 ### <a name="who-should-receive-the-email-notifications"></a>誰應該收到電子郵件通知？
 
-Azure AD DS 的電子郵件收件者清單應由能夠管理和更改託管域的人員組成。 此電子郵件清單應視為任何警報和問題的"第一回應者"
+Azure AD DS 的電子郵件收件者清單應由能夠管理和變更受控網域的人員所組成。 此電子郵件清單應視為任何警示和問題的「第一次回應」。
 
-您最多可以添加五個其他電子郵件收件者的電子郵件通知。 如果希望超過五個收件者用於電子郵件通知,請創建一個通訊組清單,並將其添加到通知清單中。
+您可以為電子郵件通知新增最多五個額外的電子郵件收件者。 如果您想要超過五位收件者的電子郵件通知，請建立通訊群組清單，並改為將其新增至通知清單。
 
-您還可以選擇讓 Azure AD 目錄的所有*全域管理員*和*AAD DC 管理員*組的每個成員接收電子郵件通知。 Azure AD DS 僅向多達 100 個電子郵件地址發送通知,包括全域管理員和 AAD DC 管理員的清單。
+您也可以選擇讓 Azure AD 目錄的所有*全域管理員*，而*AAD DC 系統管理員*群組的每個成員都會收到電子郵件通知。 Azure AD DS 只會將通知傳送到最多100的電子郵件地址，包括全域管理員和 AAD DC 系統管理員的清單。
 
 ## <a name="configure-email-notifications"></a>設定電子郵件通知
 
-要檢視現有電子郵件通知收件者或添加其他收件者,請完成以下步驟:
+若要檢查現有的電子郵件通知收件者或新增其他收件者，請完成下列步驟：
 
-1. 在 Azure 門戶中,搜尋並選擇**Azure AD 網域服務**。
-1. 選擇 Azure AD DS 託管域,如*aaddscontoso.com*。
-1. 在 Azure AD DS 資源視窗的左邊,選擇**通知設定**。 將顯示電子郵件通知的現有收件者。
-1. 要添加電子郵件收件者,請在其他收件者表中輸入電子郵件位址。
-1. 完成後,選擇「**在**頂部導航上保存」。
+1. 在 [Azure 入口網站中，搜尋並選取 [ **Azure AD Domain Services**]。
+1. 選取您的 Azure AD DS 受控網域，例如*aaddscontoso.com*。
+1. 在 [Azure AD DS 資源] 視窗的左側，選取 [**通知設定**]。 會顯示電子郵件通知的現有收件者。
+1. 若要新增電子郵件收件者，請在 [其他收件者] 資料表中輸入電子郵件地址。
+1. 完成時，請選取頂端導覽上的 [**儲存**]。
 
 > [!WARNING]
-> 更改通知設定時,將更新整個 Azure AD DS 託管域的通知設置,而不僅僅是更新您自己。
+> 當您變更通知設定時，會更新整個 Azure AD DS 受控網域的通知設定，而不只是您自己。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 ### <a name="i-received-an-email-notification-for-an-alert-but-when-i-logged-on-to-the-azure-portal-there-was-no-alert-what-happened"></a>我收到警示的電子郵件通知，但是登入 Azure 入口網站時並沒有任何警示。 發生什麼情形？
 
-如果警報已解決,則從 Azure 門戶清除警報。 最可能的原因是,收到電子郵件通知的其他人解決了 Azure AD DS 託管域上的警報,或者該警報被 Azure 平臺自動解析。
+如果警示已解決，則會從 [Azure 入口網站] 中清除警示。 最有可能的原因是，收到電子郵件通知的其他人已解決 Azure AD DS 受控網域上的警示，或由 Azure 平臺自動解決。
 
 ### <a name="why-can-i-not-edit-the-notification-settings"></a>為什麼我無法編輯通知設定？
 
-如果無法訪問 Azure 門戶中的通知設置頁,則無權編輯 Azure AD DS 託管域。 您必須與全域管理員聯繫,以獲得編輯 Azure AD DS 資源的許可權或從收件者清單中刪除的許可權。
+如果您無法存取 Azure 入口網站中的 [通知設定] 頁面，表示您沒有編輯 Azure AD DS 受控網域的許可權。 您必須洽詢全域管理員，才能取得編輯 Azure AD DS 資源或從收件者清單中移除的許可權。
 
 ### <a name="i-dont-seem-to-be-receiving-email-notifications-even-though-i-provided-my-email-address-why"></a>即使我已經提供電子郵件地址，似乎還是無法接收電子郵件通知。 原因為何？
 
-檢查電子郵件中的垃圾郵件或垃圾郵件資料夾,瞭解通知,並確保允許寄件者`azure-noreply@microsoft.com`。
+請檢查電子郵件中的垃圾郵件資料夾中是否有通知，並務必允許的發件`azure-noreply@microsoft.com`人。
 
 ## <a name="next-steps"></a>後續步驟
 
-有關排除可能報告的一些問題的疑難排解的詳細資訊,請參閱[解決 Azure AD DS 託管域上的警報][troubleshoot-alerts]。
+如需有關疑難排解可能回報之問題的詳細資訊，請參閱[解決 AZURE AD DS 受控網域上的警示][troubleshoot-alerts]。
 
 <!-- INTERNAL LINKS -->
 [check-health]: check-health.md

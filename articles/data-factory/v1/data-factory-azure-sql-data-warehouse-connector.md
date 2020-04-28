@@ -13,21 +13,21 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4335763269f4a39b4893d9022f4789296b178e92
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419318"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>使用 Azure Data Factory 從 Azure SQL 資料倉儲來回複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](data-factory-azure-sql-data-warehouse-connector.md)
+> * [第 1 版](data-factory-azure-sql-data-warehouse-connector.md)
 > * [第 2 版 (目前的版本)](../connector-azure-sql-data-warehouse.md)
 
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Azure SQL 資料倉儲連接器](../connector-azure-sql-data-warehouse.md)。
 
-本文說明如何使用 Azure Data Factory 中的「複製活動」，將資料移進/移出「Azure SQL 資料倉儲」。 它基於[「資料移動活動」](data-factory-data-movement-activities.md)一文,其中概述複製活動的資料移動。
+本文說明如何使用 Azure Data Factory 中的「複製活動」，將資料移進/移出「Azure SQL 資料倉儲」。 它是以[資料移動活動](data-factory-data-movement-activities.md)一文為基礎，其中呈現使用複製活動移動資料的一般總覽。
 
 > [!TIP]
 > 若要達到最佳效能，請使用 PolyBase 將資料載入 Azure SQL 資料倉儲。 如需詳細資訊，請參閱 [使用 PolyBase 將資料載入 Azure SQL 資料倉儲](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) 。 如需使用案例的逐步解說，請參閱[使用 Azure Data Factory 在 15 分鐘內將 1 TB 載入至 Azure SQL 資料倉儲](data-factory-load-sql-data-warehouse.md)。
@@ -52,14 +52,14 @@ Azure SQL 資料倉儲連接器支援基本驗證。
 
 要建立將資料複製到 Azure SQL 資料倉儲，或複製 Azure SQL 資料倉儲資料的管線，最簡單的方法是使用複製資料精靈。 請參閱[教學課程︰使用 Data Factory 將資料載入 SQL 資料倉儲](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md)以取得使用複製資料精靈建立管線的快速逐步解說。
 
-您還可以使用以下工具建立管道:**視覺化工作室****、Azure PowerShell、Azure****資源管理員樣本****、.NET API**和 REST **API**。 有關建立具有複製活動的導管的分步說明,請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+您也可以使用下列工具來建立管線： [ **Visual Studio**]、[ **Azure PowerShell**]、[ **Azure Resource Manager 範本**]、[ **.net API**] 和 [ **REST API**]。 如需建立包含複製活動之管線的逐步指示，請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
-1. 建立**資料工廠**。 資料處理站可包含一或多個管線。 
+1. 建立**資料**處理站。 資料處理站可包含一或多個管線。 
 2. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。 例如，如果您將資料從 Azure blob 儲存體複製到 Azure SQL 資料倉儲，您會建立兩個連結服務，將 Azure 儲存體帳戶和 Azure SQL 資料倉儲連結至資料處理站。 有關 Azure SQL 資料倉儲專屬的連結服務屬性，請參閱[連結服務屬性](#linked-service-properties)一節。 
-3. 創建**資料集**以表示複製操作的輸入和輸出數據。 在上一個步驟所述的範例中，您會建立資料集來指定 blob 容器和包含輸入資料的資料夾。 您還會建立另一個資料集來指定 Azure SQL 資料倉儲中的資料表，以保存從 Blob 儲存體複製的資料。 有關 Azure SQL 資料倉儲專屬的資料集屬性，請參閱[資料集屬性](#dataset-properties)一節。
-4. 建立具有資料集作為輸入與資料集輸出的複製活動的**管道**。 在稍早所述的範例中，您會使用 BlobSource 作為來源，以及使用 SqlDWSink 作為複製活動的接收器。 同樣地，如果您是從 Azure SQL 資料倉儲複製到 Azure Blob 儲存體，則需要在複製活動中使用 SqlDWSource 和 BlobSink。 有關 Azure SQL 資料倉儲專屬的複製活動屬性，請參閱[複製活動屬性](#copy-activity-properties)一節。 如需有關如何使用資料存放區作為來源或接收器的詳細資訊，按一下上一節中資料存放區的連結。
+3. 建立**資料集**來代表複製作業的輸入和輸出資料。 在上一個步驟所述的範例中，您會建立資料集來指定 blob 容器和包含輸入資料的資料夾。 您還會建立另一個資料集來指定 Azure SQL 資料倉儲中的資料表，以保存從 Blob 儲存體複製的資料。 有關 Azure SQL 資料倉儲專屬的資料集屬性，請參閱[資料集屬性](#dataset-properties)一節。
+4. 建立具有複製活動的**管線**，以將資料集作為輸入，並使用資料集做為輸出。 在稍早所述的範例中，您會使用 BlobSource 作為來源，以及使用 SqlDWSink 作為複製活動的接收器。 同樣地，如果您是從 Azure SQL 資料倉儲複製到 Azure Blob 儲存體，則需要在複製活動中使用 SqlDWSource 和 BlobSink。 有關 Azure SQL 資料倉儲專屬的複製活動屬性，請參閱[複製活動屬性](#copy-activity-properties)一節。 如需有關如何使用資料存放區作為來源或接收器的詳細資訊，按一下上一節中資料存放區的連結。
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。 如需相關範例，其中含有用來將資料複製到「Azure SQL 資料倉儲」(或從「Azure SQL 資料倉儲」複製資料) 之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例](#json-examples-for-copying-data-to-and-from-sql-data-warehouse)一節。
 
@@ -70,7 +70,7 @@ Azure SQL 資料倉儲連接器支援基本驗證。
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| type |類型屬性必須設定為 **:AzureSqlDW** |是 |
+| type |Type 屬性必須設定為： **AzureSqlDW** |是 |
 | connectionString |針對 connectionString 屬性指定連線到 Azure SQL 資料倉儲執行個體所需的資訊。 僅支援基本驗證。 |是 |
 
 > [!IMPORTANT]
@@ -120,7 +120,7 @@ Azure SQL 資料倉儲連接器支援基本驗證。
     }
 }
 ```
-**預存程序定義:**
+**預存程序定義：**
 
 ```SQL
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -147,7 +147,7 @@ GO
 | sqlWriterCleanupScript |指定要讓「複製活動」執行的查詢，以便清除特定分割的資料。 如需詳細資訊，請參閱 [可重複性](#repeatability-during-copy)一節。 |查詢陳述式。 |否 |
 | allowPolyBase |指出是否使用 PolyBase (適用的話) 而不是使用 BULKINSERT 機制。 <br/><br/> 建議使用 PolyBase 將資料載入 SQL 資料倉儲。**** 請參閱 [使用 PolyBase 將資料載入 Azure SQL 資料倉儲](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 一節中的條件約束和詳細資料。 |True <br/>FALSE (預設值) |否 |
 | polyBaseSettings |可以在 **allowPolybase** 屬性設定為 **true** 時指定的一組屬性。 |&nbsp; |否 |
-| rejectValue |指定在查詢失敗前可以拒絕的資料列數目或百分比。 <br/><br/>在[創建外部表(轉接-SQL)](https://msdn.microsoft.com/library/dn935021.aspx)主題**的"參數**"部分中瞭解有關 PolyBase 拒絕選項的詳細資訊。 |0 (預設值)、1、2、… |否 |
+| rejectValue |指定在查詢失敗前可以拒絕的資料列數目或百分比。 <br/><br/>在[CREATE EXTERNAL TABLE （transact-sql）](https://msdn.microsoft.com/library/dn935021.aspx)主題的**引數**一節中，深入瞭解 PolyBase 的拒絕選項。 |0 (預設值)、1、2、… |否 |
 | rejectType |指定要將 rejectValue 選項指定為常值或百分比。 |值 (預設值)、百分比 |否 |
 | rejectSampleValue |決定在 PolyBase 重新計算已拒絕的資料列百分比之前，所要擷取的資料列數目。 |1、2、… |是，如果 **rejectType** 是 **percentage** |
 | useTypeDefault |指定當 PolyBase 從文字檔擷取資料時，如何處理分隔符號文字檔中遺漏的值。<br/><br/>從 [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 的＜引數＞一節深入了解這個屬性。 |True/False (預設值為 False) |否 |
@@ -193,14 +193,14 @@ SQL 資料倉儲 PolyBase 直接支援 Azure Blob 和 Azure Data Lake Store (使
 
 如果不符合需求，Azure Data Factory 會檢查設定，並自動切換回適用於資料移動的 BULKINSERT 機制。
 
-1. **來源服務**的類型是 **:Azure 儲存**或**AzureDataLakeStore 具有服務主體身份驗證**。
+1. **來源連結服務**的類型為： **AzureStorage**或**具有服務主體驗證的 AzureDataLakeStore**。
 2. 「輸入資料集」**** 的類型為：**AzureBlob** 或 **AzureDataLakeStore**，而 `type` 屬性底下的格式類型為 **OrcFormat**、**ParquetFormat** 或具備下列設定的 **TextFormat**：
 
    1. `rowDelimiter` 必須為 **\n**。
    2. `nullValue` 設定為「空字串」**** ("") 或將 `treatEmptyAsNull` 設定為 **true**。
    3. `encodingName` 設定為 **utf-8**，也就是「預設」**** 值。
    4. 未指定 `escapeChar`、`quoteChar`、`firstRowAsHeader` 和 `skipLineCount`。
-   5. `compression`可以是**無壓縮****、GZip**或**Deflate**。
+   5. `compression`不可以是**壓縮**、 **GZip**或**Deflate**。
 
       ```JSON
       "typeProperties": {
@@ -224,10 +224,10 @@ SQL 資料倉儲 PolyBase 直接支援 Azure Blob 和 Azure Data Lake Store (使
 5. 目前沒有任何 `columnMapping` 使用於相關聯的複製活動。
 
 ### <a name="staged-copy-using-polybase"></a>使用 PolyBase 分段複製
-當源數據不符合上一節中引入的條件時,可以通過臨時臨時 Azure Blob 存儲(不能為高級存儲)啟用複製數據。 在此情況下，Azure Data Factory 會自動執行資料轉換，以符合 PolyBase 的資料格式需求，然後使用 PolyBase 將資料載入到 SQL 資料倉儲，最後從 Blob 儲存體清空您的暫存資料。 如需透過暫存 Azure Blob 複製資料通常如何運作的詳細資訊，請參閱 [分段複製](data-factory-copy-activity-performance.md#staged-copy) 。
+當您的來源資料不符合上一節所介紹的準則時，您可以啟用透過過渡暫存 Azure Blob 儲存體（無法進階儲存體）複製資料。 在此情況下，Azure Data Factory 會自動執行資料轉換，以符合 PolyBase 的資料格式需求，然後使用 PolyBase 將資料載入到 SQL 資料倉儲，最後從 Blob 儲存體清空您的暫存資料。 如需透過暫存 Azure Blob 複製資料通常如何運作的詳細資訊，請參閱 [分段複製](data-factory-copy-activity-performance.md#staged-copy) 。
 
 > [!NOTE]
-> 使用 PolyBase 和暫存將數據從內部本地資料儲存複製到 Azure SQL 資料倉儲時,如果資料管理閘道版本低於 2.4,則需要閘道電腦上需要 JRE(Java 執行時環境),用於將源數據轉換為適當的格式。 建議您將閘道升級為最新的版本，以避免這類相依性。
+> 使用 PolyBase 和預備將資料從內部部署資料存放區複製到 Azure SQL 資料倉儲時，如果您的資料管理閘道版本低於2.4，則在用來將來源資料轉換為適當格式的閘道電腦上需要 JRE （JAVA Runtime Environment）。 建議您將閘道升級為最新的版本，以避免這類相依性。
 >
 
 若要使用此功能，請建立 [Azure 儲存體連結服務](data-factory-azure-blob-connector.md#azure-storage-linked-service)，這是指具有過渡 Blob 儲存體的 Azure 儲存體帳戶，然後針對複製活動指定 `enableStaging` 和 `stagingSettings` 屬性，如下列程式碼所示：
@@ -317,12 +317,12 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 | Date | Date |
 | Datetime | Datetime |
 | DateTime2 | DateTime2 |
-| Time | Time |
+| 時間 | 時間 |
 | DateTimeOffset | DateTimeOffset |
 | SmallDateTime | SmallDateTime |
 | Text | Varchar (最多 8000) |
 | NText | NVarChar (最多 4000) |
-| 映像 | VarBinary (最多 8000) |
+| Image | VarBinary (最多 8000) |
 | UniqueIdentifier | UniqueIdentifier |
 | Char | Char |
 | NChar | NChar |
@@ -340,7 +340,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 
 將資料移進和移出 Azure SQL 資料倉儲時，會使用下列從 SQL 類型到 .NET 類型的對應，以及反向的對應。
 
-映射與[ADO.NET 的 SQL Server 數據類型對應](https://msdn.microsoft.com/library/cc716729.aspx)相同。
+對應與[ADO.NET 的 SQL Server 資料類型對應](https://msdn.microsoft.com/library/cc716729.aspx)相同。
 
 | SQL Server Database Engine 類型 | .NET Framework 類型 |
 | --- | --- |
@@ -380,7 +380,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 您也可以在複製活動定義中，將來自來源資料集的資料行與來自接收資料集的資料行對應。 如需詳細資料，請參閱[在 Azure Data Factory 中對應資料集資料行](data-factory-map-columns.md)。
 
 ## <a name="json-examples-for-copying-data-to-and-from-sql-data-warehouse"></a>往返 SQL 資料倉儲複製資料的 JSON 範例
-以下示例提供了使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)創建管道的範例 JSON 定義。 它們會示範如何將資料複製到 Azure SQL 資料倉儲和 Azure Blob 儲存體，以及複製其中的資料。 不過，您可以在 Azure Data Factory 中使用複製活動，從任何來源 **直接** 將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。
+下列範例提供可用來使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)建立管線的範例 JSON 定義。 它們會示範如何將資料複製到 Azure SQL 資料倉儲和 Azure Blob 儲存體，以及複製其中的資料。 不過，您可以在 Azure Data Factory 中使用複製活動，從任何來源 **直接** 將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。
 
 ### <a name="example-copy-data-from-azure-sql-data-warehouse-to-azure-blob"></a>範例：將資料從 Azure SQL 資料倉儲複製到 Azure Blob
 此範例會定義下列 Data Factory 實體：
@@ -421,7 +421,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 ```
 **Azure SQL 資料倉儲輸入資料集：**
 
-該示例假定您在 Azure SQL 資料倉庫中創建了一個表"MyTable",其中包含一個稱為時序數據的列。"
+此範例假設您已在 Azure SQL 資料倉儲中建立資料表 "MyTable"，而且它包含一個稱為 "timestampcolumn" 的資料行，適用于時間序列資料。
 
 設定 "external": "true" 會通知 Data Factory 服務：這是 Data Factory 外部的資料集而且不是由 Data Factory 中的活動所產生。
 
@@ -449,7 +449,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
   }
 }
 ```
-**Azure Blob 輸出資料集:**
+**Azure Blob 輸出資料集：**
 
 資料會每小時寫入至新的 Blob (頻率：小時，間隔：1)。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑。 資料夾路徑會使用開始時間的年、月、日和小時部分。
 
@@ -607,7 +607,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 ```
 **Azure Blob 輸入資料集：**
 
-每小時從新的 Blob 挑選資料 (頻率：小時，間隔：1)。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑和檔案名稱。 資料夾路徑會使用開始時間的年、月及日部分，而檔案名稱則使用開始時間的小時部分。 "外部":"true"設置通知數據工廠服務,此表是資料工廠的外部,不是由資料工廠中的活動生成的。
+每小時從新的 Blob 挑選資料 (頻率：小時，間隔：1)。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑和檔案名稱。 資料夾路徑會使用開始時間的年、月及日部分，而檔案名稱則使用開始時間的小時部分。 "external"： "true" 設定會通知 Data Factory 服務，這是 data factory 外部的資料表，而且不是由 data factory 中的活動所產生。
 
 ```JSON
 {
@@ -675,7 +675,7 @@ Data Factory 會以和來源資料存放區中的資料表相同的名稱，在�
 ```
 **Azure SQL 資料倉儲輸出資料集：**
 
-該範例將資料複製到 Azure SQL 資料倉儲中名為"MyTable"的表中。 請在Azure SQL 資料倉儲中建立此資料表，其資料行的數目如您預期 Blob CSV 檔案要包含的數目。 此資料表會每小時加入新的資料列。
+此範例會在 Azure SQL 資料倉儲中，將資料複製到名為 "MyTable" 的資料表。 請在Azure SQL 資料倉儲中建立此資料表，其資料行的數目如您預期 Blob CSV 檔案要包含的數目。 此資料表會每小時加入新的資料列。
 
 ```JSON
 {
