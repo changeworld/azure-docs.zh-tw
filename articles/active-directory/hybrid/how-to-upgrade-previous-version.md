@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60347647"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：從舊版升級到最新版本
 本主題說明各種可用於將 Azure Active Directory (Azure AD) Connect 安裝升級到最新版本的方法。 我們建議您讓自己的 Azure AD Connect 保持在最新版本。 當您進行大幅組態變更時，也會使用[變換移轉](#swing-migration)一節中的步驟。
 
 >[!NOTE]
-> 當前支援從任何版本的 Azure AD 連接到當前版本。 不支援對 DirSync 或 ADSync 進行就地升級，並且需要進行回轉遷移。  如果要從 DirSync 升級，請參閱[從 Azure AD 同步工具 （DirSync） 升級](how-to-dirsync-upgrade-get-started.md)或["擺動遷移](#swing-migration)"部分。  </br>實際上，使用非常舊版本的客戶可能會遇到與 Azure AD 連接沒有直接關係的問題。 已生產數年的伺服器通常應用了多個修補程式，但並非所有修補程式都可以考慮。  通常，在 12-18 個月內未升級的客戶應考慮進行回轉升級，因為這是最保守、風險最小的選擇。
+> 目前支援從任何版本的 Azure AD Connect 升級到目前的版本。 不支援就地升級 DirSync 或 ADSync，而且需要旋轉遷移。  如果您想要從 DirSync 升級，請參閱[從 Azure AD 同步處理工具（DirSync）](how-to-dirsync-upgrade-get-started.md)或[旋轉遷移](#swing-migration)一節升級。  </br>在實務上，非常舊版本的客戶可能會遇到與 Azure AD Connect 不直接相關的問題。 已進入生產階段的伺服器已有數年的時間，通常會套用數個修補程式，而不是全部都適用。  一般而言，在12-18 個月內未升級的客戶，應該考慮改用變換升級，因為這是最不保守且最不具風險的選項。
 
 如果您想要從 DirSync 升級，請改為參閱[從 Azure AD 同步作業工具 (DirSync) 升級](how-to-dirsync-upgrade-get-started.md)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "60347647"
 如需權限資訊，請參閱[升級所需的權限](reference-connect-accounts-permissions.md#upgrade)。
 
 > [!NOTE]
-> 啟用新的 Azure AD 連接伺服器開始同步 Azure AD 的更改後，不得回滾到使用 DirSync 或 Azure AD 同步。不支援從 Azure AD 向下降級連接到舊用戶端（包括 DirSync 和 Azure AD 同步），並可能導致 Azure AD 中的資料丟失等問題。
+> 當您啟用新的 Azure AD Connect 伺服器開始將變更同步處理至 Azure AD 後，就不能回復為使用 DirSync 或 Azure AD 同步。不支援從 Azure AD Connect 降級至舊版用戶端，包括 DirSync 和 Azure AD 同步，而且可能會導致 Azure AD 中的資料遺失等問題。
 
 ## <a name="in-place-upgrade"></a>就地升級
 就地升級適用於從 Azure AD Sync 或 Azure AD Connect 移轉， 但不適用於從 DirSync 移轉，也不適用於任何利用 Forefront Identity Manager (FIM) + Azure AD 連接器的解決方案。
@@ -75,7 +75,7 @@ ms.locfileid: "60347647"
 3. 如果您要從舊版的 Azure AD Connect 升級，請將預備伺服器升級到最新版本。 如果您要從 Azure AD 同步進行移動，請在預備伺服器上安裝 Azure AD Connect。
 4. 讓同步處理引擎在預備伺服器上執行完整匯入及完整同步處理的作業。
 5. 請使用[驗證伺服器的組態](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server)中「驗證」之下的步驟，以確認新的組態並未造成任何非預期的變更。 如果發現預期以外的變更，請遵循相關步驟，加以修正、執行匯入及同步處理作業，然後驗證資料，直到資料看起來沒問題為止。
-6. 將預備伺服器切換成作用中伺服器。 這是[驗證服務器配置](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server)中"切換活動伺服器"的最後一步。
+6. 將預備伺服器切換成作用中伺服器。 這是[確認伺服器](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server)設定中的最後一個步驟「切換作用中伺服器」。
 7. 如果您要升級 Azure AD Connect，請將目前處於預備模式的伺服器升級到最新版本。 依照與先前相同的步驟，來為資料及組態升級。 如果您是從 Azure AD Sync 進行升級，現在可以關閉舊伺服器並解除任務。
 
 ### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>將自訂組態從作用中伺服器移到預備伺服器
@@ -93,7 +93,7 @@ ms.locfileid: "60347647"
 若要移動自訂同步處理規則，請執行下列作業：
 
 1. 開啟作用中伺服器上的 [同步處理規則編輯器] **** 。
-2. 選取自訂規則。 按一下 [匯出]****。 此時會出現一個 [記事本] 視窗。 將暫存檔案儲存成副檔名為 PS1 的檔案。 這會讓該檔案變成 PowerShell 指令碼。 將該 PS1 檔案複製到預備伺服器上。  
+2. 選取自訂規則。 按一下 [匯出]  。 此時會出現一個 [記事本] 視窗。 將暫存檔案儲存成副檔名為 PS1 的檔案。 這會讓該檔案變成 PowerShell 指令碼。 將該 PS1 檔案複製到預備伺服器上。  
    ![同步處理規則匯出](./media/how-to-upgrade-previous-version/exportrule.png)
 3. 預備伺服器的連接器 GUID 會跟作用中伺服器的不一樣，必須加以變更。 若要取得 GUID，請啟動 [同步處理規則編輯器]****、選取某個代表同一個已連線系統的現成規則，然後按一下 [匯出]****。 請用預備伺服器的 GUID 取代 PS1 檔中的 GUID。
 4. 在 PowerShell 命令提示字元中執行 PS1 檔， 以便在預備伺服器上建立自訂同步處理規則。
@@ -168,4 +168,4 @@ At line:1 char:1
 
 
 ## <a name="next-steps"></a>後續步驟
-詳細瞭解[將本地標識與 Azure 活動目錄集成](whatis-hybrid-identity.md)。
+深入瞭解如何[整合您的內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 48a3326dbe0e9eed4a5490e720248555586d189c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67174031"
 ---
 ### <a name="to-take-a-backup"></a>建立備份
@@ -29,7 +29,7 @@ ms.locfileid: "67174031"
 
 5. 在 [新增第一個排程]**** 刀鋒視窗中︰
 
-    1. 選取備份類型。 要加快還原速度，請選擇 **"本地**快照"。 要獲得資料恢復能力，請選擇 **"雲**"快照。
+    1. 選取備份類型。 如需更快速的還原，請選取 [**本機**快照]。 針對 [資料復原]，選取 [**雲端**快照]。
     2. 指定備份頻率 (以分鐘、小時、天或週為單位)。
     3. 選取保留時間。 保留選項會根據備份頻率而定。 例如，針對每日原則，可以指定保留幾週，而針對每月原則，則可指定保留幾個月。
     4. 選取備份原則的開始時間和日期。

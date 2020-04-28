@@ -1,6 +1,6 @@
 ---
 title: H264 多重位元速率 16x9 SD | Microsoft Docs
-description: 本主題概述了**H264 多位元率 16x9 SD**任務預設。
+description: 本主題提供**H264 多重位元速率 16X9 SD**工作預設的總覽。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: a0d272a01a6969f702ff4eedf05660833ba1f531
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463702"
 ---
 # <a name="h264-multiple-bitrate-16x9-sd"></a>H264 多重位元速率 16x9 SD

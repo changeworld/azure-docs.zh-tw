@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: damaerte
 ms.openlocfilehash: bbf6c1f3049265961559ea34c8b748b2b4d263b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60614318"
 ---
 # <a name="embed-azure-cloud-shell"></a>內嵌 Azure Cloud Shell
@@ -27,11 +27,11 @@ ms.locfileid: "60614318"
 
 標準大小的按鈕
 
-[![定期發佈](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+[![一般啟動](https://shell.azure.com/images/launchcloudshell.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
 
 大型按鈕
 
-[![大型發佈](https://shell.azure.com/images/launchcloudshell@2x.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
+[![大型發行](https://shell.azure.com/images/launchcloudshell@2x.png "啟動 Azure Cloud Shell")](https://shell.azure.com)
 
 ## <a name="how-to"></a>操作方式
 

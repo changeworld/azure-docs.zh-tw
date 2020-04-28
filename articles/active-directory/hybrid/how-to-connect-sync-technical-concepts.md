@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b8ec4a6100cfbb4419d7e30f4b97589113b88939
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60347564"
 ---
 # <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect 同步處理：技術概念
@@ -34,16 +34,16 @@ Azure AD Connect 同步建置在一個穩固的中繼目錄同步處理平台上
 
 下列章節提供有關 FIM 同步處理服務下列層面的詳細資訊：
 
-* 連接器
+* 連接子
 * 屬性流程
 * 連接器空間
 * Metaverse
 * 佈建
 
-## <a name="connector"></a>連接器
+## <a name="connector"></a>連接子
 用來與連接的目錄通訊之程式碼模組，稱為連接器 (之前稱為管理代理程式 (MA))。
 
-這些安裝在運行 Azure AD 連接同步的電腦上。連接器提供使用遠端系統協定而不是依賴專用代理部署的無代理交談能力。 這表示降低了風險與部署時間，特別是在處理重要的應用程式與系統時。
+這些會安裝在執行 Azure AD Connect 同步的電腦上。連接器提供無代理程式的功能，可使用遠端系統通訊協定來進行反向操作，而不需依賴特殊化代理程式的部署。 這表示降低了風險與部署時間，特別是在處理重要的應用程式與系統時。
 
 在上圖中，連接器與連接器空間是同義詞，但包含了所有與外部系統的通訊。
 
@@ -87,7 +87,7 @@ Metaverse 是鄰近連接器空間中所有聯結的身份識別的合併檢視�
 每當規則判斷需要建立新的連接器空間物件，此即稱為佈建。 不過，因為此作業只會在連接器空間中進行，所以在執行匯出之前不會影響已連接的資料來源。
 
 ## <a name="additional-resources"></a>其他資源
-* [Azure AD 連接同步：自訂同步選項](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步處理：自訂同步處理選項](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)
 
 <!--Image references-->

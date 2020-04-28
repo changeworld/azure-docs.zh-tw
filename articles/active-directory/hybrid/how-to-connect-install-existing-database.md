@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60245207"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>使用現有的 ADSync 資料庫安裝 Azure AD Connect
@@ -59,10 +59,10 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存資料。 您可以使用 A
 1.  將 Azure AD Connect 安裝程式 (AzureADConnect.MSI) 下載到 Windows Server。 按兩下 Azure AD Connect 安裝程式可開始安裝 Azure AD Connect。
 2.  一旦 MSI 安裝完成後，Azure AD Connect 精靈就會開始使用快速模式安裝。 按一下 [結束] 圖示將畫面關閉。
 ![歡迎使用](./media/how-to-connect-install-existing-database/db1.png)
-3.  啟動新的命令提示字元或 PowerShell 工作階段。 導航到資料夾"C：*程式檔\微軟 Azure 活動目錄連接"。 執行 .\AzureADConnect.exe /useexistingdatabase 命令，可在「使用現有資料庫」安裝模式中啟動 Azure AD Connect 精靈。
+3.  啟動新的命令提示字元或 PowerShell 工作階段。 流覽至資料夾 "C:\Program Files\Microsoft Azure Active Directory Connect"。 執行 .\AzureADConnect.exe /useexistingdatabase 命令，可在「使用現有資料庫」安裝模式中啟動 Azure AD Connect 精靈。
 
 > [!NOTE]
-> 請只有在資料庫已經包含來自先前之 Azure AD Connect 安裝的資料時，才使用 **/UseExistingDatabase** 參數。 例如，當您要從本機資料庫移至完整 SQL Server 資料庫時，或當 Azure AD Connect 伺服器已重建，且您已從先前的 Azure AD Connect 安裝還原 ADSync 資料庫的 SQL 備份時。 如果資料庫為空，即它不包含來自以前的 Azure AD Connect 安裝的任何資料，請跳過此步驟。
+> 請只有在資料庫已經包含來自先前之 Azure AD Connect 安裝的資料時，才使用 **/UseExistingDatabase** 參數。 例如，當您要從本機資料庫移至完整 SQL Server 資料庫時，或當 Azure AD Connect 伺服器已重建，且您已從先前的 Azure AD Connect 安裝還原 ADSync 資料庫的 SQL 備份時。 如果資料庫是空的，也就是說，它不包含先前 Azure AD Connect 安裝的任何資料，請略過此步驟。
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. [歡迎使用 Azure AD Connect] 畫面隨即迎接您。 一旦您同意授權條款及隱私權注意事項後，請按一下 [繼續]****。
@@ -81,11 +81,11 @@ Azure AD Connect 需要 SQL Server 資料庫來儲存資料。 您可以使用 A
    ![歡迎使用](./media/how-to-connect-install-existing-database/db7.png)
  
  
-1. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按 [下一步]****。
+1. 一旦提供認證後，紅色十字圖示會取代為綠色勾號圖示。 按 [下一步]  。
    ![歡迎使用](./media/how-to-connect-install-existing-database/db8.png)
  
  
-1. 在 [準備好設定]**** 畫面中，按一下 [安裝]****。
+1. 在 [**準備好設定**] 畫面上，按一下 [**安裝**]。
    ![歡迎使用](./media/how-to-connect-install-existing-database/db9.png)
  
  

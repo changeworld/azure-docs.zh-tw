@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3c7e1167b3326620863d35cb2d4b07235cbd5517
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61320112"
 ---
 # <a name="conceptual-understanding-of-x509-ca-certificates-in-the-iot-industry"></a>概念性了解 IoT 產業中的 X.509 CA 憑證
@@ -29,7 +29,7 @@ ms.locfileid: "61320112"
 
 * 使用 X.509 CA 所簽署的裝置如何連線到 IoT 中樞
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 X.509 憑證授權單位 (CA) 驗證方法可用來對 IoT 中樞驗證裝置，其使用的方法可大幅簡化供應鏈的裝置身分識別建立和生命週期管理工作。
 
@@ -57,7 +57,7 @@ X.509 CA 憑證是數位憑證，其擁有者可以簽署其他憑證。 此數�
 
 Company-X 可選擇向公開的根憑證授權單位購買 X.509 CA 憑證，也可以透過自我簽署程序建立一個 X.509 CA 憑證。 根據應用案例，其中一個選項會優於另一個。 但不論是哪個選項，此程序都需要兩個基本步驟，也就是產生公開/私密金鑰組，並將公開金鑰簽章到憑證。
 
-![用於生成 X509CA 憑證的流](./media/iot-hub-x509ca-concept/csr-flow.png)
+![產生 X509CA 憑證的流程](./media/iot-hub-x509ca-concept/csr-flow.png)
 
 如何完成這些步驟的詳細資訊會隨各服務提供者而不同。
 
@@ -101,7 +101,7 @@ IoT 需要每個裝置都擁有唯一的身分識別。 這些身分識別會採
 
 X.509 CA 憑證驗證會透過使用憑證鏈結，來提供可應對前述挑戰的卓越解決方案。 憑證鏈結的形成，是由 CA 簽署中繼 CA，中繼 CA 再簽署其他中繼 CA，如此不斷循環，直到最終的中繼 CA 簽署裝置為止。 在我們的範例中，Company-X 會簽署 Factory-Y，Factory-Y 再簽署 Technician-Z，Technician-Z 最終則簽署 Smart-X-Widget。
 
-![憑證連結層次結構](./media/iot-hub-x509ca-concept/cert-chain-hierarchy.png)
+![憑證連結階層](./media/iot-hub-x509ca-concept/cert-chain-hierarchy.png)
 
 上述鏈結中的一連串憑證呈現出了授權單位的交接邏輯。 許多供應鏈都遵循這個交接邏輯，以此讓每個中繼 CA 簽署到鏈結中，並同時接收所有上游的 CA 憑證，而最後一個中繼 CA 則負責最終簽署每個裝置，並將鏈結中的所有授權單位憑證注入到裝置內。 這種情形常見於簽約製造公司底下有工廠階層，並任命其中一家特定工廠來負責製造時。 雖然此階層可能深達數層 (例如，依地理位置/產品類型/生產線分類)，但最終只有該家工廠會與裝置互動，然而鏈結卻是從階層的最上層來維護。
 
@@ -109,7 +109,7 @@ X.509 CA 憑證驗證會透過使用憑證鏈結，來提供可應對前述挑�
 
 在我們的範例中，Factory-Y 和 Technician-Z 會與 Smart-X-Widget 互動。 雖然 Company-X 擁有 Smart-X-Widget，但在整個供應鏈中，它實際上不會與裝置有實際的互動。 Smart-X-Widget 的憑證信任鏈結因此包含簽署 Factory-Y 的 Company-X，而 Factory-Y 會再簽署 Technician-Z，Technician-Z 然後會提供最終簽章給 Smart-X-Widget。 Smart-X-Widget 的製造和安裝包含 Factory-Y 和 Technician-Z 使用其個別的中繼 CA 憑證來簽署每個 Smart-X-Widget。 這整個程序的最終結果是 Smart-X-Widget 擁有唯一的裝置憑證，而憑證信任鏈結則會上達 Company-X 的 CA 憑證。
 
-![信任鏈，從一家公司的證書到另一家公司的證書](./media/iot-hub-x509ca-concept/cert-mfr-chain.png)
+![一家公司的憑證與另一家公司的憑證的信任鏈](./media/iot-hub-x509ca-concept/cert-mfr-chain.png)
 
 現在是回顧 X.509 CA 方法價值的好時機。 Company-X 並未對每個 Smart-X-Widget 預先產生憑證，並將憑證交接給供應鏈，而只必須簽署 Factory-Y 一次。 雖然不必在整個裝置生命週期追蹤每個裝置，但 Company-X 現在可能透過供應鏈程序所自然浮現的群組 (例如，Technician-Z 在某年 7 月後所安裝的裝置) 來追蹤和管理裝置。
 
@@ -127,6 +127,6 @@ X.509 CA 憑證驗證會透過使用憑證鏈結，來提供可應對前述挑�
 
 在我們的範例中，每個 Smart-X-Widget 都會將其唯一的裝置憑證連同 Factory-Y 和 Technician-Z X.509 CA 憑證上傳，然後再回應 IoT 中樞所提出的擁有權證明查問。
 
-![從一個證書流向另一個證書，從集線器彈出挑戰](./media/iot-hub-x509ca-concept/device-pop-flow.png)
+![從一個憑證流向另一個憑證，從中樞的 pop 挑戰](./media/iot-hub-x509ca-concept/device-pop-flow.png)
 
 請注意，信任基礎仰賴於保護私密金鑰，裝置的私密金鑰也包括在內。 因此，我們必須一再強調用來保護裝置私密金鑰之安全矽晶片 (以硬體安全模組 (HSM) 的形式存在)，以及絕不共用任何私密金鑰 (例如，某家工廠將其私密金鑰交付給其他工廠) 之整體最佳做法的重要性。

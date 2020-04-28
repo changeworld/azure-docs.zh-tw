@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 52084b065ef65a69a6691b6646d1e199f011910d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67173814"
 ---
 ### <a name="to-modify-the-local-network-gateway-ip-address---no-gateway-connection"></a><a name="gwipnoconnection"></a>修改區域網路閘道 IP 位址 - 沒有閘道連線
@@ -27,7 +27,7 @@ ms.locfileid: "67173814"
 
 若要修改具有連線的區域網路閘道，您必須先移除連線。 連線移除之後，您可以修改閘道 IP 位址，然後重新建立新連線。 您也可以同時修改位址首碼。 這會導致您 VPN 連線的停機時間。 修改閘道 IP 位址時，您不需要刪除 VPN 閘道。 您只需要移除連線。
  
-#### <a name="1-remove-the-connection"></a>1. 卸下連接。
+#### <a name="1-remove-the-connection"></a>1. 移除連接。
 
 1. 在 [區域網路閘道] 資源的 [設定]**** 區段中，按一下 [連線]****。
 2. 按一下連線那一行上的 [...]****，然後按一下 [刪除]****。
@@ -40,7 +40,7 @@ ms.locfileid: "67173814"
 1. 在 [IP 位址]**** 方塊中，修改 IP 位址。
 2. 按一下 [儲存] **** 來儲存這些設定。
 
-#### <a name="3-recreate-the-connection"></a>3. 重新創建連接。
+#### <a name="3-recreate-the-connection"></a>3. 重新建立連線。
 
 1. 瀏覽至您 VNet 的虛擬網路閘道。 (而非區域網路閘道。)
 2. 在 [虛擬網路閘道] 的 [設定]**** 區段中，按一下 [連線]****。

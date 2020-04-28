@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
 ms.openlocfilehash: dc4ff35ff04680e8635d54c25212c8ae639ae472
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60779743"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>搖一搖以獲取推文 -- 使用 Azure Functions 擷取 Twitter 訊息
@@ -29,8 +29,8 @@ ms.locfileid: "60779743"
 
 有效的 Azure 訂用帳戶。 如果沒有，您可以透過下列這些方法之一來註冊：
 
-* 啟動[免費試用 Microsoft Azure 帳戶](https://azure.microsoft.com/free/)
-* 如果您是 MSDN 或 Visual Studio 訂閱者，請聲明[Azure 積分](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
+* [Microsoft Azure 帳戶啟用30天免費試用版](https://azure.microsoft.com/free/)
+* 如果您是 MSDN 或 Visual Studio 訂閱者，請領取您的[Azure 點數](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
 
 ## <a name="open-the-project-folder"></a>開啟專案資料夾
 

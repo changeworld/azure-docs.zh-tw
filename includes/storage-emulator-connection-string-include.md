@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
 ms.openlocfilehash: 8c577db3e9f2bff9e86c3a7c37274630f90dd680
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174183"
 ---
 儲存體模擬器支援共用金鑰驗證的單一固定帳戶及已知驗證金鑰。 此帳戶和金鑰都是唯一允許搭配儲存體模擬器使用的共用金鑰認證。 其中包括：
@@ -25,7 +25,7 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 > 
 
 #### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>使用捷徑連接到模擬器帳戶
-從您的應用程式連線到儲存體模擬器的最簡單方法，就是在應用程式參照捷徑 `UseDevelopmentStorage=true` 的組態檔中設定連接字串。 下面是*app.config*檔中與存儲模擬器的連接字串的示例： 
+從您的應用程式連線到儲存體模擬器的最簡單方法，就是在應用程式參照捷徑 `UseDevelopmentStorage=true` 的組態檔中設定連接字串。 以下是*app.config*檔案中儲存體模擬器的連接字串範例： 
 
 ```xml
 <appSettings>

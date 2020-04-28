@@ -9,13 +9,13 @@ ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 1aca39a7ff162aa3c42fdb3ca5999c71091ec02e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67173712"
 ---
- 如果使用 Azure 雲外殼，則在按一下"試用"後自動登入到 Azure 帳戶。 要在本地登錄，請打開具有提升許可權的 PowerShell 主控台，然後運行 Cmdlet 進行連接。
+ 如果您使用 Azure Cloud Shell，您可以在按一下 [試用] 之後自動登入您的 Azure 帳戶。 若要在本機登入，請以較高的許可權開啟 PowerShell 主控台，並執行 Cmdlet 以進行連線。
 
 ```azurepowershell
 Connect-AzAccount

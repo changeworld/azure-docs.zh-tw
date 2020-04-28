@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: af6badda426f1bb81d8528cfda9b8c02d55712b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463823"
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>如何：獲取媒體處理器實例
+# <a name="how-to-get-a-media-processor-instance"></a>如何：取得媒體處理器實例
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
-> * [休息](media-services-rest-get-media-processor.md)
+> * [REST](media-services-rest-get-media-processor.md)
 > 
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 在媒體服務中，媒體處理器是可處理特定處理工作的元件，例如編碼、格式轉換、加密或解密媒體內容。 您通常會在建立媒體內容的編碼、加密或格式轉換工作時建立媒體處理器。
 
 ## <a name="azure-media-processors"></a>Azure 媒體處理器 

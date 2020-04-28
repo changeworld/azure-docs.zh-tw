@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d6bad1ec584b28fee77bc654eba8a2d0c7b5df30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174042"
 ---
 #### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>若要在與 StorSimple 裝置管理員服務相同的 Azure 訂用帳戶中新增儲存體帳戶認證
@@ -29,7 +29,7 @@ ms.locfileid: "67174042"
 
     3. 根據選取的儲存體帳戶，會顯示 [位置]**** \(呈現灰色且無法在此變更)。
 
-    4. 選擇**啟用 SSL 模式**可為設備和雲之間的網路通信創建安全通道。 只有當您在私人雲端內操作時，才將 [啟用 SSL]**** 停用。
+    4. 選取 [**啟用 SSL 模式]** ，為您的裝置與雲端之間的網路通訊建立安全通道。 只有當您在私人雲端內操作時，才將 [啟用 SSL]**** 停用。
 
         ![新增 [儲存體帳戶認證] 刀鋒視窗](./media/storsimple-8000-configure-new-storage-account-u2/createnewstorageacct3.png)
 

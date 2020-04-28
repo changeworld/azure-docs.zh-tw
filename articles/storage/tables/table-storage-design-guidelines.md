@@ -9,10 +9,10 @@ ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: d056d29469ad9a60fceeee307aca3c0e1319283c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61269828"
 ---
 # <a name="guidelines-for-table-design"></a>資料表設計指導方針
@@ -32,14 +32,14 @@ ms.locfileid: "61269828"
 
 * ***不要建立熱分割。***  選擇可讓您在任何時間點，將要求分散到多個分割上的索引鍵。  
 * ***避免流量尖峰。***  將流量平均分散到合理的時段，以避免產生流量尖峰。
-* ***不一定為每種類型的實體創建單獨的表。***  需要跨實體類型執行不可部分完成的交易時，您可以在相同資料表的相同分割中儲存多個實體類型。
+* ***不一定要為每個實體類型建立個別的資料表。***  需要跨實體類型執行不可部分完成的交易時，您可以在相同資料表的相同分割中儲存多個實體類型。
 * ***考慮必須達到的最大輸送量。***  您必須留意資料表服務的延展性目標，並確保您的設計不會超過目標。  
 
 當您閱讀本指南時，您會看到將這些原則全都納入實作的範例。 
 
 ## <a name="next-steps"></a>後續步驟
 
-- [表設計模式](table-storage-design-patterns.md)
+- [資料表設計模式](table-storage-design-patterns.md)
 - [查詢的設計](table-storage-design-for-query.md)
 - [加密資料表資料](table-storage-design-encrypt-data.md)
 - [資料修改的設計](table-storage-design-for-modification.md)

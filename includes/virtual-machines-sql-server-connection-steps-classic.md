@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 57f238a8f91df1271e91894b88a7f02118b1f123
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67173923"
 ---
 ### <a name="determine-the-dns-name-of-the-virtual-machine"></a>決定虛擬機器的 DNS 名稱
@@ -32,5 +32,5 @@ ms.locfileid: "67173923"
 3. 在 [驗證]**** 方塊中，選取 [SQL Server 驗證]****。
 4. 在 [登入] **** 方塊中，輸入於先前工作中建立之登入的名稱。
 5. 在 [密碼] **** 方塊中，輸入於先前工作中建立之登入的密碼。
-6. 按一下 [連線]****。
+6. 按一下 [ **連接**]。
 

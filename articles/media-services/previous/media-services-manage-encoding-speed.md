@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 6bcaadc8dd61899aff860ad246e30170c99ec0f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463747"
 ---
 #  <a name="manage-speed-and-concurrency-of-your-encoding"></a>管理編碼的速度和並行  
 
 本文提供如何管理編碼作業/工作之速度和並行的簡短概觀。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 在媒體服務中，**保留單元類型**會決定媒體處理工作的處理速度。 您可以選擇下列的保留單元類型：**S1**、**S2** 或 **S3**。 例如，在執行相同編碼作業的前提下，使用 **S2** 保留單元類型的速度會比 **S1** 類型快。 [調整編碼單位](media-services-scale-media-processing-overview.md)主題所顯示的資料表可協助您在不同的編碼速度之間做出決定。
 

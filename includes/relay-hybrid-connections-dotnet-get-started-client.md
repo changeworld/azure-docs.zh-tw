@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 2d6836b2bf667e4170e67a95dc1daad72a769eb9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67174213"
 ---
 ### <a name="create-a-console-application"></a>建立主控台應用程式
@@ -18,7 +18,7 @@ ms.locfileid: "67174213"
 ### <a name="add-the-relay-nuget-package"></a>新增轉送 NuGet 封裝
 
 1. 以滑鼠右鍵按一下新建立的專案，然後選取 [管理 NuGet 套件]****。
-2. 選取 [瀏覽]****，然後搜尋 **Microsoft.Azure.Relay**。 在搜尋結果中，選擇**Microsoft Azure 中繼**。 
+2. 選取 [瀏覽]****，然後搜尋 **Microsoft.Azure.Relay**。 在搜尋結果中，選取 [ **Microsoft Azure 轉送**]。 
 3. 選取 [安裝]**** 以完成安裝。 關閉對話方塊。
 
 ### <a name="write-code-to-send-messages"></a>撰寫程式碼來傳送訊息

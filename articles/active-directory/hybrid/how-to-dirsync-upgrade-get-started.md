@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2f2d9a7c8cfbfc4fb56ff8fba3c65ae9a7925830
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60348525"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect︰從 DirSync 升級
@@ -28,12 +28,12 @@ Azure AD Connect 是 DirSync 的後續產品。 您會在本主題中了解可�
 
 在開始安裝 Azure AD Connect 之前，請務必要[下載 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) 並完成 [Azure AD Connect：硬體和必要條件](how-to-connect-install-prerequisites.md)中的必要條件步驟。 特別是，您會想要閱讀下列各項，因為這些領域與 DirSync 有所不同︰
 
-* .NET 和 PowerShell 的必需版本。 較新的版本必須位於與 DirSync 所需不同的伺服器上。
+* 所需的 .NET 和 PowerShell 版本。 較新的版本必須位於與 DirSync 所需不同的伺服器上。
 * Proxy 伺服器設定。 如果您使用 Proxy 伺服器連到網際網路，此設定必須在升級之前設定。 DirSync 一律使用為使用者設定的 Proxy 伺服器進行安裝，但 Azure AD Connect 使用電腦設定。
 * 需要在 Proxy 伺服器中開啟的 URL。 基本的情況下，這些案例也支援這些 URL，需求都相同。 如果您想要使用 Azure AD Connect 隨附的任何新功能，必須開啟某些新的 URL。
 
 > [!NOTE]
-> 啟用新的 Azure AD 連接伺服器開始同步 Azure AD 的更改後，不得回滾到使用 DirSync 或 Azure AD 同步。不支援從 Azure AD 向下降級 連接到舊用戶端（包括 DirSync 和 Azure AD 同步），並可能導致 Azure AD 中的資料丟失等問題。
+> 當您啟用新的 Azure AD Connect 伺服器開始將變更同步處理至 Azure AD 後，就不能回復為使用 DirSync 或 Azure AD 同步。不支援從 Azure AD Connect 降級至舊版用戶端，包括 DirSync 和 Azure AD 同步，而且可能會導致 Azure AD 中的資料遺失等問題。
 
 如果您不是要從 DirSync 升級，請參閱相關文件中的其他案例。
 
@@ -43,7 +43,7 @@ Azure AD Connect 是 DirSync 的後續產品。 您會在本主題中了解可�
 | 狀況 |
 | --- |
 | [就地升級](#in-place-upgrade) |
-| [並行部署](#parallel-deployment) |
+| [平行部署](#parallel-deployment) |
 
 > [!NOTE]
 > 當您規劃從 DirSync 升級至 Azure AD Connect 時，在升級之前請勿自行解除安裝 DirSync。 Azure AD Connect 會讀取和移轉來自 DirSync 的組態，並且在檢查伺服器之後解除安裝。
@@ -53,7 +53,7 @@ Azure AD Connect 是 DirSync 的後續產品。 您會在本主題中了解可�
 
 如果您想要執行組態移轉及執行平行部署，則可以覆寫就地升級建議。 例如，您可能會利用這個機會來重新整理硬體和作業系統。 如需詳細資訊，請參閱[平行部署](#parallel-deployment)一節。
 
-**並行部署**  
+**平行部署**  
 如果您有超過 5 萬個物件，則建議使用平行部署。 此部署可避免您的使用者經歷任何作業延遲。 Azure AD Connect 安裝會嘗試估計升級的停機；但是，如果您過去曾升級 DirSync，則您自己的經驗可能就是最佳指南。
 
 ### <a name="supported-dirsync-configurations-to-be-upgraded"></a>要升級的支援 DirSync 組態
@@ -160,9 +160,9 @@ DirSync 用於服務帳戶的密碼無法擷取且不會移轉。 這些密碼�
    * 用來連接到 SQL Server 的服務帳戶 (如果您的 SQL Server 資料庫位於遠端，則這個帳戶必須是網域服務帳戶)。
      您可以在這個畫面上看到下列選項：  
      ![輸入您的 Azure AD 認證](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
-7. 按 [下一步]****。
+7. 按 [下一步]  。
 8. 在 [準備好設定]**** 頁面上，保持核取 [設定一完成，即開始同步處理程序]****。 伺服器現在處於[預備模式](how-to-connect-sync-staging-server.md)，讓變更不會匯出至 Azure AD。
-9. 按一下 **[安裝]**。
+9. 按一下 [Install]  。
 10. 安裝完成之後，請先登出 Windows 再重新登入，才能使用 Synchronization Service Manager、同步化規則編輯器，或嘗試任何其他組態變更。
 
 > [!NOTE]
@@ -171,7 +171,7 @@ DirSync 用於服務帳戶的密碼無法擷取且不會移轉。 這些密碼�
 ### <a name="verify-that-azure-ad-connect-is-ready-to-begin-synchronization"></a>確認 Azure AD Connect 已準備好開始同步處理
 若要確認 Azure AD Connect 是否已準備好接收 DirSync，您必須從 [開始] 功能表的 [Azure AD Connect]**** 群組中開啟 [同步處理服務管理器]****。
 
-在應用程式中，轉到"**操作"** 選項卡。在此選項卡上，確認以下操作已完成：
+在應用程式中，移至 [**作業**] 索引標籤。在此索引標籤上，確認已完成下列作業：
 
 * 在 AD 連接器上匯入
 * 在 Azure AD 連接器上匯入
@@ -206,7 +206,7 @@ DirSync 用於服務帳戶的密碼無法擷取且不會移轉。 這些密碼�
 
 ![輸入您的 Azure AD 認證](./media/how-to-dirsync-upgrade-get-started/configurestaging.png)
 
-* 按一下"**下一步**"按鈕
+* 按 [**下一步]** 按鈕
 * 在 [確認] 頁面上按一下 [安裝] **** 按鈕。
 
 Azure AD Connect 現在是作用中的伺服器，您不可切換回使用現有的 DirSync 伺服器。

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
 ms.openlocfilehash: a4af53e035929a44f74a95b8e9897cb1dc0c6d8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "66814881"
 ---
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "66814881"
 
 ## <a name="scale-with-the-azure-cli"></a>使用 Azure CLI 進行調整
 
-[安裝 Azure CLI](/cli/azure/install-azure-cli)並登錄到 具有`az login`的 Azure 帳戶。
+[安裝 Azure CLI](/cli/azure/install-azure-cli)並使用`az login`登入 Azure 帳戶。
 
 ### <a name="see-the-current-agent-count"></a>查看目前的代理程式計數
 若要查看叢集中目前擁有的代理程式數目，請執行 `az acs show` 命令。 這會顯示叢集組態。 例如，下列命令會顯示資源群組 `myResourceGroup` 中名為 `containerservice-myACSName` 之容器服務的組態：

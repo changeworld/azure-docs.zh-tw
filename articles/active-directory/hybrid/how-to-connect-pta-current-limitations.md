@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97dc67d46b08bf5765c59806b45edd82f38720cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60347727"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory 傳遞驗證：目前的限制
@@ -34,7 +34,7 @@ ms.locfileid: "60347727"
 
 - 使用者登入網頁瀏覽器型應用程式。
 - 使用者使用傳統通訊協定 (例如 Exchange ActiveSync、EAS、SMTP、POP 及 IMAP) 來登入 Outlook 用戶端。
-- 使用者登錄到支援[現代身份驗證](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)的舊 Office 用戶端應用程式和 Office 應用程式：Office 2013 和 2016 版本。
+- 使用者登入舊版 Office 用戶端應用程式和支援[新式驗證](https://www.microsoft.com/en-us/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview)的 office 應用程式： Office 2013 和2016版本。
 - 使用者登入舊版通訊協定應用程式，例如 PowerShell 1.0 版和其他應用程式。
 - 適用於 Windows 10 裝置的 Azure AD 聯結。
 - 用於多重要素驗證的應用程式密碼。
