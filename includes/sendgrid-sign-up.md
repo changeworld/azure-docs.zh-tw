@@ -5,20 +5,20 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: gwallace
 ms.openlocfilehash: e38cecfe206f21f9189493e7ed6e8f0cadda9cd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "75463461"
 ---
-Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些 25，000 封免費每月電子郵件將讓您訪問高級報告和分析[以及所有][all APIs]API（Web、SMTP、事件、分析等）。 如需 SendGrid 所提供其他服務的相關資訊，請參閱 [SendGrid 解決方案 (英文)][SendGrid Solutions] 頁面。
+Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些25000免費的每月電子郵件可讓您存取先進的報告和分析以及[所有 api][all APIs] （WEB、SMTP、Event、Parse 等等）。 如需 SendGrid 所提供其他服務的相關資訊，請參閱 [SendGrid 解決方案 (英文)][SendGrid Solutions] 頁面。
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>註冊 SendGrid 帳戶
-1. 登錄到 Azure[門戶][Azure portal]。
-2. 在 Azure 門戶功能表或主頁中，選擇 **"創建資源**"。
+1. 登入 [Azure 入口網站][Azure portal]。
+2. 在 [Azure 入口網站] 功能表或 [首頁] 頁面上，選取 [**建立資源**]。
 
     ![command-bar-new][command-bar-new]
-3. 搜索並選擇 **"發送網格**"。
+3. 搜尋並選取 [ **SendGrid**]。
 
     ![sendgrid-store][sendgrid-store]
 4. 完成註冊表單，然後選取 [建立]****。
@@ -26,7 +26,7 @@ Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些 25�
     ![sendgrid-create][sendgrid-create]
 5. 在您的 Azure 設定中輸入可識別 SendGrid 服務的**名稱**。 名稱的長度必須介於 1 到 100 個字元之間，而且只能包含英數字元、連字號、句點和底線。 此名稱在已訂用的 Azure 市集項目清單中必須是唯一的。
 6. 輸入並確認您的**密碼**。
-7. 選擇您的**訂閱**。
+7. 選擇您的**訂**用帳戶。
 8. 建立新的**資源群組**或使用現有的資源群組。
 9. 在 [定價層]**** 區段中，選取您想要註冊的 SendGrid 方案。
 
@@ -34,11 +34,11 @@ Azure 客戶每月可以解除鎖定 25,000 封免費電子郵件。 這些 25�
 10. 輸入**促銷代碼** (如果有的話)。
 11. 輸入**連絡人資訊**。
 12. 檢閱並接受**法律條款**。
-13. 確認購買後，您將看到 **"部署成功"** 快顯視窗，您將看到列出的帳戶。
+13. 確認您的購買之後，您會看到 [**部署成功**] 快顯視窗，而您會看到您的帳戶已列出。
 
     ![all-resources][all-resources]
 
-    當您完成購買，並按下 [管理]**** 按鈕以起始電子郵件驗證程序之後，將收到一封來自 SendGrid 的電子郵件，詢問您是否要驗證您的帳戶。 如果您沒有收到此電子郵件，或驗證您的帳戶時遇到問題，請參閱我們的常見問題解答。
+    當您完成購買，並按下 [管理]**** 按鈕以起始電子郵件驗證程序之後，將收到一封來自 SendGrid 的電子郵件，詢問您是否要驗證您的帳戶。 如果您未收到這封電子郵件，或在驗證您的帳戶時發生問題，請參閱我們的常見問題。
 
     ![manage][manage]
 

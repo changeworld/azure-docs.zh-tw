@@ -1,13 +1,13 @@
 ---
-title: 保留資源名稱錯誤
+title: 保留的資源名稱錯誤
 description: 說明當提供的資源名稱包含保留字時應如何解決錯誤。
 ms.topic: troubleshooting
 ms.date: 11/08/2017
 ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75477625"
 ---
 # <a name="resolve-reserved-resource-name-errors"></a>解決保留資源名稱的錯誤

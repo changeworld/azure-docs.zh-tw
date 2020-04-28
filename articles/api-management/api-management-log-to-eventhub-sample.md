@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure API 管理、事件中心和莫伊西亞監視 API
+title: 使用 Azure API 管理、事件中樞和 Moesif 監視 Api
 titleSuffix: Azure API Management
 description: 藉由連接「Azure API 管理」、「Azure 事件中樞」和 Moesif 來進行 HTTP 記錄和監視，示範 log-to-eventhub 原則的範例應用程式
 services: api-management
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: 4a0717bf7a284668af4808acae3050cc7f42f836
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75442532"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>利用 Azure API 管理、事件中樞與 Moesif 監視您的 API
@@ -294,7 +294,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` 利用[適用於 Moesif 的 C# API 程式庫](https://www.moesif.com/docs/api?csharp#events)，此程式庫可讓您輕鬆將 HTTP 事件資料推送到其服務。 為了將 HTTP 資料發送到 Moesif 收集器 API，您需要一個帳戶和一個應用程式 ID。通過在[Moesif的網站上](https://www.moesif.com)創建一個帳戶，然後轉到_右上角的功能表_ -> _應用程式設定_，你會得到一個Moesif應用程式ID。
+`MoesifHttpMessageProcessor` 利用[適用於 Moesif 的 C# API 程式庫](https://www.moesif.com/docs/api?csharp#events)，此程式庫可讓您輕鬆將 HTTP 事件資料推送到其服務。 若要將 HTTP 資料傳送至 Moesif 收集器 API，您需要一個帳戶和一個應用程式識別碼。您可以在[Moesif 的網站](https://www.moesif.com)上建立帳戶，然後移至_右上方功能表_ -> _應用程式設定_，以取得 Moesif 應用程式識別碼。
 
 ## <a name="complete-sample"></a>完整範例
 範例的[原始程式碼](https://github.com/dgilling/ApimEventProcessor)和測試位於 GitHub 上。 您需要 [API 管理服務](get-started-create-service-instance.md)、[已連線的事件中樞](api-management-howto-log-event-hubs.md)及[儲存體帳戶](../storage/common/storage-create-storage-account.md)，才能自行執行此範例。   
@@ -305,7 +305,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 
 ![示範將要求轉送到 Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 Azure API 管理服務提供了一個理想位置，可供擷取您的 API 的雙向 HTTP 流量。 Azure 事件中樞是一個可高度擴充、低成本的解決方案，用來擷取該流量並將它饋送到次要處理系統中，以便進行記錄、監視和其他複雜的分析。 連線到第三方監視系統 (像是 Moesif) 就像數十行程式碼一樣簡單。
 
 ## <a name="next-steps"></a>後續步驟

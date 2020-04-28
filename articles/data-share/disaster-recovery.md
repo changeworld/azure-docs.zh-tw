@@ -1,35 +1,35 @@
 ---
-title: Azure 資料共用的災害復原
-description: Azure 資料共用的災害復原
+title: Azure 資料共用的嚴重損壞修復
+description: Azure 資料共用的嚴重損壞修復
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.openlocfilehash: a736e3ddfcf785f9ce27140eed58374a0732c1f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75483176"
 ---
-# <a name="disaster-recovery-for-azure-data-share"></a>Azure 資料共用的災害復原
+# <a name="disaster-recovery-for-azure-data-share"></a>Azure 資料共用的嚴重損壞修復
 
-在本文中，我們將介紹如何為 Azure 資料共用配置災害復原環境。 Azure 資料中心中斷很少發生，但可以持續幾分鐘到幾小時。 資料中心中斷可能導致依賴于資料供應商共用的資料的環境中斷。 通過按照本文中詳述的步驟，資料提供程式可以繼續與其資料消費者共用資料，在託管資料共用的主區域的資料中心中斷時。 
+在本文中，我們將逐步解說如何設定 Azure 資料共用的嚴重損壞修復環境。 Azure 資料中心中斷很罕見，但可能會從數分鐘到數小時。 資料中心中斷可能會對依賴資料提供者所共用之資料的環境造成中斷。 依照這篇文章中所述的步驟進行，資料提供者可以在裝載資料共用的主要區域發生資料中心中斷的情況下，繼續與資料取用者共用資料。 
 
-## <a name="achieving-business-continuity-for-azure-data-share"></a>實現 Azure 資料共用的業務連續性
+## <a name="achieving-business-continuity-for-azure-data-share"></a>達到 Azure 資料共用的商務持續性
 
-為了準備資料中心中斷，資料提供程式可以在次要區域中預配資料共用環境。 可以採取一些措施，確保在發生資料中心中斷時順利容錯移轉。 
+若要針對資料中心中斷進行準備，資料提供者可以在次要區域中布建資料共用環境。 您可以採取一些措施，以確保發生資料中心中斷的情況下，會順利進行容錯移轉。 
 
-資料提供程式可以在其他區域中預配輔助 Azure 資料共用資源。 可以配置這些資料共用資源，以包括主資料共用環境中存在的資料集。 在配置 DR 環境時，資料消費者可以添加到資料共用中，或者在以後的時間點（即 作為手動容錯移轉步驟的一部分）。
+資料提供者可在其他區域中布建次要 Azure 資料共用資源。 這些資料共用資源可以設定為包含存在於主要資料共用環境中的資料集。 設定 DR 環境時，可以將資料取用者新增至資料共用，或在稍後的時間點新增（亦即 做為手動容錯移轉步驟的一部分）。
 
-如果資料消費者在為 DR 目的預配的輔助環境中具有活動共用訂閱，則可以在容錯移轉時啟用快照計畫。 如果資料消費者不想為 DR 目的訂閱次要區域，則可以在稍後時間點邀請他們加入輔助資料共用。 
+如果資料取用者在為 DR 目的而布建的次要環境中有作用中的共用訂用帳戶，則可以在容錯移轉過程中啟用快照集排程。 如果資料取用者不想訂閱次要區域以進行 DR，可以在稍後的時間點邀請他們進入次要資料共用。 
 
-資料消費者可以具有為 DR 目的處於空閒狀態的活動共用訂閱，或者資料提供程式可以在以後的時間點將其添加為手動容錯移轉過程的一部分。 
+資料取用者可以有作用中的共用訂用帳戶，以供 DR 之用，或者資料提供者可以在稍後的時間點將它們新增為手動容錯移轉程式的一部分。 
 
 ## <a name="related-information"></a>相關資訊
 
-- [業務連續性和災害復原](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
+- [商務持續性和嚴重損壞修復](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
 - [在您的 BCDR 策略中加入高可用性](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/build-high-availability-into-your-bcdr-strategy)
 
 ## <a name="next-steps"></a>後續步驟

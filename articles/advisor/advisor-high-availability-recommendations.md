@@ -4,10 +4,10 @@ description: 使用 Azure 建議程式來改善 Azure 部署的高可用性。
 ms.topic: article
 ms.date: 01/29/2019
 ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75443099"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>利用 Azure Advisor 改善應用程式的可用性
@@ -59,38 +59,38 @@ Azure Advisor 可協助您確保和改善業務關鍵應用程式的持續性。
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>將您的 VPN 閘道設定為主動-主動以得到連線復原能力
 
-在主動-主動配置中，VPN 閘道的兩個實例都將建立 S2S VPN 隧道到本地 VPN 設備。 當一個閘道器執行個體發生計劃性維護事件或非計劃性事件時，系統會自動將流量切換到另一個主動 IPsec 通道。 Azure Advisor 將識別未設定為主動-主動的 VPN 閘道，並建議您設定它們以獲得高可用性。
+在主動-主動設定中，VPN 閘道的兩個實例都會建立 S2S VPN 通道給您的內部部署 VPN 裝置。 當一個閘道器執行個體發生計劃性維護事件或非計劃性事件時，系統會自動將流量切換到另一個主動 IPsec 通道。 Azure Advisor 將識別未設定為主動-主動的 VPN 閘道，並建議您設定它們以獲得高可用性。
 
-## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>使用生產 VPN 閘道運行生產工作負載
+## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>使用生產 VPN 閘道來執行您的生產工作負載
 
-Azure 顧問將檢查任何作為基本 SKU 的 VPN 閘道，並建議您改用生產 SKU。 基本 SKU 專為開發和測試目的而設計。 生產 SKU 提供數量更高的隧道、BGP 支援、主動-主動配置選項、自訂 Ipsec/IKE 策略以及更高的穩定性和可用性。
+Azure Advisor 會檢查是否為基本 SKU 的任何 VPN 閘道，並建議您改為使用生產 SKU。 基本 SKU 是針對開發和測試目的而設計的。 生產 Sku 提供更多的通道、BGP 支援、主動-主動設定選項、自訂 Ipsec/IKE 原則，以及更高的穩定性和可用性。
 
-## <a name="repair-invalid-log-alert-rules"></a>修復不正確日誌警報規則
+## <a name="repair-invalid-log-alert-rules"></a>修復不正確記錄警示規則
 
-Azure Advisor 將檢測在其條件部分中指定的無效查詢的警報規則。 記錄警示規則會在 Azure 監視器中建立，並可用來以指定間隔執行分析查詢。 查詢的結果會決定是否需要觸發警示。 隨著時間過去，分析查詢可能會因為所參照的資源、資料表或命令有所變更而變得無效。 Advisor 將建議您更正警報規則中的查詢，以防止其自動禁用，並確保監視 Azure 中資源的覆蓋範圍。 [瞭解有關故障排除警報規則的更多](https://aka.ms/aa_logalerts_queryrepair)
+Azure Advisor 將會偵測到其 [條件] 區段中指定了無效查詢的警示規則。 記錄警示規則會在 Azure 監視器中建立，並可用來以指定間隔執行分析查詢。 查詢的結果會決定是否需要觸發警示。 隨著時間過去，分析查詢可能會因為所參照的資源、資料表或命令有所變更而變得無效。 Advisor 會建議您更正警示規則中的查詢，以防止它自動停用，並確保您在 Azure 中的資源有涵蓋範圍。 [深入瞭解警示規則疑難排解](https://aka.ms/aa_logalerts_queryrepair)
 
-## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>在 Cosmos DB 集合上配置一致的索引模式
+## <a name="configure-consistent-indexing-mode-on-your-cosmos-db-collection"></a>在您的 Cosmos DB 集合上設定一致的編制索引模式
 
-Azure Cosmos DB 容器配置了延遲索引模式可能會影響查詢結果的新鮮度。 顧問將檢測以這種方式配置的容器，並建議切換到一致模式。 [瞭解有關 Cosmos DB 中索引策略的更多詳細資訊](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
+使用延遲索引編制模式設定的 Azure Cosmos DB 容器可能會影響查詢結果的有效性。 Advisor 會偵測到以這種方式設定的容器，並建議切換至一致的模式。 [深入瞭解 Cosmos DB 中的索引編制原則](https://aka.ms/cosmosdb/how-to-manage-indexing-policy)
 
 ## <a name="configure-your-azure-cosmos-db-containers-with-a-partition-key"></a>使用分割區索引鍵來設定 Azure Cosmos DB 容器
 
-Azure 顧問將標識 Azure Cosmos DB 正在接近其預配存儲配額的非分區集合。 它將建議將這些集合遷移到具有分區金鑰定義的新集合，以便服務可以自動將其橫向擴展。 [瞭解有關選擇分區鍵的更多詳細資訊](https://aka.ms/cosmosdb/choose-partitionkey)
+Azure Advisor 將識別已達到其布建儲存體配額 Azure Cosmos DB 非分割的集合。 建議您將這些集合遷移至具有資料分割索引鍵定義的新集合，讓服務可以自動相應放大。 [深入瞭解如何選擇分割區索引鍵](https://aka.ms/cosmosdb/choose-partitionkey)
 
 ## <a name="upgrade-your-azure-cosmos-db-net-sdk-to-the-latest-version-from-nuget"></a>從 Nuget 將 Azure Cosmos DB .NET SDK 升級為最新版本
 
-Azure Advisor 將標識使用舊版本的 .NET SDK 的 Azure Cosmos DB 帳戶，並建議從 Nuget 升級到最新版本，以獲得最新的修復、性能改進和新功能功能。 [瞭解有關宇宙 DB .NET SDK 的更多](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor 將會識別使用舊版 .NET SDK 的 Azure Cosmos DB 帳戶，並建議從 Nuget 升級至最新版本，以取得最新的修正程式、效能改進和新的功能功能。 [深入瞭解 Cosmos DB .NET SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>從 Maven 將 Azure Cosmos DB Java SDK 升級為最新版本
 
-Azure Advisor 將標識使用舊版本的 JAVA SDK 的 Azure Cosmos DB 帳戶，並建議從 Maven 升級到最新版本，以進行最新修復、性能改進和新功能。 [瞭解有關宇宙 DB JAVA SDK 的更多](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+Azure Advisor 會識別使用舊版 JAVA SDK 的 Azure Cosmos DB 帳戶，並建議您從 Maven 升級至最新版本，以取得最新的修正程式、效能改進和新的功能功能。 [深入瞭解 Cosmos DB JAVA SDK](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>從 Maven 將 Azure Cosmos DB Spark 連接器升級為最新版本
 
-Azure Advisor 將標識使用舊版本的 Cosmos DB Spark 連接器的 Azure Cosmos DB 帳戶，並建議從 Maven 升級到最新版本，以進行最新修復、性能改進和新功能功能。 [瞭解有關宇宙 DB 火花連接器的更多](https://aka.ms/cosmosdb/spark-connector)
+Azure Advisor 將會識別使用舊版 Cosmos DB Spark 連接器的 Azure Cosmos DB 帳戶，並建議您從 Maven 升級至最新版本，以取得最新的修正程式、效能改進和新的功能功能。 [深入瞭解 Cosmos DB Spark 連接器](https://aka.ms/cosmosdb/spark-connector)
 
 ## <a name="enable-virtual-machine-replication"></a>啟用虛擬機器複寫
-未將複製啟用到另一個區域的虛擬機器無法抵禦區域中斷。 複製虛擬機器可減少 Azure 區域中斷期間的任何不利影響。 Advisor 將檢測未啟用複製的 VM，並建議啟用複製，以便在發生中斷時，您可以在遠端 Azure 區域中快速啟動虛擬機器。 [瞭解有關虛擬機器複製的更多](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
+未啟用複寫至另一個區域的虛擬機器，不會因為區域中斷而有彈性。 複寫虛擬機器可降低在 Azure 區域中斷期間對任何嚴重的業務影響。 Advisor 會偵測到未啟用複寫功能的 Vm，並建議啟用複寫，如此一來，萬一發生中斷時，您可以快速地在遠端 Azure 區域中啟動您的虛擬機器。 [深入瞭解虛擬機器複寫](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何存取建議程式中的高可用性建議
 
@@ -106,4 +106,4 @@ Azure Advisor 將標識使用舊版本的 Cosmos DB Spark 連接器的 Azure Cos
 * [Advisor 成本建議](advisor-cost-recommendations.md)
 * [建議程式效能建議](advisor-performance-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)
-* [顧問卓越運營建議](advisor-operational-excellence-recommendations.md)
+* [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)

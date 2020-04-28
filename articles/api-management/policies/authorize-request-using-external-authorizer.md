@@ -1,5 +1,5 @@
 ---
-title: 示例 API 管理原則 - 使用外部授權程式授權請求
+title: 範例 API 管理原則-使用外部授權者授權要求
 titleSuffix: Azure API Management
 description: Azure API 管理原則範例 - 示範如何使用外部授權者封裝自訂或傳統驗證/授權邏輯來授權要求。
 services: api-management
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/06/2018
 ms.author: apimpm
 ms.openlocfilehash: 99bf1068042eb7ab0c43e2a683ca7116d2e426f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75442487"
 ---
 # <a name="authorize-requests-using-external-authorizer"></a>使用外部授權者授權要求

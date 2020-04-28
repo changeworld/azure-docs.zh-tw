@@ -1,15 +1,15 @@
 ---
 title: RequestDisallowedByPolicy 錯誤
-description: 描述使用 Azure 資源管理器部署資源時請求禁止 By 策略錯誤的原因。
+description: 描述使用 Azure Resource Manager 部署資源時，RequestDisallowedByPolicy 錯誤的原因。
 author: genlin
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 41581ba48da2f2e717c5abf2a749f8fd2b86ac06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75477664"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Azure 資源原則產生的 RequestDisallowedByPolicy 錯誤
@@ -59,4 +59,4 @@ az policy definition show --name regionPolicyAssignment
 如需詳細資訊，請參閱下列文章：
 
 - [什麼是 Azure 原則？](../../governance/policy/overview.md)
-- [創建和管理原則以強制實施合規性](../../governance/policy/tutorials/create-and-manage.md)
+- [建立和管理原則以強制執行合規性](../../governance/policy/tutorials/create-and-manage.md)

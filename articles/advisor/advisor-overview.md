@@ -4,10 +4,10 @@ description: 使用 Azure 建議程式將 Azure 部署最佳化。
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75443085"
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure 建議程式簡介
@@ -30,7 +30,7 @@ Advisor 儀表板會顯示您所有訂用帳戶的個人化建議。  您可以�
 * **安全性**偵測可能導致安全性漏洞的威脅和弱點。 如需詳細資訊，請參閱[建議程式安全性建議](advisor-security-recommendations.md)。
 * **效能**提升應用程式的速度。 如需詳細資訊，請參閱[建議程式效能建議](advisor-performance-recommendations.md)。
 * **成本**：最佳化並降低整體 Azure 費用。 如需詳細資訊，請參閱[建議程式成本建議](advisor-cost-recommendations.md)。
-* **卓越運營**：説明您實現流程和工作流效率、資源可管理性和部署最佳實踐。 . 有關詳細資訊，請參閱[顧問卓越運營建議](advisor-operational-excellence-recommendations.md)。
+* **卓越操作**：協助您達成流程和工作流程效率、資源管理能力和部署最佳作法。 . 如需詳細資訊，請參閱[Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)。
 
   ![建議程式建議類型](./media/advisor-overview/advisor-dashboard.png)
 
@@ -55,9 +55,9 @@ Advisor 儀表板會顯示您所有訂用帳戶的個人化建議。  您可以�
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>建議程式可提供哪些資源的建議？
 
-Advisor 提供應用程式閘道、應用服務、可用性集、Azure 緩存、Azure 資料工廠、MySQL Azure 資料庫、PostgreSQL Azure 資料庫、MariaDB Azure 資料庫、Azure ExpressRoute、Azure 宇宙資料庫、Azure 公共資料庫的建議IP 位址、SQL 資料倉儲、SQL 伺服器、存儲帳戶、流量管理器設定檔和虛擬機器。
+Advisor 會提供應用程式閘道、應用程式服務、可用性設定組、Azure 快取、Azure Data Factory、適用於 MySQL 的 Azure 資料庫、適用於 PostgreSQL 的 Azure 資料庫、適用於 MariaDB 的 Azure 資料庫、Azure ExpressRoute、Azure Cosmos DB、Azure 公用 IP 位址、SQL 資料倉儲、SQL server、儲存體帳戶、流量管理員設定檔和虛擬機器的建議。
 
-Azure 顧問還包括 Azure[安全中心](https://docs.microsoft.com/azure/security-center/security-center-recommendations)的建議，其中可能包括有關其他資源類型的建議。
+Azure Advisor 也包含來自[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-recommendations)的建議，其中可能包括其他資源類型的建議。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>是否可以延期或解除建議？
 
