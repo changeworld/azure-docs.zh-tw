@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 530092dfabacb0b07f4002a82078dd3535cd7e8f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fcb005e39f89298b35bf0f3a0ad1e19601ae4d13
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76275260"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82166135"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>(已淘汰) 使用 Datadog 監視 Azure Container Service DC/OS 叢集
 
@@ -20,8 +20,8 @@ ms.locfileid: "76275260"
 
 本文中，我們會將 Datadog 代理程式部署到 Azure 容器服務叢集中的所有代理程式節點。 您將需要 Datadog 帳戶以進行這項設定。 
 
-## <a name="prerequisites"></a>Prerequisites
-[部署](container-service-deployment.md)和[連接](../container-service-connect.md) Azure Container Service 所設定的叢集。 瀏覽 [Marathon UI](container-service-mesos-marathon-ui.md)。 轉到[https://datadoghq.com](https://datadoghq.com)設置 Datadog 帳戶。 
+## <a name="prerequisites"></a>先決條件
+[部署](container-service-deployment.md)和[連接](../container-service-connect.md) Azure Container Service 所設定的叢集。 瀏覽 [Marathon UI](container-service-mesos-marathon-ui.md)。 移至[https://datadoghq.com](https://datadoghq.com)以設定 Datadog 帳戶。 
 
 ## <a name="datadog"></a>Datadog
 Datadog 是一項監視服務，會從 Azure 容器服務叢集內的容器收集監視資料。 Datadog 有 Docker 整合儀表板，可供您查看容器內的特定度量。 從容器收集到的度量會依 CPU、記憶體、網路和 I/O 來加以整理。 Datadog 會將度量分割成容器和映像。 以下是 CPU 使用量之 UI 樣貌的範例。
@@ -31,7 +31,7 @@ Datadog 是一項監視服務，會從 Azure 容器服務叢集內的容器收�
 ## <a name="configure-a-datadog-deployment-with-marathon"></a>使用 Marathon 設定 Datadog 部署
 這些步驟將說明如何使用 Marathon 設定並將 Datadog 應用程式部署到您的叢集。 
 
-通過[http://localhost:80/](http://localhost:80/)訪問您的 DC/OS UI。 在進入 DC/OS UI 後，瀏覽至位於左下方的 [Universe]，然後搜尋「Datadog」並按一下 [安裝]。
+透過 `http://localhost:80/` 存取 DC/OS UI。 在進入 DC/OS UI 後，瀏覽至位於左下方的 [Universe]，然後搜尋「Datadog」並按一下 [安裝]。
 
 ![DC/OS Universe 內的 Datadog 封裝](./media/container-service-monitoring/datadog1.png)
 

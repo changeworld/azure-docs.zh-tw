@@ -7,12 +7,12 @@ ms.date: 12/4/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: 9cfedd322db721156584844e949724ab2d104968
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 013281db2821c99f6942edd1322f4978e100c144
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78199796"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81729859"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入門：適用於 Java 的 Azure 佇列儲存體用戶端程式庫 v12
 
@@ -366,6 +366,6 @@ Done
 如需教學課程、範例、快速入門及其他文件，請瀏覽：
 
 > [!div class="nextstepaction"]
-> [適用於 Java 雲端開發人員的 Azure](https://docs.microsoft.com/azure/java/)
+> [適用於 Java 雲端開發人員的 Azure](https://docs.microsoft.com/azure/developer/java/)
 
 * 若要查看更多 Azure 佇列儲存體範例應用程式，請繼續 [Azure 佇列儲存體 SDK v12 Java 用戶端程式庫範例](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)。

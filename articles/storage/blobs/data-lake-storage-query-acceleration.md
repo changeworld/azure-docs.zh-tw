@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 04/21/2020
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 70a087e106e632d697052461928f3e1123a06b1b
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.openlocfilehash: 42eec4a0796a7f07c7e7d1c35571d9d4ddcf69d7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82137530"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176697"
 ---
 # <a name="azure-data-lake-storage-query-acceleration-preview"></a>Azure Data Lake Storage 查詢加速（預覽）
 
@@ -22,7 +22,7 @@ ms.locfileid: "82137530"
 > [!NOTE]
 > 查詢加速功能處於公開預覽狀態，並可在加拿大中部和法國中部區域中取得。 若要查看限制，請參閱[已知問題](data-lake-storage-known-issues.md)一文。 若要註冊預覽，請參閱[此表單](https://aka.ms/adls/qa-preview-signup)。  
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 查詢加速接受篩選述*詞和資料*行*預測*，讓應用程式可以在從磁片讀取資料時篩選資料列和資料行。 只有符合述詞條件的資料會透過網路傳送至應用程式。 這可減少網路延遲和計算成本。  
 
@@ -71,7 +71,7 @@ ms.locfileid: "82137530"
 
 ## <a name="pricing"></a>定價
 
-由於 Azure Data Lake Storage 服務內的計算負載增加，使用查詢加速的計價模式與一般的 Azure Data Lake Storage 交易模型不同。 查詢加速會收取掃描資料量的成本，以及傳回給呼叫者的資料量成本。
+由於 Azure Data Lake Storage 服務內的計算負載增加，使用查詢加速的計價模式與一般的 Azure Data Lake Storage 交易模型不同。 查詢加速會收取掃描資料量的成本，以及傳回給呼叫者的資料量成本。 如需詳細資訊，請參閱[Azure Data Lake Storage Gen2 定價](https://azure.microsoft.com/pricing/details/storage/data-lake/)。
 
 雖然計費模型的變更，但查詢加速的計價模式是為了降低工作負載的擁有權總成本而設計，因為降低了成本更高的 VM 成本。
 

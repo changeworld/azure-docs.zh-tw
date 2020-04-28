@@ -1,6 +1,6 @@
 ---
-title: 設置實驗室,使用 Azure 實驗室服務教授大數據分析 |微軟文件
-description: 瞭解如何使用霍頓工程數據平臺 (HDP) 的 Docker 部署設置實驗室來教授大數據分析。
+title: 使用 Azure 實驗室服務設定實驗室來教授 big data analytics |Microsoft Docs
+description: 瞭解如何使用 Hortonworks Data Platform （HDP）的 Docker 部署，設定實驗室來教授 big data analytics。
 services: lab-services
 documentationcenter: na
 author: nicolela
@@ -14,123 +14,123 @@ ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
 ms.openlocfilehash: c499b7a0f1cd16bf57fef21742b01bda71249916
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81538774"
 ---
-# <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>使用 Docker 部署霍頓工程數據平臺,為大數據分析設置實驗室
+# <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>使用 HortonWorks 資料平臺的 Docker 部署，將實驗室設定為海量資料分析
 
-本文介紹如何設置實驗室來教授大數據分析類。  通過此類課程,學生學習如何處理大量數據,並應用機器和統計學習演演演算法來獲取數據見解。  學生的關鍵目標是學習使用數據分析工具,例如[Apache Hadoop 的開源套件](https://hadoop.apache.org/),它提供了用於存儲、管理和處理大數據的工具。
+本文說明如何設定實驗室來教授 big data analytics 類別。  透過這種類型的類別，學生將瞭解如何處理大量資料，並套用機器和統計學習演算法來衍生資料見解。  學生的主要目標是瞭解如何使用資料分析工具，例如[Apache Hadoop 的開放原始碼軟體套件](https://hadoop.apache.org/)，其中提供儲存、管理及處理 big data 的工具。
 
-在這個實驗室中,學生將使用[由Cloudera](https://www.cloudera.com/)提供的廣受歡迎的商業版本Hadoop,稱為[霍頓工程數據平臺(HDP)。](https://www.cloudera.com/products/hdp.html)  具體來說,學生將使用[HDP 沙箱 3.0.1,](https://www.cloudera.com/tutorials/getting-started-with-hdp-sandbox/1.html)這是一個簡化、易於使用的平臺版本,是免費的,用於學習和實驗。  儘管此類在部署 HDP 沙箱時可以使用 Windows 或 Linux 虛擬機 (VM),但本文將介紹如何使用 Windows。
+在此實驗室中，學生會使用[Cloudera](https://www.cloudera.com/)所提供的熱門商業版本 Hadoop，稱為[Hortonworks DATA Platform （HDP）](https://www.cloudera.com/products/hdp.html)。  具體來說，學生會使用[HDP 沙箱 3.0.1](https://www.cloudera.com/tutorials/getting-started-with-hdp-sandbox/1.html) ，這是一個簡單、容易使用的平臺版本，免費且可供學習和實驗之用。  雖然此類別可能會使用已部署 HDP 沙箱的 Windows 或 Linux 虛擬機器（VM），本文將說明如何使用 Windows。
 
-本實驗的另一個有趣的方面是,我們將使用[Docker](https://www.docker.com/)容器在實驗室 VM 上部署 HDP 沙箱。  每個 Docker 容器都為軟體應用程式提供了自己的隔離環境,以便內部運行。  從概念上講,Docker 容器類似於嵌套 VM,可用於根據[Docker Hub](https://www.docker.com/products/docker-hub)上提供的容器映射輕鬆部署和運行各種軟體應用程式。  Cloudera 用於 HDP 沙箱的部署文稿會自動從 Docker 集線器中拉出[HDP 沙箱 3.0.1 Docker 映像](https://hub.docker.com/r/hortonworks/sandbox-hdp)並運行兩個 Docker 容器:
+此實驗室的另一個有趣層面是，我們將使用[Docker](https://www.docker.com/)容器在實驗室 vm 上部署 HDP 沙箱。  每個 Docker 容器都會提供自己的隔離環境，讓軟體應用程式在內部執行。  就概念而言，Docker 容器就像是嵌套 Vm，可以用來根據[Docker Hub](https://www.docker.com/products/docker-hub)上提供的容器映射，輕鬆地部署和執行各種軟體應用程式。  適用于 HDP 沙箱的 Cloudera 部署腳本會自動從 Docker Hub 提取[HDP 沙箱 3.0.1 Docker 映射](https://hub.docker.com/r/hortonworks/sandbox-hdp)，並執行兩個 docker 容器：
   - 沙箱-hdp
-  - 沙箱代理
+  - 沙箱-proxy
 
 ## <a name="lab-configuration"></a>實驗室組態
 
-要設置此實驗,需要 Azure 訂閱和實驗室帳戶才能開始。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 獲取 Azure 訂閱後,可以在 Azure 實驗室服務中創建新的實驗室帳戶。 有關創建新實驗室帳戶的詳細資訊,請參閱[設置實驗室帳戶的教程](tutorial-setup-lab-account.md)。  您還可以使用現有的實驗室帳戶。
+若要設定此實驗室，您需要 Azure 訂用帳戶和實驗室帳戶，才能開始使用。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。 取得 Azure 訂用帳戶之後，您可以在 Azure 實驗室服務中建立新的實驗室帳戶。 如需建立新實驗室帳戶的詳細資訊，請參閱[設定實驗室帳戶的教學](tutorial-setup-lab-account.md)課程。  您也可以使用現有的實驗室帳戶。
 
 ### <a name="lab-account-settings"></a>實驗室帳戶設定
 
-為實驗室帳戶啟用下表中描述的設置。 有關如何啟用市場映像的詳細資訊,請參閱[指定可供實驗室建立者使用的市場映像](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)。
+針對實驗室帳戶啟用下表所述的設定。 如需如何啟用 marketplace 映射的詳細資訊，請參閱[指定可供實驗室建立者使用的 marketplace 映射](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)。
 
 | 實驗室帳戶設定 | Instructions |
 | ------------------- | ------------ |
-|市場映射| 啟用 Windows 10 專業版映射,以便在實驗室帳戶中使用。|
+|Marketplace 映射| 啟用 Windows 10 Pro 映射以在實驗室帳戶中使用。|
 
 ### <a name="lab-settings"></a>實驗室設定
 
-設置教室實驗室時,請使用下表中的設置。  有關如何創建教室實驗室的詳細資訊,請參閱[設置教室實驗室教程](tutorial-setup-classroom-lab.md)。
+設定教室實驗室時，請使用下表中的設定。  如需如何建立教室實驗室的詳細資訊，請參閱[設定教室實驗室教學課程](tutorial-setup-classroom-lab.md)。
 
-| 實驗室設定 | 值/說明 |
+| 實驗室設定 | 值/指示 |
 | ------------ | ------------------ |
-|虛擬機器大小| 中等(嵌套虛擬化)。 此 VM 大小最適合關係資料庫、記憶體緩存和分析。  此大小還支援嵌套虛擬化。|  
+|虛擬機器大小| 中（嵌套虛擬化）。 此 VM 大小最適合用於關係資料庫、記憶體內部快取及分析。  此大小也支援嵌套虛擬化。|  
 |虛擬機器映像| Windows 10 Pro|
 
 > [!NOTE] 
-> 我們需要使用媒體(嵌套虛擬化),因為使用 Docker 部署 HDP 沙箱需要:
->   - 具有嵌入虛擬化 Windows Hyper-V
+> 我們需要使用 Medium （嵌套虛擬化），因為使用 Docker 部署 HDP 沙箱需要：
+>   - 具有嵌套虛擬化的 Windows Hyper-v
 >   - 至少 10 GB 的 RAM
 
-## <a name="template-machine-configuration"></a>樣本機設定
+## <a name="template-machine-configuration"></a>範本機器設定
 
-要設置範本計算機,我們將:
+為了設定範本機器，我們將：
 - 安裝 Docker
 - 部署 HDP 沙箱
-- 使用 PowerShell 與 Windows 工作計劃程式自動啟動 Docker 容器
+- 使用 PowerShell 和 Windows 工作排程器自動啟動 Docker 容器
 
 ### <a name="install-docker"></a>安裝 Docker
 
-在您區塊的步驟基於[Cloudera 使用 Docker 容器進行部署的說明](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html)。 
+本節中的步驟是以[使用 Docker 容器進行部署的 Cloudera 指示為](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html)基礎。 
 
-要使用 Docker 容器,必須在樣本 VM 安裝 Docker 桌面:
+若要使用 Docker 容器，您必須先在範本 VM 上安裝 Docker Desktop：
 
-1. 按照[「先決條件」部分](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites)中的步驟安裝 Windows 的[Docker。](https://docs.docker.com/docker-for-windows/install/) 
+1. 請遵循[必要條件一節](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites)中的步驟來安裝[適用於 Windows 的 Docker](https://docs.docker.com/docker-for-windows/install/)。 
 
     > [!IMPORTANT] 
-    > 確保未選取**的 「使用 Windows 容器」而不是 Linux 容器**配置選項。
+    > 請確定未核取 [**使用 Windows 容器，而非 Linux 容器**] 設定選項。
 
-1. 確保**Windows 容器與超 V 功能**。
+1. 確定**Windows 容器和 hyper-v 功能**已開啟。
    ![開啟或關閉 Windows 功能](../media/class-type-big-data-analytics/windows-hyperv-features.png)
 
-1. 按照[「記憶體為 Windows」](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#memory-for-windows)部分中的步驟配置 Docker 的記憶體配置。
+1. 遵循 [ [Windows 的記憶體](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#memory-for-windows)] 區段中的步驟來設定 Docker 的記憶體配置。
 
     > [!WARNING]
-    > 如果在安裝 Docker 時無意中選取**的 「使用 Windows 容器」而不是 Linux 容器**選項,則看不到記憶體設定設定。  要解決此問題,您可以通過[按一下 Windows 系統托盤中的 Docker 圖示](https://docs.docker.com/docker-for-windows/#docker-settings-dialog)切換到使用 Linux 容器;開啟 Docker 桌面選單時,選擇 **「切換到 Linux 容器**」。
+    > 如果您在安裝 Docker 時不小心核取 [**使用 Windows 容器，而非 Linux 容器**] 選項，您將不會看到記憶體配置設定。  若要修正此問題，您可以[按一下 Windows 系統匣中的 Docker 圖示](https://docs.docker.com/docker-for-windows/#docker-settings-dialog)，切換為使用 Linux 容器;當 [Docker 桌面] 功能表開啟時，選取 [**切換至 Linux 容器**]。
  
 ### <a name="deploy-hdp-sandbox"></a>部署 HDP 沙箱
 
-在本節中,您將部署 HDP 沙箱,然後使用瀏覽器訪問 HDP 沙箱。
+在本節中，您將部署 HDP 沙箱，並使用瀏覽器來存取 HDP 沙箱。
 
-1. 請確保您已安裝本指南[「先決條件」部分](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites)中列出的[Git Bash,](https://gitforwindows.org/)因為建議完成後續步驟。
+1. 請確定您已依照指南的[必要條件一節](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html#prerequisites)中所列的方式安裝[Git Bash](https://gitforwindows.org/) ，因為這是建議用來完成後續步驟的做法。
 
-1. 使用[Cloudera 的 Docker 部署和安裝指南](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html),完成以下各節中的步驟:
+1. [針對 Docker 使用 Cloudera 的部署與安裝指南](https://www.cloudera.com/tutorials/sandbox-deployment-and-install-guide/3.html)，請完成下列各節中的步驟：
    
    -    部署 HDP 沙箱
    -    驗證 HDP 沙箱
 
     > [!WARNING] 
-    > 下載 HDP 的最新 .zip 檔時,請確保*不要*將 .zip 檔儲存在包含空白的目錄路徑中。
+    > 當您下載 HDP 的最新 .zip 檔案時，請確定您*不*會將 .zip 檔案儲存在包含空白字元的目錄路徑中。
 
     > [!NOTE] 
-    > 如果您在部署期間收到異常,指出**驅動器尚未共用**,則需要與 Docker 共用 C 驅動器,以便 HDP 的 Linux 容器可以存取本地 Windows 檔。  要解決此問題,[請按下 Windows 系統匣中的 Docker 圖示](https://docs.docker.com/docker-for-windows/#docker-settings-dialog)以打開 Docker 桌面選單並選擇 **"設定**" 。  開啟**Docker 的「設定」** 對話框時,選擇 **「資源>檔共用**」並檢查**C**驅動器。  然後,您可以重複部署 HDP 沙箱的步驟。
+    > 如果您在部署期間收到例外狀況，指出**磁片磁碟機尚未共用**，則您需要與 Docker 共用 C 磁片磁碟機，讓 HDP 的 Linux 容器可以存取本機 Windows 檔案。  若要修正此問題，請[按一下 Windows 系統匣中的 docker 圖示](https://docs.docker.com/docker-for-windows/#docker-settings-dialog)，以開啟 docker Desktop 功能表，然後選取 [**設定**]。  當**Docker 的 [設定**] 對話方塊開啟時，請選取 [**資源] >** [檔案共用]，然後檢查**C**磁片磁碟機。  接著，您可以重複步驟來部署 HDP 沙箱。
 
-1. 部署並運行 HDP 沙箱的 Docker 容器後,您可以透過啟動瀏覽器並按照 Cloudera 的說明存取環境,以打開[沙箱歡迎頁面](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page)並啟動 HDP 儀表板。
+1. 一旦部署並執行 HDP 沙箱的 Docker 容器，您就可以啟動瀏覽器，並遵循 Cloudera 的指示來開啟[沙箱歡迎頁面](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page)並啟動 HDP 儀表板，以存取環境。
 
     > [!NOTE] 
-    > 這些說明假定您首先將沙箱環境的本地 IP 位址映射到範本 VM 上的主機檔中的 sandbox-hdp.hortonworks.com。  **如果不**執行此操作映射,可以通過[http://localhost:8080](http://localhost:8080)導航到 訪問"沙盒歡迎"頁。
+    > 這些指示假設您已先將沙箱環境的本機 IP 位址對應至範本 VM 上主機檔案中的 sandbox-hdp.hortonworks.com。  如果您**未**執行此對應，可以流覽至來[http://localhost:8080](http://localhost:8080)存取沙箱歡迎頁面。
 
-### <a name="automatically-start-docker-containers-when-students-log-in"></a>學生登入時自動啟動 Docker 容器
+### <a name="automatically-start-docker-containers-when-students-log-in"></a>當學生登入時自動啟動 Docker 容器
 
-為了為學生提供易於使用的體驗,我們將使用自動使用 PowerShell 腳本:
-  - 當學生啟動並連接到其實驗室 VM 時,啟動 HDP 沙箱 Docker 容器。
-  - 啟動瀏覽器並導航到沙盒歡迎頁面。
-我們還將使用 Windows 任務計劃程式在學生登錄到其 VM 時自動運行此文本。
-要設定此設定,請按照以下步驟操作:[大數據分析腳本](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/BigDataAnalytics/)。
+為了為學生提供容易使用的體驗，我們將使用 PowerShell 腳本來自動執行下列動作：
+  - 當學生啟動並聯機至其實驗室 VM 時，啟動 HDP 沙箱 Docker 容器。
+  - 啟動瀏覽器，並導覽至沙箱歡迎使用頁面。
+當學生登入其 VM 時，我們也會使用 Windows 工作排程器自動執行此腳本。
+若要進行此設定，請遵循下列步驟： [Big Data Analytics 腳本](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/BigDataAnalytics/)。
 
-## <a name="cost-estimate"></a>成本估算
+## <a name="cost-estimate"></a>成本預估
 
-如果要估計本實驗的成本,可以使用以下示例。
+如果您想要估計此實驗室的成本，可以使用下列範例。
 
-對於有 25 名學生的班級,有 20 小時的上課時間和 10 小時的家庭作業或作業配額,實驗室的價格是:
-  - 25 名學生 = (20 + 10) 小時 = 55 個實驗室單位 = 每小時 0.01 USD = 412.50 USD
+對於25名學生的課程，其中有20小時的排程類別時間，以及10小時的家庭作業或指派配額，實驗室的價格如下：
+  - 25名學生 * （20 + 10）小時 * 55 實驗室單位 * 每小時0.01 美元 = 412.50 美元
 
-有關定價的更多詳細資訊,請參閱[Azure 實驗室服務定價](https://azure.microsoft.com/pricing/details/lab-services/)。
+如需更多有關定價的詳細資訊，請參閱[Azure 實驗室服務定價](https://azure.microsoft.com/pricing/details/lab-services/)。
 
 ## <a name="conclusion"></a>結論
 
-本文介紹了為使用 Docker 部署的 Hortonworks 數據平臺為大數據分析類創建實驗室所需的步驟。  此類類型的設置可用於類似的數據分析類。  此設定還可能適用於使用 Docker 進行部署的其他類型的類。
+本文逐步解說針對使用 Docker 部署之 Hortonworks 資料平臺的 big data 分析類別建立實驗室所需的步驟。  此類別類型的設定可用於類似的資料分析類別。  此設定可能也適用于使用 Docker 進行部署的其他類別類型。
 
 ## <a name="next-steps"></a>後續步驟
 
-後續步驟是設置任何實驗室的常見步驟。
+下一步是設定任何實驗室的常見步驟。
 
-- [建立及管理範本](how-to-create-manage-template.md)
+- [建立和管理範本](how-to-create-manage-template.md)
 - [新增使用者](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [設定配額](how-to-configure-student-usage.md#set-quotas-for-users)
-- [設定計劃](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [電子郵件註冊連結給學生](how-to-configure-student-usage.md#send-invitations-to-users)
+- [設定排程](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
+- [學生的電子郵件註冊連結](how-to-configure-student-usage.md#send-invitations-to-users)

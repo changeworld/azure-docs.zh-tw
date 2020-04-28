@@ -1,15 +1,15 @@
 ---
-author: cynthn
+author: tanmaygore
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: tanmaygore
-ms.openlocfilehash: 215057640dd08d9ea524d8f6b3bed8b03a8b5b8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: tagore
+ms.openlocfilehash: b86e0d784d26e9e483dd12e20d45189ae8bfb9bd
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77068409"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866198"
 ---
 ## <a name="migrate-iaas-resources-from-the-classic-deployment-model-to-azure-resource-manager"></a>將 IaaS 資源從傳統部署模型移轉至 Azure Resource Manager
 首先，務必了解基礎結構即服務 (IaaS) 資源上資料平面與管理平面作業之間的差異。
@@ -121,7 +121,7 @@ ms.locfileid: "77068409"
 完成驗證之後，您便可以認可移轉。 資源不會再出現於傳統部署模型中，而只有在 Resource Manager 部署模型中才能使用這些資源。 只能在新入口網站中管理已移轉的資源。
 
 > [!NOTE]
-> 這是一種等冪作業。 如果失敗，請重試此作業。 如果繼續失敗，請創建支援票證或在[Microsoft Q 上創建一](https://docs.microsoft.com/answers/index.html)個論壇&A
+> 這是一種等冪作業。 如果失敗，請重試此作業。 如果繼續失敗,請建立支援票證或在[Microsoft Q 上創建一](https://docs.microsoft.com/answers/index.html)個論壇&A
 >
 >
 

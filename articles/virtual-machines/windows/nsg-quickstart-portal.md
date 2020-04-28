@@ -1,24 +1,18 @@
 ---
-title: 使用 Azure 門戶打開 VM 的埠
-description: 了解如何在 Azure 入口網站中使用 Resource Manager 部署模型對 Windows VM 開啟連接埠 / 建立端點
-services: virtual-machines-windows
-documentationcenter: ''
+title: 使用 Azure 門戶開啟 VM 的連接埠
+description: 瞭解如何使用 Azure 門戶開啟連接埠/建立 Windows VM 終結點
 author: cynthn
-manager: gwallace
-editor: ''
-ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 130d3315b5a9a6f175bd3d67ed33a034ab5f8dda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1844236a77b688819832b3fe0bf6736beea4bfae
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75371406"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865494"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>如何使用 Azure 入口網站開啟虛擬機器的連接埠
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -31,7 +25,7 @@ ms.locfileid: "75371406"
 
 1. 搜尋並選取 VM 的資源群組，選擇 [新增]****，然後搜尋並選取 [網路安全性群組]****。
 
-2. 選取 [建立]****。
+2. 選取 [建立]  。
 
     [建立網路安全性群組]**** 視窗隨即開啟。
 
@@ -51,7 +45,7 @@ ms.locfileid: "75371406"
 
     ![新增輸入規則](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
-3. 選取 [進階]****。 
+3. 選取 [進階]  。 
 
 4. 從下拉式功能表中選擇常見的**服務**，例如 **HTTP**。 如果要以提供特定連接埠供使用者使用，您也可以選取 [自訂]****。 
 
@@ -85,5 +79,5 @@ ms.locfileid: "75371406"
 在本文中，您會建立網路安全性群組、建立允許連接埠 80 上 HTTP 流量的輸入規則，然後將該規則與子網路建立關聯。 
 
 您可以從下列文章中，找到有關建立更詳細環境的資訊︰
-- [Azure 資源管理器概述](../../azure-resource-manager/management/overview.md)
+- [Azure 資源管理員概述](../../azure-resource-manager/management/overview.md)
 - [安全性群組](../../virtual-network/security-overview.md)

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 01121612c5574544ef6985d33f56f3e334f8d37c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 8c2ef8d174e8449b88f2257074bee69c3f45c6d9
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82120648"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181934"
 ---
 # <a name="data-security-and-privacy-policies-for-google-connectors-in-azure-logic-apps"></a>Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則
 
@@ -34,13 +34,13 @@ ms.locfileid: "82120648"
 
 在此原則下，當您使用 Gmail 取用者帳戶時，您可以使用 Gmail 連接器，只搭配特定的 Google 核准服務，這可能會有所變更。 我們的工程小組會繼續使用 Google 來新增更多服務到這份清單中。 目前，當您使用 Gmail 取用者帳戶時，以下是您可以在與 Gmail 連接器相同的邏輯應用程式工作流程中使用的 Google 核准觸發程式、動作和連接器：
 
-* Logic Apps 內建觸發程式和動作：批次、控制項、資料作業、日期時間、一般檔案、液體、要求、排程、變數和 XML
+* Logic Apps 內建觸發程式和動作：批次、控制項、資料作業、日期時間、一般檔案、HTTP、液體、要求、排程、變數和 XML
 
 * Google 服務： Gmail、Google 行事曆、Google 連絡人、Google 雲端硬碟、Google 試算表和 Google Tasks
 
 * 核准的 Microsoft 服務： Dynamics 365、Excel Online、Microsoft 小組、Office 365、OneDrive 和 SharePoint Online
 
-* 客戶管理的資料來源連接器： FTP、HTTP、RSS、SFTP、SMTP 和 SQL Server
+* 客戶管理的資料來源連接器： FTP、RSS、SFTP、SMTP 和 SQL Server
 
 如需最新資訊，請參閱[Gmail 連接器的技術參考檔](https://docs.microsoft.com/connectors/gmail/)。
 
@@ -78,7 +78,7 @@ ms.locfileid: "82120648"
 
    ![提供連接資訊](./media/connectors-google-data-security-privacy-policy/authentication-type-bring-your-own.png)
 
-   | 屬性 | 值 | 說明 |
+   | 屬性 | 值 | 描述 |
    |----------|-------|-------------|
    | **驗證類型** | **攜帶您自己的應用程式** | 指定您將使用自己的用戶端應用程式進行驗證。 |
    | **用戶端識別碼** | <*用戶端識別碼*> | 來自 Google 用戶端應用程式的用戶端識別碼 |

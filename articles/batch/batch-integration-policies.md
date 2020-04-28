@@ -4,12 +4,12 @@ description: Azure 原則是 Azure 中的一項服務，可讓您用來建立、
 ms.topic: article
 ms.date: 02/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 74c087031a024b0c50d6c40057a4e2eda554be6f
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: a160de1277afea026a16f470c8f76cdc2ec1733f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116072"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184260"
 ---
 # <a name="integration-with-azure-policy"></a>與 Azure 原則整合
 
@@ -17,7 +17,7 @@ Azure 原則是 Azure 中的一項服務，可讓您用來建立、指派和管�
 
 Azure Batch 有兩個內建的延伸模組，可協助您管理原則合規性。 
 
-|**名稱**.。。|   **描述**|**效果**|  **版本**|    **來源**
+|**名稱**.。。|   **說明**|**效果**|  **版本**|    **來源**
 |----------------|----------|----------|----------------|---------------|
 |應啟用 Batch 帳戶中的診斷記錄|   稽核診斷記錄的啟用情形。 這可讓您在發生安全性事件或網路遭到損害時，重新建立活動線索以供調查之用|AuditIfNotExists, Disabled|  2.0.0|  GitHub|
 |Batch 帳戶上應設定計量警示規則| 稽核 Batch 帳戶為啟用必要計量而進行的計量警示設定|   AuditIfNotExists, Disabled| 1.0.0|  GitHub|
@@ -26,7 +26,7 @@ Azure Batch 有兩個內建的延伸模組，可協助您管理原則合規性�
 
 Batch 所需的資源包括：帳戶、計算節點、集區、作業和工作。 因此，您會使用屬性別名來存取這些資源的特定屬性。 深入瞭解[別名](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
 
-為確保您知道目前的別名，並檢查您的資源和原則，請使用適用于 Visual Studio Code 的 Azure 原則延伸模組。 它可以安裝在 Visual Studio Code 支援的所有平臺上。 這種支援包括 Windows、Linux 和 macOS。 請參閱[安裝指導方針](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode)。
+為確保您知道目前的別名，並檢查您的資源和原則，請使用 Visual Studio Code 的 Azure 原則延伸模組。 它可以安裝在 Visual Studio Code 支援的所有平臺上。 這種支援包括 Windows、Linux 和 macOS。 請參閱[安裝指導方針](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode)。
 
 
 

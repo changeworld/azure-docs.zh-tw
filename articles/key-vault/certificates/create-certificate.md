@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 21bcaf8636638153ad5e5659ef3e1bff0631d9b8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81430951"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866261"
 ---
 # <a name="certificate-creation-methods"></a>憑證建立方式
 
@@ -80,10 +80,10 @@ KV 憑證的建立是非同步流程。 此作業會建立 KV 憑證要求，並
 ## <a name="partnered-ca-providers"></a>合作 CA 提供者
 您可以手動完成憑證建立工作，也可以使用「自我」簽發者。 Key Vault 也與特定簽發者提供者合作，藉此簡化憑證的建立工作。 您可以向這些合作夥伴簽發者提供者訂購以下類型的憑證。  
 
-|提供者|憑證類型|  
-|--------------|----------------------|  
-|DigiCert|Key Vault 透過 DigiCert 提供 OV 或 EV SSL 憑證|
-|GlobalSign|Key Vault 透過 GlobalSign 提供 OV 或 EV SSL 憑證|
+|提供者|憑證類型|設定設定  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault 透過 DigiCert 提供 OV 或 EV SSL 憑證| [集成指南](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|GlobalSign|Key Vault 透過 GlobalSign 提供 OV 或 EV SSL 憑證| [集成指南](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  憑證簽發者是 Azure Key Vault (KV) 中以 CertificateIssuer 資源表示的實體。 它用來提供 KV 憑證來源相關資訊；簽發者名稱、提供者、認證和其他系統管理詳細資訊。
 

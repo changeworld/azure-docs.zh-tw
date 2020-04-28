@@ -1,25 +1,21 @@
 ---
-title: 適用于 Windows 的 Azure N 系列 GPU 驅動程式設置
+title: 適用於 Windows 的 Azure N 系列 GPU 驅動程式設定
 description: 如何針對 Azure 中執行 Windows Server 或 Windows 的 N 系列虛擬機器設定 NVIDIA GPU 驅動程式
-services: virtual-machines-windows
-author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f3950c34-9406-48ae-bcd9-c0418607b37d
+author: vikancha
+manager: jkabat
 ms.service: virtual-machines-windows
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
-ms.author: cynthn
+ms.author: vikancha
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 631266f983886e3ca34d609b425f8a71b808b39f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bc11937410bf0307a00895e0ebd1f01a58bd1b1b
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77919391"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865785"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>在執行 Windows 的 N 系列 VM 上安裝 NVIDIA GPU 驅動程式 
 
@@ -41,7 +37,7 @@ ms.locfileid: "77919391"
 
 ## <a name="verify-driver-installation"></a>確認驅動程式安裝
 
-請注意，Nvidia 控制台只能通過 GRID 驅動程式安裝進行訪問。 如果已安裝 CUDA 驅動程式，則 Nvidia 控制台將不可見。
+請注意,Nvidia 控制面板只能通過 GRID 驅動程式安裝進行訪問。 如果已安裝 CUDA 驅動程式,則 Nvidia 控制面板將不可見。
 
 您可以在 [裝置管理員] 中確認驅動程式安裝。 下列範例會顯示 Azure NC VM 上成功的 Tesla K80 卡組態。
 

@@ -1,5 +1,5 @@
 ---
-title: 微軟身份平臺和 OAuth2.0 代表流 |蔚藍
+title: Microsoft 身分識別平臺和 OAuth 2.0 代理者流程 |Azure
 description: 本文說明如何使用 HTTP 訊息，以利用 OAuth2.0 代理者流程實作服務對服務驗證。
 services: active-directory
 author: rwike77
@@ -12,43 +12,43 @@ ms.date: 1/3/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3d3e071d5f2f181f5b17e79f2f1097394d0ebaf3
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: f33350dd076d0386c7518c91b77da59c3b09d0dc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81868430"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181506"
 ---
-# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>微軟身份平臺和 OAuth 2.0 代表流
+# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 代理者流程
 
 
-OAuth2.0 代理者流程 (OBO) 的使用案例，是應用程式叫用服務/Web API，而後者又需要呼叫另一個服務/Web API。 其概念是透過要求鏈傳播委派的使用者身分識別和權限。 要使中間層服務向下游服務發出經過身份驗證的請求,它需要代表使用者從 Microsoft 標識平台保護訪問權杖。
+OAuth 2.0 代理者流程 (OBO) 可處理應用程式叫用服務/Web API，而該 API 又需要呼叫另一個服務/Web API 的使用案例。 其概念是透過要求鏈傳播委派的使用者身分識別和權限。 若要讓仲介層服務向下游服務提出已驗證的要求，它需要代表使用者保護來自 Microsoft 身分識別平臺的存取權杖。
 
-本文介紹如何直接針對應用程式中的協議進行程式設計。  如果可能,我們建議您使用受支援的 Microsoft 身份驗證庫 (MSAL) 來[獲取權杖並調用安全的 Web API。](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)  也看看[使用MSAL的範例應用程式](sample-v2-code.md)。
+本文說明如何在您的應用程式中直接針對通訊協定進行程式設計。  可能的話，建議您改用支援的 Microsoft 驗證程式庫（MSAL）來[取得權杖，並呼叫受保護的 Web api](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)。  另請參閱[使用 MSAL 的範例應用程式](sample-v2-code.md)。
 
 > [!NOTE]
 > 從 2018 年 5 月起，部分隱含流程衍生 `id_token` 無法用於 OBO 流程。 單頁應用程式 (SPA) 應該將**存取**權杖傳遞至中介層機密用戶端，才能改為執行 OBO 流程。 若要進一步了解哪些用戶端可執行 OBO 呼叫，請參閱[限制](#client-limitations)。
 
 ## <a name="protocol-diagram"></a>通訊協定圖表
 
-假設使用者已在應用程式上使用[OAuth 2.0 授權代碼授予流](v2-oauth2-auth-code-flow.md)或其他登錄流進行身份驗證。 此時，應用程式具有一個 *API A* 的存取權杖 (權杖 A)，其中包含使用者的宣告與同意存取中介層 Web API (API A)。 現在，API A 需要向下游 Web API (API B) 提出已驗證的要求。
+假設使用者已在使用[OAuth 2.0 授權碼授與流程](v2-oauth2-auth-code-flow.md)或其他登入流程的應用程式上進行驗證。 此時，應用程式有一個*適用于 API A*的存取權杖（權杖 a），其中包含使用者的宣告，並同意存取仲介層 WEB API （API A）。 現在，API A 必須向下游 Web API (API B) 提出已驗證的要求。
 
-接下來的步驟由 OBO 流程構成，並搭配下圖協助說明。
+接下來的步驟會構成 OBO 流程，我們會透過下圖的協助加以說明。
 
-![顯示 OAuth2.0 代表串流](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
+![顯示 OAuth 2.0 代理者流程](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
 1. 用戶端應用程式使用權杖 A (含 API A 的 `aud` 宣告) 向 API A 提出要求。
-1. API A 對Microsoft識別平臺令牌頒發終結點進行身份驗證,並請求令牌訪問API B。
-1. Microsoft 識別平台令牌頒發終結點驗證 API A 的認證以及權杖 A,並將 API B(令牌 B)的存取權杖頒發給 API A。
-1. 令牌 B 由 API A 在請求到 API B 的授權標頭中設置。
-1. 來自安全資源的數據由 API B 返回到 API A,並從那裡返回到用戶端。
+1. API A 會向 Microsoft 身分識別平臺權杖發行端點進行驗證，並要求權杖以存取 API B。
+1. Microsoft 身分識別平臺權杖發行端點會驗證 API A 的認證以及權杖 A，並將 API B （權杖 B）的存取權杖發行至 API A。
+1. 權杖 B 是由 api B 要求的授權標頭中的 API A 所設定。
+1. 來自受保護資源的資料會由 API B 傳回至 API A，然後從該處傳回至用戶端。
 
 > [!NOTE]
 > 在此案例中，中介層服務不會利用使用者互動來取得使用者的下游 API 存取同意。 因此，在驗證期間必須先呈現授與存取下游 API 的選項，作為同意步驟的一部分。 若要深入了解如何為您的應用程式進行這個設定，請參閱[取得中介層應用程式的同意](#gaining-consent-for-the-middle-tier-application)。
 
 ## <a name="service-to-service-access-token-request"></a>服務對服務存取權杖要求
 
-要請求造訪權杖,請使用以下參數對特定於租戶的Microsoft識別平臺權杖終結點進行 HTTP POST。
+若要要求存取權杖，請使用下列參數，對租使用者特定的 Microsoft 身分識別平臺權杖端點進行 HTTP POST。
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
@@ -56,17 +56,17 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 
 有兩種情況，取決於用戶端應用程式是選擇透過共用密碼或憑證來保護。
 
-### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一種情況︰使用共用密碼的存取權杖要求
+### <a name="first-case-access-token-request-with-a-shared-secret"></a>第一個案例：含有共用祕密的存取權杖要求
 
-使用共用密碼時，服務對服務存取權杖要求包含下列參數：
+使用共用祕密時，服務對服務存取權杖要求會包含下列參數：
 
 | 參數 |  | 描述 |
 | --- | --- | --- |
 | `grant_type` | 必要 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 必要 | [Azure 門戶 - 應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁已分配給應用的應用程式(用戶端)ID。 |
-| `client_secret` | 必要 | 在 Azure 門戶 - 應用註冊頁中為應用生成的用戶端密鑰。 |
-| `assertion` | 必要 | 要求中使用的權杖值。  此令牌必須具有發出此 OBO 請求的應用的受眾(`client-id`欄位 表示的應用)。 |
-| `scope` | 必要 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。 |
+| `client_id` | 必要 | [Azure 入口網站應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面已指派給您應用程式的應用程式（用戶端）識別碼。 |
+| `client_secret` | 必要 | 您在 [Azure 入口網站應用程式註冊] 頁面中為應用程式產生的用戶端密碼。 |
+| `assertion` | 必要 | 在要求中使用的權杖值。  此權杖必須具有應用程式的物件，以進行此 OBO 要求（由`client-id`欄位表示的應用程式）。 |
+| `scope` | 必要 | 權杖要求範圍的空格分隔清單。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。 |
 | `requested_token_use` | 必要 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
 
 #### <a name="example"></a>範例
@@ -88,17 +88,17 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 &requested_token_use=on_behalf_of
 ```
 
-### <a name="second-case-access-token-request-with-a-certificate"></a>第二種情況︰使用憑證的存取權杖要求
+### <a name="second-case-access-token-request-with-a-certificate"></a>第二個案例：含有憑證的存取權杖要求
 
-使用憑證的服務對服務存取權杖要求包含下列參數：
+含有憑證的服務對服務存取權杖要求會包含下列參數：
 
 | 參數 |  | 描述 |
 | --- | --- | --- |
 | `grant_type` | 必要 | 權杖要求的類型。 對於使用 JWT 的要求，值必須是 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 必要 |  [Azure 門戶 - 應用註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁已分配給應用的應用程式(用戶端)ID。 |
+| `client_id` | 必要 |  [Azure 入口網站應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面已指派給您應用程式的應用程式（用戶端）識別碼。 |
 | `client_assertion_type` | 必要 | 值必須是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
-| `client_assertion` | 必要 | 您必須建立判斷提示 (JSON Web 權杖)，並使用註冊的憑證來簽署，以作為應用程式的認證。 若要深入了解如何註冊您的憑證與判斷提示的格式，請參閱[憑證認證](active-directory-certificate-credentials.md)。 |
-| `assertion` | 必要 | 要求中使用的權杖值。 |
+| `client_assertion` | 必要 | 您需要建立並使用憑證 (已註冊為應用程式認證) 來簽署的判斷提示 (JSON Web 權杖)。 若要深入了解如何註冊您的憑證與判斷提示的格式，請參閱[憑證認證](active-directory-certificate-credentials.md)。 |
+| `assertion` | 必要 | 在要求中使用的權杖值。 |
 | `requested_token_use` | 必要 | 指定應該如何處理要求。 在 OBO 流程中，此值必須設定為 `on_behalf_of`。 |
 | `scope` | 必要 | 權杖要求範圍的清單，各項目之間以空格分隔。 如需詳細資訊，請參閱[範圍](v2-permissions-and-consent.md)。|
 
@@ -126,17 +126,17 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 ## <a name="service-to-service-access-token-response"></a>服務對服務的存取權杖回應
 
-成功的回應是 JSON OAuth 2.0 回應，包含下列參數。
+成功回應為包含下列參數的 JSON OAuth 2.0 回應。
 
 | 參數 | 描述 |
 | --- | --- |
-| `token_type` | 表示權杖類型值。 Microsoft 識別平台支援的唯一類型`Bearer`是 。 有關無記名令牌的詳細資訊,請參閱[OAuth 2.0 授權框架:無記名令牌使用 (RFC 6750)。](https://www.rfc-editor.org/rfc/rfc6750.txt) |
+| `token_type` | 指出權杖類型的值。 Microsoft 身分識別平臺唯一支援的類型是`Bearer`。 如需有關持有人權杖的詳細資訊，請參閱[OAuth 2.0 授權架構：持有人權杖使用方式（RFC 6750）](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 | `scope` | 在權杖中授與的存取範圍。 |
-| `expires_in` | 存取權杖的有效時間長度 (以秒為單位)。 |
-| `access_token` | 所要求的存取權杖。 呼叫端服務可以使用此權杖來向接收端服務進行驗證。 |
-| `refresh_token` | 所要求之存取權杖的重新整理權杖。 呼叫端服務可以使用這個權杖，在目前的存取權杖過期之後，要求其他的存取權杖。 只有要求 `offline_access` 範圍時，才會提供重新整理權杖。 |
+| `expires_in` | 存取權杖的有效時間 (以秒為單位)。 |
+| `access_token` | 要求的存取權杖。 呼叫服務可以使用此權杖來驗證接收服務。 |
+| `refresh_token` | 所要求存取權杖的重新整理權杖。 目前的存取權杖到期後，呼叫服務可以使用此權杖來要求另一個存取權杖。 只有要求 `offline_access` 範圍時，才會提供重新整理權杖。 |
 
-### <a name="success-response-example"></a>成功回應範例
+### <a name="success-response-example"></a>成功的回應範例
 
 下列範例顯示 https://graph.microsoft.com Web API 存取權杖要求的成功回應。
 
@@ -152,11 +152,11 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```
 
 > [!NOTE]
-> 上述存取權杖是 v1.0 格式的權杖。 這是因為令牌基於正在訪問**的資源**提供。 Microsoft 圖形設置為接受 v1.0 令牌,因此當用戶端請求 Microsoft Graph 的權杖時,Microsoft 標識平臺將生成 v1.0 訪問權杖。 只有應用程式應該檢查存取權杖。 客戶**不得**檢查它們。
+> 上述存取權杖是 v1.0 格式的權杖。 這是因為權杖是根據所存取的**資源**所提供。 Microsoft Graph 已設定為接受 v1.0 權杖，因此當用戶端要求 Microsoft Graph 的權杖時，Microsoft 身分識別平臺會產生 v1.0 存取權杖。 只有應用程式應該檢查存取權杖。 用戶端**不得**檢查它們。
 
 ### <a name="error-response-example"></a>錯誤回應範例
 
-如果下游 API 在它上設置了條件訪問策略(如多重身份驗證),則令牌終結點在嘗試獲取下游 API 的訪問令牌時返回錯誤回應。 中介層服務應向用戶端應用程式顯示此錯誤,以便用戶端應用程式可以提供使用者交互以滿足條件存取策略。
+嘗試取得下游 API 的存取權杖時，如果下游 API 已設定條件式存取原則（例如多重要素驗證），則權杖端點會傳回錯誤回應。 仲介層服務應將此錯誤呈現給用戶端應用程式，讓用戶端應用程式可以提供使用者互動，以滿足條件式存取原則。
 
 ```json
 {
@@ -184,18 +184,18 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>取得中介層應用程式的同意
 
-根據應用程式的體系結構或使用方式,您可以考慮不同的策略來確保 OBO 流成功。 在所有情況下,最終目標是確保給予適當的同意,以便用戶端應用可以調用中間層應用,並且中間層應用有權調用後端資源。
+根據您應用程式的架構或使用方式而定，您可以考慮不同的策略，以確保 OBO 流程成功。 在所有情況下，最終目標是要確保給予適當的同意，讓用戶端應用程式可以呼叫仲介層應用程式，而仲介層應用程式則具有呼叫後端資源的許可權。
 
 > [!NOTE]
-> 以前,Microsoft 帳戶系統(個人帳戶)不支援"已知用戶端應用程式"欄位,也不能顯示合併同意。  已添加此內容,Microsoft 標識平臺中的所有應用都可以使用已知的用戶端應用程式方法獲得 OBO 調用的同意。
+> 先前 Microsoft 帳戶系統（個人帳戶）不支援 [已知用戶端應用程式] 欄位，也不會顯示合併的同意。  這已經加入，而且 Microsoft 身分識別平臺中的所有應用程式都可以使用已知的用戶端應用程式方法來同意 OBO 呼叫。
 
 ### <a name="default-and-combined-consent"></a>/.預設和合併的同意
 
-中介層應用程式會將用戶端新增至已知用戶端應用程式清單的資訊清單中，然後用戶端可以針對自己本身與中介層應用程式觸發合併的同意流程。 在 Microsoft 標識平台終結點上,這是使用[`/.default`作用域](v2-permissions-and-consent.md#the-default-scope)完成的。 使用已知的用戶端應用程式和`/.default`觸發同意螢幕時,同意螢幕將顯示客戶端對**both**中間層 API 的許可權,並請求中間層 API 所需的任何許可權。 使用者提供兩個應用程式的同意，然後 OBO 流程就能運作。
+中介層應用程式會將用戶端新增至已知用戶端應用程式清單的資訊清單中，然後用戶端可以針對自己本身與中介層應用程式觸發合併的同意流程。 在 Microsoft 身分識別平臺端點上，這是使用[ `/.default`範圍](v2-permissions-and-consent.md#the-default-scope)來完成。 當使用已知的用戶端應用程式和`/.default`來觸發同意畫面時，同意畫面會顯示**兩個**用戶端對仲介層 api 的許可權，並要求仲介層 api 所需的任何許可權。 使用者提供兩個應用程式的同意，然後 OBO 流程就能運作。
 
 ### <a name="pre-authorized-applications"></a>已預先授權應用程式
 
-資源可以指示給定應用程序始終有權接收某些作用域。 這主要是用來讓前端用戶端與後端資源之間的連線更順暢。 資源可以宣告多個已預先授權應用程式，任何此類應用程式可以在 OBO 流程中要求這些權限並接收它們，不需要使用者提供同意。
+資源可以指出給定的應用程式一律具有接收特定範圍的許可權。 這主要是用來讓前端用戶端與後端資源之間的連線更順暢。 資源可以宣告多個已預先授權應用程式，任何此類應用程式可以在 OBO 流程中要求這些權限並接收它們，不需要使用者提供同意。
 
 ### <a name="admin-consent"></a>系統管理員同意
 
@@ -207,12 +207,12 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="client-limitations"></a>用戶端限制
 
-如果用戶端使用隱式流獲取id_token,並且該用戶端在回覆 URL 中也有通配符,則id_token不能用於 OBO 流。  不過，機密用戶端仍可兌換透過隱含授與流程取得的存取權杖，即使起始用戶端已註冊萬用字元回覆 URL 亦然。
+如果用戶端使用隱含流程來取得 id_token，且該用戶端在回復 URL 中也有萬用字元，則該 id_token 無法用於 OBO 流程。  不過，機密用戶端仍可兌換透過隱含授與流程取得的存取權杖，即使起始用戶端已註冊萬用字元回覆 URL 亦然。
 
 ## <a name="next-steps"></a>後續步驟
 
 進一步了解 OAuth 2.0 通訊協定，以及另一種使用用戶端認證來執行服務對服務驗證的方式。
 
-* [Microsoft 識別平臺中的 OAuth 2.0 客戶端認證](v2-oauth2-client-creds-grant-flow.md)
-* [微軟身份平臺中的 OAuth 2.0 程式碼串流](v2-oauth2-auth-code-flow.md)
+* [Microsoft 身分識別平臺中的 OAuth 2.0 用戶端認證授與](v2-oauth2-client-creds-grant-flow.md)
+* [Microsoft 身分識別平臺中的 OAuth 2.0 程式碼流程](v2-oauth2-auth-code-flow.md)
 * [使用 `/.default` 範圍](v2-permissions-and-consent.md#the-default-scope)

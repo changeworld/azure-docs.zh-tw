@@ -18,10 +18,10 @@ ms.custom: it-pro
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be265eee32a739bdfc2d4c3b746e01cd0c5ec06a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82130433"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>整合 SaaS 應用程式與 Azure Active Directory 的教學課程

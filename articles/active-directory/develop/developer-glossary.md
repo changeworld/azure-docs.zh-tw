@@ -1,6 +1,6 @@
 ---
-title: 微軟身份平臺開發者詞彙表 |蔚藍
-description: 常用 Microsoft 標識平臺開發人員概念和功能的術語清單。
+title: Microsoft 身分識別平臺開發人員詞彙 |Azure
+description: 常用 Microsoft 身分識別平臺開發人員概念和功能的字詞清單。
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -8,35 +8,37 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 12/13/2019
+ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: ce98d2db86c87ac6aa8fa4872bc076714467d32f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9709cd3b6036b384fd9212a522c191d0695b9bb4
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79263045"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82161719"
 ---
-# <a name="microsoft-identity-platform-developer-glossary"></a>微軟身份平臺開發者詞彙表
+# <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft 身分識別平臺開發人員詞彙
 
-本文包含一些核心開發人員概念和術語的定義，這些概念和術語在學習使用 Microsoft 標識平臺進行應用程式開發時非常有用。
+本文包含一些核心開發人員概念和術語的定義，當您瞭解使用 Microsoft 身分識別平臺的應用程式開發時，這會很有説明。
 
 ## <a name="access-token"></a>存取權杖
 
 由[授權伺服器](#authorization-server)所簽發的一種[安全性權杖](#security-token)，可供[用戶端應用程式](#client-application)用來存取[受保護的資源伺服器](#resource-server)。 此權杖的形式通常是 [JSON Web 權杖 (JWT)][JWT]，其內含[資源擁有者](#resource-owner)授與用戶端的授權，以便獲得所要求的存取層級。 此權杖中會包含所有適用的主體相關 [宣告](#claim) ，可讓用戶端應用程式以它做為某種形式的認證以存取給定的資源。 這也可讓資源擁有者不必對用戶端公開認證。
+
+存取權杖的有效時間很短，且無法撤銷。 授權伺服器可能也會在發出存取權杖時發出重新整理[權杖](#refresh-token)。 重新整理權杖通常僅提供給機密用戶端應用程式。
 
 根據所提供的認證而定，存取權杖有時會稱為「使用者 + 應用程式」或「僅限應用程式」。 例如，當用戶端應用程式使用：
 
 * [「授權程式碼」授權授與](#authorization-grant)，使用者會先驗證為資源擁有者，將授權委派給用戶端來存取資源。 之後，用戶端會在取得存取權杖時進行驗證。 權杖有時可以更明確地稱為「使用者 + 應用程式」權杖，因為它同時代表授權用戶端應用程式的使用者，以及應用程式。
 * [「用戶端認證」授權授與](#authorization-grant)，用戶端會提供唯一的驗證，在沒有資源擁有者驗證/授權的情況下運作，因此這個權杖有時可以稱為「僅限應用程式」權杖。
 
-有關詳細資訊，請參閱[Microsoft 標識平臺權杖參考][AAD-Tokens-Claims]。
+如需詳細資訊，請參閱[Microsoft 身分識別平臺權杖參考][AAD-Tokens-Claims]。
 
-## <a name="application-id-client-id"></a>應用程式 ID（用戶端 ID）
+## <a name="application-id-client-id"></a>應用程式識別碼（用戶端識別碼）
 
-唯一識別碼 Azure AD 會核發給應用程式註冊，它會識別特定應用程式和相關聯的設定。 此應用程式 ID （[用戶端 ID](https://tools.ietf.org/html/rfc6749#page-15)） 用於執行身份驗證請求時，並在開發時提供給身份驗證庫。 應用程式 ID（用戶端 ID） 不是機密。
+唯一識別碼 Azure AD 會核發給應用程式註冊，它會識別特定應用程式和相關聯的設定。 執行驗證要求時，會使用此應用程式識別碼（[用戶端識別碼](https://tools.ietf.org/html/rfc6749#page-15)），並在開發期間提供給驗證程式庫。 應用程式識別碼（用戶端識別碼）不是秘密。
 
 ## <a name="application-manifest"></a>應用程式資訊清單
 
@@ -53,7 +55,7 @@ ms.locfileid: "79263045"
 為了讓應用程式能夠整合身分識別和存取管理功能，並將這些功能委派給 Azure AD，您必須向 Azure AD [租用戶](#tenant)註冊應用程式。 當您向 Azure AD 註冊應用程式時，您必須提供應用程式的身分識別組態，以允許它與 Azure AD 整合，並使用如下功能︰
 
 * 使用 Azure AD 身分識別管理和 [OpenID Connect][OpenIDConnect] 通訊協定實作，健全地管理單一登入
-* 通過 OAuth 2.0[授權伺服器](#authorization-server)通過[用戶端應用程式](#client-application)對[受保護資源的](#resource-server)代理訪問
+* [用戶端應用程式](#client-application)透過 OAuth 2.0[授權伺服器](#authorization-server)，對[受保護資源](#resource-server)的代理存取
 * [同意架構](#consent) ，根據資源擁有者授權來管理用戶端對受保護資源的存取權。
 
 如需詳細資訊，請參閱[整合應用程式與 Azure Active Directory][AAD-Integrating-Apps]。
@@ -87,13 +89,13 @@ ms.locfileid: "79263045"
 
 如 [OAuth2 授權架構][OAuth2-Role-Def]所定義，這是在成功驗證[資源擁有者](#resource-owner)並取得其授權之後，負責簽發存取權杖給[用戶端](#client-application)的伺服器。 [用戶端應用程式](#client-application)會在執行階段根據 OAuth2 所定義的[授權授與](#authorization-grant)，透過其[授權](#authorization-endpoint)和[權杖](#token-endpoint)端點與授權伺服器互動。
 
-在微軟身份平臺應用程式集成的情況下，微軟身份平臺實現了AzureAD應用程式和微軟服務API的授權伺服器角色，例如[微軟圖形API。][Microsoft-Graph]
+在 Microsoft 身分識別平臺應用程式整合的案例中，Microsoft 識別平臺會為 Azure AD 應用程式和 Microsoft 服務 Api （例如[Microsoft Graph api][Microsoft-Graph]）實行授權伺服器角色。
 
 ## <a name="claim"></a>宣告
 
 [安全性權杖](#security-token)中包含宣告，而宣告可提供關於某一實體 (例如[用戶端應用程式](#client-application)或[資源擁有者](#resource-owner)) 的判斷提示給另一個實體 (例如[資源伺服器](#resource-server))。 宣告是轉送權杖主體 (例如，由 [授權伺服器](#authorization-server)驗證的安全性主體) 相關事實的名稱/值組。 給定權杖所提供的宣告取決於幾項變數，包括權杖類型、用來驗證主體的認證類型，以及應用程式組態等。
 
-有關詳細資訊，請參閱[Microsoft 標識平臺權杖引用][AAD-Tokens-Claims]。
+如需詳細資訊，請參閱[Microsoft 身分識別平臺權杖參考][AAD-Tokens-Claims]。
 
 ## <a name="client-application"></a>用戶端應用程式 (client application)
 
@@ -111,7 +113,7 @@ ms.locfileid: "79263045"
 
 [授權伺服器的](#authorization-server) [授權端點](#authorization-endpoint)所提供的 [OpenID Connect][OpenIDConnect-ID-Token] [安全性權杖](#security-token)，其中包含與使用者[資源擁有者](#resource-owner)的驗證有關的[宣告](#claim)。 和存取權杖一樣，識別碼權杖也會以數位簽署的 [JSON Web 權杖 (JWT)][JWT] 來表示。 但識別碼權杖的宣告則不同於存取權杖，它並不會用來進行與資源存取相關的用途，具體來說也就是存取控制。
 
-有關詳細資訊，請參閱[Microsoft 標識平臺權杖引用][AAD-Tokens-Claims]。
+如需詳細資訊，請參閱[Microsoft 身分識別平臺權杖參考][AAD-Tokens-Claims]。
 
 ## <a name="microsoft-identity-platform"></a>Microsoft 身分識別平台
 
@@ -136,7 +138,13 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 權限也會在 [同意](#consent) 程序期間出現，讓系統管理員或資源擁有者有機會允許/拒絕用戶端對其租用戶中的資源進行存取。
 
-通過選擇所需的"委派許可權"和"應用程式許可權"（後者需要全域管理員角色的成員身份），在[Azure 門戶][AZURE-portal]中應用程式的**API 許可權**頁上配置許可權請求。 [公用用戶端](#client-application)無法安全地維護認證，因此它只能要求委派的權限，而[機密用戶端](#client-application)則能夠要求委派的權限和應用程式權限。 用戶端的[應用程式物件](#application-object)會將宣告的權限儲存在其 [requiredResourceAccess 屬性][Graph-App-Resource]中。
+許可權要求是在[Azure 入口網站][AZURE-portal]中應用程式的 [ **API 許可權**] 頁面上設定，方法是選取所需的 [委派的許可權] 和 [應用程式許可權] （後者需要全域管理員角色的成員資格）。 [公用用戶端](#client-application)無法安全地維護認證，因此它只能要求委派的權限，而[機密用戶端](#client-application)則能夠要求委派的權限和應用程式權限。 用戶端的[應用程式物件](#application-object)會將宣告的權限儲存在其 [requiredResourceAccess 屬性][Graph-App-Resource]中。
+
+## <a name="refresh-token"></a>重新整理權杖
+
+[授權伺服器](#authorization-server)所發出的[安全性權杖](#security-token)類型，並由[用戶端應用程式](#client-application)使用，以便在存取權杖到期之前要求新的[存取權杖](#access-token)。 通常以[JSON Web 權杖（JWT）][JWT]的形式呈現。
+
+不同于存取權杖，可以撤銷重新整理權杖。 如果用戶端應用程式嘗試使用已撤銷的重新整理權杖來要求新的存取權杖，授權伺服器將會拒絕要求，而且用戶端應用程式將不再具有代表[資源擁有](#resource-owner)者存取[資源伺服器](#resource-server)的許可權。
 
 ## <a name="resource-owner"></a>資源擁有者
 
@@ -146,9 +154,9 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 如 [OAuth2 授權架構][OAuth2-Role-Def]所定義，這是裝載受保護資源的伺服器，且能夠接受並回應出示[存取權杖](#access-token)的[用戶端應用程式](#client-application)所提出的受保護資源要求。 它也稱為「受保護的資源伺服器」或「資源應用程式」。
 
-資源伺服器會使用 OAuth 2.0 授權架構公開 API，並透過[範圍](#scopes)和[角色](#roles)強制執行其受保護資源的存取權。 示例包括提供對 Azure AD 租戶資料的訪問的[Microsoft 圖形 API，][Microsoft-Graph]以及提供對郵件和日曆等資料的訪問的 Office 365 API。 
+資源伺服器會使用 OAuth 2.0 授權架構公開 API，並透過[範圍](#scopes)和[角色](#roles)強制執行其受保護資源的存取權。 範例包括[MICROSOFT GRAPH API][Microsoft-Graph] ，可提供 Azure AD 租使用者資料的存取權，以及提供存取資料（例如郵件和行事曆）的 Office 365 api。
 
-和用戶端應用程式一樣，資源應用程式的身分識別組態是透過 Azure AD 租用戶中的 [註冊](#application-registration) 程序來建立，可提供應用程式和服務主體物件。 某些 Microsoft 提供的 API（如 Microsoft 圖形 API）在預配期間在所有租戶中都有預先註冊的服務主體。
+和用戶端應用程式一樣，資源應用程式的身分識別組態是透過 Azure AD 租用戶中的 [註冊](#application-registration) 程序來建立，可提供應用程式和服務主體物件。 某些 Microsoft 提供的 Api （例如 Microsoft Graph API）在布建期間，會在所有租使用者中提供預先註冊的服務主體。
 
 ## <a name="roles"></a>角色
 
@@ -156,7 +164,7 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 角色是資源所定義的字串 (例如「經費支出核准者」、"Directory.ReadWrite.All")，可在 [Azure 入口網站][AZURE-portal]中透過資源的[應用程式資訊清單](#application-manifest)進行管理，並且會儲存在資源的 [appRoles 屬性][Graph-Sp-Resource]。 Azure 入口網站也可用來將使用者指派給「使用者」角色，並設定用戶端[應用程式權限](#permissions)以存取「應用程式」角色。
 
-有關 Microsoft 圖形 API 公開的應用程式角色的詳細討論，請參閱[圖形 API 許可權範圍][Graph-Perm-Scopes]。 如需逐步實作範例，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權][AAD-RBAC]。
+如需 Microsoft Graph API 所公開之應用程式角色的詳細討論，請參閱[圖形 API 許可權範圍][Graph-Perm-Scopes]。 如需逐步實作範例，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權][AAD-RBAC]。
 
 ## <a name="scopes"></a>範圍
 
@@ -164,15 +172,15 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 範圍是資源所定義的字串 (例如 "Mail.Read"、"Directory.ReadWrite.All")，可在 [Azure 入口網站][AZURE-portal]中透過資源的[應用程式資訊清單](#application-manifest)進行管理，並且會儲存在資源的 [oauth2Permissions 屬性][Graph-Sp-Resource]。 Azure 入口網站也可用來將用戶端應用程式[委派的權限](#permissions)設定為存取某個範圍。
 
-命名慣例的最佳作法是使用「resource.operation.constraint」格式。 有關 Microsoft 圖形 API 公開的範圍的詳細討論，請參閱[圖形 API 許可權範圍][Graph-Perm-Scopes]。 如需 Office 365 服務所公開的範圍，請參閱 [Office 365 API 權限參考][O365-Perm-Ref]。
+命名慣例的最佳作法是使用「resource.operation.constraint」格式。 如需 Microsoft Graph API 所公開之範圍的詳細討論，請參閱[圖形 API 許可權範圍][Graph-Perm-Scopes]。 如需 Office 365 服務所公開的範圍，請參閱 [Office 365 API 權限參考][O365-Perm-Ref]。
 
 ## <a name="security-token"></a>安全性權杖
 
-包含 OAuth2 權杖或 SAML 2.0 判斷提示等宣告的已簽署文件。 對於 OAuth2 [授權授與](#authorization-grant)而言，[存取權杖](#access-token) (OAuth2) 和[識別碼權杖](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)皆為安全性權杖類型，而且這兩種類型都會實作為 [JSON Web 權杖 (JWT)][JWT]。
+包含 OAuth2 權杖或 SAML 2.0 判斷提示等宣告的已簽署文件。 對於 OAuth2[授權授](#authorization-grant)與而言，[存取權杖](#access-token)（OAuth2）、重新整理[權杖](#refresh-token)和[識別碼權杖](https://openid.net/specs/openid-connect-core-1_0.html#IDToken)是安全性權杖的類型，這些都是實作為[JSON Web 權杖（JWT）][JWT]。
 
 ## <a name="service-principal-object"></a>服務主體物件
 
-在[Azure 門戶][AZURE-portal]中註冊/更新應用程式時，門戶將同時創建/更新該租戶[的應用程式物件](#application-object)和相應的服務主體物件。 應用程式物件可全域 (在相關聯的應用程式已獲授與存取權的所有租用戶中)「定義」** 應用程式的身分識別組態，並可做為範本來「衍生」** 出其對應的服務主體物件，以在執行階段於本機 (在特定租用戶) 使用。
+當您在[Azure 入口網站][AZURE-portal]中註冊/更新應用程式時，入口網站會針對該租使用者建立/更新[應用程式物件](#application-object)和對應的服務主體物件。 應用程式物件可全域 (在相關聯的應用程式已獲授與存取權的所有租用戶中)「定義」** 應用程式的身分識別組態，並可做為範本來「衍生」** 出其對應的服務主體物件，以在執行階段於本機 (在特定租用戶) 使用。
 
 如需詳細資訊，請參閱[應用程式和服務主體物件][AAD-App-SP-Objects]。
 
@@ -184,7 +192,7 @@ Microsoft 身分識別平台是 Azure Active Directory (Azure AD) 身分識別�
 
 ## <a name="sign-out"></a>登出
 
-在[登錄](#sign-in)期間取消最終使用者身份驗證、分離與[用戶端應用程式](#client-application)會話關聯的使用者狀態的過程
+Unauthenticating 使用者的程式，在登[入](#sign-in)期間卸離與[用戶端應用程式](#client-application)會話相關聯的使用者狀態
 
 ## <a name="tenant"></a>tenant
 
@@ -206,7 +214,7 @@ Azure AD 租用戶會在註冊期間建立/與 Azure 和 Office 365 訂用帳戶
 
 ## <a name="user-principal"></a>使用者主體
 
-和服務主體物件用來表示應用程式執行個體的方式一樣，使用者主體物件是另一種類型的安全性主體，它所代表的是使用者。 Microsoft 圖形[使用者資源類型][Graph-User-Resource]定義使用者物件的架構，包括與使用者相關的屬性，如名字和姓氏、使用者主體名稱、目錄角色成員身份等。這為 Azure AD 提供了使用者標識配置，以便在運行時建立使用者主體。 使用者主體可用來代表單一登入的已驗證使用者、記錄[同意](#consent)委派，以做出存取控制決策等。
+和服務主體物件用來表示應用程式執行個體的方式一樣，使用者主體物件是另一種類型的安全性主體，它所代表的是使用者。 Microsoft Graph[使用者資源類型][Graph-User-Resource]會定義使用者物件的架構，包括使用者相關屬性，例如名字和姓氏、使用者主體名稱、目錄角色成員資格等。這會提供使用者身分識別設定，讓 Azure AD 在執行時間建立使用者主體。 使用者主體可用來代表單一登入的已驗證使用者、記錄[同意](#consent)委派，以做出存取控制決策等。
 
 ## <a name="web-client"></a>Web 用戶端
 
@@ -214,7 +222,7 @@ Azure AD 租用戶會在註冊期間建立/與 Azure 和 Office 365 訂用帳戶
 
 ## <a name="next-steps"></a>後續步驟
 
-[微軟身份平臺開發人員指南][AAD-Dev-Guide]是用於所有 Microsoft 標識平臺開發相關主題的著陸頁，包括[應用程式集成][AAD-How-To-Integrate]概述以及[Microsoft 標識平臺身份驗證的基礎知識以及支援的身份驗證方案][AAD-Auth-Scenarios]。 您還可以找到代碼示例&有關如何在[GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)上快速啟動和運行的教程。
+[Microsoft 身分識別平臺開發人員指南][AAD-Dev-Guide]是適用于所有 Microsoft 身分識別平臺開發相關主題的登陸頁面，其中包含[應用程式整合][AAD-How-To-Integrate]的總覽，以及 Microsoft 身分[識別平臺驗證和支援的驗證案例][AAD-Auth-Scenarios]的基本概念。 您也可以在[GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)上找到 & 教學課程的程式碼範例，以瞭解如何快速啟動並執行。
 
 使用下列留言區段提供意見反應，並協助改善與設計此內容，包括要求新定義或更新現有定義！
 

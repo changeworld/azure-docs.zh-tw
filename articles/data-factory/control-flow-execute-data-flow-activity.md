@@ -1,6 +1,6 @@
 ---
 title: 資料流程活動
-description: 如何從數據工廠管道內部執行數據流。
+description: 如何從 data factory 管線內部執行資料流程。
 services: data-factory
 documentationcenter: ''
 author: kromerm
@@ -8,19 +8,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 03/16/2020
-ms.openlocfilehash: 32088dd712cd0c70fc01de48add17a0b6a828dc8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/25/2020
+ms.openlocfilehash: 78ef749f36e9ffd3aae510d201b0700e5e197065
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415321"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183291"
 ---
-# <a name="data-flow-activity-in-azure-data-factory"></a>Azure 資料工廠中的資料串流活動
+# <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 中的資料流程活動
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-使用數據流活動通過映射數據流轉換和移動數據。 如果您是資料串流的新人,請參閱[映射資料串流概述](concepts-data-flow-overview.md)
+使用資料流程活動，透過對應資料流程來轉換和移動資料。 如果您不熟悉資料流程，請參閱[對應資料流程總覽](concepts-data-flow-overview.md)
 
 ## <a name="syntax"></a>語法
 
@@ -56,73 +56,73 @@ ms.locfileid: "81415321"
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-資料流程 | 正在執行的資料串流的參考 | 資料流參考 | 是
-整合時間 | 數據流運行的計算環境。 沒有未指定,會使用自動解析 Azure 整合時 | 整合執行時參考 | 否
-計算.核心計數 | 火花簇中使用的內核數。 只當使用自動解析 Azure 整合時時才能指定 | 8, 16, 32, 48, 80, 144, 272 | 否
-計算.計算類型 | 火花群集中使用的計算類型。 只當使用自動解析 Azure 整合時時才能指定 | "常規"、"計算優化"、"記憶體優化" | 否
-暫存連結服務 | 如果您使用的是 SQL DW 源或接收器,則用於 PolyBase 暫存的儲存帳戶 | 連結服務參考 | 只讀取或寫入 SQL DW 時
-暫存.資料夾路徑 | 如果使用 SQL DW 源或接收器,則 Blob 儲存帳戶中的資料夾路徑用於 PolyBase 暫存 | String | 只讀取或寫入 SQL DW 時
+資料流程 | 正在執行之資料流程的參考 | DataFlowReference | 是
+integrationRuntime | 資料流程執行所在的計算環境。 如果未指定，將會使用自動解析的 Azure 整合執行時間 | IntegrationRuntimeReference | 否
+計算 coreCount | Spark 叢集中使用的核心數目。 只有在使用自動解析的 Azure 整合執行時間時，才能指定 | 8、16、32、48、80、144、272 | 否
+計算 computeType | Spark 叢集中使用的計算類型。 只有在使用自動解析的 Azure 整合執行時間時，才能指定 | "General"、"ComputeOptimized"、"MemoryOptimized" | 否
+暫存。 linkedService | 如果您使用的是 SQL DW 來源或接收，用於 PolyBase 暫存的儲存體帳戶 | LinkedServiceReference | 只有在資料流程讀取或寫入至 SQL DW 時
+暫存。 folderPath | 如果您使用的是 SQL DW 來源或接收，則為用於 PolyBase 暫存的 blob 儲存體帳戶中的資料夾路徑 | String | 只有在資料流程讀取或寫入至 SQL DW 時
 
-![執行資料串流](media/data-flow/activity-data-flow.png "執行資料串流")
+![執行資料流程](media/data-flow/activity-data-flow.png "執行資料流程")
 
-### <a name="dynamically-size-data-flow-compute-at-runtime"></a>執行時動態大小資料流程
+### <a name="dynamically-size-data-flow-compute-at-runtime"></a>在執行時間動態調整資料流程計算的大小
 
-可以動態設置核心計數和計算類型屬性,以根據運行時傳入源數據的大小進行調整。 使用導管活動(如查找或獲取中繼資料)來查找源資料集資料的大小。 然後,在數據流活動屬性中使用"添加動態內容"
+[核心計數] 和 [計算類型] 屬性可以動態設定，以在執行時間調整傳入來源資料的大小。 使用「查閱」或「取得中繼資料」之類的管線活動，來尋找源資料集資料的大小。 然後，使用 [資料流程] 活動屬性中的 [新增動態內容]。
 
-![動態資料流程](media/data-flow/dyna1.png "動態資料流程")
+![動態資料流程](media/data-flow/dyna1.png "動態資料流")
 
-[這裡是一個簡短的視頻教程解釋這種技術](https://www.youtube.com/watch?v=jWSkJdtiJNM)
+[以下是簡短的影片教學課程，說明這項技術](https://www.youtube.com/watch?v=jWSkJdtiJNM)
 
-### <a name="data-flow-integration-runtime"></a>資料流程整合執行時
+### <a name="data-flow-integration-runtime"></a>資料流程整合執行時間
 
-選擇要用於資料流活動執行的整合式執行時。 默認情況下,資料工廠將使用具有四個工作核心且沒有時間生存 (TTL) 的自動解析 Azure 集成運行時。 此 IR 具有通用計算類型,並且與工廠在同一區域運行。 您可以創建自己的 Azure 整合執行時,用於定義特定區域、計算類型、核心計數和 TTL 以執行資料串流活動。
+選擇要用於資料流程活動執行的 Integration Runtime。 根據預設，Data Factory 會使用自動解析的 Azure 整合執行時間與四個背景工作角色核心，而不會有存留時間（TTL）。 此 IR 具有一般目的計算類型，並會在與您的處理站相同的區域中執行。 您可以建立自己的 Azure 整合執行時間，以定義您的資料流程活動執行的特定區域、計算類型、核心計數和 TTL。
 
-對於管道執行,群集是作業群集,在執行啟動前需要幾分鐘時間啟動。 如果未指定 TTL,則每次管道運行都需要此啟動時間。 如果指定 TTL,則暖群集池將在上次執行後指定的時間內保持活動狀態,從而導致啟動時間縮短。 例如,如果 TTL 為 60 分鐘,並且每小時在它上運行一次數據流,群集池將保持活動狀態。 有關詳細資訊,請參閱[Azure 整合時](concepts-integration-runtime.md)。
+就管線執行而言，叢集是一種作業叢集，需要幾分鐘的時間才能開始執行。 如果未指定 TTL，每次執行管線時都需要此啟動時間。 如果您指定 TTL，暖叢集集區會在最後一次執行後指定的時間保持作用中狀態，因而縮短啟動時間。 例如，如果您有60分鐘的 TTL，並每隔一小時執行一次資料流程，叢集集區就會保持作用中狀態。 如需詳細資訊，請參閱[Azure 整合運行](concepts-integration-runtime.md)時間。
 
-![Azure 整合時](media/data-flow/ir-new.png "Azure 整合時")
+![Azure Integration Runtime](media/data-flow/ir-new.png "Azure Integration Runtime")
 
 > [!NOTE]
-> 資料串流活動中的整合執行時選擇僅適用於導管的*觸發執行*。 使用數據流調試管道,在調試會話中指定的群集上運行。
+> [資料流程] 活動中的 Integration Runtime 選取專案僅適用于已*觸發*的管線執行。 在偵錯工具中指定的叢集上執行資料流程的管線處理。
 
 ### <a name="polybase"></a>PolyBase
 
-如果將 Azure SQL 資料倉庫用作接收器或源,則必須為 PolyBase 批次處理負載選擇暫存位置。 PolyBase 允許批量批量載入批處理,而不是逐行載入數據。 PolyBase 大大減少了 SQL DW 的載入時間。
+如果您使用 Azure SQL 資料倉儲做為接收或來源，則必須為您的 PolyBase 批次負載選擇預備位置。 PolyBase 允許大量批次載入，而不是逐列載入資料。 PolyBase 可大幅減少載入 SQL DW 的時間。
 
 ## <a name="parameterizing-data-flows"></a>參數化資料流程
 
 ### <a name="parameterized-datasets"></a>參數化資料集
 
-如果資料串流使用參數化資料集,請在 **「設定」** 選項卡中設定參數值。
+如果您的資料流程使用參數化資料集，請在 [**設定**] 索引標籤中設定參數值。
 
-![執行資料串流參數](media/data-flow/params.png "參數")
+![執行資料流程參數](media/data-flow/params.png "參數")
 
 ### <a name="parameterized-data-flows"></a>參數化資料流程
 
-如果資料串流已參數化,請在 **「參數」** 選項卡中設定資料流參數的動態值。您可以使用 ADF 管道表示式語言(僅適用於字串類型)或資料流運算式語言來分配動態或文字參數值。 有關詳細資訊,請參考[資料串流參數](parameters-data-flow.md)。
+如果您的資料流程已參數化，請在 [**參數**] 索引標籤中設定資料流程參數的動態值。您可以使用 ADF 管線運算式語言或資料流程運算式語言來指派動態或常值參數值。 如需詳細資訊，請參閱[資料流程參數](parameters-data-flow.md)。 如果您想要在運算式中包含管線屬性以傳遞至資料流程參數，請選擇 [管線運算式]。
 
-![執行資料串流參數範例](media/data-flow/parameter-example.png "參數範例")
+![執行資料流程參數範例](media/data-flow/parameter-example.png "參數範例")
 
 ### <a name="parameterized-compute-properties"></a>參數化計算屬性。
 
-如果使用自動解析 Azure 整合執行時並指定計算值,則可以對核心計數或計算類型進行參數化。
+如果您使用自動解析 Azure 整合執行時間，並指定 coreCount 和 computeType 的值，您可以參數化核心計數或計算類型。
 
-![執行資料串流參數範例](media/data-flow/parameterize-compute.png "參數範例")
+![執行資料流程參數範例](media/data-flow/parameterize-compute.png "參數範例")
 
-## <a name="pipeline-debug-of-data-flow-activity"></a>資料流程活動的導管除錯
+## <a name="pipeline-debug-of-data-flow-activity"></a>資料流程活動的管線 debug
 
-要執行使用數據流活動運行的調試管道,必須通過頂部欄上**的數據流調試**滑塊打開數據流調試模式。 調試模式允許您針對活動 Spark 群集運行數據流。 有關詳細資訊,請參閱[除錯模式](concepts-data-flow-debug-mode.md)。
+若要使用「資料流程」活動執行「調試管線」，您必須在頂端列上透過 [資料流程 **] [資料流程**處理] 滑杆切換至 [資料流程] [調試] 模式。 [偵錯工具] 模式可讓您針對作用中的 Spark 叢集執行資料流程。 如需詳細資訊，請參閱[Debug Mode](concepts-data-flow-debug-mode.md)。
 
 ![偵錯按鈕](media/data-flow/debugbutton.png "偵錯按鈕")
 
-調試管道針對活動調試群集運行,而不是數據流活動設置中指定的集成運行時環境。 啟動除錯模式時,可以選擇除錯計算環境。
+Debug 管線會針對使用中的 debug 叢集執行，而不是在 [資料流程] 活動設定中指定的整合執行時間環境。 您可以在啟動 [debug] 模式時選擇 [debug compute] 環境。
 
 ## <a name="monitoring-the-data-flow-activity"></a>監視資料流程活動
 
-資料流活動具有特殊的監視體驗,您可以在其中查看分區、階段時間和數據血統資訊。 通過 **「操作」** 下的眼鏡圖示打開監控窗格。 有關詳細資訊,請參閱[監察資料串](concepts-data-flow-monitoring.md)流 。
+資料流程活動具有特殊的監視體驗，您可以在其中查看資料分割、階段時間和資料歷程資訊。 透過 [**動作**] 底下的 [眼鏡] 圖示開啟 [監視中] 窗格。 如需詳細資訊，請參閱[監視資料流程](concepts-data-flow-monitoring.md)。
 
-### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>使用資料串流活動會導致後續活動
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>在後續活動中使用資料流程活動結果
 
-數據流活動輸出有關寫入每個接收器的行數和從每個源讀取的行數的指標。 這些結果在活動運行結果的部分`output`中返回。 返回的指標採用以下 json 的格式。
+資料流程活動會輸出寫入每個接收的資料列數，以及從每個來源讀取的資料列的相關計量。 這些結果會在活動執行`output`結果的區段中傳回。 傳回的計量格式為下列 json。
 
 ``` json
 {
@@ -150,16 +150,16 @@ ms.locfileid: "81415321"
 }
 ```
 
-例如,要取得在名為「資料串流活動」的活動中寫入名為「sink1」的接收器的行數,請`@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`使用 。
+例如，若要在名為 ' dataflowActivity ' 的活動中，取得寫入名為 ' sink1 ' 之接收器的資料列`@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`數目，請使用。
 
-要取得從該接收器中使用的名為 'source1'的來源讀取的行數,請`@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`使用 。
+若要從該接收中使用名為 ' source1.rc ' 的來源取得讀取的資料列數目，請`@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`使用。
 
 > [!NOTE]
-> 如果接收器的行為零,則不會顯示在指標中。 可以使用函數`contains`驗證存在。 例如,`contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')`將檢查是否將任何行寫入 sink1。
+> 如果接收的資料列不是任何寫入，則不會顯示在計量中。 可以使用`contains`函數來驗證是否存在。 例如， `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')`會檢查是否有任何資料列已寫入至 sink1。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參考資料工廠支援的控制串流活動: 
+請參閱 Data Factory 支援的控制流程活動： 
 
 - [If 條件活動](control-flow-if-condition-activity.md)
 - [執行管線活動](control-flow-execute-pipeline-activity.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a8e275a41637950139598ac7c4f2513841bb4d0d
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 47a45b52ac10a44b6efd54c41b3fec1e61a47a35
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82112502"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181625"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>登入使用者的 Web 應用程式：移至生產環境
 
@@ -41,6 +41,8 @@ ms.locfileid: "82112502"
 
 > [!div class="nextstepaction"]
 > [如何處理 Chrome 瀏覽器中的 SameSite cookie 變更](howto-handle-samesite-cookie-changes-chrome-browser.md)
+
+Microsoft. Identity. Web NuGet 套件會處理最常見的 SameSite 問題。
 
 ### <a name="scenario-for-calling-web-apis"></a>呼叫 web Api 的案例
 

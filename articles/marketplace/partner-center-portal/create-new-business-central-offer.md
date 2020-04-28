@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 9bb1059087bdf8fc4eb852be7a995febc3336713
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 10fa16767061506eccf212c182e738246dc9fe7b
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115271"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867216"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>建立新的 Dynamics 365 商業中心產品/服務
 
@@ -107,7 +107,7 @@ ms.locfileid: "81115271"
 
 輸入產品/服務的版本號。 客戶將在產品/服務的詳細信息頁面上看到此版本。
 
-### <a name="terms-and-conditions"></a>條款和條件
+### <a name="terms-and-conditions"></a>條款及條件
 
 在條款與條件欄位中提供您自己的法律**條款和條件**。 您還可以提供可在其中找到您的條款和條件的 URL。 客戶在試用您的優惠之前,必須接受這些條款。
 
@@ -192,6 +192,9 @@ ms.locfileid: "81115271"
 ### <a name="marketplace-images"></a>市場映射
 
 在本節中,您可以提供向客戶展示產品/服務時將使用的徽標和圖像。 所有圖像必須採用 .png 格式。 上傳您的優惠徽標有兩種尺寸:**小 (48 x 48)** **和大 (216 x 216)**。
+
+>[!Note]
+>如果上傳文件出現問題,請確保本地網路不會阻止合作夥伴中心使用https://upload.xboxlive.com的服務。
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 

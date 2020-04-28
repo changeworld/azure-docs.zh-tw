@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
-ms.openlocfilehash: b8c09d4ac5d0856eb0d448a1cabd9adc567850c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7f3b928e657b5c061e624281e1d5a8805283a657
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77670605"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186419"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>在 Azure 監視器中，從 Linux 代理程式上的 CollectD 收集資料
 [CollectD](https://collectd.org/) 是開放原始碼 Linux 精靈，可定期收集來自應用程式的效能計量和系統等級資訊。 範例應用程式包括 Java 虛擬機器 (JVM)、MySQL 伺服器和 Nginx。 本文提供如何在 Azure 監視器中從 CollectD 收集效能資料的相關資訊。
@@ -63,14 +63,14 @@ Log Analytics Linux 代理程式也會在連接埠 26000 接聽 CollectD 計量�
     </filter>
 
 > [!NOTE]
-> 預設情況下，CollectD 設置為在 10 秒[間隔](https://collectd.org/wiki/index.php/Interval)內讀取值。 由於這直接影響發送到 Azure 監視器日誌的資料量，您可能需要在 CollectD 配置中調整此間隔，才能在監視要求與 Azure 監視器日誌的相關成本和使用方式之間取得良好的平衡。
+> CollectD 預設會設定為以10秒的[間隔](https://collectd.org/wiki/index.php/Interval)讀取值。 因為這會直接影響傳送至 Azure 監視器記錄的資料量，所以您可能需要在 CollectD 設定中微調此間隔，以在監視需求和相關成本與 Azure 監視器記錄的使用量之間取得良好平衡。
 
 ## <a name="versions-supported"></a>支援的版本
 - Azure 監視器目前支援 CollectD 4.8 版和更新版本。
 - 需要有 Log Analytics Linux 代理程式 v1.1.0-217 或以上才能收集 CollectD 計量。
 
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 以下是在 Azure 監視器中設定收集 CollectD 資料的基本步驟。
 
 1. 使用 write_http 外掛程式，設定 CollectD 將資料傳送至 Log Analytics Linux 代理程式。  
@@ -100,7 +100,8 @@ Log Analytics Linux 代理程式也會在連接埠 26000 接聽 CollectD 計量�
 
 3. 使用下列命令重新啟動 CollectD 和 Log Analytics Linux 代理程式。
 
-    sudo service collectd restart  sudo /opt/microsoft/omsagent/bin/service_control restart
+        sudo service collectd restart
+        sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ## <a name="collectd-metrics-to-azure-monitor-schema-conversion"></a>CollectD 計量至 Azure 監視器的結構描述轉換
 在 Log Analytics Linux 代理程式已收集的基礎結構計量和 CollectD 所收集的新計量之間，為了維持一種熟悉的模型，我們使用下列結構描述對應：

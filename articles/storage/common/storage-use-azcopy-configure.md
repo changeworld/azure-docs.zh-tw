@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 儲存配置、優化和排除 AzCopy 問題 |微軟文件
-description: 配置、優化和排除 AzCopy 故障。
+title: 使用 Azure 儲存體設定、優化和疑難排解 AzCopy |Microsoft Docs
+description: 設定、優化和疑難排解 AzCopy。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -8,19 +8,19 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 87a335f44a31436de735395adbee9035493cbbd2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: c3ee0f335741c171c3a7ee1df3eea6dea9c4b728
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81263415"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176153"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>對 AzCopy 進行設定、最佳化及疑難排解
 
-AzCopy 是一個命令列實用程式,可用於將 Blob 或檔案複製到存儲帳戶或從存儲帳戶複製。 本文可説明您執行進階設定任務,並説明您解決使用 AzCopy 時可能出現的問題。
+AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 blob 或檔案。 本文可協助您執行先進的設定工作，並協助您針對使用 AzCopy 時可能發生的問題進行疑難排解。
 
 > [!NOTE]
-> 如果您要尋找說明您開始使用 AzCopy 的內容,請參閱以下任何文章:
+> 如果您要尋找可協助您開始使用 AzCopy 的內容，請參閱下列文章：
 > - [開始使用 AzCopy](storage-use-azcopy-v10.md)
 > - [使用 AzCopy 和 Blob 儲存體轉送資料](storage-use-azcopy-blobs.md)
 > - [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
@@ -28,7 +28,7 @@ AzCopy 是一個命令列實用程式,可用於將 Blob 或檔案複製到存儲
 
 ## <a name="configure-proxy-settings"></a>進行 Proxy 設定
 
-要配置 AzCopy 的代理設定`https_proxy`,請設定環境變數。 如果在 Windows 上運行 AzCopy,AzCopy 會自動檢測代理設定,因此您不必在 Windows 中使用此設定。 如果選擇在 Windows 中使用此設定,它將覆蓋自動檢測。
+若要設定 AzCopy 的 proxy 設定，請設定`https_proxy`環境變數。 如果您在 Windows 上執行 AzCopy，AzCopy 會自動偵測 proxy 設定，因此您不需要在 Windows 中使用此設定。 如果您選擇在 Windows 中使用此設定，將會覆寫自動偵測。
 
 | 作業系統 | Command  |
 |--------|-----------|
@@ -36,25 +36,25 @@ AzCopy 是一個命令列實用程式,可用於將 Blob 或檔案複製到存儲
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
-目前,AzCopy 不支援需要使用 NTLM 或 Kerberos 進行身份驗證的代理。
+目前，AzCopy 不支援需要使用 NTLM 或 Kerberos 進行驗證的 proxy。
 
 ## <a name="optimize-performance"></a>效能最佳化
 
-您可以對性能進行基準測試,然後使用命令和環境變數在性能和資源消耗之間找到最佳權衡。
+您可以基準效能，然後使用命令和環境變數來尋找效能和資源耗用量之間的最佳取捨。
 
-本節可説明您執行以下優化任務:
+本節可協助您執行這些優化工作：
 
 > [!div class="checklist"]
 > * 執行基準測試
 > * 輸送量最佳化
 > * 優化記憶體使用 
-> * 優化檔案同步
+> * 優化檔案同步處理
 
 ### <a name="run-benchmark-tests"></a>執行基準測試
 
-您可以在特定的 Blob 容器上運行性能基準測試,以查看常規性能統計資訊和標識性能瓶頸。 
+您可以在特定的 blob 容器上執行效能基準測試，以查看一般效能統計資料和身分識別效能瓶頸。 
 
-使用以下命令運行性能基準測試。
+使用下列命令來執行效能基準測試。
 
 |    |     |
 |--------|-----------|
@@ -62,25 +62,25 @@ AzCopy 是一個命令列實用程式,可用於將 Blob 或檔案複製到存儲
 | **範例** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
-> 本示例用單個引號 ('') 括括路徑參數。 除 Windows 命令外殼 (cmd.exe) 外,在所有命令 shell 中使用單引號。 如果使用 Windows 命令命令命令命令 (cmd.exe),則用雙引號(")而不是單個引號('')括起來路徑參數。
+> 這個範例會使用單引號（' '）來括住路徑引數。 在所有命令 shell 中使用單引號，但 Windows 命令介面（cmd.exe）除外。 如果您使用 Windows 命令 Shell （cmd.exe），請將路徑引數括在雙引號（""），而不是單引號（' '）。
 
-此命令通過將測試數據上載到指定目標來運行性能基準。 測試數據在記憶體中生成,上傳到目標,然後在測試完成後從目標中刪除。 您可以使用可選擇的指令參數指定要生成的檔案數量以及希望它們的大小。
+此命令會將測試資料上傳至指定的目的地，以執行效能基準測試。 測試資料會在記憶體中產生、上傳至目的地，然後在測試完成後從目的地中刪除。 您可以使用選擇性的命令參數，指定要產生的檔案數目，以及您想要的大小。
 
-有關詳細的參考文檔,請參閱[茲貝貝工作臺](storage-ref-azcopy-bench.md)。
+如需詳細的參考檔，請參閱[azcopy 工作臺](storage-ref-azcopy-bench.md)。
 
-要查看此命令的詳細説明指南,請鍵入`azcopy bench -h`然後按 ENTER 鍵。
+若要查看此命令的詳細說明指引， `azcopy bench -h`請輸入，然後按 enter 鍵。
 
 ### <a name="optimize-throughput"></a>輸送量最佳化
 
-您可以使用命令中`cap-mbps`的標誌對輸送量資料速率設置上限。 例如,以下命令將恢復作業並將輸送量限制為`10`每秒兆位 (MB)。 
+您可以在命令`cap-mbps`中使用旗標，將輸送量資料速率設為上限。 例如，下列命令會繼續作業，並將每秒的`10`上限輸送量設為 mb。 
 
 ```azcopy
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-傳輸小檔時,輸送量可能會降低。 您可以通過`AZCOPY_CONCURRENCY_VALUE`設置 環境變數來提高輸送量。 此變數指定可能發生的併發請求數。  
+傳輸小型檔案時，輸送量可能會降低。 您可以藉由設定`AZCOPY_CONCURRENCY_VALUE`環境變數來增加輸送量。 此變數會指定可能發生的並行要求數目。  
 
-如果電腦的 CPU 少於 5 個,則此變數的值`32`將設定為 。 否則,預設值等於 16 乘以 CPU 數。 此變數的最大預設值為`3000`,但您可以手動設置此值更高或更低。 
+如果您的電腦有少於5個 Cpu，則此變數的值會設定為`32`。 否則，預設值等於16乘以 Cpu 的數目。 此變數的最大預設值為`3000`，但您可以手動將此值設定為較高或較低。 
 
 | 作業系統 | Command  |
 |--------|-----------|
@@ -88,14 +88,14 @@ azcopy jobs resume <job-id> --cap-mbps 10
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-使用`azcopy env`檢查此變數的當前值。 如果該值為空,則可以通過查看任何 AzCopy 日誌檔的開頭來讀取正在使用的值。 所選值及其選擇原因將報告在那裡。
+使用`azcopy env`來檢查這個變數目前的值。 如果此值為空白，則您可以查看任何 AzCopy 記錄檔的開頭，以讀取所使用的值。 選取的值及其選取的原因會在該處回報。
 
-在設置此變數之前,我們建議您運行基準測試。 基準測試過程將報告建議的併發值。 或者,如果網路條件和負載不同,請為此變數設置為單詞`AUTO`,而不是特定數位。 這將導致 AzCopy 始終運行與基準測試中相同的自動調優過程。
+設定此變數之前，建議您先執行基準測試。 基準測試程式會報告建議的並行值。 或者，如果您的網路條件和承載有所差異，請將此變數`AUTO`設定為單字，而不是特定的數位。 這會導致 AzCopy 一律執行其在基準測試測試中所使用的相同自動調整程式。
 
 ### <a name="optimize-memory-use"></a>優化記憶體使用
 
-設置`AZCOPY_BUFFER_GB`環境變數以指定在下載和上傳檔時希望 AzCopy 使用的最大系統記憶體量。
-以 GB 為單位表示此值。
+設定`AZCOPY_BUFFER_GB`環境變數，以指定您想要 AzCopy 在下載和上傳檔案時使用的系統記憶體數量上限。
+以 gb 為單位表示此值。
 
 | 作業系統 | Command  |
 |--------|-----------|
@@ -103,32 +103,32 @@ azcopy jobs resume <job-id> --cap-mbps 10
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
 | **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
-### <a name="optimize-file-synchronization"></a>優化檔案同步
+### <a name="optimize-file-synchronization"></a>優化檔案同步處理
 
-[同步](storage-ref-azcopy-sync.md)命令識別目標中的所有檔案,然後在啟動同步操作之前比較檔名和上次修改的時間戳。 如果您有大量檔,則可以通過消除這種前期處理來提高性能。 
+[Sync](storage-ref-azcopy-sync.md)命令會識別目的地上的所有檔案，然後比較檔案名和上次修改的時間戳記，然後再開始同步處理作業。 如果您有大量的檔案，您可以藉由排除這項提前處理來改善效能。 
 
-為此,請改用[azcopy 複製](storage-ref-azcopy-copy.md)命令`--overwrite`,並將標誌`ifSourceNewer`設定為 。 AzCopy 將比較文件,因為它們被複製而不執行任何前期掃描和比較。 在需要比較大量文件的情況下,這提供了性能優勢。
+若要完成此動作，請改用[azcopy copy](storage-ref-azcopy-copy.md)命令，並將`--overwrite`旗標`ifSourceNewer`設定為。 AzCopy 會比較複製的檔案，而不需要執行任何前置掃描和比較。 當有大量檔案要比較時，這會提供效能邊緣。
 
-[azcopy copy](storage-ref-azcopy-copy.md)指令不會從目標中刪除檔案,因此,如果要在源中不再存在時刪除目標檔案,請使用[azcopy 同步](storage-ref-azcopy-sync.md)指令`--delete-destination``true`,`prompt`將標誌設定為 或 。 
+[Azcopy copy](storage-ref-azcopy-copy.md)命令不會從目的地刪除檔案，因此，如果您想要在目的地上不再存在檔案時刪除該檔案中的檔案，請使用[azcopy 同步](storage-ref-azcopy-sync.md)命令，並將`--delete-destination`旗標設定為`true`或`prompt`的值。 
 
 ## <a name="troubleshoot-issues"></a>針對問題進行疑難排解
 
-AzCopy 為每個作業創建日誌和計劃檔。 您可以使用記錄來調查任何可能的問題並進行疑難排解。 
+AzCopy 會為每個作業建立記錄檔和計畫檔案。 您可以使用記錄來調查任何可能的問題並進行疑難排解。 
 
-日誌將包含失敗狀態`UPLOADFAILED``COPYFAILED`(、`DOWNLOADFAILED`和 ),完整路徑和失敗的原因。
+記錄檔將包含失敗的狀態（`UPLOADFAILED`、 `COPYFAILED`和`DOWNLOADFAILED`）、完整路徑，以及失敗的原因。
 
-預設情況下,日誌和計劃檔位於 Windows`%USERPROFILE%\.azcopy`上的`$HOME$\.azcopy`目錄中或 Mac 和 Linux 上的目錄中,但您可以更改該位置(如果需要)。
+根據預設，記錄檔和方案檔位於 Windows 上的`%USERPROFILE%\.azcopy`目錄或`$HOME$\.azcopy` Mac 和 Linux 上的目錄，但您可以視需要變更該位置。
 
-相關錯誤不一定是檔中出現的第一個錯誤。 對於網路錯誤、超時和伺服器忙錯誤等錯誤,AzCopy 將重試多達 20 次,並且重試過程通常成功。  您看到的第一個錯誤可能是成功重試的無害。  因此,不要查看檔中的第一個錯誤,而是查找靠近`UPLOADFAILED``COPYFAILED`或的錯誤`DOWNLOADFAILED`。 
+相關的錯誤不一定是出現在檔案中的第一個錯誤。 對於像是網路錯誤、超時和伺服器忙碌錯誤等錯誤，AzCopy 會重試最多20次，而且通常會成功重試進程。  您所看到的第一個錯誤，可能是已成功重試的無害問題。  因此，請不要查看檔案中的第一個錯誤，而是尋找靠近`UPLOADFAILED`、 `COPYFAILED`或`DOWNLOADFAILED`的錯誤。 
 
 > [!IMPORTANT]
-> 向 Microsoft 支援提交請求(或排除涉及任何第三方的問題的疑難排解)時,共用要執行的命令的修訂版本。 這可確保 SAS 不會意外地與任何人共用。 您可以在記錄檔開頭找到編校的版本。
+> 提交要求以 Microsoft 支援服務（或針對任何協力廠商的問題進行疑難排解）時，請共用您要執行之命令的編校版本。 這可確保 SAS 不會意外與任何人共用。 您可以在記錄檔開頭找到編校的版本。
 
 ### <a name="review-the-logs-for-errors"></a>檢閱記錄以了解錯誤
 
-以下命令將從`UPLOADFAILED``04dc9ca9-158f-7945-5933-564021086c79`紀錄中取得狀態的所有錯誤:
+下列命令會從`UPLOADFAILED` `04dc9ca9-158f-7945-5933-564021086c79`記錄檔中取得狀態為的所有錯誤：
 
-**視窗(電源外殼)**
+**Windows （PowerShell）**
 
 ```
 Select-String UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
@@ -142,7 +142,7 @@ grep UPLOADFAILED .\04dc9ca9-158f-7945-5933-564021086c79.log
 
 ### <a name="view-and-resume-jobs"></a>檢視和繼續作業
 
-每個傳輸作業都會建立 AzCopy 作業。 使用以下指令檢視工作的歷史紀錄:
+每個傳輸作業都會建立 AzCopy 作業。 使用下列命令來查看工作的歷程記錄：
 
 ```
 azcopy jobs list
@@ -160,7 +160,7 @@ azcopy jobs show <job-id>
 azcopy jobs show <job-id> --with-status=Failed
 ```
 
-使用以下命令恢復失敗/已取消的作業。 此命令使用其識別碼和 SAS 權杖,因為它不持久,因為出於安全原因:
+使用下列命令來繼續失敗/已取消的工作。 此命令會使用其識別碼和 SAS 權杖，因為它在安全性方面並不會持續：
 
 ```
 azcopy jobs resume <job-id> --source-sas="<sas-token>"
@@ -168,17 +168,17 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 ```
 
 > [!TIP]
-> 將路徑參數(如 SAS 令牌)與單引號 ('') 括起來。 除 Windows 命令外殼 (cmd.exe) 外,在所有命令 shell 中使用單引號。 如果使用 Windows 命令命令命令命令 (cmd.exe),則用雙引號(")而不是單個引號('')括起來路徑參數。
+> 將路徑引數（例如 SAS 權杖）括在單引號（' '）。 在所有命令 shell 中使用單引號，但 Windows 命令介面（cmd.exe）除外。 如果您使用 Windows 命令 Shell （cmd.exe），請將路徑引數括在雙引號（""），而不是單引號（' '）。
 
-恢復作業時,AzCopy 會查看工作計劃檔。 計畫檔列出首次創建作業時識別要處理的所有檔。 恢復作業時,AzCopy 將嘗試傳輸計畫檔中列出的尚未傳輸的所有檔案。
+當您繼續工作時，AzCopy 會查看作業計畫檔案。 計畫檔案會列出第一次建立作業時識別要處理的所有檔案。 當您繼續工作時，AzCopy 會嘗試傳送尚未傳送的計畫檔案中列出的所有檔案。
 
-## <a name="change-the-location-of-the-plan-and-log-files"></a>變更排程與紀錄檔的位置
+## <a name="change-the-location-of-the-plan-and-log-files"></a>變更計畫和記錄檔的位置
 
-默認情況下,計劃和日誌檔位於 Windows`%USERPROFILE%\.azcopy`上的 目錄中,或者`$HOME$\.azcopy`位於 Mac 和 Linux 上的目錄中。 您可以更改此位置。
+根據預設，計畫和記錄檔位於 Windows 上的`%USERPROFILE%\.azcopy`目錄中，或位於 Mac 和`$HOME$\.azcopy` Linux 上的目錄中。 您可以變更此位置。
 
-### <a name="change-the-location-of-plan-files"></a>變更排程檔案的位置
+### <a name="change-the-location-of-plan-files"></a>變更計畫檔案的位置
 
-使用這些命令中的任何一個。
+使用任何這些命令。
 
 | 作業系統 | Command  |
 |--------|-----------|
@@ -186,11 +186,11 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
-使用`azcopy env`檢查此變數的當前值。 如果值為空,則計劃檔將寫入預設位置。
+使用`azcopy env`來檢查這個變數目前的值。 如果此值為空白，則會將計畫檔案寫入至預設位置。
 
-### <a name="change-the-location-of-log-files"></a>變更紀錄檔的位置
+### <a name="change-the-location-of-log-files"></a>變更記錄檔的位置
 
-使用這些命令中的任何一個。
+使用任何這些命令。
 
 | 作業系統 | Command  |
 |--------|-----------|
@@ -198,18 +198,18 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
-使用`azcopy env`檢查此變數的當前值。 如果值為空,則日誌將寫入預設位置。
+使用`azcopy env`來檢查這個變數目前的值。 如果此值為空白，則會將記錄寫入至預設位置。
 
 ## <a name="change-the-default-log-level"></a>變更預設記錄層級
 
-預設情況下,AzCopy 紀錄等級設定為`INFO`。 如果要降低日誌詳細性以節省磁碟空間,請使用``--log-level``選項 覆蓋此設置。 
+根據預設，AzCopy 記錄層級會設定`INFO`為。 如果您想要減少記錄的詳細資訊以節省磁碟空間，請使用``--log-level``選項來覆寫此設定。 
 
-可用的紀錄等級`NONE``DEBUG``INFO`是: 、、、、、、`FATAL``WARNING``ERROR``PANIC`與 。
+可用的記錄層級`NONE`為`DEBUG`： `INFO`、 `WARNING`、 `ERROR`、 `PANIC`、、 `FATAL`和。
 
-## <a name="remove-plan-and-log-files"></a>刪除計畫與紀錄檔
+## <a name="remove-plan-and-log-files"></a>移除方案和記錄檔
 
-如果要從本地電腦中移除所有計畫與紀錄檔以節省磁碟空間,請使用指令`azcopy jobs clean`。
+如果您想要從本機電腦移除所有的計畫和記錄檔，以節省磁碟空間，請`azcopy jobs clean`使用命令。
 
-要刪除僅與一個工作關聯的計畫與紀錄檔,請使用`azcopy jobs rm <job-id>`。 將此範例`<job-id>`中的占位符替換為作業的作業 ID。
+若只要移除與一項作業相關聯的方案和記錄檔`azcopy jobs rm <job-id>`，請使用。 將此`<job-id>`範例中的預留位置取代為作業的作業識別碼。
 
 

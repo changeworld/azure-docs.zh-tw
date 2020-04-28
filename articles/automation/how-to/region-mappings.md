@@ -9,18 +9,18 @@ ms.author: magoedte
 ms.date: 04/23/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1bc47fe6e1f0730bcff49e138df92f85ba3ef1a8
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 607cebca3e6e8ddd95900ecdbd7041e5f7bb50cc
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114474"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82165768"
 ---
 # <a name="workspace-mappings"></a>工作區對應
 
 啟用更新管理、變更追蹤和清查，或在離峰時段啟動/停止 Vm 時，只有特定區域支援連結 Log Analytics 工作區和訂用帳戶中的自動化帳戶。 此對應僅適用于自動化帳戶和 Log Analytics 工作區。 Log Analytics 工作區和自動化帳戶必須位於相同的訂用帳戶中，但可位於部署至相同區域的不同資源群組中。
 
-如需詳細資訊，請參閱[Log Analytics 工作區和自動化帳戶](../azure-monitor/insights/solutions.md#log-analytics- workspace-and-automation-account)。
+如需詳細資訊，請參閱[Log Analytics 工作區和自動化帳戶](../../azure-monitor/insights/solutions.md#log-analytics-workspace-and-automation-account)。
 
 ## <a name="supported-mappings"></a>支援的對應
 

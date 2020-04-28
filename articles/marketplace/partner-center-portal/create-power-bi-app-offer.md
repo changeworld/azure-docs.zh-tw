@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 776311d6e6395cbe462f958bd8685fa0259e1fc2
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.openlocfilehash: dc036ae3cba6aa4d3a689562afffb991fadc8c0a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80674185"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867604"
 ---
 # <a name="create-a-power-bi-app"></a>建立 Power BI 應用程式
 
@@ -128,7 +128,7 @@ ms.locfileid: "80674185"
 
 ### <a name="legal"></a>法律
 
-#### <a name="terms-and-conditions"></a>條款和條件
+#### <a name="terms-and-conditions"></a>條款及條件
 
 要提供您自己的自定義條款和條件,請在 **「條款和條件**」框中輸入最多 10,000 個字元。 如果您的條款和條件需要較長的描述,請輸入單個 Web 連結,指向可以找到它們的位置。 它將作為活動連結向客戶顯示。
 
@@ -221,6 +221,9 @@ ms.locfileid: "80674185"
 ### <a name="marketplace-images"></a>市場映射
 
 提供徽標和圖像,以便與您的產品配合使用。 所有圖像必須採用 .png 格式。 模糊圖像將被拒絕。
+
+>[!Note]
+>如果上傳文件出現問題,請確保本地網路不會阻止合作夥伴中心使用https://upload.xboxlive.com的服務。
 
 #### <a name="store-logos"></a>Microsoft Store標誌。
 

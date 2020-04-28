@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 3765c70b27fb98518f71a55f00acfe5b831044ec
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146680"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188390"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning 的企業安全性
 
@@ -78,7 +78,7 @@ Azure Machine Learning 針對 web 服務支援兩種形式的驗證：金鑰和�
 如果內建角色不符合您的需求，您可以建立自訂角色。 只有工作區上的作業和 Machine Learning Compute 支援自訂角色。 自訂角色可以具有工作區的讀取、寫入或刪除許可權，以及該工作區中的計算資源。 您可以在特定工作區層級、特定的資源群組層級或特定的訂用帳戶層級上，讓角色可供使用。 如需詳細資訊，請參閱[管理 Azure Machine Learning 工作區中的使用者和角色](how-to-assign-roles.md)。
 
 > [!WARNING]
-> Azure Active Directory 的企業對企業共同作業目前不支援 Azure Machine Learning。
+> Azure Active Directory 的企業對企業共同作業支援 Azure Machine Learning，但目前不支援 Azure Active Directory 的企業對取用者共同作業。
 
 ### <a name="securing-compute-targets-and-data"></a>保護計算目標和資料
 
@@ -112,7 +112,7 @@ Azure Machine Learning 依賴其他 Azure 服務來計算資源。 計算資源 
 > [!TIP]
 > 您可以將虛擬網路和私人連結結合在一起，以保護您的工作區與其他 Azure 資源之間的通訊。 不過，有些組合需要 Enterprise edition 工作區。 使用下表來瞭解需要 Enterprise edition 的案例：
 >
-> | 案例 | Enterprise</br>edition | 基本</br>edition |
+> | 狀況 | Enterprise</br>edition | 基本</br>edition |
 > | ----- |:-----:|:-----:| 
 > | 沒有虛擬網路或私人連結 | ✔ | ✔ |
 > | 沒有私用連結的工作區。 虛擬網路中的其他資源（Azure Container Registry 除外） | ✔ | ✔ |
@@ -385,10 +385,7 @@ Microsoft 也建議您不要將敏感資訊（例如帳戶金鑰秘密）儲存�
 
 * [使用 TLS 保護 Azure Machine Learning web 服務](how-to-secure-web-service.md)
 * [使用部署為 web 服務的 Machine Learning 模型](how-to-consume-web-service.md)
-* [如何執行批次預測](how-to-use-parallel-run-step.md)
-* [使用 Application Insights 監視您的 Azure Machine Learning 模型](how-to-enable-app-insights.md)
-* [在生產環境中收集模型資料](how-to-enable-data-collection.md)
-* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [搭配使用 Azure Machine Learning 與 Azure 防火牆](how-to-access-azureml-behind-firewall.md)
 * [搭配 Azure 虛擬網路使用 Azure Machine Learning](how-to-enable-virtual-network.md)
 * [建置建議系統的最佳作法](https://github.com/Microsoft/Recommenders)
 * [在 Azure 上建置即時建議 API](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

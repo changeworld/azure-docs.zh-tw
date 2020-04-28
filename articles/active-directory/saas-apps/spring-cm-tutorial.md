@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: be4edfe3262ab74d903384eb00c0282acc7a3299
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74233392"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867435"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>教學課程：Azure Active Directory 與 SpringCM 整合
 
@@ -202,7 +202,7 @@ SpringCM 與 Azure AD 整合提供下列優點：
 若要讓 Azure Active Directory 使用者能夠登入 SpringCM，必須將他們佈建到 SpringCM。 SpringCM 需以手動方式佈建。
 
 > [!NOTE]
-> 如需詳細資訊，請參閱[建立和編輯 SpringCM 使用者](https://knowledge.springcm.com/create-and-edit-a-springcm-user) (英文)。 
+> 如需詳細資訊，請參閱[建立和編輯 SpringCM 使用者](http://community.springcm.com/s/article/Create-and-Edit-a-SpringCM-User-1619481053) (英文)。 
 
 **若要將使用者帳戶佈建到 SpringCM，請執行下列步驟：**
 

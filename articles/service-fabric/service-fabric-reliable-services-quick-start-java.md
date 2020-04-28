@@ -1,20 +1,20 @@
 ---
-title: 在 JAVA 中創建您的第一個可靠服務
+title: 以 JAVA 建立您的第一個可靠服務
 description: 概述使用無狀態與具狀態服務來建立 Microsoft Azure Service Fabric 應用程式。
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: c3b301a7a9039f1fe8095950f0a5a4e23eb52a9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7855b92c90a9ccd208a25080c260437e6808d1b7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75614208"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184141"
 ---
-# <a name="get-started-with-reliable-services-in-java"></a>從 JAVA 中的可靠服務開始
+# <a name="get-started-with-reliable-services-in-java"></a>開始使用 JAVA 中的 Reliable Services
 > [!div class="op_single_selector"]
-> * [C# 在 Windows 上](service-fabric-reliable-services-quick-start.md)
+> * [Windows 上的 c #](service-fabric-reliable-services-quick-start.md)
 > * [在 Linux 上使用 Java](service-fabric-reliable-services-quick-start-java.md)
 >
 >
@@ -255,7 +255,7 @@ $ gradle
 
 這些命令的參數可以在應用程式套件內產生的資訊清單中找到。
 
-部署應用程式後，開啟瀏覽器並瀏覽至 [http://localhost:19080/Explorer](http://localhost:19080/Explorer) 的 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)。 接著展開 [應用程式]**** 節點，請注意，您的應用程式類型現在有一個項目，而另一個項目則在該類型的第一個執行個體。
+部署應用程式後，開啟瀏覽器並瀏覽至 `http://localhost:19080/Explorer` 的 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)。 接著展開 [應用程式]**** 節點，請注意，您的應用程式類型現在有一個項目，而另一個項目則在該類型的第一個執行個體。
 
 > [!IMPORTANT]
 > 若要將應用程式部署到 Azure 中的安全 Linux 叢集，您需要設定憑證來向 Service Fabric 執行階段驗證您的應用程式。 這樣做就能讓您的 Reliable Services 服務可與基礎 Service Fabric 執行階段 API 進行通訊。 若要深入了解，請參閱[將 Reliable Services 應用程式設定為在 Linux 叢集上執行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  

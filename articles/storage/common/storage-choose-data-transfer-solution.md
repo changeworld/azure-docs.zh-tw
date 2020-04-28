@@ -8,12 +8,12 @@ ms.subservice: blobs
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
-ms.openlocfilehash: ada96d0d4b167e30cb6e271aa02d0d399a9ae7d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df261dbf8af8ffdb4ccb10626594626150245748
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78303081"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176391"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>選擇適合資料轉送的 Azure 解決方案
 
@@ -50,30 +50,30 @@ ms.locfileid: "78303081"
 
 - 您的可用網路頻寬有限 (或無頻寬)，而您想要轉送大型資料集？
   
-    如果是，請參閱：[方案 1：傳輸沒有或低網路頻寬的大型資料集](storage-solution-large-dataset-low-network.md)。
+    如果是，請參閱：[案例1：傳輸沒有或低網路頻寬的大型資料集](storage-solution-large-dataset-low-network.md)。
 - 您想要透過網路轉送大型資料集，且您有中速至高速的網路頻寬？
 
-    如果是，請參閱：[方案 2：傳輸具有中到高網路頻寬的大型資料集](storage-solution-large-dataset-moderate-high-network.md)。
+    如果是，請參閱：[案例2：使用適中到高網路頻寬傳輸大型資料集](storage-solution-large-dataset-moderate-high-network.md)。
 - 您想偶爾透過網路轉送幾個檔案？
 
-    如果是，請參閱[方案 3：傳輸具有受限於中等網路頻寬的小型資料集](storage-solution-small-dataset-low-moderate-network.md)。
+    如果是，請參閱[案例3：使用限制為適中的網路頻寬來傳輸小型資料集](storage-solution-small-dataset-low-moderate-network.md)。
 - 您需要以定期間隔的時間點進行資料轉送嗎？
 
-    如果是，請使用方案 4 中概述的腳本/程式設計選項[：定期資料傳輸](storage-solution-periodic-data-transfer.md)。
+    如果是，請使用[案例4：定期資料傳輸](storage-solution-periodic-data-transfer.md)中所述的腳本/程式設計選項。
 - 您需要持續不斷進行資料轉送嗎？
 
-    如果是，請使用方案 4 中的選項[：定期資料傳輸](storage-solution-periodic-data-transfer.md)。
+    如果是，請使用[案例4：定期資料傳輸](storage-solution-periodic-data-transfer.md)中的選項。
 
-## <a name="data-transfer-feature-in-azure-portal"></a>Azure 門戶中的資料傳輸功能
+## <a name="data-transfer-feature-in-azure-portal"></a>Azure 入口網站中的資料傳輸功能
 
-您還可以轉到 Azure 門戶中的 Azure 存儲帳戶，然後選擇**資料傳輸**功能。 提供環境中的網路頻寬、要傳輸的資料的大小和資料傳輸頻率。 您將看到與您提供的資訊對應的最佳資料傳輸解決方案。 
+您也可以在 Azure 入口網站中移至您的 Azure 儲存體帳戶，然後選取 [**資料傳輸**] 功能。 提供您環境中的網路頻寬、您想要傳輸的資料大小，以及資料傳輸的頻率。 您會看到與您所提供之資訊對應的最佳資料傳輸解決方案。 
 
 ## <a name="next-steps"></a>後續步驟
 
 - [取得 Azure 儲存體總管簡介](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/) \(英文\)。
 - [閱讀 AzCopy 的概觀](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)。
-- [使用 Azure PowerShell 搭配 Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-powershell-guide-full)
-- [快速入門：使用 Azure CLI 創建、下載和列出 blob](../blobs/storage-quickstart-blobs-cli.md)
+- [快速入門：使用 PowerShell 上傳、下載及列出 blob](../blobs/storage-quickstart-blobs-powershell.md)
+- [快速入門：使用 Azure CLI 建立、下載及列出 blob](../blobs/storage-quickstart-blobs-cli.md)
 - 了解：
 
     - [適用於離線轉送的 Azure 資料箱、Azure 資料箱磁碟和 Azure Data Box Heavy ](https://docs.microsoft.com/azure/databox/)。

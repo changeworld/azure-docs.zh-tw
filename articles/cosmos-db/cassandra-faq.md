@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 2d6cae3a7a41eae05783d3bcc12ec2bfe8220c4c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82148313"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192828"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>有關 Azure Cosmos DB 的 Cassandra API 常見問題
 
 ## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Apache Cassandra 與 Cassandra API 之間的一些主要差異為何？
 
-- Apache Cassandra 建議在分割區索引鍵的大小上使用 100 MB 的限制。 Azure Cosmos DB 的 Cassandra API 允許每個分割區最多 10 GB。
+- Apache Cassandra 建議在分割區索引鍵的大小上使用 100 MB 的限制。 Azure Cosmos DB 的 Cassandra API 允許每個分割區最多 20 GB。
 - Apache Cassandra 可讓您停用持久認可。 您可以略過寫入認可記錄檔，並直接移至 memtables。 如果節點在 memtables 排清到磁片上的 SSTables 之前停止運作，這可能會導致資料遺失。 Azure Cosmos DB 一律會執行長期認可，以協助防止資料遺失。
 - 如果工作負載牽涉到許多取代或刪除，Apache Cassandra 會看到效能降低的情況。 這是因為讀取工作負載需要略過來提取最新資料的原因。 當工作負載有許多取代或刪除時，Cassandra API 不會看到降低的讀取效能。
 - 在高更換工作負載的情況下，需要執行壓縮以合併磁片上的 SSTables。 （需要合併，因為 Apache Cassandra 的寫入只會附加。 多個更新會儲存為需要定期合併的個別 Sstable loader 專案。 這種情況也可能導致壓縮期間的讀取效能降低。 Cassandra API 不會對效能造成影響，因為 API 不會執行壓縮。

@@ -1,1196 +1,1196 @@
 ---
-title: Azure 容器註冊表的 Azure 安全基線
-description: Azure 容器註冊表的 Azure 安全基線
+title: 適用于 Azure Container Registry 的 Azure 安全性基準
+description: 適用于 Azure Container Registry 的 Azure 安全性基準
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9225cfd9793a84f371387d6450a3dfa80ba74de3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 95864f932fe255d561eaeb2d803b5fcc79cb2802
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547532"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184090"
 ---
-# <a name="azure-security-baseline-for-azure-container-registry"></a>Azure 容器註冊表的 Azure 安全基線
+# <a name="azure-security-baseline-for-azure-container-registry"></a>適用于 Azure Container Registry 的 Azure 安全性基準
 
-Azure 容器註冊表的 Azure 安全基線包含有助於改進部署安全狀態的建議。
+適用于 Azure Container Registry 的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
 
-此服務的基線取自[Azure 安全基準版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview),它提供了有關如何使用最佳實務指南在 Azure 上保護雲端解決方案的建議。
+此服務的基準取自[Azure 安全性基準測試版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供有關如何在 Azure 上使用最佳作法指引來保護雲端解決方案的建議。
 
-有關詳細資訊,請參閱[Azure 安全基線概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+如需詳細資訊，請參閱[Azure 安全性基準總覽](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
 
 ## <a name="network-security"></a>網路安全性
 
-*有關詳細資訊,請參閱[安全控制:網路安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:使用虛擬網路上的網路安全組或 Azure 防火牆保護資源
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在您的虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
-**指南**:Azure 虛擬網路為 Azure 和本地資源提供安全的專用網路。 通過限制從 Azure 虛擬網路訪問專用 Azure 容器註冊表,可確保只有虛擬網路中的資源訪問註冊表。 對於跨界方案,還可以配置防火牆規則,以便僅允許從特定 IP 位址進行註冊表訪問。 從防火牆後面配置防火牆訪問規則和服務標記以訪問容器註冊表。
+**指引**： azure 虛擬網路為您的 azure 和內部部署資源提供安全的私用網路。 藉由限制從 Azure 虛擬網路存取您的私用 Azure container registry，您可以確保只有虛擬網路中的資源會存取登錄。 針對跨單位案例，您也可以設定防火牆規則，只允許來自特定 IP 位址的登錄存取。 從防火牆後方，設定防火牆存取規則和服務標籤，以存取您的 container registry。
 
-使用 Azure 虛擬網路或防火牆規則限制對 Azure 容器註冊表的存取:https://docs.microsoft.com/azure/container-registry/container-registry-vnet 
+使用 Azure 虛擬網路或防火牆規則來限制對 Azure container registry 的存取：https://docs.microsoft.com/azure/container-registry/container-registry-vnet 
 
-設定規則以存取防火牆後面的 Azure 容器註冊表:https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules
+設定規則以存取防火牆後方的 Azure container registry：https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules
 
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: 監視和紀錄 Vnet、子網和 NIC 的配置和流量
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：監視並記錄 Vnet、子網和 Nic 的設定和流量
 
-**指南**:使用 Azure 安全中心並修復網路保護建議,以幫助保護 Azure 中的網路資源。 啟用 NSG 串流日誌並將日誌發送到儲存帳戶以進行流量審核。
+**指引**：使用 Azure 資訊安全中心並補救網路保護建議，以協助保護您在 Azure 中的網路資源。 啟用 NSG 流量記錄，並將記錄傳送到儲存體帳戶以進行流量審核。
 
-如何啟用 NSG 串流紀錄:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+如何啟用 NSG 流量記錄：https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-保護您的網路資源:https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
+保護您的網路資源：https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
 
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="13-protect-critical-web-applications"></a>1.3: 保護關鍵 Web 應用程式
+### <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 web 應用程式
 
-**指南**:不適用。 基準測試適用於託管 Web 應用程式的 Azure 應用服務或計算資源。
+**指導**方針：不適用。 基準測試適用于裝載 web 應用程式的 Azure App Service 或計算資源。
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: 拒絕與已知惡意 IP 位址的通訊
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
-**指南**:在虛擬網路上啟用 DDoS 標準保護,以保護免受 DDoS 攻擊。 使用 Azure 安全中心整合威脅智慧拒絕與已知惡意或未使用的 Internet IP 位址的通訊。  在啟用威脅智慧后,在每個組織的網路邊界部署 Azure 防火牆,並將其配置為針對惡意網路流量"警報和拒絕」。。
+**指引**：在您的虛擬網路上啟用 ddos 標準保護，以防範 ddos 攻擊。 使用 Azure 資訊安全中心整合式威脅情報來拒絕與已知惡意或未使用的網際網路 IP 位址的通訊。  在組織的每個網路界限部署 Azure 防火牆，並啟用威脅情報並設定為「警示和拒絕」，以取得惡意的網路流量。
 
-您可以使用 Azure 安全中心"及時網路"訪問來配置 NSG,以在有限時間內將終結點暴露到已批准的 IP 位址。 此外,使用 Azure 安全中心自適應網路強化來建議基於實際流量和威脅情報限制埠和源 IP 的 NSG 配置。
+您可以使用 Azure 資訊安全中心的即時網路存取來設定 Nsg，以限制在有限的期間內，將端點暴露在核准的 IP 位址。 此外，您也可以使用 Azure 資訊安全中心的彈性網路強化，根據實際的流量和威脅情報來建議限制埠和來源 Ip 的 NSG 設定。
 
-如何設定 DDoS 保護:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+如何設定 DDoS 保護：https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-如何部署 Azure 防火牆:https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
+如何部署 Azure 防火牆：https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
-瞭解 Azure 安全中心整合威脅情報:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+瞭解 Azure 資訊安全中心整合式威脅情報：https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-瞭解 Azure 安全中心自適應網路強化:https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
+瞭解 Azure 資訊安全中心的彈性網路強化：https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
 
-Azure 安全中心正好及時進行網路存取控制:https://docs.microsoft.com/azure/security-center/security-center-just-in-time
+Azure 資訊安全中心即時網路存取控制：https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1.5: 記錄網路封包與串流紀錄
+### <a name="15-record-network-packets-and-flow-logs"></a>1.5：記錄網路封包和流量記錄
 
-**指南**:為附加到子網的 NSG 啟用網路安全組 (NSG) 流日誌,這些日誌用於保護 Azure 容器註冊表。 您可以將 NSG 串流紀錄記錄到 Azure 儲存帳戶中,以生成流記錄。 如果需要調查異常活動,則啟用 Azure 網路觀察程序數據包捕獲。
+**指導**方針：針對附加至用來保護 Azure container registry 之子網的 NSG，啟用網路安全性群組（NSG）流量記錄。 您可以將 NSG 流量記錄錄製到 Azure 儲存體帳戶以產生流量記錄。 如果需要調查異常活動，請啟用 Azure 網路監看員封包捕獲。
 
-如何啟用 NSG 串流紀錄:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+如何啟用 NSG 流量記錄：https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-如何啟用網路觀察程式:https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+如何啟用網路監看員：https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: 部署基於網路的入侵偵測/入侵防禦系統(IDS/IPS)
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統（IDS/IPS）
 
-**指南**:從 Azure 應用商店中選擇支援 IDS/IPS 功能的具有有效負載檢查功能的產品/ 如果不需要基於有效負載檢查的入侵檢測和/或預防,則可以使用具有威脅智慧的 Azure 防火牆。 Azure 防火牆威脅基於智慧的篩選可以警報和拒絕來自已知惡意 IP 位址和域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。
+**指引**：從支援具有承載檢查功能之 IDS/IPS 功能的 Azure Marketplace 中選取供應專案。 如果基於承載檢查的入侵偵測和/或預防不是必要條件，則可以使用具有威脅情報的 Azure 防火牆。 以 Azure 防火牆威脅情報為基礎的篩選可以警示和拒絕進出已知惡意 IP 位址和網域的流量。 IP 位址和網域來自 Microsoft 威脅情報摘要。
 
-在每個組織的網路邊界部署您選擇的防火牆解決方案,以檢測和/或拒絕惡意流量。
+在您組織的每個網路界限上部署您選擇的防火牆解決方案，以偵測及/或拒絕惡意流量。
 
-Azure 應用商店:https://azuremarketplace.microsoft.com/marketplace/?term=Firewall 
+Azure Marketplace：https://azuremarketplace.microsoft.com/marketplace/?term=Firewall 
 
-如何部署 Azure 防火牆:https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
+如何部署 Azure 防火牆：https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
-如何使用 Azure 防火牆配置警報:https://docs.microsoft.com/azure/firewall/threat-intel
+如何使用 Azure 防火牆設定警示：https://docs.microsoft.com/azure/firewall/threat-intel
 
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="17-manage-traffic-to-web-applications"></a>1.7: 管理 Web 應用程式的流量
+### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 web 應用程式的流量
 
-**指南**:不適用。 基準測試適用於在 Azure 應用服務或計算資源上運行的 Web 應用程式。
+**指導**方針：不適用。 基準測試適用于在 Azure App Service 或計算資源上執行的 web 應用程式。
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: 最大限度降低網路安全規則的複雜性和管理開銷
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
 
-**指南**:對於需要存取容器註冊表的資源,請使用 Azure 容器註冊表服務的虛擬網路服務標記在網路安全組或 Azure 防火牆上定義網路存取控制件。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 通過在規則的相應源或目標欄位中指定服務標記名稱「AzureContainerRegistry」,可以允許或拒絕相應服務的流量。 Microsoft 管理服務標記包含的位址首碼,並在位址更改時自動更新服務標記。
+**指引**：對於需要存取容器登錄的資源，請使用 Azure Container Registry 服務的虛擬網路服務標籤，以定義網路安全性群組或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則適當的 [來源] 或 [目的地] 欄位中指定服務標記名稱 "AzureContainerRegistry"，您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤所包含的位址前置詞，並隨著位址變更自動更新服務標記。
 
-允許按服務標記存取:https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules#allow-access-by-service-tag
+允許依服務標記存取：https://docs.microsoft.com/azure/container-registry/container-registry-firewall-access-rules#allow-access-by-service-tag
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: 維護網路設備的標準安全設定
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指南**:使用 Azure 策略定義和實施與 Azure 容器註冊表關聯的網路資源的標準安全配置。 在「Microsoft.ContainerRegistry」和「Microsoft.Network」命名空間中使用 Azure 策略別名來創建自訂策略以審核或強制執行容器註冊表的網路配置。 
+**指引**：使用 Azure 原則來定義和執行與您的 Azure 容器登錄相關聯之網路資源的標準安全性設定。 使用 "ContainerRegistry" 和 "Microsoft" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行容器登錄的網路設定。 
 
-可以使用 Azure 藍圖透過在單個藍圖定義中打包關鍵環境工件(如 Azure 資源管理器範本、RBAC 控制件和策略)來簡化大規模 Azure 部署。 輕鬆將藍圖應用於新訂閱,並通過版本控制微調控制和管理。
+您可以使用 Azure 藍圖，藉由在單一藍圖定義中封裝金鑰環境成品（例如 Azure Resource Manager 範本、RBAC 控制項和原則），以簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂用帳戶，並透過版本控制來微調控制和管理。
 
-使用 Azure 策略審核 Azure 容器註冊表的合規性:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+使用 Azure 原則來審查 Azure container registry 的相容性：https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
-如何建立 Azure 藍圖:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+如何建立 Azure 藍圖：https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="110-document-traffic-configuration-rules"></a>1.10: 文件流量設定規則
+### <a name="110-document-traffic-configuration-rules"></a>1.10：檔流量設定規則
 
-**指南**:客戶可以使用 Azure 藍圖在單個藍圖定義中打包關鍵環境工件(如 Azure 資源管理器範本、RBAC 控制件和策略),從而簡化大規模 Azure 部署。 輕鬆將藍圖應用於新訂閱,並通過版本控制微調控制和管理。
+**指引**：客戶可以使用 Azure 藍圖，在單一藍圖定義中封裝金鑰環境成品（例如 Azure Resource Manager 範本、RBAC 控制項和原則），以簡化大規模的 Azure 部署。 輕鬆地將藍圖套用至新的訂用帳戶，並透過版本控制來微調控制和管理。
 
-如何建立 Azure 藍圖:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+如何建立 Azure 藍圖：https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: 使用自動工具監控網路資源設定並偵測變更
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指南**:使用 Azure 活動日誌監視網路資源配置並檢測與容器註冊表相關的網路資源的更改。 在 Azure 監視器中創建警報,這些警報將在對關鍵網路資源的更改時觸發。
+**指導**方針：使用 Azure 活動記錄來監視網路資源設定，並偵測與容器登錄相關之網路資源的變更。 在 Azure 監視器中建立警示，以在重大網路資源的變更發生時觸發。
 
-如何檢視和檢索 Azure 活動日誌事件:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+如何查看和取出 Azure 活動記錄事件：https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-如何在 Azure 監視器中建立警報:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+如何在 Azure 監視器中建立警示：https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
 
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*有關詳細資訊,請參閱[安全控制:日誌記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱[安全性控制：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2.1: 使用批准的時間同步來源
+### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
-**指南**:Microsoft 維護 Azure 資源的時間源,但是,您可以選擇管理計算資源的時間同步設置。
+**指引**： Microsoft 會維護 Azure 資源的時間來源，不過，您可以選擇管理計算資源的時間同步處理設定。
 
-如何為 Azure 計算資源設定時間同步:https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
-
-
-**Azure 安全中心監視**:目前不可用
-
-**責任**: 微軟
-
-### <a name="22-configure-central-security-log-management"></a>2.2: 配置中央安全日誌管理
-
-**指南**:通過 Azure 監視器引入日誌以聚合 Azure 容器註冊表生成的安全數據。 在 Azure 監視器中,使用日誌分析工作區來查詢和執行分析,並使用 Azure 儲存帳戶進行長期/存檔儲存。
-
-診斷評估與稽核的 Azure 容器註冊表日誌:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+如何設定 Azure 計算資源的時間同步處理：https://docs.microsoft.com/azure/virtual-machines/windows/time-sync
 
 
+**Azure 資訊安全中心監視**：目前無法使用
 
-**Azure 安全中心監視**:目前不可用
+**責任**： Microsoft
 
-**責任**: 客戶
+### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:為 Azure 資源啟用稽核紀錄記錄
+**指導**方針：透過 Azure 監視器內嵌記錄，以匯總 Azure container registry 所產生的安全性資料。 在 Azure 監視器中，使用 Log Analytics 工作區來查詢和執行分析，並將 Azure 儲存體帳戶用於長期/封存儲存體。
 
-**指南**:Azure 監視器收集註冊表中使用者驅動事件的資源日誌(以前稱為診斷日誌)。 收集和使用此數據以審核註冊表身份驗證事件,並提供註冊表專案(如拉取和推送事件)的完整活動跟蹤,以便您可以診斷註冊表的安全問題。
-
-診斷評估與稽核的 Azure 容器註冊表日誌:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
-
-
-**Azure 安全中心監視**:目前不可用
-
-**責任**: 客戶
-
-### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: 從作業系統收集安全日誌
-
-**指南**:不適用。 基準測試適用於計算資源。
-
-**Azure 安全中心監視**:不適用
-
-**責任**: 客戶
-
-### <a name="25-configure-security-log-storage-retention"></a>2.5: 設定安全紀錄儲存保留
-
-**指南**:在 Azure 監視器中,根據組織的合規性法規設置日誌分析工作區保留期。 使用 Azure 儲存帳戶進行長期/存檔存儲。
-
-如何為紀錄分析工作區設定紀錄保留參數:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+用於診斷評估和審核的 Azure Container Registry 記錄：https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
 
 
-**Azure 安全中心監視**:不適用
 
-**責任**: 客戶
+**Azure 資訊安全中心監視**：目前無法使用
 
-### <a name="26-monitor-and-review-logs"></a>2.6: 監視與檢視紀錄
+**責任**：客戶
 
-**指導**:分析和監視 Azure 容器註冊表日誌是否存在異常行為,並定期查看結果。 使用 Azure 監視器的日誌分析工作區查看日誌並執行日誌數據的查詢。
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的審核記錄
 
-診斷評估與稽核的 Azure 容器註冊表日誌:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+**指導**方針： Azure 監視器會針對登錄中的使用者驅動事件收集資源記錄（先前稱為診斷記錄）。 收集並取用此資料以審查登錄驗證事件，並提供登錄成品（例如提取和推播事件）的完整活動記錄，讓您可以診斷登錄的安全性問題。
 
-瞭解紀錄分析工作區:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
-
-如何在 Azure 監視器中執行自訂查詢:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+用於診斷評估和審核的 Azure Container Registry 記錄：https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: 啟用例外活動的警示
+### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：從作業系統收集安全性記錄
 
-**指南**:使用 Azure 日誌分析工作區監視和警報安全日誌中與 Azure 容器註冊表相關的異常事件。
+**指導**方針：不適用。 基準測試適用于計算資源。
 
-診斷評估與稽核的 Azure 容器註冊表日誌:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+**Azure 資訊安全中心監視**：不適用
 
-如何對日誌分析日誌資料發出警報:https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
+**責任**：客戶
 
+### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留
 
-**Azure 安全中心監視**:目前不可用
+**指引**：在 Azure 監視器中，根據貴組織的合規性法規來設定您的 Log Analytics 工作區保留期間。 針對長期/封存儲存體使用 Azure 儲存體帳戶。
 
-**責任**: 客戶
-
-### <a name="28-centralize-anti-malware-logging"></a>2.8: 集中反惡意軟體紀錄記錄
-
-**指南**:不適用。 Azure 容器註冊表不處理或生成與惡意軟體相關的日誌。
+如何設定 Log Analytics 工作區的記錄檔保留參數：https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="29-enable-dns-query-logging"></a>2.9: 啟用 DNS 查詢紀錄記錄
+### <a name="26-monitor-and-review-logs"></a>2.6：監視和審核記錄
 
-**指南**:不適用。 Azure 容器註冊表是終結點,不啟動通信,服務不查詢 DNS。
+**指引**：分析及監視異常行為的 Azure Container Registry 記錄，並定期查看結果。 使用 Azure 監視器的 Log Analytics 工作區來審查記錄，並對記錄資料執行查詢。
 
-**Azure 安全中心監視**:不適用
+用於診斷評估和審核的 Azure Container Registry 記錄：https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
 
-**責任**: 客戶
+瞭解 Log Analytics 工作區：https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-### <a name="210-enable-command-line-audit-logging"></a>2.10: 啟用命令列稽核紀錄記錄
-
-**指南**:不適用。 基準測試適用於計算資源。
+如何在 Azure 監視器中執行自訂查詢：https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
+
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
+
+**指引**：使用 Azure Log Analytics 工作區來監視和警示有關安全性記錄檔中的異常活動，以及與 Azure container registry 相關的事件。
+
+用於診斷評估和審核的 Azure Container Registry 記錄：https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+
+如何對 log analytics 記錄資料發出警示：https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
+
+
+**Azure 資訊安全中心監視**：目前無法使用
+
+**責任**：客戶
+
+### <a name="28-centralize-anti-malware-logging"></a>2.8：集中反惡意程式碼記錄
+
+**指導**方針：不適用。 Azure Container Registry 不會處理或產生與反惡意程式碼相關的記錄檔。
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
+
+### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
+
+**指導**方針：不適用。 Azure Container Registry 是端點，而且不會起始通訊，而且服務不會查詢 DNS。
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
+
+### <a name="210-enable-command-line-audit-logging"></a>2.10：啟用命令列審核記錄
+
+**指導**方針：不適用。 基準測試適用于計算資源。
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*有關詳細資訊,請參閱[安全控制:識別和存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱[安全性控制：身分識別和存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 維持管理帳戶的清單
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指南**: Azure 活動目錄 (Azure AD) 具有必須顯式分配且可查詢的內建角色。 使用 Azure AD PowerShell 模組執行臨時查詢以發現屬於管理組成員的帳戶。
+**指導**方針： Azure Active Directory （Azure AD）具有必須明確指派且可查詢的內建角色。 使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。
 
-對於每個 Azure 容器註冊表,跟蹤是啟用還是禁用內置管理帳戶。 不使用時禁用帳戶。
+針對每個 Azure container registry，追蹤內建的系統管理員帳戶是否已啟用或停用。 不使用帳戶時，請將它停用。
 
-如何使用 PowerShell 在 Azure AD 中取得目錄角色:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+如何使用 PowerShell 在 Azure AD 中取得目錄角色：https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-如何使用 PowerShell 取得 Azure AD 中的目錄角色成員:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+如何使用 PowerShell 在 Azure AD 中取得目錄角色的成員：https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
-Azure 容器註冊表管理員帳戶:https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
+Azure Container Registry 系統管理員帳戶：https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
 
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="32-change-default-passwords-where-applicable"></a>3.2: 在適用的情況下變更預設密碼
+### <a name="32-change-default-passwords-where-applicable"></a>3.2：變更預設密碼（若適用）
 
-**指南**: Azure 活動目錄 (Azure AD) 沒有預設密碼的概念。 需要密碼的其他 Azure 資源強制創建具有複雜性要求和最小密碼長度的密碼,具體取決於服務。 您負責可能使用默認密碼的第三方應用程式和應用商店服務。
+**指導**方針： Azure Active Directory （Azure AD）沒有預設密碼的概念。 需要密碼的其他 Azure 資源會強制使用複雜性需求和最小密碼長度來建立密碼，這會因服務而有所不同。 您必須負責可使用預設密碼的協力廠商應用程式和 Marketplace 服務。
 
-如果啟用了 Azure 容器註冊表的預設管理員帳戶,則會自動創建複雜密碼,並應輪換。 不使用時禁用帳戶。
+如果已啟用 Azure container registry 的預設系統管理帳戶，則會自動建立複雜密碼，且應加以輪替。 不使用帳戶時，請將它停用。
 
-Azure 容器註冊表管理員帳戶:https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
+Azure Container Registry 系統管理員帳戶：https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3.3: 使用專用管理帳戶
+### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
-**指導**:圍繞使用專用管理帳戶創建標準操作程式。 使用 Azure 安全中心識別和訪問管理監視管理帳戶數。
+**指導**方針：使用專用的系統管理帳戶來建立標準操作程式。 使用 Azure 資訊安全中心的身分識別與存取管理來監視系統管理帳戶的數目。
 
-此外,創建過程以啟用容器註冊表的內置管理帳戶。 不使用時禁用帳戶。
+此外，建立程式以啟用容器登錄的內建系統管理員帳戶。 不使用帳戶時，請將它停用。
 
-瞭解 Azure 安全中心識別和存取:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+瞭解 Azure 資訊安全中心身分識別和存取：https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-Azure 容器註冊表管理員帳戶:https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
+Azure Container Registry 系統管理員帳戶：https://docs.microsoft.com/azure/container-registry/container-registry-authentication#admin-account
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: 使用 Azure 的目錄的單一登入 (SSO)
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：搭配 Azure Active Directory 使用單一登入（SSO）
 
-**指南**:在可能的情況下,請使用 Azure 活動目錄 SSO,而不是配置每個服務的各個獨立認證。 使用 Azure 安全中心標識和存取管理建議。
+**指導**方針：盡可能使用 Azure Active Directory SSO，而不是設定個別服務的獨立認證。 使用 Azure 資訊安全中心身分識別和存取管理建議。
 
-對於對容器註冊表的單獨存取,請使用與 Azure 活動目錄整合的單個登錄名。
+針對容器登錄的個別存取，請使用與 Azure Active Directory 整合的個別登入。
 
-使用 Azure AD 瞭解 SSO:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+瞭解具有 Azure AD 的 SSO：https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
-個人登入容器註冊表:https://docs.microsoft.com/azure/container-registry/container-registry-authentication#individual-login-with-azure-ad
+容器登錄的個別登入：https://docs.microsoft.com/azure/container-registry/container-registry-authentication#individual-login-with-azure-ad
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5:對所有基於 Azure 活動目錄的存取使用多重身份驗證
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
-**指南**:啟用 Azure 活動目錄 (Azure AD) 多重身份驗證 (MFA), 並遵循 Azure 安全中心標識和存取管理建議。
+**指引**：啟用 Azure Active Directory （Azure AD）多重要素驗證（MFA），並遵循 Azure 資訊安全中心身分識別和存取管理建議。
 
-如何在 Azure 中啟用 MFA:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+如何在 Azure 中啟用 MFA：https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-如何在 Azure 安全中心內監視標識和訪問:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+如何監視 Azure 資訊安全中心內的身分識別和存取：https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: 對所有管理工作使用專用電腦 (特權存取工作站)
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦（特殊許可權存取工作站）進行所有系統管理工作
 
-**指南**:使用具有 MFA 的 PAW(特權存取工作站)來登錄和配置 Azure 資源。
+**指導**方針：搭配使用 paw （特殊許可權存取工作站）與設定為登入和設定 Azure 資源的 MFA。
 
-瞭解特權存取工作站:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+瞭解特殊許可權存取工作站：https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-如何在 Azure 中啟用 MFA:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+如何在 Azure 中啟用 MFA：https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**： N/A
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: 從管理帳戶記錄和警報可疑活動
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：從系統管理客戶紀錄和警示可疑活動
 
-**指南**:當環境中發生可疑或不安全活動時,請使用 Azure 活動目錄 (Azure AD) 安全報告生成日誌和警報。 使用 Azure 安全中心監視標識和訪問活動。
+**指導**方針：當環境中發生可疑或不安全的活動時，請使用 Azure Active Directory （Azure AD）安全性報告來產生記錄檔和警示。 使用 Azure 資訊安全中心來監視身分識別和存取活動。
 
-如何辨識標記為有風險活動的 Azure AD 使用者:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
+如何識別標示有風險活動 Azure AD 使用者：https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-user-at-risk
 
-如何監視 Azure 安全中心中的使用者身份和訪問活動:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+如何在 Azure 資訊安全中心中監視使用者的身分識別和存取活動：https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:僅從已批准的位置管理 Azure 資源
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：僅從核准的位置管理 Azure 資源
 
-**指南**:使用條件訪問命名位置僅允許從 IP 位址範圍或國家/地區的特定邏輯分組進行訪問。
+**指導**方針：使用名為「位置」的條件式存取，只允許來自 IP 位址範圍或國家/地區特定邏輯群組的存取權。
 
-如何在 Azure 中設定命名位置:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+如何在 Azure 中設定命名位置：https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="39-use-azure-active-directory"></a>3.9: 使用 Azure 的項目
+### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**:使用 Azure 活動目錄 (Azure AD) 作為中央身份驗證和授權系統。 Azure AD 對靜態和傳輸中的數據使用強加密來保護數據。 Azure AD 還會對使用者憑據進行鹽漬、哈希和安全地存儲。
+**指導**方針：使用 Azure Active Directory （Azure AD）做為中央驗證和授權系統。 Azure AD 使用強式加密來保護待用資料和傳輸中的資料。 Azure AD 也會 salts、雜湊並安全地儲存使用者認證。
 
-如何建立與設定 Azure AD 實體:https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+如何建立和設定 Azure AD 實例：https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: 定期審查和協調使用者存取
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期審查並協調使用者存取
 
-**指南**: Azure 活動目錄 (Azure AD) 提供日誌以幫助發現陳舊的帳戶。 此外,使用 Azure 標識存取審核可高效地管理組成員身份、對企業應用程式的訪問和角色分配。 可以定期查看使用者訪問許可權,以確保只有正確的使用者才能繼續訪問。
+**指導**方針： Azure Active Directory （Azure AD）提供記錄檔，以協助探索過時的帳戶。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者存取權，以確保只有適當的使用者可以繼續進行存取。
 
-瞭解 Azure AD 報告:https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+瞭解 Azure AD 報告：https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
-如何使用 Azure 識別存取稽核:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+如何使用 Azure 身分識別存取權審查：https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: 監視訪問已停用帳戶的嘗試
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：監視嘗試存取停用的帳戶
 
-**指南**:您可以造訪 Azure 活動目錄 (Azure AD) 登入活動、審核和風險事件日誌源,這允許您與任何安全資訊和事件管理 (SIEM) /監視工具集成。
+**指引**：您可以存取 Azure Active Directory （Azure AD）登入活動、Audit 和風險事件記錄檔來源，這可讓您與任何安全性資訊和事件管理（SIEM）/Monitoring 工具整合。
 
-您可以通過為 Azure 活動目錄使用者帳戶創建診斷設定並將審核日誌和登錄日誌發送到日誌分析工作區來簡化此過程。 您可以在日誌分析工作區中配置所需的警報。
+若要簡化此程式，您可以建立 Azure Active Directory 使用者帳戶的診斷設定，並將 audit 記錄和登入記錄傳送到 Log Analytics 工作區。 您可以在 Log Analytics 工作區中設定所需的警示。
 
-如何將 Azure 活動紀錄整合到 Azure 監視器中:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+如何將 Azure 活動記錄整合到 Azure 監視器：https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: 帳戶登錄行為偏差警報
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差的警示
 
-**指南**:使用 Azure 活動目錄 (Azure AD) 風險和身份保護功能設定自動回應,以檢測與使用者身份相關的可疑操作。 
+**指導**方針：使用 Azure Active Directory （Azure AD）風險和身分識別保護功能，為偵測到與使用者身分識別相關的可疑動作設定自動回應。 
 
-如何檢視 Azure AD 風險登入:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+如何觀看 Azure AD 有風險的登入：https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-如何設定與啟用身份保護風險原則:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+如何設定和啟用身分識別保護風險原則：https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: 在支援方案期間向 Microsoft 提供對相關客戶資料的存取
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：提供 Microsoft 在支援案例期間存取相關的客戶資料
 
-**指導**:不可用;Azure 容器註冊表目前不支援客戶密碼箱。
+**指導**方針：無法使用;客戶加密箱目前不支援 Azure Container Registry。
 
-客戶密碼箱支援服務清單:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+客戶加密箱支援的服務清單：https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
 ## <a name="data-protection"></a>資料保護
 
-*有關詳細資訊,請參閱[安全控制:資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱[安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 維護敏感資訊的清單
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護機密資訊的清查
 
-**指南**:使用資源標記説明跟蹤存儲或處理敏感資訊的 Azure 容器註冊表。
+**指引**：使用資源標記協助追蹤儲存或處理敏感資訊的 Azure 容器登錄。
 
-在註冊表中標記和版本容器映射或其他專案,並鎖定圖像或存儲庫,以説明跟蹤存儲或處理敏感資訊的圖像。
+在登錄中標記和版本容器映射或其他成品，以及鎖定映射或存放庫，以協助追蹤儲存或處理敏感資訊的影像。
 
-如何建立與使用標籤:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+如何建立和使用標記：https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-標記及版本控制容器映像的建議:https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
+標記和版本設定容器映射的建議：https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
 
-在 Azure 容器註冊表中鎖定容器映像:https://docs.microsoft.com/azure/container-registry/container-registry-image-lock
+鎖定 Azure container registry 中的容器映射：https://docs.microsoft.com/azure/container-registry/container-registry-image-lock
 
 
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: 隔離記憶體或處理敏感資訊的系統
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感資訊的系統
 
-**指導**:為開發、測試和生產實施單獨的容器註冊表、訂閱和/或管理組。 存儲或處理敏感數據的資源應足夠隔離。
+**指導**方針：針對開發、測試和生產環境，執行不同的容器登錄、訂用帳戶和/或管理群組。 儲存或處理敏感性資料的資源應該充分地隔離。
 
-資源應由虛擬網路或子網分隔,標記得當,並由網路安全組 (NSG) 或 Azure 防火牆保護。
+資源應該以虛擬網路或子網分隔，並適當地標記，並受到網路安全性群組（NSG）或 Azure 防火牆的保護。
 
-如何建立其他 Azure 訂閱:https://docs.microsoft.com/azure/billing/billing-create-subscription
+如何建立額外的 Azure 訂用帳戶：https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-如何建立管理群組:https://docs.microsoft.com/azure/governance/management-groups/create
+如何建立管理群組：https://docs.microsoft.com/azure/governance/management-groups/create
 
-如何建立與使用標籤:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+如何建立和使用標記：https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-使用 Azure 虛擬網路或防火牆規則限制對 Azure 容器註冊表的存取:https://docs.microsoft.com/azure/container-registry/container-registry-vnet
+使用 Azure 虛擬網路或防火牆規則來限制對 Azure container registry 的存取：https://docs.microsoft.com/azure/container-registry/container-registry-vnet
 
-如何建立具有安全設定的 NSG:https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
+如何建立具有安全性設定的 NSG：https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-如何部署 Azure 防火牆:
+如何部署 Azure 防火牆：
 
 https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 
-如何使用 Azure 防火牆配置警報或警報和拒絕:
+如何使用 Azure 防火牆來設定警示或警示和拒絕：
 
 https://docs.microsoft.com/azure/firewall/threat-intel
 
 
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: 監控和阻止未經授權傳輸敏感資訊
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的機密資訊傳輸
 
-**指南**:在網路週邊部署自動工具,用於監視敏感資訊的未授權傳輸,並阻止此類傳輸,同時提醒資訊安全專業人員。
+**指引**：在網路周邊部署自動化工具，監視未經授權的機密資訊傳輸，並在警示資訊安全性專業人員時封鎖這類傳輸。
 
-對於由 Microsoft 管理的基礎平臺,Microsoft 將所有客戶內容視為敏感內容,並竭盡全力防止客戶數據丟失和暴露。 為了確保 Azure 中的客戶數據保持安全,Microsoft 已經實施並維護了一套強大的數據保護控制和功能。
+針對由 Microsoft 管理的基礎平臺，Microsoft 會將所有客戶內容視為機密，並移至絕佳的長度，以防範客戶資料遺失和暴露。 為了確保 Azure 中的客戶資料保持安全，Microsoft 已實行並維護一套強大的資料保護控制和功能。
 
-瞭解 Azure 的客戶資料保護:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
-
-**Azure 安全中心監視**:目前不可用
-
-**責任**: 共用
-
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:加密傳輸中的所有敏感資訊
-
-**指南**:確保連接到 Azure 容器註冊表的任何用戶端能夠協商 TLS 1.2 或更高。 默認情況下,Microsoft Azure 資源協商 TLS 1.2。
-
-請按照 Azure 安全中心的建議,瞭解靜態加密和傳輸中的加密(如果適用)。
-
-瞭解使用 Azure 傳輸中的加密:https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit
+瞭解 Azure 中的客戶資料保護：https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
+**Azure 資訊安全中心監視**：目前無法使用
 
-**Azure 安全中心監視**:是
+**責任**：共用
 
-**責任**: 共用
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有機密資訊
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: 使用活動探索工具辨識敏感資料
+**指導**方針：確定任何連線到您 Azure Container Registry 的用戶端都能協商 TLS 1.2 或更高版本。 Microsoft Azure 資源預設會協商 TLS 1.2。
 
-**指南**:Azure 容器註冊表尚不可用數據標識、分類和損失預防功能。 如果需要符合性,則實施第三方解決方案。
+遵循 Azure 資訊安全中心的待用加密建議和傳輸中的加密（如果適用）。
 
-對於由 Microsoft 管理的基礎平臺,Microsoft 將所有客戶內容視為敏感內容,並竭盡全力防止客戶數據丟失和暴露。 為了確保 Azure 中的客戶數據保持安全,Microsoft 已經實施並維護了一套強大的數據保護控制和功能。
-
-瞭解 Azure 的客戶資料保護:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**: 共用
-
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: 使用 Azure RBAC 控制對資源的存取
-
-**指南**:使用 Azure 活動目錄 (Azure AD) RBAC 控制對 Azure 容器註冊表中的數據和資源的訪問。 
-
-如何在 Azure 中設定 RBAC:https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
-
-Azure 容器註冊表角色和許可權:https://docs.microsoft.com/azure/container-registry/container-registry-roles
+瞭解使用 Azure 傳輸的加密：https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：共用
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: 使用基於主機的數據丟失防護來實施訪問控制
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用 active discovery 工具來識別敏感性資料
 
-**指南**:如果需要符合計算資源,則實施第三方工具,如基於主機的自動數據丟失防護解決方案,以便強制訪問數據,即使數據從系統複製。
+**指導**方針： Azure Container Registry 尚無法使用資料識別、分類和遺失防護功能。 視需要執行協力廠商解決方案，以符合合規性目的。
 
-對於由 Microsoft 管理的基礎平臺,Microsoft 將所有客戶內容視為敏感內容,並竭盡全力防止客戶數據丟失和暴露。 為了確保 Azure 中的客戶數據保持安全,Microsoft 已經實施並維護了一套強大的數據保護控制和功能。
+針對由 Microsoft 管理的基礎平臺，Microsoft 會將所有客戶內容視為機密，並移至絕佳的長度，以防範客戶資料遺失和暴露。 為了確保 Azure 中的客戶資料保持安全，Microsoft 已實行並維護一套強大的資料保護控制和功能。
 
-瞭解 Azure 的客戶資料保護:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**: 共用
-
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: 靜態加密敏感資訊
-
-**指南**:對所有 Azure 資源使用靜態加密。 默認情況下,Azure 容器註冊表中的所有數據都使用 Microsoft 管理的密鑰進行靜態加密。
-
-瞭解 Azure 中靜態加密:https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
-
-Azure 容器註冊表中的客戶管理金鑰:https://aka.ms/acr/cmk
+瞭解 Azure 中的客戶資料保護：https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
 
+**Azure 資訊安全中心監視**：不適用
 
-**Azure 安全中心監視**:不適用
+**責任**：共用
 
-**責任**: 客戶
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: 對關鍵 Azure 資源的更改進行紀錄和警報
+**指引**：使用 Azure Active Directory （AZURE AD） RBAC 來控制 Azure container registry 中資料和資源的存取權。 
 
-**指南**:Azure 監視器收集註冊表中使用者驅動事件的資源日誌(以前稱為診斷日誌)。 收集和使用此數據以審核註冊表身份驗證事件,並提供註冊表專案(如拉取和拉取事件)的完整活動跟蹤,以便您可以診斷註冊表的操作問題。
+如何在 Azure 中設定 RBAC：https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal
 
-診斷評估與稽核的 Azure 容器註冊表日誌:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+Azure Container Registry 角色和許可權：https://docs.microsoft.com/azure/container-registry/container-registry-roles
 
 
-**Azure 安全中心監視**:不適用
 
-**責任**: 客戶
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
+
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用以主機為基礎的資料遺失防護來強制存取控制
+
+**指導**方針：如果需要在計算資源上符合規範，請執行協力廠商工具（例如自動化主機型資料遺失防護解決方案），以強制執行資料存取控制，即使資料是從系統複製而來。
+
+針對由 Microsoft 管理的基礎平臺，Microsoft 會將所有客戶內容視為機密，並移至絕佳的長度，以防範客戶資料遺失和暴露。 為了確保 Azure 中的客戶資料保持安全，Microsoft 已實行並維護一套強大的資料保護控制和功能。
+
+瞭解 Azure 中的客戶資料保護：https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：共用
+
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密機密資訊待用
+
+**指引**：在所有 Azure 資源上使用靜態加密。 根據預設，Azure container registry 中的所有資料都會使用 Microsoft 管理的金鑰在待用時加密。
+
+瞭解 Azure 中的待用加密：https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest
+
+Azure Container Registry 中客戶管理的金鑰：https://aka.ms/acr/cmk
+
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
+
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：對重要 Azure 資源的變更進行記錄和警示
+
+**指導**方針： Azure 監視器會針對登錄中的使用者驅動事件收集資源記錄（先前稱為診斷記錄）。 收集並取用此資料以審查登錄驗證事件，並在登錄成品（例如提取和提取事件）上提供完整的活動記錄，以便您可以診斷登錄的操作問題。
+
+用於診斷評估和審核的 Azure Container Registry 記錄：https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*有關詳細資訊,請參閱[安全控制:漏洞管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱[安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: 執行自動漏洞掃描工具
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
-**指南**:按照 Azure 安全中心關於對容器映射執行漏洞評估的建議進行操作。 可以選擇從 Azure 應用商店部署第三方解決方案以執行映射漏洞評估。
+**指導**方針：請遵循在您的容器映射上執行弱點評定 Azure 資訊安全中心中的建議。 選擇性地從 Azure Marketplace 部署協力廠商解決方案，以執行映射弱點評量。
 
-如何實施 Azure 安全中心漏洞評估建議:https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations
+如何實行 Azure 資訊安全中心弱點評估建議：https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations
 
-Azure 容器註冊表與安全中心集成(預覽):https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
-
-
-
-**Azure 安全中心監視**:是
-
-**責任**: 客戶
-
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2:部署自動化作業系統修補程式管理解決方案
-
-**指南**:Microsoft 對支援 Azure 容器註冊表的基礎系統執行修補程式管理。
-
-當檢測到作業系統和其他修補程式對基本映射的更新時,自動執行容器映射更新。
-
-關於 Azure 容器註冊表任務的基本映射更新:https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**: 客戶
-
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3:部署自動化的第三方軟體修補程式管理解決方案
-
-**指南**:您可以使用第三方解決方案來修補應用程式映射。  此外,還可以運行 Azure 容器註冊表任務,以便根據安全修補程式或基本映射中的其他更新自動更新容器註冊表中的應用程式映射。
-
-關於 ACR 工作的基本映像更新:https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images
+與資訊安全中心的 Azure Container Registry 整合（預覽）：https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: 比較背對背漏洞掃描
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自動化的作業系統修補程式管理解決方案
 
-**指南**:將 Azure 容器註冊表 (ACR) 與 Azure 安全中心集成,以便定期掃描容器映射以存取漏洞。 可以選擇從 Azure 應用商店部署第三方解決方案以執行定期映射漏洞掃描。
+**指導**方針： Microsoft 會在支援 Azure Container Registry 的基礎系統上執行修補程式管理。
 
-Azure 容器註冊表與安全中心集成(預覽):https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
+當偵測到來自作業系統和其他修補程式的基底映射更新時，自動更新容器映射。
 
-
-**Azure 安全中心監視**:是
-
-**責任**: 客戶
-
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: 使用風險評級流程確定修復已發現漏洞的優先順序
-
-**指南**:將 Azure 容器註冊表 (ACR) 與 Azure 安全中心集成,以便定期掃描容器映射以尋找漏洞並對風險進行分類。 可以選擇從 Azure 應用商店部署第三方解決方案,以執行定期映射漏洞掃描和風險分類。
-
-Azure 容器註冊表與安全中心集成(預覽):https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
+關於 Azure Container Registry 工作的基底映射更新：https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images
 
 
+**Azure 資訊安全中心監視**：不適用
 
-**Azure 安全中心監視**:不適用
+**責任**：客戶
 
-**責任**: 客戶
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署自動化的協力廠商軟體修補程式管理解決方案
+
+**指引**：您可以使用協力廠商解決方案來修補應用程式映射。  此外，您也可以執行 Azure Container Registry 工作，以根據基底映射中的安全性修補程式或其他更新，將容器登錄中的應用程式映射更新作業自動化。
+
+關於 ACR 工作的基底映射更新：https://docs.microsoft.com/azure/container-registry/container-registry-tasks-base-images
+
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
+
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較回溯弱點掃描
+
+**指導**方針：整合 AZURE CONTAINER REGISTRY （ACR）與 Azure 資訊安全中心，以針對弱點定期掃描容器映射。 選擇性地從 Azure Marketplace 部署協力廠商解決方案，以執行週期性映射弱點掃描。
+
+與資訊安全中心的 Azure Container Registry 整合（預覽）：https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
+
+
+**Azure 資訊安全中心監視**：是
+
+**責任**：客戶
+
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程式來排定所發現弱點的補救優先順序
+
+**指引**：整合 AZURE CONTAINER REGISTRY （ACR）與 Azure 資訊安全中心，以定期掃描容器映射的弱點，並將風險分類。 選擇性地從 Azure Marketplace 部署協力廠商解決方案，以執行週期性映射弱點掃描和風險分類。
+
+與資訊安全中心的 Azure Container Registry 整合（預覽）：https://docs.microsoft.com/azure/security-center/azure-container-registry-integration
+
+
+
+**Azure 資訊安全中心監視**： N/A
+
+**責任**：客戶
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*有關詳細資訊,請參閱[安全控制:庫存和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱[安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
 
-### <a name="61-use-azure-asset-discovery"></a>6.1: 使用 Azure 資產發現
+### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 資產探索
 
-**指南**:使用 Azure 資源圖查詢/發現訂閱中的所有資源(如計算、存儲、網路、埠和協定等)。  請確保租戶中的適當(讀取)許可權,並枚舉訂閱中的所有 Azure 訂閱以及資源。
+**指引**：使用 Azure Resource Graph 來查詢/探索訂用帳戶內的所有資源（例如計算、儲存體、網路、埠及通訊協定等）。  請確定您的租使用者中有適當（讀取）許可權，並列舉所有 Azure 訂用帳戶以及訂用帳戶內的資源。
 
-儘管可以通過資源圖發現經典 Azure 資源,但強烈建議今後創建和使用 Azure 資源管理器資源。
+雖然可透過 Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
 
-如何使用 Azure 資源圖建立查詢:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何使用 Azure Resource Graph 建立查詢：https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-如何檢視 Azure 訂閱:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0 
+如何查看您的 Azure 訂用帳戶：https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0 
 
-瞭解 Azure RBAC:https://docs.microsoft.com/azure/role-based-access-control/overview
+瞭解 Azure RBAC：https://docs.microsoft.com/azure/role-based-access-control/overview
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="62-maintain-asset-metadata"></a>6.2: 維護資產元資料
+### <a name="62-maintain-asset-metadata"></a>6.2：維護資產中繼資料
 
-**指南**:Azure 容器註冊錶維護元數據,包括註冊表中圖像的標記和清單。 遵循標記工件的建議做法。
+**指導**方針： Azure Container Registry 維護登錄中的中繼資料，包括影像的標記和資訊清單。 遵循適用于標記成品的建議做法。
 
-關於註冊表、儲存庫和影像:https://docs.microsoft.com/azure/container-registry/container-registry-concepts
+關於登錄、存放庫和映射：https://docs.microsoft.com/azure/container-registry/container-registry-concepts
 
-標記及版本控制容器映像的建議:https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
+標記和版本設定容器映射的建議：https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6.3: 刪除未經授權的 Azure 資源
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
-**指南**:Azure 容器註冊錶維護元數據,包括註冊表中圖像的標記和清單。 遵循標記工件的建議做法。
+**指導**方針： Azure Container Registry 維護登錄中的中繼資料，包括影像的標記和資訊清單。 遵循適用于標記成品的建議做法。
 
-關於註冊表、儲存庫和影像:https://docs.microsoft.com/azure/container-registry/container-registry-concepts
+關於登錄、存放庫和映射：https://docs.microsoft.com/azure/container-registry/container-registry-concepts
 
-標記及版本控制容器映像的建議:https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
+標記和版本設定容器映射的建議：https://docs.microsoft.com/azure/container-registry/container-registry-image-tag-version
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:維護已批准的 Azure 資源和軟體標題的清單
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：維護已核准 Azure 資源和軟體標題的清查
 
-**指導**:您需要根據組織需要創建已批准的 Azure 資源的清單。  
+**指引**：根據您的組織需求，您必須建立已核准 Azure 資源的清查。  
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: 監視未經批准的 Azure 資源
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：未核准的 Azure 資源的監視
 
-**指南**:使用 Azure 策略對可在訂閱中創建的資源類型施加限制。
+**指引**：使用 Azure 原則來限制可在您的訂用帳戶中建立的資源類型。
 
-使用 Azure 資源圖查詢/發現其訂閱中的資源。  確保環境中的所有 Azure 資源都獲得批准。
+使用 Azure Resource Graph 來查詢/探索其訂用帳戶內的資源。  請確定已核准環境中的所有 Azure 資源。
 
-使用 Azure 策略審核 Azure 容器註冊表的合規性:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+使用 Azure 原則來審查 Azure container registry 的相容性：https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何使用 Azure 圖形建立查詢:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何使用 Azure Graph 建立查詢：https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: 監控計算資源中未經批准的軟體應用程式
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：監視計算資源內未經核准的軟體應用程式
 
-**指導**:分析和監視 Azure 容器註冊表日誌是否存在異常行為,並定期查看結果。 使用 Azure 監視器的日誌分析工作區查看日誌並執行日誌數據的查詢。
+**指引**：分析及監視異常行為的 Azure Container Registry 記錄，並定期查看結果。 使用 Azure 監視器的 Log Analytics 工作區來審查記錄，並對記錄資料執行查詢。
 
-診斷評估與稽核的 Azure 容器註冊表日誌:https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
+用於診斷評估和審核的 Azure Container Registry 記錄：https://docs.microsoft.com/azure/container-registry/container-registry-diagnostics-audit-logs
 
-瞭解紀錄分析工作區:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+瞭解 Log Analytics 工作區：https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
-如何在 Azure 監視器中執行自訂查詢:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+如何在 Azure 監視器中執行自訂查詢：https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: 刪除未經批准的 Azure 資源和軟體應用程式
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未核准的 Azure 資源和軟體應用程式
 
-**指南**:Azure 自動化在工作負載和資源的部署、操作和停用期間提供完全控制。  您可以實現自己的解決方案來刪除未經授權的 Azure 資源。 Azure 自動化簡介:https://docs.microsoft.com/azure/automation/automation-intro
+**指導**方針： Azure 自動化在部署、作業和解除委任工作負載與資源期間提供完整的控制權。  您可以執行您自己的解決方案，以移除未經授權的 Azure 資源。 Azure 自動化簡介：https://docs.microsoft.com/azure/automation/automation-intro
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="68-use-only-approved-applications"></a>6.8: 僅使用已批准的應用程式
+### <a name="68-use-only-approved-applications"></a>6.8：僅使用已核准的應用程式
 
-**指南**:不適用。 基準測試是為計算資源設計的。
+**指導**方針：不適用。 基準測試是針對計算資源所設計。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="69-use-only-approved-azure-services"></a>6.9: 僅使用已批准的 Azure 服務
+### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
-**指南**:利用 Azure 策略來限制可以在環境中預配哪些服務。
+**指導**方針：利用 Azure 原則來限制您可以在環境中布建的服務。
 
-使用 Azure 策略審核 Azure 容器註冊表的合規性:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+使用 Azure 原則來審查 Azure container registry 的相容性：https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何使用 Azure 政策拒絕特定資源類型:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+如何拒絕具有 Azure 原則的特定資源類型：https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="610-implement-approved-application-list"></a>6.10: 實施已批准的申請清單
+### <a name="610-implement-approved-application-list"></a>6.10：執行核准的應用程式清單
 
-**指南**:不適用。 基準測試是為計算資源設計的。
+**指導**方針：不適用。 基準測試是針對計算資源所設計。
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11:限制使用者透過文稿與 AzureResource Manager 互動的能力
+### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11：限制使用者透過腳本與 AzureResources Manager 互動的能力
 
-**指南**:使用特定於作業系統的配置或第三方資源來限制使用者在 Azure 計算資源中執行腳本的能力。
+**指導**方針：使用作業系統特定設定或協力廠商資源，限制使用者在 Azure 計算資源內執行腳本的能力。
 
-如何設定條件存取以封鎖對 Azure 資源管理員的存取:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+如何設定條件式存取以封鎖對 Azure 資源管理員的存取：https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: 限制使用者在計算資源中執行文稿的能力
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制使用者在計算資源內執行腳本的能力
 
-**指南**:使用作業系統特定的配置或第三方資源來限制使用者在 Azure 計算資源中執行腳本的能力。
+**指導**方針：使用作業系統特定設定或協力廠商資源，限制使用者在 Azure 計算資源內執行腳本的能力。
 
-例如,如何控制 Windows 環境中的 PowerShell 文稿執行:https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
+例如，如何在 Windows 環境中控制 PowerShell 腳本執行：https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: 物理或邏輯上隔離高風險應用程式
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：實際或邏輯上隔離高風險應用程式
 
-**指南**:業務操作所需的軟體,但可能會給組織帶來更高的風險,應隔離在自己的虛擬機和/或虛擬網路中,並且使用 Azure 防火牆或網路安全組進行充分保護。
+**指導**方針：商務營運所需但可能對組織產生較高風險的軟體，應該隔離在自己的虛擬機器和/或虛擬網路中，並使用 Azure 防火牆或網路安全性群組進行充分的保護。
 
-如何建立虛擬網路:https://docs.microsoft.com/azure/virtual-network/quick-create-portal
+如何建立虛擬網路：https://docs.microsoft.com/azure/virtual-network/quick-create-portal
 
-如何建立具有安全設定的 NSG:https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
+如何建立具有安全性設定的 NSG：https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
 ## <a name="secure-configuration"></a>安全設定
 
-*有關詳細資訊,請參閱[安全控制:安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。*
+*如需詳細資訊，請參閱[安全性控制：安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)設定。*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:為所有 Azure 資源建立安全配置
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指南**:使用 Azure 策略或 Azure 安全中心維護所有 Azure 資源的安全配置。
+**指導**方針：使用 Azure 原則或 Azure 資訊安全中心來維護所有 Azure 資源的安全性設定。
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-使用 Azure 策略審核 Azure 容器註冊表的合規性:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+使用 Azure 原則來審查 Azure container registry 的相容性：https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7.2: 建立安全的作業系統設定
+### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的作業系統設定
 
-**指南**:利用 Azure 安全中心建議「修復虛擬機上的安全配置中的漏洞」來維護所有計算資源的安全配置。
+**指導**方針：利用 Azure 資訊安全中心建議的「修復您虛擬機器上安全性設定中的弱點」，以維護所有計算資源的安全性設定。
 
-如何監視 Azure 安全中心建議:https://docs.microsoft.com/azure/security-center/security-center-recommendations
+如何監視 Azure 資訊安全中心建議：https://docs.microsoft.com/azure/security-center/security-center-recommendations
 
-如何修復 Azure 安全中心建議:https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
+如何補救 Azure 資訊安全中心建議：https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:維護安全的 Azure 資源配置
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
-**指導**:使用 Azure 策略 [拒絕] 和 [部署(如果不存在))在整個 Azure 資源中強制實施安全設置。
+**指導**方針：使用 Azure 原則 [拒絕] 和 [不存在時部署]，在您的 Azure 資源上強制執行安全設定。
 
-使用 Azure 策略審核 Azure 容器註冊表的合規性:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+使用 Azure 原則來審查 Azure container registry 的相容性：https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-瞭解 Azure 政策效果:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+瞭解 Azure 原則效果：https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: 維護安全的作業系統設定
+### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：維護安全的作業系統設定
 
-**指南**:不適用。 基準測試適用於計算資源。
+**指導**方針：不適用。 基準測試適用于計算資源。
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 共用
+**責任**：共用
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: 安全儲存 Azure 資源的設定
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指南**:如果使用自定義 Azure 策略定義,請使用 Azure 儲存庫安全地存儲和管理代碼。
+**指導**方針：如果使用自訂 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
 
-如何在 Azure DevOps 中儲存代碼:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+如何將程式碼儲存在 Azure DevOps：https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-Azure 儲存函式庫文件:https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Azure Repos 檔：https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7.6: 安全地儲存自訂作業系統映像
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全地儲存自訂的作業系統映射
 
-**指南**:不適用。 基準測試適用於計算資源。
+**指導**方針：不適用。 基準測試適用于計算資源。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7.7: 部署系統設定管理工具
+### <a name="77-deploy-system-configuration-management-tools"></a>7.7：部署系統設定管理工具
 
-**指導**:使用 Azure 策略來警報、審核和強制執行系統配置。 此外,開發用於管理策略異常的流程和管道。
+**指導**方針：使用 Azure 原則來警示、審查和強制執行系統設定。 此外，開發處理常式和管線來管理原則例外狀況。
 
-使用 Azure 策略審核 Azure 容器註冊表的合規性:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+使用 Azure 原則來審查 Azure container registry 的相容性：https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8:為作業系統部署系統設定管理工具
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的系統建構管理工具
 
-**指南**:不適用。 基準測試適用於計算資源。
+**指導**方針：不適用。 基準測試適用于計算資源。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9:為 Azure 服務實現自動化配置監視
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9：執行 Azure 服務的自動化設定監視
 
-**指南**:使用 Azure 安全中心對 Azure 資源執行基線掃描。
+**指引**：使用 Azure 資訊安全中心來執行 Azure 資源的基準掃描。
 
-使用 Azure 策略對可在訂閱中創建的資源類型施加限制。
+請使用 Azure 原則來限制可在您的訂用帳戶中建立的資源類型。
 
-如何修復 Azure 安全中心中的建議:https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
+如何修復 Azure 資訊安全中心中的建議：https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
-使用 Azure 策略審核 Azure 容器註冊表的合規性:https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
+使用 Azure 原則來審查 Azure container registry 的相容性：https://docs.microsoft.com/azure/container-registry/container-registry-azure-policy
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: 對作業系統執行自動設定監控
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：為作業系統執行自動化設定監視
 
-**指南**:不適用。 基準測試適用於計算資源。
+**指導**方針：不適用。 基準測試適用于計算資源。
 
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="711-manage-azure-secrets-securely"></a>7.11: 安全管理 Azure 機密
+### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 秘密
 
-**指南**:將託管服務標識與 Azure 密鑰保管庫結合使用,以簡化和保護雲應用程式的秘密管理。
+**指導**方針：搭配 Azure Key Vault 使用受控服務識別，以簡化及保護雲端應用程式的秘密管理。
 
-如何與 Azure 託管識別整合:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+如何與 Azure 受控識別整合：https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-如何建立金鑰保存庫:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+如何建立 Key Vault：https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-如何使用託管識別提供金鑰保管庫身份驗證:https://docs.microsoft.com/azure/key-vault/managed-identity
+如何使用受控識別提供 Key Vault 驗證：https://docs.microsoft.com/azure/key-vault/managed-identity
 
-在 Azure 容器註冊表工作中使用 Azure 託管識別:https://docs.microsoft.com/azure/container-registry/container-registry-tasks-authentication-managed-identity
+在 Azure Container Registry 工作中使用 Azure 管理的身分識別：https://docs.microsoft.com/azure/container-registry/container-registry-tasks-authentication-managed-identity
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7.12: 安全、自動地管理身份
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
-**指南**:使用託管標識在 Azure AD 中為 Azure 服務提供自動託管標識。 託管標識允許您對支援 Azure AD 身份驗證的任何服務(包括密鑰保管庫)進行身份驗證,而無需在代碼中進行任何認證。
+**指引**：在 Azure AD 中使用受控識別，以自動管理的身分識別來提供 Azure 服務。 受控識別可讓您向任何支援 Azure AD 驗證的服務進行驗證，包括 Key Vault，而您的程式碼中沒有任何認證。
 
-如何設定託管識別:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+如何設定受控識別：https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-使用託管識別對 Azure 容器註冊表進行身份驗證:https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity
+使用受控識別來向 Azure container registry 進行驗證：https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: 消除意外的認證
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證暴露
 
-**指南**:實現憑據掃描程式以標識代碼中的憑據。 憑據掃描程式還將鼓勵將發現的憑據移動到更安全的位置,如 Azure 密鑰保管庫。
+**指導**方針：執行認證掃描器來識別程式碼中的認證。 認證掃描器也鼓勵將探索到的認證移至更安全的位置，例如 Azure Key Vault。
 
-如何設定認證程式:https://secdevtools.azurewebsites.net/helpcredscan.html
+如何設定認證掃描器：https://secdevtools.azurewebsites.net/helpcredscan.html
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*有關詳細資訊,請參閱[安全控制:惡意軟體防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱[安全性控制：惡意程式碼防護](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: 使用集中管理的反惡意軟體
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
-**指南**:將 Microsoft 反惡意軟體用於 Azure 雲服務和虛擬機,以持續監視和防禦資源。 對於 Linux,請使用第三方反惡意軟體解決方案。
+**指導**方針：使用適用于 Azure 雲端服務和虛擬機器的 Microsoft Antimalware，持續監視及保護您的資源。 針對 Linux，請使用協力廠商反惡意程式碼解決方案。
 
-如何為雲端服務和虛擬機器配置 Microsoft 反惡意軟體:https://docs.microsoft.com/azure/security/fundamentals/antimalware
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**: 客戶
-
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2:要上傳到非計算 Azure 資源的預入檔案
-
-**指南**:在支援 Azure 服務的基礎主機上啟用 Microsoft 反惡意軟體(例如,Azure 容器註冊表),但它不在客戶內容上運行。
-
-預掃描上載到非計算 Azure 資源(如應用服務、資料湖存儲、Blob 存儲等)的任何檔。
+如何設定雲端服務和虛擬機器的 Microsoft Antimalware：https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: 確保更新反惡意軟體和簽名
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指南**:不適用。 基準測試適用於計算資源。 Microsoft 處理底層平臺的反惡意軟體。
+**指引**：在支援 Azure 服務的基礎主機（例如 Azure Container Registry）上啟用 Microsoft Antimalware，但不會對客戶內容執行。
+
+預先掃描任何正在上傳到非計算 Azure 資源的檔案，例如 App Service、Data Lake Storage、Blob 儲存體等等。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
+
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3：確認反惡意程式碼軟體和簽章已更新
+
+**指導**方針：不適用。 基準測試適用于計算資源。 Microsoft 會處理基礎平臺的反惡意程式碼。
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
 
 ## <a name="data-recovery"></a>資料復原
 
-*有關詳細資訊,請參閱[安全控制:資料恢復](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。*
+*如需詳細資訊，請參閱[安全性控制：資料](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)復原。*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1: 確保定期自動備份
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保週期性自動備份
 
-**指南**:Microsoft Azure 容器註冊表中的數據始終會自動複製,以確保持久性和高可用性。 Azure 容器註冊表複製資料,以便資料免受計畫內和計劃外事件
+**指導**方針：您 Microsoft Azure 容器登錄中的資料一律會自動複寫，以確保持久性和高可用性。 Azure Container Registry 會複製您的資料，以防止計畫和未計畫的事件進行保護
 
-可選地異地複製容器註冊表,以在多個 Azure 區域中維護註冊表副本。 
+選擇性地異地複寫容器登錄，以在多個 Azure 區域中維護登錄複本。 
 
-Azure 容器註冊表中的異地複製:https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication
-
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**: 客戶
-
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: 執行完整的系統備份並備份任何客戶託管金鑰
-
-**指南**:通過從一個註冊表導入另一個註冊表,可以選擇備份容器映射。
-
-使用 Azure 命令列工具或 SDK 在 Azure 密鑰保管庫中備份客戶管理的密鑰。
-
-將容器映像匯入容器註冊表:https://docs.microsoft.com/azure/container-registry/container-registry-import-images
-
-如何在 Azure 中備份金鑰保管庫金鑰:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+Azure Container Registry 中的異地複寫：https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication
 
 
-**Azure 安全中心監視**:不適用
 
-**責任**: 客戶
+**Azure 資訊安全中心監視**：不適用
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:驗證所有備份,包括客戶託管金鑰
+**責任**：客戶
 
-**指南**:使用 Azure 命令列工具或 SDK 測試 Azure 密鑰保管庫中備份的客戶託管金鑰的恢復。
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份任何客戶管理的金鑰
 
-如何在 Azure 中還原 Azure 金鑰保管庫金鑰:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+**指引**：選擇性地從一個登錄匯入到另一個登錄，以備份容器映射。
 
+使用 Azure 命令列工具或 Sdk，在 Azure Key Vault 中備份客戶管理的金鑰。
 
-**Azure 安全中心監視**:不適用
+將容器映射匯入至容器登錄：https://docs.microsoft.com/azure/container-registry/container-registry-import-images
 
-**責任**: 客戶
-
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4:確保保護備份和客戶管理金鑰
-
-**指南**:您可以在 Azure 密鑰保管庫中啟用軟刪除,以保護密鑰免受意外或惡意刪除。
-
-如何在金鑰保存庫中開啟軟刪除:https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+如何在 Azure 中備份金鑰保存庫金鑰：https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
+
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
+
+**指導**方針：使用 Azure 命令列工具或 sdk 在 Azure Key Vault 中測試已備份客戶管理金鑰的還原。
+
+如何在 Azure 中還原 Azure Key Vault 金鑰：https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
+
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理金鑰的保護
+
+**指引**：您可以在 Azure Key Vault 中啟用虛刪除，以防止金鑰遭到意外或惡意刪除。
+
+如何在 Key Vault 中啟用虛刪除：https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
 
 ## <a name="incident-response"></a>事件回應
 
-*有關詳細資訊,請參閱[安全控制:事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱[安全性控制：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
 
-### <a name="101-create-an-incident-response-guide"></a>10.1:建立事件回應指南
+### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
-**指導**:為您的組織構建事件回應指南。 確保有書面事件回應計劃,定義人員的所有角色以及事件處理/管理階段,從檢測到事件後審查。
+**指引**：為您的組織建立事件回應指南。 請確定有寫入的事件回應計畫，可定義人員的所有角色，以及從偵測到事件處理/管理的階段，以進行後續事件審查。
 
-如何在 Azure 安全中心內配置工作流自動化:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+如何設定 Azure 資訊安全中心內的工作流程自動化：https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-有關構建您自己的安全事件回應流程的指導:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+建立您自己的安全性事件回應程式的指引：https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-微軟安全回應中心的事件剖析:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Microsoft 安全性回應中心的事件剖析：https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-客戶還可以利用 NIST 的電腦安全事件處理指南來幫助創建他們自己的事件回應計劃:https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
-
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**: 客戶
-
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: 建立事件評分與優先順序處理程序
-
-**指南**:Azure 安全中心為每個警報分配嚴重性,以説明您優先處理應首先調查哪些警報。 嚴重性基於安全中心在查找中的信心程度或用於發出警報的分析,以及導致警報的活動背後存在惡意的置信度。
-
-此外,清楚地標記訂閱(對於前 生產,非 prod),並創建命名系統以明確識別和分類 Azure 資源。
+客戶也可以利用 NIST 的「電腦安全性性」事件處理指南，協助建立自己的事件回應計畫：https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
 
-**Azure 安全中心監視**:是
 
-**責任**: 客戶
+**Azure 資訊安全中心監視**：不適用
 
-### <a name="103-test-security-response-procedures"></a>10.3: 測試安全回應程式
+**責任**：客戶
 
-**指導**:進行練習,以常規節奏測試系統的事件回應能力。 找出薄弱環節和差距,並根據需要修訂計劃。
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程式
 
-請參閱 NIST 出版物:IT 計劃和功能測試、培訓和鍛煉計劃指南:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+**指導**方針： Azure 資訊安全中心指派每個警示的嚴重性，以協助您排定應先調查哪些警示。 嚴重性是根據資訊安全中心在尋找中的信心，或用於發出警示的分析，以及導致警示的活動背後有惡意意圖的信賴等級。
 
-
-**Azure 安全中心監視**:不適用
-
-**責任**: 客戶
-
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:提供安全事件聯繫人詳細資訊,並配置安全事件的警報通知
-
-**指南**:如果 Microsoft 安全回應中心 (MSRC) 發現客戶的數據已被非法或未經授權的方訪問,Microsoft 將使用安全事件聯繫資訊與您聯繫。  事後查看事件,以確保問題得到解決。
-
-如何設置 Azure 安全中心安全連絡人:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+此外，請清楚地標示訂閱（例如， 生產、非生產）並建立命名系統，以清楚識別和分類 Azure 資源。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: 將安全警報納入事件回應系統
+### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程式
 
-**指南**:使用「連續匯出」功能匯出 Azure 安全中心警報和建議。 "連續匯出"允許您手動或持續、持續的方式匯出警報和建議。 您可以使用 Azure 安全中心數據連接器來流式傳輸警報哨兵。
+**指導**方針：執行練習以定期測試系統的事件回應功能。 識別弱式點和間距，並視需要修訂計畫。
 
-如何設定連續匯出:https://docs.microsoft.com/azure/security-center/continuous-export
-
-如何將警報流式傳輸到 Azure 哨兵:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+請參閱 NIST 的發行集：適用于 IT 計畫和功能的測試、訓練和練習程式指南：https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10.6: 自動回應安全警報
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全性事件連絡人詳細資料，並設定安全性事件的警示通知
 
-**指南**:使用 Azure 安全中心的工作流自動化功能,通過安全警報和建議上的「邏輯應用」自動觸發回應。
+**指導**方針：如果 Microsoft 安全性回應中心（MSRC）發現客戶的資料已由非法或未經授權的合作物件存取，microsoft 將會使用安全性事件連絡人資訊來與您聯繫。  檢查事實後的事件，以確保解決問題。
 
-如何設定工作流自動化和邏輯應用:https://docs.microsoft.com/azure/security-center/workflow-automation
+如何設定 Azure 資訊安全中心安全性連絡人：https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
+
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示納入事件回應系統中
+
+**指引**：使用「連續匯出」功能來匯出您的 Azure 資訊安全中心警示和建議。 「連續匯出」可讓您以手動或持續的方式來匯出警示和建議。 您可以使用 Azure 資訊安全中心資料連線器來串流「警示」 Sentinel。
+
+如何設定連續匯出：https://docs.microsoft.com/azure/security-center/continuous-export
+
+如何將警示串流至 Azure Sentinel：https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
+
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
+
+**指引**：使用 Azure 資訊安全中心中的工作流程自動化功能，透過「Logic Apps」安全性警示和建議，自動觸發回應。
+
+如何設定工作流程自動化和 Logic Apps：https://docs.microsoft.com/azure/security-center/workflow-automation
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*有關詳細資訊,請參閱[安全控制:滲透測試和紅隊練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:對 Azure 資源進行定期滲透測試,並確保在 60 天內補救所有關鍵安全發現
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：進行 Azure 資源的定期滲透測試，並確保在60天內補救所有重大安全性結果
 
-**指南**: 遵循 Microsoft 參與規則,確保您的滲透測試不違反 Microsoft 策略:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**指導**方針：遵循 Microsoft Engagement 規則，確保您的滲透測試不會違反 microsoft 原則：https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-您可以找到有關 Microsoft 針對 Microsoft 管理的雲端基礎架構、服務和應用程式進行紅色團隊和即時網站滲透測試的策略和執行的詳細資訊,如下所示:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+您可以在這裡找到有關 Microsoft 管理之雲端基礎結構、服務和應用程式的 Microsoft 策略與執行的 Red 小組和即時網站滲透測試的詳細資訊：https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 共用
+**責任**：共用
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[Azure 安全基準](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- 瞭解有關[Azure 安全基線的更多資訊](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- 請參閱[Azure 安全性基準測試](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- 深入瞭解[Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

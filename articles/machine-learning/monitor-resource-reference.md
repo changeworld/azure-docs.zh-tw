@@ -1,7 +1,7 @@
 ---
-title: 監控資料引用 |微軟文檔
+title: 監視資料參考 |Microsoft Docs
 titleSuffix: Azure Machine Learning
-description: 瞭解為 Azure 機器學習收集的資料和資源，並在 Azure 監視器中提供。 Azure 監視器收集和顯示有關 Azure 機器學習工作區的資料，並允許您查看指標、設置警報和分析記錄的資料。
+description: 瞭解為 Azure Machine Learning 收集的資料和資源，並可在 Azure 監視器中取得。 Azure 監視器會收集和呈現 Azure Machine Learning 工作區的相關資料，並可讓您查看計量、設定警示和分析已記錄的資料。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,190 +9,206 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 03/06/2020
-ms.openlocfilehash: 958794cda60d0ce1b0d223b9b5a6c03283022a6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 1abd52c98cb1fa6ebe1014fc7a65e756d038d683
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78927555"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187591"
 ---
-# <a name="azure-machine-learning-monitoring-data-reference"></a>Azure 機器學習監視資料引用
+# <a name="azure-machine-learning-monitoring-data-reference"></a>Azure machine learning 監視資料參考
 
-瞭解 Azure 監視器從 Azure 機器學習工作區收集的資料和資源。 有關收集和分析監視資料的詳細資訊，請參閱[監視 Azure 機器學習](monitor-azure-machine-learning.md)。
+深入瞭解 Azure 監視器從 Azure Machine Learning 工作區收集的資料和資源。 如需收集和分析監視資料的詳細資訊，請參閱[監視 Azure Machine Learning](monitor-azure-machine-learning.md) 。
 
 ## <a name="resource-logs"></a>資源記錄
 
-下表列出了在 Azure 監視器日誌或 Azure 存儲中收集 Azure 機器學習資源日誌的屬性。
+下表列出在 Azure 監視器記錄或 Azure 儲存體中收集 Azure Machine Learning 資源記錄檔時的屬性。
 
-### <a name="amlcomputejobevents-table"></a>Aml 計算作業事件表
+### <a name="amlcomputejobevents-table"></a>AmlComputeJobEvents 資料表
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:---|
-| TimeGenerated | 生成日誌條目的時間 |
-| OperationName | 與日誌事件關聯的操作的名稱 |
-| 類別 | 日誌事件的名稱，Aml 計算叢集節點事件 |
-| JobId | 提交的作業 ID |
-| 實驗Id | 實驗的 ID |
-| 實驗名稱 | 實驗名稱 |
-| 客戶訂閱 ID | 提交實驗和作業的訂閱 Id |
-| 工作區名稱 | 機器學習工作區的名稱 |
-| ClusterName | 群集的名稱 |
-| ProvisioningState | 作業提交狀態 |
-| resourceGroupName | 資源組的名稱 |
-| JobName | 作業名稱 |
-| ClusterId | 群集的 ID |
-| EventType | 作業事件的類型，例如作業提交、作業運行、作業失敗、作業成功等。 |
-| ExecutionState | 作業的狀態（運行），例如，排隊、運行、成功、失敗 |
-| ErrorDetails | 作業錯誤的詳細資訊 |
-| 創建 Apiversion | 用於創建作業的 Api 版本 |
-| 群集資源組名稱 | 群集的資源組名稱 |
-| TFWorkerCount | TF 工作人員計數 |
-| TF參數伺服器計數 | TF 參數伺服器計數 |
-| 工具類型 | 使用的工具類型 |
-| 運行容器 | 描述是否應在容器內運行作業的標誌 |
-| 作業錯誤訊息 | 作業錯誤的詳細消息 |
-| NodeId | 作業運行位置創建的節點的 ID |
+| TimeGenerated | 產生記錄專案的時間 |
+| OperationName | 與記錄事件相關聯的作業名稱 |
+| 類別 | 記錄事件的名稱，AmlComputeClusterNodeEvent |
+| JobId | 已提交作業的識別碼 |
+| ExperimentId | 實驗的識別碼 |
+| ExperimentName | 實驗的名稱 |
+| CustomerSubscriptionId | 已提交實驗和作業的 SubscriptionId |
+| WorkspaceName | 機器學習服務工作區的名稱 |
+| ClusterName | 叢集的名稱 |
+| ProvisioningState | 提交作業的狀態 |
+| resourceGroupName | 資源群組的名稱 |
+| JobName | 作業的名稱 |
+| ClusterId | 叢集的識別碼 |
+| EventType | 作業事件的類型，例如 JobSubmitted、JobRunning、JobFailed、JobSucceeded 等等。 |
+| ExecutionState | 作業的狀態（執行），例如已排入佇列、執行中、成功、失敗 |
+| ErrorDetails | 作業錯誤的詳細資料 |
+| CreationApiVersion | 用來建立作業的 Api 版本 |
+| ClusterResourceGroupName | 叢集的資源組名 |
+| TFWorkerCount | TF worker 的計數 |
+| TFParameterServerCount | TF 參數伺服器計數 |
+| ToolType | 使用的工具類型 |
+| RunInContainer | 描述是否應在容器內執行作業的旗標 |
+| JobErrorMessage | 作業錯誤的詳細訊息 |
+| NodeId | 工作執行所在之節點的識別碼 |
 
-### <a name="amlcomputeclusterevents-table"></a>Aml 計算群集事件表
+### <a name="amlcomputeclusterevents-table"></a>AmlComputeClusterEvents 資料表
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:--- |
-| TimeGenerated | 生成日誌條目的時間 |
-| OperationName | 與日誌事件關聯的操作的名稱 |
-| 類別 | 日誌事件的名稱，Aml 計算叢集節點事件 |
-| ProvisioningState | 群集的預配狀態 |
-| ClusterName | 群集的名稱 |
-| 群集類型 | 群集的類型 |
-| CreatedBy | 創建群集的使用者 |
-| CoreCount | 群集中的內核計數 |
-| VmSize | 群集的 Vm 大小 |
-| Vm 優先 | 在群集專用/低優先順序內創建的節點的優先順序 |
-| 縮放類型 | 群集縮放手動/自動類型 |
-| 初始節點計數 | 群集的初始節點計數 |
-| 最小節點計數 | 群集的最小節點計數 |
-| 最大節點計數 | 群集的最大節點計數 |
-| 節點交易定位選項 | 節點應如何處理 |
-| 發行者 | 群集類型的發行者 |
-| 供應項目 | 使用群集創建群集的要約 |
-| SKU | 在群集中創建的節點/VM 的 Sku |
-| 版本 | 創建節點/VM 時使用的圖像版本 |
-| 子網Id | 群集的子網Id |
-| 分配狀態 | 群集分配狀態 |
-| 當前節點計數 | 群集的當前節點計數 |
-| 目標節點計數 | 向上/向下擴展時目標節點計數 |
-| EventType | 群集創建期間的事件種類。 |
-| 節點閒置時間秒在縮小之前 | 縮減群集前的閒置時間（以秒為單位） |
-| PreemptedNodeCount | 群集的搶佔節點計數 |
-| 正在調整增長 | 指示群集正在向上擴展的標誌 |
-| Vm 系列名稱 | 可在群集內創建的節點的 VM 系列的名稱 |
-| 離開節點計數 | 離開群集的節點計數 |
-| UnusableNodeCount | 群集的不可用節點計數 |
-| IdleNodeCount | 群集的空閒節點計數 |
-| RunningNodeCount | 群集的運行節點計數 |
-| 準備節點計數 | 準備群集的節點計數 |
-| 配額分配 | 為群集分配的配額 |
-| 配額使用 | 群集的已用配額 |
-| 分配狀態轉換時間 | 從一種狀態轉換到另一種狀態 |
-| 群集錯誤代碼 | 群集創建或縮放期間收到的錯誤代碼 |
-| 創建 Apiversion | 創建群集時使用的 Api 版本 |
+| TimeGenerated | 產生記錄專案的時間 |
+| OperationName | 與記錄事件相關聯的作業名稱 |
+| 類別 | 記錄事件的名稱，AmlComputeClusterNodeEvent |
+| ProvisioningState | 叢集的布建狀態 |
+| ClusterName | 叢集的名稱 |
+| ClusterType | 叢集類型 |
+| CreatedBy | 建立叢集的使用者 |
+| CoreCount | 叢集中的核心計數 |
+| VmSize | 叢集的 Vm 大小 |
+| VmPriority | 在叢集專用/LowPriority 內建立的節點優先順序 |
+| ScalingType | 手動/自動調整的叢集類型 |
+| InitialNodeCount | 叢集的初始節點計數 |
+| MinimumNodeCount | 叢集的最小節點計數 |
+| MaximumNodeCount | 叢集的節點計數上限 |
+| NodeDeallocationOption | 節點應如何解除配置 |
+| 發行者 | 叢集類型的發行者 |
+| 產品 | 建立叢集所使用的供應專案 |
+| SKU | 在叢集內建立的節點/VM Sku |
+| 版本 | 建立節點/VM 時所使用的映射版本 |
+| SubnetId | 叢集的 SubnetId |
+| AllocationState | 叢集配置狀態 |
+| CurrentNodeCount | 叢集的目前節點計數 |
+| TargetNodeCount | 相應增加/減少時的叢集目標節點計數 |
+| EventType | 叢集建立期間的事件種類。 |
+| NodeIdleTimeSecondsBeforeScaleDown | 相應減少叢集之前的閒置時間（以秒為單位） |
+| PreemptedNodeCount | 叢集的搶先節點計數 |
+| IsResizeGrow | 表示叢集正在相應增加的旗標 |
+| VmFamilyName | 可在叢集內建立之節點的 VM 系列名稱 |
+| LeavingNodeCount | 離開叢集的節點計數 |
+| UnusableNodeCount | 叢集的無法使用節點計數 |
+| IdleNodeCount | 叢集的閒置節點計數 |
+| RunningNodeCount | 正在執行叢集的節點計數 |
+| PreparingNodeCount | 正在準備叢集的節點計數 |
+| QuotaAllocated | 配置給叢集的配額 |
+| QuotaUtilized | 叢集的使用量配額 |
+| AllocationStateTransitionTime | 將時間從某個狀態轉換到另一個狀態 |
+| ClusterErrorCodes | 叢集建立或調整期間收到的錯誤碼 |
+| CreationApiVersion | 建立叢集時使用的 Api 版本 |
 
-### <a name="amlcomputeclusternodeevents-table"></a>Aml 計算叢集節點事件表
+### <a name="amlcomputeclusternodeevents-table"></a>AmlComputeClusterNodeEvents 資料表
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:--- |
-| TimeGenerated | 生成日誌條目的時間 |
-| OperationName | 與日誌事件關聯的操作的名稱 |
-| 類別 | 日誌事件的名稱，Aml 計算叢集節點事件 |
-| ClusterName | 群集的名稱 |
-| NodeId | 創建的叢集節點的 ID |
+| TimeGenerated | 產生記錄專案的時間 |
+| OperationName | 與記錄事件相關聯的作業名稱 |
+| 類別 | 記錄事件的名稱，AmlComputeClusterNodeEvent |
+| ClusterName | 叢集的名稱 |
+| NodeId | 建立的叢集節點識別碼 |
 | VmSize | 節點的 Vm 大小 |
-| Vm 系列名稱 | 節點所屬的 Vm 系列 |
-| Vm 優先 | 創建專用/低優先順序的節點的優先順序 |
-| 發行者 | vm 映射的發行者，例如，微軟-dsvm |
-| 供應項目 | 與 VM 創建關聯的產品/服務 |
-| SKU | 創建的節點/VM 的 SKU |
-| 版本 | 創建節點/VM 時使用的圖像版本 |
-| 群集創建時間 | 創建群集的時間 |
-| 調整開始時間 | 群集向上/向下擴展的時間開始 |
-| 調整結束時間的大小 | 群集向上/向下擴展的時間結束 |
-| 節點分配時間 | 分配節點的時間 |
-| 節點引導時間 | 啟動節點的時間 |
-| 開始任務開始時間 | 任務分配到節點並啟動的時間 |
-| 開始任務結束時間 | 分配給節點的任務結束的時間 |
-| 總時間以秒為單位 | 總時間節點處於活動狀態 |
+| VmFamilyName | 節點所屬的 Vm 系列 |
+| VmPriority | 節點建立的專用/LowPriority 優先順序 |
+| 發行者 | Vm 映射的發行者，例如 microsoft dsvm |
+| 產品 | 與 VM 建立相關聯的供應專案 |
+| SKU | 已建立的節點/VM Sku |
+| 版本 | 建立節點/VM 時所使用的映射版本 |
+| ClusterCreationTime | 建立叢集的時間 |
+| ResizeStartTime | 啟動叢集相應增加/減少的時間 |
+| ResizeEndTime | 叢集相應增加/減少結束的時間 |
+| NodeAllocationTime | 配置節點的時間 |
+| NodeBootTime | 節點啟動的時間 |
+| StartTaskStartTime | 將工作指派給節點並啟動的時間 |
+| StartTaskEndTime | 指派至節點的工作結束時間 |
+| TotalE2ETimeInSeconds | 總時間節點為使用中狀態 |
 
 ### <a name="metrics"></a>計量
 
-下表列出了為 Azure 機器學習收集的平臺指標 所有指標都存儲在命名空間**Azure 機器學習工作區**中。
+下表列出針對 Azure Machine Learning 所有度量所收集的平臺計量儲存在命名空間**Azure Machine Learning 工作區**中。
 
-**模型**
+**型號**
 
-| 計量 | 單位 | 描述 |
+| 計量 | 單位 | 說明 |
 | ----- | ----- | ----- |
-| 模型部署失敗 | Count | 失敗的模型部署數。 |
-| 模型部署已啟動 | Count | 啟動的模型部署數。 |
-| 模型部署成功 | Count | 成功的模型部署數。 |
-| 模型寄存器失敗 | Count | 失敗的模型註冊數。 |
-| 模型註冊成功 | Count | 成功的模型註冊數。 |
+| 模型部署失敗 | Count | 失敗的模型部署數目。 |
+| 模型部署已開始 | Count | 已啟動的模型部署數目。 |
+| 模型部署成功 | Count | 成功的模型部署數目。 |
+| 模型註冊失敗 | Count | 失敗的模型註冊數目。 |
+| 模型註冊成功 | Count | 成功的模型註冊數目。 |
 
 **配額**
 
-配額資訊僅適用于 Azure 機器學習計算。
+配額資訊僅適用于 Azure Machine Learning 計算。
 
-| 計量 | 單位 | 描述 |
+| 計量 | 單位 | 說明 |
 | ----- | ----- | ----- |
-| 活動內核 | Count | 活動計算核心的數量。 |
-| 活動節點 | Count | 活動節點數。 |
-| 空閒內核 | Count | 空閒計算內核數。 |
-| 空閒節點 | Count | 空閒計算節點的數量。 |
-| 離開核心 | Count | 離開內核的數量。 |
-| 離開節點 | Count | 離開節點的數量。 |
-| 搶佔型內核 | Count | 搶佔的內核數。 |
-| 搶佔節點 | Count | 搶佔的節點數。 |
-| 配額利用率百分比 | 百分比 | 使用的配額百分比。 |
-| 核心總數 | Count | 總內核。 |
-| 節點總數 | Count | 總節點。 |
-| 不可用的內核 | Count | 不可用內核的數量。 |
-| 無法使用的節點 | Count | 不可用節點的數量。 |
+| 現用核心 | Count | 使用中計算核心的數目。 |
+| 現用節點 | Count | 使用中節點的數目。 |
+| 閒置核心 | Count | 閒置計算核心的數目。 |
+| 閒置節點 | Count | 閒置計算節點的數目。 |
+| 離開核心 | Count | 離開核心的數目。 |
+| 離開節點 | Count | 離開節點的數目。 |
+| 搶先核心 | Count | 已佔用的核心數目。 |
+| 搶先節點 | Count | 已搶先節點的數目。 |
+| 配額使用量百分比 | 百分比 | 使用的配額百分比。 |
+| 核心總數 | Count | 核心總數。 |
+| 節點總計 | Count | 節點總數。 |
+| 無法使用的核心 | Count | 無法使用的核心數目。 |
+| 無法使用的節點 | Count | 無法使用的節點數目。 |
 
-以下是可用於篩選配額指標的維度：
+以下是可以用來篩選配額計量的維度：
 
-| 維度 | 提供指標 | 描述 |
+| 維度 | 可用的度量 | 說明 |
 | ---- | ---- | ---- |
-| 叢集名稱 | 所有配額指標 | 計算實例的名稱。 |
-| Vm 姓氏 | 配額利用率百分比 | 群集使用的 VM 系列的名稱。 |
-| Vm 優先順序 | 配額利用率百分比 | VM 的優先順序。
+| 叢集名稱 | 所有配額標準 | 計算實例的名稱。 |
+| Vm 系列名稱 | 配額使用量百分比 | 叢集所使用的 VM 系列名稱。 |
+| Vm 優先順序 | 配額使用量百分比 | VM 的優先順序。
 
-**運行**
+**Resource**
 
-有關培訓運行的資訊。
-
-| 計量 | 單位 | 描述 |
+| 計量 | 單位 | 說明 |
 | ----- | ----- | ----- |
-| 已完成的運行 | Count | 已完成的運行數。 |
-| 運行失敗 | Count | 失敗的運行數。 |
-| 已啟動運行 | Count | 已啟動運行數。 |
+| CpuUtilization | 百分比 | 在執行/作業期間，針對指定節點使用多少 CPU 百分比。 只有在節點上執行工作時，才會發佈此計量。 一個作業可以使用一或多個節點。 此計量會針對每個節點發布。 |
+| GpuUtilization | 百分比 | 在執行/作業期間，指定節點使用了多少 GPU 百分比。 一個節點可以有一或多個 Gpu。 此計量會每個節點每個 GPU 發佈一次。 |
 
-以下是可用於篩選運行指標的維度：
+以下是可以用來篩選資源計量的維度：
 
-| 維度 | 描述 |
-| ---- | ---- |
-| 計算類型 | 運行中使用的計算類型。 |
-| 管道步進類型 | 運行中使用的[管道步驟](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py)的類型。 |
-| 已發佈管道Id | 運行中使用的已發佈管道的 ID。 |
-| 運行類型 | 運行的類型。 |
-
-RunType 維度的有效值為：
-
-| 值 | 描述 |
+| 維度 | 說明 |
 | ----- | ----- |
-| 實驗 | 非管道運行。 |
-| 管道運行 | 管道運行，它是 StepRun 的父級。 |
-| 步進運行 | 管道步驟的運行。 |
-| 重複使用的步進運行 | 重用上一個運行的管道步驟的運行。 |
+| CreatedTime | |
+| deviceId | 裝置的識別碼（GPU）。 僅適用于 GpuUtilization。 |
+| NodeId | 工作執行所在之節點的識別碼。 |
+| RunId | 執行/作業的識別碼。 |
+
+**進行**
+
+訓練執行的資訊。
+
+| 計量 | 單位 | 說明 |
+| ----- | ----- | ----- |
+| 已完成的執行 | Count | 已完成的執行數目。 |
+| 失敗的執行 | Count | 失敗的執行數目。 |
+| 開始執行 | Count | 已啟動的執行數目。 |
+
+以下是可以用來篩選執行計量的維度：
+
+| 維度 | 說明 |
+| ---- | ---- |
+| ComputeType | 執行所使用的計算類型。 |
+| PipelineStepType | 執行時所使用的[PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py)類型。 |
+| PublishedPipelineId | 執行時所使用之已發行管線的識別碼。 |
+| RunType | 執行的類型。 |
+
+RunType 維度的有效值如下：
+
+| 值 | 說明 |
+| ----- | ----- |
+| 實驗 | 非管線執行。 |
+| 來擷取 | 管線執行，這是 StepRun 的父系。 |
+| StepRun | 管線步驟的執行。 |
+| ReusedStepRun | 管線步驟的執行，會重複使用先前執行的。 |
 
 ## <a name="see-also"></a>另請參閱
 
-- 有關[監視](monitor-azure-machine-learning.md)Azure 機器學習的說明，請參閱監視 Azure 機器學習。
-- 有關監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器監視 Azure 資源](/azure/azure-monitor/insights/monitor-azure-resource)。
+- 如需監視 Azure Machine Learning 的說明，請參閱[監視 Azure Machine Learning](monitor-azure-machine-learning.md) 。
+- 如需監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器監視 azure 資源](/azure/azure-monitor/insights/monitor-azure-resource)。

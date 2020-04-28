@@ -1,17 +1,17 @@
 ---
 title: 在 Azure Cosmos DB 中管理一致性
-description: 瞭解如何使用 Azure 門戶、.Net SDK、JAVA SDK 和各種其他 SDK 在 Azure Cosmos DB 中配置和管理一致性級別
+description: 瞭解如何使用 Azure 入口網站、.NET SDK、JAVA SDK 和各種其他 Sdk，在 Azure Cosmos DB 中設定和管理一致性層級
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 04/24/2020
 ms.author: mjbrown
-ms.openlocfilehash: 651daa0af8188b386220d97390e7a61615f94120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e18abf5d8e26dba7a48bd1deb7d53102b9971690
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79369398"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184277"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的一致性層級
 
@@ -21,42 +21,32 @@ ms.locfileid: "79369398"
 
 ## <a name="configure-the-default-consistency-level"></a>設定預設一致性層級
 
-[預設一致性層級](consistency-levels.md)是用戶端依預設使用的一致性層級。 用戶端一律可將其覆寫。
+[預設一致性層級](consistency-levels.md)是用戶端依預設使用的一致性層級。
 
 ### <a name="cli"></a>CLI
 
+建立具有會話一致性的 Cosmos 帳戶，然後更新預設一致性。
+
 ```azurecli
-# create with a default consistency
-az cosmosdb create --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Session
+# Create a new account with Session consistency
+az cosmosdb create --name $accountName --resource-group $resourceGroupName --default-consistency-level Session
 
 # update an existing account's default consistency
-az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource group name> --default-consistency-level Eventual
+az cosmosdb update --name $accountName --resource-group $resourceGroupName --default-consistency-level Strong
 ```
 
 ### <a name="powershell"></a>PowerShell
 
-這個範例會建立新的 Azure Cosmos 帳戶，並在主美國東部和美國西部區域中啟用多個寫入區域。 預設一致性層級會設定為「工作階段」** 一致性。
+建立具有會話一致性的 Cosmos 帳戶，然後更新預設一致性。
 
 ```azurepowershell-interactive
-$locations = @(@{"locationName"="East US"; "failoverPriority"=0},
-             @{"locationName"="West US"; "failoverPriority"=1})
+# Create a new account with Session consistency
+New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Location $locations -Name $accountName -DefaultConsistencyLevel "Session"
 
-$iprangefilter = ""
-
-$consistencyPolicy = @{"defaultConsistencyLevel"="Session"}
-
-$CosmosDBProperties = @{"databaseAccountOfferType"="Standard";
-                        "locations"=$locations;
-                        "consistencyPolicy"=$consistencyPolicy;
-                        "ipRangeFilter"=$iprangefilter;
-                        "enableMultipleWriteLocations"="true"}
-
-New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
-  -ApiVersion "2015-04-08" `
-  -ResourceGroupName "myResourceGroup" `
-  -Location "East US" `
-  -Name "myCosmosDbAccount" `
-  -Properties $CosmosDBProperties
+# Update an existing account's default consistency
+Update-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
+  -Name $accountName -DefaultConsistencyLevel "Strong"
 ```
 
 ### <a name="azure-portal"></a>Azure 入口網站
@@ -68,6 +58,9 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 ## <a name="override-the-default-consistency-level"></a>覆寫預設一致性層級
 
 用戶端可以覆寫服務所設定的預設一致性層級。 一致性層級可以根據每個要求來設定，而這會覆寫帳戶層級上設定的預設一致性層級。
+
+> [!TIP]
+> 一致性只能在要求層級**放寬**。 若要從較弱到更強的一致性進行移動，請更新 Cosmos 帳戶的預設一致性。
 
 ### <a name="net-sdk-v2"></a><a id="override-default-consistency-dotnet"></a>.NET SDK V2
 
@@ -89,8 +82,8 @@ ItemRequestOptions requestOptions = new ItemRequestOptions { ConsistencyLevel = 
 
 var response = await client.GetContainer(databaseName, containerName)
     .CreateItemAsync(
-        item, 
-        new PartitionKey(itemPartitionKey), 
+        item,
+        new PartitionKey(itemPartitionKey),
         requestOptions);
 ```
 
@@ -231,10 +224,9 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>監視機率限定過期 (PBS) 計量
 
-最終一致性的界定標準為何？ 針對平均案例，我們可根據版本記錄和時間來提供過期界限。 [**機率限定過期 (PBS)**](https://pbs.cs.berkeley.edu/) 計量會嘗試量化過期的機率，並將其顯示為計量。 若要檢視 PBS 計量，請在 Azure 入口網站中移至您的 Azure Cosmos 帳戶。 打開 **"指標"** 窗格，然後選擇 **"一致性**"選項卡。**查看基於工作負荷（請參閱 PBS）的強一致性讀取概率的**圖表。
+最終一致性的界定標準為何？ 針對平均案例，我們可根據版本記錄和時間來提供過期界限。 [**機率限定過期 (PBS)**](https://pbs.cs.berkeley.edu/) 計量會嘗試量化過期的機率，並將其顯示為計量。 若要檢視 PBS 計量，請在 Azure 入口網站中移至您的 Azure Cosmos 帳戶。 開啟 [**計量**] 窗格，然後選取 [**一致性**] 索引標籤。**根據您的工作負載（請參閱 PBS）** 查看名為 [強式一致讀取] 機率的圖表。
 
 ![Azure 入口網站中的 PBS 圖形](./media/how-to-manage-consistency/pbs-metric.png)
-
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -243,6 +235,6 @@ item = client.ReadItem(doc_link, options)
 * [Azure Cosmos DB 中的一致性層級](consistency-levels.md)
 * [管理區域之間的衝突](how-to-manage-conflicts.md)
 * [資料分割和散佈](partition-data.md)
-* [現代分散式資料庫系統設計的一致性權衡](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [新式分散式資料庫系統設計的一致性取捨](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 * [高可用性](high-availability.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

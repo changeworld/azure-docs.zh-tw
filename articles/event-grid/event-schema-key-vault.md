@@ -1,6 +1,6 @@
 ---
-title: Azure 金鑰保管庫作為事件網格源
-description: 使用 Azure 事件格格描述為 Azure 金鑰保管庫事件提供的屬性和架構
+title: 做為事件方格來源 Azure Key Vault
+description: 說明使用 Azure 事件方格為 Azure Key Vault 事件提供的屬性和架構
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 40bff9585e64163039a8847ff868c982ffb20414
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458244"
 ---
-# <a name="azure-key-vault-as-event-grid-source"></a>Azure 金鑰保管庫作為事件網格源
+# <a name="azure-key-vault-as-event-grid-source"></a>做為事件方格來源 Azure Key Vault
 
-本文提供[Azure 金鑰保管庫中](../key-vault/index.yml)的事件的屬性和架構,當前處於預覽狀態。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
+本文提供[Azure Key Vault](../key-vault/index.yml)中事件的屬性和架構，目前為預覽狀態。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
 ## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
 
 ### <a name="available-event-types"></a>可用的事件類型
 
-Azure 金鑰保管庫帳戶產生以下事件類型:
+Azure Key Vault 帳戶會產生下列事件種類：
 
-| 事件全名 | 事件顯示名稱 | 描述 |
+| 事件完整名稱 | 事件顯示名稱 | 描述 |
 | ---------- | ----------- |---|
-| 微軟.KeyVault.憑證新版本建立 | 已建立憑證新版本 | 創建新證書或新證書版本時觸發。 |
-| 微軟.KeyVault.證書近過期 | 憑證接近過期 | 當前版本的證書即將過期時觸發。 (事件在到期日期前 30 天觸發。 |
-| 微軟.KeyVault.憑證過期 | 憑證到期 | 證書過期時觸發。 |
-| 微軟.KeyVault.Key Newversion建立 | 已建立金鑰新版本 | 創建新密鑰或新密鑰版本時觸發。 |
-| 微軟.KeyVault.KeyNear過期 | 金鑰接近過期 | 當金鑰的當前版本即將過期時觸發。 (事件在到期日期前 30 天觸發。 |
-| 微軟.KeyVault.金鑰過期 | 金鑰已過期 | 密鑰過期時觸發。 |
-| 微軟.KeyVault.秘密新版本建立 | 已建立秘密新版本 | 創建新機密或新機密版本時觸發。 |
-| 微軟.KeyVault.秘密近視 | 秘密接近過期 | 當前版本的機密即將過期時觸發。 (事件在到期日期前 30 天觸發。 |
-| 微軟.KeyVault.秘密過期 | 秘密過期 | 當機密過期時觸發。 |
+| KeyVault. CertificateNewVersionCreated | 已建立憑證新版本 | 在建立新憑證或新憑證版本時觸發。 |
+| KeyVault. CertificateNearExpiry | 憑證即將到期 | 當憑證的目前版本即將到期時觸發。 （事件會在到期日的30天前觸發）。 |
+| KeyVault. CertificateExpired | 憑證到期 | 當憑證過期時觸發。 |
+| KeyVault. KeyNewVersionCreated | 已建立金鑰新版本 | 在建立新的金鑰或新的金鑰版本時觸發。 |
+| KeyVault. KeyNearExpiry | 金鑰即將到期 | 當目前的金鑰版本即將到期時觸發。 （事件會在到期日的30天前觸發）。 |
+| KeyVault. KeyExpired | 金鑰已過期 | 在金鑰過期時觸發。 |
+| KeyVault. SecretNewVersionCreated | 已建立秘密新版本 | 在建立新的秘密或新的秘密版本時觸發。 |
+| KeyVault. SecretNearExpiry | 密碼即將到期 | 當目前的秘密版本即將到期時觸發。 （事件會在到期日的30天前觸發）。 |
+| KeyVault. SecretExpired | 密碼已過期 | 當秘密過期時觸發。 |
 
 ### <a name="event-examples"></a>事件範例
 
-下面的範例顯示**Microsoft.KeyVault.秘密新版本建立的**架構 :
+下列範例顯示**KeyVault. SecretNewVersionCreated**的架構：
 
 ```JSON
 [
@@ -67,31 +67,31 @@ Azure 金鑰保管庫帳戶產生以下事件類型:
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | ---------- | ----------- |---|
-| id | 字串 | 觸發此事件的物件的識別碼 |
-| vaultName | 字串 | 觸發此事件的物件的金鑰保管庫名稱 |
-| objectType | 字串 | 觸發此事件的物件的類型 |
-| 物件名稱 | 字串 | 觸發此事件的物件名稱 |
-| version | 字串 | 觸發此事件的物件的版本 |
-| nbf | number | 觸發此事件的物件的未早於日期(以秒為單位) |
-| exp | number | 觸發此事件的物件的到期日期(以秒為單位) |
+| id | 字串 | 觸發此事件之物件的識別碼 |
+| vaultName | 字串 | 觸發此事件的物件金鑰保存庫名稱 |
+| objectType | 字串 | 觸發此事件之物件的類型 |
+| 下方 | 字串 | 觸發此事件的物件名稱 |
+| version | 字串 | 觸發此事件的物件版本 |
+| nbf | number | 觸發此事件的物件自 1970-01-01T00：00：00Z 之後的非之前日期（以秒為單位） |
+| exp | number | 觸發此事件的物件自 1970-01-01T00：00：00Z 之後的到期日（以秒為單位） |
 
-## <a name="tutorials-and-how-tos"></a>教學和如何
+## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
 |Title  |描述  |
 |---------|---------|
-| [使用 Azure 事件網格監視金鑰保管庫事件](../key-vault/general/event-grid-overview.md) | 將密鑰保管庫與事件網格集成的概述。 |
-| [教學:使用事件網格建立及監視金鑰保管庫事件](../key-vault/general/event-grid-tutorial.md) | 瞭解如何為金鑰保管庫設置事件網格通知。 |
+| [使用 Azure 事件方格監視 Key Vault 事件](../key-vault/general/event-grid-overview.md) | 整合 Key Vault 與事件方格的總覽。 |
+| [教學課程：使用事件方格建立和監視 Key Vault 事件](../key-vault/general/event-grid-tutorial.md) | 瞭解如何設定 Key Vault 的事件方格通知。 |
 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關 Azure 事件網格的簡介,請參閱[什麼是事件網格?](overview.md)
-* 有關如何創建 Azure 事件網格訂閱的詳細資訊,請參閱[事件網格訂閱架構](subscription-creation-schema.md)。
-* 要瞭解有關密鑰保管庫與事件網格集成的更多資訊,請參閱[使用 Azure 事件網格監視金鑰保管庫(預覽)。](../key-vault/general/event-grid-overview.md)
-* 有關金鑰保管庫與事件網格集成的教程,請參閱[使用 Azure 事件網格接收和回應金鑰保管庫通知(預覽)。](../key-vault/general/event-grid-tutorial.md)
-* 要取得有關金鑰保管庫和 Azure 自動化的其他指南,請參閱:
+* 如需 Azure Event Grid 的簡介，請參閱[什麼是事件方格？](overview.md)。
+* 如需有關如何建立 Azure 事件方格訂用帳戶的詳細資訊，請參閱[Event grid 訂](subscription-creation-schema.md)用帳戶架構。
+* 若要深入瞭解 Key Vault 與 Event Grid 整合，請參閱[使用 Azure 事件方格監視 Key Vault （預覽）](../key-vault/general/event-grid-overview.md)。
+* 如需 Key Vault 與 Event Grid 整合的教學課程，請參閱[使用 Azure 事件方格接收和回應金鑰保存庫通知（預覽）](../key-vault/general/event-grid-tutorial.md)。
+* 若要取得 Key Vault 和 Azure 自動化的其他指引，請參閱：
     - [何謂 Azure Key Vault？](../key-vault/general/overview.md)
     - [使用 Azure 事件方格監視 Key Vault (預覽)](../key-vault/general/event-grid-overview.md)
     - [使用 Azure 事件方格來接收和回應金鑰保存庫通知 (預覽)](../key-vault/general/event-grid-tutorial.md)
-    - [Azure 自動化概述](../automation/index.yml)
+    - [Azure 自動化概觀](../automation/index.yml)

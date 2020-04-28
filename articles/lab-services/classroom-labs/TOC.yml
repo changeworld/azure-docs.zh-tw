@@ -108,6 +108,8 @@
           href: how-to-windows-shutdown.md
         - name: 檢視支援資訊 (講師)
           href: lab-creator-support-information.md
+        - name: 從講師檢視存取學生 VM
+          href: instructor-access-virtual-machines.md
     - name: 在教室實驗室中連線至 VM (學生)
       items:
         - name: 存取教室實驗室

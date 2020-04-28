@@ -1,23 +1,19 @@
 ---
 title: 適用於 Windows 的 Azure N 系列 AMD GPU 驅動程式設定
 description: 如何於 Azure 中執行 Windows 伺服器或 Windows 的 N 系列 VM 設定 AMD GPU 驅動程式
-services: virtual-machines-windows
 author: vikancha
 manager: jkabat
-editor: ''
-tags: azure-resource-manager
 ms.service: virtual-machines-windows
-ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 02213feb507e9a032a50241fddf31714b9dfd7ee
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 63114bdf60c1feb2b6cb1092ef78397efdc5b666
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011054"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865766"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>在執行 Windows 的 N 系列 VM 安裝 AMD GPU 驅動程式
 

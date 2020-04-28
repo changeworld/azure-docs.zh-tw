@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 03/23/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0612371605f6b216eadeef49d9adb1497ba31591
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cce3ef20a93c6d7a24bfa312501d2f8cc8ed9273
+ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80148227"
+ms.lasthandoff: 04/17/2020
+ms.locfileid: "81604907"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---resource-manager-template"></a>快速入門：使用 Azure 應用程式閘道來引導網路流量 - Resource Manager 範本
 
@@ -57,7 +57,7 @@ ms.locfileid: "80148227"
 
 1. 選取 [部署至 Azure]  以登入 Azure 並開啟範本。 此範本會在執行 IIS 的後端集區中建立應用程式閘道、網路基礎結構和兩個虛擬機器。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json"><img src="./media/quick-create-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![部署至 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fag-docs-qs%2Fazuredeploy.json)
 
 2. 選取或建立資源群組，輸入虛擬機器系統管理員的使用者名稱和密碼。
 3. 選取 [我同意上方所述的條款及條件]  ，然後選取 [購買]  。 部署可能需要 20 分鐘或更久的時間才能完成。

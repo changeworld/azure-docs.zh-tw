@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: f121be4ec8c3d3ab618e2955d9dbd8ab5eea461d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2325509f68ced7c66d9f733b07247ae01301b565
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79129529"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181525"
 ---
 ## <a name="test-your-code"></a>測試您的程式碼
 
@@ -46,8 +46,6 @@ ms.locfileid: "79129529"
 |**使用者名稱** |<span>user@domain.com</span> |用來識別使用者的使用者名稱。|
 |**權杖到期** |Datetime |權杖的到期時間。 MSAL 會視需要更新權杖來延展到期日。|
 
-
-<!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>與範圍和委派的權限有關的詳細資訊
 
 Microsoft Graph API 需要 user.read  範圍才能讀取使用者的設定檔。 根據預設，在應用程式註冊入口網站註冊的每個應用程式中，都會自動新增此範圍。 Microsoft Graph 的其他 API 與您後端伺服器的自訂 API 一樣，需要其他範圍。 Microsoft Graph API 需要 Calendars.Read  範圍才能列出使用者的行事曆。
@@ -56,7 +54,5 @@ Microsoft Graph API 需要 user.read  範圍才能讀取使用者的設定檔。
 
 >[!NOTE]
 >系統可能會在您增加範圍數目時，提示使用者同意其他事項。
-
-<!--end-collapse-->
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

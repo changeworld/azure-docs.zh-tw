@@ -1,5 +1,5 @@
 ---
-title: 使用開源工具視覺化網路流量模式
+title: 使用開放原始碼工具將網路流量模式視覺化
 titleSuffix: Azure Network Watcher
 description: 此頁面描述如何使用網路監看員封包擷取並搭配 Capanalysis，將往返於 VM 的流量模式視覺化。
 services: network-watcher
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: f36db28b58cd57b6407019b378a82632aa6c6228
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 32d978ee766f6dbe95bd7158b8060a0302ef8206
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840650"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189057"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>使用開放原始碼工具將往返於 VM 的網路流量模式視覺化
 
@@ -47,7 +47,7 @@ Azure 的網路監看員可讓您在網路上執行封包擷取，以便擷取�
 
 提供 CapAnalysis 的連結時，請務必將 SAS 權杖附加至儲存體 blob URL。  若要這樣做，請從儲存體帳戶瀏覽至共用存取簽章，指定允許的權限，然後按下 [產生 SAS] 按鈕以建立權杖。 接著，您可以將 SAS 權杖附加至封包擷取儲存體 blob URL。
 
-產生的 URL 看起來如以下的 URL：http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+產生的 URL 看起來如以下的 URL：`http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>分析封包擷取
@@ -74,17 +74,17 @@ CapAnalysis 提供各種選項將封包擷取視覺化，各以不同的觀點�
 
 1. Geomap
 
-    此窗格為您提供網路流量的地圖視圖，顏色可縮放到每個國家/地區流量。 您可以選擇突出顯示的國家/地區以查看其他流統計資訊，例如從該國家/地區/地區的 IP 發送和接收的資料的比例。
+    此窗格會提供您網路流量的地圖視圖，其中的色彩會調整為每個國家/地區的流量量。 您可以選取反白顯示的國家/地區來查看額外的流量統計資料，例如從該國家/地區的 Ip 傳送和接收的資料比例。
 
     ![geomap][8]
 
-1. 篩選器
+1. 篩選條件
 
     CapAnalysis 提供一組可快速分析特定封包的篩選器。 例如，您可以選擇依通訊協定來篩選資料，以具體深入探索該流量子集。
 
     ![filters][11]
 
-    請訪問[https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about)，瞭解有關所有 CapAnalysis 功能的更多。
+    若[https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about)要深入瞭解所有 CapAnalysis 的功能，請造訪。
 
 ## <a name="conclusion"></a>結論
 

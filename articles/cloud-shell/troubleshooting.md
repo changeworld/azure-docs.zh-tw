@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 0b1b22095c77344ed71762d3d51b12f19d9f1811
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79458047"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189457"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的疑難排解和限制
 
@@ -29,10 +29,10 @@ ms.locfileid: "79458047"
 
 ## <a name="general-troubleshooting"></a>一般疑難排解
 
-### <a name="error-running-azuread-cmdlets-in-powershell"></a>在 PowerShell 中運行 AzureAD Cmdlet 時出錯
+### <a name="error-running-azuread-cmdlets-in-powershell"></a>在 PowerShell 中執行 AzureAD Cmdlet 時發生錯誤
 
-- **詳細資訊**：在雲外殼`Get-AzureADUser`中運行 AzureAD Cmdlet 時，可能會看到一個錯誤`You must call the Connect-AzureAD cmdlet before calling any other cmdlets`： 。 
-- **解析度**：運行`Connect-AzureAD`Cmdlet。 以前，雲殼在 PowerShell 啟動期間自動運行此 Cmdlet。 為了加快啟動時間，Cmdlet 不再自動運行。 您可以通過在 PowerShell 中添加到`Connect-AzureAD`$PROFILE檔來選擇還原以前的行為。
+- **詳細資料**：當您執行如`Get-AzureADUser` Cloud Shell 中的 AzureAD Cmdlet 時，您可能會`You must call the Connect-AzureAD cmdlet before calling any other cmdlets`看到錯誤：。 
+- **解決**方式：執行`Connect-AzureAD` Cmdlet。 之前，Cloud Shell 會在 PowerShell 啟動期間自動執行此 Cmdlet。 為了加速開始時間，Cmdlet 不會再自動執行。 您可以在 PowerShell 中新增`Connect-AzureAD`至 $PROFILE 檔案，以選擇還原先前的行為。
 
 ### <a name="early-timeouts-in-firefox"></a>在 FireFox 中提前逾時
 
@@ -41,13 +41,13 @@ ms.locfileid: "79458047"
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>在鎖定的網路環境中停用 Cloud Shell
 
-- **詳細資料**：建議系統管理員阻止其使用者存取 Cloud Shell。 雲外殼利用對`ux.console.azure.com`域的訪問（可能會被拒絕），從而停止對雲外殼進入點的任何訪問，包括portal.azure.com、shell.azure.com、視覺化工作室代碼 Azure 帳戶擴展和docs.microsoft.com。 在美國政府雲中，進入點是`ux.console.azure.us`;沒有相應的shell.azure.us。
-- **解決方法**：限制對`ux.console.azure.com`環境的訪問`ux.console.azure.us`或通過網路設置進行訪問。 Azure 門戶中仍將存在雲外殼圖示，但不會成功連接到服務。
+- **詳細資料**：建議系統管理員阻止其使用者存取 Cloud Shell。 Cloud Shell 利用`ux.console.azure.com`網域的存取權，這可能會遭到拒絕，並停止對 Cloud Shell 的 e 的任何存取，包括 portal.azure.com、shell.azure.com、Visual Studio Code azure 帳戶延伸模組，以及 docs.microsoft.com。 在美國政府雲端中，entrypoint 是`ux.console.azure.us`;沒有對應的 shell.azure.us。
+- **解決**方式：透過網路`ux.console.azure.com`設定`ux.console.azure.us`限制對您環境的存取權。 Cloud Shell 圖示仍會存在於 Azure 入口網站中，但無法成功連線到服務。
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>儲存體對話方塊 - 錯誤：403 RequestDisallowedByPolicy
 
-- **詳細資訊**：通過雲外殼創建存儲帳戶時，由於管理員放置的 Azure 策略，它不成功。錯誤訊息將包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **解決辦法**：連絡您的 Azure 系統管理員，請他移除或更新拒絕儲存體建立的 Azure 原則。
+- **詳細資料**：透過 Cloud Shell 建立儲存體帳戶時，會因為系統管理員所放置的 Azure 原則指派而不成功。錯誤訊息將包含：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **解決**方式：請洽詢您的 Azure 系統管理員，以移除或更新拒絕儲存體建立的 Azure 原則指派。
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>儲存體對話方塊 - 錯誤：400 DisallowedOperation
 
@@ -59,7 +59,7 @@ ms.locfileid: "79458047"
 - **解決辦法**：確認您已將您的網路設定設定為啟用傳送 https 要求和 websocket 要求至 *.console.azure.com 中的網域。
 
 ### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>設定您的 Cloud Shell 連線以支援使用 TLS 1.2
- - **詳細資訊**：要定義連接到雲外殼的 TLS 版本，必須設置特定于瀏覽器的設置。
+ - **詳細資料**：若要定義 Cloud Shell 連接的 TLS 版本，您必須設定瀏覽器特定的設定。
  - **解決方式**：瀏覽至瀏覽器的安全性設定，然後選取 [使用 TLS 1.2] 旁的核取方塊。
 
 ## <a name="bash-troubleshooting"></a>Bash 疑難排解
@@ -94,9 +94,9 @@ Azure Cloud Shell 具有下列已知限制：
 
 ### <a name="quota-limitations"></a>配額限制
 
-Azure 雲外殼限制每個區域每個租戶 20 個併發使用者。 如果嘗試打開比限制更多的同步會話，您將看到"租戶使用者超出配額"錯誤。 如果您有合法需要開設的會話數量超過此（例如，對於培訓課程），請在預期使用之前聯繫支援人員，請求增加配額。
+Azure Cloud Shell 的限制為每個區域每個租使用者20個並行使用者。 如果您嘗試開啟比限制更多的同時會話，將會看到「租使用者超過配額」錯誤。 如果您有合理的需要開啟更多會話，而不是這麼做（例如訓練課程），請在您預期的使用量之前，先聯絡支援人員以要求增加配額。
 
-雲外殼是作為免費服務提供的，旨在配置 Azure 環境，而不是通用計算平臺。 過多的自動使用可能會被視為違反 Azure 服務條款，並可能導致雲殼訪問被阻止。
+Cloud Shell 是以免費服務的方式提供，其設計目的是用來設定您的 Azure 環境，而不是一般用途的計算平臺。 過多的自動化使用可能會被視為違反 Azure 服務條款，可能會導致 Cloud Shell 存取遭到封鎖。
 
 ### <a name="system-state-and-persistence"></a>系統狀態和持續性
 
@@ -210,8 +210,8 @@ PowerShell：
   $token= ((Invoke-WebRequest -Uri "$env:MSI_ENDPOINT`?resource=https://management.core.windows.net/" -Headers @{Metadata='true'}).content |  ConvertFrom-Json).access_token
   Invoke-WebRequest -Method Delete -Uri https://management.azure.com/providers/Microsoft.Portal/usersettings/cloudconsole?api-version=2017-12-01-preview -Headers @{Authorization = "Bearer $token"}
   ```
-## <a name="azure-government-limitations"></a>Azure 政府限制
-Azure 政府中的 Azure 雲外殼只能通過 Azure 門戶訪問。
+## <a name="azure-government-limitations"></a>Azure Government 限制
+Azure Government 中的 Azure Cloud Shell 只能透過 Azure 入口網站存取。
 
 >[!Note]
-> 當前不支援連接到 GCC-High 或政府 DoD 雲以進行線上交換。
+> 目前不支援連接到 GCC-適用于 Exchange Online 的高或政府 DoD 雲端。

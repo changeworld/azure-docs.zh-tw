@@ -1,20 +1,20 @@
 ---
 title: IoT 隨插即用預覽版簡介 | Microsoft Docs
 description: 了解 IoT 隨插即用預覽版。 IoT 隨插即用以開放式模型語言為基礎，可讓 IoT 裝置宣告其功能。 當 IoT 裝置連線到雲端解決方案 (例如 Azure IoT Central 或合作夥伴應用程式) 時，即會出現該宣告，名為裝置功能模型。 接著，雲端解決方案可自動了解裝置並開始與其互動 — 您不需要撰寫任何程式碼。
-author: ChrisGMsft
-ms.author: chrisgre
+author: Philmea
+ms.author: philmea
 ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 0399e1659fb7cc6a650c6b3c1d0189c8802d4904
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 12f3febac2c5c8ed01b9b156a64dc77f6ed0704f
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80064319"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81770443"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>什麼是 IoT 隨插即用預覽版？
 

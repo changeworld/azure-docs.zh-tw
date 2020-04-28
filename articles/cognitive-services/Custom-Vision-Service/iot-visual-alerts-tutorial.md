@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: f66347727ad3c1b8eaf1f0e023abe1f2eeefcacb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
+ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403729"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81769877"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教學課程：搭配 IoT 裝置使用自訂視覺來回報視覺狀態。
 
 此範例應用程式會說明如何使用自訂視覺來將具有相機的裝置定型以使偵測視覺狀態。 您可以使用匯出的 ONNX 模型在 IoT 裝置上執行此偵測案例。
 
-視覺狀態會描述影像的內容：空的房間或是有人的房間、停著卡車的空車道等等。 在下列影像中，您可以看到應用程式會在相機前放置香蕉或蘋果時做出正確偵測。
+視覺狀態會描述影像的內容：空的房間或是有人的房間、空的車道或是停著卡車的車道等等。 在下列影像中，您可以看到應用程式會在相機前放置香蕉或蘋果時做出正確偵測。
 
 ![標記相機前方水果之 UI 的動畫](./media/iot-visual-alerts-tutorial/scoring.gif)
 

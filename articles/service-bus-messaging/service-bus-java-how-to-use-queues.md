@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aschhab
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ac6bc8f78bd3d526e68dba3e81825a28a9ac47f7
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 184ffd39281ea27d8596bc37a9f89fd22acfb1ba
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294136"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81732177"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>快速入門：透過 Java 使用 Azure 服務匯流排佇列來傳送和接收訊息
 
@@ -43,7 +43,7 @@ ms.locfileid: "80294136"
 ## <a name="configure-your-application-to-use-service-bus"></a>設定應用程式以使用服務匯流排
 先確定已安裝 [Azure SDK for Java][Azure SDK for Java] 再建置此範例。 
 
-如果使用 Eclipse，您可以安裝包含 Azure SDK for Java 的 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]。 然後您可以將 **Microsoft Azure Libraries for Java** 新增至您的專案。 如果您正在使用 IntelliJ，請參閱[安裝 Azure Toolkit for IntelliJ](/azure/java/intellij/azure-toolkit-for-intellij-installation)。 
+如果使用 Eclipse，您可以安裝包含 Azure SDK for Java 的 [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse]。 然後您可以將 **Microsoft Azure Libraries for Java** 新增至您的專案。 如果您正在使用 IntelliJ，請參閱[安裝 Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/installation)。 
 
 ![將適用於 Java 的 Microsoft Azure 程式庫新增至您的 Eclipse 專案](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
@@ -196,7 +196,7 @@ public void run() throws Exception {
 
 如需詳細資訊，請參閱 [Java 開發人員中心](https://azure.microsoft.com/develop/java/)。
 
-[Azure SDK for Java]: /azure/java/java-sdk-azure-get-started
+[Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
 [Azure Toolkit for Eclipse]: https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage

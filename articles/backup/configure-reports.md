@@ -1,131 +1,134 @@
 ---
 title: 設定 Azure 備份報告
-description: 使用紀錄分析與 Azure 工作簿設定及檢視 Azure 備份的報告
+description: 使用 Log Analytics 和 Azure 活頁簿來設定及查看 Azure 備份的報表
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: bcc87deb19190149329369ca58f54b45b62b41fe
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.openlocfilehash: c1af9a532b390b428e74957c455988dfd4df3967
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81617807"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82184940"
 ---
 # <a name="configure-azure-backup-reports"></a>設定 Azure 備份報告
 
-備份管理員的常見要求是根據跨越很長時間的數據獲取備份的見解。 此類解決方案的用例包括:
+備份管理員的常見需求是根據長時間內的資料，取得備份的深入解析。 這類解決方案的使用案例包括：
 
- - 分配和預測雲存儲的消耗。
- - 審核備份和還原。
- - 在不同粒度級別識別關鍵趨勢。
+- 配置和預測耗用的雲端儲存體。
+- 備份和還原的審核。
+- 識別不同資料細微性層級的主要趨勢。
 
-今天,Azure 備份提供了一個使用[Azure 監視器日誌](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)和[Azure 工作簿](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)的報告解決方案。 這些資源可説明您在整個備份區獲得有關備份的豐富見解。 本文介紹如何配置和查看 Azure 備份報告。
+目前，Azure 備份提供使用[Azure 監視器記錄](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)和[Azure 活頁簿](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)的報表解決方案。 這些資源可協助您在整個備份資產中，取得有關備份的豐富見解。 本文說明如何設定及查看 Azure 備份報表。
 
 ## <a name="supported-scenarios"></a>支援的案例
 
-* Azure VM、Azure VM 中的 SQL、Azure VM 中的 SAP HANA/ASE、Microsoft Azure 恢複服務 (MARS) 代理、Microsoft Azure 備份伺服器 (MABS) 和系統中心數據保護管理器 (DPM) 都支援備份報告。
-* 對於 DPM 工作負載,DPM 版本 5.1.363.0 及以上版本以及代理版本 2.0.9127.0 及以上支持備份報告。
-* 對於 MABS 工作負載,MABS 版本 13.0.415.0 及以上版本以及代理版本 2.0.9170.0 及以上支援備份報告。
-* 只要備份報告的數據發送到使用者有權訪問的日誌分析工作區,就可以跨所有備份專案、保管庫、訂閱和區域查看備份報告。 要查看一組保管庫的報告,只需讓讀者訪問保管庫向其發送數據的日誌分析工作區。 您無需存取各個保管庫。
-* 如果您是[Azure 燈塔](https://docs.microsoft.com/azure/lighthouse/)使用者,具有對客戶訂閱的委派訪問許可權,則可以使用 Azure 燈塔的這些報表查看所有租戶的報表。
-* 日誌備份作業的數據當前未顯示在報表中。
+- Azure vm、azure vm 中的 SQL、Azure Vm 中的 SAP Hana/ASE、Microsoft Azure 復原服務（MARS）代理程式、Microsoft Azure 備份 Server （MABS）和 System Center Data Protection Manager （DPM）皆支援備份報表。 Azure 檔案共用備份的資料目前不會顯示在備份報表中。
+- 針對 DPM 工作負載，支援 DPM 版本5.1.363.0 和更新版本的備份報告，以及代理程式版本2.0.9127.0 和更新版本。
+- 針對 MABS 工作負載，支援 MABS 版13.0.415.0 和更新版本的備份報告，以及代理程式版本2.0.9170.0 和更新版本。
+- 只要將資料傳送到使用者有權存取的 Log Analytics 工作區，您就可以跨所有備份專案、保存庫、訂用帳戶和區域查看備份報表。 若要查看一組保存庫的報表，您只需要擁有保存庫用來傳送其資料的 Log Analytics 工作區的讀取器存取權。 您不需要擁有個別保存庫的存取權。
+- 如果您是具有客戶訂用帳戶之委派存取權的[Azure 燈塔](https://docs.microsoft.com/azure/lighthouse/)使用者，您可以使用這些報表搭配 Azure 燈塔來跨所有租使用者查看報表。
+- 記錄備份作業的資料目前不會顯示在報表中。
 
 ## <a name="get-started"></a>開始使用
 
-按照以下步驟開始使用報表。
+請遵循下列步驟來開始使用報表。
 
-#### <a name="1-create-a-log-analytics-workspace-or-use-an-existing-one"></a>1. 建立紀錄分析工作區或使用現有工作區
+### <a name="1-create-a-log-analytics-workspace-or-use-an-existing-one"></a>1. 建立 Log Analytics 工作區，或使用現有的
 
-設置一個或多個日誌分析工作區以存儲備份報告數據。 可以創建此日誌分析工作區的位置和訂閱與存在保管庫的位置和訂閱無關。 
+設定一或多個 Log Analytics 工作區，以儲存您的備份報告資料。 可以建立此 Log Analytics 工作區的位置和訂用帳戶，與保存庫所在的位置和訂用帳戶無關。
 
-要設定紀錄分析工作區,請參閱在[Azure 門戶中建立紀錄分析工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
+若要設定 Log Analytics 工作區，請參閱[Azure 入口網站中的建立 Log analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
 
-默認情況下,日誌分析工作區中的數據將保留 30 天。 要查看時間跨度較長的數據,請更改日誌分析工作區的保留期。 要改變保留期,請參閱[使用 Azure 監視器紀錄管理使用方式和成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)。
+根據預設，Log Analytics 工作區中的資料會保留30天。 若要查看較長時間範圍的資料，請變更 Log Analytics 工作區的保留期。 若要變更保留期限，請參閱[使用 Azure 監視器記錄來管理使用量和成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage)。
 
-#### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2. 為保管庫設定診斷設定
+### <a name="2-configure-diagnostics-settings-for-your-vaults"></a>2. 設定保存庫的診斷設定
 
-Azure 資源管理員資源(如恢復服務保管庫)將有關計劃工序和使用者觸發操作的資訊記錄為診斷數據。 
+Azure Resource Manager 的資源，例如復原服務保存庫，會將排程作業和使用者觸發作業的相關資訊記錄為診斷資料。
 
-在恢復服務保管庫的監視部分中,選擇 **「診斷設置」** 並指定恢復服務保管庫的診斷數據的目標。 要瞭解有關使用診斷事件的更多資訊,請參閱[使用恢復服務保管庫的診斷設定](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)。
+在復原服務保存庫的 [監視] 區段中，選取 [**診斷設定**]，並指定復原服務保存庫診斷資料的目標。 若要深入瞭解如何使用診斷事件，請參閱[使用復原服務保存庫的診斷設定](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events)。
 
 ![診斷設定窗格](./media/backup-azure-configure-backup-reports/resource-specific-blade.png)
 
-Azure 備份還提供內置 Azure 策略,該策略可自動配置給定作用域中所有保管庫的診斷設置。 要瞭解如何使用此政策,請參閱[大規模設定保管庫診斷設定](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)。
+Azure 備份也提供內建的 Azure 原則定義，可將指定範圍內所有保存庫的診斷設定自動化。 若要瞭解如何使用此原則，請參閱[大規模設定保存庫診斷設定](https://docs.microsoft.com/azure/backup/azure-policy-configure-diagnostics)。
 
 > [!NOTE]
-> 配置診斷後,可能需要長達 24 小時才能完成初始數據推送。 數據開始流入日誌分析工作區后,可能無法立即在報表中看到數據,因為報表中未顯示當前部分日的數據。 有關詳細資訊,請參閱[備份報表中使用的約定](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)。 我們建議您在將保管庫配置為將數據發送到日誌分析兩天后開始查看報告。
+> 設定診斷之後，最多可能需要24小時的時間，才能完成初始資料推送。 資料開始流入 Log Analytics 工作區之後，您可能不會立即看到報表中的資料，因為目前部分日期的資料未顯示在報表中。 如需詳細資訊，請參閱[備份報告中使用的慣例](https://docs.microsoft.com/azure/backup/configure-reports#conventions-used-in-backup-reports)。 我們建議您在設定保存庫後兩天開始查看報告，以將資料傳送至 Log Analytics。
 
-#### <a name="3-view-reports-in-the-azure-portal"></a>3. 在 Azure 門戶中查看報表
+#### <a name="3-view-reports-in-the-azure-portal"></a>3. 在 Azure 入口網站中查看報表
 
-將保管庫配置為將資料發送到日誌分析後,請通過訪問任何保管庫的窗格並選擇 **「備份報告**」來查看備份報告。
+設定保存庫以將資料傳送至 Log Analytics 之後，請前往任何保存庫的窗格，然後選取 [**備份報告**]，以查看您的備份報告。
 
 ![保存庫儀表板](./media/backup-azure-configure-backup-reports/vault-dashboard.png)
 
-選擇此連結可打開備份報表工作簿。
+選取此連結可開啟 [備份報表] 活頁簿。
 
 > [!NOTE]
-> * 目前,報告的初始負載可能需要長達 1 分鐘。
-> * 恢復服務保管庫只是備份報告的一個入口點。 從保管庫的窗格打開備份報表工作簿后,選擇相應的日誌分析工作區集以查看跨所有保管庫聚合的數據。
+>
+> - 目前，報表的初始載入可能需要最多1分鐘的時間。
+> - 復原服務保存庫只是備份報告的進入點。 從保存庫的窗格開啟 [備份報表] 活頁簿之後，請選取適當的 Log Analytics 工作區集合，以查看所有保存庫的匯總資料。
 
-此報告包含各種選項卡:
+此報表包含各種索引標籤：
 
-* **摘要**:使用此選項卡可以獲取備份空間的高級概述。 您可以快速瞭解備份項總數、消耗的雲端儲存總數、受保護實例數以及每個工作負載類型的作業成功率。 有關特定備份工件類型的更多詳細資訊,請造訪相應的選項卡。
+- **摘要**：使用此索引標籤可取得備份資產的高階總覽。 您可以快速概覽備份專案總數、已耗用的雲端儲存體總數、受保護的實例數目，以及每個工作負載類型的作業成功率。 如需特定備份成品類型的詳細資訊，請移至個別的索引標籤。
 
    ![[摘要] 索引標籤](./media/backup-azure-configure-backup-reports/summary.png)
 
-* **備份專案**:使用此選項卡可查看在備份專案級別使用的雲端儲存的資訊和趨勢。 例如,如果在 Azure VM 備份中使用 SQL,則可以看到正在備份的每個 SQL 資料庫使用的雲端儲存。 您還可以選擇查看特定保護狀態的備份項目的數據。 例如,選擇選項卡頂部的 **「保護停止」** 磁貼會篩選下面的所有小部件,以便僅顯示處於「保護停止」狀態的備份項目的數據。
+- **備份專案**：使用此索引標籤可查看在備份專案層級使用之雲端儲存體的資訊和趨勢。 例如，如果您在 Azure VM 備份中使用 SQL，您可以看到每個要備份的 SQL 資料庫所耗用的雲端儲存體。 您也可以選擇查看特定保護狀態的備份專案資料。 例如，選取索引標籤頂端的 [**保護已停止**] 磚會篩選底下的所有 widget，只針對處於 [保護已停止] 狀態的備份專案顯示資料。
 
-   ![備份項目選項卡](./media/backup-azure-configure-backup-reports/backup-items.png)
+   ![[備份專案] 索引標籤](./media/backup-azure-configure-backup-reports/backup-items.png)
 
-* **使用方式**:使用此選項卡可查看備份的關鍵計費參數。 此選項卡上顯示的資訊位於計費實體(受保護容器)級別。 例如,在 DPM 伺服器備份到 Azure 的情況下,您可以查看 DPM 伺服器使用的受保護實例和雲端儲存的趨勢。 同樣,如果在 Azure 備份中使用 SQL 或在 Azure 備份中使用 SAP HANA,此選項卡在包含這些資料庫的虛擬機器級別提供與使用方式相關的資訊。
+- **使用**方式：使用此索引標籤可查看備份的金鑰計費參數。 此索引標籤上顯示的資訊位於計費實體（受保護的容器）層級。 例如，在將 DPM 服務器備份至 Azure 的情況下，您可以查看受保護實例的趨勢，以及針對 DPM 服務器所使用的雲端存放裝置。 同樣地，如果您在 Azure 備份的 Azure 備份或 SAP Hana 中使用 SQL，此索引標籤會在包含這些資料庫的虛擬機器層級提供使用相關資訊。
 
-   ![使用方式選項卡](./media/backup-azure-configure-backup-reports/usage.png)
+   ![[使用量] 索引標籤](./media/backup-azure-configure-backup-reports/usage.png)
 
-* **作業**:使用此選項卡可以查看作業的長期運行趨勢,例如每天失敗的作業數和作業失敗的首要原因。 您可以在聚合等級和備份項級別查看此資訊。 在網格中選擇特定的備份項,以查看在所選時間範圍內觸發該備份項的每個作業的詳細資訊。
+- **作業**：使用此索引標籤可查看作業的長時間執行趨勢，例如每天失敗的工作數，以及作業失敗的最大原因。 您可以同時在匯總層級和備份專案層級查看這項資訊。 在方格中選取特定的備份專案，以查看在所選時間範圍內，針對該備份專案所觸發之每個工作的詳細資訊。
 
    ![工作索引標籤](./media/backup-azure-configure-backup-reports/jobs.png)
 
-* **策略**:使用此選項卡可以查看有關所有活動策略的資訊,例如關聯項的數量以及根據給定策略備份的專案消耗的總雲存儲。 選擇特定策略以查看有關其每個關聯的備份項目的資訊。
+- **原則**：使用此索引標籤來查看所有作用中原則的資訊，例如相關專案的數目，以及在給定原則下備份的專案所耗用的雲端儲存體總計。 選取特定的原則，以查看每個相關聯備份專案的資訊。
 
-   ![原則選項卡](./media/backup-azure-configure-backup-reports/policies.png)
+   ![[原則] 索引標籤](./media/backup-azure-configure-backup-reports/policies.png)
 
 ## <a name="export-to-excel"></a>匯出至 Excel
 
-選擇任何小部件右上角的向下箭頭按鈕(如表格或圖表),以匯出該小部件的內容為 Excel 工作表,並應用現有篩選器。 要將表的更多行匯出到 Excel,可以使用每個網格頂部的 **「每頁行**」下拉箭頭增加頁面上顯示的行數。
+選取任何 widget （如資料表或圖表）右上方的向下箭號按鈕，將該 widget 的內容匯出為 Excel 工作表，並套用現有的篩選。 若要將資料表的更多資料列匯出至 Excel，您可以使用每個方格頂端的 [**每頁**的資料列] 下拉式箭號來增加頁面上顯示的資料列數目。
 
 ## <a name="pin-to-dashboard"></a>釘選到儀表板
 
-選擇每個小部件頂部的針按鈕,將小部件固定到 Azure 門戶儀錶板。 此功能可説明您創建定製的儀錶板,以顯示所需的最重要的資訊。
+選取每個 widget 頂端的 [釘選] 按鈕，將 widget 釘選到您的 Azure 入口網站儀表板。 這項功能可協助您建立量身打造的自訂儀表板，以顯示您所需的最重要資訊。
 
-## <a name="cross-tenant-reports"></a>交叉租戶報告
+## <a name="cross-tenant-reports"></a>跨租使用者報告
 
-如果使用[Azure 燈塔](https://docs.microsoft.com/azure/lighthouse/)對跨多個租戶環境的訂閱進行委派訪問,則可以使用預設訂閱篩選器。 選擇 Azure 門戶右上角的篩選器按鈕,以選擇要查看數據的所有訂閱。 這樣,您就可以在租戶中選擇日誌分析工作區以查看多租戶報表。
+如果您使用[Azure 燈塔](https://docs.microsoft.com/azure/lighthouse/)搭配委派存取多個租使用者環境中的訂用帳戶，您可以使用預設的訂用帳戶篩選器。 選取 Azure 入口網站右上角的 [篩選] 按鈕，選擇您要查看其資料的所有訂用帳戶。 這麼做可讓您在整個租使用者中選取 Log Analytics 工作區，以查看 multitenanted 報告。
 
-## <a name="conventions-used-in-backup-reports"></a>備份報告中使用的約定
+## <a name="conventions-used-in-backup-reports"></a>備份報表中使用的慣例
 
-* 每個選項卡上從左到右和從上到下都有篩選器工作。也就是說,任何篩選器僅適用於定位到該篩選器右側或該篩選器下方的所有小部件。 
-* 選擇彩色磁貼會篩選磁貼下方與該磁貼的值相關的記錄的小部件。 例如,選擇 **「備份專案**」選項卡上的 **「保護停止**」磁貼會篩選下面的網格和圖表,以顯示處於「保護停止」狀態的備份項目的數據。
-* 不著色的磁貼不可單擊。
-* 報表中未顯示當前部分日的數據。 因此,當 **「時間範圍**」的選定值**為「過去 7 天**」時,報表將顯示最近 7 個已完成天的記錄。 不包括當前的日子。
-* 該報告顯示在選定時間範圍內*觸發*的作業的詳細資訊(日誌作業外)。 
-* 實體**儲存**與**保護實體顯示**的值在選取時間範圍的*末尾*。
-* 報表中顯示的備份專案是在所選時間範圍*末尾*存在的項。 不會顯示在選定時間範圍中間刪除的備份專案。 相同的約定也適用於備份策略。
+- 在每個索引標籤上，篩選從左至右和上到下的工作。也就是說，任何篩選準則僅適用于位於該篩選器右邊或篩選準則底下的所有小工具。
+- 選取彩色磚會篩選磚底下的 widget，尋找與該磚的值相關的記錄。 例如，選取 [**備份專案**] 索引標籤上的 [**保護已停止**] 磚會篩選下方的方格和圖表，以顯示處於 [保護已停止] 狀態的備份專案資料。
+- 未著色的磚無法按。
+- 報表中不會顯示目前部分日期的資料。 因此，當所選的**時間範圍**值為 [**過去7天**] 時，報表會顯示過去七天的記錄。 不包含目前的日期。
+- 此報表會顯示在所選時間範圍內*觸發*之作業的詳細資料（除了記錄工作外）。
+- 針對**雲端儲存體**和**受保護的實例**所顯示的值會在所選時間範圍的*結尾*。
+- 報表中顯示的備份專案就是存在於所選時間範圍*結尾*的專案。 不會顯示在所選時間範圍中間刪除的備份專案。 相同的慣例也適用于備份原則。
 
 ## <a name="query-load-times"></a>查詢載入時間
 
-備份報告中的小部件由 Kusto 查詢提供支援,這些查詢在使用者的日誌分析工作區上運行。 這些查詢通常涉及處理大量數據,並有多個聯接,以實現更豐富的見解。 因此,當使用者查看跨大型備份區的報告時,小部件可能無法立即載入。 此表根據備份項數和查看報表的時間範圍,粗略估計不同小部件載入的時間。
+備份報告中的 widget 是由在使用者的 Log Analytics 工作區上執行的 Kusto 查詢所提供技術支援。 這些查詢通常牽涉到大量資料的處理，並具有多個聯結，以提供更豐富的深入解析。 因此，當使用者跨大型備份資產流覽報表時，小工具可能不會立即載入。 下表根據備份專案的數目和報表所查看的時間範圍，提供不同 widget 載入時間的粗略估計值。
 
-| **• 資料來源**                         | **時間範圍** | **大致載入時間**                                              |
+| **資料來源數目**                         | **時間範圍** | **大約載入時間**                                              |
 | --------------------------------- | ------------- | ------------------------------------------------------------ |
-| ±5 K                       | 1 個月          | 瓷磚: 5-10 秒 <br> 網線:5-10 秒 <br> 圖表:5-10 秒 <br> 報告中過濾器:5-10 秒|
-| ±5 K                       | 3 個月          | 瓷磚: 5-10 秒 <br> 網線:5-10 秒 <br> 圖表:5-10 秒 <br> 報告中過濾器:5-10 秒|
-| Φ10 K                       | 3 個月          | 瓷磚: 15-20 秒 <br> 網線:15-20 秒 <br> 圖表: 1-2 分鐘 <br> 報告級過濾器:25-30 秒|
-| Φ15 K                       | 1 個月          | 瓷磚: 15-20 秒 <br> 網線:15-20 秒 <br> 圖表:50-60 秒 <br> 報告級過濾器:20-25 秒|
-| Φ15 K                       | 3 個月          | 瓷磚: 20-30 秒 <br> 網線:20-30 秒 <br> 圖表: 2-3 分鐘 <br> 報告級過濾器:50-60 秒 |
+| ~ 5 K                       | 1 個月          | 磚：5-10 秒 <br> 格線：5-10 秒 <br> 圖表：5-10 秒 <br> 報表層級篩選：5-10 秒|
+| ~ 5 K                       | 3 個月          | 磚：5-10 秒 <br> 格線：5-10 秒 <br> 圖表：5-10 秒 <br> 報表層級篩選：5-10 秒|
+| ~ 10 K                       | 3 個月          | 磚：15-20 秒 <br> 格線：15-20 秒 <br> 圖表：1-2 分鐘 <br> 報表層級篩選：25-30 秒|
+| ~ 15 K                       | 1 個月          | 磚：15-20 秒 <br> 格線：15-20 秒 <br> 圖表：50-60 秒 <br> 報表層級篩選：20-25 秒|
+| ~ 15 K                       | 3 個月          | 磚：20-30 秒 <br> 格線：20-30 秒 <br> 圖表：2-3 分鐘 <br> 報表層級篩選：50-60 秒 |
 
 ## <a name="what-happened-to-the-power-bi-reports"></a> Power BI 報表發生什麼情況？
-* 早期用於報告的 Power BI 樣本應用(從 Azure 儲存帳戶獲取數據)位於棄用路徑上。 我們建議您開始向日誌分析發送保管庫診斷數據以查看報告。
 
-* 此外,將診斷數據發送到存儲帳戶或日誌分析工作區的 V1 架構也位於棄用路徑上。 如果您已根據 V1 架構編寫了任何自定義查詢或自動化,建議更新這些查詢以使用當前支援的 V2 架構。
+- 先前用來報告的 Power BI 範本應用程式（來自 Azure 儲存體帳戶的資料）位於取代路徑。 我們建議您開始將保存庫診斷資料傳送至 Log Analytics 以查看報告。
+
+- * 此外，將診斷資料傳送至儲存體帳戶或 LA 工作區的[V1 架構](https://docs.microsoft.com/azure/backup/backup-azure-diagnostics-mode-data-model#v1-schema-vs-v2-schema)也會在取代路徑上。 這表示，如果您根據 V1 架構撰寫了任何自訂查詢或自動化，建議您更新這些查詢，以使用目前支援的 V2 架構。
 
 ## <a name="next-steps"></a>後續步驟
-[瞭解有關使用 Azure 備份進行監視和報告的更多內容](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)
+
+[深入瞭解如何使用 Azure 備份進行監視和報告](https://docs.microsoft.com/azure/backup/backup-azure-monitor-alert-faq)

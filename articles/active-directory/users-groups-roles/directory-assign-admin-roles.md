@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 401a39d4a65c7aee67d62ed0a6ba77893a11c2d1
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 2403faf23294afbba539c7240e842f928fed83dc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101139"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181285"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -436,7 +436,7 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 > [!NOTE]
 > 先前在[Azure 入口網站](https://portal.azure.com)和[Microsoft 365 系統管理中心](https://admin.microsoft.com)中，此角色稱為「服務管理員」。 我們已將它重新命名為「服務支援管理員」，以配合 Microsoft Graph API、Azure AD 圖形 API 和 Azure AD PowerShell 中的現有名稱。
 
-### <a name="sharepoint-administrator"></a>[SharePoint 管理員](#sharepoint-service-administrator-permissions)
+### <a name="sharepoint-administrator"></a>[SharePoint 系統管理員](#sharepoint-service-administrator-permissions)
 
 具備此角色的使用者在有 Microsoft SharePoint Online 服務時，於該服務內具有全域權限，以及建立和管理所有 Office 365 群組、管理支援票證和監控服務健康情況的能力。 [有關系統管理員角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)的詳細資訊。
 
@@ -645,7 +645,7 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 | microsoft 目錄/組織/基本/更新 | 更新 Azure Active Directory 中 organization 的基本屬性。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
-| microsoft.commerce.billing/allEntities/allTasks | 管理 Office 365 帳單的所有層面。 |
+| microsoft.commerce.billing/allEntities/allTasks | 管理帳單的所有層面。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 讀取 microsoft.office365.webPortal 中所有資源的基本屬性。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 讀取及設定 Office 365 服務健康情況。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 建立和管理 Office 365 支援票證。 |
@@ -755,7 +755,7 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 | microsoft.azure.informationProtection/allEntities/allTasks | 管理 Azure 資訊保護的所有層面。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | 讀取及設定 Azure 服務健康情況。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | 建立和管理 Azure 支援票證。 |
-| microsoft.commerce.billing/allEntities/allTasks | 管理 Office 365 帳單的所有層面。 |
+| microsoft.commerce.billing/allEntities/allTasks | 管理帳單的所有層面。 |
 | microsoft.intune/allEntities/allTasks | 管理 Intune 的所有層面。 |
 | microsoft.office365.complianceManager/allEntities/allTasks | 管理 Office 365 合規性管理員的所有層面 |
 | microsoft.office365.desktopAnalytics/allEntities/allTasks | 管理電腦分析的所有層面。 |
@@ -1048,7 +1048,7 @@ Windows Defender ATP 和 EDR | 查看和調查警示。 當您在 Windows Defend
 
 | **動作** | **說明** |
 | --- | --- |
-| microsoft commerce. 帳單/allEntities/讀取    | 閱讀 Office 365 帳單的所有層面。 |
+| microsoft commerce. 帳單/allEntities/讀取    | 閱讀帳單的所有層面。 |
 | microsoft 目錄/administrativeUnits/基本/讀取    | 讀取 Azure Active Directory 中 administrativeUnits 的基本屬性。 |
 | microsoft 目錄/administrativeUnits/成員/讀取    | 讀取 Azure Active Directory 中的 administrativeUnits.members 屬性。 |
 | microsoft 目錄/應用程式/基本/讀取    | 讀取 Azure Active Directory 中 Applications 的基本屬性。 |

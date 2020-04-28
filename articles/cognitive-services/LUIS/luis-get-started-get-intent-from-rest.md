@@ -2,14 +2,14 @@
 title: 快速入門：使用 REST API 取得意圖 - LUIS
 description: 在本 REST API 快速入門中，使用可用的公用 LUIS 應用程式，從交談文字判斷使用者的用意。
 ms.topic: quickstart
-ms.date: 02/03/2020
+ms.date: 04/20/2020
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 4e2c32b2eaf8cd6935e8e6b45bf79a1f3c756316
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 03f1c1539233872d9b98fab317c9caf997d5df69
+ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77524660"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81733317"
 ---
 # <a name="quickstart-get-intent-with-rest-apis"></a>快速入門：使用 REST API 取得意圖
 

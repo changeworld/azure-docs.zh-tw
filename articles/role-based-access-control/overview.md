@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6e3313e3ae201d0b730d8582fed9659d89f0d0c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4a1db200b88d0eabde967961d956cdd2854e828d
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063035"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81686478"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>什麼是 Azure 資源的角色型存取控制 (RBAC)？
 
@@ -35,14 +35,6 @@ RBAC 是建置於 [Azure Resource Manager](../azure-resource-manager/management/
 - 允許 DBA 群組管理訂用帳戶中的 SQL 資料庫
 - 允許使用者管理資源群組中的所有資源，例如虛擬機器、網站和子網路
 - 允許應用程式存取資源群組中的所有資源
-
-## <a name="best-practice-for-using-rbac"></a>使用 RBAC 的最佳做法
-
-RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。 您可以不授與每個人 Azure 訂用帳戶或資源中無限制的權限，而是只允許在特定範圍執行特定的動作。
-
-在規劃存取控制策略時，最佳做法是授與使用者完成其工作的最低權限。 下圖顯示使用 RBAC 的建議模式。
-
-![RBAC 和最低權限](./media/overview/rbac-least-privilege.png)
 
 ## <a name="how-rbac-works"></a>RBAC 的運作方式
 
@@ -139,4 +131,4 @@ Azure 具有可讓您授與物件內資料存取權的資料作業。 例如，�
 - [快速入門：使用 Azure 入口網站檢視使用者擁有的 Azure 資源存取權](check-access.md)
 - [使用 RBAC 和 Azure 入口網站管理 Azure 資源的存取權](role-assignments-portal.md)
 - [了解 Azure 中的不同角色](rbac-and-directory-admin-roles.md)
-- [企業雲端採用：Azure 中的資源存取管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)
+- [雲端採用架構：Azure 中的資源存取管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

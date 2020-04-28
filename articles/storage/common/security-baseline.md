@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d083ba757004fa477038750ad6210e4bb30659ee
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 184b60f6147089cbdfd855b473b3346d021f7fbc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82120752"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176595"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>適用于 Azure 儲存體的 Azure 安全性基準
 
@@ -140,7 +140,7 @@ ms.locfileid: "82120752"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：檔流量設定規則
 
-**指導**方針：使用網路安全性群組（NSG）的標記，以及與網路安全性和流量相關的其他資源。 針對個別的 NSG 規則，請使用 [描述] 欄位來指定允許進出網路流量的任何規則的商務需求和（或）持續時間（等）。 使用與標記相關的任何內建 Azure 原則定義，例如「需要標記和其值」，以確保所有資源都是以標籤建立，並通知您現有的未標記資源。 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記來查閱或執行資源的動作。 
+**指導**方針：使用網路安全性群組（NSG）的標記，以及與網路安全性和流量相關的其他資源。 針對個別的 NSG 規則，請使用 [描述] 欄位來指定允許進出網路流量的任何規則的商務需求和（或）持續時間（等）。 使用與標記相關的任何內建 Azure 原則定義（例如「需要標記和其值」），以確保所有資源都是以標籤建立，並通知您現有的未標記資源。 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記來查閱或執行資源的動作。 
 
 - [如何建立和使用標記](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags)
 
@@ -687,7 +687,7 @@ ms.locfileid: "82120752"
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：未核准的 Azure 資源的監視
 
-**指引**：使用下列內建原則定義，透過 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制： 
+**指引**：使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型進行限制： 
 
  - 不允許的資源類型 
  - 允許的資源類型 
@@ -730,7 +730,7 @@ ms.locfileid: "82120752"
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
-**指引**：使用下列內建原則定義，透過 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制： 
+**指引**：使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型進行限制： 
 
 - 不允許的資源類型 
 - 允許的資源類型 
@@ -807,7 +807,7 @@ ms.locfileid: "82120752"
 
 ### <a name="73-maintain-secure-configurations-for-all-azure-resources"></a>7.3：維護所有 Azure 資源的安全設定
 
-**指引**：使用 Azure 原則 [拒絕] 和 [不存在時部署]，在您的儲存體帳戶資源上強制執行安全設定。 
+**指導**方針：使用 Azure 原則 [拒絕] 和 [不存在時部署]，在您的儲存體帳戶資源上強制執行安全設定。 
 
 - [如何設定和管理 Azure 原則](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 

@@ -1,5 +1,5 @@
 ---
-title: 解決 Azure 點對點連接問題
+title: 針對 Azure 點對站連線問題進行疑難排解
 titleSuffix: Azure VPN Gateway
 description: 了解如何針對點對站連線問題進行疑難排解。
 services: vpn-gateway
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: 119f9c28b5413b8d2db5fa14ea839d1743f3d64a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a273ccad0d30ede3f0ed4ee532d61161074d304
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297634"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188288"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>疑難排解：Azure 點對站連線問題
 
@@ -25,7 +25,7 @@ ms.locfileid: "80297634"
 
 當您嘗試使用 VPN 用戶端來連線到 Azure 虛擬網路時，會收到下列錯誤訊息：
 
-**找不到可與此可擴展身份驗證協定一起使用的證書。（錯誤 798）**
+**找不到可以搭配此可延伸的驗證通訊協定使用的憑證。（錯誤798）**
 
 ### <a name="cause"></a>原因
 
@@ -42,7 +42,7 @@ ms.locfileid: "80297634"
     | 憑證 | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | 目前的使用者\個人\憑證 |
-    | Azure Root.cer    | 本機電腦\受信任的根憑證授權單位|
+    | AzureRoot .cer    | 本機電腦\受信任的根憑證授權單位|
 
 3. 移至 C:\Users\<使用者名稱>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>，在使用者和電腦的存放區中手動安裝憑證 (*.cer 檔案)。
 
@@ -51,17 +51,17 @@ ms.locfileid: "80297634"
 > [!NOTE]
 > 匯入用戶端憑證時，請勿選取 [啟用加強私密金鑰保護]**** 選項。
 
-## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>由於遠端伺服器未回應，無法建立電腦與 VPN 伺服器之間的網路連接
+## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>因為遠端伺服器沒有回應，所以無法建立電腦與 VPN 伺服器之間的網路連線
 
 ### <a name="symptom"></a>徵狀
 
-當您嘗試在 Windows 上使用 IKEv2 連接到 Azure 虛擬網路閘道時，會收到以下錯誤訊息：
+當您使用 Windows 上的 IKEv2 嘗試並聯機到 Azure 虛擬網路閘道時，您會收到下列錯誤訊息：
 
-**由於遠端伺服器未回應，無法建立電腦與 VPN 伺服器之間的網路連接**
+**因為遠端伺服器沒有回應，所以無法建立電腦與 VPN 伺服器之間的網路連線**
 
 ### <a name="cause"></a>原因
  
- 如果 Windows 版本不支援 IKE 碎片，則出現問題
+ 如果 Windows 版本不支援 IKE 片段，就會發生此問題
  
 ### <a name="solution"></a>解決方法
 
@@ -78,7 +78,7 @@ Windows 10 和 Server 2016 都支援 IKEv2。 不過，若要使用 IKEv2，您�
    | Windows 10 版本 1709 | 2018 年 3 月 22 日 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. 設定登錄機碼值。 在註冊表中`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload`創建或設置REG_DWORD鍵為 1。
+2. 設定登錄機碼值。 在登錄中`HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload`建立 REG_DWORD 機碼，或將其設為1。
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN 用戶端錯誤：接收到的訊息超出預期或格式不正確
 
@@ -86,7 +86,7 @@ Windows 10 和 Server 2016 都支援 IKEv2。 不過，若要使用 IKEv2，您�
 
 當您嘗試使用 VPN 用戶端來連線到 Azure 虛擬網路時，會收到下列錯誤訊息：
 
-**收到的消息是意外的或格式不當。（錯誤 0x80090326）**
+**收到的訊息不是預期或格式不正確。（錯誤0x80090326）**
 
 ### <a name="cause"></a>原因
 
@@ -129,7 +129,7 @@ Windows 10 和 Server 2016 都支援 IKEv2。 不過，若要使用 IKEv2，您�
 
 您收到下列錯誤訊息：
 
-**檔下載錯誤。未指定目標 URI。**
+**檔案下載錯誤。未指定目標 URI。**
 
 ### <a name="cause"></a>原因 
 
@@ -145,7 +145,7 @@ VPN 閘道類型必須是 **VPN**，且 VPN 類型必須是 **RouteBased**。
 
 當您嘗試使用 VPN 用戶端來連線到 Azure 虛擬網路時，會收到下列錯誤訊息：
 
-**自訂腳本（更新路由表）失敗。（錯誤 8007026f）**
+**自訂腳本（用來更新您的路由表）失敗。（錯誤8007026f）**
 
 ### <a name="cause"></a>原因
 
@@ -168,7 +168,7 @@ VPN 閘道類型必須是 **VPN**，且 VPN 類型必須是 **RouteBased**。
 1. 開啟 mmc.exe。
 2. 新增 [憑證]**** 嵌入式管理單元。
 3. 選取本機電腦的 [電腦]**** 帳戶。
-4. 以滑鼠右鍵按一下 [受信任的根憑證授權單位]**** 節點。 按一下 **"全任務** > **導入**"，然後流覽到從 VPN 用戶端配置包中提取的 .cer 檔。
+4. 以滑鼠右鍵按一下 [受信任的根憑證授權單位]**** 節點。 按一下 [**所有]-** > [工作] [匯**入**]，然後流覽至您從 VPN 用戶端設定套件解壓縮的 .cer 檔案。
 5. 重新啟動電腦。 
 6. 嘗試安裝 VPN 用戶端。
 
@@ -178,7 +178,7 @@ VPN 閘道類型必須是 **VPN**，且 VPN 類型必須是 **RouteBased**。
 
 當您嘗試在 Azure 入口網站中儲存 VPN 閘道變更時，收到下列錯誤訊息：
 
-**無法保存虛擬網路&lt;*閘道名稱*&gt;。證書&lt;*證書 ID*&gt;的資料無效。**
+**無法儲存虛擬網路閘道&lt;*閘道名稱*&gt;。憑證&lt;*憑證識別碼*&gt;的資料無效。**
 
 ### <a name="cause"></a>原因 
 
@@ -213,7 +213,7 @@ VPN 閘道類型必須是 **VPN**，且 VPN 類型必須是 **RouteBased**。
 
 當您嘗試在 Azure 入口網站中儲存 VPN 閘道變更時，收到下列錯誤訊息： 
 
-**無法保存虛擬網路&lt;*閘道名稱*&gt;。&lt;*您嘗試上載*&gt;的資源名稱證書名稱無效**。
+**無法儲存虛擬網路閘道&lt;*閘道名稱*&gt;。&lt;*您嘗試上傳*&gt;的資源名稱憑證名稱無效**。
 
 ### <a name="cause"></a>原因
 
@@ -225,7 +225,7 @@ VPN 閘道類型必須是 **VPN**，且 VPN 類型必須是 **RouteBased**。
 
 當您嘗試下載 VPN 用戶端組態套件時，收到下列錯誤訊息：
 
-**下載檔案失敗。錯誤詳細資訊：錯誤 503。伺服器已忙。**
+**無法下載檔案。錯誤詳細資料：錯誤503。伺服器忙碌中。**
  
 ### <a name="solution"></a>解決方法
 
@@ -239,7 +239,7 @@ VPN 閘道類型必須是 **VPN**，且 VPN 類型必須是 **RouteBased**。
 
 ### <a name="solution"></a>解決方法
 
-要解決此問題，請在所有用戶端上重新下載並重新部署從網站點到網站包。
+若要解決此問題，請在所有用戶端上重新下載並重新部署點對站套件。
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一次有太多 VPN 用戶端連線
 
@@ -282,7 +282,7 @@ VPN 用戶端已連線到 Azure 虛擬網路。 不過，用戶端無法存取�
 
 ### <a name="cause"></a>原因
 
-點對站 VPN 用戶端會使用 Azure 虛擬網路中設定的 Azure DNS 伺服器。 Azure DNS 伺服器的優先順序高於用戶端中設定的本機 DNS 伺服器，因此所有 DNS 查詢都會傳送至 Azure DNS 伺服器。 如果 Azure DNS 伺服器沒有本機資源的記錄，查詢就會失敗。
+點對站 VPN 用戶端通常會使用 Azure 虛擬網路中設定的 Azure DNS 伺服器。 Azure DNS 伺服器的優先順序高於用戶端中設定的本機 DNS 伺服器（除非 Ethernet 介面的計量較低），因此所有的 DNS 查詢都會傳送至 Azure DNS 伺服器。 如果 Azure DNS 伺服器沒有本機資源的記錄，查詢就會失敗。
 
 ### <a name="solution"></a>解決方法
 
@@ -339,18 +339,18 @@ NIC 驅動程式已過時。
 4. 如果 Windows 找不到新的驅動程式，您可以嘗試前往裝置製造商的網站尋找，並遵循他們的指示更新驅動程式。
 5. 重新啟動電腦，然後嘗試重新連線。
 
-## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN用戶端錯誤：撥號 VPN<VPN Connection Name>連接，狀態 = VPN 平臺未觸發連接
+## <a name="vpn-client-error-dialing-vpn-connection-vpn-connection-name-status--vpn-platform-did-not-trigger-connection"></a>VPN 用戶端錯誤：撥號 VPN <VPN Connection Name>連線，狀態 = VPN 平臺未觸發連接
 
-您可能還會在 RasClient 的事件檢視器中看到以下錯誤："使用者<User>撥打了名為已<VPN Connection Name>失敗的連接。 故障時返回的錯誤代碼為 1460。
+您也可能會在來自 RasClient 的事件檢視器中看到下列錯誤：「 <User>使用者撥了名<VPN Connection Name>為的連線失敗。 失敗時傳回的錯誤碼為1460。」
 
 ### <a name="cause"></a>原因
 
-Azure VPN 用戶端未在 Windows 的應用設置中啟用"後臺應用"應用許可權。
+在 Windows 的應用程式設定中，Azure VPN 用戶端未啟用「背景應用程式」應用程式許可權。
 
 ### <a name="solution"></a>解決方法
 
-1. 在 Windows 中，轉到"設置 ->隱私 ->後臺應用
-2. 將"讓應用在後臺運行"切換為"打開"
+1. 在 Windows 中，移至 [設定]-> 隱私權-> 背景應用程式
+2. 將「讓應用程式在背景執行」切換為開啟
 
 ## <a name="error-file-download-error-target-uri-is-not-specified"></a>錯誤：「檔案下載錯誤。未指定目標 URI」
 
@@ -362,7 +362,7 @@ Azure VPN 用戶端未在 Windows 的應用設置中啟用"後臺應用"應用�
 
 Azure VPN 閘道類型必須是 VPN，且 VPN 類型必須是 **RouteBased**。
 
-## <a name="vpn-package-installer-doesnt-complete"></a>VPN 套裝軟體安裝程式未完成
+## <a name="vpn-package-installer-doesnt-complete"></a>VPN 套件安裝程式未完成
 
 ### <a name="cause"></a>原因
 

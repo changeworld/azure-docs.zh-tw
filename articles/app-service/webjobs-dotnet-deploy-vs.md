@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 75e1f5fbfa41ac310d2a737dcfe28199715a094b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: d73c858bdbfee7c5b7c7e31b62b1f601b7b6838a
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312868"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866445"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>使用 Visual Studio 開發和部署 WebJob - Azure App Service
 
@@ -175,7 +175,7 @@ ms.locfileid: "81312868"
           "runMode": "Continuous"
         }
 
-您可以編輯此檔案目錄，而 Visual Studio 會提供 IntelliSense。 檔案架構儲存在,[https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json)並可在那裡查看。  
+您可以編輯此檔案目錄，而 Visual Studio 會提供 IntelliSense。 檔案架構儲存在,[https://schemastore.org](http://schemastore.org/schemas/json/webjob-publish-settings.json)並可在那裡查看。  
 
 ### <a name="webjobs-listjson"></a><a id="webjobslist"></a>webjobs-list.json
 當您將具有 WebJobs 功能的專案連結到 Web 專案時，Visual Studio 會將 WebJobs 專案的名稱儲存在 Web 專案中 *Properties* 資料夾的 *webjobs-list.json* 檔案。 此清單可能包含多個 WebJobs 專案，如下列範例所示：
@@ -192,7 +192,7 @@ ms.locfileid: "81312868"
           ]
         }
 
-您可以編輯此檔案目錄，而 Visual Studio 會提供 IntelliSense。 檔案架構儲存在,[https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json)並可在那裡查看。
+您可以編輯此檔案目錄，而 Visual Studio 會提供 IntelliSense。 檔案架構儲存在,[https://schemastore.org](http://schemastore.org/schemas/json/webjobs-list.json)並可在那裡查看。
 
 ### <a name="deploy-a-webjobs-project"></a><a id="deploy"></a>部署 WebJobs 專案
 已連結到 Web 專案的 WebJobs 專案會透過 Web 專案自動部署。 有關 Web 專案部署的資訊,請參閱左側**導航中的「部署應用」 指南** > **Deploy app**。

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb0941a6cdde5b60b71da6f58ea6b0fd2ccbb262
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d64307c4f91839c466b5f3f495cad8d7410ed364
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160972"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867316"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-splunk-enterprise-and-splunk-cloud"></a>教學課程：Azure Active Directory 與 Splunk Enterprise and Splunk Cloud 整合
 
@@ -113,7 +113,7 @@ Splunk Enterprise and Splunk Cloud 與 Azure AD 整合提供下列優點：
     c. 在 [回覆 URL]  文字方塊中，使用下列模式來輸入 URL：`https://<splunkserver>/saml/acs`
 
     > [!NOTE]
-    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Splunk Enterprise and Splunk Cloud 客戶支援小組](https://www.splunk.com/about-us/contact.html#tabs/customer-support)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 使用實際的「單一登入 URL」、「識別碼」及「回覆 URL」來更新這些值。 請連絡 [Splunk Enterprise and Splunk Cloud 客戶支援小組](https://www.splunk.com/en_us/about-splunk/contact-us.html)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 5. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中按一下 [下載]  ，以依據您的需求從指定選項下載**同盟中繼資料 XML**，並儲存在您的電腦上。
 
@@ -121,7 +121,7 @@ Splunk Enterprise and Splunk Cloud 與 Azure AD 整合提供下列優點：
 
 ### <a name="configure-splunk-enterprise-and-splunk-cloud-single-sign-on"></a>設定 Splunk Enterprise and Splunk Cloud 單一登入
 
-若要在 **Splunk Enterprise and Splunk Cloud** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Splunk Enterprise and Splunk Cloud 支援小組](https://www.splunk.com/about-us/contact.html#tabs/customer-support)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Splunk Enterprise and Splunk Cloud** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Splunk Enterprise and Splunk Cloud 支援小組](https://www.splunk.com/en_us/about-splunk/contact-us.html)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者 
 
@@ -176,7 +176,7 @@ Splunk Enterprise and Splunk Cloud 與 Azure AD 整合提供下列優點：
 
 ### <a name="create-splunk-enterprise-and-splunk-cloud-test-user"></a>建立 Splunk Enterprise and Splunk Cloud 測試使用者
 
-在本節中，您要在 Splunk Enterprise and Splunk Cloud 中建立名為 Britta Simon 的使用者。 請與  [Splunk Enterprise and Splunk Cloud 支援小組](https://www.splunk.com/about-us/contact.html#tabs/customer-support)合作，在 Splunk Enterprise and Splunk Cloud 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
+在本節中，您要在 Splunk Enterprise and Splunk Cloud 中建立名為 Britta Simon 的使用者。 請與  [Splunk Enterprise and Splunk Cloud 支援小組](https://www.splunk.com/en_us/about-splunk/contact-us.html)合作，在 Splunk Enterprise and Splunk Cloud 平台中新增使用者。 您必須先建立和啟動使用者，然後才能使用單一登入。
 
 ### <a name="test-single-sign-on"></a>測試單一登入 
 

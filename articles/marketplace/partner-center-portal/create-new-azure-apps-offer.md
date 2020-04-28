@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: a62551b31c51836dfa50534ee6db907c8a4e111a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 516ebce176f53a0495ea493f5327658162e7ea9e
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730609"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867274"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
@@ -221,6 +221,9 @@ Azure[應用商店的視訊建構解決方案範本和託管應用程式](https:
 
 在本節中,您可以提供向客戶展示產品/服務時將使用的徽標和圖像。 所有圖像必須採用 .png 格式。
 
+>[!Note]
+>如果上傳文件出現問題,請確保本地網路不會阻止合作夥伴中心使用https://upload.xboxlive.com的服務。
+
 #### <a name="store-logos"></a>Microsoft Store標誌。
 
 提供三種尺寸的產品徽標:**小 (48 x 48)**,**中等 (90 X 90)** 和大 **(216 x 216)**。
@@ -355,7 +358,7 @@ Azure 政府服務處理受某些政府法規和要求約束的數據,例如 Fed
 
 提供此計劃的每月價格。  此價格是此解決方案部署的資源產生的任何 Azure 基礎結構或即用即付軟體成本的補充。
 
-以當地貨幣(美元 = 美元)設置的價格使用設置期間可用的當前匯率轉換為所有選定市場的當地貨幣。 通過匯出定價電子錶格並查看每個市場的價格,在發佈之前驗證這些價格。 如果要在單個市場設置自定義價格,請修改並導入定價電子表格。 
+以美元(美元 = 美元)設定的價格在保存時使用當前匯率轉換為所有選定市場的當地貨幣。 通過匯出定價電子錶格並查看每個市場的價格,在發佈之前驗證這些價格。 如果要在單個市場設置自定義價格,請修改並導入定價電子表格。 
 
 >[!Note]
 >您必須首先保存定價更改,以啟用定價數據的匯出。
@@ -397,7 +400,16 @@ Azure 政府服務處理受某些政府法規和要求約束的數據,例如 Fed
 
 * 名為[createUiDefinition.json](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)的 Azure 應用程式創建體驗的使用者介面定義。
 
+支援的最大檔案大小包括:
+
+* 壓縮壓縮檔`.zip`總大小高達 1 Gb
+
+* `.zip`封存中的任何單個未壓縮檔高達 1 Gb  
+
 所有新的 Azure 應用程式產品/服務還必須包括[Azure 合作夥伴客戶使用方式歸因](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)GUID。
+
+>[!Note]
+>如果上傳文件出現問題,請確保本地網路不會阻止合作夥伴中心使用https://upload.xboxlive.com的服務。
 
 ### <a name="previously-published-packages"></a>以前發布的套件 
 
@@ -497,7 +509,7 @@ Azure 應用程式本質上使用 Azure 資源管理員測試驅動器類型。 
 
 完成這些欄位後選擇 **「保存**」。
 
-## <a name="publish"></a>發行
+## <a name="publish"></a>發佈
 
 ### <a name="submit-offer-to-preview"></a>提交優惠以預覽
 

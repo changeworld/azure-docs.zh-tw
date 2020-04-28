@@ -1,5 +1,5 @@
 ---
-title: 創建 Azure 應用程式產品/服務 |Azure 應用商店
+title: 建立 Azure 應用程式產品/服務 |Azure 應用商店
 description: 如何在 Azure Marketplace 上發佈新的 Azure 應用程式供應項目。
 author: dsindona
 ms.service: marketplace
@@ -7,29 +7,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: dsindona
-ms.openlocfilehash: 823c9cbe8c850fbc4170a5734305f9cc5e45be83
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 405593a97571ac5be351011890d162b5c0396966
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80285277"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81865582"
 ---
 # <a name="create-an-azure-application-offer"></a>建立 Azure 應用程式供應項目
 
-本文說明如何建立及發佈 Azure Marketplace 的 Azure 應用程式供應項目。 每個供應項目都會在 Azure Marketplace 中顯示為自己的實體，並由下列資產群組與支援服務所組成：供應項目詳細資料、SKU、行銷成品及支援資訊。
+[雲合作夥伴門戶](https://cloudpartner.azure.com/)不再支援 Azure 應用程式產品的創建和管理。 相反,此功能已移動到 Microsoft[合作夥伴中心門戶](https://partner.microsoft.com/)。 有關詳細資訊,請參閱創建[Azure 應用程式產品/服務](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)。
 
-## <a name="new-offer-form"></a>新增供應項目表單
-
-登錄到[雲合作夥伴門戶](https://cloudpartner.azure.com/)，然後在左側功能表列中選擇 **"新產品/服務**"。 在 [新增供應項目] 功能表上，選取 [Azure 應用程式]**** 以顯示 [新增供應項目]**** 表單，然後開始定義新供應項目的資產程序。
-
-![新增供應項目表單](./media/azure-new-managedapp-offer.png)
-
-## <a name="next-steps"></a>後續步驟
-
-[新增供應項目] 頁面提供一組索引標籤和表單欄位，方便您建立新的供應項目。 下列文章將說明如何針對新的供應項目定義資產群組和支援服務。
-
-* ["提供設置"選項卡](./cpp-offer-settings-tab.md)
-* [SKU 索引標籤](./cpp-skus-tab.md)
-* [試用產品索引標籤](./cpp-testdrive-tab.md)
-* [Marketplace 索引標籤](./cpp-marketplace-tab.md)
-* [支援索引標籤](./cpp-support-tab.md)
+建立新的 Azure 應用程式產品/服務之前,應閱讀[「創建合作夥伴中心帳戶」 ,](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)然後在選擇式「**概述」** 頁後打開[商業市場儀表板](https://partner.microsoft.com/dashboard/directory)。 按照創建 Azure[應用程式產品/服務](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer)中的說明創建產品/服務。
