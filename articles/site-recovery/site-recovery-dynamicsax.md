@@ -1,15 +1,15 @@
 ---
-title: 使用 Azure 網站恢復的動態 AX 的災害復原
-description: 瞭解如何使用 Azure 網站恢復為動態 AX 設置災害復原
+title: Dynamics AX 與 Azure Site Recovery 的嚴重損壞修復
+description: 瞭解如何使用 Azure Site Recovery 設定 Dynamics AX 的嚴重損壞修復
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75941581"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>設定多層式 Dynamics AX 應用程式的災害復原   
@@ -37,21 +37,21 @@ Dynamics AX 目前並未提供任何現成的災害復原功能。 Dynamics AX �
 
 ## <a name="site-recovery-support"></a>Site Recovery 支援
 
-我們為了編寫本文而使用的設備是 Windows Server 2012 R2 Enterprise 上的 VMware 虛擬機器與 Dynamics AX 2012R3。 由於網站恢復複製與應用程式無關，因此我們期望此處提供的建議適用于以下方案。
+我們為了編寫本文而使用的設備是 Windows Server 2012 R2 Enterprise 上的 VMware 虛擬機器與 Dynamics AX 2012R3。 由於 Site Recovery 複寫與應用程式無關，因此我們預期此處提供的建議可保留下列案例。
 
 ### <a name="source-and-target"></a>來源與目標
 
 **案例** | **至次要網站** | **至 Azure**
 --- | --- | ---
 **Hyper-V** | 是 | 是
-**Vmware** | 是 | 是
-**物理伺服器** | 是 | 是
+**VMware** | 是 | 是
+**實體伺服器** | 是 | 是
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>使用 Site Recovery 讓 Dynamics AX 應用程式可以災害復原
 ### <a name="protect-your-dynamics-ax-application"></a>保護 Dynamics AX 應用程式
 為了做到完整的應用程式複寫與復原，Dynamics AX 的每個元件都需要受到保護。
 
-### <a name="1-set-up-active-directory-and-dns-replication"></a>1. 設置活動目錄和 DNS 複製
+### <a name="1-set-up-active-directory-and-dns-replication"></a>1. 設定 Active Directory 和 DNS 複寫
 
 災害復原網站上需要有 Active Directory，Dynamics AX 應用程式才能運作。 根據客戶內部部署環境的複雜度，我們建議以下兩個的選項。
 
@@ -65,10 +65,10 @@ Dynamics AX 目前並未提供任何現成的災害復原功能。 Dynamics AX �
 
  如需詳細資訊，請參閱[設定使用災害復原站台上的網域控制站](site-recovery-active-directory.md)。 本文之後的內容假設災害復原站台上有可使用的網域控制站。
 
-### <a name="2-set-up-sql-server-replication"></a>2. 設置 SQL 伺服器複製
+### <a name="2-set-up-sql-server-replication"></a>2. 設定 SQL Server 複寫
 如需有關保護 SQL 層的建議選項技術指引，請參閱[以 SQL Server 及 Azure Site Recovery 複寫應用程式](site-recovery-sql.md)。
 
-### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. 啟用動態 AX 用戶端和應用程式物件伺服器 VM 的保護
+### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3. 為 Dynamics AX 用戶端和應用程式物件伺服器 Vm 啟用保護
 根據 VM 是部署於 [Hyper-V](site-recovery-hyper-v-site-to-azure.md) 還是 [VMware](site-recovery-vmware-to-azure.md)，執行相關的 Site Recovery 設定。
 
 > [!TIP]
@@ -79,8 +79,8 @@ Dynamics AX 目前並未提供任何現成的災害復原功能。 Dynamics AX �
 
 ![受保護項目](./media/site-recovery-dynamics-ax/protecteditems.png)
 
-### <a name="4-configure-networking"></a>4. 配置網路
-**配置 VM 計算和網路設置**
+### <a name="4-configure-networking"></a>4. 設定網路功能
+**設定 VM 計算和網路設定**
 
 在 AX 用戶端和應用程式物件伺服器 VM 上，設定 Site Recovery 中的網路設定，讓 VM 網路能在容錯移轉之後連線到正確的災害復原網路。 確定這些層的災害復原網路可路由傳送到 SQL 層。
 
@@ -93,7 +93,7 @@ Dynamics AX 目前並未提供任何現成的災害復原功能。 Dynamics AX �
     ![網路設定](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
-### <a name="5-create-a-recovery-plan"></a>5. 創建恢復計畫
+### <a name="5-create-a-recovery-plan"></a>5. 建立復原方案
 
 您可以在 Site Recovery 中建立復原方案，將容錯移轉程序自動化。 在復原方案中新增應用程式層和 Web 層。 將它們歸入順序不同的群組中，讓前端關機發生在應用程式層之前。
 
@@ -178,7 +178,7 @@ Dynamics AX 目前並未提供任何現成的災害復原功能。 Dynamics AX �
 
 如需執行容錯回復的詳細資訊，請參閱[將 VMware VM 從 Azure 容錯回復到內部部署](site-recovery-failback-azure-to-vmware.md)。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 使用 Site Recovery，可以為 Dynamics AX 應用程式建立一個完整的自動化災害復原方案。 當發生中斷時，可以在幾秒鐘內從任何地方起始容錯移轉，並且在數分鐘內啟動並執行應用程式。
 
 ## <a name="next-steps"></a>後續步驟

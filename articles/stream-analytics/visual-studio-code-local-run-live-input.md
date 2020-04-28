@@ -1,39 +1,39 @@
 ---
-title: 使用視覺化工作室代碼在本地測試 Azure 流分析查詢，反對即時流輸入
-description: 本文介紹如何使用視覺化工作室代碼的 Azure 流分析工具在本地測試即時流輸入的查詢。
+title: 使用 Visual Studio Code 在本機針對即時串流輸入測試 Azure 串流分析查詢
+description: 本文說明如何使用適用于 Visual Studio Code 的 Azure 串流分析工具，在本機針對即時串流輸入測試查詢。
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 11/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 34ce91a1385f951847abeedd3a6b526d3a07af35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75660846"
 ---
-# <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>使用視覺化工作室代碼在本地測試流分析查詢，反對即時流輸入
+# <a name="test-stream-analytics-queries-locally-against-live-stream-input-by-using-visual-studio-code"></a>使用 Visual Studio Code 在本機針對即時串流輸入測試串流分析查詢
 
-您可以使用 Azure 流分析工具進行視覺化工作室代碼，根據即時流輸入在本地測試流分析作業。 輸入可能來自 Azure 事件中心或 Azure IoT 中心等源。 輸出結果以 JSON 檔身份發送到專案中名為**LocalRun輸出的**資料夾中。
+您可以使用適用于 Visual Studio Code 的 Azure 串流分析工具，在本機針對即時串流輸入測試您的串流分析作業。 輸入可以來自 Azure 事件中樞或 Azure IoT 中樞等來源。 輸出結果會以 JSON 檔案形式傳送至您專案中名為**LocalRunOutputs**的資料夾。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 安裝[.NET 核心 SDK](https://dotnet.microsoft.com/download)並重新啟動視覺化工作室代碼。
+* 安裝[.NET Core SDK](https://dotnet.microsoft.com/download)並重新啟動 Visual Studio Code。
 
-* [使用此快速入門](quick-create-vs-code.md)瞭解如何使用視覺化工作室代碼創建流分析作業。
+* 使用[本快速入門](quick-create-vs-code.md)來瞭解如何使用 Visual Studio Code 建立串流分析作業。
 
-## <a name="define-a-live-stream-input"></a>定義即時流輸入
+## <a name="define-a-live-stream-input"></a>定義即時資料流輸入
 
-1. 以滑鼠右鍵按一下您串流分析專案中的**輸入**資料夾。 然後選擇**ASA：從內容功能表中添加輸入**。
+1. 以滑鼠右鍵按一下您串流分析專案中的**輸入**資料夾。 然後，從操作功能表中選取 **[ASA：新增輸入]** 。
 
    ![從 [輸入] 資料夾新增輸入](./media/quick-create-vs-code/add-input-from-inputs-folder.png)
 
-   您還可以選擇**Ctrl_Shift_P**來打開命令調色板並輸入**ASA：添加輸入**。
+   您也可以選取**Ctrl + Shift + P**來開啟命令選擇區，然後輸入**ASA： Add Input**。
 
    ![在 Visual Studio Code 中新增串流分析輸入](./media/quick-create-vs-code/add-input.png)
 
-2. 從下拉清單中選擇輸入源類型。
+2. 從下拉式清單中選擇輸入來源類型。
 
    ![選取 IoT 中樞作為輸入選項](./media/quick-create-vs-code/iot-hub.png)
 
@@ -41,36 +41,36 @@ ms.locfileid: "75660846"
 
    ![選取 Visual Studio Code 中的串流分析指令碼](./media/quick-create-vs-code/asa-script.png)
 
-4. 從下拉式功能表中選擇 [從您的 Azure 訂用帳戶選取]****。
+4. 從下拉式功能表中選擇 [從您的 Azure 訂用帳戶選取]  。
 
     ![從訂用帳戶選取](./media/quick-create-vs-code/add-input-select-subscription.png)
 
-5. 配置新生成的 JSON 檔。 您可以利用 CodeLens 功能來輸入字串、從下拉式清單中選取，或直接在檔案中變更文字。 下列螢幕擷取畫面顯示**從您的訂用帳戶選取**作為範例。
+5. 設定新產生的 JSON 檔案。 您可以利用 CodeLens 功能來輸入字串、從下拉式清單中選取，或直接在檔案中變更文字。 下列螢幕擷取畫面顯示**從您的訂用帳戶選取**作為範例。
 
    ![在 Visual Studio Code 中設定輸入](./media/quick-create-vs-code/configure-input.png)
 
 ## <a name="preview-input"></a>預覽輸入
 
-要確保輸入資料即將到來，請從頂行選擇即時輸入設定檔中的**預覽資料**。 某些輸入資料來自 IoT 中心，顯示在預覽視窗中。 預覽可能需要幾秒鐘才能顯示。
+若要確定輸入資料即將存在，請從頂端行中選取即時輸入設定檔案中的 [**預覽資料**]。 某些輸入資料來自 IoT 中樞，並顯示在預覽視窗中。 預覽可能需要幾秒鐘的時間才會出現。
 
  ![預覽即時輸入](./media/quick-create-vs-code/preview-live-input.png)
 
 ## <a name="run-queries-locally"></a>在本機執行查詢
 
-返回到查詢編輯器，然後選擇 **"在本地運行**"。 然後從下拉清單中選擇 **"使用即時輸入**"。
+返回您的查詢編輯器，然後選取 [在**本機執行**]。 然後從下拉式清單中選取 [**使用即時輸入**]。
 
-![在查詢編輯器中選擇"本地運行"](./media/vscode-local-run/run-locally.png)
+![在 [查詢編輯器] 中選取 [本機執行]](./media/vscode-local-run/run-locally.png)
 
-![選擇"使用即時輸入"](./media/vscode-local-run-live-input/run-locally-use-live-input.png)
+![選取 [使用即時輸入]](./media/vscode-local-run-live-input/run-locally-use-live-input.png)
 
-結果顯示在正確的視窗中，每 3 秒刷新一次。 您可以選擇 **"運行"** 以再次測試。 您還可以選擇 **"在資料夾中打開"** 以查看檔資源管理器中的結果檔，並使用 Visual Studio 代碼或 Excel 等工具打開這些檔。 請注意，結果檔僅以 JSON 格式提供。
+結果會顯示在右側視窗中，並每3秒重新整理一次。 您可以選取 [**執行**] 來重新測試。 您也可以選取 [**在資料夾中開啟**]，在 [檔案管理器] 中查看結果檔案，然後使用 Visual Studio Code 或 Excel 之類的工具來開啟這些檔案。 請注意，結果檔案僅適用于 JSON 格式。
 
-作業開始創建輸出的預設時間設置為 **"現在**"。 您可以通過在結果視窗中選擇 **"輸出開始時間"** 按鈕來自訂時間。
+開始建立輸出之作業的預設時間是設定為 [**現在**]。 您可以在 [結果] 視窗中選取 [**輸出開始時間**] 按鈕來自訂時間。
 
-![查看本地運行結果](./media/vscode-local-run-live-input/vscode-livetesting.gif)
+![查看本機執行結果](./media/vscode-local-run-live-input/vscode-livetesting.gif)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用視覺化工作室代碼流覽 Azure 流分析作業（預覽版）](visual-studio-code-explore-jobs.md)
+* [使用 Visual Studio Code 探索 Azure 串流分析作業（預覽）](visual-studio-code-explore-jobs.md)
 
 * [使用 npm 套件來設定 CI/CD 管線](setup-cicd-vs-code.md)

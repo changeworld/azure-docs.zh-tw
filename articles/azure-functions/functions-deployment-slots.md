@@ -1,188 +1,188 @@
 ---
-title: Azure 函數部署槽
-description: 瞭解如何使用 Azure 函數創建和使用部署槽
+title: Azure Functions 部署位置
+description: 瞭解如何使用 Azure Functions 建立和使用部署位置
 author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
 ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75769212"
 ---
-# <a name="azure-functions-deployment-slots"></a>Azure 函數部署槽
+# <a name="azure-functions-deployment-slots"></a>Azure Functions 部署位置
 
-Azure 函數部署槽允許函數應用運行稱為"插槽"的不同實例。 插槽是通過公開可用的終結點公開的不同環境。 一個應用實例始終映射到生產槽，您可以按需交換分配給槽的實例。 在應用服務方案下運行的函數應用可能有多個插槽，而在"消費計畫"下只允許一個插槽。
+Azure Functions 部署位置可讓您的函數應用程式執行稱為「位置」的不同實例。 位置是透過公開可用的端點公開的不同環境。 一個應用程式實例一律會對應至生產位置，而您可以視需要交換指派給某個插槽的實例。 在 App Service 方案下執行的函式應用程式可能會有多個位置，而在取用量方案中，只允許一個位置。
 
-下面反映了交換插槽對函數的影響：
+以下會反映函數如何受到交換位置的影響：
 
-- 流量重定向是無縫的;不會因為交換而刪除任何請求。
-- 如果函數在交換期間運行，則執行將繼續，後續觸發器將路由到交換的應用實例。
+- 流量重新導向順暢;因為交換，所以不會捨棄任何要求。
+- 如果函式在交換期間執行，則會繼續執行，且後續的觸發程式會路由至已交換的應用程式實例。
 
 > [!NOTE]
-> 插槽當前不適用於 Linux 消費計畫。
+> Linux 使用量方案目前無法使用位置。
 
-## <a name="why-use-slots"></a>為什麼要使用插槽？
+## <a name="why-use-slots"></a>為何要使用位置？
 
-使用部署槽有很多優點。 以下方案描述了插槽的常見用途：
+使用部署位置有一些優點。 下列案例說明位置的常見用法：
 
-- **不同的環境用於不同目的**：使用不同的插槽，您可以在交換到生產槽或暫存槽之前區分應用實例。
-- **預熱**：部署到插槽而不是直接部署到生產允許應用程式在上線前預熱。 此外，使用插槽可減少 HTTP 觸發工作負載的延遲。 實例在部署前預熱，從而減少新部署功能的冷啟動。
-- **簡單的回退**：在與生產交換後，具有以前暫存應用的插槽現在具有以前的生產應用。 如果交換到生產槽中的更改未如預期的那樣，您可以立即反轉交換，以找回"最後已知良好的實例"。
+- 不同**的環境有不同的用途**：使用不同的位置，可讓您在交換至生產環境或預備位置之前，先區別應用程式實例。
+- **預先準備**：部署到位置而不是直接部署到生產環境，可讓應用程式在上線之前準備就緒。 此外，使用位置可減少 HTTP 觸發的工作負載延遲。 實例會在部署之前準備就緒，以減少新部署函數的冷啟動。
+- **輕鬆回退**：與生產環境交換之後，具有先前預備應用程式的位置現在會有先前的生產應用程式。 如果交換到生產位置的變更不是您預期的，您可以立即反轉交換，以取得「最後一個已知良好的實例」。
 
-## <a name="swap-operations"></a>交換操作
+## <a name="swap-operations"></a>交換作業
 
-在交換期間，一個插槽被視為源，另一個插槽被視為目標。 源槽具有應用於目標槽的應用程式實例。 以下步驟可確保目標插槽在交換期間不會遇到停機：
+交換期間，會將一個位置視為來源，另一個是目標。 來源位置具有套用至目標位置之應用程式的實例。 下列步驟可確保目標位置在交換期間不會遇到停機時間：
 
-1. **應用設置：** 目標槽中的設置將應用於源槽的所有實例。 例如，生產設置應用於暫存實例。 應用的設置包括以下類別：
-    - [特定于插槽](#manage-settings)的應用設置和連接字串（如果適用）
-    - [連續部署](../app-service/deploy-continuous-deployment.md)設置（如果啟用）
-    - [應用服務身份驗證](../app-service/overview-authentication-authorization.md)設置（如果啟用）
+1. 套用**設定：** 來自目標位置的設定會套用至來源位置的所有實例。 例如，生產環境設定會套用至暫存實例。 套用的設定包含下列類別：
+    - 位置[特定的](#manage-settings)應用程式設定和連接字串（如果適用）
+    - [持續部署](../app-service/deploy-continuous-deployment.md)設定（如果已啟用）
+    - [App Service 驗證](../app-service/overview-authentication-authorization.md)設定（如果已啟用）
 
-1. **等待重新開機和可用性：** 交換將等待源槽中的每個實例完成其重新開機並可用於請求。 如果任何實例無法重新開機，交換操作將恢復所有更改到源槽並停止該操作。
+1. **等待重新開機和可用性：** 交換會等候來源位置中的每個實例完成其重新開機，並且可供要求使用。 如果有任何實例無法重新開機，則交換作業會將所有變更還原到來源位置，並停止作業。
 
-1. **更新路由：** 如果源插槽上的所有實例都成功預熱，則兩個插槽通過切換路由規則完成交換。 在此步驟之後，目標槽（例如，生產槽）具有以前在源槽中預熱的應用。
+1. **更新路由：** 如果來源位置上的所有實例都已成功準備就緒，這兩個插槽會藉由切換路由規則來完成交換。 在此步驟之後，目標位置（例如，生產位置）會有先前在來源插槽中準備就緒的應用程式。
 
-1. **重複操作：** 現在，源槽以前在目標槽中具有預交換應用，則通過應用所有設置並重新啟動源槽的實例來執行相同的操作。
+1. **重複操作：** 現在，來源位置已有先前在目標插槽中的預先交換應用程式，請套用所有設定並重新啟動來源位置的實例，以執行相同的操作。
 
 請記住下列幾點：
 
-- 在交換操作的任何點，交換應用的初始化都發生在源插槽上。 在準備源槽時，無論交換成功還是失敗，目標槽將保持線上狀態。
+- 在交換作業的任何時間點，交換應用程式的初始化會在來源位置上進行。 當來源位置正在準備時，目標位置會保持上線，不論交換成功或失敗。
 
-- 要將暫存槽與生產槽交換，請確保生產槽*始終*為目標槽。 這樣，交換操作不會影響您的生產應用。
+- 若要交換預備位置與生產位置，請確定生產位置*一定*是目標位置。 如此一來，交換作業就不會影響您的生產應用程式。
 
-- 在*啟動交換 之前*，需要將與事件源和綁定相關的[設置配置為部署槽設置](#manage-settings)。 提前將它們標記為"粘性"可確保事件和輸出被定向到適當的實例。
+- 與事件來源和系結相關的設定，必須先設定為[部署位置設定](#manage-settings)，*才能起始交換*。 將它們標示為「固定」，以確保事件和輸出會導向至適當的實例。
 
 ## <a name="manage-settings"></a>管理設定
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-### <a name="create-a-deployment-setting"></a>創建部署設置
+### <a name="create-a-deployment-setting"></a>建立部署設定
 
-您可以將設置標記為"粘性"的部署設置。 粘滯設置不會與應用實例交換。
+您可以將設定標示為部署設定，使其成為「粘滯」。 粘滯設定不會與應用程式實例交換。
 
-如果在一個插槽中創建部署設置，請確保在交換中涉及的任何其他槽中創建具有相同值的相同設置。 這樣，雖然設置的值不會更改，但設置名稱在插槽之間保持一致。 此名稱一致性可確保代碼不會嘗試訪問在一個插槽中定義的設置，而不是另一個插槽中定義的設置。
+如果您在一個位置建立部署設定，請務必在與交換相關的任何其他位置中，建立具有唯一值的相同設定。 如此一來，當設定的值不會變更時，設定名稱會在插槽之間保持一致。 此名稱一致性可確保您的程式碼不會嘗試存取一個位置中所定義的設定，而不是另一個。
 
-使用以下步驟創建部署設置：
+使用下列步驟來建立部署設定：
 
-- 導航到函數應用中的*插槽*
-- 按一下插槽名稱
-- 在 *"平臺功能>常規設置*下，按一下 **"配置**"
-- 按一下要與當前插槽一起粘住的設置名稱
-- 按一下 **"部署"插槽設置**核取方塊
-- 按一下 [確定]****。
-- 設置邊欄選項卡消失後，按一下 **"保存"** 以保留更改
+- 流覽至函數應用程式*中的位置*
+- 按一下位置名稱
+- 在 *[平臺功能 > 一般設定*] 下**Configuration** ，按一下 [設定]
+- 按一下您想要與目前位置保持在一起的設定名稱
+- 按一下 [**部署位置設定**] 核取方塊
+- 按一下 [檔案] &gt; [新增] &gt; [專案] 
+- 設定 blade 消失後，按一下 [**儲存**] 以保留變更
 
-![部署插槽設置](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
+![部署位置設定](./media/functions-deployment-slots/azure-functions-deployment-slots-deployment-setting.png)
 
 ## <a name="deployment"></a>部署
 
-創建插槽時，插槽為空。 您可以使用任何[受支援的部署技術](./functions-deployment-technologies.md)將應用程式部署到插槽。
+當您建立插槽時，位置是空的。 您可以使用任何支援的[部署技術](./functions-deployment-technologies.md)，將您的應用程式部署到某個位置。
 
 ## <a name="scaling"></a>調整大小
 
-所有插槽都縮放為與生產槽相同的工時數。
+所有位置都會調整為與生產位置相同的背景工作數目。
 
-- 對於消耗計畫，槽會隨著函數應用的縮放而縮放。
-- 對於應用服務方案，應用將縮放為固定數量的工作人員。 插槽的運行工作與應用計畫相同的工作名數。
+- 針對取用方案，位置會隨著函式應用程式的調整而調整。
+- 針對 App Service 方案，應用程式會調整為固定的背景工作角色數目。 插槽會在與應用程式方案相同的背景工作數目上執行。
 
 ## <a name="add-a-slot"></a>新增位置
 
-您可以通過[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)或通過門戶添加插槽。 以下步驟演示如何在門戶中創建新槽：
+您可以透過[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)或入口網站來新增位置。 下列步驟示範如何在入口網站中建立新的位置：
 
-1. 導航到您的功能應用程式，然後按一下*插槽*旁邊的**加號**。
+1. 流覽至您的函數應用程式，然後按一下 [*插槽*] 旁的**加號**。
 
-    ![添加 Azure 函數部署槽](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
+    ![新增 Azure Functions 部署位置](./media/functions-deployment-slots/azure-functions-deployment-slots-add.png)
 
-1. 在文字方塊中輸入名稱，然後按 **"創建**"按鈕。
+1. 在文字方塊中輸入名稱，然後按 [**建立**] 按鈕。
 
-    ![命名 Azure 函數部署槽](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
+    ![名稱 Azure Functions 部署位置](./media/functions-deployment-slots/azure-functions-deployment-slots-add-name.png)
 
-## <a name="swap-slots"></a>交換插槽
+## <a name="swap-slots"></a>交換位置
 
-您可以通過[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)或閘戶交換插槽。 以下步驟演示如何交換門戶中的插槽：
+您可以經由[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)或透過入口網站交換位置。 下列步驟示範如何在入口網站中交換位置：
 
-1. 導航到函數應用
-1. 按一下要交換的源槽名稱
-1. 在 *"概述"* 選項卡中，按一下 **"交換**"按鈕!["交換 Azure 函數部署槽](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
-1. 驗證交換的配置設置，然後按一下 **"交換**![Azure 函數"部署槽](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
+1. 流覽至函數應用程式
+1. 按一下您要交換的來源位置名稱
+1. 從 [*總覽*] 索引標籤中**Swap** ，按一下![[交換] 按鈕交換 Azure Functions 部署位置](./media/functions-deployment-slots/azure-functions-deployment-slots-swap.png)
+1. 確認交換的設定值，然後按一下 [**交換** ![交換] Azure Functions 部署位置](./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png)
 
-在執行交換操作時，操作可能需要一段時間。
+執行交換作業時，作業可能需要一些時間。
 
-## <a name="roll-back-a-swap"></a>回滾交換
+## <a name="roll-back-a-swap"></a>復原交換
 
-如果交換導致錯誤，或者您只想"撤銷"交換，則可以回滾到初始狀態。 要返回到預交換狀態，執行另一個交換以沖銷掉期。
+如果交換導致錯誤，或您只想要「復原」交換，您可以回復為初始狀態。 若要回到預先交換的狀態，請執行另一個交換來反轉交換。
 
-## <a name="remove-a-slot"></a>刪除插槽
+## <a name="remove-a-slot"></a>移除位置
 
-您可以通過[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)或通過門戶刪除插槽。 以下步驟演示如何刪除門戶中的插槽：
+您可以透過[CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)或透過入口網站來移除位置。 下列步驟示範如何在入口網站中移除位置：
 
-1. 導航到功能應用概述
+1. 流覽至函數應用程式總覽
 
-1. 按一下"**刪除**"按鈕
+1. 按一下 [**刪除**] 按鈕
 
-    ![添加 Azure 函數部署槽](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
+    ![新增 Azure Functions 部署位置](./media/functions-deployment-slots/azure-functions-deployment-slots-delete.png)
 
-## <a name="automate-slot-management"></a>自動老虎機管理
+## <a name="automate-slot-management"></a>自動插槽管理
 
-使用[Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)，可以自動執行槽的以下操作：
+使用[Azure CLI](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest)，您可以自動執行下列動作：
 
-- [創建](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
-- [刪除](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
-- [清單](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-list)
-- [交換](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
+- [建立](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create)
+- [delete](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-delete)
+- list
+- [調換](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [自動交換](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
-## <a name="change-app-service-plan"></a>更改應用服務方案
+## <a name="change-app-service-plan"></a>變更 App Service 計畫
 
-使用在應用服務方案下運行的函數應用，您可以選擇更改槽的基礎應用服務方案。
+使用在 App Service 計畫下執行的函式應用程式，您可以選擇變更位置的基礎 App Service 計畫。
 
 > [!NOTE]
-> 在"消耗計畫"下，無法更改插槽的應用服務方案。
+> 您無法在取用量方案下變更位置的 App Service 方案。
 
-使用以下步驟更改插槽的應用服務方案：
+使用下列步驟來變更位置的 App Service 方案：
 
-1. 導航到插槽
+1. 流覽至位置
 
-1. 在*平臺功能*下 ，按一下 **"所有設置"**
+1. 在 [*平臺功能*] 底下，按一下 [**所有設定**]
 
-    ![更改應用服務方案](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
+    ![變更 app service 方案](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-settings.png)
 
-1. 點擊**應用服務方案**
+1. 按一下 [ **App Service 方案**]
 
-1. 選擇新的應用服務方案，或創建新計畫
+1. 選取新的 App Service 方案，或建立新的方案
 
-1. 按一下 [確定]****。
+1. 按一下 [檔案] &gt; [新增] &gt; [專案] 
 
-    ![更改應用服務方案](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
+    ![變更 app service 方案](./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-select.png)
 
 
 ## <a name="limitations"></a>限制
 
-Azure 函數部署槽具有以下限制：
+Azure Functions 部署位置有下列限制：
 
-- 可用於應用的插槽數取決於計畫。 消耗計畫只允許一個部署槽。 其他插槽可用於在應用服務方案下運行的應用。
-- 交換插槽會重置`AzureWebJobsSecretStorageType`應用設置等於`files`的應用的鍵。
-- 插槽不適用於 Linux 消費計畫。
+- 應用程式可用的插槽數目取決於方案。 耗用量方案只允許一個部署位置。 在 App Service 方案下執行的應用程式可以使用其他位置。
+- 交換位置會針對`AzureWebJobsSecretStorageType`應用程式設定等於的應用程式重設金鑰`files`。
+- Linux 使用量方案無法使用插槽。
 
-## <a name="support-levels"></a>支援級別
+## <a name="support-levels"></a>支援層級
 
-部署槽有兩個級別的支援：
+部署位置有兩種支援層級：
 
-- **通用 （GA）**：完全支援並批准用於生產。
-- **預覽**：尚未支援，但預計將來將達到 GA 狀態。
+- 正式運作 **（GA）**：完全支援並已核准可供生產環境使用。
+- **預覽**：尚不支援，但未來預期會到達 GA 狀態。
 
-| 作業系統/託管計畫           | 支援級別     |
+| OS/主控方案           | 支援層級     |
 | ------------------------- | -------------------- |
-| 視窗消耗       | 正式運作 |
-| 視窗高級版           | 正式運作  |
-| 專用視窗         | 正式運作 |
-| Linux 消費         | 不支援          |
-| Linux 高級版             | 正式運作  |
+| Windows 耗用量       | 正式運作 |
+| Windows Premium           | 正式運作  |
+| Windows 專用         | 正式運作 |
+| Linux 使用量         | 不支援          |
+| Linux Premium             | 正式運作  |
 | Linux 專用           | 正式運作 |
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 函數中的部署技術](./functions-deployment-technologies.md)
+- [Azure Functions 中的部署技術](./functions-deployment-technologies.md)

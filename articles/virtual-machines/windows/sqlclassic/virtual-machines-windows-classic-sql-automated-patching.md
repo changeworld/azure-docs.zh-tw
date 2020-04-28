@@ -16,16 +16,16 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: efc6d0c25c5186b391deb08ee0e41dcb8ae6edf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978089"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Azure 虛擬機器中的 SQL Server 自動修補 (傳統)
 > [!div class="op_single_selector"]
-> * [資源管理器](../sql/virtual-machines-windows-sql-automated-patching.md)
-> * [經典](../classic/sql-automated-patching.md)
+> * [Resource Manager](../sql/virtual-machines-windows-sql-automated-patching.md)
+> * [傳統](../classic/sql-automated-patching.md)
 > 
 > 
 
@@ -37,7 +37,7 @@ ms.locfileid: "75978089"
 自動修補相依於 [SQL Server IaaS 代理程式擴充](../classic/sql-server-agent-extension.md)。
 
 > [!IMPORTANT] 
-> Azure 有兩種不同的部署模型來創建和使用資源：[資源管理器和經典](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。  若要檢視這篇文章的 Resource Manager 版本，請參閱 [Automated Patching for SQL Server in Azure Virtual Machines (Resource Manager)](../sql/virtual-machines-windows-sql-automated-patching.md)(Azure 虛擬機器的 SQL Server 自動修補 (Resource Manager))。
+> Azure 有兩種不同的部署模型可用於建立及使用資源： [Resource Manager 和傳統](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。  若要檢視這篇文章的 Resource Manager 版本，請參閱 [Automated Patching for SQL Server in Azure Virtual Machines (Resource Manager)](../sql/virtual-machines-windows-sql-automated-patching.md)(Azure 虛擬機器的 SQL Server 自動修補 (Resource Manager))。
 
 ## <a name="prerequisites"></a>Prerequisites
 若要使用自動修補，請考慮下列必要條件︰
@@ -48,13 +48,13 @@ ms.locfileid: "75978089"
 * Windows Server 2012 R2
 * Windows Server 2016
 
-**SQL 伺服器版本**：
+**SQL Server 版本**：
 
 * SQL Server 2012
 * SQL Server 2014
 * SQL Server 2016
 
-**Azure 電源外殼**：
+**Azure PowerShell**：
 
 * [安裝最新的 Azure PowerShell 命令](/powershell/azure/overview)。
 
@@ -84,7 +84,7 @@ ms.locfileid: "75978089"
 
 | 參數 | 效果 |
 | --- | --- |
-| **週一** |在每個星期四安裝修補程式。 |
+| **DayOfWeek** |在每個星期四安裝修補程式。 |
 | **MaintenanceWindowStartingHour** |在上午 11:00 開始更新。 |
 | **MaintenanceWindowDuration** |必須在 120 分鐘內安裝修補程式。 根據開始時間，其必須在下午 1:00 之前完成。 |
 | **PatchCategory** |此參數唯一可能的設定是 "Important"。 |

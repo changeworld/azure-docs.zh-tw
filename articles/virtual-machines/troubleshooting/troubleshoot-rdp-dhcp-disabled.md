@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75749886"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>因為停用 DHCP 用戶端服務，而無法 RDP 連線至 Azure 虛擬機器
@@ -24,17 +24,17 @@ ms.locfileid: "75749886"
 本文描述在 VM 中停用 DHCP 用戶端服務之後，您無法將遠端桌面連線至 Azure Windows 虛擬機器 (VM) 的問題。
 
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 由於 VM 的 DHCP 用戶端服務已停用，因此您無法 RDP 連線至 Azure 中的 VM。 當您檢查 Azure 入口網站中[開機診斷](../troubleshooting/boot-diagnostics.md)的螢幕擷取畫面時，您會在登入畫面中看到 VM 正常開機並等候認證。 您使用事件檢視器從遠端檢視 VM 中的事件記錄。 您會看到 DHCP 用戶端服務未啟動，或無法啟動。 下列為記錄範例：
 
-**日誌名稱**： 系統 </br>
-**源**： 服務控制管理員 </br>
+**記錄名稱**：系統 </br>
+**來源**：服務控制管理員 </br>
 **日期**：12/16/2015 11:19:36 AM </br>
-**事件 ID**： 7022 </br>
+**事件識別碼**：7022 </br>
 **工作分類**：無 </br>
-**級別**： 錯誤 </br>
-**關鍵字**： 經典</br>
-**使用者**：不適用 </br>
+**層級**：錯誤 </br>
+**關鍵字**：傳統</br>
+**使用者**： N/A </br>
 **電腦**：myvm.cosotos.com</br>
 **描述**：DHCP 用戶端服務啟動時無反應。</br>
 
@@ -102,7 +102,7 @@ VM 上的 DHCP 用戶端服務並未執行。
    $wc = New-Object System.Net.WebClient
    $wc.DownloadFile($source,$destination)
    ```
-3. 現在開始**一個長子**跟蹤：
+3. 現在啟動**procmon**追蹤：
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML
@@ -180,9 +180,9 @@ VM 上的 DHCP 用戶端服務並未執行。
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>將 OS 磁碟連結至復原 VM
 
-1. [將作業系統磁片附加到恢復 VM。](../windows/troubleshoot-recovery-disks-portal.md)
+1. [將 OS 磁片連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 啟動復原 VM 的遠端桌面連線。 確定連結的磁碟在磁碟管理主控台中標示為 [線上]****。 記下指派給所連結 OS 磁碟的磁碟機代號。
-3.  打開一個提升的命令提示實例 （**以管理員身份運行**）。 然後執行下列指令碼。 此腳本假定分配給附加的 OS 磁片的磁碟機號為**F**。將字母替換為 VM 中的值。
+3.  開啟提升許可權的命令提示字元實例（以**系統管理員身分執行**）。 然後執行下列指令碼。 此腳本假設指派給所連結 OS 磁片的磁碟機號是**F**。以您 VM 中的值適當地取代字母。
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM

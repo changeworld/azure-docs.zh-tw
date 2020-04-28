@@ -9,13 +9,13 @@ ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 40ba5a935e78cd75c4fcd7729e44f1cdf6c2859b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75772957"
 ---
-如果您在共用映像資源庫、映像定義及映像版本上執行任何作業時遇到問題，請再次以偵錯模式執行失敗的命令。 偵錯模式通過使用 CLI 傳遞 **-調試**開關和使用 PowerShell**的 -Debug**開關來啟動。 一旦您找到錯誤，請遵循本文件來針對錯誤進行疑難排解。
+如果您在共用映像資源庫、映像定義及映像版本上執行任何作業時遇到問題，請再次以偵錯模式執行失敗的命令。 藉由使用 CLI 傳遞 **-debug**參數和 **-Debug**參數搭配 PowerShell 來啟用「偵測」模式。 一旦您找到錯誤，請遵循本文件來針對錯誤進行疑難排解。
 
 
 ## <a name="unable-to-create-a-shared-image-gallery"></a>無法建立共用映像資源庫
@@ -24,7 +24,7 @@ ms.locfileid: "75772957"
 
 資源庫名稱無效。**
 
-資源庫名稱允許的字元為大寫或小寫字母、數字、點和句點。 庫名稱不能包含破折號。 變更資源庫名稱並再試一次。 
+資源庫名稱允許的字元為大寫或小寫字母、數字、點和句點。 圖庫名稱不能包含連字號。 變更資源庫名稱並再試一次。 
 
 資源庫名稱在您的訂用帳戶內不是唯一的。**
 
@@ -37,7 +37,7 @@ ms.locfileid: "75772957"
 
 映像定義名稱無效。**
 
-圖像定義的允許字元是大寫或小寫字母、數位、點、破折號和句點。 變更映像定義名稱並再試一次。
+影像定義的允許字元為大寫或小寫字母、數位、點、虛線和句號。 變更映像定義名稱並再試一次。
 
 未填入可供建立映像定義的必要屬性。**
 
@@ -62,7 +62,7 @@ ms.locfileid: "75772957"
 
 請確定來源受控映像的佈建狀態是 [已成功]****。
 
-*目的地區域清單不包括源區域。*
+*[目的地區域] 清單不包含來源區域。*
 
 目標區域清單必須包含映像版本的來源區域。 確定您已在您希望 Azure 將您的映像版本複寫至的目標區域清單中包含來源區域。
 
@@ -88,7 +88,7 @@ VM 或虛擬機器擴展集建立花費很長的時間。**
 
 ## <a name="unable-to-share-resources"></a>無法共用資源
 
-使用[基於角色的存取控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)（RBAC） 啟用跨訂閱共用映射庫、圖像定義和圖像版本資源。 
+在訂用帳戶之間共用共用映射資源庫、映射定義和映射版本資源，是使用以[角色為基礎的存取控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)（RBAC）來啟用。 
 
 ## <a name="replication-is-slow"></a>複寫速度很慢
 

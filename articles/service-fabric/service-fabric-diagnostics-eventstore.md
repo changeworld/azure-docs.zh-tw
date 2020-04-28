@@ -1,23 +1,23 @@
 ---
-title: Azure 服務結構事件存儲
-description: 瞭解 Azure 服務結構的 EventStore，這是一種隨時瞭解和監視群集或工作負荷狀態的方法。
+title: Azure Service Fabric 事件存放區
+description: 瞭解 Azure Service Fabric 的 EventStore，這是一種瞭解和監視叢集或工作負載狀態的方式。
 author: srrengar
 ms.topic: conceptual
 ms.date: 6/6/2019
 ms.author: srrengar
 ms.openlocfilehash: d23c8114bf10ef3225775accef6910c0ba539e15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645730"
 ---
-# <a name="eventstore-overview"></a>事件存儲概述
+# <a name="eventstore-overview"></a>EventStore 總覽
 
 >[!NOTE]
 >截至 Service Fabric 6.4 版為止， EventStore API 僅適用於在 Azure 上執行的 Windows 叢集。 我們正在將這個功能和我們的獨立叢集移植到 Linux。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 6.2 版中引進，EventStore 服務是 Service Fabric 中的監視選項。 EventStore 可讓您了解您的叢集或工作負載在指定時間點的狀態。
 EventStore 是具狀態的 Service Fabric 服務，可維護叢集中的事件。 此事件會透過 Service Fabric Explorer、REST 和 API 公開。 EventStore 可直接查詢叢集，取得叢集中任何實體的診斷資料，應可用來協助您：
@@ -31,7 +31,7 @@ EventStore 是具狀態的 Service Fabric 服務，可維護叢集中的事件�
 若要查看 EventStore 中可用事件的完整清單，請參閱 [Service Fabric 事件](service-fabric-diagnostics-event-generation-operational.md)。
 
 >[!NOTE]
->截至 Service Fabric 6.4 版為止， 事件商店 API 和 UX 通常可用於 Azure Windows 群集。 我們正在將這個功能和我們的獨立叢集移植到 Linux。
+>截至 Service Fabric 6.4 版為止， EventStore Api 和 UX 已正式適用于 Azure Windows 叢集。 我們正在將這個功能和我們的獨立叢集移植到 Linux。
 
 您可以查詢 EventStore 服務，找出叢集中每個實體和實體類型適用的事件。 這表示您可以查詢以下層級的事件：
 * 叢集：叢集本身特有的事件 (例如叢集升級)
@@ -46,7 +46,7 @@ EventStore 是具狀態的 Service Fabric 服務，可維護叢集中的事件�
 * 分割區複本：特定分割區 (以 `partitionId` 識別) 內所有複本 / 執行個體中的事件
 * 分割區複本：特定複本 / 執行個體 (以 `replicaId` 和 `partitionId` 識別) 中的事件
 
-要瞭解有關 API 的更多資訊，請簽出[事件存儲 API 引用](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)。
+若要深入瞭解 API，請參閱[EVENTSTORE API 參考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-eventsstore)。
 
 EventStore 服務還能將叢集中的事件相互關聯。 透過同時間寫入的事件，您可以追溯到彼此影響的相異實體；EventStore 服務能連結這些事件，協助您找出叢集中活動的原因。 例如，如果某個應用程式在未引發變更的情況下成為不良狀況，EventStore 也會查看平台公開的其他事件，因而可能會將這個狀況與 `Error` 或 `Warning` 事件相互關聯。 這有助於縮短偵測失敗及分析根本原因的時間。
 
@@ -62,11 +62,11 @@ EventStore 服務還能將叢集中的事件相互關聯。 透過同時間寫�
     ],
 ```
 
-### <a name="azure-cluster-version-65"></a>Azure 群集版本 6.5+
-如果 Azure 群集升級到版本 6.5 或更高版本，則群集上將自動啟用 EventStore。 要退出宣告，您需要使用以下內容更新群集範本：
+### <a name="azure-cluster-version-65"></a>Azure 叢集6.5 版 +
+如果您的 Azure 叢集已升級為6.5 或更高版本，則會在您的叢集上自動啟用 EventStore。 若要退出，您必須使用下列程式更新您的叢集範本：
 
-* 使用 的 API`2019-03-01`版本或更新版本 
-* 將以下代碼添加到群集中的屬性部分
+* 使用或更新版本的`2019-03-01` API 
+* 將下列程式碼新增至叢集中的屬性區段
   ```json  
     "fabricSettings": [
       …
@@ -74,9 +74,9 @@ EventStore 服務還能將叢集中的事件相互關聯。 透過同時間寫�
     "eventStoreServiceEnabled": false
   ```
 
-### <a name="azure-cluster-version-64"></a>Azure 群集版本 6.4
+### <a name="azure-cluster-version-64"></a>Azure 叢集版本6。4
 
-如果使用版本 6.4，則可以編輯 Azure 資源管理器範本以打開 EventStore 服務。 這是通過執行[群集配置升級](service-fabric-cluster-config-upgrade-azure.md)並添加以下代碼來完成的，您可以使用放置約束將 EventStore 服務的副本放在特定的 NodeType 上，例如專用於系統服務的 NodeType。 `upgradeDescription` 區段會設定要在節點上觸發重新啟動的組態升級。 您可以在另一項更新中移除此區段。
+如果您使用6.4 版，您可以編輯 Azure Resource Manager 範本來開啟 EventStore 服務。 這是藉由執行叢集設定[升級](service-fabric-cluster-config-upgrade-azure.md)並新增下列程式碼來完成，您可以使用 PlacementConstraints 將 EventStore 服務的複本放在特定的 NodeType 上，例如專屬於系統服務的 nodetype。 `upgradeDescription` 區段會設定要在節點上觸發重新啟動的組態升級。 您可以在另一項更新中移除此區段。
 
 ```json
     "fabricSettings": [

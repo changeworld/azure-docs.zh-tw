@@ -16,10 +16,10 @@ ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: c8314b04c05e2ecba2715b807171b5c1a2fa988a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646858"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>將 SQL Server 資料庫移轉至 Azure VM 中的 SQL Server
@@ -30,7 +30,7 @@ ms.locfileid: "75646858"
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
   > [!NOTE]
-  > SQL Server 2008 和 SQL Server 2008 R2 即將[結束其本地實例的支援生命週期](https://www.microsoft.com/sql-server/sql-server-2008)。 要擴展支援，可以將 SQL Server 實例遷移到 Azure VM，或者購買擴展安全更新以將其保存在本地。 有關詳細資訊，請參閱使用[Azure 擴展對 SQL Server 2008 和 2008 R2 的支援](virtual-machines-windows-sql-server-2008-eos-extend-support.md)
+  > SQL Server 2008 和 SQL Server 2008 R2 已接近內部部署實例的[支援生命週期結尾](https://www.microsoft.com/sql-server/sql-server-2008)。 若要擴充支援，您可以將 SQL Server 實例遷移至 Azure VM，或購買擴充的安全性更新以將其保留在內部部署。 如需詳細資訊，請參閱[使用 Azure 擴充 SQL Server 2008 和 2008 R2 的支援](virtual-machines-windows-sql-server-2008-eos-extend-support.md)
 
 ## <a name="what-are-the-primary-migration-methods"></a>主要的移轉方法有哪些？
 主要的移轉方法如下：

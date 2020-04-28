@@ -1,7 +1,7 @@
 ---
 title: 塑形器認知技能
 titleSuffix: Azure Cognitive Search
-description: 從非結構化資料中提取中繼資料和結構化資訊，並將其塑造成 Azure 認知搜索中的 AI 擴充管道中的複雜類型。
+description: 從非結構化資料中解壓縮中繼資料和結構化資訊，並在 Azure 認知搜尋的 AI 擴充管線中將其塑造為複雜類型。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,33 +9,33 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75754128"
 ---
 # <a name="shaper-cognitive-skill"></a>塑形器認知技能
 
-**Shaper**技能將多個輸入合併到[一個複雜的類型](search-howto-complex-data-types.md)中，可在以後在擴充管道中引用。 **Shaper**技能允許您基本上創建一個結構，定義該結構的成員的名稱，並將值分配給每個成員。 在搜索方案中有用的合併欄位的示例包括將名字和姓氏合併到單個結構、城市和州到單個結構中，或將名稱和出生日期合併到單個結構中以建立唯一標識。
+**整形**程式技能會將數個輸入合併成[複雜類型](search-howto-complex-data-types.md)，稍後可在擴充管線中加以參考。 **整形**程式技能可讓您建立結構、定義該結構成員的名稱，並將值指派給每個成員。 在搜尋案例中有用的匯總欄位範例包括將名字和姓氏結合成單一結構、城市和州/省成單一結構，或名稱和出生日組成單一結構，以建立唯一的身分識別。
 
-此外，[方案 3](#nested-complex-types)中所示的**Shaper**技能向輸入添加了可選的*源上下文*屬性。 *源**內容屬性*是互斥的。 如果輸入位於技能的上下文中，只需使用*源*。 如果輸入與技能上下文*的上下文不同*，請使用*sourceCoNtext*。 *sourceCoNtext*要求您定義一個嵌套輸入，其中特定元素被作為源定址。 
+此外，[案例 3](#nested-complex-types)中所述的**整形**程式技能會在輸入中加入選擇性的*sourceCoNtext*屬性。 *Source*和*sourceCoNtext*屬性互斥。 如果輸入是在技能的內容，請直接使用*source*。 如果輸入的內容與技能內容*不同*，請使用*sourceCoNtext*。 *SourceCoNtext*會要求您定義具有特定元素的嵌套輸入，而該專案會被定址為來源。 
 
-輸出名稱始終為"輸出"。 在內部，管道可以映射不同的名稱，如下面的示例所示的"分析文本"，但**Shaper**技能本身在回應中返回"輸出"。 如果您正在對擴充文件進行偵錯，並發現命名差異，或如果您建置自訂技能並自行建構回應，這可能十分重要。
+輸出名稱一律為 "output"。 就內部而言，管線可以對應不同的名稱（例如 "analyzedText"），如下列範例所示，但**整形**人員技能本身會在回應中傳回 "output"。 如果您正在對擴充文件進行偵錯，並發現命名差異，或如果您建置自訂技能並自行建構回應，這可能十分重要。
 
 > [!NOTE]
-> **Shaper**技能不受認知服務 API 的約束，您也不會因使用它而付費。 不過，您仍然應該[連結認知服務資源](cognitive-search-attach-cognitive-services.md)，以覆寫限制您每天少量擴充的**免費**資源選項。
+> **整形**程式技能不會系結至認知服務 API，您不需支付使用它的費用。 不過，您仍然應該[連結認知服務資源](cognitive-search-attach-cognitive-services.md)，以覆寫限制您每天少量擴充的**免費**資源選項。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
 
-## <a name="scenario-1-complex-types"></a>方案 1：複雜類型
+## <a name="scenario-1-complex-types"></a>案例1：複雜類型
 
-假設您要建立一個稱為 *analyzedText* 的結構，此結構有兩個成員，分別為：*text* 和 *sentiment*。 在索引中，多部分可搜索欄位稱為*複雜類型*，並且通常在來源資料具有映射到它的相應複雜結構時創建該欄位。
+假設您要建立一個稱為 *analyzedText* 的結構，此結構有兩個成員，分別為：*text* 和 *sentiment*。 在索引中，多部分可搜尋的欄位稱為*複雜型*別，而且通常會在來源資料具有對應的複雜結構時建立。
 
-但是，創建複雜類型的另一種方法是通過**Shaper**技能。 通過將此技能包括在技能集中，技能集處理期間的記憶體中操作可以使用嵌套結構輸出資料形狀，然後這些結構可以映射到索引中的複雜類型。 
+不過，建立複雜類型的另一種方法是透過**整形**程式技能。 藉由在技能集中包含此技能，在技能集處理期間的記憶體中作業可以輸出具有嵌套結構的資料圖形，然後可以對應至索引中的複雜類型。 
 
-以下示例技能定義提供成員名稱作為輸入。 
+下列範例技能定義會提供成員名稱做為輸入。 
 
 
 ```json
@@ -61,9 +61,9 @@ Microsoft.Skills.Util.ShaperSkill
 }
 ```
 
-### <a name="sample-index"></a>樣本索引
+### <a name="sample-index"></a>範例索引
 
-索引子調用技能集，索引子需要索引。 索引中複雜的欄位表示可能類似于以下示例。 
+技能集是由索引子叫用，而且索引子需要索引。 索引中的複雜欄位標記法看起來可能如下列範例所示。 
 
 ```json
 
@@ -90,7 +90,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 ### <a name="skill-input"></a>技能輸入
 
-為此**Shaper**技能提供可用輸入的傳入 JSON 文檔可以是：
+為此**整形**程式技能提供可用輸入的傳入 JSON 檔可能是：
 
 ```json
 {
@@ -109,7 +109,7 @@ Microsoft.Skills.Util.ShaperSkill
 
 ### <a name="skill-output"></a>技能輸出
 
-**沙珀**技能生成一個新的元素，稱為*分析文本*與*文本**和情緒*的組合元素。 此輸出符合索引架構。 它將在 Azure 認知搜索索引中導入和編制索引。
+「**整形**」技能會產生名為*analyzedText*的新元素，其中包含*text*和*情感*的組合元素。 此輸出符合索引架構。 它將會在 Azure 認知搜尋索引中匯入和編制索引。
 
 ```json
 {
@@ -129,11 +129,11 @@ Microsoft.Skills.Util.ShaperSkill
 }
 ```
 
-## <a name="scenario-2-input-consolidation"></a>方案 2：輸入整合
+## <a name="scenario-2-input-consolidation"></a>案例2：輸入匯總
 
 在另一個範例中，假設在不同的管線處理階段，您已經擷取書名和書本不同頁面上的章節標題。 您現在可以建立由這些各種輸入所組成的單一結構。
 
-此方案的**Shaper**技能定義可能類似于以下示例：
+此案例的**整形**程式技能定義看起來可能像下列範例：
 
 ```json
 {
@@ -159,7 +159,7 @@ Microsoft.Skills.Util.ShaperSkill
 ```
 
 ### <a name="skill-output"></a>技能輸出
-在這種情況下 **，Shaper**會平展所有章節標題以創建單個陣列。 
+在此情況下，**整形**會將所有章節標題壓平合併，以建立單一陣列。 
 
 ```json
 {
@@ -183,11 +183,11 @@ Microsoft.Skills.Util.ShaperSkill
 
 <a name="nested-complex-types"></a>
 
-## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>方案 3：來自嵌套上下文的輸入整合
+## <a name="scenario-3-input-consolidation-from-nested-contexts"></a>案例3：來自嵌套內容的輸入匯總
 
-假設您擁有書籍的標題、章節和內容，並在內容上運行實體識別和關鍵短語，現在需要將不同技能的結果聚合為具有章節名稱、實體和關鍵短語的單個形狀。
+假設您有一本書的標題、章節和內容，並已針對內容執行實體辨識和關鍵字組，現在需要將不同技能的結果匯總成單一圖形，其中包含章節名稱、實體和關鍵字組。
 
-此方案的**Shaper**技能定義可能類似于以下示例：
+此案例的**整形**程式技能定義看起來可能像下列範例：
 
 ```json
 {
@@ -224,7 +224,7 @@ Microsoft.Skills.Util.ShaperSkill
 ```
 
 ### <a name="skill-output"></a>技能輸出
-在這種情況下 **，Shaper**將創建一個複雜的類型。 此結構存在於記憶體中。 如果要將其保存到[知識存儲，](knowledge-store-concept-intro.md)則應在技能集中創建定義存儲特徵的投影。
+在此情況下，**整形**會建立複雜型別。 此結構存在於記憶體中。 如果您想要將它儲存到[知識存放區](knowledge-store-concept-intro.md)，您應該在技能集中建立可定義儲存特性的投影。
 
 ```json
 {

@@ -1,16 +1,16 @@
 ---
-title: 使用 Azure 筆記本預覽的專案導入和匯出資料
-description: 瞭解如何將資料從外部源引入 Azure 筆記本預覽專案，以及如何從專案匯出資料。
+title: 使用 Azure Notebooks 預覽的專案匯入和匯出資料
+description: 瞭解如何將資料從外部來源帶入 Azure Notebooks 預覽專案，以及如何從專案匯出資料。
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: e1d4a52ab7f4ad2ca3438af4bc87bec0b79f34d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646971"
 ---
-# <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>使用 Azure 筆記本預覽專案中的資料檔案
+# <a name="work-with-data-files-in-azure-notebooks-preview-projects"></a>使用 Azure Notebooks 預覽專案中的資料檔案
 
 資料是許多的 Jupyter Notebook 的命脈，特別是用於資料科學的 Notebook。 使用 Azure Notebooks，您可以輕鬆地從各種來源匯入專案中，然後從 Notebook 使用該資料。 您也可以讓 Notebooks 產生儲存在專案中的資料，再下載用於其他地方。
 
@@ -34,11 +34,11 @@ ms.locfileid: "75646971"
 
 1. 選取 [上傳]**** 命令，然後選取 [從 URL]**** 或 [從電腦]**** 及專案的必要資詳細資料，以用於您要匯入資料：
 
-   - **從 URL**：在 **"檔 URL"** 欄位中輸入源位址，在 **"檔案名"** 欄位中輸入要分配給專案中筆記本的檔案名。 接著，選取 [+ 新增檔案]****，將 URL 新增至上傳清單。 針對任何其他 URL 重複此程序，然後選取 [完成]****。
+   - **從 URL**：在 [檔案**url** ] 欄位中輸入來源位址，並在 **[檔案名] 欄位中**輸入要指派給專案中筆記本的檔案名。 接著，選取 [+ 新增檔案]****，將 URL 新增至上傳清單。 針對任何其他 URL 重複此程序，然後選取 [完成]****。
 
      ![從 URL 上傳的快顯視窗](media/quickstarts/upload-from-url-popup.png)
 
-   - **從電腦**：將檔拖放到快顯視窗中，或選擇 **"選擇檔"，** 然後流覽並選擇要導入的資料檔案。 您可以放入或選擇任意數量且類型與格式不拘的檔案，因為是根據 Notebook 中的程式碼來開啟檔案和剖析其資料。
+   - **從 [電腦**]：將檔案拖放到快顯視窗中，或選取 **[選擇**檔案]，然後流覽至並選取您要匯入的資料檔案。 您可以放入或選擇任意數量且類型與格式不拘的檔案，因為是根據 Notebook 中的程式碼來開啟檔案和剖析其資料。
 
      ![從電腦上傳的快顯視窗](media/quickstarts/upload-from-computer-popup.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "75646971"
 
 ### <a name="import-files-from-the-file-menu-in-a-notebook"></a>從 Notebook 的 [檔案] 功能表匯入檔案
 
-1. 在正在運行的筆記本中，選擇 **"檔** > **上傳**"命令：
+1. 在執行中的筆記本內，**選取 [** > 檔案**上傳**] 命令：
 
     ![Notebook 內的 [檔案上傳] 功能表命令](media/file-menu-upload.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "75646971"
 
 1. 在顯示的 [上傳狀態]**** 快顯視窗中，從下拉式清單中選取 [目的資料夾]****：
 
-    - 會話資料夾*~/*（ ）： 將檔上載到當前筆記本會話，但不會在專案中創建檔。 工作階段資料夾與專案資料夾是對等資料夾，但在工作階段結束之後即不存在。 若要存取程式碼中的工作階段檔案，請在檔案名稱前面加上相對路徑 *.../*。
+    - 會話資料夾（*~/* ）：將檔案上傳到目前的筆記本會話，但不會在專案中建立檔案。 工作階段資料夾與專案資料夾是對等資料夾，但在工作階段結束之後即不存在。 若要存取程式碼中的工作階段檔案，請在檔案名稱前面加上相對路徑 *.../*。
 
         使用工作階段資料夾可幫助進行實驗，並避免而長期來說可有可無的檔案造成專案過於凌亂。 您也可以將檔案上傳到專案中包含同名檔案的資料夾中，而不會造成衝突，也無需將檔案重新命名。 例如，假設專案中已有一個版本的*data.csv*，但您想要試驗不同版本的*data.csv*。 將檔案上傳到工作階段資料夾，您就可以使用所上傳檔案中的資料來執行 Notebook (使用 *.../data.csv* 在程式碼中參考)，而不是專案檔中的資料。
 
@@ -100,7 +100,7 @@ wget https://raw.githubusercontent.com/petroleum101/figures/db46e7f48b8aab67a0df
 
 ## <a name="export-files-from-the-data-menu-in-a-notebook"></a>從 Notebook 的 [資料] 功能表匯出檔案
 
-1. 選擇"**檔** > **下載"** 功能表命令：
+1. 選取 [ ** **  > 檔案**下載**] 功能表命令：
 
     ![Notebook 內的 [資料下載] 功能表命令](media/file-menu-download.png)
 

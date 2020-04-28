@@ -1,15 +1,15 @@
 ---
 title: Service Fabric 備份與還原
-description: 服務交換矩陣備份和還原的概念文檔，用於配置可靠狀態服務和可靠參與者的備份。
+description: Service Fabric 備份和還原的概念檔，這項服務可用於設定可靠具狀態服務和 Reliable Actors 的備份。
 author: mcoskun
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
 ms.openlocfilehash: ac6bb14517b67a4b308460583e8c9fb99a2df9f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75922784"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>備份與還原 Reliable Services 和 Reliable Actors
@@ -237,7 +237,7 @@ class MyCustomActorService : ActorService
 ## <a name="under-the-hood-more-details-on-backup-and-restore"></a>幕後：備份與還原的詳細資料
 以下是備份與還原的詳細資料。
 
-### <a name="backup"></a>Backup 
+### <a name="backup"></a>Backup
 可靠的狀態管理員能夠建立一致的備份，而不會封鎖任何讀取或寫入作業。 為了達到這個目的，它會利用檢查點和記錄持續性機制。  可靠的狀態管理員會在特定時間點採用模糊 (輕量型) 檢查點，來減輕交易記錄檔的壓力和改善復原時間。  呼叫 `BackupAsync` 時，可靠的狀態管理員會指示所有可靠物件，將其最新檢查點檔案複製到本機備份資料夾。  然後，可靠的狀態管理員會從「開始指標」開始，將所有記錄檔記錄複製到備份資料夾中的最新記錄檔記錄。  因為記錄到最新記錄資料列的所有記錄資料列都會包含於備份中，而且可靠的狀態管理員會保留預寫記錄，所以，可靠的狀態管理員保證所有已認可的交易 (`CommitAsync` 已順利傳回) 都會包含於備份中。
 
 呼叫 `BackupAsync` 之後認可的任何交易，不一定會在備份中。  一旦由平台填入本機備份資料夾 (亦即執行階段完成的本機備份) 之後，即會叫用服務的備份回呼。  此回呼會負責將備份資料夾移到外部位置，例如 Azure 儲存體。
@@ -254,7 +254,7 @@ class MyCustomActorService : ActorService
 `RestoreAsync` 會在過去曾呼叫的主要複本中先卸除所有現有狀態。 然後，可靠的狀態管理員會建立存在於備份資料夾中所有可靠的物件。 接下來，可靠的物件會獲得指示從其備份資料夾中的檢查點還原。 最後，可靠的狀態管理員會從備份資料夾中的記錄檔記錄復原自己的狀態，並執行復原。 在復原程序的過程中，作業是從「開始點」開始，在備份資料夾中認可記錄檔記錄，並對可靠的物件重新執行。 這個步驟可確保復原的狀態一致。
 
 ## <a name="next-steps"></a>後續步驟
-  - [可靠的收藏](service-fabric-work-with-reliable-collections.md)
+  - [Reliable Collections](service-fabric-work-with-reliable-collections.md)
   - [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
   - [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
   - [Reliable Services 組態](service-fabric-reliable-services-configuration.md)

@@ -10,10 +10,10 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.openlocfilehash: 02e814a9da320d688fe57edf3a3fe0640b8f5a47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75976744"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>使用 Azure Resource Manager 範本建立 IoT 中樞 (.NET)
@@ -23,14 +23,14 @@ ms.locfileid: "75976744"
 您可以使用 Azure 資源管理員，以程式設計方式建立和管理 Azure IoT 中樞。 本教學課程示範如何使用 Azure Resource Manager 範本從 C# 程式建立 IoT 中樞。
 
 > [!NOTE]
-> Azure 有兩種不同的部署模型來創建和使用資源[：Azure 資源管理器和經典](../azure-resource-manager/management/deployment-models.md)。  本文涵蓋使用 Azure Resource Manager 部署模型的部分。
+> Azure 有兩種不同的部署模型可用於建立及使用資源： [Azure Resource Manager 和傳統](../azure-resource-manager/management/deployment-models.md)。  本文涵蓋使用 Azure Resource Manager 部署模型的部分。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 若要完成此教學課程，您需要下列項目：
 
 * Visual Studio。
-* 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需幾分鐘即可創建[免費帳戶][lnk-free-trial]。
+* 使用中的 Azure 帳戶。 <br/>如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶][lnk-free-trial]。
 * 可供您儲存 Azure Resource Manager 範本檔案的 [Azure 儲存體帳戶][lnk-storage-account]。
 * [Azure PowerShell 1.0][lnk-powershell-install] 或更新版本。
 
@@ -195,10 +195,10 @@ ms.locfileid: "75976744"
 
 3. 按一下 [偵錯]****，然後按一下 [開始偵錯]**** 以執行應用程式。 可能需要數分鐘的時間，部署才會開始執行。
 
-4. 若要確認您的應用程式已新增新的 IoT 中樞，請前往 [Azure 入口網站][lnk-azure-portal] 並檢視您的資源清單。 或者，使用**獲取-AzResource**電源 Shell Cmdlet。
+4. 若要確認您的應用程式已新增新的 IoT 中樞，請前往 [Azure 入口網站][lnk-azure-portal] 並檢視您的資源清單。 或者，使用**Get-azresource** PowerShell Cmdlet。
 
 > [!NOTE]
-> 此範例應用程式會加入您付費的「S1 標準 IoT 中樞」。 您可以通過[Azure 門戶][lnk-azure-portal]或使用 **"刪除 AzResource** PowerShell Cmdlet"在完成後刪除 IoT 中心。
+> 此範例應用程式會加入您付費的「S1 標準 IoT 中樞」。 當您完成時，您可以透過[Azure 入口網站][lnk-azure-portal]或使用**get-azresource** PowerShell Cmdlet，來刪除 IoT 中樞。
 
 ## <a name="next-steps"></a>後續步驟
 現在您已經使用 Azure Resource Manager 範本和 C# 程式部署 IoT 中樞，可以進一步探索：

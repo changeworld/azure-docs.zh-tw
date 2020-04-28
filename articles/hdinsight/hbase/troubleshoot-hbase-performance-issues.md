@@ -1,6 +1,6 @@
 ---
 title: 針對 Azure HDInsight 上的 Apache HBase 效能問題進行疑難排解
-description: 各種 Apache HBase 性能調優指南和提示，用於在 Azure HDInsight 上獲得最佳性能。
+description: 取得 Azure HDInsight 最佳效能的各種 Apache HBase 效能微調指導方針和秘訣。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,120 +8,120 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75887150"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>針對 Azure HDInsight 上的 Apache HBase 效能問題進行疑難排解
 
-本文介紹了各種 Apache HBase 性能調優指南和在 Azure HDInsight 上獲得最佳性能的提示。 其中許多提示取決於特定的工作負載和讀取/寫入/掃描模式。 在生產環境中應用配置更改之前，請對其進行徹底測試。
+本文說明各種 Apache HBase 效能微調指導方針，以及在 Azure HDInsight 上取得最佳效能的秘訣。 其中有許多秘訣取決於特定的工作負載和讀取/寫入/掃描模式。 將設定變更套用到生產環境之前，請先徹底測試。
 
-## <a name="hbase-performance-insights"></a>HBase 性能洞察
+## <a name="hbase-performance-insights"></a>HBase 效能深入解析
 
-大多數 HBase 工作負載中最大的瓶頸是預寫記錄檔 （WAL）。 它嚴重影響寫入性能。 HDInsight HBase 具有獨立的存儲計算模型。 資料遠端存放在 Azure 存儲上，即使虛擬機器承載區域伺服器也是如此。 直到最近，WAL 還寫入 Azure 存儲。 在 HDInsight 中，這種行為放大了這一瓶頸。 [加速寫入](./apache-hbase-accelerated-writes.md)功能旨在解決此問題。 它將 WAL 寫入 Azure 高級 SSD 管理的磁片。 這極大地有利於編寫性能，並且它有助於某些寫入密集型工作負載面臨的許多問題。
+大部分 HBase 工作負載中最重要的瓶頸是「先行寫入記錄」（WAL）。 它會嚴重影響寫入效能。 HDInsight HBase 具有分隔的儲存體計算模型。 即使虛擬機器裝載區域伺服器，資料還是會從遠端儲存在 Azure 儲存體上。 到目前為止，WAL 也會寫入 Azure 儲存體。 在 HDInsight 中，此行為會擴大此瓶頸。 [加速寫入](./apache-hbase-accelerated-writes.md)功能的設計目的是要解決此問題。 它會將 WAL 寫入 Azure 進階 SSD 受控磁片。 這麼做可大幅提升寫入效能，並協助許多大量寫入工作負載所面臨的問題。
 
-要顯著改善讀取操作，請使用[高級塊 Blob 存儲帳戶](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/)作為遠端存放。 僅當啟用了 WAL 功能時，才可以使用此選項。
+若要大幅改善讀取作業，請使用[Premium 區塊 Blob 儲存體帳戶](https://azure.microsoft.com/blog/azure-premium-block-blob-storage-is-now-generally-available/)作為遠端存放區。 只有在已啟用 WAL 功能的情況下，才可以選擇此選項。
 
-## <a name="compaction"></a>壓 實
+## <a name="compaction"></a>壓縮
 
-壓縮是社區中基本商定的另一個潛在的瓶頸。 預設情況下，在 HDInsight HBase 群集上禁用主要壓縮。 壓縮被禁用，因為即使它是一個資源密集型過程，客戶還是完全靈活地根據工作負載進行計畫。 例如，他們可能安排在非高峰時間。 此外，資料局部性不是問題，因為我們的存儲是遠端的（由 Azure 存儲支援），而不是本地 Hadoop 分散式檔案系統 （HDFS）。
+「壓縮」是一種在「社區」中基本上同意的另一個潛在瓶頸。 根據預設，HDInsight HBase 叢集上會停用主要壓縮。 已停用壓縮，因為即使是需要大量資源的程式，客戶還是可以根據其工作負載，擁有完整的彈性來排程。 例如，他們可能會在離峰時段進行排程。 此外，資料位置不是問題，因為我們的儲存體是遠端（Azure 儲存體），而不是本機 Hadoop 分散式檔案系統（HDFS）。
 
-客戶應在方便時安排主要壓實。 如果他們不這樣做的維護，壓實將長期對讀取性能產生負面影響。
+客戶應該在方便時排程主要壓縮。 如果沒有進行這項維護，壓縮會對長期執行的讀取效能造成負面影響。
 
-對於掃描操作，平均延遲數遠高於 100 毫秒，應引起關注。 檢查是否準確安排了主要壓實。
+對於掃描工作而言，大於100毫秒的平均延遲應該是問題的原因。 檢查是否已正確排程主要壓縮。
 
-## <a name="apache-phoenix-workload"></a>阿帕奇鳳凰工作負載
+## <a name="apache-phoenix-workload"></a>Apache Phoenix 工作負載
 
-回答以下問題將説明您更好地瞭解您的阿帕奇鳳凰工作負載：
+回答下列問題可協助您更瞭解 Apache Phoenix 的工作負載：
 
-* 您的所有"讀取"都轉換為掃描？
-    * 如果是，這些掃描的特徵是什麼？
-    * 您是否針對這些掃描優化了 Phoenix 表架構，包括適當的索引？
-* 您是否使用 該`EXPLAIN`語句來瞭解"讀取"生成的查詢計劃？
-* 您的書寫是"向上選擇"嗎？
-    * 如果是這樣，他們也會做掃描。 掃描的預期延遲平均約為 100 毫秒，而 HBase 中的點延遲為 10 毫秒。  
+* 您的所有「讀取」轉譯為掃描嗎？
+    * 若是如此，這些掃描的特性有哪些？
+    * 您是否已將這些掃描的 Phoenix 資料表架構優化，包括適當的編制索引？
+* 您是否已使用`EXPLAIN`語句來瞭解「讀取」產生的查詢計劃？
+* 您的寫入是否「upsert」？
+    * 若是如此，它們也會進行掃描。 掃描的預期延遲大約是100毫秒，相較于 HBase 中的 point 到達10毫秒。  
 
-## <a name="test-methodology-and-metrics-monitoring"></a>測試方法和指標監控
+## <a name="test-methodology-and-metrics-monitoring"></a>測試方法和計量監視
 
-如果你使用的是雅虎這樣的基準測試。 雲服務基準、JMeter 或 Pherf 以測試和調整性能，確保：
+如果您使用的是效能評定，例如 Yahoo！ 雲端服務基準測試、JMeter 或 Pherf 若要測試和微調效能，請確定：
 
-- 用戶端電腦不會成為瓶頸。 為此，請檢查用戶端電腦上 CPU 的 CPU 使用方式。
+- 用戶端機器不會成為瓶頸。 若要這樣做，請檢查用戶端電腦上的 CPU 使用量。
 
-- 用戶端配置（如執行緒數）經過適當調整以使用戶端頻寬飽和。
+- 用戶端設定（例如執行緒數目）會適當地調整，以讓用戶端頻寬飽和。
 
-- 準確系統地記錄測試結果。
+- 測試結果會正確且有系統地記錄。
 
-如果您的查詢突然變得比以前糟糕得多，請檢查應用程式代碼中是否有潛在的錯誤。 是否突然生成大量無效資料？ 如果是，它可以增加讀取延遲。
+如果您的查詢突然開始比之前更糟，請檢查應用程式代碼中的潛在 bug。 它是否會突然產生大量的無效資料？ 如果是，它可能會增加讀取延遲。
 
 ## <a name="migration-issues"></a>遷移問題
 
-如果要遷移到 Azure HDInsight，請確保遷移是系統且準確的，最好是通過自動化完成的。 避免手動遷移。 請確認：
+如果您要遷移至 Azure HDInsight，請確定您的遷移是以有系統的方式正確地完成，最好是透過自動化進行。 避免手動遷移。 請確認：
 
-- 準確遷移表屬性。 屬性可以包括壓縮、綻放篩選器等。
+- 資料表屬性會正確遷移。 屬性可以包含做為壓縮、bloom 篩選等。
 
-- Phoenix 表中的鹽漬設置將適當地映射到新的群集大小。 例如，鹽桶的數量應是群集中輔助節點數的倍數。 您應該使用一個倍數，這是熱點數的一個因素。
+- Phoenix 資料表中的進行 salt 處理設定會適當地對應到新的叢集大小。 例如，salt 值區的數目應該是叢集中背景工作節點數目的倍數。 而且您應該使用多個，這是熱找出量的因素。
 
-## <a name="server-side-configuration-tunings"></a>伺服器端配置調優
+## <a name="server-side-configuration-tunings"></a>伺服器端設定 tunings
 
-在 HDInsight HBase 中，HFiles 存儲在遠端存放中。 當緩存出現誤報時，讀取成本高於本地系統，因為本地系統上的資料由本地 HDFS 支援。 對於大多數方案，智慧使用 HBase 緩存（塊緩存和存儲桶緩存）旨在規避此問題。 在問題未被規避的情況下，使用高級塊 Blob 帳戶可能有助於解決此問題。 Windows Azure 存儲 Blob 驅動程式依賴于某些屬性`fs.azure.read.request.size`，例如根據它確定為讀取模式（順序與隨機）在塊中獲取資料，因此可能繼續存在具有讀取的較高延遲實例。 通過經驗實驗，我們發現將讀取請求塊大小 （`fs.azure.read.request.size`） 設置為 512 KB 並將 HBase 表的塊大小匹配為相同大小，從而在實踐中產生最佳結果。
+在 HDInsight HBase 中，HFiles 會儲存在遠端存放區。 當快取遺漏時，讀取成本會高於內部部署系統，因為內部部署系統上的資料是由本機 HDFS 所支援。 在大部分的情況下，智慧型使用 HBase 快取（區塊快取和 bucket 快取）的設計是為了避免這個問題。 在無法規避問題的情況下，使用 premium 區塊 blob 帳戶可能有助於此問題。 Windows Azure 儲存體 Blob 驅動程式依賴某些屬性（例如`fs.azure.read.request.size` ）根據其判斷為讀取模式（順序與隨機）來提取區塊中的資料，因此可能會繼續使用讀取的延遲較高的實例。 透過經驗實驗，我們發現將讀取要求區塊大小（`fs.azure.read.request.size`）設為 512 KB，並將 HBase 資料表的區塊大小比對為相同大小，會產生最佳的結果。
 
-對於大多數大型節點群集，HDInsight HBase 在連接到`bucketcache`運行`regionservers`的虛擬機器的本地高級 SSD 上提供作為檔。 改用堆外緩存可能會帶來一些改進。 此解決方法具有使用可用記憶體的限制，並且可能小於基於檔的緩存，因此它並不總是最佳選擇。
+對於大部分的大型節點叢集而言，HDInsight HBase 會`bucketcache`將本機進階 SSD 上的檔案，提供給連接至虛擬機器的檔案（執行`regionservers`）。 改為使用脫離堆積快取可能會提供一些改進。 這個因應措施有使用可用記憶體的限制，而且可能小於檔案型快取，因此不一定是最佳選擇。
 
-以下是我們調整的其他一些特定參數，似乎在不同程度上有所説明：
+以下是我們已調整的一些其他特定參數，而且似乎有助於不同程度：
 
-- 將`memstore`大小從預設的 128 MB 增加到 256 MB。 通常，對於重寫入方案，建議此設置。
+- 將`memstore` [大小] 從預設值 128 mb 增加到 256 MB。 通常，這種設定對於繁重的寫入案例是建議的做法。
 
-- 增加專用用於壓縮的執行緒數，從預設設置**1**增加到**4**。 如果我們經常觀察到輕微的壓縮，此設置是相關的。
+- 增加專用於壓縮的執行緒數目，從預設值**1**到**4**。 如果我們觀察到經常的次要 compactions，則此設定是相關的。
 
-- 避免由於`memstore`存儲限制而阻塞刷新。 要提供此緩衝區，請將`Hbase.hstore.blockingStoreFiles`設置增加到**100**。
+- 避免因為`memstore`存放區限制而封鎖清除。 若要提供此緩衝區，請`Hbase.hstore.blockingStoreFiles`將設定增加至**100**。
 
-- 要控制刷新，請使用以下設置：
+- 若要控制排清，請使用下列設定：
 
-    - `Hbase.regionserver.maxlogs`： **140** （由於 WAL 限制而避免沖洗）
+    - `Hbase.regionserver.maxlogs`： **140** （因 WAL 限制而避免清除）
 
     - `Hbase.regionserver.global.memstore.lowerLimit`： **0.55**
 
     - `Hbase.regionserver.global.memstore.upperLimit`： **0.60**
 
-- 用於執行緒池調優的特定于鳳凰的配置：
+- 執行緒集區調整的 Phoenix 特有設定：
 
     - `Phoenix.query.queuesize`： **10000**
 
     - `Phoenix.query.threadpoolsize`： **512**
 
-- 其他特定于鳳凰的配置：
+- 其他 Phoenix 特有的設定：
 
-    - `Phoenix.rpc.index.handler.count`： **50** （如果有大型或多個索引查找）
+    - `Phoenix.rpc.index.handler.count`： **50** （如果有大型或多個索引查閱）
 
     - `Phoenix.stats.updateFrequency`： **1 小時**
 
     - `Phoenix.coprocessor.maxmetadatacachetimetolivems`： **1 小時**
 
-    - `Phoenix.coprocessor.maxmetadatacachesize`**：50 MB**
+    - `Phoenix.coprocessor.maxmetadatacachesize`： **50 MB**
 
-- RPC 超時 **：3 分鐘**
+- RPC 超時： **3 分鐘**
 
-   - RPC 超時包括 HBase RPC 超時、HBase 用戶端掃描器超時和鳳凰查詢超時。 
-   - 確保參數在`hbase.client.scanner.caching`伺服器端和用戶端都設置為相同的值。 如果它們不同，此設置會導致與`OutOfOrderScannerException`相關的用戶端端錯誤。 對於大型掃描，此設置應設置為較低的值。 我們將此值設置為**100**。
+   - RPC 超時包括 HBase RPC timeout、HBase 用戶端掃描器超時和 Phoenix 查詢超時。 
+   - 請確定在伺服器`hbase.client.scanner.caching`端和用戶端上，將參數設定為相同的值。 如果兩者不相同，則此設定會導致與相關的用戶端錯誤`OutOfOrderScannerException`。 這種設定應該設定為較低的值來進行大型掃描。 我們會將此值設定為**100**。
 
 ## <a name="other-considerations"></a>其他考量
 
-以下是需要考慮調整的其他參數：
+以下是要考慮微調的其他參數：
 
-- `Hbase.rs.cacheblocksonwrite`• 預設情況下，在 HDI 上，此設置設置為**true**。
+- `Hbase.rs.cacheblocksonwrite`–根據預設，在 HDI 上，此設定會設定為**true**。
 
-- 允許推遲次要壓縮的設置。
+- 允許稍後延遲次要壓縮的設定。
 
-- 實驗設置，例如調整為讀取和寫入請求保留的佇列百分比。
+- 實驗性設定，例如調整保留給讀取和寫入要求的佇列百分比。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您的問題仍未解決，請訪問以下管道之一以尋求更多支援：
+如果您的問題仍然無法解決，請流覽下列其中一個通道以取得更多支援：
 
-- 通過[Azure 社區支援](https://azure.microsoft.com/support/community/)從 Azure 專家那裡獲得答案。
+- 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
 
-- 連接到[@AzureSupport](https://twitter.com/azuresupport)。 這是用於改善客戶體驗的官方 Microsoft Azure 帳戶。 它將 Azure 社區連接到正確的資源：答案、支援和專家。
+- 連接[@AzureSupport](https://twitter.com/azuresupport)。 這是用來改善客戶體驗的官方 Microsoft Azure 帳戶。 它會將 Azure 社區連接到正確的資源：解答、支援和專家。
 
-- 如果需要更多説明，可以從[Azure 門戶](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援請求。 從功能表列中選擇 **"支援"** 或打開 **"説明 + 支援**中心"。 有關詳細資訊，請查看[如何創建 Azure 支援請求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 訂閱包括訪問訂閱管理和計費支援，並通過[Azure 支援計畫](https://azure.microsoft.com/support/plans/)之一提供技術支援。
+- 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。

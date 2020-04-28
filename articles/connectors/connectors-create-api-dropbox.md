@@ -1,6 +1,6 @@
 ---
 title: 連接至 Dropbox。
-description: 使用 Azure 邏輯應用自動執行上載和管理 Dropbox 中檔的任務和工作流
+description: 使用 Azure Logic Apps 將在 Dropbox 中上傳和管理檔案的工作和工作流程自動化
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 tags: connectors
 ms.openlocfilehash: 8f54f832884b172761f62b16db29d2f0abd0dd46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75665746"
 ---
-# <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>使用 Azure 邏輯應用在 Dropbox 中上載和管理檔
+# <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 上傳和管理 Dropbox 中的檔案
 
-使用 Dropbox 連接器和 Azure 邏輯應用，您可以創建自動工作流來上載和管理 Dropbox 帳戶中的檔。 
+透過 Dropbox 連接器和 Azure Logic Apps，您可以建立自動化工作流程，以上傳和管理 Dropbox 帳戶中的檔案。 
 
-本文演示如何從邏輯應用連接到 Dropbox，然後在**創建檔觸發器時**添加 Dropbox，以及**使用路徑操作獲取檔內容**的 Dropbox 獲取檔內容。
+本文說明如何從邏輯應用程式連接到 Dropbox，然後**在建立檔案時**新增 dropbox，並**使用路徑**動作來取得檔案內容。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* [一個Dropbox帳戶](https://www.dropbox.com/)，你可以免費註冊。 在邏輯應用和 Dropbox 帳戶之間創建連接時，您的帳戶憑據是必需的。
+* [Dropbox 帳戶](https://www.dropbox.com/)，您可以免費註冊。 您必須有帳號憑證，才能建立邏輯應用程式與 Dropbox 帳戶之間的連線。
 
 * [如何建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識。 針對此範例，您需要空白的邏輯應用程式。
 
@@ -41,26 +41,26 @@ ms.locfileid: "75665746"
 
 1. 為您的觸發程序提供必要的資訊。 
 
-   在此示例中，選擇要追蹤檔案創建的資料夾。 要流覽資料夾，請選擇 **"資料夾**"框旁邊的資料夾圖示。
+   在此範例中，請選取您要追蹤檔案建立的資料夾。 若要流覽您的資料夾，請選擇 [**資料夾**] 方塊旁的資料夾圖示。
 
 ## <a name="add-action"></a>新增動作
 
-現在添加從任何新檔獲取內容的操作。
+現在，新增可從任何新檔案取得內容的動作。
 
 1. 在觸發程序下方，選擇 [下一個步驟]****。 
 
 1. 在搜尋方塊下方，選擇 [全部]****。 在搜尋方塊中，輸入 "dropbox" 作為篩選條件。
-從動作清單中選擇此操作：**使用路徑獲取檔內容**
+從 [動作] 清單中，選取此動作： [**使用路徑取得檔案內容**]
 
-1. 如果尚未授權 Azure 邏輯應用訪問 Dropbox，則立即授權訪問。
+1. 如果您尚未授權 Azure Logic Apps 存取 Dropbox，請立即授權存取權。
 
-1. 要流覽到要使用的檔路徑，請選擇省略號 （**...）** 按鈕旁邊的檔**路徑**。 
+1. 若要流覽至您想要使用的檔案路徑，請在 [檔案**路徑**] 方塊旁，選擇省略號（**...**）按鈕。 
 
-   您還可以在 **"檔路徑**"框中按一下，並從動態內容清單中選擇 **"檔路徑**"，其值可從上一節中添加的觸發器的輸出中獲取。
+   您也可以在 [檔案**路徑**] 方塊內按一下，然後從動態內容清單中選取 [檔案**路徑**]，其值可當做您在上一節中新增之觸發程式的輸出。
 
 1. 完成後，儲存邏輯應用程式。
 
-1. 要觸發邏輯應用，請在 Dropbox 中創建新檔。
+1. 若要觸發邏輯應用程式，請在 Dropbox 中建立新的檔案。
 
 ## <a name="connector-reference"></a>連接器參考
 

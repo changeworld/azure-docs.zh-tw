@@ -1,6 +1,6 @@
 ---
-title: 連接到 Office 365 視頻
-description: 使用 Azure 邏輯應用自動執行管理 Office 365 視頻中視頻的任務和工作流
+title: 連接到 Office 365 影片
+description: 使用 Azure Logic Apps 自動化在 Office 365 中管理影片的作業和工作流程
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 05/18/2016
 tags: connectors
 ms.openlocfilehash: 8ac6b7b411e7f42dd076c5b16e7b500a819c617f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75665780"
 ---
-# <a name="manage-videos-in-office365-video-by-using-azure-logic-apps"></a>使用 Azure 邏輯應用管理 Office365 視頻中的視頻
+# <a name="manage-videos-in-office365-video-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 管理 Office365 Video 中的影片
 
 連接至 Office 365 影片，以取得 Office 365 影片的相關資訊、影片清單等。 有了 Office 365 影片，您可以：
 
@@ -24,9 +24,9 @@ ms.locfileid: "75665780"
 
 例如，您可以使用 Bing 搜尋連接器來搜尋 Office 365 影片，然後使用 Office 365 影片連接器取得該影片的相關資訊。 如果影片符合您的需求，您可以將該影片張貼在 Facebook 上。
 
-現在可以通過創建邏輯應用開始，請參閱[創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+您現在可以開始建立邏輯應用程式，請參閱[建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-## <a name="connect-to-office365-video"></a>連接到 Office365 視頻
+## <a name="connect-to-office365-video"></a>連接到 Office365 影片
 
 當您將這個連接器新增到邏輯應用程式時，您必須登入您的 Office 365 影片帳戶，並允許邏輯應用程式連線到您的帳戶。
 

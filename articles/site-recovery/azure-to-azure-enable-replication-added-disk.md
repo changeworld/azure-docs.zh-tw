@@ -1,49 +1,49 @@
 ---
-title: 在 Azure 網站恢復中為添加的 Azure VM 磁片啟用複製
-description: 本文介紹如何為添加到 Azure VM 的磁片啟用複製，該磁片已啟用用於使用 Azure 網站恢復進行災害復原
+title: 在 Azure Site Recovery 中為新增的 Azure VM 磁片啟用複寫
+description: 本文說明如何針對新增至 Azure VM 的磁片啟用複寫，以使用 Azure Site Recovery 進行嚴重損壞修復
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
 ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75973804"
 ---
-# <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>為添加到 Azure VM 的磁片啟用複製
+# <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>針對新增至 Azure VM 的磁片啟用複寫
 
 
-本文介紹如何使用[Azure 網站恢復](site-recovery-overview.md)，為已啟用災害復原的 Azure VM 的資料磁片啟用複製。
+本文說明如何使用[Azure Site Recovery](site-recovery-overview.md)，針對新增至已啟用損毀修復的 azure VM 的資料磁片，啟用其複寫。
 
-對於具有託管磁片的 Azure VM，支援為添加到 VM 的磁片啟用複製。
+具有受控磁片的 Azure Vm 支援針對您新增至 VM 的磁片啟用複寫。
 
-將新磁片添加到複製到另一個 Azure 區域的 Azure VM 時，將發生以下情況：
+當您將新的磁片新增至複寫至另一個 Azure 區域的 Azure VM 時，將會發生下列情況：
 
--   VM 的複製運行狀況顯示警告，門戶中的注釋會通知您一個或多個磁片可供保護。
--   如果為添加的磁片啟用保護，則該警告將在磁片的初始複製後消失。
--   如果選擇不為磁片啟用複製，則可以選擇關閉該警告。
+-   VM 的複寫健康情況會顯示警告，而入口網站中的附注會通知您有一或多個磁片可供保護。
+-   如果您為新增的磁片啟用保護，在磁片的初始複寫後將會消失此警告。
+-   如果您選擇不啟用磁片的複寫，您可以選擇關閉警告。
 
-![添加了新磁片](./media/azure-to-azure-enable-replication-added-disk/newdisk.png)
+![新增的磁片](./media/azure-to-azure-enable-replication-added-disk/newdisk.png)
 
 
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
-本文假定您已經為要向其添加磁片的 VM設置了災害復原。 如果沒有，請按照[Azure 到 Azure 災害復原教程](azure-to-azure-tutorial-enable-replication.md)。
+本文假設您已經為您要新增磁片的 VM 設定嚴重損壞修復。 如果您尚未這麼做，請遵循[azure 到 azure](azure-to-azure-tutorial-enable-replication.md)的嚴重損壞修復教學課程。
 
 ## <a name="enable-replication-for-an-added-disk"></a>為新增的磁碟啟用複寫
 
-要啟用添加磁片的複製，執行以下操作：
+若要為新增的磁片啟用複寫，請執行下列動作：
 
-1. 在複製**專案**>保存庫中，按一下向其添加磁片的 VM。
-2. 按一下**磁片**，然後選擇要為其啟用複製的資料磁片（這些磁片的狀態**未受保護**）。
-3.  在**磁片詳細資訊**中，按一下啟用**複製**。
+1. 在 [保存庫] > [複寫的**專案**] 中，按一下您要新增磁片的 VM。
+2. 按一下 [**磁片**]，然後選取您要啟用複寫的資料磁片（這些磁片具有 [**未受保護**] 狀態）。
+3.  在 [**磁片詳細資料**] 中，按一下 [**啟用**複寫]。
 
-    ![為添加的磁片啟用複製](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
+    ![為新增的磁片啟用複寫](./media/azure-to-azure-enable-replication-added-disk/enabled-added.png)
 
-啟用複製作業運行並完成初始複製後，將刪除磁片問題的複製運行狀況警告。
+執行「啟用複寫」作業並完成初始複寫之後，就會移除磁片問題的複寫健康情況警告。
 
 
 

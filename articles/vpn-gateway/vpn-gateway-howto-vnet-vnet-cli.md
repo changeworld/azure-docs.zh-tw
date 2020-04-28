@@ -1,5 +1,5 @@
 ---
-title: 使用 VNet 到 VNet 連接將 VNet 連接到 VNet：Azure CLI
+title: 使用 VNet 對 VNet 連線將 VNet 連線至 VNet： Azure CLI
 description: 使用 VNet 對 VNet 連線和 Azure CLI，將虛擬網路連在一起。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75834563"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>使用 Azure CLI 設定 VNet 對 VNet 的 VPN 閘道連線
@@ -22,8 +22,8 @@ ms.locfileid: "75834563"
 本文中的步驟適用於 Resource Manager 部署模型並使用 Azure CLI。 您也可從下列清單中選取不同的選項，以使用不同的部署工具或部署模型來建立此組態：
 
 > [!div class="op_single_selector"]
-> * [Azure 門戶](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [電源外殼](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [Azure 入口網站](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure 入口網站 (傳統)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [連線不同的部署模型 - Azure 入口網站](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -67,11 +67,11 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 在此練習中，您可以合併組態，或只選擇您需要使用的一個組態。 所有組態都會使用 VNet 對 VNet 連線類型。 網路流量會在彼此直接連線的 VNet 之間流動。 在此練習中，來自 TestVNet4 的流量不會路由傳送至 TestVNet5。
 
-* [駐留在同一訂閱中的 VNet：](#samesub)此配置的步驟使用 TestVNet1 和 TestVNet4。
+* [位於相同訂用帳戶中的 vnet：](#samesub)此設定的步驟會使用 TestVNet1 和 TestVNet4。
 
   ![v2v 圖表](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
-* [駐留在不同訂閱中的 VNet：](#difsub)此配置的步驟使用 TestVNet1 和 TestVNet5。
+* [位於不同訂用帳戶中的 vnet：](#difsub)此設定的步驟會使用 TestVNet1 和 TestVNet5。
 
   ![v2v 圖表](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
@@ -269,7 +269,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 ### <a name="step-5---create-and-configure-testvnet1"></a><a name="TestVNet1diff"></a>步驟 5 - 建立及設定 TestVNet1
 
-這些指示延續自前幾節中的步驟。 您必須完成[步驟 1](#Connect)和[步驟 2](#TestVNet1)才能創建和配置 TestVNet1 和 TestVNet1 的 VPN 閘道。 在此設定中，您不需要建立前一節的 TestVNet4 ，雖然您若建立它，它就不與這些步驟發生衝突。 完成步驟 1 和步驟 2 後，繼續進行下面的步驟 6。
+這些指示延續自前幾節中的步驟。 您必須完成[步驟 1](#Connect)和[步驟 2](#TestVNet1) ，才能建立及設定 TestVNet1 和 TestVNet1 的 VPN 閘道。 在此設定中，您不需要建立前一節的 TestVNet4 ，雖然您若建立它，它就不與這些步驟發生衝突。 完成步驟 1 和步驟 2 後，繼續進行下面的步驟 6。
 
 ### <a name="step-6---verify-the-ip-address-ranges"></a><a name="verifyranges"></a>步驟 6 - 驗證 IP 位址範圍
 
@@ -292,7 +292,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 ### <a name="step-7---create-and-configure-testvnet5"></a><a name="TestVNet5"></a>步驟 7 - 建立及設定 TestVNet5
 
-在新訂用帳戶 (訂用帳戶 5) 的內容中，必須完成這個步驟。 此部分可能會由不同組織中擁有訂用帳戶的系統管理員執行。 要在訂閱之間切換`az account list --all`，請使用 列出可用於您的帳戶的訂閱，然後使用`az account set --subscription <subscriptionID>`切換到要使用的訂閱。
+在新訂用帳戶 (訂用帳戶 5) 的內容中，必須完成這個步驟。 此部分可能會由不同組織中擁有訂用帳戶的系統管理員執行。 若要在訂閱之間`az account list --all`切換，請使用來列出您的帳戶可用的`az account set --subscription <subscriptionID>`訂閱，然後使用切換至您想要使用的訂用帳戶。
 
 1. 確定您已連線到訂用帳戶 5，然後建立資源群組。
 
@@ -331,7 +331,7 @@ VNet 的連線方法有很多種。 下列各節說明不同的虛擬網路連�
 
 ### <a name="step-8---create-the-connections"></a><a name="connections5"></a>步驟 8 - 建立連線
 
-此步驟會分成標示為 **[訂用帳戶 1]** 和 **[訂用帳戶 5]** 的兩個 CLI 工作階段，因為閘道位於不同的訂用帳戶。 要在訂閱之間切換`az account list --all`，請使用 列出可用於您的帳戶的訂閱，然後使用`az account set --subscription <subscriptionID>`切換到要使用的訂閱。
+此步驟會分成標示為 **[訂用帳戶 1]** 和 **[訂用帳戶 5]** 的兩個 CLI 工作階段，因為閘道位於不同的訂用帳戶。 若要在訂閱之間`az account list --all`切換，請使用來列出您的帳戶可用的`az account set --subscription <subscriptionID>`訂閱，然後使用切換至您想要使用的訂用帳戶。
 
 1. **[訂用帳戶 1]** 登入並連線到訂用帳戶 1。 執行下列命令，從輸出中取得閘道的名稱和識別碼︰
 

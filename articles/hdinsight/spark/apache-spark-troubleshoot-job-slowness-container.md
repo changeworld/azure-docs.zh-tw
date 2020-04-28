@@ -1,6 +1,6 @@
 ---
-title: 當 Azure HDInsight 存儲具有許多檔時，Apache Spark 速度變慢
-description: 當 Azure 存儲容器包含 Azure HDInsight 中的許多檔時，Apache Spark 作業運行緩慢
+title: Azure HDInsight 儲存體有許多檔案時 Apache Spark 緩慢
+description: 當 Azure 儲存體容器包含許多檔案時，Apache Spark 作業執行速度會變慢 Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,42 +8,42 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/21/2019
 ms.openlocfilehash: e389c05a6de85287bc86eff510e137f470837e56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75894333"
 ---
 # <a name="apache-spark-job-run-slowly-when-the-azure-storage-container-contains-many-files-in-azure-hdinsight"></a>當 Azure 儲存體容器在 Azure HDInsight 中包含許多檔案時，Apache Spark 的作業執行速度會變慢
 
-本文介紹了在 Azure HDInsight 群集中使用 Apache Spark 元件時，故障排除步驟和可能解決的問題。
+本文說明在 Azure HDInsight 叢集中使用 Apache Spark 元件時，疑難排解步驟和問題的可能解決方法。
 
 ## <a name="issue"></a>問題
 
-運行 HDInsight 群集時，當有許多檔/子資料夾時，寫入 Azure 存儲容器的 Apache Spark 作業會變慢。 例如，寫入新容器時需要 20 秒，但寫入具有 200k 檔的容器時大約需要 2 分鐘。
+執行 HDInsight 叢集時，當有許多檔案/子資料夾時，寫入至 Azure 儲存體容器的 Apache Spark 作業會變慢。 例如，寫入至新的容器需要20秒，但寫入具有200k 檔案的容器大約2分鐘。
 
 ## <a name="cause"></a>原因
 
-這是一個已知的 Spark 問題。 在 Spark 作業執行`ListBlob`期間`GetBlobProperties`，慢速來自 和 操作。
+這是已知的 Spark 問題。 緩慢來自于 Spark 工作`ListBlob`執行`GetBlobProperties`期間的和作業。
 
-要跟蹤分區，Spark 必須維護包含目錄`FileStatusCache`結構資訊的 。 使用此緩存，Spark 可以解析路徑並瞭解可用的分區。 跟蹤分區的好處是 Spark 僅在讀取資料時才接觸必要的檔。 為了保持此資訊最新，當您寫入新資料時，Spark 必須列出目錄下的所有檔並更新此緩存。
+為了追蹤分割區，Spark 必須維護， `FileStatusCache`其中包含目錄結構的相關資訊。 使用此快取，Spark 可以剖析路徑並留意可用的磁碟分割。 追蹤分割區的優點是，Spark 只會在您讀取資料時，觸及必要的檔案。 若要讓這份資訊保持在最新狀態，當您撰寫新資料時，Spark 必須列出目錄底下的所有檔案，並更新此快取。
 
-在 Spark 2.1 中，雖然我們不需要在每次寫入後更新緩存，但 Spark 將檢查現有分區列是否與當前寫入請求中建議的分區列匹配，因此它也會導致在每次寫入開始時列出操作。
+在 Spark 2.1 中，雖然我們不需要在每次寫入後更新快取，但 Spark 會檢查現有的分割區資料行是否符合目前寫入要求中的建議專案，因此也會在每次寫入開始時，導致列出作業。
 
-在 Spark 2.2 中，使用追加模式寫入資料時，應修復此性能問題。
+在 Spark 2.2 中，使用附加模式寫入資料時，應該修正此效能問題。
 
-## <a name="resolution"></a>解決方案
+## <a name="resolution"></a>解決方法
 
-創建分區資料集時，請務必使用分區方案，以限制 Spark 必須列出的檔數來更新`FileStatusCache`。
+當您建立分割資料集時，請務必使用資料分割配置，以限制 Spark 必須列出才能更新的`FileStatusCache`檔案數目。
 
-對於 N % 100 = 0（100 只是示例）的每個 N 第 N 個微批次處理，將現有資料移動到另一個目錄，Spark 可以載入該目錄。
+針對每第 n 個微批次，其中 N %100 = = 0 （100只是一個範例），將現有的資料移至另一個可由 Spark 載入的目錄。
 
 ## <a name="next-steps"></a>後續步驟
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-* 通過[Azure 社區支援](https://azure.microsoft.com/support/community/)從 Azure 專家那裡獲得答案。
+* 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
 
-* 與[@AzureSupport](https://twitter.com/azuresupport)- 正式的 Microsoft Azure 帳戶連接 Azure 社區，以將 Azure 社區連接到正確的資源：答案、支援和專家，從而改善客戶體驗。
+* 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，藉由將 Azure 社區連接至適當的資源來改善客戶體驗：解答、支援及專家。
 
-* 如果需要更多説明，可以從[Azure 門戶](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援請求。 從功能表列中選擇 **"支援"** 或打開 **"説明 + 支援**中心"。 有關詳細資訊，請查看[如何創建 Azure 支援請求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 訂閱中包含對訂閱管理和計費支援的訪問，並且通過[Azure 支援計畫](https://azure.microsoft.com/support/plans/)之一提供技術支援。
+* 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。

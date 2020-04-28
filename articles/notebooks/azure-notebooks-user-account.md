@@ -1,16 +1,16 @@
 ---
-title: 登錄到 Azure 筆記本預覽
+title: 登入 Azure Notebooks 預覽
 description: 使用 Microsoft 帳戶或公司/學校帳戶，設定您的 Azure Notebook 使用者帳戶。
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: 9401a9e483f3f8db5af827f53937cb0f01b27a28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646291"
 ---
-# <a name="your-user-account-for-azure-notebooks-preview"></a>Azure 筆記本預覽的使用者帳戶
+# <a name="your-user-account-for-azure-notebooks-preview"></a>Azure Notebooks 預覽的使用者帳戶
 
 不論您是否使用使用者帳戶登入，都可以使用 Azure Notebooks：
 

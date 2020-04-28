@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 7b2df6c8384e78094d80a17d8982b0db9edf73e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75933367"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>使用 StorSimple Snapshot Manager 來建立和管理備份原則
-## <a name="overview"></a>總覽
-備份原則會建立一個在本機或雲端中備份磁碟區資料的排程。 建立備份原則時，您也可以指定保留原則。 （您最多可以保留 64 個快照。有關備份策略的詳細資訊，請參閱[StorSimple 8000 系列的備份類型：混合雲解決方案](storsimple-overview.md)。 [Backup types](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies)
+## <a name="overview"></a>概觀
+備份原則會建立一個在本機或雲端中備份磁碟區資料的排程。 建立備份原則時，您也可以指定保留原則。 （您最多可以保留64個快照集）。如需備份原則的詳細資訊，請參閱 StorSimple 8000 系列中的[備份類型](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) [：混合式雲端解決方案](storsimple-overview.md)。
 
 本教學課程說明如何：
 
@@ -58,7 +58,7 @@ ms.locfileid: "75933367"
    2. 在 [設定]**** 下，選取 [一次]****、[每日]****、[每週]**** 或 [每月]****。
    3. 在 [開始]**** 文字方塊中，按一下行事曆圖示，然後選取開始日期。
    4. 在 [進階設定]**** 下，您可以設定選用的重複排程及結束日期。
-   5. 按一下 [確定]****。
+   5. 按一下 [確定]  。
 
 在您建立備份原則之後，下列資訊會出現在 [結果]**** 窗格中：
 

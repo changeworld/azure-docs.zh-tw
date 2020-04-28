@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure 網站恢復直接複製運行存儲空間的 Azure VM
-description: 瞭解如何使用 Azure 網站恢復複製運行存儲空間直接的 Azure VM。
+title: 使用 Azure Site Recovery 複寫執行儲存空間直接存取的 Azure Vm
+description: 瞭解如何使用 Azure Site Recovery 複寫執行儲存空間直接存取的 Azure Vm。
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
 ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75973656"
 ---
-# <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>將運行存儲空間的 Azure VM 直接複製到其他區域
+# <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>將執行儲存空間直接存取的 Azure Vm 複寫至另一個區域
 
 本文說明如何對於執行儲存空間直接存取的 Azure VM 啟用災害復原。
 
@@ -20,13 +20,13 @@ ms.locfileid: "75973656"
 >對於儲存空間直接存取叢集僅支援損毀一致復原點。
 >
 
-[直接存儲空間 （S2D）](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct)是軟體定義的存儲，它提供了在 Azure 上創建[來賓群集](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure)的方法。  Microsoft Azure 中的來賓群集是由 IaaS VM 組成的容錯移轉叢集。 它允許託管 VM 工作負載跨來賓群集容錯移轉，實現應用程式更高的可用性 SLA，而不是單個 Azure VM 所能提供的。 在 VM 承載關鍵應用程式（如 SQL 或橫向擴展檔案伺服器）的情況下，它非常有用。
+[儲存空間直接存取（S2D）](https://docs.microsoft.com/windows-server/storage/storage-spaces/deploy-storage-spaces-direct)是軟體定義的儲存體，可提供在 Azure 上建立[來賓](https://blogs.msdn.microsoft.com/clustering/2017/02/14/deploying-an-iaas-vm-guest-clusters-in-microsoft-azure)叢集的方式。  Microsoft Azure 中的來賓叢集是由 IaaS Vm 組成的容錯移轉叢集。 它可讓裝載的 VM 工作負載跨來賓叢集進行故障處理，達到應用程式的更高可用性 SLA，而不是單一 Azure VM 可以提供的。 在 VM 裝載 SQL 或向外延展檔案伺服器這類重要應用程式的案例中很有用。
 
-## <a name="disaster-recovery-with-storage-spaces-direct"></a>直接存儲空間的災害復原
+## <a name="disaster-recovery-with-storage-spaces-direct"></a>具有儲存空間直接存取的嚴重損壞修復
 
 在典型的案例中，Azure 可能有虛擬機器客體叢集，能夠達到擴充檔案伺服器等等應用程式的較高恢復功能。 雖然這可以提供應用程式的高可用性，不過您會想使用站台復原來保護應用程式在區域層級的失敗。 站台復原會將一個區域的資料複寫到另一個 Azure 區域，並且以容錯移轉在災害復原區域中啟動叢集。
 
-下圖顯示了直接使用存儲空間的雙節點 Azure VM 容錯移轉叢集。
+下圖顯示使用儲存空間直接存取的雙節點 Azure VM 容錯移轉叢集。
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
@@ -36,10 +36,10 @@ ms.locfileid: "75973656"
 - 儲存體集區會向容錯移轉叢集提供叢集共用磁碟區 (CSV)。
 - 容錯移轉叢集在資料磁碟機使用 CSV。
 
-**災害復原注意事項**
+**嚴重損壞修復考慮**
 
 1. 您設定叢集的[雲端見證](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp)時，在災害復原區域中保留見證。
-2. 如果您要將虛擬機器容錯移轉到與來源區域不同的 DR 區域上的子網路，則叢集 IP 位址必須在容錯移轉後變更。  要更改群集的 IP，您需要使用網站恢復[恢復計畫腳本。](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
+2. 如果您要將虛擬機器容錯移轉到與來源區域不同的 DR 區域上的子網路，則叢集 IP 位址必須在容錯移轉後變更。  若要變更叢集的 IP，您必須使用 Site Recovery 復原[計畫腳本。](https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)</br>
 使用自訂指令碼擴充功能在 VM 內執行命令的[範例指令碼](https://github.com/krnese/azure-quickstart-templates/blob/master/asr-automation-recovery/scripts/ASR-Wordpress-ChangeMysqlConfig.ps1) 
 
 ### <a name="enabling-site-recovery-for-s2d-cluster"></a>啟用 S2D 叢集的站台復原：
@@ -66,11 +66,11 @@ ms.locfileid: "75973656"
 
 
 ### <a name="add-scripts-to-the-recovery-plan"></a>將指令碼新增至復原計畫
-為了讓應用程式可正常運作，您可能需要在容錯移轉後或測試容錯移轉期間，於 Azure 虛擬機器上執行某些作業。 您可以自動化某些容錯移轉後的作業。 例如，在這裡，我們附加負載等化器和更改群集 IP。
+為了讓應用程式可正常運作，您可能需要在容錯移轉後或測試容錯移轉期間，於 Azure 虛擬機器上執行某些作業。 您可以自動化某些容錯移轉後的作業。 例如，這裡我們要連接負載平衡器並變更叢集 IP。
 
 
 ### <a name="failover-of-the-virtual-machines"></a>虛擬機器的容錯移轉 
-使用網站恢復[恢復計畫](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)需要容錯移轉 VM 的兩個節點 
+Vm 的這兩個節點都必須使用 Site Recovery 復原[方案](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans)進行故障切換 
 
 ![storagespacesdirect 保護](./media/azure-to-azure-how-to-enable-replication-s2d-vms/recoveryplan.PNG)
 

@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 閘道：驗證閘道連接
+title: Azure VPN 閘道：確認閘道連線
 description: 本文說明如何確認虛擬網路「VPN 閘道」連線。
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: cherylmc
 ms.openlocfilehash: 40417b078577424b1ba13ce60f4f773a1c8fd4dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75780142"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>確認 VPN 閘道連線

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務 v3 REST API 創建篩選器
+title: 使用 Azure 媒體服務 v3 REST API 建立篩選器
 description: 本主題說明如何建立篩選器，讓您的用戶端可以使用篩選器來串流特定的資料流區段。 媒體服務會建立動態資訊清單來完成此選擇性資料流。
 services: media-services
 documentationcenter: ''
@@ -14,22 +14,22 @@ ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
 ms.openlocfilehash: f9134dd3bc926e6e2f454e5187e03365e91ed22a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75780329"
 ---
 # <a name="creating-filters-with-media-services-rest-api"></a>使用媒體服務 REST API 建立篩選器
 
 當提供您的內容給客戶 (串流處理即時事件或點播視訊) 時，您的用戶端可能需要比預設資產資訊清單檔案中所述還大的彈性。 Azure 媒體服務可讓您為您的內容定義帳戶篩選器與資產篩選器。 
 
-有關此功能及其使用方案的詳細資訊，請參閱[動態清單](filters-dynamic-manifest-overview.md)和[篩選器](filters-concept.md)。
+如需這項功能和使用方式的詳細描述，請參閱[動態資訊清單](filters-dynamic-manifest-overview.md)和[篩選](filters-concept.md)。
 
 此主題說明如何為點播視訊資產建立篩選器，以及如何使用 REST API 來建立[帳戶篩選器](https://docs.microsoft.com/rest/api/media/accountfilters) \(英文\) 與[資產篩選器](https://docs.microsoft.com/rest/api/media/assetfilters) \(英文\)。 
 
 > [!NOTE]
-> 請務必查看[演示文稿時間範圍](filters-concept.md#presentationtimerange)。
+> 請務必參閱[presentationTimeRange](filters-concept.md#presentationtimerange)。
 
 ## <a name="prerequisites"></a>Prerequisites 
 
@@ -83,7 +83,7 @@ ms.locfileid: "75780329"
 
 ## <a name="create-account-filters"></a>建立帳戶篩選器
 
-在您下載的郵遞員集合中，選擇 **"帳戶篩選器**->**創建"或"更新帳戶篩選器**"。
+在您下載的 Postman 集合中，選取 [**帳戶篩選器**->] [**建立或更新帳戶篩選器**]。
 
 **PUT** HTTP 要求方法類似：
 
@@ -93,7 +93,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 選取 [本文]**** 索引標籤，並貼上您[稍早定義的 json 程式碼](#define-a-filter)。
 
-選擇 **"發送**"。 
+選取 [**傳送**]。 
 
 篩選器已建立。
 
@@ -101,7 +101,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-asset-filters"></a>建立資產篩選器  
 
-在下載的"媒體服務 v3"郵遞員集合中，選擇 **"資產**->**創建"或"更新資產篩選器**"。
+在您下載的 "媒體服務 v3" Postman 集合中，選取 [**資產**->] [**建立或更新資產篩選器**]。
 
 **PUT** HTTP 要求方法類似：
 
@@ -111,19 +111,19 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 選取 [本文]**** 索引標籤，並貼上您[稍早定義的 json 程式碼](#define-a-filter)。
 
-選擇 **"發送**"。 
+選取 [**傳送**]。 
 
 資產篩選器已建立。
 
 如需有關如何建立或更新資產篩選器的詳細資訊，請參閱[建立或更新](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate) \(英文\)。 此外，也請參閱[篩選器的 JSON 範例](https://docs.microsoft.com/rest/api/media/assetfilters/createorupdate#create-an-asset-filter)。 
 
-## <a name="associate-filters-with-streaming-locator"></a>將篩選器與流式處理器關聯
+## <a name="associate-filters-with-streaming-locator"></a>將篩選器與串流定位器建立關聯
 
-您可以指定適用于流式處理器的資產或帳戶篩選器的清單。 [動態打包器（流式處理終結點）](dynamic-packaging-overview.md)將此篩選器清單與用戶端在 URL 中指定的篩選器一起應用。 此組合生成[動態清單](filters-dynamic-manifest-overview.md)，該清單基於您在流式處理器上指定的 URL 和篩選器中的篩選器。 如果要應用篩選器，但不想在 URL 中公開篩選器名稱，我們建議您使用此功能。
+您可以指定資產或帳戶篩選器的清單，其適用于您的串流定位器。 動態封裝程式[（串流端點）](dynamic-packaging-overview.md)會將這份篩選器清單與您的用戶端在 URL 中指定的篩選準則一起套用。 這個組合會產生[動態資訊清單](filters-dynamic-manifest-overview.md)，這是根據 URL 中的篩選器，以及您在串流定位器上指定的篩選準則。 如果您想要套用篩選，但不想要在 URL 中公開篩選名稱，建議您使用這項功能。
 
-要使用 REST 創建篩選器並將其與流式處理器關聯，請使用[流式定位器 -](https://docs.microsoft.com/rest/api/media/streaminglocators/create) `properties.filters`創建 API 並在[請求正文](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定。
+若要使用 REST 建立篩選器，並將其與串流定位器建立關聯，請使用[串流定位器-建立](https://docs.microsoft.com/rest/api/media/streaminglocators/create)API，並在`properties.filters` [要求主體](https://docs.microsoft.com/rest/api/media/streaminglocators/create#request-body)中指定。
                                 
-## <a name="stream-using-filters"></a>使用篩選器進行流
+## <a name="stream-using-filters"></a>使用篩選器串流
 
 定義篩選條件後，您的用戶端就可以在串流 URL 中使用它們。 篩選器可以套用至自適性串流通訊協定：Apple HTTP 即時串流 (HLS)、MPEG-DASH 和 Smooth Streaming。
 

@@ -1,5 +1,5 @@
 ---
-title: 體系結構：本地 Apache Hadoop 到 Azure HDInsight
+title: 架構：內部部署 Apache Hadoop 至 Azure HDInsight
 description: 了解將內部部署 Hadoop 叢集遷移到 Azure HDInsight 的架構最佳做法。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 2d0d5bb871612bc5e16a26eb49808c39661ffb50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75934679"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 架構最佳作法
@@ -23,9 +23,9 @@ ms.locfileid: "75934679"
 
 許多內部部署的 Apache Hadoop 部署會包含支援許多工作負載的單一大型叢集。 此單一叢集可能很複雜，而且可能需要與個別服務互相妥協，才能讓每個項目正常運作。 將內部部署 Hadoop 叢集遷移到 Azure HDInsight 需要變更方法。
 
-Azure HDInsight 叢集專為特定的計算使用類型而設計。 由於存儲可以在多個群集之間共用，因此可以創建多個工作負載優化的計算群集，以滿足不同作業的需求。 每個叢集類型都有特定工作負載適用的最佳組態。 下表列出 HDInsight 和對應工作負載中支援的叢集類型。
+Azure HDInsight 叢集專為特定的計算使用類型而設計。 因為儲存體可跨多個叢集共用，所以您可以建立多個工作負載優化計算叢集，以符合不同作業的需求。 每個叢集類型都有特定工作負載適用的最佳組態。 下表列出 HDInsight 和對應工作負載中支援的叢集類型。
 
-|工作負載|HDInsight 群集類型|
+|工作負載|HDInsight 叢集類型|
 |---|---|
 |批次處理 (ETL / ELT)|Hadoop、Spark|
 |資料倉儲|Hadoop、Spark、互動式查詢|
@@ -38,14 +38,14 @@ Azure HDInsight 叢集專為特定的計算使用類型而設計。 由於存儲
 
 |工具|以瀏覽器為基礎|命令列|REST API|SDK|
 |---|---|---|---|---|
-|[Azure 門戶](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
-|[Azure 資料工廠](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
+|[Azure 入口網站](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI (1.0 版)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
-|[Azure 電源外殼](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
-|[捲曲](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
+|[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
+|[彎曲](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
 |[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||X|
 |[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
-|[JAVA SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
+|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Azure 資源管理員範本](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
 如需詳細資訊，請參閱 [HDInsight 中的叢集類型](../hadoop/apache-hadoop-introduction.md)一文。
@@ -54,15 +54,15 @@ Azure HDInsight 叢集專為特定的計算使用類型而設計。 由於存儲
 
 HDInsight 叢集可能會有很長一段時間未使用。 為了節省資源成本，HDInsight 可支援暫時性隨選叢集，當工作負載成功完成後，即可刪除這些叢集。
 
-刪除群集時，不會刪除關聯的存儲帳戶和外部中繼資料。 您之後可以使用相同的儲存體帳戶和中繼存放區重新建立叢集。
+當您刪除叢集時，不會移除相關聯的儲存體帳戶和外部中繼資料。 您之後可以使用相同的儲存體帳戶和中繼存放區重新建立叢集。
 
 Azure Data Factory 可用來排定隨選 HDInsight 叢集的建立。 如需詳細資訊，請參閱[使用 Azure Data Factory 在 HDInsight 中建立隨選 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-adf.md)一文。
 
 ## <a name="decouple-storage-from-compute"></a>分離計算和儲存體
 
-一般內部部署的 Hadoop 部署會使用同一組機器進行資料儲存和資料處理。 因為它們是同一位置的，因此必須一起擴展計算和存儲。
+一般內部部署的 Hadoop 部署會使用同一組機器進行資料儲存和資料處理。 因為它們是共置的，所以計算和儲存體必須一起調整。
 
-在 HDInsight 群集上，存儲不需要與計算共存，也可以位於 Azure 存儲、Azure 資料湖存儲中，也可以同時位於兩者中。 分離儲存體和計算有下列優點：
+在 HDInsight 叢集上，儲存體不需要與計算共存，而且可以在 Azure 儲存體中 Azure Data Lake Storage 或兩者。 分離儲存體和計算有下列優點：
 
 - 在叢集之間共用資料。
 - 可使用暫時性叢集，因為資料不相依於叢集。
@@ -74,7 +74,7 @@ Azure Data Factory 可用來排定隨選 HDInsight 叢集的建立。 如需詳�
 
 ## <a name="use-external-metadata-stores"></a>使用外部中繼資料存放區
 
-有兩個主要的元存儲，與HDInsight集群工作：[阿帕奇蜂巢](https://hive.apache.org/)和[阿帕奇Oozie。](https://oozie.apache.org/) Hive 中繼存放區是主要的結構描述存放庫，可供資料處理引擎 (包括 Hadoop、Spark、LLAP、Presto 和 Apache Pig) 使用。 Oozie 中繼存放區會為進行中和已完成的 Hadoop 作業儲存排程和狀態的詳細資料。
+與 HDInsight 叢集搭配使用的主要中繼存放區有兩種： [Apache Hive](https://hive.apache.org/)和[Apache Oozie](https://oozie.apache.org/)。 Hive 中繼存放區是主要的結構描述存放庫，可供資料處理引擎 (包括 Hadoop、Spark、LLAP、Presto 和 Apache Pig) 使用。 Oozie 中繼存放區會為進行中和已完成的 Hadoop 作業儲存排程和狀態的詳細資料。
 
 HDInsight 會使用 Azure SQL Database 作為 Hive 和 Oozie 中繼存放區。 在 HDInsight 叢集中設定中繼存放區有兩種方式：
 
@@ -102,12 +102,12 @@ HDInsight 會使用 Azure SQL Database 作為 Hive 和 Oozie 中繼存放區。 
 - 不讓專為某個 HDInsight 叢集版本建立的中繼存放區與不同版本的叢集共用。 不同的 Hive 版本會使用不同的結構描述。 例如，Hive 1.2 和 Hive 2.1 叢集無法共用中繼存放區。
 - 定期備份自訂中繼存放區。
 - 將中繼存放區與 HDInsight 叢集保存在相同區域。
-- 使用 Azure SQL 資料庫監視工具（如 Azure 門戶或 Azure 監視器日誌）監視元存儲的性能和可用性。
-- 根據需要執行`ANALYZE TABLE`命令，以生成表和列的統計資訊。 例如： `ANALYZE TABLE [table_name] COMPUTE STATISTICS` 。
+- 使用 Azure SQL Database 監視工具（例如 Azure 入口網站或 Azure 監視器記錄），監視中繼存放區的效能和可用性。
+- 視需要`ANALYZE TABLE`執行命令，以產生資料表和資料行的統計資料。 例如 `ANALYZE TABLE [table_name] COMPUTE STATISTICS`。
 
 ## <a name="best-practices-for-different-workloads"></a>不同工作負載的最佳做法
 
-- 請考慮使用 LLAP 群集進行具有改進回應時間的互動式 Hive 查詢[，LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) 是 Hive 2.0 中的一項新功能，它允許記憶體中緩存查詢。 LLAP 讓 Hive 查詢的速讀變快，在某些情況下可達到 [比 Hive 1.x 快 26 倍](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)。
+- 請考慮使用 LLAP 叢集來進行互動式 Hive 查詢，並改善回應時間[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) 是 Hive 2.0 中的新功能，可允許查詢的記憶體內部快取。 LLAP 讓 Hive 查詢的速讀變快，在某些情況下可達到 [比 Hive 1.x 快 26 倍](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)。
 - 請考慮使用 Spark 作業取代 Hive 作業。
 - 請考慮將以 impala 為基礎的查詢取代為 LLAP 查詢。
 - 請考慮將 MapReduce 作業取代為 Spark 作業。

@@ -4,10 +4,10 @@ description: 使用 Kudu 部署服務的 .zip 檔案部署工具來發佈 Azure 
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75769657"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Azure Functions 的 ZIP 部署
@@ -16,7 +16,7 @@ ms.locfileid: "75769657"
 
 Azure Functions 擁有 Azure App Service 所提供的全套持續部署與整合選項。 如需詳細資訊，請參閱 [Azure Functions 的持續部署](functions-continuous-deployment.md)。
 
-為了加快開發速度，您可能會發現直接從 .ZIP 檔案部署函數應用專案檔案會更容易。 .zip 部署 API 會取得 .zip 檔案的內容，並將內容擷取至函式應用程式的 `wwwroot` 資料夾。 此 .zip 檔案部署所使用的是支援持續整合式部署的同一個 Kudu 服務，包括：
+若要加速開發，您可能會發現直接從 .zip 檔案部署函式應用程式專案檔會比較容易。 .zip 部署 API 會取得 .zip 檔案的內容，並將內容擷取至函式應用程式的 `wwwroot` 資料夾。 此 .zip 檔案部署所使用的是支援持續整合式部署的同一個 Kudu 服務，包括：
 
 + 刪除較舊部署所留下的檔案。
 + 部署自訂，包括執行中的部署指令碼。
@@ -42,7 +42,7 @@ Azure Functions 擁有 Azure App Service 所提供的全套持續部署與整合
 
 不過，您可能已在 Azure 入口網站中使用編輯器建立好您的函式。 您可以使用下列其中一個方式來下載現有函式應用程式專案：
 
-+ **從 Azure 門戶：**
++ **從 [Azure 入口網站：**
 
   1. 登入 [Azure 入口網站](https://portal.azure.com)，然後移至您的函式應用程式。
 
@@ -52,7 +52,7 @@ Azure Functions 擁有 Azure App Service 所提供的全套持續部署與整合
 
      所下載的 .zip 檔案會採用正確格式，以便您可以使用 .zip 推送部署加以重新發佈至函式應用程式。 入口網站下載也可新增直接在 Visual Studio 中開啟您函式應用程式所需的檔案。
 
-+ **使用 REST API：**
++ **使用 REST Api：**
 
     使用下列部署 GET API 從您的 `<function_app>` 專案下載檔案： 
 
@@ -66,7 +66,7 @@ Azure Functions 擁有 Azure App Service 所提供的全套持續部署與整合
 
 您可以使用 Azure CLI 來觸發推送部署。 請使用 [az functionapp deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) 命令，將 .zip 檔案推送部署至函式應用程式。 若要使用此命令，您所使用的 Azure CLI 必須是 2.0.21 版或更新版本。 若要了解您所使用的 Azure CLI 版本，請使用 `az --version` 命令。
 
-在下列命令中，使用 .zip 檔案的位置路徑取代 `<zip_file_path>` 預留位置。 此外，替換為`<app_name>`函數應用的唯一名稱，並替換為`<resource_group>`資源組的名稱。
+在下列命令中，使用 .zip 檔案的位置路徑取代 `<zip_file_path>` 預留位置。 此外，請`<app_name>`以函式應用程式的唯一名稱取代， `<resource_group>`並以您的資源組名取代。
 
 ```azurecli-interactive
 az functionapp deployment source config-zip -g <resource_group> -n \

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: cherylmc
 ms.openlocfilehash: f1bbaab99b6422de4053839e2099869d2d08db95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864293"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>關於在 Azure 可用性區域中的區域備援虛擬網路閘道
@@ -40,9 +40,9 @@ ms.locfileid: "75864293"
 
 ## <a name="gateway-skus"></a><a name="gwskus"></a>閘道 SKU
 
-區域備援和分區閘道是作為新的閘道 SKU 供使用。 在 Azure AZ 區域中，我們已新增新的虛擬網路閘道 SKU。 這些 SKU 與 ExpressRoute 和 VPN 閘道的對應現有 SKU 類似，不同之處在於這些 SKU 專用於區域備援和分區閘道。 您可以通過 SKU 名稱中的"AZ"來標識這些 SKU。
+區域備援和分區閘道是作為新的閘道 SKU 供使用。 在 Azure AZ 區域中，我們已新增新的虛擬網路閘道 SKU。 這些 SKU 與 ExpressRoute 和 VPN 閘道的對應現有 SKU 類似，不同之處在於這些 SKU 專用於區域備援和分區閘道。 您可以使用 SKU 名稱中的 "AZ" 來識別這些 Sku。
 
-有關閘道 SKU 的資訊，請參閱[VPN 閘道 SKU](vpn-gateway-about-vpngateways.md#gwsku)和[快速路由閘道 SKU](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)。
+如需閘道 Sku 的詳細資訊，請參閱[VPN 閘道 sku](vpn-gateway-about-vpngateways.md#gwsku)和[ExpressRoute 閘道 sku](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku)。
 
 ## <a name="public-ip-skus"></a><a name="pipskus"></a>公用 IP SKU
 
@@ -75,7 +75,7 @@ ms.locfileid: "75864293"
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>我可以在哪些區域中使用新的 SKU？
 
-新的 SKU 在 Azure 區域提供 ，這些 Azure 區域具有 Azure 可用性區域 - 美國中部、法國中部、北歐、西歐和西美國 2 個區域、美國東部、美國東部 2、東南亞、日本東部、英國南部。 接下來，我們會在其他 Azure 公用區域中推出區域備援閘道。
+新的 Sku 可在 Azure 可用性區域具有「美國中部」、「法國中部」、「北歐」、「西歐」和美國西部2區域、美國東部、美國東部2、東南亞、日本東部、英國南部的 Azure 區域中使用。 接下來，我們會在其他 Azure 公用區域中推出區域備援閘道。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>我可以將現有的虛擬網路閘道變更/遷移/升級為區域備援或分區閘道嗎？
 

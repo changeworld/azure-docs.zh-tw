@@ -1,15 +1,15 @@
 ---
-title: 類比 Azure 服務結構應用中的故障
-description: 瞭解如何強化 Azure 服務交換矩陣服務，防止正常和不正常的失敗。
+title: 模擬 Azure Service Fabric 應用程式中的錯誤
+description: 深入瞭解如何強化您的 Azure Service Fabric 服務，以避免正常且性失誤性的失敗。
 author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d3d9f6478336c59adb875bf21438d5ffa457b1d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645985"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>模擬服務工作負載期間的失敗案例

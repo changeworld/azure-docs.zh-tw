@@ -15,20 +15,20 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75931473"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>在 StorSimple Snapshot Manager 使用 MMC 功能表動作
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 在 StorSimple Snapshot Manager 中，您會看到下列所有動作列在 [ **動作** ] 窗格的所有動作功能表和變化上。
 
 * 檢視
 * 從這裡開啟新視窗 
-* Refresh 
+* 重新整理 
 * 匯出清單 
 * 説明 
 
@@ -69,7 +69,7 @@ ms.locfileid: "75931473"
    
     ![從這裡開啟新視窗](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_NewWindow.png) 
 
-## <a name="refresh"></a>Refresh
+## <a name="refresh"></a>重新整理
 您可以使用 [重新整理]**** 動作來更新主控台視窗。
 
 #### <a name="to-update-the-console-window"></a>若要更新主控台視窗
@@ -87,7 +87,7 @@ ms.locfileid: "75931473"
    1. 在 [檔案名稱]**** 方塊中，輸入 CSV 檔案的名稱，或按一下箭頭，以從下拉式清單中選取。
    2. 在 [存檔類型]**** 方塊中，按一下箭頭，然後從下拉式清單中選取檔案類型。
    3. 若僅要儲存選取的項目，請選取數列，然後按一下 [只儲存選取的列]**** 核取方塊。 若要儲存所有匯出的清單，請清除 [ **只儲存選取的列** ] 核取方塊。
-   4. 按一下 [儲存]****。
+   4. 按一下 [檔案]  。
       
       ![將清單匯出成逗號分隔值檔案](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 

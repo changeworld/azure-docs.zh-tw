@@ -12,17 +12,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: f72ea6ed5f0eec076d181ef56c99c4f1308a7741
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864157"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>在 Azure 上使用 Hive 的 HDInsight Hadoop 資料科學逐步解說 
 
 這些逐步解說會使用 Hive 搭配 HDInsight Hadoop 叢集來執行預測性分析。 其遵循 Team Data Science Process 中所述的步驟。 如需 Team Data Science Process 的概觀，請參閱 [Data Science Process](overview.md)。 如需 Azure HDInsight 的簡介，請參閱 [Azure HDInsight、Hadoop 技術堆疊和 Hadoop 叢集簡介](../../hdinsight/hadoop/apache-hadoop-introduction.md)。
 
-執行團隊資料科學流程的其他資料科學演練按他們使用**的平臺**分組。 如需這些範例的列述，請參閱[執行 Team Data Science Process 的逐步解說](walkthroughs.md)。
+執行小組資料科學程式的其他資料科學逐步解說會依其使用的**平臺**分組。 如需這些範例的列述，請參閱[執行 Team Data Science Process 的逐步解說](walkthroughs.md)。
 
 
 ## <a name="predict-taxi-tips-using-hive-with-hdinsight-hadoop"></a>使用 Hive 搭配 HDInsight Hadoop 來預測計程車小費
@@ -36,7 +36,7 @@ ms.locfileid: "75864157"
 
 ## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>使用 Hive 搭配 HDInsight Hadoop 來預測廣告點擊數
 
-[在 1 TB 資料集演練中使用 Azure HDInsight Hadoop 群集](hive-criteo-walkthrough.md)使用公開可用的[Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/)按一下資料集來預測是否支付了小費和預期金額。 此案例是透過 Hive 搭配 [Azure HDInsight Hadoop 叢集](https://azure.microsoft.com/services/hdinsight/)來實作，以對資料進行儲存、探索、特性工程設計及縮減取樣。 它使用 Azure Machine Learning 來建立、定型二元分類模型並對其進行評分，以預測使用者是否點擊廣告。 此逐步解說最後會示範如何將其中一個模型發佈為 Web 服務。
+在[1 TB 資料集上使用 Azure HDInsight Hadoop](hive-criteo-walkthrough.md)叢集逐步解說會使用可公開取得的[Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/)按一下資料集來預測提示是否已付費，以及預期的金額。 此案例是透過 Hive 搭配 [Azure HDInsight Hadoop 叢集](https://azure.microsoft.com/services/hdinsight/)來實作，以對資料進行儲存、探索、特性工程設計及縮減取樣。 它使用 Azure Machine Learning 來建立、定型二元分類模型並對其進行評分，以預測使用者是否點擊廣告。 此逐步解說最後會示範如何將其中一個模型發佈為 Web 服務。
 
 
 ## <a name="next-steps"></a>後續步驟

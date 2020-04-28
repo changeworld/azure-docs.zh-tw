@@ -16,10 +16,10 @@ ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a23fb981e24f6152d99b76bd72115f8159f5d60f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645839"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>適用於 SAP 工作負載的 Azure 虛擬機器 DBMS 部署
@@ -318,14 +318,14 @@ Oracle 支援 Oracle 軟體在 Microsoft Azure 上執行。 如需 Windows Hyper
 
 以下是與 Azure 上的 SAP 有關的 SAP 附註。
 
-| 附註編號 | Title |
+| 附註編號 | 標題 |
 | --- | --- |
-| [1928533] |Azure 上的 SAP 應用程式：受支援的產品和 Azure VM 類型 |
-| [2015553] |微軟 Azure 上的 SAP：支援先決條件 |
+| [1928533] |Azure 上的 SAP 應用程式：支援的產品和 Azure VM 類型 |
+| [2015553] |SAP on Microsoft Azure：支援必要條件 |
 | [1999351] |對適用於 SAP 的增強型 Azure 監視功能進行疑難排解 |
 | [2178632] |Microsoft Azure 上適用於 SAP 的主要監視度量 |
-| [2191498] |使用 Azure 在 Linux 上 SAP：增強的監視 |
-| [2039619] |使用 Oracle 資料庫在 Microsoft Azure 上的 SAP 應用程式：支援的產品和版本 |
+| [2191498] |Linux 上使用 Azure 的 SAP：增強型監視 |
+| [2039619] |在 Microsoft Azure 上使用 Oracle database 的 SAP 應用程式：支援的產品和版本 |
 | [2243692] |Microsoft Azure (IaaS) VM 上的 Linux：SAP 授權問題 |
 | [2069760] |Oracle Linux 7.x SAP 安裝和升級 |
 | [1597355] |適用於 Linux 的交換空間建議 |
@@ -357,7 +357,7 @@ Windows 和 Oracle Linux 是 Oracle 和 Azure 上的 SAP 唯一支援的作業�
 
 我們強烈建議使用 [Azure 受控磁碟](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)。 我們也強烈建議針對 Oracle Database 部署使用[進階 SSD](../../windows/disks-types.md)。
 
-Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔案服務)。 如需詳細資訊，請參閱
+Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔案服務)。 如需詳細資訊，請參閱：
 
 - [Microsoft Azure 檔案服務簡介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
@@ -377,7 +377,7 @@ Azure 磁碟具有 IOPS 輸送量上的配額。 此概念已詳述於[適用於
 | \oracle\<SID>\origlogaA & mirrlogB | Premium | None | 不需要 |
 | \oracle\<SID>\origlogaB & mirrlogA | Premium | None | 不需要 |
 | \oracle\<SID>\sapdata1...n | Premium | 唯讀 | 可以使用 |
-| \oracle\<SID>\oraarch | 標準 | None | 不需要 |
+| \oracle\<SID>\oraarch | Standard | None | 不需要 |
 | Oracle Home、saptrace... | 作業系統磁碟 | | 不需要 |
 
 
@@ -464,10 +464,10 @@ Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔�
 
 | 元件 | 磁碟 | Caching | 移除* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/奧裡格洛加A & mirrlogB | Premium | None | 不需要 |
-| /oracle/\<SID>/奧裡格洛加B & mirrlogA | Premium | None | 不需要 |
-| /oracle/\<SID>/資料1...n | Premium | 唯讀 | 可以使用 |
-| /oracle/\<SID>/獸人 | 標準 | None | 不需要 |
+| /oracle/\<SID>/Origlogaa & mirrlogB | Premium | None | 不需要 |
+| /oracle/\<SID>/Origlogab & mirrlogA | Premium | None | 不需要 |
+| /oracle/\<SID>/sapdata1.。。位 | Premium | 唯讀 | 可以使用 |
+| /oracle/\<SID>/oraarch | Standard | None | 不需要 |
 | Oracle Home、saptrace... | 作業系統磁碟 | | 不需要 |
 
 *移除：使用 RAID0 的 LVM stripe 或 MDADM
@@ -478,18 +478,18 @@ Oracle Database 檔案不支援網路磁碟機或遠端共用 (例如 Azure 檔�
 
 | 元件 | 磁碟 | Caching | 移除* |
 | --- | ---| --- | --- |
-| /oracle/\<SID>/奧裡格洛加 | Premium | None | 可以使用  |
-| /oracle/\<SID>/奧裡格洛加B | Premium | None | 可以使用 |
-| /oracle/\<SID>/mirrlogAB | Premium | None | 可以使用 |
-| /oracle/\<SID>/mirrlogBA | Premium | None | 可以使用 |
-| /oracle/\<SID>/資料1...n | Premium | 唯讀 | 建議  |
-| /oracle/\<SID>/資料（n+1）] | Premium | None | 可以使用 |
-| /oracle/\<SID>/獸人* | Premium | None | 不需要 |
+| /oracle/\<SID>/origlogaa | Premium | None | 可以使用  |
+| /oracle/\<SID>/origlogab | Premium | None | 可以使用 |
+| /oracle/\<SID>/mirrlogab | Premium | None | 可以使用 |
+| /oracle/\<SID>/mirrlogba | Premium | None | 可以使用 |
+| /oracle/\<SID>/sapdata1.。。位 | Premium | 唯讀 | 建議  |
+| /oracle/\<SID>/sapdata （n + 1） * | Premium | None | 可以使用 |
+| /oracle/\<SID>/oraarch * | Premium | None | 不需要 |
 | Oracle Home、saptrace... | 作業系統磁碟 | 不需要 |
 
 *移除：使用 RAID0 的 LVM stripe 或 MDADM
 
-*（n+1）：託管 SYSTEM、TEMP 和 UNDO 表空間：系統和撤銷表空間的 I/O 模式不同于託管應用程式資料的其他表空間。 對於 System 和 Undo 資料表空間的效能來說，無快取是最佳選項。
+* （n + 1）：裝載 SYSTEM、TEMP 和 UNDO 資料表空間：系統和復原資料表空間的 i/o 模式與裝載應用程式資料的其他資料表空間不同。 對於 System 和 Undo 資料表空間的效能來說，無快取是最佳選項。
 
 *oraarch：從效能的觀點來看，儲存體集區並非必要。
 

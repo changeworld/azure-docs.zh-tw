@@ -15,14 +15,14 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 5198729cf96fb48c5dcd05096c04ea4d77c26de5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75931484"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>使用 StorSimple Snapshot Manager 來建立和管理磁碟區群組
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您可以在 [領域]**** 窗格上使用 [磁碟區群組] **** 節點來將磁碟區指派給磁碟區群組、檢視磁碟區群組相關資訊、排程備份與編輯磁碟區群組。
 
 磁碟區群組是用來確保應用程式具有一致備份之相關磁碟區的集區。 如需詳細資訊，請參閱[磁碟區和磁碟區群組](storsimple-what-is-snapshot-manager.md#volumes-and-volume-groups)，以及[與 Windows 磁碟區陰影複製服務整合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)。
@@ -72,17 +72,17 @@ ms.locfileid: "75931484"
     [建立磁碟區群組]**** 對話方塊隨即出現。
    
     ![建立磁碟區群組對話方塊](./media/storsimple-snapshot-manager-manage-volume-groups/HCS_SSM_CreateVolumeGroup_dialog.png)
-3. 輸入以下資訊：
+3. 輸入下列資訊：
    
    1. 在 [名稱]**** 方塊中，輸入新磁碟區群組的唯一名稱。
    2. 在 [應用程式] **** 方塊中，選取與您將新增至磁碟區群組之磁碟區相關聯的應用程式。
       
-       [應用程式] **** 方塊僅會列出那些使用 StorSimple 磁碟區，並對它們啟用 VSS 寫入器的應用程式。 只在寫入器注意的所有磁碟區都是 StorSimple 磁碟區時，才會啟用 VSS 寫入器。 如果 [應用程式] 方塊是空的，則不會安裝任何使用 Azure StorSimple 磁碟區，並具有支援之 VSS 寫入器的應用程式。 （目前，Azure StorSimple 支援 Microsoft 交換和 SQL 伺服器。有關 VSS 編寫器的詳細資訊，請參閱[與 Windows 卷卷卷卷複製服務的集成](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)。
+       [應用程式] **** 方塊僅會列出那些使用 StorSimple 磁碟區，並對它們啟用 VSS 寫入器的應用程式。 只在寫入器注意的所有磁碟區都是 StorSimple 磁碟區時，才會啟用 VSS 寫入器。 如果 [應用程式] 方塊是空的，則不會安裝任何使用 Azure StorSimple 磁碟區，並具有支援之 VSS 寫入器的應用程式。 （目前，Azure StorSimple 支援 Microsoft Exchange 和 SQL Server）。如需 VSS 寫入器的詳細資訊，請參閱[與 Windows 磁碟區陰影複製服務整合](storsimple-what-is-snapshot-manager.md#integration-with-windows-volume-shadow-copy-service)。
       
        如果選取應用程式，則會自動選取所有與其相關聯的磁碟區。 相反地，如果選取與特定應用程式相關聯的磁碟區，則會在 [應用程式] **** 方塊中自動選取該應用程式。 
    3. 在 [磁碟區] **** 方塊中，選取要新增到磁碟區群組的 StorSimple 磁碟區。 
       
-      * 您可以包含具有單一或多個磁碟分割的磁碟區。 （多個分區卷可以是具有多個分區的動態磁碟或基本磁碟。包含多個分區的卷被視為單個單元。 因此，如果您只將其中一個磁碟分割新增到磁碟區群組，則所有其他磁碟分割會同時自動新增到該磁碟區群組。 在將多個磁碟分割磁碟區新增到磁碟區群組之後，多個磁碟分割磁碟區會繼續被視為單一單位。
+      * 您可以包含具有單一或多個磁碟分割的磁碟區。 （多個分割區可以是動態磁碟或具有多個磁碟分割的基本磁碟）。包含多個磁碟分割的磁片區會被視為單一單位。 因此，如果您只將其中一個磁碟分割新增到磁碟區群組，則所有其他磁碟分割會同時自動新增到該磁碟區群組。 在將多個磁碟分割磁碟區新增到磁碟區群組之後，多個磁碟分割磁碟區會繼續被視為單一單位。
       * 您可以建立空的磁碟區群組，方法是不將任何磁碟區指派給它們。 
       * 請勿在相同的磁碟區群組中混用叢集共用磁碟區 (CSV) 和非 CSV。 StorSimple Snapshot Manager 不支援在相同快照中混用 CSV 磁碟區和非 CSV 磁碟區。
 4. 按一下 [確定]**** 以儲存磁碟區群組。

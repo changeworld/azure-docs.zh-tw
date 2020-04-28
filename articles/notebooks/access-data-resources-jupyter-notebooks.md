@@ -1,13 +1,13 @@
 ---
-title: 訪問聚居筆記本中的資料 - Azure 筆記本預覽
-description: 瞭解如何從 Jupyter 筆記本訪問檔、REST API、資料庫和不同的 Azure 存儲資源。
+title: 存取 Jupyter 筆記本中的資料-Azure Notebooks 預覽
+description: 瞭解如何從 Jupyter 筆記本存取檔案、REST Api、資料庫和不同的 Azure 儲存體資源。
 ms.topic: how-to
 ms.date: 12/04/2018
 ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75646342"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在 Notebook 中存取雲端資料
@@ -63,8 +63,8 @@ Azure Cosmos DB 針對 JSON 文件提供了具完整索引的 NoSQL 存放區。
 - [使用 Python 建置 SQL API 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
 - [使用適用於 MongoDB 的 Azure Cosmos DB API 建置 Flask 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
 - [使用 Python 和 Gremlin API 建立圖形資料庫](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
-- [使用 Python 和 Azure 宇宙資料庫構建卡珊多拉應用](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
-- [使用 Python 和 Azure 宇宙資料庫構建表 API 應用](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
+- [使用 Python 和 Azure Cosmos DB 建立 Cassandra 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
+- [使用 Python 和 Azure Cosmos DB 建立資料表 API 應用程式](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
 使用 Cosmos DB 時，您可以使用 [azure-cosmosdb-table](https://pypi.org/project/azure-cosmosdb-table/) 程式庫。
 
@@ -75,9 +75,9 @@ Azure 提供了許多其他資料庫類型供您使用。 以下文章提供了�
 - [Azure Database for PostgreSQL︰使用 Python 連線及查詢資料](https://docs.microsoft.com/azure/postgresql/connect-python)
 - [快速入門：搭配使用 Azure Redis 快取與 Python](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
 - [Azure Database for MySQL︰使用 Python 連線和查詢資料](https://docs.microsoft.com/azure/mysql/connect-python)
-- [Azure 資料工廠](https://azure.microsoft.com/services/data-factory/)
+- [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [Azure Data Factory 的複製精靈](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [操作方式：使用專案資料檔案](work-with-project-data-files.md)
+- [如何：使用專案資料檔案](work-with-project-data-files.md)

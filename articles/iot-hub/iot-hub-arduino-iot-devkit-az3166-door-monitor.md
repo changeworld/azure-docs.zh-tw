@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 函數打開門時發送電子郵件
+title: 使用 Azure Functions 開啟門時傳送電子郵件
 description: 監視磁性感應器，以在門戶開啟時加以偵測並使用 Azure Functions 傳送電子郵件通知。
 author: liydu
 ms.service: iot-hub
@@ -9,13 +9,13 @@ ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
 ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75977306"
 ---
-# <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>門監視器 -- 使用 Azure 函數和 SendGrid，在打開門時發送電子郵件           
+# <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>門監視器--使用 Azure Functions 和 SendGrid，開啟門時傳送電子郵件           
 
 MXChip IoT DevKit 包含內建的磁性感應器。 在此專案中，您會偵測附近是否有強力磁場存在 -- 在此案例中，此磁場來自於小型的永久性磁鐵。
 
@@ -39,7 +39,7 @@ MXChip IoT DevKit 包含內建的磁性感應器。 在此專案中，您會偵�
 
 有效的 Azure 訂用帳戶。 如果沒有，您可以透過下列方法之一來註冊：
 
-* 啟動[免費試用 30 天試用的 Microsoft Azure 帳戶](https://azure.microsoft.com/free/)。
+* [Microsoft Azure 帳戶啟用30天免費試用版](https://azure.microsoft.com/free/)。
 * 如果您是 MSDN 或 Visual Studio 訂閱者，請認領您的 [Azure 點數](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。
 
 ## <a name="deploy-the-sendgrid-service-in-azure"></a>在 Azure 中部署 SendGrid 服務
@@ -53,9 +53,9 @@ MXChip IoT DevKit 包含內建的磁性感應器。 在此專案中，您會偵�
 
 若要佈建 Azure 服務，請使用 [部署至 Azure]**** 按鈕。 此按鈕可讓您輕鬆快速地將開放原始碼專案部署至 Microsoft Azure。
 
-按一下下面的 **"部署到 Azure"** 按鈕。 
+按一下下方的 [**部署至 Azure** ] 按鈕。 
 
-[![部署到 Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2FSendGridDeploy%2Fazuredeploy.json)
+[![部署至 Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2FSendGridDeploy%2Fazuredeploy.json)
 
 如果您尚未登入 Azure 帳戶，請立即登入。 
 
@@ -81,7 +81,7 @@ MXChip IoT DevKit 包含內建的磁性感應器。 在此專案中，您會偵�
 
 ![SendGrid 管理](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
-在"發送網格"頁上，按一下 **"設置** > **API 金鑰** > **創建 API 金鑰**"。
+在 [SendGrid] 頁面上，按一下 [**設定** > ] [**API 金鑰** > ] [**建立 api 金鑰**]。
 
 ![SendGrid 建立 API 的第一個畫面](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-create-api-first.png)
 
@@ -95,9 +95,9 @@ MXChip IoT DevKit 包含內建的磁性感應器。 在此專案中，您會偵�
 
 下列步驟會佈建其他 Azure IoT 相關服務，並部署此專案的 Azure Functions。
 
-按一下下面的 **"部署到 Azure"** 按鈕。 
+按一下下方的 [**部署至 Azure** ] 按鈕。 
 
-[![部署到 Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2Fazuredeploy.json)
+[![部署至 Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FVSChina%2Fdevkit-door-monitor%2Fmaster%2Fazuredeploy.json)
 
 註冊表單隨即出現。
 
@@ -184,9 +184,9 @@ DevKit 會重新開機，然後開始執行程式碼。
 
 初始化之後，`Door closed` 會顯示在畫面上。 磁場有所變更時，狀態會變更為 `Door opened`。 每當門戶狀態變更時，您就會收到電子郵件通知。 (最久可能需要五分鐘才會收到這些電子郵件訊息)。
 
-![靠近感應器的磁鐵：門關閉](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "靠近感應器的磁鐵：門關閉")
+![磁鐵接近感應器：門已關閉](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-closed.jpg "磁鐵接近感應器：門已關閉")
 
-![磁鐵遠離感應器：門打開](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "磁鐵遠離感應器：門打開")
+![磁鐵已從感應器移開：已開啟門](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/test-door-opened.jpg "磁鐵已從感應器移開：已開啟門")
 
 ## <a name="problems-and-feedback"></a>問題與意見反應
 

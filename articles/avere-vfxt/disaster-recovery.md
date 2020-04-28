@@ -1,121 +1,121 @@
 ---
-title: Azure Avere vFXT 的災害復原指南
-description: 如何保護 Azure Avere vFXT 中的資料免受意外刪除或中斷
+title: Avere vFXT for Azure 的嚴重損壞修復指引
+description: 如何保護 Avere vFXT for Azure 中的資料免于意外刪除或中斷
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
 ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75966656"
 ---
-# <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Azure Avere vFXT 的災害復原指南
+# <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Avere vFXT for Azure 的嚴重損壞修復指引
 
-本文概述了為 Azure 工作流保護 Avere vFXT 的策略，並提供有關備份資料以便從事故或中斷中恢復的指導。
+本文概述保護您的 Avere vFXT for Azure 工作流程的策略，並提供備份資料的指引，讓您可以從意外或中斷中復原。
 
-Azure 的 Avere vFXT 臨時將資料存儲在其緩存中。 資料存儲在後端存儲系統中長期存儲 - 本地硬體系統、Azure Blob 存儲容器或兩者。
+Avere vFXT for Azure 會暫時將資料儲存在其快取中。 資料會長期儲存在後端儲存體系統中-內部部署硬體系統、Azure Blob 儲存體容器或兩者。
 
-為防止中斷和可能的資料丟失，請考慮以下四個方面：
+若要防止中斷和可能的資料遺失，請考慮下列四個領域：
 
-* 如果 Azure 系統的 Avere vFXT 不可用，防止停機
-* 保護群集緩存中的資料
-* 保護後端 NAS 硬體存儲中的資料
-* 保護後端 Azure Blob 雲存儲中的資料
+* 保護 Avere vFXT for Azure 系統變得無法使用時的停機時間
+* 保護叢集快取中的資料
+* 保護後端 NAS 硬體存放區中的資料
+* 保護後端 Azure Blob 雲端儲存體中的資料
 
-Azure 客戶的每個 Avere vFXT 都必須創建自己的全面災害復原計畫，其中包括這些專案的計畫。 您還可以將彈性構建到與 vFXT 群集一起使用的應用程式中。 閱讀["後續步驟"](#next-steps)中的連結以尋求説明。
+每個 Avere vFXT for Azure 客戶都必須建立自己的完整嚴重損壞修復計畫，其中包含這些專案的方案。 您也可以在與 vFXT 叢集搭配使用的應用程式中建立復原功能。 如需協助，請參閱[後續步驟](#next-steps)中的連結。
 
-## <a name="protect-against-downtime"></a>防止停機
+## <a name="protect-against-downtime"></a>防止停機時間
 
-冗余內置到 Azure 產品的 Avere vFXT 中：
+Avere vFXT for Azure 產品內建了冗余：
 
-* 群集高度可用，單個叢集節點可以以最小的中斷故障進行容錯移轉。
-* 緩存中更改的資料定期寫入後端核心檔案伺服器（硬體 NAS 或 Azure Blob），以便進行長期存儲。
+* 叢集具有高度可用性，而且個別叢集節點可以在最少中斷的情況下故障切換。
+* 在快取中變更的資料會定期寫入後端核心檔存放區（硬體 NAS 或 Azure Blob）進行長期儲存。
 
-Azure 群集的每個 Avere vFXT 都必須位於單個可用性區域中，但您可以使用位於不同區域或不同區域的冗余群集，在區域中斷時快速提供訪問。
+每個 Avere vFXT for Azure 叢集都必須位於單一可用性區域中，但您可以使用位於不同區域或不同區域的冗余叢集，以在發生區域性中斷時快速提供存取權。
 
-如果您擔心無法訪問資料，還可以將存儲容器放置在多個區域中。 但是，請記住，區域之間的事務比留在區域內的事務具有更高的延遲和更高的成本。
+如果您擔心遺失資料的存取權，您也可以將儲存體容器放在多個區域中。 不過，請記住，區域之間的交易會有較高的延遲和較高的成本，而不是保留在某個區域內的交易。
 
-## <a name="protect-data-in-the-cluster-cache"></a>保護群集緩存中的資料
+## <a name="protect-data-in-the-cluster-cache"></a>保護叢集快取中的資料
 
-緩存的資料在定期關閉之前始終寫入核心檔案伺服器，但在不受控制的關機中，緩存中更改的資料可能會丟失。
+在正常關機之前，快取的資料一律會寫入至核心檔案系統，但在不受控制的關機中，已變更快取中的資料可能會遺失。
 
-如果僅使用群集優化檔讀取，則不會丟失任何更改。 如果還使用群集快取檔案更改（寫入），請考慮是否調整核心檔檔的[緩存策略](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html)<!-- link to legacy doc --> 自訂將資料寫入長期存儲的頻率。
+如果您使用叢集來優化檔案讀取，則不會有任何變更會遺失。 如果您也使用叢集來快取檔案變更（寫入），請考慮是否要調整核心檔案檔案的快取[原則](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_manage_cache_policies.html)<!-- link to legacy doc --> 自訂將資料寫入長期儲存體的頻率。
 
-通常，您的恢復計畫應側重于備份後端存儲系統，這些存儲系統包含更多資料，並且通常對於故障後重新建立工作流更為重要。
+一般來說，您的復原計畫應該專注于備份後端儲存體系統，其中保存較多的資料，而且通常在失敗後重新建立工作流程時更為重要。
 
-## <a name="protect-data-in-nas-core-filers"></a>保護 NAS 核心檔案伺服器中的資料
+## <a name="protect-data-in-nas-core-filers"></a>保護 NAS 核心檔集中的資料
 
-使用接受的方法保護存儲在本地 NAS 硬體核心檔程式中的資料，包括 NAS 提供程式建議的快照和完整備份。 這些核心檔案伺服器的災害復原超出了本文的範圍。
+使用已接受的方法來保護儲存在內部部署 NAS 硬體核心檔案管理工具中的資料，包括 NAS 提供者建議的快照和完整備份。 這些核心檔的嚴重損壞修復已超出本文的範圍。
 
-## <a name="protect-data-in-azure-blob-storage"></a>保護 Azure Blob 存儲中的資料
+## <a name="protect-data-in-azure-blob-storage"></a>保護 Azure Blob 儲存體中的資料
 
-Azure 的 Avere vFXT 使用 Azure Blob 核心檔案伺服器的本地冗余存儲 （LRS）。 這意味著自動複製 Blob 容器中的資料，以防止資料中心內的瞬態硬體故障。
+Avere vFXT for Azure 使用 Azure Blob 核心檔存放區的本機多餘儲存體（LRS）。 這表示會自動複製 Blob 容器中的資料，以防止資料中心內發生暫時性硬體失敗。
 
-本節提供有關如何進一步保護 Blob 存儲中的資料免受罕見區域範圍中斷或意外刪除的提示。
+本節提供如何進一步保護 Blob 儲存體中的資料，避免罕見的全區域中斷或意外刪除的秘訣。
 
-保護 Azure Blob 存儲中資料的最佳做法包括：
+保護 Azure Blob 儲存體中資料的最佳作法包括：
 
-* 經常將關鍵資料複製到另一個區域的另一個存儲帳戶（通常由災害復原計畫確定）。
-* 控制對所有目標系統上的資料的訪問，以防止意外刪除或損壞。 請考慮在資料存儲上使用[資源鎖](../azure-resource-manager/management/lock-resources.md)。
-* 為 Blob 核心檔案伺服器啟用適用于 Azure[雲快照](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>)功能的 Avere vFXT。
+* 經常將重要資料複製到另一個區域中的另一個儲存體帳戶（通常是由您的嚴重損壞修復計畫所決定）。
+* 控制對所有目標系統上資料的存取，以防止意外刪除或損毀。 請考慮在資料存放區上使用[資源鎖定](../azure-resource-manager/management/lock-resources.md)。
+* 為您的 Blob 核心檔案系統啟用 [Avere vFXT for Azure[雲端快照](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>)集] 功能。
 
-### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>將 Avere vFXT 核心檔程式資料複製到備份帳戶
+### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>將 Avere vFXT 核心檔案管理工具資料複製到備份帳戶
 
-按照以下步驟在另一個帳戶中建立資料備份。
+請遵循下列步驟，在另一個帳戶中建立資料備份。
 
-1. 如果需要，生成新的加密金鑰並將其安全地存儲在受影響的系統之外。
+1. 如有需要，請產生新的加密金鑰，並將它安全地儲存在受影響的系統之外。
 
-   如果資料由 Azure 群集的 Avere vFXT 加密，則應在將資料複製到其他存儲帳戶之前生成新的加密金鑰。 將該金鑰和密碼安全地存儲在安全且不會受區域故障影響的設施中。
+   如果您的資料由 Avere vFXT for Azure 叢集加密，您應該先產生新的加密金鑰，然後再將資料複製到另一個儲存體帳戶。 將金鑰和密碼安全地儲存在安全且不會受到區域失敗影響的設施中。
 
-   將容器添加到群集時必須提供此金鑰 ，即使您正在將其重新添加到其原始群集。
+   將容器新增至叢集時，您必須提供此金鑰，即使您將它重新新增到其原始叢集也一樣。
 
-   讀取[雲加密設定](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_encryption_settings.html>)<!-- link to legacy doc site --> 瞭解詳細資訊。
+   讀取[雲端加密設定](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_encryption_settings.html>)<!-- link to legacy doc site --> 以取得詳細資訊。
 
-   如果容器僅使用 Azure 的內置加密，則可以跳過此步驟。
+   如果您的容器僅使用 Azure 的內建加密，您可以略過此步驟。
 
-1. 從系統中刪除核心檔案伺服器。 這強制群集將所有更改的資料寫入後端存儲。
+1. 從系統中移除核心檔案管理工具。 這會強制叢集將所有已變更的資料寫入後端儲存體。
 
-   儘管您必須在備份後重新添加核心檔程式，但刪除它是確保所有資料完全寫入後端的最佳方式。 （"掛起"選項有時會將更改的資料保留在緩存中。 <!-- xxx true? or just metadata? -->
+   雖然您必須在備份之後重新新增核心檔案管理工具，但移除它是保證所有資料都已完整寫入後端的最佳方式。 （[暫停] 選項有時可能會將變更的資料留在快取中）。 <!-- xxx true? or just metadata? -->
 
-   記下核心檔程式的名稱和交匯點資訊（列在控制台中的**命名空間**頁上），以便在備份後重新添加容器時複製該資訊。
+   記下核心檔案管理工具的名稱和連接資訊（列在 [控制台] 的 [**命名空間**] 頁面中），以便您在備份之後重新新增容器時進行複寫。
 
-   使用群集控制台刪除核心檔程式。 [打開群集控制台](avere-vfxt-cluster-gui.md)並選擇**核心檔案伺服器** > **管理核心檔程式**。 查找要備份的存儲系統，並使用 **"刪除**"按鈕將其從群集中刪除。
+   使用 [叢集控制台] 移除核心檔案管理工具。 [開啟 [叢集控制台](avere-vfxt-cluster-gui.md)]，然後選擇 [核心檔案管理工具] [**管理核心**檔案**伺服器** > ]。 尋找您要備份的儲存系統，並使用 [**移除**] 按鈕將它從叢集刪除。
 
-1. 在另一個區域中的另一個存儲帳戶中創建新的空 Blob 存儲容器。
+1. 在另一個區域的另一個儲存體帳戶中，建立新的空白 Blob 儲存體容器。
 
-1. 使用任何方便的複製工具將核心檔案伺服器上的資料複製到新容器。 副本必須在不更改的情況下複製資料，並且不會中斷 Avere vFXT 為 Azure 使用的專有雲檔案系統格式。 基於 Azure 的工具組括[AzCopy、Azure](../storage/common/storage-use-azcopy-v10.md) [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)和[Azure 資料工廠](../data-factory/connector-azure-data-lake-store.md)。
+1. 使用任何便利的複製工具，將核心檔案管理器上的資料複製到新的容器。 複製必須複寫資料而不進行變更，而不會中斷 Avere vFXT for Azure 所使用的專利雲端檔案系統格式。 以 Azure 為基礎的工具組括[AzCopy](../storage/common/storage-use-azcopy-v10.md)、 [Azure PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)和[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)。
 
-1. 將資料複製到備份容器後，將原始容器添加回群集，如[配置存儲](avere-vfxt-add-storage.md)中所述。
+1. 將資料複製到備份容器之後，請依照[設定儲存體](avere-vfxt-add-storage.md)中的說明，將原始容器新增回叢集。
 
-   * 使用相同的核心檔器名稱和交匯點資訊，以便用戶端工作流無需更改。
-   * 將**存儲桶內容**值設置為現有資料選項。
-   * 如果容器由群集加密，則必須為其內容輸入當前加密金鑰。 （這是您在步驟一中更新的金鑰。
+   * 使用相同的核心檔案管理工具名稱和連接資訊，讓用戶端工作流程不需要變更。
+   * 將 [ **Bucket 內容**] 值設為 [現有資料] 選項。
+   * 如果容器是由叢集加密，您必須輸入目前的加密金鑰做為其內容。 （這是您在步驟一中更新的金鑰）。
 
-對於第一個備份之後的備份，不需要創建新的存儲容器。 但是，請考慮在每次執行備份時生成新的加密金鑰，以確保將當前金鑰存儲在您記得的位置。
+針對第一個備份之後，您不需要建立新的儲存體容器。 不過，請考慮在每次執行備份時產生新的加密金鑰，以確定您已將目前的金鑰儲存在您所記住的位置。
 
-### <a name="access-a-backup-data-source-during-an-outage"></a>在中斷期間訪問備份資料來源
+### <a name="access-a-backup-data-source-during-an-outage"></a>在中斷期間存取備份資料來源
 
-要從 Azure 群集的 Avere vFXT 訪問備份容器，請按照此過程操作：
+若要從 Avere vFXT for Azure 叢集存取備份容器，請遵循此程式：
 
-1. 如果需要，請為未受影響的區域中的 Azure 群集創建新的 Avere vFXT。
+1. 如有需要，請在不受影響的區域中建立新的 Avere vFXT for Azure 叢集。
 
    > [!TIP]
-   > 為 Azure 群集創建 Avere vFXT 時，可以保存其創建範本和參數的副本。 如果在創建主群集時保存此資訊，則可以使用它創建具有相同屬性的替換群集。 在[摘要](avere-vfxt-deploy.md#validation-and-purchase)頁上，按一下 **"下載"範本和參數**連結。 在創建群集之前，將資訊保存到檔中。
+   > 當您建立 Avere vFXT for Azure 叢集時，您可以儲存其建立範本和參數的複本。 如果您在建立主要叢集時儲存此資訊，您可以使用它來建立具有相同屬性的替代叢集。 在 [[摘要](avere-vfxt-deploy.md#validation-and-purchase)] 頁面上，按一下 [**下載範本和參數**] 連結。 建立叢集之前，請先將資訊儲存至檔案。
 
-1. 添加新的雲核心檔器，指向重複的 Blob 容器。
+1. 新增指向重複 Blob 容器的新雲端核心檔案管理工具。
 
-   請確保指定目標容器已在核心檔程式創建嚮導的 Bucket**內容**設置中包含資料。 （如果您不小心將此集保留為 **"空**"，系統應提醒您。  <!-- you can't add a populated volume at cluster creation time via template, only create a fresh one -->
+   請務必指定目標容器已包含 [核心檔案管理工具建立嚮導] 的 [值區**內容**] 設定中的資料。 （如果您不小心將此設為**空白**，系統應該會向您發出警示）。  <!-- you can't add a populated volume at cluster creation time via template, only create a fresh one -->
 
-1. 如有必要，更新用戶端，以便它們裝載新群集或新核心檔程式，而不是原始檔案。 （如果添加與原始容器相同的名稱和交匯點路徑的替換核心檔程式，則無需更新用戶端進程，除非您需要在新的 IP 位址裝載新群集。
+1. 如有必要，請更新用戶端，使其掛接新叢集或新的核心檔案管理工具，而不是原始的。 （如果您使用與原始容器相同的名稱和連接路徑來新增取代核心檔案管理工具，就不需要更新用戶端進程，除非您需要在新的 IP 位址掛接新叢集）。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關為 Azure 自訂 Avere vFXT 設置的詳細資訊，請閱讀[群集調優](avere-vfxt-tuning.md)。
-* 瞭解有關 Azure 中災害復原和構建彈性應用程式的更多資訊：
+* 如需自訂 Avere vFXT for Azure 設定的詳細資訊，請參閱叢集[調整](avere-vfxt-tuning.md)。
+* 深入瞭解嚴重損壞修復和在 Azure 中建立具復原功能的應用程式：
 
   * [Azure 復原技術指導](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
   * [從全區域服務中斷復原](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region)

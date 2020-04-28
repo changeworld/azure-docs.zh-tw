@@ -1,161 +1,161 @@
 ---
-title: 故障排除 Azure 自動縮放
-description: 跟蹤服務結構、虛擬機器、Web 應用和雲服務中使用的 Azure 自動縮放問題。
+title: 針對 Azure 自動調整進行疑難排解
+description: 追蹤在 Service Fabric、虛擬機器、Web Apps 和雲端服務中使用的 Azure 自動調整問題。
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75751343"
 ---
-# <a name="troubleshooting-azure-autoscale"></a>故障排除 Azure 自動縮放
+# <a name="troubleshooting-azure-autoscale"></a>針對 Azure 自動調整進行疑難排解
  
-Azure 監視器自動縮放可説明您運行適當數量的資源來處理應用程式中的負載。 它使您能夠添加資源來處理負載的增加，並通過刪除閒置的資源來節省資金。 您可以根據您選擇的計畫、固定日期時間或資源指標進行縮放。 有關詳細資訊，請參閱[自動縮放概述](autoscale-overview.md)。
+Azure 監視器自動調整可協助您讓適當的資源量執行，以處理應用程式的負載。 它可讓您新增資源來處理增加的負載，也可以藉由移除閒置的資源來節省成本。 您可以根據您選擇的排程、固定的日期時間或資源計量來進行調整。 如需詳細資訊，請參閱[自動調整總覽](autoscale-overview.md)。
 
-自動縮放服務為您提供指標和日誌，以瞭解發生了哪些縮放操作，以及評估導致這些操作的條件。 您可以找到問題的答案，例如：
+自動調整服務會提供計量和記錄，以瞭解已發生哪些規模動作，以及評估導致這些動作的條件。 您可以找到下列問題的答案：
 
-- 為什麼我的服務正在擴展或擴展？
-- 為什麼我的服務沒有擴展？
-- 為什麼自動縮放操作失敗？
-- 為什麼自動縮放操作需要時間進行縮放？
+- 為什麼我的服務相應放大或縮小？
+- 為什麼我的服務無法調整？
+- 為什麼自動調整動作失敗？
+- 為什麼自動調整規模動作需要時間進行調整？
   
-## <a name="autoscale-metrics"></a>自動縮放指標
+## <a name="autoscale-metrics"></a>自動調整計量
 
-自動縮放為您提供了[四個指標](metrics-supported.md#microsoftinsightsautoscalesettings)來瞭解其操作。 
+自動調整會為您提供[四個計量](metrics-supported.md#microsoftinsightsautoscalesettings)，以瞭解其運作方式。 
 
-- **觀察指標值**- 選擇對其執行縮放操作的指標值，如自動縮放引擎看到或計算的那樣。 由於單個自動縮放設置可以有多個規則，因此有多個指標源，因此可以使用"指標源"作為維度進行篩選。
-- **公制閾值**- 您設置為執行縮放操作的閾值。 由於單個自動縮放設置可以有多個規則，因此有多個指標源，因此可以使用"度量規則"作為維度進行篩選。
-- **觀測到的容量**- 自動縮放引擎所看到的目標資源的活動實例數。
-- **已起始的調整動作** - 自動調整引擎所起始的相應放大和相應縮小動作數目。 您可以按橫向擴展與縮放來篩選操作。
+- **觀察**的計量值-您選擇用來進行調整規模動作的計量值，如自動調整引擎所見或計算的度量。 因為單一自動調整設定可以有多個規則，因此有多個計量來源，所以您可以使用「計量來源」做為維度來進行篩選。
+- 計量**閾值**-您設定來採取調整動作的閾值。 因為單一自動調整設定可以有多個規則，因此有多個計量來源，所以您可以使用「計量規則」做為維度來進行篩選。
+- **觀察到的容量**-自動調整引擎所見的目標資源實例數目上限。
+- **已起始的調整動作** - 自動調整引擎所起始的相應放大和相應縮小動作數目。 您可以依相應放大和相應縮小動作進行篩選。
 
-您可以使用[指標資源管理器](metrics-getting-started.md)在一個位置繪製上述指標。 圖表應顯示：
+您可以使用[計量瀏覽器](metrics-getting-started.md)，在同一個位置繪製上述計量的圖表。 圖表應該會顯示：
 
-  - 實際指標
-  - 自動縮放引擎看到的/計算的指標
-  - 縮放操作的閾值
-  - 容量的變化 
+  - 實際度量
+  - 自動調整引擎所查看/計算的度量
+  - 調整動作的閾值
+  - 容量變更 
 
-## <a name="example-1---analyzing-a-simple-autoscale-rule"></a>示例 1 - 分析簡單的自動縮放規則 
+## <a name="example-1---analyzing-a-simple-autoscale-rule"></a>範例 1-分析簡單的自動調整規則 
 
-我們為虛擬機器縮放集提供了一個簡單的自動縮放設置，該設置：
+針對虛擬機器擴展集，我們有一個簡單的自動調整設定：
 
-- 當集的平均 CPU 百分比大於 70% 時，10 分鐘內擴展 
-- 當集的 CPU 百分比小於 5%時，在 10 分鐘內縮放。 
+- 當集合的平均 CPU 百分比大於 70% 10 分鐘時相應放大 
+- 當集合的 CPU 百分比小於5% 時，相應縮小超過10分鐘。 
 
-讓我們查看自動縮放服務的指標。
+讓我們來回顧自動調整服務的計量。
  
-![虛擬機器規模設置百分比 CPU 示例](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
+![虛擬機器擴展集百分比 CPU 範例](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-1.png)
 
-![虛擬機器規模設置百分比 CPU 示例](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
+![虛擬機器擴展集百分比 CPU 範例](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
-***圖 1a - 虛擬機器規模集的 CPU 百分比指標和自動縮放設置的觀察指標值指標***
+***圖 1a-虛擬機器擴展集的 CPU 計量百分比和自動調整設定觀察到的計量值度量***
 
-![公制閾值和觀察到的容量](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
+![計量閾值和觀察的容量](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
 
-***圖 1b - 公制閾值和觀測容量***
+***圖 1b-計量閾值和觀察的容量***
 
-在圖 1b 中，橫向擴展規則的**公制閾值**（淺藍線）為 70。  **"觀察容量**"（深藍色線）顯示活動實例的數量，當前為 3。 
+在圖1b 中，相應放大規則的計量**閾值**（淺藍色線）為70。  觀察到的**容量**（深色藍線）會顯示作用中的實例數目，目前為3。 
 
 > [!NOTE]
-> 您需要按指標觸發器規則維度橫向橫向擴展（增加）規則篩選**指標閾值**，以查看橫向擴展閾值和規則中的刻度（減少）。 
+> 您必須依據計量觸發程式規則維度相應放大（增加）規則來篩選計量**臨界值**，以查看相應放大臨界值和依相應縮小規則（減少）。 
 
-## <a name="example-2---advanced-autoscaling-for-a-virtual-machine-scale-set"></a>示例 2 - 虛擬機器規模集的高級自動縮放
+## <a name="example-2---advanced-autoscaling-for-a-virtual-machine-scale-set"></a>範例 2-虛擬機器擴展集的先進自動調整
 
-我們有一個自動縮放設置，允許虛擬機器縮放集資源根據其自己的指標**出站流**進行橫向擴展。 請注意，檢查指標閾值的**除法指標（按實例計數**選項）。 
+我們有一個自動調整設定，可讓虛擬機器擴展集資源根據自己的計量**輸出流量**向外延展。 請注意，會核取 [度量] 閾值的 [**依實例計數的分割度量**] 選項。 
 
-縮放操作規則為： 
+調整動作規則為： 
 
-如果**每個實例的出站流**值大於 10，則自動縮放服務應擴展 1 個實例。 
+如果**每個實例的輸出流量**值大於10，則自動調整服務應由1個實例相應放大。 
 
-在這種情況下，自動縮放引擎的觀測指標值計算為實際指標值除以實例數。 如果觀察到的指標值小於閾值，則不啟動橫向擴展操作。 
+在此情況下，自動調整引擎觀察到的計量值是以實際的計量值除以實例數目來計算。 如果觀察到的度量值小於閾值，就不會起始相應放大動作。 
  
-![虛擬機器規模集自動縮放指標圖表示例](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
+![虛擬機器擴展集自動調整計量圖表範例](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-1.png)
 
-![虛擬機器規模集自動縮放指標圖表示例](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
+![虛擬機器擴展集自動調整計量圖表範例](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 
-***圖 2 - 虛擬機器規模集自動縮放指標圖表示例***
+***圖 2-虛擬機器擴展集自動調整計量圖表範例***
 
-在圖 2 中，您可以看到兩個指標圖表。 
+在 [圖 2] 中，您可以看到兩個度量圖表。 
 
-頂部的圖表顯示**出站流**指標的實際值。 實際值為 6。 
+最上方的圖表會顯示**輸出流量**計量的實際值。 實際的值為6。 
 
-底部的圖表顯示幾個值。 
- - **觀測指標值**（淺藍色）為 3，因為有 2 個活動實例，6 除以 2 是 3。 
- - **"觀測容量**"（紫色）顯示自動縮放引擎看到的實例計數。 
- - **公制閾值**（淺綠色）設置為 10。 
+底部的圖表會顯示幾個值。 
+ - **觀察到**的計量值（淺藍色）是3，因為有2個作用中的實例，而6個除以2則是3。 
+ - 觀察到的**容量**（紫色）顯示自動調整引擎看到的實例計數。 
+ - [計量**閾值**（淺綠色）] 設定為10。 
 
-如果存在多個縮放操作規則，則可以使用"指標資源管理器"圖表中的拆分或**添加篩選器**選項按特定源或規則查看指標。 有關拆分指標圖表的詳細資訊，請參閱[指標圖表的高級功能 - 拆分](metrics-charts.md#apply-splitting-to-a-chart)
+如果有多個調整動作規則，您可以使用 [計量瀏覽器] 圖表中的 [分割] 或 [**新增篩選**] 選項，依特定的來源或規則查看度量。 如需分割計量圖表的詳細資訊，請參閱度量圖表的[先進功能-分割](metrics-charts.md#apply-splitting-to-a-chart)
 
-## <a name="example-3---understanding-autoscale-events"></a>示例 3 - 瞭解自動縮放事件
+## <a name="example-3---understanding-autoscale-events"></a>範例 3-瞭解自動調整事件
 
-在自動縮放設置螢幕中，轉到 **"執行歷程記錄**"選項卡以查看最新的縮放操作。 該選項卡還顯示**觀察容量**隨時間的變化。 要查找有關所有自動縮放操作（包括更新/刪除自動縮放設置等操作）的更多詳細資訊，請查看活動日誌，並通過自動縮放操作進行篩選。
+在 [自動調整規模設定] 畫面中，移至 [**執行歷程記錄**] 索引標籤，以查看最新的縮放動作。 此索引標籤也會顯示經過一段時間後，**觀察到的產能**變更。 若要尋找所有自動調整動作的詳細資料，包括像是更新/刪除自動調整設定等作業，請查看活動記錄，並依自動調整作業進行篩選。
 
-![自動縮放設置執行歷程記錄](media/autoscale-troubleshoot/autoscale-setting-run-history-smaller.png)
+![自動調整設定執行歷程記錄](media/autoscale-troubleshoot/autoscale-setting-run-history-smaller.png)
 
-## <a name="autoscale-resource-logs"></a>自動縮放資源日誌
+## <a name="autoscale-resource-logs"></a>自動調整資源記錄
 
-與任何其他 Azure 資源相同，自動縮放服務提供[資源日誌](platform-logs-overview.md)。 日誌分為兩類。
+與任何其他 Azure 資源相同，自動調整服務會提供[資源記錄](platform-logs-overview.md)。 有兩種記錄類別。
 
-- **自動縮放評估**- 自動縮放引擎記錄每次進行檢查時每個狀態評估的日誌條目。  該條目包括指標的觀察值、評估的規則以及評估是否導致縮放操作的詳細資訊。
+- **自動調整評估**-自動調整引擎會在每次進行檢查時，記錄每個單一條件評估的記錄專案。  此專案包含計量之觀察值的詳細資料、評估的規則，以及評估是否導致調整動作。
 
-- **自動縮放縮放操作**- 引擎記錄自動縮放服務啟動的操作事件以及這些縮放操作的結果（成功、失敗以及自動縮放服務所看到的縮放量）。
+- **自動調整規模動作**-引擎會記錄自動調整服務所起始的規模動作事件，以及這些調整動作的結果（成功、失敗，以及自動調整服務所看到的相應增加大小）。
 
-與任何 Azure 監視器支援的服務一樣，您可以使用["診斷設置"](diagnostic-settings.md)路由這些日誌：
+如同任何 Azure 監視器支援的服務，您可以使用[診斷設定](diagnostic-settings.md)來路由傳送這些記錄：
 
-- 到日誌分析工作區進行詳細分析
-- 到事件中心，然後到非 Azure 工具
-- 到 Azure 存儲帳戶進行存檔  
+- 至您的 Log Analytics 工作區以進行詳細分析
+- 事件中樞，然後再到非 Azure 工具
+- 至您的 Azure 儲存體帳戶進行封存  
 
-![自動縮放診斷設置](media/autoscale-troubleshoot/diagnostic-settings.png)
+![自動調整診斷設定](media/autoscale-troubleshoot/diagnostic-settings.png)
 
-上圖顯示了 Azure 門戶自動縮放的診斷設置。 在那裡，您可以選擇診斷/資源日誌選項卡，並啟用日誌收集和路由。 您還可以使用 REST API、CLI、PowerShell、資源管理器範本執行相同的操作，用於診斷設置，選擇與*Microsoft.Insights/自動縮放設置相同的*資源類型。 
+上圖顯示 Azure 入口網站自動調整的診斷設定。 您可以在這裡選取 [診斷/資源記錄] 索引標籤，並啟用記錄收集和路由。 您也可以使用 REST API、CLI、PowerShell Resource Manager 範本來執行相同的動作，方法是選擇 [資源類型] 做為 [ *Microsoft Insights/AutoscaleSettings*]。 
 
-## <a name="troubleshooting-using-autoscale-logs"></a>使用自動縮放日誌進行故障排除 
+## <a name="troubleshooting-using-autoscale-logs"></a>使用自動調整記錄進行疑難排解 
 
-為了獲得最佳故障排除體驗，我們建議您在創建自動縮放設置時通過工作區將日誌路由到 Azure 監視器日誌（日誌分析）。 此過程顯示在上一節中的圖片中。 您可以使用日誌分析更好地驗證評估並縮放操作。
+若要獲得最佳的疑難排解體驗，建議您在建立自動調整設定時，透過工作區將記錄路由至 Azure 監視器記錄（Log Analytics）。 此程式會顯示在上一節的圖片中。 您可以使用 Log Analytics，以更好的程度驗證評估和調整動作。
 
-將自動縮放日誌配置為發送到日誌分析工作區後，可以執行以下查詢以檢查日誌。 
+當您設定自動調整記錄傳送到 Log Analytics 工作區之後，您可以執行下列查詢來檢查記錄。 
 
-要開始，請嘗試此查詢以查看最新的自動縮放評估日誌：
+若要開始使用，請嘗試此查詢來查看最新的自動調整評估記錄：
 
 ```Kusto
 AutoscaleEvaluationsLog
 | limit 50
 ```
 
-或者嘗試以下查詢以查看最新的縮放動作記錄：
+或嘗試下列查詢來查看最新的調整動作記錄：
 
 ```Kusto
 AutoscaleScaleActionsLog
 | limit 50
 ```
 
-使用以下部分來解決這些問題。 
+請使用下列各節來解決這些問題。 
 
-## <a name="a-scale-action-occurred-that-i-didnt-expect"></a>發生了一個我沒想到的縮放操作
+## <a name="a-scale-action-occurred-that-i-didnt-expect"></a>發生未預期的調整動作
 
-首先執行縮放操作的查詢，以查找您感興趣的縮放操作。 如果是最新的縮放操作，請使用以下查詢：
+首先執行 [調整規模的查詢] 動作，以尋找您感興趣的調整動作。 如果它是最新的調整動作，請使用下列查詢：
 
 ```Kusto
 AutoscaleScaleActionsLog
 | take 1
 ```
 
-從縮放動作記錄中選擇"關聯 Id"欄位。 使用"關聯 Id"查找正確的評估日誌。 執行以下查詢將顯示評估的所有規則和條件，從而導致該縮放操作。
+從 [調整動作] 記錄中選取 [CorrelationId] 欄位。 使用 CorrelationId 來尋找正確的評估記錄。 執行下列查詢將會顯示所有評估為該調整動作的規則和條件。
 
 ```Kusto
 AutoscaleEvaluationsLog
 | where CorrelationId = "<correliationId>"
 ```
 
-## <a name="what-profile-caused-a-scale-action"></a>什麼設定檔導致了縮放操作？
+## <a name="what-profile-caused-a-scale-action"></a>哪一個設定檔造成調整動作？
 
-發生了縮放的操作，但規則和設定檔重疊，需要跟蹤導致該操作的原因。 
+發生調整的動作，但您有重迭的規則和設定檔，而且需要追蹤造成動作的問題。 
 
-查找縮放操作的相關性 Id（如示例 1 中所述），然後在評估日誌上執行查詢以瞭解有關設定檔的更多資訊。
+尋找調整動作的 correlationId （如範例1中所述），然後對評估記錄執行查詢，以深入瞭解設定檔。
 
 ```Kusto
 AutoscaleEvaluationsLog
@@ -164,7 +164,7 @@ AutoscaleEvaluationsLog
 | project ProfileEvaluationTime, Profile, ProfileSelected, EvaluationResult
 ```
 
-使用以下查詢，還可以更好地理解整個設定檔評估
+您也可以使用下列查詢，更進一步瞭解整個設定檔評估
 
 ```Kusto
 AutoscaleEvaluationsLog
@@ -173,13 +173,13 @@ AutoscaleEvaluationsLog
 | project OperationName, Profile, ProfileEvaluationTime, ProfileSelected, EvaluationResult
 ```
 
-## <a name="a-scale-action-did-not-occur"></a>未發生縮放操作
+## <a name="a-scale-action-did-not-occur"></a>未發生調整動作
 
-我期望一個規模行動，它沒有發生。 可能沒有縮放操作事件或日誌。
+我預期調整規模動作並不會發生。 可能不會有任何調整動作事件或記錄。
 
-如果使用基於指標的比例規則，請查看自動縮放指標。 "**觀察"指標值**或 **"觀察到的容量**"可能不是您期望的，因此比例規則沒有觸發。 您仍然會看到評估，但不會看到橫向擴展規則。 冷卻時間也可能阻止縮放操作發生。 
+如果您使用以度量為基礎的調整規則，請檢查自動調整計量。 觀察到的計量**值**或**觀察的容量**可能不是您預期的，因此不會引發調整規則。 您仍會看到評估，但不會顯示相應放大規則。 此外，冷卻時間也可能會保留調整動作。 
 
- 查看預期發生縮放操作的時間段內的自動縮放評估日誌。 審查它所做的所有評估，以及為什麼它決定不觸發規模行動。
+ 在您預期調整動作發生的期間，檢查自動調整評估記錄。 檢查它所做的所有評估，以及為什麼它決定不觸發調整動作。
 
 
 ```Kusto
@@ -189,9 +189,9 @@ AutoscaleEvaluationsLog
 | project OperationName, MetricData, ObservedValue, Threshold, EstimateScaleResult
 ```
 
-## <a name="scale-action-failed"></a>縮放操作失敗
+## <a name="scale-action-failed"></a>調整動作失敗
 
-可能存在自動縮放服務執行規模操作，但系統決定不縮放或未能完成縮放操作的情況。 使用此查詢可以查找失敗的縮放操作。
+在某些情況下，自動調整服務會採取調整動作，但系統決定不調整或無法完成調整動作。 使用此查詢來尋找失敗的調整動作。
 
 ```Kusto
 AutoscaleScaleActionsLog
@@ -199,11 +199,11 @@ AutoscaleScaleActionsLog
 | project ResultDescription
 ```
 
-創建警報規則以收到自動縮放操作或失敗的通知。 您還可以創建警報規則以獲取有關自動縮放事件的通知。
+建立警示規則，以取得自動調整動作或失敗的通知。 您也可以建立警示規則，以取得自動調整事件的通知。
 
-## <a name="schema-of-autoscale-resource-logs"></a>自動縮放資源日誌的架構
+## <a name="schema-of-autoscale-resource-logs"></a>自動調整資源記錄的架構
 
-有關詳細資訊，請參閱[自動縮放資源日誌](autoscale-resource-log-schema.md)
+如需詳細資訊，請參閱[自動調整資源記錄](autoscale-resource-log-schema.md)
 
 ## <a name="next-steps"></a>後續步驟
-閱讀有關[自動縮放最佳實踐](autoscale-best-practices.md)的資訊。 
+閱讀自動調整[最佳做法](autoscale-best-practices.md)的資訊。 

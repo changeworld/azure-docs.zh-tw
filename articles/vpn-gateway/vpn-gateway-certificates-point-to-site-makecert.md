@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 閘道：為 P2S 生成&匯出證書：使證書
+title: Azure VPN 閘道：為 P2S 產生 & 匯出憑證： MakeCert
 description: 建立自我簽署的根憑證、匯出公開金鑰，以及使用 MakeCert 產生用戶端憑證。
 services: vpn-gateway
 author: cherylmc
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
 ms.openlocfilehash: ad2ab31e6771efc54238d5747863fa2a9bb2f356
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75833980"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>使用 MakeCert 來產生並匯出點對站連線的憑證
 
 點對站連線使用憑證進行驗證。 本文說明如何建立自我簽署的根憑證，以及使用 MakeCert 來產生用戶端憑證。 如果您要尋找不同的憑證指示，請參閱[憑證 - PowerShell](vpn-gateway-certificates-point-to-site.md) 或[憑證 - Linux](vpn-gateway-certificates-point-to-site-linux.md)。
 
-雖然建議您使用 [Windows 10 PowerShell 步驟](vpn-gateway-certificates-point-to-site.md)建立您的憑證，但是提供這些 MakeCert 指示作為選擇性方法。 使用任一方法生成的證書可以安裝在[任何受支援的用戶端作業系統](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)上。 不過，MakeCert 具有下列限制：
+雖然建議您使用 [Windows 10 PowerShell 步驟](vpn-gateway-certificates-point-to-site.md)建立您的憑證，但是提供這些 MakeCert 指示作為選擇性方法。 使用任一種方法所產生的憑證可以安裝在[任何支援的用戶端作業系統](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)上。 不過，MakeCert 具有下列限制：
 
 * MakeCert 已被取代。 這表示無法在任何時間點移除這項工具。 當無法再使用 MakeCert 時，任何您已經使用 MakeCert 所產生的憑證將不會受到影響。 MakeCert 只用來產生憑證，而不是驗證機制。
 

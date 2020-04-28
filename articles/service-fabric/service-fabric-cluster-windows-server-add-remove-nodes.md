@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
 ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75934214"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>在執行於 Windows Server 上的獨立 Service Fabric 叢集中新增或移除節點
@@ -17,27 +17,27 @@ ms.locfileid: "75934214"
 
 ## <a name="add-nodes-to-your-cluster"></a>將節點新增至叢集
 
-1. 按照"計畫"中概述的步驟準備要添加到群集的 VM/電腦[，並準備 Service Fabric 群集部署](service-fabric-cluster-standalone-deployment-preparation.md)。
+1. 遵循[規劃和準備您的 Service Fabric 叢集部署](service-fabric-cluster-standalone-deployment-preparation.md)中所述的步驟，準備您想要新增至叢集的 VM/機器。
 
-2. 標識要將此 VM/電腦添加到的容錯域和升級域。
+2. 識別您要將此 VM/電腦新增至哪個容錯網域和升級網域。
 
-   如果使用證書來保護群集，則證書應安裝在本地憑證存放區中，為節點加入群集做準備。 使用其他形式的安全時，類比應用。
+   如果您使用憑證來保護叢集，則憑證應該安裝在本機憑證存放區中，以準備節點來加入叢集。 類比適用于使用其他形式的安全性時。
 
 3. 以遠端桌面 (RDP) 登入到要在叢集中新增的 VM/電腦。
 
-4. 將[Windows 伺服器服務結構的獨立包](https://go.microsoft.com/fwlink/?LinkId=730690)複製到 VM/電腦，然後解壓縮包。
+4. 將適用于[Windows Server 的 Service Fabric 的獨立套件](https://go.microsoft.com/fwlink/?LinkId=730690)複製或下載至 VM/電腦，並將封裝解壓縮。
 
-5. 使用較高的權限運行 PowerShell，然後轉到解壓縮包的位置。
+5. 以較高的許可權執行 PowerShell，並移至解壓縮封裝的位置。
 
-6. 使用描述要新增之新節點的參數來執行 *AddNode.ps1* 指令碼。 下面的示例將一個名為 VM5 的新節點添加到 UD1 和 fd：/dc1/r0 中，該節點的類型為 NodeType0 和 IP 位址 182.17.34.52。 `ExistingClusterConnectionEndPoint`是現有群集中已有節點的連接終結點，可以是群集中*任何*節點的 IP 位址。 
+6. 使用描述要新增之新節點的參數來執行 *AddNode.ps1* 指令碼。 下列範例會將名為 VM5 的新節點（其類型為 NodeType0 和 IP 位址 182.17.34.52) 新增）新增至 UD1 和 fd：/dc1/r0。 `ExistingClusterConnectionEndPoint`這是現有叢集中已存在之節點的連接端點，可以是叢集中*任何*節點的 IP 位址。 
 
-   不安全（原型設計）：
+   不安全（原型化）：
 
    ```
    .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
    ```
 
-   安全（基於證書）：
+   安全（以憑證為基礎）：
 
    ```  
    $CertThumbprint= "***********************"
@@ -46,9 +46,9 @@ ms.locfileid: "75934214"
 
    ```
 
-   當腳本完成運行時，可以通過運行[獲取服務FabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) Cmdlet來檢查新節點是否已添加。
+   當腳本完成執行時，您可以藉由執行[stop-servicefabricnode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) Cmdlet 來檢查新的節點是否已加入。
 
-7. 為了確保叢集中不同節點間的一致性，您必須起始組態升級。 運行[獲取服務FabricCluster配置](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps)以獲取最新的設定檔，並將新添加的節點添加到"節點"部分。 還建議在需要重新部署具有相同配置的群集時始終提供最新的群集配置。
+7. 為了確保叢集中不同節點間的一致性，您必須起始組態升級。 執行[get-servicefabricclusterconfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps)以取得最新的設定檔，並將新增的節點新增至 [節點] 區段。 如果您需要重新部署具有相同設定的叢集，也建議您一律使用最新的叢集設定。
 
    ```
     {
@@ -66,7 +66,7 @@ ms.locfileid: "75934214"
    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
    ```
 
-   您可以在 Service Fabric Explorer 中監視升級進度。 或者，您可以運行[獲取服務Fabric集群升級](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)。
+   您可以在 Service Fabric Explorer 中監視升級進度。 或者，您也可以執行[start-servicefabricclusterupgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)。
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>使用 gMSA 將節點新增至已設定 Windows 安全性的叢集
 針對已設定「群組受控服務帳戶」(gMSA) (https://technet.microsoft.com/library/hh831782.aspx)) 的叢集，可以使用組態升級來新增新的節點：
@@ -124,7 +124,7 @@ ms.locfileid: "75934214"
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 
     ```
-    您可以在 Service Fabric Explorer 中監視升級進度。 或者，您可以運行[獲取服務Fabric集群升級](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)。
+    您可以在 Service Fabric Explorer 中監視升級進度。 或者，您也可以執行[start-servicefabricclusterupgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)。
 
 > [!NOTE]
 > 移除節點可能會起始多個升級作業。 有些節點帶有 `IsSeedNode=”true”` 標記標示，透過使用 `Get-ServiceFabricClusterManifest` 來查詢叢集資訊清單即可識別這些節點。 移除這類節點所需的時間可能比移除其他節點長，因為在這類案例中，需要將種子節點四處移動。 叢集必須至少維持 3 個主要節點類型節點。

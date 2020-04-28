@@ -1,6 +1,6 @@
 ---
-title: 教程：如何將 SQLite 資料庫移轉到 Azure SQL 資料庫無伺服器
-description: 瞭解如何使用 Azure 資料工廠執行從 SQLite 到 Azure SQL 資料庫無伺服器的離線遷移。
+title: 教學課程：如何將 SQLite 資料庫移轉至 Azure SQL Database 無伺服器
+description: 瞭解如何使用 Azure Data Factory，從 SQLite 執行離線遷移至 Azure SQL Database 無伺服器。
 services: sql-database
 author: joplum
 ms.author: joplum
@@ -10,76 +10,76 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: c718daa4bc99bffd6fcfeb084299bed6682fe884
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75780505"
 ---
-# <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>如何將 SQLite 資料庫移轉到無伺服器 Azure SQL 資料庫
-對於許多人，SQLite 提供了他們第一次體驗資料庫和 SQL 程式設計。 它包含在許多作業系統和流行的應用程式中，使 SQLite 成為世界上部署和使用最廣泛的資料庫引擎之一。 而且，由於它很可能是許多人使用的第一個資料庫引擎，它通常最終可能是專案或應用程式的核心部分。 在這種情況下，如果專案或應用程式增長超過初始 SQLite 實現，開發人員可能需要將其資料移轉到可靠、集中的資料存儲。
+# <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>如何將 SQLite 資料庫移轉至 Azure SQL Database 無伺服器
+對於許多人而言，SQLite 會提供其資料庫和 SQL 程式設計的第一次體驗。 它包含在許多作業系統中，而熱門應用程式會使 SQLite 成為世界上最廣泛部署和使用的資料庫引擎。 而且，由於這可能是許多人使用的第一個資料庫引擎，因此通常會成為專案或應用程式的中心部分。 在專案或應用程式成長到超過初始 SQLite 執行的情況下，開發人員可能需要將其資料移轉至可靠且集中式的資料存放區。
 
-Azure SQL 資料庫無伺服器是單個資料庫的計算層，該資料庫根據工作負載需求自動縮放計算，並記錄每秒使用的計算量。 無伺服器計算層還會在僅計費存儲的非活動期間自動暫停資料庫，並在活動返回時自動復原資料庫。
+Azure SQL Database 無伺服器是單一資料庫的計算層，可根據工作負載需求自動調整計算，並以每秒使用的計算量來計費。 無伺服器計算層級也會在活動傳回時，自動在非使用中期間暫停資料庫，並自動繼續執行資料庫。
 
-執行以下步驟後，資料庫將遷移到 Azure SQL 資料庫無伺服器狀態，從而使您能夠使資料庫可供雲中的其他使用者或應用程式使用，並且只需支付使用的內容，只需最少的應用程式代碼更改即可。
+遵循下列步驟之後，您的資料庫就會遷移至 Azure SQL Database 無伺服器，讓您可以將資料庫提供給雲端中的其他使用者或應用程式使用，而且只需為您所用的應用程式代碼變更進行付費。
 
 ## <a name="prerequisites"></a>Prerequisites
-- Azure 訂閱
-- 要遷移的 SQLite2 或 SQLite3 資料庫
+- Azure 訂用帳戶
+- 您想要遷移的 SQLite2 或 Db.sqlite3 資料庫
 - Windows 環境
-  - 如果沒有本地 Windows 環境，則可以使用 Azure 中的 Windows VM 進行遷移。 使用 Azure 檔和存儲資源管理器移動並使 SQLite 資料庫檔案在 VM 上可用。
+  - 如果您沒有本機 Windows 環境，您可以使用 Azure 中的 Windows VM 進行遷移。 使用 Azure 檔案儲存體和儲存體總管，在 VM 上移動並使 SQLite 資料庫檔案可用。
 
 ## <a name="steps"></a>步驟
 
-1. 在無伺服器計算層中預配新的 Azure SQL 資料庫。
+1. 在無伺服器計算層中布建新的 Azure SQL Database。
 
-    ![Azure 門戶的螢幕截圖，顯示 Azure sql 資料庫無伺服器的預配示例](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/provision-serverless.png)
+    ![顯示 Azure sql database 無伺服器布建範例 Azure 入口網站的螢幕擷取畫面](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/provision-serverless.png)
 
-2. 確保您的 SQLite 資料庫檔案在 Windows 環境中可用。 如果您還沒有 SQLite ODBC 驅動程式（例如，http://www.ch-werner.de/sqliteodbc/)開源中有許多可用驅動程式）。
+2. 確定您的 Windows 環境中有 SQLite 資料庫檔案可供使用。 如果您還沒有 SQLite ODBC 驅動程式，請安裝它（開放原始碼中有許多可用功能，例如， http://www.ch-werner.de/sqliteodbc/)。
 
-3. 為資料庫創建系統 DSN。 確保使用與系統體系結構匹配的資料來源管理員應用程式（32 位與 64 位）。 您可以在系統設置中找到正在運行的版本。
+3. 建立資料庫的系統 DSN。 請確定您使用的資料來源管理員應用程式符合您的系統架構（32位與64位）。 您可以在系統設定中找到您正在執行的版本。
 
-    - 環境中的開放 ODBC 資料來源管理員。
-    - 按一下系統 DSN 選項卡，然後按一下"添加"
-    - 選擇您安裝的 SQLite ODBC 連接器，並為連接指定一個有意義的名稱，例如 sqlite 遷移源
-    - 將資料庫名稱設置為 .db 檔
+    - 在您的環境中開啟 [ODBC 資料來源管理員]。
+    - 按一下 [系統 DSN] 索引標籤，然後按一下 [新增]
+    - 選取您已安裝的 SQLite ODBC 連接器，並為該連接提供有意義的名稱，例如 sqlitemigrationsource
+    - 將資料庫名稱設定為 .db 檔案
     - 儲存並結束
 
-4. 下載並安裝自託管的集成運行時。 最簡單的方法是快速安裝選項，如文檔中詳細說明。 如果選擇手動安裝，則需要向應用程式提供身份驗證金鑰，該金鑰可以位於資料工廠實例中，通過：
+4. 下載並安裝自我裝載整合執行時間。 若要這麼做，最簡單的方式就是 [快速安裝] 選項，如檔中所述。 如果您選擇手動安裝，您將需要使用驗證金鑰來提供應用程式，您可以在 Data Factory 實例中找到它，方法是：
 
-    - 啟動 ADF（從 Azure 門戶中的服務創建和監視器）
-    - 按一下左側的"作者"選項卡（藍色鉛筆）
-    - 按一下連接（左下角），然後按一下集成運行時
-    - 添加新的自託管集成運行時，給它一個名稱，選擇選項*2*。
+    - 啟動 ADF （從 Azure 入口網站中的服務撰寫和監視）
+    - 按一下左側的 [作者] 索引標籤（藍色鉛筆）
+    - 依序按一下 [連線] （左下角）和 [整合執行時間]
+    - 加入新的自我裝載 Integration Runtime，為它命名，然後選取 [*選項 2*]。
 
-5. 為數據工廠中的源 SQLite 資料庫創建新的連結服務。
+5. 在您的 Data Factory 中為來源 SQLite 資料庫建立新的連結服務。
 
-    ![顯示 Azure 資料工廠中空連結服務邊欄選項卡的螢幕截圖](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-create.png)
+    ![顯示 Azure Data Factory 中空白連結服務分頁的螢幕擷取畫面](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-create.png)
 
-6. 在"連接"中，在"連結服務"下，按一下"新建"
+6. 在 [連接] 的 [連結服務] 底下，按一下 [新增]
 
-7. 搜索並選擇"ODBC"連接器
+7. 搜尋並選取「ODBC」連接器
 
 
-    ![在 Azure 資料工廠的連結服務邊欄選項卡中顯示 ODBC 連接器徽標的螢幕截圖](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-odbc.png)
+    ![螢幕擷取畫面，顯示 [連結服務] 分頁中 [ODBC connector] 標誌的 Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-odbc.png)
 
-8. 為連結的服務指定一個有意義的名稱，例如"sqlite_odbc"。 從"通過集成運行時連接"下拉清單中選擇集成運行時。 將以下內容輸入連接字串，將初始目錄變數替換為 .db 檔的檔路徑，將 DSN 替換為系統 DSN 連接的名稱： 
+8. 為已連結的服務提供有意義的名稱，例如「sqlite_odbc」。 從 [透過整合執行時間連線] 下拉式清單中選取您的整合執行時間。 在連接字串中輸入下列內容，將初始目錄變數取代為 .db 檔案的 filepath，並將 DSN 替換為系統 DSN 連線的名稱： 
 
     ```
     Connection string: Provider=MSDASQL.1;Persist Security Info=False;Mode=ReadWrite;Initial Catalog=C:\sqlitemigrationsource.db;DSN=sqlitemigrationsource
     ```
 
-9. 將身份驗證類型設置為匿名
+9. 將 [驗證類型] 設定為 [匿名]
 
 10. 測試連線
 
-    ![顯示 Azure 資料工廠中成功連接的螢幕截圖](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-test-successful.png)
+    ![顯示 Azure Data Factory 中成功連接的螢幕擷取畫面](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-test-successful.png)
 
-11. 為無伺服器 SQL 目標創建另一個連結服務。 使用連結的服務嚮導選擇資料庫，並提供 SQL 身份驗證憑據。
+11. 為您的無伺服器 SQL 目標建立另一個連結服務。 使用 [已連結的服務嚮導] 選取資料庫，並提供 SQL 驗證認證。
 
-    ![顯示 Azure 資料工廠中選擇的 Azure SQL 資料庫的螢幕截圖](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-create-target.png)
+    ![顯示 Azure Data Factory 中所選 Azure SQL Database 的螢幕擷取畫面](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/linked-services-create-target.png)
 
-12. 從 SQLite 資料庫中提取創建表語句。 可以通過在資料庫檔案上執行下面的 Python 腳本來執行此操作。
+12. 從 SQLite 資料庫中解壓縮 CREATE TABLE 語句。 您可以在資料庫檔案上執行下列 Python 腳本來執行這項操作。
 
     ```
     #!/usr/bin/python
@@ -96,15 +96,15 @@ Azure SQL 資料庫無伺服器是單個資料庫的計算層，該資料庫根�
     c.close()
     ```
 
-13. 通過在 Azure 門戶中的查詢編輯器中複製 CreateTables.sql 檔中的 CREATE 表語句，在無伺服器 SQL 目標環境中創建著陸表。
+13. 藉由複製 Createtables.sql 中的 CREATE table 語句，並在 Azure 入口網站的查詢編輯器中執行 SQL 語句，在無伺服器 SQL 目標環境中建立登陸資料表。
 
-14. 返回到資料工廠的主畫面，然後按一下"複製資料"以運行作業創建嚮導。
+14. 返回 Data Factory 的主畫面，然後按一下 [資料複製]，以透過 [作業建立嚮導] 執行。
 
-    ![顯示 Azure 資料工廠中的複製資料嚮導徽標的螢幕截圖](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/copy-data.png)
+    ![螢幕擷取畫面，顯示中的資料複製 wizard 標誌 Azure Data Factory](./media/tutorial-sqlite-db-to-azure-sql-serverless-offline/copy-data.png)
 
-15. 使用核取方塊從源 SQLite 資料庫中選擇所有表，並將它們映射到 Azure SQL 中的目標表。 作業運行後，您已成功將資料從 SQLite 遷移到 Azure SQL！
+15. 使用核取方塊選取來源 SQLite 資料庫中的所有資料表，並將其對應至 Azure SQL 中的目標資料表。 作業執行完成後，您已成功將資料從 SQLite 遷移至 Azure SQL！
 
 ## <a name="next-steps"></a>後續步驟
 
-- 要開始，請參閱[快速入門：使用 Azure 門戶在 Azure SQL 資料庫中創建單個資料庫](sql-database-single-database-get-started.md)。
+- 若要開始，請參閱[快速入門：使用 Azure 入口網站在 Azure SQL Database 中建立單一資料庫](sql-database-single-database-get-started.md)。
 - 如需資源限制，請參閱[無伺服器計算層級資源限制](sql-database-vCore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)。

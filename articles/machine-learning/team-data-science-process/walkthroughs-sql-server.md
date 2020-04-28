@@ -1,6 +1,6 @@
 ---
 title: R、Python 和 T-SQL 的 SQL Server 上分析 - Team Data Science Process
-description: 在 SQL Server 中使用 R、Python 和 T-SQL 進行預測分析的示例。
+description: 逐步解說在 SQL Server 中使用 R、Python 和 T-sql 來執行預測性分析的範例。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,27 +12,27 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75864089"
 ---
-# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>使用 R、Python 和 T-SQL 的 SQL Server 資料科學演練
+# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>使用 R、Python 和 T-sql SQL Server 資料科學逐步解說
 
 這些逐步解說會使用 SQL Server、SQL Server R Services 和 SQL Server Python Services 來執行預測性分析。 R 和 Python 程式碼會部署在預存程序中。 其遵循 Team Data Science Process 中所述的步驟。 如需 Team Data Science Process 的概觀，請參閱 [Data Science Process](overview.md)。 
 
-執行團隊資料科學流程的其他資料科學演練按他們使用**的平臺**分組。 如需這些範例的列述，請參閱[執行 Team Data Science Process 的逐步解說](walkthroughs.md)。
+執行小組資料科學程式的其他資料科學逐步解說會依其使用的**平臺**分組。 如需這些範例的列述，請參閱[執行 Team Data Science Process 的逐步解說](walkthroughs.md)。
 
 
 ## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>使用 Python 和 SQL 查詢搭配 SQL Server 來預測計程車小費 
 
-[使用 SQL Server](sql-walkthrough.md)演練顯示了如何構建和部署機器學習分類和回歸模型。  這些資料是一個公開可用的紐約市計程車旅行和票價資料集。
+[使用 SQL Server](sql-walkthrough.md)逐步解說顯示如何建立和部署機器學習服務分類和回歸模型。  資料是公開提供的 NYC 計程車旅程和費用資料集。
 
 
 ## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>使用 Microsoft R 搭配 SQL Server 來預測計程車小費 
 
-[使用 SQL Server R 服務](https://msdn.microsoft.com/library/mt612857.aspx)演練演示如何構建 R 模型並將其部署到 SQL Server。 此逐步解說是為了向 R 開發人員介紹 R Services (資料庫內) 所設計。
+[使用 SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx)逐步解說示範如何建立 R 模型，並將其部署至 SQL Server。 此逐步解說是為了向 R 開發人員介紹 R Services (資料庫內) 所設計。
 
 
 ## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>使用 T-SQL 或預存程序中的 R 搭配 SQL Server 來預測計程車小費

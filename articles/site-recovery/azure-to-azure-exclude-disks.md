@@ -1,20 +1,20 @@
 ---
-title: 使用 Azure 網站恢復和 Azure PowerShell 從複製中排除 Azure VM 磁片
-description: 瞭解如何使用 Azure PowerShell 在 Azure 網站恢復期間排除 Azure 虛擬機器的磁片。
+title: 從使用 Azure Site Recovery 和 Azure PowerShell 的複寫中排除 Azure VM 磁片
+description: 瞭解如何使用 Azure PowerShell 在 Azure Site Recovery 期間排除 Azure 虛擬機器的磁片。
 author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 02/18/2019
 ms.openlocfilehash: 7355233bb7241571e3f3820aafac6952af245654
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75973684"
 ---
-# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>從 Azure VM 的 PowerShell 複製中排除磁片
+# <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>從 Azure Vm 的 PowerShell 複寫排除磁片
 
-本文介紹在複製 Azure VM 時如何排除磁片。 您可以排除磁片以優化消耗的複製頻寬或這些磁片使用的目標端資源。 目前，此功能只能通過 Azure PowerShell 提供。
+本文說明如何在複寫 Azure Vm 時排除磁片。 您可能會排除磁片，以優化使用的複寫頻寬或這些磁片使用的目標端資源。 目前，這項功能只能透過 Azure PowerShell 使用。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -23,26 +23,26 @@ ms.locfileid: "75973684"
 
 開始之前：
 
-- 請確保您瞭解[災害復原體系結構和元件](azure-to-azure-architecture.md)。
-- 查看所有元件[的支援要求](azure-to-azure-support-matrix.md)。
-- 請確保您具有 AzureRm 電源外殼"Az"模組。 要安裝或更新 PowerShell，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
-- 確保至少創建了一次恢復服務保存庫和保護虛擬機器一次。 如果尚未執行這些操作，請按照[使用 Azure PowerShell 為 Azure 虛擬機器設置災害復原](azure-to-azure-powershell.md)的過程進行操作。
-- 如果要查找有關將磁片添加到啟用的用於複製的 Azure VM 的資訊，[請查看本文](azure-to-azure-enable-replication-added-disk.md)。
+- 請確定您瞭解嚴重損壞[修復架構和元件](azure-to-azure-architecture.md)。
+- 請參閱所有元件的[支援需求](azure-to-azure-support-matrix.md)。
+- 請確定您已 AzureRm PowerShell "Az" 模組。 若要安裝或更新 PowerShell，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+- 請確定您已建立復原服務保存庫和受保護的虛擬機器至少一次。 如果您尚未完成這些動作，請遵循[使用 Azure PowerShell 設定 Azure 虛擬機器的](azure-to-azure-powershell.md)嚴重損壞修復中的程式。
+- 如果您想要瞭解如何將磁片新增至啟用複寫的 Azure VM，請[參閱這篇文章](azure-to-azure-enable-replication-added-disk.md)。
 
-## <a name="why-exclude-disks-from-replication"></a>為什麼從複製中排除磁片
-您可能需要從複製中排除磁片，因為：
+## <a name="why-exclude-disks-from-replication"></a>為何排除磁片不進行複寫
+您可能需要從複寫中排除磁片，因為：
 
-- 虛擬機器已達到 Azure[網站恢復限制，以複製資料更改率](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)。
+- 您的虛擬機器已達到[Azure Site Recovery 的限制，因此無法複寫資料變更率](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix)。
 
-- 在排除的磁片上改動的資料並不重要或不需要複製。
+- 在排除的磁片上變換的資料不重要或不需要複寫。
 
-- 您希望通過不復制資料來節省存儲和網路資源。
+- 您想要藉由不要複寫資料來儲存儲存體和網路資源。
 
-## <a name="how-to-exclude-disks-from-replication"></a>如何從複製中排除磁片
+## <a name="how-to-exclude-disks-from-replication"></a>如何排除磁片不進行複寫
 
-在我們的示例中，我們將具有一個作業系統和三個數據磁片的虛擬機器複製到美國西部 2 區域。 虛擬機器的名稱是*AzureDemoVM。* 我們排除磁片 1 並保留磁片 2 和 3。
+在我們的範例中，我們會將具有一個作業系統的虛擬機器和位於美國東部區域的三個數據磁片複寫到美國西部2區域。 虛擬機器的名稱是*AzureDemoVM*。 我們排除磁片1並保留磁片2和3。
 
-## <a name="get-details-of-the-virtual-machines-to-replicate"></a>獲取要複製的虛擬機器的詳細資訊
+## <a name="get-details-of-the-virtual-machines-to-replicate"></a>取得要複寫之虛擬機器的詳細資料
 
 ```azurepowershell
 # Get details of the virtual machine
@@ -67,18 +67,18 @@ ProvisioningState  : Succeeded
 StorageProfile     : {ImageReference, OsDisk, DataDisks}
 ```
 
-獲取有關虛擬機器磁片的詳細資訊。 稍後，當您開始複製 VM 時，將使用此資訊。
+取得虛擬機器磁片的詳細資料。 稍後當您開始複寫 VM 時，將會用到這項資訊。
 
 ```azurepowershell
 $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
 $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 ```
 
-## <a name="replicate-an-azure-virtual-machine"></a>複製 Azure 虛擬機器
+## <a name="replicate-an-azure-virtual-machine"></a>複寫 Azure 虛擬機器
 
-對於以下示例，我們假定您已經擁有緩存存儲帳戶、複寫原則和映射。 如果沒有這些操作，請按照[使用 Azure PowerShell 為 Azure 虛擬機器設置災害復原](azure-to-azure-powershell.md)的過程執行此過程。
+在下列範例中，我們假設您已經有快取儲存體帳戶、複寫原則和對應。 如果您沒有這些專案，請遵循[使用 Azure PowerShell 設定 Azure 虛擬機器的](azure-to-azure-powershell.md)嚴重損壞修復中的程式。
 
-使用*託管磁片*複製 Azure 虛擬機器。
+複寫具有*受控磁片*的 Azure 虛擬機器。
 
 ```azurepowershell
 
@@ -126,14 +126,14 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk2ReplicationConfig, $DataDisk
 $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 ```
 
-啟動複製操作成功後，VM 資料將複製到恢復區域。
+當開始複寫作業成功時，VM 資料會複寫至復原區域。
 
-您可以轉到 Azure 門戶，並在"複製專案"下查看複製的 VM。
+您可以移至 Azure 入口網站，並查看 [複寫的專案] 底下的已複寫 Vm。
 
-複製過程首先在恢復區域中存儲虛擬機器複製磁片的副本。 此階段稱為初始複製階段。
+複寫程式一開始會在復原區域中植入虛擬機器的複寫磁片複本。 這個階段稱為「初始複寫」階段。
 
-初始複製完成後，複製將轉到差異同步階段。 此時，虛擬機器已受到保護。 選擇受保護的虛擬機器以查看是否排除任何磁片。
+初始複寫完成後，複寫會移至差異同步處理階段。 此時，虛擬機器已受到保護。 選取受保護的虛擬機器，以查看是否已排除任何磁片。
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何[運行測試容錯移轉](site-recovery-test-failover-to-azure.md)。
+瞭解如何[執行測試容錯移轉](site-recovery-test-failover-to-azure.md)。

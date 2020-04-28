@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: twooley
 ms.openlocfilehash: 38ef7774263e4b28b7c316fd0870ca8f7b89d6b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75931713"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>使用 StorSimple Snapshot Manager 來管理備份目錄
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 StorSimple Snapshot Manager 的主要功能是可讓您以快照集的形式建立應用程式一致的 StorSimple 磁碟區備份複本。 然後，系統會以 XML 檔列出快照，名為 *「備份目錄」*。 備份目錄會根據磁碟區群組、然後根據本機快照集或雲端快照集組織快照集。
 
 本教學課程描述如何使用 **備份目錄** 節點來完成下列工作：
@@ -56,7 +56,7 @@ StorSimple Snapshot Manager 的主要功能是可讓您以快照集的形式建�
 ## <a name="restore-a-volume"></a>還原磁碟區
 使用下列程序從備份還原磁碟區。
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>先決條件
 如果您尚未這樣做，請建立磁碟區和磁碟區群組，然後再刪除磁碟區。 根據預設，StorSimple Snapshot Manager 會先備份磁碟區，才允許將它刪除。 如果不小心刪除磁碟區，或資料需要因為任何原因復原，這個預防措施就可以防止資料遺失。 
 
 StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊息。
@@ -92,8 +92,8 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
    
    1. 在 [名稱]**** 文字方塊中，輸入已複製之磁碟區的名稱。 這個名稱將出現在 [磁碟區]**** 節點中。 
    2. (選擇性) 選取 [ **磁碟機**]，然後從下拉式清單中選取磁碟機代號。
-   3. （可選）選擇**資料夾 （NTFS），** 然後鍵入資料夾路徑或按一下"流覽"並選擇資料夾的位置。 
-   4. 按一下 **[建立]**。
+   3. （選擇性）選取 [**資料夾（NTFS）**]，然後輸入資料夾路徑，或按一下 [流覽] 並選取資料夾的位置。 
+   4. 按一下頁面底部的 [新增]  。
 5. 複製程序完成時，您必須初始化已複製的磁碟區。 啟動伺服器管理員，然後啟動磁碟管理。 如需詳細指示，請參閱 [掛接磁碟區](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 在初始化之後，磁碟區將列示在 [領域]**** 窗格的 [磁碟區]**** 節點下方。 如果您看不到列出的磁碟區，請重新整理磁碟區清單 (以滑鼠右鍵按一下**磁碟區**節點，然後再按一下 [重新整理]****)。
 
 ## <a name="delete-a-backup"></a>刪除備份
@@ -112,7 +112,7 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
 ## <a name="recover-a-file"></a>復原檔案
 如果不小心從磁碟區刪除檔案，您可以擷取刪除日以前的快照集、使用快照集建立磁碟區的複製，並從複製的磁碟區將檔案複製到原始磁碟區，即可復原檔案。
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>先決條件
 在您開始之前，請確定您有磁碟區群組的最新備份。 接著，刪除儲存在該磁碟區群組中磁碟區上的其中一個檔案。 最後，使用下列步驟從您的備份還原已刪除的檔案。 
 
 #### <a name="to-recover-a-deleted-file"></a>復原已刪除的檔案
@@ -124,9 +124,9 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
 4. 以下列方式完成 [複製雲端快照]**** 對話方塊： 
    
    1. 在 [名稱]**** 文字方塊中，輸入已複製之磁碟區的名稱。 這個名稱將出現在 [磁碟區]**** 節點中。 
-   2. （可選）選擇**磁碟機**，然後從下拉清單中選擇磁碟機號。 
+   2. 選擇性選取 [**磁片磁碟機**]，然後從下拉式清單中選取磁碟機號。 
    3. (選擇性) 選取 [資料夾 (NTFS)]****，然後輸入資料夾路徑或按一下 [瀏覽]**** 並選取資料夾的位置。 
-   4. 按一下 **[建立]**。 
+   4. 按一下頁面底部的 [新增]  。 
 5. 複製程序完成時，您必須初始化已複製的磁碟區。 啟動伺服器管理員，然後啟動磁碟管理。 如需詳細指示，請參閱 [掛接磁碟區](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 在初始化之後，磁碟區將列示在 [領域]**** 窗格的 [磁碟區]**** 節點下方。 
    
     如果您看不到列出的磁碟區，請重新整理磁碟區清單 (以滑鼠右鍵按一下**磁碟區**節點，然後再按一下 [重新整理]****)。
@@ -140,7 +140,7 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
 1. 停止 Microsoft StorSimple 管理服務：
    
    1. 啟動伺服器管理員。
-   2. 在"伺服器管理員"儀表板上，在 **"工具"** 功能表上，選擇 **"服務**"。
+   2. 在 [伺服器管理員] 儀表板的 [**工具**] 功能表上，選取 [**服務**]。
    3. 在 [服務]**** 視窗中，選取 [Microsoft StorSimple 管理服務]****。
    4. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [停止服務]****。
 2. 在主機電腦上，瀏覽至 C:\ProgramData\Microsoft\StorSimple\BACatalog。 
@@ -154,7 +154,7 @@ StorSimple Snapshot Manager 在建立預防措施備份時，會顯示下列訊�
     ![Azure StorSimple 備份目錄檔案](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_bacatalog.png)
 4. 重新啟動 Microsoft StorSimple 管理服務： 
    
-   1. 在"伺服器管理員"儀表板上，在 **"工具"** 功能表上，選擇 **"服務**"。
+   1. 在 [伺服器管理員] 儀表板的 [**工具**] 功能表上，選取 [**服務**]。
    2. 在 [服務]**** 視窗中，選取 [Microsoft StorSimple 管理服務]****。
    3. 在右窗格的 [Microsoft StorSimple 管理服務]**** 下方，按一下 [重新啟動服務]****。
 5. 在主機電腦上，瀏覽至 C:\ProgramData\Microsoft\StorSimple\BACatalog。 

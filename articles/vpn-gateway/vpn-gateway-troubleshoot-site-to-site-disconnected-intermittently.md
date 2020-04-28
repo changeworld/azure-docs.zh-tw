@@ -1,5 +1,5 @@
 ---
-title: 故障解決 Azure 網站到網站 VPN 間歇性斷開
+title: 針對 Azure 站對站 VPN 間歇性中斷的問題進行疑難排解
 description: 了解如何針對 Azure 站對站 VPN 連線間歇性中斷問題進行疑難排解。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75862555"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>疑難排解：Azure 站對站 VPN 間歇性中斷
@@ -62,10 +62,10 @@ ms.locfileid: "75862555"
 
 ### <a name="step-7-check-whether-the-on-premises-vpn-device-has-perfect-forward-secrecy-enabled"></a>步驟 7：檢查內部部署 VPN 裝置是否已啟用「完整轉寄密碼」
 
-「完整轉寄密碼」**** 功能可能會造成連線中斷的問題。 如果 VPN 設備啟用**了完全正向保密**功能，請禁用該功能。 然後[更新虛擬網路閘道 IPsec 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
+「完整轉寄密碼」**** 功能可能會造成連線中斷的問題。 如果 VPN 裝置已啟用「完整**轉寄**密碼」，請停用此功能。 然後[更新虛擬網路閘道 IPsec 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy)。
 
 ## <a name="next-steps"></a>後續步驟
 
 - [設定對虛擬網路的站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-- [為網站到網站 VPN 連接配置 IPsec/IKE 策略](vpn-gateway-ipsecikepolicy-rm-powershell.md)
+- [設定站對站 VPN 連線的 IPsec/IKE 原則](vpn-gateway-ipsecikepolicy-rm-powershell.md)
 

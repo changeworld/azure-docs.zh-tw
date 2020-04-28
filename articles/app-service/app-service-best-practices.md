@@ -1,6 +1,6 @@
 ---
 title: 最佳做法
-description: 瞭解在 Azure 應用服務中運行的應用的最佳做法和常見故障排除方案。
+description: 瞭解您的應用程式在 Azure App Service 中執行的最佳做法和常見疑難排解案例。
 author: dariagrigoriu
 ms.assetid: f3359464-fa44-4f4a-9ea6-7821060e8d0d
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75768481"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Azure App Service 的最佳作法
@@ -26,12 +26,12 @@ ms.locfileid: "75768481"
 相同區域中的共置最適合用於組成解決方案的 Azure 資源，例如 Web 應用程式，以及用來保存內容或資料的資料庫或儲存體帳戶。 在建立資源時，請確定它們位於相同的 Azure 區域，除非您有特定的商務或設計理由不要如此。 您可以使用進階 App Service 方案應用程式目前可用的 [App Service 複製功能](app-service-web-app-cloning.md)，將 App Service 應用程式移至資料庫所在的區域。   
 
 ## <a name="when-apps-consume-more-memory-than-expected"></a><a name="memoryresources"></a>當應用程式耗用超出預期的記憶體時
-當您注意到應用消耗的記憶體比預期的通過監視或服務建議指示時，請考慮[應用服務自動修復功能](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites)。 自動修復功能的其中一個選項是根據記憶體臨界值來採取自訂動作。 動作包括電子郵件通知、透過記憶體傾印來調查，乃至於回收背景工作處理序以當場緩和情況。 自動修復可透過 web.config 和易於使用的使用者介面來設定，如這篇部落格文章所述： [App Service 支援網站擴充功能](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps)。   
+當您發現應用程式透過監視或服務建議來耗用比預期更多的記憶體時，請考慮使用[App Service 自動修復功能](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites)。 自動修復功能的其中一個選項是根據記憶體臨界值來採取自訂動作。 動作包括電子郵件通知、透過記憶體傾印來調查，乃至於回收背景工作處理序以當場緩和情況。 自動修復可透過 web.config 和易於使用的使用者介面來設定，如這篇部落格文章所述： [App Service 支援網站擴充功能](https://azure.microsoft.com/blog/additional-updates-to-support-site-extension-for-azure-app-service-web-apps)。   
 
 ## <a name="when-apps-consume-more-cpu-than-expected"></a><a name="CPUresources"></a>當應用程式耗用超出預期的 CPU 時
 當您經由監視或服務建議，發現應用程式耗用超出預期的記憶體，或 CPU 用量連續暴增時，請考慮相應增加或相應放大 App Service 方案。 如果應用程式是具狀態，則相應增加是唯一選項，如果應用程式是無狀態，則相應放大提供較大彈性和更高的調整可能性。 
 
-有關"有狀態"與"無狀態"應用程式的詳細資訊，可以觀看此視頻：在[Azure 應用服務上規劃可擴展的端到端多層應用程式](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)。 如需 App Service 調整和自動調整選項的詳細資訊，請參閱[在 Azure App Service 中調整 Web 應用程式的規模](manage-scale-up.md)。  
+如需「可設定狀態」和「無狀態」應用程式的詳細資訊，請觀看這段影片：[在 Azure App Service 上規劃可調整的端對端多層式應用程式](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)。 如需 App Service 調整和自動調整選項的詳細資訊，請參閱[在 Azure App Service 中調整 Web 應用程式的規模](manage-scale-up.md)。  
 
 ## <a name="when-socket-resources-are-exhausted"></a><a name="socketresources"></a>當通訊端資源耗盡時
 使用的用戶端程式庫未實作為重複使用 TCP 連線是耗盡輸出 TCP 連線的常見原因，而未使用更高階的通訊協定 (例如 HTTP - Keep-Alive) 也是原因之一。 請檢閱 App Service 方案中各應用程式所參考的每個程式庫的說明文件，以確保在程式碼中設定或存取程式庫時，能夠有效率地重複使用輸出連線。 此外，請遵循程式庫文件指引，適當地建立和釋放或清除，以免連線流失。 在進行這類用戶端程式庫調查時，可相應放大至多個執行個體來緩和影響。
@@ -67,11 +67,11 @@ pm2 start /home/site/wwwroot/app.js --no-daemon -i 4
 
 
 ## <a name="next-steps"></a>後續步驟
-有關最佳實踐的詳細資訊，請訪問[應用服務診斷](https://docs.microsoft.com/azure/app-service/overview-diagnostics)，瞭解特定于您的資源的可操作最佳做法。
+如需最佳做法的詳細資訊，請造訪[App Service 診斷](https://docs.microsoft.com/azure/app-service/overview-diagnostics)，以找出您的資源特有的可採取動作最佳作法。
 
-- 在[Azure 門戶](https://portal.azure.com)中導航到 Web 應用。
-- 按一下 **"診斷並解決**左側導航中的問題"，該導航將打開應用服務診斷。
-- 選擇**最佳實踐**主頁磁貼。
-- 按一下 **"最佳**配置&可用性的最佳做法"或 **"最佳配置的最佳做法**"，查看應用對這些最佳實踐的目前狀態。
+- 在[Azure 入口網站](https://portal.azure.com)中，流覽至您的 Web 應用程式。
+- 按一下左側導覽中的 [**診斷並解決問題**]，這會開啟 App Service 診斷]。
+- 選擇 [**最佳做法**] 首頁磚。
+- 按一下 [**可用性 & 效能**] 或 [最佳設定的**最佳做法**]，以查看應用程式目前的狀態，以瞭解這些最佳作法。
 
-您還可以使用此連結直接打開資源的應用服務診斷： `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`。
+您也可以使用此連結，為您的資源直接開啟 App Service 診斷`https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`：。

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
 ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75830066"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>使用 PowerShell 搭配執行 MapReduce 工作與 HDInsight 上的 Apache Hadoop
@@ -21,9 +21,9 @@ ms.locfileid: "75830066"
 
 本文件提供使用 Azure PowerShell 在 HDInsight 叢集的 Hadoop 中執行 MapReduce 工作的範例。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* HDInsight 上的 Apache Hadoop 叢集。 請參閱[使用 Azure 門戶創建 Apache Hadoop 群集](../hdinsight-hadoop-create-linux-clusters-portal.md)。
+* HDInsight 上的 Apache Hadoop 叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop](../hdinsight-hadoop-create-linux-clusters-portal.md)叢集。
 
 * 安裝 PowerShell [Az 模組](https://docs.microsoft.com/powershell/azure/overview)。
 
@@ -33,17 +33,17 @@ Azure PowerShell 提供 *Cmdlet* ，可讓您從遠端在 HDInsight 上執行 Ma
 
 在遠端 HDInsight 叢集中執行 MapReduce 工作時，會使用下列 Cmdlet。
 
-|Cmdlet | 描述 |
+|Cmdlet | 說明 |
 |---|---|
 |Connect-AzAccount|向您的 Azure 訂用帳戶驗證 Azure PowerShell。|
-|新-AzHDInsightMap 減少作業定義|使用指定的 MapReduce 資訊來建立新的「作業定義」**。|
-|啟動-阿茲德洞察工作|將作業定義傳送給 HDInsight，並啟動作業。 系統會傳回「作業」** 物件。|
-|等待-阿茲德洞察工作|使用作業物件來檢查作業的狀態。 它會等到工作完成，或等到等候時間超過。|
-|獲取阿茲德洞察作業輸出|用來擷取作業的輸出。|
+|新增-AzHDInsightMapReduceJobDefinition|使用指定的 MapReduce 資訊來建立新的「作業定義」**。|
+|開始-AzHDInsightJob|將作業定義傳送給 HDInsight，並啟動作業。 系統會傳回「作業」** 物件。|
+|等候-AzHDInsightJob|使用作業物件來檢查作業的狀態。 它會等到工作完成，或等到等候時間超過。|
+|AzHDInsightJobOutput|用來擷取作業的輸出。|
 
 下列步驟示範如何使用這些 Cmdlet，在您的 HDInsight 叢集中執行工作。
 
-1. 使用編輯器，將以下代碼另存為**mapreducejob.ps1**。
+1. 使用編輯器，將下列程式碼儲存為**mapreducejob.ps1**。
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
@@ -51,7 +51,7 @@ Azure PowerShell 提供 *Cmdlet* ，可讓您從遠端在 HDInsight 上執行 Ma
 
         .\mapreducejob.ps1
 
-    運行腳本時，系統會提示您獲得 HDInsight 群集的名稱和群集登錄名。 系統可能也會提示您驗證 Azure 訂用帳戶。
+    當您執行腳本時，系統會提示您輸入 HDInsight 叢集和叢集登入的名稱。 系統可能也會提示您驗證 Azure 訂用帳戶。
 
 3. 在作業完成時，您會收到類似下列文字的輸出：
 
@@ -81,7 +81,7 @@ Azure PowerShell 提供 *Cmdlet* ，可讓您從遠端在 HDInsight 上執行 Ma
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果作業完成時未傳回任何資訊，請檢視作業的錯誤。 要查看此作業的錯誤資訊，請向**mapreducejob.ps1**檔的末尾添加以下命令。 然後保存檔並重新運行腳本。
+如果作業完成時未傳回任何資訊，請檢視作業的錯誤。 若要查看此作業的錯誤資訊，請將下列命令新增至**mapreducejob.ps1**檔案的結尾。 然後儲存檔案並重新執行腳本。
 
 ```powershell
 # Print the output of the WordCount job.

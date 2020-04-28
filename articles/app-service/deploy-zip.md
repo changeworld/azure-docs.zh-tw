@@ -1,15 +1,15 @@
 ---
-title: 使用 ZIP 或 WAR 檔部署代碼
+title: 使用 ZIP 或 WAR 檔案部署程式碼
 description: 了解如何使用 ZIP 檔案 (若為 Java 開發人員，則是 WAR 檔案) 將您的應用程式部署至 Azure App Service。
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
 ms.openlocfilehash: 716f6813e37aec086a7d496e001fe2ca0f4aab57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75945153"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 檔案將您的應用程式部署至 Azure App Service
@@ -30,14 +30,14 @@ WAR 檔案部署會將您的 [WAR](https://wikipedia.org/wiki/WAR_(file_format))
 
 ## <a name="prerequisites"></a>Prerequisites
 
-要完成本文中的步驟，[請創建應用服務應用](/azure/app-service/)，或使用您為其他教程創建的應用。
+若要完成本文中的步驟，請[建立 App Service 應用程式](/azure/app-service/)，或使用您在另一個教學課程中建立的應用程式。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
-上述終結點目前不適用於 Linux 應用服務。 請考慮改用 FTP 或[ZIP 部署 API。](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment)
+上述端點目前不適用於 Linux 應用程式服務。 請考慮改為使用 FTP 或[ZIP 部署 API](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) 。
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>使用 Azure CLI 部署 ZIP 檔案
 
@@ -51,7 +51,7 @@ az webapp deployment source config-zip --resource-group <group-name> --name <app
 
 此命令會將檔案和目錄從 ZIP 檔案部署到預設的 App Service 應用程式資料夾 (`\home\site\wwwroot`)，並重新啟動應用程式。
 
-預設情況下，部署引擎假定 ZIP 檔已準備好按現樣運行，並且不運行任何生成自動化。 要啟用與[Git 部署](deploy-local-git.md)相同的生成自動化，通過在`SCM_DO_BUILD_DURING_DEPLOYMENT`[雲外殼](https://shell.azure.com)中運行以下命令來設置應用設置：
+根據預設，部署引擎會假設 ZIP 檔案已準備好以既有的方式執行，而且不會執行任何組建自動化。 若要啟用與[Git 部署](deploy-local-git.md)相同的組建自動化，請在`SCM_DO_BUILD_DURING_DEPLOYMENT` [Cloud Shell](https://shell.azure.com)中執行下列命令，以設定應用程式設定：
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
@@ -63,9 +63,9 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 ## <a name="deploy-war-file"></a>部署 WAR 檔案
 
-要將 WAR 檔部署到應用服務，請將 POST`https://<app-name>.scm.azurewebsites.net/api/wardeploy`要求傳送到 。 POST 要求必須在訊息本文中包含 .war 檔案。 系統會使用 HTTP 基本驗證，在要求中提供應用程式的部署認證。
+若要將 WAR 檔案部署到 App Service，請將 POST 要求`https://<app-name>.scm.azurewebsites.net/api/wardeploy`傳送至。 POST 要求必須在訊息本文中包含 .war 檔案。 系統會使用 HTTP 基本驗證，在要求中提供應用程式的部署認證。
 
-在部署`/api/wardeploy`WAR 檔時始終使用。 此 API 將展開 WAR 檔並將其放置在共用檔磁碟機上。 使用其他部署 API 可能會導致不一致的行為。 
+部署 WAR `/api/wardeploy`檔案時，請一律使用。 此 API 會擴充您的 WAR 檔案，並將它放在共用的檔磁片磁碟機上。 使用其他部署 Api 可能會導致不一致的行為。 
 
 針對 HTTP 基本驗證，您需要 App Service 部署的認證。 若要了解如何設定部署認證，請參閱[設定及重設使用者層級的認證](deploy-configure-credentials.md#userscope)。
 
@@ -79,7 +79,7 @@ curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app-name>.s
 
 ### <a name="with-powershell"></a>透過 PowerShell
 
-下面的示例使用[發佈-AzWebapp](/powershell/module/az.websites/publish-azwebapp)上載 .war 檔。 取代預留位置 `<group-name>`、`<app-name>` 和 `<war-file-path>`。
+下列範例會使用[new-azwebapp](/powershell/module/az.websites/publish-azwebapp)上傳 war 檔案。 取代預留位置 `<group-name>`、`<app-name>` 和 `<war-file-path>`。
 
 ```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <war-file-path>

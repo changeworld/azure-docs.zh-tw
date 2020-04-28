@@ -1,6 +1,6 @@
 ---
-title: 在 Azure HDInsight 群集上排除緩慢或失敗的作業
-description: 在 Azure HDInsight 群集上診斷和排除慢速或失敗的作業。
+title: 針對 Azure HDInsight 叢集上緩慢或失敗的工作進行疑難排解
+description: 針對 Azure HDInsight 叢集上緩慢或失敗的工作進行診斷和疑難排解。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,25 +9,25 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75895323"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>針對 HDInsight 叢集上速度變慢或失敗的作業進行疑難排解
 
-如果處理 HDInsight 群集上的資料的應用程式運行緩慢或錯誤代碼失敗，則有幾個故障排除選項。 如果您的作業執行時間超出預期，或通常回應時間都較慢，就可能是叢集上游 (例如叢集執行所在的服務) 發生失敗。 不過，這些變慢情況的最常見原因是規模調整不足。 創建新的 HDInsight 群集時，請選擇適當的[虛擬機器大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)。
+如果在 HDInsight 叢集上處理資料的應用程式正在執行緩慢或失敗，並出現錯誤代碼，您會有數個疑難排解選項。 如果您的作業執行時間超出預期，或通常回應時間都較慢，就可能是叢集上游 (例如叢集執行所在的服務) 發生失敗。 不過，這些變慢情況的最常見原因是規模調整不足。 當您建立新的 HDInsight 叢集時，請選取適當的[虛擬機器大小](hdinsight-component-versioning.md#default-node-configuration-and-virtual-machine-sizes-for-clusters)。
 
 若要診斷速度變慢或失敗的叢集，請收集該環境所有方面的相關資訊，例如關聯的 Azure 服務、叢集組態及作業執行資訊。 其中一種有幫助的診斷方式是嘗試在另一個叢集上重現錯誤狀態。
 
-* 第 1 步：收集有關問題的資料。
-* 第 2 步：驗證 HDInsight 群集環境。
-* 第 3 步：查看群集的運行狀況。
-* 步驟 4：查看環境堆疊和版本。
-* 第 5 步：檢查群集日誌檔。
-* 步驟 6：檢查配置設置。
-* 步驟 7：重現其他群集上的故障。
+* 步驟1：收集問題的相關資料。
+* 步驟2：驗證 HDInsight 叢集環境。
+* 步驟3：查看叢集的健全狀況。
+* 步驟4：檢查環境堆疊和版本。
+* 步驟5：檢查叢集記錄檔。
+* 步驟6：檢查設定。
+* 步驟7：在不同的叢集上重現失敗。
 
 ## <a name="step-1-gather-data-about-the-issue"></a>步驟 1：收集問題的相關資料
 
@@ -56,7 +56,7 @@ Azure 入口網站可以提供以下資訊：
 
 ![HDInsight Azure 入口網站資訊](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
 
-您還可以使用 Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)：
+您也可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)：
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
@@ -71,16 +71,16 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 ### <a name="service-details"></a>服務詳細資料
 
-* 檢查開源庫版本。
+* 檢查開放原始碼程式庫發行版本。
 * 檢查[Azure 服務中斷](https://azure.microsoft.com/status/)。  
-* 檢查 Azure 服務使用限制。 
-* 檢查 Azure 虛擬網路子網配置。  
+* 檢查 Azure 服務使用量限制。 
+* 檢查 Azure 虛擬網路子網設定。  
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>使用 Ambari UI 來檢視叢集組態設定
 
 Apache Ambari 可讓您透過 Web UI 和 REST API 來管理和監視 HDInsight 叢集。 以 Linux 為基礎的 HDInsight 叢集會隨附 Ambari。 請在 Azure 入口網站 HDInsight 頁面上，選取 [叢集儀表板]**** 窗格。  選取 [HDInsight 叢集儀表板]**** 窗格以開啟 Ambari UI，然後輸入叢集登入認證。  
 
-![阿帕奇·安巴里儀表板概述](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
+![Apache Ambari 儀表板總覽](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
 
 若要開啟服務檢視清單，請在 Azure 入口網站頁面上選取 [Ambari 檢視]****。  此清單會依所安裝的程式庫而有所不同。 例如，您可能會看到 [YARN 佇列管理員]、[Hive 檢視] 及 [Tez 檢視]。  請選取一個服務連結來查看組態和服務資訊。
 
@@ -95,7 +95,7 @@ HDInsight 倚賴數個 Azure 服務。 它會在 Azure HDInsight 上執行虛擬
 
 #### <a name="check-the-release-version"></a>檢查發行版本
 
-將叢集版本與最新的 HDInsight 發行版本做比較。 每個 HDInsight 發行版本都包含改進功能，例如新應用程式、功能、修補程式及 Bug 修正。 在最新的發行版本中可能已修正影響您叢集的問題。 如果可能，請使用最新版本的 HDInsight 和相關庫（如 Apache HBase、Apache Spark 等）重新運行群集。
+將叢集版本與最新的 HDInsight 發行版本做比較。 每個 HDInsight 發行版本都包含改進功能，例如新應用程式、功能、修補程式及 Bug 修正。 在最新的發行版本中可能已修正影響您叢集的問題。 可能的話，請使用最新版本的 HDInsight 和相關聯的程式庫（例如 Apache HBase、Apache Spark 和其他程式庫）重新執行您的叢集。
 
 #### <a name="restart-your-cluster-services"></a>重新啟動您的叢集服務
 
@@ -111,7 +111,7 @@ HDInsight 叢集是由在虛擬機器執行個體上執行的各種不同類型�
 
 ### <a name="get-a-snapshot-of-the-cluster-health-using-the-ambari-ui-dashboard"></a>使用 Ambari UI 儀表板來簡要了解叢集健康情況
 
-[Ambari UI](#view-cluster-configuration-settings-with-the-ambari-ui)儀表板`https://<clustername>.azurehdinsight.net`（ ） 提供群集運行狀況的概述，例如停機時間、記憶體、網路和 CPU 使用方式、HDFS 磁片使用方式等。 請使用 Ambari 的 [Hosts] \(主機\) 區段來檢視主機層級的資源。 您也可以將服務停止和重新啟動。
+[Ambari UI 儀表板](#view-cluster-configuration-settings-with-the-ambari-ui)（`https://<clustername>.azurehdinsight.net`）可讓您大致瞭解叢集健康情況，例如執行時間、記憶體、網路和 CPU 使用量、HDFS 磁片使用量等等。 請使用 Ambari 的 [Hosts] \(主機\) 區段來檢視主機層級的資源。 您也可以將服務停止和重新啟動。
 
 ### <a name="check-your-webhcat-service"></a>檢查您的 WebHCat 服務
 
@@ -119,7 +119,7 @@ Apache Hive、Apache Pig 或 Apache Sqoop 作業發生失敗的其中一個常�
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502 狀態碼)
 
-此代碼是來自閘道節點的通用消息，是最常見的故障狀態碼。 此狀況的其中一個可能原因是的 WebHCat 服務在作用中的前端節點上停止運作。 若要檢查是否有此可能性，請使用下列 CURL 命令：
+這段程式碼是來自閘道節點的一般訊息，而且是最常見的失敗狀態碼。 此狀況的其中一個可能原因是的 WebHCat 服務在作用中的前端節點上停止運作。 若要檢查是否有此可能性，請使用下列 CURL 命令：
 
 ```bash
 curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
@@ -127,7 +127,7 @@ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v
 
 Ambari 會顯示警示，當中會指出 WebHCat 服務停止運作的主機。 您可以嘗試在 WebHCat 服務的主機上重新啟動此服務來讓此服務恢復運作。
 
-![阿帕奇·安巴里重新開機WebHCat伺服器](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
+![Apache Ambari 重新開機 WebHCat 伺服器](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
 如果 WebHCat 伺服器仍然未恢復運作，則請查看作業記錄是否有失敗訊息。 如需更多詳細資訊，請查看節點上所參考的 `stderr` 和 `stdout` 檔案。
 
@@ -176,7 +176,7 @@ Templeton 會呼叫 YARN 來執行作業，而 Templeton 與 YARN 之間的通�
 
     下圖顯示已達 714.4% 過度使用情況的 joblauncher 佇列。 如果預設佇列仍有可用容量可供借用，此情況是可接受的。 不過，當叢集使用率已滿載且 YARN 記憶體容量已達 100% 時，新作業就必須等候，最終就會造成逾時。
 
-    ![HDInsight 作業啟動器佇列視圖](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
+    ![HDInsight 作業啟動程式佇列視圖](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
 
     有兩個方法可以解決此問題：減緩提交新作業的速度，或是擴大叢集規模來加快消耗舊作業的速度。
 
@@ -208,7 +208,7 @@ Templeton 會呼叫 YARN 來執行作業，而 Templeton 與 YARN 之間的通�
 
 Ambari UI [Stack and Version] \(堆疊與版本\)**** 頁面會提供有關叢集服務組態與服務版本歷程記錄的資訊。  Hadoop 服務程式庫版本如果不正確，可能會導致叢集發生失敗。  在 Ambari UI 中，選取 [Admin] \(系統管理\)**** 功能表，然後選取 [Stack and Version] \(堆疊與版本\)****。  選取頁面上的 [Versions] \(版本\)**** 索引標籤以查看服務版本資訊：
 
-![阿帕奇安巴里堆疊和版本](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
+![Apache Ambari 堆疊和版本](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
 ## <a name="step-5-examine-the-log-files"></a>步驟 5：檢查記錄檔
 
@@ -250,19 +250,19 @@ HDInsight 叢集已針對相關服務 (例如 Hadoop、Hive、HBase 等) 預先�
 
 ## <a name="step-7-reproduce-the-failure-on-a-different-cluster"></a>步驟 7：在不同的叢集上重現失敗情況
 
-若要協助診斷叢集錯誤的來源，請啟動一個具有相同組態的新叢集，然後逐一重新提交失敗作業的步驟。 請先查看每個步驟的結果，再繼續進行下一個步驟。 此方法為您提供了更正和重新運行單個失敗步驟的機會。 這個方法還有一個優點，就是只需載入您的輸入資料一次。
+若要協助診斷叢集錯誤的來源，請啟動一個具有相同組態的新叢集，然後逐一重新提交失敗作業的步驟。 請先查看每個步驟的結果，再繼續進行下一個步驟。 這個方法可讓您有機會更正並重新執行單一失敗的步驟。 這個方法還有一個優點，就是只需載入您的輸入資料一次。
 
 1. 建立一個組態與失敗叢集相同的新測試叢集。
 2. 向測試叢集提交第一個作業步驟。
 3. 當步驟完成處理時，查看步驟記錄檔中是否有錯誤。 請連線至測試叢集的主要節點，並檢視該處的記錄檔。 只有在步驟已執行一段時間、結束或失敗之後，步驟記錄檔才會出現。
-4. 如果第一個步驟成功，請執行下一個步驟。 如果有錯誤，請調查記錄檔中的錯誤。 如果代碼中出現錯誤，請進行更正並重新運行步驟。
+4. 如果第一個步驟成功，請執行下一個步驟。 如果有錯誤，請調查記錄檔中的錯誤。 如果這是您程式碼中的錯誤，請進行更正，然後重新執行步驟。
 5. 繼續執行，直到所有步驟都已執行且沒有錯誤為止。
 6. 完成對測試叢集的偵錯之後，請將其刪除。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Apache Ambari Web UI 管理 HDInsight 叢集](hdinsight-hadoop-manage-ambari.md)
-* [分析 HDInsight 日誌](hdinsight-debug-jobs.md)
-* [訪問基於 Linux 的 HDInsight 中的 Apache Hadoop YARN 應用程式符號](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [分析 HDInsight 記錄](hdinsight-debug-jobs.md)
+* [存取以 Linux 為基礎的 HDInsight 上的 Apache Hadoop YARN 應用程式登入](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [在以 Linux 為基礎的 HDInsight 上啟用 Apache Hadoop 服務的堆積傾印](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 * [HDInsight 上的 Apache Spark 叢集已知問題](hdinsight-apache-spark-known-issues.md)

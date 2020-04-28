@@ -1,5 +1,5 @@
 ---
-title: 在 Azure HDInsight 中使用 Apache Mahout 生成建議
+title: 在 Azure HDInsight 中使用 Apache Mahout 產生建議
 description: 了解如何搭配 HDInsight (Hadoop) 使用 Apache Mahout 機器學習庫來產生電影推薦。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/03/2020
 ms.openlocfilehash: 33110e9f1d45fcd11e5f4cad1b589ab929a9472d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75767631"
 ---
-# <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>在 HDInsight （SSH） 中使用阿帕奇·哈蘇普與阿帕奇哈多普生成電影建議
+# <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>在 HDInsight 中使用 Apache Mahout 搭配 Apache Hadoop 來產生電影推薦（SSH）
 
 [!INCLUDE [mahout-selector](../../../includes/hdinsight-selector-mahout.md)]
 
@@ -23,9 +23,9 @@ ms.locfileid: "75767631"
 
 Mahout 是 Apache Hadoop 的[機器學習服務](https://en.wikipedia.org/wiki/Machine_learning)程式庫。 Mahout 包含可處理資料的演算法，例如篩選、分類和叢集化。 在本文中，您會使用推薦引擎，以根據朋友看過的電影來產生電影推薦。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-HDInsight 上的 Apache Hadoop 叢集。 請參閱[在 Linux 上開始使用 HDInsight。](./apache-hadoop-linux-tutorial-get-started.md)
+HDInsight 上的 Apache Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
 
 ## <a name="apache-mahout-versioning"></a>Apache Mahout 版本控制
 
@@ -37,11 +37,11 @@ Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID`
 
 以下工作流程是一個使用電影資料的簡化範例：
 
-* **共同發生**：喬，愛麗絲和鮑勃都喜歡*星球大戰*，*帝國反擊*，和*絕地歸來*。 Mahout 將判斷喜歡上述任何一部電影的使用者，也會喜歡另外兩部電影。
+* **共同出現**： Joe、Alice 和 Bob 全都喜歡*星形星際大戰*，帝國會*傳回* *Jedi*。 Mahout 將判斷喜歡上述任何一部電影的使用者，也會喜歡另外兩部電影。
 
 * **共生**：Bob 和 Alice 同時也喜歡《威脅潛伏》**、《複製人全面進攻》** 和《西斯大帝的復仇》**。 Mahout 將判斷喜歡前三部電影的使用者，也會喜歡這三部電影。
 
-* **相似性推薦**：因為喬喜歡前三部電影，Mahout看那些喜歡類似的電影，但喬沒有看過（喜歡/分級）。 在此情況下，Mahout 將會推薦 *《威脅潛伏》*、*《複製人全面進攻》* 和 *《西斯大帝的復仇》*。
+* **相似性建議**：因為 joe 喜歡前三部電影，Mahout 會查看其他具有類似喜好設定的電影，但 Joe 未監看（贊/評等）。 在此情況下，Mahout 將會推薦 *《威脅潛伏》*、*《複製人全面進攻》* 和 *《西斯大帝的復仇》*。
 
 ### <a name="understanding-the-data"></a>了解資料
 
@@ -49,7 +49,7 @@ Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID`
 
 有兩個檔案 `moviedb.txt` 和 `user-ratings.txt`。 `user-ratings.txt` 檔案是用於分析期間。 檢視結果時，`moviedb.txt` 用來提供使用者易記的文字資訊。
 
-`user-ratings.txt`中包含的資料具有`userID`一個結構，`movieID``userRating`和`timestamp`， 它指示每個使用者對影片的評分有多高。 以下是資料範例：
+`user-ratings.txt`中包含的資料具有`userID`、 `movieID`、 `userRating`和`timestamp`的結構，表示每位使用者對電影評分的程度。 以下是資料範例：
 
     196    242    3    881250949
     186    302    3    891717742
@@ -59,7 +59,7 @@ Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID`
 
 ## <a name="run-the-analysis"></a>執行分析
 
-1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到群集。 通過將 CLUSTERNAME 替換為群集的名稱來編輯下面的命令，然後輸入以下命令：
+1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的叢集。 以您叢集的名稱取代 CLUSTERNAME，然後輸入命令，以編輯下面的命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
@@ -174,9 +174,9 @@ Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID`
 
    * **user-ratings.txt** 檔案可用來擷取已評分的影片。
 
-   * **moviedb.txt**檔用於檢索影片的名稱。
+   * **和 moviedb.txt**是用來取出電影的名稱。
 
-   * **建議.txt**用於檢索此使用者的影片建議。
+   * **建議使用 .txt**來抓取此使用者的電影建議。
 
      此命令的輸出類似下列文字︰
 
@@ -194,7 +194,7 @@ Mahout 提供的其中一項功能是推薦引擎。 這個引擎接受 `userID`
 
 ## <a name="delete-temporary-data"></a>刪除暫存資料
 
-Mahout 作業不會刪除在處理作業時創建的臨時資料。 範例工作中指定 `--tempDir` 參數將暫存檔隔離到特定路徑中以方便刪除。 若要移除暫存檔案，請使用下列命令：
+Mahout 作業不會移除處理作業時所建立的暫存資料。 範例工作中指定 `--tempDir` 參數將暫存檔隔離到特定路徑中以方便刪除。 若要移除暫存檔案，請使用下列命令：
 
 ```bash
 hdfs dfs -rm -f -r /temp/mahouttemp
@@ -207,7 +207,7 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已經學會了如何使用 Mahout，探索使用 HDInsight 上資料的其他方法：
+既然您已瞭解如何使用 Mahout，請探索在 HDInsight 上使用資料的其他方式：
 
 * [搭配 HDInsight 使用 Apache Hive](hdinsight-use-hive.md)
 * [搭配 HDInsight 使用 MapReduce](hdinsight-use-mapreduce.md)

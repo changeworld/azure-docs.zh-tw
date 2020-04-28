@@ -1,7 +1,7 @@
 ---
-title: 使用 PowerShell 將對等 ASN 與 Azure 訂閱關聯
+title: 使用 PowerShell 將對等 ASN 與 Azure 訂用帳戶產生關聯
 titleSuffix: Azure
-description: 使用 PowerShell 將對等 ASN 與 Azure 訂閱關聯
+description: 使用 PowerShell 將對等 ASN 與 Azure 訂用帳戶產生關聯
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,44 +9,44 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75908995"
 ---
-# <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>使用 PowerShell 將對等 ASN 與 Azure 訂閱關聯
+# <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>使用 PowerShell 將對等 ASN 與 Azure 訂用帳戶產生關聯
 
-在提交對等請求之前，應首先使用以下步驟將 ASN 與 Azure 訂閱相關聯。
+提交對等互連要求之前，您應該先使用下列步驟，將您的 ASN 與 Azure 訂用帳戶產生關聯。
 
-如果您願意，可以使用[門戶](howto-subscription-association-portal.md)完成本指南。
+如果您想要的話，可以使用[入口網站](howto-subscription-association-portal.md)來完成本指南。
 
 ### <a name="working-with-azure-powershell"></a>使用 Azure PowerShell
 [!INCLUDE [CloudShell](./includes/cloudshell-powershell-about.md)]
 
-## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>創建對等 ASN 以將 ASN 與 Azure 訂閱關聯
+## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>建立 PeerASN 以將您的 ASN 與 Azure 訂用帳戶建立關聯
 
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>登入您的 Azure 帳戶並且選取您的訂用帳戶
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
-### <a name="register-for-peering-resource-provider"></a>註冊對等資來源提供者
-使用以下命令註冊訂閱中的對等資來源提供者。 如果不執行此操作，則無法訪問設置對等互連所需的 Azure 資源。
+### <a name="register-for-peering-resource-provider"></a>註冊對等互連資源提供者
+使用下列命令，在您的訂用帳戶中註冊對等互連資源提供者。 如果您未執行此動作，則無法存取設定對等互連所需的 Azure 資源。
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Peering
 ```
 
-您可以使用以下命令檢查註冊狀態：
+您可以使用下列命令來檢查註冊狀態：
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.Peering
 ```
 
 > [!IMPORTANT]
-> 等待*註冊狀態*轉"已註冊"，然後再繼續。 執行命令可能需要 5 到 30 分鐘。
+> 等到*RegistrationState*變成「已註冊」，再繼續進行。 執行命令可能需要5到30分鐘的時間。
 
-### <a name="update-the-peer-information-associated-with-this-subscription"></a>更新與此訂閱關聯的對等資訊
+### <a name="update-the-peer-information-associated-with-this-subscription"></a>更新與此訂用帳戶相關聯的對等資訊
 
-下面是更新對等資訊的示例。
+以下是更新對等資訊的範例。
 
 ```powershell
 New-AzPeerAsn `
@@ -58,23 +58,23 @@ New-AzPeerAsn `
 ```
 
 > [!NOTE]
-> -名稱對應于資源名稱，可以是您選擇的任何名稱。 但是，-對等名稱對應于公司的名稱，並且需要盡可能靠近您的 PeeringDB 設定檔。 請注意，對等名稱的值僅支援 a-z、A-Z 和空格的字元。
+> -Name 對應于資源名稱，而且可以是您選擇的任何專案。 不過，-peerName 會對應至您公司的名稱，而且必須盡可能靠近您的 PeeringDB 設定檔。 請注意，-peerName 的值僅支援字元 a-z、A-z 和空格。
 
-訂閱可以有多個 ASN。 更新每個 ASN 的對等資訊。 確保每個 ASN 的"名稱"是唯一的。
+訂用帳戶可以有多個 Asn。 更新每個 ASN 的對等資訊。 請確定每個 ASN 的「名稱」都是唯一的。
 
-同行們有望在[對同儕DB](https://www.peeringdb.com)上擁有完整和最新的設定檔。 我們在註冊期間使用這些資訊來驗證同行的詳細資訊，如 NOC 資訊、技術聯繫資訊及其在對等設施的存在等。
+對等應該在[PeeringDB](https://www.peeringdb.com)上有完整且最新的設定檔。 我們會在註冊期間使用此資訊來驗證對等的詳細資料，例如 NOC 資訊、技術連絡人資訊，以及其在對等互連設施的狀態等。
 
-請注意，為了代替上述輸出中的 **[訂閱 Id]，** 將顯示實際訂閱 ID。
+請注意，在上面的輸出中，若要取代 **{subscriptionId}** ，將會顯示實際的訂用帳戶識別碼。
 
-## <a name="view-status-of-a-peerasn"></a>查看 PeerASN 的狀態
+## <a name="view-status-of-a-peerasn"></a>PeerASN 的檢視狀態
 
-使用以下命令檢查 ASN 驗證狀態：
+使用下列命令檢查 ASN 驗證狀態：
 
 ```powershell
 Get-AzPeerAsn
 ```
 
-下面是一個示例回應：
+以下是範例回應：
 ```powershell
 PeerContactInfo : Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.PSContactInfo
 PeerName        : Contoso
@@ -86,10 +86,10 @@ Type            : Microsoft.Peering/peerAsns
 ```
 
 > [!IMPORTANT]
-> 等待驗證狀態在提交對等請求之前將"已批准"變為"已批准"。 此批准可能需要長達 12 小時。
+> 等待 ValidationState 「核准」，然後再提交對等要求。 此核准最多可能需要12小時的時間。
 
-## <a name="modify-peerasn"></a>修改對等Asn
-您可以隨時修改 NOC 聯繫資訊。
+## <a name="modify-peerasn"></a>修改 PeerAsn
+您可以隨時修改 NOC 連絡人資訊。
 
 以下是範例：
 
@@ -97,16 +97,16 @@ Type            : Microsoft.Peering/peerAsns
 Set-PeerAsn -Name Contoso_1234 -Email "newemail@test.com" -Phone "1800-000-0000"
 ```
 
-## <a name="delete-peerasn"></a>刪除對等 Asn
-當前不支援刪除 PeerASN。 如果需要刪除 PeerASN，請與[Microsoft 對等互連](mailto:peering@microsoft.com)聯繫。
+## <a name="delete-peerasn"></a>刪除 PeerAsn
+目前不支援刪除 PeerASN。 如果您需要刪除 PeerASN，請聯絡[Microsoft 對等互連](mailto:peering@microsoft.com)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [建立或修改直接對等互連](howto-direct-powershell.md)
 * [將舊版直接對等互連轉換為 Azure 資源](howto-legacy-direct-powershell.md)
-* [創建或修改 Exchange 對等互連](howto-exchange-powershell.md)
+* [建立或修改 Exchange 對等互連](howto-exchange-powershell.md)
 * [將舊版 Exchange 對等互連轉換為 Azure 資源](howto-legacy-exchange-powershell.md)
 
 ## <a name="additional-resources"></a>其他資源
 
-有關詳細資訊，請訪問[互聯網對等常見問題解答](faqs.md)
+如需詳細資訊，請造訪[網際網路對等常見問題](faqs.md)

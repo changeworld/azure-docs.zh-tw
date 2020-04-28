@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
 ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75708350"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>新增快取以改善 Azure API 管理的效能
@@ -50,13 +50,13 @@ ms.locfileid: "75708350"
 
 根據此範例中顯示的快取原則，對 **GetSpeakers** 作業的第一個要求會從後端服務傳回回應。 此回應會被快取，並依指定的標頭和查詢字串參數來識別。 後續使用相符的參數呼叫此操作時，將傳回快取的回應，直到快取期間間隔到期為止。
 
-1. 登錄到 中的[https://portal.azure.com](https://portal.azure.com)Azure 門戶。
+1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 2. 瀏覽至您的 APIM 執行個體。
-3. 選擇**API**選項卡。
-4. 按一下 API 清單中的 [示範會議 API]****。
+3. 選取 [ **API** ] 索引標籤。
+4. 按一下 API 清單中的 [示範會議 API]  。
 5. 選取 **GetSpeakers**。
-6. 選取畫面頂端的 [設計]**** 索引標籤。
-7. 在 [輸入處理]**** 區段中，按一下 **</>** 圖示。
+6. 選取畫面頂端的 [設計]  索引標籤。
+7. 在 [輸入處理]  區段中，按一下 **</>** 圖示。
 
     ![程式碼編輯器](media/api-management-howto-cache/code-editor.png)
 
@@ -81,11 +81,11 @@ ms.locfileid: "75708350"
 若要瞭解快取的運作方式，請從開發人員入口網站呼叫此作業。
 
 1. 在 Azure 入口網站中，瀏覽至您的 APIM 執行個體。
-2. 選擇**API**選項卡。
+2. 選取 [ **api** ] 索引標籤。
 3. 選取您已新增快取原則的 API。
 4. 選取 **GetSpeakers** 作業。
 5. 按一下右上方功能表中的 [測試]**** 索引標籤。
-6. 按 [傳送]****。
+6. 按 [傳送]  。
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>後續步驟
 * 如需快取原則的詳細資訊，請參閱 [API 管理原則參考文件][API Management policy reference]中的[快取原則][Caching policies]。

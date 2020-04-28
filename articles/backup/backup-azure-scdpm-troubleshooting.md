@@ -1,13 +1,13 @@
 ---
 title: 針對 System Center Data Protection Manager 疑難排解
-description: 在本文中，發現解決方案，解決在使用系統中心資料保護管理器時可能遇到的問題。
+description: 在本文中，探索您在使用 System Center Data Protection Manager 時可能會遇到之問題的解決方案。
 ms.topic: troubleshooting
 ms.date: 01/30/2019
 ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75664754"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>針對 System Center Data Protection Manager 疑難排解
@@ -58,7 +58,7 @@ ms.locfileid: "75664754"
 
 - 確定您使用的是最新版的 Azure 備份代理程式。
 - 確定 Data Protection Manager 伺服器與受保護伺服器之間有連線能力 (網路/防火牆/Proxy)。
-- 如果要保護 SQL 伺服器，請確保**登錄屬性** > **NT AUTHORITY_SYSTEM**屬性顯示已啟用**的系統管理員**設置。
+- 如果您要保護 SQL server，請確定 [**登入屬性** > ]**NT AUTHORITY\SYSTEM**屬性顯示 [已啟用**系統管理員（sysadmin** ）] 設定。
 
 ## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>錯誤：未以保存庫認證檔案中指定的方式註冊伺服器
 

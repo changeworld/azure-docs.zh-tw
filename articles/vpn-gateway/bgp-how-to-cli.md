@@ -1,5 +1,5 @@
 ---
-title: 在 Azure VPN 閘道上配置 BGP：CLI
+title: 在 Azure VPN 閘道上設定 BGP： CLI
 description: 本文將逐步引導您使用 Azure Resource Manager 和 CLI 來設定 Azure VPN 閘道上的 BGP。
 services: vpn-gateway
 author: yushwang
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 42a07ac00fd8a26918164f6547bf57c2b021d14c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75863609"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>如何使用 CLI 在 Azure VPN 閘道上設定 BGP
@@ -30,7 +30,7 @@ BGP 是常用於網際網路的標準路由通訊協定，可交換兩個或多�
 
   您可以接著完成下列其中一個小節 (或兩者) ：
 
-* [使用 BGP 建立跨界連接](#crossprembgp)
+* [建立與 BGP 的跨單位連線](#crossprembgp)
 * [建立與 BGP 的 VNet 對 VNet 連線](#v2vbgp)
 
 這三個小節的內容所提及的工作，皆為在網路連線中啟用 BGP 的基本建構元素。 如果您完成這三個小節的步驟，您將會建置出如下圖所示的拓撲︰
@@ -51,11 +51,11 @@ BGP 是常用於網際網路的標準路由通訊協定，可交換兩個或多�
 
 ### <a name="step-1-create-and-configure-testvnet1"></a>步驟 1：建立及設定 TestVNet1
 
-#### <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1. 連接到您的訂閱
+#### <a name="1-connect-to-your-subscription"></a><a name="Login"></a>1. 連接到您的訂用帳戶
 
 [!INCLUDE [CLI login](../../includes/vpn-gateway-cli-login-include.md)]
 
-#### <a name="2-create-a-resource-group"></a>2. 創建資源組
+#### <a name="2-create-a-resource-group"></a>2. 建立資源群組
 
 下列範例會在 "eastus" 位置建立名為 TestRG1 的資源群組。 如果您在該區域中已有想要用來建立虛擬網路的資源群組，則可以改為使用該資源群組。
 
@@ -63,7 +63,7 @@ BGP 是常用於網際網路的標準路由通訊協定，可交換兩個或多�
 az group create --name TestBGPRG1 --location eastus
 ```
 
-#### <a name="3-create-testvnet1"></a>3. 創建測試VNet1
+#### <a name="3-create-testvnet1"></a>3. 建立 TestVNet1
 
 下列範例會建立一個名為 TestVNet1 的虛擬網路，以及三個子網路：GatewaySubnet、FrontEnd 和 Backend。 當您在替代值時，請務必將閘道子網路命名為 GatewaySubnet。 如果您將其命名為其他名稱，閘道建立會失敗。
 
@@ -81,7 +81,7 @@ az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPR
 
 ### <a name="step-2-create-the-vpn-gateway-for-testvnet1-with-bgp-parameters"></a>步驟 2：使用 BGP 參數建立 TestVNet1 的 VPN 閘道
 
-#### <a name="1-create-the-public-ip-address"></a>1. 創建公共 IP 位址
+#### <a name="1-create-the-public-ip-address"></a>1. 建立公用 IP 位址
 
 要求公用 IP 位址。 公用 IP 位址將會配置給您為虛擬網路建立的 VPN 閘道。
 
@@ -89,7 +89,7 @@ az network vnet subnet create --vnet-name TestVNet1 -n GatewaySubnet -g TestBGPR
 az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic 
 ```
 
-#### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. 使用 AS 編號創建 VPN 閘道
+#### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. 使用 AS 號碼建立 VPN 閘道
 
 建立 TestVNet1 的虛擬網路閘道。 BGP 需要路由式 VPN 閘道。 您也需要額外的參數 `-Asn` 來為 TestVNet1 設定自發系統編號 (ASN)。 建立閘道可能需要花費一段時間 (45 分鐘或更久) 才能完成。 
 
@@ -99,7 +99,7 @@ az network public-ip create -n GWPubIP -g TestBGPRG1 --allocation-method Dynamic
 az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP -g TestBGPRG1 --vnet TestVNet1 --gateway-type Vpn --sku HighPerformance --vpn-type RouteBased --asn 65010 --no-wait
 ```
 
-#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. 獲取 Azure BGP 對等 IP 位址
+#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3. 取得 Azure BGP 對等互連 IP 位址
 
 建立閘道後，您必須取得 Azure VPN 閘道上的 BGP 對等體 IP 位址。 需要有此位址，才能將 VPN 閘道設定為內部部署 VPN 裝置的 BGP 對等體。
 
@@ -130,7 +130,7 @@ az network vnet-gateway list -g TestBGPRG1 
 本練習將繼續建置圖中所示的組態。 請務必使用您想用於設定的值來取代該值。 處理區域網路閘道時，請留意下列事項：
 
 * 區域網路閘道可以位於與 VPN 閘道相同的位置和資源群組中，或位於不同的位置和資源群組中。 此範例會顯示閘道位於不同位置的不同資源群組中。
-* 您需要針對區域網路閘道宣告的最小前置詞是 VPN 裝置上 BGP 對等體 IP 位址的主機位址。 在這種情況下，它是 10.51.255.254/32 的首碼。
+* 您需要針對區域網路閘道宣告的最小前置詞是 VPN 裝置上 BGP 對等體 IP 位址的主機位址。 在此情況下，它是/32 首碼 10.51.255.254/32。
 * 請注意，您必須在內部部署網路與 Azure 虛擬網路之間使用不同的 BGP ASN。 在兩者相同的情況下，如果內部部署 VPN 裝置已經使用您的 VNet ASN 來與其他 BGP 芳鄰進行對等，您就需要變更該 ASN。
 
 繼續進行之前，請確定您已完成本練習的[為您的 VPN 閘道啟用 BGP](#enablebgp)一節，且仍然與訂用帳戶 1 保持連線。 請注意，在此範例中，您會建立新的資源群組。 同時，也請注意區域網路閘道的兩個額外參數︰`Asn` 與 `BgpPeerAddress`。
@@ -147,7 +147,7 @@ az network local-gateway create --gateway-ip-address 23.99.221.164 -n Site5 -g T
 
 在此範例中，虛擬網路閘道和區域網路閘道是位於不同的資源群組中。 當閘道位於不同的資源群組中時，您必須指定這兩個閘道的整個資源識別碼，才能在虛擬網路之間設定連線。
 
-#### <a name="1-get-the-resource-id-of-vnet1gw"></a>1. 獲取 VNet1GW 的資源識別碼
+#### <a name="1-get-the-resource-id-of-vnet1gw"></a>1. 取得 VNet1GW 的資源識別碼
 
 使用下列命令的輸出來取得 VNet1GW 的資源識別碼︰
 
@@ -180,7 +180,7 @@ az network vnet-gateway show -n VNet1GW -g TestBGPRG1
 "id": "/subscriptions/<subscription ID>/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW"
 ```
 
-#### <a name="2-get-the-resource-id-of-site5"></a>2. 獲取網站的資源識別碼5
+#### <a name="2-get-the-resource-id-of-site5"></a>2. 取得 Site5 的資源識別碼
 
 使用下列命令來從輸出取得 Site5 的資源識別碼︰
 
@@ -188,7 +188,7 @@ az network vnet-gateway show -n VNet1GW -g TestBGPRG1
 az network local-gateway show -n Site5 -g TestBGPRG5
 ```
 
-#### <a name="3-create-the-testvnet1-to-site5-connection"></a>3. 創建 TestVNet1 到網站 5 連接
+#### <a name="3-create-the-testvnet1-to-site5-connection"></a>3. 建立 TestVNet1 對 Site5 連接
 
 在此步驟中，您將建立從 TestVNet1 至 Site5 的連線。 如先前所討論，相同的 Azure VPN 閘道可以同時有 BGP 和非 BGP 連線。 除非已在連線屬性中啟用 BGP，否則即使已在兩個閘道上設定 BGP 參數，Azure 也不會為此連線啟用 BGP。 請將訂用帳戶識別碼以您自己的訂用帳戶識別碼來取代。
 
@@ -224,13 +224,13 @@ eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your 
 
 在此範例中，虛擬網路屬於相同的訂用帳戶。 您可以設定不同訂用帳戶之間的 VNet 對 VNet 連線。 若要深入了解，請參閱[設定 VNet 對 VNet 連線](vpn-gateway-howto-vnet-vnet-cli.md)。 建立連線時，請務必新增 `-EnableBgp $True`，才能啟用 BGP。
 
-#### <a name="1-create-a-new-resource-group"></a>1. 創建新的資源組
+#### <a name="1-create-a-new-resource-group"></a>1. 建立新的資源群組
 
 ```azurecli
 az group create -n TestBGPRG2 -l westus
 ```
 
-#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. 在新資源組中創建 TestVNet2
+#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. 在新的資源群組中建立 TestVNet2
 
 第一個命令會建立前端位址空間及 FrontEnd 子網路。 第二個命令會為後端子網路建立額外的位址空間。 第三個和第四個命令會建立 BackEnd 子網路和 GatewaySubnet。
 
@@ -244,7 +244,7 @@ az network vnet subnet create --vnet-name TestVNet2 -n BackEnd -g TestBGPRG2 --a
 az network vnet subnet create --vnet-name TestVNet2 -n GatewaySubnet -g TestBGPRG2 --address-prefix 10.22.255.0/27
 ```
 
-#### <a name="3-create-the-public-ip-address"></a>3. 創建公共 IP 位址
+#### <a name="3-create-the-public-ip-address"></a>3. 建立公用 IP 位址
 
 要求公用 IP 位址。 公用 IP 位址將會配置給您為虛擬網路建立的 VPN 閘道。
 
@@ -252,7 +252,7 @@ az network vnet subnet create --vnet-name TestVNet2 -n GatewaySubnet -g TestBGPR
 az network public-ip create -n GWPubIP2 -g TestBGPRG2 --allocation-method Dynamic
 ```
 
-#### <a name="4-create-the-vpn-gateway-with-the-as-number"></a>4. 使用 AS 編號創建 VPN 閘道
+#### <a name="4-create-the-vpn-gateway-with-the-as-number"></a>4. 使用 AS 號碼建立 VPN 閘道
 
 建立 TestVNet2 的虛擬網路閘道。 您必須覆寫您 Azure VPN 閘道上的預設 ASN。 已連線虛擬網路的 ASN 必須不同，才能啟用 BGP 與傳輸路由。
  
@@ -266,7 +266,7 @@ az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2
 
 在下列範例中，虛擬網路閘道和區域網路閘道是位於不同的資源群組中。 當閘道位於不同的資源群組中時，您必須指定這兩個閘道的整個資源識別碼，才能在虛擬網路之間設定連線。 
 
-#### <a name="1-get-the-resource-id-of-vnet1gw"></a>1. 獲取 VNet1GW 的資源識別碼 
+#### <a name="1-get-the-resource-id-of-vnet1gw"></a>1. 取得 VNet1GW 的資源識別碼 
 
 從下列命令的輸出取得 VNet1GW 的資源識別碼︰
 
@@ -274,7 +274,7 @@ az network vnet-gateway create -n VNet2GW -l westus --public-ip-address GWPubIP2
 az network vnet-gateway show -n VNet1GW -g TestBGPRG1
 ```
 
-#### <a name="2-get-the-resource-id-of-vnet2gw"></a>2. 獲取 VNet2GW 的資源識別碼
+#### <a name="2-get-the-resource-id-of-vnet2gw"></a>2. 取得 VNet2GW 的資源識別碼
 
 從下列命令的輸出取得 VNet2GW 的資源識別碼︰
 
@@ -282,7 +282,7 @@ az network vnet-gateway show -n VNet1GW -g TestBGPRG1
 az network vnet-gateway show -n VNet2GW -g TestBGPRG2
 ```
 
-#### <a name="3-create-the-connections"></a>3. 創建連接
+#### <a name="3-create-the-connections"></a>3. 建立連接
 
 建立從 TestVNet1 到 TestVNet2 的連線，以及從 TestVNet2 到 TestVNet1 的連線。 請將訂用帳戶識別碼以您自己的訂用帳戶識別碼來取代。
 

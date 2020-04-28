@@ -1,52 +1,52 @@
 ---
-title: 使用 Azure 門戶將 Azure 網路安全性群組 （NSG） 移動到其他 Azure 區域
-description: 使用 Azure 資源管理器範本使用 Azure 門戶將 Azure 網路安全性群組從一個 Azure 區域移動到另一個 Azure 區域。
+title: 使用 Azure 入口網站將 Azure 網路安全性群組（NSG）移至另一個 Azure 區域
+description: 使用 Azure Resource Manager 範本，使用 Azure 入口網站將 Azure 網路安全性群組從一個 Azure 區域移至另一個區域。
 author: asudbring
 ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
 ms.openlocfilehash: dce267178c3caf813ccdcac4bba86ccfde3f3421
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75647181"
 ---
-# <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>使用 Azure 門戶將 Azure 網路安全性群組 （NSG） 移動到其他區域
+# <a name="move-azure-network-security-group-nsg-to-another-region-using-the-azure-portal"></a>使用 Azure 入口網站將 Azure 網路安全性群組（NSG）移至另一個區域
 
-在各種方案中，您希望將現有 NSG 從一個區域移動到另一個區域。 例如，您可能希望創建具有相同配置和安全規則的 NSG 進行測試。 作為災害復原規劃的一部分，您可能還希望將 NSG 移動到其他區域。
+在許多情況下，您會想要將現有的 Nsg 從一個區域移至另一個區域。 例如，您可能會想要使用相同的設定和安全性規則來建立 NSG 來進行測試。 您也可以將 NSG 移到另一個區域，做為嚴重損壞修復計畫的一部分。
 
-Azure 安全性群組不能從一個區域移動到另一個區域。 但是，可以使用 Azure 資源管理器範本匯出 NSG 的現有配置和安全規則。  然後，您可以通過將 NSG 匯出到範本、修改參數以匹配目的地區域，然後將範本部署到新區域，在另一個區域中暫按資源。  有關資源管理器和範本的詳細資訊，請參閱[快速入門：使用 Azure 門戶創建和部署 Azure 資源管理器範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
+Azure 安全性群組無法從一個區域移至另一個區域。 不過，您可以使用 Azure Resource Manager 範本來匯出 NSG 的現有設定和安全性規則。  接著，您可以將 NSG 匯出至範本、修改參數以符合目的地區域，然後將範本部署到新的區域，藉此將資源放在另一個區域中。  如需 Resource Manager 和範本的詳細資訊，請參閱[快速入門：使用 Azure 入口網站來建立和部署 Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-- 確保 Azure 網路安全性群組位於要從其移動的 Azure 區域中。
+- 請確定 Azure 網路安全性群組位於您要移動的 Azure 區域中。
 
-- Azure 網路安全性群組不能在區域之間移動。  您必須將新的 NSG 與目的地區域中的資源相關聯。
+- Azure 網路安全性群組無法在區域之間移動。  您必須將新的 NSG 與目的地區域中的資源產生關聯。
 
-- 要匯出 NSG 配置並部署範本以在另一個區域中創建 NSG，您需要網路參與者角色或更高版本。
+- 若要匯出 NSG 設定並部署範本以在另一個區域中建立 NSG，您將需要網路參與者角色或更高版本。
 
-- 識別來源網路配置，以及您目前使用的所有資源。 此佈局包括但不限於負載等化器、公共 IP 和虛擬網路。
+- 識別來源網路配置，以及您目前使用的所有資源。 此配置包括但不限於負載平衡器、公用 Ip 和虛擬網路。
 
-- 驗證 Azure 訂閱是否允許在使用的目的地區域中創建 NSG。 請連絡支援人員啟用所需的配額。
+- 確認您的 Azure 訂用帳戶可讓您在使用的目的地區域中建立 Nsg。 請連絡支援人員啟用所需的配額。
 
-- 請確保您的訂閱有足夠的資源來支援此流程的 NSG 添加。  請參閱 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
+- 請確定您的訂用帳戶有足夠的資源，可支援在此程式中新增 Nsg。  請參閱 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)。
 
 
 ## <a name="prepare-and-move"></a>準備和移動
-以下步驟演示如何使用資源管理器範本為配置和安全規則移動準備網路安全性群組，以及使用門戶將 NSG 配置和安全規則移動到目的地區域。
+下列步驟示範如何使用 Resource Manager 範本來準備「設定和安全性規則」移動的「網路安全性群組」，並使用入口網站將 NSG 設定和安全性規則移至目的地區域。
 
 
-### <a name="export-the-template-and-deploy-from-the-portal"></a>匯出範本並從門戶進行部署
+### <a name="export-the-template-and-deploy-from-the-portal"></a>匯出範本並從入口網站部署
 
-1. 登錄到[Azure 門戶](https://portal.azure.com) > **資源組**。
-2. 找到包含源 NSG 的資源組並按一下它。
-3. 選擇>**設置** > **匯出範本**。
-4. 在 **"匯出範本"** 邊欄選項卡中選擇 **"部署**"。
-5. 按一下**TEMPLATE** > **編輯參數**以在連線編輯器中打開**參數.json**檔。
-6. 要編輯 NSG 名稱的參數，請更改**參數**下**的值**屬性：
+1. 登入[Azure 入口網站](https://portal.azure.com) > **資源群組**。
+2. 找出包含來源 NSG 的資源群組，然後按一下它。
+3. 選取 >**設定** > ] [**匯出範本**]。
+4. 在 [**匯出範本**] 分頁中，選擇 [**部署**]。
+5. 按一下 [**範本** > ] [**編輯參數**]，在線上編輯器中開啟**parameters json**檔案。
+6. 若要編輯 NSG 名稱的參數，請變更 [**參數**] 底下的 [**值**] 屬性：
 
     ```json
             {
@@ -60,13 +60,13 @@ Azure 安全性群組不能從一個區域移動到另一個區域。 但是，�
             }
     ```
 
-7. 將編輯器中的源 NSG 值更改為目標 NSG 您選擇的名稱。 請確保將名稱括在引號中。
+7. 將編輯器中的 [來源 NSG] 值變更為目標 NSG 所選擇的名稱。 請務必以引號括住名稱。
 
-8.  按一下編輯器中的 **"保存**"。
+8.  按一下編輯器中的 [**儲存**]。
 
-9.  按一下**TEMPLATE** > **編輯範本**以在連線編輯器中打開**範本.json**檔。
+9.  按一下 [**範本** > ] [**編輯範本**]，在線上編輯器中開啟**範本. json**檔案。
 
-10. 要編輯將移動 NSG 配置和安全規則的目的地區域，請更改連線編輯器中**資源**下**的位置**屬性：
+10. 若要編輯將移動 NSG 設定和安全性規則的目的地區域，請在線上編輯器中變更 [**資源**] 底下的 [**位置**] 屬性：
 
     ```json
             "resources": [
@@ -84,11 +84,11 @@ Azure 安全性群組不能從一個區域移動到另一個區域。 但是，�
 
     ```
 
-11. 要獲取區域位置代碼，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的代碼是沒有空格的區功能變數名稱稱，**美國** = **中部中心**。
+11. 若要取得區域位置代碼，請參閱[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。  區域的程式碼是不含空格、**美國** = 中部**centralus**的區功能變數名稱稱。
 
-12. 如果願意，還可以更改範本中的其他參數，並且根據您的要求是可選的：
+12. 您也可以根據您的需求，變更範本中的其他參數，而且是選擇性的：
 
-    * **安全規則**- 您可以通過向**範本.json**檔中**的安全規則**部分添加或刪除規則來編輯哪些規則部署到目標 NSG：
+    * **安全性規則**-您可以在**範本. Json**檔案的**securityRules**區段中新增或移除規則，以編輯要部署到目標 NSG 的規則：
 
         ```json
            "resources": [
@@ -124,7 +124,7 @@ Azure 安全性群組不能從一個區域移動到另一個區域。 但是，�
             }
         ```
 
-      要完成目標 NSG 中規則的添加或刪除，還必須以下面的示例格式編輯**範本.json**檔末尾的自訂規則類型：
+      若要完成目標 NSG 中的規則新增或移除，您也必須在**範本. json**檔案結尾處編輯自訂規則類型，其格式如下：
 
       ```json
            {
@@ -151,32 +151,32 @@ Azure 安全性群組不能從一個區域移動到另一個區域。 但是，�
             }
       ```
 
-13. 按一下連線編輯器中的 **"保存**"。
+13. 按一下線上編輯器中的 [**儲存**]。
 
-14. 按一下**BASICS** > **訂閱**以選擇將部署目標 NSG 的訂閱。
+14. 按一下 [**基本** > ] [**訂**用帳戶]，選擇將部署目標 NSG 的訂用帳戶。
 
-15. 按一下**BASICS** > **資源組**以選擇將部署目標 NSG 的資源組。  可以按一下 **"創建新**"以創建目標 NSG 的新資源組。  確保名稱與現有 NSG 的源資源組不同。
+15. 按一下 [**基本** > ] [**資源群組**]，選擇將在其中部署目標 NSG 的資源群組。  您可以按一下 [**建立新**的]，為目標 NSG 建立新的資源群組。  請確定名稱與現有 NSG 的來源資源群組不同。
 
-16. 驗證**BASICS** > **位置**設置為您希望部署 NSG 的目標位置。
+16. 確認 [**基本** > ] [**位置**] 已設定為您想要部署 NSG 的目標位置。
 
-17. 在 **"設置"** 下驗證名稱是否與您在上述參數編輯器中輸入的名稱匹配。
+17. 確認 [**設定**] 底下的 [名稱] 符合您在上面的 [參數編輯器] 中輸入的名稱。
 
-18. 選中 **"條件"和"條件**"下的核取方塊。
+18. 勾選 [**條款及條件**] 底下的方塊。
 
-19. 按一下 **"購買**"按鈕以部署目標網路安全性群組。
+19. 按一下 [**購買**] 按鈕以部署目標網路安全性群組。
 
 ## <a name="discard"></a>捨棄
 
-如果要放棄目標 NSG，請刪除包含目標 NSG 的資源組。  為此，請從門戶中的儀表板中選擇資源組，然後選擇概覽頁頂部的 **"刪除**"。
+如果您想要捨棄目標 NSG，請刪除包含目標 NSG 的資源群組。  若要這麼做，請從入口網站的儀表板中選取資源群組，然後選取 [總覽] 頁面頂端的 [**刪除**]。
 
 ## <a name="clean-up"></a>清除
 
-要提交更改並完成 NSG 的移動，請刪除源 NSG 或資源組。 為此，請從門戶中的儀表板中選擇網路安全性群組或資源組，然後在每個頁面頂部選擇 **"刪除**"。
+若要認可變更並完成 NSG 的移動，請刪除來源 NSG 或資源群組。 若要這麼做，請從入口網站的儀表板中選取 [網路安全性群組] 或 [資源群組]，然後選取每個頁面頂端的 [**刪除**]。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教程中，您將 Azure 網路安全性群組從一個區域移動到另一個區域並清理了源資源。  要瞭解有關在 Azure 中在區域和災害復原之間移動資源的詳細資訊，請參閱：
+在本教學課程中，您已將 Azure 網路安全性群組從一個區域移至另一個區域，並清除來源資源。  若要深入瞭解如何在 Azure 中的區域和嚴重損壞修復之間移動資源，請參閱：
 
 
 - [將資源移至新的資源群組或訂用帳戶](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [將 Azure VM 移至其他區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [將 Azure VM 移動到另一個區域](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

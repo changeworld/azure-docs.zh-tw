@@ -1,16 +1,16 @@
 ---
 title: 處理內容類型
-description: 瞭解如何在設計階段和 Azure 邏輯應用中的執行時間內處理工作流中的各種內容類型
+description: 瞭解如何在設計階段和執行時間的 Azure Logic Apps 中處理工作流程中的各種內容類型
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
 ms.openlocfilehash: ae0abe288edda2ce01311d8533b1f104409efce0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75666868"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>在 Azure 邏輯應用程式中處理內容類型
@@ -140,9 +140,9 @@ Logic Apps 一律會在收到的 HTTP 要求或回應中保留 `Content-Type`。
 * `xml()`：將資料轉換為 `application/xml`
 * `binary()`：將資料轉換為 `application/octet-stream`
 * `string()`：將資料轉換為 `text/plain`
-* `base64()`：將內容轉換為基64編碼字串
-* `base64toString()`：將基64編碼的字串轉換為`text/plain`
-* `base64toBinary()`：將基64編碼的字串轉換為`application/octet-stream`
+* `base64()`：將內容轉換為 base64 編碼的字串
+* `base64toString()`：將 base64 編碼的字串轉換為`text/plain`
+* `base64toBinary()`：將 base64 編碼的字串轉換為`application/octet-stream`
 * `dataUri()`：將字串轉換為數據 URI
 * `dataUriToBinary()`：將資料 URI 轉換為二進位字串
 * `dataUriToString()`：將資料 URI 轉換為字串
