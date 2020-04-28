@@ -1,6 +1,6 @@
 ---
-title: 單個或多個帳戶公共用戶端應用 |蔚藍
-description: 單個或多個帳戶公共用戶端應用的概述。
+title: 單一和多個帳戶公用用戶端應用程式 |Azure
+description: 概述單一和多個帳戶的公用用戶端應用程式。
 services: active-directory
 author: shoatman
 manager: CelesteDG
@@ -13,42 +13,42 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881327"
 ---
-# <a name="single-and-multiple-account-public-client-apps"></a>單個或多個帳戶公共用戶端應用
+# <a name="single-and-multiple-account-public-client-apps"></a>單一和多個帳戶公用用戶端應用程式
 
-本文將説明您瞭解單個或多個帳戶公共用戶端應用中使用的類型,重點是單一帳戶公共用戶端應用。 
+本文將協助您瞭解單一和多個帳戶公用用戶端應用程式中使用的類型，並將焦點放在單一帳戶的公用用戶端應用程式。 
 
-Azure 活動目錄身份驗證庫 (ADAL) 對伺服器建模。  Microsoft 身份驗證庫 (MSAL) 改為對用戶端應用程式建模。  大多數 Android 應用都被視為公共用戶端。 公共用戶端是不能安全地保守機密的應用。  
+Azure Active Directory Authentication Library （ADAL）會將伺服器模型。  Microsoft 驗證程式庫（MSAL）會改為模型您的用戶端應用程式。  大部分的 Android 應用程式都被視為公開用戶端。 公用用戶端是無法安全地保存秘密的應用程式。  
 
-MSAL 專門介紹`PublicClientApplication`的 API 表面,以簡化和闡明一次僅允許一個帳戶使用的應用的開發體驗。 `PublicClientApplication`子類為`SingleAccountPublicClientApplication``MultipleAccountPublicClientApplication`與 。  下圖顯示了這些類之間的關係。
+MSAL 會將的 API 介面`PublicClientApplication`特製化，以簡化及澄清應用程式的開發經驗，讓您一次只能使用一個帳戶。 `PublicClientApplication`是由`SingleAccountPublicClientApplication`和`MultipleAccountPublicClientApplication`所子類別化。  下圖顯示這些類別之間的關聯性。
 
-![單一帳號公共用戶端應用程式 UML 類別圖](./media/single-multi-account/single-and-multiple-account.png)
+![SingleAccountPublicClientApplication UML 類別圖](./media/single-multi-account/single-and-multiple-account.png)
 
-## <a name="single-account-public-client-application"></a>單一帳號公共用戶端應用程式
+## <a name="single-account-public-client-application"></a>單一帳戶公用用戶端應用程式
 
-該`SingleAccountPublicClientApplication`類允許您創建基於 MSAL 的應用,該應用程式只允許一次登錄單個帳戶。 `SingleAccountPublicClientApplication` 與 `PublicClientApplication` 在下列各方面不同：
+`SingleAccountPublicClientApplication`類別可讓您建立以 MSAL 為基礎的應用程式，只允許一次登入單一帳戶。 `SingleAccountPublicClientApplication` 與 `PublicClientApplication` 在下列各方面不同：
 
-- MSAL 追蹤目前登錄帳戶。
-  - 如果應用使用代理(Azure 門戶應用註冊期間的預設值),並且安裝在存在代理的設備上,MSAL 將驗證該帳戶在設備上是否仍然可用。
-- `signIn`允許您顯式和獨立於請求作用域登錄帳戶。
-- `acquireTokenSilent`不需要帳戶參數。  如果您確實提供了一個帳戶,並且您提供的帳戶與 MSAL 跟蹤的當前帳戶不匹配,則引發一`MsalClientException`個帳戶。
-- `acquireToken`不允許用戶切換帳戶。 如果用戶嘗試切換到其他帳戶,將引發異常。
-- `getCurrentAccount`傳回提供以下內容的物件:
-  - 指示帳戶是否已更改的布爾。 例如,由於從設備中刪除帳戶,可能會更改帳戶。
-  - 以前的帳戶。 如果您在從設備中刪除帳戶或新帳戶登錄時需要執行任何本地資料清理,則此功能非常有用。
-  - 當前帳戶。
-- `signOut`從設備中刪除與客戶端關聯的任何權杖。  
+- MSAL 會追蹤目前已登入的帳戶。
+  - 如果您的應用程式使用 broker （Azure 入口網站應用程式註冊期間的預設值），並且安裝在存在訊息代理程式的裝置上，MSAL 會確認帳戶是否仍可在裝置上使用。
+- `signIn`可讓您明確且與要求的範圍分開登入帳戶。
+- `acquireTokenSilent`不需要帳戶參數。  如果您提供帳戶，而且您提供的帳戶不符合 MSAL 所追蹤的目前帳戶， `MsalClientException`就會擲回。
+- `acquireToken`不允許使用者切換帳戶。 如果使用者嘗試切換至不同的帳戶，則會擲回例外狀況。
+- `getCurrentAccount`傳回提供下列各項的結果物件：
+  - 布林值，指出帳戶是否已變更。 例如，帳戶可能會因從裝置移除而變更。
+  - 先前的帳戶。 如果您需要在從裝置移除帳戶或新帳戶登入時執行任何本機資料清除，這會很有用。
+  - CurrentAccount。
+- `signOut`從裝置移除任何與您的用戶端相關聯的權杖。  
 
-當 Android 身份驗證代理(如 Microsoft 身份驗證器或 Intune 公司門戶)安裝在設備上且你的應用`signOut`配置為使用代理時, 不會從設備中刪除帳戶。
+當裝置上安裝了 Android 驗證代理程式（例如 Microsoft Authenticator 或 Intune 公司入口網站，且您的應用程式已設定為使用 broker `signOut`時，將不會從裝置移除該帳戶。
 
-## <a name="single-account-scenario"></a>單一帳號方案
+## <a name="single-account-scenario"></a>單一帳戶案例
 
-以下偽碼說明瞭使用`SingleAccountPublicClientApplication`。
+下列虛擬程式碼說明如何`SingleAccountPublicClientApplication`使用。
 
 ```java
 // Construct Single Account Public Client Application
@@ -105,30 +105,30 @@ if (app.signOut())
 }
 ```
 
-## <a name="multiple-account-public-client-application"></a>多個帳戶公共用戶端應用程式
+## <a name="multiple-account-public-client-application"></a>多個帳戶公用用戶端應用程式
 
-該`MultipleAccountPublicClientApplication`類用於創建基於 MSAL 的應用,允許同時登錄多個帳戶。 它允許您獲取、添加和刪除帳戶,如下所示:
+`MultipleAccountPublicClientApplication`類別是用來建立以 MSAL 為基礎的應用程式，允許同時登入多個帳戶。 它可讓您取得、新增和移除帳戶，如下所示：
 
 ### <a name="add-an-account"></a>新增帳戶
 
-通過調用`acquireToken`一次或多次,在應用程式中使用一個或多個帳戶。  
+藉由呼叫`acquireToken`一或多次，在您的應用程式中使用一或多個帳戶。  
 
 ### <a name="get-accounts"></a>取得帳戶
 
-- 致電`getAccount`獲取特定帳戶。
-- 呼叫`getAccounts`以獲取應用當前已知的帳戶清單。
+- 呼叫`getAccount`以取得特定帳戶。
+- 呼叫`getAccounts`以取得應用程式目前已知的帳戶清單。
 
-你的應用將無法枚舉代理應用已知的設備上的所有 Microsoft 標識平台帳戶。 它只能枚舉應用已使用的帳戶。  這些功能不會返回從設備中刪除的帳戶。
+您的應用程式將無法列舉 broker 應用程式已知之裝置上的所有 Microsoft 身分識別平臺帳戶。 它只能列舉您的應用程式已使用的帳戶。  這些功能不會傳回已從裝置移除的帳戶。
 
 ### <a name="remove-an-account"></a>移除帳戶
 
-使用帳戶標識碼調用`removeAccount`刪除帳戶。
+藉由使用帳戶識別碼`removeAccount`呼叫來移除帳戶。
 
-如果應用程式設定為使用代理,並且裝置上安裝了代理,則呼叫 時不會從代理中刪除該帳戶`removeAccount`。  僅刪除與客戶端關聯的權杖。
+如果您的應用程式已設定為使用 broker，且裝置上已安裝 broker，則當您呼叫`removeAccount`時，不會將該帳戶從 broker 中移除。  只會移除與您的用戶端相關聯的權杖。
 
-## <a name="multiple-account-scenario"></a>多個帳戶方案
+## <a name="multiple-account-scenario"></a>多重帳戶案例
 
-以下偽代碼演示如何創建多個帳戶應用、在設備上列出帳戶以及獲取令牌。
+下列虛擬程式碼顯示如何建立多個帳戶應用程式、列出裝置上的帳戶，以及取得權杖。
 
 ```java
 // Construct Multiple Account Public Client Application

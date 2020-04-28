@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure AD 連線的服務診斷錯誤(視覺化工作室)
+title: 診斷 Azure AD 聯機服務的錯誤（Visual Studio）
 description: Active directory 連線服務偵測到不相容的驗證類型
 author: ghogen
 manager: jillfra
@@ -11,25 +11,25 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: 4b39aa77ea3895a606ad34a3bc9b70dba924a23f
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886087"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>使用 Azure Active Directory 連線服務診斷錯誤
 
-在檢測以前的身份驗證代碼時,Azure 活動目錄連接的服務檢測到不相容的身份驗證類型。
+偵測先前的驗證碼時，Azure Active Directory 聯機服務偵測到不相容的驗證類型。
 
-要正確檢測專案中的以前身份驗證代碼,必須重新生成專案。 如果看到此錯誤,並且項目中沒有以前的身份驗證代碼,請重新生成並重試。
+若要正確偵測專案中先前的驗證碼，必須重建專案。 如果您看到這個錯誤，而且您的專案中沒有先前的驗證碼，請重建後再試一次。
 
 ## <a name="project-types"></a>專案類型
 
-連線服務會檢查您正在開發的專案類型，使其可將正確的驗證邏輯插入專案中。 如果專案中有任何來自`ApiController`控制器,則專案被視為 WebAPI 專案。 如果專案中只有衍生自 `MVC.Controller` 的控制器，則該專案會被視為 MVC 專案。 連線服務不支援任何其他專案類型。
+連線服務會檢查您正在開發的專案類型，使其可將正確的驗證邏輯插入專案中。 如果專案中有任何衍生自`ApiController`的控制器，則專案會被視為 WebAPI 專案。 如果專案中只有衍生自 `MVC.Controller` 的控制器，則該專案會被視為 MVC 專案。 連線服務不支援任何其他專案類型。
 
 ## <a name="compatible-authentication-code"></a>相容的驗證碼
 
-連線服務也會檢查先前以此服務設定，或與此服務相容的驗證設定。 如果存在所有設置,則視為重新進入的情況,並且連接的服務將打開顯示設置。  如果僅存在某些設置,則視為錯誤情況。
+連線服務也會檢查先前以此服務設定，或與此服務相容的驗證設定。 如果有所有設定，則會將它視為可重新進入的情況，而已連線的服務會開啟顯示設定。  如果只有部分設定存在，則會將它視為錯誤案例。
 
 在 MVC 專案中，連線服務會檢查先前使用此服務產生的以下任何設定：
 
@@ -38,7 +38,7 @@ ms.locfileid: "80886087"
     <add key="ida:AADInstance" value="" />
     <add key="ida:PostLogoutRedirectUri" value="" />
 
-此外,連接的服務會檢查 Web API 專案中的任意以下任何設置,這些設置是以前使用該服務的結果:
+此外，聯機服務會檢查 Web API 專案中是否有下列任何設定，這是先前使用此服務所產生的：
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />

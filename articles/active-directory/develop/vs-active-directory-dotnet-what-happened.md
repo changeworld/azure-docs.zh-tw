@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: d42d905bf35c015213e76bc50c4bc339a5c4a062
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886104"
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>我的 MVC 專案 (Visual Studio Azure Active Directory 已連線服務) 發生什麼事？
@@ -23,13 +23,13 @@ ms.locfileid: "80886104"
 > - [快速入門](vs-active-directory-dotnet-getting-started.md)
 > - [發生了什麼事](vs-active-directory-dotnet-what-happened.md)
 
-本文識別在使用 Visual Studio 添加[Azure 活動目錄連接服務](vs-active-directory-add-connected-service.md)時對 mVC 專案 ASP.NET 的確切更改。
+本文識別[使用 Visual Studio 新增 Azure Active Directory 聯機服務](vs-active-directory-add-connected-service.md)時，對 ASP.NET MVC 專案所做的確切變更。
 
 如需使用連線服務的相關資訊，請參閱[開始使用](vs-active-directory-dotnet-getting-started.md)。
 
 ## <a name="added-references"></a>新增的參考
 
-影響專案檔(*.NET引用)和`packages.config`(NuGet引用)。
+會影響專案檔（*. NET 參考）和`packages.config` （NuGet 參考）。
 
 | 類型 | 參考 |
 | --- | --- |
@@ -142,7 +142,7 @@ ms.locfileid: "80886104"
 
 ### <a name="file-backup-visual-studio-2015"></a>檔案備份 (Visual Studio 2015)
 
-在新增連線服務時，Visual Studio 2015 會備份已變更和移除的檔案。 所有受影響的檔案都會儲存在資料夾 `Backup/AzureAD` 中。 Visual Studio 2017 及更高版本不創建備份。
+在新增連線服務時，Visual Studio 2015 會備份已變更和移除的檔案。 所有受影響的檔案都會儲存在資料夾 `Backup/AzureAD` 中。 Visual Studio 2017 和更新版本不會建立備份。
 
 - `Startup.cs`
 - `App_Start\IdentityConfig.cs`
@@ -158,9 +158,9 @@ ms.locfileid: "80886104"
 - 已在您於新增連線服務時選取的網域中建立 Azure AD 應用程式。
 - 已更新應用程式，以在選取了 [讀取目錄資料]**** 選項時包含「讀取目錄資料」權限。
 
-[瞭解有關 Azure 活動目錄的更多內容](https://azure.microsoft.com/services/active-directory/)。
+[深入瞭解 Azure Active Directory](https://azure.microsoft.com/services/active-directory/)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 活動目錄的身份驗證機制](authentication-scenarios.md)
+- [Azure Active Directory 的驗證案例](authentication-scenarios.md)
 - [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

@@ -1,16 +1,16 @@
 ---
-title: 創建或聯接工作流中操作的平行分支
-description: 瞭解如何在 Azure 邏輯應用中為獨立的工作流操作創建或合併並行運行分支
+title: 針對工作流程中的動作建立或加入平行分支
+description: 瞭解如何在 Azure Logic Apps 中，建立或合併獨立工作流程動作的平行執行分支
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/10/2018
 ms.openlocfilehash: c0b1519992ba930382a1987aed185ef3c92eded4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75453424"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立或加入工作流程動作的平行分支
@@ -24,7 +24,7 @@ ms.locfileid: "75453424"
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。 
 
-* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
 
 <a name="parallel-branches"></a>
 
@@ -53,7 +53,7 @@ ms.locfileid: "75453424"
 
    ![尋找並選取您想要的動作](media/logic-apps-control-flow-branches/added-parallel-branch.png)
 
-1. 立即在每個平行分支中，新增您想要的步驟。 若要將另一個動作新增至分支，請將滑鼠指標移至您要新增循序動作的動作下方。 選擇顯示的**加號**（）**+** 符號，然後選擇 **"添加操作**"。
+1. 立即在每個平行分支中，新增您想要的步驟。 若要將另一個動作新增至分支，請將滑鼠指標移至您要新增循序動作的動作下方。 選擇顯示**plus**的加號**+**（），然後選取 [**新增動作**]。
 
    ![將循序動作新增至平行分支](media/logic-apps-control-flow-branches/add-sequential-action.png)
 

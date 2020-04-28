@@ -1,5 +1,5 @@
 ---
-title: Azure 單簽出 SAML 協定
+title: Azure 單一登出 SAML 通訊協定
 description: 本文說明 Azure Active Directory 中的單一登出 SAML 通訊協定
 services: active-directory
 author: rwike77
@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.openlocfilehash: dbe21d020d5d01f24913b95587721403fa218cc8
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881260"
 ---
 # <a name="single-sign-out-saml-protocol"></a>單一登出 SAML 通訊協定
@@ -66,9 +66,9 @@ Azure AD 會傳送 `LogoutResponse` 以回應 `LogoutRequest` 元素。 下列�
 Azure AD 會設定 `LogoutResponse` 元素中的 `ID`、`Version` 和 `IssueInstant` 值。 它也會將 `InResponseTo` 元素設定為導出回應的 `LogoutRequest` 的 `ID` 屬性值。
 
 ### <a name="issuer"></a>簽發者
-Azure AD 將`https://login.microsoftonline.com/<TenantIdGUID>/`此\<值 設置 到租戶 IdGUID>是 Azure AD 租戶的租戶 ID 的位置。
+Azure AD 會將此值`https://login.microsoftonline.com/<TenantIdGUID>/`設定\<為，其中 TenantIdGUID> 是 Azure AD 租使用者的租使用者識別碼。
 
 若要評估 `Issuer` 元素的值，請使用應用程式註冊期間提供的 **應用程式識別碼 URI** 的值。
 
 ### <a name="status"></a>狀態
-Azure`StatusCode`AD 使用`Status`元素中 的元素來指示註銷的成功或失敗。當登出嘗試失敗時,`StatusCode`該元素還可以包含自定義錯誤訊息。
+Azure AD 使用`Status`元素`StatusCode`中的專案，來表示登出成功或失敗。當登出嘗試失敗時， `StatusCode`元素也可以包含自訂錯誤訊息。

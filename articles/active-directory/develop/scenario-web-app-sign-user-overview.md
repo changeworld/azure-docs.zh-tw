@@ -1,6 +1,6 @@
 ---
-title: 從 Web 應用登錄使用者 - 微軟身份平臺 |蔚藍
-description: 瞭解如何建構在使用者中簽名的 Web 應用程式(概述)
+title: 從 Web 應用程式登入使用者-Microsoft 身分識別平臺 |Azure
+description: 瞭解如何建立可登入使用者的 web 應用程式（總覽）
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,15 +12,15 @@ ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.openlocfilehash: 65d254cec5735c54e19f5adfde57fb6aed776a2c
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80881480"
 ---
-# <a name="scenario-web-app-that-signs-in-users"></a>專案:在使用者中簽名的 Web 應用
+# <a name="scenario-web-app-that-signs-in-users"></a>案例：登入使用者的 Web 應用程式
 
-瞭解建用 Microsoft 識別平台登入使用者的 Web 應用所需的全部內容。
+瞭解您所需的一切，以建立使用 Microsoft 身分識別平臺來登入使用者的 web 應用程式。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -30,52 +30,52 @@ ms.locfileid: "80881480"
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-如果要建立第一個在使用者中簽名的便攜式(ASP.NET酷睿)Web 應用,請按照以下快速入門操作:
+如果您想要建立登入使用者的第一個可攜（ASP.NET Core） web 應用程式，請遵循此快速入門：
 
 > [!div class="nextstepaction"]
-> [快速入門:ASP.NET核心 Web 應用程式,在使用者中簽名](quickstart-v2-aspnet-core-webapp.md)
+> [快速入門： ASP.NET Core 登入使用者的 web 應用程式](quickstart-v2-aspnet-core-webapp.md)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-如果您想瞭解如何將登入到現有ASP.NET Web 應用程式,請嘗試以下快速入門:
+如果您想要瞭解如何將登入新增至現有的 ASP.NET web 應用程式，請嘗試下列快速入門：
 
 > [!div class="nextstepaction"]
-> [快速入門:ASP.NET在使用者中簽名的 Web 應用](quickstart-v2-aspnet-webapp.md)
+> [快速入門： ASP.NET 可登入使用者的 web 應用程式](quickstart-v2-aspnet-webapp.md)
 
 # <a name="java"></a>[Java](#tab/java)
 
-如果您是 Java 開發人員,請嘗試以下快速入門:
+如果您是 JAVA 開發人員，請嘗試下列快速入門：
 
 > [!div class="nextstepaction"]
-> [快速入門:將 Microsoft 的登入加入 Java Web 應用](quickstart-v2-java-webapp.md)
+> [快速入門：將「使用 Microsoft 登入」新增至 Java Web 應用程式](quickstart-v2-java-webapp.md)
 
 # <a name="python"></a>[Python](#tab/python)
 
-如果使用 Python 進行開發,請嘗試以下快速入門:
+如果您使用 Python 進行開發，請嘗試下列快速入門：
 
 > [!div class="nextstepaction"]
-> [快速入門:將 Microsoft 登入到 Python Web 應用](quickstart-v2-python-webapp.md)
+> [快速入門：將「使用 Microsoft 登入」新增至 Python Web 應用程式](quickstart-v2-python-webapp.md)
 
 ---
 
 ## <a name="overview"></a>概觀
 
-向 Web 應用添加身份驗證,以便它可以登錄使用者。 添加身份驗證使 Web 應用可以存取有限的設定檔資訊,以便自訂使用者的體驗。 
+您可以將驗證新增至 web 應用程式，讓它可以登入使用者。 新增驗證可讓您的 web 應用程式存取有限的設定檔資訊，以自訂使用者的體驗。 
 
-Web 應用在 Web 瀏覽器中對使用者進行身份驗證。 在這種情況下,Web 應用指示使用者的瀏覽器將其登錄到 Azure 活動目錄 (Azure AD)。 Azure AD 通過使用者的瀏覽器返回登錄回應,該瀏覽器包含安全令牌中有關用戶的聲明。 登錄使用者利用開放 ID[連接](./v2-protocols-oidc.md)標準協議,通過使用中間件[庫](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps)進行簡化。
+Web apps 會在網頁瀏覽器中驗證使用者。 在此案例中，web 應用程式會引導使用者的瀏覽器登入，以 Azure Active Directory （Azure AD）。 Azure AD 會透過使用者的瀏覽器傳回登入回應，其中包含有關安全性權杖中使用者的宣告。 登入使用者會利用[OPEN ID Connect](./v2-protocols-oidc.md)標準通訊協定，並透過使用中介軟體連結[庫](scenario-web-app-sign-user-app-configuration.md#libraries-for-protecting-web-apps)來簡化。
 
 ![登入使用者的 Web 應用程式](./media/scenario-webapp/scenario-webapp-signs-in-users.svg)
 
-作為第二階段,您可以使應用程式能夠代表登錄使用者調用 Web API。 下一階段是一個不同的方案,您將在調用 Web [API 的 Web 應用中](scenario-web-app-call-api-overview.md)找到。
+在第二個階段中，您可以讓應用程式代表登入的使用者呼叫 web Api。 下一個階段是不同的案例，您可以在[呼叫 Web api 的 web 應用程式](scenario-web-app-call-api-overview.md)中找到。
 
 > [!NOTE]
-> 向 Web 應用添加登入內容是保護 Web 應用並驗證使用者權杖,這是**中間件**庫所做的。 對於 .NET,此方案尚不需要 Microsoft 身份驗證庫 (MSAL),即獲取令牌來調用受保護的 API。 當 Web 應用需要調用 Web API 時,將在後續方案中引入身份驗證庫。
+> 將登入新增至 web 應用程式時，是關於保護 web 應用程式和驗證使用者權杖，這是**中介軟體**程式庫的功能。 在 .NET 中，此案例尚未需要 Microsoft 驗證程式庫（MSAL），這是關於取得權杖以呼叫受保護的 Api。 當 web 應用程式需要呼叫 web Api 時，會在後續的案例中引進驗證程式庫。
 
-## <a name="specifics"></a>詳細資料
+## <a name="specifics"></a>瞭解
 
-- 在應用程式註冊期間,您需要提供一個或多個(如果將應用部署到多個位置)回復URI。 在某些情況下(ASP.NET和ASP.NET核心),您需要啟用 ID 權杖。 最後,您需要設置一個登出 URI,以便應用程式對登出的使用者做出反應。
-- 在應用程式的代碼中,您需要提供 Web 應用委派登錄的許可權。 您可能希望自定義權杖驗證(特別是在合作夥伴方案中)。
-- Web 應用程式支援任何帳戶類型。 有關詳細資訊,請參閱[受支援的帳戶類型](v2-supported-account-types.md)。
+- 在應用程式註冊期間，您必須提供一或多個（如果您將應用程式部署至數個位置）回復 Uri。 在某些情況下（ASP.NET 和 ASP.NET Core），您必須啟用 ID 權杖。 最後，您會想要設定登出 URI，讓您的應用程式對登出使用者做出回應。
+- 在應用程式的程式碼中，您必須提供 web 應用程式委派登入的許可權。 您可能想要自訂權杖驗證（尤其是在合作夥伴案例中）。
+- Web 應用程式支援任何帳戶類型。 如需詳細資訊，請參閱[支援的帳戶類型](v2-supported-account-types.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

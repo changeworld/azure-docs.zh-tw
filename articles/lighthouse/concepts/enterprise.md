@@ -4,15 +4,15 @@ description: Azure Lighthouse 的功能可在使用多個 Azure AD 租用戶的�
 ms.date: 09/25/2019
 ms.topic: conceptual
 ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75749218"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse 在企業案例中的運用
 
-[Azure 燈塔](../overview.md)的最常見方案是管理其客戶的 Azure 活動目錄 （Azure AD） 租戶中的資源的服務提供者。 不過，Azure Lighthouse 的功能也可在使用多個 Azure AD 租用戶的企業內用來簡化跨租用戶管理。
+[Azure 燈塔](../overview.md)最常見的案例是在其客戶的 Azure Active Directory （Azure AD）租使用者中管理資源的服務提供者。 不過，Azure Lighthouse 的功能也可在使用多個 Azure AD 租用戶的企業內用來簡化跨租用戶管理。
 
 ## <a name="single-vs-multiple-tenants"></a>單一與多個租用戶的比較
 
@@ -24,7 +24,7 @@ ms.locfileid: "75749218"
 
 集中進行跨多個租用戶的管理作業時，您必須判斷哪個租用戶將包含對其他租用戶執行管理作業的使用者。 換句話說，您必須判斷哪個租用戶會是其他租用戶的管理租用戶。
 
-例如，假設您的組織具有單個租戶，我們將調用*租戶 A*。然後，您的組織將獲取兩個額外的租戶，*租戶 B*和*租戶 C，* 並且您有業務原因要求您將它們作為單獨的租戶進行維護。
+例如，假設您的組織有一個租使用者，我們將會呼叫*租使用者 a*。您的組織接著會取得兩個額外的*租使用者 B*和*租使用者 C*，而且您有商業理由需要您將其維護為個別的租使用者。
 
 貴組織想要在所有租用戶中使用相同的原則定義、備份做法和安全性程序。 由於您已經有負責在租用戶 A 中執行這些工作的使用者 (包括使用者群組和服務主體)，因此您可以將租用戶 B 和租用戶 C 內的所有訂用帳戶上架，讓租用戶 A 中的這些使用者可以執行這些作業。
 

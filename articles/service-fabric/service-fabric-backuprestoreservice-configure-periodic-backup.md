@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 2/01/2019
 ms.author: hrushib
 ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75610143"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>在 Azure Service Fabric 中了解定期備份設定
@@ -89,7 +89,7 @@ ms.locfileid: "75610143"
         }
         ```
 
-    2. **檔共用**：當需要在本機存放區資料備份時，應為_獨立_群集選擇此存儲類型。 此儲存體類型的描述需要必須上傳備份的檔案共用路徑。 您可以使用下列其中一個選項，設定檔案共用的存取權：
+    2. 檔案**共用**：當需要在內部部署環境中儲存資料備份時，應該為_獨立_叢集選取此儲存類型。 此儲存體類型的描述需要必須上傳備份的檔案共用路徑。 您可以使用下列其中一個選項，設定檔案共用的存取權：
         1. 整合式 Windows 驗證__，可對屬於 Service Fabric 叢集的所有電腦提供檔案共用的存取權。 在此情況下，設定下列欄位，以設定以「檔案共用」__ 為基礎的備份儲存體。
 
             ```json
@@ -118,8 +118,8 @@ ms.locfileid: "75610143"
 > 確保儲存體可靠性符合或超過備份資料的可靠性需求。
 >
 
-* **保留原則**：指定在配置的存儲中保留備份的策略。 僅支援基本保留原則。
-    1. **基本保留原則**：此保留原則允許通過刪除不再需要的備份檔案來確保最佳的存儲利用率。 指定 `RetentionDuration`，即可設定備份必須保留在儲存體中的時間範圍。 `MinimumNumberOfBackups` 是選用參數，加以指定即可確保一律保留指定的備份數目 (不論 `RetentionDuration` 為何)。 下列範例說明保留備份 _10_ 天，而且不允許備份數目低於 _20_ 的組態。
+* **保留原則**：指定要在設定的儲存體中保留備份的原則。 僅支援基本保留原則。
+    1. **基本保留原則**：此保留原則可讓您藉由移除不再需要的備份檔案，以確保最佳的儲存使用量。 指定 `RetentionDuration`，即可設定備份必須保留在儲存體中的時間範圍。 `MinimumNumberOfBackups` 是選用參數，加以指定即可確保一律保留指定的備份數目 (不論 `RetentionDuration` 為何)。 下列範例說明保留備份 _10_ 天，而且不允許備份數目低於 _20_ 的組態。
 
         ```json
         {

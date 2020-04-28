@@ -1,5 +1,5 @@
 ---
-title: 從 Azure 邏輯套用連接到 SMTP
+title: 從 Azure Logic Apps 連接到 SMTP
 description: 藉由使用 Azure Logic Apps，讓透過 SMTP (簡易郵件傳輸通訊協定) 帳戶傳送電子郵件的工作和工作流程自動化
 services: logic-apps
 ms.suite: integration
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656991"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>使用 Azure Logic Apps 從您的 SMTP 帳戶傳送電子郵件
 
-您可以使用 Azure Logic Apps 和簡易郵件傳輸通訊協定 (SMTP) 連接器，建立自動化的工作和工作流程，以便從您的 SMTP 帳戶傳送電子郵件。 您也可以讓其他動作使用 SMTP 動作的輸出。 例如，在您的 SMTP 傳送電子郵件之後，您可以使用 Slack 連接器，在 Slack 中通知您的小組。 如果您是邏輯應用的新增功能,請查看什麼是[Azure 邏輯應用?](../logic-apps/logic-apps-overview.md)
+您可以使用 Azure Logic Apps 和簡易郵件傳輸通訊協定 (SMTP) 連接器，建立自動化的工作和工作流程，以便從您的 SMTP 帳戶傳送電子郵件。 您也可以讓其他動作使用 SMTP 動作的輸出。 例如，在您的 SMTP 傳送電子郵件之後，您可以使用 Slack 連接器，在 Slack 中通知您的小組。 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -26,7 +26,7 @@ ms.locfileid: "80656991"
 
   您的認證會授權邏輯應用程式建立連線並存取 SMTP 帳戶。
 
-* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
 
 * 您要在其中存取 SMTP 帳戶的邏輯應用程式。 若要使用 SMTP 動作，請使用觸發程序來啟動邏輯應用程式，例如 Salesforce 觸發程序 (如果您有 Salesforce 帳戶)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "80656991"
 1. 請在想要新增 SMTP 動作的最後一個步驟底下，選擇 [新增步驟]****。 
 
    若要在步驟之間新增動作，將指標移至步驟之間的箭號。 
-   選擇顯示的加號**+**(),然後選擇 **「添加操作**」。。
+   選擇顯示的加號（**+**），然後選取 [**新增動作**]。
 
 1. 在搜尋方塊中，輸入 "smtp" 作為篩選條件。 在動作清單底下，選取您想要的動作。
 
@@ -56,7 +56,7 @@ ms.locfileid: "80656991"
    | **使用者名稱** | 是 | SMTP 帳戶的使用者名稱 | 
    | **密碼** | 是 | SMTP 帳戶的密碼 | 
    | **SMTP 伺服器連接埠** | 否 | SMTP 伺服器上您想要使用的特定連接埠 | 
-   | **啟用 SSL?** | 否 | 打開或關閉 TLS/SSL 加密。 | 
+   | **要啟用 SSL 嗎？** | 否 | 開啟或關閉 TLS/SSL 加密。 | 
    |||| 
 
 1. 為您選取的動作提供必要的詳細資料。 
@@ -65,10 +65,10 @@ ms.locfileid: "80656991"
 
 ## <a name="connector-reference"></a>連接器參考
 
-有關此連線器的更多技術詳細資訊,例如連接器的 Swagger 檔所述的觸發器、操作和限制,請參閱[連接器的參考頁](https://docs.microsoft.com/connectors/smtpconnector/)。
+如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/smtpconnector/)。
 
 > [!NOTE]
-> 對於[整合服務環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)的邏輯應用,此連線器的 ISE 標籤版本使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/06/2018
 ms.openlocfilehash: e13f4abc37e348759e7d0b8a2f7d890c82fe0d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77660235"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Azure 監視器記錄中的搜尋查詢
@@ -43,7 +43,7 @@ search in (Event, SecurityEvent) "error"
 ```
 
 ### <a name="table-and-column-scoping"></a>界定資料表和資料行的範圍
-根據預設，**search** 會評估資料集內的所有資料行。 要僅搜索特定列（在下面的示例中命名為*Source），* 請使用以下語法：
+根據預設，**search** 會評估資料集內的所有資料行。 若只要在下列範例中搜尋特定資料行（名為*Source* ），請使用下列語法：
 
 ```Kusto
 search in (Event) Source:"error"
@@ -51,7 +51,7 @@ search in (Event) Source:"error"
 ```
 
 > [!TIP]
-> 如果您使用 `==` 而非 `:`，結果中會包含 *Source* 資料行具有確切值「error」、且在這個確切案例中的記錄。 使用"："將包括*源*具有"錯誤代碼 404"或"錯誤"等值的記錄。
+> 如果您使用 `==` 而非 `:`，結果中會包含 *Source* 資料行具有確切值「error」、且在這個確切案例中的記錄。 使用 '： ' 將會包含*來源*具有 "錯誤碼 404" 或 "error" 等值的記錄。
 
 ## <a name="case-sensitivity"></a>區分大小寫
 根據預設，字詞搜尋不會區分大小寫，因此，搜尋 "dns" 可能會產生 "DNS"、"dns" 或 "Dns" 等結果。 若要讓搜尋區分大小寫，請使用 `kind` 選項：

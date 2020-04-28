@@ -1,13 +1,13 @@
 ---
-title: 在系統和本地安全帳戶下運行服務
+title: 在系統和本機安全性帳戶下執行服務
 description: 了解如何在系統和本機安全性帳戶下執行 Service Fabric 應用程式。  建立安全性主體並套用「執行身分」原則以安全地執行您的服務。
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75610111"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>以本機使用者帳戶或本機系統帳戶身分執行服務

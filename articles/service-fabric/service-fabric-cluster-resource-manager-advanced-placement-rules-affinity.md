@@ -1,6 +1,6 @@
 ---
-title: 服務結構群集資源管理器 - 關聯性
-description: Azure 服務交換矩陣服務的服務相關性概述以及服務關聯配置指南。
+title: Service Fabric 叢集 Resource Manager-親和性
+description: Azure Service Fabric 服務的服務親和性總覽和服務親和性設定的指引。
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7bfd261802fbf891b8f45079255783cb1e8ac7d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551738"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>在 Service Fabric 中設定並使用服務同質性
@@ -53,7 +53,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 
 <center>
 
-![關聯模式及其效果][Image1]
+![親和性模式及其效果][Image1]
 </center>
 
 ### <a name="best-effort-desired-state"></a>盡力而為的期望狀態
@@ -64,7 +64,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 
 <center>
 
-![關聯關係中的鏈與星][Image2]
+![同質關聯性內容中的鏈與星星][Image2]
 </center>
 
 目前關於同質關聯性的另一個注意事項是它們預設是雙向的。 這表示同質性規則只會強制讓子系跟隨父系來放置。 它無法確保父系會與子系位於相同位置。 因此，如果有同質性違規發生，且基於某種原因要修正違規，將子系移至父系節點是不可行的，即使將父系移至子系節點會修正違規，父系節點也不會移至子系節點。 將 [MoveParentToFixAffinityViolation](service-fabric-cluster-fabric-settings.md) 設為 True 會移除方向。 也請務必注意，同質關聯性不可能完美無缺或立即強制執行，因為不同的服務會有不同的生命週期，因此可以單獨地失敗和移動。 例如，假設父系因為當機而突然容錯移轉至另一個節點。 叢集資源管理員和容錯移轉管理員會先處理容錯移轉，因為其首要任務就是讓服務保持運作、一致性和可用性。 在容錯移轉完成之後，同質關聯性已中斷，但叢集資源管理員會認為一切正常，直到它發現子系並未與父系放在一起。 系統會定期執行這類檢查。 您可以在[這篇文章](service-fabric-cluster-resource-manager-management-integration.md#constraint-types)中找到更多關於叢集資源管理員如何評估條件約束的資訊，[這篇文章](service-fabric-cluster-resource-manager-balancing.md)則會深入說明如何設定這些條件約束的評估頻率。   

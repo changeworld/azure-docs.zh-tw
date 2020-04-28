@@ -1,15 +1,15 @@
 ---
-title: 資源管理器體系結構
-description: 有關 Azure 服務結構群集資源管理器服務的概述和體系結構資訊。
+title: Resource Manager 架構
+description: 有關 Azure Service Fabric 叢集 Resource Manager 服務的總覽和架構資訊。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 94ed906533d108081d620e9b183ecfee249d85ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551687"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>叢集資源管理員架構概觀
@@ -43,7 +43,7 @@ Service Fabric 叢集資源管理員是在叢集中執行的中央服務。 它�
 
 <center>
 
-![資源等化器體系結構][Image1]
+![資源平衡器架構][Image1]
 </center>
 
 執行階段可能發生許多變化。 例如，假設某些服務耗用的資源數量改變、某些服務失敗，以及某些節點加入和離開叢集。 節點上的所有變更會彙總，並定期傳送到叢集資源管理員服務 (1，2)，它們會在其中再次彙總、分析及儲存。 每隔幾秒鐘，服務就會查看變更，並判斷是否需要採取任何動作 (3)。 例如，它可能會注意到某些空的節點已新增至叢集。 如此一來，它會決定要將某些服務移至這些節點。 叢集資源管理員可能也會注意到特定節點是超載的，或者某些服務已失敗或刪除，而在別處釋放資源。
@@ -52,11 +52,11 @@ Service Fabric 叢集資源管理員是在叢集中執行的中央服務。 它�
 
 <center>
 
-![資源等化器體系結構][Image2]
+![資源平衡器架構][Image2]
 </center>
 
 ## <a name="next-steps"></a>後續步驟
-- 叢集資源管理員有許多描述叢集的選項。 要瞭解有關它們的更多，請查看本文介紹[服務結構群集](./service-fabric-cluster-resource-manager-cluster-description.md)
+- 叢集資源管理員有許多描述叢集的選項。 若要深入瞭解它們，請參閱本文，以瞭解如何[描述 Service Fabric](./service-fabric-cluster-resource-manager-cluster-description.md)叢集
 - 叢集資源管理員的主要責任是重新平衡叢集，以及強制執行放置規則。 如需有關設定這些行為的詳細資訊，請參閱[平衡 Service Fabric 叢集](./service-fabric-cluster-resource-manager-balancing.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png

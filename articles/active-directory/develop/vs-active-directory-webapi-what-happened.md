@@ -1,6 +1,6 @@
 ---
 title: 連接到 Azure AD 時對 WebAPI 專案所做的變更
-description: 描述使用視覺化工作室連接到 Azure AD 時 WebAPI 專案會發生什麼情況
+description: 說明當您使用 Visual Studio 連接到 Azure AD 時，WebAPI 專案會發生什麼事
 author: ghogen
 manager: jillfra
 ms.workload: azure-vs
@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.openlocfilehash: 46fb0ad37b872a1d7ca72114f2f263df776aabf1
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80886053"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>我的 WebAPI 專案 (Visual Studio Azure Active Directory 連線服務) 發生什麼狀況
@@ -123,9 +123,9 @@ ms.locfileid: "80886053"
 - 已在您於新增連線服務時選取的網域中建立 Azure AD 應用程式。
 - 已更新應用程式，以在選取了 [讀取目錄資料]**** 選項時包含「讀取目錄資料」權限。
 
-[瞭解有關 Azure 活動目錄的更多內容](https://azure.microsoft.com/services/active-directory/)。
+[深入瞭解 Azure Active Directory](https://azure.microsoft.com/services/active-directory/)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 活動目錄的身份驗證機制](authentication-scenarios.md)
+- [Azure Active Directory 的驗證案例](authentication-scenarios.md)
 - [將「使用 Microsoft 登入」新增至 ASP.NET Web 應用程式](quickstart-v2-aspnet-webapp.md)

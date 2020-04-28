@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
 ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670129"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>從 Log Analytics 記錄搜尋轉換至 Azure 監視器記錄
@@ -53,7 +53,7 @@ ms.locfileid: "77670129"
 
 ![記錄搜尋向下鑽研](media/log-search-transition/drilldown-search.png)
 
-在 Azure 監視器記錄中，必須修改查詢才能傳回這些記錄。 展開結果中的一行，然後按一下值**+** 的下一個以將其添加到查詢。 然後，註解化 **summarize** 命令，並再次執行查詢。
+在 Azure 監視器記錄中，必須修改查詢才能傳回這些記錄。 展開結果中的其中一個資料列，然後按一下**+** 值旁的，將它加入至查詢。 然後，註解化 **summarize** 命令，並再次執行查詢。
 
 ![Azure 監視器記錄向下鑽研](media/log-search-transition/drilldown-logs.png)
 

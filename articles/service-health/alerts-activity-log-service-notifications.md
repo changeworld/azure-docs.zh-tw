@@ -4,18 +4,18 @@ description: 在 Azure 服務發生時透過 SMS、電子郵件或 Webhook 獲�
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.openlocfilehash: d318adc76959ac24f4be9946167965a83053f632
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75749314"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>建立服務通知的活動記錄警示
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文將說明如何使用 Azure 入口網站為服務健康情況通知設定活動記錄警示。  
 
-服務運行狀況通知存儲在 Azure[活動日誌](../azure-monitor/platform/platform-logs-overview.md)中給定可能存儲在活動日誌中的大量資訊，有一個單獨的使用者介面，以便更輕鬆地查看和設置服務運行狀況通知上的警報。 
+服務健康狀態通知會儲存在[Azure 活動記錄](../azure-monitor/platform/platform-logs-overview.md)檔中，因為活動記錄中可能有大量的資訊，所以有個別的使用者介面，可讓您更輕鬆地查看及設定服務健康狀態通知的警示。 
 
 您可以在 Azure 傳送服務健康狀態通知到您的 Azure 訂用帳戶時接收警示。 您可以針對下列設定警示：
 
@@ -32,11 +32,11 @@ ms.locfileid: "75749314"
 - 選取現有的動作群組。
 - 建立新動作群組 (可用於未來的警示)。
 
-要瞭解有關操作組的更多詳細資訊，請參閱[創建和管理操作組](../azure-monitor/platform/action-groups.md)。
+若要深入了解動作群組，請參閱[建立及管理動作群組](../azure-monitor/platform/action-groups.md)。
 
 若要了解如何使用 Azure Resource Manager 範本來設定服務健康情況通知警示，請參閱 [Resource Manager 範本](../azure-monitor/platform/alerts-activity-log.md)。
 
-### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>觀看有關設置第一個 Azure 服務運行狀況警報的視頻
+### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>觀看有關設定第一個 Azure 服務健康狀態警示的影片
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
@@ -72,7 +72,7 @@ ms.locfileid: "75749314"
 
 1. 請提供接收者的下列各項，以定義接收者的清單：
 
-    a. **名稱**：輸入接收方的名稱、別名或識別碼。
+    a. **名稱**：輸入接收者的名稱、別名或識別碼。
 
     b. **動作類型**：選取簡訊、電子郵件、Webhook 和 Azure 應用程式等。
 
@@ -90,7 +90,7 @@ ms.locfileid: "75749314"
 
 ## <a name="alert-with-existing-action-group-using-azure-portal"></a>使用 Azure 入口網站以現有的動作群組建立警示
 
-1. 按照上一節中的步驟 1 到 6 創建服務運行狀況通知。 
+1. 請遵循上一節中的步驟1到6，以建立您的服務健康情況通知。 
 
 1. 在 [定義動作群組]**** 下，按一下 [選取動作群組]**** 按鈕。 選取適當的動作群組。
 
@@ -197,11 +197,11 @@ ms.locfileid: "75749314"
 * 如果您需要暫時停止或恢復接收警示的通知，可以將警示停用或啟用。
 
 ## <a name="next-steps"></a>後續步驟
-- 瞭解[設置 Azure 服務運行狀況警報的最佳做法](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa)。
-- 瞭解如何為[Azure 服務運行狀況設置移動推送通知](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)。
-- 瞭解如何[為現有問題管理系統配置 Webhook 通知](service-health-alert-webhook-guide.md)。
-- 瞭解[服務運行狀況通知](service-notifications.md)。
+- 瞭解[設定 Azure 服務健康狀態警示的最佳做法](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa)。
+- 瞭解如何[設定 Azure 服務健康狀態的行動推播通知](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw)。
+- 瞭解如何[設定現有問題管理系統的 webhook 通知](service-health-alert-webhook-guide.md)。
+- 瞭解[服務健康狀態通知](service-notifications.md)。
 - 瞭解[通知速率限制](../azure-monitor/platform/alerts-rate-limiting.md)。
-- 查看[活動日誌警報 Webhook 架構](../azure-monitor/platform/activity-log-alerts-webhook.md)。
+- 檢查[活動記錄警示 webhook 架構](../azure-monitor/platform/activity-log-alerts-webhook.md)。
 - 取得[活動記錄警示的概觀](../azure-monitor/platform/alerts-overview.md)，並了解如何收到警示。
-- 瞭解有關[操作組](../azure-monitor/platform/action-groups.md)的更多。
+- 深入瞭解[動作群組](../azure-monitor/platform/action-groups.md)。
