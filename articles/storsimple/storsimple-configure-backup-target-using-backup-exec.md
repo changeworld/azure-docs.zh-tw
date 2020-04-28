@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
 ms.openlocfilehash: 4dcda65384190050e11f1bf9b15c706b0e38c6b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75561638"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>使用 StorSimple 做為 Backup Exec 的備份目標
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure StorSimple 是 Microsoft 提供的混合式雲端儲存體解決方案。 StorSimple 使用 Azure 儲存體帳戶做為內部部署解決方案的擴充功能，跨內部部署儲存體和雲端儲存體自動將資料分層，解決資料暴增的複雜性問題。
 
@@ -55,8 +55,8 @@ StorSimple 是不錯的備份目標選擇，因為︰
 
 StorSimple 的設計目的是針對運作定義完善的使用中資料集 (熱資料) 的應用程式提供儲存體。 在此模型中，使用中的資料集儲存在本機層，其餘非使用中/冷/封存的資料集則分層儲存到雲端。 下圖說明這個模型。 幾乎是平坦的綠線表示儲存在 StorSimple 裝置本機層的資料。 紅線則表示儲存在 StorSimple 解決方案所有各層的資料總量。 平坦綠線與呈指數形的紅色曲線之間的空間代表儲存在雲端的資料總量。
 
-**StorSimple 分層**
-![Stor 簡單分層圖](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
+**Storsimple 分層**
+![storsimple 分層圖](./media/storsimple-configure-backup-target-using-backup-exec/image1.jpg)
 
 記住此架構，您會發現 StorSimple 非常適合做為備份目標。 您可以使用 StorSimple 進行下列作業：
 -   從本機使用中的資料集執行最頻繁的還原。
@@ -205,7 +205,7 @@ StorSimple 提供下列優點︰
 
 根據下列各節中的指導方針來設定您的解決方案。
 
-### <a name="operating-system-best-practices"></a>作業系統最佳作法
+### <a name="operating-system-best-practices"></a>作業系統最佳做法
 
 - 停用 NTFS 檔案系統的 Windows Server 加密和重複資料刪除。
 - 停用 StorSimple 磁碟區的 Windows Server 磁碟重組。
@@ -233,7 +233,7 @@ StorSimple 提供下列優點︰
 -   StorSimple 支援 Backup Exec 完整和增量備份。 建議您不要使用綜合和差異備份。
 -   備份資料檔案最好只包含特定作業的資料。 例如，不允許在不同作業之間附加媒體。
 -   停用作業驗證。 如有必要，應該將驗證安排在最新的備份作業之後進行。 請務必了解這項作業會影響您的備份時間範圍。
--   選擇 **"存儲** > **磁片** > **詳細資訊** > **屬性**"。 關閉 [預先配置磁碟空間]****。
+-   選取 [**儲存體** > ] [**磁片** > ] [**詳細資料** > ]**屬性**。 關閉 [預先配置磁碟空間]****。
 
 如需實作這些需求的最新 Backup Exec 設定和最佳作法，請參閱 [Veritas 網站](https://www.veritas.com)。
 
@@ -267,7 +267,7 @@ StorSimple 提供下列優點︰
 
 ### <a name="to-set-up-backup-exec-storage"></a>若要設定 Backup Exec 儲存體
 
-1.  在備份執行管理主控台中，選擇 **"存儲** > **配置** > **基於磁片的存儲** > **下一步**"。
+1.  在 Backup Exec 管理主控台中，選取 [**儲存體** > ] [**設定** > 以**磁片為基礎** > 的儲存體 **] [下一步]**。
 
     ![Backup Exec 管理主控台，設定儲存體頁面](./media/storsimple-configure-backup-target-using-backup-exec/image4.png)
 
@@ -275,7 +275,7 @@ StorSimple 提供下列優點︰
 
     ![Backup Exec 管理主控台，選取儲存體頁面](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  輸入一個代表性名稱，例如，「星期六完整」**** 和描述。 選取 [下一步]****。
+3.  輸入一個代表性名稱，例如，「星期六完整」**** 和描述。 選取 [下一步]  。
 
     ![Backup Exec 管理主控台，名稱和描述頁面](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
@@ -323,7 +323,7 @@ StorSimple 提供下列優點︰
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>若要將 StorSimple 磁碟區指派給 Backup Exec 備份作業
 
-1.  在備份執行管理主控台中，選擇**主機** > **備份** > **到磁片**。
+1.  在 Backup Exec 管理主控台中，選取 [**主機** > **備份** > **備份至磁片**]。
 
     ![Backup Exec 管理主控台，選取主機、備份及備份到磁碟](./media/storsimple-configure-backup-target-using-backup-exec/image14.png)
 
@@ -395,11 +395,11 @@ StorSimple 提供下列優點︰
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>若要將 StorSimple 磁碟區指派給 Backup Exec 封存和重複資料刪除作業
 
-1.  在備份 Exec 管理主控台中，按右鍵要存檔到 StorSimple 卷的作業，然後選擇 **"備份定義屬性** > **編輯**"。
+1.  在 Backup Exec 管理主控台中，以滑鼠右鍵按一下您想要封存至 StorSimple 磁片區的作業，然後選取 [**備份定義屬性** > ] [**編輯**]。
 
     ![Backup Exec 管理主控台，備份定義屬性索引標籤](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
-2.  選擇**將階段** > **重複添加到磁片** > **編輯**。
+2.  選取 [**新增階段** > **複製到磁片** > ] [**編輯**]。
 
     ![Backup Exec 管理主控台，新增階段](./media/storsimple-configure-backup-target-using-backup-exec/image20.png)
 
@@ -415,7 +415,7 @@ StorSimple 提供下列優點︰
 
     ![Backup Exec 管理主控台，備份定義屬性和複製選項](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
-6.  選取 [確定]****。
+6.  選取 [確定]  。
 
     ![Backup Exec 管理主控台，備份定義屬性和複製選項](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
@@ -448,7 +448,7 @@ StorSimple 雲端快照集可保護位於 StorSimple 裝置中的資料。 建�
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>若要啟動或刪除雲端快照集
 
-1. [安裝 Azure 電源外殼](/powershell/azure/overview)。
+1. [安裝 Azure PowerShell](/powershell/azure/overview)。
 2. 下載及安裝 [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1) PowerShell 指令碼。
 3. 在執行指令碼的伺服器上，以系統管理員身分執行 PowerShell。 請確定您搭配 `-WhatIf $true` 執行指令碼，以查看指令碼會執行哪些變更。 完成驗證之後，傳遞 `-WhatIf $false`。 執行下列命令：
    ```powershell

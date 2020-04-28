@@ -1,15 +1,15 @@
 ---
-title: 使用證書保護 Windows 上的群集
+title: 使用憑證保護 Windows 上的叢集
 description: 保護獨立或內部部署叢集 Azure Service Fabric 內的通訊，以及用戶端和叢集之間的通訊。
 author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: 5a18f957dfb7143f403d5ac30ea184023021f12c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75613919"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>使用 X.509 憑證保護 Windows 上的獨立叢集
@@ -116,7 +116,7 @@ ms.locfileid: "75613919"
 
 下表列出您在設定叢集時所需的憑證：
 
-| **CertificateInformation 設定** | **描述** |
+| **CertificateInformation 設定** | **說明** |
 | --- | --- |
 | ClusterCertificate |測試環境建議使用。 需有此憑證，才能保護叢集上節點之間的通訊。 您可以使用兩個不同的憑證 (主要和次要) 進行更新。 在 Thumbprint 區段中設定主要憑證的指紋，以及在 ThumbprintSecondary 變數中設定次要憑證的指紋。 |
 | ClusterCertificateCommonNames |生產環境建議使用。 需有此憑證，才能保護叢集上節點之間的通訊。 您可以使用一或兩個叢集憑證通用名稱。 CertificateIssuerThumbprint 會對應至此憑證的簽發者指紋。 如果您使用多個具有同一個通用名稱的憑證，則可指定多個簽發者指紋。|
@@ -253,7 +253,7 @@ ms.locfileid: "75613919"
 若是用於測試的叢集，您可以選擇使用自我簽署憑證。
 
 ## <a name="optional-create-a-self-signed-certificate"></a>選擇性：建立自我簽署憑證
-若要建立可以正確保護的自我簽署憑證，其中一個做法是使用 C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure 目錄下 Service Fabric SDK 資料夾中的 CertSetup.ps1 指令碼。 編輯此檔案來變更憑證的預設名稱  （查找值 CN_ServiceFabricDevClusterCert。將此腳本運行`.\CertSetup.ps1 -Install`為 。
+若要建立可以正確保護的自我簽署憑證，其中一個做法是使用 C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure 目錄下 Service Fabric SDK 資料夾中的 CertSetup.ps1 指令碼。 編輯此檔案來變更憑證的預設名稱  （尋找值 CN = ServiceFabricDevClusterCert）。以`.\CertSetup.ps1 -Install`的身分執行此腳本。
 
 現在將憑證匯出至 .pfx 檔並設定保護密碼。 首先取得憑證的指紋。 
 1. 從 [啟動]**** 功能表中，執行 [管理電腦憑證]****。 
@@ -292,7 +292,7 @@ ms.locfileid: "75613919"
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. 現在您必須在此憑證上設定存取控制，讓在「網路服務」帳戶下執行的 Service Fabric 程序可以藉由執行下列指令碼來使用它。 為服務帳戶提供證書和網路**服務**的經驗列印。 通過在 **"開始** > **管理"電腦證書**中打開證書並查看**所有任務** > **管理私密金鑰**，可以檢查證書上的 ACL 是否正確。
+3. 現在您必須在此憑證上設定存取控制，讓在「網路服務」帳戶下執行的 Service Fabric 程序可以藉由執行下列指令碼來使用它。 提供憑證的指紋和服務帳戶的**網路服務**。 您可以在 [**啟動** > ] [**管理電腦憑證**] 中開啟憑證，並查看 [**所有** > 工作] [**管理私密金鑰**]，檢查憑證上的 acl 是否正確。
    
     ```powershell
     param
@@ -355,7 +355,7 @@ Connect-ServiceFabricCluster $ConnectArgs
 ```
 
 > [!NOTE]
-> 不正確的憑證設定可能會讓叢集無法在部署期間出現。 要自行診斷安全問題，請查看事件檢視器組**應用程式和服務日誌** > **Microsoft 服務結構**。
+> 不正確的憑證設定可能會讓叢集無法在部署期間出現。 若要自我診斷安全性問題，請參閱事件檢視器群組**應用程式和服務記錄** > 檔**Microsoft Service Fabric**。
 > 
 > 
 

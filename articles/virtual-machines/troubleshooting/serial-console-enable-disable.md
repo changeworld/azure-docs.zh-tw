@@ -1,6 +1,6 @@
 ---
-title: 啟用和禁用 Azure 串列主控台 |微軟文檔
-description: 如何啟用和禁用 Azure 串列主控台服務
+title: 啟用和停用 Azure 序列主控台 |Microsoft Docs
+description: 如何啟用和停用 Azure 序列主控台服務
 services: virtual-machines
 documentationcenter: ''
 author: asinn826
@@ -15,46 +15,46 @@ ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
 ms.openlocfilehash: e09e08f8ba36cf576bc27551254225adee3bb0fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451293"
 ---
-# <a name="enable-and-disable-the-azure-serial-console"></a>啟用和禁用 Azure 串列主控台
+# <a name="enable-and-disable-the-azure-serial-console"></a>啟用和停用 Azure 序列主控台
 
-與任何其他資源一樣，可以啟用和禁用 Azure 串列主控台。 預設情況下，全域 Azure 中的所有訂閱都啟用串列主控台。 目前，禁用串列主控台將禁用整個訂閱的服務。 禁用或重新啟用訂閱的串列主控台需要訂閱上的參與者級別或以上存取權限。
+就像任何其他資源一樣，可以啟用和停用 Azure 序列主控台。 預設會針對全域 Azure 中的所有訂用帳戶啟用序列主控台。 目前，停用序列主控台將會停用整個訂用帳戶的服務。 停用或重新啟用訂用帳戶的序列主控台需要訂用帳戶上的參與者層級存取權或更新版本。
 
-還可以通過禁用引導診斷來禁用單個 VM 或虛擬機器規模集實例的串列主控台。 在 VM/虛擬機器規模集和引導診斷存儲帳戶上，您將需要參與者級別存取權限或以上存取權限。
+您也可以藉由停用 [開機診斷]，停用個別 VM 或虛擬機器擴展集實例的序列主控台。 在 VM/虛擬機器擴展集和您的開機診斷儲存體帳戶上，您將需要有「參與者」層級存取或以上版本。
 
 ## <a name="vm-level-disable"></a>VM 層級的停用
-可以通過禁用引導診斷設置，為特定的 VM 或虛擬機器規模設置禁用串列主控台。 關閉 Azure 門戶的啟動診斷，以禁用 VM 或虛擬機器規模集的串列主控台。 如果在虛擬機器規模集中使用串列主控台，請確保將虛擬機器縮放集實例升級到最新型號。
+您可以停用 [開機診斷] 設定，針對特定的 VM 或虛擬機器擴展集停用序列主控台。 關閉 Azure 入口網站的開機診斷，以停用 VM 或虛擬機器擴展集的序列主控台。 如果您在虛擬機器擴展集上使用序列主控台，請務必將您的虛擬機器擴展集實例升級為最新的模型。
 
 
-## <a name="subscription-level-enabledisable"></a>訂閱級啟用/禁用
+## <a name="subscription-level-enabledisable"></a>訂用帳戶層級啟用/停用
 
 > [!NOTE]
-> 在運行此命令之前，請確保您處於正確的雲中（Azure 公共雲、Azure 美國政府雲）。 您可以使用 簽入`az cloud list`並設置雲`az cloud set -n <Name of cloud>`。
+> 在執行此命令之前，請確定您是在正確的雲端（Azure 公用雲端、Azure 美國政府雲端）。 您可以使用`az cloud set -n <Name of cloud>`來`az cloud list`檢查並設定雲端。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-通過使用 Azure CLI 中的以下命令（您可以使用"試用"按鈕啟動 Azure 雲外殼的實例，您可以在其中運行命令），從而禁用並重新啟用整個訂閱的串列主控台：
+您可以使用 Azure CLI 中的下列命令，針對整個訂用帳戶停用和重新啟用序列主控台（您可以使用 [試試看] 按鈕來啟動可執行命令的 Azure Cloud Shell 實例）：
 
-要禁用訂閱的串列主控台，請使用以下命令：
+若要停用訂用帳戶的序列主控台，請使用下列命令：
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource invoke-action --action disableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
-要為訂閱啟用串列主控台，請使用以下命令：
+若要啟用訂用帳戶的序列主控台，請使用下列命令：
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
 az resource invoke-action --action enableConsole --ids "/subscriptions/$subscriptionId/providers/Microsoft.SerialConsole/consoleServices/default" --api-version="2018-05-01"
 ```
 
-要獲取訂閱串列主控台的當前啟用/禁用狀態，請使用以下命令：
+若要取得訂用帳戶的序列主控台目前已啟用/已停用狀態，請使用下列命令：
 ```azurecli-interactive
 subscriptionId=$(az account show --output=json | jq -r .id)
 
@@ -63,16 +63,16 @@ az resource show --ids "/subscriptions/$subscriptionId/providers/Microsoft.Seria
 
 ### <a name="powershell"></a>PowerShell
 
-也可以使用 PowerShell 啟用和禁用串列主控台。
+您也可以使用 PowerShell 來啟用和停用序列主控台。
 
-要禁用訂閱的串列主控台，請使用以下命令：
+若要停用訂用帳戶的序列主控台，請使用下列命令：
 ```azurepowershell-interactive
 $subscription=(Get-AzContext).Subscription.Id
 
 Invoke-AzResourceAction -Action disableConsole -ResourceId /subscriptions/$subscription/providers/Microsoft.SerialConsole/consoleServices/default -ApiVersion 2018-05-01
 ```
 
-要為訂閱啟用串列主控台，請使用以下命令：
+若要啟用訂用帳戶的序列主控台，請使用下列命令：
 ```azurepowershell-interactive
 $subscription=(Get-AzContext).Subscription.Id
 
@@ -80,6 +80,6 @@ Invoke-AzResourceAction -Action enableConsole -ResourceId /subscriptions/$subscr
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解有關 Linux VM 的[Azure 串列主控台](./serial-console-linux.md)的資訊
-* 瞭解有關 Windows VM 的[Azure 串列主控台](./serial-console-windows.md)的資訊
-* 瞭解[Azure 串列主控台中的電源管理選項](./serial-console-power-options.md)
+* 深入瞭解[適用于 Linux vm 的 Azure 序列主控台](./serial-console-linux.md)
+* 深入瞭解[適用于 Windows vm 的 Azure 序列主控台](./serial-console-windows.md)
+* 瞭解[Azure 序列主控台內的電源管理選項](./serial-console-power-options.md)

@@ -1,24 +1,24 @@
 ---
 title: 範本中的變數
-description: 介紹如何在 Azure 資源管理器範本中定義變數。
+description: 描述如何在 Azure Resource Manager 範本中定義變數。
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: cf135959d30702ea58b7a1d4fdd82625a39245d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75483813"
 ---
-# <a name="variables-in-azure-resource-manager-template"></a>Azure 資源管理器範本中的變數
+# <a name="variables-in-azure-resource-manager-template"></a>Azure Resource Manager 範本中的變數
 
-本文介紹如何在 Azure 資源管理器範本中定義和使用變數。 您可以使用變數來簡化範本。 您定義一個包含複雜運算式的變數，而不是在整個範本中重複複雜的運算式。 然後，在整個範本中根據需要引用該變數。
+本文說明如何在 Azure Resource Manager 範本中定義和使用變數。 您可以使用變數來簡化您的範本。 您不需要在整個範本中重複複雜的運算式，而是定義一個包含複雜運算式的變數。 然後，您可以視需要在整個範本中參考該變數。
 
-資源管理器在開始部署操作之前解析變數。 無論變數在範本中使用何處，資源管理器都會將其替換為已解析的值。
+Resource Manager 在啟動部署作業之前，先解析變數。 只要在範本中使用變數，Resource Manager 會以已解析的值來取代它。
 
 ## <a name="define-variable"></a>定義變數
 
-下列範例顯示變數定義。 它會建立儲存體帳戶名稱的字串值。 它使用多個範本函數來獲取參數值，並將其串聯到唯一字串中。
+下列範例顯示變數定義。 它會建立儲存體帳戶名稱的字串值。 它會使用數個範本函式來取得參數值，並將其串連為唯一字串。
 
 ```json
 "variables": {
@@ -26,11 +26,11 @@ ms.locfileid: "75483813"
 },
 ```
 
-不能使用變數部分中的[引用](template-functions-resource.md#reference)函數或任何[清單](template-functions-resource.md#list)函數。 這些函數獲取資源的運行時狀態，並且在解析變數時無法在部署之前執行。
+您不能在 variables 區段中使用[reference](template-functions-resource.md#reference)函式或任何[list](template-functions-resource.md#list)函數。 這些函式會取得資源的執行時間狀態，而且當變數已解決時，就無法在部署之前執行。
 
 ## <a name="use-variable"></a>使用變數
 
-在範本中，使用[變數](template-functions-deployment.md#variables)函數傳址參數的值。 下面的示例演示如何將變數用於資源屬性。
+在範本中，您可以使用[variables](template-functions-deployment.md#variables)函數來參考參數的值。 下列範例顯示如何使用資源屬性的變數。
 
 ```json
 "resources": [
@@ -44,7 +44,7 @@ ms.locfileid: "75483813"
 
 ## <a name="configuration-variables"></a>設定變數
 
-您可以定義保存相關值以配置環境的變數。 將變數定義為具有值的物件。 下面的示例顯示了一個物件，該物件包含兩個環境的值 -**測試**和**prod**。
+您可以定義變數，以保存用於設定環境的相關值。 您可以將變數定義為具有值的物件。 下列範例顯示的物件會保留兩個環境的值：**測試**和**生產**。
 
 ```json
 "variables": {
@@ -75,7 +75,7 @@ ms.locfileid: "75483813"
 },
 ```
 
-若要檢索指定環境的設置，請使用變數和參數。
+若要取得指定環境的設定，請同時使用變數和參數。
 
 ```json
 "[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
@@ -83,7 +83,7 @@ ms.locfileid: "75483813"
 
 ## <a name="example-templates"></a>範本的範例
 
-以下示例演示了使用變數的方案。
+下列範例示範使用變數的案例。
 
 |[範本]  |描述  |
 |---------|---------|
@@ -93,5 +93,5 @@ ms.locfileid: "75483813"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要瞭解變數的可用屬性，請參閱[瞭解 Azure 資源管理器範本的結構和語法](template-syntax.md)。
-* 有關創建變數的建議，請參閱最佳實踐[- 變數](template-best-practices.md#variables)。
+* 若要瞭解變數可用的屬性，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
+* 如需建立變數的建議，請參閱[最佳做法-變數](template-best-practices.md#variables)。

@@ -1,15 +1,15 @@
 ---
-title: 適用于 Windows 伺服器的 Azure 服務結構獨立包
+title: 適用于 Windows Server 的 Azure Service Fabric 獨立套件
 description: 適用於 Windows Server 的 Azure Service Fabric 獨立封裝描述和內容。
 author: maburlik
 ms.topic: conceptual
 ms.date: 8/10/2017
 ms.author: maburlik
 ms.openlocfilehash: 1bb73fa69717f067139067f127a0d50af4878d6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451837"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>適用於 Windows Server 的 Service Fabric 獨立封裝內容
@@ -44,7 +44,7 @@ ms.locfileid: "75451837"
 | ClusterConfig.gMSA.Windows.MultiMachine.json |叢集組態範例檔案，其中包含適用於安全、多個電腦 (或虛擬機器) 叢集的所有設定，包括安全叢集中每個節點的相關資訊。 使用[群組受控服務帳戶](https://technet.microsoft.com/library/jj128431(v=ws.11).aspx)保護叢集的安全。 |
 
 ## <a name="cluster-configuration-samples"></a>叢集組態範例
-最新版本的群集配置範本可以在 GitHub 頁面：[獨立群集配置示例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)中找到。
+您可以在 GitHub 頁面上找到最新版本的叢集設定範本：獨立叢集設定[範例](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples)。
 
 ## <a name="independent-runtime-package"></a>獨立的執行階段套件
 叢集部署期間會自動從[下載連結 - Service Fabric 執行階段 - Windows Server](https://go.microsoft.com/fwlink/?linkid=839354)下載最新的執行階段套件。

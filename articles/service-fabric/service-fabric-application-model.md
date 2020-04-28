@@ -1,13 +1,13 @@
 ---
-title: Azure 服務結構應用程式模型
-description: 如何使用應用程式和服務清單檔對 Azure 服務結構中的應用程式和服務建模和描述。
+title: Azure Service Fabric 應用程式模型
+description: 如何使用應用程式和服務資訊清單檔案，在 Azure Service Fabric 中建立應用程式和服務的模型並加以描述。
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7179686b7d4ef2df267cb95ece8f83d5fb7682b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551874"
 ---
 # <a name="model-an-application-in-service-fabric"></a>在 Service Fabric 中模型化應用程式

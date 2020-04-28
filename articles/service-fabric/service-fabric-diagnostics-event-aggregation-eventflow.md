@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構事件聚合與事件流
+title: 使用 EventFlow 的 Azure Service Fabric 事件匯總
 description: 深入了解使用 EventFlow 的彙總及收集事件，監視和診斷 Azure Service Fabric 叢集。
 author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: cde24657cc8ed78b91e72df16d51df4077a6e030
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75463086"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>使用 EventFlow 的事件彙總與集合
@@ -24,7 +24,7 @@ EventFlow 二進位檔是以一組 NuGet 套件的形式提供。 若要將 Even
 
 您會看到一份各種各樣套件的清單，標記為「輸入」和「輸出」。 EventFlow 支援各種不同的記錄提供者和分析器。 視應用程式記錄的來源和目的地而定，裝載 EventFlow 的服務應該包含適當的套件。 除了核心 ServiceFabric 套件，您還需要設定至少一個輸入和輸出。 例如，您可以新增下列套件，將 EventSource 事件傳送至 Application Insights：
 
-* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`從服務的 EventSource 類和標準事件源（如*Microsoft-ServiceFabric-Service-**工作方*）捕獲資料）
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource`若要從服務的 EventSource 類別和標準 EventSources （例如*Microsoft ServiceFabric 服務*和*ServiceFabric 的執行者*）中捕獲資料
 * `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (我們將把記錄傳送給 Azure Application Insights 資源)
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric` (允許從 Service Fabric 服務設定將 EventFlow 管線初始化，並以 Service Fabric 健康情況報告的形式傳送診斷資料來回報任何問題)
 
@@ -148,5 +148,5 @@ servicefabric:/<section-name>/<setting-name>
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Application Insights 進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [使用 Azure 監視器日誌的事件分析和視覺化](service-fabric-diagnostics-event-analysis-oms.md)
+* [Azure 監視器記錄檔進行事件分析和視覺效果](service-fabric-diagnostics-event-analysis-oms.md)
 * [EventFlow 文件](https://github.com/Azure/diagnostics-eventflow)

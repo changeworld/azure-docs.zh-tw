@@ -1,15 +1,15 @@
 ---
-title: 在服務結構群集中引發混沌
+title: 引發 Service Fabric 叢集中的混亂
 description: 使用錯誤注射與叢集分析服務的 API 來管理叢集中的混亂。
 author: motanv
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
 ms.openlocfilehash: 37b451abd0a519dff17aba9b2d6c42b4762f30cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75463162"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>在 Service Fabric 叢集中引發受控制的混亂

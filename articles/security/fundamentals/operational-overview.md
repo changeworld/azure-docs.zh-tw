@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
 ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75443870"
 ---
 # <a name="azure-operational-security-overview"></a>Azure 作業安全性概觀
@@ -30,19 +30,19 @@ ms.locfileid: "75443870"
 
 IT 作業小組負責管理資料中心基礎結構、應用程式和資料，包括這些系統的穩定性與安全性。 不過，要在日趨複雜的 IT 環境中取得安全性深入解析，通常需要組織將多個安全性和管理系統的資料加以併用。
 
-[Microsoft Azure 監視器日誌](/azure/operations-management-suite/operations-management-suite-overview)是一種基於雲的 IT 管理解決方案，可説明您管理和保護本地和雲基礎結構。 它的核心功能是由在 Azure 中執行的下列服務所提供的。 Azure 包含多種服務，可協助您管理並保護您的內部部署和雲端基礎結構。 每個服務都提供特定的管理功能。 您可以結合服務，以達成不同的管理案例。 
+[Microsoft Azure 監視器記錄](/azure/operations-management-suite/operations-management-suite-overview)是雲端式 IT 管理解決方案，可協助您管理及保護您的內部部署和雲端基礎結構。 它的核心功能是由在 Azure 中執行的下列服務所提供的。 Azure 包含多種服務，可協助您管理並保護您的內部部署和雲端基礎結構。 每個服務都提供特定的管理功能。 您可以結合服務，以達成不同的管理案例。 
 
 ### <a name="azure-monitor"></a>Azure 監視器
 
 [Azure 監視器](/azure/azure-monitor/overview)能收集受控來源的資料，並將其儲存至中央資料存放區。 此資料可以包括事件、效能資料，或透過 API 提供的自訂資料。 收集資料之後，即可將其用於警示、分析和匯出。
 
-您可以合併各種來源的資料，並結合來自 Azure 服務與現有內部部署環境的資料。 Azure 監視器日誌還清楚地將資料收集與對該資料執行的操作分開，以便所有操作都可用於所有類型的資料。
+您可以合併各種來源的資料，並結合來自 Azure 服務與現有內部部署環境的資料。 Azure 監視器記錄也會清楚地分隔資料的收集與對該資料採取的動作，讓所有動作都可供所有類型的資料使用。
 
 ### <a name="automation"></a>自動化
 
 [Azure 自動化](/azure/automation/automation-intro)提供方法，讓您將通常會在雲端和企業環境中執行的手動、長時間執行、易發生錯誤且重複性高的工作加以自動化。 它可以節省時間並提高管理工作的可靠性。 甚至還能為這些工作設定排程以定期自動執行。 您可以使用 Runbook 來將程序自動化，或使用 Desired State Configuration 來將設定管理自動化。
 
-### <a name="backup"></a>Backup 
+### <a name="backup"></a>Backup
 
 [Azure 備份](/azure/backup/backup-introduction-to-azure-backup)是以 Azure 為基礎的服務，可用來備份 (或保護) 和還原 Microsoft Cloud 中的資料。 Azure 備份會以一個可靠、安全且具成本競爭力的雲端式解決方案，來取代您的現有內部部署或異地備份解決方案。
 
@@ -64,11 +64,11 @@ Azure 備份提供元件，讓您可以下載並部署於適當的電腦或伺�
 
 Azure AD 還隨附一套完整的[身分識別管理功能](/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)，其中包括：
 
-- [多重要素驗證](/azure/multi-factor-authentication/multi-factor-authentication)
+- [[Multi-Factor Authentication]](/azure/multi-factor-authentication/multi-factor-authentication)
 - [自助密碼管理](https://azure.microsoft.com/resources/videos/self-service-password-reset-azure-ad/)
 - [自助式群組管理](/azure/active-directory/active-directory-passwords-update-your-own-password)
 - [具有特殊權限的帳戶管理](/azure/active-directory/active-directory-privileged-identity-management-configure)
-- [基於角色的存取控制](/azure/role-based-access-control/overview)
+- [角色型存取控制](/azure/role-based-access-control/overview)
 - [應用程式使用情況監視](/azure/active-directory/connect-health/active-directory-aadconnect-health)
 - [豐富的稽核功能](/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [安全性監視和警示](/azure/operations-management-suite/oms-security-responding-alerts)
@@ -77,7 +77,7 @@ Azure AD 還隨附一套完整的[身分識別管理功能](/azure/security/secu
 
 ## <a name="azure-security-center"></a>Azure 資訊安全中心
 
-[Azure 安全中心](/azure/security-center/security-center-intro)通過提高 Azure 資源安全性的可見度（並控制）來防止、檢測和回應威脅。 它提供您訂用帳戶之間的整合式安全性監視和原則管理功能。 它有助於偵測可能會被忽視的威脅，並可搭配廣泛的安全性解決方案生態系統使用。
+[Azure 資訊安全中心](/azure/security-center/security-center-intro)透過增加對 Azure 資源安全性的可見度（及控制），協助您預防、偵測及回應威脅。 它提供您訂用帳戶之間的整合式安全性監視和原則管理功能。 它有助於偵測可能會被忽視的威脅，並可搭配廣泛的安全性解決方案生態系統使用。
 
 透過提供虛擬機器的安全性設定可見度並監視威脅，在 Azure 中[保護虛擬機器 (VM) 資料](/azure/security-center/security-center-linux-virtual-machine)。 資訊安全中心可以監視虛擬機器以取得︰
 
@@ -94,7 +94,7 @@ Azure AD 還隨附一套完整的[身分識別管理功能](/azure/security/secu
 >[!Note]
 >如需角色與資訊安全中心所允許動作的詳細資訊，請參閱 [Azure 資訊安全中心的權限](/azure/security-center/security-center-permissions)。
 
-資訊安全中心會使用 Microsoft Monitoring Agent。 這與 Azure 監視器服務使用的代理相同。 從這個代理程式收集的資料會儲存在與您 Azure 訂用帳戶相關聯的現有 Log Analytics [工作區](/azure/log-analytics/log-analytics-manage-access)或新的工作區中 (將 VM 的地理位置納入考量)。
+資訊安全中心會使用 Microsoft Monitoring Agent。 這是 Azure 監視器服務所使用的相同代理程式。 從這個代理程式收集的資料會儲存在與您 Azure 訂用帳戶相關聯的現有 Log Analytics [工作區](/azure/log-analytics/log-analytics-manage-access)或新的工作區中 (將 VM 的地理位置納入考量)。
 
 ## <a name="azure-monitor"></a>Azure 監視器
 
@@ -112,7 +112,7 @@ Azure 監視器包括下列元件。
 
 ### <a name="azure-diagnostic-logs"></a>Azure 診斷記錄
 
-[Azure 診斷日誌](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)由資源發出，並提供有關該資源操作的豐富、頻繁的資料。 這些記錄的內容會依資源類型而有所不同。
+[Azure 診斷記錄](/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是由資源發出，並提供有關該資源之作業的豐富、經常性資料。 這些記錄的內容會依資源類型而有所不同。
 
 Windows 事件系統記錄是適用於 VM 的診斷記錄類別之一。 Blob、資料表和佇列記錄均為適用於儲存體帳戶的診斷記錄類別。
 
@@ -181,7 +181,7 @@ DevOps 可讓小組以更快速且成本較低的方式提供更安全、更高�
 
 - [靈活的規劃與專案管理](https://www.visualstudio.com/learn/what-is-agile/)技術，可用來規劃工作並加以隔離為短期衝刺、管理小組產能，並協助小組快速地適應瞬息萬變的業務需求。
 - [版本控制，通常搭配 Git](https://www.visualstudio.com/learn/what-is-git/)，可讓位於全球各地的小組共用來源，並與軟體開發工具整合，從而將發行管線自動化。
-- [持續集成](https://www.visualstudio.com/learn/what-is-continuous-integration/)推動代碼的持續合併和測試，從而及早發現缺陷。  其他優點包括減少對抗合併問題的時間，以及開發小組的快速意見反應。
+- [持續整合](https://www.visualstudio.com/learn/what-is-continuous-integration/)會驅動程式代碼的持續合併和測試，進而導致早期發現瑕疵。  其他優點包括減少對抗合併問題的時間，以及開發小組的快速意見反應。
 - [持續傳遞](https://www.visualstudio.com/learn/what-is-continuous-delivery/) \(英文\) 軟體解決方案到生產環境與測試環境，有助於組織快速修正錯誤 (Bug)，並回應日益變遷的商業需求。
 - [監視](https://www.visualstudio.com/learn/what-is-monitoring/) \(英文\) 執行中的應用程式 (包括監視生產環境以了解應用程式健康情況，以及監視客戶的使用狀況) 能協助組織產生假設並快速驗證或反駁策略。  擷取豐富的資料並以各種記錄格式加以儲存。
 - [基礎結構即程式碼 (IaC)](https://www.visualstudio.com/learn/what-is-infrastructure-as-code/) \(英文\) 是一種作法，可用來將建立及卸除網路和虛擬機器的程序加以自動化並驗證，以協助提供安全且穩定的應用程式裝載平台。
@@ -192,5 +192,5 @@ DevOps 可讓小組以更快速且成本較低的方式提供更安全、更高�
 若要了解安全性和稽核解決方案，請參閱下列文章：
 
 - [安全性與合規性](https://azure.microsoft.com/overview/trusted-cloud/)
-- [Azure 安全中心](/azure/security-center/security-center-intro)
+- [Azure 資訊安全中心](/azure/security-center/security-center-intro)
 - [Azure 監視器](/azure/azure-monitor/overview)

@@ -1,15 +1,15 @@
 ---
-title: 故障分析服務概述
+title: 錯誤分析服務總覽
 description: 本文描述 Service Fabric 中的錯誤分析服務，以引發錯誤和針對您的服務執行測試案例。
 author: anmolah
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: anmola
 ms.openlocfilehash: d5c770a4d823ebe9b2700b081c407c54dd1d18a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75465579"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>錯誤分析服務簡介
@@ -83,7 +83,7 @@ Service Fabric 大幅簡化了撰寫和管理分散式可擴充應用程式的�
 
 錯誤分析服務功能位於 Microsoft.ServiceFabric NuGet 封裝中的 System.Fabric 命名空間中。 若要使用錯誤分析服務功能，請在您的專案中包含此 NuGet 封裝作為參考。
 
-**電源外殼**
+**PowerShell**
 
 若要使用 PowerShell，您必須安裝 Service Fabric SDK。 安裝 SDK 後，會自動載入 ServiceFabric PowerShell 模組供您使用。
 

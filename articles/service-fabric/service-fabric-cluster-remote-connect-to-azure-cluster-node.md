@@ -1,13 +1,13 @@
 ---
-title: 遠端連線到 Azure 服務結構叢集節點
+title: 遠端連線至 Azure Service Fabric 叢集節點
 description: 了解如何從遠端連線擴展集執行個體 (Service Fabric 叢集節點)。
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.openlocfilehash: c7ca4f0d5dce1b19837a44d5c9749f3e1293c6b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75458328"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>遠端連線到虛擬機器擴展集執行個體或叢集節點
@@ -19,7 +19,7 @@ ms.locfileid: "75458328"
 
     在叢集中定義的每個節點類型通常都有它自己的虛擬 IP 位址和專用負載平衡器。 根據預設，節點類型的負載平衡器名稱採用下列格式：LB-{cluster-name}-{node-type}**；例如，LB-mycluster-FrontEnd**。 
     
-    在 Azure 門戶中的負載等化器頁面上，選擇 **"設置** > **入站 NAT"規則**： 
+    在 Azure 入口網站的負載平衡器頁面上，選取 [**設定** > ] [**輸入 NAT 規則**]： 
 
     ![負載平衡器輸入 NAT 規則](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
@@ -52,7 +52,7 @@ ms.locfileid: "75458328"
 
 若要了解後續步驟，請閱讀下列文章：
 * 請參閱[「到處部署」功能和與 Azure 受控叢集比較的概觀](service-fabric-deploy-anywhere.md)。
-* 瞭解[群集安全性](service-fabric-cluster-security.md)。
+* 深入瞭解叢集[安全性](service-fabric-cluster-security.md)。
 * 部署後在叢集 VM 上[更新 RDP 連接埠範圍值](./scripts/service-fabric-powershell-change-rdp-port-range.md)
 * 變更叢集 VM 的[管理員使用者名稱和密碼](./scripts/service-fabric-powershell-change-rdp-user-and-pw.md)
 

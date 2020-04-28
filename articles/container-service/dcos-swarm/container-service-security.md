@@ -8,10 +8,10 @@ ms.date: 03/28/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: d90d872175febf775e7d0892e133883f1a8ff8a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75552374"
 ---
 # <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(已淘汰) 保護 Azure Container Service 中的 Docker 容器
@@ -53,7 +53,7 @@ ms.locfileid: "75552374"
 ## <a name="host-level-container-isolation"></a>主機層級的容器隔離
 當客戶在 Azure 資源上部署容器應用程式時，這些應用程式會部署在資源群組的訂用帳戶層級，而且不會是多租用戶。 這表示客戶如果與其他人共用訂用帳戶，那麼相同訂用帳戶中的兩個部署之間就無法立下界限。 因此，系統無法保證容器層級的安全性。 
 
-也請務必了解，容器會共用主機的核心和資源 (在 Azure Container Service 中，主機便是叢集中的 Azure VM)。 因此，在生產環境中執行的容器必須以不具權限的使用者模式執行。 使用根權限執行容器可能會危害整個環境。 駭客在握有容器的根層級存取權後，就可以存取主機上的完整根權限。 此外，請務必執行具有唯讀檔案系統的容器。 這可防止其他人在可以存取遭入侵的容器後，在檔案系統中寫入惡意指令碼，並存取其他檔案。 同樣地，請務必要限制為容器配置的資源 (例如記憶體、CPU 和網路頻寬)。 這有助於防止駭客佔用資源和進行非法活動，如信用卡欺詐或位硬幣挖掘，這可能會阻止其他容器在主機或群集上運行。
+也請務必了解，容器會共用主機的核心和資源 (在 Azure Container Service 中，主機便是叢集中的 Azure VM)。 因此，在生產環境中執行的容器必須以不具權限的使用者模式執行。 使用根權限執行容器可能會危害整個環境。 駭客在握有容器的根層級存取權後，就可以存取主機上的完整根權限。 此外，請務必執行具有唯讀檔案系統的容器。 這可防止其他人在可以存取遭入侵的容器後，在檔案系統中寫入惡意指令碼，並存取其他檔案。 同樣地，請務必要限制為容器配置的資源 (例如記憶體、CPU 和網路頻寬)。 這有助於防止駭客霸佔資源，並採取不合法的活動，例如信用卡詐騙或位硬幣的挖掘，這可能會讓其他容器無法在主機或叢集上執行。
 
 ## <a name="orchestrator-considerations"></a>Orchestrator 的注意事項
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 串列主控台電源選項 |微軟文檔
-description: Azure 串列主控台中提供的 VM 電源選項
+title: Azure 序列主控台電源選項 |Microsoft Docs
+description: Azure 序列主控台內可用的 VM 電源選項
 services: virtual-machines
 documentationcenter: ''
 author: asinn826
@@ -15,23 +15,23 @@ ms.workload: infrastructure-services
 ms.date: 8/6/2019
 ms.author: alsin
 ms.openlocfilehash: 11c2549d7282bae5654ede1ac34d63a43cd0f059
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451205"
 ---
-# <a name="power-options-available-from-the-azure-serial-console"></a>可從 Azure 串列主控台提供的電源選項
+# <a name="power-options-available-from-the-azure-serial-console"></a>Azure 序列主控台提供的電源選項
 
-Azure 串列主控台提供了多個功能強大的工具，用於在 VM 或虛擬機器規模集中進行電源管理。 這些電源管理選項可能會混淆某些選項，因此這是每個工具及其預期用例的概述。
+Azure 序列主控台為您的 VM 或虛擬機器擴展集提供了數種強大的電源管理工具。 這些電源管理選項可能會令人混淆，所以這是每個工具及其預期使用案例的總覽。
 
-串列主控台功能 | 描述 | 使用案例
+序列主控台功能 | 描述 | 使用案例
 :----------------------|:------------|:---------
-重新啟動 VM | 正常重新開機 VM 或虛擬機器縮放集實例。 此操作與調用"概述"頁中可用的重新開機功能相同。 | 在大多數情況下，此選項應該是嘗試重新開機 VM 的第一個工具。 串列主控台連接將經歷短暫的中斷，並在 VM 重新開機後立即自動復原。
-重設 VM | 由 Azure 平臺設置的 VM 或虛擬機器擴展的強大電源週期。 | 此選項用於立即重新開機作業系統，而不管其目前狀態如何。 由於此操作不正常，因此存在資料丟失或損壞的風險。 串列主控台連接沒有中斷，這對於在啟動時間早期發送命令（例如，在 Linux VM 上訪問 GRUB 或在 Windows VM 中訪問安全模式）可能很有用。
-SysRq - 重新開機 （b） | 強制來賓重新開機的系統請求。 | 此功能僅適用于 Linux 作業系統，並要求在作業系統中[啟用 SysRq。](./serial-console-nmi-sysrq.md#system-request-sysrq) 如果作業系統已正確配置為 SysRq，則此命令將導致作業系統重新開機。
-NMI（不可遮罩中斷） | 中斷命令，該命令將傳遞到作業系統 | 此操作適用于[Windows](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)和[Linux](./serial-console-nmi-sysrq.md#non-maskable-interrupt-nmi) VM，並且需要啟用 NMI。 發送 NMI 通常會導致作業系統崩潰。 您可以將作業系統配置為創建轉儲檔，然後在收到 NMI 後重新開機，這在低級調試中可能很有用。
+重新啟動 VM | 您的 VM 或虛擬機器擴展集實例的正常重新開機。 這項作業與呼叫 [總覽] 頁面中提供的 [重新開機] 功能相同。 | 在大部分情況下，此選項應該是您嘗試重新開機 VM 的第一個工具。 您的序列主控台連線會短暫中斷，並會在 VM 重新開機後立即自動繼續。
+重設 VM | Azure 平臺提供的 VM 或虛擬機器擴展集的強制電源週期。 | 此選項可用來立即重新開機您的作業系統，而不論其目前的狀態為何。 因為這項作業並不正常，所以會有資料遺失或損毀的風險。 序列主控台連線不會有任何中斷，這可能有助於在開機時儘早傳送命令（例如，在 Linux VM 上取得 GRUB 或 Windows VM 中的安全模式）。
+SysRq-重新開機（b） | 強制重新開機來賓的系統要求。 | 這項功能僅適用于 Linux 作業系統，而且需要在作業系統中[啟用 SysRq](./serial-console-nmi-sysrq.md#system-request-sysrq) 。 如果作業系統已針對 SysRq 正確設定，此命令會導致 OS 重新開機。
+NMI （非遮罩中斷） | 中斷命令，將會傳遞至作業系統 | 這項作業適用于[Windows](./serial-console-windows.md#use-the-serial-console-for-nmi-calls)和[Linux](./serial-console-nmi-sysrq.md#non-maskable-interrupt-nmi) vm，而且需要啟用 NMI。 傳送 NMI 通常會導致作業系統損毀。 您可以設定作業系統建立傾印檔案，然後在收到 NMI 時重新開機，這在低層級的偵錯工具中可能很有用。
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解有關 Linux VM 的[Azure 串列主控台](./serial-console-linux.md)的資訊
-* 瞭解有關 Windows VM 的[Azure 串列主控台](./serial-console-windows.md)的資訊
+* 深入瞭解[適用于 Linux vm 的 Azure 序列主控台](./serial-console-linux.md)
+* 深入瞭解[適用于 Windows vm 的 Azure 序列主控台](./serial-console-windows.md)

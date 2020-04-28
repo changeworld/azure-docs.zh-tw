@@ -1,15 +1,15 @@
 ---
-title: 解決本地 Azure 服務結構群集設置的故障
+title: 針對本機 Azure Service Fabric 叢集設定進行疑難排解
 description: 本文涵蓋了一組疑難排解本機開發叢集的建議
 author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: ea313adb43f8d91ec9e57dd1d0b8d3447a8075f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75465496"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>疑難排解本機開發叢集設定

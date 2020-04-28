@@ -1,15 +1,15 @@
 ---
-title: 使用 Linux Azure 診斷的事件聚合
+title: 使用 Linux Azure 診斷的事件匯總
 description: 了解如何使用 LAD 彙總及收集事件，來監視和診斷 Azure Service Fabric 叢集。
 author: srrengar
 ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: fdb78498d33416ef21b2e2b0f498e7afa6a58d99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609956"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>使用 Linux Azure 診斷的事件彙總和收集
@@ -21,7 +21,7 @@ ms.locfileid: "75609956"
 
 當您執行 Azure Service Fabric 叢集時，最好從中央位置的所有節點收集記錄。 將記錄集中在中央位置，可協助您分析並針對叢集或該叢集中執行之應用程式與服務的問題進行疑難排解。
 
-上傳和收集記錄的其中一種方式就是使用 Linux Azure 診斷 (LAD) 延伸模組，此延伸模組可將記錄上傳到 Azure 儲存體，也可以選擇將記錄傳送至 Azure Application Insights 或事件中樞。 您還可以使用外部進程從存儲中讀取事件並將其放置在分析平台產品中，例如[Azure 監視器日誌](../log-analytics/log-analytics-service-fabric.md)或其他日誌分析解決方案。
+上傳和收集記錄的其中一種方式就是使用 Linux Azure 診斷 (LAD) 延伸模組，此延伸模組可將記錄上傳到 Azure 儲存體，也可以選擇將記錄傳送至 Azure Application Insights 或事件中樞。 您也可以使用外部進程來讀取儲存體中的事件，並將它們放在分析平台產品中，例如[Azure 監視器記錄](../log-analytics/log-analytics-service-fabric.md)或其他記錄剖析解決方案。
 
 ## <a name="log-and-event-sources"></a>記錄和事件來源
 
@@ -31,7 +31,7 @@ Service Fabric 會透過 [LTTng](https://lttng.org) 發出少數的現成記錄�
 ### <a name="application-events"></a>應用程式事件
  檢測軟體時，會如您在應用程式和服務的程式碼中所指定的，發出事件。 您可以使用任何撰寫文字型記錄檔的記錄解決方案，例如 LTTng。 如需詳細資訊，請參閱 LTTng 文件中關於追蹤您應用程式的內容。
 
-[監視和診斷本地機器開發設置中的服務](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)。
+[監視和診斷本機開發設定中的服務](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)。
 
 ## <a name="deploy-the-diagnostics-extension"></a>部署診斷擴充功能
 收集記錄的第一個步驟是將診斷延伸模組部署在 Service Fabric 叢集的每個 WM 上。 診斷擴充功能會收集每個 VM 上的記錄，並將它們上傳至您指定的儲存體帳戶。 

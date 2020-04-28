@@ -1,5 +1,5 @@
 ---
-title: 服務層 - 基於 DTU 的採購模型
+title: 服務層-以 DTU 為基礎的購買模型
 description: 對於提供計算大小和儲存體大小的單一和集區資料庫，了解以 DTU 為基礎的購買模型的服務層。
 services: sql-database
 ms.service: sql-database
@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
 ms.openlocfilehash: 2f316e57e407a0588e77f56d6e1fbe8c19ba5fee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75562114"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>以 DTU 為基礎的購買模式的服務層
 
-以 DTU 為基礎的購買模式的服務層是以一系列計算大小來做區分，這些等級各有一定數量的內含儲存體、一定的備份保留期和一定的價格。 基於 DTU 的採購模型中的所有服務層都提供了在最短[停機時間](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)的情況下更改計算大小的靈活性;但是，在一段時間記憶體在一個交換器，其中連線時間很短，可以使用重試邏輯來緩解連接。 單一資料庫和彈性集區會根據服務層級和計算大小，以每小時為單位來計費。
+以 DTU 為基礎的購買模式的服務層是以一系列計算大小來做區分，這些等級各有一定數量的內含儲存體、一定的備份保留期和一定的價格。 以 DTU 為基礎的購買模型中的所有服務層級，在[停機時間](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)最短的情況之下，提供變更計算大小的彈性不過，有一段很短的時間會將連線中斷連接到資料庫，而這可以使用重試邏輯來減輕。 單一資料庫和彈性集區會根據服務層級和計算大小，以每小時為單位來計費。
 
 > [!IMPORTANT]
 > SQL Database 受控執行個體不支援以 DTU 為基礎的購買模型。 如需詳細資訊，請參閱 [Azure SQL Database 受控執行個體](sql-database-managed-instance.md)。
@@ -35,26 +35,26 @@ ms.locfileid: "75562114"
 | :-- | --: |--:| --:|
 |目標工作負載|開發與生產|開發與生產|開發與生產|
 |執行時間 SLA|99.99%|99.99%|99.99%|
-|最大備份保留|7 天|35 天|35 天|
+|備份保留上限|7 天|35 天|35 天|
 |CPU|低|低、中、高|中、高|
-|IO 輸送量 (大約) |每個 DTU 1-5 IOPS| 每個 DTU 1-5 IOPS | 每個 DTU 25 IOPS|
+|IO 輸送量 (大約) |1-5 每個 DTU 的 IOPS| 1-5 每個 DTU 的 IOPS | 每個 DTU 25 IOPS|
 |IO 延遲 (大約)|5 毫秒 (讀取)，10 毫秒 (寫入)|5 毫秒 (讀取)，10 毫秒 (寫入)|2 毫秒 (讀取/寫入)|
 |資料行存放區索引 |N/A|S3 和更新版本|支援|
 |記憶體內部 OLTP|N/A|N/A|支援|
 |||||
 
 > [!IMPORTANT]
-> 基本、標準 S0、S1 和 S2 服務層提供的 vCore （CPU） 不到一個 vCore。  對於 CPU 密集型工作負載，建議使用 S3 或更高級別的服務層。 
+> 基本、標準 S0、S1 和 S2 服務層提供少於一個 vCore （CPU）。  針對需要大量 CPU 的工作負載，建議使用 S3 或更高的服務層。 
 >
->關於資料存儲，基本、標準 S0 和 S1 服務層放置在標準頁面 Blob 上。 標準頁面 Blobs 使用基於硬碟 （HDD） 的存儲介質，最適合開發、測試和其他對性能可變性不太敏感的不常訪問的工作負載。
+>關於資料儲存區，基本、標準 S0 和 S1 服務層會放在標準分頁 Blob 上。 標準分頁 Blob 使用硬碟（HDD）為基礎的存放裝置媒體，最適合用於開發、測試及其他較不常存取效能變化的工作負載。
 >
 
 > [!NOTE]
-> 您可以在基本服務層獲取免費 Azure SQL 資料庫，並結合 Azure 免費帳戶來流覽 Azure。 如需相關資訊，請參閱[使用您的免費 Azure 免費帳戶，建立受管理的雲端資料庫](https://azure.microsoft.com/free/services/sql-database/)。
+> 您可以在基本服務層級取得免費的 Azure SQL 資料庫，並搭配 Azure 免費帳戶來探索 Azure。 如需相關資訊，請參閱[使用您的免費 Azure 免費帳戶，建立受管理的雲端資料庫](https://azure.microsoft.com/free/services/sql-database/)。
 
 ## <a name="single-database-dtu-and-storage-limits"></a>單一資料庫 DTU 和儲存空間限制
 
-單一資料庫的計算大小會以資料庫交易單位 (DTU) 表示，而彈性集區的計算大小則會以彈性資料庫交易單位 (eDTU) 表示。 有關 DTU 和 eDTU 的更多，請參閱[基於 DTU 的採購模型](sql-database-purchase-models.md#dtu-based-purchasing-model)。
+單一資料庫的計算大小會以資料庫交易單位 (DTU) 表示，而彈性集區的計算大小則會以彈性資料庫交易單位 (eDTU) 表示。 如需 Dtu 和 Edtu 的詳細資訊，請參閱以[dtu 為基礎的購買模型](sql-database-purchase-models.md#dtu-based-purchasing-model)。
 
 ||基本|標準|Premium|
 | :-- | --: | --: | --: |
@@ -63,11 +63,11 @@ ms.locfileid: "75562114"
 |||||
 
 > [!IMPORTANT]
-> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 有關詳細資訊，請參閱在[Azure SQL 資料庫中管理檔空間](sql-database-file-space-management.md)。
+> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱[管理 Azure SQL Database 中的檔案空間](sql-database-file-space-management.md)。
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>彈性集區 eDTU、儲存體及集區資料庫限制
 
-| | **基本** | **標準** | **溢價** |
+| | **基本** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
 | 每個資料庫的儲存體大小上限  | 2 GB | 1 TB | 1 TB |
 | 每個集區的儲存體大小上限 | 156 GB | 4 TB | 4 TB |
@@ -77,9 +77,9 @@ ms.locfileid: "75562114"
 |||||
 
 > [!IMPORTANT]
-> 除中國東部、華北、德國中部、德國東北部、美國中西部、美國 DoD 地區和美國政府中心外，高級級別中目前所有區域都提供超過 1 TB 的存儲。 在這些區域中，進階層中的儲存空間上限為 1 TB。  如需詳細資訊，請參閱 [P11-P15 目前的限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
+> 所有區域目前均可使用進階層中超過 1 TB 的儲存體，但下列地區除外：中國東部、中國北部、德國中部、德國東北部、美國中西部、美國 DoD 地區和美國政府中部。 在這些區域中，進階層中的儲存空間上限為 1 TB。  如需詳細資訊，請參閱 [P11-P15 目前的限制](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
 > [!IMPORTANT]
-> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 有關詳細資訊，請參閱在[Azure SQL 資料庫中管理檔空間](sql-database-file-space-management.md)。
+> 在某些情況下，您可能需要壓縮資料庫來回收未使用的空間。 如需詳細資訊，請參閱[管理 Azure SQL Database 中的檔案空間](sql-database-file-space-management.md)。
 
 ## <a name="dtu-benchmark"></a>DTU 基準測試
 
@@ -105,7 +105,7 @@ ms.locfileid: "75562114"
 
 資料庫的大小是根據「縮放比例」來設定。 縮放比例 (簡寫為 SF) 可決定調整和成長資料表的基數。 如以下的＜使用者與步調＞一節所述，資料庫大小、使用者數目和最大效能都會根據彼此的比例進行調整。
 
-### <a name="transactions"></a>交易
+### <a name="transactions"></a>異動
 
 工作負載包含九種交易類型，如下表所示。 每一筆交易都設計為反白顯示資料庫引擎和系統硬體中特定的一組系統特性，與其他交易呈現高度對比。 此方法可讓您更容易評估不同元件對整體效能的影響。 例如，「頻繁讀取」交易會從磁碟產生大量的讀取作業。
 
@@ -171,7 +171,7 @@ ms.locfileid: "75562114"
 | 服務類別 | 輸送量測量 | 回應時間需求 |
 | --- | --- | --- |
 | Premium |每秒交易 |0.5 秒時第 95 個百分位數 |
-| 標準 |每分鐘交易 |1.0 秒時第 90 個百分位數 |
+| Standard |每分鐘交易 |1.0 秒時第 90 個百分位數 |
 | 基本 |每小時交易 |2.0 秒時第 80 個百分位數 |
 
 ## <a name="next-steps"></a>後續步驟

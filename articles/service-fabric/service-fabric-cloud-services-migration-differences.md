@@ -1,15 +1,15 @@
 ---
-title: 雲服務和服務交換矩陣之間的差異
+title: 雲端服務和 Service Fabric 之間的差異
 description: 這是將應用程式從雲端服務移轉到 Service Fabric 的概念性概觀。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 283ad2c63bb59771dab7881522e737f773ab1705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75463376"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>移轉應用程式之前，先了解「雲端服務」與 Service Fabric 之間的差異。
@@ -81,22 +81,22 @@ Service Fabric 提供服務探索機制 (稱為「名稱服務」)，可用來�
 ![Service Fabric 直接通訊][8]
 
 ## <a name="parity"></a>Parity
-[雲服務在控制程度與易用性上與服務交換矩陣類似，但現在它是一種舊服務，並且服務交換矩陣被推薦用於新開發](https://docs.microsoft.com/azure/app-service/overview-compare);以下是 API 比較：
+[雲端服務類似于 Service Fabric 的控制程度和易用性，但它現在是舊版服務，建議您在進行新的開發時使用 Service Fabric](https://docs.microsoft.com/azure/app-service/overview-compare)。以下是 API 比較：
 
 
-| **雲服務 API** | **服務結構 API** | **注意** |
+| **雲端服務 API** | **Service Fabric API** | **附註** |
 | --- | --- | --- |
-| 角色實例.GetID | 結構執行時間.獲取節點上下文.NodeId 或 。節點名稱 | ID 是節點名稱的屬性 |
-| 角色實例.獲取功能域 | 結構用戶端.查詢管理器.getNodelist | 篩選節點名稱並使用 FD 屬性 |
-| 角色實例.獲取升級域 | 結構用戶端.查詢管理器.getNodelist | 篩選節點名稱，並使用升級屬性 |
-| 角色實例.獲取實例終結點 | 結構執行時間.獲取啟動上下文或命名（解析服務） | 由 FabricRuntime.獲取啟動上下文以及通過服務初始化參數在副本中提供的代碼包啟動上下文。初始 化 |
-| 角色環境.獲取角色 | 結構用戶端.查詢管理器.getNodelist | 如果要按類型執行相同類型的篩選，可以通過 FabricClient.ClusterManager.獲取群集清單中的節點類型清單。獲取群集清單並從中獲取角色/節點類型。 |
-| 角色環境.獲取可用 | 連接-WindowsFabricCluster 或創建指向特定節點的 Fabric Runtime | * |
-| 角色環境.獲取本地資源 | 代碼包啟動上下文.日誌/臨時/工作 | * |
-| 角色環境.獲取當前角色實例 | 代碼包啟動上下文.日誌/臨時/工作 | * |
-| 本地資源.獲取根路徑 | 代碼包啟動上下文.日誌/臨時/工作 | * |
-| 角色.獲取實例 | 結構用戶端.查詢管理器.獲取節點清單或解析服務 | * |
-| 角色實例終結點.獲取 IP 終結點 | 結構執行時間.獲取啟動上下文或命名（解析服務） | * |
+| RoleInstance. GetID | FabricRuntime. GetNodeCoNtext。NodeName | ID 是 NodeName 的屬性 |
+| RoleInstance. GetFaultDomain | FabricClient. Fabricclient.querymanager. GetNodeList | 在 NodeName 上篩選並使用 FD 屬性 |
+| RoleInstance. GetUpgradeDomain | FabricClient. Fabricclient.querymanager. GetNodeList | 在 NodeName 上篩選，並使用 Upgrade 屬性 |
+| RoleInstance. GetInstanceEndpoints | FabricRuntime. GetActivationCoNtext 或命名（ResolveService） | CodePackageActivationCoNtext 是由 FabricRuntime 所提供，而且是透過在中提供的 ServiceInitializationParameters. CodePackageActivationCoNtext 在複本內。格式化 |
+| RoleEnvironment. GetRoles | FabricClient. Fabricclient.querymanager. GetNodeList | 如果您想要依類型執行相同的篩選，您可以透過 FabricClient. ClusterManager. GetClusterManifest 取得叢集資訊清單中的節點類型清單，並從該處抓取角色/節點類型。 |
+| RoleEnvironment. GetIsAvailable | 連接-WindowsFabricCluster 或建立指向特定節點的 FabricRuntime | * |
+| RoleEnvironment. Roleenvironment.getlocalresource | CodePackageActivationCoNtext .Log/Temp/Work | * |
+| RoleEnvironment. GetCurrentRoleInstance | CodePackageActivationCoNtext .Log/Temp/Work | * |
+| LocalResource. GetRootPath | CodePackageActivationCoNtext .Log/Temp/Work | * |
+| GetInstances | FabricClient. Fabricclient.querymanager. GetNodeList 或 ResolveService | * |
+| RoleInstanceEndpoint.GetIPEndpoint | FabricRuntime. GetActivationCoNtext 或命名（ResolveService） | * |
 
 ## <a name="next-steps"></a>後續步驟
 從雲端服務移轉到 Service Fabric 最簡單的路徑是，只將雲端服務部署以 Service Fabric 應用程式取代，應用程式的整體基礎結構則大致上相同。 下列文章提供指南，以協助將 Web 和背景工作角色移轉到 Service Fabric 無狀態服務。

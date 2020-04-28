@@ -1,5 +1,5 @@
 ---
-title: Azure 通知中心安全推送視窗
+title: 適用于 Windows 的 Azure 通知中樞安全推播
 description: 了解如何在 Azure 中傳送安全的推播通知。 程式碼範例是以 C# 撰寫並使用 .NET API。
 documentationcenter: windows
 author: sethmanheim
@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: db42cf7f886855af77073963e6f04ac088ca5612
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75530726"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>從 Azure 通知中樞安全地推播通知
@@ -30,7 +30,7 @@ ms.locfileid: "75530726"
 > * [iOS](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md)
 > * [Android](notification-hubs-aspnet-backend-android-secure-google-gcm-push-notification.md)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平台的大規模推播基礎結構，因而可大幅簡化消費者和企業應用程式在行動平台上的推播通知實作。
 
@@ -159,7 +159,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
     using Windows.UI.Notifications;
     using Windows.Data.Xml.Dom;
     ```
-11. 在解決方案資源管理器中，在**NotifyUserWindowsPhone（Windows Phone 8.1）** 專案中，按右鍵 **"參考"，** 然後按一下"**添加參考..."** 在"參考管理器"對話方塊中，選中**PushBackground元件**旁邊的核取方塊，然後按一下"**確定**"。
+11. 在方案總管的 [ **NotifyUserWindowsPhone （Windows Phone 8.1）** ] 專案中，以滑鼠右鍵按一下 [**參考**]，然後按一下 [**加入參考 ...**]。在 [參考管理員] 對話方塊中，核取 [ **PushBackgroundComponent**] 旁的方塊，然後按一下 **[確定]**。
 12. 在 [方案總管] 中，連按兩下 **NotifyUserWindowsPhone (Windows Phone 8.1)** 專案中的 **Package.appxmanifest**。 在 [通知]**** 下，將 [支援快顯通知]**** 設定為 [是]****。
 
     ![][3]
@@ -168,7 +168,7 @@ Microsoft Azure 中的推播通知支援可讓您存取易於使用、多重平�
 15. 在 **Package.appxmanifest** 中，於 [應用程式設定]**** 的 [輸入點]**** 欄位中輸入 **PushBackgroundComponent.PushBackgroundTask**。
 
     ![][13]
-16. 在 **"檔"** 功能表中，按一下"**全部保存**"。
+16. 從 [**檔案**] 功能表中，按一下 [**全部儲存**]。
 
 ## <a name="run-the-application"></a>執行應用程式
 

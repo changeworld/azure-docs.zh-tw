@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 網站恢復解決 VMware VM 災害復原中的故障恢復問題
+title: 使用 Azure Site Recovery 針對 VMware VM 嚴重損壞修復中的容錯回復進行疑難排解
 description: 本文說明對使用 Azure Site Recovery 從 VMWare VM 災害復原至 Azure 期間所發生的容錯回復和重新保護問題進行疑難排解的方式。
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: b577b82585ffad0547818b4f19554a2f39cb830c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75498099"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>針對從 Azure 至內部部署環境的容錯回復進行疑難排解
@@ -73,7 +73,7 @@ ms.locfileid: "75498099"
 
 若要解決此問題：
 
-若要重新保護已容錯移轉的 VM，Azure VM 必須執行，如此一來，行動服務就會向組態伺服器內部部署進行註冊，並可與流程伺服器通訊，開始進行複寫。 如果電腦位於網路不正確或未運行（未回應或關閉），則佈建服務器無法到達 VM 上的移動服務以開始重新保護。
+若要重新保護已容錯移轉的 VM，Azure VM 必須執行，如此一來，行動服務就會向組態伺服器內部部署進行註冊，並可與流程伺服器通訊，開始進行複寫。 如果電腦在不正確的網路上或未執行（沒有回應或關機），設定伺服器就無法連線到 VM 上的行動服務以開始重新保護。
 
 * 請重新啟動 VM，讓它能夠開始通訊回內部部署。
 * 啟動 Azure 虛擬機器之後，重新啟動重新保護作業。
@@ -91,7 +91,7 @@ ms.locfileid: "75498099"
 
 ### <a name="error-code-8038"></a>錯誤碼 8038
 
-**由於錯誤，無法啟動本地虛擬機器。**
+**因為發生錯誤，所以無法啟動內部部署虛擬機器。**
 
 此問題可能會在未佈建足夠記憶體的主機上啟動內部部署 VM 時發生。 
 

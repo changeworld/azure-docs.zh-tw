@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構中的指標磁碟重組
-description: 瞭解如何使用磁碟重組或打包作為服務結構中指標的策略。 此技術對於非常大的服務很有用。
+title: Azure Service Fabric 中的計量磁碟重組
+description: 瞭解如何使用磁碟重組或封裝，作為 Service Fabric 中計量的策略。 這項技術適用于非常大型的服務。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75563355"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>度量的重組和 Service Fabric 中的負載
@@ -33,7 +33,7 @@ Service Fabric 叢集資源管理員支援管理負載的不同策略，也就�
 
 <center>
 
-![比較平衡和碎片化群集][Image1]
+![比較平衡和重組的叢集][Image1]
 </center>
 
 在平衡情況下，請注意放置其中一個最大服務物件所需的移動次數。 在重組的叢集中，大型工作負載可以放置於四或五個節點，而不需要等待其他服務移動。
@@ -89,7 +89,7 @@ ClusterManifest.xml：
 
 
 ## <a name="next-steps"></a>後續步驟
-- 叢集資源管理員有許多描述叢集的選項。 要瞭解有關它們的更多，請查看本文介紹[服務結構群集](service-fabric-cluster-resource-manager-cluster-description.md)
-- 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 要瞭解有關指標以及如何配置指標的更多[，請查看本文](service-fabric-cluster-resource-manager-metrics.md)
+- 叢集資源管理員有許多描述叢集的選項。 若要深入瞭解它們，請參閱本文，以瞭解如何[描述 Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)叢集
+- 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入瞭解計量和其設定方式，請參閱[這篇文章](service-fabric-cluster-resource-manager-metrics.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

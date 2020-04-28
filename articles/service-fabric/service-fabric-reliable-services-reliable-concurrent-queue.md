@@ -1,13 +1,13 @@
 ---
 title: Azure Service Fabric 中的 ReliableConcurrentQueue
-description: 可靠併發佇列是一種高通量佇列，允許並行 enqueue 和取消佇列。
+description: ReliableConcurrentQueue 是高輸送量的佇列，可允許平行將和清除。
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75462733"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Azure Service Fabric 中的 ReliableConcurrentQueue 簡介
@@ -34,15 +34,15 @@ ReliableConcurrentQueue 的範例使用情況為[訊息佇列](https://en.wikipe
 * 佇列並不保證嚴格的 FIFO 順序。
 * 佇列不會閱讀它自己的寫入。 如果項目在交易內加入佇列，則同一個交易內的清除佇列者將看不到它。
 * 清除佇列不會彼此互相隔離。 如果已在交易 txnA** 中將項目 A** 清除佇列，則即使 txnA** 不認可，並行交易 txnB** 也看不到項目 A**。  如果 txnA** 中止，txnB** 就可立即看到 A**。
-* 可將 TryPeekAsync** 行為加以實作，方法是使用 TryDequeueAsync**，然後中止交易。 可以在"程式設計模式"部分找到此行為的示例。
+* 可將 TryPeekAsync** 行為加以實作，方法是使用 TryDequeueAsync**，然後中止交易。 這種行為的範例可在程式設計模式一節中找到。
 * 計數為非交易式。 它可用來了解佇列中元素的數目，但會以時間點表示且無法依賴。
-* 不應在事務處於活動狀態時對清除佇列的項執行昂貴的處理，以避免長時間運行可能對系統的性能產生影響的事務。
+* 當交易在使用中時，不應執行已清除佇列專案的昂貴處理，以避免長時間執行的交易可能會對系統造成效能影響。
 
 ## <a name="code-snippets"></a>程式碼片段
 讓我們看看幾個程式碼片段，和其預期的輸出。 本節中會忽略例外狀況處理。
 
 ### <a name="instantiation"></a>實例
-創建可靠併發佇列的實例與任何其他可靠集合類似。
+建立可靠並行佇列的實例類似于任何其他可靠的集合。
 
 ```csharp
 IReliableConcurrentQueue<int> queue = await this.StateManager.GetOrAddAsync<IReliableConcurrentQueue<int>>("myQueue");
@@ -170,7 +170,7 @@ using (var txn = this.StateManager.CreateTransaction())
 在本節中，我們來看看幾個可能有助於使用 ReliableConcurrentQueue 的程式設計模式。
 
 ### <a name="batch-dequeues"></a>批次清除佇列
-建議的程式設計模式是使取用者工作以批次方式清除佇列，而不是一次執行一個清除佇列。 使用者可以選擇節流處理每個批次或批次大小之間的延遲。 下列程式碼片段會示範此程式設計模型。 請注意，在此示例中，處理是在提交事務後完成的，因此，如果在處理過程中發生故障，則未處理的專案將丟失，而無需處理。  或者，處理可以在事務的範圍內完成，但它可能會對性能產生負面影響，並且需要處理已處理的專案。
+建議的程式設計模式是使取用者工作以批次方式清除佇列，而不是一次執行一個清除佇列。 使用者可以選擇節流處理每個批次或批次大小之間的延遲。 下列程式碼片段會示範此程式設計模型。 請注意，在此範例中，在認可交易之後就會完成處理，因此，如果在處理時發生錯誤，未處理的專案將會遺失。  或者，您可以在交易的範圍內進行處理，不過，它可能會對效能造成負面影響，而且需要處理已經處理的專案。
 
 ```
 int batchSize = 5;
@@ -264,9 +264,9 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>盡可能清空
-由於資料結構的並行本質，無法保證可將佇列清空。  即使佇列上沒有使用者操作在運行中，對 TryDequeueAsync 的特定調用也可能無法返回以前排隊和提交的項。  清除佇列最終** 保證可看到加入佇列的項目，不過，沒有超出訊號範圍通訊機制的獨立取用者，無法得知佇列已觸達穩定狀態，即使已將所有的產生者停止，且不允許任何新的加入佇列作業亦然。 因此，已盡可能清空作業，實作如下。
+由於資料結構的並行本質，無法保證可將佇列清空。  即使佇列上沒有任何使用者作業正在進行中，對 TryDequeueAsync 的特定呼叫可能不會傳回先前已排入佇列並已認可的專案。  清除佇列最終** 保證可看到加入佇列的項目，不過，沒有超出訊號範圍通訊機制的獨立取用者，無法得知佇列已觸達穩定狀態，即使已將所有的產生者停止，且不允許任何新的加入佇列作業亦然。 因此，已盡可能清空作業，實作如下。
 
-使用者應該將所有進一步的生產者和取用者工作停止，並在嘗試清空佇列之前，等待任何進行中的交易加以認可或中止。  如果使用者知道佇列中的預期項數，他們可以設置一個通知，指示所有項已清除佇列。
+使用者應該將所有進一步的生產者和取用者工作停止，並在嘗試清空佇列之前，等待任何進行中的交易加以認可或中止。  如果使用者知道佇列中預期的專案數，他們可以設定通知，表示所有專案都已清除佇列。
 
 ```
 int numItemsDequeued;
@@ -336,8 +336,8 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Reliable Services 快速入門](service-fabric-reliable-services-quick-start.md)
 * [使用可靠的集合](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services 通知](service-fabric-reliable-services-notifications.md)
-* [可靠的服務備份和恢復（災害復原）](service-fabric-reliable-services-backup-restore.md)
-* [可靠的狀態管理員配置](service-fabric-reliable-services-configuration.md)
-* [開始使用服務交換矩陣 Web API 服務](service-fabric-reliable-services-communication-webapi.md)
+* [Reliable Services 備份和還原（嚴重損壞修復）](service-fabric-reliable-services-backup-restore.md)
+* [可靠的狀態管理員設定](service-fabric-reliable-services-configuration.md)
+* [Service Fabric Web API 服務的消費者入門](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services 程式設計模型的進階用法](service-fabric-reliable-services-advanced-usage.md)
 * [可靠集合的開發人員參考](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

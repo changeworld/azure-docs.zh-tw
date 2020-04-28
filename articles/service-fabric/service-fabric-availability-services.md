@@ -1,15 +1,15 @@
 ---
 title: Service Fabric 服務的可用性
-description: 描述 Azure 服務結構應用程式中服務的錯檢測、容錯移轉和恢復。
+description: 說明 Azure Service Fabric 應用程式中服務的錯誤偵測、容錯移轉和復原。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 5306439184561e8dec8303a7b149f51d6c2f6e08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75551857"
 ---
 # <a name="availability-of-service-fabric-services"></a>Service Fabric 服務的可用性
@@ -37,5 +37,5 @@ Service Fabric 服務可能是具狀態或無狀態。 無狀態服務是一種�
 - [調整 Service Fabric 服務](service-fabric-concepts-scalability.md)
 - [分割 Service Fabric 服務](service-fabric-concepts-partitioning.md)
 - [定義和管理狀態](service-fabric-concepts-state.md)
-- [可靠的服務](service-fabric-reliable-services-introduction.md)
+- [Reliable Services](service-fabric-reliable-services-introduction.md)
 

@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構效能監控
+title: Azure Service Fabric 效能監視
 description: 了解用於監視及診斷 Azure Service Fabric 叢集的效能計數器。
 author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 30b9b8393007033a7c2e6798cd57d9cf0128820d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75464713"
 ---
 # <a name="performance-metrics"></a>效能度量
@@ -25,8 +25,8 @@ ms.locfileid: "75464713"
 | Logical Disk | 邏輯磁碟可用空間 |
 | PhysicalDisk(per Disk) | 平均磁片讀取佇列長度 |
 | PhysicalDisk(per Disk) | 平均磁片寫入佇列長度 |
-| PhysicalDisk(per Disk) | 平均磁片秒/讀取 |
-| PhysicalDisk(per Disk) | 平均磁片秒/寫入 |
+| PhysicalDisk(per Disk) | Avg. Disk sec/Read |
+| PhysicalDisk(per Disk) | Avg. Disk sec/Write |
 | PhysicalDisk(per Disk) | Disk Reads/sec  |
 | PhysicalDisk(per Disk) | Disk Read Bytes/sec  |
 | PhysicalDisk(per Disk) | Disk Writes/sec |

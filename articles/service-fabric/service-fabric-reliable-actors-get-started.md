@@ -1,35 +1,35 @@
 ---
-title: 在 Azure 服務結構上創建基於參與者的服務
+title: 在 Azure 上建立以動作專案為基礎的服務 Service Fabric
 description: 了解如何使用 Service Fabric Reliable Actors 在 C# 中建立、偵錯及部署第一個動作項目型服務。
 author: vturecek
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
 ms.openlocfilehash: a6e4fb48653572139463738c82de632ff7d55074
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75466245"
 ---
 # <a name="getting-started-with-reliable-actors"></a>開始使用 Reliable Actors
 > [!div class="op_single_selector"]
-> * [C# 在 Windows 上](service-fabric-reliable-actors-get-started.md)
+> * [Windows 上的 c #](service-fabric-reliable-actors-get-started.md)
 > * [在 Linux 上使用 Java](service-fabric-reliable-actors-get-started-java.md)
 
 本文將逐步說明如何在 Visual Studio 中建立一個簡單的 Reliable Actor 應用程式並進行偵錯。 如需 Reliable Actors 的相關詳細資訊，請參閱 [Service Fabric Reliable Actors 簡介](service-fabric-reliable-actors-introduction.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在開始之前，請確保您的電腦上已設定 Service Fabric 開發環境 (包括 Visual Studio)。 如需詳細資訊，請參閱[如何設定開發環境](service-fabric-get-started.md)。
 
 ## <a name="create-a-new-project-in-visual-studio"></a>在 Visual Studio 中建立新專案
 
-以管理員身份啟動 Visual Studio 2019 或更高版本，然後創建新**的服務結構應用程式**專案：
+以系統管理員身分啟動 Visual Studio 2019 或更新版本，然後建立新的**Service Fabric 應用程式**專案：
 
 ![適用於 Visual Studio 的 Service Fabric 工具 - 新專案][1]
 
-在下一個對話方塊中，在 **.NET Core 2.0**下選擇**參與者服務**，然後輸入服務的名稱。
+在下一個對話方塊中，選擇 [ **.Net Core 2.0** ] 底下的 [動作專案**服務**]，然後輸入服務的名稱。
 
 ![Service Fabric 專案範本][5]
 
@@ -86,7 +86,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
 建立一個簡單的主控台應用程式來呼叫動作項目服務。
 
-1. 按右鍵解決方案資源管理器>**添加新** > **專案...**
+1. 在方案總管中，以滑鼠右鍵按一下方案 >**加入** > **新專案**...]。
 
 2. 在 [.NET Core]**** 專案類型下，選擇 [主控台應用程式 (.NET Core)]****。  將專案命名為 *ActorClient*。
     
@@ -99,7 +99,7 @@ internal class HelloWorld : Actor, IHelloWorld
     
     ![組建屬性][8]
 
-4. 用戶端專案需要可靠的動作項目 NuGet 套件。  按一下**工具** > **NuGet 包管理器** > **管理器主控台**。  在 [套件管理器主控台] 中，輸入下列命令：
+4. 用戶端專案需要可靠的動作項目 NuGet 套件。  按一下 [**工具** > ] [**NuGet 套件管理員** > ] [**套件管理員主控台**]。  在 [套件管理器主控台] 中，輸入下列命令：
     
     ```powershell
     Install-Package Microsoft.ServiceFabric.Actors -IncludePrerelease -ProjectName ActorClient
@@ -107,7 +107,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet 套件及其所有相依性都安裝在 ActorClient 專案中。
 
-5. 用戶端專案也需要介面專案的參考。  在 ActorClient 專案中，按右鍵**依賴項，** 然後按一下"**增加參考..."** 選擇**專案>解決方案**（如果尚未選擇），然後勾選**HelloWorld.Interface**旁邊的核取方塊。  按一下 [確定]****。
+5. 用戶端專案也需要介面專案的參考。  在 ActorClient 專案中，以滑鼠右鍵按一下 [相依性]，然後按一下 [**加入參考 ...** **]** 。 選取 [**專案] > [方案**] （如果尚未選取），然後勾選 [ **HelloWorld**] 旁的核取方塊。  按一下 [確定]  。
     
     ![[加入參考] 對話方塊][7]
 

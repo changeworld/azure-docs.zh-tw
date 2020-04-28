@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.custom: seodec18
 ms.openlocfilehash: 1cf8898e5fd63e35447f6580e13347ba6d7fc413
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75485438"
 ---
 # <a name="track-asynchronous-azure-operations"></a>追蹤非同步 Azure 作業
@@ -73,7 +73,7 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 建立、更新或刪除資源的作業 (PUT、PATCH、DELETE) 通常會傳回 `provisioningState` 值。 當作業完成時會傳回下列三個值之一︰ 
 
 * 成功
-* 失敗
+* Failed
 * 已取消
 
 其他所有值表示作業仍在執行中。 資源提供者可以傳回自訂值來指出其狀態。 例如，當要求已收到且正在執行時，您可能會收到 **Accepted**。
@@ -185,4 +185,4 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 ## <a name="next-steps"></a>後續步驟
 
 * 如需每個 REST 作業的相關文件，請參閱 [REST API 文件](/rest/api/)。
-* 有關通過資源管理器 REST API 部署範本的資訊，請參閱[使用資源管理器範本和資源管理器 REST API 部署資源](../templates/deploy-rest.md)。
+* 如需透過 Resource Manager REST API 部署範本的詳細資訊，請參閱[使用 Resource Manager 範本部署資源和 Resource Manager REST API](../templates/deploy-rest.md)。

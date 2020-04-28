@@ -1,86 +1,86 @@
 ---
-title: 使用視覺化工作室代碼使用示例資料在本地測試 Azure 流分析作業
-description: 本文介紹如何使用視覺化工作室代碼的 Azure 流分析工具在本地使用示例資料測試查詢。
+title: 使用 Visual Studio Code 的範例資料，在本機測試 Azure 串流分析作業
+description: 本文說明如何使用適用于 Visual Studio Code 的 Azure 串流分析工具，透過範例資料在本機測試查詢。
 ms.service: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: conceptual
 ms.openlocfilehash: c29d0d9ecd856ee9611df21d23b1b2b763e24652
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75486465"
 ---
-# <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>使用視覺化工作室代碼使用示例資料在本地測試流分析查詢
+# <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>使用 Visual Studio Code 和範例資料在本機測試串流分析查詢
 
-您可以使用視覺化工作室代碼的 Azure 流分析工具在本地使用示例資料測試流分析作業。 您可以在專案的 **"本地運行輸出"** 資料夾中的 JSON 檔中找到查詢結果。
+您可以使用適用于 Visual Studio Code 的 Azure 串流分析工具，以範例資料在本機測試您的串流分析作業。 您可以在專案的**LocalRunOutputs**資料夾中，找到 JSON 檔案中的查詢結果。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* 安裝[.NET 核心 SDK](https://dotnet.microsoft.com/download)並重新啟動視覺化工作室代碼。
+* 安裝[.net CORE SDK](https://dotnet.microsoft.com/download)並重新啟動 Visual Studio Code。
 
-* 使用此[快速入門](quick-create-vs-code.md)瞭解如何使用視覺化工作室代碼創建流分析作業。
+* 使用本[快速入門](quick-create-vs-code.md)來瞭解如何使用 Visual Studio Code 建立串流分析作業。
 
 ## <a name="prepare-sample-data"></a>準備範例資料
 
-您需要首先準備示例輸入資料檔案。 如果電腦上已有一些示例資料檔案，則可以跳過此步驟，然後轉到下一步。
+您必須先準備範例輸入資料檔案。 如果您的電腦上已經有一些範例資料檔案，您可以略過此步驟並移至下一個。
 
-1. 按一下從頂行預覽輸入設定檔中**的資料**。 某些輸入資料將從 IoT 中心提取，並顯示在預覽視窗中。 請注意，這可能需要一段時間。
+1. 按一下頂端行中的 [預覽輸入設定檔中的**資料**]。 某些輸入資料會從 IoT 中樞提取，並顯示在預覽視窗中。 請注意，這可能需要一些時間。
 
-2. 顯示資料後，按一下"**保存"以**將資料保存到本地檔。
+2. 資料顯示後，按一下 [**另存**新檔]，將資料儲存至本機檔案。
 
  ![預覽即時輸入](./media/quick-create-vs-code/preview-live-input.png)
 
-## <a name="define-a-local-input"></a>定義本地輸入
+## <a name="define-a-local-input"></a>定義本機輸入
 
-1. 按一下流分析專案中的"輸入"資料夾下的**input.json。** 然後選擇**從頂行添加本地輸入**。
+1. 在串流分析專案的 [輸入] 資料夾底下，按一下 [**輸入]。** 然後選取頂端一行的 [**新增本機輸入**]。
 
-    ![從專案添加本地輸入](./media/quick-create-vs-code/add-input-from-project.png)
+    ![從專案新增本機輸入](./media/quick-create-vs-code/add-input-from-project.png)
 
-    您還可以使用**Ctrl_Shift_P**打開命令調色板並輸入**ASA：添加輸入**。
+    您也可以使用**Ctrl + Shift + P**來開啟命令選擇區，並輸入**ASA： Add Input**。
 
    ![在 VS Code 中新增串流分析輸入](./media/quick-create-vs-code/add-input.png)
 
-2. 選擇**本地輸入**。
+2. 選取 [**本機輸入**]。
 
-    ![在視覺化工作室代碼中添加 ASA 本地輸入](./media/vscode-local-run/add-local-input.png)
+    ![在 Visual Studio 程式碼中新增 ASA 本機輸入](./media/vscode-local-run/add-local-input.png)
 
-3. 選擇 **= 新的本地輸入**。
+3. 選取 [ **+ 新增本機輸入**]。
 
-    ![在視覺化工作室代碼中添加新的 ASA 本地輸入](./media/vscode-local-run/add-new-local-input.png)
+    ![在 Visual Studio 程式碼中新增 ASA 本機輸入](./media/vscode-local-run/add-new-local-input.png)
 
-4. 輸入查詢中使用的相同輸入別名。
+4. 輸入您在查詢中使用的相同輸入別名。
 
-    ![添加新的 ASA 本地輸入別名](./media/vscode-local-run/new-local-input-alias.png)
+    ![新增 ASA 本機輸入別名](./media/vscode-local-run/new-local-input-alias.png)
 
-5. 在新生成的**LocalInput_Input.json**檔中，輸入本地資料檔案所在的檔路徑。
+5. 在新產生的**LocalInput_Input json**檔案中，輸入本機資料檔案所在的檔案路徑。
 
-    ![在視覺化工作室中輸入本地檔路徑](./media/vscode-local-run/local-file-path.png)
+    ![在 Visual Studio 中輸入本機檔案路徑](./media/vscode-local-run/local-file-path.png)
 
-6. 選擇 **"預覽資料**"以預覽輸入資料。 如果資料的 JSON 或 CSV，將自動檢測到資料的序列化類型。 使用選擇器以**表格**或**原始**格式查看資料。 下表是**表格式**的資料示例：
+6. 選取 [**預覽資料**] 以預覽輸入資料。 如果您的資料的 JSON 或 CSV，則會自動偵測到其序列化類型。 使用選取器來以**資料表**或**原始**格式來查看您的資料。 下表是**資料表格式**的資料範例：
 
-     ![以表格格式預覽本地資料](./media/vscode-local-run/local-file-preview-table.png)
+     ![以資料表格式預覽本機資料](./media/vscode-local-run/local-file-preview-table.png)
 
-    下表是**原始格式**的資料示例：
+    下表是**原始格式**的資料範例：
 
-    ![以原始格式預覽本地資料](./media/vscode-local-run/local-file-preview-raw.png)
+    ![以原始格式預覽本機資料](./media/vscode-local-run/local-file-preview-raw.png)
 
 ## <a name="run-queries-locally"></a>在本機執行查詢
 
-返回到查詢編輯器，然後選擇 **"在本地運行**"。 然後選擇 **"使用**下拉清單中的本地輸入"。
+返回您的查詢編輯器，然後選取 [在**本機執行**]。 然後從下拉式清單中選取 [**使用本機輸入**]。
 
-![在查詢編輯器中選擇本地運行](./media/vscode-local-run/run-locally.png)
+![選取 [在本機執行] 查詢編輯器](./media/vscode-local-run/run-locally.png)
 
-![使用本地輸入](./media/vscode-local-run/run-locally-use-local-input.png)
+![使用本機輸入](./media/vscode-local-run/run-locally-use-local-input.png)
 
-結果顯示在正確的視窗中。 您可以按一下 **"運行"** 以再次測試。 您還可以選擇 **"在資料夾中打開"** 以查看檔資源管理器中的結果檔，然後使用其他工具進一步打開這些檔。 請注意，結果檔僅以 JSON 格式提供。
+結果會顯示在右邊的視窗中。 您可以按一下 [**執行**] 來重新測試。 您也可以選取 [**在資料夾中開啟**]，以在檔案瀏覽器中查看結果檔案，並使用其他工具進一步開啟檔案。 請注意，結果檔案僅以 JSON 格式提供。
 
-![查看本地運行結果](./media/vscode-local-run/run-locally-result.png)
+![查看本機執行結果](./media/vscode-local-run/run-locally-result.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用視覺化工作室代碼使用即時輸入在本地測試 Azure 流分析作業](visual-studio-code-local-run-live-input.md)
+* [使用 Visual Studio Code 在本機測試 Azure 串流分析作業和即時輸入](visual-studio-code-local-run-live-input.md)
 
-* [使用視覺化工作室代碼流覽 Azure 流分析作業（預覽版）](visual-studio-code-explore-jobs.md)
+* [使用 Visual Studio Code 探索 Azure 串流分析作業（預覽）](visual-studio-code-explore-jobs.md)

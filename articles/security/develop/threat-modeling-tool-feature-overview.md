@@ -1,5 +1,5 @@
 ---
-title: 微軟威脅建模工具功能概述 - Azure
+title: Microsoft Threat Modeling Tool 功能總覽-Azure
 description: 深入了解威脅模型化工具中可用的所有功能
 author: jegeib
 ms.author: jegeib
@@ -8,10 +8,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 08/17/2017
 ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75552112"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>威脅模型化工具功能概觀
@@ -44,8 +44,8 @@ ms.locfileid: "75552112"
 | **檔案** | <ul><li>開啟、儲存及關閉檔案</li><li>登入及登出 OneDrive 帳戶。</li><li>共用連結 (檢視和編輯)。</li><li>檢視檔案資訊。</li><li>將新的範本套用至現有的模型。</li></ul> |
 | **編輯** | 復原和重做動作，以及複製、貼上和刪除。 |
 | **檢視** | <ul><li>在**分析**和**設計**檢視之間切換。</li><li>開啟已關閉的視窗 (例如，樣板、元素屬性和訊息)。</li><li>將版面配置重設為預設設定。</li></ul> |
-| **圖** | 新增和刪除圖表，以及切換圖表的索引標籤。 |
-| **報表** | 建立要與其他人共用的 HTML 報告。 |
+| **空間** | 新增和刪除圖表，以及切換圖表的索引標籤。 |
+| **報告** | 建立要與其他人共用的 HTML 報告。 |
 | **說明** | 尋找協助您使用工具的指南。 |
 
 符號是最上層功能表的捷徑：
@@ -63,7 +63,7 @@ ms.locfileid: "75552112"
 | **放大/縮小** | 放大和縮小圖表以獲得更清楚的檢視。 |
 | **意見反應** | 開啟 MSDN 論壇。 |
 
-### <a name="canvas"></a>畫布
+### <a name="canvas"></a>Canvas
 
 畫布是供您拖放元素的空間。 拖放是建立模型最快且最有效率的方式。 您也能按一下滑鼠右鍵並從功能表選取項目，以新增泛型版本的元素，如下圖所示：
 
@@ -84,15 +84,15 @@ ms.locfileid: "75552112"
 | **處理程序** | 應用程式、瀏覽器外掛程式、執行緒、虛擬機器 |
 | **外部互動者** | 驗證提供者、瀏覽器、使用者、Web 應用程式 |
 | **資料存放區** | 快取、儲存體、設定檔、資料庫、登錄 |
-| **資料流程** | 二進位、ALPC、HTTP、HTTPS/TLS/SSL、IOCTL、IPSec、具名管道、DCOM、SMB、UDP |
+| **** | 二進位、ALPC、HTTP、HTTPS/TLS/SSL、IOCTL、IPSec、具名管道、DCOM、SMB、UDP |
 | **信任線路/邊界** | 公司網路、網際網路、機器、沙箱、使用者/核心模式 |
 
 ### <a name="notesmessages"></a>附註/訊息
 
 | 元件                               | 詳細資料      |
 | --------------------------------------- | ------------ |
-| **消息** | 每當發生錯誤時 (例如元素之間沒有資料流程) 警示使用者的內部工具邏輯。 |
-| **注意** | 由工程小組在整個設計和檢閱流程中新增至檔案的手動附註。 |
+| **訊息** | 每當發生錯誤時 (例如元素之間沒有資料流程) 警示使用者的內部工具邏輯。 |
+| **注意事項** | 由工程小組在整個設計和檢閱流程中新增至檔案的手動附註。 |
 
 ### <a name="element-properties"></a>元素屬性
 
@@ -194,7 +194,7 @@ ms.locfileid: "75552112"
 
 ## <a name="reports"></a>報表
 
-完成優先順序的變更及更新每個產生之威脅的狀態後，您可以儲存檔案和/或列印報告。 轉到**報表** > **創建完整報表**。 為報告命名，接著您應該會看到類似下圖的內容：
+完成優先順序的變更及更新每個產生之威脅的狀態後，您可以儲存檔案和/或列印報告。 移至 [**報表** > ] [**建立完整報表**]。 為報告命名，接著您應該會看到類似下圖的內容：
 
 ![Report](./media/threat-modeling-tool-feature-overview/report.png)
 

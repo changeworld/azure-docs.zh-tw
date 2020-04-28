@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 6/12/2017
 ms.author: lemai
 ms.openlocfilehash: 8f2eefec94ad4763a054ee089b17232c41e642dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75609786"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>以節點轉換 API 取代啟動節點和停止節點 API
@@ -31,7 +31,7 @@ ms.locfileid: "75609786"
 
 我們已經用一組新的 API 解決上述問題。  新的節點轉換 API (受控︰[StartNodeTransitionAsync()][snt]) 可用來將 Service Fabric 節點轉換為「停止」** 狀態，或將它從「停止」** 狀態轉換為一般狀態。  請注意，此 API 名稱中的 "Start" 不是啟動節點之意。  是指開始系統將執行、會將節點轉換為「停止」** 或啟動狀態的非同步作業。
 
-**使用**
+**使用量**
 
 如果節點轉換 API 被呼叫時沒有擲回例外狀況，則系統已接受非同步作業，並將執行它。  成功的呼叫並不表示作業完成。  若要取得作業的目前狀態資訊，請呼叫節點轉換進度 API (受控︰ [GetNodeTransitionProgressAsync()][gntp])，並搭配此作業叫用節點轉換 API 時使用的 guid。  節點轉換進度 API 會傳回 NodeTransitionProgress 物件。  此物件的 State 屬性會指定作業的目前狀態。  如果狀態是 "Running"，則作業正在執行。  如果是 "Completed"，則作業完成沒有錯誤。  如果是 "Faulted"，則表示執行作業發生問題。  Result 屬性的 Exception 屬性會指出問題為何。  請參閱 https://docs.microsoft.com/dotnet/api/system.fabric.testcommandprogressstate 了解 State 屬性的相關資訊，以及之後的「範例用法」一節中的程式碼範例。
 

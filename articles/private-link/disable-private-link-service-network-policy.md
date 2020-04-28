@@ -1,6 +1,6 @@
 ---
-title: '禁用 Azure 專用連結服務源 IP 位址的網路原則 '
-description: 瞭解如何禁用 Azure 專用連結的網路原則
+title: '停用 Azure 私人連結服務來源 IP 位址的網路原則 '
+description: 瞭解如何停用 Azure 私人連結的網路原則
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 4c6bd64d141341e0b7fa5641e04320a95d7951bb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75452999"
 ---
-# <a name="disable-network-policies-for-private-link-service-source-ip"></a>禁用專用鏈路服務源 IP 的網路原則
+# <a name="disable-network-policies-for-private-link-service-source-ip"></a>停用私人連結服務來源 IP 的網路原則
 
-為了選擇專用連結服務的源 IP 位址，子網上需要顯式禁用設置`privateLinkServiceNetworkPolicies`。 此設置僅適用于您選擇的特定私人 IP 位址，作為專用連結服務的源 IP。 對於子網中的其他資源，根據網路安全性群組 （NSG） 安全規則定義控制訪問。 
+若要為您的私用連結服務選擇來源 IP 位址，子網需要明確`privateLinkServiceNetworkPolicies`的停用設定。 此設定僅適用于您選擇做為私人連結服務之來源 IP 的特定私人 IP 位址。 若為子網中的其他資源，則會根據網路安全性群組（NSG）安全性規則定義來控制存取。 
  
-使用任何 Azure 用戶端（PowerShell、CLI 或範本）時，需要執行其他步驟來更改此屬性。 可以使用 Azure 門戶中的雲外殼禁用策略，或者 Azure PowerShell、Azure CLI 的本地安裝或使用 Azure 資源管理器範本。  
+使用任何 Azure 用戶端（PowerShell、CLI 或範本）時，需要額外的步驟來變更此屬性。 您可以從 Azure 入口網站使用 cloud shell，或 Azure PowerShell、Azure CLI 的本機安裝，或使用 Azure Resource Manager 範本來停用原則。  
  
-按照以下步驟禁用名為*myVirtualNetwork*的虛擬網路的專用連結服務網路原則，該虛擬網路*預設子網*託管在名為*myResourceGroup*的資源組中。 
+請遵循下列步驟，針對名為*myVirtualNetwork*的虛擬網路停用私人連結服務網路原則，並在名為*myResourceGroup*的資源群組中託管*預設*子網。 
 
 ## <a name="using-azure-powershell"></a>使用 Azure PowerShell
-本節介紹如何使用 Azure PowerShell 禁用子網專用終結點策略。
+本節說明如何使用 Azure PowerShell 停用子網私人端點原則。
 
 ```azurepowershell
 $virtualNetwork= Get-AzVirtualNetwork `
@@ -35,7 +35,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
 $virtualNetwork | Set-AzVirtualNetwork 
 ```
 ## <a name="using-azure-cli"></a>使用 Azure CLI
-本節介紹如何使用 Azure CLI 禁用子網專用終結點策略。
+本節說明如何使用 Azure CLI 停用子網私人端點原則。
 ```azurecli
 az network vnet subnet update \ 
   --name default \ 
@@ -44,7 +44,7 @@ az network vnet subnet update \
   --disable-private-link-service-network-policies true 
 ```
 ## <a name="using-a-template"></a>使用範本
-本節介紹如何使用 Azure 資源管理器範本禁用子網專用終結點策略。
+本節說明如何使用 Azure Resource Manager 範本停用子網私人端點原則。
 ```json
 { 
     "name": "myVirtualNetwork", 
@@ -71,5 +71,5 @@ az network vnet subnet update \
  
 ```
 ## <a name="next-steps"></a>後續步驟
-- 瞭解有關[Azure 專用終結點](private-endpoint-overview.md)的更多
+- 深入瞭解[Azure 私用端點](private-endpoint-overview.md)
  

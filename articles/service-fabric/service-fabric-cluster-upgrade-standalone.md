@@ -1,13 +1,13 @@
 ---
-title: 升級 Azure 服務結構獨立群集
+title: 升級 Azure Service Fabric 獨立叢集
 description: 了解如何升級 Service Fabric 獨立叢集的版本或組態。  T
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451832"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>升級和更新 Service Fabric 獨立叢集
@@ -15,7 +15,7 @@ ms.locfileid: "75451832"
 對於任何現代系統，可升級性的設計是產品達到長期成功的關鍵。 Azure Service Fabric 獨立叢集是您擁有的資源。 本文說明可以升級或更新的項目。
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>控制叢集上執行的網狀架構版本
-確保群集始終運行[受支援的 Service Fabric 版本](service-fabric-versions.md)。 當 Microsoft 宣布發行新版本的 Service Fabric 時，從宣布當日起至少 60 天後，舊版就會標示為結束支援。 新的版本會於 [Service Fabric 小組部落格上](https://blogs.msdn.microsoft.com/azureservicefabric/)發佈。 那時就有新的版本可選擇。
+請確定您的叢集一律會執行[支援的 Service Fabric 版本](service-fabric-versions.md)。 當 Microsoft 宣布發行新版本的 Service Fabric 時，從宣布當日起至少 60 天後，舊版就會標示為結束支援。 新的版本會於 [Service Fabric 小組部落格上](https://blogs.msdn.microsoft.com/azureservicefabric/)發佈。 那時就有新的版本可選擇。
 
 您可以將叢集設定為在 Microsoft 釋出網狀架構升級時自動接收該升級，您也可以手動選取您想讓叢集執行的受支援網狀架構版本。 如需詳細資訊，請參閱[升級在叢集上執行的 Service Fabric 版本](service-fabric-cluster-upgrade-windows-server.md)。
 
@@ -37,7 +37,7 @@ ms.locfileid: "75451832"
 
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解如何自訂某些[服務結構群集結構設置](service-fabric-cluster-fabric-settings.md)
+* 瞭解如何自訂一些[service fabric 叢集網狀架構設定](service-fabric-cluster-fabric-settings.md)
 * 了解如何 [相應放大和相應縮小叢集](service-fabric-cluster-scale-up-down.md)
 * 瞭解[應用程式升級](service-fabric-application-upgrade.md)
 
