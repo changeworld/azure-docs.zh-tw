@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e9f22df8df77c3d59990d26b0f63f134f537d4
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c224f1e3b7ce53df9bfb24b0c9a9ac14f15996fe
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75561782"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81867709"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workpath"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Workpath 整合
 
@@ -96,7 +96,7 @@ ms.locfileid: "75561782"
     在 [登入 URL]  文字方塊中，以下列模式輸入 URL︰`https://<subdomain>.workpath.com/`
 
     > [!NOTE]
-    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Workpath 用戶端支援小組](https://help.workpath.com/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
+    > 這些都不是真正的值。 請使用實際的「識別碼」、「回覆 URL」及「登入 URL」來更新這些值。 請連絡 [Workpath 用戶端支援小組](https://www.workpath.com/en/company/)以取得這些值。 您也可以參考 Azure 入口網站中**基本 SAML 組態**區段所示的模式。
 
 1. Workpath 應用程式需要特定格式的 SAML 判斷提示，需要您加入自訂屬性對應到您的 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
 
@@ -149,7 +149,7 @@ ms.locfileid: "75561782"
 
 ## <a name="configure-workpath-sso"></a>設定 Workpath SSO
 
-若要在 **Workpath** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Workpath 支援小組](https://help.workpath.com/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
+若要在 **Workpath** 端設定單一登入，您必須將從 Azure 入口網站下載的 [同盟中繼資料 XML]  和複製的適當 URL 傳送給 [Workpath 支援小組](https://www.workpath.com/en/company/)。 他們會進行此設定，讓兩端的 SAML SSO 連線都設定正確。
 
 ### <a name="create-workpath-test-user"></a>建立 Workpath 測試使用者
 

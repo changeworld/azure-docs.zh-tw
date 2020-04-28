@@ -1,43 +1,43 @@
 ---
-title: 樣本函數 - 日期
-description: 描述要在 Azure 資源管理器樣本中使用用於日期的函數。
+title: 範本函式-日期
+description: 描述要在 Azure Resource Manager 範本中用來處理日期的函式。
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 364b41e9e92cb248a7bd2fac5a41eb535adbf440
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.date: 04/27/2020
+ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82084782"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192292"
 ---
-# <a name="date-functions-for-arm-templates"></a>ARM 範本日期函數
+# <a name="date-functions-for-arm-templates"></a>ARM 範本的日期函式
 
-資源管理員提供以下功能,用於在 Azure 資源管理員 (ARM) 樣本中處理日期:
+Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （ARM）範本中處理日期：
 
-* [日期時間新增](#datetimeadd)
+* [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
 
-## <a name="datetimeadd"></a>日期時間新增
+## <a name="datetimeadd"></a>dateTimeAdd
 
 `dateTimeAdd(base, duration, [format])`
 
-將持續時間添加到基值。 預期 ISO 8601 格式。
+將持續時間新增至基底值。 需要 ISO 8601 格式。
 
 ### <a name="parameters"></a>參數
 
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| base | 是 | 字串 | 添加的開始日期時間值。 使用[ISO 8601 時間戳格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
-| duration | 是 | 字串 | 要添加到基的值的時間值。 它可以是負值。 使用[ISO 8601 持續時間格式](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 |
-| format | 否 | 字串 | 日期時間結果的輸出格式。 如果未提供,則使用基值的格式。 使用[標準格式字串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| base | 是 | 字串 | 加法的起始日期時間值。 使用[ISO 8601 時間戳記格式](https://en.wikipedia.org/wiki/ISO_8601)。 |
+| duration | 是 | 字串 | 要加入基底的時間值。 此值可以是負值。 使用[ISO 8601 持續時間格式](https://en.wikipedia.org/wiki/ISO_8601#Durations)。 |
+| format | 否 | 字串 | 日期時間結果的輸出格式。 如果未提供，則會使用基底值的格式。 請使用[標準格式字串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
 ### <a name="return-value"></a>傳回值
 
-將工期值添加到基值時產生的日期時間值。
+將 duration 值新增至基底值所產生的日期時間值。
 
 ### <a name="examples"></a>範例
 
-以下範例範本顯示了添加時間值的不同方法。
+下列範例範本顯示新增時間值的不同方式。
 
 ```json
 {
@@ -72,15 +72,15 @@ ms.locfileid: "82084782"
 }
 ```
 
-當使用 的基本`2020-04-07 14:53:14Z`時間 部署前面的樣本時,輸出為:
+使用的基本時間部署上述範本時`2020-04-07 14:53:14Z`，輸出會是：
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| 新增3年 | String | 2023年4月7日 下午2:53:14 |
-| 減去9天 | String | 2020年3月29日 下午2:53:14 |
-| 新增1小時 | String | 2020年4月7日 下午3:53:14 |
+| add3Years | String | 下午 4/7/2023 2:53:14 |
+| subtract9Days | String | 下午 3/29/2020 2:53:14 |
+| add1Hour | String | 下午 4/7/2020 3:53:14 |
 
-下一個範例範本展示如何設置自動化計畫的開始時間。
+下一個範例範本顯示如何設定自動化排程的開始時間。
 
 ```json
 {
@@ -138,29 +138,29 @@ ms.locfileid: "82084782"
 
 `utcNow(format)`
 
-以指定格式返回當前 (UTC) 日期時間值。 如果未提供格式,則使用 ISO 8601(yyyMMddTHHmmssZ)格式。 **此函數只能在參數的預設值中使用。**
+以指定的格式傳回目前的（UTC）日期時間值。 如果未提供格式，則會使用 ISO 8601 （yyyyMMddTHHmmssZ）格式。 **這個函數只能用於參數的預設值。**
 
 ### <a name="parameters"></a>參數
 
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| format |否 |字串 |要轉換為字串的 URI 編碼值。 使用[標準格式字串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| format |否 |字串 |要轉換為字串的 URI 編碼值。 請使用[標準格式字串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自訂格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
 ### <a name="remarks"></a>備註
 
-只能在運算式中為參數的預設值使用此函數。 在範本中的其他地方使用此函數將返回錯誤。 範本的其他部分不允許函數,因為它每次調用時都會返回不同的值。 使用相同的參數部署同一範本不會可靠地生成相同的結果。
+您只能針對參數的預設值，在運算式中使用這個函數。 在範本中的任何其他地方使用此函數會傳回錯誤。 函式在範本的其他部分中不允許，因為它會在每次呼叫時傳回不同的值。 使用相同的參數部署相同的範本，並不會可靠地產生相同的結果。
 
-如果使用[選項重新部署較早的成功部署](rollback-on-error.md),並且早期部署包含使用 utcNow 的參數,則不會重新評估該參數。 相反,早期部署中的參數值將自動在回滾部署中重用。
+如果您使用[選項來重新部署先前成功的部署](rollback-on-error.md)，而先前的部署包含使用 utcNow 的參數，則不會重新評估參數。 相反地，先前部署的參數值會自動在復原部署中重複使用。
 
-請小心重新部署依賴於utcNow函數的預設值的範本。 重新部署並且不為參數提供值時,將重新評估該函數。 如果要更新現有資源而不是創建新資源,請從早期部署中傳遞參數值。
+請小心重新部署依賴 utcNow 函數的範本，以取得預設值。 當您重新部署，但未提供參數的值時，會重新評估函式。 如果您想要更新現有的資源，而不是建立新的資源，請傳入先前部署的參數值。
 
 ### <a name="return-value"></a>傳回值
 
-當前 UTC 日期時間值。
+目前的 UTC 日期時間值。
 
 ### <a name="examples"></a>範例
 
-以下範例範本顯示日期時間值的不同格式。
+下列範例範本顯示日期時間值的不同格式。
 
 ```json
 {
@@ -199,15 +199,15 @@ ms.locfileid: "82084782"
 }
 ```
 
-上例中的輸出因每個部署而異,但類似於:
+上述範例的輸出會因每個部署而有所不同，但會類似于：
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| utc 輸出 | 字串 | 20190305T175318Z |
-| utc短輸出 | 字串 | 2019 年 3 月 5 日 |
-| utc 自訂輸出 | 字串 | 3 5 |
+| utcOutput | 字串 | 20190305T175318Z |
+| utcShortOutput | 字串 | 2019 年 3 月 5 日 |
+| utcCustomOutput | 字串 | 3 5 |
 
-下一個範例展示如何在設置標記值時使用函數中的值。
+下一個範例顯示如何在設定標記值時，使用函式中的值。
 
 ```json
 {
@@ -242,3 +242,7 @@ ms.locfileid: "82084782"
     }
 }
 ```
+
+## <a name="next-steps"></a>後續步驟
+
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。

@@ -1,37 +1,38 @@
 ---
-title: 將其他 Azure 存儲帳戶添加到 HDInsight
-description: 瞭解如何將其他 Azure 存儲帳戶添加到現有 HDInsight 群集。
+title: 將其他 Azure 儲存體帳戶新增至 HDInsight
+description: 瞭解如何將其他 Azure 儲存體帳戶新增至現有的 HDInsight 叢集。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: 87eb04b7323186175195babf6a602fa12d25176f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: d5dde8c45331cf8c443aba86c96ba12c8277472c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206702"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192479"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>將其他儲存體帳戶新增至 HDInsight
 
-瞭解如何使用腳本操作將其他 Azure 存儲*帳戶*添加到 HDInsight。 本文檔中的步驟將存儲*帳戶*添加到現有 HDInsight 群集。 本文適用于存儲*帳戶*（不是預設群集存儲帳戶），不適用於其他存儲，如[Azure 資料存儲庫第 1 代](hdinsight-hadoop-use-data-lake-store.md)和 Azure[資料存儲湖存儲 Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+瞭解如何使用腳本動作，將其他 Azure 儲存體*帳戶*新增至 HDInsight。 本檔中的步驟會將儲存體*帳戶*新增至現有的 HDInsight 叢集。 本文適用于儲存體*帳戶*（非預設叢集儲存體帳戶），而不是[`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md)其他儲存體（例如和[`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md)）。
 
 > [!IMPORTANT]  
-> 本文檔中的資訊是關於在創建群集後向群集添加其他存儲帳戶。 如需在叢集建立期間新增儲存體帳戶的資訊，請參閱[使用 Apache Hadoop、Apache Spark、Apache Kafka 等在 HDInsight 中設定叢集](hdinsight-hadoop-provision-linux-clusters.md)。
+> 本檔中的資訊是關於在叢集建立之後，將其他儲存體帳戶新增至叢集。 如需在叢集建立期間新增儲存體帳戶的資訊，請參閱[使用 Apache Hadoop、Apache Spark、Apache Kafka 等在 HDInsight 中設定叢集](hdinsight-hadoop-provision-linux-clusters.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight 上的 Hadoop 群集。 請參閱[在 Linux 上開始使用 HDInsight。](./hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* 存儲帳戶名稱和金鑰。 請參閱[管理存儲帳戶訪問金鑰](../storage/common/storage-account-keys-manage.md)。
-* 如果使用 PowerShell，則需要 AZ 模組。  請參閱[Azure 電源外殼概述](https://docs.microsoft.com/powershell/azure/overview)。
+* HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./hadoop/apache-hadoop-linux-tutorial-get-started.md)。
+* 儲存體帳戶名稱和金鑰。 請參閱[管理儲存體帳戶存取金鑰](../storage/common/storage-account-keys-manage.md)。
+* 如果使用 PowerShell，您將需要 AZ 模組。  請參閱[Azure PowerShell 的總覽](https://docs.microsoft.com/powershell/azure/overview)。
 
 ## <a name="how-it-works"></a>運作方式
 
-在處理期間，此指令碼會執行下列動作：
+在處理期間，腳本會執行下列動作：
 
-* 如果儲存體帳戶已經存在於叢集的 core-site.xml 組態中，則指令碼會結束，不會執行任何進一步的動作。
+* 如果儲存體帳戶已存在於叢集的 core-site.xml 設定中，腳本會結束，且不會執行任何進一步的動作。
 
 * 確認儲存體帳戶存在並可使用金鑰來存取。
 
@@ -39,14 +40,14 @@ ms.locfileid: "78206702"
 
 * 將儲存體帳戶新增至 core-site.xml 檔案。
 
-* 停止並重新啟動 [Apache Oozie](https://oozie.apache.org/)、[Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)、[Apache Hadoop MapReduce2](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html)，以及 [Apache Hadoop HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) 服務。 停止並啟動這些服務可讓它們使用新的儲存體帳戶。
+* 停止並重新啟動 Apache Oozie、Apache Hadoop YARN、Apache Hadoop MapReduce2，以及 Apache Hadoop HDFS 服務。 停止並啟動這些服務可讓它們使用新的儲存體帳戶。
 
 > [!WARNING]  
 > 不支援在與 HDInsight 叢集不同的位置中使用儲存體帳戶。
 
 ## <a name="add-storage-account"></a>新增儲存體帳戶
 
-使用[腳本操作](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)應用具有以下注意事項的更改：
+使用 [[腳本動作](hdinsight-hadoop-customize-cluster-linux.md#script-action-to-a-running-cluster)] 以下列考慮套用變更：
 
 |屬性 | 值 |
 |---|---|
@@ -54,19 +55,19 @@ ms.locfileid: "78206702"
 |節點類型|Head|
 |參數|`ACCOUNTNAME``ACCOUNTKEY` `-p`|
 
-* `ACCOUNTNAME`是要添加到 HDInsight 群集的存儲帳戶的名稱。
-* `ACCOUNTKEY`是`ACCOUNTNAME`的便捷鍵。
-* `-p` 是選擇性的。 如果指定，金鑰不會加密，並且以純文字形式存儲在核心 site.xml 檔中。
+* `ACCOUNTNAME`這是要新增至 HDInsight 叢集的儲存體帳戶名稱。
+* `ACCOUNTKEY`是的存取金鑰`ACCOUNTNAME`。
+* `-p` 是選擇性的。 如果指定，金鑰不會加密，而且會以純文字的形式儲存在 core-site.xml 中。
 
 ## <a name="verification"></a>驗證
 
-在 Azure 門戶中查看 HDInsight 群集時，選擇 __"屬性__"下的 __"存儲帳戶__"條目不會顯示通過此腳本操作添加的存儲帳戶。 Azure PowerShell 和 Azure CLI 也不會顯示其他存儲帳戶。 不會顯示存儲資訊，因為腳本僅修改群集的`core-site.xml`配置。 使用 Azure 管理 API 檢索群集資訊時，不會使用此資訊。
+在 Azure 入口網站中查看 HDInsight 叢集時，選取 [__屬性__] 底下的 [__儲存體帳戶__] 專案，並不會顯示透過此腳本動作新增的儲存體帳戶。 Azure PowerShell 和 Azure CLI 不會顯示其他儲存體帳戶。 因為此腳本只會修改叢集的`core-site.xml`設定，所以不會顯示儲存資訊。 使用 Azure 管理 Api 來抓取叢集資訊時，不會使用此資訊。
 
-要驗證附加存儲使用如下所示的方法之一：
+若要確認額外的儲存體，請使用下列其中一種方法：
 
 ### <a name="powershell"></a>PowerShell
 
-該腳本將返回與給定群集關聯的存儲帳戶名稱。 替換為`CLUSTERNAME`實際的群集名稱，然後運行腳本。
+腳本會傳回與指定叢集相關聯的儲存體帳戶名稱。 將`CLUSTERNAME`取代為實際的叢集名稱，然後執行腳本。
 
 ```powershell
 # Update values
@@ -94,48 +95,48 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ### <a name="apache-ambari"></a>Apache Ambari
 
-1. 從 Web 瀏覽器導航到`https://CLUSTERNAME.azurehdinsight.net`，`CLUSTERNAME`群集的名稱在哪裡。
+1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 導航到**HDFS** > **配置** > **高級** > **自訂核心網站**。
+1. 流覽至**HDFS** > **Configs** > [自訂] [**Advanced** > **Custom]-site**。
 
-1. 觀察以`fs.azure.account.key`開頭的鍵。 帳戶名稱將是金鑰的一部分，如以下示例圖像所示：
+1. 觀察開頭為`fs.azure.account.key`的索引鍵。 帳戶名稱會是金鑰的一部分，如下列範例影像所示：
 
-   ![通過阿帕奇·安巴里進行核查](./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png)
+   ![透過 Apache Ambari 進行驗證](./media/hdinsight-hadoop-add-storage/apache-ambari-verification.png)
 
 ## <a name="remove-storage-account"></a>移除儲存體帳戶
 
-1. 從 Web 瀏覽器導航到`https://CLUSTERNAME.azurehdinsight.net`，`CLUSTERNAME`群集的名稱在哪裡。
+1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
-1. 導航到**HDFS** > **配置** > **高級** > **自訂核心網站**。
+1. 流覽至**HDFS** > **Configs** > [自訂] [**Advanced** > **Custom]-site**。
 
-1. 刪除以下鍵：
+1. 移除下列機碼：
     * `fs.azure.account.key.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`
     * `fs.azure.account.keyprovider.<STORAGE_ACCOUNT_NAME>.blob.core.windows.net`
 
-卸下這些金鑰並保存配置後，您需要逐個重新開機 Oozie、紗線、MapReduce2、HDFS 和 Hive。
+移除這些金鑰並儲存設定之後，您必須逐一重新開機 Oozie、Yarn、MapReduce2、HDFS 和 Hive。
 
 ## <a name="known-issues"></a>已知問題
 
-### <a name="storage-firewall"></a>存儲防火牆
+### <a name="storage-firewall"></a>儲存體防火牆
 
-如果您選擇使用 **"選定網路**上的**防火牆"和"虛擬網路**限制"來保護存儲帳戶，請確保啟用"**允許受信任的 Microsoft 服務"** 的異常，以便 HDInsight 可以訪問您的存儲帳戶。
+如果您選擇使用**所選網路**上的**防火牆和虛擬網路**限制來保護您的儲存體帳戶，請務必啟用 [**允許信任的 Microsoft 服務**] 例外狀況，讓 HDInsight 可以存取您的儲存體帳戶`.`
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>無法在變更金鑰之後存取儲存體
 
 如果您變更儲存體帳戶的金鑰，HDInsight 就無法再存取儲存體帳戶。 HDInsight 在叢集的 core-site.xml 中使用金鑰的快取複本。 此快取副本必須更新以符合新的金鑰。
 
-再次執行指令碼動作並__不會__更新金鑰，因為指令碼會查看儲存體帳戶的項目是否已經存在。 如果條目已存在，則不會進行任何更改。
+再次執行腳本動作**並不會**更新金鑰，因為腳本會檢查是否已有儲存體帳戶的專案。 如果專案已存在，則不會進行任何變更。
 
-要解決此問題，可以：  
-1. 刪除存儲帳戶。
-1. 添加存儲帳戶。
+若要解決此問題：  
+1. 移除儲存體帳戶。
+1. 新增儲存體帳戶。
 
 > [!IMPORTANT]  
-> 不支援旋轉附加到群集的主存儲帳戶的存儲金鑰。
+> 不支援輪替附加至叢集之主要儲存體帳戶的儲存體金鑰。
 
 ### <a name="poor-performance"></a>效能不佳
 
-如果儲存體帳戶位於與 HDInsight 叢集不同的區域中，您可能會遇到效能不佳。 存取不同區域中的資料會傳送 Azure 資料中心外部和跨越公用網際網路的網路流量，這可能會造成延遲。
+如果儲存體帳戶位於與 HDInsight 叢集不同的區域中，您可能會遇到效能不佳。 存取不同區域中的資料會將網路流量傳送到區域 Azure 資料中心以外。 而跨公用網際網路，這可能會導致延遲。
 
 ### <a name="additional-charges"></a>額外費用
 
@@ -143,4 +144,4 @@ foreach ($name in $value ) { $name.Name.Split(".")[4]}
 
 ## <a name="next-steps"></a>後續步驟
 
-您已經瞭解如何將其他存儲帳戶添加到現有的 HDInsight 群集。 如需指令碼動作的詳細資訊，請參閱[使用指令碼動作自訂以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)
+您已瞭解如何將其他儲存體帳戶新增至現有的 HDInsight 叢集。 如需指令碼動作的詳細資訊，請參閱[使用指令碼動作自訂以 Linux 為基礎的 HDInsight 叢集](hdinsight-hadoop-customize-cluster-linux.md)

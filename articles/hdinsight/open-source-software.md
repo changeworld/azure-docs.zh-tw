@@ -1,34 +1,35 @@
 ---
-title: Azure HDInsight 中的開源軟體支援
+title: Azure HDInsight 中的開放原始碼軟體支援
 description: Microsoft Azure 可為開放原始碼技術提供一般層級的支援。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: f93be73af4bbbd159ffc01804617892251d96347
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 65f21450f194175af37c6c198468978392cee462
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81772167"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195157"
 ---
-# <a name="open-source-software-support-in-azure-hdinsight"></a>Azure HDInsight 中的開源軟體支援
+# <a name="open-source-software-support-in-azure-hdinsight"></a>Azure HDInsight 中的開放原始碼軟體支援
 
-Microsoft Azure HDInsight 服務使用圍繞 Apache Hadoop 形成的開源技術環境。 Microsoft Azure 可為開放原始碼技術提供一般層級的支援。 如需詳細資訊，請參閱 [Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)的**支援範圍**一節。 HDInsight 服務針對內建元件提供額外等級的支援。
+Microsoft Azure HDInsight 服務會使用以 Apache Hadoop 形成的開放原始碼技術環境。 Microsoft Azure 可為開放原始碼技術提供一般層級的支援。 如需詳細資訊，請參閱 [Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)的**支援範圍**一節。 HDInsight 服務針對內建元件提供額外等級的支援。
 
 ## <a name="components"></a>元件
 
 HDInsight 服務中有兩種類型的開放原始碼元件可供使用：
 
-### <a name="built-in-components"></a>內置元件
+### <a name="built-in-components"></a>內建元件
 
 這些元件會預先安裝在 HDInsight 叢集上，並且提供叢集的核心功能。 以下是屬於此類別的元件：
 
-* [阿帕奇·哈多普·阿亞爾](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)資源管理員。
+* [Apache HADOOP YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)Resource Manager。
 * Hive 查詢語言 [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)。
-* [阿帕奇·馬胡](https://mahout.apache.org/)
+* [Apache Mahout](https://mahout.apache.org/)。
 
 如需完整的叢集元件清單，請參閱[可以搭配 HDInsight 使用的 Apache Hadoop 元件和版本有哪些？](hdinsight-component-versioning.md)
 
@@ -45,7 +46,7 @@ HDInsight 服務中有兩種類型的開放原始碼元件可供使用：
 
 ## <a name="component-usage"></a>元件使用方式
 
-HDInsight 服務提供數種方式以使用自訂元件。 不論元件在叢集上的使用或安裝方式為何，都適用相同層級的支援。 下表描述了在 HDInsight 叢集上使用自訂元件的最常見方式:
+HDInsight 服務提供數種方式以使用自訂元件。 不論元件在叢集上的使用或安裝方式為何，都適用相同層級的支援。 下表描述在 HDInsight 叢集上使用自訂群組件的最常見方式：
 
 |使用量 |描述 |
 |---|---|
@@ -55,6 +56,6 @@ HDInsight 服務提供數種方式以使用自訂元件。 不論元件在叢集
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用文稿操作自訂 Azure HDInsight 叢集](./hdinsight-hadoop-customize-cluster-linux.md)
-* [為 HDInsight 開發文稿操作文稿](hdinsight-hadoop-script-actions-linux.md)
+* [使用腳本動作自訂 Azure HDInsight 叢集](./hdinsight-hadoop-customize-cluster-linux.md)
+* [開發 HDInsight 的腳本動作腳本](hdinsight-hadoop-script-actions-linux.md)
 * [使用指令碼動作在 Azure HDInsight 上安全地管理 Python 環境](./spark/apache-spark-python-package-installation.md)

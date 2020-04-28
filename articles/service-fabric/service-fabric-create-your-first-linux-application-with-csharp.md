@@ -1,14 +1,14 @@
 ---
-title: 使用 C 在 Linux 上創建第一個 Azure 服務結構應用#
+title: 使用 C 在 Linux 上建立您的第一個 Azure Service Fabric 應用程式#
 description: 了解如何使用 C# 和 .NET Core 2.0 建立和部署 Service Fabric 應用程式。
 ms.topic: conceptual
 ms.date: 04/11/2018
-ms.openlocfilehash: 202dde933b41a98c1c119f422d47cbdbb0be84ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 556d8dee4efd492fa98755f1ffd1cdc1c9887856
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458132"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193644"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>建立第一個 Azure Service Fabric 應用程式
 > [!div class="op_single_selector"]
@@ -86,7 +86,7 @@ Service Fabric Yeoman 範本包含建置指令碼，可用來從終端機建置�
 
 這些命令的參數可以在應用程式套件內產生的資訊清單中找到。
 
-部署應用程式後，開啟瀏覽器並瀏覽至 [http://localhost:19080/Explorer](http://localhost:19080/Explorer) 的 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)。 接著展開 [應用程式]**** 節點，請注意，您的應用程式類型現在有一個項目，而另一個項目則在該類型的第一個執行個體。
+部署應用程式後，開啟瀏覽器並瀏覽至 `http://localhost:19080/Explorer` 的 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)。 接著展開 [應用程式]**** 節點，請注意，您的應用程式類型現在有一個項目，而另一個項目則在該類型的第一個執行個體。
 
 > [!IMPORTANT]
 > 若要將應用程式部署到 Azure 中的安全 Linux 叢集，您需要設定憑證來向 Service Fabric 執行階段驗證您的應用程式。 這樣做就能讓您的 Reliable Services 服務可與基礎 Service Fabric 執行階段 API 進行通訊。 若要深入了解，請參閱[將 Reliable Services 應用程式設定為在 Linux 叢集上執行](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)。  
@@ -97,7 +97,7 @@ Service Fabric Yeoman 範本包含建置指令碼，可用來從終端機建置�
 
 1. 使用監看式公用程式執行指令碼，以查看動作項目服務的輸出。
 
-   在 MAC OS X 的情況下，您需要通過運行以下附加命令將 myactorsvcTestClient 資料夾複製到容器內的同一位置。
+   如果是 MAC OS X，您需要執行下列其他命令，將 myactorsvcTestClient 資料夾複製到容器內的相同位置。
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home
@@ -118,12 +118,12 @@ Service Fabric Yeoman 範本包含建置指令碼，可用來從終端機建置�
 
 若要將其他服務新增至已使用 `yo` 建立的應用程式，請執行下列步驟︰
 1. 將目錄變更為現有應用程式的根目錄。  例如，如果 `MyApplication` 是 Yeoman 所建立的應用程式，則為 `cd ~/YeomanSamples/MyApplication`。
-2. 執行 
+2. `yo azuresfcsharp:AddService`執行
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Service Fabric CLI 與 Service Fabric 叢集互動](service-fabric-cli.md)
-* 瞭解[服務交換矩陣支援選項](service-fabric-support.md)
+* 瞭解[Service Fabric 支援選項](service-fabric-support.md)
 * [開始使用 Service Fabric CLI](service-fabric-cli.md)
 
 <!-- Images -->

@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
 ms.author: terrylan
-ms.openlocfilehash: 58deae64bdde27580b85b00a1c87ba115e24478a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 5b04bbbbe5425e65f3ed4ff82d9700dec6dd2c39
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159893"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188322"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>開發 Azure AD 應用程式的安全應用程式
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 這個範例是 web 應用程式的簡單 Azure Active Directory，可連結至在 Azure 上開發應用程式的安全性資源。 當您在 Azure 上開發應用程式時，應用程式會實行安全性最佳作法，協助改善您的應用程式和組織的安全性狀態。
 
@@ -35,7 +35,7 @@ ms.locfileid: "82159893"
 - 部署 Azure Web 應用程式，其專門與前端防火牆存取隔離。 
 - 使用 OWASP 前10大規則集的防火牆建立並設定 Azure 應用程式閘道實例。 
 - 使用 Azure 服務，啟用傳輸中和待用資料的加密。 
-- 設定 Azure 原則和安全性中心以評估 compliancies。 
+- 設定 Azure 原則和安全性中心以評估合規性。 
 
 在您開發並部署此應用程式之後，您將會設定下列範例 web 應用程式，以及所述的設定和安全性量值。
 
@@ -71,7 +71,7 @@ ms.locfileid: "82159893"
 
 ![威脅模型輸出](./media/secure-aad-app/threat-model-output.png)
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 若要讓應用程式啟動並執行，您需要安裝下列工具：
 
 - 用來修改和查看應用程式程式碼的程式碼編輯器。[Visual Studio Code](https://code.visualstudio.com/)是一個開放原始碼選項。

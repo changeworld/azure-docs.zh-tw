@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/05/2018
 ms.topic: conceptual
-ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3820b34a9c79f3b514327fa45a05eebaf8a2a1ca
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447109"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193168"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中新增自訂飛出視窗
 
@@ -31,7 +31,7 @@ ms.locfileid: "61447109"
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 請先完成下列文章中的步驟再繼續：
 
@@ -133,7 +133,7 @@ export class BasicPage extends Component {
 npm start
 ```
 
-前面的命令在 本地運行[http://localhost:3000/dashboard](http://localhost:3000/dashboard)UI。 瀏覽至 [範例]**** 頁面，然後按一下 [開啟飛出視窗]****。
+上一個命令會在本機於 `http://localhost:3000/dashboard` 執行 UI。 瀏覽至 [範例]**** 頁面，然後按一下 [開啟飛出視窗]****。
 
 ## <a name="next-steps"></a>後續步驟
 

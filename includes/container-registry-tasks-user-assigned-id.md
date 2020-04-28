@@ -8,32 +8,43 @@ ms.topic: include
 ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: ceda7bd6bd165df1eece555c6ce8a9a6c863b2c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 012800806aeff81939baa2cee88e78191e4fb6c5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77112301"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195259"
 ---
 ### <a name="create-a-user-assigned-identity"></a>建立使用者指派的身分識別
 
-使用[az 標識創建][az-identity-create]命令在訂閱中創建名為*myACRTasksId*的標識。 可以使用以前用於創建容器註冊表或其他資源組的資源組。
+使用[az identity create][az-identity-create]命令，在您的訂用帳戶中建立名為*myACRTasksId*的身分識別。 您可以使用先前用來建立容器登錄或不同的資源群組。
 
-```azurecli-interactive
-az identity create --resource-group myResourceGroup --name myACRTasksId
+```azurecli
+az identity create \
+  --resource-group myResourceGroup \
+  --name myACRTasksId
 ```
 
-要在以下步驟中配置使用者分配的標識，請使用[az 標識顯示][az-identity-show]命令在變數中存儲標識的資源識別碼、主體 ID 和用戶端 ID。
+若要在下列步驟中設定使用者指派的身分識別，請使用[az identity show][az-identity-show]命令，將身分識別的資源識別碼、主體識別碼和用戶端識別碼儲存在變數中。
 
 ```azurecli
 # Get resource ID of the user-assigned identity
-resourceID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query id --output tsv)
+resourceID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACRTasksId \
+  --query id --output tsv)
 
 # Get principal ID of the task's user-assigned identity
-principalID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query principalId --output tsv)
+principalID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACRTasksId \
+  --query principalId --output tsv)
 
 # Get client ID of the user-assigned identity
-clientID=$(az identity show --resource-group myResourceGroup --name myACRTasksId --query clientId --output tsv)
+clientID=$(az identity show \
+  --resource-group myResourceGroup \
+  --name myACRTasksId \
+  --query clientId --output tsv)
 ```
 
 <!-- LINKS - Internal -->

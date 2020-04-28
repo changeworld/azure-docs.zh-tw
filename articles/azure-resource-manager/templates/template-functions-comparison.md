@@ -1,28 +1,27 @@
 ---
-title: 範本函數 - 比較
+title: 範本函數-比較
 description: 描述 Azure Resource Manager 範本中用來比較值的函式。
 ms.topic: conceptual
-ms.date: 09/05/2017
-ms.openlocfilehash: 42009e8543e307f2d3e4643ddaa79f492f9bdfee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.date: 04/27/2020
+ms.openlocfilehash: a9b7b32475695e5222b87c8fe75e8982f34ebb21
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156356"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192326"
 ---
-# <a name="comparison-functions-for-arm-templates"></a>ARM 範本的比較功能
+# <a name="comparison-functions-for-arm-templates"></a>ARM 範本的比較函式
 
-資源管理器提供了多個功能，用於在 Azure 資源管理器 （ARM） 範本中進行比較。
+Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （ARM）範本中進行比較。
 
 * [equals](#equals)
 * [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
-* [少](#less)
+* [低](#less)
 * [lessOrEquals](#lessorequals)
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="equals"></a>equals
+
 `equals(arg1, arg2)`
 
 檢查兩個值是否彼此相等。
@@ -131,18 +130,6 @@ equals 函式通常會搭配 `condition` 元素，用來測試是否已部署資
 | checkArrays | Bool | True |
 | checkObjects | Bool | True |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/equals.json
-```
-
 下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json)使用 [not](template-functions-logical.md#not) 搭配 **equals**。
 
 ```json
@@ -166,19 +153,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
-
 ## <a name="greater"></a>greater
+
 `greater(arg1, arg2)`
 
 檢查第一個值是否大於第二個值。
@@ -242,19 +218,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greater.json
-```
-
 ## <a name="greaterorequals"></a>greaterOrEquals
+
 `greaterOrEquals(arg1, arg2)`
 
 檢查第一個值是否大於或等於第二個值。
@@ -318,19 +283,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | checkInts | Bool | False |
 | checkStrings | Bool | True |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/greaterorequals.json
-```
-
 ## <a name="less"></a>less
+
 `less(arg1, arg2)`
 
 檢查第一個值是否小於第二個值。
@@ -394,19 +348,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/less.json
-```
-
 ## <a name="lessorequals"></a>lessOrEquals
+
 `lessOrEquals(arg1, arg2)`
 
 檢查第一個值是否小於或等於第二個值。
@@ -470,21 +413,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | checkInts | Bool | True |
 | checkStrings | Bool | False |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/lessorequals.json
-```
-
 ## <a name="next-steps"></a>後續步驟
-* 有關 Azure 資源管理器範本中部分的說明，請參閱[創作 Azure 資源管理器範本](template-syntax.md)。
-* 要合併多個範本，請參閱[使用 Azure 資源管理器使用連結範本](linked-templates.md)。
-* 要反覆運算創建資源類型時指定的次數，請參閱[在 Azure 資源管理器中創建多個資源實例](copy-resources.md)。
-* 要查看如何部署已創建的範本，請參閱使用 Azure[資源管理器範本部署應用程式](deploy-powershell.md)。
 
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。

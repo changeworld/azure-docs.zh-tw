@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: 7da6536e78a0b981306e3909b06a674cbb8cbaa1
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 726cf362e62f0ef914dfaea090a08c224bd5d8d6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106265"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192496"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>在以 Linux 為基礎的 HDInsight 上存取 Apache Hadoop YARN 應用程式記錄
 
@@ -56,7 +56,7 @@ YARN Timeline Server 包含下列類型的資料：
 
 Ambari 中的自訂`mapred-site`必須加入兩個設定。
 
-1. 從網頁瀏覽器流覽至`https://CLUSTERNAME.azurehdinsight.net`，其中`CLUSTERNAME`是您的叢集名稱。
+1. 從網頁瀏覽器瀏覽至 `https://CLUSTERNAME.azurehdinsight.net`，其中 `CLUSTERNAME` 是叢集的名稱。
 
 1. 從 Ambari UI 中，流覽至**MapReduce2** > **Configs** > 的 [自訂] [**Advanced** > **Custom mapred.max.split.size-site**]。
 

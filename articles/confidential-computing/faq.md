@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 2bd9430fc6f48d72faa2c1850af0bb8432a7c5f5
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: e9cb691ef60f612672078a9ef84db904c79cbc87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82149498"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189440"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Azure 機密計算的常見問題
 
@@ -47,7 +47,7 @@ ms.locfileid: "82149498"
 
 1. **DCsv2 系列和 DC 系列 Vm 之間有何差異？**
 
-   DC 系列 Vm 會在具有 SGX 的舊版6核心 Intel 處理器上執行。 這些記憶體的總計較少、較少的 EPC （記憶體保護區頁面主機殼）記憶體，且可在較少的區域中使用。 這些 Vm 僅適用于美國東部和西歐提供兩種大小： Standard_DC2s 和 Standard_DC4s。 它們不會正式推出，而且只能部署在[機密計算 DC 系列 VM [預覽]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Marketplace 實例
+   DC 系列 Vm 會在具有 Intel SGX 的舊版6核心 Intel 處理器上執行。 這些記憶體的總計較少、較少的 EPC （記憶體保護區頁面主機殼）記憶體，且可在較少的區域中使用。 這些 Vm 僅適用于美國東部和西歐提供兩種大小： Standard_DC2s 和 Standard_DC4s。 它們不會正式推出，而且只能部署在[機密計算 DC 系列 VM [預覽]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Marketplace 實例
 
 1. **DCsv2 的虛擬機器是否可全域使用？**
 

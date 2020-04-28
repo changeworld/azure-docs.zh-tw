@@ -1,19 +1,19 @@
 ---
-title: 在 Linux 上創建 Azure 服務結構可靠的執行 JAVA 應用程式
+title: 在 Linux 上建立 Azure Service Fabric 可靠的動作專案 JAVA 應用程式
 description: 了解如何在五分鐘內建立和部署 Java Service Fabric Reliable Actors 應用程式。
 ms.topic: conceptual
 ms.date: 06/18/2018
-ms.openlocfilehash: 82d4446d76254657adfe64ed41386c06a0a873eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4d09666bad7b4e03b8598191d99a9db717c277d4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75458173"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193559"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>在 Linux 上建立第一個 Java Service Fabric Reliable Actors 應用程式
 > [!div class="op_single_selector"]
 > * [Java - Linux](service-fabric-create-your-first-linux-application-with-java.md)
-> * [C# - Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
+> * [C #-Linux](service-fabric-create-your-first-linux-application-with-csharp.md)
 >
 >
 
@@ -34,7 +34,7 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 ## <a name="basic-concepts"></a>基本概念
 若要開始使用 Reliable Actors，您只需要了解幾個基本概念：
 
-* **演員服務**。 Reliable Actors 封裝在可在 Service Fabric 基礎結構內部署的 Reliable Services 中。 動作項目執行個體會在指定的服務執行個體中啟動。
+* 動作專案**服務**。 Reliable Actors 封裝在可在 Service Fabric 基礎結構內部署的 Reliable Services 中。 動作項目執行個體會在指定的服務執行個體中啟動。
 * **動作項目註冊**。 和 Reliable Services 一樣，Reliable Actor 服務必須向 Service Fabric 執行階段註冊。 此外，動作項目類型必須向 Actor 執行階段註冊。
 * **動作項目介面**。 動作項目介面用於定義動作項目的強型別公用介面。 在 Reliable Actor 模型術語中，動作項目介面定義動作項目可以了解並處理的訊息類型。 其他的動作項目或用戶端應用程式會使用動作項目介面將訊息「傳送」(非同步) 給動作項目。 Reliable Actors 可實作多個介面。
 * **ActorProxy 類別**。 用戶端應用程式會使用 ActorProxy 類別來叫用透過動作項目介面公開的方法。 ActorProxy 類別提供兩個重要的功能：
@@ -204,7 +204,7 @@ Service Fabric Yeoman 範本包含 [Gradle](https://gradle.org/) 的建置指令
 
 這些命令的參數可以在應用程式套件內產生的資訊清單中找到。
 
-部署應用程式後，開啟瀏覽器並瀏覽至 [http://localhost:19080/Explorer](http://localhost:19080/Explorer) 的 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)。
+部署應用程式後，開啟瀏覽器並瀏覽至 `http://localhost:19080/Explorer` 的 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)。
 接著展開 [應用程式]**** 節點，請注意，您的應用程式類型現在有一個項目，而另一個項目則在該類型的第一個執行個體。
 
 > [!IMPORTANT]
@@ -232,7 +232,7 @@ Service Fabric Yeoman 範本包含 [Gradle](https://gradle.org/) 的建置指令
     watch -n 1 ./testclient.sh
     ```
 
-2. 在 Service Fabric Explorer 中，找出裝載動作項目服務主要複本的節點。 在以下的螢幕擷取畫面中是節點 3。 主要服務複本會處理讀取和寫入作業。  然後，服務狀態的更改將複製到輔助副本，在下面的螢幕截圖中的節點 0 和 1 上運行。
+2. 在 Service Fabric Explorer 中，找出裝載動作項目服務主要複本的節點。 在以下的螢幕擷取畫面中是節點 3。 主要服務複本會處理讀取和寫入作業。  服務狀態的變更接著會複寫到次要複本，並在下列螢幕擷取畫面中的節點0和1上執行。
 
     ![在 Service Fabric Explorer 中尋找主要複本][sfx-primary]
 
@@ -340,7 +340,7 @@ Service Fabric 的系統層級支援，其可與原生 Service Fabric 執行階�
 * [使用 Eclipse 在 Linux 上建立第一個 Service Fabric Java 應用程式](service-fabric-get-started-eclipse.md)
 * [深入了解 Reliable Actors](service-fabric-reliable-actors-introduction.md)
 * [使用 Service Fabric CLI 與 Service Fabric 叢集互動](service-fabric-cli.md)
-* 瞭解[服務交換矩陣支援選項](service-fabric-support.md)
+* 瞭解[Service Fabric 支援選項](service-fabric-support.md)
 * [開始使用 Service Fabric CLI](service-fabric-cli.md)
 
 <!-- Images -->

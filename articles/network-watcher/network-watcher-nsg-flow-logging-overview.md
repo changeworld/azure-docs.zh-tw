@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: a1674f51d5b877a1296e9a457c6acf61a507c82e
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: ed14d3fb1cd3d9d8af37088811ce62b050778a95
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82131395"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189798"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>網路安全性群組流量記錄簡介
 
@@ -51,7 +51,7 @@ ms.locfileid: "82131395"
 - 記錄是透過 Azure 平臺收集而來，並不會以任何方式影響客戶資源或網路效能。
 - 記錄是以 JSON 格式寫入，並顯示每個 NSG 規則的輸出和輸入流程。
 - 每一筆記錄都包含套用流量的網路介面（NIC）、5個元組資訊、流量決策 & （僅限第2版）輸送量資訊。 如需完整詳細資料，請參閱下面的_記錄格式_。
-- 流量記錄具有保留功能，允許在建立之後自動刪除記錄的一年
+- 流量記錄的保留功能可讓您在建立記錄後，自動將它們刪除一年。 **注意**：只有當您使用[一般用途 v2 儲存體帳戶（GPv2）](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts)時，才可使用保留。 
 
 **核心概念**
 
@@ -365,13 +365,13 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 ## <a name="troubleshooting-common-issues"></a>常見問題疑難排解
 
-### <a name="i-could-not-enable-nsg-flow-logs"></a>**我無法啟用 NSG 流量記錄**
+**我無法啟用 NSG 流量記錄**
 
 - 未註冊**Microsoft Insights**資源提供者
 
 如果您收到 AuthorizationFailed__ 或 GatewayAuthenticationFailed__ 錯誤，則表示您可能尚未在訂用帳戶上啟用 Microsoft Insights 資源提供者。 [請遵循指示](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#register-insights-provider)來啟用 Microsoft Insights 提供者。
 
-### <a name="i-have-enabled-nsg-flow-logs-but-do-not-see-data-in-my-storage-account"></a>**我已啟用 NSG 流量記錄，卻未在儲存體帳戶中看到資料**
+**我已啟用 NSG 流量記錄，卻未在儲存體帳戶中看到資料**
 
 - **設定時間**
 
@@ -381,21 +381,21 @@ NSG 流量記錄最多可能需要 5 分鐘才會出現在儲存體帳戶中 (�
 
 有時您不會看到記錄，因為您的 VM 未處於作用中狀態，或是應用程式閘道或其他裝置上有上游篩選器封鎖了對 NSG 的流量。
 
-### <a name="i-want-to-automate-nsg-flow-logs"></a>**我想要將 NSG 流量記錄自動化**
+**我想要將 NSG 流量記錄自動化**
 
 透過 ARM 範本的自動化支援目前不適用於 NSG 流量記錄。 如需詳細資訊，請閱讀[功能公告](https://azure.microsoft.com/updates/arm-template-support-for-nsg-flow-logs/)。
 
 ## <a name="faq"></a>常見問題集
 
-### <a name="what-does-nsg-flow-logs-do"></a>**NSG 流量記錄有哪些功能？**
+**NSG 流量記錄有哪些功能？**
 
 您可以透過[網路安全性群組（nsg）](https://docs.microsoft.com/azure/virtual-network/security-overview)結合和管理 Azure 網路資源。 NSG 流量記錄可讓您透過 Nsg 記錄所有流量的5個元組流量資訊。 未經處理的流量記錄會寫入 Azure 儲存體帳戶，讓您可以視需要進一步進行處理、分析、查詢或匯出。
 
-### <a name="does-using-flow-logs-impact-my-network-latency-or-performance"></a>**使用流量記錄是否會影響我的網路延遲或效能？**
+**使用流量記錄是否會影響我的網路延遲或效能？**
 
 流量記錄資料是在網路流量的路徑外收集，因此不會影響網路輸送量或延遲。 您可以建立或刪除流量記錄，而不會影響網路效能的風險。
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-firewall"></a>**如何? 將 NSG 流量記錄與防火牆後方的儲存體帳戶搭配使用？**
+**如何? 將 NSG 流量記錄與防火牆後方的儲存體帳戶搭配使用？**
 
 若要使用防火牆後方的儲存體帳戶，您必須為受信任的 Microsoft 服務提供例外狀況，才能存取您的儲存體帳戶：
 
@@ -407,11 +407,11 @@ NSG 流量記錄最多可能需要 5 分鐘才會出現在儲存體帳戶中 (�
 
 您可以在幾分鐘後檢查儲存體記錄，屆時應該就會看到已更新的時間戳記或新建立的 JSON 檔案。
 
-### <a name="how-do-i-use-nsg-flow-logs-with-a-storage-account-behind-a-service-endpoint"></a>**如何? 在服務端點後方的儲存體帳戶中使用 NSG 流量記錄嗎？**
+**如何? 在服務端點後方的儲存體帳戶中使用 NSG 流量記錄嗎？**
 
 NSG 流量記錄與服務端點相容，而不需要任何額外的設定。 請參閱在虛擬網路中[啟用服務端點的教學](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)課程。
 
-### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>**流量記錄版本 1 & 2 之間的差異為何？**
+**流量記錄版本 1 & 2 之間的差異為何？**
 
 流量記錄第2版引進了_流程狀態_的概念，& 儲存傳輸位元組和封包的相關資訊。 [閱讀更多資訊](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)
 

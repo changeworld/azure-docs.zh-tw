@@ -1,47 +1,47 @@
 ---
 title: 自動調整 Azure HDInsight 叢集規模
-description: 使用 Azure HDInsight 自動縮放功能自動使用 Apache Hadoop 調整叢集
+description: 使用 Azure HDInsight 自動調整功能自動執行 Apache Hadoop 擴充叢集
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/07/2020
-ms.openlocfilehash: 4f9b43b6f800bb47942ccc00fee0fac4536d2ec0
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 7d741e2fc787c057ebfcdeceeab2ea096df3f9ca
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81640587"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195208"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
 > [!Important]
-> Azure HDInsight 自動縮放功能於 2019 年 11 月 7 日發布,適用於 Spark 和 Hadoop 群集,並包含該功能預覽版本中未提供的改進。 如果您在 2019 年 11 月 7 日之前創建了 Spark 群集,並希望在群集上使用自動縮放功能,則建議的路徑是創建新群集,並在新群集上啟用自動縮放。
+> Azure HDInsight 自動調整功能已于2019年11月7日發行，適用于 Spark 和 Hadoop 叢集，且包含功能預覽版本中未提供的改善。 如果您在2019年11月7日之前建立 Spark 叢集，並想要在叢集上使用自動調整功能，建議的路徑是建立新的叢集，並在新叢集上啟用自動調整。
 >
-> 互動式查詢 (LLAP) 和 HBase 群集的自動縮放仍處於預覽階段。 自動縮放僅在 Spark、Hadoop、互動式查詢和 HBase 叢集上可用。
+> 互動式查詢（LLAP）和 HBase 叢集的自動調整仍處於預覽狀態。 自動調整僅適用于 Spark、Hadoop、互動式查詢和 HBase 叢集。
 
-Azure HDInsight 的群集自動縮放功能可自動縮放群集中輔助節點的數量。 群集中的其他類型的節點當前無法縮放。  在建立新的 HDInsight 叢集時，可以設定最小和最大的背景工作節點數目。 然後,自動縮放可監視分析負載的資源需求,並向上或向下縮放輔助節點的數量。 此功能不收取額外費用。
+Azure HDInsight 的叢集自動調整功能會自動相應增加和減少叢集中的背景工作節點數目。 目前無法調整叢集中的其他節點類型。  在建立新的 HDInsight 叢集時，可以設定最小和最大的背景工作節點數目。 自動調整會監視分析負載的資源需求，並相應增加或減少背景工作角色節點的數目。 這項功能不需額外付費。
 
 ## <a name="cluster-compatibility"></a>叢集相容性
 
-下表描述了與自動縮放功能相容的群集類型和版本。
+下表描述與自動調整功能相容的叢集類型和版本。
 
 | 版本 | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3.6 無 ESP | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| HDInsight 4.0 無 ESP | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| HDInsight 3.6 與 ESP | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| HDInsight 4.0 與 ESP | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 不含 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 不含 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 使用 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 使用 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
 
-\*HBase 群集只能配置為基於計劃的縮放,不能基於負載。
+\*HBase 叢集只能針對以排程為基礎的調整進行設定，而非以載入為基礎。
 
 ## <a name="how-it-works"></a>運作方式
 
-您可以為 HDInsight 群集選擇基於負載的縮放或基於計畫的縮放。 基於負載的擴展會更改群集中設置範圍內的節點數,以確保最佳 CPU 使用率並最大限度降低運行成本。
+您可以為您的 HDInsight 叢集選擇以負載為基礎的調整或以排程為基礎的調整。 以負載為基礎的調整會在您設定的範圍內變更叢集中的節點數目，以確保最佳的 CPU 使用量並將執行成本降至最低。
 
-基於計劃的擴展會根據在特定時間生效的條件更改群集中的節點數。 這些條件將群集縮放為預期的節點數。
+以排程為基礎的調整會根據在特定時間生效的條件來變更叢集中的節點數目。 這些條件會將叢集調整為所需的節點數目。
 
 ### <a name="metrics-monitoring"></a>計量監視
 
@@ -49,81 +49,81 @@ Azure HDInsight 的群集自動縮放功能可自動縮放群集中輔助節點�
 
 |計量|描述|
 |---|---|
-|總掛起 CPU|開始執行所有擱置中容器時所需的核心總數。|
-|總掛起記憶體|開始執行所有擱置中容器時所需的記憶體總計 (MB)。|
-|總免費 CPU|作用中背景工作節點上所有未使用核心的總和。|
-|總可用記憶體|作用中背景工作節點上所有未使用記憶體的總和 (MB)。|
-|每個節點使用的記憶體|背景工作節點上的負載。 已使用 10 GB 記憶體的背景工作節點會被視為所承受的負載高於已使用 2 GB 記憶體的背景工作節點。|
-|每個節點的應用程式母版數|背景工作節點上執行的應用程式主機 (AM) 容器數目。 承載兩個 AM 容器的工作節點被認為比承載零 AM 容器的工作節點更重要。|
+|擱置中的 CPU 總計|開始執行所有擱置中容器時所需的核心總數。|
+|擱置中的記憶體總計|開始執行所有擱置中容器時所需的記憶體總計 (MB)。|
+|可用 CPU 總計|作用中背景工作節點上所有未使用核心的總和。|
+|可用記憶體總計|作用中背景工作節點上所有未使用記憶體的總和 (MB)。|
+|每個節點的已使用記憶體|背景工作節點上的負載。 已使用 10 GB 記憶體的背景工作節點會被視為所承受的負載高於已使用 2 GB 記憶體的背景工作節點。|
+|每個節點的應用程式主機數目|背景工作節點上執行的應用程式主機 (AM) 容器數目。 裝載兩個 AM 容器的背景工作節點會被視為比裝載 zero AM 容器的背景工作節點更重要。|
 
-系統每隔 60 秒就會檢查上述計量。 自動縮放根據這些指標做出決策。
+系統每隔 60 秒就會檢查上述計量。 自動調整會根據這些計量做出決策。
 
-### <a name="load-based-scale-conditions"></a>基於負載的縮放條件
+### <a name="load-based-scale-conditions"></a>以負載為基礎的調整規模條件
 
-當偵測到以下條件時,自動縮放將發出縮放請求:
+當偵測到下列情況時，自動調整會發出級別要求：
 
-|相應增加|縮小|
+|相應增加|向下調整|
 |---|---|
-|總掛起的 CPU 大於總可用 CPU 超過 3 分鐘。|擱置中的 CPU 總計小於可用的 CPU 總計超過 10 分鐘。|
-|總掛起記憶體大於總可用記憶體超過3分鐘。|擱置中的記憶體總計小於可用的記憶體總計超過 10 分鐘。|
+|擱置中的 CPU 總計大於可用的 CPU 總計超過3分鐘。|擱置中的 CPU 總計小於可用的 CPU 總計超過 10 分鐘。|
+|暫止的記憶體總計大於可用的記憶體總計超過3分鐘。|擱置中的記憶體總計小於可用的記憶體總計超過 10 分鐘。|
 
-對於放大,自動縮放發出放大請求以添加所需的節點數。 擴展基於滿足當前 CPU 和記憶體要求所需的新工作節點數。
+針對相應增加，自動調整會發出相應增加要求，以新增所需的節點數目。 相應增加是根據所需的新背景工作節點數目，以符合目前的 CPU 和記憶體需求。
 
-對於縮減,自動縮放發出刪除一定數量的節點的請求。 縮減基於每個節點的 AM 容器數。 以及當前的 CPU 和記憶體要求。 該服務還會根據當前作業執行檢測哪些節點是要刪除的候選節點。 縮減操作首先將節點分離,然後從群集中刪除它們。
+針對相應減少，自動調整會發出移除特定節點數目的要求。 相應減少是以每個節點的 AM 容器數目為依據。 以及目前的 CPU 和記憶體需求。 服務也會根據目前的作業執行，偵測哪些節點是候選項目。 相應減少作業會先會 add-on 節點，然後將它們從叢集中移除。
 
 ## <a name="get-started"></a>開始使用
 
-### <a name="create-a-cluster-with-load-based-autoscaling"></a>使用基於負載的自動縮放建立叢集
+### <a name="create-a-cluster-with-load-based-autoscaling"></a>建立具有以負載為基礎之自動調整的叢集
 
-要啟用基於負載的縮放自動縮放功能,在常規群集建立過程中完成以下步驟:
+若要啟用以負載為基礎的自動調整功能，請在一般叢集建立程式中完成下列步驟：
 
-1. 在「**設定 + 定價**」 選項卡上,選擇「**啟用自動縮放**」複選框。
-1. 在**自動縮放型態**下選擇**以負載**。
-1. 輸入以下屬性的預期值:  
+1. 在 [設定 **+ 定價**] 索引標籤上，選取 [**啟用自動**調整] 核取方塊。
+1. 選取 [**自動調整類型**] 下**的 [載入型**]。
+1. 輸入下列屬性的預期值：  
 
-    * **次要節點**的初始**節點數**。
-    * 輔助節點的**最小**數量。
-    * **輔助**節點的最大數量。
+    * 背景**工作節點**的初始**節點數目**。
+    * 背景工作節點的**最小**數目。
+    * 背景工作節點的**最大**數目。
 
-    ![開啟基於工作節點負載的自動縮放](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
+    ![啟用背景工作節點以負載為基礎的自動調整](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-autoscale.png)
 
-背景工作節點的初始數目必須介於最小值和最大值 (含) 之間。 此值定義創建群集時的初始大小。 輔助節點的最小數量應設置為三個或更多。 將群集擴展到少於三個節點可能會導致群集由於檔複製不足而陷入安全模式。  有關詳細資訊,請參閱[卡在安全模式](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)。
+背景工作節點的初始數目必須介於最小值和最大值 (含) 之間。 此值會定義叢集建立時的初始大小。 背景工作節點的最小數目應該設定為三個或多個。 將您的叢集調整至少於三個節點，可能會導致它因為檔案複寫不完整而停滯于安全模式。  如需詳細資訊，請參閱[在安全模式中停滯](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)。
 
-### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>使用基於計畫的自動縮放建立叢集
+### <a name="create-a-cluster-with-schedule-based-autoscaling"></a>建立具有以排程為基礎之自動調整的叢集
 
-要啟用基於計畫的縮放的自動縮放功能,在常規群集建立過程中完成以下步驟:
+若要啟用以排程為基礎的自動調整功能，請在一般叢集建立程式中完成下列步驟：
 
-1. 在 **「設定 + 定價**」選項卡上,選擇 **「啟用自動縮放**」複選框。
-1. 輸入**輔助角色節點****的節點數**,該節點控制向上擴展群集的限制。
-1. 選擇「**自動縮放類型**」**的選項**。
-1. 選擇 **「設定**」以開啟**自動縮放設定**視窗。
-1. 選擇您的時區,然後按下 **+ 新增條件**
-1. 選擇新條件應應用於的一周中的天數。
-1. 編輯條件應生效的時間以及群集應縮放到的節點數。
-1. 如果需要,添加更多條件。
+1. 在 [設定 **+ 定價**] 索引標籤上，選取 [**啟用自動**調整] 核取方塊。
+1. 輸入背景**工作節點**的**節點數目**，以控制相應增加叢集的限制。
+1. 選取 [**自動調整類型**] 下的 [**排程依據**] 選項。
+1. 選取 [**設定**] 以開啟 [**自動**調整規模設定] 視窗。
+1. 選取您的時區，然後按一下 [ **+ 新增條件**]
+1. 選取應套用新條件的周間日。
+1. 編輯條件應生效的時間，以及應調整叢集的節點數目。
+1. 視需要新增更多條件。
 
-    ![開啟以工作節點的計劃建立](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    ![啟用背景工作節點以排程為基礎的建立](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
 
-節點數必須介於添加條件之前輸入的最大輔助節點數 3 和最大輔助節點數之間。
+節點數目必須介於3到您在新增條件之前輸入的背景工作節點數目上限。
 
-### <a name="final-creation-steps"></a>最終建立步驟
+### <a name="final-creation-steps"></a>最後的建立步驟
 
-通過在 **'節點大小**'下的下拉清單中選擇 VM,為輔助節點選擇 VM 類型。 為每個節點類型選擇 VM 類型後,可以看到整個群集的估計成本範圍。 調整 VM 類型以適合您的預算。
+從 [**節點大小**] 下的下拉式清單中選取 vm，以選取背景工作角色節點的 vm 類型。 為每個節點類型選擇 VM 類型之後，您可以看到整個叢集的預估成本範圍。 調整 VM 類型以符合您的預算。
 
-![開啟基於工作節點的自動縮放節點大小](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
+![啟用背景工作節點以排程為基礎的自動調整節點大小](./media/hdinsight-autoscale-clusters/azure-portal-cluster-configuration-pricing-vmsize.png)
 
-您的訂用帳戶擁有每個區域的容量配額。 頭節點和最大輔助節點的內核總數不能超過容量配額。 但是這個配額是軟性限制；您一律可以建立支援票證，輕鬆增加配額。
+您的訂用帳戶擁有每個區域的容量配額。 前端節點和最大背景工作節點的核心總數不能超過容量配額。 但是這個配額是軟性限制；您一律可以建立支援票證，輕鬆增加配額。
 
 > [!Note]  
-> 如果超過總內核配額限制,您將收到一條錯誤消息,指出「最大節點超出了該區域中的可用內核,請選擇其他區域或與支援部門聯繫以增加配額。
+> 如果您超過總核心配額限制，將會收到錯誤訊息，指出「最大節點超過此區域中的可用核心數，請選擇另一個區域，或聯絡支援人員增加配額」。
 
 如需使用 Azure 入口網站建立 HDInsight 叢集的詳細資訊，請參閱[使用 Azure 入口網站在 HDInsight 中建立以 Linux 為基礎的叢集](hdinsight-hadoop-create-linux-clusters-portal.md)。  
 
 ### <a name="create-a-cluster-with-a-resource-manager-template"></a>使用 Resource Manager 範本建立叢集
 
-#### <a name="load-based-autoscaling"></a>基於負載的自動縮放
+#### <a name="load-based-autoscaling"></a>以負載為基礎的自動調整
 
-`autoscale`您可以透過將節點添加`computeProfile` > `workernode`到具有`minInstanceCount`屬性的部分`maxInstanceCount`, 並如下面的 json 代碼段所示,使用基於負載的 Azure 資源管理器樣本創建 HDInsight 群集。
+您`autoscale`可以透過將節點加入至`computeProfile`  >  `workernode`具有屬性`minInstanceCount`的區段，以使用載入型自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集， `maxInstanceCount`如下列 json 程式碼片段所示。
 
 ```json
 {
@@ -149,9 +149,9 @@ Azure HDInsight 的群集自動縮放功能可自動縮放群集中輔助節點�
 }
 ```
 
-#### <a name="schedule-based-autoscaling"></a>以計畫的自動縮放
+#### <a name="schedule-based-autoscaling"></a>以排程為基礎的自動調整
 
-通過將`autoscale`節點添加到`computeProfile` > `workernode`分區,可以使用基於計劃的 Azure 資源管理器範本創建 HDInsight 叢集。 節點`autoscale`包含`recurrence`具有`timezone``schedule`和的 , 描述何時發生變更。
+`autoscale`您可以藉由將節點新增至`computeProfile`  >  `workernode`區段，以排程為基礎的自動調整 Azure Resource Manager 範本來建立 HDInsight 叢集。 `autoscale`節點`recurrence`包含具有`timezone`和`schedule`的，可描述何時會進行變更。
 
 ```json
 {
@@ -185,79 +185,79 @@ Azure HDInsight 的群集自動縮放功能可自動縮放群集中輔助節點�
 
 #### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-要在執行的叢集上開啟自動縮放,請在 **「設定」** 選擇**叢集大小**。 然後選擇 **「啟用自動縮放**」。 選擇所需的自動縮放類型,並輸入基於負載或基於計劃的縮放選項。 最後，選取 [儲存]****。
+若要在執行中的叢集上啟用自動調整，請選取 [**設定**] 底下的 [叢集**大小** 然後選取 [**啟用自動**調整]。 選取您想要的自動調整類型，並輸入以負載為基礎或以排程為基礎的縮放選項。 最後，選取 [儲存]****。
 
-![開啟基於工作節點計劃的自動縮放執行叢集](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
+![啟用以背景工作節點排程為基礎的自動調整執行叢集](./media/hdinsight-autoscale-clusters/azure-portal-settings-autoscale.png)
 
 #### <a name="using-the-rest-api"></a>使用 REST API
 
-要使用 REST API 在執行的叢集上啟用或關閉自動縮放,請向自動縮放終結點發出 POST 請求:
+若要使用 REST API 在執行中的叢集上啟用或停用自動調整，請對自動調整端點提出 POST 要求：
 
 ```
 https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{resourceGroup Name}/providers/Microsoft.HDInsight/clusters/{CLUSTERNAME}/roles/workernode/autoscale?api-version=2018-06-01-preview
 ```
 
-在請求負載中使用適當的參數。 下面的 json 有效負載可用於啟用自動縮放。 使用有效負載`{autoscale: null}`禁用自動縮放。
+在要求承載中使用適當的參數。 下列 json 承載可用來啟用自動調整。 使用承載`{autoscale: null}`來停用自動調整。
 
 ```json
 { autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }
 ```
 
-有關所有有效負載參數的完整說明,請參閱上一節關於[啟用基於負載的自動縮放](#load-based-autoscaling)。
+請參閱上一節關於[啟用以負載為基礎的自動](#load-based-autoscaling)調整，以取得所有裝載參數的完整描述。
 
 ## <a name="guidelines"></a>指導方針
 
-### <a name="choosing-load-based-or-schedule-based-scaling"></a>選擇基於負載或基於排程的縮放
+### <a name="choosing-load-based-or-schedule-based-scaling"></a>選擇以負載為基礎或以排程為基礎的調整
 
-在決定選擇哪種模式之前,請考慮以下因素:
+在決定要選擇哪一種模式之前，請先考慮下列因素：
 
-* 在群集創建期間啟用自動縮放。
-* 節點的最小數量應至少為三個。
-* 負載方差:群集的負載在特定時間、特定日期是否遵循一致的模式。 如果不是,基於負載的調度是一個更好的選擇。
-* SLA 要求:自動縮放是被動的,而不是預測性的。 負載開始增加和群集需要達到其目標大小之間是否有足夠的延遲? 如果有嚴格的 SLA 要求,並且負載是固定的已知模式,則"基於計劃"是一個更好的選擇。
+* 在叢集建立期間啟用自動調整。
+* 節點數目下限至少應為三個。
+* 負載變異數：叢集的負載會在特定時間以一致的模式遵循指定的日期。 如果沒有，以負載為基礎的排程是較好的選擇。
+* SLA 需求：自動調整規模是回應性，而不是預測。 負載開始增加的時間和叢集必須處於其目標大小之間是否有足夠的延遲？ 如果有嚴格的 SLA 需求，而負載是固定的已知模式，則 [以排程為基礎] 是較好的選擇。
 
-### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>考慮延伸或縮減操作的延遲
+### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>考慮相應增加或相應減少作業的延遲
 
-完成縮放操作可能需要 10 到 20 分鐘。 設置自定義計劃時,計劃此延遲。 例如,如果需要在上午 9:00 時群集大小為 20,則將計劃觸發器設置為較早的時間(如上午 8:30,以便縮放操作在上午 9:00 之前完成)。
+調整作業可能需要10到20分鐘的時間才能完成。 設定自訂排程時，請為此延遲進行規劃。 例如，如果您需要在上午9:00 的叢集大小為20，請將排程觸發程式設定為較早的時間，例如 8:30 AM，讓調整作業已完成 9:00 AM。
 
-### <a name="preparation-for-scaling-down"></a>準備縮小規模
+### <a name="preparation-for-scaling-down"></a>向下調整的準備
 
-在群集縮減過程中,自動縮放將停用節點以滿足目標大小。 如果這些節點上運行任務,自動縮放將等待任務完成。 由於每個輔助節點在 HDFS 中也充當了一個角色,因此臨時數據將轉移到其餘節點。 因此,應確保其餘節點上有足夠的空間來承載所有臨時數據。
+在叢集相應減少程式期間，自動調整會將節點解除委任以符合目標大小。 如果工作是在這些節點上執行，自動調整將會等候，直到作業完成為止。 由於每個背景工作節點也會在 HDFS 中提供角色，因此暫存資料將會移至其餘的節點。 因此，您應該確定其餘節點上有足夠的空間來裝載所有的暫存資料。
 
-正在運行的作業將繼續。 掛起的作業將等待具有較少可用輔助角色節點的計劃。
+執行中的作業將會繼續。 暫止的工作將會等待較少的可用背景工作節點進行排程。
 
 ### <a name="minimum-cluster-size"></a>最小叢集大小
 
-不要將群集縮減到少於三個節點。 將群集擴展到少於三個節點可能會導致群集由於檔複製不足而陷入安全模式。  有關詳細資訊,請參閱[卡在安全模式](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)。
+請不要將叢集調整為少於三個節點。 將您的叢集調整至少於三個節點，可能會導致它因為檔案複寫不完整而停滯于安全模式。  如需詳細資訊，請參閱[在安全模式中停滯](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)。
 
 ## <a name="monitoring"></a>監視
 
 ### <a name="cluster-status"></a>叢集狀態
 
-Azure 門戶中列出的群集狀態可説明您監視自動縮放活動。
+Azure 入口網站中所列的叢集狀態可協助您監視自動調整活動。
 
-![開啟基於工作節點的自動縮放叢集狀態](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+![啟用背景工作節點負載型自動調整叢集狀態](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
 
-下面清單中將解釋您可能看到的所有群集狀態消息。
+下列清單會說明您可能會看到的所有叢集狀態訊息。
 
 | 叢集狀態 | 描述 |
 |---|---|
-| 執行中 | 群集工作正常。 所有以前的自動縮放活動都已成功完成。 |
-| Updating  | 正在更新群集自動縮放配置。  |
-| HDInsight 設定  | 群集向上擴展或縮減操作正在進行中。  |
-| 更新錯誤  | HDInsight 在自動縮放配置更新期間遇到了問題。 客戶可以選擇重試更新或禁用自動縮放。  |
-| 錯誤  | 群集出現問題,並且不可用。 刪除此群集並創建新群集。  |
+| 執行中 | 叢集正常運作。 所有先前的自動調整活動都已順利完成。 |
+| Updating  | 正在更新叢集自動調整設定。  |
+| HDInsight 設定  | 叢集擴充或相應減少作業進行中。  |
+| 更新錯誤  | HDInsight 在自動調整設定更新期間遇到問題。 客戶可以選擇重試更新或停用自動調整。  |
+| 錯誤  | 叢集發生問題，因此無法使用。 刪除此叢集並建立一個新叢集。  |
 
-要查看群集中的當前節點數,請轉到群集**的「概述」** 頁上的 **「群集大小**圖表」。。 或者選擇 **「設定」** 下的 **「群集大小**」。
+若要查看您叢集中目前的節點數目，請移至您叢集的 [**總覽**] 頁面上的 [叢集**大小**] 圖表。 或選取 [**設定**] 底下的 [叢集**大小**]。
 
-### <a name="operation-history"></a>動作記錄
+### <a name="operation-history"></a>作業歷程記錄
 
-您可以查看群集擴展和縮減歷史記錄,作為群集指標的一部分。 您還可以列出過去一天、一周或其他時間段內的所有縮放操作。
+您可以將叢集相應增加和相應減少歷程記錄視為叢集計量的一部分來查看。 您也可以列出過去一天、一周或其他一段時間的所有調整動作。
 
-在**監視**下選擇**指標**。 然後從 **「指標」** 下拉框中選擇 **「添加指標**」和 **「活動工作人員數**」。 選擇右上角的按鈕以更改時間範圍。
+選取 [**監視**] 下的 [**計量**]。 然後**從 [計量**] 下拉式清單方塊中選取 [**新增**計量和作用中背景**工作的數目**]。 選取右上方的按鈕以變更時間範圍。
 
-![開啟基於工作節點計劃的自動縮放指標](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+![啟用以背景工作節點排程為基礎的自動調整度量](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-在縮放指南中閱讀有關手動縮放群集[的指南](hdinsight-scaling-best-practices.md)
+閱讀[調整指導方針](hdinsight-scaling-best-practices.md)中的手動調整叢集的指導方針

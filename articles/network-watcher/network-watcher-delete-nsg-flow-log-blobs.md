@@ -1,6 +1,6 @@
 ---
-title: 刪除 Azure 網路觀察程式中網路安全性群組流日誌的存儲 Blob |微軟文檔
-description: 本文介紹如何刪除 Azure 網路觀察程式中超出其保留原則期間之外的網路安全性群組流日誌存儲 Blob。
+title: 刪除 Azure 網路監看員中網路安全性群組流量記錄的儲存體 blob |Microsoft Docs
+description: 本文說明如何在 Azure 網路監看員中刪除保留原則期間以外的網路安全性群組流量記錄儲存體 blob。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,20 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6d535bcc2e0831baae658796f76c8087d74c6a85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 948347f38b4b0fefe1e61cc4560eaa46e1bfd6f0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77587204"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187965"
 ---
-# <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>刪除網路觀察程式中的網路安全性群組流日誌存儲 Blob
+# <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>刪除網路監看員中的網路安全性群組流量記錄儲存體 blob
 
-目前有一個問題是，系統不會根據保留原則設定從 Blob 儲存體自動刪除網路監看員的[網路安全性群組 (NSG) 流量記錄](network-watcher-nsg-flow-logging-overview.md)。 現在，您必須運行 PowerShell 腳本才能手動從存儲帳戶中刪除流日誌，如本文所述。
+如果您需要手動刪除儲存體帳戶中的流量記錄，可以使用下列 PowerShell 腳本。
+此腳本只會刪除比使用者指定的現有保留原則舊的儲存體 blob。
 
-## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>運行 PowerShell 腳本以刪除 NSG 流日誌
+## <a name="run-powershell-script-to-delete-nsg-flow-logs"></a>執行 PowerShell 腳本以刪除 NSG 流量記錄
  
-複製以下腳本並將其保存到當前工作目錄等位置。 
+將下列腳本複製並儲存到您目前的工作目錄之類的位置。 
 
 ```powershell
 # This powershell script deletes all NSG flow log blobs that should not be retained anymore as per configured retention policy.
@@ -124,17 +125,17 @@ foreach ($Psflowlog in $FlowLogsList)
 Write-Output ('Retention policy for all NSGs evaluated and completed successfully')
 ```
 
-1. 根據需要在腳本中輸入以下參數：
-   - **訂閱 Id** [必需]：要從中刪除 NSG 流日誌 blob 的訂閱 ID。
-   - **位置**[必需]：要為其刪除 NSG 流日誌 blob 的 NSG 區域_的位置字串_。 您可以在 Azure 門戶或[GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)上查看此資訊。
-   - **確認**[可選]：如果要手動確認刪除每個存儲 Blob，請傳遞確認標誌。
+1. 視需要在腳本中輸入下列參數：
+   - **SubscriptionId** [強制]：您想要從中刪除 NSG 流量記錄檔 blob 的訂用帳戶識別碼。
+   - **Location** [強制]：您要刪除 NSG 流量記錄檔 Blob 之 nsg 區域的_位置字串_。 您可以在 Azure 入口網站或[GitHub](https://github.com/Azure/azure-extensions-cli/blob/beb3d3fe984cfa9c7798cb11a274c5337968cbc5/regions.go#L23)上查看此資訊。
+   - **確認**[選用]：如果您想要手動確認刪除每個儲存體 blob，請傳遞確認旗標。
 
-1. 運行保存的腳本，如以下示例所示，其中指令檔保存為**Delete-NsgFlowLogsBlobs.ps1**：
+1. 如下列範例所示，執行已儲存的腳本，其中腳本檔案儲存為**Delete-NsgFlowLogsBlobs。 ps1**：
    ```
    .\Delete-NsgFlowLogsBlobs.ps1 -SubscriptionId <subscriptionId> -Location  <location> -Confirm
    ```
     
 ## <a name="next-steps"></a>後續步驟
-- 客戶可以使用[Azure 邏輯應用](../logic-apps/logic-apps-overview.md)或[Azure 自動化](https://azure.microsoft.com/services/automation/)自動運行腳本
-- 要瞭解有關 NSG 日誌記錄的更多資訊，請參閱[網路安全性群組 （NSG） 的 Azure 監視器日誌](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
+- 客戶可以使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)或[Azure 自動化](https://azure.microsoft.com/services/automation/)，自動執行腳本。
+- 若要深入瞭解 NSG 記錄，請參閱[網路安全性群組的 Azure 監視器記錄（nsg）](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 

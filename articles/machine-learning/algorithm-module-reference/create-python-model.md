@@ -1,7 +1,7 @@
 ---
-title: 建立 Python 模型:模組參照
+title: 建立 Python 模型：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure 機器學習中使用"創建 Python 模型「模組創建自定義建模或數據處理模組。
+description: 瞭解如何使用 Azure Machine Learning 中的 [建立 Python 模型] 模組來建立自訂模型或資料處理模組。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,45 +9,45 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/19/2019
-ms.openlocfilehash: c8be0882452dc120f538394a5481769e26e3fa15
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 0285520c2733cd6e190f9055824cdfed0ce4b842
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682812"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189849"
 ---
 # <a name="create-python-model-module"></a>建立 Python 模型模組
 
-本文介紹 Azure 機器學習設計器(預覽)中的模組。
+本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
 
-瞭解如何使用創建 Python 模型模組從 Python 文稿建立未經訓練的模型。 可以將模型基於 Azure 機器學習設計器環境中 Python 包中包含的任何學員。 
+瞭解如何使用 [建立 Python 模型] 模組，從 Python 腳本建立未訓練的模型。 您可以根據 Azure Machine Learning 設計工具環境中 Python 套件所包含的任何學習模組來建立模型的基礎。 
 
-創建模型后,可以使用[訓練模型](train-model.md)在數據集上訓練模型,就像 Azure 機器學習中的任何其他學員一樣。 訓練模型可以傳遞給[分數模型](score-model.md)進行預測。 然後,您可以保存已訓練的模型,並將評分工作流發佈為 Web 服務。
+建立模型之後，您可以使用 [[定型模型](train-model.md)] 將資料集上的模型定型，如同 Azure Machine Learning 中的任何其他學習模組。 定型的模型可以傳遞至[評分模型](score-model.md)，以進行預測。 然後您可以儲存已定型的模型，並將評分工作流程發佈為 web 服務。
 
 > [!WARNING]
-> 目前,無法將 Python 模型的評分結果傳遞給[評估模型](evaluate-model.md)。 如果需要評估模型,可以使用[執行 Python 文本](execute-python-script.md)模組編寫自訂 Python 文稿並運行它。  
+> 目前無法傳遞 Python 模型的評分結果來[評估模型](evaluate-model.md)。 如果您需要評估模型，您可以撰寫自訂 Python 腳本，並使用 [[執行 Python 腳本](execute-python-script.md)] 模組來執行它。  
 
 
 ## <a name="configure-the-module"></a>設定模組
 
-使用此模組需要 Python 的中間或專業知識。 該模組支援使用 Azure 機器學習中已安裝的 Python 包中包含的任何學員。 請參考[Python 文稿](execute-python-script.md)中預先安裝的 Python 套件清單。
+使用此模組需要 Python 的中繼或專家知識。 模組支援使用已安裝在 Azure Machine Learning 中的 Python 套件所包含的任何學習模組。 請參閱[執行 Python 腳本](execute-python-script.md)中的預先安裝的 python 套件清單。
 
 > [!NOTE]
-> 編寫文本時請非常小心,並確保沒有語法錯誤,例如使用未聲明的物件或未導入的模組。
+> 撰寫腳本時請務必小心，並確定沒有任何語法錯誤，例如使用未宣告的物件或未匯入的模組。
 
 > [!NOTE]
-還要特別注意[執行 Python 文稿](execute-python-script.md)中預安裝的模組清單。 僅導入預安裝的模組。 請不要在此文本中安裝額外的套件,如"pip 安裝 xgboost",否則在閱讀下游模組中的模型時將引發錯誤。
+> 此外，也需支付[執行 Python 腳本](execute-python-script.md)中預先安裝模組清單的額外注意事項。 只匯入預先安裝的模組。 請不要在此腳本中安裝額外的套件，例如 "pip install xgboost"，否則在向下串流模組中讀取模型時，將會引發錯誤。
   
-本文演示如何將**創建 Python 模型**與簡單的管道一起使用。 下面是導管圖:
+本文說明如何搭配簡單的管線使用**建立 Python 模型**。 以下是管線的圖表：
 
-![建立 Python 模型圖](./media/module/create-python-model.png)
+![建立 Python 模型的圖表](./media/module/create-python-model.png)
 
-1. 選擇 **「創建 Python 模型**」,然後編輯文稿以實現建模或資料管理過程。 可以將模型基於 Azure 機器學習環境中 Python 包中包含的任何學員。
+1. 選取 [**建立 Python 模型**]，然後編輯腳本來執行您的模型化或資料管理處理常式。 您可以根據 Azure Machine Learning 環境中 Python 套件所包含的任何學習模組來建立模型的基礎。
 
 > [!NOTE]
-> 請特別注意腳本示例代碼中的註釋,並確保腳本嚴格遵守要求,包括類名稱、方法和方法簽名。 衝突將導致異常。 
+> 請特別注意腳本範例程式碼中的批註，並確定您的腳本嚴格遵循需求，包括類別名稱、方法和方法簽章。 違規會導致例外狀況。 
 
-   以下雙類 Naive Bayes 分類器的範例代碼使用流行的*sklearn*包:
+   下列兩個類別貝氏貝氏機率分類分類器的範例程式碼會使用熱門的*sklearn*套件：
 
    ```Python
 
@@ -88,11 +88,11 @@ ms.locfileid: "81682812"
 
    ```
 
-1. 連接剛剛建立的用於**訓練模型**和**分數模型**的**創建 Python 模型**模組。
+2. 將您剛才建立的 [**建立 Python 模型**] 模組連接到 [**定型模型**] 和 [**評分模型**]。
 
-1. 如果需要評估模型,請添加執行 Python[文稿](execute-python-script.md)模組並編輯 Python 文稿。
+3. 如果您需要評估模型，請新增[執行 Python 腳本](execute-python-script.md)模組並編輯 Python 腳本。
 
-   以下文稿是範例評估代碼:
+   下列腳本是範例評估程式碼：
 
    ```Python
 
@@ -103,7 +103,7 @@ ms.locfileid: "81682812"
    # imports up here can be used to 
    import pandas as pd
 
-   # The entry point function can contain up to two input arguments:
+   # The entry point function MUST have two input arguments:
    #   Param<dataframe1>: a pandas.DataFrame
    #   Param<dataframe2>: a pandas.DataFrame
    def azureml_main(dataframe1 = None, dataframe2 = None):
@@ -133,4 +133,4 @@ ms.locfileid: "81682812"
 
 ## <a name="next-steps"></a>後續步驟
 
-請參考 Azure 機器學習[可用的模組集](module-reference.md)。 
+請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 

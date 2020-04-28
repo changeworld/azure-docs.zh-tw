@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: c03487b100ddb066416072c6c06773890db86e0a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 82d268eedd73b8de670da93ad3a601b5e75e6444
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82115307"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188530"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure 預期狀態設定延伸模組處理常式簡介
 
@@ -36,7 +36,7 @@ Azure Desired State Configuration （DSC）延伸模組的主要使用案例是�
 
 本文提供兩種案例的相關資訊：使用 DSC 延伸模組來進行「自動化」上線，以及藉由使用 Azure SDK 來使用 DSC 延伸模組作為工具，以將設定指派給 VM。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - **本機電腦**：若要與 Azure VM 延伸模組互動，您必須使用 Azure 入口網站或 Azure PowerShell SDK。
 - **客體代理程式**：DSC 設定所設定的 Azure VM 必須是支援 Windows Management Framework (WMF) 4.0 或更新版本的 OS。 如需所支援 OS 版本的完整清單，請參閱 [DSC 延伸模組版本歷程記錄](../../automation/automation-dsc-extension-history.md) \(英文\)。
@@ -188,7 +188,7 @@ az vm extension set \
 
 - **設定引數**︰如果設定函式接受引數，請以 **argumentName1=value1,argumentName2=value2** 格式在這裡輸入引數。 此格式與 PowerShell Cmdlet 或 Resource Manager 範本中接受設定引數時所採用的格式不同。
 
-- **組態資料 PSD1 檔案**︰這是選擇性欄位。 如果您的設定需要的是 .psd1 中的設定資料檔，請使用此欄位來選取資料欄位，然後將它上傳到您的使用者 Blob 儲存體。 此設定資料檔在 Blob 儲存體中會受到 SAS 權杖保護。
+- 設定**資料 .psd1**檔：您的設定需要 .psd1 中的設定資料檔案。請使用此欄位來選取資料檔案，並將它上傳至您的使用者 blob 儲存體。 此設定資料檔在 Blob 儲存體中會受到 SAS 權杖保護。
 
 - **WMF 版本**指定應該安裝在您虛擬機器上的 Windows Management Framework (WMF) 版本。 將此屬性設定為 latest 會安裝最新版的 WMF。 此屬性目前只有下列可能值：4.0、5.0、5.1 及 latest。 這些可能的值可能會更新。 預設值為 [**最新**]。
 

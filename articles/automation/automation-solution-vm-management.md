@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 10c66ba175484d8b95f26ef9330753151a92969b
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 631c9b37cf1fec0d39c3c362c6bc303a576d6b7c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106027"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187325"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自動化中的離峰時間啟動/停止 Vm 解決方案
 
@@ -148,7 +148,7 @@ ms.locfileid: "82106027"
 >[!NOTE]
 >若為變數`External_WaitTimeForVMRetryInSeconds`，預設值已從600更新為2100。 
 
-在所有案例中，除了`External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` **AutoStop_CreateAlert_Parent**、 **SequencedStartStop_Parent**和**ScheduledStartStop_Parent** runbook 的以逗號分隔的 vm 清單以外，所有的變數、和`External_ExcludeVMNames`都是目標 vm 所需的。 也就是說，您的 Vm 必須屬於目標資源群組，才會發生啟動和停止動作。 此邏輯的運作方式類似 Azure 原則，其中您可以將訂用帳戶或資源群組設為目標，並讓新建立的 VM 繼承動作。 此方法可免去針對每部虛擬機器維護個別排程的必要，並可大規模地管理啟動和停止。
+在所有案例中，除了`External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` **AutoStop_CreateAlert_Parent**、 **SequencedStartStop_Parent**和**ScheduledStartStop_Parent** runbook 的以逗號分隔的 vm 清單以外，所有的變數、和`External_ExcludeVMNames`都是目標 vm 所需的。 也就是說，您的 Vm 必須屬於目標資源群組，才會發生啟動和停止動作。 此邏輯的運作方式類似 Azure 原則，因為您可以將目標設為訂用帳戶或資源群組，並讓新建立的 Vm 繼承動作。 此方法可免去針對每部虛擬機器維護個別排程的必要，並可大規模地管理啟動和停止。
 
 ### <a name="schedules"></a>排程
 

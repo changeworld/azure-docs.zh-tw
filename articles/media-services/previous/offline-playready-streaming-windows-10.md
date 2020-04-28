@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 350b8d111652511627ddf67236f63248a5489015
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 001d408eaa7ce637bd7cc1f1183dd8748cddf539
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74970443"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189517"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>適用於 Windows 10 的離線 PlayReady 串流  
 
-> [!div class="op_single_selector" title1="選擇您正在使用的媒體服務版本："]
+> [!div class="op_single_selector" title1="選取您要使用的媒體服務版本："]
 > * [第 3 版](../latest/offline-plaready-streaming-for-windows-10.md)
-> * [版本 2](offline-playready-streaming-windows-10.md)
+> * [第 2 版](offline-playready-streaming-windows-10.md)
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒體服務支援在具備 DRM 保護的情況下離線下載/播放。 本文涵蓋適用於 Windows 10/PlayRead 用戶端的 Azure 媒體服務離線支援。 您可以在以下文章中閱讀和適用於 iOS/FairPlay 與 Android/Widevine 裝置的離線模式支援相關資訊：
 
 - [適用於 iOS 的離線 FairPlay 串流](media-services-protect-hls-with-offline-fairplay.md)
-- [離線寬文流為安卓](offline-widevine-for-android.md)
+- [適用于 Android 的離線 Widevine 串流](offline-widevine-for-android.md)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本節提供一些離線模式播放的背景資訊，尤其是開發該技術的原因：
 
-* 在某些國家/地區，互聯網可用性和/或頻寬仍然有限。使用者可以選擇先下載，以便能以夠高的解析度觀賞內容，來獲得令人滿意的檢視體驗。 在此情況下，更常見的問題不是網路可用性，而是有限的網路頻寬。 OTT/OVP 提供者正在要求提供離線模式支援。
+* 在某些國家/地區，網際網路可用性和/或頻寬仍然受到限制。使用者可以選擇先下載，以便能以夠高的解析度觀賞內容，來獲得令人滿意的檢視體驗。 在此情況下，更常見的問題不是網路可用性，而是有限的網路頻寬。 OTT/OVP 提供者正在要求提供離線模式支援。
 * Netflix 2016 年第 3 季股東會議中，Netflix CEO Reed Hastings 揭露了一項資訊，那就是下載內容是「頻繁被要求的功能」，並且「我們對此持開放態度」。
-* 某些內容提供者可能會禁止將 DRM 許可證交付到國家/地區邊界以外。 如果使用者想要在需要出國旅行時仍能觀賞內容，就需要離線下載。
+* 某些內容提供者可能不允許超出國家/地區框線的 DRM 授權傳遞。 如果使用者想要在需要出國旅行時仍能觀賞內容，就需要離線下載。
  
 以下是我們在實作離線模式時面臨的挑戰：
 
@@ -65,12 +65,12 @@ Azure 媒體服務支援在具備 DRM 保護的情況下離線下載/播放。 �
 資產 1：
 
 * 漸進式下載 URL：[https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/8d078cf8-d621-406c-84ca-88e6b9454acc/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* 播放就緒LA_URL （AMS）：[https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/](https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/)
+* PlayReady LA_URL (AMS)：`https://willzhanmswest.keydelivery.mediaservices.windows.net/PlayReady/`
 
 資產 2：
 
 * 漸進式下載 URL：[https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4](https://willzhanmswest.streaming.mediaservices.windows.net/7c085a59-ae9a-411e-842c-ef10f96c3f89/20150807-bridges-2500_H264_1644kbps_AAC_und_ch2_256kbps.mp4)
-* 播放就緒LA_URL（在前位）：[https://willzhan12.cloudapp.net/playready/rightsmanager.asmx](https://willzhan12.cloudapp.net/playready/rightsmanager.asmx)
+* PlayReady LA_URL (內部部署)：`https://willzhan12.cloudapp.net/playready/rightsmanager.asmx`
 
 針對播放測試，我使用 Windows 10 上的通用 Windows 應用程式。 在 [Windows 10 通用範例](https://github.com/Microsoft/Windows-universal-samples)中，有一個名為[彈性資料流樣本](https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/AdaptiveStreaming)的基本播放器樣本。 我們只需要自行新增程式碼，以選擇下載的視訊並使用它做為來源，而不是作為彈性資料流來源。 這些變更是在按鈕按下事件處理常式中：
 

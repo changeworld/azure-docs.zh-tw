@@ -6,13 +6,14 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
+ms.custom: seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: aee0576654827351fa5ff9b3c29b57d0d4148d3e
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 64fe56ff506cf256dd7e317984551949f9ffad06
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116599"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82189359"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集
 
@@ -29,7 +30,7 @@ HDInsight 提供彈性選項，以相應增加和相應減少叢集中的背景�
 
 Microsoft 提供下列公用程式來調整叢集：
 
-|公用程式 | 說明|
+|公用程式 | 描述|
 |---|---|
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[`Set-AzHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[`Set-AzureRmHDInsightClusterSize`](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) `-ClusterName CLUSTERNAME -TargetInstanceCount NEWSIZE`|
@@ -234,7 +235,7 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 
 區域伺服器會在完成調整作業之後的幾分鐘內自動達到平衡。 若要手動平衡區域伺服器，請完成下列步驟：
 
-1. 使用 SSH 連線到 HDInsight 叢集。 如需詳細資訊，請參閱搭配[HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md)。
+1. 使用 SSH 連線到 HDInsight 叢集。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 2. 啟動 HBase 殼層：
 

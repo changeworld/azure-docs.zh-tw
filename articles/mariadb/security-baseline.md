@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: babfd9aafa56091bfdd526366b1042966222f993
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 2d78a7e0eaed27fec7f813fa3e6bffaffe5a6540
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82144603"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186164"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>適用于適用於 MariaDB 的 Azure 資料庫的 Azure 安全性基準
 
@@ -151,7 +151,7 @@ ms.locfileid: "82144603"
 
 **指引**.. 針對與網路安全性相關的資源，以及適用于 mariadb 實例的流量流程，使用標記來提供中繼資料和邏輯組織。
 
-使用與標記相關的任何內建 Azure 原則定義，例如「需要標記和其值」，以確保所有資源都是以標籤建立，並通知您現有的未標記資源。
+使用與標記相關的任何內建 Azure 原則定義（例如「需要標記和其值」），以確保所有資源都是以標籤建立，並通知您現有的未標記資源。
 
 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記來查閱或執行資源的動作。
 
@@ -664,7 +664,7 @@ Microsoft 會管理適用于 mariadb 的基礎結構，並已實行嚴格的控�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：未核准的 Azure 資源的監視
 
-**指引**：使用下列內建原則定義，透過 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制：
+**指引**：使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型進行限制：
 
 - 不允許的資源類型
 
@@ -710,7 +710,7 @@ Microsoft 會管理適用于 mariadb 的基礎結構，並已實行嚴格的控�
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
 
-**指引**：使用下列內建原則定義，透過 Azure 原則對可在客戶訂用帳戶中建立的資源類型施加限制：
+**指引**：使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型進行限制：
 
 - 不允許的資源類型
 
@@ -794,7 +794,7 @@ Microsoft 會管理適用于 mariadb 的基礎結構，並已實行嚴格的控�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
-**指引**：使用 azure 原則 [拒絕] 和 [不存在時部署]，在您的 Azure 資源上強制執行安全設定。
+**指導**方針：使用 Azure 原則 [拒絕] 和 [不存在時部署]，在您的 Azure 資源上強制執行安全設定。
 
 如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -816,7 +816,7 @@ Microsoft 會管理適用于 mariadb 的基礎結構，並已實行嚴格的控�
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指導**方針：如果您的適用於 MariaDB 的 Azure 資料庫伺服器和相關資源使用自訂的 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
+**指導**方針：如果您適用於 MariaDB 的 Azure 資料庫伺服器和相關資源使用自訂 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
 
 如何將程式碼儲存在 Azure DevOps：https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
@@ -856,7 +856,7 @@ Azure Repos 檔：https://docs.microsoft.com/azure/devops/repos/index?view=azure
 
 ### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9：執行 Azure 服務的自動化設定監視
 
-**指導**方針：使用 "DBforMariaDB" 命名空間中的 Azure 原則別名來建立自訂原則，以警示、審查和強制執行系統組態。 使用 Azure 原則 [audit]、[deny] 和 [deploy if not 存在] 自動強制執行適用於 MariaDB 的 Azure 資料庫實例和相關資源的設定。
+**指導**方針：使用 "DBforMariaDB" 命名空間中的 Azure 原則別名來建立自訂原則，以警示、審查和強制執行系統組態。 使用 Azure 原則 [audit]、[deny] 和 [deploy if not 存在]，自動為您的適用於 MariaDB 的 Azure 資料庫實例和相關資源強制執行設定。
 
 如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 

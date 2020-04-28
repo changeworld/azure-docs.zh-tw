@@ -6,15 +6,15 @@ author: Ramakoni1
 ms.author: ramakoni
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: dab310d998f082fdf7aea770939cc68ed2e1e5c2
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 392329d254615406204d67a4e135b6857e13a57d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82100221"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192547"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常見問題
 
@@ -170,7 +170,7 @@ ktutil: q
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>我可以在 AAD DS 安全 LDAP 安裝程式中使用自我簽署憑證，並布建 ESP 叢集嗎？
 
-建議使用由憑證授權單位單位所發行的憑證。 但是，ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱
+建議使用由憑證授權單位單位所發行的憑證。 但是，ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱：
 
 - [啟用 Azure Active Directory Domain Services](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -247,14 +247,14 @@ done
 
 目前，blob 儲存體和 Azure Data Lake Storage Gen1 或 Gen2 不存在任何 Ranger 外掛程式。 針對 ESP 叢集，您應該使用 Azure Data Lake Storage。 您至少可以使用 HDFS 工具，以手動方式在檔案系統層級設定細微許可權。 此外，使用 Azure Data Lake Storage 時，ESP 叢集會使用叢集層級的 Azure Active Directory 來執行一些檔案系統存取控制。 
 
-您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱
+您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱：
 
 - [如何? 將 Azure AD 使用者的許可權設定為使用 Hive 或其他服務來查詢 Data Lake Storage Gen2 中的資料嗎？](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [搭配 Azure Data Lake Storage Gen2 使用 Azure 儲存體總管設定檔案和目錄等級使用權限](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>我可以在叢集上增加 HDFS 儲存體，而不需要增加背景工作節點的磁片大小嗎？
 
-否。 您無法增加任何背景工作角色節點的磁片大小。 因此，增加磁片大小的唯一方法就是卸載叢集，然後使用較大的背景工作 Vm 重新建立叢集。 請不要使用 HDFS 來儲存任何 HDInsight 資料，因為如果刪除叢集，就會刪除資料。 相反地，請將您的資料儲存在 Azure 中。 相應增加叢集也可以將額外的容量新增至您的 HDInsight 叢集。
+不可以。 您無法增加任何背景工作角色節點的磁片大小。 因此，增加磁片大小的唯一方法就是卸載叢集，然後使用較大的背景工作 Vm 重新建立叢集。 請不要使用 HDFS 來儲存任何 HDInsight 資料，因為如果刪除叢集，就會刪除資料。 相反地，請將您的資料儲存在 Azure 中。 相應增加叢集也可以將額外的容量新增至您的 HDInsight 叢集。
 
 ## <a name="edge-nodes"></a>邊緣節點
 

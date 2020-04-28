@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a230d4f775207afc37172dae9f0709d66a6d1aa1
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 832caaed0816e3dd7d177f634209dea42e5312c7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116616"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192675"
 ---
 # <a name="use-apache-ambari-hive-view-with-apache-hadoop-in-hdinsight"></a>在 HDInsight 中搭配 Apache Hadoop 使用 Apache Ambari Hive 檢視
 
@@ -21,7 +21,7 @@ ms.locfileid: "82116616"
 
 了解如何使用 Apache Ambari Hive 檢視執行 Hive 查詢。 Hive 檢視可讓您從網頁瀏覽器編寫、最佳化及執行 Hive 查詢。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -60,7 +60,7 @@ HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight]
 
     這些語句會執行下列動作：
 
-    |引數 | 說明 |
+    |引數 | 描述 |
     |---|---|
     |DROP TABLE|刪除資料表和資料檔 (如果資料表已經存在)。|
     |CREATE EXTERNAL TABLE|在 Hive 中建立新的「外部」資料表。 外部資料表只會將資料表定義儲存在 Hive 中。 資料會留在原來的位置。|
@@ -119,7 +119,7 @@ HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight]
 >
 > 如果您刪除該叢集，但保留儲存體，您可以使用 [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)或 Data Lake 儲存體總管 (從 [Azure 入口網站](https://portal.azure.com)) 之類的公用程式來擷取查詢。
 
-## <a name="user-defined-functions"></a>使用者自訂函數
+## <a name="user-defined-functions"></a>使用者定義的函式
 
 您可以透過使用者定義函式 (UDF) 來擴充 Hive 。 使用 UDF 在 HiveQL 中實作不易模型化的功能或邏輯。
 
@@ -146,7 +146,7 @@ add jar /myudfs.jar;
 create temporary function myawesomeudf as 'com.myudfs.Awesome';
 ```
 
-您接著可以在查詢中使用 UDF。 例如，`SELECT myawesomeudf(name) FROM people;`。
+您接著可以在查詢中使用 UDF。 例如： `SELECT myawesomeudf(name) FROM people;` 。
 
 如需在 HDInsight 上搭配 Hive 使用 UDF 的詳細資訊，請參閱下列文章：
 

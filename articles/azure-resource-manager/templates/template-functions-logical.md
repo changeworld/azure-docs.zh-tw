@@ -1,23 +1,23 @@
 ---
-title: 範本函數 - 邏輯
+title: 範本函式-邏輯
 description: 描述 Azure Resource Manager 範本中用來決定邏輯值的函式。
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: f058baa32e5f93a4177913287a5e9873fa7a9acb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: 0072593e7d7830e75e2386bcfdd2907a873c7a87
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156305"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192309"
 ---
-# <a name="logical-functions-for-arm-templates"></a>ARM 範本的邏輯函數
+# <a name="logical-functions-for-arm-templates"></a>ARM 範本的邏輯函式
 
-資源管理器提供了多個功能，用於在 Azure 資源管理器 （ARM） 範本中進行比較。
+Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （ARM）範本中進行比較。
 
 * [和](#and)
 * [bool](#bool)
 * [if](#if)
-* [否](#not)
+* [並非](#not)
 * [或](#or)
 
 ## <a name="and"></a>和
@@ -136,7 +136,7 @@ ms.locfileid: "80156305"
 
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| condition (條件) |是 |boolean |要檢查它是真還是假的值。 |
+| condition (條件) |是 |boolean |要檢查其是否為 true 或 false 的值。 |
 | trueValue |是 | 字串、int、物件或陣列 |條件為 true 時，傳回的值。 |
 | falseValue |是 | 字串、int、物件或陣列 |條件為 false 時，傳回的值。 |
 
@@ -146,7 +146,7 @@ ms.locfileid: "80156305"
 
 ### <a name="remarks"></a>備註
 
-當條件為**True**時，僅計算真實值。 當條件為**False**時，僅計算 false 值。 使用**if**函數，可以包含僅有條件有效的運算式。 例如，可以引用在一個條件下存在但另一個條件下不存在的資源。 有條件地計算運算式的示例如下節所示。
+當條件為**true**時，只會評估真正的值。 當條件為**false**時，只會評估 false 值。 使用**if**函式時，您可以包含只有條件式有效的運算式。 例如，您可以參考存在於某個條件下但不在其他條件下的資源。 下一節會顯示有條件地評估運算式的範例。
 
 ### <a name="examples"></a>範例
 
@@ -183,7 +183,7 @@ ms.locfileid: "80156305"
 | noOutput | String | 否 |
 | objectOutput | Object | { "test": "value1" } |
 
-以下[示例範本](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)演示如何將此函數與僅有條件有效的運算式一起使用。
+下列[範例範本](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json)顯示如何使用此函式搭配僅有條件地有效的運算式。
 
 ```json
 {
@@ -295,6 +295,7 @@ ms.locfileid: "80156305"
             "value": "[not(equals(1, 2))]"
         }
     }
+}
 ```
 
 前述範例的輸出為：
@@ -357,8 +358,5 @@ ms.locfileid: "80156305"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關 Azure 資源管理器範本中部分的說明，請參閱[創作 Azure 資源管理器範本](template-syntax.md)。
-* 要合併多個範本，請參閱[使用 Azure 資源管理器使用連結範本](linked-templates.md)。
-* 要反覆運算創建資源類型時指定的次數，請參閱[在 Azure 資源管理器中創建多個資源實例](copy-resources.md)。
-* 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
 

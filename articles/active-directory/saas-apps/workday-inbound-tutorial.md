@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 298c99d44328dc79db1722b450ad74c3929d0c12
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
-ms.translationtype: MT
+ms.openlocfilehash: 6a816f2235fa5356f2300255ec9d2fb2b315acf7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114412"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82190311"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程︰設定 Workday 來自動佈建使用者
 
@@ -87,13 +87,13 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 本節涵蓋下列規劃層面：
 
-* [必要條件](#prerequisites)
+* [先決條件](#prerequisites)
 * [選取要部署的佈建連接器應用程式](#selecting-provisioning-connector-apps-to-deploy)
 * [Azure AD Connect 佈建代理程式的部署規劃](#planning-deployment-of-azure-ad-connect-provisioning-agent)
 * [與多個 Active Directory 網域整合](#integrating-with-multiple-active-directory-domains)
 * [規劃 Workday 至 Active Directory 的使用者屬性對應和轉換](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -462,7 +462,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
      > [!NOTE]
      > 根據預設，如果 URL 中沒有指定任何版本資訊，則應用程式會使用 Workday Web 服務（WWS） v 21.1。 若要使用特定的 WWS API 版本，請使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > 範例： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0 <br>
+     > 範例：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0 <br>
      
      > [!NOTE]
      > 如果您使用 WWS API v 30.0 和更新版本，在開啟布建作業之前，請先更新 [屬性對應->] [設定] [選項] 下的 [ **XPATH API 運算式**]-請參閱[管理您](#managing-your-configuration)的設定和[workday 屬性參考](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)一節中的**Workday > 編輯屬性清單**。  
@@ -562,7 +562,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 | **WorkerID**  |  EmployeeID | **是** | 僅於建立時寫入 |
 | **PreferredNameData**    |  cn    |   |   僅於建立時寫入 |
 | **SelectUniqueValue （Join （"\@"，Join （"."， \[FirstName\]， \[LastName\]），"contoso.com"），join （"\@"，join （"."，中間（\[FirstName\]，1，1）， \[LastName\]），"contoso.com"），聯結（"\@"，"."，中間\[（FirstName\]，1，2）， \[LastName\]），"contoso.com"））**   | userPrincipalName     |     | 僅於建立時寫入 
-| **Replace （中（Replace （\[UserID\]，，"（\[\\\\/\\\\\\\\\\\\\\：;）\\ \\ \[ \\ \\ \] \\ \\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\ \\ \\） "，，" "，，），1，20），，" （[.） \\ &lt; \\ \\ &gt; \]\*file:///\\ \$）。*$)", , "", , )**      |    sAMAccountName            |     |         僅於建立時寫入 |
+| `Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )`      |    sAMAccountName            |     |         僅於建立時寫入 |
 | **Switch(\[Active\], , "0", "True", "1", "False")** |  accountDisabled      |     | 建立 + 更新 |
 | **姓**   | givenName       |     |    建立 + 更新 |
 | **LastName**   |   sn   |     |  建立 + 更新 |
@@ -625,7 +625,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
      > [!NOTE]
      > 根據預設，如果 URL 中沒有指定任何版本資訊，則應用程式會使用 Workday Web 服務 v 21.1。 若要使用特定的 Workday Web 服務 API 版本，請使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > 範例： https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+     > 範例：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
 
 
    * **通知電子郵件–** 輸入您的電子郵件地址，然後勾選 [發生失敗時傳送電子郵件] 核取方塊。
@@ -752,7 +752,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 1. 在 [佈建]**** 索引標籤中，將 [佈建狀態]**** 設定為 [開啟]****。
 
-2. 按一下 **[儲存]** 。
+2. 按一下 [檔案]  。
 
 3. 此作業會啟動初始同步，所需花費的時數會視 Workday 租用戶中的使用者人數而定。 
 
@@ -1347,7 +1347,7 @@ Azure AD 佈建服務支援自訂清單或 Workday 屬性的功能，以包含�
 
 8. 針對 [類型]****，選取屬性的適當對應類型 ([字串]**** 最常見)。
 
-9. 針對 [API 運算式]****，輸入您從 Workday Studio 複製的 XPath 運算式。 範例： `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
+9. 針對 [API 運算式]****，輸入您從 Workday Studio 複製的 XPath 運算式。 範例：`wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
 
 10. 選取 [新增屬性]****。
 

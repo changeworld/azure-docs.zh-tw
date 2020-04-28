@@ -1,18 +1,18 @@
 ---
-title: 服務結構應用程式升級教程
+title: Service Fabric 應用程式升級教學課程
 description: 本文章會逐步解說使用 Visual Studio 部署 Service Fabric 應用程式、變更程式碼及執行升級的體驗。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: db814b972db1aee56be0858c9ff5d1c382640642
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acde2f4e51bee29d2eefb0d5fbb54fbe421a41f1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75464816"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195862"
 ---
 # <a name="service-fabric-application-upgrade-tutorial-using-visual-studio"></a>使用 Visual Studio 進行 Service Fabric 應用程式升級的教學課程
 > [!div class="op_single_selector"]
-> * [電源外殼](service-fabric-application-upgrade-tutorial-powershell.md)
+> * [PowerShell](service-fabric-application-upgrade-tutorial-powershell.md)
 > * [Visual Studio](service-fabric-application-upgrade-tutorial.md)
 > 
 > 
@@ -30,7 +30,7 @@ Azure Service Fabric 藉由確保只升級已變更的服務，並且在整個�
 
 ![發佈 Service Fabric 應用程式][image2]
 
-現在，您可以按一下對話方塊中的 [發佈] **** 。 您可以使用 [Service Fabric 總管來檢視叢集與應用程式](service-fabric-visualizing-your-cluster.md)。 Visual Objects 應用程式具有一個 Web 服務，您可以通過[http://localhost:8081/visualobjects/](http://localhost:8081/visualobjects/)鍵入瀏覽器的網址列來訪問該服務。  您應該會看到 10 個浮動的視覺物件在畫面中四處移動。
+現在，您可以按一下對話方塊中的 [發佈] **** 。 您可以使用 [Service Fabric 總管來檢視叢集與應用程式](service-fabric-visualizing-your-cluster.md)。 Visual Objects 應用程式有一個 Web 服務，您可在瀏覽器的網址列中輸入 `http://localhost:8081/visualobjects/`，以移至該服務。  您應該會看到 10 個浮動的視覺物件在畫面中四處移動。
 
 **注意︰** 如果部署至 `Cloud.xml` 設定檔 (Azure Service Fabric)，則應該可在 **http://{ServiceFabricName}.{Region}.cloudapp.azure.com:8081/visualobjects/** 上取得應用程式。 請確定您確實已在負載平衡器 (在與 Service Fabric 執行個體相同的資源群組中尋找負載平衡器) 中設定 `8081/TCP`。
 
@@ -63,7 +63,7 @@ Azure Service Fabric 藉由確保只升級已變更的服務，並且在整個�
 您可能會想要嘗試變更版本，從版本 2.0.0 移到版本 3.0.0 來做為練習，或甚至是從版本 2.0.0 變回版本 1.0.0。 練習逾時和健康狀態原則，讓自己更熟練。 在部署至 Azure 叢集而不是本機叢集時，所使用的參數可能不同。 我們建議您保守地設定逾時。
 
 ## <a name="next-steps"></a>後續步驟
-[使用 PowerShell 升級應用程式](service-fabric-application-upgrade-tutorial-powershell.md)會引導您使用 PowerShell 進行應用程式升級。
+[使用 Powershell 升級您的應用程式](service-fabric-application-upgrade-tutorial-powershell.md)會逐步引導您使用 powershell 進行應用程式升級。
 
 使用 [升級參數](service-fabric-application-upgrade-parameters.md)來控制您應用程式的升級方式。
 

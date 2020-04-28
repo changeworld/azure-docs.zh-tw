@@ -4,14 +4,14 @@ description: 如何建立 Azure HPC Cache 執行個體
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 04/15/2020
+ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: efa9037b345cdfc5f165e9c5e0c1831ea97b52ed
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: 4ff31ca6a171beece1672802367f08768676efbc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106486"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195004"
 ---
 # <a name="create-an-azure-hpc-cache"></a>建立 Azure HPC Cache
 
@@ -29,7 +29,7 @@ ms.locfileid: "82106486"
 
 * 位置 - 選取其中一個[支援的區域](hpc-cache-overview.md#region-availability)。
 * 虛擬網路 - 您可以選取現有的虛擬網路，或建立一個新的虛擬網路。
-* 子網路 - 選擇或建立子網路，必須至少有 64 個 IP 位址 (/24) 且只會用於此 Azure HPC Cache 執行個體。
+* 子網-選擇或建立至少有64個 IP 位址（/24）的子網。 此子網必須僅用於此 Azure HPC 快取實例。
 
 ## <a name="set-cache-capacity"></a>設定快取容量
 <!-- referenced from GUI - update aka.ms link if you change this header text -->
@@ -45,9 +45,9 @@ ms.locfileid: "82106486"
 
 選擇其中一個可用的輸送量值和快取儲存體大小。
 
-請記住，實際的資料傳輸速率取決於工作負載、網路速度，以及儲存體目標的類型。 您選擇的值會設定整個快取系統的最大輸送量，但其中有部分會用於額外負荷工作。 例如，如果用戶端要求的檔案尚未存放在快取中，或檔案被標示為過時，則您的快取會使用其部分的輸送量從後端儲存體提取該檔案。
+請記住，實際的資料傳輸速率取決於工作負載、網路速度，以及儲存體目標的類型。 您選擇的值會設定整個快取系統的最大輸送量，但其中有部分會用於額外負荷工作。 例如，如果用戶端要求的檔案尚未儲存在快取中，或檔案被標示為過時，則您的快取會使用其部分輸送量從後端儲存體提取該檔案。
 
-Azure HPC Cache 會管理要快取和預先載入哪些檔案，以最大化快取命中率。 系統會持續評估快取內容，並將較不常存取的檔案移至長期儲存體。 選擇可輕鬆保存使用中檔案集的快取儲存體大小，且有額外空間可容納中繼資料和其他負荷。
+Azure HPC Cache 會管理要快取和預先載入哪些檔案，以最大化快取命中率。 快取內容會持續進行評估，而當檔案較不常存取時，檔案就會移至長期儲存。 選擇可輕鬆保存作用中檔案集的快取儲存體大小，以及中繼資料和其他額外負荷的額外空間。
 
 ![快取大小頁面的螢幕擷取畫面](media/hpc-cache-create-capacity.png)
 

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: cd16d898408bff46cee13b4df63cd3386d0581b1
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82137836"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188152"
 ---
 # <a name="configure-apache-spark-settings"></a>設定 Apache Spark 設定
 
@@ -98,7 +98,7 @@ Spark 執行程式所使用之資源的另一個相關資訊來源是 Spark 應�
 
 根據您的 Spark 叢集工作負載，您可能會判定非預設 Spark 設定可提供最佳化程度較高的 Spark 作業執行。  使用範例工作負載進行基準測試，以驗證任何非預設的叢集設定。  您可以考慮調整某些通用參數：
 
-|參數 |說明|
+|參數 |描述|
 |---|---|
 |--num-執行次數|設定執行次數。|
 |--執行程式-核心|設定每個執行程式的核心數目。 建議您使用中型執行程式，因為其他程序也會耗用部分的可用記憶體。|
@@ -110,7 +110,7 @@ Spark 執行程式所使用之資源的另一個相關資訊來源是 Spark 應�
 
 下列清單顯示主要 Spark 執行程式記憶體參數。
 
-|參數 |說明|
+|參數 |描述|
 |---|---|
 |spark.executor.memory|定義執行程式可用的記憶體總量。|
 |memoryFraction| (預設值 ~60%) 會定義可用來儲存永續性 RDD 的記憶體數量。|
