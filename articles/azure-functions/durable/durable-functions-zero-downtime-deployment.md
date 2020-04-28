@@ -1,72 +1,72 @@
 ---
-title: 持久功能的零停機時間部署
-description: 瞭解如何為零停機時間部署啟用持久函數業務流程。
+title: Durable Functions 的零停機部署
+description: 瞭解如何啟用您的 Durable Functions 協調流程，以進行零停機部署。
 author: tsushi
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74231263"
 ---
-# <a name="zero-downtime-deployment-for-durable-functions"></a>持久功能的零停機時間部署
+# <a name="zero-downtime-deployment-for-durable-functions"></a>Durable Functions 的零停機部署
 
-持久函數[的可靠執行模型](durable-functions-checkpointing-and-replay.md)要求業務流程具有確定性，這會給部署更新帶來額外的挑戰。 當部署包含對活動函數簽名或協調器邏輯的更改時，在運行中的業務流程實例將失敗。 這種情況對於長時間運行的業務流程（可能代表工時或工作天數）的情況尤其成為問題。
+Durable Functions 的[可靠執行模型](durable-functions-checkpointing-and-replay.md)需要協調流程具有決定性，這會在您部署更新時產生額外的挑戰。 當部署包含活動函式簽章或 orchestrator 邏輯的變更時，進行中的協調流程實例會失敗。 對於長時間執行的協調流程實例而言，這種情況特別有問題，這可能代表數小時或幾天的工作。
 
-為了防止發生這些故障，您有兩個選項： 
-- 延遲部署，直到所有正在運行的業務流程實例完成。
-- 確保任何正在運行的業務流程實例都使用函數的現有版本。 
+若要避免發生這些失敗，您有兩個選項： 
+- 延遲部署，直到所有執行中的協調流程實例都完成為止。
+- 請確定任何執行中的協調流程實例都使用您的函式的現有版本。 
 
 > [!NOTE]
-> 本文為面向持久函數 1.x 的功能應用提供了指南。 它尚未更新，以考慮持久函數 2.x 中引入的更改。 有關擴展版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)。
+> 本文提供以 Durable Functions 1.x 為目標之函數應用程式的指引。 尚未更新，以將 Durable Functions 2.x 中引進的變更納入考慮。 如需有關延伸模組版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)。
 
-下圖比較了實現持久函數零停機時間部署的三個主要策略： 
+下圖比較三個主要策略，以達到 Durable Functions 的零停機部署： 
 
 | 策略 |  使用時機 | 優點 | 缺點 |
 | -------- | ------------ | ---- | ---- |
-| [版本控制](#versioning) |  不會經常遇到[中斷更改的應用程式。](durable-functions-versioning.md) | 易於實現。 |  增加記憶體中的函數應用大小和函數數。<br/>代碼複製。 |
-| [帶插槽的狀態檢查](#status-check-with-slot) | 長時間運行的業務流程持續時間不超過 24 小時或經常重疊的業務流程的系統。 | 簡單的代碼庫。<br/>不需要額外的功能應用管理。 | 需要額外的存儲帳戶或任務中心管理。<br/>在未運行業務流程時需要時間段。 |
-| [應用程式路由](#application-routing) | 在業務流程未運行時沒有時間段的系統，例如具有持續超過 24 小時的業務流程或具有頻繁重疊業務流程的時間段。 | 使用具有重大更改的不斷運行業務流程來處理系統的新版本。 | 需要智慧應用程式路由器。<br/>可以最大程度地提供訂閱允許的功能應用數。 預設值為 100。 |
+| [版本控制](#versioning) |  不常遇到[重大變更](durable-functions-versioning.md)的應用程式。 | 容易執行。 |  增加記憶體中的函數應用程式大小和函式數目。<br/>程式碼重複。 |
+| [具有位置的狀態檢查](#status-check-with-slot) | 沒有長時間執行的協調流程持續超過24小時或經常重迭之協調流程的系統。 | 簡單的程式碼基底。<br/>不需要額外的函數應用程式管理。 | 需要額外的儲存體帳戶或任務管理中樞。<br/>當沒有任何協調流程正在執行時，需要一段時間。 |
+| [應用程式路由](#application-routing) | 在協調流程未執行時沒有時間週期的系統，例如，協調流程過去超過24小時或經常重迭協調流程的時間週期。 | 處理新版本的系統，持續執行具有重大變更的協調流程。 | 需要智慧型應用程式路由器。<br/>可能會使您的訂用帳戶所允許的函式應用程式數目達到上限。 預設值為 100。 |
 
 ## <a name="versioning"></a>版本控制
 
-定義函數的新版本，並將舊版本保留在函數應用中。 正如您在關係圖中看到的，函數的版本將成為其名稱的一部分。 由於保留以前版本的函數，因此在運行中業務流程實例可以繼續引用它們。 同時，對新業務流程實例的請求需要最新版本，業務流程用戶端函數可以從應用設置中引用該版本。
+定義函式的新版本，並將舊版本保留在函數應用程式中。 如您在圖表中所見，函式的版本會成為其名稱的一部分。 因為已保留舊版的函式，所以進行中的協調流程實例可以繼續參考它們。 同時，新的協調流程實例的要求會呼叫最新版本，您的協調流程用戶端函式可以從應用程式設定參考。
 
 ![版本控制策略](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
 
-在此策略中，必須複製每個函數，並且必須更新對其他函數的引用。 您可以通過編寫腳本來簡化它。 下面是一個帶有遷移腳本[的示例專案](https://github.com/TsuyoshiUshio/DurableVersioning)。
+在此策略中，每個函數都必須複製，而且必須更新其對其他函式的參考。 您可以撰寫腳本，讓它更容易。 以下是包含遷移腳本的[範例專案](https://github.com/TsuyoshiUshio/DurableVersioning)。
 
 >[!NOTE]
->此策略使用部署槽來避免部署期間的停機時間。 有關如何創建和使用新部署槽的更多詳細資訊，請參閱[Azure 函數部署槽](../functions-deployment-slots.md)。
+>此策略會使用部署位置來避免部署期間的停機時間。 如需如何建立和使用新部署位置的詳細資訊，請參閱[Azure Functions 部署](../functions-deployment-slots.md)位置。
 
-## <a name="status-check-with-slot"></a>帶插槽的狀態檢查
+## <a name="status-check-with-slot"></a>具有位置的狀態檢查
 
-當函數應用的當前版本在生產槽中運行時，請將函數應用的新版本部署到臨時槽。 在交換生產和暫存槽之前，請檢查是否有任何正在運行的業務流程實例。 完成所有業務流程實例後，可以執行交換。 當您沒有業務流程實例在飛行中時，此策略有效。 當業務流程不長時間運行且業務流程執行不經常重疊時，這是最佳方法。
+當您的函式應用程式目前版本在生產位置中執行時，請將新版本的函式應用程式部署到您的預備位置。 交換生產和預備位置之前，請檢查是否有任何正在執行的協調流程實例。 完成所有協調流程實例之後，您就可以進行交換。 當您在沒有協調流程實例的情況下有可預測的期間時，此策略會運作。 當您的協調流程不是長時間執行，且您的協調流程執行頻率不常重迭時，這是最佳的方法。
 
-### <a name="function-app-configuration"></a>功能應用配置
+### <a name="function-app-configuration"></a>函數應用程式設定
 
-使用以下過程設置此方案。
+請使用下列程式來設定此案例。
 
-1. [將部署槽添加到](../functions-deployment-slots.md#add-a-slot)函數應用以進行暫存和生產。
+1. [將部署位置新增](../functions-deployment-slots.md#add-a-slot)至您的函式應用程式以進行臨時和生產環境。
 
-1. 對於每個插槽，將[AzureWebJobs 存儲應用程式設定](../functions-app-settings.md#azurewebjobsstorage)設置為共用存儲帳戶的連接字串。 此存儲帳戶連接字串由 Azure 函數運行時使用。 此帳戶由 Azure 函數運行時使用，並管理函數的金鑰。
+1. 針對每個位置，將[AzureWebJobsStorage 應用程式](../functions-app-settings.md#azurewebjobsstorage)設定設為共用儲存體帳戶的連接字串。 Azure Functions 執行時間會使用此儲存體帳戶連接字串。 此帳戶是由 Azure Functions 執行時間使用，並會管理函式的金鑰。
 
-1. 對於每個插槽，請創建新的應用設置，例如。 `DurableManagementStorage` 將其值設置為不同存儲帳戶的連接字串。 這些存儲帳戶由持久函數擴展用於[可靠執行](durable-functions-checkpointing-and-replay.md)。 為每個插槽使用單獨的存儲帳戶。 不要將此設置標記為部署槽設置。
+1. 針對每個位置，建立新的應用程式設定，例如`DurableManagementStorage`。 將其值設定為不同儲存體帳戶的連接字串。 Durable Functions 延伸模組會使用這些儲存體帳戶來進行[可靠的執行](durable-functions-checkpointing-and-replay.md)。 針對每個位置使用個別的儲存體帳戶。 請勿將此設定標記為部署位置設定。
 
-1. 在函數應用的[host.json 檔的持久任務部分](durable-functions-bindings.md#hostjson-settings)中，指定`azureStorageConnectionStringName`為在步驟 3 中創建的應用設置的名稱。
+1. 在您函式應用程式的[host. json 檔案的 durableTask 區段](durable-functions-bindings.md#hostjson-settings)中，指定`azureStorageConnectionStringName`做為您在步驟3中建立之應用程式設定的名稱。
 
-下圖顯示了部署槽和存儲帳戶的描述的配置。 在此潛在的預部署方案中，函數應用的版本 2 在生產槽中運行，而版本 1 仍保留在暫存槽中。
+下圖顯示部署位置和儲存體帳戶的描述設定。 在這種可能的預先部署案例中，函式應用程式的第2版會在生產位置中執行，而第1版會保留在預備位置。
 
-![部署插槽和存儲帳戶](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
+![部署位置和儲存體帳戶](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>host.json 示例
+### <a name="hostjson-examples"></a>host. json 範例
 
-以下 JSON 片段是*host.json*檔中連接字串設置的示例。
+下列 JSON 片段是*主機. JSON*檔案中連接字串設定的範例。
 
-#### <a name="functions-20"></a>功能 2.0
+#### <a name="functions-20"></a>函數2。0
 
 ```json
 {
@@ -89,9 +89,9 @@ ms.locfileid: "74231263"
 }
 ```
 
-### <a name="cicd-pipeline-configuration"></a>CI/CD 管道配置
+### <a name="cicd-pipeline-configuration"></a>CI/CD 管線設定
 
-將 CI/CD 管道配置為僅在函數應用沒有掛起或正在運行的業務流程實例時進行部署。 使用 Azure 管道時，可以創建檢查這些條件的函數，如以下示例所示：
+只有當您的函式應用程式沒有擱置或執行中的協調流程實例時，才能設定 CI/CD 管線進行部署。 當您使用 Azure Pipelines 時，您可以建立函數來檢查這些條件，如下列範例所示：
 
 ```csharp
 [FunctionName("StatusCheck")]
@@ -110,68 +110,68 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-接下來，將暫存門配置為等待，直到沒有業務流程運行。 有關詳細資訊，請參閱[使用門發佈部署控制](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
+接下來，設定暫存閘道等待，直到沒有任何協調流程正在執行為止。 如需詳細資訊，請參閱[使用閘道發行部署控制](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
 
 ![部署閘道](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 
-Azure 管道檢查函數應用在部署開始之前運行業務流程實例。
+Azure Pipelines 檢查函式應用程式，以在部署開始之前執行協調流程實例。
 
-![部署門（正在運行）](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
+![部署閘道（執行中）](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
 
-現在，應將函數應用的新版本部署到暫存槽。
+現在，您的函式應用程式的新版本應部署至預備位置。
 
-![暫存槽](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
+![預備位置](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
 
-最後，交換插槽。 
+最後，交換位置。 
 
-未標記為部署槽設置的應用程式設定也會交換，因此版本 2 應用保留對存儲帳戶 A 的引用。由於在存儲帳戶中跟蹤業務流程狀態，因此在版本 2 應用上運行的任何業務流程將繼續在新插槽中運行，而不會中斷。
+未標示為部署位置設定的應用程式設定也會一併交換，因此第2版應用程式會保留其對儲存體帳戶 A 的參考。由於協調流程狀態會在儲存體帳戶中追蹤，因此在第2版應用程式上執行的任何協調流程都會繼續在新的位置中執行，而不會中斷。
 
 ![部署位置](media/durable-functions-zero-downtime-deployment/deployment-slot-3.png)
 
-要對兩個插槽使用相同的存儲帳戶，可以更改任務中心的名稱。 在這種情況下，您需要管理插槽的狀態和應用的 HubName 設置。 要瞭解更多資訊，請參閱[持久函數中的任務中心](durable-functions-task-hubs.md)。
+若要針對這兩個位置使用相同的儲存體帳戶，您可以變更您的工作中樞名稱。 在此情況下，您必須管理位置的狀態和應用程式的 HubName 設定。 若要深入瞭解，請參閱[Durable Functions 中的工作中樞](durable-functions-task-hubs.md)。
 
 ## <a name="application-routing"></a>應用程式路由
 
-這種策略是最複雜的。 但是，它可用於在運行業務流程之間沒有時間的函數應用。
+此策略是最複雜的。 不過，它可以用於沒有執行協調流程之間時間的函數應用程式。
 
-對於此策略，您必須在持久函數前面創建*應用程式路由器*。 此路由器可通過持久功能實現。 路由器負責：
+針對此策略，您必須在 Durable Functions 前面建立*應用程式路由器*。 此路由器可以使用 Durable Functions 來執行。 路由器必須負責：
 
-* 部署功能應用。
-* 管理持久函數的版本。 
-* 將業務流程請求路由到功能應用。
+* 部署函數應用程式。
+* 管理 Durable Functions 的版本。 
+* 將協調流程要求路由傳送至函數應用程式。
 
-第一次收到業務流程請求時，路由器執行以下任務：
+第一次收到協調流程要求時，路由器會執行下列工作：
 
-1. 在 Azure 中創建新的函數應用。
-2. 將函數應用的代碼部署到 Azure 中的新功能應用。
-3. 將業務流程請求轉發到新應用。
+1. 在 Azure 中建立新的函數應用程式。
+2. 將函數應用程式的程式碼部署至 Azure 中的新函式應用程式。
+3. 將協調流程要求轉寄到新的應用程式。
 
-路由器管理將應用代碼的哪個版本部署到 Azure 中的哪個函數應用的狀態。
+路由器會管理您的應用程式代碼版本部署至 Azure 中哪個函式應用程式的狀態。
 
-![應用程式路由（首次）](media/durable-functions-zero-downtime-deployment/application-routing.png)
+![應用程式路由（第一次）](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-路由器根據隨要求傳送的版本將部署和業務流程請求定向到相應的函數應用。 它忽略修補程式版本。
+路由器會根據要求所傳送的版本，將部署和協調流程要求導向至適當的函式應用程式。 它會忽略修補程式版本。
 
-部署應用的新版本時，無需進行重大更改，則可以增加修補程式版本。 路由器部署到現有功能應用，併發送對代碼的舊版本和新版本的請求，這些代碼將路由到相同的函數應用。
+當您部署應用程式的新版本而未進行重大變更時，您可以遞增修補程式版本。 路由器會部署至您現有的函式應用程式，並傳送舊版和新版本之程式碼的要求，而這會路由至相同的函式應用程式。
 
-![應用程式路由（無中斷更改）](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
+![應用程式路由（不中斷變更）](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
 
-部署具有重大更改的應用的新版本時，可以增加主要版本或次要版本。 然後，應用程式路由器在 Azure 中創建新的函數應用，部署到它，並將應用新版本的請求路由到它。 在下圖中，在應用的 1.0.1 版本上運行業務流程，但 1.1.0 版本的請求將路由到新功能應用。
+當您使用重大變更來部署新版本的應用程式時，您可以遞增主要或次要版本。 然後，應用程式路由器會在 Azure 中建立新的函式應用程式、將其部署至其中，並將應用程式新版本的要求路由傳送至其中。 在下圖中，在應用程式的1.0.1 版上執行協調流程會繼續執行，但1.1.0 版本的要求會路由傳送至新的函式應用程式。
 
-![應用程式路由（中斷更改）](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
+![應用程式路由（重大變更）](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
 
-路由器監視 1.0.1 版本上的業務流程狀態，並在完成所有業務流程後刪除應用。 
+路由器會監視1.0.1 版本上的協調流程狀態，並在所有協調流程完成之後移除應用程式。 
 
-### <a name="tracking-store-settings"></a>跟蹤存儲設置
+### <a name="tracking-store-settings"></a>追蹤存放區設定
 
-每個函數應用都應使用單獨的計畫佇列，可能位於單獨的存儲帳戶中。 如果要查詢應用程式所有版本中的所有業務流程實例，則可以跨函數應用共用實例和歷史記錄表。 您可以通過在[host.json](durable-functions-bindings.md#host-json) `trackingStoreConnectionStringName`設置`trackingStoreNamePrefix`檔中配置 和 設置來共用表，以便它們都使用相同的值。
+每個函數應用程式都應該使用個別的排程佇列，可能在不同的儲存體帳戶中。 如果您想要跨所有應用程式版本查詢所有協調流程實例，您可以在函式應用程式中共用實例和歷程記錄資料表。 您可以在[host. json](durable-functions-bindings.md#host-json)配置`trackingStoreConnectionStringName`檔`trackingStoreNamePrefix`案中設定和設定，讓它們全都使用相同的值，藉以共用資料表。
 
-有關詳細資訊，請參閱在[Azure 中管理持久函數中的實例](durable-functions-instance-management.md)。
+如需詳細資訊，請參閱[在 Azure 中的 Durable Functions 中管理實例](durable-functions-instance-management.md)。
 
-![跟蹤存儲設置](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
+![追蹤存放區設定](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [版本化持久功能](durable-functions-versioning.md)
+> [版本控制 Durable Functions](durable-functions-versioning.md)
 

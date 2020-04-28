@@ -1,19 +1,19 @@
 ---
-title: 優化查詢統計資訊集合 - Azure 資料庫，用於 PostgreSQL - 單個伺服器
-description: 本文介紹如何優化 Azure 資料庫上的查詢統計資訊集合，用於 PostgreSQL - 單伺服器
+title: 優化查詢統計資料集合-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文說明如何在適用於 PostgreSQL 的 Azure 資料庫單一伺服器上優化查詢統計資料集合
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: f467f01118470eb51f7decf3bd6457917c566723
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74770164"
 ---
-# <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>優化後資料庫 - 單伺服器 Azure 資料庫上的查詢統計資訊集合
+# <a name="optimize-query-statistics-collection-on-an-azure-database-for-postgresql---single-server"></a>優化適用於 PostgreSQL 的 Azure 資料庫單一伺服器上的查詢統計資料集合
 本文說明如何在「適用於 PostgreSQL 的 Azure 資料庫」伺服器中最佳化查詢統計資料集合。
 
 ## <a name="use-pg_stats_statements"></a>使用 pg_stats_statements
@@ -37,6 +37,6 @@ ms.locfileid: "74770164"
 ## <a name="next-steps"></a>後續步驟
 考慮在 [Azure 入口網站](howto-configure-server-parameters-using-portal.md)中或使用 [Azure CLI](howto-configure-server-parameters-using-cli.md) 來設定 `pg_stat_statements.track = NONE`。
 
-如需詳細資訊，請參閱 
-- [查詢存儲使用方案](concepts-query-store-scenarios.md) 
-- [查詢存儲最佳實踐](concepts-query-store-best-practices.md) 
+如需詳細資訊，請參閱： 
+- [查詢存放區使用案例](concepts-query-store-scenarios.md) 
+- [查詢存放區最佳做法](concepts-query-store-best-practices.md) 

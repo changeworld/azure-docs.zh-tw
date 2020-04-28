@@ -1,5 +1,5 @@
 ---
-title: 單資料庫/池資料庫檔案空間管理
+title: 單一/集區資料庫檔案空間管理
 description: 此頁面描述如何管理 Azure SQL Database 中的單一和集區資料庫的檔案空間，並提供如何判斷您是否需要壓縮單一或集區資料庫，以及如何執行資料庫壓縮作業的程式碼範例。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 007bbffbd7c4fcad339f88eb78991eb39fb829e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74420978"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>在 Azure SQL Database 中管理單一和集區資料庫的檔案空間
@@ -25,7 +25,7 @@ ms.locfileid: "74420978"
 > [!NOTE]
 > 本文不適用於 Azure SQL Database 中的受控執行個體部署選項。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 使用單一和集區資料庫 Azure SQL Database 時，某些工作負載模式的資料庫基礎資料檔案的配置可能會大於已使用資料頁數。 當使用的空間增加，隨後卻將資料刪除時，就會發生這種狀況。 原因是因為在資料刪除後，並不會自動回收已配置的檔案空間。
 
@@ -49,7 +49,7 @@ ms.locfileid: "74420978"
 
 ### <a name="shrinking-data-files"></a>壓縮資料檔案
 
-由於可能會對資料庫效能造成影響，因此 SQL Database 服務不會自動壓縮資料檔案，以回收未使用的配置空間。  但是，客戶可以通過自助服務在選擇的時間通過自助服務收縮資料檔案，按照[回收未使用的分配空間](#reclaim-unused-allocated-space)中描述的步驟。
+由於可能會對資料庫效能造成影響，因此 SQL Database 服務不會自動壓縮資料檔案，以回收未使用的配置空間。  不過，客戶可以依照[回收未使用](#reclaim-unused-allocated-space)的配置空間中所述的步驟，在其選擇時，透過自助式來壓縮資料檔案。
 
 > [!NOTE]
 > 不同於資料檔案，SQL Database 服務會自動壓縮記錄檔，因為該作業並不會影響資料庫效能。
@@ -58,7 +58,7 @@ ms.locfileid: "74420978"
 
 要管理資料庫的檔案空間，務必要了解下列儲存體空間數量。
 
-|資料庫數量|定義|註解|
+|資料庫數量|定義|評價|
 |---|---|---|
 |**使用的資料空間**|以 8 KB 分頁用來儲存資料庫資料的空間量。|一般而言，使用的空間會在插入 (刪除) 時增加 (減少)。 在某些情況下，根據作業與任何分割中涉及的資料量和模式而定，使用的空間並不會隨插入或刪除而變更。 例如，從每個資料頁刪除一個資料列，不見得會減少使用的空間。|
 |**已配置的資料空間**|可用以儲存資料庫資料的格式化檔案空間量。|配置的空間量會自動成長，但絕不會在刪除後減少。 此行為可確保未來能更快地插入，因為不需要重新格式化空間。|
@@ -114,7 +114,7 @@ SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
 
 要管理彈性集區的檔案空間，務必要了解下列儲存體空間數量。
 
-|彈性集區數量|定義|註解|
+|彈性集區數量|定義|評價|
 |---|---|---|
 |**使用的資料空間**|彈性集區中的所有資料庫所使用的資料空間總和。||
 |**已配置的資料空間**|彈性集區中的所有資料庫所配置的資料空間總和。||
@@ -140,12 +140,12 @@ ORDER BY end_time DESC
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>配置的彈性集區資料空間與已配置但未使用的空間
 
-修改以下示例以返回一個表，其中列出了彈性池中每個資料庫分配的空間和未使用的分配空間。 此資料表會根據資料庫已配置但未使用的空間量，從最大至最小來排序資料庫。  查詢結果以 MB 為單位。  
+修改下列範例，以傳回一個資料表，其中列出彈性集區中每個資料庫的已配置空間和未使用的配置空間。 此資料表會根據資料庫已配置但未使用的空間量，從最大至最小來排序資料庫。  查詢結果以 MB 為單位。  
 
 以查詢判斷為集區中的每個資料庫配置的空間所產生的結果，可在加總後用來判斷為彈性集區配置的總空間。 配置的彈性集區空間不應超過彈性集區大小上限。  
 
 > [!IMPORTANT]
-> PowerShell Azure 資源管理器 （RM） 模組仍受 Azure SQL 資料庫支援，但所有後續開發都針對 Az.Sql 模組。 AzureRM 模組將繼續接收錯誤修復，至少直到 2020 年 12 月。  Az 模組和 AzureRm 模組中命令的參數基本相同。 有關其相容性的更多資訊，請參閱[介紹新的 Azure PowerShell Az 模組](/powershell/azure/new-azureps-module-az)。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager （RM）模組，但所有未來的開發都是針對 Az .Sql 模組。 AzureRM 模組會繼續收到錯誤修正，直到2020年12月為止。  Az 模組和 AzureRm 模組中命令的引數本質上完全相同。 如需其相容性的詳細資訊，請參閱[新的 Azure PowerShell Az 模組簡介](/powershell/azure/new-azureps-module-az)。
 
 PowerShell 指令碼需要 SQL Server PowerShell 模組 – 請參閱[下載 PowerShell 模組](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module)以便安裝。
 

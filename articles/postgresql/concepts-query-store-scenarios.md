@@ -1,23 +1,23 @@
 ---
-title: 查詢存儲方案 - Azure 資料庫，用於 PostgreSQL - 單個伺服器
-description: 本文介紹了 Azure 資料庫中的"PostgreSQL - 單伺服器"查詢存儲的一些方案。
+title: 查詢存放區案例-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文說明適用於 PostgreSQL 的 Azure 資料庫單一伺服器中查詢存放區的部分案例。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 31e3f82b6ea1b1fc15c0832dc03edce2a59f1e1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74768345"
 ---
 # <a name="usage-scenarios-for-query-store"></a>查詢存放區的使用案例
 
-**適用于：** 用於 PostgreSQL 的 Azure 資料庫 - 單伺服器版本 9.6、10、11
+**適用物件：** 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器版本9.6、10、11
 
-您可以在各種不同的案例中使用查詢存放區，在這些案例中追蹤和維護可預測的工作負載效能至關重要。 請參考下列範例： 
+您可以在各種不同的案例中使用查詢存放區，在這些案例中追蹤和維護可預測的工作負載效能至關重要。 請考慮以下範例： 
 - 識別並調整前幾個成本昂貴的查詢 
 - A/B 測試 
 - 在升級期間保持效能穩定 

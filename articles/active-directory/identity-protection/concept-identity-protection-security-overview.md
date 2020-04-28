@@ -1,6 +1,6 @@
 ---
-title: Azure 活動目錄標識保護安全概述
-description: 瞭解"安全概述"如何讓您深入瞭解組織的安全狀況。
+title: Azure Active Directory Identity Protection 安全性總覽
+description: 瞭解安全性總覽如何讓您深入瞭解組織的安全性狀態。
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,15 +12,15 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9550684ad154f28a02ee347fd0a79c1ec286beb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74382190"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - 安全性概觀
 
-Azure 門戶中[的安全概述](https://aka.ms/IdentityProtectionRefresh)讓您深入瞭解組織的安全狀況。 它可協助您找出潛在的攻擊並了解原則的效果。
+Azure 入口網站中的[安全性總覽](https://aka.ms/IdentityProtectionRefresh)可讓您深入瞭解組織的安全性狀態。 它可協助您找出潛在的攻擊並了解原則的效果。
 
 「安全性概觀」大致分成兩個部分：
 
@@ -37,7 +37,7 @@ Azure 門戶中[的安全概述](https://aka.ms/IdentityProtectionRefresh)讓您
 
 ### <a name="new-risky-sign-ins-detected"></a>偵測到新的具風險登入
 
-此圖表顯示在所選的時段內偵測到具風險的登入數目。 您可以依登入風險類型 (即時或彙總) 和登入風險層級 (低、中、高) 來篩選此圖表的的檢視。 未受保護的登入是指未受到 MFA 挑戰的成功即時風險登入。 （注意：由於離線檢測而存在風險的登錄無法通過登錄風險策略即時保護）。 將游標暫留在 UTC 日期遞增數字上方，可檢視當天偵測到有風險的登入數目。 按一下此圖表，您就會進入 [具風險的登入] 報告中。
+此圖表顯示在所選的時段內偵測到具風險的登入數目。 您可以依登入風險類型 (即時或彙總) 和登入風險層級 (低、中、高) 來篩選此圖表的的檢視。 未受保護的登入是指未受到 MFA 挑戰的成功即時風險登入。 （注意：因離線偵測而有風險的登入，無法透過登入風險原則即時保護）。 將游標暫留在 UTC 日期遞增數字上方，可檢視當天偵測到有風險的登入數目。 按一下此圖表，您就會進入 [具風險的登入] 報告中。
 
 ## <a name="tiles"></a>圖格
  
@@ -52,7 +52,7 @@ Azure 門戶中[的安全概述](https://aka.ms/IdentityProtectionRefresh)讓您
 
 ### <a name="unprotected-risky-sign-ins"></a>未受保護的具風險登入
 
-"未受保護的風險登錄"磁貼顯示上周成功的即時風險登錄計數，這些登錄未被條件訪問策略、身份保護風險策略或每個使用者 MFA 阻止或 MFA 提出質疑。 這些是可能遭到入侵、但成功且未受到 MFA 挑戰的登入。 若要在未來保護這類登入，請套用登入風險原則。 按一下 [未受保護的具風險登入] 圖格將會重新導向至 [登入風險原則組態] 刀鋒視窗，您可以在此處設定登入風險原則，以要求具有指定風險層級的登入必須進行 MFA。
+[未受保護的具風險登入] 圖格會顯示過去一周的成功、即時風險登入計數，這些登入未遭到條件式存取原則、身分識別保護風險原則或每個使用者的 MFA 所質疑。 這些是可能遭到入侵、但成功且未受到 MFA 挑戰的登入。 若要在未來保護這類登入，請套用登入風險原則。 按一下 [未受保護的具風險登入] 圖格將會重新導向至 [登入風險原則組態] 刀鋒視窗，您可以在此處設定登入風險原則，以要求具有指定風險層級的登入必須進行 MFA。
 
 ### <a name="legacy-authentication"></a>舊版驗證
 
@@ -60,7 +60,7 @@ Azure 門戶中[的安全概述](https://aka.ms/IdentityProtectionRefresh)讓您
 
 ### <a name="identity-secure-score"></a>身分識別安全分數
 
-身分識別安全分數會測量安全性狀態，並與產業模式比較。 如果您按一下"身份安全分數（預覽）"磁貼，它將重定向到"身份安全分數"邊欄選項卡，您可以在其中瞭解有關改善安全狀態的更多資訊。
+身分識別安全分數會測量安全性狀態，並與產業模式比較。 如果您按一下 [身分識別安全分數（預覽）] 磚，它會重新導向至 [身分識別安全分數] 分頁，您可以在其中深入瞭解如何改善您的安全性狀態。
 
 ## <a name="next-steps"></a>後續步驟
 

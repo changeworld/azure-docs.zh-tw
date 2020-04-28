@@ -13,30 +13,30 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74703142"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>從 Data Factory 叫用 MapReduce 程式
-> [!div class="op_single_selector" title1="轉型活動"]
-> * [蜂巢活動](data-factory-hive-activity.md) 
+> [!div class="op_single_selector" title1="轉換活動"]
+> * [Hive 活動](data-factory-hive-activity.md) 
 > * [Pig 活動](data-factory-pig-activity.md)
-> * [映射減少活動](data-factory-map-reduce.md)
-> * [Hadoop 流活動](data-factory-hadoop-streaming-activity.md)
+> * [MapReduce 活動](data-factory-map-reduce.md)
+> * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [機器學習批次處理執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
-> * [資料湖分析 U-SQL 活動](data-factory-usql-activity.md)
+> * [Data Lake Analytics 的 U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
 
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[在 Data Factory 中使用 MapReduce 活動來轉換資料](../transform-data-using-hadoop-map-reduce.md)。
 
 
-HDInsight MapReduce 資料工廠[管道](data-factory-create-pipelines.md)中的活動將[自行](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或按需基於 Windows/Linux[的](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)HDInsight 群集執行 MapReduce 程式。 本文是根據 [資料轉換活動](data-factory-data-transformation-activities.md) 一文，它呈現資料轉換和支援的轉換活動的一般概觀。
+Data Factory[管線](data-factory-create-pipelines.md)中的 HDInsight MapReduce 活動會在[您自己](data-factory-compute-linked-services.md#azure-hdinsight-linked-service)或[隨選](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)的 Windows/Linux 型 HDInsight 叢集上執行 MapReduce 程式。 本文是根據 [資料轉換活動](data-factory-data-transformation-activities.md) 一文，它呈現資料轉換和支援的轉換活動的一般概觀。
 
 > [!NOTE] 
 > 如果您是 Azure Data Factory 的新手，請在閱讀本文章之前閱讀 [Azure Data Factory 簡介](data-factory-introduction.md)，以及研習教學課程：[建置您的第一個資料管線](data-factory-build-your-first-pipeline.md)。  
@@ -135,7 +135,7 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 ```
 
 #### <a name="azure-hdinsight-linked-service"></a>Azure HDInsight 連結服務
-接著，建立連結的服務，將 Azure HDInsight 叢集連結到 Azure Data Factory。 如果複製/粘貼以下代碼，請將**HDInsight 群集名稱**替換為 HDInsight 群集的名稱，並更改使用者名和密碼值。   
+接著，建立連結的服務，將 Azure HDInsight 叢集連結到 Azure Data Factory。 如果您複製/貼上下列程式碼，請將**hdinsight 叢集名稱**取代為您的 hdinsight 叢集名稱，並變更使用者名稱和密碼值。   
 
 ```JSON
 {
@@ -246,9 +246,9 @@ Azure Data Factory 中的「管線」會使用連結的計算服務，來處理�
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>另請參閱
-* [蜂巢活動](data-factory-hive-activity.md)
+* [Hive 活動](data-factory-hive-activity.md)
 * [Pig 活動](data-factory-pig-activity.md)
-* [Hadoop 流活動](data-factory-hadoop-streaming-activity.md)
+* [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 * [叫用 Spark 程式](data-factory-spark.md)
 * [叫用 R 指令碼](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

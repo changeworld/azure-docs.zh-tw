@@ -1,6 +1,6 @@
 ---
 title: 使用儲存體分析記錄排除延遲問題
-description: 使用 Azure 存儲分析日誌識別和解決延遲問題，並優化用戶端應用程式。
+description: 使用 Azure 儲存體分析記錄來識別和疑難排解延遲問題，並將用戶端應用程式優化。
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
@@ -11,25 +11,25 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: 2197a149235c0dca98a24a57549538b2a4cbb1c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74196512"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>使用儲存體分析記錄排除延遲問題
 
-診斷和故障排除是使用 Azure 存儲構建和支援用戶端應用程式的關鍵技能。
+診斷和疑難排解是使用 Azure 儲存體建立和支援用戶端應用程式的重要技能。
 
-由於 Azure 應用程式的分散式特性，診斷和排除錯誤和性能問題可能比傳統環境中更複雜。
+由於 Azure 應用程式的分散式本質，診斷和疑難排解錯誤和效能問題可能會比在傳統環境中更複雜。
 
-以下步驟演示如何使用 Azure 存儲分析日誌識別和解決延遲問題，並優化用戶端應用程式。
+下列步驟示範如何使用 Azure 儲存體分析記錄來識別和疑難排解延遲問題，並將用戶端應用程式優化。
 
 ## <a name="recommended-steps"></a>建議的步驟
 
-1. 下載[存儲分析日誌](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data)。
+1. 下載[儲存體分析記錄](https://docs.microsoft.com/azure/storage/common/storage-analytics-logging#download-storage-logging-log-data)。
 
-2. 使用以下 PowerShell 腳本將原始格式日誌轉換為表格格式：
+2. 使用下列 PowerShell 腳本，將原始格式記錄轉換成表格式格式：
 
    ```Powershell
    $Columns = 
@@ -70,99 +70,99 @@ ms.locfileid: "74196512"
    $logs | Out-GridView -Title "Storage Analytic Log Parser"
    ```
 
-3. 腳本將啟動一個 GUI 視窗，您可以在其中按列篩選資訊，如下所示。
+3. 腳本會啟動 GUI 視窗，您可以在其中依資料行篩選資訊，如下所示。
 
-   ![存儲分析日誌解析器視窗](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
+   ![儲存體分析記錄剖析器視窗](media/troubleshoot-latency-storage-analytics-logs/storage-analytic-log-parser-window.png)
  
-4. 根據"操作類型"縮小日誌條目範圍，並查找在問題時間範圍內創建的日誌條目。
+4. 根據「操作類型」縮小記錄專案的範圍，並尋找在問題的時間範圍內建立的記錄專案。
 
-   ![操作類型日誌條目](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
+   ![操作類型記錄專案](media/troubleshoot-latency-storage-analytics-logs/operation-type.png)
 
-5. 在出現問題期間，以下值很重要：
+5. 發生問題時，下列值很重要：
 
-   * 操作類型 = 獲取Blob
-   * 請求狀態 = SAS網路錯誤
-   * 端到端延遲-內向延遲 = 8453
-   * 伺服器延遲-在內 = 391
+   * Operation 類型 = GetBlob
+   * 要求-狀態 = SASNetworkError
+   * 端對端-延遲-毫秒 = 8453
+   * 伺服器-延遲-毫秒 = 391
 
-   使用以下公式計算端到端延遲：
+   端對端延遲是使用下列方程式來計算：
 
-   * 端到端延遲 + 伺服器延遲 + 用戶端延遲
+   * 端對端延遲 = 伺服器延遲 + 用戶端延遲
 
-   使用日誌條目計算用戶端延遲：
+   使用記錄專案來計算用戶端延遲：
 
-   * 用戶端延遲 = 端到端延遲 + 伺服器延遲
+   * 用戶端延遲 = 端對端延遲–伺服器-延遲
 
           * Example: 8453 – 391 = 8062ms
 
-   下表提供有關高延遲操作類型和請求狀態結果的資訊：
+   下表提供高延遲 OperationType 和 RequestStatus 結果的相關資訊：
 
-   |   |請求狀態*<br>Success|請求狀態*<br>（SAS）網路錯誤|建議|
+   |   |RequestStatus =<br>成功|RequestStatus =<br>SASNetworkError|建議|
    |---|---|---|---|
-   |GetBlob|是|否|[**獲取Blob操作：** 請求狀態 = 成功](#getblob-operation-requeststatus--success)|
-   |GetBlob|否|是|[**獲取Blob操作：** 請求狀態 = （SAS） 網路錯誤](#getblob-operation-requeststatus--sasnetworkerror)|
-   |PutBlob|是|否|[**放置操作：** 請求狀態 = 成功](#put-operation-requeststatus--success)|
-   |PutBlob|否|是|[**放置操作：** 請求狀態 = （SAS） 網路錯誤](#put-operation-requeststatus--sasnetworkerror)|
+   |GetBlob|是|否|[**GetBlob 作業：** RequestStatus = 成功](#getblob-operation-requeststatus--success)|
+   |GetBlob|否|是|[**GetBlob 作業：** RequestStatus = （SAS） NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
+   |PutBlob|是|否|[**Put 作業：** RequestStatus = 成功](#put-operation-requeststatus--success)|
+   |PutBlob|否|是|[**Put 作業：** RequestStatus = （SAS） NetworkError](#put-operation-requeststatus--sasnetworkerror)|
 
 ## <a name="status-results"></a>狀態結果
 
-### <a name="getblob-operation-requeststatus--success"></a>獲取 Blob 操作：請求狀態 = 成功
+### <a name="getblob-operation-requeststatus--success"></a>GetBlob 作業： RequestStatus = 成功
 
-檢查"建議步驟"部分步驟 5 中提到的以下值：
+如「建議的步驟」一節的步驟5所述，檢查下列值：
 
-* 端到端延遲
-* 伺服器延遲
-* 用戶端延遲
+* 端對端延遲
+* 伺服器-延遲
+* 用戶端-延遲
 
-在具有**請求狀態 = 成功** **GetBlob 操作**中，如果在**用戶端延遲**中花費**最大時間**，則表示 Azure 存儲花費大量時間向用戶端寫入資料。 此延遲表示用戶端問題。
-
-**建議：**
-
-* 調查用戶端中的代碼。
-* 使用 Wireshark、Microsoft 消息分析器或 Tcping 調查來自用戶端的網路連接問題。 
-
-### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>獲取Blob操作：請求狀態 = （SAS）網路錯誤
-
-檢查"建議步驟"部分步驟 5 中提到的以下值：
-
-* 端到端延遲
-* 伺服器延遲
-* 用戶端延遲
-
-在具有請求狀態的**GetBlob 操作****中 = （SAS） 網路錯誤**中，如果在**用戶端延遲**中花費**最大時間**，最常見的問題是用戶端在存儲服務中超時到期之前斷開連接。
+在**RequestStatus = Success**的**GetBlob**作業中，如果在**用戶端延遲**中花費**最大時間**，這表示 Azure 儲存體花大量時間將資料寫入至用戶端。 此延遲表示用戶端問題。
 
 **建議：**
 
-* 請調查用戶端裡的程式碼，了解用戶端何時及為何與儲存體服務中斷連線。
-* 使用 Wireshark、Microsoft 消息分析器或 Tcping 調查來自用戶端的網路連接問題。 
+* 調查用戶端中的程式碼。
+* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 調查用戶端的網路連線問題。 
 
-### <a name="put-operation-requeststatus--success"></a>放置操作：請求狀態 = 成功
+### <a name="getblob-operation-requeststatus--sasnetworkerror"></a>GetBlob 作業： RequestStatus = （SAS） NetworkError
 
-檢查"建議步驟"部分步驟 5 中提到的以下值：
+如「建議的步驟」一節的步驟5所述，檢查下列值：
 
-* 端到端延遲
-* 伺服器延遲
-* 用戶端延遲
+* 端對端延遲
+* 伺服器-延遲
+* 用戶端-延遲
 
-在"具有**請求狀態的****放置操作**= 成功"中，如果在**用戶端延遲**中花費**最大時間**，則表示用戶端花費更多時間將資料發送到 Azure 存儲。 此延遲表示用戶端問題。
-
-**建議：**
-
-* 調查用戶端中的代碼。
-* 使用 Wireshark、Microsoft 消息分析器或 Tcping 調查來自用戶端的網路連接問題。 
-
-### <a name="put-operation-requeststatus--sasnetworkerror"></a>放置操作：請求狀態 = （SAS）網路錯誤
-
-檢查"建議步驟"部分步驟 5 中提到的以下值：
-
-* 端到端延遲
-* 伺服器延遲
-* 用戶端延遲
-
-在具有**請求狀態 （ SAS） 網路錯誤的** **PutBlob 操作**中，如果在**用戶端延遲**中花費**最大時間**，最常見的問題是用戶端在存儲服務中超時到期之前斷開連接。
+在**RequestStatus = （SAS） NetworkError**的**GetBlob**作業中，如果在**用戶端延遲**中花費**最大時間**，最常見的問題是用戶端在儲存體服務中的超時時間到期之前就中斷連線。
 
 **建議：**
 
 * 請調查用戶端裡的程式碼，了解用戶端何時及為何與儲存體服務中斷連線。
-* 使用 Wireshark、Microsoft 消息分析器或 Tcping 調查來自用戶端的網路連接問題。
+* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 調查用戶端的網路連線問題。 
+
+### <a name="put-operation-requeststatus--success"></a>Put 作業： RequestStatus = Success
+
+如「建議的步驟」一節的步驟5所述，檢查下列值：
+
+* 端對端延遲
+* 伺服器-延遲
+* 用戶端-延遲
+
+在**RequestStatus = Success**的**Put**作業中，如果在**用戶端延遲**中花費**最大時間**，這表示用戶端會花更多時間將資料傳送到 Azure 儲存體。 此延遲表示用戶端問題。
+
+**建議：**
+
+* 調查用戶端中的程式碼。
+* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 調查用戶端的網路連線問題。 
+
+### <a name="put-operation-requeststatus--sasnetworkerror"></a>Put Operation： RequestStatus = （SAS） NetworkError
+
+如「建議的步驟」一節的步驟5所述，檢查下列值：
+
+* 端對端延遲
+* 伺服器-延遲
+* 用戶端-延遲
+
+在**RequestStatus = （SAS） NetworkError**的**PutBlob**作業中，如果在**用戶端延遲**中花費**最大時間**，最常見的問題是用戶端在儲存體服務中的超時時間到期之前就中斷連線。
+
+**建議：**
+
+* 請調查用戶端裡的程式碼，了解用戶端何時及為何與儲存體服務中斷連線。
+* 使用 Wireshark、Microsoft Message Analyzer 或 Tcping 調查用戶端的網路連線問題。
 

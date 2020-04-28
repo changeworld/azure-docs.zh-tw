@@ -5,10 +5,10 @@ author: ecfan
 ms.author: estfan
 ms.date: 11/03/2016
 ms.openlocfilehash: 951ab2300aa4ffed2c5f1039ff993cd7f6af543f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789684"
 ---
 ## <a name="prerequisites"></a>Prerequisites
@@ -24,7 +24,7 @@ ms.locfileid: "74789684"
    ![](./media/connectors-create-api-onedrive/onedrive-1.png)
 2. 如果您之前尚未對 OneDrive 建立任何連線，系統會提示您使用 OneDrive 認證來登入：  
    ![](./media/connectors-create-api-onedrive/onedrive-2.png)
-3. 選取 [登入]****，然後輸入您的使用者名稱和密碼。 選擇**登錄**：  
+3. 選取 [登入]****，然後輸入您的使用者名稱和密碼。 選取 [登**入**]：  
    ![](./media/connectors-create-api-onedrive/onedrive-3.png)   
    
     這些認證會用來授權邏輯應用程式連線到您的 OneDrive 帳戶，以及存取該帳戶中的資料。 

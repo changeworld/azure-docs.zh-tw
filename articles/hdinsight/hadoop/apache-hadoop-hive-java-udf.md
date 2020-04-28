@@ -1,5 +1,5 @@
 ---
-title: 使用 Apache 蜂巢 Azure HDInsight 的 JAVA 使用者定義函數 （UDF）
+title: JAVA 使用者定義函數（UDF）與 Apache Hive Azure HDInsight
 description: 了解如何建立能配合 Apache Hive 使用的以 Java 為基礎的使用者定義函式 (UDF)。 此範例 UDF 會將文字字串的資料表轉換成小寫。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/20/2019
 ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74327200"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>在 HDInsight 中搭配使用 Java UDF 和 Apache Hive
@@ -21,10 +21,10 @@ ms.locfileid: "74327200"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* HDInsight 上的 Hadoop 群集。 請參閱[在 Linux 上開始使用 HDInsight。](./apache-hadoop-linux-tutorial-get-started.md)
-* [Java Developer Kit (JDK) 第 8 版](https://aka.ms/azure-jdks)
+* HDInsight 上的 Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
+* [JAVA 開發人員套件（JDK）第8版](https://aka.ms/azure-jdks)
 * 根據 Apache 正確[安裝](https://maven.apache.org/install.html)的 [Apache Maven](https://maven.apache.org/download.cgi)。  Maven 是適用於 Java 專案的專案建置系統。
-* 您叢集主要儲存體的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 這將wasb://用於 Azure 存儲、azure 資料存儲第 2 代存儲abfs://或 Azure 資料存儲第 1 代adl://。 如果已對 Azure 儲存體啟用安全傳輸，URI 會是 `wasbs://`。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
+* 您叢集主要儲存體的 [URI 配置](../hdinsight-hadoop-linux-information.md#URI-and-scheme)。 這會是 wasb://，適用于 Azure Data Lake Storage Gen1 的 Azure Data Lake Storage Gen2 或 adl://的 Azure 儲存體、abfs://。 如果已對 Azure 儲存體啟用安全傳輸，URI 會是 `wasbs://`。  另請參閱[安全傳輸](../../storage/common/storage-require-secure-transfer.md)。
 
 * 文字編輯器或 Java IDE
 
@@ -33,9 +33,9 @@ ms.locfileid: "74327200"
 
 ## <a name="test-environment"></a>測試環境
 
-本文使用的環境是運行 Windows 10 的電腦。  命令在命令提示符中執行，並且使用記事本編輯各種檔。 根據您的環境進行相應修改。
+本文所使用的環境是執行 Windows 10 的電腦。  命令會在命令提示字元中執行，並使用 [記事本] 來編輯各種檔案。 針對您的環境進行相應的修改。
 
-從命令提示符中，輸入下面的命令以創建工作環境：
+從命令提示字元中，輸入下列命令以建立可運作的環境：
 
 ```cmd
 IF NOT EXIST C:\HDI MKDIR C:\HDI
@@ -44,28 +44,28 @@ cd C:\HDI
 
 ## <a name="create-an-example-java-udf"></a>建立範例 Java UDF
 
-1. 通過輸入以下命令創建新的 Maven 專案：
+1. 輸入下列命令來建立新的 Maven 專案：
 
     ```cmd
     mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=ExampleUDF -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-    此命令創建一個名為`exampleudf`的目錄，其中包含 Maven 專案。
+    此命令會建立名為`exampleudf`的目錄，其中包含 Maven 專案。
 
-2. 創建專案後，通過輸入以下命令刪除`exampleudf/src/test`作為專案的一部分創建的目錄：
+2. 建立專案之後，請輸入下列命令， `exampleudf/src/test`以刪除專案中建立的目錄：
 
     ```cmd
     cd ExampleUDF
     rmdir /S /Q "src/test"
     ```
 
-3. 通過`pom.xml`輸入以下命令打開：
+3. 輸入`pom.xml`下列命令以開啟：
 
     ```cmd
     notepad pom.xml
     ```
 
-    然後用以下`<dependencies>`XML 替換現有條目：
+    然後以下列 XML `<dependencies>`取代現有的專案：
 
     ```xml
     <dependencies>
@@ -144,13 +144,13 @@ cd C:\HDI
 
     完成變更後，儲存檔案。
 
-4. 輸入下面的命令以創建和打開新檔`ExampleUDF.java`：
+4. 輸入下列命令以建立並開啟新檔案`ExampleUDF.java`：
 
     ```cmd
     notepad src/main/java/com/microsoft/examples/ExampleUDF.java
     ```
 
-    然後複製下面的 java 代碼並將其粘貼到新檔中。 然後關閉檔。
+    然後將下列 java 程式碼複製並貼到新檔案中。 然後關閉檔案。
 
     ```java
     package com.microsoft.examples;
@@ -181,9 +181,9 @@ cd C:\HDI
 
 ## <a name="build-and-install-the-udf"></a>建置及安裝 UDF
 
-在下面的命令中，如果`sshuser`不同，請替換為實際使用者名。 替換為`mycluster`實際的群集名稱。
+在下列命令中，將`sshuser`取代為實際的使用者名稱（如果不同的話）。 將`mycluster`取代為實際的叢集名稱。
 
-1. 通過輸入以下命令編譯和打包 UDF：
+1. 輸入下列命令來編譯和封裝 UDF：
 
     ```cmd
     mvn compile package
@@ -191,19 +191,19 @@ cd C:\HDI
 
     此命令會建置 UDF 並將它封裝到 `exampleudf/target/ExampleUDF-1.0-SNAPSHOT.jar` 檔案。
 
-2. 使用`scp`命令通過輸入以下命令將檔案複製到 HDInsight 群集：
+2. 藉由`scp`輸入下列命令，使用命令將檔案複製到 HDInsight 叢集：
 
     ```cmd
     scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-3. 通過輸入以下命令，使用 SSH 連接到群集：
+3. 輸入下列命令以使用 SSH 連接到叢集：
 
     ```cmd
     ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
-4. 從打開的 SSH 會話中，將 jar 檔案複製到 HDInsight 存儲。
+4. 從開啟的 SSH 會話，將 jar 檔案複製到 HDInsight 儲存體。
 
     ```bash
     hdfs dfs -put ExampleUDF-1.0-SNAPSHOT.jar /example/jars
@@ -211,7 +211,7 @@ cd C:\HDI
 
 ## <a name="use-the-udf-from-hive"></a>從 Hive 使用 UDF
 
-1. 通過輸入以下命令從 SSH 會話啟動 Beeline 用戶端：
+1. 輸入下列命令，從 SSH 會話啟動 Beeline 用戶端：
 
     ```bash
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http'
@@ -232,7 +232,7 @@ cd C:\HDI
     SELECT tolower(state) AS ExampleUDF, state FROM hivesampletable LIMIT 10;
     ```
 
-    此查詢從表中選擇狀態，將字串轉換為小寫，然後將其與未修改的名稱一起顯示。 此輸出看起來類似下列文字：
+    此查詢會從資料表中選取狀態，並將字串轉換為小寫，然後將其與未修改的名稱一起顯示。 此輸出看起來類似下列文字：
 
         +---------------+---------------+--+
         |  exampleudf   |     state     |
@@ -251,7 +251,7 @@ cd C:\HDI
 
 ## <a name="troubleshooting"></a>疑難排解
 
-回合組態單元作業時，可能會遇到類似于以下文本的錯誤：
+執行 hive 工作時，您可能會遇到類似下列文字的錯誤：
 
     Caused by: org.apache.hadoop.hive.ql.metadata.HiveException: [Error 20001]: An error occurred while reading or writing to your custom script. It may have crashed with an error.
 

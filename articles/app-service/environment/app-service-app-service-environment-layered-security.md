@@ -1,6 +1,6 @@
 ---
-title: 分層安全 v1
-description: 瞭解如何在應用服務環境中實現分層安全體系結構。 此文檔僅提供給使用舊版 v1 ASE 的客戶。
+title: 多層式安全性 v1
+description: 瞭解如何在您的 App Service 環境中執行多層式安全性架構。 本檔僅為使用舊版 v1 ASE 的客戶提供。
 author: stefsch
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: a8920e97d315dc7bfd0ba22386b8b637afb7c05e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74688792"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>實作具有 App Service 環境的多層式安全性架構。

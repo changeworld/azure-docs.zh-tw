@@ -1,14 +1,14 @@
 ---
-title: 使用消息與 Azure 區塊鏈工作臺集成
-description: 使用消息將 Azure 區塊鏈工作臺預覽與其他系統集成的概述。
+title: 使用訊息與 Azure Blockchain Workbench 整合
+description: 使用訊息來整合 Azure Blockchain Workbench Preview 與其他系統的總覽。
 ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74324499"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench 訊息整合
@@ -59,7 +59,7 @@ Blockchain Workbench 會傳回包含下列欄位的回應：
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | requestId             | 用戶端提供的 GUID |
 | userId                | 所建立使用者的識別碼 |
-| userChainIdentifier   | 區塊鏈網路上所建立使用者的位址。 在以裡圖姆中，位址是使用者的**鏈上**位址。 |
+| userChainIdentifier   | 區塊鏈網路上所建立使用者的位址。 在乙太坊中，此位址是使用者的「**連鎖**」位址。 |
 | connectionId          | 區塊鏈連線的唯一識別碼|
 | messageSchemaVersion  | 傳訊結構描述版本 |
 | messageName           | **CreateUserUpdate** |
@@ -369,7 +369,7 @@ Blockchain Workbench 會傳回包含下列欄位的回應：
 
 ## <a name="notification-message-reference"></a>通知訊息參考
 
-根據**消息名稱**，通知訊息具有以下訊息類型之一。
+視**messageName**而定，通知訊息具有下列其中一種訊息類型。
 
 ### <a name="block-message"></a>區塊訊息
 
@@ -550,7 +550,7 @@ Blockchain Workbench 中的 *ContractMessage* 範例：
 }
 ```
 
-### <a name="event-message-contract-function-invocation"></a>事件消息：協定函式呼叫
+### <a name="event-message-contract-function-invocation"></a>事件訊息：合約函式呼叫
 
 包含叫用合約函式時的資訊，例如函式名稱、參數輸入，以及函式的呼叫端。
 
@@ -630,7 +630,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 範例：
 }
 ```
 
-### <a name="event-message-application-ingestion"></a>事件消息：應用程式引入
+### <a name="event-message-application-ingestion"></a>事件訊息：應用程式內嵌
 
 包含資訊應用程式上傳至 Workbench 時的資訊，例如，上傳的應用程式名稱和版本。
 
@@ -672,7 +672,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 範例：
 | id | Azure Blockchain Workbench 內所含應用程式工作流程的唯一識別碼 |
 | NAME | 應用程式工作流程名稱 |
 | displayName | 應用程式工作流程顯示名稱 |
-| functions | [應用程式工作流的功能](#workflow-function-information)集合|
+| functions | [應用程式工作流程](#workflow-function-information)的函式集合|
 | states | [應用程式工作流程的狀態](#workflow-state-information)集合 |
 | properties | 應用程式[工作流程屬性資訊](#workflow-property-information) |
 
@@ -824,7 +824,7 @@ Blockchain Workbench 中的 *EventMessage ApplicationIngestion* 範例：
 }
 ```
 
-### <a name="event-message-role-assignment"></a>事件消息：角色指派
+### <a name="event-message-role-assignment"></a>事件訊息：角色指派
 
 包含在 Workbench 中為使用者指派角色時的資訊，例如，執行角色指派的人員、角色的名稱和對應的應用程式。
 

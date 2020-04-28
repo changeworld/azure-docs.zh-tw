@@ -5,15 +5,15 @@ author: ecfan
 ms.author: estfan
 ms.date: 11/03/2016
 ms.openlocfilehash: a7290e46a0c5e228689dd1f1a0dc7f9a1182ad60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789633"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
-* [郵件池](https://www.MailChimp.com/)帳戶 
+* [MailChimp](https://www.MailChimp.com/)帳戶 
 
 您必須先授與邏輯應用程式連接到 MailChimp 帳戶的權限，之後才能在邏輯應用程式中使用您的 MailChimp 帳戶。 所幸，您可以使用 Azure 入口網站在邏輯應用程式內輕易達成這項作業。 
 

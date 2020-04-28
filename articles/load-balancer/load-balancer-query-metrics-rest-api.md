@@ -1,7 +1,7 @@
 ---
 title: 使用 REST API 來擷取計量
 titleSuffix: Azure Load Balancer
-description: 在本文中，開始使用 Azure REST API 收集 Azure 負載等化器的運行狀況和使用指標。
+description: 在本文中，您可以開始使用 Azure REST Api 來收集 Azure Load Balancer 的健康情況和使用計量。
 services: sql-database
 author: asudbring
 manager: KumudD
@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: allensu
 ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74225249"
 ---
-# <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>使用 REST API 獲取負載等化器使用指標
+# <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>使用 REST API 取得 Load Balancer 使用計量
 
-使用[Azure REST API](/rest/api/azure/)在一段時間內收集[標準負載等化器](/azure/load-balancer/load-balancer-standard-overview)處理的位元組數。
+使用[Azure REST API](/rest/api/azure/)收集[Standard Load Balancer](/azure/load-balancer/load-balancer-standard-overview)在一段時間內處理的位元組數。
 
 REST API 的完整參考文件和其他範例可於 [Azure 監視器 REST 參考](/rest/api/monitor)中取得。 
 
@@ -37,22 +37,22 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 |要求標頭|描述|  
 |--------------------|-----------------|  
-|*內容類型：*|必要。 設定為 `application/json`。|  
-|*授權：*|必要。 設定為有效的 `Bearer` [存取權杖](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|*Content-Type:*|必要。 設定為 `application/json`。|  
+|*Authorization:*|必要。 設定為有效的 `Bearer` [存取權杖](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 參數
 
-| 名稱 | 描述 |
+| 名稱 | 說明 |
 | :--- | :---------- |
-| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂閱，請參閱[使用多個訂閱](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
+| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂用帳戶，請參閱使用[多個訂閱](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 包含資源的資源群組名稱。 您可以從 Azure Resource Manager API、CLI 或入口網站取得這個值。 |
 | loadBalancerName | Azure Load Balancer 的名稱。 |
-| 指標名稱 | 以逗號分隔的有效 [Load Balancer 計量](/azure/load-balancer/load-balancer-standard-diagnostics)清單。 |
+| 度量名稱 | 以逗號分隔的有效 [Load Balancer 計量](/azure/load-balancer/load-balancer-standard-diagnostics)清單。 |
 | api-version | 要用於要求的 API 版本。<br /><br /> 本文件涵蓋 api-version `2018-01-01`，內含於上述 URL 中。  |
-| 時間範圍 | 查詢的時間範圍。 它是具有以下格式`startDateTime_ISO/endDateTime_ISO`的字串。 此選用參數會設定為傳回此範例中一天份的資料。 |
+| 時間範圍 | 查詢的時間範圍。 它是具有下列格式`startDateTime_ISO/endDateTime_ISO`的字串。 此選用參數會設定為傳回此範例中一天份的資料。 |
 | &nbsp; | &nbsp; |
 
-### <a name="request-body"></a>Request body
+### <a name="request-body"></a>要求本文
 
 這項作業不需要要求本文。
 

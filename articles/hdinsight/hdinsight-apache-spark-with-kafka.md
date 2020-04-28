@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
 ms.openlocfilehash: d868cdd346c79cf77d4f8c1ea6e4b20adcd99b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74327403"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>在 HDInsight 上使用 Apache Kafka 的 Apache Spark 串流 (DStream) 範例
 
-瞭解如何使用[Apache Spark](https://spark.apache.org/)在 HDInsight 上使用[DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html)資料流資料到或流出[Apache Kafka。](https://kafka.apache.org/) 這個範例會使用在 Spark 叢集上執行的 [Jupyter Notebook](https://jupyter.org/)。
+瞭解如何[Apache Spark](https://spark.apache.org/)使用 Kafka，透過[DStreams](https://spark.apache.org/docs/latest/api/java/org/apache/spark/streaming/dstream/DStream.html)在 HDInsight 上將資料流程入或傳出[Apache](https://kafka.apache.org/) 。 這個範例會使用在 Spark 叢集上執行的 [Jupyter Notebook](https://jupyter.org/)。
 
 > [!NOTE]  
 > 本文件中的步驟建立 Azure 資源群組，其中包含 HDInsight 上的 Spark 和 HDInsight 叢集上的 Kafka。 這兩個叢集都位於 Azure 虛擬網路中，可讓 Spark 叢集直接與 Kafka 叢集通訊。
@@ -29,7 +29,7 @@ ms.locfileid: "74327403"
 
 ## <a name="create-the-clusters"></a>建立叢集
 
-HDInsight上的ApacheKafka不提供通過公共互聯網訪問卡夫卡經紀人。 任何 Kafka 相關項目必須位於與 Kafka 叢集中節點相同的 Azure 虛擬網路。 例如，Kafka 和 Spark 叢集均位於 Azure 虛擬網路中。 下圖顯示叢集之間的通訊流動方式︰
+Apache Kafka on HDInsight 不提供透過公用網際網路存取 Kafka 訊息代理程式。 任何 Kafka 相關項目必須位於與 Kafka 叢集中節點相同的 Azure 虛擬網路。 例如，Kafka 和 Spark 叢集均位於 Azure 虛擬網路中。 下圖顯示叢集之間的通訊流動方式︰
 
 ![Azure 虛擬網路中的 Spark 和 Kafka 叢集圖表](./media/hdinsight-apache-spark-with-kafka/apache-spark-kafka-vnet.png)
 
@@ -42,7 +42,7 @@ HDInsight上的ApacheKafka不提供通過公共互聯網訪問卡夫卡經紀人
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
-    Azure 資源管理器範本位於**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json**。
+    Azure Resource Manager 範本位於 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** 。
 
     > [!WARNING]  
     > 若要保證 Kafka 在 HDInsight 上的可用性，您的叢集必須包含至少三個背景工作角色節點。 此範本會建立包含三個背景工作角色節點的 Kafka 叢集。
@@ -55,7 +55,7 @@ HDInsight上的ApacheKafka不提供通過公共互聯網訪問卡夫卡經紀人
     |---|---|
     |資源群組|建立群組或選取現有的群組。|
     |Location|選取靠近您的地理位置。|
-    |基本群集名稱|此值會作為 Spark 和 Kafka 叢集的基底名稱。 例如，輸入 **hdistreaming** 可建立名為 __spark-hdistreaming__ 的 Spark 叢集，以及名為 **kafka-hdistreaming** 的 Kafka 叢集。|
+    |基底叢集名稱|此值會作為 Spark 和 Kafka 叢集的基底名稱。 例如，輸入 **hdistreaming** 可建立名為 __spark-hdistreaming__ 的 Spark 叢集，以及名為 **kafka-hdistreaming** 的 Kafka 叢集。|
     |叢集登入使用者名稱|Spark 和 Kafka 叢集的系統管理員使用者名稱。|
     |叢集登入密碼|Spark 和 Kafka 叢集的系統管理員使用者密碼。|
     |SSH 使用者名稱|要為 Spark 和 Kafka 叢集建立的 SSH 使用者。|
@@ -76,7 +76,7 @@ HDInsight上的ApacheKafka不提供通過公共互聯網訪問卡夫卡經紀人
 
 ## <a name="use-the-notebooks"></a>使用 Notebook
 
-本文檔中描述的示例的代碼可在 。 [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka)
+本檔中所述之範例的程式碼可于[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka)取得。
 
 ## <a name="delete-the-cluster"></a>選取叢集
 

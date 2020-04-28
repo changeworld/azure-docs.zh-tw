@@ -1,5 +1,5 @@
 ---
-title: 限制對 PaaS 資源的網路訪問 - Azure CLI
+title: 限制對 PaaS 資源的網路存取-Azure CLI
 description: 在本文中，您會了解如何透過使用 Azure CLI 和虛擬網路服務端點來限制對 Azure 資源 (例如 Azure 儲存體和 Azure SQL Database) 的網路存取。
 services: virtual-network
 documentationcenter: virtual-network
@@ -18,10 +18,10 @@ ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: f2dcc714bc9052dd51f114e24f0b9bd74b87480c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74186395"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>透過使用 Azure CLI 的虛擬網路服務端點來限制對 PaaS 資源的網路存取
@@ -39,11 +39,11 @@ ms.locfileid: "74186395"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
+如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。 
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
-建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下面的示例在*東部*位置創建名為*myResourceGroup*的資源組。
+建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [az group create](/cli/azure/group) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
 
 ```azurecli-interactive
 az group create \
@@ -120,7 +120,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-每個網路安全性群組包含多個[預設安全規則](security-overview.md#default-security-rules)。 以下規則將覆蓋允許出站訪問所有公共 IP 位址的預設安全規則。 該`destination-address-prefix "Internet"`選項拒絕對所有公共 IP 位址的出站訪問。 上一個規則會因其具有較高優先順序而覆寫這項規則，從而允許對 Azure 儲存體之公用 IP 位址的存取。
+每個網路安全性群組包含數個[預設的安全性規則](security-overview.md#default-security-rules)。 後面的規則會覆寫允許對所有公用 IP 位址進行輸出存取的預設安全性規則。 選項`destination-address-prefix "Internet"`會拒絕對所有公用 IP 位址的輸出存取。 上一個規則會因其具有較高優先順序而覆寫這項規則，從而允許對 Azure 儲存體之公用 IP 位址的存取。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -137,7 +137,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-以下規則允許 SSH 流量從任意位置入站到子網。 此規則會覆寫拒絕來自網際網路之所有輸入流量的預設安全性規則。 SSH 允許到子網，以便可以在後面的步驟中測試連接。
+下列規則允許從任何地方輸入子網的 SSH 流量。 此規則會覆寫拒絕來自網際網路之所有輸入流量的預設安全性規則。 允許 SSH 連線至子網，以便在稍後的步驟中測試連線能力。
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -272,7 +272,7 @@ az vm create \
 
 ## <a name="confirm-access-to-storage-account"></a>確認對儲存體帳戶的存取
 
-使用 SSH 連線到 myVmPrivate** VM。 將*\<公共 Ip 位址>* 替換為*myVmPrivate VM*的公共 IP 位址。
+使用 SSH 連線到 myVmPrivate** VM。 將* \<publicIpAddress>* 取代為*myVmPrivate* VM 的公用 IP 位址。
 
 ```bash 
 ssh <publicIpAddress>
@@ -316,7 +316,7 @@ ssh <publicIpAddress>
 sudo mkdir /mnt/MyAzureFileShare
 ```
 
-嘗試將 Azure 檔案共用裝載至您所建立的目錄。 本文假設您已部署最新版本的 Ubuntu。 如果您是使用舊版的 Ubuntu，請參閱 [Linux 上的裝載](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以取得有關裝載檔案共用的其他指示。 在運行以下命令之前，請`<storage-account-name>`替換為帳戶名稱，並在`<storage-account-key>`[創建存儲帳戶](#create-a-storage-account)中檢索到的金鑰替換 ：
+嘗試將 Azure 檔案共用裝載至您所建立的目錄。 本文假設您已部署最新版本的 Ubuntu。 如果您是使用舊版的 Ubuntu，請參閱 [Linux 上的裝載](../storage/files/storage-how-to-use-files-linux.md?toc=%2fazure%2fvirtual-network%2ftoc.json)，以取得有關裝載檔案共用的其他指示。 執行下列命令之前，請將`<storage-account-name>`取代為帳戶名稱， `<storage-account-key>`並以您在[建立儲存體帳戶](#create-a-storage-account)中取出的金鑰取代：
 
 ```bash
 sudo mount --types cifs //storage-account-name>.file.core.windows.net/my-file-share /mnt/MyAzureFileShare --options vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino

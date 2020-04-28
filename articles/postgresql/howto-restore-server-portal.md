@@ -1,19 +1,19 @@
 ---
-title: 備份和還原 - Azure 門戶 - 用於 PostgreSQL 的 Azure 資料庫 - 單個伺服器
-description: 本文介紹如何使用 Azure 門戶還原 Azure 資料庫中的伺服器 PostgreSQL - 單伺服器。
+title: 備份與還原-Azure 入口網站-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文說明如何使用 Azure 入口網站在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中還原伺服器。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: fb13e4f062976e39c3cec607001e6982db228873
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74765625"
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>如何備份和還原 Azure 資料庫中的伺服器 PostgreSQL - 使用 Azure 門戶的單伺服器
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>如何使用 Azure 入口網站在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中備份和還原伺服器
 
 ## <a name="backup-happens-automatically"></a>備份會自動進行
 為了能使用還原功能，適用於 PostgreSQL 的 Azure 資料庫伺服器會定期備份。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
@@ -33,7 +33,7 @@ ms.locfileid: "74765625"
 如需在建立期間設定這些值的詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫伺服器快速入門](quickstart-create-server-database-portal.md)。
 
 透過下列步驟可變更伺服器的備份保留期限：
-1. 登錄到[Azure 門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 選取適用於 PostgreSQL 的 Azure 資料庫伺服器。 這個動作會開啟 [概觀]**** 頁面。
 3. 在 [設定]**** 下方的功能表中選取 [定價層]****。 您可以使用滑桿將 [備份保留期限]**** 變更為想要的天數 (7 到 35 天)。
 下列螢幕擷取畫面中的期限已增加到 34 天。
@@ -69,14 +69,14 @@ ms.locfileid: "74765625"
 
 所選時間點上的現有伺服器與時間點還原所建立的新伺服器，具有相同且有效的伺服器管理員登入名稱和密碼。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-還原期間創建的新伺服器沒有原始伺服器上存在的防火牆規則或 VNet 服務終結點。 這些規則需要為此新伺服器單獨設置。
+在還原期間建立的新伺服器沒有存在於源伺服器上的防火牆規則或 VNet 服務端點。 這些規則必須針對這個新的伺服器分別設定。
 
 
 ## <a name="geo-restore"></a>異地還原
 
 如果您已將伺服器設定為使用異地備援備份，則可以從現有伺服器的備份建立新的伺服器。 您可以在任何可使用「適用於 PostgreSQL 的 Azure 資料庫」的區域中建立這個新伺服器。  
 
-1. 選擇門戶左上角的 **"創建資源**按鈕 （+）。 為**PostgreSQL**選擇**資料庫** > Azure 資料庫。
+1. 選取入口網站左上角的 [**建立資源**] 按鈕（+）。 選取 [**資料庫** > ]**適用於 PostgreSQL 的 Azure 資料庫**。
 
    !["Azure Database for PostgreSQL" 選項](./media/howto-restore-server-portal/1-navigate-to-postgres.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "74765625"
 
 還原啟動時的現有伺服器與異地還原所建立的新伺服器，具有相同且有效的伺服器管理員登入名稱和密碼。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-還原期間創建的新伺服器沒有原始伺服器上存在的防火牆規則或 VNet 服務終結點。 這些規則需要為此新伺服器單獨設置。
+在還原期間建立的新伺服器沒有存在於源伺服器上的防火牆規則或 VNet 服務端點。 這些規則必須針對這個新的伺服器分別設定。
 
 
 ## <a name="next-steps"></a>後續步驟

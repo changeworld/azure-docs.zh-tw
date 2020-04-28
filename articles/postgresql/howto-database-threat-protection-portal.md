@@ -1,5 +1,5 @@
 ---
-title: 使用高級威脅保護 - Azure 資料庫用於後格雷SQL - 單個伺服器
+title: 使用 Advanced 威脅防護-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 「威脅保護」會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
 author: rachel-msft
 ms.author: raagyema
@@ -7,13 +7,13 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 8b7f52ea318432e97a450a54526f6481b14139c9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74776138"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>適用于後格雷SQL - 單伺服器的 Azure 資料庫的高級威脅保護
+# <a name="advanced-threat-protection-for-azure-database-for-postgresql---single-server"></a>適用于適用於 PostgreSQL 的 Azure 資料庫的先進威脅防護-單一伺服器
 
 適用於 PostgreSQL 的 Azure 資料庫進階威脅防護偵測到異常活動，指出有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
 
@@ -27,7 +27,7 @@ ms.locfileid: "74776138"
 > 在已針對「一般用途」和「記憶體最佳化」伺服器部署「適用於 PostgreSQL 的 Azure 資料庫」的所有 Azure 區域中，都可使用此功能。
 
 ## <a name="set-up-threat-detection"></a>設定威脅偵測
-1. 在 啟動 Azure[https://portal.azure.com](https://portal.azure.com)門戶。
+1. 啟動 Azure 入口網站，網址[https://portal.azure.com](https://portal.azure.com)為。
 2. 瀏覽至所要保護的 適用於 PostgreSQL 的 Azure 資料庫伺服器的設定頁面。 在 [安全性] 設定中，選取 [進階威脅防護 (預覽)]****。
 3. 在 [進階威脅防護 (預覽)]**** 設定頁面上：
 
@@ -62,5 +62,5 @@ ms.locfileid: "74776138"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解有關[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* 深入瞭解[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * 如需定價的詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫價格頁面](https://azure.microsoft.com/pricing/details/postgresql/)  

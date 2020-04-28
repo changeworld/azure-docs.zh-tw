@@ -1,6 +1,6 @@
 ---
-title: 授予 B2B 使用者對本地應用的存取權限 - Azure AD
-description: 演示如何通過 Azure AD B2B 協作使雲 B2B 使用者有權訪問內部部署應用。
+title: 將內部部署應用程式的存取權授與 B2B 使用者-Azure AD
+description: 示範如何使用 Azure AD B2B 共同作業，為雲端 B2B 使用者提供內部部署應用程式的存取權。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 098f464b6af5f10866403e1cd1549d571d883ac1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272805"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>對 Azure AD 中的 B2B 使用者授與內部部署應用程式的存取權
@@ -63,8 +63,8 @@ ms.locfileid: "74272805"
 
 您可以透過生命週期管理原則管理內部部署 B2B 使用者物件。 例如：
 
-- 您可以為來賓使用者設定多重要素驗證 (MFA) 原則，以在應用程式 Proxy 驗證期間使用 MFA。 有關詳細資訊，請參閱[B2B 協作使用者的條件訪問](conditional-access.md)。
-- 任何對雲端 B2B 使用者執行的贊助、存取權檢閱、帳戶驗證等，皆適用於內部部署使用者。 例如，如果通過生命週期管理原則刪除了雲使用者，則本地使用者也會通過 MIM 同步或通過 Azure AD 連接同步刪除。有關詳細資訊，請參閱使用[Azure AD 訪問審核管理來賓存取](../governance/manage-guest-access-with-access-reviews.md)。
+- 您可以為來賓使用者設定多重要素驗證 (MFA) 原則，以在應用程式 Proxy 驗證期間使用 MFA。 如需詳細資訊，請參閱 B2B 共同作業[使用者的條件式存取](conditional-access.md)。
+- 任何對雲端 B2B 使用者執行的贊助、存取權檢閱、帳戶驗證等，皆適用於內部部署使用者。 例如，如果雲端使用者是透過您的生命週期管理原則來刪除，則 MIM 同步或透過 Azure AD Connect 同步處理也會刪除內部部署使用者。如需詳細資訊，請參閱[使用 Azure AD 存取權審查來管理來賓存取權](../governance/manage-guest-access-with-access-reviews.md)。
 
 ### <a name="create-b2b-guest-user-objects-through-mim"></a>透過 MIM 建立 B2B 來賓使用者物件
 

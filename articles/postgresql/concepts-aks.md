@@ -1,19 +1,19 @@
 ---
-title: 連接到 Azure 庫伯奈斯服務 - Azure 資料庫，用於 PostgreSQL - 單個伺服器
-description: 瞭解如何將 Azure 庫伯奈斯服務 （AKS） 與 Azure 資料庫連接到 PostgreSQL - 單伺服器
+title: 連接到 Azure Kubernetes Service-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 瞭解如何使用適用於 PostgreSQL 的 Azure 資料庫單一伺服器連接 Azure Kubernetes Service （AKS）
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.date: 5/6/2019
 ms.topic: conceptual
 ms.openlocfilehash: 46aa411826dd3ea578a2d98b0fe631ab0a12ef4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74769875"
 ---
-# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>連接 Azure 庫伯奈斯服務和 Azure 資料庫，用於 PostgreSQL - 單個伺服器
+# <a name="connecting-azure-kubernetes-service-and-azure-database-for-postgresql---single-server"></a>連接 Azure Kubernetes Service 和適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 
 Azure Kubernetes Service (AKS) 提供的受控 Kubernetes 叢集可讓您用於 Azure 中。 搭配使用 AKS 和適用於 PostgreSQL 的 Azure 資料庫來建立應用程式時，請考慮下列這些選項。
 
@@ -44,7 +44,7 @@ az network nic list --resource-group nodeResourceGroup -o table
 ## <a name="open-service-broker-for-azure"></a>Open Service Broker for Azure 
 [Open Service Broker for Azure](https://github.com/Azure/open-service-broker-azure/blob/master/README.md) (OSBA)，可讓您直接從 Kubernetes 或 Cloud Foundry 佈建 Azure 服務。 它是 Azure 的一項 [Open Service Broker API](https://www.openservicebrokerapi.org/) 實作。
 
-使用 OSBA 時，您可以建立適用於 PostgreSQL 的 Azure 資料庫伺服器，並使用 Kubernetes 的原生語言將它繫結至您的 AKS 叢集。 瞭解如何在[OSBA GitHub 頁面上](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md)一起使用 OSBA 和 Azure 資料庫作為 PostgreSQL。 
+使用 OSBA 時，您可以建立適用於 PostgreSQL 的 Azure 資料庫伺服器，並使用 Kubernetes 的原生語言將它繫結至您的 AKS 叢集。 瞭解如何在[OSBA GitHub 頁面](https://github.com/Azure/open-service-broker-azure/blob/master/docs/modules/postgresql.md)上同時使用 OSBA 和適用於 PostgreSQL 的 Azure 資料庫。 
 
 
 ## <a name="connection-pooling"></a>連線共用

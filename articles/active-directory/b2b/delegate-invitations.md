@@ -1,6 +1,6 @@
 ---
-title: 啟用 B2B 外部協作設置 - Azure AD
-description: 瞭解如何啟用 Active Directory B2B 外部協作並管理誰可以邀請來賓使用者。 使用來賓邀請者角色委派邀請。
+title: 啟用 B2B 外部協同作業設定-Azure AD
+description: 瞭解如何啟用 Active Directory B2B 外部協同作業，以及管理誰可以邀請來賓使用者。 使用來賓邀請者角色來委派邀請。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,17 +12,17 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272905"
 ---
-# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>啟用 B2B 外部協作並管理誰可以邀請來賓
+# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>啟用 B2B 外部共同作業，並管理誰可以邀請來賓
 
-本文介紹如何啟用 Azure 活動目錄 （Azure AD） B2B 協作並確定誰可以邀請來賓。 預設情況下，目錄中的所有使用者和來賓都可以邀請來賓，即使他們未分配到管理員角色。 通過外部協作設置，您可以為組織中不同類型的使用者打開或關閉來賓邀請。 您還可以通過分配允許其邀請來賓的角色，將邀請委託給單個使用者。
+本文說明如何啟用 Azure Active Directory （Azure AD） B2B 共同作業，並判斷誰可以邀請來賓。 根據預設，您目錄中的所有使用者和來賓都可以邀請來賓，即使他們未指派給系統管理員角色也是一樣。 外部共同作業設定可讓您針對組織中不同類型的使用者，開啟或關閉來賓邀請。 您也可以將邀請委派給個別使用者，方法是指派允許他們邀請來賓的角色。
 
-## <a name="configure-b2b-external-collaboration-settings"></a>配置 B2B 外部協作設置
+## <a name="configure-b2b-external-collaboration-settings"></a>設定 B2B 外部協同作業設定
 
 使用 Azure AD B2B 共同作業，租用戶系統管理員可以設定下列邀請原則：
 
@@ -31,29 +31,29 @@ ms.locfileid: "74272905"
 - 系統管理員、來賓邀請者角色與成員可以邀請
 - 所有使用者 (包括來賓) 都可以邀請
 
-預設情況下，所有使用者（包括來賓）都可以邀請來賓使用者。
+根據預設，所有使用者（包括來賓）都可以邀請來賓使用者。
 
-### <a name="to-configure-external-collaboration-settings"></a>要配置外部協作設置：
+### <a name="to-configure-external-collaboration-settings"></a>若要設定外部協同作業設定：
 
-1. 以租戶管理員身份登錄到[Azure 門戶](https://portal.azure.com)。
-2. 選擇**Azure 活動目錄** > **使用者** > **使用者使用者設置**。
-3. 在 **"外部使用者**"下，選擇 **"管理外部協作設置**"。
+1. 以租使用者系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
+2. 選取 [ **Azure Active Directory** > **使用者** > ] [**使用者設定**]。
+3. 在 [**外部使用者**] 底下，選取 [**管理外部**共同作業設定]。
    > [!NOTE]
    > [外部共用作業設定]**** 也在 [組織關係]**** 頁面上。 在 Azure Active Directory 中，[管理]**** 下方，移至 [組織關係]**** >  [設定]****。
-4. 在 **"外部協作設置"** 頁上，選擇要啟用的策略。
+4. 在 [**外部**共同作業設定] 頁面上，選擇您想要啟用的原則。
 
    ![外部共同作業設定](./media/delegate-invitations/control-who-to-invite.png)
 
-  - **來賓使用者許可權有限**：此策略確定目錄中來賓的許可權。 選擇 **"是**"可阻止來賓存取某些目錄任務，例如枚舉使用者、組或其他目錄資源。 選擇 **"否**"可使來賓與目錄中的常規使用者對目錄資料具有相同的存取權限。
-   - **來賓邀請者角色的管理員和使用者可以邀請**：要允許管理員和使用者在"來賓邀請者"角色中邀請來賓，請此策略設置為 **"是**"。
-   - **會員可以邀請**：要允許目錄中的非管理員成員邀請來賓，請此策略設置為 **"是**"。
-   - **客人可以邀請**：為了允許客人邀請其他客人，請將此政策設置為 **"是**"。
-   - **為來賓啟用電子郵件一次性密碼（預覽）：** 有關一次性密碼功能的詳細資訊，請參閱[電子郵件一次性密碼身份驗證（預覽）。](one-time-passcode.md)
-   - **協作限制**：有關允許或阻止特定域的邀請的詳細資訊，請參閱[允許或阻止來自特定組織的 B2B 使用者的邀請](allow-deny-list.md)。
+  - **來賓使用者的許可權有限**：此原則會決定您目錄中來賓的許可權。 選取 **[是]** 以封鎖來賓的特定目錄工作，例如列舉使用者、群組或其他目錄資源。 選取 [**否**]，讓來賓與目錄中的一般使用者存取目錄資料的方式相同。
+   - **來賓邀請者角色中的系統管理員和使用者可以邀請**：若要允許「來賓邀請者」角色中的系統管理員和使用者邀請來賓，請將此原則設定為 **[是]**。
+   - **成員可以邀請**：若要允許目錄的非系統管理員成員邀請來賓，請將此原則設定為 **[是]**。
+   - **來賓可以邀請**：若要允許來賓邀請其他來賓，請將此原則設定為 **[是]**。
+   - **為來賓啟用電子郵件單次密碼（預覽）**：如需一次性密碼功能的詳細資訊，請參閱[電子郵件單次密碼驗證（預覽）](one-time-passcode.md)。
+   - 共同作業**限制**：如需允許或封鎖特定網域之邀請的詳細資訊，請參閱[允許或封鎖對特定組織的 B2B 使用者的邀請](allow-deny-list.md)。
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>將來賓邀請者角色指派給使用者
 
-使用來賓邀請者角色，您可以讓單個使用者能夠邀請來賓，而無需為其分配全域管理員或其他管理員角色。 將來賓邀請者角色指派給個人。 然後，請確保設置**管理員和使用者在來賓邀請者角色可以邀請**到**是**。
+透過來賓邀請者角色，您可以授與個別使用者邀請來賓的能力，而不需要為他們指派全域管理員或其他系統管理員角色。 將來賓邀請者角色指派給個人。 然後，請確定您已將**來賓邀請者角色中的系統管理員和使用者邀請**為 **[是]**。
 
 以下範例顯示如何使用 PowerShell 將使用者新增到「來賓邀請者」角色：
 

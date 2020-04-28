@@ -1,5 +1,5 @@
 ---
-title: 在 Spark 中使用帶有 Jupyter 的自訂 Maven 包 - Azure HDInsight
+title: 在 Spark 中搭配 Jupyter 使用自訂 Maven 套件-Azure HDInsight
 description: 說明如何設定讓 HDInsight Spark 叢集隨附之 Jupyter Notebook 使用自訂 Maven 套件的逐步指示。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
 ms.openlocfilehash: cec94b2ecb18bc9e8cceb24a21967a3c829d78a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74561712"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>在 HDInsight 上的 Apache Spark 叢集中搭配 Jupyter Notebook 使用外部封裝
@@ -21,11 +21,11 @@ ms.locfileid: "74561712"
 > * [使用資料格魔術](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [使用指令碼動作](apache-spark-python-package-installation.md)
 
-瞭解如何在 HDInsight 上的 Apache Spark 群集中配置[Jupyter 筆記本](https://jupyter.org/)，以使用群集中未包含開箱即用的外部、由社區貢獻的 Apache **maven**套裝軟體。
+瞭解如何在 HDInsight 上的 Apache Spark 叢集中設定[Jupyter Notebook](https://jupyter.org/) ，以使用不是叢集中現成隨附的外部 Maven 式 Apache **maven**套件。
 
 您可以搜尋 [Maven 儲存機制](https://search.maven.org/) 來取得可用套件的完整清單。 您也可以從其他來源取得可用套件清單。 例如，從 [Spark 套件](https://spark-packages.org/)可以取得社群提供套件的完整清單。
 
-在本文中，您將學習如何將[Spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)包與 Jupyter 筆記本一起使用。
+在本文中，您將瞭解如何搭配 Jupyter 筆記本使用[spark csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)套件。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -37,17 +37,17 @@ ms.locfileid: "74561712"
 
 ## <a name="use-external-packages-with-jupyter-notebooks"></a>搭配 Jupyter Notebook 使用外部套件
 
-1. 導航到`https://CLUSTERNAME.azurehdinsight.net/jupyter` `CLUSTERNAME` Spark 群集的名稱的位置。
+1. 導覽至`https://CLUSTERNAME.azurehdinsight.net/jupyter` ， `CLUSTERNAME`其中是您 Spark 叢集的名稱。
 
-1. 建立新的 Notebook。 選擇 **"新建**"，然後選擇 **"火花**"。
+1. 建立新的 Notebook。 選取 [**新增**]，然後選取 [ **Spark**]。
 
-    ![創建新的 Spark Jupyter 筆記本](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "建立新的 Jupyter Notebook")
+    ![建立新的 Spark Jupyter 筆記本](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "建立新的 Jupyter Notebook")
 
-1. 系統隨即會建立新 Notebook，並以 Untitled.pynb 的名稱開啟。 選擇頂部的筆記本名稱，然後輸入易記名稱。
+1. 系統隨即會建立新 Notebook，並以 Untitled.pynb 的名稱開啟。 選取頂端的 [筆記本名稱]，然後輸入好記的名稱。
 
     ![提供 Notebook 的名稱](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-name-notebook.png "提供 Notebook 的名稱")
 
-1. 您將使用`%%configure`魔術將筆記本配置為使用外部包。 在使用外部套件的 Notebook 中，確定您在第一個程式碼單元中呼叫 `%%configure` magic。 這可確保將核心設定為在啟動工作階段之前即使用此套件。
+1. 您將使用`%%configure`魔術來設定筆記本使用外部套件。 在使用外部套件的 Notebook 中，確定您在第一個程式碼單元中呼叫 `%%configure` magic。 這可確保將核心設定為在啟動工作階段之前即使用此套件。
 
     >[!IMPORTANT]  
     >如果您忘記在第一個單元中設定核心，您可以搭配 `-f` 參數使用 `%%configure`，但這會重新啟動工作階段，而所有進度都將遺失。
@@ -59,9 +59,9 @@ ms.locfileid: "74561712"
 
 1. 對於 Maven 中央儲存機制中的外部套件，上述程式碼片段預期會使用 Maven 座標。 在此程式碼片段中， `com.databricks:spark-csv_2.11:1.5.0` 是 **spark-csv** 套件的 maven 座標。 以下說明如何建立套件的座標。
 
-    a. 在「Maven 儲存機制」中找出套件。 在本文中，我們使用[火花-csv](https://mvnrepository.com/artifact/com.databricks/spark-csv)。
+    a. 在「Maven 儲存機制」中找出套件。 在本文中，我們會使用[spark-csv](https://mvnrepository.com/artifact/com.databricks/spark-csv)。
 
-    b. 從儲存機制收集 [GroupId]****、[ArtifactId]**** 及 [版本]**** 的值。 確定您收集的值符合您的叢集。 在這種情況下，我們使用 Scala 2.11 和 Spark 1.5.0 包，但您可能需要為群集中的相應 Scala 或 Spark 版本選擇不同的版本。 您可以透過在 Spark Jupyter 核心或 Spark 提交上執行 `scala.util.Properties.versionString` 以查看您叢集上的 Scala 版本。 您可以透過在 Jupyter 筆記本上執行 `sc.version` 以查看您叢集上的 Spark 版本。
+    b. 從儲存機制收集 [GroupId]****、[ArtifactId]**** 及 [版本]**** 的值。 確定您收集的值符合您的叢集。 在此情況下，我們會使用 Scala 2.11 和 Spark 1.5.0 封裝，但您可能需要針對叢集中適當的 Scala 或 Spark 版本選取不同的版本。 您可以透過在 Spark Jupyter 核心或 Spark 提交上執行 `scala.util.Properties.versionString` 以查看您叢集上的 Scala 版本。 您可以透過在 Jupyter 筆記本上執行 `sc.version` 以查看您叢集上的 Spark 版本。
 
     ![搭配 Jupyter Notebook 使用外部套件](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "搭配 Jupyter Notebook 使用外部套件")
 
@@ -76,7 +76,7 @@ ms.locfileid: "74561712"
         option("inferSchema", "true").
         load("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-    對於 HDInsight 3.4 及以下程式碼片段，應使用以下程式碼片段。
+    針對 HDInsight 3.4 和以下，您應該使用下列程式碼片段。
 
         val df = sqlContext.read.format("com.databricks.spark.csv").
         option("header", "true").

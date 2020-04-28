@@ -1,5 +1,5 @@
 ---
-title: 使用C++用戶端庫列出 Azure 存儲資源
+title: 使用 c + + 用戶端程式庫列出 Azure 儲存體資源
 description: 了解如何使用 Microsoft Azure Storage Client Library for C++ 中的列表 API 來列舉容器、Blob、佇列、資料表和實體。
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
 ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74269456"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>以 C++ 列出 Azure 儲存體資源
@@ -197,8 +197,8 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 如需 Azure Storage Client Library for C++ 的詳細資訊，請參閱下列資源。
 
 * [如何使用 C++ 的 Blob 儲存體](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [如何使用C++表存儲](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+* [如何使用 c + + 的表格儲存體](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [如何使用 C++ 的佇列儲存體](../storage-c-plus-plus-how-to-use-queues.md)
 * [Azure Storage Client Library for C++ API 文件。](https://azure.github.io/azure-storage-cpp/)
 * [Azure 儲存體團隊部落格](https://blogs.msdn.com/b/windowsazurestorage/)
-* [Azure 存儲文檔](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure 儲存體檔](https://azure.microsoft.com/documentation/services/storage/)

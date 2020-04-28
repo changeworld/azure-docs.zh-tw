@@ -1,5 +1,5 @@
 ---
-title: 為 B2B 協作配置 SaaS 應用 - Azure AD
+title: 設定適用于 B2B 共同作業的 SaaS 應用程式-Azure AD
 description: Azure Active Directory B2B 共同作業的程式碼與 PowerShell 範例
 services: active-directory
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c73a14c2a8cd063672bd0998368ca660f52cd5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74272944"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>為 B2B 共同作業設定 SaaS 應用程式
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) B2B 共同作業可搭配與 Azure AD 整合�
 
 5. 從 [單一登入]**** 頁面，使用登入 URL 登入 Dropbox。
 
-   ![顯示 Dropbox 登錄頁的螢幕截圖](media/configure-saas-apps/sign-in-to-dropbox.png)
+   ![顯示 Dropbox 登入頁面的螢幕擷取畫面](media/configure-saas-apps/sign-in-to-dropbox.png)
 
 6. 在功能表上，選取 [系統管理員主控台]****。
 
@@ -79,9 +79,9 @@ Azure Active Directory (Azure AD) B2B 共同作業可搭配與 Azure AD 整合�
 
 2. 請依下列順序設定單一登入：
 
-   ![顯示單一登入配置設置的螢幕截圖](media/configure-saas-apps/configure-box-sso.png)
+   ![顯示單一登入設定的螢幕擷取畫面](media/configure-saas-apps/configure-box-sso.png)
 
-   a. 在 [登入 URL]**** 方塊中，確定已在 Azure 入口網站中針對 Box 適當設定登入 URL。 此 URL 是 Box.com 租用戶的 URL。 它應該遵循命名約定*https://.box.com*。  
+   a. 在 [登入 URL]**** 方塊中，確定已在 Azure 入口網站中針對 Box 適當設定登入 URL。 此 URL 是 Box.com 租用戶的 URL。 它應該遵循命名慣例*https://.box.com*。  
    [識別碼]**** 不適用於此應用程式，但它仍會顯示為必要欄位。
 
    b. 在 [使用者識別碼]**** 方塊中，輸入 **user.mail** (適用於來賓帳戶的 SSO)。

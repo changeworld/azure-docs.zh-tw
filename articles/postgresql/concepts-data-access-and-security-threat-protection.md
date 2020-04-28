@@ -1,26 +1,26 @@
 ---
-title: 高級威脅防護 - Azure 資料庫，用於後格雷SQL - 單個伺服器
-description: 瞭解如何使用高級威脅防護來檢測異常的資料庫活動，這些活動表明資料庫存在潛在的安全威脅。
+title: 先進的威脅防護-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 瞭解如何使用 Advanced 威脅防護來偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 3d86c76472580567c95d285924761e1714465d6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74768736"
 ---
-# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Azure 資料庫中的高級威脅保護，用於後格雷SQL - 單個伺服器
+# <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的先進威脅防護-單一伺服器
 
 適用於 PostgreSQL 的 Azure 資料庫進階威脅防護偵測到異常活動，指出有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
 
 > [!NOTE]
-> 高級威脅防護處於公共預覽版。
+> 先進的威脅防護處於公開預覽狀態。
 
-「威脅防護」是「進階威脅防護」(ATP) 供應項目 (一個整合的進階安全性功能套件) 的一部分。 高級威脅防護可以通過[Azure 門戶](https://portal.azure.com)或使用[REST API](/rest/api/postgresql/serversecurityalertpolicies)進行訪問和管理。 此功能可用於通用和記憶體優化伺服器。
+「威脅防護」是「進階威脅防護」(ATP) 供應項目 (一個整合的進階安全性功能套件) 的一部分。 您可以透過[Azure 入口網站](https://portal.azure.com)或使用[REST API](/rest/api/postgresql/serversecurityalertpolicies)來存取和管理「先進的威脅防護」。 這項功能適用于一般用途和記憶體優化的伺服器。
 
 > [!NOTE]
 > 下列 Azure Government 和主權雲端區域**無法**使用進階威脅防護功能：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 維吉尼亞州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
@@ -41,6 +41,6 @@ ms.locfileid: "74768736"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解有關[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* 深入瞭解[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * 如需定價的詳細資訊，請參閱[適用於 PostgreSQL 的 Azure 資料庫價格頁面](https://azure.microsoft.com/pricing/details/postgresql/) 
 * 使用 Azure 入口網站來設定[適用於 PostgreSQL 的 Azure 資料庫進階威脅防護](howto-database-threat-protection-portal.md)  

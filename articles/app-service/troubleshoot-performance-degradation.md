@@ -1,6 +1,6 @@
 ---
-title: 排除性能下降的疑難排解
-description: 瞭解如何解決 Azure 應用服務中應用性能緩慢的問題，包括監視應用行為、收集資料和緩解問題。
+title: 效能降低的疑難排解
+description: 瞭解如何對 Azure App Service 中的應用程式效能問題進行疑難排解，包括監視應用程式行為、收集資料，以及減輕問題。
 tags: top-support-issue
 keywords: Web 應用程式效能、變慢的應用程式、應用程式變慢
 ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
 ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74688306"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>針對 Azure App Service 中應用程式效能變慢的問題進行疑難排解
@@ -58,9 +58,9 @@ ms.locfileid: "74688306"
 
 ![監視應用程式效能](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
-* [監視 Azure 應用服務中的應用](web-sites-monitor.md)
+* [監視 Azure App Service 中的應用程式](web-sites-monitor.md)
 * [接收警示通知](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
 #### <a name="monitor-web-endpoint-status"></a>監視 Web 端點狀態
@@ -93,7 +93,7 @@ App Service 會針對來自 Web 伺服器和 Web 應用程式的記錄資訊提�
 您可以啟用或停用下列各種記錄：
 
 * **詳細的錯誤記錄** - 對於表示失敗的 HTTP 狀態碼 (狀態碼 400 或更大) 的詳細錯誤資訊。 這當中包含的資訊可協助您判斷為何伺服器傳回錯誤碼。
-* **失敗的請求跟蹤**- 有關失敗請求的詳細資訊，包括用於處理請求的 IIS 元件的跟蹤以及每個元件所採用的時間。 若您嘗試提升應用程式的效能，或是想要隔離造成特定 HTTP 錯誤的原因，這個方法將有所助益。
+* **失敗要求的追蹤**-失敗要求的詳細資訊，包括用來處理要求的 IIS 元件追蹤，以及每個元件所花費的時間。 若您嘗試提升應用程式的效能，或是想要隔離造成特定 HTTP 錯誤的原因，這個方法將有所助益。
 * **Web 伺服器記錄** - 使用 W3C 擴充記錄檔格式的 HTTP 交易相關資訊。 當您需要判斷整體應用程式計量 (例如，所處理的要求數量，或來自特定 IP 位址要求的數量) 時，這個方法將有所助益。
 
 #### <a name="enable-application-diagnostics"></a>啟用應用程式診斷
@@ -141,7 +141,7 @@ Kudu 的另一項實用功能是，如果應用程式擲回第一次例外狀況
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3. 緩解問題
+### <a name="3-mitigate-the-issue"></a>3. 緩和問題
 #### <a name="scale-the-app"></a>調整應用程式
 在 Azure App Service 中，為提高效能和輸送量，您可以調整所執行之應用程式的大小。 相應增加應用程式規模牽涉到兩個相關動作：將 App Service 方案變更為較高的定價層，以及在改為較高的定價層後進行某些設定。
 
@@ -152,7 +152,7 @@ Kudu 的另一項實用功能是，如果應用程式擲回第一次例外狀況
 您可以將調整設定為手動或自動。
 
 #### <a name="use-autoheal"></a>使用 AutoHeal
-AutoHeal 會根據您選擇的設定 (例如組態變更、要求、以記憶體為基礎的限制或執行要求所需的時間)，回收應用程式的背景工作角色處理序。 在大部分情況下，回收處理序是從問題中復原的最快方式。 雖然您永遠可以從 Azure 入口網站中直接重新啟動應用程式，AutoHeal 會自動為您完成。 您只需要在應用程式的根目錄 web.config 中加入某些觸發程序。 即使應用程式不是 .NET 應用，這些設置也會以同樣的方式工作。
+AutoHeal 會根據您選擇的設定 (例如組態變更、要求、以記憶體為基礎的限制或執行要求所需的時間)，回收應用程式的背景工作角色處理序。 在大部分情況下，回收處理序是從問題中復原的最快方式。 雖然您永遠可以從 Azure 入口網站中直接重新啟動應用程式，AutoHeal 會自動為您完成。 您只需要在應用程式的根目錄 web.config 中加入某些觸發程序。 即使您的應用程式不是 .NET 應用程式，這些設定仍會以相同的方式使用。
 
 如需詳細資訊，請參閱 [自動修復 Azure 網站](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)。
 
@@ -161,4 +161,4 @@ AutoHeal 會根據您選擇的設定 (例如組態變更、要求、以記憶體
 
  ![重新啟動應用程式以解決效能問題](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-您也可以使用 Azure Powershell 管理應用程式。 有關詳細資訊，請參閱將[Azure PowerShell 與 Azure 資源管理器一起使用](../powershell-azure-resource-manager.md)。
+您也可以使用 Azure Powershell 管理應用程式。 如需詳細資訊，請參閱搭配[Azure Resource Manager 使用 Azure PowerShell](../powershell-azure-resource-manager.md)。

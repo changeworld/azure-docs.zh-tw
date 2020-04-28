@@ -1,5 +1,5 @@
 ---
-title: 刪除個人資料 - Azure 活動目錄應用程式代理
+title: 移除個人資料-Azure Active Directory 應用程式 Proxy
 description: 從安裝在裝置上的連接器移除 Azure Active Directory 應用程式 Proxy 的個人資料。
 documentationcenter: ''
 author: msmimart
@@ -16,10 +16,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fe97956d99bd5c677e499b532ef85a1bb4d324ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74275418"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>移除 Azure Active Directory 應用程式 Proxy 的個人資料
@@ -77,7 +77,7 @@ Azure Active Directory 應用程式 Proxy 需要您在裝置上安裝連接器�
 
 確保連接器記錄不會包含個人資料的一個選項是關閉記錄產生。 若要停止產生連接器記錄，請從 `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config` 移除下列醒目提示行。
 
-![顯示帶有要刪除的突出顯示代碼的程式碼片段](./media/application-proxy-remove-personal-data/01.png)
+![顯示程式碼片段，其中包含要移除的反白顯示程式碼](./media/application-proxy-remove-personal-data/01.png)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,7 +1,7 @@
 ---
 title: 設定 Linux VM 的 DHCPv6
 titleSuffix: Azure Load Balancer
-description: 在本文中，瞭解如何為 Linux VM 配置 DHCPv6。
+description: 在本文中，您將瞭解如何設定 Linux Vm 的 DHCPv6。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
 ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74225326"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>設定 Linux VM 的 DHCPv6
@@ -54,9 +54,9 @@ Azure Marketplace 中的一些 Linux 虛擬機器映像沒有預設的動態主�
     ```bash
     sudo ifdown eth0 && sudo ifup eth0
     ```
-從 Ubuntu 17.10 開始，預設網路配置機制為[NETPLAN]( https://netplan.io)。  在安裝/具現化時間，NETPLAN 從此位置的 YAML 設定檔讀取網路設定：/_lib 等，運行\/netplan/_.yaml。
+從 Ubuntu 17.10 開始，預設網路設定機制是[NETPLAN]( https://netplan.io)。  在安裝/具現化時間，NETPLAN 會從下列位置的 YAML 設定檔讀取網路設定：/{lib、etc、run}/netplan/*. YAML。
 
-請在配置中為每個乙太網介面包括*dhcp6：true*語句。  例如：
+請在您的設定中包含每個 ethernet 介面的*dhcp6： true*語句。  例如：
   
         network:
           version: 2
@@ -64,7 +64,7 @@ Azure Marketplace 中的一些 Linux 虛擬機器映像沒有預設的動態主�
             eno1:
               dhcp6: true
 
-在早期啟動期間，netplan"網路呈現器"將配置寫入 /run，將設備控制移交給指定的網路守護進程有關 NETPLAN 的參考資訊，請參閱https://netplan.io/reference。
+在早期開機期間，netplan 「網路轉譯器」會將設定寫入/run 以將裝置控制權交給指定的網路守護程式，以取得有關 NETPLAN 的https://netplan.io/reference參考資訊，請參閱。
  
 ## <a name="debian"></a>Debian
 

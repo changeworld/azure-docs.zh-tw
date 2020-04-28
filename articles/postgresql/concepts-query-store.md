@@ -1,21 +1,21 @@
 ---
-title: 查詢存儲 - Azure 資料庫，用於 PostgreSQL - 單個伺服器
-description: 本文介紹了 Azure 資料庫中的"PostgreSQL - 單伺服器"中的查詢存儲功能。
+title: 查詢存放區-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文說明適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的查詢存放區功能。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: ccc503e6718ee8f516920cfbea3ad86e7ed81d84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74768260"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查詢存放區監視效能
 
-**適用于：** 用於 PostgreSQL 的 Azure 資料庫 - 單伺服器版本 9.6、10、11
+**適用物件：** 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器版本9.6、10、11
 
 適用於 PostgreSQL 的 Azure 資料庫查詢存放區功能提供的方法可追蹤一段時間的查詢效能。 查詢存放區可協助您快速找到執行時間最長又最耗資源的查詢，簡化效能疑難排解。 查詢存放區會自動擷取查詢的歷程記錄和執行階段統計資料，並予以保留以供您檢閱。 依時間範圍區分資料，以便查看資料庫使用模式。 所有使用者、資料庫及查詢的資料都會儲存在適用於 PostgreSQL 的 Azure 資料庫執行個體中名為 **azure_sys** 的資料庫。
 
@@ -29,14 +29,14 @@ ms.locfileid: "74768260"
 1. 登入 Azure 入口網站，然後選取適用於 PostgreSQL 的 Azure 資料庫伺服器。
 2. 在功能表的 [設定]**** 區段中，選取 [伺服器參數]****。
 3. 搜尋 `pg_qs.query_capture_mode` 參數。
-4. 將值設置為`TOP`和**保存**。
+4. 將值設定為`TOP`並**儲存**。
 
-要在查詢存儲中啟用等待統計資訊，請： 
+若要啟用查詢存放區中的等候統計資料： 
 1. 搜尋 `pgms_wait_sampling.query_capture_mode` 參數。
-1. 將值設置為`ALL`和**保存**。
+1. 將值設定為`ALL`並**儲存**。
 
 
-或者，您可以使用 Azure CLI 設置這些參數。
+或者，您可以使用 Azure CLI 來設定這些參數。
 ```azurecli-interactive
 az postgres server configuration set --name pg_qs.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value TOP
 az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
@@ -58,9 +58,9 @@ az postgres server configuration set --name pgms_wait_sampling.query_capture_mod
 
 為了讓空間使用量降到最低，會經過一段固定且可設定的時間範圍，才彙總執行階段統計資料存放區的執行階段執行統計資料。 查詢這些查詢存放區檢視，即可看到這些存放區中的資訊。
 
-## <a name="access-query-store-information"></a>訪問查詢存儲資訊
+## <a name="access-query-store-information"></a>存取查詢存放區資訊
 
-查詢存儲資料存儲在 Postgres 伺服器上的azure_sys資料庫中。 
+查詢存放區的資料會儲存在 Postgres 伺服器上的 azure_sys 資料庫中。 
 
 下列查詢會傳回查詢存放區中的相關資訊：
 ```sql
@@ -72,7 +72,7 @@ SELECT * FROM query_store.qs_view;
 SELECT * FROM query_store.pgms_wait_sampling_view;
 ```
 
-您還可以向[Azure 監視器日誌](../azure-monitor/log-query/log-query-overview.md)發出查詢存儲資料以進行分析和警報、用於流式處理的事件中心以及用於存檔的 Azure 存儲。 要配置的日誌類別是**查詢存儲運行時統計資訊**和**查詢存儲等待統計資訊**。 要瞭解設置，請訪問[Azure 監視器診斷設置](../azure-monitor/platform/diagnostic-settings.md)一文。
+您也可以將查詢存放區資料發出至[Azure 監視器記錄](../azure-monitor/log-query/log-query-overview.md)以進行分析和警示、事件中樞用於串流處理，以及 Azure 儲存體進行封存。 要設定的記錄類別為**QueryStoreRuntimeStatistics**和**QueryStoreWaitStatistics**。 若要瞭解安裝程式，請造訪[Azure 監視器診斷設定](../azure-monitor/platform/diagnostic-settings.md)一文。
 
 
 ## <a name="finding-wait-queries"></a>尋找等候查詢
@@ -91,7 +91,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 下列選項可用於設定查詢存放區參數。
 
-| **參數** | **描述** | **預設** | **範圍**|
+| **參數** | **說明** | **預設** | **格或**|
 |---|---|---|---|
 | pg_qs.query_capture_mode | 設定追蹤哪些陳述式。 | 無 | none、top、all |
 | pg_qs.max_query_text_length | 設定可以儲存的最大查詢長度。 較長的查詢會遭截斷。 | 6000 | 100 - 10K |
@@ -100,7 +100,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 
 下列選項特別適用於等候統計資料。
 
-| **參數** | **描述** | **預設** | **範圍**|
+| **參數** | **說明** | **預設** | **格或**|
 |---|---|---|---|
 | pgms_wait_sampling.query_capture_mode | 設定追蹤等候統計資料的哪些陳述式。 | 無 | none、all|
 | Pgms_wait_sampling.history_period | 設定以毫秒為單位的等候事件取樣頻率。 | 100 | 1-600000 |
@@ -119,7 +119,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storeqs_view"></a>query_store.qs_view
 此檢視會傳回查詢存放區中的所有資料。 不同的資料庫識別碼、使用者識別碼及查詢識別碼都會自成一資料列。 
 
-|**名稱**   |**類型** | **引用**  | **描述**|
+|**名稱**   |**類型** | **參考**  | **說明**|
 |---|---|---|---|
 |runtime_stats_entry_id |BIGINT | | 來自 runtime_stats_entries 資料表的識別碼|
 |user_id    |oid    |pg_authid.oid  |執行陳述式的使用者物件識別 (OID)|
@@ -152,7 +152,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 此檢視會傳回查詢存放區中的查詢文字資料。 不同的 query_text 都會自成一資料列。
 
-|**名稱**|  **類型**|   **描述**|
+|**名稱**|  **類型**|   **說明**|
 |---|---|---|
 |query_text_id  |BIGINT     |query_texts 資料表識別碼|
 |query_sql_text |Varchar(10000)     |代表性陳述式的文字。 結構相同的不同查詢會群集在一起；此文字就式叢集中第一個查詢的文字。|
@@ -160,14 +160,14 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 此檢視會傳回查詢存放區中的等候事件資料。 不同的資料庫識別碼、使用者識別碼、查詢識別碼及事件都會自成一資料列。
 
-|**名稱**|  **類型**|   **引用**| **描述**|
+|**名稱**|  **類型**|   **參考**| **說明**|
 |---|---|---|---|
 |user_id    |oid    |pg_authid.oid  |執行陳述式的使用者物件識別 (OID)|
 |db_id  |oid    |pg_database.oid    |在其中執行陳述式的資料庫物件識別 (OID)|
 |query_id   |BIGINT     ||從陳述式的剖析樹狀結構計算的內部雜湊碼|
 |event_type |text       ||後端等候中事件的類型|
 |event  |text       ||如果後端目前正在等候，為該等候事件的名稱|
-|calls  |整數         ||擷取到相同事件的次數|
+|calls  |整數        ||擷取到相同事件的次數|
 
 
 ### <a name="functions"></a>函式
@@ -182,7 +182,7 @@ Query_store.staging_data_reset() 傳回 void
 ## <a name="limitations-and-known-issues"></a>限制與已知問題
 - 如果 PostgreSQL 伺服器開啟 default_transaction_read_only 參數，查詢存放區會無法擷取資料。
 - 如果遇到長時間的 Unicode 查詢 (> = 6000 個位元組)，查詢存放區功能可能會中斷。
-- [讀取副本](concepts-read-replicas.md)從主伺服器複製查詢存儲資料。 這意味著讀取副本的查詢存儲不提供有關在讀取副本上運行的查詢的統計資訊。
+- [讀取複本](concepts-read-replicas.md)會從主伺服器複寫查詢存放區資料。 這表示讀取複本的查詢存放區不會提供有關讀取複本上執行之查詢的統計資料。
 
 
 ## <a name="next-steps"></a>後續步驟

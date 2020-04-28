@@ -1,5 +1,5 @@
 ---
-title: 為 Azure AD 庫應用配置聯合 SSO 時出現問題
+title: 設定 Azure AD 資源庫應用程式的同盟 SSO 時發生問題
 description: 解決您可能會在為 Azure AD 應用程式庫中所列的應用程式，使用 SAML 設定同盟單一登入時遇到的一些常見問題
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74274647"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>為 Azure AD 資源庫應用程式設定同盟單一登入時遇到的問題
@@ -42,7 +42,7 @@ ms.locfileid: "74274647"
 
 了解針對應用程式預先設定的模式：
 
-1. 打開[**Azure 門戶**](https://portal.azure.com/)，以**全域管理員**或**共同管理員**身份登錄。轉到步驟 7。 如果您已經有位於 Azure AD 的應用程式設定刀鋒視窗中。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。** 移至步驟7。 如果您已經有位於 Azure AD 的應用程式設定刀鋒視窗中。
 
 2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -52,7 +52,7 @@ ms.locfileid: "74274647"
 
 5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
 
-   * 如果您沒有看到要在此處顯示的應用程式，請使用 **"所有應用程式清單**"頂部的 **"篩選器"** 控制項，並將 **"顯示**"選項設置為 **"所有應用程式"。**
+   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
 
 6. 選取您要設定單一登入的應用程式。
 
@@ -86,7 +86,7 @@ Azure AD 會根據應用程式在 SAML AuthRequest 中選取的值或要求的�
 
 若要從 Azure AD 下載應用程式中繼資料或憑證，請遵循下列步驟：
 
-1. 打開[**Azure 門戶**](https://portal.azure.com/)，以**全域管理員**或**共同管理員**身份登錄。
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**或共同管理員身分登入 **。**
 
 2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -96,7 +96,7 @@ Azure AD 會根據應用程式在 SAML AuthRequest 中選取的值或要求的�
 
 5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
 
-   * 如果您沒有看到要在此處顯示的應用程式，請使用 **"所有應用程式清單**"頂部的 **"篩選器"** 控制項，並將 **"顯示**"選項設置為 **"所有應用程式"。**
+   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
 
 6. 選取您已設定單一登入的應用程式。
 

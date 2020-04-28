@@ -1,6 +1,6 @@
 ---
-title: 自動縮放 v1
-description: 自動縮放和應用服務環境 v1。 此文檔僅提供給使用舊版 v1 ASE 的客戶。
+title: 自動調整 v1
+description: 自動調整和 App Service 環境 v1。 本檔僅為使用舊版 v1 ASE 的客戶提供。
 author: btardif
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
 ms.topic: article
@@ -8,16 +8,16 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74687288"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自動調整和 App Service 環境 v1
 
 > [!NOTE]
-> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 要瞭解有關新版本的更多，從[應用服務環境簡介](intro.md)開始。
+> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從[App Service 環境簡介](intro.md)開始。
 > 
 
 Azure App Service 環境支援「自動調整」 **。 您可以根據度量或排程自動調整個別的背景工作集區。
@@ -55,7 +55,7 @@ App Service 環境的自動調整可使用逐步解說一個案例來加以說�
 本文說明設定自動調整時所有必要的考量。 本文將引導您進行當您納入 App Service 環境所裝載的自動調整 App Service 環境時派上用場的所有互動。
 
 ### <a name="scenario-introduction"></a>案例簡介
-Frank 是企業系統管理員，該企業已將其管理的一部分工作負載遷移到應用服務環境。
+Frank 是企業的系統管理員，負責將其管理的部分工作負載遷移至 App Service 環境。
 
 App Service 環境設為以如下方式手動調整：
 
@@ -68,7 +68,7 @@ App Service 環境設為以如下方式手動調整：
 
 品管和開發人員的 App Service 方案設定為手動調整。 生產 App Service 方案則設為自動調整以處理負載和流量的變化。
 
-Frank 非常熟悉應用程式。 他們知道，負載的尖峰時間是上午 9：00 到下午 6：00，因為這是員工在辦公室時使用的業務線 （LOB） 應用程式。 之後當使用者下班時，使用量便會下降。 非尖峰時間仍會有一些負載，因為使用者可以使用其行動裝置或家用電腦從遠端存取應用程式。 生產 App Service 方案已利用下列規則設定為根據 CPU 使用量自動調整：
+Frank 非常熟悉應用程式。 他們知道負載的尖峰時數介於 9:00 AM 和 6:00 PM 之間，因為這是員工在辦公室內使用的企業營運（LOB）應用程式。 之後當使用者下班時，使用量便會下降。 非尖峰時間仍會有一些負載，因為使用者可以使用其行動裝置或家用電腦從遠端存取應用程式。 生產 App Service 方案已利用下列規則設定為根據 CPU 使用量自動調整：
 
 ![LOB 應用程式的特定設定。][asp-scale]
 
@@ -96,7 +96,7 @@ Frank 非常熟悉應用程式。 他們知道，負載的尖峰時間是上午 
 | **資源：** 生產環境 (App Service 環境) |**資源：** 生產環境 (App Service 環境) |
 | **度量：** CPU % |**度量：** CPU % |
 | **作業：** 少於 30 % |**作業：** 少於 20 % |
-| **時間：** 10 分鐘 |**持續時間：** 15 分鐘 |
+| **持續時間：** 10 分鐘 |**持續時間：** 15 分鐘 |
 | **時間彙總：** 平均 |**時間彙總：** 平均 |
 | **動作：** 計數減少 1 |**動作：** 計數減少 1 |
 | **冷卻時間 (分鐘)：** 20 |**冷卻時間 (分鐘)：** 10 |
@@ -212,7 +212,7 @@ App Service 方案擴大率的計算方式如下：
 | **資源：** 背景工作集區 1 |
 | **度量：** CPU % |
 | **作業：** 少於 30 % |
-| **時間：** 20 分鐘 |
+| **持續時間：** 20 分鐘 |
 | **時間彙總：** 平均 |
 | **動作：** 計數減少 3 |
 | **冷卻時間 (分鐘)：** 120 |

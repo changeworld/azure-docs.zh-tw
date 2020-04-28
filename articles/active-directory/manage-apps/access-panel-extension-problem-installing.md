@@ -1,5 +1,5 @@
 ---
-title: 安裝應用程式訪問面板瀏覽器延伸 - Azure AD
+title: 安裝應用程式存取面板瀏覽器延伸模組-Azure AD
 description: 修正在安裝存取面板的瀏覽器擴充功能時所遇到的常見錯誤。
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 771ba79f067cbff1ab8bbfece64f4028b4ca50b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74275865"
 ---
 # <a name="install-the-access-panel-browser-extension"></a>安裝存取面板的瀏覽器擴充功能
@@ -52,7 +52,7 @@ ms.locfileid: "74275865"
 3.  當系統提示您時，選取 [立即安裝]****。  
     系統會將您導向至所選取瀏覽器的下載連結。 
     
-4.  選取 [加入]****。
+4.  選取 [新增]  。
 
 5.  如果您看到系統提示，請 [啟用]**** 或 [允許]**** 擴充功能。
 
@@ -64,7 +64,7 @@ ms.locfileid: "74275865"
 
 - [Chrome 擴充功能](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 - [Microsoft Edge 延伸模組](https://www.microsoft.com/en-us/p/my-apps-secure-sign-in-extension/9pc9sckkzk84)
-- [火狐擴展](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
+- [Firefox 延伸模組](https://addons.mozilla.org/en-US/firefox/addon/access-panel-extension/)
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>使用 My Apps 安全登入擴充功能
 * 如果您是使用 `https://myapps.microsoft.com` 以外的 My Apps URL，請執行下列作業來設定您的預設 URL：
@@ -89,8 +89,8 @@ ms.locfileid: "74275865"
        您所使用的最後三個應用程式會顯示在 [最近使用的]**** 捷徑清單中。
        
 * 若要遠端使用公司內部 URL，請執行下列作業：
-    1. [在租戶上配置應用程式代理](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable)
-    2. 通過[應用程式代理髮布應用程式](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)和 URL
+    1. 在您的租使用者上[設定應用程式 Proxy](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-enable)
+    2. 透過應用程式 Proxy[發佈應用程式](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal)和 URL
     3. 安裝延伸模組，然後藉由選取 [登入以開始使用] 來登入該延伸模組
     4. 即使在遠端，您還是可以立即瀏覽至公司內部 URL
 
@@ -128,4 +128,4 @@ ms.locfileid: "74275865"
 -   Fiddler 追蹤
 
 ## <a name="next-steps"></a>後續步驟
-[什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](what-is-single-sign-on.md)
+[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](what-is-single-sign-on.md)

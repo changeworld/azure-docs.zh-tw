@@ -1,6 +1,6 @@
 ---
-title: Linux 容器的部署選項
-description: 在自訂 Docker 容器部署、多容器和 Linux 上應用服務的內置應用程式框架之間進行決策。
+title: 適用于 Linux 容器的部署選項
+description: 在 Linux 上的 App Service 的自訂 Docker 容器部署、多容器和內建應用程式架構之間做出決定。
 keywords: azure app service, web 應用程式, linux, oss
 author: msangapu-msft
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 05/04/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 7c4025e393c196fb98455bac26e94e5f252840b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74687504"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>自訂映像、多容器或內建平台映像？
@@ -19,7 +19,7 @@ ms.locfileid: "74687504"
 [Linux 上的 App Service](app-service-linux-intro.md) 提供三種不同的路徑將應用程式發佈到網路上：
 
 - **自訂映像部署**：將您的應用程式 Docker 化成為 Docker 映像，您所有的檔案和相依性都包含在執行就緒的封裝之中。
-- **多容器部署**：使用 Docker 組合設定檔跨多個容器"裝貨"你的應用。
+- **多容器部署**：使用 Docker Compose 的設定檔，在多個容器中「docker 化」您的應用程式。
 - **使用內建平台映像的應用程式部署**：我們的內建平台映像包含常用的 Web 應用程式執行階段和相依性，例如節點和 PHP。 使用任何一種 [Azure App Service 部署方法](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)，將您的應用程式部署至 Web 應用程式的存放區，然後使用內建的平台映像執行應用程式。
 
 ## <a name="which-method-is-right-for-your-app"></a>哪一種方法最適合您的應用程式？ 
@@ -43,11 +43,11 @@ ms.locfileid: "74687504"
 多容器：
 * [建立多個容器應用程式](quickstart-multi-container.md)
 
-以下文章通過內置平臺映射開始在 Linux 上應用服務：
+下列文章可協助您開始使用 Linux 上的 App Service 與內建的平臺映射：
 
 * [.NET Core](quickstart-dotnetcore.md)
-* [Php](quickstart-php.md)
+* [PHP](quickstart-php.md)
 * [Node.js](quickstart-nodejs.md)
-* [JAVA](quickstart-java.md)
+* [Java](quickstart-java.md)
 * [Python](quickstart-python.md)
-* [紅寶石](quickstart-ruby.md)
+* [Ruby](quickstart-ruby.md)

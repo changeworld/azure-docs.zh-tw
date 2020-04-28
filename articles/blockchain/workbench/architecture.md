@@ -1,21 +1,21 @@
 ---
 title: Azure Blockchain Workbench 架構
-description: Azure 區塊鏈工作臺預覽體系結構及其元件概述。
+description: 概述 Azure Blockchain Workbench 預覽架構及其元件。
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
 ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74324888"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench 架構
 
-Azure 區塊鏈工作臺預覽版通過使用多個 Azure 元件提供解決方案，簡化了區塊鏈應用程式開發。 您可以使用 Azure Marketplace 中的解決方案範本來部署 Blockchain Workbench。 範本可讓您挑選要部署的模組和元件，包括區塊鏈堆疊、用戶端應用程式類型及 IoT 整合支援。 Blockchain Workbench 一經部署，即可提供 Web 應用程式、iOS 應用程式和 Android 應用程式的存取權。
+Azure Blockchain Workbench Preview 藉由提供使用數個 Azure 元件的解決方案，來簡化區塊鏈應用程式開發。 您可以使用 Azure Marketplace 中的解決方案範本來部署 Blockchain Workbench。 範本可讓您挑選要部署的模組和元件，包括區塊鏈堆疊、用戶端應用程式類型及 IoT 整合支援。 Blockchain Workbench 一經部署，即可提供 Web 應用程式、iOS 應用程式和 Android 應用程式的存取權。
 
-![區塊鏈工作臺架構](./media/architecture/architecture.png)
+![Blockchain Workbench 架構](./media/architecture/architecture.png)
 
 ## <a name="identity-and-authentication"></a>身分識別和驗證
 

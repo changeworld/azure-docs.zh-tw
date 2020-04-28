@@ -1,27 +1,27 @@
 ---
-title: 佈建服務器參數 - Azure 門戶 - 後資料庫的 Azure 資料庫 - 單個伺服器
-description: 本文介紹如何通過 Azure 門戶為 PostgreSQL 在 Azure 資料庫中配置 Postgres 參數。
+title: 設定伺服器參數-Azure 入口網站適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文說明如何透過 Azure 入口網站在適用於 PostgreSQL 的 Azure 資料庫中設定 Postgres 參數。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: a9d078fe9aab12b9044733d17a1437801d5130a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74763669"
 ---
-# <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>在 Azure 資料庫中為 PostgreSQL 佈建服務器參數 - 通過 Azure 門戶配置單個伺服器 
+# <a name="configure-server-parameters-in-azure-database-for-postgresql---single-server-via-the-azure-portal"></a>在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中透過 Azure 入口網站設定伺服器參數 
 您可以透過 Azure 入口網站列出、顯示、更新適用於 PostgreSQL 的 Azure 資料庫伺服器的設定參數。
 
 ## <a name="prerequisites"></a>Prerequisites
 為了逐步執行本作法指南，您需要︰
-- [後格雷SQL伺服器的 Azure 資料庫](quickstart-create-server-database-portal.md)
+- [適用於 PostgreSQL 的 Azure 資料庫伺服器](quickstart-create-server-database-portal.md)
 
 ## <a name="viewing-and-editing-parameters"></a>檢視和編輯參數
-1. 打開[Azure 門戶](https://portal.azure.com)。
+1. 開啟 [Azure 入口網站](https://portal.azure.com)。
 
 2. 選取適用於 PostgreSQL 的 Azure 資料庫伺服器。
 

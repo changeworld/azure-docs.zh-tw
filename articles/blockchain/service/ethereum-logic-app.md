@@ -1,14 +1,14 @@
 ---
-title: 將以地圖姆區塊鏈連接器與 Azure 邏輯應用一起使用 - Azure 區塊鏈服務
+title: 搭配 Azure Logic Apps 使用乙太坊區塊鏈連接器-Azure 區塊鏈服務
 description: 使用 Ethereum 區塊鏈連接器搭配 Azure Logic Apps，觸發智慧型合約函式及回應智慧型合約事件。
 ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: chrisseg
 ms.openlocfilehash: 4a9acfd6098ed45fd92c7e3047b5d1446eeddbd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74325211"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>使用 Ethereum 區塊鏈連接器搭配 Azure Logic Apps
@@ -17,13 +17,13 @@ ms.locfileid: "74325211"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-完成可選的先決條件[快速入門：使用視覺化工作室代碼連接到 Azure 區塊鏈服務聯盟網路](connect-vscode.md)。 此快速入門會引導您安裝[適用於 Ethereum 的 Azure 區塊鏈服務開發套件](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)，並設定您的區塊鏈開發環境。
+完成選用的必要條件[快速入門：使用 Visual Studio Code 連接到 Azure 區塊鏈 Service 聯盟網路](connect-vscode.md)。 此快速入門會引導您安裝[適用於 Ethereum 的 Azure 區塊鏈服務開發套件](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)，並設定您的區塊鏈開發環境。
 
 ## <a name="create-a-logic-app"></a>建立邏輯應用程式
 
 當您需要整合系統和服務時，Azure Logic Apps 可協助您排程及自動化商務程序和工作流程。 首先，您必須建立使用 Ethereum 區塊鏈連接器的邏輯。
 
-1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源]**** > [整合]**** > [邏輯應用程式]****。
+1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源]   > [整合]   > [邏輯應用程式]  。
 1. 在 [建立邏輯應用程式]**** 底下，提供關於應在何處建立邏輯應用程式的詳細資訊。 在完成作業後，選取 [建立]****。
 
     如需如何建立邏輯應用程式的詳細資訊，請參閱[使用 Azure Logic Apps 來建立自動化工作流程](../../logic-apps/quickstart-create-first-logic-app-workflow.md)。
@@ -37,8 +37,8 @@ Ethereum 區塊鏈連接器有一個觸發程序和數個動作。 您應使用�
 
 如果您的工作流程：
 
-* 當在區塊鏈上發生事件時觸發，[使用事件觸發器](#use-the-event-trigger)。
-* 查詢或部署智慧合約，[使用 操作](#use-actions)。
+* 在區塊鏈上發生事件時觸發，請[使用事件觸發](#use-the-event-trigger)程式。
+* 查詢或部署智慧合約，[使用動作](#use-actions)。
 * 屬於常見的案例，請[使用開發人員套件來產生工作流程](#generate-a-workflow)。
 
 ## <a name="use-the-event-trigger"></a>使用事件觸發程序
@@ -59,7 +59,7 @@ Ethereum 區塊鏈連接器有一個觸發程序和數個動作。 您應使用�
     | **事件名稱** | 選取要檢查的智慧型合約事件。 此事件會觸發邏輯應用程式。 |
     | **間隔**和**頻率** | 選取您要檢查事件的頻率。 |
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 若要完成您的邏輯應用程式，您可以新增一個根據 Ethereum 區塊鏈事件觸發程序執行動作的步驟。 例如，傳送電子郵件。
 
@@ -81,7 +81,7 @@ Ethereum 區塊鏈連接器有一個觸發程序和數個動作。 您應使用�
     | 屬性 | 描述 |
     |----------|-------------|
     | **合約 ABI** | 合約 ABI 會定義智慧型合約的介面。 如需詳細資訊，請參閱[取得合約 ABI](#get-the-contract-abi)。 |
-    | **合同位元組碼** | 已編譯的智慧型合約位元組程式碼。 如需詳細資訊，請參閱[取得合約位元組程式碼](#get-the-contract-bytecode)。 |
+    | **合約位元組碼** | 已編譯的智慧型合約位元組程式碼。 如需詳細資訊，請參閱[取得合約位元組程式碼](#get-the-contract-bytecode)。 |
     | **智慧型合約位址** | 合約位址是 Ethereum 區塊鏈上的智慧型合約目的地位址。 如需詳細資訊，請參閱[取得合約位址](#get-the-contract-address)。 |
     | **智慧型合約函式名稱** | 選取動作的智慧型合約函式名稱。 清單中會填入合約 ABI 中的詳細資料。 |
 
@@ -98,7 +98,7 @@ Ethereum Visual Studio Code 延伸模組的 Azure 區塊鏈服務開發套件可
 * 報告發佈
 * 以 REST 為基礎的微服務
 
- Azure 區塊鏈服務開發套件會使用 Truffle 來簡化區塊鏈開發。 若要根據智慧型合約產生邏輯應用程式，您需要智慧型合約的 Truffle 解決方案。 您也需要連線至您的 Azure 區塊鏈服務聯盟網路。 有關詳細資訊，請參閱[使用視覺化工作室代碼連接到 Azure 區塊鏈服務聯盟網路快速啟動](connect-vscode.md)。
+ Azure 區塊鏈服務開發套件會使用 Truffle 來簡化區塊鏈開發。 若要根據智慧型合約產生邏輯應用程式，您需要智慧型合約的 Truffle 解決方案。 您也需要連線至您的 Azure 區塊鏈服務聯盟網路。 如需詳細資訊，請參閱[使用 Visual Studio Code 連接到 Azure 區塊鏈 Service 聯盟網路快速入門](connect-vscode.md)。
 
 例如，下列步驟會根據快速入門 **HelloBlockchain** 智慧型合約，產生以 REST 為基礎的微服務邏輯應用程式：
 
@@ -132,7 +132,7 @@ Ethereum Visual Studio Code 延伸模組的 Azure 區塊鏈服務開發套件可
 
     ![具有 HTTP POST URL 的 Logic Apps 設計工具窗格](./media/ethereum-logic-app/post-url.png)
 
-1. 使用 cURL 建立 HTTP POST 要求。 將預留位置文字*\<HTTP\> POST URL*替換為上一步驟中的 URL。
+1. 使用 cURL 建立 HTTP POST 要求。 以上一個步驟中的 URL 取代預留位置 text * \<HTTP POST URL\> * 。
 
     ``` bash
     curl -d "{}" -H "Content-Type: application/json" -X POST "<HTTP POST URL>"
@@ -176,12 +176,12 @@ Ethereum 區塊鏈連接器需要與區塊鏈的 API 連線。 您可以對多�
 
 **使用 Azure 入口網站：**
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 移至您的 Azure 區塊鏈服務成員。 選取 [交易節點]**** 和預設交易節點連結。
 
     ![交易節點頁面，已選取 [(預設節點)]](./media/ethereum-logic-app/transaction-nodes.png)
 
-1. 選擇**連接字串** > **便捷鍵**。
+1. 選取 [**連接字串** > ] [**存取金鑰**]。
 1. 從 [HTTPS (存取金鑰 1)]**** 或 [HTTPS (存取金鑰 2)]**** 複製端點位址。
 
     ![具有連接字串存取金鑰的 Azure 入口網站](./media/ethereum-logic-app/connection-string.png)
@@ -193,7 +193,7 @@ Ethereum 區塊鏈連接器需要與區塊鏈的 API 連線。 您可以對多�
 您可以在將交易傳送至區塊鏈時，使用 Ethereum 帳戶的私密金鑰來進行驗證。 您的 Ethereum 帳戶公開和私密金鑰是由 12 個字的助憶鍵產生的。 當您連線至 Azure 區塊鏈服務聯盟成員時，適用於 Ethereum 的 Azure 區塊鏈服務開發套件就會產生助憶鍵。 您可以使用開發套件延伸模組來取得端點位址。
 
 1. 在 Visual Studio Code 中，開啟命令選擇區 (F1)。
-1. 選擇**Azure 區塊鏈：檢索私密金鑰**。
+1. 選取 [ **Azure 區塊鏈：取出私密金鑰**]。
 1. 選取您連線至聯盟成員時所儲存的助憶鍵。
 
     ![命令選擇區，具有可選取助憶鍵的選項](./media/ethereum-logic-app/private-key.png)
@@ -205,7 +205,7 @@ Ethereum 區塊鏈連接器需要與區塊鏈的 API 連線。 您可以對多�
 您可以在將交易傳送至區塊鏈時，使用成員帳戶和密碼來進行驗證。 密碼會在您建立成員時設定。
 
 1. 在 Azure 入口網站中，移至您 Azure 區塊鏈服務的概觀頁面。
-1. 複製**會員帳戶**位址。
+1. 複製**成員帳戶**位址。
 
     ![[概觀] 頁面，具有成員帳戶位址](./media/ethereum-logic-app/member-account.png)
 

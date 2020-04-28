@@ -1,5 +1,5 @@
 ---
-title: 在 Azure VM 上使用託管標識登錄 - Azure AD
+title: 使用 Azure VM 上的受控識別來登入 Azure AD
 description: 使用 Azure 虛擬機器 Azure 資源的受控識別服務主體來進行指令碼用戶端登入和資源存取的逐步指示與範例。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74547394"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>如何使用 Azure VM 的 Azure 資源受控識別進行登入 
@@ -39,7 +39,7 @@ ms.locfileid: "74547394"
 > - 本文中的所有範例指令碼都假設命令列用戶端在已啟用 Azure 資源受控識別的虛擬機器上執行。 在 Azure 入口網站中使用虛擬機器「連線」功能，從遠端連線到您的虛擬機器。 如需有關在虛擬機器上啟用 Azure 資源受控識別的詳細資訊，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)，或其中一篇變化文章 (使用 PowerShell、CLI、範本或 Azure SDK)。 
 > - 若要避免資源存取期間發生錯誤，虛擬機器的受控識別必須至少取得適當範圍 (該虛擬機器或更高層級) 的「讀者」存取權，以允許在虛擬機器上進行 Azure Resource Manager 作業。 如需詳細資訊，請參閱[使用 Azure 入口網站將 Azure 資源的受控識別指派給資源](howto-assign-access-portal.md)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure 資源的受控識別提供[服務主體物件](../develop/developer-glossary.md#service-principal-object)，這是[啟用 Azure 資源的受控識別時建立](overview.md#how-does-the-managed-identities-for-azure-resources-work)的物件。 服務主體可以獲得 Azure 資源的存取權，並可讓指令碼/命令列用戶端用來作為登入及存取資源時的身分識別。 傳統上，若要以受保護資源本身的身分識別來存取該資源，指令碼用戶端需要：  
 
@@ -87,14 +87,14 @@ Azure 資源的受控識別提供[服務主體物件](../develop/developer-gloss
 以下所示的回應可能代表虛擬機器的 Azure 資源受控識別未正確設定：
 
 - PowerShell：Invoke-WebRequest：無法連線到遠端伺服器**
-- *CLI：MSI：`http://localhost:50342/oauth2/token`未能從"HTTPConnectionPool（主機='本地主機"，埠=50342）的錯誤中檢索權杖* 
+- CLI： *MSI：無法從`http://localhost:50342/oauth2/token`取得權杖，錯誤為 ' 包含 HTTPconnectionpool （主機 = ' localhost '，埠 = 50342）* 
 
 如果您收到這些錯誤的其中一個，請返回 [Azure 入口網站](https://portal.azure.com)中的 Azure 虛擬機器，並且：
 
 - 移至 [身分識別]**** 頁面，並確保 [系統指派]**** 設為 [是]。
 - 移至 [延伸模組]**** 頁面，並確定已成功部署適用於 Azure 資源的受控識別延伸模組 **(已計劃在 2019 年 1 月淘汰)**。
 
-如果其中一者不正確，您可能需要再次在資源上重新部署 Azure 資源受控識別，或針對部署失敗進行疑難排解。 如果需要有關 VM 配置的説明[，請參閱使用 Azure 門戶為 VM 上的 Azure 資源配置託管標識](qs-configure-portal-windows-vm.md)。
+如果其中一者不正確，您可能需要再次在資源上重新部署 Azure 資源受控識別，或針對部署失敗進行疑難排解。 如果您需要 VM 設定的協助，請參閱[使用 Azure 入口網站在 vm 上設定 Azure 資源的受控](qs-configure-portal-windows-vm.md)識別。
 
 ## <a name="next-steps"></a>後續步驟
 

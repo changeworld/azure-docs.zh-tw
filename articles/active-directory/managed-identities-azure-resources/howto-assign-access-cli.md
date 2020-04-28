@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI - Azure AD 為資源配置託管標識存取權限
+title: 使用 Azure CLI Azure AD，為受控識別指派對資源的存取權
 description: 以下逐步指示說明如何使用 Azure CLI 為一項資源的受控識別指派對另一項資源的存取權。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 12/06/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b241ac223fd1eb9df2b0a914726d8f37df5f4d88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74547367"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>使用 Azure CLI 為受控識別指派對資源的存取權
@@ -49,7 +49,7 @@ ms.locfileid: "74547367"
    az login
    ```
 
-2. 在此範例中，我們會將 Azure 虛擬機器存取權給予儲存體帳戶。 首先，我們使用[az 資源清單](/cli/azure/resource/#az-resource-list)來獲取名為 myVM 的虛擬機器的服務主體：
+2. 在此範例中，我們會將 Azure 虛擬機器存取權給予儲存體帳戶。 首先，我們會使用[az resource list](/cli/azure/resource/#az-resource-list)來取得名為 myVM 之虛擬機器的服務主體：
 
    ```azurecli-interactive
    spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)

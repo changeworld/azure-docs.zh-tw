@@ -1,19 +1,19 @@
 ---
-title: 配置警報 - Azure 門戶 - 用於 PostgreSQL 的 Azure 資料庫 - 單個伺服器
-description: 本文介紹如何配置和訪問 Azure 資料庫的度量警報，用於 PostgreSQL - 從 Azure 門戶中的單個伺服器。
+title: 設定警示-Azure 入口網站-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文說明如何從 Azure 入口網站設定和存取適用於 PostgreSQL 的 Azure 資料庫單一伺服器的計量警示。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: fe099dcb49d176d27466c08749a5873904d1ae2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74766832"
 ---
-# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>使用 Azure 門戶為 PostgreSQL - 單伺服器的 Azure 資料庫的指標設置警報
+# <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>使用 Azure 入口網站來設定適用於 PostgreSQL 的 Azure 資料庫單一伺服器的計量警示
 
 本文說明如何使用 Azure 入口網站來設定「適用於 PostgreSQL 的 Azure 資料庫」警示。 您可以收到以 Azure 服務的監視計量為基礎的警示。
 
@@ -25,7 +25,7 @@ ms.locfileid: "74766832"
 * 呼叫 Webhook。
 
 您可以透過下列方式，來設定及取得警示規則的相關資訊：
-* [Azure 門戶](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure 入口網站](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure 監視器 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -48,7 +48,7 @@ ms.locfileid: "74766832"
    
    ![選取計量](./media/howto-alert-on-metric/6-configure-signal-logic.png)
 
-7. 設定警示邏輯，包括**條件** (例如， "Greater than")、**閾值** (例如， 85 percent)、**時間彙總**，觸發警示之前，必須滿足計量規則的**期間** (例如， "在過去30分鐘"）和**頻率**。
+7. 設定警示邏輯，包括**條件** (例如， "Greater than")、**閾值** (例如， 85 percent)、**時間彙總**，觸發警示之前，必須滿足計量規則的**期間** (例如， 「過去30分鐘內」）和**頻率**。
    
    完成時選取 [完成]****。
 

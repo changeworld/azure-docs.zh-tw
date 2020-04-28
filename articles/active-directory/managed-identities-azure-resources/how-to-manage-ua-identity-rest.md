@@ -1,5 +1,5 @@
 ---
-title: 使用 REST 管理使用者分配的託管標識 - Azure AD
+title: 使用 REST Azure AD 管理使用者指派的受控識別
 description: 逐步說明如何建立、列出和刪除使用者指派的受控識別，以進行 REST API 呼叫。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 06/26/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 39e108451e4c19e77e01b5bcc5d8dd21e86ad73a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74547419"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>使用 REST API 呼叫建立、列出和刪除使用者指派的受控識別
@@ -63,11 +63,11 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 |要求標頭  |描述  |
 |---------|---------|
 |*內容類型*     | 必要。 設定為 `application/json`。        |
-|*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
+|*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
 
-**請求正文**
+**要求本文**
 
-|名稱  |描述  |
+|名稱  |說明  |
 |---------|---------|
 |location     | 必要。 資源位置。        |
 
@@ -86,7 +86,7 @@ GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/
 |要求標頭  |描述  |
 |---------|---------|
 |*內容類型*     | 必要。 設定為 `application/json`。        |
-|*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
+|*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
 
 ## <a name="delete-a-user-assigned-managed-identity"></a>刪除使用者指派的受控識別
 
@@ -106,7 +106,7 @@ DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616
 |要求標頭  |描述  |
 |---------|---------|
 |*內容類型*     | 必要。 設定為 `application/json`。        |
-|*授權*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
+|*驗證*     | 必要。 設定為有效的 `Bearer` 存取權杖。        |
 
 ## <a name="next-steps"></a>後續步驟
 

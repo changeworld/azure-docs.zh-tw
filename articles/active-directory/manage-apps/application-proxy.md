@@ -1,5 +1,5 @@
 ---
-title: 遠端存取本地應用 - Azure AD 應用程式代理
+title: 對內部部署應用程式的遠端存取-Azure AD 應用程式 Proxy
 description: Azure Active Directory 應用程式 Proxy 為內部部署 Web 應用程式提供安全的遠端存取。 單一登入 Azure AD 後，使用者可以透過外部 URL 或內部應用程式入口網站存取雲端和內部部署應用程式。 例如，應用程式 Proxy 可以為遠端桌面、SharePoint、Teams、Tableau、Qlik 和企業營運 (LOB) 應用程式提供遠端存取和單一登入。
 services: active-directory
 author: msmimart
@@ -13,10 +13,10 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4780786f0caea2c211b6b93fb0736feaade8de80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74274842"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>透過 Azure Active Directory 應用程式 Proxy 遠端存取內部部署應用程式 
@@ -27,7 +27,7 @@ Azure AD 應用程式 Proxy：
 
 - **用法簡單**。 使用者可以使用和 O365 以及其他與 Azure AD 整合之 SaaS 應用程式相同的存取方式，來存取內部部署應用程式。 您不需要變更或更新應用程式，即可使用應用程式 Proxy。 
 
-- **安全**。 內部部署應用程式可以使用 Azure 的授權控制項和安全性分析。 例如，本地應用程式可以使用條件訪問和兩步驗證。 應用程式 Proxy 不需要您穿過防火牆開啟輸入連線。
+- **安全**。 內部部署應用程式可以使用 Azure 的授權控制項和安全性分析。 例如，內部部署應用程式可以使用條件式存取和雙步驟驗證。 應用程式 Proxy 不需要您穿過防火牆開啟輸入連線。
  
 - **符合成本效益**。 內部部署解決方案則一般需要您設定及維護周邊網路 (DMZ)、Edge Server 或其他複雜的基礎結構。 應用程式 Proxy 在雲端中執行，這使其更容易使用。 若要使用應用程式 Proxy，您不需要變更網路基礎結構，或在內部部署環境中安裝額外的設備。
 
@@ -44,7 +44,7 @@ Azure AD 應用程式 Proxy：
 
 應用程式 Proxy 支援單一登入。 如需有關支援的方法的詳細資訊，請參閱[選擇單一登入方法](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。
 
-建議使用應用程式代理來允許遠端使用者訪問內部資源。 應用程式代理取代了對 VPN 或反向代理的需求。 它不適用於公司網路上的內部使用者。  這些不必要地使用應用程式代理的使用者可能會帶來意外和不受歡迎的性能問題。
+建議使用應用程式 Proxy，讓遠端使用者存取內部資源。 應用程式 Proxy 會取代 VPN 或反向 Proxy 的需求。 不適合用于公司網路上的內部使用者。  這些不必要地使用應用程式 Proxy 的使用者可能會產生非預期且不想要的效能問題。
 
 ## <a name="how-application-proxy-works"></a>應用程式 Proxy 的運作方式為何
 
@@ -69,7 +69,7 @@ Azure AD 應用程式 Proxy：
 | 內部部署應用程式 | 最後，使用者就能夠存取內部部署應用程式。 
 
 ## <a name="next-steps"></a>後續步驟
-要開始使用應用程式代理，請參閱[教程：添加本地應用程式，以便通過應用程式代理進行遠端存取](application-proxy-add-on-premises-application.md)。 
+若要開始使用應用程式 Proxy，請參閱[教學課程：新增內部部署應用程式以透過應用程式 proxy 進行遠端存取](application-proxy-add-on-premises-application.md)。 
 
 如需最新消息，請參閱[應用程式 Proxy 部落格](https://blogs.technet.com/b/applicationproxyblog/)
 

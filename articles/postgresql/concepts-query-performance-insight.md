@@ -1,21 +1,21 @@
 ---
-title: 查詢性能洞察 - Azure 資料庫，用於 PostgreSQL - 單個伺服器
-description: 本文介紹了 Azure 資料庫中用於 PostgreSQL - 單伺服器的查詢性能洞察功能。
+title: 查詢效能深入解析-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文說明適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的查詢效能深入解析功能。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.openlocfilehash: dd5b4ec53d82421ddd9d680ca41e48eeecc43c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74768379"
 ---
 # <a name="query-performance-insight"></a>查詢效能深入解析 
 
-**適用于：** 用於 PostgreSQL 的 Azure 資料庫 - 單伺服器版本 9.6、10、11
+**適用物件：** 適用於 PostgreSQL 的 Azure 資料庫-單一伺服器版本9.6、10、11
 
 查詢效能深入解析可協助您快速找出執行時間最長的查詢、一段時間後的變化情形，以及受到哪些等候的影響。
 
@@ -28,11 +28,11 @@ ms.locfileid: "74768379"
 ## <a name="viewing-performance-insights"></a>檢視效能深入解析
 Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-insight.md)檢視會以視覺效果呈現來自查詢存放區的重要資訊。 
 
-在 PostgreSQL 伺服器 Azure 資料庫的門戶頁中，在功能表列的**智慧性能**部分下選擇 **"查詢性能見解**"。
+在適用於 PostgreSQL 的 Azure 資料庫伺服器的入口網站頁面中，于功能表列的 [**智慧效能**] 區段底下，選取 [**查詢效能深入**解析]。
 
 ![查詢效能深入解析長時間執行的查詢](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 
-**"長時間執行查詢"** 選項卡按每次執行的平均持續時間顯示前五個查詢，以 15 分鐘間隔聚合。 您可以從 [查詢數目]**** 下拉式清單中選取，以檢視更多查詢。 當您這樣做時，特定查詢識別碼的圖表色彩可能會有所變更。
+[**長時間**執行的查詢] 索引標籤會依每次執行的平均持續時間，顯示前五項查詢，以15分鐘的間隔匯總。 您可以從 [查詢數目]**** 下拉式清單中選取，以檢視更多查詢。 當您這樣做時，特定查詢識別碼的圖表色彩可能會有所變更。
 
 您可以在圖表中按一下並拖曳來縮小到特定時間範圍。 或者，使用放大和縮小圖示，分別檢視一段較短或較長的時間。
 
@@ -40,10 +40,10 @@ Azure 入口網站中的[查詢效能深入解析](concepts-query-performance-in
 
 選取 [等候統計資料]**** 索引標籤，以檢視伺服器中等候的對應視覺效果。
 
-![查詢性能洞察等待統計資訊](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![查詢效能深入解析等候統計資料](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
 ## <a name="considerations"></a>考量
-* 查詢性能見解不適用於[讀取副本](concepts-read-replicas.md)。
+* 查詢效能深入解析無法供[讀取複本](concepts-read-replicas.md)使用。
 
 ## <a name="next-steps"></a>後續步驟
 - 深入了解在適用於 PostgreSQL 的 Azure 資料庫中進行[監視和微調](concepts-monitoring.md)。

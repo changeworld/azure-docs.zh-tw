@@ -1,5 +1,5 @@
 ---
-title: 排除 Kerberos 限制委派 - 應用程式代理
+title: 針對 Kerberos 限制委派進行疑難排解-應用程式 Proxy
 description: 針對應用程式 Proxy 的 Kerberos 限制委派設定進行疑難排解
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74275687"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>針對應用程式 Proxy 的 Kerberos 限制委派設定進行疑難排解
@@ -46,7 +46,7 @@ Azure AD 應用程式 Proxy 可以部署到許多類型的基礎結構或環境�
 
 - 網域成員伺服器開啟與特定網域控制站 (DC) 的安全通道對話並非罕見的情況。 接著，伺服器可能會在任何指定時間移至另一個對話。 因此，連接器主機並不受限於只能與特定本機網站 DC 進行通訊。
 - 跨網域案例有賴於將連接器主機導向至 DC 的轉介，而這些 DC 可能位於本機網路周邊之外。 在這些情況下，將流量也向前傳送至代表其他個別網域的 DC 也一樣重要。 如果不這麼做，委派就會失敗。
-- 請儘可能避免在連接器主機與 DC 之間放置任何作用中的 IPS 或 IDS 裝置。 這些設備有時過於侵入，干擾核心 RPC 流量。
+- 請儘可能避免在連接器主機與 DC 之間放置任何作用中的 IPS 或 IDS 裝置。 這些裝置有時候會過度侵入，並干擾核心 RPC 流量。
 
 請在簡單的案例中測試委派。 您所引進的變數越多，可能要應用的問題就越多。 為了節省時間，請將您的測試限制在單一連接器。 請在問題解決後，再新增額外的連接器。
 
@@ -56,9 +56,9 @@ Azure AD 應用程式 Proxy 可以部署到許多類型的基礎結構或環境�
 
 什麼會顯現 KCD 問題？ 有數個代表 KCD SSO 失敗的常見指示。 最初的問題跡象會出現在瀏覽器。
 
-![示例：KCD 配置錯誤不正確](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
+![範例：不正確的 KCD 設定錯誤](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
 
-![示例：由於缺少許可權，授權失敗](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
+![範例：因為缺少許可權而導致授權失敗](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
 這兩個影像都顯示相同的徵狀：SSO 失敗。 使用者對應用程式的存取遭到拒絕。
 
@@ -84,7 +84,7 @@ Azure AD 應用程式 Proxy 可以部署到許多類型的基礎結構或環境�
 
 如先前所述，瀏覽器錯誤訊息會提供有關失敗原因的一些良好線索。 請務必記下回應中的活動識別碼和時間戳記。 此資訊將可協助您將行為與 Azure Proxy 事件記錄檔中的實際事件相互關聯。
 
-![示例：KCD 配置錯誤不正確](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
+![範例：不正確的 KCD 設定錯誤](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
 在事件記錄檔中看到的對應項目會顯示為事件 13019 或 12027。 您可以在 [應用程式及服務記錄]** [Microsoft]** &gt; ** [AadApplicationProxy]** &gt; ** [連接器]** &gt; ** [管理]** &gt; **** 中，找到連接器事件記錄。
 
@@ -129,7 +129,7 @@ Azure AD 應用程式 Proxy 可以部署到許多類型的基礎結構或環境�
 
      「因為後端伺服器以 HTTP 401 錯誤回應 Kerberos 驗證嘗試，Microsoft AAD 應用程式 Proxy 連接器便無法驗證使用者。」**
 
-      ![顯示 HTTTP 401 禁止錯誤](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
+      ![顯示 HTTP 401 禁止錯誤](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
 
    - 檢查 IIS 應用程式。 請確定所設定的應用程式集區和 SPN 已設定為使用 Azure AD 中的相同帳戶。 依下圖所示的方式在 IIS 中瀏覽：
 
@@ -165,8 +165,8 @@ Azure AD 應用程式 Proxy 可以部署到許多類型的基礎結構或環境�
 
 ## <a name="other-scenarios"></a>其他案例
 
-- Azure 應用程式 Proxy 會在將要求傳送至應用程式之前要求 Kerberos 票證。 某些協力廠商應用程式不喜歡這種身份驗證方法。 這些應用程式預期發生的是更傳統的交涉。 第一個要求是匿名要求，這可讓應用程式透過 401 回應其支援的驗證類型。
-- 雙躍點驗證通常適用於具有後端與前端且兩者都需要驗證的分層應用程式，例如 SQL Reporting Services。 要配置多躍點方案，請參閱支援文章[Kerberos 限制委派可能需要在多躍點方案中進行協定轉換](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)。
+- Azure 應用程式 Proxy 會在將要求傳送至應用程式之前要求 Kerberos 票證。 有些協力廠商應用程式不喜歡這種驗證方法。 這些應用程式預期發生的是更傳統的交涉。 第一個要求是匿名要求，這可讓應用程式透過 401 回應其支援的驗證類型。
+- 雙躍點驗證通常適用於具有後端與前端且兩者都需要驗證的分層應用程式，例如 SQL Reporting Services。 若要設定多重躍點案例，請參閱支援文章： [Kerberos 限制委派在多重躍點案例中可能需要通訊協定轉換](https://support.microsoft.com/help/2005838/kerberos-constrained-delegation-may-require-protocol-transition-in-mul)。
 
 ## <a name="next-steps"></a>後續步驟
 

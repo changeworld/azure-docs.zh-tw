@@ -1,38 +1,38 @@
 ---
 title: 常見問題疑難排解
-description: 瞭解如何在使用 Azure 資源圖查詢 Azure 資源時解決各種 SDK 的問題。
+description: 瞭解如何在使用 Azure Resource Graph 查詢 Azure 資源時，針對各種 Sdk 的問題進行疑難排解。
 ms.date: 10/18/2019
 ms.topic: troubleshooting
 ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74303909"
 ---
-# <a name="troubleshoot-errors-using-azure-resource-graph"></a>使用 Azure 資源圖排除錯誤
+# <a name="troubleshoot-errors-using-azure-resource-graph"></a>使用 Azure Resource Graph 疑難排解錯誤
 
-使用 Azure 資源圖查詢 Azure 資源時可能會遇到錯誤。 此文章說明可能發生的各種錯誤與解決方式。
+使用 Azure Resource Graph 查詢 Azure 資源時，可能會遇到錯誤。 此文章說明可能發生的各種錯誤與解決方式。
 
 ## <a name="finding-error-details"></a>尋找錯誤詳細資料
 
-大多數錯誤都是使用 Azure 資源圖執行查詢時出現問題的結果。 當查詢失敗時，SDK 提供有關失敗查詢的詳細資訊。 此資訊指示問題，以便可以修復該問題，並且以後的查詢成功。
+大部分的錯誤是使用 Azure Resource Graph 執行查詢時的問題所造成。 當查詢失敗時，SDK 會提供有關失敗查詢的詳細資料。 這項資訊指出問題，讓它可以修正，而稍後的查詢會成功。
 
 ## <a name="general-errors"></a>一般錯誤
 
-### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>方案：訂閱太多
+### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>案例：訂閱太多
 
 #### <a name="issue"></a>問題
 
-有權訪問 1000 多個訂閱（包括使用[Azure 燈塔](../../../lighthouse/overview.md)的跨租戶訂閱）的客戶無法在單個調用 Azure 資源圖時跨所有訂閱獲取資料。
+存取超過1000個訂用帳戶（包括[Azure 燈塔](../../../lighthouse/overview.md)的跨租使用者訂用帳戶）的客戶，在 Azure Resource Graph 的單一呼叫中，無法跨所有訂用帳戶提取資料。
 
 #### <a name="cause"></a>原因
 
-Azure CLI 和 PowerShell 僅轉發到 Azure 資源圖的前 1000 個訂閱。 Azure 資源圖的 REST API 接受要執行查詢的最大訂閱數。
+Azure CLI 和 PowerShell 只轉送前1000個訂用帳戶，以 Azure Resource Graph。 Azure Resource Graph 的 REST API 會接受執行查詢的最大訂閱數。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
-具有訂閱子集的查詢的批次處理請求將保持在 1000 訂閱限制之下。 解決方案使用 PowerShell 中的**訂閱**參數。
+具有訂用帳戶子集的查詢批次要求會保留在1000訂閱限制之下。 解決方案會使用 PowerShell 中的**訂**用帳戶參數。
 
 ```azurepowershell-interactive
 # Replace this query with your own
@@ -57,38 +57,38 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 $response
 ```
 
-### <a name="scenario-unsupported-content-type-rest-header"></a><a name="rest-contenttype"></a>方案：不支援的內容類型 REST 標頭
+### <a name="scenario-unsupported-content-type-rest-header"></a><a name="rest-contenttype"></a>案例：不支援的內容類型 REST 標頭
 
 #### <a name="issue"></a>問題
 
-查詢 Azure 資源圖 REST API 的客戶將獲得返回_的 500（_ 內部伺服器錯誤）回應。
+查詢 Azure Resource Graph REST API 收到傳回_500_ （內部伺服器錯誤）回應的客戶。
 
 #### <a name="cause"></a>原因
 
-Azure 資源圖 REST API`Content-Type`僅支援**應用程式/json**。 某些 REST 工具或代理預設為**文本/純**，這是 REST API 不支援的。
+Azure Resource Graph REST API 僅支援`Content-Type` **application/json**的。 某些 REST 工具或代理程式預設為**text/純文字**，REST API 不支援。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
-驗證用於查詢 Azure 資源圖的工具或代理是否為**應用程式/json**配置`Content-Type`REST API 標頭。
+驗證您用來查詢 Azure Resource Graph 的工具或代理程式是否已為`Content-Type` **application/json**設定 REST API 標頭。
 
-### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>方案：對清單中的所有訂閱沒有讀取權限
+### <a name="scenario-no-read-permission-to-all-subscriptions-in-list"></a><a name="rest-403"></a>案例：沒有清單中所有訂用帳戶的讀取權限
 
 #### <a name="issue"></a>問題
 
-使用 Azure 資源圖查詢顯式傳遞訂閱清單的客戶將獲得_403（_ 禁止）回應。
+使用 Azure Resource Graph 查詢明確傳遞訂用帳戶清單的客戶會收到_403_ （禁止）回應。
 
 #### <a name="cause"></a>原因
 
-如果客戶沒有對所有提供的訂閱的讀取權限，則請求將因缺少適當的擔保權而被拒絕。
+如果客戶沒有所有提供之訂用帳戶的讀取權限，則要求會因為缺乏適當的安全性許可權而遭到拒絕。
 
-#### <a name="resolution"></a>解決方案
+#### <a name="resolution"></a>解決方法
 
-在訂閱清單中至少包括一個訂閱，執行查詢的客戶至少具有讀取存取許可權。 有關詳細資訊，請參閱[Azure 資源圖中的許可權](../overview.md#permissions-in-azure-resource-graph)。
+在訂用帳戶清單中至少包含一個訂用帳戶，而執行查詢的客戶至少具有的讀取存取權。 如需詳細資訊，請參閱[Azure Resource Graph 中的許可權](../overview.md#permissions-in-azure-resource-graph)。
 
 ## <a name="next-steps"></a>後續步驟
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-- 通過[Azure 論壇](https://azure.microsoft.com/support/forums/)從 Azure 專家那裡獲得答案。
-- 與[@AzureSupport](https://twitter.com/azuresupport)— 正式的 Microsoft Azure 帳戶連接，通過將 Azure 社區連接到正確的資源（答案、支援和專家），從而改善客戶體驗。
-- 如果需要更多協助，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **"獲取支援**"。
+- 透過[Azure 論壇](https://azure.microsoft.com/support/forums/)取得 azure 專家的解答。
+- Connect [@AzureSupport](https://twitter.com/azuresupport) –官方 Microsoft Azure 帳戶，藉由將 Azure 社區連接至適當的資源來改善客戶體驗：解答、支援及專家。
+- 如果需要更多協助，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。

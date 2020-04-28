@@ -1,6 +1,6 @@
 ---
-title: Azure 活動目錄治理操作參考指南
-description: 此操作參考指南描述為確保治理管理而應採取的檢查和操作
+title: Azure Active Directory 治理作業參考指南
+description: 此操作參考指南說明保護治理管理時應採取的檢查和動作
 services: active-directory
 author: martincoetzer
 manager: daveba
@@ -12,135 +12,135 @@ ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
 ms.openlocfilehash: 4826bcdc85e0c6189c51aa262014fe154bb479b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74535453"
 ---
-# <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure 活動目錄治理操作參考指南
+# <a name="azure-active-directory-governance-operations-reference-guide"></a>Azure Active Directory 治理作業參考指南
 
-Azure AD[操作參考指南](active-directory-ops-guide-intro.md)的這一部分介紹了為評估和證明授予的非特權和特權標識、審核和控制對環境的更改而應執行的檢查和操作。
+[Azure AD 作業參考指南](active-directory-ops-guide-intro.md)的這一節說明您應採取的檢查和動作，以評估並證明授與存取非許可權和特殊許可權身分識別、audit 及控制環境變更的許可權。
 
 > [!NOTE]
-> 這些建議自發布之日起是最新的，但可能會隨時間而變化。 隨著 Microsoft 產品和服務隨時間推移而變化，組織應持續評估其治理實踐。
+> 這些建議是在發行日期之後的最新版本，但可能會隨著時間而改變。 組織應持續評估其治理實務，因為 Microsoft 產品和服務會隨著時間而演進。
 
-## <a name="key-operational-processes"></a>關鍵操作流程
+## <a name="key-operational-processes"></a>關鍵操作程式
 
-### <a name="assign-owners-to-key-tasks"></a>將擁有者分配給要徑任務
+### <a name="assign-owners-to-key-tasks"></a>將擁有者指派給主要工作
 
-管理 Azure 活動目錄需要持續執行關鍵操作任務和進程，這些任務和進程可能不是推出專案的一部分。 設置這些任務以優化環境仍然很重要。 要徑任務及其推薦的擁有者包括：
+管理 Azure Active Directory 需要持續執行重要的作業工作和進程，這可能不是首度發行專案的一部分。 您必須設定這些工作來優化您的環境，這仍然很重要。 主要工作和其建議的擁有者包括：
 
-| Task | 擁有者 |
+| 工作 | 擁有者 |
 | :- | :- |
-| 在 SIEM 系統中存檔 Azure AD 稽核記錄 | InfoSec 運營團隊 |
-| 發現不符合合規性的應用程式 | IAM 運營團隊 |
-| 定期審查對應用程式的訪問 | InfoSec 架構團隊 |
-| 定期審查對外部身份的訪問 | InfoSec 架構團隊 |
-| 定期審查誰擁有特權角色 | InfoSec 架構團隊 |
-| 定義安全門以啟動特權角色 | InfoSec 架構團隊 |
-| 定期審查同意授予 | InfoSec 架構團隊 |
-| 為組織中的員工設計應用程式和資源的目錄和訪問包 | 應用擁有者 |
-| 定義安全性原則以將使用者分配給訪問包 | InfoSec 團隊 + 應用程式擁有者 |
-| 如果策略包括審批工作流，則定期審核工作流審批 | 應用擁有者 |
-| 使用訪問審核查看安全性原則中的異常，如條件訪問策略 | InfoSec 運營團隊 |
+| 封存 Azure AD SIEM 系統中的 audit 記錄 | InfoSec 營運小組 |
+| 探索管理不相容的應用程式 | IAM 作業小組 |
+| 定期審查應用程式的存取權 | InfoSec 架構團隊 |
+| 定期審查外部身分識別的存取權 | InfoSec 架構團隊 |
+| 定期審查誰有特殊許可權角色 | InfoSec 架構團隊 |
+| 定義安全性閘道以啟用特殊許可權角色 | InfoSec 架構團隊 |
+| 定期審查同意授權 | InfoSec 架構團隊 |
+| 針對組織中的員工設計應用程式和資源的類別目錄和存取套件 | 應用程式擁有者 |
+| 定義安全性原則以指派使用者存取套件 | InfoSec 小組 + 應用程式擁有者 |
+| 如果原則包含核准工作流程，請定期審查工作流程核准 | 應用程式擁有者 |
+| 使用存取審查來檢查安全性原則中的例外狀況，例如條件式存取原則 | InfoSec 營運小組 |
 
-在查看清單時，您可能會發現需要為缺少擁有者的任務分配擁有者，或者調整擁有者與上述建議不一致的任務的擁有權。
+當您檢查清單時，您可能會發現需要為遺漏擁有者的工作指派擁有者，或為擁有者未與上述建議一致的工作調整擁有權。
 
-#### <a name="owner-recommended-reading"></a>業主推薦閱讀
+#### <a name="owner-recommended-reading"></a>擁有者建議閱讀
 
 - [在 Azure Active Directory 中指派系統管理員角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
 - [Azure 中的治理](https://docs.microsoft.com/azure/security/governance-in-azure)
 
-### <a name="configuration-changes-testing"></a>配置更改測試
+### <a name="configuration-changes-testing"></a>設定變更測試
 
-在測試時需要特殊考慮的更改，從簡單的技術（如推出目標使用者子集）到在並行測試租戶中部署更改。 如果尚未實施測試策略，則應根據下表中的指南定義測試方法：
+在測試時，有一些需要特殊考慮的變更，從簡單的技術（例如，將使用者的目標子集推出以在平行測試租使用者中部署變更）。 如果您尚未實行測試策略，您應該根據下表中的指導方針來定義測試方法：
 
 | 狀況| 建議 |
 |-|-|
-|將身份驗證類型從聯合更改為小到小到條/PTA，反之亦然| 使用[暫存卷展欄](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout)測試更改身份驗證類型的影響。|
-|推出新的條件訪問 （CA） 策略或身份保護原則|創建新的 CA 策略並分配給測試使用者。|
-|加入應用程式的測試環境|將應用程式添加到生產環境，將其從 MyApps 面板中隱藏，並將其分配給品質保證 （QA） 階段中的測試使用者。|
-|更改同步規則|在測試中執行 Azure AD 使用當前正在生產的配置（也稱為暫存模式）進行更改，並分析 CSExport 結果。 如果滿足，則在準備就緒時交換到生產。|
-|改變品牌|在單獨的測試租戶中進行測試。|
-|推出新功能|如果該功能支援向目標使用者集推出，請確定試點使用者並進行構建。例如，自助服務密碼重設和多重要素驗證可以針對特定使用者或組。|
-|將應用程式從本地標識提供程式 （IdP，例如活動目錄）到 Azure AD 進行剪切|如果應用程式支援多個 IdP 配置（例如 Salesforce），則在更改視窗期間配置和測試 Azure AD（如果應用程式引入了 HRD 頁）。 如果應用程式不支援多個 IdP，請安排更改控制視窗期間的測試和程式停機時間。|
-|更新動態組規則|使用新規則創建並行動態組。 與計算的結果進行比較，例如，運行具有相同條件的 PowerShell。<br>如果測試通過，則交換使用舊組的位置（如果可行）。|
-|遷移產品許可證|請參閱[更改 Azure 活動目錄中許可組中的單個使用者的許可證](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-change-licenses)。|
-|更改 AD FS 規則，如授權、頒發、MFA|使用組聲明來定位使用者子集。|
-|更改 AD FS 身份驗證體驗或類似伺服器場範圍更改|創建具有相同主機名稱的並行伺服器場、實現配置更改、使用 HOSTS 檔、NLB 路由規則或類似路由從用戶端進行測試。<br>如果目標平臺不支援 HOSTS 檔（例如行動裝置），則控制更改。|
+|將驗證類型從同盟變更為 PHS/PTA，反之亦然| 使用[分段推出](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-staged-rollout)來測試變更驗證類型的影響。|
+|推出新的條件式存取（CA）原則或身分識別保護原則|建立新的 CA 原則並指派給測試使用者。|
+|上架應用程式的測試環境|將應用程式新增至生產環境，並將其從 [MyApps] 面板中隱藏，並在品質保證（QA）階段將它指派給測試使用者。|
+|變更同步處理規則|使用目前在生產環境中的相同設定（也稱為「預備模式」）來執行測試 Azure AD Connect 中的變更，並分析 CSExport 結果。 如果滿意，請在準備好時切換到生產環境。|
+|變更商標|在個別的測試租使用者中測試。|
+|推出新功能|如果功能支援推出目標使用者集合，請識別試驗使用者並建立。例如，自助式密碼重設和多重要素驗證可以鎖定特定使用者或群組。|
+|將應用程式從內部部署身分識別提供者（IdP）（例如 Active Directory）切換為 Azure AD|如果應用程式支援多個 IdP 設定（例如 Salesforce），請在變更期間（如果應用程式引進 HRD 頁面）進行和測試 Azure AD。 如果應用程式不支援多個 Idp，請在變更控制視窗和程式停機時間排程測試。|
+|更新動態群組規則|使用新的規則建立平行動態群組。 比較計算結果，例如，使用相同的條件來執行 PowerShell。<br>如果測試成功，請交換使用舊群組的位置（如果可行）。|
+|遷移產品授權|請參閱[在 Azure Active Directory 中變更授權群組中單一使用者的授權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/licensing-groups-change-licenses)。|
+|變更 AD FS 規則，例如授權、發行、MFA|使用群組宣告將目標設為使用者的子集。|
+|變更 AD FS 驗證體驗或類似的整個伺服器陣列變更|建立具有相同主機名稱的平行伺服器陣列、執行設定變更、使用 HOSTS 檔案、NLB 路由規則或類似的路由從用戶端進行測試。<br>如果目標平臺不支援主機檔案（例如行動裝置），則控制變更。|
 
 ## <a name="access-reviews"></a>存取權檢閱
 
-### <a name="access-reviews-to-applications"></a>訪問應用程式審核
+### <a name="access-reviews-to-applications"></a>存取應用程式的評論
 
-隨著時間的推移，使用者可能會在不同團隊和職位中移動時累積對資源的存取權限。 重要的是，資源擁有者定期查看對應用程式的存取權限，並刪除使用者整個生命週期中不再需要的許可權。 Azure AD[訪問審核](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)使組織能夠高效地管理組成員身份、訪問企業應用程式和角色指派。 資源擁有者應定期查看使用者的存取權限，以確保只有合適的人員才能繼續訪問。 理想情況下，應考慮為此任務使用 Azure AD 訪問審核。
+經過一段時間後，使用者在不同的小組和職位移動時，可能會累積資源的存取權。 資源擁有者必須定期審查應用程式的存取權，並移除使用者生命週期中不再需要的許可權。 Azure AD[存取審查](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)可讓組織有效地管理群組成員資格、企業應用程式的存取權，以及角色指派。 資源擁有者應該定期審查使用者的存取權，以確保只有適當的人員可以繼續存取。 在理想的情況下，您應該考慮使用 Azure AD 存取審查來進行這項工作。
 
-![訪問評論起始頁](./media/active-directory-ops-guide/active-directory-ops-img15.png)
-
-> [!NOTE]
-> 與訪問審核交互的每個使用者都必須具有付費的 Azure AD 高級 P2 許可證。
-
-### <a name="access-reviews-to-external-identities"></a>訪問外部標識的審核
-
-在需要的時間內，保持對外部標識的訪問僅限於所需的資源，這一點至關重要。 使用 Azure AD[訪問審核](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)為所有外部標識和應用程式訪問建立常規的自動訪問審核過程。 如果進程已在本地存在，請考慮使用 Azure AD 訪問審核。 一旦應用程式停用或不再使用，請刪除有權訪問該應用程式的所有外部標識。
+![存取審查起始頁](./media/active-directory-ops-guide/active-directory-ops-img15.png)
 
 > [!NOTE]
-> 與訪問審核交互的每個使用者都必須具有付費的 Azure AD 高級 P2 許可證。
+> 與存取評論互動的每個使用者都必須具有付費 Azure AD Premium P2 授權。
+
+### <a name="access-reviews-to-external-identities"></a>存取外部身分識別的評論
+
+在所需的時間內，請務必繼續存取僅限於所需資源的外部身分識別。 使用 Azure AD 的[存取權審查](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)，針對所有外部身分識別和應用程式存取建立週期性自動化存取權審查流程。 如果進程已經存在於內部部署中，請考慮使用 Azure AD 存取評論。 一旦應用程式已淘汰或不再使用，請移除所有具有應用程式存取權的外部身分識別。
+
+> [!NOTE]
+> 與存取評論互動的每個使用者都必須具有付費 Azure AD Premium P2 授權。
 
 ## <a name="privileged-account-management"></a>具有特殊權限的帳戶管理
 
-### <a name="privileged-account-usage"></a>特權帳戶使用
+### <a name="privileged-account-usage"></a>特殊許可權帳戶的使用方式
 
-駭客通常以管理員帳戶和特權訪問的其他元素為目標，以便快速訪問敏感性資料和系統。由於具有特權角色的使用者往往會隨著時間的推移而累積，因此定期查看和管理管理員存取權限並提供對 Azure AD 和 Azure 資源的即時特權訪問非常重要。
+駭客通常會以系統管理員帳戶和特殊許可權存取的其他元素為目標，以快速取得敏感性資料和系統的存取權。由於具有特殊許可權角色的使用者通常會在一段時間後累積，因此請務必定期審查和管理系統管理員存取權，並提供 Azure AD 和 Azure 資源的即時特殊許可權存取。
 
-如果您的組織中不存在管理特權帳戶的進程，或者您當前有使用其常規使用者帳戶管理服務和資源的管理員，則應立即開始使用單獨的帳戶，例如，用於常規日常帳戶活動;另一個用於特權訪問，並配置 MFA。 更妙的是，如果您的組織具有 Azure AD 高級 P2 訂閱，則應立即部署[Azure AD 特權標識管理](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure#license-requirements)（PIM）。 出於同一權杖，您還應查看這些特權帳戶，並[分配特權較低的角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure)（如果適用）。
+如果您的組織中沒有任何程式可管理許可權帳戶，或您目前有使用其一般使用者帳戶來管理服務和資源的系統管理員，您應該立即開始使用不同的帳戶，例如一個用於週期性日常活動;另一個用於特殊許可權存取，並使用 MFA 進行設定。 更棒的是，如果您的組織有 Azure AD Premium P2 訂用帳戶，您應該立即部署[Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure#license-requirements) （PIM）。 在相同的權杖中，您也應該檢查這些特殊許可權帳戶，並[指派較少許可權的角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure)（如果適用的話）。
 
-應實現的特權帳戶管理的另一個方面是手動或通過[PIM](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review)定義這些帳戶[的訪問審核](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)。
+應實行的特殊許可權帳戶管理的另一個層面是定義這些帳戶的[存取權審查](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)，不論是[透過 PIM](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review)手動或自動化。
 
-#### <a name="privileged-account-management-recommended-reading"></a>特權帳戶管理推薦閱讀
+#### <a name="privileged-account-management-recommended-reading"></a>特殊許可權帳戶管理建議閱讀
 
 - [Azure AD Privileged Identity Management 中的角色](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-roles)
 
 ### <a name="emergency-access-accounts"></a>緊急存取帳戶
 
-組織必須創建[緊急帳戶](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)，以便為身份驗證中斷等情況管理 Azure AD：
+組織必須建立[緊急帳戶](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)，以準備管理 Azure AD，例如像是驗證中斷的情況，例如：
 
-- 身份驗證基礎結構的中斷元件（AD FS、本地 AD、MFA 服務）
-- 行政人員更替
+- 驗證基礎結構的中斷元件（AD FS、內部部署 AD、MFA 服務）
+- 系統管理人員流失
 
-為了防止由於無法以管理員身份登錄或啟動現有個人使用者帳戶而無意中被鎖定在租戶之外，應創建兩個或多個緊急帳戶，並確保這些帳戶已實現並與[Microsoft 的最佳做法](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure)保持一致，並[打破玻璃程式](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency)。
+為了避免因為您無法以系統管理員身分登入或啟動現有個別使用者的帳戶，而不小心鎖定您的租使用者，您應該建立兩個或多個緊急帳戶，並確保其已實行並配合[Microsoft 的最佳作法](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure)和[中斷玻璃程式](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-admin-roles-secure#break-glass-what-to-do-in-an-emergency)。
 
-### <a name="privileged-access-to-azure-ea-portal"></a>對 Azure EA 門戶的特權訪問
+### <a name="privileged-access-to-azure-ea-portal"></a>Azure EA 入口網站的特殊許可權存取
 
-[Azure 企業協定 （Azure EA） 門戶](https://azure.microsoft.com/blog/create-enterprise-subscription-experience-in-azure-portal-public-preview/)使您能夠根據主企業協定創建 Azure 訂閱，這是企業內部的強大角色。 在將 Azure AD 放在原位之前，通常先引導創建此門戶，因此有必要使用 Azure AD 標識將其鎖定、從門戶中刪除個人帳戶、確保已正確委派到位並降低鎖定風險.
+[Azure Enterprise 合約（AZURE EA）入口網站](https://azure.microsoft.com/blog/create-enterprise-subscription-experience-in-azure-portal-public-preview/)可讓您針對主要 Enterprise 合約建立 Azure 訂用帳戶，這是企業內的強大角色。 建立此入口網站之前，通常會先將其啟動，然後再取得 Azure AD，因此必須使用 Azure AD 身分識別將其鎖定，從入口網站移除個人帳戶，確保適當的委派已就緒，並降低鎖定的風險。
 
-要明確，如果 EA 門戶授權級別當前設置為"混合模式"，則必須從 EA 門戶中的所有特權訪問中刪除任何[Microsoft 帳戶](https://support.skype.com/en/faq/FA12059/what-is-a-microsoft-account)，並將 EA 門戶配置為僅使用 Azure AD 帳戶。 如果未配置 EA 門戶委派的角色，則還應查找和實現部門和帳戶的委派角色。
+若要清楚來說，如果 EA 入口網站授權層級目前設定為「混合模式」，您必須從 EA 入口網站中的所有特殊許可權存取移除任何[Microsoft 帳戶](https://support.skype.com/en/faq/FA12059/what-is-a-microsoft-account)，並將 ea 入口網站設定為僅使用 Azure AD 帳戶。 如果未設定 EA 入口網站委派的角色，您也應該尋找並執行部門和帳戶的委派角色。
 
-#### <a name="privileged-access-recommended-reading"></a>推薦讀取特權訪問
+#### <a name="privileged-access-recommended-reading"></a>建議閱讀的特殊許可權存取
 
 - [Azure Active Directory 中的系統管理員角色權限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)
 
 ## <a name="entitlement-management"></a>權利管理
 
-[授權管理 （EM）](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)允許應用擁有者捆綁資源並將其分配給組織中的特定角色（內部和外部）。 EM 允許自助服務註冊和委派給業務擁有者，同時保持治理策略以授予存取權限、設置訪問持續時間和允許審批工作流。 
+[權利管理（EM）](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview)可讓應用程式擁有者將資源組合在一起，並將其指派給組織中的特定角色（內部和外部）。 EM 允許對企業擁有者進行自助式註冊和委派，同時保留治理原則來授與存取權、設定存取持續時間，以及允許核准工作流程。 
 
 > [!NOTE]
-> Azure AD 授權管理需要 Azure AD 高級 P2 許可證。
+> Azure AD 權利管理需要 Azure AD Premium P2 授權。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
-安全標識治理有八個方面。 此清單將説明您確定應執行的操作，以評估和證明授予非特權和特權標識、審核和控制對環境更改的存取權限。
+安全身分識別管理有八個層面。 這份清單可協助您找出您應該採取的動作，以評估和證明授與對非特殊許可權和特殊許可權身分識別的存取權、audit 及控制環境的變更。
 
-- 將擁有者分配給要徑任務。
-- 實施測試策略。
-- 使用 Azure AD 訪問審核可高效地管理組成員身份、對企業應用程式的訪問和角色指派。
-- 為所有類型的外部身份和應用程式訪問建立定期、自動化的訪問審核流程。
-- 建立訪問審核流程，定期查看和管理管理員存取權限，並提供對 Azure AD 和 Azure 資源的及時特權訪問。
-- 預配緊急帳戶，以便為意外中斷管理 Azure AD 做好準備。
-- 鎖定對 Azure EA 門戶的訪問。
-- 實現授權管理，以提供對資源集合的受治理訪問。
+- 將擁有者指派給主要工作。
+- 實行測試策略。
+- 使用 Azure AD 存取審查，有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。
+- 針對所有類型的外部身分識別和應用程式存取，建立一般的自動化存取審查程式。
+- 建立存取權審查程式來定期審查和管理系統管理員存取權，並提供 Azure AD 和 Azure 資源的即時特殊許可權存取。
+- 布建緊急帳戶以準備管理 Azure AD 非預期的中斷。
+- 鎖定 Azure EA 入口網站的存取權。
+- 執行權利管理，以提供資源集合的受控存取權。
 
 ## <a name="next-steps"></a>後續步驟
 
-開始使用[Azure AD 操作檢查和操作](active-directory-ops-guide-ops.md)。
+開始使用[Azure AD 操作檢查和動作](active-directory-ops-guide-ops.md)。

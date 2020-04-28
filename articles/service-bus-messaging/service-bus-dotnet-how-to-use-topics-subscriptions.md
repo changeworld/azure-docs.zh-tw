@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/27/2019
 ms.author: aschhab
 ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74560104"
 ---
 # <a name="get-started-with-service-bus-topics"></a>開始使用服務匯流排主題
@@ -33,11 +33,11 @@ ms.locfileid: "74560104"
 ## <a name="prerequisites"></a>Prerequisites
 
 1. Azure 訂用帳戶。 若要完成此教學課程，您需要 Azure 帳戶。 您可以啟用自己的 [Visual Studio 或 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或註冊[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
-2. 按照["快速入門"中的步驟：使用 Azure 門戶創建服務匯流排主題和訂閱主題](service-bus-quickstart-topics-subscriptions-portal.md)以執行以下任務：
-    1. 創建服務匯流排**命名空間**。
-    2. 獲取**連接字串**。
+2. 遵循[快速入門：使用 Azure 入口網站建立服務匯流排主題和主題訂用](service-bus-quickstart-topics-subscriptions-portal.md)帳戶中的步驟來執行下列工作：
+    1. 建立服務匯流排**命名空間**。
+    2. 取得**連接字串**。
     3. 在命名空間中建立**主題**。
-    4. 在命名空間中創建主題的**一個訂閱**。
+    4. 為命名空間中的主題建立**一個訂**用帳戶。
 3. [Visual Studio 2017 Update 3 (版本 15.3, 26730.01)](https://www.visualstudio.com/vs) 或更新版本。
 4. [.NET Core SDK](https://www.microsoft.com/net/download/windows)，2.0 版或更新版本。
  
@@ -75,7 +75,7 @@ ms.locfileid: "74560104"
     static ITopicClient topicClient;
     ``` 
 
-3. 使用將在`Main()`下一步中添加的 SendMessagesAsync 方法非同步發送消息的以下**非同步**`Main`方法替換該方法。 
+3. 將`Main()`方法取代為下列**非同步** `Main`方法，使用您將在下一個步驟中新增的 SendMessagesAsync 方法，以非同步方式傳送訊息。 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -188,7 +188,7 @@ ms.locfileid: "74560104"
 
 ## <a name="receive-messages-from-the-subscription"></a>自訂用帳戶接收訊息
 
-要接收您發送的郵件，請創建另一個 .NET Core 主控台應用程式並安裝**Microsoft.Azure.ServiceBus** NuGet 包，類似于以前的寄件者應用程式。
+若要接收您所傳送的訊息，請建立另一個 .NET Core 主控台應用程式，並安裝與先前的傳送者應用程式類似的**Microsoft Azure**主機套件。
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>撰寫程式碼以從訂用帳戶接收訊息
 
@@ -210,7 +210,7 @@ ms.locfileid: "74560104"
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. 將`Main()`該方法替換為以下**非同步**`Main`方法。 它調用將在`RegisterOnMessageHandlerAndReceiveMessages()`下一步中添加的方法。 
+3. 將`Main()`方法取代為下列**非同步** `Main`方法。 它會呼叫`RegisterOnMessageHandlerAndReceiveMessages()`您將在下一個步驟中新增的方法。 
 
     ```csharp
     public static async Task Main(string[] args)

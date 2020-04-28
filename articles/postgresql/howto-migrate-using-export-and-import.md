@@ -1,5 +1,5 @@
 ---
-title: 遷移資料庫 - 用於 PostgreSQL 的 Azure 資料庫 - 單個伺服器
+title: 遷移資料庫-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
 description: 描述如何將 PostgreSQL 資料庫擷取到指令碼檔案，並從該檔案將資料匯入目標資料庫。
 author: rachel-msft
 ms.author: raagyema
@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: f7cf5d245383b8a58f03e2e3610750866a2f4b5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74770198"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>使用匯出和匯入來移轉 PostgreSQL 資料庫
@@ -29,7 +29,7 @@ ms.locfileid: "74770198"
 ```bash
 pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<database>.sql
 ```
-例如，如果其中有一個本機伺服器和一個稱為**testdb**的資料庫：
+例如，如果您有本機伺服器和名為**testdb**的資料庫：
 ```bash
 pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sql
 ```
@@ -45,5 +45,5 @@ psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --us
 ```
 
 ## <a name="next-steps"></a>後續步驟
-- 要使用轉儲和還原遷移 PostgreSQL 資料庫，請參閱[使用轉儲遷移 PostgreSQL 資料庫並還原](howto-migrate-using-dump-and-restore.md)。
+- 若要使用傾印和還原來遷移于 postgresql 資料庫，請參閱使用傾印[和還原遷移于 postgresql 資料庫](howto-migrate-using-dump-and-restore.md)。
 - 如需有關將資料庫移轉至適用於 PostgreSQL 的 Azure 資料庫詳細資訊，請參閱[資料庫移轉指南](https://aka.ms/datamigration)。 

@@ -1,5 +1,5 @@
 ---
-title: 用於管理組的 PowerShell V2 示例 - Azure AD |微軟文檔
+title: 管理群組的 PowerShell V2 範例-Azure AD |Microsoft Docs
 description: 此頁面會提供 PowerShell 範例以協助您管理 Azure Active Directory 中的群組
 keywords: Azure AD, Azure Active Directory, PowerShell, 群組, 群組管理
 services: active-directory
@@ -15,17 +15,17 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74233105"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>適用於群組管理的 Azure Active Directory 第 2 版 Cmdlet
 
 > [!div class="op_single_selector"]
-> - [Azure 門戶](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
-> - [電源外殼](groups-settings-v2-cmdlets.md)
+> - [Azure 入口網站](../fundamentals/active-directory-groups-create-azure-portal.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
+> - [PowerShell](groups-settings-v2-cmdlets.md)
 >
 >
 
@@ -170,7 +170,7 @@ Cmdlet 將會傳回所連線目錄中的所有群組。
     PS C:\Windows\system32> Set-AzureADGroup -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -Description "Intune Device Administrators"
 ```
 
-現在，如果我們再次找到組，我們將看到"描述"屬性已更新以反映新值：
+現在，如果再次發現該群組，我們會看到 Description 屬性已更新，以反映新的值：
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -284,7 +284,7 @@ Cmdlet 將會傳回所連線目錄中的所有群組。
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 ```
 
--ObjectId 參數是我們要向其添加擁有者的組的 ObjectID，-RefObjectId 是我們希望作為組擁有者添加的使用者或服務主體的 ObjectID。
+-ObjectId 參數是我們想要新增擁有者的群組 ObjectID，而-RefObjectId 是我們想要新增為群組擁有者的使用者或服務主體的 ObjectID。
 
 若要擷取群組的擁有者，請使用 Get AzureADGroupOwner Cmdlet：
 
@@ -292,7 +292,7 @@ Cmdlet 將會傳回所連線目錄中的所有群組。
     PS C:\Windows\system32> Get-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
 ```
 
-Cmdlet 返回指定組的擁有者（使用者和服務主體）清單：
+此 Cmdlet 會傳回指定群組的擁有者清單（使用者和服務主體）：
 
 ```powershell
     DeletionTimeStamp ObjectId                             ObjectType
@@ -322,15 +322,15 @@ Cmdlet 返回指定組的擁有者（使用者和服務主體）清單：
 * ssl-admin
 * webmaster
 
-## <a name="group-writeback-to-on-premises-preview"></a>將寫回本地（預覽）
+## <a name="group-writeback-to-on-premises-preview"></a>群組回寫至內部部署（預覽）
 
-今天，許多組仍在本地活動目錄中進行管理。 為了回應將雲組同步回本地的請求，Office 365 組為 Azure AD 編寫回寫功能現在可用於預覽。
+現今，許多群組仍會在內部部署 Active Directory 中進行管理。 為了回應將雲端群組同步回到內部部署的要求，適用于 Azure AD 的 Office 365 群組回寫功能現已開放預覽。
 
-Office 365 組在雲中創建和管理。 通過寫回功能，您可以將 Office 365 組作為通訊組寫回到已安裝 Exchange 的 Active Directory 林。 然後，具有本地 Exchange 郵箱的使用者可以發送和接收來自這些組的電子郵件。 組回寫功能不支援 Azure AD 安全性群組或通訊組。
+Office 365 群組會在雲端中建立和管理。 回寫功能可讓您將 Office 365 群組寫回至已安裝 Exchange 的 Active Directory 樹系做為通訊群組。 具有內部部署 Exchange 信箱的使用者可以從這些群組傳送和接收電子郵件。 群組回寫功能不支援 Azure AD 安全性群組或通訊群組。
 
-有關詳細資訊，請參閱[Azure AD 連接同步服務的文檔](../hybrid/how-to-connect-syncservice-features.md)。
+如需詳細資訊，請參閱[Azure AD Connect 同步處理服務](../hybrid/how-to-connect-syncservice-features.md)的檔。
 
-Office 365 組寫回是 Azure 活動目錄 （Azure AD） 的公共預覽功能，可用於任何付費 Azure AD 許可證計畫。 有關預覽的一些法律資訊，請參閱[Microsoft Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+Office 365 群組回寫是 Azure Active Directory （Azure AD）的公開預覽功能，適用于任何付費 Azure AD 授權方案。 如需有關預覽的某些法律資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定。
 
 ## <a name="next-steps"></a>後續步驟
 

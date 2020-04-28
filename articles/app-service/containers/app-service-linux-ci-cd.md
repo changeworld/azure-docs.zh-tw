@@ -1,6 +1,6 @@
 ---
-title: CI/CD 到自訂 Linux 容器
-description: 瞭解如何在 Azure 應用服務中設置對自訂 Linux 容器的連續部署。 碼頭中心和 ACR 支援持續部署。
+title: 自訂 Linux 容器的 CI/CD
+description: 瞭解如何在 Azure App Service 中設定持續部署至自訂的 Linux 容器。 Docker Hub 和 ACR 支援持續部署。
 keywords: azure app service, linux, docker, acr,oss
 author: msangapu-msft
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
@@ -9,10 +9,10 @@ ms.date: 11/08/2018
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: d43491de7500204ed470757a1b744017a8180b57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74687622"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>使用用於容器的 Web 應用程式進行持續部署
@@ -23,7 +23,7 @@ ms.locfileid: "74687622"
 
 ![ACR Webhook 的螢幕擷取畫面](./media/app-service-webapp-service-linux-ci-cd/ci-cd-acr-02.png)
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取頁面左側的 [App Service] **** 選項。
 3. 選取您要設定持續部署的應用程式名稱。
 4. 在 [容器設定]**** 頁面上，選取 [單一容器]****
@@ -41,7 +41,7 @@ ms.locfileid: "74687622"
 
 ## <a name="enable-continuous-deployment-with-docker-hub-optional"></a>透過 Docker Hub 啟用持續部署 (選用)
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取頁面左側的 [App Service] **** 選項。
 3. 選取您要設定持續部署的應用程式名稱。
 4. 在 [容器設定]**** 頁面上，選取 [單一容器]****
@@ -56,7 +56,7 @@ ms.locfileid: "74687622"
 ## <a name="next-steps"></a>後續步驟
 
 * [Linux 上的 Azure App Service 簡介](./app-service-linux-intro.md)
-* [Azure 容器註冊表](https://azure.microsoft.com/services/container-registry/)
+* [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
 * [在 Linux 上的 App Service 中建立.NET Core Web 應用程式](quickstart-dotnetcore.md)
 * [在 Linux 上的 App Service 中建立 Ruby Web 應用程式](quickstart-ruby.md)
 * [在 Web App for Containers 中部署 Docker/Go Web 應用程式](quickstart-docker-go.md)

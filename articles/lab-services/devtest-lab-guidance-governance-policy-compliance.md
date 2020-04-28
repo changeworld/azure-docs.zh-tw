@@ -1,5 +1,5 @@
 ---
-title: Azure 開發人員測試實驗室中的公司策略和合規性
+title: Azure DevTest Labs 中的公司原則與合規性
 description: 此文章提供治理適用於 Azure DevTest Labs 基礎結構之公司原則和合規性的相關指導方針。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 81ca2a90b1940d70e170cab3f8d18144a5d5e5a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74560511"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>治理 Azure DevTest Labs 基礎結構 - 公司原則和合規性
@@ -29,7 +29,7 @@ ms.locfileid: "74560511"
 組織在 DevTest Labs 中何時應使用公用成品存放庫，而何時應使用私人成品存放庫？
 
 ### <a name="answer"></a>Answer
-[公用成品存放庫](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) \(英文\) 提供一組最常用的初始軟體套件。 它有助於快速部署，而無需花時間重現常見的開發人員工具和外接程式。您可以選擇部署自己的私有存儲庫。 您可以平行方式各使用一個公用和私人存放庫。 您也可以選擇停用公用存放庫。 部署私人存放庫的準則應透過下列問題和考量來衍生：
+[公用成品存放庫](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) \(英文\) 提供一組最常用的初始軟體套件。 它有助於快速部署，而不必投入時間重現常見的開發人員工具和增益集。您可以選擇部署自己的私人存放庫。 您可以平行方式各使用一個公用和私人存放庫。 您也可以選擇停用公用存放庫。 部署私人存放庫的準則應透過下列問題和考量來衍生：
 
 - 組織是否需要使公司授權的軟體成為其 DevTest Labs 供應項目的一部分？ 如果答案是肯定的，則應該建立私人存放庫。
 - 組織是否要開發自訂軟體來提供特定作業，且需將其當作整體佈建程序的一部分？ 如果答案是肯定的，則應該部署私人存放庫。

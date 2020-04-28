@@ -1,5 +1,5 @@
 ---
-title: 優化 Azure 資料存儲第 2 代性能 |微軟文檔
+title: 優化效能的 Azure Data Lake Storage Gen2 |Microsoft Docs
 description: Azure Data Lake Storage Gen2 效能微調指導方針
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -9,13 +9,13 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: f1a16228b72d7e0f45048669ade94a0c78d9ac52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74327933"
 ---
-# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>優化 Azure 資料存儲第 2 代存儲性能
+# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>優化效能 Azure Data Lake Storage Gen2
 
 Azure Data Lake Storage Gen2 支援 I/O 密集分析和資料移動的高輸送量。  在 Data Lake Storage Gen2 中，使用所有可用的輸送量 (每秒可以讀取或寫入的資料量) 是取得最佳效能的重要部分。  這可以藉由盡可能平行執行讀取和寫入來達成。
 
@@ -93,7 +93,7 @@ Data Lake Storage Gen2 可以調整以提供所有分析情節的必要輸送量
 ### <a name="general-considerations-for-an-hdinsight-cluster"></a>HDInsight 叢集的一般考量
 
 * **HDInsight 版本** 為了達到最佳效能，請使用最新版本的 HDInsight。
-* **地區。** 將 Data Lake Storage Gen2 帳戶放置在與 HDInsight 叢集相同的區域中。  
+* **各地.** 將 Data Lake Storage Gen2 帳戶放置在與 HDInsight 叢集相同的區域中。  
 
 HDInsight 叢集是由兩個前端節點和一些背景工作角色節點所組成。 每個背景工作角色節點提供特定數目的核心和記憶體，由 VM 類型決定。  執行作業時，YARN 是資源交涉程式，它會配置可用記憶體和核心來建立容器。  每個容器會執行完成作業所需的工作。  平行執行容器以快速地處理工作。 因此，盡可能平行執行最多容器可提升效能。
 

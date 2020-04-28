@@ -1,19 +1,19 @@
 ---
-title: 高可用性 - Azure 資料庫，用於 PostgreSQL - 單個伺服器
-description: 本文提供有關後處理SQL - 單伺服器 Azure 資料庫中的高可用性資訊。
+title: 高可用性-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文提供適用於 PostgreSQL 的 Azure 資料庫單一伺服器中高可用性的相關資訊。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 80229ff78c4570db583f1218d5d2f72da2dec388
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74768566"
 ---
-# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>Azure 資料庫中用於 PostgreSQL - 單伺服器的高可用性概念
+# <a name="high-availability-concepts-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫中的高可用性概念-單一伺服器
 「適用於 PostgreSQL 的 Azure 資料庫」服務可提供保證的高可用性等級。 以財務為後盾的服務等級協定 (SLA) 在正式運作時可達 99.99%。 使用此服務時幾乎不會有應用程式停機時間。
 
 ## <a name="high-availability"></a>高可用性

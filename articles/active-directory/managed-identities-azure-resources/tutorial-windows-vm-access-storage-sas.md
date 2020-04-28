@@ -1,5 +1,5 @@
 ---
-title: 教程`:`使用託管標識使用 SAS 憑據訪問 Azure 存儲 - Azure AD
+title: 教學`:`課程：使用受控識別來存取使用 SAS 認證的 Azure 儲存體-Azure AD
 description: 本教學課程說明如何使用 Windows VM 系統指派的受控識別，以利用 SAS 認證 (而非儲存體帳戶來存取金鑰) 來存取 Azure 儲存體。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c344c25a696500182030ff849a001ad586c92032
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74232167"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-a-sas-credential"></a>教學課程：使用 Windows VM 系統指派的受控識別，透過 SAS 認證來存取 Azure 儲存體
@@ -50,7 +50,7 @@ ms.locfileid: "74232167"
 3. 輸入儲存體帳戶的名稱，您稍後將會使用它。  
 4. [部署模型]**** 和 [帳戶類型]**** 應該分別設定為「資源管理員」和「一般用途」。 
 5. 確定 [訂用帳戶]**** 和 [資源群組]**** 符合您在上一個步驟中建立 VM 時指定的值。
-6. 按一下 **[建立]**。
+6. 按一下頁面底部的 [新增]  。
 
     ![建立新的儲存體帳戶](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -86,7 +86,7 @@ Azure 儲存體原生並不支援 Azure AD 驗證。  不過，您可以使用�
 在這部分的課程中，需要用到 Azure Resource Manager PowerShell Cmdlet。  如果您沒有安裝它，請[下載最新版本](https://docs.microsoft.com/powershell/azure/overview)之後再繼續。
 
 1. 在 Azure 入口網站中，瀏覽至 [虛擬機器]****，移至您的 Windows 虛擬機器，然後在 [概觀]**** 頁面中，按一下頂端的 [連線]****。
-2. 輸入創建 Windows **Password** VM 時為其添加的**使用者名和密碼**。 
+2. 輸入您在建立 Windows VM 時新增的使用者**名稱**和**密碼**。 
 3. 現在您已經建立虛擬機器的**遠端桌面連線**，請在遠端工作階段中開啟 PowerShell。 
 4. 使用 Powershell 的 Invoke-WebRequest，向 Azure 資源端點的本機受控識別提出要求，以取得 Azure Resource Manager 的存取權杖。
 
@@ -205,6 +205,6 @@ Name              : testblob
 在本教學課程中，您已了解如何使用 Windows VM 系統指派的受控識別，以利用 SAS 認證來存取 Azure 儲存體。  若要深入了解 Azure 儲存體 SAS，請參閱：
 
 > [!div class="nextstepaction"]
->[使用共用存取簽章 (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+>[使用共用存取簽章（SAS）](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 
 

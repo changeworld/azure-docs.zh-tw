@@ -9,24 +9,24 @@ ms.date: 11/26/2019
 ms.author: tamram
 ms.custom: include
 ms.openlocfilehash: de79ea50d12ab322d1e28d0ad650df30ecc0c222
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74806572"
 ---
-## <a name="install-client-library-packages"></a>安裝用戶端庫包
+## <a name="install-client-library-packages"></a>安裝用戶端程式庫套件
 
 > [!NOTE]
-> 此處顯示的示例使用 Azure 存儲用戶端庫版本 12。 版本 12 用戶端庫是 Azure SDK 的一部分。 有關 Azure SDK 的詳細資訊，請參閱[GitHub](https://github.com/Azure/azure-sdk)上的 Azure SDK 存儲庫。
+> 此處顯示的範例會使用 Azure 儲存體用戶端程式庫第12版。 版本12用戶端程式庫是 Azure SDK 的一部分。 如需 Azure SDK 的詳細資訊，請參閱[GitHub](https://github.com/Azure/azure-sdk)上的 Azure sdk 存放庫。
 
-要安裝 Blob 存儲包，請從 NuGet 包管理器主控台運行以下命令：
+若要安裝 Blob 儲存體套件，請從 NuGet 套件管理員主控台執行下列命令：
 
 ```powershell
 Install-Package Azure.Storage.Blobs
 ```
 
-此處顯示的示例還使用最新版本的[Azure 標識用戶端庫（用於 .NET）](https://www.nuget.org/packages/Azure.Identity/)使用 Azure AD 憑據進行身份驗證。 要安裝包，請從 NuGet 包管理器主控台運行以下命令：
+此處顯示的範例也會使用[適用于 .net 的 Azure 身分識別用戶端程式庫](https://www.nuget.org/packages/Azure.Identity/)的最新版本，以 Azure AD 認證進行驗證。 若要安裝套件，請從 NuGet 套件管理員主控台執行下列命令：
 
 ```powershell
 Install-Package Azure.Identity
