@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：為電路配置 NPM
+title: Azure ExpressRoute：設定線路的 NPM
 description: 設定 Azure ExpressRoute 線路的雲端式網路監視 (NPM)。 這包括透過 ExpressRoute 私人對等互連和 Microsoft 對等互連進行監視。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
 ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74076599"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>設定 ExpressRoute 的網路效能監控
@@ -54,12 +54,12 @@ ms.locfileid: "74076599"
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取有 VNET 對等連至 ExpressRoute 線路的訂用帳戶。 然後搜尋 **Marketplace** 中的服務清單，以找出 [網路效能監控]。 在傳回的結果中，按一下以開啟 [網路效能監視器]**** 頁面。
 
    >[!NOTE]
-   >您可以建立新的工作區，或使用現有的工作區。 如果您想要使用現有的工作區，必須確定工作區已移轉至新的查詢語言。 [更多資訊...](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
+   >您可以建立新的工作區，或使用現有的工作區。 如果您想要使用現有的工作區，必須確定工作區已移轉至新的查詢語言。 [詳細資訊 .。。](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search-upgrade)
    >
 
    ![入口網站](./media/how-to-npm/3.png)<br><br>
 2. 在 [網路效能監視器]**** 主頁面底部，按一下 [建立]**** 以開啟 [網路效能監視器 - 建立新的解決方案]**** 頁面。 按一下 [Log Analytics 工作區 - 選取工作區]**** 以開啟 [工作區] 頁面。 按一下 [+ 建立新工作區]**** 以開啟 [工作區] 頁面。
-3. 在**日誌分析工作區**頁上，選擇 **"新建**"，然後配置以下設置：
+3. 在 [ **Log Analytics 工作區**] 頁面上，選取 [**新建**]，然後設定下列設定：
 
    * Log Analytics 工作區：輸入您工作區的名稱。
    * 訂用帳戶 - 如果您有多個訂用帳戶，請選擇要與新工作區建立關聯的帳戶。
@@ -97,22 +97,22 @@ ms.locfileid: "74076599"
 
 1. 執行**安裝程式**，以在您想要用於監視 ExpressRoute 的每部伺服器上安裝代理程式。 您用來進行監視的伺服器可以是 VM 或內部部署伺服器，而且必須能夠存取網際網路。 您必須至少在內部部署環境安裝一個代理程式，以及在 Azure 中您需要監視的每個網路區段安裝一個代理程式。
 2. 在 [歡迎]**** 頁面上，按 [下一步]****。
-3. 在 **"許可證條款"** 頁上，閱讀許可證，然後按一下"**我同意**"。
-4. 在 **"目的檔案夾**"頁上，更改或保留預設安裝資料夾，然後按一下"**下一步**"。
-5. 在 **"代理設置選項"** 頁上，您可以選擇將代理連接到 Azure 監視器日誌或操作管理器。 或者，如果您想要稍後設定代理程式，則可以將選項留白。 進行選擇後，按 [下一步]****。
+3. 閱讀 [**授權條款**] 頁面上的授權，然後按一下 [**我同意**]。
+4. 在 [**目的地資料夾**] 頁面上，變更或保留預設的安裝資料夾，然後按 **[下一步]**。
+5. 在 [**代理程式安裝選項**] 頁面上，您可以選擇將代理程式連線至 Azure 監視器記錄或 Operations Manager。 或者，如果您想要稍後設定代理程式，則可以將選項留白。 進行選擇後，按 [下一步]****。
 
-   * 如果您選擇連線到 [Azure Log Analytics]****，請貼上您在上一節複製到「記事本」中的 [工作區識別碼]**** 和 [工作區金鑰 (主要金鑰)]****。 然後按 [下一步]****。
+   * 如果您選擇連線到 [Azure Log Analytics]****，請貼上您在上一節複製到「記事本」中的 [工作區識別碼]**** 和 [工作區金鑰 (主要金鑰)]****。 然後按 [下一步]  。
 
      ![識別碼和金鑰](./media/how-to-npm/8.png)
-   * 如果您選擇連線到 [Operations Manager]****，請在 [管理群組設定]**** 頁面上，輸入 [管理群組名稱]****、[管理伺服器]**** 及 [管理伺服器連接埠]****。 然後按 [下一步]****。
+   * 如果您選擇連線到 [Operations Manager]****，請在 [管理群組設定]**** 頁面上，輸入 [管理群組名稱]****、[管理伺服器]**** 及 [管理伺服器連接埠]****。 然後按 [下一步]  。
 
      ![Operations Manager](./media/how-to-npm/9.png)
-   * 在 [代理程式動作帳戶]**** 頁面上，選擇 [本機系統]**** 帳戶或 [網域或本機電腦]**** 帳戶。 然後按 [下一步]****。
+   * 在 [代理程式動作帳戶]**** 頁面上，選擇 [本機系統]**** 帳戶或 [網域或本機電腦]**** 帳戶。 然後按 [下一步]  。
 
      ![帳戶](./media/how-to-npm/10.png)
-6. 在 **"準備安裝"** 頁上，查看您的選擇，然後按一下"**安裝**"。
-7. 在 **"成功完成配置**"頁上，按一下"**完成**"。
-8. 完成時，[Microsoft Monitoring Agent] 會出現在 [控制台] 中。 您可以在那裡查看配置，並驗證代理是否連接到 Azure 監視器日誌。 連線後，代理程式會顯示訊息︰**Microsoft Monitoring Agent 已成功連線到 Microsoft Operations Management Suite 服務**。
+6. 在 [**安裝準備就緒**] 頁面上，檢查您的選擇，然後按一下 [**安裝**]。
+7. 在 [設定已**成功完成**] 頁面上，按一下 **[完成]**。
+8. 完成時，[Microsoft Monitoring Agent] 會出現在 [控制台] 中。 您可以在該處檢查設定，並確認代理程式已連線到 Azure 監視器記錄。 連線後，代理程式會顯示訊息︰**Microsoft Monitoring Agent 已成功連線到 Microsoft Operations Management Suite 服務**。
 
 9. 請針對您需要監視的每個 VNET 重複此程序。
 
@@ -136,7 +136,7 @@ ms.locfileid: "74076599"
 1. 在具有監視代理程式的伺服器上，開啟 [控制台]****。
 2. 開啟 [Microsoft Monitoring Agent]****。
 3. 按一下 [Azure Log Analytics]**** 索引標籤。
-4. 在 **"狀態"** 列中，應看到代理已成功連接到 Azure 監視器日誌。
+4. 在 [**狀態**] 資料行中，您應該會看到代理程式已成功連線到 Azure 監視器記錄。
 
    ![status](./media/how-to-npm/12.png)
 
@@ -236,9 +236,9 @@ NPM 頁面包含 ExpressRoute 頁面，當中顯示 ExpressRoute 線路和對等
 
 ![線路清單](./media/how-to-npm/circuits.png)
 
-#### <a name="trend-of-loss-latency-and-throughput"></a><a name="trend"></a>損失、延遲和輸送量趨勢
+#### <a name="trend-of-loss-latency-and-throughput"></a><a name="trend"></a>遺失、延遲及輸送量的趨勢
 
-頻寬、延遲及遺失圖表是互動式圖表。 您可以使用滑鼠控制項將這些圖表的任何部分放大。 您還可以通過按一下位於左上角"操作"按鈕下方**的日期/時間**，查看其他間隔的頻寬、延遲和遺失資料。
+頻寬、延遲及遺失圖表是互動式圖表。 您可以使用滑鼠控制項將這些圖表的任何部分放大。 您也可以按一下位於左上方 [動作] 按鈕底下的 [**日期/時間**]，以查看其他間隔的頻寬、延遲及遺失資料。
 
 ![趨勢](./media/how-to-npm/16.png)
 

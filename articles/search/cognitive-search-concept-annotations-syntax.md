@@ -1,7 +1,7 @@
 ---
-title: 技能集中的參考輸入和輸出
+title: 參考技能集中的輸入和輸出
 titleSuffix: Azure Cognitive Search
-description: 解釋注釋語法以及如何在 Azure 認知搜索中的 AI 擴充管道中技能集的輸入和輸出中引用注釋。
+description: 說明注釋語法，以及如何在 Azure 認知搜尋中的 AI 擴充管線中，參考技能集的輸入和輸出中的注釋。
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
@@ -9,13 +9,13 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113862"
 ---
-# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>如何引用 Azure 認知搜索技能集中的注釋
+# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>如何參考 Azure 認知搜尋技能集中的批註
 
 在本文中，我們將使用範例說明各種案例，讓您了解如何參考技能定義中的註解。 當文件內容流經技能集時，將會增添註解而有所擴充。 註解可以作為進一步下游擴充的輸入，或對應至索引中的輸出欄位。 
  
@@ -33,7 +33,7 @@ ms.locfileid: "74113862"
 <a name="example-1"></a>
 ## <a name="example-1-simple-annotation-reference"></a>範例 1：簡單註解參考
 
-在 Azure Blob 存儲中，假設您有各種檔，其中包含要使用實體識別提取的對人員姓名的引用。 在下列技能定義中，`"/document/content"` 是整份文件的文字表示法，而 "people" 則是對識別為人員的實體擷取到的完整名稱。
+在 Azure Blob 儲存體中，假設您有各種檔案包含您想要使用實體辨識來解壓縮的人員名稱參考。 在下列技能定義中，`"/document/content"` 是整份文件的文字表示法，而 "people" 則是對識別為人員的實體擷取到的完整名稱。
 
 由於預設內容為 `"/document"`，因此人員清單此時可以參考為 `"/document/people"`。 在這種情況下，`"/document/people"` 是註解，且此時有可能對應至索引中的欄位，或用於相同技能集中的另一項技能。
 
@@ -95,7 +95,7 @@ ms.locfileid: "74113862"
 
 有時候，您必須將特定類型的所有註解分組在一起，以將其傳遞至特定技能。 請考慮建立假設性的自訂技能，以從擷取自範例 2 的所有姓氏中識別出最常見的姓氏。 若只要將姓氏提供給自訂技能，請將內容指定為 `"/document"`，並將輸入指定為 `"/document/people/*/lastname"`。
 
-請注意， 的`"/document/people/*/lastname"`基數大於文檔的基數。 姓氏節點可能有 10 個，而此文件只有一個文件節點。 在此情況下，系統會自動建立一個 `"/document/people/*/lastname"` 陣列，其中包含文件中的所有元素。
+請注意，的基數`"/document/people/*/lastname"`大於檔的基數。 姓氏節點可能有 10 個，而此文件只有一個文件節點。 在此情況下，系統會自動建立一個 `"/document/people/*/lastname"` 陣列，其中包含文件中的所有元素。
 
 ```json
   {

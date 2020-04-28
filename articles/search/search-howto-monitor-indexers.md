@@ -1,7 +1,7 @@
 ---
 title: 監視索引子狀態和結果
 titleSuffix: Azure Cognitive Search
-description: 使用 REST API 或 .NET SDK 監視 Azure 門戶中的 Azure 認知搜索索引子的狀態、進度和結果。
+description: 使用 REST API 或 .NET SDK，在 Azure 入口網站中監視 Azure 認知搜尋索引子的狀態、進度和結果。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -10,77 +10,77 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 699b5a4e5a7f10c883667ca5030dd971855467f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74112987"
 ---
-# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何監視 Azure 認知搜索索引子狀態和結果
+# <a name="how-to-monitor-azure-cognitive-search-indexer-status-and-results"></a>如何監視 Azure 認知搜尋索引子的狀態和結果
 
-Azure 認知搜索提供有關每個索引子的當前和歷史運行的狀態和監視資訊。
+Azure 認知搜尋提供有關每個索引子的目前和歷程記錄執行狀態和監視資訊。
 
-當您想要：
+當您想要執行下列動作時，索引子監視非常有用：
 
-* 跟蹤索引子在持續運行期間的進度。
-* 查看正在進行的或以前的索引子運行的結果。
-* 識別頂級索引子錯誤，以及有關要編制索引的單個文檔的錯誤或警告。
+* 追蹤索引子在進行中執行時的進度。
+* 檢查進行中或前一個索引子執行的結果。
+* 找出最上層的索引子錯誤，以及有關要編制索引之個別檔的錯誤或警告。
 
-## <a name="get-status-and-history"></a>獲取狀態和歷史記錄
+## <a name="get-status-and-history"></a>取得狀態和歷程記錄
 
-您可以通過多種方式訪問索引子監視資訊，包括：
+您可以透過各種方式來存取索引子監視資訊，包括：
 
-* 在[Azure 門戶](#portal)中
+* 在 [ [Azure 入口網站](#portal)
 * 使用[REST API](#restapi)
 * 使用[.NET SDK](#dotnetsdk)
 
-可用的索引子監視資訊包括以下所有內容（儘管資料格式因所使用的存取方法而異）：
+可用的索引子監視資訊包括下列所有內容（雖然資料格式會根據所使用的存取方法而有所不同）：
 
-* 有關索引子本身的狀態資訊
-* 有關索引子最近運行的資訊，包括其狀態、開始和結束時間以及詳細的錯誤和警告。
-* 歷史索引子的清單運行，其狀態、結果、錯誤和警告。
+* 索引子本身的狀態資訊
+* 最新執行之索引子的相關資訊，包括其狀態、開始和結束時間，以及詳細的錯誤和警告。
+* 歷程記錄索引子的清單會執行，以及其狀態、結果、錯誤和警告。
 
-處理大量資料的索引子可能需要很長時間才能運行。 例如，處理數百萬來源文件的索引子可以運行 24 小時，然後幾乎立即重新開機。 大容量索引子的狀態可能始終表示門戶中的 **"正在進行**"。 即使索引子正在運行，有關正在進行的進度和以前的運行的詳細資訊也可用。
+處理大量資料的索引子可能需要很長的時間來執行。 例如，處理數百萬個來源文件的索引子可以執行24小時，然後幾乎立即重新開機。 高容量索引子的狀態在入口網站中可能一律會顯示為 [**進行**中]。 即使索引子正在執行，詳細資料仍適用于進行中的進度和先前的執行。
 
 <a name="portal"></a>
 
-## <a name="monitor-using-the-portal"></a>使用門戶進行監視
+## <a name="monitor-using-the-portal"></a>使用入口網站進行監視
 
-您可以在搜索服務概述頁上的**索引子**清單中查看所有索引子的目前狀態。
+您可以在 [搜尋服務] [總覽] 頁面的 [**索引子**] 清單中，查看所有索引子的目前狀態。
 
    ![索引子清單](media/search-monitor-indexers/indexers-list.png "索引子清單")
 
-當索引子執行時，清單中的狀態將顯示 **"正在進行**"，並且 **"文檔繼承"** 值顯示到目前為止處理的文檔數。 門戶可能需要幾分鐘時間更新索引子狀態值和文檔計數。
+執行索引子時，清單中的狀態會顯示為 [**進行中**]，而 [檔**成功**] 值會顯示到目前為止處理的檔數目。 可能需要幾分鐘的時間，入口網站才會更新索引子狀態值和檔計數。
 
-最近運行成功的索引子顯示**成功**。 如果錯誤數小於索引子的**Max 失敗項**設置，即使單個文檔有錯誤，索引子運行也可以成功。
+最近一次執行成功的索引子顯示**成功**。 即使錯誤數目小於索引子的 [**失敗的最大專案**] 設定，索引子執行還是可以成功。
 
-如果最近的運行以錯誤結束，則狀態將顯示 **"失敗**"。 **重置**狀態表示索引子的更改跟蹤狀態已重置。
+如果最近執行結束時出現錯誤，則狀態會顯示為 [**失敗**]。 [**重設**] 狀態表示索引子的變更追蹤狀態為 [已重設]。
 
-按一下清單中的索引子以查看有關索引子當前和最近運行的更多詳細資訊。
+按一下清單中的索引子，以查看有關索引子目前和最近執行的更多詳細資料。
 
-   ![索引子摘要和執行歷史記錄](media/search-monitor-indexers/indexer-summary.png "索引子摘要和執行歷史記錄")
+   ![索引子摘要和執行歷程記錄](media/search-monitor-indexers/indexer-summary.png "索引子摘要和執行歷程記錄")
 
-**索引子匯總**圖顯示最近運行中處理的文檔數的圖表。
+**索引子摘要**圖表會顯示其最近執行中處理的檔數目圖表。
 
-**"執行詳細資訊**"清單最多顯示 50 個最新的執行結果。
+[**執行詳細資料**] 清單會顯示最多50的最近執行結果。
 
-按一下清單中的執行結果以查看有關該運行的詳細資訊。 這包括其開始和結束時間，以及發生的任何錯誤和警告。
+按一下清單中的執行結果，以查看有關該執行的詳細資訊。 這包括其開始和結束時間，以及任何發生的錯誤和警告。
 
-   ![索引子執行詳細資訊](media/search-monitor-indexers/indexer-execution.png "索引子執行詳細資訊")
+   ![索引子執行詳細資料](media/search-monitor-indexers/indexer-execution.png "索引子執行詳細資料")
 
-如果在運行過程中存在特定于文檔的問題，則這些問題將在"錯誤和警告"欄位中列出。
+如果在執行期間發生檔特定的問題，它們會列在 [錯誤] 和 [警告] 欄位中。
 
-   ![索引子詳細資訊與錯誤](media/search-monitor-indexers/indexer-execution-error.png "索引子詳細資訊與錯誤")
+   ![有錯誤的索引子詳細資料](media/search-monitor-indexers/indexer-execution-error.png "有錯誤的索引子詳細資料")
 
-警告在某些類型的索引子中很常見，並且並不總是指示問題。 例如，當圖像或 PDF 檔不包含要處理的任何文本時，使用認知服務的索引子可以報告警告。
+警告在某些類型的索引子中是常見的，而且不一定表示有問題。 例如，使用認知服務的索引子可以在影像或 PDF 檔案不包含任何要處理的文字時報告警告。
 
-有關調查索引子錯誤和警告的詳細資訊，請參閱在[Azure 認知搜索 中排除常見索引子問題的疑難排解](search-indexer-troubleshooting.md)。
+如需調查索引子錯誤和警告的詳細資訊，請參閱針對[Azure 認知搜尋中的常見索引子問題進行疑難排解](search-indexer-troubleshooting.md)。
 
 <a name="restapi"></a>
 
-## <a name="monitor-using-rest-apis"></a>使用 REST API 進行監控
+## <a name="monitor-using-rest-apis"></a>使用 REST Api 進行監視
 
-您可以使用[獲取索引子狀態命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)檢索索引子的狀態和執行歷史記錄：
+您可以使用[取得索引子狀態命令](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)來抓取索引子的狀態和執行歷程記錄：
 
     GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
     api-key: [Search service admin key]
@@ -113,23 +113,23 @@ Azure 認知搜索提供有關每個索引子的當前和歷史運行的狀態�
         }]
     }
 
-執行歷史記錄包含最多 50 個最近的運行，按相反的時間順序排序（最近第一次）。
+執行歷程記錄包含最多50個最近執行，並以反向時間順序排序（最新的第一個）。
 
-請注意，有兩個不同的狀態值。 頂級狀態是索引子本身。 索引子**運行**狀態意味著索引子設置正確且可用於運行，但不是索引子當前正在運行。
+請注意，有兩個不同的狀態值。 最上層狀態適用于索引子本身。 索引子狀態為 [執行中 **] 表示索引**器已正確設定且可供執行，但不是目前正在執行。
 
-索引子的每個運行也有自己的狀態，指示該特定執行是正在進行的（**正在運行**），還是已完成**成功**、**暫態失敗**或**持久失敗**狀態。 
+每次執行索引子時，也會有自己的狀態，指出該特定執行是否正在進行**中（執行**中），或已完成且具有**成功**、 **transientFailure**或**persistentFailure**狀態。 
 
-當重置索引子以刷新其更改跟蹤狀態時，將添加帶有**重置**狀態的單獨執行歷史記錄條目。
+重設索引子以重新整理其變更追蹤狀態時，會加入具有**重設**狀態的個別執行歷程記錄專案。
 
-有關狀態碼和索引子監視資料的詳細資訊，請參閱[獲取索引子狀態](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)。
+如需有關狀態碼和索引子監視資料的詳細資訊，請參閱[GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)。
 
 <a name="dotnetsdk"></a>
 
 ## <a name="monitor-using-the-net-sdk"></a>使用 .NET SDK 進行監視
 
-您可以使用 Azure 認知搜索 .NET SDK 為索引子定義計畫。 為此，請在創建或更新索引子時包括**計畫**屬性。
+您可以使用 Azure 認知搜尋 .NET SDK 來定義索引子的排程。 若要這麼做，請在建立或更新索引子時加入**排程**屬性。
 
-以下 C# 示例將有關索引子的狀態及其最近（或正在進行）運行到主控台的結果的資訊。
+下列 c # 範例會將索引子狀態的相關資訊，以及其最近（或進行中）執行的結果寫入主控台。
 
 ```csharp
 static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchService)
@@ -161,7 +161,7 @@ static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchServic
 }
 ```
 
-主控台中的輸出將如下所示：
+主控台中的輸出看起來會像這樣：
 
     Indexer has run 18 times.
     Indexer Status: Running
@@ -172,14 +172,14 @@ static void CheckIndexerStatus(Indexer indexer, SearchServiceClient searchServic
       ErrorMessage: none
       Document Errors: 0, Warnings: 0
 
-請注意，有兩個不同的狀態值。 頂級狀態是索引子本身的狀態。 索引子"**正在運行"** 狀態意味著索引子設置正確且可供執行，但不是索引子當前正在執行。
+請注意，有兩個不同的狀態值。 最上層狀態是索引子本身的狀態。 [執行中的索引子]**狀態表示索引**器已正確設定且可供執行，但不是目前正在執行。
 
-索引子的每個運行也具有其自己的狀態，即該特定執行是正在進行的（**正在運行**），還是已完成**成功或****暫時錯誤**狀態。 
+每次執行索引子時，都有它自己的狀態，以指出該特定執行是否正在進行**中（執行**中），或已完成且具有**成功**或**TransientError**狀態。 
 
-當重置索引子以刷新其更改跟蹤狀態時，將添加帶有**重置**狀態的單獨歷史記錄條目。
+重設索引子以重新整理其變更追蹤狀態時，會加入具有**重設**狀態的個別歷程記錄專案。
 
-有關狀態碼和索引子監視資訊的更多詳細資訊，請參閱 REST API 中的[GetIndexer 狀態](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status)。
+如需有關狀態碼和索引子監視資訊的詳細資訊，請參閱 REST API 中的[GetIndexerStatus](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) 。
 
-可以通過枚舉清單`IndexerExecutionResult.Errors`和`IndexerExecutionResult.Warnings`檢索有關特定于文檔的錯誤或警告的詳細資訊。
+您可以藉由列舉清單`IndexerExecutionResult.Errors`和`IndexerExecutionResult.Warnings`來抓取檔特定錯誤或警告的詳細資料。
 
-有關用於監視索引子的 .NET SDK 類的詳細資訊，請參閱[索引子執行資訊](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet)和[索引子執行結果](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)。
+如需用來監視索引子之 .NET SDK 類別的詳細資訊，請參閱[IndexerExecutionInfo](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutioninfo?view=azure-dotnet)和[IndexerExecutionResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet)。

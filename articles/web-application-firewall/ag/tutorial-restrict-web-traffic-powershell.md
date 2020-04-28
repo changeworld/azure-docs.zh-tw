@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 限制 Web 流量
+title: 使用 PowerShell 限制網路流量
 titleSuffix: Azure Web Application Firewall
 description: 了解如何使用 Azure PowerShell，在應用程式閘道上使用 Web 應用程式防火牆來限制網路流量。
 services: web-application-firewall
@@ -9,15 +9,15 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: a57c5b155f7ab00f781236cfceea59a4277ff06a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74046284"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>使用 Azure PowerShell 啟用 Web 應用程式防火牆
 
-您可以使用[Web 應用程式防火牆](ag-overview.md)（WAF） 限制應用程式閘道上的流量。 WAF 會使用 [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 規則來保護您的應用程式。 這些規則包括防禦諸如 SQL 插入攻擊、跨網站指令碼攻擊，以及工作階段劫持等攻擊。 
+您可以使用[Web 應用程式防火牆](ag-overview.md)（WAF）限制應用程式閘道上的流量。 WAF 會使用 [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 規則來保護您的應用程式。 這些規則包括防禦諸如 SQL 插入攻擊、跨網站指令碼攻擊，以及工作階段劫持等攻擊。 
 
 在本文中，您將學會如何：
 

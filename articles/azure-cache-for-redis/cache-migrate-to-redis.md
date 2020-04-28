@@ -1,5 +1,5 @@
 ---
-title: 將託管快取服務應用程式遷移到雷瑞斯 - Azure
+title: 將受控快取服務應用程式遷移至 Redis-Azure
 description: 了解如何將受控快取服務和 In-Role Cache 應用程式移轉至 Azure Cache for Redis
 author: yegu-ms
 ms.service: cache
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
 ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74122679"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>從受控快取服務移轉至 Azure Cache for Redis
@@ -54,7 +54,7 @@ Microsoft Azure Cache for Redis 可在以下層級使用：
 
 * **基本** - 單一節點。 多種大小，最高為 53 GB。
 * **標準** – 兩個節點 (主要/從屬)。 多種大小，最高為 53 GB。 99.9% SLA。
-* **進階** – 兩個節點的主要/從屬，最多具有 10 個分區。 多種大小從 6 GB 到 1.2 TB。 所有「標準」層級的功能以及更多功能，可支援 [Redis 叢集](cache-how-to-premium-clustering.md)、[Redis 持續性](cache-how-to-premium-persistence.md)和 [Azure 虛擬網路](cache-how-to-premium-vnet.md)。 99.9% SLA。
+* **進階** – 兩個節點的主要/從屬，最多具有 10 個分區。 6 GB 到 1.2 TB 之間的多個大小。 所有「標準」層級的功能以及更多功能，可支援 [Redis 叢集](cache-how-to-premium-clustering.md)、[Redis 持續性](cache-how-to-premium-persistence.md)和 [Azure 虛擬網路](cache-how-to-premium-vnet.md)。 99.9% SLA。
 
 每一個階層都有不同的功能和價格。 本指南稍後將探討這些功能，如需定價的詳細資訊，請參閱 [快取定價詳細資料](https://azure.microsoft.com/pricing/details/cache/)。
 
@@ -122,7 +122,7 @@ StackExchange.Azure Cache for Redis 用戶端的 API 類似於受控快取服務
 using StackExchange.Redis
 ```
 
-如果此命名空間無法解決，請確保已添加 StackExchange.Redis NuGet 包，如[快速入門：使用 Azure 緩存進行 .NET 應用程式](cache-dotnet-how-to-use-azure-redis-cache.md)。
+如果此命名空間並未解析，請確定您已如[快速入門：搭配使用 Azure Cache For Redis 與 .net 應用程式](cache-dotnet-how-to-use-azure-redis-cache.md)中所述，新增 stackexchange.redis NuGet 套件。
 
 > [!NOTE]
 > 請注意，StackExchange.Redis 用戶端需要 .NET Framework 4 或更高版本。

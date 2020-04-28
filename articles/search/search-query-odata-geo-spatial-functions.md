@@ -1,7 +1,7 @@
 ---
-title: OData地理空間函數參考
+title: OData 地理空間函數參考
 titleSuffix: Azure Cognitive Search
-description: 用於在 Azure 認知搜索查詢中使用 OData 地理空間函數（地理.距離和地理.相交）的語法和參考文檔。
+description: 在 Azure 認知搜尋查詢中使用 OData 地理空間函式、地理距離和地理交集的語法和參考檔。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -20,24 +20,24 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 902996c1813931638012c78f81bd65c400bee7a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74113171"
 ---
-# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure 認知搜索中的 OData 地理空間`geo.distance`函數 - 和`geo.intersects`
+# <a name="odata-geo-spatial-functions-in-azure-cognitive-search---geodistance-and-geointersects"></a>Azure 認知搜尋中的 OData 地理空間函數- `geo.distance`和`geo.intersects`
 
-Azure 認知搜索通過`geo.distance`和`geo.intersects`函數支援[OData 篩選器運算式](query-odata-filter-orderby-syntax.md)中的地理空間查詢。 該`geo.distance`函數返回兩個點之間的距離（以公里形式，一個是欄位或範圍變數，另一個是作為篩選器的一部分傳遞的常量）。 如果`geo.intersects`給定點`true`位於給定多邊形內，則函數將返回，其中點是欄位或範圍變數，而面被指定為作為篩選器的一部分傳遞的常量。
+Azure 認知搜尋可透過`geo.distance`和函式， `geo.intersects`在[OData 篩選運算式](query-odata-filter-orderby-syntax.md)中支援地理空間查詢。 `geo.distance`函式會傳回兩個點之間的距離（以公里為單位），一個是欄位或範圍變數，另一個是做為篩選準則一部分傳遞的常數。 `geo.intersects`如果指定的點在指定的多邊形內，此函式會傳回，其中點是欄位或範圍變數，而多邊形則會指定為做為篩選準則一部分傳遞的`true`常數。
 
-該`geo.distance`函數還可用於[**$orderby**參數](search-query-odata-orderby.md)中按與給定點的距離對搜尋結果進行排序。 `geo.distance` 在 **$orderby** 中的語法與其在 **$filter** 中的語法相同。 在$orderby`geo.distance`中使用 **$orderby**時，它所應用的欄位必須是類型的`Edm.GeographyPoint`欄位，並且還必須**是可排序的**。
+`geo.distance`函式也可以用在[ **$orderby**參數](search-query-odata-orderby.md)中，以從指定點的距離來排序搜尋結果。 `geo.distance` 在 **$orderby** 中的語法與其在 **$filter** 中的語法相同。 在 $orderby `geo.distance`中 **$orderby**使用時，它所套用的欄位必須是類型`Edm.GeographyPoint` ，而且也必須是可**排序**的。
 
 > [!NOTE]
-> 在$orderby`geo.distance`參數中使用 **$orderby**時，傳遞給函數的欄位必須僅包含一個地理點。 換句話說，它必須是類型`Edm.GeographyPoint`，而不是`Collection(Edm.GeographyPoint)`。 無法對 Azure 認知搜索中的集合欄位進行排序。
+> 在 $orderby `geo.distance`參數中 **$orderby**使用時，您傳遞給函式的欄位必須只包含單一的地理點。 換句話說，它的類型`Edm.GeographyPoint`必須是，而不`Collection(Edm.GeographyPoint)`是。 您不能在 Azure 認知搜尋中排序集合欄位。
 
 ## <a name="syntax"></a>語法
 
-以下 EBNF（[擴展 Backus-Naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定義了`geo.distance`和`geo.intersects`函數的語法，以及它們操作的地理空間值：
+下列 EBNF （[延伸巴克斯-Backus-naur 表單](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)）定義`geo.distance`和`geo.intersects`函式的文法，以及其運作所在的地理空間值：
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -61,69 +61,69 @@ geo_polygon ::=
 lon_lat_list ::= lon_lat(',' lon_lat)*
 ```
 
-還提供互動式語法圖：
+也提供互動式語法圖：
 
 > [!div class="nextstepaction"]
-> [Azure 認知搜索的 OData 語法圖](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
+> [Azure 認知搜尋的 OData 語法圖表](https://azuresearch.github.io/odata-syntax-diagram/#geo_distance_call)
 
 > [!NOTE]
-> 有關完整的 EBNF，請參閱[Azure 認知搜索的 OData 運算式語法引用](search-query-odata-syntax-reference.md)。
+> 如需完整的 EBNF，請參閱[Azure 認知搜尋的 OData 運算式語法參考](search-query-odata-syntax-reference.md)。
 
 ### <a name="geodistance"></a>地理距離
 
-該`geo.distance`函數採用兩個類型的`Edm.GeographyPoint`參數，並返回一`Edm.Double`個值，該值以公里表示它們之間的距離。 這與支援 OData 地理空間操作的其他服務不同，後者通常以米為單位返回距離。
+`geo.distance`函式`Edm.GeographyPoint` `Edm.Double`接受兩個類型的參數，並傳回值，也就是兩者之間的距離（以公里為間隔）。 這與支援 OData 地理空間作業的其他服務不同，這通常會傳回量表中的距離。
 
-要的`geo.distance`參數之一必須是地理點常量，另一個參數必須是欄位路徑（或篩選器在類型`Collection(Edm.GeographyPoint)`欄位上反覆運算時的範圍變數）。 這些參數的順序並不重要。
+的其中一個參數`geo.distance`必須是地理位置點常數，另一個必須是欄位路徑（或是在篩選準則的情況下，會反復查看類型`Collection(Edm.GeographyPoint)`的欄位）的範圍變數。 這些參數的順序並不重要。
 
-地理點常量是形式`geography'POINT(<longitude> <latitude>)'`，其中經度和緯度是數值常量。
+地理位置點常數的格式`geography'POINT(<longitude> <latitude>)'`為，其中經度和緯度是數值常數。
 
 > [!NOTE]
-> `geo.distance`在篩選器`lt`中使用時，必須將函數返回的距離與使用 的`le`常量進行比較。 `gt` `ge` 比較距離時不支援使用運算子 `eq` 和 `ne`。 例如，這是`geo.distance`的正確用法。 `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`
+> 在篩選`geo.distance`條件中使用時，您必須`lt`使用、 `le`、 `gt`或`ge`，比較函式所傳回的距離與常數。 比較距離時不支援使用運算子 `eq` 和 `ne`。 例如，這是正確的`geo.distance`使用方式：。 `$filter=geo.distance(location, geography'POINT(-122.131577 47.678581)') le 5`
 
-### <a name="geointersects"></a>地理.相交
+### <a name="geointersects"></a>地理交集
 
-函數`geo.intersects``Edm.GeographyPoint`採用類型的變數和常量`Edm.GeographyPolygon`，如果點在多邊形`Edm.Boolean` -- `true`的邊界內，則返回 返回 ，`false`否則。
+`geo.intersects`函式`Edm.GeographyPoint`會採用型別和常數`Edm.GeographyPolygon` `Edm.Boolean`  --  `true`的變數，如果點位於多邊形的界限內，則會傳回， `false`否則會傳回。
 
-面是作為定義邊界環的點序列存儲的二維曲面（請參閱下面的[示例](#examples)）。 多邊形必須是封閉的，也就是第一個和最後一個點集合必須相同。 [多邊形內的點必須採用逆時針順序](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
+多邊形是儲存為一連串點的二維介面，可定義周框環形（請參閱下列[範例](#examples)）。 多邊形必須是封閉的，也就是第一個和最後一個點集合必須相同。 [多邊形內的點必須採用逆時針順序](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
 
-### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>跨越第 180 個子午線的地理空間查詢和多邊形
+### <a name="geo-spatial-queries-and-polygons-spanning-the-180th-meridian"></a>跨180度經線經線的地理空間查詢和多邊形
 
-對於許多地理空間查詢庫，制定包含第 180 個子午線（靠近日期線）的查詢是禁區，或者需要解決方法，例如將多邊形拆分為兩個，一個位於子午線兩側。
+許多地理空間查詢程式庫所組成的查詢，包含180度經線經線（接近 dateline 附近）是關閉限制或需要因應措施，例如將多邊形分割成兩個，一個在經線的兩邊。
 
-在 Azure 認知搜索中，如果查詢形狀為矩形，並且座標沿經度和緯度（例如），`geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`與網格佈局對齊，則包含 180 度經度的地理空間查詢將按預期工作。 而如果是非矩形或未對齊的形狀，請考慮採用分割多邊形的方法。  
+在 Azure 認知搜尋中，如果查詢圖形是矩形，而且您的座標與經度和緯度的格線版面配置對齊（例如`geo.intersects(location, geography'POLYGON((179 65, 179 66, -179 66, -179 65, 179 65))'`），則包含180度經度的地理空間查詢將會如預期般運作。 而如果是非矩形或未對齊的形狀，請考慮採用分割多邊形的方法。  
 
 ### <a name="geo-spatial-functions-and-null"></a>地理空間函數和`null`
 
-與 Azure 認知搜索中的所有其他非集合欄位一樣，類型的`Edm.GeographyPoint`欄位可以`null`包含值。 當 Azure 認知搜索`geo.intersects`評估 的欄位時`null`，結果將始終為`false`。 在這種情況下，其`geo.distance`行為取決於上下文：
+就像 Azure 認知搜尋中的所有其他非集合欄位，類型`Edm.GeographyPoint`的欄位可以`null`包含值。 當 Azure 認知搜尋評估`geo.intersects`為的欄位時`null`，結果一律會是。 `false` `geo.distance`在此情況下，的行為取決於內容：
 
-- 在篩選器中`geo.distance``null`，欄位的結果為`null`。 這意味著文檔將不匹配，因為`null`與任何非空值計算為`false`相比。
-- 使用`geo.distance`**欄位的$orderby**對結果進行排序`null`時，將產生最大可能的距離。 使用排序方向（預設值）時，具有此類欄位的文檔排序將低於`asc`所有其他欄位，當該方向為`desc`時，其排序方向將高於所有其他文檔。
+- 在 [篩選`geo.distance` ] 中`null` ，欄位的`null`會產生。 這表示檔將不會相符， `null`因為相較于任何非 null 值， `false`會評估為。
+- 使用 **$orderby**排序結果時， `geo.distance` `null`欄位會產生最大可能距離。 具有這類欄位的檔在使用排序方向`asc` （預設值）時，會比其他專案排序更低，而當方向為`desc`時，則會高於其他所有檔。
 
 ## <a name="examples"></a>範例
 
 ### <a name="filter-examples"></a>篩選範例
 
-查找給定參考點 10 公里內的所有酒店（位置是類型`Edm.GeographyPoint`欄位）：
+尋找在指定參考點的10公里內的所有旅館（其中 location 是類型`Edm.GeographyPoint`的欄位）：
 
     geo.distance(location, geography'POINT(-122.131577 47.678581)') le 10
 
-查找描述為多邊形的給定視口中的所有酒店（其中位置是類型`Edm.GeographyPoint`欄位）。 請注意，多邊形必須是封閉的 (第一個和最後一個點集合必須相同)，且[點必須以逆時針順序列出](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
+尋找指定的範圍內的所有旅館，以多邊形的形式描述（其中 location 是類型`Edm.GeographyPoint`的欄位）。 請注意，多邊形必須是封閉的 (第一個和最後一個點集合必須相同)，且[點必須以逆時針順序列出](https://docs.microsoft.com/rest/api/searchservice/supported-data-types#Anchor_1)。
 
     geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.031577 47.678581, -122.131577 47.678581, -122.031577 47.578581))')
 
 ### <a name="order-by-examples"></a>Order-by 範例
 
-按 以下排序`rating`酒店，然後按與給定座標的距離向上排列：
+將飯店遞減排序`rating`，然後依指定座標的距離遞增：
 
     rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
-Sort hotels in descending order by `search.score` and `rating`, and then in ascending order by distance from the given coordinates so that between two hotels with identical ratings, the closest one is listed first:
+以遞減的順序依`search.score`和`rating`排序飯店，然後依照指定座標的遞增順序，讓兩個飯店具有相同的評等，最先列出最接近的旅館：
 
     search.score() desc,rating desc,geo.distance(location, geography'POINT(-122.131577 47.678581)') asc
 
 ## <a name="next-steps"></a>後續步驟  
 
-- [Azure 認知搜索中的篩選器](search-filters.md)
-- [Azure 認知搜索的 OData 運算式語言概述](query-odata-filter-orderby-syntax.md)
-- [用於 Azure 認知搜索的 OData 運算式語法引用](search-query-odata-syntax-reference.md)
-- [搜索文檔&#40;Azure 認知搜索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Azure 認知搜尋中的篩選](search-filters.md)
+- [Azure 認知搜尋的 OData 運算式語言總覽](query-odata-filter-orderby-syntax.md)
+- [Azure 認知搜尋的 OData 運算式語法參考](search-query-odata-syntax-reference.md)
+- [搜尋檔 &#40;Azure 認知搜尋 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

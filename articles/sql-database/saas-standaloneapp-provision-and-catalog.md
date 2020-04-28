@@ -1,5 +1,5 @@
 ---
-title: 多租戶 SaaS 教程
+title: 多租使用者 SaaS 教學課程
 description: 使用獨立應用程式模式佈建新租用戶並編目
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
 ms.openlocfilehash: 02682a18f14e7ecbf5b42783ab84a1b55a4bb77b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74133122"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>使用每一租用戶一個應用程式 SaaS 模式，佈建新租用戶及編目
@@ -81,7 +81,7 @@ Azure Resource Manager 範本可用來部署及設定應用程式、建立租用
 * 使用 Azure 資源管理範本**佈建目錄資料庫**。 資料庫將會在 bacpac 檔案匯入後初始化。
 * **註冊先前部署的範例租用戶應用程式**。  每個租用戶在註冊時，都會使用從租用戶名稱雜湊建構而成的索引鍵。  租用戶名稱也會儲存在目錄的延伸模組資料表中。
 
-1. 在 PowerShell ISE 中，開啟 *...\Learning Modules\UserConfig.psm*，接著將 **\<user\>** 值更新為部署三個範例應用程式時使用的值。  **保存檔**。
+1. 在 PowerShell ISE 中，開啟 *...\Learning Modules\UserConfig.psm*，接著將 **\<user\>** 值更新為部署三個範例應用程式時使用的值。  **儲存**盤案。
 1. 在 PowerShell ISE 中，開啟 *...\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1*，並設定 **$Scenario = 1**。 部署租用戶目錄並註冊預先定義的租用戶。
 
 1. 將游標置於顯示 `& $PSScriptRoot\New-Catalog.ps1` 該行的任意位置，然後按 **F9** 新增中斷點。
@@ -98,7 +98,7 @@ Azure Resource Manager 範本可用來部署及設定應用程式、建立租用
 現在，請查看您建立的資源。
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com/)，然後瀏覽至資源群組。  開啟 **wingtip-sa-catalog-\<user\>** 資源群組，並記下目錄伺服器和資料庫。
-1. 在入口網站中開啟資料庫，再從左側功能表選取 [資料總管]**。  按一下"登錄"命令，然後輸入密碼 = ** \@P 劍1**。
+1. 在入口網站中開啟資料庫，再從左側功能表選取 [資料總管]**。  按一下 [登入] 命令，然後輸入 Password **=\@P ssword1**。
 
 
 1. 探索 *tenantcatalog* 資料庫的結構描述。

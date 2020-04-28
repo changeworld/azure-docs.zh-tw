@@ -1,5 +1,5 @@
 ---
-title: 多租戶應用示例 - 翼尖 SaaS
+title: 多租使用者應用程式範例-Wingtip SaaS
 description: 提供使用 Azure SQL Database、Wingtip Tickets SaaS 範例之範例多租用戶應用程式的安裝和執行步驟及指引。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 162d1f269c65ad98afa30e8e96370bbdceca99bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74132289"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 範例 SaaS 應用程式的一般指導方針
@@ -24,7 +24,7 @@ ms.locfileid: "74132289"
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>下載並解除封鎖 Wingtip Tickets SaaS 指令碼
 
-從外部來源下載 zip 檔案並進行解壓縮時，Windows 可能會封鎖可執行的內容 (指令碼、dll)。 從 ZIP 檔案中提取腳本時，**請按照以下步驟在提取 .ZIP 檔案之前取消阻止 . ZIP 檔案**。 這可確保允許執行指令碼。
+從外部來源下載 zip 檔案並進行解壓縮時，Windows 可能會封鎖可執行的內容 (指令碼、dll)。 從 zip 檔案解壓縮腳本時，**請遵循下列步驟來解除封鎖 .zip 檔案，再進行解壓縮**。 這可確保允許執行指令碼。
 
 1. 瀏覽至您要探索資料庫租用戶模式的 Wingtip Tickets SaaS GitHub 存放庫：
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
@@ -34,10 +34,10 @@ ms.locfileid: "74132289"
 3. 按一下 [下載 zip]****，並儲存檔案。
 4. 請以滑鼠右鍵按一下 zip 檔案，然後選取 [屬性]****。 ZIP 檔案會對應至存放庫名稱。 (例如 _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. 在 [一般]**** 索引標籤上，選取 [解除封鎖]****。
-6. 按一下 [確定]****。
+6. 按一下 [確定]  。
 7. 將檔案解壓縮。
 
-腳本位於 . *。學習\\模組*資料夾。
+腳本位於 *.。學習\\模組*資料夾。
 
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>使用 Wingtip Tickets PowerShell 指令碼
@@ -89,11 +89,11 @@ ms.locfileid: "74132289"
     - **獨立應用程式：** 個別租用戶的伺服器 (例如 contosoconcerthall-&lt;User&gt;.database.windows.net**)
     - **每一租用戶一個資料庫：tenants1-dpt-&lt;User&gt;.database.windows.net** **
     - **多租用戶資料庫：tenants1-mt-&lt;User&gt;.database.windows.net** **
-2. 按一下 **"連接** > **資料庫引擎..."：**
+2. 按一下 **[連接** > **資料庫引擎 ...**]：
 
    ![目錄伺服器](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
-3. 演示憑據是： 登錄 =*開發人員*， 密碼 = * \@P 劍1*
+3. 示範認證包括：登入 = *developer*、Password *=\@P ssword1*
 
     下圖會示範*每一租用戶一個資料庫*模式的登入。
     ![connection](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)

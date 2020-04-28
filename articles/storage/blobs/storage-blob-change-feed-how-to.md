@@ -1,6 +1,6 @@
 ---
-title: Azure Blob 存儲（預覽）中的處理更改源 |微軟文檔
-description: 瞭解如何處理 .NET 用戶端應用程式中的更改源日誌
+title: Azure Blob 儲存體中的處理變更摘要（預覽） |Microsoft Docs
+description: 瞭解如何在 .NET 用戶端應用程式中處理變更摘要記錄
 author: normesta
 ms.author: normesta
 ms.date: 11/04/2019
@@ -9,36 +9,36 @@ ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
 ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74111863"
 ---
-# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob 存儲中的處理更改源（預覽）
+# <a name="process-change-feed-in-azure-blob-storage-preview"></a>Azure Blob 儲存體中的處理變更摘要（預覽）
 
-更改源提供存儲帳戶中 Blob 和 blob 中繼資料發生的所有更改的事務日誌。 本文介紹如何使用 Blob 更改饋送處理器庫讀取更改源記錄。
+變更摘要提供 blob 和儲存體帳戶中 blob 中繼資料所發生之所有變更的交易記錄。 本文說明如何使用 blob 變更摘要處理器程式庫來讀取變更摘要記錄。
 
-要瞭解有關更改源的更多資訊，請參閱[Azure Blob 存儲中的更改源（預覽）。](storage-blob-change-feed.md)
+若要深入瞭解變更摘要，請參閱[Azure Blob 儲存體（預覽）中的變更](storage-blob-change-feed.md)摘要。
 
 > [!NOTE]
-> 更改源處於公共預覽版中，可在**西中部**和**西部 2**區域提供。 要瞭解有關此功能以及已知問題和限制的更多資訊，請參閱 Azure [Blob 存儲 中的更改源支援](storage-blob-change-feed.md)。 更改源處理器庫在現在和此庫普遍可用之間可能會發生變化。
+> 變更摘要處於公開預覽狀態，並可在**westcentralus**和**westus2**區域中使用。 若要深入瞭解這項功能以及已知的問題和限制，請參閱[Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)。 變更摘要處理器程式庫在現在和此程式庫正式推出時可能會有所變更。
 
-## <a name="get-the-blob-change-feed-processor-library"></a>獲取 Blob 更改饋送處理器庫
+## <a name="get-the-blob-change-feed-processor-library"></a>取得 blob 變更摘要處理器程式庫
 
-1. 在 Visual Studio 中`https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json`，將 URL 添加到 NuGet 包源。 
+1. 在 Visual Studio 中，將 URL `https://azuresdkartifacts.blob.core.windows.net/azuresdkpartnerdrops/index.json`新增至您的 NuGet 套件來源。 
 
-   要瞭解如何使用，請參閱[包源](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)。
+   若要瞭解作法，請參閱[套件來源](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#package-sources)。
 
-2. 在 NuGet 包管理器中，查找**Microsoft.Azure.Storage.更改源**包，並將其安裝到專案中。 
+2. 在 NuGet 套件管理員中，尋找**changefeed program.cs**套件，並將它安裝到您的專案。 
 
-   要瞭解如何使用，請參閱[查找並安裝包](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
+   若要瞭解作法，請參閱[尋找及安裝套件](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio#find-and-install-a-package)。
 
 ## <a name="connect-to-the-storage-account"></a>連接到儲存體帳戶
 
-通過調用[雲存儲帳戶.TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse)方法解析連接字串。 
+藉由呼叫[CloudStorageAccount. TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse)方法來剖析連接字串。 
 
-然後，通過調用[雲存儲帳戶.CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient)方法，創建一個表示存儲帳戶中的 Blob 存儲的物件。
+然後，藉由呼叫[CloudStorageAccount. CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient)方法，建立代表儲存體帳戶中 Blob 儲存體的物件。
 
 ```cs
 public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageConnectionString)
@@ -58,16 +58,16 @@ public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageCon
 }
 ```
 
-## <a name="initialize-the-change-feed"></a>初始化更改源
+## <a name="initialize-the-change-feed"></a>初始化變更摘要
 
-將以下使用語句添加到代碼檔的頂部。 
+將下列 using 語句新增至程式碼檔案的頂端。 
 
 ```csharp
 using Avro.Generic;
 using ChangeFeedClient;
 ```
 
-然後，通過調用**GetContainerReference**方法創建**ChangeFeed**類的實例。 傳遞更改源容器的名稱。
+然後，藉由呼叫**GetContainerReference**方法來建立**changefeed program.cs**類別的實例。 傳入變更摘要容器的名稱。
 
 ```csharp
 public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
@@ -85,11 +85,11 @@ public async Task<ChangeFeed> GetChangeFeed(CloudBlobClient cloudBlobClient)
 ## <a name="reading-records"></a>讀取記錄
 
 > [!NOTE]
-> 更改源是存儲帳戶中的不可變和唯讀實體。 任意數量的應用程式都可以在方便的時候同時獨立地讀取和處理更改源。 當應用程式讀取記錄時，不會從更改源中刪除記錄。 每個使用讀取器的讀取或反覆運算狀態僅由應用程式保持獨立。
+> 變更摘要是您儲存體帳戶中不可變且唯讀的實體。 任何數目的應用程式都能以自己的便利性，同時讀取和處理變更摘要。 當應用程式讀取記錄時，不會將它們從變更摘要中移除。 每個取用讀取器的讀取或反復專案狀態都是獨立的，而且只由您的應用程式維護。
 
-讀取記錄的最簡單方法是創建**更改源閱讀器**類的實例。 
+讀取記錄最簡單的方式，就是建立**ChangeFeedReader**類別的實例。 
 
-此示例遍歷更改源中的所有記錄，然後從每個記錄列印到主控台幾個值。 
+這個範例會逐一查看變更摘要中的所有記錄，然後將每筆記錄的幾個值列印到主控台。 
  
 ```csharp
 public async Task ProcessRecords(ChangeFeed changeFeed)
@@ -116,15 +116,15 @@ public async Task ProcessRecords(ChangeFeed changeFeed)
 }
 ```
 
-## <a name="resuming-reading-records-from-a-saved-position"></a>從保存的位置恢復讀取記錄
+## <a name="resuming-reading-records-from-a-saved-position"></a>從儲存的位置繼續讀取記錄
 
-您可以選擇在更改源中保存讀取位置，並在將來繼續反覆運算記錄。 您可以隨時使用**ChangeFeedReader.序列化狀態（）** 方法保存更改源的反覆運算狀態。 狀態是**字串**，應用程式可以基於應用程式的設計保存該狀態（例如：到資料庫或檔）。
+您可以選擇將您的讀取位置儲存在變更摘要中，並繼續在未來的時間逐一查看記錄。 您可以使用**ChangeFeedReader. SerializeState （）** 方法，隨時儲存變更摘要的反復專案狀態。 狀態是**字串**，您的應用程式可以根據應用程式的設計來儲存該狀態（例如：到資料庫或檔案）。
 
 ```csharp
     string currentReadState = processor.SerializeState();
 ```
 
-您可以使用**創建更改源閱讀器從PointerAsync**方法創建**更改源閱讀器**，從而繼續從上次狀態中反覆運算記錄。
+您可以使用**CreateChangeFeedReaderFromPointerAsync**方法建立**ChangeFeedReader** ，以繼續逐一查看最後狀態的記錄。
 
 ```csharp
 public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string lastReadState)
@@ -152,9 +152,9 @@ public async Task ProcessRecordsFromLastPosition(ChangeFeed changeFeed, string l
 
 ```
 
-## <a name="stream-processing-of-records"></a>記錄的流處理
+## <a name="stream-processing-of-records"></a>記錄的串流處理
 
-您可以選擇在更改源記錄到達時處理這些更改。 請參閱[規格](storage-blob-change-feed.md#specifications)。
+您可以選擇在變更摘要記錄抵達時進行處理。 請參閱[規格](storage-blob-change-feed.md#specifications)。
 
 ```csharp
 public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
@@ -186,13 +186,13 @@ public async Task ProcessRecordsStream(ChangeFeed changeFeed, int waitTimeMs)
 }
 ```
 
-## <a name="reading-records-within-a-time-range"></a>在時間範圍內讀取記錄
+## <a name="reading-records-within-a-time-range"></a>讀取時間範圍內的記錄
 
-更改源根據變更事件時間組織成每小時段。 請參閱[規格](storage-blob-change-feed.md#specifications)。 可以從屬於特定時間範圍的更改源段讀取記錄。
+變更摘要會根據變更事件時間組織成每小時區段。 請參閱[規格](storage-blob-change-feed.md#specifications)。 您可以從屬於特定時間範圍內的變更摘要區段讀取記錄。
 
-此示例獲取所有段的開始時間。 然後，它會遍載該清單，直到開始時間超過最後一個消耗品段的時間或超出所需範圍的結束時間。 
+這個範例會取得所有區段的開始時間。 然後，它會逐一查看該清單，直到開始時間超過最後一個可取用區段的時間，或超出所需範圍的結束時間。 
 
-### <a name="selecting-segments-for-a-time-range"></a>選擇時間範圍的段
+### <a name="selecting-segments-for-a-time-range"></a>選取時間範圍的區段
 
 ```csharp
 public async Task<List<DateTimeOffset>> GetChangeFeedSegmentRefsForTimeRange
@@ -235,9 +235,9 @@ public async Task<List<DateTimeOffset>> GetChangeFeedSegmentRefsForTimeRange
 }
 ```
 
-### <a name="reading-records-in-a-segment"></a>讀取段中的記錄
+### <a name="reading-records-in-a-segment"></a>讀取區段中的記錄
 
-可以從單個段或段範圍讀取記錄。
+您可以從個別區段或區段範圍讀取記錄。
 
 ```csharp
 public async Task ProcessRecordsInSegment(ChangeFeed changeFeed, DateTimeOffset segmentOffset)
@@ -267,11 +267,11 @@ public async Task ProcessRecordsInSegment(ChangeFeed changeFeed, DateTimeOffset 
 }
 ```
 
-## <a name="read-records-starting-from-a-time"></a>從時間開始讀取記錄
+## <a name="read-records-starting-from-a-time"></a>從一段時間開始讀取記錄
 
-可以從起始段讀取更改源的記錄，直到結束。 與在時間範圍內讀取記錄類似，您可以列出段並選擇要開始反覆運算的段。
+您可以從起始區段讀取變更摘要的記錄，直到結束為止。 類似于讀取時間範圍內的記錄，您可以列出區段並選擇區段以開始逐一查看。
 
-此示例獲取要處理的第一個段的[DateTime 偏移](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8)。
+這個範例會取得第一個要處理之區段的[DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8) 。
 
 ```csharp
 public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
@@ -304,7 +304,7 @@ public async Task<DateTimeOffset> GetChangeFeedSegmentRefAfterTime
 }
 ```
 
-此示例處理從起始段[的 DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8)開始的更改源記錄。
+這個範例會處理從起始區段的[DateTimeOffset](https://docs.microsoft.com/dotnet/api/system.datetimeoffset?view=netframework-4.8)開始的變更摘要記錄。
 
 ```csharp
 public async Task ProcessRecordsStartingFromSegment(ChangeFeed changeFeed, DateTimeOffset segmentStart)
@@ -367,8 +367,8 @@ private async Task<bool> IsSegmentConsumableAsync(ChangeFeed changeFeed, ChangeF
 ```
 
 >[!TIP]
-> 的一段可以在一個或多個*塊 FilePath*中具有更改源日誌。 在多個*塊FilePath*的情況下，系統已在內部將記錄分區為多個分片，以管理發佈輸送量。 保證段的每個分區將包含互斥 blob 的更改，並且可以獨立處理，而不會違反排序。 如果對方案最有效，則可以使用**ChangeFeed段ShardReader**類在分片級別反覆運算記錄。
+> 的區段可以有一或多個*chunkFilePath*中的變更摘要記錄。 如果有多個*chunkFilePath* ，系統就會在內部將記錄分割成多個分區，以管理發佈輸送量。 保證區段的每個分割區都包含對互斥 blob 的變更，而且可以獨立處理，而不會違反順序。 如果您的案例最有效率，您可以使用**ChangeFeedSegmentShardReader**類別來逐一查看分區層級的記錄。
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解有關更改源日誌的更多資訊。 請參閱[Azure Blob 存儲中的更改源（預覽）](storage-blob-change-feed.md)
+深入瞭解變更摘要記錄。 請參閱[Azure Blob 儲存體中的變更摘要（預覽）](storage-blob-change-feed.md)

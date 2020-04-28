@@ -1,5 +1,5 @@
 ---
-title: 支援矩陣-Hyper-V 災害復原到輔助 VMM 網站與 Azure 網站恢復
+title: 支援矩陣-Hyper-v 嚴重損壞修復至具有 Azure Site Recovery 的次要 VMM 網站
 description: 摘要說明使用 Azure Site Recovery 將 VMM 雲端中的 Hyper-V VM 複寫至次要網站的支援。
 author: rayne-wiselman
 manager: carmonm
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74132956"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>將 Hyper-V 虛擬機器災害復原至次要網站的支援矩陣
 
-本文總結了使用[Azure 網站恢復](site-recovery-overview.md)服務將系統中心虛擬機器管理器 （VMM） 雲中管理的超 VM 複製到輔助網站時所支援的內容。 如果您需要將 Hyper-V VM 複寫至 Azure，請檢閱[此支援矩陣](hyper-v-azure-support-matrix.md)。
+本文摘要說明當您使用[Azure Site Recovery](site-recovery-overview.md)服務，將在 SYSTEM CENTER VIRTUAL MACHINE MANAGER （VMM）雲端中管理的 hyper-v vm 複寫至次要網站時所支援的專案。 如果您需要將 Hyper-V VM 複寫至 Azure，請檢閱[此支援矩陣](hyper-v-azure-support-matrix.md)。
 
 > [!NOTE]
 > 當您的 Hyper-V 主機是在 VMM 雲端中進行管理時，您只能複寫至次要網站。
@@ -34,7 +34,7 @@ Windows Server 2016 |  目前不支援混用 Windows Server 2016 和 2012 R2 主
 
 下表摘要說明使用 Site Recovery 複寫的機器支援的作業系統。 任何工作負載都可以在支援的作業系統上執行。
 
-**視窗版本** | **超 V（帶 VMM）**
+**Windows 版本** | **Hyper-v （含 VMM）**
 --- | ---
 Windows Server 2016 | Windows Server 2016 上 [Hyper-V 所支援的](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows)任何一種客體作業系統 
 Windows Server 2012 R2 | Windows Server 2012 R2 上 [Hyper-V 所支援的](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29)任何一種客體作業系統
@@ -51,7 +51,7 @@ Windows Server 2012 R2 | Windows Server 2012 R2 上 [Hyper-V 所支援的](https
 
 ## <a name="network-configuration---hostguest-vm"></a>網路設定 - 主機/客體 VM
 
-**組態** | **支援**  
+**設定** | **支援**  
 --- | --- 
 主機 - NIC 小組 | 是 
 主機 - VLAN | 是 
@@ -64,7 +64,7 @@ Windows Server 2012 R2 | Windows Server 2012 R2 上 [Hyper-V 所支援的](https
 客體 VM - 多重 NIC | 是
 
 
-## <a name="storage"></a>存放裝置
+## <a name="storage"></a>儲存體
 
 ### <a name="host-storage"></a>主機儲存體
 
@@ -77,7 +77,7 @@ SAN (ISCSI) | 是
 
 ### <a name="guest-or-physical-server-storage"></a>客體或實體伺服器儲存體
 
-**組態** | **支援**
+**設定** | **支援**
 --- | --- | 
 VMDK |  N/A
 VHD/VHDX | 是 (最多 16 個磁碟)
@@ -106,7 +106,7 @@ RDM | N/A
 
 提供者會協調 VMM 伺服器之間的通訊。 
 
-**最新** | **更新**
+**新版** | **更新**
 --- | --- 
 5.1.19 ([可從入口網站取得](https://aka.ms/downloaddra) | [最新功能和修正](https://support.microsoft.com/kb/3155002)
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI 託管多個網站
+title: 使用 CLI 裝載多個網站
 titleSuffix: Azure Application Gateway
 description: 了解如何使用 Azure CLI，以建立裝載多個網站的應用程式閘道。
 services: application-gateway
@@ -10,10 +10,10 @@ ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 0a92d0f7d17f6bb83efbe94434c25072975dbe57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74047348"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>使用 Azure CLI 建立裝載多個網站的應用程式閘道
@@ -38,7 +38,7 @@ ms.locfileid: "74047348"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果選擇在本地安裝和使用 CLI，則本文要求您運行 Azure CLI 版本 2.0.4 或更高版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 版2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -106,7 +106,7 @@ az network application-gateway create \
 
 ### <a name="add-the-backend-pools"></a>新增後端集區
 
-添加使用[az 網路應用程式閘道位址池創建](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create)來包含後端伺服器所需的後端池
+使用[az 網路應用程式-閘道位址池建立](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create)，新增所需的後端集區以包含後端伺服器
 ```azurecli-interactive
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
@@ -143,9 +143,9 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>新增路由規則
 
-規則按列出的連續處理。 無論具體性如何，流量都使用匹配的第一個規則定向。 例如，如果您在相同的連接埠上同時使用基本接聽程式的規則和多站台接聽程式的規則，則必須將多站台接聽程式的規則列於基本接聽程式的規則之前，多站台規則才能如預期般運作。 
+規則會依照其列出的順序進行處理。 流量會使用符合的第一個規則來導向，而不論其是否明確。 例如，如果您在相同的連接埠上同時使用基本接聽程式的規則和多站台接聽程式的規則，則必須將多站台接聽程式的規則列於基本接聽程式的規則之前，多站台規則才能如預期般運作。 
 
-在此示例中，您將創建兩個新規則，並刪除部署應用程式閘道時創建的預設規則。 您可以使用 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) 來新增規則。
+在此範例中，您會建立兩個新的規則，並刪除部署應用程式閘道時所建立的預設規則。 您可以使用 [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create) 來新增規則。
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -232,7 +232,7 @@ az network public-ip show \
   --output tsv
 ```
 
-不建議使用 A 記錄，因為 VIP 可能會在應用程式閘道重新開機時更改。
+不建議使用 A 記錄，因為當應用程式閘道重新開機時，VIP 可能會變更。
 
 ## <a name="test-the-application-gateway"></a>測試應用程式閘道
 

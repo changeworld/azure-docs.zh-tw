@@ -1,5 +1,5 @@
 ---
-title: 從 Linux VM 分離資料磁片 - Azure
+title: 從 Linux VM 卸離資料磁片-Azure
 description: 了解如何使用 Azure CLI 或 Azure 入口網站，從 Azure 中的虛擬機器中斷資料磁碟連結。
 author: roygara
 ms.service: virtual-machines-linux
@@ -8,10 +8,10 @@ ms.date: 07/18/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: f8a0790169b17ad7755386f9bdd4f9372efc83e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74036374"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>如何從 Linux 虛擬機器中斷資料磁碟連結
@@ -68,7 +68,7 @@ sudo -i blkid
 編輯 /etc/fstab** 檔案來移除磁碟的參考。 
 
 > [!NOTE]
-> 不當編輯 **/etc/fstab**檔可能會導致系統無法啟動。 如果不確定，請參閱散發套件的文件，以取得如何適當編輯此檔案的相關資訊。 在編輯之前，也建議先備份 /etc/fstab 檔案。
+> 不當編輯 **/etc/fstab**檔案可能會導致系統無法開機。 如果不確定，請參閱散發套件的文件，以取得如何適當編輯此檔案的相關資訊。 在編輯之前，也建議先備份 /etc/fstab 檔案。
 
 在文字編輯器中開啟 /etc/fstab** 檔案，如下所示：
 
@@ -106,7 +106,7 @@ az vm disk detach \
 ## <a name="detach-a-data-disk-using-the-portal"></a>使用入口網站來中斷資料磁碟連結
 
 1. 在左窗格中，選取 [虛擬機器]****。
-2. 選擇具有要分離的資料磁片的虛擬機器，然後按一下 **"停止"** 以取消分配 VM。
+2. 選取具有您要卸離之資料磁片的虛擬機器，然後按一下 [**停止**] 將 VM 解除配置。
 3. 在 [虛擬機器] 窗格中，選取 [磁碟]****。
 4. 在 [磁碟]**** 窗格頂端，選取 [編輯]****。
 5. 在 [磁碟]**** 窗格中，在您想要中斷連結的資料磁碟最右側，按一下 ![[中斷連結] 按鈕影像](./media/detach-disk/detach.png) [中斷連結] 按鈕。
@@ -118,5 +118,5 @@ az vm disk detach \
 
 
 ## <a name="next-steps"></a>後續步驟
-如果要重用資料磁片，只需[將其附加到另一個 VM](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如果您想要重複使用資料磁片，您可以直接[將它連結至另一個 VM](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 

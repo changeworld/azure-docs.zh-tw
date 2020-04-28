@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
 ms.openlocfilehash: ec9fb3c9b27d21ac65888379f59d51ecc8042eb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74168684"
 ---
 # <a name="azure-firewall-service-tags"></a>Azure 防火牆服務標籤
@@ -22,7 +22,7 @@ ms.locfileid: "74168684"
 
 ## <a name="supported-service-tags"></a>支援的服務標籤
 
-有關可用於 Azure 防火牆網路規則的服務標記清單，請參閱[安全性群組](../virtual-network/security-overview.md#service-tags)。
+如需可在 Azure 防火牆網路規則中使用的服務標記清單，請參閱[安全性群組](../virtual-network/security-overview.md#service-tags)。
 
 ## <a name="next-steps"></a>後續步驟
 

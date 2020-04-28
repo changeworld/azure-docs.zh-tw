@@ -1,32 +1,32 @@
 ---
-title: 打開 Azure HPC 緩存的支援票證
-description: 如何打開 Azure HPC 緩存的説明請求
+title: 開啟 Azure HPC Cache 的支援票證
+description: 如何開啟 Azure HPC 快取的說明要求
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: rohogue
 ms.openlocfilehash: 76261f4e2e42b4272abcd976fcf2644fd43aa818
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74169354"
 ---
-# <a name="open-a-support-ticket-for-azure-hpc-cache"></a>打開 Azure HPC 緩存的支援票證
+# <a name="open-a-support-ticket-for-azure-hpc-cache"></a>開啟 Azure HPC Cache 的支援票證
 
-使用 Azure 門戶打開支援票證。 導航到緩存實例，然後按一下側邊欄底部顯示**的"新建支援請求"** 連結。
+使用 Azure 入口網站開啟支援票證。 流覽至您的快取實例，然後按一下出現在提要欄位底部的 [**新增支援要求**] 連結。
 
-要在沒有活動緩存時打開票證，請使用 Azure 門戶中的主要説明和支援頁。 從螢幕左上角的控制項打開門戶功能表，然後滾動到底部，然後按一下 **"説明 + 支援**"。
+若要在沒有作用中快取時開啟票證，請使用 Azure 入口網站的主要 [說明 + 支援] 頁面。 從畫面左上方的控制項開啟 [入口網站] 功能表，然後在底部按一下 [說明 **+ 支援**]。
 
-選擇 **"新建支援請求****"，然後選擇"技術"** 以獲得特定于 Azure HPC 緩存的説明。
+選擇 [**新增支援要求**]，然後選取 [**技術**] 以取得 Azure HPC 快取的特定說明。
 
-從清單中選擇訂閱。
+從清單中選取您的訂用帳戶。
 
-要查找 Azure HPC 快取服務，請按一下 **"所有服務**"按鈕並搜索 HPC。
+若要尋找 Azure HPC Cache 服務，請按一下 [**所有服務**] 按鈕，然後搜尋 HPC。
 
-![支援請求的螢幕截圖 - 基礎知識選項卡，部分填寫，如所述](media/hpc-cache-support-request.png)
+![[支援要求-基本] 索引標籤的螢幕擷取畫面，部分填入，如所述](media/hpc-cache-support-request.png)
 
-使用您的資訊和首選項填寫其餘欄位，然後在準備就緒時提交票證。
+填寫其餘的欄位，連同您的資訊和喜好設定，然後在您準備就緒時提交票證。
 
-提交請求後，您將收到一封包含機票號碼的確認電子郵件。 支援人員將聯繫您瞭解該請求。
+提交要求之後，您會收到包含票證號碼的確認電子郵件。 支援人員成員將會與您聯絡要求的相關資訊。

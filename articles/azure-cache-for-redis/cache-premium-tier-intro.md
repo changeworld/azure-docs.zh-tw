@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: aadcc13d2397f10ea40f06d1259c86b9a179c38b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74121663"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Azure Cache for Redis 進階層簡介
@@ -55,9 +55,9 @@ Azure Cache for Redis 是一種分散式受控快取，可提供超快速的資�
 進階層可讓您依需求重新啟動快取的一或多個節點。 這可讓您測試應用程式，以便在發生失敗時加以復原。 您可以重新啟動下列節點。
 
 * 快取的主要節點
-* 緩存的輔助節點
-* 緩存的主節點和輔助節點
-* 將高級緩存與群集一起使用時，可以重新開機緩存中各個分片的主節點、輔助節點或兩個節點
+* 快取的次要節點
+* 快取的主要和次要節點
+* 搭配使用高階快取與叢集時，您可以在快取中重新開機個別分區的主要、次要或兩個節點
 
 如需詳細資訊，請參閱[重新啟動](cache-administration.md#reboot)和[重新啟動常見問題集](cache-administration.md#reboot-faq)。
 
