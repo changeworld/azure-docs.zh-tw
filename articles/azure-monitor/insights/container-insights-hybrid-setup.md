@@ -2,19 +2,39 @@
 title: 使用適用于容器的 Azure 監視器來設定混合式 Kubernetes 叢集 |Microsoft Docs
 description: 本文說明如何設定容器的 Azure 監視器，以監視 Azure Stack 或其他環境上裝載的 Kubernetes 叢集。
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: c0dbbf9f65aa96db1ebcd0b03552bba8d1f91863
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.date: 04/22/2020
+ms.openlocfilehash: a0008f7a2d6b808a8ff55d85330801305361d7c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82143163"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185960"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>使用適用于容器的 Azure 監視器來設定混合式 Kubernetes 叢集
 
 適用于容器的 Azure 監視器會針對 Azure 上的 Azure Kubernetes Service （AKS）和[AKS 引擎](https://github.com/Azure/aks-engine)提供豐富的監視體驗，這是裝載于 azure 上的自我管理 Kubernetes 叢集。 本文說明如何啟用在 Azure 外部裝載的 Kubernetes 叢集監視，並達成類似的監視體驗。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="supported-configurations"></a>支援的設定
+
+以下已正式支援容器的 Azure 監視器。
+
+* 環境 
+
+    * Kubernetes 內部部署
+    
+    * Azure 上的 AKS 引擎和 Azure Stack。 如需詳細資訊，請參閱[AKS Engine on Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)
+    
+    * [OpenShift](https://docs.openshift.com/container-platform/4.3/welcome/index.html)第4版和更高版本、內部部署或其他雲端環境。
+
+* Kubernetes 和支援原則的版本與[支援的 AKS](../../aks/supported-kubernetes-versions.md)版本相同。
+
+* 容器執行時間： Docker、Moby 和 CRI 相容的執行時間，例如 CRI-O 和 ContainerD。
+
+* 適用于主要和工作節點的 Linux OS 版本： Ubuntu （18.04 LTS 和 16.04 LTS），以及 Red Hat Enterprise Linux CoreOS 43.81。
+
+* 支援的存取控制： Kubernetes RBAC 和非 RBAC
+
+## <a name="prerequisites"></a>Prerequisites
 
 開始之前，請確定您有下列項目：
 
@@ -33,10 +53,9 @@ ms.locfileid: "82143163"
 * 適用于 Linux 的 Log Analytics 代理程式容器化版本需要下列 proxy 和防火牆設定資訊，才能與 Azure 監視器進行通訊：
 
     |代理程式資源|連接埠 |
-    |------|---------|   
-    |*.ods.opinsights.azure.com |連接埠 443 |  
-    |*.oms.opinsights.azure.com |連接埠 443 |  
-    |*.blob.core.windows.net |連接埠 443 |  
+    |------|---------|
+    |*.ods.opinsights.azure.com |連接埠 443 |
+    |*.oms.opinsights.azure.com |連接埠 443 |
     |*. dc.services.visualstudio.com |連接埠 443 |
 
 * 容器化代理程式需要在`cAdvisor secure port: 10250`叢`unsecure port :10255`集中的所有節點上開啟 Kubelet 的或，才能收集效能計量。 我們建議您在`secure port: 10250` Kubelet 的 cAdvisor 上進行設定（如果尚未設定）。
@@ -45,16 +64,6 @@ ms.locfileid: "82143163"
 
 >[!IMPORTANT]
 >監視混合式 Kubernetes 叢集所支援的最低代理程式版本是 ciprod10182019 或更新版本。
-
-## <a name="supported-configurations"></a>支援的設定
-
-以下已正式支援容器的 Azure 監視器。
-
-- 環境： Kubernetes 內部部署、Azure 上的 AKS 引擎和 Azure Stack。 如需詳細資訊，請參閱[Azure Stack 上的 AKS Engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908)。
-- Kubernetes 和支援原則的版本與[支援的 AKS](../../aks/supported-kubernetes-versions.md)版本相同。
-- 容器執行時間： Docker 和 Moby
-- 適用于主要和作用中節點的 Linux OS 版本： Ubuntu （18.04 LTS 和 16.04 LTS）
-- 支援的存取控制： Kubernetes RBAC 和非 RBAC
 
 ## <a name="enable-monitoring"></a>啟用監視
 
@@ -242,7 +251,7 @@ ms.locfileid: "82143163"
 ## <a name="install-the-chart"></a>安裝圖表
 
 >[!NOTE]
->下列命令僅適用于 Helm 第2版。 使用--name 參數不適用於 Helm 第3版。
+>下列命令僅適用于 Helm 第2版。 使用`--name`參數不適用於 Helm 第3版。
 
 若要啟用 HELM 圖表，請執行下列動作：
 
@@ -272,6 +281,28 @@ ms.locfileid: "82143163"
     $ helm install --name myrelease-1 \
     --set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
     ```
+
+### <a name="enable-the-helm-chart-using-the-api-model"></a>使用 API 模型啟用 Helm 圖表
+
+您可以在 AKS 引擎叢集規格 json 檔案（也稱為 API 模型）中指定附加元件。 在此附加元件中，提供所收集監視`WorkspaceGUID`資料`WorkspaceKey`儲存所在之 Log Analytics 工作區的 base64 編碼版本。
+
+如需 Azure Stack 中樞叢集支援的 API 定義，請參閱[kubernetes-container-monitoring_existing_workspace_id_and_key. json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json)。 具體而言，請在 **kubernetesConfig** 中尋找 **addons** 屬性：
+
+```json
+"orchestratorType": "Kubernetes",
+       "kubernetesConfig": {
+         "addons": [
+           {
+             "name": "container-monitoring",
+             "enabled": true,
+             "config": {
+               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
+             }
+           }
+         ]
+       }
+```
 
 ## <a name="configure-agent-data-collection"></a>設定代理程式資料收集
 

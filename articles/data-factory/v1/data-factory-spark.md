@@ -11,24 +11,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: ce5fb014c7d954b3e8430a86430c6a666adff204
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ea719a26f47da98e80abd9e3fcd1785ed8efa69
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75969238"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82185586"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>從 Azure Data Factory 叫用 Spark 程式管線
 
-> [!div class="op_single_selector" title1="轉型活動"]
+> [!div class="op_single_selector" title1="轉換活動"]
 > * [Hive 活動](data-factory-hive-activity.md)
-> * [豬活動](data-factory-pig-activity.md)
+> * [Pig 活動](data-factory-pig-activity.md)
 > * [MapReduce 活動](data-factory-map-reduce.md)
 > * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
-> * [火花活動](data-factory-spark.md)
+> * [Spark 活動](data-factory-spark.md)
 > * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
-> * [機器學習更新資源活動](data-factory-azure-ml-update-resource-activity.md)
-> * [預存程序活動](data-factory-stored-proc-activity.md)
+> * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
+> * [預存程式活動](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
 
@@ -63,9 +63,9 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 ### <a name="create-a-data-factory"></a>建立 Data Factory
 若要建立資料處理站，請依照下列步驟：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 選擇**新的** > **資料和分析** > **資料工廠**。
+1. 選取 [**新增** > ] [**資料 + 分析** > ] [**Data Factory**]。
 
 1. 在 [新增資料處理站]**** 刀鋒視窗上的 [名稱]**** 底下，輸入 **SparkDF**。
 
@@ -78,10 +78,10 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 
 1. 選取 [釘選到儀表板]**** 核取方塊。
 
-1. 選取 [建立]****。
+1. 選取 [建立]  。
 
    > [!IMPORTANT]
-   > 要創建資料工廠實例，您必須是訂閱/資源組級別的["資料工廠參與者"](../../role-based-access-control/built-in-roles.md#data-factory-contributor)角色的成員。
+   > 若要建立 Data Factory 實例，您必須是訂用帳戶/資源群組層級[Data Factory 參與者](../../role-based-access-control/built-in-roles.md#data-factory-contributor)角色的成員。
 
 1. 您會在 Azure 入口網站的儀表板中看到所建立的資料處理站。
 
@@ -112,13 +112,13 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 #### <a name="create-an-hdinsight-linked-service"></a>建立 HDInsight 連結服務
 在此步驟中，您會建立一個 HDInsight 已連結服務，以將 HDInsight Spark 叢集連結至資料處理站。 HDInsight 叢集是用來執行此範例管線的 Spark 活動中指定的 Spark 程式。
 
-1. 在"資料工廠編輯器"中，選擇**更多** > **新的計算** > **HDInsight 群集**。
+1. 在 Data Factory 編輯器中，選取 [**更多** > **新的計算** > ] [**HDInsight**叢集]。
 
     ![建立 HDInsight 連結服務](media/data-factory-spark/new-hdinsight-linked-service.png)
 
 1. 複製下列程式碼片段並貼到 [Draft-1] 視窗。 在 JSON 編輯器中，執行下列步驟：
 
-    a. 指定 HDInsight Spark 叢集的 URI。 例如：`https://<sparkclustername>.azurehdinsight.net/`。
+    a. 指定 HDInsight Spark 叢集的 URI。 例如： `https://<sparkclustername>.azurehdinsight.net/` 。
 
     b. 指定能夠存取 Spark 叢集的使用者名稱。
 
@@ -152,7 +152,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 ### <a name="create-the-output-dataset"></a>建立輸出資料集
 輸出資料集是驅動排程 (每小時、每天) 的因子。 因此，即使管線中的 Spark 活動並不會產生任何輸出，您仍然必須為該活動指定輸出資料集。 為活動指定輸入資料集是選擇性的。
 
-1. 在"資料工廠編輯器"中，選擇**更多** > **新資料集** > **Azure Blob 存儲**。
+1. 在 Data Factory 編輯器中，選取 [**更多** > **新的資料集** > ] [**Azure Blob 儲存體**]。
 
 1. 複製下列程式碼片段並貼到 [Draft-1] 視窗。 JSON 程式碼片段會定義名為 **OutputDataset** 的資料集。 此外，指定將結果儲存在名為 **adfspark** 的 Blob 容器及名為 **pyFiles/output** 的資料夾中。 如先前所述，此資料集是一個虛擬資料集。 此範例中的 Spark 程式不會產生任何輸出。 **availability** 區段指定每日產生一次輸出資料集。
 
@@ -183,7 +183,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 ### <a name="create-a-pipeline"></a>建立管線
 在此步驟中，您會建立含有 HDInsightSpark 活動的管線。 目前，輸出資料集是驅動排程的因子，因此即使活動並不會產生任何輸出，您仍然必須建立輸出資料集。 如果活動沒有任何輸入，您可以略過建立輸入資料集。 因此，在此範例中不會指定任何輸入資料集。
 
-1. 在"資料工廠編輯器"中，選擇 **"更多** > **新管道**"。
+1. 在 [Data Factory 編輯器] 中，選取 [**更多** > **新管線**]。
 
 1. 使用下列指令碼取代 Draft-1 視窗中的指令碼：
 
@@ -215,18 +215,18 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
     ```
     請注意下列幾點：
 
-    a. **類型**屬性設置為**HDInsightSpark**。
+    a. **Type**屬性設定為**HDInsightSpark**。
 
-    b. **rootPath** 屬性會設定為 **adfspark\\pyFiles**，其中 adfspark 是 Blob 容器，而 pyFiles 是該容器中的檔案資料夾。 在此範例中，Blob 儲存體是與 Spark 叢集關聯的儲存體。 您可以將檔案上傳至不同的儲存體帳戶。 如果您這麼做，請建立一個儲存體已連結服務，以將該儲存體帳戶連結至資料處理站。 然後，指定連結服務的名稱作為**sparkJobLink服務**屬性的值。 如需有關此屬性和 Spark 活動所支援之其他屬性的詳細資訊，請參閱 [Spark 活動屬性](#spark-activity-properties)。
+    b. **rootPath** 屬性會設定為 **adfspark\\pyFiles**，其中 adfspark 是 Blob 容器，而 pyFiles 是該容器中的檔案資料夾。 在此範例中，Blob 儲存體是與 Spark 叢集關聯的儲存體。 您可以將檔案上傳至不同的儲存體帳戶。 如果您這麼做，請建立一個儲存體已連結服務，以將該儲存體帳戶連結至資料處理站。 然後，將連結服務的名稱指定為**sparkJobLinkedService**屬性的值。 如需有關此屬性和 Spark 活動所支援之其他屬性的詳細資訊，請參閱 [Spark 活動屬性](#spark-activity-properties)。
 
     c. **entryFilePath** 會設定為 **test.py**，也就是 Python 檔案。
 
-    d. **getDebugInfo**屬性設置為 **"始終**"，這意味著日誌檔始終生成（成功或失敗）。
+    d. **GetDebugInfo**屬性會設定為**always**，這表示一律會產生記錄檔（成功或失敗）。
 
     > [!IMPORTANT]
     > 建議您在生產環境中不要將這個屬性設定為 `Always`，除非您要針對問題進行疑難排解。
 
-    e. **輸出**部分有一個輸出資料集。 即使 Spark 程式不會產生任何輸出，您仍然必須指定輸出資料集。 輸出資料集會驅動管線的排程 (每小時、每天)。
+    e. **輸出**區段有一個輸出資料集。 即使 Spark 程式不會產生任何輸出，您仍然必須指定輸出資料集。 輸出資料集會驅動管線的排程 (每小時、每天)。
 
     如需有關 Spark 活動所支援之屬性的詳細資訊，請參閱 [Spark 活動屬性](#spark-activity-properties)。
 
@@ -247,9 +247,9 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 
 ### <a name="verify-the-results"></a>驗證結果
 
-1. 移至[這個網站](https://CLUSTERNAME.azurehdinsight.net/jupyter)來啟動您 HDInsight Spark 叢集的 Jupyter Notebook。 您也可以開啟 HDInsight Spark 叢集的叢集儀表板，然後啟動 Jupyter Notebook。
+1. 前往來`https://CLUSTERNAME.azurehdinsight.net/jupyter`啟動 HDInsight Spark 叢集的 Jupyter Notebook。 您也可以開啟 HDInsight Spark 叢集的叢集儀表板，然後啟動 Jupyter Notebook。
 
-1. 選擇 **"新** > **PySpark"** 可啟動新筆記本。
+1. 選取 [**新增** > **PySpark** ] 以啟動新的筆記本。
 
     ![Jupyter 新筆記本](media/data-factory-spark/jupyter-new-book.png)
 
@@ -273,7 +273,7 @@ Spark 活動是 Data Factory 所支援的其中一個[資料轉換活動](data-f
 如需進行進一步的疑難排解，請執行下列步驟：
 
 
-1. 移至 `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`。
+1. 移至 `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster` 。
 
     ![YARN UI 應用程式](media/data-factory-spark/yarnui-application.png)
 

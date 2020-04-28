@@ -17,7 +17,7 @@
       items:
         - name: 透過 PowerShell 大量邀請
           href: bulk-invite-powershell.md
-        - name: 透過入口網站大量邀請 (預覽)
+        - name: 透過入口網站大量邀請
           href: tutorial-bulk-invite.md
         - name: 強制執行 Multi-Factor Authentication
           href: b2b-tutorial-require-mfa.md

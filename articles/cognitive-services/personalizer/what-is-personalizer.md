@@ -1,21 +1,14 @@
 ---
 title: 什麼是個人化工具？
-titleSuffix: Azure Cognitive Services
 description: 個人化工具是雲端式 API 服務，可讓您選擇最佳體驗來對使用者展現，進而從其即時行為中學習。
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: personalizer
 ms.topic: overview
-ms.date: 01/21/2020
-ms.author: diberry
-ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/20/2020
+ms.openlocfilehash: 3ae425479d764c0a6bf6c63bdd54a964c48af8b6
+ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520984"
+ms.lasthandoff: 04/21/2020
+ms.locfileid: "81687269"
 ---
 # <a name="what-is-personalizer"></a>什麼是個人化工具？
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 454278f0f45a73ec99f52d3f7e9e0c5ce95ecf7a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: f208119ce80d6b728030ea96f13d6c3d0375e74a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133294"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82182934"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>使用 Azure 入口網站管理 Azure DDoS Protection Standard
 
@@ -47,7 +47,7 @@ DDoS 保護計劃會定義一組跨訂用帳戶且已啟用標準 DDoS 保護的
     |名稱           | myDdosProtectionPlan                              |
     |訂用帳戶   | 選取您的訂用帳戶。                         |
     |資源群組 | 選取 [新建]****，然後輸入 *myResourceGroup* |
-    |位置       | 美國東部                                           |
+    |Location       | 美國東部                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>為新虛擬網路啟用 DDoS
 
@@ -60,7 +60,7 @@ DDoS 保護計劃會定義一組跨訂用帳戶且已啟用標準 DDoS 保護的
     | 名稱            | myVirtualNetwork                                             |
     | 訂用帳戶    | 選取您的訂用帳戶。                                    |
     | 資源群組  | 選取 [**使用現有**的]，然後選取 [ **myResourceGroup** ] |
-    | 位置        | 美國東部                                                      |
+    | Location        | 美國東部                                                      |
     | DDoS 保護 | 選取 [標準]****，然後在 [DDoS 保護]**** 底下，選取 [myDdosProtectionPlan]****。 您所選取的計劃可以與虛擬網路位於相同或不同的訂用帳戶中，但兩個訂用帳戶必須都與同一個 Azure Active Directory 租用戶關聯。|
 
 已為虛擬網路啟用「標準 DDoS」時，您無法將虛擬網路移到另一個資源群組或訂用帳戶。 如果您需要移動已啟用「標準 DDoS」的虛擬網路，請先將「標準 DDoS」停用，移動虛擬網路，然後再啟用「標準 DDoS」。 移動之後，就會重設虛擬網路中所有受保護公用 IP 位址的自動調整原則閾值。
@@ -241,4 +241,4 @@ Azure 資訊安全中心提供[安全性警示](/azure/security-center/security-
 
 ## <a name="next-steps"></a>後續步驟
 
-- 為虛擬網路建立及套用 [Azure 原則](policy-samples.md)
+- 建立和指派虛擬網路的[Azure 原則定義](policy-samples.md)
