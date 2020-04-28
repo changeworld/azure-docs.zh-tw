@@ -1,5 +1,5 @@
 ---
-title: 使用視覺化工作室（ASP.NET核心）開始使用表存儲
+title: 使用 Visual Studio （ASP.NET Core）開始使用資料表儲存體
 description: 在使用 Visual Studio 已連接服務連接到儲存體帳戶之後，如何在 Visual Studio 的 ASP.NET Core 專案中開始使用 Azure 資料表儲存體
 services: storage
 author: ghogen
@@ -14,19 +14,19 @@ ms.date: 11/14/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d209f8117b1e061877daf2f8d316bd01ed4f84cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72298825"
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>開始使用 Azure 資料表儲存體和 Visual Studio 連線的服務
 
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
-本文說明如何在您使用 Visual Studio 的**已連線的服務**功能建立或參考 ASP.NET Core 專案中的 Azure 儲存體帳戶之後，開始在 Visual Studio 使用 Azure 資料表儲存體。 **已連線的服務**作業會安裝適當的 NuGet 套件，以存取專案中的 Azure 儲存體，並將儲存體帳戶的連接字串新增至您的專案設定檔。 （有關 Azure 存儲的一般資訊，請參閱[存儲文檔](https://azure.microsoft.com/documentation/services/storage/)。
+本文說明如何在您使用 Visual Studio 的**已連線的服務**功能建立或參考 ASP.NET Core 專案中的 Azure 儲存體帳戶之後，開始在 Visual Studio 使用 Azure 資料表儲存體。 **已連線的服務**作業會安裝適當的 NuGet 套件，以存取專案中的 Azure 儲存體，並將儲存體帳戶的連接字串新增至您的專案設定檔。 （如需 Azure 儲存體的一般資訊，請參閱[儲存體檔](https://azure.microsoft.com/documentation/services/storage/)。）
 
-Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服務是一個 NoSQL 資料存放區，接受來自 Azure 雲端內外經過驗證的呼叫。 Azure 資料表很適合儲存結構化、非關聯式資料。 有關使用 Azure 表存儲的更多常規資訊，請參閱[使用 .NET 開始使用 Azure 表存儲](../storage/storage-dotnet-how-to-use-tables.md)。
+Azure 資料表儲存體服務可讓您儲存大量的結構化資料。 此服務是一個 NoSQL 資料存放區，接受來自 Azure 雲端內外經過驗證的呼叫。 Azure 資料表很適合儲存結構化、非關聯式資料。 如需有關使用 Azure 資料表儲存體的一般資訊，請參閱以[.net 開始使用 Azure 資料表儲存體](../storage/storage-dotnet-how-to-use-tables.md)。
 
 若要開始，請先在儲存體帳戶中建立 Azure 資料表。 本文章將接著示範如何以 C# 建立資料表，以及如何執行基本的資料表作業，例如新增、修改、讀取和移除資料表項目。  程式碼使用適用於 .NET 的 Azure 儲存體用戶端程式庫。 如需 ASP.NET 的詳細資訊，請參閱 [ASP.NET](https://www.asp.net)。
 

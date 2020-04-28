@@ -1,18 +1,18 @@
 ---
-title: 註冊表 Webhook 架構引用
-description: Azure 容器註冊表中 Webhook 請求的 JSON 負載引用，當啟用 Webhook 以進行專案推送或刪除事件時生成
+title: 登錄 webhook 架構參考
+description: Azure container registry 中 webhook 要求的 JSON 承載的參考，在啟用成品推送或刪除事件的 webhook 時，會產生此專案
 ms.topic: article
 ms.date: 03/05/2019
 ms.openlocfilehash: 8354ef9db24d5825238155ac567d5d829f9b0d7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74455969"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure Container Registry Webhook 參考
 
-當某些動作對產生事件的容器登錄執行時，您可以針對產生事件的容器登錄[設定 Webhook](container-registry-webhook.md)。 例如，啟用在將容器圖像或 Helm 圖表推送到註冊表或刪除時觸發的網路鉤子。 當 Webhook 觸發時，Azure Container Registry 就會發出 HTTP 或 HTTPS 要求，當中包含對您所指定端點之事件的相關資訊。 然後，您的端點就可以據此處理 webhook 並採取行動。
+當某些動作對產生事件的容器登錄執行時，您可以針對產生事件的容器登錄[設定 Webhook](container-registry-webhook.md)。 例如，啟用當容器映射或 Helm 圖表推送至登錄或刪除時所觸發的 webhook。 當 Webhook 觸發時，Azure Container Registry 就會發出 HTTP 或 HTTPS 要求，當中包含對您所指定端點之事件的相關資訊。 然後，您的端點就可以據此處理 webhook 並採取行動。
 
 下列各節詳細說明受支援事件所產生的 webhook 要求之結構描述。 事件區段包含事件類型的承載結構描述、範例要求承載，以及一或多個會觸發 webhook 的範例命令。
 
@@ -44,7 +44,7 @@ ms.locfileid: "74455969"
 |[目標](#target)|複雜類型|觸發 webhook 事件的事件目標。|
 |[要求](#request)|複雜類型|產生 webhook 事件的要求。|
 
-### <a name="target"></a><a name="target"></a>目標
+### <a name="target"></a><a name="target"></a>設定
 
 |元素|類型|描述|
 |------------------|----------|-----------|
@@ -55,7 +55,7 @@ ms.locfileid: "74455969"
 |`repository`|String|存放庫名稱。|
 |`tag`|String|映像標記名稱。|
 
-### <a name="request"></a><a name="request"></a>要求
+### <a name="request"></a><a name="request"></a>邀請
 
 |元素|類型|描述|
 |------------------|----------|-----------|
@@ -64,7 +64,7 @@ ms.locfileid: "74455969"
 |`method`|String|產生事件的要求方法。|
 |`useragent`|String|要求的使用者代理程式標頭。|
 
-### <a name="payload-example-image-push-event"></a>有效負載示例：圖像推送事件
+### <a name="payload-example-image-push-event"></a>承載範例：影像推送事件
 
 ```JSON
 {
@@ -88,7 +88,7 @@ ms.locfileid: "74455969"
 }
 ```
 
-觸發映射**推送**事件 Webhook 的示例[Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)命令：
+觸發映射**推送**事件 webhook 的範例[Docker CLI](https://docs.docker.com/engine/reference/commandline/cli/)命令：
 
 ```bash
 docker push myregistry.azurecr.io/hello-world:v1
@@ -96,9 +96,9 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ## <a name="chart-push-event"></a>圖表推送事件
 
-當 Helm 圖表推送到存儲庫時觸發 Webhook。
+當 Helm 圖推送至存放庫時，所觸發的 Webhook。
 
-### <a name="chart-push-event-payload"></a>圖表推送事件有效負載
+### <a name="chart-push-event-payload"></a>圖表推送事件裝載
 
 |元素|類型|描述|
 |-------------|----------|-----------|
@@ -107,7 +107,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 |`action`|String|觸發 webhook 事件的動作。|
 |[目標](#helm_target)|複雜類型|觸發 webhook 事件的事件目標。|
 
-### <a name="target"></a><a name="helm_target"></a>目標
+### <a name="target"></a><a name="helm_target"></a>設定
 
 |元素|類型|描述|
 |------------------|----------|-----------|
@@ -119,7 +119,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 |`name`|String|圖表名稱。|
 |`version`|String|圖表版本。|
 
-### <a name="payload-example-chart-push-event"></a>有效負載示例：圖表推送事件
+### <a name="payload-example-chart-push-event"></a>承載範例：圖表推送事件
 
 ```JSON
 {
@@ -138,7 +138,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 }
 ```
 
-觸發**chart_push**事件 Webhook 的示例[Azure CLI](/cli/azure/acr)命令：
+觸發**chart_push**事件 webhook 的範例[Azure CLI](/cli/azure/acr)命令：
 
 ```azurecli
 az acr helm push wordpress-5.4.0.tgz --name MyRegistry
@@ -146,7 +146,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 
 ## <a name="delete-event"></a>刪除事件
 
-刪除映射存儲庫或清單時觸發的 Webhook。 刪除標記時不會觸發。
+刪除映射存放庫或資訊清單時，所觸發的 Webhook。 刪除標記時不會觸發。
 
 ### <a name="delete-event-payload"></a>刪除事件裝載
 
@@ -158,7 +158,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 |[目標](#delete_target)|複雜類型|觸發 webhook 事件的事件目標。|
 |[要求](#delete_request)|複雜類型|產生 webhook 事件的要求。|
 
-### <a name="target"></a><a name="delete_target"></a>目標
+### <a name="target"></a><a name="delete_target"></a>設定
 
 |元素|類型|描述|
 |------------------|----------|-----------|
@@ -166,7 +166,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 |`digest`|String|如 Registry V2 HTTP API 規格所定義的內容摘要。|
 |`repository`|String|存放庫名稱。|
 
-### <a name="request"></a><a name="delete_request"></a>請求
+### <a name="request"></a><a name="delete_request"></a>邀請
 
 |元素|類型|描述|
 |------------------|----------|-----------|
@@ -175,7 +175,7 @@ az acr helm push wordpress-5.4.0.tgz --name MyRegistry
 |`method`|String|產生事件的要求方法。|
 |`useragent`|String|要求的使用者代理程式標頭。|
 
-### <a name="payload-example-image-delete-event"></a>有效負載示例：圖像刪除事件
+### <a name="payload-example-image-delete-event"></a>承載範例：影像刪除事件
 
 ```JSON
 {
@@ -208,9 +208,9 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 
 ## <a name="chart-delete-event"></a>圖表刪除事件
 
-刪除 Helm 圖表或存儲庫時觸發的 Webhook。 
+刪除 Helm 圖表或儲存機制時觸發的 Webhook。 
 
-### <a name="chart-delete-event-payload"></a>圖表刪除事件有效負載
+### <a name="chart-delete-event-payload"></a>圖表刪除事件裝載
 
 |元素|類型|描述|
 |-------------|----------|-----------|
@@ -219,7 +219,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 |`action`|String|觸發 webhook 事件的動作。|
 |[目標](#chart_delete_target)|複雜類型|觸發 webhook 事件的事件目標。|
 
-### <a name="target"></a><a name="chart_delete_target"></a>目標
+### <a name="target"></a><a name="chart_delete_target"></a>設定
 
 |元素|類型|描述|
 |------------------|----------|-----------|
@@ -231,7 +231,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 |`name`|String|圖表名稱。|
 |`version`|String|圖表版本。|
 
-### <a name="payload-example-chart-delete-event"></a>有效負載示例：圖表刪除事件
+### <a name="payload-example-chart-delete-event"></a>承載範例：圖表刪除事件
 
 ```JSON
 {
@@ -250,7 +250,7 @@ az acr repository delete --name MyRegistry --image MyRepository:MyTag
 }
 ```
 
-觸發**chart_delete**事件 Webhook 的示例[Azure CLI](/cli/azure/acr)命令：
+觸發**chart_delete**事件 webhook 的範例[Azure CLI](/cli/azure/acr)命令：
 
 ```azurecli
 az acr helm delete wordpress --version 5.4.0 --name MyRegistry

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 01/27/2017
 ms.openlocfilehash: c87a61dc77e656a1cfe667ce87f852303a0cc486
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792359"
 ---
 # <a name="encode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 將 Azure Logic Apps 中的 X12 訊息編碼
@@ -25,7 +25,7 @@ ms.locfileid: "74792359"
 以下是您所需的項目︰
 
 * Azure 帳戶；您可以建立一個 [免費帳戶](https://azure.microsoft.com/free)
-* 已定義並與 Azure 訂閱關聯的[集成帳戶](logic-apps-enterprise-integration-create-integration-account.md)。 您必須有整合帳戶才能使用編碼 X12 訊息連接器。
+* 已定義且與您的 Azure 訂用帳戶相關聯的[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)。 您必須有整合帳戶才能使用編碼 X12 訊息連接器。
 * 至少已經在整合帳戶中定義兩個[夥伴](logic-apps-enterprise-integration-partners.md)
 * 已經在整合帳戶中定義的 [X12 合約](logic-apps-enterprise-integration-x12.md)
 
@@ -91,5 +91,5 @@ X12 編碼連接器會執行下列工作︰
 請參閱 [Swagger 詳細資料](/connectors/x12/)。 
 
 ## <a name="next-steps"></a>後續步驟
-[深入了解企業整合套件](logic-apps-enterprise-integration-overview.md "瞭解企業集成包") 
+[深入了解企業整合套件](logic-apps-enterprise-integration-overview.md "瞭解企業整合套件") 
 

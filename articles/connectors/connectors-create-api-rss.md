@@ -1,5 +1,5 @@
 ---
-title: 從 Azure 邏輯應用連接到 RSS 源
+title: 從 Azure Logic Apps 連接到 RSS 摘要
 description: 使用 Azure Logic Apps 將監視和管理 RSS 摘要的工作和工作流程自動化
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/24/2018
 tags: connectors
 ms.openlocfilehash: 3f1e092c2ff325cdcbc32c617af316d6fbe6dd74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789336"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>使用 Azure Logic Apps 來管理 RSS 摘要
@@ -23,7 +23,7 @@ ms.locfileid: "74789336"
 
 RSS (具意網站摘要) 也稱為真正簡易新聞訂閱方式，是一種熱門的 Web 新聞訂閱方式格式，可用來發佈經常更新的內容，例如，部落格文章和頭條新聞。 許多內容發佈者會提供 RSS 摘要供使用者訂閱該內容。 
 
-您可以使用 RSS 觸發程序，以取得 RSS 摘要的回應，並且讓輸出可供其他動作使用。 您可以在邏輯應用程式中使用 RSS 動作來執行具有 RSS 摘要的工作。 如果您是邏輯應用的新增功能，請查看什麼是[Azure 邏輯應用？](../logic-apps/logic-apps-overview.md)
+您可以使用 RSS 觸發程序，以取得 RSS 摘要的回應，並且讓輸出可供其他動作使用。 您可以在邏輯應用程式中使用 RSS 動作來執行具有 RSS 摘要的工作。 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -31,7 +31,7 @@ RSS (具意網站摘要) 也稱為真正簡易新聞訂閱方式，是一種熱�
 
 * RSS 摘要的 URL
 
-* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
 
 * 要在其中存取 RSS 摘要的邏輯應用程式。 若要開始使用 RSS 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 RSS 動作，請使用其他觸發程序來啟動邏輯應用程式，例如「週期」**** 觸發程序。
 

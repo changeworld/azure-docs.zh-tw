@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 網站恢復管理本地災害復原的網路介面卡
+title: 使用 Azure Site Recovery 管理內部部署嚴重損壞修復的網路介面卡
 description: 說明如何使用 Azure Site Recovery 管理內部部署至 Azure 災害復原的網路介面
 author: mayurigupta13
 manager: rochakm
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954594"
 ---
-# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>管理 VM 網路介面，以便本地災害復原到 Azure
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>管理內部部署嚴重損壞修復至 Azure 的 VM 網路介面
 
 Azure 中的虛擬機器 (VM) 必須至少擁有一個連接的網路介面。 可連接的網路介面數量上限則不盡相同，須視 VM 大小支援的數量而定。
 

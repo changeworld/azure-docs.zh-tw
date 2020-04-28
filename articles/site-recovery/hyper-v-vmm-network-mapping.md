@@ -1,5 +1,5 @@
 ---
-title: 關於帶網站恢復的 Hyper-V（使用 VMM）網路映射
+title: 關於 Hyper-v （含 VMM）與 Site Recovery 的網路對應
 description: 說明如何使用 Azure Site Recovery 對 (VMM 雲端所管理的) Hyper-V VM 的災害復原設定網路對應。
 author: rayne-wiselman
 manager: carmonm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74082565"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>準備「Hyper-V VM 災害復原至 Azure」的網路對應
@@ -104,7 +104,7 @@ VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | 無法使用
 若要了解容錯回復 (反向複寫) 時發生的狀況，讓我們假設 VMNetwork1-NewYork 對應到 VMNetwork1-Chicago，並包含下列設定。
 
 
-**Vm** | **已連線至 VM 網路**
+**VM** | **已連線至 VM 網路**
 ---|---
 VM1 | VMNetwork1-Network
 VM2 (VM1 的複本) | VMNetwork1-Chicago

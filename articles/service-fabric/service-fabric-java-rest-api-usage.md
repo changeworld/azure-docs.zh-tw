@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: rapatchi
 ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75451673"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Azure Service Fabric JAVA 用戶端 API
@@ -117,11 +117,11 @@ Service Fabric 用戶端 API 允許在 Azure、內部佈署、本機開發機器
 您會發現每一種 API 有四個實作的多載。 如果有選擇性參數，則會發現另外四個包含選擇性參數的變異。 例如，請思考 API ``removeReplica``。
  1. **public void removeReplica(String nodeName, UUID partitionId, String replicaId, Boolean forceRemove, Long timeout)**
     * 這是 removeReplica API 呼叫的同步變數
- 2. **公共服務未來\<虛空>刪除複製 Async（字串節點名稱、UUID 分區 Id、字串副本 Id、布林力刪除、長超時、最終服務\<回檔虛>服務回檔）**
+ 2. **public ServiceFuture\<Void> RemoveReplicaAsync （string NODENAME、UUID PartitionId、string ReplicaId、Boolean ForceRemove、Long timeout、final ServiceCallback\<Void> ServiceCallback）**
     * 如果您想要使用未來式非同步程式設計並使用回呼，可使用此 API 呼叫的變數
- 3. **公共可觀測\<空隙>刪除副本Async（字串節點名稱、UUID 分區 ID、字串副本 Id）**
+ 3. **公用可\<觀察 Void> RemoveReplicaAsync （字串 NODENAME、UUID PartitionId、字串 replicaId）**
     * 如果您想要使用回應式非同步程式設計，可使用此 API 呼叫的變數
- 4. **公共可觀察\<的服務回應\<虛>> 刪除具有服務回應同步的複製副本（字串節點名稱、UUID 分區 ID、字串副本 Id）**
+ 4. **公用可\<觀察\<ServiceResponse Void>> removeReplicaWithServiceResponseAsync （字串 nodeName、UUID partitionId、字串 replicaId）**
     * 如果您想要使用回應式非同步程式設計，並處理 RAW REST 回應，可使用此 API 呼叫的變數
 
 ## <a name="next-steps"></a>後續步驟

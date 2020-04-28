@@ -1,21 +1,21 @@
 ---
-title: 從備份還原應用
-description: 了解如何從備份還原您的應用程式。 某些連結的資料庫可以在一個操作中與應用一起還原。
+title: 從備份還原應用程式
+description: 了解如何從備份還原您的應用程式。 某些連結的資料庫可以在單一作業中連同應用程式一起還原。
 ms.assetid: 4444dbf7-363c-47e2-b24a-dbd45cb08491
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 1295080d0eec7a4e88029cdadd85863f5f40d034
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74689253"
 ---
 # <a name="restore-an-app-in-azure"></a>在 Azure 中還原應用程式
 本文說明如何在 [Azure App Service](../app-service/overview.md) 中還原您先前備份的應用程式 (請參閱[在 Azure 中備份應用程式](manage-backup.md))。 您可以依需求將應用程式及其連結的資料庫還原到先前的狀態，或是根據您的其中一個原始應用程式備份來建立新的應用程式。 Azure App Service 支援使用下列資料庫來進行備份與還原︰
-- [SQL 資料庫](https://azure.microsoft.com/services/sql-database/)
-- [MySQL 的 Azure 資料庫](https://azure.microsoft.com/services/mysql)
+- [SQL Database](https://azure.microsoft.com/services/sql-database/)
+- [適用於 MySQL 的 Azure 資料庫](https://azure.microsoft.com/services/mysql)
 - [適用於 PostgreSQL 的 Azure 資料庫](https://azure.microsoft.com/services/postgresql)
 - [應用程式內 MySQL](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
@@ -50,7 +50,7 @@ ms.locfileid: "74689253"
    
     您可以選取 [現有應用程式] **** ，將應用程式備份還原到相同資源群組中的另一個應用程式。 使用此選項之前，您應該已經在資源群組中，建立具有應用程式備份中所定義之資料庫組態的鏡像資料庫組態的另一個應用程式。 您也可以建立**新**應用程式作為還原內容的目標。
 
-4. 按一下 [確定]****。
+4. 按一下 [確定]  。
 
 <a name="StorageAccount"></a>
 
@@ -81,8 +81,8 @@ ms.locfileid: "74689253"
 
 例如，請參閱：
 
-- [Azure CLI 示例](samples-cli.md)
-- [Azure 電源外殼示例](samples-powershell.md)
+- [Azure CLI 範例](samples-cli.md)
+- [Azure PowerShell 範例](samples-powershell.md)
 
 <!-- ## Next Steps
 You can backup and restore App Service apps using REST API. -->

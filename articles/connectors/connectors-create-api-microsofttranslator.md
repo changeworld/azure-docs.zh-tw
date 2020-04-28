@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/07/2016
 tags: connectors
 ms.openlocfilehash: ec809a897ce2579125c8797dc8c1d8c7d30a8f9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789565"
 ---
 # <a name="get-started-with-the-microsoft-translator-connector"></a>開始使用 Microsoft Translator 連接器
@@ -21,7 +21,7 @@ ms.locfileid: "74789565"
 * 根據您從 Microsoft Translator 所取得的資料，來建置您的商務流程。 
 * 使用動作來翻譯文字、偵測語言種類等等。 這些動作會收到回應，然後輸出能讓其他動作使用的資料。 舉例來說，當 Dropbox 中有新檔案建立時，您可以利用 Microsoft Translator 把該檔案中的文字翻譯成另一種語言。
 
-現在可以通過創建邏輯應用開始，請參閱[創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+您現在可以開始建立邏輯應用程式，請參閱[建立邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="create-a-connection-to-microsoft-translator"></a>建立至 Microsoft Translator 的連線
 

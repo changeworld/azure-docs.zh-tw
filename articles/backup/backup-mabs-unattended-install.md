@@ -4,23 +4,23 @@ description: 使用 PowerShell 指令碼來以無訊息方式安裝 Azure 備份
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 1539089e713bcf8e959707c6ff4a608f062a7c00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74172234"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>執行 Azure 備份伺服器 2018 年 9 月2 的自動安裝
 
 了解如何執行 Azure 備份伺服器 V2 的自動安裝。
 
-如果要安裝 Azure 備份伺服器 V1，則這些步驟不適用。
+如果您要安裝 Azure 備份伺服器 V1，這些步驟並不適用。
 
 ## <a name="install-backup-server"></a>安裝備份伺服器
 
-1. 在裝載 Azure 備份伺服器 V2 或更新版本的伺服器上建立文字檔。 （您可以在記事本或其他文字編輯器中創建該檔。將檔保存為 MABSSetup.ini。
+1. 在裝載 Azure 備份伺服器 V2 或更新版本的伺服器上建立文字檔。 （您可以在 [記事本] 或其他文字編輯器中建立檔案）。將檔案儲存為 Mabssetup.ini。
 
-2. 在 MABSSetup.ini 檔案中貼上下列程式碼。 將括弧內的文本 （）\<\>替換為環境中的值。 範例如下列文字：
+2. 在 MABSSetup.ini 檔案中貼上下列程式碼。 以您環境中的值取代\< \>括弧（）內的文字。 範例如下列文字：
 
    ```text
    [OPTIONS]

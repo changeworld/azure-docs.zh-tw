@@ -1,15 +1,15 @@
 ---
-title: 使用指標管理 Azure 服務結構應用載入
+title: 使用計量來管理 Azure Service Fabric 應用程式負載
 description: 了解如何在 Service Fabric 中設定及使用計量，以管理服務資源耗用量。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75452006"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用度量管理資源耗用量和負載
@@ -233,7 +233,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 <center>
 
-![指標權重示例及其對平衡解決方案的影響][Image3]
+![度量權數範例及其對平衡解決方案的影響][Image3]
 </center>
 
 在此範例中，有四個不同的服務，它們都針對兩個不同計量 (MetricA 和 MetricB) 報告不同值。 在其中一個案例中，所有定義 MetricA 的服務是最重要的 (權數 = 高)，MetricB 則是較不重要的 (權數 = 低)。 因此，我們看到「叢集資源管理員」是以讓 MetricA 比 MetricB 更加平衡的方式來設置服務。 「更加平衡」表示 MetricA 具有比 MetricB 較低的標準差。 在第二個案例中，我們將計量權數反轉。 結果就是「叢集資源管理員」會交換服務 A 與 B，以便產生 MetricB 比 MetricA 更加平衡的配置。
@@ -260,7 +260,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 ## <a name="next-steps"></a>後續步驟
 - 如需有關設定服務的詳細資訊，請參閱[深入了解設定服務](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
-- 定義磁碟重組指標是整合節點負載而不是將其分散的一種方式。要瞭解如何配置磁碟重組，請參閱[本文](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
+- 定義磁碟重組計量是在節點上合併負載而不是將其分散出去的一種方式。若要瞭解如何設定磁碟重組，請參閱[這篇文章](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 - 若要了解叢集資源管理員如何管理並平衡叢集中的負載，請查看關於 [平衡負載](service-fabric-cluster-resource-manager-balancing.md)
 - 從頭開始，並 [取得 Service Fabric 叢集資源管理員的簡介](service-fabric-cluster-resource-manager-introduction.md)
 - 移動成本是向叢集資源管理員發出訊號，表示移動某些服務會比較貴的其中一種方式。 若要深入了解移動成本，請參閱 [這篇文章](service-fabric-cluster-resource-manager-movement-cost.md)

@@ -1,6 +1,6 @@
 ---
 title: H264 單一位元率 16x9 SD 媒體編碼器標準預設值 - Azure | Microsoft Docs
-description: 本主題概述了**H264 單位元速率 16x9 SD**任務預設。
+description: 本主題提供**H264 單一位元速率 16X9 SD**工作預設的總覽。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: fcc370afeca41a8d1d227db368eeaba789c56137
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61129504"
 ---
 # <a name="h264-single-bitrate-16x9-sd"></a>H264 單一位元速率 16x9 SD

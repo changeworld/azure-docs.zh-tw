@@ -1,14 +1,14 @@
 ---
 title: 使用 REST API 建立復原服務保存庫
-description: 在本文中，瞭解如何使用 REST API 管理 Azure VM 備份的備份和還原操作。
+description: 在本文中，您將瞭解如何使用 REST API 來管理 Azure VM 備份的備份和還原作業。
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
 ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74173406"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>使用 REST API 建立 Azure 復原服務保存庫
@@ -23,14 +23,14 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="create-a-request"></a>建立要求
 
-若要建立 *PUT* 要求，`{subscription-id}` 是必要參數。 如果您有多個訂閱，請參閱[使用多個訂閱](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 您需針對資源定義 `{resourceGroupName}` 和 `{vaultName}`，以及定義 `api-version` 參數。 本文使用 `api-version=2016-06-01`。
+若要建立 *PUT* 要求，`{subscription-id}` 是必要參數。 如果您有多個訂用帳戶，請參閱使用[多個訂閱](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 您需針對資源定義 `{resourceGroupName}` 和 `{vaultName}`，以及定義 `api-version` 參數。 本文使用 `api-version=2016-06-01`。
 
 以下是必要標頭：
 
 | 要求標頭   | 描述 |
 |------------------|-----------------|
-| *內容類型：*  | 必要。 設定為 `application/json`。 |
-| *授權：* | 必要。 設定為有效的 `Bearer` [存取權杖](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
+| *Content-Type:*  | 必要。 設定為 `application/json`。 |
+| *Authorization:* | 必要。 設定為有效的 `Bearer` [存取權杖](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)。 |
 
 如需如何建立要求的詳細資訊，請參閱 [REST API 要求/回應的元件](/rest/api/azure/#components-of-a-rest-api-requestresponse)。
 
@@ -38,12 +38,12 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 以下是用來建立要求本文的常用定義：
 
-|名稱  |必要  |類型  |描述  |
+|名稱  |必要  |類型  |說明  |
 |---------|---------|---------|---------|
 |etag     |         |   String      |  選擇性 eTag       |
 |location     |  true       |String         |   資源位置      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
-|sku     |         |  [Sku](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    識別每個 Azure 資源的唯一系統識別碼     |
+|sku     |         |  [限量](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    識別每個 Azure 資源的唯一系統識別碼     |
 |tags     |         | Object        |     資源標籤    |
 
 請注意，保存庫名稱和資源群組名稱會在 PUT URI 中提供。 要求本文會定義位置。
@@ -66,10 +66,10 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 建立或更新復原服務保存庫的作業會有兩個成功的回應：
 
-|名稱  |類型  |描述  |
+|名稱  |類型  |說明  |
 |---------|---------|---------|
-|200 確定     |   [庫](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | [確定]        |
-|201 Created     | [庫](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   建立時間      |
+|200 確定     |   [保險櫃](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)      | [確定]        |
+|201 Created     | [保險櫃](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vault)        |   建立時間      |
 
 如需 REST API 回應的詳細資訊，請參閱[處理回應訊息](/rest/api/azure/#process-the-response-message)。
 

@@ -1,16 +1,16 @@
 ---
-title: 從 Azure 邏輯應用部署和調用 Web API & REST API
-description: 在 Azure 邏輯應用中部署和調用用於系統集成工作流的 & REST API
+title: 從 Azure Logic Apps 部署和呼叫 web Api & REST Api
+description: 在 Azure Logic Apps 中部署和呼叫 web Api & 適用于系統整合工作流程的 REST Api
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 05/26/2017
 ms.openlocfilehash: d1305be54a22b1460000a357074cbb1f67123bd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74790745"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>在 Azure Logic Apps 中從工作流程部署和呼叫自訂 API

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure AD 應用代理登錄到本地應用時遇到問題 |微軟文檔
+title: 使用 Azure AD 應用程式 proxy 登入內部部署應用程式時發生問題 |Microsoft Docs
 description: 針對無法使用 Azure AD 應用程式 Proxy 登入與 Azure AD 整合的內部部署應用程式時的常見問題進行疑難排解
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91a00e243032fd9702e8b549c75363f1a3e1c87f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74232333"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 登入內部部署應用程式時遇到問題
@@ -56,7 +56,7 @@ ms.locfileid: "74232333"
 
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>我在使用應用程式 Proxy 代理程式連接器時遇到問題
   下列文件可協助您解決此類別的一些最常見問題。
-  * [安裝應用程式代理連接器時遇到問題](application-proxy-connector-installation-problem.md)
+  * [我在安裝應用程式 Proxy 代理程式連接器時遇到問題](application-proxy-connector-installation-problem.md)
 
 ## <a name="next-steps"></a>後續步驟
 [如何為內部部署應用程式提供安全的遠端存取](application-proxy.md)

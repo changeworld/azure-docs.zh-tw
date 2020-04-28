@@ -1,5 +1,5 @@
 ---
-title: 教程- 升級 Azure 服務結構網格應用程式
+title: 教學課程-升級 Azure Service Fabric 網狀架構應用程式
 description: 本教學課程是系列中的第四部分，說明如何直接從 Visual Studio 升級 Azure Service Fabric Mesh 應用程式。
 author: dkkapur
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 11/29/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 7cdb8868f760ef0f35ab90c06b411110f871738c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75351722"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>教學課程：了解如何使用 Visual Studio 升級 Service Fabric 應用程式
@@ -55,13 +55,13 @@ ms.locfileid: "75351722"
 
 2. 在 [WebFrontEnd]**** > [服務資源]**** 底下，開啟 **WebFrontEnd** 專案的 **service.yaml** 檔案。
 
-    請注意，在 `resources:` 區段中，`cpu:` 會設定為 `"[parameters('WebFrontEnd_cpu')]"`。 如果專案`'WebFrontEnd_cpu`是為雲構建的，則 的值將從**環境** > **雲** > **參數.yaml**檔獲取，並且將為`1.5`。 如果專案正在構建以在本地運行，則該值將從**環境** > **本地** > **參數.yaml**檔獲取，並且將為"0.5"。
+    請注意，在 `resources:` 區段中，`cpu:` 會設定為 `"[parameters('WebFrontEnd_cpu')]"`。 如果`'WebFrontEnd_cpu`專案是針對雲端所建立，則的值將取自**環境** > **雲端** >  ** ** yaml 檔案，而且會是`1.5`。 如果組建的專案是要在本機執行，則會從**環境** > 的**本機** > **yaml**檔案取得值，而且會是 ' 0.5 '。
 
 > [!Tip]
 > 根據預設，系統會使用 profile.yaml 檔案的對等參數檔案，來提供該 profile.yaml 檔案的值。
 > 例如，[環境] > [雲端] > parameters.yaml 會提供 [環境] > [雲端] > profile.yaml 的參數值。
 >
-> 您可以通過將以下內容添加到設定檔.yaml 檔來覆蓋此情況：`parametersFilePath=”relative or full path to the parameters file”`例如，或者`parametersFilePath=”C:\MeshParms\CustomParameters.yaml”``parametersFilePath=”..\CommonParameters.yaml”`
+> 您可以將下列程式碼新增至 yaml 檔案，以覆寫此`parametersFilePath=”relative or full path to the parameters file”`項：例如`parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` ，或`parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>修改模型
 

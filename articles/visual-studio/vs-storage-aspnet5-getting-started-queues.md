@@ -1,5 +1,5 @@
 ---
-title: 使用視覺化工作室（ASP.NET核心）開始使用佇列存儲
+title: 使用 Visual Studio （ASP.NET Core）開始使用佇列儲存體
 description: 如何開始在 Visual Studio 的 ASP.NET Core 專案中使用 Azure 佇列儲存體
 services: storage
 author: ghogen
@@ -14,17 +14,17 @@ ms.date: 11/14/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 5cdf6f2644788674df91b533c9444fc88ab30b09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72300017"
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>開始使用佇列儲存體和 Visual Studio 已連接服務 (ASP.NET Core)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-本文說明如何在您使用 Visual Studio 的**已連線的服務**功能建立或參考 ASP.NET Core 專案中的 Azure 儲存體帳戶之後，開始在 Visual Studio 使用 Azure 佇列儲存體。 **已連線的服務**作業會安裝適當的 NuGet 套件，以存取專案中的 Azure 儲存體，並將儲存體帳戶的連接字串新增至您的專案設定檔。 （有關 Azure 存儲的一般資訊，請參閱[存儲文檔](https://azure.microsoft.com/documentation/services/storage/)。
+本文說明如何在您使用 Visual Studio 的**已連線的服務**功能建立或參考 ASP.NET Core 專案中的 Azure 儲存體帳戶之後，開始在 Visual Studio 使用 Azure 佇列儲存體。 **已連線的服務**作業會安裝適當的 NuGet 套件，以存取專案中的 Azure 儲存體，並將儲存體帳戶的連接字串新增至您的專案設定檔。 （如需 Azure 儲存體的一般資訊，請參閱[儲存體檔](https://azure.microsoft.com/documentation/services/storage/)。）
 
 Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方都可利用 HTTP 或 HTTPS 並透過驗證的呼叫來存取這些訊息。 單一佇列訊息的大小上限為 64 KB，而一個佇列可以包含數百萬個訊息，以儲存體帳戶的總容量為限。 如需以程式設計方式處理佇列的詳細資料，另請參閱[以 .NET 開始使用 Azure 佇列儲存體](../storage/queues/storage-dotnet-how-to-use-queues.md)。
 
@@ -67,7 +67,7 @@ Azure 佇列儲存體是一項儲存大量訊息的服務，全球任何地方�
 
 ### <a name="create-a-queue-in-code"></a>在程式碼中建立佇列
 
-要在代碼中創建 Azure 佇列`CreateIfNotExistsAsync`，請調用 ：
+若要在程式碼中建立 Azure 佇列`CreateIfNotExistsAsync`，請呼叫：
 
 ```cs
 // Create the CloudQueue if it does not exist.

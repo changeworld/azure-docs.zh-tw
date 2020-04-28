@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 網站恢復設置 Citrix XenDesktop/XenApp 災害復原
+title: 使用 Azure Site Recovery 設定 Citrix XenDesktop/XenApp 嚴重損壞修復
 description: 本文說明如何使用 Azure Site Recovery 來設定 Citrix XenDesktop 和 XenApp 部署的災害復原。
 author: ponatara
 manager: abhemraj
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ponatara
 ms.openlocfilehash: 29fbe5389da924a2ecc660aa5ce5c4bb0a0902b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74084545"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>設定多層式 Citrix XenApp 和 XenDesktop 部署的災害復原
@@ -57,8 +57,8 @@ AD DNS 伺服器、SQL 資料庫伺服器、Citrix 傳遞控制站、StoreFront 
 **案例** | **至次要網站** | **至 Azure**
 --- | --- | ---
 **Hyper-V** | 不在範圍中 | 是
-**Vmware** | 不在範圍中 | 是
-**物理伺服器** | 不在範圍中 | 是
+**VMware** | 不在範圍中 | 是
+**實體伺服器** | 不在範圍中 | 是
 
 ### <a name="versions"></a>版本
 客戶可以部署 XenApp 元件成為 Hyper-V 或 VMware 上執行的虛擬機器，或成為實體伺服器。 Azure Site Recovery 可以保護 Azure 的實體與虛擬部署。
@@ -156,7 +156,7 @@ AD DNS 伺服器、SQL 資料庫伺服器、Citrix 傳遞控制站、StoreFront 
    >[!NOTE]     
    >包含手動或指令碼動作的步驟 4、6 和 7 僅適用於有 MCS/PV 目錄的內部部署 XenApp 環境。
 
-4. 組 3 手動或腳本操作：關閉主 VDA VM。
+4. 群組3手動或腳本動作：關閉主要 VDA VM。
 主要 VDA VM 在容錯移轉至 Azure 時將處於執行中狀態。 若要使用 Azure 裝載建立新的 MCS 目錄，主要 VDA VM 需要處於已停止 (已解除配置) 狀態。 從 Azure 入口網站關閉 VM。
 
 5. 容錯移轉群組 4：傳遞控制站和 StoreFront 伺服器 VM

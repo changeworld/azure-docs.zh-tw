@@ -1,6 +1,6 @@
 ---
-title: 連接到 Azure 媒體服務 v3 API - Node.js
-description: 本文演示如何使用 Node.js 連接到媒體服務 v3 API。
+title: 連接到 Azure 媒體服務 v3 API-node.js
+description: 本文示範如何使用 node.js 連接到媒體服務 v3 API。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,28 +14,28 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0381a2e2b8fd2a8b60e7cb702e0336a5678df057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74896105"
 ---
-# <a name="connect-to-media-services-v3-api---nodejs"></a>連接到媒體服務 v3 API - Node.js
+# <a name="connect-to-media-services-v3-api---nodejs"></a>連接到媒體服務 v3 API-node.js
 
-本文介紹如何使用服務主體登錄方法連接到 Azure 媒體服務 v3 node.js SDK。
+本文說明如何使用服務主體登入方法來連線到 Azure 媒體服務 v3 node.js SDK。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 安裝[Node.js](https://nodejs.org/en/download/).
-- [創建媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源組名稱和媒體服務帳戶名稱。
+- 安裝[node.js](https://nodejs.org/en/download/)。
+- [建立媒體服務帳戶](create-account-cli-how-to.md)。 請務必記住資源組名和媒體服務帳戶名稱。
 
 > [!IMPORTANT]
-> 查看[命名約定](media-services-apis-overview.md#naming-conventions)。
+> 檢查[命名慣例](media-services-apis-overview.md#naming-conventions)。
 
-## <a name="create-packagejson"></a>創建包.json
+## <a name="create-packagejson"></a>建立 package. json
 
-1. 使用您最喜愛的編輯器創建一個包.json 檔。
-1. 打開檔並粘貼以下代碼：
+1. 使用您慣用的編輯器建立封裝. json 檔案。
+1. 開啟檔案，並貼上下列程式碼：
 
 ```json
 {
@@ -52,25 +52,25 @@ ms.locfileid: "74896105"
 }
 ```
 
-應指定以下包：
+應指定下列套件：
 
 |Package|描述|
 |---|---|
-|`azure-arm-mediaservices`|Azure 媒體服務 SDK。 <br/>要確保使用最新的 Azure 媒體服務包，請檢查[NPM 安裝 Azure 武裝媒體服務](https://www.npmjs.com/package/azure-arm-mediaservices/)。|
-|`azure-storage`|存儲 SDK。 將檔上載到資產時使用。|
-|`ms-rest-azure`| 用於登錄。|
+|`azure-arm-mediaservices`|Azure 媒體服務 SDK。 <br/>若要確定您使用的是最新的 Azure 媒體服務套件，請核取 [ [NPM 安裝] [Azure-arm-windowsazure.mediaservices.extensions](https://www.npmjs.com/package/azure-arm-mediaservices/)]。|
+|`azure-storage`|儲存體 SDK。 將檔案上傳到資產時使用。|
+|`ms-rest-azure`| 用來登入。|
 
-您可以運行以下命令以確保使用最新的包：
+您可以執行下列命令，以確定您使用的是最新的套件：
 
 ```
 npm install azure-arm-mediaservices
 ```
 
-## <a name="connect-to-nodejs-client"></a>連接到 Node.js 用戶端
+## <a name="connect-to-nodejs-client"></a>連接到 node.js 用戶端
 
-1. 使用您最喜愛的編輯器創建 .js 檔。
+1. 使用您慣用的編輯器建立 .js 檔案。
 1. 開啟該檔案，並貼上下列程式碼。
-1. 將"端點配置"部分中的值設置為從[訪問 API](access-api-cli-how-to.md)獲得的值。
+1. 將 "endpoint config" 區段中的值設定為您從[存取 api](access-api-cli-how-to.md)取得的值。
 
 ```js
 'use strict';
@@ -116,7 +116,7 @@ msRestAzure.loginWithServicePrincipalSecret(aadClientId, aadSecret, aadTenantId,
 
 ## <a name="run-your-app"></a>執行您的應用程式
 
-開啟命令提示字元。 流覽到示例的目錄，並執行以下命令：
+開啟命令提示字元。 流覽至範例的目錄，然後執行下列命令：
 
 ```
 npm install 

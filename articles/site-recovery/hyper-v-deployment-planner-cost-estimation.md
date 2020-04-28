@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: bced6a9e6c59dc32657dbabef986e29e0447b28b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60947185"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署規劃工具的成本估計報告 
@@ -56,7 +56,7 @@ Azure Site Recovery 部署規劃工具報告會在[建議](hyper-v-deployment-pl
 
 **網路**：針對 DR 需求的 ExpressRoute 和站對站 VPN 成本。 
 
-**Azure 網站恢復許可證**：所有相容 VM 的網站恢復許可證成本。 如果您已在詳細的成本分析表格中手動輸入 VM，則 Site Recovery 授權成本也包含該 VM。
+**Azure Site Recovery 授權**：所有相容 vm 的 Site Recovery 授權成本。 如果您已在詳細的成本分析表格中手動輸入 VM，則 Site Recovery 授權成本也包含該 VM。
 
 ### <a name="overall-dr-costs-by-states"></a>依狀態的整體 DR 成本
 DR 總成本是根據兩個不同的狀態來分類的：複寫和 DR 演練。
@@ -78,7 +78,7 @@ DR 總成本是根據兩個不同的狀態來分類的：複寫和 DR 演練。
 
 **VPN 閘道類型**：如果您的環境中有任何 Azure VPN 閘道，請加以選取。 根據預設，這是 NA。
 
-**目的地區域**：為 DR 指定的 Azure 區域。 報告中針對計算、儲存體、網路和授權使用的價格是以該地區的 Azure 價格為基礎。 
+**目的地區域**：針對 DR 指定的 Azure 區域。 報告中針對計算、儲存體、網路和授權使用的價格是以該地區的 Azure 價格為基礎。 
 
 ### <a name="vm-running-on-azure"></a>在 Azure 上執行的 VM
 您可能會在 Azure 上執行網域控制站、DNS VM 或具有 Always On 可用性群組的 SQL Server VM，用以進行 DR。 您可以提供 VM 的數目和大小，以在 DR 總成本中考量其計算成本。 
@@ -90,7 +90,7 @@ DR 總成本是根據兩個不同的狀態來分類的：複寫和 DR 演練。
 此表格顯示 Windows 和非 Windows VM 的數目，以及其 DR 演練計算成本。
 
 ### <a name="settings"></a>設定 
-**使用受控磁碟**：此設定會指定在 DR 演練時是否使用受控磁碟。 預設值為 **"是**"。 如果您將 **-UseManagedDisks** 設為 [否]****，則會使用非受控磁碟價格進行成本計算。
+**使用受控磁碟**：此設定會指定在 DR 演練時是否使用受控磁碟。 預設值為 **[是]**。 如果您將 **-UseManagedDisks** 設為 [否]****，則會使用非受控磁碟價格進行成本計算。
 
 **貨幣**：用於產生報告的貨幣。
 
@@ -107,7 +107,7 @@ DR 總成本是根據兩個不同的狀態來分類的：複寫和 DR 演練。
 
 1. 根據符合此組態的約略 VM 大小和 VM 數目，填入下列資料行： 
 
-    a. **VM 數量**
+    a. **Vm 數目**
 
     b. **IaaS 大小（您的選擇）**
 
@@ -115,9 +115,9 @@ DR 總成本是根據兩個不同的狀態來分類的：複寫和 DR 演練。
 
     d. **VM 總儲存體大小 (GB)**
 
-    e. **一年中的 DR-鑽頭數量**
+    e. **一年中的 DR 演練次數**
 
-    f. **每個 DR 鑽取持續時間（天）**
+    f. **每次 DR 演練持續時間（天）**
 
     g. **OS 類型**
 
@@ -149,7 +149,7 @@ DR 總成本是根據兩個不同的狀態來分類的：複寫和 DR 演練。
 
 **資料備援**：這可以是本地備援儲存體、異地備援儲存體或讀取權限異地備援儲存體。 預設值為本地備援儲存體。 您可以根據特定 VM 的儲存體帳戶來變更類型，也可以將新類型套用至所有 VM。 變更頂端列的類型，然後選取 [全部套用]****。 複寫的儲存成本會根據您選取之資料備援的價格來計算。 
 
-**Azure Hybrid Use Benefit**：您可以將 Azure Hybrid Use Benefit 套用至 Windows VM (適用的話)。 預設值為 **"是**"。 您可以變更特定 VM 的設定，或更新所有 VM。 選取 [全部套用]****。
+**Azure Hybrid Use Benefit**：您可以將 Azure Hybrid Use Benefit 套用至 Windows VM (適用的話)。 預設值為 **[是]**。 您可以變更特定 VM 的設定，或更新所有 VM。 選取 [全部套用]****。
 
 **Azure 總耗用量**：您的 DR 的計算、儲存及 Azure Site Recovery 授權成本。 根據您的選取項目，會顯示每月或每年的成本。
 
@@ -157,7 +157,7 @@ DR 總成本是根據兩個不同的狀態來分類的：複寫和 DR 演練。
 
 **DR 演練總成本 (平均)**：DR 演練的計算和儲存成本。
 
-**Azure 網站恢復許可證成本**：網站恢復許可證成本。
+**Azure Site Recovery 授權成本**： Site Recovery 授權成本。
 
 ## <a name="supported-target-regions"></a>支援的目標區域
 Site Recovery 部署規劃工具提供下列 Azure 區域的成本估計。 如果您的區域未列於此處，您可以使用價格最接近您的區域的下列任何區域：

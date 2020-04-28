@@ -1,21 +1,21 @@
 ---
-title: Azure 備份伺服器和 DPM 常見問題解答
-description: 在本文中，瞭解有關 Microsoft Azure 備份伺服器 （MABS） 和 DPM（資料保護管理器）的常見問題的解答。
+title: Azure 備份伺服器和 DPM 常見問題
+description: 在本文中，您將找到有關 Microsoft Azure 備份 Server （MABS）和 DPM （Data Protection Manager）常見問題的解答。
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74173166"
 ---
-# <a name="azure-backup-server-and-dpm---faq"></a>Azure 備份伺服器和 DPM - 常見問題解答
+# <a name="azure-backup-server-and-dpm---faq"></a>Azure 備份伺服器和 DPM-常見問題
 
 ## <a name="general-questions"></a>一般問題
 
-本文回答了有關 Azure 備份伺服器和 DPM 的常見問題。
+本文會回答有關 Azure 備份伺服器和 DPM 的常見問題。
 
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server"></a>可以使用 Azure 備份伺服器來為實體伺服器建立裸機復原 (BMR) 備份嗎？
 
@@ -23,11 +23,11 @@ ms.locfileid: "74173166"
 
 ### <a name="can-i-register-the-server-to-multiple-vaults"></a>是否可以向多個保存庫註冊伺服器？
 
-否。 只能向一個保存庫註冊 DPM 或「Azure 備份」伺服器。
+不可以。 只能向一個保存庫註冊 DPM 或「Azure 備份」伺服器。
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>可以使用 DPM 備份 Azure Stack 中的應用程式嗎？
 
-否。 雖然您可以使用 Azure 備份來保護 Azure Stack，但 Azure 備份不支援使用 DPM 來備份 Azure Stack 中的應用程式。
+不可以。 雖然您可以使用 Azure 備份來保護 Azure Stack，但 Azure 備份不支援使用 DPM 來備份 Azure Stack 中的應用程式。
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>如果我已安裝「Azure 備份」代理程式來保護檔案和資料夾，是否可以安裝 System Center DPM 將內部部署工作負載備份至 Azure？
 
@@ -46,7 +46,7 @@ ms.locfileid: "74173166"
 - [深入了解](backup-mabs-protection-matrix.md)支援的版本。
 - [依照這些步驟](backup-azure-backup-server-vmware.md)來備份 VMware 伺服器。
 
-### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster"></a>我需要單獨的許可證來恢復完整的本地 VMware/Hyper-V 群集嗎？
+### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster"></a>我是否需要個別的授權來復原完整的內部部署 VMware/Hyper-v 叢集？
 
 您不需要針對 VMware/HYPER-V 保護進行個別授權。
 
@@ -67,5 +67,5 @@ ms.locfileid: "74173166"
 
 閱讀其他常見問題集：
 
-- [詳細瞭解](backup-support-matrix-mabs-dpm.md)Azure 備份伺服器和 DPM 支援矩陣。
-- [詳細瞭解](backup-azure-mabs-troubleshoot.md)Azure 備份伺服器和 DPM 故障排除指南。
+- [深入瞭解](backup-support-matrix-mabs-dpm.md)AZURE 備份伺服器和 DPM 支援矩陣。
+- [深入瞭解](backup-azure-mabs-troubleshoot.md)AZURE 備份伺服器和 DPM 疑難排解指導方針。

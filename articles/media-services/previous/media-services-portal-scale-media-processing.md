@@ -15,27 +15,27 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: c840764dc978a8dacb3450c0aca5e5d93284b8a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61127527"
 ---
 # <a name="change-the-reserved-unit-type"></a>變更保留單元類型
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [入口網站](media-services-portal-scale-media-processing.md)
-> * [休息](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
-> * [JAVA](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
-> * [Php](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
+> * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
+> * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 媒體服務帳戶是與保留單元類型相關聯，後者決定媒體處理工作的速度。 您可以選擇下列的保留單元類型：**S1**、**S2** 或 **S3**。 例如，在執行相同編碼作業的前提下，使用 **S2** 保留單元類型的速度會比 **S1** 類型快。
 
-除了指定預留單位類型外，還可以指定使用**預留單位**（R） 預配您的帳戶。 佈建的 RU 數目可決定指定帳戶中可同時處理的媒體工作數目。
+除了指定保留單元類型之外，您還可以指定使用**保留單元**（ru）布建您的帳戶。 佈建的 RU 數目可決定指定帳戶中可同時處理的媒體工作數目。
 
 >[!NOTE]
 >RU 用於平行化所有媒體處理，包括使用 Azure 媒體索引器的索引作業。 不過，與編碼不同，索引工作的處理速度不會因為使用較快的保留單元而變快。

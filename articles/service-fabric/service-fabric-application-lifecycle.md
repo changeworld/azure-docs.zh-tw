@@ -1,13 +1,13 @@
 ---
-title: 服務結構中的應用程式生命週期
+title: Service Fabric 中的應用程式生命週期
 description: 描述開發、部署、測試、升級、維護和移除 Service Fabric 應用程式。
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: beeb1f1512cf94582dd561fa768f2e8e6649d686
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75377999"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Service Fabric 應用程式生命週期
@@ -18,7 +18,7 @@ ms.locfileid: "75377999"
 ## <a name="service-model-roles"></a>服務模型角色
 服務模型角色是：
 
-* **服務開發人員**：開發模組化和泛型服務，這些服務可以重新使用，並用於相同類型或不同類型的多個應用程式。 例如，佇列服務可以用於建立票證應用程式 ( 技術支援中心) 或電子商務應用程式 (購物車)。
+* **服務開發人員**：開發模組化和一般服務，可在相同類型或不同類型的多個應用程式中重新建立用途和使用。 例如，佇列服務可以用於建立票證應用程式 ( 技術支援中心) 或電子商務應用程式 (購物車)。
 * **應用程式開發人員**：藉由整合服務集合來建立應用程式，以滿足部分特定需求或案例。 例如，電子商務網站可能會整合「JSON 無狀態前端服務」、「拍賣可設定狀態服務」和「佇列可設定狀態服務」，以建立拍賣解決方案。
 * **應用程式系統管理員**：進行應用程式組態 (填入組態範本參數)、部署 (對應至可用的資源)，以及服務品質的決策。 例如，應用程式系統管理員會決定應用程式的語言地區設定 (例如，在美國使用美式英文、在日本使用日文)。 以不同方式部署的應用程式可以有不同的設定。
 * **運算子**：根據應用程式組態和應用程式系統管理員所指定的需求，部署應用程式。 例如，操作員佈建和部署應用程式，並確保它在 Azure 中執行。 操作員會監視應用程式健康狀況和效能資訊，並視需要維護實體基礎結構。
@@ -81,7 +81,7 @@ ms.locfileid: "75377999"
 如需開發、測試及管理 Service Fabric 應用程式和服務的詳細資訊，請參閱：
 
 * [Reliable Actors](service-fabric-reliable-actors-introduction.md)
-* [可靠的服務](service-fabric-reliable-services-introduction.md)
+* [Reliable Services](service-fabric-reliable-services-introduction.md)
 * [部署應用程式](service-fabric-deploy-remove-applications.md)
 * [應用程式升級](service-fabric-application-upgrade.md)
-* [可測試性概述](service-fabric-testability-overview.md)
+* [可測試性總覽](service-fabric-testability-overview.md)

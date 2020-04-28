@@ -1,5 +1,5 @@
 ---
-title: 將切換語句添加到工作流
+title: 將 switch 語句加入至工作流程
 description: 如何建立 Switch 陳述式，以根據 Azure Logic Apps 中的特定值控制工作流程動作
 services: logic-apps
 ms.suite: integration
@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74793229"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>建立 Switch 陳述式，以根據 Azure Logic Apps 中的特定值執行工作流程動作
@@ -42,7 +42,7 @@ ms.locfileid: "74793229"
 
 1. 例如，將 Switch 陳述式結尾新增至您的範例工作流程結尾。 在最後一個步驟之後，選擇 [新增步驟]****。
 
-   如果您要在步驟之間新增 Switch 陳述式，請將指標移您要新增 Switch 陳述式的箭號上。 選擇顯示的**加號**（），**+** 然後選擇 **"添加操作**"。
+   如果您要在步驟之間新增 Switch 陳述式，請將指標移您要新增 Switch 陳述式的箭號上。 選擇顯示的**加號**（**+**），然後選擇 [**新增動作**]。
 
 1. 在搜尋方塊中，輸入 "switch" 作為篩選條件。 選取此動作：**Switch - 控制項**
 

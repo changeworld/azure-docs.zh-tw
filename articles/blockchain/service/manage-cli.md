@@ -1,27 +1,27 @@
 ---
-title: 使用 Azure CLI 管理 Azure 區塊鏈服務
-description: 如何使用 Azure CLI 管理 Azure 區塊鏈服務
+title: 使用 Azure CLI 管理 Azure 區塊鏈 Service
+description: 如何使用 Azure CLI 管理 Azure 區塊鏈 Service
 ms.date: 11/22/2019
 ms.topic: article
 ms.reviewer: janders
 ms.openlocfilehash: ac75be644877905c1517395c1c789b1ea16fd49c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74455591"
 ---
-# <a name="manage-azure-blockchain-service-using-azure-cli"></a>使用 Azure CLI 管理 Azure 區塊鏈服務
+# <a name="manage-azure-blockchain-service-using-azure-cli"></a>使用 Azure CLI 管理 Azure 區塊鏈 Service
 
-除了 Azure 門戶之外，您還可以使用 Azure CLI 管理 Azure 區塊鏈服務的區塊鏈成員和事務節點。
+除了 Azure 入口網站以外，您還可以使用 Azure CLI 來管理 Azure 區塊鏈服務的區塊鏈成員和交易節點。
 
-請確保已安裝最新的[Azure CLI，](https://docs.microsoft.com/cli/azure/install-azure-cli)並登錄到 中的`az login`Azure 帳戶。
+請確定您已安裝最新的[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) ，並使用`az login`登入 Azure 帳戶。
 
-在以下示例中，將示例`<parameter names>`替換為您自己的值。
+在下列範例中，將 example `<parameter names>`取代成您自己的值。
 
-## <a name="create-blockchain-member"></a>創建區塊鏈成員
+## <a name="create-blockchain-member"></a>建立區塊鏈成員
 
-示例在 Azure 區塊鏈服務中創建一個區塊鏈成員，該成員在新聯合體中運行 Quorum 分類帳協定。
+範例會在 Azure 區塊鏈 Service 中建立區塊鏈成員，以在新的聯盟中執行仲裁總帳通訊協定。
 
 ```azurecli
 az resource create \
@@ -34,21 +34,21 @@ az resource create \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **資源組** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
-| **名稱** | 可識別 Azure 區塊鏈服務區塊鏈成員的唯一名稱。 用於公開端點位址的名稱。 例如： `myblockchainmember.blockchain.azure.com` 。 |
-| **位置** | 區塊鏈成員建立所在的 Azure 區域。 例如： `eastus` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。 |
-| **密碼** | 成員帳戶密碼。 成員帳戶密碼會用來對使用基本驗證的區塊鏈成員公用端點進行驗證。 密碼必須滿足以下四個要求中的三個：長度必須在 12 & 72 個字元、1 個小寫字元、1 個大寫字元、1 個數字和 1 個特殊字元之間，不是數位記號（*）、百分比（）、逗號（、星\`形）、回引號（）、雙引號（）、單引號（）、破折號（-）和半列（;)|
-| **協定** | 公共預覽支援仲裁。 |
-| **財團** | 要加入或建立的聯盟名稱。 |
-| **consortiumManagementAccountPassword** | 聯盟管理密碼。 密碼用於加入聯合體。 |
-| **規則名稱** | 將 IP 位址範圍列入白名單的規則名稱。 防火牆規則的可選參數。|
-| **啟動 Ip 位址** | 開始用於白名單的 IP 位址範圍。 防火牆規則的可選參數。 |
-| **端Ip位址** | 用於白名單的 IP 位址範圍的末尾。 防火牆規則的可選參數。 |
+| **resource-group** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
+| **name** | 可識別 Azure 區塊鏈服務區塊鏈成員的唯一名稱。 用於公開端點位址的名稱。 例如： `myblockchainmember.blockchain.azure.com` 。 |
+| **location** | 區塊鏈成員建立所在的 Azure 區域。 例如： `eastus` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。 |
+| **password** | 成員帳戶密碼。 成員帳戶密碼會用來對使用基本驗證的區塊鏈成員公用端點進行驗證。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#）、百分比（%）、逗號（，）、星號（*）、後\`引號（）、雙引號（-）、單引號（'）、虛線（-）和 semicolumn （;)|
+| **protocol** | 公開預覽支援仲裁。 |
+| **consortium** | 要加入或建立的聯盟名稱。 |
+| **consortiumManagementAccountPassword** | 聯盟管理密碼。 密碼會用於加入聯盟。 |
+| **ruleName** | 用來允許清單 IP 位址範圍的規則名稱。 防火牆規則的選擇性參數。|
+| **startIpAddress** | 允許清單的 IP 位址範圍的開頭。 防火牆規則的選擇性參數。 |
+| **Endipaddress 設** | 允許清單的 IP 位址範圍結尾。 防火牆規則的選擇性參數。 |
 | **skuName** | 服務層級類型。 使用 S0 表示「標準」，B0 表示「基本」。 |
 
-## <a name="change-blockchain-member-password"></a>更改區塊鏈成員密碼
+## <a name="change-blockchain-member-password"></a>變更區塊鏈成員密碼
 
-更改區塊鏈成員密碼的示例。
+範例會變更區塊鏈成員的密碼。
 
 ```azurecli
 az resource update \
@@ -61,13 +61,13 @@ az resource update \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **資源組** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
-| **名稱** | 標識 Azure 區塊鏈服務成員的名稱。 |
-| **密碼** | 成員帳戶密碼。 密碼必須滿足以下四個要求中的三個：長度必須在 12 & 72 個字元、1 個小寫字元、1 個大寫字元、1 個數字和 1 個特殊字元之間，這些字元不是數位記號（*）、百分比（）、逗號（、星形）、回引號（）、\`雙引號（）、單引號（）、單引號（'）、破折號（-）和分號（;)。 |
+| **resource-group** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
+| **name** | 識別您的 Azure 區塊鏈服務成員的名稱。 |
+| **password** | 成員帳戶密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、\`後引號（）、虛線（-）和分號（;)。 |
 
 ## <a name="create-transaction-node"></a>建立交易節點
 
-在現有區塊鏈成員內部創建交易節點。 通過添加事務節點，可以增加安全隔離和分配負載。 例如，您可以為不同的用戶端應用程式提供事務節點終結點。
+在現有的區塊鏈成員內建立交易節點。 藉由新增交易節點，您可以增加安全性隔離並分散負載。 例如，您可能會有不同用戶端應用程式的交易節點端點。
 
 ```azurecli
 az resource create \
@@ -80,17 +80,17 @@ az resource create \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **資源組** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
-| **名稱** | Azure 區塊鏈服務區塊鏈成員的名稱，該成員還包括新的交易節點名稱。 |
-| **位置** | 區塊鏈成員建立所在的 Azure 區域。 例如： `eastus` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。 |
-| **密碼** | 事務節點密碼。 密碼必須滿足以下四個要求中的三個：長度必須在 12 & 72 個字元、1 個小寫字元、1 個大寫字元、1 個數字和 1 個特殊字元之間，這些字元不是數位記號（*）、百分比（）、逗號（、星形）、回引號（）、\`雙引號（）、單引號（）、單引號（'）、破折號（-）和分號（;)。 |
-| **規則名稱** | 將 IP 位址範圍列入白名單的規則名稱。 防火牆規則的可選參數。 |
-| **啟動 Ip 位址** | 開始用於白名單的 IP 位址範圍。 防火牆規則的可選參數。 |
-| **端Ip位址** | 用於白名單的 IP 位址範圍的末尾。 防火牆規則的可選參數。|
+| **resource-group** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
+| **name** | Azure 區塊鏈 Service 區塊鏈成員的名稱，其中也包含新的交易節點名稱。 |
+| **location** | 區塊鏈成員建立所在的 Azure 區域。 例如： `eastus` 。 選擇最靠近您的使用者或其他 Azure 應用程式的位置。 |
+| **password** | 交易節點密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、\`後引號（）、虛線（-）和分號（;)。 |
+| **ruleName** | 用來允許清單 IP 位址範圍的規則名稱。 防火牆規則的選擇性參數。 |
+| **startIpAddress** | 允許清單的 IP 位址範圍的開頭。 防火牆規則的選擇性參數。 |
+| **Endipaddress 設** | 允許清單的 IP 位址範圍結尾。 防火牆規則的選擇性參數。|
 
-## <a name="change-transaction-node-password"></a>更改事務節點密碼
+## <a name="change-transaction-node-password"></a>變更交易節點密碼
 
-示例更改事務節點密碼。
+範例會變更交易節點密碼。
 
 ```azurecli
 az resource update \
@@ -102,13 +102,13 @@ az resource update \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **資源組** | Azure 區塊鏈服務資源所在的資源組名稱。 |
-| **名稱** | Azure 區塊鏈服務區塊鏈成員的名稱，該成員還包括新的交易節點名稱。 |
-| **密碼** | 事務節點密碼。 密碼必須滿足以下四個要求中的三個：長度必須在 12 & 72 個字元、1 個小寫字元、1 個大寫字元、1 個數字和 1 個特殊字元之間，這些字元不是數位記號（*）、百分比（）、逗號（、星形）、回引號（）、\`雙引號（）、單引號（）、單引號（'）、破折號（-）和分號（;)。 |
+| **resource-group** | 資源組名，其中有 Azure 區塊鏈服務資源存在。 |
+| **name** | Azure 區塊鏈 Service 區塊鏈成員的名稱，其中也包含新的交易節點名稱。 |
+| **password** | 交易節點密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、\`後引號（）、虛線（-）和分號（;)。 |
 
-## <a name="change-consortium-management-account-password"></a>更改聯合體管理帳戶密碼
+## <a name="change-consortium-management-account-password"></a>變更聯盟管理帳戶密碼
 
-聯營管理帳戶用於聯營成員管理。 每個成員都由聯合體管理帳戶唯一標識，您可以使用以下命令更改此帳戶的密碼。
+聯盟管理帳戶用於聯盟成員資格管理。 每個成員都是由聯盟管理帳戶唯一識別，而您可以使用下列命令來變更此帳戶的密碼。
 
 ```azurecli
 az resource update \
@@ -121,9 +121,9 @@ az resource update \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **資源組** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
-| **名稱** | 標識 Azure 區塊鏈服務成員的名稱。 |
-| **consortiumManagementAccountPassword** | 聯營管理帳戶密碼。 密碼必須滿足以下四個要求中的三個：長度必須在 12 & 72 個字元、1 個小寫字元、1 個大寫字元、1 個數字和 1 個特殊字元之間，這些字元不是數位記號（*）、百分比（）、逗號（、星形）、回引號（）、\`雙引號（）、單引號（）、單引號（'）、破折號（-）和分號（;)。 |
+| **resource-group** | Azure 區塊鏈服務資源建立所在的資源群組名稱。 |
+| **name** | 識別您的 Azure 區塊鏈服務成員的名稱。 |
+| **consortiumManagementAccountPassword** | 聯盟管理帳戶密碼。 密碼必須符合下列四個需求的其中三項：長度必須介於 12 & 72 個字元、1個小寫字元、1個大寫字元、1個數字和1個特殊字元（不是數位記號（#））、百分比（%）、逗號（，）、星號（*）、\`後引號（）、虛線（-）和分號（;)。 |
   
 ## <a name="update-firewall-rules"></a>更新防火牆規則
 
@@ -138,15 +138,15 @@ az resource update \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **資源組** | Azure 區塊鏈服務資源所在的資源組名稱。 |
-| **名稱** | Azure 區塊鏈服務區塊鏈成員的名稱。 |
-| **規則名稱** | 將 IP 位址範圍列入白名單的規則名稱。 防火牆規則的可選參數。|
-| **啟動 Ip 位址** | 開始用於白名單的 IP 位址範圍。 防火牆規則的可選參數。|
-| **端Ip位址** | 用於白名單的 IP 位址範圍的末尾。 防火牆規則的可選參數。|
+| **resource-group** | 資源組名，其中有 Azure 區塊鏈服務資源存在。 |
+| **name** | Azure 區塊鏈 Service 區塊鏈成員的名稱。 |
+| **ruleName** | 用來允許清單 IP 位址範圍的規則名稱。 防火牆規則的選擇性參數。|
+| **startIpAddress** | 允許清單的 IP 位址範圍的開頭。 防火牆規則的選擇性參數。|
+| **Endipaddress 設** | 允許清單的 IP 位址範圍結尾。 防火牆規則的選擇性參數。|
 
 ## <a name="list-api-keys"></a>列出 API 金鑰
 
-API 金鑰可用於類似于使用者名和密碼的節點訪問。 有兩個 API 金鑰支援金鑰輪換。 使用以下命令列出 API 金鑰。
+API 金鑰可用於節點存取，類似于使用者名稱和密碼。 有兩個 API 金鑰可支援金鑰輪替。 使用下列命令來列出您的 API 金鑰。
 
 ```azurecli
 az resource invoke-action \
@@ -158,12 +158,12 @@ az resource invoke-action \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **資源組** | Azure 區塊鏈服務資源所在的資源組名稱。 |
-| **名稱** | Azure 區塊鏈服務區塊鏈成員的名稱，該成員還包括新的交易節點名稱。 |
+| **resource-group** | 資源組名，其中有 Azure 區塊鏈服務資源存在。 |
+| **name** | Azure 區塊鏈 Service 區塊鏈成員的名稱，其中也包含新的交易節點名稱。 |
 
-## <a name="regenerate-api-keys"></a>重新生成 API 金鑰
+## <a name="regenerate-api-keys"></a>重新產生 API 金鑰
 
-使用以下命令重新生成 API 金鑰。
+使用下列命令來重新產生您的 API 金鑰。
 
 ```azurecli
 az resource invoke-action \
@@ -176,13 +176,13 @@ az resource invoke-action \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **資源組** | Azure 區塊鏈服務資源所在的資源組名稱。 |
-| **名稱** | Azure 區塊鏈服務區塊鏈成員的名稱，該成員還包括新的交易節點名稱。 |
-| **鍵名稱** | 將\<鍵值\>替換為鍵 1 或鍵 2。 |
+| **resource-group** | 資源組名，其中有 Azure 區塊鏈服務資源存在。 |
+| **name** | Azure 區塊鏈 Service 區塊鏈成員的名稱，其中也包含新的交易節點名稱。 |
+| **名** | 將\<keyValue\>取代為 key1 或 key2。 |
 
-## <a name="delete-a-transaction-node"></a>刪除事務節點
+## <a name="delete-a-transaction-node"></a>刪除交易節點
 
-示例刪除區塊鏈成員交易節點。
+範例會刪除區塊鏈成員交易節點。
 
 ```azurecli
 az resource delete \
@@ -193,12 +193,12 @@ az resource delete \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **資源組** | Azure 區塊鏈服務資源所在的資源組名稱。 |
-| **名稱** | Azure 區塊鏈服務區塊鏈成員的名稱，該成員還包括要刪除的交易節點名稱。 |
+| **resource-group** | 資源組名，其中有 Azure 區塊鏈服務資源存在。 |
+| **name** | Azure 區塊鏈 Service 區塊鏈成員的名稱，其中也包含要刪除的交易節點名稱。 |
 
 ## <a name="delete-a-blockchain-member"></a>刪除區塊鏈成員
 
-示例刪除區塊鏈成員。
+範例會刪除區塊鏈成員。
 
 ```azurecli
 az resource delete \
@@ -209,12 +209,12 @@ az resource delete \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **資源組** | Azure 區塊鏈服務資源所在的資源組名稱。 |
-| **名稱** | 要刪除的 Azure 區塊鏈服務區塊鏈成員的名稱。 |
+| **resource-group** | 資源組名，其中有 Azure 區塊鏈服務資源存在。 |
+| **name** | 要刪除之 Azure 區塊鏈服務區塊鏈成員的名稱。 |
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-### <a name="grant-access-for-azure-ad-user"></a>授予 Azure AD 使用者的許可權
+### <a name="grant-access-for-azure-ad-user"></a>授與 Azure AD 使用者的存取權
 
 ```azurecli
 az role assignment create \
@@ -225,13 +225,13 @@ az role assignment create \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **作用** | Azure AD 角色的名稱。 |
-| **受託人** | Azure AD 使用者 ID。 例如， `user@contoso.com` |
+| **role** | Azure AD 角色的名稱。 |
+| **受託人** | Azure AD 使用者識別碼。 例如， `user@contoso.com` |
 | **範圍** | 角色指派的範圍。 可以是區塊鏈成員或交易節點。 |
 
-**例子：**
+**範例：**
 
-將 Azure AD 使用者節點存取權限授予區塊鏈**成員**：
+將 Azure AD 使用者的節點存取權授與區塊鏈**成員**：
 
 ```azurecli
 az role assignment create \
@@ -240,9 +240,9 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-**例子：**
+**範例：**
 
-授予 Azure AD 使用者對區塊鏈**事務節點**的節點存取權限：
+將 Azure AD 使用者的節點存取權授與區塊鏈**交易節點**：
 
 ```azurecli
 az role assignment create \
@@ -251,7 +251,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1/transactionNodes/contosoTransactionNode1
 ```
 
-### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>授予 Azure AD 組或應用程式角色的節點存取權限
+### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>授與 Azure AD 群組或應用程式角色的節點存取權
 
 ```azurecli
 az role assignment create \
@@ -261,13 +261,13 @@ az role assignment create \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **作用** | Azure AD 角色的名稱。 |
-| **受讓人-物件-id** | Azure AD 組 ID 或應用程式 ID。 |
+| **role** | Azure AD 角色的名稱。 |
+| **受託人-物件識別碼** | Azure AD 群組識別碼或應用程式識別碼。 |
 | **範圍** | 角色指派的範圍。 可以是區塊鏈成員或交易節點。 |
 
-**例子：**
+**範例：**
 
-授予**應用程式角色的**節點存取權限
+授與**應用程式角色**的節點存取權
 
 ```azurecli
 az role assignment create \
@@ -276,7 +276,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-### <a name="remove-azure-ad-node-access"></a>刪除 Azure AD 節點訪問
+### <a name="remove-azure-ad-node-access"></a>移除 Azure AD 節點存取
 
 ```azurecli
 az role assignment delete \
@@ -287,10 +287,10 @@ az role assignment delete \
 
 | 參數 | 描述 |
 |---------|-------------|
-| **作用** | Azure AD 角色的名稱。 |
-| **受託人** | Azure AD 使用者 ID。 例如， `user@contoso.com` |
+| **role** | Azure AD 角色的名稱。 |
+| **受託人** | Azure AD 使用者識別碼。 例如， `user@contoso.com` |
 | **範圍** | 角色指派的範圍。 可以是區塊鏈成員或交易節點。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用[Azure 門戶配置 Azure 區塊鏈服務事務節點](configure-transaction-nodes.md)。
+瞭解如何[使用 Azure 入口網站來設定 Azure 區塊鏈 Service 交易節點](configure-transaction-nodes.md)。

@@ -1,13 +1,13 @@
 ---
-title: 容器映射存儲
+title: 容器映射儲存體
 description: 有關您的 Docker 容器映像如何儲存在 Azure Container Registry 中的詳細資料，包括安全性、備援和容量。
 ms.topic: article
 ms.date: 03/21/2018
 ms.openlocfilehash: f66c3dd95edfe5035c46857cb6f9aa59d8a6a0e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456199"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry 中的容器映像儲存體
@@ -35,8 +35,8 @@ Azure 使用異地備援儲存體配置來避免您的容器映像遺失。 Azur
 | 儲存機制 | 沒有限制 |
 | 影像 | 沒有限制 |
 | 層次 | 沒有限制 |
-| Tags | 沒有限制|
-| 存放裝置 | 5 TB |
+| 標記 | 沒有限制|
+| 儲存體 | 5 TB |
 
 大量的存放庫和標籤可能會影響您的登錄效能。 定期刪除未使用的存放庫、標籤和映像，將此作為登錄維護例行工作的一部分。 存放庫、映像和標籤等登錄資源一旦刪除就「無法」** 復原。 如需刪除登錄資源的詳細資訊，請參閱[刪除 Azure Container Registry 中的容器映像](container-registry-delete.md)。
 

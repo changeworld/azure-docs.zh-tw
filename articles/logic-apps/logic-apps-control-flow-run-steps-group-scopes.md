@@ -1,19 +1,19 @@
 ---
-title: 按範圍對操作進行分組和運行
-description: 創建基於 Azure 邏輯應用中的組狀態運行的作用域操作
+title: 依範圍群組和執行動作
+description: 建立以 Azure Logic Apps 中的群組狀態為基礎執行的範圍動作
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74791484"
 ---
-# <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>在 Azure 邏輯應用中使用作用域，根據組狀態運行操作
+# <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>使用 Azure Logic Apps 中的範圍根據群組狀態執行動作
 
 若要在另一個群組成功或失敗之後才執行步驟，請將那些步驟群組在「範圍」** 中。 如果您想要將動作組織為邏輯群組、評估該群組的狀態，以及執行以範圍狀態為基礎的動作，此結構將會十分實用。 當範圍中的所有動作都執行完成之後，範圍也會取得自己的狀態。 例如，您可以在想要實作[例外狀況和錯誤處理](../logic-apps/logic-apps-exception-handling.md#scopes)時使用範圍。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "74791484"
 
 * Bing 地圖金鑰。 若要取得此金鑰，請參閱<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">取得 Bing 地圖金鑰</a>。
 
-* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
 
 ## <a name="create-sample-logic-app"></a>建立範例邏輯應用程式
 
@@ -48,7 +48,7 @@ ms.locfileid: "74791484"
 
 您可以隨時儲存您的邏輯應用程式，所以請經常儲存您的工作。
 
-1. 如果尚未登錄<a href="https://portal.azure.com" target="_blank">Azure 門戶</a>，請登錄。 建立空白邏輯應用程式。
+1. 如果尚未登入<a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>，請先登入。 建立空白邏輯應用程式。
 
 1. 使用下列設定新增**排程 - 週期**觸發程序：**間隔** =「1」，以及**頻率** =「分鐘」
 
@@ -63,8 +63,8 @@ ms.locfileid: "74791484"
 
       | 設定 | 值 | 描述 |
       | ------- | ----- | ----------- |
-      | **連接名稱** | BingMapsConnection | 為您的連線提供一個名稱。 | 
-      | **API 金鑰** | <*您的 Bing 地圖鍵*> | 輸入您先前收到的 Bing 地圖服務金鑰。 | 
+      | **連線名稱** | BingMapsConnection | 為您的連線提供一個名稱。 | 
+      | **API 金鑰** | <*您的-Bing 對應鍵*> | 輸入您先前收到的 Bing 地圖服務金鑰。 | 
       ||||  
 
    1. 設定 [取得路線]**** 動作，如下圖中的資料表所示：
@@ -75,11 +75,11 @@ ms.locfileid: "74791484"
 
       | 設定 | 值 | 描述 |
       | ------- | ----- | ----------- |
-      | **導航點 1** | <*開始*> | 輸入您的路線起點。 | 
-      | **導航點 2** | <*結束*> | 輸入您路線的目的地。 | 
+      | **導航點 1** | <*「*> | 輸入您的路線起點。 | 
+      | **導航點 2** | <*成品*> | 輸入您路線的目的地。 | 
       | **避開** | None | 輸入路線所要避開的項目，例如高速公路、收費站等等。 如需可能使用的值，請參閱[計算路線](https://msdn.microsoft.com/library/ff701717.aspx)。 | 
-      | **優化** | timeWithTraffic | 選取可將路線最佳化的參數，例如距離、和使用目前交通資訊的時間等等。 此範例會使用此值："timeWithTraffic" | 
-      | **距離單位** | <*您的偏好*> | 輸入要計算您路線的距離單位。 此範例會使用此值：「英里」 | 
+      | **最優化** | timeWithTraffic | 選取可將路線最佳化的參數，例如距離、和使用目前交通資訊的時間等等。 此範例會使用此值："timeWithTraffic" | 
+      | **距離單位** | <*您的喜好設定*> | 輸入要計算您路線的距離單位。 此範例會使用此值：「英里」 | 
       | **行進模式** | 開車 | 輸入路線的旅行模式。 此範例會使用此值：「開車」 | 
       | **運輸日期時間** | None | 僅適用於運輸模式。 | 
       | **運輸日期類型** | None | 僅適用於運輸模式。 | 
@@ -96,7 +96,7 @@ ms.locfileid: "74791484"
 
    1. 在中間的方塊中，選取此運算子：**大於**
 
-   1. 在最右側的列中，輸入此比較值，該值以秒為單位，等效于 10 分鐘 **：600**
+   1. 在最右邊的資料行中，輸入此比較值（以秒為單位），相當於10分鐘： **600**
 
       當您完成時，您的條件看起來就像下面這個範例︰
 
@@ -130,7 +130,7 @@ ms.locfileid: "74791484"
 
       ![選取 [旅行期間交通] 欄位](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   1. 欄位解析為 JSON 格式後，添加**逗號**（```,```） 後跟```60```數位，以便將 **"流量持續時間流量**"中的值從秒轉換為分鐘。 
+   1. 在欄位解析為 JSON 格式之後，請新增**逗號**（```,```），後面接著數位```60``` ，以便將**流量持續時間流量**中的值轉換成分鐘。 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -143,7 +143,7 @@ ms.locfileid: "74791484"
    1. 完成時，選擇 [確定]****。
 
    <!-- markdownlint-disable MD038 -->
-   1. 解解運算式後，使用此前導空格添加此文本：``` minutes```
+   1. 在運算式解析之後，請將下列文字加上前置空格：``` minutes```
   
        您的 [內文]**** 欄位現在看起來就像下面這個範例︰
 
@@ -161,7 +161,7 @@ ms.locfileid: "74791484"
 1. 在要使用的工作流程位置上新增範圍。 例如，若要在邏輯應用程式工作流程中的現有步驟之間新增範圍，請遵循下列步驟： 
 
    1. 將指標停留在要新增範圍的箭號上方。 
-   選擇**加號**（**+**） >**添加操作**。
+   選擇**加號**（**+**） >**新增動作**]。
 
       ![新增範圍](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 

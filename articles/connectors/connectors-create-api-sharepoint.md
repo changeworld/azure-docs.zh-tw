@@ -1,5 +1,5 @@
 ---
-title: 從 Azure 邏輯應用連接到共用點
+title: 從 Azure Logic Apps 連接到 SharePoint
 description: 藉由使用 Azure Logic Apps，將在 SharePoint Online 或 SharePoint Server 內部部署中監視及管理資源的工作和工作流程自動化
 services: logic-apps
 ms.suite: integration
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
 ms.openlocfilehash: bb82ef2d6fb83c2e1b0fa81aa9504c9bb7d8234b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789251"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>使用 Azure Logic Apps 來監視及管理 SharePoint 資源
@@ -31,7 +31,7 @@ ms.locfileid: "74789251"
 * 取得實體的值。
 
 您可以使用觸發程序，從 SharePoint 收到回應，並且讓輸出可供其他動作使用。 您可以在邏輯應用程式中使用動作，在 SharePoint 中執行工作。 您也可以讓其他動作使用 SharePoint 動作的輸出。 例如，如果您定期從 SharePoint 擷取檔案，可以使用 Slack 連接器將訊息傳送給您的小組。
-如果您是邏輯應用的新增功能，請查看什麼是[Azure 邏輯應用？](../logic-apps/logic-apps-overview.md)
+如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -43,7 +43,7 @@ ms.locfileid: "74789251"
 
 * 在將邏輯應用程式連線至內部部署系統 (例如，SharePoint Server) 之前，您必須先[安裝及設定內部部署資料閘道](../logic-apps/logic-apps-gateway-install.md)。 如此一來，您就可以在為邏輯應用程式建立 SharePoint Server 連線時，指定使用您的閘道安裝。
 
-* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
 
 * 您要在其中存取 SharePoint 帳戶的邏輯應用程式。 若要開始使用 SharePoint 觸發程序，請[建立空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 若要使用 SharePoint 動作，請使用觸發程序來啟動您的邏輯應用程式，例如 Salesforce 觸發程序 (如果您有 Salesforce 帳戶)。
 
@@ -66,9 +66,9 @@ ms.locfileid: "74789251"
    在動作清單底下，選取您想要的動作。
 
    若要在步驟之間新增動作，將指標移至步驟之間的箭號。 
-   選擇顯示的加號**+**（），然後選擇 **"添加操作**"。
+   選擇顯示的加號（**+**），然後選取 [**新增動作**]。
 
-1. 當系統提示您登入時，請提供必要的連線資訊。 如果您使用的是 SharePoint 伺服器，請確保**選擇通過本地資料閘道進行連接**。 完成之後，請選擇 [建立]****。
+1. 當系統提示您登入時，請提供必要的連線資訊。 如果您使用 SharePoint Server，請務必選取 [透過內部**部署資料網**關聯機]。 完成之後，請選擇 [建立]****。
 
 1. 為您選取的觸發程序或動作提供必要的詳細資料，並且繼續建置邏輯應用程式的工作流程。
 

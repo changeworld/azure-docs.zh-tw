@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: ac21558b1480f43b398f44949e18416284c3f606
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61129494"
 ---
 # <a name="h264-multiple-bitrate-720p-audio-51"></a>H264 多重位元速率 720p 音訊 5.1
@@ -26,7 +26,7 @@ ms.locfileid: "61129494"
   
  本主題說明 XML 和 JSON 格式的 `H264 Multiple Bitrate 720p Audio 5.1` 預設。  
   
- 此預設會產生一組 6 個對齊 GOP 的 MP4 檔案 (範圍從 3400 kbps 到 400 kbps) 和 AAC 5.1 音訊。 如需此預設的設定檔、位元速率、取樣率等的詳細資訊，請檢查以下定義的 XML 或 JSON。 有關每個元素的含義以及每個元素的有效值的說明，請參閱[媒體編碼器標準架構](media-services-mes-schema.md)。  
+ 此預設會產生一組 6 個對齊 GOP 的 MP4 檔案 (範圍從 3400 kbps 到 400 kbps) 和 AAC 5.1 音訊。 如需此預設的設定檔、位元速率、取樣率等的詳細資訊，請檢查以下定義的 XML 或 JSON。 如需每個元素的意義說明，以及每個元素的有效值，請參閱[媒體編碼器標準架構](media-services-mes-schema.md)。  
   
 > [!NOTE]
 >  跨層修改 `Width` 和 `Height` 值時，請確定長寬比保持一致。 例如︰1920x1080、1280x720、1080x576、640x360。 請勿使用混合的長寬比，例如︰1280x720、720x480、640x360。  

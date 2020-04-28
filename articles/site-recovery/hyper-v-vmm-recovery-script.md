@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 網站恢復中向恢復計畫添加腳本
+title: 在 Azure Site Recovery 中，將腳本新增至復原方案
 description: 了解如何在 VMM 雲端的 Hyper-V VM 災害復原方案中新增 VMM 指令碼。
 author: rajani-janaki-ram
 manager: rochakm
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 6902876e066649ae4dff4134fb8cc462f30dd0b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74084880"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>將 VMM 指令碼新增至復原方案
 
 本文說明如何建立 System Center Virtual Machine Manager (VMM) 指令碼，並將其新增至 [Azure Site Recovery](site-recovery-overview.md) 中的復原方案。
 
-在本文底部或[Azure 恢復服務論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上發佈任何評論或問題。
+請在本文下方或[Azure 復原服務論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上張貼任何意見或問題。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -29,7 +29,7 @@ ms.locfileid: "74084880"
     - 如果發生錯誤，指令碼的剩餘部分將不會執行。
     - 如果在執行未規劃的容錯移轉時發生錯誤，復原計畫將會繼續執行。
     - 如果在執行未規劃的容錯移轉時發生錯誤，復原計畫將會停止。 請修正指令碼，確認其能如預期執行，然後再次執行復原方案。
-        - `Write-Host` 命令無法在復原方案指令碼中運作。 如果您在指令碼中使用 `Write-Host` 命令，指令碼就會失敗。 若要建立輸出，建立接著會執行主要指令碼的 proxy 指令碼。 為確保所有輸出都管道輸出，請使用 命令**\>**。
+        - `Write-Host` 命令無法在復原方案指令碼中運作。 如果您在指令碼中使用 `Write-Host` 命令，指令碼就會失敗。 若要建立輸出，建立接著會執行主要指令碼的 proxy 指令碼。 若要確保所有輸出都已輸送，請使用** \> **命令。
         - 如果指令碼未在 600 秒內傳回則會逾時。
         - 如果有任何資料寫入 STDERR 中，則該指令碼將分類為失敗。 此資訊會顯示在指令碼的執行詳細資料中。
 

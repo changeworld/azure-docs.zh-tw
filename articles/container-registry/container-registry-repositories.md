@@ -1,13 +1,13 @@
 ---
-title: 在門戶中查看存儲庫
-description: 使用 Azure 門戶查看 Azure 容器註冊表存儲庫，這些存儲庫承載 Docker 容器映射和其他受支援的專案。
+title: 在入口網站中查看存放庫
+description: 使用 [Azure 入口網站來觀看 Azure Container Registry 存放庫，以裝載 Docker 容器映射和其他支援的成品。
 ms.topic: article
 ms.date: 01/05/2018
 ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456287"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>檢視 Azure 入口網站中的容器登錄存放庫
@@ -34,7 +34,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 檢視存放庫：
 
-1. 登錄到 Azure[門戶][portal]
+1. 登入 [Azure 入口網站][portal]
 1. 選取您已將 Nginx 映像推送到其中的 **Azure Container Registry**
 1. 選取 [存放庫]**** 以查看含有登錄中映像的存放庫清單
 1. 選取存放庫以查看該存放庫內的映像標記

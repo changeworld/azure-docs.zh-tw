@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
 ms.openlocfilehash: 97509001aa66c2c1bf0c91b6b2a5ab25f9d6ec88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74227075"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Azure Functions 事件方格觸發程序本機偵錯
@@ -91,7 +91,7 @@ ngrok http -host-header=localhost 7071
 - 以滑鼠右鍵按一下並選取 [建立 Blob 容器]****。
 - 將容器命名為 **test**。
 - 選取 test** 容器
-- 按一下 **"上傳"** 按鈕
+- 按一下 [**上傳**] 按鈕
 - 按一下 [上傳檔案]****。
 - 選取檔案並將它上傳至 Blob 容器。
 

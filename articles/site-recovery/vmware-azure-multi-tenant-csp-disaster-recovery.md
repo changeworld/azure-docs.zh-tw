@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 77b64f09b7fd1429eb23c4407c729dfc0aafdf2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60460979"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>使用雲端解決方案提供者 (CSP) 方案在多租用戶環境中設定 VMware 災害復原
@@ -65,7 +65,7 @@ ms.locfileid: "60460979"
 ## <a name="assign-tenant-access-to-the-subscription"></a>為租用戶指派訂用帳戶的存取權
 
 1. 確定已設定災害復原基礎結構。 無論災害復原類型是受控或自助，合作夥伴都必須透過 CSP 入口網站存取租用戶訂用帳戶。 設定保存庫，並且向租用戶訂用帳戶註冊基礎結構。
-2. 向租戶提供[您創建的帳戶](#create-a-tenant-account)。
+2. 為租[使用者提供您建立的帳戶](#create-a-tenant-account)。
 3. 您可以透過 CSP 入口網站將新的使用者新增至租用戶訂用帳戶，方法如下：
 
     a) 移至租用戶的 CSP 訂用帳戶頁面，然後選取 [使用者與授權]**** 選項。
@@ -99,6 +99,6 @@ ms.locfileid: "60460979"
 
 ## <a name="next-steps"></a>後續步驟
 - 深入了解如何使用[角色型存取控制](site-recovery-role-based-linked-access-control.md)來管理 Azure Site Recovery 部署。
-- 瞭解有關 VMware 到 Azure[複製體系結構的更多資訊](vmware-azure-architecture.md)。
+- 深入瞭解 VMware 至 Azure 複寫[架構](vmware-azure-architecture.md)。
 - 針對將 VMware VM 複寫到 Azure [檢閱教學課程](vmware-azure-tutorial.md)。
 深入了解[多租用戶環境](vmware-azure-multi-tenant-overview.md)，以將 VMware VM 複寫至 Azure。

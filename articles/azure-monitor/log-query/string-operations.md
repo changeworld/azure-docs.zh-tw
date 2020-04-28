@@ -7,27 +7,27 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75397460"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中使用字串
 
 
 > [!NOTE]
-> 在完成本教程之前，應完成[Azure 監視器日誌分析](get-started-portal.md)入門以及[Azure 監視器日誌查詢入門](get-started-queries.md)。
+> 完成本教學課程之前，您應該先完成[開始使用 Azure 監視器 Log Analytics](get-started-portal.md)和[開始使用 Azure 監視器記錄查詢](get-started-queries.md)。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 此文章說明如何編輯、比較、搜尋字串，以及如何在字串上執行各種其他作業。
 
-字串中的每個字元都有索引編號 (根據其位置)。 第一個字元位於索引 0，下一個字元為 1，等等。 不同的字串函式都會使用索引編號，如以下各節所示。 在下列範例中，許多範例都使用 **print** 命令來示範字串，而未使用特定資料來源。
+字串中的每個字元都有索引編號 (根據其位置)。 第一個字元位於索引0，下一個字元是1，依此類推。 不同的字串函式都會使用索引編號，如以下各節所示。 在下列範例中，許多範例都使用 **print** 命令來示範字串，而未使用特定資料來源。
 
 
 ## <a name="strings-and-escaping-them"></a>字串與字串逸出
-字串值是被單引號字元或雙引號字元括住。 反斜線\\（ ） 用於將字元轉義到它之後的字元，例如 \t 表示選項卡、分行符號\"的 \n 和引號字元本身。
+字串值是被單引號字元或雙引號字元括住。 反斜線\\（）是用來將字元轉義到後面的字元，例如 \t 代表 tab、\n 代表分行符號，以及\"引號字元本身。
 
 ```Kusto
 print "this is a 'string' literal in double \" quotes"
@@ -93,7 +93,7 @@ countof(text, search [, kind])
 ### <a name="arguments"></a>引數：
 - `text` - 輸入字串 
 - `search` - 要比對內部文字的純文字或規則運算式。
-- `kind` - _正常_ | _正則運算式_（預設值：正常）。
+- `kind` - _標準_ | _RegEx_ （預設值： normal）。
 
 ### <a name="returns"></a>傳回值
 
@@ -122,7 +122,7 @@ print countof("abcabc", "a.c", "regex");  // result: 2
 
 ## <a name="extract"></a>extract
 
-從給定字串取得規則運算式的相符項目。 可選也可以將提取的子字串轉換為指定的類型。
+從給定字串取得規則運算式的相符項目。 也可以選擇性地將已解壓縮的子字串轉換成指定的類型。
 
 ### <a name="syntax"></a>語法
 
@@ -365,7 +365,7 @@ print toupper("hello"); // result: "HELLO"
 繼續進階教學課程：
 * [彙總函式](aggregations.md)
 * [進階彙總](advanced-aggregations.md)
-* [圖表](charts.md)
+* [圖表和資料圖表](charts.md)
 * [使用 JSON 與資料結構](json-data-structures.md)
 * [進階查詢撰寫](advanced-query-writing.md)
 * [聯結 - 跨分析](joins.md)

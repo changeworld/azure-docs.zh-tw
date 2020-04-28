@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
 ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75397753"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>從 Splunk 到 Azure 監視器記錄查詢
@@ -70,8 +70,8 @@ ms.locfileid: "75397753"
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **搜尋** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
-| Azure 監視器 | **找到** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
+| Splunk | **search** | <code>search Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" earliest=-24h</code> |
+| Azure 監視器 | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 | | |
 
 ### <a name="filter"></a>Filter
@@ -79,7 +79,7 @@ Azure 監視器記錄查詢會從篩選所在的表格式結果集開始。 Splu
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **搜尋** | <code>Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h</code> |
+| Splunk | **search** | <code>Event.Rule="330009.2" Session.Id="c8894ffd-e684-43c9-9125-42adc25cd3fc" _indextime>-24h</code> |
 | Azure 監視器 | **where** | <code>Office_Hub_OHubBGTaskError<br>&#124; where Session_Id == "c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time() > ago(24h)</code> |
 | | |
 
@@ -89,8 +89,8 @@ Azure 監視器記錄也支援以 `take` 作為 `limit` 別名。 在 Splunk 中
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **頭** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
-| Azure 監視器 | **limit** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
+| Splunk | **前端** | <code>Event.Rule=330009.2<br>&#124; head 100</code> |
+| Azure 監視器 | **只** | <code>Office_Hub_OHubBGTaskError<br>&#124; limit 100</code> |
 | | |
 
 
@@ -100,7 +100,7 @@ Azure 監視器記錄也支援以 `take` 作為 `limit` 別名。 在 Splunk 中
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **頭** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
+| Splunk | **前端** |  <code>Event.Rule="330009.2"<br>&#124; sort Event.Sequence<br>&#124; head 20</code> |
 | Azure 監視器 | **返回頁首** | <code>Office_Hub_OHubBGTaskError<br>&#124; top 20 by Event_Sequence</code> |
 | | |
 
@@ -112,18 +112,18 @@ Splunk 也有 `eval` 函式，其無法與 `eval` 運算子相比較。 Splunk �
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **Eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
-| Azure 監視器 | **擴展** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
+| Splunk | **eval** |  <code>Event.Rule=330009.2<br>&#124; eval state= if(Data.Exception = "0", "success", "error")</code> |
+| Azure 監視器 | **延遲** | <code>Office_Hub_OHubBGTaskError<br>&#124; extend state = iif(Data_Exception == 0,"success" ,"error")</code> |
 | | |
 
 
 ### <a name="rename"></a>重新命名 
-Azure 監視器使用`project-rename`運算子重命名欄位。 `project-rename`允許查詢利用為欄位預先構建的任何索引。 Splunk 有`rename`一個運算子可以執行相同的操作。
+Azure 監視器使用`project-rename`運算子來重新命名欄位。 `project-rename`允許查詢利用為欄位預先建立的任何索引。 Splunk 有一個`rename`運算子可以執行相同的動作。
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **重 命名** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
-| Azure 監視器 | **專案重命名** | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
+| Splunk | **rename** |  <code>Event.Rule=330009.2<br>&#124; rename Date.Exception as execption</code> |
+| Azure 監視器 | **專案-重新命名** | <code>Office_Hub_OHubBGTaskError<br>&#124; project-rename exception = Date_Exception</code> |
 | | |
 
 
@@ -134,7 +134,7 @@ Splunk 似乎沒有類似 `project-away` 的運算子。 您可以使用 UI 篩�
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **表** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
+| Splunk | **table** |  <code>Event.Rule=330009.2<br>&#124; table rule, state</code> |
 | Azure 監視器 | **專案**<br>**project-away** | <code>Office_Hub_OHubBGTaskError<br>&#124; project exception, state</code> |
 | | |
 
@@ -145,8 +145,8 @@ Splunk 似乎沒有類似 `project-away` 的運算子。 您可以使用 UI 篩�
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **統計** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
-| Azure 監視器 | **總結** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
+| Splunk | **統計資料** |  <code>search (Rule=120502.*)<br>&#124; stats count by OSEnv, Audience</code> |
+| Azure 監視器 | **作** | <code>Office_Hub_OHubBGTaskError<br>&#124; summarize count() by App_Platform, Release_Audience</code> |
 | | |
 
 
@@ -156,8 +156,8 @@ Splunk 中的聯結具有重大限制。 子查詢的限制為 10000 筆結果 (
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **加入** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
-| Azure 監視器 | **加入** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
+| Splunk | **接入** |  <code>Event.Rule=120103* &#124; stats by Client.Id, Data.Alias \| join Client.Id max=0 [search earliest=-24h Event.Rule="150310.0" Data.Hresult=-2147221040]</code> |
+| Azure 監視器 | **接入** | <code>cluster("OAriaPPT").database("Office PowerPoint").Office_PowerPoint_PPT_Exceptions<br>&#124; where  Data_Hresult== -2147221040<br>&#124; join kind = inner (Office_System_SystemHealthMetadata<br>&#124; summarize by Client_Id, Data_Alias)on Client_Id</code>   |
 | | |
 
 
@@ -167,8 +167,8 @@ Splunk 中的聯結具有重大限制。 子查詢的限制為 10000 筆結果 (
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **排序** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
-| Azure 監視器 | **訂單由** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
+| Splunk | **sort** |  <code>Event.Rule=120103<br>&#124; sort Data.Hresult<br>&#124; reverse</code> |
+| Azure 監視器 | **排序依據** | <code>Office_Hub_OHubBGTaskError<br>&#124; order by Data_Hresult,  desc</code> |
 | | |
 
 
@@ -178,8 +178,8 @@ Splunk 中的聯結具有重大限制。 子查詢的限制為 10000 筆結果 (
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **mv 展開** |  `mvexpand foo` |
-| Azure 監視器 | **mv 展開** | `mvexpand foo` |
+| Splunk | **mvexpand** |  `mvexpand foo` |
+| Azure 監視器 | **mvexpand** | `mvexpand foo` |
 | | |
 
 
@@ -202,7 +202,7 @@ Splunk 中的聯結具有重大限制。 子查詢的限制為 10000 筆結果 (
 
 | |  | |
 |:---|:---|:---|
-| Splunk | **德杜普** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
+| Splunk | **重復資料刪除** |  <code>Event.Rule=330009.2<br>&#124; dedup device_id sortby -batterylife</code> |
 | Azure 監視器 | **summarize arg_max()** | <code>Office_Excel_BI_PivotTableCreate<br>&#124; summarize arg_max(batterylife, *) by device_id</code> |
 | | |
 

@@ -1,15 +1,15 @@
 ---
-title: 服務結構群集資源管理器 - 應用程式組
+title: Service Fabric 叢集 Resource Manager-應用程式群組
 description: Service Fabric 叢集 Resource Manager 中應用程式群組功能的概觀
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 988c7ce52125800c16aa785d5b1458604a927ecd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75452159"
 ---
 # <a name="introduction-to-application-groups"></a>應用程式群組簡介
@@ -206,7 +206,7 @@ Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicat
 - 若要了解叢集資源管理員如何管理並平衡叢集中的負載，請查看關於 [平衡負載](service-fabric-cluster-resource-manager-balancing.md)
 - 從頭開始，並 [取得 Service Fabric 叢集資源管理員的簡介](service-fabric-cluster-resource-manager-introduction.md)
 - 如需度量通常如何運作的詳細資訊，請繼續閱讀 [Service Fabric 負載度量](service-fabric-cluster-resource-manager-metrics.md)
-- 叢集資源管理員有許多描述叢集的選項。 要瞭解有關它們的更多，請查看本文介紹[服務結構群集](service-fabric-cluster-resource-manager-cluster-description.md)
+- 叢集資源管理員有許多描述叢集的選項。 若要深入瞭解它們，請參閱本文，以瞭解如何[描述 Service Fabric](service-fabric-cluster-resource-manager-cluster-description.md)叢集
 
 [Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
 [Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: f7b762d5502986c306de240519688aa639f58445
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60756798"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-edge"></a>使用 Azure 入口網站來管理 Azure Data Box Edge 上的頻寬排程  
@@ -44,7 +44,7 @@ ms.locfileid: "60756798"
    2. 如果此排程應該整天執行，請勾選 [全天]****。
    3. [頻寬速率]**** 是以 MB / 秒 (Mbps) 為單位的頻寬，由您的裝置使用於涉及雲端的作業 (上傳與下載)。 提供一個介於 20 到 1,000,000,007 之間的數目給此欄位。
    4. 如果您不想節流處理上傳和下載日期，請勾選 [無限制]**** 頻寬。
-   5. 選取 [加入]****。
+   5. 選取 [新增]  。
 
       ![新增排程](media/data-box-edge-manage-bandwidth-schedules/add-schedule-2.png)
 

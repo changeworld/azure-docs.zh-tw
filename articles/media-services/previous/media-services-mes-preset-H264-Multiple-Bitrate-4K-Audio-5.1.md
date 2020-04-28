@@ -1,6 +1,6 @@
 ---
 title: H 264 多重位元速率 4K 音訊 5.1 | Microsoft Docs
-description: 本主題概述了**264 多位元率 4K 音訊 5.1**任務預設。
+description: 本主題提供**264 多重位元速率4K 音訊 5.1**工作預設的總覽。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 2466edb3d14ebbe9296fad087fce432b83005437
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61463679"
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 多重位元速率 4K 音訊 5.1
@@ -26,7 +26,7 @@ ms.locfileid: "61463679"
   
  本主題說明 XML 和 JSON 格式的 `H264 Multiple Bitrate 4K Audio 5.1` 預設。  
   
- 此預設會產生一組 12 個對齊 GOP 的 MP4 檔案 (範圍從 20000 kbps 到 1000 kbps) 和 AAC 5.1 音訊。 如需此預設的設定檔、位元速率、取樣率等的詳細資訊，請檢查以下定義的 XML 或 JSON。 有關每個元素的含義以及每個元素的有效值的說明，請參閱[媒體編碼器標準架構](media-services-mes-schema.md)。  
+ 此預設會產生一組 12 個對齊 GOP 的 MP4 檔案 (範圍從 20000 kbps 到 1000 kbps) 和 AAC 5.1 音訊。 如需此預設的設定檔、位元速率、取樣率等的詳細資訊，請檢查以下定義的 XML 或 JSON。 如需每個元素的意義說明，以及每個元素的有效值，請參閱[媒體編碼器標準架構](media-services-mes-schema.md)。  
   
 > [!NOTE]
 >  您應該會取得具有 4K 編碼的進階保留單元類型。 如需詳細資訊，請參閱 [如何調整編碼](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)。  

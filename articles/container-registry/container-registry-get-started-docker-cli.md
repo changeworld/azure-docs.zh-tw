@@ -1,25 +1,25 @@
 ---
-title: 推&拉 Docker 映射
+title: 推送 & 提取 Docker 映射
 description: 使用 Docker CLI 推送和提取 Docker 映像至 Azure 中的私人容器登錄
 ms.topic: article
 ms.date: 01/23/2019
 ms.custom: seodec18, H1Hack27Feb2017
 ms.openlocfilehash: 6751a04c3c1bfe826334161704c20c1ba2e5a6d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456367"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>使用 Docker CLI 將您的第一個映像推送至私人 Docker 容器登錄
 
-Azure 容器註冊表存儲和管理專用[Docker](https://hub.docker.com)容器映射，類似于[Docker Hub](https://hub.docker.com/)存儲公共 Docker 映射的方式。 您可以使用 [Docker 命令列介面](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 進行[登入](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[提取](https://docs.docker.com/engine/reference/commandline/pull/)和其他容器登錄庫作業。
+Azure container registry 會儲存及管理私人[docker](https://hub.docker.com)容器映射，類似[docker Hub](https://hub.docker.com/)儲存公用 docker 映射的方式。 您可以使用 [Docker 命令列介面](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) 進行[登入](https://docs.docker.com/engine/reference/commandline/login/)、[推送](https://docs.docker.com/engine/reference/commandline/push/)、[提取](https://docs.docker.com/engine/reference/commandline/pull/)和其他容器登錄庫作業。
 
 在下列步驟中，您會從公用 Docker 中樞登錄庫下載官方提供的 [Nginx 映像](https://store.docker.com/images/nginx)，將其標記為私人 Azure 容器登錄庫，推送到您的登錄庫，然後再從登錄庫將其提取出來。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* **Azure 容器註冊表**- 在 Azure 訂閱中創建容器註冊表。 例如，使用 [Azure 入口網站](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
+* **Azure container registry** -在您的 azure 訂用帳戶中建立容器登錄。 例如，使用 [Azure 入口網站](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
 * **Docker CLI** - 您也必須在本機上安裝 Docker。 Docker 提供可輕鬆在任何 [macOS][docker-mac]、[Windows][docker-windows] 或 [Linux][docker-linux] 系統上設定 Docker 的套件。
 
 ## <a name="log-in-to-a-registry"></a>登入登錄庫
@@ -30,7 +30,7 @@ Azure 容器註冊表存儲和管理專用[Docker](https://hub.docker.com)容器
 az acr login --name myregistry
 ```
 
-您也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 來登入。 例如，您可能為自動化方案[為註冊表分配了服務主體](container-registry-authentication.md#service-principal)。 當您執行下列命令時，若出現提示，請以互動方式提供服務主體 appID (使用者名稱) 和密碼。 如需管理登入認證的最佳作法，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令參考：
+您也可以使用 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 來登入。 例如，您可能已將[服務主體指派](container-registry-authentication.md#service-principal)給您的登錄，以進行自動化案例。 當您執行下列命令時，若出現提示，請以互動方式提供服務主體 appID (使用者名稱) 和密碼。 如需管理登入認證的最佳作法，請參閱 [docker login](https://docs.docker.com/engine/reference/commandline/login/) 命令參考：
 
 ```
 docker login myregistry.azurecr.io
@@ -121,8 +121,8 @@ az acr repository delete --name myregistry --image samples/nginx:latest
 
 現在您已瞭解基本概念了，可以開始使用您的登錄庫！ 例如，將登錄中的容器映像部署至：
 
-* [Azure 庫伯奈斯服務 （AKS）](../aks/tutorial-kubernetes-prepare-app.md)
-* [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
+* [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
+* [Azure 容器執行個體](../container-instances/container-instances-tutorial-prepare-app.md)
 * [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)
 
 您可以選擇性地安裝[適用於 Visual Studio Code 的 Docker 擴充功能](https://code.visualstudio.com/docs/azure/docker)和 [Azure 帳戶](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)擴充功能，來搭配 Azure 容器登錄使用。 向 Azure 容器登錄提取及推送映像，或是執行 ACR 工作，都可以在 Visual Studio Code 內完成。

@@ -1,5 +1,5 @@
 ---
-title: 連接到動態 365
+title: 連接到 Dynamics 365
 description: 使用 Dynamics 365 (線上) REST API 和 Azure Logic Apps 建立及管理記錄
 services: logic-apps
 ms.suite: integration
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/18/2018
 tags: connectors
 ms.openlocfilehash: 9837b68fbfba783a468712d8ba1883b198af4954
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74789883"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>使用 Azure Logic Apps 管理 Dynamics 365 記錄
@@ -21,7 +21,7 @@ ms.locfileid: "74789883"
 使用 Azure Logic Apps 和 Dynamics 365 連接器，您即可根據 Dynamics 365 中的記錄，建立自動化的工作和工作流程。 工作流程可以在 Dynamics 365 帳戶中建立記錄、更新項目、傳回記錄，以及進行其他各項工作。 您可以將動作納入邏輯應用程式中，以取得 Dynamics 365 的回應，並提供輸出給其他動作使用。 舉例來說，當 Dynamics 365 中有項目更新時，您可以利用 Office 365 來傳送電子郵件。
 
 本文說明如何建置邏輯應用程式，以在每次 Dynamics 365 中建立了新的潛在客戶記錄時，便在 Dynamics 365 建立工作。
-如果您是邏輯應用的新功能，請查看[什麼是 Azure 邏輯應用？](../logic-apps/logic-apps-overview.md)
+如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -29,7 +29,7 @@ ms.locfileid: "74789883"
 
 * [Dynamics 365 帳戶](https://dynamics.microsoft.com)
 
-* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
 
 * 您要在其中存取 Dynamics 365 帳戶的邏輯應用程式。 若要使用 Dynamics 365 觸發程序啟動邏輯應用程式，您需要[空白邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "74789883"
    | **組織名稱** | 是 | 要監視的組織 Dynamics 365 執行個體名稱，例如「Contoso」 |
    | **實體名稱** | 是 | 要監視的實體名稱，例如「Leads」 | 
    | **頻率** | 是 | 在檢查是否有觸發程序相關更新時要對間隔使用的時間單位 |
-   | **區間** | 是 | 在下一次檢查之前要經過的秒數、分鐘數、小時數天數、週數或月數 |
+   | **期間** | 是 | 在下一次檢查之前要經過的秒數、分鐘數、小時數天數、週數或月數 |
    ||| 
 
    ![觸發程序詳細資料](./media/connectors-create-api-crmonline/trigger-details.png)
@@ -132,11 +132,11 @@ ms.locfileid: "74789883"
 | 欄位 | 描述 |
 |-------|-------------|
 | **擁有者** | 必須是有效的使用者識別碼或小組記錄識別碼。 |
-| **擁有者類型** | 必須為`systemusers`或`teams`。 |
+| **擁有者類型** | 必須是`systemusers`或`teams`。 |
 | **關於** | 必須是有效的記錄識別碼，例如帳戶識別碼或連絡人記錄識別碼。 |
-| **關於類型** | 必須是查找類型，如`accounts`或`contacts`。 |
+| **關於類型** | 必須是查閱類型，例如`accounts`或。 `contacts` |
 | **客戶** | 必須是有效的記錄識別碼，例如帳戶識別碼或連絡人記錄識別碼。 |
-| **客戶類型** | 必須是查找類型，如`accounts`或`contacts`。 |
+| **客戶類型** | 必須是查閱類型，例如`accounts`或。 `contacts` |
 |||
 
 在此範例中，名為**建立新記錄**的動作會建立新的工作記錄：
@@ -159,7 +159,7 @@ ms.locfileid: "74789883"
 
 2. 在 [動作] 工具列中，選擇下列其中一個步驟：
 
-   * 選擇**彈出**。![彈出記錄](./media/connectors-create-api-crmonline/popout-record.png) 
+   * 選擇 **[** 快顯]。![彈出記錄](./media/connectors-create-api-crmonline/popout-record.png) 
    * 選擇 [以電子郵件傳送連結]****，以便將完整 URL 複製到預設電子郵件程式。
 
    記錄識別碼會出現在 URL 中的 `%7b` 和 `%7d` 編碼字元之間：
@@ -186,7 +186,7 @@ ms.locfileid: "74789883"
 
 ## <a name="connector-reference"></a>連接器參考
 
-有關連接器的 OpenAPI（以前是斯瓦格）檔所述的技術詳細資訊（如觸發器、操作和限制），請參閱[連接器的參考頁](/connectors/dynamicscrmonline/)。
+如需如連接器的 OpenAPI （先前為 Swagger）檔案所述的技術詳細資料（例如觸發程式、動作和限制），請參閱[連接器的參考頁面](/connectors/dynamicscrmonline/)。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,24 +1,24 @@
 ---
 title: Azure Blockchain Workbench 疑難排解
-description: 如何對 Azure 區塊鏈工作臺預覽應用程式進行故障排除。
+description: 如何針對 Azure Blockchain Workbench Preview 應用程式進行疑難排解。
 ms.date: 10/14/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74324309"
 ---
-# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure 區塊鏈工作臺預覽故障排除
+# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure Blockchain Workbench 預覽疑難排解
 
 我們提供了 PowerShell 指令碼來協助開發人員偵錯或支援。 指令碼會產生摘要，並收集詳細記錄以供疑難排解。 所收集的記錄包括：
 
 * 區塊鏈網路，例如 Ethereum
 * Blockchain Workbench 微服務
 * Application Insights
-* Azure 監視（Azure 監視器日誌）
+* Azure 監視（Azure 監視器記錄）
 
 您可以使用這些資訊來判斷後續步驟，並判斷問題的根本原因。
 
@@ -48,9 +48,9 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 | resourceGroupName | Blockchain Workbench 部署所在 Azure 資源群組的名稱。 | 是 |
 | OutputDirectory | 用來建立輸出 .ZIP 檔案的路徑。 如果未指定，則會預設為目前的目錄。 | 否 |
 | LookbackHours | 提取遙測資料時要使用的小時數。 預設值為 24 小時。 最大值為 90 小時 | 否 |
-| OmsSubscriptionId | 部署 Azure 監視器日誌的訂閱 ID。 僅當區塊鏈網路的 Azure 監視器日誌部署在區塊鏈工作臺的資源組之外時，才傳遞此參數。| 否 |
-| OmsResourceGroup |部署 Azure 監視器日誌的資源組。 僅當區塊鏈網路的 Azure 監視器日誌部署在區塊鏈工作臺的資源組之外時，才傳遞此參數。| 否 |
-| OmsWorkspaceName | Log Analytics 工作區名稱。 僅當區塊鏈網路的 Azure 監視器日誌部署在區塊鏈工作臺的資源組之外時，才傳遞此參數 | 否 |
+| OmsSubscriptionId | 部署 Azure 監視器記錄的訂用帳戶識別碼。 只有在區塊鏈網路的 Azure 監視器記錄部署在 Blockchain Workbench 的資源群組之外時，才傳遞此參數。| 否 |
+| OmsResourceGroup |部署 Azure 監視器記錄的資源群組。 只有在區塊鏈網路的 Azure 監視器記錄部署在 Blockchain Workbench 的資源群組之外時，才傳遞此參數。| 否 |
+| OmsWorkspaceName | Log Analytics 工作區名稱。 只有在區塊鏈網路的 Azure 監視器記錄部署在 Blockchain Workbench 的資源群組之外時，才傳遞此參數 | 否 |
 
 ## <a name="what-is-collected"></a>所收集的項目有哪些？
 

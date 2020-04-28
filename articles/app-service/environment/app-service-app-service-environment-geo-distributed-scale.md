@@ -1,5 +1,5 @@
 ---
-title: 地理分佈比例
+title: 異地分散規模
 description: 了解如何透過流量管理員和 App Service 環境，使用異地分散功能水平調整應用程式。
 author: stefsch
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
@@ -8,20 +8,20 @@ ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 7ab04e23b838f2dfd39b73476db7492947d62e6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74688806"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>App Service 環境的異地分散調整
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 需要極高延展性的應用程式案例，可能會超過單一應用程式部署可用的運算資源容量。  例如，投票應用程式、體育活動及電視娛樂活動，都屬於需要極高延展性的案例。 只要對單一區域內和跨區域的多個應用程式部署進行應用程式的水平相應放大，即可達到高延展性需求，以處理極高的負載需求。
 
-應用服務環境是橫向橫向橫向橫向擴展的理想平臺。 選擇支援已知請求速率的應用服務環境配置後，開發人員可以以"cookie cutter"方式部署其他應用服務環境，以達到所需的峰值負載容量。
+App Service 環境是水準相應放大的理想平臺。 一旦選取可支援已知要求率的 App Service 環境設定後，開發人員就能以「cookie 切割」的方式部署額外的 App Service 環境，以達到所需的尖峰負載容量。
 
 例如，假設在 App Service 環境組態上執行的應用程式已經過測試，每秒可處理 20K 個要求 (RPS)。  如果所需的尖峰負載容量是 100K RPS，則可以建立並設定五 (5) 個 App Service 環境，以確保應用程式能夠處理最大預測負載。
 
@@ -38,18 +38,18 @@ ms.locfileid: "74688806"
 ## <a name="planning-the-topology"></a>規劃拓樸
 在建置分散式應用程式的使用量之前，最好先備妥幾項資訊。
 
-* **應用的自訂域：** 客戶將使用哪些自訂功能變數名稱來訪問應用？  對於示例應用，自訂功能變數名稱為`www.scalableasedemo.com`
-* **流量管理員網域：** 建立 [Azure 流量管理員設定檔][AzureTrafficManagerProfile]時必須選擇網域名稱。  此名稱會與 *trafficmanager.net* 尾碼結合，以註冊流量管理員所管理的網域項目。  就範例應用程式而言，選擇的名稱是 *scalable-ase-demo*。  因此，由流量管理器管理的完整功能變數名稱*scalable-ase-demo.trafficmanager.net。*
+* **應用程式的自訂網域：** 客戶將用來存取應用程式的自訂功能變數名稱為何？  針對範例應用程式，自訂功能變數名稱為`www.scalableasedemo.com`
+* **流量管理員網域：** 建立 [Azure 流量管理員設定檔][AzureTrafficManagerProfile]時必須選擇網域名稱。  此名稱會與 *trafficmanager.net* 尾碼結合，以註冊流量管理員所管理的網域項目。  就範例應用程式而言，選擇的名稱是 *scalable-ase-demo*。  因此，流量管理員管理的完整功能變數名稱是*scalable-ase-demo.trafficmanager.net*。
 * **調整應用程式使用量的策略：** 應用程式使用量是否會分散到單一區域中的多個 App Service 環境？  多個區域嗎？  兩種方法混合搭配使用嗎？  決策依據應來自於客戶流量的來源位置，以及其餘應用程式的支援後端基礎結構的可調整性。  例如，對於 100% 無狀態的應用程式，可以使用每一 Azure 區域多個 App Service 環境的組合，乘以跨多個 Azure 區域部署的 App Service 環境數，來大幅調整應用程式。  由於有 15 個以上的公用 Azure 區域可供選擇，客戶將可真正建置全球性超高延展性的應用程式使用量。  在本文所使用的範例應用程式中，有三個 App Service 環境建立在單一 Azure 區域 (美國中南部) 中。
 * **App Service 環境的命名慣例：** 每個 App Service 環境都需要唯一名稱。  有兩個或更多 App Service 環境時，命名慣例將有助於識別每個 App Service 環境。  範例應用程式中使用簡單的命名慣例。  三個 App Service 環境的名稱分別是 fe1ase**、fe2ase** 和 fe3ase**。
-* **應用程式的命名慣例：** 由於將會部署多個應用程式執行個體，每個部署的應用程式執行個體都要有名稱。  有一項鮮為人知、但非常方便的 App Service 環境功能，是多個 App Service 環境可以使用相同的應用程式名稱。  由於每個 App Service 環境都有唯一的網域尾碼，開發人員可以選擇在每個環境中重複使用相同的應用程式名稱。  例如，開發人員可以指定如下應用：myapp.foo1.p.azurewebsites.net、myapp.foo2.p.azurewebsites.net、myapp.foo3.p.azurewebsites.net*myapp.foo2.p.azurewebsites.net*等。 *myapp.foo3.p.azurewebsites.net* *myapp.foo1.p.azurewebsites.net* 對於示例應用，儘管每個應用實例都有唯一的名稱。  所使用的應用程式執行個體名稱是 webfrontend1**、webfrontend2** 和 webfrontend3**。
+* **應用程式的命名慣例：** 由於將會部署多個應用程式執行個體，每個部署的應用程式執行個體都要有名稱。  有一項鮮為人知、但非常方便的 App Service 環境功能，是多個 App Service 環境可以使用相同的應用程式名稱。  由於每個 App Service 環境都有唯一的網域尾碼，開發人員可以選擇在每個環境中重複使用相同的應用程式名稱。  例如，開發人員可能會有名為的應用程式，如下所示： *myapp.foo1.p.azurewebsites.net*、 *myapp.foo2.p.azurewebsites.net*、 *myapp.foo3.p.azurewebsites.net*等等。 針對範例應用程式，雖然每個應用程式實例也都有唯一的名稱。  所使用的應用程式執行個體名稱是 webfrontend1**、webfrontend2** 和 webfrontend3**。
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>設定流量管理員設定檔
 將應用程式的多個執行個體部署在多個 App Service 環境上之後，可以使用流量管理員來註冊個別的應用程式執行個體。  就範例應用程式而言， *scalable-ase-demo.trafficmanager.net* 必須要有流量管理員設定檔，以將客戶路由傳送至任何下列已部署的應用程式執行個體：
 
-* **webfrontend1.fe1ase.p.azurewebsites.net：** 在第一個應用服務環境上部署的示例應用的實例。
-* **webfrontend2.fe2ase.p.azurewebsites.net：** 第二個應用服務環境上部署的示例應用的實例。
-* **webfrontend3.fe3ase.p.azurewebsites.net：** 第三個應用服務環境上部署的示例應用的實例。
+* **webfrontend1.fe1ase.p.azurewebsites.net：** 第一個 App Service 環境上部署的範例應用程式實例。
+* **webfrontend2.fe2ase.p.azurewebsites.net：** 部署在第二個 App Service 環境上的範例應用程式實例。
+* **webfrontend3.fe3ase.p.azurewebsites.net：** 部署在第三個 App Service 環境上的範例應用程式實例。
 
 如果要註冊多個 Azure App Service 端點 (全都在**相同的** Azure 區域中執行)，最簡單的方式是使用 Powershell [Azure Resource Manager 流量管理員支援][ARMTrafficManager]。  
 
@@ -79,7 +79,7 @@ ms.locfileid: "74688806"
 三個端點都會使用相同的值 (10) 做為 *Weight* 參數。  這會使流量管理員將客戶要求較平均地分散在所有的三個應用程式執行個體間。 
 
 ## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>將應用程式的自訂網域指向流量管理員網域
-最後一個必要步驟是將應用程式的自訂網域指向流量管理員網域。  對於示例應用，這意味著指向`www.scalableasedemo.com``scalable-ase-demo.trafficmanager.net`。  此步驟必須以管理自訂網域的網域註冊機構來完成。  
+最後一個必要步驟是將應用程式的自訂網域指向流量管理員網域。  針對範例應用程式，這表示`www.scalableasedemo.com`指向`scalable-ase-demo.trafficmanager.net`。  此步驟必須以管理自訂網域的網域註冊機構來完成。  
 
 若使用註冊機構的網域管理工具，必須建立一個將自訂網域指向流量管理員網域的 CNAME 記錄。  下圖顯示此 CNAME 組態的範例：
 
@@ -87,16 +87,16 @@ ms.locfileid: "74688806"
 
 雖然本主題並未說明，但請記住，每個應用程式執行個體也都需要註冊其自訂網域。  否則，在對應用程式執行個體發出要求時，如果應用程式並未註冊應用程式的自訂網域，要求將會失敗。  
 
-在此示例中，自訂域為`www.scalableasedemo.com`，並且每個應用程式實例都有與其關聯的自訂域。
+在此範例中，自訂`www.scalableasedemo.com`網域是，而每個應用程式實例都有與其相關聯的自訂網域。
 
 ![自訂網域][CustomDomain] 
 
 如需向 Azure App Service 應用程式註冊自訂網域的重點回顧，請參閱下列有關[註冊自訂網域][RegisterCustomDomain]的文章。
 
 ## <a name="trying-out-the-distributed-topology"></a>嘗試使用分散式拓撲
-流量管理器和 DNS 配置的最終結果是，請求`www.scalableasedemo.com`的請求將流經以下順序：
+流量管理員和 DNS 設定的最後結果是，的要求`www.scalableasedemo.com`會流經下列順序：
 
-1. 瀏覽器或設備將查找 DNS`www.scalableasedemo.com`
+1. 瀏覽器或裝置會進行 DNS 查詢`www.scalableasedemo.com`
 2. 網域註冊機構上的 CNAME 項目使 DNS 查閱重新導向至 Azure 流量管理員。
 3. 對其中一個 Azure 流量管理員 DNS 伺服器執行 *scalable-ase-demo.trafficmanager.net* 的 DNS 查閱。
 4. 根據負載平衡原則 (稍早建立流量管理員設定檔時所使用的 *TrafficRoutingMethod* 參數)，流量管理員會選取其中一個已設定的端點，並將該端點的 FQDN 傳回至瀏覽器或裝置。

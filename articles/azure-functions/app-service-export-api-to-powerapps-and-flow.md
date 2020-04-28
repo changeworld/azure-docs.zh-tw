@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.reviewer: sunayv
 ms.openlocfilehash: 632818bf82e41e6be0a96d30cc1c4fa631718a3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74233083"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>將 Azure 裝載 API 匯出至 PowerApps 和 Microsoft Flow
@@ -18,7 +18,7 @@ ms.locfileid: "74233083"
 同樣地，想要在組織內廣泛公開 API 的開發人員，可以讓應用程式和流程建置者使用他們的 API。 本主題說明如何匯出以 [Azure Functions](../azure-functions/functions-overview.md) 或 [Azure App Service](../app-service/overview.md)API。 匯出的 API 能成為「自訂連接器」**，它在 PowerApps and Microsoft Flow just 中的使用方法就像內建連接器一樣。
 
 > [!IMPORTANT]
-> 本文中顯示的 API 定義功能僅適用于 Azure 函數運行時和應用服務應用[的版本 1.x。](functions-versions.md#creating-1x-apps) 函數的版本 2.x 與 API 管理集成，以創建和維護 OpenAPI 定義。 要瞭解更多資訊，請參閱[為具有 Azure API 管理的功能創建 OpenAPI 定義](functions-openapi-definition.md)。 
+> 只有 1.x[版的 Azure Functions 運行](functions-versions.md#creating-1x-apps)時間和應用程式服務應用程式才支援本文中所示的 API 定義功能。 2.x 版的函式會與 API 管理整合，以建立和維護 OpenAPI 定義。 若要深入瞭解，請參閱[使用 AZURE API 管理為函式建立 OpenAPI 定義](functions-openapi-definition.md)。 
 
 ## <a name="create-and-export-an-api-definition"></a>建立及匯出 API 定義
 在匯出 API 之前，您必須使用 OpenAPI 定義 (前身為 [Swagger](https://swagger.io/) 檔案) 描述 API。 此定義包含有關 API 中可以使用哪些作業，以及應該如何結構化 API 之要求和回應資料的資訊。 PowerApps 和 Microsoft Flow 可以為任何 OpenAPI 2.0 定義建立自訂連接器。 Azure Functions 和 Azure App Service 有內建支援，可供建立、裝載及管理 OpenAPI 定義。 如需詳細資訊，請參閱[在 Azure App Service 中裝載具有 CORS 支援的 RESTful API](../app-service/app-service-web-tutorial-rest-api.md)。
@@ -42,7 +42,7 @@ ms.locfileid: "74233083"
 
     ![[匯出至 PowerApps 和 Microsoft Flow] 按鈕](media/app-service-export-api-to-powerapps-and-flow/export-apps-flow.png)
 
-3. 選擇**匯出模式**：
+3. 選取**匯出模式**：
 
     [快速]**** 可讓您從 Azure 入口網站建立自訂連接器。 您必須登入 PowerApps 或 Microsoft Flow，而且擁有在目標環境中建立連接器的權限。 如果可符合這兩項需求，則這是建議的方法。 如果使用此模式，請依照下面的[使用快速匯出](#express)指示執行。
 
@@ -70,7 +70,7 @@ ms.locfileid: "74233083"
  
     ![快速匯出至 PowerApps 和 Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. 按一下 [確定]****。 自訂連接現已建置並新增至您指定的環境。
+3. 按一下 [確定]  。 自訂連接現已建置並新增至您指定的環境。
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>使用手動匯出
@@ -107,7 +107,7 @@ ms.locfileid: "74233083"
 
 4. 在 [General] \(一般\)**** 索引標籤上，檢閱來自 OpenAPI 定義的資訊。
 
-5. 在 [安全性]**** 索引標籤上，如果系統提示您提供驗證詳細資訊，請輸入適當的驗證類型值。 按一下 **[繼續]**。
+5. 在 [安全性]**** 索引標籤上，如果系統提示您提供驗證詳細資訊，請輸入適當的驗證類型值。 按一下 **[繼續]** 。
 
     ![[安全性] 索引標籤](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 

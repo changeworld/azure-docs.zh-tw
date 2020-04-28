@@ -1,5 +1,5 @@
 ---
-title: VMware VM 多租戶災害復原與 Azure 網站恢復
+title: 使用 Azure Site Recovery 的 VMware VM 多租使用者嚴重損壞修復
 description: 概述 Azure Site Recovery 在多租用戶環境 (CSP) 程式中，如何支援將 VMware VM 災害復原至 Azure。
 author: mayurigupta13
 manager: rochakm
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74083998"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>概述多租用戶如何支援使用 CSP 將 VMware 災害復原至 Azure
 
-[Azure 網站恢復](site-recovery-overview.md)支援租戶訂閱的多租戶環境。 對於透過 Microsoft Cloud 解決方案提供者 (CSP) 方案建立及管理的租用戶訂用帳戶，它也支援多租用戶。
+[Azure Site Recovery](site-recovery-overview.md)支援租使用者訂用帳戶的多租使用者環境。 對於透過 Microsoft Cloud 解決方案提供者 (CSP) 方案建立及管理的租用戶訂用帳戶，它也支援多租用戶。
 
 本文提供實作及管理多租用戶 VMware 到 Azure 複寫的概觀。
 
@@ -72,13 +72,13 @@ ms.locfileid: "74083998"
 
 ### <a name="create-a-vcenter-account"></a>建立 vCenter 帳戶
 
-1. 通過克隆預定義的*唯讀*角色來創建新角色，然後為它指定一個方便的名稱（如Azure_Site_Recovery，如本示例所示）。
+1. 藉由複製預先定義的*唯讀*角色來建立新的角色，然後為它提供一個方便的名稱（例如 Azure_Site_Recovery，如本範例所示）。
 2. 將下列權限指派給這個角色：
 
    * **資料存放區**：配置空間、瀏覽資料存放區、底層檔案作業、移除檔案、更新虛擬機器檔案
-   * **網路**： 網路分配
+   * **網路**：網路指派
    * **資源**：指派虛擬機器至資源集區、移轉已關閉電源的虛擬機器、移轉已開啟電源的虛擬機器
-   * **任務**：創建任務，更新任務
+   * 工作 **：建立**工作、更新工作
    * **VM - 組態**：所有
    * **VM - 互動** > 回答問題、裝置連線、設定 CD 媒體、設定磁碟片媒體、電源關閉、電源開啟、VMware 工具安裝
    * **VM - 清查** > 從現有建立、建立新的、註冊、取消註冊
@@ -89,7 +89,7 @@ ms.locfileid: "74083998"
 
 3. 針對不同物件，指派存取層級給 vCenter 帳戶 (在租用戶組態伺服器中使用)：
 
->| Object | 角色 | 備註 |
+>| Object | [角色] | 備註 |
 >| --- | --- | --- |
 >| vCenter | 唯讀 | 只用以允許 vCenter 存取以管理其他物件。 如果帳戶不會提供給租用戶，或用於任何 vCenter 上的管理作業，則可以移除此權限。 |
 >| 資料中心 | Azure_Site_Recovery |  |
@@ -120,7 +120,7 @@ ms.locfileid: "74083998"
 
 1. 在 Azure 入口網站您稍早建立的保存庫中，使用您建立的 vCenter 帳戶，向組態伺服器註冊 vCenter 伺服器。
 2. 針對每個一般程序的 Site Recovery 完成「準備基礎結構」程序。
-3. 現在可以開始複寫 VM。 驗證是否僅在**複製** > **選擇虛擬機器**中顯示租戶的 VM。
+3. 現在可以開始複寫 VM。 確認只有租使用者的 vm 會**顯示在 [** > 複寫] [**選取虛擬機器**] 中。
 
 ## <a name="dedicated-hosting-solution"></a>專用主機解決方案
 

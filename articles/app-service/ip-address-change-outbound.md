@@ -1,14 +1,14 @@
 ---
-title: 準備出站 IP 位址更改
+title: 為輸出 IP 位址變更做準備
 description: 如果您的輸出 IP 位址即將變更，請了解該怎麼做，以讓您的應用程式可在變更後繼續運作。
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: 2be4bc92dde278b054bd04f412f937440027ece7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74671672"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>如何為輸出 IP 位址變更進行準備
@@ -27,7 +27,7 @@ ms.locfileid: "74671672"
 
 新的輸出 IP 位址在生效之前即會顯示在入口網站。 當 Azure 開始使用新的位址時，將不再使用舊位址。 一次只會使用一組位址，因此包含清單中的項目必須同時具有新舊 IP 位址以避免切換時發生中斷。 
 
-1.  打開[Azure 門戶](https://portal.azure.com)。
+1.  開啟 [Azure 入口網站](https://portal.azure.com)。
 
 2.  在左側導覽功能表中選取 [應用程式服務]****。
 

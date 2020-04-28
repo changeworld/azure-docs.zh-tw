@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 63715f668438519131eba5bfff7aa38fc73267d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61094638"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Media Services SDK for .NET 中的重試邏輯  
@@ -37,7 +37,7 @@ ms.locfileid: "61094638"
 ## <a name="exception-types"></a>例外狀況類型
 下表描述 Media Services SDK for .NET 處理或未處理可能導致暫時性失敗的某些作業。  
 
-| 例外狀況 | Web 要求 | 存放裝置 | 查詢 | SaveChanges |
+| 例外狀況 | Web 要求 | 儲存體 | 查詢 | SaveChanges |
 | --- | --- | --- | --- | --- |
 | WebException<br/>如需詳細資訊，請參閱 [WebException 狀態碼](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus)一節。 |是 |是 |是 |是 |
 | DataServiceClientException<br/> 如需詳細資訊，請參閱 [HTTP 錯誤狀態碼](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode)。 |否 |是 |是 |是 |
@@ -52,7 +52,7 @@ ms.locfileid: "61094638"
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException 狀態碼
 下表顯示重試邏輯實作的 WebException 錯誤碼。 [WebExceptionStatus](https://msdn.microsoft.com/library/system.net.webexceptionstatus.aspx) 列舉定義狀態碼。  
 
-| 狀態 | Web 要求 | 存放裝置 | 查詢 | SaveChanges |
+| 狀態 | Web 要求 | 儲存體 | 查詢 | SaveChanges |
 | --- | --- | --- | --- | --- |
 | ConnectFailure |是 |是 |是 |是 |
 | NameResolutionFailure |是 |是 |是 |是 |
@@ -70,7 +70,7 @@ ms.locfileid: "61094638"
 ### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a> HTTP 錯誤狀態碼
 當查詢和 SaveChanges 作業擲回 DataServiceClientException、DataServiceQueryException 或 DataServiceQueryException 時，StatusCode 屬性中會傳回 HTTP 錯誤狀態碼。  下表顯示重試邏輯實作的錯誤碼。  
 
-| 狀態 | Web 要求 | 存放裝置 | 查詢 | SaveChanges |
+| 狀態 | Web 要求 | 儲存體 | 查詢 | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |否 |是 |否 |否 |
 | 403 |否 |是<br/>處理重試等待較久。 |否 |否 |

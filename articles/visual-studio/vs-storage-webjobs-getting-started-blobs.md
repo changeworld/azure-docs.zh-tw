@@ -1,5 +1,5 @@
 ---
-title: 使用視覺化工作室（WebJob 專案）開始使用 Blob 存儲
+title: 使用 Visual Studio 開始使用 blob 儲存體（WebJob 專案）
 description: 在使用 Visual Studio 已連接服務連接至 Azure 儲存體之後，如何於 WebJob 專案中開始使用 Blob 儲存體。
 services: storage
 author: ghogen
@@ -14,16 +14,16 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 90aa824b7df575eb2783ece5bd88322f0b55f0a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72299971"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>開始使用 Azure Blob 儲存體和 Visual Studio 已連接服務 (WebJob 專案)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本文提供 C# 程式碼範例，示範如何在建立或更新 Azure Blob 時觸發程序。 此程式碼範例會使用 [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 1.x 版。 當您使用 Visual Studio [加入連接的服務] **** 對話方塊將儲存體帳戶加入 WebJob 專案時，適當的 Azure 儲存體 NuGet 套件會隨即安裝、適當的 .NET 參考會隨即加入專案中，而儲存體帳戶的連接字串也會隨即在 App.config 檔案中更新。
 
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>如何在建立或更新 Blob 時觸發函數
@@ -79,9 +79,9 @@ ms.locfileid: "72299971"
 ## <a name="types-that-you-can-bind-to-blobs"></a>您可以繫結至 Blob 的類型
 您可將 **BlobTrigger** 屬性用於下列類型：
 
-* **字串**
+* **string**
 * **TextReader**
-* **流**
+* **資料流程**
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**

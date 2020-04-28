@@ -1,5 +1,5 @@
 ---
-title: 架構更新 2016 年 6 月 1 日
+title: 架構更新6月-1-2016
 description: Azure Logic Apps 中邏輯應用程式定義的更新後結構描述版本 2016-06-01
 services: logic-apps
 ms.suite: integration
@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 07/25/2016
 ms.openlocfilehash: e2f65f1c52dc7dfb2e4e4bf66f5c7e82f4b802b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792887"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps 的結構描述更新 - 2016 年 6 月 1 日
@@ -103,7 +103,7 @@ Azure Logic Apps 之 API 版本的[已更新結構描述](https://schema.managem
 
 1. 在 Azure 入口網站中，開啟邏輯應用程式。
 
-2. 移至**概觀**。 在邏輯應用程式工具列上，選擇 [更新結構描述]****。
+2. 移至 **[總覽**]。 在邏輯應用程式工具列上，選擇 [更新結構描述]****。
    
    ![選擇 [更新結構描述]][1]
    

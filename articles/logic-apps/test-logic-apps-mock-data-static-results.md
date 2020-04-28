@@ -1,6 +1,6 @@
 ---
 title: 使用模擬資料測試邏輯應用程式
-description: 設置靜態結果，以便使用類比資料測試邏輯應用，而不會影響生產環境
+description: 設定靜態結果以使用模擬資料來測試邏輯應用程式，而不會影響生產環境
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -9,137 +9,137 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/13/2019
 ms.openlocfilehash: b71aae91f4a065b70537a300aa0bd7016edfd4b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74790273"
 ---
-# <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>通過設置靜態結果，使用類比資料測試邏輯應用
+# <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>藉由設定靜態結果，以模擬資料來測試邏輯應用程式
 
-測試邏輯應用時，由於各種原因，您可能還沒有準備好實際調用或訪問應用、服務和系統。 通常在這些情況下，您可能需要運行不同的條件路徑、強制錯誤、提供特定的消息回應正文，甚至嘗試跳過某些步驟。 通過在邏輯應用中為操作設置靜態結果，可以類比該操作的輸出資料。 在操作上啟用靜態結果不會運行操作，而是返回類比資料。
+測試邏輯應用程式時，可能會因為各種原因而無法實際呼叫或存取應用程式、服務和系統。 通常在這些情況下，您可能必須執行不同的條件路徑、強制錯誤、提供特定的訊息回應主體，或甚至嘗試略過某些步驟。 藉由在邏輯應用程式中設定動作的靜態結果，您就可以模擬該動作的輸出資料。 在動作上啟用靜態結果並不會執行動作，而是改為傳回模擬資料。
 
-例如，如果為 Outlook 365 發送郵件操作設置靜態結果，邏輯應用引擎只會返回您指定為靜態結果的類比資料，而不是調用 Outlook 併發送電子郵件。
+例如，如果您設定 Outlook 365 傳送郵件動作的靜態結果，Logic Apps 引擎只會傳回您指定為靜態結果的模擬資料，而不是呼叫 Outlook 並傳送電子郵件。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先<a href="https://azure.microsoft.com/free/" target="_blank">註冊免費的 Azure 帳戶</a>。
 
-* [有關如何創建邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知識
+* [如何建立邏輯應用程式的](../logic-apps/quickstart-create-first-logic-app-workflow.md)基本知識
 
-* 要設置靜態結果的邏輯應用
+* 您想要設定靜態結果的邏輯應用程式
 
 <a name="set-up-static-results"></a>
 
-## <a name="set-up-static-results"></a>設置靜態結果
+## <a name="set-up-static-results"></a>設定靜態結果
 
-1. 如果尚未在[Azure 門戶](https://portal.azure.com)中，請在邏輯應用設計器中打開邏輯應用。
+1. 如果您還沒有這麼做，請在[Azure 入口網站](https://portal.azure.com)中，于 Logic Apps 設計工具中開啟邏輯應用程式。
 
-1. 在要設置靜態結果的操作中，請按照以下步驟操作： 
+1. 在您要設定靜態結果的動作上，依照下列步驟執行： 
 
-   1. 在操作的右上角，選擇橢圓 *（...）* 按鈕，然後選擇**靜態結果**，例如：
+   1. 在動作的右上角，選擇省略號（*...*）按鈕，然後選取 [**靜態結果**]，例如：
 
-      ![選擇"靜態結果">"啟用靜態結果"](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
+      ![選取 [靜態結果] > [啟用靜態結果]](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
 
-   1. 選擇**啟用靜態結果**。 對於所需的 （*） 屬性，請指定要為操作的回應返回的類比輸出值。
+   1. 選擇 [**啟用靜態結果**]。 針對必要的（*）屬性，指定您想要為動作的回應傳回的 mock 輸出值。
 
-      例如，以下是 HTTP 操作所需的屬性：
+      例如，以下是 HTTP 動作的必要屬性：
 
       | 屬性 | 描述 |
       |----------|-------------|
-      | **狀態** | 要返回的操作狀態 |
-      | **狀態碼** | 要返回的特定狀態碼 |
-      | **標頭** | 要返回的標頭內容 |
+      | **狀態** | 要傳回的動作狀態 |
+      | **狀態碼** | 要傳回的特定狀態碼 |
+      | **headers** | 要傳回的標頭內容 |
       |||
 
-      ![選擇"啟用靜態結果"](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
+      ![選取 [啟用靜態結果]](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      要以 JavaScript 物件標記法 （JSON） 格式輸入類比資料，請選擇 **"切換到 JSON 模式**"（![選擇"](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)切換到 JSON 模式"）。
+      若要以 JavaScript 物件標記法（JSON）格式輸入 mock 資料，請選擇 [**切換至 json 模式**] （![選擇 [切換至](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)json 模式]）。
 
-   1. 對於可選屬性，打開 **"選擇可選欄位**"清單，然後選擇要類比的屬性。
+   1. 針對選擇性屬性，開啟 [**選取選擇性欄位**] 清單，然後選取您想要模擬的屬性。
 
-      ![選擇可選屬性](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
+      ![選取選用屬性](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
 
-1. 準備好保存時，請選擇 **"完成**"。
+1. 當您準備好要儲存時，請選擇 [**完成**]。
 
-   在操作的右上角，標題列現在顯示一個測試燒杯圖示（![靜態結果](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)圖示），表示您已啟用靜態結果。
+   在動作的右上角，標題列現在會顯示測試燒杯圖示（![靜態結果](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)的圖示），表示您已啟用靜態結果。
 
    ![顯示已啟用靜態結果的圖示](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
-   要查找以前使用類比資料的運行，請參閱在本主題稍後使用[靜態結果查找運行](#find-runs-mock-data)。
+   若要尋找使用模擬資料的上一個執行，請參閱本主題稍後的[尋找使用靜態結果的執行](#find-runs-mock-data)。
 
 <a name="reuse-sample-outputs"></a>
 
-## <a name="reuse-previous-outputs"></a>重用以前的輸出
+## <a name="reuse-previous-outputs"></a>重複使用先前的輸出
 
-如果邏輯應用以前運行的輸出可以作為類比輸出重用，則可以複製和粘貼該運行中的輸出。
+如果您的邏輯應用程式有先前執行的輸出，您可以將其作為模擬輸出來重複使用，您可以複製並貼上該執行的輸出。
 
-1. 如果尚未在[Azure 門戶](https://portal.azure.com)中，請在邏輯應用設計器中打開邏輯應用。
+1. 如果您還沒有這麼做，請在[Azure 入口網站](https://portal.azure.com)中，于 Logic Apps 設計工具中開啟邏輯應用程式。
 
-1. 在邏輯應用的主功能表上，選擇 **"概述**"。
+1. 在邏輯應用程式的主功能表上，選取 **[總覽**]。
 
-1. 在 **"執行歷程記錄"** 部分中，選擇所需的邏輯應用運行。
+1. 在 [**執行歷程記錄**] 區段中，選取您想要的邏輯應用程式執行。
 
-1. 在邏輯應用的工作流中，查找並展開具有所需輸出的操作。
+1. 在邏輯應用程式的工作流程中，尋找並展開具有您想要之輸出的動作。
 
-1. 選擇"**顯示原始輸出"** 連結。
+1. 選擇 [**顯示原始輸出**] 連結。
 
-1. 複製完整的 JavaScript 物件標記法 （JSON） 物件或要使用的特定子節，例如輸出部分，甚至僅複製標題部分。
+1. 複製完整的 JavaScript 物件標記法（JSON）物件或您想要使用的特定子區段（例如，[輸出] 區段，或只是 [標頭] 區段）。
 
-1. 按照在["設置靜態結果"](#set-up-static-results)中為操作打開 **"靜態結果**"框的步驟操作。
+1. 請依照下列步驟來開啟 [[設定靜態結果](#set-up-static-results)] 中動作的**靜態結果**方塊。
 
-1. 打開 **"靜態結果"** 框後，選擇任一步驟：
+1. 在 [**靜態結果**] 方塊開啟之後，選擇其中一個步驟：
 
-   * 要粘貼完整的 JSON 物件，請選擇 **"切換到 JSON 模式**"（![選擇"切換到](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)JSON 模式"）：
+   * 若要貼上完整的 json 物件，請選擇 [**切換至 json 模式**] （![選擇 [](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)切換至 json 模式]）：
 
-     ![為完整物件選擇"切換到 JSON 模式"](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
+     ![針對 complete 物件選擇 [切換到 JSON 模式]](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
 
-   * 要僅粘貼 JSON 部分（該部分的標籤旁邊），請選擇該部分的 **"切換到 JSON 模式**"，例如：
+   * 若只要貼上 JSON 區段，請在該區段的標籤旁，針對該區段選擇 [**切換到 Json 模式**]，例如：
 
-     ![為輸出選擇"切換到 JSON 模式"](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-outputs.png)
+     ![針對輸出選擇 [切換至 JSON 模式]](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-outputs.png)
 
-1. 在 JSON 編輯器中，粘貼以前複製的 JSON。
+1. 在 [JSON 編輯器] 中，貼上您先前複製的 JSON。
 
    ![JSON 模式](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
-1. 完成之後，選擇 [完成]****。 或者，要返回到設計器，請選擇 **"切換編輯器模式**"（![選擇"切換編輯器模式](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)"）。
+1. 完成之後，選擇 [完成]****。 或者，若要回到設計工具，請選擇 [**切換編輯器模式**] （![選擇 [切換](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)編輯器模式]）。
 
 <a name="find-runs-mock-data"></a>
 
-## <a name="find-runs-that-use-static-results"></a>查找使用靜態結果的運行
+## <a name="find-runs-that-use-static-results"></a>尋找使用靜態結果的執行
 
-邏輯應用的執行歷程記錄標識操作使用靜態結果的運行。 要查找這些運行，請按照以下步驟操作：
+邏輯應用程式的執行歷程記錄會識別動作使用靜態結果的執行。 若要尋找這些執行，請遵循下列步驟：
 
-1. 在邏輯應用的主功能表上，選擇 **"概述**"。 
+1. 在邏輯應用程式的主功能表上，選取 **[總覽**]。 
 
-1. 在右側窗格中，**在"執行歷程記錄"** 下，查找 **"靜態結果**"列。 
+1. 在右窗格的 [**執行歷程記錄**] 下，尋找 [**靜態結果**] 資料行。 
 
-   任何包含具有結果的操作的運行都將 **"靜態結果**"列設置為 **"已啟用"，** 例如：
+   包含具有結果之動作的任何執行都會將 [**靜態結果**] 資料行設定為 [**已啟用**]，例如：
 
-   ![執行歷程記錄 - 靜態結果列](./media/test-logic-apps-mock-data-static-results/run-history.png)
+   ![執行歷程記錄-靜態結果資料行](./media/test-logic-apps-mock-data-static-results/run-history.png)
 
-1. 要查看使用靜態結果的操作，請選擇"**靜態結果**"列設置為 **"已啟用**"的要運行。
+1. 若要查看使用靜態結果的動作，請選取 [**靜態結果**] 資料行設定為 [**已啟用**] 的 [要執行的回合]。
 
-   使用靜態結果的操作顯示測試燒杯（![靜態結果](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)圖示）圖示，例如：
+   使用靜態結果的動作會顯示 [測試燒杯![] （靜態結果](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)的圖示）圖示，例如：
 
-   ![執行歷程記錄 - 使用靜態結果的操作](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
+   ![執行歷程記錄-使用靜態結果的動作](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
 
-## <a name="disable-static-results"></a>禁用靜態結果
+## <a name="disable-static-results"></a>停用靜態結果
 
-關閉靜態結果不會丟棄上次設置中的值。 因此，下次打開靜態結果時，可以繼續使用以前的值。
+關閉靜態結果並不會擲回您最後一次設定的值。 因此，當您下一次開啟靜態結果時，您可以繼續使用先前的值。
 
-1. 查找要禁用靜態輸出的操作。 在操作的右上角，選擇測試燒杯圖示（![用於靜態結果](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)的圖示）。
+1. 尋找您要停用靜態輸出的動作。 在動作的右上角，選擇 [測試燒杯] 圖示（![靜態結果](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)的圖示）。
 
-   ![禁用靜態結果](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
+   ![停用靜態結果](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
 
-1. 選擇**禁用靜態結果** > **完成**。
+1. 選擇 [**停用靜態結果** > **]。**
 
-   ![禁用靜態結果](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
+   ![停用靜態結果](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
 
-## <a name="reference"></a>參考資料
+## <a name="reference"></a>參考
 
-有關基礎工作流定義中此設置的詳細資訊，請參閱[靜態結果 - 工作流定義語言和運行時配置的架構引用](../logic-apps/logic-apps-workflow-definition-language.md#static-results).[靜態結果 - 運行時配置設置](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
+如需有關基礎工作流程定義中這項設定的詳細資訊，請參閱[靜態結果-工作流程定義語言的架構參考](../logic-apps/logic-apps-workflow-definition-language.md#static-results)和[runtimeconfiguration.concurrency。 staticResult-執行時間設定](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解有關[Azure 邏輯應用](../logic-apps/logic-apps-overview.md)的更多資訊
+* 深入瞭解[Azure Logic Apps](../logic-apps/logic-apps-overview.md)

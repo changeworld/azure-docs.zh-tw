@@ -1,13 +1,13 @@
 ---
-title: 在 Azure 堆疊 VM 中備份檔案
+title: 備份 Azure Stack Vm 中的檔
 description: 使用 Azure 備份可備份 Azure Stack 檔案和應用程式，並復原到 Azure Stack 環境。
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74172325"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>備份 Azure Stack 上的檔案和應用程式
@@ -46,13 +46,13 @@ ms.locfileid: "74172325"
 
     Microsoft 建議將所有共用保護原則的資料置於一個保護群組中。 如需規劃和部署保護群組的完整資訊，請參閱 System Center DPM 文章：[部署保護群組](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801)。
 
-4. 在 [選取資料保護方式]**** 畫面中，鍵入保護群組的名稱。 選取 [我想要使用下列項目進行短期保護：]**** 和 [我想要線上保護]**** 的核取方塊。 按 [下一步]****。
+4. 在 [選取資料保護方式]**** 畫面中，鍵入保護群組的名稱。 選取 [我想要使用下列項目進行短期保護：]**** 和 [我想要線上保護]**** 的核取方塊。 按 [下一步]  。
 
     ![開啟新的保護群組精靈](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
     若要選取 [我想要線上保護]****，您必須先選取 [我想要使用下列項目進行短期保護：磁碟]****。 Azure 備份伺服器不會保護至磁帶，因此磁碟是進行短期保護的唯一選擇。
 
-5. 在 [指定短期目標]**** 畫面上，選擇保留儲存至磁碟之復原點的時間長度，以及儲存增量備份的時機。 按 [下一步]****。
+5. 在 [指定短期目標]**** 畫面上，選擇保留儲存至磁碟之復原點的時間長度，以及儲存增量備份的時機。 按 [下一步]  。
 
     > [!IMPORTANT]
     > 您**不應該**將作業復原 (備份) 資料保留在 Azure 備份伺服器連結的磁碟上超過五天。
@@ -123,7 +123,7 @@ ms.locfileid: "74172325"
 
 ## <a name="view-azure-backup-server-with-a-vault"></a>使用保存庫來檢視 Azure 備份伺服器
 
-要查看 Azure 門戶中的 Azure 備份伺服器實體，可以按照以下步驟操作：
+若要在 Azure 入口網站中查看 Azure 備份伺服器的實體，您可以依照下列步驟執行：
 
 1. 開啟復原服務保存庫。
 2. 按一下備份基礎結構。

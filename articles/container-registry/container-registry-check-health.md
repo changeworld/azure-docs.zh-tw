@@ -1,39 +1,39 @@
 ---
-title: 檢查註冊表運行狀況
-description: 瞭解如何運行快速診斷命令，以確定使用 Azure 容器註冊表時的常見問題，包括本地 Docker 配置和與註冊表的連接
+title: 檢查登錄健全狀況
+description: 瞭解如何執行快速診斷命令，以識別使用 Azure container registry 時的常見問題，包括本機 Docker 設定和登錄的連線能力。
 ms.topic: article
 ms.date: 07/02/2019
 ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74456404"
 ---
-# <a name="check-the-health-of-an-azure-container-registry"></a>檢查 Azure 容器註冊表的運行狀況
+# <a name="check-the-health-of-an-azure-container-registry"></a>檢查 Azure container registry 的健全狀況
 
-使用 Azure 容器註冊表時，偶爾會遇到問題。 例如，由於本地環境中的 Docker 出現問題，可能無法拉取容器映射。 或者，網路問題可能會阻止您連接到註冊表。 
+使用 Azure container registry 時，您可能偶爾會遇到問題。 例如，您可能無法提取容器映射，因為您的本機環境中有 Docker 的問題。 或者，網路問題可能會讓您無法連接到登錄。 
 
-作為第一個診斷步驟，運行[az acr 檢查運行狀況][az-acr-check-health]命令，以獲取有關環境運行狀況的資訊，並可以選擇訪問目標注冊表。 此命令在 Azure CLI 版本 2.0.67 或更高版本中可用。 如果需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
+作為第一個診斷步驟，請執行[az acr check-health][az-acr-check-health]命令，以取得環境健全狀況的相關資訊，並選擇性地存取目標登錄。 此命令適用于 Azure CLI 版本2.0.67 或更新版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
 
-## <a name="run-az-acr-check-health"></a>運行 az acr 檢查運行狀況
+## <a name="run-az-acr-check-health"></a>執行 az acr check-health
 
-以下示例顯示了運行`az acr check-health`命令的不同方法。
+下列範例顯示執行`az acr check-health`命令的不同方式。
 
 > [!NOTE]
-> 如果在 Azure 雲殼中運行該命令，則不會檢查本地環境。 但是，您可以檢查對目標注冊表的訪問。
+> 如果您在 Azure Cloud Shell 中執行命令，則不會檢查本機環境。 不過，您可以檢查目標登錄的存取權。
 
 ### <a name="check-the-environment-only"></a>僅檢查環境
 
-要檢查本地 Docker 守護進程、CLI 版本和 Helm 用戶端配置，請運行該命令而不執行其他參數：
+若要檢查本機 Docker daemon、CLI 版本和 Helm 用戶端設定，請執行命令，而不需要額外的參數：
 
 ```azurecli
 az acr check-health
 ```
 
-### <a name="check-the-environment-and-a-target-registry"></a>檢查環境和目標注冊表
+### <a name="check-the-environment-and-a-target-registry"></a>檢查環境和目標登錄
 
-要檢查對註冊表的訪問以及執行本地環境檢查，請傳遞目標注冊表的名稱。 例如：
+若要檢查登錄的存取權，以及執行本機環境檢查，請傳遞目標登錄的名稱。 例如：
 
 ```azurecli
 az acr check-health --name myregistry
@@ -41,9 +41,9 @@ az acr check-health --name myregistry
 
 ## <a name="error-reporting"></a>錯誤報告
 
-該命令將資訊記錄到標準輸出。 如果檢測到問題，則提供錯誤代碼和說明。 有關代碼和可能的解決方案的詳細資訊，請參閱[錯誤引用](container-registry-health-error-reference.md)。
+命令會將資訊記錄到標準輸出。 如果偵測到問題，則會提供錯誤碼和描述。 如需有關程式碼和可能解決方案的詳細資訊，請參閱[錯誤參考](container-registry-health-error-reference.md)。
 
-預設情況下，每當發現錯誤時，命令都會停止。 您還可以運行該命令，以便它為所有運行狀況檢查提供輸出，即使發現錯誤也是如此。 添加`--ignore-errors`參數，如以下示例所示：
+根據預設，命令會在發現錯誤時停止。 您也可以執行命令，讓它提供所有健康情況檢查的輸出，即使找到錯誤也一樣。 新增`--ignore-errors`參數，如下列範例所示：
 
 ```azurecli
 # Check environment only
@@ -74,9 +74,9 @@ Fetch access token for registry 'myregistry.azurecr.io' : OK
 
 ## <a name="next-steps"></a>後續步驟
 
-有關[az acr 檢查運行狀況][az-acr-check-health]命令返回的錯誤代碼的詳細資訊，請參閱[運行狀況檢查錯誤引用](container-registry-health-error-reference.md)。
+如需[az acr check-health][az-acr-check-health]命令所傳回之錯誤碼的詳細資訊，請參閱[健康情況檢查錯誤參考](container-registry-health-error-reference.md)。
 
-有關 Azure 容器註冊表的常見問題和其他已知問題，請參閱[常見問題解答](container-registry-faq.md)。
+如需有關 Azure Container Registry 的常見問題和其他已知問題，請參閱[常見問題](container-registry-faq.md)。
 
 
 

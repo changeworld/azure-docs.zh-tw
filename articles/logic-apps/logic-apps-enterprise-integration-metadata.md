@@ -1,5 +1,5 @@
 ---
-title: 管理集成帳戶專案中繼資料
+title: 管理整合帳戶的成品中繼資料
 description: 搭配 Enterprise Integration Pack 從 Azure Logic Apps 中的整合帳戶新增或取得成品中繼資料
 services: logic-apps
 ms.suite: integration
@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/17/2019
 ms.openlocfilehash: bc119f1ce8efb821781dabfb9dd259cc5c8d9c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792463"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>搭配 Azure Logic Apps 和 Enterprise Integration Pack 管理整合帳戶中的成品中繼資料
@@ -25,9 +25,9 @@ ms.locfileid: "74792463"
 
 * 具有您要新增中繼資料之成品的基本[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，例如： 
 
-  * [夥伴](logic-apps-enterprise-integration-partners.md)
+  * [合作夥伴](logic-apps-enterprise-integration-partners.md)
   * [合約](logic-apps-enterprise-integration-agreements.md)
-  * [模式](logic-apps-enterprise-integration-schemas.md)
+  * [結構描述](logic-apps-enterprise-integration-schemas.md)
   * [地圖](logic-apps-enterprise-integration-maps.md)
 
 * 已連結到您想要使用之整合帳戶和成品中繼資料的邏輯應用程式。 如果您的邏輯應用程式尚未連結，請了解[如何將邏輯應用程式連結到整合帳戶](logic-apps-enterprise-integration-create-integration-account.md#link-account)。 
@@ -53,9 +53,9 @@ ms.locfileid: "74792463"
 
 1. 在 Azure 入口網站中，開啟已連結到所需整合帳戶的邏輯應用程式。 
 
-1. 在邏輯應用設計器中，如果要添加在觸發器下獲取中繼資料的步驟或工作流中的最後一個操作，請選擇 **"新建步驟** > **添加操作**"。 
+1. 在邏輯應用程式設計工具中，如果您要新增在工作流程中的觸發程式或最後一個動作底下取得中繼資料的步驟，請選擇 [**新增步驟** > ] [**加入動作**]。 
 
-1. 在搜尋方塊中，輸入「整合帳戶」。 在搜尋方塊下方，選擇 [全部]****。 從動作清單中選擇此操作：**集成帳戶專案查找 - 集成帳戶**
+1. 在搜尋方塊中，輸入「整合帳戶」。 在搜尋方塊下方，選擇 [全部]****。 從 [動作] 清單中，選取此動作：**整合帳戶成品查閱-整合帳戶**
 
    ![選取 [整合帳戶成品查閱]](media/logic-apps-enterprise-integration-metadata/integration-account-artifact-lookup.png)
 
@@ -63,8 +63,8 @@ ms.locfileid: "74792463"
 
    | 屬性 | 必要 | 值 | 描述 | 
    |----------|---------|-------|-------------| 
-   | **工件類型** | 是 | [結構描述]****、[對應]****、[合作夥伴]****、[合約]****，或自訂類型 | 所需的成品類型 | 
-   | **專案名稱** | 是 | <*工件名稱*> | 所需的成品名稱 | 
+   | **成品類型** | 是 | [結構描述]****、[對應]****、[合作夥伴]****、[合約]****，或自訂類型 | 所需的成品類型 | 
+   | **成品名稱** | 是 | <*成品-名稱*> | 所需的成品名稱 | 
    ||| 
 
    例如，假設您想要取得合作對象成品的中繼資料：
@@ -75,7 +75,7 @@ ms.locfileid: "74792463"
 
    1. 在 [整合帳戶成品查閱]**** 動作底下，選擇 [下一步]****，然後選取 [新增動作]****。 
 
-   1. 在搜尋方塊中，輸入 "http"。 在搜索框下，選擇**內置**，然後選擇此操作 **：HTTP - HTTP**
+   1. 在搜尋方塊中，輸入 "http"。 在搜尋方塊底下，選擇 [內**建**]，然後選取此動作： **HTTP-HTTP**
 
       ![新增 HTTP 動作](media/logic-apps-enterprise-integration-metadata/http-action.png)
 
@@ -85,10 +85,10 @@ ms.locfileid: "74792463"
 
       | 屬性 | 必要 | 值 | 描述 | 
       |----------|----------|-------|-------------| 
-      | **方法** | 是 | <*操作到運行*> | 要在成品上執行的 HTTP 作業。 例如，此 HTTP 動作會使用 **GET** 方法。 | 
-      | **URI** | 是 | <*中繼資料位置*> | 若要存取來自所擷取之成品的 `routingUrl` 中繼資料值，您可以使用如下的運算式： <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
-      | **標頭** | 否 | <*標頭值*> | 來自您想要傳遞到 HTTP 動作之觸發程序的任何標頭輸出。 例如，若要傳遞觸發程序的 `headers` 屬性值，您可以使用如下的運算式： <p>`@triggeroutputs()['headers']` | 
-      | **內文** | 否 | <*身體內容*> | 您想要透過 HTTP 動作的 `body` 屬性傳遞的任何其他內容。 此範例會將成品的 `properties` 值傳遞到 HTTP 動作： <p>1. 按一下 **"正文"** 屬性，以便顯示動態內容清單。 如果沒有出現屬性，請選擇 [更多資訊]****。 <br>2. 從動態內容清單中，在 **"集成帳戶專案查找"下**，選擇**屬性**。 | 
+      | **方法** | 是 | <*作業對執行*> | 要在成品上執行的 HTTP 作業。 例如，此 HTTP 動作會使用 **GET** 方法。 | 
+      | **URI** | 是 | <*中繼資料-位置*> | 若要存取來自所擷取之成品的 `routingUrl` 中繼資料值，您可以使用如下的運算式： <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 
+      | **headers** | 否 | <*標頭-值*> | 來自您想要傳遞到 HTTP 動作之觸發程序的任何標頭輸出。 例如，若要傳遞觸發程序的 `headers` 屬性值，您可以使用如下的運算式： <p>`@triggeroutputs()['headers']` | 
+      | **人體** | 否 | <*本文-內容*> | 您想要透過 HTTP 動作的 `body` 屬性傳遞的任何其他內容。 此範例會將成品的 `properties` 值傳遞到 HTTP 動作： <p>1. 按一下 [ **Body** ] 屬性內部，讓動態內容清單出現。 如果沒有出現屬性，請選擇 [更多資訊]****。 <br>2. 從動態內容清單的 [**整合帳戶成品查閱**] 底下，選取 [**屬性**]。 | 
       |||| 
 
       例如：

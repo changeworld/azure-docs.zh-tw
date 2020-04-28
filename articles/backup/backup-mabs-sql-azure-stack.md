@@ -1,13 +1,13 @@
 ---
 title: 備份 Azure Stack 中的 SQL Server 工作負載
-description: 在本文中，瞭解如何配置 Microsoft Azure 備份伺服器 （MABS） 以保護 Azure 堆疊上的 SQL Server 資料庫。
+description: 在本文中，您將瞭解如何設定 Microsoft Azure 備份 Server （MABS），以保護 Azure Stack 上 SQL Server 資料庫。
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 03211e1147f96429a8406c4c95654161ed2bf308
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74172302"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>備份 Azure Stack 中的 SQL Server
@@ -32,13 +32,13 @@ ms.locfileid: "74172302"
 
     ![建立保護群組](./media/backup-azure-backup-sql/protection-group.png)
 
-    Azure 備份伺服器會啟動 [保護群組] 精靈，引導您建立**保護群組**。 按 [下一步]****。
+    Azure 備份伺服器會啟動 [保護群組] 精靈，引導您建立**保護群組**。 按 [下一步]  。
 
 3. 在 [選取保護群組類型]**** 畫面中，選取 [伺服器]****。
 
     ![選取保護群組類型 - 伺服器](./media/backup-azure-backup-sql/pg-servers.png)
 
-4. 在 [選取群組成員]**** 畫面中，[可用成員] 清單會顯示各種資料來源。 按一下**+** 以展開資料夾並顯示子資料夾。 按一下核取方塊以選取項目。
+4. 在 [選取群組成員]**** 畫面中，[可用成員] 清單會顯示各種資料來源。 按一下**+** 以展開資料夾，並顯示子資料夾。 按一下核取方塊以選取項目。
 
     ![選取 SQL DB](./media/backup-azure-backup-sql/pg-databases.png)
 
@@ -59,9 +59,9 @@ ms.locfileid: "74172302"
    >
    >
 
-7. 在 [檢閱磁碟配置]**** 畫面中，確認可用的整體儲存空間和潛在的磁碟空間。 按 [下一步]****。
+7. 在 [檢閱磁碟配置]**** 畫面中，確認可用的整體儲存空間和潛在的磁碟空間。 按 [下一步]  。
 
-8. 在 [選擇複本的建立方式]**** 中，選擇建立第一個復原點的方式。 您可以手動 (關閉網路) 傳輸此初始備份，以避免頻寬壅塞，或透過網路進行傳輸。 如果您選擇等候以傳送第一個備份，您可以指定初始傳輸的時間。 按 [下一步]****。
+8. 在 [選擇複本的建立方式]**** 中，選擇建立第一個復原點的方式。 您可以手動 (關閉網路) 傳輸此初始備份，以避免頻寬壅塞，或透過網路進行傳輸。 如果您選擇等候以傳送第一個備份，您可以指定初始傳輸的時間。 按 [下一步]  。
 
     ![初始複寫方法](./media/backup-azure-backup-sql/pg-manual.png)
 
@@ -135,13 +135,13 @@ ms.locfileid: "74172302"
 2. 以滑鼠右鍵按一下資料庫名稱，然後按一下 [復原]****。
 
     ![從 Azure 復原](./media/backup-azure-backup-sql/sqlbackup-recover.png)
-3. MABS 會顯示復原點的詳細資料。 按 [下一步]****。 若要覆寫資料庫，請選取復原類型 [復原到原始的 SQL Server 執行個體] ****。 按 [下一步]****。
+3. MABS 會顯示復原點的詳細資料。 按 [下一步]  。 若要覆寫資料庫，請選取復原類型 [復原到原始的 SQL Server 執行個體] ****。 按 [下一步]  。
 
     ![復原到原始位置](./media/backup-azure-backup-sql/sqlbackup-recoveroriginal.png)
 
     在本例中，MABS 會將資料庫復原至另一個 SQL Server 執行個體或獨立的網路資料夾。
 
-4. 在 [指定復原選項] **** 畫面上，您可以選取 [網路頻寬使用節流設定] 等復原選項來進行復原所用頻寬的節流。 按 [下一步]****。
+4. 在 [指定復原選項] **** 畫面上，您可以選取 [網路頻寬使用節流設定] 等復原選項來進行復原所用頻寬的節流。 按 [下一步]  。
 
 5. 在 [摘要] **** 畫面中，您會看到目前為止提供的所有復原組態。 按一下 [復原]****。
 

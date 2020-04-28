@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 5c038f0be31acea52c2ef07d43f0dbaf3434a371
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "64709519"
 ---
 # <a name="encoding-error-codes"></a>編碼錯誤碼
@@ -30,7 +30,7 @@ ms.locfileid: "64709519"
 | Unknown |執行工作時發生不明錯誤 |
 | ErrorDownloadingInputAssetMalformedContent |涵蓋下載輸入資產中之錯誤 (例如無效的檔案名稱、長度為零檔案、錯誤格式等等) 的錯誤類別。 |
 | ErrorDownloadingInputAssetServiceFailure |涵蓋服務端問題 (例如下載時發生網路或儲存體錯誤) 的錯誤類別。 |
-| ErrorParsingConfiguration |任務\<看到 cref_"MediaTask.PrivateData"/>（配置）的錯誤類別無效，例如配置不是有效的系統預設，或者它包含不正確 XML。 |
+| ErrorParsingConfiguration |工作\<請參閱 cref = "MediaTask. PrivateData"/> （設定）不正確錯誤類別，例如設定不是有效的系統預設值或包含不正確 XML。 |
 | ErrorExecutingTaskMalformedContent |在工作執行期間因輸入媒體檔案內部問題導致失敗的錯誤類別。 |
 | ErrorExecutingTaskUnsupportedFormat |媒體處理器無法處理提供之檔案 (不支援的媒體格式或與組態不符) 的錯誤類別。 例如，嘗試從只有影片的資產產生只含音訊的輸出 |
 | ErrorProcessingTask |媒體處理器在處理和內容不相關的工作時發生的其他錯誤類別。 |

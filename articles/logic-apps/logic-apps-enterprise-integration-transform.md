@@ -1,5 +1,5 @@
 ---
-title: 在格式之間轉換 XML
+title: 轉換格式之間的 XML
 description: 在採用 Enterprise Integration Pack 的 Azure Logic Apps 中建立轉換或對應，以轉換 XML 格式
 services: logic-apps
 ms.suite: integration
@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
 ms.openlocfilehash: 500769a39ba7658b35c1abb80101f6234170c941
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74792388"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中建立對應，以轉換 XML 格式
@@ -36,7 +36,7 @@ ms.locfileid: "74792388"
 
 既然您已完成必要元件，就可以建立邏輯應用程式：  
 
-1. 創建邏輯應用並將其連結到包含地圖的[集成帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md "瞭解如何將集成帳戶連結到邏輯應用")。
+1. 建立邏輯應用程式，並將[它連結到](../logic-apps/logic-apps-enterprise-integration-accounts.md "瞭解如何將整合帳戶連結至邏輯應用程式")包含對應的整合帳戶。
 2. 將**要求**觸發程序新增至邏輯應用程式  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. 先選取 [新增動作]**** 來新增 [轉換 XML]**** 動作   
@@ -134,6 +134,6 @@ ms.locfileid: "74792388"
 
 
 ## <a name="learn-more"></a>深入了解
-* [深入了解企業整合套件](../logic-apps/logic-apps-enterprise-integration-overview.md "瞭解企業集成包")  
-* [深入了解對應](../logic-apps/logic-apps-enterprise-integration-maps.md "瞭解企業集成地圖")  
+* [深入了解企業整合套件](../logic-apps/logic-apps-enterprise-integration-overview.md "瞭解企業整合套件")  
+* [深入了解對應](../logic-apps/logic-apps-enterprise-integration-maps.md "瞭解企業整合對應")  
 

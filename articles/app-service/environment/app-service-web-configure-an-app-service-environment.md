@@ -1,6 +1,6 @@
 ---
-title: 配置 ASE v1
-description: 應用服務環境 v1 的配置、管理和監視。 此文檔僅提供給使用舊版 v1 ASE 的客戶。
+title: 設定 ASE v1
+description: 設定、管理和監視 App Service 環境 v1。 本檔僅為使用舊版 v1 ASE 的客戶提供。
 author: ccompy
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.topic: article
@@ -8,23 +8,23 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74687268"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>設定 App Service 環境 v1
 
 > [!NOTE]
-> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 要瞭解有關新版本的更多，從[應用服務環境簡介](intro.md)開始。
+> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從[App Service 環境簡介](intro.md)開始。
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Azure App Service Environment 是由數個主要元件所組成：
 
 * 在 Azure App Service 環境託管服務中執行的計算資源
-* 存放裝置
+* 儲存體
 * 資料庫
 * 傳統 (V1) 或 Resource Manager(V2) Azure 虛擬網路 (VNet) 
 * Azure App Service 環境託管服務執行所在的子網路
@@ -65,7 +65,7 @@ Azure App Service Environment 是由數個主要元件所組成：
 
 如果您想要設定自動調整規則計算資源集區的度量，請記住佈建需要的時間。 如需自動調整 App Service 環境的更多詳細資料，請參閱[如何在 App Service 環境中設定自動調整][ASEAutoscale]。
 
-### <a name="storage"></a>存放裝置
+### <a name="storage"></a>儲存體
 每個 ASE 各設有 500 GB 的儲存體。 此空間會用於 ASE 中的所有應用程式。 此儲存空間屬於 ASE 的一部分，且目前無法切換為使用您的儲存空間。 如果您調整虛擬網路路由或安全性，您仍然需要允許存取 Azure 儲存體，否則 ASE 無法運作。
 
 ### <a name="database"></a>資料庫
@@ -125,13 +125,13 @@ Azure App Service Environment 是由數個主要元件所組成：
 ### <a name="settings"></a>設定
 ASE 刀鋒視窗中有一個包含幾項重要功能的 [設定] **** 區段：
 
-**設置** > **屬性**： 當您打開 ASE 邊欄選項卡時，"**設置"** 邊欄選項卡會自動打開。 最上方是 [屬性] ****。 在這裡會看到許多與 [基本功能]**** 重複的項目，但 [虛擬 IP 位址]**** 和 [輸出 IP 位址]**** 是非常好用的項目。
+**設定** > **屬性**：當您啟動 ASE 分頁時，會自動開啟 [**設定**] 分頁。 最上方是 [屬性] ****。 在這裡會看到許多與 [基本功能]**** 重複的項目，但 [虛擬 IP 位址]**** 和 [輸出 IP 位址]**** 是非常好用的項目。
 
 ![設定刀鋒視窗和屬性][4]
 
-**設置** > **IP 位址**：當您在 ASE 中創建 IP 安全通訊端層 （SSL） 應用時，您需要一個 IP SSL 位址。 若要取得該位址，您的 ASE 需要擁有一些可配置的 IP SSL 位址。 建立 ASE 後，它會有一個 IP SSL 可供此用途使用，但您可以新增更多位址。 額外的 IP SSL 位址需付費，如 [App Service 價格][AppServicePricing] (在 SSL 連線一節中) 所示。 額外的價格是 IP SSL 價格。
+**設定** > **ip 位址**：當您在 ASE 中建立 ip 安全通訊端層（SSL）應用程式時，您需要 IP SSL 位址。 若要取得該位址，您的 ASE 需要擁有一些可配置的 IP SSL 位址。 建立 ASE 後，它會有一個 IP SSL 可供此用途使用，但您可以新增更多位址。 額外的 IP SSL 位址需付費，如 [App Service 價格][AppServicePricing] (在 SSL 連線一節中) 所示。 額外的價格是 IP SSL 價格。
 
-**設置** > **前端池** / **輔助池**：除了提供控制項以完全擴展該資源池外，每個資源池邊欄選項卡都提供了僅在該資源池上查看資訊的功能。  
+**設定** > **前端集** / 區背景**工作**集區：除了提供控制項來完全調整該資源集區之外，每個資源集區的磁區都可讓您只查看該資源集區上的資訊。  
 
 每個資源集區的基準刀鋒視窗分別會提供一個圖表，內附該資源集區的計量。 就像 ASE 刀鋒視窗中的圖表，您可以進入圖表，並設定所需的警示。 從 ASE 刀鋒視窗為特定的資源集區設定警示，效果等同於從資源集區進行設定。 在背景工作集區的 [設定] **** 刀鋒視窗中，您可存取在此背景工作集區中執行的所有應用程式或 App Service 方案。
 
@@ -154,7 +154,7 @@ ASE 刀鋒視窗中有一個包含幾項重要功能的 [設定] **** 區段：
 
 ![調整 UI][6]
 
-要在特定資源池中使用手動或自動縮放功能，請訪問 **"設置** > **前端池** / **輔助工作池**"（視情況而定）。 然後開啟您想要變更的集區。 轉到 **"設置** > **橫向擴展**"或 **"向上縮放****設置** > "。 [相應放大] **** 刀鋒視窗可讓您控制執行個體數量。 **** 可讓您控制資源大小。  
+若要在特定資源集區中使用手動或自動調整功能，請視需要移至 [**設定** > ] [**前端集** / 區] [背景**工作**集區]。 然後開啟您想要變更的集區。 移至 [**設定** > ]**Scale Out**或 [**設定** > ] [相應**增加**]。 [相應放大] **** 刀鋒視窗可讓您控制執行個體數量。 **** 可讓您控制資源大小。  
 
 ![調整設定 UI][7]
 
