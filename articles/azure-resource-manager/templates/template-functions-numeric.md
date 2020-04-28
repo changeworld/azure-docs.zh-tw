@@ -1,35 +1,32 @@
 ---
-title: 範本函數 - 數位
+title: 範本函式-數值
 description: 描述 Azure Resource Manager 範本中用來使用數值的函式。
 ms.topic: conceptual
-ms.date: 11/08/2017
-ms.openlocfilehash: 2ca5c539036d002b83b8141132a0ebf2530dc6af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: dc15ade453fc5ea4dc031ced0377892f4f8cf27d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156339"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192343"
 ---
-# <a name="numeric-functions-for-arm-templates"></a>ARM 範本的數位函數
+# <a name="numeric-functions-for-arm-templates"></a>ARM 範本的數值函數
 
-資源管理器提供了以下函數，用於在 Azure 資源管理器 （ARM） 範本中處理整數：
+Resource Manager 提供下列函式，以便在您的 Azure Resource Manager （ARM）範本中使用整數：
 
-* [新增](#add)
-* [複製索引](#copyindex)
+* [add](#add)
+* [copyIndex](#copyindex)
 * [div](#div)
-* [浮動](#float)
-* [Int](#int)
-* [麥克斯](#max)
+* [float](#float)
+* [int](#int)
+* [max](#max)
 * [分鐘](#min)
-* [國防部](#mod)
+* [乘](#mod)
 * [mul](#mul)
 * [sub](#sub)
 
-<a id="add" />
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 ## <a name="add"></a>add
+
 `add(operand1, operand2)`
 
 傳回兩個所提供整數加總後的數字。
@@ -86,21 +83,8 @@ ms.locfileid: "80156339"
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
-```
-
-<a id="copyindex" />
-
 ## <a name="copyindex"></a>copyIndex
+
 `copyIndex(loopName, offset)`
 
 傳回反覆項目迴圈的索引。
@@ -114,39 +98,58 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="remarks"></a>備註
 
-這個函式一律搭配 **copy** 物件使用。 如果未針對 **offset** 提供任何值，則會傳回目前的反覆項目值。 反覆項目值是從零開始。 定義資源或變數時，您可以使用反覆項目迴圈。
+這個函式一律搭配 **copy** 物件使用。 如果未針對 **offset** 提供任何值，則會傳回目前的反覆項目值。 反覆項目值是從零開始。
 
 **LoopName** 屬性可讓您指定 copyIndex 要參考資源的反覆項目還是屬性的反覆項目。 如果未提供任何 **loopName** 的值，就會使用目前的資源類型反覆項目。 逐一查看屬性時，請提供 **loopName** 的值。
 
-如需如何使用 **copyIndex**的完整範例，請參閱 [在 Azure Resource Manager 中建立資源的多個執行個體](copy-resources.md)。
+如需有關使用複製的詳細資訊，請參閱：
 
-如需使用 **copyIndex** 的範例，請參閱[變數](template-syntax.md#variables)。
+* [ARM 範本中的資源反復專案](copy-resources.md)
+* [ARM 範本中的屬性反復專案](copy-properties.md)
+* [ARM 範本中的變數反復專案](copy-variables.md)
+* [ARM 範本中的輸出反復專案](copy-outputs.md)
 
 ### <a name="example"></a>範例
 
 下列範例顯示複製迴圈以及名稱中所包含的索引值。
 
 ```json
-"resources": [
-  {
-    "name": "[concat('examplecopy-', copyIndex())]",
-    "type": "Microsoft.Web/sites",
-    "copy": {
-      "name": "websitescopy",
-      "count": "[parameters('count')]"
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageCount": {
+            "type": "int",
+            "defaultValue": 2
+        }
     },
-    ...
-  }
-]
+    "resources": [
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {},
+            "copy": {
+                "name": "storagecopy",
+                "count": "[parameters('storageCount')]"
+            }
+        }
+    ],
+    "outputs": {}
+}
 ```
 
 ### <a name="return-value"></a>傳回值
 
 整數，代表目前的反覆項目索引。
 
-<a id="div" />
-
 ## <a name="div"></a>div
+
 `div(operand1, operand2)`
 
 傳回兩個所提供整數相除後的商。
@@ -156,7 +159,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除數。 |
-| operand2 |是 |int |除數。 不能為 0。 |
+| operand2 |是 |int |除數。 不可以是0。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -203,21 +206,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
-```
-
-<a id="float" />
-
 ## <a name="float"></a>FLOAT
+
 `float(arg1)`
 
 將值轉換為浮點數。 您只會在將自訂參數傳遞給應用程式 (例如邏輯應用程式) 時使用這個函式。
@@ -229,6 +219,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | arg1 |是 |字串或整數 |要轉換為浮點數的值。 |
 
 ### <a name="return-value"></a>傳回值
+
 浮點數。
 
 ### <a name="example"></a>範例
@@ -249,9 +240,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
             },
 ```
 
-<a id="int" />
-
 ## <a name="int"></a>int
+
 `int(valueToConvert)`
 
 將指定的值轉換成整數。
@@ -297,21 +287,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
-```
-
-<a id="max" />
-
 ## <a name="max"></a>max
+
 `max (arg1)`
 
 傳回整數陣列的最大值，或以逗號分隔的整數清單。
@@ -361,21 +338,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
-```
-
-<a id="min" />
-
 ## <a name="min"></a>Min
+
 `min (arg1)`
 
 傳回整數陣列的最小值，或以逗號分隔的整數清單。
@@ -425,21 +389,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
-```
-
-<a id="mod" />
-
 ## <a name="mod"></a>mod
+
 `mod(operand1, operand2)`
 
 傳回兩個所提供整數相除後的餘數。
@@ -449,9 +400,10 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
 | operand1 |是 |int |被除數。 |
-| operand2 |是 |int |除數，不能為 0。 |
+| operand2 |是 |int |用來除的數位不能為0。 |
 
 ### <a name="return-value"></a>傳回值
+
 代表餘數的整數。
 
 ### <a name="example"></a>範例
@@ -495,21 +447,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | ---- | ---- | ----- |
 | modResult | Int | 1 |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
-```
-
-<a id="mul" />
-
 ## <a name="mul"></a>mul
+
 `mul(operand1, operand2)`
 
 傳回兩個所提供整數相乘後的數字。
@@ -566,21 +505,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | ---- | ---- | ----- |
 | mulResult | Int | 15 |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
-```
-
-<a id="sub" />
-
 ## <a name="sub"></a>sub
+
 `sub(operand1, operand2)`
 
 傳回兩個所提供整數相減後的數字。
@@ -593,6 +519,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | operand2 |是 |int |被減數。 |
 
 ### <a name="return-value"></a>傳回值
+
 代表減法的整數。
 
 ### <a name="example"></a>範例
@@ -636,21 +563,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | ---- | ---- | ----- |
 | subResult | Int | 4 |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
-```
-
 ## <a name="next-steps"></a>後續步驟
-* 有關 Azure 資源管理器範本中部分的說明，請參閱[創作 Azure 資源管理器範本](template-syntax.md)。
-* 要合併多個範本，請參閱[使用 Azure 資源管理器使用連結範本](linked-templates.md)。
-* 要反覆運算創建資源類型時指定的次數，請參閱[在 Azure 資源管理器中創建多個資源實例](copy-resources.md)。
-* 要查看如何部署已創建的範本，請參閱使用 Azure[資源管理器範本部署應用程式](deploy-powershell.md)。
 
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 若要在建立資源類型時反復執行指定的次數，請參閱[在 Azure Resource Manager 中建立資源的多個實例](copy-resources.md)。

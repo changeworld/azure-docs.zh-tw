@@ -1,70 +1,74 @@
 ---
 title: 設定 Azure HPC 快取設定
-description: 說明如何為緩存配置其他設置(如 MTU 和非根壁切,以及如何從 Azure Blob 儲存目標存取快速快照)。
+description: 說明如何設定快取的其他設定，例如 MTU 和無根目錄 squash，以及如何從 Azure Blob 儲存體目標存取快速快照集。
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/27/2020
 ms.author: v-erkel
-ms.openlocfilehash: 137e41a3f7d346bb612605660d7798ac2fc297d1
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7938fcc0819fc3e5e0762cc8c3c2931594ed1c68
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81538813"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195055"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>設定其他 Azure HPC 快取設定
 
-Azure 門戶中的 **「配置」** 頁具有用於自訂多個設置的選項。 大多數使用者不需要從預設值更改這些值。
+[Azure 入口網站中的 [設定] 頁面具有自訂數個**設定的選項**。 大部分的使用者都不需要從預設值變更這些設定。
 
-本文還介紹如何使用快照功能實現 Azure Blob 存儲目標。 快照功能沒有可配置設置。
+本文也說明如何使用 Azure Blob 儲存體目標的快照集功能。 快照集功能沒有可設定的設定。
 
-要查看這些設置,請參閱 Azure 門戶中的緩存 **「配置」** 頁。
+若要查看設定，請在 [Azure 入口網站中開啟快取的 [設定 **] 頁面。**
 
-![Azure 門戶中設定頁的螢幕截圖](media/configuration.png)
+![Azure 入口網站中設定頁面的螢幕擷取畫面](media/configuration.png)
 
 ## <a name="adjust-mtu-value"></a>調整 MTU 值
 <!-- linked from troubleshoot-nas article -->
 
-您可以使用標記為**MTU 大小的**下拉功能表為快取選擇最大傳輸單元大小。
+您可以使用標示為 [ **MTU 大小**] 的下拉式功能表，來選取快取的傳輸單位大小上限。
 
-默認值為 1500 位元組,但您可以將其更改為 1400 位元組。
+預設值是1500個位元組，但是您可以將它變更為1400。
 
 > [!NOTE]
-> 如果降低快取的 MTU 大小,請確保與快取通訊的用戶端和儲存系統具有相同的 MTU 設定或較低的值。
+> 如果您降低快取的 MTU 大小，請確定與快取通訊的用戶端和儲存系統具有相同的 MTU 設定或較低的值。
 
-降低快取 MTU 值可以説明您解決快取網路其餘部分的資料包大小限制。 例如,某些 VPN 無法成功傳輸全尺寸 1500 位元組數據包。 減小通過 VPN 發送的數據包的大小可能會消除此問題。 但是,請注意,較低的緩存 MTU 設置意味著與快取通訊的任何其他元件(包括用戶端和儲存系統)也必須具有較低的設置,以避免與緩存的通訊問題。
+降低快取 MTU 值可協助您解決其餘快取網路的封包大小限制。 例如，某些 Vpn 無法成功傳輸完整大小的1500位元組封包。 減少透過 VPN 傳送的封包大小可能會消除該問題。 不過，請注意，較低的快取 MTU 設定表示與快取通訊的任何其他元件（包括用戶端和儲存系統）也必須有較低的 MTU 設定，以避免通訊問題。
 
-如果不想更改其他系統元件上的 MTU 設定,則不應降低快取的 MTU 設定。 還有其他解決方案需要解決 VPN 資料包大小限制。 閱讀 NAS 故障排除文章中[的「調整 VPN 資料包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)」,瞭解有關診斷和解決此問題的更多內容。
+如果您不想變更其他系統元件上的 MTU 設定，則不應該降低快取的 MTU 設定。 還有其他解決 VPN 封包大小限制的解決方案。 如需深入瞭解診斷和解決此問題的詳細資訊，請參閱在 NAS 疑難排解文章中[調整 VPN 封包大小限制](troubleshoot-nas.md#adjust-vpn-packet-size-restrictions)。
 
-通過讀取[Azure VM 的 TCP/IP 性能調優](../virtual-network/virtual-network-tcpip-performance-tuning.md),瞭解有關 Azure 虛擬網路中 MTU 設置的更多內容。
+若要深入瞭解 Azure 虛擬網路中的 MTU 設定，請閱讀[Azure vm 的 tcp/ip 效能微調](../virtual-network/virtual-network-tcpip-performance-tuning.md)。
 
-## <a name="configure-root-squash"></a>設定根壁
+## <a name="configure-root-squash"></a>設定根 squash
 <!-- linked from troubleshoot -->
 
-**啟用根壁擠壓**設置控制 Azure HPC 緩存允許根訪問的方式。 根壁球有助於防止根級訪問來自未經授權的用戶端。
+[**啟用根 squash** ] 設定可控制 Azure HPC 快取允許根目錄存取的方式。 根 squash 有助於防止未經授權的用戶端進行根層級的存取。
 
-此設置允許使用者在緩存級別控制根訪問,這有助於補償用作存儲目標的 NAS``no_root_squash``系統所需的設置。 (閱讀有關[NFS 存儲目標先決條件的更多](hpc-cache-prereqs.md#nfs-storage-requirements)內容。當與 Azure Blob 儲存目標一起使用時,它還可以提高安全性。
+此設定可讓使用者控制快取層級的根存取，這有助於補償做為``no_root_squash``存放裝置目標的 NAS 系統所需的設定。 （深入瞭解[NFS 儲存體目標必要條件](hpc-cache-prereqs.md#nfs-storage-requirements)）。當搭配 Azure Blob 儲存體目標使用時，它也可以改善安全性。
 
-默認設置為 **"是**"。 (2020 年 4 月之前建立的快取可能具有預設設定 **"否**")啟用此功能後,此功能還防止在用戶端請求快取中使用 set-UID 許可權位。
+預設設定為 **[是]**。 （2020年4月之前建立的快取可能預設設定為 [**否**]）。
 
-## <a name="view-snapshots-for-blob-storage-targets"></a>檢視 Blob 儲存目標的快照
+啟用時，此功能也會防止用戶端要求中的設定 UID 許可權位用於快取。
 
-Azure HPC 快取會自動為 Azure Blob 儲存目標儲存儲存快照。 快照為後端存儲容器的內容提供了一個快速參考點。 快照不能替代數據備份,並且不包含有關緩存數據狀態的任何資訊。
+## <a name="view-snapshots-for-blob-storage-targets"></a>查看 blob 儲存體目標的快照集
+
+Azure HPC Cache 會自動儲存 Azure Blob 儲存體目標的儲存體快照集。 快照集會提供後端儲存體容器內容的快速參考點。
+
+快照集不是資料備份的取代，而且它們不包含任何有關快取資料狀態的資訊。
 
 > [!NOTE]
-> 此快照功能不同於 NetApp、Isilon 或 ZFS 存儲軟體中包含的快照功能。 這些快照實現在拍攝快照之前將更改從緩存刷新到後端存儲系統。
+> 此快照集功能與 NetApp 或 Isilon 儲存體軟體中包含的快照集功能不同。 這些快照集執行會在製作快照集之前，將快取中的變更排清到後端儲存體系統。
 >
-> 為提高效率,Azure HPC Cache 快照不會先刷新更改,而只記錄已寫入 Blob 容器的數據。 此快照不表示緩存數據的狀態,因此可能會排除最近的更改。
+> 為了提高效率，Azure HPC 快取快照集不會先排清變更，而且只會記錄已寫入 Blob 容器的資料。 此快照集不代表快取資料的狀態，因此可能不會包含最近的變更。
 
-此功能僅適用於 Azure Blob 儲存目標,並且無法更改其配置。
+這項功能僅適用于 Azure Blob 儲存體目標，無法變更其設定。
 
-快照每八小時拍攝一次,在 UTC 0:00、08:00 和 16:00。
+每隔8小時會取得快照集，UTC 0:00、08:00 和16:00。
 
-Azure HPC 快取存儲每日、每周和每月快照,直到它們被新快照替換。 這些限制是：
+Azure HPC 快取會儲存每日、每週和每月快照集，直到它們被新的快照集取代為止。 這些限制是：
 
-* 每日最多 20 張快照
-* 每週最多 8 次快照
-* 最多 3 個每月快照
+* 最多20個每日快照集
+* 最多8個每週快照集
+* 最多3個月快照
 
-從 Blob`.snapshot`儲存目標 命名空間中的目錄中存取快照。
+從 blob 儲存體目標命名`.snapshot`空間中的目錄存取快照集。

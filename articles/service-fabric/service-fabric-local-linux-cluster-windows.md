@@ -1,16 +1,16 @@
 ---
-title: 在 Windows 上設定 Azure 服務結構 Linux 群集
+title: 在 Windows 上設定 Azure Service Fabric Linux 叢集
 description: 本文說明如何設定在 Windows 開發電腦上執行的 Service Fabric Linux 叢集。 這特別適用於跨平台開發。
 author: suhuruli
 ms.topic: conceptual
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 9f60b9d9b919a72250038ede2a2bd53278df79cb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 1798d57f9fc4004fd2c7d1f1901fcddf850626c2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309011"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193321"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>在 Windows 開發人員電腦上設定 Linux Service Fabric 叢集
 
@@ -21,7 +21,7 @@ ms.locfileid: "81309011"
 
 * 至少 4 GB 的 RAM
 * 最新版 [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
-* Docker 必須在 Linux 模式執行
+* Docker 必須在 Linux 模式上執行
 
 >[!TIP]
 > * 您可以遵循官方 Docker [文件](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions)中所述的步驟，在 Windows 上安裝 Docker。 
@@ -64,7 +64,7 @@ ms.locfileid: "81309011"
     >例如，新增 `RUN apt-get install nodejs -y` 將允許以客體可執行檔形式支援 `nodejs` 應用程式。
     
     >[!TIP]
-    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 有關特定修訂,請造訪 Docker[中心](https://hub.docker.com/r/microsoft/service-fabric-onebox/)頁面
+    > 根據預設，這會提取包含最新版 Service Fabric 的映像。 如需特別修訂，請造訪[Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/)頁面
 
 3. 若要從 `Dockerfile` 建置可重複使用的映像，請開啟終端機並 `cd` 到直接保留的 `Dockerfile`，然後執行：
 
@@ -89,7 +89,7 @@ ms.locfileid: "81309011"
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:latest`
     >
 
-5. 叢集需要很短的時間才能啟動,您可以使用以下指令檢視紀錄,也可以跳到儀表板來檢視叢集執行狀況[http://localhost:19080](http://localhost:19080):
+5. 叢集會在短時間內啟動，您可以使用下列命令來檢視記錄，或跳到儀表板檢視叢集健康情況 `http://localhost:19080`：
 
     ```powershell 
     docker logs sftestcluster

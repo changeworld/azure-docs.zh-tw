@@ -1,16 +1,16 @@
 ---
-title: Azure 函數中的打開 API 中繼資料
+title: Azure 函數中開啟 API 中繼資料
 description: Azure Functions 中的 OpenAPI 支援概觀
 author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: a80079574dc29c54de89f5275c65637b205742d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbfd0e36307210851070c22e74acb0a858446ce1
+ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74227406"
+ms.lasthandoff: 04/22/2020
+ms.locfileid: "81866708"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions 中的 OpenAPI 2.0 中繼資料支援 (預覽)
 Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是預覽功能，可讓您用來撰寫函式應用程式內的 OpenAPI 2.0 定義。 接著您可以使用函式應用程式裝載該檔案。
@@ -50,17 +50,17 @@ Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是�
 
 |Swagger.json|入口網站 UI|Function.json|
 |:----|:-----|:-----|
-|[主機](https://swagger.io/specification/#fixed-fields-15)|**功能應用設置** > **應用服務設置** > **概述** > **URL**|*不存在*
-|[路徑](https://swagger.io/specification/#paths-object-29)|**集成** > **選定的 HTTP 方法**|繫結：路由
-|[Path Item](https://swagger.io/specification/#path-item-object-32)|**集成** > **路由範本**|繫結：方法
-|[安全性](https://swagger.io/specification/#security-scheme-object-112)|**鑰匙**|*不存在*|
+|[主機](https://swagger.io/specification/#fixed-fields-15)|**功能應用設定** > **應用服務設定** > **概述** > **網址**|*不存在*
+|[路徑](https://swagger.io/specification/#paths-object-29)|**整合** > **的 HTTP 方法**|繫結：路由
+|[Path Item](https://swagger.io/specification/#path-item-object-32)|**整合** > **式路由範本**|繫結：方法
+|[安全性](https://swagger.io/specification/#security-scheme-object-112)|**[索引鍵]**|*不存在*|
 |operationID*|**路由 + 允許的動詞**|路由 + 允許的動詞|
 
 \*只有與 PowerApps 和 Flow 整合才需要作業識別碼。
 > [!NOTE]
 > x-ms-summary 擴充提供 Logic Apps、Power 和 AppsFlow 中的顯示名稱。
 >
-> 若要進一步了解，請參閱[為 PowerApps 自訂 Swagger 定義](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/)。
+> 若要進一步了解，請參閱[為 PowerApps 自訂 Swagger 定義](https://docs.microsoft.com/connectors/custom-connectors/openapi-extensions)。
 
 ## <a name="use-cicd-to-set-an-api-definition"></a><a name="CICD"></a>使用 CI/CD 設定 API 定義
 
@@ -76,6 +76,6 @@ Azure Functions 中的 OpenAPI 2.0 (先前稱為 Swagger) 中繼資料支援是�
 現在，您對存放庫中的 swagger.json 所進行之變更，會由您在步驟 1.c 中記下的 API 定義 URL 及金鑰之函式應用程式進行裝載。
 
 ## <a name="next-steps"></a>後續步驟
-* [入門教程](functions-api-definition-getting-started.md)。 請嘗試我們的逐步解說，以查看 OpenAPI 定義實際運作。
-* [Azure 函數 GitHub 存儲庫](https://github.com/Azure/Azure-Functions/)。 查看 Functions 存放庫以提供我們 API 定義支援預覽的意見反應。 針對您想在更新看到的任何功能提出 GitHub 問題。
-* [Azure 函數開發人員引用](functions-reference.md)。 深入了解如何撰寫函式程式碼及定義觸發程序和繫結。
+* [入門教學](functions-api-definition-getting-started.md)。 請嘗試我們的逐步解說，以查看 OpenAPI 定義實際運作。
+* [Azure 函數 GitHub 儲存函式庫](https://github.com/Azure/Azure-Functions/)。 查看 Functions 存放庫以提供我們 API 定義支援預覽的意見反應。 針對您想在更新看到的任何功能提出 GitHub 問題。
+* [Azure 函數開發人員參考](functions-reference.md)。 深入了解如何撰寫函式程式碼及定義觸發程序和繫結。

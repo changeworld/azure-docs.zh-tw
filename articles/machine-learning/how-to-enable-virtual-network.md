@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: bd4dabe1d5fbc4722d03f31492d2118802292df2
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 6cf89790ee125d8d09d9bdead2f6e34dcb73e8f8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82111945"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188118"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虛擬網路中保護 Azure ML 實驗和推斷作業
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -508,19 +508,7 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
 
 ## <a name="use-azure-firewall"></a>使用 Azure 防火牆
 
-使用 Azure 防火牆時，您必須設定網路規則，以允許進出下列位址的流量：
-
-- `*.batchai.core.windows.net`
-- `ml.azure.com`
-- `*.azureml.ms`
-- `*.experiments.azureml.net`
-- `*.modelmanagement.azureml.net`
-- `mlworkspace.azure.ai`
-- `*.aether.ms`
-
-新增規則時，請將__通訊協定__設定為 [任何]，並`*`將埠設為。
-
-如需設定網路規則的詳細資訊，請參閱[部署和設定 Azure 防火牆](/azure/firewall/tutorial-firewall-deploy-portal#configure-a-network-rule)。
+如需使用 Azure Machine Learning 與 Azure 防火牆的相關資訊，請參閱[使用 Azure 防火牆後方的 Azure Machine Learning 工作區](how-to-access-azureml-behind-firewall.md)。
 
 ## <a name="use-azure-container-registry"></a>使用 Azure Container Registry
 

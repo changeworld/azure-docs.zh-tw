@@ -1,17 +1,17 @@
 ---
-title: 驗證 Azure SignalR 服務用戶端指南
-description: 瞭解如何通過遵循 e2e 示例實現自己的身份驗證並將其與 Azure SignalR 服務集成。
+title: 驗證 Azure SignalR Service 用戶端的指南
+description: 藉由遵循 e2e 範例，瞭解如何執行自己的驗證，並將其與 Azure SignalR Service 整合。
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5608d71c4a91c9b46b8ed7de13c9d4c06a3f195f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74158274"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194596"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR 服務驗證
 
@@ -46,15 +46,15 @@ ms.locfileid: "74158274"
 
 * 已在 [GitHub](https://github.com/) 建立帳戶
 * [Git](https://git-scm.com/)
-* [.NET 核心 SDK](https://www.microsoft.com/net/download/windows)
-* [配置 Azure 雲外殼](https://docs.microsoft.com/azure/cloud-shell/quickstart)
-* 下載或克隆[AzureSignalR 示例](https://github.com/aspnet/AzureSignalR-samples)GitHub 存儲庫。
+* [.NET Core SDK](https://www.microsoft.com/net/download/windows)
+* [Azure Cloud Shell 設定](https://docs.microsoft.com/azure/cloud-shell/quickstart)
+* 下載或複製 [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) \(英文\) GitHub 存放庫。
 
 ## <a name="create-an-oauth-app"></a>建立 OAuth 應用程式
 
 1. 開啟網頁瀏覽器並瀏覽至 `https://github.com`，然後登入您的帳戶。
 
-2. 對於您的帳戶，導航到**設置** > **開發人員設置**，然後按一下**註冊新應用程式**，或**OAuth 應用程式下的"新 OAuth** *應用程式*"。
+2. 針對您的帳戶，流覽至 [**設定** > ] [**開發人員設定**]，然後按一下 [**註冊新的應用程式**] 或 [ *oauth 應用*程式] 下的**新 OAuth**
 
 3. 對新的 OAuth 應用程式使用下列設定，然後按一下 [註冊應用程式]****：
 
@@ -62,7 +62,7 @@ ms.locfileid: "74158274"
     | ------------ | --------------- | ----------- |
     | 應用程式名稱 | Azure SignalR Chat** | GitHub 使用者應該要能夠辨識並信任他們用來進行驗證的應用程式。   |
     | 首頁 URL | `http://localhost:5000/home` | |
-    | 應用程式說明 | *使用具有 GitHub 身份驗證的 Azure SignalR 服務的聊天室示例* | 應用程式的實用說明，會協助您的應用程式使用者了解所使用驗證的內容。 |
+    | 應用程式說明 | *使用 Azure SignalR Service 搭配 GitHub 驗證的聊天室範例* | 應用程式的實用說明，會協助您的應用程式使用者了解所使用驗證的內容。 |
     | 授權回呼 URL | `http://localhost:5000/signin-github` | 這項設定是 OAuth 應用程式最重要的設定。 GitHub 會在驗證成功後讓使用者返回此回呼 URL。 在本教學課程中，您必須針對 AspNet.Security.OAuth.GitHub** 套件 (/signin-github)** 使用預設的回呼 URL。  |
 
 4. 新的 OAuth 應用程式註冊完成之後，請使用下列命令在祕密管理員中新增「用戶端識別碼」** 和「用戶端密碼」**。 將 Your_GitHub_Client_Id** 和 Your_GitHub_Client_Secret** 取代為您的 OAuth 應用程式所具有的值。
@@ -377,7 +377,7 @@ ms.locfileid: "74158274"
 
 ## <a name="deploy-the-app-to-azure"></a>將應用程式部署至 Azure
 
-在本節中，您將使用 Azure 雲外殼中的 Azure 命令列介面 （CLI） 在[Azure 應用服務](https://docs.microsoft.com/azure/app-service/)中創建新的 Web 應用，以在 Azure 中託管ASP.NET應用程式。 您會將 Web 應用程式設定為使用本機 Git 部署。 您也會使用您的 SignalR 連接字串、GitHub OAuth 應用程式祕密和部署使用者來設定 Web 應用程式。
+在本節中，您將使用來自 Azure Cloud Shell 的 Azure 命令列介面（CLI），在[Azure App Service](https://docs.microsoft.com/azure/app-service/)中建立新的 web 應用程式，以在 Azure 中裝載您的 ASP.NET 應用程式。 您會將 Web 應用程式設定為使用本機 Git 部署。 您也會使用您的 SignalR 連接字串、GitHub OAuth 應用程式祕密和部署使用者來設定 Web 應用程式。
 
 本節中的步驟會使用適用於 Azure CLI 的 signalr** 擴充功能。 執行下列命令以安裝適用於 Azure CLI 的 signalr** 擴充功能：
 
@@ -539,14 +539,14 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 您需要執行的最後一件事是將 GitHub OAuth 應用程式的**首頁 URL** 和**授權回呼 URL** 更新為指向新裝載的應用程式。
 
-1. 在[https://github.com](https://github.com)瀏覽器中打開並導航到您的帳戶的**設置** > **開發人員設置** > **Oauth 應用程式**。
+1. 在[https://github.com](https://github.com)瀏覽器中開啟並流覽至您帳戶的 [**設定** > ] [**開發人員設定** > ] [**Oauth 應用程式**]。
 
 2. 按一下您的驗證應用程式，然後更新**首頁 URL** 和**授權回呼 URL**，如下所示：
 
     | 設定 | 範例 |
     | ------- | ------- |
-    | 首頁 URL | https://signalrtestwebapp22665120.azurewebsites.net/home |
-    | 授權回呼 URL | https://signalrtestwebapp22665120.azurewebsites.net/signin-github |
+    | 首頁 URL | `https://signalrtestwebapp22665120.azurewebsites.net/home` |
+    | 授權回呼 URL | `https://signalrtestwebapp22665120.azurewebsites.net/signin-github` |
 
 3. 瀏覽至您的 Web 應用程式 URL，並測試應用程式。
 
@@ -563,7 +563,7 @@ az webapp deployment source config-local-git --name $WebAppName \
 
 登入 [Azure 入口網站](https://portal.azure.com)，然後按一下 [資源群組]****。
 
-在 **"按名稱篩選..."** 文字方塊中，鍵入資源組的名稱。 本文的指示是使用名為 SignalRTestResources** 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...**，然後按一下 [刪除資源群組]****。
+在 [**依名稱篩選 ...** ] 文字方塊中，輸入資源群組的名稱。 本文的指示是使用名為 SignalRTestResources** 的資源群組。 在結果清單中的目標資源群組上方，按一下 **...**，然後按一下 [刪除資源群組]****。
 
 ![刪除](./media/signalr-concept-authenticate-oauth/signalr-delete-resource-group.png)
 

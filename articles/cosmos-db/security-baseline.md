@@ -1,1114 +1,1114 @@
 ---
-title: 宇宙 DB 的 Azure 安全基線
-description: 宇宙 DB 的 Azure 安全基線
+title: 適用于 Cosmos DB 的 Azure 安全性基準
+description: 適用于 Cosmos DB 的 Azure 安全性基準
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7e927b398bd95160e02ee915eb98ea3cb78d68fe
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: e5c57ba56ce236bcf07478e1784eec6d4c632d1c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758683"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195242"
 ---
-# <a name="azure-security-baseline-for-cosmos-db"></a>宇宙 DB 的 Azure 安全基線
+# <a name="azure-security-baseline-for-cosmos-db"></a>適用于 Cosmos DB 的 Azure 安全性基準
 
-Cosmos DB 的 Azure 安全基線包含一些建議,可説明您改進部署的安全狀態。
+適用于 Cosmos DB 的 Azure 安全性基準包含可協助您改善部署之安全性狀態的建議。
 
-此服務的基線取自[Azure 安全基準版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview),它提供了有關如何使用最佳實務指南在 Azure 上保護雲端解決方案的建議。
+此服務的基準取自[Azure 安全性基準測試版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供有關如何在 Azure 上使用最佳作法指引來保護雲端解決方案的建議。
 
-有關詳細資訊,請參閱[Azure 安全基線概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
+如需詳細資訊，請參閱[Azure 安全性基準總覽](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
 
 ## <a name="network-security"></a>網路安全性
 
-*有關詳細資訊,請參閱[安全控制:網路安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
+*如需詳細資訊，請參閱[安全性控制：網路安全性](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1:使用虛擬網路上的網路安全組或 Azure 防火牆保護資源
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1：在您的虛擬網路上使用網路安全性群組或 Azure 防火牆來保護資源
 
-**指南**:通過使用 Azure 專用連結,可以通過專用終結點連接到 Azure Cosmos 帳戶。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您還可以通過在網路安全組 (NSG) 上配置一組嚴格的出站規則並將該 NSG 與您的子網關聯來降低數據洩露的風險。
+**指引**：藉由使用 Azure 私人連結，您可以透過私人端點連線至 Azure Cosmos 帳戶。 虛擬網路和服務間的流量會在通過 Microsoft 骨幹網路時隨之減少，降低資料在網際網路中公開的風險。 您也可以在網路安全性群組（NSG）上設定一組嚴格的輸出規則，並將該 NSG 與您的子網產生關聯，藉此降低資料外泄的風險。
 
-您還可以使用服務終結點來保護 Azure Cosmos 帳戶。 通過啟用服務終結點,可以配置 Azure Cosmos 帳戶,以便僅允許從 Azure 虛擬網路的特定子網進行訪問。 啟用 Azure Cosmos DB 服務終結點後,可以限制對 Azure Cosmos 帳戶的訪問,該帳戶具有來自虛擬網路中子網的連接。
+您也可以使用服務端點來保護您的 Azure Cosmos 帳戶。 藉由啟用服務端點，您可以設定 Azure Cosmos 帳戶，只允許從 Azure 虛擬網路的特定子網進行存取。 一旦啟用 Azure Cosmos DB 服務端點，您就可以使用來自虛擬網路中子網的連線，來限制對 Azure Cosmos 帳戶的存取。
 
-還可以使用 IP 防火牆保護儲存在 Azure Cosmos 帳戶中的數據。 Azure Cosmos DB 支援 IP 型存取控制，以提供輸入防火牆支援。 可以使用 Azure 門戶、Azure 資源管理器範本或透過 Azure CLI 或 Azure PowerShell 在 Azure Cosmos 帳戶上設置 IP 防火牆。
+您也可以使用 IP 防火牆來保護 Azure Cosmos 帳戶中所儲存的資料。 Azure Cosmos DB 支援 IP 型存取控制，以提供輸入防火牆支援。 您可以使用 [Azure 入口網站]、[Azure Resource Manager 範本] 或 [Azure CLI] 或 [Azure PowerShell]，在 Azure Cosmos 帳戶上設定 IP 防火牆。
 
-Azure 專用連結概述:https://docs.microsoft.com/azure/private-link/private-link-overview
+Azure 私用連結總覽：https://docs.microsoft.com/azure/private-link/private-link-overview
 
-如何為 Azure Cosmos DB 設定專用終結點:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints 
+如何設定 Azure Cosmos DB 的私用端點：https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints 
 
-如何建立具有安全設定的網路安全群組:https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
+如何使用安全性設定建立網路安全性群組：https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-如何在 Cosmos DB 中設定 IP 防火牆:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-firewall
+如何在 Cosmos DB 中設定 IP 防火牆：https://docs.microsoft.com/azure/cosmos-db/how-to-configure-firewall
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: 監視和紀錄 Vnet、子網和 NIC 的配置和流量
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2：監視並記錄 Vnet、子網和 Nic 的設定和流量
 
-**指南**:使用 Azure 安全中心並遵循網路保護建議,以幫助保護與 Azure Cosmos 帳戶相關的網路資源。
+**指導**方針：使用 Azure 資訊安全中心並遵循網路保護建議，協助保護與您的 Azure Cosmos 帳戶相關的網路資源。
 
-當虛擬機部署在與 Azure Cosmos 帳戶相同的虛擬網路中時,可以使用網路安全組 (NSG) 來降低數據洩露的風險。 啟用 NSG 串流紀錄並將日誌發送到 Azure 儲存帳戶以進行流量審核。 您還可以將 NSG 串流日誌發送到日誌分析工作區,並使用流量分析提供有關 Azure 雲中的流量流的見解。 流量分析的一些優點是能夠可視化網路活動並識別熱點、識別安全威脅、瞭解流量模式和查明網路錯誤配置。
+當虛擬機器部署在與您的 Azure Cosmos 帳戶相同的虛擬網路中時，您可以使用網路安全性群組（NSG）來降低資料外泄的風險。 啟用 NSG 流量記錄，並將記錄傳送到 Azure 儲存體帳戶以進行流量審核。 您也可以將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用「分析」來提供 Azure 雲端中流量的深入解析。 流量分析的一些優點是能夠將網路活動視覺化，並識別作用點、識別安全性威脅、瞭解流量模式，以及找出網路錯誤配置。
 
-瞭解 Azure 安全中心提供的網路安全:https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
+瞭解 Azure 資訊安全中心所提供的網路安全性：https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
-如何啟用 NSG 串流紀錄:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+如何啟用 NSG 流量記錄：https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-如何啟用與使用流量分析:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+如何啟用和使用流量分析：https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="13-protect-critical-web-applications"></a>1.3: 保護關鍵 Web 應用程式
+### <a name="13-protect-critical-web-applications"></a>1.3：保護重要的 web 應用程式
 
-**指南**:使用跨源資源分享 (CORS) 功能使在一個域下運行的 Web 應用程式能夠存取另一個網域中的資源。 網頁瀏覽器會實作稱為相同原始原則的安全性限制，它可防止網頁呼叫不同網域中的 API。 不過，CORS 提供了安全的方式來允許來源網域呼叫其他網域中的 API。 在為 Azure Cosmos 帳戶啟用 CORS 支援後，就只會對已通過驗證的要求進行評估，以根據您指定的規則來判斷是否允許這些要求。
+**指引**：使用跨原始來源資源分享（CORS）功能，讓在一個網域下執行的 web 應用程式能夠存取另一個網域中的資源。 網頁瀏覽器會實作稱為相同原始原則的安全性限制，它可防止網頁呼叫不同網域中的 API。 不過，CORS 提供了安全的方式來允許來源網域呼叫其他網域中的 API。 在為 Azure Cosmos 帳戶啟用 CORS 支援後，就只會對已通過驗證的要求進行評估，以根據您指定的規則來判斷是否允許這些要求。
 
-設定跨源資源分享:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-cross-origin-resource-sharing
+設定跨原始來源資源分享：https://docs.microsoft.com/azure/cosmos-db/how-to-configure-cross-origin-resource-sharing
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: 拒絕與已知惡意 IP 位址的通訊
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒絕與已知惡意 IP 位址的通訊
 
-**指南**:對 Azure 宇宙 DB 使用進階威脅保護 (ATP)。 Azure Cosmos DB 的 ATP 提供了一層額外的安全智慧,用於檢測訪問或利用 Azure Cosmos 帳戶的異常和潛在有害嘗試。 此保護層允許您處理威脅並將其與中央安全監控系統集成。
+**指導**方針：使用適用于 Azure Cosmos DB 的先進威脅防護（ATP）。 Azure Cosmos DB 的 ATP 提供一層額外的安全性情報，可偵測不尋常且可能有害的存取或惡意探索 Azure Cosmos 帳戶的嘗試。 這一層保護可讓您處理威脅，並將其與中央安全性監視系統整合。
 
-在與 Azure Cosmos 資料庫實例關聯的虛擬網路上啟用 DDoS 保護標準,以防止 DDoS 攻擊。 使用 Azure 安全中心整合威脅智慧拒絕與已知惡意或未使用的 Internet IP 位址的通訊。
+在與您 Azure Cosmos DB 實例相關聯的虛擬網路上啟用 DDoS 保護標準，以防範 DDoS 攻擊。 使用 Azure 資訊安全中心整合式威脅情報來拒絕與已知惡意或未使用的網際網路 IP 位址的通訊。
 
-如何配置 Azure 宇宙 DB 高級威脅保護:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+如何 configureAzure Cosmos DB 先進的威脅防護：https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
-如何設定 DDoS 保護:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+如何設定 DDoS 保護：https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
 
-瞭解 Azure 安全中心整合威脅情報:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+瞭解 Azure 資訊安全中心整合式威脅情報：https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1.5: 記錄網路封包與串流紀錄
+### <a name="15-record-network-packets-and-flow-logs"></a>1.5：記錄網路封包和流量記錄
 
-**指南**:啟用網路安全組 (NSG) 串流日誌並將日誌發送到存儲帳戶進行流量審核。 您可以將 NSG 串流日誌發送到日誌分析工作區,並使用流量分析提供有關 Azure 雲中的流量流的見解。 流量分析的一些優點是能夠可視化網路活動並識別熱點、識別安全威脅、瞭解流量模式和查明網路錯誤配置。
+**指引**：啟用網路安全性群組（NSG）流量記錄，並將記錄傳送到儲存體帳戶以進行流量審核。 您可以將 NSG 流量記錄傳送到 Log Analytics 工作區，並使用流量分析來提供 Azure 雲端中流量的深入解析。 流量分析的一些優點是能夠將網路活動視覺化，並識別作用點、識別安全性威脅、瞭解流量模式，以及找出網路錯誤配置。
 
-如何啟用 NSG 串流紀錄:https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+如何啟用 NSG 流量記錄：https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-如何啟用與使用流量分析:https://docs.microsoft.com/azure/network-watcher/traffic-analytics
+如何啟用和使用流量分析：https://docs.microsoft.com/azure/network-watcher/traffic-analytics
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: 部署基於網路的入侵偵測/入侵防禦系統(IDS/IPS)
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署以網路為基礎的入侵偵測/入侵預防系統（IDS/IPS）
 
-**指南**:對 Azure 宇宙 DB 使用進階威脅保護 (ATP)。 Azure Cosmos DB 的 ATP 提供了一層額外的安全智慧,用於檢測訪問或利用 Azure Cosmos 帳戶的異常和潛在有害嘗試。 此保護層允許您處理威脅並將其與中央安全監控系統集成。 
+**指導**方針：使用適用于 Azure Cosmos DB 的先進威脅防護（ATP）。 Azure Cosmos DB 的 ATP 提供一層額外的安全性情報，可偵測不尋常且可能有害的存取或惡意探索 Azure Cosmos 帳戶的嘗試。 這一層保護可讓您處理威脅，並將其與中央安全性監視系統整合。 
 
-如何配置 Cosmos DB 進階威脅保護:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+如何設定 Cosmos DB Advanced 威脅防護：https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="17-manage-traffic-to-web-applications"></a>1.7: 管理 Web 應用程式的流量
+### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理 web 應用程式的流量
 
-**指導**:不適用;建議適用於在 Azure 應用服務或計算資源上運行的 Web 應用程式。
+**指導**方針：不適用;建議適用于在 Azure App Service 或計算資源上執行的 web 應用程式。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: 最大限度降低網路安全規則的複雜性和管理開銷
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：將網路安全性規則的複雜性和系統管理負擔降至最低
 
-**指南**:對於需要存取 Azure Cosmos 帳戶的資源,請使用虛擬網路服務標記在網路安全組或 Azure 防火牆上定義網路存取控制件。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 通過在規則的相應源或目標欄位中指定服務標記名稱(例如 AzureCosmosDB),可以允許或拒絕相應服務的流量。 Microsoft 管理服務標記包含的位址首碼,並在位址更改時自動更新服務標記。
+**指引**：對於需要存取 Azure Cosmos 帳戶的資源，請使用虛擬網路服務標籤來定義網路 SecuritygGroups 或 Azure 防火牆上的網路存取控制。 建立安全性規則時，您可以使用服務標籤取代特定的 IP 位址。 藉由在規則的適當 [來源] 或 [目的地] 欄位中指定服務標籤名稱（例如，AzureCosmosDB），您可以允許或拒絕對應服務的流量。 Microsoft 會管理服務標籤所包含的位址前置詞，並隨著位址變更自動更新服務標記。
 
-有關使用服務標記的詳細資訊:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+如需使用服務標記的詳細資訊：https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: 維護網路設備的標準安全設定
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：維護網路裝置的標準安全性設定
 
-**指南**:使用 Azure 策略定義和實施網路資源的標準安全配置。 在「Microsoft.DocumentDB」和「Microsoft.Network」命名空間中使用 Azure 策略別名來創建自訂策略以審核或強制執行 Azure Cosmos 資料庫實例的網路配置。 您還可以使用 Azure Cosmos DB 的內建策略定義,例如:
+**指引**：使用 Azure 原則定義和執行網路資源的標準安全性設定。 使用 "Microsoft. DocumentDB" 和 "Microsoft. Network" 命名空間中 Azure 原則別名來建立自訂原則，以審核或強制執行 Azure Cosmos DB 實例的網路設定。 您也可以利用 Azure Cosmos DB 的內建原則定義，例如：
 
 - 為 Cosmos DB 帳戶部署進階威脅防護
 
 - Cosmos DB 應該使用虛擬網路服務端點
 
-您還可以使用 Azure 藍圖透過在單個藍圖定義中打包關鍵環境工件(如 Azure 資源管理員範本、基於角色的存取控制 (RBAC) 和策略來簡化大規模 Azure 部署。 您可以通過版本控制輕鬆地將藍圖應用於新訂閱、環境和微調控制和管理。
+您也可以使用 Azure 藍圖，在單一藍圖定義中封裝金鑰環境成品（例如 Azure Resource Manager 範本、角色型存取控制（RBAC）和原則），以簡化大規模的 Azure 部署。 您可以輕鬆地將藍圖套用至新的訂用帳戶、環境，以及透過版本控制來微調控制和管理。
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何建立 Azure 藍圖:https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
+如何建立 Azure 藍圖：https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="110-document-traffic-configuration-rules"></a>1.10: 文件流量設定規則
+### <a name="110-document-traffic-configuration-rules"></a>1.10：檔流量設定規則
 
-**指南**:對與 Azure Cosmos DB 部署關聯的網路資源使用標記,以便從邏輯上將它們組織到分類中。
+**指引**：使用與 Azure Cosmos DB 部署相關聯的網路資源標記，以邏輯方式將它們組織成分類法。
 
-如何建立與使用標籤:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+如何建立和使用標記：https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: 使用自動工具監控網路資源設定並偵測變更
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自動化工具來監視網路資源設定並偵測變更
 
-**指南**:使用 Azure 活動日誌監視網路資源配置並檢測與 Azure Cosmos 資料庫實例相關的網路資源的更改。 在 Azure 監視器中創建警報,這些警報將在對關鍵網路資源的更改時觸發。 
+**指引**：使用 Azure 活動記錄來監視網路資源設定，並偵測與 Azure Cosmos DB 實例相關的網路資源變更。 在 Azure 監視器中建立警示，以在重大網路資源的變更發生時觸發。 
 
-如何檢視和檢索 Azure 活動日誌事件:https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
+如何查看和取出 Azure 活動記錄事件：https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
-如何在 Azure 監視器中建立警報:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+如何在 Azure 監視器中建立警示：https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
 ## <a name="logging-and-monitoring"></a>記錄和監視
 
-*有關詳細資訊,請參閱[安全控制:日誌記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
+*如需詳細資訊，請參閱[安全性控制：記錄和監視](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)。*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2.1: 使用批准的時間同步來源
+### <a name="21-use-approved-time-synchronization-sources"></a>2.1：使用已核准的時間同步處理來源
 
-**指南**:Microsoft 維護用於 Azure 資源(如 Azure Cosmos DB)的時間源,用於日誌中的時間戳。
+**指引**： Microsoft 會維護用於 Azure 資源的時間來源，例如記錄中的時間戳記 Azure Cosmos DB。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 微軟
+**責任**： Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2.2: 配置中央安全日誌管理
+### <a name="22-configure-central-security-log-management"></a>2.2：設定中央安全性記錄管理
 
-**指南**:通過 Azure 監視器引入日誌以聚合 Azure Cosmos DB 生成的安全數據。 在 Azure 監視器中,使用日誌分析工作區來查詢和執行分析,並使用存儲帳戶進行長期/存檔存儲。 或者,您可以將數據和板載數據啟用到 Azure Sentinel 或第三方安全事件和事件管理 (SIEM)。 
+**指導**方針：透過 Azure 監視器內嵌記錄，以匯總 Azure Cosmos DB 所產生的安全性資料。 在 Azure 監視器中，使用 Log Analytics 工作區來查詢和執行分析，並使用儲存體帳戶進行長期/封存儲存體。 或者，您可以啟用和內部資料，以 Azure Sentinel 或協力廠商安全性事件和事件管理（SIEM）。 
 
-如何為 Azure Cosmos DB 啟用診斷紀錄:https://docs.microsoft.com/azure/cosmos-db/logging
+如何啟用 Azure Cosmos DB 的診斷記錄：https://docs.microsoft.com/azure/cosmos-db/logging
 
-如何登上 Azure 哨兵:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+如何上架 Azure Sentinel：https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:為 Azure 資源啟用稽核紀錄記錄
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：啟用 Azure 資源的審核記錄
 
-**指南**:啟用 Azure Cosmos DB 的診斷設定,並將日誌發送到日誌分析工作區或存儲帳戶。 Azure Cosmos DB 中的診斷設置用於收集資源日誌。 這些日誌是按請求捕獲的,它們也稱為「數據平面日誌」。。 數據平面操作的一些範例包括刪除、插入和讀取。 您還可以啟用 Azure 活動日誌診斷設定並將其發送到相同的日誌分析工作區。
+**指引**：啟用 Azure Cosmos DB 的診斷設定，並將記錄傳送到 Log Analytics 工作區或儲存體帳戶。 Azure Cosmos DB 中的診斷設定可用來收集資源記錄。 這些記錄會針對每個要求而捕獲，而且也稱為「資料平面記錄」。 資料平面作業的一些範例包括 [刪除]、[插入] 和 [讀取]。 您也可以啟用 Azure 活動記錄診斷設定，並將它們傳送至相同的 Log Analytics 工作區。
 
-如何為 Azure 宇宙資料庫啟用診斷設定:https://docs.microsoft.com/azure/cosmos-db/logging
+如何啟用 Azure Cosmos DB 的診斷設定：https://docs.microsoft.com/azure/cosmos-db/logging
 
-如何為 Azure 活動紀錄啟用診斷設定:https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
+如何啟用 Azure 活動記錄的診斷設定：https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings-legacy
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: 從作業系統收集安全日誌
+### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：從作業系統收集安全性記錄
 
-**指導**:不適用;此建議用於計算資源。
+**指導**方針：不適用;這項建議適用于計算資源。
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="25-configure-security-log-storage-retention"></a>2.5: 設定安全紀錄儲存保留
+### <a name="25-configure-security-log-storage-retention"></a>2.5：設定安全性記錄儲存體保留
 
-**指南**:在 Azure 監視器中,根據組織的合規性法規設置與 Azure Cosmos 資料庫實例關聯的日誌分析工作區的日誌保留期。
+**指引**：在 Azure 監視器中，根據貴組織的合規性規定，設定與您的 Azure Cosmos DB 實例相關聯之 log Analytics 工作區的記錄保留期限。
 
-如何設定紀錄保留參數:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+如何設定記錄檔保留參數：https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="26-monitor-and-review-logs"></a>2.6: 監視與檢視紀錄
+### <a name="26-monitor-and-review-logs"></a>2.6：監視和審核記錄
 
-**指南**:您可以在日誌分析工作區中執行查詢,以搜索術語、識別趨勢、分析模式並提供基於您收集的 Azure Cosmos DB 日誌的許多其他見解。
+**指引**：您可以在 Log Analytics 工作區中執行查詢，以搜尋字詞、識別趨勢、分析模式，以及根據您所搜集的 Azure Cosmos DB 記錄來提供許多其他深入解析。
 
-如何在日誌分析工作區中對 Azure 宇宙 DB 執行查詢:https://docs.microsoft.com/azure/cosmos-db/monitor-cosmos-db
+如何在 Log Analytics 工作區中執行 Azure Cosmos DB 的查詢：https://docs.microsoft.com/azure/cosmos-db/monitor-cosmos-db
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: 啟用例外活動的警示
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：啟用異常活動的警示
 
-**指南**:在 Azure 安全中心中,為 Azure Cosmos DB 啟用進階威脅保護,以監視安全日誌和事件中的異常活動。 在 Azure Cosmos DB 中啟用診斷設置,並將日誌發送到日誌分析工作區。
+**指導**方針：在 Azure 資訊安全中心中，為 Azure Cosmos DB 啟用先進的威脅防護，以監視安全性記錄檔和事件中的異常活動。 啟用 Azure Cosmos DB 中的診斷設定，並將記錄傳送到 Log Analytics 工作區。
 
  
 
-您還可以將日誌分析工作區編上 Azure Sentinel,因為它提供了安全編排自動回應 (SOAR) 解決方案。 這允許創建行動手冊(自動解決方案),並用於修復安全問題。 此外,您還可以使用 Azure 監視器在日誌分析工作區中創建自定義日誌警報。
+您也可以將 Log Analytics 工作區上架到 Azure Sentinel，因為它提供安全性協調流程自動化回應（攀升情況）解決方案。 這可讓您建立和使用腳本來修復安全性問題。 此外，您可以使用 Azure 監視器，在 Log Analytics 工作區中建立自訂記錄警示。
 
-Azure 宇宙資料庫的威脅保護警報清單:https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos
+Azure Cosmos DB 的威脅防護警示清單：https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurecosmos
 
-如何登上 Azure 哨兵:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+如何上架 Azure Sentinel：https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-使用 Azure 監視器建立、檢視與管理紀錄警報:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log
+使用 Azure 監視器建立、查看和記錄管理警示：https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="28-centralize-anti-malware-logging"></a>2.8: 集中反惡意軟體紀錄記錄
+### <a name="28-centralize-anti-malware-logging"></a>2.8：集中反惡意程式碼記錄
 
-**指導**:不適用;Azure Cosmos DB 不處理或生成與惡意軟體相關的日誌。
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**:不適用
-
-### <a name="29-enable-dns-query-logging"></a>2.9: 啟用 DNS 查詢紀錄記錄
-
-**指導**:不適用;Azure 宇宙資料庫不處理或生成與 DNS 相關的日誌。
+**指導**方針：不適用;Azure Cosmos DB 不會處理或產生與反惡意程式碼相關的記錄檔。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="210-enable-command-line-audit-logging"></a>2.10: 啟用命令列稽核紀錄記錄
+### <a name="29-enable-dns-query-logging"></a>2.9：啟用 DNS 查詢記錄
 
-**指導**:不適用;此建議用於計算資源。
+**指導**方針：不適用;Azure Cosmos DB 不會處理或產生 DNS 相關的記錄檔。
 
-**Azure 安全中心監視**:不適用
 
-**責任**:不適用
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：不適用
+
+### <a name="210-enable-command-line-audit-logging"></a>2.10：啟用命令列審核記錄
+
+**指導**方針：不適用;這項建議適用于計算資源。
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：不適用
 
 ## <a name="identity-and-access-control"></a>身分識別與存取控制
 
-*有關詳細資訊,請參閱[安全控制:識別和存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
+*如需詳細資訊，請參閱[安全性控制：身分識別和存取控制](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)。*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 維持管理帳戶的清單
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：維護系統管理帳戶的清查
 
-**指導**:可以使用 Azure 門戶中的標識和存取控制項 (IAM) 窗格配置基於角色的存取控制 (RBAC) 並維護 Azure Cosmos 資料庫資源的清單。 這些角色應用於活動目錄中的使用者、組、服務主體和託管標識。 您可以將內建角色或自定義角色用於個人和組。
+**指導**方針：您可以使用 Azure 入口網站中的 [身分識別] 和 [存取控制（IAM）] 窗格來設定角色型存取控制（RBAC），並維護 Azure Cosmos DB 資源的清查。 這些角色會套用至 Active Directory 中的使用者、群組、服務主體和受控識別。 您可以針對個人和群組使用內建角色或自訂角色。
 
-Azure 宇宙 DB 為 Azure Cosmos DB 中的常見管理方案提供了內建 RBAC。 在 Azure 活動目錄 (AD) 中具有配置檔的個人可以將這些 RBAC 角色分配給使用者、組、服務主體或託管標識,以授予或拒絕對 Azure Cosmos 資料庫資源上的資源和操作的存取許可權。
+Azure Cosmos DB 在 Azure Cosmos DB 中提供常見管理案例的內建 RBAC。 在 Azure Active Directory （AD）中具有設定檔的個人可以將這些 RBAC 角色指派給使用者、群組、服務主體或受控識別，以授與或拒絕對 Azure Cosmos DB 資源的資源和作業的存取權。
 
-您還可以使用 Azure AD PowerShell 模組執行臨時查詢來發現屬於管理組成員的帳戶。 
+您也可以使用 Azure AD PowerShell 模組來執行臨機操作查詢，以探索屬於系統管理群組成員的帳戶。 
 
-此外,可以使用 Azure 活動目錄和特定於帳戶的主密鑰控制 Azure Cosmos DB 中的某些操作。  使用"禁用基於關鍵元數據寫入存取"帳戶設置來控制金鑰存取。
+此外，Azure Cosmos DB 中的某些動作可以使用 Azure Active Directory 和帳戶特定的主要金鑰來控制。  使用 ' disableKeyBasedMetadataWriteAccess ' 帳戶設定來控制金鑰存取。
 
-瞭解 Azure Cosmos DB 中的基於角色的存取控制:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+瞭解 Azure Cosmos DB 中的角色型存取控制：https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
-使用 Azure Cosmos DB 操作(Microsoft.DocumentDB 命名空間)建立您自己的自訂角色:https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
+使用 Azure Cosmos DB 動作（Microsoft DocumentDB 命名空間）來建立您自己的自訂角色：https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb
 
-在 Azure 活動目錄中建立新角色:https://docs.microsoft.com/azure/role-based-access-control/custom-roles
+在 Azure Active Directory 中建立新的角色：https://docs.microsoft.com/azure/role-based-access-control/custom-roles
 
-如何使用 PowerShell 取得 Azure 的目錄中的目錄角色:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+如何使用 PowerShell 在 Azure Active Directory 中取得目錄角色：https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
 
-如何使用 PowerShell 取得 Azure 的目錄中的目錄角色成員:https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+如何使用 PowerShell 在 Azure Active Directory 中取得目錄角色的成員：https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
 
-只限制使用者存取資料操作:https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
+限制使用者只能存取資料作業：https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="32-change-default-passwords-where-applicable"></a>3.2: 在適用的情況下變更預設密碼
+### <a name="32-change-default-passwords-where-applicable"></a>3.2：變更預設密碼（若適用）
 
-**指南**:默認密碼或空白密碼的概念與 Azure AD 或 Azure Cosmos DB 無關。 相反,Azure Cosmos DB 使用兩種類型的密鑰來驗證使用者並提供對其數據和資源的訪問;主金鑰和資源權杖。 可以隨時重新生成密鑰。
+**指導**方針：預設或空白密碼的概念並不存在於 Azure AD 或 Azure Cosmos DB 之間。 相反地，Azure Cosmos DB 使用兩種類型的金鑰來驗證使用者，並提供其資料和資源的存取權;主要金鑰和資源權杖。 金鑰可以隨時重新產生。
 
-瞭解對 Azure Cosmos DB 中資料的安全存取:https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
+瞭解 Azure Cosmos DB 中資料的安全存取：https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data
 
-如何重新產生 Azure 宇宙資料庫金鑰:https://docs.microsoft.com/azure/cosmos-db/manage-with-powershell#regenerate-keys
+如何重新產生 Azure Cosmos DB 金鑰：https://docs.microsoft.com/azure/cosmos-db/manage-with-powershell#regenerate-keys
 
-如何使用 Azure 活動目錄以程式設計方式存取金鑰:https://docs.microsoft.com/azure/cosmos-db/certificate-based-authentication
+如何使用 Azure Active Directory 以程式設計方式存取金鑰：https://docs.microsoft.com/azure/cosmos-db/certificate-based-authentication
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 共用
+**責任**：共用
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3.3: 使用專用管理帳戶
+### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用專用的系統管理帳戶
 
-**指導**:不適用;Azure 宇宙資料庫不支援管理員帳戶。  所有訪問都與 Azure 活動目錄和基於 Azure 角色的訪問控制 (RBAC) 整合。
+**指導**方針：不適用;Azure Cosmos DB 不支援系統管理員帳戶。  所有存取都與 Azure Active Directory 和 Azure 角色型存取控制（RBAC）整合。
 
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: 使用 Azure 的目錄的單一登入 (SSO)
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4：搭配 Azure Active Directory 使用單一登入（SSO）
 
-**指南**:Azure Cosmos DB 使用兩種類型的密鑰來授權使用者,不支援數據平面級別的單一登錄 (SSO)。 可透過 REST API 存取 Cosmos DB 的控制平面,並支援 SSO。 要進行身份驗證,請將請求的授權標頭設置為從 Azure 活動目錄獲取的 JSON Web 權杖。
+**指導**方針： Azure Cosmos DB 使用兩種類型的金鑰來授權使用者，而不支援在資料平面層級的單一登入（SSO）。 Cosmos DB 的控制平面存取可透過 REST API 取得，並支援 SSO。 若要進行驗證，請將要求的授權標頭設定為您從 Azure Active Directory 取得的 JSON Web 權杖。
 
-瞭解宇宙資料庫 REST API 的 Azure 資料庫:https://docs.microsoft.com/rest/api/cosmos-db/
+瞭解適用于 Cosmos DB REST API 的 Azure 資料庫：https://docs.microsoft.com/rest/api/cosmos-db/
 
-使用 Azure 活動目錄瞭解 SSO:https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+瞭解具有 Azure Active Directory 的 SSO：https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5:對所有基於 Azure 活動目錄的存取使用多重身份驗證
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：針對所有以 Azure Active Directory 為基礎的存取使用多重要素驗證
 
-**指南**:啟用 Azure 活動目錄多重身份驗證,並遵循 Azure 安全中心標識和訪問管理建議。
+**指引**：啟用 Azure Active Directory 多重要素驗證，並遵循 Azure 資訊安全中心身分識別和存取管理建議。
 
-如何在 Azure 中啟用 MFA:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+如何在 Azure 中啟用 MFA：https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-如何在 Azure 安全中心內監視標識和訪問:https://docs.microsoft.com/azure/security-center/security-center-identity-access
+如何監視 Azure 資訊安全中心內的身分識別和存取：https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: 對所有管理工作使用專用電腦 (特權存取工作站)
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：使用專用電腦（特殊許可權存取工作站）進行所有系統管理工作
 
-**指南**:使用特權訪問工作站 (PAW) 進行多因素身份驗證配置以登錄和配置 Azure 資源。
+**指導**方針：使用已設定多重要素驗證的特殊許可權存取工作站（PAW）來登入和設定 Azure 資源。
 
-瞭解特權存取工作站:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+瞭解特殊許可權存取工作站：https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
 
-如何在 Azure 中啟用 MFA:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+如何在 Azure 中啟用 MFA：https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: 從管理帳戶記錄和警報可疑活動
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：從系統管理客戶紀錄和警示可疑活動
 
-**指南**:對 Azure 宇宙 DB 使用進階威脅保護 (ATP)。 Azure Cosmos DB 的 ATP 提供了一層額外的安全智慧,用於檢測訪問或利用 Azure Cosmos 帳戶的異常和潛在有害嘗試。 此保護層允許您處理威脅並將其與中央安全監控系統集成。 
+**指導**方針：使用適用于 Azure Cosmos DB 的先進威脅防護（ATP）。 Azure Cosmos DB 的 ATP 提供一層額外的安全性情報，可偵測不尋常且可能有害的存取或惡意探索 Azure Cosmos 帳戶的嘗試。 這一層保護可讓您處理威脅，並將其與中央安全性監視系統整合。 
 
-此外,當環境中發生可疑或不安全活動時,可以使用 Azure 活動目錄 (AD) 特權標識管理 (PIM) 生成日誌和警報。
+此外，當環境中發生可疑或不安全的活動時，您可以使用 Azure Active Directory （AD） Privileged Identity Management （PIM）來產生記錄檔和警示。
 
-使用 Azure AD 風險檢測查看有關風險用戶行為的警報和報告。
+使用 Azure AD 風險偵測來根據有風險的使用者行為來查看警示和報告。
 
-如何部署權識別管理 (PIM):https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+如何部署 Privileged Identity Management （PIM）：https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-瞭解 Azure AD 風險偵測:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+瞭解 Azure AD 風險偵測：https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8:僅從已批准的位置管理 Azure 資源
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：僅從核准的位置管理 Azure 資源
 
-**指南**:設定條件存取策略的位置條件並管理命名位置。 使用命名位置,您可以創建 IP 位址範圍或國家和地區的邏輯分組。 您可以將對敏感資源(如 Azure Cosmos 資料庫實例)的存取限制為已設定的命名位置。
+**指引**：設定條件式存取原則的位置條件，並管理您的命名位置。 使用已命名的位置，您可以建立 IP 位址範圍或國家和地區的邏輯群組。 您可以限制對已設定之命名位置的敏感資源（例如 Azure Cosmos DB 實例）的存取。
 
-如何在 Azure 中設定命名位置:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+如何在 Azure 中設定命名位置：https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="39-use-azure-active-directory"></a>3.9: 使用 Azure 的項目
+### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**:使用 Azure 活動目錄 (AD) 作為中央身份驗證和授權系統。 Azure AD 對靜態和傳輸中的數據使用強加密來保護數據。 Azure AD 還會對使用者憑據進行鹽漬、哈希和安全地存儲。
+**指導**方針：使用 AZURE ACTIVE DIRECTORY （AD）做為中央驗證和授權系統。 Azure AD 使用強式加密來保護待用資料和傳輸中的資料。 Azure AD 也會 salts、雜湊並安全地儲存使用者認證。
 
-如何建立與設定 Azure 活動目錄實體:https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
+如何建立和設定 Azure Active Directory 實例：https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance
 
-如何使用 Azure SQL 設定與管理 Azure 活動目錄身份驗證:https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure
+如何使用 Azure SQL 設定和管理 Azure Active Directory 驗證：https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: 定期審查和協調使用者存取
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10：定期審查並協調使用者存取
 
-**指南**: Azure 活動目錄提供日誌以幫助發現陳舊的帳戶。 此外,還可以使用 Azure 標識存取審核有效地管理組成員身份、訪問企業應用程式和角色分配。 可以定期查看使用者的訪問許可權,以確保只有正確的使用者才能繼續訪問。
+**指導**方針： Azure Active Directory 提供記錄檔，以協助探索過時的帳戶。 此外，您可以使用 Azure 身分識別存取審查來有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您可以定期檢查使用者的存取權，以確保只有適當的使用者可以繼續存取。
 
-如何使用 Azure 識別存取稽核:https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+如何使用 Azure 身分識別存取權審查：https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: 監視訪問已停用帳戶的嘗試
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：監視嘗試存取停用的帳戶
 
-**指南**:可以為 Azure 活動目錄使用者帳戶創建診斷設置,將審核日誌和登錄日誌發送到日誌分析工作區,您可以在其中配置所需的警報。
+**指引**：您可以建立 Azure Active Directory 使用者帳戶的診斷設定，將審核記錄和登入記錄傳送到 Log Analytics 工作區，您可以在其中設定所需的警示。
 
-如何將 Azure 活動紀錄整合到 Azure 監視器中:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+如何將 Azure 活動記錄整合到 Azure 監視器：https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: 帳戶登錄行為偏差警報
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：帳戶登入行為偏差的警示
 
-**指南**:對 Azure 宇宙 DB 使用進階威脅保護 (ATP)。 Azure Cosmos DB 的 ATP 提供了一層額外的安全智慧,用於檢測訪問或利用 Azure Cosmos 帳戶的異常和潛在有害嘗試。 此保護層允許您處理威脅並將其與中央安全監控系統集成。 
+**指導**方針：使用適用于 Azure Cosmos DB 的先進威脅防護（ATP）。 Azure Cosmos DB 的 ATP 提供一層額外的安全性情報，可偵測不尋常且可能有害的存取或惡意探索 Azure Cosmos 帳戶的嘗試。 這一層保護可讓您處理威脅，並將其與中央安全性監視系統整合。 
 
-您還可以使用 Azure AD 標識保護和風險檢測功能來配置自動回應,以識別與使用者身份相關的可疑操作。 此外,您可以將日誌引入 Azure Sentinel 以進行進一步調查。
+您也可以使用 Azure AD Identity Protection 和風險偵測功能，為偵測到與使用者身分識別相關的可疑動作設定自動回應。 此外，您還可以將記錄內嵌到 Azure Sentinel，以進行進一步的調查。
 
-如何檢視 Azure 活動目錄風險登入:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
+如何觀看 Azure Active Directory 有風險的登入：https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins
 
-如何設定與啟用身份保護風險原則:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+如何設定和啟用身分識別保護風險原則：https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
 
-如何登上 Azure 哨兵:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+如何上架 Azure Sentinel：https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: 在支援方案期間向 Microsoft 提供對相關客戶資料的存取
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：提供 Microsoft 在支援案例期間存取相關的客戶資料
 
-**指南**:當前不可用;Cosmos DB 的 Azure 資料庫尚不支援客戶密碼箱。
+**指導**方針：目前無法使用;適用于 Cosmos DB 的 Azure 資料庫尚不支援客戶加密箱。
 
-客戶密碼箱支援服務清單:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+客戶加密箱支援的服務清單：https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**:不適用
+**責任**：不適用
 
 ## <a name="data-protection"></a>資料保護
 
-*有關詳細資訊,請參閱[安全控制:資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
+*如需詳細資訊，請參閱[安全性控制：資料保護](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)。*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: 維護敏感資訊的清單
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1：維護機密資訊的清查
 
-**指南**:使用標記來協助追蹤記憶體或處理敏感資訊的 Azure Cosmos 資料庫實例。
+**指引**：使用標記來協助追蹤儲存或處理敏感資訊的 Azure Cosmos DB 實例。
 
-如何建立與使用標籤:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+如何建立和使用標記：https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: 隔離記憶體或處理敏感資訊的系統
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔離儲存或處理敏感資訊的系統
 
-**指導**:為開發、測試和生產實施單獨的訂閱和/或管理組。 Azure Cosmos 資料庫實例由虛擬網路/子網分隔,在網路安全組 (NSG) 或 Azure 防火牆中正確標記並加以保護。 應隔離存儲敏感數據的 Azure Cosmos DB 實例。 通過使用 Azure 專用連結,可以通過專用終結點連接到 Azure Cosmos DB 實例帳戶。 專用終結點是虛擬網路中子網中的一組專用 IP 位址。 然後,您可以限制對所選專用 IP 位址的訪問。 
+**指引**：在開發、測試和生產環境中，執行不同的訂用帳戶和/或管理群組。 Azure Cosmos DB 實例會以虛擬網路/子網分隔、在網路安全性群組（NSG）或 Azure 防火牆內以適當方式標記並受到保護。 儲存敏感性資料的 Azure Cosmos DB 實例應加以隔離。 藉由使用 Azure 私用連結，您可以透過私人端點連接到 Azure Cosmos DB 實例帳戶。 私人端點是虛擬網路內子網中的一組私人 IP 位址。 然後您可以限制對選取的私人 IP 位址的存取。 
 
-如何建立其他 Azure 訂閱:https://docs.microsoft.com/azure/billing/billing-create-subscription
+如何建立額外的 Azure 訂用帳戶：https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-如何建立管理群組:https://docs.microsoft.com/azure/governance/management-groups/create
+如何建立管理群組：https://docs.microsoft.com/azure/governance/management-groups/create
 
-如何建立與使用標籤:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+如何建立和使用標記：https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-如何為 Azure Cosmos DB 設定專用終結點:https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints
+如何設定 Azure Cosmos DB 的私用端點：https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints
 
-如何建立具有安全設定的網路安全群組:https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
+如何使用安全性設定建立網路安全性群組：https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: 監控和阻止未經授權傳輸敏感資訊
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：監視並封鎖未經授權的機密資訊傳輸
 
-**指南**:您可以為 Azure Cosmos DB 部署進階威脅保護,這將檢測異常活動,指示訪問或利用資料庫的異常和潛在有害嘗試。 它目前可以觸發以下警報:
+**指導**方針：您可以為 Azure Cosmos DB 部署先進的威脅防護，這會偵測指出不尋常且可能會造成損害的異常活動嘗試存取或惡意探索資料庫。 它目前可以觸發下列警示：
 
-- 從例外位置存取
+- 從不尋常的位置存取
 
-- 不尋常的資料
+- 不尋常的資料解壓縮
 
-此外,當使用虛擬機訪問 Azure Cosmos 資料庫實例時,請使用專用連結、防火牆、網路安全組和服務標記來降低數據洩露的可能性。 Microsoft 管理 Azure Cosmos DB 的基礎基礎結構,並實施了嚴格的控制,以防止客戶數據丟失或暴露。
+此外，使用虛擬機器來存取 Azure Cosmos DB 實例時，請使用私人連結、防火牆、網路安全性群組和服務標籤，以減輕資料外泄的可能性。 Microsoft 會管理 Azure Cosmos DB 的基礎結構，並已實行嚴格的控制，以避免遺失或公開客戶資料。
 
-如何配置 Cosmos DB 進階威脅保護:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
+如何設定 Cosmos DB Advanced 威脅防護：https://docs.microsoft.com/azure/cosmos-db/cosmos-db-advanced-threat-protection
 
-瞭解 Azure 的客戶資料保護:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+瞭解 Azure 中的客戶資料保護：https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 共用
+**責任**：共用
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4:加密傳輸中的所有敏感資訊
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密傳輸中的所有機密資訊
 
-**指南**:與 Azure 宇宙 DB 的所有連接都支援 HTTPS。 Azure 宇宙 DB 還支援 TLS1.2。 可以強制實施最小 TLS 版本伺服器端。 此,請聯繫[azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)。
+**指導**方針： Azure Cosmos DB 的所有連接都支援 HTTPS。 Azure Cosmos DB 也支援 TLS 1.2。 您可以強制執行最低的 TLS 版本伺服器端。 若要這麼做，請[azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)洽詢。
 
-宇宙資料庫安全性概述:https://docs.microsoft.com/azure/cosmos-db/database-security
+Cosmos DB 安全性總覽：https://docs.microsoft.com/azure/cosmos-db/database-security
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 微軟
+**責任**： Microsoft
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: 使用活動探索工具辨識敏感資料
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5：使用 active discovery 工具來識別敏感性資料
 
-**指南**:Azure Cosmos DB 尚不可用自動資料識別、分類和損失預防功能。 但是,您可以使用 Azure 認知搜索整合進行分類和數據分析。 如果需要合規性,您還可以實施第三方解決方案。
+**指導**方針： Azure Cosmos DB 尚無法使用自動資料識別、分類和遺失防護功能。 不過，您可以使用 Azure 認知搜尋整合來進行分類和資料分析。 您也可以視需要執行協力廠商解決方案，以符合規範目的。
 
-對於由 Microsoft 管理的基礎平臺,Microsoft 將所有客戶內容視為敏感內容,並竭盡全力防止客戶數據丟失和暴露。 為了確保 Azure 中的客戶數據保持安全,Microsoft 已經實施並維護了一套強大的數據保護控制和功能。
+針對由 Microsoft 管理的基礎平臺，Microsoft 會將所有客戶內容視為機密，並移至絕佳的長度，以防範客戶資料遺失和暴露。 為了確保 Azure 中的客戶資料保持安全，Microsoft 已實行並維護一套強大的資料保護控制和功能。
 
-索引 Azure 宇宙資料庫數據與https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&ampAzure 認知搜索: ;bc_/azure/宇宙-db/麵包屑/toc.json
+使用 Azure 認知搜尋來編制索引 Azure Cosmos DB https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json&amp資料：; bc =/azure/cosmos-db/breadcrumb/toc.json
 
-瞭解 Azure 的客戶資料保護:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+瞭解 Azure 中的客戶資料保護：https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 共用
+**責任**：共用
 
-### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6: 使用 Azure RBAC 控制對資源的存取
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 來控制資源的存取權
 
-**指南**: Azure Cosmos DB 為 Azure Cosmos DB 中的常見管理方案提供了基於角色的內建存取控制 (RBAC)。 在 Azure 活動目錄中具有配置檔的個人可以將這些 RBAC 角色分配給使用者、組、服務主體或託管標識,以授予或拒絕對 Azure Cosmos 資料庫資源上的資源和操作的存取許可權。 角色分配範圍僅限於控制平面訪問,包括造訪 Azure Cosmos 帳戶、資料庫、容器和產品/服務(輸送量)。
+**指導**方針： Azure Cosmos DB 針對 Azure Cosmos DB 中的常見管理案例，提供內建的角色型存取控制（RBAC）。 在 Azure Active Directory 中具有設定檔的個人可以將這些 RBAC 角色指派給使用者、群組、服務主體或受控識別，以授與或拒絕對 Azure Cosmos DB 資源的資源和作業的存取權。 角色指派的範圍僅限於控制平面存取，其中包括 Azure Cosmos 帳戶、資料庫、容器和供應專案（輸送量）的存取權。
 
-如何在 Azure 宇宙 DB 中實現 RBAC:https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
+如何在 Azure Cosmos DB 中執行 RBAC：https://docs.microsoft.com/azure/cosmos-db/role-based-access-control
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: 使用基於主機的數據丟失防護來實施訪問控制
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用以主機為基礎的資料遺失防護來強制存取控制
 
-**指導**:不適用;本指南用於計算資源。
+**指導**方針：不適用;此指導方針適用于計算資源。
 
-Microsoft 管理 Cosmos DB 的基礎基礎結構,並實施了嚴格的控制,以防止客戶數據丟失或暴露。
+Microsoft 會管理 Cosmos DB 的基礎結構，並已實行嚴格的控制，以避免遺失或公開客戶資料。
 
-瞭解 Azure 的客戶資料保護:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
+瞭解 Azure 中的客戶資料保護：https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: 靜態加密敏感資訊
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：加密機密資訊待用
 
-**指南**:默認情況下,存儲在Cosmos DB中的所有用戶數據在靜態時進行加密。 沒有控件可以將其關閉。 Azure Cosmos DB 對帳戶運行的所有區域使用 AES-256 加密。
+**指導**方針：儲存在 Cosmos DB 中的所有使用者資料預設都會加密。 沒有可關閉的控制項。 Azure Cosmos DB 在執行帳戶的所有區域上使用 AES-256 加密。
 
-默認情況下,Microsoft 管理用於加密 Azure Cosmos 帳戶中數據的密鑰。 您可以選擇使用自己的金鑰添加第二層加密。
+根據預設，Microsoft 會管理用來加密 Azure Cosmos 帳戶中資料的金鑰。 您可以選擇性地選擇使用您自己的金鑰來新增第二層加密。
 
-使用 Azure Cosmos DB 瞭解靜態加密:https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
+瞭解使用 Azure Cosmos DB 的待用加密：https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
 
-瞭解使用 Azure Cosmos DB 進行靜態加密的金鑰管理:https://docs.microsoft.com/azure/cosmos-db/cosmos-db-security-controls
+瞭解使用 Azure Cosmos DB 進行待用加密的金鑰管理：https://docs.microsoft.com/azure/cosmos-db/cosmos-db-security-controls
 
-如何為 Azure Cosmos 資料庫帳戶設定客戶管理的金鑰:https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk
+如何為您的 Azure Cosmos DB 帳戶設定客戶管理的金鑰：https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 共用
+**責任**：共用
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: 對關鍵 Azure 資源的更改進行紀錄和警報
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：對重要 Azure 資源的變更進行記錄和警示
 
-**指導**:將 Azure 監視器與 Azure 活動日誌一起用於創建對 Azure Cosmos DB 生產實例進行更改時的警報。
+**指導**方針：使用 Azure 監視器搭配 Azure 活動記錄，以針對 Azure Cosmos DB 的生產實例進行變更時，建立警示。
 
-如何為 Azure 活動紀錄事件建立警報:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+如何建立 Azure 活動記錄事件的警示：https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-如何為 Azure 活動紀錄事件建立警報:https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
+如何建立 Azure 活動記錄事件的警示：https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
 ## <a name="vulnerability-management"></a>弱點管理
 
-*有關詳細資訊,請參閱[安全控制:漏洞管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。*
+*如需詳細資訊，請參閱[安全性控制：弱點管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)。*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: 執行自動漏洞掃描工具
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1：執行自動化弱點掃描工具
 
-**指南**:請按照 Azure Cosmos 資料庫實例的 Azure 安全中心的建議進行操作。 
+**指導**方針：請遵循 Azure Cosmos DB 實例 Azure 資訊安全中心的建議。 
 
-Microsoft 在支援 Azure Cosmos DB 實例的基礎主機上執行系統修補和漏洞管理。 為了確保 Azure 中的客戶數據保持安全,Microsoft 已經實施並維護了一套強大的數據保護控制和功能。
+Microsoft 會在支援您 Azure Cosmos DB 實例的基礎主機上執行系統修補和弱點管理。 為了確保 Azure 中的客戶資料保持安全，Microsoft 已實行並維護一套強大的資料保護控制和功能。
 
-Azure 安全中心中支援的功能:https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows
+Azure 資訊安全中心提供支援的功能：https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 共用
+**責任**：共用
 
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2:部署自動化作業系統修補程式管理解決方案
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自動化的作業系統修補程式管理解決方案
 
-**指導**:不適用;本指南用於計算資源。
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**:不適用
-
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3:部署自動化的第三方軟體修補程式管理解決方案
-
-**指導**:不適用;本指南用於計算資源。
+**指導**方針：不適用;此指導方針適用于計算資源。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: 比較背對背漏洞掃描
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3：部署自動化的協力廠商軟體修補程式管理解決方案
 
-**指導**:不適用;本指南用於計算資源。
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**:不適用
-
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: 使用風險評級流程確定修復已發現漏洞的優先順序
-
-**指導**:不適用;本指南用於計算資源。
+**指導**方針：不適用;此指導方針適用于計算資源。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
+
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4：比較回溯弱點掃描
+
+**指導**方針：不適用;此指導方針適用于計算資源。
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：不適用
+
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用風險評等程式來排定所發現弱點的補救優先順序
+
+**指導**方針：不適用;此指導方針適用于計算資源。
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：不適用
 
 ## <a name="inventory-and-asset-management"></a>清查和資產管理
 
-*有關詳細資訊,請參閱[安全控制:庫存和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
+*如需詳細資訊，請參閱[安全性控制：清查和資產管理](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)。*
 
-### <a name="61-use-azure-asset-discovery"></a>6.1: 使用 Azure 資產發現
+### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 資產探索
 
-**指南**:使用 Azure 門戶或 Azure 資源圖來發現訂閱中的所有資源(不限於 Azure Cosmos DB,但也包括計算、其他存儲、網路、埠和協定等資源)。  確保租戶中具有適當的許可權,並能夠枚舉訂閱中的所有 Azure 訂閱和資源。
+**指引**：使用 Azure 入口網站或 Azure Resource Graph 探索您的訂用帳戶內的所有資源（不限於 Azure Cosmos DB，但也包含計算、其他儲存體、網路、埠和通訊協定等資源）。  請確定您在您的租使用者中具有適當的許可權，而且能夠列舉訂用帳戶中的所有 Azure 訂用帳戶及資源。
 
-儘管可以通過資源圖發現經典 Azure 資源,但強烈建議今後創建和使用 Azure 資源管理器資源。
+雖然可透過 Resource Graph 探索傳統的 Azure 資源，但強烈建議您建立並使用 Azure Resource Manager 的資源。
 
-如何使用 Azure 資源圖建立查詢:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何使用 Azure Resource Graph 建立查詢：https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-如何檢視 Azure 訂閱:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+如何查看您的 Azure 訂用帳戶：https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-瞭解基於 Azure 角色的存取控制:https://docs.microsoft.com/azure/role-based-access-control/overview
+瞭解 Azure 角色型存取控制：https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="62-maintain-asset-metadata"></a>6.2: 維護資產元資料
+### <a name="62-maintain-asset-metadata"></a>6.2：維護資產中繼資料
 
-**指南**:將標記應用於 Azure Cosmos 資料庫實例和具有元數據的相關資源,以邏輯方式將它們組織到分類中。
+**指引**：將標籤套用至您的 Azure Cosmos DB 實例，並將相關資源套用至中繼資料，以邏輯方式將它們組織成分類法。
 
-如何建立與使用標籤:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+如何建立和使用標記：https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-哪些 Azure Cosmos 資料庫資源支援標記:https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftdocumentdb
+哪些 Azure Cosmos DB 資源支援標記：https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftdocumentdb
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6.3: 刪除未經授權的 Azure 資源
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3：刪除未經授權的 Azure 資源
 
-**指南**:在適當情況下,使用標記、管理組和單獨的訂閱來組織和跟蹤資產,包括但不限於 Azure Cosmos 資料庫資源。 定期協調庫存,確保及時從訂閱中刪除未經授權的資源。
+**指引**：使用標記、管理群組，以及個別的訂用帳戶（適當時）來組織和追蹤資產，包括但不限於 Azure Cosmos DB 資源。 定期協調清查，並確保未經授權的資源會及時從訂用帳戶中刪除。
 
-如何建立其他 Azure 訂閱:https://docs.microsoft.com/azure/billing/billing-create-subscription
+如何建立額外的 Azure 訂用帳戶：https://docs.microsoft.com/azure/billing/billing-create-subscription
 
-如何建立管理群組:https://docs.microsoft.com/azure/governance/management-groups/create
+如何建立管理群組：https://docs.microsoft.com/azure/governance/management-groups/create
 
-如何建立與使用標籤:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+如何建立和使用標記：https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4:維護已批准的 Azure 資源和軟體標題的清單
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4：維護已核准 Azure 資源和軟體標題的清查
 
-**指導**:不適用;本指南適用於計算資源和整個 Azure。
+**指導**方針：不適用;此指導方針適用于計算資源和 Azure 整體。
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: 監視未經批准的 Azure 資源
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：未核准的 Azure 資源的監視
 
-**指南**:使用 Azure 政策對客戶訂閱中可建立的資源類型使用以下內建策略定義進行限制:
+**指引**：使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型進行限制：
 
 - 不允許的資源類型
 
 - 允許的資源類型
 
-此外,使用 Azure 資源圖查詢/發現訂閱中的資源。
+此外，請使用 Azure Resource Graph 來查詢/探索訂用帳戶內的資源。
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何使用 Azure 圖形建立查詢:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+如何使用 Azure Graph 建立查詢：https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: 監控計算資源中未經批准的軟體應用程式
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6：監視計算資源內未經核准的軟體應用程式
 
-**指導**:不適用;此基線用於計算資源。
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**:不適用
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: 刪除未經批准的 Azure 資源和軟體應用程式
-
-**指導**:不適用;本指南適用於計算資源和整個 Azure。
+**指導**方針：不適用;此基準適用于計算資源。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="68-use-only-approved-applications"></a>6.8: 僅使用已批准的應用程式
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7：移除未核准的 Azure 資源和軟體應用程式
 
-**指導**:不適用;本指南用於計算資源。
+**指導**方針：不適用;此指導方針適用于計算資源和 Azure 整體。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="69-use-only-approved-azure-services"></a>6.9: 僅使用已批准的 Azure 服務
+### <a name="68-use-only-approved-applications"></a>6.8：僅使用已核准的應用程式
 
-**指南**:使用 Azure 政策對客戶訂閱中可建立的資源類型使用以下內建策略定義進行限制:
+**指導**方針：不適用;此指導方針適用于計算資源。
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：不適用
+
+### <a name="69-use-only-approved-azure-services"></a>6.9：僅使用已核准的 Azure 服務
+
+**指引**：使用 Azure 原則來對可使用下列內建原則定義在客戶訂用帳戶中建立的資源類型進行限制：
 
 - 不允許的資源類型 
 
 - 允許的資源類型
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-如何使用 Azure 政策拒絕特定資源類型:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+如何拒絕具有 Azure 原則的特定資源類型：https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="610-implement-approved-application-list"></a>6.10: 實施已批准的申請清單
+### <a name="610-implement-approved-application-list"></a>6.10：執行核准的應用程式清單
 
-**指導**:不適用;本指南用於計算資源。
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**:不適用
-
-### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11:限制使用者透過文稿與 AzureResource Manager 互動的能力
-
-**指南**:使用 Azure 條件訪問通過為"Microsoft Azure 管理"應用配置"阻止存取"來限制使用者與 Azure 資源管理員互動的能力。 這可以防止在高安全性環境中創建和更改資源。
-
-如何設定條件存取以封鎖對 Azure 資源管理員的存取:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
-
-**Azure 安全中心監視**:不適用
-
-**責任**: 客戶
-
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: 限制使用者在計算資源中執行文稿的能力
-
-**指導**:不適用;本指南用於計算資源。
+**指導**方針：不適用;此指導方針適用于計算資源。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: 物理或邏輯上隔離高風險應用程式
+### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11：限制使用者透過腳本與 AzureResources Manager 互動的能力
 
-**指導**:不適用;本指南適用於在 Azure 應用服務或計算資源上運行的 Web 應用程式。
+**指引**：使用 Azure 條件式存取來限制使用者與 Azure Resource Manager 的互動能力，方法是設定「Microsoft Azure 管理」應用程式的「封鎖存取」。 這可能會防止在高安全性環境中建立和變更資源。
+
+如何設定條件式存取以封鎖對 Azure Resource Manager 的存取：https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：客戶
+
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制使用者在計算資源內執行腳本的能力
+
+**指導**方針：不適用;此指導方針適用于計算資源。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
+
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：實際或邏輯上隔離高風險應用程式
+
+**指導**方針：不適用;此指導方針適用于在 Azure App Service 或計算資源上執行的 web 應用程式。
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：不適用
 
 ## <a name="secure-configuration"></a>安全設定
 
-*有關詳細資訊,請參閱[安全控制:安全設定](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)。*
+*如需詳細資訊，請參閱[安全性控制：安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)設定。*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1:為所有 Azure 資源建立安全配置
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：為所有 Azure 資源建立安全設定
 
-**指南**:使用 Azure 策略定義和實現 Cosmos 資料庫實例的標準安全配置。 在「Microsoft.DocumentDB」命名空間中使用 Azure 策略別名創建自訂策略以審核或強制執行 Cosmos 資料庫實例的配置。 您還可以使用 Azure Cosmos DB 的內建策略定義,例如:
+**指引**：使用 Azure 原則為您的 Cosmos DB 實例定義和執行標準安全性設定。 使用 "Microsoft DocumentDB" 命名空間中 Azure 原則別名來建立自訂原則，以對您的 Cosmos DB 實例進行審核或強制執行設定。 您也可以利用 Azure Cosmos DB 的內建原則定義，例如：
 
 - 為 Cosmos DB 帳戶部署進階威脅防護
 
 - Cosmos DB 應該使用虛擬網路服務端點
 
-如何檢視可用的 Azure 政策別名:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+如何查看可用的 Azure 原則別名：https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7.2: 建立安全的作業系統設定
+### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的作業系統設定
 
-**指導**:不適用;本指南用於計算資源。
+**指導**方針：不適用;此指導方針適用于計算資源。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:維護安全的 Azure 資源配置
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3：維護安全的 Azure 資源設定
 
-**指導**:使用 Azure 策略 [拒絕] 和 [部署(如果不存在))在整個 Azure 資源中強制實施安全設置。
+**指導**方針：使用 Azure 原則 [拒絕] 和 [不存在時部署]，在您的 Azure 資源上強制執行安全設定。
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-瞭解 Azure 政策效果:https://docs.microsoft.com/azure/governance/policy/concepts/effects
+瞭解 Azure 原則效果：https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: 維護安全的作業系統設定
+### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：維護安全的作業系統設定
 
-**指導**:不適用;本指南用於計算資源。
+**指導**方針：不適用;此指導方針適用于計算資源。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: 安全儲存 Azure 資源的設定
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全地儲存 Azure 資源的設定
 
-**指南**:如果對 Cosmos DB 或相關資源使用自定義 Azure 策略定義,請使用 Azure 儲存庫安全地存儲和管理代碼。
+**指導**方針：如果您 Cosmos DB 或相關資源使用自訂 Azure 原則定義，請使用 Azure Repos 安全地儲存和管理您的程式碼。
 
-Azure 儲存函式https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops庫文件:https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Azure Repos 檔： https://docs.microsoft.com/azure/devops/repos/index?view=azure-devopshttps://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7.6: 安全地儲存自訂作業系統映像
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全地儲存自訂的作業系統映射
 
-**指導**:不適用;本指南用於計算資源。
+**指導**方針：不適用;此指導方針適用于計算資源。
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7.7: 部署系統設定管理工具
+### <a name="77-deploy-system-configuration-management-tools"></a>7.7：部署系統設定管理工具
 
-**指南**:使用「Microsoft.DocumentDB」命名空間中的 Azure 策略別名創建自訂策略以警報、審核和強制執行系統配置。 此外,開發用於管理策略異常的流程和管道。
+**指引**：在 "Microsoft DocumentDB" 命名空間中使用 Azure 原則別名來建立自訂原則，以警示、審查和強制執行系統設定。 此外，開發處理常式和管線來管理原則例外狀況。
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8:為作業系統部署系統設定管理工具
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8：部署作業系統的系統建構管理工具
 
-**指導**:不適用;本指南用於計算資源。
+**指導**方針：不適用;此指導方針適用于計算資源。
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9:為 Azure 服務實現自動化配置監視
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9：執行 Azure 服務的自動化設定監視
 
-**指南**:使用「Microsoft.DocumentDB」命名空間中的 Azure 策略別名創建自訂策略以警報、審核和強制執行系統配置。 使用 Azure 策略 [審核]、[拒絕]和 [部署(如果不存在)]自動強制配置 Azure Cosmos 資料庫實例和相關資源。 
+**指引**：在 "Microsoft DocumentDB" 命名空間中使用 Azure 原則別名來建立自訂原則，以警示、審查和強制執行系統設定。 使用 Azure 原則 [audit]、[deny] 和 [deploy if not 存在]，自動為您的 Azure Cosmos DB 實例和相關資源強制執行設定。 
 
-如何設定與管理 Azure 政策:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+如何設定和管理 Azure 原則：https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: 對作業系統執行自動設定監控
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：為作業系統執行自動化設定監視
 
-**指導**:不適用;本指南用於計算資源。
+**指導**方針：不適用;此指導方針適用于計算資源。
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：不適用
 
-### <a name="711-manage-azure-secrets-securely"></a>7.11: 安全管理 Azure 機密
+### <a name="711-manage-azure-secrets-securely"></a>7.11：安全地管理 Azure 秘密
 
-**指南**:對於在 Azure 應用服務上執行的 Azure 虛擬機或 Web 應用程式,用於造訪 Azure Cosmos 資料庫實例,請使用 Azure 密鑰保管庫的託管服務標識來簡化和保護 Azure Cosmos DB 密鑰管理。 確保啟用金鑰保管庫軟刪除。
+**指引**：針對在 Azure App Service 用來存取 Azure Cosmos DB 實例的 Azure 虛擬機器或 web 應用程式，請使用受控服務識別搭配 Azure Key Vault 來簡化和保護 Azure Cosmos DB 秘密管理。 請確定已啟用 Key Vault 虛刪除。
 
-如何與 Azure 託管識別整合:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+如何與 Azure 受控識別整合：https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-如何建立金鑰保存庫:https://docs.microsoft.com/azure/key-vault/quick-create-portal
+如何建立 Key Vault：https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
-如何使用託管識別提供金鑰保管庫身份驗證:https://docs.microsoft.com/azure/key-vault/managed-identity
+如何使用受控識別提供 Key Vault 驗證：https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7.12: 安全、自動地管理身份
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全且自動地管理身分識別
 
-**指南**:對於在 Azure 應用服務上執行的 Azure 虛擬機或 Web 應用程式,用於造訪 Azure Cosmos 資料庫實例,請使用 Azure 密鑰保管庫的託管服務標識來簡化和保護 Azure Cosmos DB 密鑰管理。
+**指引**：針對在 Azure App Service 用來存取 Azure Cosmos DB 實例的 Azure 虛擬機器或 web 應用程式，請使用受控服務識別搭配 Azure Key Vault 來簡化和保護 Azure Cosmos DB 秘密管理。
 
-使用託管識別在 Azure 活動目錄 (AD) 中為 Azure 服務提供自動託管標識。 託管標識允許您對支援 Azure AD 身份驗證的任何服務(包括密鑰保管庫)進行身份驗證,而無需在代碼中進行任何認證。
+使用受控識別，在 Azure Active Directory （AD）中為 Azure 服務提供自動受控識別。 受控識別可讓您向任何支援 Azure AD 驗證的服務進行驗證，包括 Key Vault，而您的程式碼中沒有任何認證。
 
-如何設定託管識別:https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+如何設定受控識別：https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
-如何與 Azure 託管識別整合:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+如何與 Azure 受控識別整合：https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: 消除意外的認證
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除非預期的認證暴露
 
-**指南**:實現憑據掃描程式以標識代碼中的憑據。 憑據掃描程式還將鼓勵將發現的憑據移動到更安全的位置,如 Azure 密鑰保管庫。
+**指導**方針：執行認證掃描器來識別程式碼中的認證。 認證掃描器也鼓勵將探索到的認證移至更安全的位置，例如 Azure Key Vault。
 
-如何設定認證程式:https://secdevtools.azurewebsites.net/helpcredscan.html
+如何設定認證掃描器：https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
 ## <a name="malware-defense"></a>惡意程式碼防禦
 
-*有關詳細資訊,請參閱[安全控制:惡意軟體防禦](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
+*如需詳細資訊，請參閱[安全性控制：惡意程式碼防護](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)。*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: 使用集中管理的反惡意軟體
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1：使用集中管理的反惡意程式碼軟體
 
-**指導**:不適用;本指南用於計算資源。 Microsoft 反惡意軟體在支援 Azure 服務的基礎主機上啟用(例如,Azure 應用服務),但它不在客戶內容上運行。
-
-
-**Azure 安全中心監視**:不適用
-
-**責任**:不適用
-
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2:要上傳到非計算 Azure 資源的預入檔案
-
-**指南**:在支援 Azure 服務的基礎主機上啟用 Microsoft 反惡意軟體(例如,Azure 應用服務),但它不在客戶內容上運行。
-
-您有責任預先掃描上載到非計算 Azure 資源(包括 Azure Cosmos DB)的任何檔。 Microsoft 無法存取客戶數據,因此無法代表您對客戶內容進行反惡意軟體掃描。
+**指導**方針：不適用;此指導方針適用于計算資源。 支援 Azure 服務的基礎主機（例如 Azure App Service）上已啟用 Microsoft Antimalware，但不會在客戶內容上執行。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：不適用
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: 確保更新反惡意軟體和簽名
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：預先掃描要上傳至非計算 Azure 資源的檔案
 
-**指導**:不適用;基準測試適用於計算資源。 Microsoft 反惡意軟體在支援 Azure 服務的基礎主機上啟用,但不在客戶內容上運行。
+**指引**：在支援 Azure 服務的基礎主機（例如 Azure App Service）上啟用 Microsoft Antimalware，但不會對客戶內容執行。
+
+您必須負責預先掃描所有上傳至非計算 Azure 資源的檔案，包括 Azure Cosmos DB。 Microsoft 無法存取客戶資料，因此無法代表您執行客戶內容的反惡意程式碼掃描。
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**:不適用
+**責任**：客戶
+
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3：確認反惡意程式碼軟體和簽章已更新
+
+**指導**方針：不適用;基準測試適用于計算資源。 支援 Azure 服務的基礎主機上會啟用 Microsoft Antimalware，但不會對客戶內容執行。
+
+
+**Azure 資訊安全中心監視**：不適用
+
+**責任**：不適用
 
 ## <a name="data-recovery"></a>資料復原
 
-*有關詳細資訊,請參閱[安全控制:資料恢復](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)。*
+*如需詳細資訊，請參閱[安全性控制：資料](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery)復原。*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9.1: 確保定期自動備份
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1：確保週期性自動備份
 
-**指南**:Azure Cosmos DB 每四小時拍攝一次數據的快照。 所有備份會儲存在另外的儲存體服務中，而且系統會全域複寫這些備份，以便為區域性災害提供復原功能。 任何時候都只會保留最後兩個快照集。 不過，如果容器或資料庫已刪除，Azure Cosmos DB 只會將指定容器或資料庫的現有快照集保留 30 天。 請與 Azure 支援聯繫以從備份進行還原。
+**指導**方針： Azure Cosmos DB 每四小時會取得資料的快照集。 所有備份會儲存在另外的儲存體服務中，而且系統會全域複寫這些備份，以便為區域性災害提供復原功能。 任何時候都只會保留最後兩個快照集。 不過，如果容器或資料庫已刪除，Azure Cosmos DB 只會將指定容器或資料庫的現有快照集保留 30 天。 請聯絡 Azure 支援以從備份進行還原。
 
-瞭解 Azure 宇宙 DB 自動備份:https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
+瞭解 Azure Cosmos DB 自動備份：https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 微軟
+**責任**： Microsoft
 
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: 執行完整的系統備份並備份任何客戶託管金鑰
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：執行完整的系統備份，並備份任何客戶管理的金鑰
 
-**指南**:Azure Cosmos DB 可定期自動備份數據。 如果刪除資料庫或容器,則可以提交支援票證或致電 Azure 支援以從自動連線備份還原數據。 Azure 支援僅適用於所選計畫,如標準計劃、開發人員計劃以及高於它們的計劃。 若要還原特定的備份快照集，Azure Cosmos DB 需要該資料在該快照的備份週期持續時間內為可用狀態。 
+**指導**方針： Azure Cosmos DB 自動定期備份您的資料。 如果刪除資料庫或容器，您可以提出支援票證或呼叫 Azure 支援，以從自動線上備份還原資料。 Azure 支援僅適用于選取的方案，例如標準、開發人員和方案高於其版本。 若要還原特定的備份快照集，Azure Cosmos DB 需要該資料在該快照的備份週期持續時間內為可用狀態。 
 
-如果使用密鑰保管庫為Cosmos資料庫實例存儲認證,請確保定期自動備份金鑰。
+如果使用 Key Vault 來儲存 Cosmos DB 實例的認證，請確保金鑰的定期自動備份。
 
-瞭解 Azure 宇宙 DB 自動備份:https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
+瞭解 Azure Cosmos DB 自動備份：https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
 
-如何還原 Azure 宇宙 DB 中的數據:https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
+如何還原 Azure Cosmos DB 中的資料：https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
-如何備份金鑰保存庫金鑰:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+如何備份 Key Vault 金鑰：https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-**Azure 安全中心監視**:目前不可用
+**Azure 資訊安全中心監視**：目前無法使用
 
-**責任**: 共用
+**責任**：共用
 
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3:驗證所有備份,包括客戶託管金鑰
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：驗證所有備份，包括客戶管理的金鑰
 
-**指南**:如果刪除資料庫或容器,則可以提交支援票證或致電 Azure 支援以從自動連線備份還原數據。 Azure 支援僅適用於所選計畫,如標準計劃、開發人員計劃以及高於它們的計劃。 若要還原特定的備份快照集，Azure Cosmos DB 需要該資料在該快照的備份週期持續時間內為可用狀態。
+**指導**方針：如果刪除資料庫或容器，您可以提出支援票證或呼叫 Azure 支援，以從自動線上備份還原資料。 Azure 支援僅適用于選取的方案，例如標準、開發人員和方案高於其版本。 若要還原特定的備份快照集，Azure Cosmos DB 需要該資料在該快照的備份週期持續時間內為可用狀態。
 
-使用 PowerShell 測試儲存在 Azure 密鑰保管庫中的秘密還原。 還原-AzureKeyVaultKey cmdlet 在指定的密鑰保管庫中創建密鑰。 這個鍵是輸入檔中備份密鑰的副本,與原始密鑰具有相同的名稱。
+使用 PowerShell 測試您儲存在 Azure Key Vault 中的秘密還原。 Restore-azurekeyvaultkey Cmdlet 會在指定的金鑰保存庫中建立金鑰。 這個金鑰是輸入檔中備份金鑰的複本，與原始金鑰的名稱相同。
 
-瞭解 Azure 宇宙 DB 自動備份:
+瞭解 Azure Cosmos DB 自動備份：
 
 https://docs.microsoft.com/azure/cosmos-db/online-backup-and-restore
 
-如何還原 Azure 宇宙 DB 中的數據:
+如何還原 Azure Cosmos DB 中的資料：
 
 https://docs.microsoft.com/azure/cosmos-db/how-to-backup-and-restore
 
-如何還原 Azure 金鑰保管庫機密:
+如何還原 Azure Key Vault 秘密：
 
 https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 共用
+**責任**：共用
 
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4:確保保護備份和客戶管理金鑰
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：確保備份和客戶管理金鑰的保護
 
-**指南**:由於存儲在Cosmos DB中的所有用戶數據都是靜態和傳輸中加密的,因此無需執行任何操作。 換句話說，待用加密預設便會「開啟」。 沒有關閉或開啟的控制項。 Azure Cosmos DB 對帳戶運行的所有區域使用 AES-256 加密。
+**指導**方針：因為儲存在 Cosmos DB 中的所有使用者資料都會在待用和傳輸中加密，所以您不需要採取任何動作。 換句話說，待用加密預設便會「開啟」。 沒有關閉或開啟的控制項。 Azure Cosmos DB 在執行帳戶的所有區域上使用 AES-256 加密。
 
-在金鑰保管庫中啟用軟刪除,以保護密鑰免受意外或惡意刪除。
+啟用 Key Vault 中的虛刪除，以防止金鑰遭到意外或惡意刪除。
 
-瞭解 Azure 宇宙 DB 中的資料加密:https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
+瞭解 Azure Cosmos DB 中的資料加密：https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest
 
-如何在金鑰保存庫中開啟軟刪除:https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
+如何在 Key Vault 中啟用虛刪除：https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 共用
+**責任**：共用
 
 ## <a name="incident-response"></a>事件回應
 
-*有關詳細資訊,請參閱[安全控制:事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
+*如需詳細資訊，請參閱[安全性控制：事件回應](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)。*
 
-### <a name="101-create-an-incident-response-guide"></a>10.1:建立事件回應指南
+### <a name="101-create-an-incident-response-guide"></a>10.1：建立事件回應指南
 
-**指導**:為您的組織構建事件回應指南。 確保有書面事件回應計劃,定義人員的所有角色以及事件處理/管理階段,從檢測到事件後審查。
+**指引**：為您的組織建立事件回應指南。 請確定有寫入的事件回應計畫，可定義人員的所有角色，以及從偵測到事件處理/管理的階段，以進行後續事件審查。
 
-您還可以利用 NIST 的電腦安全事件處理指南來幫助建立您自己的事件回應計劃:https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
+您也可以利用 NIST 的「電腦安全性性」事件處理指南，協助您建立自己的事件回應計畫：https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
-如何在 Azure 安全中心內配置工作流自動化:https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
+如何設定 Azure 資訊安全中心內的工作流程自動化：https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide
 
-有關構建您自己的安全事件回應流程的指導:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+建立您自己的安全性事件回應程式的指引：https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
-微軟安全回應中心的事件剖析:https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
+Microsoft 安全性回應中心的事件剖析：https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: 建立事件評分與優先順序處理程序
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：建立事件評分和優先順序程式
 
-**指南**:安全中心為每個警報分配嚴重性,以説明您優先處理應首先調查的警報。 嚴重性基於安全中心在查找或用於發出警報的分析中的信心,以及導致警報的活動背後的惡意程度。
+**指導**方針：資訊安全中心指派每個警示的嚴重性，以協助您排定應先調查哪些警示。 嚴重性是根據資訊安全中心在尋找時的信心，或用來發出警示的分析，以及導致警示的活動背後有惡意意圖的信賴等級。
 
-此外,清楚地標記訂閱(對於前 生產,非 prod),並創建命名系統以明確識別和分類 Azure 資源。
+此外，請清楚地標示訂閱（例如， 生產、非生產）並建立命名系統，以清楚識別和分類 Azure 資源。
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="103-test-security-response-procedures"></a>10.3: 測試安全回應程式
+### <a name="103-test-security-response-procedures"></a>10.3：測試安全性回應程式
 
-**指導**:進行練習,以常規節奏測試系統的事件回應能力。 找出薄弱環節和差距,並根據需要修訂計劃。
+**指導**方針：執行練習以定期測試系統的事件回應功能。 識別弱式點和間距，並視需要修訂計畫。
 
-請參閱 NIST 出版物:IT 計劃和功能測試、培訓和鍛煉計劃指南:https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
+請參閱 NIST 的發行集：適用于 IT 計畫和功能的測試、訓練和練習程式指南：https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4:提供安全事件聯繫人詳細資訊,並配置安全事件的警報通知
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全性事件連絡人詳細資料，並設定安全性事件的警示通知
 
-**指南**:如果 Microsoft 安全回應中心 (MSRC) 發現客戶的數據已被非法或未經授權的方訪問,Microsoft 將使用安全事件聯繫資訊與您聯繫。  事後查看事件,以確保問題得到解決。
+**指導**方針：如果 Microsoft 安全性回應中心（MSRC）發現客戶的資料已由非法或未經授權的合作物件存取，microsoft 將會使用安全性事件連絡人資訊來與您聯繫。  檢查事實後的事件，以確保解決問題。
 
-如何設置 Azure 安全中心安全連絡人:https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
+如何設定 Azure 資訊安全中心安全性連絡人：https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
-**Azure 安全中心監視**:是
+**Azure 資訊安全中心監視**：是
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: 將安全警報納入事件回應系統
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：將安全性警示納入事件回應系統中
 
-**指南**:使用「連續匯出」功能匯出 Azure 安全中心警報和建議。 "連續匯出"允許您手動或持續、持續的方式匯出警報和建議。 您可以使用 Azure 安全中心數據連接器來流式傳輸警報哨兵。
+**指引**：使用「連續匯出」功能來匯出您的 Azure 資訊安全中心警示和建議。 「連續匯出」可讓您以手動或持續的方式來匯出警示和建議。 您可以使用 Azure 資訊安全中心資料連線器來串流「警示」 Sentinel。
 
-如何設定連續匯出:https://docs.microsoft.com/azure/security-center/continuous-export
+如何設定連續匯出：https://docs.microsoft.com/azure/security-center/continuous-export
 
-如何將警報流式傳輸到 Azure 哨兵:https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
+如何將警示串流至 Azure Sentinel：https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10.6: 自動回應安全警報
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自動回應安全性警示
 
-**指南**:使用 Azure 安全中心的工作流自動化功能,通過安全警報和建議上的「邏輯應用」自動觸發回應。
+**指引**：使用 Azure 資訊安全中心中的工作流程自動化功能，透過「Logic Apps」安全性警示和建議，自動觸發回應。
 
-如何設定工作流自動化和邏輯應用:https://docs.microsoft.com/azure/security-center/workflow-automation
+如何設定工作流程自動化和 Logic Apps：https://docs.microsoft.com/azure/security-center/workflow-automation
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 客戶
+**責任**：客戶
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>滲透測試和 Red Team 練習
 
-*有關詳細資訊,請參閱[安全控制:滲透測試和紅隊練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
+*如需詳細資訊，請參閱[安全性控制：滲透測試和 Red Team 練習](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1:對 Azure 資源進行定期滲透測試,並確保在 60 天內補救所有關鍵安全發現
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：進行 Azure 資源的定期滲透測試，並確保在60天內補救所有重大安全性結果
 
-**指南**: 遵循 Microsoft 參與規則,確保您的滲透測試不違反 Microsoft 策略:https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
+**指導**方針：遵循 Microsoft Engagement 規則，確保您的滲透測試不會違反 microsoft 原則：https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
-您可以找到有關 Microsoft 針對 Microsoft 管理的雲端基礎架構、服務和應用程式進行紅色團隊和即時網站滲透測試的策略和執行的詳細資訊,如下所示:https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
+您可以在這裡找到有關 Microsoft 管理之雲端基礎結構、服務和應用程式的 Microsoft 策略與執行的 Red 小組和即時網站滲透測試的詳細資訊：https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Azure 安全中心監視**:不適用
+**Azure 資訊安全中心監視**：不適用
 
-**責任**: 共用
+**責任**：共用
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[Azure 安全基準](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- 瞭解有關[Azure 安全基線的更多資訊](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)
+- 請參閱[Azure 安全性基準測試](https://docs.microsoft.com/azure/security/benchmarks/overview)
+- 深入瞭解[Azure 安全性基準](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

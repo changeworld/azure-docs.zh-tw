@@ -3,12 +3,12 @@ title: 在 Linux 上設定開發環境
 description: 在 Linux 上安裝執行階段和 SDK，並建立本機開發叢集。 完成此設定之後，您就可以開始建置應用程式。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 6cedd97144a3fd32d9af8582e24ad5c12914e575
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682614"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193406"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上準備您的開發環境
 > [!div class="op_single_selector"]
@@ -179,7 +179,7 @@ RHEL | - | OpenJDK 1.8 | 內含於 npm | 最新 |
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. 打開 Web 瀏覽器並轉到[服務結構資源管理員](http://localhost:19080/Explorer)`http://localhost:19080/Explorer`()。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
+2. 開啟網頁瀏覽器並移至**Service Fabric Explorer** （`http://localhost:19080/Explorer`）。 叢集啟動時，您會看見 Service Fabric Explorer 儀表板。 叢集可能需要數分鐘的時間才能完成設定。 如果您的瀏覽器無法開啟 URL，或 Service Fabric Explorer 未顯示系統已就緒，請稍候幾分鐘，然後再試一次。
 
     ![Linux 上的 Service Fabric Explorer][sfx-linux]
 
@@ -261,11 +261,11 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 > 
 > 在 Ubuntu 上，建議您直接從 Eclipse 網站安裝，而不要使用套件安裝程式 (`apt` 或 `apt-get`)。 這麼做可確保您會取得最新版的 Eclipse。 您可以安裝適用於 Java 開發人員或 Java EE 開發人員的 Eclipse IDE。
 
-1. 在 Eclipse 中，確定您已安裝 Eclipse Neon 或更新版本以及 Buildship 2.2.1 版或更新版本。 通過選擇 **「關於 Eclipse** > **安裝詳細資訊****的説明」** > 檢查已安裝元件的版本。 您可以使用 [Eclipse Buildship：適用於 Gradle 的 Eclipse 外掛程式][buildship-update]的指示來更新 Buildship。
+1. 在 Eclipse 中，確定您已安裝 Eclipse Neon 或更新版本以及 Buildship 2.2.1 版或更新版本。 **選取** > [說明] [**關於 Eclipse** > ] [**安裝詳細資料**]，檢查已安裝的元件版本。 您可以使用 [Eclipse Buildship：適用於 Gradle 的 Eclipse 外掛程式][buildship-update]的指示來更新 Buildship。
 
-2. 要安裝服務交換矩陣外掛程式,請選擇 **「幫助** > **安裝新軟體**」。
+2. 若要安裝 Service Fabric 外掛程式，**請選取** > [說明] [**安裝新軟體**]。
 
-3. 在「**使用」** 框中, 輸入**\/Ht: /dl.microsoft.com/eclipse**。
+3. **在 [使用**] 方塊中，輸入**HTTPs\/：/dl.microsoft.com/eclipse**。
 
 4. 選取 [新增]  。
 
@@ -275,7 +275,7 @@ Service Fabric 提供的 Scaffolding 工具可協助您從終端機使用 Yeoman
 
 6. 執行安裝步驟。 然後接受使用者授權合約。
 
-如果您已安裝 Service Fabric Eclipse 外掛程式，請確定您擁有的是最新版本。 通過選擇 **「有關 Eclipse** > **安裝詳細資訊****的説明」** > 進行檢查。 然後在已安裝的外掛程式清單中搜索服務結構。如果較新版本可用,請選擇 **「更新**」 。
+如果您已安裝 Service Fabric Eclipse 外掛程式，請確定您擁有的是最新版本。 **選取** > [說明] [**關於 Eclipse** > ] [**安裝詳細資料**] 以進行檢查。 然後在已安裝的外掛程式清單中搜尋 Service Fabric。如果有較新的版本可用，請選取 [**更新**]。
 
 如需詳細資訊，請參閱[適用於 Eclipse Java 應用程式開發的 Service Fabric 外掛程式](service-fabric-get-started-eclipse.md)。
 

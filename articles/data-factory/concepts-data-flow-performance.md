@@ -1,164 +1,170 @@
 ---
-title: 映射資料串流效能和調優指南
-description: 瞭解影響 Azure 數據工廠中映射數據流性能的關鍵因素。
+title: 對應資料流程效能和微調指南
+description: 瞭解會影響 Azure Data Factory 中對應資料流程效能的關鍵因素。
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 04/14/2020
-ms.openlocfilehash: 1b3e3cd39edccd0952ce44d9cb050ca1d0c724ea
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/27/2020
+ms.openlocfilehash: 8ea26fc041f3fa6194ced65b3e3b9055848ead49
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605301"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188753"
 ---
-# <a name="mapping-data-flows-performance-and-tuning-guide"></a>映射資料串流效能和調優指南
+# <a name="mapping-data-flows-performance-and-tuning-guide"></a>對應資料流程效能和微調指南
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-在 Azure 數據工廠中映射數據流提供了一個無代碼介面,用於大規模設計、部署和協調數據轉換。 勾選此選項, 您不熟悉映射資料串流,請參考[映射資料串流 。](concepts-data-flow-overview.md)
+對應 Azure Data Factory 中的資料流程提供無程式碼介面，以大規模設計、部署和協調資料轉換。 如果您不熟悉對應的資料流程，請參閱[對應資料流程總覽](concepts-data-flow-overview.md)。
 
-在設計和測試來自 ADF UX 的資料流時,請確保打開除錯模式以即時執行資料流,而無需等待群集預熱。 有關詳細資訊,請參閱[除錯模式](concepts-data-flow-debug-mode.md)。
+當您從 ADF UX 設計和測試資料流程時，請務必切換開啟 [偵測模式]，以即時執行您的資料流程，而不需要等待叢集準備。 如需詳細資訊，請參閱[Debug Mode](concepts-data-flow-debug-mode.md)。
 
-此視訊顯示了一些使用資料流轉換資料的範例計時:
+這段影片會示範將資料轉換成資料流程的一些範例時間：
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rNxM]
 
-## <a name="monitoring-data-flow-performance"></a>監控資料流程效能
+## <a name="monitoring-data-flow-performance"></a>監視資料流程效能
 
-在設計映射數據流時,可以通過單擊配置面板中的數據預覽選項卡來對每個轉換進行單元測試。 驗證邏輯后,將數據流作為管道中的活動端到端測試。 添加執行數據流活動並使用調試按鈕測試數據流的性能。 要打開資料串流的執行計畫和效能配置檔,請單擊管道輸出選項卡中的「操作」下的眼鏡圖示。
+設計對應資料流程時，您可以按一下 [設定] 面板中的 [資料預覽] 索引標籤，對每個轉換進行單元測試。 驗證邏輯之後，請以管線中的活動的端對端測試資料流程。 加入「執行資料流程」活動，並使用 [偵錯工具] 按鈕來測試資料流程的效能。 若要開啟資料流程的執行計畫和效能設定檔，請在管線的 [輸出] 索引標籤中，按一下 [動作] 底下的 [眼鏡] 圖示。
 
-![資料流程監視器](media/data-flow/mon002.png "資料流程監視器 2")
+![資料流程監視](media/data-flow/mon002.png "資料流程監視器2")
 
- 您可以使用此資訊來估計數據流針對不同大小的資料來源的性能。 有關詳細資訊,請參閱[監視映射資料串](concepts-data-flow-monitoring.md)流 。
+ 您可以使用這項資訊，針對不同大小的資料來源來估計資料流程的效能。 如需詳細資訊，請參閱[監視對應資料流程](concepts-data-flow-monitoring.md)。
 
-![資料流程監控](media/data-flow/mon003.png "資料流程監視器 3")
+![資料流程監視](media/data-flow/mon003.png "資料流程監視器3")
 
- 對於管道調試運行,暖群集需要大約一分鐘的群集設置時間。 如果要初始化預設 Azure 整合執行時,則啟動時間可能需要大約 5 分鐘。
+ 針對「管線」 debug 執行，熱叢集需要大約一分鐘的整體效能計算中的叢集設定時間。 如果您要初始化預設 Azure Integration Runtime，加速時間可能需要大約5分鐘。
 
-## <a name="increasing-compute-size-in-azure-integration-runtime"></a>在 Azure 整合時增加計算大小
+## <a name="increasing-compute-size-in-azure-integration-runtime"></a>增加 Azure Integration Runtime 中的計算大小
 
-具有更多內核的整合式執行時會增加Spark計算環境中的節點數,並提供更多的處理能力來讀取、寫入和轉換資料。 ADF 資料流利用Spark進行計算引擎。 Spark 環境非常適合記憶體優化的資源。
-* 如果希望處理速率高於輸入速率,請嘗試**計算優化**群集。
-* 如果要在記憶體中緩存更多數據,請嘗試**記憶體優化**群集。 與計算優化相比,經過優化的記憶體每個核心的價格點更高,但可能會導致更快的轉換速度。
+具有更多核心的 Integration Runtime 會增加 Spark 計算環境中的節點數目，並提供讀取、寫入及轉換資料的更多處理能力。 ADF 資料流程會利用 Spark 來計算引擎。 Spark 環境非常適合用於記憶體優化的資源。
+* 如果您希望處理速率高於您的輸入速率，請嘗試**計算優化**叢集。
+* 如果您想要在記憶體中快取更多資料，請嘗試使用**記憶體優化**的叢集。 記憶體優化比計算優化的每個核心具有更高的價格點，但可能會導致更快速的轉換速度。
 
-![新紅外](media/data-flow/ir-new.png "新紅外")
+![新增 IR](media/data-flow/ir-new.png "新增 IR")
 
-有關如何建立整合式執行時的詳細資訊,請參閱[Azure 資料工廠中的整合執行時](concepts-integration-runtime.md)。
+如需如何建立 Integration Runtime 的詳細資訊，請參閱[Azure Data Factory 中的 Integration Runtime](concepts-integration-runtime.md)。
 
-### <a name="increase-the-size-of-your-debug-cluster"></a>增加除錯叢集大小
+### <a name="increase-the-size-of-your-debug-cluster"></a>增加您的 debug 叢集大小
 
-默認情況下,打開除錯將使用為每個資料工廠自動建立的預設 Azure 整合執行時。 此預設 Azure IR 設置為八個內核,4 個為驅動程式節點,4 個設置為輔助節點,使用常規計算屬性。 使用較大資料進行測試時,可以通過創建具有較大配置的 Azure IR 來增加調試群集的大小,並在打開調試時選擇此新的 Azure IR。 這將指示 ADF 使用此 Azure IR 進行數據預覽和管道調試,並處理數據流。
+根據預設，開啟 debug 會使用針對每個資料處理站自動建立的預設 Azure 整合執行時間。 此預設 Azure IR 設定為八個核心，四個用於驅動程式節點，而四個用於背景工作節點，使用一般計算屬性。 當您使用較大的資料進行測試時，您可以藉由建立具有較大設定的 Azure IR 來增加您的偵錯工具大小，並在切換到 [debug] 時選擇這個新的 Azure IR。 這會指示 ADF 使用此 Azure IR 進行資料預覽，以及使用資料流程來進行管線的資料流程處理。
 
-### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>使用 TTL 減少叢集計算時間
+### <a name="decrease-cluster-compute-start-up-time-with-ttl"></a>使用 TTL 減少叢集計算啟動時間
 
-數據流屬性下的 Azure IR 中有一個屬性,該屬性允許您為工廠建立群集計算資源池。 使用此池,您可以按順序提交數據流活動以執行。 建立池后,每個後續作業將需要 1-2 分鐘,按需 Spark 群集執行作業。 資源池的初始設置大約需要6分鐘。 指定您希望在存留時間 (TTL) 設置中維護資源池的時間量。
+[資料流程屬性] 下的 [Azure IR 中有一個屬性，可讓您為處理站的叢集計算資源建立集區。 使用此集區，您可以依序提交要執行的資料流程活動。 建立集區之後，每個後續的工作將需要1-2 分鐘的時間，以供隨選 Spark 叢集執行您的作業。 資源集區的初始設定需要大約6分鐘的時間。 指定您想要在存留時間（TTL）設定中維護資源集區的時間量。
 
-## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>最佳化 Azure SQL 資料庫與 Azure SQL 資料倉儲突觸
+## <a name="optimizing-for-azure-sql-database-and-azure-sql-data-warehouse-synapse"></a>優化 Azure SQL Database 和 Azure SQL 資料倉儲 Synapse
 
-### <a name="partitioning-on-source"></a>在源上分割區
+### <a name="partitioning-on-source"></a>在來源上進行資料分割
 
-1. 跳到 **"優化**"選項卡並選擇 **"設置分區"**
-1. 選擇**來源**。
-1. 在 **「分區數**」下,設置到 Azure SQL DB 的最大連接數。 您可以嘗試較高的設置來獲得與資料庫的並行連接。 但是,在某些情況下,由於連接數量有限,可能會導致性能更快。
-1. 選擇是按特定表列還是按查詢進行分區。
-1. 如果選擇**欄位,** 則選取分區列。
-1. 如果選擇 **「查詢」 請**輸入與資料庫表的分割區方案匹配的查詢。 此查詢允許源資料庫引擎利用分區消除。 不需要對源資料庫表進行分區。 如果源尚未分區,ADF 仍將根據在"源"轉換中選擇的鍵在 Spark 轉換環境中使用數據分區。
+1. 移至 [**優化**] 索引標籤，然後選取 [**設定資料分割**]
+1. 選取 [**來源**]。
+1. 在 [分割區**數目**] 底下，設定 AZURE SQL DB 的最大連接數目。 您可以嘗試較高的設定，以取得與資料庫的平行連接。 不過，某些情況下可能會因為連線數目有限而導致效能更快。
+1. 選取要依特定資料表資料行還是查詢進行分割。
+1. 如果您已選取 [資料**行**]，請挑選資料分割資料行。
+1. 如果您選取 [**查詢**]，請輸入符合資料庫資料表之資料分割配置的查詢。 此查詢可讓源資料庫引擎利用分割區刪除。 您的源資料庫資料表不需要進行資料分割。 如果您的來源尚未分割，ADF 仍然會根據您在 [來源] 轉換中選取的金鑰，使用 Spark 轉換環境中的資料分割。
 
-![來源元件](media/data-flow/sourcepart3.png "來源元件")
+![來源部分](media/data-flow/sourcepart3.png "來源部分")
 
 > [!NOTE]
-> 説明您為源選擇分區數的良好指南基於為 Azure 整合執行時設置的內核數,並將該數位乘以 5。 例如,如果要轉換 ADLS 檔夾中的一系列檔,並且要使用 32 核 Azure IR,則目標分區數為 32 x 5 = 160 個分區。
+> 協助您選擇來源的資料分割數目的最佳指南，取決於您為 Azure Integration Runtime 所設定的核心數目，並將該數位乘以5。 因此，比方說，如果您要轉換 ADLS 資料夾中的一系列檔案，而您要使用32核心 Azure IR，則目標的資料分割數目為 32 x 5 = 160 個數據分割。
 
-### <a name="source-batch-size-input-and-isolation-level"></a>來源批次處理大小、輸入和隔離等級
+### <a name="source-batch-size-input-and-isolation-level"></a>來源批次大小、輸入和隔離等級
 
-在源轉換中的 **「源選項**」 下,以下設定可能會影響效能:
+在來源轉換的 [**來源選項**] 底下，下列設定可能會影響效能：
 
-* 批次調整大小指示 ADF 將資料儲存在 Spark 記憶體中的集中,而不是逐行儲存數據。 批次調整大小是一個可選設定,如果計算節點的大小不正確,則可能會耗盡資源。 不設置此屬性將使用 Spark 緩存批處理預設值。
-* 設置查詢可以允許您在源的行到達數據流進行處理之前對其進行篩選。 這可以加快初始數據採集速度。 如果使用查詢,則可以為 Azure SQL DB 添加可選的查詢提示,例如「讀取未提交」。
-* 未提交讀取將在源轉換上提供更快的查詢結果
+* 批次大小會指示 ADF 將資料儲存在 Spark 記憶體中的集合中，而不是逐列。 [批次大小] 是選擇性的設定，如果計算節點的資源大小不正確，您可能會用盡這些資源。 未設定此屬性將會使用 Spark 快取批次預設值。
+* 設定查詢可以讓您篩選來源的資料列，然後才抵達資料流程以進行處理。 這可讓初始資料的取得速度更快。 如果您使用查詢，您可以為 Azure SQL DB 新增選擇性的查詢提示，例如讀取未認可。
+* 讀取未認可的會在來源轉換時提供更快速的查詢結果
 
 ![來源](media/data-flow/source4.png "來源")
 
-### <a name="sink-batch-size"></a>沉分批大小
+### <a name="sink-batch-size"></a>接收批次大小
 
-為避免逐行處理資料串流,請在 Azure SQL DB 與 Azure SQL DW 接收器的「設定」選項卡中設定 **「 批次**」 設定 。 如果設置了批處理大小,ADF 會根據提供的大小處理分批寫入資料庫。 不設置此屬性將使用 Spark 緩存批處理預設值。
+若要避免對資料流程進行逐列處理，請在 Azure SQL DB 和 Azure SQL DW 接收的 [設定] 索引標籤中設定**批次大小**。 如果已設定批次大小，ADF 會根據所提供的大小，以批次方式處理資料庫寫入。 未設定此屬性將會使用 Spark 快取批次預設值。
 
 ![接收](media/data-flow/sink4.png "接收")
 
-### <a name="partitioning-on-sink"></a>在水槽上分區
+### <a name="partitioning-on-sink"></a>在接收上分割
 
-即使您的目標表中沒有分區數據,也建議在接收器轉換中對數據進行分區。 分區數據通常會導致強制所有連接使用單個節點/分區的載入速度更快。 跳到接收器的「優化」選項卡,然後選擇 *「迴圈分區*」以選擇要寫入接收器的理想分區數。
+即使您的資料未分割在目的地資料表中，但建議您將資料分割在「接收」轉換中。 分割資料的載入頻率通常會比強制所有連接使用單一節點/資料分割更快。 移至接收的 [優化] 索引標籤，然後選取 [*迴圈*配置資源分割]，以選取要寫入至接收的理想分割區數目。
 
-### <a name="disable-indexes-on-write"></a>關閉寫入時索引
+### <a name="disable-indexes-on-write"></a>在寫入時停用索引
 
-在管道中,在資料流活動之前添加[存儲過程活動](transform-data-using-stored-procedure.md),該活動禁用從接收器寫入的目標表上的索引。 在數據流活動之後,添加另一個啟用這些索引的存儲過程活動。 或者利用資料庫接收器中的預處理和後處理腳本。
+在您的管線中，將[預存程式活動](transform-data-using-stored-procedure.md)加入至您的資料流程活動之前，會在您的接收所寫入的目標資料表上停用索引。 在資料流程活動之後，加入另一個可啟用這些索引的預存程式活動。 或利用資料庫接收中的前置處理和後置處理腳本。
 
-### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>增加 Azure SQL DB 與 DW 的大小
+### <a name="increase-the-size-of-your-azure-sql-db-and-dw"></a>增加您的 Azure SQL DB 和 DW 的大小
 
-在導管執行之前安排對源和接收器 Azure SQL DB 和 DW 的大小進行調整,以增加輸送量並在達到 DTU 限制後最小化 Azure 限制。 管道執行完成後,將資料庫調整到其正常運行速率。
+在您的管線執行之前，排程來源的調整大小並接收 Azure SQL DB 和 DW，以增加輸送量，並在達到 DTU 限制之後將 Azure 節流降至最低。 當您的管線執行完成之後，請將您的資料庫調整回其正常執行速率。
 
-* SQL DB 源表具有 887k 行和 74 列到 SQL DB 表,具有單個派生列轉換,使用經過 80 核調試 Azure IR 的記憶體,端到端大約需要 3 分鐘。
+* 具有887k 資料列和74資料行的 SQL DB 來源資料表至具有單一衍生資料行轉換的 SQL DB 資料表，會使用記憶體優化的 80-核心 debug Azure IRs 來進行大約3分鐘的端對端處理。
 
-### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[僅 Azure 同步 SQL DW]使用暫存透過聚基批次載入資料
+### <a name="azure-synapse-sql-dw-only-use-staging-to-load-data-in-bulk-via-polybase"></a>[僅限 Azure Synapse SQL DW]使用預備環境透過 Polybase 大量載入資料
 
-若要避免逐行插入 DW,請在接收器設定中選取中**啟用暫存,** 以便 ADF 可以使用[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)。 PolyBase 允許 ADF 批量載入數據。
-* 當您從導管執行資料串流活動時,您需要選擇 Blob 或 ADLS Gen2 儲存位置,以在大量載入期間暫存資料。
+若要避免將逐列插入至 DW，請核取 [在您的接收設定中**啟用暫存**]，讓 ADF 可以使用[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide)。 PolyBase 可讓 ADF 大量載入資料。
+* 當您從管線執行「資料流程」活動時，您必須選取 Blob 或 ADLS Gen2 儲存體位置，以便在大量載入期間暫存您的資料。
 
-* 421Mb 檔案的檔源包含 74 列到 Synapse 表,單個派生列轉換使用經過最佳化的記憶體 80 核調試 Azure IR 端到端大約需要 4 分鐘。
+* 包含74個數據行的421Mb 檔案的檔案來源到 Synapse 資料表，而單一衍生的資料行轉換需要大約4分鐘的端對端，使用記憶體優化 80-核心 debug Azure IRs。
 
-## <a name="optimizing-for-files"></a>優化檔案
+## <a name="optimizing-for-files"></a>檔案的優化
 
-在每個轉換中,您可以設置您希望數據工廠在「優化」選項卡中使用的分區方案。最好首先測試基於檔的接收器,保留預設分區和優化。
+在每次轉換時，您都可以在 [優化] 索引標籤中設定要讓 data factory 使用的資料分割配置。最好先測試以檔案為基礎的接收，保留預設的分割和優化。
 
-* 對於較小的檔,您可能會發現選擇較少的分區有時比要求 Spark 對您的小檔進行分區更好、更快。
-* 如果沒有足夠的源數據資訊,請選擇 *"迴圈*分區"並設置分區數。
-* 如果資料具有可是好的哈希鍵的欄,請選擇*哈希分區*。
+* 對於較小的檔案，您可能會發現選擇較少的磁碟分割，有時可以比要求 Spark 分割小型檔案更好且快速。
+* 如果您沒有來源資料的足夠資訊，請選擇 [*迴圈*配置資源分割]，並設定資料分割數目。
+* 如果您的資料行有可能是良好的雜湊索引鍵，請選擇 [*雜湊分割*]。
 
-* 包含包含 74 列的 421Mb 檔的檔接收器的檔源和單個派生列轉換使用經過優化的記憶體 80 核調試 Azure IR 端到端大約需要 2 分鐘。
+* 具有74個數據行之421Mb 檔的 file 接收和單一衍生的資料行轉換，需要大約2分鐘的端對端使用記憶體優化 80-核心 debug Azure IRs。
 
-在數據預覽和管道調試中調試時,基於檔的源數據集的限制和採樣大小僅適用於返回的行數,而不是讀取的行數。 這可能會影響調試執行的性能,並可能導致流失敗。
-* 默認情況下,除錯群集是小型單節點群集,我們建議使用示例小檔進行調試。 轉到調試設置,並使用臨時檔指向數據的一小部分。
+在資料預覽和管線偵錯工具中進行偵錯工具時，檔案型源資料集的限制和取樣大小只會套用至傳回的資料列數目，而不會套用至讀取的資料列數目。 這可能會影響您的偵錯工具執行效能，而且可能會導致流程失敗。
+* Debug 叢集預設為小型單一節點叢集，建議使用範例小型檔案進行偵錯工具。 移至 [偵錯工具] [設定]，並使用暫存檔案指向資料的小型子集。
 
-    ![除錯設定](media/data-flow/debugsettings3.png "偵錯設定")
+    ![Debug 設定](media/data-flow/debugsettings3.png "偵錯設定")
 
 ### <a name="file-naming-options"></a>檔案命名選項
 
-在映射寫入 Blob 或 ADLS 檔案儲存的資料串流中寫入轉換資料的最常見方法。 在接收器中,必須選擇指向容器或資料夾的數據集,而不是命名檔案。 當映射數據流使用 Spark 執行時,您的輸出會根據您的分區方案拆分到多個檔上。
+在對應資料流程中寫入 Blob 或 ADLS 檔案存放區的轉換資料時，最常見的方式。 在您的接收中，您必須選取指向容器或資料夾的資料集，而不是名為的檔案。 當對應資料流程使用 Spark 來執行時，系統會根據您的資料分割配置，將您的輸出分割成多個檔案。
 
-常見的分割區方案是選擇 _「輸出到單個檔案_」,該檔將所有輸出 PART 檔合併到接收器中的單個檔中。 此操作要求將輸出減少到單個群集節點上的單個分區。 如果要將許多大型源檔合併到單個輸出檔中,則群集節點資源可能會耗盡。
+常見的資料分割配置是選擇 [_輸出至單一_檔案]，這會將所有輸出元件檔案合併到接收中的單一檔案。 此作業需要輸出縮減為單一叢集節點上的單一分割區。 如果您要將許多大型來源檔案結合成單一輸出檔，您可以耗盡叢集節點資源。
 
-為了避免耗盡計算節點資源,請將預設優化的方案保留在資料流中,並在管道中添加複製活動,將輸出資料夾中的所有 PART 檔案合併到新的單個檔。 此技術將轉換操作與檔合併分開,並實現與將 _「輸出」設置為單個檔_相同的結果。
+若要避免耗盡計算節點資源，請在資料流程中保留預設的優化配置，並在管線中新增複製活動，以將輸出檔案夾中的所有元件檔案合併到新的單一檔案。 這項技術會將轉換的動作與檔案合併分開，並達到將_輸出設定為單一_檔案的相同結果。
 
-### <a name="looping-through-file-lists"></a>循環存取檔案清單
+### <a name="looping-through-file-lists"></a>迴圈流覽檔案清單
 
-當源轉換在多個檔上迴圈,而不是通過 For each 活動迴圈時,映射數據流將更好地執行。 我們建議在源轉換中使用通配符或檔案清單。 數據流過程將更快地執行,允許迴圈在Spark群集內進行。 關於詳細資訊,請參考[源碼轉換中的通配子](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
+當來源轉換反復處理多個檔案，而不是透過每個活動的迴圈時，對應資料流程的執行效能會更好。 我們建議在您的來源轉換中使用萬用字元或檔案清單。 資料流程處理常式會藉由允許迴圈在 Spark 叢集中發生，而執行得更快。 如需詳細資訊，請參閱[原始檔轉換中的萬用字元](connector-azure-data-lake-storage.md#mapping-data-flow-properties)。
 
-例如,如果您有一個 2019 年 7 月的數據檔清單,您希望在 Blob 儲存中的資料夾中處理,下面是可在源轉換中使用通配符。
+例如，如果您有2019年7月的資料檔案清單，而您想要在 Blob 儲存體的資料夾中處理該檔案，以下是您可以在來源轉換中使用的萬用字元。
 
 ```DateFiles/*_201907*.txt```
 
-通過使用通配符,管道將僅包含一個數據流活動。 這將比對 Blob 儲存的查找效果更好,然後使用 ForEach 和內部執行數據流活動遍遍所有匹配的檔。
+藉由使用萬用字元，您的管線將只會包含一個資料流程活動。 這會比對 Blob 存放區進行查閱的效果更好，然後使用 ForEach 搭配內的「執行資料流程」活動，逐一查看所有相符的檔案。
 
-### <a name="optimizing-for-cosmosdb"></a>為宇宙發展優化
+### <a name="optimizing-for-cosmosdb"></a>針對 CosmosDB 優化
 
-在CosmosDB接收器上設置輸送量和批次處理屬性僅在從管道資料流活動執行該資料流期間生效。 在數據流執行后,CosmosDB 將遵守原始收集設置。
+在 CosmosDB 接收上設定輸送量和批次屬性，只會在從管線資料流程活動的資料流程執行期間生效。 在您的資料流程執行之後，CosmosDB 會接受原始的集合設定。
 
-* 批次調整大小:計算資料的粗排大小,並確保行大小 = 批次大小小於 200 萬。 如果是,則增加批處理大小以獲得更好的輸送量
-* 輸送量:在此處設置更高的輸送量設置,以允許文檔更快地寫入CosmosDB。 請記住,基於高輸送量設置的 RU 成本較高。
-*   寫入輸送量預算:使用小於每分鐘總 R 機的值。 如果數據流具有大量 Spark 分區,則設置預算輸送量將允許在這些分區之間實現更多平衡。
+* 批次大小：計算資料的粗略資料列大小，並確認 rowSize * 批次大小小於2000000。 如果是，請增加批次大小以取得更佳的輸送量
+* 輸送量：在這裡設定較高的輸送量設定，以允許檔更快速地寫入 CosmosDB。 請記住，以高輸送量設定為基礎的較高 RU 成本。
+*   寫入輸送量預算：使用小於每分鐘的 ru 總數的值。 如果您的資料流程具有大量的 Spark 分割區，則設定預算輸送量會允許在這些分割區之間進行更多的平衡。
 
-## <a name="join-performance"></a>加入效能
+## <a name="join-performance"></a>聯結效能
 
-管理數據流中聯接的性能是一項很常見的操作,您將在整個數據轉換的整個生命週期中執行。 在 ADF 中,數據流不需要在聯接之前對數據進行排序,因為這些操作在 Spark 中作為哈希聯接執行。 但是,您可以通過"廣播"聯接優化提高性能。 這將通過將聯接關係兩側的內容向下推送到 Spark 節點來避免隨機播放。 這適用於用於參考查找的較小表。 可能不適合節點記憶體的較大表不適合廣播優化。
+管理資料流程中聯結的效能是一項很常見的作業，您會在資料轉換的整個生命週期中執行。 在 ADF 中，資料流程不需要在聯結之前排序資料，因為這些作業是以 Spark 中的雜湊聯結執行。 不過，您可以透過適用于聯結、存在和查閱轉換的「廣播」聯結優化，受益于改善的效能。
 
-另一個聯接優化是構建聯接,這樣可以避免 Spark 實現交叉聯接的傾向。 例如,當您在聯接條件中包含文本值時,Spark可能會將其視為首先執行完整點菜產品,然後篩選出聯接值的要求。 但是,如果您確保聯接條件兩側都有列值,則可以避免此 Spark 誘導的點菜產品並提高聯接和數據流的性能。
+這可避免即時洗牌，方法是將聯結關聯性任一端的內容向下推送至 Spark 節點。 這適用于用於參考查閱的小型資料表。 較大的資料表可能無法放入節點的記憶體中，對廣播優化而言是不錯的候選項目。
+
+對於具有許多聯結作業的資料流程，建議的設定是將優化設為「自動」，以進行「廣播」，並使用記憶體優化 Azure Integration Runtime 設定。 如果您在資料流程執行期間遇到記憶體不足的錯誤或廣播超時，您可以關閉廣播優化。 不過，這會造成資料流程的執行速度變慢。 （選擇性）您可以指示資料流程只在聯結的左側或右側（或兩者）下推。
+
+![廣播設定](media/data-flow/newbroad.png "廣播設定")
+
+另一個聯結優化是以可避免 Spark 傾向于執行交叉聯結的方式來建立聯接。 例如，當您在聯結條件中包含常值時，Spark 可能會發現必須先執行完整的笛卡兒乘積，然後篩選出聯結的值。 但是，如果您確保聯結條件的兩端都有資料行值，您可以避免此 Spark 引發的笛卡兒乘積，並改善您的聯結和資料流程的效能。
 
 ## <a name="next-steps"></a>後續步驟
 
-請參考與效能相關的其他資料串流文章:
+請參閱其他與效能相關的資料流程文章：
 
-- [資料流程優化選項卡](concepts-data-flow-overview.md#optimize)
+- [資料流程優化索引標籤](concepts-data-flow-overview.md#optimize)
 - [資料流程活動](control-flow-execute-data-flow-activity.md)
-- [監控資料流程效能](concepts-data-flow-monitoring.md)
+- [監視資料流程效能](concepts-data-flow-monitoring.md)

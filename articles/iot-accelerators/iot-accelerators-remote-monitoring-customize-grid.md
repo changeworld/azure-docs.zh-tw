@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/04/2018
 ms.topic: conceptual
-ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e27c1c4303129467c0bd05152570e26f129585a1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "61447092"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82186283"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>在遠端監視解決方案加速器 Web UI 中新增自訂格線
 
@@ -31,7 +31,7 @@ ms.locfileid: "61447092"
 - [Git](https://git-scm.com/downloads)
 - [Node.js](https://nodejs.org/download/)
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 請先完成下列文章中的步驟再繼續：
 
@@ -182,7 +182,7 @@ describe('BasicPage Component', () => {
 npm start
 ```
 
-前面的命令在 本地運行[http://localhost:3000/dashboard](http://localhost:3000/dashboard)UI。 瀏覽至 [範例]**** 頁面，以查看來自服務的方格顯示資料。
+上一個命令會在本機於 `http://localhost:3000/dashboard` 執行 UI。 瀏覽至 [範例]**** 頁面，以查看來自服務的方格顯示資料。
 
 ## <a name="select-rows"></a>選取資料列
 

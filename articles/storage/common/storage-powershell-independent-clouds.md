@@ -1,7 +1,7 @@
 ---
-title: 使用 PowerShell 管理 Azure 獨立雲中的資料
+title: 使用 PowerShell 來管理 Azure 獨立雲端中的資料
 titleSuffix: Azure Storage
-description: 使用 Azure PowerShell 管理雲、政府雲和德國雲中的存儲。
+description: 使用 Azure PowerShell 管理中國雲端、政府雲端和德文雲端中的儲存體。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,19 +9,19 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5fa515515c06466e121a5c0ee925fd4d14245363
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74895243"
+ms.lasthandoff: 04/27/2020
+ms.locfileid: "82176204"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 在 Azure 獨立雲端中管理儲存體
 
 大多數人會針對其全域 Azure 部署使用 Azure 公用雲端。 也有因為主權等等原因的一些獨立部署 Microsoft Azure。 這些獨立部署稱為「環境」。 下列清單詳細說明目前可用的獨立雲端。
 
 * [Azure Government 雲端](https://azure.microsoft.com/features/gov/)
-* [Azure中國 21Vianet 雲，由 21Vianet 在中國運營](http://www.windowsazure.cn/)
+* [中國世紀地區營運的 Azure 中國世紀雲端](http://www.windowsazure.cn/)
 * [Azure 德國雲端](../../germany/germany-welcome.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -74,7 +74,7 @@ Get-AzLocation | select Location, DisplayName
 
 使用 [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment) 擷取端點尾碼。 端點是環境的「StorageEndpointSuffix」** 屬性。
 
-以下程式碼片段演示如何檢索終結點尾碼。 所有這些命令都會返回諸如"core.cloudapp.net"或"core.cloudapi.de"等內容。將尾碼追加到存儲服務以訪問該服務。 例如，"queue.core.cloudapi.de" 會在德國雲端中存取佇列服務。
+下列程式碼片段示範如何取出端點尾碼。 所有這些命令都會傳回類似 "core.cloudapp.net" 或 "core.cloudapi.de" 等的專案。將尾碼附加至儲存體服務，以存取該服務。 例如，"queue.core.cloudapi.de" 會在德國雲端中存取佇列服務。
 
 此程式碼片段會擷取所有環境及其端點尾碼。
 
@@ -97,7 +97,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 Get-AzEnvironment -Name AzureGermanCloud
 ```
 
-結果類似于以下值：
+結果與下列值類似：
 
 |屬性名稱|值|
 |----|----|
@@ -125,7 +125,7 @@ Write-Host "Storage EndPoint Suffix = " $environment.StorageEndpointSuffix
 
 ### <a name="get-endpoint-from-a-storage-account"></a>從儲存體帳戶取得端點
 
-您還可以檢查存儲帳戶的屬性以檢索終結點：
+您也可以檢查儲存體帳戶的屬性以取得端點：
 
 ```powershell
 # Get a reference to the storage account.
@@ -141,7 +141,7 @@ Write-Host "queue endpoint = " $storageAccount.PrimaryEndPoints.Queue
 Write-Host "table endpoint = " $storageAccount.PrimaryEndPoints.Table
 ```
 
-對於政府雲中的存儲帳戶，此命令返回以下輸出：
+針對政府雲端中的儲存體帳戶，此命令會傳回下列輸出：
 
 ```
 blob endpoint = http://myexistingstorageaccount.blob.core.usgovcloudapi.net/
@@ -152,11 +152,11 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 
 ## <a name="after-setting-the-environment"></a>設定環境之後
 
-從這裡開始，您可以使用與用來管理儲存體帳戶及存取資料層的相同 PowerShell，如同[使用 Azure PowerShell 與 Azure 儲存體](storage-powershell-guide-full.md)一文所述。
+您現在可以使用 PowerShell 來管理儲存體帳戶，以及存取 blob、佇列、檔案和資料表資料。 如需詳細資訊，請參閱[Az. Storage](/powershell/module/az.storage)。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-如果為此練習創建了一個新資源組和存儲帳戶，則可以通過刪除資源組來刪除這兩個資產。 刪除資源群組會刪除群組內含的所有資源。
+如果您已在此練習中建立新的資源群組和儲存體帳戶，您可以藉由刪除資源群組來移除這兩個資產。 刪除資源群組會刪除群組內含的所有資源。
 
 ```powershell
 Remove-AzResourceGroup -Name $resourceGroup
@@ -165,7 +165,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 ## <a name="next-steps"></a>後續步驟
 
 * [在 PowerShell 工作階段之間保存使用者登入](/powershell/azure/context-persistence)
-* [Azure 政府存儲](../../azure-government/documentation-government-services-storage.md)
+* [Azure Government 儲存體](../../azure-government/documentation-government-services-storage.md)
 * [Microsoft Azure Government 開發人員指南](../../azure-government/documentation-government-developer-guide.md)
-* [Azure 中國 21Vianet 應用程式的開發人員說明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
+* [適用于 Azure 中國世紀應用程式的開發人員注意事項](https://msdn.microsoft.com/library/azure/dn578439.aspx)
 * [Azure 德國文件](../../germany/germany-welcome.md)

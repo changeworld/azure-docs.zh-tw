@@ -1,88 +1,88 @@
 ---
-title: 排除資料流程故障
-description: 瞭解如何在 Azure 數據工廠中解決數據流問題。
+title: 針對資料流程進行疑難排解
+description: 瞭解如何針對 Azure Data Factory 中的資料流程問題進行疑難排解。
 services: data-factory
 ms.author: makromer
 author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/02/2020
-ms.openlocfilehash: e9e9b10cc9bae029fe11fb2bd1f8b76cf120744a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 04/27/2020
+ms.openlocfilehash: c9ac8d7ea465a26d29bf8f8fbc15dcefaf9d7575
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81417805"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82187274"
 ---
-# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>在 Azure 資料工廠中排除資料流程故障
+# <a name="troubleshoot-data-flows-in-azure-data-factory"></a>針對 Azure Data Factory 中的資料流程進行疑難排解
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-本文探討 Azure 數據工廠中數據流的常見故障排除方法。
+本文探討 Azure Data Factory 中資料流程的常見疑難排解方法。
 
-## <a name="common-errors-and-messages"></a>常見錯誤和訊息
+## <a name="common-errors-and-messages"></a>常見的錯誤和訊息
 
-### <a name="error-code-df-executor-sourceinvalidpayload"></a>錯誤代碼:DF-執行器-來源不合法
-- **訊息**: 資料預覽、除錯和導管資料串流執行失敗,因為容器不存在
-- **原因**:當資料集包含儲存中不存在的容器時
-- **建議**:確保資料集中引用的容器存在或可訪問。
+### <a name="error-code-df-executor-sourceinvalidpayload"></a>錯誤碼： DF-執行程式-SourceInvalidPayload
+- **訊息**：資料預覽、debug 和管線資料流程執行失敗，因為容器不存在
+- **原因**：當資料集包含不存在於儲存體中的容器時
+- **建議**：請確定您的資料集內所參考的容器存在或可存取。
 
-### <a name="error-code-df-executor-systemimplicitcartesian"></a>錯誤代碼:DF-執行器-系統隱式卡特
+### <a name="error-code-df-executor-systemimplicitcartesian"></a>錯誤碼： DF-執行程式-SystemImplicitCartesian
 
-- **消息**: 不支援內部聯接的隱式點菜產品,而是使用 CROSS JOIN。 聯接中使用的列應為行創建唯一的鍵。
-- **原因**:不支援邏輯計劃之間用於 INNER 聯接的隱式點菜產品。 如果聯接中使用的列創建唯一鍵,則至少需要關係兩側的一列。
-- **建議**:對於非相等的聯接,您必須選擇 CUSTOM CROSS JOIN。
+- **訊息**：不支援內部聯結的隱含笛卡兒乘積，請改用 CROSS join。 聯結中使用的資料行應該建立資料列的唯一索引鍵。
+- **原因**：不支援邏輯計畫之間內部聯結的隱含笛卡兒乘積。 如果聯結中使用的資料行建立唯一索引鍵，則需要關聯性兩邊的至少一個資料行。
+- **建議**：對於不相等的聯結，您必須選擇自訂交叉聯結。
 
-### <a name="error-code-df-executor-systeminvalidjson"></a>錯誤代碼:DF-執行器-系統無效
+### <a name="error-code-df-executor-systeminvalidjson"></a>錯誤碼： DF-執行程式-SystemInvalidJson
 
-- **訊息**: JSON 分析錯誤、不支援的編碼或多行
-- **原因**: JSON 檔案可能存在問題:不支援的編碼、損壞的位元組或使用 JSON 源作為許多嵌套行上的單個文件
-- **建議**:驗證 JSON 檔的編碼是否受支援。 在使用 JSON 數據集的源轉換上,展開「JSON 設置」並打開「單一文檔」。
+- **訊息**： JSON 剖析錯誤、不支援的編碼或多行
+- **原因**： JSON 檔案可能的問題：不支援的編碼、損毀的位元組，或在許多嵌套行上使用 json 來源做為單一檔
+- **建議**：確認支援 JSON 檔案的編碼。 在使用 JSON 資料集的來源轉換中，展開 [JSON 設定]，然後開啟 [單一檔]。
  
-### <a name="error-code-df-executor-broadcasttimeout"></a>錯誤代碼:DF 執行器-廣播逾時
+### <a name="error-code-df-executor-broadcasttimeout"></a>錯誤碼： DF-執行程式-BroadcastTimeout
 
-- **訊息**: 廣播連線逾時錯誤,確保廣播串流在除錯執行中產生資料 60 秒以內,在工作執行中產生 300 秒的資料
-- **原因**:在調試運行中廣播的預設超時為 60 秒,在作業運行中預設超時為 300 秒。 選擇廣播的流似乎很大,無法在此限制內生成數據。
-- **建議**:避免廣播處理可能需要60秒以上的大型數據流。 選擇較小的流進行廣播。 大型 SQL/DW 表和源檔通常是壞候選項。
+- **訊息**：廣播聯結逾時錯誤，請確定廣播串流會在執行調試的60秒內產生資料，並在作業執行中產生300秒
+- **原因**：廣播在執行偵錯工具時的預設超時時間為60秒，而在作業回合中為300秒。 選擇要廣播的資料流程似乎很大，所以無法在此限制內產生資料。
+- **建議**：在 [聯結]、[存在] 和 [查閱] 的資料流程轉換上，檢查 [優化] 索引標籤。 [廣播] 的預設選項是 [自動]。 若已設定，或如果您手動將左側或右側設定為 [固定] 底下的廣播，您可以設定較大的 Azure Integration Runtime 設定，或關閉廣播。 資料流程中最佳效能的建議方法是允許 Spark 使用「自動」進行廣播，並使用記憶體優化的 Azure IR。
 
-### <a name="error-code-df-executor-conversion"></a>錯誤代碼:DF-執行器轉換
+### <a name="error-code-df-executor-conversion"></a>錯誤碼： DF-執行程式-轉換
 
-- **訊息**:由於字元無效,轉換為日期或時間失敗
-- **原因**: 資料未採用預期格式
-- **建議**:使用正確的資料型態
+- **訊息**：因為字元無效，所以轉換成日期或時間失敗
+- **原因**：資料不是預期的格式
+- **建議**：使用正確的資料類型
 
-### <a name="error-code-df-executor-invalidcolumn"></a>錯誤代碼:DF-執行器-無效欄位
+### <a name="error-code-df-executor-invalidcolumn"></a>錯誤碼： DF-執行程式-InvalidColumn
 
-- **訊息**:列名稱需要在查詢中指定,如果使用 SQL 函式設定別名
-- **原因**:未指定欄位
-- **建議**:如果使用 SQL 函數(如最小值/max()等,則設置別名。
+- **訊息**：必須在查詢中指定資料行名稱，並在使用 SQL 函數時設定別名
+- **原因**：未指定資料行名稱
+- **建議**：如果使用 SQL 函式，例如 min （）/max （）等，請設定別名。
 
-### <a name="error-code-getcommand-outputasync-failed"></a>錯誤代碼:取得指令輸出 Async 失敗
+### <a name="error-code-getcommand-outputasync-failed"></a>錯誤碼： Iclientvirtualdevice OutputAsync 失敗
 
-- **訊息**: 在資料流程除錯和資料預覽期間: 取得指令輸出 Async 失敗與 ...
-- **原因**:這是後端服務錯誤。 您可以重試該操作,也可以重新啟動除錯工作階段。
-- **建議**:如果重試並重新啟動無法解決問題,請聯繫客戶支援。
+- **訊息**：在資料流程 debug 和 data preview 期間： iclientvirtualdevice OutputAsync 失敗，發生 .。。
+- **原因**：這是後端服務錯誤。 您可以重試此作業，並重新啟動您的偵錯工具。
+- **建議**：如果 [重試] 和 [重新開機] 無法解決問題，請聯絡客戶支援。
 
-### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>錯誤代碼:遇到意外例外失敗
+### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>錯誤碼：發生未預期的例外狀況，執行失敗
 
-- **消息**:在數據流活動執行期間:命中意外異常並執行失敗。
-- **原因**:這是後端服務錯誤。 您可以重試該操作,也可以重新啟動除錯工作階段。
-- **建議**:如果重試並重新啟動無法解決問題,請聯繫客戶支援。
+- **訊息**：在資料流程活動執行期間：遇到非預期的例外狀況，執行失敗。
+- **原因**：這是後端服務錯誤。 您可以重試此作業，並重新啟動您的偵錯工具。
+- **建議**：如果 [重試] 和 [重新開機] 無法解決問題，請聯絡客戶支援。
 
-## <a name="general-troubleshooting-guidance"></a>一般故障排除指南
+## <a name="general-troubleshooting-guidance"></a>一般疑難排解指引
 
-1. 檢查數據集連接的狀態。 在每個源和接收器轉換中,訪問您正在使用的每個資料集的連結服務並測試連接。
-1. 從數據流設計器檢查檔和錶連接的狀態。 開啟除錯並按一下源轉換上的數據預覽,以確保您能夠存取資料。
-1. 如果數據預覽中的所有內容都看起來不錯,請進入管道設計器,並將數據流放入管道活動中。 調試管道以進行端到端測試。
+1. 檢查資料集連接的狀態。 在每個「來源」和「接收」轉換中，流覽您所使用之每個資料集的連結服務，並測試連接。
+1. 從 [資料流程設計師] 檢查檔案和資料表連接的狀態。 開啟 [偵錯工具]，然後按一下來源轉換上的 [資料預覽]，以確保您能夠存取您的資料。
+1. 如果資料預覽中的一切都不錯，請進入「管線設計師」，並將您的資料流程放在管線活動中。 針對端對端測試進行管線的偵錯工具。
 
 ## <a name="next-steps"></a>後續步驟
 
-有關更多故障排除説明,請嘗試以下資源:
-*  [資料工廠博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
-*  [資料工廠功能要求](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure 視訊](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+如需更多疑難排解協助，請嘗試下列資源：
+*  [Data Factory 的 blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [Data Factory 功能要求](https://feedback.azure.com/forums/270578-data-factory)
+*  [Azure 影片](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [MSDN 論壇](https://social.msdn.microsoft.com/Forums/home?sort=relevancedesc&brandIgnore=True&searchTerm=data+factory)
-*  [數據工廠的堆疊溢出論壇](https://stackoverflow.com/questions/tagged/azure-data-factory)
-*  [有關資料工廠的 Twitter 資訊](https://twitter.com/hashtag/DataFactory)
-*  [ADF 映射資料串流效能指導](concepts-data-flow-performance.md)
+*  [Data Factory Stack Overflow 論壇](https://stackoverflow.com/questions/tagged/azure-data-factory)
+*  [關於 Data Factory 的 Twitter 資訊](https://twitter.com/hashtag/DataFactory)
+*  [ADF 對應資料流程效能指南](concepts-data-flow-performance.md)

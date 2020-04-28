@@ -3,12 +3,12 @@ title: Azure 檔案共用備份的支援矩陣
 description: 提供備份 Azure 檔案共用時的支援設定和限制摘要。
 ms.topic: conceptual
 ms.date: 1/26/2020
-ms.openlocfilehash: e74d04cf8ae9010a860b8467d0de771524bd3f3a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 03190c6b83fceec88442583a57ff46756cfe6221
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82103200"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195684"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Azure 檔案共用備份的支援矩陣
 
@@ -20,13 +20,13 @@ Azure 檔案共用的備份可在下列地區中取得：
 
 | GA 地區 | 支援的區域，但不是 GA                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 澳大利亞東部（AE）、加拿大中部（CNC）、美國中西部（WCUS）、印度南部（INS）、美國中北部（NCUS）、日本東部（JPE）、巴西南部（BRS」）                                                     |澳大利亞東部（ASE）、加拿大東部（CE）、美國中部（CU）、東亞（EA）、美國東部（EUS）、美國東部2（EUS2）、日本西部（JPW）、印度中部（INC）、韓國中部（KRC）、南韓南部（KRS）、北歐（NE）、美國中南部（SCUS）、南部東亞（海運）、英國南部（UKS）、英國西部（UKW）、西歐（us）、美國西部（WUS）、US Gov 亞利桑那州（UGA）、US Gov 德克薩斯州（UGT）、US Gov 維吉尼亞州（UGV）、澳大利亞中部（ACL）、印度西部（INW）、南非北部（SAN）、阿拉伯聯合大公國北部（UAN）、法國中部（FRC）、德國北部（GN）、德國中西部（GWC）、南非西部（已看到）、阿拉伯聯合大公國中部（UAC）、挪威東部（N 我們）、挪威西部（NWW）、瑞士北部（SZN）、美國西部2（WUS 2）             |
+| 澳大利亞東部（ASE）、加拿大中部（CNC）、美國中西部（WCUS）、美國西部2（WUS 2）、印度南部（INS）、美國中北部（NCUS）、日本東部（JPE）、巴西南部（BRS」）、南部東亞（海運）                                                     |澳大利亞東部（AE）、加拿大東部（CE）、東亞（EA）、美國東部（EUS）、美國東部2（EUS2）、日本西部（JPW）、印度中部（INC）、韓國中部（KRC）、南韓南部（KRS）、北歐（NE）、美國中南部（SCUS）、英國南部（UKS）、英國西部（UKW）、西歐（us）、美國西部（WUS）、US Gov 亞利桑那州（UGA）、US Gov 德克薩斯州（）、US Gov 維吉尼亞州（UGT）、澳大利亞中部（ACL）、印度西部（INW）、南非北部（SAN）、阿拉伯聯合大公國北部（UAN）、法國中部（FRC）、德國北部（GN）、德國中西部（GWC）、南非西部（已看到）、阿拉伯聯合大公國中部（UAC）、挪威東部（N 我們）、挪威西部（NWW）、瑞士北部（SZN）、美國中部（CU）           |
 
 ## <a name="supported-storage-accounts"></a>支援的儲存體帳戶
 
 | 儲存體帳戶詳細資料 | 支援                                                      |
 | ------------------------ | ------------------------------------------------------------ |
-| 帳戶種類            | Azure 備份支援一般用途 v1 和一般用途 v2 儲存體帳戶中的 Azure 檔案共用 |
+| 帳戶種類            | Azure 備份支援一般用途 v1、一般用途 v2 和檔案共用類型儲存體帳戶中的 Azure 檔案共用 |
 | 效能              | Azure 備份支援標準和進階儲存體帳戶中的檔案共用 |
 | 複寫              | 支援具有任何複寫類型之儲存體帳戶中的 Azure 檔案共用 |
 
@@ -34,7 +34,7 @@ Azure 檔案共用的備份可在下列地區中取得：
 
 | 檔案共用類型                                   | 支援   |
 | -------------------------------------------------- | --------- |
-| 標準                                           | 支援 |
+| Standard                                           | 支援 |
 | 大型                                              | 支援 |
 | Premium                                            | 支援 |
 | 與 Azure 檔案同步服務連線的檔案共用 | 支援 |

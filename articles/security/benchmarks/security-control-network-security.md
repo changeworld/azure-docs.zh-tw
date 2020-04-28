@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: dd8ff7d6e86f8534fcb14812d4ddd6dc0b3d7039
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146957"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82193117"
 ---
 # <a name="security-control-network-security"></a>安全性控制：網路安全性
 
@@ -164,7 +164,7 @@ ms.locfileid: "82146957"
 
 使用標籤來 Nsg 和與網路安全性和流量相關的其他資源。 針對個別的 NSG 規則，請使用 [描述] 欄位來指定允許進出網路流量的任何規則的商務需求和（或）持續時間（等）。
 
-使用與標記相關的任何內建 Azure 原則定義，例如「需要標記和其值」，以確保所有資源都是以標籤建立，並通知您現有的未標記資源。
+使用與標記相關的任何內建 Azure 原則定義（例如「需要標記和其值」），以確保所有資源都是以標籤建立，並通知您現有的未標記資源。
 
 您可以使用 Azure PowerShell 或 Azure CLI，根據其標記來查閱或執行資源的動作。
 

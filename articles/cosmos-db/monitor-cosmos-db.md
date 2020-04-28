@@ -1,82 +1,85 @@
 ---
-title: 監視 Azure 宇宙資料庫 |微軟文件
-description: 瞭解如何監視 Azure Cosmos DB 的性能和可用性。
+title: 監視 Azure Cosmos DB |Microsoft Docs
+description: 瞭解如何監視 Azure Cosmos DB 的效能和可用性。
 author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 04/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: db9e86706ecd4e5b2526e1d801dda45ed6b345c6
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: ec0894818c0c246223749e1efcf7ea9e5ebee463
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80887243"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82194528"
 ---
-# <a name="monitoring-azure-cosmos-db"></a>監視 Azure 宇宙資料庫
-當依賴於 Azure 資源的關鍵應用程式和業務流程時,需要監視這些資源的可用性、性能和操作。 本文介紹了 Azure Cosmos 資料庫生成的監視數據,以及如何使用 Azure 監視器的功能來分析和警報此數據。
+# <a name="monitoring-azure-cosmos-db"></a>監視 Azure Cosmos DB
+當您的重要應用程式和商務程式依賴 Azure 資源時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure Cosmos 資料庫所產生的監視資料，以及您可以如何使用 Azure 監視器的功能來分析此資料併發出警示。
 
 ## <a name="what-is-azure-monitor"></a>Azure 監視器是什麼？
-Azure Cosmos DB 使用[Azure 監視器](../azure-monitor/overview.md)創建監視數據,Azure 監視器是 Azure 中的完整堆疊監視服務,除了其他雲端和本地的資源外,還提供一整套功能來監視 Azure 資源。 
+Azure Cosmos DB 會使用[Azure 監視器](../azure-monitor/overview.md)建立監視資料，這是 Azure 中的完整堆疊監視服務，除了其他雲端和內部部署的資源之外，還提供一組完整的功能來監視您的 Azure 資源。 
 
-如果您還不熟悉監視 Azure 服務,則從[使用 Azure 監視器監視 Azure 資源](../azure-monitor/insights/monitor-azure-resource.md)一文開始,該文章描述了以下內容:
+如果您還不熟悉監視 Azure 服務，請從[使用 Azure 監視器來監視 azure 資源](../azure-monitor/insights/monitor-azure-resource.md)一文開始，其描述如下：
 
 - Azure 監視器是什麼？
-- 與監控相關的成本
-- 監視在 Azure 中收集的資料
+- 與監視相關聯的成本
+- 監視 Azure 中所收集的資料
 - 設定資料收集
-- Azure 中用於分析和警示監控資料的標準工具
+- Azure 中用來分析和警示監視資料的標準工具
 
-以下各節通過描述從 Azure Cosmos DB 收集的數據,並提供用於使用 Azure 工具配置數據收集和分析此數據的範例,從而建構本文。
+下列各節將描述從 Azure Cosmos DB 收集的特定資料，並提供使用 Azure 工具來設定資料收集和分析此資料的範例，以建立于本文中。
 
-## <a name="azure-monitor-for-cosmos-db-preview"></a>用於宇宙資料庫的 Azure 監視器(預覽)
-[Azure Cosmos DB 的 Azure 監視器](../azure-monitor/insights/cosmosdb-insights-overview.md)基於 Azure[監視器的工作簿功能](../azure-monitor/app/usage-workbooks.md),並使用以下各節中所述為 Cosmos DB 收集的相同監視數據。 使用此工具查看統一互動式體驗中所有 Azure Cosmos DB 資源的總體性能、故障、容量和操作運行狀況,並利用 Azure 監視器的其他功能進行詳細分析和警報。 
+## <a name="azure-monitor-for-cosmos-db-preview"></a>Cosmos DB 的 Azure 監視器（預覽）
+[Azure Cosmos DB 的 Azure 監視器是以](../azure-monitor/insights/cosmosdb-insights-overview.md)Azure 監視器的活頁[簿功能](../azure-monitor/app/usage-workbooks.md)為基礎，並使用針對下列各節所述的 Cosmos DB 所收集的相同監視資料。 使用此工具來查看所有 Azure Cosmos DB 資源的整體效能、失敗、容量和操作健全狀況，並以統一的互動體驗來進行，並利用 Azure 監視器的其他功能來進行詳細的分析和警示。 
 
-![宇宙 DB 的 Azure 監視器](media/monitor-cosmos-db/azure-monitor-cosmos-db.png)
+![Cosmos DB 的 Azure 監視器](media/monitor-cosmos-db/azure-monitor-cosmos-db.png)
 
-## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>檢視 Azure 宇宙 DB 的操作層級指標
+> [!NOTE]
+> 建立容器時，請確定您不會建立兩個名稱相同但大小寫不同的容器。 這是因為 Azure 平臺的某些部分不會區分大小寫，而這可能導致在具有這類名稱的容器上進行遙測和動作的混淆/衝突。
+
+## <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>查看 Azure Cosmos DB 的作業層級計量
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 從左側導航欄中選擇 **「監視器**」,然後選擇 **「指標**」。。
+1. 從左側導覽列選取 [**監視**]，然後選取 [**計量**]。
 
-   ![Azure 監視器中的指標窗格](./media/monitor-cosmos-db/monitor-metrics-blade.png)
+   ![Azure 監視器中的 [計量] 窗格](./media/monitor-cosmos-db/monitor-metrics-blade.png)
 
-1. 從 **「指標」** 窗格>**選擇資源**>选择所需的**訂閱**與資源**群組**。 對於**資源類型**,選擇**Azure 宇宙資料庫帳戶**,選擇現有 Azure Cosmos 帳戶之一,然後選擇 **"應用**"。
+1. 從 [**計量**] 窗格 >**選取資源**> 選擇所需的**訂**用帳戶和**資源群組**。 針對 [**資源類型**]，選取 [ **Azure Cosmos DB 帳戶**] **，選擇其中**一個現有的 Azure Cosmos 帳戶，然後選取 [套用]。
 
-   ![選擇 Cosmos DB 帳號以檢視指標](./media/monitor-cosmos-db/select-cosmosdb-account.png)
+   ![選擇 Cosmos DB 帳戶來查看計量](./media/monitor-cosmos-db/select-cosmosdb-account.png)
 
-1. 接下來,您可以從可用指標清單中選擇指標。 您可以選擇特定於請求單位、儲存、延遲、可用性、Cassandra 等的指標。 要詳細瞭解此清單中的所有可用指標,請參閱[按類別的指標](monitor-cosmos-db-reference.md)。 在此範例中,讓我們選擇**請求單位**,**選擇 avg**作為聚合值。
+1. 接下來，您可以從可用的計量清單中選取度量。 您可以選取 [要求單位]、[儲存體]、[延遲]、[可用性]、[Cassandra] 和其他的特定計量。 若要深入瞭解此清單中所有可用的計量，請參閱[依類別](monitor-cosmos-db-reference.md)區分的計量一文。 在此範例中，讓我們選取 [**要求單位**] 和 [**平均**] 作為匯總值。
 
-   除了這些詳細資訊之外,您還可以選擇指標**的時間範圍**和**時間粒度**。 最多時,您可以查看過去 30 天的指標。  應用篩選器後,會根據您的篩選器顯示圖表。 您可以看到所選期間每分鐘消耗的請求單位的平均數量。  
+   除了這些詳細資料之外，您也可以選取度量的**時間範圍**和**時間細微性**。 在 [最大值] 中，您可以查看過去30天的計量。  套用篩選之後，就會根據您的篩選器來顯示圖表。 您可以看到所選期間內每分鐘耗用的平均要求單位數。  
 
-   ![從 Azure 門戶選擇指標](./media/monitor-cosmos-db/metric-types.png)
+   ![從 Azure 入口網站選擇度量](./media/monitor-cosmos-db/metric-types.png)
 
-### <a name="add-filters-to-metrics"></a>將篩選器加入到指標
+### <a name="add-filters-to-metrics"></a>將篩選新增至計量
 
-您還可以篩選指標和由特定**集合名稱**、**資料庫名稱**、**操作類型**、**區域**和**狀態碼顯示的**圖表。 要篩選指標,請選擇 **「添加篩選器」** 並選擇所需的屬性(如**操作類型**)並**選擇查詢等**值。 然後,該圖顯示所選期間的查詢操作使用的請求單位。 不會記錄通過存儲過程執行的操作,因此在操作類型指標下它們不可用。
+您也可以篩選特定**CollectionName**、 **DatabaseName**、 **OperationType**、 **Region**和**StatusCode**所顯示的計量和圖表。 若要篩選計量，請選取 [**新增篩選**] 並選擇必要的屬性（例如**OperationType** ），然後選取 [**查詢**] 之類的值。 圖形接著會顯示所選期間內，查詢作業所耗用的要求單位。 不會記錄透過預存程式執行的作業，因此它們無法在 OperationType 度量下提供。
 
-![新增篩選器以選擇指標粒度](./media/monitor-cosmos-db/add-metrics-filter.png)
+![新增篩選以選取度量資料細微性](./media/monitor-cosmos-db/add-metrics-filter.png)
 
-您可以使用 **「應用分割**」選項對指標進行分組。 例如,您可以按工序類型對請求單位進行分組,並一次查看所有操作的圖形,如下圖所示:
+您可以使用 [套用**分割**] 選項將計量分組。 例如，您可以將每個作業類型的 [要求單位] 分組，並一次查看所有作業的圖形，如下圖所示：
 
-![新增應用程式分割篩選器](./media/monitor-cosmos-db/apply-metrics-splitting.png)
+![新增套用分割篩選](./media/monitor-cosmos-db/apply-metrics-splitting.png)
 
-## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>監視從 Azure 宇宙資料庫收集的資料
+## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>監視從 Azure Cosmos DB 收集的資料
 
-Azure Cosmos DB 收集與其他 Azure 資源相同的監視數據,這在監視[Azure 資源中描述](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)的數據。 有關 Azure Cosmos DB 建立的紀錄和指標的詳細資訊,請參閱[Azure Cosmos DB 監視資料參考](monitor-cosmos-db-reference.md)。
+Azure Cosmos DB 會收集與其他 Azure 資源相同的監視資料類型，如[從 Azure 資源監視資料](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中所述。 如需 Azure Cosmos DB 所建立之記錄和計量的詳細參考，請參閱[Azure Cosmos DB 監視資料參考](monitor-cosmos-db-reference.md)。
 
-每個 Azure Cosmos 資料庫的 Azure 門戶中的 **「概述」** 頁包括資料庫使用方式的簡要視圖,包括其請求和每小時計費使用方式。 這是有用的資訊,但可用的監視數據只有少量。 其中一些數據會自動收集,並在創建資料庫后立即可供分析,同時可以使用某些配置啟用其他數據收集。
+每個 Azure Cosmos 資料庫的 Azure 入口網站中的 [**總覽**] 頁面包含資料庫使用量的簡要觀點，包括其要求和每小時計費使用量。 這是有用的資訊，但只提供少量的監視資料。 當您建立資料庫時，會自動收集這項資料並可供分析，而您可以使用一些設定來啟用其他資料收集。
 
 ![概觀分頁](media/monitor-cosmos-db/overview-page.png)
 
-## <a name="analyzing-metric-data"></a>分析指標資料
+## <a name="analyzing-metric-data"></a>分析度量資料
 
-Azure Cosmos DB 提供了用於處理指標的自定義體驗。 有關使用此體驗和分析不同的 Azure Cosmos DB 方案的詳細資訊,請參閱[Azure 監視器中的監視和除錯 Azure 宇宙資料庫指標](cosmos-db-azure-monitor-metrics.md)。
+Azure Cosmos DB 提供使用計量的自訂體驗。 如需使用此體驗和分析不同 Azure Cosmos DB 案例的詳細資訊，請參閱[從 Azure 監視器監視和偵錯工具 Azure Cosmos DB 計量](cosmos-db-azure-monitor-metrics.md)。
 
-您可以使用指標資源管理員使用來自其他 Azure 服務的指標分析 Azure Cosmos DB 的指標,從 Azure**監視器**選單中開啟**指標**。 有關使用此工具的詳細資訊[,請參閱使用 Azure 指標資源管理器入門](../azure-monitor/platform/metrics-getting-started.md)。 Azure Cosmos DB 的所有指標都在命名空間**Cosmos DB 標準指標中**。 將篩選器新增到圖表時,可以將以下維度與以下指標一起使用:
+您可以從 [ **Azure 監視器**] 功能表開啟 [**計量**]，以使用計量瀏覽器從其他 Azure 服務中的計量來分析 Azure Cosmos DB 的計量。 如需使用此工具的詳細資訊，請參閱[開始使用 Azure 計量瀏覽器](../azure-monitor/platform/metrics-getting-started.md)。 Azure Cosmos DB 的所有計量都在命名空間**Cosmos DB 標準計量**中。 將篩選加入至圖表時，您可以使用下列維度搭配這些計量：
 
 - CollectionName
 - DatabaseName
@@ -85,23 +88,23 @@ Azure Cosmos DB 提供了用於處理指標的自定義體驗。 有關使用此
 - StatusCode
 
 
-## <a name="analyzing-log-data"></a>剖析紀錄資料
-Azure 監視器日誌中的數據存儲在每個表具有其自己的唯一屬性集的表中。 Azure Cosmos DB 將數據存儲在下表中。
+## <a name="analyzing-log-data"></a>分析記錄資料
+Azure 監視器記錄檔中的資料會儲存在資料表中，每個資料表都有一組專屬的唯一屬性。 Azure Cosmos DB 會將資料儲存在下列資料表中。
 
 | Table | 描述 |
 |:---|:---|
-| AzureDiagnostics | 多個服務用於存儲資源日誌的通用表。 Azure Cosmos DB 的資源日`MICROSOFT.DOCUMENTDB`誌可以使用 標識。   |
-| AzureActivity    | 存儲活動日誌中所有記錄的常見表。 
+| AzureDiagnostics | 多個服務用來儲存資源記錄的通用資料表。 可以使用`MICROSOFT.DOCUMENTDB`來識別 Azure Cosmos DB 中的資源記錄。   |
+| AzureActivity    | 儲存活動記錄中所有記錄的通用資料表。 
 
 
 > [!IMPORTANT]
-> 從 Azure Cosmos DB 選單中選擇 **「日誌」** 時,將打開日誌分析,查詢範圍設置為當前 Azure Cosmos 資料庫。 這意味著日誌查詢將僅包括來自該資源的數據。 如果要運行包含其他資料庫的數據或其他 Azure 服務的數據的查詢,請選擇**Azure 監視器**功能表中的 **「日誌**」。 有關詳細資訊,請參閱[Azure 監視器紀錄分析中的紀錄查詢範圍和時間範圍](../azure-monitor/log-query/scope.md)。
+> 當您從 [Azure Cosmos DB] 功能表中選取 [**記錄**] 時，會開啟 Log Analytics，並將查詢範圍設定為目前的 Azure Cosmos 資料庫。 這表示記錄查詢只會包含來自該資源的資料。 如果您想要執行的查詢包含來自其他資料庫的資料或來自其他 Azure 服務的資料，請從 [ **Azure 監視器**] 功能表中選取 [**記錄**]。 如需詳細資訊，請參閱[Azure 監視器 Log Analytics 中的記錄查詢範圍和時間範圍](../azure-monitor/log-query/scope.md)。
 
-### <a name="azure-cosmos-db-log-analytics-queries-in-azure-monitor"></a>Azure 宇宙 DB 紀錄分析查詢在 Azure 監視器中
+### <a name="azure-cosmos-db-log-analytics-queries-in-azure-monitor"></a>Azure Cosmos DB Azure 監視器中的 Log Analytics 查詢
 
-下面是一些查詢,您可以在**日誌搜索**欄中輸入這些查詢,以説明您監視 Azure Cosmos 容器。 這些查詢使用[新語言](../log-analytics/log-analytics-log-search-upgrade.md)。
+以下是一些您可以在**記錄搜尋**搜尋列中輸入的查詢，以協助您監視 Azure Cosmos 容器。 這些查詢使用[新語言](../log-analytics/log-analytics-log-search-upgrade.md)。
 
-以下是可用於幫助監視 Azure Cosmos 資料庫的查詢。
+以下是您可以用來協助您監視 Azure Cosmos 資料庫的查詢。
 
 * 若要查詢 Azure Cosmos DB 中在指定的時段內的所有診斷記錄：
 
@@ -127,7 +130,7 @@ Azure 監視器日誌中的數據存儲在每個表具有其自己的唯一屬�
     | summarize count() by OperationName
     ```
 
-* 要查詢所有操作,請按資源群組:
+* 若要查詢所有作業（依資源分組）：
 
     ```Kusto
     AzureActivity 
@@ -143,7 +146,7 @@ Azure 監視器日誌中的數據存儲在每個表具有其自己的唯一屬�
     | where Caller == "test@company.com" and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
     | summarize count() by Resource
     ```
-* 將所有超過 100 個 R 的查詢與**DataPlane 請求**和**查詢 RunTime 統計資訊**中的數據聯接。
+* 取得大於 100 ru 的所有查詢，並與**DataPlaneRequests**和**QueryRunTimeStatistics**中的資料聯結。
 
     ```Kusto
     AzureDiagnostics
@@ -184,7 +187,7 @@ Azure 監視器日誌中的數據存儲在每個表具有其自己的唯一屬�
     | render timechart
     ```
     
-* 要取得分區金鑰統計資訊以評估資料庫帳戶的前 3 個分區之間的偏差,請進行以下計算:
+* 若要取得分割區索引鍵統計資料，以評估資料庫帳戶的前3個磁碟分割的扭曲：
 
     ```Kusto
     AzureDiagnostics 
@@ -210,5 +213,5 @@ Azure 監視器日誌中的數據存儲在每個表具有其自己的唯一屬�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 有關 Azure Cosmos DB 建立的紀錄和指標的參考,請參閱[Azure Cosmos DB 監視資料參考](monitor-cosmos-db-reference.md)。
-- 有關監視 Azure 資源的詳細資訊,請參閱[使用 Azure 監視器監視 Azure 資源](../azure-monitor/insights/monitor-azure-resource.md)。
+- 如需 Azure Cosmos DB 所建立之記錄和計量的參考，請參閱[Azure Cosmos DB 監視資料參考](monitor-cosmos-db-reference.md)。
+- 如需監視 Azure 資源的詳細資訊，請參閱[使用 Azure 監視器監視 azure 資源](../azure-monitor/insights/monitor-azure-resource.md)。
