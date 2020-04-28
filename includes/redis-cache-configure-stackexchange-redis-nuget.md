@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: yegu
 ms.openlocfilehash: 61e93e3700b9a396d2ac4fdcbb51fc5c874cf9cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "68286202"
 ---
 .NET 應用程式可以使用 **StackExchange.Redis** 快取用戶端，該用戶端可在 Visual Studio 中使用能簡化快取用戶端應用程式組態的 NuGet 套件來加以設定。 

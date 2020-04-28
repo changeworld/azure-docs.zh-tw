@@ -1,5 +1,5 @@
 ---
-title: 關於 Azure 監視器日誌中的網路監視 |微軟文檔
+title: 關於 Azure 監視器記錄中的網路監視 |Microsoft Docs
 description: 可管理跨雲端、內部部署和混合式環境之網路的網路監視解決方案 (包括 NPM) 概觀。
 services: monitoring-and-diagnostics
 documentationcenter: na
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
 ms.openlocfilehash: 2912488286745bf8d2e567d09e445b0a44dc7c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67672185"
 ---
 # <a name="network-monitoring-solutions"></a>網路監視解決方案 
@@ -51,8 +51,8 @@ Azure 提供許多可監視網路資產的解決方案。 Azure 擁有的解決�
 
 如需詳細資訊，請觀看下列文章：
 
-* [在 Azure 監視器日誌中配置網路效能監視器解決方案](../azure-monitor/insights/network-performance-monitor.md) 
-* [用例](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
+* [在 Azure 監視器記錄中設定網路效能監控解決方案](../azure-monitor/insights/network-performance-monitor.md) 
+* [使用案例](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 * 產品更新：
   * [2017 年 2 月](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/)
   * [2017 年 8 月](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
@@ -73,7 +73,7 @@ Expressroute 的 NPM 提供對於 Azure 私用對等連線和 Microsoft 對等�
 如需詳細資訊，請參閱下列文章：
 
 * [設定 ExpressRoute 的網路效能監控](../expressroute/how-to-npm.md)
-* [部落格文章](https://aka.ms/NPMExRmonitorGA)
+* [Blog 文章](https://aka.ms/NPMExRmonitorGA)
 
 ## <a name="service-connectivity-monitor"></a>服務連線能力監視
 
@@ -89,7 +89,7 @@ Expressroute 的 NPM 提供對於 Azure 私用對等連線和 Microsoft 對等�
 如需詳細資訊，請參閱下列文章：
 
 * [設定網路效能監控來監視服務端點](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
-* [部落格文章](https://aka.ms/svcendptmonitor)
+* [Blog 文章](https://aka.ms/svcendptmonitor)
 
 ## <a name="traffic-analytics"></a>流量分析
 流量分析是一項雲端式解決方案，可顯示雲端網路上的使用者和應用程式活動。 系統會分析 NSG 流量記錄，讓您深入了解：

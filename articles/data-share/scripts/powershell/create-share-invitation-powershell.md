@@ -1,6 +1,6 @@
 ---
-title: PowerShell 腳本：創建 Azure 資料共用邀請*微軟文檔
-description: 此 PowerShell 腳本發送資料共用邀請。
+title: PowerShell 腳本：建立 Azure 資料共用邀請 |Microsoft Docs
+description: 此 PowerShell 腳本會傳送資料共用邀請。
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 9fd8d6428e94007002d524d9ade99f6b368b8201
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70307238"
 ---
-# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>使用 PowerShell 監視已發送資料共用的使用方式
+# <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>使用 PowerShell 監視已傳送資料共用的使用方式
 
-此 PowerShell 腳本創建資料共用邀請。
+此 PowerShell 腳本會建立資料共用邀請。
 
 ## <a name="sample-script"></a>範例指令碼
 
@@ -42,11 +42,11 @@ New-AzDataShareInvitation -ResourceGroupName $resourceGroupName -AccountName $da
 
 | Command | 注意 |
 |---|---|
-| [新-阿茲資料共用邀請](/powershell/module/az.datashare/new-azdatashareinvitation?view=azps-2.6.0) | 創建資料共用邀請。 |
+| [新增-AzDataShareInvitation](/powershell/module/az.datashare/new-azdatashareinvitation?view=azps-2.6.0) | 建立資料共用邀請。 |
 |||
 
 ## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
 
-其他 Azure 資料共用 PowerShell 腳本示例可在[Azure 資料共用 PowerShell 示例中](../../samples-powershell.md)找到。
+您可以在[Azure 資料共用 powershell 範例](../../samples-powershell.md)中找到其他 Azure 資料共用 powershell 腳本範例。

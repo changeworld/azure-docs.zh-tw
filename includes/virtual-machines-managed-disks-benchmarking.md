@@ -9,10 +9,10 @@ ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67673261"
 ---
 *準備快取*  
@@ -62,24 +62,24 @@ ms.locfileid: "67673261"
 
 1. 使用如下所示的值建立兩個存取規格
 
-   | 名稱 | 要求大小 | 隨機 % | 讀取 % |
+   | Name | 要求大小 | 隨機 % | 讀取 % |
    | --- | --- | --- | --- |
    | RandomWrites\_1MB |1 MB |100 |0 |
    | RandomReads\_1MB |1 MB |100 |100 |
 1. 執行 Iometer 測試，使用下列參數初始化快取磁碟。 對目標磁碟區使用三個背景工作執行緒，佇列深度為 128。 在 [測試安裝程式] 索引標籤上，將測試的 [執行階段] 期間設為 2 小時。
 
-   | 狀況 | 目標磁碟區 | 名稱 | Duration |
+   | 狀況 | 目標磁碟區 | Name | Duration |
    | --- | --- | --- | --- |
    | 初始化快取磁碟 |CacheReads |RandomWrites\_1MB |2 小時 |
 1. 執行 Iometer 測試，使用下列參數來準備快取。 對目標磁碟區使用三個背景工作執行緒，佇列深度為 128。 在 [測試安裝程式] 索引標籤上，將測試的 [執行階段] 期間設為 2 小時。
 
-   | 狀況 | 目標磁碟區 | 名稱 | Duration |
+   | 狀況 | 目標磁碟區 | Name | Duration |
    | --- | --- | --- | --- |
    | 準備快取磁碟 |CacheReads |RandomReads\_1MB |2 小時 |
 
 準備快取磁碟之後，繼續執行下列的測試案例。 若要執行 Iometer 測試，請對 **每個** 目標磁碟區使用至少三個背景工作角色執行緒。 針對每個背景工作執行緒，請選取目標磁碟區，設定佇列深度，然後選取其中一個已儲存的測試規格，如下表所示，以執行對應的測試案例。 表格也顯示執行這些測試時，預期的 IOPS 和輸送量結果。 在所有案例中，都使用較小的 IO 大小 8 KB 和較高的佇列深度 128。
 
-| 測試案例 | 目標磁碟區 | 名稱 | 結果 |
+| 測試案例 | 目標磁碟區 | Name | 結果 |
 | --- | --- | --- | --- |
 | 最大 讀取 IOPS |CacheReads |RandomWrites\_8K |50,000 IOPS  |
 | 最大 寫入 IOPS |NoCacheWrites |RandomReads\_8K |64,000 IOPS |

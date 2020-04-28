@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: sngun
 ms.openlocfilehash: 9dbbc914580d8d80a3f9b7d730574e24b44827c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70093735"
 ---
 # <a name="how-to-use-azure-kubernetes-with-azure-cosmos-db-preview"></a>如何使用採用 Azure Cosmos DB 的 Azure Kubernetes (預覽)
@@ -25,11 +25,11 @@ Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為 Azure Kub
 
 若要深入了解 Azure Cosmos DB 中的 etcd API，請參閱[概觀](etcd-api-introduction.md)一文。 本文會示範如何使用 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md) (aks-engine) 在採用 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) 的 Azure 上執行 Kubernetes 叢集的啟動程序，而不是使用本機安裝和設定的 etcd。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-1. 安裝最新版本的[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 您可以下載專屬於您作業系統的 Azure CLI，並加以安裝。
+1. 安裝最新版的[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 您可以下載專屬於您作業系統的 Azure CLI，並加以安裝。
 
-1. 安裝[最新版的](https://github.com/Azure/aks-engine/releases) Azure Kubernetes 引擎。 您可以從 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)頁面取得不同作業系統的安裝指示。 您只需從連結文檔**的安裝 AKS 引擎**部分的步驟。下載後，提取 ZIP 檔案。
+1. 安裝[最新版的](https://github.com/Azure/aks-engine/releases) Azure Kubernetes 引擎。 您可以從 [Azure Kubernetes 引擎](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md#install-aks-engine)頁面取得不同作業系統的安裝指示。 您只需要已連結檔之**安裝 AKS 引擎**一節中的步驟。下載之後，請將 zip 檔案解壓縮。
 
    Azure Kubernetes 引擎 (**aks-engine**) 會針對 Azure 上的 Kubernetes 叢集產生 Azure Resource Manager 範本。 aks-engine 的輸入是叢集定義檔，其中描述所需的叢集，包括協調器、功能和代理程式。 輸入檔案的結構類似於 Azure Kubernetes Service 的公用 API。
 
@@ -139,17 +139,17 @@ Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為 Azure Kub
 
    Azure Kubernetes 引擎會取用概述 Azure Kubernetes 所需圖形、大小和組態的叢集定義。 有幾項功能可透過叢集定義啟用。 在此範例中，您將使用下列參數：
 
-   * **訂閱 id：** 啟用 Azure 宇宙資料庫蝕刻 API 的 Azure 訂閱 ID。
-   * **用戶端 id：** 服務主體的 appId。 `appId` 已在步驟 4 中作為輸出傳回。
-   * **用戶端機密：** 服務主體的密碼或隨機生成的密碼。 此值已在步驟 4 中作為 'password' 參數的輸出傳回。 
-   * **dnsPrefix：** 區域唯一 DNS 名稱。 此值會形成主機名稱的一部分 (暫時的範例值是 - myprod1)。
-   * **位置：** 群集應部署到的位置，當前僅支援"中心"。
+   * **訂用帳戶識別碼：** 已啟用 Azure Cosmos DB etcd API 的 Azure 訂用帳戶識別碼。
+   * **用戶端識別碼：** 服務主體的 appId。 `appId` 已在步驟 4 中作為輸出傳回。
+   * **用戶端密碼：** 服務主體的密碼或隨機產生的密碼。 此值已在步驟 4 中作為 'password' 參數的輸出傳回。 
+   * **dnsPrefix：** 區域唯一的 DNS 名稱。 此值會形成主機名稱的一部分 (暫時的範例值是 - myprod1)。
+   * **位置：** 應部署叢集的位置，目前僅支援 "centralus"。
 
    > [!Note]
    > Azure Cosmos etcd API 目前只能在 "centralus" 區域中部署。 
  
-   * **api 模型：** 範本檔的完全限定路徑。
-   * **力覆蓋：** 此選項用於自動覆蓋輸出目錄中的現有檔。
+   * **api 模型：** 範本檔案的完整路徑。
+   * **強制覆寫：** 此選項可用來自動覆寫輸出目錄中的現有檔案。
  
    以下命令會顯示部署範例：
 

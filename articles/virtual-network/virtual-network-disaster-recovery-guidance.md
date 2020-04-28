@@ -16,30 +16,30 @@ ms.date: 05/16/2016
 ms.author: narayan
 ms.reviewer: aglick
 ms.openlocfilehash: 3f91d24bff0bec540ff0e7964f21c2f47c03638c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67876177"
 ---
 # <a name="virtual-network--business-continuity"></a>虛擬網路 – 商務持續性
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 「虛擬網路」(VNet) 是您網路在雲端的邏輯呈現方式。 它可讓您定義自己的私人 IP 位址空間，並將網路分割成子網路。 VNet 可做為信任界限來裝載您的運算資源，例如「Azure 虛擬機器」和「雲端服務」(Web/背景工作角色)。 VNet 可允許其裝載的資源之間進行直接私人 IP 通訊。 您可以透過「VPN 閘道」或 ExpressRoute 將虛擬網路連結至內部部署網路。
 
-VNet 是在區域的範圍內建立。 您可以在兩個不同的區域（例如，美國東部和美國西部）*創建*具有相同位址空間的 VNet，但由於它們具有相同的位址空間，因此無法將它們連接在一起。 
+VNet 是在區域的範圍內建立。 您可以在兩個不同的區域（例如美國東部和美國西部）中*建立*具有相同位址空間的 vnet，但是因為它們有相同的位址空間，所以您無法將它們連接在一起。 
 
 ## <a name="business-continuity"></a>商務持續性
 
 可能有數種不同的方式會讓您的應用程式中斷。 區域可能因天然災害或因多個裝置或服務失敗而導致的部分災害，而被完全切斷。 這每一種情況對 VNet 服務的影響各有不同。
 
-**問：如果整個區域發生中斷，我該怎麼辦？例如，如果一個地區因自然災害而完全中斷？託管在該地區的虛擬網路會發生什麼情況？**
+**問：如果整個區域發生中斷，我該怎麼做？例如，如果區域因自然災害而完全切斷，該區域中所裝載的虛擬網路會發生什麼事？**
 
 答︰在服務中斷期間，受影響區域中的虛擬網路和資源都會持續無法被存取。
 
 ![簡單的虛擬網路圖表](./media/virtual-network-disaster-recovery-guidance/vnet.png)
 
-**問：我可以在不同區域中重新創建同一虛擬網路嗎？**
+**問：我可以在不同的區域中重新建立相同的虛擬網路嗎？**
 
 答︰虛擬網路是非常輕量型的資源。 您可以叫用 Azure API，在不同的區域中建立具有相同位址空間的 VNet。 若要重新建立受影響區域中所具有的相同環境，您需進行 API 呼叫來重新部署「雲端服務」Web 和背景工作角色，以及您所擁有的虛擬機器。 如果您有內部部署連線 (例如在混合式部署中)，則必須部署新的「VPN 閘道」並連接到內部部署網路。
 

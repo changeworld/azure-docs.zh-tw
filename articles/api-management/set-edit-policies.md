@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
 ms.openlocfilehash: 2df57477ae5270405a1774b7a4f04ed185fea396
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70071710"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>如何設定或編輯 Azure API 管理原則
@@ -29,7 +29,7 @@ ms.locfileid: "70071710"
 
 若要設定或編輯原則，請遵循下列步驟：
 
-1. 登錄到 中的[https://portal.azure.com](https://portal.azure.com)Azure 門戶。
+1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 2. 瀏覽至您的 APIM 執行個體。
 3. 按一下 [API]**** 索引標籤。
 
@@ -38,7 +38,7 @@ ms.locfileid: "70071710"
 4. 選取其中一個您先前匯入的 API。
 5. 選取 [設計]**** 索引標籤。
 6. 選取您要套用原則的作業。 如果您想要將原則套用至所有作業，請選取 [所有作業]****。
-7. 在**</>****入站處理**或**出站處理**部分中選擇（代碼編輯器）圖示。
+7. 在 [ **</>** **輸入處理**] 或 [**輸出處理**] 區段中，選取 [（程式碼編輯器）] 圖示。
 8. 將需要的原則程式碼貼入其中一個適當的區塊。
 
     ```XML
@@ -110,7 +110,7 @@ API 範圍已設定為所選 API 的**所有作業**。
 
     ![API 範圍](./media/api-management-howto-policies/api-scope.png)
 
-2. 選擇**所有操作**
+2. 選取**所有作業**
 3. 按一下三角形圖示。
 4. 選取 [程式碼編輯器]****。
 5. 新增或編輯原則。
@@ -120,7 +120,7 @@ API 範圍已設定為所選 API 的**所有作業**。
 
 作業範圍已設定為所選的作業。
 
-1. 選擇**API**。
+1. 選取**API**。
 2. 選取您要套用原則的作業。
 
     ![作業範圍](./media/api-management-howto-policies/operation-scope.png)

@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp 檔的性能基準測試結果 |微軟文檔
-description: 在卷級別描述 Azure NetApp 檔的性能基準測試結果。
+title: 適用于 Azure NetApp Files 的效能基準測試結果 |Microsoft Docs
+description: 描述適用于磁片區層級之 Azure NetApp Files 的效能基準測試結果。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,81 +15,81 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: b-juche
 ms.openlocfilehash: 1d6b43110046f26d8c8070b19587366588eee7b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68881744"
 ---
 # <a name="performance-benchmark-test-results-for-azure-netapp-files"></a>適用於Azure NetApp Files 的效能基準測試結果
 
-本文介紹了 Azure NetApp 檔在卷級別的性能基準測試結果。 
+本文說明 Azure NetApp Files 在磁片區層級的效能基準測試結果。 
 
-## <a name="sample-application-used-for-the-tests"></a>用於測試的應用程式範例
+## <a name="sample-application-used-for-the-tests"></a>用於測試的範例應用程式
 
-使用 Azure NetApp 檔使用應用程式範例運行效能測試。 該應用程式具有以下特徵： 
+效能測試是以使用 Azure NetApp Files 的範例應用程式來執行。 應用程式具有下列特性： 
 
-* 為雲構建的基於 Linux 的應用程式
-* 可使用添加的虛擬機器 （VM） 線性擴展，根據需要提高計算能力
-* 需要快速訪問資料湖
-* 具有有時隨機的 I/O 模式，有時是連續的 
-    * 對於大量 I/O，隨機模式需要低延遲。 
+* 針對雲端打造的 Linux 應用程式
+* 可以透過新增的虛擬機器（Vm）線性調整，以視需要增加計算能力
+* 需要 data lake 的快速存取範圍
+* 的 i/o 模式有時是隨機的，有時也是連續的 
+    * 隨機模式需要低延遲的大量 i/o。 
     * 順序模式需要大量的頻寬。 
 
 ## <a name="about-the-workload-generator"></a>關於工作負載產生器
 
-結果來自 Vdbench 摘要檔。 [Vdbench](https://www.oracle.com/technetwork/server-storage/vdbench-downloads-1901681.html)是一個命令列實用程式，用於生成磁片 I/O 工作負載以驗證存儲性能。 使用的用戶端-伺服器配置是可擴展的。  它包括單個混合主/用戶端和 14 個專用用戶端 VM。
+結果來自 Vdbench 摘要檔案。 [Vdbench](https://www.oracle.com/technetwork/server-storage/vdbench-downloads-1901681.html)是命令列公用程式，它會產生磁片 i/o 工作負載來驗證存放裝置效能。 使用的用戶端-伺服器設定是可調整的。  它包含單一混合式主要/用戶端和14個專用用戶端 Vm。
 
 ## <a name="about-the-tests"></a>關於測試
 
-這些測試旨在確定應用程式範例可能具有的限制以及曲線到限制的回應時間。  
+測試的設計目的是要識別範例應用程式可能會有的限制，以及曲線到限制為止的回應時間。  
 
-運行了以下測試： 
+已執行下列測試： 
 
 * 100% 8-KiB 隨機讀取
 * 100% 8-KiB 隨機寫入
 * 100% 64-KiB 順序讀取
 * 100% 64-KiB 順序寫入
-* 50% 64-KiB 順序讀取，50% 64-KiB 順序寫入
+* 50% 64-KiB 順序讀取，50% 64-KiB 連續寫入
 * 50% 8-KiB 隨機讀取，50% 8-KiB 隨機寫入
 
 ## <a name="bandwidth"></a>頻寬
 
-Azure NetApp 檔提供多個[服務等級](azure-netapp-files-service-levels.md)。 每個服務等級提供不同數量的頻寬，每個 TiB 的預配容量（容量配額）。 基於服務等級和卷配額的組合預配卷的頻寬限制。 頻寬限制只是確定將實現的實際輸送量量的一個因素。  
+Azure NetApp Files 提供多個[服務層級](azure-netapp-files-service-levels.md)。 每個服務等級都會提供不同的頻寬量，每個 TiB 的布建容量（磁片區配額）。 磁片區的頻寬限制是根據服務等級和磁片區配額的組合來布建。 頻寬限制只是判斷即將實現的實際輸送量量的一個因素。  
 
-目前，4，500 米 B 是工作負載對測試中單個卷實現的最高輸送量。  使用高級服務等級，容量配額為 70.31 TiB 將預配足夠的頻寬，以便根據以下計算實現此輸送量： 
+目前，4500 MiB 是工作負載針對測試中的單一磁片區所達到的最高輸送量。  使用 Premium 服務層級時，70.31 TiB 的磁片區配額會布建足夠的頻寬，以根據下列計算來實現此輸送量： 
 
 ![頻寬公式](../media/azure-netapp-files/azure-netapp-files-bandwidth-formula.png)
 
 ![配額和服務等級](../media/azure-netapp-files/azure-netapp-files-quota-service-level.png)
 
-## <a name="throughput-intensive-workloads"></a>輸送量密集型工作負載
+## <a name="throughput-intensive-workloads"></a>需要大量輸送量的工作負載
 
-輸送量測試使用 Vdbench 和 12xD32s V3 存儲 VM 的組合。 測試中的示例卷實現了以下輸送量數位：
+輸送量測試使用 Vdbench 和 12xD32s V3 儲存體 Vm 的組合。 測試中的範例磁片區已達到下列輸送量數位：
 
 ![輸送量測試](../media/azure-netapp-files/azure-netapp-files-throughput-test.png)
 
-## <a name="io-intensive-workloads"></a>I/O 密集型工作負載
+## <a name="io-intensive-workloads"></a>需要大量 i/o 的工作負載
 
-I/O 測試使用 Vdbench 和 12xD32s V3 存儲 VM 的組合。 測試中的樣本量達到以下 I/O 編號：
+I/o 測試使用 Vdbench 和 12xD32s V3 儲存體 Vm 的組合。 測試中的範例磁片區已達到下列 i/o 數位：
 
-![I/O 測試](../media/azure-netapp-files/azure-netapp-files-io-test.png)
+![I/o 測試](../media/azure-netapp-files/azure-netapp-files-io-test.png)
 
 ## <a name="latency"></a>Latency
 
-測試 VM 和 Azure NetApp 檔卷之間的距離會影響 I/O 性能。  下圖比較了兩組 VM 的 IOPS 與延遲回應曲線。  一組 VM 位於 Azure NetApp 檔附近，另一組則位於更遠的地方。  進一組 VM 的延遲增加會影響在給定並行性級別上實現的 IOPS 量。  無論如何，對卷的讀取可以超過 300，000 IOPS，如下圖所示： 
+測試 Vm 與 Azure NetApp Files 磁片區之間的距離會影響 i/o 效能。  下圖比較兩組不同 Vm 的 IOPS 和延遲回應曲線。  其中一組 Vm 位於 Azure NetApp Files 附近，而另一組則會進一步離開。  進一步的 Vm 集增加的延遲，會影響在指定的平行處理原則層級所達到的 IOPS 數量。  無論如何，讀取磁片區可能會超過 300000 IOPS，如下所示： 
 
 ![延遲研究](../media/azure-netapp-files/azure-netapp-files-latency-study.png)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
-延遲敏感的工作負載（資料庫）可以具有一毫秒的回應時間。 單個卷的事務性能可以超過 300k IOPS。
+延遲敏感的工作負載（資料庫）可以有一毫秒的回應時間。 交易效能可能會超過單一磁片區的 300k.wvx IOPS。
 
-輸送量敏感型應用程式（用於流式處理和映射）的輸送量為 4.5GiB/s。
+輸送量敏感的應用程式（適用于串流和映射處理）可以有 4.5 GiB/s 輸送量。
 
 ## <a name="example-scripts"></a>範例指令碼
 
-以下示例腳本僅用於演示目的。  它們不用於生產目的。  
+下列範例腳本僅供示範用途之用。  它們不會用於生產用途。  
 
     #
     #This script makes the following assumptions about the environment

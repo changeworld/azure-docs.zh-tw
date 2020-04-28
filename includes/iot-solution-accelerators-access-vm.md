@@ -9,15 +9,15 @@ ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: a58e408feadd10e6dbc9d6878b82a4d045918ea6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68781434"
 ---
 ## <a name="access-the-virtual-machine"></a>存取虛擬機器
 
-以下步驟在 Azure 雲外殼中使用 Azure CLI。 如果您願意，可以在開發電腦上[安裝 Azure CLI](/cli/azure/install-azure-cli)並在本地運行命令。
+下列步驟會使用 Azure Cloud Shell 中的 Azure CLI。 如果您想要的話，可以在開發電腦上[安裝 Azure CLI](/cli/azure/install-azure-cli) ，並在本機執行命令。
 
 下列步驟說明如何設定 Azure 虛擬機器，以允許進行 **SSH** 存取。 所顯示的步驟假設您為解決方案加速器選擇的名稱是 **contoso-simulation** -- 請將此值更換為部署名稱：
 
@@ -35,7 +35,7 @@ ms.locfileid: "68781434"
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
-    請只在測試和開發期間啟用 SSH 存取。 如果啟用 SSH，[應儘快再次禁用它](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines)。
+    請只在測試和開發期間啟用 SSH 存取。 如果您啟用 SSH，[您應該儘快將它停用](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#disable-rdpssh-access-to-virtual-machines)。
 
 1. 將虛擬機器上的 **azureuser** 密碼，更新為您知道的密碼。 當您執行下列命令時，請選擇您自己的密碼：
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
 ms.openlocfilehash: 248d10e8814d195a515a658653cfc38de7dd4652
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67174624"
 ---
-- 要訪問資料盒邊緣服務，您的組織需要擁有企業協定 （EA） 或雲解決方案供應商 （CSP） 訂閱。 有關詳細資訊，請參閱註冊[Azure 訂閱](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)。
-- 由於此管理服務託管在 Azure 中，因此受 Azure 安全功能的保護。 有關 Azure 提供的安全功能的詳細資訊，請轉到 Microsoft [Azure 信任中心](https://azure.microsoft.com/support/trust-center/security/)。
-- 對於 SDK 管理操作，您可以在**裝置屬性**中獲取資源的加密金鑰。 僅當您具有資源圖 API 的許可權時，才能查看加密金鑰。
+- 若要存取 Data Box Edge 服務，您的組織必須具有 Enterprise 合約（EA）或雲端解決方案提供者（CSP）訂用帳戶。 如需詳細資訊，請參閱[註冊 Azure 訂](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)用帳戶。
+- 因為此管理服務裝載于 Azure 中，所以會受到 Azure 安全性功能的保護。 如需 Azure 所提供之安全性功能的詳細資訊，請移至[Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/security/)。
+- 針對 SDK 管理作業，您可以在 [**裝置屬性**] 中取得資源的加密金鑰。 只有在您有 Resource Graph API 的許可權時，才可以查看加密金鑰。

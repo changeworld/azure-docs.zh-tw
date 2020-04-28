@@ -70,7 +70,7 @@ Microsoft 會使用最佳做法程序以及[符合 NIST 800-88 規範](https://c
 ## <a name="equipment-disposal"></a>設備處置
 在系統的生命週期結束時，Microsoft 作業人員會遵循嚴格的資料處理和硬體處置程序，確保不受信任的對象無法存取可能包含您資料的硬體。 我們會對硬體使用其支援的安全清除方法。 對於無法清除的硬碟，我們會使用可將該硬碟銷毀，讓資訊不可能復原的銷毀程序。 此銷毀程序可能是弄碎、切碎、粉碎或焚化。 我們會根據資產類型決定處理方法。 並且保留銷毀的記錄。 所有 Azure 服務都會使用已核准的媒體儲存體和處置管理服務。
 
-## <a name="compliance"></a>法規遵循
+## <a name="compliance"></a>合規性
 我們會設計及管理 Azure 基礎結構，以符合一組廣泛的國際性及產業特定合規性標準，例如 ISO 27001、HIPAA、FedRAMP、SOC 1 和 SOC 2。 我們也符合國家或地區特定的標準，包括澳大利亞 IRAP、英國 G-雲端和新加坡 MTCS。 嚴格的第三方稽核，例如「英國標準學會」所做的稽核，以確認符合這些標準要求的嚴格安全性控制。
 
 如需 Azure 所遵守的合規性標準完整清單，請參閱[合規性供應項目](https://www.microsoft.com/trustcenter/compliance/complianceofferings)。

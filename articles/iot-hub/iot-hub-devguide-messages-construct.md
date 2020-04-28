@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure IoT 中樞訊息格式 | Microsoft Docs
-description: 開發人員指南 - 描述 IoT 中心消息的格式和預期內容。
+description: 開發人員指南-說明 IoT 中樞訊息的格式和預期內容。
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
 ms.openlocfilehash: 28537ac2389fbb1ca43ca4014515564bddeba4ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69872491"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>建立及讀取 IoT 中樞訊息
@@ -43,25 +43,25 @@ IoT 中樞的裝置對雲端傳訊具有下列特性：
 
 * 如[控制 IoT 中樞的存取權](iot-hub-devguide-security.md)所述，IoT 中樞會啟用每一裝置的驗證和存取控制。
 
-* 您可以使用進入應用程式屬性的資訊標記消息。 有關詳細資訊，請參閱[消息豐富](iot-hub-message-enrichments-overview.md)。
+* 您可以使用進入應用程式屬性的資訊來為訊息加上戳記。 如需詳細資訊，請參閱[message 擴充](iot-hub-message-enrichments-overview.md)。
 
 如需如何將使用不同通訊協定傳送的訊息編碼和解碼的詳細資訊，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-## <a name="system-properties-of-d2c-iot-hub-messages"></a>**D2C** IoT 中心消息的系統屬性
+## <a name="system-properties-of-d2c-iot-hub-messages"></a>**D2C** IoT 中樞訊息的系統屬性
 
-| 屬性 | 描述  |使用者可設置？|關鍵字 </br>路由查詢|
+| 屬性 | 描述  |使用者可設定嗎？|的關鍵字 </br>路由查詢|
 | --- | --- | --- | --- |
 | message-id |使用者可設定的訊息識別碼，用於「要求-回覆」模式。 格式：區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和 `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。  | 是 | messageId |
-| iothub-enqueuedtime |IoT 中心接收[設備到雲](iot-hub-devguide-d2c-guidance.md)消息的日期和時間。 | 否 | 排隊時間 |
+| iothub-enqueuedtime |IoT 中樞收到[裝置到雲端](iot-hub-devguide-d2c-guidance.md)訊息的日期和時間。 | 否 | Enqueuedtime 之外 |
 | user-id |用來指定訊息來源的識別碼。 當 IoT 中樞產生訊息時，它會設定為 `{iot hub name}`。 | 是 | userId |
 | iothub-connection-device-id |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 它包含傳送訊息之裝置的 **deviceId** 。 | 否 | connectionDeviceId |
-| iothub-連接-模組-id |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 它包含發送消息的設備的**模組 ID。** | 否 | 連接ModuleId |
-| iothub-connection-auth-generation-id |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 它包含發送消息的設備**的連接DeviceGenerationId（** 根據[設備識別屬性](iot-hub-devguide-identity-registry.md#device-identity-properties)）。 | 否 |連接設備生成 Id |
-| iothub-connection-auth-method |由 IoT 中樞在裝置到雲端訊息上設定的驗證方法。 這個屬性包含用來驗證傳送訊息之裝置的驗證方法的相關資訊。| 否 | 連接Auth方法 |
+| iothub-連接-模組識別碼 |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 它包含傳送訊息之裝置的**moduleId** 。 | 否 | connectionModuleId |
+| iothub-connection-auth-generation-id |由 IoT 中樞在裝置到雲端訊息上設定的識別碼。 它包含傳送訊息之裝置的**connectionDeviceGenerationId** （依據[裝置身分識別屬性](iot-hub-devguide-identity-registry.md#device-identity-properties)）。 | 否 |connectionDeviceGenerationId |
+| iothub-connection-auth-method |由 IoT 中樞在裝置到雲端訊息上設定的驗證方法。 這個屬性包含用來驗證傳送訊息之裝置的驗證方法的相關資訊。| 否 | connectionAuthMethod |
 
-## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT 中心消息的系統屬性
+## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT 中樞訊息的系統屬性
 
-| 屬性 | 描述  |使用者可設置？|
+| 屬性 | 描述  |使用者可設定嗎？|
 | --- | --- | --- |
 | message-id |使用者可設定的訊息識別碼，用於「要求-回覆」模式。 格式：區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和 `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。  |是|
 | sequence-number |IoT 中樞指派給每則雲端到裝置訊息的數字 (對每個裝置佇列而言都是唯一的)。 |否|
@@ -73,7 +73,7 @@ IoT 中樞的裝置對雲端傳訊具有下列特性：
 
 ## <a name="message-size"></a>訊息大小
 
-IoT 中樞會以不限通訊協定的方式 (只考慮實際的承載) 測量郵件大小。 以位元組為單位的大小計算為以下值的總和：
+IoT 中樞會以不限通訊協定的方式 (只考慮實際的承載) 測量郵件大小。 大小（以位元組為單位）會計算為下列值的總和：
 
 * 內文大小 (以位元組為單位)。
 * 訊息系統屬性所有值的大小 (以位元組為單位)。
@@ -85,7 +85,7 @@ IoT 中樞會以不限通訊協定的方式 (只考慮實際的承載) 測量郵
 
 為了避免裝置到雲端的訊息中出現裝置詐騙，IoT 中樞使用下列屬性在所有訊息上加上戳記：
 
-* **iothub-連接-設備-id**
+* **iothub-連接-裝置識別碼**
 * **iothub-connection-auth-generation-id**
 * **iothub-connection-auth-method**
 
