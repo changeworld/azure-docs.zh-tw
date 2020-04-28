@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.openlocfilehash: 79a998930a384420b22add8825ee4b2269eb4539
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75360747"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>在 Azure 雲端服務上使用 Express 建置和部署 Node.js Web 應用程式
@@ -94,7 +94,7 @@ Node.js 包含核心執行時期的一組最低功能。
    
    ![The contents of the index.jade file.](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
    
-   Jade 是 Express 應用程式使用的預設檢視引擎。 有關"玉"視圖引擎的詳細資訊，請參閱[http://jade-lang.com][http://jade-lang.com]。
+   Jade 是 Express 應用程式使用的預設檢視引擎。 如需 Jade view 引擎的詳細資訊，請[http://jade-lang.com][http://jade-lang.com]參閱。
 2. 修改最後一行文字，加上 **in Azure**。
    
    ![index.jade 檔案，最後一行是：p Welcome to \#{title} in Azure](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)

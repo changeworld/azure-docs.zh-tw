@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：修改電路：電源外殼：經典
+title: Azure ExpressRoute：修改線路： PowerShell：傳統
 description: 本文將逐步引導您檢查狀態、更新或刪除，以及取消佈建 ExpressRoute 傳統部署模型線路。
 services: expressroute
 author: cherylmc
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cherylmc
 ms.openlocfilehash: e421a534b04f74d2a2eb0bc06aeffa52684ae17a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74931970"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 修改 ExpressRoute 線路 (傳統)
 
 > [!div class="op_single_selector"]
-> * [Azure 門戶](expressroute-howto-circuit-portal-resource-manager.md)
-> * [電源外殼](expressroute-howto-circuit-arm.md)
+> * [Azure 入口網站](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
-> * [Azure 資源管理器範本](expressroute-howto-circuit-resource-manager-template.md)
-> * [視頻 - Azure 門戶](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [電源外殼（經典）](expressroute-howto-circuit-classic.md)
+> * [Azure Resource Manager 範本](expressroute-howto-circuit-resource-manager-template.md)
+> * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
+> * [PowerShell （傳統）](expressroute-howto-circuit-classic.md)
 >
 
 本文將逐步引導您檢查狀態、更新或刪除，以及取消佈建 ExpressRoute 傳統部署模型線路。 本文適用於傳統部署模型。
@@ -194,7 +194,7 @@ At line:1 char:1
 ### <a name="considerations"></a>考量
 
 * 您必須取消連結 ExpressRoute 線路的所有虛擬網路，此作業才會成功。 如果此作業失敗，請檢查您是否有任何虛擬網路連結至線路。
-* 如果 ExpressRoute 電路服務提供者預配狀態為**預配**或**預配**，則必須與服務提供者合作，取消在其一側的電路預配。 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
+* 如果 ExpressRoute 線路服務提供者布建狀態為 [布建] 或 [已布建]，您必須與服務提供者合作，以在其端取消布**建**線路。 **Provisioning** 我們會繼續保留資源並向您收取費用，直到線路服務提供者完成取消佈建並通知我們。
 * 若服務提供者已取消佈建線路 (服務提供者佈建狀態設定為 [未佈建]****)，您便可以刪除線路。 這樣會停止針對線路計費。
 
 #### <a name="delete-a-circuit"></a>刪除電路

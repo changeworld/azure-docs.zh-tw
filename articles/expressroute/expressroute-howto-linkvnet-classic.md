@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：將 VNet 連結到電路：經典
+title: Azure ExpressRoute：將 VNet 連結到線路：傳統
 description: 本文提供以下內容的概觀：如何使用傳統部署模型和 PowerShell 將虛擬網路 (VNet) 連結到 ExpressRoute 線路。
 services: expressroute
 author: cherylmc
@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: cherylmc
 ms.openlocfilehash: 53c200b01dfa6bce09cfc058dc24ab8e38d253a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74930043"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>使用 PowerShell 將虛擬網路連接到 ExpressRoute 線路 (傳統)
 > [!div class="op_single_selector"]
-> * [Azure 門戶](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [電源外殼](expressroute-howto-linkvnet-arm.md)
+> * [Azure 入口網站](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [視頻 - Azure 門戶](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [電源外殼（經典）](expressroute-howto-linkvnet-classic.md)
+> * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [PowerShell （傳統）](expressroute-howto-linkvnet-classic.md)
 >
 
 本文將協助您使用 PowerShell 將虛擬網路 (VNet) 連結到 Azure ExpressRoute 線路。 單一 VNet 最多可連結到四個 ExpressRoute 線路。 使用本文中的步驟來建立您要連線之每個 ExpressRoute 線路的新連結。 ExpressRoute 線路可以位於相同的訂用帳戶、不同的訂用帳戶或兩者的混合。 本文適用於使用傳統部署模型所建立的虛擬網路。
@@ -39,7 +39,7 @@ ms.locfileid: "74930043"
 * 開始設定之前，請先檢閱[必要條件](expressroute-prerequisites.md)、[路由需求](expressroute-routing.md)及[工作流程](expressroute-workflows.md)。
 * 您必須擁有作用中的 ExpressRoute 線路。
    * 遵循指示來 [建立 ExpressRoute 線路](expressroute-howto-circuit-classic.md) ，並由您的連線提供者來啟用該線路。
-   * 確定您已針對循環設定了 Azure 私用對等。 有關路由說明，請參閱[配置路由](expressroute-howto-routing-classic.md)一文。
+   * 確定您已針對循環設定了 Azure 私用對等。 請參閱[設定路由](expressroute-howto-routing-classic.md)一文，以取得路由指示。
    * 請確定已設定 Azure 私用對等，且已開啟您的網路與 Microsoft 之間的 BGP 對等，讓您可以啟用端對端連線。
    * 您必須有已建立且完整佈建的虛擬網路和虛擬網路閘道。 請遵循指示 [設定 ExpressRoute 的虛擬網路](expressroute-howto-vnet-portal-classic.md)。
 

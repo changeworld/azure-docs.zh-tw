@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務遙測 | Microsoft Docs
-description: 本文概述了 Microsoft Azure 媒體服務遙測。
+description: 本文提供 Microsoft Azure 媒體服務遙測的總覽。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: e2cbb36158722a47518f575b391340b5e25bd908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74895784"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure 媒體服務遙測  
 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒體服務 (AMS) 可讓您存取其服務的遙測/計量資料。 目前的 AMS 版本可讓您收集直播**頻道**、**串流端點**和即時**封存**實體的遙測資料。 
 
@@ -77,7 +77,7 @@ Or
 屬性|值|範例/附註
 ---|---|---
 PartitionKey|{帳戶識別碼} _ {實體識別碼}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>帳戶識別碼包含在分割區索引鍵中，以簡化多個媒體服務帳戶寫入同一儲存體帳戶的工作流程。
-RowKey|{到午夜的秒數}_{隨機值}|01688_00199<br/><br/>資料列索引鍵以到午夜的秒數開始，以允許磁碟分割內的前 n 個樣式查詢。 有關詳細資訊，請參閱[此](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)文章。 
+RowKey|{到午夜的秒數}_{隨機值}|01688_00199<br/><br/>資料列索引鍵以到午夜的秒數開始，以允許磁碟分割內的前 n 個樣式查詢。 如需詳細資訊，請參閱[這](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)篇文章。 
 時間戳記|日期/時間|Azure 資料表中的自動時間戳記 2016-09-09T22:43:42.241Z
 類型|提供遙測資料之實體的類型|頻道/串流端點/封存<br/><br/>事件類型只是字串值。
 名稱|遙測事件的名稱|ChannelHeartbeat/StreamingEndpointRequestLog
@@ -119,7 +119,7 @@ E2ELatency|平均端對端延遲|250
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 時間戳記|時間戳記|Azure 資料表中的自動時間戳記 2016-09-09T22:43:42.241Z
-類型|類型|通路
+類型|類型|頻道
 名稱|名稱|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服務識別碼|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
@@ -137,7 +137,7 @@ UnalignedPresentationTime|我們是否收到呈現方式時間未對齊的片段
 UnexpectedBitrate|如果下列條件成立則為 True：音訊/視訊曲目的計算的/實際的位元速率 > 40,000 bps，且 IncomingBitrate == 0 或 IncomingBitrate 和 actualBitrate 相差 50% |True
 Healthy|如果下列條件成立則為 True <br/>overlapCount、 <br/>DiscontinuityCount、 <br/>NonIncreasingCount、 <br/>UnalignedKeyFrames、 <br/>UnalignedPresentationTime 及 <br/>UnexpectedBitrate<br/> 均為 0|True<br/><br/>Healthy 是複合函數，當下列任一條件成立時會傳回 false︰<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
 
-**即時存檔**
+**即時封存**
 
 屬性|值|範例/附註
 ---|---|---

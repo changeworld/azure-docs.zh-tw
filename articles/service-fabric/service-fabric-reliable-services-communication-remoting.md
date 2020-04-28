@@ -1,21 +1,21 @@
 ---
-title: 在服務結構中使用 C# 服務遠端處理
+title: '在 Service Fabric 中使用 c # 進行服務遠端處理'
 description: Service Fabric 遠端處理可讓用戶端和服務使用遠端程序呼叫與 C# 服務進行通訊。
 author: vturecek
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: vturecek
 ms.openlocfilehash: 0d59275f25931a11b2d551a2e9eb019838e4c1b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75433875"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>使用 Reliable Services 在 C# 中進行服務遠端處理
 
 > [!div class="op_single_selector"]
-> * [C# 在 Windows 上](service-fabric-reliable-services-communication-remoting.md)
+> * [Windows 上的 c #](service-fabric-reliable-services-communication-remoting.md)
 > * [在 Linux 上使用 Java](service-fabric-reliable-services-communication-remoting-java.md)
 >
 >
@@ -220,7 +220,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 此步驟可確保用戶端使用 V2 堆疊。
 用戶端專案/服務不需要任何變更。 您可以使用更新的介面組件建置用戶端專案。
 
-3. 此為選用步驟。 使用 V2 接聽程式屬性，然後升級 V2 服務。
+3. 這是選擇性步驟。 使用 V2 接聽程式屬性，然後升級 V2 服務。
 此步驟可確保服務只接聽 V2 接聽程式。
 
     ```csharp
@@ -313,7 +313,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 若要從 V1 升級為 V2 (介面相容，也稱為 V2_1)，需要 2 個步驟。 遵循此序列中的步驟。
 
 > [!NOTE]
-> 從 V1 升級到 V2 時`Remoting`，請確保命名空間已更新為使用 V2。 示例："微軟.ServiceFabric.服務.Remoting.V2.Fabric 傳輸.用戶端"
+> 從 V1 升級至 V2 時，請確定`Remoting`已將命名空間更新為使用 v2。 範例： ' ServiceFabric. FabricTransport. Client '
 >
 >
 
@@ -347,7 +347,7 @@ string message = await helloWorldClient.HelloWorldAsync();
 此步驟可確保用戶端使用 V2_1 堆疊。
 用戶端專案/服務不需要任何變更。 您可以使用更新的介面組件建置用戶端專案。
 
-3. 此為選用步驟。 從屬性中移除 V1 接聽程式版本，然後升級 V2 服務。
+3. 這是選擇性步驟。 從屬性中移除 V1 接聽程式版本，然後升級 V2 服務。
 此步驟可確保服務只接聽 V2 接聽程式。
 
     ```csharp

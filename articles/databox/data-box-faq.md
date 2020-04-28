@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 73256aef19a03c4c971be5fc9e69f988ef5a831a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75438617"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure 資料箱：常見問題集
@@ -101,7 +101,7 @@ A.  您只能在資料箱訂購之後，並在訂單處理之前取消訂單。 
 A. 是。 您可以將多個資料箱連線到多部主機電腦以傳輸資料，而且可以平行執行多個複製作業。 如需詳細資訊，請移至[教學課程：將資料複製到 Azure 資料箱](data-box-deploy-copy-data.md)。
 
 ### <a name="q-can-i-connect-to-both-the-10-gbe-interfaces-on-the-data-box-to-transfer-data"></a>Q. 是否可以連線到資料箱上的兩個 10 GbE 介面來傳輸資料？
-A. 是。 在資料箱上可以連線這兩個 10 GbE 介面來同時複製資料。 有關如何複製資料的詳細資訊，請轉到[教程：將資料複製到 Azure 資料框](data-box-deploy-copy-data.md)。
+A. 是。 在資料箱上可以連線這兩個 10 GbE 介面來同時複製資料。 如需如何複製資料的詳細資訊，請移至[教學課程：將資料複製到 Azure 資料箱](data-box-deploy-copy-data.md)。
 
 <!--### Q. The network interface on my Data Box is not working. What should I do? 
 A. 
@@ -116,7 +116,7 @@ A.
 A.-->
 
 ### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>Q. 前操作面板上的系統錯誤 LED 指示燈亮起。 我該怎麼辦？
-A. 如果系統錯誤 LED 指示燈亮起，表示您的系統健康情況不良。 [有關後續步驟，請與 Microsoft 支援部門聯繫](data-box-disk-contact-microsoft-support.md)。
+A. 如果系統錯誤 LED 指示燈亮起，表示您的系統健康情況不良。 [請聯絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)以進行後續步驟。
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>Q. 我無法在 Azure 入口網站中存取資料箱解除鎖定密碼。 為什麼會這樣？
 A. 如果您無法在 Azure 入口網站中存取解除鎖定密碼，請檢查您的訂用帳戶與儲存體帳戶的權限。 請確定您有資源群組層級的參與者或擁有者權限。 如果沒有，則您至少需要擁有資料箱操作員角色權限，才能看到存取認證。
@@ -180,19 +180,19 @@ A.  是。 資料箱可支援最多 10 個儲存體帳戶、一般用途、傳�
 ### <a name="q-my-device-was-delivered-but-the-device-seems-to-be-damaged-what-should-i-do"></a>Q. 我已收到裝置，但裝置似乎已經損毀。 我該怎麼辦？
 A. 如果您收到的裝置已損毀，或是有遭到竄改的跡象，請勿使用該裝置。 請[連絡 Microsoft 支援服務](data-box-disk-contact-microsoft-support.md)並儘快送回裝置。 您也可以建立新的資料箱訂單來更換裝置。 在此情況下，將不會對您收取更換裝置的費用。
 
-### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Q. 我可以自己拿起資料框訂單嗎？ 我能否通過您選擇的運營商返回資料盒？
-A. 是。 Microsoft 也提供僅 US Gov 區域適用的自助運送。 下資料盒訂單時，您可以選擇自管理的裝運選項。 要拿起資料盒設備，請執行以下步驟：
+### <a name="q-can-i-pick-up-my-data-box-order-myself-can-i-return-the-data-box-via-a-carrier-that-i-choose"></a>Q. 我可以自行挑選我的資料箱順序嗎？ 我可以透過我選擇的電信公司來傳回資料箱嗎？
+A. 是。 Microsoft 也提供僅 US Gov 區域適用的自助運送。 下資料箱訂單時，您可以選擇 [自我管理的出貨] 選項。 若要挑選您的資料箱裝置，請執行下列步驟：
     
-1. 下訂單後，將處理訂單並準備資料框。 當您的訂單可供取貨時，您會收到電子郵件通知。 
+1. 在您下訂單之後，就會處理訂單並準備資料箱。 當您的訂單可供取貨時，您會收到電子郵件通知。 
 2. 當訂單可供取貨之後，請您前往 Azure 入口網站中的訂單，並瀏覽至 [概觀]**** 刀鋒視窗。 
 3. 您會在 Azure 入口網站中看到含有代碼的通知。 請傳送電子郵件至 [Azure資料箱作業小組](mailto:adbops@microsoft.com)，並將代碼提供給他們。 小組會提供位置並安排取貨日期和時間。 收到電子郵件通知之後，您必須在 5 個工作天內連絡小組。
 
-資料複製完成後，請執行以下步驟返回設備：
+資料複製完成後，請採取下列步驟來傳回您的裝置：
 
-1. 一旦資料副本完成且沒有錯誤，請運行 **"準備發貨**"。 準備完成後，您將在設備的本地 Web UI 中收到一個代碼。 複製並保存代碼。
-2. 關閉設備並拆下連接電纜。
+1. 一旦資料複製完成且沒有錯誤，請執行**寄送準備**。 準備完成後，您會在裝置的本機 web UI 中收到程式碼。 複製並儲存程式碼。
+2. 關閉裝置，並移除連接的纜線。
 3. 纏繞裝置隨附的電源線，並將其安全地放在裝置背後。
-4. 向[Azure 資料框操作團隊](mailto:adbops@microsoft.com)發送電子郵件，並為他們提供之前保存的代碼。 他們為您提供有關何時何地放下設備的資訊。
+4. 以電子郵件傳送[Azure 資料箱作業小組](mailto:adbops@microsoft.com)，並為他們提供您稍早儲存的程式碼。 他們會提供有關卸載裝置之位置和時機的資訊。
 
 ### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>Q. 我的資料箱服務在運送期間可以跨國家/地區邊界使用嗎？
 A. 所有的資料箱裝置都是在與目的地相同的國家/地區內寄送，並不會跨越任何跨國界。 唯一的例外狀況是位於歐盟 (EU) 的訂單，該地區的裝置可以在任何歐盟國家/地區之間運送。 這適用於資料箱及 Data Box Heavy 裝置。
@@ -261,7 +261,7 @@ A.  下列報表類型可用來支援監管鏈：
 A.  貨運公司追蹤記錄可從資料箱訂單記錄中擷取。 當您的裝置送回到 Azure 資料中心，並清除裝置上的資料之後，就會將此報表提供給您。 若立即需要，您也可以直接移至貨運公司的網站，使用訂單追蹤號碼來取得追蹤資訊。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>我是否可以親自將資料箱送到 Azure 資料中心？ 
-A.  否。 目前 Azure 資料中心不接受由客戶或是 UPS 以外的貨運公司寄送資料箱。
+A.  不可以。 目前 Azure 資料中心不接受由客戶或是 UPS 以外的貨運公司寄送資料箱。
 
 
 ## <a name="next-steps"></a>後續步驟

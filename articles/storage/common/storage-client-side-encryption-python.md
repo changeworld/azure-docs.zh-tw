@@ -12,17 +12,17 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 16e66cd762b86b27dc6703542ca7261b2300a33b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74895376"
 ---
 # <a name="client-side-encryption-with-python"></a>使用 Python 的用戶端加密
 
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 [Azure Storage Client Library for Python (適用於 Python 的 Azure 儲存體用戶端程式庫)](https://pypi.python.org/pypi/azure-storage) 支援在上傳至 Azure 儲存體之前將用戶端應用程式內的資料加密，並在下載至用戶端時解密資料。
 
 > [!NOTE]
@@ -97,7 +97,7 @@ ms.locfileid: "74895376"
 
    請注意，只有字串屬性可以加密。 如果有其他類型的屬性需要加密，則必須轉換成字串。 加密的字串會做為二進位屬性儲存在服務上，並在解密後轉換回字串 (原始字串，而不是具有 EdmType.STRING 類型的 EntityProperties)。
 
-   針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 這可透過將這些屬性儲存於 TableEntity 物件中並設定類型為 EdmType.STRING 且將加密設定為 true，或是在 tableservice 物件上設定 encryption_resolver_function。 加密解析程式是函式，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 （例如，如果 X，則加密屬性 A;否則加密屬性 A 和 B。請注意，在讀取或查詢實體時不必提供此資訊。
+   針對資料表，除了加密原則之外，使用者必須指定要加密的屬性。 這可透過將這些屬性儲存於 TableEntity 物件中並設定類型為 EdmType.STRING 且將加密設定為 true，或是在 tableservice 物件上設定 encryption_resolver_function。 加密解析程式是函式，接受資料分割索引鍵、資料列索引鍵和屬性名稱，然後傳回布林值，指出是否應該加密該屬性。 在加密期間，用戶端程式庫會使用此資訊，決定將屬性在寫到網路時是否應該加密。 委派也提供關於屬性如何加密的可能邏輯。 （例如，如果 X，則會加密屬性 A，否則會加密屬性 A 和 B）。請注意，讀取或查詢實體時不需要提供此資訊。
 
 ### <a name="batch-operations"></a>批次作業
 單一加密原則適用於批次中的所有資料列。 用戶端程式庫會在內部為批次中的每個資料列產生新的隨機 IV 和隨機 CEK。 使用者也可以選擇為批次中的每個作業加密不同的屬性，作法是在加密解析程式中定義此行為。

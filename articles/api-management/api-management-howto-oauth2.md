@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 90c890925378c30ce5688d2713990b4b2cdd20c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75430682"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 授權開發人員帳戶
@@ -25,7 +25,7 @@ ms.locfileid: "75430682"
 許多 API 都支援使用 [OAuth 2.0](https://oauth.net/2/) 來保護 API，並確保只有有效的使用者才能存取，而且他們只能存取獲授權的資源。 為了搭配使用 Azure API 管理的互動式開發人員主控台與這類 API，服務可讓您設定服務執行個體來使用已啟用 OAuth 2.0 的 API。
 
 > [!IMPORTANT]
-> OAuth 2.0 授權尚未在新開發人員門戶的互動式主控台中提供。
+> 新開發人員入口網站的互動式主控台尚未提供 OAuth 2.0 授權。
 
 ## <a name="prerequisites"></a><a name="prerequisites"> </a>Prerequisites
 
@@ -58,7 +58,7 @@ ms.locfileid: "75430682"
 
     勾選需要的類型以指定 [授權授與類型]****。 **** 。
 
-    輸入 [Authorization endpoint URL] ****。 對於 Azure 活動目錄，此 URL 將類似于以下 URL，其中`<tenant_id>`將替換為 Azure AD 租戶的 ID。
+    輸入 [Authorization endpoint URL] ****。 針對 Azure Active Directory，此 URL 將與下列 URL 類似，其中`<tenant_id>`會以您的 Azure AD 租使用者識別碼取代。
 
     `https://login.microsoftonline.com/<tenant_id>/oauth2/authorize`
 
@@ -96,11 +96,11 @@ ms.locfileid: "75430682"
 
     ![OAuth 2.0 設定](./media/api-management-howto-oauth2/oauth-07.png)
 
-## <a name="legacy-developer-portal---test-the-oauth-20-user-authorization"></a><a name="step3"> </a>傳統開發人員門戶 - 測試 OAuth 2.0 使用者授權
+## <a name="legacy-developer-portal---test-the-oauth-20-user-authorization"></a><a name="step3"> </a>舊版開發人員入口網站-測試 OAuth 2.0 使用者授權
 
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
-設定好 OAuth 2.0 授權伺服器並將 API 設定為使用該伺服器後，您可以前往開發人員入口網站並呼叫 API 來進行測試。 按一下 Azure API 管理實例**概述**頁頂部功能表中的**開發人員門戶（舊版）。**
+設定好 OAuth 2.0 授權伺服器並將 API 設定為使用該伺服器後，您可以前往開發人員入口網站並呼叫 API 來進行測試。 在 Azure API 管理實例 [**總覽**] 頁面的頂端功能表中，按一下 [**開發人員入口網站（舊版）** ]。
 
 在上方功能表中按一下 [API]****，然後選取 [Echo API]****。
 

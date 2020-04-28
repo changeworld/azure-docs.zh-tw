@@ -1,6 +1,6 @@
 ---
 title: 使用資源提供者 REST API 建立 Azure IoT 中樞 | Microsoft Docs
-description: 瞭解如何使用資來源提供者 C# REST API 以程式設計方式創建和管理 IoT 中心。
+description: '瞭解如何使用資源提供者 c # REST API 以程式設計方式建立和管理 IoT 中樞。'
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
@@ -9,10 +9,10 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.openlocfilehash: c4cb230c9f0b56e3ff9d81e0d85134a7f192e6e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75429166"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>使用資源提供者 REST API 建立 IoT 中樞 (.NET)
@@ -27,7 +27,7 @@ ms.locfileid: "75429166"
 
 * Visual Studio。
 
-* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需幾分鐘即可創建[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 * [Azure PowerShell 1.0](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或更新版本。
 
@@ -95,7 +95,7 @@ ms.locfileid: "75429166"
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
     ```
 
-3. 將下列程式碼加入 **CreateIoTHub** 方法。 此程式碼說明 IoT 中樞建立並產生 JSON 表示法。 有關支援 IoT 中心的位置的當前清單，請參閱[Azure 狀態](https://azure.microsoft.com/status/)：
+3. 將下列程式碼加入 **CreateIoTHub** 方法。 此程式碼說明 IoT 中樞建立並產生 JSON 表示法。 如需目前支援 IoT 中樞的位置清單，請參閱[Azure 狀態](https://azure.microsoft.com/status/)：
 
     ```csharp
     var description = new
@@ -165,10 +165,10 @@ ms.locfileid: "75429166"
 
 3. 按一下 [偵錯]****，然後按一下 [開始偵錯]**** 以執行應用程式。 可能需要數分鐘的時間，部署才會開始執行。
 
-4. 若要確認您的應用程式已新增新的 IoT 中樞，請前往 [Azure 入口網站](https://portal.azure.com/) 並檢視您的資源清單。 或者，使用**獲取-AzResource**電源 Shell Cmdlet。
+4. 若要確認您的應用程式已新增新的 IoT 中樞，請前往 [Azure 入口網站](https://portal.azure.com/) 並檢視您的資源清單。 或者，使用**Get-azresource** PowerShell Cmdlet。
 
 > [!NOTE]
-> 此範例應用程式會加入您付費的「S1 標準 IoT 中樞」。 完成後，可以通過[Azure 門戶](https://portal.azure.com/)或使用 **"刪除 AzResource** PowerShell Cmdlet"在完成後刪除 IoT 中心。
+> 此範例應用程式會加入您付費的「S1 標準 IoT 中樞」。 當您完成時，您可以透過[Azure 入口網站](https://portal.azure.com/)或在完成時使用**get-azresource** PowerShell Cmdlet，來刪除 IoT 中樞。
 
 ## <a name="next-steps"></a>後續步驟
 

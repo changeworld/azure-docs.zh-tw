@@ -1,15 +1,15 @@
 ---
-title: 備份和恢復 Azure 服務結構參與者
+title: 備份和還原 Azure Service Fabric 執行者
 description: 瞭解如何在您的 Azure Service Fabric 動作項目中實作備份和還原。
 author: vturecek
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vturecek
 ms.openlocfilehash: 41ba3f9c7d362756b800005d0c140c23dd96caa6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75370454"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>實作 Reliable Actors 備份與還原
@@ -111,9 +111,9 @@ myActorServiceProxy.backupActorsAsync();
 
 如需有關 Reliable Actors 的詳細資訊，請參閱下列文章：
 * [動作項目狀態管理](service-fabric-reliable-actors-state-management.md)
-* [參與者生命週期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
+* [執行者生命週期和垃圾收集](service-fabric-reliable-actors-lifecycle.md)
 * [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET 示例代碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [.NET 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

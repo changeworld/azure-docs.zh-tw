@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75364300"
 ---
 # <a name="understand-autoscale-settings"></a>了解自動調整設定
@@ -85,18 +85,18 @@ ms.locfileid: "75364300"
 }
 ```
 
-| 區段 | 元素名稱 | 描述 |
+| 區段 | 元素名稱 | 說明 |
 | --- | --- | --- |
-| 設定 | ID | 自動調整規模設定的資源識別碼。 自動調整規模設定是 Azure Resource Manager 資源。 |
+| 設定 | 識別碼 | 自動調整規模設定的資源識別碼。 自動調整規模設定是 Azure Resource Manager 資源。 |
 | 設定 | NAME | 自動調整規模設定名稱。 |
 | 設定 | location | 自動調整規模設定的位置。 此位置可以與要調整規模的資源位置不同。 |
 | properties | targetResourceUri | 要調整規模之資源的資源識別碼。 每個資源都只能有一個自動調整規模設定。 |
-| properties | 設定檔 | 自動調整規模設定是由一或多個設定檔所組成。 每次自動調整規模引擎執行時，都會執行一個設定檔。 |
-| 設定檔 | NAME | 設定檔的名稱。 您可以選擇任何有助於識別設定檔的名稱。 |
-| 設定檔 | Capacity.maximum | 允許的最大容量。 執行此設定檔時，可確保自動調整不會將資源的規模調整到大於此數字。 |
-| 設定檔 | Capacity.minimum | 允許的最小容量。 執行此設定檔時，可確保自動調整規模不會將資源的規模調整到小於此數字。 |
-| 設定檔 | Capacity.default | 如果在讀取資源計量 (在此案例中為 “vmss1” 的 CPU) 時發生問題，而目前的容量低於預設值，則自動調整會相應放大為預設值。 這是為了確保資源的可用性。 如果目前的容量已超過預設容量，自動調整不會進行相應縮小。 |
-| 設定檔 | 規則 | 自動調整會使用設定檔中的規則，在最大容量與最小容量之間進行調整。 一個設定檔中可以有多個規則。 通常有兩個規則：一個用於決定何時要相應放大，另一個用於決定何時要相應縮小。 |
+| properties | profiles | 自動調整規模設定是由一或多個設定檔所組成。 每次自動調整規模引擎執行時，都會執行一個設定檔。 |
+| profile | NAME | 設定檔的名稱。 您可以選擇任何有助於識別設定檔的名稱。 |
+| profile | Capacity.maximum | 允許的最大容量。 執行此設定檔時，可確保自動調整不會將資源的規模調整到大於此數字。 |
+| profile | Capacity.minimum | 允許的最小容量。 執行此設定檔時，可確保自動調整規模不會將資源的規模調整到小於此數字。 |
+| profile | Capacity.default | 如果在讀取資源計量 (在此案例中為 “vmss1” 的 CPU) 時發生問題，而目前的容量低於預設值，則自動調整會相應放大為預設值。 這是為了確保資源的可用性。 如果目前的容量已超過預設容量，自動調整不會進行相應縮小。 |
+| profile | 規則 | 自動調整會使用設定檔中的規則，在最大容量與最小容量之間進行調整。 一個設定檔中可以有多個規則。 通常有兩個規則：一個用於決定何時要相應放大，另一個用於決定何時要相應縮小。 |
 | rule (規則) | metricTrigger | 定義規則的計量條件。 |
 | metricTrigger | metricName | 計量的名稱。 |
 | metricTrigger |  metricResourceUri | 發出計量之資源的資源識別碼。 在大多數情況下，會與要調整規模的資源相同。 在某些情況下，則可能不同。 例如，您可以根據儲存體佇列中的訊息數目來調整虛擬機器擴展集的規模。 |
@@ -301,7 +301,7 @@ ms.locfileid: "75364300"
 ## <a name="next-steps"></a>後續步驟
 請參考下列各項，以深入了解自動調整︰
 
-* [自動縮放概述](../../azure-monitor/platform/autoscale-overview.md)
+* [自動調整的總覽](../../azure-monitor/platform/autoscale-overview.md)
 * [Azure 監視器自動調整的常用度量](../../azure-monitor/platform/autoscale-common-metrics.md)
 * [Azure 監視器自動調整的最佳作法](../../azure-monitor/platform/autoscale-best-practices.md)
 * [使用自動調整動作傳送電子郵件和 Webhook 警示通知](../../azure-monitor/platform/autoscale-webhook-email.md)

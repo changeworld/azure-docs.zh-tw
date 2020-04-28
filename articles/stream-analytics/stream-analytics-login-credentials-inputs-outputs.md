@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
 ms.openlocfilehash: 3ae639dd7c5a42fc6880240988f0fb2817b09f43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75425980"
 ---
 # <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>針對串流分析作業的輸入和輸出替換登入認證
@@ -31,7 +31,7 @@ ms.locfileid: "75425980"
 4. 在 Azure 入口網站中，瀏覽至您的串流分析作業 > 選取 [停止]****，並等候作業停止。    
 5. 找出您要更新認證的 Blob/表格儲存體輸出/輸入。    
 6. 尋找 [儲存體帳戶金鑰]**** 欄位，然後貼上新產生的金鑰 > 按一下 [儲存]****。    
-7. 當您保存更改時，連接測試將自動啟動，您可以在通知選項卡中查看它。有兩個通知 - 一個對應于保存更新，另一個對應于測試連接：  
+7. 當您儲存變更時，會自動啟動連線測試，您可以從 [通知] 索引標籤加以查看。有兩個通知-一個對應于儲存更新，另一個對應至測試連線：  
    ![編輯金鑰之後的通知](media/stream-analytics-login-credentials-inputs-outputs/edited-key-notifications.png)
 8. 繼續進行[從上次停止的時間啟動您的作業](#start-your-job-from-the-last-stopped-time)一節。
 
@@ -82,7 +82,7 @@ ms.locfileid: "75425980"
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [使用 Azure 流分析開始](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

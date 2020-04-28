@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure IoT 中心設備預配服務中為多租戶預配設備
-description: 如何使用設備預配服務 （DPS） 實例為多租戶預配設備
+title: 如何在 Azure IoT 中樞裝置布建服務中為多組織使用者布建裝置
+description: 如何使用裝置布建服務（DPS）實例為多組織使用者布建裝置
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: e0dec0a67ed33186797ccec8066aaad89ceb8dcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75434744"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何針對多組織用戶佈建 
@@ -191,7 +191,7 @@ ms.locfileid: "75434744"
 
 在此節中，您將會將 Azure IoT C SDK 複製到每部 VM 上。 SDK 包含一個範例，此範例將會模擬從每個區域佈建租用戶裝置。
 
-1. 對於每個 VM，使用以下命令安裝**CMake** **、g#** **、gcc**和[Git：](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+1. 針對每個 VM，請使用下列命令來安裝**CMake**、 **g + +**、 **gcc**和[Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) ：
 
     ```bash
     sudo apt-get update
@@ -310,7 +310,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
     vi ~/azure-iot-sdk-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c
     ```
 
-1. 找出 `id_scope` 常數，並將其值取代為您先前複製的 [識別碼範圍]**** 值。 
+1. 找出 `id_scope` 常數，並將其值取代為您先前複製的 [識別碼範圍]  值。 
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -420,8 +420,8 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 ## <a name="next-steps"></a>後續步驟
 
-- 要瞭解更多重新調配，請參閱[IoT 中心設備重新調配概念](concepts-device-reprovision.md) 
-- 要瞭解更多取消預配，請參閱[如何取消預配以前自動預配的設備](how-to-unprovision-devices.md) 
+- 若要深入瞭解重新布建，請參閱[IoT 中樞裝置重新布建概念](concepts-device-reprovision.md) 
+- 若要深入瞭解解除布建，請參閱如何取消布建[先前自動布建的裝置](how-to-unprovision-devices.md) 
 
 
 

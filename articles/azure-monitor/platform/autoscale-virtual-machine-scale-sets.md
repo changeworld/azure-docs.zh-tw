@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.subservice: autoscale
 ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75364215"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>針對 VM 擴展集使用 Resource Manager 範本的進階自動調整設定
@@ -33,21 +33,21 @@ ms.locfileid: "75364215"
 
     | 設定檔與規則 | 描述 |
     |--- | --- |
-    | **配置 檔** |**以效能/計量為基礎** |
+    | **設定檔** |**以效能/計量為基礎** |
     | 規則 |服務匯流排佇列訊息計數 > x |
     | 規則 |服務匯流排佇列訊息計數 < y |
     | 規則 |CPU% > n |
     | 規則 |CPU% < p |
-    | **配置 檔** |**工作日早上時間 (無規則)** |
-    | **配置 檔** |**產品發行日 (無規則)** |
+    | **設定檔** |**工作日早上時間 (無規則)** |
+    | **設定檔** |**產品發行日 (無規則)** |
 
 4. 以下是我們用於此逐步解說的虛構調整案例。
 
-   * **基於負載**- 我想根據我的規模集託管的應用程式上的負載進行橫向擴展。
+   * 以**負載為基礎**-我想要根據裝載在擴展集上的應用程式負載來相應放大或縮小。 *
    * **訊息佇列大小** - 我針對應用程式的傳入訊息使用服務匯流排佇列。 \*我使用佇列的訊息計數和 CPU% 來設定預設設定檔，以在訊息計數或 CPU 達到臨界值時觸發調整動作。
    * **每週和每日時間** - 我想要一個以每週一次「當天時間」為基礎的設定檔，稱為「工作日早上時間」。 \*根據歷史資料，我明白這段期間應該要有特定數量的 VM 執行個體來處理應用程式的負載。
    * **特殊日期** - 我已新增「產品發行日」設定檔。 \*我會預先針對特定日期作出計畫，好讓應用程式可以準備好處理因應行銷公告，或是當我們將新產品置入應用程式時所導致的負載。
-   * *最後兩個設定檔中還可以具有其他基於性能指標的規則。在這種情況下，我決定不使用一個，而是依賴于基於預設性能指標的規則。規則對於定期設定檔和基於日期的設定檔是可選的。*
+   * *最後兩個設定檔也可以在其中有其他以效能標準為基礎的規則。在此情況下，我決定不要擁有，而是依賴預設的效能計量式規則。規則對週期性和以日期為基礎的設定檔是選擇性的。*
 
      自動調整引擎針對設定檔和規則的優先順序，也已在[自動調整最佳做法](autoscale-best-practices.md)一文中說明。
      如需自動調整的常見計量清單，請參閱[自動調整的常用計量](autoscale-common-metrics.md)
@@ -58,7 +58,7 @@ ms.locfileid: "75364215"
 
 6. 按一下 [編輯]。 使用下列組態**取代**自動調整設定中的 'profiles' 元素：
 
-    ![設定檔](media/autoscale-virtual-machine-scale-sets/profiles.png)
+    ![profiles](media/autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {
@@ -234,7 +234,7 @@ ms.locfileid: "75364215"
 
 [針對使用虛擬機器擴展集的自動調整進行疑難排解](../../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
 
-[自動縮放的通用指標](autoscale-common-metrics.md)
+[自動調整的常用計量](autoscale-common-metrics.md)
 
 [Azure 自動調整的最佳作法](autoscale-best-practices.md)
 

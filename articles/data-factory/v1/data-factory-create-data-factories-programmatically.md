@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure .NET SDK 創建資料管道
+title: 使用 Azure .NET SDK 建立資料管線
 description: 了解如何使用 Data Factory .NET SDK，以程式設計方式建立、監視和管理 Azure Data Factory。
 services: data-factory
 documentationcenter: ''
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 9cd3cd60f5d62a0c416b0e05ea408c20483bff13
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74931322"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>使用 Azure Data Factory .NET SDK 來建立、監視及管理 Azure Data Factory
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[複製活動教學課程](../quickstart-create-data-factory-dot-net.md)。 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您可以使用 Data Factory .NET SDK，以程式設計方式建立、監視及管理 Azure Data Factory 本文包含指導您建立範例 .NET 主控台應用程式的逐步解說，此應用程式將會建立並監視 Data Factory。 
 
 > [!NOTE]
@@ -50,7 +50,7 @@ ms.locfileid: "74931322"
     ```powershell
     Get-AzSubscription
     ```
-4. 執行下列命令以選取您要使用的訂用帳戶。 將**&lt;Azure 訂閱**&gt;的名稱替換為 Azure 訂閱的名稱。
+4. 執行下列命令以選取您要使用的訂用帳戶。 以您的 Azure 訂用帳戶名稱取代** &lt;NameOfAzureSubscription。** &gt;
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -109,14 +109,14 @@ ms.locfileid: "74931322"
 複製活動會在 Azure Data Factory 中執行資料移動。 此活動是由全域可用的服務所提供，可以使用安全、可靠及可調整的方式，在各種不同的資料存放區之間複製資料。 如需複製活動的詳細資訊，請參閱 [資料移動活動](data-factory-data-movement-activities.md) 文章。
 
 1. 使用 Visual Studio 2012/2013/2015 建立 C# .NET 主控台應用程式。
-   1. 推出**視覺工作室**2012/2013/2015。
+   1. 啟動**Visual Studio** 2012/2013/2015。
    2. 按一下 [檔案]****，指向 [新增]****，然後按一下 [專案]****。
-   3. 展開**範本**，然後選擇**視覺化 C#**。 在此逐步解說中，您使用的是 C#，但您可以使用任何 .NET 語言。
+   3. 展開 [**範本**]，然後選取 [ **Visual c #**]。 在此逐步解說中，您使用的是 C#，但您可以使用任何 .NET 語言。
    4. 從右邊的專案類型清單中選取 [主控台應用程式] **** 。
-   5. 輸入**名稱的資料工廠APITestApp。**
+   5. 在 [名稱] 中輸入**DataFactoryAPITestApp** 。
    6. 在 [位置] 中選取 **C:\ADFGetStarted**。
    7. 按一下 [確定]**** 建立專案。
-2. 按一下**工具**，指向**NuGet 包管理器**，然後按一下 **"包管理器主控台**"。
+2. 按一下 [**工具**]，指向 [ **NuGet 套件管理員**]，然後按一下 [**套件管理員主控台**]。
 3. 在 [Package Manager Console]**** 中，輸入下列命令：
    1. 執行以下命令安裝 Data Factory 套件：`Install-Package Microsoft.Azure.Management.DataFactories`
    2. 執行下列命令安裝 Azure Active Directory 套件 (您在程式碼中使用 Active Directory API)︰`Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
@@ -137,7 +137,7 @@ ms.locfileid: "74931322"
         </appSettings>
     </configuration>
     ```
-5. 在 App.Config 檔中，使用您自己的值**&lt;更新&gt;應用程式 ID、****&lt;&gt;密碼**、**&lt;訂閱 ID&gt;** 和**&lt;租戶 ID&gt;** 的值。
+5. 在 app.config 檔案中，使用您自己的值來更新 [ ** &lt;應用程式識別碼&gt;**]、[ ** &lt;密碼&gt;**]、 ** &lt;[訂&gt;** 用帳戶識別碼] 和** &lt;[租使用者識別碼&gt; ** ] 的值。
 6. 將下列 **using** 陳述式新增至專案的 **Program.cs**檔案。
 
     ```csharp
@@ -453,12 +453,12 @@ ms.locfileid: "74931322"
     John, Doe
     Jane, Doe
     ```
-17. 通過按一下功能表上的 **"調試** -> **開始調試"** 來運行示例。 當您看到 [取得資料配量的執行詳細資料]****，請等待數分鐘再按 **ENTER**。
+17. 按一下功能表上的 [**調試** -> 程式] [**開始調試**]，以執行範例。 當您看到 [取得資料配量的執行詳細資料]****，請等待數分鐘再按 **ENTER**。
 18. 使用 Azure 入口網站確認 Data Factory： **APITutorialFactory** 是使用下列成品所建立：
     * 連結服務：**AzureStorageLinkedService**
     * 資料集：**DatasetBlobSource** 和 **DatasetBlobDestination**。
     * 管線： **PipelineBlobSample**
-19. 驗證是否在**adf 教程**容器中的**apifactory 輸出**資料夾中創建了輸出檔案。
+19. 確認輸出檔案已建立于**adftutorial**容器的**apifactoryoutput**資料夾中。
 
 ## <a name="get-a-list-of-failed-data-slices"></a>取得失敗資料配量的清單 
 

@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 22fd78ccd58be1790fcd167da396600e8b876564
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75428907"
 ---
 # <a name="devtest-labs-concepts"></a>研發/測試實驗室概念
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 下列清單包含重要的研發/測試實驗室概念和定義：
 
 ## <a name="labs"></a>實驗室

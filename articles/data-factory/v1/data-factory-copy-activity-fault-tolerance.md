@@ -1,5 +1,5 @@
 ---
-title: 通過跳過不相容行，在 Azure 資料工廠複製活動中添加容錯
+title: 略過不相容的資料列，在 Azure Data Factory 複製活動中新增容錯
 description: 了解如何在複製期間跳過不相容的資料列，以在 Azure Data Factory 複製活動中新增容錯
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8ffaee75154fd5fe025bdb683c89f16799d6e86b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74926158"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>跳過不相容的資料列以在複製活動中新增容錯
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](data-factory-copy-activity-fault-tolerance.md)
+> * [第 1 版](data-factory-copy-activity-fault-tolerance.md)
 > * [第 2 版 (目前的版本)](../copy-activity-fault-tolerance.md)
 
 > [!NOTE]
@@ -50,7 +50,7 @@ Azure Data Factory [複製活動](data-factory-data-movement-activities.md)可�
 >[!NOTE]
 >複製活動設定成叫用外部資料載入機制 (包含 [Azure SQL 資料倉儲 PolyBase](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-sql-data-warehouse) 或 [Amazon Redshift 上傳](data-factory-amazon-redshift-connector.md#use-unload-to-copy-data-from-amazon-redshift)) 時，不會套用這項功能。 若要使用 PolyBase 將資料載入至 SQL 資料倉儲，請在複製活動中指定 "[polyBaseSettings](data-factory-azure-sql-data-warehouse-connector.md#sqldwsink)"，以使用 PolyBase 的原生錯誤容錯支援。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 下列範例提供的 JSON 定義，可設定在複製活動中跳過不相容資料列：
 
 ```json
@@ -74,7 +74,7 @@ Azure Data Factory [複製活動](data-factory-data-movement-activities.md)可�
 | **enableSkipIncompatibleRow** | 啟用或停用在複製期間略過不相容的資料列。 | True<br/>FALSE (預設值) | 否 |
 | **redirectIncompatibleRowSettings** | 當您想要記錄不相容的資料列時，可指定的一組屬性。 | &nbsp; | 否 |
 | **linkedServiceName** | Azure 儲存體的連結服務，儲存包含跳過資料列的記錄。 | [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) 或 [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) 連結服務的名稱，以代表您需要用來儲存記錄檔的儲存體執行個體。 | 否 |
-| **路徑** | 包含跳過之資料列的記錄檔路徑。 | 指定需要用來記錄不相容資料的 Blob 儲存體路徑。 如不提供路徑，服務會為您建立容器。 | 否 |
+| **path** | 包含跳過之資料列的記錄檔路徑。 | 指定需要用來記錄不相容資料的 Blob 儲存體路徑。 如不提供路徑，服務會為您建立容器。 | 否 |
 
 ## <a name="monitoring"></a>監視
 複製活動執行完成之後，您會在 [監視] 區段中看到跳過的資料列數目：

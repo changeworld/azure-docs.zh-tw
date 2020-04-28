@@ -1,6 +1,6 @@
 ---
-title: Node.js 最佳實踐和故障排除
-description: 瞭解在 Azure 應用服務中運行的 Node.js 應用程式的最佳做法和故障排除步驟。
+title: Node.js 最佳做法和疑難排解
+description: 瞭解在 Azure App Service 中執行的 node.js 應用程式的最佳作法和疑難排解步驟。
 author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
@@ -9,10 +9,10 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75430571"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 上節點應用程式的最佳作法和疑難排解指南
@@ -123,7 +123,7 @@ IIS 的預設行為是在排清之前或直到回應結束時 (取決於何者�
 
 agentkeepalive 模組可確保通訊端會在您的 Azure webapp VM 上重複使用。 在每一個輸出要求上建立新通訊端會增加應用程式的負擔。 讓應用程式重複使用輸出要求的通訊端，可確保您的應用程式不會超過每個 VM 配置的 maxSockets。 對於 Azure App Service 的建議是將 agentKeepAlive maxSockets 值設為每個 VM 總計有 160 個通訊端 (4 個 node.exe 執行個體 \* 40 個 maxSockets/執行個體)。
 
-[代理保存系統](https://www.npmjs.com/package/agentkeepalive)配置示例：
+範例[agentKeepALive](https://www.npmjs.com/package/agentkeepalive)設定：
 
 ```nodejs
 let keepaliveAgent = new Agent({
@@ -205,7 +205,7 @@ http.createServer(function (req, res) {
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-下載此檔案，並使用 Chrome F12 工具開啟檔案。 在 Chrome 上按 F12，然後選擇 **"個人資料"** 選項卡。選擇 **"載入**"按鈕。 選取您下載的 profile.cpuprofile 檔案。 按一下您剛下載的設定檔
+下載此檔案，並使用 Chrome F12 工具開啟檔案。 在 Chrome 上按 F12，然後選擇 [**設定檔**] 索引標籤。選擇 [**載入**] 按鈕。 選取您下載的 profile.cpuprofile 檔案。 按一下您剛下載的設定檔
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 

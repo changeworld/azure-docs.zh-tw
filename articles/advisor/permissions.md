@@ -1,53 +1,53 @@
 ---
-title: Azure 顧問中的許可權
-description: 顧問許可權及其如何阻止您配置訂閱或推遲或拒絕建議的能力。
+title: Azure Advisor 中的許可權
+description: Advisor 許可權，以及它們如何封鎖您設定訂閱或延期或解除建議的能力。
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: c850d757044066d5c4a793e076436906d715833c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75422325"
 ---
-# <a name="permissions-in-azure-advisor"></a>Azure 顧問中的許可權
+# <a name="permissions-in-azure-advisor"></a>Azure Advisor 中的許可權
 
-Azure 顧問根據 Azure 資源和訂閱的使用和配置提供建議。 顧問使用[基於角色的存取控制](https://docs.microsoft.com/azure/role-based-access-control/overview)（RBAC） 提供的[內置角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)來管理您對建議和顧問功能的訪問。 
+Azure Advisor 會根據您的 Azure 資源和訂用帳戶的使用方式和設定提供建議。 Advisor 會使用[角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/overview)（RBAC）提供的[內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)來管理對建議和 Advisor 功能的存取。 
 
-## <a name="roles-and-their-access"></a>角色及其存取權限
+## <a name="roles-and-their-access"></a>角色及其存取權
 
-下表定義了他們在 Advisor 中的角色和存取權限：
+下表定義角色以及它們在 Advisor 中的存取權：
 
-| **角色** | **查看建議** | **編輯規則** | **編輯訂閱配置** | **編輯資源組配置**| **取消和推遲建議**|
+| **角色** | **查看建議** | **編輯規則** | **編輯訂用帳戶設定** | **編輯資源群組設定**| **關閉並延遲建議**|
 |---|:---:|:---:|:---:|:---:|:---:|
-|訂用帳戶擁有者|**Ⅹ**|**Ⅹ**|**Ⅹ**|**Ⅹ**|**Ⅹ**|
-|訂用帳戶參與者|**Ⅹ**|**Ⅹ**|**Ⅹ**|**Ⅹ**|**Ⅹ**|
-|訂閱讀取器|**Ⅹ**|--|--|--|--|
-|資源組擁有者|**Ⅹ**|--|--|**Ⅹ**|**Ⅹ**|
-|資源組參與者|**Ⅹ**|--|--|**Ⅹ**|**Ⅹ**|
-|資源組讀取器|**Ⅹ**|--|--|--|--|
-|資源擁有者|**Ⅹ**|--|--|--|**Ⅹ**|
-|資源貢獻者|**Ⅹ**|--|--|--|**Ⅹ**|
-|資源讀取器|**Ⅹ**|--|--|--|--|
+|訂用帳戶擁有者|**X**|**X**|**X**|**X**|**X**|
+|訂用帳戶參與者|**X**|**X**|**X**|**X**|**X**|
+|訂用帳戶讀取器|**X**|--|--|--|--|
+|資源群組擁有者|**X**|--|--|**X**|**X**|
+|資源群組參與者|**X**|--|--|**X**|**X**|
+|資源群組讀者|**X**|--|--|--|--|
+|資源擁有者|**X**|--|--|--|**X**|
+|資源參與者|**X**|--|--|--|**X**|
+|資源讀取器|**X**|--|--|--|--|
 
 > [!NOTE]
-> 查看建議的訪問取決於您對建議受影響資源的訪問。
+> View 建議的存取權取決於您對建議的受影響資源的存取權。
 
-## <a name="permissions-and-unavailable-actions"></a>許可權和不可用操作
+## <a name="permissions-and-unavailable-actions"></a>許可權和無法使用的動作
 
-缺少適當的許可權可能會阻止您在 Advisor 中執行操作的能力。 以下是一些常見問題。
+缺少適當許可權可能會封鎖您在 Advisor 中執行動作的能力。 以下是一些常見的問題。
 
-### <a name="unable-to-configure-subscriptions-or-resource-groups"></a>無法配置訂閱或資源組
+### <a name="unable-to-configure-subscriptions-or-resource-groups"></a>無法設定訂用帳戶或資源群組
 
-當您嘗試在 Advisor 中配置訂閱或資源組時，您可能會看到已禁用包含或排除的選項。 此狀態表示您沒有足夠的權限等級用於該資源組或訂閱。 要解決此問題，瞭解如何[授予使用者存取權限](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)。
+當您嘗試在 Advisor 中設定訂用帳戶或資源群組時，您可能會看到包含或排除的選項已停用。 此狀態表示您沒有足夠的許可權層級可供該資源群組或訂用帳戶使用。 若要解決此問題，請瞭解如何[授與使用者存取權](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)。
 
-### <a name="unable-to-postpone-or-dismiss-a-recommendation"></a>無法推遲或拒絕建議
+### <a name="unable-to-postpone-or-dismiss-a-recommendation"></a>無法延遲或解除建議
 
-如果在嘗試推遲或關閉建議時收到錯誤，則可能沒有足夠的許可權。 請確保您至少具有對要推遲或關閉的建議的影響資源的貢獻者存取權限。 要解決此問題，瞭解如何[授予使用者存取權限](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)。
+如果您在嘗試延後或解除建議時收到錯誤，可能是您沒有足夠的許可權。 請確定您至少具有要延遲或關閉之建議的受影響資源的參與者存取權。 若要解決此問題，請瞭解如何[授與使用者存取權](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)。
 
 ## <a name="next-steps"></a>後續步驟
 
-本文概述了 Advisor 如何使用 RBAC 來控制使用者許可權以及如何解決常見問題。 若要深入了解 Advisor，請參閱︰
+本文概述 Advisor 如何使用 RBAC 來控制使用者權限，以及如何解決常見的問題。 若要深入了解 Advisor，請參閱︰
 
 - [何謂 Azure 建議程式？](https://docs.microsoft.com/azure/advisor/advisor-overview)
 - [開始使用 Advisor](https://docs.microsoft.com/azure/advisor/advisor-get-started)

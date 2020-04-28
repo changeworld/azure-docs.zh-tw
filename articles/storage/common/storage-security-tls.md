@@ -1,7 +1,7 @@
 ---
-title: 使用 .NET 啟用安全 TLS
+title: 使用 .NET 啟用安全的 TLS
 titleSuffix: Azure Storage
-description: 瞭解如何通過使用 .NET 用戶端庫實現 Azure 存儲啟用 TLS 1.2。
+description: 瞭解如何使用適用于 Azure 儲存體的 .NET 用戶端程式庫來啟用 TLS 1.2。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 81c9a8fe9513f1f8fc65ad64b34f0fb04383569b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "75371797"
 ---
 # <a name="enable-secure-tls-for-azure-storage-client"></a>為 Azure 儲存體用戶端啟用安全的 TLS

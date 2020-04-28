@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: ed0cd51fc686735f2d9c110ce46d5904107cafc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75430623"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>如何在 Azure API 管理中使用角色型存取控制
@@ -28,32 +28,32 @@ Azure API 管理需要 Azure 角色型存取控制 (RBAC)，才能針對 API 管
 
 ## <a name="built-in-roles"></a>內建角色
 
-API 管理目前提供三個內建角色，不久之後會再新增兩個角色。 這些角色可以指派到不同的範圍，包括訂用帳戶、資源群組，以及個別 API 管理執行個體。 例如，如果將"API 管理服務讀取器"角色指派給資源組級別的使用者，則使用者具有對資源組內所有 API 管理實例的讀取存取許可權。 
+API 管理目前提供三個內建角色，不久之後會再新增兩個角色。 這些角色可以指派到不同的範圍，包括訂用帳戶、資源群組，以及個別 API 管理執行個體。 例如，如果您將「API 管理服務讀者」角色指派給資源群組層級的使用者，則使用者會擁有資源群組內所有 API 管理實例的讀取權限。 
 
 下表提供內建角色的簡短描述。 您可以使用 Azure 入口網站或其他工具 (包括 Azure [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)、[Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) 和 [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)) 指派這些角色。 如需如何指派內建角色的詳細資料，請參閱[使用角色指派來管理 Azure 訂用帳戶資源的存取權](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)。
 
-| 角色          | 讀取權限<sup>[1]</sup> | 寫入權限<sup>[2]</sup> | 服務建立、刪除、調整規模、VPN 及自訂網域設定 | 存取舊版發行者入口網站 | 描述
+| [角色]          | 讀取權限<sup>[1]</sup> | 寫入權限<sup>[2]</sup> | 服務建立、刪除、調整規模、VPN 及自訂網域設定 | 存取舊版發行者入口網站 | 描述
 | ------------- | ---- | ---- | ---- | ---- | ---- 
 | API 管理服務參與者 | ✓ | ✓ | ✓ | ✓ | 進階使用者。 具有 API 管理服務及實體 (例如 API 和原則) 的完整 CRUD 存取。 具有舊版發行者入口網站的存取權限。 |
-| API 管理服務讀取器 | ✓ | | || 具有 API 管理服務及實體的唯讀權限。 |
-| API 管理服務運營商 | ✓ | | ✓ | | 可以管理 API 管理服務，但無法管理實體。|
+| API 管理服務讀者 | ✓ | | || 具有 API 管理服務及實體的唯讀權限。 |
+| API 管理服務操作員 | ✓ | | ✓ | | 可以管理 API 管理服務，但無法管理實體。|
 | API 管理服務編輯器<sup>*</sup> | ✓ | ✓ | |  | 可以管理 API 管理實體，但無法管理服務。|
-| API 管理內容管理器<sup>*</sup> | ✓ | | | ✓ | 可以管理開發人員入口網站。 具有服務和實體的唯讀權限。|
+| API 管理內容管理員<sup>*</sup> | ✓ | | | ✓ | 可以管理開發人員入口網站。 具有服務和實體的唯讀權限。|
 
 <sup>[1] API 管理服務及實體 (例如 API 和原則) 的讀取權限</sup>
 
 <sup>[2] API 管理服務及實體的寫入權限，下列作業除外：建立、刪除和調整執行個體；VPN 設定；以及自訂網域設定。</sup>
 
-<sup>\*將所有管理員 UI 從現有發行者門戶遷移到 Azure 門戶後，服務編輯器角色將可用。內容管理器角色將在重構發行者門戶後可用，以僅包含與管理開發人員門戶相關的功能。</sup>  
+<sup>\*將所有系統管理 UI 從現有的發行者入口網站遷移至 Azure 入口網站之後，就可以使用 [服務編輯器] 角色。「內容管理員」角色將會在發行者入口網站重構後提供，只包含與管理開發人員入口網站相關的功能。</sup>  
 
 ## <a name="custom-roles"></a>自訂角色
 
 如果內建角色都無法滿足您的特定需求，您可以建立自訂角色來提供更精細的 API 管理實體存取管理。 例如，您可以建立自訂角色，使其具有 API 管理服務的唯讀權限，但只有單一特定 API 的寫入權限。 若要深入了解自訂角色，請參閱 [Azure RBAC 中的自訂角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)。 
 
 > [!NOTE]
-> 為了能夠在 Azure 門戶中看到 API 管理實例，自訂角色必須包括該```Microsoft.ApiManagement/service/read```操作。
+> 若要能夠在 Azure 入口網站中查看 API 管理實例，自訂角色必須包含```Microsoft.ApiManagement/service/read```動作。
 
-當您建立自訂角色時，從其中一個內建角色開始會比較輕鬆。 編輯屬性來新增 **Actions**、**NotActions** 或 **AssignableScopes**，然後將變更另存為新角色。 以下示例從"API 管理服務讀取器"角色開始，並創建一個名為"計算機 API 編輯器"的自訂角色。 您可以將自訂角色指派給特定 API。 因此，這個角色只能存取該 API。 
+當您建立自訂角色時，從其中一個內建角色開始會比較輕鬆。 編輯屬性來新增 **Actions**、**NotActions** 或 **AssignableScopes**，然後將變更另存為新角色。 下列範例會從「API 管理服務讀者」角色開始，並建立名為「計算機 API 編輯器」的自訂角色。 您可以將自訂角色指派給特定 API。 因此，這個角色只能存取該 API。 
 
 ```powershell
 $role = Get-AzRoleDefinition "API Management Service Reader Role"
@@ -83,4 +83,4 @@ New-AzRoleAssignment -ObjectId <object ID of the user account> -RoleDefinitionNa
   * [開始在 Azure 入口網站中使用存取管理](../role-based-access-control/overview.md)
   * [使用角色指派來管理 Azure 訂用帳戶資源的存取權](../role-based-access-control/role-assignments-portal.md)
   * [Azure RBAC 中的自訂角色](../role-based-access-control/custom-roles.md)
-  * [Azure 資源管理器資源管理器提供程式操作](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)
+  * [Azure Resource Manager 資源提供者作業](../role-based-access-control/resource-provider-operations.md#microsoftapimanagement)

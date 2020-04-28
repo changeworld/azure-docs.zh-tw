@@ -1,16 +1,16 @@
 ---
 title: 定義 Azure Cosmos 容器的唯一索引鍵
-description: 瞭解如何使用 Azure 門戶、PowerShell、.Net、JAVA 和各種其他 SDK 為 Azure Cosmos 容器定義唯一鍵。
+description: 瞭解如何使用 Azure 入口網站、PowerShell、.Net、JAVA 和各種其他 Sdk 來定義 Azure Cosmos 容器的唯一索引鍵。
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
 ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74872106"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>定義 Azure Cosmos 容器的唯一索引鍵
@@ -19,7 +19,7 @@ ms.locfileid: "74872106"
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 1. [建立新的 Azure Cosmos 帳戶](create-sql-api-dotnet.md#create-account)，或選取現有帳戶。
 
@@ -37,7 +37,7 @@ ms.locfileid: "74872106"
 
 ## <a name="use-powershell"></a>使用 PowerShell
 
-要創建具有唯一鍵的容器，請參閱[創建具有唯一鍵和 TTL 的 Azure Cosmos 容器](manage-with-powershell.md#create-container-unique-key-ttl)
+若要建立具有唯一索引鍵的容器，請參閱[建立具有唯一金鑰和 TTL 的 Azure Cosmos 容器](manage-with-powershell.md#create-container-unique-key-ttl)
 
 ## <a name="use-the-net-sdk-v2"></a>使用 .NET SDK V2
 
@@ -61,7 +61,7 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 
 ## <a name="use-the-net-sdk-v3"></a>使用 .NET SDK V3
 
-使用[.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)創建新容器時，請使用 SDK 的流暢 API 以簡潔且可讀的方式聲明唯一金鑰。
+使用[.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)建立新容器時，請使用 SDK 的 Fluent API，以簡潔易懂的方式宣告唯一索引鍵。
 
 ```csharp
 await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
@@ -147,5 +147,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解有關[分區](partition-data.md)的更多
+- 深入瞭解資料[分割](partition-data.md)
 - 探索[如何為工作編製索引](index-overview.md)

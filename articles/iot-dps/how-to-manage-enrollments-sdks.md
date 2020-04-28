@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure DPS SDK 管理設備註冊
-description: 如何使用服務 SDK 管理 IoT 中心設備佈建服務 （DPS） 中的設備註冊
+title: 使用 Azure DPS Sdk 管理裝置註冊
+description: 如何使用服務 Sdk 管理 IoT 中樞裝置佈建服務（DPS）中的裝置註冊
 author: robinsh
 ms.author: robinsh
 ms.date: 04/04/2018
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74975069"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>如何使用 Azure 裝置佈建服務 SDK 管理裝置註冊
@@ -20,7 +20,7 @@ ms.locfileid: "74975069"
 ## <a name="prerequisites"></a>Prerequisites
 * 從裝置佈建服務執行個體取得連接字串。
 * 取得所使用之[證明機制](concepts-security.md#attestation-mechanism)的裝置安全性構件：
-    * [**受信任的平臺模組 （TPM）：**](/azure/iot-dps/concepts-security#trusted-platform-module)
+    * [**信賴平臺模組（TPM）**](/azure/iot-dps/concepts-security#trusted-platform-module)：
         * 個別註冊：來自實體裝置或 TPM 模擬器的註冊識別碼和 TPM 簽署金鑰。
         * 註冊群組不適用 TPM 證明。
     * [**X.509**](/azure/iot-dps/concepts-security)：
@@ -59,7 +59,7 @@ ms.locfileid: "74975069"
 在您建立註冊項目之後，建議您更新註冊。  可能的情況包括更新所需屬性、更新證明方法或撤銷裝置存取權。  有針對個別註冊及群組註冊的不同 API，但證明機制則沒有差別。
 
 您可以依照此工作流程更新註冊項目：
-* **個人註冊**：
+* **個別註冊**：
     1. 首先使用服務 SDK API ```getIndividualEnrollment``` 從佈建服務取得最新註冊。
     2. 視需要修改最新註冊的參數。 
     3. 使用最新註冊，呼叫服務 SDK API ```createOrUpdateIndividualEnrollment``` 以更新您的註冊項目。

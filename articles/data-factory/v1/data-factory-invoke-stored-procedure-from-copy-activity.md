@@ -1,5 +1,5 @@
 ---
-title: 從 Azure 資料工廠複製活動中調用預存程序
+title: 從 Azure Data Factory 複製活動叫用預存程式
 description: 了解如何從 Azure Data Factory 複製活動叫用 Azure SQL Database 或 SQL Server 中的預存程序。
 services: data-factory
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d05c2b03a0c498144f37c9b6205053120a596b09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74924090"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>從 Azure Data Factory 中的複製活動叫用預存程序
@@ -81,7 +81,7 @@ END
 ```
 
 ## <a name="table-type-definition"></a>資料表類型定義
-在資料庫中，使用與**SqlWriterTableType**同名的表類型定義表類型。 資料表類型的結構描述必須與輸入資料集的結構描述相符。
+在您的資料庫中，使用與**SqlWriterTableType**相同的名稱來定義資料表類型。 資料表類型的結構描述必須與輸入資料集的結構描述相符。
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(

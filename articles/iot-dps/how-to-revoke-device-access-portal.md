@@ -1,6 +1,6 @@
 ---
-title: 從 Azure IoT 中心設備預配服務中取消註冊設備
-description: 如何取消註冊設備以防止通過 Azure IoT 中心設備預配服務 （DPS） 進行預配
+title: Azure IoT 中樞裝置布建服務中的取消註冊裝置
+description: 如何取消註冊裝置以防止透過 Azure IoT 中樞裝置布建服務（DPS）布建
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/05/2018
@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: af883da67f4e1bc819514e88ff480526e16124db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74974916"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>如何從 Azure IoT 中樞裝置佈建服務中取消註冊裝置
@@ -26,7 +26,7 @@ ms.locfileid: "74974916"
 
 ## <a name="blacklist-devices-by-using-an-individual-enrollment-entry"></a>使用個別註冊項目將裝置列入封鎖清單
 
-個別註冊適用於單一裝置，而且可以使用 X.509 憑證或 SAS 權杖 (適用於實際或虛擬 TPM) 作為證明機制 （使用 SAS 權杖作為證明機制的設備只能通過單個註冊進行預配。要將具有單獨註冊的設備列入黑名單，可以禁用或刪除其註冊條目。 
+個別註冊適用於單一裝置，而且可以使用 X.509 憑證或 SAS 權杖 (適用於實際或虛擬 TPM) 作為證明機制 （使用 SAS 權杖作為證明機制的裝置，只能透過個別註冊來布建）。若要將具有個別註冊的裝置列入封鎖清單，您可以停用或刪除其註冊專案。 
 
 停用裝置的註冊項目以將裝置暫時列入封鎖清單： 
 
@@ -104,7 +104,7 @@ X.509 憑證通常會配置在信任的信任鏈結中。 如果憑證在鏈結�
 
 6. 捲動到 [新增註冊]**** 頁面底部，並在 [啟用項目]**** 切換開關選取 [停用]****，然後選取 [儲存]****。 
 
-    [![使用禁用的個人註冊條目在門戶中禁用組註冊中的設備](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
+    [![使用已停用的個別註冊專案，在入口網站中從群組註冊停用裝置](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
 成功建立註冊之後，您應該會看到已停用的裝置註冊列在 [個別註冊]**** 索引標籤上。 
 

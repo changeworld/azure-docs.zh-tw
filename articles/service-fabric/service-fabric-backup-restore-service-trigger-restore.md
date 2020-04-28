@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75377900"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中還原備份
@@ -18,23 +18,23 @@ ms.locfileid: "75377900"
 
 例如，您可以設定服務來備份其資料，以預防下列情況：
 
-- **災害復原案例**：整個服務結構群集的永久丟失。
-- **資料丟失案例**：服務分區的大部分複本永久丟失。
-- **資料丟失案例**：意外刪除或損壞服務。 例如，系統管理員錯誤地刪除服務。
-- **資料損壞案例**：服務中的 Bug 會導致資料損壞。 例如，當服務程式碼升級而將錯誤資料寫入「可靠的集合」時，就可能發生資料損毀。 在這種情況下，可能必須將程式碼和資料還原成先前的狀態。
+- 嚴重損壞**修復的情況**：永久遺失整個 Service Fabric 叢集。
+- **資料遺失的情況**：永久遺失服務分割區的大部分複本。
+- **資料遺失的情況**：意外刪除或服務損毀。 例如，系統管理員錯誤地刪除服務。
+- **資料損毀的情況**：服務中的 bug 會導致資料損毀。 例如，當服務程式碼升級而將錯誤資料寫入「可靠的集合」時，就可能發生資料損毀。 在這種情況下，可能必須將程式碼和資料還原成先前的狀態。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 若要觸發還原，必須對叢集啟用還原「錯誤分析服務 (FAS)」__。
 - 「備份還原服務 (BRS)」__ 已建立備份。
 - 還原只能在分割區觸發。
-- 安裝 Microsoft.ServiceFabric.Powershell.HTTP 模組 [預覽版]以進行配置調用。
+- 安裝 ServiceFabric 模組 [在預覽中] 以進行設定呼叫。
 
 ```powershell
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-- 在使用 Microsoft.ServiceFabric.Powershell.HTTP 模組發出任何配置請求之前，`Connect-SFCluster`請確保群集已使用 該命令連接。
+- 請先使用`Connect-SFCluster`命令來確定叢集已連線，再使用 ServiceFabric 模組進行任何設定要求。
 
 ```powershell
 
@@ -56,14 +56,14 @@ ms.locfileid: "75377900"
 
 在下列範例中，我們會假設遺失的叢集是＜[啟用可靠具狀態服務和 Reliable Actors 的定期備份](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors)＞中提到的相同叢集。 在此案例中，`SampleApp` 會在啟用備份原則的情況下進行部署，而備份會設定放在 Azure 儲存體。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用微軟.ServiceFabric.Powershell.HTTP 模組的電源外殼
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 的 powershell 模組
 
 ```powershell
 Get-SFBackupsFromBackupLocation -Application -ApplicationName 'fabric:/SampleApp' -AzureBlobStore -ConnectionString 'DefaultEndpointsProtocol=https;AccountName=<account-name>;AccountKey=<account-key>;EndpointSuffix=core.windows.net' -ContainerName 'backup-container'
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>使用電源shell進行休息呼叫
+#### <a name="rest-call-using-powershell"></a>使用 Powershell 的 Rest 呼叫
 
 請執行 PowerShell 指令碼來使用 REST API，以傳回針對 `SampleApp` 應用程式內所有分割區建立的備份。 API 會要求備份儲存體資訊以列出可用的備份。
 
@@ -156,7 +156,7 @@ FailureError            :
 
 對於「具名分割」__，比較名稱值可找出替代叢集中的目標分割區。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用微軟.ServiceFabric.Powershell.HTTP 模組的電源外殼
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 的 powershell 模組
 
 ```powershell
 
@@ -164,7 +164,7 @@ Restore-SFPartition  -PartitionId '1c42c47f-439e-4e09-98b9-88b8f60800c6' -Backup
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>使用電源shell進行休息呼叫
+#### <a name="rest-call-using-powershell"></a>使用 Powershell 的 Rest 呼叫
 
 您可以使用下列[還原 API](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)，要求對備份叢集分割區進行還原:
 
@@ -190,18 +190,18 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 您可以透過 TrackRestoreProgress 追蹤還原的進度。
 
-### <a name="using-service-fabric-explorer"></a>使用服務結構資源管理器
-可以從服務結構資源管理器觸發還原。 確保已在服務結構資源管理器設置中啟用了高級模式。
-1. 選擇所需的分區，然後按一下"操作"。 
-2. 選擇觸發器分區還原並填寫 Azure 的資訊：
+### <a name="using-service-fabric-explorer"></a>使用 Service Fabric Explorer
+您可以從 Service Fabric Explorer 觸發還原。 請確定已在 Service Fabric Explorer 設定中啟用 [Advanced] 模式。
+1. 選取所需的磁碟分割，然後按一下 [動作]。 
+2. 選取 [觸發資料分割還原並填入 Azure 的資訊]：
 
-    ![觸發分區還原][2]
+    ![觸發資料分割還原][2]
 
-    或檔共用：
+    或檔案共用：
 
-    ![觸發分區還原檔共用][3]
+    ![觸發資料分割還原檔案共用][3]
 
-### <a name="data-restore-for-_data-corruption__data-loss_"></a>_資料損壞_/_data loss_資料丟失的資料還原
+### <a name="data-restore-for-_data-corruption__data-loss_"></a>資料_損毀_/_資料遺失_的資料還原
 
 針對「資料遺失」__ 或「資料損毀」__ 的情況，您可以將可靠具狀態服務和 Reliable Actors 的已備份分割區還原至任何所選的備份。
 
@@ -209,7 +209,7 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 從 [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups) 的輸出中選取備份。 在此案例中，備份會從與之前相同的叢集中產生。
 
-若要觸發還原，請從清單中選擇備份。 對於當前_資料丟失_/_資料損壞_，請選擇以下備份：
+若要觸發還原，請從清單中選擇備份。 針對目前的_資料遺失_/_資料損毀_，請選取下列備份：
 
 ```
 BackupId                : b0035075-b327-41a5-a58f-3ea94b68faa4
@@ -228,14 +228,14 @@ FailureError            :
 對於還原 API，請提供 _BackupId_ 和 _BackupLocation_ 詳細資料。 因為叢集已啟用備份，所以 Service Fabric 的「備份還原服務 (BRS)」__ 會依據相關聯的備份原則找出正確的儲存體位置。
 
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用微軟.ServiceFabric.Powershell.HTTP 模組的電源外殼
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 的 powershell 模組
 
 ```powershell
 Restore-SFPartition  -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22' -BackupId 'b0035075-b327-41a5-a58f-3ea94b68faa4' -BackupLocation 'SampleApp\MyStatefulService\974bd92a-b395-4631-8a7f-53bd4ae9cf22\2018-04-06 21.10.27.zip'
 
 ```
 
-#### <a name="rest-call-using-powershell"></a>使用電源shell進行休息呼叫
+#### <a name="rest-call-using-powershell"></a>使用 Powershell 的 Rest 呼叫
 
 ```powershell
 $RestorePartitionReference = @{
@@ -255,13 +255,13 @@ Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/j
 
 可靠具狀態服務或 Reliable Actor 的分割區一次只接受一個還原要求。 分割只會在目前的還原要求完成後，再接受另一個要求。 您可以同時在不同的分割區上觸發多個還原要求。
 
-#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用微軟.ServiceFabric.Powershell.HTTP 模組的電源外殼
+#### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>使用 ServiceFabric 的 powershell 模組
 
 ```powershell
     Get-SFPartitionRestoreProgress -PartitionId '974bd92a-b395-4631-8a7f-53bd4ae9cf22'
 ```
 
-#### <a name="rest-call-using-powershell"></a>使用電源shell進行休息呼叫
+#### <a name="rest-call-using-powershell"></a>使用 Powershell 的 Rest 呼叫
 
 ```powershell
 $url = "https://mysfcluster-backup.southcentralus.cloudapp.azure.com:19080/Partitions/974bd92a-b395-4631-8a7f-53bd4ae9cf22/$/GetRestoreProgress?api-version=6.4"
@@ -274,14 +274,14 @@ $restoreResponse | Format-List
 
 還原要求會依下列順序進行：
 
-1. **已接受**：_已接受_還原狀態表示已使用正確的請求參數觸發請求分區。
+1. 已**接受**：已_接受_的還原狀態表示已使用正確的要求參數觸發所要求的分割區。
     ```
     RestoreState  : Accepted
     TimeStampUtc  : 0001-01-01T00:00:00Z
     RestoredEpoch : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
     RestoredLsn   : 3552
     ```
-2. **進度**：_進度_還原狀態表示分區中正在進行還原，請求中提到了備份。 分割區會回報 dataloss__ 狀態。
+2. **Inprogress**： _inprogress_還原狀態表示還原發生在包含要求中所述之備份的分割區中。 分割區會回報 dataloss__ 狀態。
     ```
     RestoreState  : RestoreInProgress
     TimeStampUtc  : 0001-01-01T00:00:00Z
@@ -289,8 +289,8 @@ $restoreResponse | Format-List
     RestoredLsn   : 3552
     ```
     
-3. **成功**、**失敗**或**超時**：請求的還原可以在以下任何狀態下完成。 每個狀態都有下列重要性和回應詳細資料：
-    - **成功**：_成功_還原狀態表示已恢復的分區狀態。 分割區會報告 RestoredEpoch__ 和 RestoredLSN__ 狀態以及 UTC 時間。
+3. **成功**、**失敗**或**超時**：要求的還原可以下列任何狀態完成。 每個狀態都有下列重要性和回應詳細資料：
+    - **成功**：成功還原狀態表示已重新_取得_的分割區狀態。 分割區會報告 RestoredEpoch__ 和 RestoredLSN__ 狀態以及 UTC 時間。
 
         ```
         RestoreState  : Success
@@ -298,7 +298,7 @@ $restoreResponse | Format-List
         RestoredEpoch : @{DataLossNumber=131675205859825409; ConfigurationNumber=8589934592}
         RestoredLsn   : 3552
         ```        
-    - **失敗**：_失敗_還原狀態指示還原請求失敗。 系統會報告失敗的原因。
+    - **失敗**：_失敗_還原狀態表示還原要求失敗。 系統會報告失敗的原因。
 
         ```
         RestoreState  : Failure
@@ -306,7 +306,7 @@ $restoreResponse | Format-List
         RestoredEpoch : 
         RestoredLsn   : 0
         ```
-    - **超時**：_超時_還原狀態指示請求具有超時。 請以提高的 [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 值建立新的還原要求。 預設的逾時為 10 分鐘。 請先確定分割區不是處於資料遺失狀態後，再重新要求還原。
+    - **Timeout**：_超時_還原狀態表示要求有 Timeout。 請以提高的 [RestoreTimeout](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-backuppartition#backuptimeout) 值建立新的還原要求。 預設的逾時為 10 分鐘。 請先確定分割區不是處於資料遺失狀態後，再重新要求還原。
      
         ```
         RestoreState  : Timeout
@@ -317,7 +317,7 @@ $restoreResponse | Format-List
 
 ## <a name="automatic-restore"></a>自動還原
 
-您可針對「自動還原」__ 設定 Service Fabric 叢集中可靠具狀態服務和 Reliable Actors 分割區。 在備份原則中，將 `AutoRestore` 設定為「true」__。 啟用「自動還原」__ 後，即可在回報資料遺失時，自動從最新分割區的備份還原資料。 如需詳細資訊，請參閱
+您可針對「自動還原」__ 設定 Service Fabric 叢集中可靠具狀態服務和 Reliable Actors 分割區。 在備份原則中，將 `AutoRestore` 設定為「true」__。 啟用「自動還原」__ 後，即可在回報資料遺失時，自動從最新分割區的備份還原資料。 如需詳細資訊，請參閱：
 
 - [備份原則中的自動還原啟用](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
 - [RestorePartition API 參考](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-restorepartition)

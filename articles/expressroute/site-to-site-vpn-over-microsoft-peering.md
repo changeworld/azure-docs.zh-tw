@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：通過 Microsoft 對等互連配置 S2S VPN
+title: Azure ExpressRoute：透過 Microsoft 對等互連設定 S2S VPN
 description: 使用站對站 VPN 閘道，透過 ExpressRoute Microsoft 對等互連線路，設定 IPsec/IKE 與 Azure 的連線。
 services: expressroute
 author: cherylmc
@@ -9,10 +9,10 @@ ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: f3044a2701b0f1cd0e5f9ab3ab60c1d60cfb8f45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75436803"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>透過 ExpressRoute Microsoft 對等互連，設定站對站 VPN
@@ -26,7 +26,7 @@ ms.locfileid: "75436803"
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-## <a name="architecture"></a><a name="architecture"></a>建築
+## <a name="architecture"></a><a name="architecture"></a>架構
 
 
   ![連線概觀](./media/site-to-site-vpn-over-microsoft-peering/IPsecER_Overview.png)
@@ -53,7 +53,7 @@ ms.locfileid: "75436803"
 6. (選擇性) 在內部部署 VPN 裝置上設定防火牆/篩選。
 7. 測試並驗證 ExpressRoute 線路上的 IPsec 通訊。
 
-## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. 配置微軟對等互連
+## <a name="1-configure-microsoft-peering"></a><a name="peering"></a>1. 設定 Microsoft 對等互連
 
 若要設定 ExpressRoute 上的站對站 VPN 連線，您必須利用 ExpressRoute Microsoft 對等互連。
 
@@ -65,9 +65,9 @@ ms.locfileid: "75436803"
 
 ![線路](./media/site-to-site-vpn-over-microsoft-peering/ExpressRouteCkt.png)
 
-## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. 配置路由篩選器
+## <a name="2-configure-route-filters"></a><a name="routefilter"></a>2. 設定路由篩選
 
-路由篩選可讓您識別想要透過 ExpressRoute 線路的 Microsoft 對等互連使用的服務。 它本質上是所有 BGP 社區值的允許清單。 
+路由篩選可讓您識別想要透過 ExpressRoute 線路的 Microsoft 對等互連使用的服務。 基本上，它是所有 BGP 社區值的允許清單。 
 
 ![路由篩選](./media/site-to-site-vpn-over-microsoft-peering/route-filter.png)
 
@@ -91,7 +91,7 @@ ms.locfileid: "75436803"
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-以下部分輸出顯示，從鄰居\*.243.229.34 收到 68 個首碼，ASN 12076 （MSEE）：
+下列部分輸出顯示已從\*243.229.34 與 ASN 12076 （MSEE）收到68首碼：
 
 ```
 ...
@@ -112,7 +112,7 @@ sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 Get-AzBgpServiceCommunity
 ```
 
-## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3. 配置 VPN 閘道和 IPsec 隧道
+## <a name="3-configure-the-vpn-gateway-and-ipsec-tunnels"></a><a name="vpngateway"></a>3. 設定 VPN 閘道和 IPsec 通道
 
 在本節中，Azure VPN 閘道與內部部署 VPN 裝置之間會建立 IPsec VPN 通道。 這些範例會使用 Cisco Cloud Service Router (CSR1000) VPN 裝置。
 
@@ -354,7 +354,7 @@ Get-AzBgpServiceCommunity
   }
 ```
 
-## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4. 配置本地 VPN 設備
+## <a name="4-configure-the-on-premises-vpn-device"></a><a name="device"></a>4. 設定內部部署 VPN 裝置
 
 Azure VPN 閘道與許多不同廠商的 VPN 裝置相容。 如需設定資訊以及已經過驗證，可搭配 VPN 閘道使用的裝置，請參閱[關於 VPN 裝置](../vpn-gateway/vpn-gateway-about-vpn-devices.md)。
 
@@ -365,7 +365,7 @@ Azure VPN 閘道與許多不同廠商的 VPN 裝置相容。 如需設定資訊�
 
 eBGP 對等通常是直接連線的 (通常透過 WAN 連線)。 不過，當您要透過 ExpressRoute Microsoft 對等互連，在 IPsec VPN 通道上設定 eBGP 時，在 eBGP 對等之間有多個路由網域。 使用 **ebgp-multihop** 命令，在兩個非直接連線的對等之間，建立 eBGP 芳鄰關聯性。 遵循 ebgp-multihop 命令的整數會在 BGP 封包中指定 TTL 值。 **maximum-paths eibgp 2** 命令會針對兩個 BGP 路徑之間的流量，啟用負載平衡。
 
-### <a name="cisco-csr1000-example"></a><a name="cisco1"></a>思科 CSR1000 示例
+### <a name="cisco-csr1000-example"></a><a name="cisco1"></a>Cisco CSR1000 範例
 
 下列範例會在當作內部部署 VPN 裝置的 Hyper-V 虛擬機器中，顯示 Cisco CSR1000 的設定：
 
@@ -475,11 +475,11 @@ ip route 10.2.0.229 255.255.255.255 Tunnel1
 !
 ```
 
-## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. 配置 VPN 設備篩選和防火牆（可選）
+## <a name="5-configure-vpn-device-filtering-and-firewalls-optional"></a><a name="firewalls"></a>5. 設定 VPN 裝置篩選和防火牆（選擇性）
 
 根據您的需求，設定防火牆和篩選。
 
-## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6. 測試和驗證 IPsec 隧道
+## <a name="6-test-and-validate-the-ipsec-tunnel"></a><a name="testipsec"></a>6. 測試並驗證 IPsec 通道
 
 IPsec 通道的狀態可以在 Azure VPN 閘道上，透過 Powershell 命令進行驗證：
 
@@ -711,4 +711,4 @@ Total number of prefixes 2
 
 * [設定 ExpressRoute 的網路效能監控](how-to-npm.md)
 
-* [使用現有 VPN 閘道連接將網站到網站的連接添加到 VNet](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+* [將站對站連線新增至具有現有 VPN 閘道連線的 VNet](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)

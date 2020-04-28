@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/02/2019
 ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74806655"
 ---
-# <a name="use-the-net-sdk-for-apache-hbase"></a>將 .NET SDK 用於 Apache HBase
+# <a name="use-the-net-sdk-for-apache-hbase"></a>使用適用于 Apache HBase 的 .NET SDK
 
 [Apache HBase](apache-hbase-overview.md) 提供兩大資料處理選擇：[Apache Hive 查詢，以及呼叫 HBase 的 RESTful API](apache-hbase-tutorial-get-started-linux.md)。 您可以使用 `curl` 命令或類似公用程式，直接使用 REST API。
 
@@ -58,7 +58,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 }
 ```
 
-此新表具有兩列族，t1 和 t2。 因為資料行系列分別儲存在不同的 HFiles，因此，經常查詢的資料具有個別的資料行系列不無道理。 在下列[插入資料](#insert-data)範例中，是將資料行新增至 t1 資料行系列。
+這個新的資料表有兩個數據行的系列，t1 和 t2。 因為資料行系列分別儲存在不同的 HFiles，因此，經常查詢的資料具有個別的資料行系列不無道理。 在下列[插入資料](#insert-data)範例中，是將資料行新增至 t1 資料行系列。
 
 ## <a name="delete-a-table"></a>刪除資料表
 
@@ -112,9 +112,9 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase 實現[雲 BigTable，](https://cloud.google.com/bigtable/)因此資料格式類似于下圖：
+HBase 會執行[雲端 BigTable](https://cloud.google.com/bigtable/)，因此資料格式看起來會像下圖：
 
-![阿帕奇 HBase 示例資料輸出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
+![Apache HBase 範例資料輸出](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
 ## <a name="select-data"></a>選取資料
 

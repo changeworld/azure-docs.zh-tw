@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務動態封裝概觀 | Microsoft Docs
-description: 本文概述了 Microsoft Azure 媒體服務動態打包。
+description: 這篇文章提供 Microsoft Azure 媒體服務動態封裝的總覽。
 author: Juliako
 manager: femila
 editor: ''
@@ -14,24 +14,24 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
 ms.openlocfilehash: 079094965775c140c0343da98e40fd008995d45a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74901195"
 ---
 # <a name="dynamic-packaging"></a>動態封裝
 
-> [!div class="op_single_selector" title1="選擇您正在使用的媒體服務版本："]
+> [!div class="op_single_selector" title1="選取您要使用的媒體服務版本："]
 > * [第 3 版](../latest/dynamic-packaging-overview.md)
-> * [版本 2](media-services-dynamic-packaging-overview.md)
+> * [第 2 版](media-services-dynamic-packaging-overview.md)
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
 Microsoft Azure Media Services 可用來針對數種用戶端技術 (例如 iOS、XBOX、Silverlight、Windows 8) 提供許多媒體來源檔案格式、媒體串流格式和內容保護格式。 這些用戶端各自使用不同的通訊協定，例如 iOS 需要 HTTP 即時串流 (HLS) V4 格式，而 Silverlight 與 Xbox 需要 Smooth Streaming。 如果您有一組自動調整位元速率 (多位元速率) MP4 (ISO Base Media 14496-12) 檔案或一組自動調整位元速率 Smooth Streaming 檔案，想要傳遞給了解 MPEG DASH、HLS 或 Smooth Streaming 的用戶端，應該利用媒體服務動態封裝。
 
-使用動態打包，您需要創建一個包含一組自我調整位元速率 MP4 檔或自我調整位元速率平滑流檔的資產。 然後隨選資料流處理伺服器會根據資訊清單或片段要求中的指定格式，確保您以自己選擇的通訊協定接收串流。 因此，您只需要儲存及支付一種儲存格式之檔案的費用，媒體服務會根據用戶端的要求建置及提供適當的回應。
+使用動態封裝，您需要建立包含一組自動調整位元速率的設定檔案或彈性位元速率 Smooth Streaming 檔案的資產。 然後隨選資料流處理伺服器會根據資訊清單或片段要求中的指定格式，確保您以自己選擇的通訊協定接收串流。 因此，您只需要儲存及支付一種儲存格式之檔案的費用，媒體服務會根據用戶端的要求建置及提供適當的回應。
 
 下圖顯示傳統編碼和靜態封裝工作流程。
 
@@ -50,7 +50,7 @@ Microsoft Azure Media Services 可用來針對數種用戶端技術 (例如 iOS�
 
 ## <a name="preparing-assets-for-dynamic-streaming"></a>準備動態串流的資產
 
-要準備動態流式處理的資產，您需要以下選項：
+若要準備您的資產以進行動態串流，您有下列選項：
 
 - [上傳主檔案](media-services-dotnet-upload-files.md)。
 - [使用媒體編碼器標準編碼器產生 H.264 MP4 自動調整位元速率集](media-services-dotnet-encode-with-media-encoder-standard.md)。
@@ -58,7 +58,7 @@ Microsoft Azure Media Services 可用來針對數種用戶端技術 (例如 iOS�
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>動態封裝支援的音訊轉碼器
 
-動態打包支援 MP4 檔，其中包含使用[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)編碼的音訊（AAC-LC、HE-AAC v1、HE-AAC v2）、[杜比數位加號](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)（增強型 AC-3 或 E-AC3）、杜比全景聲或[DTS（DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)快遞、DTS LBR、DTS HD、DTS HD 無損）。 使用通用流格式 （CSF） 或通用媒體應用程式格式 （CMAF） 零碎 MP4 的標準以及通過 CMAF 的 HTTP 即時流式處理 （HLS） 支援杜比全景聲內容流（ 如 MPEG-DASH 協定）。
+動態封裝支援檔案格式檔案，其中包含以[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) （AAC-LC，AAC V1，他 AAC v2）編碼的音訊、[杜比數位 Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)（增強的 AC-3 或 E-AC3）、杜比 Atmos 或[DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29) （DTS EXPRESS、DTS LBR、dts hd、dts hd 不失真）。 如有一般串流格式（CSF）或通用媒體應用程式格式（CMAF）的 MPEG 破折號通訊協定，以及透過 CMAF 的 HTTP 即時串流（HLS），標準的「杜比」 Atmos 內容支援串流處理。
 
 > [!NOTE]
 > 動態封裝不支援包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音訊的檔案 (它是舊版的轉碼器)。

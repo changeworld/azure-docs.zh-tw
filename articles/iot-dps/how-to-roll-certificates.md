@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 中心設備佈建服務中的滾動 X.509 憑證
-description: 如何隨設備預配服務 （DPS） 實例一起滾動 X.509 憑證
+title: 在 Azure IoT 中樞裝置布建服務中輪替 x.509 憑證
+description: 如何使用裝置布建服務（DPS）實例來變換 x.509 憑證
 author: wesmc7777
 ms.author: wesmc
 ms.date: 08/06/2018
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 4d5ddb229cd6a41235990437bc0f8db08e3381ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74974882"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>如何輪替 X.509 裝置憑證
@@ -94,7 +94,7 @@ ms.locfileid: "74974882"
 
 1. 按一下 [個別註冊]****，然後按一下清單中的註冊識別碼項目。 
 
-2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [儲存]****。
+2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [檔案]  。
 
     ![使用次要憑證管理個別註冊](./media/how-to-roll-certificates/manage-individual-enrollments-secondary-portal.png)
 
@@ -108,7 +108,7 @@ ms.locfileid: "74974882"
 
 1. 按一下您裝置佈建服務執行個體的 [憑證]**** 索引標籤。
 
-2. 按一下清單中遭入侵的憑證，然後按一下 [刪除]**** 按鈕。 通過輸入證書名稱確認刪除，然後按一下 **"確定**"。 請針對所有遭入侵的憑證重複此程序。
+2. 按一下清單中遭入侵的憑證，然後按一下 [刪除]**** 按鈕。 輸入憑證名稱來確認刪除，然後按一下 **[確定]**。 請針對所有遭入侵的憑證重複此程序。
 
     ![刪除根 CA 憑證](./media/how-to-roll-certificates/delete-root-cert.png)
 
@@ -116,7 +116,7 @@ ms.locfileid: "74974882"
 
 4. 按一下您裝置佈建服務執行個體的 [管理註冊]**** 索引標籤，然後按一下 [註冊群組]**** 清單。 按一下清單中您的註冊群組名稱。
 
-5. 按一下 [CA 憑證]****，然後選取新的根 CA 憑證。 然後按一下"**保存**"。 
+5. 按一下 [CA 憑證]****，然後選取新的根 CA 憑證。 然後按一下 [儲存]  。 
 
     ![選取新的根 CA 憑證](./media/how-to-roll-certificates/select-new-root-cert.png)
 
@@ -162,7 +162,7 @@ ms.locfileid: "74974882"
 
 2. 按一下您裝置佈建服務執行個體的 [管理註冊]**** 索引標籤，然後按一下 [註冊群組]**** 清單。 按一下清單中您的註冊群組名稱。
 
-3. 按一下 [CA 憑證]****，然後在 [次要憑證]**** 組態之下選取新的根 CA 憑證。 然後按一下"**保存**"。 
+3. 按一下 [CA 憑證]****，然後在 [次要憑證]**** 組態之下選取新的根 CA 憑證。 然後按一下 [儲存]  。 
 
     ![選取新的根 CA 憑證](./media/how-to-roll-certificates/select-new-root-secondary-cert.png)
 
@@ -177,7 +177,7 @@ ms.locfileid: "74974882"
 
 1. 按一下 [註冊群組]****，然後按一下清單中的群組名稱。 
 
-2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [儲存]****。
+2. 按一下 [次要憑證]****，然後按一下資料夾圖示，以選取要針對註冊項目上傳的新憑證。 按一下 [檔案]  。
 
     這個新中繼憑證應該由已經過驗證並新增至佈建服務的根 CA 憑證簽署。 如需詳細資訊，請參閱 [X.509 憑證](concepts-security.md#x509-certificates)。
 

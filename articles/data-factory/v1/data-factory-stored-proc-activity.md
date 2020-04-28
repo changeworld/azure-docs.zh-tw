@@ -13,29 +13,29 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74931636"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server 預存程序活動
-> [!div class="op_single_selector" title1="轉型活動"]
-> * [蜂巢活動](data-factory-hive-activity.md)
+> [!div class="op_single_selector" title1="轉換活動"]
+> * [Hive 活動](data-factory-hive-activity.md)
 > * [Pig 活動](data-factory-pig-activity.md)
-> * [映射減少活動](data-factory-map-reduce.md)
-> * [Hadoop 流活動](data-factory-hadoop-streaming-activity.md)
+> * [MapReduce 活動](data-factory-map-reduce.md)
+> * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [機器學習批次處理執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
-> * [資料湖分析 U-SQL 活動](data-factory-usql-activity.md)
+> * [Data Lake Analytics 的 U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
 
 > [!NOTE]
 > 本文適用於 Azure Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[在 Data Factory 中使用預存程序活動來轉換資料](../transform-data-using-stored-procedure.md)。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您在 Data Factory [管線](data-factory-create-pipelines.md)中使用資料轉換活動，以轉換和處理您的原始資料以進行預測和深入了解。 預存程序活動是 Data Factory 支援的其中一個轉換活動。 本文是以[資料轉換活動](data-factory-data-transformation-activities.md)一文為基礎，提供 Data Factory 中資料轉換及所支援轉換活動的一般概觀。
 
 您可以使用「預存程序活動」來叫用您企業或 Azure 虛擬機器 (VM) 中的下列其中一個資料存放區：
@@ -84,21 +84,21 @@ ms.locfileid: "74931636"
     ```
 
    > [!IMPORTANT]
-   > 參數 (在此範例中是 DateTime) 的**名稱**和**大小寫**必須與下列管線/活動 JSON 中指定的參數相符。 在預存程序定義中，**\@** 請確保用作參數的首碼。
+   > 參數 (在此範例中是 DateTime) 的**名稱**和**大小寫**必須與下列管線/活動 JSON 中指定的參數相符。 在預存程序定義中，請**\@** 確定使用做為參數的前置詞。
 
 ### <a name="create-a-data-factory"></a>建立 Data Factory
-1. 登錄到[Azure 門戶](https://portal.azure.com/)。
+1. 登入[Azure 入口網站](https://portal.azure.com/)。
 2. 按一下左側功能表上的 [新增]****、[資料 + 分析]****，再按一下 [Data Factory]****。
 
     ![新增 Data Factory](media/data-factory-stored-proc-activity/new-data-factory.png)
 3. 在 [新增 Data Factory]**** 刀鋒視窗中，輸入 **SProcDF** 做為 [名稱]。 Azure Data Factory 名稱必須是**全域唯一的**。 您必須在 Data Factory 的名稱前面加上您的名稱，才能成功建立 Factory。
 
    ![新增 Data Factory](media/data-factory-stored-proc-activity/new-data-factory-blade.png)
-4. 選擇**Azure 訂閱**。
+4. 選取您的 **Azure 訂用帳戶**。
 5. 針對**資源群組**，請執行下列其中一個步驟︰
    1. 按一下 [新建]**** 並輸入資源群組的名稱。
    2. 按一下 [使用現有的]**** 並選取現有的資源群組。
-6. 選擇資料工廠**的位置**。
+6. 選取 data factory 的 [**位置**]。
 7. 選取 [釘選到儀表板]****，讓您下一次登入時可以在儀表板上看到 Data Factory。
 8. 按一下 [新增 Data Factory]**** 刀鋒視窗上的 [建立]****。
 9. 您會看到 Data Factory 建立在 Azure 入口網站的 [儀表板]**** 中。 在 Data Factory 成功建立後，您會看到 Data Factory 頁面，顯示 Data Factory 的內容。
@@ -127,7 +127,7 @@ ms.locfileid: "74931636"
 ### <a name="create-an-output-dataset"></a>建立輸出資料集
 即使預存程序不會產生任何資料，您也必須為預存程序活動指定輸出資料集。 這是因為輸出資料集會驅動活動排程 (活動的執行頻率 - 每小時、每天等)。 輸出資料集必須使用參考了想在其中執行預存程序之 Azure SQL Database、Azure SQL 資料倉儲或 SQL Server Database 的 **連結服務** 。 輸出資料集可以用來傳遞預存程序結果，以供管線中的另一個活動 ([鏈結活動](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) 進行後續處理。 不過，Data Factory 不會自動將預存程序的輸出寫入至此資料集。 它是會寫入至輸出資料集所指向之 SQL 資料表的預存程序。 在某些情況下，輸出資料集可以是「虛擬資料集」****(此資料集指向並未真正存有預存程序輸出資料的資料表)。 此虛擬資料集僅用來指定用於執行預存程序活動的排程。
 
-1. 按一下 **...有關工具列的詳細資訊**，請按一下 **"新建資料集**"，然後按一下**Azure SQL**。 命令列的 [新資料集]****，然後選取 [Azure SQL]****。
+1. 按一下 [ **...]在工具列上，** 按一下 [**新增資料集**]，然後按一下 [ **Azure SQL**]。 命令列的 [新資料集]****，然後選取 [Azure SQL]****。
 
     ![含連結服務的樹狀檢視](media/data-factory-stored-proc-activity/new-dataset.png)
 2. 將下列 JSON 指令碼複製/貼到 JSON 編輯器。
@@ -161,7 +161,7 @@ ms.locfileid: "74931636"
 - 類型屬性中的 **storedProcedureName** 會設定為 **usp_sample** (預存程序的名稱)。
 - **storedProcedureParameters** 區段包含一個名為 **DateTime** 的參數。 JSON 中參數的名稱和大小寫必須符合預存程序定義中參數的名稱和大小寫。 如果您需要為參數傳遞 null，請使用此語法：`"param1": null` (全部小寫)。
 
-1. 按一下 **...有關**命令列的詳細資訊，然後按一下 **"新建管道**"。
+1. 按一下 [ **...]更多**命令列，然後按一下 [**新增管線**]。
 2. 複製/貼上下列 JSON 程式碼片段：
 
     ```JSON
@@ -201,7 +201,7 @@ ms.locfileid: "74931636"
 1. 按一下 **X** 以關閉 [Data Factory 編輯器] 刀鋒視窗、瀏覽回 [Data Factory] 刀鋒視窗，然後按一下 [圖表]****。
 
     ![圖表圖格](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
-2. 在**圖表視圖中**，您可以看到本教程中使用的管道和資料集的概述。
+2. 在**圖表視圖**中，您會看到管線的總覽，以及本教學課程中使用的資料集。
 
     ![圖表圖格](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
 3. 在 [圖表檢視] 中，按兩下 `sprocsampleout` 資料集。 您會看到就緒狀態的配量。 由於配量是針對 JSON 的開始時間和結束時間之間的每一個小時所產生，因此，應該會有 5 個配量。
@@ -318,7 +318,7 @@ ms.locfileid: "74931636"
 
 ![範例資料 2](./media/data-factory-stored-proc-activity/sample-data-2.png)
 
-**表：**
+**目錄**
 
 ```SQL
 CREATE TABLE dbo.sampletable2
@@ -332,7 +332,7 @@ GO
 CREATE CLUSTERED INDEX ClusteredID ON dbo.sampletable2(Id);
 ```
 
-**預存程序：**
+**預存程式：**
 
 ```SQL
 CREATE PROCEDURE usp_sample2 @DateTime nvarchar(127) , @Scenario nvarchar(127)
@@ -345,7 +345,7 @@ BEGIN
 END
 ```
 
-現在，從預存程序活動中傳遞**方案**參數和值。 前面的示例中的**typeProperties**部分如下所示：
+現在，從預存程式活動傳遞**案例**參數和值。 前述範例中的**typeProperties**區段如下列程式碼片段所示：
 
 ```JSON
 "typeProperties":

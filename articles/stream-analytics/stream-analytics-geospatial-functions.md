@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426232"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>串流分析地理空間函式簡介
@@ -159,8 +159,8 @@ FROM input
   
 |datacenterArea|stormArea|  
 |--------------------|---------------|  
-|{"類型"："LineString"，"座標"：[-10.0，0.0]，[0.0，0.0]，[10.0，0.0]]|{"類型"："LineString"，"座標"：[0.0， 10.0]，[0.0，0.0]，[0.0，-10.0]]|  
-|{"類型"："LineString"，"座標"：[-10.0，0.0]，[0.0，0.0]，[10.0，0.0]]|{"類型"："LineString"，"座標"：[-10.0， 10.0]，[0.0，10.0]，[10.0，10.0]]|  
+|{"type"： "LineString"，"座標"： [[-10.0，0.0]，[0.0，0.0]，[10.0，0.0]]}|{"type"： "LineString"，"座標"： [[0.0，10.0]，[0.0，0.0]，[0.0，-10.0]]}|  
+|{"type"： "LineString"，"座標"： [[-10.0，0.0]，[0.0，0.0]，[10.0，0.0]]}|{"type"： "LineString"，"座標"： [[-10.0，10.0]，[0.0，10.0]，[10.0，10.0]]}|  
   
 ### <a name="output-example"></a>輸出範例  
 
@@ -185,8 +185,8 @@ FROM input
   
 |deliveryDestination|warehouse|  
 |-------------------------|---------------|  
-|{"類型"："點"，"座標"：[76.6，10.1]。|{"類型"："多邊形"、"座標"：[0.0， 0.0]、[10.0]、[10.0]、[0.0]、{0.0、10.0、[0.0"、"0.0"、"0.0、0.0]、0.0、0.0、0.0、0.0、0.0、[0.0]、[0.0]、[0.0]、[0.0]|  
-|{"類型"："點"，"座標"：[15.0，15.0]。|{"類型"："多邊形"、"座標"：[10.0， 10.0]，[20.0]，[20.0]，[20.0]，[10.0，20.0]，[10.0，20.0]，[10.0，10.0]]|  
+|{"type"： "Point"，"座標"： [76.6，10.1]}|{"type"： "多邊形"，"座標"： [[0.0，0.0]，[10.0，0.0]，[10.0，10.0]，[0.0，10.0]，[0.0，0.0]]}|  
+|{"type"： "Point"，"座標"： [15.0，15.0]}|{"type"： "多邊形"，"座標"： [[10.0，10.0]，[20.0，10.0]，[20.0，20.0]，[10.0，20.0]，[10.0，10.0]]}|  
   
 ### <a name="output-example"></a>輸出範例  
 
@@ -199,7 +199,7 @@ FROM input
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [使用 Azure 流分析開始](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

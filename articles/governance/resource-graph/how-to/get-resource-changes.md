@@ -1,48 +1,48 @@
 ---
 title: 取得資源變更
-description: 瞭解如何查找資源何時更改、獲取已更改的屬性的清單以及評估差異。
+description: 瞭解如何找出變更資源的時間、取得已變更的屬性清單，以及評估差異。
 ms.date: 10/09/2019
 ms.topic: how-to
 ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873024"
 ---
 # <a name="get-resource-changes"></a>取得資源變更
 
-通過日常使用、重新配置甚至重新部署，資源會發生變化。
-更改可能來自個人或自動化流程。 大多數變化都是設計，但有時不是。 使用最近 14 天的更改歷史記錄，Azure 資源圖使您能夠：
+資源會在每日使用、重新設定，甚至重新部署的過程中有所變更。
+變更可以來自個人或自動化程式。 大部分的變更都是根據設計，但有時不會。 在過去14天的變更歷程記錄中，Azure Resource Graph 可讓您：
 
-- 查找在 Azure 資源管理器屬性上檢測到更改時
-- 對於每個資源更改，請參閱屬性更改詳細資訊
-- 查看檢測到的更改之前和之後的資源的完整比較
+- 尋找在 Azure Resource Manager 屬性上偵測到變更的時間
+- 如需每項資源變更，請參閱屬性變更詳細資料。
+- 查看偵測到的變更前後的資源完整比較
 
-更改檢測和詳細資訊對於以下示例方案非常有價值：
+變更偵測和詳細資料對於下列範例案例很有用：
 
-- 在事件管理期間瞭解_潛在的_相關更改。 查詢特定時間時段中的變更事件並評估更改詳細資訊。
-- 保持配置管理資料庫（稱為 CMDB）最新。 而不是刷新所有資源及其完整屬性集在計畫的頻率，只得到什麼更改。
-- 瞭解資源更改符合性狀態時可能更改的其他屬性。 對這些附加屬性的評估可以提供對可能需要通過 Azure 策略定義進行管理的其他屬性的見解。
+- 在事件管理期間，瞭解_潛在_的相關變更。 在特定時間範圍內查詢變更事件，並評估變更詳細資料。
+- 將設定管理資料庫（稱為 CMDB）保持在最新狀態。 並不是以排程的頻率重新整理所有資源及其完整的屬性集，而是只會取得變更的內容。
+- 瞭解當資源變更合規性狀態時，其他哪些屬性可能已變更。 評估這些額外的屬性可提供其他可能需要透過 Azure 原則定義來管理的屬性的深入解析。
 
-本文演示如何通過資源圖的 SDK 收集此資訊。 要查看 Azure 門戶中的此資訊，請參閱 Azure 策略的[更改歷史記錄](../../policy/how-to/determine-non-compliance.md#change-history-preview)或 Azure 活動日誌[更改歷史記錄](../../../azure-monitor/platform/activity-log-view.md#azure-portal)。
-有關從基礎結構層到應用程式部署的更改的詳細資訊，請參閱在 Azure 監視器[中使用應用程式更改分析（預覽）。](../../../azure-monitor/app/change-analysis.md)
+本文說明如何透過 Resource Graph 的 SDK 收集這項資訊。 若要在 Azure 入口網站中查看這項資訊，請參閱 Azure 原則的[變更歷程記錄](../../policy/how-to/determine-non-compliance.md#change-history-preview)或 Azure 活動記錄[變更歷程記錄](../../../azure-monitor/platform/activity-log-view.md#azure-portal)。
+如需將應用程式從基礎結構層變更為應用程式部署的詳細資訊，請參閱在 Azure 監視器中[使用應用程式變更分析（預覽）](../../../azure-monitor/app/change-analysis.md) 。
 
 > [!NOTE]
-> 資源圖中的更改詳細資訊適用于資源管理器屬性。 有關在虛擬機器內跟蹤更改，請參閱 Azure 自動化的[更改跟蹤](../../../automation/automation-change-tracking.md)或 Azure 策略的[VM 來賓配置](../../policy/concepts/guest-configuration.md)。
+> Resource Graph 中的變更詳細資料適用于 Resource Manager 屬性。 如需追蹤虛擬機器內部的變更，請參閱 Azure 自動化的[變更追蹤](../../../automation/automation-change-tracking.md)或 Azure 原則的[vm 來賓](../../policy/concepts/guest-configuration.md)設定。
 
 > [!IMPORTANT]
-> "Azure 資源圖"中的更改歷史記錄處於公共預覽中。
+> Azure Resource Graph 中的變更歷程記錄處於公開預覽狀態。
 
-## <a name="find-detected-change-events-and-view-change-details"></a>查找檢測到的變更事件並查看更改詳細資訊
+## <a name="find-detected-change-events-and-view-change-details"></a>尋找偵測到的變更事件並查看變更詳細資料
 
-查看資源上更改內容的第一步是在時間視窗內查找與該資源相關的變更事件。 每個變更事件還包括有關資源上更改的詳細資訊。 此步驟通過**資源更改**REST 終結點完成。
+查看資源變更的第一個步驟，是在一段時間內尋找與該資源相關的變更事件。 每個變更事件也會包含資源變更的詳細資料。 此步驟是透過**resourceChanges** REST 端點完成。
 
-**資源更改**終結點接受請求正文中的以下參數：
+**ResourceChanges**端點會接受要求主體中的下列參數：
 
-- **資源**\[Id\]必需 ：要查找更改的 Azure 資源。
-- \]**需要間隔**\[：具有_開始_日期和_結束_日期的屬性，用於何時使用**祖魯時區 （Z）** 檢查變更事件。
-- **提取屬性更改**（可選）：如果回應物件包含屬性更改，則設置布林屬性。
+- **resourceId** \[需要\]resourceId：要在其中尋找變更的 Azure 資源。
+- **interval** \[需要\]間隔：具有_開始_和_結束_日期的屬性，可供何時使用**祖魯時區（Z）** 檢查變更事件。
+- **fetchPropertyChanges** （選擇性）：布林值屬性，如果回應物件包含屬性變更，則設定。
 
 要求本文範例：
 
@@ -57,13 +57,13 @@ ms.locfileid: "74873024"
 }
 ```
 
-對於上述請求正文，**用於資源更改**的 REST API URI 是：
+使用上述要求主體時， **resourceChanges**的 REST API URI 為：
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChanges?api-version=2018-09-01-preview
 ```
 
-回應與此示例類似：
+回應看起來類似此範例：
 
 ```json
 {
@@ -140,28 +140,28 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-**對於 resourceId，** 每個檢測到的變更事件都具有以下屬性：
+**ResourceId**的每個偵測到的變更事件都具有下列屬性：
 
-- **更改 Id** - 此值對該資源是唯一的。 雖然**changeId**字串有時可能包含其他屬性，但它僅保證是唯一的。
-- **快照之前**- 包含檢測到更改之前拍攝的資源快照的**快照 Id**和**時間戳記**。
-- **快照後**- 包含檢測到更改後拍攝的資源快照的**快照 Id**和**時間戳記**。
-- **更改類型**- 描述**在快照之前**和**快照之後**之間檢測到整個更改記錄的更改類型。 值為：_創建_、_更新_和_刪除_。 **屬性"更改屬性**陣列"僅在**更改類型**為 _"更新_"時才包含。
-- **屬性更改**- 此屬性陣列詳細介紹了**在快照之前**和**快照之後**之間更新的所有資源屬性 ：
-  - **屬性名稱**- 已更改的資源屬性的名稱。
-  - **更改類別**- 描述更改的原因。 值為：_系統和__使用者_。
-  - **更改類型**- 描述為各個資源屬性檢測到的更改類型。
-    值為：_插入_、_更新_、_刪除_。
-  - **之前值**-**快照 前**的資源屬性的值。 **當更改類型**為 _"插入_"時，不顯示。
-  - **後值**-**後快照**中資源屬性的值。 當**更改類型**_為"刪除_"時，不顯示。
+- **changeId** -此值對該資源而言是唯一的。 雖然**changeId**字串有時可能會包含其他屬性，但它只保證是唯一的。
+- **beforeSnapshot** -包含偵測到變更之前所取得之資源快照集的**snapshotId**和**時間戳記**。
+- **afterSnapshot** -包含偵測到變更之後所建立之資源快照集的**snapshotId**和**時間戳記**。
+- **changeType** -描述在**beforeSnapshot**和**afterSnapshot**之間針對整個變更記錄偵測到的變更類型。 值為： _Create_、 _Update_和_Delete_。 只有在**changeType**是_Update_時，才會包含**propertyChanges**屬性陣列。
+- **propertyChanges** -此屬性陣列會詳細說明**beforeSnapshot**與**afterSnapshot**之間已更新的所有資源屬性：
+  - **propertyName** -已改變之資源屬性的名稱。
+  - **changeCategory** -描述進行變更的內容。 值為： [_系統_] 和 [_使用者_]。
+  - **changeType** -描述針對個別資源屬性偵測到的變更類型。
+    值為： _Insert_、 _Update_、 _Remove_。
+  - **beforeValue** - **beforeSnapshot**中 resource 屬性的值。 當**changeType**為_Insert_時，不會顯示。
+  - **afterValue** - **afterSnapshot**中 resource 屬性的值。 當**ChangeType** _移除_時，不會顯示。
 
-## <a name="compare-resource-changes"></a>比較資源更改
+## <a name="compare-resource-changes"></a>比較資源變更
 
-使用**來自資源更改**終結點的**changeId**時，**資源更改詳細資訊**REST 終結點將用於獲取已更改的資源的快照的前後快照。
+透過**resourceChanges**端點的**changeId** ，就會使用**resourceChangeDetails** REST 端點來取得已變更資源的前後快照集。
 
-**資源更改詳細資訊**終結點需要請求正文中的兩個參數：
+**ResourceChangeDetails**端點需要要求主體中的兩個參數：
 
-- **資源 Id**：要比較更改的 Azure 資源。
-- **更改 Id**： 從**資源更改**中收集的**資源 Id**的唯一變更事件。
+- **resourceId**：用來比較變更的 Azure 資源。
+- **changeId**：從**ResourceChanges**收集的**resourceId**的唯一變更事件。
 
 要求本文範例：
 
@@ -172,13 +172,13 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-對於上述請求正文，**用於資源更改詳細資訊**的 REST API URI 是：
+使用上述要求主體時， **resourceChangeDetails**的 REST API URI 為：
 
 ```http
 POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChangeDetails?api-version=2018-09-01-preview
 ```
 
-回應與此示例類似：
+回應看起來類似此範例：
 
 ```json
 {
@@ -280,12 +280,12 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 }
 ```
 
-**在快照之前**和**快照後**，每個都給出快照拍攝的時間和當時的屬性。 更改發生在這些快照之間的某個點。 查看上面的示例，我們可以看到更改的屬性是**支援 HttpsTrafficOnly。**
+**beforeSnapshot**和**afterSnapshot**會分別提供快照集的建立時間，以及當時的屬性。 這項變更會發生在這些快照集之間的某個時間點。 查看上述範例，我們可以看到變更的屬性已**supportsHttpsTrafficOnly**。
 
-要比較結果，請使用**資源更改**中的**更改**屬性，或者計算**資源更改詳細資訊**中每個快照**的內容**部分以確定差異。 如果比較快照，**時間戳記**始終顯示為差異，儘管是預期的。
+若要比較結果，請使用**resourceChanges**中的 [**變更**] 屬性，或評估**resourceChangeDetails**中每個快照集的**內容**部分，以判斷差異。 如果您比較快照集，則**時間戳記**一律會顯示為差異，而不是預期。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[初學者查詢](../samples/starter.md)中正在使用的語言。
-- 請參閱[高級查詢](../samples/advanced.md)中的高級用途。
+- 請參閱[入門查詢](../samples/starter.md)中使用的語言。
+- 請參閱 advanced[查詢](../samples/advanced.md)中的 advanced 使用。
 - 深入了解如何[探索資源](../concepts/explore-resources.md)。

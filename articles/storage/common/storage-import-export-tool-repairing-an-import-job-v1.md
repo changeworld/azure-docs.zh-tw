@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: f5db321d8c4a6e42591a82b0ed8eb6bc6e93bad4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74973878"
 ---
 # <a name="repairing-an-import-job"></a>修復匯入作業
@@ -32,15 +32,15 @@ Microsoft Azure 匯入/匯出服務可能無法將某些檔案或某個檔案的
   
 |||  
 |-|-|  
-|**/r：**<修復檔\>|**必填。** 修復檔案的路徑，可追蹤修復進度，並可讓您繼續中斷的修復。 每個磁碟機需要一個修復檔案，而且只能有一個。 當您啟動指定磁碟機的修復時，請傳入尚不存在之修復檔的路徑。 若要恢復中斷的修復，您應傳入現有修復檔案名稱。 一律必須指定對應於目標磁碟機的修復檔。|  
-|**/日誌：<** 日誌目錄\>|**選。** 記錄檔目錄。 詳細資訊記錄檔會寫入至這個目錄。 如未指定記錄檔目錄，則會使用目前的目錄作為記錄檔目錄。|  
+|**/r：**<RepairFile\>|**必填。** 修復檔案的路徑，可追蹤修復進度，並可讓您繼續中斷的修復。 每個磁碟機需要一個修復檔案，而且只能有一個。 當您啟動指定磁碟機的修復時，請傳入尚不存在之修復檔的路徑。 若要恢復中斷的修復，您應傳入現有修復檔案名稱。 一律必須指定對應於目標磁碟機的修復檔。|  
+|**/logdir：**<LogDirectory\>|**選擇性。** 記錄檔目錄。 詳細資訊記錄檔會寫入至這個目錄。 如未指定記錄檔目錄，則會使用目前的目錄作為記錄檔目錄。|  
 |**/d:**<TargetDirectories\>|**必填。** 一或多個以分號分隔的目錄，其中包含所匯入的原始檔。 也可以使用匯入磁碟機，但如果有原始檔的替代位置可用，則非必要。|  
-|**/bk：**<位洛克基\>|**選。** 如果您希望該工具解除鎖定原始檔案所在的加密磁碟機，您應指定 BitLocker 金鑰。|  
+|**/bk：**<BitLockerKey\>|**選擇性。** 如果您希望該工具解除鎖定原始檔案所在的加密磁碟機，您應指定 BitLocker 金鑰。|  
 |**/sn:**<StorageAccountName\>|**必填。** 匯入作業的儲存體帳戶名稱。|  
 |**/sk:**<StorageAccountKey\>|未指定容器 SAS 時才**需要**。 匯入作業之儲存體帳戶的帳戶金鑰。|  
 |**/csas:**<ContainerSas\>|未指定儲存體帳戶金鑰時才**需要**。 存取與匯入作業相關聯的 Blob 所用的容器 SAS。|  
-|**/複製日誌檔：<** 磁碟機複製日誌檔\>|**必填。** 磁碟機複製記錄檔 (詳細資訊記錄檔或錯誤記錄檔) 的路徑。 此檔案是由 Windows Azure 匯入/匯出服務所產生，您可以從與作業相關聯的 blob 儲存體下載。 複製記錄檔包含所要修復之失敗 blob 或檔案的相關資訊。|  
-|**/PathMapFile:**<DrivePathMapFile\>|**選。** 如果您在相同作業中匯入多個同名的檔案，則為可用來解決模稜兩可情形之文字檔的路徑。 第一次執行此工具時，它可以在此檔案中填入所有模稜兩可的名稱。 後續執行此工具時，會使用此檔案來解決模稜兩可情形。|  
+|**/CopyLogFile：**<DriveCopyLogFile\>|**必填。** 磁碟機複製記錄檔 (詳細資訊記錄檔或錯誤記錄檔) 的路徑。 此檔案是由 Windows Azure 匯入/匯出服務所產生，您可以從與作業相關聯的 blob 儲存體下載。 複製記錄檔包含所要修復之失敗 blob 或檔案的相關資訊。|  
+|**/PathMapFile:**<DrivePathMapFile\>|**選擇性。** 如果您在相同作業中匯入多個同名的檔案，則為可用來解決模稜兩可情形之文字檔的路徑。 第一次執行此工具時，它可以在此檔案中填入所有模稜兩可的名稱。 後續執行此工具時，會使用此檔案來解決模稜兩可情形。|  
   
 ## <a name="using-the-repairimport-command"></a>使用 RepairImport 命令  
 若要透過網路串流資料來修復匯入資料，您必須指定內含您使用 `/d` 參數匯入之原始檔的目錄。 您也必須指定您從儲存體帳戶下載的複製記錄檔。 用於修復部分失敗之匯入作業的典型命令行如下所示︰  
@@ -99,8 +99,8 @@ WAImportExport.exe RepairImport /r:C:\WAImportExport\9WM35C2V.rep /d:C:\Users\bo
   
 ## <a name="next-steps"></a>後續步驟
  
-* [設置 Azure 導入/匯出工具](storage-import-export-tool-setup-v1.md)   
-* [為導入作業準備硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [使用副本日誌檔查看作業狀態](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [設定 Azure 匯入/匯出工具](storage-import-export-tool-setup-v1.md)   
+* [準備匯入工作的硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [使用複製記錄檔來檢查作業狀態](storage-import-export-tool-reviewing-job-status-v1.md)   
 * [修復匯出作業](../storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [排除 Azure 導入/匯出工具的故障](storage-import-export-tool-troubleshooting-v1.md)
+* [針對 Azure 匯入/匯出工具進行疑難排解](storage-import-export-tool-troubleshooting-v1.md)

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.openlocfilehash: 23fbb0b4c506b2f72000add9704618337b8b24cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75386182"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>建立 Node.js 應用程式並部署到 Azure 雲端服務
@@ -35,7 +35,7 @@ ms.locfileid: "75386182"
 > [!NOTE]
 > 本教學課程使用 Azure PowerShell (需要 Windows)。
 
-* 安裝和配置[Azure 電源外殼]。
+* 安裝和設定[Azure Powershell]。
 * 下載並安裝 [Azure SDK for .NET 2.7]。 在安裝過程中，選取：
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
@@ -82,7 +82,7 @@ Node.js app 是在 **server.js** 檔案中定義，該檔案位於 Web 角色 (�
 ## <a name="deploy-the-application-to-azure"></a>將應用程式部署至 Azure
 
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 您可以[啟用自己的 MSDN 訂戶權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或是[註冊免費帳戶](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)。
+> 若要完成此教學課程，您需要 Azure 帳戶。 您可以[啟用 MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF)或[註冊免費帳戶](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A85619ABF)。
 
 ### <a name="download-the-azure-publishing-settings"></a>下載 Azure 發佈設定
 若要將應用程式部署到 Azure，您必須先下載您 Azure 訂閱的發佈設定。
@@ -161,7 +161,7 @@ Node.js app 是在 **server.js** 檔案中定義，該檔案位於 Web 角色 (�
 
 [Azure 網站、雲端服務與虛擬機器的比較]: /azure/architecture/guide/technology-choices/compute-decision-tree
 [使用輕量型 Web 應用程式]: ../app-service/app-service-web-get-started-nodejs.md
-[Azure 電源外殼]: /powershell/azureps-cmdlets-docs
+[Azure Powershell]: /powershell/azureps-cmdlets-docs
 [Azure SDK for .NET 2.7]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [連線 PowerShell]: /powershell/azureps-cmdlets-docs
 [nodejs.org]: https://nodejs.org/

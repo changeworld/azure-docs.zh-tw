@@ -1,6 +1,6 @@
 ---
 title: IoT 中樞裝置佈建服務 - 自動佈建概念
-description: 本文使用 IoT 設備佈建服務 （DPS）、IoT 中心和用戶端 SDK 提供設備自動預配階段的概念概述。
+description: 本文提供使用 IoT 裝置布建服務（DPS）、IoT 中樞和用戶端 Sdk 的裝置自動布建階段的概念總覽。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -9,17 +9,17 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74975324"
 ---
 # <a name="auto-provisioning-concepts"></a>自動佈建概念
 
 如[概觀](about-iot-dps.md)中所述，「裝置佈建服務」是一項協助程式服務，可將裝置以 Just-In-Time 方式佈建到 IoT 中樞，而不需要人為介入。 在成功佈建之後，裝置會直接與指定的「IoT 中樞」連線。 此程序稱為自動佈建，可為裝置提供一個現成的登錄和初始設定體驗。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure IoT 自動佈建可分成三個階段：
 
@@ -28,7 +28,7 @@ Azure IoT 自動佈建可分成三個階段：
    > [!NOTE]
    > 不論您的 IoT 解決方案規模為何，即使您打算支援數百萬個裝置，這仍然是**一次性設定**。
 
-2. **裝置註冊** - 讓「裝置佈建服務」執行個體知道未來會嘗試註冊之裝置的程序。 [註冊](concepts-service.md#enrollment)是通過在預配服務中配置設備標識資訊來完成的，該資訊是單個設備的"個人註冊"，或者為多個設備配置"組註冊"。 身分識別會根據已指定裝置使用的[證明機制](concepts-security.md#attestation-mechanism)，這可讓佈建服務在登錄期間證明裝置的真確性：
+2. **裝置註冊** - 讓「裝置佈建服務」執行個體知道未來會嘗試註冊之裝置的程序。 [註冊](concepts-service.md#enrollment)的完成方式是在布建服務中設定裝置身分識別資訊，例如單一裝置的「個別註冊」，或多個裝置的「群組註冊」。 身分識別會根據已指定裝置使用的[證明機制](concepts-security.md#attestation-mechanism)，這可讓佈建服務在登錄期間證明裝置的真確性：
 
    - **TPM**：以「個別註冊」的形式設定，裝置身分識別會根據 TPM 註冊識別碼和公開簽署金鑰。 由於 TPM 是一個[規格](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)，因此不論 TPM 實作 (硬體或軟體) 為何，服務只會依據此規格來證明。 如需有關 TPM 型證明的詳細資料，請參閱[裝置佈建：使用 TPM 進行身分識別證明](https://azure.microsoft.com/blog/device-provisioning-identity-attestation-with-tpm/) \(英文\)。 
 
@@ -41,13 +41,13 @@ Azure IoT 自動佈建可分成三個階段：
 
 ## <a name="roles-and-operations"></a>角色和作業
 
-由於生產時間、運輸、海關流程等生產現實，上一節中討論的階段可能跨越數周或數月。此外，考慮到所涉及的各種實體，它們可以跨多個角色跨活動。 本節將深入探討與每個階段相關的各種角色和作業，然後以循序圖說明流程。 
+上一節所討論的階段可能會跨越數周或數個月，因為生產環境現實（例如製造時間、出貨、海關程式等）。此外，它們可以跨多個角色跨越活動，並指定涉及的各種實體。 本節將深入探討與每個階段相關的各種角色和作業，然後以循序圖說明流程。 
 
 自動佈建也針對啟用證明機制方面，為裝置製造商設下需求。 製造作業的進行也可能不受自動佈建階段的時機影響，特別是在已經建立自動佈建之後才購得新裝置的情況下。
 
 左邊目錄中提供了一系列快速入門，可透過實際操作體驗來協助說明自動佈建。 為了協助/簡化學習程序，會使用軟體來模擬實體裝置以進行註冊和登錄。 由於快速入門的模擬本質緣故，有些快速入門會要求您執行多個角色的作業，包括不存在之角色的作業。
 
-| 角色 | 作業 | 描述 |
+| [角色] | 作業 | 描述 |
 |------| --------- | ------------|
 | 製造商 | 將身分識別和登錄 URL 編碼 | 根據所使用的證明機制，製造商需負責將裝置身分識別資訊及「裝置佈建服務」登錄 URL 編碼。<br><br>**快速入門**：由於裝置是模擬裝置，因此沒有「製造商」角色。 如需有關如何取得此資訊的詳細資料，請參閱「開發人員」角色，撰寫範例登錄應用程式的程式碼時會使用此角色。 |
 | | 提供裝置身分識別 | 作為裝置身分識別資訊的來源，製造商需負責向操作員 (或指定的代理人) 傳達此資訊，或透過 API 將直接向「裝置佈建服務」註冊此資訊。<br><br>**快速入門**：由於裝置是模擬裝置，因此沒有「製造商」角色。 如需有關如何取得裝置身分識別的詳細資料，請參閱「操作員」角色，在於「裝置佈建服務」執行個體中註冊模擬裝置時會使用此角色。 |
@@ -59,7 +59,7 @@ Azure IoT 自動佈建可分成三個階段：
 
 下圖摘要說明裝置自動佈建期間的角色和作業順序：
 <br><br>
-[![設備的自動預配序列](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
+[![裝置的自動布建順序](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
 > 製造商也可以視需要使用「裝置佈建服務 API」(而不透過「操作員」) 來執行「註冊裝置身分識別」作業。 如需此排序及更多的詳細討論，請觀看[向 Azure IoT 進行全自動裝置登錄](https://youtu.be/cSbDRNg72cU?t=2460)影片 (從 41:00 標記開始)
@@ -76,9 +76,9 @@ Azure IoT 自動佈建可分成三個階段：
 
 在此案例中，可能有涉及兩個 Azure 帳戶：
 
-- **帳戶#1：** 可能在某種程度上跨操作員和開發人員角色共用。 此合作對象可以向製造商購買 HSM 晶片。 這些晶片會指向與帳戶 #1 相關聯的 DPS 執行個體。 DPS 註冊，此合作對象可藉由在 DPS 中重新設定裝置註冊設定，將裝置租給第 2 級客戶。 此方還可以為最終使用者後端系統分配 IoT 中心進行介面，以便訪問設備遙測等。在後一種情況下，可能不需要第二個帳戶。
+- **帳戶 #1**：可能會在不同的操作員和開發人員角色之間共用。 此合作對象可以向製造商購買 HSM 晶片。 這些晶片會指向與帳戶 #1 相關聯的 DPS 執行個體。 DPS 註冊，此合作對象可藉由在 DPS 中重新設定裝置註冊設定，將裝置租給第 2 級客戶。 此合作物件也可能已為使用者後端系統組態了 IoT 中樞，以存取裝置遙測等等。在這種情況下，可能不需要第二個帳戶。
 
-- **帳戶#2**：最終使用者，二級客戶可能有自己的 IoT 中心。 與帳戶 #1 相關聯的合作對象只是將租用裝置指向此帳戶中的正確中樞。 此組態需要跨 Azure 帳戶連結 DPS 和 IoT 中樞，這可透過 Azure Resource Manager 範本完成。
+- **帳戶 #2**：終端使用者、層級-兩個客戶可能會有自己的 IoT 中樞。 與帳戶 #1 相關聯的合作對象只是將租用裝置指向此帳戶中的正確中樞。 此組態需要跨 Azure 帳戶連結 DPS 和 IoT 中樞，這可透過 Azure Resource Manager 範本完成。
 
 #### <a name="all-in-one-oem"></a>全方位 OEM
 
@@ -98,15 +98,15 @@ Azure IoT 自動佈建可分成三個階段：
 請從最適合您管理工具喜好設定的「設定自動佈建」快速入門開始著手，這會引導您完成「服務設定」階段：
 
 - [使用 Azure CLI 來設定自動佈建](quick-setup-auto-provision-cli.md)
-- [使用 Azure 門戶設置自動預配](quick-setup-auto-provision.md)
+- [使用 Azure 入口網站設定自動布建](quick-setup-auto-provision.md)
 - [使用 Resource Manager 範本來設定自動佈建](quick-setup-auto-provision-rm.md)
 
 接著，繼續進行適合您裝置證明機制和「裝置佈建服務」SDK/語言喜好設定的「自動佈建模擬裝置」快速入門。 在此快速入門中，您將逐步完成「裝置註冊」和「裝置登錄與設定」階段： 
 
 |  | 模擬裝置證明機制 | 快速入門 SDK/語言 |  |
 |--|--|--|--|
-|  | 信賴平台模組 (TPM) | [C](quick-create-simulated-device.md)<br>[JAVA](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
-|  | X.509 憑證 | [C](quick-create-simulated-device-x509.md)<br>[JAVA](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
+|  | 信賴平台模組 (TPM) | [C](quick-create-simulated-device.md)<br>[Java](quick-create-simulated-device-tpm-java.md)<br>[C#](quick-create-simulated-device-tpm-csharp.md)<br>[Python](quick-create-simulated-device-tpm-python.md) |  |
+|  | X.509 憑證 | [C](quick-create-simulated-device-x509.md)<br>[Java](quick-create-simulated-device-x509-java.md)<br>[C#](quick-create-simulated-device-x509-csharp.md)<br>[Node.js](quick-create-simulated-device-x509-node.md)<br>[Python](quick-create-simulated-device-x509-python.md) |  |
 
 
 

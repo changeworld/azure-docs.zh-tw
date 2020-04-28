@@ -1,6 +1,6 @@
 ---
-title: 用於雷瑞斯示例的 Azure CLI Azure 緩存
-description: 用於 Redis 的 Azure 緩存的 Azure CLI 示例：創建緩存、刪除緩存、獲取緩存詳細資訊、主機名稱、埠和金鑰、連接 Web 應用。
+title: Azure CLI Azure Cache for Redis 範例
+description: 適用于 Azure Cache for Redis 的 Azure CLI 範例：建立快取、刪除快取、取得快取記憶體詳細資料、主機名稱、埠和金鑰，以及連線 web 應用程式。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
@@ -8,10 +8,10 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/14/2017
 ms.openlocfilehash: c43e23b4bf46258cc91b06a0912d03e85a5c7a14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75411350"
 ---
 # <a name="azure-cli-samples-for-azure-cache-for-redis"></a>Azure Redis 快取的 Azure CLI 範例

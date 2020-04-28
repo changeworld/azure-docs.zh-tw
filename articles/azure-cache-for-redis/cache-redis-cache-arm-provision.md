@@ -1,16 +1,16 @@
 ---
-title: 使用 Azure 資源管理器部署 Redis 的 Azure 緩存
-description: 瞭解如何使用 Azure 資源管理器範本為 Redis 資源部署 Azure 緩存。 為常見方案提供了範本。
+title: 使用 Azure Resource Manager 部署 Azure Cache for Redis
+description: 瞭解如何使用 Azure Resource Manager 範本來部署 Azure Cache for Redis 資源。 範本是針對常見案例所提供。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.openlocfilehash: 787edf662aa3a34e167db61b0a89dfc5c2944219
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75412414"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>使用範本來建立 Azure Cache for Redis
@@ -30,7 +30,7 @@ ms.locfileid: "75412414"
 > 
 > * [建立具有叢集的進階 Azure Cache for Redis](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
 > * [建立具有資料持續性的進階 Azure Cache for Redis](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
-> * [創建部署到虛擬網路中的高級雷瑞斯緩存](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
+> * [建立部署到虛擬網路的 Premium Redis 快取](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 > 
 > 若要查看最新的範本，請參閱 [Azure 快速入門範本](https://azure.microsoft.com/documentation/templates/)並搜尋 `Azure Cache for Redis`。
 > 
@@ -41,7 +41,7 @@ ms.locfileid: "75412414"
 
 若要自動執行部署，請按一下下列按鈕：
 
-[![部署到 Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
+[![部署至 Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>參數
 透過 Azure 資源管理員，您可以定義在部署範本時想要指定之值的參數。 此範本有一個 Parameters 區段，內含所有參數值。

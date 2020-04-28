@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 批量複製資料
+title: 使用 PowerShell 大量複製資料
 description: 這個 PowerShell 指令碼示範如何使用 Azure Data Factory，將資料從來源資料存放區大量複製到目的地資料存放區。
 services: data-factory
 ms.author: jingwang
@@ -11,10 +11,10 @@ ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
 ms.openlocfilehash: efc79f82a2181099f832da0d4a17fc370bf4f7f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74929857"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell 指令碼 - 使用 Azure Data Factory 來大量複製多個資料表
@@ -54,12 +54,12 @@ Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupN
 | Command | 注意 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 建立用來存放所有資源的資源群組。 |
-| [集-阿茲達工廠V2](/powershell/module/az.datafactory/set-azdatafactoryv2) | 建立資料處理站。 |
-| [集-阿茲達工廠V2連結服務](/powershell/module/az.datafactory/set-azdatafactoryv2linkedservice) | 在資料處理站中建立已連結的服務。 已連結的服務會將資料存放區或計算連結到資料處理站。 |
-| [資料集-阿茲達工廠V2資料集](/powershell/module/az.datafactory/set-azdatafactoryv2dataset) | 在資料處理站中建立資料集。 資料集代表管線中活動的輸入/輸出。 | 
-| [集-阿茲達工廠V2管道](/powershell/module/az.datafactory/set-azdatafactoryv2pipeline) | 在資料處理站中建立管線。 管線包含一或多個執行特定作業的活動。 在此管線中，複製活動會將資料從 Azure Blob 儲存體中的一個位置複製到其他位置。 |
-| [調用-阿茲達工廠V2管道](/powershell/module/az.datafactory/invoke-azdatafactoryv2pipeline) | 建立管線的執行。 也就是說，執行管線。 |
-| [獲取阿茲達工廠V2活動運行](/powershell/module/az.datafactory/get-azdatafactoryv2activityrun) | 在管線中取得活動的執行 (活動執行) 的相關詳細資料。 
+| [設定-Set-azdatafactoryv2](/powershell/module/az.datafactory/set-azdatafactoryv2) | 建立資料處理站。 |
+| [設定-Set-azdatafactoryv2linkedservice](/powershell/module/az.datafactory/set-azdatafactoryv2linkedservice) | 在資料處理站中建立已連結的服務。 已連結的服務會將資料存放區或計算連結到資料處理站。 |
+| [設定-Set-azdatafactoryv2dataset](/powershell/module/az.datafactory/set-azdatafactoryv2dataset) | 在資料處理站中建立資料集。 資料集代表管線中活動的輸入/輸出。 | 
+| [設定-Set-azdatafactoryv2pipeline](/powershell/module/az.datafactory/set-azdatafactoryv2pipeline) | 在資料處理站中建立管線。 管線包含一或多個執行特定作業的活動。 在此管線中，複製活動會將資料從 Azure Blob 儲存體中的一個位置複製到其他位置。 |
+| [叫用-Set-azdatafactoryv2pipeline](/powershell/module/az.datafactory/invoke-azdatafactoryv2pipeline) | 建立管線的執行。 也就是說，執行管線。 |
+| [AzDataFactoryV2ActivityRun](/powershell/module/az.datafactory/get-azdatafactoryv2activityrun) | 在管線中取得活動的執行 (活動執行) 的相關詳細資料。 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 刪除資源群組，包括所有的巢狀資源。 |
 |||
 

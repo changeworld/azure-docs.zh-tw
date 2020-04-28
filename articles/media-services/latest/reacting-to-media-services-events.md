@@ -1,6 +1,6 @@
 ---
 title: 回應 Azure 媒體服務事件 | Microsoft Docs
-description: 本文介紹如何使用 Azure 事件網格訂閱媒體服務事件。
+description: 本文說明如何使用 Azure 事件方格來訂閱媒體服務事件。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: juliako
 ms.openlocfilehash: e24bacb0ea7ab406442022915872fc77e9cc1a5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74887879"
 ---
 # <a name="handling-event-grid-events"></a>處理事件方格事件
@@ -40,9 +40,9 @@ Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions
 * 使用 "subject" 前置詞和後置詞相符，將事件限制為特定的事件。
 
 > [!NOTE]
-> 事件受事件網格[服務等級協定 （SLA）](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)的約束。 如果要使用 API 獲取事件通知，請參閱有關如何使用事件的示例，以及[.NET SDK](https://github.com/Azure-Samples/media-services-v3-dotnet)或[JAVA SDK](https://github.com/Azure-Samples/media-services-v3-java)。
+> 事件會受到事件方格[服務等級協定（SLA）](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/)所約束。 如果您想要使用 Api 取得事件通知，請參閱如何使用[.NET sdk](https://github.com/Azure-Samples/media-services-v3-dotnet)或[JAVA sdk](https://github.com/Azure-Samples/media-services-v3-java)來取用事件的範例。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [監控事件 - 門戶](monitor-events-portal-how-to.md)
+* [監視事件-入口網站](monitor-events-portal-how-to.md)
 * [監視事件 - CLI](job-state-events-cli-how-to.md)

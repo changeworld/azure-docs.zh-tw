@@ -1,6 +1,6 @@
 ---
-title: 創建外部 ASE
-description: 瞭解如何使用應用創建應用服務環境，或創建獨立（空）ASE。
+title: 建立外部 ASE
+description: 瞭解如何使用其中的應用程式建立 App Service 環境，或建立獨立的（空的） ASE。
 author: ccompy
 ms.assetid: 94dd0222-b960-469c-85da-7fcb98654241
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 6c4838e3226b91cbb5d6f86b83266a986418c120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75430520"
 ---
 # <a name="create-an-external-app-service-environment"></a>建立外部 App Service 環境
@@ -19,7 +19,7 @@ ms.locfileid: "75430520"
 Azure App Service Environment (ASE) 是將 Azure App Service 部署到客戶 Azure 虛擬網路 (VNet) 中子網路的一種部署。
 
 > [!NOTE]
-> 每個應用服務環境都有一個虛擬 IP （VIP），可用於聯繫應用服務環境。
+> 每個 App Service 環境都有一個虛擬 IP （VIP），可以用來與 App Service 環境聯繫。
 
 有二種方法可以部署 App Service Environment (ASE)：
 
@@ -59,7 +59,7 @@ App Service 方案是應用程式的容器。 當您在 App Service 中建立應
 
 若要在建立 App Service 方案時建立 ASE：
 
-1. 在[Azure 門戶](https://portal.azure.com/)中，選擇 **"創建資源** > **Web + 移動** > **Web 應用**"。
+1. 在 [ [Azure 入口網站](https://portal.azure.com/)中，選取 [**建立資源** > ] [**web +** > 行動] [**web 應用程式**]。
 
     ![建立 Web 應用程式][1]
 
@@ -149,7 +149,7 @@ App Service 方案是應用程式的容器。 當您在 App Service 中建立應
 
 1. 選取您的訂用帳戶。 此訂用帳戶也是所有應用程式在 ASE 中所使用的。 您無法將 ASE 放在另一個訂用帳戶中的 VNet。
 
-1. 選取或指定新的資源群組。 用於 ASE 的資源群組必須是與用於您 VNet 的相同。 如果您選取現有的 VNet，您 ASE 的資源群組選取項目將會更新，以反映 VNet 的資源群組。 如果您是使用 Resource Manager 範本，可以使用不同於 VNet 資源群組的資源群組來建立 ASE。** 要從範本創建 ASE，請參閱[從範本創建應用服務環境][MakeASEfromTemplate]。
+1. 選取或指定新的資源群組。 用於 ASE 的資源群組必須是與用於您 VNet 的相同。 如果您選取現有的 VNet，您 ASE 的資源群組選取項目將會更新，以反映 VNet 的資源群組。 如果您是使用 Resource Manager 範本，可以使用不同於 VNet 資源群組的資源群組來建立 ASE。** 若要從範本建立 ASE，請參閱[從範本建立 App Service 環境][MakeASEfromTemplate]。
 
     ![資源群組選取項目][6]
 
@@ -163,7 +163,7 @@ App Service 方案是應用程式的容器。 當您在 App Service 中建立應
     
       * 如果您針對 VIP 類型**** 選取 [外部]****，就必須指定您 ASE 使用的網域。 您可以將 ASE 部署到使用公用或私人位址範圍的 VNet。 若要搭配使用 VNet 與公用位址範圍，您必須事先建立 VNet。 
     
-    * 如果您選取現有的 VNet，ASE 建立時就會建立新的子網路。 *不能在門戶中使用預先創建的子網。如果使用資源管理器範本，則可以使用現有子網創建 ASE。* 若要從範本建立 ASE，請參閱[從範本建立 App Service 環境][MakeASEfromTemplate]。
+    * 如果您選取現有的 VNet，ASE 建立時就會建立新的子網路。 *您無法在入口網站中使用預先建立的子網。如果您使用 Resource Manager 範本，您可以使用現有的子網建立 ASE。* 若要從範本建立 ASE，請參閱[從範本建立 App Service 環境][MakeASEfromTemplate]。
 
 ## <a name="app-service-environment-v1"></a>App Service 環境 v1
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 流分析 CI/CD NuGet 包
-description: 本文介紹如何使用 Azure 流分析 CI/CD NuGet 包來設置持續的集成和部署過程。
+title: 使用 Azure 串流分析 CI/CD NuGet 套件
+description: 本文說明如何使用 Azure 串流分析 CI/CD NuGet 封裝來設定持續整合和部署程式。
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: 11e68aaa7c70d4f888c0009bc28d9bb90f431f3b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75354450"
 ---
-# <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 流分析 CI/CD NuGet 包進行集成和開發 
-本文介紹如何使用 Azure 流分析 CI/CD NuGet 包來設置持續的集成和部署過程。
+# <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>使用 Azure 串流分析 CI/CD NuGet 套件進行整合和開發 
+本文說明如何使用 Azure 串流分析 CI/CD NuGet 封裝來設定持續整合和部署程式。
 
 使用 2.3.0000.0 版或更新版本的[適用於 Visual Studio 的串流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio)來取得 MSBuild 支援。
 
-Nuget 套件可供使用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供了 MSBuild、本地運行和部署工具，支援[流分析視覺化工作室專案的](stream-analytics-vs-tools.md)持續集成和部署過程。 
+Nuget 套件可供使用：[Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/)。 它提供 MSBuild、本機執行和部署工具，可支援[串流分析 Visual Studio 專案](stream-analytics-vs-tools.md)的持續整合和部署程式。 
 > [!NOTE]
 > NuGet 套件僅能搭配 2.3.0000.0 或更新版本之適用於 Visual Studio 的串流分析工具使用。 如果您有使用舊版 Visual Studio 工具建立的專案，請直接使用 2.3.0000.0 或更新版本加以開啟並儲存。 接著啟用新功能。 
 
@@ -92,6 +92,6 @@ arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-O
 
 ## <a name="next-steps"></a>後續步驟
 
-* [快速入門：在視覺化工作室創建 Azure 流分析雲作業](stream-analytics-quick-create-vs.md)
+* [快速入門：在 Visual Studio 中建立 Azure 串流分析雲端作業](stream-analytics-quick-create-vs.md)
 * [使用 Visual Studio 在本機測試串流分析查詢](stream-analytics-vs-tools-local-run.md)
-* [使用視覺化工作室流覽 Azure 流分析作業](stream-analytics-vs-tools.md)
+* [使用 Visual Studio 探索 Azure 串流分析作業](stream-analytics-vs-tools.md)

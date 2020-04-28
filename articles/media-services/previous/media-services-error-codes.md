@@ -1,6 +1,6 @@
 ---
 title: Azure 媒體服務錯誤代碼 | Microsoft Docs
-description: 您可能會從服務接收 HTTP 錯誤代碼，具體取決於諸如即將過期到媒體服務中不支援的操作的身份驗證權杖等問題。 本文概述了 Azure 媒體服務 v2 API 錯誤代碼。
+description: 視問題而定，您可能會收到來自服務的 HTTP 錯誤碼，例如驗證權杖過期至媒體服務中不支援的動作。 本文提供 Azure 媒體服務 v2 API 錯誤碼的總覽。
 author: Juliako
 manager: femila
 editor: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f5a2dd68d86a7a38fc7f2942351c42c84742d104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74887062"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure 媒體服務錯誤代碼

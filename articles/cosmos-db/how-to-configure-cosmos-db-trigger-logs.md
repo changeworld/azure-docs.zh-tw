@@ -1,5 +1,5 @@
 ---
-title: 使用 Cosmos DB 的 Azure 函數觸發器配置和讀取日誌
+title: 使用 Cosmos DB 的 Azure Functions 觸發程式來設定和讀取記錄
 description: 了解在使用 Azure Functions 的 Cosmos DB 觸發程序時，如何將記錄公開至 Azure Functions 記錄管線
 author: ealsur
 ms.service: cosmos-db
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 5ff747b225f8984bcaafd80015e85a9f014bdb50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75441836"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>在使用 Azure Functions 的 Cosmos DB 觸發程序時如何設定和讀取記錄

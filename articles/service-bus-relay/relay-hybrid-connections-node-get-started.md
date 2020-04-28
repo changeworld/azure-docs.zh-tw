@@ -1,5 +1,5 @@
 ---
-title: Azure 中繼混合連接 - 節點中的 Web 通訊端
+title: Azure 轉送混合式連接-節點中的 Websocket
 description: 為 Azure 轉送混合式連線 Websocket 撰寫 Node.js 主控台應用程式
 services: service-bus-relay
 documentationcenter: node
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 818db4db082a441877b573fd52361e63becce374
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75352663"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-nodejs"></a>在 Node.js 中開始使用轉送混合式連線 WebSocket
@@ -38,7 +38,7 @@ ms.locfileid: "75352663"
 ## <a name="prerequisites"></a>Prerequisites
 
 - [Node.js](https://nodejs.org/en/).
-- Azure 訂用帳戶。 如果沒有，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
+- Azure 訂用帳戶。 如果您沒有，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-namespace"></a>建立命名空間
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]

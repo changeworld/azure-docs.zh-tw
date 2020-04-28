@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
 ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75364946"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>Azure 監視器記錄查詢中的 workspace() 運算式
@@ -20,17 +20,17 @@ ms.locfileid: "75364946"
 
 ## <a name="syntax"></a>語法
 
-`workspace(`*識別碼*`)`
+`workspace(`*標識*`)`
 
 ## <a name="arguments"></a>引數
 
 - 識別碼**：使用下表中的其中一個格式來識別工作區。
 
-| 識別碼 | 描述 | 範例
+| 識別碼 | 說明 | 範例
 |:---|:---|:---|
 | 資源名稱 | 人類可閱讀的工作區名稱 (也稱為「元件名稱」) | workspace("contosoretail") |
 | 完整名稱 | 使用下列形式的工作區完整名稱："subscriptionName/resourceGroup/componentName" | workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| ID | 工作區的 GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| 識別碼 | 工作區的 GUID | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
 | Azure 資源識別碼 | Azure 資源的識別碼 | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
@@ -64,6 +64,6 @@ union
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[應用運算式](app-expression.md)以引用應用程式見解應用。
+- 請參閱[應用程式運算式](app-expression.md)來參考 Application Insights 應用程式。
 - 了解 [Azure 監視器資料](log-query-overview.md)的儲存方式。
 - 存取 [Kusto 查詢語言](/azure/kusto/query/)的完整文件。

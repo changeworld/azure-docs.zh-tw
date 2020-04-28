@@ -1,5 +1,5 @@
 ---
-title: 排除網路鏈路性能：Azure
+title: 針對網路連結效能進行疑難排解： Azure
 description: 本頁提供測試 Azure 網路連結效能的標準化方法。
 services: expressroute
 author: tracsman
@@ -9,14 +9,14 @@ ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
 ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74869641"
 ---
 # <a name="troubleshooting-network-performance"></a>網路效能疑難排解
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Azure 提供穩定且快速的方式，從您的內部部署網路連線到 Azure。 大型和小型的客戶可以成功使用站對站 VPN 和 ExpressRoute 等方法，在 Azure 中經營其業務。 但是當效能不符合您預期的情況或先前的經驗時，會發生什麼事？ 本文件可協助您將測試方式標準化，並為您的特定環境制訂基準。
 
 本文件說明如何在兩部主機之間輕鬆且一致地測試網路延遲和頻寬。 本文件也針對查看 Azure 網路的方式提供一些建議，並協助您隔離問題點。 討論的 PowerShell 指令碼和工具在網路上 (要測試之連結的任一端) 需要有兩部主機。 一部主機必須是 Windows 伺服器或桌面，另一部主機則可以是 Windows 或 Linux。 
@@ -26,7 +26,7 @@ Azure 提供穩定且快速的方式，從您的內部部署網路連線到 Azur
 >
 >
 
-## <a name="network-components"></a>網路構成要素
+## <a name="network-components"></a>網路元件
 深入了解疑難排解之前，讓我們先討論一些通用的術語和構成要素。 這個討論可確保我們將考慮端對端鏈結中，可在 Azure 中連線的每個構成要素。
 ![1][1]
 
@@ -198,14 +198,14 @@ AzureCT PowerShell 模組有兩個構成要素，分別是[可用性測試][Avai
 \* 巴西延遲是不錯的範例，其中的直線距離明顯不同於光纖運行距離。 我本來預期延遲大約為 160 毫秒，但是實際上是 189 毫秒。 與我預期不符的這項差異可能表示某個地方存在網路問題，但最有可能的是光纖運行並不是以直線進入巴西，而是距離西雅圖還超過 1,000 公里左右，才能到達巴西。
 
 ## <a name="next-steps"></a>後續步驟
-1. 從 GitHub 下載 Azure 連接工具組，[https://aka.ms/AzCT][ACT]
+1. 從 GitHub 下載 Azure 連線工具組，網址為[https://aka.ms/AzCT][ACT]
 2. 依照指示進行[連結效能測試][Performance Doc]
 
 <!--Image References-->
 [1]: ./media/expressroute-troubleshooting-network-performance/network-components.png "Azure 網路元件"
-[2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "快速路由故障排除"
-[3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "Perf 測試環境"
-[4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "電源殼輸出"
+[2]: ./media/expressroute-troubleshooting-network-performance/expressroute-troubleshooting.png "ExpressRoute 疑難排解"
+[3]: ./media/expressroute-troubleshooting-network-performance/test-diagram.png "效能測試環境"
+[4]: ./media/expressroute-troubleshooting-network-performance/powershell-output.png "PowerShell 輸出"
 
 <!--Link References-->
 [Performance Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/PerformanceTesting.md

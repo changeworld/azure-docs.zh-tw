@@ -1,16 +1,16 @@
 ---
 title: 如何在 Azure Cosmos DB 中設定多重主機
-description: 瞭解如何在 Azure Cosmos DB 中使用不同的 SDK 為應用程式佈建多主機。
+description: 瞭解如何在 Azure Cosmos DB 中使用不同的 Sdk，為您的應用程式設定多宿主。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74873636"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>在使用 Azure Cosmos DB 的應用程式中設定多重主機
@@ -109,9 +109,9 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {
 * [使用工作階段權杖在 Azure Cosmos DB 中管理一致性](how-to-manage-consistency.md#utilize-session-tokens)
 * [Azure Cosmos DB 中的衝突類型和解決原則](conflict-resolution-policies.md)
 * [Azure Cosmos DB 中的高可用性](high-availability.md)
-* [Azure 宇宙 DB 中的一致性級別](consistency-levels.md)
+* [Azure Cosmos DB 中的一致性層級](consistency-levels.md)
 * [在 Azure Cosmos DB 中選擇正確的一致性層級](consistency-levels-choosing.md)
-* [Azure Cosmos DB 中的一致性、可用性和性能權衡](consistency-levels-tradeoffs.md)
+* [Azure Cosmos DB 中的一致性、可用性和效能取捨](consistency-levels-tradeoffs.md)
 * [各種一致性層級的可用性和效能權衡取捨](consistency-levels-tradeoffs.md)
 * [全域調整佈建的輸送量](scaling-throughput.md)
-* [全球分銷：引擎蓋下](global-dist-under-the-hood.md)
+* [全域散發：幕後](global-dist-under-the-hood.md)

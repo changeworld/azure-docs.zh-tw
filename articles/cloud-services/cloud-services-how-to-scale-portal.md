@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: tagore
 ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75360832"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在入口網站中設定雲端服務的自動調整
@@ -66,12 +66,12 @@ ms.locfileid: "75360832"
 #### <a name="profile"></a>設定檔
 設定檔會設定調整規模的最小和最大執行個體個數，而且也會在此調整範圍作用中時。
 
-* **總是**
+* **永遠**
 
     一律讓此範圍的執行個體個數保持可用狀態。  
 
     ![一律調整的雲端服務](./media/cloud-services-how-to-scale-portal/select-always.png)
-* **復發**
+* **週期性**
 
     選擇一組要調整的一週天數。
 

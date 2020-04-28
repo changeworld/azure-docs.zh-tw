@@ -1,5 +1,5 @@
 ---
-title: 虛擬網路中的 HBase 群集複製 - Azure HDInsight
+title: 虛擬網路中的 HBase 叢集複寫-Azure HDInsight
 description: 了解如何針對負載平衡、高可用性、零停機時間移轉和更新，以及災害復原來設定 HDInsight 版本之間的 HBase 複寫。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435657"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>設定 Azure 虛擬網路中的 Apache HBase 叢集複寫
@@ -21,7 +21,7 @@ ms.locfileid: "75435657"
 
 叢集複寫會使用來源推入方法。 HBase 叢集可以是來源、目的地，或可同時滿足兩個角色。 複寫不是同步進行。 複寫的目標最終會一致。 如果來源在複寫啟用時接收到資料行系列的編輯，該編輯會傳播到所有目的地叢集。 當資料從一個叢集複寫到另一個時，會追蹤來源叢集和已取用資料的所有叢集，以避免複寫迴圈。
 
-在本文中，您可以設置源目標複製。 若需其他叢集拓撲，請參閱 [Apache HBase 參考指南](https://hbase.apache.org/book.html#_cluster_replication)。
+在本文中，您會設定來源目的地複寫。 若需其他叢集拓撲，請參閱 [Apache HBase 參考指南](https://hbase.apache.org/book.html#_cluster_replication)。
 
 以下是適用於單一虛擬網路的 HBase 複寫使用案例︰
 
@@ -39,7 +39,7 @@ ms.locfileid: "75435657"
 您可以從 [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) 使用[指令碼動作](../hdinsight-hadoop-customize-cluster-linux.md)指令碼複寫叢集。
 
 ## <a name="prerequisites"></a>Prerequisites
-在開始本文之前，必須具有 Azure 訂閱。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+在開始本文之前，您必須擁有 Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 
 ## <a name="set-up-the-environments"></a>設定環境
 
@@ -104,7 +104,7 @@ ms.locfileid: "75435657"
 
 為了安裝 Bind，您需要尋找兩個 DNS 虛擬機器的公用 IP 位址。
 
-1. 打開[Azure 門戶](https://portal.azure.com)。
+1. 開啟 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [資源群組] > [資源群組名稱] > [vnet1DNS]**** 來開啟 DNS 虛擬機器。  資源群組名稱是您在上一個程序中所建立的名稱。 預設 DNS 虛擬機器名稱是 vnet1DNS** 和 vnet2NDS**。
 3. 選取 [屬性]**** 以開啟虛擬網路的屬性頁面。
 4. 記下 [公用 IP 位址]****，並另外確認 [私人 IP 位址]****。  私人 IP 位址應該是 **10.1.0.4** (如果是 vnet1DNS) 和 **10.2.0.4** (如果是 vnet2DNS)。  
@@ -125,7 +125,7 @@ ms.locfileid: "75435657"
     >
     > * [Azure Cloud Shell](../../cloud-shell/quickstart.md)
     > * [在 Windows 10 上 Ubuntu 上的 Bash](https://msdn.microsoft.com/commandline/wsl/about)
-    > * [吉特 （https://git-scm.com/)](https://git-scm.com/)
+    > * [Githttps://git-scm.com/)](https://git-scm.com/)
     > * [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)
 
 2. 若要安裝 Bind，使用下列 SSH 工作階段中的命令：
@@ -135,7 +135,7 @@ ms.locfileid: "75435657"
     sudo apt-get install bind9 -y
     ```
 
-3. 將"綁定"配置為將名稱解析請求轉發到本地 DNS 伺服器。 若要這樣做，請使用下列文字作為 `/etc/bind/named.conf.options` 檔案的內容：
+3. 設定系結以將名稱解析要求轉寄到內部部署 DNS 伺服器。 若要這樣做，請使用下列文字作為 `/etc/bind/named.conf.options` 檔案的內容：
 
     ```
     acl goodclients {
@@ -260,7 +260,7 @@ sudo service bind9 status
 使用下列組態在兩個虛擬網路中各建立一個 [Apache HBase](https://hbase.apache.org/) 叢集：
 
 - **資源群組名稱**︰使用和您在虛擬網路中所建立的名稱相同的資源群組名稱。
-- **群集類型**： HBase
+- 叢集**類型**： HBase
 - **版本**：HBase 1.1.2 (HDI 3.6)
 - **位置**：使用與虛擬網路相同的位置。  根據預設，vnet1 是「美國西部」**，vnet2 是「美國東部」**。
 - **儲存體**︰為叢集建立新的儲存體帳戶。
@@ -276,7 +276,7 @@ sudo service bind9 status
 若要建立一個**連絡人**資料表，並在此資料表中插入一些資料，請依照 [Apache HBase 教學課程：開始使用 HDInsight 中的 Apache HBase](apache-hbase-tutorial-get-started-linux.md) 中的指示進行操作。
 
 > [!NOTE]
-> 如果要從自訂命名空間複製表，則需要確保在目標群集上定義適當的自訂命名空間。
+> 如果您想要從自訂命名空間複寫資料表，您必須確定目的地叢集上也定義了適當的自訂命名空間。
 >
 
 ## <a name="enable-replication"></a>啟用複寫
@@ -285,7 +285,7 @@ sudo service bind9 status
 
 **從 Azure 入口網站啟用 HBase 複寫**
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 開啟來源 HBase 叢集。
 3. 從 [叢集] 功能表中，選擇 [指令碼動作]****。
 4. 在頁面的頂端，選取 [提交新項目] ****。
@@ -301,9 +301,9 @@ sudo service bind9 status
       > [!NOTE]
       > 針對來源與目的地叢集 DNS 名稱，使用主機名稱而非 FQDN。
       >
-      > 本演練假定 hn1 為活動頭節點。 請檢查群集以識別活動頭節點。
+      > 本逐步解說假設 hn1 為作用中前端節點。 請檢查您的叢集，以識別使用中的前端節點。
 
-6. 選取 [建立]****。 指令碼執行需要花費一些時間，特別是在使用 **-copydata** 引數的情況下。
+6. 選取 [建立]  。 指令碼執行需要花費一些時間，特別是在使用 **-copydata** 引數的情況下。
 
 必要的引數︰
 
@@ -321,7 +321,7 @@ sudo service bind9 status
 |-su, --src-ambari-user | 指定來源 HBase 叢集上 Ambari 的管理員使用者名稱。 預設值為 **admin**。 |
 |-du, --dst-ambari-user | 指定目的地 HBase 叢集上 Ambari 的管理員使用者名稱。 預設值為 **admin**。 |
 |-t, --table-list | 指定要複寫的資料表。 例如：--table-list="table1;table2;table3"。 如果您未指定資料表，則會複寫所有現有的 HBase 資料表。|
-|-m, --machine | 指定用來執行指令碼動作的前端節點。 應根據活動頭節點選擇該值。 如果您從 HDInsight 入口網站或 Azure PowerShell 以指令碼動作執行 $0 指令碼，則使用此選項。|
+|-m, --machine | 指定用來執行指令碼動作的前端節點。 應該根據使用中的前端節點來選擇值。 如果您從 HDInsight 入口網站或 Azure PowerShell 以指令碼動作執行 $0 指令碼，則使用此選項。|
 |-cp, -copydata | 在已啟用複寫的資料表上，啟用現有資料的移轉。 |
 |-rpm, -replicate-phoenix-meta | 在 Phoenix 系統資料表上啟用複寫。 <br><br>*請謹慎使用此選項。* 建議您在使用此指令碼前，於複本叢集上重新建立 Phoenix 資料表。 |
 |-h, --help | 顯示使用資訊。 |
@@ -342,7 +342,7 @@ sudo service bind9 status
 
         -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3"
 
-- **在特定表上啟用複製，並複製現有資料**。 如要在 table1、table2 和 table3 上啟用複寫，請使用下列參數：
+- **在特定資料表上啟用複寫，並複製現有資料**。 如要在 table1、table2 和 table3 上啟用複寫，請使用下列參數：
 
         -m hn1 -s <source hbase cluster name> -d <destination hbase cluster name> -sp <source cluster Ambari password> -dp <destination cluster Ambari password> -t "table1;table2;table3" -copydata
 
@@ -401,12 +401,12 @@ sudo service bind9 status
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
 
 > [!NOTE]
-> 如果要刪除目標群集，請確保將其從源群集的對等清單中刪除。 這可以通過在源群集上的 hbase shell 上運行命令remove_peer"1"來實現。 如果失敗，源群集可能無法正常工作。
+> 如果您想要刪除目的地叢集，請務必從來源叢集的對等清單中將它移除。 這可以藉由在來源叢集上的 hbase shell 上執行命令 remove_peer ' 1 ' 來完成。 若失敗，來源叢集可能無法正常運作。
 >
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您學習了如何在虛擬網路內或在兩個虛擬網路之間設置 Apache HBase 複製。 若要深入了解 HDInsight 與 Apache HBase，請參閱下列文章：
+在本文中，您已瞭解如何在虛擬網路內或兩個虛擬網路之間設定 Apache HBase 複寫。 若要深入了解 HDInsight 與 Apache HBase，請參閱下列文章：
 
 * [開始使用 HDInsight 中的 Apache HBase](./apache-hbase-tutorial-get-started-linux.md)
 * [HDInsight Apache HBase 概觀](./apache-hbase-overview.md)

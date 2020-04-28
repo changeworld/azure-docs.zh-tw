@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
 ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75431675"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>以程式設計方式來建立串流分析工作監視
@@ -20,9 +20,9 @@ ms.locfileid: "75431675"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-在開始此過程之前，您必須具有以下先決條件：
+開始進行此程式之前，您必須具備下列必要條件：
 
-* 視覺工作室 2019 或 2015
+* Visual Studio 2019 或2015
 * 已下載並安裝 [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 * 一項已啟用監視的現有串流分析作業
 
@@ -135,7 +135,7 @@ ms.locfileid: "75431675"
 
 ## <a name="enable-monitoring-for-an-existing-stream-analytics-job"></a>為現有串流分析作業啟用監視
 
-下列程式碼將為「現有」**** 串流分析作業啟用監視。 程式碼的第一部分會對串流分析服務執行 GET 要求，以擷取特定串流分析工作的相關資訊。 它使用*ID*屬性（從 GET 請求檢索）作為代碼後半部分的 Put 方法的參數，該方法向 Insights 服務發送 PUT 請求，以啟用流分析作業的監視。
+下列程式碼將為「現有」**** 串流分析作業啟用監視。 程式碼的第一部分會對串流分析服務執行 GET 要求，以擷取特定串流分析工作的相關資訊。 在程式碼的後半部中，它會使用*ID*屬性（從 GET 要求中抓取）當做 put 方法的參數，將 put 要求傳送至 Insights 服務，以啟用串流分析作業的監視。
 
 > [!WARNING]
 > 如果您先前已經為不同的串流分析作業啟用監視 (不論是透過 Azure 入口網站，還是以程式設計方式透過以下的程式碼)，**建議您提供先前啟用監視時所提供的相同儲存體帳戶名稱。**
@@ -169,12 +169,12 @@ ms.locfileid: "75431675"
 
 ## <a name="get-support"></a>取得支援
 
-有關進一步説明，請嘗試我們的[Azure 流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需進一步的協助，請嘗試我們的[Azure 串流分析論壇](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [使用 Azure 流分析開始](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

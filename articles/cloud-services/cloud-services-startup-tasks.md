@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75360305"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何設定和執行雲端服務的啟動工作
@@ -104,7 +104,7 @@ EXIT /B 0
 
 **taskType** - 指定啟動工作執行的方式。
 
-* **簡單**  
+* **單個**  
   工作會以同步的方式執行，一次一個，並依照 [ServiceDefinition.csdef] 檔案所指定的順序。 當某個 **simple** 啟動工作結束時的 **errorlevel** 為零，就會執行下一個 **simple** 啟動工作。 如果沒有任何 **simple** 啟動工作需要執行，則會啟動角色本身。   
   
   > [!NOTE]
@@ -113,7 +113,7 @@ EXIT /B 0
   > 
   
     若要確保批次檔結束時的 **errorlevel** 為零，請在批次檔處理序結束時執行命令 `EXIT /B 0`。
-* **background**  
+* **背景**  
    以非同步方式執行工作，並與角色的啟動工作平行進行。
 * **foreground**  
    以非同步方式執行工作，並與角色的啟動工作平行進行。 **foreground** 和 **background** 工作之間的主要差異，在於 **foreground** 工作可避免角色在工作結束之前遭到回收或關閉。 **background** 工作則不具備這項限制功能。
@@ -153,13 +153,13 @@ EXIT /B 0
 
 [封裝](cloud-services-model-and-package.md) 雲端服務。  
 
-[服務定義.csdef]: cloud-services-model-and-package.md#csdef
-[任務]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
+[ServiceDefinition]: cloud-services-model-and-package.md#csdef
+[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[啟動]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [執行階段]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [環境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [變數]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[角色實例值]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 
 

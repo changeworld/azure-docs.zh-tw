@@ -1,5 +1,5 @@
 ---
-title: 密碼保護代理髮布歷史記錄 - Azure 活動目錄
+title: 密碼保護代理程式發行歷程記錄-Azure Active Directory
 description: 文件版本發行和行為變更歷程記錄
 services: active-directory
 ms.service: active-directory
@@ -12,49 +12,49 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 71fd33388cb1bdf7c87c44fb3273c6850122a0cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74847844"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD 密碼保護代理程式版本記錄
 
 ## <a name="121250"></a>1.2.125.0
 
-發佈日期： 2019/3/22
+發行日期：3/22/2019
 
-* 修復事件日誌消息中的輕微拼寫錯誤
-* 將 EULA 協定更新為最終常規可用性版本
+* 修正事件記錄檔訊息中的次要打字錯誤
+* 將 EULA 合約更新為最終正式推出版本
 
 > [!NOTE]
-> 生成 1.2.125.0 是通用版本。 再次感謝您向大家提供的產品回饋！
+> Build 1.2.125.0 是公開上市版本。 再次感謝大家提供有關產品的意見反應！
 
 ## <a name="121160"></a>1.2.116.0
 
-發佈日期： 2019/3/13
+發行日期：3/13/2019
 
-* 獲取 AzureAD 密碼保護代理和獲取 AzureAD 密碼保護 DC 代理 Cmdlet 現在報告軟體版本和當前 Azure 租戶具有以下限制：
-  * 軟體版本和 Azure 租戶資料僅適用于運行版本 1.2.116.0 或更高版本的 DC 代理和代理。
-  * 在重新註冊（或續訂）代理或林之前，不得報告 Azure 租戶資料。
-* 代理服務現在要求安裝 .NET 4.7。
-  * .NET 4.7 應該已安裝在完全更新的 Windows 伺服器上。 如果不是這樣，請下載並運行[在 Windows 的 .NET 框架 4.7 離線安裝程式中找到的安裝程式](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)。
-  * 在伺服器核心系統上，可能需要將 /q 標誌傳遞給 .NET 4.7 安裝程式才能成功。
-* 代理服務現在支援自動升級。 自動升級使用與代理服務並行安裝的 Microsoft Azure AD 連接代理更新程式服務。 預設情況下，自動升級處於打開狀態。
-* 可以使用設置-AzureAD 密碼保護代理配置 Cmdlet 啟用或禁用自動升級。 可以使用獲取 AzureAD 密碼保護代理配置 Cmdlet 查詢當前設置。
-* DC 代理服務的服務二進位檔案已重命名為 AzureADPassword 保護 DCAgent.exe。
-* 代理服務的服務二進位檔案已重命名為 AzureADPassword 保護代理.exe。 如果協力廠商防火牆正在使用中，則可能需要相應地修改防火牆規則。
-  * 注：如果以前的代理安裝中使用了 HTTP 代理設定檔，則需要在此升級後將其重命名（從*代理服務.exe.config*到*AzureADPassword保護代理.exe.config）。*
-* 所有時間限制的功能檢查都已從 DC 代理中刪除。
-* 小錯誤修復和日誌記錄改進。
+* Register-azureadpasswordprotectionproxy 和 AzureADPasswordProtectionDCAgent Cmdlet 現在會報告軟體版本和目前的 Azure 租使用者，但有下列限制：
+  * 軟體版本和 Azure 租使用者資料僅適用于執行1.2.116.0 或更新版本的 DC 代理程式和 proxy。
+  * 在 proxy 或樹系的重新註冊（或更新）發生之前，可能不會回報 Azure 租使用者資料。
+* Proxy 服務現在需要安裝 .NET 4.7。
+  * .NET 4.7 應該已經安裝在完全更新的 Windows 伺服器上。 如果不是這種情況，請下載並執行[適用于 Windows 的 .NET Framework 4.7 離線安裝程式](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)中找到的安裝程式。
+  * 在 Server Core 系統上，可能需要將/q 旗標傳遞給 .NET 4.7 安裝程式，才能讓它成功。
+* Proxy 服務現在支援自動升級。 自動升級會使用與 Proxy 服務並存安裝的 Microsoft Azure AD Connect Agent 更新程式服務。 預設會開啟自動升級。
+* 您可以使用 AzureADPasswordProtectionProxyConfiguration Cmdlet 來啟用或停用自動升級。 您可以使用 AzureADPasswordProtectionProxyConfiguration Cmdlet 來查詢目前的設定。
+* DC 代理程式服務的服務二進位檔已重新命名為 AzureADPasswordProtectionDCAgent。
+* Proxy 服務的服務二進位檔已重新命名為 Register-azureadpasswordprotectionproxy。 如果協力廠商防火牆正在使用中，則可能需要適當地修改防火牆規則。
+  * 注意：如果在先前的 Proxy 安裝中使用 HTTP proxy 設定檔案，在此升級之後，必須將它重新命名（從*proxyservice*到*register-azureadpasswordprotectionproxy*）。
+* 已從 DC 代理程式中移除所有時間限制的功能檢查。
+* 次要 bug 修正和記錄功能改進。
 
 ## <a name="12650"></a>1.2.65.0
 
-發佈日期： 2019/2/1
+發行日期：2/1/2019
 
 變更：
 
-* Server Core 上現在支援 DC 代理程式和 Proxy 服務。 最小作業系統要求與之前保持不變：用於 DC 代理的 Windows Server 2012 和代理的 Windows Server 2012 R2。
+* Server Core 上現在支援 DC 代理程式和 Proxy 服務。 最低 OS 需求不會與之前相同： Windows Server 2012 for DC 代理程式和 Windows Server 2012 R2 （適用于 proxy）。
 * Register-AzureADPasswordProtectionProxy 與 Register-AzureADPasswordProtectionForest Cmdlet 現在均支援以裝置代碼為基礎的 Azure 驗證模式。
 * Get-AzureADPasswordProtectionDCAgent Cmdlet 將會忽略已損害和/或無效的服務連接點。 這會修正網域控制站有時在輸出中多次出現的錯誤 (bug)。
 * Get-AzureADPasswordProtectionSummaryReport Cmdlet 將會忽略已損害和/或無效的服務連接點。 這會修正網域控制站有時在輸出中多次出現的錯誤 (bug)。

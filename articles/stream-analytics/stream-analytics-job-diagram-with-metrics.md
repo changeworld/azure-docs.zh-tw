@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
 ms.openlocfilehash: 3c0c29e1793e56efae8d13cb01d57faf257d8805
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75426083"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>使用作業圖表進行資料導向偵錯
@@ -55,7 +55,7 @@ ms.locfileid: "75426083"
 *   **InputEventsSourcesTotal** 是讀取的資料單位數目。 例如，Blob 的數目。
 *   **InputEventsTotal** 是讀取的事件數目。 此度量適用於每個資料分割。
 *   **InputEventsTotal** 是讀取的位元組數目。
-*   **輸入事件Last到達時間**會隨著每個接收事件的排隊時間進行更新。
+*   **InputEventsLastArrivalTime**會更新每個收到事件的排入佇列時間。
  
 ### <a name="is-time-moving-forward-if-actual-events-are-read-punctuation-might-not-be-issued"></a>時間是否正在前進？ 若實際事件已讀取，則可能無需加上標點符號。
 
@@ -85,5 +85,5 @@ ms.locfileid: "75426083"
 * [串流分析介紹](stream-analytics-introduction.md)
 * [開始使用串流分析](stream-analytics-real-time-fraud-detection.md)
 * [調整串流分析作業](stream-analytics-scale-jobs.md)
-* [流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

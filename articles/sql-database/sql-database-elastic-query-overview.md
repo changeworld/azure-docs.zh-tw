@@ -1,5 +1,5 @@
 ---
-title: 彈性查詢概述
+title: 彈性查詢總覽
 description: 彈性查詢可讓您執行跨多個資料庫的 Transact-SQL 查詢。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
 ms.openlocfilehash: 827fab0661a58bfa7d28452960ea6df64d18bf84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74873738"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database 彈性查詢概觀 (預覽)
@@ -56,10 +56,10 @@ ms.locfileid: "74873738"
 彈性查詢的客戶案例可依下列拓撲區分特性：
 
 * **垂直資料分割 - 跨資料庫查詢** (拓撲 1)：資料會在資料層中的幾個資料庫之間以垂直方式分割。 一般而言，不同的資料表集位於不同的資料庫。 這表示不同資料庫的結構描述不同。 比方說，庫存的所有資料表都位於一個資料庫上，而所有會計相關資料表則位於另一個資料庫上。 此拓撲的常見使用案例會要求使用者跨多個資料庫中的資料表進行查詢或編譯報表。
-* **水平資料分割 - 分區化** (拓撲 2)：資料會以水平方式分割，以將資料列分散在相應放大的資料層中。 使用此方法時，所有參與資料庫的結構描述都相同。 這個方法也稱為「分區化」。 使用 (1) 彈性資料庫工具程式庫或 (2) 自行分區化可以執行和管理分區化。 彈性查詢用於查詢或編譯跨多個分區的報表。 分片通常是彈性池中的資料庫。 只要資料庫共用公共架構，就可以將彈性查詢視為一次查詢彈性池所有資料庫的有效方法。
+* **水平資料分割 - 分區化** (拓撲 2)：資料會以水平方式分割，以將資料列分散在相應放大的資料層中。 使用此方法時，所有參與資料庫的結構描述都相同。 這個方法也稱為「分區化」。 使用 (1) 彈性資料庫工具程式庫或 (2) 自行分區化可以執行和管理分區化。 彈性查詢用於查詢或編譯跨多個分區的報表。 分區通常是彈性集區中的資料庫。 只要資料庫共用通用架構，您就可以將彈性查詢視為一次查詢彈性集區的所有資料庫的有效方式。
 
 > [!NOTE]
-> 彈性查詢最適合可在外部來源端執行大部分處理 (篩選、彙總) 的報告案例。 它不適用於有大量資料要從遠端資料庫傳輸的 ETL 作業。 對於具有更複雜的查詢的繁重的報告工作負載或資料倉儲方案，也請考慮使用[Azure Synapse 分析](https://azure.microsoft.com/services/synapse-analytics)。
+> 彈性查詢最適合可在外部來源端執行大部分處理 (篩選、彙總) 的報告案例。 它不適用於有大量資料要從遠端資料庫傳輸的 ETL 作業。 針對繁重的報告工作負載或具有更複雜查詢的資料倉儲案例，也請考慮使用[Azure Synapse 分析](https://azure.microsoft.com/services/synapse-analytics)。
 >  
 
 ## <a name="vertical-partitioning---cross-database-queries"></a>垂直資料分割 - 跨資料庫查詢
@@ -119,7 +119,7 @@ ms.locfileid: "74873738"
 若要開始撰寫程式碼，請參閱[開始使用彈性查詢進行水平資料分割 (分區化)](sql-database-elastic-query-getting-started.md)。
 
 > [!IMPORTANT]
-> 成功對一組資料庫執行彈性查詢在很大程度上取決於查詢執行期間每個資料庫的可用性。 如果其中一個資料庫不可用，則整個查詢將失敗。 如果計畫同時查詢數百或數千個資料庫，請確保用戶端應用程式已嵌入重試邏輯，或者考慮利用[彈性資料庫作業](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview)（預覽）和查詢較小的資料庫子集，將每個查詢的結果合併到單個目標中。
+> 在大量資料庫上成功執行彈性查詢，會在查詢執行期間，高度依賴每個資料庫的可用性。 如果其中一個資料庫無法使用，整個查詢將會失敗。 如果您打算一次查詢數百個或數千個資料庫，請確定您的用戶端應用程式已內嵌重試邏輯，或考慮利用[彈性資料庫作業](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview)（預覽）並查詢較小的資料庫子集，並將每個查詢的結果合併成單一目的地。
 
 ## <a name="t-sql-querying"></a>T-SQL 查詢
 
@@ -142,10 +142,10 @@ ms.locfileid: "74873738"
 * 尚未支援來自 SSMS 或 SSDT 的外部資料來源或外部資料表的指令碼。
 * SQL DB 匯入/匯出還不支援外部資料來源和外部資料表。 如果您需要使用匯入/匯出，請在匯出前卸除這些物件，然後在匯入後予以重新建立。
 * 彈性查詢目前僅支援以唯讀方式存取外部資料表。 不過，您可以在定義外部資料表的資料庫上使用完整的 T-SQL 功能。 例如，在使用 SELECT <column_list> INTO <local_table> (舉例而言) 保存暫存結果時，或在彈性查詢資料庫上定義預存程序來參考外部資料表時，這可能有其效用。
-* 除 Nvarchar（最大值）外，外部表定義中不支援 LOB 類型（包括空間類型）。 若要解決此問題，您可以在將 LOB 類型轉型成 nvarchar (max) 的遠端資料庫上建立檢視表、透過此檢視表而非基底資料表定義外部資料表，然後在查詢中將它轉換回原始的 LOB 類型。
+* 除了 Nvarchar （max）以外，外部資料表定義中不支援 LOB 類型（包括空間類型）。 若要解決此問題，您可以在將 LOB 類型轉型成 nvarchar (max) 的遠端資料庫上建立檢視表、透過此檢視表而非基底資料表定義外部資料表，然後在查詢中將它轉換回原始的 LOB 類型。
 * 結果集中屬於 nvarchar(max) 資料類型的資料行會停用彈性查詢實作中使用的批次處理術語，且可能對查詢造成一個數量級的影響，或甚至在要將大量非彙總的資料視為查詢結果進行傳輸的非標準使用案例中，造成兩個數量級的影響。
 * 目前不支援外部資料表的資料行統計資料。 支援資料表統計資料，但必須以手動方式建立。
-* 彈性查詢僅適用于 Azure SQL 資料庫。 不能使用它來查詢本地 SQL Server 或 VM 中的 SQL Server。
+* 彈性查詢僅適用于 Azure SQL Database。 您無法使用它來查詢內部部署 SQL Server，或在 VM 中 SQL Server。
 
 ## <a name="feedback"></a>意見反應
 

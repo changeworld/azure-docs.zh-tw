@@ -1,6 +1,6 @@
 ---
-title: Azure 中繼混合連接 - .NET 中的 Web 通訊端
-description: 為 Azure 中繼混合連接 WebSocket 編寫 C# 主控台應用程式。
+title: Azure 轉送混合式連接-.NET 中的 Websocket
+description: '撰寫適用于 Azure 轉送混合式連接 Websocket 的 c # 主控台應用程式。'
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 13612f8ffa343e483165a8dbdd54d1b2b1f5e2cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75355185"
 ---
 # <a name="get-started-with-relay-hybrid-connections-websockets-in-net"></a>在 .NET 中開始使用轉送混合式連線 WebSocket
@@ -38,8 +38,8 @@ ms.locfileid: "75355185"
 
 若要完成本教學課程，您需要下列必要條件：
 
-* [視覺工作室 2015 或更高版本](https://www.visualstudio.com)。 本教學課程中的範例使用 Visual Studio 2017。
-* Azure 訂用帳戶。 如果沒有，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
+* [Visual Studio 2015 或更新版本](https://www.visualstudio.com)。 本教學課程中的範例使用 Visual Studio 2017。
+* Azure 訂用帳戶。 如果您沒有，請在開始前[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="create-a-namespace"></a>建立命名空間
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
@@ -64,7 +64,7 @@ ms.locfileid: "75355185"
 
     ![執行應用程式](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 
-恭喜您，您已經創建了一個完整的混合連接應用程式！
+恭喜，您已建立完整的混合式連線應用程式！
 
 ## <a name="next-steps"></a>後續步驟
 在本快速入門中，您已建立 .NET 用戶端和使用 WebSocket 來傳送和接收訊息的伺服器應用程式。 Azure 轉送的混合式連線功能也支援使用 HTTP 來傳送和接收訊息。 若要了解如何搭配使用 HTTP 和 Azure 轉送混合式連線，請參閱 [HTTP 快速入門](relay-hybrid-connections-http-requests-dotnet-get-started.md)。

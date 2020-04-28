@@ -1,5 +1,5 @@
 ---
-title: 使用 U-SQL 腳本轉換資料 - Azure
+title: 使用 U-SQL 腳本轉換資料-Azure
 description: 了解如何在 Azure Data Lake Analytics 計算服務上執行 U-SQL 指令碼來處理或轉換資料。
 services: data-factory
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.author: abnarain
 manager: anandsub
 robots: noindex
 ms.openlocfilehash: c6d3510dfdd02bf2eb07d656c706c44d895c582d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74927909"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 上執行 U-SQL 指令碼來轉換資料 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](data-factory-usql-activity.md)
+> * [第 1 版](data-factory-usql-activity.md)
 > * [第 2 版 (目前的版本)](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
@@ -47,11 +47,11 @@ U-SQL 活動支援以下針對 Data Lake Analytics 的驗證類型：
 
 | 屬性 | 描述 | 必要 |
 | --- | --- | --- |
-| **型別** |type 屬性應設為： **AzureDataLakeAnalytics**。 |是 |
-| **帳戶名稱** |Azure Data Lake Analytics 帳戶名稱。 |是 |
+| **type** |type 屬性應設為： **AzureDataLakeAnalytics**。 |是 |
+| **帳戶** |Azure Data Lake Analytics 帳戶名稱。 |是 |
 | **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |否 |
-| **訂閱 Id** |Azure 訂用帳戶識別碼 |否 (如果未指定，便會使用 Data Factory 的訂用帳戶)。 |
-| **資源組名稱** |Azure 資源群組名稱 |否 (若未指定，便會使用 Data Factory 的資源群組)。 |
+| **訂閱** |Azure 訂用帳戶識別碼 |否 (如果未指定，便會使用 Data Factory 的訂用帳戶)。 |
+| **resourceGroupName** |Azure 資源群組名稱 |否 (若未指定，便會使用 Data Factory 的資源群組)。 |
 
 ### <a name="service-principal-authentication-recommended"></a>服務主體驗證 (建議)
 若要使用服務主體驗證，請在 Azure Active Directory (Azure AD) 中註冊應用程式實體，並授與其 Data Lake Store 存取權。 如需詳細的步驟，請參閱[服務對服務驗證](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。 請記下以下的值，您可以使用這些值來定義連結服務：
@@ -63,9 +63,9 @@ U-SQL 活動支援以下針對 Data Lake Analytics 的驗證類型：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| **服務主體Id** | 指定應用程式的用戶端識別碼。 | 是 |
+| **servicePrincipalId** | 指定應用程式的用戶端識別碼。 | 是 |
 | **servicePrincipalKey** | 指定應用程式的金鑰。 | 是 |
-| **tenant** | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
+| **出租** | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
 
 **範例：服務主體驗證**
 ```json
@@ -91,8 +91,8 @@ U-SQL 活動支援以下針對 Data Lake Analytics 的驗證類型：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| **授權** | 按一下「資料處理站編輯器」中的 [授權]**** 按鈕，然後輸入您的認證，此動作會將自動產生的授權 URL 指派給此屬性。 | 是 |
-| **會話 Id** | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用「資料處理站編輯器」時便會自動產生此設定。 | 是 |
+| **驗證** | 按一下「資料處理站編輯器」中的 [授權]**** 按鈕，然後輸入您的認證，此動作會將自動產生的授權 URL 指派給此屬性。 | 是 |
+| **Id** | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用「資料處理站編輯器」時便會自動產生此設定。 | 是 |
 
 **範例：使用者認證授權**
 ```json
@@ -211,7 +211,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 | linkedServiceName   | 參考 Azure Data Lake Analytics 註冊為 Data Factory 中的連結服務 | 是                                      |
 | scriptPath          | 包含 U-SQL 指令碼的資料夾的路徑。 檔案的名稱有區分大小寫。 | 否 (如果您使用指令碼)                   |
 | scriptLinkedService | 連結服務會連結包含 Data Factory 的指令碼的儲存體 | 否 (如果您使用指令碼)                   |
-| 指令碼 (script)              | 指定內嵌指令碼而不是指定 scriptPath 和 scriptLinkedService。 例如：`"script": "CREATE DATABASE test"`。 | 否 (如果您使用 scriptPath 和 scriptLinkedService) |
+| 指令碼 (script)              | 指定內嵌指令碼而不是指定 scriptPath 和 scriptLinkedService。 例如： `"script": "CREATE DATABASE test"` 。 | 否 (如果您使用 scriptPath 和 scriptLinkedService) |
 | degreeOfParallelism | 同時用來執行作業的節點數目上限。 | 否                                       |
 | priority            | 判斷應該選取排入佇列的哪些工作首先執行。 編號愈低，優先順序愈高。 | 否                                       |
 | 參數          | U-SQL 指令碼的參數          | 否                                       |
@@ -316,7 +316,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-U-SQL 腳本中**\@輸入**和**\@出**參數的值由 ADF 使用"參數"部分動態傳遞。 請參閱管線定義中的 ‘parameters’ 區段。
+ADF 會使用 ' parameters ' 區段， ** \@以**動態方式傳遞 in 和** \@out**參數在 U-SQL 腳本中的值。 請參閱管線定義中的 ‘parameters’ 區段。
 
 您也可以在管線定義中，針對在 Azure Data Lake Analytics 服務上執行的作業，指定其他屬性 (例如 degreeOfParallelism 和 priority)。
 

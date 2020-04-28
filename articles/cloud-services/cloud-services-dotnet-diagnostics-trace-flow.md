@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 診斷跟蹤雲服務應用程式中的流
+title: 使用 Azure 診斷追蹤雲端服務應用程式中的流程
 titleSuffix: Azure Cloud Services
 description: 將追蹤訊息加入至 Azure 應用程式來協助偵錯、測量效能、監視、流量分析等等。
 services: cloud-services
@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/20/2016
 ms.author: tagore
 ms.openlocfilehash: 47a33ba27dd6d2df626d93695c421303bace6a0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75386505"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>使用 Azure 診斷追蹤雲端服務應用程式的流程
@@ -65,8 +65,8 @@ Trace、Debug 和 TraceSource，需要您設定「接聽程式」來收集和記
 完成加入接聽程式的步驟之後，您可以加入您的追蹤陳述式到程式碼中。
 
 ### <a name="to-add-trace-statement-to-your-code"></a>將追蹤陳述式加入至您的程式碼
-1. 開啟您的應用程式的原始程式檔。 例如，\<角色角色或 Web 角色的 RoleName>.cs 檔。
-2. 如果尚未添加以下使用指令，則添加以下使用指令：
+1. 開啟您的應用程式的原始程式檔。 例如，背景工作\<角色或 web 角色的「角色」（role）> .cs 檔案。
+2. 新增下列 using 指示詞（如果尚未加入）：
     ```
         using System.Diagnostics;
     ```

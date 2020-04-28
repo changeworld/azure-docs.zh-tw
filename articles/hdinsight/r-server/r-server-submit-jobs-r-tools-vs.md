@@ -9,15 +9,15 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 73d1478ec2d6c90428f22a30ec82634df115d2f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75435261"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>從 Visual Studio R 工具提交作業
 
-[Visual Studio R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) 是免費、開放來源的擴充功能，適用於 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更新版本的 Community (免費)、Professional 及 Enterprise 版本。 RTVS 不適用於[2019 年視覺工作室](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)。
+[Visual Studio R 工具](https://marketplace.visualstudio.com/items?itemName=MikhailArkhipov007.RTVS2019) (RTVS) 是免費、開放來源的擴充功能，適用於 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 和 [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) 或更新版本的 Community (免費)、Professional 及 Enterprise 版本。 [Visual Studio 2019](https://docs.microsoft.com/visualstudio/porting/port-migrate-and-upgrade-visual-studio-projects?view=vs-2019)無法使用 RTVS。
 
 RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](https://docs.microsoft.com/visualstudio/rtvs/interactive-repl) (REPL)、IntelliSense (程式碼完成)、[繪圖視覺效果](https://docs.microsoft.com/visualstudio/rtvs/visualizing-data) 等工具，透過例如 ggplot2 和 ggviz、[R 程式碼偵錯](https://docs.microsoft.com/visualstudio/rtvs/debugging) 等程式庫。
 
@@ -32,7 +32,7 @@ RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](htt
 3. 您需要有公開和私密金鑰以進行 SSH 驗證。
    <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. 在您的電腦上安裝 [Machine Learning Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows)。 ML 伺服器提供[`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler)`RxSpark`和 功能。
+4. 在您的電腦上安裝 [Machine Learning Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows)。 ML Server 提供[`RevoScaleR`](https://msdn.microsoft.com/microsoft-r/scaler/scaler)和`RxSpark`函式。
 
 5. 安裝 [PuTTY](https://www.putty.org/) 以提供計算內容，從您的本機用戶端將 `RevoScaleR` 函式執行至 HDInsight 叢集。
 
@@ -41,7 +41,7 @@ RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](htt
 
    2. 移至 [R 工具]**** 功能表項目，然後選取 [資料科學設定...]****.
 
-       ![視覺化工作室資料科學設置](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
+       ![Visual Studio 資料科學設定](./media/r-server-submit-jobs-r-tools-vs/data-science-settings.png)
 
       > [!NOTE]  
       > 使用步驟 1 中的方法，您也可以儲存和還原您的個人化資料科學家版面配置，而不用重複 [資料科學設定]**** 命令。
@@ -56,17 +56,17 @@ RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](htt
 6. 從檔案頂端開始，按下 Ctrl+Enter 一次傳送一行到 R 互動視窗。 有些行會安裝套件，所以可能需要一些時間。
     * 或者，您可以選取 R 檔案中的所有行 (Ctrl+A)，然後全部執行 (Ctrl+Enter)，或者選取工具列上的 [執行互動] 圖示。
 
-        ![視覺化工作室執行互動式](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
+        ![Visual Studio 執行互動](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. 執行指令碼中的所有行之後，您應該會看到類似以下的輸出：
 
-    ![視覺化工作室工作區 R 工具](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
+    ![Visual Studio 工作區 R 工具](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>將作業提交至 HDInsight ML 服務叢集
 
 您可以透過配備 PuTTY 的 Windows 電腦使用 Microsoft Machine Learning Server/Microsoft R Client，建立計算內容，此內容會從本機用戶端將分散式 `RevoScaleR` 函式執行至 HDInsight 叢集。 使用 `RxSpark` 來建立計算內容，指定您的使用者名稱、Apache Hadoop 叢集的邊緣節點、SSH 參數等等。
 
-1. HDInsight 上的 ML 服務邊緣節點`CLUSTERNAME-ed-ssh.azurehdinsight.net`位址`CLUSTERNAME`是 ML 服務群集的名稱。
+1. HDInsight 上的 ML 服務邊緣節點位址是`CLUSTERNAME-ed-ssh.azurehdinsight.net` ， `CLUSTERNAME`其中是您 ML 服務叢集的名稱。
 
 1. 將下列程式碼貼到 Visual Studio 中的 R 互動視窗，修改設定變數的值以符合您的環境。
 
@@ -96,7 +96,7 @@ RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](htt
     rxSetComputeContext(mySparkCluster)
     ```
 
-   ![阿帕奇火花設置上下文](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
+   ![apache spark 設定內容](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. 在 R 互動視窗中執行下列命令：
 
@@ -108,22 +108,22 @@ RTVS 會增強您的 R 工作流程，方法是提供例如 [R 互動視窗](htt
 
     您應該會看到如下所示的輸出：
 
-    ![成功 rx](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)命令執行
+    ![成功的 rx 命令](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png)執行 a
 1. 確認 `rxHadoopCopy` 成功將 `people.json` 檔案從範例資料資料夾複製到新建立的 `/user/RevoShare/newUser` 資料夾：
 
     1. 從 Azure 中的 HDInsight ML 服務叢集窗格，選取左側功能表的 [儲存體帳戶]****。
 
-        ![Azure HDInsight 存儲帳戶](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
+        ![Azure HDInsight 儲存體帳戶](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. 選取叢集的預設儲存體帳戶，記下容器/目錄名稱。
 
     3. 從儲存體帳戶窗格的左側功能表選取 [容器]****。
 
-        ![Azure HDInsight 存儲容器](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
+        ![Azure HDInsight 儲存體容器](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
     4. 選取叢集的容器名稱，瀏覽至 **user** 資料夾 (您可能必須按一下清單底部的 [載入更多]**)，然後依序選取 [RevoShare]**、[newUser]****。 `people.json` 檔案應該會顯示在 `newUser` 資料夾中。
 
-        ![HDInsight 複製的資料夾位置](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
+        ![HDInsight 複製的檔案資料夾位置](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. 對目前的 Apache Spark 內容使用完畢之後，您必須將它停止。 您無法同時執行多個內容。
 

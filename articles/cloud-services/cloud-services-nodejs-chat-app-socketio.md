@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.openlocfilehash: 0b515c630d8a3539cdab1df64b1925e9fcaf206e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75360764"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>在 Azure 雲端服務上使用 Socket.IO 建立 Node.js 交談應用程式
@@ -27,7 +27,7 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
 ## <a name="prerequisites"></a>Prerequisites
 請確定已安裝下列產品及版本，以順利完成本文中的範例：
 
-* 安裝[視覺化工作室](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+* 安裝[Visual Studio](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 * 安裝 [Node.js](https://nodejs.org/download/)
 * 安裝 [Python 版本 2.7.10](https://www.python.org/)
 
@@ -106,9 +106,9 @@ Socket.IO 提供 node.js 伺服器和用戶端之間的即時通訊。 本教學
    > [!NOTE]
    > 如果您在啟動模擬器時遇到問題，例如：Start-AzureEmulator：發生未預期的失敗。  詳細資料：發生未預期的錯誤。通訊物件 System.ServiceModel.Channels.ServiceChannel 無法用於通訊，因為它處於錯誤狀態。
    > 
-   > 重新安裝 Azure 創作工具 v 2.7.1 和 Azure 計算模擬器 v 2.7 - 確保該版本匹配。
+   > 重新安裝 AzureAuthoringTools v 2.7.1 和 AzureComputeEmulator v 2.7-請確定該版本符合。
 
-2. 打開瀏覽器並導航到**http://127.0.0.1**。
+2. 開啟瀏覽器並流覽至**http://127.0.0.1**。
 3. 當瀏覽器視窗開啟時，請輸入暱稱，然後按 Enter 鍵。
    這可讓您以特定的暱稱來張貼訊息。 若要測試多使用者功能，請使用相同 URL 開啟其他瀏覽器視窗，並輸入不同的暱稱。
    

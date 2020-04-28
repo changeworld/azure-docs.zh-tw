@@ -1,6 +1,6 @@
 ---
-title: 重新調配 Azure IoT 中心設備預配服務中的設備
-description: 瞭解如何使用設備預配服務 （DPS） 實例重新預配設備，以及可能需要執行此操作的原因。
+title: 在 Azure IoT 中樞裝置布建服務中重新布建裝置
+description: 瞭解如何使用您的裝置布建服務（DPS）實例重新布建裝置，以及您可能需要執行此動作的原因。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74974899"
 ---
 # <a name="how-to-reprovision-devices"></a>如何重新佈建裝置
@@ -26,7 +26,7 @@ ms.locfileid: "74974899"
 
 * **隔離**：類似於解決方案變更。 故障、遭入侵或已過期的裝置可能會重新指派給只能將裝置更新，讓裝置再次符合合規性要求的 IoT 中樞。 在裝置正常運作之後，就會移轉回其主要中樞。
 
-有關重新調配的更多詳細資訊，請參閱[IoT 中心設備重新調配概念](concepts-device-reprovision.md)。
+如需重新布建的更詳細總覽，請參閱[IoT 中樞裝置重新布建概念](concepts-device-reprovision.md)。
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>設定註冊配置原則
@@ -71,7 +71,7 @@ ms.locfileid: "74974899"
 
     * **重新佈建並移轉資料**：此原則會在與註冊項目關聯的裝置提交新的佈建要求時採取動作。 視註冊項目設定而定，裝置可能會重新指派給其他 IoT 中樞。 如果裝置所屬的 IoT 中樞有所變更，將會移除初始 IoT 中樞中的裝置註冊。 該初始 IoT 中的所有裝置狀態資訊將會移轉到新的 IoT 中樞。 移轉期間，裝置的狀態將回報為**指派中**
 
-    * **重新佈建並重設為初始設定**：此原則會在與註冊項目關聯的裝置提交新的佈建要求時採取動作。 視註冊項目設定而定，裝置可能會重新指派給其他 IoT 中樞。 如果裝置所屬的 IoT 中樞有所變更，將會移除初始 IoT 中樞中的裝置註冊。 系統會將佈建服務執行個體在佈建裝置時收到的初始設定資料提供給新的 IoT 中樞。 在遷移期間，設備的狀態將報告為**分配**。
+    * **重新佈建並重設為初始設定**：此原則會在與註冊項目關聯的裝置提交新的佈建要求時採取動作。 視註冊項目設定而定，裝置可能會重新指派給其他 IoT 中樞。 如果裝置所屬的 IoT 中樞有所變更，將會移除初始 IoT 中樞中的裝置註冊。 系統會將佈建服務執行個體在佈建裝置時收到的初始設定資料提供給新的 IoT 中樞。 在遷移期間，裝置的狀態將會回報為 [**指派**]。
 
 4. 按一下 [儲存]**** 以根據您所做的變更重新部署裝置。
 
@@ -92,8 +92,8 @@ ms.locfileid: "74974899"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 要瞭解更多重新調配，請參閱[IoT 中心設備重新調配概念](concepts-device-reprovision.md) 
-- 要瞭解更多取消預配，請參閱[如何取消預配以前自動預配的設備](how-to-unprovision-devices.md) 
+- 若要深入瞭解重新布建，請參閱[IoT 中樞裝置重新布建概念](concepts-device-reprovision.md) 
+- 若要深入瞭解解除布建，請參閱如何取消布建[先前自動布建的裝置](how-to-unprovision-devices.md) 
 
 
 

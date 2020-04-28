@@ -1,5 +1,5 @@
 ---
-title: 查看和分配管理員角色許可權 - Azure AD |微軟文檔
+title: 查看和指派系統管理員角色許可權-Azure AD |Microsoft Docs
 description: 您現在可以查看和管理入口網站中的 Azure AD 系統管理員角色成員。 針對經常管理角色指派的人員。
 services: active-directory
 author: curtand
@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2815b496545ca5f920c00df7b2b5b7efe15c12a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74900924"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中檢視和指派系統管理員角色
@@ -26,7 +26,7 @@ ms.locfileid: "74900924"
 
 ## <a name="view-all-roles"></a>檢視所有角色
 
-搜尋並選取 [Azure Active Directory]****。 選擇**角色和管理員**以查看所有可用角色的清單。
+搜尋並選取 [Azure Active Directory]  。 選取 [**角色和系統管理員**] 以查看所有可用角色的清單。
 
 按一下每個資料列右側的省略符號，以開啟角色的詳細描述。
 

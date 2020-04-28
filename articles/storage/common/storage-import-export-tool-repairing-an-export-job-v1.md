@@ -9,10 +9,10 @@ ms.date: 01/23/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74978010"
 ---
 # <a name="repairing-an-export-job"></a>修復匯出作業
@@ -36,9 +36,9 @@ ms.locfileid: "74978010"
 |**/logdir:\><LogDirectory**|選擇性。 記錄檔目錄。 詳細資訊記錄檔會寫入至這個目錄。 如未指定記錄檔目錄，則會使用目前的目錄做為記錄檔目錄。|  
 |**/d:<TargetDirectory\>**|必要。 要驗證及修復的目錄。 這通常是匯出磁碟機的根目錄，但也可能是含有匯出檔案複本的網路檔案共用。|  
 |**/bk:<BitLockerKey\>**|選擇性。 如果您希望該工具解除鎖定存放匯出檔案的加密磁碟機，您應指定 BitLocker 金鑰。|  
-|**/sn：<存儲帳戶名稱\>**|必要。 匯出作業的儲存體帳戶名稱。|  
-|**/sk：<存儲帳戶金鑰\>**|未指定容器 SAS 時才**需要**。 匯出作業之儲存體帳戶的帳戶金鑰。|  
-|**/csas：<集裝箱\>**|未指定儲存體帳戶金鑰時才**需要**。 存取與匯出作業相關聯的 Blob 所用的容器 SAS。|  
+|**/sn： <StorageAccountName\>**|必要。 匯出作業的儲存體帳戶名稱。|  
+|**/sk： <StorageAccountKey\>**|未指定容器 SAS 時才**需要**。 匯出作業之儲存體帳戶的帳戶金鑰。|  
+|**/csas： <S a s\>**|未指定儲存體帳戶金鑰時才**需要**。 存取與匯出作業相關聯的 Blob 所用的容器 SAS。|  
 |**/CopyLogFile:<DriveCopyLogFile\>**|必要。 磁碟機複製記錄檔的路徑。 此檔案是由 Windows Azure 匯入/匯出服務所產生，您可以從與作業相關聯的 blob 儲存體下載。 複製記錄檔包含所要修復之失敗 blob 或檔案的相關資訊。|  
 |**/ManifestFile:<DriveManifestFile\>**|選擇性。 匯出磁碟機的資訊清單檔案路徑。 此檔案是由 Windows Azure 匯入/匯出服務所產生並儲存在匯出磁碟機上，並選擇性地儲存在與作業相關聯之儲存體帳戶的 blob 中。<br /><br /> 工具將會使用此檔案內含的 MD5 雜湊，驗證匯出磁碟機上的檔案內容。 任何被斷定為損毀的檔案都將會下載並重新寫入至目標目錄。|  
   
@@ -152,8 +152,8 @@ G:\pictures\wild\canyon.jpg.properties
   
 ## <a name="next-steps"></a>後續步驟
  
-* [設置 Azure 導入/匯出工具](storage-import-export-tool-setup-v1.md)   
-* [為導入作業準備硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [使用副本日誌檔查看作業狀態](storage-import-export-tool-reviewing-job-status-v1.md)   
-* [修復導入作業](storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [排除 Azure 導入/匯出工具的故障](storage-import-export-tool-troubleshooting-v1.md)
+* [設定 Azure 匯入/匯出工具](storage-import-export-tool-setup-v1.md)   
+* [準備匯入工作的硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [使用複製記錄檔來檢查作業狀態](storage-import-export-tool-reviewing-job-status-v1.md)   
+* [修復匯入作業](storage-import-export-tool-repairing-an-import-job-v1.md)   
+* [針對 Azure 匯入/匯出工具進行疑難排解](storage-import-export-tool-troubleshooting-v1.md)

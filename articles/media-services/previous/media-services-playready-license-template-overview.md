@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: fb0630f3f7a4acebcfe5dcad343030c9d1184263
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "74976395"
 ---
 # <a name="media-services-playready-license-template-overview"></a>媒體服務 PlayReady 授權範本概觀
@@ -32,7 +32,7 @@ Azure 媒體服務現在有提供傳遞 PlayReady 授權的服務。 當播放�
 * 針對要儲存在用戶端上永續性儲存體的授權。 永續性授權通常會用來允許離線播放內容。
 * 播放器播放您的內容必須具有的最低安全性層級。 
 * audio\video 內容的輸出控制輸出保護層級。 
-* 有關詳細資訊，請參閱[PlayReady 合規性規則](https://www.microsoft.com/playready/licensing/compliance/)文檔中的"輸出控制項"部分 （3.5）。
+* 如需詳細資訊，請參閱[PlayReady 相容性規則](https://www.microsoft.com/playready/licensing/compliance/)檔中的「輸出控制項」一節（3.5）。
 
 > [!NOTE]
 > 目前，您只能設定 PlayReady 授權的 PlayRight。 這是必要權限。 PlayRight 可讓用戶端播放內容。 您也可以使用 PlayRight 來設定播放特定的限制。 如需詳細資訊，請參閱 [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight)。

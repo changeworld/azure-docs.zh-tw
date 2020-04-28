@@ -1,5 +1,5 @@
 ---
-title: 映射 Azure 資料工廠中的資料集列
+title: 對應 Azure Data Factory 中的資料集資料行
 description: 了解如何將來源資料行對應至目的地資料行。
 services: data-factory
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 6eb7012e28319ee6cc86de5ee56090743d681068
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74923876"
 ---
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>將來源資料集資料行對應至目的地資料集資料行
@@ -135,7 +135,7 @@ ms.locfileid: "74923876"
         }
 }
 ```
-**列映射流：**
+**資料行對應流程：**
 
 ![資料行對應流程](./media/data-factory-map-columns/column-mapping-flow.png)
 
