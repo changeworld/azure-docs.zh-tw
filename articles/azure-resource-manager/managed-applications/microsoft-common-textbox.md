@@ -1,15 +1,15 @@
 ---
-title: 文字方塊 UI 元素
-description: 描述 Azure 入口網站的 Microsoft.Common.TextBox UI 元素。 用於添加未格式化的文本。
+title: TextBox UI 元素
+description: 描述 Azure 入口網站的 Microsoft.Common.TextBox UI 元素。 用於加入未格式化的文字。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: e9f084badda9ea1905e43c6f00b29aaf957a6dbd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75652277"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI 元素

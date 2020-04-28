@@ -1,53 +1,53 @@
 ---
-title: 使用策略部署託管應用程式的關聯
-description: 瞭解如何使用 Azure 策略服務部署託管應用程式的關聯。
+title: 使用原則部署受控應用程式的關聯
+description: 瞭解如何使用 Azure 原則服務來部署受控應用程式的關聯。
 author: msHich
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: hich
 ms.openlocfilehash: ec0fe8f66ef2ad2458b4ffad0e848591793e5b05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75650938"
 ---
-# <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>使用 Azure 策略部署託管應用程式的關聯
+# <a name="deploy-associations-for-a-managed-application-using-azure-policy"></a>使用 Azure 原則部署受控應用程式的關聯
 
-Azure 策略可用於部署關聯以將資源關聯到託管應用程式。 在本文中，我們將介紹部署關聯的內置策略以及如何使用該策略。
+Azure 原則可以用來部署關聯，以將資源與受控應用程式產生關聯。 在本文中，我們會說明可部署關聯的內建原則，以及您可以如何使用該原則。
 
-## <a name="built-in-policy-to-deploy-associations"></a>部署關聯的內置策略
+## <a name="built-in-policy-to-deploy-associations"></a>用來部署關聯的內建原則
 
-為託管應用程式部署關聯是一種內置策略，可用於部署關聯以將資源關聯到託管應用程式。 該策略接受三個參數：
+部署受控應用程式的關聯是內建原則，可以用來部署關聯，以將資源與受控應用程式產生關聯。 此原則會接受三個參數：
 
-- 託管應用程式 ID - 此 ID 是需要關聯資源的託管應用程式的資源識別碼。
-- 要關聯的資源類型 - 這些資源類型是要與託管應用程式關聯的資源類型的清單。 您可以使用同一策略將多個資源類型關聯到託管應用程式。
-- 關聯名稱首碼 - 此字串是要添加到要創建的關聯資源的名稱的首碼。 預設值為"部署策略"。
+- 受控應用程式識別碼-此識別碼是資源需要關聯之受控應用程式的資源識別碼。
+- 要建立關聯的資源類型-這些資源類型是要與受控應用程式相關聯的資源類型清單。 您可以使用相同的原則，將多個資源類型關聯至受控應用程式。
+- 關聯名稱前置詞-此字串是要新增至所建立之關聯資源名稱的前置詞。 預設值為 "DeployedByPolicy"。
 
-該策略使用 DeployIfNot 存在評估。 它在資來源提供者處理所選資源類型的創建或更新資源請求後運行，並且評估已返回成功狀態碼。 之後，使用範本部署部署關聯資源。
-有關關聯的詳細資訊，請參閱[Azure 自訂提供程式資源載入](../custom-providers/concepts-resource-onboarding.md)
+此原則會使用 DeployIfNotExists 評估。 它會在資源提供者已處理所選取資源類型的建立或更新資源要求，且評估已傳回成功狀態碼後執行。 之後，就會使用範本部署來部署關聯資源。
+如需關聯的詳細資訊，請參閱[Azure 自訂提供者資源](../custom-providers/concepts-resource-onboarding.md)上線
 
-## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>如何使用部署關聯內置策略 
+## <a name="how-to-use-the-deploy-associations-built-in-policy"></a>如何使用部署關聯內建原則 
 
-### <a name="prerequisites"></a>Prerequisites
-如果託管應用程式需要訂閱的許可權才能執行操作，則不授予許可權，關聯資源的策略部署將無法工作。
+### <a name="prerequisites"></a>先決條件
+如果受控應用程式需要訂用帳戶的許可權才能執行動作，則在未授與許可權的情況下，關聯資源的原則部署不會運作。
 
 ### <a name="policy-assignment"></a>原則指派
-要使用內置策略，請創建策略分配並為託管應用程式策略分配部署關聯。 成功分配策略後，策略將標識不合規資源並部署這些資源的關聯。
+若要使用內建原則，請建立原則指派，並為受管理的應用程式原則指派部署關聯。 成功指派原則之後，原則會識別不符合規範的資源，並為這些資源部署關聯。
 
-![分配內置策略](media/concepts-built-in-policy/assign-builtin-policy-managedapp.png)
+![指派內建原則](media/concepts-built-in-policy/assign-builtin-policy-managedapp.png)
 
 ## <a name="getting-help"></a>取得說明
 
-如果您對 Azure 自訂資來源提供者開發有疑問，請嘗試在[堆疊溢位](https://stackoverflow.com/questions/tagged/azure-custom-providers)上詢問它們。 類似的問題可能已有人回答，因此請先查看再張貼問題。 新增標記 ```azure-custom-providers``` 以取得快速回應！
+如果您有關于 Azure 自訂資源提供者開發的問題，請嘗試在[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)詢問。 類似的問題可能已有人回答，因此請先查看再張貼問題。 新增標記 ```azure-custom-providers``` 以取得快速回應！
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您瞭解了如何使用內置策略來部署關聯。 請參閱以下文章以瞭解更多資訊：
+在本文中，您會學會有關使用內建原則來部署關聯的資訊。 若要深入瞭解，請參閱下列文章：
 
-- [概念：Azure 自訂提供程式資源載入](../custom-providers/concepts-resource-onboarding.md)
-- [教程：使用自訂提供程式進行資源載入](../custom-providers/tutorial-resource-onboarding.md)
-- [教程：在 Azure 中創建自訂操作和資源](../custom-providers/tutorial-get-started-with-custom-providers.md)
-- [快速入門：創建自訂資來源提供者並部署自訂資源](../custom-providers/create-custom-provider.md)
-- [如何：將自訂操作添加到 Azure REST API](../custom-providers/custom-providers-action-endpoint-how-to.md)
-- [如何：將自訂資源添加到 Azure REST API](../custom-providers/custom-providers-resources-endpoint-how-to.md)
+- [概念： Azure 自訂提供者資源上線](../custom-providers/concepts-resource-onboarding.md)
+- [教學課程：使用自訂提供者的資源上線](../custom-providers/tutorial-resource-onboarding.md)
+- [教學課程：在 Azure 中建立自訂動作和資源](../custom-providers/tutorial-get-started-with-custom-providers.md)
+- [快速入門：建立自訂資源提供者並部署自訂資源](../custom-providers/create-custom-provider.md)
+- [如何：將自訂動作新增至 Azure REST API](../custom-providers/custom-providers-action-endpoint-how-to.md)
+- [如何：將自訂資源新增至 Azure REST API](../custom-providers/custom-providers-resources-endpoint-how-to.md)

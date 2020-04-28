@@ -1,15 +1,15 @@
 ---
-title: 資訊箱 UI 元素
-description: 描述 Azure 門戶的 Microsoft.Common.InfoBox UI 元素。 用於在部署託管應用程式時添加文本或警告。
+title: InfoBox UI 元素
+description: 描述 Azure 入口網站的 InfoBox UI 元素。 用來在部署受控應用程式時加入文字或警告。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: tomfitz
 ms.openlocfilehash: 6d1e4a84904ef7022d9ce85803bf10285bf0b8ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75652472"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Microsoft.Common.InfoBox UI 元素

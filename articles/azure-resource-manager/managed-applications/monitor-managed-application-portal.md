@@ -1,15 +1,15 @@
 ---
-title: 使用 Azure 門戶監視託管應用
+title: 使用 Azure 入口網站監視受管理的應用程式
 description: 示範如何使用 Azure 入口網站來監視受控應用程式的可用性和警示。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651744"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>監視受控應用程式的已部署執行個體

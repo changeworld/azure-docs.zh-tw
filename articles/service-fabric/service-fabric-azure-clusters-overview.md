@@ -1,5 +1,5 @@
 ---
-title: 在 Windows 伺服器和 Linux 上創建群集
+title: 在 Windows Server 和 Linux 上建立叢集
 description: Service Fabric 叢集會在 Windows Server 或 Linux 上執行，這表示您能夠在任何您可以執行 Windows Server 和 Linux 的環境中部署和裝載 Service Fabric 應用程式。
 services: service-fabric
 documentationcenter: .net
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: b6942c2a0647401df0d88b83e1b144ca3207a6db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614667"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上的 Service Fabric 叢集概觀
@@ -48,9 +48,9 @@ Azure 上的 Service Fabric 叢集是 Azure 資源，使用其他 Azure 資源�
 如需詳細資訊，請參閱 [Azure Service Fabric 節點類型與虛擬機器擴展集](service-fabric-cluster-nodetypes.md)。
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-VM 執行個體加入到 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) 後面，與 [公用 IP 位址](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)和 DNS 標籤相關聯。  預配具有*&lt;&gt;群集名稱*的群集時，DNS 名稱、*&lt;群集名稱&gt;。&lt;位置&gt;.cloudapp.azure.com*是與刻度集前面的負載等化器關聯的 DNS 標籤。
+VM 執行個體加入到 [Azure Load Balancer](/azure/load-balancer/load-balancer-overview) 後面，與 [公用 IP 位址](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)和 DNS 標籤相關聯。  當您使用* &lt; &gt;clustername*來布建叢集時，DNS 名稱* &lt;為&gt;clustername&lt; 。cloudapp.azure.com&gt;* 是與擴展集前方的負載平衡器相關聯的 DNS 標籤。
 
-叢集中的 VM 只有[私人 IP 位址](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)。  管理流量和服務流量會透過公用對應的負載平衡器進行路由。  網路流量會透過 NAT 規則 (用戶端連線到特定節點/執行個體) 或負載平衡規則 (流量循環前往 VM) 路由傳送到這些機器。  負載等化器具有具有 DNS 名稱的關聯公共 IP，其格式為：*&lt;&gt;群集&lt;名稱 。位置&gt;.cloudapp.azure.com*。  公用 IP 是資源群組中的另一個 Azure 資源。  如果您在叢集中定義多個節點類型，會為每個節點類型/擴展集建立負載平衡器。 或者，您可以為多個節點類型設定單一負載平衡器。  主節點類型具有 DNS 標籤*&lt;群集名稱&gt; &lt; 。位置&gt;.cloudapp.azure.com，* 其他節點類型具有 DNS 標籤*&lt;群集&gt;-&lt;名稱&gt;節點&lt;類型。位置&gt;.cloudapp.azure.com*。
+叢集中的 VM 只有[私人 IP 位址](/azure/virtual-network/virtual-network-ip-addresses-overview-arm#private-ip-addresses)。  管理流量和服務流量會透過公用對應的負載平衡器進行路由。  網路流量會透過 NAT 規則 (用戶端連線到特定節點/執行個體) 或負載平衡規則 (流量循環前往 VM) 路由傳送到這些機器。  負載平衡器具有相關聯的公用 IP，其 DNS 名稱的格式為* &lt;：&gt;clustername&lt; 。location&gt;. cloudapp.azure.com*。  公用 IP 是資源群組中的另一個 Azure 資源。  如果您在叢集中定義多個節點類型，會為每個節點類型/擴展集建立負載平衡器。 或者，您可以為多個節點類型設定單一負載平衡器。  主要節點類型具有 DNS 標籤* &lt;clustername&gt;。&lt;cloudapp.azure.com&gt;*，其他節點類型具有 DNS 標籤* &lt;clustername&gt;-&lt;nodetype&gt;。&lt;location&gt;. cloudapp.azure.com*。
 
 ### <a name="storage-accounts"></a>儲存體帳戶
 每個叢集節點類型受到 [Azure 儲存體帳戶](/azure/storage/common/storage-introduction)和受控磁碟支援。
@@ -96,17 +96,17 @@ Azure Service Fabric 叢集是您所擁有，但部分由 Microsoft 管理的資
 ## <a name="supported-operating-systems"></a>支援的作業系統
 您可以在執行下列作業系統的虛擬機器上建立叢集：
 
-| 作業系統 | 最早受支援的 Service 結構版本 |
+| 作業系統 | 最早支援的 Service Fabric 版本 |
 | --- | --- |
 | Windows Server 2012 R2 | 所有版本 |
 | Windows Server 2016 | 所有版本 |
 | Windows Server 1709 | 6.0 |
 | Windows Server 1803 | 6.4 |
-| 視窗伺服器 1809 | 6.4.654.9590 |
+| Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
 | Linux Ubuntu 16.04 | 6.0 |
 
-有關其他資訊，請參閱[Azure 中受支援的群集版本](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-operating-systems)
+如需其他資訊，請參閱[Azure 中支援](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-operating-systems)的叢集版本
 
 > [!NOTE]
 > 如果您決定在 Windows Server 1709 上部署 Service Fabric，請注意 (1) 它不是長期維護分支，因此您必須在未來移轉版本，以及 (2) 如果您部署容器，則建置於 Windows Server 2016 上的容器無法在 Windows Server 1709 上運作，反之亦然 (您必須重建容器才能部署它們)。

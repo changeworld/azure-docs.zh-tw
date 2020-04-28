@@ -1,43 +1,43 @@
 ---
 title: 資源上線
-description: 瞭解如何使用 Azure 自訂提供程式將管理或配置應用於其他 Azure 資源類型來執行資源入職。
+description: 深入瞭解如何使用 Azure 自訂提供者來執行資源上線，以將管理或設定套用至其他 Azure 資源類型。
 author: jjbfour
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75650405"
 ---
-# <a name="azure-custom-providers-resource-onboarding-overview"></a>Azure 自訂提供程式資源入職概述
+# <a name="azure-custom-providers-resource-onboarding-overview"></a>Azure 自訂提供者資源上線總覽
 
-Azure 自訂提供程式資源載入是 Azure 資源類型的擴展模型。 它允許您大規模跨現有 Azure 資源應用操作或管理。 有關詳細資訊，請參閱[Azure 自訂提供程式如何擴展 Azure](overview.md)。 本文章說明：
+Azure 自訂提供者資源上架是適用于 Azure 資源類型的擴充性模型。 它可讓您大規模地對現有的 Azure 資源套用作業或管理。 如需詳細資訊，請參閱[Azure 自訂提供者可以如何擴充 azure](overview.md)。 本文章說明：
 
-- 資源載入可以做什麼。
-- 資源載入基礎知識以及如何使用它。
-- 在哪裡可以找到指南和代碼示例以開始。
+- 資源上線可以執行的工作。
+- 資源上線的基本概念，以及如何使用它。
+- 何處可以找到要開始使用的指南和程式碼範例。
 
 > [!IMPORTANT]
-> 自訂提供程式當前處於公共預覽版中。
-> 此預覽版本在沒有服務等級協定的情況下提供，我們不建議用於生產工作負載。 某些功能可能不受支援或功能受限。
+> 自訂提供者目前為公開預覽狀態。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 某些功能可能不受支援，或可能有受限制的功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="what-can-resource-onboarding-do"></a>資源載入可以做什麼？
+## <a name="what-can-resource-onboarding-do"></a>資源上線有哪些功能？
 
-與[Azure 自訂提供程式自訂資源](./custom-providers-resources-endpoint-how-to.md)類似，資源載入定義將"入職"請求代理到終結點的協定。 與自訂資源不同，資源載入不會創建新的資源類型。 相反，它允許擴展現有資源類型。 資源入職工作與 Azure 策略一起工作，因此可以大規模地管理和配置資源。 資源入職工作流的一些示例：
+類似于[Azure 自訂提供者的自訂資源](./custom-providers-resources-endpoint-how-to.md)，資源上線會定義合約，以對端點進行 proxy 「上架」要求。 與自訂資源不同的是，資源上架不會建立新的資源類型。 相反地，它允許現有資源類型的延伸。 而資源上線功能會與 Azure 原則搭配運作，因此可以大規模地進行資源的管理和設定。 資源上線工作流程的一些範例：
 
-- 安裝和管理到虛擬機器擴展。
-- 上載和配置 Azure 存儲帳戶上的預設值。
-- 大規模啟用基線診斷設置。
+- 在虛擬機器擴充功能上安裝和管理。
+- 在 Azure 儲存體帳戶上傳和設定預設值。
+- 啟用大規模的基準診斷設定。
 
-## <a name="resource-onboarding-basics"></a>資源入職基礎知識
+## <a name="resource-onboarding-basics"></a>資源上線基本概念
 
-您可以使用 Microsoft.自訂提供程式/資來源提供者和 Microsoft.自訂提供程式/關聯資源類型配置通過 Azure 自訂提供程式載入的資源。 要為自訂提供程式啟用資源入職，在配置過程中，請創建一個稱為"關聯"**的資源類型**，其中包含包含"擴展"的**路由類型**。 微軟.自訂提供程式/關聯和微軟.自訂提供程式/資來源提供者不需要屬於同一資源組。
+您可以使用 CustomProviders/resourceProviders 和 CustomProviders/association 資源類型，透過 Azure 自訂提供者來設定資源上線。 若要啟用自訂提供者的資源上線，在設定過程中，請建立名為 "association" 的**resourceType** ，並具有包含 "Extension" 的**routingType** 。 CustomProviders/association 和 CustomProviders/resourceProviders 不需要屬於相同的資源群組。
 
-下面是 Azure 自訂提供程式的示例：
+以下是 Azure 自訂提供者的範例：
 
 ```JSON
 {
@@ -56,16 +56,16 @@ Azure 自訂提供程式資源載入是 Azure 資源類型的擴展模型。 它
 
 屬性 | 必要項？ | 描述
 ---|---|---
-NAME | 是 | 端點定義的名稱。 對於資源載入，名稱必須為"關聯"。
-routingType | 是 | 確定與終結點的協定類型。 對於資源載入，有效的**路由類型**是"代理、緩存、擴展"和"Webhook、緩存、擴展"。
-端點 | 是 | 要作為要求路由傳送目的地的端點。 這將處理請求的回應和任何副作用。
+NAME | 是 | 端點定義的名稱。 針對資源上線，名稱必須是「關聯」。
+routingType | 是 | 判斷具有端點的合約類型。 針對資源上線，有效的**routingTypes**為「Proxy、快取、延伸模組」和「Webhook，快取，延伸模組」。
+端點 | 是 | 要作為要求路由傳送目的地的端點。 這會處理回應和要求的任何副作用。
 
-使用關聯資源類型創建自訂提供程式後，可以使用 Microsoft.CustomProvider/關聯進行定位。 Microsoft.自訂提供程式/關聯是可以擴展任何其他 Azure 資源的擴展資源。 創建 Microsoft.CustomProviders/關聯實例時，它將採用屬性**目標 ResourceId**，這應該是有效的 Microsoft.自訂提供程式/資來源提供者或 Microsoft.解決方案/應用程式資源識別碼。 在這些情況下，請求將轉發到您創建的 Microsoft.CustomProviders/資來源提供者實例上的關聯資源類型。
+建立具有關聯資源類型的自訂提供者之後，您可以使用 CustomProviders/association 作為目標。 CustomProviders/association 是擴充功能資源，可以擴充任何其他 Azure 資源。 建立 CustomProviders/關聯的實例時，它會接受屬性**targetResourceId**，這應該是有效的 CustomProviders/ResourceProviders 或 microsoft 解決方案/應用程式資源識別碼。 在這些情況下，會將要求轉送至您所建立之 CustomProviders/resourceProviders 實例上的關聯資源類型。
 
 > [!NOTE]
-> 如果 Microsoft.解決方案/應用程式資源識別碼 作為**目標ResourceId**提供，則必須有一個 Microsoft.自訂提供程式/資來源提供者部署在託管資源組中，名稱為"公共"。
+> 如果將 Microsoft. 解決方案/應用程式資源識別碼當做**targetResourceId**提供，則必須將 CustomProviders/resourceProviders 部署在名為「公用」的受控資源群組中。
 
-示例 Azure 自訂提供程式關聯：
+範例 Azure 自訂提供者關聯：
 
 ```JSON
 {
@@ -76,17 +76,17 @@ routingType | 是 | 確定與終結點的協定類型。 對於資源載入，�
 }
 ```
 
-屬性 | 必要項？ | 描述
+屬性 | 必要項？ | 說明
 ---|---|---
-目標資源Id | 是 | 微軟的資源識別碼.自訂提供程式/資來源提供者或 Microsoft.解決方案/應用程式。
+targetResourceId | 是 | CustomProviders/resourceProviders 或 Microsoft 解決方案/應用程式的資源識別碼。
 
-## <a name="how-to-use-resource-onboarding"></a>如何使用資源載入
+## <a name="how-to-use-resource-onboarding"></a>如何使用資源上線
 
-資源載入的工作原理是擴展與 Microsoft 的其他資源。 在下面的示例中，對虛擬機器發出請求，但可以擴展任何資源。
+資源上線功能的運作方式是使用 CustomProviders/關聯延伸模組資源擴充其他資源。 在下列範例中，會針對虛擬機器提出要求，但可以擴充任何資源。
 
-首先，您需要創建具有關聯資源類型的自訂提供程式資源。 這將聲明將在創建相應的 Microsoft 時使用的回檔 URL。
+首先，您必須建立具有關聯資源類型的自訂提供者資源。 這會宣告在建立對應的 CustomProviders/關聯資源（以自訂提供者為目標）時，將使用的回呼 URL。
 
-示例 Microsoft.自訂提供程式/資來源提供者創建請求：
+範例 CustomProviders/resourceProviders 建立要求：
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}?api-version=2018-09-01-preview
@@ -107,9 +107,9 @@ Content-Type: application/json
 }
 ```
 
-創建自訂提供程式後，可以定位其他資源，並將自訂提供程式的副作用應用於這些資源。
+建立自訂提供者之後，您可以將其他資源設為目標，並將自訂提供者的副作用套用至它們。
 
-示例 Microsoft.自訂提供程式/關聯創建請求：
+範例 CustomProviders/關聯建立要求：
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.CustomProviders/associations/{associationName}?api-version=2018-09-01-preview
@@ -127,7 +127,7 @@ Content-Type: application/json
 }
 ```
 
-然後，此請求將轉發到您創建的自訂提供程式中指定的終結點，該終結點由以下表單**中的目標 ResourceId**引用：
+然後，此要求會轉送至您所建立之自訂提供者中所指定的端點，這是由此形式的**targetResourceId**所參考：
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,18 +146,18 @@ X-MS-CustomProviders-ExtendedResource: /subscriptions/{subscriptionId}/resourceG
 }
 ```
 
-終結點應使用應用程式/json`Content-Type`和有效的 JSON 回應正文進行回應。 在 JSON**的屬性**物件下返回的欄位將添加到關聯返回回應中。
+端點應該會回應應用程式/json `Content-Type`和有效的 json 回應主體。 在 JSON 的**properties**物件底下傳回的欄位將會加入至關聯傳迴響應。
 
 ## <a name="getting-help"></a>取得說明
 
-如果您對 Azure 自訂資來源提供者開發有疑問，請嘗試在[堆疊溢位](https://stackoverflow.com/questions/tagged/azure-custom-providers)上詢問它們。 類似的問題可能已有人回答，因此請先查看再張貼問題。 新增標記 ```azure-custom-providers``` 以取得快速回應！
+如果您有關于 Azure 自訂資源提供者開發的問題，請嘗試在[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)詢問。 類似的問題可能已有人回答，因此請先查看再張貼問題。 新增標記 ```azure-custom-providers``` 以取得快速回應！
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已了解自訂提供者。 請參閱以下文章以瞭解更多資訊：
+在本文中，您已了解自訂提供者。 若要深入瞭解，請參閱下列文章：
 
-- [教程：使用自訂提供程式進行資源載入](./tutorial-resource-onboarding.md)
-- [教程：在 Azure 中創建自訂操作和資源](./tutorial-get-started-with-custom-providers.md)
-- [快速入門：創建自訂資來源提供者並部署自訂資源](./create-custom-provider.md)
-- [如何：將自訂操作添加到 Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [如何：將自訂資源添加到 Azure REST API](./custom-providers-resources-endpoint-how-to.md)
+- [教學課程：使用自訂提供者的資源上線](./tutorial-resource-onboarding.md)
+- [教學課程：在 Azure 中建立自訂動作和資源](./tutorial-get-started-with-custom-providers.md)
+- [快速入門：建立自訂資源提供者並部署自訂資源](./create-custom-provider.md)
+- [如何：將自訂動作新增至 Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [如何：將自訂資源新增至 Azure REST API](./custom-providers-resources-endpoint-how-to.md)

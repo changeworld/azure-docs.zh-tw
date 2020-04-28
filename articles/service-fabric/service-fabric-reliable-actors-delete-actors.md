@@ -1,15 +1,15 @@
 ---
-title: 刪除 Azure 服務結構參與者
-description: 瞭解如何在 Azure 服務結構應用程式中手動和完全刪除可靠參與者及其狀態。
+title: 刪除 Azure Service Fabric 執行者
+description: 瞭解如何在 Azure Service Fabric 應用程式中手動並完全刪除 Reliable Actors 及其狀態。
 author: amanbha
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: amanbha
 ms.openlocfilehash: b90c5a10c64e273f1c8f48c7bf5713859796db65
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645611"
 ---
 # <a name="delete-reliable-actors-and-their-state"></a>刪除 Reliable Actors 及其狀態
@@ -46,12 +46,12 @@ myActorServiceProxy.deleteActorAsync(actorToDelete);
 
 如需有關 Reliable Actors 的詳細資訊，請參閱下列內容：
 * [動作項目計時器和提醒](service-fabric-reliable-actors-timers-reminders.md)
-* [參與者事件](service-fabric-reliable-actors-events.md)
-* [演員重入](service-fabric-reliable-actors-reentrancy.md)
+* [動作專案事件](service-fabric-reliable-actors-events.md)
+* [動作專案重新進入](service-fabric-reliable-actors-reentrancy.md)
 * [動作項目診斷與效能監視](service-fabric-reliable-actors-diagnostics.md)
 * [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# 示例代碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [JAVA 示例代碼](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [C # 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [JAVA 範例程式碼](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

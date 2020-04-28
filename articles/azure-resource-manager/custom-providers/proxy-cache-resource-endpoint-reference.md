@@ -1,26 +1,26 @@
 ---
 title: 自訂資源快取參考
-description: Azure 自訂資來源提供者的自訂資源緩存引用。 本文將介紹實現緩存自訂資源的終結點的要求。
+description: Azure 自訂資源提供者的自訂資源快取參考。 本文將逐步說明執行快取自訂資源的端點需求。
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: e1b8c44f020d18066423eed236018308fe88b607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75650379"
 ---
-# <a name="custom-resource-cache-reference"></a>自訂資源緩存引用
+# <a name="custom-resource-cache-reference"></a>自訂資源快取參考
 
-本文將介紹實現緩存自訂資源的終結點的要求。 如果您不熟悉 Azure 自訂資來源提供者，請參閱[自訂資來源提供者的概述](overview.md)。
+本文將逐步說明執行快取自訂資源的端點需求。 如果您不熟悉 Azure 自訂資源提供者，請參閱[自訂資源提供者的總覽](overview.md)。
 
-## <a name="how-to-define-a-cache-resource-endpoint"></a>如何定義緩存資源終結點
+## <a name="how-to-define-a-cache-resource-endpoint"></a>如何定義快取資源端點
 
-可以通過將**路由類型**指定為"代理、緩存"來創建代理資源。
+您可以藉由指定**routingType**為 "Proxy，Cache" 來建立 proxy 資源。
 
-自訂資來源提供者示例：
+範例自訂資源提供者：
 
 ```JSON
 {
@@ -40,17 +40,17 @@ ms.locfileid: "75650379"
 }
 ```
 
-## <a name="building-proxy-resource-endpoint"></a>構建代理資源終結點
+## <a name="building-proxy-resource-endpoint"></a>建立 proxy 資源端點
 
-實現"代理、緩存"資源**終結點**的**終結點**必須處理 Azure 中新 API 的請求和回應。 在這種情況下，**資源類型**將為 生成`PUT`新的 Azure 資源 API，`GET`並在`DELETE`單個資源上執行 CRUD，以及`GET`檢索所有現有資源：
+執行「Proxy，快取」資源**端點**的**端點**必須處理 Azure 中新 API 的要求和回應。 在此情況下， **resourceType**會針對`PUT`、 `GET`和`DELETE`產生新的 Azure 資源 API，以在單一資源上執行 CRUD， `GET`以及取得所有現有的資源：
 
 > [!NOTE]
-> Azure API 將生成請求方法`PUT` `GET`，`DELETE`和 ， 但緩存**終結點**只需要處理`PUT``DELETE`和 。
-> 我們建議**終結點**也實現`GET`。
+> Azure `PUT`API 將會產生要求方法、 `GET`和`DELETE`，但快取**端點**只需要處理`PUT`和。 `DELETE`
+> 我們建議您也**endpoint**要執行端點`GET`。
 
 ### <a name="create-a-custom-resource"></a>建立自訂資源
 
-Azure API 傳入請求：
+Azure API 連入要求：
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -67,7 +67,7 @@ Content-Type: application/json
 }
 ```
 
-然後，此請求將以以下形式轉發到**終結點**：
+然後，此要求會轉送至下列格式的**端點**：
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -84,14 +84,14 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-同樣，從**端點**的回應然後轉發回客戶。 來自終結點的回應應返回：
+同樣地，來自**端點**的回應會轉送回給客戶。 端點的回應應該會傳回：
 
-- 有效的 JSON 物件文檔。 所有陣列和字串都應嵌套在頂部物件下。
-- 標頭`Content-Type`應設置為"應用程式/json;"字元_utf-8"。
-- 自訂資來源提供者將覆蓋 請求`name`的`type`、`id`和 欄位。
-- 自訂資來源提供者將僅返回緩存終結點的物件下的`properties`欄位。
+- 有效的 JSON 目的檔。 所有陣列和字串都應該在最上層物件下加以嵌套。
+- `Content-Type`標頭應設定為 "application/json;字元集 = utf-8」。
+- 自訂資源提供者將會`name`覆`type`寫要求`id`的、和欄位。
+- 自訂資源提供者只會傳回快取`properties`端點物件下的欄位。
 
-**端點**回應：
+**端點**回應
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -107,9 +107,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-自訂`name`資源`id`提供程式將自動`type`為自訂資源生成 和 欄位。
+自`name`定義`id`資源提供`type`者會自動產生自訂資源的、和欄位。
 
-Azure 自訂資來源提供者回應：
+Azure 自訂資源提供者回應：
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -130,7 +130,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="remove-a-custom-resource"></a>移除自訂資源
 
-Azure API 傳入請求：
+Azure API 連入要求：
 
 ``` HTTP
 Delete https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -138,7 +138,7 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-然後，此請求將以以下形式轉發到**終結點**：
+然後，此要求會轉送至下列格式的**端點**：
 
 ``` HTTP
 Delete https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,20 +146,20 @@ Content-Type: application/json
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}
 ```
 
-同樣，從**端點**的回應然後轉發回客戶。 來自終結點的回應應返回：
+同樣地，來自**端點**的回應會轉送回給客戶。 端點的回應應該會傳回：
 
-- 有效的 JSON 物件文檔。 所有陣列和字串都應嵌套在頂部物件下。
-- 標頭`Content-Type`應設置為"應用程式/json;"字元_utf-8"。
-- 僅當返回 200 級回應時，Azure 自訂資來源提供者才會從其緩存中刪除該專案。 即使資源不存在，**終結點**也應返回 204。
+- 有效的 JSON 目的檔。 所有陣列和字串都應該在最上層物件下加以嵌套。
+- `Content-Type`標頭應設定為 "application/json;字元集 = utf-8」。
+- 如果傳回200層級的回應，Azure 自訂資源提供者只會從其快取中移除該專案。 即使資源不存在，**端點**也應傳回204。
 
-**端點**回應：
+**端點**回應
 
 ``` HTTP
 HTTP/1.1 200 OK
 Content-Type: application/json; charset=utf-8
 ```
 
-Azure 自訂資來源提供者回應：
+Azure 自訂資源提供者回應：
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -168,7 +168,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="retrieve-a-custom-resource"></a>擷取自訂資源
 
-Azure API 傳入請求：
+Azure API 連入要求：
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources/{myCustomResourceName}?api-version=2018-09-01-preview
@@ -176,9 +176,9 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-請求**不會**轉發到**終結點**。
+要求**不**會轉送到**端點**。
 
-Azure 自訂資來源提供者回應：
+Azure 自訂資源提供者回應：
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -197,9 +197,9 @@ Content-Type: application/json; charset=utf-8
 }
 ```
 
-### <a name="enumerate-all-custom-resources"></a>枚舉所有自訂資源
+### <a name="enumerate-all-custom-resources"></a>列舉所有自訂資源
 
-Azure API 傳入請求：
+Azure API 連入要求：
 
 ``` HTTP
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/myCustomResources?api-version=2018-09-01-preview
@@ -207,9 +207,9 @@ Authorization: Bearer eyJ0e...
 Content-Type: application/json
 ```
 
-此請求**不會**轉發到**終結點**。
+此要求**不**會轉送到**端點**。
 
-Azure 自訂資來源提供者回應：
+Azure 自訂資源提供者回應：
 
 ``` HTTP
 HTTP/1.1 200 OK
@@ -234,8 +234,8 @@ Content-Type: application/json; charset=utf-8
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 自訂資來源提供者概述](overview.md)
-- [快速入門：創建 Azure 自訂資來源提供者並部署自訂資源](./create-custom-provider.md)
-- [教程：在 Azure 中創建自訂操作和資源](./tutorial-get-started-with-custom-providers.md)
-- [如何：將自訂操作添加到 Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [引用：自訂資源代理引用](proxy-resource-endpoint-reference.md)
+- [Azure 自訂資源提供者的總覽](overview.md)
+- [快速入門：建立 Azure 自訂資源提供者並部署自訂資源](./create-custom-provider.md)
+- [教學課程：在 Azure 中建立自訂動作和資源](./tutorial-get-started-with-custom-providers.md)
+- [如何：將自訂動作新增至 Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [參考：自訂資源 Proxy 參考](proxy-resource-endpoint-reference.md)

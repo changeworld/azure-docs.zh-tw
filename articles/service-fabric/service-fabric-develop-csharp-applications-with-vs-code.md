@@ -1,15 +1,15 @@
 ---
-title: 使用視覺化工作室代碼開發 .NET 核心應用程式
+title: 使用 Visual Studio Code 開發 .NET Core 應用程式
 description: 本文示範如何使用 Visual Studio Code 建置及部署 .NET Core Service Fabric 應用程式，並對其進行偵錯。
 author: peterpogorski
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614518"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>使用 Visual Studio Code 開發 C# Service Fabric 應用程式
@@ -18,7 +18,7 @@ ms.locfileid: "75614518"
 
 本文示範如何使用 Visual Studio Code 建置及部署 .NET Core Service Fabric 應用程式，並對其進行偵錯。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本文假設您已安裝 VS Code、適用於 VS Code 的 Service Fabric Reliable Services 擴充功能，和開發環境所需的任何相依性。 若要深入了解，請參閱[使用者入門](./service-fabric-get-started-vs-code.md#prerequisites)。
 
@@ -61,22 +61,22 @@ sudo code . --user-data-dir='.'
 
    ![VS Code 中的部署應用程式命令](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-deploy-application.png)
 
-4. 部署完成後，啟動瀏覽器並打開服務結構資源管理器：HTTP：/localhost：19080/\/資源管理器。 您應該會看到應用程式正在執行。 這可能需要一些時間，請耐心等候。 
+4. 當部署完成時，啟動瀏覽器並開啟 Service Fabric Explorer： HTTP：\//localhost： 19080/Explorer。 您應該會看到應用程式正在執行。 這可能需要一些時間，請耐心等候。 
 
    ![Service Fabric Explorer 中的計數器服務應用程式](./media/service-fabric-develop-csharp-applications-with-vs-code/sfx-verify-deploy.png)
 
-4. 驗證應用程式正在運行後，啟動瀏覽器並打開此頁面：HTTP：/localhost：31002。\/ 這是應用程式的 Web 前端。 由於計數器的值會增加，請重新整理頁面以查看目前的值。
+4. 在您確認應用程式正在執行之後，請啟動瀏覽器並開啟此頁面： HTTP\/：/localhost：31002。 這是應用程式的 Web 前端。 由於計數器的值會增加，請重新整理頁面以查看目前的值。
 
    ![瀏覽器中的計數器服務應用程式](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-running.png)
 
-## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>將應用程式發佈到 Azure 服務結構群集
-除了將應用程式部署到本地群集外，還可以將應用程式發佈到遠端 Azure 服務結構群集。 
+## <a name="publish-the-application-to-an-azure-service-fabric-cluster"></a>將應用程式發行至 Azure Service Fabric 叢集
+除了將應用程式部署到本機叢集，您也可以將應用程式發佈至遠端 Azure Service Fabric 叢集。 
 
-1. 確保已使用上述說明構建應用程式。 `Cloud.json`使用要發佈到的遠端群集的詳細資訊更新生成的設定檔。
+1. 請確定您已使用上述指示來建立應用程式。 以您想要發佈`Cloud.json`的遠端叢集詳細資料，更新產生的設定檔。
 
-2. 從**命令調色板**中，選擇**服務結構：發佈應用程式命令**。 安裝程序的輸出會傳送到整合式終端機。
+2. 從**命令**選擇區中，選取 [ **Service Fabric：發佈應用程式] 命令**。 安裝程序的輸出會傳送到整合式終端機。
 
-   ![在 VS 代碼中發佈應用程式命令](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
+   ![VS Code 中的發佈應用程式命令](./media/service-fabric-develop-csharp-applications-with-vs-code/sf-publish-application.png)
 
 3. 部署完成時，請啟動瀏覽器並開啟 Service Fabric Explorer： `https:<clusterurl>:19080/Explorer` 。 您應該會看到應用程式正在執行。 這可能需要一些時間，請耐心等候。 
 
@@ -93,7 +93,7 @@ sudo code . --user-data-dir='.'
 
    ![VS Code 工作區中的偵錯圖示](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-start.png)
 
-3. 在瀏覽器中打開服務結構資源管理器：HTTP：\//本地主機：19080/資源管理器。 按一下 [應用程式]**** 並向下切入，以判斷其中正在執行 CounterService 的主要節點。 在下圖中，CounterService 的主要節點是「節點 0」。
+3. 在瀏覽器中開啟 Service Fabric Explorer： HTTP\/：/localhost： 19080/Explorer。 按一下 [應用程式]**** 並向下切入，以判斷其中正在執行 CounterService 的主要節點。 在下圖中，CounterService 的主要節點是「節點 0」。
 
    ![CounterService 的主要節點](./media/service-fabric-develop-csharp-applications-with-vs-code/counter-service-primary-node.png)
 

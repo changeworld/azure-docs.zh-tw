@@ -1,15 +1,15 @@
 ---
-title: 枚舉 Azure 服務結構上的參與者
-description: 使用示例瞭解在 Azure 服務結構應用程式中枚舉可靠參與者及其中繼資料。
+title: 列舉 Azure Service Fabric 上的執行者
+description: 瞭解如何使用範例，在 Azure Service Fabric 應用程式中列舉 Reliable Actors 及其中繼資料。
 author: vturecek
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 1516c9005a7c4dd0adcb279e9954e5f882c575c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645594"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>列舉 Service Fabric Reliable Actors
@@ -60,9 +60,9 @@ while (continuationToken != null);
 
 ## <a name="next-steps"></a>後續步驟
 * [動作項目狀態管理](service-fabric-reliable-actors-state-management.md)
-* [參與者生命週期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)
+* [執行者生命週期和垃圾收集](service-fabric-reliable-actors-lifecycle.md)
 * [動作項目 API 參考文件](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET 示例代碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [.NET 範例程式碼](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java 範例程式碼 (英文)](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

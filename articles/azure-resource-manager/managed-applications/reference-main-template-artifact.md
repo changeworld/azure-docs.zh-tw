@@ -1,24 +1,24 @@
 ---
-title: 範本專案引用
-description: 提供了 Azure 託管應用程式的部署範本專案示例。
+title: 範本成品參考
+description: 提供 Azure 受控應用程式部署範本成品的範例。
 ms.topic: conceptual
 ms.author: lazinnat
 author: lazinnat
 ms.date: 07/11/2019
 ms.openlocfilehash: 2bc0017d71e159ac490041494bcf37db035ef421
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651458"
 ---
-# <a name="reference-deployment-template-artifact"></a>參考：部署範本專案
+# <a name="reference-deployment-template-artifact"></a>參考：部署範本成品
 
-本文是 Azure 託管應用程式中*主範本.json*專案引用。 有關創作部署範本的詳細資訊，請參閱 Azure[資源管理器範本](../templates/template-syntax.md)。
+本文是 Azure 受控應用程式中*mainTemplate*的參考。 如需有關撰寫部署範本的詳細資訊，請參閱[Azure Resource Manager 範本](../templates/template-syntax.md)。
 
 ## <a name="deployment-template"></a>部署範本
 
-以下 JSON 顯示了 Azure 託管應用程式*的主範本.json*檔示例：
+下列 JSON 顯示 Azure 受控應用程式的*mainTemplate json*檔案範例：
 
 ```json
 {
@@ -189,6 +189,6 @@ ms.locfileid: "75651458"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [教程：使用自訂操作和資源創建託管應用程式](tutorial-create-managed-app-with-custom-provider.md)
-- [參考：使用者介面元素專案](reference-createuidefinition-artifact.md)
-- [參考：查看定義專案](reference-view-definition-artifact.md)
+- [教學課程：使用自訂動作和資源建立受控應用程式](tutorial-create-managed-app-with-custom-provider.md)
+- [參考：使用者介面專案成品](reference-createuidefinition-artifact.md)
+- [參考：視圖定義成品](reference-view-definition-artifact.md)

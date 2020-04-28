@@ -1,15 +1,15 @@
 ---
-title: 管理 Azure 服務交換矩陣服務中的狀態
-description: 瞭解 Azure 服務結構中的狀態，包括如何在服務結構服務中定義和管理服務狀態。
+title: 在 Azure Service Fabric 服務中管理狀態
+description: 瞭解 Azure Service Fabric 中的狀態，包括如何在 Service Fabric 服務中定義和管理服務狀態。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9acd3031d1071d1822791b333976aaf76161600f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75614565"
 ---
 # <a name="service-state"></a>服務狀態

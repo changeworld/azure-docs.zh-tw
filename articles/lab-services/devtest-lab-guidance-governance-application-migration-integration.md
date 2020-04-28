@@ -1,6 +1,6 @@
 ---
-title: Azure 開發人員測試實驗室中的應用程式遷移和集成
-description: 本文提供有關在應用程式遷移和集成上下文中治理 Azure DevTest Labs 基礎結構的指導。
+title: Azure DevTest Labs 中的應用程式遷移與整合
+description: 本文提供在應用程式遷移與整合的內容中，管理 Azure DevTest Labs 基礎結構的指引。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75644881"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>治理 Azure DevTest Labs 基礎結構 - 應用程式移轉和整合
@@ -64,7 +64,7 @@ ms.locfileid: "75644881"
 在 Azure Pipelines 中，使用 DevTest Labs 建立自訂映像管線：
 
 - [簡介：藉由在 Azure DevTest Labs 中設定映像處理站，在數分鐘內備妥 VM](https://blogs.msdn.microsoft.com/devtestlab/2016/09/14/introduction-get-vms-ready-in-minutes-by-setting-up-image-factory-in-azure-devtest-labs/) \(英文\)
-- [圖像工廠 = 第 2 部分！設置 Azure 管道和工廠實驗室以創建 VM](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
+- [映射 Factory –第2部分！設定 Azure Pipelines 和 Factory 實驗室來建立 Vm](https://blogs.msdn.microsoft.com/devtestlab/2017/10/25/image-factory-part-2-setup-vsts-to-create-vms-based-on-devtest-labs/)
 - [映像處理站 - 第 3 部分：儲存自訂映像並散發至多個實驗室](https://blogs.msdn.microsoft.com/devtestlab/2018/01/10/image-factory-part-3-save-custom-images-and-distribute-to-multiple-labs/) \(英文\)
 - [影片：使用 Azure DevTest Labs 自訂映像處理站](https://blogs.msdn.microsoft.com/devtestlab/2017/04/17/video-custom-image-factory-with-azure-devtest-labs/) \(英文\)
 
@@ -117,7 +117,7 @@ ms.locfileid: "75644881"
 考慮每位使用者或每個實驗室的虛擬機器數目時，有三個主要考量：
 
 - 小組可在實驗室中花費於資源上的**整體成本**。 很容易就能將許多機器向上微調。 若要控制成本，有一種機制是限制每位使用者和/或每個實驗室的 VM 數目
-- 實驗室中的虛擬機器總數會受到可用的[訂用帳戶層級配額](../azure-resource-manager/management/azure-subscription-service-limits.md)所影響。 其中一個上限是每個訂用帳戶 800 個資源群組。 DevTest Labs 目前會針對每部 VM 建立一個新的資源群組 (除非使用共用的公用 IP)。 如果訂閱中有 10 個實驗室，則每個實驗室中可以容納大約 79 個虛擬機器（800 個上限 = 10 個實驗室本身的 10 個資源組） = 每個實驗室 79 個虛擬機器。
+- 實驗室中的虛擬機器總數會受到可用的[訂用帳戶層級配額](../azure-resource-manager/management/azure-subscription-service-limits.md)所影響。 其中一個上限是每個訂用帳戶 800 個資源群組。 DevTest Labs 目前會針對每部 VM 建立一個新的資源群組 (除非使用共用的公用 IP)。 如果訂用帳戶中有10個實驗室，實驗室可以在每個實驗室中容納大約79部虛擬機器（800上限為10個實驗室的資源群組） = 每個實驗室79個虛擬機器。
 - 舉例來說，如果實驗室會透過 Express Route 連線到內部部署，則會針對 VNet/子網路**定義可用的 IP 位址空間**。 若要確保實驗室中的 VM 不會建立失敗 (錯誤：無法取得 IP 位址)，實驗室擁有者可以針對每個已配置可用 IP 位址空間的實驗室指定 VM 的最大數目。
 
 ## <a name="use-resource-manager-templates"></a>使用 Resource Manager 範本

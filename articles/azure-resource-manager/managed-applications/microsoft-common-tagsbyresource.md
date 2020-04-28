@@ -1,20 +1,20 @@
 ---
-title: 標記ByResource UI 元素
-description: 描述 Azure 門戶的 Microsoft.Common.TagByResource UI 元素。 用於在部署期間將標記應用於資源。
+title: TagsByResource UI 元素
+description: 描述 Azure 入口網站的 TagsByResource UI 元素。 使用，在部署期間將標記套用至資源。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: tomfitz
 ms.openlocfilehash: 23a7c54a84ec083b8fa470f26582913fcc3d2ee6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75652199"
 ---
-# <a name="microsoftcommontagsbyresource-ui-element"></a>微軟.通用.標記資源 UI 元素
+# <a name="microsoftcommontagsbyresource-ui-element"></a>TagsByResource UI 元素
 
-用於將[標記](../management/tag-resources.md)與部署中的資源關聯的控制項。
+控制項，用於將[標記](../management/tag-resources.md)與部署中的資源產生關聯。
 
 ## <a name="ui-sample"></a>UI 範例
 
@@ -49,9 +49,9 @@ ms.locfileid: "75652199"
 
 ## <a name="remarks"></a>備註
 
-- 必須至少指定一個陣列`resources`中的項。
-- 中的每個`resources`元素都必須是完全限定的資源類型。 這些元素顯示在 **"資源"** 下拉清單中，並且由使用者標記。
-- 控制項的輸出設置格式，以便輕鬆在 Azure 資源管理器範本中分配標記值。 要在範本中接收控制項的輸出，請在範本中包括一個參數，如以下示例所示：
+- 必須至少指定陣列中的`resources`一個專案。
+- 中的`resources`每個元素都必須是完整的資源類型。 這些元素會出現在 [**資源**] 下拉式清單中，並由使用者 taggable。
+- 控制項的輸出會格式化以方便指派 Azure Resource Manager 範本中的標記值。 若要在範本中接收控制項的輸出，請在您的範本中包含參數，如下列範例所示：
 
   ```json
   "parameters": {
@@ -59,7 +59,7 @@ ms.locfileid: "75652199"
   }
   ```
 
-  對於可標記的每個資源，將標記屬性分配給該資源類型的參數值：
+  針對每個可以加上標籤的資源，將 tags 屬性指派給該資源類型的參數值：
 
   ```json
   {
@@ -69,7 +69,7 @@ ms.locfileid: "75652199"
     ...
   ```
 
-- 訪問標記 ByResource 參數時，請使用[if](../templates/template-functions-logical.md#if)函數。 它使您能夠在未為給定資源類型分配標記時分配空物件。
+- 存取 tagsByResource 參數時，請使用[if](../templates/template-functions-logical.md#if)函數。 它可讓您在未將標記指派給指定的資源類型時，指派空的物件。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,15 +1,15 @@
 ---
-title: 選項群組 UI 元素
-description: 描述 Azure 入口網站的 Microsoft.Common.OptionsGroup UI 元素。 使使用者能夠在部署託管應用程式時從可用選項中進行選擇。
+title: Microsoft.common.optionsgroup UI 元素
+description: 描述 Azure 入口網站的 Microsoft.Common.OptionsGroup UI 元素。 可讓使用者在部署受控應用程式時，從可用的選項中選取。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: c1da0b0082bfe046adf9596a10397e9063c888be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75652342"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI 元素

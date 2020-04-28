@@ -1,24 +1,24 @@
 ---
-title: 自訂提供程式 C# RESTful 終結點引用
-description: 為 Azure 自訂提供程式 C# RESTful 終結點提供基本參考。 終結點通過 Azure 函數應用提供。
+title: '自訂提供者 c # RESTful 端點參考'
+description: '提供 Azure 自訂提供者 c # RESTful 端點的基本參考。 端點是透過 Azure 函數應用程式提供。'
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 06/20/2019
 ms.openlocfilehash: b6ecb22cb968e0d963242c8c2d5dd1a6cb24229c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651172"
 ---
-# <a name="custom-provider-c-restful-endpoint-reference"></a>自訂提供程式 C# RESTful 終結點引用
+# <a name="custom-provider-c-restful-endpoint-reference"></a>自訂提供者 c # RESTful 端點參考
 
-本文是自訂提供程式 C# RESTful 終結點的基本參考。 如果您不熟悉 Azure 自訂提供者，請參閱[自訂資源提供者概觀](overview.md)。
+本文是自訂提供者 c # RESTful 端點的基本參考。 如果您不熟悉 Azure 自訂提供者，請參閱[自訂資源提供者概觀](overview.md)。
 
-## <a name="azure-function-app-restful-endpoint"></a>Azure 函數應用 RESTful 終結點
+## <a name="azure-function-app-restful-endpoint"></a>Azure 函數應用程式 RESTful 端點
 
-以下代碼適用于 Azure 函數應用。 要瞭解如何設置 Azure 函數應用以使用 Azure 自訂提供程式，請參閱[有關為 Azure 自訂提供程式設置 Azure 函數的教程](./tutorial-custom-providers-function-setup.md)。
+下列程式碼適用于 Azure 函數應用程式。 若要瞭解如何設定 Azure 函式應用程式以使用 Azure 自訂提供者，請參閱為[Azure 自訂提供者設定 Azure Functions 的教學](./tutorial-custom-providers-function-setup.md)課程。
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -255,7 +255,7 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 自訂資來源提供者概述](overview.md)
-- [教程：創建 Azure 自訂資來源提供者並部署自訂資源](./create-custom-provider.md)
-- [如何：將自訂操作添加到 Azure REST API](./custom-providers-action-endpoint-how-to.md)
-- [引用：自訂資源緩存引用](proxy-cache-resource-endpoint-reference.md)
+- [Azure 自訂資源提供者的總覽](overview.md)
+- [教學課程：建立 Azure 自訂資源提供者並部署自訂資源](./create-custom-provider.md)
+- [如何：將自訂動作新增至 Azure REST API](./custom-providers-action-endpoint-how-to.md)
+- [參考：自訂資源快取參考](proxy-cache-resource-endpoint-reference.md)

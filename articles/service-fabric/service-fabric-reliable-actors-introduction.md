@@ -1,15 +1,15 @@
 ---
-title: 服務結構可靠參與者概述
-description: 基於虛擬參與者模式的服務結構可靠參與者程式設計模型簡介。
+title: Service Fabric Reliable Actors 總覽
+description: Service Fabric Reliable Actors 程式設計模型的簡介，以虛擬執行者模式為基礎。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/01/2017
 ms.author: vturecek
 ms.openlocfilehash: 6aafa2a3372c431f8afa7fad41051c26c3fe5fcd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645560"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actor 簡介

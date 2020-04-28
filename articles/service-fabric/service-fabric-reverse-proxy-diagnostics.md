@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構反向代理診斷
-description: 瞭解如何在 Azure 服務結構應用程式的反向代理處監視和診斷請求處理。
+title: Azure Service Fabric 反向 proxy 診斷
+description: 瞭解如何在 Azure Service Fabric 應用程式的反向 proxy 監視和診斷要求處理。
 author: kavyako
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: kavyako
 ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75645458"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>在反向 proxy 監視和診斷要求處理

@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
 ms.openlocfilehash: a8ca67d1ff3100aee02ed473c9cc2180de3973b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75638930"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
@@ -45,9 +45,9 @@ Azure HDInsight 這類服務通常會使用 Azure Active Directory 服務主體�
 
 ### <a name="enable-the-data-lake-storage-gen1-firewall-with-azure-service-access"></a>啟用 Data Lake Storage Gen1 防火牆與 Azure 服務存取權
 
-Data Lake Storage Gen1 支援開啟防火牆，以及限制僅有 Azure 服務具有存取權，此功能建議用在外部入侵中的較小攻擊媒介上。 防火牆可以通過**防火牆** > **啟用防火牆 （ON）** > **允許訪問 Azure 服務**選項在 Azure 門戶中的資料存儲存儲 Gen1 帳戶上啟用。
+Data Lake Storage Gen1 支援開啟防火牆，以及限制僅有 Azure 服務具有存取權，此功能建議用在外部入侵中的較小攻擊媒介上。 您可以透過**防火牆** > 的 [**啟用防火牆（開啟）** > ] [**允許存取 Azure 服務**] 選項，在 Azure 入口網站中的 Data Lake Storage Gen1 帳戶上啟用防火牆。
 
-![資料存儲庫第 1 代中的防火牆設置](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "資料存儲庫第 1 代中的防火牆設置")
+![Data Lake Storage Gen1 中的防火牆設定](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage Gen1 中的防火牆設定")
 
 一旦啟用防火牆後，只有 HDInsight、Data Factory、SQL 資料倉儲等 Azure 服務能夠存取 Data Lake Storage Gen1。 由於 Azure 使用內部網路位址轉譯，因此 Data Lake Storage Gen1 防火牆不支援根據 IP 限制特定服務，而且只適用於限制 Azure 外的端點，例如內部部署環境。
 
@@ -86,7 +86,7 @@ Azure Data Lake Storage Gen1 會移除位於 Blob 儲存體帳戶上的硬性 IO
 
 ## <a name="resiliency-considerations"></a>恢復功能考量
 
-使用 Data Lake Storage Gen1 或任何雲端服務建構系統時，您必須考量到可用性需求，以及如何回應服務可能中斷的情況。 系統可能會將問題集中到特定執行個體或甚至是整個區域；因此，務必針對這兩者進行規劃。 根據**恢復時間目標和**工作負載**的復原點目標**SL，您可以選擇或多或少的激進策略，以便實現高可用性和災害復原。
+使用 Data Lake Storage Gen1 或任何雲端服務建構系統時，您必須考量到可用性需求，以及如何回應服務可能中斷的情況。 系統可能會將問題集中到特定執行個體或甚至是整個區域；因此，務必針對這兩者進行規劃。 視工作負載的復原**時間目標**和**復原點目標**sla 而定，您可以選擇更多或較不積極的策略來進行高可用性和嚴重損壞修復。
 
 ### <a name="high-availability-and-disaster-recovery"></a>高可用性和災害復原
 
@@ -100,11 +100,11 @@ Azure Data Lake Storage Gen1 會移除位於 Blob 儲存體帳戶上的硬性 IO
 
 |  |Distcp  |Azure Data Factory  |AdlCopy  |
 |---------|---------|---------|---------|
-|**縮放限制**     | 由背景工作角色節點繫結        | 受限於雲端資料移動單位的上限        | 由分析單位繫結        |
+|**調整限制**     | 由背景工作角色節點繫結        | 受限於雲端資料移動單位的上限        | 由分析單位繫結        |
 |**支援複製差異**     |   是      | 否         | 否         |
 |**內建的協調流程**     |  否 (使用 Oozie、Airflow 或 Cron 作業)       | 是        | 否 (使用 Azure 自動化或 Windows 工作排程器)         |
 |**支援的檔案系統**     | ADL、HDFS、WASB、S3、GS、CFS        |很多，請參閱[連接器](../data-factory/connector-azure-blob-storage.md)。         | ADL 至 ADL、WASB 至 ADL (僅限同一區域)        |
-|**作業系統支援**     |任何執行 Hadoop 的 OS         | N/A          | Windows 10         |
+|**OS 支援**     |任何執行 Hadoop 的 OS         | N/A          | Windows 10         |
 
 ### <a name="use-distcp-for-data-movement-between-two-locations"></a>使用 Distcp 在兩個位置之間移動資料
 
@@ -114,7 +114,7 @@ Apache Oozie 工作流程和 Linux Cron 作業可使用頻率或資料觸發程�
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>使用 Azure Data Factory 排程備份作業
 
-Azure 資料工廠還可用於使用**複製活動**計畫複製作業，甚至可以通過**複製嚮導**以頻率設置。 請注意，Azure Data Factory 有雲端資料移動單位 (DMU) 限制，最終會達到大型資料工作負載的輸送量/計算上限。 此外，Azure Data Factory 目前並未提供 Data Lake Storage Gen1 帳戶之間的差異更新，因此 Hive 資料表這類資料夾將需要複寫整個複本。 如需有關使用 Data Factory 進行複製的詳細資訊，請參閱[複製活動微調指南](../data-factory/copy-activity-performance.md)。
+Azure Data Factory 也可以用來排程使用**複製活動**的複製作業，甚至可以透過**複製嚮導**來設定頻率。 請注意，Azure Data Factory 有雲端資料移動單位 (DMU) 限制，最終會達到大型資料工作負載的輸送量/計算上限。 此外，Azure Data Factory 目前並未提供 Data Lake Storage Gen1 帳戶之間的差異更新，因此 Hive 資料表這類資料夾將需要複寫整個複本。 如需有關使用 Data Factory 進行複製的詳細資訊，請參閱[複製活動微調指南](../data-factory/copy-activity-performance.md)。
 
 ### <a name="adlcopy"></a>AdlCopy
 
@@ -136,11 +136,11 @@ Data Lake Storage Gen1 提供詳細的診斷記錄和稽核。 Data Lake Storage
 
 ### <a name="turn-on-debug-level-logging-in-hdinsight"></a>開啟 HDInsight 中的偵錯層級記錄
 
-如果 Data Lake Storage Gen1 記錄傳送並未開啟，Azure HDInsight 也可透過 log4j 來開啟[Data Lake Storage Gen1 的用戶端記錄](data-lake-store-performance-tuning-mapreduce.md)。 您必須在**Ambari** > **YARN** > **配置** > **高級紗線日誌4j 配置**中設置以下屬性：
+如果 Data Lake Storage Gen1 記錄傳送並未開啟，Azure HDInsight 也可透過 log4j 來開啟[Data Lake Storage Gen1 的用戶端記錄](data-lake-store-performance-tuning-mapreduce.md)。 您必須在**Ambari** > **YARN** > **Config** > **Advanced YARN-log4j**configuration 中設定下列屬性：
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG
 
-設定好屬性並重新啟動節點後，Data Lake Storage Gen1 診斷資料就會寫入節點上的 YARN 記錄 (/tmp/\<user\>/yarn.log)，並可監視錯誤或節流 (HTTP 429 錯誤代碼) 等重要的詳細資訊。 在 Azure 監視器日誌中也可以監視相同的資訊，也可以監視在 Data Lake 存儲 Gen1 帳戶的[診斷](data-lake-store-diagnostic-logs.md)邊欄選項卡中將日誌運送到何處。 建議您至少開啟用戶端記錄，或利用 Data Lake Storage Gen1 的記錄傳送選項，來提供作業可見性並且使偵錯更容易進行。
+設定好屬性並重新啟動節點後，Data Lake Storage Gen1 診斷資料就會寫入節點上的 YARN 記錄 (/tmp/\<user\>/yarn.log)，並可監視錯誤或節流 (HTTP 429 錯誤代碼) 等重要的詳細資訊。 這項資訊也可以在 Azure 監視器記錄中監視，或在 Data Lake Storage Gen1 帳戶的 [[診斷](data-lake-store-diagnostic-logs.md)] 分頁中，將記錄傳送至何處。 建議您至少開啟用戶端記錄，或利用 Data Lake Storage Gen1 的記錄傳送選項，來提供作業可見性並且使偵錯更容易進行。
 
 ### <a name="run-synthetic-transactions"></a>執行綜合交易
 

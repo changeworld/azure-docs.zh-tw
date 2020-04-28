@@ -1,112 +1,112 @@
 ---
 title: 核准 Just-In-Time 存取
-description: 描述 Azure 託管應用程式的消費者如何批准對託管應用程式進行即時訪問的請求。
+description: 描述 Azure 受控應用程式的取用者如何核准要求，以即時存取受控應用程式。
 author: MSEvanhi
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: evanhi
 ms.openlocfilehash: 4a3604a3256fb2d3f4253891bbc28c7685748cd2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651016"
 ---
-# <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>配置和批准 Azure 託管應用程式的及時訪問
+# <a name="configure-and-approve-just-in-time-access-for-azure-managed-applications"></a>設定和核准 Azure 受控應用程式的及時存取
 
-作為託管應用程式的消費者，您可能不願意讓發行者永久訪問託管資源組。 為了更好地控制對託管資源的訪問，Azure 託管應用程式提供了一個稱為即時 （JIT） 存取權限的功能，該功能當前處於預覽狀態。 它使您能夠批准發行者何時和多長時間有權訪問資源組。 發行者可以在該期間進行必要的更新，但當該時間結束時，發行者的訪問將過期。
+身為受控應用程式的取用者，您可能不會對發行者提供受控資源群組的永久存取權。 為了讓您更進一步控制授與受管理資源的存取權，Azure 受控應用程式提供稱為即時（JIT）存取的功能，目前為預覽狀態。 它可讓您核准發行者有權存取資源群組的時間和時機。 發行者在這段時間內可能會進行必要的更新，但當該時間結束時，發行者的存取就會過期。
 
-授予存取權限的工作流是：
+授與存取權的工作流程為：
 
-1. 發行者向市場添加託管應用程式，並指定 JIT 存取權限可用。
+1. 發行者會將受控應用程式新增至 marketplace，並指定可以使用 JIT 存取。
 
-1. 在部署期間，您可以為託管應用程式的實例啟用 JIT 存取權限。
+1. 在部署期間，您會為受控應用程式的實例啟用 JIT 存取。
 
-1. 部署後，可以更改 JIT 訪問的設置。
+1. 部署之後，您可以變更 JIT 存取的設定。
 
-1. 發行者發送訪問請求。
+1. 發行者會傳送要求以進行存取。
 
-1. 您批准請求。
+1. 您會核准要求。
 
-本文重點介紹消費者為啟用 JIT 訪問和批准請求而執行的操作。 要瞭解如何使用 JIT 訪問發佈託管應用程式，請參閱[在 Azure 託管應用程式中請求及時訪問](request-just-in-time-access.md)。
+本文著重于取用者啟用 JIT 存取和核准要求所採取的動作。 若要瞭解如何使用 JIT 存取發行受控應用程式，請參閱[在 Azure 受控應用程式中要求即時存取](request-just-in-time-access.md)。
 
 > [!NOTE]
-> 要使用即時訪問，必須具有[Azure 活動目錄 P2 許可證](../../active-directory/privileged-identity-management/subscription-requirements.md)。
+> 若要使用即時存取，您必須擁有[Azure Active Directory P2 授權](../../active-directory/privileged-identity-management/subscription-requirements.md)。
 
-## <a name="enable-during-deployment"></a>部署期間啟用
+## <a name="enable-during-deployment"></a>在部署期間啟用
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 查找啟用了 JIT 的託管應用程式的市場條目。 選取 [建立]****。
+1. 尋找已啟用 JIT 之受控應用程式的 marketplace 專案。 選取 [建立]  。
 
-1. 在為新的託管應用程式提供值的同時 **，JIT 配置**步驟允許您為託管應用程式啟用或禁用 JIT 訪問。 選擇 **"是****"以啟用 JIT 訪問**。 預設情況下，此選項是針對在市場中啟用 JIT 定義的託管應用程式選擇的。
+1. 針對新的 managed 應用程式提供值時， **JIT**設定步驟可讓您啟用或停用受控應用程式的 jit 存取。 針對 [**啟用 JIT 存取** **] 選取 [是]** 。 針對在 marketplace 中啟用 JIT 定義的 managed 應用程式，預設會選取此選項。
 
-   ![配置訪問](./media/approve-just-in-time-access/configure-jit-access.png)
+   ![設定存取權](./media/approve-just-in-time-access/configure-jit-access.png)
 
-   只能在部署期間啟用 JIT 訪問。 如果選擇 **"否**"，則發行者將獲得對託管資源組的永久存取權限。 以後無法啟用 JIT 存取權限。
+   您只能在部署期間啟用 JIT 存取。 如果您選取 [**否**]，發行者會取得受控資源群組的永久存取權。 您稍後無法啟用 JIT 存取。
 
-1. 要更改預設審批設置，請選擇 **"自訂 JIT 配置**"。
+1. 若要變更預設核准設定，請選取 [**自訂 JIT**設定]。
 
-   ![自訂訪問](./media/approve-just-in-time-access/customize-jit-access.png)
+   ![自訂存取權](./media/approve-just-in-time-access/customize-jit-access.png)
 
-   預設情況下，啟用了 JIT 的託管應用程式具有以下設置：
+   根據預設，啟用 JIT 的受控應用程式具有下列設定：
 
-   * 批准模式 = 自動
-   * 最長訪問持續時間 = 8 小時
-   * 核准者 = 無
+   * 核准模式-自動
+   * 最大存取持續時間–8小時
+   * 核准者–無
 
-   當審批模式設置為**自動**時，核准者會收到每個請求的通知，但請求將自動獲得批准。 設置為**手動**時，核准者會收到每個請求的通知，其中一個必須批准它。
+   當核准模式設定為 [**自動**] 時，核准者會收到每個要求的通知，但會自動核准要求。 當設定為 [**手動**] 時，核准者會收到每個要求的通知，其中一個必須核准。
 
-   啟動最長持續時間指定發行者可以請求訪問託管資源組的最大時間量。
+   [啟用最長持續時間] 會指定發行者可以要求存取受控資源群組的最大時間量。
 
-   核准者清單是可以批准 JIT 訪問請求的 Azure 活動目錄使用者。 要添加審批人，請選擇 **"添加審批人"** 並搜索該使用者。
+   核准者清單是可核准 JIT 存取要求的 Azure Active Directory 使用者。 若要新增核准者，請選取 [**新增核准者**]，然後搜尋使用者。
 
-   更新設置後，選擇 **"保存**"。
+   更新設定之後，請選取 [**儲存**]。
 
 ## <a name="update-after-deployment"></a>部署後更新
 
-您可以變更要求的審批方式的值。 但是，如果在部署期間未啟用 JIT 訪問，則以後無法啟用它。
+您可以變更要求核准方式的值。 不過，如果您未在部署期間啟用 JIT 存取，則稍後無法加以啟用。
 
-要更改已部署的託管應用程式的設置，請執行以下操作：
+若要變更已部署之受控應用程式的設定：
 
-1. 在門戶中，選擇管理應用程式。
+1. 在入口網站中，選取 [管理應用程式]。
 
-1. 選擇**JIT 配置**並根據需要更改設置。
+1. 選取 [ **JIT**設定]，並視需要變更設定。
 
-   ![更改訪問設置](./media/approve-just-in-time-access/change-settings.png)
+   ![變更存取設定](./media/approve-just-in-time-access/change-settings.png)
 
 1. 完成時，選取 [儲存]****。
 
 ## <a name="approve-requests"></a>核准要求
 
-當發行者請求訪問時，您將收到請求通知。 可以直接通過託管應用程式批准 JIT 訪問請求，也可以通過 Azure AD 特權標識管理服務跨所有託管應用程式批准 JIT 訪問請求。 要使用即時訪問，必須具有[Azure 活動目錄 P2 許可證](../../active-directory/privileged-identity-management/subscription-requirements.md)。
+當發行者要求存取權時，您就會收到要求的通知。 您可以直接透過受控應用程式，或透過 Azure AD Privileged Identity Management 服務，在所有受控應用程式中核准 JIT 存取要求。 若要使用即時存取，您必須擁有[Azure Active Directory P2 授權](../../active-directory/privileged-identity-management/subscription-requirements.md)。
 
-要通過託管應用程式核准請求：
+若要透過受控應用程式核准要求：
 
-1. 為託管應用程式選擇**JIT 訪問**，然後選擇 **"批准請求**"。
+1. 針對受控應用程式選取 [ **JIT 存取**]，然後選取 [**核准要求**]。
 
    ![核准要求](./media/approve-just-in-time-access/approve-requests.png)
  
-1. 選擇要批准的請求。
+1. 選取要核准的要求。
 
-   ![選擇請求](./media/approve-just-in-time-access/select-request.png)
+   ![選取要求](./media/approve-just-in-time-access/select-request.png)
 
-1. 在表單中，提供審批原因，然後選擇 **"批准**"。
+1. 在表單中，提供核准的原因，然後選取 [**核准**]。
 
-要通過 Azure AD 特權標識管理核准請求，
+若要透過 Azure AD Privileged Identity Management 核准要求：
 
-1. 選擇**所有服務**並開始搜索**Azure AD 特權標識管理**。 從可用選項中選擇它。
+1. 選取 [**所有服務**]，然後開始搜尋**Azure AD Privileged Identity Management**。 從可用的選項中選取它。
 
-   ![搜索服務](./media/approve-just-in-time-access/search.png)
+   ![搜尋服務](./media/approve-just-in-time-access/search.png)
 
-1. 選擇 **"批准請求**"。
+1. 選取 [**核准要求**]。
 
-   ![選擇批准請求](./media/approve-just-in-time-access/select-approve-requests.png)
+   ![選取 [核准要求]](./media/approve-just-in-time-access/select-approve-requests.png)
 
-1. 選擇**Azure 託管應用程式**，然後選擇要審批的請求。
+1. 選取 [ **Azure 受控應用程式**]，然後選取要核准的要求。
 
-   ![選擇請求](./media/approve-just-in-time-access/view-requests.png)
+   ![選取要求](./media/approve-just-in-time-access/view-requests.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解如何使用 JIT 訪問發佈託管應用程式，請參閱[在 Azure 託管應用程式中請求及時訪問](request-just-in-time-access.md)。
+若要瞭解如何使用 JIT 存取發行受控應用程式，請參閱[在 Azure 受控應用程式中要求即時存取](request-just-in-time-access.md)。

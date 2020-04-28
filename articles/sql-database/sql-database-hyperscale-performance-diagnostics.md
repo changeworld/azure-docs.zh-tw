@@ -1,6 +1,6 @@
 ---
-title: 超大規模中的性能診斷
-description: 本文介紹如何解決 Azure SQL 資料庫中的超大規模性能問題。
+title: 超大規模資料庫中的效能診斷
+description: 本文說明如何針對 Azure SQL Database 中的超大規模資料庫效能問題進行疑難排解。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -11,44 +11,44 @@ ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
 ms.openlocfilehash: 26bd6ddb9d8255b8e2510133fc4b6aa645f89f68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75615072"
 ---
-# <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL 超大規模性能故障排除診斷
+# <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>SQL 超大規模資料庫效能疑難排解診斷
 
-要解決超大規模資料庫中的性能問題，Azure SQL 資料庫計算節點上的[一般性能調優方法是](sql-database-monitor-tune-overview.md)性能調查的起點。 但是，鑒於超大規模的[分散式體系結構](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)，添加了其他診斷來提供説明。 本文介紹了超大規模特定的診斷資料。
+若要對超大規模資料庫資料庫中的效能問題進行疑難排解，Azure SQL database 計算節點上的[一般效能微調方法](sql-database-monitor-tune-overview.md)是效能調查的起點。 不過，假設超大規模資料庫的[分散式架構](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)，則已新增額外的診斷來提供協助。 本文說明超大規模資料庫特有的診斷資料。
 
-## <a name="log-rate-throttling-waits"></a>日誌速率限制等待
+## <a name="log-rate-throttling-waits"></a>記錄速率節流等候
 
-每個 Azure SQL 資料庫服務等級都有通過[日誌速率治理強制執行的](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)日誌生成速率限制。 在 Hyperscale 中，日誌生成限制當前設置為 100 MB/秒，而不考慮服務等級。 但是，有時必須限制主計算副本上的日誌生成速率，以保持可恢復性 SL。 當[頁面伺服器或其他計算副本](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)顯著落後于從 Log 服務應用新日誌記錄時，就會發生此限制。
+每個 Azure SQL Database 服務層級都會透過[記錄速率治理](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)來強制執行記錄產生率限制。 在超大規模資料庫中，不論服務層級為何，記錄檔產生的限制目前都設定為 100 MB/秒。 不過，有時主要計算複本上的記錄產生速率必須經過節流處理，以維持復原能力 Sla。 當[頁面伺服器或另一個計算複本](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)大幅落後套用記錄服務的新記錄檔記錄時，就會發生此節流。
 
-以下等待類型（在[sys.dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)）描述了在主計算副本上限制日誌速率的原因：
+下列等候類型（在[sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)）描述在主要計算複本上進行記錄速率節流的原因：
 
 |等候類型    |描述                         |
 |-------------          |------------------------------------|
-|RBIO_RG_STORAGE        | 當超大規模資料庫主計算節點日誌生成速率由於頁面伺服器延遲日誌消耗而受到限制時，就會發生這種情況。         |
-|RBIO_RG_DESTAGE        | 當超大規模資料庫計算節點日誌生成速率由於長期日誌存儲延遲使用而受到限制時，就會發生這種情況。         |
-|RBIO_RG_REPLICA        | 當超大規模資料庫計算節點日誌生成速率由於可讀輔助副本延遲使用日誌而受到限制時，就會發生這種情況。         |
-|RBIO_RG_LOCALDESTAGE   | 當超大規模資料庫計算節點日誌生成速率由於日誌服務延遲使用而受到限制時，就會發生這種情況。         |
+|RBIO_RG_STORAGE        | 當超大規模資料庫資料庫主要計算節點記錄產生速率因為頁面伺服器的延遲記錄耗用量而受到節流時發生。         |
+|RBIO_RG_DESTAGE        | 當超大規模資料庫資料庫計算節點記錄產生速率因為長期記錄儲存體的延遲記錄耗用量而受到節流時發生。         |
+|RBIO_RG_REPLICA        | 當超大規模資料庫資料庫計算節點記錄產生速率因為可讀取的次要複本延遲記錄耗用量而受到節流時發生。         |
+|RBIO_RG_LOCALDESTAGE   | 當超大規模資料庫資料庫計算節點記錄產生速率因為記錄服務的延遲記錄耗用量而受到節流時發生。         |
 
 ## <a name="page-server-reads"></a>頁面伺服器讀取
 
-計算副本不會在本機快取資料庫的完整副本。 計算副本的本地資料存儲在緩衝區池（記憶體中）和本地彈性緩衝區池擴展 （RBPEX） 緩存中，該緩存是資料頁的部分（非覆蓋）緩存。 此本地 RBPEX 緩存的大小與計算大小成比例，是計算層記憶體的三倍。 RBPEX 與緩衝集區類似，因為它具有最常訪問的資料。 另一方面，每個頁面伺服器都有一個覆蓋的 RBPEX 緩存，用於維護資料庫部分。
+計算複本不會在本機快取資料庫的完整複本。 計算複本的本機資料會儲存在緩衝集區（記憶體中）和本機復原緩衝集區延伸模組（RBPEX）快取中，這是資料頁的部分（非涵蓋）快取。 這個本機 RBPEX 快取的大小會按比例調整成計算大小，而且是計算層記憶體的三倍。 RBPEX 類似于緩衝集區，因為它具有最常存取的資料。 另一方面，每個頁面伺服器都有一個涵蓋的 RBPEX 快取，可供其維護的資料庫部分使用。
  
-在計算副本上發出讀取時，如果緩衝區池或本地 RBPEX 緩存中不存在資料，則會發出 getPage（頁面 Id、LSN）函式呼叫，並從相應的頁面伺服器提取該頁。 從頁面伺服器讀取是遠端讀取，因此比從本地 RBPEX 讀取慢。 在排除與 IO 相關的性能問題時，我們需要能夠判斷通過相對較慢的遠端頁面伺服器讀取完成了多少 IO。
+在計算複本上發出讀取時，如果資料不存在於緩衝集區或本機 RBPEX 快取中，就會發出 getPage （pageId，LSN）函式呼叫，而且會從對應的頁面伺服器提取該頁面。 從頁面伺服器讀取是遠端讀取，因此速度比從本機 RBPEX 讀取還慢。 針對 IO 相關的效能問題進行疑難排解時，我們必須能夠透過相對較慢的遠端頁面伺服器讀取來得知已完成的 Io 數目。
 
-多個 DMV 和擴展事件具有列和欄位，用於指定從頁面伺服器讀取的遠端讀取數，這些讀取數可與總讀取進行比較。 查詢存儲還捕獲遠端讀取作為查詢運行時統計資訊的一部分。
+數個 Dmv 和擴充事件都有資料行和欄位，可指定頁面伺服器的遠端讀取數目，可以與讀取總數進行比較。 查詢存放區也會在查詢執行時間統計資料中捕捉遠端讀取。
 
-- 報表頁伺服器讀取的列在執行 DMV 和目錄檢視中可用，例如：
+- 報表頁面伺服器讀取的資料行可在執行 Dmv 和目錄檢視中使用，例如：
     - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
     - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
     - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
     - [sys.dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
     - [sys.query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
-- 頁面伺服器讀取將添加到以下擴展事件：
+- 頁面伺服器讀取會加入至下列擴充事件：
     - sql_statement_completed
     - sp_statement_completed
     - sql_batch_completed
@@ -56,55 +56,55 @@ ms.locfileid: "75615072"
     - scan_stopped
     - query_store_begin_persist_runtime_stat
     - 查詢-store_execution_runtime_info
-- 實際頁面伺服器讀取/實際頁面伺服器閱讀前行將添加到實際計畫的查詢計劃 XML 中。 例如：
+- ActualPageServerReads/ActualPageServerReadAheads 會加入至實際計畫的查詢計劃 XML。 例如：
 
 `<RunTimeCountersPerThread Thread="8" ActualRows="90466461" ActualRowsRead="90466461" Batches="0" ActualEndOfScans="1" ActualExecutions="1" ActualExecutionMode="Row" ActualElapsedms="133645" ActualCPUms="85105" ActualScans="1" ActualLogicalReads="6032256" ActualPhysicalReads="0" ActualPageServerReads="0" ActualReadAheads="6027814" ActualPageServerReadAheads="5687297" ActualLobLogicalReads="0" ActualLobPhysicalReads="0" ActualLobPageServerReads="0" ActualLobReadAheads="0" ActualLobPageServerReadAheads="0" />`
 
 > [!NOTE]
-> 要查看查詢計劃屬性視窗中的這些屬性，需要 SSMS 18.3 或更高版本。
+> 若要在 [查詢計劃屬性] 視窗中查看這些屬性，則需要 SSMS 18.3 或更新版本。
 
-## <a name="virtual-file-stats-and-io-accounting"></a>虛擬檔案統計資訊和 IO 核算
+## <a name="virtual-file-stats-and-io-accounting"></a>虛擬檔案統計資料和 IO 帳戶處理
 
-在 Azure SQL 資料庫中[，sys.dm_io_virtual_file_stats（）](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 是監視 SQL Server IO 的主要方式。 超大規模中的IO特性由於其[分散式架構](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)而不同。 在本節中，我們重點介紹 IO（讀取和寫入）到資料檔案，如本 DMF 所示。 在超大規模中，此 DMF 中可見的每個資料檔案對應于遠端頁面伺服器。 此處提到的 RBPEX 緩存是基於本地 SSD 的緩存，即計算副本上的非覆蓋緩存。
+在 Azure SQL Database 中， [dm_io_virtual_file_stats （）](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 是監視 SQL Server io 的主要方式。 超大規模資料庫中的 IO 特性因其[分散式架構](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)而有所不同。 在本節中，我們將焦點放在資料檔案的 IO （讀取和寫入），如此 DMF 中所示。 在超大規模資料庫中，此 DMF 中可見的每個資料檔都會對應至遠端頁面伺服器。 此處所提及的 RBPEX 快取是以本機 SSD 為基礎的快取，這是計算複本上的非涵蓋快取。
 
-### <a name="local-rbpex-cache-usage"></a>本地 RBPEX 緩存使用方式
+### <a name="local-rbpex-cache-usage"></a>本機 RBPEX 快取使用量
 
-本地 RBPEX 緩存存在於本地 SSD 存儲的計算副本上。 因此，針對此緩存的 IO 比針對遠端頁面伺服器的 IO 快。 目前，超大規模資料庫中的[sys.dm_io_virtual_file_stats（）](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/)具有一個特殊的行，用於報告 IO 與計算副本上的本地 RBPEX 緩存。 此行的值為 和`database_id``file_id`列。 例如，下面的查詢返回自資料庫啟動以來的 RBPEX 使用方式統計資訊。
+本機 RBPEX 快取存在於計算複本上的本機 SSD 儲存體上。 因此，針對此快取的 IO 比遠端頁面伺服器的 IO 更快速。 目前，超大規模資料庫資料庫中的[dm_io_virtual_file_stats sys.databases](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/)會針對計算複本上的本機 RBPEX 快取報告 io 的特殊資料列。 此資料列的值為 0 `database_id` ，且適用`file_id`于和資料行。 例如，下列查詢會傳回自資料庫啟動後的 RBPEX 使用量統計資料。
 
 `select * from sys.dm_io_virtual_file_stats(0,NULL);`
 
-在 RBPEX 上完成的讀取與所有其他資料檔案上完成的聚合讀取的比率提供 RBPEX 緩存命中率。
+在 RBPEX 上完成的讀取比例與所有其他資料檔上完成的匯總讀取會提供 RBPEX 快取點擊率。
 
 ### <a name="data-reads"></a>資料讀取
 
-- 當 SQL Server 引擎在計算副本上發出讀取時，它們可能由本地 RBPEX 緩存或遠端頁面伺服器提供，或者通過讀取多個頁面時由兩者的組合提供。
-- 當計算副本從特定檔讀取某些頁面（例如file_id 1 時，如果此資料僅駐留在本地 RBPEX 緩存上，則此讀取的所有 IO 都會根據 file_id 0 （RBPEX） 進行核算。 如果資料的某些部分位於本地 RBPEX 緩存中，並且某些部分位於遠端頁面伺服器上，則 IO 會計入從 RBPEX 提供的部件的 0 file_id，並且從遠端頁面伺服器提供的部件計入file_id 1。 
-- 當計算副本從頁面伺服器請求特定[LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/)上的頁面時，如果頁面伺服器未趕上請求的 LSN，則計算副本上的讀取將等待頁面伺服器趕上，然後再將頁面返回到計算副本。 對於從計算副本上的頁面伺服器讀取的任何內容，如果等待該 IO，您將看到PAGEIOLATCH_* 等待類型。 在 Hyperscale 中，此等待時間既包括將頁面伺服器上的請求頁面趕上所需的 LSN 所需的時間，也包括將頁面從頁面伺服器傳輸到計算副本所需的時間。
-- 大型讀取（如預讀）通常使用["散點-收集"讀取](/sql/relational-databases/reading-pages/)來完成。 這允許一次最多讀取 4 MB 的頁面，這被認為是 SQL Server 引擎中的單個讀取。 但是，當正在讀取的資料在 RBPEX 中時，這些讀取被記為多個單獨的 8 KB 讀取，因為緩衝集區和 RBPEX 始終使用 8 KB 頁。 因此，針對 RBPEX 看到的讀取 I 數可能大於發動機執行的實際 I 數。
+- 當計算複本上的 SQL Server 引擎發出讀取時，它們可能是由本機 RBPEX 快取或遠端頁面伺服器提供，或是在讀取多個頁面的情況下結合這兩者。
+- 當計算複本從特定檔案讀取某些頁面時（例如 file_id 1），如果此資料僅位於本機 RBPEX 快取中，則會針對此讀取的所有 IO 考慮 file_id 0 （RBPEX）。 如果該資料的某些部分是在本機 RBPEX 快取中，而某些部分位於遠端頁面伺服器上，則 IO 會針對從 RBPEX 提供的部分進行 file_id 0，而從遠端頁面伺服器提供的元件則會計入 file_id 1。 
+- 當計算複本從頁面伺服器要求特定[lsn](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/)的頁面時，如果頁面伺服器未趕上到所要求的 lsn，計算複本上的讀取將會等到頁面伺服器一直到達之後，才會將頁面傳回到計算複本。 如果是從計算複本上的頁面伺服器讀取，您會看到 PAGEIOLATCH_ * 等候類型（如果它正在等待該 IO）。 在超大規模資料庫中，此等候時間包含將頁面伺服器上要求的頁面攔截到所需 LSN 的時間，以及將頁面從頁面伺服器傳輸到計算複本所需的時間。
+- 大量讀取（例如預先讀取）通常是使用「[散佈-收集」讀取](/sql/relational-databases/reading-pages/)來完成。 這允許一次讀取最多 4 MB 的頁面，視為 SQL Server 引擎中的單一讀取。 不過，當讀取的資料在 RBPEX 時，這些讀取會視為多個個別的 8 KB 讀取，因為緩衝集區和 RBPEX 一律會使用 8 KB 的頁面。 因此，針對 RBPEX 看到的讀取 Io 數目可能會大於引擎所執行的實際 Io 數目。
 
 ### <a name="data-writes"></a>資料寫入
 
-- 主計算副本不會直接寫入頁面伺服器。 相反，日誌服務的日誌記錄在相應的頁面伺服器上重播。 
-- 在計算副本上發生的寫入主要寫入本地 RBPEX （file_id 0）。 對於大於 8 KB 的邏輯檔（換言之，使用[收集寫入](/sql/relational-databases/writing-pages/)）寫入，每個寫入操作將轉換為多個 8 KB 的單獨寫入 RBPEX，因為緩衝集區和 RBPEX 始終使用 8 KB 頁。 因此，針對 RBPEX 看到的寫入 I 數可能大於引擎執行的實際 I 數。
-- 非 RBPEX 檔或與頁面伺服器相對應file_id 0 以外的資料檔案也會顯示寫入。 在 Hyperscale 服務層中，這些寫入是類比的，因為計算副本從不直接寫入頁面伺服器。 寫入 IOPS 和輸送量在計算副本上發生時會進行核算，但file_id 0 以外的資料檔案的延遲並不反映頁面伺服器寫入的實際延遲。
+- 主要計算複本不會直接寫入頁面伺服器。 相反地，記錄服務的記錄檔記錄會在對應的頁面伺服器上重新執行。 
+- 在計算複本上發生的寫入主要是寫入本機 RBPEX （file_id 0）。 對於大於 8 KB 的邏輯檔案寫入（換句話說，使用[收集-write](/sql/relational-databases/writing-pages/)完成），每個寫入作業都會轉譯為多個 8 kb 的個別寫入至 RBPEX，因為緩衝集區和 RBPEX 一律使用 8 kb 的頁面。 因此，針對 RBPEX 所見的寫入 Io 數目可能會大於引擎所執行的實際 Io 數目。
+- 非 RBPEX 檔案，或對應至頁面伺服器 file_id 0 以外的資料檔案，也會顯示寫入。 在超大規模資料庫服務層級中，這些寫入會進行模擬，因為計算複本永遠不會直接寫入頁面伺服器。 寫入 IOPS 和輸送量是在計算複本上發生的，但 file_id 0 以外的資料檔案延遲並不會反映頁面伺服器寫入的實際延遲。
 
-### <a name="log-writes"></a>日誌寫入
+### <a name="log-writes"></a>記錄檔寫入
 
-- 在主計算中，日誌寫入在 sys.dm_io_virtual_file_stats 的file_id 2 中占。 主計算上的日誌寫入是寫入日誌著陸區。
-- 提交上的輔助副本上未強化日誌記錄。 在超大規模中，日誌服務非同步地應用於輔助副本。 由於日誌寫入實際上不會發生在輔助副本上，因此對輔助副本上的 Log I 的任何記帳僅用於跟蹤目的。
+- 在主要計算上，會在 dm_io_virtual_file_stats 的 file_id 2 中考慮記錄寫入。 主要計算上的記錄寫入是記錄登陸區域的寫入。
+- 認可上的次要複本上不會強化記錄檔記錄。 在超大規模資料庫中，記錄服務會以非同步方式將記錄套用至次要複本。 由於記錄檔寫入實際上不會在次要複本上進行，因此次要複本上的任何記錄檔 Io 會計僅供追蹤之用。
 
-## <a name="data-io-in-resource-utilization-statistics"></a>資源利用率統計中的資料 IO
+## <a name="data-io-in-resource-utilization-statistics"></a>資源使用量統計資料中的資料 IO
 
-在非超大規模資料庫中，相對於[資源治理](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance)資料 IOPS 限制的資料檔案組合讀取和寫入 IOPS`avg_data_io_percent`在[列中dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)和[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)視圖中報告。 在門戶中報告的值與_資料 IO 百分比 相同_。 
+在非超大規模資料庫資料庫中，系統會在資料`avg_data_io_percent`行中，將讀取和寫入 IOPS （相對於[資源治理](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance)資料 IOPS 限制）報告在 sys.databases 中。 [dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)和[sys.databases resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) views。 在入口網站中，會將相同的值報告為_資料 IO 百分比_。 
 
-在超大規模資料庫中，此列報告資料 IOPS 相對於僅計算副本上的本機存放區限制的資料 IOPS 利用率，特別是針對 RBPEX 和`tempdb`的 IO。 此列中的 100% 值表示資源治理正在限制本機存放區 IOPS。 如果這與性能問題相關，請調整工作負載以生成較少的 IO，或增加資料庫服務目標以增加資源治理_Max Data IOPS_ [限制](sql-database-vcore-resource-limits-single-databases.md)。 對於 RBPEX 讀取和寫入的資源治理，系統計算單個 8 KB I，而不是 SQL Server 引擎可能頒發的較大 I。 
+在超大規模資料庫資料庫中，此資料行會報告相對於計算複本上本機儲存體限制的資料 IOPS 使用率，特別是針對 RBPEX 和`tempdb`的 IO。 此資料行中的100% 值表示資源管理限制了本機儲存體 IOPS。 如果這與效能問題相互關聯，請調整工作負載以產生較少的 IO，或增加資料庫服務目標，以增加資源治理的_最大資料 IOPS_ [限制](sql-database-vcore-resource-limits-single-databases.md)。 針對 RBPEX 讀取和寫入的資源管理，系統會計算個別的 8 KB Io，而不是由 SQL Server 引擎發出的較大 IOs。 
 
-與遠端頁面伺服器的資料 IO 不會在資源利用率視圖或閘戶中報告，而是在[sys.dm_io_virtual_file_stats（） DMF](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/)中報告，如前面所述。
+針對遠端頁面伺服器的資料 IO 不會在資源使用率視圖或入口網站中報告，但如先前所述，在[dm_io_virtual_file_stats （）](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) DMF 中回報。
 
 
 ## <a name="additional-resources"></a>其他資源
 
-- 有關超大規模單個資料庫的 vCore 資源限制，請參閱[超大規模服務層 vCore 限制](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5)
-- 有關 Azure SQL 資料庫性能調優，請參閱[Azure SQL 資料庫中的查詢性能](sql-database-performance-guidance.md)
-- 有關使用查詢存儲進行性能調優，請參閱[使用查詢存儲的效能監控](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/)
-- 有關 DMV 監視腳本，請參閱[使用動態管理檢視監視性能 Azure SQL 資料庫](sql-database-monitoring-with-dmvs.md)
+- 如需超大規模資料庫單一資料庫的 vCore 資源限制，請參閱[超大規模資料庫服務層 VCore 限制](sql-database-vcore-resource-limits-single-databases.md#hyperscale---provisioned-compute---gen5)
+- 如需 Azure SQL Database 的效能微調，請參閱[Azure SQL Database 中的查詢效能](sql-database-performance-guidance.md)
+- 如需使用查詢存放區進行效能調整，請參閱[使用查詢存放區的效能監視](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store/)
+- 如需 DMV 監視腳本，請參閱[使用動態管理檢視監視效能 Azure SQL Database](sql-database-monitoring-with-dmvs.md)

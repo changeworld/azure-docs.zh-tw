@@ -1,15 +1,15 @@
 ---
-title: 可靠的演員計時器和提醒
-description: 介紹服務提供者和提醒服務結構可靠參與者，包括有關何時使用每個角色的指導。
+title: Reliable Actors 計時器和提醒
+description: Service Fabric Reliable Actors 的計時器和提醒簡介，包括每個使用時機的指導方針。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75639610"
 ---
 # <a name="actor-timers-and-reminders"></a>動作項目計時器和提醒
@@ -220,5 +220,5 @@ CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 
 ## <a name="next-steps"></a>後續步驟
 深入了解 Reliable Actor 事件和重新進入：
-* [參與者事件](service-fabric-reliable-actors-events.md)
-* [演員重入](service-fabric-reliable-actors-reentrancy.md)
+* [動作專案事件](service-fabric-reliable-actors-events.md)
+* [動作專案重新進入](service-fabric-reliable-actors-reentrancy.md)

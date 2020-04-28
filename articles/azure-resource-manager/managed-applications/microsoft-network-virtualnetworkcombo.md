@@ -1,15 +1,15 @@
 ---
-title: 虛擬網路通信 UI 元素
+title: VirtualNetworkCombo UI 元素
 description: 描述 Azure 入口網站的 Microsoft.Network.VirtualNetworkCombo UI 元素。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: 53c9653b44a6c9d26d49d37b351cf6000676e2d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75651965"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI 元素
@@ -110,7 +110,7 @@ ms.locfileid: "75651965"
 - 必須指定 `constraints.minAddressPrefixSize`。 任何現有虛擬網路的位址空間若低於指定的值，就無法加以選取。
 - 必須指定 `subnets`，且必須指定每個子網路的 `constraints.minAddressPrefixSize`。
 - 在建立新的虛擬網路時，會根據虛擬網路的位址前置詞和個別的 `addressPrefixSize`自動計算每個子網路的位址首碼。
-- 在使用現有的虛擬網路時，無法選取任何小於個別 `constraints.minAddressPrefixSize` 的子網路。 此外，如果指定，就無法選取未至少包含 `minAddressCount` 個可用位址的子網路。 預設值為**0**。 若要確保可用位址是連續的，請將 `requireContiguousAddresses` 指定為 **true**。 預設值**為 true**。
+- 在使用現有的虛擬網路時，無法選取任何小於個別 `constraints.minAddressPrefixSize` 的子網路。 此外，如果指定，就無法選取未至少包含 `minAddressCount` 個可用位址的子網路。 預設值為**0**。 若要確保可用位址是連續的，請將 `requireContiguousAddresses` 指定為 **true**。 預設值為 **true**。
 - 不支援在現有的虛擬網路中建立子網路。
 - 如果 `options.hideExisting` 為 **true**，使用者就無法選擇現有的虛擬網路。 預設值為 **false**。
 
