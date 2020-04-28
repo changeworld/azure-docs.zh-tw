@@ -1,7 +1,7 @@
 ---
 title: 具名實體辨識認知技能
 titleSuffix: Azure Cognitive Search
-description: 從 Azure 認知搜索中的 AI 擴充管道中的文本中提取人員、位置和組織命名的實體。
+description: 從 Azure 認知搜尋中的 AI 擴充管線中的文字，將人員、位置和組織的已命名實體解壓縮。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 127155e492b556ce1ce02b67cf0b0846b99ebcd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72791942"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>具名實體辨識認知技能
@@ -20,10 +20,10 @@ ms.locfileid: "72791942"
 **具名實體辨識**技能會從文字擷取具名實體。 可用實體包括下列類型：`person`、`location` 以及 `organization`。
 
 > [!IMPORTANT]
-> 命名實體識別技能現已被[微軟取代。](cognitive-search-skill-entity-recognition.md) 支援于 2019 年 2 月 15 日停止，API 于 2019 年 5 月 2 日從產品中刪除。 按照[棄用認知搜索技能](cognitive-search-skill-deprecated.md)中的建議遷移到受支援的技能。
+> 現在已停止命名實體辨識技能， [EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)。 2019年2月15日停止支援，而 API 已從產品的2019年5月2日移除。 請遵循已[淘汰的認知搜尋技能](cognitive-search-skill-deprecated.md)中的建議，遷移至支援的技能。
 
 > [!NOTE]
-> 隨著通過增加處理頻率、添加更多文檔或添加更多 AI 演算法來擴大範圍，您需要[附加計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
+> 當您藉由增加處理頻率、新增更多檔或新增更多 AI 演算法來擴展範圍時，您將需要[附加可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
 >
 > 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)。
 
@@ -32,7 +32,7 @@ ms.locfileid: "72791942"
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 ## <a name="data-limits"></a>資料限制
-記錄的最大大小應為 50，000 個字元（以[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)） 如果您需要先分割資料，然後再將該資料傳送至關鍵片語擷取器，請考慮使用 [文字分割技能](cognitive-search-skill-textsplit.md)。
+記錄的大小上限應為50000個字元，如所測量[`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)。 如果您需要先分割資料，然後再將該資料傳送至關鍵片語擷取器，請考慮使用 [文字分割技能](cognitive-search-skill-textsplit.md)。
 
 ## <a name="skill-parameters"></a>技能參數
 
@@ -42,7 +42,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 |--------------------|-------------|
 | categories    | 應擷取的類別陣列。  可能的類別類型：`"Person"`、`"Location"`、`"Organization"`。 如果未提供任何類別，則會傳回所有類型。|
 |defaultLanguageCode |  輸入文字的語言代碼。 支援下列語言：`de, en, es, fr, it`|
-| minimumPrecision  | 介於 0 和 1 之間的數字。 如果精確度低於此值，則不會傳回實體。 預設值是 0。|
+| minimumPrecision  | 介於 0 和 1 之間的數字。 如果精確度低於此值，則不會傳回實體。 預設值為 0。|
 
 ## <a name="skill-inputs"></a>技能輸入
 

@@ -1,5 +1,5 @@
 ---
-title: 在彈性資料庫用戶端庫中管理認證
+title: 管理彈性資料庫用戶端程式庫中的認證
 description: 如何設定彈性資料庫應用程式的正確認證層級 (管理員到唯讀)
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/03/2019
 ms.openlocfilehash: 91689a32a128584aade8081905e3d1aa3ecb0a97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823569"
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>用來存取彈性資料庫用戶端程式庫的認證
@@ -74,7 +74,7 @@ using (SqlConnection conn = rangeMap.OpenConnectionForKey<int>(targetWarehouse, 
 
 ## <a name="see-also"></a>另請參閱
 
-[管理 Azure SQL Database 的資料庫和登入](sql-database-manage-logins.md)
+[管理 Azure SQL Database 中的資料庫和登入](sql-database-manage-logins.md)
 
 [保護您的 SQL Database](sql-database-security-overview.md)
 

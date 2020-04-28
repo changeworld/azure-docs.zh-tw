@@ -1,5 +1,5 @@
 ---
-title: 自動複製 SQL 資料同步中的架構更改
+title: 自動複寫 SQL 資料同步中的架構變更
 description: 了解如何在「Azure SQL 資料同步」中自動執行結構描述變更複寫。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
 ms.openlocfilehash: 639901975bbb66b9f410bea297d9e48cd96d6d1b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822440"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>在 Azure SQL 資料同步中自動執行結構描述變更複寫
@@ -31,7 +31,7 @@ ms.locfileid: "73822440"
 本文使用 ALTER TABLE 作為結構描述變更的範例，但此解決方案也適用於其他類型的結構描述變更。
 
 > [!IMPORTANT]
-> 建議您先仔細閱讀本文，特別是有關[疑難排解](#troubleshoot)和[其他考量](#other)的小節，再開始在您的同步環境中實作自動化結構描述變更複寫。 我們還建議使用 SQL[資料同步讀取跨多個雲和本機資料庫的同步資料](sql-database-sync-data.md)。某些資料庫操作可能會破壞本文中描述的解決方案。 您可能需要具備額外的 SQL Server 和 Transact-SQL 網域知識，才能針對這些問題進行疑難排解。
+> 建議您先仔細閱讀本文，特別是有關[疑難排解](#troubleshoot)和[其他考量](#other)的小節，再開始在您的同步環境中實作自動化結構描述變更複寫。 我們也建議您[使用 SQL 資料同步，在多個雲端和內部部署資料庫之間讀取同步資料](sql-database-sync-data.md)。某些資料庫作業可能會中斷本文所述的解決方案。 您可能需要具備額外的 SQL Server 和 Transact-SQL 網域知識，才能針對這些問題進行疑難排解。
 
 ![自動執行結構描述變更複寫](media/sql-database-update-sync-schema/automate-schema-changes.png)
 
@@ -199,7 +199,7 @@ END
 
 如果您想要清除結構描述變更追蹤資料表中的記錄，請使用 DELETE，而不是 TRUNCATE。 請一律不要使用 DBCC CHECKIDENT 在結構描述變更追蹤資料表中重新植入身分識別資料行。 如果需要重新植入，您可以建立新的結構描述變更追蹤資料表，然後在 DDL 觸發程序中更新資料表名稱。
 
-## <a name="other-considerations"></a><a name="other"></a> 其他考量
+## <a name="other-considerations"></a><a name="other"></a>其他考慮
 
 -   設定中樞和成員資料庫的資料庫使用者必須有足夠的權限，才能執行結構描述變更命令。
 
@@ -225,7 +225,7 @@ END
 -   設定資料同步
     - 在入口網站中 - [教學課程：設定 SQL 資料同步以同步處理 Azure SQL Database 與內部部署 SQL Server 之間的資料](sql-database-get-started-sql-data-sync.md)
     - 透過 PowerShell
-        -  [使用 PowerShell 在多個 Azure SQL 資料庫之間同步](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [使用 PowerShell 在多個 Azure SQL 資料庫之間進行同步處理](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [使用 PowerShell 設定「資料同步」在內部部署的 Azure SQL Database 和 SQL Server 之間進行同步處理](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Data Sync Agent - [適用於 Azure SQL Data Sync 的 Data Sync Agent](sql-database-data-sync-agent.md)
 -   最佳做法 - [Azure SQL 資料同步最佳做法](sql-database-best-practices-data-sync.md)

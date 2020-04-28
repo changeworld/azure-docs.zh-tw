@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: b8a65d4ae6aaac78e642c851a66b745a940fa0ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67593907"
 ---
 # <a name="analyze-edge-node-performance-in-microsoft-azure-cdn"></a>在 Microsoft Azure CDN 中分析邊緣節點效能
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 邊緣效能分析詳細提供 CDN 的資訊流量和頻寬使用量。 這項資訊可用來產生趨勢統計資料，讓您深入了解您的資產如何放入快取中和傳遞到您的用戶端。 這進而可讓您產生策略來設法最佳化內容傳遞，以及決定應該解決什麼問題以充分利用 CDN。 如此一來，不僅能夠改善資料傳遞的效能，還能夠減少 CDN 成本。
 
 > [!NOTE]
@@ -184,8 +184,8 @@ ms.locfileid: "67593907"
 | 5xx 錯誤 |包含的橫條圖可讓您檢視導致 500 系列回應碼的前 10 名要求。  這份報告中排除「502 錯誤的閘道」和「504 閘道逾時」回應碼。 |
 
 ## <a name="see-also"></a>另請參閱
-* [Azure CDN 概述](cdn-overview.md)
+* [Azure CDN 總覽](cdn-overview.md)
 * [Microsoft Azure CDN 中的即時統計資料](cdn-real-time-stats.md)
 * [使用規則引擎覆寫預設的 HTTP 行為](cdn-rules-engine.md)
-* [高級 HTTP 報告](cdn-advanced-http-reports.md)
+* [Advanced HTTP 報告](cdn-advanced-http-reports.md)
 

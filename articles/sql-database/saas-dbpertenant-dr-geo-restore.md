@@ -1,5 +1,5 @@
 ---
-title: SaaS 應用：用於災害復原的異地冗余備份
+title: SaaS 應用程式：用於嚴重損壞修復的異地冗余備份
 description: 了解在發生中斷的狀況時，如何使用 Azure SQL Database 異地備援備份來復原多租用戶 SaaS 應用程式
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/14/2019
 ms.openlocfilehash: 270fc157fa14efa19ed30d35b614fb769804b72e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73826463"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>使用異地還原從資料庫備份復原多租用戶 SaaS 應用程式
@@ -41,8 +41,8 @@ ms.locfileid: "73826463"
  
 
 在開始本教學課程之前，請完成下列先決條件：
-* 部署每個租用戶應用程式的 Wingtip Tickets SaaS 資料庫。 要在五分鐘內進行部署，請參閱[部署和流覽每個租戶應用程式的 Wingtip 票證 SaaS 資料庫](saas-dbpertenant-get-started-deploy.md)。 
-* 安裝 Azure PowerShell。 有關詳細資訊，請參閱[使用 Azure PowerShell 入門](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 部署每個租用戶應用程式的 Wingtip Tickets SaaS 資料庫。 若要在五分鐘內完成部署，請參閱[部署及探索每一租使用者的 Wingtip 票證 SaaS 資料庫應用程式](saas-dbpertenant-get-started-deploy.md)。 
+* 安裝 Azure PowerShell。 如需詳細資訊，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
 ## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>地理還原復原模式簡介
 
@@ -62,12 +62,12 @@ ms.locfileid: "73826463"
 本教學課程會使用 Azure SQL Database 和 Azure 平台的功能來因應下列挑戰：
 
 * [Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)，以盡快保留所有所需的容量。 Azure Resource Manager 範本是用來在復原區域中佈建原始伺服器和彈性集區的鏡像映像。 也會針對佈建新租用戶，建立不同的伺服器和集區。
-* [彈性資料庫用戶端庫](sql-database-elastic-database-client-library.md)（EDCL），用於創建和維護租戶資料庫目錄。 擴充的目錄包含定期重新整理的集區和資料庫組態資訊。
-* EDCL 的[分片管理恢復功能](sql-database-elastic-database-recovery-manager.md)，用於在恢復和遣返期間維護目錄中的資料庫位置條目。  
+* [彈性資料庫用戶端程式庫](sql-database-elastic-database-client-library.md)（EDCL），以建立及維護租使用者資料庫目錄。 擴充的目錄包含定期重新整理的集區和資料庫組態資訊。
+* EDCL 的[分區管理復原功能](sql-database-elastic-database-recovery-manager.md)，可在復原和回復期間維護目錄中的資料庫位置專案。  
 * [異地還原](sql-database-disaster-recovery.md)可從自動維護的異地備援備份復原目錄和租用戶資料庫。 
 * 以租用戶優先順序發送的[非同步還原作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)，這些作業依照系統針對每個集區住列，並已批次方式處理，因此集區不會多載。 在執行之前或執行期間，如有必要，可以取消這些作業。   
 * [異地複寫](sql-database-geo-replication-overview.md)可在中斷之後將資料庫回復至原始區域。 當您使用異地複寫時，不會遺失任何資料且對租用戶的影響最小。
-* [SQL 伺服器 DNS 別名](dns-alias-overview.md)，以允許目錄同步進程連接到活動目錄，而不管其位置如何。  
+* [SQL SERVER DNS 別名](dns-alias-overview.md)，可讓目錄同步程式連線至使用中的目錄，而不論其位置為何。  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>取得災害復原指令碼
 

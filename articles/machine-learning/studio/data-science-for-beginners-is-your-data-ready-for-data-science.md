@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: ccc422dfb3105fd1e12569a84a4ebfd22182b225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73837808"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>已備妥資料來進行資料科學嗎？
@@ -100,8 +100,8 @@ ms.locfileid: "73837808"
 
 利用相關、連結、精確與足夠的資料，您擁有需要的所有要素，來進行一些高品質資料科學。
 
-請務必查看 Microsoft Azure 機器學習工作室（經典）中針對*初學者的資料科學*中的其他四個視頻。
+請務必從 Microsoft Azure Machine Learning Studio （傳統）查看*適用于初學者的資料科學*中的其他四個影片。
 
 ## <a name="next-steps"></a>後續步驟
-* [嘗試機器學習工作室（經典）的第一個資料科學實驗](create-experiment.md)
+* [嘗試使用 Machine Learning Studio 的第一個資料科學實驗（傳統）](create-experiment.md)
 * [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/preview/overview-what-is-azure-ml)

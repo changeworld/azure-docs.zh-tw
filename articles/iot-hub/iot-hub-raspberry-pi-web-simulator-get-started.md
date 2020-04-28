@@ -1,5 +1,5 @@
 ---
-title: 將樹莓派 Web 模擬器連接到 Azure IoT 中心 （Node.js）
+title: 將 Raspberry Pi web 模擬器連線至 Azure IoT 中樞（node.js）
 description: 將 Raspberry Pi Web 模擬器連線至 Azure IoT Hub，以便 Raspberry Pi 將資料傳送至 Azure 雲端。
 author: wesmc7777
 manager: philmea
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
 ms.openlocfilehash: efbe41be6c923f3547df86fd6faeb56bff5e0802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954520"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>將 Raspberry Pi 線上模擬器連線至 Azure IoT Hub (Node.js)
@@ -50,7 +50,7 @@ ms.locfileid: "73954520"
 
 ## <a name="what-you-learn"></a>您學到什麼
 
-* 如何建立 Azure IoT 中樞，並取得新的裝置連接字串。 如果沒有 Azure 帳戶，只需幾分鐘即可[創建免費的 Azure 試用帳戶](https://azure.microsoft.com/free/)。
+* 如何建立 Azure IoT 中樞，並取得新的裝置連接字串。 如果您沒有 Azure 帳戶，請在短短幾分鐘內[建立免費的 azure 試用帳戶](https://azure.microsoft.com/free/)。
 
 * 如何使用 Raspberry Pi 線上模擬器。
 
@@ -61,7 +61,7 @@ ms.locfileid: "73954520"
 按一下按鈕以啟動 Raspberry Pi 線上模擬器。
 
 > [!div class="button"]
-> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">啟動樹莓派模擬器</a>
+> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">啟動 Raspberry Pi 模擬器</a>
 
 Web 模擬器中有三個區域。
 
@@ -96,15 +96,15 @@ Web 模擬器中有三個區域。
 1. 
    ![取代裝置連接字串](media/iot-hub-raspberry-pi-web-simulator/1-connectionstring.png)
 
-2. 選擇 **"運行**"`npm start`或"鍵入"以運行應用程式。
+2. 選取 [**執行**] `npm start`或 [輸入] 以執行應用程式。
 
 您應該會看見下列輸出，顯示傳送至 IoT 中樞的感應器資料和訊息 ![輸出 - 從 Raspberry Pi 傳送至 IoT 中樞的感應器資料](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>閱讀中心收到的消息
+## <a name="read-the-messages-received-by-your-hub"></a>讀取您的中樞所接收的訊息
 
-監視 IoT 中心從類比設備接收的消息的一種方法是使用 Azure IoT 工具進行視覺化工作室代碼。 要瞭解更多資訊，請參閱[使用 Azure IoT 工具進行視覺化工作室代碼，在設備和 IoT 中心之間發送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+若要監視 IoT 中樞從模擬裝置接收到的訊息，其中一種方式是使用 Visual Studio Code 的 Azure IoT Tools。 若要深入瞭解，請參閱[使用 Visual Studio Code 的 Azure IoT Tools，在您的裝置與 IoT 中樞之間傳送和接收訊息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
-有關處理設備發送資料的更多方法，請繼續執行下一節。
+如需更多方式來處理您的裝置所傳送的資料，請繼續進行下一節。
 
 ## <a name="next-steps"></a>後續步驟
 

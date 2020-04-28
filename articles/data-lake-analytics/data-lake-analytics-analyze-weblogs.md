@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Data Lake Analytics 來分析網站記錄
-description: 瞭解如何使用 Azure 資料湖分析分析網站日誌來運行 U-SQL 函數和查詢。
+description: 瞭解如何使用 Azure Data Lake Analytics 來分析網站記錄，以執行 U-SQL 函數和查詢。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 04c6d4c74a82ccfbcbb0faecb0dca5ec495f6663
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71672887"
 ---
 # <a name="analyze-website-logs-using-azure-data-lake-analytics"></a>使用 Azure Data Lake Analytics 來分析網站記錄
@@ -29,7 +29,7 @@ ms.locfileid: "71672887"
 * **對於資料湖分析和適用於 Visual Studio 的資料湖工具有基本的認識**。 若要開始使用，請參閱：
 
   * [使用適用於 Visual Studio 的資料湖工具開發 U-SQL 指令碼](data-lake-analytics-data-lake-tools-get-started.md)。
-* **資料湖分析帳戶。**  請參閱[建立 Azure Data Lake Analytics 帳戶可節省時間](data-lake-analytics-get-started-portal.md)。
+* **Data Lake Analytics 帳戶。**  請參閱[建立 Azure Data Lake Analytics 帳戶可節省時間](data-lake-analytics-get-started-portal.md)。
 * **安裝範例資料。** 在 Azure 入口網站中開啟 Data Lake Analytics 帳戶，按一下左側功能表上的 [指令碼範例]****，然後再按一下 [複製範例資料]****。 
 
 ## <a name="connect-to-azure"></a>連線到 Azure
@@ -45,7 +45,7 @@ ms.locfileid: "71672887"
 **瀏覽您的資料湖分析帳戶**
 
 1. 從 Visual Studio 中，按 **CTRL+ALT+S**，開啟 [伺服器總管]****。
-2. 在 [伺服器總管]**** 中展開 [Azure]****，然後展開 [Data Lake Analytics]****。 如果有資料湖分析帳戶，您就會看到其清單。 您無法從 Visual Studio 建立資料湖分析帳戶。 要創建帳戶，請參閱[使用 Azure 門戶開始使用 Azure 資料湖分析](data-lake-analytics-get-started-portal.md)或使用 Azure PowerShell 開始使用 Azure[資料湖分析](data-lake-analytics-get-started-powershell.md)。
+2. 在 [伺服器總管]**** 中展開 [Azure]****，然後展開 [Data Lake Analytics]****。 如果有資料湖分析帳戶，您就會看到其清單。 您無法從 Visual Studio 建立資料湖分析帳戶。 若要建立帳戶，請參閱[使用 Azure 入口網站開始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-portal.md)或[使用 Azure PowerShell 開始使用 Azure Data Lake Analytics](data-lake-analytics-get-started-powershell.md)。
 
 ## <a name="develop-u-sql-application"></a>開發 U-SQL 應用程式
 U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U-SQL，請參閱 [開始使用 U-SQL 語言](data-lake-analytics-u-sql-get-started.md)。
@@ -58,7 +58,7 @@ U-SQL 應用程式基本上是 U-SQL 指令碼。 若要深入了解 U-SQL，請
 2. 選取 [U-SQL 專案] 類型。
 
     ![新的 U-SQL Visual Studio 專案](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-new-project.png)
-3. 按一下 [確定]****。 Visual Studio 會建立具有 Script.usql 檔案的方案。
+3. 按一下 [確定]  。 Visual Studio 會建立具有 Script.usql 檔案的方案。
 4. 在 Script.usql 檔案中輸入下列指令碼：
 
         // Create a database for easy reuse, so you don't need to read from a file every time.

@@ -12,10 +12,10 @@ ms.author: aamalvea
 ms.reviewer: carlrab
 ms.date: 01/30/2019
 ms.openlocfilehash: ba882176fbe17f7b74c786f421dde8fadd58d9b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73821310"
 ---
 # <a name="planning-for-azure-maintenance-events-in-azure-sql-database"></a>規劃 Azure SQL Database 的 Azure 維護事件
@@ -28,7 +28,7 @@ ms.locfileid: "73821310"
 
 ## <a name="what-to-expect-during-a-planned-maintenance-event"></a>計劃性維護事件期間的預期情況
 
-重新設定/容錯移轉通常會在 30 秒內完成，平均是 8 秒。 若已成功連線，您的應用程式必須重新連線至健康情況良好的新資料庫主要複本。 如果在資料庫在新主副本連線之前進行重新配置時嘗試新連接，則收到錯誤 40613（資料庫不可用）：伺服器上的資料庫"資料庫名稱"當前不可用。 請稍後重試連線。」 若您資料庫執行查詢的時間很長，此查詢將在重新設定期間中斷，並且需要重新啟動。
+重新設定/容錯移轉通常會在 30 秒內完成，平均是 8 秒。 若已成功連線，您的應用程式必須重新連線至健康情況良好的新資料庫主要複本。 如果在新的主要複本上線之前，資料庫正在進行重新設定時嘗試新的連接，您會收到錯誤40613（無法使用資料庫）：伺服器 ' {servername} ' 上的資料庫 ' {databasename} ' 目前無法使用。 請稍後重試連線。」 若您資料庫執行查詢的時間很長，此查詢將在重新設定期間中斷，並且需要重新啟動。
 
 ## <a name="retry-logic"></a>重試邏輯
 

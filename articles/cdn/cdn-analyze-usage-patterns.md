@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67594150"
 ---
 # <a name="core-reports-from-verizon"></a>來自 Verizon 的核心報告
@@ -119,7 +119,7 @@ ms.locfileid: "67594150"
 
 報告不包含：
 
-* 由於國家/地區篩選選項而被拒絕的請求。
+* 因國家/地區篩選選項而拒絕的要求。
 * 資產的要求，其標頭指出他們不應該快取。 例如，`Cache-Control: private`、`Cache-Control: no-cache` 或 `Pragma: no-cache` 標頭可防止資產受到快取。
 * 部分快取內容的位元組範圍要求。
 

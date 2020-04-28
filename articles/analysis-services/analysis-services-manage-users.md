@@ -1,6 +1,6 @@
 ---
-title: Azure 分析服務身份驗證和使用者許可權*微軟文檔
-description: 本文介紹 Azure 分析服務如何使用 Azure 活動目錄 （Azure AD） 進行標識管理和使用者身份驗證。
+title: Azure Analysis Services 驗證和使用者權限 |Microsoft Docs
+description: 本文說明 Azure Analysis Services 如何使用 Azure Active Directory （Azure AD）進行身分識別管理和使用者驗證。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 4a054c3c042e18f1679acd75e5ba5ad74f66edff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73572756"
 ---
 # <a name="authentication-and-user-permissions"></a>驗證和使用者權限
@@ -28,11 +28,11 @@ Azure Analysis Services 支援 [Azure AD B2B 共同作業](../active-directory/a
 
 這三個用戶端程式庫全都支援 Azure AD 互動式流程和非互動式驗證方法。 兩種非互動式方法 (Active Directory 密碼和 Active Directory 整合式驗證) 可以在利用 AMOMD 和 MSOLAP 的應用程式中使用。 這兩種方法絕對不會產生快顯對話方塊。
 
-用戶端應用程式（如 Excel 和 Power BI 桌面）以及 SSMS 和分析服務等工具為 Visual Studio 投影擴展，在更新到最新版本時安裝庫的最新版本。 Power BI 桌面、SSMS 和分析服務專案擴展版每月更新一次。 Excel 會[與 Office 365 一起更新](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)。 Office 365 更新較不頻繁，而且有些組織會使用延遲的通道，這表示更新會延遲多達三個月。
+像是 Excel 和 Power BI Desktop 的用戶端應用程式，以及 SSMS 和 Analysis Services 專案 Visual Studio 延伸模組等工具，會在更新至最新版本時安裝最新版的程式庫。 Power BI Desktop、SSMS 和 Analysis Services 專案延伸模組會每月更新一次。 Excel 會[與 Office 365 一起更新](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)。 Office 365 更新較不頻繁，而且有些組織會使用延遲的通道，這表示更新會延遲多達三個月。
 
 視您使用的用戶端應用程式或工具而定，驗證類型和登入方式可能會不同。 每個應用程式支援使用不同的功能來連線到 Azure Analysis Services 等雲端服務。
 
-Power BI 桌面、視覺化工作室和 SSMS 支援活動目錄通用身份驗證，這是一種支援 Azure 多重要素驗證 （MFA） 的互動式方法。 Azure MFA 有助於保護對資料與應用程式的存取，同時提供簡單的登入程序。 MFA 也提供具有數種驗證選項 (電話、簡訊、具有 PIN 的智慧卡或行動應用程式通知) 的強式驗證功能。 搭配 Azure AD 使用互動式 MFA 時，會出現快顯對話方塊以進行驗證。 **建議使用通用驗證**。
+Power BI Desktop、Visual Studio 和 SSMS 支援 Active Directory 通用驗證，這是一種同時支援 Azure 多重要素驗證（MFA）的互動式方法。 Azure MFA 有助於保護對資料與應用程式的存取，同時提供簡單的登入程序。 MFA 也提供具有數種驗證選項 (電話、簡訊、具有 PIN 的智慧卡或行動應用程式通知) 的強式驗證功能。 搭配 Azure AD 使用互動式 MFA 時，會出現快顯對話方塊以進行驗證。 **建議使用通用驗證**。
 
 如果使用 Windows 帳戶登入 Azure，但未選取或無法使用通用驗證 (Excel)，就需要 [Active Directory 同盟服務 (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)。 透過同盟，Azure AD 和 Office 365 使用者就可以使用內部部署認證進行驗證，而且可以存取 Azure 資源。
 
@@ -48,7 +48,7 @@ Azure Analysis Services 伺服器使用 Windows 驗證、Active Directory 密碼
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Visual Studio 使用具有 MFA 支援的主動目錄通用身份驗證連接到 Azure 分析服務。 系統會提示使用者在首次部署時登入 Azure。 使用者必須在其部署至的伺服器上，使用具有伺服器管理員權限的帳戶登入 Azure 。 第一次登入 Azure 時會指派權杖。 權杖緩存在記憶體中，以便將來重新連接。
+Visual Studio 使用 Active Directory 的通用驗證搭配 MFA 支援來連接到 Azure Analysis Services。 系統會提示使用者在首次部署時登入 Azure。 使用者必須在其部署至的伺服器上，使用具有伺服器管理員權限的帳戶登入 Azure 。 第一次登入 Azure 時會指派權杖。 權杖會在記憶體中快取，以供日後重新連接。
 
 ### <a name="power-bi-desktop"></a>Power BI Desktop
 
@@ -60,7 +60,7 @@ Excel 使用者可以使用 Windows 帳戶、組織識別碼 (電子郵件地址
 
 ## <a name="user-permissions"></a>使用者權限
 
-**伺服器管理員**專屬於 Azure Analysis Services 伺服器執行個體。 它們與 Azure 門戶、SSMS 和 Visual Studio 等工具連接，以執行添加資料庫和管理使用者角色等任務。 根據預設，系統會將建立伺服器的使用者自動新增成為 Analysis Services 伺服器管理員。 使用 Azure 入口網站或 SSMS，可以新增其他系統管理員。 伺服器管理員必須在相同的訂用帳戶中具有 Azure AD 租用戶的帳戶。 若要深入了解，請參閱[管理伺服器管理員](analysis-services-server-admins.md)。 
+**伺服器管理員**專屬於 Azure Analysis Services 伺服器執行個體。 它們會與 Azure 入口網站、SSMS 和 Visual Studio 等工具連接，以執行新增資料庫和管理使用者角色等工作。 根據預設，系統會將建立伺服器的使用者自動新增成為 Analysis Services 伺服器管理員。 使用 Azure 入口網站或 SSMS，可以新增其他系統管理員。 伺服器管理員必須在相同的訂用帳戶中具有 Azure AD 租用戶的帳戶。 若要深入了解，請參閱[管理伺服器管理員](analysis-services-server-admins.md)。 
 
 **資料庫使用者**會使用 Excel 或 Power BI 等用戶端應用程式來連線到模型資料庫。 使用者必須新增到資料庫角色。 資料庫角色會定義資料庫的系統管理員、處理或讀取權限。 請務必了解具有系統管理員權限之角色的資料庫使用者與伺服器管理員不同。 不過，根據預設，伺服器管理員也是資料庫管理員。 若要深入了解，請參閱[管理資料庫角色和使用者](analysis-services-database-users.md)。
 
@@ -68,17 +68,17 @@ Excel 使用者可以使用 Windows 帳戶、組織識別碼 (電子郵件地址
 
 ![Azure 入口網站中的存取控制](./media/analysis-services-manage-users/aas-manage-users-rbac.png)
 
-此層級的角色會套用到使用者或帳戶，讓他們可在入口網站或使用 Azure Resource Manager 範本完成需要執行的工作。 要瞭解更多資訊，請參閱[基於角色的存取控制](../role-based-access-control/overview.md)。 
+此層級的角色會套用到使用者或帳戶，讓他們可在入口網站或使用 Azure Resource Manager 範本完成需要執行的工作。 若要深入瞭解，請參閱以[角色為基礎的存取控制](../role-based-access-control/overview.md)。 
 
 ## <a name="database-roles"></a>資料庫角色
 
  針對表格式模型定義的角色就是資料庫角色。 也就是，這些角色的成員是由具有特定權限的 Azure AD 使用者和安全性群組所組成，而這些權限會定義成員可對模型資料庫採取的動作。 資料庫角色會建立為資料庫中的個別物件，而且只適用於該角色建立所在的資料庫。   
   
- 根據預設，當您建立新的表格式模型專案時，模型專案沒有任何角色。 角色可以通過在視覺化工作室中使用角色管理器對話方塊來定義。 在模型專案設計期間定義角色時，它們只會套用至模型工作區資料庫。 部署模型時，會將相同的角色套用至已部署的模型。 部署模型之後，伺服器和資料庫管理員可以使用 SSMS 來管理角色和成員。 若要深入了解，請參閱[管理資料庫角色和使用者](analysis-services-database-users.md)。
+ 根據預設，當您建立新的表格式模型專案時，模型專案沒有任何角色。 您可以使用 Visual Studio 中的 [角色管理員] 對話方塊來定義角色。 在模型專案設計期間定義角色時，它們只會套用至模型工作區資料庫。 部署模型時，會將相同的角色套用至已部署的模型。 部署模型之後，伺服器和資料庫管理員可以使用 SSMS 來管理角色和成員。 若要深入了解，請參閱[管理資料庫角色和使用者](analysis-services-database-users.md)。
   
 ## <a name="next-steps"></a>後續步驟
 
-[使用 Azure 活動目錄組管理對資源的訪問](../active-directory/fundamentals/active-directory-manage-groups.md)   
+[使用 Azure Active Directory 群組來管理資源的存取權](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [管理資料庫角色和使用者](analysis-services-database-users.md)  
 [管理伺服器管理員](analysis-services-server-admins.md)  
-[基於角色的存取控制](../role-based-access-control/overview.md)  
+[角色型存取控制](../role-based-access-control/overview.md)  

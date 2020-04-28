@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: b-juche
 ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65957032"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>使用 REST API 為 Azure NetApp Files 進行開發 
 
 Azure NetApp Files 服務的 REST API，會根據 NetApp 帳戶、容量集區、磁碟區和快照集等資源定義 HTTP 作業。 本文可協助您開始使用 Azure NetApp Files REST API。
 
-## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp 檔 REST API 規範
+## <a name="azure-netapp-files-rest-api-specification"></a>Azure NetApp Files REST API 規格
 
-Azure NetApp 檔的 REST API 規範通過[GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)發佈：
+Azure NetApp Files 的 REST API 規格會透過[GitHub](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager)發行：
 
 `https://github.com/Azure/azure-rest-api-specs/tree/master/specification/netapp/resource-manager`
 

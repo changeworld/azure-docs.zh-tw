@@ -1,6 +1,6 @@
 ---
-title: 向 Azure 開發人員測試實驗室中的 VM 添加專案 |微軟文檔
-description: 瞭解如何在 Azure DevTest 實驗室的實驗室中向虛擬機器添加專案
+title: 將成品新增至 Azure DevTest Labs 中的 VM |Microsoft Docs
+description: 瞭解如何在 Azure DevTest Labs 中將成品新增至實驗室中的虛擬機器
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 27fec279582d845972b87ac635c87c16c239924e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73901317"
 ---
 # <a name="add-an-artifact-to-a-vm"></a>新增 VM 構件
-創建 VM 時，可以將現有專案添加到其中。 這些專案可以來自[公共 DevTest Labs Git 存儲庫](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)，也可以來自您自己的 Git 存儲庫。 本文介紹如何在 Azure 門戶中使用 Azure PowerShell 添加專案。 
+建立 VM 時，您可以在其中加入現有的成品。 這些構件可以來自[公用 DevTest Labs Git 存放庫](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)，或來自您自己的 Git 存放庫。 本文說明如何使用 Azure PowerShell 在 Azure 入口網站中新增成品。 
 
 Azure DevTest Labs「構件」** 可讓您指定會在 VM 佈建時執行的「動作」**，例如執行 Windows PowerShell 指令碼、執行 Bash 命令，以及安裝軟體。 構件「參數」 ** 可讓您自訂適用於特定案例的構件。
 
-要瞭解如何創建自訂專案，請參閱文章：[創建自訂工件](devtest-lab-artifact-author.md)。
+若要瞭解如何建立自訂構件，請參閱[建立自訂構件](devtest-lab-artifact-author.md)一文。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
 1. 從實驗室清單中，選取您想要使用之 VM 所在的實驗室。  
 1. 選取 [我的虛擬機器]****。
@@ -65,7 +65,7 @@ Azure DevTest Labs「構件」** 可讓您指定會在 VM 佈建時執行的「�
 1. 選取 [確定]**** 以關閉 [選取的構件]**** 窗格。
 
 ## <a name="use-powershell"></a>使用 PowerShell
-以下腳本將指定的專案應用於指定的 VM。 [Invoke-AzResourceAction 命令](/powershell/module/az.resources/invoke-azresourceaction)是執行該操作的命令。  
+下列腳本會將指定的成品套用至指定的 VM。 [AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction)命令是執行作業的命令。  
 
 ```powershell
 #Requires -Module Az.Resources
@@ -164,9 +164,9 @@ if ($virtualMachine -ne $null) {
 ```
 
 ## <a name="next-steps"></a>後續步驟
-請參閱以下有關工件的文章：
+請參閱下列文章：
 
-- [為實驗室指定必填專案](devtest-lab-mandatory-artifacts.md)
+- [為實驗室指定強制構件](devtest-lab-mandatory-artifacts.md)
 - [建立自訂構件](devtest-lab-artifact-author.md)
 - [將成品存放庫新增至實驗室](devtest-lab-artifact-author.md)
 - [診斷構件失敗](devtest-lab-troubleshoot-artifact-failure.md)

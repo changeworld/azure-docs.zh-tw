@@ -1,7 +1,7 @@
 ---
-title: 有條件的認知技能
+title: 條件式認知技能
 titleSuffix: Azure Cognitive Search
-description: Azure 認知搜索中的條件技能支援篩選、創建預設值和合併技能集定義中的值。
+description: Azure 認知搜尋中的條件式技能可讓您篩選、建立預設值，以及合併技能集定義中的值。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,17 +9,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72792036"
 ---
-# <a name="conditional-cognitive-skill"></a>有條件的認知技能
+# <a name="conditional-cognitive-skill"></a>條件式認知技能
 
-條件**技能**使 Azure 認知搜索方案需要布林操作來確定要分配給輸出的資料。 這些方案包括篩選、分配預設值以及基於條件合併資料。
+**條件**式技能可讓需要布耳運算的 Azure 認知搜尋案例，判斷要指派給輸出的資料。 這些案例包括篩選、指派預設值，以及根據條件來合併資料。
 
-以下偽代碼演示了條件技能完成的任務：
+下列虛擬代碼示範條件式技能的完成：
 
 ```
 if (condition) 
@@ -29,19 +29,19 @@ else
 ```
 
 > [!NOTE]
-> 此技能不綁定到 Azure 認知服務 API，並且不會收取使用它的費用。 但是，您仍應[附加認知服務資源](cognitive-search-attach-cognitive-services.md)以覆蓋"免費"資源選項，該選項將您限制在每天少量的豐富。
+> 這項技能不會系結至 Azure 認知服務 API，您不需支付使用它的費用。 不過，您仍然應該[附加認知服務資源](cognitive-search-attach-cognitive-services.md)來覆寫「免費」資源選項，這會限制您每天的少量擴充。
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ConditionalSkill
 
 
-## <a name="evaluated-fields"></a>已評估欄位
+## <a name="evaluated-fields"></a>評估的欄位
 
-此技能特別，因為它的輸入是計算欄位的。
+這項技能特別特殊，因為它的輸入是已評估的欄位。
 
-以下項是運算式的有效值：
+下列專案是運算式的有效值：
 
--   注釋路徑（運算式中的路徑必須按"$（"和"）分隔）
+-   注釋路徑（運算式中的路徑必須以 "$ （" 和 "）" 分隔）
  <br/>
     範例：
     ```
@@ -49,7 +49,7 @@ Microsoft.Skills.Util.ConditionalSkill
         "= $(/document/content)"
     ```
 
--  文本（字串、數位、真、假、空） <br/>
+-  常值（字串、數位、true、false、null） <br/>
     範例：
     ```
        "= 'this is a string'"   // string (note the single quotation marks)
@@ -58,21 +58,21 @@ Microsoft.Skills.Util.ConditionalSkill
        "= null"                 // null value
     ```
 
--  使用比較運算子的運算式（*、！*、>=、>、<=、<） <br/>
+-  使用比較運算子（= =、！ =、>=、>、<=、<）的運算式 <br/>
     範例：
     ```
         "= $(/document/language) == 'en'"
         "= $(/document/sentiment) >= 0.5"
     ```
 
--   使用布林運算子的運算式（&&、*、！、*） <br/>
+-   使用布林運算子的運算式（&&、| |、！、^） <br/>
     範例：
     ```
         "= $(/document/language) == 'en' && $(/document/sentiment) > 0.5"
         "= !true"
     ```
 
--   使用數位運算子的運算式 （+、 -、 \*/、 %） <br/>
+-   使用數值運算子（+、-、 \*、/、%）的運算式 <br/>
     範例： 
     ```
         "= $(/document/sentiment) + 0.5"         // addition
@@ -80,25 +80,25 @@ Microsoft.Skills.Util.ConditionalSkill
         "= $(/document/lengthInMeters) / 0.3049" // division
     ```
 
-由於條件技能支援評估，因此可以在次要轉換方案中使用它。 例如，請參閱[技能定義 4](#transformation-example)。
+因為條件式技能支援評估，所以您可以在次要轉換案例中使用它。 例如，請參閱[技能定義 4](#transformation-example)。
 
 ## <a name="skill-inputs"></a>技能輸入
 輸入會區分大小寫。
 
 | 輸入   | 描述 |
 |-------------|-------------|
-| condition (條件)   | 此輸入是表示要計算的條件[的計算欄位](#evaluated-fields)。 此條件應計算為布林值 （*真*或*假*）。   <br/>  範例： <br/> "= 真實" <br/> " $（/文檔/語言） = "fr" <br/> = $（/文檔/頁//\*語言） = $（/文檔/預期語言） <br/> |
-| 當真    | 此輸入是一個[計算欄位](#evaluated-fields)，表示如果條件計算為*true*時要返回的值。 常量字串應以單引號 （'和'） 返回。 <br/>示例值： <br/> "= '合同'"<br/>"= $（/文檔/合同類型）" <br/> " $（/文檔/實體/）"\* <br/> |
-| 當假   | 此輸入是一個[計算欄位](#evaluated-fields)，表示如果條件計算為*false*時要返回的值。 <br/>示例值： <br/> "= '合同'"<br/>"= $（/文檔/合同類型）" <br/> " $（/文檔/實體/）"\* <br/>
+| condition (條件)   | 此輸入是一個[評估的欄位](#evaluated-fields)，代表要評估的條件。 此條件應評估為布林值（*true*或*false*）。   <br/>  範例： <br/> "= true" <br/> "= $ （/document/language） = = ' fr '" <br/> "= $ （/document/pages/\*/language） = = $ （/document/expectedLanguage）" <br/> |
+| whenTrue    | 如果條件評估為*true*，則此輸入是一個已[評估的欄位](#evaluated-fields)，代表要傳回的值。 常數位符串應該以單引號（' 和 '）來傳回。 <br/>範例值： <br/> "= ' 合約 '"<br/>"= $ （/document/contractType）" <br/> "= $ （/document/entities/\*）" <br/> |
+| whenFalse   | 如果條件評估為*false*，則此輸入是一個[評估的欄位](#evaluated-fields)，代表要傳回的值。 <br/>範例值： <br/> "= ' 合約 '"<br/>"= $ （/document/contractType）" <br/> "= $ （/document/entities/\*）" <br/>
 
 ## <a name="skill-outputs"></a>技能輸出
-有一個輸出，簡稱為"輸出"。 如果條件為 false 或條件為*true，則*當*False*時，它傳回值。
+有一個簡單的輸出，就是所謂的「輸出」。 如果條件為 false，則會傳回*whenFalse*值，如果條件為 true，則傳回*whenTrue* 。
 
 ## <a name="examples"></a>範例
 
-### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>示例技能定義 1：篩選文檔以僅返回法語文檔
+### <a name="sample-skill-definition-1-filter-documents-to-return-only-french-documents"></a>範例技能定義1：篩選檔以只傳回法文檔
 
-如果文檔的語言為法語，則以下輸出返回句子陣列（"/文檔/法語句"）。 如果語言不是法語，則該值設置為*null*。
+如果檔的語言為法文，下列輸出會傳回句子的陣列（"/document/frenchSentences"）。 如果語言不是法文，此值會設定為*null*。
 
 ```json
 {
@@ -112,12 +112,12 @@ Microsoft.Skills.Util.ConditionalSkill
     "outputs": [ { "name": "output", "targetName": "frenchSentences" } ]
 }
 ```
-如果"/文檔/法語句"用作其他技能的*上下文*，則該技能僅在"/文檔/法蘭西句子"未設置為*null*時運行。
+如果使用 "/document/frenchSentences" 做為另一項技能的*內容*，只有在 "/document/frenchSentences" 未設定為*null*時，才會執行該技能。
 
 
-### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>示例技能定義 2：為不存在的值設置預設值
+### <a name="sample-skill-definition-2-set-a-default-value-for-a-value-that-doesnt-exist"></a>範例技能定義2：為不存在的值設定預設值
 
-以下輸出創建一個注釋（"/文檔/語言"），該注釋設置為文檔的語言，如果語言未設置，則設置為"es"。
+下列輸出會建立設定為檔語言的注釋（"/document/languageWithDefault"），如果未設定語言，則為 "es"。
 
 ```json
 {
@@ -132,9 +132,9 @@ Microsoft.Skills.Util.ConditionalSkill
 }
 ```
 
-### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>示例技能定義 3：將兩個欄位的值合併為一個欄位
+### <a name="sample-skill-definition-3-merge-values-from-two-fields-into-one"></a>範例技能定義3：將兩個欄位中的值合併成一個
 
-在此示例中，某些句子具有*franceSentiment*屬性。 每當*franceSentiment*屬性為 null 時，我們都希望使用*英語情緒*值。 我們將輸出分配給稱為*情緒*的成員（"/文檔/情緒/*/情緒"）。
+在此範例中，有些句子具有*frenchSentiment*屬性。 每當*frenchSentiment*屬性為 null 時，我們會想要使用*englishSentiment*值。 我們會將輸出指派給名為*情感*（"/document/sentiment/*/sentiment"）的成員。
 
 ```json
 {
@@ -149,12 +149,12 @@ Microsoft.Skills.Util.ConditionalSkill
 }
 ```
 
-## <a name="transformation-example"></a>轉換示例
-### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>示例技能定義 4：單個欄位上的資料轉換
+## <a name="transformation-example"></a>轉換範例
+### <a name="sample-skill-definition-4-data-transformation-on-a-single-field"></a>範例技能定義4：單一欄位上的資料轉換
 
-在此示例中，我們收到介於 0 和 1 之間的*情緒*。 我們希望將其轉換為 -1 和 1 之間。 我們可以使用條件技能執行此次要轉換。
+在此範例中，我們會收到介於0到1之間的*情感*。 我們想要將它轉換為介於-1 和1之間。 我們可以使用條件式技能來執行此次要轉換。
 
-在此示例中，我們不使用技能的條件方面，因為條件始終*為 true*。
+在此範例中，我們不會使用技能的條件式層面，因為條件一律*為 true*。
 
 ```json
 {
@@ -170,7 +170,7 @@ Microsoft.Skills.Util.ConditionalSkill
 ```
 
 ## <a name="special-considerations"></a>特殊考量
-評估某些參數，因此您需要特別注意遵循記錄的模式。 運算式必須以等號開頭。 路徑必須以"$（"和"）分隔。 請確保將字串放在單個引號中。 這有助於賦值器區分字串和實際路徑和運算子。 此外，請確保在運算子周圍放置空白（例如，路徑中的"*"表示與乘法不同）。
+某些參數會進行評估，因此您必須特別小心遵循記載的模式。 運算式的開頭必須是等號。 路徑必須以 "$ （" 和 "）" 分隔。 請務必以單引號括住字串。 這可協助評估工具區分字串和實際的路徑和運算子。 此外，請務必在運算子前後加上空白字元（例如，路徑中的 "*" 表示與乘法不同的部分）。
 
 
 ## <a name="next-steps"></a>後續步驟

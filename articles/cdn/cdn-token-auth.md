@@ -15,17 +15,17 @@ ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
 ms.openlocfilehash: fa71f472294b91baebc2a6075ddb2b50123e545d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67593400"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>使用權杖驗證保護 Azure CDN 資產
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 權杖驗證是一種機制，可讓您防止「Azure 內容傳遞網路」(CDN) 將資產提供給未經授權的用戶端。 執行權杖驗證通常是為了防止內容「熱連結」(hotlinking)**，在熱連結中，不同的網站 (例如留言板) 會在未經許可的情況下使用您的資產。 熱連結會影響您的內容傳遞成本。 藉由在 CDN 上啟用權杖驗證，就會由 CDN 邊緣伺服器先驗證要求之後，再由 CDN 傳遞內容。 
 
@@ -33,7 +33,7 @@ ms.locfileid: "67593400"
 
 權杖驗證會藉由提出要求需包含權杖值 (其中包含關於要求者的編碼資訊) 的要求，來確認要求是由受信任的網站所產生。 只有在編碼資訊符合需求時，才會將內容提供給要求者，否則會拒絕要求。 您可以使用下列一或多個參數來設定需求：
 
-- 國家/地區：允許或拒絕源自其[國家/地區代碼](/previous-versions/azure/mt761717(v=azure.100))指定的國家/地區的請求。
+- 國家/地區：允許或拒絕源自其國家/地區[代碼](/previous-versions/azure/mt761717(v=azure.100))所指定之國家/地區的要求。
 - URL：只允許與指定資產或路徑相符的要求。
 - Host (主機)︰允許或拒絕在要求標頭中使用指定主機的要求。
 - Referrer (訪客來源)︰允許或拒絕來自指定訪客來源的要求。
@@ -66,7 +66,7 @@ ms.locfileid: "67593400"
 
 2. 將滑鼠移至 [HTTP 大型]**** 上，然後選取飛出視窗上的 [權杖驗證]****。 接著，您便可以依下列方式設定加密金鑰和加密參數：
 
-   1. 建立一或多個加密金鑰。 加密金鑰會區分大小寫，可包含英數字元的任何組合。 不允許任何其他類型的字元，包括空格。 長度上限是 250 個字元。 為確保加密金鑰是隨機的，建議您使用[OpenSSL 工具](https://www.openssl.org/)創建加密金鑰。 
+   1. 建立一或多個加密金鑰。 加密金鑰會區分大小寫，可包含英數字元的任何組合。 不允許任何其他類型的字元，包括空格。 長度上限是 250 個字元。 若要確保您的加密金鑰是隨機的，建議您使用[OpenSSL 工具](https://www.openssl.org/)來建立它們。 
 
       OpenSSL 工具具有以下語法：
 
@@ -86,7 +86,7 @@ ms.locfileid: "67593400"
 
       ![CDN 權杖驗證安裝識別碼](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
     
-   4. 使用加密工具設定加密參數，並產生權杖。 使用加密工具，您可以根據過期時間、國家/地區、引用者、協定和用戶端 IP（任意組合）允許或拒絕請求。 雖然組成權杖的參數沒有任何數目和組合上的限制，但是權杖的總長度限制為 512 個字元。 
+   4. 使用加密工具設定加密參數，並產生權杖。 使用 [加密] 工具，您可以根據到期時間、國家/地區、訪客、通訊協定和用戶端 IP （任何組合）來允許或拒絕要求。 雖然組成權杖的參數沒有任何數目和組合上的限制，但是權杖的總長度限制為 512 個字元。 
 
       ![CDN 加密工具](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
@@ -120,11 +120,11 @@ ms.locfileid: "67593400"
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>僅允許來自一個或多個指定國家/地區的請求。 來自所有其他國家/地區的請求被拒絕。 對每個國家/地區使用兩個字母 [ISO 3166 國家/地區碼](/previous-versions/azure/mt761717(v=azure.100))，並將每個國家/地區以逗號分隔；請勿加上空格。 例如，如果您只想允許來自美國和法國的存取，請輸入 `US,FR`。</td>
+      >    <td>只允許來自一或多個指定國家/地區的要求。 來自其他所有國家/地區的要求會遭到拒絕。 對每個國家/地區使用兩個字母 [ISO 3166 國家/地區碼](/previous-versions/azure/mt761717(v=azure.100))，並將每個國家/地區以逗號分隔；請勿加上空格。 例如，如果您只想允許來自美國和法國的存取，請輸入 `US,FR`。</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 
-      >    <td>拒絕來自一個或多個指定國家/地區的請求。 允許來自所有其他國家/地區的請求。 實作與 <b>ec_country_allow</b> 參數相同。 如果 <b>ec_country_allow</b> 和 <b>ec_country_deny</b> 參數中同時出現國家/地區碼，<b>ec_country_allow</b> 參數具有高優先順序。</td>
+      >    <td>拒絕來自一或多個指定國家/地區的要求。 允許來自所有其他國家/地區的要求。 實作與 <b>ec_country_allow</b> 參數相同。 如果 <b>ec_country_allow</b> 和 <b>ec_country_deny</b> 參數中同時出現國家/地區碼，<b>ec_country_allow</b> 參數具有高優先順序。</td>
       > </tr>
       > <tr>
       >    <td><b>ec_ref_allow</b></td>
@@ -140,7 +140,7 @@ ms.locfileid: "67593400"
       > </tr>
       > <tr> 
       >    <td><b>ec_ref_deny</b></td>
-      >    <td>拒絕來自指定訪客來源的要求。 實現與<b>ec_ref_allow</b>參數相同。 如果 <b>ec_ref_allow</b> 和 <b>ec_ref_deny</b> 參數中同時出現訪客來源，<b>ec_ref_allow</b> 參數具有高優先順序。</td>
+      >    <td>拒絕來自指定訪客來源的要求。 此實作為<b>ec_ref_allow</b>參數。 如果 <b>ec_ref_allow</b> 和 <b>ec_ref_deny</b> 參數中同時出現訪客來源，<b>ec_ref_allow</b> 參數具有高優先順序。</td>
       > </tr>
       > <tr> 
       >    <td><b>ec_proto_allow</b></td> 

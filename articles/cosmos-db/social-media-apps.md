@@ -1,5 +1,5 @@
 ---
-title: Azure 宇宙 DB 設計模式：社交媒體應用
+title: Azure Cosmos DB 設計模式：社交媒體應用程式
 description: 了解具有 Azure Cosmos DB 與其他 Azure 服務之儲存體彈性的社交網路設計模式。
 author: ealsur
 ms.service: cosmos-db
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: maquaran
 ms.openlocfilehash: 8428e417f5f86edca77edae6ca4b7ef84e5ff425
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73827306"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 跨足社交
@@ -96,7 +96,7 @@ Azure Cosmos DB 可利用自身的自動索引編製作業，確保所有屬性�
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-您可以擁有依建立日期排序的「最新」貼文串流。 您也可以擁有過去 24 小時內獲得較多讚的「最熱門」貼文串流。 您甚至可以依據邏輯 (例如關注者與興趣) 為每位使用者實作自訂串流。 而這仍屬於文章清單。 關鍵在於如何建立這些清單，而且讀取效能不會受到影響。 獲取這些清單之一後，可以使用[IN 關鍵字](sql-query-keywords.md#in)向 Cosmos DB 發出單個查詢，以便一次獲取帖子頁面。
+您可以擁有依建立日期排序的「最新」貼文串流。 您也可以擁有過去 24 小時內獲得較多讚的「最熱門」貼文串流。 您甚至可以依據邏輯 (例如關注者與興趣) 為每位使用者實作自訂串流。 而這仍屬於文章清單。 關鍵在於如何建立這些清單，而且讀取效能不會受到影響。 一旦取得其中一個清單，您就可以使用[IN 關鍵字](sql-query-keywords.md#in)發出單一查詢 Cosmos DB，一次取得貼文的頁面。
 
 您可以使用 [Azure App Service](https://azure.microsoft.com/services/app-service/) 的背景處理序 [Webjobs](../app-service/webjobs-create.md) 來建置摘要串流。 建立貼文之後，即可使用 [Azure 儲存體](https://azure.microsoft.com/services/storage/) [佇列](../storage/queues/storage-dotnet-how-to-use-queues.md)來觸發背景處理，以及使用 [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 來觸發 WebJobs，其中會根據您自己的自訂邏輯，在串流內實作貼文傳播。
 
@@ -194,13 +194,13 @@ Azure Cosmos DB 可利用自身的自動索引編製作業，確保所有屬性�
 
 使用者將可幸運地產生許多內容。 而您應該能夠提供功能來搜尋和尋找可能未直接在其內容串流中的內容，這些內容未直接在其內容串流中的原因可能是您未關注建立者，也可能是您只是想要尋找 6 個月前所發的舊貼文。
 
-由於您使用的是 Azure Cosmos DB，因此在幾分鐘內可以輕鬆地使用[Azure 認知搜索](https://azure.microsoft.com/services/search/)實現搜尋引擎，而無需鍵入任何代碼，但搜索過程和 UI。
+由於您是使用 Azure Cosmos DB，因此您可以在幾分鐘內使用[Azure 認知搜尋](https://azure.microsoft.com/services/search/)輕鬆地執行搜尋引擎，而不需要輸入任何程式碼，除了搜尋程式和 UI 以外。
 
 為什麼這個程序這麼簡單？
 
-Azure 認知搜索實現他們所謂的[索引子](https://msdn.microsoft.com/library/azure/dn946891.aspx)，後臺進程在資料存儲庫中掛鉤，並自動添加、更新或刪除索引中的物件。 它們支援 [Azure SQL Database 索引子](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure Blob 索引子](../search/search-howto-indexing-azure-blob-storage.md)，甚至也支援 [Azure Cosmos DB 索引子](../search/search-howto-index-documentdb.md)。 資訊從 Cosmos DB 到 Azure 認知搜索的轉換非常簡單。 因為這兩項計數皆是以 JSON 格式來儲存資訊，您只需要[建立索引](../search/search-create-index-portal.md)，並從要編製索引的文件來對應屬性即可。 這樣就大功告成了！ 視資料大小而定，所有內容將可在短短幾分鐘內透過雲端基礎結構中的最佳搜尋即服務解決方案來搜尋。
+Azure 認知搜尋會執行其呼叫[索引子](https://msdn.microsoft.com/library/azure/dn946891.aspx)、在資料存放庫中攔截的背景處理常式，並自動新增、更新或移除您在索引中的物件。 它們支援 [Azure SQL Database 索引子](https://blogs.msdn.microsoft.com/kaevans/2015/03/06/indexing-azure-sql-database-with-azure-search/)、[Azure Blob 索引子](../search/search-howto-indexing-azure-blob-storage.md)，甚至也支援 [Azure Cosmos DB 索引子](../search/search-howto-index-documentdb.md)。 從 Cosmos DB 到 Azure 認知搜尋的資訊轉換相當簡單。 因為這兩項計數皆是以 JSON 格式來儲存資訊，您只需要[建立索引](../search/search-create-index-portal.md)，並從要編製索引的文件來對應屬性即可。 這樣就大功告成了！ 視資料大小而定，所有內容將可在短短幾分鐘內透過雲端基礎結構中的最佳搜尋即服務解決方案來搜尋。
 
-有關 Azure 認知搜索的詳細資訊，請訪問[希奇克的搜索指南](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)。
+如需有關 Azure 認知搜尋的詳細資訊，您可以造訪[漫遊指南以進行搜尋](https://blogs.msdn.microsoft.com/mvpawardprogram/2016/02/02/a-hitchhikers-guide-to-search/)。
 
 ## <a name="the-underlying-knowledge"></a>基礎知識
 
@@ -224,7 +224,7 @@ Azure 認知搜索實現他們所謂的[索引子](https://msdn.microsoft.com/li
 
 Cosmos DB 預設支援動態分割。 它會根據特定**資料分割索引鍵** (定義為您文件中的其中一項屬性) 自動建立資料分割。 定義正確的分割區索引鍵必須在設計階段完成。 如需詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割](partitioning-overview.md)。
 
-針對社交體驗，您的分割策略必須符合您查詢及寫入的方式。 （例如，在同一分區內讀取是可取的，並且通過在多個分區上展開寫入來避免"熱點"。某些選項包括：基於時態鍵（天/月/周）、按內容類別別、地理區域或按使用者劃分的分區。 這完全視您查詢資料及將它顯示於社交體驗的方式而定。
+針對社交體驗，您的分割策略必須符合您查詢及寫入的方式。 （例如，需要在相同分割區內進行讀取，並藉由將寫入分散到多個磁碟分割來避免「作用點」）。部分選項包括：根據時態索引鍵（日/月/周）、依內容分類、依地理區域或依使用者劃分的資料分割。 這完全視您查詢資料及將它顯示於社交體驗的方式而定。
 
 Cosmos DB 會透明地在所有資料分割上執行您的查詢 (包括[彙總](https://azure.microsoft.com/blog/planet-scale-aggregates-with-azure-documentdb/) (英文))，因此您不需要隨資料增加而新增任何邏輯。
 
@@ -248,7 +248,7 @@ Cosmos DB 可讓您按幾下就能透明地[將資料複寫至全球](../cosmos-
 
 ![Azure 服務之間社交網路互動的圖表](./media/social-media-apps/social-media-apps-azure-solution.png)
 
-事實上，這類案例並沒有萬靈丹。 正是由卓越服務組合所創造的協同效應，使我們能夠構建出色的體驗：Azure Cosmos DB 提供出色的社交應用程式的速度和自由性，Azure 認知搜索等一流搜索解決方案背後的智慧，Azure 應用服務能夠靈活地承載甚至不與語言無關的應用程式，而是強大的後臺進程和可擴展的 Azure 存儲和 Azure SQL 資料庫，用於存儲大量資料以及 Azure 機器學習的分析功能，創造知識和智慧，為您的流程提供回饋，並説明我們向正確的使用者提供正確的內容。
+事實上，這類案例並沒有萬靈丹。 這是結合絕佳服務所建立的協力，可讓我們打造絕佳的體驗： Azure Cosmos DB 提供絕佳的社交應用程式、第一類搜尋解決方案（例如 Azure 認知搜尋）背後的情報、Azure App 服務的彈性，甚至不受語言限制的應用程式，還有強大的背景流程，以及可擴充的 Azure 儲存體和 Azure SQL Database 來儲存大量資料和 Azure 機器的分析能力學習建立可提供意見反應給您的流程，並協助我們將正確的內容傳遞給正確使用者的知識和智慧。
 
 ## <a name="next-steps"></a>後續步驟
 

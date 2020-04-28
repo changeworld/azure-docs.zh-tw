@@ -1,5 +1,5 @@
 ---
-title: 具有地理複製的 SaaS 應用的災害復原
+title: 具有異地複寫的 SaaS 應用程式嚴重損壞修復
 description: 了解在發生中斷的狀況時如何使用 Azure SQL Database 異地複寫復原多租用戶 SaaS 應用程式
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: 0668ccf5ceb972dd120e4e3f37be6d879a12d0a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73811713"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>使用資料庫異地複寫進行多租用戶 SaaS 應用程式的災害復原
@@ -53,7 +53,7 @@ ms.locfileid: "73811713"
 
 * 安裝程式
     * 在復原區域中建立及維護鏡像映像環境。 在此復原環境中建立彈性集區並複寫任何資料庫，可保留復原區域中的容量。 維護此環境的工作，包括在新的租用戶資料庫佈建時加以複寫。  
-* 復原
+* 修復
     * 使用相應減少的復原環境來降低日常成本時，必須相應增加集區與資料庫，以達到復原區域中的完整運作容量
     * 讓新的租用戶盡快佈建於復原區域中  
     * 以最佳化方式依優先順序還原租用戶
@@ -91,8 +91,8 @@ ms.locfileid: "73811713"
 在開始進行復原程序之前，請先查看應用程式的正常健康狀態。
 1. 在您的網頁瀏覽器中，開啟 Wingtip Tickets 事件中樞 (http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net，將 &lt;user&gt; 取代為部署的使用者值)。
     * 捲動至頁面底部，並查看頁尾處的目錄伺服器名稱和位置。 此位置是您部署應用程式的區域。
-    *提示：將滑鼠懸停在位置上以放大顯示幕。*
-    事件中心在原始區域中的![健康狀態](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *提示：將滑鼠停留在位置上，以放大顯示畫面。*
+    原始區域中的事件中樞狀況![良好狀態](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. 按一下 Contoso Concert Hall 租用戶，並開啟其事件頁面。
     * 在頁尾中，查看租用戶伺服器名稱。 位置會與目錄伺服器的位置相同。
@@ -105,12 +105,12 @@ ms.locfileid: "73811713"
 在此工作中，您會開始進行將伺服器、彈性集區和資料庫的組態同步至租用戶目錄中的程序。 此程序會將目錄中的這些資訊保持在最新狀態。  此程序會處理使用中的目錄，無論目錄位於原始區域還是復原區域中。 組態資訊會作為復原程序的一部分，以確保復原環境與原始環境的一致性，並且在隨後的回復期間確保原始區域會透過在復原環境中所做的任何變更保有一致性。 此目錄也可用來追蹤租用戶資源的復原狀態
 
 > [!IMPORTANT]
-> 為簡單起見，同步過程和其他長時間運行的恢復和遣返過程在這些教程中作為本地 PowerShell 作業或在用戶端使用者登錄下運行的會話實現。 在您登入時核發的驗證權杖將在數小時後到期，屆時作業即會失敗。 在生產環境中，應以某種可靠、在服務主體下執行的 Azure 服務來實作長時間執行的程序。 請參閱[使用 Azure PowerShell 建立具有憑證的服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)。
+> 為了簡單起見，同步處理常式和其他長時間執行的復原和回復程式都會在這些教學課程中實作為本機 PowerShell 作業或在您用戶端使用者登入下執行的會話。 在您登入時核發的驗證權杖將在數小時後到期，屆時作業即會失敗。 在生產環境中，應以某種可靠、在服務主體下執行的 Azure 服務來實作長時間執行的程序。 請參閱[使用 Azure PowerShell 建立具有憑證的服務主體](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)。
 
-1. 在_PowerShell ISE 中_，打開 ...學習模組\UserConfig.psm1 檔。 請將第 10 和 11 行上的 `<resourcegroup>` 與 `<user>` 取代為您部署應用程式時所使用的值。  儲存檔案。
+1. 在_POWERSHELL ISE_中，開啟. ..\learning Modules\UserConfig.psm1 檔案。 請將第 10 和 11 行上的 `<resourcegroup>` 與 `<user>` 取代為您部署應用程式時所使用的值。  儲存檔案。
 
 2. 在 *PowerShell ISE* 中，開啟 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 指令碼，並設定：
-    * **$DemoScenario = 1**，啟動將租戶伺服器同步後臺作業，並將配置資訊彙集到目錄中
+    * **$DemoScenario = 1**，啟動將租使用者伺服器和集區設定資訊同步到目錄中的背景工作
 
 3. 按 **F5** 以執行同步指令碼。 新的 PowerShell 工作階段隨即開啟，以同步租用戶資源的組態。
 ![同步程序](media/saas-dbpertenant-dr-geo-replication/sync-process.png)
@@ -232,13 +232,13 @@ ms.locfileid: "73811713"
     ![事件中樞內已復原和新的租用戶](media/saas-dbpertenant-dr-geo-replication/events-hub-with-hawthorn-hall.png)
 
 2. 在 [Azure 入口網站](https://portal.azure.com)中，開啟資源群組的清單。  
-    * 請注意部署的資源組以及恢復資源組，以及 _-恢復_尾碼。  復原資源群組中包含所有在復原程序期間建立的資源，以及在中斷期間建立的新資源。  
+    * 請注意您已部署的資源群組，加上復原資源群組和 _-recovery_尾碼。  復原資源群組中包含所有在復原程序期間建立的資源，以及在中斷期間建立的新資源。  
 
 3. 開啟復原資源群組，並請查看下列項目：
    * 目錄的復原版本和 tenants1 伺服器 (具有 _-recovery_ 尾碼)。  這些伺服器上已還原的目錄和租用戶資料庫都具有在原始區域中使用的名稱。
 
-   * _租戶2-dpt-&lt;使用者&gt;-恢復_SQL 伺服器。  這是在中斷期間用來佈建新租用戶的伺服器。
-   * 名為"事件_&lt;-翼尖-dpt-恢復區域&gt;-&lt;使用者&gt;_ 的應用程式服務，這是事件應用的恢復實例。 
+   * _Tenants2-tenants1-dpt user&lt;-使用者&gt;_ 復原 SQL server。  這是在中斷期間用來佈建新租用戶的伺服器。
+   * App Service 名為_wingtip-tenants1-dpt user-&lt;recoveryregion&gt;-&lt;user&gt_;，這是事件應用程式的復原實例。 
 
      ![Azure 復原資源](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
@@ -280,7 +280,7 @@ ms.locfileid: "73811713"
 1. 在 *PowerShell ISE* 中，進入 ...\Learning Modules\Business Continuity and Disaster Recovery\DR-FailoverToReplica\Demo-FailoverToReplica.ps1 指令碼。
 
 2. 確認目錄同步程序仍在其 PowerShell 執行個體中執行。  如有必要，請藉由下列設定加以重新啟動：
-    * **$DemoScenario = 1**，開始將租戶伺服器、池和資料庫配置資訊同步到目錄中
+    * **$DemoScenario = 1**，開始將租使用者伺服器、集區和資料庫設定資訊同步到目錄中
     * 按 **F5** 以執行指令碼。
 
 3.  然後，若要啟動回復程序，請設定：

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
 ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73601936"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>從 Excel、Python 或 R 連線到 Azure Databricks
@@ -34,11 +34,11 @@ ms.locfileid: "73601936"
 
 1. 從 Azure Databricks 工作區中，瀏覽至 Databricks 叢集。
 
-    ![打開資料塊群集](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "打開資料塊群集")
+    ![開啟 Databricks 叢集](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "開啟 Databricks 叢集")
 
 2. 在 [組態]**** 索引標籤下，按一下 [JDBC/ODBC]**** 索引標籤，並複製 [伺服器主機名稱]**** 和 [HTTP 路徑]**** 的值。 您需要這些值來完成本文中的步驟。
 
-    ![獲取資料磚塊配置](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "獲取資料磚塊配置")
+    ![取得 Databricks 設定](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "取得 Databricks 設定")
 
 3. 在您的電腦上，根據應用程式啟動 **ODBC 資料來源**應用程式 (32 位元或 64 位元)。 若要從 Excel 連線，使用 32 位元版本。 若要從 R 和 Python 連線，使用 64 位元版本。
 
@@ -50,7 +50,7 @@ ms.locfileid: "73601936"
 
 5. 在 [Simba Spark ODBC 驅動程式]**** 對話方塊中，提供下列值：
 
-    ![配置 DSN](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "配置 DSN")
+    ![設定 DSN](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "設定 DSN")
 
     下表說明要在對話方塊中提供的值。
     
@@ -58,15 +58,15 @@ ms.locfileid: "73601936"
     |---------|---------|
     |**資料來源名稱**     | 提供資料來源的名稱。        |
     |**主機**     | 提供您在 Databricks 工作區複製的「伺服器主機名稱」** 值。        |
-    |**連接埠**     | 輸入 443**。        |
-    |**身份驗證** > **機制**     | 選取「使用者名稱和密碼」**。        |
+    |**通訊埠**     | 輸入 443**。        |
+    |**驗證** > **機制**     | 選取「使用者名稱和密碼」**。        |
     |**使用者名稱**     | 輸入 *token*。        |
     |**密碼**     | 輸入您在 Databricks 工作區複製的權杖值。 |
     
     在 DSN 設定對話方塊中，執行下列額外的步驟。
     
-    * 按一下 [HTTP 選項]****。 在開啟的對話方塊中，貼上從 Databricks 工作區複製的「HTTP 路徑」** 值。 按一下 [確定]****。
-    * 按一下 [SSL 選項]****。 在開啟的對話方塊中，選取 [啟用 SSL]**** 核取方塊。 按一下 [確定]****。
+    * 按一下 [HTTP 選項]****。 在開啟的對話方塊中，貼上從 Databricks 工作區複製的「HTTP 路徑」** 值。 按一下 [確定]  。
+    * 按一下 [SSL 選項]****。 在開啟的對話方塊中，選取 [啟用 SSL]**** 核取方塊。 按一下 [確定]  。
     * 按一下 [測試]**** 以測試與 Azure Databricks 的連線。 按一下 [確定]**** 儲存設定。
     * 在 [ODBC 資料來源管理員]**** 對話方塊中，按一下 [確定]****。
 
@@ -82,15 +82,15 @@ ms.locfileid: "73601936"
 
 2. 在 [從 ODBC]**** 對話方塊中，選取您稍早建立的 DSN，然後按一下 [確定]****。
 
-    ![選擇 DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "選擇 DSN")
+    ![選取 DSN](./media/connect-databricks-excel-python-r/excel-select-dsn.png "選取 DSN")
 
 3. 如果出現要您輸入認證的提示，請在使用者名稱中輸入 **token**。 針對密碼，請提供從 Databricks 工作區中擷取的權杖值。
 
-    ![為數據磚塊提供憑據](./media/connect-databricks-excel-python-r/excel-databricks-token.png "選擇 DSN")
+    ![提供 Databricks 的認證](./media/connect-databricks-excel-python-r/excel-databricks-token.png "選取 DSN")
 
 4. 從 [導覽器] 視窗中，選取您要載入到 Excel 的 Databricks 資料表，然後按一下 [載入]****。 
 
-    ![將 dta 載入到 Excel 中](./media/connect-databricks-excel-python-r/excel-load-data.png "將 dta 載入到 Excel 中")
+    ![將 dta 載入 Excel 中](./media/connect-databricks-excel-python-r/excel-load-data.png "將 dta 載入 Excel 中")
 
 當您的 Excel 活頁簿中有資料後，您可以對其執行分析作業。
 
@@ -102,7 +102,7 @@ ms.locfileid: "73601936"
 在本節中，您可以使用 R 語言的整合式開發環境 (IDE)，來參考 Azure Databricks 中的可用資料。 在開始之前，您必須已在電腦上安裝下列項目。
 
 * R 語言的整合式開發環境 (IDE)。 本文使用桌面版 RStudio。 您可以從 [R Studio 下載](https://www.rstudio.com/products/rstudio/download/)進行安裝。
-* 如果將適用于桌面的 RStudio 用作 IDE，則還要從[https://aka.ms/rclient/](https://aka.ms/rclient/)安裝 Microsoft R 用戶端。 
+* 如果您使用 RStudio 做為 IDE 的桌面，請同時從[https://aka.ms/rclient/](https://aka.ms/rclient/)安裝 Microsoft R Client。 
 
 開啟 RStudio 並執行下列步驟：
 
@@ -165,6 +165,6 @@ for row in cursor.fetchall():
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要瞭解從中將資料導入 Azure 資料塊的源，請參閱[Azure 資料塊的資料來源](/azure/databricks/data/data-sources/index)
+* 若要深入瞭解可將資料匯入 Azure Databricks 的來源，請參閱[Azure Databricks 的資料來源](/azure/databricks/data/data-sources/index)
 
 

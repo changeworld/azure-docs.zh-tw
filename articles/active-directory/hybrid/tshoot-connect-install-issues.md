@@ -16,13 +16,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e75ad29c5b4a76de5317991995f132c6cb53bbe3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70211835"
 ---
-# <a name="troubleshoot-azure-ad-connect-install-issues"></a>疑難排解：Azure AD 連接安裝問題
+# <a name="troubleshoot-azure-ad-connect-install-issues"></a>疑難排解： Azure AD Connect 安裝問題
 
 ## <a name="recommended-steps"></a>**建議的步驟**
 請確認您適用何種 [Azure AD Connect 安裝類型](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)。 如果您符合快速安裝的條件，則強烈建議您使用快速安裝。 快速安裝可讓您以最基本的選項完成安裝，因此發生問題的可能性較低。 
@@ -39,26 +39,26 @@ ms.locfileid: "70211835"
 
     ![AD 樹系帳戶](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
 
-### <a name="common-issues"></a>**常見問題**
+### <a name="common-issues"></a>**常見的問題**
 
-* [本地活動目錄的連接問題](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools)。
+* 內部[部署 Active Directory](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools)的連線問題。
 
 * [線上 Azure Active Directory 的連線問題](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-connectivity)。
 
-* [本地活動目錄的許可權問題](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)。
+* 內部[部署 Active Directory 的許可權問題](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)。
 
-## <a name="recommended-documents"></a>**推薦檔**
+## <a name="recommended-documents"></a>**建議的檔**
 * [Azure AD Connect 的必要條件](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
 * [選取要用於 Azure AD Connect 的安裝類型](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)
 * [使用快速設定開始使用 Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
 * [自訂 Azure AD Connect 安裝](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)
 * [Azure AD Connect：從舊版升級到最新版本](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
-* [Azure AD 連接：什麼是暫存伺服器？](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
+* [Azure AD Connect：什麼是預備伺服器？](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
 * [什麼是 ADConnectivityTool PowerShell 模組？](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
 
 ## <a name="next-steps"></a>後續步驟
 - [Azure AD Connect 同步](how-to-connect-sync-whatis.md)。
-- [什麼是混合標識？](whatis-hybrid-identity.md)
+- [什麼是混合式身分識別？](whatis-hybrid-identity.md)
 
 
 

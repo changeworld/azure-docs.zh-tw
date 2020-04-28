@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 01/03/2019
 ms.openlocfilehash: 79abaade22fc107fa4c848607ff48232eeeb58ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823770"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>跨相應放大的雲端資料庫報告 (預覽)
@@ -35,14 +35,14 @@ ms.locfileid: "73823770"
 * 使用者必須擁有 ALTER ANY EXTERNAL DATA SOURCE 權限。 這個權限包含在 ALTER DATABASE 權限中。
 * 需有 ALTER ANY EXTERNAL DATA SOURCE 權限，才能參考基礎資料來源。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 這些陳述式可在彈性查詢資料庫中建立分區化資料層的中繼資料表示法。
 
-1. [創建主金鑰](https://msdn.microsoft.com/library/ms174382.aspx)
+1. [建立主要金鑰](https://msdn.microsoft.com/library/ms174382.aspx)
 2. [CREATE DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [CREATE EXTERNAL DATA SOURCE](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [創建外部表](https://msdn.microsoft.com/library/dn935021.aspx)
+4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx)
 
 ## <a name="11-create-database-scoped-master-key-and-credentials"></a>1.1 建立資料庫範圍的主要金鑰和認證
 
@@ -54,7 +54,7 @@ ms.locfileid: "73823770"
     [;]
 
 > [!NOTE]
-> 確保 *"\<\>使用者名"* 不包含任何 *"\@伺服器名稱"* 尾碼。
+> 請確定*\<"username\>"* 不包含任何 *"\@servername"* 尾碼。
 
 ## <a name="12-create-external-data-sources"></a>1.2 建立外部資料來源
 
@@ -142,9 +142,9 @@ SCHEMA\_NAME 和 OBJECT\_NAME 子句會將外部資料表定義對應至不同�
 
 DISTRIBUTION 子句會指定用於此資料表的資料散發。 查詢處理器會利用 DISTRIBUTION 子句中提供的資訊來建置最有效率的查詢計劃。
 
-1. **SHARDED**表示資料在資料庫中水準分區。 用於資料散發的分割索引鍵是 **<sharding_column_name>** 參數。
-2. **REPLICATED**表示每個資料庫上都有表的相同副本。 您必須負責確保複本在所有資料庫上都相同。
-3. **ROUND\_ROBIN**表示使用與應用程式相關的分發方法對表進行水準分區。
+1. **分區化**表示資料會在資料庫之間水準分割。 用於資料散發的分割索引鍵是 **<sharding_column_name>** 參數。
+2. **已**複寫表示資料表的相同複本會存在於每個資料庫上。 您必須負責確保複本在所有資料庫上都相同。
+3. **迴圈\_** 配置資源表示使用應用程式相依的散發方法，以水準方式分割資料表。
 
 **資料層參考**：外部資料表 DDL 指的是外部資料來源。 外部資料來源會指定分區對應，以將找出資料層中的所有資料庫所需的資訊提供給外部資料表。
 

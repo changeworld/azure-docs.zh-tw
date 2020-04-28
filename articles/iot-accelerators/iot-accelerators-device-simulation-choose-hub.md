@@ -1,5 +1,5 @@
 ---
-title: 將現有的 IoT 中心與設備類比解決方案一起使用 - Azure |微軟文檔
+title: 使用現有的 IoT 中樞搭配裝置模擬解決方案-Azure |Microsoft Docs
 description: 本文說明如何設定「裝置模擬」解決方案加速器以使用現有的 IoT 中樞。
 author: dominicbetts
 manager: timlt
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73889186"
 ---
 # <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>使用現有的 IoT 中樞搭配裝置模擬解決方案加速器

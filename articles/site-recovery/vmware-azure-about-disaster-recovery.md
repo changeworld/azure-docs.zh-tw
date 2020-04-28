@@ -1,5 +1,5 @@
 ---
-title: VMware 災害復原與 Azure 網站恢復
+title: 使用 Azure Site Recovery 的 VMware 損毀修復
 description: 本文概述如何使用 Azure Site Recovery 進行 VMware VM 至 Azure 的災害復原。
 author: rayne-wiselman
 ms.service: site-recovery
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954400"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>關於 VMware VM 至 Azure 的災害復原
@@ -33,7 +33,7 @@ ms.locfileid: "73954400"
     - 此演練有助於確保當真實需求出現時，容錯移轉會如預期般運作。
     - 此演練會在不影響生產環境的情況下，執行測試容錯移轉。
 5. 如果發生中斷，您可執行完整容錯移轉至 Azure。 您可以容錯移轉單一機器，或建立可同時容錯移轉多部機器的復原方案。
-6. 在容錯移轉時，Azure VM 是從託管磁片或存儲帳戶中的 VM 資料創建的。 使用者可以繼續從 Azure VM 存取應用程式和工作負載
+6. 在容錯移轉時，會從受控磁片或儲存體帳戶中的 VM 資料建立 Azure Vm。 使用者可以繼續從 Azure VM 存取應用程式和工作負載
 7. 當內部部署網站恢復可用狀態時，您就可以從 Azure 進行容錯回復。
 8. 容錯回復後，當您再度從主要網站作業時，您就會開始再次將內部部署 VM 複寫至 Azure。
 
@@ -42,12 +42,12 @@ ms.locfileid: "73954400"
 
 Site Recovery 可複寫在支援的 VMware VM 或實體伺服器上執行的任何工作負載。 以下是您需要在您的環境中檢查的項目：
 
-- 如果您正在複寫 VMware VM，您執行的是正確的 VMware 虛擬化伺服器版本嗎？ [在此處查看](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers)。
-- 您要複寫的機器是否支援支援的作業系統？ [在此處查看](vmware-physical-azure-support-matrix.md#replicated-machines)。
-- 針對 Linux 災害復原，機器是否執行支援的檔案系統/客體儲存體？ [在此處查看](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
-- 您想要複寫的機器是否符合 Azure 需求？ [在此處查看](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。
-- 是否支援您的網路組態？ [在此處查看](vmware-physical-azure-support-matrix.md#network)。
-- 是否支援您的儲存體組態？ [在此處查看](vmware-physical-azure-support-matrix.md#storage)。
+- 如果您正在複寫 VMware VM，您執行的是正確的 VMware 虛擬化伺服器版本嗎？ [請查看這裡](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers)。
+- 您要複寫的機器是否支援支援的作業系統？ [請查看這裡](vmware-physical-azure-support-matrix.md#replicated-machines)。
+- 針對 Linux 災害復原，機器是否執行支援的檔案系統/客體儲存體？ [查看這裡](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
+- 您想要複寫的機器是否符合 Azure 需求？ [請查看這裡](vmware-physical-azure-support-matrix.md#azure-vm-requirements)。
+- 是否支援您的網路組態？ [請查看這裡](vmware-physical-azure-support-matrix.md#network)。
+- 是否支援您的儲存體組態？ [請查看這裡](vmware-physical-azure-support-matrix.md#storage)。
 
 
 ## <a name="what-do-i-need-to-set-up-in-azure-before-i-start"></a>開始之前，我需要在 Azure 中設定哪些項目？
@@ -55,12 +55,12 @@ Site Recovery 可複寫在支援的 VMware VM 或實體伺服器上執行的任�
 您需要在 Azure 中準備下列各項：
 
 1. 確認您的 Azure 帳戶具有在 Azure 中建立 VM 的權限。
-2. 創建 Azure 網路，Azure VM 在容錯移轉後從存儲帳戶或託管磁片創建時將加入該網路。
+2. 建立 azure Vm，以便在容錯移轉後從儲存體帳戶或受控磁片建立 Azure Vm 時，將會加入此網路。
 3. 設定 Site Recovery 的 Azure 復原服務保存庫。 此保存庫位於 Azure 入口網站中，用於部署、設定、協調、監視您的 Site Recovery 部署，以及進行其疑難排解。
 
-*需要更多説明？*
+*需要其他協助？*
 
-瞭解如何通過[驗證帳戶](tutorial-prepare-azure.md#verify-account-permissions)、創建[網路](tutorial-prepare-azure.md#set-up-an-azure-network)和[設置保存庫](tutorial-prepare-azure.md#create-a-recovery-services-vault)來設置 Azure。
+瞭解如何藉由[驗證您的帳戶](tutorial-prepare-azure.md#verify-account-permissions)、建立[網路](tutorial-prepare-azure.md#set-up-an-azure-network)和[設定保存庫](tutorial-prepare-azure.md#create-a-recovery-services-vault)來設定 Azure。
 
 
 
@@ -76,7 +76,7 @@ Site Recovery 可複寫在支援的 VMware VM 或實體伺服器上執行的任�
 2. 您需要檢查 VMware 基礎結構的相容性 (如果您先前未這麼做)。
 3. 確定您可以在容錯移轉後連線到 Azure VM。 在內部部署 Windows 機器上設定 RDP，或在 Linux 機器上設定 SSH。
 
-*需要更多説明？*
+*需要其他協助？*
 - 準備用於[自動探索](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery)以及[安裝行動服務](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-mobility-service-installation)的帳戶。
 - [確認](vmware-azure-tutorial-prepare-on-premises.md#check-vmware-requirements) VMware 設定相容。
 - 做好[準備](vmware-azure-tutorial-prepare-on-premises.md#prepare-to-connect-to-azure-vms-after-failover)，以便在容錯移轉後於 Azure 中連線。
@@ -92,14 +92,14 @@ Site Recovery 可複寫在支援的 VMware VM 或實體伺服器上執行的任�
     - 組態伺服器是單一內部部署機器。 針對 VMware 災害復原，建議您將其當作可從下載的 OVF 範本部署的 VMware VM 來部署。
     - 設定伺服器會協調內部部署與 Azure 之間的通訊。
     - 還有一些其他元件會在組態伺服器機器上執行。
-        - 進程伺服器接收、優化複製資料並將其發送到 Azure 中的緩存存儲帳戶。 它也會在您要複寫的機器上處理行動服務的自動安裝，並且在 VMware 伺服器上執行 VM 的自動探索。
+        - 進程伺服器會接收、優化複寫資料，並將其傳送至 Azure 中的快取儲存體帳戶。 它也會在您要複寫的機器上處理行動服務的自動安裝，並且在 VMware 伺服器上執行 VM 的自動探索。
         - 主要目標伺服器會在從 Azure 容錯回復期間，處理複寫資料。
     - 設定包括在保存庫中註冊組態伺服器、下載 MySQL 伺服器和 VMware PowerCLI，以及指定針對自動探索和行動服務安裝所建立的帳戶。
-4. **目標環境**：通過指定 Azure 訂閱和網路設置來設置目標 Azure 環境。
+4. **目標環境**：藉由指定您的 azure 訂用帳戶和網路設定，來設定您的目標 azure 環境。
 5. **複寫原則**：您可指定應如何進行複寫。 設定包含建立和儲存復原點的頻率，以及是否應該建立應用程式一致的快照集。
-6. **啟用複製**。 您可為內部部署機器啟用複寫。 如果您建立了用以安裝行動服務的帳戶，則該服務會在您為機器啟用複寫時安裝。 
+6. **啟用**複寫。 您可為內部部署機器啟用複寫。 如果您建立了用以安裝行動服務的帳戶，則該服務會在您為機器啟用複寫時安裝。 
 
-*需要更多説明？*
+*需要其他協助？*
 
 - 如需這些步驟的快速逐步解說，您可以試試看 [VMware 教學課程](vmware-azure-tutorial.md)，以及[實體伺服器逐步解說](physical-azure-disaster-recovery.md)。
 - [深入了解](vmware-azure-set-up-source.md)如何設定來源環境。

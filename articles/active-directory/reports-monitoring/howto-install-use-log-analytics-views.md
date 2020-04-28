@@ -1,6 +1,6 @@
 ---
-title: 如何安裝和使用日誌分析視圖 |微軟文檔
-description: 瞭解如何安裝和使用 Azure 活動目錄的日誌分析視圖
+title: 如何安裝及使用 log analytics views |Microsoft Docs
+description: 瞭解如何安裝和使用 log analytics views for Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,18 +18,18 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b17026e4cfbe69e36c8e459aa259fe16b1c9d80d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74014427"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安裝與使用適用於 Azure Active Directory 的記錄分析檢視
 
 Azure Active Directory 的記錄分析檢視可協助您分析和搜尋 Azure AD 租用戶中的 Azure AD 活動記錄。 Azure AD 活動記錄包含：
 
-* 稽核記錄：[稽核記錄活動報告](concept-audit-logs.md)允許您訪問租戶中執行的每個任務的歷史記錄。
-* 登錄日誌：使用[登錄活動報告](concept-sign-ins.md)，您可以確定誰執行了稽核記錄中報告的任務。
+* Audit logs： [ [audit logs] 活動報告](concept-audit-logs.md)可讓您存取在租使用者中執行之每項工作的歷程記錄。
+* 登入記錄：透過登[入活動報告](concept-sign-ins.md)，您可以判斷誰執行了 audit 記錄中所報告的工作。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -67,7 +67,7 @@ Azure Active Directory 的記錄分析檢視可協助您分析和搜尋 Azure AD
 
     ![建立規則](./media/howto-install-use-log-analytics-views/create-rule.png)
 
-6. 選取要警示的動作群組。 一般情況下，這可以是您要透過電子郵件或文字訊息通知的某個小組，或是使用 Webhook、Runbook、函式、邏輯應用程式或外部 ITSM 解決方案的自動化工作。 瞭解如何在[Azure 門戶中創建和管理操作組](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)。
+6. 選取要警示的動作群組。 一般情況下，這可以是您要透過電子郵件或文字訊息通知的某個小組，或是使用 Webhook、Runbook、函式、邏輯應用程式或外部 ITSM 解決方案的自動化工作。 瞭解如何[在 Azure 入口網站中建立和管理動作群組](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)。
 
 7. 選取 [建立警示規則]**** 以建立警示。 現在，在每次發生登入錯誤時，您都將收到警示。
 

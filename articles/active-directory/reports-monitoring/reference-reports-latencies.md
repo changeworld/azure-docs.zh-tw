@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6d031546bb4f1f05e9ea2abb5b74fe911b0b507f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74007710"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory 報告延遲
@@ -66,9 +66,9 @@ ms.locfileid: "74007710"
 
 ## <a name="risk-detections"></a>風險偵測
 
-Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來偵測與您使用者帳戶相關的可疑動作。 每個檢測到的可疑操作都存儲在稱為**風險檢測**的記錄中。
+Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來偵測與您使用者帳戶相關的可疑動作。 每個偵測到的可疑動作都會儲存在名為**風險偵測**的記錄中。
 
-下表列出了風險檢測的延遲資訊。
+下表列出風險偵測的延遲資訊。
 
 | Report | 最小值 | Average | 最大值 |
 | :-- | --- | --- | --- |
@@ -82,6 +82,6 @@ Azure AD 會使用調適性機器學習服務演算法和啟發學習法，來�
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure AD 報告概述](overview-reports.md)
+* [Azure AD 報表總覽](overview-reports.md)
 * [以程式設計方式存取 Azure AD 報告](concept-reporting-api.md)
-* [Azure 活動目錄風險檢測](concept-risk-events.md)
+* [Azure Active Directory 風險偵測](concept-risk-events.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute 專用對等互連：配置 IPsec 傳輸模式 - Windows 主機
+title: Azure ExpressRoute 私人對等互連：設定 IPsec 傳輸模式-Windows 主機
 description: 如何透過 ExpressRoute 私人對等互連使用 GPO 和 OU 在 Azure Windows VM 與內部部署 Windows 主機之間啟用 IPsec 傳輸模式。
 services: expressroute
 author: fabferri
@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
 ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74022000"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>設定 ExpressRoute 私人對等互連的 IPsec 傳輸模式
@@ -99,7 +99,7 @@ ms.locfileid: "74022000"
 
 * **Azure Windows VM：** vm1、vm2
 
-## <a name="1-create-a-gpo"></a><a name="creategpo"></a>1. 創建 GPO
+## <a name="1-create-a-gpo"></a><a name="creategpo"></a>1. 建立 GPO
 
 1. 若要建立連結至 OU 的新 GPO，請開啟群組原則管理嵌入式管理單元，並尋找 GPO 所將連結的 OU。 在此範例中，OU 的名稱為 **IPSecOU**。 
 
@@ -120,7 +120,7 @@ ms.locfileid: "74022000"
 
    [![12]][12]
 
-## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3. 定義 IP 篩選器操作
+## <a name="3-define-the-ip-filter-action"></a><a name="filteraction"></a>3. 定義 IP 篩選器動作
 
 1. 在下拉式清單中以滑鼠右鍵按一下 [Active Directory 上的 IP 安全性原則]****，然後按一下 [管理 IP 篩選清單和篩選動作...]****。
 
@@ -132,7 +132,7 @@ ms.locfileid: "74022000"
 3. 在 [IP 安全性篩選動作精靈]**** 上，按 [下一步]****。
 
    [![17]][17]
-4. 為篩選動作指定直覺式名稱，以方便後續尋找。 在此範例中，篩選動作的名稱為 **myEncryption**。 您也可以新增描述。 然後按 [下一步]****。
+4. 為篩選動作指定直覺式名稱，以方便後續尋找。 在此範例中，篩選動作的名稱為 **myEncryption**。 您也可以新增描述。 然後按 [下一步]  。
 
    [![18]][18]
 5. **交涉安全性**可讓您定義無法對另一部電腦建立 IPsec 時的行為。 選取 [交涉安全性]****，然後按 [下一步]****。
@@ -158,10 +158,10 @@ ms.locfileid: "74022000"
 1. 若要限定哪些類型的流量必須加密，請使用 **IP 篩選清單**。 在 [管理 IP 篩選清單]**** 索引標籤中按一下 [新增]****，以新增 IP 篩選清單。
 
    [![24]][24]
-2. 在 [名稱]**** 欄位中，輸入 IP 篩選清單的名稱。 例如 **azure-onpremises-HTTP8080**。 然後，按一下"**添加**"。
+2. 在 [名稱]**** 欄位中，輸入 IP 篩選清單的名稱。 例如 **azure-onpremises-HTTP8080**。 然後，按一下 [**新增**]。
 
    [![25]][25]
-3. 在 [IP 篩選描述和鏡像屬性]**** 頁面上，選取 [鏡像]****。 鏡像設定會比對雙向傳輸、而支援雙向通訊的封包。 然後按一下 [下一步]****。
+3. 在 [IP 篩選描述和鏡像屬性]**** 頁面上，選取 [鏡像]****。 鏡像設定會比對雙向傳輸、而支援雙向通訊的封包。 然後按一下 [下一步]  。
 
    [![26]][26]
 4. 在 [IP 流量來源]**** 頁面上，從 [來源位址：]**** 下拉式清單中選擇 [特定的 IP 位址或子網路]****。 
@@ -170,13 +170,13 @@ ms.locfileid: "74022000"
 5. 指定 IP 流量的來源位址下方的 [IP 位址或子網路：]****，然後按 [下一步]****。
 
    [![28]][28]
-6. 指定 [目的地位址：]**** 下方的 IP 位址或子網路。 然後按 [下一步]****。
+6. 指定 [目的地位址：]**** 下方的 IP 位址或子網路。 然後按 [下一步]  。
 
    [![29]][29]
-7. 在 [IP 通訊協定類型]**** 上，選取 [TCP]****。 然後按 [下一步]****。
+7. 在 [IP 通訊協定類型]**** 上，選取 [TCP]****。 然後按 [下一步]  。
 
    [![30]][30]
-8. 在 [IP 通訊協定連接埠]**** 頁面上，選取 [從任何連接埠]**** 和 [到此連接埠：]****。 在文字方塊中輸入 **8080**。 這些設定會指定只有目的地連接埠 8080 的 HTTP 流量會加密。 然後按 [下一步]****。
+8. 在 [IP 通訊協定連接埠]**** 頁面上，選取 [從任何連接埠]**** 和 [到此連接埠：]****。 在文字方塊中輸入 **8080**。 這些設定會指定只有目的地連接埠 8080 的 HTTP 流量會加密。 然後按 [下一步]  。
 
    [![31]][31]
 9. 檢視 IP 篩選清單。  IP 篩選器清單的組態 **azure-onpremises-HTTP8080** 會對符合下列準則的所有流量觸發加密程序：
@@ -207,14 +207,14 @@ ms.locfileid: "74022000"
 
 如果必須在內部部署位置與 Azure 子網路之間加以保護應用程式，您可以新增 IP 篩選清單，而不要修改現有的 IP 篩選清單。 建立 2 個 IP 篩選清單與相同 IPsec 原則的關聯，可提供較高的彈性，因為特定 IP 篩選清單可以隨時修改或移除，而不會影響到其他 IP 篩選清單。
 
-## <a name="6-create-an-ipsec-security-policy"></a><a name="ipsecpolicy"></a>6. 創建 IPsec 安全性原則 
+## <a name="6-create-an-ipsec-security-policy"></a><a name="ipsecpolicy"></a>6. 建立 IPsec 安全性原則 
 
 建立含有安全性規則的 IPsec 原則。
 
 1. 選取與 OU 相關聯的 **Active directory 上的 IP 安全性原則**。 按一下滑鼠右鍵，然後選取 [建立 IP 安全性原則]****。
 
    [![37]][37]
-2. 為安全性原則命名。 例如 **policy-azure-onpremises**。 然後按 [下一步]****。
+2. 為安全性原則命名。 例如 **policy-azure-onpremises**。 然後按 [下一步]  。
 
    [![38]][38]
 3. 不選取核取方塊而直接按 [下一步]****。
@@ -255,13 +255,13 @@ ms.locfileid: "74022000"
 7. Windows 支援四種不同類型的驗證：Kerberos、憑證、NTLMv2 和預先共用金鑰。 由於我們使用已加入網域的主機，請選取 [Active Directory 預設值 (Kerberos V5 通訊協定)]****，然後按 [下一步]****。
 
    [![47]][47]
-8. 新的原則會建立安全性規則：**azure-onpremises-HTTP8080**。 按一下 [確定]****。
+8. 新的原則會建立安全性規則：**azure-onpremises-HTTP8080**。 按一下 [確定]  。
 
    [![48]][48]
 
 IPsec 原則會要求目的地連接埠 8080 上的所有 HTTP 連線使用 IPsec 傳輸模式。 由於 HTTP 是純文字通訊協定，啟用安全性原則將可確保資料在透過 ExpressRoute 私人對等互連傳輸時會進行加密。 相較於採用進階安全性的 Windows 防火牆，Active Directory 的 IP 安全性原則在設定上會較複雜，但也容許較大程度的 IPsec 連線自訂。
 
-## <a name="8-assign-the-ipsec-gpo-to-the-ou"></a><a name="assigngpo"></a>8. 將 IPsec GPO 分配給 OU
+## <a name="8-assign-the-ipsec-gpo-to-the-ou"></a><a name="assigngpo"></a>8. 將 IPsec GPO 指派給 OU
 
 1. 檢視原則。 安全性群組原則已定義，但尚未指派。
 

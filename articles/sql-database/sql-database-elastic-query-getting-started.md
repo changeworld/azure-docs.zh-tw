@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 10/10/2019
 ms.openlocfilehash: bad52b364dc83994e7985fc80b1b9f9e7f50481e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823783"
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>跨相應放大雲端資料庫報告 (預覽)
@@ -33,7 +33,7 @@ ms.locfileid: "73823783"
 ## <a name="create-a-shard-map-manager-using-the-sample-app"></a>使用範例應用程式建立分區對應管理員
 在這裡，您將建立分區對應管理員以及數個分區，接著插入資料至分區。 若您的分區設定中已有分區資料，則可以略過下列步驟並移至下一節。
 
-1. 按照文章部分["下載並運行示例應用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1)"中的步驟生成並運行 **"使用彈性資料庫工具入門"** 應用程式範例。 完成所有步驟後，您將看到以下命令提示：
+1. 遵循[下載並執行範例應用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app-1)程式一節中的步驟，建立並執行**開始使用彈性資料庫工具**範例應用程式。 完成所有步驟之後，您會看到下列命令提示字元：
 
     ![命令提示字元][1]
 2. 在命令視窗中，輸入 "1"，然後按 **Enter**。 這會建立分區對應管理員，並加入兩個分區到伺服器。 然後輸入 "3"，然後按 **Enter**；重複此動作四次。 這會在您的分區中插入範例資料列。
@@ -46,7 +46,7 @@ ms.locfileid: "73823783"
    在下一節中，我們會建立支援更豐富的跨分區資料查詢的範例資料庫端點。
 
 ## <a name="create-an-elastic-query-database"></a>建立彈性的查詢資料庫
-1. 打開[Azure 門戶](https://portal.azure.com)並登錄。
+1. 開啟[Azure 入口網站](https://portal.azure.com)並登入。
 2. 在與分區安裝程式相同的伺服器中建立新的 Azure SQL 資料庫。 將資料庫命名為 "ElasticDBQuery"。
 
     ![Azure 入口網站和定價層][3]
@@ -68,7 +68,7 @@ ms.locfileid: "73823783"
         WITH IDENTITY = '<username>',
         SECRET = '<password>';
 
-    "使用者名"和"密碼"應與部分第 3 步中使用的登錄資訊相同，下載並在"**使用彈性資料庫工具入門"** 一文中[運行示例應用](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)。
+    「使用者名稱」和「密碼」應該與在**開始使用彈性資料庫工具**一文中[下載及執行範例應用程式](sql-database-elastic-scale-get-started.md#download-and-run-the-sample-app)一節的步驟3中所使用的登入資訊相同。
 
 ### <a name="external-data-sources"></a>外部資料來源
 若要建立外部資料來源，請在 ElasticDBQuery 資料庫上執行下列命令：
@@ -114,9 +114,9 @@ ms.locfileid: "73823783"
 3. 按一下 [從其他來源]****，然後按一下 [從 SQL Server]****。
 
    ![從其他來源的 Excel 匯入][5]
-4. 在 [ **資料連線精靈** ] 中，輸入伺服器名稱和登入認證。 然後按一下 [下一步]****。
+4. 在 [ **資料連線精靈** ] 中，輸入伺服器名稱和登入認證。 然後按一下 [下一步]  。
 5. 在對話方塊 [選取包含您想要的資料的資料庫]**** 中，選取 **ElasticDBQuery** 資料庫。
-6. 在清單檢視中選取 [客戶]**** 資料表，然後按 [下一步]****。 然後按一下 [完成]****。
+6. 在清單檢視中選取 [客戶]**** 資料表，然後按 [下一步]****。 然後按一下 [ **完成**]。
 7. 在 [匯入資料]**** 表單中，於 [選取您要在活頁簿中檢視此資料的方式]**** 下，選取 [資料表]****，然後按一下 [確定]****。
 
 儲存在不同分區中、來自 [客戶] **** 資料表的所有資料列會填入 Excel 工作表。

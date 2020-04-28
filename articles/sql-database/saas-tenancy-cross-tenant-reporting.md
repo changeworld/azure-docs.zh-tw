@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewers: billgib,ayolubek
 ms.date: 01/25/2019
 ms.openlocfilehash: c863946934df9990c14e49ef1a0a82bbc55b27c6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822071"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>使用分散式查詢跨租用戶報告
@@ -35,7 +35,7 @@ ms.locfileid: "73822071"
 若要完成本教學課程，請確定已完成下列必要條件：
 
 
-* 已部署 Wingtip Tickets SaaS Database Per Tenant 應用程式。 要在五分鐘內部署，請參閱[部署和流覽每個租戶應用程式的翼尖票證 SaaS 資料庫](saas-dbpertenant-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS Database Per Tenant 應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip 票證 SaaS 資料庫每一租使用者應用程式](saas-dbpertenant-get-started-deploy.md)
 * 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 已安裝 SQL Server Management Studio (SSMS)。 若要下載和安裝 SSMS，請參閱[下載 SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
@@ -52,7 +52,7 @@ SaaS 應用程式的其中一個機會是使用儲存在雲端的大量租用戶
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>取得 Wingtip Tickets SaaS Database Per Tenant 應用程式指令碼
 
-翼尖門票 SaaS 多租戶資料庫腳本和應用程式原始程式碼可在[翼尖門票SaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub存儲庫中提供。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
+Wingtip 票證 SaaS 多租使用者資料庫腳本和應用程式原始程式碼可在[.. wingtipticketssaas-multitenantdb-master-Wingtipticketssaas-dbpertenant-master](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存放庫中取得。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="create-ticket-sales-data"></a>建立票證銷售資料
 
@@ -95,7 +95,7 @@ SaaS 應用程式的其中一個機會是使用儲存在雲端的大量租用戶
    ![檢視](media/saas-tenancy-cross-tenant-reporting/views.png)
 
 2. 以滑鼠右鍵按一下 **dbo.Venues**。
-3. 選擇**腳本視圖作為** > **"創建新** > **查詢編輯器"視窗**
+3. 選取 [**腳本視圖] 做為** > [**建立新的** > **查詢編輯器] 視窗**
 
 產生其他任何 *Venue* 檢視的指令碼，以查看如何新增 *VenueId*。
 
@@ -105,7 +105,7 @@ SaaS 應用程式的其中一個機會是使用儲存在雲端的大量租用戶
 
 1. 在 PowerShell ISE** 中開啟 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\Demo-AdhocReporting.ps1**。 
 
-1. 設置 **$DemoScenario = 2**，_部署臨時報告資料庫_。
+1. 設定 **$DemoScenario = 2**，_部署隨選報表資料庫_。
 
 1. 按 **F5** 以執行指令碼並建立 adhocreporting** 資料庫。
 
@@ -147,7 +147,7 @@ SaaS 應用程式的其中一個機會是使用儲存在雲端的大量租用戶
 
 檢查執行計畫時，將滑鼠停留在計畫圖示上方，以取得詳細資料。 
 
-值得注意的是，定義外部資料來源時的設定 **DISTRIBUTION = SHARDED(VenueId)** 可改善許多情況的效能。 當每個*VenueId*映射到單個資料庫時，可以輕鬆遠端進行篩選，僅返回所需的資料。
+值得注意的是，定義外部資料來源時的設定 **DISTRIBUTION = SHARDED(VenueId)** 可改善許多情況的效能。 由於每個*VenueId*都會對應至個別的資料庫，因此篩選可以從遠端執行，只傳回所需的資料。
 
 1. 在 SSMS 中開啟 ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\Demo-AdhocReportingQueries.sql**。
 2. 確定您已連線到 **adhocreporting** 資料庫。

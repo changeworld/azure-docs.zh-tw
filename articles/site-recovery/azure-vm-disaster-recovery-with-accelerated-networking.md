@@ -1,5 +1,5 @@
 ---
-title: 通過 Azure 網站恢復為 Azure VM 災害復原啟用加速網路
+title: 使用 Azure Site Recovery 啟用適用于 Azure VM 嚴重損壞修復的加速網路
 description: 說明如何啟用加速網路與 Azure Site Recovery，以進行 Azure 虛擬機器災害復原
 services: site-recovery
 documentationcenter: ''
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 27691d8fab3e7c8ccd60351dc0be83898ff984ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73622439"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>加速網路與 Azure 虛擬機器災害復原

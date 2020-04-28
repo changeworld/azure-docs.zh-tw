@@ -1,6 +1,6 @@
 ---
-title: 將 Azure 連接到公共雲 |微軟文檔
-description: 描述將 Azure 連接到其他公共雲的各種方法
+title: 將 Azure 連接到公用雲端 |Microsoft Docs
+description: 說明將 Azure 連線至其他公用雲端的各種方式
 services: expressroute
 author: osamazia
 ms.service: expressroute
@@ -8,60 +8,60 @@ ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
 ms.openlocfilehash: b8a454c2a104dfe8545cf734bf0b020b8f749bb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73889635"
 ---
-# <a name="connecting-azure-with-public-clouds"></a>將 Azure 與公共雲連接
+# <a name="connecting-azure-with-public-clouds"></a>連接 Azure 與公用雲端
 
-許多企業由於業務和技術目標而正在實施多雲戰略。 其中包括成本、靈活性、功能可用性、冗余、資料主權等。此策略説明他們充分利用兩種雲。 
+許多企業都因為商務和技術目標，而追求了多雲端的策略。 其中包括成本、彈性、功能可用性、冗余、資料主權等。此策略可協助他們充分利用這兩個雲端。 
 
-這種方法也給企業在網路和應用程式體系結構方面帶來了挑戰。 其中一些挑戰是延遲和資料輸送量。 為了應對這些挑戰，客戶希望直接連接到多個雲。 某些服務提供者提供了一種解決方案，用於為客戶連接多個雲供應商。 在其他情況下，客戶可以部署自己的路由器來連接多個公共雲。
-## <a name="connectivity-via-expressroute"></a>通過快速路由連接
-ExpressRoute 允許客戶通過連接供應商推動的專用連線將其本地網路擴展到 Microsoft 雲中。 使用 ExpressRoute，客戶可以建立與 Microsoft 雲服務的連接。
+這種方法也會在網路和應用程式架構方面面臨企業面臨的挑戰。 其中一些挑戰是延遲和資料輸送量。 為了解決客戶想要直接連接到多個雲端的挑戰。 有些服務提供者會提供解決方案，以連接客戶的多個雲端提供者。 在其他情況下，客戶可以部署自己的路由器來連接多個公用雲端。
+## <a name="connectivity-via-expressroute"></a>透過 ExpressRoute 的連線能力
+ExpressRoute 可讓客戶透過連線提供者所提供的私人連線，將其內部部署網路延伸至 Microsoft 雲端。 透過 ExpressRoute，客戶可以建立與 Microsoft 雲端服務的連線。
 
-可通過快速路由進行連接的有三種方法。
+有三種方式可透過 ExpressRoute 連接。
 
-1. 第 3 層提供程式
-2. 第 2 層提供程式
+1. 層提供者
+2. L2 提供者
 3. 直接連接
 
-### <a name="layer3-provider"></a>第 3 層提供程式
+### <a name="layer3-provider"></a>層提供者
 
-第 3 層提供程式通常稱為 IP VPN 或 MPLS VPN 提供程式。 客戶利用這些供應商在其資料中心、分支機搆和雲之間實現多點連接。 客戶通過 BGP 或通過靜態預設路由連接到 L3 提供程式。 服務提供者在客戶網站、資料中心和公共雲之間通告路由。 
+層提供者通常稱為 IP VPN 或 MPLS VPN 提供者。 客戶會在其資料中心、分支和雲端之間，利用這些提供者來進行 multipoint 連線。 客戶透過 BGP 或透過靜態預設路由連接到 L3 提供者。 服務提供者會在客戶網站、資料中心和公用雲端之間通告路由。 
  
-通過第 3 層提供程式進行連接時，Microsoft 將通過 BGP 向服務提供者通告客戶 VNET 路由。 提供程式可以有兩個不同的實現。
+透過層提供者連線時，Microsoft 會將客戶 VNET 路由通告給服務提供者的 BGP。 提供者可以有兩個不同的執行方式。
 
 ![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
-如果來自所有雲供應商的流量都將到達客戶路由器，供應商可能會將每個雲供應商降落在單獨的 VRF 中。 如果客戶與服務提供者一起運行 BGP，則預設情況下這些路由將重新通告給其他雲供應商。 
+提供者可能會在不同的 VRF 中登陸每個雲端提供者，如果來自所有雲端提供者的流量會到達客戶路由器。 如果客戶與服務提供者一起執行 BGP，則預設會將這些路由重新公告至其他雲端提供者。 
 
-如果服務提供者將所有雲供應商都在同一 VRF 中登陸，則路由將從服務提供者直接通告給其他雲供應商。 這是假設標準 BGP 操作，預設情況下將 eBGP 路由通告給其他 eBGP 鄰居。
+如果服務提供者在同一個 VRF 中登陸所有的雲端提供者，則路由會直接從服務提供者通告給其他雲端提供者。 這是假設標準 BGP 作業，其中預設會將 eBGP 路由公告至其他 eBGP 鄰近專案。
 
-每個公共雲都有不同的首碼限制，因此分發路由時，服務提供者在分發路由時應小心謹慎。
+每個公用雲端都有不同的前置詞限制，因此在散發路由服務提供者時，應特別注意散發路由。
 
-### <a name="layer2-provider-and-direct-connection"></a>第 2 層提供程式和直接連接
+### <a name="layer2-provider-and-direct-connection"></a>L2 提供者和直接連接
 
-雖然兩種型號的物理連接是不同的，但在第3層BGP中，BGP直接在MSEE和客戶路由器之間建立。 對於快速路由直接客戶直接連接到 MSEE。 在第 2 層的情況下，服務提供者將 VLAN 從客戶場所擴展到雲。 客戶在 2 層網路頂部運行 BGP，將其 DC 連接到雲。
+雖然這兩種模型中的實體連線不同，但在層 BGP 是直接在 MSEE 與客戶路由器之間建立。 針對 ExpressRoute Direct 客戶，會直接連線至 MSEE。 如果是 L2，服務提供者會將 VLAN 從客戶的內部部署擴充至雲端。 客戶在第2方網路上執行 BGP，以將其 Dc 連線到雲端。
 ![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l2.png)
-在這兩種情況下，客戶都將與每個公共雲建立點對點連接。 客戶將建立與每個公共雲的單獨 BGP 連接。 預設情況下，一個雲供應商接收的路由將通告給其他雲供應商。 每個雲供應商都有不同的首碼限制，因此在發佈路由廣告時，客戶應注意這些限制。 客戶可以使用微軟的常用 BGP 旋鈕，同時從其他公共雲發佈廣告路線。
+在這兩種情況下，客戶都會有每個公用雲端的點對點連線。 客戶會建立與每個公用雲端的個別 BGP 連線。 依預設，一個雲端提供者接收到的路由將會公告至其他雲端提供者。 每個雲端提供者都有不同的前置詞限制，因此在通告路由時，客戶應負責這些限制。 客戶可以使用一般 BGP 旋鈕與 Microsoft，同時從其他公用雲端公告路由。
 
-## <a name="direct-connection-with-expressroute"></a>直接連接到快速路由
+## <a name="direct-connection-with-expressroute"></a>ExpressRoute 的直接連線
 
-客戶可以選擇將 ExpressRoute 直接連接到雲供應商的直接連接產品。 兩個雲供應商將背對背連接，BGP 將直接在其路由器之間建立。 這種類型的連接目前可供 Oracle 使用。
+客戶可以選擇直接將 ExpressRoute 連線到雲端提供者的直接連線供應專案。 兩個雲端提供者會連線回到後端，而 BGP 會在其路由器之間直接建立。 這種類型的連接目前可與 Oracle 搭配使用。
 
 ## <a name="site-to-site-vpn"></a>站對站 VPN
 
-客戶可以利用 Internet 將其在 Azure 中的實例與其他公共雲連接。 幾乎所有的雲供應商都提供網站到網站 VPN 功能。 然而，由於缺乏某些變種，可能會有不相容。 例如，某些雲供應商僅支援 IKEv1，因此該雲中需要 VPN 終止終結點。 對於支援 IKEv2 的雲供應商，可以在兩個雲供應商的 VPN 閘道之間建立直接隧道。
+客戶可以利用網際網路來連接其在 Azure 中的實例與其他公用雲端。 幾乎所有的雲端提供者都提供站對站 VPN 功能。 不過，因為缺少特定的變異數，所以可能會發生不相容的情況。 例如，有些雲端提供者只支援 IKEv1，因此該雲端中需要 VPN 終止端點。 對於支援 IKEv2 的雲端提供者，可以在兩個雲端提供者的 VPN 閘道上建立直接通道。
 
-網站到網站 VPN 不被視為高輸送量和低延遲解決方案。 但是，它可以用作物理連接的備份。
+站對站 VPN 不會被視為高輸送量和低延遲解決方案。 不過，它可以用來做為實體連線的備份。
 
 ## <a name="next-steps"></a>後續步驟
-有關快速路由和虛擬網路連接的任何問題，請參閱[ExpressRoute 常見問題解答][ER-FAQ]。
+如需 ExpressRoute 和虛擬網路連線能力的任何進一步問題，請參閱[EXPRESSROUTE 常見問題][ER-FAQ]。
 
-有關 Azure 和 Oracle 之間的連接[，請參閱設置 Azure 和 Oracle 雲之間的直接連接][ER-OCI]
+如需 Azure 與 Oracle 之間的連線能力，請參閱[設定 azure 和 Oracle 雲端之間的直接][ER-OCI]連線
 
 <!--Link References-->
 [ER-FAQ]: https://docs.microsoft.com/azure/expressroute/expressroute-faqs

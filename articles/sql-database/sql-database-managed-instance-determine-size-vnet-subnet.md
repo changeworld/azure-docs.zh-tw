@@ -1,5 +1,5 @@
 ---
-title: 託管實例確定 VNet/子網大小
+title: 受控實例決定 VNet/子網大小
 description: 本主題會講解如何計算要部署 Azure SQL Database 受控執行個體的子網路大小。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
 ms.openlocfilehash: 7f0ef26343284b7b668e71676114586f4bec8b9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73825746"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>決定 Azure SQL Database 受控執行個體的 VNet 子網路大小
@@ -26,10 +26,10 @@ Azure SQL Database 受控執行個體必須部署在 Azure [虛擬網路 (VNet)]
 
 當您建立受控執行個體時，Azure 會依據您在佈建期間選取的層來配置虛擬機器數目。 因為這些虛擬機器與您的子網路相關聯，所以它們需要 IP 位址。 為了確保正常作業和服務維護期間的高可用性，Azure 可能會配置額外的虛擬機器。 因此，子網路中所需的 IP 位址數目會大於該子網路中的受控執行個體數目。
 
-根據設計，受控執行個體在子網路中需要最少 16 個 IP 位址，可能會使用多達 256 個 IP 位址。 因此，在定義子網 IP 範圍時，可以使用 /28 和 /24 之間的子網路遮罩。 網路遮罩位為 /28（每個網路 14 個主機）對於單個通用或業務關鍵型部署來說，是一個很好的大小。 遮罩位 /27（每個網路 30 台主機）是同一 VNet 中的多個託管實例部署的理想選擇。 /26（62 台主機）和 /24（254 台主機）的遮罩位設置允許進一步擴展 VNet，以支援其他託管實例。
+根據設計，受控執行個體在子網路中需要最少 16 個 IP 位址，可能會使用多達 256 個 IP 位址。 因此，定義子網 IP 範圍時，您可以使用/28 和/24 之間的子網路遮罩。 網路遮罩位/28 （每個網路14部主機）是單一一般用途或業務關鍵部署的理想大小。 遮罩位/27 （每個網路30部主機）非常適合相同 VNet 中的多個受控執行個體部署。 /26 （62主機）和/24 （254主機）的 Mask 位設定允許進一步向外延展 VNet，以支援其他受控實例。
 
 > [!IMPORTANT]
-> 不支援 vCore 大小更改等縮放操作的最小值（如 vCore 大小更改）的子網大小是最低範圍。 強烈建議選擇具有首碼 /27 或最長首碼的子網。
+> 具有16個 IP 位址的子網大小是最小的，而且在不支援 vCore 大小變更的調整作業時，可能會受到限制。 強烈建議您選擇前置詞為/27 或最長前置詞的子網。
 
 ## <a name="determine-subnet-size"></a>決定子網路大小
 
@@ -46,7 +46,7 @@ Azure SQL Database 受控執行個體必須部署在 Azure [虛擬網路 (VNet)]
 
 ## <a name="next-steps"></a>後續步驟
 
-- 有關概述，請參閱[什麼是託管實例](sql-database-managed-instance.md)。
+- 如需總覽，請參閱[什麼是受控執行個體](sql-database-managed-instance.md)。
 - 深入了解[受控執行個體的連線架構](sql-database-managed-instance-connectivity-architecture.md)。
 - 了解如何[建立將在其中部署受控執行個體的 VNet](sql-database-managed-instance-create-vnet-subnet.md) (英文)
-- 有關 DNS 問題，請參閱[配置自訂 DNS](sql-database-managed-instance-custom-dns.md)
+- 如需 DNS 問題，請參閱設定[自訂 DNS](sql-database-managed-instance-custom-dns.md)

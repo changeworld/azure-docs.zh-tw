@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 資料工廠創建預測資料管道
+title: 使用 Azure Data Factory 建立預測性資料管線
 description: 說明如何使用 Azure Data Factory 和 Azure Machine Learning 建立預測管線
 services: data-factory
 documentationcenter: ''
@@ -12,24 +12,24 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: eba5df587d6bd6dda6083314cfb94836c6669393
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73683133"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>使用 Azure Machine Learning 和 Azure Data Factory 來建立預測管線
 
-> [!div class="op_single_selector" title1="轉型活動"]
-> * [蜂巢活動](data-factory-hive-activity.md)
+> [!div class="op_single_selector" title1="轉換活動"]
+> * [Hive 活動](data-factory-hive-activity.md)
 > * [Pig 活動](data-factory-pig-activity.md)
-> * [映射減少活動](data-factory-map-reduce.md)
-> * [Hadoop 流活動](data-factory-hadoop-streaming-activity.md)
+> * [MapReduce 活動](data-factory-map-reduce.md)
+> * [Hadoop 串流活動](data-factory-hadoop-streaming-activity.md)
 > * [Spark 活動](data-factory-spark.md)
-> * [機器學習批次處理執行活動](data-factory-azure-ml-batch-execution-activity.md)
+> * [Machine Learning 批次執行活動](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning 更新資源活動](data-factory-azure-ml-update-resource-activity.md)
 > * [預存程序活動](data-factory-stored-proc-activity.md)
-> * [資料湖分析 U-SQL 活動](data-factory-usql-activity.md)
+> * [Data Lake Analytics 的 U-SQL 活動](data-factory-usql-activity.md)
 > * [.NET 自訂活動](data-factory-use-custom-activities.md)
 
 ## <a name="introduction"></a>簡介
@@ -38,9 +38,9 @@ ms.locfileid: "73683133"
 
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-[Azure 機器學習](https://azure.microsoft.com/documentation/services/machine-learning/)使您能夠構建、測試和部署預測分析解決方案。 從高階觀點而言，由下列三個步驟完成這個動作：
+[Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)可讓您建立、測試及部署預測性分析解決方案。 從高階觀點而言，由下列三個步驟完成這個動作：
 
-1. **創建一個訓練實驗**。 您可以使用 Azure Machine Learning Studio 來執行此步驟。 Azure Machine Learning Studio 是一個共同作業的視覺化開發環境，可供您使用定型資料來將預測性分析模型定型及測試模型。
+1. **建立訓練實驗**。 您可以使用 Azure Machine Learning Studio 來執行此步驟。 Azure Machine Learning Studio 是一個共同作業的視覺化開發環境，可供您使用定型資料來將預測性分析模型定型及測試模型。
 2. **將其轉換為評分實驗**。 一旦您的模型已使用現有資料訓練，並做好使用該模型為新資料評分的準備之後，您準備並簡化用於評分實驗。
 3. **將其部署為 Web 服務**。 只要按一下，您就可以將評分實驗當做 Azure Web 服務發佈。 您可以透過此 Web 服務端點將資料傳送給您的模型，並從模型接收結果預測。
 
@@ -52,7 +52,7 @@ Data Factory 服務可讓您建立資料管線，以移動和轉換資料，然�
 請參閱 [Azure Data Factory 簡介](data-factory-introduction.md)和[建置您的第一個管線](data-factory-build-your-first-pipeline.md)文章，快速地開始使用 Azure Data Factory 服務。
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory 和 Machine Learning 一起合作
-Azure 資料工廠使您能夠輕鬆創建使用已發佈的[Azure 機器學習][azure-machine-learning]Web 服務進行預測分析的管道。 藉由在 Azure Data Factory 管線中使用**批次執行活動**，您便可以叫用 Azure Machine Learning Studio Web 服務來對批次中的資料進行預測。 如需詳細資訊，請參閱「使用批次執行活動來叫用 Azure Machine Learning Studio Web 服務」一節。
+Azure Data Factory 可讓您輕鬆地建立管線，使用已發佈的[Azure Machine Learning][azure-machine-learning] web 服務進行預測性分析。 藉由在 Azure Data Factory 管線中使用**批次執行活動**，您便可以叫用 Azure Machine Learning Studio Web 服務來對批次中的資料進行預測。 如需詳細資訊，請參閱「使用批次執行活動來叫用 Azure Machine Learning Studio Web 服務」一節。
 
 經過一段時間後，必須使用新的輸入資料集來重新訓練 Azure Machine Learning Studio 評分實驗中的預測模型。 您可以透過執行下列步驟，從 Data Factory 管線重新訓練 Azure Machine Learning Studio 模型：
 
@@ -80,7 +80,7 @@ Azure 資料工廠使您能夠輕鬆創建使用已發佈的[Azure 機器學習]
 > [!IMPORTANT]
 > 如果 Web 服務接受多個輸入，請使用 **webServiceInputs** 屬性，而不要使用 **webServiceInput**。 如需如何使用 webServiceInputs 屬性的範例，請參閱 [Web 服務需要多個輸入](#web-service-requires-multiple-inputs) 一節。
 >
-> **WebService輸入**/**WebService 輸入**和**WebService 輸出**屬性（**類型屬性**中）引用的資料集也必須包含在活動**輸入**和**輸出中**。
+> **WebServiceInput**/**webServiceInputs**和**webServiceOutputs**屬性（在**typeProperties**中）所參考的資料集也必須包含在活動**輸入**和**輸出**中。
 >
 > 在您的 Azure Machine Learning Studio 實驗中，Web 服務輸入和輸出連接埠及全域參數具有您可以自訂的預設名稱 ("input1"、"input2")。 您用於 webServiceInputs、webServiceOutputs 及 globalParameters 設定的名稱必須與實驗中的名稱完全相同。 您可以檢視您 Azure Machine Learning Studio 端點之 [批次執行說明] 頁面上的範例要求承載，來確認預期的對應。
 >
@@ -301,7 +301,7 @@ Azure 資料工廠使您能夠輕鬆創建使用已發佈的[Azure 機器學習]
       }
       ```
 
-      **開始**日期和**結束**日期時間都必須為[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **結束**時間是選用項目。 如果不為**結束**屬性指定值，則計算為"**開始 = 48 小時"。** 若要無限期地執行管線，請指定 **9999-09-09** 做為 **end** 屬性的值。 如需 JSON 屬性的詳細資料，請參閱 [JSON 指令碼參考](https://msdn.microsoft.com/library/dn835050.aspx) 。
+      **開始**和**結束**日期時間都必須是[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **結束**時間是選用項目。 如果您未指定**end**屬性的值，則會計算為 **「開始 + 48 時數」。** 若要無限期地執行管線，請指定 **9999-09-09** 做為 **end** 屬性的值。 如需 JSON 屬性的詳細資料，請參閱 [JSON 指令碼參考](https://msdn.microsoft.com/library/dn835050.aspx) 。
 
       > [!NOTE]
       > 您可自行選擇是否指定 AzureMLBatchExecution 活動的輸入。
@@ -405,7 +405,7 @@ Azure 資料工廠使您能夠輕鬆創建使用已發佈的[Azure 機器學習]
 在上述 JSON 範例中：
 
 * 已部署的 Azure Machine Learning Web 服務使用讀取器和寫入器模組，讀取 Azure SQL Database 的資料，或將資料寫入其中。 此 Web 服務會公開下列 4 個參數：資料庫伺服器名稱、資料庫名稱、伺服器使用者帳戶名稱和伺服器使用者帳戶密碼。
-* **開始**日期和**結束**日期時間都必須為[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **結束**時間是選用項目。 如果不為**結束**屬性指定值，則計算為"**開始 = 48 小時"。** 若要無限期地執行管線，請指定 **9999-09-09** 做為 **end** 屬性的值。 如需 JSON 屬性的詳細資料，請參閱 [JSON 指令碼參考](https://msdn.microsoft.com/library/dn835050.aspx) 。
+* **開始**和**結束**日期時間都必須是[ISO 格式](https://en.wikipedia.org/wiki/ISO_8601)。 例如：2014-10-14T16:32:41Z。 **結束**時間是選用項目。 如果您未指定**end**屬性的值，則會計算為 **「開始 + 48 時數」。** 若要無限期地執行管線，請指定 **9999-09-09** 做為 **end** 屬性的值。 如需 JSON 屬性的詳細資料，請參閱 [JSON 指令碼參考](https://msdn.microsoft.com/library/dn835050.aspx) 。
 
 ### <a name="other-scenarios"></a>其他案例
 #### <a name="web-service-requires-multiple-inputs"></a>Web 服務需要多個輸入

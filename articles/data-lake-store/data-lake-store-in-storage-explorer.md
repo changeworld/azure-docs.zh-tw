@@ -1,5 +1,5 @@
 ---
-title: 管理資料存儲存儲第 1 代資源 - Azure 存儲資源管理器
+title: 管理 Data Lake Storage Gen1 資源-Azure 儲存體總管
 description: 了解如何在 Azure 儲存體總管中存取和管理 Azure Data Lake Storage Gen1 資料與資源
 author: jejiang
 ms.service: data-lake-store
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: jejiang
 ms.openlocfilehash: a5117f72f933e1e48dc471a75624a8d3921f55af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73832268"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>使用儲存體總管管理 Azure Data Lake Storage Gen1 資源
@@ -142,7 +142,7 @@ Data Lake Storage Gen1 帳戶的資源包含資料夾和檔案。
 1. 選取您要下載的資料夾或檔案。
 2. 在主窗格工具列上選取 [下載] ****。
 3. 在 [選取要在其中儲存所下載檔案的資料夾]**** 對話方塊中，指定位置和名稱。
-4. 選取 [儲存]****。
+4. 選取 [儲存]  。
 
 ### <a name="open-a-folder-or-file-from-your-local-computer"></a>從本機電腦開啟資料夾或檔案
 
@@ -195,7 +195,7 @@ Data Lake Storage Gen1 帳戶的資源包含資料夾和檔案。
 ## <a name="next-steps"></a>後續步驟
 
 * 檢視 [最新的儲存體 Explorer 版本資訊與影片](https://www.storageexplorer.com)。
-* 瞭解如何在[Azure 存儲資源管理器中管理 Azure 宇宙 DB。](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)
-* [開始使用存儲資源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
+* 瞭解如何[管理 Azure 儲存體總管中的 Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/storage-explorer)。
+* [開始使用儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)。
 * [開始使用 Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview)。
 * 觀看[有關如何在 Azure 儲存體總管中使用 Azure Cosmos DB 的 YouTube 影片](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。

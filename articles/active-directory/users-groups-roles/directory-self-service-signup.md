@@ -1,6 +1,6 @@
 ---
-title: 電子郵件驗證使用者的自助服務註冊 - Azure AD |微軟文檔
-description: 在 Azure 活動目錄 （Azure AD） 租戶中使用自助服務註冊
+title: 以電子郵件驗證的使用者進行自助式註冊-Azure AD |Microsoft Docs
+description: 在 Azure Active Directory （Azure AD）租使用者中使用自助式註冊
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,24 +16,24 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 953837e22cdd3ba8a54d702eac61461739db82d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74027643"
 ---
-# <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什麼是 Azure 活動目錄的自助服務註冊？
+# <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什麼是 Azure Active Directory 的自助式註冊？
 
-本文介紹如何使用自助服務註冊來填充 Azure 活動目錄 （Azure AD） 中的組織。 如果要從非託管 Azure AD 組織接管功能變數名稱，請參閱[以管理員身份接管非託管目錄](domains-admin-takeover.md)。
+本文說明如何使用自助式註冊，以 Azure Active Directory （Azure AD）填入組織。 如果您想要從非受控 Azure AD 組織接管功能變數名稱，請參閱[以系統管理員身分接管非受控目錄](domains-admin-takeover.md)。
 
-## <a name="why-use-self-service-sign-up"></a>為什麼要使用自助服務註冊？
+## <a name="why-use-self-service-sign-up"></a>為何要使用自助式註冊？
 * 讓客戶更快取得他們想要的服務
 * 建立服務的電子郵件型供應項目
-* 創建基於電子郵件的註冊流，快速允許使用者使用易於記住的工作電子郵件別名創建標識
+* 建立以電子郵件為基礎的註冊流程，以快速允許使用者使用其易記的工作電子郵件別名來建立身分識別
 * 自助建立的 Azure AD 目錄可以轉換成可用於其他服務的受控目錄
 
 ## <a name="terms-and-definitions"></a>詞彙和定義
-* **自助服務註冊**：這是使用者註冊雲服務的方法，並根據其電子郵件域在 Azure AD 中自動為其創建標識。
+* **自助式註冊**：這是使用者用來註冊雲端服務的方法，並根據其電子郵件網域在 Azure AD 中自動建立身分識別。
 * **非受控 Azure AD 目錄**：這是建立身分識別的目錄。 非受控目錄是沒有全域管理員的目錄。
 * **電子郵件驗證的使用者**：這是 Azure AD 中的使用者帳戶類型。 在註冊自助式供應項目後自動建立身分識別的使用者，就是所謂的電子郵件驗證的使用者。 電子郵件驗證的使用者是加上 creationmethod=EmailVerified 標記之目錄的一般成員。
 
@@ -47,31 +47,31 @@ ms.locfileid: "74027643"
 管理員可以使用下列 Azure AD Cmdlet Set-MsolCompanySettings 參數來設定這些功能：
 
 * **AllowEmailVerifiedUsers** 控制使用者是否可以建立或加入目錄。 如果您將該參數設定為 $false，則經過電子郵件驗證的使用者都無法加入目錄。
-* **允許AdHoc訂閱**控制使用者執行自助服務註冊的能力。 如果將該參數設置為$false，則任何使用者都無法執行自助服務註冊。
+* **AllowAdHocSubscriptions**控制使用者執行自助式註冊的能力。 如果您將該參數設定為 [$false]，則沒有任何使用者可以執行自助式註冊。
   
-允許電子郵件驗證使用者和允許AdHoc訂閱是目錄範圍的設置，可應用於託管或非託管目錄。 以下是範例，其中：
+AllowEmailVerifiedUsers 和 AllowAdHocSubscriptions 是可套用至受管理或非受控目錄的全目錄設定。 以下是範例，其中：
 
 * 您要管理具有已驗證網域 (例如 contoso.com) 的目錄
-* 您可以使用來自不同目錄中的 B2B 協作來邀請contoso.com主目錄中不存在的使用者 （userdoesnotexist@contoso.com）
+* 您可以使用不同目錄中的 B2B 共同作業來邀請 contoso.com 主目錄中不存在userdoesnotexist@contoso.com的使用者（）
 * 主目錄已開啟 AllowEmailVerifiedUsers
 
 如果上述條件都成立，則會在主目錄中建立成員使用者，並在邀請目錄中建立 B2B 來賓使用者。
 
-流和 PowerApps 試用註冊不受 **"允許AdHoc訂閱"** 設置的控制。 如需詳細資訊，請參閱下列文章：
+流程和 PowerApps 試用版的註冊不受**AllowAdHocSubscriptions**設定所控制。 如需詳細資訊，請參閱下列文章：
 
 * [如何防止現有使用者開始使用 Power BI？](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
 * [組織中 Flow 的問與答](https://docs.microsoft.com/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>這些控制項如何一起運作？
-這兩個參數可以結合使用，以定義對自助服務註冊的精確控制。 例如，以下命令將允許使用者執行自助服務註冊，但前提是這些使用者已在 Azure AD 中擁有帳戶（換句話說，需要首先創建電子郵件驗證帳戶的使用者無法執行自助服務註冊）：
+這兩個參數可以搭配使用，以定義更精確的自助式註冊控制。 例如，下列命令可讓使用者執行自助式註冊，但只有當那些使用者已經在 Azure AD 中的帳戶時（換句話說，需要先建立電子郵件驗證帳戶的使用者無法執行自助式註冊），才會進行這項操作：
 
 ```powershell
     Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
 ```
 
-以程圖解釋了這些參數的不同組合以及目錄和自助服務註冊的結果條件。
+下列流程圖說明這些參數的不同組合，以及目錄和自助式註冊的結果條件。
 
-![自助服務註冊控制項的流程圖](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
+![自助式註冊控制項的流程圖](./media/directory-self-service-signup/SelfServiceSignUpControls.png)
 
 如需如何使用這些參數的詳細資訊和相關範，請參閱 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)。
 
@@ -79,7 +79,7 @@ ms.locfileid: "74027643"
 
 * [將自訂網域名稱新增到 Azure AD](../fundamentals/add-custom-domain.md)
 * [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)
-* [Azure 電源外殼](/powershell/azure/overview)
+* [Azure PowerShell](/powershell/azure/overview)
 * [Azure Cmdlet 參考](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
-* [關閉非託管目錄中的工作或學校帳戶](users-close-account.md)
+* [關閉非受控目錄中的工作或學校帳戶](users-close-account.md)

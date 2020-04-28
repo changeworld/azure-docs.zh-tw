@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 28a280ea7c3bf9ef84a1fff05da5090ed526fb12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73837464"
 ---
 # <a name="develop-for-azure-files-with-java"></a>使用 Java 開發 Azure 檔案服務
@@ -121,7 +121,7 @@ try
 ```
 
 ## <a name="create-a-directory"></a>建立目錄
-您也可以組織儲存體，方法是將檔案放在子目錄中，而不是將所有檔案都放在根目錄中。 Azure 檔案服務可讓您建立帳戶允許數量的目錄。 以下代碼將在根目錄下創建名為**示例目錄**的子目錄。
+您也可以組織儲存體，方法是將檔案放在子目錄中，而不是將所有檔案都放在根目錄中。 Azure 檔案服務可讓您建立帳戶允許數量的目錄。 下列程式碼會在根目錄底下建立名為**根目錄 sampledir**的子目錄。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -154,7 +154,7 @@ if ( containerDir.deleteIfExists() ) {
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>列舉 Azure 檔案共用的檔案和目錄
-通過在 CloudFileDirectory 引用上調用**listFiles 和目錄**，可以輕鬆獲取共用中的檔和目錄清單。 方法會傳回您可以逐一查看的 ListFileItem 物件清單。 例如，下列程式碼會列出根目錄內的檔案和目錄。
+藉由在 CloudFileDirectory 參考上呼叫**listFilesAndDirectories** ，即可輕鬆取得共用內的檔案和目錄清單。 方法會傳回您可以逐一查看的 ListFileItem 物件清單。 例如，下列程式碼會列出根目錄內的檔案和目錄。
 
 ```java
 //Get a reference to the root directory for the share.
@@ -224,11 +224,11 @@ if ( file.deleteIfExists() ) {
 ## <a name="next-steps"></a>後續步驟
 如果您想要深入了解其他 Azure 儲存體 API，請參考下列連結。
 
-* [用於 JAVA 開發人員](/java/azure)的 Azure /）
-* [用於 JAVA 的 Azure 存儲 SDK](https://github.com/azure/azure-storage-java)
+* [適用于 JAVA 開發人員的 Azure](/java/azure)/）
+* [適用于 JAVA 的 Azure 儲存體 SDK](https://github.com/azure/azure-storage-java)
 * [Azure Storage SDK for Android](https://github.com/azure/azure-storage-android)
 * [Azure 儲存體用戶端 SDK 參考](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
-* [Azure 存儲服務 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
+* [Azure 儲存體服務 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure 儲存體團隊部落格](https://blogs.msdn.com/b/windowsazurestorage/)
 * [使用 AzCopy 命令列公用程式傳輸資料](../common/storage-use-azcopy.md)
 * [針對 Azure 檔案服務問題進行疑難排解 - Windows](storage-troubleshoot-windows-file-connection-problems.md)

@@ -1,5 +1,5 @@
 ---
-title: 彈性縮放常見問題解答
+title: 彈性調整常見問題
 description: 有關 Azure SQL Database 彈性延展的常見問題集。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 3eedfb1e9ec59fbe12ee94a65d3702a7ef8ca95a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823647"
 ---
 # <a name="elastic-database-tools-frequently-asked-questions-faq"></a>彈性資料庫工具常見問題集 (FAQ)
@@ -54,6 +54,6 @@ ms.locfileid: "73823647"
 
 ## <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>分割合併工具是否會在分割或合併作業期間佈建 (或刪除) 資料庫
 
-否。 如果是「分割」 **** 作業，目標資料庫必須有適當的結構描述，而且必須向分區對應管理員登錄。  如果是「合併」 **** 作業，您必須從分區對應管理員刪除分區，然後再刪除資料庫。
+不可以。 如果是「分割」 **** 作業，目標資料庫必須有適當的結構描述，而且必須向分區對應管理員登錄。  如果是「合併」 **** 作業，您必須從分區對應管理員刪除分區，然後再刪除資料庫。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

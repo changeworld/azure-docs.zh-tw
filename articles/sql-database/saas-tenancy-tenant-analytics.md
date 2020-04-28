@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 12/18/2018
 ms.openlocfilehash: c589d9619da8b5150d0fb4752625571c48393552
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73826386"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>在單一租用戶應用程式中使用擷取的資料執行跨租用戶分析
@@ -24,7 +24,7 @@ ms.locfileid: "73826386"
 
 1.  從每個租用戶資料庫**擷取**資料並**載入**至分析存放區。
 2.  針對分析處理**轉換擷取的資料**。
-3.  使用**商業智慧**工具繪製有用的見解，從而指導決策。 
+3.  使用**商業智慧**工具來繪製出有用的深入解析，這可以引導您進行決策。 
 
 在本教學課程中，您將了解如何：
 
@@ -79,7 +79,7 @@ ms.locfileid: "73826386"
 在本教學課程中，分析是在票證銷售資料上執行。 在目前的步驟中，您會為所有租用戶產生票證資料。  稍後會擷取此資料以進行分析。 請確定您已如先前所述佈建租用戶的批次，以便獲得有意義的資料數量**。 足夠數量的資料可以公開不同票證購買模式的範圍。
 
 1. 在 PowerShell ISE 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1**，然後設定下列值：
-    - **$DemoScenario** = **1**購買所有場地的活動門票
+    - **$DemoScenario** = **1**個適用于所有地點的事件購買票證
 2. 按 **F5** 以執行指令碼並建立各地點中各個事件的票證購買歷程記錄。  指令碼會執行數分鐘以產生數以萬計的票證。
 
 ### <a name="deploy-the-analytics-store"></a>部署分析存放區
@@ -88,11 +88,11 @@ ms.locfileid: "73826386"
 在下列步驟中，您會部署分析存放區，稱為 **tenantanalytics**。 您也可以部署預先定義的資料表，稍後會在本教學課程中填入：
 1. 在 PowerShell ISE 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1** 
 2. 在指令碼中設定 $DemoScenario 變數，以符合您對於分析存放區的選擇：
-    - 要使用沒有列存儲的 SQL 資料庫 **，$DemoScenario** = **2**
-    - 要將 SQL 資料庫與列存儲一起使用 **，$DemoScenario** = **3**  
-3. 按**F5**運行創建租戶分析存儲的演示腳本（該腳本稱為*部署租戶分析\<XX>.ps1*腳本）。 
+    - 若要使用不含資料行存放區的 SQL database，請設定 **$DemoScenario** = **2**
+    - 若要搭配使用 SQL database 與資料行存放區，請設定 **$DemoScenario** = **3**  
+3. 按**F5**執行示範腳本（其會呼叫*部署-TenantAnalytics\<XX> ps1*腳本），以建立租使用者分析存放區。 
 
-現在，您已經部署了應用程式，並用有趣的租戶資料填充了它，請使用[SQL 伺服器管理工作室 （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)使用登錄 =*開發人員*、密碼 = *P\@ssword1*連接**租戶1-dpt-User&lt;&gt;** 和目錄**dpt-&lt;使用者&gt;** 伺服器。 如需詳細指引，請參閱[簡介教學課程](saas-dbpertenant-wingtip-app-overview.md)。
+現在您已部署應用程式，並使用有趣的租使用者資料加以填入，請使用[SQL Server Management Studio （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)來連接**tenants1&lt;-&gt; tenants1-dpt user-user**和**catalog&lt;-&gt; tenants1-dpt user-使用者**伺服器（使用 Login = *developer*，Password = *P\@ssword1*）。 如需詳細指引，請參閱[簡介教學課程](saas-dbpertenant-wingtip-app-overview.md)。
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
@@ -174,7 +174,7 @@ ms.locfileid: "73826386"
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. 在左側窗格中選擇 **"資料庫**"，然後輸入使用者名 =*開發人員*，然後輸入密碼 = *P\@ssword1*。 按一下 [連線]****。  
+5. 在左窗格中選取 [**資料庫**]，然後輸入 user name = *developer*，並輸入 password = *P\@ssword1*。 按一下 [ **連接**]。  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
@@ -239,6 +239,6 @@ AverageTicketsSold = AVERAGEX( SUMMARIZE( TableName, TableName[Venue Name] ), CA
 
 ## <a name="additional-resources"></a>其他資源
 
-- 其他[教程，建立在翼尖SaaS應用程式](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。
-- [彈性作業](elastic-jobs-overview.md)。
+- [以 Wingtip SaaS 應用程式為基礎的其他教學](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)課程。
+- [彈性工作](elastic-jobs-overview.md)。
 - [使用擷取的資料執行跨租用戶分析 - 多租用戶應用程式](saas-multitenantdb-tenant-analytics.md)

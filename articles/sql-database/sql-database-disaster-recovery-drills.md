@@ -1,5 +1,5 @@
 ---
-title: 災害復原演練
+title: 嚴重損壞修復演練
 description: 使用 Azure SQL Database 來執行災害復原鑽研的學習指引和最佳做法。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
 ms.openlocfilehash: 3ca00a03976ae38b7956616b8287220a7bc5998c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73825860"
 ---
 # <a name="performing-disaster-recovery-drill"></a>執行災害復原演練
@@ -38,9 +38,9 @@ ms.locfileid: "73825860"
 
 若要模擬中斷，您可以重新命名來源資料庫。 變更此名稱會導致應用程式連線失敗。
 
-### <a name="recovery"></a>復原
+### <a name="recovery"></a>修復
 
-* 執行資料庫的地理還原到不同的伺服器，[如此處](sql-database-disaster-recovery.md)所述。
+* 如[這裡](sql-database-disaster-recovery.md)所述，將資料庫異地還原到不同的伺服器。
 * 將應用程式組態變更為連接到復原資料庫，並遵循[在復原後設定資料庫](sql-database-disaster-recovery.md)指南以完成復原。
 
 ### <a name="validation"></a>驗證
@@ -55,7 +55,7 @@ ms.locfileid: "73825860"
 
 若要模擬中斷，您可以停用連接到資料庫的 Web 應用程式或虛擬機器。 這種中斷模擬會導致 Web 用戶端的連線失敗。
 
-### <a name="recovery"></a>復原
+### <a name="recovery"></a>修復
 
 * 請確定 DR 區域中的應用程式組態指向先前的次要資料庫，該資料庫會變成可完全存取的新主要資料庫。
 * 從次要伺服器起始容錯移轉群組的[計劃性容錯移轉](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)。
@@ -69,5 +69,5 @@ ms.locfileid: "73825860"
 
 * 若要了解商務持續性案例，請參閱[持續性案例](sql-database-business-continuity.md)。
 * 若要了解 Azure SQL Database 自動備份，請參閱 [SQL Database 自動備份](sql-database-automated-backups.md)
-* 要瞭解如何使用自動備份進行恢復，請參閱[從服務啟動的備份還原資料庫](sql-database-recovery-using-backups.md)。
+* 若要瞭解如何使用自動備份進行復原，請參閱[從服務起始的備份還原資料庫](sql-database-recovery-using-backups.md)。
 * 若要了解更快速的復原選項，請參閱[主動式異地複寫](sql-database-active-geo-replication.md)和[自動容錯移轉群組](sql-database-auto-failover-group.md)。

@@ -1,5 +1,5 @@
 ---
-title: 歡迎來到翼尖應用程式
+title: 歡迎使用 Wingtips 應用程式
 description: 了解雲端環境中 Azure SQL Database 的資料庫租用模型和相關範例 Wingtips SaaS 應用程式。
 keywords: SQL Database Azure
 services: sql-database
@@ -13,21 +13,21 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 01/25/2019
 ms.openlocfilehash: 4e0b3afe51ac7c7a6b9213fcee79af57cbbd8197
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73818321"
 ---
 # <a name="the-wingtip-tickets-saas-application"></a>Wingtip Tickets SaaS 應用程式
 
-相同的 *Wingtip Tickets* SaaS 應用程式會分別在三個範例中實作。 該應用程式是一個簡單的事件清單和票務SaaS應用程式，針對小場地 - 劇院，俱樂部等。每個場地都是應用程式的租戶，並有自己的資料：場地詳細資訊、活動清單、客戶、機票訂單等。 該應用程式以及管理腳本和教程展示了端到端 SaaS 方案。 其中包括佈建租用戶、監視及管理效能、結構描述管理，以及跨租用戶報告和分析。
+相同的 *Wingtip Tickets* SaaS 應用程式會分別在三個範例中實作。 應用程式是簡單的事件清單和票證 SaaS 應用程式，以小型地點為目標-劇院、俱樂部等等。每個場地都是應用程式的租使用者，而且有自己的資料：場地詳細資料、事件清單、客戶、票證訂單等。 應用程式連同管理腳本和教學課程，展示了端對端 SaaS 案例。 其中包括佈建租用戶、監視及管理效能、結構描述管理，以及跨租用戶報告和分析。
 
 ## <a name="three-saas-application-and-tenancy-patterns"></a>三個 SaaS 應用程式和租用模式
 
 應用程式有三個可用的版本；每個版本分別會在 Azure SQL Database 上探索不同的資料庫租用模式。  第一個模式會使用每一租用戶一個獨立應用程式模式搭配它自己的資料庫。 第二個模式會使用每個租用戶各有一個資料庫的多租用戶應用程式。 第三個範例會使用具有分區化多租用戶資料庫的多租用戶應用程式。
 
-![三種租賃模式][image-three-tenancy-patterns]
+![三個租用模式][image-three-tenancy-patterns]
 
  每個範例都包含應用程式程式碼，以及管理指令碼，和會探索特定範圍的設計與管理模式的教學課程。  每個範例都可在五分鐘內完成部署。  這三個範例可用並存的方式部署，以便您比較設計和管理上的差異。
 
@@ -47,7 +47,7 @@ ms.locfileid: "73818321"
 
 對於想要降低每一租用戶的成本，並且可承受較低租用戶隔離性的服務提供者，多租用戶資料庫將有其效用。 此模式可將大量租用戶封裝到個別資料庫中，而降低每一租用戶的成本。 藉由將多個租用戶分區化到多個資料庫間，將可達到近乎無限大的規模。 目錄資料庫會將租用戶對應到資料庫。  
 
-此模式還允許*混合*模型，您可以在其中優化資料庫中有多個租戶的成本，或優化與自己的資料庫中的單個租戶隔離。 您可以在租用戶佈建時或是稍後，就個別的租用戶進行這項選擇，而不會對應用程式造成影響。  必須以不同方式處理租用戶的群組時，可以有效地使用此模型。 例如，可以將低成本的租用戶指派給共用資料庫，而將進階租用戶指派給他們自己的資料庫。 
+此模式也允許*混合*式模型，讓您可以將資料庫中的多個租使用者的成本優化，或優化以在自己的資料庫中與單一租使用者隔離。 您可以在租用戶佈建時或是稍後，就個別的租用戶進行這項選擇，而不會對應用程式造成影響。  必須以不同方式處理租用戶的群組時，可以有效地使用此模型。 例如，可以將低成本的租用戶指派給共用資料庫，而將進階租用戶指派給他們自己的資料庫。 
 
 請參閱[教學課程][docs-tutorials-for-wingtip-mt]和 GitHub [.../Microsoft/WingtipTicketsSaaS-MultiTenantDb][github-code-for-wingtip-mt] 上的程式碼。
 

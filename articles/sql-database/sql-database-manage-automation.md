@@ -12,10 +12,10 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 03/12/2019
 ms.openlocfilehash: 9d826a75f05cf2031565f89e21d7f3667ecc8f17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822813"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>使用 Azure 自動化來管理 Azure SQL 資料庫
@@ -47,6 +47,6 @@ Azure 自動化也可直接與 SQL 伺服器通訊，只要使用 PowerShell 發
 
 了解 Azure 自動化的基本概念以及如何用它來管理 Azure SQL 資料庫之後，請參考下列連結，以深入了解 Azure 自動化。
 
-- [Azure 自動化概觀](../automation/automation-intro.md)
+- [Azure 自動化總覽](../automation/automation-intro.md)
 - [我的第一個 Runbook](../automation/automation-first-runbook-graphical.md)
 - [Azure Automation: Your SQL Agent in the Cloud (Azure 自動化：雲端中的 SQL 代理程式)](https://azure.microsoft.com/blog/20../../azure-automation-your-sql-agent-in-the-cloud/) 

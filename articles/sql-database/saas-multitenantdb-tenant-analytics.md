@@ -1,5 +1,5 @@
 ---
-title: 運行分析查詢
+title: 執行分析查詢
 description: 在多租用戶應用程式中使用從多個 Azure SQL Database 資料庫擷取的資料執行跨租用戶分析查詢。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 ms.date: 09/19/2018
 ms.openlocfilehash: 067afd09f942b8062825553a3cf90f715e8d3938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822154"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>使用擷取的資料執行跨租用戶分析 - 多租用戶應用程式
@@ -69,7 +69,7 @@ ms.locfileid: "73822154"
 
 若要完成本教學課程，請確定符合下列必要條件：
 
-- 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 要在五分鐘內部署，請參閱[部署和流覽翼尖票證 SaaS 多租戶資料庫應用程式](saas-multitenantdb-get-started-deploy.md)
+- 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip 票證 SaaS 多租使用者資料庫應用程式](saas-multitenantdb-get-started-deploy.md)
 - Wingtip SaaS 指令碼和應用程式[原始程式碼](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB)是從 GitHub 下載。 請務必在擷取檔案內容之前解除封鎖 zip 檔案**。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
 - Power BI Desktop 已安裝。 [下載 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 - 已佈建額外租用戶的批次，請參閱[**佈建租用戶教學課程**](saas-multitenantdb-provision-and-catalog.md)。
@@ -79,8 +79,8 @@ ms.locfileid: "73822154"
 
 在本教學課程中，分析是在票證銷售資料上執行。 在目前的步驟中，您會為所有租用戶產生票證資料。  稍後會擷取此資料以進行分析。 請確定您已如先前所述佈建租用戶的批次，以便獲得有意義的資料數量**。 足夠數量的資料可以公開不同票證購買模式的範圍。
 
-1. 在**PowerShell ISE**中，打開 *...[學習模組]操作分析\租戶分析\演示-租戶分析.ps1*，並設置以下值：
-    - **$DemoScenario** = **1**購買所有場地的活動門票
+1. 在**POWERSHELL ISE**中，開啟 *.. ..\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*，然後設定下列值：
+    - **$DemoScenario** = **1**個適用于所有地點的事件購買票證
 2. 按 **F5** 以執行指令碼並建立各地點中各個事件的票證購買歷程記錄。  指令碼會執行數分鐘以產生數以萬計的票證。
 
 ### <a name="deploy-the-analytics-store"></a>部署分析存放區
@@ -89,11 +89,11 @@ ms.locfileid: "73822154"
 在下列步驟中，您會部署分析存放區，稱為 **tenantanalytics**。 您也可以部署預先定義的資料表，稍後會在本教學課程中填入：
 1. 在 PowerShell ISE 中，開啟 …\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1** 
 2. 在指令碼中設定 $DemoScenario 變數，以符合您對於分析存放區的選擇。 基於學習之目的，建議您使用沒有資料行存放區的 SQL 資料庫。
-    - 要使用沒有列存儲的 SQL 資料庫 **，$DemoScenario** = **2**
-    - 要將 SQL 資料庫與列存儲一起使用 **，$DemoScenario** = **3**  
-3. 按**F5**運行創建租戶分析存儲的演示腳本（該腳本稱為*部署租戶分析\<XX>.ps1*腳本）。 
+    - 若要使用不含資料行存放區的 SQL database，請設定 **$DemoScenario** = **2**
+    - 若要搭配使用 SQL database 與資料行存放區，請設定 **$DemoScenario** = **3**  
+3. 按**F5**執行示範腳本（其會呼叫*部署-TenantAnalytics\<XX> ps1*腳本），以建立租使用者分析存放區。 
 
-現在，您已經部署了應用程式，並用有趣的租戶資料填充了它，請使用[SQL 伺服器管理工作室 （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)使用登錄 =*開發人員*、密碼 = *P\@ssword1*連接**租戶\<10000-00-使用者\>** 和**目錄\<-mt-使用者\>** 伺服器。
+現在您已部署應用程式，並使用有趣的租使用者資料加以填入，請使用[SQL Server Management Studio （SSMS）](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)來連接**tenants1\<-\> mt 使用者**和**目錄-\<mt\>使用者**伺服器（使用 Login = *developer*，Password = *P\@ssword1*）。
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "73822154"
 1. 在 SSMS 中，連線至 catalog-mt-\<User\> 伺服器中的 **jobaccount** 資料庫。
 2. 在 SSMS 中，開啟 ...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql**。
 3. 在指令碼上方修改 @User，將 `<User>` 取代為您部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式時使用的使用者名稱。 
-4. 按**F5**以運行創建和運行從每個租戶資料庫中提取票證和客戶資料的作業的腳本。 作業會將資料儲存至分析存放區。
+4. 按**F5**執行腳本，以建立並執行可從每個租使用者資料庫中解壓縮票證和客戶資料的作業。 作業會將資料儲存至分析存放區。
 5. 查詢 tenantanalytics 資料庫中的 TicketsRawData 資料表，以確定資料表已填入來自所有租用戶的票證資訊。
 
 ![ticketExtracts](media/saas-multitenantdb-tenant-analytics/ticketExtracts.png)
@@ -175,7 +175,7 @@ ms.locfileid: "73822154"
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. 在左側窗格中選擇 **"資料庫**"，然後輸入使用者名 =*開發人員*，然後輸入密碼 = *P\@ssword1*。 按一下 [連線]****。  
+5. 在左窗格中選取 [**資料庫**]，然後輸入 user name = *developer*，並輸入 password = *P\@ssword1*。 按一下 [ **連接**]。  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 
@@ -240,6 +240,6 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 ## <a name="additional-resources"></a>其他資源
 
-其他[教程，建立在翼尖SaaS應用程式](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)。 
-- [彈性作業](elastic-jobs-overview.md)。
+[以 Wingtip SaaS 應用程式為基礎的其他教學](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)課程。 
+- [彈性工作](elastic-jobs-overview.md)。
 - [在單一租用戶應用程式中使用擷取的資料執行跨租用戶分析](saas-tenancy-tenant-analytics.md) 

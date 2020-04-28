@@ -1,5 +1,5 @@
 ---
-title: 單租戶 SaaS 教程
+title: 單一租使用者 SaaS 教學課程
 description: 部署及探索使用 Azure SQL Database 的獨立單一租用戶 SaaS 應用程式。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: sstein
 ms.date: 11/07/2018
 ms.openlocfilehash: e3afc8aa58551b995070ffaca978c8e7c8454da3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822127"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>部署及探索使用 Azure SQL Database 的獨立單一租用戶應用程式
@@ -24,9 +24,9 @@ ms.locfileid: "73822127"
 
 獨立應用程式 (每一租用戶一個應用程式) 模式會為每個租用戶部署一個應用程式執行個體。  每個應用程式都已針對特定租用戶設定，並部署在個別的 Azure 資源群組中。 可以佈建應用程式的多個執行個體來提供多租用戶解決方案。 這個模式最適合少量租用戶，因為租用戶隔離是第一要務。 Azure 的夥伴程式可讓服務提供者將資源部署到租用戶的訂用帳戶中，並代表租用戶管理這些資源。 
 
-在本教程中，您將為三個租戶部署三個獨立應用程式到 Azure 訂閱中。  您可以完整存取探索和使用個別應用程式元件。
+在本教學課程中，您將在 Azure 訂用帳戶中部署三個租使用者的三個獨立應用程式。  您可以完整存取探索和使用個別應用程式元件。
 
-在 [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub 存放庫可取得應用程式原始程式碼和管理指令碼。 該應用程式是使用 Visual Studio 2015 創建的，如果不更新，也不會在 Visual Studio 2019 中成功打開和編譯。
+在 [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub 存放庫可取得應用程式原始程式碼和管理指令碼。 應用程式是使用 Visual Studio 2015 所建立，而且不會在沒有更新的情況下，于 Visual Studio 2019 中順利開啟和編譯。
 
 
 您會在本教學課程中學到：
@@ -36,7 +36,7 @@ ms.locfileid: "73822127"
 > * 在何處取得應用程式原始程式碼和管理指令碼。
 > * 關於組成應用程式的伺服器和資料庫。
 
-將會推出其他教學課程。 它們允許您基於此應用程式模式探索一系列管理方案。   
+將會推出其他教學課程。 它們可讓您根據此應用程式模式，探索各種管理案例。   
 
 ## <a name="deploy-the-wingtip-tickets-saas-standalone-application"></a>部署 Wingtip Tickets SaaS Standalone 應用程式
 
@@ -54,9 +54,9 @@ ms.locfileid: "73822127"
     > [!IMPORTANT]
     > 為了示範的目的，已刻意將某些驗證和伺服器防火牆設為不安全。 為每個應用程式部署**建立新的新資源群組**。  請勿使用現有的資源群組。 請不要將此應用程式或任何它所建立的資源用於生產環境。 當您不使用應用程式時，請刪除所有資源群組，以停止相關計費。
 
-    最好在資源名稱中只使用小寫字母、數位和連字號。
-    * 針對**資源群組**選取 [新建]，並為資源群組提供小寫的 [名稱]。 **翼尖-sa-\<場地名稱\>-\<使用者\>** 是推薦的模式。  對於\<場地名稱\>，將場地名稱替換為沒有空格。 對於\<使用者\>，請從下面替換使用者值。  採用此模式後，資源群組名稱可能會是 wingtip-sa-contosoconcerthall-af1**、wingtip-sa-dogwooddojo-af1**、wingtip-sa-fabrikamjazzclub-af1**。
-    * 從下拉清單中選擇 **"位置**"。
+    在您的資源名稱中，最好只使用小寫字母、數位和連字號。
+    * 針對**資源群組**選取 [新建]，並為資源群組提供小寫的 [名稱]。 **wingtip-sa-\<venueName\>-\<user\> **是建議的模式。  針對\<venueName\>，請將場地名稱取代為不含空格。 針對\<[\>使用者]，取代以下的使用者值。  採用此模式後，資源群組名稱可能會是 wingtip-sa-contosoconcerthall-af1**、wingtip-sa-dogwooddojo-af1**、wingtip-sa-fabrikamjazzclub-af1**。
+    * 從下拉式清單中選取 [**位置**]。
 
     * 針對**使用者** - 建議您選擇簡短的使用者 值，可以用您的姓名首字母加上數字，例如：*af1*。
 
@@ -64,7 +64,7 @@ ms.locfileid: "73822127"
 3. **部署應用程式**。
 
     * 按一下以同意條款和條件。
-    * 按一下 [購買]****。
+    * 按一下 [購買]  。
 
 4. 按一下 [通知]**** \(搜尋方塊右側的鈴鐺圖示) 來監視所有三個部署的部署狀態。 部署應用程式大約需要五分鐘的時間。
 
@@ -86,7 +86,7 @@ ms.locfileid: "73822127"
 為了控制連入要求的發佈，應用程式會使用 [*Azure 流量管理員*](../traffic-manager/traffic-manager-overview.md)。 每個租用戶專屬的應用程式執行個體都包含租用戶名稱，以在 URL 中作為網域名稱的一部分。 所有租用戶 URL 都包含您的特定 [使用者]**** 值。 URL 的格式如下︰
 - http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net
 
-每個租戶的資料庫**位置**都包含在相應部署的應用的應用設置中。
+每個租使用者的資料庫**位置**都會包含在對應已部署應用程式的應用程式設定中。
 
 在生產環境中，您通常會建立 CNAME DNS 記錄以[將公司網際網路網域指向**](../traffic-manager/traffic-manager-point-internet-domain.md)流量管理員設定檔的 URL。
 
@@ -97,7 +97,7 @@ ms.locfileid: "73822127"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，瀏覽至資源群組的清單。
 2. 您應該會看到三個租用戶資源群組。
-3. 打開**翼尖-sa-fabrikam-&lt;使用者&gt;** 資源組，其中包含法布裡卡姆爵士俱樂部部署的資源。  **法布裡卡姆賈斯俱樂部-&lt;使用者&gt;** 伺服器包含**法布裡卡姆賈茲俱樂部**資料庫。
+3. 開啟**wingtip-sa-fabrikam-&lt;user&gt; **資源群組，其中包含 fabrikam 爵士樂俱樂部部署的資源。  **Fabrikamjazzclub-&lt;user&gt; **伺服器包含**fabrikamjazzclub**資料庫。
 
 每個租用戶資料庫都是 50 DTU 獨立** 資料庫。
 
@@ -109,7 +109,7 @@ ms.locfileid: "73822127"
 * To learn about elastic jobs, see [*Managing scaled-out cloud databases*](elastic-jobs-overview.md)
 -->
 
-- 要瞭解多租戶 SaaS 應用程式，請參閱[多租戶 SaaS 應用程式的設計模式](saas-tenancy-app-design-patterns.md)。
+- 若要深入瞭解多租使用者 SaaS 應用程式，請參閱[多租使用者 saas 應用程式的設計模式](saas-tenancy-app-design-patterns.md)。
 
  
 ## <a name="delete-resource-groups-to-stop-billing"></a>刪除資源群組以停止計費 ##
@@ -125,6 +125,6 @@ ms.locfileid: "73822127"
 > * 關於組成應用程式的伺服器和資料庫。
 > * 如何刪除範例資源以停止相關計費。
 
-接下來，請嘗試["預配和目錄"](saas-standaloneapp-provision-and-catalog.md)教程，其中將探討租戶目錄的使用，該目錄支援一系列跨租戶方案，如架構管理和租戶分析。
+接下來，請嘗試布建[和目錄](saas-standaloneapp-provision-and-catalog.md)教學課程，其中會探索租使用者目錄的使用，以啟用各種跨租使用者案例，例如架構管理和租使用者分析。
  
 

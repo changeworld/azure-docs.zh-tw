@@ -1,6 +1,6 @@
 ---
-title: 自託管的 Azure API 管理閘道概述 |微軟文檔
-description: 瞭解自託管 Azure API 管理閘道如何説明組織在混合和多雲環境中管理 API。
+title: 自我裝載的 Azure API 管理閘道總覽 |Microsoft Docs
+description: 瞭解自我裝載的 Azure API 管理閘道如何協助組織管理混合式和多重雲端環境中的 Api。
 services: api-management
 documentationcenter: ''
 author: vlvinogr
@@ -13,73 +13,73 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 415f0e209e607a863d715b1a66a2435603a662f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73513714"
 ---
-# <a name="self-hosted-api-management-gateway-overview"></a>自託管 API 管理閘道概述
+# <a name="self-hosted-api-management-gateway-overview"></a>自我裝載 API 管理閘道總覽
 
-本文介紹了自託管閘道功能如何支援混合和多雲 API 管理，展示其高級體系結構，並重點介紹其基本功能。
+本文說明自我裝載閘道功能如何啟用混合式和多重雲端 API 管理、呈現其高階架構，以及強調其基本功能。
 
 > [!NOTE]
-> 自託管閘道功能處於預覽狀態。 在預覽期間，自託管閘道僅在開發人員和高級層中可用，無需支付額外費用。 開發人員層僅限於單個自託管閘道部署。
+> 自我裝載閘道功能目前為預覽狀態。 在預覽期間，自我裝載閘道僅適用于開發人員和進階層，不需要額外付費。 開發人員層僅限於單一自我裝載的閘道部署。
 
-## <a name="hybrid-and-multi-cloud-api-management"></a>混合和多雲 API 管理
+## <a name="hybrid-and-multi-cloud-api-management"></a>混合式和多雲端 API 管理
 
-自託管閘道功能擴展了對混合和多雲環境的 API 管理支援，使組織能夠從 Azure 中的單個 API 管理服務高效、安全地管理託管在本地和雲中的 API。
+自我裝載閘道功能可擴充混合式和多重雲端環境的 API 管理支援，並可讓組織有效率地管理裝載于內部部署的 Api，以及從 Azure 中的單一 API 管理服務跨雲端的應用程式。
 
-借助自託管閘道，客戶可以靈活地將 API 管理閘道元件的容器化版本部署到託管 API 的相同環境中。 所有自託管閘道都由它們聯合的 API 管理服務進行管理，從而為客戶提供所有內部和外部 API 的可見度和統一管理體驗。 將閘道放置在 API 附近，使客戶能夠優化 API 流量，並滿足安全性和合規性要求。
+透過自我裝載閘道，客戶可以彈性地將 API 管理閘道元件的容器化版本部署到其主控其 Api 的相同環境。 所有自我裝載的閘道都是由其同盟的 API 管理服務所管理，因此可為客戶提供所有內部和外部 Api 的可見度和統一管理體驗。 將閘道放在 Api 附近可讓客戶優化 API 流量流程，並解決安全性和合規性需求。
 
-每個 API 管理服務由以下關鍵元件組成：
+每個 API 管理服務都是由下列主要元件所組成：
 
--   管理平面作為 API 公開，用於通過 Azure 門戶、PowerShell 和其他受支援的機制佈建服務。
--   閘道（或資料平面）負責代理 API 請求、應用策略和收集遙測資料
--   開發人員用來發現、學習和上載的開發人員門戶來使用 API
+-   以 API 形式公開的管理平面，用來透過 Azure 入口網站、PowerShell 和其他支援的機制來設定服務。
+-   閘道（或資料平面）負責代理 API 要求、套用原則和收集遙測
+-   開發人員用來探索、學習及上架以使用 Api 的開發人員入口網站
 
-預設情況下，所有這些元件都部署在 Azure 中，從而導致所有 API 流量（在下圖中顯示為實心黑色箭頭）流經 Azure，而不管實現 API 的後端託管在何處。 此模型的操作簡單性是延遲增加、合規性問題以及在某些情況下額外的資料傳輸費用為代價的。
+根據預設，所有這些元件都會部署在 Azure 中，導致所有的 API 流量（在下圖中顯示為實心的黑色箭號）流經 Azure，而不論裝載後端 Api 的位置為何。 此模型的作業簡單，會以增加的延遲、合規性問題，以及在某些情況下額外的資料傳輸費用為代價。
 
-![沒有自承載閘道的 API 流量](media/self-hosted-gateway-overview/without-gateways.png)
+![沒有自我裝載閘道的 API 流量流程](media/self-hosted-gateway-overview/without-gateways.png)
 
-將自託管閘道部署到與後端 API 實現相同的環境中，並將其添加到 API 管理服務中，允許 API 流量直接流向後端 API，從而提高延遲、優化資料傳輸成本並啟用合規性，同時保留在組織內擁有單一管理和發現所有 API 的優勢，而不管它們在實現的託管位置如何。
+將自我裝載閘道部署到與後端 API 整合相同的環境中，並將其新增至 API 管理服務，可讓 API 流量直接流向後端 Api，這樣可改善延遲、優化資料傳輸成本，並啟用合規性，同時保有組織內所有 Api 的單一管理和探索優勢，不論其裝載的位置為何。
 
-![具有自承載閘道的 API 流量流](media/self-hosted-gateway-overview/with-gateways.png)
+![使用自我裝載閘道的 API 流量流程](media/self-hosted-gateway-overview/with-gateways.png)
 
-## <a name="packaging-and-features"></a>包裝和功能
+## <a name="packaging-and-features"></a>封裝和功能
 
-自託管閘道是作為每個 API 管理服務的一部分部署到 Azure 的託管閘道的容器化、功能等效版本。 自託管閘道可從 Microsoft 容器註冊表作為基於 Linux 的 Docker 容器提供。 它可以部署到 Docker、Kubernetes 或任何其他在桌面、伺服器叢集或雲基礎結構上運行的容器編排解決方案。
+自我裝載閘道是一種容器化、功能相同的受控閘道版本，可在每個 API 管理服務中部署至 Azure。 自我裝載閘道是以 Linux 為基礎的 Docker 容器，從 Microsoft Container Registry 提供。 它可以部署到 Docker、Kubernetes 或任何其他在桌上型電腦、伺服器叢集或雲端基礎結構上執行的容器協調流程解決方案。
 
 > [!IMPORTANT]
-> 託管閘道中提供的某些功能在預覽版中尚不可用。 最值得注意的是：登錄到事件中心策略，服務交換矩陣集成，下游 HTTP/2。 沒有計劃使內置緩存在自託管閘道中可用。
+> 受管理閘道中提供的某些功能尚未提供預覽。 最值得注意的是：記錄到事件中樞原則，Service Fabric 整合，下游 HTTP/2。 沒有計劃可以讓內建快取在自我裝載閘道中提供使用。
 
-## <a name="connectivity-to-azure"></a>連接到 Azure
+## <a name="connectivity-to-azure"></a>Azure 的連線能力
 
-自託管閘道需要從站 TCP/IP 連接到埠 443 上的 Azure。 每個自託管閘道都必須與單個 API 管理服務關聯，並通過其管理平面進行配置。 自託管閘道使用與 Azure 的連接進行：
+自我裝載閘道需要端口443上對 Azure 的輸出 TCP/IP 連線能力。 每個自我裝載閘道都必須與單一 API 管理服務相關聯，並透過其管理平面進行設定。 自我裝載閘道會使用 Azure 的連線能力來：
 
--   通過每分鐘發送活動訊號消息來報告其狀態
--   定期檢查（每 10 秒一次），並在配置更新可用時應用配置更新
--   將請求日誌和指標發送到 Azure 監視器（如果配置為這樣做）
--   將事件發送到應用程式見解（如果設置為這樣做）
+-   每分鐘傳送一則訊息，以報告其狀態
+-   定期檢查（每隔10秒），並在每次有應用程式可用時套用設定更新
+-   將要求記錄和計量傳送至 Azure 監視器（若已設定）
+-   將事件傳送至 Application Insights，如果設定為這樣做
 
-當與 Azure 的連接丟失時，自託管閘道將無法接收配置更新、報告其狀態或上載遙測。
+當 Azure 的連線中斷時，自我裝載閘道將無法接收設定更新、回報其狀態或上傳遙測。
 
-自託管閘道旨在"故障靜態"，並且可以在暫時失去與 Azure 的連接時生存下來。 它可以在打開本地配置備份時部署，也可以不打開本地配置備份。 在前一種情況下，自託管閘道將定期將配置的備份副本保存在附加到容器或 Pod 的持久卷上。
+自我裝載閘道的設計是「失敗的靜態」，並可在暫時中斷 Azure 連線時存留。 您可以使用或不開啟本機設定備份來部署它。 在先前的案例中，自我裝載閘道會定期將設定的備份複本儲存在附加至容器或 pod 的持續性磁片區上。
 
-當配置備份關閉且與 Azure 的連接中斷時：
+當設定備份已關閉，且與 Azure 的連線中斷時：
 
--   正在運行的自託管閘道將繼續使用配置的記憶體中副本運行
--   已停止的自託管閘道將無法啟動
+-   執行的自我裝載閘道將繼續使用設定的記憶體中複本來運作
+-   已停止的自我裝載閘道將無法啟動
 
-啟用配置備份並中斷與 Azure 的連接時：
+當設定備份已開啟，且與 Azure 的連線中斷時：
 
--   正在運行的自託管閘道將繼續使用配置的記憶體中副本運行
--   停止的自託管閘道將開始使用配置的備份副本
+-   執行的自我裝載閘道將繼續使用設定的記憶體中複本來運作
+-   已停止的自我裝載閘道將會開始使用設定的備份複本
 
-恢復連接後，受中斷影響的每個自託管閘道將自動與其關聯的 API 管理服務重新連接，並下載閘道"離線"時發生的所有配置更新。
+當連線恢復時，受到中斷影響的每個自我裝載閘道都會自動重新連接其相關聯的 API 管理服務，並下載閘道為「離線」時所發生的所有設定更新。
 
 ## <a name="next-steps"></a>後續步驟
 
--   [閱讀白皮書，瞭解有關此主題的其他背景](https://aka.ms/hybrid-and-multi-cloud-api-management)
--   [將自託管閘道部署到 Docker](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
--   [將自託管閘道部署到庫貝內特斯](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)
+-   [閱讀本主題的其他背景白皮書](https://aka.ms/hybrid-and-multi-cloud-api-management)
+-   [將自我裝載閘道部署至 Docker](api-management-howto-deploy-self-hosted-gateway-to-docker.md)
+-   [將自我裝載閘道部署至 Kubernetes](api-management-howto-deploy-self-hosted-gateway-to-k8s.md)

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/24/2015
 ms.author: gwallace
 ms.openlocfilehash: 22b33d7b4b0ff69a2e751cadff70453f73ed4f8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69876812"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>如何透過 Twilio 來使用 Azure 的語音和簡訊功能
@@ -28,7 +28,7 @@ Twilio 正在形塑商業環境的未來，可讓開發人員將語音、VoIP �
 **Twilio 語音** 可讓應用程式撥打和接聽電話。 **Twilio 簡訊**可讓應用程式收發簡訊。 **Twilio 用戶端**可讓您從任何電話、平板電腦或瀏覽器撥打 VoIP 電話，且支援 WebRTC。
 
 ## <a name="twilio-pricing-and-special-offers"></a><a id="Pricing"></a>Twilio 定價和特別供應項目
-升級 Twilio 帳戶的 Azure 客戶，可 [特別獲贈](https://www.twilio.com/azure)價值 $10 的 Twilio 點數。 此 Twilio 點數可用來折抵任何 Twilio 使用量 ($10 點數相當於最多傳送 1,000 則簡訊，或最多接收 1000 分鐘的撥入語音，視電話號碼所在地點或通話目的地而定)。 贖回這個Twilio信貸，並開始[在twilio.com/azure。](https://twilio.com/azure)
+升級 Twilio 帳戶的 Azure 客戶，可 [特別獲贈](https://www.twilio.com/azure)價值 $10 的 Twilio 點數。 此 Twilio 點數可用來折抵任何 Twilio 使用量 ($10 點數相當於最多傳送 1,000 則簡訊，或最多接收 1000 分鐘的撥入語音，視電話號碼所在地點或通話目的地而定)。 兌換此 Twilio 點數並開始使用[twilio.com/azure](https://twilio.com/azure)。
 
 Twilio 是隨用隨付的服務。 不需要設定費，隨時都可結清帳戶。 如需詳細資訊，請參閱 [Twilio 價格](https://www.twilio.com/voice/pricing)。
 
@@ -37,8 +37,8 @@ Twilio API 是一套為應用程式提供語音和簡訊功能的 RESTful API。
 
 Twilio API 的兩大重點是 Twilio 動詞和 Twilio 標記語言 (TwiML)。
 
-### <a name="twilio-verbs"></a><a id="Verbs"></a>特維利奧動詞
-API 使用 Twilio 動詞;例如**&lt;，"Say"&gt;** 謂詞指示 Twilio 在呼叫中發出消息。
+### <a name="twilio-verbs"></a><a id="Verbs"></a>Twilio 動詞
+API 會使用 Twilio 動詞;例如，「 ** &lt;假設&gt; ** 」動詞會指示 Twilio 語音在呼叫時傳遞訊息。
 
 以下是 Twilio 動詞清單。  如需了解其他動詞和功能，請參閱 [Twilio 標記語言文件](https://www.twilio.com/docs/api/twiml)。
 
@@ -78,7 +78,7 @@ TwiML 是以 Twilio 動詞為基礎的一組 XML 指令，可指示 Twilio 如�
 裝載已啟用 Twilio 功能之應用程式的 Azure 應用程式，與其他任何 Azure 應用程式並無不同。 您可以新增 Twilio .NET 程式庫並設定角色使用 Twilio .NET 程式庫。
 如需有關建立初始 Azure 專案的詳細資訊，請參閱[使用 Visual Studio 建立 Azure 專案][vs_project]。
 
-## <a name="configure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>將應用程式佈建為使用 Twilio 庫
+## <a name="configure-your-application-to-use-twilio-libraries"></a><a id="configure_app"></a>設定應用程式以使用 Twilio 程式庫
 Twilio 提供一套 .NET 協助程式庫，內已封裝 Twilio 的各種組件，讓您簡單又輕鬆地與 Twilio REST API 和 Twilio 用戶端互動，以產生 TwiML 回應。
 
 Twilio 為 .NET 開發人員提供五套程式庫：
@@ -98,7 +98,7 @@ Twilio 為 .NET 開發人員提供五套程式庫：
 
 程式庫可以[使用 NuGet 套件管理員延伸模組安裝](https://www.twilio.com/docs/csharp/install) (適用於 Visual Studio 2010 到 2015)。  原始程式碼可裝載於 [GitHub][twilio_github_repo]，它包含一個 Wiki，提供完整的程式庫使用說明文件。
 
-依預設，Microsoft Visual Studio 2010 會安裝 NuGet 1.2 版。 安裝 Twilio 程式庫需要有 NuGet 1.6 版或更新版本。 有關安裝或更新 NuGet 的資訊，[https://nuget.org/][nuget]請參閱。
+依預設，Microsoft Visual Studio 2010 會安裝 NuGet 1.2 版。 安裝 Twilio 程式庫需要有 NuGet 1.6 版或更新版本。 如需安裝或更新 NuGet 的詳細資訊[https://nuget.org/][nuget]，請參閱。
 
 > [!NOTE]
 > 若要安裝最新版的 NuGet，您必須先使用 Visual Studio 擴充功能管理員來解除安裝已載入的版本。 若要這麼做，您必須以系統管理員身分執行 Visual Studio。 否則，[解除安裝] 按鈕會停用。
@@ -108,7 +108,7 @@ Twilio 為 .NET 開發人員提供五套程式庫：
 ### <a name="to-add-the-twilio-libraries-to-your-visual-studio-project"></a><a id="use_nuget"></a>將 Twilio 程式庫新增至 Visual Studio 專案：
 1. 在 Visual Studio 中開啟方案。
 2. 以滑鼠右鍵按一下 **[參考]**。
-3. 按一下 [管理 NuGet 套件...]****
+3. 按一下 [管理 NuGet 套件...] 
 4. 按一下 [線上] ****。
 5. 在搜尋線上方塊中，輸入 twilio**。
 6. 在 Twilio 套件上按一下 [安裝] **** 。
@@ -144,7 +144,7 @@ var call = CallResource.Create(
 如前所述，此程式碼使用 Twilio 提供的網站來傳回 TwiML 回應。 您可以改用您自己的網站來提供 TwiML 回應。 如需詳細資訊，請參閱[如何：從您自己的網站提供 TwiML 回應](#howto_provide_twiml_responses)。
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>作法：傳送簡訊
-下列螢幕擷取畫面顯示如何使用 **MessageResource** 類別來傳送簡訊。 **from** 號碼由 Twilio 提供給試用帳戶來傳送簡訊。 在運行代碼之前，必須驗證 Twilio 帳戶的**to**號碼。
+下列螢幕擷取畫面顯示如何使用 **MessageResource** 類別來傳送簡訊。 **from** 號碼由 Twilio 提供給試用帳戶來傳送簡訊。 執行程式碼之前，必須先驗證 Twilio 帳戶的**to**號碼。
 
 ```csharp
 // Use your account SID and authentication token instead
@@ -174,7 +174,7 @@ catch (TwilioException ex)
 當您的應用程式呼叫 Twilio API 時 (例如透過 **CallResource.Create** 方法)，Twilio 會將您的要求傳送到應該傳送 TwiML 回應的 URL。 [作法：撥出電話](#howto_make_call)中的範例使用 Twilio 提供的 URL [https://twimlets.com/message][twimlet_message_url] 傳回回應。
 
 > [!NOTE]
-> 雖然 TwiML 是專供 Web 服務使用，但您也可以在瀏覽器中檢視 TwiML。 例如，按一下以查看[https://twimlets.com/message][twimlet_message_url]空元素;按一下`<Response>`以查看空元素。作為[https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World)另一`<Response>`個示例，按一下以查看包含&lt;Say&gt;元素的元素。
+> 雖然 TwiML 是專供 Web 服務使用，但您也可以在瀏覽器中檢視 TwiML。 例如，按一下[https://twimlets.com/message][twimlet_message_url]以查看空`<Response>`的元素。另一個範例是， [https://twimlets.com/message?Message%5B0%5D=Hello%20World](https://twimlets.com/message?Message%5B0%5D=Hello%20World)按一下以查看`<Response>`包含&lt;口述&gt;元素的元素。
 >
 
 除了依賴 Twilio 提供的 URL，您也可以建立自己的 URL 網站來傳回 HTTP 回應。 您可以使用任何可傳回 HTTP 回應的語言來建立網站。 本主題假設您從 ASP.NET 通用處理常式來裝載 URL。
@@ -251,7 +251,7 @@ namespace WebRole1
 }
 ```
 
-有關 TwiML 的詳細資訊，請參閱[https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml)。
+如需 TwiML 的詳細資訊， [https://www.twilio.com/docs/api/twiml](https://www.twilio.com/docs/api/twiml)請參閱。
 
 設定好如何提供 TwiML 回應之後，就可以將 URL 傳入 **CallResource.Create** 方法。 例如，如果您將名為 MyTwiML 的 Web 應用程式部署至 Azure 雲端服務，且您的 ASP.NET 處理常式名稱為 mytwiml.ashx，則可以如下列程式碼範例所示，將 URL 傳遞至 **CallResource.Create**：
 

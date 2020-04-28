@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 18dbcbf93947306334ccc2c156d9266884198e19
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67594138"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>開始使用 Azure CDN 開發
@@ -86,7 +86,7 @@ ms.locfileid: "67594138"
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. 我們必須定義一些我們的方法將用到的常數。  新增下列內容。  請務必根據需要用您自己的值替換預留位置（包括**&lt;角括弧&gt;**）。
+2. 我們必須定義一些我們的方法將用到的常數。  新增下列內容。  請務必視需要使用您自己的值來取代預留位置，包括** &lt;角括弧&gt;**。
    
     ``` javascript
     //Tenant app constants
@@ -119,7 +119,7 @@ ms.locfileid: "67594138"
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    請務必用正確的資訊替換**&lt;角括弧&gt;** 中的物料。  對於 `<redirect URI>`，請使用您在 Azure AD 中註冊應用程式時所輸入的重新導向 URI。
+    請務必以正確的資訊取代** &lt;角括弧&gt; **中的專案。  對於 `<redirect URI>`，請使用您在 Azure AD 中註冊應用程式時所輸入的重新導向 URI。
 4. 我們的 Node.js 主控台應用程式將會採用一些命令列參數。  讓我們驗證看看是否已至少傳遞一個參數。
    
    ```javascript

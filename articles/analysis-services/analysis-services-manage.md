@@ -1,6 +1,6 @@
 ---
 title: 管理 Azure Analysis Services | Microsoft Docs
-description: 本文介紹用於管理 Azure 分析服務伺服器的管理工作的工具。
+description: 本文說明用來管理 Azure Analysis Services server 管理和管理工作的工具。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 28d7b2955c84833841760e441cd2919181e22bc7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73572803"
 ---
 # <a name="manage-analysis-services"></a>Azure Analysis Services
@@ -30,16 +30,16 @@ ms.locfileid: "73572803"
 ### <a name="download-and-install-ssms"></a>下載並安裝 SSMS
 若要取得所有最新功能，並在連接到 Azure Analysis Services 伺服器時獲得最順暢的體驗，請確定您使用的是最新版的 SSMS。 
 
-[下載 SQL 伺服器管理工作室](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+[下載 SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
 
 ### <a name="to-connect-with-ssms"></a>以 SSMS 連線
  使用 SSMS 時，請在第一次連線到您伺服器之前，先確定您的使用者名稱包含在「Analysis Services 管理員」群組中。 若要深入了解，請參閱本文稍後的[伺服器管理員與資料庫使用者](#server-administrators-and-database-users)。
 
-1. 連線之前，您必須先取得伺服器名稱。 在 [Azure 入口網站]**** > 伺服器 > [概觀] **** >  [伺服器名稱]**** 中，複製伺服器名稱。
+1. 連線之前，您必須先取得伺服器名稱。 在 [Azure 入口網站]  > 伺服器 > [概觀]   >  [伺服器名稱]  中，複製伺服器名稱。
    
     ![在 Azure 中取得伺服器名稱](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. 在 SSMS > [物件總管] **** 中，按一下 [連線] **** > [分析服務] ****。
+2. 在 SSMS > [物件總管]  中，按一下 [連線]   > [分析服務]  。
 3. 在 [連線至伺服器]**** 對話方塊中，貼上伺服器名稱，然後在 [驗證]**** 中，選擇下列其中一種驗證類型：   
     > [!NOTE]
     > [驗證] 類型建議使用 [具 MFA 支援的 Active Directory - 通用]****。
@@ -56,11 +56,11 @@ ms.locfileid: "73572803"
     ![在 SSMS 中連線](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
 ## <a name="server-administrators-and-database-users"></a>伺服器管理員和資料庫使用者
-在 Azure Analysis Services 中，有兩種類型的使用者：伺服器管理員和資料庫使用者。 這兩種類型的使用者都必須位於 Azure Active Directory 中，而且必須由組織的電子郵件地址或 UPN 指定。 要瞭解更多資訊，請參閱[身份驗證和使用者許可權](analysis-services-manage-users.md)。
+在 Azure Analysis Services 中，有兩種類型的使用者：伺服器管理員和資料庫使用者。 這兩種類型的使用者都必須位於 Azure Active Directory 中，而且必須由組織的電子郵件地址或 UPN 指定。 若要深入了解，請參閱[驗證和使用者權限](analysis-services-manage-users.md)。
 
 
 ## <a name="troubleshooting-connection-problems"></a>連接問題的疑難排解
-使用 SSMS 進行連線時，如果遇到問題，您可能需要清除登入快取。 不會將任何內容緩存到光碟。要清除緩存，請關閉並重新啟動連接過程。 
+使用 SSMS 進行連線時，如果遇到問題，您可能需要清除登入快取。 不會將任何內容快取至光碟。若要清除快取，請關閉並重新啟動 connect 進程。 
 
 ## <a name="next-steps"></a>後續步驟
 如果您尚未將表格式模型部署到新伺服器，現在正是時候。 若要深入了解，請參閱 [Deploy to Azure Analysis Services](analysis-services-deploy.md) (部署至 Azure Analysis Services)。

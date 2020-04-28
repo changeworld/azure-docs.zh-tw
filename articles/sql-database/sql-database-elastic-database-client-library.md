@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/25/2018
 ms.openlocfilehash: ae26f669ddbe2cc2c5b6e25a9c1c0229e88dc2e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73823915"
 ---
 # <a name="building-scalable-cloud-databases"></a>建置可調整的雲端資料庫
@@ -25,18 +25,18 @@ ms.locfileid: "73823915"
 若要下載：
 
 * Java 版本的程式庫，請參閱 [Maven 中央存放庫](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools)。
-* 庫的 .NET 版本，請參閱[NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
+* .NET 版本的程式庫，請參閱[NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)。
 
 ## <a name="documentation"></a>文件
 
-1. [開始使用彈性資料庫工具](sql-database-elastic-scale-get-started.md)
+1. [彈性資料庫工具入門](sql-database-elastic-scale-get-started.md)
 2. [彈性資料庫功能](sql-database-elastic-scale-introduction.md)
 3. [分區對應管理](sql-database-elastic-scale-shard-map-management.md)
 4. [將現有的資料庫移轉到相應放大的資料庫](sql-database-elastic-convert-to-use-elastic-tools.md)
 5. [資料相依路由](sql-database-elastic-scale-data-dependent-routing.md)
 6. [多分區查詢](sql-database-elastic-scale-multishard-querying.md)
 7. [使用彈性資料庫工具加入分區](sql-database-elastic-scale-add-a-shard.md)
-8. [具有彈性資料庫工具和行級安全性的多租戶應用程式](sql-database-elastic-tools-multi-tenant-row-level-security.md)
+8. [具有彈性資料庫工具和資料列層級安全性的多租使用者應用程式](sql-database-elastic-tools-multi-tenant-row-level-security.md)
 9. [升級用戶端程式庫應用程式](sql-database-elastic-scale-upgrade-client-library.md) 
 10. [彈性查詢概觀](sql-database-elastic-query-overview.md)
 11. [彈性資料庫工具字彙](sql-database-elastic-scale-glossary.md)

@@ -1,5 +1,5 @@
 ---
-title: 在本地部署遠端監視解決方案 - Docker - Azure |微軟文檔
+title: 在本機部署遠端監視解決方案-Docker-Azure |Microsoft Docs
 description: 此操作指南會示範如何使用 Docker，將遠端監視解決方案加速器部署到本機電腦，以進行測試和開發。
 author: avneet723
 manager: hegate
@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
 ms.openlocfilehash: 32b47d9d6d45ff471961f55f8159dbe85eae2dce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73888827"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>本機部署遠端監視解決方案加速器 - Docker
@@ -27,7 +27,7 @@ ms.locfileid: "73888827"
 
 若要部署遠端監視解決方案加速器所使用的 Azure 服務，您需要一個有效的 Azure 訂用帳戶。
 
-如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 ### <a name="machine-setup"></a>電腦設定
 
@@ -89,7 +89,7 @@ docker rmi <list_of_images>
 
 請遵循下列步驟以啟動串流分析作業：
 
-1. 導航到[Azure 門戶](https://portal.azure.com)。
+1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
 1. 瀏覽至為解決方案建立的**資源群組**。 當您執行 **start.cmd** 指令碼時為解決方案選擇的名稱，就是資源群組的名稱。
 1. 在資源清單中，按一下 [串流分析作業]****。
 1. 在串流分析作業 [概觀]**** 頁面上，按一下 [啟動]**** 按鈕。 接著，按一下 [啟動]**** 以立即啟動作業。

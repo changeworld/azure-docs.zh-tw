@@ -1,5 +1,5 @@
 ---
-title: 將 Windows 伺服器/系統中心 VMM 2012 R2 升級到 Windows 伺服器 2016-Azure 網站恢復
+title: 將 Windows Server/System Center VMM 2012 R2 升級至 Windows Server 2016-Azure Site Recovery
 description: 了解如何使用 Azure Site Recovery 服務設定將 Azure Stack VM 進行災害復原至 Azure。
 services: site-recovery
 author: rajani-janaki-ram
@@ -9,13 +9,13 @@ ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
 ms.openlocfilehash: 1d94935db542a0e64754ab8769996fe906f88b46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73954412"
 ---
-# <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>將 Windows 伺服器/系統中心 2012 R2 VMM 升級到 Windows 伺服器/VMM 2016 
+# <a name="upgrade-windows-server-serversystem-center-2012-r2-vmm-to-windows-servervmm-2016"></a>將 Windows Server Server/System Center 2012 R2 VMM 升級至 Windows Server/VMM 2016 
 
 本文介紹如何將配有 Azure Site Recovery 的 Windows Server 2012 R2 主機和 SCVMM 2012 R2 升級到 Windows Server 2016 及 SCVMM 2016
 
@@ -42,10 +42,10 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 - 如果您使用的是 System Center 2012 R2 VMM， 
 
-    - 檢查 VMM 上的資料庫資訊 **：VMM 主控台** -> **設置** -> **常規** -> **資料庫連接**
+    - 檢查 vmm 上的資料庫資訊： **vmm 主控台** -> **設定** -> **一般** -> **資料庫**連線
     - 檢查用於 System Center Virtual Machine Manager 代理程式服務的服務帳戶
     - 請確定您有 VMM 資料庫的備份。
-    - 請記下與 SCVMM 伺服器相關的資料庫名稱。 這可以通過導航到**VMM 主控台** -> **設置** -> **常規** -> **資料庫連接**來實現
+    - 請記下與 SCVMM 伺服器相關的資料庫名稱。 這可以透過流覽至**VMM 主控台** -> **設定** -> **一般** -> **資料庫**連線來完成。
     - 請記下 2012R2 主要 VMM 伺服器和復原 VMM 伺服器的 VMM ID。 可以從「HKLM:\SOFTWARE\Microsoft\Microsoft System Center Virtual Machine Manager Server\Setup」此登錄找到 VMM ID。
     - 請確認您要新增至叢集的新 SCVMM 的名稱與之前的相同。 
 
@@ -78,7 +78,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 3. 在 [新增/移除程式]**** 中，選取 [VMM]**** > [解除安裝]****。 b. 選取 [移除功能]****，然後選取 [VMM 管理伺服器] 和 [VMM 主控台]****。 c. 在 [資料庫選項]**** 中，選取 [保留資料庫]****。 d. 檢閱摘要，並按一下 [解除安裝]****。
 
 4. [安裝 VMM 2016](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
-5. 啟動 SCVMM 並檢查每個主機的狀態在 **"結構"** 選項卡下。按一下 **"刷新"** 以獲取最新狀態。 您應該會看到狀態為 [需要注意]。 
+5. **在 [** 網狀架構] 索引標籤下啟動 SCVMM 並檢查每部主機的狀態 **。按一下 [** 重新整理] 以取得最新狀態。 您應該會看到狀態為 [需要注意]。 
 17. 在 SCVMM 上安裝最新的 [Microsoft Azure Site Recovery Provider](https://aka.ms/downloaddra)。
 16. 在叢集的每個主機上安裝最新的 [Microsoft Azure Recovery Service (MARS) 代理程式](https://aka.ms/latestmarsagent)。 重新整理以確保 SCVMM 可以順利查詢主機。
 
@@ -96,7 +96,7 @@ Site Recovery 有助於商務持續性和災害復原 (BCDR) 策略的進行。 
 
 1.  瀏覽至 [控制台] -> [程式] -> [程式和功能] -> [Microsoft Azure Site Recovery]，然後按一下 [解除安裝]，即可將 ASR 提供者解除安裝。
 2. 根據您希望執行的升級模式，依照[此處](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server)所述的步驟進行操作。
-3. 啟動 SCVMM 主控台並檢查 **"結構"** 選項卡下每個主機的狀態。按一下 **"刷新"** 以獲取最新狀態。 您應該會看到狀態為 [需要注意]。
+3. 啟動 SCVMM 主控台，**並在 [** 網狀架構] 索引標籤下檢查每個主機的狀態 **。按一下 [** 重新整理] 以取得最新狀態。 您應該會看到狀態為 [需要注意]。
 4. 在 SCVMM 上安裝最新的 [Microsoft Azure Site Recovery Provider](https://aka.ms/downloaddra)。
 5. 在叢集的每個主機上升級最新的 [Microsoft Azure Recovery Service (MARS) 代理程式](https://aka.ms/latestmarsagent)。 重新整理以確保 SCVMM 可以順利查詢主機。
 

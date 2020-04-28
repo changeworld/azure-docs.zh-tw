@@ -1,6 +1,6 @@
 ---
 title: 如何設定應用程式 Proxy 應用程式 | Microsoft Docs
-description: 瞭解如何通過幾個簡單步驟創建和配置 APplication 代理應用程式
+description: 瞭解如何使用幾個簡單的步驟來建立和設定應用程式 Proxy 應用程式
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,15 +17,15 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7aaf2eb282bc3fd0b9f3853ce493c479a3d3c3a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67807846"
 ---
 # <a name="how-to-configure-an-application-proxy-application"></a>如何設定應用程式 Proxy 應用程式
 
-本文可説明您瞭解如何在 Azure AD 中配置應用程式代理應用程式，以將本地應用程式公開到雲中。
+本文可協助您瞭解如何在 Azure AD 內設定應用程式 Proxy 應用程式，以將您的內部部署應用程式公開至雲端。
 
 ## <a name="recommended-documents"></a>建議的文件
 
@@ -45,9 +45,9 @@ ms.locfileid: "67807846"
 - URL 開頭為 http 或 https，且結尾為 “/”
 - URL 應該是網域名稱，而非 IP 位址
 
-創建應用程式時，錯誤訊息應顯示在右上角。 您也可以選取通知圖示來查看錯誤訊息。
+當您建立應用程式時，錯誤訊息應該會顯示在右上角。 您也可以選取通知圖示來查看錯誤訊息。
 
-![顯示在 Azure 門戶中查找通知提示的位置](./media/application-proxy-config-how-to/error-message.png)
+![顯示在 Azure 入口網站中尋找通知提示的位置](./media/application-proxy-config-how-to/error-message.png)
 
 ## <a name="configure-connectorsconnector-groups"></a>設定連接器/連接器群組
 
@@ -65,7 +65,7 @@ ms.locfileid: "67807846"
 - 憑證為自我簽署
 - 憑證沒有私密金鑰
 
-當您嘗試上載證書時，錯誤訊息將顯示在右上角。 您也可以選取通知圖示來查看錯誤訊息。
+當您嘗試上傳憑證時，錯誤訊息會顯示在右上角。 您也可以選取通知圖示來查看錯誤訊息。
 
 ## <a name="next-steps"></a>後續步驟
 

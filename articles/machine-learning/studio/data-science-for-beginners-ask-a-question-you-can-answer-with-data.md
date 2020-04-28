@@ -10,10 +10,10 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
 ms.openlocfilehash: 26837337b49d79a26404fd6709b036f6907720f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73838846"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>詢問您可以使用資料回答的問題
@@ -48,7 +48,7 @@ ms.locfileid: "73838846"
 
 含糊不清的問題不需要使用名稱或數字來回答。 必須是明確的問題。
 
-假設您找到一個神燈，其中的精靈將如實回答您詢問的任何問題。 但這是一個調皮的精靈，他們會儘量讓他們的答案變得模糊和混亂，因為他們可以逃脫。 你想用一個如此密閉的問題來固定他們，以至於他們忍不住告訴你你想知道什麼。
+假設您找到一個神燈，其中的精靈將如實回答您詢問的任何問題。 但這是一個 mischievous 的 genie，他們會試著將它們的答案設為不清楚，而令人困惑。 您想要將其釘選到有問題的無懈可擊，讓他們無法協助，但告訴您想要知道的內容。
 
 如果您詢問了含糊不清的問題，例如「我的股票會發生什麼事？」，精靈可能會回答「價格將有所變化」。 這是如實的回答，但不是很有幫助。
 
@@ -88,8 +88,8 @@ ms.locfileid: "73838846"
 
 我們談論了一些基本原則，讓您在詢問可使用資料回答的問題時使用。
 
-請務必查看 Microsoft Azure 機器學習工作室（經典）中的"初學者資料科學"中的其他視頻。
+請務必查看「適用于初學者的資料科學」的其他影片，Microsoft Azure Machine Learning Studio （傳統）。
 
 ## <a name="next-steps"></a>後續步驟
-* [嘗試機器學習工作室（經典）的第一個資料科學實驗](create-experiment.md)
+* [嘗試使用 Machine Learning Studio 的第一個資料科學實驗（傳統）](create-experiment.md)
 * [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/preview/overview-what-is-azure-ml)

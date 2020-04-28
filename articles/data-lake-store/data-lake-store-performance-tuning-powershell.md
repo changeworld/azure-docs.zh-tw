@@ -1,21 +1,21 @@
 ---
-title: Azure 資料湖存儲第 1 代性能調優 - PowerShell
-description: 有關在將 Azure PowerShell 與 Azure 資料存儲 Gen1 一起使用時如何提高性能的提示。
+title: Azure Data Lake Storage Gen1 效能調整-PowerShell
+description: 在搭配 Azure Data Lake Storage Gen1 使用 Azure PowerShell 時，如何改善效能的秘訣。
 author: stewu
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: stewu
 ms.openlocfilehash: c975af1799d427651b76bb9fde5ff765afed3f86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73904569"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>使用 PowerShell 搭配 Azure Data Lake Storage Gen1 的效能微調指導方針
 
-本文介紹了在使用 PowerShell 處理資料湖存儲 Gen1 時可以調整以獲得更好性能的屬性。
+本文說明您可以微調的屬性，以在使用 PowerShell 來處理 Data Lake Storage Gen1 時取得更佳的效能。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "73904569"
 | PerFileThreadCount  | 10      | 這個參數可讓您選擇可用於上傳或下載每個檔案的平行執行緒數目。 此數字代表每個檔案可以配置的執行緒數目上限，但視您的案例而定，您可能會收到比較少的執行緒 (例如︰如果您要上傳 1-KB 檔案，即使您要求 20 個執行緒，但您將取得一個執行緒)。  |
 | ConcurrentFileCount | 10      | 這個參數特別用於上傳或下載資料夾。 這個參數會決定可以上傳或下載的並行檔案數目。 此數字代表可以一次上傳或下載的並行檔案數目上限，但視您的案例而定，可能會收到比較少的並行檔案 (例如︰如果您要上傳兩個檔案，即使您要求 15 個檔案，但您將取得兩個並行檔案)。 |
 
-**例子：**
+**範例：**
 
 此命令會使用每個檔案 20 個執行緒和 100 個並行檔案，將檔案從 Data Lake Storage Gen1 下載至使用者的本機磁碟。
 
@@ -40,25 +40,25 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
     -Recurse
 ```
 
-## <a name="how-to-determine-property-values"></a>如何確定屬性值
+## <a name="how-to-determine-property-values"></a>如何判斷屬性值
 
 您的下一個問題可能是如何判斷要提供給效能相關屬性的值。 以下是一些您可以使用的指引。
 
-* **步驟 1：確定匯流排程計數**- 首先計算要使用的執行緒總數。 一般來說，您應該針對每個實體核心使用六個執行緒。
+* 步驟1：藉由計算要使用的匯流排程計數，來**判斷匯流排程計數**-開始。 一般來說，您應該針對每個實體核心使用六個執行緒。
 
     `Total thread count = total physical cores * 6`
 
-    **例子：**
+    **範例：**
 
     假設您正從有 16 個核心的 D14 VM 執行 PowerShell 命令
 
     `Total thread count = 16 cores * 6 = 96 threads`
 
-* **第 2 步：計算 PerFileThreadCount** - 我們根據檔的大小計算我們的 PerFileThreadCount。 對於小於 2.5 GB 的檔案，不需要變更此參數，因為預設值為 10 就已足夠。 對於大於 2.5 GB 的檔案，您應該使用 10 個執行緒作為第一個 2.5 GB 的基底，並且為每增加額外 256-MB 的檔案大小新增 1 個執行緒。 如果您要複製包含各種檔案大小的資料夾，請考慮將其分組為相似的檔案大小。 檔案大小不相近可能會導致非最佳的效能。 如果不可能分組為相似的檔案大小，您應該根據最大檔案大小設定 PerFileThreadCount。
+* **步驟2：計算 PerFileThreadCount** -我們會根據檔案大小來計算我們的 PerFileThreadCount。 對於小於 2.5 GB 的檔案，不需要變更此參數，因為預設值為 10 就已足夠。 對於大於 2.5 GB 的檔案，您應該使用 10 個執行緒作為第一個 2.5 GB 的基底，並且為每增加額外 256-MB 的檔案大小新增 1 個執行緒。 如果您要複製包含各種檔案大小的資料夾，請考慮將其分組為相似的檔案大小。 檔案大小不相近可能會導致非最佳的效能。 如果不可能分組為相似的檔案大小，您應該根據最大檔案大小設定 PerFileThreadCount。
 
     `PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size`
 
-    **例子：**
+    **範例：**
 
     假設您有 100 個 1 GB 到 10 GB 的檔案，我們使用 10 GB 作為等式的最大檔案大小，該等式會如下所示。
 
@@ -68,7 +68,7 @@ Export-AzDataLakeStoreItem -AccountName "Data Lake Storage Gen1 account name" `
 
     `Total thread count = PerFileThreadCount * ConcurrentFileCount`
 
-    **例子：**
+    **範例：**
 
     以我們使用的範例值為基礎
 

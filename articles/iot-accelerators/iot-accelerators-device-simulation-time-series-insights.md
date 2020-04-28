@@ -1,5 +1,5 @@
 ---
-title: 使用時間序列見解視覺化類比遙測 - Azure |微軟文檔
+title: 使用時間序列深入解析將模擬的遙測資料視覺化-Azure |Microsoft Docs
 description: 了解如何設定時間序列深入解析環境，來探索和分析裝置模擬解決方案加速器產生的的遙測資料。
 author: dominicbetts
 manager: timlt
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73889336"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>使用時間序列深入分析將從裝置模擬解決方案加速器傳送的遙測資料視覺化
@@ -53,11 +53,11 @@ ms.locfileid: "73889336"
 
 ## <a name="create-a-new-time-series-insights-environment"></a>建立新的時間序列深入解析環境
 
-[Azure 時間序列見解](../../articles/time-series-insights/time-series-insights-overview.md)是一種完全託管的分析、存儲和視覺化服務，用於管理雲中的 IoT 規模時間序列資料。 若要建立新的時間序列深入解析環境：
+[Azure 時間序列深入解析](../../articles/time-series-insights/time-series-insights-overview.md)是完全受控的分析、儲存體及視覺效果服務，可在雲端中管理 IoT 規模的時間序列資料。 若要建立新的時間序列深入解析環境：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 選擇**創建資源** > **物聯網** > **時間序列見解**：
+1. 選取 [**建立資源** > ]**物聯網** > **時間序列深入解析**：
 
     ![新增時間序列深入解析](./media/iot-accelerators-device-simulation-time-series-insights/new-time-series-insights.png)
 
@@ -77,7 +77,7 @@ ms.locfileid: "73889336"
     > [!NOTE]
     > 將時間序列深入解析環境新增至和解決方案加速器相同的資源群組中，表示當您刪除解決方案加速器時，該環境也會刪除。
 
-1. 按一下 **[建立]**。 可能需要幾分鐘的時間來建立環境。
+1. 按一下頁面底部的 [新增]  。 可能需要幾分鐘的時間來建立環境。
 
 ## <a name="create-event-source"></a>建立事件來源
 
@@ -89,7 +89,7 @@ ms.locfileid: "73889336"
 
     ![檢視事件來源](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources.png)
 
-1. 按一下 **"添加**" ：
+1. 按一下 [**新增**]：
 
     ![新增事件來源](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-sources-add.png)
 
@@ -105,12 +105,12 @@ ms.locfileid: "73889336"
     | IoT 中樞原則名稱 | **iothubowner** |
     | IoT 中樞原則金鑰 | 系統會自動填入此欄位。 |
     | IoT 中樞取用者群組 | **devicesimulationtsi** |
-    | 事件序列化格式 | **Json** |
+    | 事件序列化格式 | **JSON** |
     | 時間戳記屬性名稱 | 保留空白 |
 
     ![建立事件來源](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-event-source-create.png)
 
-1. 按一下 **[建立]**。
+1. 按一下頁面底部的 [新增]  。
 
 > [!NOTE]
 > 您可以[對其他使用者授與存取權](../../articles/time-series-insights/time-series-insights-data-access.md#grant-data-access)，使其能夠存取時間序列深入解析總管。
@@ -139,7 +139,7 @@ ms.locfileid: "73889336"
 
     ![時間序列深入解析總管查詢](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query1.png)
 
-1. 按右鍵圖表並選擇 **"流覽事件**"
+1. 以滑鼠右鍵按一下圖表，然後選取 [**探索事件**]：
 
     ![時間序列深入解析總管事件](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explore-events.png)
 
@@ -151,7 +151,7 @@ ms.locfileid: "73889336"
 
     ![時間序列深入解析總管檢視方塊](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-explorer-perspective.png)
 
-1. 按一下**+** 以向透視圖添加新查詢：
+1. 按一下**+** 以將新的查詢加入至觀點：
 
     ![時間序列深入解析總管的新增查詢](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "73889336"
 
 如果您打算進一步探索，請讓解決方案加速器維持部署。
 
-如果不再需要解決方案加速器，請從預配解決方案頁面將其從"[已預配解決方案"](https://www.azureiotsolutions.com/Accelerators#dashboard)頁中刪除，然後按一下"**刪除解決方案**"。
+如果您不再需要解決方案加速器，請在 [已布[建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard)] 頁面中選取它，然後按一下 [**刪除解決方案**]，將它刪除。
 
 如果您已將時間序列深入解析環境新增至解決方案加速器的資源群組中，則當您刪除解決方案加速器時，該環境也會自動刪除。 否則，您必須從 Azure 入口網站手動移除時間序列深入解析環境。
 

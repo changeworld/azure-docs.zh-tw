@@ -1,5 +1,5 @@
 ---
-title: 升級到 Azure 搜索 .NET SDK 版本 3
+title: 升級至 Azure 搜尋服務 .NET SDK 第3版
 titleSuffix: Azure Cognitive Search
 description: 從舊版將程式碼移轉至 Azure 搜尋服務 .NET SDK 版本 3。 了解新功能與必要的程式碼變更。
 manager: nitinme
@@ -10,13 +10,13 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72792971"
 ---
-# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>升級到 Azure 搜索 .NET SDK 版本 3
+# <a name="upgrade-to-azure-search-net-sdk-version-3"></a>升級至 Azure 搜尋服務 .NET SDK 第3版
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -41,7 +41,7 @@ Azure 搜尋服務 .NET SDK 版本 3 包含一些從舊版所做的變更。 這
 ## <a name="whats-new-in-version-3"></a>版本 3 的新功能
 Azure 搜尋服務 .NET SDK 版本 3 以最新推出的 Azure 搜尋服務 REST API 版本為目標，特別是 2016-09-01。 這樣可讓您從 .NET 應用程式中使用 Azure 搜尋服務的許多新功能，包括：
 
-* [自訂分析儀](https://aka.ms/customanalyzers)
+* [自訂分析器](https://aka.ms/customanalyzers)
 * [Azure Blob 儲存體](search-howto-indexing-azure-blob-storage.md)和 [Azure 表格儲存體](search-howto-indexing-azure-tables.md)索引子支援
 * 透過 [欄位對應](search-indexer-field-mappings.md)
 * 可安全地並行更新索引定義、索引子和資料來源的 ETag 支援
@@ -147,6 +147,6 @@ index.Analyzers = new Analyzer[]
 ## <a name="conclusion"></a>結論
 如需更多有關使用 Azure 搜尋服務 .NET SDK 的詳細資料，請參閱 [.NET 做法](search-howto-dotnet-sdk.md)。
 
-歡迎您提供 SDK 的意見反應。 如果您遇到問題，請隨時向我們尋求説明[，在堆疊溢位](https://stackoverflow.com/questions/tagged/azure-search)。 如果您發現錯誤，您可以在 [Azure .NET SDK GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/issues)中提出問題。 請務必在問題的標題前面加上「[Azure 搜尋服務]」前置詞。
+歡迎您提供 SDK 的意見反應。 如果您遇到問題，歡迎詢問我們[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search)的協助。 如果您發現錯誤，您可以在 [Azure .NET SDK GitHub 儲存機制](https://github.com/Azure/azure-sdk-for-net/issues)中提出問題。 請務必在問題的標題前面加上「[Azure 搜尋服務]」前置詞。
 
 感謝您使用 Azure 搜尋服務！

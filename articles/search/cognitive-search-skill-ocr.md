@@ -1,7 +1,7 @@
 ---
 title: OCR 認知技能
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 認知搜索中的擴充管道中使用光學字元辨識 （OCR） 從影像檔中提取文本。
+description: 在 Azure 認知搜尋的擴充管線中，使用光學字元辨識（OCR）從影像檔案解壓縮文字。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: bdb510113a8d65ac04b54e77158f46d03cccd9de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72791932"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知技能
 
-**光學字元辨識 （OCR）** 技能可識別影像檔中的列印和手寫文本。 這項技能會使用認知服務中[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)所提供的機器學習模型。 **OCR** 技能對應至下列功能：
+**光學字元辨識（OCR）** 技能可識別影像檔案中的列印和手寫文字。 這項技能會使用認知服務中[電腦視覺](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)所提供的機器學習模型。 **OCR** 技能對應至下列功能：
 
-+ ["OCR"API](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api)用於英語以外的語言。 
-+ 對於英語，使用新的["讀取"API。](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api)
++ 「 [OCR](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-optical-character-recognition-api) 」 API 用於英文以外的語言。 
++ 若是英文，則會使用新的「[讀取](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api)」 API。
 
 **OCR** 技能可從影像檔擷取文字。 支援的檔案格式包括：
 
@@ -29,10 +29,10 @@ ms.locfileid: "72791932"
 + .PNG
 + .BMP
 + .GIF
-+ .Tiff
++ .TIFF
 
 > [!NOTE]
-> 隨著通過增加處理頻率、添加更多文檔或添加更多 AI 演算法來擴大範圍，您需要[附加計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
+> 當您藉由增加處理頻率、新增更多檔或新增更多 AI 演算法來擴展範圍時，您將需要[附加可計費的認知服務資源](cognitive-search-attach-cognitive-services.md)。 在認知服務中呼叫 API，以及在 Azure 認知搜尋的文件萃取階段中擷取影像時，都會產生費用。 從文件中擷取文字不會產生費用。
 >
 > 內建技能的執行會依現有的[認知服務預付型方案價格](https://azure.microsoft.com/pricing/details/cognitive-services/)收費。 影像擷取定價的說明請見 [Azure 認知搜尋定價頁面](https://go.microsoft.com/fwlink/?linkid=2042400)。
 
@@ -45,9 +45,9 @@ ms.locfileid: "72791932"
 |--------------------|-------------|
 | detectOrientation | 啟用自動偵測影像方向。 <br/> 有效值：true/false。|
 |defaultLanguageCode | <p>  輸入文字的語言代碼。 支援的語言包括： <br/> zh-Hans (簡體中文) <br/> zh-Hant (繁體中文) <br/>cs (捷克文) <br/>da (丹麥文) <br/>nl (荷蘭文) <br/>en (英文) <br/>fi (芬蘭文)  <br/>fr (法文) <br/>  de (德文) <br/>el (希臘文) <br/> hu (匈牙利文) <br/> it (義大利文) <br/>  ja (日文) <br/> ko (韓文) <br/> nb (挪威文) <br/>   pl (波蘭文) <br/> pt (葡萄牙文) <br/>  ru (俄文) <br/>  es (西班牙文) <br/>  sv (瑞典文) <br/>  tr (土耳其文) <br/> ar (阿拉伯文) <br/> ro (羅馬尼亞文) <br/> sr-Cyrl (塞爾維亞文 - 斯拉夫) <br/> sr-Latn (塞爾維亞文 - 拉丁) <br/>  sk (斯洛伐克文) <br/>  unk (未知) <br/><br/> 如果未指定語言代碼或為 Null，則語言會設為英文。 如果語言明確設為 "unk"，則會自動偵測語言。 </p> |
-|行結束 | 每個檢測到的行之間要使用的值。 可能的值："空間"，"運輸返回"，"線饋送"。  預設值為"空格" |
+|lineEnding | 要在每個偵測到的行之間使用的值。 可能的值： ' Space '、' CarriageReturn '、' 換行 '。  預設值為「空間」 |
 
-以前，有一個參數稱為"文本提取演算法"，用於指定技能是否應提取"列印"或"手寫"文本。  此參數被棄用，不再需要，因為最新的讀取 API 演算法能夠同時提取這兩種類型的文本。  如果技能定義已包含此參數，則無需將其刪除，但將不再使用它，並且無論設置為什麼，都將提取這兩種類型的文本。
+先前有一個稱為 "textExtractionAlgorithm" 的參數，用來指定技能是否應將「列印」或「手寫」文字解壓縮。  這個參數已被取代，而且不再需要，因為最新的讀取 API 演算法可以同時解壓縮兩種類型的文字。  如果您的技能定義已經包含這個參數，您就不需要將它移除，但它將不再使用，而且這兩種類型的文字都將解壓縮，而不論其設定為何。
 
 ## <a name="skill-inputs"></a>技能輸入
 

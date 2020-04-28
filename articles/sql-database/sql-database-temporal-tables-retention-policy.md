@@ -1,5 +1,5 @@
 ---
-title: 在時程表中管理歷史資料
+title: 管理時態表中的歷程記錄資料
 description: 了解如何使用時態保留原則來控制歷史資料。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 09/25/2018
 ms.openlocfilehash: 3c2460c6f5e0905f45106148ecc3e8a949cf221f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73820692"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>使用保留原則管理時態表中的歷史資料
@@ -30,11 +30,11 @@ ms.locfileid: "73820692"
 ValidTo < DATEADD (MONTH, -6, SYSUTCDATETIME())
 ```
 
-在前面的示例中，我們假定**ValidTo**列對應于SYSTEM_TIME期的結束。
+在上述範例中，我們假設**ValidTo**資料行對應至 SYSTEM_TIME 期限的結尾。
 
 ## <a name="how-to-configure-retention-policy"></a>如何設定保留原則？
 
-在為臨時表配置保留原則之前，請首先檢查是否*在資料庫級別*啟用了時態歷史保留。
+在您設定時態表的保留原則之前，請先檢查是否已*在資料庫層級*啟用時態性歷程記錄保留。
 
 ```
 SELECT is_temporal_history_retention_enabled, name
@@ -106,7 +106,7 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 清除處理序取決於歷程記錄資料表的索引配置。 請務必注意*只有包含叢集索引 (B 型樹狀目錄或資料行存放區）的歷程記錄資料表可以設定有限的保留原則*。 建立的背景工作可利用有限的保留期間為所有時態表執行過時資料清除。
 資料列存放區 (B 型樹狀目錄) 叢集索引的清除邏輯會以較小區塊刪除過時資料列 (最多 10K)，以儘量減輕資料庫記錄檔和 IO 子系統的壓力。 雖然清除邏輯會利用必要的 B 型樹狀目錄索引，但無法絶對保證早於保留期間之資料列的刪除順序。 因此，*請勿在應用程式中對清除順序採用任何相依性*。
 
-群集列存儲的清理任務一次刪除整個[行組](https://msdn.microsoft.com/library/gg492088.aspx)（通常每個行包含 100 萬行），這非常有效，尤其是在以高速度生成歷史資料時。
+叢集資料行存放區的清除工作會一次移除整個資料列[群組](https://msdn.microsoft.com/library/gg492088.aspx)（通常會包含每個資料列的1000000），這非常有效率，特別是當歷程記錄資料是以較高的速度產生時。
 
 ![叢集資料行存放區保留](./media/sql-database-temporal-tables-retention-policy/cciretention.png)
 
@@ -116,11 +116,11 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 對於具有資料列存放區叢集索引的資料表，清除工作需有從對應 SYSTEM_TIME 時段結束的資料行開始的索引。 如果沒有這種索引，您就無法設定有限保留期限：
 
-*Msg 13765，16 級，<br></br>狀態 1 設置有限保留期失敗，系統版本化的時程表"時態階段testdb.dbo.網站UserInfo"，因為歷史表"時態階段testdb.dbo.網站UserInfoHistory"不包含所需的群集索引。請考慮在歷史記錄表上創建群集列存儲或 B 樹索引，從與SYSTEM_TIME期結束的列匹配的列開始。*
+*訊息13765，層級16，狀態<br> </br> 1 設定有限的保留期間在系統建立版本的時態表 ' temporalstagetestdb.dbo.websiteuserinfohistory. WebsiteUserInfo ' 上失敗，因為記錄資料表 ' temporalstagetestdb.dbo.websiteuserinfohistory ' 不包含所需的叢集索引。請考慮建立叢集資料行存放區或 B 型樹狀目錄索引，其開頭為符合記錄資料表上 SYSTEM_TIME 期間結尾的資料行。*
 
 請務必注意，Azure SQL Database 建立的預設記錄資料表已有相容於保留原則的叢集索引。 如果您嘗試在設定有限保留期限的資料表上移除該索引，作業會失敗並傳回下列錯誤︰
 
-*Msg 13766，16 級，<br></br>狀態 1 不能刪除群集索引"網站UserInfoHistory.IX_WebsiteUserInfoHistory"，因為它用於自動清理老化資料。如果需要刪除此索引，請考慮在相應的系統版本化臨時表上將HISTORY_RETENTION_PERIOD設置為 INFINITE。*
+*訊息13766，層級16，狀態<br> </br> 1 無法卸載叢集索引 ' IX_WebsiteUserInfoHistory WebsiteUserInfoHistory '，因為它正用於自動清除過時資料。如果您需要卸載此索引，請在對應的系統版本設定時態表上，考慮將 HISTORY_RETENTION_PERIOD 設為無限。*
 
 如果歷史資料列依遞增順序插入 (依時段結束資料行排序)，完全以 SYSTEM_VERSIONIOING 機制填入記錄資料表時就是如此，則會以最佳方式清除叢集資料行存放區索引。 如果記錄資料表中的資料列未依時段結束資料行排序 (可能是您已移轉現有的歷史資料)，您應該在已正確排序的 B 型樹狀目錄資料列存放區索引上，重新建立叢集資料行存放區索引，以發揮最佳效能。
 
@@ -144,7 +144,7 @@ CREATE NONCLUSTERED INDEX IX_WebHistNCI ON WebsiteUserInfoHistory ([UserName])
 
 嘗試執行上述陳述式失敗並傳回下列錯誤︰
 
-*Msg 13772、16 級、<br></br>狀態 1 無法在時間歷史表"網站UserInfo歷史"上創建非群集索引，因為它具有有限的保留期和定義的群集列存儲索引。*
+*訊息13772，層級16，狀態<br> </br> 1 無法在時態性歷程記錄資料表 ' WebsiteUserInfoHistory ' 上建立非叢集索引，因為它已定義有限的保留週期和叢集資料行存放區索引。*
 
 ## <a name="querying-tables-with-retention-policy"></a>使用保留原則來查詢資料表
 
@@ -181,7 +181,7 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解如何在應用程式中使用臨時表，請查看[Azure SQL 資料庫中的"開始使用臨時表](sql-database-temporal-tables.md)"。
+若要瞭解如何在您的應用程式中使用時態表，請參閱[Azure SQL Database 中的時態表消費者入門](sql-database-temporal-tables.md)。
 
 瀏覽 Channel 9，聽聽[真實客戶的時態表實作成功案例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)，並觀看[時態表的即時示範](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)。
 

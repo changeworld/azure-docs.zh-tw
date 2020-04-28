@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: 3a99ad12af7f6eecb74f6c0d52a269770fd5ed7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73837826"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>複製其他人的工作進行資料科學
@@ -50,9 +50,9 @@ ms.locfileid: "73837826"
 
 ## <a name="find-examples-in-the-azure-ai-gallery"></a>在 Azure AI 資源庫中尋找範例
 
-微軟有一個基於雲的服務，稱為[Azure機器學習工作室（經典）。](https://azure.microsoft.com/services/machine-learning-studio/) 其會提供您工作區，讓您可以試驗不同的機器學習演算法，當您制定您的解決方案時，您可以將其啟動為 Web 服務。
+Microsoft 有一個稱為[Azure Machine Learning Studio （傳統）](https://azure.microsoft.com/services/machine-learning-studio/)的雲端式服務。 其會提供您工作區，讓您可以試驗不同的機器學習演算法，當您制定您的解決方案時，您可以將其啟動為 Web 服務。
 
-此服務有一個部分稱為 **[Azure AI 資源庫](https://gallery.azure.ai/)**。 它包含資源，包括 Azure 機器學習工作室（經典）實驗或模型的集合，人們已構建並貢獻供其他人使用。 這些實驗是運用思考的好方法，以及是其他人的挑戰，他們會協助您開始您自己的解決方案。 歡迎每個人前往瀏覽。
+此服務有一個部分稱為 **[Azure AI 資源庫](https://gallery.azure.ai/)**。 其中包含資源，包括使用者已建立並提供給其他人使用的 Azure Machine Learning Studio （傳統）實驗或模型的集合。 這些實驗是運用思考的好方法，以及是其他人的挑戰，他們會協助您開始您自己的解決方案。 歡迎每個人前往瀏覽。
 
 ![Azure AI 資源庫](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -71,25 +71,25 @@ ms.locfileid: "73837826"
 
 ![叢集實驗描述頁面](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/clustering-experiment-description-page.png)
 
-請注意顯示**在工作室中打開（經典）的連結**。
+請注意顯示 [**在 Studio 中開啟（傳統）**] 的連結。
 
-![在工作室中打開（經典）按鈕](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
+![[在 Studio 中開啟（傳統）] 按鈕](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/open-in-studio.png)
 
-我可以點擊它，它帶我到**Azure機器學習工作室（經典）。** 其會建立一份實驗副本，並放在我自己的工作區中。 這包括參與者的資料集、他們所做的所有程序、他們使用的所有演算法，以及他們儲存結果的方式。
+我可以按一下它，這會讓我直接**Azure Machine Learning Studio （傳統）**。 其會建立一份實驗副本，並放在我自己的工作區中。 這包括參與者的資料集、他們所做的所有程序、他們使用的所有演算法，以及他們儲存結果的方式。
 
-![在機器學習工作室（經典） 中打開庫實驗 - 聚類演算法示例](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
+![在 Machine Learning Studio （傳統）中開啟資源庫實驗-群集演算法範例](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/cluster-experiment-open-in-studio.png)
 
 而我現在有一個起點。 我可以抽換為自己的資料，並且可以自己調整模型。 這給了我好的開始，可以讓我建置他人的工作，而這些人確實知道他們正在做什麼。
 
 ## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>尋找示範機器學習技術的實驗
 在 [Azure AI 資源庫](https://gallery.azure.ai) 中有其他實驗，是特別為了資料科學入門者所提供的使用說明範例。 比方說，資源庫中有一個示範如何處理遺漏值的實驗 ([處理遺漏值的方法](https://gallery.azure.ai/Experiment/Methods-for-handling-missing-values-1))。 此範例將逐步引導您透過 15 個不同方法來取代空白值，並討論每一種方法的優點以及使用時機。
 
-![機器學習工作室（經典）中打開的庫實驗 - 缺少值的方法](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
+![資源庫實驗在 Machine Learning Studio （傳統）中開啟-遺漏值的方法](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
 您可以在 [Azure AI 資源庫](https://gallery.azure.ai)找到工作實驗，做為您自己的解決方案起點。
 
-請務必查看 Microsoft Azure 機器學習工作室（經典）中的"初學者資料科學"中的其他視頻。
+請務必查看「適用于初學者的資料科學」的其他影片，Microsoft Azure Machine Learning Studio （傳統）。
 
 ## <a name="next-steps"></a>後續步驟
-* [使用 Azure 機器學習工作室（經典）嘗試第一個資料科學實驗](create-experiment.md)
+* [使用 Azure Machine Learning Studio （傳統）嘗試您的第一個資料科學實驗](create-experiment.md)
 * [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/preview/overview-what-is-azure-ml)

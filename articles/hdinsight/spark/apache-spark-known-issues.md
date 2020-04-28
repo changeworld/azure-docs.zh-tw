@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 2c153d818136c5d8804dae72004dfaf17fd1bf7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73494526"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight 上的 Apache Spark 叢集已知問題
@@ -22,7 +22,7 @@ ms.locfileid: "73494526"
 ## <a name="apache-livy-leaks-interactive-session"></a>Apache Livy 會流失互動式工作階段
 [Apache Livy](https://livy.incubator.apache.org/) 在互動式工作階段仍作用中的情況下重新啟動時 (從 [Apache Ambari](https://ambari.apache.org/) 或是因為前端節點 0 虛擬機器重新開機)，互動式作業工作階段將會流失。 因此，新的作業可能會卡在「已接受」狀態中。
 
-**風險降低：**
+**緩解**
 
 請使用下列程序解決此問題：
 
@@ -32,7 +32,7 @@ ms.locfileid: "73494526"
 
         yarn application –list
 
-    如果使用 Livy 互動式工作階段啟動工作時沒有明確指定名稱，則預設作業名稱會是 Livy。 對於由[Jupyter 筆記本](https://jupyter.org/)啟動的 Livy 會話，作業`remotesparkmagics_*`名稱從 開始。
+    如果使用 Livy 互動式工作階段啟動工作時沒有明確指定名稱，則預設作業名稱會是 Livy。 針對[Jupyter Notebook](https://jupyter.org/)啟動的 Livy 會話，作業名稱的開頭為`remotesparkmagics_*`。
 
 3. 執行下列命令以刪除這些作業。
 
@@ -43,7 +43,7 @@ ms.locfileid: "73494526"
 ## <a name="spark-history-server-not-started"></a>Spark 歷程記錄伺服器未啟動
 叢集建立後，不會自動啟動 Spark 歷程記錄伺服器。  
 
-**風險降低：**
+**緩解**
 
 請從 Ambari 手動啟動歷程記錄伺服器。
 
@@ -56,7 +56,7 @@ java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permissio
 
 沒有任何驅動程式記錄寫入。
 
-**風險降低：**
+**緩解**
 
 1. 將 hdiuser 新增至 Hadoop 群組。
 2. 在叢集建立之後，提供 /var/log/spark 的 777 權限。
@@ -67,7 +67,7 @@ java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permissio
 
 HDInsight Spark 叢集不支援 Spark-Phoenix 連接器。
 
-**風險降低：**
+**緩解**
 
 您必須改用 Spark-HBase 連接器。 如需指示，請參閱[如何使用 Spark-HBase 連接器](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)。
 
@@ -81,9 +81,9 @@ HDInsight Spark 叢集不支援 Spark-Phoenix 連接器。
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>載入大型 Notebook 時發生錯誤
 
-載入大小較大的筆記本時**`Error loading notebook`** 可能會看到錯誤。  
+當您載入的筆記本**`Error loading notebook`** 大小較大時，您可能會看到錯誤。  
 
-**風險降低：**
+**緩解**
 
 如果您收到這個錯誤，並不表示您的資料已損毀或遺失。  您的 Notebook 仍在磁碟的 `/var/lib/jupyter`中，您可以透過 SSH 連線到叢集來加以存取。 如需相關資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
@@ -91,14 +91,14 @@ HDInsight Spark 叢集不支援 Spark-Phoenix 連接器。
 
 若要防止日後再發生此錯誤，您必須遵循一些最佳作法：
 
-* 務必讓 Notebook 保持小型規模。 會傳回到 Jupyter 的任何 Spark 作業輸出皆會保存在 Notebook 中。  一般來說，使用 Jupyter 是避免`.collect()`在大型 RDD 或資料幀上運行的最佳做法;相反，如果要查看 RDD 的內容，請考慮運行`.take()`，或者`.sample()`使輸出不會變得太大。
+* 務必讓 Notebook 保持小型規模。 會傳回到 Jupyter 的任何 Spark 作業輸出皆會保存在 Notebook 中。  一般來說，Jupyter 的最佳做法是避免`.collect()`在大型 RDD 或資料框架上執行;相反地，如果您想要查看 RDD 的內容，請考慮執行`.take()`或`.sample()` ，讓您的輸出不會變得太大。
 * 此外，當您儲存 Notebook 時，請清除所有輸出儲存格以減少大小。
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Notebook 的初始啟動比預期耗時
 
 在使用 Spark magic 的 Jupyter Notebook 中，第一個程式碼陳述式可能需耗時一分鐘以上才能執行完畢。  
 
-**解釋：**
+**簡短**
 
 這會在執行第一個程式碼儲存格時發生。 它會在背景中起始設定工作階段組態，以及設定 SQL、Spark 和 Hive 內容。 設定這些內容後，第一個陳述式才會執行，因此會有陳述式會花很長時間完成的印象。
 
@@ -106,7 +106,7 @@ HDInsight Spark 叢集不支援 Spark-Phoenix 連接器。
 
 當 Spark 叢集的資源不足時，Jupyter Notebook 中的 Spark 和 PySpark 核心在嘗試建立工作階段時將會逾時。
 
-**緩解措施：**
+**緩和措施**
 
 1. 藉由下列方式，釋出 Spark 叢集中的一些資源：
 

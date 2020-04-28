@@ -1,6 +1,6 @@
 ---
 title: Azure Analysis Services 資源和物件限制 | Microsoft Docs
-description: 本文介紹 Azure 分析服務伺服器的資源和物件限制。
+description: 本文說明 Azure Analysis Services 伺服器的資源和物件限制。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f309c9863eb2f3065251537380a2977839f990d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73573204"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Analysis Services 資源和物件限制。
@@ -20,7 +20,7 @@ ms.locfileid: "73573204"
 
 ## <a name="tier-limits"></a>階層限制
 
-有關開發人員、基本層和標準層的 QPU 和記憶體限制，請參閱[Azure 分析服務定價頁](https://azure.microsoft.com/pricing/details/analysis-services/)。
+如需開發人員、基本和標準層的 QPU 和記憶體限制，請參閱[Azure Analysis Services 定價頁面](https://azure.microsoft.com/pricing/details/analysis-services/)。
 
 ## <a name="object-limits"></a>物件限制
 

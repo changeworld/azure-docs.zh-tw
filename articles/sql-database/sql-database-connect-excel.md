@@ -1,5 +1,5 @@
 ---
-title: 將 Excel 連接到單個資料庫
+title: 將 Excel 連接到單一資料庫
 description: 了解如何將 Microsoft Excel 連線至 Azure SQL 資料庫中的單一資料庫。 將資料匯入 Excel 中進行報告和資料探索。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
 ms.openlocfilehash: de5f23bf1e8acd8a5fcd0cf8e1526f88667800c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73827121"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>將 Excel 連線至 Azure SQL 資料庫中的單一資料庫和建立報表
@@ -38,9 +38,9 @@ ms.locfileid: "73827121"
    資料連線精靈隨即開啟。
 3. 在 [連接到資料庫伺服器]**** 對話方塊中，以 <*servername*>**.database.windows.net** 格式，輸入您要連接的 SQL Database **伺服器名稱**。 例如，**msftestserver.database.windows.net**。 選擇性地輸入您的資料庫名稱。 選取 [確定]**** 以開啟認證視窗。 
 
-   ![連接到資料庫伺服器對話方塊](media/sql-database-connect-excel/server-name.png)
+   ![[連接到資料庫伺服器] 對話方塊](media/sql-database-connect-excel/server-name.png)
 
-4. 在**SQL Server 資料庫**對話方塊中，選擇左側的 **"資料庫**"，然後在要連接到的 SQL**Password**資料庫伺服器的**使用者名和密碼**中輸入。 選取 [連線]**** 以開啟 [導覽器]****。 
+4. 在 [ **SQL Server 資料庫**] 對話方塊中，選取左側的 [**資料庫**]，然後針對您想要連接的 SQL Database 伺服器，輸入您的**使用者名稱**和**密碼**。 選取 [連線]**** 以開啟 [導覽器]****。 
 
    ![輸入伺服器名稱和登入認證](./media/sql-database-connect-excel/connect-to-server.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "73827121"
 
 > [!TIP]
 > 如果您想要將其他 Excel 活頁簿和工作表連線到資料庫，請選取 [資料]**** 索引標籤，然後選取 [最近使用的來源]**** 以啟動 [最近使用的來源]**** 對話方塊。 從對話方塊中的清單選擇您已建立的連線，然後按一下 [開啟]****。
-> ![最近來源對話方塊](media/sql-database-connect-excel/recent-connections.png)
+> ![最近使用的來源對話方塊](media/sql-database-connect-excel/recent-connections.png)
 
 ## <a name="create-a-permanent-connection-using-odc-file"></a>使用 .odc 檔案建立永久連線
 
@@ -77,12 +77,12 @@ ms.locfileid: "73827121"
    1. 選取 [瀏覽其他]**** 以開啟 [選取資料來源]**** 對話方塊。   
    2. 選取 [+NewSqlServerConnection.odc]**** 檔案，然後選取 [開啟]**** 以開啟 [資料連線精靈]****。
 
-      ![新建連接對話方塊](media/sql-database-connect-excel/new-connection.png)
+      ![新增連接對話方塊](media/sql-database-connect-excel/new-connection.png)
 
-2. 在 [資料連線精靈]**** 中，輸入您的伺服器名稱和 SQL Database 認證。 選取 [下一步]****。 
+2. 在 [資料連線精靈]**** 中，輸入您的伺服器名稱和 SQL Database 認證。 選取 [下一步]  。 
    1. 從下拉式清單中選取包含您資料的資料庫。 
    2. 選取您感興趣的資料表或檢視。 我們選擇 vGetAllCategories。
-   3. 選取 [下一步]****。 
+   3. 選取 [下一步]  。 
 
       ![資料連線精靈](media/sql-database-connect-excel/data-connection-wizard.png) 
 

@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
 ms.openlocfilehash: deb1ea8c7b41ad48bddebfbed1b15c667ee0071a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73483951"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
@@ -77,7 +77,7 @@ ms.locfileid: "73483951"
 
 將 MXChip IoT DevKit 連接到您的電腦後：
 
-1. 按一下視覺化工作室代碼中的 **"任務**"下拉式功能表，然後選擇 **"運行生成任務..."** Arduino 草圖被編譯並上傳到 DevKit。
+1. 按一下 Visual Studio Code**中的 [** 工作] 下拉式功能表，然後選取 [**執行組建工作 ...** ]。Arduino 草圖會經過編譯並上傳至 DevKit。
 
 2. 當草圖上傳成功後，「建立和上傳草圖：成功」** 訊息隨即顯示。
 
@@ -89,7 +89,7 @@ ms.locfileid: "73483951"
 
 3. 輸入您稍早記下的函式應用程式名稱。
 
-4. 按一下 **"連接"** 按鈕
+4. 按一下 [連線 **]** 按鈕
 
 5. 在幾秒內，頁面就會重新整理並顯示 DevKit 的 WiFi 連線狀態和每個內建感應器的狀態。
 
@@ -106,7 +106,7 @@ ms.locfileid: "73483951"
 ![範例測試程序](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> 您可以在 Azure 門戶中查看設備孿生的原始資料：IoT\>中心 -\> IoT 設備 -\>-*\<設備\>* 設備孿生。
+> 您可以在 Azure 入口網站： IoT 中樞\> IoT 裝置（您的\> * \<裝置\> *  - \>裝置對應項）中查看裝置對應項的原始資料。
 
 ## <a name="next-steps"></a>後續步驟
 

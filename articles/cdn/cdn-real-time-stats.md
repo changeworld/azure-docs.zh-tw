@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: d56007e5a196a0857f3b69ac51f5e3b5a88c4f6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67593499"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 中的即時統計資料
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本文件說明 Microsoft Azure CDN 中的即時統計資料。  在將內容傳遞給您的用戶端時，這項功能會提供即時資料 (例如頻寬、快取狀態和並行連線) 給您的 CDN 設定檔。 這可讓您隨時連續監視服務的健全狀況，包括上線事件。
 
 可用圖表如下︰
@@ -35,7 +35,7 @@ ms.locfileid: "67593499"
 * [連線](#connections)
 
 ## <a name="accessing-real-time-stats"></a>存取即時統計資料
-1. 在[Azure 門戶](https://portal.azure.com)中，流覽到 CDN 設定檔。
+1. 在[Azure 入口網站](https://portal.azure.com)中，流覽至您的 CDN 設定檔。
    
     ![CDN 設定檔刀鋒視窗](./media/cdn-real-time-stats/cdn-profile-blade.png)
 2. 在 [CDN 設定檔] 刀鋒視窗中，按一下 [管理] **** 按鈕。

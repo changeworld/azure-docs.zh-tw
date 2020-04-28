@@ -7,10 +7,10 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.openlocfilehash: de2bc551547706fb820813e57996e77bf49148d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73888940"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>常見的 Azure Cosmos DB 使用案例
@@ -40,11 +40,11 @@ Azure Cosmos DB 是一種全域分散式、多模型資料庫，廣泛用於各�
 對於需要低回應時間，而且必須處理大量讀取和寫入的 Web 應用程式、行動應用程式、遊戲應用程式和 IoT 應用程式來說，這些特性很有助益。
 
 ## <a name="iot-and-telematics"></a>IoT 和遠距通訊
-IoT 使用案例在如何內嵌、處理和儲存資料方面通常共用一些模式。  首先，這些系統需要內嵌於各種地區設定的裝置感應器中暴增的資料量。 接著，這些系統會處理並分析資料流資料，以衍生即時的資訊分析。 然後將資料封存到冷儲存體，進行批次分析。 Microsoft Azure 提供了可用於 IoT 用例的豐富服務，包括 Azure Cosmos DB、Azure 事件中心、Azure 流分析、Azure 通知中心、Azure 機器學習、Azure HDInsight 和 Power BI。 
+IoT 使用案例在如何內嵌、處理和儲存資料方面通常共用一些模式。  首先，這些系統需要內嵌於各種地區設定的裝置感應器中暴增的資料量。 接著，這些系統會處理並分析資料流資料，以衍生即時的資訊分析。 然後將資料封存到冷儲存體，進行批次分析。 Microsoft Azure 提供適用于 IoT 使用案例的豐富服務，包括 Azure Cosmos DB、Azure 事件中樞、Azure 串流分析、Azure 通知中樞、Azure Machine Learning、Azure HDInsight 和 Power BI。 
 
 ![Azure Cosmos DB IoT 參考架構](./media/use-cases/iot.png)
 
-Azure 事件中樞可以擷取暴增的資料量，因為它提供高輸送量資料擷取和低延遲。 您可以將需要處理以取得即時資訊分析的內嵌資料，使用漏斗方式倒入 Azure 串流分析以進行即時分析。 您可以將資料載入 Azure Cosmos DB 以進行臨機操作查詢。 將資料載入 Azure Cosmos DB 之後，這些資料便可供查詢。 此外，可以在變更摘要上讀取新的資料以及現有資料的變更。 更改源是一個持久、僅追加的日誌，用於按順序存儲對 Cosmos 容器的更改。 Azure Cosmos DB 中的全部資料或資料變更可用來在即時分析中作為參考資料。 此外，您還可以將 Azure Cosmos DB 資料連線到 HDInsight 來進行 Pig、Hive 或 Map/Reduce 作業，以進一步精簡和處理資料。  接著，系統會將精簡過的資料載入回 Azure Cosmos DB 以供報告使用。   
+Azure 事件中樞可以擷取暴增的資料量，因為它提供高輸送量資料擷取和低延遲。 您可以將需要處理以取得即時資訊分析的內嵌資料，使用漏斗方式倒入 Azure 串流分析以進行即時分析。 您可以將資料載入 Azure Cosmos DB 以進行臨機操作查詢。 將資料載入 Azure Cosmos DB 之後，這些資料便可供查詢。 此外，可以在變更摘要上讀取新的資料以及現有資料的變更。 變更摘要是持續性的只附加記錄，會依照順序來儲存 Cosmos 容器的變更。 Azure Cosmos DB 中的全部資料或資料變更可用來在即時分析中作為參考資料。 此外，您還可以將 Azure Cosmos DB 資料連線到 HDInsight 來進行 Pig、Hive 或 Map/Reduce 作業，以進一步精簡和處理資料。  接著，系統會將精簡過的資料載入回 Azure Cosmos DB 以供報告使用。   
 
 如需使用 Azure Cosmos DB、EventHubs 和 Storm 的範例 IoT 解決方案，請參閱 [GitHub 上的 hdinsight-storm-examples 存放庫 (英文)](https://github.com/hdinsight/hdinsight-storm-examples/)。
 
@@ -101,4 +101,4 @@ JSON (Cosmos DB 所支援的格式) 是一種呈現 UI 配置資料的有效格�
 
 * 若要開始使用 Azure Cosmos DB，請依照我們的[快速入門](create-sql-api-dotnet.md)操作，這會逐步引導您建立帳戶及開始使用 Cosmos DB。
 
-* 如果要瞭解有關使用 Azure Cosmos DB 的客戶的更多內容，請參閱[客戶案例研究](https://azure.microsoft.com/case-studies/?service=cosmos-db)頁面。
+* 如果您想要閱讀有關使用 Azure Cosmos DB 之客戶的詳細資訊，請參閱[客戶案例研究](https://azure.microsoft.com/case-studies/?service=cosmos-db)頁面。

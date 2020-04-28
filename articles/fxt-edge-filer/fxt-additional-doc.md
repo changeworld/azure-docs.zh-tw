@@ -1,35 +1,35 @@
 ---
-title: 微軟 Azure FXT 邊緣檔器 - 其他文檔
-description: 用於 Azure FXT 邊緣檔器安裝的其他參考文檔
+title: Microsoft Azure FXT Edge 檔案管理工具-其他檔
+description: 適用于 Azure FXT Edge 檔案管理工具安裝的其他參考檔
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: e3205827f9603545b0a99b064a53e50fc94c374e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72254911"
 ---
 # <a name="additional-documentation"></a>其他文件 
 
-此docs.microsoft.com網站之外的某些資源可以説明您瞭解和使用 Microsoft Azure FXT 邊緣檔器混合緩存。
+此 docs.microsoft.com 網站以外的部分資源可能有助於您瞭解及使用您的 Microsoft Azure FXT Edge 檔案管理工具混合式快取。
 
-## <a name="avere-vfxt-for-azure-cache-documentation"></a>用於 Azure 緩存文檔的 Avere vFXT
+## <a name="avere-vfxt-for-azure-cache-documentation"></a>Avere vFXT for Azure 快取檔
 
-[Azure 的 Avere vFXT](https://docs.microsoft.com/azure/avere-vfxt/)是使用 Microsoft Azure 中的虛擬節點的類似群集緩存產品。 它是使用 Azure 門戶創建的，但使用與 Azure FXT 邊緣檔案管理員硬體緩存相同的控制台配置軟體。 
+[Avere vFXT for Azure](https://docs.microsoft.com/azure/avere-vfxt/)是類似的叢集快取產品，會使用 Microsoft Azure 中的虛擬節點。 它是使用 Azure 入口網站所建立，但使用與 Azure FXT Edge 檔案管理工具硬體快取相同的控制台設定軟體。 
 
-## <a name="legacy-hardware-documentation"></a>舊硬體文檔 
+## <a name="legacy-hardware-documentation"></a>舊版硬體檔 
 
-該技術以前用於 Avere 系統的產品。 這些舊產品的使用者文檔可在[Avere 舊文檔網站上](https://azure.github.io/Avere/)找到。 
+這項技術先前已用於 Avere 系統中的產品。 這些舊版產品的使用者檔可從[Avere 舊版檔網站](https://azure.github.io/Avere/)取得。 
 
-具體來說，這些文檔可能有有用的詳細資訊：
+具體而言，這些檔可能會有有用的詳細資料：
 
-* [群集配置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html)- 包含有關常見群集設置和管理工作的概述資訊，並詳細說明群集設置頁面 
+* 叢集設定[指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/ops_conf_index.html)-包含有關一般叢集設定和管理工作的總覽資訊，並詳細說明 [叢集設定] 頁面 
 
-* [儀表板指南](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html)- 說明控制台**儀表板**選項卡的功能
+* [儀表板指南](https://azure.github.io/Avere/legacy/dashboard/4_7/html/ops_dashboard_index.html)-說明 [控制台]**儀表板**索引標籤的功能
 
-* [FXT集群創建指南](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html)- 以前產品的集群創建指南
+* [FXT 叢集建立指南](https://azure.github.io/Avere/legacy/create_cluster/4_8/html/create_index.html)-舊版產品的叢集建立指南
 

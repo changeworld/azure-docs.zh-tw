@@ -1,5 +1,5 @@
 ---
-title: 使用 CLI - Azure 應用程式閘道重定向外部流量重定向
+title: 使用 CLI Azure 應用程式閘道進行外部流量重新導向
 description: 了解如何使用 Azure CLI，建立會將內部 Web 流量重新導向至適當集區的應用程式閘道。
 services: application-gateway
 author: vhorne
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: fc955b4959bb20628463f7699a0b66ec2b89a393
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74011601"
 ---
 # <a name="create-an-application-gateway-with-external-redirection-using-the-azure-cli"></a>使用 Azure CLI 建立具有外部重新導向的應用程式閘道
@@ -29,7 +29,7 @@ ms.locfileid: "74011601"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -60,7 +60,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>建立應用程式閘道
 
-您可以使用[az 網路應用程式閘道創建](/cli/azure/network/application-gateway)來創建名為*myAppGateway*的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myPublicIPAddress**。 
+您可以使用[az network application-gateway create](/cli/azure/network/application-gateway)來建立名為*myAppGateway*的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myPublicIPAddress**。 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -88,7 +88,7 @@ az network application-gateway create \
 
 ### <a name="add-the-redirection-configuration"></a>新增重新導向設定
 
-使用[az 網路應用程式閘道重定向配置創建](/cli/azure/network/application-gateway/redirect-config)，添加將流量從*www\.consoto.org*發送到攔截器的重定向配置，*以便wwwcontoso.com\.* 到應用程式閘道。
+使用[az network application-gateway 重新導向-config create](/cli/azure/network/application-gateway/redirect-config)，將將流量從*www\.consoto.org*傳送至*\.contoso.com*至應用程式閘道的重新導向設定。
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \

@@ -1,5 +1,5 @@
 ---
-title: 遠端監視解決方案中的類比設備 - Azure |微軟文檔
+title: 遠端監視解決方案中的模擬裝置-Azure |Microsoft Docs
 description: 本文說明如何使用 JavaScript 定義模擬裝置在遠端監視解決方案中的行為。
 author: dominicbetts
 manager: timlt
@@ -9,18 +9,18 @@ services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: c39ca0a018bd22844cf7e5350e6d3586319aac16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73890853"
 ---
 # <a name="implement-the-device-model-behavior"></a>實作裝置模型行為
 
 [了解裝置模型結構描述](iot-accelerators-remote-monitoring-device-schema.md)一文說明了定義模擬裝置模型的結構描述。 該文參考兩種類型的 JavaScript 檔案，這兩種類型都可以實作模擬裝置的行為：
 
-- **州**以固定間隔運行以更新設備內部狀態的 JavaScript 檔。
-- **方法**JavaScript 檔，在解決方案調用設備上的方法時運行。
+- **狀態**以固定間隔執行的 JavaScript 檔案，以更新裝置的內部狀態。
+- **方法**當解決方案在裝置上叫用方法時，所執行的 JavaScript 檔案。
 
 > [!NOTE]
 > 裝置模型行為只適用於裝載於裝置模擬服務中的模擬裝置。 如果您想要建立真實裝置，請參閱[將裝置連線到遠端監視解決方案加速器](iot-accelerators-connecting-devices.md)。

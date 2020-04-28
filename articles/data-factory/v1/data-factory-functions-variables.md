@@ -1,5 +1,5 @@
 ---
-title: 資料工廠函數和系統變數
+title: Data Factory 函式和系統變數
 description: 提供 Azure Data Factory 函式與系統變數清單
 documentationcenter: ''
 author: djpmsft
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73667657"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 函式與系統變數
@@ -56,7 +56,7 @@ ms.locfileid: "73667657"
 
 1. 指定資料選取範圍查詢 (請參閱 [資料移動活動](data-factory-data-movement-activities.md) 文章中參考的連接器文章)。
    
-   調用資料工廠函數的語法是：**$$\<函數>** 用於資料和資料集中的資料選取查詢和其他屬性。  
+   叫用 data factory 函式的語法為： ** $$ \<函數>** ，用於資料選取查詢和活動和資料集中的其他屬性。  
 2. 使用 Data Factory 函式在活動輸入集合中指定輸入相依性。
    
     指定輸入相依性運算式不需要 $$。     
@@ -77,9 +77,9 @@ ms.locfileid: "73667657"
 
 | 類別 | 函式 | 參數 | 描述 |
 | --- | --- | --- | --- |
-| Time |AddHours(X,Y) |X：DateTime  <br/><br/>Y：int |將 Y 小時新增至指定時間 X。 <br/><br/>範例： `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
-| Time |AddMinutes(X,Y) |X：DateTime  <br/><br/>Y：int |將 Y 分鐘新增至 X。<br/><br/>範例： `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour(X) |X：DateTime  |取得 X 之小時元件代表的小時開始時間。 <br/><br/>範例： `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| 時間 |AddHours(X,Y) |X：DateTime  <br/><br/>Y：int |將 Y 小時新增至指定時間 X。 <br/><br/>範例： `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
+| 時間 |AddMinutes(X,Y) |X：DateTime  <br/><br/>Y：int |將 Y 分鐘新增至 X。<br/><br/>範例： `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
+| 時間 |StartOfHour(X) |X：DateTime  |取得 X 之小時元件代表的小時開始時間。 <br/><br/>範例： `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Date |AddDays(X,Y) |X：DateTime <br/><br/>Y：int |將 Y 天數新增至 X。 <br/><br/>範例：9/15/2013 12:00:00 PM + 2 天 = 9/17/2013 12:00:00 PM。<br/><br/>您也可以藉由將 Y 指定為負數來減去天。<br/><br/>範例： `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Date |AddMonths(X,Y) |X：DateTime <br/><br/>Y：int |將 Y 月數新增至 X。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`.<br/><br/>您也可以藉由將 Y 指定為負數來減去月份。<br/><br/>範例： `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Date |AddQuarters(X,Y) |X：DateTime  <br/><br/>Y：int |將 Y * 3 個月新增至 X。<br/><br/>範例： `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |
@@ -97,7 +97,7 @@ ms.locfileid: "73667657"
 | Text |Format(X) |X：字串變數 |將文字格式化 (使用 `\\'` 組合來逸出 `'` 字元)。|
 
 > [!IMPORTANT]
-> 在另一個函數中使用函數時，不需要對內建函式使用**$$** 首碼。 例如：$$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)). 在此示例中，請注意前**$$** 綴不用於**Time.AddHours**函數。 
+> 在另一個函式中使用函式時，您不需要**$$** 針對內部函式使用前置詞。 例如：$$Text.Format('PartitionKey eq \\'my_pkey_filter_value\\' and RowKey ge \\'{0: yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(SliceStart, -6)). 在此範例中，請**$$** 注意**time.addhours**函式不會使用前置詞。 
 
 #### <a name="example"></a>範例
 在下列範例中，Hive 活動的輸入和輸出參數是經由使用 `Text.Format` 函式和 SliceStart 系統變數決定。 

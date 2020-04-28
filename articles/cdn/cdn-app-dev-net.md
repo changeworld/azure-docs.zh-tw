@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67594169"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>開始使用 Azure CDN 開發
@@ -73,7 +73,7 @@ ms.locfileid: "67594169"
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. 我們必須定義一些我們的方法將用到的常數。  在 `Program` 類別中，但在 `Main` 方法之前，新增下列內容。  請務必根據需要用您自己的值替換預留位置（包括**&lt;角括弧&gt;**）。
+2. 我們必須定義一些我們的方法將用到的常數。  在 `Program` 類別中，但在 `Main` 方法之前，新增下列內容。  請務必視需要使用您自己的值來取代預留位置，包括** &lt;角括弧&gt;**。
    
     ```csharp
     //Tenant app constants

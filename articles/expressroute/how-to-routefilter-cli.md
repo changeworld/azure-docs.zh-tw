@@ -1,5 +1,5 @@
 ---
-title: 快速路由：路由篩選器 - 微軟對等互連：Azure CLI
+title: ExpressRoute：路由篩選-Microsoft 對等互連： Azure CLI
 description: 本文說明如何使用 Azure CLI 針對 Microsoft 對等互連設定路由篩選
 services: expressroute
 author: anzaman
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman
 ms.openlocfilehash: c3c50a005e119890fb17fcf7b3114a747bbe34bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74033421"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-cli"></a>針對 Microsoft 對等互連設定路由篩選：Azure CLI
 
 > [!div class="op_single_selector"]
-> * [Azure 門戶](how-to-routefilter-portal.md)
-> * [Azure 電源外殼](how-to-routefilter-powershell.md)
+> * [Azure 入口網站](how-to-routefilter-portal.md)
+> * [Azure PowerShell](how-to-routefilter-powershell.md)
 > * [Azure CLI](how-to-routefilter-cli.md)
 > 
 
 路由篩選是透過 Microsoft 對等互連使用支援服務子集的方式。 這篇文章中的步驟可協助您設定和管理 ExpressRoute 線路的路由篩選。
 
-Office 365 服務（如線上交換、SharePoint 線上和 Skype 業務）可通過 Microsoft 對等互連訪問。 當 Microsoft 對等互連在 ExpressRoute 線路中設定時，與這些服務相關的所有前置詞都會透過建立的 BGP 工作階段進行公告。 BGP 社群值附加至每個前置詞，來識別透過前置詞提供的服務。 如需 BGP 社群值和它們對應之服務的清單，請參閱 [BGP 社群](expressroute-routing.md#bgp)。
+Office 365 服務（例如 Exchange Online、SharePoint Online 和商務用 Skype）可以透過 Microsoft 對等互連來存取。 當 Microsoft 對等互連在 ExpressRoute 線路中設定時，與這些服務相關的所有前置詞都會透過建立的 BGP 工作階段進行公告。 BGP 社群值附加至每個前置詞，來識別透過前置詞提供的服務。 如需 BGP 社群值和它們對應之服務的清單，請參閱 [BGP 社群](expressroute-routing.md#bgp)。
 
 如果您需要連線到所有服務，則會透過 BGP 公告大量前置詞。 這會大幅增加網路內路由器維護的路由資料表大小。 如果您計劃僅使用透過 Microsoft 對等互連提供的服務子集，您可以用兩種方式減少路由資料表大小。 您可以：
 
@@ -92,14 +92,14 @@ az account set --subscription "<subscription ID>"
 
 ## <a name="step-1-get-a-list-of-prefixes-and-bgp-community-values"></a><a name="prefixes"></a>步驟 1：取得前置詞和 BGP 社群值的清單
 
-### <a name="1-get-a-list-of-bgp-community-values"></a>1. 獲取 BGP 社區價值觀清單
+### <a name="1-get-a-list-of-bgp-community-values"></a>1. 取得 BGP 社區值的清單
 
 使用下列 Cmdlet 來取得與可透過 Microsoft 對等互連存取之服務相關聯的 BGP 社群值清單，以及與其相關聯的前置詞清單：
 
 ```azurecli-interactive
 az network route-filter rule list-service-communities
 ```
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. 列出要使用的值
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2. 建立您想要使用的值清單
 
 製作您想要在路由篩選中使用的 BGP 社群值清單。
 
@@ -107,15 +107,15 @@ az network route-filter rule list-service-communities
 
 路由篩選只能有一個規則，且規則的類型必須是 'Allow'。 此規則可以具有與其相關聯的 BGP 社群值清單。
 
-### <a name="1-create-a-route-filter"></a>1. 創建路由篩選器
+### <a name="1-create-a-route-filter"></a>1. 建立路由篩選
 
-首先，建立路由篩選。 該命令`az network route-filter create`僅創建路由篩選器資源。 建立資源之後，您必須建立規則，然後將它附加到路由篩選物件。 執行下列命令以建立路由篩選資源：
+首先，建立路由篩選。 此命令`az network route-filter create`只會建立路由篩選資源。 建立資源之後，您必須建立規則，然後將它附加到路由篩選物件。 執行下列命令以建立路由篩選資源：
 
 ```azurecli-interactive
 az network route-filter create -n MyRouteFilter -g MyResourceGroup
 ```
 
-### <a name="2-create-a-filter-rule"></a>2. 創建篩選器規則
+### <a name="2-create-a-filter-rule"></a>2. 建立篩選規則
 
 執行下列命令以建立新規則：
  
@@ -131,7 +131,7 @@ az network route-filter rule create --filter-name MyRouteFilter -n CRM --communi
 az network express-route peering update --circuit-name MyCircuit -g ExpressRouteResourceGroupName --name MicrosoftPeering --route-filter MyRouteFilter
 ```
 
-## <a name="common-tasks"></a><a name="tasks"></a>常見任務
+## <a name="common-tasks"></a><a name="tasks"></a>常見工作
 
 ### <a name="to-get-the-properties-of-a-route-filter"></a><a name="getproperties"></a>若要取得路由篩選的屬性
 

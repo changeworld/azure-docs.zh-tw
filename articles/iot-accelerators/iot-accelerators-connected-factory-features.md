@@ -1,6 +1,6 @@
 ---
 title: 連線處理站解決方案功能 - Azure | Microsoft Docs
-description: 本文介紹了連接工廠預配置解決方案的功能的概述，如雲儀表板、規則和警報。
+description: 本文說明連線處理站預先設定解決方案的功能，例如雲端儀表板、規則和警示。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: c868aa0f1c2449ccf163523c9ded25a31d1d84c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73820099"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>連線處理站 IoT 解決方案加速器是什麼？
@@ -61,8 +61,8 @@ ms.locfileid: "73820099"
 ## <a name="customizability"></a>自訂能力
 
 - 自訂解決方案以滿足特定的業務需求。
-- 完整的解決方案原始程式碼可在 GitHub 上取得。 請參閱[連接出廠預配置的解決方案](https://github.com/Azure/azure-iot-connected-factory)存儲庫。
+- 完整的解決方案原始程式碼可在 GitHub 上取得。 請參閱[連線](https://github.com/Azure/azure-iot-connected-factory)處理站預先設定的解決方案存放庫。
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解有關互聯工廠解決方案加速器的更多資訊，請參閱快速入門[嘗試基於雲的解決方案來管理我的工業物聯網設備](quickstart-connected-factory-deploy.md)。
+若要深入瞭解連線的處理站解決方案加速器，請參閱快速入門：[嘗試以雲端為基礎的解決方案來管理我的工業 IoT 裝置](quickstart-connected-factory-deploy.md)。

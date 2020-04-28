@@ -1,5 +1,5 @@
 ---
-title: 跨多個資料庫的臨時報告查詢
+title: 跨多個資料庫的特定報表查詢
 description: 在多租用戶應用程式範例中，跨多個 SQL 資料庫執行隨選報表查詢。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: craigg
 ms.reviewer: sstein
 ms.date: 10/30/2018
 ms.openlocfilehash: c0d1829c52041446b4feb43d8af262265e2680fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73822177"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>跨多個 Azure SQL 資料庫執行臨機操作分析查詢
@@ -33,7 +33,7 @@ ms.locfileid: "73822177"
 
 若要完成本教學課程，請確定已完成下列必要條件：
 
-* 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 要在五分鐘內部署，請參閱[部署和流覽翼尖票證 SaaS 多租戶資料庫應用程式](saas-multitenantdb-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip 票證 SaaS 多租使用者資料庫應用程式](saas-multitenantdb-get-started-deploy.md)
 * 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 * 已安裝 SQL Server Management Studio (SSMS)。 若要下載和安裝 SSMS，請參閱[下載 SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
@@ -52,7 +52,7 @@ SaaS 應用程式可以分析集中儲存在雲端中的大量租用戶資料。
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>取得 Wingtip Tickets SaaS 多租用戶資料庫應用程式原始碼和指令碼
 
-翼尖門票 SaaS 多租戶資料庫腳本和應用程式原始程式碼可在[翼尖門票SaaS-多租戶DB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存儲庫中提供。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
+Wingtip 票證 SaaS 多租使用者資料庫腳本和應用程式原始程式碼可在[.. wingtipticketssaas-multitenantdb-master-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) GitHub 存放庫中取得。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="create-ticket-sales-data"></a>建立票證銷售資料
 

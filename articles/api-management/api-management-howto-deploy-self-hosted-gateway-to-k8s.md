@@ -1,6 +1,6 @@
 ---
-title: 將自託管的 Azure API 管理閘道部署到庫伯內斯 |微軟文檔
-description: 瞭解如何將自託管的 Azure API 管理閘道部署到庫貝內特斯
+title: 將自我裝載的 Azure API 管理閘道部署至 Kubernetes |Microsoft Docs
+description: 瞭解如何將自我裝載的 Azure API 管理閘道部署至 Kubernetes
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -13,63 +13,63 @@ ms.topic: article
 ms.date: 10/31/2019
 ms.author: apimpm
 ms.openlocfilehash: 109316acb73d3c5f00186298c1f8840c516e5790
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73513831"
 ---
-# <a name="deploy-a-self-hosted-azure-api-management-gateway-to-kubernetes"></a>將自託管的 Azure API 管理閘道部署到庫貝內內斯
+# <a name="deploy-a-self-hosted-azure-api-management-gateway-to-kubernetes"></a>將自我裝載的 Azure API 管理閘道部署至 Kubernetes
 
-本文提供了將自託管 Azure API 管理閘道部署到 Kubernetes 群集的步驟。
+本文提供將自我裝載的 Azure API 管理閘道部署到 Kubernetes 叢集中的步驟。
 
 > [!NOTE]
-> 自託管閘道功能處於預覽狀態。 在預覽期間，自託管閘道僅在開發人員和高級層中可用，無需支付額外費用。 開發人員層僅限於單個自託管閘道部署。
+> 自我裝載閘道功能目前為預覽狀態。 在預覽期間，自我裝載閘道僅適用于開發人員和進階層，不需要額外付費。 開發人員層僅限於單一自我裝載的閘道部署。
 
 
 ## <a name="prerequisites"></a>Prerequisites
 
-- 完成以下快速入門：[創建 Azure API 管理實例](get-started-create-service-instance.md)
-- 創建庫伯奈斯群集。 [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)是開發和評估目的的好選擇。 對於生產工作負載，可以在外國雲中使用[Azure 庫伯奈斯服務](https://azure.microsoft.com/services/kubernetes-service/)或庫伯奈斯群集。
-- [在 API 管理實例中預配閘道資源](api-management-howto-provision-self-hosted-gateway.md)。
+- 完成下列快速入門：[建立 AZURE API 管理實例](get-started-create-service-instance.md)
+- 建立 Kubernetes 叢集。 [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/)是適用于開發和評估用途的絕佳選項。 針對生產工作負載，您可以在外部雲端使用[Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/)或 Kubernetes 叢集。
+- [在您的 API 管理實例中布建閘道資源](api-management-howto-provision-self-hosted-gateway.md)。
 
-## <a name="deploy-the-gateway-to-kubernetes"></a>將閘道部署到庫伯內斯
+## <a name="deploy-the-gateway-to-kubernetes"></a>將閘道部署至 Kubernetes
 
-1. 從 **"設置"** 下選擇**閘道**。
-2. 選擇要部署的閘道資源。
-3. 選擇**部署**。
-4. 請注意，使用預設**的"過期"** 和"**金鑰**"值自動生成**權杖**文字方塊中的新權杖。 根據需要調整任一或兩者，然後選擇 **"生成"** 以創建新權杖。
-5. 確保**庫伯內斯**是在**部署腳本**下選擇的。
-6. 選擇 **"部署****"旁邊的<閘道名稱>.yml**檔連結以下載該檔。
-7. 根據需要調整 yml 檔中的埠映射和容器名稱。
-8. 選擇位於 **"部署**文本"框右端`kubectl`**的副本**圖示，將命令保存到剪貼簿。 
-9. 將命令粘貼到終端（或命令）視窗。 請注意，該命令希望下載的環境檔存在於目前的目錄中。
+1. 從 [**設定**] 底下選取 [**閘道**]。
+2. 選取您想要部署的閘道資源。
+3. 選取 [**部署**]。
+4. 請注意，[**權杖**] 文字方塊中的新權杖會使用預設的**到期**和**秘密金鑰**值自動產生。 如有需要，請調整任一或兩者，然後選取 [**產生**] 以建立新的權杖。
+5. 請確定已在 [**部署腳本**] 底下選取 [ **Kubernetes** ]。
+6. 選取 [**部署**] 旁**的<閘道-名稱> yml**檔案連結以下載檔案。
+7. 視需要調整 yml 檔案中的埠對應和容器名稱。
+8. 選取位於 [**部署**] 文字方塊右邊的`kubectl` **複製**圖示，將命令儲存到剪貼簿。 
+9. 將命令貼到 [終端機] （或命令）視窗。 請注意，此命令會預期所下載的環境檔案會出現在目前的目錄中。
 ```console
     kubectl apply -f <gateway-name>.yaml
 ```
-10. 執行命令。 該命令指示 Kubernetes 群集使用從 Microsoft 容器註冊表下載的自託管閘道映射運行容器，並將容器配置為公開 HTTP （8080） 和 HTTPS （443） 埠。
-11. 運行以下命令以檢查閘道窗格是否正在運行。 請注意，您的 pod 名稱將不同。 
+10. 執行命令。 命令會指示您的 Kubernetes 叢集執行容器，使用從 Microsoft Container Registry 下載的自我裝載閘道映射，並將容器設定為公開 HTTP （8080）和 HTTPS （443）埠。
+11. 執行下列命令，以檢查閘道 pod 是否正在執行。 請注意，您的 pod 名稱會不同。 
 ```console
 kubectl get pods
 NAME                              READY   STATUS    RESTARTS   AGE
 local-gateway-55f774f844-bv9wt    1/1     Running   0          1m
 ```
-12. 運行以下命令以檢查閘道服務是否正在運行。 請注意，服務名稱將不同。 
+12. 執行下列命令來檢查閘道服務是否正在執行。 請注意，您的服務名稱會不同。 
 ```console
 kubectl get services
 NAME             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
 localgateway     NodePort    10.110.230.87   <none>        80:32504/TCP,443:30043/TCP   1m
 ```
-13. 返回 Azure 門戶，確認剛剛部署的閘道節點報告狀態正常。
+13. 回到 [Azure 入口網站]，並確認您剛才部署的 [閘道] 節點回報 [狀況良好] 狀態。
 
 ![閘道狀態](media/api-management-howto-deploy-self-hosted-gateway-to-k8s/status.png)
 
 > [!TIP]
-> 使用<code>kubectl logs <gateway-pod-name></code>命令查看自承載閘道日誌的快照。
+> 使用<code>kubectl logs <gateway-pod-name></code>命令來查看自我裝載閘道記錄的快照集。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要瞭解有關自託管閘道的詳細資訊，請參閱 Azure [API 管理自託管閘道概述](self-hosted-gateway-overview.md)
-* 瞭解有關[Azure 庫伯奈斯服務](https://docs.microsoft.com/azure/aks/intro-kubernetes)的更多
+* 若要深入瞭解自我裝載閘道，請參閱[AZURE API 管理自我裝載閘道總覽](self-hosted-gateway-overview.md)
+* 深入瞭解[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)
 
 
