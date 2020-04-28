@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68728038"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft 威脅模型化工具風險降低
@@ -34,16 +34,16 @@ ms.locfileid: "68728038"
 
 | 類別 | 描述 |
 | -------- | ----------- |
-| **[稽核和記錄](threat-modeling-tool-auditing-and-logging.md)** | 誰在何時做了什麼？ 稽核和記錄是指應用程式記錄安全性相關事件的方式 |
+| **[審核和記錄](threat-modeling-tool-auditing-and-logging.md)** | 誰在何時做了什麼？ 稽核和記錄是指應用程式記錄安全性相關事件的方式 |
 | **[驗證](threat-modeling-tool-authentication.md)** | 您是誰？ 驗證是某實體證明另一個實體身分識別的程序 (通常透過使用者名稱和密碼等認證) |
 | **[授權](threat-modeling-tool-authorization.md)** | 您可以做什麼？ 授權是應用程式針對資源和作業提供存取控制的方式 |
 | **[通訊安全性](threat-modeling-tool-communication-security.md)** | 您在與誰對話？ 通訊安全性可確保所有通訊是在最安全的情況下進行的 |
-| **[設定管理](threat-modeling-tool-configuration-management.md)** | 應用程式的執行身分為何？ 其所連線到的資料庫為何？ 應用程式的管理方式為何？ 如何保護這些設定？ 組態管理指的是應用程式處理這些作業問題的方式 |
+| **[組態管理](threat-modeling-tool-configuration-management.md)** | 應用程式的執行身分為何？ 其所連線到的資料庫為何？ 應用程式的管理方式為何？ 如何保護這些設定？ 組態管理指的是應用程式處理這些作業問題的方式 |
 | **[密碼編譯](threat-modeling-tool-cryptography.md)** | 如何保護機密資料 (機密性)？ 如何防止資料或程式庫遭到竄改 (完整性)？ 如何為必須是密碼編譯增強式的隨機值提供種子？ 密碼編譯是指應用程式強制執行機密性與完整性的方式 |
 | **[例外狀況管理](threat-modeling-tool-exception-management.md)** | 當應用程式中的方法呼叫失敗時，應用程式會如何處理？ 您要顯示多少資料？ 您要對使用者傳回容易理解的錯誤資訊嗎？ 您要將重要例外狀況資訊傳回給呼叫者嗎？ 應用程式會正常地失敗嗎？ |
 | **[輸入驗證](threat-modeling-tool-input-validation.md)** | 您如何知道應用程式收到的輸入是有效且安全的？ 輸入驗證指的是應用程式如何先篩選、消除或拒絕輸入再進行其他處理。 請考慮透過進入點限制輸入並透過退出點編碼輸出。 您是否信任來源的資料，例如來自資料庫和檔案共用？ |
-| **[敏感資料](threat-modeling-tool-sensitive-data.md)** | 應用程式如何處理敏感性資料？ 敏感性資料指的是應用程式如何處理記憶體中、透過網路或持續性存放區中必須受到保護的任何資料 |
-| **[工作階段管理](threat-modeling-tool-session-management.md)** | 應用程式如何處理和保護使用者工作階段？ 工作階段是指使用者與 Web 應用程式之間的一系列相關互動 |
+| **[敏感性資料](threat-modeling-tool-sensitive-data.md)** | 應用程式如何處理敏感性資料？ 敏感性資料指的是應用程式如何處理記憶體中、透過網路或持續性存放區中必須受到保護的任何資料 |
+| **[會話管理](threat-modeling-tool-session-management.md)** | 應用程式如何處理和保護使用者工作階段？ 工作階段是指使用者與 Web 應用程式之間的一系列相關互動 |
 
 這可協助您識別︰
 

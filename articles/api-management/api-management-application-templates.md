@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d635950c8b34986cd5824660166017317948cbd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73176920"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Azure API 管理中的應用程式範本
@@ -39,7 +39,7 @@ ms.locfileid: "73176920"
 ##  <a name="application-list"></a><a name="ProductList"></a>應用程式清單  
  「應用程式清單」**** 範本可讓您自訂開發人員入口網站中應用程式清單頁面的主體。  
   
- ![應用程式清單頁 開發人員門戶範本](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM 應用程式清單頁面 開發人員門戶範本")  
+ ![應用程式清單頁面開發人員入口網站範本](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM 應用程式清單頁面開發人員入口網站範本")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -137,10 +137,10 @@ ms.locfileid: "73176920"
 }  
 ```  
   
-##  <a name="application"></a><a name="Application"></a>應用  
+##  <a name="application"></a><a name="Application"></a>應用程式  
  「應用程式」**** 範本可讓您自訂開發人員入口網站中應用程式頁面的主體。  
   
- ![應用程式頁開發人員門戶範本](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM 應用程式頁開發人員門戶範本")  
+ ![應用程式頁面開發人員入口網站範本](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM 應用程式頁面開發人員入口網站範本")  
   
 ### <a name="default-template"></a>預設範本  
   

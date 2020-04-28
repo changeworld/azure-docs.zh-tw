@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67807766"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>透過 Microsoft Teams 存取內部部署應用程式
@@ -33,23 +33,23 @@ Azure Active Directory Application Proxy 可讓您從任何地方單一登入內
 
 如果您尚未這麼做，請[設定租用戶的 Application Proxy 並安裝連接器](application-proxy-add-on-premises-application.md)。 然後，[發佈內部部署應用程式](application-proxy-add-on-premises-application.md)以供遠端存取。 當您要發佈應用程式時，請記下外部 URL，因為這會用於將應用程式新增至 Teams。
 
-如果您已經發佈應用程式，但不記得其外部 URL，請在 [Azure 入口網站](https://portal.azure.com)中查閱。 登錄，然後導航到**Azure 活動目錄** > **企業應用程式** > **所有應用程式**>選擇應用>**應用程式代理**。
+如果您已經發佈應用程式，但不記得其外部 URL，請在 [Azure 入口網站](https://portal.azure.com)中查閱。 登入，然後流覽至**Azure Active Directory** > **企業應用** > 程式] [**所有應用**程式] > 選取您 >**應用程式 proxy**的應用程式。
 
 ## <a name="add-your-app-to-teams"></a>將應用程式新增至 Teams
 
 一旦透過 Application Proxy 發佈應用程式，請讓使用者知道，他們可以在其 Teams 通道中直接將該應用程式新增為一個索引標籤，小組中的每個人將能夠使用該應用程式。 請他們遵循下列三個步驟：
 
-1. 導航到要添加此應用的 Teams 通道，然後選擇**+** 添加選項卡。
+1. 流覽至您要新增此應用程式的 [小組] 頻道， **+** 然後選取以新增索引標籤。
 
-   ![選擇 + 以在"團隊"中添加選項卡](./media/application-proxy-integrate-with-teams/add-tab.png)
+   ![選取 [+] 以在小組中加入索引標籤](./media/application-proxy-integrate-with-teams/add-tab.png)
 
 1. 從索引標籤選項中選取 [網站]****。
 
-   ![從"添加選項卡"螢幕中選擇網站](./media/application-proxy-integrate-with-teams/website.png)
+   ![從 [新增] 索引標籤畫面選取 [網站]](./media/application-proxy-integrate-with-teams/website.png)
 
 1. 指定索引標籤的名稱，並將 URL 設定為 Application Proxy 外部 URL。
 
-   ![命名選項卡並添加外部 URL](./media/application-proxy-integrate-with-teams/tab-name-url.png)
+   ![為索引標籤命名，並新增外部 URL](./media/application-proxy-integrate-with-teams/tab-name-url.png)
 
 一旦有小組成員新增索引標籤，該索引標籤就會對通道中的每個人顯示。 任何具有此應用程式存取權的使用者均可透過其用於 Microsoft Teams 的認證來取得單一登入存取。 任何不具此應用程式存取權的使用者會在 Teams 中看到此索引標籤，但是在您提供內部部署應用程式和應用程式之 Azure 入口網站發佈版本的權限以前，都會遭到封鎖。
 

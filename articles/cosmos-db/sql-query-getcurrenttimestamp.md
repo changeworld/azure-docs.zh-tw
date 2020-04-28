@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Cosmos DB 查詢語言中獲取目前時間戳
-description: 瞭解 SQL 系統函數獲取 Azure 宇宙 DB 中的目前時間戳。
+title: Azure Cosmos DB 查詢語言中的 GetCurrentTimestamp
+description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 GetCurrentTimestamp。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: b816c63da56025fe6e9cbaece2cde5dcd01585d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71351004"
 ---
-# <a name="getcurrenttimestamp-azure-cosmos-db"></a>獲取目前時間戳（Azure 宇宙資料庫）
- 返回自 1970 年 1 月 1 日星期四 00：00：00 以來經過的毫秒數。 
+# <a name="getcurrenttimestamp-azure-cosmos-db"></a>GetCurrentTimestamp （Azure Cosmos DB）
+ 傳回自00:00:00 年 1970 1 月1日星期四以來經過的毫秒數。 
   
 ## <a name="syntax"></a>語法
   
@@ -25,23 +25,23 @@ GetCurrentTimestamp ()
   
 ## <a name="return-types"></a>傳回類型
   
-  返回一個數值，即自 Unix 紀元以來經過的當前毫秒數，即自 1970 年 1 月 1 日星期四 00：00：00 以來經過的毫秒數。
+  傳回數值，這是自 Unix epoch 以來已過的毫秒數，也就是自00:00:00 年1月 1 1970 日星期四以來所經過的毫秒數。
 
 ## <a name="remarks"></a>備註
 
-  GetCurrentTimestamp（）是一個非確定性函數。
+  GetCurrentTimestamp （）是不具決定性的函數。
   
-  返回的結果為 UTC（協調通用時間）。
+  傳回的結果是 UTC （國際標準時間）。
 
 ## <a name="examples"></a>範例
   
-  下面的示例演示如何使用 GetCurrentTimestamp（） 內建函數獲取目前時間戳。
+  下列範例顯示如何使用 GetCurrentTimestamp （）內建函數來取得目前的時間戳記。
   
 ```sql
 SELECT GetCurrentTimestamp() AS currentUtcTimestamp
 ```  
   
- 下面是一個示例結果集。
+ 以下是範例結果集。
   
 ```json
 [{
@@ -51,6 +51,6 @@ SELECT GetCurrentTimestamp() AS currentUtcTimestamp
 
 ## <a name="next-steps"></a>後續步驟
 
-- [日期和時間函數 Azure 宇宙 DB](sql-query-date-time-functions.md)
-- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 簡介](introduction.md)
+- [日期和時間函數 Azure Cosmos DB](sql-query-date-time-functions.md)
+- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 簡介](introduction.md)

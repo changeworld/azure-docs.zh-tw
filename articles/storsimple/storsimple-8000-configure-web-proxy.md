@@ -15,21 +15,21 @@ ms.workload: na
 ms.date: 04/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 956cf45eb9e246f2e1f917f2bf487ac14deba90e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65204256"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>為 StorSimple 裝置設定 Web Proxy
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程描述如何使用 Windows PowerShell for StorSimple 來設定和檢視 StorSimple 裝置的 Web Proxy 設定。 Web Proxy 設定供 StorSimple 裝置與雲端通訊時使用。 Web Proxy 伺服器用來多增加一層安全性、篩選內容、快取以緩解頻寬需求，甚至是協助分析。
 
 本教學課程中的指導方針僅適用於 StorSimple 8000 系列實體裝置。 StorSimple 雲端設備 (8010 和 8020) 未支援 Web Proxy 設定。
 
-Web 代理是 StorSimple 設備的_可選_配置。 您只能透過 Windows PowerShell for StorSimple 來設定 Web Proxy。 設定分成兩步驟，如下所示：
+Web proxy 是 StorSimple 裝置的_選用_設定。 您只能透過 Windows PowerShell for StorSimple 來設定 Web Proxy。 設定分成兩步驟，如下所示：
 
 1. 首先，透過安裝精靈或 Windows PowerShell for StorSimple 指令程式來設定 Web Proxy 設定。
 2. 然後，透過 Windows PowerShell for StorSimple 指令程式，啟用已設定的 Web Proxy 設定。
@@ -71,7 +71,7 @@ Web Proxy 設定完成之後，您可以在 Microsoft Azure StorSimple 裝置管
 4. 將驗證類型選擇為 [NTLM]****、[基本]**** 或 [無]****。 [基本] 是 Proxy 伺服器設定最不安全的驗證。 NT LAN Manager (NTLM) 是非常安全和複雜的驗證通訊協定，使用三向傳訊系統 (需要更高完整性時，則是四向) 來驗證使用者。 預設驗證為 NTLM。 如需詳細資訊，請參閱[基本](https://hc.apache.org/httpclient-3.x/authentication.html)和 [NTLM 驗證](https://hc.apache.org/httpclient-3.x/authentication.html)。 
    
    > [!IMPORTANT]
-   > **在 StorSimple 裝置管理員服務中，當在設備的代理伺服器配置中啟用基本或 NTLM 身份驗證時，設備監視圖表不起作用。要使監視圖表正常工作，您需要確保身份驗證設置為 NONE。**
+   > **在 StorSimple Device Manager 服務中，當裝置的 proxy 伺服器設定中已啟用基本或 NTLM 驗證時，裝置監視圖表就無法正常執行。若要讓監視圖表能夠正常執行，您必須確定 [驗證] 設定為 [無]。**
   
 5. 如果已啟用驗證，請提供 [Web Proxy 使用者名稱]**** 和 [Web Proxy 密碼]****。 您也必須確認密碼。
    
@@ -102,7 +102,7 @@ Web Proxy 現在已設定，必須啟用。
 預設會停用 Web Proxy。 在 StorSimple 裝置上設定 Web Proxy 設定之後，請使用適用於 StorSimple 的 Windows PowerShell 來啟用 Web Proxy 設定。
 
 > [!NOTE]
-> **如果使用設置嚮導配置 Web 代理，則不需要此步驟。預設情況下，在設置嚮導會話後，Web 代理會自動啟用。**
+> **如果您使用安裝程式來設定 Web Proxy，則不需要執行此步驟。在安裝精靈會話之後，預設會自動啟用 Web proxy。**
 
 
 在 Windows PowerShell for StorSimple 中執行下列步驟，在您的裝置上啟用 Web Proxy：

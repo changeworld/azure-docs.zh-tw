@@ -17,14 +17,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60347768"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory 傳遞驗證：技術深入探討
-本文概述 Azure Active Directory (Azure AD)傳遞驗證的運作方式。 有關深層技術和安全資訊，請參閱[安全深度潛水](how-to-connect-pta-security-deep-dive.md)文章。
+本文概述 Azure Active Directory (Azure AD)傳遞驗證的運作方式。 如需深入的技術和安全性資訊，請參閱[安全性深入探討](how-to-connect-pta-security-deep-dive.md)一文。
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Azure Active Directory 傳遞驗證運作方式
 
@@ -52,12 +52,12 @@ ms.locfileid: "60347768"
 
 ## <a name="next-steps"></a>後續步驟
 - [目前的限制](how-to-connect-pta-current-limitations.md)：了解支援的情節和不支援的情節。
-- [快速入門](how-to-connect-pta-quick-start.md)：在 Azure AD 直通身份驗證上啟動並運行。
+- [快速入門](how-to-connect-pta-quick-start.md)：開始使用 Azure AD 傳遞驗證。
 - [從 AD FS 遷移到傳遞驗證](https://aka.ms/adfstoPTADP) \(英文\) - 從 AD FS (或其他同盟技術) 遷移到傳遞驗證的詳細指南。
 - [智慧鎖定](../authentication/howto-password-smart-lockout.md)：在租用戶中設定智慧鎖定功能以保護使用者帳戶。
-- [常見問題](how-to-connect-pta-faq.md)：查找常見問題的解答。
+- [常見問題](how-to-connect-pta-faq.md)：尋找常見問題的解答。
 - [疑難排解](tshoot-connect-pass-through-authentication.md)：了解如何解決傳遞驗證功能的常見問題。
-- [安全深度潛水](how-to-connect-pta-security-deep-dive.md)：獲取有關直通身份驗證功能的深層技術資訊。
+- [安全性深入探討](how-to-connect-pta-security-deep-dive.md)：取得傳遞驗證功能的深入技術資訊。
 - [Azure AD 無縫 SSO](how-to-connect-sso.md)：深入了解此互補功能。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)：使用 Azure Active Directory 論壇提出新功能要求。
 

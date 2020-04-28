@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48f3109b4c87e25444629ca25411894eab8a9d56
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71827134"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect 同步處理：防止意外刪除
@@ -58,7 +58,7 @@ ms.locfileid: "71827134"
 
 ![搜尋連接器空間](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
 
-[!NOTE] 如果您不確定所有刪除都是需要的，並且希望走一條更安全的路線。 您可以使用 PowerShell Cmdlet：`Enable-ADSyncExportDeletionThreshold`設置新的閾值，而不是禁用可能允許意外刪除的閾值。 
+[!NOTE] 如果您不確定是否需要所有刪除，而且想要關閉更安全的路由。 您可以使用 PowerShell Cmdlet： `Enable-ADSyncExportDeletionThreshold`設定新的閾值，而不是停用可能會導致不想要刪除的閾值。 
 
 ## <a name="if-all-deletes-are-desired"></a>如果需要所有刪除
 如果想要刪除所有項目，請執行下列作業：

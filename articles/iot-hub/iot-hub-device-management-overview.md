@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
 ms.openlocfilehash: bdc55af23568b5785a831e81f352400c728c902e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60400917"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>IoT 中樞的裝置管理概觀
@@ -46,7 +46,7 @@ IoT 本身伴隨著一組獨特的管理挑戰，因此每個企業級解決方�
 
 * **服務眾多角色**︰是否能夠支援 IoT 作業角色的獨特工作流程和處理程序非常重要。 操作人員必須和諧地配合內部 IT 部門指定的限制。  他們也必須找出向主管和其他商務管理角色呈現即時裝置作業資訊的永續方式。
 
-## <a name="device-lifecycle"></a>裝置的生命週期
+## <a name="device-lifecycle"></a>裝置生命週期
 有一組通用於所有企業 IoT 專案的一般裝置管理階段。 在 Azure IoT 中，裝置生命週期內有五個階段︰
 
 ![Azure IoT 裝置生命週期的五個階段︰計劃、佈建、設定、監視、淘汰](./media/iot-hub-device-management-overview/image5.png)
@@ -56,7 +56,7 @@ IoT 本身伴隨著一組獨特的管理挑戰，因此每個企業級解決方�
 * **計劃**︰讓操作員得以建立裝置中繼資料配置，以便他們可以輕鬆且精確地查詢和鎖定要進行大量管理作業的裝置群組。 您可以使用裝置對應項，以標記和屬性的形式來儲存此裝置中繼資料。
   
     *進一步閱讀*： 
-    * [開始使用設備孿生](iot-hub-node-node-twin-getstarted.md)
+    * [開始使用攣生裝置](iot-hub-node-node-twin-getstarted.md)
     * [了解攣生裝置](iot-hub-devguide-device-twins.md)
     * [如何使用裝置對應項屬性](tutorial-device-twins.md)
     * [IoT 解決方案內的裝置設定最佳做法](iot-hub-configuration-best-practices.md)
@@ -85,7 +85,7 @@ IoT 本身伴隨著一組獨特的管理挑戰，因此每個企業級解決方�
     * [大規模設定和監視 IoT 裝置](iot-hub-auto-device-config.md)
     * [IoT 解決方案內的裝置設定最佳做法](iot-hub-configuration-best-practices.md)
 
-* **停用**：在故障、升級週期或服務壽命結束時更換或停用設備。  如果實體裝置正被取代，則使用裝置對應項來維護裝置資訊，若正在淘汰中則加以封存。 使用 IoT 中樞身分識別登錄，安全地撤銷裝置身分識別與認證。
+* **淘汰**：在失敗、升級週期或服務存留期結束後，更換或解除委任裝置。  如果實體裝置正被取代，則使用裝置對應項來維護裝置資訊，若正在淘汰中則加以封存。 使用 IoT 中樞身分識別登錄，安全地撤銷裝置身分識別與認證。
   
     *進一步閱讀*： 
     * [如何使用裝置對應項屬性](tutorial-device-twins.md)

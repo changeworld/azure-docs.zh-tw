@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: dobett
 ms.openlocfilehash: 6062f8b3992732e0e0f9bbdae9549e69c393f4ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67080493"
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>自訂連線處理站解決方案顯示 OPC UA 伺服器資料的方式
 
-連線的處理站解決方案會彙總並顯示連線到解決方案的 OPC UA 伺服器資料。 您可以瀏覽並傳送命令至解決方案的 OPC UA 伺服器。 有關 OPC UA 的詳細資訊，請參閱[連接的工廠常見問題解答](iot-accelerators-faq-cf.md)。
+連線的處理站解決方案會彙總並顯示連線到解決方案的 OPC UA 伺服器資料。 您可以瀏覽並傳送命令至解決方案的 OPC UA 伺服器。 如需 OPC UA 的詳細資訊，請參閱連線的處理站[常見問題](iot-accelerators-faq-cf.md)。
 
 解決方案中的彙總資料範例包括「整體設備效率 (OEE)」和「關鍵效能指標 (KPI)」，您可以在儀表板的工廠、生產線與工作站層級分別檢視這些資料。 下列螢幕擷取畫面顯示 [Munich (慕尼黑)]**** 工廠的 [Production line 1 (生產線 1)]**** 的 [Assembly (組件)]**** 工作站的 OEE 和 KPI 值：
 
@@ -39,7 +39,7 @@ ms.locfileid: "67080493"
 
 ## <a name="data-sources"></a>資料來源
 
-連線的處理站解決方案會顯示連線到解決方案的 OPC UA 伺服器資料。 預設安裝包含數台執行工廠模擬的 OPC UA 伺服器。 您可以將自己的 OPC UA 伺服器[通過閘道連接][lnk-connect-cf]添加到解決方案中。
+連線的處理站解決方案會顯示連線到解決方案的 OPC UA 伺服器資料。 預設安裝包含數台執行工廠模擬的 OPC UA 伺服器。 您可以將您自己的 OPC UA 伺服器 [透過閘道連接] [.lnk-connect-cf] 新增至您的解決方案。
 
 您可以在儀表板中瀏覽連線的 OPC UA 伺服器可傳送至您的解決方案的資料項目︰
 
@@ -56,7 +56,7 @@ ms.locfileid: "67080493"
 
     ![發行的項目][img-published]
 
-1. 如果您是解決方案中的*管理員*，則可以選擇發佈資料項目，使其在"已連接工廠"解決方案中可用。 身為管理員，您也可以變更 OPC UA 伺服器中的資料項目值及呼叫方法。
+1. 如果您是解決方案中的*系統管理員*，您可以選擇發行資料項目，使其可在連線的處理站解決方案中使用。 身為管理員，您也可以變更 OPC UA 伺服器中的資料項目值及呼叫方法。
 
 ## <a name="map-the-data"></a>對應資料
 
@@ -71,7 +71,7 @@ ms.locfileid: "67080493"
 
 ## <a name="deploy-the-changes"></a>部署變更
 
-完成對**ContosoToTotototototototototototototototototototototototois.json**檔的更改後，必須將"已連接出廠"解決方案重新部署到 Azure 帳戶。
+當您完成對**contosotopologydescription.json**檔案的變更時，您必須將連線的處理站解決方案重新部署到您的 Azure 帳戶。
 
 **azure-iot-connected-factory** 存放庫包含一個 **build.ps1** PowerShell 指令碼，可用於重新建置並部署解決方案。
 

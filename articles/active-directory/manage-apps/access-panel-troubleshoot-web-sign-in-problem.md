@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7c6a9c3f26c8939176197a2ecf2fcd6026e9928
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "65784315"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>登入存取面板網站時遇到問題
@@ -39,7 +39,7 @@ ms.locfileid: "65784315"
 
 ## <a name="general-issues-to-check-first"></a>首先檢查的一般問題 
 
--   確保使用者登錄到**正確的 URL**：<https://myapps.microsoft.com>
+-   請確定使用者登入**正確的 URL**：<https://myapps.microsoft.com>
 
 -   確定使用者的瀏覽器已將此 URL 新增至**信任的網站**
 
@@ -80,7 +80,7 @@ ms.locfileid: "65784315"
 
 -   [檢查使用者帳戶的狀態](#check-a-users-account-status)
 
--   [重置使用者的密碼](#reset-a-users-password)
+-   [重設使用者的密碼](#reset-a-users-password)
 
 -   [啟用自助式密碼重設](#enable-self-service-password-reset)
 
@@ -92,13 +92,13 @@ ms.locfileid: "65784315"
 
 -   [檢查使用者獲指派的授權](#check-a-users-assigned-licenses)
 
--   [向使用者分配許可證](#assign-a-user-a-license)
+-   [指派授權給使用者](#assign-a-user-a-license)
 
 ### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>檢查 Azure Active Directory 中是否存在使用者帳戶
 
 若要檢查使用者的帳戶是否存在，請遵循下列步驟：
 
-1.  打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -106,7 +106,7 @@ ms.locfileid: "65784315"
 
 4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下**所有使用者**。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
@@ -116,7 +116,7 @@ ms.locfileid: "65784315"
 
 若要檢查使用者的帳戶狀態，請遵循下列步驟：
 
-1.  打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -124,11 +124,11 @@ ms.locfileid: "65784315"
 
 4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下**所有使用者**。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7.  按一下**設定檔**。
+7.  按一下 [**設定檔**]。
 
 8.  在 [設定]**** 下，確定 [封鎖登入]**** 設為 [否]****。
 
@@ -136,7 +136,7 @@ ms.locfileid: "65784315"
 
 若要重設使用者的密碼，請遵循下列步驟：
 
-1.  打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -144,7 +144,7 @@ ms.locfileid: "65784315"
 
 4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下**所有使用者**。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
@@ -168,7 +168,7 @@ ms.locfileid: "65784315"
 
 若要檢查使用者的多重要素驗證狀態，請遵循下列步驟：
 
-1. 打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -176,11 +176,11 @@ ms.locfileid: "65784315"
 
 4. 按一下瀏覽功能表中的 [使用者和群組]****。
 
-5. 按一下**所有使用者**。
+5. 按一下 [**所有使用者**]。
 
 6. 按一下窗格頂端的 [Multi-Factor Authentication]**** 按鈕。
 
-7. 多重**身份驗證監管中心**載入後，請確保您位於 **"使用者"** 選項卡上。
+7. 當**多重要素驗證系統管理入口網站**載入後，請確定您位於 [**使用者**] 索引標籤上。
 
 8. 在使用者清單中搜尋、篩選或排序來尋找使用者。
 
@@ -195,7 +195,7 @@ ms.locfileid: "65784315"
 
 若要檢查用於多重要素驗證、條件式存取、身分識別保護和密碼重設的使用者驗證連絡資訊，請遵循下列步驟︰
 
-1.  打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -203,11 +203,11 @@ ms.locfileid: "65784315"
 
 4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下**所有使用者**。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7.  按一下**設定檔**。
+7.  按一下 [**設定檔**]。
 
 8.  向下捲動至 [驗證連絡資訊]****。
 
@@ -217,7 +217,7 @@ ms.locfileid: "65784315"
 
 若要檢查使用者的群組成員資格，請遵循下列步驟：
 
-1.  打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -225,7 +225,7 @@ ms.locfileid: "65784315"
 
 4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下**所有使用者**。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
@@ -235,7 +235,7 @@ ms.locfileid: "65784315"
 
 若要檢查使用者獲指派的授權，請遵循下列步驟：
 
-1.  打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -243,7 +243,7 @@ ms.locfileid: "65784315"
 
 4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下**所有使用者**。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
@@ -253,7 +253,7 @@ ms.locfileid: "65784315"
 
 若要指派授權至使用者，請依遵循下列步驟︰
 
-1.  打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1.  開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2.  按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -261,13 +261,13 @@ ms.locfileid: "65784315"
 
 4.  按一下瀏覽功能表中的 [使用者和群組]****。
 
-5.  按一下**所有使用者**。
+5.  按一下 [**所有使用者**]。
 
 6.  **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
 7.  按一下 [授權]****，查看使用者目前已指派的授權。
 
-8.  按一下"**分配"** 按鈕。
+8.  按一下 [**指派**] 按鈕。
 
 9.  從可用產品清單中選取**一或多個產品**。
 

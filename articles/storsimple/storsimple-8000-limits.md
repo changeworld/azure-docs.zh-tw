@@ -16,21 +16,21 @@ ms.date: 03/28/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 70f2d9542082ddf7ecf1d1e7361b0ecdb14c5ef8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68963379"
 ---
 # <a name="what-are-storsimple-8000-series-system-limits"></a>StorSimple 8000 系列的系統有何限制？
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 提供您的資料中心的擴充性和彈性儲存體。 不過，當您規劃、部署及操作您的 StorSimple 方案時，有一些限制應該謹記在心。 下表描述這些限制，並且提供一些建議，讓您可以充分利用您的 StorSimple 方案。
 
-| 限制識別碼 | 限制 | 註解 |
+| 限制識別碼 | 限制 | 評價 |
 | --- | --- | --- |
 | 儲存體帳戶認證的數目上限 |64 | |
 | 磁碟區容器的數目上限 |64 | |

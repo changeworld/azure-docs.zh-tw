@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: sngun
 ms.openlocfilehash: 1dbdd428a54ebf38c7b880bb9530935c0f748226
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "69616817"
 ---
 # <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>使用 Power BI 連接器將 Azure Cosmos DB 資料視覺化
@@ -32,11 +32,11 @@ ms.locfileid: "69616817"
 
 * 從 GitHub 下載[範例火山資料](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)。
 
-* [創建 Azure Cosmos 資料庫帳戶](https://azure.microsoft.com/documentation/articles/create-account/)，並使用[Azure Cosmos DB 資料移轉工具](import-data.md)導入火山資料。 當匯入資料時，請考慮資料移轉工具中來源與目的地的下列設定：
+* [建立 Azure Cosmos 資料庫帳戶](https://azure.microsoft.com/documentation/articles/create-account/)，並使用[Azure Cosmos DB 資料移轉工具](import-data.md)來匯入火山資料。 當匯入資料時，請考慮資料移轉工具中來源與目的地的下列設定：
 
    * **來源參數** 
 
-       * **從：** JSON 檔
+       * 匯**入來源：** JSON 檔案
 
    * **目標參數** 
 
@@ -46,7 +46,7 @@ ms.locfileid: "69616817"
 
       * **集合輸送量：** 1000 
 
-若要在 PowerBI.com 上共用您的報告，您必須有 PowerBI.com 中的帳戶。  要瞭解有關 Power BI 和 Power BI [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)Pro 的更多，請參閱。
+若要在 PowerBI.com 上共用您的報告，您必須有 PowerBI.com 中的帳戶。  若要深入瞭解 Power BI 和 Power BI Pro，請[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)參閱。
 
 ## <a name="lets-get-started"></a>現在就開始吧
 在本教學課程中，我們假設您是研究世界各地火山的地質學家。 火山資料儲存在 Azure Cosmos DB 帳戶中，JSON 文件格式如下：
@@ -120,9 +120,9 @@ ms.locfileid: "69616817"
     ![Azure Cosmos DB Power BI 連接器的 Power BI 教學課程 - 座標清單](./media/powerbi-visualize/power_bi_connector_pbiresultflattenlist.png)
 7. 為了將座標陣列壓平合併，請建立名為 LatLong 的 [自訂資料行]****。  選取 [新增資料行]**** 功能區，然後按一下 [自訂資料行]****。  [自訂資料行]**** 視窗會隨即出現。
 8. 提供新資料行的名稱，例如 LatLong。
-9. 接下來，指定新資料行的自訂公式。  在我們的範例中，我們將依照下列方式使用以下公式，串連以逗號分隔的緯度和經度值： `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 按一下 [確定]****。
+9. 接下來，指定新資料行的自訂公式。  在我們的範例中，我們將依照下列方式使用以下公式，串連以逗號分隔的緯度和經度值： `Text.From([coordinates]{1})&","&Text.From([coordinates]{0})`。 按一下 [確定]  。
    
-    有關資料分析運算式 （DAX） （DAX） （DAX） 函數的詳細資訊，請訪問[Power BI 桌面中的 DAX 基礎知識](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)。
+    如需資料分析運算式（DAX）（包括 DAX 函數）的詳細資訊，請流覽[Power BI Desktop 中的 Dax 基本概念](https://docs.microsoft.com/power-bi/desktop-quickstart-learn-dax-basics)。
    
     ![Azure Cosmos DB Power BI 連接器的 Power BI 教學課程 - 新增自訂資料行](./media/powerbi-visualize/power_bi_connector_pbicustomlatlong.png)
 

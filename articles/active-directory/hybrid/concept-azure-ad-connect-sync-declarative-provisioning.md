@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 543c1a6706f794b81c4f93fc6fff3a61ed3fb9e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60246448"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同步處理：了解宣告式佈建
 本主題說明 Azure AD Connect 中的組態模型。 此模型稱為宣告式佈建，它可讓您輕鬆地進行組態變更。 本主題中所述的許多項目都是進階的，而且在大部分客戶案例中並非必要。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 宣告式佈建正在處理來自來源連接的目錄中的物件，並決定應如何將物件和屬性從來源轉換到目標。 物件會在同步處理管線中進行處理，而輸入和輸出規則的管線都相同。 輸入規則是從連接器空間至 Metaverse，而輸出規則是從 Metaverse 至連接器空間。
 
 ![同步處理管線](./media/concept-azure-ad-connect-sync-declarative-provisioning/sync1.png)  

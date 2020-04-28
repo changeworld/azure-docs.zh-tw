@@ -1,5 +1,5 @@
 ---
-title: 學習使用阿帕奇 Hadoop 沙箱、模擬器 - Azure HDInsight
+title: 瞭解如何使用 Apache Hadoop 沙箱、模擬器 Azure HDInsight
 description: '若要開始了解 Apache Hadoop 生態系統，您可以在 Azure 虛擬機器上從 Hortonworks 設定 Hadoop 沙箱。 '
 keywords: hadoop 模擬器, hadoop 沙箱
 ms.reviewer: jasonh
@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
 ms.openlocfilehash: 47ee66393e3e1678576b12a70b767f35cb3bc635
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73044759"
 ---
-# <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>從 Apache Hadoop 沙箱開始，該沙箱是虛擬機器上的模擬器
+# <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>開始使用 Apache Hadoop 沙箱，也就是虛擬機器上的模擬器
 
 了解如何在虛擬機器上從 Hortonworks 安裝 Apache Hadoop 沙箱，以了解 Hadoop 生態系統。 沙箱提供本機開發環境，讓您了解 Hadoop、Hadoop 分散式檔案系統 (HDFS)，以及作業提交。 熟悉 Hadoop 之後，您就可以開始在 Azure 中使用 Hadoop 建立 HDInsight 叢集。 有關如何開始使用的詳細資訊，請參閱 [開始在 HDInsight 中使用 Hadoop](apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -26,15 +26,15 @@ ms.locfileid: "73044759"
 
 ## <a name="download-and-install-the-virtual-machine"></a>下載並安裝虛擬機器
 
-1. 流覽到[雲網下載](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)。
+1. 流覽至[Cloudera 下載](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)。
 
-1. 按一下 **"選擇安裝類型**"下的**VIRTUALBOX，** 下載 VM 上的最新霍頓工程沙箱。 登錄或填寫產品興趣表。
+1. 按一下 **[選擇安裝類型**] 底下的 [ **VIRTUALBOX** ]，以在 VM 上下載最新的 Hortonworks 沙箱。 登入或完成產品興趣表單。
 
-1. 按一下按鈕**HDP SANDBOX （LATEST）** 開始下載。
+1. 按一下 [ **HDP 沙箱（最新）** ] 按鈕開始下載。
 
-有關設置沙箱的說明，請參閱[沙箱部署和安裝指南](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/)。
+如需設定沙箱的指示，請參閱[沙箱部署和安裝指南](https://hortonworks.com/tutorial/sandbox-deployment-and-install-guide/section/1/)。
 
-要下載較舊的 HDP 版本沙箱，請參閱**舊版本**下的連結。
+若要下載舊版的 HDP 沙箱，請參閱**較舊版本**底下的連結。
 
 ## <a name="start-the-virtual-machine"></a>啟動虛擬機器
 
@@ -42,16 +42,16 @@ ms.locfileid: "73044759"
 1. 從 [檔案]**** 功能表中，按一下 [匯入設備]****，然後指定「Hortonworks 沙箱」映像。
 1. 選取「Hortonworks 沙箱」、按一下 [啟動]****，然後選取 [正常啟動]****。 虛擬機器完成開機程序後會顯示登入指示。
 
-    ![虛擬盒管理器正常啟動](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+    ![virtualbox 管理員正常啟動](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
-1. 打開 Web 瀏覽器並導航到顯示的 URL（通常`http://127.0.0.1:8888`為 ）。
+1. 開啟網頁瀏覽器，並流覽至顯示的 URL （ `http://127.0.0.1:8888`通常是）。
 
 ## <a name="set-sandbox-passwords"></a>設定沙箱密碼
 
 1. 從 [Hortonworks 沙箱] 頁面的 [入門]**** 步驟選取 [檢視進階選項]****。 在此頁面上使用該資訊，以透過 SSH 登入沙箱。 使用提供的名稱和密碼。
 
    > [!NOTE]
-   > 如果沒有安裝 SSH 用戶端，則可以使用 虛擬機器在 提供的基於 Web 的**http://localhost:4200/** SSH。
+   > 如果您未安裝 SSH 用戶端，您可以使用在虛擬機器所提供的 web 型 SSH **http://localhost:4200/**。
 
     第一次使用 SSH 連線時，系統會提示您變更根帳戶的密碼。 輸入新密碼，這是您在使用 SSH 登入時使用的密碼。
 

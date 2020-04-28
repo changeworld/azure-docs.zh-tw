@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: b0c9699bccbb539c9617fac2f3296483139e7188
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67203178"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>在遠端監視解決方案加速器中設定角色型存取控制
@@ -51,7 +51,7 @@ ms.locfileid: "67203178"
 
 Azure Active Directory 應用程式擁有者可以使用 Azure 入口網站，從遠端監視解決方案新增或移除使用者的角色。 下列步驟會使用當您部署遠端監視解決方案時所建立的 [Azure Active Directory 企業應用程式](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application)。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 1. 請檢查[使用者是否在您所用的目錄中](../active-directory/fundamentals/add-users-azure-active-directory.md)。 當您登入 [Microsoft Azure IoT 解決方案加速器](https://www.azureiotsolutions.com/Accelerators)網站時，您會選擇要使用的目錄。 目錄名稱會顯示在[頁面](https://www.azureiotsolutions.com/Accelerators)的右上角。
 
@@ -247,7 +247,7 @@ public async Task DeleteAsync(string id)
 
 如需有關在遠端監視解決方案加速器中管理時間序列深入解析總管之存取權的資訊，請參閱[設定時間序列深入解析總館的存取控制](iot-accelerators-remote-monitoring-rbac-tsi.md)。
 
-有關遠端監視解決方案加速器的更多概念資訊，請參閱[遠端監視體系結構](iot-accelerators-remote-monitoring-sample-walkthrough.md)
+如需遠端監視解決方案加速器的詳細概念資訊，請參閱[遠端監視架構](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 
 如需關於自訂遠端監視解決方案的詳細資訊，請參閱[自訂和重新部署微服務](iot-accelerators-microservices-example.md)
 <!-- Next tutorials in the sequence -->

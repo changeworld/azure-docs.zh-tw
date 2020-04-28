@@ -1,6 +1,6 @@
 ---
-title: 高級篩選 - Azure 事件網格 IoT 邊緣 |微軟文檔
-description: IoT 邊緣事件網格中的高級篩選。
+title: Advanced 篩選-Azure Event Grid IoT Edge |Microsoft Docs
+description: IoT Edge 上事件方格中的 Advanced 篩選。
 author: HiteshMadan
 manager: rajarv
 ms.author: himad
@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: d7fdc5074f3c92eea4f236a9b1f7c823b930f391
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "72992557"
 ---
 # <a name="advanced-filtering"></a>進階篩選
-事件網格允許在 json 負載中的任何屬性上指定篩選器。 這些篩選器建模為條件集`AND`，每個外部條件具有可選的內部`OR`條件。 對於每個`AND`條件，指定以下值：
+事件方格允許在 json 承載中的任何屬性上指定篩選。 這些篩選器會模型化為`AND`條件集，每個外部條件都具有選擇性`OR`的內部條件。 針對每`AND`個條件，您可以指定下列值：
 
-* `OperatorType`- 比較的類型。
-* `Key`- 要應用篩選器的屬性的 json 路徑。
-* `Value`- 運行篩選器的引用值（或） `Values` - 運行篩選器的引用值集。
+* `OperatorType`-比較的類型。
+* `Key`-要套用篩選之屬性的 json 路徑。
+* `Value`-執行篩選準則時所針對的參考值（或） `Values` -用來執行篩選的一組參考值。
 
 ## <a name="json-syntax"></a>JSON 語法
 
-高級篩選器的 JSON 語法如下所示：
+Advanced filter 的 JSON 語法如下所示：
 
 ```json
 {
@@ -46,50 +46,50 @@ ms.locfileid: "72992557"
 
 ## <a name="filtering-on-array-values"></a>篩選陣列值
 
-事件網格今天不支援對值陣列進行篩選。 如果傳入事件具有高級篩選器鍵的陣列值，則匹配操作將失敗。 傳入事件最終與事件訂閱不匹配。
+事件方格目前不支援對值陣列進行篩選。 如果內送事件具有 advanced filter 的索引鍵的陣列值，則比對作業會失敗。 內送事件最後與事件訂用帳戶不相符。
 
 ## <a name="and-or-not-semantics"></a>AND-OR-NOT 語義
 
-請注意，在前面給出的 json 示例中`AdvancedFilters`，是一個陣列。 將每個`AdvancedFilter`陣列元素視為條件`AND`。
+請注意，在先前指定的 json 範例`AdvancedFilters`中，是一個陣列。 將`AND`每個`AdvancedFilter`陣列元素視為條件。
 
-對於支援`NumberIn`多個值（如 、`NumberNotIn`等`StringIn`）的運算子，每個值都被視為條件。 `OR` 因此，將`StringBeginsWith("a", "b", "c")`匹配以 或`a`或`b``c`開頭的任何字串值。
+針對支援多個值的運算子（ `NumberIn`例如、 `NumberNotIn`、 `StringIn`等），會將每個值視為`OR`條件。 因此， `StringBeginsWith("a", "b", "c")`會符合以`a`或`b`或`c`開頭的任何字串值。
 
 > [!CAUTION]
-> NOT 運算子`NumberNotIn`-`StringNotIn`並在現場給出`Values`的每個值上作為 AND 條件執行。
+> NOT 運算子- `NumberNotIn`和`StringNotIn`的`Values`行為是在欄位中指定的每個值上的和條件。
 >
-> 不這樣做將使篩選器成為"接受-所有"篩選器，並破壞篩選的目的。
+> 不這麼做會將篩選準則設為 [接受全部] 篩選準則，並破壞篩選的目的。
 
 ## <a name="floating-point-rounding-behavior"></a>浮點舍入行為
 
-事件網格使用`decimal`.NET 類型來處理所有數值。 事件訂閱 JSON 中指定的編號值不受浮點舍入行為的約束。
+事件方格會使用`decimal` .net 類型來處理所有數值。 事件訂用帳戶 JSON 中指定的數位值不受浮點舍入行為的制約。
 
-## <a name="case-sensitivity-of-string-filters"></a>字串篩選器的區分大小寫
+## <a name="case-sensitivity-of-string-filters"></a>字串篩選準則的區分大小寫
 
-所有字串比較都是不區分大小寫的。 今天沒有辦法改變這種行為。
+所有字串比較都不區分大小寫。 目前沒有任何方法可以變更這種行為。
 
-## <a name="allowed-advanced-filter-keys"></a>允許的高級篩選器鍵
+## <a name="allowed-advanced-filter-keys"></a>允許的 advanced filter 金鑰
 
-該`Key`屬性可以是已知的頂級屬性，也可以是具有多個點的 json 路徑，其中每個點表示踏入嵌套的 json 物件。
+`Key`屬性可以是知名的最上層屬性，或為具有多個點的 json 路徑，其中每個點表示逐步執行為嵌套 json 物件。
 
-事件網格對金鑰中的`$`字元沒有任何特殊含義，與 JSONPath 規範不同。
+不同于 JSONPath 規格，事件方格對索引`$`鍵中的字元沒有任何特殊意義。
 
-### <a name="event-grid-schema"></a>事件網格架構
+### <a name="event-grid-schema"></a>事件方格架構
 
-對於事件網格架構中的事件：
+事件方格架構中的事件：
 
-* ID
+* 識別碼
 * 主題
 * 主體
 * EventType
 * DataVersion
-* 資料.Prop1
-* 資料.Prop_Prop2.Prop3.Prop4.Prop5
+* Data. Prop1
+* Data. This.prop2. Prop3. Prop4. Prop5
 
 ### <a name="custom-event-schema"></a>自訂事件架構
 
-自訂事件架構沒有限制，`Key`因為事件網格不會在負載上強制實施任何包絡架構。
+自訂事件架構中沒有`Key`的限制，因為事件方格不會在裝載上強制執行任何信封架構。
 
-## <a name="numeric-single-value-filter-examples"></a>數位單值篩選器示例
+## <a name="numeric-single-value-filter-examples"></a>數值單一值篩選範例
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -125,7 +125,7 @@ ms.locfileid: "72992557"
 }
 ```
 
-## <a name="numeric-range-value-filter-examples"></a>數值範圍值篩選器示例
+## <a name="numeric-range-value-filter-examples"></a>數值範圍值篩選範例
 
 * NumberIn
 * NumberNotIn
@@ -149,7 +149,7 @@ ms.locfileid: "72992557"
 }
 ```
 
-## <a name="string-range-value-filter-examples"></a>字串範圍值篩選器示例
+## <a name="string-range-value-filter-examples"></a>字串範圍-值篩選範例
 
 * StringContains
 * StringBeginsWith
@@ -191,7 +191,7 @@ ms.locfileid: "72992557"
 }
 ```
 
-## <a name="boolean-single-value-filter-examples"></a>布林單值篩選器示例
+## <a name="boolean-single-value-filter-examples"></a>布林單一值篩選範例
 
 * BoolEquals
 

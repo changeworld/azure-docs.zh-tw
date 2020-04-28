@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 9bbb7ef46fbde881c8968128870d24a03b046c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "73176800"
 ---
 # <a name="developer-portal-templates"></a>開發人員入口網站範本
@@ -32,28 +32,28 @@ ms.locfileid: "73176800"
 
 ##  <a name="developer-portal-templates"></a><a name="DeveloperPortalTemplates"></a> 開發人員入口網站範本  
   
--   [Api](api-management-api-templates.md)  
+-   [API](api-management-api-templates.md)  
     -   [API 清單](api-management-api-templates.md#APIList)  
-    -   [操作](api-management-api-templates.md#Product)  
+    -   [運算](api-management-api-templates.md#Product)  
     -   [程式碼範例](api-management-api-templates.md#CodeSamples)  
-        -   [捲曲](api-management-api-templates.md#Curl)  
+        -   [彎曲](api-management-api-templates.md#Curl)  
         -   [C#](api-management-api-templates.md#CSharp)  
-        -   [JAVA](api-management-api-templates.md#Stub)  
-        -   [JAVAscript](api-management-api-templates.md#JavaScript)  
-        -   [目標C](api-management-api-templates.md#ObjectiveC)  
-        -   [Php](api-management-api-templates.md#PHP)  
+        -   [Java](api-management-api-templates.md#Stub)  
+        -   [JavaScript](api-management-api-templates.md#JavaScript)  
+        -   [目標 C](api-management-api-templates.md#ObjectiveC)  
+        -   [PHP](api-management-api-templates.md#PHP)  
         -   [Python](api-management-api-templates.md#Python)  
-        -   [紅寶石](api-management-api-templates.md#Ruby)  
+        -   [Ruby](api-management-api-templates.md#Ruby)  
 -   [產品](api-management-product-templates.md)  
     -   [產品清單](api-management-product-templates.md#ProductList)  
-    -   [產品](api-management-product-templates.md#Product)  
+    -   [基礎](api-management-product-templates.md#Product)  
 -   [應用程式](api-management-application-templates.md)  
     -   [應用程式清單](api-management-application-templates.md#ProductList)  
     -   [應用程式](api-management-application-templates.md#Application)  
 -   [問題](api-management-issue-templates.md)  
     -   [問題清單](api-management-issue-templates.md#IssueList)  
 -   [使用者設定檔](api-management-user-profile-templates.md)  
-    -   [配置 檔](api-management-user-profile-templates.md#Profile)  
+    -   [設定檔](api-management-user-profile-templates.md#Profile)  
     -   [訂閱](api-management-user-profile-templates.md#Subscriptions)  
     -   [應用程式](api-management-user-profile-templates.md#Applications)  
     -   [更新帳戶資訊](api-management-user-profile-templates.md#UpdateAccountInfo)  

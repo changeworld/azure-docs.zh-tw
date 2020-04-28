@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68688183"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 根據 URL 路由傳送網路流量
@@ -37,7 +37,7 @@ ms.locfileid: "68688183"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0.4 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -252,7 +252,7 @@ az network public-ip show \
 
 ![在應用程式閘道中測試影像 URL](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-將 URL 更改為&lt;HTTP://&gt;ip 位址 ：8080/video/test.html，替換&lt;ip&gt;位址的 IP 位址，您應該會看到類似下面的示例。
+將 URL 變更為 HTTP://&lt;ip 位址&gt;：8080/video/test.html，取代 ip 位址的&lt;ip 位址&gt;，您應該會看到類似下列範例的內容。
 
 ![在應用程式閘道中測試影片 URL](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 

@@ -16,15 +16,15 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: e05a37122647d4979089f0ba00b1fc15f9b84b0f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60321678"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>更換 StorSimple 8000 系列裝置上的硬體元件
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 硬體元件更換教學課程將說明 Microsoft Azure StorSimple 8000 系列裝置的硬體元件，以及取下並更換這些元件所需的步驟。 本文說明安全圖示、提供詳細教學課程的重點，並列出可替換的元件。
 
 > [!IMPORTANT]
@@ -37,9 +37,9 @@ ms.locfileid: "60321678"
 | 圖示 | Text | 其他資訊 |
 |:--- |:--- |:--- |
 | ![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) |**危險！** |指出危險的情況，如果無法避免，將會導致死亡或嚴重傷害。 此訊號文字僅限用於最極端的情況。 |
-| ![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) |**警告！** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
-| ![注意圖示](./media/storsimple-hardware-component-replacement/Caution.png) |**謹慎！** |指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。 |
-| ![注意事項圖示](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**注意事項：** |表示重要資訊，但與危險無關。 |
+| ![警告圖示](./media/storsimple-hardware-component-replacement/Warning.png) |**WARNING!** |指出危險的情況，如果無法避免，可能會導致死亡或嚴重傷害。 |
+| ![注意圖示](./media/storsimple-hardware-component-replacement/Caution.png) |**注意!** |指出危險的情況，如果無法避免，可能會導致次要或中度的傷害。 |
+| ![注意事項圖示](./media/storsimple-hardware-component-replacement/NoticeIcon.png) |**標記** |表示重要資訊，但與危險無關。 |
 | ![電擊圖示](./media/storsimple-hardware-component-replacement/Electric.png) |**電擊危險** |表示高電壓。 |
 | ![超重圖示](./media/storsimple-hardware-component-replacement/Weight.png) |**超重** | |
 | ![沒有使用者可自行維修的零件圖示](./media/storsimple-hardware-component-replacement/NoUserServiceableParts.png) |**沒有使用者可自行維修的零件** |除非受過適當訓練，否則請勿觸碰。 |
@@ -88,7 +88,7 @@ StoreSimple 8000 系列裝置由主要和/或 EBOD 機箱的數個外掛程式�
 
 裝置上的外掛程式模組會在下列前端和後端圖表中反白顯示。 如果需要更換，您可以使用這些圖表，來判斷各種外掛程式模組的位置。 前端圖表顯示磁碟機，而 EBOD 機箱和主要機箱的後端圖表則顯示外掛程式模組。
 
-![帶磁片磁碟機的設備前面板](./media/storsimple-hardware-component-replacement/IC741028.png)
+![具有磁片磁碟機的裝置前端面板](./media/storsimple-hardware-component-replacement/IC741028.png)
 
 **圖 1** 裝置正面
 

@@ -13,10 +13,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 1e729c608a2cad28c810f8d5236360c909a496b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70082038"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Linux Azure 虛擬機器上 SQL Server 的常見問題集
@@ -72,7 +72,7 @@ ms.locfileid: "70082038"
 
 1. **如果是從其中一個隨用隨付資源庫映像建立，可以將 VM 變更為使用自己的 SQL Server 授權嗎？**
 
-   否。 您不能從以秒鐘計費授權切換為使用您自己的授權。 您必須建立新的 Linux VM，安裝 SQL Server，然後移轉資料。 如需自備授權的詳細資訊，請參閱上一個問題。
+   不可以。 您不能從以秒鐘計費授權切換為使用您自己的授權。 您必須建立新的 Linux VM，安裝 SQL Server，然後移轉資料。 如需自備授權的詳細資訊，請參閱上一個問題。
 
 ## <a name="administration"></a>系統管理
 
@@ -98,14 +98,14 @@ ms.locfileid: "70082038"
 
 ## <a name="resources"></a>資源
 
-**Linux VM**：
+**Linux vm**：
 
 * [Linux VM 上的 SQL Server 概觀](sql-server-linux-virtual-machines-overview.md)
 * [佈建 SQL Server Linux VM](provision-sql-server-linux-virtual-machine.md)
-* [Linux 文檔上的 SQL 伺服器](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
+* [Linux 上的 SQL Server 檔](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
 
-**視窗 VM**：
+**Windows vm**：
 
-* [Windows VM 上的 SQL 伺服器概述](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+* [Windows VM 上的 SQL Server 總覽](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 * [佈建 SQL Server Windows VM](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)
 * [常見問題集 (Windows)](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md)

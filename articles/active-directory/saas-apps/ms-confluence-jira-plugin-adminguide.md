@@ -16,15 +16,15 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8679f9a03fded546db68f058bca716ba053aa0fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "73161204"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>適用於 Azure Active Directory 的 Atlassian Jira 和 Confluence 管理員指南
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsoft Azure AD 客戶使用工作或學校帳戶登入 Atlassian Jira 和 Confluence 伺服器架構的產品。 它會實作以 SAML 2.0 為基礎的 SSO。
 
@@ -95,7 +95,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 2. 移至 Jira/Confluence 管理主控台，選取 [附加元件]****。
 
-3. 從微軟下載中心，下載[微軟SAML SSO外掛程式為吉拉](https://www.microsoft.com/download/details.aspx?id=56506)/ [微軟SAMLSSO外掛程式的匯合](https://www.microsoft.com/download/details.aspx?id=56503)。
+3. 從 microsoft 下載中心下載適用于 Jira/ 的 microsoft [saml sso 外掛程式](https://www.microsoft.com/download/details.aspx?id=56506)Confluence 的[microsoft saml sso 外掛程式](https://www.microsoft.com/download/details.aspx?id=56503)。
 
    搜尋結果中會顯示適當的外掛程式版本。
 
@@ -113,11 +113,11 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 * **中繼資料 URL**：用來從 Azure AD 取得同盟中繼資料的 URL。
 
-* **識別碼**：Azure AD 用來驗證要求來源的 URL。 此識別碼對應至 Azure AD 中的 **Identifier** 元素。 外掛程式會自動派生此 URL 為HTTPs://*\<域：埠>*/。
+* **識別碼**：Azure AD 用來驗證要求來源的 URL。 此識別碼對應至 Azure AD 中的 **Identifier** 元素。 外掛程式會自動將此 URL 衍生為 HTTPs://*\<網域：埠>*/。
 
-* **回覆 URL**：識別提供者 (IdP) 中的回覆 URL，用於起始 SAML 登入。 此回覆 URL 對應至 Azure AD 中的 **Reply URL** 元素。 外掛程式會自動派生此 URL 為HTTPs://*\<域：埠>/* 外掛程式/servlet/saml/auth。
+* **回覆 URL**：識別提供者 (IdP) 中的回覆 URL，用於起始 SAML 登入。 此回覆 URL 對應至 Azure AD 中的 **Reply URL** 元素。 外掛程式會自動將此 URL 衍生為 HTTPs://*\<網域：埠>*/plugins/servlet/saml/auth。
 
-* **登入 URL**：識別提供者 (IdP) 中的登入 URL，用於起始 SAML 登入。 此登入 URL 對應至 Azure AD 中的 **Sign On** 元素。 外掛程式會自動派生此 URL 為HTTPs://*\<域：埠>/* 外掛程式/servlet/saml/auth。
+* **登入 URL**：識別提供者 (IdP) 中的登入 URL，用於起始 SAML 登入。 此登入 URL 對應至 Azure AD 中的 **Sign On** 元素。 外掛程式會自動將此 URL 衍生為 HTTPs://*\<網域：埠>*/plugins/servlet/saml/auth。
 
 * **IdP 實體識別碼**：IdP 所使用的實體識別碼。 系統解析中繼資料 URL 時就會填入這個方塊。
 
@@ -181,7 +181,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 ### <a name="does-the-plug-in-work-on-cloud-versions"></a>此外掛程式可否在雲端版本上運作？
 
-否。 此外掛程式僅支援內部部署版本的 Jira 和 Confluence。
+不可以。 此外掛程式僅支援內部部署版本的 Jira 和 Confluence。
 
 ### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>此外掛程式支援哪些 Jira 和 Confluence 版本？
 
@@ -225,7 +225,7 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 ### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>此外掛程式是否可與 Azure AD 以外的 IdP 搭配運作？
 
-否。 它只能與 Azure AD 搭配運作。
+不可以。 它只能與 Azure AD 搭配運作。
 
 ### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>此外掛程式可以與哪個版本的 SAML 搭配運作？
 
@@ -233,12 +233,12 @@ Azure Active Directory (Azure AD) 單一登入 (SSO) 外掛程式可讓 Microsof
 
 ### <a name="does-the-plug-in-do-user-provisioning"></a>此外掛程式會進行使用者佈建嗎？
 
-否。 此外掛程式只提供以 SAML 2.0 為基礎的 SSO。 必須在使用 SSO 登入之前，於應用程式中佈建使用者。
+不可以。 此外掛程式只提供以 SAML 2.0 為基礎的 SSO。 必須在使用 SSO 登入之前，於應用程式中佈建使用者。
 
 ### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>此外掛程式支援叢集版本的 Jira 和 Confluence 嗎？
 
-否。 此外掛程式與內部部署版本的 Jira 和 Confluence 搭配使用。
+不可以。 此外掛程式與內部部署版本的 Jira 和 Confluence 搭配使用。
 
 ### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>此外掛程式能與 HTTP 版本的 Jira 和 Confluence 搭配使用嗎？
 
-否。 此外掛程式只能與已啟用 HTTPS 的安裝搭配運作。
+不可以。 此外掛程式只能與已啟用 HTTPS 的安裝搭配運作。

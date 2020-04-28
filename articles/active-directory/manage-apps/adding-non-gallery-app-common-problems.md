@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38a9ef04389318d3588649117c930ff6efa3fe4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "65784484"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>新增不在資源庫內的應用程式時遇到問題
@@ -28,7 +28,7 @@ ms.locfileid: "65784484"
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>按一下 [新增] 按鈕，但應用程式經過佷久才出現
 
-在某些情況下，將應用程式新增至目錄後，可能需要 1-2 分鐘 (有時更久)，應用程式才會出現。 雖然這不是正常的預期性能，但可以通過按一下[Azure 門戶](https://portal.azure.com/)右上角**的通知**圖示（bell）並查找標記為 **"創建應用程式**"的 **"正在進行**"或 **"已完成**"通知來查看應用程式添加正在進行中。
+在某些情況下，將應用程式新增至目錄後，可能需要 1-2 分鐘 (有時更久)，應用程式才會出現。 雖然這不是正常預期的效能，但您可以按一下[Azure 入口網站](https://portal.azure.com/)右上方的 [**通知**] 圖示（鐘），尋找標示為 [**建立應用程式**] 的 [**進行中**] 或 [**已完成**] 通知，查看應用程式新增作業正在進行中。
 
 如果一直都沒有新增的應用程式，或您按一下 **[新增]** 按鈕時發生錯誤，您會看到**錯誤**狀態的**通知**。 如果您想要取得更多關於此錯誤的詳細資料以進一步了解，或分享給支援工程師，則可以依照[如何查看入口網站通知的詳細資訊](#how-to-see-the-details-of-a-portal-notification)一節中的步驟，來查看此錯誤的詳細資訊。
 
@@ -96,7 +96,7 @@ ms.locfileid: "65784484"
 
 - **UPN** - 執行作業的使用者
 
-  *  示例 = **tperkins\@f128.info**
+  *  範例- **tperkins\@f128.info**
 
 - **租用戶識別碼** – 作業執行使用者所屬之租用戶的唯一識別碼
 
@@ -114,7 +114,7 @@ ms.locfileid: "65784484"
 
 - **狀態** - 通知的特定狀態
 
-  *  示例 =**失敗**
+  *  範例-**失敗**
 
 - **物件識別碼** – **(可以是空白)** 據以執行作業的物件識別碼
 
@@ -122,7 +122,7 @@ ms.locfileid: "65784484"
 
 - **詳細資料** - 作業所產生之結果的詳細描述
 
-  *  示例 =**內部 URL`https://bing.com/`無效，因為它已在使用中**
+  *  範例–**內部 url `https://bing.com/`無效，因為它已在使用中**
 
 - **複製錯誤** – 按一下 [複製錯誤]**** 文字方塊右邊的**複製圖示**，以複製所有通知詳細資料來分享給支援工程師或產品群組 
 - 工程師

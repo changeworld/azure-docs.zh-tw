@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 6cf3d2f82c98a3caab47ff48a600316747932b72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70390040"
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>設定 Azure DevTest Labs 中的虛擬網路
@@ -27,19 +27,19 @@ ms.locfileid: "70390040"
 本文說明如何將現有的虛擬網路加入至實驗室的虛擬網路設定，以在建立 VM 時選擇它。
 
 > [!NOTE]
-> 要瞭解與 Azure 虛擬網路服務關聯的成本，請參閱[Azure 虛擬網路的定價](../virtual-network/virtual-networks-overview.md#pricing)。
+> 若要瞭解與 Azure 虛擬網路服務相關聯的成本，請參閱[azure 虛擬網路的定價](../virtual-network/virtual-networks-overview.md#pricing)。
 
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>使用 Azure 入口網站設定適用於實驗室的虛擬網路
 下列步驟會逐步引導您將現有虛擬網路 (和子網路) 加入至實驗室，以便在同一個實驗室中建立 VM 時加以使用。 
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
 1. 從實驗室清單中，選取所需的實驗室。 
 1. 在實驗室的主窗格上，選取 [設定與原則]****。
 
     ![存取實驗室的設定與原則](./media/devtest-lab-configure-vnet/policies-menu.png)
 1. 在 [外部資源]**** 區段中，選取 [虛擬網路]****。 隨即顯示針對目前實驗室設定的虛擬網路清單，以及為實驗室所建立的預設虛擬網路。 
-1. 選擇 **= 添加**。
+1. 選取 [ **+ 新增**]。
    
     ![將現有的虛擬網路加入至您的實驗室](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
 1. 在 [虛擬網路]**** 窗格上，選取 [選取虛擬網路]****。
@@ -55,10 +55,10 @@ ms.locfileid: "70390040"
     ![[實驗室的子網路] 窗格](./media/devtest-lab-configure-vnet/lab-subnet.png)
      
    - 指定 [實驗室子網路名稱]****。
-   - 要允許子網用於實驗室 VM 創建，請選擇"**在虛擬機器創建中使用**"。
+   - 若要允許在實驗室 VM 建立期間使用子網，請選取 [**在虛擬機器建立時使用**]。
    - 若要啟用[共用公用 IP 位址](devtest-lab-shared-ip.md)，請選取 [啟用共用公用 IP]****。
    - 若要允許子網路中使用公用 IP 位址，請選取 [允許建立公用 IP] ****。
-   - 在 **"每個使用者的最大虛擬機器"** 欄位中，為每個子網指定每個使用者的最大 VM。 如果您想要不限數目的 VM 數，請將此欄位保留空白。
+   - 在 [**每位使用者的虛擬機器數上限**] 欄位中，為每個子網指定每位使用者的 vm 數目上限。 如果您想要不限數目的 VM 數，請將此欄位保留空白。
 1. 選取 [確定]**** 以關閉 [實驗室的子網路] 窗格。
 1. 選取 [儲存]**** 以關閉 [虛擬網路] 窗格。
 

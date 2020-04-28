@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: f2d653441598a47986913d525057672eed24b435
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60931699"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>如何使用 SendGrid 透過 Node.js 傳送電子郵件
 
-本指南示範如何在 Azure 上透過 SendGrid 電子郵件服務執行常見程式設計工作。 這些範例使用 Node.js API 撰寫。 涵蓋的案例包括**建構電子郵件**、**傳送電子郵件**、**新增附件**、**使用篩選器**及**更新屬性**。 有關 SendGrid 和發送電子郵件的詳細資訊，請參閱[後續步驟](#next-steps)部分。
+本指南示範如何在 Azure 上透過 SendGrid 電子郵件服務執行常見程式設計工作。 這些範例使用 Node.js API 撰寫。 涵蓋的案例包括**建構電子郵件**、**傳送電子郵件**、**新增附件**、**使用篩選器**及**更新屬性**。 如需有關 SendGrid 及傳送電子郵件的詳細資訊，請參閱[後續步驟](#next-steps)一節。
 
 ## <a name="what-is-the-sendgrid-email-service"></a>什麼是 SendGrid 電子郵件服務？
 
@@ -36,7 +36,7 @@ SendGrid 是 [雲端架構電子郵件服務]，能提供可靠的 [交易式電
 * 轉寄客戶查詢
 * 透過電子郵件從您的應用程式傳送通知
 
-有關詳細資訊，請參閱[https://sendgrid.com](https://sendgrid.com)。
+如需詳細資訊， [https://sendgrid.com](https://sendgrid.com)請參閱。
 
 ## <a name="create-a-sendgrid-account"></a>建立 SendGrid 帳戶
 
@@ -80,7 +80,7 @@ html: This is a sample <b>HTML<b> email message.
 
 同時設定 text 和 html 屬性可以為無法支援 HTML 訊息的用戶端提供正常的文字內容遞補。
 
-有關電子郵件函數支援的所有屬性的詳細資訊，請參閱[發送網格節點。][sendgrid-nodejs]
+如需電子郵件功能所支援之所有屬性的詳細資訊，請參閱[sendgrid-nodejs][sendgrid-nodejs]。
 
 ## <a name="how-to-send-an-email"></a>如何：傳送電子郵件
 
@@ -188,7 +188,7 @@ sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>如何：更新電子郵件屬性
 
-某些電子郵件屬性可以使用**setProperty**進行覆蓋，或使用**addProperty**追加。 例如，您可以使用下列方式新增其他收件者：
+某些電子郵件屬性可以使用**setProperty**來覆寫，或使用**addProperty**來附加。 例如，您可以使用下列方式新增其他收件者：
 
 ```javascript
 email.addTo('jeff@contoso.com');
@@ -213,7 +213,7 @@ SendGrid 提供的網頁式 API 可供從 Azure 應用程式運用其他 SendGri
 
 * SendGrid Node.js 模組存放機制：[sendgrid-nodejs][sendgrid-nodejs]
 * SendGrid API 文件：<https://sendgrid.com/docs>
-* 為 Azure 客戶發送網格特別優惠：[http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
+* 適用于 Azure 客戶的 SendGrid 特別供應專案：[http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 
 [special offer]: https://sendgrid.com/windowsazure.html
 [sendgrid-nodejs]: https://github.com/sendgrid/sendgrid-nodejs

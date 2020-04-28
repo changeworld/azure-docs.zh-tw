@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24143f8c94a294da90be84bacfe633db0cd24f85
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60244529"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>使用快速設定開始使用 Azure AD Connect
@@ -34,23 +34,23 @@ ms.locfileid: "60244529"
 
 1. 以本機系統管理員身分登入您想要安裝 Azure AD Connect 的伺服器。 請在您想要做為同步處理伺服器的伺服器上進行此步驟。
 2. 瀏覽並按兩下 **AzureADConnect.msi**。
-3. 在 [歡迎] 畫面上，選取同意授權條款的方塊，然後按一下 [繼續] ****。  
+3. 在 [歡迎] 畫面上，選取同意授權條款的方塊，然後按一下 [繼續]  。  
 4. 在 [快速設定] 畫面上，按一下 [ **使用快速設定**]。  
    ![歡迎使用 Azure AD Connect](./media/how-to-connect-install-express/express.png)
-5. 在 [連接到 Azure AD] 畫面上，輸入您的 Azure AD 的全域系統管理員使用者名稱和密碼。 按 [下一步]****。  
+5. 在 [連接到 Azure AD] 畫面上，輸入您的 Azure AD 的全域系統管理員使用者名稱和密碼。 按 [下一步]  。  
    ![連接至 Azure AD](./media/how-to-connect-install-express/connectaad.png)  
    如果您收到錯誤訊息，而且有連線問題，請參閱[針對連線問題進行疑難排解](tshoot-connect-connectivity.md)。
-6. 在 [連接到 AD DS] 畫面上輸入企業系統管理員帳戶的使用者名稱和密碼。 您可以用 NetBios 或 FQDN 格式輸入網域部分，也就是 FABRIKAM\administrator 或 fabrikam.com\administrator。 按 [下一步]****。  
+6. 在 [連接到 AD DS] 畫面上輸入企業系統管理員帳戶的使用者名稱和密碼。 您可以用 NetBios 或 FQDN 格式輸入網域部分，也就是 FABRIKAM\administrator 或 fabrikam.com\administrator。 按 [下一步]  。  
    ![連線到 AD DS](./media/how-to-connect-install-express/connectad.png)
 7. 只有在未完成[必要條件](how-to-connect-install-prerequisites.md)中的[驗證網域](../active-directory-domains-add-azure-portal.md)時，才會顯示 [[**Azure AD 登入組態**](plan-connect-user-signin.md#azure-ad-sign-in-configuration)] 頁面。
    ![未驗證的網域](./media/how-to-connect-install-express/unverifieddomain.png)  
    如果您看到此頁面，請檢閱每一個標示為**未新增**和**未驗證**的網域。 確定您所使用的網域皆已在 Azure AD 中完成驗證。 驗證好網域時，按一下 [重新整理] 符號。
-8. 在 [準備好設定] 畫面中，按一下 [安裝]****。
+8. 在 [準備好設定] 畫面中，按一下 [安裝]  。
    * 在 [準備設定] 頁面上，您可以取消選取 [設定一完成，即開始同步處理程序] **** 核取方塊。 如果您想要進行其他設定 (例如[篩選](how-to-connect-sync-configure-filtering.md))，應該取消選取此核取方塊。 若您取消選取此選項，精靈會設定同步處理，但是會讓排程器保持停用。 直到您[重新執行安裝精靈](how-to-connect-installation-wizard.md)以手動方式加以啟用時，才會執行排程器。
    * 啟用 [設定一完成，即開始同步處理程序]**** 核取方塊，將會立即觸發完整同步處理，將使用者、群組和連絡人同步至 Azure AD。
    * 如果您的內部部署 Active Directory 中有 Exchange，則您也可以選擇啟用 [**Exchange 混合式部署**](https://technet.microsoft.com/library/jj200581.aspx)。 如果您打算在雲端和內部部署均設置 Exchange 信箱，請啟用此選項。
      ![準備設定 Azure AD Connect](./media/how-to-connect-install-express/readytoconfigure.png)
-9. 當安裝完成時，按一下 [結束] ****。
+9. 當安裝完成時，按一下 [結束]  。
 10. 安裝完成之後，請先登出再重新登入，才能使用 Synchronization Service Manager 或同步處理規則編輯器。
 
 ## <a name="videos"></a>影片

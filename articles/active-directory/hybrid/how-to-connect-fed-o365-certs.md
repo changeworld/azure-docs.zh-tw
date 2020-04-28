@@ -17,14 +17,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60244865"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>更新 Office 365 和 Azure Active Directory 的同盟憑證
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 為了讓 Azure Active Directory (Azure AD) 與 Active Directory Federation Services (AD FS) 之間能夠成功地同盟，AD FS 用來向 Azure AD 簽署安全性權杖的憑證應該符合 Azure AD 中所設定的憑證。 任何不相符都可能導致信任受損。 Azure AD 會確保這項資訊在您部署 AD FS 和 Web 應用程式 Proxy (適用於外部網路存取) 時保持同步。
 
 本文提供您其他資訊，以便在下列情況時管理權杖簽署憑證，並讓憑證與 Azure AD 保持同步︰
@@ -36,7 +36,7 @@ ms.locfileid: "60244865"
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>權杖簽署憑證的預設 AD FS 設定
 權杖簽署和權杖解密憑證通常是自我簽署的憑證，有效期為一年。 根據預設，AD FS 包含名為 **AutoCertificateRollover**的自動更新程序。 如果您使用 AD FS 2.0 或更新版本，Office 365 和 Azure AD 在您的憑證到期之前會自動進行更新。
 
-### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>來自 Microsoft 365 管理中心或電子郵件的續訂通知
+### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>從 Microsoft 365 系統管理中心或電子郵件更新通知
 > [!NOTE]
 > 如果您收到電子郵件或入口網站通知，要求您更新 Office 憑證，請參閱 [管理權杖簽署憑證的變更](#managecerts) ，檢查您是否需要採取任何動作。 Microsoft 已知可能會有在不需要採取任何動作的情況下仍送出憑證更新通知的問題。
 >
@@ -44,8 +44,8 @@ ms.locfileid: "60244865"
 
 Azure AD 會嘗試監視同盟中繼資料，並依照此中繼資料的指示更新權杖簽署憑證。 在權杖簽署憑證到期前 30 天，Azure AD 會藉由輪詢同盟中繼資料，檢查是否已有新的憑證可供使用。
 
-* 如果可以成功輪詢聯合中繼資料並檢索新證書，則 Microsoft 365 管理中心不會向使用者發出電子郵件通知或警告。
-* 如果無法檢索新的權杖簽署憑證，則由於無法到達聯合中繼資料或未啟用自動證書滾動更新，Azure AD 會在 Microsoft 365 管理中心發出電子郵件通知和警告。
+* 如果它可以成功輪詢同盟中繼資料並抓取新憑證，則會向使用者發出 Microsoft 365 系統管理中心內的電子郵件通知或警告。
+* 如果無法抓取新的權杖簽署憑證，可能是因為無法連線到同盟中繼資料，或未啟用自動憑證變換，Azure AD 會在 Microsoft 365 系統管理中心發出電子郵件通知和警告。
 
 ![Office 365 入口網站通知](./media/how-to-connect-fed-o365-certs/notification.png)
 
@@ -118,7 +118,7 @@ Azure AD 會嘗試監視同盟中繼資料，並依照此中繼資料的指示�
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-將`(your_FS_name)`之替換為您的組織使用的聯合服務主機名，如fs.contoso.com。  如果您能夠成功確認上述兩個設定，您就不必執行任何動作。  
+其中`(your_FS_name)` ，會取代為您的組織使用的同盟服務主機名，例如 fs.contoso.com。  如果您能夠成功確認上述兩個設定，您就不必執行任何動作。  
 
 範例： https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 ## <a name="renew-the-token-signing-certificate-manually"></a>手動更新權杖簽署憑證 <a name="manualrenew"></a>
@@ -159,7 +159,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 1. 開啟適用於 Windows PowerShell 的 Microsoft Azure Active Directory 模組。
 2. 執行 $cred=Get-Credential。 當此 Cmdlet 提示您輸入認證時，請輸入您的雲端服務系統管理員帳戶認證。
-3. 運行連接-Msol服務 + 憑據$cred。此 Cmdlet 將您連接到雲服務。 在您執行由工具安裝的任何其他 Cmdlet 之前，必須先建立讓您連線到雲端服務的環境。
+3. 執行 Connect-Connect-msolservice – Credential $cred。此 Cmdlet 會將您連接到雲端服務。 在您執行由工具安裝的任何其他 Cmdlet 之前，必須先建立讓您連線到雲端服務的環境。
 4. 如果您不是在 AD FS 主要同盟伺服器的電腦上執行這些命令，請執行 Set-MSOLAdfscontext -Computer &lt;AD FS primary server&gt;，其中 &lt;AD FS primary server&gt; 是主要 AD FS 伺服器的內部 FQDN 名稱。 此 Cmdlet 會建立讓您連線到 AD FS 的環境。
 5. 執行 Update-MSOLFederatedDomain –DomainName &lt;domain&gt;。 此 Cmdlet 會將 AD FS 的設定更新成雲端服務，並設定兩者之間的信任關係。
 

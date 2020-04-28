@@ -1,6 +1,6 @@
 ---
 title: 混合式身分識別設計 - 管理工作 - Azure | Microsoft Docs
-description: 使用條件訪問控制項，Azure 活動目錄會檢查在驗證使用者時和允許訪問應用程式之前選擇的特定條件。 一旦符合這些條件，就會驗證使用者並允許存取應用程式。
+description: 使用條件式存取控制，Azure Active Directory 會在驗證使用者時以及允許存取應用程式之前，檢查您挑選的特定條件。 一旦符合這些條件，就會驗證使用者並允許存取應用程式。
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109375"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>規劃混合式身分識別生命週期
@@ -32,7 +32,7 @@ ms.locfileid: "67109375"
 ## <a name="determine-hybrid-identity-management-tasks"></a>判斷混合式身分識別管理工作
 在您的組織中散發管理工作，可以改善管理的精確度和效率，並改善組織的工作負載平衡。 以下是定義健全的身分識別管理系統的要點。
 
- ![身份管理注意事項](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
+ ![身分識別管理考慮](./media/plan-hybrid-identity-design-considerations/Identity_management_considerations.png)
 
 若要定義混合式身分識別管理工作，您必須了解將採用混合式身分識別的組織有哪些基本特性。 請務必了解目前要用於身分識別來源的儲存機制。 了解這些核心元素之後，將可得知您的基本需求，據此，您必須提出更細微的問題，進而為您的身分識別解決方案引導出更理想的設計決策。  
 
@@ -61,10 +61,10 @@ ms.locfileid: "67109375"
 ## <a name="synchronization-management"></a>同步處理管理
 身分識別管理員的目標之一，是要能夠啟用所有身分識別提供者，並保持其同步處理狀態。 您可以根據授權的主要身分識別提供者，保持資料的同步處理狀態。 在混合式身分識別案例中，您可以透過同步處理的管理模型，在內部部署伺服器中管理所有的使用者和裝置身分識別，並將帳戶同步處理至雲端 (和選擇性地同步處理密碼)。 使用者在內部部署中輸入的密碼與雲端相同，且在登入時，身分識別解決方案會驗證密碼。 此模型會使用目錄同步處理工具。
 
-![目錄同步](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png)要正確設計混合標識解決方案的同步，確保回答以下問題：
-*    混合標識解決方案可用的同步解決方案有哪些？
-*    可用的單一登入功能是什麼？
-*    B2B 和 B2C 之間的身份聯合有哪些選項？
+![目錄同步](./media/plan-hybrid-identity-design-considerations/Directory_synchronization.png)處理若要適當設計混合式身分識別解決方案的同步處理，請確定已回答下列問題：
+*    適用于混合式身分識別解決方案的同步處理解決方案有哪些？
+*    有哪些可用的單一登入功能？
+*    B2B 和 B2C 之間的身分識別同盟選項有哪些？
 
 ## <a name="next-steps"></a>後續步驟
 [判斷混合式身分識別管理採用策略](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)

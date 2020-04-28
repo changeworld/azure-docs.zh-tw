@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 3ca3e9074f28d66068d49b80915e98600759d9be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68568288"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>跨雲端資料庫的分散式交易
@@ -26,7 +26,7 @@ Azure SQL Database (SQL DB) 的彈性資料庫交易可讓您在 SQL DB 中跨�
 
   ![Azure SQL Database 的分散式交易 - 使用彈性資料庫交易 ][1]
 
-## <a name="common-scenarios"></a>常見的案例
+## <a name="common-scenarios"></a>常見案例
 
 SQL DB 的彈性資料庫交易可讓應用程式對數個不同 SQL Database 中儲存的資料進行不可部分完成的變更。 預覽版著重於 C# 和 .NET 的用戶端開發經驗。 未來預計加入使用 T-SQL 的伺服器端經驗。  
 彈性資料庫交易以下列案例為目標：
@@ -47,7 +47,7 @@ SQL DB 的彈性資料庫交易可讓應用程式對數個不同 SQL Database �
 
 ### <a name="multi-database-applications"></a>多重資料庫應用程式
 
-下列範例程式碼使用熟悉的 .NET System.Transactions 程式設計經驗。 TransactionScope 類別會在 .NET 中建立環境交易 （"環境事務"是駐留在當前執行緒中的事務。在事務範圍中打開的所有連接都參與事務。 如果有不同的資料庫參與，交易會自動提升為分散式交易。 設定完成範圍來指出認可，即可控制交易的結果。
+下列範例程式碼使用熟悉的 .NET System.Transactions 程式設計經驗。 TransactionScope 類別會在 .NET 中建立環境交易 （「環境交易」是位於目前線程中的一個）。在 TransactionScope 內開啟的所有連接都會參與交易。 如果有不同的資料庫參與，交易會自動提升為分散式交易。 設定完成範圍來指出認可，即可控制交易的結果。
 
     using (var scope = new TransactionScope())
     {
@@ -127,15 +127,15 @@ Azure 會提供數個供應項目，以裝載 .NET 應用程式。 如需不同�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Azure SQL 資料庫仍然支援 PowerShell Azure 資源管理器模組，但所有後續開發都針對 Az.Sql 模組。 有關這些 Cmdlet，請參閱[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的參數基本相同。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 在 Azure SQL Database 中，支援跨越不同 SQL Database 伺服器的彈性資料庫交易。 當交易跨越 SQL Database 伺服器的界限時，參與的伺服器首先必須進入一個相互通訊關聯性。 一旦建立通訊關聯性之後，任一部伺服器中的任何資料庫都可以和另一部伺服器中的資料庫一起參與彈性交易。 對於跨越兩部以上 SQL Database 伺服器的交易，任何一組 SQL Database 伺服器都必須先具備通訊關聯性。
 
 使用下列 PowerShell Cmdlet 管理跨伺服器的通訊關聯性，以進行彈性資料庫交易：
 
-* **New-AzSqlServer通訊連結**：使用此 Cmdlet 在 Azure SQL 資料庫中的兩個 SQL 資料庫伺服器之間創建新的通訊關係。 此關聯性是對稱的，也就是說，這兩部伺服器彼此都可以起始交易。
-* **獲取-AzSqlServer通訊連結**：使用此 Cmdlet 檢索現有的通訊關係及其屬性。
-* **刪除-AzSqlServer通訊連結**：使用此 Cmdlet 刪除現有的通訊關係。 
+* **AzSqlServerCommunicationLink**：使用這個 Cmdlet 在 Azure SQL Database 中的兩部 SQL Database 伺服器之間建立新的通訊關聯性。 此關聯性是對稱的，也就是說，這兩部伺服器彼此都可以起始交易。
+* **AzSqlServerCommunicationLink**：使用這個 Cmdlet 來取出現有的通訊關聯性及其屬性。
+* **AzSqlServerCommunicationLink**：使用這個 Cmdlet 移除現有的通訊關聯性。 
 
 ## <a name="monitoring-transaction-status"></a>監視交易狀態
 

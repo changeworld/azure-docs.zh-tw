@@ -1,6 +1,6 @@
 ---
-title: Azure 資料湖分析中的 USQL 認知功能
-description: 瞭解如何在 U-SQL 中使用認知能力的智慧。 此代碼示例可説明您入門。
+title: Azure Data Lake Analytics 中的 U-SQL 認知功能
+description: 瞭解如何在 U-SQL 中使用認知功能的智慧。 此程式碼範例可協助您開始著手。
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,22 +10,22 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: 406eb1c9153e1ddbdc196cd64378c17cfa986dac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71672717"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>開始使用 U-SQL 的辨識功能
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 U-SQL 的辨識功能讓開發人員可以在其公司的巨量資料程式中使用 put 智慧。 
 
 下列使用認知功能的範例可供使用：
-* 成像：[檢測人臉](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
-* 成像：[檢測情緒](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
-* 成像：[檢測物件（標記）](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
-* 成像[：OCR（光學字元辨識）](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* 影像處理：偵測[臉部](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
+* 影像處理：偵測[表情](https://github.com/Azure-Samples/usql-cognitive-imaging-emotion-detection-hello-world)
+* 影像處理：偵測[物件（標記）](https://github.com/Azure-Samples/usql-cognitive-imaging-object-tagging-hello-world)
+* 影像處理： [OCR （光學字元辨識）](https://github.com/Azure-Samples/usql-cognitive-imaging-ocr-hello-world)
 * 文字：[關鍵片語擷取與情感分析](https://github.com/Azure-Samples/usql-cognitive-text-hello-world)
 
 ## <a name="registering-cognitive-extensions-in-u-sql"></a>在 U-SQL 中註冊認知擴充功能

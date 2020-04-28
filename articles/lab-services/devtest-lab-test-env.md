@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: c6b458091a8e5e22cca55d401e89e5e13bcf9de9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60623168"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>為 VM 和 PaaS 測試環境使用 Azure DevTest Labs
@@ -43,7 +43,7 @@ ms.locfileid: "60623168"
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [在 Azure 研測實驗室中建立實驗室](devtest-lab-create-lab.md) |了解如何在 Azure 入口網站的 Azure DevTest Labs 中建立實驗室。 |
 2. **使用現成的 Marketplace 映像和自訂映像在幾分鐘內建立 VM** 
@@ -54,7 +54,7 @@ ms.locfileid: "60623168"
   
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [設定 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |了解如何將 Azure Marketplace 映像加入允許清單；只開放選取您想讓測試人員使用的映像。|
    | [建立自訂映像](devtest-lab-create-template.md) |預先安裝所需軟體以建立自訂映像，讓測試人員可以使用自訂映像快速建立 VM。|
@@ -66,7 +66,7 @@ ms.locfileid: "60623168"
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [管理研發/測試實驗室公式來建立 VM](devtest-lab-manage-formulas.md) |了解如何挑選映像、VM 大小 (CPU 和 RAM 的組合) 和虛擬網路以建立公式。|
 
@@ -78,7 +78,7 @@ ms.locfileid: "60623168"
 
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [使用 Azure Resource Manager 範本建立多個 VM 環境和 PaaS 資源](devtest-lab-create-environment-from-arm.md) |了解如何以一致的狀態為測試環境部署多部 VM。|
 
@@ -94,7 +94,7 @@ ms.locfileid: "60623168"
 
    按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [為您的 DevTest Labs VM 建立自訂的構件](devtest-lab-artifact-author.md) |在實驗室中為虛擬機器建立自己的自訂構件。|
    | [在 Azure DevTest Labs 中新增可以存放自訂構件和 Azure Resource Manager 範本來使用的 Git 存放庫](devtest-lab-add-artifact-repo.md) |了解如何在您自己的私用 Git 儲存機制中儲存您的自訂構件。|
@@ -109,7 +109,7 @@ ms.locfileid: "60623168"
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [定義實驗室原則](devtest-lab-set-lab-policy.md) |在實驗室中設定原則來控制成本。 |
    | [使用 PowerShell 指令碼刪除所有實驗室 VM](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |當測試完成時，在一次作業中刪除所有實驗室。|
@@ -122,7 +122,7 @@ ms.locfileid: "60623168"
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [在 Azure DevTest Labs 中設定虛擬網路](devtest-lab-configure-vnet.md) |了解如何使用 Azure 入口網站在 Azure DevTest Labs 中設定虛擬網路。|
 
@@ -132,7 +132,7 @@ ms.locfileid: "60623168"
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [在 Azure DevTest Labs 中將測試人員新增到實驗室](devtest-lab-add-devtest-user.md) |使用 Azure 入口網站將測試人員新增至實驗室。|
    | [使用 PowerShell 指令碼將測試人員新增至實驗室](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |使用 PowerShell 自動將測試人員新增到實驗室。 |
@@ -144,7 +144,7 @@ ms.locfileid: "60623168"
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [使用 Resource Manager 範本建立實驗室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |在 Azure DevTest Labs 中使用 Resource Manager 範本建立實驗室。 |
 

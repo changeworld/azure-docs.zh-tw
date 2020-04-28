@@ -17,10 +17,10 @@ ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65406960"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>整合 Azure Active Directory 與 E Sales Manager Remix
@@ -33,7 +33,7 @@ ms.locfileid: "65406960"
 - 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 E Sales Manager Remix (單一登入，又稱為 SSO)。
 - 您可以在 Azure 入口網站中集中管理您的帳戶。
 
-要瞭解有關 SaaS 應用與 Azure AD 集成的更多內容，請參閱[什麼是應用程式訪問和 Azure 活動目錄的單一登入？](../manage-apps/what-is-single-sign-on.md)
+若要深入了解 SaaS 應用程式與 Azure AD 整合，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -65,7 +65,7 @@ ms.locfileid: "65406960"
 
     ![Azure Active Directory 按鈕][1]
 
-1. 選擇**企業應用程式** > **所有應用程式**。
+1. 選取 [**企業應用程式** > ] [**所有應用程式**]。
 
     ![企業應用程式視窗][2]
     
@@ -120,7 +120,7 @@ ms.locfileid: "65406960"
 
     [編輯屬性]**** 視窗隨即開啟。
 
-1. 複製 [命名空間]**** 和 [名稱]**** 的值。 生成模式*\<命名空間>/\<名稱>* 中的值，並將其保存以供本教程以後使用。
+1. 複製 [命名空間]**** 和 [名稱]**** 的值。 在模式* \<命名空間中產生>\</Name>* 的值，並加以儲存以供稍後在本教學課程中使用。
 
     ![編輯屬性視窗](./media/esalesmanagerremix-tutorial/configure2.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "65406960"
 
 1. 在 [快速參考]**** 區段中，複製登出 URL 和 SAML 單一登入服務 URL。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
     ![[儲存] 按鈕](./media/esalesmanagerremix-tutorial/tutorial_general_400.png)
 
@@ -142,7 +142,7 @@ ms.locfileid: "65406960"
 
     ![到系統管理功能表命令](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. 在左側窗格中，選擇 **"系統設置** > **與外部系統合作**"。
+1. 在左窗格中，選取 [**系統設定** > ] [**與外部系統合作**]。
 
     ![系統設定以及與外部系統合作連結](./media/esalesmanagerremix-tutorial/configure5.png)
     
@@ -171,7 +171,7 @@ ms.locfileid: "65406960"
     h. 選取 [設定完成]****。
 
 > [!TIP]
-> 當您設定此應用程式時，可以在 [Azure 入口網站](https://portal.azure.com)中閱讀先前那些指示的簡要版本。 在**Active Directory** > **企業應用程式**部分中添加應用後，選擇 **"單一登入**"選項卡，然後在底部的 **"配置**"部分中訪問嵌入的文檔。 如需內嵌文件功能的詳細資訊，請參閱 [Azure AD 內嵌文件]( https://go.microsoft.com/fwlink/?linkid=845985)。
+> 當您設定此應用程式時，可以在 [Azure 入口網站](https://portal.azure.com)中閱讀先前那些指示的簡要版本。 在 [ **Active Directory** > **企業應用程式**] 區段中新增應用程式之後，請選取 [**單一登入**] 索引標籤，然後在底部的 [設定 **] 區段中存取內嵌的檔**。 如需內嵌文件功能的詳細資訊，請參閱 [Azure AD 內嵌文件]( https://go.microsoft.com/fwlink/?linkid=845985)。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
@@ -180,11 +180,11 @@ ms.locfileid: "65406960"
 
 ![建立 Azure AD 測試使用者][100]
 
-1. 在 Azure 門戶中，在左側窗格中，選擇**Azure 活動目錄**。
+1. 在 Azure 入口網站的左窗格中，選取 [ **Azure Active Directory**]。
 
     ![Azure Active Directory 連結](./media/paloaltoadmin-tutorial/create_aaduser_01.png)
 
-1. 要顯示當前使用者的清單，請選擇 **"使用者"和"所有使用者組** > **All users**"。
+1. 若要顯示目前使用者的清單，請選取 [**使用者和群組** > ] [**所有使用者**]。
 
     ![[使用者和群組] 與 [所有使用者] 連結](./media/paloaltoadmin-tutorial/create_aaduser_02.png)
 
@@ -202,9 +202,9 @@ ms.locfileid: "65406960"
 
     b. 在 [使用者名稱]**** 方塊中，輸入使用者 Britta Simon 的電子郵件地址。
 
-    c. 選擇"**顯示密碼**"核取方塊，然後記下 **"密碼"** 框中顯示的值。
+    c. 選取 [**顯示密碼**] 核取方塊，然後記下 [**密碼**] 方塊中顯示的值。
 
-    d. 選取 [建立]****。
+    d. 選取 [建立]  。
  
 ### <a name="create-an-e-sales-manager-remix-test-user"></a>建立 E Sales Manager Remix 測試使用者
 
@@ -214,7 +214,7 @@ ms.locfileid: "65406960"
 
     ![E Sales Manager Remix 設定](./media/esalesmanagerremix-tutorial/configure4.png)
 
-1. 選擇**貴公司的設置** > **維護部門和員工**，然後選擇**已登記的員工**。
+1. 選取**您公司的** > **部門和員工設定維護**，然後選取 [**已註冊的員工**]。
 
     ![已註冊員工索引標籤](./media/esalesmanagerremix-tutorial/user1.png)
 
@@ -248,7 +248,7 @@ ms.locfileid: "65406960"
 
     ![E Sales Manager Remix 連結](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_app.png)  
 
-1. 在左側窗格中，選擇 **"使用者"和"組**"。
+1. 在左窗格中，選取 [**使用者和群組**]。
 
     ![[使用者和群組] 連結][202]
 
@@ -258,7 +258,7 @@ ms.locfileid: "65406960"
 
 1. 在 [使用者和群組]**** 視窗的 [使用者]**** 清單中，選取 [Britta Simon]****。
 
-1. 選擇 **"選擇"** 按鈕。
+1. 選取 [選取]  按鈕。
 
 1. 在 [新增指派]**** 視窗中，選取 [指派]****。
     
@@ -268,12 +268,12 @@ ms.locfileid: "65406960"
 
 當您選取存取面板中的 [E Sales Manager Remix] 圖格時，應該會自動登入您的 E Sales Manager Remix 應用程式。
 
-如需存取面板的詳細資訊，請參閱[存取面板簡介](../user-help/active-directory-saas-access-panel-introduction.md)。 
+如需「存取面板」的詳細資訊，請參閱[存取面板簡介](../user-help/active-directory-saas-access-panel-introduction.md)。 
 
 ## <a name="additional-resources"></a>其他資源
 
 * [整合 SaaS 應用程式與 Azure Active Directory 的教學課程清單](tutorial-list.md)
-* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

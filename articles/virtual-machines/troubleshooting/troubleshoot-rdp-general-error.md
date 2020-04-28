@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 7fc0fbf3362d18284ad6a80afa6396b6be1270a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71058007"
 ---
 # <a name="troubleshoot-an-rdp-general-error-in-azure-vm"></a>在 Azure VM 中對 RDP 一般錯誤進行疑難排解
@@ -175,11 +175,11 @@ RDP 接聽程式的設定不正確。
 
 #### <a name="step-1-turn-on-remote-desktop"></a>步驟 1：開啟遠端桌面
 
-1. [將作業系統磁片附加到恢復 VM。](../windows/troubleshoot-recovery-disks-portal.md)
+1. [將 OS 磁片連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 啟動復原 VM 的遠端桌面連線。
-3. 確保磁片在磁片管理主控台中標記為**連線**。 記下指派給已連結 OS 磁碟的磁碟機代號。
+3. 請確定磁片在 [磁片管理] 主控台中標示為 [**線上**]。 記下指派給已連結 OS 磁碟的磁碟機代號。
 4. 啟動復原 VM 的遠端桌面連線。
-5. 打開提升的命令提示會話 （**以管理員身份運行**）。 執行下列指令碼。 在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
+5. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。 執行下列指令碼。 在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
 
       ```
       reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv 

@@ -18,17 +18,17 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71213185"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中樞和 Node.js 傳送推播通知
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 > [!IMPORTANT]
 > 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果沒有帳戶，您可以透過 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)，在幾分鐘內建立一個免費試用帳戶。
@@ -82,7 +82,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 藉由執行下列步驟，從 [Azure 入口網站]取得連線 `connectionstring` 值：
 
 1. 在左導覽窗格中，按一下 [瀏覽] ****。
-2. 選取 [通知中樞] ****，然後尋找您要用於範例的中樞。 如果您需要創建新通知中心的説明，可以參考[Windows 應用商店入門教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
+2. 選取 [通知中樞] ****，然後尋找您要用於範例的中樞。 如果您需要建立新通知中樞的協助，您可以參閱[Windows Store 消費者入門教學](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)課程。
 3. 選取 [設定]****。
 4. 按一下 [存取原則] ****。 您會看到兩個共用和完整存取連接字串。
 
@@ -108,7 +108,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 - **Payload** - 訊息的 JSON 或原始字串承載。
 - **Callback** - 回呼函數。
 
-有關有效負載格式的詳細資訊，請參閱[有效負載文檔](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
+如需裝載格式的詳細資訊，請參閱裝載[檔](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload)。
 
 下列程式碼使用 `NotificationHubService` 所公開的 `GcmService` 執行個體，傳送推播通知至所有已註冊的用戶端。
 
@@ -154,7 +154,7 @@ notificationHubService.apns.send(null, payload, function(error){
 
 - **Tags** - 標籤識別碼。 若未提供標籤，通知會傳送至所有用戶端。
 - **Payload** - 訊息的 XML 承載。
-- **Toast 通知的目標名稱** - `toast`。 `token` 代表磚通知。
+- **TargetName**  -  `toast`適用于快顯通知的 TargetName。 `token` 代表磚通知。
 - **NotificationClass** - 通知的優先順序。 如需有效值，請參閱[來自伺服器的推播通知](https://msdn.microsoft.com/library/hh221551.aspx)文件的＜HTTP 標頭元素＞**** 一節。
 - **Options** - 選用的要求標頭。
 - **Callback** - 回呼函數。
@@ -232,4 +232,4 @@ notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
 [webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
-[Azure 門戶]: https://portal.azure.com
+[Azure 入口網站]: https://portal.azure.com

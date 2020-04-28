@@ -14,10 +14,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1aa99e7e71ad78a62c1a9da303b2ecc8347ebeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65783856"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory 應用程式 Proxy 與 Tableau 
@@ -50,7 +50,7 @@ Azure Active Directory 應用程式 Proxy 和 Tableau 已互相合作，可確�
 **發佈應用程式**： 
 
 
-1. 以應用程式管理員身份登錄到[Azure 門戶](https://portal.azure.com)。 
+1. 以應用程式系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。 
 
 2. 選取 [Azure Active Directory] > [企業應用程式]****。 
 
@@ -70,7 +70,7 @@ Azure Active Directory 應用程式 Proxy 和 Tableau 已互相合作，可確�
 
 8. 選取**指派**以儲存測試使用者指派。 
 
-9. (選擇性) 在應用程式管理頁面上，選取 [單一登入]****。 在下拉式功能表中選擇 [整合式 Windows 驗證]****，然後根據您的 Tableau 設定填妥必要欄位。 選取 [儲存]****。 
+9. (選擇性) 在應用程式管理頁面上，選取 [單一登入]****。 在下拉式功能表中選擇 [整合式 Windows 驗證]****，然後根據您的 Tableau 設定填妥必要欄位。 選取 [儲存]  。 
 
  
 

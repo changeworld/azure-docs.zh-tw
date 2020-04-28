@@ -11,10 +11,10 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d6b90ff82601acca1249c7d8c353944e39e89f95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66473797"
 ---
 # <a name="azure-ad-connect--adconnectivitytools-powershell-reference"></a>Azure AD Connect：ADConnectivityTools PowerShell 參考
@@ -36,7 +36,7 @@ Confirm-DnsConnectivity [-Forest] <String> [-DCs] <Array> [-ReturnResultAsPSObje
 ### <a name="description"></a>DESCRIPTION
 
 執行本機 DNS 連線能力測試。
-為了配置 Active Directory 連接器，使用者必須同時具有他們嘗試連接到的林的名稱解析以及與此林關聯的網域控制站中的名稱解析。
+若要設定 Active Directory 連接器，使用者必須為他們嘗試連線的樹系，以及與此樹系相關聯的網域控制站，都有名稱 resolutionthe。
 
 ### <a name="examples"></a>範例
 
@@ -309,8 +309,8 @@ Accept wildcard characters: False
 
 #### <a name="-skipdnsport"></a>-SkipDnsPort
 
-如果使用者不使用 AD 網站/登錄 DC 提供的 DNS 服務，則可能需要跳過檢查埠 53。
-使用者仍必須能夠解析 _.ldap._tcp。\<林fqdn，\>以便活動目錄連接器配置成功。
+如果使用者未使用 AD 網站/登入 DC 所提供的 DNS 服務，他們可能會想要略過檢查埠53。
+使用者仍然必須能夠解析. ldap. _tcp。\<forestfqdn\> ，以便 Active Directory 連接器設定成功。
 
 ```yml
 Type: SwitchParameter

@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4790dc7ebeeee3407e89bcf38d7e3f25699ed328
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67108416"
 ---
 # <a name="compare-remote-access-solutions"></a>比較遠端存取解決方案
@@ -50,13 +50,13 @@ Azure Active Directory 應用程式 Proxy 是 Microsoft 提供的兩個遠端存
 | 周邊網路 (DMZ) 中沒有任何元件 | - | - | - | 是 |
 | 沒有輸入連線 | - | - | - | 是 |
 
-對於大多數方案，我們建議將 Azure AD 應用程式代理作為現代解決方案。 Web 應用程式 Proxy 只建議用在需要 AD FS Proxy 伺服器的情節中，而且您無法使用 Azure Active Directory 中的自訂網域。 
+在大部分的情況下，我們建議 Azure AD 應用程式 Proxy 作為現代化解決方案。 Web 應用程式 Proxy 只建議用在需要 AD FS Proxy 伺服器的情節中，而且您無法使用 Azure Active Directory 中的自訂網域。 
 
 相較於類似的產品，Azure AD 應用程式 Proxy 提供獨特的優點，包括：
 
 - 將 Azure AD 擴充至內部部署資源
    - 雲端級別安全性和保護
-   - 條件訪問和多重要素驗證等功能易於啟用
+   - 條件式存取和多重要素驗證等功能很容易啟用
 - 周邊網路中沒有任何元件
 - 沒有所需的輸入連線
 - 您的使用者可以使用其所有應用程式的單一存取面板，包括 O365、Azure AD 整合式 SaaS 應用程式，以及您的內部部署 Web 應用程式。 

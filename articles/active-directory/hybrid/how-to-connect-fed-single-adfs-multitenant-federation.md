@@ -1,5 +1,5 @@
 ---
-title: 將多個 Azure AD 與單個 AD FS 聯合 - Azure
+title: 使用單一 AD FS 聯合多個 Azure AD-Azure
 description: 在本文件中，您將學習如何使用多個 Azure AD 和單一 AD FS 建立同盟。
 keywords: 聯盟, ADFS, AD FS, 多個租用戶, 單一 AD FS, 一個 ADFS, 多個租用戶同盟, 多樹系 adfs, aad 連線, 同盟, 跨租用戶同盟
 services: active-directory
@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9122e3a7af2230dc0f68e72b28891d488b01a80a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65137824"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>將多個 Azure AD 執行個體和單一 AD FS 執行個體建立同盟
@@ -66,4 +66,4 @@ ms.locfileid: "65137824"
 上述作業會建立網域 fabrikam.com 與相同 AD FS 的同盟。 您可以使用兩個網域的 Get-msoldomainfederationsettings 確認網域設定。
 
 ## <a name="next-steps"></a>後續步驟
-[將活動目錄與 Azure 活動目錄連接](whatis-hybrid-identity.md)
+[使用 Azure Active Directory 連接 Active Directory](whatis-hybrid-identity.md)

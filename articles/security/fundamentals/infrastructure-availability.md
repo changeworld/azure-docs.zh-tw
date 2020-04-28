@@ -1,6 +1,6 @@
 ---
-title: Azure 基礎結構可用性 - Azure 安全性
-description: 本文提供有關 Microsoft 保護 Azure 基礎結構並提供客戶資料最大可用性的資訊。
+title: Azure 基礎結構可用性-Azure 安全性
+description: 本文提供 Microsoft 如何保護 Azure 基礎結構，並提供客戶資料的最高可用性的相關資訊。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68727221"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure 基礎結構可用性
-本文提供有關 Microsoft 保護 Azure 基礎結構並提供客戶資料最大可用性的資訊。 Azure 會根據透過虛擬化技術達到的龐大備援能力，提供穩定的可用性。
+本文提供 Microsoft 如何保護 Azure 基礎結構，並提供客戶資料的最高可用性的相關資訊。 Azure 會根據透過虛擬化技術達到的龐大備援能力，提供穩定的可用性。
 
 ## <a name="temporary-outages-and-natural-disaster"></a>暫時性中斷和天然災害
 Microsoft Cloud 基礎結構和營運小組負責設計、建置、運作及加強保護雲端基礎結構。 這個小組可確保 Azure 基礎結構提供高可用性和可靠性、高效率及智慧型延展性。 小組會提供更安全、更私密且受信任的雲端。
@@ -50,7 +50,7 @@ Azure 會透過可高度擴充且耐久的儲存體服務提供儲存體，如�
 - [Azure 資訊系統元件與界限](infrastructure-components.md)
 - [Azure 網路架構](infrastructure-network.md)
 - [Azure 生產網路](production-network.md)
-- [Azure SQL 資料庫安全功能](infrastructure-sql.md)
+- [Azure SQL Database 安全性功能](infrastructure-sql.md)
 - [Azure 生產環境運作與管理](infrastructure-operations.md)
 - [Azure 基礎結構監視](infrastructure-monitoring.md)
 - [Azure 基礎結構完整性](infrastructure-integrity.md)

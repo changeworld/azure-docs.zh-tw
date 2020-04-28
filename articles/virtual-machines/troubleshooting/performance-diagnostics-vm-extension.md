@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 6f104fc6513874bfef5f4bf9fe7f536c3e3d69cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71057552"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>適用於 Windows 的 Azure 效能診斷 VM 擴充功能
@@ -32,7 +32,7 @@ Azure 效能診斷 VM 擴充功能可協助從 Windows VM 收集效能診斷資�
 此擴充功能可安裝於 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 及 Windows Server 2016。 它也可以安裝於 Windows 8.1 和 Windows 10。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
-下列 JSON 會顯示 Azure 效能診斷 VM 擴充功能的結構描述。 此擴充功能需要儲存體帳戶的名稱與金鑰，才能儲存診斷輸出與報告。 這些都是機密值。 儲存體帳戶金鑰應該儲存在受保護的設定組態內。 Azure VM 擴充功能保護的設定資料會經過加密，只會在目標虛擬機器上解密。 請注意，**存儲帳戶名稱**和**存儲帳戶金鑰**區分大小寫。 其他必要的參數會列在下一節中。
+下列 JSON 會顯示 Azure 效能診斷 VM 擴充功能的結構描述。 此擴充功能需要儲存體帳戶的名稱與金鑰，才能儲存診斷輸出與報告。 這些都是機密值。 儲存體帳戶金鑰應該儲存在受保護的設定組態內。 Azure VM 擴充功能保護的設定資料會經過加密，只會在目標虛擬機器上解密。 請注意， **storageAccountName**和**storageAccountKey**區分大小寫。 其他必要的參數會列在下一節中。
 
 ```JSON
     {
@@ -66,7 +66,7 @@ Azure 效能診斷 VM 擴充功能可協助從 Windows VM 收集效能診斷資�
 
 ### <a name="property-values"></a>屬性值
 
-|   **名稱**   |**值 / 範例**|       **描述**      |
+|   **名稱**   |**值 / 範例**|       **說明**      |
 |--------------|-------------------|----------------------------|
 |apiVersion|2015-06-15|API 的版本。
 |publisher|Microsoft.Azure.Performance.Diagnostics|擴充功能的發行者命名空間。
@@ -88,7 +88,7 @@ Azure 效能診斷 VM 擴充功能可協助從 Windows VM 收集效能診斷資�
 
 遵循下列指示以在 Windows 虛擬機器上安裝擴充功能：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取您要安裝此擴充功能的虛擬機器。
 
     ![Azure 入口網站的螢幕擷取畫面 (已醒目提示 [虛擬機器])](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -255,4 +255,4 @@ PerfInsights 工具會根據所選取的案例，收集各種記錄、組態和�
 
         C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
-如果本文中的任何一點都需要更多説明，則可以在[MSDN Azure 和堆疊溢位論壇](https://azure.microsoft.com/support/forums/)上聯繫 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選擇 **"獲取支援**"。 有關使用 Azure 支援的資訊，請閱讀[Microsoft Azure 支援常見問題解答](https://azure.microsoft.com/support/faq/)。
+如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家聯繫。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。

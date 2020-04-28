@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 功能擴展 Azure 開發人員測試實驗室 |微軟文檔
-description: 瞭解如何使用 Azure 函數擴展 Azure 開發人員測試實驗室。
+title: 使用 Azure Functions 延伸 Azure DevTest Labs |Microsoft Docs
+description: 瞭解如何使用 Azure Functions 擴充 Azure DevTest Labs。
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,110 +12,110 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: spelluru
 ms.openlocfilehash: dd1fc4c1076d89c12b25837db9fa6a0ac3e1f3a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70014356"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>使用 Azure Functions 擴充 DevTest Labs
-可以使用 Azure 函數支援除 DevTest Labs 已支援的方案之外的其他方案。 Azure 函數可用於擴展服務的內置功能，以滿足特定于業務的需求。 下面的清單提供了一些可能的方案。 本文介紹如何實現這些示例方案之一。
+您可以使用 Azure Functions 來支援 DevTest Labs 已支援的其他案例。 Azure Functions 可以用來擴充服務的內建功能，以符合您的商務特定需求。 下列清單提供一些可能的案例。 本文說明如何執行其中一個範例案例。
 
-- 在實驗室中提供虛擬機器 （VM） 的頂級摘要
+- 提供實驗室中虛擬機器（Vm）的最上層摘要
 - [設定實驗室以使用遠端桌面閘道](configure-lab-remote-desktop-gateway.md)
-- 內部支援頁面上的合規性報告
-- 使使用者能夠完成需要在訂閱中增加許可權的操作
-- [基於 DevTest 實驗室事件啟動工作流](https://github.com/RogerBestMsft/DTL-SecureArtifactData)
+- 內部支援頁面上的相容性報告
+- 讓使用者完成需要在訂用帳戶中增加許可權的作業
+- [根據 DevTest Labs 事件啟動工作流程](https://github.com/RogerBestMsft/DTL-SecureArtifactData)
 
-## <a name="overview"></a>總覽
-[Azure 函數](../azure-functions/functions-overview.md)是 Azure 中的無伺服器計算平臺。 使用使用開發人員測試實驗室的解決方案中的 Azure 函數，可以利用自己的自訂代碼增強現有功能。 有關 Azure 函數的詳細資訊，請參閱[Azure 函數文檔](../azure-functions/functions-overview.md)。 為了說明 Azure 函數如何説明滿足 DevTest 實驗室中的要求或完整的方案，本文使用在實驗室中提供 VM 的頂級摘要的示例，如下所示：
+## <a name="overview"></a>概觀
+[Azure Functions](../azure-functions/functions-overview.md)是 Azure 中的無伺服器計算平臺。 在 DevTest Labs 的解決方案中使用 Azure Functions，可讓我們使用自己的自訂程式碼來增強現有的功能。 如需 Azure Functions 的詳細資訊，請參閱[Azure Functions 檔](../azure-functions/functions-overview.md)。 為了說明 Azure Functions 如何協助滿足您的需求或 DevTest Labs 中的完整案例，本文會使用範例來提供實驗室中 Vm 的頂層摘要，如下所示：
 
-**示例要求/方案**：使用者可以查看有關實驗室中所有 VM 的詳細資訊，包括作業系統、擁有者和任何應用的專案。  此外，如果最近未應用 **"應用 Windows 更新**"專案，則應用它的方法很簡單。
+**範例需求/案例**：使用者可以查看實驗室中所有 vm 的詳細資料，包括作業系統、擁有者和任何套用的成品。  此外，如果最近未套用 [套用**Windows 更新**] 成品，有一個簡單的方法可以套用它。
 
-要完成方案，您將使用如下圖中所述的兩個函數：  
+若要完成此案例，您將使用下列圖表中所述的兩個功能：  
 
-![總體流程](./media/extend-devtest-labs-azure-functions/flow.png)
+![整體流程](./media/extend-devtest-labs-azure-functions/flow.png)
 
-這些示例函數的原始程式碼位於[DevTest Labs GitHub 存儲庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions)中（C# 和 PowerShell 實現都可用）。
+這些範例函式的原始程式碼位於[DevTest Labs GitHub 存放庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions)中（可使用 c # 和 PowerShell 部署）。
 
-- **更新內部支援頁**：此功能查詢 DevTest 實驗室，並直接更新內部支援頁，並提供有關虛擬機器的詳細資訊。
-- **應用 Windows 更新工件**：對於實驗室中的 VM，此功能應用**Windows 更新**專案。
+- **UpdateInternalSupportPage**：此函式會查詢 DevTest Labs，並直接使用虛擬機器的詳細資料來更新內部支援頁面。
+- **ApplyWindowsUpdateArtifact**：針對實驗室中的 VM，此函式會套用**Windows update**成品。
 
 ## <a name="how-it-works"></a>運作方式
-當使用者選擇 DevTest Labs**中的"內部支援**"頁時，他們有一個預填充的頁面，其中包含有關 VM、實驗室擁有者和支援連絡人的資訊。  
+當使用者在 DevTest Labs 中選取 [**內部支援**] 頁面時，他們會有預先填入的頁面，其中包含 vm、實驗室擁有者和支援連絡人的相關資訊。  
 
-當您選擇 **"選擇此處刷新**"按鈕時，頁面將調用第一個 Azure 函數：**更新內部支援頁**。 該函數查詢 DevTest Labs 的資訊，然後使用新資訊重寫**內部支援**頁。
+當您選取 [**選取此處以**重新整理] 按鈕時，頁面會呼叫第一個 Azure Function： **UpdateInternalSupportPage**。 函式會查詢 DevTest Labs 中的資訊，然後以新的資訊重寫**內部支援**頁面。
 
-對於最近未應用 Windows Update 專案的任何 VM，還可以執行其他操作，將有一個按鈕將視窗更新應用於 VM。 當您為 VM 選擇 "**運行 Windows 更新**"按鈕時，該頁將調用第二個 Azure 函數：應用 Windows**更新項**。 此函數檢查虛擬機器是否正在運行，如果是，則直接應用[Windows 更新](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates)專案。
+有一個可採取的額外動作，適用于最近未套用 Windows Update 成品的任何 Vm，將會有一個按鈕可將 Windows 更新套用至 VM。 當您選取 VM 的 [**執行 Windows update** ] 按鈕時，頁面會呼叫第二個 Azure Function： **ApplyWindowsUpdateArtifact**。 此函式會檢查虛擬機器是否正在執行，如果是，則會直接套用[Windows Update](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-install-windows-updates)成品。
 
-## <a name="step-by-step-walkthrough"></a>分步演練
-本節提供用於設置更新**內部支援**頁所需的 Azure 資源的分步說明。 本演練提供了擴展 DevTest 實驗室的一個示例。 您可以將此模式用於其他方案。
+## <a name="step-by-step-walkthrough"></a>逐步解說
+本節提供逐步指示，說明如何設定更新**內部支援**頁面所需的 Azure 資源。 此逐步解說提供延伸 DevTest Labs 的一個範例。 在其他案例中，您可以使用此模式。
 
-### <a name="step-1-create-a-service-principal"></a>第 1 步：創建服務主體 
-第一步是獲取具有包含實驗室的訂閱許可權的服務主體。 服務主體必須使用基於密碼的身份驗證。 它可以使用 Azure [CLI、Azure](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) [PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)或[Azure 門戶](../active-directory/develop/howto-create-service-principal-portal.md)來完成。 如果您已有要使用的服務主體，則可以跳過此步驟。
+### <a name="step-1-create-a-service-principal"></a>步驟1：建立服務主體 
+第一個步驟是取得具有包含實驗室之訂用帳戶許可權的服務主體。 服務主體必須使用以密碼為基礎的驗證。 您可以使用[Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)、 [Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)或[Azure 入口網站](../active-directory/develop/howto-create-service-principal-portal.md)來完成此作業。 如果您已經有要使用的服務主體，可以略過此步驟。
 
-記下服務主體**的應用程式 ID**、**金鑰**和**租戶 ID。** 在本演練中，您將需要它們。 
+記下服務主體的 [**應用程式識別碼**]、[**金鑰**] 和 [**租使用者識別碼**]。 稍後在本逐步解說中，您將需要這些專案。 
 
-### <a name="step-2-download-the-sample-and-open-in-visual-studio-2019"></a>第 2 步：下載示例並在 Visual Studio 2019 中打開
-在本地下載[C# Azure 函數示例](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions/CSharp)的副本（通過克隆存儲庫或[從這裡](https://github.com/Azure/azure-devtestlab/archive/master.zip)下載存儲庫）。  
+### <a name="step-2-download-the-sample-and-open-in-visual-studio-2019"></a>步驟2：下載範例，並在 Visual Studio 2019 中開啟
+在本機下載[c # Azure Functions 範例](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/AzureFunctions/CSharp)的複本（透過複製存放庫或從[這裡](https://github.com/Azure/azure-devtestlab/archive/master.zip)下載儲存機制）。  
 
-1. 使用 Visual Studio 2019 打開示例解決方案。  
-1. 如果尚未安裝 Visual Studio，請安裝 Azure**開發**工作負荷。 它可以通過**工具** -> **獲取工具和功能**功能表項目安裝）。
+1. 使用 Visual Studio 2019 開啟範例解決方案。  
+1. 安裝 Visual Studio 的**Azure 開發**工作負載（如果您尚未安裝）。 您可以透過 [**工具** -> ] [**取得工具和功能**] 功能表項目來安裝它。
 
     ![Azure 開發工作負載](./media/extend-devtest-labs-azure-functions/azure-development-workload-vs.png)
-1. 建置方案。 選擇 **"生成****"，然後選擇"生成解決方案"** 功能表項目。
+1. 建置方案。 選取 [**組建**]，然後選取 [**建立方案**] 功能表項目。
 
-### <a name="step-3-deploy-the-sample-to-azure"></a>步驟 3：將示例部署到 Azure
-在視覺化工作室中，在 **"解決方案資源管理器"** 視窗中，按右鍵**Azure 功能**專案，然後選擇 **"發佈**"。 請按照嚮導完成發佈到新函數應用或現有 Azure 函數應用。 有關使用 Visual Studio 開發和部署 Azure 函數的詳細資訊，請參閱[使用 Visual Studio 開發 Azure 函數](../azure-functions/functions-develop-vs.md)。
+### <a name="step-3-deploy-the-sample-to-azure"></a>步驟3：將範例部署至 Azure
+在 Visual Studio 的 [**方案總管**] 視窗中，以滑鼠右鍵按一下**AzureFunctions**專案，然後選取 [**發佈**]。 依照嚮導的指示完成發行至新的或現有的 Azure 函數應用程式。 如需使用 Visual Studio 來開發和部署 Azure 函式的詳細資訊，請參閱[使用 Visual Studio 開發 Azure Functions](../azure-functions/functions-develop-vs.md)。
 
 ![發佈對話方塊](./media/extend-devtest-labs-azure-functions/publish-dialog.png)
 
 
-### <a name="step-4--gather-application-settings"></a>第 4 步：收集應用程式設定
-發佈函數後，您需要從 Azure 門戶獲取這些函數的 URL。 
+### <a name="step-4--gather-application-settings"></a>步驟4：收集應用程式設定
+發行函式之後，您必須從 Azure 入口網站取得這些函式的 Url。 
 
-1. 導航到[Azure 門戶](https://portal.azure.com)。 
-1. 查找功能應用。
-1. 在 **"功能應用"** 頁上，選擇該函數。 
-1. 選擇 **"獲取函數 URL"，** 如下圖所示。 
+1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]。 
+1. 尋找函數應用程式。
+1. 在 [**函數應用程式**] 頁面上，選取函數。 
+1. 選取 [**取得函數 URL** ]，如下圖所示。 
 
-    ![Azure 函數 URL](./media/extend-devtest-labs-azure-functions/function-url.png)
-4. 複製並儲存 URL。 對其他 Azure 函數重複這些步驟。 
+    ![Azure 函式 Url](./media/extend-devtest-labs-azure-functions/function-url.png)
+4. 複製並儲存 URL。 針對其他 Azure 函數重複這些步驟。 
 
-您還需要有關服務主體的其他資訊，如應用程式 ID、金鑰和租戶 ID。
+您也將需要服務主體的其他資訊，例如應用程式識別碼、金鑰和租使用者識別碼。
 
 
-### <a name="step-5--update-application-settings"></a>第 5 步：更新應用程式設定
-在視覺化工作室中，在發佈 Azure 函數後，選擇"**操作**"下的 **"編輯 Azure 應用服務設置**"。 更新以下應用程式設定（遠端）：
+### <a name="step-5--update-application-settings"></a>步驟5：更新應用程式設定
+在 Visual Studio 中，在發佈 Azure 函式之後，選取 [**動作**] 底下的 [**編輯 Azure App Service 設定**]。 更新下列應用程式設定（遠端）：
 
 - AzureFunctionUrl_ApplyUpdates
 - AzureFunctionUrl_UpdateSupportPage
-- Windows 更新允許天（預設為 7）
+- WindowsUpdateAllowedDays （預設為7）
 - ServicePrincipal_AppId
 - ServicePrincipal_Key
 - ServicePrincipal_Tenant
 
     ![應用程式設定](./media/extend-devtest-labs-azure-functions/application-settings.png)
 
-### <a name="step-6-test-the-azure-function"></a>第 6 步：測試 Azure 函數
-本演練的最後一步是測試 Azure 函數。  
+### <a name="step-6-test-the-azure-function"></a>步驟6：測試 Azure 函數
+本逐步解說的最後一個步驟是測試 Azure 函數。  
 
-1. 導航到步驟 3 中創建的函數應用中的 **"更新內部支援Page"** 功能。 
-1. 選擇頁面右側的 **"測試**"。 
-1. 在路由屬性（LABNAME、資源組名稱和訂閱 ID）中輸入。
-1. 選擇 **"運行**"以執行該函數。  
+1. 在步驟3中建立的函數應用程式中，流覽至**UpdateInternalSupportPage**函式。 
+1. 選取頁面右側的 [**測試**]。 
+1. 在路由屬性（LABNAME、RESOURCEGROUPNAME 和 SUBSCRIPTIONID）中輸入。
+1. 選取 **[執行]** 以執行函數。  
 
-    此功能將更新指定實驗室的內部支援頁。 它還包括一個按鈕，供使用者下次直接調用該函數
+    此函式會更新指定之實驗室的 [內部支援] 頁面。 它也包含一個按鈕，可讓使用者在下一次直接呼叫函式
 
-    ![測試功能](./media/extend-devtest-labs-azure-functions/test-function.png)
+    ![測試函式](./media/extend-devtest-labs-azure-functions/test-function.png)
 
 ## <a name="next-steps"></a>後續步驟
-Azure 函數可説明將 DevTest Labs 的功能擴展到已內置功能之外，並説明客戶滿足其團隊的獨特要求。 這種模式可以&進一步擴展，以覆蓋更多。  要瞭解有關 DevTest 實驗室的更多內容，請參閱以下文章： 
+Azure Functions 可以協助擴充 DevTest Labs 的功能，超越已內建的範圍，並協助客戶滿足其小組的獨特需求。 此模式可以擴充 & 進一步擴充，以涵蓋更多的資訊。  若要深入瞭解 DevTest Labs，請參閱下列文章： 
 
-- [開發人員測試實驗室企業參考體系結構](devtest-lab-reference-architecture.md)
-- [常見問題](devtest-lab-faq.md)
-- [擴展開發測試實驗室](devtest-lab-guidance-scale.md)
-- [使用 PowerShell 實現自動化開發測試實驗室](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library/Tests)
+- [DevTest Labs 企業參考架構](devtest-lab-reference-architecture.md)
+- [常見問題集](devtest-lab-faq.md)
+- [向上擴充 DevTest Labs](devtest-lab-guidance-scale.md)
+- [使用 PowerShell 將 DevTest Labs 自動化](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library/Tests)
 
 
 

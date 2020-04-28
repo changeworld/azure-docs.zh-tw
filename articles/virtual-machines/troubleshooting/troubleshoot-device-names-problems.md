@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 7d8a7e7e88837214042fb8f1c109c0b93bfe771b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71058212"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>針對 Linux VM 裝置名稱變更進行疑難排解
 
 本文章說明在您重新啟動 Linux VM 或重新連接資料磁碟之後，裝置名稱會變更的原因。 本文章也提供此問題的解決方案。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 在 Microsoft Azure 中執行 Linux VM 時，您可能會遇到下列問題：
 
 - VM 在重新啟動之後無法開機。
@@ -46,7 +46,7 @@ Linux 中的裝置路徑不保證會在重新啟動之間保持一致。 裝置�
 
 在 VM 上安裝 Azure Linux 代理程式時，代理程式會使用 Udev 規則，在 /dev/disk/azure 路徑下方建構一組符號連結。 應用程式與指令碼會使用 Udev 規則，來識別連接至 VM 的磁碟，以及磁碟類型與磁碟 LUN。
 
-如果您已經以 VM 未啟動的方式編輯了 fstab，並且無法將 SSH 連接到 VM，則可以使用[VM 串列主控台](./serial-console-linux.md)進入[單個使用者模式](./serial-console-grub-single-user-mode.md)並修改 fstab。
+如果您已編輯 fstab，使 VM 無法開機，而且您無法透過 SSH 連線到您的 VM，您可以使用[VM 序列主控台](./serial-console-linux.md)來進入[單一使用者模式](./serial-console-grub-single-user-mode.md)，並修改您的 fstab。
 
 ### <a name="identify-disk-luns"></a>識別磁碟 LUN
 
@@ -153,7 +153,7 @@ Azure Linux 代理程式 Udev 規則會在 /dev/disk/azure 路徑下方建構一
 如需詳細資訊，請參閱下列文章：
 
 - [Ubuntu：使用 UUID](https://help.ubuntu.com/community/UsingUUID) \(英文\)
-- [紅帽：持久命名](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
+- [Red Hat：持續性命名](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Storage_Administration_Guide/persistent_naming.html)
 - [Linux：UUID 可為您做些什麼](https://www.linux.com/news/what-uuids-can-do-you) \(英文\)
 - [Udev：現代 Linux 系統中的裝置管理簡介](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system) \(英文\)
 

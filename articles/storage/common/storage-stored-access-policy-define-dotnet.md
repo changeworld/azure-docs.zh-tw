@@ -1,6 +1,6 @@
 ---
-title: 使用 .NET - Azure 存儲定義存儲的訪問策略
-description: 瞭解如何使用 .NET 用戶端庫定義存儲的訪問策略。
+title: 使用 .NET 定義預存存取原則-Azure 儲存體
+description: 瞭解如何使用 .NET 用戶端程式庫定義預存存取原則。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,15 +10,15 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 272d676d0a5a55262b1c68d0bae9a9ab229df72c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68990737"
 ---
-# <a name="define-a-stored-access-policy-with-net"></a>使用 .NET 定義存儲的訪問策略
+# <a name="define-a-stored-access-policy-with-net"></a>使用 .NET 定義預存存取原則
 
-存儲的訪問策略為伺服器端的服務等級共用訪問簽名 （SAS） 提供了額外的控制級別。 定義存儲的訪問策略用於對共用訪問簽名進行分組，並為受該策略約束的共用訪問簽名提供其他限制。 您可以使用存儲的訪問策略更改 SAS 的開始時間、到期時間或許可權，或在頒發 SAS 後撤消它。
+儲存的存取原則可對伺服器端上的服務層級共用存取簽章（SAS）提供額外層級的控制。 定義儲存的存取原則可將共用存取簽章分組，並針對原則所系結的共用存取簽章提供額外的限制。 您可以使用預存存取原則來變更 SAS 的開始時間、到期時間或許可權，或在發行之後將其撤銷。
   
  下列儲存體資源支援儲存的存取原則：  
   
@@ -28,9 +28,9 @@ ms.locfileid: "68990737"
 - 資料表  
   
 > [!NOTE]
-> 容器上的存儲訪問策略可以與共享訪問簽名相關聯，該簽名授予容器本身或其包含的 Blob 的許可權。 同樣，檔共用上的存儲訪問策略可以與共享訪問簽名相關聯，該簽名授予共用本身或其包含的檔的許可權。  
+> 容器上的預存存取原則可以與共享存取簽章相關聯，該簽章會授與容器本身或其包含之 blob 的許可權。 同樣地，檔案共用上的預存存取原則可以與共享存取簽章相關聯，授與共享本身或其內含檔案的許可權。  
 >
-> 僅支援服務 SAS 的存儲訪問策略。 帳戶 SAS 或使用者委派 SAS 不支援存儲的訪問策略。  
+> 只有服務 SAS 支援儲存的存取原則。 帳戶 SAS 或使用者委派 SAS 不支援儲存的存取原則。  
 
 ## <a name="create-a-stored-access-policy"></a>建立預存的存取原則
 
@@ -60,6 +60,6 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 
 ## <a name="see-also"></a>另請參閱
 
-- [使用共用訪問簽名 （SAS） 授予對 Azure 存儲資源的有限存取權限](storage-sas-overview.md)
+- [使用共用存取簽章（SAS）授與 Azure 儲存體資源的有限存取權](storage-sas-overview.md)
 - [定義預存的存取原則](/rest/api/storageservices/define-stored-access-policy)
 

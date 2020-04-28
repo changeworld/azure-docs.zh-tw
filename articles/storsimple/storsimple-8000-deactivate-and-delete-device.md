@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
 ms.openlocfilehash: 116ac5c4efda87b5d16336dd326d516299f6955d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61481897"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>停用及刪除 StorSimple 裝置
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文說明如何停用及刪除已連線至 StorSimple 裝置管理員服務的 StorSimple 裝置。 本文中的指導僅適用於包含 StorSimple 雲端設備的 StorSimple 8000 系列裝置。 如果您使用 StorSimple Virtual Array，請移至[停用及刪除 StorSimple Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md)。
 

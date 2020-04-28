@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "69901775"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>管理多個儲存體帳戶間的媒體服務資產  
@@ -42,11 +42,11 @@ ms.locfileid: "69901775"
 
 其他考量：
 
-在為流內容構建 URL 時，媒體服務使用**IAssetFile.Name**屬性的值（例如，HTTP：//WAMSAccount_.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/流式處理參數。因此，不允許進行百分比編碼。 Name 屬性的值不能有[下列任何百分比編碼保留字元：](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一個 ‘.’ 在檔案名稱的副檔名。
+媒體服務在建立串流內容的 Url 時，會使用**IAssetFile.Name**屬性的值（例如，HTTP：//{wamsaccount .origin.mediaservices.windows.net}. windowsazure.mediaservices.extensions. net/{GUID}/{IAssetFile. Name}/streamingParameters）。基於這個理由，不允許使用百分比編碼。 Name 屬性的值不能有[下列任何百分比編碼保留字元：](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters)：!*'();:@&=+$,/?%#[]"。 此外，只能有一個 ‘.’ 在檔案名稱的副檔名。
 
 ## <a name="to-attach-storage-accounts"></a>附加儲存體帳戶  
 
-要將存儲帳戶附加到 AMS 帳戶，請使用[Azure 資源管理器 API](/rest/api/media/operations/azure-media-services-rest-api-reference)和[Powershell](/powershell/module/az.media)，如以下示例所示：
+若要將儲存體帳戶附加到 AMS 帳戶，請使用[Azure Resource Manager api](/rest/api/media/operations/azure-media-services-rest-api-reference)和[Powershell](/powershell/module/az.media)，如下列範例所示：
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "

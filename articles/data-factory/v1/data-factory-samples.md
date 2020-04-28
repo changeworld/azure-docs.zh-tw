@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70139254"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - 範例
@@ -80,7 +80,7 @@ ms.locfileid: "70139254"
 
 * Visual Studio 2013 或 Visual Studio 2015
 * 下載 Azure SDK for Visual Studio 2013 或 Visual Studio 2015。 瀏覽至 [Azure 下載頁面](https://azure.microsoft.com/downloads/)，然後按一下 [.NET]**** 區段中的 [VS 2013]**** 或 [VS 2015]****。
-* 下載適用於 Visual Studio 的最新 Azure Data Factory 外掛程式：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 如果使用 Visual Studio 2013，還可以通過執行以下步驟來更新外掛程式：在功能表上，按一下 **"工具** -> **擴展和更新** -> **線上** -> **視覺工作室庫"，** -> **用於視覺化工作室** -> **更新**的 Microsoft Azure 資料工廠工具。
+* 下載適用於 Visual Studio 的最新 Azure Data Factory 外掛程式：[VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) 或 [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005)。 如果您使用 Visual Studio 2013，您也可以執行下列步驟來更新外掛程式：在功能表上，按一下 [**工具** -> ] [**擴充功能和更新** -> ] [**線上** -> **Visual Studio 圖庫** -> **] Microsoft Azure Data Factory 工具] 以進行 Visual Studio** -> **更新**]。
 
 ### <a name="use-data-factory-templates"></a>使用 Data Factory 範本
 1. 在功能表上按一下 [檔案]****，指向 [新增]****，然後按一下 [專案]****。
@@ -88,9 +88,9 @@ ms.locfileid: "70139254"
 
    1. 在 [範本]**** 底下選取 [DataFactory]****。
    2. 在右窗格中選取 [Data Factory 範本] **** 。
-   3. 輸入專案**的名稱**。
+   3. 輸入專案的 [**名稱**]。
    4. 選取專案的 [位置] **** 。
-   5. 按一下 [確定]****。
+   5. 按一下 [確定]  。
 
       ![[新增專案] 對話方塊](./media/data-factory-samples/vs-new-project-adf-templates.png)
 3. 在 [Data Factory 範本]**** 對話方塊中，從 [使用案例範本]**** 區段選取範例範本，然後按 [下一步]****。 以下步驟將引導您完成 [客戶分析] **** 範本的使用。 其他範例的步驟均相去不遠。
@@ -99,11 +99,11 @@ ms.locfileid: "70139254"
 4. 在 [Data Factory 組態]**** 對話方塊中，於 [Data Factory 基本]**** 頁面上按 [下一步]****。
 5. 在 [設定 Data Factory]**** 頁面上，執行下列步驟：
    1. 選取 [建立新的 Data Factory]****。 您也可以選取 [使用現有的 Data Factory] ****。
-   2. 輸入資料工廠**的名稱**。
+   2. 輸入 data factory 的 [**名稱**]。
    3. 選取您要在其中建立 Data Factory 的 [Azure 訂用帳戶] **** 。
    4. 選取 Data Factory 的 [資源群組] **** 。
    5. 針對 [區域]****，選取 [美國西部]****、[美國東部]**** 或 [北歐]****。
-   6. 按 [下一步]****。
+   6. 按 [下一步]  。
 6. 在 [設定資料存放區]**** 頁面中，指定現有的 [Azure SQL 資料庫]**** 和 [Azure 儲存體帳戶]****，或建立資料庫/儲存體，然後按 [下一步]。
 7. 在 [設定計算]**** 頁面中，選取預設值，然後按 [下一步]****。
 8. 在 [摘要]**** 頁面中，檢閱所有設定，然後按 [下一步]****。
@@ -113,7 +113,7 @@ ms.locfileid: "70139254"
 12. 您應該會看到下列對話方塊：
 
     ![發佈對話方塊](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
-13. 在 **"配置資料工廠"** 頁中，執行以下步驟：
+13. 在 [**設定 data factory** ] 頁面中，執行下列步驟：
 
     1. 確認 [使用現有的 Data Factory] **** 選項。
     2. 選取您在使用範本時已選取的 **Data Factory**。

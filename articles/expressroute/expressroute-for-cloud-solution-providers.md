@@ -9,10 +9,10 @@ ms.date: 10/10/2016
 ms.author: ricarlse
 ms.custom: seodec18
 ms.openlocfilehash: a3bd48f32dfcee1a666ff842cfcab2384a5459ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67849251"
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>適用於雲端解決方案提供者 (CSP) 的 ExpressRoute
@@ -31,7 +31,7 @@ Microsoft Azure 提供越來越多的服務，您可以將這些服務提供給�
 Microsoft 允許以程式設計方式整合您自己的服務管理系統，進而提供 API 讓 CSP 管理 Azure 客戶訂用帳戶。 [這裡](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx)可以找到支援的管理功能。
 
 ## <a name="microsoft-azure-resource-management"></a>Microsoft Azure 資源管理
-您與客戶簽訂的合約將會決定訂用帳戶的管理方式。 CSP 可以直接管理資源的建立和維護，或客戶可以持續控制 Microsoft Azure 訂用帳戶並建立他們所需的 Azure 資源。 如果您的客戶在其 Microsoft Azure 訂閱中管理資源的創建，他們將使用兩種模型之一："*連接-通過*"模型，或"*直接到*"模型。 下列各節會詳細說明這些模型。  
+您與客戶簽訂的合約將會決定訂用帳戶的管理方式。 CSP 可以直接管理資源的建立和維護，或客戶可以持續控制 Microsoft Azure 訂用帳戶並建立他們所需的 Azure 資源。 如果您的客戶管理其 Microsoft Azure 訂用帳戶中的資源建立，他們會使用下列兩種模型的其中一種：「連線*到*」模型或「*直接*存取」模型。 下列各節會詳細說明這些模型。  
 
 ### <a name="connect-through-model"></a>Connect-Through 模型
 ![替代文字](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -91,7 +91,7 @@ ExpressRoute 提供三種路由網域︰公用、私用和 Microsoft 對等。 �
 您可以定義自訂路由篩選器，只允許您想允許或需要的路由。 如需詳細資訊或了解如何進行這些變更，請參閱以下文章︰ [使用 PowerShell 建立和修改 ExpressRoute 電路的路由](expressroute-howto-routing-classic.md) ，以取得路由篩選器的詳細資訊。
 
 > [!NOTE]
-> 若為 Microsoft 和公用對等，連線必須是客戶或 CSP 所擁有的公用 IP 位址，而且必須遵守所有定義的規則。 有關詳細資訊，請參閱[快速路由先決條件](expressroute-prerequisites.md)頁面。  
+> 若為 Microsoft 和公用對等，連線必須是客戶或 CSP 所擁有的公用 IP 位址，而且必須遵守所有定義的規則。 如需詳細資訊，請參閱[ExpressRoute 必要條件](expressroute-prerequisites.md)頁面。  
 > 
 > 
 

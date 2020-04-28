@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 853c138c8cf73b41b0cebb6c1d349865e18eab6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61295951"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>從 VHD 檔案建立自訂映像
@@ -33,9 +33,9 @@ ms.locfileid: "61295951"
 
 下列步驟將逐步引導您使用 Azure 入口網站從 VHD 檔案建立自訂映像：
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 選擇**所有服務**，然後從清單中選擇**DevTest 實驗室**。
+1. 選取 [**所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
 
 1. 從實驗室清單中，選取所需的實驗室。  
 

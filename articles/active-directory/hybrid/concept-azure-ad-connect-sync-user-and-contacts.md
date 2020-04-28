@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 661747754369c17ca98ae69d477e04124b6a2942
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60245484"
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect 同步處理：了解使用者、群組和連絡人
@@ -51,9 +51,9 @@ ms.locfileid: "60245484"
     
       * proxyAddress 屬性值為 *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* 的 Active Directory 群組在 Azure AD 中不會擁有郵件功能。 該群組沒有 SMTP 位址。
       
-      * 其代理位址屬性具有值*\@{"X500：/0=contoso.com/ou_user/cn_testgroup"，"SMTP：johndoe contoso.com"** 的 Active Directory 組將在 Azure AD 中啟用郵件。
+      * 其 proxyAddress 屬性值為 *{"X500：/0 = contoso .com/ou = users/cn = testgroup"，"SMTP： johndoe\@contoso.com"}* 的 Active Directory 群組，將會在 Azure AD 中啟用郵件功能。
       
-      * 代理位址屬性具有值*\@[X500：/0=contoso.com/ou_user/cn_testgroup]，"smtp：johndoe contoso.com"]* 的 Active Directory 組也將在 Azure AD 中啟用郵件。
+      * 其 proxyAddress 屬性值為 *{"X500：/0 = contoso .com/ou = users/cn = testgroup"，"smtp： johndoe\@contoso.com"}* 的 Active Directory 群組，也會在 Azure AD 中啟用郵件功能。
 
 ## <a name="contacts"></a>連絡人
 在合併與收購時使用 GALSync 解決方案橋接兩個或多個 Exchange 樹系之後，常會有多個連絡人代表不同樹系中的某個使用者。 連絡人物件一律從連接器空間使用 mail 屬性加入 Metaverse。 如果已經有具相同郵件地址的連絡人物件或使用者物件，則物件會一起加入。 這是在規則 **In from AD – Contact Join** 中設定。 還有一個名為 **In from AD – Contact Common** 的規則，其屬性流程指向具有常數 **Contact** 的 Metaverse 屬性 **sourceObjectType**。 此規則的優先順序非常低，如果有任何使用者物件聯結至相同的 Metaverse 物件，則規則 **In from AD – User Common** 會提供值 User 給此屬性。 有了這項規則，如果沒有使用者加入，此屬性的值就會是 Contact，如果至少找到了一個使用者，則屬性的值就會是 User。
@@ -74,6 +74,6 @@ ms.locfileid: "60245484"
 當物件匯出到 Azure AD 之後，則不允許再變更 sourceAnchor。 當物件匯出之後，Metaverse 屬性 **cloudSourceAnchor** 就會設為 Azure AD 所接受的 **sourceAnchor** 值。 如果 **sourceAnchor** 變更，且不符合 **cloudSourceAnchor**，則規則 **Out to AAD – User Join** 會擲回錯誤 **sourceAnchor attribute has changed**。 在此情況下，必須先更正組態或資料，讓 Metaverse 中再度具有相同的 sourceAnchor，才能再次同步處理物件。
 
 ## <a name="additional-resources"></a>其他資源
-* [Azure AD 連接同步：自訂同步選項](how-to-connect-sync-whatis.md)
+* [Azure AD Connect 同步處理：自訂同步處理選項](how-to-connect-sync-whatis.md)
 * [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)
 

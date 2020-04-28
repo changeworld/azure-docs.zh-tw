@@ -1,5 +1,5 @@
 ---
-title: Azure 資料湖 U-SQL 作業的調試 C# 代碼
+title: 'Azure Data Lake U-SQL 作業的 c # 程式碼'
 description: 本文說明如何使用 Azure Data Lake Tools for Visual Studio 針對 U-SQL 失敗的頂點進行偵錯。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -10,10 +10,10 @@ ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.openlocfilehash: 72239fc1679d2ebbfd9c9b5be6b79b58efb760cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71315805"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>對 U-SQL 失敗作業的使用者定義 C# 程式碼進行偵錯
@@ -80,7 +80,7 @@ U-SQL 提供使用 C# 的擴充性模型。 在 U-SQL 指令碼中，可以輕�
 
 2. 取得 **FailedVertexDebugHost** 專案的專案資料夾路徑。 
 
-3. 以滑鼠右鍵按一下新增的組件原始程式碼專案 > [屬性]****，選取左側的 [建置]**** 索引標籤，並將結尾為 \bin\debug 的複製路徑貼上為 [輸出] > [輸出路徑]****。 最終輸出路徑類似于`<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`。
+3. 以滑鼠右鍵按一下新增的組件原始程式碼專案 > [屬性]****，選取左側的 [建置]**** 索引標籤，並將結尾為 \bin\debug 的複製路徑貼上為 [輸出] > [輸出路徑]****。 最終的輸出路徑類似`<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\`。
 
     ![Azure Data Lake Analytics U-SQL 偵錯設定 pdb 路徑](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 

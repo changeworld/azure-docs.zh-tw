@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 07f3b60b9218f74bb3a778daa27f31687c4538b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60868419"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>從 VM 建立自訂映像
@@ -29,9 +29,9 @@ ms.locfileid: "60868419"
 
 您可以從已佈建的 VM 建立自訂映像，之後再使用該自訂映像來建立完全相同的 VM。 下列步驟說明如何從 VM 建立自訂映像︰
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 選擇**所有服務**，然後從清單中選擇**DevTest 實驗室**。
+1. 選取 [**所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
 
 1. 從實驗室清單中，選取所需的實驗室。  
 

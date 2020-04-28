@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
 ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70881280"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 專用 HSM 網路
@@ -60,7 +60,7 @@ Azure 專用 HSM 需要高度安全的網路環境。 無論是從 Azure 雲端�
 
 ### <a name="site-to-site-vpn"></a>站對站 VPN
 
-站對站虛擬私人網路允許在 Azure 型專用 HSM 與內部部署 IT 之間進行安全通訊。 這樣做的一個原因是為 HSM 的本地提供了備份設施，並且需要兩者之間的連接才能運行備份。
+站對站虛擬私人網路允許在 Azure 型專用 HSM 與內部部署 IT 之間進行安全通訊。 這麼做的原因是，HSM 的內部部署有一個備份功能，而且需要兩個連線才能執行備份。
 
 ## <a name="connecting-virtual-networks"></a>連線虛擬網路
 
@@ -88,8 +88,8 @@ HSM 裝置可透過軟體程式庫，將流量重新導向其他 HSM。 如果�
 ## <a name="next-steps"></a>後續步驟
 
 - [常見問題集](faq.md)
-- [支援能力](supportability.md)
+- [可支援性](supportability.md)
 - [高可用性](high-availability.md)
-- [物理安全](physical-security.md)
-- [監測](monitoring.md)
-- [部署架構](deployment-architecture.md) (英文)
+- [實體安全性](physical-security.md)
+- [監視](monitoring.md)
+- [部署架構](deployment-architecture.md)

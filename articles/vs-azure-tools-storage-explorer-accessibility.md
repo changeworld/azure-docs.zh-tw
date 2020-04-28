@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/20/2018
 ms.author: marayerm
 ms.openlocfilehash: aa42d6b898a3cc474575f6c8dae65ff420fc8e30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60457245"
 ---
 # <a name="storage-explorer-accessibility"></a>儲存體總管協助工具
@@ -27,11 +27,11 @@ ms.locfileid: "60457245"
 
 儲存體總管支援在 Windows 和 Mac 上使用螢幕助讀程式。 針對各個平台建議使用下列螢幕助讀程式：
 
-Platform | 螢幕閱讀器
+平台 | 螢幕閱讀程式
 ---------|--------------
 Windows  | NVDA
 Mac      | Voice Over
-Linux    | （Linux 上不支援螢幕閱讀器）
+Linux    | （Linux 上不支援螢幕讀取器）
 
 使用儲存體總管時，如果遇到涉及身障求助方面的問題，請[在 GitHub 回報您的問題](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
@@ -45,7 +45,7 @@ Linux    | （Linux 上不支援螢幕閱讀器）
 
 ## <a name="high-contrast-themes"></a>高對比主題
 
-儲存體總管有兩個高對比佈景主題，**高對比淺色**和**高對比深色**。 您可以通過從"説明>主題"功能表中選擇來更改主題。
+儲存體總管有兩個高對比佈景主題，**高對比淺色**和**高對比深色**。 您可以從 [說明] > [主題] 功能表中選取 [in] 來變更您的主題。
 
 ![佈景主題子功能表][1]
 
@@ -80,15 +80,15 @@ Command                | 鍵盤快速鍵
 
 Command  | 鍵盤快速鍵
 ---------|------------------
-放大  | **控制***
-縮小 | **控制*-**
+放大  | **Control + =**
+縮小 | **Control +-**
 
 ### <a name="blob-and-file-share-editor-commands"></a>Blob 和檔案共用編輯器命令
 
 Command | 鍵盤快速鍵
 --------|--------------------
 Back    | **Alt+向左箭**
-下一頁 | **Alt_右箭頭**
+下一頁 | **Alt + 向右鍵**
 上移      | **Alt+向上箭**
 
 ### <a name="editor-commands"></a>編輯器命令
@@ -105,7 +105,7 @@ Refresh  | **Control+R**
 Command                | 鍵盤快速鍵
 -----------------------|------------------
 切換開發人員工具 | **F12**
-重新載入                 | **Alt_Control_R**
+重新載入                 | **Alt + Ctrl + R**
 
 [0]: ./media/vs-azure-tools-storage-explorer-accessibility/Zoom.png
 [1]: ./media/vs-azure-tools-storage-explorer-accessibility/HighContrast.png

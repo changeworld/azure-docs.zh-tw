@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewr: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa8ea75cc7fda05326c802c25a91d025b66b5ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65784420"
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>應用程式如何出現在存取面板上
@@ -46,7 +46,7 @@ ms.locfileid: "65784420"
 
 若要檢查是否已將使用者指派給應用程式，請遵循下列步驟：
 
-1. 打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -58,7 +58,7 @@ ms.locfileid: "65784420"
 
 6. **搜尋**相關應用程式的名稱。
 
-7. 按一下 **"使用者和組**"。
+7. 按一下 [**使用者和群組**]。
 
 8. 檢查使用者是否已指派至應用程式。
 
@@ -68,7 +68,7 @@ ms.locfileid: "65784420"
 
 若要檢查使用者獲指派的授權，請遵循下列步驟：
 
-1. 打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -76,7 +76,7 @@ ms.locfileid: "65784420"
 
 4. 按一下瀏覽功能表中的 [使用者和群組]****。
 
-5. 按一下**所有使用者**。
+5. 按一下 [**所有使用者**]。
 
 6. **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
@@ -96,7 +96,7 @@ ms.locfileid: "65784420"
 
 若要檢查群組的成員資格，請遵循下列步驟：
 
-1. 打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -104,11 +104,11 @@ ms.locfileid: "65784420"
 
 4. 按一下瀏覽功能表中的 [使用者和群組]****。
 
-5. 按一下**所有使用者**。
+5. 按一下 [**所有使用者**]。
 
 6. **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7. 按一下 **"組"。**
+7. 按一下 [**群組]。**
 
 8. 檢查使用者是否屬於已指派至應用程式的群組。
 
@@ -116,7 +116,7 @@ ms.locfileid: "65784420"
 
 ### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>檢查使用者是否屬於指派至授權的群組
 
-1. 打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，並以**全域管理員**身分登入。
 
 2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -124,11 +124,11 @@ ms.locfileid: "65784420"
 
 4. 按一下瀏覽功能表中的 [使用者和群組]****。
 
-5. 按一下**所有使用者**。
+5. 按一下 [**所有使用者**]。
 
 6. **搜尋**您感興趣的使用者，**按一下資料列**選取該使用者。
 
-7. 按一下 **"組"。**
+7. 按一下 [**群組]。**
 
 8. 按一下特定群組的資料列。
 

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: 9c4a57111566248d3537cab0d9d85c0c3be874a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "68335938"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-test-configuration-details"></a>Azure 後端連線功能的互通性：測試組態詳細資料
@@ -27,7 +27,7 @@ ms.locfileid: "68335938"
 
 [![1]][1]
 
-下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如果希望中心 VNet 允許分支 VNet 使用集線器的閘道，請選擇"**允許閘道傳輸**"。
+下圖顯示中樞 VNet 的 VNet 對等互連詳細資料。 如果您想要讓中樞 VNet 允許輪輻 VNet 使用中樞的閘道，請選取 [**允許閘道傳輸**]。
 
 [![2]][2]
 
@@ -51,7 +51,7 @@ ms.locfileid: "68335938"
 
 [![5]][5]
 
-下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。 （Cisco ASR1000 路由器在測試設定中用作 CE 路由器。當並行配置網站到網站 VPN 和 ExpressRoute 電路以將本地網路連接到 Azure 時，Azure 預設優先處理 ExpressRoute 電路。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
+下列清單顯示 ExpressRoute 私人對等互連連線的主要 CE 路由器設定。 （Cisco ASR1000 路由器會在測試設定中用來做為 CE 路由器）。當平行設定站對站 VPN 和 ExpressRoute 線路以將內部部署網路連線到 Azure 時，Azure 預設會優先使用 ExpressRoute 線路。 若要避免不對稱的路由，內部部署網路也應優先考慮 ExpressRoute 連線而非站對站 VPN 連線。 下列組態會使用 BGP **local-preference** 屬性建立優先順序：
 
     interface TenGigabitEthernet0/0/0.300
      description Customer 30 private peering to Azure

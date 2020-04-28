@@ -1,6 +1,6 @@
 ---
 title: 在初次執行期間向 Azure AD 加入新的 Windows 10 裝置 | Microsoft Docs
-description: 使用者可以如何在開箱即用體驗期間設置 Azure AD 加入。
+description: 在全新體驗期間，使用者可以如何設定 Azure AD 聯結。
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 384157828e9c816b150e40bf3f09b74578c4a98e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67482103"
 ---
 # <a name="tutorial-join-a-new-windows-10-device-with-azure-ad-during-a-first-run"></a>教學課程：在初次執行期間向 Azure AD 加入新的 Windows 10 裝置
@@ -39,13 +39,13 @@ ms.locfileid: "67482103"
 
 若要加入 Windows 10 裝置，必須設定 Device Registration Service，才能註冊裝置。 除了擁有在 Azure AD 租用戶中加入裝置的權限之外，您所擁有的已註冊裝置必須少於已設定的最大值。 如需詳細資訊，請參閱[設定裝置設定](device-management-azure-portal.md#configure-device-settings)。
 
-此外，如果您的租用戶已同盟，則您的識別提供者「必須」支援 WS-Fed 和 WS-Trust 使用者名稱/密碼端點。 這可以是 1.3 或 2005 版。 此協定支援需要將設備加入 Azure AD 並使用密碼登錄到設備。
+此外，如果您的租用戶已同盟，則您的識別提供者「必須」支援 WS-Fed 和 WS-Trust 使用者名稱/密碼端點。 這可以是 1.3 或 2005 版。 若要將裝置加入 Azure AD 並使用密碼登入裝置，則需要此通訊協定支援。
 
 ## <a name="joining-a-device"></a>加入裝置
 
 **若要在 FRX 期間將 Windows 10 裝置加入 Azure AD：**
 
-1. 當您打開新設備並啟動安裝過程時，應看到"**準備"** 消息。 請依照提示來設定您的裝置。
+1. 當您開啟新裝置並啟動安裝程式時，您應該會看到 [**正在準備**] 訊息。 請依照提示來設定您的裝置。
 1. 首先，自訂您的地區及語言， 然後接受 Microsoft 軟體授權條款。
  
     ![自訂您的地區](./media/azuread-joined-devices-frx/01.png)
@@ -59,7 +59,7 @@ ms.locfileid: "67482103"
 
     ![登入畫面](./media/azuread-joined-devices-frx/03.png)
 
-1. 您的設備在 Azure AD 中查找匹配的租戶。 如果您位於同盟網域，系統會將您重新導向至內部部署安全性權杖服務 (STS) 伺服器，例如 Active Directory 同盟服務 (AD FS)。
+1. 您的裝置會在 Azure AD 中尋找相符的租使用者。 如果您位於同盟網域，系統會將您重新導向至內部部署安全性權杖服務 (STS) 伺服器，例如 Active Directory 同盟服務 (AD FS)。
 1. 如果您是非同盟網域的使用者，請直接在裝載 Azure AD 的頁面上輸入您的認證。 
 1. 系統會提示您進行 Multi-Factor Authentication 挑戰。 
 1. Azure AD 會確認是否需要在行動裝置管理中註冊。

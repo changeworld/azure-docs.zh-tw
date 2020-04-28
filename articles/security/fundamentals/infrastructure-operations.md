@@ -1,6 +1,6 @@
 ---
-title: Azure 生產網路管理 - 微軟 Azure
-description: 本文介紹 Microsoft 如何管理和操作 Azure 生產網路來保護 Azure 資料中心。
+title: 管理 Azure 生產網路-Microsoft Azure
+description: 本文說明 Microsoft 如何管理和操作 Azure 生產網路，以保護 Azure 資料中心。
 services: security
 documentationcenter: n
 author: TerryLanfear
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 05/30/2019
 ms.author: terrylan
 ms.openlocfilehash: d41fe409b4a44a4c2af3670d76dd3a83a300feae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68727119"
 ---
-# <a name="management-and-operation-of-the-azure-production-network"></a>Azure 生產網路的管理和運營    
-本文介紹 Microsoft 如何管理和操作 Azure 生產網路來保護 Azure 資料中心。
+# <a name="management-and-operation-of-the-azure-production-network"></a>Azure 生產網路的管理和操作    
+本文說明 Microsoft 如何管理和操作 Azure 生產網路，以保護 Azure 資料中心。
 
 ## <a name="monitor-log-and-report"></a>監視、記錄和報告
 
@@ -58,7 +58,7 @@ Azure 生產網路的管理和運作是 Azure 運作小組與 Azure SQL Database
 - [Azure 資訊系統元件與界限](infrastructure-components.md)
 - [Azure 網路架構](infrastructure-network.md)
 - [Azure 生產網路](production-network.md)
-- [Azure SQL 資料庫安全功能](infrastructure-sql.md)
+- [Azure SQL Database 安全性功能](infrastructure-sql.md)
 - [Azure 基礎結構監視](infrastructure-monitoring.md)
 - [Azure 基礎結構完整性](infrastructure-integrity.md)
 - [Azure 客戶資料保護](protection-customer-data.md)

@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: alkohli
 ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "61436489"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Azure 資料箱 Blob 儲存體需求
 
-本文列出了 Azure API、Azure 用戶端庫和資料盒 Blob 存儲支援的工具的版本。 資料箱 Blob 儲存體會使用與 Azure 一致的語意來提供 Blob 管理功能。 本文也會摘要說明 Azure 資料箱 Blob 儲存體與 Azure 儲存體服務間的已知差異。
+本文列出資料箱 Blob 儲存體所支援的 Azure Api、Azure 用戶端程式庫和工具的版本。 資料箱 Blob 儲存體會使用與 Azure 一致的語意來提供 Blob 管理功能。 本文也會摘要說明 Azure 資料箱 Blob 儲存體與 Azure 儲存體服務間的已知差異。
 
 建議您先仔細檢閱資訊，之後再連線到資料箱 Blob 儲存體，然後視需要回顧參考。
 
@@ -26,7 +26,7 @@ ms.locfileid: "61436489"
 
 |     功能                                             |     Azure 儲存體                                     |     資料箱 Blob 儲存體 |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
-|    Azure 檔案儲存體                                   |    支援雲端式 SMB 檔案共用              |    不支援      |
+|    Azure 檔案儲存體                                   |    支援雲端式 SMB 檔案共用              |    不受支援      |
 |    待用資料的服務加密                  |    256 位元 AES 加密                             |    256 位元 AES 加密 |
 |    儲存體帳戶類型                                 |    一般用途和 Azure Blob 儲存體帳戶    |    僅限一般用途 v1|
 |    Blob 名稱                                            |    1,024 個字元 (2,048 個位元組)                     |    880 個字元 (1,760 個位元組)|
@@ -57,7 +57,7 @@ Azure 資料箱 1.8 和更新版本
 |--------------------|--------------------------------------------|--------|---------------------------------|
 |    .NET                |    9.2.0                                           |    Nuget 封裝：https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub 版本：https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    app.config 檔案                 |
 |    Java                |    7.0.0                                           |    Maven 封裝：https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub 版本：https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    連接字串設定         |
-|    Node.js             |    2.8.3                                           |    NPM 連結https://www.npmjs.com/package/azure-storage： （`npm install azure-storage@2.7.0`運行： ）   <br>GitHub 版本：https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    服務執行個體宣告    |
+|    Node.js             |    2.8.3                                           |    NPM 連結： https://www.npmjs.com/package/azure-storage （執行： `npm install azure-storage@2.7.0`）   <br>GitHub 版本：https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    服務執行個體宣告    |
 |    C++                 |    5.2.0                                           |    Nuget 封裝：https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>GitHub 版本：https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    連接字串設定         |
 |    PHP                 |    1.2.0                                           |    GitHub 版本：<br>一般：https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>Blob：https://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>透過編輯器安裝 (若要深入了解，請參閱下面的詳細資料)。                                                                                                             |    連接字串設定         |
 |    Python              |    1.1.0                                           |    GitHub 版本：<br>一般：https://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>Blob：https://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    服務執行個體宣告    |
@@ -83,7 +83,7 @@ Azure 資料箱 1.8 和更新版本
 
 ### <a name="endpoint-declaration"></a>端點宣告
 
-Azure 資料箱 Blob 儲存體端點包含兩個部分：區域的名稱和資料箱網域。 在資料盒 Blob 存儲 SDK 中，`\<serial no. of the device>.microsoftdatabox.com`預設終結點為 。  如需有關 Blob 服務端點的詳細資訊，請參閱[透過資料箱 Blob 儲存體連線](data-box-deploy-copy-data-via-rest.md)。
+Azure 資料箱 Blob 儲存體端點包含兩個部分：區域的名稱和資料箱網域。 在資料箱 Blob 儲存體 SDK 中，預設端點是`\<serial no. of the device>.microsoftdatabox.com`。  如需有關 Blob 服務端點的詳細資訊，請參閱[透過資料箱 Blob 儲存體連線](data-box-deploy-copy-data-via-rest.md)。
  
 ## <a name="examples"></a>範例
 

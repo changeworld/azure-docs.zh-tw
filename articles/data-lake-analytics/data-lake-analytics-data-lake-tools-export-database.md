@@ -1,5 +1,5 @@
 ---
-title: 匯出 U-SQL 資料庫 - 用於視覺化工作室的 Azure 資料湖工具
+title: 匯出 U-SQL database-Azure Data Lake Tools for Visual Studio
 description: 了解如何使用 Azure Data Lake Tools for Visual Studio 匯出 U-SQL 資料庫，並自動將它匯入至本機帳戶。
 services: data-lake-analytics
 author: yanancai
@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.openlocfilehash: e5a52de0342e864cb108d8d590583fe64f72e3b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "71315785"
 ---
 # <a name="export-a-u-sql-database"></a>匯出 U-SQL 資料庫

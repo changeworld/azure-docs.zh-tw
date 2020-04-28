@@ -17,16 +17,16 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bfd61b78ca3027ade1f2f48dec33e0a8ed508d3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60349811"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect：自動升級
 此功能已隨組建 [1.1.105.0 (於 2016 年 2 月發行)](reference-connect-version-history.md#111050) 一起推出。  這項功能已在[組建 1.1.561](reference-connect-version-history.md#115610) 中更新，且現在支援先前未支援的其他案例。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 使用「自動升級」 **** 功能是可確保您 Azure AD Connect 安裝永遠維持在最新狀態的最簡單方式。 此功能預設為啟用，以供進行快速安裝及 DirSync 升級。 新版本發行時，您的安裝會自動升級。
 預設會針對下列情況啟用自動升級：
 
@@ -41,9 +41,9 @@ ms.locfileid: "60349811"
 | --- | --- |
 | 啟用 |已啟用自動升級。 |
 | 暫止 |只有系統才能設定。 系統**目前沒有**資格再接收自動升級。 |
-| 已停用 |已停用自動升級。 |
+| 停用 |已停用自動升級。 |
 
-您可以使用 `Set-ADSyncAutoUpgrade` 在 [已啟用]**** 與 [已停用]**** 之間進行變更。 應該只有系統才能設定 [已暫止] **** 狀態。  在 1.1.750.0 之前，如果自動升級狀態設置為"掛起"，Set-ADSyncAutoUpgrade Cmdlet 將阻止自動升級。 此功能現已更改，因此不會阻止自動升級。
+您可以使用 `Set-ADSyncAutoUpgrade` 在 [已啟用]**** 與 [已停用]**** 之間進行變更。 應該只有系統才能設定 [已暫止] **** 狀態。  在1.1.750.0 版之前，Set-adsyncautoupgrade 指令程式會封鎖 Autoupgrade （如果自動升級狀態設定為 [已暫停]）。 這種功能現已變更，因此不會封鎖 AutoUpgrade。
 
 自動升級使用 Azure AD Connect Health 做為升級基礎結構。 為了讓自動升級能夠運作，請確定您已依照 **Office 365 URL 與 IP 位址範圍** 中的記載，在您 Proxy 伺服器中開啟 [Azure AD Connect Health](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)的 URL。
 
@@ -67,9 +67,9 @@ ms.locfileid: "60349811"
 
 結果碼前面會有包含狀態概觀的前置詞。
 
-| 結果碼前置詞 | 描述 |
+| 結果碼前置詞 | 說明 |
 | --- | --- |
-| Success |安裝已順利升級。 |
+| 成功 |安裝已順利升級。 |
 | UpgradeAborted |發生暫時狀況導致升級停止。 它將會重試一次，而且預期稍後成功。 |
 | UpgradeNotSupported |系統具有封鎖自動升級系統的組態。 它將會重試以查看狀態是否已變更，但預期情況是系統必須手動升級。 |
 
@@ -91,7 +91,7 @@ ms.locfileid: "60349811"
 | **UpgradeNotSupported** | |
 | UpgradeNotSupportedAdfsSignInMethod | 您已選取 ADFS 作為登入方法。 |
 | UpgradeNotSupportedCustomizedSyncRules |您已將自己的自訂規則加入組態。 |
-| UpgradeNotSupportedDeviceWritebackEnabled |您已啟用[設備回寫](how-to-connect-device-writeback.md)功能。 |
+| UpgradeNotSupportedDeviceWritebackEnabled |您已啟用[裝置回寫](how-to-connect-device-writeback.md)功能。 |
 | UpgradeNotSupportedGroupWritebackEnabled |您已啟用 [群組回寫](how-to-connect-preview.md#group-writeback) 功能。 |
 | UpgradeNotSupportedInvalidPersistedState |安裝不是快速設定或 DirSync 升級。 |
 | UpgradeNotSupportedMetaverseSizeExceeeded |Metaverse 中的物件超過 100,000 個。 |
@@ -100,7 +100,7 @@ ms.locfileid: "60349811"
 | UpgradeNotSupportedNonMsolAccount |[AD DS 連接器帳戶](reference-connect-accounts-permissions.md#ad-ds-connector-account)已不再是預設的 MSOL_ 帳戶。 |
 | UpgradeNotSupportedNotConfiguredSignInMethod | 若要設定 AAD Connect，請在選取登入方法時，選擇 [不設定]**。 |
 | UpgradeNotSupportedPtaSignInMethod | 您已選取 [傳遞驗證] 作為登入方法。 |
-| UpgradeNotSupportedStagingModeEnabled |伺服器設置為處於[暫存模式](how-to-connect-sync-staging-server.md)。 |
+| UpgradeNotSupportedStagingModeEnabled |伺服器設定為[預備模式](how-to-connect-sync-staging-server.md)。 |
 | UpgradeNotSupportedUserWritebackEnabled |您已啟用 [使用者回寫](how-to-connect-preview.md#user-writeback) 功能。 |
 
 ## <a name="next-steps"></a>後續步驟

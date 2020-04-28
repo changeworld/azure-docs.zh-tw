@@ -16,10 +16,10 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b2b42880f99f3e87d75854166047896860f9eb14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "65784433"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>新增 Azure AD 資源庫應用程式時遇到問題
@@ -40,7 +40,7 @@ ms.locfileid: "65784433"
 
 ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>我在新增應用程式之後不知道如何設定
 
-如果您需要有關瞭解應用程式的説明，[則有關如何將 SaaS 應用與 Azure 活動目錄文章集成的教程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)是一個很好的開始位置。
+如果您需要瞭解應用程式的協助，有關[如何將 SaaS 應用程式與 Azure Active Directory 發行項整合的教學課程清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)，是很好的起點。
 
 此外，[Azure AD 應用程式文件庫](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index)也可幫助您進一步了解搭配 Azure AD 的單一登入及其運作方式。
 
@@ -48,7 +48,7 @@ ms.locfileid: "65784433"
 
 您可以依照下列步驟來查看任何入口網站通知的詳細資料：
 
-1.  選擇 Azure 門戶右上角**的通知**圖示（鐘）
+1.  選取 Azure 入口網站右上方的 [**通知**] 圖示（鐘）
 
 2.  選取處於**錯誤**狀態的任何通知 (旁邊有紅色 (!))。
 
@@ -93,13 +93,13 @@ ms.locfileid: "65784433"
 
   -   範例 - **2017-03-23T19:50:43.7583681Z**
 
-- **內部事務 ID** – 可用於查找系統中錯誤的內部 ID
+- **內部交易識別碼**–可用來在系統中查閱錯誤的內部識別碼
 
   -   範例 - **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
 - **UPN** - 執行作業的使用者
 
-  -   示例 = **tperkins\@f128.info**
+  -   範例- **tperkins\@f128.info**
 
 - **租用戶識別碼** – 作業執行使用者所屬之租用戶的唯一識別碼
 
@@ -117,7 +117,7 @@ ms.locfileid: "65784433"
 
 -   **狀態** - 通知的特定狀態
 
-    -   示例 =**失敗**
+    -   範例-**失敗**
 
 -   **物件識別碼** – **(可以是空白)** 據以執行作業的物件識別碼
 
@@ -125,7 +125,7 @@ ms.locfileid: "65784433"
 
 -   **詳細資料** - 作業所產生之結果的詳細描述
 
-    -   示例 =**內部 URL`https://bing.com/`無效，因為它已在使用中**
+    -   範例–**內部 url `https://bing.com/`無效，因為它已在使用中**
 
 -   **複製錯誤** – 按一下 [複製錯誤]**** 文字方塊右邊的**複製圖示**，以複製所有通知詳細資料來分享給支援工程師或產品群組 
 -   工程師

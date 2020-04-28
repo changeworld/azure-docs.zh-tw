@@ -16,10 +16,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fa3c6bf39dbef601fe64e125999f519f725f2e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67083780"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>在 Azure Active Directory 中委派系統管理
@@ -87,7 +87,7 @@ ms.locfileid: "67083780"
 
 進行更細微的應用程式存取委派時，您可以將擁有權指派給個別的企業應用程式。 這會補充目前對於指派應用程式註冊擁有者的支援。 擁有權是在 [企業應用程式] 刀鋒視窗中針對每個企業應用程式所指派的。 優點則是擁有者只能管理他們自己的企業應用程式。 例如，您可以指派 Salesforce 應用程式的擁有者，而該擁有者可以管理 Salesforce 的存取和設定，但無法管理任何其他應用程式。 一個企業應用程式可以有許多擁有者，而一個使用者可以是許多企業應用程式的擁有者。 以下為兩個應用程式擁有者角色：
 
-* **企業應用程式擁有者**角色會授與能力來管理使用者所擁有的企業應用程式，包括單一登入設定、使用者和群組指派，以及新增其他擁有者。 它不授予管理應用程式代理設置或條件訪問的許可權。
+* **企業應用程式擁有者**角色會授與能力來管理使用者所擁有的企業應用程式，包括單一登入設定、使用者和群組指派，以及新增其他擁有者。 它不會授與管理應用程式 Proxy 設定或條件式存取的能力。
 * **應用程式註冊擁有者**角色會授與能力來管理使用者所擁有之應用程式的應用程式註冊，包括應用程式資訊清單，以及新增其他擁有者。
 
 ## <a name="develop-a-security-plan"></a>開發安全性方案

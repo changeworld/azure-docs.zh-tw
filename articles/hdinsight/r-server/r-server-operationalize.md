@@ -1,6 +1,6 @@
 ---
 title: 在 HDInsight 上運作 ML 服務 - Azure
-description: 瞭解如何在 Azure HDInsight 中使用 ML 服務操作資料模型以進行預測。
+description: 瞭解如何讓您的資料模型，以 Azure HDInsight 中的 ML 服務進行預測。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: a05bcdef2b7456fbab852e9728c156e57f847f57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71123573"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>在 Azure HDInsight 上運作 ML 服務叢集
@@ -23,7 +23,7 @@ ms.locfileid: "71123573"
 
 * HDInsight 上的 ML 服務叢集。 請參閱[使用 Azure 入口網站建立 Apache Hadoop 叢集](../hdinsight-hadoop-create-linux-clusters-portal.md)，然後選取 [ML 服務]**** 作為 [叢集類型]****。
 
-* 安全殼層 (SSH) 用戶端：SSH 用戶端可用來從遠端連線至 HDInsight 叢集，並直接在叢集上執行命令。 有關詳細資訊，請參閱將[SSH 與 HDInsight 一起使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
+* 安全殼層 (SSH) 用戶端：SSH 用戶端可用來從遠端連線至 HDInsight 叢集，並直接在叢集上執行命令。 如需詳細資訊，請參閱[搭配 HDInsight 使用 SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>使用單一方塊設定來運作 ML 服務叢集
 
@@ -50,31 +50,31 @@ ms.locfileid: "71123573"
 
 1. 您會看到可從中選擇的選項。 選擇第一個選項 (如下列螢幕擷取畫面所示) 來**設定要運作的 ML Server**。
 
-    ![R 伺服器管理實用程式選擇](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![R 伺服器管理公用程式選取](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. 系統會顯示可讓您選擇 ML Server 運作方式的選項。 從顯示的選項中，輸入 **A** 來選擇第一項。
 
-    ![R 伺服器管理實用程式操作](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![R 伺服器管理公用程式讓](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. 出現提示時，輸入並重新輸入本機系統管理員使用者的密碼。
 
 1. 您應該會看到意味著作業已成功的輸出。 您也會看見從功能表中選取另一個選項的提示。 選取 E 以返回主功能表。
 
-    ![R 伺服器管理實用程式成功](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![R 伺服器管理公用程式成功](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. 您也可以選擇性地執行診斷測試來執行診斷檢查，如下所示：
 
     a. 從主功能表中，選取 **6** 來執行診斷測試。
 
-    ![R 伺服器管理實用程式診斷](./media/r-server-operationalize/hdinsight-diagnostic1.png)
+    ![R 伺服器管理公用程式診斷](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
-    b. 在診斷測試功能表中，選擇**A**。出現提示時，輸入您為本地管理員使用者提供的密碼。
+    b. 從 [診斷測試] 功能表中，選取 [ **A**]。出現提示時，請輸入您提供給本機系統管理員使用者的密碼。
 
-    ![R 伺服器管理實用程式測試](./media/r-server-operationalize/hdinsight-diagnostic2.png)
+    ![R 伺服器管理公用程式測試](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. 確認輸出會顯示整體健康情況是良好的。
 
-    ![R 伺服器管理實用程式傳遞](./media/r-server-operationalize/hdinsight-diagnostic3.png)
+    ![R 伺服器管理公用程式通過](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. 從顯示的功能表選項中，輸入 **E** 以返回主功能表，然後輸入 **8** 以結束管理公用程式。
 
@@ -146,17 +146,17 @@ ML 服務叢集並非透過 [Apache Hadoop YARN](https://hadoop.apache.org/docs/
 
 1. 選取背景工作節點 (以解除委任)。
 
-1. 按一下 **"操作** > **所選主機** > **Hosts** > **打開維護模式**"。 例如，在以下映像中，我們選取了要解除委任 wn3 和 wn4。  
+1. 按一下 [**動作** > ] [**選取的主機** > **Hosts** > ] [主機] 會**開啟維護模式**。 例如，在以下映像中，我們選取了要解除委任 wn3 和 wn4。  
 
-   ![阿帕奇安巴里打開維護模式](./media/r-server-operationalize/get-started-operationalization.png)  
+   ![Apache Ambari 開啟維護模式](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* 選擇 **"選擇操作** > **所選主機** > **資料節點">** 按一下 **"停用**"。
-* 選擇**操作** > **"選定主機** > **節點管理器**">按一下 **"停用**"。
-* 選擇**操作** > **所選主機** > **資料節點**>按一下 **"停止**"。
-* 選擇**操作** > **"選擇主機** > **節點管理器**">按一下 **"停止**"。
-* 選擇 **"選擇操作** > **所選主機主機** > **Hosts**">按一下"**停止所有元件**"。
+* 選取 [**動作** > ] [選取的**主機** > ]**datanode** > 按一下 [**解除**委任]。
+* 選取 [**動作** > ] [選取的**主機** > ]**NodeManagers** > 按一下 [**解除**委任]。
+* 選取 [**動作** > ] [選取的**主機** > ]**datanode** > 按一下 [**停止**]。
+* 選取 [**動作** > ] [選取的**主機** > ]**NodeManagers** > 按一下 [**停止**]。
+* 選取 [已**選取** > 的**動作** > ]**[主機] > 按一下**[**停止所有元件**]。
 * 將背景工作節點取消選取，並選取前端節點。
-* 選擇 **"** > **Hosts**主機 > **重新開機所有元件**">**選擇"所選主機**的操作"。
+* 選取 [已**選取**的**動作** > ] [主機] > [**主機** > **重新開機所有元件**]。
 
 ### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>步驟 2：在每個已解除委任的背景工作節點上設定計算節點
 

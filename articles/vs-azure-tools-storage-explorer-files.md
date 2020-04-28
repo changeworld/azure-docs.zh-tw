@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60456606"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>搭配使用儲存體總管與 Azure 檔案儲存體
@@ -31,7 +31,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
 - [下載並安裝儲存體總管](https://www.storageexplorer.com/)
 
-- [連接到 Azure 存儲帳戶或服務](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [連接到 Azure 儲存體帳戶或服務](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>建立檔案共用
 
@@ -165,7 +165,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
     
     - **新增新的存取原則** -選取 [新增]****。 一旦產生，[存取原則] **** 對話方塊將會顯示新加入的存取原則 (具有預設設定)。
 
-    - **編輯訪問策略**- 進行任何所需的編輯，然後選擇 **"保存**"。
+    - **編輯存取原則**-進行任何所需的編輯，然後選取 [**儲存**]。
 
     - **移除存取原則** -選取您想要移除的存取原則旁邊的 [移除]****。
 
@@ -199,7 +199,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
     - **將檔案上傳至檔案共用**
 
-        a.  在主窗格的工具列上，選擇 **"上載**"，然後從下拉式功能表**上傳檔**。
+        a.  在主窗格的工具列上，選取 [**上傳**]，然後從下拉式功能表中 [**上傳**檔案]。
 
         ![上傳檔案](media/vs-azure-tools-storage-explorer-files/image18.png)
         
@@ -229,7 +229,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
         
         c. 在 [指定儲存下載的檔案的位置]**** 對話方塊中，指定要下載檔案的位置，和您想要給予它的名稱。
 
-        d. 選取 [儲存]****。
+        d. 選取 [儲存]  。
 
     - **在您的本機電腦上開啟檔案**
         
@@ -249,7 +249,7 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 
         d. 在主窗格工具列上選取 [貼上]**** 以建立檔案的複本。
 
-    - **刪除檔**
+    - **刪除檔案**
 
         a. 選取您想要刪除的檔案。
 

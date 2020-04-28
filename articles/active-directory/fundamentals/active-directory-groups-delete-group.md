@@ -14,16 +14,16 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bdba55e0655a13e65e403f5da73fcb69db5dbca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68561910"
 ---
 # <a name="delete-a-group-using-azure-active-directory"></a>使用 Azure Active Directory 刪除群組
 您有可能基於任何原因而刪除 Azure Active Directory (Azure AD) 群組，但通常是因為您：
 
-- 錯誤地將**組類型**設置為錯誤選項。
+- 不正確地將**群組類型**設定為錯誤的選項。
 
 - 誤建錯誤或重複的群組。 
 

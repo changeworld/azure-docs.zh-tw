@@ -1,5 +1,5 @@
 ---
-title: 如何在 Azure 資料目錄中編目大資料
+title: 如何在 Azure 資料目錄中將海量資料分類
 description: 強調如何將 Azure 資料目錄與「巨量資料」資料來源 (包括 Azure Blob 儲存體、Azure Data Lake 及 Hadoop HDFS) 搭配使用的操作說明文章。
 author: JasonWHowell
 ms.author: jasonh
@@ -7,13 +7,13 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 88dc85003fa2a3e41d8a31055ff8ba9b0fcc7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71300576"
 ---
-# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 資料目錄中編目大資料
+# <a name="how-to-catalog-big-data-in-azure-data-catalog"></a>如何在 Azure 資料目錄中將海量資料分類
 
 ## <a name="introduction"></a>簡介
 
@@ -66,6 +66,6 @@ ms.locfileid: "71300576"
 
 上節所述模式只是組織巨量資料存放區的兩種可能方式，但是每一種實作各不相同。 不論您的資料來源有何結構，向 **Azure 資料目錄**註冊巨量資料來源時，需要註冊的檔案和目錄應該代表對組織內的其他人有價值的資料集。 註冊所有檔案和目錄可能造成目錄雜亂，導致使用者難以找所需的資料。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
 向 **Azure 資料目錄** 註冊資料來源可讓您更輕鬆地探索和了解它們。 您可以註冊並加註代表邏輯資料集的巨量資料檔案和目錄，以協助使用者找到並使用所需的巨量資料來源。

@@ -10,10 +10,10 @@ ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 3e4ba15fa1925ca40ad7760acbd14331fbdd1343
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61457209"
 ---
 # <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>(已淘汰) 啟用 Azure Container Service 應用程式的公用存取
@@ -75,7 +75,7 @@ ACS [公用代理程式集區](container-service-mesos-marathon-ui.md#deploy-a-d
    | 名稱 |防火牆規則的描述性名稱。 |
    | 優先順序 |規則的優先順序排名。 編號愈低，優先順序就愈高。 |
    | 來源 |限制此規則要允許或拒絕的連入 IP 位址範圍。 使用 **任何** 即可不指定限制。 |
-   | 服務 |選取一組適用此安全性規則的預先定義服務。 否則，使用 **自訂** 建立自己的服務。 |
+   | Service |選取一組適用此安全性規則的預先定義服務。 否則，使用 **自訂** 建立自己的服務。 |
    | 通訊協定 |根據 **TCP** 或 **UDP** 限制流量。 使用 **任何** 即可不指定限制。 |
    | 連接埠範圍 |當**服務**是**自訂**時，指定此規則會影響的連接埠範圍。 您可以使用單一連接埠 (例如 **80**) 或 **1024-1500** 之類的範圍。 |
    | 動作 |允許或拒絕符合條件的流量。 |

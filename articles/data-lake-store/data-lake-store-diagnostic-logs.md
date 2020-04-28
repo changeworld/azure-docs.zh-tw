@@ -13,23 +13,23 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: d200f72b3c0e5634c3dca8f60a4754a14351110a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60878685"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>存取 Azure Data Lake Storage Gen1 的診斷記錄
 了解如何啟用 Azure Data Lake Storage Gen1 帳戶的診斷記錄，以及如何檢視針對您帳戶收集的記錄。
 
-組織可以為 Azure 資料存儲存儲 Gen1 帳戶啟用診斷日誌記錄，以收集資料訪問審核跟蹤，這些跟蹤提供資訊，如訪問資料的使用者清單、訪問資料的頻率、帳戶中存儲的資料量等。啟用後，診斷和/或請求將盡最大努力記錄。 只有在對服務端點提出要求時，才會建立要求和診斷記錄項目。
+組織可以啟用其 Azure Data Lake Storage Gen1 帳戶的診斷記錄，以收集資料存取 audit 線索，其中提供的資訊包括存取資料的使用者清單、存取資料的頻率、帳戶中儲存的資料量等等。啟用時，會盡力記錄診斷和/或要求。 只有在對服務端點提出要求時，才會建立要求和診斷記錄項目。
 
 ## <a name="prerequisites"></a>Prerequisites
-* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure 資料存儲第 1 代帳戶**。 使用 Azure 門戶，按照[Azure 資料湖存儲第 1 代開始](data-lake-store-get-started-portal.md)的說明進行操作。
+* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure Data Lake Storage Gen1 帳戶**。 請遵循[使用 Azure 入口網站開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)中的指示。
 
 ## <a name="enable-diagnostic-logging-for-your-data-lake-storage-gen1-account"></a>啟用 Data Lake Storage Gen1 帳戶的診斷記錄
-1. 登錄到新的 Azure[門戶](https://portal.azure.com)。
+1. 登入新的[Azure 入口網站](https://portal.azure.com)。
 2. 開啟 Data Lake Storage Gen1 帳戶，接著在 Data Lake Storage Gen1 帳戶刀鋒視窗中，按一下 [診斷設定]****。
 3. 在 [診斷設定]**** 刀鋒視窗中，按一下 [開啟診斷]****。
 
@@ -46,11 +46,11 @@ ms.locfileid: "60878685"
         
         * 選取 [串流至事件中樞]**** 選項可將記錄資料串流到 Azure 事件中樞。 如果您有即時分析內送記錄的下游處理管線，很可能會使用這個選項。 如果您選取此選項，必須提供要使用的 Azure 事件中樞詳細資料。
 
-        * 選擇"**發送到日誌分析**"選項以使用 Azure 監視器服務來分析生成的日誌資料。 如果您選取此選項，必須提供要用來執行記錄分析的 Log Analytics 工作區詳細資料。 請參閱[查看或分析使用 Azure 監視器日誌收集的資料，以查找](../azure-monitor/learn/tutorial-viewdata.md)有關使用 Azure 監視器日誌的詳細資訊。
+        * 選取 [**傳送至 Log Analytics** ] 選項，以使用 Azure 監視器服務來分析所產生的記錄資料。 如果您選取此選項，必須提供要用來執行記錄分析的 Log Analytics 工作區詳細資料。 如需使用 Azure 監視器記錄檔的詳細資訊，請參閱[View or 分析使用 Azure 監視器記錄收集的資料搜尋](../azure-monitor/learn/tutorial-viewdata.md)。
      
    * 指定要取得稽核記錄、要求記錄或兩者。
    * 指定的資料的保留天數。 只有在您使用 Azure 儲存體帳戶來封存記錄資料時，才適用保留期。
-   * 按一下 [儲存]****。
+   * 按一下 [檔案]  。
 
 一旦您啟用了診斷設定，即可在 [診斷記錄] **** 索引標籤中查看記錄。
 
@@ -63,7 +63,7 @@ ms.locfileid: "60878685"
 ### <a name="using-the-data-lake-storage-gen1-settings-view"></a>使用 Data Lake Storage Gen1 設定檢是
 1. 從 Data Lake Storage Gen1 帳戶的 [設定]**** 刀鋒視窗中，按一下 [診斷記錄]****。
    
-    ![查看診斷日誌](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "檢視診斷記錄") 
+    ![檢視診斷記錄](./media/data-lake-store-diagnostic-logs/view-diagnostic-logs.png "檢視診斷記錄") 
 2. 在 [診斷記錄]**** 刀鋒視窗中，您應該會看到依照 [稽核記錄]**** 和 [要求記錄]**** 分類的記錄。
    
    * 要求記錄會擷取所有以 Data Lake Storage Gen1 帳戶提出的 API 要求。
@@ -136,7 +136,7 @@ ms.locfileid: "60878685"
 | EndTime |String |伺服器傳送回應的時間 |
 
 ### <a name="audit-logs"></a>稽核記錄
-以下是採用 JSON 格式之稽核記錄中的範例項目。 每個 Blob 都有一個稱為**記錄**的根物件，其中包含日誌物件陣列
+以下是採用 JSON 格式之稽核記錄中的範例項目。 每個 blob 都有一個名為**記錄**的根物件，其中包含記錄檔物件的陣列
 
     {
     "records": 
@@ -178,7 +178,7 @@ ms.locfileid: "60878685"
 | StreamName |String |執行作業的所在路徑 |
 
 ## <a name="samples-to-process-the-log-data"></a>處理記錄資料的範例
-將日誌從 Azure 資料存儲第 1 代發送到 Azure 監視器日誌（請參閱[查看或分析使用 Azure 監視器日誌收集的資料搜索](../azure-monitor/learn/tutorial-viewdata.md)有關使用 Azure 監視器日誌的詳細資訊），以下查詢將返回一個表，其中包含使用者顯示名稱清單、事件時間以及事件時間的事件計數以及視覺化圖表。 您可以輕鬆地進行修改，以顯示使用者 GUID 或其他屬性：
+將記錄從 Azure Data Lake Storage Gen1 傳送至 Azure 監視器記錄時（如需使用 Azure 監視器記錄檔的詳細資訊，請參閱[查看或分析 Azure 監視器收集的資料](../azure-monitor/learn/tutorial-viewdata.md)），下列查詢將會傳回一個資料表，其中包含使用者顯示名稱清單、事件時間，以及事件時間與視覺化圖表的事件計數。 您可以輕鬆地進行修改，以顯示使用者 GUID 或其他屬性：
 
 ```
 search *
@@ -187,7 +187,7 @@ search *
 ```
 
 
-Azure Data Lake Storage Gen1 會提供有關如何處理和分析記錄資料的範例。 您可以在 中找到示例。 [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) 
+Azure Data Lake Storage Gen1 會提供有關如何處理和分析記錄資料的範例。 您可以在[https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample)找到此範例。 
 
 ## <a name="see-also"></a>另請參閱
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)

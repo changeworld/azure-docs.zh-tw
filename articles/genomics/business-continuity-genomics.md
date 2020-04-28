@@ -1,5 +1,5 @@
 ---
-title: 業務連續性概述
+title: 商務持續性總覽
 titleSuffix: Microsoft Genomics
 description: 本概觀說明 Microsoft Genomics 針對商務持續性和災害復原所提供的功能。
 keywords: 商務持續性，災害復原
@@ -11,10 +11,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 04/06/2018
 ms.openlocfilehash: 28a4a53851155c56e8d34981862bf52a3a2cf15b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "72249184"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>使用 Microsoft Genomics 的商務持續性概觀
@@ -30,7 +30,7 @@ ms.locfileid: "72249184"
 
 
 ### <a name="manually-failover-microsoft-genomics-workflows-to-another-region"></a>手動將 Microsoft Genomics 工作流程容錯移轉到另一個區域
-如果發生區域資料中心中斷，您可以選擇根據您的個人資料主權和業務連續性要求在次要區域提交 Microsoft 基因組工作流。 若要手動容錯移轉 Microsoft Genomics 工作流程，您要使用不同的區域專屬  Genomics 帳戶，並且使用適當的區域專屬 Genomics 和儲存體帳戶認證來提交作業。
+如果發生區域資料中心中斷，您可以根據個別資料主權和商務持續性需求，選擇在次要區域中提交 Microsoft Genomics 工作流程。 若要手動容錯移轉 Microsoft Genomics 工作流程，您要使用不同的區域專屬  Genomics 帳戶，並且使用適當的區域專屬 Genomics 和儲存體帳戶認證來提交作業。
 
 具體而言，您需要：
 * 使用 Azure 入口網站，在次要地區建立 Genomics 帳戶。 

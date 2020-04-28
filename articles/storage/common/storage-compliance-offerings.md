@@ -9,10 +9,10 @@ ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
 ms.openlocfilehash: 1ad41b0b7391236a15b7c1be7d42ed81aaf5b51a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "61483429"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure 儲存體合規性供應項目
@@ -79,7 +79,7 @@ ms.locfileid: "61483429"
 * [ENISA IAF (歐盟)](https://aka.ms/AzureCompliance)
 * [ENS (西班牙)](https://www.microsoft.com/trustcenter/compliance/spainens)
 * [EU-Model-Clauses](https://www.microsoft.com/trustcenter/compliance/eu-model-clauses)
-* [歐盟-美國隱私保護](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
+* [EU-美國隱私權防護](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
 * [GB 18030 (中國)](https://www.trustcenter.cn/compliance/default.html#GB18030)
 * [GDPR (歐盟)](https://www.microsoft.com/trustcenter/privacy/gdpr)
 * [IT Grundschutz Workbook (德國)](https://www.microsoft.com/TrustCenter/Compliance/IT-Grundschutz)

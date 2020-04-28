@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: a472e00f9ecab8a5ffa6b19e4fe9a5f8b5ee5b95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "70072052"
 ---
 # <a name="managing-azure-api-management-using-azure-automation"></a>使用 Azure 自動化管理 Azure API 管理
@@ -40,5 +40,5 @@ Azure 自動化提供高可靠性、高可用性的工作流程執行引擎，�
 ## <a name="next-steps"></a>後續步驟
 了解 Azure 自動化的基本概念以及如何用它來管理 Azure API 管理之後，請參考下列連結以深入了解。
 
-* 請參閱 Azure 自動化[入門教程](../automation/automation-first-runbook-graphical.md)。
+* 請參閱 Azure 自動化[入門教學](../automation/automation-first-runbook-graphical.md)課程。
 

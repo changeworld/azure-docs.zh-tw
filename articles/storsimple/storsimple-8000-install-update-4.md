@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 5b48cbd1020cfd51fe989a9be33197f2735f21f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60860307"
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>在 StorSimple 裝置上安裝 Update 4
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明如何透過 Azure 入口網站及使用 Hotfix 方法，在執行舊軟體版本的 StorSimple 裝置上安裝 Update 4。 當閘道器是設定於 StorSimple 裝置之 DATA 0 以外的網路介面上，且您正嘗試從 Update 1 以前的軟體版本更新時，就會使用 Hotfix 方法。
 
@@ -49,7 +49,7 @@ Update 4 包含裝置軟體、USM 韌體、LSI 驅動程式與韌體、Storport 
 
 * 您會看到有可用的維護模式更新 (此訊息可能會在您安裝更新之後繼續顯示長達 24 小時)。 維護模式更新為干擾性更新，會導致裝置產生停機時間，且只能透過您裝置的 Windows PowerShell 介面加以套用。
 
-* 下載維護模式更新，方法是使用[下載 Hotfix](#to-download-hotfixes) 中列出的步驟來搜尋和下載 KB4011837，它會安裝磁碟韌體更新 (此時應該已經安裝其他更新)。 按照安裝中列出的步驟[進行驗證維護模式修補程式](#to-install-and-verify-maintenance-mode-hotfixes)以安裝維護模式更新。
+* 下載維護模式更新，方法是使用[下載 Hotfix](#to-download-hotfixes) 中列出的步驟來搜尋和下載 KB4011837，它會安裝磁碟韌體更新 (此時應該已經安裝其他更新)。 請遵循[安裝及驗證維護模式的修補程式](#to-install-and-verify-maintenance-mode-hotfixes)中所列的步驟來安裝維護模式更新。
 
 ## <a name="install-update-4-as-a-hotfix"></a>以 Hotfix 方式安裝 Update 4
 建議的方法是透過 Azure 入口網站安裝 Update 4。

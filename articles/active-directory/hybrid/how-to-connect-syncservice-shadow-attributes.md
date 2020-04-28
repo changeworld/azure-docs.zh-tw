@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "60384695"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同步處理服務陰影屬性
@@ -58,7 +58,7 @@ userPrincipalName 屬性是您使用 PowerShell 時看到的值。
 | 內部部署 proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-在這種情況下 **，smtp：abbie.spencerfabrikam.com\@** 已被刪除，因為該域尚未驗證。 但交易所也添加了**SIP：abbie.spencerfabrikamonline.com。\@ ** Fabrikam 不曾使用 Lync/Skype 內部部署，但是 Azure AD 和 Exchange Online 為它進行準備。
+在此情況下，已移除**smtp\@： abbie. spencer fabrikam.com** ，因為該網域尚未經過驗證。 但是 Exchange 也新增了**SIP： abbie.\@spencer fabrikamonline.com**。 Fabrikam 不曾使用 Lync/Skype 內部部署，但是 Azure AD 和 Exchange Online 為它進行準備。
 
 proxyAddresses 的此邏輯稱為 **ProxyCalc**。 ProxyCalc 在使用者每次變更時叫用，其時機為︰
 
@@ -75,5 +75,5 @@ ProxyCalc 可能需要一些時間來處理使用者的變更，並且與 Azure 
 有重複的屬性值時，也會使用陰影屬性。 如需詳細資訊，請參閱[重複屬性恢復功能](how-to-connect-syncservice-duplicate-attribute-resiliency.md)。
 
 ## <a name="see-also"></a>另請參閱
-* [Azure AD 連接同步](how-to-connect-sync-whatis.md)
-* [將本地標識與 Azure 活動目錄集成](whatis-hybrid-identity.md)。
+* [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
+* [整合您的內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

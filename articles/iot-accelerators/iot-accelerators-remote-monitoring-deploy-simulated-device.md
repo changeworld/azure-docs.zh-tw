@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66427576"
 ---
 # <a name="deploy-a-new-simulated-device"></a>部署新的模擬裝置
@@ -33,7 +33,7 @@ ms.locfileid: "66427576"
 
 若要完成此操作指南中的步驟，您必須具備有效的 Azure 訂用帳戶。
 
-如果沒有 Azure 訂閱，請先創建[一個免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -140,7 +140,7 @@ ms.locfileid: "66427576"
 
 如果您打算進一步探索，請讓遠端監視解決方案加速器維持部署。
 
-如果不再需要解決方案加速器，請從預配解決方案頁面將其從"[已預配解決方案"](https://www.azureiotsolutions.com/Accelerators#dashboard)頁中刪除，然後按一下"**刪除解決方案**"。
+如果您不再需要解決方案加速器，請在 [已布[建的解決方案](https://www.azureiotsolutions.com/Accelerators#dashboard)] 頁面中選取它，然後按一下 [**刪除解決方案**]，將它刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

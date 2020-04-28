@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "66161406"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>使用 PowerShell 建立以 Azure Data Lake Storage Gen1 作為預設儲存體的 HDInsight 叢集
 
 > [!div class="op_single_selector"]
-> * [使用 Azure 門戶](data-lake-store-hdinsight-hadoop-use-portal.md)
+> * [使用 Azure 入口網站](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [使用 PowerShell (針對預設儲存體)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 > * [使用 PowerShell (針對額外儲存體)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [使用 Resource Manager](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
@@ -137,7 +137,7 @@ ms.locfileid: "66161406"
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
-    系統提示您時，請輸入您稍早指定的私密金鑰密碼。 您針對 **-po** 參數指定的值是與 .pfx 檔案相關聯的密碼。 成功完成該命令後，還應在指定的證書目錄中看到**CertFile.pfx。**
+    系統提示您時，請輸入您稍早指定的私密金鑰密碼。 您針對 **-po** 參數指定的值是與 .pfx 檔案相關聯的密碼。 成功完成命令之後，您應該也會在所指定的憑證目錄中看到**CertFile。**
 
 ### <a name="create-an-azure-ad-and-a-service-principal"></a>建立 Azure AD 和服務主體
 在這一節中，您會建立 Azure AD 應用程式的服務主體、指派角色給服務主體，並藉由提供憑證驗證為服務主體。 若要在 Azure AD 中建立應用程式，請執行下列命令：
@@ -215,7 +215,7 @@ ms.locfileid: "66161406"
     Cmdlet 成功完成後，您應該會看到列出叢集詳細資料的輸出。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>在 HDInsight 叢集上執行測試作業以使用 Data Lake Storage Gen1
-設定 HDInsight 叢集之後，您可以在叢集上執行測試工作，確保它可以存取 Data Lake Storage Gen1。 為此，請運行一個示例 Hive 作業以創建一個表，該表使用群集*\<根>/示例/資料/資料/示例.log）* 中的 Data Lake 存儲 Gen1 中已有的示例資料。
+設定 HDInsight 叢集之後，您可以在叢集上執行測試工作，確保它可以存取 Data Lake Storage Gen1。 若要這麼做，請執行範例 Hive 作業來建立資料表，以使用 Data Lake Storage Gen1 * \<的叢集根>/example/data/sample.log*中已提供的範例資料。
 
 在這一節中，您將透過安全殼層 (SSH) 連線到您所建立的 HDInsight Linux 叢集，然後執行範例 Hive 查詢。
 

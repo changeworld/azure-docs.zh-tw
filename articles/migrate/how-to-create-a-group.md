@@ -7,86 +7,86 @@ ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
 ms.openlocfilehash: 13c640d25265b2663520ef7ab203b0b0a33829e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68301683"
 ---
-# <a name="create-a-group-for-assessment"></a>創建用於評估的組
+# <a name="create-a-group-for-assessment"></a>建立用於評量的群組
 
-本文介紹如何使用 Azure 遷移：伺服器評估創建用於評估的電腦群組。
+本文說明如何使用 Azure Migrate：伺服器評估來建立機器群組以進行評量。
 
-[Azure 遷移](migrate-services-overview.md)可説明您遷移到 Azure。 Azure Migrate 能提供集中式的中樞，以追蹤針對 Azure 的內部部署基礎結構、應用程式與資料的探索、評量及移轉。 該中樞能提供 Azure 工具以進行評量和移轉，也提供協力廠商獨立軟體廠商 (ISV) 供應項目。 
+[Azure Migrate](migrate-services-overview.md)可協助您遷移至 Azure。 Azure Migrate 能提供集中式的中樞，以追蹤針對 Azure 的內部部署基礎結構、應用程式與資料的探索、評量及移轉。 該中樞能提供 Azure 工具以進行評量和移轉，也提供協力廠商獨立軟體廠商 (ISV) 供應項目。 
 
-## <a name="grouping-machines"></a>對電腦進行分組
+## <a name="grouping-machines"></a>群組機器
 
-將電腦分組到組中，以評估它們是否適合遷移到 Azure，並獲取 Azure 大小調整和成本估算。 創建組的方法有幾種：
+您會將機器收集成群組，以評估它們是否適合遷移至 Azure，以及取得 Azure 的大小調整和成本估計。 建立群組的方法有好幾種：
 
-- 如果您知道需要一起遷移的電腦，則可以在 Azure 遷移中手動創建組。
-- 如果不確定需要組合在一起的電腦，則可以使用 Azure 遷移中的依賴項視覺化功能創建組。 
+- 如果您知道需要一起遷移的機器，您可以在 Azure Migrate 中手動建立群組。
+- 如果您不確定需要群組在一起的機器，您可以使用 Azure Migrate 中的相依性視覺效果功能來建立群組。 
 
 > [!NOTE]
 > 在 Azure Government 中無法使用相依性視覺效果功能。
 
-## <a name="create-a-group-manually"></a>手動創建組
+## <a name="create-a-group-manually"></a>手動建立群組
 
-您可以在[創建評估](how-to-create-assessment.md)的同時創建組。
+您可以在[建立評](how-to-create-assessment.md)量的同時建立群組。
 
-如果要在創建評估之外手動創建組，請執行以下操作：
+如果您想要在建立評估以外的地方手動建立群組，請執行下列動作：
 
-1. 在 Azure 遷移專案中>**概述**中，按一下"**評估和遷移伺服器**"。 在**Azure 遷移中：伺服器評估**，按一下 **"組**"
-    - 如果尚未添加 Azure 遷移：伺服器評估工具，請按一下以添加該工具。 [深入了解](how-to-assess.md)。
-    - 如果尚未創建 Azure 遷移專案，[則有關詳細資訊](how-to-add-tool-first-time.md)。
+1. 在 Azure Migrate 專案 >**總覽**中，按一下 [**評估和遷移伺服器**]。 在 [ **Azure Migrate：伺服器評估**] 中，按一下 [**群組**]
+    - 如果您尚未新增 [Azure Migrate：伺服器評估] 工具，請按一下將它新增。 [深入了解](how-to-assess.md)。
+    - 如果您尚未建立 Azure Migrate 專案，請[深入瞭解](how-to-add-tool-first-time.md)。
 
     ![選取群組](./media/how-to-create-a-group/select-groups.png)
 
-2. 按一下 **"組"** 圖示。
-3. 在 **"創建組**"中，指定組名稱，並在 **"設備名稱**"中選擇用於電腦發現的 Azure 遷移設備。
-1. 從電腦清單中選擇要添加到組>**創建**的電腦。
+2. 按一下 [**群組**] 圖示。
+3. 在 [**建立群組**] 中指定組名，然後在 [**設備名稱**] 中，選取您要用於機器探索的 Azure Migrate 設備。
+1. 從 [電腦] 清單中，選取您要新增至群組 >**建立**的電腦。
 
     ![建立群組](./media/how-to-create-a-group/create-group.png)
 
-現在，您可以在[創建評估](how-to-create-assessment.md)時使用此組。
+當您[建立評](how-to-create-assessment.md)量時，您現在可以使用此群組。
 
-## <a name="refine-a-group-with-dependency-mapping"></a>使用依賴項映射優化組
+## <a name="refine-a-group-with-dependency-mapping"></a>使用相依性對應來精簡群組
 
-依賴關係映射可説明您視覺化跨電腦的依賴項。 當您要評估具有更高置信度的電腦群組時，通常使用依賴項映射。
-- 它可以説明您在運行評估之前交叉檢查電腦依賴項。 
-- 它還有助於確保不留下任何內容，從而在遷移期間避免意外中斷，從而有助於有效地規劃遷移到 Azure。
-- 您可以發現需要一起遷移的相互依賴的系統，並確定正在運行的系統是否仍在為使用者提供服務，或者是停用而不是遷移的候選系統。
+相依性對應可協助您將跨電腦的相依性視覺化。 當您想要以更高的信賴程度評估電腦群組時，通常會使用相依性對應。
+- 這可協助您在執行評量之前，先交叉檢查機器相依性。 
+- 它也有助於有效地規劃遷移至 Azure，方法是確保不會留下任何內容，進而避免在遷移期間發生意外的中斷。
+- 您可以探索需要一起遷移的相互相依系統，以及識別執行中的系統是否仍為使用者提供服務，或者是解除委任而非遷移的候選。
 
-如果已[設置依賴項映射](how-to-create-group-machine-dependencies.md)，並且想要優化現有組，則執行以下操作：
+如果您已經設定相依性[對應](how-to-create-group-machine-dependencies.md)，而且想要縮小現有群組，請執行下列動作：
 
-1. 在 **"伺服器"** 選項卡中，在**Azure 遷移：伺服器評估**磁貼中，按一下"**組**"。
-2. 按一下要優化的組。
-    - 如果尚未設置依賴項映射，**則"依賴項"** 列將顯示 **"需要安裝**"狀態。 對於要視覺化依賴項的每個 VM，請按一下 **"需要安裝**"。 在每個 VM 上安裝幾個代理，然後才能映射電腦依賴項。 [深入了解](how-to-create-group-machine-dependencies.md)。
+1. 在 [**伺服器**] 索引標籤的 [ **Azure Migrate：伺服器評估**] 磚中，按一下 [**群組**]。
+2. 按一下您要精簡的群組。
+    - 如果您尚未設定相依性對應，[相依性 **]** 欄將會顯示 [**需要安裝**狀態]。 針對您要將相依性視覺化的每個 VM，按一下 [**需要安裝**]。 在每部 VM 上安裝幾個代理程式，然後才能對應機器相依性。 [深入了解](how-to-create-group-machine-dependencies.md)。
 
-        ![添加依賴項映射](./media/how-to-create-a-group/add-dependency-mapping.png)
+        ![新增相依性對應](./media/how-to-create-a-group/add-dependency-mapping.png)
 
-    - 如果已設置依賴項映射，請在組頁上按一下 **"查看依賴項**"以打開組依賴項映射。
+    - 如果您已經設定相依性對應，請在 [群組] 頁面上，按一下 [視圖相依性 **]** 以開啟群組相依性對應。
 
-3. 按一下 **"查看依賴項"** 後，組依賴項映射將顯示以下內容：
+3. 按一下 [**視圖**相依性] 之後，群組相依性對應會顯示下列各項：
 
-    - 入站（用戶端）和出站（伺服器）TCP 連接和從已安裝依賴項代理的組中的所有電腦的連接。
-    - 未安裝依賴項代理的從屬電腦按埠號分組。
-    - 安裝了依賴項代理的從屬電腦顯示為單獨的框。
-    - 在機器內部運行的進程。 展開每個機器框以查看流程。
-    - 機器屬性（包括 FQDN、作業系統、MAC 位址）。 按一下每個機器框以查看詳細資訊。
+    - 輸入（用戶端）和輸出（伺服器） TCP 連線與群組中已安裝相依性代理程式的所有電腦。
+    - 未安裝相依性代理程式的相依機器會依埠號碼分組。
+    - 已安裝 dependency agent 的相依機器會顯示為不同的方塊。
+    - 在機器內執行的進程。 展開每個電腦方塊以查看處理常式。
+    - 電腦屬性（包括 FQDN、作業系統、MAC 位址）。 按一下每個機器方塊以查看詳細資料。
 
-4. 要查看您選擇的時間間隔中的依賴項，請通過指定開始和結束日期或持續時間來修改時間範圍（預設情況下為一小時）。
+4. 若要在您選擇的時間間隔內查看相依性，請指定開始和結束日期或持續時間，以修改時間範圍（預設為小時）。
 
     > [!NOTE]
-    > 時間範圍可達一小時。 如果需要較長的範圍，請使用 Azure[監視器查詢從屬資料](how-to-create-group-machine-dependencies.md)的時間較長。
+    > 時間範圍最長可達一小時。 如果您需要較長的範圍，請使用[Azure 監視器來查詢相依資料](how-to-create-group-machine-dependencies.md)的時間較長。
 
-5. 標識要添加到組或從群組移除的依賴項後，可以修改組。 使用 Ctrl_Click 從組中添加或刪除電腦。
+5. 識別您想要在群組中新增或移除的相依性之後，您就可以修改該群組。 使用 Ctrl + 按一下來新增或移除群組中的機器。
 
     - 您只能新增已探索到的機器。
-    - 添加和刪除電腦會使組的過去評估無效。
+    - 新增和移除機器會使群組的過去評估失效。
     - 修改群組時，可以選擇性地建立新評量。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何設置和使用[依賴項映射](how-to-create-group-machine-dependencies.md)來創建高置信度組。
+瞭解如何設定和使用相依性[對應](how-to-create-group-machine-dependencies.md)來建立高度信賴群組。
 

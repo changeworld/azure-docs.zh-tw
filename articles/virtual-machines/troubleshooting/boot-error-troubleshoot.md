@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
 ms.openlocfilehash: 660c7fa0051654fd9b0012740ce7ed3ee1e91531
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71059176"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>針對 Azure 虛擬機器開機錯誤進行疑難排解
@@ -27,8 +27,8 @@ ms.locfileid: "71059176"
 
 * [BitLocker 開機錯誤](troubleshoot-bitlocker-boot-error.md) 
 * [在開機期間，Windows 顯示「正在檢查檔案系統」](troubleshoot-check-disk-boot-error.md)
-* [藍屏錯誤](troubleshoot-common-blue-screen-error.md)
-* [VM 啟動卡在"準備 Windows"](troubleshoot-vm-boot-configure-update.md)
+* [藍色畫面錯誤](troubleshoot-common-blue-screen-error.md)
+* [VM 啟動會停滯在「正在準備 Windows](troubleshoot-vm-boot-configure-update.md)
 * [藍色畫面上顯示「重要服務已失敗」錯誤](troubleshoot-critical-service-failed-boot-error.md)
 * [重新開機迴圈問題](troubleshoot-reboot-loop.md)
 * [VM 啟動程序停滯於 Windows Update 階段](troubleshoot-stuck-updating-boot-error.md)

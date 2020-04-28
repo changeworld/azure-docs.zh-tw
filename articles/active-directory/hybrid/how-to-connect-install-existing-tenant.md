@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71336812"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect︰當您有存在的租用戶
@@ -59,13 +59,13 @@ Azure AD 中的物件可能會在雲端 (Azure AD) 中受控或內部部署。 �
 ### <a name="other-objects-than-users"></a>使用者以外的其他物件
 對於擁有郵件功能的群組和連絡人，您可以根據 proxyAddresses 來大致比對。 精確比對不適用，因為您只能更新使用者的 sourceAnchor/immutableID (使用 PowerShell)。 對於未擁有郵件功能的群組，目前不支援大致比對或精確比對。
 
-### <a name="admin-role-considerations"></a>管理角色注意事項
-為了防止不受信任的本地使用者與具有任何管理員角色的雲使用者匹配，Azure AD Connect 不會將本地使用者物件與具有管理員角色的物件匹配。 這是預設的結果。 要解決此問題，您可以執行以下操作：
+### <a name="admin-role-considerations"></a>管理員角色考慮
+為避免不受信任的內部部署使用者與具有任何系統管理員角色的雲端使用者進行比對，Azure AD Connect 不會將內部部署使用者物件與具有管理員角色的物件進行比對。 這是預設的結果。 若要解決此行為，您可以執行下列動作：
 
-1.  從僅雲使用者物件中刪除目錄角色。
-2.  如果使用者同步嘗試失敗，請實刪除雲中的隔離物件。
-3.  觸發同步。
-4.  可選地將目錄角色添加回雲中的使用者物件，一旦匹配發生。
+1.  從僅限雲端的使用者物件移除目錄角色。
+2.  如果使用者同步嘗試失敗，請實刪除雲端中的隔離物件。
+3.  觸發同步處理。
+4.  一旦發生比對，即可選擇性地將目錄角色新增回雲端中的使用者物件。
 
 
 

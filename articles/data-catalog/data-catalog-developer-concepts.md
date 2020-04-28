@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 80adc98255cfc9145d583ac775bbc490d599234e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68976836"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure 資料目錄開發人員概念
@@ -19,7 +19,7 @@ Microsoft **Azure 資料目錄** 是完全受控的雲端服務，能夠進行�
 ## <a name="key-concepts"></a>重要概念
 **Azure 資料目錄**概念模型根據四個主要概念：**目錄**、**使用者**、**資產**和**註解**。
 
-![Azure 資料目錄概念模型插圖](./media/data-catalog-developer-concepts/concept2.png)
+![Azure 資料目錄概念模型圖例](./media/data-catalog-developer-concepts/concept2.png)
 
 *圖 1 - Azure 資料目錄簡易概念模型*
 
@@ -49,7 +49,7 @@ Azure 資料目錄使用 Azure Active Directory 來管理身分識別和存取�
 ### <a name="annotations"></a>標註
 註解是代表資產中繼資料的項目。
 
-注釋的示例包括說明、標記、架構、文檔等。資產類型和注釋類型的完整清單位於"資產物件"模型部分。
+批註的範例包括描述、標記、架構、檔等等。資產類型和注釋類型的完整清單位於資產物件模型一節中。
 
 ## <a name="crowdsourcing-annotations-and-user-perspective-multiplicity-of-opinion"></a>群眾外包註解和使用者觀點 (多樣性意見)
 Azure 資料目錄的重點在於如何支援由群眾外包系統中的中繼資料。 與 Wiki 的作法不同 – 其中只有一個意見，以最後一個寫入者為準 – Azure 資料目錄模型允許多種意見並存於系統中。
@@ -124,11 +124,11 @@ Azure 資料目錄的重點在於如何支援由群眾外包系統中的中繼�
 <tr><td>結構描述 ("schema")</td><td></td><td></td><td>Schema 描述資料的結構。  它會列出屬性 (資料行、屬性、欄位等等) 名稱、類型及其他中繼資料。  此資訊完全衍生自資料來源。  Schema 是單一註解 - 資產只能新增一個 Schema。</td></tr>
 <tr><td></td><td>資料行</td><td>Column[]</td><td>資料行物件的陣列。 它們以衍生自資料來源的資訊來描述資料行。</td></tr>
 
-<tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>此屬性包含資料行的描述。  系統的每個使用者可以為多個資料行加入自己的描述 (每個資料行最多一個)。 只有建立 ColumnDescription 物件的使用者可以編輯它們。  (系統管理員和資產擁有者可以刪除 ColumnDescription 物件，但無法編輯它)。 系統會個別維護這些使用者的資料行描述。  因此，每個資產上有一個 ColumnDescription 物件陣列 (除了可能有一個描述包含衍生自資料來源的資訊，每一個已對資料行貢獻知識的使用者都會有一個資料行描述)。  列描述鬆散地綁定到架構，因此可能會不同步。列描述可能描述架構中不再存在的列。  由編寫器保持描述和架構同步。 資料來源可能還有列描述資訊，它們是運行該工具時將創建的其他列描述物件。</td></tr>
+<tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>此屬性包含資料行的描述。  系統的每個使用者可以為多個資料行加入自己的描述 (每個資料行最多一個)。 只有建立 ColumnDescription 物件的使用者可以編輯它們。  (系統管理員和資產擁有者可以刪除 ColumnDescription 物件，但無法編輯它)。 系統會個別維護這些使用者的資料行描述。  因此，每個資產上有一個 ColumnDescription 物件陣列 (除了可能有一個描述包含衍生自資料來源的資訊，每一個已對資料行貢獻知識的使用者都會有一個資料行描述)。  ColumnDescription 會鬆散系結至架構，使其無法同步。此 ColumnDescription 可能會描述不再存在於架構中的資料行。  這是由寫入器負責讓描述和架構保持同步。 資料來源也可能會有資料行描述資訊，而且它們是執行工具時所建立的其他 ColumnDescription 物件。</td></tr>
 <tr><td></td><td>columnName</td><td>String</td><td>此描述所參考的資料行名稱。</td></tr>
 <tr><td></td><td>description</td><td>String</td><td>資料行的簡短描述 (2-3 行)。</td></tr>
 
-<tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>此屬性包含資料行的標籤。 系統的每個使用者可以為特定資料行新增多個標記，也可以為多個資料行新增標記。 只有建立 ColumnTag 物件的使用者可以編輯它們。 (系統管理員和資產擁有者可以刪除 ColumnTag 物件，但無法編輯它)。 系統會個別維護這些使用者的資料行標籤。  因此每個資產上都會有 ColumnTag 物件的陣列。  ColumnTag 鬆散地綁定到架構，因此可能會不同步。列標記可能描述架構中不再存在的列。  由寫入者決定是否要讓資料行標籤和結構描述保持同步。</td></tr>
+<tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>此屬性包含資料行的標籤。 系統的每個使用者可以為特定資料行新增多個標記，也可以為多個資料行新增標記。 只有建立 ColumnTag 物件的使用者可以編輯它們。 (系統管理員和資產擁有者可以刪除 ColumnTag 物件，但無法編輯它)。 系統會個別維護這些使用者的資料行標籤。  因此每個資產上都會有 ColumnTag 物件的陣列。  ColumnTag 會鬆散系結至架構，使其無法同步。此 ColumnTag 可能會描述不再存在於架構中的資料行。  由寫入者決定是否要讓資料行標籤和結構描述保持同步。</td></tr>
 <tr><td></td><td>columnName</td><td>String</td><td>此標記所參考的資料行名稱。</td></tr>
 <tr><td></td><td>tag</td><td>String</td><td>描述資料行的標記。</td></tr>
 
@@ -140,7 +140,7 @@ Azure 資料目錄的重點在於如何支援由群眾外包系統中的中繼�
 
 <tr><td>AccessInstruction ("accessInstructions")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>mimeType</td><td>字串</td><td>內容的 mime 類型。</td></tr>
-<tr><td></td><td>content</td><td>字串</td><td>如何取得這項資料資產的指示。 內容可能是一個 URL、電子郵件地址或一組指示。</td></tr>
+<tr><td></td><td>內容</td><td>字串</td><td>如何取得這項資料資產的指示。 內容可能是一個 URL、電子郵件地址或一組指示。</td></tr>
 
 <tr><td>TableDataProfile ("tableDataProfiles")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>在此資料集的資料列數目。</td></tr>
@@ -157,7 +157,7 @@ Azure 資料目錄的重點在於如何支援由群眾外包系統中的中繼�
 
 <tr><td>文件 ("documentation")</td><td></td><td></td><td>指定的資產只能有一個相關聯的文件。</td></tr>
 <tr><td></td><td>mimeType</td><td>字串</td><td>內容的 mime 類型。</td></tr>
-<tr><td></td><td>content</td><td>字串</td><td>文件內容。</td></tr>
+<tr><td></td><td>內容</td><td>字串</td><td>文件內容。</td></tr>
 
 </table>
 
@@ -171,7 +171,7 @@ Azure 資料目錄的重點在於如何支援由群眾外包系統中的中繼�
 <tr><td></td><td>objectType</td><td>字串</td><td>描述資料來源中的物件類型。 例如：SQL Server 的資料表、檢視。</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>protocol</td><td>字串</td><td>必要。 描述用來與資料來源進行通訊的通訊協定。 例如：SQl 伺服器的"tds"、Oracle 的"oracle"等。有關當前受支援的協定清單，請參閱<a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">資料來源引用規範 - DSL 結構</a>。</td></tr>
+<tr><td></td><td>protocol</td><td>字串</td><td>必要。 描述用來與資料來源進行通訊的通訊協定。 例如：「tds」（適用于 SQl Server）、「oracle」（適用于 Oracle）等等。如需目前支援的通訊協定清單，請參閱<a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">資料來源參考規格-DSL 結構</a>。</td></tr>
 <tr><td></td><td>address</td><td>字典&lt;字串，物件&gt;</td><td>必要。 位址是一組專屬於通訊協定的資料，用來識別所參考的資料來源。 資料將範圍設定為特定通訊協定的位址，表示如果不知道通訊協定就沒有意義。</td></tr>
 <tr><td></td><td>驗證 (authentication)</td><td>字串</td><td>選擇性。 用來與資料來源進行通訊的驗證配置。 例如：windows、oauth 等等。</td></tr>
 <tr><td></td><td>connectionProperties</td><td>字典&lt;字串，物件&gt;</td><td>選擇性。 如何連接資料來源的其他資訊。</td></tr>
@@ -237,13 +237,13 @@ Microsoft Azure 資料目錄對資產和註解的 CRUD 作業提供授權功能�
 ## <a name="key-concepts"></a>重要概念
 Azure 資料目錄使用兩種授權機制：
 
-* 以角色為基礎的授權
+* 角色型授權
 * 以權限為基礎的授權
 
 ### <a name="roles"></a>角色
 有 3 個角色：**系統管理員**、**擁有者**和**參與者**。  每個角色有其範圍和權限，於下表中摘要說明。
 
-<table><tr><td><b>角色</b></td><td><b>Scope</b></td><td><b>權限</b></td></tr><tr><td>系統管理員</td><td>目錄 (目錄中的所有資產/註解)</td><td>Read Delete ViewRoles
+<table><tr><td><b>角色</b></td><td><b>範圍</b></td><td><b>權限</b></td></tr><tr><td>系統管理員</td><td>目錄 (目錄中的所有資產/註解)</td><td>Read Delete ViewRoles
 
 ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>擁有者</td><td>每個資產 (根項目)</td><td>Read Delete ViewRoles
 
@@ -285,7 +285,7 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>參與者</td>
 > 
 > 
 
-**內文**
+**人體**
 ```json
     {
         "roles": [
@@ -301,7 +301,7 @@ ChangeOwnership ChangeVisibility ViewPermissions</td></tr><tr><td>參與者</td>
     }
 ```
 
-  **分配擁有者並限制現有根項的可見度****：PUT** HTTPs：/api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30\/
+  **指派擁有者並限制現有根項目的可見度**： **PUT** HTTPs\/：/api.azuredatacatalog.com/catalogs/default/views/tables/042297b0...1be45ecd462a?api-version=2016-03-30
 
 ```json
     {

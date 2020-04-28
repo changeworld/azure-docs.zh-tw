@@ -1,6 +1,6 @@
 ---
-title: PowerShell 腳本：列出 Azure 資料共用中的現有共用 |微軟文檔
-description: 此 PowerShell 腳本列出並顯示共用的詳細資訊。
+title: PowerShell 腳本：列出 Azure 資料共用中的現有共用 |Microsoft Docs
+description: 此 PowerShell 腳本會列出並顯示共用的詳細資料。
 services: data-share
 author: joannapea
 ms.service: data-share
@@ -10,15 +10,15 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: 6314bd348c22c901001b88eda6875181a2f69df4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "70307128"
 ---
-# <a name="use-powershell-to-view-the-details-of-a-sent-data-share"></a>使用 PowerShell 查看已發送資料共用的詳細資訊
+# <a name="use-powershell-to-view-the-details-of-a-sent-data-share"></a>使用 PowerShell 來查看已傳送資料共用的詳細資料
 
-此 PowerShell 腳本列出來自現有帳戶的資料共用，並獲取特定共用的詳細資訊。
+此 PowerShell 腳本會列出現有帳戶的資料共用，並取得特定共用的詳細資料。
 
 
 ## <a name="sample-script"></a>範例指令碼
@@ -45,11 +45,11 @@ Get-AzDataShare -ResourceGroupName $resourceGroupName -AccountName $dataShareAcc
 
 | Command | 注意 |
 |---|---|
-| [獲取-阿茲資料共用](/powershell/module/az.datashare/get-azdatashare?view=azps-2.6.0) | 獲取和列出帳戶中的共用。 |
+| [AzDataShare](/powershell/module/az.datashare/get-azdatashare?view=azps-2.6.0) | 取得和帳戶中的共用清單。 |
 |||
 
 ## <a name="next-steps"></a>後續步驟
 
 如需有關 Azure PowerShell 的詳細資訊，請參閱 [Azure PowerShell 文件](https://docs.microsoft.com/powershell/)。
 
-其他 Azure 資料共用 PowerShell 腳本示例可在[Azure 資料共用 PowerShell 示例中](../../samples-powershell.md)找到。
+您可以在[Azure 資料共用 powershell 範例](../../samples-powershell.md)中找到其他 Azure 資料共用 powershell 腳本範例。

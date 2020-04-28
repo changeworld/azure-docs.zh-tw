@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: japere,asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a981dfb1d72c21eccf2ad7119ea219114ed15aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "65784269"
 ---
 # <a name="problem-using-self-service-application-access"></a>使用自助應用程式存取時遇到問題
@@ -43,7 +43,7 @@ ms.locfileid: "65784269"
 
 若要啟用對應用程式的自助存取，請依照下列步驟執行：
 
-1. 打開[**Azure 門戶**](https://portal.azure.com/)並作為**全域管理員登錄。**
+1. 開啟[**Azure 入口網站**](https://portal.azure.com/)，然後以**全域管理員**身分登入。
 
 2. 按一下左側主導覽功能表底部的 [所有服務]****，以開啟 [Azure Active Directory 延伸模組]****。
 
@@ -53,7 +53,7 @@ ms.locfileid: "65784269"
 
 5. 按一下 [所有應用程式]****，以檢視所有應用程式的清單。
 
-   * 如果您沒有看到要在此處顯示的應用程式，請使用 **"所有應用程式清單**"頂部的 **"篩選器"** 控制項，並將 **"顯示**"選項設置為 **"所有應用程式"。**
+   * 如果您在這裡看不到您想要顯示的應用程式，請使用 [**所有應用程式] 清單**頂端的 [**篩選**] 控制項，並將 [**顯示**] 選項設定為 [**所有應用程式]。**
 
 6. 從該清單選取您要啟用自助存取的應用程式。
 

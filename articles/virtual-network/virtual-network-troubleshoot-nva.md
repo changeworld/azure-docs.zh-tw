@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
 ms.openlocfilehash: b998043bc7d896989590ac21db5f309a81cc02bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71056824"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Azure 中的網路虛擬設備問題
@@ -42,7 +42,7 @@ ms.locfileid: "71056824"
 - 虛擬網路子網路上從 NVA 導向流量的 UDR
 - NVA 內的路由資料表和規則 (例如，從 NIC2 到 NIC1)
 - 追蹤 NVA NIC 以確認是否接收和傳送網路流量
-- 使用標準 SKU 和公共 IP 時，必須創建 NSG 和顯式規則以允許將流量路由到 NVA。
+- 使用標準 SKU 和公用 Ip 時，必須建立 NSG 和明確的規則，以允許將流量路由傳送至 NVA。
 
 ## <a name="basic-troubleshooting-steps"></a>基本疑難排解步驟
 
@@ -83,7 +83,7 @@ ms.locfileid: "71056824"
    NetworkSecurityGroup : null
    ```
 
-**使用標準 SKU Pubilc IP 時檢查 NSG**使用標準 SKU 和公共 IP 時，必須創建 NSG 和顯式規則以允許流量到 NVA。
+**使用標準 SKU 公用 IP 時，檢查是否有 NSG**使用標準 SKU 和公用 Ip 時，必須建立 NSG，並提供明確的規則來允許 NVA 的流量。
 
 **檢查流量是否可路由至 NVA**
 
@@ -114,7 +114,7 @@ ms.locfileid: "71056824"
 
 ### <a name="validate-vm-cpu"></a>驗證 VM CPU
 
-如果 CPU 使用率接近 100%，則可能會遇到影響網路資料包丟棄的問題。 您的 VM 會在 Azure 入口網站中報告特定時間範圍內的平均 CPU。 如果 CPU 用量暴增，請調查是客體 VM 上的哪一個處理序造成高 CPU 用量，且如果可能的話，請使其降低。 您可能需要將 VM 的大小調整為較大的 SKU，或針對虛擬機器擴展集增加執行個體計數，或設定為自動調整 CPU 使用量。 對於上述任一問題[，請根據需要與 NVA 供應商聯繫以獲得説明](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+如果 CPU 使用量接近100%，您可能會遇到影響網路封包捨棄的問題。 您的 VM 會在 Azure 入口網站中報告特定時間範圍內的平均 CPU。 如果 CPU 用量暴增，請調查是客體 VM 上的哪一個處理序造成高 CPU 用量，且如果可能的話，請使其降低。 您可能需要將 VM 的大小調整為較大的 SKU，或針對虛擬機器擴展集增加執行個體計數，或設定為自動調整 CPU 使用量。 如有任何問題，請[洽詢 NVA 廠商以取得](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)所需的協助。
 
 ### <a name="validate-vm-network-statistics"></a>驗證 VM 網路統計資料
 
@@ -127,13 +127,13 @@ ms.locfileid: "71056824"
 
 1. 若要擷取同時網路追蹤，請執行下列命令：
 
-   **對於視窗**
+   **適用于 Windows**
 
-   netsh 跟蹤開始捕獲_是追蹤檔案_c：\server_IP.etl 方案_網路連接
+   netsh trace start capture = yes tracefile = c：\ server_IP .etl 案例 = test-netconnection
 
-   **對於 Linux**
+   **針對 Linux**
 
-   sudo tcpdump -s0 -i eth0 -X -w vmtrace.cap
+   sudo tcpdump-s0-i eth0-X-w vmtrace.cap. cap
 
 2. 使用從來源 VM 到目的地 VM 的 **PsPing** 或 **Nmap** (例如：`PsPing 10.0.0.4:80` 或 `Nmap -p 80 10.0.0.4`)。
 3. 使用[網路監視器](https://www.microsoft.com/download/details.aspx?id=4865)或 tcpdump，開啟從目的地 VM 的網路追蹤。 對您執行 **PsPing** 或 **Nmap** 的來源 VM 套用 IP 的顯示篩選器，例如 `IPv4.address==10.0.0.4 (Windows netmon)` 或 `tcpdump -nn -r vmtrace.cap src or dst host 10.0.0.4` (Linux)。

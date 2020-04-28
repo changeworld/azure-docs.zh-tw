@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 632f6f80184c6ba3409bd30ae070cbaefc77f036
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67109509"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect：啟用裝置回寫
@@ -31,10 +31,10 @@ ms.locfileid: "67109509"
 
 以下文件提供有關在 Azure AD Connect 中啟用裝置回寫功能的資訊。 裝置回寫用於下列案例：
 
-* [使用混合證書信任部署為企業](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)啟用 Windows Hello
-* 基於設備對 ADFS（2012 R2 或更高版本）受保護的應用程式（依賴方信任）啟用條件訪問。
+* [使用混合式憑證信任部署啟用 Windows Hello 企業版](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-cert-trust-prereqs#device-registration)
+* 啟用以裝置至 ADFS （2012 R2 或更高版本）保護的應用程式（信賴憑證者信任）為基礎的條件式存取。
 
-這提供額外的安全性，確保只授權信任的裝置才能存取應用程式。 有關條件訪問的詳細資訊，請參閱[使用條件訪問管理風險](../active-directory-conditional-access-azure-portal.md)，並使用[Azure 活動目錄設備註冊設置本地條件訪問](../../active-directory/active-directory-device-registration-on-premises-setup.md)。
+這提供額外的安全性，確保只授權信任的裝置才能存取應用程式。 如需條件式存取的詳細資訊，請參閱透過[條件式存取管理風險](../active-directory-conditional-access-azure-portal.md)和[使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](../../active-directory/active-directory-device-registration-on-premises-setup.md)。
 
 > [!IMPORTANT]
 > <li>裝置必須位於使用者所在的樹系中。 由於裝置必須回寫到單一樹系中，因此這項功能目前並不支援利用多重使用者樹系的部署。</li>
@@ -82,7 +82,7 @@ ms.locfileid: "67109509"
 
    ![Active Directory 管理中心已註冊的裝置清單](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
-## <a name="enable-conditional-access"></a>啟用條件訪問
+## <a name="enable-conditional-access"></a>啟用條件式存取
 如需如何啟用此案例的詳細指示，請參閱 [使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](../../active-directory/active-directory-device-registration-on-premises-setup.md)。
 
 ## <a name="troubleshooting"></a>疑難排解
@@ -97,7 +97,7 @@ ms.locfileid: "67109509"
   * 從 [開始] 功能表開啟 [同步處理服務] ****。
   * 開啟 [連接器] **** 索引標籤。
   * 尋找類型為 Active Directory 網域服務的連接器並加以選取。
-  * 在 **"操作"** 下，選擇**屬性**。
+  * 在 [**動作**] 底下，選取 [**屬性**]。
   * 前往 [連線至 Active Directory 樹系] ****。 請確認此畫面上所指定的網域和使用者名稱，與提供給指令碼的帳戶相符。
     ![Sync Service Manager 中的連接器帳戶](./media/how-to-connect-device-writeback/connectoraccount.png)
 
@@ -127,7 +127,7 @@ ms.locfileid: "67109509"
 
 ## <a name="additional-information"></a>其他資訊
 * [使用條件式存取管理風險](../active-directory-conditional-access-azure-portal.md)
-* [使用 Azure 活動目錄設備註冊設置本地條件訪問](../../active-directory/active-directory-device-registration-on-premises-setup.md)
+* [使用 Azure Active Directory 裝置註冊設定內部部署條件式存取](../../active-directory/active-directory-device-registration-on-premises-setup.md)
 
 ## <a name="next-steps"></a>後續步驟
 深入了解 [整合內部部署身分識別與 Azure Active Directory](whatis-hybrid-identity.md)。

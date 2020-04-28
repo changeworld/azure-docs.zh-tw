@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60877817"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 向 Azure Data Lake Storage Gen1 驗證終端使用者
@@ -31,11 +31,11 @@ ms.locfileid: "60877817"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **建立 Active Directory 「原生」應用程式**。 您必須先完成[使用 Azure Active Directory 向 Data Lake Storage Gen1 進行使用者驗證](data-lake-store-end-user-authenticate-using-active-directory.md)中的步驟。
 
-* **[cURL](https://curl.haxx.se/)**. 此文章使用 cURL 示範如何對 Data Lake Storage Gen1 進行 REST API 呼叫。
+* **[捲曲](https://curl.haxx.se/)**。 此文章使用 cURL 示範如何對 Data Lake Storage Gen1 進行 REST API 呼叫。
 
 ## <a name="end-user-authentication"></a>終端使用者驗證
 如果您需要讓使用者利用 Azure AD 登入您的應用程式，建議使用終端使用者驗證。 您的應用程式能夠以與登入的使用者相同的存取層級，來存取 Azure 資源。 使用者必須定期提供其認證，您的應用程式才能繼續存取。
@@ -86,6 +86,6 @@ ms.locfileid: "60877817"
 ## <a name="next-steps"></a>後續步驟
 在本文中，您已了解如何使用 REST API，使用服務對服務驗證向 Azure Data Lake Storage Gen1 驗證。 您現在可以查看下列文章，了解如何搭配使用 REST API 與 Azure Data Lake Storage Gen1。
 
-* [使用 REST API 對資料存儲庫 1 一代的帳戶管理操作](data-lake-store-get-started-rest-api.md)
+* [使用 REST API 在 Data Lake Storage Gen1 上進行帳戶管理作業](data-lake-store-get-started-rest-api.md)
 * [使用 REST API 在 Data Lake Storage Gen1 上進行資料作業](data-lake-store-data-operations-rest-api.md)
 
