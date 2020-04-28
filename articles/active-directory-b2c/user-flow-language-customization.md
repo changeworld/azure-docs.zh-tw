@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory B2C 中的語言自訂
-description: 瞭解如何在使用者流中自訂語言體驗。
+description: 瞭解如何自訂使用者流程中的語言體驗。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,15 +11,15 @@ ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5b3af812b2b78c276b5345b9b19226e6e1dba80b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185755"
 ---
 # <a name="language-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的語言自訂
 
-Azure Active Directory B2C (Azure AD B2C) 中的語言自訂可讓您的使用者流程適應不同的語言，以符合您客戶的需求。 微軟提供[36種語言](#supported-languages)的翻譯，但您也可以為任何語言提供自己的翻譯。 即使您的體驗僅提供單一語言，您也可以自訂頁面上的任何文字。
+Azure Active Directory B2C (Azure AD B2C) 中的語言自訂可讓您的使用者流程適應不同的語言，以符合您客戶的需求。 Microsoft 提供[36 語言](#supported-languages)的翻譯，但您也可以針對任何語言提供自己的翻譯。 即使您的體驗僅提供單一語言，您也可以自訂頁面上的任何文字。
 
 ## <a name="how-language-customization-works"></a>語言自訂的運作方式
 
@@ -27,9 +27,9 @@ Azure Active Directory B2C (Azure AD B2C) 中的語言自訂可讓您的使用�
 
 您可能不需要對客戶會看見哪種語言擁有這種程度的控制力。 如果您沒有提供 `ui_locales` 參數，則客戶的使用體驗會由其瀏覽器的設定來決定。 您仍可將各種語言新增為支援的語言，以控制要將使用者流程翻譯為何種語言。 如果客戶瀏覽器所設定要顯示的語言不是您想要支援的語言，則系統會改為顯示您選取作為支援的文化特性預設值語言。
 
-* **ui 地區設定指定語言**：啟用語言自訂後，使用者流將轉換為此處指定的語言。
-* **瀏覽器請求的語言**：如果未`ui_locales`指定參數，則使用者流將轉換為瀏覽器請求的語言（*如果該語言受支援*）。
-* **策略預設語言**：如果瀏覽器未指定語言，或者它指定不支援的語言，則使用者流將轉換為使用者流預設語言。
+* **ui-地區設定指定的語言**：啟用語言自訂之後，您的使用者流程會轉譯為此處指定的語言。
+* **瀏覽器要求的語言**：如果`ui_locales`未指定參數，您的使用者流程會轉譯為瀏覽器所要求的語言（*如果支援該語言*）。
+* **原則預設語言**：如果瀏覽器未指定語言，或指定不支援的語言，則會將使用者流程轉譯為使用者流程預設語言。
 
 > [!NOTE]
 > 如果您使用自訂使用者屬性，則必須提供自己的翻譯。 如需詳細資訊，請參閱[自訂您的字串](#customize-your-strings)。
@@ -145,7 +145,7 @@ Azure Active Directory B2C (Azure AD B2C) 中的語言自訂可讓您的使用�
 
 ## <a name="customize-the-page-ui-by-using-language-customization"></a>使用語言自訂來自訂頁面 UI
 
-有兩種方法可將您的 HTML 內容當地語系化。 一種方式是開啟[語言自訂](user-flow-language-customization.md)。 啟用此功能允許 Azure AD B2C 將 OpenID`ui-locales`連接參數轉發到終結點。 內容伺服器可以使用這個參數來提供語言特定的自訂 HTML 頁面。
+有兩種方法可將您的 HTML 內容當地語系化。 一種方式是開啟[語言自訂](user-flow-language-customization.md)。 啟用此功能可讓 Azure AD B2C 將 OpenID Connect 參數`ui-locales`轉送至您的端點。 內容伺服器可以使用這個參數來提供語言特定的自訂 HTML 頁面。
 
 或者，您也可以根據所使用的地區設定，從不同的地方提取內容。 在已啟用 CORS 的端點中，您可以針對特定語言設定主機內容的資料夾結構。 如果您使用萬用字元值 `{Culture:RFC5646}`，則會呼叫正確的語言。 例如，假設這是您的自訂頁面 URI：
 
@@ -199,14 +199,14 @@ Chrome 和 Firefox 都會要求使用其設定的語言。 如果該語言受到
 
 ## <a name="supported-languages"></a>支援的語言
 
-Azure AD B2C 包括對以下語言的支援。 使用者流語言由 Azure AD B2C 提供。 多重要素驗證 （MFA） 通知語言由 Azure [MFA](../active-directory/authentication/concept-mfa-howitworks.md)提供。
+Azure AD B2C 包含下列語言的支援。 Azure AD B2C 提供使用者流程語言。 多重要素驗證（MFA）通知語言是由[AZURE MFA](../active-directory/authentication/concept-mfa-howitworks.md)提供。
 
-| 語言              | 語言代碼 | 使用者流程         | MFA 通知  |
+| Language              | 語言代碼 | 使用者流程         | MFA 通知  |
 |-----------------------| :-----------: | :----------------: | :----------------: |
 | 阿拉伯文                | ar            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 保加利亞文             | bg            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 孟加拉文                | bn            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
-| 卡達隆尼亞文               | 約            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 卡達隆尼亞文               | ca            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 捷克文                 | cs            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 丹麥文                | da            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 德文                | de            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
@@ -214,7 +214,7 @@ Azure AD B2C 包括對以下語言的支援。 使用者流語言由 Azure AD B2
 | 英文               | en            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 西班牙文               | es            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 愛沙尼亞文              | et            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 巴斯克文                | 歐盟            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 巴斯克文                | eu            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 芬蘭文               | fi            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 法文                | fr            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 加利西亞文              | gl            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
@@ -226,7 +226,7 @@ Azure AD B2C 包括對以下語言的支援。 使用者流語言由 Azure AD B2
 | 印尼文            | id            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 義大利文               | it            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 日文              | ja            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 哈薩克文                | Kk            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 哈薩克文                | kk            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 坎那達文               | kn            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
 | 韓文                | ko            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 立陶宛文            | lt            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
@@ -245,14 +245,14 @@ Azure AD B2C 包括對以下語言的支援。 使用者流語言由 Azure AD B2
 | 俄文               | ru            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 斯洛伐克文                | sk            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 斯洛維尼亞文             | sl            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 塞爾維亞文 (斯拉夫)    | sr-cryl-cs    | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 塞爾維亞文 (拉丁)       | sr-latn-cs    | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 塞爾維亞文 (斯拉夫)    | cryl-cs    | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 塞爾維亞文 (拉丁)       | latn-cs    | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 瑞典文               | sv            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 坦米爾文                 | ta            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
 | 泰盧固文                | te            | ![是](./media/user-flow-language-customization/yes.png) | ![否](./media/user-flow-language-customization/no.png) |
 | 泰文                  | th            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 土耳其文               | tr            | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 烏克蘭文             | uk            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
-| 越南文            | Ⅵ            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
+| 越南文            | vi            | ![否](./media/user-flow-language-customization/no.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 中文 - 簡體  | zh-hans       | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |
 | 中文 - 繁體 | zh-hant       | ![是](./media/user-flow-language-customization/yes.png) | ![是](./media/user-flow-language-customization/yes.png) |

@@ -1,7 +1,7 @@
 ---
-title: 自訂策略的社交帳戶聲明轉換示例
+title: 自訂原則的社交帳戶宣告轉換範例
 titleSuffix: Azure AD B2C
-description: Azure 活動目錄 B2C 的標識體驗框架 （IEF） 架構的社交帳戶聲明轉換示例。
+description: Azure Active Directory B2C 的 Identity Experience Framework （IEF）架構的社交帳戶宣告轉換範例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,17 +12,17 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cb713651aca266ab2546ff26c3cd0175a4cbc289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183749"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帳戶宣告轉換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在 Azure 活動目錄 B2C（Azure AD B2C）中，社交`userIdentities`帳戶標識存儲在**替代安全IdCollection**聲明類型的屬性中。 **alternativeSecurityIdCollection** 中的每個項目會指定簽發者 (識別提供者名稱，例如 facebook.com)，以及 `issuerUserId`，這是簽發者的唯一使用者識別碼。
+在 Azure Active Directory B2C （Azure AD B2C）中，社交帳戶身分識別會儲存`userIdentities`在**alternativeSecurityIdCollection**宣告類型的屬性中。 **alternativeSecurityIdCollection** 中的每個項目會指定簽發者 (識別提供者名稱，例如 facebook.com)，以及 `issuerUserId`，這是簽發者的唯一使用者識別碼。
 
 ```JSON
 "userIdentities": [{
@@ -39,9 +39,9 @@ ms.locfileid: "78183749"
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-建立使用者 alternativeSecurityId 屬性的 JSON 表示法，該屬性可用於對 Azure Active Directory 進行呼叫。 有關詳細資訊，請參閱[替代安全Id](https://docs.microsoft.com/graph/api/resources/alternativesecurityid)架構。
+建立使用者 alternativeSecurityId 屬性的 JSON 表示法，該屬性可用於對 Azure Active Directory 進行呼叫。 如需詳細資訊，請參閱[AlternativeSecurityId](https://docs.microsoft.com/graph/api/resources/alternativesecurityid)架構。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | 索引鍵 | 字串 | 此 ClaimType 可指定社交識別提供者所使用的唯一使用者識別碼。 |
 | InputClaim | identityProvider | 字串 | 此 ClaimType 可指定社交帳戶識別提供者名稱，例如 facebook.com。 |
@@ -65,7 +65,7 @@ ms.locfileid: "78183749"
 
 - 輸入宣告：
     - **key**: 12334
-    - **身份提供者**： Facebook.com
+    - **identityProvider**： Facebook.com
 - 輸出宣告：
     - **alternativeSecurityId**: { "issuer": "facebook.com", "issuerUserId": "MTA4MTQ2MDgyOTI3MDUyNTYzMjcw"}
 
@@ -73,7 +73,7 @@ ms.locfileid: "78183749"
 
 將 `AlternativeSecurityId` 加入 `alternativeSecurityIdCollection` 宣告。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | 字串 | 要新增至輸出宣告的 ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 宣告轉換使用的 ClaimTypes (如果在原則中可用)。 如果已提供，則宣告轉換會在集合結尾加入 `item`。 |
@@ -110,7 +110,7 @@ ms.locfileid: "78183749"
 
 將 **alternativeSecurityIdCollection** 宣告的簽發者清單傳回至新的 **stringCollection** 宣告。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | alternativeSecurityIdCollection | alternativeSecurityIdCollection | 用於取得識別提供者 (簽發者) 清單的 ClaimType。 |
 | OutputClaim | identityProvidersCollection | stringCollection | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 與 alternativeSecurityIdCollection 輸入宣告相關聯的識別提供者清單 |
@@ -137,7 +137,7 @@ ms.locfileid: "78183749"
 
 將 **AlternativeSecurityId** 從 **alternativeSecurityIdCollection** 宣告中移除。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | identityProvider | 字串 | 包含要從集合中移除之識別提供者名稱的 ClaimType。 |
 | InputClaim | collection | alternativeSecurityIdCollection | 宣告轉換所使用的 ClaimType。 宣告轉換會將 identityProvider 從集合中移除。 |
@@ -147,7 +147,7 @@ ms.locfileid: "78183749"
 1. 在 **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingObjectId** 技術設定檔中，輸出使用者的 **alternativeSecurityIds** 宣告。
 2. 要求使用者選取要從與該使用者相關聯之識別提供者清單中移除的社交帳戶。
 3. 以識別提供者名稱呼叫宣告轉換技術設定檔，該設定檔會呼叫 **RemoveAlternativeSecurityIdByIdentityProvider** 宣告轉換，而該轉換會移除選取的社交身分識別。
-4. 保留對使用者帳戶的替代**安全 Id**聲明。
+4. 將**alternativeSecurityIds**宣告保存至使用者帳戶。
 
 ```XML
 <ClaimsTransformation Id="RemoveAlternativeSecurityIdByIdentityProvider" TransformationMethod="RemoveAlternativeSecurityIdByIdentityProvider">

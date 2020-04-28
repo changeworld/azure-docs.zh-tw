@@ -1,6 +1,6 @@
 ---
-title: 以 Azure 宇宙 DB 查詢語言進行日誌
-description: 瞭解 Azure Cosmos DB 中的 LOG SQL 系統函數，以返回指定數位運算式的自然對數
+title: 登入 Azure Cosmos DB 查詢語言
+description: 瞭解 Azure Cosmos DB 中的 LOG SQL 系統函數，以傳回指定數值運算式的自然對數
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 9213ef03f383dec7109652246411fac154b4a7f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302503"
 ---
-# <a name="log-azure-cosmos-db"></a>日誌（Azure 宇宙資料庫）
+# <a name="log-azure-cosmos-db"></a>記錄（Azure Cosmos DB）
  傳回指定數值運算式的自然對數。  
   
 ## <a name="syntax"></a>語法
@@ -71,10 +71,10 @@ SELECT EXP(LOG(10)) AS expLog
 
 ## <a name="remarks"></a>備註
 
-此系統功能不會利用索引。
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [數學函數 Azure 宇宙 DB](sql-query-mathematical-functions.md)
-- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 簡介](introduction.md)
+- [數學函數 Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 簡介](introduction.md)

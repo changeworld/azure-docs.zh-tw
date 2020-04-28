@@ -1,5 +1,5 @@
 ---
-title: 如何規劃 Azure 活動目錄加入實現
+title: 如何規劃您的 Azure Active Directory 聯結執行
 description: 說明在您的環境中實作已加入 Azure AD 的裝置所需執行的步驟。
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6bbecf0e365ba7a8424da775245181fa64c21f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672687"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：規劃 Azure AD Join 實作
@@ -24,13 +24,13 @@ Azure AD Join 可讓您直接將裝置加入 Azure AD，而不需要加入內部
 
 本文將為您提供規劃 Azure AD Join 實作所需的資訊。
  
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本文假設您熟悉 [Azure Active Directory 中的裝置管理簡介](../device-management-introduction.md)。
 
 ## <a name="plan-your-implementation"></a>計劃您的實作
 
-要規劃 Azure AD 聯接實現，應熟悉：
+若要規劃您的 Azure AD 聯結執行，您應該熟悉：
 
 |   |   |
 |---|---|
@@ -40,7 +40,7 @@ Azure AD Join 可讓您直接將裝置加入 Azure AD，而不需要加入內部
 |![勾選][1]|了解應用程式和資源的考量|
 |![勾選][1]|了解您的佈建選項|
 |![勾選][1]|設定企業狀態漫遊|
-|![勾選][1]|配置條件訪問|
+|![勾選][1]|設定條件式存取|
 
 ## <a name="review-your-scenarios"></a>檢閱您的案例 
 
@@ -78,7 +78,7 @@ Azure AD Join 在受控和同盟環境中均可運作。
 如果您的識別提供者不支援這些通訊協定，則 Azure AD Join 無法原生運作。 
 
 >[!NOTE]
-> 目前，Azure AD 聯接不適用於[以外部身份檢查器提供者為主要身份驗證方法的 AD FS 2019。](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary) Azure AD 將預設密碼身份驗證作為主要方法，從而導致此方案中的身份驗證失敗
+> 目前，Azure AD join 不適用於以[外部驗證提供者設定的 AD FS 2019 做為主要驗證方法](/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary)。 Azure AD join 預設為密碼驗證做為主要方法，這會導致在此案例中發生驗證失敗
 
 
 ### <a name="smartcards-and-certificate-based-authentication"></a>智慧卡和憑證型驗證
@@ -110,10 +110,10 @@ Azure AD Join：
 
 ### <a name="management-platform"></a>管理平台
 
-Azure AD 聯接設備的裝置管理基於 MDM 平臺（如 Intune 和 MDM CSP）。 Windows 10 有內建的 MDM 代理程式，可與所有相容的 MDM 解決方案搭配運作。
+Azure AD 已加入裝置的裝置管理是以 MDM 平臺（如 Intune）和 MDM Csp 為基礎。 Windows 10 有內建的 MDM 代理程式，可與所有相容的 MDM 解決方案搭配運作。
 
 > [!NOTE]
-> Azure AD 聯接設備不支援群組原則，因為它們未連接到本地活動目錄。 只能通過 MDM 管理 Azure AD 聯接設備
+> Azure AD 加入的裝置不支援群組原則，因為它們未連線到內部部署 Active Directory。 僅能透過 MDM 來管理已加入 Azure AD 的裝置
 
 有兩種方法可用來管理已加入 Azure AD 的裝置：
 
@@ -129,7 +129,7 @@ Azure AD 聯接設備的裝置管理基於 MDM 平臺（如 Intune 和 MDM CSP�
 
 如果您的 MDM 解決方案無法透過 Azure AD 應用程式資源庫來啟用，您可以依照 [Azure Active Directory 與 MDM 的整合](/windows/client-management/mdm/azure-active-directory-integration-with-mdm)中所列的程序新增該解決方案。 
 
-透過共同管理，您可以使用 SCCM 來管理裝置的特定層面，同時透過 MDM 平台來提供原則。 Microsoft Intune 可支援與 SCCM 搭配的共同管理。 有關 Windows 10 設備的共同管理的詳細資訊，請參閱[什麼是共同管理？](/configmgr/core/clients/manage/co-management-overview) 如果您使用 Intune 以外的 MDM 產品，請向 MDM 提供者洽詢適用的共同管理案例。
+透過共同管理，您可以使用 SCCM 來管理裝置的特定層面，同時透過 MDM 平台來提供原則。 Microsoft Intune 可支援與 SCCM 搭配的共同管理。 如需有關 Windows 10 裝置共同管理的詳細資訊，請參閱[什麼是共同管理？](/configmgr/core/clients/manage/co-management-overview)。 如果您使用 Intune 以外的 MDM 產品，請向 MDM 提供者洽詢適用的共同管理案例。
 
 **建議：** 針對已加入 Azure AD 的裝置，請考慮使用僅限 MDM 的管理。
 
@@ -181,7 +181,7 @@ Azure AD 聯接設備的裝置管理基於 MDM 平臺（如 Intune 和 MDM CSP�
 
 **建議：** 考慮淘汰這些應用程式，並改用其最新的替代方案。
 
-### <a name="remote-desktop-services"></a>遠端桌面服務問題
+### <a name="remote-desktop-services"></a>遠端桌面服務
 
 若要從遠端桌面連線至已加入 Azure AD 的裝置，主機電腦必須已加入 Azure AD 或已加入混合式 Azure AD。 不支援從未加入或非 Windows 的裝置進行遠端桌面連線。 如需詳細資訊，請參閱[連線至已加入 Azure AD 的遠端 PC](/windows/client-management/connect-to-remote-aadj-pc)
 
@@ -244,7 +244,7 @@ Azure 入口網站可讓您控制如何將已加入 Azure AD 的裝置部署到�
 **若要新增 MDM 提供者**：
 
 1. 在 [Azure Active Directory]**** 頁面的 [管理]**** 區段中，按一下 `Mobility (MDM and MAM)`。 
-1. 按一下"**添加應用程式**"。
+1. 按一下 [**新增應用程式**]。
 1. 從清單中選取您的 MDM 提供者。
 
    ![新增應用程式](./media/azureadjoin-plan/04.png)
@@ -284,19 +284,19 @@ MAM 不適用於 Azure AD Join。
 
 **建議**：即使對混合式 Azure AD Join 裝置也可啟用此設定。
 
-## <a name="configure-conditional-access"></a>配置條件訪問
+## <a name="configure-conditional-access"></a>設定條件式存取
 
 如果您為已加入 Azure AD 的裝置設定了 MDM 提供者，只要裝置受到管理，提供者即會將裝置標示為符合規範。 
 
 ![符合規範的裝置](./media/azureadjoin-plan/46.png)
 
-您可以使用此實現[需要託管設備進行雲應用訪問與條件訪問](../conditional-access/require-managed-devices.md)。
+您可以使用此執行方式，透過[條件式存取要求受管理的裝置存取雲端應用程式](../conditional-access/require-managed-devices.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [在第一次運行](azuread-joined-devices-frx.md)
-> 期間將[工作設備加入組織網路](/azure/active-directory/user-help/user-help-join-device-on-network)，使用 Azure AD 加入新的 Windows 10 設備
+> [在第一次執行時，使用 Azure AD 加入新的 Windows 10 裝置](azuread-joined-devices-frx.md)
+> [將您的工作裝置加入組織的網路](/azure/active-directory/user-help/user-help-join-device-on-network)
 
 <!--Image references-->
 [1]: ./media/azureadjoin-plan/12.png

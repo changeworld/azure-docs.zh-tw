@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9eec896e6cccaf58c83820161c54c4f10cfadadd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77561556"
 ---
 # <a name="what-is-group-based-licensing-in-azure-active-directory"></a>什麼是 Azure Active Directory 中的群組型授權？
@@ -32,9 +32,9 @@ Microsoft 付費的雲端服務 (例如 Office 365、Enterprise Mobility + Secur
 ## <a name="licensing-requirements"></a>授權需求
 您必須具有下列其中一個授權才能使用群組型授權：
 
-- Azure AD 高級 P1 及以上已付費或試用訂閱
+- Azure AD Premium P1 和更新版本的付費或試用訂用帳戶
 
-- Office 365 企業版或 Office 365 A3 或 Office 365 GCC G3 或 GCCH Office 365 E3 的付費版或試用版，或適用于 DOD 及以上的 Office 365 E3
+- 付費或試用版的 Office 365 企業版 E3 或 Office 365 A3 或 Office 365 GCC G3 或 office 365 E3 for GCCH 或 Office 365 E3 for DOD 和更新版本
 
 ### <a name="required-number-of-licenses"></a>所需的授權數目
 針對指派授權的任何群組，您也必須為每個唯一成員取得授權。 雖然您不必為群組中的每個成員指派授權，但您必須至少要有足夠的授權，才能包含所有成員。 例如，如果您的租用戶中有 1,000 個唯一成員屬於授權群組，則必須至少擁有 1,000 個授權，才能符合授權合約。
@@ -49,7 +49,7 @@ Microsoft 付費的雲端服務 (例如 Office 365、Enterprise Mobility + Secur
 
 - 支援所有需要使用者層級授權的 Microsoft 雲端服務。 這項支援包括所有 Office 365 產品、Enterprise Mobility + Security 和 Dynamics 365。
 
-- 基於組的許可目前只能通過[Azure 門戶](https://portal.azure.com)提供。 如果您主要使用其他監管中心進行使用者和組管理，例如[Microsoft 365 管理中心](https://admin.microsoft.com)，則可以繼續這樣做。 但是，若要在群組等級管理授權，您應該使用 Azure 入口網站。
+- 以群組為基礎的授權目前僅透過[Azure 入口網站](https://portal.azure.com)提供。 如果您主要是使用其他管理入口網站進行使用者和群組管理，例如[Microsoft 365 系統管理中心](https://admin.microsoft.com)，您可以繼續執行此動作。 但是，若要在群組等級管理授權，您應該使用 Azure 入口網站。
 
 - Azure AD 會自動管理因群組成員資格變更而產生的授權修改。 一般而言，在成員資格變更後的幾分鐘內，授權修改就會生效。
 

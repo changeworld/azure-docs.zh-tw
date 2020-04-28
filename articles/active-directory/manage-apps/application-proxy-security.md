@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6fd6794bafc3c209032f32626e8c46b51769d05e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481223"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 遠端存取應用程式的安全性考量
@@ -47,9 +47,9 @@ Azure AD 應用程式 Proxy 依賴 Azure AD Security Token Service (STS) 來進�
 
 在建立您的網路連線之前，先套用更豐富的原則控制。
 
-使用[條件訪問](../conditional-access/overview.md)，您可以定義允許訪問後端應用程式的流量的限制。 您可以位置、驗證強度和使用者風險狀況作為基礎，來建立限制登入的原則。
+透過[條件式存取](../conditional-access/overview.md)，您可以定義允許哪些流量存取後端應用程式的限制。 您可以位置、驗證強度和使用者風險狀況作為基礎，來建立限制登入的原則。
 
-您還可以使用條件訪問配置多重要素驗證策略，為使用者身份驗證添加另一層安全性。 此外，還可以通過 Azure AD 條件訪問將應用程式路由到 Microsoft 雲應用安全，通過[訪問](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[會話](https://docs.microsoft.com/cloud-app-security/session-policy-aad)策略提供即時監視和控制
+您也可以使用條件式存取來設定多重要素驗證原則，為您的使用者驗證增加另一層安全性。 此外，您的應用程式也可以透過 Azure AD 條件式存取路由至 Microsoft Cloud App Security，以透過[存取](https://docs.microsoft.com/cloud-app-security/access-policy-aad)和[會話](https://docs.microsoft.com/cloud-app-security/session-policy-aad)原則提供即時監視和控制
 
 ### <a name="traffic-termination"></a>流量終止
 
@@ -69,7 +69,7 @@ Azure AD 應用程式 Proxy 是反向 Proxy，因此所有至後端應用程式�
 
 取得最新的安全性保護。
 
-因為應用程式 Proxy 是 Azure Active Directory 的一部分，所以可以利用 [Azure AD Identity Protection](../active-directory-identityprotection.md)，其中包含來自 Microsoft Security Response Center 和 Digital Crimes Unit 的資料。 我們共同識別受攻擊的帳戶，並提供高風險登錄保護。我們考慮了許多因素，以確定哪些登錄嘗試是高風險的。 這些因素包括標記受感染的裝置、匿名網路，以及非典型或假位置。
+因為應用程式 Proxy 是 Azure Active Directory 的一部分，所以可以利用 [Azure AD Identity Protection](../active-directory-identityprotection.md)，其中包含來自 Microsoft Security Response Center 和 Digital Crimes Unit 的資料。 我們共同主動識別遭入侵的帳戶，並提供來自高風險登入的保護。我們會將許多因素納入考慮，以判斷哪些登入嘗試是高風險的。 這些因素包括標記受感染的裝置、匿名網路，以及非典型或假位置。
 
 這些報告和事件中有許多已可透過 API 與安全性資訊和事件管理 (SIEM) 系統整合。
 
@@ -83,7 +83,7 @@ Azure AD 應用程式 Proxy 是反向 Proxy，因此所有至後端應用程式�
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS 保護服務
 
-通過應用程式代理髮布的應用程式受到保護，免受分散式阻斷服務 （DDoS） 攻擊。 **Azure DDoS 保護**是 Azure 平臺提供的一項服務，用於保護 Azure 資源免受拒絕服務攻擊。 **基本服務**層自動啟用，提供始終打開的流量監視和即時緩解常見的網路級攻擊。 **標準**層也可用，提供專門針對 Azure 虛擬網路資源的其他緩解功能。 有關詳細資訊，請參閱[Azure DDoS 保護標準概述](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
+透過應用程式 Proxy 發佈的應用程式會受到保護，以防止分散式阻斷服務（DDoS）攻擊。 **Azure DDoS 保護**是 azure 平臺提供的一項服務，可保護您的 azure 資源免于拒絕服務的攻擊。 **基本**服務層級會自動啟用，以提供 always on 的流量監視，以及即時緩和常見的網路層級攻擊。 **標準**層也可供使用，提供額外的緩和功能，專門針對 Azure 虛擬網路資源進行調整。 如需詳細資訊，請參閱[Azure DDoS 保護 Standard 總覽](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)。
 
 ## <a name="under-the-hood"></a>背後原理
 
@@ -99,7 +99,7 @@ Azure AD 應用程式 Proxy 是由兩個部分組成︰
 * 使用者會存取發佈的應用程式。
 
 >[!NOTE]
->所有通信都通過 TLS 進行，並且始終源自應用程式代理服務的連接器。 此服務只會輸出。
+>所有通訊都是透過 TLS 進行，而且一律源自于應用程式 Proxy 服務的連接器。 此服務只會輸出。
 
 連接器會使用用戶端憑證來驗證幾乎所有呼叫的應用程式 Proxy 服務。 此程序的唯一例外是可供建立用戶端憑證的初始設定步驟。
 
@@ -134,13 +134,13 @@ Azure AD 應用程式 Proxy 是由兩個部分組成︰
 若要深入了解每個步驟中所發生的事項，請繼續閱讀。
 
 
-#### <a name="1-the-service-authenticates-the-user-for-the-app"></a>1. 服務對應用的使用者進行身份驗證
+#### <a name="1-the-service-authenticates-the-user-for-the-app"></a>1. 服務會驗證應用程式的使用者
 
 如果您將應用程式設定成使用 Passthrough 作為其預先驗證方法時，就會跳過本節中的步驟。
 
 如果您將應用程式設定為以 Azure AD 預先驗證時，使用者會重新導向至 Azure AD STS 驗證，並採取下列步驟：
 
-1. 應用程式代理檢查特定應用程式的任何條件訪問策略要求。 這個步驟可確保已對應用程式指派使用者。 如果需要雙步驟驗證，驗證順序會提示使用者進行第二驗證方法。
+1. 應用程式 Proxy 會檢查特定應用程式的任何條件式存取原則需求。 這個步驟可確保已對應用程式指派使用者。 如果需要雙步驟驗證，驗證順序會提示使用者進行第二驗證方法。
 
 2. 通過所有檢查後，Azure AD STS 會針對應用程式發出已簽署權杖，並將使用者重新導向回到應用程式 Proxy 服務。
 
@@ -153,13 +153,13 @@ Azure AD 應用程式 Proxy 是由兩個部分組成︰
 如果預先驗證步驟的任何部分失敗，使用者的要求會遭到拒絕，且使用者會顯示訊息，指出問題的來源。
 
 
-#### <a name="2-the-service-places-a-request-in-the-connector-queue"></a>2. 服務在連接器佇列中發出請求
+#### <a name="2-the-service-places-a-request-in-the-connector-queue"></a>2. 服務會將要求放在連接器佇列中
 
 連接器保持對應用程式 Proxy 服務開啟輸出連線。 當要求傳入時，服務會在其中一個開啟連線上佇列要求，以供連接器挑選。
 
 要求包含來自應用程式的項目，例如要求標頭、來自加密 cookie 的資料、提出要求的使用者，以及要求識別碼。 雖然來自加密 cookie 的資料會與要求一起傳送，但驗證 cookie 本身並不是。
 
-#### <a name="3-the-connector-processes-the-request-from-the-queue"></a>3. 連接器處理來自佇列的請求。 
+#### <a name="3-the-connector-processes-the-request-from-the-queue"></a>3. 連接器會處理來自佇列的要求。 
 
 根據要求，應用程式 Proxy 會執行下列其中一個動作︰
 
@@ -167,13 +167,13 @@ Azure AD 應用程式 Proxy 是由兩個部分組成︰
 
 * 如果要求在主體中具有與它相關聯的資料 (例如，RESTful「POST」** 作業)，連接器會使用用戶端憑證建立與應用程式 Proxy 執行個體的輸出連線。 它會建立此連線來要求資料，並開啟與內部部署資源的連線。 在收到來自連接器的要求後，應用程式 Proxy 服務會開始接受來自使用者的內容，並將資料轉送至連接器。 連接器會依次將資料轉送到內部資源。
 
-#### <a name="4-the-connector-waits-for-a-response"></a>4. 連接器等待回應。
+#### <a name="4-the-connector-waits-for-a-response"></a>4. 連接器會等待回應。
 
 完成所有內容的要求並傳輸至後端後，連接器會等候回應。
 
 在收到回應後，連接器會建立對應用程式 Proxy 服務的輸出連線，以傳回標頭詳細資料，並開始串流傳回的資料。
 
-#### <a name="5-the-service-streams-data-to-the-user"></a>5. 服務將資料流程式傳輸給使用者。 
+#### <a name="5-the-service-streams-data-to-the-user"></a>5. 服務會將資料串流處理給使用者。 
 
 應用程式的一些處理可能會在這裡發生。 如果您將應用程式中的應用程式 Proxy 應用程式設定為轉譯標頭或 URL，會視需要在此步驟進行該處理。
 
@@ -182,4 +182,4 @@ Azure AD 應用程式 Proxy 是由兩個部分組成︰
 
 [使用 Azure AD 應用程式 Proxy 時的網路拓撲考量](application-proxy-network-topology.md)
 
-[瞭解 Azure AD 應用程式代理連接器](application-proxy-connectors.md)
+[瞭解 Azure AD 應用程式 Proxy 連接器](application-proxy-connectors.md)

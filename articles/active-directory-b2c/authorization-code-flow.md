@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 8248ca0abb1d633786b09b894bcd6b1089ab2d8c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260887"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的 OAuth 2.0 授權碼流程
@@ -29,15 +29,15 @@ ms.locfileid: "79260887"
 > [!NOTE]
 > 若要使用 Azure AD B2C 將身分識別管理新增至 Web 應用程式，請使用 [OpenID Connect](openid-connect.md)，而不是 OAuth 2.0。
 
-Azure AD B2C 擴充標準的 OAuth 2.0 流程，功能更強大，而不僅止於簡單的驗證和授權。 它引入了[使用者流](user-flow-overview.md)。 透過使用者流程，您可以利用 OAuth 2.0 來將使用者體驗新增至應用程式，例如註冊、登入和設定檔管理。 使用 OAuth 2.0 通訊協定的身分識別提供者包括[Amazon](identity-provider-amazon.md)、[Azure Active Directory](identity-provider-azure-ad-single-tenant.md)、[Facebook](identity-provider-facebook.md)、[GitHub](identity-provider-github.md)、[Google](identity-provider-google.md) 和 [LinkedIn](identity-provider-linkedin.md)。
+Azure AD B2C 擴充標準的 OAuth 2.0 流程，功能更強大，而不僅止於簡單的驗證和授權。 它會引進[使用者流程](user-flow-overview.md)。 透過使用者流程，您可以利用 OAuth 2.0 來將使用者體驗新增至應用程式，例如註冊、登入和設定檔管理。 使用 OAuth 2.0 通訊協定的身分識別提供者包括[Amazon](identity-provider-amazon.md)、[Azure Active Directory](identity-provider-azure-ad-single-tenant.md)、[Facebook](identity-provider-facebook.md)、[GitHub](identity-provider-github.md)、[Google](identity-provider-google.md) 和 [LinkedIn](identity-provider-linkedin.md)。
 
-要嘗試本文中的 HTTP 要求，請進行以下操作：
+若要嘗試本文中的 HTTP 要求：
 
 1. 將 `{tenant}` 取代為您的 Azure AD B2C 租用戶名稱。
-1. 替換為`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`以前在 Azure AD B2C 租戶中註冊的應用程式的應用 ID。
-1. 替換為`{policy}`您在租戶中創建的策略的名稱，例如`b2c_1_sign_in`。
+1. 將`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6`取代為您先前在 Azure AD B2C 租使用者中註冊之應用程式的應用程式識別碼。
+1. 以`{policy}`您在租使用者中建立的原則名稱取代，例如`b2c_1_sign_in`。
 
-## <a name="1-get-an-authorization-code"></a>1. 獲取授權代碼
+## <a name="1-get-an-authorization-code"></a>1. 取得授權碼
 授權碼流程始於用戶端將使用者導向 `/authorize` 端點。 這是使用者在流程中會採取動作的互動部分。 在此要求中，用戶端會在 `scope` 參數中指出必須向使用者索取的權限。 以下三個範例 (插入換行以提高可讀性) 各使用不同的使用者流程。
 
 
@@ -54,15 +54,15 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 | 參數 | 必要項？ | 描述 |
 | --- | --- | --- |
-|[租戶]| 必要 | Azure AD B2C 租戶的名稱|
-| [政策] | 必要 | 要運行的使用者流。 指定在 Azure AD B2C 租戶中創建的使用者流的名稱。 例如： `b2c_1_sign_in`、`b2c_1_sign_up`或`b2c_1_edit_profile`。 |
+|出租| 必要 | Azure AD B2C 租使用者的名稱|
+| 策略 | 必要 | 要執行的使用者流程。 指定您在 Azure AD B2C 租使用者中建立的使用者流程名稱。 例如： `b2c_1_sign_in`、 `b2c_1_sign_up`或。 `b2c_1_edit_profile` |
 | client_id |必要 |在 [Azure 入口網站](https://portal.azure.com)中指派給應用程式的應用程式識別碼。 |
 | response_type |必要 |回應類型，必須針對授權碼流程來加入 `code`。 |
 | redirect_uri |必要 |應用程式的重新導向 URI，您的應用程式會在此處傳送及接收驗證回應。 它必須與您在入口網站中註冊的其中一個重新導向 URI 完全相符，不過必須是 URL 編碼格式。 |
-| scope |必要 |範圍的空格分隔清單。 單一範圍值向 Azure Active Directory (Azure AD) 指出正在要求的兩個權限。 使用用戶端識別碼作為範圍時，表示您的應用程式需要可針對您自己的服務或 Web API 使用的存取權杖 (以相同的用戶端識別碼表示)。  `offline_access` 範圍表示您的應用程式需要重新整理權杖，才能長久存取資源。 您也可以使用 `openid` 範圍從 Azure AD B2C 要求識別碼權杖。 |
+| scope |必要 |以空格分隔的範圍清單。 單一範圍值向 Azure Active Directory (Azure AD) 指出正在要求的兩個權限。 使用用戶端識別碼作為範圍時，表示您的應用程式需要可針對您自己的服務或 Web API 使用的存取權杖 (以相同的用戶端識別碼表示)。  `offline_access` 範圍表示您的應用程式需要重新整理權杖，才能長久存取資源。 您也可以使用 `openid` 範圍從 Azure AD B2C 要求識別碼權杖。 |
 | response_mode |建議 |用來將產生的授權碼傳回至應用程式的方法。 可以是 `query`、`form_post` 或 `fragment`。 |
-| state |建議 |包含在要求中的值，可以是您想要使用的任何內容字串。 通常會使用隨機產生的唯一值，以防止跨網站偽造要求攻擊。 在驗證要求出現之前，也會使用此狀態將應用程式中使用者狀態的相關資訊編碼。 例如，使用者所在的頁面，或正在執行的使用者流程。 |
-| prompt |選用 |需要的使用者互動類型。 目前，唯一有效的值是 `login`，可強制使用者針對該要求輸入其認證。 單一登入將沒有作用。 |
+| State |建議 |包含在要求中的值，可以是您想要使用的任何內容字串。 通常會使用隨機產生的唯一值，以防止跨網站偽造要求攻擊。 在驗證要求出現之前，也會使用此狀態將應用程式中使用者狀態的相關資訊編碼。 例如，使用者所在的頁面，或正在執行的使用者流程。 |
+| Prompt |選擇性 |需要的使用者互動類型。 目前，唯一有效的值是 `login`，可強制使用者針對該要求輸入其認證。 單一登入將沒有作用。 |
 
 此時會要求使用者完成使用者流程的工作流程。 這可能會牽涉到讓使用者輸入自己的使用者名稱及密碼、以社交身分識別登入、註冊目錄，或是其他任何數目的步驟。 使用者動作取決於使用者流程的定義方式。
 
@@ -76,10 +76,10 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 &state=arbitrary_data_you_can_receive_in_the_response                // the value provided in the request
 ```
 
-| 參數 | 描述 |
+| 參數 | 說明 |
 | --- | --- |
-| 代碼 |應用程式所要求的授權碼。 應用程式可以使用授權碼來要求目標資源的存取權杖。 授權碼的存留期很短。 通常會在大約 10 分鐘後過期。 |
-| state |如需完整說明，請參閱上一節的表格。 如果要求中包含 `state` 參數，回應中就應該出現相同的值。 應用程式應該驗證要求和回應中的 `state` 值完全相同。 |
+| code |應用程式所要求的授權碼。 應用程式可以使用授權碼來要求目標資源的存取權杖。 授權碼的存留期很短。 通常會在大約 10 分鐘後過期。 |
+| State |如需完整說明，請參閱上一節的表格。 如果要求中包含 `state` 參數，則回應中應該會出現相同的值。 應用程式應該驗證要求和回應中的 `state` 值完全相同。 |
 
 錯誤回應也能傳送到重新導向 URI，以便讓應用程式能夠適當地處理它們：
 
@@ -94,12 +94,12 @@ error=access_denied
 | --- | --- |
 | error |可用於將發生的錯誤類型分類的錯誤碼字串。 您也可以使用此字串對錯誤做出反應。 |
 | error_description |可協助您識別驗證錯誤根本原因的特定錯誤訊息。 |
-| state |如需完整說明，請參閱前一個表格。 如果要求中包含 `state` 參數，回應中就應該出現相同的值。 應用程式應該驗證要求和回應中的 `state` 值完全相同。 |
+| State |如需完整說明，請參閱前一個表格。 如果要求中包含 `state` 參數，則回應中應該會出現相同的值。 應用程式應該驗證要求和回應中的 `state` 值完全相同。 |
 
-## <a name="2-get-a-token"></a>2. 獲取權杖
-既然已取得授權碼，您可以將 POST 要求傳送至 `/token` 端點，針對所需的資源來兌換權杖的 `code`。 在 Azure AD B2C 中，可以通過在請求中指定其他 API 的範圍來像往常一樣[請求其他 API](access-tokens.md#request-a-token)的訪問權杖。
+## <a name="2-get-a-token"></a>2. 取得權杖
+既然已取得授權碼，您可以將 POST 要求傳送至 `/token` 端點，針對所需的資源來兌換權杖的 `code`。 在 Azure AD B2C 中，您可以藉由在要求中指定其範圍，以一般方式[要求其他 API 的存取權杖](access-tokens.md#request-a-token)。
 
-還可以按照使用應用的用戶端 ID 作為請求的範圍（這將導致具有該用戶端 ID 的訪問權杖為"訪問"）的慣例，請求應用自己的後端 Web API 的訪問權杖：
+您也可以針對應用程式本身的後端 Web API 要求存取權杖，方法是使用應用程式的用戶端識別碼作為要求的範圍（這會產生具有該用戶端識別碼的存取權杖做為「物件」）：
 
 ```HTTP
 POST https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
@@ -112,13 +112,13 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | 參數 | 必要項？ | 描述 |
 | --- | --- | --- |
-|[租戶]| 必要 | Azure AD B2C 租戶的名稱|
-|[政策]| 必要| 用來取得授權碼的使用者流程。 您無法在此要求中使用不同的使用者流程。 |
+|出租| 必要 | Azure AD B2C 租使用者的名稱|
+|策略| 必要| 用來取得授權碼的使用者流程。 您無法在此要求中使用不同的使用者流程。 |
 | client_id |必要 |在 [Azure 入口網站](https://portal.azure.com)中指派給應用程式的應用程式識別碼。|
-| client_secret | 是，在 Web 應用中 | 在[Azure 門戶](https://portal.azure.com/)中生成的應用程式金鑰。 用戶端機密用於 Web 應用方案，用戶端可以安全地存儲用戶端機密。 對於本機應用（公共用戶端）方案，用戶端機密無法安全地存儲，因此在此調用中不使用。 如果您使用用戶端機密，請定期更改它。 |
+| client_secret | 是，在 Web Apps | 在[Azure 入口網站](https://portal.azure.com/)中產生的應用程式密碼。 在此流程中，用戶端密碼會用於 Web 應用程式案例，讓用戶端可以安全地儲存用戶端密碼。 針對原生應用程式（公用用戶端）案例，無法安全地儲存用戶端密碼，因此不會在此呼叫中使用。 如果您使用用戶端密碼，請定期進行變更。 |
 | grant_type |必要 |授與類型。 在授權碼流程中，授與類型必須的 `authorization_code`。 |
-| scope |建議 |範圍的空格分隔清單。 向 Azure AD 指出要求兩個權限的單一範圍值。 使用用戶端識別碼作為範圍時，表示您的應用程式需要可針對您自己的服務或 Web API 使用的存取權杖 (以相同的用戶端識別碼表示)。  `offline_access` 範圍表示您的應用程式需要重新整理權杖，才能長久存取資源。  您也可以使用 `openid` 範圍從 Azure AD B2C 要求識別碼權杖。 |
-| 代碼 |必要 |您在流程的第一個階段中取得的授權碼。 |
+| scope |建議 |以空格分隔的範圍清單。 向 Azure AD 指出要求兩個權限的單一範圍值。 使用用戶端識別碼作為範圍時，表示您的應用程式需要可針對您自己的服務或 Web API 使用的存取權杖 (以相同的用戶端識別碼表示)。  `offline_access` 範圍表示您的應用程式需要重新整理權杖，才能長久存取資源。  您也可以使用 `openid` 範圍從 Azure AD B2C 要求識別碼權杖。 |
+| code |必要 |您在流程的第一個階段中取得的授權碼。 |
 | redirect_uri |必要 |應用程式的重新導向 URI，您已在此處收到授權碼。 |
 
 成功的權杖回應如下所示：
@@ -165,7 +165,7 @@ Host: mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
-## <a name="4-refresh-the-token"></a>4. 刷新權杖
+## <a name="4-refresh-the-token"></a>4. 重新整理權杖
 存取權杖和識別碼權杖的存留期短暫。 權杖過期之後，您必須重新整理權杖，才能繼續存取資源。 若要這樣做，請向 `/token` 端點提交另一個 POST 要求。 但這次要提供 `refresh_token`，而不是 `code`：
 
 ```HTTP
@@ -178,13 +178,13 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 
 | 參數 | 必要項？ | 描述 |
 | --- | --- | --- |
-|[租戶]| 必要 | Azure AD B2C 租戶的名稱|
-|[政策] |必要 |用來取得原始重新整理權杖的使用者流程。 您無法在此要求中使用不同的使用者流程。 |
+|出租| 必要 | Azure AD B2C 租使用者的名稱|
+|策略 |必要 |用來取得原始重新整理權杖的使用者流程。 您無法在此要求中使用不同的使用者流程。 |
 | client_id |必要 |在 [Azure 入口網站](https://portal.azure.com)中指派給應用程式的應用程式識別碼。 |
-| client_secret | 是，在 Web 應用中 | 在[Azure 門戶](https://portal.azure.com/)中生成的應用程式金鑰。 用戶端機密用於 Web 應用方案，用戶端可以安全地存儲用戶端機密。 對於本機應用（公共用戶端）方案，用戶端機密無法安全地存儲，因此在此調用中不使用。 如果您使用用戶端機密，請定期更改它。 |
+| client_secret | 是，在 Web Apps | 在[Azure 入口網站](https://portal.azure.com/)中產生的應用程式密碼。 在此流程中，用戶端密碼會用於 Web 應用程式案例，讓用戶端可以安全地儲存用戶端密碼。 針對原生應用程式（公用用戶端）案例，無法安全地儲存用戶端密碼，因此不會在此呼叫中使用。 如果您使用用戶端密碼，請定期進行變更。 |
 | grant_type |必要 |授與類型。 在授權碼流程的這個階段中，授與類型必須是 `refresh_token`。 |
-| scope |建議 |範圍的空格分隔清單。 向 Azure AD 指出要求兩個權限的單一範圍值。 使用用戶端識別碼作為範圍時，表示您的應用程式需要可針對您自己的服務或 Web API 使用的存取權杖 (以相同的用戶端識別碼表示)。  `offline_access` 範圍表示您的應用程式需要重新整理權杖，才能長久存取資源。  您也可以使用 `openid` 範圍從 Azure AD B2C 要求識別碼權杖。 |
-| redirect_uri |選用 |應用程式的重新導向 URI，您已在此處收到授權碼。 |
+| scope |建議 |以空格分隔的範圍清單。 向 Azure AD 指出要求兩個權限的單一範圍值。 使用用戶端識別碼作為範圍時，表示您的應用程式需要可針對您自己的服務或 Web API 使用的存取權杖 (以相同的用戶端識別碼表示)。  `offline_access` 範圍表示您的應用程式需要重新整理權杖，才能長久存取資源。  您也可以使用 `openid` 範圍從 Azure AD B2C 要求識別碼權杖。 |
+| redirect_uri |選擇性 |應用程式的重新導向 URI，您已在此處收到授權碼。 |
 | refresh_token |必要 |您在流程的第二個階段中取得的原始重新整理權杖。 |
 
 成功的權杖回應如下所示：

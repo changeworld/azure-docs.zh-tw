@@ -1,6 +1,6 @@
 ---
-title: 更改 Azure AD 授權管理中訪問包的生命週期設置 - Azure 活動目錄
-description: 瞭解如何在 Azure 活動目錄授權管理中更改訪問包的生命週期設置。
+title: 變更 Azure AD 權利管理中存取套件的生命週期設定-Azure Active Directory
+description: 瞭解如何在 Azure Active Directory 權利管理中變更存取套件的生命週期設定。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,42 +17,42 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 959d85f496a4a573a969bf736aba137d5b86154a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261979"
 ---
-# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>更改 Azure AD 授權管理中訪問包的生命週期設置
+# <a name="change-lifecycle-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中變更存取套件的生命週期設定
 
-作為訪問包管理器，您可以隨時通過編輯現有策略來更改訪問包的生命週期設置。 如果更改策略的到期日期，則已處於待審批或已批准狀態的請求的到期日期將不會更改。
+身為存取套件管理員，您可以隨時編輯現有的原則來變更存取套件的生命週期設定。 如果您變更原則的到期日，已處於 [待核准] 或 [已核准] 狀態之要求的到期日將不會變更。
 
-本文介紹如何更改現有訪問包的生命週期設置。
+本文說明如何變更現有存取套件的生命週期設定。
 
-## <a name="open-lifecycle-settings"></a>開放生命週期設置
+## <a name="open-lifecycle-settings"></a>開啟生命週期設定
 
-要更改訪問包的生命週期設置，您需要打開相應的策略。 按照以下步驟打開訪問包的生命週期設置。
+若要變更存取套件的生命週期設定，您需要開啟對應的原則。 請遵循下列步驟來開啟存取套件的生命週期設定。
 
-**先決條件角色：** 全域管理員、使用者管理員、目錄擁有者或訪問包管理器
+**必要角色：** 全域管理員、使用者系統管理員、目錄擁有者或存取套件管理員
 
-1. 在 Azure 入口網站中按一下 [Azure Active Directory]****，然後按一下 [身分識別治理]****。
+1. 在 Azure 入口網站中按一下 [Azure Active Directory]  ，然後按一下 [身分識別治理]  。
 
-1. 在左側功能表中，按一下 **"訪問包**"，然後打開訪問包。
+1. 在左側功能表中，按一下 [**存取套件**]，然後開啟存取封裝。
 
-1. 按一下 **"策略"，** 然後按一下具有要編輯的生命週期設置的策略。
+1. 按一下 [**原則**]，然後按一下具有您要編輯之生命週期設定的原則。
 
-    "策略詳細資訊"窗格將在頁面底部打開。
+    [原則詳細資料] 窗格會在頁面底部開啟。
 
-    ![訪問包 - 策略詳細資訊窗格](./media/entitlement-management-shared/policy-details.png)
+    ![存取套件-原則詳細資料窗格](./media/entitlement-management-shared/policy-details.png)
 
-1. 按一下 **"編輯"** 以編輯策略。
+1. 按一下 [**編輯**] 以編輯原則。
 
-    ![訪問包 - 編輯策略](./media/entitlement-management-shared/policy-edit.png)
+    ![存取套件-編輯原則](./media/entitlement-management-shared/policy-edit.png)
 
-1. 按一下 **"生命週期**"選項卡以打開生命週期設置。
+1. 按一下 [**生命週期**] 索引標籤以開啟 [生命週期設定]。
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-- [更改訪問包的請求和審批設置](entitlement-management-access-package-request-policy.md)
+- [變更存取套件的要求和核准設定](entitlement-management-access-package-request-policy.md)

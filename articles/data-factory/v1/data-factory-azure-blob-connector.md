@@ -1,5 +1,5 @@
 ---
-title: 將資料複製到/從 Azure Blob 存儲
+title: 將資料複製到/從 Azure Blob 儲存體
 description: 了解如何在 Azure Data Factory 複製 Blob 資料。 使用我們的範例：如何在 Azure Blob 儲存體和 Azure SQL Database 將資料複製進來和複製出去。
 services: data-factory
 documentationcenter: ''
@@ -13,24 +13,24 @@ ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: eab332f102b9e39981e2d8ed6e84f73fada87a1a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282129"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Blob 儲存體來回複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](data-factory-azure-blob-connector.md)
+> * [第 1 版](data-factory-azure-blob-connector.md)
 > * [第 2 版 (目前的版本)](../connector-azure-blob-storage.md)
 
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Azure Blob 儲存體連接器](../connector-azure-blob-storage.md)。
 
 
-本文說明如何使用 Azure Data Factory 中的「複製活動」，在 Azure Blob 儲存體來回複製資料。 它基於["資料移動活動"](data-factory-data-movement-activities.md)一文，其中概述了複製活動的資料移動。
+本文說明如何使用 Azure Data Factory 中的「複製活動」，在 Azure Blob 儲存體來回複製資料。 它是以[資料移動活動](data-factory-data-movement-activities.md)一文為基礎，其中呈現使用複製活動移動資料的一般總覽。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您可以將資料從任何支援的來源資料存放區複製到「Azure Blob 儲存體」，或從「Azure Blob 儲存體」複製到任何支援的接收資料存放區。 下表提供複製活動所支援作為來源或接收器的資料存放區清單。 例如，您可以將資料**從** SQL Server 資料庫或 Azure SQL 資料庫移**到** Azure Blob 儲存體。 而且，您可以將資料「從」**** Azure Blob 儲存體複製「到」**** Azure SQL 資料倉儲或 Azure Cosmos DB 集合。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -45,23 +45,23 @@ ms.locfileid: "79282129"
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!IMPORTANT]
-> 複製活動支援在一般用途的 Azure 儲存體帳戶以及經常性存取/非經常性存取 Blob 儲存體來回複製資料。 活動支援**從塊、追加或頁面 blob 讀取**，但支援**僅寫入塊 Blob**。 不支援使用「Azure 進階儲存體」作為接收器，因為它是以分頁 Blob 為後盾。
+> 複製活動支援在一般用途的 Azure 儲存體帳戶以及經常性存取/非經常性存取 Blob 儲存體來回複製資料。 活動支援**從區塊、附加或分頁 blob 讀取**，但**只支援寫入至區塊 blob**。 不支援使用「Azure 進階儲存體」作為接收器，因為它是以分頁 Blob 為後盾。
 >
-> 資料成功複製至目的地後，複製活動不會從來源刪除資料。 如果需要在成功複製後刪除來源資料，請創建[自訂活動](data-factory-use-custom-activities.md)以刪除資料並使用管道中的活動。 如需範例，請參閱 [刪除 GitHub 上的 Blob 或資料夾範例 (英文)](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity)。
+> 資料成功複製至目的地後，複製活動不會從來源刪除資料。 如果您需要在成功複製後刪除來源資料，請建立[自訂活動](data-factory-use-custom-activities.md)來刪除資料，並在管線中使用活動。 如需範例，請參閱 [刪除 GitHub 上的 Blob 或資料夾範例 (英文)](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity)。
 
 ## <a name="get-started"></a>開始使用
 您可以建立內含複製活動的管線，使用不同的工具/API 將資料移進/移出 Azure Blob 儲存體。
 
-創建管道的最簡單方法是使用**複製嚮導**。 這篇文章中有建立管線的[逐步解說](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage)，可將資料從 Azure Blob 儲存體位置複製到另一個 Azure Blob 儲存體位置。 如需建立管線以將資料從 Azure Blob 儲存體複製到 Azure SQL Database 的教學課程，請參閱[教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)。
+建立管線的最簡單方式是使用**複製嚮導**。 這篇文章中有建立管線的[逐步解說](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage)，可將資料從 Azure Blob 儲存體位置複製到另一個 Azure Blob 儲存體位置。 如需建立管線以將資料從 Azure Blob 儲存體複製到 Azure SQL Database 的教學課程，請參閱[教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)。
 
-您還可以使用以下工具創建管道：**視覺化工作室****、Azure PowerShell、Azure****資源管理器範本** **、.NET API**和 REST **API**。 有關創建具有複製活動的管道的分步說明，請參閱[複製活動教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+您也可以使用下列工具來建立管線： [ **Visual Studio**]、[ **Azure PowerShell**]、[ **Azure Resource Manager 範本**]、[ **.net API**] 和 [ **REST API**]。 如需建立包含複製活動之管線的逐步指示，請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
-1. 創建**資料工廠**。 資料處理站可包含一或多個管線。
+1. 建立**資料**處理站。 資料處理站可包含一或多個管線。
 2. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。 例如，如果您將資料從 Azure Blob 儲存體複製到 Azure SQL 資料庫，您會建立兩個連結服務，將 Azure 儲存體帳戶和 Azure SQL 資料庫連結至資料處理站。 有關 Azure Blob 儲存體專屬的連結服務屬性，請參閱[連結服務屬性](#linked-service-properties)一節。
-2. 創建**資料集**以表示複製操作的輸入和輸出資料。 在上一個步驟所述的範例中，您會建立資料集來指定 blob 容器和包含輸入資料的資料夾。 同時建立另一個資料集來指定 Azure SQL 資料庫中的 SQL 資料表，以保存從 Blob 儲存體複製的資料。 如需 Azure Blob 儲存體專屬的資料集屬性，請參閱[資料集屬性](#dataset-properties)一節。
-3. 創建具有將資料集作為輸入和資料集作為輸出的複製活動的**管道**。 在稍早所述的範例中，您使用 BlobSource 作為來源，以及使用 SqlSink 作為複製活動的接收器。 同樣地，如果您是從 Azure SQL Database 複製到 Azure Blob 儲存體，則需要在複製活動中使用 SqlSource 和 BlobSink。 針對 Azure Blob 儲存體專屬的複製活動屬性，請參閱[複製活動屬性](#copy-activity-properties)一節。 如需有關如何使用資料存放區作為來源或接收器的詳細資訊，按一下上一節中資料存放區的連結。
+2. 建立**資料集**來代表複製作業的輸入和輸出資料。 在上一個步驟所述的範例中，您會建立資料集來指定 blob 容器和包含輸入資料的資料夾。 同時建立另一個資料集來指定 Azure SQL 資料庫中的 SQL 資料表，以保存從 Blob 儲存體複製的資料。 如需 Azure Blob 儲存體專屬的資料集屬性，請參閱[資料集屬性](#dataset-properties)一節。
+3. 建立具有複製活動的**管線**，以將資料集作為輸入，並使用資料集做為輸出。 在稍早所述的範例中，您使用 BlobSource 作為來源，以及使用 SqlSink 作為複製活動的接收器。 同樣地，如果您是從 Azure SQL Database 複製到 Azure Blob 儲存體，則需要在複製活動中使用 SqlSource 和 BlobSink。 針對 Azure Blob 儲存體專屬的複製活動屬性，請參閱[複製活動屬性](#copy-activity-properties)一節。 如需有關如何使用資料存放區作為來源或接收器的詳細資訊，按一下上一節中資料存放區的連結。
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。  如需相關範例，其中含有用來將資料複製到「Azure Blob 儲存體」(或從「Azure Blob 儲存體」複製資料) 之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例](#json-examples-for-copying-data-to-and-from-blob-storage  )一節。
 
@@ -79,15 +79,15 @@ ms.locfileid: "79282129"
 
 Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “structure” 中針對在讀取時驗證結構描述 (schema-on-read) 的資料來源 (例如 Azure Blob) 提供類型資訊：Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan。 Data Factory 會在將資料從來源資料存放區移到接收資料存放區時，自動執行類型轉換。
 
-**TypeProperties**部分對於每種類型的資料集都不同，並提供有關資料存儲中資料的位置、格式等的資訊。 **AzureBlob** 類型資料集的 typeProperties 區段具有下列屬性：
+每個資料集類型的**typeProperties**區段都不同，並提供資料存放區中資料的位置、格式等相關資訊。 **AzureBlob** 類型資料集的 typeProperties 區段具有下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 | --- | --- | --- |
 | folderPath |Blob 儲存體中容器和資料夾的路徑。 範例：myblobcontainer\myblobfolder\ |是 |
-| fileName |Blob 的名稱。 fileName 是選擇性的，而且區分大小寫。<br/><br/>如果您指定檔案名稱，活動 (包括複製) 適用於特定的 Blob。<br/><br/>如果您未指定 fileName，複製會包含 folderPath 中的所有 Blob 以做為輸入資料集。<br/><br/>當未為輸出資料集指定**檔案名**且未在活動接收器中指定**保留層次結構**時，生成的檔的名稱將採用以下此格式：（`Data.<Guid>.txt`例如： Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt） |否 |
-| partitionedBy |partitionedBy 是選擇性的屬性。 您可以用來指定時間序列資料的動態 folderPath 和 filename。 例如，folderPath 可針對每小時的資料進行參數化。 有關詳細資訊和示例，請參閱[使用分區 By 屬性部分](#using-partitionedby-property)。 |否 |
-| format | 支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將 [format] 下的 [type]**** 屬性設定為下列其中一個值。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)章節。 <br><br> 如果要在檔案為儲存基礎（二進位副本）之間**按"按"方式複製檔**，請跳過輸入資料集和輸出資料集定義中的格式部分。 |否 |
-| compression | 指定此資料的壓縮類型和層級。 支援的類型是：GZip、Deflate、BZip2 和**ZipDeflate**。 **GZip** **Deflate** **BZip2** 支援的級別是：**最佳**和**最快**。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| fileName |Blob 的名稱。 fileName 是選擇性的，而且區分大小寫。<br/><br/>如果您指定檔案名稱，活動 (包括複製) 適用於特定的 Blob。<br/><br/>如果您未指定 fileName，複製會包含 folderPath 中的所有 Blob 以做為輸入資料集。<br/><br/>當未指定輸出資料集的**fileName** ，且活動接收中未指定**preserveHierarchy**時，所產生檔案的名稱會採用下列格式： `Data.<Guid>.txt` （例如： Data. 0a405f8a-93ff-4c6f-b3be-f69616f1df7a .txt |否 |
+| partitionedBy |partitionedBy 是選擇性的屬性。 您可以用來指定時間序列資料的動態 folderPath 和 filename。 例如，folderPath 可針對每小時的資料進行參數化。 如需詳細資訊和範例，請參閱[使用 partitionedBy 屬性一節](#using-partitionedby-property)。 |否 |
+| format | 支援下列格式類型：**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat**。 將 [format] 下的 [type]**** 屬性設定為下列其中一個值。 如需詳細資訊，請參閱[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)章節。 <br><br> 如果您想要在以檔案為基礎的存放區之間依檔案**複製**檔案（二進位複本），請略過輸入和輸出資料集定義中的 format 區段。 |否 |
+| compression | 指定此資料的壓縮類型和層級。 支援的類型為： **GZip**、 **Deflate**、 **BZip2**和**ZipDeflate**。 支援的層級為：**最佳**和**最快**。 如需詳細資訊，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 ### <a name="using-partitionedby-property"></a>使用 partitionedBy 屬性
 如上一節所述，您可以使用 **partitionedBy** 屬性、[Data Factory 函式及系統變數](data-factory-functions-variables.md)，來指定時間序列資料的動態 folderPath 和檔案名稱。
@@ -127,15 +127,15 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
 
 **BlobSource** 在 **typeProperties** 區段中支援下列屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要 |
+| 屬性 | 說明 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | 遞迴 |表示是否從子資料夾，或只有從指定的資料夾，以遞迴方式讀取資料。 |True (預設值)、False |否 |
 
 **BlobSink** 在 **typeProperties** 區段中支援下列屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要 |
+| 屬性 | 說明 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| copyBehavior |當來源為 BlobSource 或 FileSystem 時，定義複製行為。 |<b>保留層次結構</b>：保留目的檔案夾中的檔層次結構。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><br/><b>拼合層次結構</b>：源資料夾中的所有檔都位於目的檔案夾的第一級。 目標檔案會有自動產生的名稱。 <br/><br/><b>合併檔</b>：將源資料夾中的所有檔合併到一個檔。 如果已指定檔案/Blob 名稱，合併檔案名稱會是指定的名稱；否則，就會是自動產生的檔案名稱。 |否 |
+| copyBehavior |當來源為 BlobSource 或 FileSystem 時，定義複製行為。 |<b>PreserveHierarchy</b>：保留目的檔案夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><br/><b>FlattenHierarchy</b>：源資料夾中的所有檔案都在目的檔案夾的第一個層級中。 目標檔案會有自動產生的名稱。 <br/><br/><b>MergeFiles</b>：將源資料夾中的所有檔案合併成一個檔案。 如果已指定檔案/Blob 名稱，合併檔案名稱會是指定的名稱；否則，就會是自動產生的檔案名稱。 |否 |
 
 **BlobSource** 也支援這兩個屬性以提供回溯相容性。
 
@@ -173,8 +173,8 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
 ## <a name="walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage"></a>逐步解說︰使用複製精靈將資料複製到 Blob 儲存體或從此儲存體複製資料
 讓我們看看如何將資料快速複製到 Azure Blob 儲存體或從此儲存體複製資料。 在這個逐步解說中，來源和目的地資料存放區的類型都是：Azure Blob 儲存體。 此逐步解說中的管線會將資料從一個資料夾複製到相同 Blob 容器中的另一個資料夾。 此逐步解說刻意設計得很簡單，為的是示範使用「Blob 儲存體」作為來源或接收器時的設定或屬性。
 
-### <a name="prerequisites"></a>Prerequisites
-1. 建立一個一般用途的「Azure 儲存體帳戶」****(如果您還沒有此帳戶)。 在這個逐步解說中，您將使用 Blob 儲存體同時作為「來源」**** 和「目的地」**** 資料存放區。 如果沒有 Azure 存儲帳戶，請參閱[創建存儲帳戶](../../storage/common/storage-account-create.md)文章，瞭解創建存儲帳戶的步驟。
+### <a name="prerequisites"></a>先決條件
+1. 建立一個一般用途的「Azure 儲存體帳戶」****(如果您還沒有此帳戶)。 在這個逐步解說中，您將使用 Blob 儲存體同時作為「來源」**** 和「目的地」**** 資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../../storage/common/storage-account-create.md)一文，以瞭解建立的步驟。
 2. 在儲存體帳戶中建立一個名為 **adfblobconnector** 的 Blob 容器。
 4. 在 **adfblobconnector** 容器中建立一個名為 **input** 的資料夾。
 5. 以下列內容建立一個名為 **emp.txt** 的檔案，然後使用 [Azure 儲存體總管](https://azurestorageexplorer.codeplex.com/)之類的工具將它上傳到 [input]**** 資料夾
@@ -184,16 +184,16 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
     ```
 
 ### <a name="create-the-data-factory"></a>建立 Data Factory
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 按一下左上角的 [建立資源]****，按一下 [智慧 + 分析]****，然後按一下 [Data Factory]****。
 3. 在 [新增 Data Factory]**** 窗格中：  
     1. 針對 [名稱]****，輸入 **ADFBlobConnectorDF**。 Azure Data Factory 的名稱在全域必須是唯一的。 如果您收到錯誤：`*Data factory name “ADFBlobConnectorDF” is not available`，請變更 Data Factory 的名稱 (例如 yournameADFBlobConnectorDF)，然後嘗試重新建立。 請參閱 [Data Factory - 命名規則](data-factory-naming-rules.md) 主題，以了解 Data Factory 成品的命名規則。
-    2. 選擇 Azure**訂閱**。
+    2. 選取您的 Azure **訂用帳戶**。
     3. 針對「資源群組」，選取 [使用現有的]**** 來選取現有的資源群組 (或) 選取 [建立新項目]**** 來輸入資源群組的名稱。
     4. 選取 Data Factory 的 [位置]****。
     5. 選取刀鋒視窗底部的 [釘選到儀表板]**** 核取方塊。
-    6. 按一下 **[建立]**。
-3. 創建完成後，您將看到**資料工廠**邊欄選項卡，如下圖所示：![資料工廠主頁](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
+    6. 按一下頁面底部的 [新增]  。
+3. 建立完成後，您會看到如下圖所示的 [ **Data Factory** ] 分頁： ![[Data Factory] 首頁](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>複製精靈
 1. 在 Data Factory 首頁上，按一下 [資料複製]**** 圖格，以在個別索引標籤中啟動 [複製資料精靈]****。  
@@ -207,7 +207,7 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
     4. 保留 [週期性模式]**** 的設定。 此工作會在您於下一個步驟中指定的開始和結束時間之間每天執行。
     5. 將 [開始日期時間]**** 變更為 [2017 年 4 月 21 日]****。
     6. 將 [結束日期時間]**** 變更為 [2017 年 4 月 25 日]****。 您可以輸入日期，而不瀏覽行事曆。
-    8. 按 [下一步]****。
+    8. 按 [下一步]  。
         ![複製工具 - 屬性頁面](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png)
 3. 在 [來源資料存放區]**** 頁面上，按一下 [Azure Blob 儲存體]**** 圖格。 您可以使用此頁面來指定複製工作的來源資料存放區。 您可以使用現有的資料存放區連結服務或指定新的資料存放區。 若要使用現有的已連結服務，您需選取 [從現有的連結服務]****，然後選取正確的已連結服務。
     ![複製工具 - 來源資料存放區頁面](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
@@ -216,7 +216,7 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
     2. 確認已針對 [帳戶選取方法]**** 選取 [從 Azure 訂用帳戶]**** 選項。
     3. 針對 [Azure 訂用帳戶]****，選取您的 Azure 訂用帳戶或保留 [全選]****。
     4. 從所選訂用帳戶中可用的 Azure 儲存體帳戶清單中，選取 [Azure 儲存體帳戶]****。 您也可以選擇手動輸入儲存體帳戶設定，方法是針對 [帳戶選取方法]**** 選取 [手動輸入]**** 選項。
-    5. 按 [下一步]****。  
+    5. 按 [下一步]  。  
         ![複製工具 - 指定 Azure Blob 儲存體帳戶](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. 在 [選擇輸入檔案或資料夾] **** 頁面︰
     1. 按兩下 [adfblobcontainer]****。
@@ -227,7 +227,7 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
     2. 請勿設定 [以遞迴方式複製檔案]****。 選取此選項可以用遞迴方式周遊資料夾來尋找要複製到目的地的檔案。
     3. 請勿設定 [二進位複製]**** 選項。 選取此選項可以執行將來源檔案複製到目的地的二進位複製。 請勿為此逐步解說選取這個選項，以便您可以在後續頁面中看到更多選項。
     4. 確認 [壓縮類型]**** 已設定為 [無]****。 如果您的來源檔案是以其中一種支援的格式壓縮的，則請為此選項選取一個值。
-    5. 按 [下一步]****。
+    5. 按 [下一步]  。
     ![複製工具 - 選擇輸入檔案或資料夾](./media/data-factory-azure-blob-connector/chose-input-file-folder.png)
 7. 在 [檔案格式設定]**** 頁面上，您會看到分隔符號以及精靈藉由剖析檔案自動偵測到的結構描述。
     1. 確認下列選項：  
@@ -247,17 +247,17 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
 9. 在 [指定 Azure Blob 儲存體帳戶]**** 頁面上︰  
     1. 針對 [連線名稱]**** 欄位，輸入 **AzureStorageLinkedService**。
     2. 確認已針對 [帳戶選取方法]**** 選取 [從 Azure 訂用帳戶]**** 選項。
-    3. 選擇 Azure**訂閱**。
+    3. 選取您的 Azure **訂用帳戶**。
     4. 選取您的 Azure 儲存體帳戶。
-    5. 按 [下一步]****。
+    5. 按 [下一步]  。
 10. 在 [選擇輸出檔案或資料夾]**** 頁面上︰  
     1. 將 [資料夾路徑]**** 指定為 **adfblobconnector/output/{year}/{month}/{day}**。 輸入 **TAB**。
     1. 針對 [年]****，選取 [yyyy]****。
     1. 針對 [月]****，確定它已設定為 [MM]****。
     1. 針對 [日]****，確定它已設定為 [dd]****。
-    1. 確認**壓縮類型**設置為 **"無**"。
+    1. 確認 [**壓縮類型**] 設定為 [**無**]。
     1. 確認 [複製行為]**** 已設定為 [合併檔案]****。 如果已經有同名的輸出檔案存在，則新內容會新增到該相同檔案的結尾。
-    1. 按 [下一步]****。
+    1. 按 [下一步]  。
        ![複製工具 - 選擇輸出檔案或資料夾](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. 在 [檔案格式設定]**** 頁面上，檢閱設定，然後按 [下一步]****。 這裡的其中一額外選項是為輸出檔案新增標頭。 如果您選取該選項，就會新增標頭資料列，其中會含有來自來源結構描述的資料行名稱。 您可以在檢視來源的結構描述時，重新命名預設的資料行名稱。 例如，您可以將第一個資料行變更為「名字」，而將第二個資料行變更為「姓氏」。 接著，系統就會產生含有以這些名稱作為資料行名稱之標頭的輸出檔案。
     ![複製工具 - 目的地的檔案格式設定](media/data-factory-azure-blob-connector/file-format-destination.png)
@@ -271,7 +271,7 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
 ### <a name="monitor-the-pipeline-copy-task"></a>監視管線 (複製工作)
 
 1. 在 [部署]**** 頁面上，按一下 [`Click here to monitor copy pipeline`] 連結。
-2. 您應該在單獨的選項卡中看到 **"監視和管理"應用程式**。 ![監視和管理應用程式](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+2. 您應該會在個別的索引標籤中看到 [**監視] 和 [管理應用程式**]。 ![監視及管理應用程式](media/data-factory-azure-blob-connector/monitor-manage-app.png)
 3. 將頂端的 [開始時間]**** 變更為 [`04/19/2017`]，將 [結束時間]**** 變更為 [`04/27/2017`]，然後按一下 [套用]****。
 4. 您應該會在 [活動時段]**** 清單中看到五個活動時段。 [時段開始]**** 時間應該涵蓋從管線開始到管線結束時間的所有日子。
 5. 按一下 [活動時段]**** 清單的 [重新整理]**** 按鈕幾次，直到您看到所有活動時段的狀態都設定為 [就緒] 為止。
@@ -465,7 +465,7 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
 ```
 
 ## <a name="json-examples-for-copying-data-to-and-from-blob-storage"></a>從 Blob 儲存體來回複製資料的 JSON 範例
-以下示例提供了使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)創建管道的示例 JSON 定義。 它們會示範如何將資料複製到 Azure Blob 儲存體和 Azure SQL Database，以及複製其中的資料。 不過，您可以在 Azure Data Factory 中使用複製活動，從任何來源 **直接** 將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。
+下列範例提供可用來使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)建立管線的範例 JSON 定義。 它們會示範如何將資料複製到 Azure Blob 儲存體和 Azure SQL Database，以及複製其中的資料。 不過，您可以在 Azure Data Factory 中使用複製活動，從任何來源 **直接** 將資料複製到 [這裡](data-factory-data-movement-activities.md#supported-data-stores-and-formats) 所說的任何接收器。
 
 ### <a name="json-example-copy-data-from-blob-storage-to-sql-database"></a>JSON 範例：將資料從 Blob 儲存體複製到 SQL Database
 下列範例顯示︰
@@ -491,7 +491,7 @@ Data Factory 支援使用下列符合 CLS 規範的 .NET 型類型值，在 “s
   }
 }
 ```
-**Azure 存儲連結服務：**
+**Azure 儲存體連結的服務：**
 
 ```json
 {
@@ -639,7 +639,7 @@ Azure Data Factory 支援兩種類型的 Azure 儲存體連結服務：**AzureSt
   }
 }
 ```
-**Azure 存儲連結服務：**
+**Azure 儲存體連結的服務：**
 
 ```json
 {

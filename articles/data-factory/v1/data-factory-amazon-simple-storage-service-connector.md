@@ -1,5 +1,5 @@
 ---
-title: 使用資料工廠從 Amazon 簡單存儲服務中移動資料
+title: 使用 Data Factory 從 Amazon Simple Storage Service 移動資料
 description: 了解如何使用 Azure Data Factory 從 Amazon Simple Storage Service (S3) 移動資料。
 services: data-factory
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281648"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Simple Storage Service 移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](data-factory-amazon-simple-storage-service-connector.md)
+> * [第 1 版](data-factory-amazon-simple-storage-service-connector.md)
 > * [第 2 版 (目前的版本)](../connector-amazon-simple-storage-service.md)
 
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "79281648"
 
 本文說明如何使用 Azure Data Factory 中的複製活動，從 Amazon Simple Storage Service (S3) 移動資料。 本文是根據[資料移動活動](data-factory-data-movement-activities.md)一文，該文提供使用複製活動來移動資料的一般概觀。
 
-您可以將資料從 Amazon S3 複製到任何支援的接收資料存放區。 有關複製活動支援為接收器支援的資料存儲的清單，請參閱[支援資料存儲](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 Data Factory 目前只支援將資料從 Amazon S3 移到其他資料存放區，而不支援將資料從其他資料存放區移到 Amazon S3。
+您可以將資料從 Amazon S3 複製到任何支援的接收資料存放區。 如需複製活動所支援作為接收器的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表格。 Data Factory 目前只支援將資料從 Amazon S3 移到其他資料存放區，而不支援將資料從其他資料存放區移到 Amazon S3。
 
 ## <a name="required-permissions"></a>所需的權限
 若要從 Amazon S3 複製資料，請確定您已獲得下列權限︰
@@ -42,15 +42,15 @@ ms.locfileid: "79281648"
 ## <a name="getting-started"></a>開始使用
 您可以藉由使用不同的工具或 API，建立內含複製活動的管線，以從 Amazon S3 來源移動資料。
 
-創建管道的最簡單方法是使用**複製嚮導**。 如需快速逐步解說，請參閱[教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)。
+建立管線的最簡單方式是使用**複製嚮導**。 如需快速逐步解說，請參閱[教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)。
 
-您還可以使用以下工具創建管道：**視覺化工作室****、Azure PowerShell、Azure****資源管理器範本** **、.NET API**和 REST **API**。 如需建立內含複製活動之管線的逐步指示，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+您也可以使用下列工具來建立管線： [ **Visual Studio**]、[ **Azure PowerShell**]、[ **Azure Resource Manager 範本**]、[ **.net API**] 和 [ **REST API**]。 如需建立內含複製活動之管線的逐步指示，請參閱[複製活動教學課程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
 不論您是使用工具還是 API，都需執行下列步驟，以建立將資料從來源資料存放區移到接收資料存放區的管線：
 
 1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
-2. 創建**資料集**以表示複製操作的輸入和輸出資料。
-3. 創建具有將資料集作為輸入和資料集作為輸出的複製活動的**管道**。
+2. 建立**資料集**來代表複製作業的輸入和輸出資料。
+3. 建立具有複製活動的**管線**，以將資料集作為輸入，並使用資料集做為輸出。
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具或 API (.NET API 除外) 時，您需使用 JSON 格式來定義這些資料處理站實體。 如需相關範例，其中含有用來從 Amazon S3 資料存放區複製資料之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例：將資料從 Amazon S3 複製到 Azure Blob](#json-example-copy-data-from-amazon-s3-to-azure-blob-storage) 一節。
 
@@ -62,7 +62,7 @@ ms.locfileid: "79281648"
 ## <a name="linked-service-properties"></a>連結服務屬性
 已連結的服務會將資料存放區連結到 Data Factory。 您需建立 **AwsAccessKey** 類型的已連結服務，以將 Amazon S3 資料存放區連結到 Data Factory。 下表提供 Amazon S3 (AwsAccessKey) 已連結服務專屬 JSON 元素的描述。
 
-| 屬性 | 描述 | 允許的值 | 必要 |
+| 屬性 | 說明 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | accessKeyID |密碼存取金鑰的識別碼。 |字串 |是 |
 | secretAccessKey |密碼存取金鑰本身。 |加密的密碼字串 |是 |
@@ -89,9 +89,9 @@ ms.locfileid: "79281648"
 ## <a name="dataset-properties"></a>資料集屬性
 若要指定資料集以代表 Azure Blob 儲存體中的輸入資料，請將資料集的類型屬性設定成 **AmazonS3**。 請將資料集的 **linkedServiceName** 屬性設定成 Amazon S3 已連結服務的名稱。 如需定義資料集的區段和屬性完整清單，請參閱[建立資料集](data-factory-create-datasets.md)。 
 
-所有資料集類型 (例如 SQL 資料庫、Azure Blob 及 Azure 資料表) 的結構、可用性及原則等區段都相似。 **TypeProperties**節對於每種類型的資料集都不同，並提供有關資料存儲中資料位置的資訊。 **AmazonS3** 類型之資料集 (包括 Amazon S3 資料集) 的 **typeProperties** 區段具有下列屬性：
+所有資料集類型 (例如 SQL 資料庫、Azure Blob 及 Azure 資料表) 的結構、可用性及原則等區段都相似。 每個資料集類型的**typeProperties**區段都不同，並提供資料存放區中資料位置的相關資訊。 **AmazonS3** 類型之資料集 (包括 Amazon S3 資料集) 的 **typeProperties** 區段具有下列屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要 |
+| 屬性 | 說明 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | bucketName |S3 貯體名稱。 |String |是 |
 | 索引鍵 |S3 物件索引鍵。 |String |否 |
@@ -172,14 +172,14 @@ ms.locfileid: "79281648"
 ## <a name="copy-activity-properties"></a>複製活動屬性
 如需可用來定義活動的區段和屬性完整清單，請參閱[建立管線](data-factory-create-pipelines.md)。 屬性 (例如名稱、描述、輸入和輸出資料表，以及原則) 適用於所有類型的活動。 活動的 **typeProperties** 區段中可用的屬性會隨著每個活動類型而有所不同。 就複製活動而言，屬性會根據來源和接收器的類型而有所不同。 當複製活動中的來源類型為 **FileSystemSource** (其中包括 Azure S3) 時，**typeProperties** 區段中會有下列可用屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要 |
+| 屬性 | 說明 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
 | 遞迴 |指定是否要以遞迴方式列出目錄下的 S3 物件。 |true/false |否 |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON 範例：將資料從 Amazon S3 複製到 Azure Blob 儲存體
 此範例示範如何將資料從 Amazon S3 複製到 Azure Blob 儲存體。 不過，您可以使用 Data Factory 中的複製活動，將資料直接複製到[任何支援的接收器](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。
 
-此範例提供下列 Data Factory 實體的 JSON 定義。 您可以使用這些定義創建管道，通過使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)將資料從 Amazon S3 複製到 Blob 存儲。   
+此範例提供下列 Data Factory 實體的 JSON 定義。 您可以使用這些定義來建立管線，以使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)，將資料從 Amazon S3 複製到 Blob 儲存體。   
 
 * [AwsAccessKey](#linked-service-properties)類型的連結服務。
 * [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務。
@@ -308,7 +308,7 @@ ms.locfileid: "79281648"
 
 ### <a name="copy-activity-in-a-pipeline-with-an-amazon-s3-source-and-a-blob-sink"></a>具有 Amazon S3 來源和 Blob 接收器的管線中複製活動
 
-此管線包含複製活動，該活動已設定為使用輸入和輸出資料集並排定為每小時執行。 在管道 JSON 定義中，**源**類型設置為**FileSystemSource**，並且**接收器**類型設置為**BlobSink**。
+此管線包含複製活動，該活動已設定為使用輸入和輸出資料集並排定為每小時執行。 在管線 JSON 定義中， **source**類型設為**FileSystemSource**，而**sink**類型設為**BlobSink**。
 
 ```json
 {

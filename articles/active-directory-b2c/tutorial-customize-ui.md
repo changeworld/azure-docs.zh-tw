@@ -1,7 +1,7 @@
 ---
-title: 教程：自訂使用者介面
+title: 教學課程：自訂使用者介面
 titleSuffix: Azure AD B2C
-description: 瞭解如何使用 Azure 門戶自訂 Azure 活動目錄 B2C 中應用程式的使用者介面 （UI）。
+description: 瞭解如何使用 Azure 入口網站在 Azure Active Directory B2C 中自訂應用程式的使用者介面（UI）。
 services: B2C
 author: msmimart
 manager: celestedg
@@ -12,15 +12,15 @@ ms.date: 02/01/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78186245"
 ---
-# <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教程：自訂 Azure 活動目錄 B2C 中的使用者體驗介面
+# <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中自訂使用者體驗的介面
 
-要獲得更常見的使用者體驗（如註冊、登錄和設定檔編輯），可以在 Azure 活動目錄 B2C （Azure AD B2C） 中使用[使用者流](user-flow-overview.md)。 本教學課程中的資訊可協助您了解如何使用自己的 HTML 和 CSS 檔案，為這些體驗[自訂使用者介面 (UI)](customize-ui-overview.md)。
+如需更常見的使用者體驗，例如註冊、登入和設定檔編輯，您可以使用 Azure Active Directory B2C （Azure AD B2C）中的[使用者流程](user-flow-overview.md)。 本教學課程中的資訊可協助您了解如何使用自己的 HTML 和 CSS 檔案，為這些體驗[自訂使用者介面 (UI)](customize-ui-overview.md)。
 
 在本文中，您將學會如何：
 
@@ -43,10 +43,10 @@ ms.locfileid: "78186245"
 
 雖然您可以用很多方式來儲存檔案，但在此教學課程中，您會將這些檔案儲存在 [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
-2. 請確定您使用的目錄中有您的 Azure 訂用帳戶。 選擇頂部功能表中的**目錄 + 訂閱**篩選器，然後選擇包含訂閱的目錄。 此目錄不同於包含您 Azure B2C 租用戶的目錄。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+2. 請確定您使用的目錄中有您的 Azure 訂用帳戶。 在頂端功能表中選取 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您訂用帳戶的目錄。 此目錄不同於包含您 Azure B2C 租用戶的目錄。
 3. 選擇 Azure 入口網站左上角的 [所有服務]，搜尋並選取 [儲存體帳戶]****。
-4. 選取 [加入]****。
+4. 選取 [新增]  。
 5. 在 [資源群組]**** 下，選取 [新建]****，然後輸入新資源群組的名稱並按一下 [確認]****。
 6. 輸入儲存體帳戶的名稱。 您選擇的名稱在 Azure 中必須是唯一的、必須介於 3 到 24 個字元的長度，而且只能包含數字和小寫字母。
 7. 選取儲存體帳戶的位置，或接受預設位置。
@@ -64,14 +64,14 @@ ms.locfileid: "78186245"
 
 1. 在功能表中，選取 [CORS]****。
 2. 針對 [允許的來源]****，輸入 `https://your-tenant-name.b2clogin.com`。 將 `your-tenant-name` 取代為您的 Azure AD B2C 租用戶名稱。 例如： `https://fabrikam.b2clogin.com` 。 輸入您的租用戶名稱時，必須全部使用小寫字母。
-3. 對於**允許的方法**，選擇`GET``PUT`、`OPTIONS`和 。
+3. 針對**允許的方法**， `GET`選取`PUT`、和`OPTIONS`。
 4. 針對 [允許的標頭]****，輸入星號 (*)。
 5. 針對 [公開的標頭]****，輸入星號 (*)。
 6. 針對 [最大壽命]****，輸入 200。
 
-    ![Azure Blob 門戶中 Azure Blob 存儲中的 CORS 配置頁](./media/tutorial-customize-ui/enable-cors.png)
+    ![Azure 入口網站中 Azure Blob 儲存體的 CORS 設定頁面](./media/tutorial-customize-ui/enable-cors.png)
 
-5. 按一下 [儲存]****。
+5. 按一下 [檔案]  。
 
 ### <a name="create-the-customization-files"></a>建立自訂檔案
 
@@ -127,11 +127,11 @@ ms.locfileid: "78186245"
 
 在本教學課程中，您會將建立的檔案儲存在儲存體帳戶中，讓 Azure AD B2C 可以存取這些檔案。
 
-1. 選擇 Azure 門戶左上角**的所有服務**，搜索並選擇**存儲帳戶**。
+1. 選擇 [Azure 入口網站] 左上角的 [**所有服務**]，搜尋並選取 [**儲存體帳戶**]。
 2. 選取您建立的儲存體帳戶、選取 [Blob]****，然後選取您建立的容器。
 3. 選取 [上傳]****，瀏覽至 [custom-ui.html]** 檔案並加以選取，然後再按一下 [上傳]****。
 
-    ![在門戶中上載 Blob 頁面，並突出顯示"上傳"按鈕和檔](./media/tutorial-customize-ui/upload-blob.png)
+    ![在入口網站中上傳 blob 頁面並反白顯示上傳按鈕和檔案](./media/tutorial-customize-ui/upload-blob.png)
 
 4. 複製已上傳檔案的 URL，以便稍後在教學課程中使用。
 5. 對 style.css** 檔案重複步驟 3 和 4。
@@ -150,11 +150,11 @@ ms.locfileid: "78186245"
 2. 按一下頁面頂端的 [執行使用者流程]****。
 3. 按一下 [執行使用者流程] **** 按鈕。
 
-    ![為註冊或登錄使用者流運行使用者流頁](./media/tutorial-customize-ui/run-user-flow.png)
+    ![執行註冊或登入使用者流程的使用者流程頁面](./media/tutorial-customize-ui/run-user-flow.png)
 
     您應該會看到類似下列範例的頁面，而頁面上的置中元素會以您所建立的 CSS 檔案為基礎：
 
-    ![使用自訂 UI 元素顯示註冊或登錄頁面的 Web 瀏覽器](./media/tutorial-customize-ui/run-now.png)
+    ![網頁瀏覽器顯示具有自訂 UI 元素的註冊或登入頁面](./media/tutorial-customize-ui/run-now.png)
 
 ## <a name="next-steps"></a>後續步驟
 

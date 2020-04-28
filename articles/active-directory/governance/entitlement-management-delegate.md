@@ -1,6 +1,6 @@
 ---
-title: 授權和角色在授權管理 - Azure AD
-description: 瞭解如何將訪問治理從 IT 管理員委派給部門經理和專案經理，以便他們可以自行管理存取權限。
+title: 權利管理中的委派和角色-Azure AD
+description: 瞭解如何將 IT 系統管理員的存取管理委派給部門經理和專案經理，讓他們可以自行管理存取權。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,124 +17,124 @@ ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 86d924860e97b15a0a4af46c5bc35b0e0050292b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261836"
 ---
-# <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD 授權管理中的委派和角色
+# <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中的委派和角色
 
-預設情況下，全域管理員和使用者管理員可以創建和管理 Azure AD 授權管理的所有方面。 但是，這些角色中的使用者可能不知道需要訪問包的所有情況。 通常，是各個部門、團隊或專案中的使用者知道他們正在與誰協作、使用什麼資源以及多長時間。 您可以向非管理員授予不受限制的許可權，而不是向非管理員授予執行作業所需的最少許可權，並避免創建衝突或不適當的存取權限。
+根據預設，全域系統管理員和使用者系統管理員可以建立及管理 Azure AD 權利管理的所有層面。 不過，這些角色中的使用者可能不知道需要存取套件的所有情況。 這通常是個別部門、小組或專案中的使用者，他們知道誰在共同作業、使用哪些資源，以及有多長的時間。 您可以授與使用者執行其工作所需的最低許可權，並避免建立衝突或不適當的存取權限，而不是將不受限制的許可權授予非系統管理員。
 
-本視頻概述了如何將訪問治理從 IT 管理員委派給不是管理員的使用者。
+這段影片提供如何將存取管理委派給不是系統管理員的使用者的總覽。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq00]
 
-## <a name="delegate-example"></a>委託示例
+## <a name="delegate-example"></a>委派範例
 
-要瞭解如何在授權管理中委派訪問治理，考慮一個示例很有説明。 假設您的組織具有以下管理員和經理。
+若要瞭解如何在權利管理中委派存取治理，它有助於考慮一個範例。 假設您的組織具有下列系統管理員和經理。
 
-![從 IT 管理員委派給經理](./media/entitlement-management-delegate/delegate-admin-dept-managers.png)
+![從 IT 系統管理員委派給經理](./media/entitlement-management-delegate/delegate-admin-dept-managers.png)
 
-作為 IT 管理員，Hana 在每個部門都有連絡人 -- -- 市場行銷部的 Mamta、財務部的 Mark 和法律部的 Joe，負責其部門的資源和業務關鍵內容。
+身為 IT 系統管理員，Hana 在每個部門都有連絡人--在行銷中 Mamta、在財務中標記，以及在法律中負責其部門資源和商務關鍵內容的 Joe。
 
-通過授權管理，您可以將訪問治理委派給這些非管理員，因為他們知道哪些使用者需要訪問、訪問多長時間以及哪些資源。 這可確保合適的人員管理其部門的訪問。
+使用「權利管理」，您可以將存取治理委派給這些非系統管理員，因為他們是知道哪些使用者需要存取、多久時間，以及對哪些資源有哪些許可權。 這可確保適當的人員管理其部門的存取權。
 
-以下是 Hana 將訪問治理委派給行銷、財務和法律部門的一種方式。
+以下是 Hana 可以將存取管理委派給行銷、財務和法律部門的一種方式。
 
-1. Hana 創建了一個新的 Azure AD 安全性群組，並將媽媽、Mark 和 Joe 添加為該組的成員。
+1. Hana 會建立新的 Azure AD 安全性群組，並將 Mamta、Mark 和 Joe 新增為群組的成員。
 
-1. Hana 將該組添加到目錄建立者角色。
+1. Hana 會將該群組新增至目錄建立者角色。
 
-    Mamta、Mark 和 Joe 現在可以為其部門創建目錄，添加其部門所需的資源，並在目錄中執行進一步的委派。
+    Mamta、Mark 和 Joe 現在可以為其部門建立目錄、新增其部門所需的資源，以及在目錄內執行進一步的委派。
 
-    請注意，媽媽、馬克和 Joe 看不到彼此的目錄。
+    請注意，Mamta、Mark 和 Joe 無法看到彼此的目錄。
 
-1. Mamta 創建**一個市場行銷**目錄，它是一個資源容器。
+1. Mamta 會建立**行銷**目錄，這是資源的容器。
 
-1. Mamta 將行銷部門擁有的資源添加到此目錄中。
+1. Mamta 會將其行銷部門擁有的資源新增至此目錄。
 
-1. Mamta 可以從她的部門添加其他人作為此目錄的目錄擁有者。 這有助於共用目錄管理職責。
+1. Mamta 可以新增其部門的其他人員做為此目錄的目錄擁有者。 這有助於分享目錄管理責任。
 
-1. Mamta 可以進一步將市場行銷目錄中的訪問包的創建和管理委託給行銷部門的專案經理。 她可以通過將它們分配給訪問包管理器角色來執行此操作。 訪問包管理器可以創建和管理訪問包。 
+1. Mamta 可以進一步將行銷目錄中存取套件的建立和管理委派給行銷部門的專案經理。 她可以藉由將它們指派給存取套件管理員角色來執行這項操作。 存取套件管理員可以建立和管理存取封裝。 
 
-下圖顯示了包含市場行銷、財務和法律部門資源的目錄。 使用這些目錄，專案經理可以為其團隊或專案創建訪問包。
+下圖顯示具有行銷、財務和法律部門資源的類別目錄。 專案經理可以使用這些目錄，為其小組或專案建立存取封裝。
 
-![授權管理委託示例](./media/entitlement-management-delegate/elm-delegate.png)
+![權利管理委派範例](./media/entitlement-management-delegate/elm-delegate.png)
 
-委派後，行銷部門可能具有類似于下表的角色。
+委派之後，行銷部門可能會有類似下表的角色。
 
-| User | 工作角色 | Azure AD 角色 | 權利管理角色 |
+| User | 作業角色 | Azure AD 角色 | 權利管理角色 |
 | --- | --- | --- | --- |
-| 漢娜 | IT 管理員 | 全域管理員或使用者管理員 |  |
-| 馬姆塔 | 行銷經理 | User | 目錄建立者和目錄擁有者 |
-| Bob | 行銷主管 | User | 目錄擁有者 |
-| 潔西嘉 | 行銷專案經理 | User | 訪問包管理器 |
+| Hana | IT 管理員 | 全域管理員或使用者管理員 |  |
+| Mamta | 行銷經理 | User | 目錄建立者和目錄擁有者 |
+| Bob | 行銷組長 | User | 目錄擁有者 |
+| Jessica | 行銷專案經理 | User | 存取套件管理員 |
 
 ## <a name="entitlement-management-roles"></a>權利管理角色
 
-授權管理具有特定于授權管理的角色。
+權利管理具有下列專屬於權利管理的角色。
 
 | 權利管理角色 | 描述 |
 | --- | --- |
-| 目錄建立者 | 創建和管理目錄。 通常是不是全域管理員的 IT 管理員，或資源集合的資源擁有者。 創建目錄的人員將自動成為目錄的第一個目錄擁有者，並可以添加其他目錄擁有者。 目錄建立者無法管理或查看他們不擁有的目錄，也不能將他們不擁有的資源添加到目錄中。 如果目錄建立者需要管理其他目錄或添加他們不擁有的資源，他們可以請求成為該目錄或資源的共同擁有者。 |
-| 目錄擁有者 | 編輯和管理現有目錄。 通常是 IT 管理員或資源擁有者，或目錄擁有者指定的使用者。 |
-| 訪問包管理器 | 編輯和管理目錄中的所有現有訪問包。 |
+| 目錄建立者 | 建立和管理目錄。 通常是不是全域管理員的 IT 系統管理員，或是資源集合的資源擁有者。 建立類別目錄的人員會自動成為目錄的第一個目錄擁有者，而且可以新增其他目錄擁有者。 目錄建立者無法管理或查看其未擁有的類別目錄，也無法將其本身未擁有的資源新增至目錄。 如果目錄建立者需要管理另一個類別目錄，或新增其未擁有的資源，他們可以要求成為該目錄或資源的共同擁有者。 |
+| 目錄擁有者 | 編輯和管理現有的目錄。 通常是 IT 系統管理員或資源擁有者，或是目錄擁有者已指定的使用者。 |
+| 存取套件管理員 | 編輯和管理目錄中的所有現有存取封裝。 |
 
-此外，指定的審批人和訪問包的請求人也具有許可權，儘管它們不是角色。
+此外，指定的核准者和存取套件的要求者也具有許可權，但它們並不是角色。
 
 | Right | 描述 |
 | --- | --- |
-| 核准者 | 由策略授權批准或拒絕訪問包的請求，儘管它們無法更改訪問包定義。 |
-| 要求者 | 由訪問包的策略授權以請求該訪問包。 |
+| 核准者 | 由原則授權以核准或拒絕存取封裝的要求，但無法變更存取套件定義。 |
+| 要求者 | 由存取封裝的原則授權，以要求該存取封裝。 |
 
-下表列出了授權管理角色可以執行的任務。
+下表列出權利管理角色可以執行的工作。
 
-| Task | 管理 | 目錄建立者 | 目錄擁有者 | 訪問包管理器 |
+| 工作 | 系統管理員 | 目錄建立者 | 目錄擁有者 | 存取套件管理員 |
 | --- | :---: | :---: | :---: | :---: |
-| [委託給目錄建立者](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
+| [委派給目錄建立者](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
 | [新增已連線的組織](entitlement-management-organization.md) | :heavy_check_mark: |  |  |  |
 | [[建立新的目錄]](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |
-| [將資源添加到目錄](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [添加目錄擁有者](entitlement-management-catalog-create.md#add-additional-catalog-owners) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [將資源新增至目錄](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [新增目錄擁有者](entitlement-management-catalog-create.md#add-additional-catalog-owners) | :heavy_check_mark: |  | :heavy_check_mark: |  |
 | [編輯目錄](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
 | [刪除目錄](entitlement-management-catalog-create.md#delete-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [委託給訪問包管理器](entitlement-management-delegate-managers.md) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [刪除訪問包管理器](entitlement-management-delegate-managers.md#remove-an-access-package-manager) | :heavy_check_mark: |  | :heavy_check_mark: |  |
-| [在目錄中創建新的訪問包](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |
-| [更改訪問包中的資源角色](entitlement-management-access-package-resources.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [創建和編輯策略](entitlement-management-access-package-request-policy.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [直接將使用者分配給訪問包](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [查看誰分配了訪問包](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [查看訪問包的請求](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [查看請求的傳遞錯誤](entitlement-management-troubleshoot.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [重新處理請求](entitlement-management-troubleshoot.md#reprocess-a-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [委派給存取套件管理員](entitlement-management-delegate-managers.md) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [移除存取套件管理員](entitlement-management-delegate-managers.md#remove-an-access-package-manager) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [在目錄中建立新的存取套件](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |
+| [變更存取套件中的資源角色](entitlement-management-access-package-resources.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [建立和編輯原則](entitlement-management-access-package-request-policy.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [直接將使用者指派給存取套件](entitlement-management-access-package-assignments.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [查看誰具有存取套件的指派](entitlement-management-access-package-assignments.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [查看存取套件的要求](entitlement-management-access-package-requests.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [查看要求的傳遞錯誤](entitlement-management-troubleshoot.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [重新處理要求](entitlement-management-troubleshoot.md#reprocess-a-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 | [取消擱置要求](entitlement-management-troubleshoot.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [隱藏訪問包](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
-| [刪除訪問包](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [隱藏存取套件](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [刪除存取套件](entitlement-management-access-package-edit.md#delete-an-access-package) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 
-## <a name="required-roles-to-add-resources-to-a-catalog"></a>向目錄添加資源所需的角色
+## <a name="required-roles-to-add-resources-to-a-catalog"></a>將資源新增至目錄的必要角色
 
-全域管理員可以在目錄中添加或刪除任何組（雲創建的安全性群組或雲創建的 Office 365 組）、應用程式或 SharePoint Online 網站。 使用者管理員可以添加或刪除目錄中的任何組或應用程式。
+全域管理員可以在目錄中新增或移除任何群組（已建立雲端的安全性群組或雲端建立的 Office 365 群組）、應用程式或 SharePoint Online 網站。 使用者系統管理員可以新增或移除目錄中的任何群組或應用程式。
 
-對於不是全域管理員或使用者管理員的使用者，要將組、應用程式或 SharePoint Online 網站添加到目錄中，該使用者必須*同時*具有所需的 Azure AD 目錄角色和目錄擁有者版權管理角色。 下表列出了向目錄添加資源所需的角色組合。 要從目錄中刪除資源，必須具有相同的角色。
+對於不是全域管理員或使用者系統管理員的使用者，若要將群組、應用程式或 SharePoint Online 網站新增至目錄，該使用者必須*同時*擁有必要的 Azure AD 目錄角色和目錄擁有者權利管理角色。 下表列出將資源新增至目錄所需的角色組合。 若要移除目錄中的資源，您必須擁有相同的角色。
 
-| Azure AD 目錄角色 | 權利管理角色 | 可以添加安全性群組 | 可以添加 Office 365 組 | 可以添加應用 | 可以添加 SharePoint 線上網站 |
+| Azure AD 目錄角色 | 權利管理角色 | 可以新增安全性群組 | 可以新增 Office 365 群組 | 可以新增應用程式 | 可以新增 SharePoint Online 網站 |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [全域管理員](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [使用者管理員](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [使用者系統管理員](../users-groups-roles/directory-assign-admin-roles.md) | n/a |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Intune 管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Exchange 管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  | :heavy_check_mark: |  |  |
-| [團隊服務管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  | :heavy_check_mark: |  |  |
+| [Microsoft Teams 服務管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  | :heavy_check_mark: |  |  |
 | [SharePoint 管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  | :heavy_check_mark: |  | :heavy_check_mark: |
-| [應用程式管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
-| [雲應用程式管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
-| User | 目錄擁有者 | 僅當組擁有者 | 僅當組擁有者 | 僅當應用擁有者 |  |
+| [應用程式系統管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
+| [雲端應用程式管理員](../users-groups-roles/directory-assign-admin-roles.md) | 目錄擁有者 |  |  | :heavy_check_mark: |  |
+| User | 目錄擁有者 | 只有在群組擁有者 | 只有在群組擁有者 | 只有應用程式擁有者 |  |
 
-要確定任務的特權最低角色，還可以[按 Azure 活動目錄 中的管理員任務引用管理員角色](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)。
+若要判斷工作的最低特殊許可權角色，您也可以[在 Azure Active Directory 中，依管理工作參考系統管理員角色](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [將訪問治理委派給目錄建立者](entitlement-management-delegate-catalog.md)
-- [創建和管理資原始目錄](entitlement-management-catalog-create.md)
+- [將存取管理委派給目錄建立者](entitlement-management-delegate-catalog.md)
+- [建立和管理資原始目錄](entitlement-management-catalog-create.md)

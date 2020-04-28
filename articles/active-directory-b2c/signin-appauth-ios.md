@@ -1,7 +1,7 @@
 ---
 title: 在 iOS 應用程式中使用 AppAuth
 titleSuffix: Azure AD B2C
-description: 如何創建使用具有 Azure 活動目錄 B2C 的 AppAuth 的 iOS 應用來管理使用者身份並驗證使用者。
+description: 如何建立使用 AppAuth 搭配 Azure Active Directory B2C 來管理使用者身分識別和驗證使用者的 iOS 應用程式。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,10 +12,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c659280ebc8c91b53cbc3a176c84397edd942c23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78186823"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C︰使用 iOS 應用程式登入
@@ -34,13 +34,13 @@ Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID 
 
 ## <a name="create-an-application"></a>建立應用程式
 
-接下來，在 Azure AD B2C 租戶中註冊應用程式。 這為 Azure AD 提供了與應用進行安全通信所需的資訊。
+接下來，在您的 Azure AD B2C 租使用者中註冊應用程式。 這會提供 Azure AD 與您的應用程式安全地通訊所需的資訊。
 
 [!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
 
 記錄 [應用程式 (用戶端) 識別碼]****，以便在稍後的步驟中使用。
 
-還要記錄自訂重定向 URI，以便稍後步驟中使用。 例如： `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
+另請記錄您的自訂重新導向 URI，以便在稍後的步驟中使用。 例如： `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
 ## <a name="create-your-user-flows"></a>建立使用者流程
 在 Azure AD B2C 中，每個使用者體驗皆是由某個[使用者流程](user-flow-overview.md)所定義。 此應用程式包含一個身分識別體驗：合併登入和註冊。 建立使用者流程時，請務必：
@@ -62,7 +62,7 @@ Microsoft 身分識別平台會使用開放式標準，例如 OAuth2 和 OpenID 
 > AppAuth 支援 iOS 7 及更新版本。  不過，若要在 Google 上支援社交登入，需要有 SFSafariViewController，而這需要 iOS 9 或更新版本。
 >
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
 您可以指定授權端點和權杖端點 URI，以設定與 Azure AD B2C 通訊。  若要產生這些 URI，您需要下列資訊︰
 * 租用戶識別碼 (例如，contoso.onmicrosoft.com)
@@ -92,8 +92,8 @@ OIDServiceConfiguration *configuration =
 
 設定或擷取授權服務組態之後，就可以建構授權要求。 若要建立要求，您需要下列資訊︰
 
-* 您之前記錄的用戶端 ID（應用程式 ID）。 例如： `00000000-0000-0000-0000-000000000000` 。
-* 您之前錄製的自訂重定向 URI。 例如： `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
+* 您先前記錄的用戶端識別碼（應用程式識別碼）。 例如： `00000000-0000-0000-0000-000000000000` 。
+* 您稍早記錄的自訂重新導向 URI。 例如： `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 。
 
 這兩個項目應該已在您[註冊應用程式](#create-an-application)時儲存。
 

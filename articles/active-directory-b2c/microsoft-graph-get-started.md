@@ -1,7 +1,7 @@
 ---
-title: 使用 Microsoft 圖形管理資源
+title: 使用 Microsoft Graph 管理資源
 titleSuffix: Azure AD B2C
-description: 通過註冊被授予所需圖形 API 許可權的應用程式，準備使用 Microsoft 圖形管理 Azure AD B2C 資源。
+description: 藉由註冊已授與所需圖形 API 許可權的應用程式，來準備使用 Microsoft Graph 管理 Azure AD B2C 資源。
 services: B2C
 author: msmimart
 manager: celestedg
@@ -12,73 +12,73 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 32117d4bfcf0c0af94eced095b94ab0c1b6f88af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78184332"
 ---
-# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用微軟圖形管理 Azure AD B2C
+# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C
 
-[Microsoft 圖形][ms-graph]允許您管理 Azure AD B2C 租戶中的許多資源，包括客戶使用者帳戶和自訂策略。 通過編寫調用 Microsoft 圖形[API][ms-graph-api]的腳本或應用程式，可以自動執行租戶管理工作，例如：
+[Microsoft Graph][ms-graph]可讓您管理 Azure AD B2C 租使用者內的許多資源，包括客戶使用者帳戶和自訂原則。 藉由撰寫呼叫[MICROSOFT GRAPH API][ms-graph-api]的腳本或應用程式，您可以自動化租使用者管理工作，例如：
 
-* 將現有使用者存儲遷移到 Azure AD B2C 租戶
-* 在 Azure DevOps 中使用 Azure 管道部署自訂策略，並管理自訂策略鍵
-* 在您自己的頁面上託管使用者註冊，並在後臺在 Azure AD B2C 目錄中創建使用者帳戶
-* 自動註冊應用程式
-* 獲取稽核記錄
+* 將現有的使用者存放區遷移至 Azure AD B2C 租使用者
+* 在 Azure DevOps 中使用 Azure 管線部署自訂原則，以及管理自訂原則金鑰
+* 在您自己的頁面上裝載使用者註冊，並在幕後的 Azure AD B2C 目錄中建立使用者帳戶
+* 自動化應用程式註冊
+* 取得 audit 記錄
 
-以下各節可説明您準備使用 Microsoft 圖形 API 自動管理 Azure AD B2C 目錄中的資源。
+下列各節可協助您準備使用 Microsoft Graph API 來自動化 Azure AD B2C 目錄中的資源管理。
 
-## <a name="microsoft-graph-api-interaction-modes"></a>微軟圖形API交互模式
+## <a name="microsoft-graph-api-interaction-modes"></a>Microsoft Graph API 互動模式
 
-使用 Microsoft 圖形 API 管理 Azure AD B2C 租戶中的資源時，可以使用兩種通訊模式：
+當您使用 Microsoft Graph API 來管理 Azure AD B2C 租使用者中的資源時，可以使用兩種通訊模式：
 
-* **互動式**- 適合運行一次的任務，您可以使用 B2C 租戶中的管理員帳戶來執行管理工作。 此模式要求管理員在調用 Microsoft 圖形 API 之前使用其憑據登錄。
+* **Interactive** -適用于僅執行一次的工作，您可以使用 B2C 租使用者中的系統管理員帳戶來執行管理工作。 此模式需要系統管理員使用其認證登入，才能呼叫 Microsoft Graph API。
 
-* **自動化**- 對於計畫或連續運行的任務，此方法使用您配置的服務帳戶，該服務帳戶具有執行管理工作所需的許可權。 通過註冊應用程式和腳本使用應用程式 *（用戶端） ID*和 OAuth 2.0 用戶端憑據授予進行身份驗證的應用程式，在 Azure AD B2C 中創建"服務帳戶"。 在這種情況下，應用程式充當自身來調用 Microsoft 圖形 API，而不是管理員使用者，如前面描述的互動式方法所示。
+* **自動化**-針對已排程或連續執行的工作，這個方法會使用您以執行管理工作所需的許可權來設定的服務帳戶。 您會在 Azure AD B2C 中建立「服務帳戶」，方法是註冊應用程式和腳本使用其*應用程式（用戶端）識別碼*和 OAuth 2.0 用戶端認證授與進行驗證所用的應用程式。 在此情況下，應用程式本身就是呼叫 Microsoft Graph API，而不是系統管理員使用者，就像先前所述的互動式方法一樣。
 
-通過創建以下各節中所示的應用程式註冊，可以啟用**自動**交互方案。
+您可以藉由建立下列各節所示的應用程式註冊，來啟用**自動化**互動案例。
 
 ## <a name="register-management-application"></a>註冊管理應用程式
 
-在腳本和應用程式可以與 Microsoft[圖形 API][ms-graph-api]進行交互以管理 Azure AD B2C 資源之前，需要在 Azure AD B2C 租戶中創建應用程式註冊，該租戶授予所需的 API 許可權。
+在您的腳本和應用程式可以與[MICROSOFT GRAPH API][ms-graph-api]互動以管理 Azure AD B2C 資源之前，您需要在 Azure AD B2C 租使用者中建立應用程式註冊，以授與所需的 API 許可權。
 
 [!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
 
 ### <a name="grant-api-access"></a>授與 API 存取權限
 
-接下來，授予註冊的應用程式許可權，以便通過調用 Microsoft Graph API 來操作租戶資源。
+接下來，授與已註冊的應用程式許可權，以透過呼叫 Microsoft Graph API 來操作租使用者資源。
 
 [!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
-### <a name="create-client-secret"></a>創建用戶端機密
+### <a name="create-client-secret"></a>建立用戶端密碼
 
 [!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
-現在，您擁有在 Azure AD B2C 租戶中*創建*、*讀取*、*更新*和*刪除*使用者的許可權的應用程式。 繼續下一節添加*密碼更新*許可權。
+您現在有一個應用程式，有權*建立*、*讀取*、*更新*和*刪除*Azure AD B2C 租使用者中的使用者。 繼續進行下一節，以新增*密碼更新*許可權。
 
 ## <a name="enable-user-delete-and-password-update"></a>啟用使用者刪除和密碼更新
 
-*讀取和寫入目錄資料*許可權**不包括**刪除使用者或更新使用者帳戶密碼的功能。
+*讀取和寫入目錄資料*許可權**不**包含刪除使用者或更新使用者帳戶密碼的能力。
 
-如果應用程式或腳本需要刪除使用者或更新其密碼，請為應用程式分配*使用者管理員*角色：
+如果您的應用程式或腳本需要刪除使用者或更新其密碼，請將*使用者系統管理員*角色指派給您的應用程式：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)並使用**目錄 + 訂閱**篩選器切換到 Azure AD B2C 租戶。
-1. 搜索並選擇**Azure AD B2C**。
-1. 在 **"管理**"下，選擇**角色和管理員**。
-1. 選擇 **"使用者管理員"** 角色。
-1. 選擇 **"添加分配**"。
-1. 在 **"選擇**文本"框中，輸入之前註冊的應用程式的名稱，例如*管理應用1*。 在搜尋結果中顯示應用程式時選擇該應用程式。
-1. 選取 [加入]****。 許可權可能需要幾分鐘才能完全傳播。
+1. 登入[Azure 入口網站](https://portal.azure.com)，然後使用 [**目錄 + 訂**用帳戶] 篩選器切換至您的 Azure AD B2C 租使用者。
+1. 搜尋並選取 [ **Azure AD B2C**]。
+1. 在 [**管理**] 底下，選取 [**角色和系統管理員**]。
+1. 選取 [**使用者系統管理員**] 角色。
+1. 選取 [**新增指派**]。
+1. 在 [**選取**] 文字方塊中，輸入您先前註冊之應用程式的名稱，例如*managementapp1*。 當您的應用程式出現在搜尋結果中時，請加以選取。
+1. 選取 [新增]  。 可能需要幾分鐘的時間才能完全傳播許可權。
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已註冊管理應用程式並授予它所需的許可權，您的應用程式和服務（例如，Azure 管道）可以使用其憑據和許可權與 Microsoft 圖形 API 進行交互。
+既然您已註冊您的管理應用程式，並將其授與必要的許可權，您的應用程式和服務（例如 Azure Pipelines）可以使用其認證和許可權來與 Microsoft Graph API 互動。
 
-* [微軟圖形支援的 B2C 操作](microsoft-graph-operations.md)
-* [使用微軟圖形管理 Azure AD B2C 使用者帳戶](manage-user-accounts-graph-api.md)
-* [使用 Azure AD 報告 API 獲取稽核記錄](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)
+* [Microsoft Graph 支援 B2C 作業](microsoft-graph-operations.md)
+* [使用 Microsoft Graph 管理 Azure AD B2C 的使用者帳戶](manage-user-accounts-graph-api.md)
+* [使用 Azure AD 報告 API 取得 audit 記錄](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)
 
 <!-- LINKS -->
 [ms-graph]: https://docs.microsoft.com/graph/

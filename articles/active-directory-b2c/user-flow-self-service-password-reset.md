@@ -11,10 +11,10 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d6dad52c8a3e63c64bb8e0e0030e8c50b5bab42c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183103"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>設定客戶的自助式密碼重設
@@ -30,9 +30,9 @@ ms.locfileid: "78183103"
 
 1. 以訂用帳戶管理員身分登入 [Azure 入口網站](https://portal.azure.com/)。 此為您建立目錄時所用的工作或學校帳戶，或者當時所用的 Microsoft 帳戶。
 2. 開啟 **Azure Active Directory** (位於左側導覽列中)。
-3. 向下滾動選項邊欄選項卡，然後選擇 **"密碼重設**"。
+3. 在 [選項] 分頁上向下滾動，然後選取 [**密碼重設**]。
 4. 將 [啟用自助式密碼重設]**** 設為 [全部]****。
-5. 按一下頁面頂端的 [儲存]****。 大功告成！
+5. 按一下頁面頂端的 [儲存]  。 大功告成！
 
 如果要進行測試，請針對所有將本機帳戶作為識別提供者的登入使用者流程使用 [立即執行] 功能。 在本機帳戶登入頁面上 (您輸入電子郵件地址和密碼，或使用者名稱和密碼的頁面)，按一下 [無法存取您的帳戶？]**** 驗證客戶體驗。
 

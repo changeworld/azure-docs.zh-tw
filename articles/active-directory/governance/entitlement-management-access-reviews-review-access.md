@@ -1,6 +1,6 @@
 ---
-title: 查看 Azure AD 授權管理中訪問包的訪問
-description: 瞭解如何在 Azure 活動目錄訪問審核（預覽）中完成對授權管理訪問包的訪問審查。
+title: 在 Azure AD 權利管理中審查存取套件的存取權
+description: 瞭解如何在 Azure Active Directory 存取評論（預覽）中完成權利管理存取套件的存取權審查。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,90 +17,90 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 99de022b7259b33baab3aa825673a8f85e932bff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968734"
 ---
-# <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>查看 Azure AD 授權管理中訪問包的訪問
+# <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 權利管理中審查存取套件的存取權
 
-Azure AD 授權管理簡化了企業管理對組、應用程式和 SharePoint 網站的訪問的方式。 本文介紹如何為作為指定檢閱者分配到訪問包的其他使用者執行訪問審核。
+Azure AD 權利管理可簡化企業管理群組、應用程式和 SharePoint 網站存取的方式。 本文說明如何針對指派給存取套件的其他使用者，以指定的審核者來執行存取權審查。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-要查看使用者的活動訪問包分配，必須滿足執行訪問審核的先決條件：
+若要檢查使用者的 active access 套件指派，您必須符合進行存取權審查的必要條件：
 - Azure AD Premium P2
 - 全域管理員
-- 指定使用者管理員、目錄擁有者或訪問包管理器
+- 指定的使用者系統管理員、目錄擁有者或存取套件管理員
 
 如需詳細資訊，請參閱[授權需求](entitlement-management-overview.md#license-requirements)。
 
 
-## <a name="open-the-access-review"></a>打開訪問審核
+## <a name="open-the-access-review"></a>開啟存取權審查
 
-使用以下步驟查找和打開訪問審核：
+使用下列步驟來尋找並開啟存取權審查：
 
-1. 您可能會收到來自 Microsoft 的電子郵件，要求您查看存取權限。 找到電子郵件以打開訪問審核。 下面是一個用於查看存取權限的示例電子郵件：
+1. 您可能會收到來自 Microsoft 的電子郵件，要求您審查存取權。 找出電子郵件以開啟存取權審查。 以下是用來審查存取權的電子郵件範例：
     
-    ![訪問審閱檢閱者電子郵件](./media/entitlement-management-access-reviews-review-access/review-access-reviewer-email.png)
+    ![存取審查檢閱者電子郵件](./media/entitlement-management-access-reviews-review-access/review-access-reviewer-email.png)
 
-1. 按一下 **"查看使用者訪問**"連結以打開訪問審核。 
+1. 按一下 [**審查使用者存取權**] 連結，以開啟存取權審查。 
 
-1. 如果您沒有該電子郵件，則可以通過直接導航到https://myaccess.microsoft.com找到掛起的訪問評論。  （對於美國政府，`https://myaccess.microsoft.us`請使用。
+1. 如果您沒有電子郵件，可以直接流覽至來https://myaccess.microsoft.com尋找您的暫止存取評論。  （針對美國政府，請`https://myaccess.microsoft.us`改用）。
 
-1. 按一下左側巡覽列上的 **"訪問審閱**"以查看分配給您掛起的訪問審核的清單。
+1. 按一下左側導覽列上的 [**存取評論**]，以查看指派給您的暫止存取評論清單。
     
-    ![在"我的訪問"上選擇訪問評論](./media/entitlement-management-access-reviews-review-access/review-access-myaccess-select-access-review.png)
+    ![選取我的存取權上的存取評論](./media/entitlement-management-access-reviews-review-access/review-access-myaccess-select-access-review.png)
 
-1. 按一下要開始的評論。
+1. 按一下您想要開始的審查。
     
-    ![選擇訪問審核](./media/entitlement-management-access-reviews-review-access/review-access-select-access-review.png)
+    ![選取存取權審查](./media/entitlement-management-access-reviews-review-access/review-access-select-access-review.png)
 
-## <a name="perform-the-access-review"></a>執行訪問審核
+## <a name="perform-the-access-review"></a>執行存取權審查
 
-打開訪問審核後，您將看到需要查看的使用者名稱。 有兩種方法可以批准或拒絕訪問：
-- 您可以手動批准或拒絕一個或多個使用者的存取權限
+一旦您開啟存取權審查，您就會看到需要檢查的使用者名稱。 有兩種方式可讓您核准或拒絕存取：
+- 您可以手動核准或拒絕一或多個使用者的存取權
 - 您可以接受系統建議
 
-### <a name="manually-approve-or-deny-access-for-one-or-more-users"></a>手動批准或拒絕一個或多個使用者的存取權限
-1. 查看使用者清單並確定需要哪些使用者繼續具有存取權限。
+### <a name="manually-approve-or-deny-access-for-one-or-more-users"></a>手動核准或拒絕一或多個使用者的存取權
+1. 請檢查使用者清單，並判斷哪些使用者需要繼續擁有存取權。
 
-    ![要查看的使用者清單](./media/entitlement-management-access-reviews-review-access/review-access-list-of-users.png)
+    ![要審查的使用者清單](./media/entitlement-management-access-reviews-review-access/review-access-list-of-users.png)
 
-1. 要批准或拒絕存取權限，請選擇使用者名左側的選項按鈕。
+1. 若要核准或拒絕存取，請選取使用者名稱左邊的選項按鈕。
 
-1. 在使用者名上方的欄中選擇 **"批准**"或 **"拒絕**"。
+1. 在使用者名稱上方的列中，選取 [**核准**] 或 [**拒絕**]。
 
     ![選取使用者](./media/entitlement-management-access-reviews-review-access/review-access-select-users.png)
 
-1. 如果您不確定，可以按一下"**不知道"** 按鈕。
+1. 如果您不確定，可以按一下 [**不知道**] 按鈕。
 
-    如果進行此選擇，則使用者維護存取權限，並且此選擇將位於稽核記錄中。 該日誌顯示您仍已完成審閱的任何其他檢閱者。
+    如果您選取此選項，使用者會維持存取權，而此選項會放在 audit 記錄中。 此記錄會顯示您仍完成審核的其他任何審核者。
 
-1. 您可能需要提供決策的理由。 鍵入原因並按一下"**提交**"。
+1. 您可能需要為您的決策提供原因。 輸入原因，然後按一下 [**提交**]。
 
     ![核准或拒絕存取](./media/entitlement-management-access-reviews-review-access/review-access-decision-approve.png)
 
-1. 您可以在審核結束前的任何時間更改您的決定。 為此，請從清單中選擇使用者並更改決策。 例如，您可以批准以前被拒絕的使用者的存取權限。
+1. 您可以在審核結束之前隨時變更您的決策。 若要這麼做，請從清單中選取使用者並變更決策。 例如，您可以針對先前拒絕的使用者核准存取權。
 
-如果有多個檢閱者，則記錄上次提交的回應。 考慮一個管理員指定兩個檢閱者的示例 - Alice 和 Bob。 Alice 首先打開審核並批准訪問。 在審核結束之前，Bob 將打開審核並拒絕訪問。 在這種情況下，將記錄最後一個拒絕訪問決定。
+如果有多個審核者，則會記錄最後提交的回應。 請考慮一個範例，其中系統管理員會指定兩個審核者– Alice 和 Bob。 Alice 會先開啟審查並核准存取權。 在審查結束之前，Bob 會開啟審查並拒絕存取。 在此情況下，會記錄最後的拒絕存取決策。
 
 >[!NOTE]
->如果使用者被拒絕訪問，則不會立即從訪問包中刪除他們。 審核結束時，使用者將從訪問包中刪除，或者管理員結束審核。
+>如果使用者遭到拒絕存取，他們就不會立即從存取套件中移除。 當審核結束時，系統會將使用者從存取套件中移除，或管理員結束審核。
 
-### <a name="approve-or-deny-access-using-the-system-generated-recommendations"></a>使用系統生成的建議批准或拒絕訪問
+### <a name="approve-or-deny-access-using-the-system-generated-recommendations"></a>使用系統產生的建議來核准或拒絕存取
 
-要更快地查看多個使用者的存取權限，可以使用系統生成的建議，只需按一下一下即可接受建議。 建議基於使用者的登錄活動生成。
+若要更快速地檢查多位使用者的存取權，您可以使用系統產生的建議，只需按一下即可接受建議。 系統會根據使用者的登入活動來產生建議。
 
-1.  在頁面頂部的欄中，按一下"**接受建議**"。
+1.  在頁面頂端的列中，按一下 [**接受建議**]。
     
-    ![選擇"接受建議"](./media/entitlement-management-access-reviews-review-access/review-access-use-recommendations.png)
+    ![選取 [接受建議]](./media/entitlement-management-access-reviews-review-access/review-access-use-recommendations.png)
     
-    您將看到建議操作的摘要。
+    您會看到建議動作的摘要。
 
-1.  按一下"**提交**"以接受建議。
+1.  按一下 [**提交**] 以接受建議。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [訪問包的自我審查](entitlement-management-access-reviews-self-review.md)
+- [自我審查存取套件](entitlement-management-access-reviews-self-review.md)

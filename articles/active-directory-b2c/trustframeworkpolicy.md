@@ -11,10 +11,10 @@ ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c964a7bde0b7db9357c73fc79d2df3170075fcc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78186381"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
@@ -41,11 +41,11 @@ ms.locfileid: "78186381"
 | 屬性 | 必要 | 描述 |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | 是 | 用來執行此原則的結構描述版本。 值必須是 `0.3.0.0` |
-| TenantObjectId | 否 | Azure 活動目錄 B2C （Azure AD B2C） 租戶的唯一物件識別碼。 |
+| TenantObjectId | 否 | Azure Active Directory B2C （Azure AD B2C）租使用者的唯一物件識別碼。 |
 | TenantId | 是 | 此原則所屬之租用戶的唯一識別碼。 |
 | PolicyId | 是 | 原則的唯一識別碼。 此識別碼必須加上前置詞 *B2C_1A_* |
 | PublicPolicyUri | 是 | 原則的 URI，也就是租用戶識別碼和原則識別碼的組合。 |
-| DeploymentMode | 否 | 可能的值：`Production`或`Development`。 `Production` 為預設值。 使用此屬性以偵錯您的原則。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
+| DeploymentMode | 否 | 可能的值`Production`：、 `Development`或。 `Production` 為預設值。 使用此屬性以偵錯您的原則。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
 | UserJourneyRecorderEndpoint | 否 | 當 **DeploymentMode** 設為 `Development` 時，可使用端點。 值必須是 `urn:journeyrecorder:applicationinsights`。 如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)。 |
 
 
@@ -67,12 +67,12 @@ ms.locfileid: "78186381"
 這些類型的原則檔通常用於使用者旅程圖中：
 
 - **基底**檔案，包含大部分的定義。 為了有利於原則的疑難排解和長期維護，建議您盡可能不要變更這個檔案。
-- 保存租戶的唯一配置更改的**擴展**檔。 此原則檔衍生自基底檔案。 使用此檔案以新增新的功能，或覆寫現有功能。 例如，使用此檔案與新的識別提供者形成同盟。
+- **延伸**模組檔案，其中保存租使用者的唯一設定變更。 此原則檔衍生自基底檔案。 使用此檔案以新增新的功能，或覆寫現有功能。 例如，使用此檔案與新的識別提供者形成同盟。
 - **信賴憑證者 (RP)** 檔案，這是以單一工作為主的檔案，直接由信賴憑證者叫用，例如 Web、行動或桌面應用程式。 各項唯一且不重複的工作，例如註冊或登入、密碼重設，或設定檔編輯，均需要專屬的 RP 原則檔。 此原則檔衍生自擴充檔案。
 
 信賴憑證者應用程式會呼叫 RP 原則檔來執行特定工作。 起始登入流程即是一例。 Azure AD B2C 中的識別體驗架構會先從基底原則檔開始，再到擴充原則檔和 RP 原則檔，逐步新增所有元素，以組合目前生效的原則。 RP 檔案會覆寫擴充原則檔中相同類型和名稱的元素，而擴充原則檔會覆寫基底原則檔。 下圖顯示原則檔和信賴憑證者應用程式之間的關聯性。
 
-![顯示信任框架策略繼承模型的圖表](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
+![顯示信任架構原則繼承模型的圖表](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
 
 繼承模型如下所示：
 
@@ -116,7 +116,7 @@ ms.locfileid: "78186381"
 
 ## <a name="policy-execution"></a>原則執行
 
-信賴憑證者應用程式 (例如 Web、行動或桌面應用程式) 會呼叫[信賴憑證者 (RP) 原則](relyingparty.md)。 RP 原則檔會執行特定工作，例如登入、重設密碼或編輯設定檔。 RP 原則會設定信賴憑證者應用程式收到的宣告清單，做為已簽發之權杖的一部分。 多個應用程式可使用相同的原則。 所有應用程式都收到相同的權杖聲明，並且使用者經歷相同的使用者旅程。 單一應用程式可使用多個原則。
+信賴憑證者應用程式 (例如 Web、行動或桌面應用程式) 會呼叫[信賴憑證者 (RP) 原則](relyingparty.md)。 RP 原則檔會執行特定工作，例如登入、重設密碼或編輯設定檔。 RP 原則會設定信賴憑證者應用程式收到的宣告清單，做為已簽發之權杖的一部分。 多個應用程式可使用相同的原則。 所有應用程式都會使用宣告接收相同的權杖，而使用者會經歷相同的使用者旅程圖。 單一應用程式可使用多個原則。
 
 在 RP 原則檔中，指定 **DefaultUserJourney** 元素，該元素指向 [UserJourney](userjourneys.md)。 通常是在基底或擴充原則中定義使用者旅程圖。
 
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 
 使用者旅程圖定義使用者經歷的商務邏輯。 每個使用者旅程圖都是一組協調流程步驟，依照驗證和資訊集合的順序，執行一系列動作。
 
-[starter pack](custom-policy-get-started.md#custom-policy-starter-pack)中的 **SocialAndLocalAccounts** 原則檔包含 SignUpOrSignIn、ProfileEdit、PasswordReset 使用者旅程圖。 您可以為其他方案添加更多使用者旅程，例如更改電子郵件地址或連結和取消連結社交帳戶。
+[starter pack](custom-policy-get-started.md#custom-policy-starter-pack)中的 **SocialAndLocalAccounts** 原則檔包含 SignUpOrSignIn、ProfileEdit、PasswordReset 使用者旅程圖。 您可以為其他案例新增更多使用者旅程，例如變更電子郵件地址或連結和取消連結社交帳戶。
 
 協調流程步驟可呼叫[技術設定檔](technicalprofiles.md)。 技術設定檔提供一個架構，其中包含與不同類型的對象進行通訊的內建機制。 例如，技術設定檔可以執行以下動作：
 
@@ -148,7 +148,7 @@ B2C_1A_TrustFrameWorkBase 或 B2C_1A_TrustFrameworkExtensionPolicy：
 - 從 Azure AD B2C 身分識別存放區讀取和寫入資料。
 - 呼叫自訂的 Restful API 服務。
 
-![顯示策略執行流的圖表](./media/trustframeworkpolicy/custom-policy-execution.png)
+![顯示原則執行流程的圖表](./media/trustframeworkpolicy/custom-policy-execution.png)
 
  **TrustFrameworkPolicy** 元素包含下列元素：
 

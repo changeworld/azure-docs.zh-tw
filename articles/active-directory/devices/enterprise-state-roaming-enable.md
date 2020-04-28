@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c44d6266f5ea8cdd4f75d0449cb49852e71c905
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672403"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>在 Azure Active Directory 中啟用企業狀態漫遊
@@ -25,7 +25,7 @@ ms.locfileid: "78672403"
 當您啟用企業狀態漫遊時，您的組織會自動從 Azure 資訊保護獲得 Azure Rights Management 保護的免費但有使用限制的授權。 此免費訂用帳戶只能加密和解密由企業狀態漫遊所同步的企業設定和應用程式資料。 您必須擁有[付費訂用帳戶](https://azure.microsoft.com/pricing/details/information-protection/)，才能使用 Azure Rights Management 服務的完整功能。
 
 > [!NOTE]
-> 本文適用于 2015 年 7 月隨 Windows 10 推出的基於 Windows 10 的基於 Microsoft 邊緣舊版 HTML 的瀏覽器。 本文不適用於 2020 年 1 月 15 日發佈的基於 Microsoft 邊緣鉻的新瀏覽器。 有關新 Microsoft 邊緣的同步行為的詳細資訊，請參閱[文章"Microsoft 邊緣同步](/deployedge/microsoft-edge-enterprise-sync)"。
+> 本文適用于2015年7月以 Windows 10 啟動的 Microsoft Edge 舊版 HTML 型瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 型瀏覽器。 如需新 Microsoft Edge 同步處理行為的詳細資訊，請參閱[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)處理一文。
 
 ## <a name="to-enable-enterprise-state-roaming"></a>啟用企業狀態漫遊
 
@@ -43,9 +43,9 @@ ms.locfileid: "78672403"
 
 | 國家/區域值 | 將其資料裝載於 |
 | -------------------- | ------------------------ |
-| EMEA 國家/地區，如法國或尚比亞 | 歐洲內的一個或多個 Azure 區域 |
-| 北美國家/地區，如美國或加拿大 | 美國內的一個或多個 Azure 區域 |
-| 亞太地區/地區，如澳大利亞或紐西蘭 | 亞洲內的一個或多個 Azure 區域 |
+| EMEA 國家/地區，例如法國或尚比亞 | 歐洲內的一個或多個 Azure 區域 |
+| 北美洲國家/地區，例如美國或加拿大 | 美國內的一個或多個 Azure 區域 |
+| APAC 國家/地區，例如澳大利亞或紐西蘭 | 亞洲內的一個或多個 Azure 區域 |
 | 南美洲和南極洲區域 | 美國內的一個或多個 Azure 區域 |
 
 國家/地區值是在 Azure AD 目錄建立程序期間所建立，之後無法修改。 如果您需要資料儲存體位置的詳細資料，請向 [Azure 支援](https://azure.microsoft.com/support/options/)提出票證。
@@ -82,7 +82,7 @@ ms.locfileid: "78672403"
 一年 (「保留期限」) 未存取的資料將視為過時，可能會從 Microsoft 雲端中刪除。 保留期限可能有所變更，但不會小於 90 天。 過時的資料可能是一組特定的 Windows/應用程式設定或使用者的所有設定。 例如：
 
 * 如果沒有任何裝置存取特定的設定集合 (例如，從裝置中移除應用程式，或針對使用者的所有裝置停用設定群組，例如「佈景主題」)，則該集合在保留期限之後就會變成過時，可能會被刪除。 
-* 如果使用者關閉了其所有設備上的設置同步，則不會訪問任何設置資料，並且該使用者的所有設置資料將過時，並可能在保留期後刪除。 
+* 如果使用者已關閉所有裝置上的設定同步處理，則不會存取任何設定資料，而且該使用者的所有設定資料都會變成過時，而且可能會在保留期限後刪除。 
 * 如果 Azure AD 目錄管理員針對整個目錄關閉企業狀態漫遊，則該目錄中的所有使用者會停止同步處理設定，且所有使用者的所有設定資料會變成過時，並且可能在保留期限之後刪除。 
 
 ### <a name="deleted-data-recovery"></a>復原已刪除的資料

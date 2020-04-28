@@ -1,7 +1,7 @@
 ---
-title: 自訂策略的整數聲明轉換示例
+title: 自訂原則的整數宣告轉換範例
 titleSuffix: Azure AD B2C
-description: 對於 Azure 活動目錄 B2C 的標識體驗框架 （IEF） 架構，整數聲明轉換示例。
+description: Azure Active Directory B2C 的 Identity Experience Framework （IEF）架構的整數宣告轉換範例。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,23 +12,23 @@ ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ece25e95bbbe9f1a1fa591c29ea9ffda0fefd369
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78187673"
 ---
 # <a name="integer-claims-transformations"></a>整數宣告轉換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文提供了在 Azure 活動目錄 B2C（Azure AD B2C） 中使用標識體驗框架架構架構的整數聲明轉換的示例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
+本文提供在 Azure Active Directory B2C （Azure AD B2C）中使用 Identity Experience Framework 架構的整數宣告轉換的範例。 如需詳細資訊，請參閱 [ClaimsTransformations](claimstransformations.md)。
 
 ## <a name="convertnumbertostringclaim"></a>ConvertNumberToStringClaim
 
 將 Lng 資料類型轉換為字串資料類型。
 
-| Item | TransformationClaimType | 資料類型 | 注意 |
+| 項目 | TransformationClaimType | 資料類型 | 注意 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | long | 要轉換為字串的 ClaimType。 |
 | OutputClaim | outputClaim | 字串 | 叫用此 ClaimsTransformation 之後所產生的 ClaimType。 |

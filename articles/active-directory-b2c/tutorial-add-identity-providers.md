@@ -1,5 +1,5 @@
 ---
-title: 教程：將標識提供程式添加到應用
+title: 教學課程：將身分識別提供者新增至您的應用程式
 titleSuffix: Azure AD B2C
 description: 了解如何使用 Azure 入口網站在 Azure Active Directory B2C 中將識別提供者新增至您的應用程式。
 services: active-directory-b2c
@@ -12,15 +12,15 @@ ms.date: 07/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1f49061210ca8e3c106b0569f77a67d1f10757a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183511"
 ---
-# <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：在 Azure 活動目錄 B2C 中向應用程式添加標識提供程式
+# <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教學課程：在 Azure Active Directory B2C 中將識別提供者新增至您的應用程式
 
-在您的應用程式中，您可以讓使用者使用不同的識別提供者登入。 *識別提供者*可建立、維護及管理身分識別資訊，同時對應用程式提供驗證服務。 可以使用 Azure 門戶將 Azure 活動目錄 B2C （Azure AD B2C） 支援的標識提供程式添加到[使用者流](user-flow-overview.md)中。
+在您的應用程式中，您可以讓使用者使用不同的識別提供者登入。 *識別提供者*可建立、維護及管理身分識別資訊，同時對應用程式提供驗證服務。 您可以使用 Azure 入口網站，將 Azure Active Directory B2C （Azure AD B2C）支援的身分識別提供者新增至您的[使用者流程](user-flow-overview.md)。
 
 在本文中，您將學會如何：
 
@@ -29,7 +29,7 @@ ms.locfileid: "78183511"
 > * 將識別提供者新增至您的租用戶
 > * 將識別提供者新增至您的使用者流程
 
-您在應用程式中通常只會使用一個識別提供者，但您可以選擇新增更多個。 本教學課程說明如何將 Azure AD 識別提供者和 Facebook 識別提供者新增至您的應用程式。 將這兩個這些識別提供者新增至應用程式是選用作業。 您還可以添加其他身份供應商，如[亞馬遜](identity-provider-amazon.md)[、GitHub、](identity-provider-github.md)[谷歌](identity-provider-google.md)[、LinkedIn、](identity-provider-linkedin.md)[微軟](identity-provider-microsoft-account.md)或[推特](identity-provider-twitter.md)。
+您在應用程式中通常只會使用一個識別提供者，但您可以選擇新增更多個。 本教學課程說明如何將 Azure AD 識別提供者和 Facebook 識別提供者新增至您的應用程式。 將這兩個這些識別提供者新增至應用程式是選用作業。 您也可以新增其他身分識別提供者，例如[Amazon](identity-provider-amazon.md)、 [GitHub](identity-provider-github.md)、 [Google](identity-provider-google.md)、 [LinkedIn](identity-provider-linkedin.md)、 [Microsoft](identity-provider-microsoft-account.md)或[Twitter](identity-provider-twitter.md)。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -45,13 +45,13 @@ ms.locfileid: "78183511"
 
 若要讓使用者可從 Azure AD 登入，您必須在 Azure AD 租用戶內註冊應用程式。 此 Azure AD 租用戶與您的 Azure AD B2C 租用戶不同。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
-1. 通過在頂部功能表中選擇**目錄 + 訂閱**篩選器並選擇包含 Azure AD 租戶的目錄，請確保使用的目錄包含 Azure AD 租戶。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 請選取頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您 Azure AD 租使用者的目錄，以確定您使用的是包含 Azure AD 租使用者的目錄。
 1. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [應用程式註冊]****。
-1. 選取 [新增註冊]****。
+1. 選取 [新增註冊]  。
 1. 輸入應用程式的名稱。 例如： `Azure AD B2C App` 。
-1. **僅接受此組織目錄中針對此應用程式的帳戶**選擇。
-1. 對於**重定向 URI**，接受**Web**的值，並在所有小寫字母中輸入以下 URL，`your-B2C-tenant-name`替換為 Azure AD B2C 租戶的名稱。
+1. 只接受此應用程式**在此組織目錄中**選取的帳戶。
+1. 針對 [重新**導向 URI**]，接受 [ **Web** ] 的值，並以所有小寫字母輸入下列`your-B2C-tenant-name` URL，並將取代為您的 Azure AD B2C 租使用者名稱。
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -61,33 +61,33 @@ ms.locfileid: "78183511"
 
     所有 URL 現在都應會使用 [b2clogin.com](b2clogin.md)。
 
-1. 選擇 **"註冊**"，然後記錄在後面的步驟中使用**的應用程式（用戶端）ID。**
-1. 在應用程式功能表中的 **"管理"** 下，選擇**證書&機密**，然後選擇 **"新用戶端機密**"。
-1. 輸入用戶端機密**的說明**。 例如： `Azure AD B2C App Secret` 。
-1. 選擇過期期限。 對於此申請，接受 1**年中的**選擇。
-1. 選擇 **"添加**"，然後記錄在後面的步驟中使用的新用戶端機密的值。
+1. 選取 [**註冊**]，然後記錄您在稍後步驟中使用的**應用程式（用戶端）識別碼**。
+1. 在應用程式功能表的 [**管理**] 底下，選取 [**憑證 & 密碼**]，然後選取 [**新增用戶端密碼**]。
+1. 輸入用戶端密碼的**描述**。 例如： `Azure AD B2C App Secret` 。
+1. 選取 [到期時間]。 針對此應用程式，接受**1 年**的選取專案。
+1. 選取 **[新增]**，然後記錄您在稍後步驟中使用的新用戶端密碼的值。
 
 ### <a name="create-a-facebook-application"></a>建立 Facebook 應用程式
 
-若要在 Azure AD B2C 中使用 Facebook 帳戶作為識別提供者，您必須在 Facebook 建立應用程式。 如果您還沒有 Facebook 帳戶，您可以在 上[https://www.facebook.com/](https://www.facebook.com/)獲取。
+若要在 Azure AD B2C 中使用 Facebook 帳戶作為識別提供者，您必須在 Facebook 建立應用程式。 如果您還沒有 Facebook 帳戶，可以在[https://www.facebook.com/](https://www.facebook.com/)取得。
 
 1. 請以您的 Facebook 帳戶認證登入 [Facebook for developers (開發人員專用的 Facebook)](https://developers.facebook.com/)。
-1. 如果您尚未這麼做，您必須註冊為 Facebook 開發人員。 為此，請在頁面右上角選擇 **"開始"，** 接受 Facebook 的政策，並完成註冊步驟。
-1. 選擇 **"我的應用**"，然後**創建應用**。
+1. 如果您尚未這麼做，您必須註冊為 Facebook 開發人員。 若要這麼做，請選取頁面右上角的 [**開始**使用]，接受 Facebook 的原則，然後完成註冊步驟。
+1. 選取**我的應用程式**然後**建立應用程式**。
 1. 輸入**顯示名稱**和有效的**連絡人電子郵件**。
 1. 按一下 [建立應用程式識別碼]****。 這可能會要求您接受 Facebook 平台原則，並完成線上安全性檢查。
-1. 選擇 **"設置** > **基本**"。
-1. 選擇**分類**，例如 `Business and Pages`。 此值是 Facebook 所必需的，但 Azure AD B2C 不使用。
+1. 選取 [**設定** > ] [**基本**]。
+1. 選擇**分類**，例如 `Business and Pages`。 這是 Facebook 所需的值，但 Azure AD B2C 不會使用它。
 1. 在頁面底部選取 [新增平台]****，然後選取 [網站]****。
 1. 在 [Site URL]**** \(網站 URL\) 中，輸入 `https://your-tenant-name.b2clogin.com/`，並將 `your-tenant-name` 取代為您的租用戶名稱。
-1. 輸入**隱私權原則 URL** 的 URL，如 `http://www.contoso.com/`。 隱私政策 URL 是您為應用程式提供隱私資訊而維護的頁面。
+1. 輸入**隱私權原則 URL** 的 URL，如 `http://www.contoso.com/`。 隱私權原則 URL 是您維護以提供應用程式隱私權資訊的頁面。
 1. 選取 [Save Changes] \(儲存變更\)****。
-1. 在頁面頂部，記錄**應用 ID**的值。
-1. 在**應用機密**旁邊，選擇 **"顯示**並記錄其值"。 您可以使用應用 ID 和應用金鑰將 Facebook 配置為租戶中的標識提供程式。 **應用金鑰**是一個重要的安全憑據，您應該安全地存儲。
-1. 選擇**產品**旁邊的加號，然後在 Facebook**登錄下**選擇 **"設置**"。
-1. 在左側功能表中的**Facebook 登錄**功能表下，選擇 **"設置**"。
-1. 在 [Valid OAuth redirect URIs]**** \(有效的 OAuth 重新導向 URI\) 中，輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 `your-tenant-name`。 選擇頁面底部的 **"保存更改**"。
-1. 要使 Facebook 應用程式可供 Azure AD B2C 使用，請按一下頁面右上角**的狀態**選擇器，然後將其**打開以公開**應用程式，然後按一下"**確認**"。 此時，狀態應該會從 [開發]**** 變更為 [作用中]****。
+1. 在頁面頂端，記錄 [**應用程式識別碼**] 的值。
+1. 在 [**應用程式秘密**] 旁，選取 [**顯示**並記錄其值]。 您會使用應用程式識別碼和應用程式密碼，將 Facebook 設定為您租使用者中的身分識別提供者。 **應用程式密碼**是重要的安全性認證，您應該安全地加以儲存。
+1. 選取 [**產品**] 旁的加號，然後在 **[Facebook 登**入] 下選取 [**設定**]。
+1. 在左側功能表中的 [ **Facebook 登**入] 底下，選取 [**設定**]。
+1. 在 [Valid OAuth redirect URIs]**** \(有效的 OAuth 重新導向 URI\) 中，輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 `your-tenant-name`。 選取頁面底部的 [**儲存變更**]。
+1. 若要讓您的 Facebook 應用程式可供 Azure AD B2C，請按一下頁面右上方的**狀態**選取器並開啟 **，將應用程式設為公用**，然後按一下 [**確認**]。 此時，狀態應該會從 [開發]**** 變更為 [作用中]****。
 
 ## <a name="add-the-identity-providers"></a>新增識別提供者
 
@@ -95,11 +95,11 @@ ms.locfileid: "78183511"
 
 ### <a name="add-the-azure-active-directory-identity-provider"></a>新增 Azure Active Directory 識別提供者
 
-1. 請確保使用的是包含 Azure AD B2C 租戶的目錄。 選擇頂部功能表中的**目錄 + 訂閱**篩選器，然後選擇包含 Azure AD B2C 租戶的目錄。
+1. 請確定您使用的是包含 Azure AD B2C 租使用者的目錄。 在頂端功能表中選取 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您 Azure AD B2C 租使用者的目錄。
 1. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
-1. 選擇**標識提供程式**，然後選擇 **"新建 OpenID 連接提供程式**"。
-1. 輸入**名稱**。 例如，輸入 *Contoso Azure AD*。
-1. 對於**中繼資料 URL，** 輸入以下 URL`your-AD-tenant-domain`替換為 Azure AD 租戶的功能變數名稱：
+1. 選取 [**識別提供者**]，然後選取 **[新增 OpenID Connect 提供者]**。
+1. 輸入 [**名稱**]。 例如，輸入 *Contoso Azure AD*。
+1. 在 [**中繼資料 url**] 中，輸入`your-AD-tenant-domain`下列 url，並將取代為您 Azure AD 租使用者的功能變數名稱：
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -107,27 +107,27 @@ ms.locfileid: "78183511"
 
     例如： `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration` 。
 
-1. 對於**用戶端 ID，** 輸入您以前記錄的應用程式 ID。
-1. 對於**用戶端機密**，輸入您以前記錄的用戶端金鑰。
-1. 保留**範圍**、**回應類型**和**回應模式**的預設值。
-1. （可選）輸入**Domain_hint**的值。 例如 *，ContosoAD*。 [域提示](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)是包含在來自應用程式的身份驗證請求中的指令。 它們可用來加快使用者進入其同盟 IdP 登入頁面的速度。 或者，多租用戶應用程式也可使用網域提示來加速使用者直接前往其租用戶的品牌化 Azure AD 登入頁面。
-1. 在**標識提供程式宣告對應**下，輸入以下宣告對應值：
+1. 針對 [**用戶端識別碼**]，輸入您先前記錄的應用程式識別碼。
+1. 針對 [**用戶端密碼**]，輸入您先前記錄的用戶端密碼。
+1. 保留 [**範圍**]、[**回應類型**] 和 [**回應模式]** 的預設值。
+1. 選擇性輸入**Domain_hint**的值。 例如， *ContosoAD*。 [網域提示](../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md)是應用程式的驗證要求中所包含的指示詞。 它們可用來加快使用者進入其同盟 IdP 登入頁面的速度。 或者，多租用戶應用程式也可使用網域提示來加速使用者直接前往其租用戶的品牌化 Azure AD 登入頁面。
+1. 在 [**識別提供者宣告對應**] 底下，輸入下列宣告對應值：
 
-    * **使用者 ID**： *oid*
+    * **使用者識別碼**： *oid*
     * **顯示名稱**：*名稱*
-    * **給定名稱**： *given_name*
+    * **名字**： *given_name*
     * **姓氏**： *family_name*
     * **電子郵件**： *unique_name*
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 ### <a name="add-the-facebook-identity-provider"></a>新增 Facebook 識別提供者
 
-1. 選擇**身份供應商**，然後選擇**Facebook**。
-1. 輸入**名稱**。 例如 *，Facebook*。
-1. 對於**用戶端 ID，** 輸入您之前創建的 Facebook 應用程式的應用 ID。
-1. 對於**用戶端金鑰**，輸入您錄製的應用金鑰。
-1. 選取 [儲存]****。
+1. 選取 [**識別提供者**]，然後選取 [ **Facebook**]。
+1. 輸入 [**名稱**]。 例如， *Facebook*。
+1. 針對 [**用戶端識別碼**]，輸入您稍早建立的 Facebook 應用程式的應用程式識別碼。
+1. 針對 [**用戶端密碼**]，輸入您所記錄的應用程式密碼。
+1. 選取 [儲存]  。
 
 ## <a name="update-the-user-flow"></a>更新使用者流程
 
@@ -135,16 +135,16 @@ ms.locfileid: "78183511"
 
 1. 選取 [使用者流程 (原則)]****，然後選取 *B2C_1_signupsignin1* 使用者流程。
 2. 選取 [識別提供者]****，然後選取您新增的 **Facebook** 和 **Contoso Azure AD** 識別提供者。
-3. 選取 [儲存]****。
+3. 選取 [儲存]  。
 
 ## <a name="test-the-user-flow"></a>測試使用者流程
 
 1. 在您所建立使用者流程的 [概觀] 頁面上，選取 [執行使用者流程]****。
 1. 針對 [應用程式]****，選取您先前註冊名為 *webapp1* 的 Web 應用程式。 **Reply URL** 應顯示 `https://jwt.ms`。
-1. 選擇 **"運行使用者流**"，然後使用以前添加的標識提供程式登錄。
+1. 選取 [**執行使用者流程**]，然後使用您先前新增的身分識別提供者登入。
 1. 針對您新增的其他識別提供者重複步驟 1 到 3。
 
-如果登錄操作成功，您將被重定向到`https://jwt.ms`顯示解碼權杖的標記，類似于：
+如果登入作業成功，系統會將您重新導向`https://jwt.ms`至，其中會顯示已解碼的權杖，如下所示：
 
 ```json
 {
@@ -177,7 +177,7 @@ ms.locfileid: "78183511"
 > * 將識別提供者新增至您的租用戶
 > * 將識別提供者新增至您的使用者流程
 
-接下來，瞭解如何自訂作為使用者在應用程式中身份體驗的一部分顯示給使用者的頁面的 UI：
+接下來，瞭解如何在您的應用程式中，自訂使用者所顯示頁面的 UI，做為其身分識別體驗的一部分：
 
 > [!div class="nextstepaction"]
-> [自訂 Azure 活動目錄 B2C 中應用程式的使用者介面](tutorial-customize-ui.md)
+> [在 Azure Active Directory B2C 中自訂應用程式的使用者介面](tutorial-customize-ui.md)

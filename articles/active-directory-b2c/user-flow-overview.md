@@ -11,15 +11,15 @@ ms.date: 11/30/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c11bc48742c398d2048a236c7d00af044971f845
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185602"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的使用者流程
 
-Azure 活動目錄 B2C（Azure AD B2C） 的可擴展策略框架是服務的核心強度。 原則可完整描述身分識別體驗，例如註冊、登入或設定檔編輯。 為了協助您設定最常見的身分識別工作，Azure AD B2C 入口網站包含預先定義且可設定的原則，稱為**使用者流程**。
+Azure Active Directory B2C （Azure AD B2C）的可延伸原則架構是服務的核心強度。 原則可完整描述身分識別體驗，例如註冊、登入或設定檔編輯。 為了協助您設定最常見的身分識別工作，Azure AD B2C 入口網站包含預先定義且可設定的原則，稱為**使用者流程**。
 
 ## <a name="what-are-user-flows"></a>使用者流程是什麼？
 
@@ -81,8 +81,8 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 在上述任何情況下，不保證電子郵件地址都經過驗證。 租用戶系統管理員可以在本機帳戶的基本原則中停用電子郵件驗證。 即使已啟用電子郵件地址驗證，如果地址來自社交識別提供者且尚未變更，則不會加以驗證。
 
-只有**其他郵件**和**簽名InNames**屬性通過 Microsoft 圖形 API 公開。 無法使用強式驗證詳細資料屬性中的電子郵件地址。
+只有**otherMails**和**signInNames**屬性會透過 Microsoft Graph API 公開。 無法使用強式驗證詳細資料屬性中的電子郵件地址。
 
 ## <a name="next-steps"></a>後續步驟
 
-要創建建議的使用者流，請按照教程中的說明[：創建使用者流](tutorial-create-user-flows.md)。
+若要建立建議的使用者流程，請依照[教學課程：建立使用者流程](tutorial-create-user-flows.md)中的指示進行。

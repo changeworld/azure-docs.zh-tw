@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 閘道：配置強制隧道 - 網站到網站連接：經典
+title: Azure VPN 閘道：設定強制通道-站對站連線：傳統
 description: 如何重新導向或「強制」所有網際網路繫結流量回到內部部署位置。
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/01/2017
 ms.author: cherylmc
 ms.openlocfilehash: fe06257127ff352f68fb27d3507cee0229e31498
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77201572"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>使用傳統部署模型設定強制通道
@@ -20,7 +20,7 @@ ms.locfileid: "77201572"
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
-本文會引導您為使用傳統部署模型建立的虛擬網路設定強制通道。 強制通道可使用 PowerShell 設定，而非透過入口網站。 如果要為資源管理器部署模型配置強制隧道，請從以下下拉清單中選擇資源管理器文章：
+本文會引導您為使用傳統部署模型建立的虛擬網路設定強制通道。 強制通道可使用 PowerShell 設定，而非透過入口網站。 如果您想要為 Resource Manager 部署模型設定強制通道，請從下列下拉式清單中選取 [Resource Manager 文章]：
 
 > [!div class="op_single_selector"]
 > * [PowerShell - 傳統](vpn-gateway-about-forced-tunneling.md)
@@ -39,7 +39,7 @@ Azure 中的強制通道會透過虛擬網路使用者定義路由 (UDR) 進行�
 * 隨著使用者定義路由的發行，您可以建立路由表以新增預設路由，然後建立路由表與 VNet 子網路的關聯，以啟用那些子網路上的強制通道處理。
 * 您需要在連接到虛擬網路的內部部署本機網站間設定「預設網站」。
 * 強制通道必須與具有動態路由 VPN 閘道 (非靜態閘道) 的 VNet 相關聯。
-* ExpressRoute 強制通道不會透過這項機制進行設定，相反地，將由透過 ExpressRoute BGP 對等互連工作階段的廣告預設路由進行啟用。 有關詳細資訊，請參閱[快速路由文檔](https://azure.microsoft.com/documentation/services/expressroute/)。
+* ExpressRoute 強制通道不會透過這項機制進行設定，相反地，將由透過 ExpressRoute BGP 對等互連工作階段的廣告預設路由進行啟用。 如需詳細資訊，請參閱[ExpressRoute 檔](https://azure.microsoft.com/documentation/services/expressroute/)。
 
 ## <a name="configuration-overview"></a>組態概觀
 在上述範例中，前端子網路不會使用強制通道。 前端子網路中的工作負載可以直接從網際網路繼續接受並回應客戶要求。 中間層和後端的子網路會使用強制通道。 任何從這兩個子網路到網際網路的輸出連接會強制或重新導向回 S2S VPN 通道的其中一個內部部署網站。
@@ -51,13 +51,13 @@ Azure 中的強制通道會透過虛擬網路使用者定義路由 (UDR) 進行�
 ## <a name="before-you-begin"></a>開始之前
 在開始設定之前，請確認您具備下列項目：
 
-* Azure 訂用帳戶。 如果您還沒有 Azure 訂閱，則可以啟動[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 * 已設定的虛擬網路。 
 * [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-### <a name="to-sign-in"></a>登錄
+### <a name="to-sign-in"></a>登入
 
-1. 使用提升許可權打開 PowerShell 主控台。 要切換到服務管理，請使用此命令：
+1. 以更高的許可權開啟 PowerShell 主控台。 若要切換至服務管理，請使用下列命令：
 
    ```powershell
    azure config mode asm

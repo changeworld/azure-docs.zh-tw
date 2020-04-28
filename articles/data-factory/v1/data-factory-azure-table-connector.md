@@ -1,5 +1,5 @@
 ---
-title: 將資料移入/移入 Azure 表
+title: 從 Azure 資料表來回移動資料
 description: 了解如何使用 Azure Data Factory 從 Azure 表格儲存體來回移動資料。
 services: data-factory
 documentationcenter: ''
@@ -13,21 +13,21 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260445"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>使用 Azure Data Factory 從 Azure 資料表來回移動資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](data-factory-azure-table-connector.md)
+> * [第 1 版](data-factory-azure-table-connector.md)
 > * [第 2 版 (目前的版本)](../connector-azure-table-storage.md)
 
 > [!NOTE]
 > 本文適用於 Data Factory 第 1 版。 如果您使用目前版本的 Data Factory 服務，請參閱[第 2 版中的 Azure 表格儲存體連接器](../connector-azure-table-storage.md)。
 
-本文說明如何使用 Azure Data Factory 中的「複製活動」，將資料移進/移出「Azure 資料表儲存體」。 它基於["資料移動活動"](data-factory-data-movement-activities.md)一文，其中概述了複製活動的資料移動。 
+本文說明如何使用 Azure Data Factory 中的「複製活動」，將資料移進/移出「Azure 資料表儲存體」。 它是以[資料移動活動](data-factory-data-movement-activities.md)一文為基礎，其中呈現使用複製活動移動資料的一般總覽。 
 
 您可以將資料從任何支援的來源資料存放區複製到「Azure 資料表儲存體」，或從「Azure 資料表儲存體」複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源或接收器的資料存放區清單，請參閱[支援的資料存放區](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表格。 
 
@@ -36,15 +36,15 @@ ms.locfileid: "79260445"
 ## <a name="getting-started"></a>開始使用
 您可以藉由使用不同的工具/API，建立內含複製活動的管線，以將資料移進/移出「Azure 資料表儲存體」。
 
-創建管道的最簡單方法是使用**複製嚮導**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
+建立管線的最簡單方式是使用**複製嚮導**。 如需使用複製資料精靈建立管線的快速逐步解說，請參閱 [教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md) 。
 
-您還可以使用以下工具創建管道：**視覺化工作室****、Azure PowerShell、Azure****資源管理器範本** **、.NET API**和 REST **API**。 有關創建具有複製活動的管道的分步說明，請參閱[複製活動教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。 
+您也可以使用下列工具來建立管線： [ **Visual Studio**]、[ **Azure PowerShell**]、[ **Azure Resource Manager 範本**]、[ **.net API**] 和 [ **REST API**]。 如需建立包含複製活動之管線的逐步指示，請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。 
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線： 
 
 1. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。
-2. 創建**資料集**以表示複製操作的輸入和輸出資料。 
-3. 創建具有將資料集作為輸入和資料集作為輸出的複製活動的**管道**。 
+2. 建立**資料集**來代表複製作業的輸入和輸出資料。 
+3. 建立具有複製活動的**管線**，以將資料集作為輸入，並使用資料集做為輸出。 
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。 如需相關範例，其中含有用來將資料複製到「Azure 資料表儲存體」(或從「Azure 資料表儲存體」複製資料) 之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例](#json-examples)一節。
 
@@ -81,7 +81,7 @@ ms.locfileid: "79260445"
 
 | 屬性 | 描述 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| AzureTableSourceQuery |使用自訂查詢來讀取資料。 |Azure 資料表查詢字串。 請參閱下一節中的範例。 |否。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
+| AzureTableSourceQuery |使用自訂查詢來讀取資料。 |Azure 資料表查詢字串。 請參閱下一節中的範例。 |不可以。 指定 tableName 時若沒有指定 azureTableSourceQuery，資料表中的所有記錄都會複製到目的地。 如果同時指定了 azureTableSourceQuery，則資料表中符合查詢的記錄會複製到目的地。 |
 | azureTableSourceIgnoreTableNotFound |指出是否忍受資料表不存在的例外狀況。 |TRUE<br/>FALSE |否 |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery 範例
@@ -130,19 +130,19 @@ DivisionID 被指定為分割區索引鍵。
 }
 ```
 ## <a name="json-examples"></a>JSON 範例
-以下示例提供了使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)創建管道的示例 JSON 定義。 它們會示範如何將資料複製到 Azure 表格儲存體和 Azure Blob 儲存體，以及複製其中的資料。 不過，您可以將資料從任何來源**直接**複製到任何支援的接收器。 如需詳細資訊，請參閱[使用複製活動來移動資料](data-factory-data-movement-activities.md)中的＜支援的資料存放區和格式＞一節。
+下列範例提供可用來使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)建立管線的範例 JSON 定義。 它們會示範如何將資料複製到 Azure 表格儲存體和 Azure Blob 儲存體，以及複製其中的資料。 不過，您可以將資料從任何來源**直接**複製到任何支援的接收器。 如需詳細資訊，請參閱[使用複製活動來移動資料](data-factory-data-movement-activities.md)中的＜支援的資料存放區和格式＞一節。
 
 ## <a name="example-copy-data-from-azure-table-to-azure-blob"></a>範例：將資料從 Azure 資料表複製到 Azure Blob
 下列範例顯示︰
 
-1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務（用於兩個表& blob）。
+1. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)類型的連結服務（用於資料表 & blob）。
 2. [AzureTable](#dataset-properties) 類型的輸入[資料集](data-factory-create-datasets.md)。
 3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)類型的輸出[資料集](data-factory-create-datasets.md)。
 4. 具有使用 AzureTableSource 和 [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) 之複製活動的[管線](data-factory-create-pipelines.md)。
 
 此範例會每小時將 Azure 資料表中屬於預設資料分割的資料複製到 Blob。 範例後面的各節會說明這些範例中使用的 JSON 屬性。
 
-**Azure 存儲連結服務：**
+**Azure 儲存體連結服務：**
 
 ```JSON
 {

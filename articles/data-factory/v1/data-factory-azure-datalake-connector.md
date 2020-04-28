@@ -1,5 +1,5 @@
 ---
-title: 將資料複製到 Azure 資料存儲第 1 代
+title: 將資料複製到 Azure Data Lake Storage Gen1
 description: 了解如何使用 Azure Data Factory 從 Azure Data Lake Store 來回複製資料
 services: data-factory
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b6a60536bae6fbedf01eda7aa340e90ced58e004
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79281596"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>使用 Data Factory 從 Data Lake Storage Gen1 來回複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](data-factory-azure-datalake-connector.md)
+> * [第 1 版](data-factory-azure-datalake-connector.md)
 > * [第 2 版 (目前的版本)](../connector-azure-data-lake-store.md)
 
 > [!NOTE]
@@ -53,14 +53,14 @@ Data Lake Store 連接器支援這些驗證類型：
 
 建立管線的最簡單方式就是使用「複製精靈」****。 如需使用「複製精靈」建立管線的教學課程，請參閱[教學課程︰使用複製精靈建立管線](data-factory-copy-data-wizard-tutorial.md)。
 
-您還可以使用以下工具創建管道：**視覺化工作室****、Azure PowerShell、Azure****資源管理器範本** **、.NET API**和 REST **API**。 有關創建具有複製活動的管道的分步說明，請參閱[複製活動教程](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
+您也可以使用下列工具來建立管線： [ **Visual Studio**]、[ **Azure PowerShell**]、[ **Azure Resource Manager 範本**]、[ **.net API**] 和 [ **REST API**]。 如需建立包含複製活動之管線的逐步指示，請參閱[複製活動教學](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)課程。
 
 不論您是使用工具還是 API，都需執行下列步驟來建立將資料從來源資料存放區移到接收資料存放區的管線：
 
-1. 創建**資料工廠**。 資料處理站可包含一或多個管線。
+1. 建立**資料**處理站。 資料處理站可包含一或多個管線。
 2. 建立**連結服務**，將輸入和輸出資料存放區連結到資料處理站。 例如，如果您將資料從 Azure Blob 儲存體複製到 Azure Data Lake Store，您會建立兩個連結服務，可將 Azure 儲存體帳戶和 Azure Data Lake Store 連結至資料處理站。 針對 Azure Data Lake Store 專屬的連結服務屬性，請參閱[連結服務屬性](#linked-service-properties)一節。
-2. 創建**資料集**以表示複製操作的輸入和輸出資料。 在上一個步驟所述的範例中，您會建立資料集來指定 blob 容器和包含輸入資料的資料夾。 同時並建立另一個資料集，以指定在 Data Lake Store 中保存從 Blob 儲存體複製之資料的資料夾和檔案路徑。 有關 Azure Data Lake Store 專屬的資料集屬性，請參閱[資料集屬性](#dataset-properties)一節。
-3. 創建具有將資料集作為輸入和資料集作為輸出的複製活動的**管道**。 在稍早所述的範例中，您使用 BlobSource 作為來源，以及使用 AzureDataLakeStoreSink 作為複製活動的接收器。 同樣地，如果您正從 Azure Data Lake Store 複製到 Azure Blob 儲存體，則會在複製活動中使用 AzureDataLakeStoreSource 與 BlobSink。 針對 Azure Data Lake Store 專屬的複製活動屬性，請參閱[複製活動屬性](#copy-activity-properties)一節。 如需有關如何使用資料存放區作為來源或接收器的詳細資訊，按一下上一節中資料存放區的連結。
+2. 建立**資料集**來代表複製作業的輸入和輸出資料。 在上一個步驟所述的範例中，您會建立資料集來指定 blob 容器和包含輸入資料的資料夾。 同時並建立另一個資料集，以指定在 Data Lake Store 中保存從 Blob 儲存體複製之資料的資料夾和檔案路徑。 有關 Azure Data Lake Store 專屬的資料集屬性，請參閱[資料集屬性](#dataset-properties)一節。
+3. 建立具有複製活動的**管線**，以將資料集作為輸入，並使用資料集做為輸出。 在稍早所述的範例中，您使用 BlobSource 作為來源，以及使用 AzureDataLakeStoreSink 作為複製活動的接收器。 同樣地，如果您正從 Azure Data Lake Store 複製到 Azure Blob 儲存體，則會在複製活動中使用 AzureDataLakeStoreSource 與 BlobSink。 針對 Azure Data Lake Store 專屬的複製活動屬性，請參閱[複製活動屬性](#copy-activity-properties)一節。 如需有關如何使用資料存放區作為來源或接收器的詳細資訊，按一下上一節中資料存放區的連結。
 
 使用精靈時，精靈會自動為您建立這些 Data Factory 實體 (已連結的服務、資料集及管線) 的 JSON 定義。 使用工具/API (.NET API 除外) 時，您需使用 JSON 格式來定義這些 Data Factory 實體。 如需相關範例，其中含有用來將資料複製到 Azure Data Lake Store (或從 Azure Data Lake Store 複製資料) 之 Data Factory 實體的 JSON 定義，請參閱本文的 [JSON 範例](#json-examples-for-copying-data-to-and-from-data-lake-store)一節。
 
@@ -69,12 +69,12 @@ Data Lake Store 連接器支援這些驗證類型：
 ## <a name="linked-service-properties"></a>連結服務屬性
 已連結的服務會將資料存放區連結到 Data Factory。 您建立類型為 **AzureDataLakeStore** 的連結服務，以將 Data Lake Store 資料連結到資料處理站。 下表提供 Data Lake Store 連結服務專屬的 JSON 元素說明。 您可以在服務主體與使用者認證驗證之間選擇。
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| **型別** | 類型屬性必須設定為 **AzureDataLakeStore**。 | 是 |
+| **type** | 類型屬性必須設定為 **AzureDataLakeStore**。 | 是 |
 | **dataLakeStoreUri** | Azure Data Lake Store 帳戶相關資訊。 此資訊會採用下列其中一種格式：`https://[accountname].azuredatalakestore.net/webhdfs/v1` 或 `adl://[accountname].azuredatalakestore.net/`。 | 是 |
-| **訂閱 Id** | Data Lake Store 帳戶所屬的 Azure 訂用帳戶識別碼。 | 接收 (Sink) 的必要項目 |
-| **資源組名稱** | Data Lake Store 帳戶所屬的 Azure 資源群組名稱。 | 接收 (Sink) 的必要項目 |
+| **訂閱** | Data Lake Store 帳戶所屬的 Azure 訂用帳戶識別碼。 | 接收 (Sink) 的必要項目 |
+| **resourceGroupName** | Data Lake Store 帳戶所屬的 Azure 資源群組名稱。 | 接收 (Sink) 的必要項目 |
 
 ### <a name="service-principal-authentication-recommended"></a>服務主體驗證 (建議)
 若要使用服務主體驗證，請在 Azure Active Directory (Azure AD) 中註冊應用程式實體，並授與其 Data Lake Store 存取權。 如需詳細的步驟，請參閱[服務對服務驗證](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md)。 請記下以下的值，您可以使用這些值來定義連結服務：
@@ -84,17 +84,17 @@ Data Lake Store 連接器支援這些驗證類型：
 
 > [!IMPORTANT]
 > 請確定您將 Azure Data Lake Store 中適當的權限授與服務主體：
->- **要使用資料湖存儲作為源**，請至少授予 **"讀取" 執行**資料存取權限以列出和複製資料夾的內容，或 **"讀取**"複製單個檔的許可權。 在帳戶層級存取控制上沒有任何要求。
->- **要使用資料湖存儲作為接收器**，請至少授予 **"寫入" 執行**資料存取權限，以在資料夾中創建子項。 如果您使用 Azure IR 來授權複製 (來源和接收器都在雲端)，為了讓 Data Factory 偵測 Data Lake Store 的區域，請在帳戶存取控制 (IAM) 中至少授與**讀取者**角色。 如果您想要避免使用此 IAM 角色，請在複製活動中以您的 Data Lake Store 位置[指定 executionLocation](data-factory-data-movement-activities.md#global)。
->- 如果使用 **"複製嚮導"創作管道**，請至少授予帳戶存取控制 （IAM） 中的**讀取器**角色。 此外，請至少授與您 Data Lake Store 根目錄 ("/") 及其子系的**讀取 + 執行**權限。 否則，您可能會看到「提供的認證無效」訊息。
+>- **若要使用 Data Lake Store 作為來源**，請至少授與**讀取 + 執行**資料存取權限，以列出和複製資料夾的內容，或是**讀取**許可權以複製單一檔案。 在帳戶層級存取控制上沒有任何要求。
+>- **若要使用 Data Lake Store 做為接收**，請至少授與**寫入 + 執行**資料存取權限，以在資料夾中建立子專案。 如果您使用 Azure IR 來授權複製 (來源和接收器都在雲端)，為了讓 Data Factory 偵測 Data Lake Store 的區域，請在帳戶存取控制 (IAM) 中至少授與**讀取者**角色。 如果您想要避免使用此 IAM 角色，請在複製活動中以您的 Data Lake Store 位置[指定 executionLocation](data-factory-data-movement-activities.md#global)。
+>- 如果您**使用複製嚮導來撰寫管線**，請在帳戶存取控制（IAM）中至少授與**讀取**者角色。 此外，請至少授與您 Data Lake Store 根目錄 ("/") 及其子系的**讀取 + 執行**權限。 否則，您可能會看到「提供的認證無效」訊息。
 
 指定下列屬性以使用服務主體驗證：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| **服務主體Id** | 指定應用程式的用戶端識別碼。 | 是 |
+| **servicePrincipalId** | 指定應用程式的用戶端識別碼。 | 是 |
 | **servicePrincipalKey** | 指定應用程式的金鑰。 | 是 |
-| **tenant** | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
+| **出租** | 指定您的應用程式所在租用戶的資訊 (網域名稱或租用戶識別碼)。 將滑鼠游標暫留在 Azure 入口網站右上角，即可擷取它。 | 是 |
 
 **範例：服務主體驗證**
 ```json
@@ -117,16 +117,16 @@ Data Lake Store 連接器支援這些驗證類型：
 ### <a name="user-credential-authentication"></a>使用者認證驗證
 或者，您也可以藉由指定下列屬性，使用使用者認證驗證從 Data Lake Store 複製，或是複製到 Data Lake Store：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| **授權** | 按一下「資料處理站編輯器」中的 [授權]**** 按鈕，然後輸入您的認證，此動作會將自動產生的授權 URL 指派給此屬性。 | 是 |
-| **會話 Id** | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用「資料處理站編輯器」時便會自動產生此設定。 | 是 |
+| **驗證** | 按一下「資料處理站編輯器」中的 [授權]**** 按鈕，然後輸入您的認證，此動作會將自動產生的授權 URL 指派給此屬性。 | 是 |
+| **Id** | OAuth 授權工作階段的 OAuth 工作階段識別碼。 每個工作階段識別碼都是唯一的，只能使用一次。 當您使用「資料處理站編輯器」時便會自動產生此設定。 | 是 |
 
 > [!IMPORTANT]
 > 請確定您將 Azure Data Lake Store 中適當的權限授與使用者：
->- **要使用資料湖存儲作為源**，請至少授予 **"讀取" 執行**資料存取權限以列出和複製資料夾的內容，或 **"讀取**"複製單個檔的許可權。 在帳戶層級存取控制上沒有任何要求。
->- **要使用資料湖存儲作為接收器**，請至少授予 **"寫入" 執行**資料存取權限，以在資料夾中創建子項。 如果您使用 Azure IR 來授權複製 (來源和接收器都在雲端)，為了讓 Data Factory 偵測 Data Lake Store 的區域，請在帳戶存取控制 (IAM) 中至少授與**讀取者**角色。 如果您想要避免使用此 IAM 角色，請在複製活動中以您的 Data Lake Store 位置[指定 executionLocation](data-factory-data-movement-activities.md#global)。
->- 如果使用 **"複製嚮導"創作管道**，請至少授予帳戶存取控制 （IAM） 中的**讀取器**角色。 此外，請至少授與您 Data Lake Store 根目錄 ("/") 及其子系的**讀取 + 執行**權限。 否則，您可能會看到「提供的認證無效」訊息。
+>- **若要使用 Data Lake Store 作為來源**，請至少授與**讀取 + 執行**資料存取權限，以列出和複製資料夾的內容，或是**讀取**許可權以複製單一檔案。 在帳戶層級存取控制上沒有任何要求。
+>- **若要使用 Data Lake Store 做為接收**，請至少授與**寫入 + 執行**資料存取權限，以在資料夾中建立子專案。 如果您使用 Azure IR 來授權複製 (來源和接收器都在雲端)，為了讓 Data Factory 偵測 Data Lake Store 的區域，請在帳戶存取控制 (IAM) 中至少授與**讀取者**角色。 如果您想要避免使用此 IAM 角色，請在複製活動中以您的 Data Lake Store 位置[指定 executionLocation](data-factory-data-movement-activities.md#global)。
+>- 如果您**使用複製嚮導來撰寫管線**，請在帳戶存取控制（IAM）中至少授與**讀取**者角色。 此外，請至少授與您 Data Lake Store 根目錄 ("/") 及其子系的**讀取 + 執行**權限。 否則，您可能會看到「提供的認證無效」訊息。
 
 **範例：使用者認證授權**
 ```json
@@ -207,12 +207,12 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 2. 確定您至少將 Data Lake 帳戶上的 [讀取者]**** 角色授與使用者或服務主體。 以下是做法：
 
-    1. 轉到 Azure 門戶 - >資料湖應用商店帳戶
+    1. 移至 Azure 入口網站 > 您的 Data Lake Store 帳戶
     2. 按一下 Data Lake Store 刀鋒視窗上的 [存取控制 (IAM)]****
-    3. 按一下 **"添加角色指派**"
+    3. 按一下 [**新增角色指派**]
     4. 將 [角色]**** 設定為 [讀取者]****，然後選取您用來執行複製的使用者或服務主體來授與存取權
 
-3. 如果不想將**Reader**角色授予使用者或服務主體，則替代方法是使用 Data Lake 應用商店的位置[顯式指定複製活動中的執行位置](data-factory-data-movement-activities.md#global)。 範例：
+3. 如果您不想將 [**讀取**者] 角色授與使用者或服務主體，替代方式是在 [複製活動] 中[明確指定執行位置](data-factory-data-movement-activities.md#global)和 Data Lake Store 的位置。 範例：
 
     ```json
     {
@@ -236,13 +236,13 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 類型為 AzureDataLakeStore **** 的資料集其 typeProperties**** 區段包含下列屬性：
 
-| 屬性 | 描述 | 必要 |
+| 屬性 | 說明 | 必要 |
 |:--- |:--- |:--- |
-| **資料夾路徑** |Data Lake Store 中容器與資料夾的路徑。 |是 |
-| **檔案名** |Azure Data Lake Store 中的檔案名稱。 fileName 屬性是選擇性的，而且區分大小寫****。 <br/><br/>如果您指定 fileName****，活動 (包括複製) 適用於特定的檔案。<br/><br/>如果您未指定 fileName，複製會在輸入資料集中包含 folderPath 中的所有檔案********。<br/><br/>當未為輸出資料集指定**檔案名**並在活動接收器中未指定**保留層次結構**時，生成的檔的名稱以格式。 `Data._Guid_.txt` 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |否 |
+| **folderPath** |Data Lake Store 中容器與資料夾的路徑。 |是 |
+| **名稱** |Azure Data Lake Store 中的檔案名稱。 fileName 屬性是選擇性的，而且區分大小寫****。 <br/><br/>如果您指定 fileName****，活動 (包括複製) 適用於特定的檔案。<br/><br/>如果您未指定 fileName，複製會在輸入資料集中包含 folderPath 中的所有檔案********。<br/><br/>當未指定輸出資料集的**fileName** ，且在活動接收中未指定**preserveHierarchy**時，所產生檔案的名稱格式`Data._Guid_.txt`為。 例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt。 |否 |
 | **partitionedBy** |partitionedBy**** 屬性為選擇性。 您可以用來指定時間序列資料的動態路徑與檔案名稱。 例如，folderPath **** 可針對每小時的資料進行參數化。 如需詳細資料和範例，請參閱「partitionedBy 屬性」。 |否 |
-| **格式** | 支援下列格式類型：TextFormat****、JsonFormat****、AvroFormat****、OrcFormat**** 和 ParquetFormat****。 將 [format]**** 下的 [type]**** 屬性設定為下列其中一個值。 如需詳細資訊，請參閱 [Azure Data Factory 支援的檔案與壓縮格式](data-factory-supported-file-and-compression-formats.md)一文中[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[ORC 格式](data-factory-supported-file-and-compression-formats.md#orc-format)及 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)各節。 <br><br> 如果您想要在以檔案為基礎的存放區之間「依原樣」複製檔案 (二進位複本)，請略過輸入和輸出資料集定義中的 `format` 區段。 |否 |
-| **壓縮** | 指定此資料的壓縮類型和層級。 支援的類型為：GZip****、Deflate****、BZip2**** 及 ZipDeflate****。 支援的層級為 **Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 支援的檔案與壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
+| **format** | 支援下列格式類型：TextFormat****、JsonFormat****、AvroFormat****、OrcFormat**** 和 ParquetFormat****。 將 [format]**** 下的 [type]**** 屬性設定為下列其中一個值。 如需詳細資訊，請參閱 [Azure Data Factory 支援的檔案與壓縮格式](data-factory-supported-file-and-compression-formats.md)一文中[文字格式](data-factory-supported-file-and-compression-formats.md#text-format)、[JSON 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[ORC 格式](data-factory-supported-file-and-compression-formats.md#orc-format)及 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)各節。 <br><br> 如果您想要在以檔案為基礎的存放區之間「依原樣」複製檔案 (二進位複本)，請略過輸入和輸出資料集定義中的 `format` 區段。 |否 |
+| **程度** | 指定此資料的壓縮類型和層級。 支援的類型為：GZip****、Deflate****、BZip2**** 及 ZipDeflate****。 支援的層級為 **Optimal** 和 **Fastest**。 如需詳細資訊，請參閱 [Azure Data Factory 支援的檔案與壓縮格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |
 
 ### <a name="the-partitionedby-property"></a>partitionedBy 屬性
 您可以使用 partitionedBy 屬性、Data Factory 函式及系統變數，來指定時間序列資料的動態 folderPath**** 和 fileName**** 屬性****。 如需詳細資料，請參閱 [Azure Data Factory - 函式與系統變數](data-factory-functions-variables.md)一文。
@@ -280,15 +280,15 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 AzureDataLakeStoreSource**** 支援 [typeProperties]**** 區段中的下列屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要 |
+| 屬性 | 說明 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| **遞 歸** |指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 |True (預設值)、False |否 |
+| **recursive** |指出是否從子資料夾、或只有從指定的資料夾，以遞迴方式讀取資料。 |True (預設值)、False |否 |
 
 AzureDataLakeStoreSink**** 支援 [typeProperties]**** 區段中的下列屬性：
 
-| 屬性 | 描述 | 允許的值 | 必要 |
+| 屬性 | 說明 | 允許的值 | 必要 |
 | --- | --- | --- | --- |
-| **copyBehavior** |指定複製行為。 |<b>保留層次結構</b>：保留目的檔案夾中的檔層次結構。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><br/><b>FlattenHierarchy</b>：來源資料夾的中所有檔案都會建立在目標資料夾的第一層中。 建立的目標檔案會具有自動產生的名稱。<br/><br/><b>MergeFiles</b>：將來源資料夾的所有檔案合併為一個檔案。 如果有指定檔案或 Blob 名稱，合併檔案的名稱會是指定的名稱。 否則，會自動產生檔案名稱。 |否 |
+| **copyBehavior** |指定複製行為。 |<b>PreserveHierarchy</b>：保留目的檔案夾中的檔案階層。 來源檔案到來源資料夾的相對路徑，與目標檔案到目標資料夾的相對路徑相同。<br/><br/><b>FlattenHierarchy</b>：來源資料夾的中所有檔案都會建立在目標資料夾的第一層中。 建立的目標檔案會具有自動產生的名稱。<br/><br/><b>MergeFiles</b>：將來源資料夾的所有檔案合併為一個檔案。 如果有指定檔案或 Blob 名稱，合併檔案的名稱會是指定的名稱。 否則，會自動產生檔案名稱。 |否 |
 
 ### <a name="recursive-and-copybehavior-examples"></a>遞迴和 copyBehavior 範例
 本節說明遞迴和 copyBehavior 值在不同組合的情況下，複製作業所產生的行為。
@@ -306,7 +306,7 @@ AzureDataLakeStoreSink**** 支援 [typeProperties]**** 區段中的下列屬性�
 如需詳細資料，請參閱 [Azure Data Factory 中的檔案和壓縮格式](data-factory-supported-file-and-compression-formats.md)一文。
 
 ## <a name="json-examples-for-copying-data-to-and-from-data-lake-store"></a>從 Data Lake Store 來回複製資料的 JSON 範例
-下列範例提供範例 JSON 定義。 您可以使用這些示例定義使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)來創建管道。 這些範例會示範如何從 Data Lake Store 與 Azure Blob 儲存體來回複製資料。 不過，您可以將資料從任何來源_直接_複製到任何支援的接收器。 如需詳細資訊，請參閱[使用複製活動來移動資料](data-factory-data-movement-activities.md)中的＜支援的資料存放區和格式＞一節。
+下列範例提供範例 JSON 定義。 您可以使用這些範例定義來建立管線，方法是使用[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)或[Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)。 這些範例會示範如何從 Data Lake Store 與 Azure Blob 儲存體來回複製資料。 不過，您可以將資料從任何來源_直接_複製到任何支援的接收器。 如需詳細資訊，請參閱[使用複製活動來移動資料](data-factory-data-movement-activities.md)中的＜支援的資料存放區和格式＞一節。
 
 ### <a name="example-copy-data-from-azure-blob-storage-to-azure-data-lake-store"></a>範例：將資料從 Azure Blob 儲存體複製到 Azure Data Lake Store
 本節中的範例程式碼顯示︰
@@ -319,7 +319,7 @@ AzureDataLakeStoreSink**** 支援 [typeProperties]**** 區段中的下列屬性�
 
 此範例示範如何每小時將時間序列資料從 Azure Blob 儲存體複製到 Data Lake Store。
 
-**Azure 存儲連結服務**
+**Azure 儲存體連結服務**
 
 ```JSON
 {
@@ -356,7 +356,7 @@ AzureDataLakeStoreSink**** 支援 [typeProperties]**** 區段中的下列屬性�
 > 如需組態詳細資料，請參閱[連結服務屬性](#linked-service-properties)一節。
 >
 
-**Azure Blob 輸入資料集**
+**Azure blob 輸入資料集**
 
 在下列範例中，每小時 (`"frequency": "Hour", "interval": 1`) 會從新的 Blob 中挑選資料。 根據正在處理之配量的開始時間，以動態方式評估 Blob 的資料夾路徑和檔案名稱。 資料夾路徑會使用開始時間的年、月和日部分。 檔案名稱會使用開始時間的小時部分。 `"external": true` 設定會通知 Data Factory 服務：這是資料處理站外部的資料表，且不是由資料處理站中的活動所產生。
 
@@ -419,7 +419,7 @@ AzureDataLakeStoreSink**** 支援 [typeProperties]**** 區段中的下列屬性�
 }
 ```
 
-**Azure 資料湖存儲輸出資料集**
+**Azure Data Lake 儲存輸出資料集**
 
 下列範例會將資料複製到 Data Lake Store。 每個小時會將新資料複製到 Data Lake Store。
 
@@ -524,7 +524,7 @@ AzureDataLakeStoreSink**** 支援 [typeProperties]**** 區段中的下列屬性�
 > 如需組態詳細資料，請參閱[連結服務屬性](#linked-service-properties)一節。
 >
 
-**Azure 存儲連結服務**
+**Azure 儲存體連結服務**
 
 ```JSON
 {

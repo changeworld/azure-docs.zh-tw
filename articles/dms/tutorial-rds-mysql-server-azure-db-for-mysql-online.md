@@ -1,5 +1,5 @@
 ---
-title: 教程：將 RDS MySQL 連線遷移到 MySQL 的 Azure 資料庫
+title: 教學課程：將 RDS MySQL online 遷移至適用於 MySQL 的 Azure 資料庫
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 資料庫移轉服務，在線上從 RDS MySQL 遷移至適用於 MySQL 的 Azure 資料庫。
 services: dms
@@ -13,13 +13,13 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78255155"
 ---
-# <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教程：使用 DMS 將 RDS MySQL 遷移到 Azure 資料庫，使 MySQL 連線
+# <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>教學課程：使用 DMS 將 RDS MySQL 遷移至適用於 MySQL 的 Azure 資料庫 online
 
 您可以使用 Azure 資料庫移轉服務，將資料庫從 RDS MySQL 執行個體遷移至[適用於 MySQL 的 Azure 資料庫](https://docs.microsoft.com/azure/mysql/)，同時讓來源資料庫在移轉期間保持連線。 換句話說，可在最短的應用程式停機時間內完成移轉。 在本教學課程中，您會在 Azure 資料庫移轉服務中使用線上移轉活動，將 **Employees** 範例資料庫從 RDS MySQL 執行個體遷移至適用於 MySQL 的 Azure 資料庫。
 
@@ -33,7 +33,7 @@ ms.locfileid: "78255155"
 > * 監視移轉。
 
 > [!NOTE]
-> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 有關詳細資訊，請參閱 Azure 資料庫移轉服務[定價](https://azure.microsoft.com/pricing/details/database-migration/)頁。
+> 若要使用「Azure 資料庫移轉服務」來執行線上移轉，必須根據「進階」定價層建立執行個體。 如需詳細資訊，請參閱 Azure 資料庫移轉服務[定價](https://azure.microsoft.com/pricing/details/database-migration/)頁面。
 
 > [!IMPORTANT]
 > 為了獲得最佳的移轉體驗，Microsoft 建議在目標資料庫所在的同一個 Azure 區域中，建立 Azure 資料庫移轉服務的執行個體。 跨區域或地理位置移動資料可能使移轉程序變慢，並產生錯誤。
@@ -56,8 +56,8 @@ ms.locfileid: "78255155"
 
 * 下載並安裝 [MySQL **Employees** 範例資料庫](https://dev.mysql.com/doc/employee/en/employees-installation.html)。
 * 建立[適用於 MySQL 的 Azure 資料庫](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)執行個體。
-* 通過使用 Azure 資源管理器部署模型為 Azure 資料庫移轉服務創建 Microsoft Azure 虛擬網路，該模型通過使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)提供到本地源伺服器的網站到網站的連接。 有關創建虛擬網路的詳細資訊，請參閱[虛擬網路文檔](https://docs.microsoft.com/azure/virtual-network/)，尤其是包含分步詳細資訊的快速入門文章。
-* 確保虛擬網路網路安全性群組規則不會阻止以下到 Azure 資料庫移轉服務的入站通訊連接埠：443、53、9354、445 和 12000。 有關虛擬網路 NSG 流量篩選的更多詳細資訊，請參閱文章["使用網路安全性群組篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)"。
+* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力。 如需有關建立虛擬網路的詳細資訊，請參閱[虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，其中包含逐步解說的詳細資料。
+* 請確定您的虛擬網路網路安全性群組規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445和12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 設定 [Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) (或是 Linux 防火牆)，以允許資料庫引擎的存取。 針對 MySQL 伺服器，請允許連接埠 3306 以進行連線。
 
 > [!NOTE]
@@ -143,7 +143,7 @@ ms.locfileid: "78255155"
 
     ![顯示資源提供者](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-select-resource-provider.png)
 
-3. 搜索遷移，然後搜索 Microsoft 的右側 **。** **Register**
+3. 搜尋 [遷移]，然後在 [ **microsoft.datamigration**] 的右邊，選取 [**註冊**]。
 
     ![註冊資源提供者](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/portal-register-resource-provider.png)
 
@@ -161,13 +161,13 @@ ms.locfileid: "78255155"
 
 4. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的位置。
 
-5. 選擇現有虛擬網路或創建新虛擬網路。
+5. 選取現有的虛擬網路，或建立一個新的。
 
-    虛擬網路為 Azure 資料庫移轉服務提供對源 MySQL 實例和 MySQL 實例的目標 Azure 資料庫的存取權限。
+    虛擬網路可讓 Azure 資料庫移轉服務存取來源 MySQL 實例和目標適用於 MySQL 的 Azure 資料庫實例。
 
-    有關如何在 Azure 門戶中創建虛擬網路的詳細資訊，請參閱[使用 Azure 門戶創建虛擬網路](https://aka.ms/DMSVnet)的文章。
+    如需有關如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
 
-6. 選擇定價層;對於此線上遷移，請務必選擇高級：4vCores 定價層。
+6. 選取定價層;針對此線上遷移，請務必選取 [Premium： 4vCores] 定價層。
 
     ![設定 Azure 資料庫移轉服務執行個體設定](media/tutorial-rds-mysql-server-azure-db-for-mysql-online/dms-settings3.png)
 
@@ -187,7 +187,7 @@ ms.locfileid: "78255155"
 
 3. 選取 [+ 新增移轉專案]****。
 4. 在 [新增移轉專案]**** 畫面上指定專案名稱，並在 [來源伺服器類型]**** 文字方塊中選取 [MySQL]****，然後在 [目標伺服器類型]**** 文字方塊中選取 [AzureDbForMySQL]****。
-5. 在 **"選擇活動類型"** 部分中，選擇**連線資料移轉**。
+5. 在 [**選擇活動類型**] 區段中，選取 [**線上資料移轉**]。
 
     > [!IMPORTANT]
     > 請務必選取 [線上資料移轉]****；此案例不支援離線移轉。
@@ -197,7 +197,7 @@ ms.locfileid: "78255155"
     > [!NOTE]
     > 或者，您可以選擇 [僅建立專案]**** 以立即建立移轉專案，並於後續再執行移轉。
 
-6. 選取 [儲存]****。
+6. 選取 [儲存]  。
 
 7. 選取 [建立及執行活動]****，以建立專案並執行移轉活動。
 
@@ -230,7 +230,7 @@ ms.locfileid: "78255155"
 
 * 選取 [執行移轉]****。
 
-    將顯示遷移使用中視窗，並且活動**的狀態****正在初始化**。
+    [遷移活動] 視窗隨即出現，且活動的 [**狀態**] 為 [**正在初始化**]。
 
 ## <a name="monitor-the-migration"></a>監視移轉
 
@@ -248,7 +248,7 @@ ms.locfileid: "78255155"
 
 ## <a name="perform-migration-cutover"></a>執行完全移轉
 
-初始完全載入完成後，資料庫將標記為 **"準備剪切**"。
+初始完整載入完成後，資料庫會標示為 [已**準備好進行**切換]。
 
 1. 當您準備好要完成資料庫移轉後，請選取 [開始完全移轉]****。
 

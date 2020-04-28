@@ -8,10 +8,10 @@ ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
 ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77189089"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(已淘汰) Azure Container Service DC/OS 叢集上具備 Vamp 的 Canary 版本微服務
@@ -42,13 +42,13 @@ ms.locfileid: "77189089"
 
 ## <a name="set-up-vamp"></a>設定 Vamp
 
-現在您已經運行了 DC/OS 群集，可以從 DC/OS UI（HTTP：\//本地主機：80）安裝 Vamp。 
+現在您已有執行中的 DC/OS 叢集，可以從 DC/OS UI （HTTP：\//localhost：80）安裝 Vamp。 
 
 ![DC/OS UI](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 
 會在兩個階段中完成安裝︰
 
-1. **部署彈性搜索**。
+1. **部署 Elasticsearch**。
 
 2. 然後安裝 Vamp DC/OS Universe 套件來**部署 Vamp**。
 
@@ -133,7 +133,7 @@ Vamp 需要 Elasticsearch 來進行計量收集和彙總。 您可以使用 [mag
 
 1. 前往**部署**。
 
-2. 按一下 **[新增]**。
+2. 按一下 **[新增]** 。
 
 3. 貼入下列藍圖 YAML。 此藍圖所包含的一個叢集只有一個服務變化，我們將在稍後步驟中進行變更︰
 
@@ -151,7 +151,7 @@ Vamp 需要 Elasticsearch 來進行計量收集和彙總。 您可以使用 [mag
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. 按一下 [儲存]****。 Vamp 會起始部署。
+4. 按一下 [檔案]  。 Vamp 會起始部署。
 
 部署會列在 [部署]**** 頁面上。 按一下 [部署] 可監視其狀態。
 
@@ -211,7 +211,7 @@ Vamp 已在 DC/OS 代理程式節點上部署 sava 服務，在連接埠 9050 �
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. 按一下 [儲存]****。 藍圖會儲存在 [藍圖]**** 頁面上並加以列出。
+3. 按一下 [檔案]  。 藍圖會儲存在 [藍圖]**** 頁面上並加以列出。
 
 4. 將 sava:1.1 藍圖上的 [動作] 功能表開啟，然後按一下 [合併至]****。
 

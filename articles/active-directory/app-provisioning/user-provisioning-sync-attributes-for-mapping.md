@@ -1,6 +1,6 @@
 ---
-title: 將屬性同步到 Azure AD 進行映射 |微軟文檔
-description: 瞭解如何將屬性從本地活動目錄同步到 Azure AD。 將使用者預配配置為 SaaS 應用時，請使用目錄擴展功能添加預設情況下未同步的源屬性。
+title: 將屬性同步處理至對應的 Azure AD |Microsoft Docs
+description: 瞭解如何將內部部署 Active Directory 的屬性同步處理至 Azure AD。 設定 SaaS 應用程式的使用者布建時，請使用目錄擴充功能來新增預設未同步處理的來源屬性。
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,47 +16,47 @@ ms.author: mimart
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 09d1efaf54bee65bd3274987e68e643f887baade
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522266"
 ---
-# <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>將屬性從本地活動目錄同步到 Azure AD 以預配到應用程式
+# <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>將內部部署 Active Directory 的屬性同步處理至 Azure AD 以布建至應用程式
 
-為使用者預配自訂屬性對應時，您可能會發現要映射的屬性不會出現在 **"源"屬性**清單中。 本文介紹如何通過將缺少的屬性從本地活動目錄 （AD） 同步到 Azure 活動目錄 （Azure AD） 來添加它。
+自訂使用者布建的屬性對應時，您可能會發現您想要對應的屬性不會出現在 [**來源屬性**] 清單中。 本文說明如何藉由從內部部署 Active Directory （AD）同步處理至 Azure Active Directory （Azure AD），來新增遺漏的屬性。
 
-在將使用者帳戶從 Azure AD 預配到 SaaS 應用時，Azure AD 必須包含創建使用者設定檔所需的所有資料。 在某些情況下，要使資料可用，可能需要將屬性從本地 AD 同步到 Azure AD。 Azure AD Connect 會自動將某些屬性同步到 Azure AD，但不是所有屬性。 此外，預設情況下同步的某些屬性（如 SAMAccountName）可能不會使用 Microsoft 圖形 API 公開。 在這些情況下，可以使用 Azure AD 連接目錄擴展功能將屬性同步到 Azure AD。 這樣，該屬性將對 Microsoft 圖形 API 和 Azure AD 預配服務可見。
+從 Azure AD 將使用者帳戶布建到 SaaS 應用程式時，Azure AD 必須包含建立使用者設定檔所需的所有資料。 在某些情況下，若要讓資料可供使用，您可能需要將內部部署 AD 的屬性同步處理至 Azure AD。 Azure AD Connect 會自動將特定屬性同步處理至 Azure AD，但不是所有屬性。 此外，某些預設會同步處理的屬性（例如 SAMAccountName）可能不會使用 Microsoft Graph API 來公開。 在這些情況下，您可以使用 Azure AD Connect 目錄擴充功能，將屬性同步處理至 Azure AD。 如此一來，Microsoft Graph API 和 Azure AD 布建服務就會看到此屬性。
 
-如果需要預配的資料位於 Active Directory 中，但由於上述原因無法進行預配，請按照以下步驟操作。
+如果您需要布建的資料在 Active Directory 中，但因為上述原因而無法提供布建，請遵循下列步驟。
  
-## <a name="sync-an-attribute"></a>同步屬性 
+## <a name="sync-an-attribute"></a>同步處理屬性 
 
-1. 打開 Azure AD 連接嚮導，選擇任務，然後選擇 **"自訂同步"選項**。
+1. 開啟 [Azure AD Connect wizard]，選擇 [工作]，然後選擇 [**自訂同步處理選項**]。
 
-   ![Azure 活動目錄連接嚮導 其他任務頁](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-customize.png)
+   ![Azure Active Directory Connect wizard 其他工作] 頁面](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-customize.png)
  
-2. 以 Azure AD 全域管理員身份登錄。 
+2. 以 Azure AD 全域管理員身分登入。 
 
-3. 在 **"可選功能"** 頁上，選擇**目錄擴充屬性同步**。
+3. 在 [**選用功能**] 頁面上，選取 [**目錄擴充屬性同步**處理]。
  
-   ![Azure 活動目錄連接嚮導 可選功能頁](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extension-attribute-sync.png)
+   ![Azure Active Directory Connect wizard 選用功能頁面](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extension-attribute-sync.png)
 
-4. 選擇要擴展到 Azure AD 的屬性。
+4. 選取您想要擴充以 Azure AD 的屬性。
    > [!NOTE]
-   > **"可用屬性**"下的搜索區分大小寫。
+   > [**可用屬性**] 下的搜尋會區分大小寫。
 
-   ![Azure 活動目錄連接嚮導目錄延伸選取頁](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
+   ![Azure Active Directory Connect wizard 目錄延伸選取頁面](./media/user-provisioning-sync-attributes-for-mapping/active-directory-connect-directory-extensions.png)
 
-5. 完成 Azure AD 連接嚮導並允許運行完整的同步週期。 週期完成後，架構將擴展，並在本地 AD 和 Azure AD 之間同步新值。
+5. 完成 Azure AD Connect wizard，並允許執行完整的同步處理迴圈。 當迴圈完成時，會擴充架構，並在您的內部部署 AD 與 Azure AD 之間同步處理新的值。
  
-6. 在 Azure 門戶中，在[編輯使用者屬性對應](customize-application-attributes.md)時，**源屬性**清單現在將包含格式`<attributename> (extension_<appID>_<attributename>)`中添加的屬性。 選擇該屬性並將其映射到目標應用程式進行預配。
+6. 在 Azure 入口網站中，當您要[編輯使用者屬性](customize-application-attributes.md)對應時，[**來源屬性**] 清單現在會包含以格式`<attributename> (extension_<appID>_<attributename>)`加入的屬性。 選取屬性，並將其對應至目標應用程式以進行布建。
 
-   ![Azure 活動目錄連接嚮導目錄延伸選取頁](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
+   ![Azure Active Directory Connect wizard 目錄延伸選取頁面](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 
 > [!NOTE]
-> 目前不支援從本地 AD（如**託管資料**或**DN/分辨名稱**）預配引用屬性的功能。 您可以在[使用者語音](https://feedback.azure.com/forums/169401-azure-active-directory)上請求此功能。 
+> 目前不支援從內部部署 AD （例如**managedby**或**DN/DistinguishedName**）布建參考屬性的功能。 您可以在[User Voice](https://feedback.azure.com/forums/169401-azure-active-directory)上要求這項功能。 
 
 ## <a name="next-steps"></a>後續步驟
 
-* [定義誰在預配範圍內](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)
+* [定義布建範圍中的人員](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)

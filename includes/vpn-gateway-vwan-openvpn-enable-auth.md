@@ -9,13 +9,13 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4c37e3998b5399fe17b089b4b7746827c66d628a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471489"
 ---
-1. 導航到**Azure 活動目錄 -> 企業應用程式 ->所有應用程式**。
-2. 在**企業應用程式 - 所有應用程式**頁上，選擇**Azure VPN**。
+1. 流覽至**Azure Active Directory-> 企業應用程式-> 所有應用程式**]。
+2. 在 [**企業應用程式-所有應用程式**] 頁面上，選取 [ **Azure VPN**]。
 
    ![目錄識別碼](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/user1.jpg)

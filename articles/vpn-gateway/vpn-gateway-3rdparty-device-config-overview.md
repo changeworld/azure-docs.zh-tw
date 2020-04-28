@@ -1,5 +1,5 @@
 ---
-title: 用於連接到 Azure VPN 閘道的合作夥伴 VPN 設備配置
+title: 用來連線到 Azure VPN 閘道的合作夥伴 VPN 裝置設定
 description: 本文提供連線到 Azure VPN 閘道之合作夥伴 VPN 裝置設定的概觀。
 services: vpn-gateway
 author: yushwang
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: yushwang
 ms.openlocfilehash: b914afaa6725920078da309981bcda5bb765e155
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279399"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>合作夥伴 VPN 裝置設定的概觀
@@ -32,7 +32,7 @@ Azure VPN 閘道會針對站對站 (S2S) VPN 通道使用標準的 IPsec/IKE 通
 ### <a name="connection-parameters"></a>連線參數
 本節列出先前章節所述之範例的參數。
 
-| **參數**                | **價值**                    |
+| **參數**                | **ReplTest1**                    |
 | ---                          | ---                          |
 | 虛擬網路位址首碼        | 10.11.0.0/16<br>10.12.0.0/16 |
 | Azure VPN 閘道 IP         | Azure VPN 閘道 IP         |
@@ -111,7 +111,7 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False
 ```
 
-### <a name="optional-use-custom-ipsecike-policy-with-usepolicybasedtrafficselectors"></a><a name ="policybased"></a>（可選）將自訂 IPsec/IKE 策略與基於使用策略的流量選擇器一起使用
+### <a name="optional-use-custom-ipsecike-policy-with-usepolicybasedtrafficselectors"></a><a name ="policybased"></a>選擇性搭配 UsePolicyBasedTrafficSelectors 使用自訂的 IPsec/IKE 原則
 如果您的 VPN 裝置不支援任意-到-任意的流量選取器 (例如，路由式或 VTI 式設定)，請搭配 [UsePolicyBasedTrafficSelectors](vpn-gateway-connect-multiple-policybased-rm-ps.md) 選項建立自訂的 IPsec/IKE 原則。
 
 > [!IMPORTANT]
@@ -133,7 +133,7 @@ $lng5gw  = Get-AzLocalNetworkGateway -Name $LNGName5 -ResourceGroupName $RG1
 New-AzVirtualNetworkGatewayConnection -Name $Connection15 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $False -IpsecPolicies $ipsecpolicy5 -UsePolicyBasedTrafficSelectors $True
 ```
 
-### <a name="optional-use-bgp-on-s2s-vpn-connection"></a><a name ="bgp"></a>（可選）在 S2S VPN 連接上使用 BGP
+### <a name="optional-use-bgp-on-s2s-vpn-connection"></a><a name ="bgp"></a>選擇性在 S2S VPN 連接上使用 BGP
 當您建立 S2S VPN 連線時，您可以選擇性地使用[適用於 VPN 閘道的 BGP](vpn-gateway-bgp-resource-manager-ps.md)。 這個方法有兩個差異：
 
 * 內部部署位址首碼可以是單一主機位址。 內部部署 BGP 對等 IP 位址指定如下：

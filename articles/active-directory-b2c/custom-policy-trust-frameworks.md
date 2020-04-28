@@ -11,17 +11,17 @@ ms.date: 08/04/2017
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ffa25eec9c4b668f428d8e8b5a780a5fe4625a2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188880"
 ---
 # <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>使用 Azure AD B2C 識別體驗架構定義信任架構
 
 使用識別體驗架構的 Azure Active Directory B2C (Azure AD B2C) 自訂原則，可為貴組織提供集中式服務。 此服務會降低感興趣的大型社群中，身分識別同盟的複雜度。 複雜度會降低為單一信任關係和單一中繼資料交換。
 
-Azure AD B2C 自訂策略使用標識體驗框架來回答以下問題：
+Azure AD B2C 自訂原則使用 Identity Experience Framework 可讓您回答下列問題：
 
 - 必須遵守哪些法律、安全性、隱私權和資料保護原則？
 - 連絡人是誰，要經過哪些程序才能成為合格參與者？
@@ -51,13 +51,13 @@ TF 是 Open Identity Exchange (OIX) 信任架構模型的關鍵，在此模型�
 
 - **參與者所提供/要求之數位身分識別資訊的說明**。
 
-- **數位識別碼資訊的生產和消費技術政策，從而用於測量LOA和LOP。這些書面策略通常包括以下類別的策略：**
+- **用於生產和取用數位身分識別資訊的技術原則，用於測量 LOA 和 LOP。這些撰寫的原則通常包含下列類別的原則：**
     - 身分識別證明原則，例如︰個人的身分識別資訊受到多嚴格的審查？**
     - 安全性原則，例如︰資訊的完整性和機密性受到多嚴格的保護？**
     - 隱私權原則，例如︰使用者對於個人識別資訊 (PII) 擁有何種控制權**？
     - 生存能力原則，例如︰若提供者停止營業，PII 功能的持續性和保護如何運作？**
 
-- **用於生產和消費數位識別碼資訊的技術設定檔。這些設定檔包括：**
+- **用於生產和取用數位身分識別資訊的技術設定檔。這些設定檔包括：**
     - 界定在指定的 LOA 下，數位身分識別資訊所適用的介面。
     - 線上互通性的技術需求。
 

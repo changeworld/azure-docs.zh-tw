@@ -1,5 +1,5 @@
 ---
-title: Azure AD 同意框架
+title: Azure AD 同意架構
 titleSuffix: Microsoft identity platform
 description: 了解 Azure Active Directory 的同意架構，以及如何輕鬆地開發多租用戶的 Web 應用程式和原生用戶端應用程式。
 services: active-directory
@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.openlocfilehash: cb9441e6ce19094ff72e902cdeea151041ceb963
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77161119"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 同意架構
@@ -46,16 +46,16 @@ Azure Active Directory (Azure AD) 同意架構可讓您輕鬆地開發多租用�
 
 1. 使用者登入之後，Azure AD 會判斷是否需要向使用者顯示同意頁面。 此判斷根據使用者 (或其組織的系統管理員) 是否已經同意應用程式。 如果尚未授與同意，Azure AD 會提示使用者取得同意，並顯示其運作所需的必要權限。 同意對話方塊中顯示的權限集，會和在 Azure 入口網站 [委派的權限]**** 中選取的權限相符。
 
-    ![顯示同意對話方塊中顯示的許可權示例](./media/consent-framework/consent.png)
+    ![顯示在同意對話方塊中顯示的許可權範例](./media/consent-framework/consent.png)
 
-1. 使用者同意後，授權碼會傳回您的應用程式，藉以兌換取得存取權杖和重新整理權杖。 有關此流的詳細資訊，請參閱[OAuth 2.0 授權代碼流](v2-oauth2-auth-code-flow.md)。
+1. 使用者同意後，授權碼會傳回您的應用程式，藉以兌換取得存取權杖和重新整理權杖。 如需此流程的詳細資訊，請參閱[OAuth 2.0 授權碼流程](v2-oauth2-auth-code-flow.md)。
 
-1. 身為系統管理員，您也可以代表租用戶中的所有使用者，同意應用程式的委派權限。 管理同意可防止租戶中的每個使用者出現同意對話方塊，並且可以通過具有管理員角色的使用者在 Azure[門戶](https://portal.azure.com)中完成。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。
+1. 身為系統管理員，您也可以代表租用戶中的所有使用者，同意應用程式的委派權限。 系統管理同意會防止租使用者中的每個使用者顯示同意對話方塊，而且可以在具有管理員角色的使用者[Azure 入口網站](https://portal.azure.com)中完成。 若要了解哪些系統管理員角色可同意委派權限，請參閱 [Azure AD 中的系統管理員角色權限](../users-groups-roles/directory-assign-admin-roles.md)。
 
     **同意應用程式的委派權限**
 
-   1. 轉到應用程式的**API 許可權**頁
-   1. 按一下"**授予管理員同意"** 按鈕。
+   1. 前往應用程式的 [ **API 許可權**] 頁面
+   1. 按一下 [授與系統**管理員同意**] 按鈕。
 
       ![授與明確的系統管理員同意權限](./media/consent-framework/grant-consent.png)
 

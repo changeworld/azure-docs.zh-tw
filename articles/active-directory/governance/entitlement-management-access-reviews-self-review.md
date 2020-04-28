@@ -1,6 +1,6 @@
 ---
-title: Azure AD 授權管理中訪問包的自我審查
-description: 瞭解如何在 Azure 活動目錄訪問審核（預覽）中查看使用者對授權管理訪問包的訪問。
+title: Azure AD 權利管理中的存取套件的自我審查
+description: 瞭解如何在 Azure Active Directory 存取評論（預覽）中，檢查權利管理存取套件的使用者存取權。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,49 +17,49 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78967764"
 ---
-# <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD 授權管理中訪問包的自我審查
+# <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD 權利管理中的存取套件的自我審查
 
-Azure AD 授權管理簡化了企業管理對組、應用程式和 SharePoint 網站的訪問的方式。 本文介紹使用者如何自行查看其分配的訪問包。
+Azure AD 權利管理可簡化企業管理群組、應用程式和 SharePoint 網站存取的方式。 本文說明使用者如何對其指派的存取套件進行自我審查。
 
-## <a name="open-the-access-review"></a>打開訪問審核
+## <a name="open-the-access-review"></a>開啟存取權審查
 
-要執行訪問審核，必須首先打開訪問審核。 使用以下過程查找和打開訪問審核：
+若要進行存取權審查，您必須先開啟存取權審查。 請使用下列程式來尋找並開啟存取權審查：
 
-1. 您可能會收到來自 Microsoft 的電子郵件，要求您查看存取權限。 找到電子郵件以打開訪問審核。 下面是請求查看存取權限的電子郵件示例： 
+1. 您可能會收到來自 Microsoft 的電子郵件，要求您審查存取權。 找出電子郵件以開啟存取權審查。 以下是要求審核存取的電子郵件範例： 
     
-    ![訪問審閱自我審閱電子郵件](./media/entitlement-management-access-reviews-review-access/self-review-reviewer-email.png)
+    ![存取權審查自我檢閱者電子郵件](./media/entitlement-management-access-reviews-review-access/self-review-reviewer-email.png)
 
-1. 按一下 **"查看訪問"** 連結。
+1. 按一下 [**審查存取**] 連結。
 
-1. 如果您沒有收到電子郵件，您也可以直接https://myaccess.microsoft.com查找掛起的訪問審核。  （對於美國政府，`https://myaccess.microsoft.us`請使用。
+1. 如果您未收到電子郵件https://myaccess.microsoft.com ，您也可以直接前往來尋找您的暫止存取審查。  （針對美國政府，請`https://myaccess.microsoft.us`改用）。
 
-1. 按一下左側巡覽列上的 **"訪問審閱**"以查看分配給您掛起的訪問審核的清單。
+1. 按一下左側導覽列上的 [**存取評論**]，以查看指派給您的暫止存取評論清單。
 
 
-1.  按一下要開始的評論。
+1.  按一下您想要開始的審查。
 
-## <a name="perform-the-access-review"></a>執行訪問審核
+## <a name="perform-the-access-review"></a>執行存取權審查
 
-打開訪問審核後，即可看到存取權限。 使用以下過程執行訪問審核：
+一旦您開啟存取權審查，您就可以看到您的存取權。 請使用下列程式來進行存取權審查：
 
-1.  確定是否仍需要訪問訪問包。 例如，您正在處理的專案尚未完成，因此您仍然需要存取權限才能繼續處理該專案。
+1.  決定您是否仍需要存取權套件。 例如，您正在處理的專案並未完成，因此您仍然需要存取權才能繼續處理專案。
 
-1.  按一下"**是**"可保留您的存取權限，或按一下"**否**"刪除您的存取權限。
+1.  按一下 **[是]** 以保留您的存取權，或按一下 [**否**] 移除您的存取權。
     >[!NOTE]
-    >如果您說不再需要存取權限，則不會立即從訪問包中刪除。 審核結束時或管理員停止審核時，您將從訪問包中刪除。
+    >如果您指定不再需要存取權，就不會立即從存取套件中移除。 當審核結束或系統管理員停止審查時，您將會從存取套件中移除。
 
-1.  如果按一下"**是**"，則可能需要在 **"原因"** 框中包含一個對齊語句。
+1.  如果您按一下 [**是]**，可能需要在 [**原因**] 方塊中包含理由語句。
 
-1.  按一下 [提交]****。
+1.  按一下 [提交]  。
 
-如果您改變主意並決定在審核結束前更改您的回復，您可以返回審核。
+如果您改變想法，並決定在評論結束前變更回應，則可以返回評論。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [查看訪問包的存取權限](entitlement-management-access-reviews-review-access.md) 
+- [審查存取封裝的存取權](entitlement-management-access-reviews-review-access.md) 

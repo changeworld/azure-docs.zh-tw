@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9ff5c75785622b43e66b808009c4674d4b2f2b50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78300843"
 ---
 # <a name="tls-12-enforcement-for-azure-ad-connect"></a>針對 Azure AD Connect 強制執行 TLS 1.2
@@ -34,20 +34,20 @@ ms.locfileid: "78300843"
 
 
 ### <a name="enable-tls-12"></a>啟用 TLS 1.2
-- [HKEY_LOCAL_MACHINE_軟體_WOW6432Node_微軟\\。NETFramework_v4.0.30319*
-  - "系統預設版本"=dword：0000001
-  - "舒斯增強式加密"=dword：000001
-- [HKEY_LOCAL_MACHINE_軟體\微軟\\。NETFramework_v4.0.30319*
-  - "系統預設版本"=dword：0000001
+- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft\\。NETFramework\v4.0.30319
+  - "SystemDefaultTlsVersions" = dword：00000001
+  - "SchUseStrongCrypto" = dword： .0000001
+- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\。NETFramework\v4.0.30319
+  - "SystemDefaultTlsVersions" = dword：00000001
   - "SchUseStrongCrypto"=dword:00000001
-- [HKEY_LOCAL_MACHINE_SYSTEM_當前控制集\控制\安全提供程式\SCHANNEL_協定\TLS 1.2\伺服器]
-  - "已啟用"=dword：0000001
-- [HKEY_LOCAL_MACHINE_SYSTEM_當前控制集\控制\安全提供程式\SCHANNEL_協定\TLS 1.2\伺服器]
-  - "禁用狀態"=dword：0000000 
-- [HKEY_LOCAL_MACHINE_SYSTEM_當前控制集\控制\安全提供程式\SCHANNEL_協定\TLS 1.2\用戶端]
-  - "已啟用"=dword：0000001
-- [HKEY_LOCAL_MACHINE_SYSTEM_當前控制集\控制\安全提供程式\SCHANNEL_協定\TLS 1.2\用戶端]
-  - "禁用狀態"=dword：0000000
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 伺服器]
+  - "Enabled" = dword：00000001
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 伺服器]
+  - "DisabledByDefault" = dword：00000000 
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 用戶端]
+  - "Enabled" = dword：00000001
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 用戶端]
+  - "DisabledByDefault" = dword：00000000
 
 ### <a name="powershell-script-to-enable-tls-12"></a>啟用 TLS 1.2 的 PowerShell 指令碼
 您可以使用下列 PowerShell 指令碼，在 Azure AD Connect 伺服器上啟用 TLS 1.2。
@@ -80,20 +80,20 @@ ms.locfileid: "78300843"
 ```
 
 ### <a name="disable-tls-12"></a>停用 TLS 1.2
-- [HKEY_LOCAL_MACHINE_軟體_WOW6432Node_微軟\\。NETFramework_v4.0.30319*
-  - "系統預設版本"=dword：0000000
-  - "舒斯增強式加密"=dword：000000
-- [HKEY_LOCAL_MACHINE_軟體\微軟\\。NETFramework_v4.0.30319*
-  - "系統預設版本"=dword：0000000
-  - "舒斯增強式加密"=dword：0000000
-- [HKEY_LOCAL_MACHINE_SYSTEM_當前控制集\控制\安全提供程式\SCHANNEL_協定\TLS 1.2\伺服器]
-  - "已啟用"=dword：0000000
-- [HKEY_LOCAL_MACHINE_SYSTEM_當前控制集\控制\安全提供程式\SCHANNEL_協定\TLS 1.2\伺服器]
-  - "禁用狀態"=dword：0000001
-- [HKEY_LOCAL_MACHINE_SYSTEM_當前控制集\控制\安全提供程式\SCHANNEL_協定\TLS 1.2\用戶端]
-  - "已啟用"=dword：0000000
-- [HKEY_LOCAL_MACHINE_SYSTEM_當前控制集\控制\安全提供程式\SCHANNEL_協定\TLS 1.2\用戶端]
-  - "禁用狀態"=dword：0000001 
+- [HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\Microsoft\\。NETFramework\v4.0.30319
+  - "SystemDefaultTlsVersions" = dword：00000000
+  - "SchUseStrongCrypto" = dword：0000000
+- [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\\。NETFramework\v4.0.30319
+  - "SystemDefaultTlsVersions" = dword：00000000
+  - "SchUseStrongCrypto" = dword：00000000
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 伺服器]
+  - "Enabled" = dword：00000000
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 伺服器]
+  - "DisabledByDefault" = dword：00000001
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 用戶端]
+  - "Enabled" = dword：00000000
+- [HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ 用戶端]
+  - "DisabledByDefault" = dword：00000001 
 
 ### <a name="powershell-script-to-disable-tls-12"></a>停用 TLS 1.2 的 PowerShell 指令碼
 您可以使用下列 PowerShell 指令碼，在 Azure AD Connect 伺服器上停用 TLS 1.2。

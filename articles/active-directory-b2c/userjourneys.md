@@ -11,10 +11,10 @@ ms.date: 02/04/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d73a1a3ce23817d9d6f742a4a8c730afb58ee0c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78227004"
 ---
 # <a name="userjourneys"></a>UserJourneys
@@ -23,7 +23,7 @@ ms.locfileid: "78227004"
 
 使用者旅程圖會指定明確的路徑，原則可透過這類路徑來讓信賴憑證者應用程式取得使用者所需的宣告。 使用者會透過這些路徑來擷取要呈現給信賴憑證者的宣告。 換句話說，使用者旅程圖會定義當 Azure AD B2C 識別體驗架構處理要求時，使用者要經歷的商務邏輯。
 
-這些使用者旅程可視為範本，以滿足利益共同體各依賴方的核心需求。 使用者旅程有助於定義策略的依賴方部分。 原則可以定義多個使用者旅程圖。 每個使用者旅程圖都是一連串的協調流程步驟。
+您可以將這些使用者旅程視為範本，以滿足所需的相關群體信賴憑證者的核心需求。 使用者旅程有助於定義原則的信賴憑證者部分。 原則可以定義多個使用者旅程圖。 每個使用者旅程圖都是一連串的協調流程步驟。
 
 為了定義原則所支援的使用者旅程圖，會將 **UserJourneys** 元素新增到原則檔的最上層元素下方。
 
@@ -49,7 +49,7 @@ ms.locfileid: "78227004"
 
 使用者旅程圖會表示為必須遵循才能獲得成功交易的協調流程序列。 如果有任何步驟失敗，交易就會失敗。 這些協調流程步驟會參考這兩個建置組塊以及原則檔中所允許的宣告提供者。 任何負責顯示或呈現使用者體驗的協調流程步驟，也會參考對應的內容定義識別碼。
 
-可以根據業務流程步驟元素中定義的先決條件有條件地執行業務流程步驟。 例如，只有在存在特定聲明或聲明等於或不等於指定值時，才能檢查以執行業務流程步驟。
+協調流程步驟可以根據協調流程步驟元素中定義的前置條件來有條件地執行。 例如，您可以檢查，只有在特定的宣告存在，或者如果宣告等於或不是指定的值時，才執行協調流程步驟。
 
 為了指定已排序的協調流程步驟清單，會新增 **OrchestrationSteps** 元素作為原則的一部分。 這個元素是必要的。
 
@@ -64,8 +64,8 @@ ms.locfileid: "78227004"
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | `Order` | 是 | 協調流程步驟的順序。 |
-| `Type` | 是 | 協調流程步驟的類型。 可能的值： <ul><li>**ClaimsProviderSelection**：指出協調流程步驟會向使用者呈現各種宣告提供者，使其可選取其中一個。</li><li>**CombinedSignInAndSignUp**：指出協調流程步驟會呈現社交提供者登入和本機帳戶註冊的組合頁面。</li><li>**ClaimsExchange**：指出協調流程步驟會與宣告提供者交換宣告。</li><li>**獲取聲明**- 指示業務流程步驟讀取輸入聲明。</li><li>**SendClaims**：指出協調流程步驟會使用宣告簽發者所發出的權杖，將宣告傳送到信賴憑證者。</li></ul> |
-| ContentDefinitionReferenceId | 否 | 與此協調流程步驟相關聯的[內容定義](contentdefinitions.md)識別碼。 內容定義參考識別碼通常定義於自我判斷技術設定檔中。 但是，在某些案例中，Azure AD B2C 需要在沒有技術設定檔的情況下顯示某些內容。 有兩個示例 - 如果業務流程步驟的類型是以下內容之一：`ClaimsProviderSelection`或者`CombinedSignInAndSignUp`，Azure AD B2C 需要顯示標識提供程式選擇，而無需使用技術設定檔。 |
+| `Type` | 是 | 協調流程步驟的類型。 可能的值： <ul><li>**ClaimsProviderSelection**：指出協調流程步驟會向使用者呈現各種宣告提供者，使其可選取其中一個。</li><li>**CombinedSignInAndSignUp**：指出協調流程步驟會呈現社交提供者登入和本機帳戶註冊的組合頁面。</li><li>**ClaimsExchange**：指出協調流程步驟會與宣告提供者交換宣告。</li><li>**GetClaims** -指出協調流程步驟會讀取輸入宣告。</li><li>**SendClaims**：指出協調流程步驟會使用宣告簽發者所發出的權杖，將宣告傳送到信賴憑證者。</li></ul> |
+| ContentDefinitionReferenceId | 否 | 與此協調流程步驟相關聯的[內容定義](contentdefinitions.md)識別碼。 內容定義參考識別碼通常定義於自我判斷技術設定檔中。 但是，在某些案例中，Azure AD B2C 需要在沒有技術設定檔的情況下顯示某些內容。 有兩個範例-如果協調流程步驟的類型是下列其中之一： `ClaimsProviderSelection`或`CombinedSignInAndSignUp`，Azure AD B2C 需要在沒有技術設定檔的情況下顯示識別提供者選取專案。 |
 | CpimIssuerTechnicalProfileReferenceId | 否 | 協調流程步驟的類型為 `SendClaims`。 這個屬性會定義宣告提供者的技術設定檔識別碼，此宣告提供者會發出適用於信賴憑證者的權杖。  如果不存在，就不會建立任何信賴憑證者權杖。 |
 
 
@@ -88,7 +88,7 @@ ms.locfileid: "78227004"
 
 #### <a name="precondition"></a>先決條件
 
-**先決條件**元素包含以下屬性：
+**先決條件**元素包含下列屬性：
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
@@ -121,7 +121,7 @@ ms.locfileid: "78227004"
 </OrchestrationStep>
 ```
 
-下列先決條件會檢查使用者是否已使用社交帳戶登入。 嘗試在目錄中尋找使用者帳戶。 如果使用者登錄或使用本地帳戶註冊，請跳過此業務流程步驟。
+下列先決條件會檢查使用者是否已使用社交帳戶登入。 嘗試在目錄中尋找使用者帳戶。 如果使用者使用本機帳戶登入或註冊，請略過此協調流程步驟。
 
 ```XML
 <OrchestrationStep Order="3" Type="ClaimsExchange">
@@ -138,7 +138,7 @@ ms.locfileid: "78227004"
 </OrchestrationStep>
 ```
 
-先決條件可以檢查多個先決條件。 下列範例會檢查 'objectId' 或 'email' 是否存在。 如果第一個條件為 true，則旅程將跳到下一個業務流程步驟。
+先決條件可以檢查多個先決條件。 下列範例會檢查 'objectId' 或 'email' 是否存在。 如果第一個條件為 true，則旅程會跳到下一個協調流程步驟。
 
 ```XML
 <OrchestrationStep Order="4" Type="ClaimsExchange">
@@ -162,17 +162,17 @@ ms.locfileid: "78227004"
 
 類型 `ClaimsProviderSelection` 或 `CombinedSignInAndSignUp` 的協調流程步驟可能包含使用者可用以登入的宣告提供者清單。 `ClaimsProviderSelections` 元素內部的元素順序會控制呈現給使用者的識別提供者順序。
 
-**聲明提供程式選擇**元素包含以下元素：
+**ClaimsProviderSelections**元素包含下列元素：
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsProviderSelection | 1:n | 提供可選取的宣告提供者清單。|
 
-**聲明提供程式選擇**元素包含以下屬性：
+**ClaimsProviderSelections**元素包含下列屬性：
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 顯示選項| 否 | 控制單個聲明提供程式選擇可用的案例的行為。 可能的值：（ `DoNotShowSingleProvider` 預設），使用者將立即重定向到聯合標識提供程式。 或者 `ShowSingleProvider` Azure AD B2C 顯示帶有單個標識提供程式選擇的登錄頁。 要使用此屬性，[內容定義版本](page-layout.md)必須 `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0`高於和上方。|
+| DisplayOption| 否 | 控制可使用單一宣告提供者選項之案例的行為。 可能的值 `DoNotShowSingleProvider` ：（預設），會立即將使用者重新導向至同盟身分識別提供者。 或 `ShowSingleProvider` Azure AD B2C 會顯示具有單一身分識別提供者選取範圍的登入頁面。 若要使用這個屬性，[內容定義版本](page-layout.md)必須是 `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0`和以上。|
 
 **ClaimsProviderSelection** 元素包含下列屬性：
 
@@ -183,7 +183,7 @@ ms.locfileid: "78227004"
 
 ### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection 範例
 
-在下面的業務流程步驟中，使用者可以選擇使用 Facebook、LinkedIn、Twitter、Google 或本地帳戶登錄。 如果使用者選取其中一個社交識別提供者，第二個協調流程步驟就會使用 `TargetClaimsExchangeId` 屬性中指定的所選取宣告交換來執行。 第二個協調流程步驟會將使用者重新導向到該社交識別提供者，以完成登入程序。 如果使用者選擇使用本機帳戶登入，Azure AD B2C 就會停留在同一個協調流程步驟 (相同的註冊頁面或登入頁面)，並略過第二個協調流程步驟。
+在下列協調流程步驟中，使用者可以選擇使用 Facebook、LinkedIn、Twitter、Google 或本機帳戶登入。 如果使用者選取其中一個社交識別提供者，第二個協調流程步驟就會使用 `TargetClaimsExchangeId` 屬性中指定的所選取宣告交換來執行。 第二個協調流程步驟會將使用者重新導向到該社交識別提供者，以完成登入程序。 如果使用者選擇使用本機帳戶登入，Azure AD B2C 就會停留在同一個協調流程步驟 (相同的註冊頁面或登入頁面)，並略過第二個協調流程步驟。
 
 ```XML
 <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">

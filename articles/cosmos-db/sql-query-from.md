@@ -1,29 +1,29 @@
 ---
-title: Azure 宇宙 DB 中的 FROM 子句
-description: 瞭解 SQL 語法，以及 Azure Cosmos DB 的 FROM 子句示例。 本文還演示了用於範圍結果的示例，並使用 FROM 子句獲取子項。
+title: Azure Cosmos DB 中的 FROM 子句
+description: 瞭解 SQL 語法，以及 Azure Cosmos DB 的 FROM 子句範例。 本文也會說明範圍結果的範例，並使用 FROM 子句取得子專案。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: tisande
 ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77587680"
 ---
-# <a name="from-clause-in-azure-cosmos-db"></a>Azure 宇宙 DB 中的 FROM 子句
+# <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 FROM 子句
 
-FROM （`FROM <from_specification>`） 子句是可選的，除非在查詢中稍後篩選或投影源。 像這樣的查詢，`SELECT * FROM Families`如枚舉整個`Families`容器。 還可以對容器使用特殊識別碼 ROOT，而不是使用容器名稱。
+除非稍後會`FROM <from_specification>`在查詢中篩選或投射來源，否則 from （）子句是選擇性的。 如`SELECT * FROM Families`列舉整個`Families`容器的查詢。 您也可以使用容器的特殊識別碼根，而不使用容器名稱。
 
-FROM 子句強制每個查詢執行以下規則：
+FROM 子句會針對每個查詢強制執行下列規則：
 
-* 您可以為容器設定別名，例如 `SELECT f.id FROM Families AS f` 或只是 `SELECT f.id FROM Families f`。 下面是`f``Families`的別名。 AS 是[別名](sql-query-aliasing.md)識別碼的可選關鍵字。  
+* 您可以為容器設定別名，例如 `SELECT f.id FROM Families AS f` 或只是 `SELECT f.id FROM Families f`。 以下`f`是的別名`Families`。 AS 是選擇性關鍵字，用來為識別碼做為[別名](sql-query-aliasing.md)。  
 
-* 一旦別名化，無法綁定原始源名稱。 例如，`SELECT Families.id FROM Families f`在語法上無效，因為識別碼`Families`已別名，無法再解析。  
+* 別名之後，就無法系結原始來源名稱。 例如，在`SELECT Families.id FROM Families f`語法上無效，因為識別碼`Families`已為別名，而且無法再解析。  
 
-* 所有引用的屬性都必須完全限定，以避免在未嚴格遵循架構的情況下進行任何不明確的綁定。 例如，`SELECT id FROM Families f`在語法上無效，因為屬性`id`不受約束。
+* 所有參考的屬性都必須是完整的，以便在沒有嚴格的架構遵循時避免任何不明確的系結。 例如，在`SELECT id FROM Families f`語法上無效，因為屬性`id`未系結。
 
 ## <a name="syntax"></a>語法
   
@@ -81,7 +81,7 @@ FROM <from_specification>
   
 - `<container_expression> '.' property_name`  
   
-  指定應通過訪問`property_name`該屬性檢索文檔。  
+  指定應該藉由存取`property_name`屬性來抓取檔。  
   
 - `<container_expression> '[' "property_name" | array_index ']'`  
   
@@ -105,9 +105,9 @@ FROM <from_specification>
 
 ## <a name="examples"></a>範例
 
-### <a name="get-subitems-by-using-the-from-clause"></a>使用 FROM 子句獲取子項
+### <a name="get-subitems-by-using-the-from-clause"></a>使用 FROM 子句取得子工作
 
-FROM 子句可以將源減少到較小的子集。 要枚舉每個專案中的子樹，子根可以成為源，如以下示例所示：
+FROM 子句可以將來源減少為較小的子集。 若只要列舉每個專案中的子樹，則子根目錄可能會變成來源，如下列範例所示：
 
 ```sql
     SELECT *
@@ -147,7 +147,7 @@ FROM 子句可以將源減少到較小的子集。 要枚舉每個專案中的�
     ]
 ```
 
-前面的查詢使用陣列作為源，但也可以使用物件作為源。 查詢考慮源中的任何有效定義的 JSON 值，以便包含在結果中。 下面的示例將排除`Families`沒有`address.state`值的值。
+上述查詢使用陣列做為來源，但您也可以使用物件做為來源。 此查詢會考慮來源中任何有效且已定義的 JSON 值，以便包含在結果中。 下列範例會排除`Families`沒有`address.state`值的。
 
 ```sql
     SELECT *
@@ -166,5 +166,5 @@ FROM 子句可以將源減少到較小的子集。 要枚舉每個專案中的�
 ## <a name="next-steps"></a>後續步驟
 
 - [開始使用](sql-query-getting-started.md)
-- [選擇子句](sql-query-select.md)
-- [WHERE 條款](sql-query-where.md)
+- [SELECT 子句](sql-query-select.md)
+- [WHERE 子句](sql-query-where.md)

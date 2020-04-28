@@ -1,5 +1,5 @@
 ---
-title: SCIM 2.0 協定合規性的已知問題 - Azure AD
+title: SCIM 2.0 通訊協定合規性的已知問題-Azure AD
 description: 如何解決將支援 SCIM 2.0 且不在資源庫的應用程式新增至 Azure AD 時所面臨的常見通訊協定相容性問題
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6dff0d4f8f0062c00351b60174c63d9c19bdfa15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522929"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 使用者佈建服務 SCIM 2.0 通訊協定相容性的已知問題和解決方法
@@ -36,7 +36,7 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 
 ## <a name="scim-20-compliance-issues-and-status"></a>SCIM 2.0 相容性問題和狀態
 
-| **SCIM 2.0 相容性問題** |  **固定？** | **修正日期**  |  
+| **SCIM 2.0 相容性問題** |  **固定匯率?** | **修正日期**  |  
 |---|---|---|
 | Azure AD 要求應用程式的 SCIM 端點 URL 根目錄中必須有 "/scim"  | 是  |  2018 年 12 月 18 日 | 
 | 延伸模組屬性在屬性名稱前面使用點 "." 標記法，而不是冒號 ":" 標記法 |  是  | 2018 年 12 月 18 日  | 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>上述服務修正會自動套用至我既存的 SCIM 應用程式嗎？
 
-否。 由於這會構成 SCIM 應用程式的一項重大變更，並撰寫應用程式程式碼來使用舊版行為，因此這些變更不會自動套用至現有的應用程式。
+不可以。 由於這會構成 SCIM 應用程式的一項重大變更，並撰寫應用程式程式碼來使用舊版行為，因此這些變更不會自動套用至現有的應用程式。
 
 在修正日期之後，這些變更會套用至 Azure 入口網站中已設定之所有[不在資源庫內的新 SCIM 應用程式](../manage-apps/configure-single-sign-on-non-gallery-applications.md)。
 
@@ -66,7 +66,7 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![獲取工作](media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "獲取工作") 
+   ![取得作業](media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "取得作業") 
 
 
 6. 在結果中，複製開頭為 "customappsso" 或 "scim" 的完整「識別碼」字串。
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) 會利用 [System for Cross-Domain Identity Ma
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
-   ![獲取架構](media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "獲取架構") 
+   ![取得架構](media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "取得架構") 
 
 8. 複製上一個步驟中的 JSON 輸出，並將其儲存至文字檔。 這包含已新增至舊應用程式的任何自訂屬性對應，大約應為幾千行的 JSON。
 9. 執行下列命令以刪除佈建作業：

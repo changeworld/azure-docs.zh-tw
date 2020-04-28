@@ -1,5 +1,5 @@
 ---
-title: 配置主動-活動 S2S Azure VPN 閘道連接
+title: 設定主動-主動 S2S Azure VPN 閘道連線
 description: 本文將逐步引導您使用 Azure Resource Manager 和 PowerShell 來設定與 Azure VPN 閘道的主動-主動連線。
 services: vpn-gateway
 author: yushwang
@@ -9,10 +9,10 @@ ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
 ms.openlocfilehash: ec3697208434eb971e47136416f2c2cc541b5cea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244637"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>設定 Azure VPN 閘道的主動-主動 S2S VPN 連線
@@ -50,11 +50,11 @@ ms.locfileid: "79244637"
 其他屬性都與非主動-主動閘道相同。 
 
 ### <a name="before-you-begin"></a>開始之前
-* 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂閱，則可以啟動[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 請確認您有 Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 * 您必須安裝 Azure Resource Manager PowerShell Cmdlet。 如需安裝 PowerShell Cmdlet 的詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
 
 ### <a name="step-1---create-and-configure-vnet1"></a>步驟 1 - 建立及設定 VNet1
-#### <a name="1-declare-your-variables"></a>1. 聲明變數
+#### <a name="1-declare-your-variables"></a>1. 宣告變數
 對於此練習，我們一開始先宣告我們的變數。 下列範例會使用此練習中的值來宣告變數。 請務必在設定生產環境時，使用您自己的值來取代該值。 若您執行這些步驟是為了熟悉此類型的設定，則可以使用這些變數。 修改變數，然後將其複製並貼到您的 PowerShell 主控台中。
 
 ```powershell
@@ -82,7 +82,7 @@ $Connection151 = "VNet1toSite5_1"
 $Connection152 = "VNet1toSite5_2"
 ```
 
-#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. 連接到訂閱並創建新的資源組
+#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. 連接到您的訂用帳戶，並建立新的資源群組
 請確定您切換為 PowerShell 模式以使用資源管理員 Cmdlet。 如需詳細資訊，請參閱 [搭配使用 Windows PowerShell 與 Resource Manager](../powershell-azure-resource-manager.md)。
 
 開啟 PowerShell 主控台並連接到您的帳戶。 使用下列範例來協助您連接：
@@ -93,7 +93,7 @@ Select-AzSubscription -SubscriptionName $Sub1
 New-AzResourceGroup -Name $RG1 -Location $Location1
 ```
 
-#### <a name="3-create-testvnet1"></a>3. 創建測試VNet1
+#### <a name="3-create-testvnet1"></a>3. 建立 TestVNet1
 下列範例會建立一個名為 TestVNet1 的虛擬網路和三個子網路：一個名為 GatewaySubnet、一個名為 FrontEnd，另一個名為 Backend。 替代值時，務必一律將您的閘道子網路特定命名為 GatewaySubnet。 如果您將其命名為其他名稱，閘道建立會失敗。
 
 ```powershell
@@ -105,7 +105,7 @@ New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Locatio
 ```
 
 ### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-active-active-mode"></a>步驟 2 - 以主動-主動模式建立 TestVNet1 的 VPN 閘道
-#### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1. 創建公共 IP 位址和閘道 IP 配置
+#### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1. 建立公用 IP 位址和閘道 IP 設定
 需要將兩個公用 IP 位址配置給您將為 VNet 建立的閘道。 您也會定義所需的子網路和 IP 組態。
 
 ```powershell
@@ -118,14 +118,14 @@ $gw1ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 -Subnet $sub
 $gw1ipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf2 -Subnet $subnet1 -PublicIpAddress $gw1pip2
 ```
 
-#### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2. 使用主動-主動配置創建 VPN 閘道
+#### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2. 使用主動-主動設定建立 VPN 閘道
 建立 TestVNet1 的虛擬網路閘道。 請注意有兩個 GatewayIpConfig 項目，且已設定 EnableActiveActiveFeature 旗標。 建立閘道可能需要花費一段時間 (45 分鐘或更久)。
 
 ```powershell
 New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
 ```
 
-#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3. 獲取閘道公共 IP 位址和 BGP 對等 IP 位址
+#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3. 取得閘道公用 IP 位址和 BGP 對等 IP 位址
 建立閘道後，您必須取得 Azure VPN 閘道上的 BGP 對等 IP 位址。 需要有此位址，才能將 Azure VPN 閘道設定為您的內部部署 VPN 裝置的 BGP 對等。
 
 ```powershell
@@ -163,7 +163,7 @@ PS D:\> $vnet1gw.BgpSettingsText
 在繼續之前，請確定您已完成本練習的 [第 1 部分](#aagateway) 。
 
 ### <a name="step-1---create-and-configure-the-local-network-gateway"></a>步驟 1 - 建立及設定區域網路閘道
-#### <a name="1-declare-your-variables"></a>1. 聲明變數
+#### <a name="1-declare-your-variables"></a>1. 宣告變數
 本練習將繼續建置圖中所示的組態。 請務必使用您想用於設定的值來取代該值。
 
 ```powershell
@@ -183,7 +183,7 @@ $BGPPeerIP51 = "10.52.255.253"
 * 如果已啟用 BGP，您需要針對區域網路閘道宣告的前置詞就是您 VPN 裝置上 BGP 對等 IP 位址的主機位址。 在此情況下是 "10.52.255.253/32" 的前置詞 /32。
 * 提醒您，您必須在內部部署網路與 Azure VNet 之間使用不同的 BGP ASN。 在兩者相同的情況下，如果內部部署 VPN 裝置已經使用 ASN 來與其他 BGP 芳鄰建立對等連線，您就需要變更您的 VNet ASN。
 
-#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. 為 Site5 創建本地網路閘道5
+#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. 建立 Site5 的局域網路閘道
 請確定您仍然與訂用帳戶 1 保持連線，然後再繼續。 建立資源群組 (若尚未建立)。
 
 ```powershell
@@ -192,21 +192,21 @@ New-AzLocalNetworkGateway -Name $LNGName51 -ResourceGroupName $RG5 -Location $Lo
 ```
 
 ### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>步驟 2 - 連接 VNet 閘道與區域網路閘道
-#### <a name="1-get-the-two-gateways"></a>1. 獲取兩個閘道
+#### <a name="1-get-the-two-gateways"></a>1. 取得兩個閘道
 
 ```powershell
 $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
 $lng5gw1 = Get-AzLocalNetworkGateway  -Name $LNGName51 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. 創建測試VNet1到網站5連接
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. 建立 TestVNet1 至 Site5 的連線
 在此步驟中，您會建立從 TestVNet1 到 Site5_1 的連線，並將 "EnableBGP" 設為 $True。
 
 ```powershell
 New-AzVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw1 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-#### <a name="3-vpn-and-bgp-parameters-for-your-on-premises-vpn-device"></a>3. 本地 VPN 設備的 VPN 和 BGP 參數
+#### <a name="3-vpn-and-bgp-parameters-for-your-on-premises-vpn-device"></a>3. 您內部部署 VPN 裝置的 VPN 和 BGP 參數
 下列範例列出您將會針對此練習中，在內部部署 VPN 裝置的 BGP 組態區段中輸入的參數︰
 
 ```
@@ -228,7 +228,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $R
 ### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>步驟 3 - 將兩個內部部署 VPN 裝置連線到主動-主動 VPN 閘道
 如果您在同一個內部部署網路上有兩個 VPN 裝置，您可以透過將 Azure VPN 閘道連接到第二個 VPN 裝置來達成雙重備援。
 
-#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. 為 Site5 創建第二個本地網路閘道
+#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. 建立 Site5 的第二個局域網路閘道
 第二個區域網路閘道的閘道 IP位址、位址首碼及 BGP 對等互連位址，不得與同一個內部部署網路的前一個區域網路閘道重疊。
 
 ```powershell
@@ -242,7 +242,7 @@ $BGPPeerIP52 = "10.52.255.254"
 New-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP52 -AddressPrefix $LNGPrefix52 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP52
 ```
 
-#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. 連接 VNet 閘道和第二個本地網路閘道
+#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. 連接 VNet 閘道和第二個局域網路閘道
 建立從 TestVNet1 至 Site5_2 的連線且 "EnableBGP" 設為 $True
 
 ```powershell
@@ -253,7 +253,7 @@ $lng5gw2 = Get-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5
 New-AzVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw2 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
 ```
 
-#### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3. 第二個本地 VPN 設備的 VPN 和 BGP 參數
+#### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3. 第二個內部部署 VPN 裝置的 VPN 和 BGP 參數
 同樣地，以下列出您將輸入到第二個 VPN 裝置的參數︰
 
 ```
@@ -282,7 +282,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $R
 
 在此範例中，虛擬網路屬於相同的訂用帳戶。 您可以在不同訂用帳戶之間設定 VNet 對 VNet 連線，若要深入了解詳細資料，請參閱 [設定 VNet 對 VNet 連線](vpn-gateway-vnet-vnet-rm-ps.md) 。 請務必在建立連線時新增 "-EnableBgp $True"，才能啟用 BGP。
 
-#### <a name="1-declare-your-variables"></a>1. 聲明變數
+#### <a name="1-declare-your-variables"></a>1. 宣告變數
 請務必使用您想用於設定的值來取代該值。
 
 ```powershell
@@ -308,7 +308,7 @@ $Connection21 = "VNet2toVNet1"
 $Connection12 = "VNet1toVNet2"
 ```
 
-#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. 在新資源組中創建 TestVNet2
+#### <a name="2-create-testvnet2-in-the-new-resource-group"></a>2. 在新的資源群組中建立 TestVNet2
 
 ```powershell
 New-AzResourceGroup -Name $RG2 -Location $Location2
@@ -320,7 +320,7 @@ $gwsub2 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName2 -AddressPrefix $GWS
 New-AzVirtualNetwork -Name $VNetName2 -ResourceGroupName $RG2 -Location $Location2 -AddressPrefix $VNetPrefix21,$VNetPrefix22 -Subnet $fesub2,$besub2,$gwsub2
 ```
 
-#### <a name="3-create-the-active-active-vpn-gateway-for-testvnet2"></a>3. 為 TestVNet2 創建主動-主動 VPN 閘道2
+#### <a name="3-create-the-active-active-vpn-gateway-for-testvnet2"></a>3. 建立 TestVNet2 的主動-主動 VPN 閘道
 需要將兩個公用 IP 位址配置給您將為 VNet 建立的閘道。 您也會定義所需的子網路和 IP 組態。
 
 ```powershell
@@ -342,7 +342,7 @@ New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Lo
 ### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>步驟 2 - 連接 TestVNet1 與 TestVNet2 閘道
 在此範例中，兩個閘道位於相同的訂用帳戶。 您可以在相同的 PowerShell 工作階段中完成此步驟。
 
-#### <a name="1-get-both-gateways"></a>1. 獲取兩個閘道
+#### <a name="1-get-both-gateways"></a>1. 取得兩個閘道
 請確定您已登入並連接到訂用帳戶 1。
 
 ```powershell
@@ -350,7 +350,7 @@ $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet2gw = Get-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 ```
 
-#### <a name="2-create-both-connections"></a>2. 創建兩個連接
+#### <a name="2-create-both-connections"></a>2. 建立這兩個連接
 在此步驟中，您將建立從 TestVNet1 到 TestVNet2 的連線，以及從 TestVNet2 到 TestVNet1 的連線。
 
 ```powershell
@@ -376,7 +376,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupName $RG
 
 以下範例會將作用中-待命閘道轉換成主動-主動閘道。 當您將作用中-待命閘道變更為主動-主動時，會建立另一個公用 IP 位址，然後新增第二個閘道 IP 設定。
 
-#### <a name="1-declare-your-variables"></a>1. 聲明變數
+#### <a name="1-declare-your-variables"></a>1. 宣告變數
 
 使用您自己的組態所需的設定來取代下列針對範例所使用的參數，然後宣告這些變數。
 
@@ -397,7 +397,7 @@ $gw = Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 $location = $gw.Location
 ```
 
-#### <a name="2-create-the-public-ip-address-then-add-the-second-gateway-ip-configuration"></a>2. 創建公共 IP 位址，然後添加第二個閘道 IP 配置
+#### <a name="2-create-the-public-ip-address-then-add-the-second-gateway-ip-configuration"></a>2. 建立公用 IP 位址，然後新增第二個閘道 IP 設定
 
 ```powershell
 $gwpip2 = New-AzPublicIpAddress -Name $GWIPName2 -ResourceGroupName $RG -Location $location -AllocationMethod Dynamic
@@ -419,7 +419,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -EnableActiveActiveFeatur
 ```
 
 ### <a name="change-an-active-active-gateway-to-an-active-standby-gateway"></a>將主動-主動閘道變更為作用中-待命閘道
-#### <a name="1-declare-your-variables"></a>1. 聲明變數
+#### <a name="1-declare-your-variables"></a>1. 宣告變數
 
 使用您自己的組態所需的設定來取代下列針對範例所使用的參數，然後宣告這些變數。
 
@@ -435,7 +435,7 @@ $gw = Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 $ipconfname = $gw.IpConfigurations[1].Name
 ```
 
-#### <a name="2-remove-the-gateway-ip-configuration-and-disable-the-active-active-mode"></a>2. 刪除閘道 IP 配置並禁用主動-主動模式
+#### <a name="2-remove-the-gateway-ip-configuration-and-disable-the-active-active-mode"></a>2. 移除閘道 IP 設定，並停用主動-主動模式
 
 使用此範例，來移除閘道 IP 設定並停用主動-主動模式。 請注意，您必須在 PowerShell 中設定閘道物件以觸發實際的更新。
 

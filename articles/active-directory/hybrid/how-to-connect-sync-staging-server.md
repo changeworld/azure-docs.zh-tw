@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc88640cdff4f716902a80bb149913b961d40ae3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261017"
 ---
-# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD 連接：暫存伺服器和災害復原
+# <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：預備伺服器和嚴重損壞修復
 利用預備模式中的伺服器，您可以在啟用伺服器之前變更組態並預覽變更。 它也可以讓您執行完整的匯入和完整的同步處理，以在生產環境中進行這些變更之前，確認所有變更皆如預期。
 
 ## <a name="staging-mode"></a>預備模式
@@ -42,7 +42,7 @@ ms.locfileid: "79261017"
 
 您仍然可以使用 Synchronization Service Manager 來強制執行匯出。
 
-處於暫存模式的伺服器將繼續接收來自活動目錄和 Azure AD 的更改，並在發生故障時快速接管另一台伺服器的職責。 如果您對您的主要伺服器進行組態變更，則您有責任對預備模式的伺服器進行相同的變更。
+預備模式中的伺服器會繼續接收來自 Active Directory 和 Azure AD 的變更，並可在發生失敗時，快速接管另一部伺服器的責任。 如果您對您的主要伺服器進行組態變更，則您有責任對預備模式的伺服器進行相同的變更。
 
 對於具備較舊同步處理技術知識的人員，預備模式是不同的，因為伺服器有它自己的 SQL 資料庫。 此架構可讓預備模式伺服器位於不同的資料中心。
 
@@ -50,9 +50,9 @@ ms.locfileid: "79261017"
 若要套用此方法，請遵循下列步驟：
 
 1. [準備](#prepare)
-2. [組態](#configuration)
+2. [設定](#configuration)
 3. [匯入和同步處理](#import-and-synchronize)
-4. [確認](#verify)
+4. [Verify](#verify)
 5. [切換作用中的伺服器](#switch-active-server)
 
 #### <a name="prepare"></a>準備
@@ -60,7 +60,7 @@ ms.locfileid: "79261017"
    ![ReadyToConfigure](./media/how-to-connect-sync-staging-server/readytoconfigure.png)
 2. 登出/登入，並從 [開始] 功能表中選取 [同步處理服務] ****。
 
-#### <a name="configuration"></a>組態
+#### <a name="configuration"></a>設定
 如果您已對主要伺服器進行變更，並想要將組態與預備伺服器進行比較，則請使用 [Azure AD Connect 組態文件產生器](https://github.com/Microsoft/AADConnectConfigDocumenter)。
 
 #### <a name="import-and-synchronize"></a>匯入和同步處理
@@ -115,7 +115,7 @@ ms.locfileid: "79261017"
 ### <a name="have-a-spare-standby-server---staging-mode"></a>具有備用的待命伺服器 - 預備模式
 如果您有更複雜的環境，則建議使用一或多個待命伺服器。 您可以在安裝期間啟用狀態為「預備模式」 **** 的伺服器。
 
-有關詳細資訊，請參閱[暫存模式](#staging-mode)。
+如需詳細資訊，請參閱[預備模式](#staging-mode)。
 
 ### <a name="use-virtual-machines"></a>使用虛擬機器
 一般和受支援的方法是在虛擬機器中執行同步處理引擎。 如果主機有問題，可將內含同步處理引擎伺服器的映像移轉到另一部伺服器。

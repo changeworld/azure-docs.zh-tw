@@ -1,6 +1,6 @@
 ---
-title: 更改 Azure AD 中企業應用程式的名稱或徽標
-description: 如何更改 Azure 活動目錄中自訂企業應用程式的名稱或徽標
+title: 在 Azure AD 中變更企業應用程式的名稱或標誌
+description: 如何在 Azure Active Directory 中變更自訂企業應用程式的名稱或標誌
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,33 +17,33 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d23849df75d1ab239eb269b462abb21df196e7e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79138496"
 ---
-# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>更改 Azure 活動目錄中企業應用程式的名稱或徽標
+# <a name="change-the-name-or-logo-of-an-enterprise-application-in-azure-active-directory"></a>在 Azure Active Directory 中變更企業應用程式的名稱或標誌
 
-在 Azure Active Directory (Azure AD) 中，您可以輕鬆變更自訂企業應用程式的名稱或標誌。 您必須具有適當的許可權才能進行這些更改，並且必須是自訂應用程式的建立者。
+在 Azure Active Directory (Azure AD) 中，您可以輕鬆變更自訂企業應用程式的名稱或標誌。 您必須具有適當的許可權，才能進行這些變更，而且您必須是自訂應用程式的建立者。
 
-## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>如何更改企業應用程式的名稱或徽標？
+## <a name="how-do-i-change-an-enterprise-applications-name-or-logo"></a>如何? 變更企業應用程式的名稱或標誌嗎？
 
-1. 使用目錄的全域管理員的帳戶登錄到[Azure 活動目錄門戶](https://aad.portal.azure.com/)。 將顯示**Azure 活動目錄管理中心**頁。
-2. 在左側窗格中，選取 [企業應用程式]****。 將顯示企業應用程式的清單。
-3. 選取應用程式。 將顯示應用程式概述頁。
-4. 在"應用程式概述"窗格中，在 **"管理**"標題下，選擇 **"屬性**"。 將顯示 **"屬性"** 頁。
-5. 如果要更改名稱，請選擇"**名稱**"框，鍵入新名稱 **，然後按**Enter 。
-6. 如果要更改徽標，請查找**徽標**欄位，然後選擇 **"選擇檔**框"旁邊的資料夾圖示，該資料夾圖示位於應用程式當前徽標圖像下方。
+1. 使用具有目錄全域管理員身分的帳戶來登入[Azure Active Directory 入口網站](https://aad.portal.azure.com/)。 [ **Azure Active Directory 系統管理中心**] 頁面隨即出現。
+2. 在左側窗格中，選取 [企業應用程式]****。 您的企業應用程式清單隨即出現。
+3. 選取應用程式。 [應用程式總覽] 頁面隨即出現。
+4. 在 [應用程式總覽] 窗格的 [**管理**] 標題底下，選取 [**屬性**]。 [**屬性**] 頁面隨即出現。
+5. 如果您想要變更名稱，請選取 [**名稱**] 方塊，輸入新名稱，然後按**enter**。
+6. 如果您想要變更標誌，請尋找 [**標誌**] 欄位，然後選取 [**選取**檔案] 方塊旁的資料夾圖示，此方塊位於應用程式目前的標誌影像下方。
 
    ![選取 [屬性] 命令](./media/change-name-or-logo-portal/change-logo.png)
 
-   否則，如果不更改徽標，則轉到步驟 8。
-7. 在檔選取器中，選擇要作為新徽標的檔。 檔的名稱將顯示在當前徽標圖像下方的框中。
+   否則，如果您沒有變更標誌，請移至步驟8。
+7. 在檔案選擇器中，選取您想要作為新標誌的檔案。 檔案的名稱會出現在目前標誌影像下方的方塊中。
 
    > [!NOTE]
-   > Azure 要求徽標映射為 PNG 檔，並應用寬度、高度和檔案大小的限制。 自訂徽標的大小必須正好為 215 &times; 215 圖元，且採用 PNG 格式。 我們建議您使用應用程式徽標中沒有透明度的純色背景，以便對使用者最好顯示。
-8. 選取 [儲存]****。 如果選擇了新徽標，**徽標**欄位的圖像將更改以反映新的徽標檔。
+   > Azure 要求標誌影像必須是 PNG 檔案，而且會套用寬度、高度和檔案大小的限制。 自訂標誌的大小必須&times;完全是 215 215 圖元，而且必須是 PNG 格式。 我們建議您在應用程式標誌中使用純色背景，而不會出現透明度，使其最適合使用者。
+8. 選取 [儲存]  。 如果您選擇新的標誌，**標誌**欄位的影像會變更，以反映新的標誌檔案。
 
 ## <a name="next-steps"></a>後續步驟
 

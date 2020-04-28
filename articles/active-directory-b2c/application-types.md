@@ -1,7 +1,7 @@
 ---
 title: Azure AD B2C 支援的應用程式類型
 titleSuffix: Azure AD B2C
-description: 瞭解可用於 Azure 活動目錄 B2C 的應用程式類型。
+description: 瞭解您可以搭配 Azure Active Directory B2C 使用的應用程式類型。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,22 +12,22 @@ ms.date: 07/24/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e8328db12bde531c2e27936c09247611ff1a3583
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78190138"
 ---
-# <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可在活動目錄 B2C 中使用的應用程式類型
+# <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>可以在 Active Directory B2C 中使用的應用程式類型
 
-Azure 活動目錄 B2C（Azure AD B2C）支援對各種現代應用程式體系結構進行身份驗證。 全部都以業界標準通訊協定 [OAuth 2.0](protocols-overview.md) 或 [OpenID Connect](protocols-overview.md) 為基礎。 本文介紹了您可以構建的應用程式類型，與您喜歡的語言或平臺無關。 在您開始建置應用程式之前，也可協助您先了解一些高階案例。
+Azure Active Directory B2C （Azure AD B2C）支援各種新式應用程式架構的驗證。 全部都以業界標準通訊協定 [OAuth 2.0](protocols-overview.md) 或 [OpenID Connect](protocols-overview.md) 為基礎。 本文描述您可以建立的應用程式類型，與您慣用的語言或平臺無關。 在您開始建置應用程式之前，也可協助您先了解一些高階案例。
 
 每個使用 Azure AD B2C 的應用程式都必須使用 [Azure 入口網站](https://portal.azure.com/)，在 [Azure AD B2C 租用戶](tutorial-create-tenant.md)中註冊。 應用程式註冊程序會收集和指派值，例如：
 
 * 可唯一識別應用程式的**應用程式識別碼**。
 * 可用來將回應導回應用程式的**回覆 URL**。
 
-發送到 Azure AD B2C 的每個請求指定**使用者流**（內置策略）或控制 Azure AD B2C 行為的**自訂策略**。 這兩種策略類型都使您能夠創建高度可自訂的使用者體驗集。
+傳送至 Azure AD B2C 的每個要求會指定**使用者流程**（內建原則），或控制 Azure AD B2C 行為的**自訂原則**。 這兩種原則類型可讓您建立一組高度可自訂的使用者體驗。
 
 每個應用程式的互動都遵循類似的高階模式：
 
@@ -99,7 +99,7 @@ Web API 接收的權杖可以來自許多類型的用戶端，包括 Web 應用�
 6. 系統會將 `access_token` 和 `refresh_token` 傳回給 Web 伺服器。
 7. 使用授權標頭中的 `access_token` 可呼叫 Web API。
 8. Web API 會驗證此權杖。
-9. 安全資料將返回到 Web 應用程式。
+9. 將資料安全地傳回給 web 應用程式。
 
 若要深入了解授權碼、重新整理權杖和取得權杖的步驟，請參閱 [OAuth 2.0 通訊協定](authorization-code-flow.md)。
 
@@ -125,7 +125,7 @@ Web API 接收的權杖可以來自許多類型的用戶端，包括 Web 應用�
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web API 鏈結 (代理者流程)
 
-許多架構中都有一個 Web API 需要呼叫另一個下游 Web API，而兩者都受 Azure AD B2C 保護。 此方案在具有 Web API 後端並調用 Microsoft 聯機服務（如 Microsoft 圖形 API）的本機用戶端中很常見。
+許多架構中都有一個 Web API 需要呼叫另一個下游 Web API，而兩者都受 Azure AD B2C 保護。 這種情況在具有 Web API 後端的原生用戶端，以及呼叫 Microsoft 線上服務（例如 Microsoft Graph API）時很常見。
 
 使用 OAuth 2.0 JWT 持有人認證授與可支援此鏈結的 Web API 案例，亦稱為代理者流程。  不過，Azure AD B2C 目前未實作代理者流程。
 
@@ -142,4 +142,4 @@ Web API 接收的權杖可以來自許多類型的用戶端，包括 Web 應用�
 
 ## <a name="next-steps"></a>後續步驟
 
-詳細瞭解[Azure 活動目錄 B2C 中使用者流](user-flow-overview.md)提供的內置策略。
+請[在 Azure Active Directory B2C 中深入瞭解使用者流程](user-flow-overview.md)所提供的內建原則。

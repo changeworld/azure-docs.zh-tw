@@ -1,5 +1,5 @@
 ---
-title: 傳統 Azure 虛擬網路 VPN 閘道 SKU
+title: 舊版 Azure 虛擬網路 VPN 閘道 Sku
 description: 如何使用舊的虛擬網路閘道 SKU；基本、標準和高效能。
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279386"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>使用虛擬網路閘道 SKU (舊版 SKU)
@@ -22,7 +22,7 @@ ms.locfileid: "79279386"
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-您可以在位於[ExpressRoute 定價頁上](https://azure.microsoft.com/pricing/details/expressroute)的 **"虛擬網路閘道**"部分中查看舊閘道定價。
+您可以在[ExpressRoute 定價頁面](https://azure.microsoft.com/pricing/details/expressroute)上的 [**虛擬網路閘道**] 區段中，查看舊版閘道定價。
 
 ## <a name="estimated-aggregate-throughput-by-sku"></a><a name="agg"></a>依 SKU 列出的估計彙總輸送量
 
@@ -49,7 +49,7 @@ Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerfor
 
 ### <a name="classic"></a><a name="classicresize"></a>傳統
 
-要調整經典部署模型的閘道大小，必須使用服務管理 PowerShell Cmdlet。 使用下列命令：
+若要調整傳統部署模型的閘道大小，您必須使用服務管理 PowerShell Cmdlet。 使用下列命令：
 
 ```powershell
 Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance

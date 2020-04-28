@@ -1,14 +1,14 @@
 ---
-title: 有關微軟 Azure 服務結構的常見問題
-description: 有關服務結構的常見問題，包括功能、用例和常見方案。
+title: 有關 Microsoft Azure Service Fabric 的常見問題
+description: 有關 Service Fabric 的常見問題，包括功能、使用案例和常見案例。
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
 ms.openlocfilehash: bf61858b446c1ac6d4a0210571fffaa721ad0166
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78254893"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric 的常見問題
@@ -94,10 +94,10 @@ ms.locfileid: "78254893"
 在我們努力改善體驗時，您的責任是升級。 您必須升級叢集的虛擬機器上的作業系統映像，一次一部 VM。 
 
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>如何將叢集節點類型 (虛擬機器擴展集) 中已連結的資料磁碟加密？
-是。  有關詳細資訊，請參閱[創建具有附加資料磁片的群集](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)和[虛擬機器縮放集的 Azure 磁片加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
+是。  如需詳細資訊，請參閱[使用連接的資料磁片建立](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)叢集和[虛擬機器擴展集的 Azure 磁碟加密](../virtual-machine-scale-sets/disk-encryption-overview.md)。
 
 ### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>如何在叢集節點類型 (虛擬機器擴展集) 中使用低優先順序的 VM？
-否。 不支援低優先順序的 VM。 
+不可以。 不支援低優先順序的 VM。 
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>當我在叢集中執行防毒程式時需要排除哪些目錄和處理序？
 
@@ -126,7 +126,7 @@ ms.locfileid: "78254893"
 您的應用程式可使用下列方法取得向 KeyVault 驗證所需的認證：
 
 A. 在您的應用程式建置/封裝作業期間，您可以將憑證提取到 SF 應用程式的資料套件中，並以此憑證向 KeyVault 驗證。
-B. 對於虛擬機器規模集 MSI 啟用的主機，您可以為 SF 應用開發一個簡單的 PowerShell 安裝程式進入點，[以便從 MSI 終結點獲取訪問權杖](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)，然後[從 KeyVault 檢索機密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
+B. 對於已啟用虛擬機器擴展集的 MSI，您可以為 SF 應用程式開發簡單的 PowerShell SetupEntryPoint，以[從 MSI 端點取得存取權杖](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)，然後[從 KeyVault 取出您的秘密](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret)。
 
 ## <a name="application-design"></a>應用程式設計
 
@@ -136,8 +136,8 @@ B. 對於虛擬機器規模集 MSI 啟用的主機，您可以為 SF 應用開�
 
 - 建立會查詢另一個服務所有分割的服務，以提取所需資料。
 - 建立可接收來自另一個服務所有分割之資料的服務。
-- 定期從每個服務將資料推送至外部存放區。 僅當您執行的查詢不是核心業務邏輯的一部分時，此方法才適用，因為外部存儲的資料將過時。
-- 或者，存儲必須支援直接在資料存儲中而不是可靠集合中跨所有記錄查詢的資料。 這消除了陳舊資料的問題，但不允許利用可靠集合的優勢。
+- 定期從每個服務將資料推送至外部存放區。 只有當您所執行的查詢不是核心商務邏輯的一部分，因為外部存放區的資料會過時，這種方法才適用。
+- 或者，儲存必須支援直接在資料存放區中查詢所有記錄的資料，而不是在可靠的集合中。 這可排除過時資料的問題，但不允許利用可靠集合的優點。
 
 
 ### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>在所有動作項目查詢資料的最佳方式為何？

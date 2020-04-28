@@ -9,13 +9,13 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3417bf0bd4ae1e0aa670f9fbfcc1fbbfeb372972
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471490"
 ---
-如果希望在授予存取權限之前提示使用者進行第二個身份驗證因素，則可以配置 Azure 多重要素驗證 （MFA）。 您可以根據每個使用者配置 MFA，也可以通過[條件訪問](../articles/active-directory/conditional-access/overview.md)利用 MFA。
+如果您想要在授與存取權之前提示使用者提供第二個驗證因素，您可以設定 Azure 多重要素驗證（MFA）。 您可以根據每個使用者來設定 MFA，或透過[條件式存取](../articles/active-directory/conditional-access/overview.md)來運用 mfa。
 
-* 每個使用者的 MFA 可以不加付費。 當每個使用者啟用 MFA 時，將提示使用者對綁定到 Azure AD 租戶的所有應用程式進行第二因數身份驗證。 有關步驟，請參閱[選項 1。](#peruser)
-* 條件訪問允許對如何提升第二個因素進行更細細微性的控制。 它可以允許僅將 MFA 分配給 VPN，並排除綁定到 Azure AD 租戶的其他應用程式。 有關步驟，請參閱[選項 2。](#conditional)
+* 每位使用者的 MFA 可以免費啟用。 啟用每位使用者的 MFA 時，系統會提示使用者對系結至 Azure AD 租使用者的所有應用程式進行第二因素驗證。 如需步驟，請參閱[選項 1](#peruser) 。
+* 條件式存取可讓您更精細地控制第二個因素的升級方式。 它可以只允許將 MFA 指派給 VPN，並排除其他系結至 Azure AD 租使用者的應用程式。 如需步驟，請參閱[選項 2](#conditional) 。

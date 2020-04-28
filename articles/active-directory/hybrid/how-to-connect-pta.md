@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d4b52a3025bfb15e2679709353cebf28254a75c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77185510"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 傳遞驗證來進行使用者登入
@@ -52,25 +52,25 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
   - 與 [Azure AD 條件式存取原則](../active-directory-conditional-access-azure-portal.md) (包括 Multi-Factor Authentication (MFA)) 緊密配合、[封鎖舊版驗證](../conditional-access/concept-conditional-access-conditions.md)，並[篩除暴力密碼破解攻擊](../authentication/howto-password-smart-lockout.md)，藉此保護您的使用者帳戶。
   - 代理程式只會從您的網路內進行輸出連線。 因此，不需要將代理程式安裝在周邊網路 (又稱做 DMZ) 中。
   - 代理程式與 Azure AD 之間的通訊是透過憑證型驗證來保護。 這些憑證每幾個月就會由 Azure AD 自動更新。
-- *高度可用*
+- *高可用性*
   - 可以在多部內部部署伺服器上安裝其他代理程式，以提供高可用性的登入要求。
 
 ## <a name="feature-highlights"></a>功能要點
 
 - 可讓使用者登入到使用[新式驗證](https://aka.ms/modernauthga)的所有 Web 瀏覽器型應用程式和 Microsoft Office 用戶端應用程式。
 - 登入使用者名稱可以是內部部署的預設使用者名稱 (`userPrincipalName`)，或在 Azure AD Connect 中設定的另一個屬性 (又稱為 `Alternate ID`)。
-- 該功能與[條件訪問](../active-directory-conditional-access-azure-portal.md)功能（如多重要素驗證 （MFA））無縫配合，可説明保護使用者。
+- 此功能可與[條件式存取](../active-directory-conditional-access-azure-portal.md)功能（例如多重要素驗證（MFA））緊密搭配運作，以協助保護您的使用者。
 - 與雲端式[自助式密碼管理](../authentication/active-directory-passwords-overview.md)整合，包括可將密碼回寫至內部部署 Active Directory，以及藉由禁用常見密碼來提供密碼保護。
 - 如果 AD 樹系之間有樹系信任且名稱尾碼路由已正確設定，就支援多樹系環境。
 - 這是免費功能，您不需要任何付費的 Azure AD 版本即可使用。
-- 它可以通過 Azure [AD 連接](whatis-hybrid-identity.md)啟用。
+- 您可以透過[Azure AD Connect](whatis-hybrid-identity.md)來啟用此功能。
 - 它會使用輕量型內部部署代理程式來接聽並回應密碼驗證要求。
 - 安裝多個代理程式就能提供高可用性的登入要求。
 - 它能[保護](../authentication/howto-password-smart-lockout.md)您的內部部署帳戶，不讓其遭到雲端暴力密碼破解攻擊的威脅。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [快速入門](how-to-connect-pta-quick-start.md)- 啟動並運行 Azure AD 直通身份驗證。
+- [快速入門](how-to-connect-pta-quick-start.md)-啟動並執行 Azure AD 傳遞驗證。
 - [從 AD FS 遷移到傳遞驗證](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) \(英文\) - 從 AD FS (或其他同盟技術) 遷移到傳遞驗證的詳細指南。
 - [智慧鎖定](../authentication/howto-password-smart-lockout.md) - 在租用戶中設定智慧鎖定功能來保護使用者帳戶。
 - [目前的限制](how-to-connect-pta-current-limitations.md)：了解支援與不支援的案例。

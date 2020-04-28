@@ -1,5 +1,5 @@
 ---
-title: 配置密碼複雜性要求
+title: 設定密碼複雜度需求
 titleSuffix: Azure AD B2C
 description: 如何設定 Azure Active Directory B2C 中取用者所提供的密碼複雜度需求。
 services: active-directory-b2c
@@ -12,10 +12,10 @@ ms.date: 02/11/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c5ef550af0c7e19531ea19093ea937880f7dcf14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78185636"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>設定 Azure Active Directory B2C 中的密碼複雜度需求
@@ -24,7 +24,7 @@ Azure Active Directory B2C (Azure AD B2C) 支援的變更密碼複雜度需求�
 
 ## <a name="password-rule-enforcement"></a>密碼規則強制執行
 
-在註冊期間或密碼重設期間，使用者必須提供符合複雜度規則的密碼。 依每個使用者流程強制執行密碼複雜度規則。 在註冊期間，一個使用者流需要四位引腳，而另一個使用者流在註冊期間需要八個字元字串。 例如，您可能會針對成人的使用者流程與針對兒童的原則使用不同的密碼複雜度。
+在註冊期間或密碼重設期間，使用者必須提供符合複雜度規則的密碼。 依每個使用者流程強制執行密碼複雜度規則。 在註冊期間，有一個使用者流程可能需要四位數的 pin，而另一個使用者流程在註冊期間需要八個字元的字串。 例如，您可能會針對成人的使用者流程與針對兒童的原則使用不同的密碼複雜度。
 
 登入期間一律不會強制要求密碼複雜度。 系統一律不會在登入時提示使用者變更其密碼，因為它不符合目前的複雜度需求。
 
@@ -37,10 +37,10 @@ Azure Active Directory B2C (Azure AD B2C) 支援的變更密碼複雜度需求�
 
 ## <a name="configure-password-complexity"></a>設定密碼複雜度
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
-2. 在門戶工具列中選擇**目錄 + 訂閱**圖示，然後選擇包含 Azure AD B2C 租戶的目錄。
-3. 在 Azure 門戶中，搜索並選擇**Azure AD B2C**。
-4. 選擇**使用者流（策略）。**
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+2. 在入口網站工具列中選取 [**目錄 + 訂**用帳戶] 圖示，然後選取包含您 Azure AD B2C 租使用者的目錄。
+3. 在 [Azure 入口網站中，搜尋並選取 [ **Azure AD B2C**]。
+4. 選取 **[使用者流程（原則）**]。
 2. 選取一個使用者流程，然後按一下 [屬性]****。
 3. 在 [密碼複雜度]**** 之下，將這個使用者流程的密碼複雜度變更為 [簡單]****、[強式]**** 或 [自訂]****。
 
@@ -50,7 +50,7 @@ Azure Active Directory B2C (Azure AD B2C) 支援的變更密碼複雜度需求�
 | --- | --- |
 | Simple | 密碼至少為 8 到 64 個字元。 |
 | 強式 | 密碼至少為 8 到 64 個字元。 它需要小寫字母、大寫字母、數字或符號 4 個之中的 3 個。 |
-| Custom | 此選項會對密碼複雜度規則提供最多的控制權。  它允許設定自訂的長度。  它也可以接受僅限數字的密碼 (PIN)。 |
+| 自訂 | 此選項會對密碼複雜度規則提供最多的控制權。  它允許設定自訂的長度。  它也可以接受僅限數字的密碼 (PIN)。 |
 
 ## <a name="custom-options"></a>自訂選項
 
@@ -73,7 +73,7 @@ Azure Active Directory B2C (Azure AD B2C) 支援的變更密碼複雜度需求�
 可讓您控制密碼中使用的不同字元類型。
 
 - **4 個其中 2 個：小寫字元、大寫字元、數字 (0-9)、符號**可確保密碼包含至少兩個字元類型。 例如，數字和小寫字元。
-- **3（共 4 個）：小寫字元、大寫字元、數位 （0-9）、符號**確保密碼至少包含三個字元類型。 例如，數字、小寫字元和大寫字元。
+- **3/4：小寫字元、大寫字元、數位（0-9）、符號**可確保密碼包含至少三個字元類型。 例如，數字、小寫字元和大寫字元。
 - **4 個其中 4 個：小寫字元、大寫字元、數字 (0-9)、符號**可確保密碼包含所有的字元類型。
 
     > [!NOTE]

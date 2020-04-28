@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 閘道：配置設置
+title: Azure VPN 閘道： configuration 設定
 description: 了解 Azure 虛擬網路閘道的 VPN 閘道設定。
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: d7a2040748d170b4e536df59947ea811f149d931
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244858"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>關於 VPN 閘道組態設定
@@ -77,11 +77,11 @@ az network vnet-gateway create --name VNet1GW --public-ip-address VNet1GWPIP --r
 
 ###  <a name="resizing-or-changing-a-sku"></a><a name="resizechange"></a>調整大小或變更 SKU
 
-如果您擁有 VPN 閘道，且您想要使用不同的閘道 SKU，您可選擇調整您的閘道 SKU，或是變更為另一個 SKU。 當您變更為另一個閘道 SKU 時，會完全刪除現有的閘道並建立一個新的閘道。 構建閘道最多可能需要 45 分鐘。 相比之下，當您調整閘道 SKU 的大小時，停機時間不多，因為您不必刪除並重建閘道。 如果您可以選擇調整您閘道 SKU 的大小，而不必加以變更，建議您這麼做。 不過，關於調整大小有一些規則：
+如果您擁有 VPN 閘道，且您想要使用不同的閘道 SKU，您可選擇調整您的閘道 SKU，或是變更為另一個 SKU。 當您變更為另一個閘道 SKU 時，會完全刪除現有的閘道並建立一個新的閘道。 閘道最多可能需要45分鐘的時間才能建立。 相較之下，當您調整閘道 SKU 的大小時，就不會有太多停機時間，因為您不需要刪除和重建閘道。 如果您可以選擇調整您閘道 SKU 的大小，而不必加以變更，建議您這麼做。 不過，關於調整大小有一些規則：
 
-1. 除基本 SKU 外，您可以將 VPN 閘道 SKU 的大小調整到同一代（第 1 代或第 2 代）中的另一個 VPN 閘道 SKU。 例如，第 1 代的 VpnGw1 可以調整為第 1 代的 VpnGw2，但不能調整為第 2 代的 VpnGw2。
+1. 除了基本 SKU 以外，您可以將 VPN 閘道 SKU 的大小調整為相同世代（Generation1.xml 或 Generation2）中的另一個 VPN 閘道 SKU。 例如，Generation1.xml 的 VpnGw1 可以調整大小為 VpnGw2 的 Generation1.xml，而不是 VpnGw2 的 Generation2。
 2. 使用舊式閘道 SKU 時，您可以在基本、標準和高效能 SKU 之間調整大小。
-3. **您不能**從基本/標準/高性能 SKU 調整大小到 VpnGw SKU。 您必須改為[變更](#change)為新的 SKU。
+3. 您**無法**從基本/標準/HighPerformance sku 調整為 VpnGw sku。 您必須改為[變更](#change)為新的 SKU。
 
 #### <a name="to-resize-a-gateway"></a><a name="resizegwsku"></a>調整閘道大小
 
@@ -132,7 +132,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ## <a name="gateway-subnet"></a><a name="gwsub"></a>閘道子網
 
-建立 VPN 閘道之前，您必須先建立閘道子網路。 閘道子網路包含虛擬網路閘道 VM 與服務所使用的 IP 位址。 建立虛擬網路閘道時，會將閘道 VM 部署到閘道子網路，並為 VM 設定必要的 VPN 閘道設定。 切勿將任何其他內容（例如，其他 VM）部署到閘道子網。 此閘道子網路必須命名為 'GatewaySubnet' 才能正常運作。 將閘道子網路命名為 'GatewaySubnet' 可讓 Azure 知道這是要用來部署虛擬網路閘道 VM 和服務的子網路。
+建立 VPN 閘道之前，您必須先建立閘道子網路。 閘道子網路包含虛擬網路閘道 VM 與服務所使用的 IP 位址。 建立虛擬網路閘道時，會將閘道 VM 部署到閘道子網路，並為 VM 設定必要的 VPN 閘道設定。 絕對不要將任何其他專案（例如其他 Vm）部署到閘道子網。 此閘道子網路必須命名為 'GatewaySubnet' 才能正常運作。 將閘道子網路命名為 'GatewaySubnet' 可讓 Azure 知道這是要用來部署虛擬網路閘道 VM 和服務的子網路。
 
 >[!NOTE]
 >[!INCLUDE [vpn-gateway-gwudr-warning.md](../../includes/vpn-gateway-gwudr-warning.md)]
@@ -140,7 +140,7 @@ New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 當您建立閘道子網路時，您可指定子網路包含的 IP 位址數目。 閘道子網路中的 IP 位址會配置給閘道 VM 和閘道服務。 有些組態需要的 IP 位址比其他組態多。 
 
-規劃閘道子網大小時，請參閱計畫創建的配置的文檔。 例如，ExpressRoute/VPN 閘道共存配置需要比大多數其他配置更大的閘道子網。 此外，您可能會想要確定閘道子網路包含足夠的 IP 位址，以因應未來可能的額外組態需求。 雖然您可以創建小到 /29 的閘道子網，但如果有可用的位址空間，我們建議您創建 /27 或更大的閘道子網（/27、/26 等）。 這將適應大多數配置。
+當您規劃閘道子網大小時，請參閱您打算建立之設定的檔。 例如，ExpressRoute/VPN 閘道並存設定所需的閘道子網，必須比其他大部分的設定還要大。 此外，您可能會想要確定閘道子網路包含足夠的 IP 位址，以因應未來可能的額外組態需求。 雖然您可以建立小至/29 的閘道子網，但建議您建立/27 或更大（/27、/26 等）的閘道子網（如果您有可用的位址空間）。 這會容納大部分的設定。
 
 下列 Resource Manager PowerShell 範例顯示名為 GatewaySubnet 的閘道子網路。 您可以看到 CIDR 標記法指定 /27，這可提供足以供大多數現有組態使用的 IP 位址。
 
@@ -169,9 +169,9 @@ New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 
 使用 REST API、PowerShell Cmdlet 或 Azure CLI 來設定 VPN 閘道組態時，如需其他技術資源和特定語法需求，請參閱下列頁面：
 
-| **經典** | **資源管理器** |
+| **傳統** | **Resource Manager** |
 | --- | --- |
-| [電源外殼](/powershell/module/az.network/#networking) |[電源外殼](/powershell/module/az.network#vpn) |
+| [PowerShell](/powershell/module/az.network/#networking) |[PowerShell](/powershell/module/az.network#vpn) |
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | 不支援 | [Azure CLI](/cli/azure/network/vnet-gateway)|
 

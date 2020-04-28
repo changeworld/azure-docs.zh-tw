@@ -1,5 +1,5 @@
 ---
-title: Azure AD 連接同步：瞭解體系結構 - Azure
+title: Azure AD Connect 同步處理：瞭解架構-Azure
 description: 本主題描述 Azure AD Connect 同步處理的架構並說明所用的詞彙。
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fac0f9143918d3f273812e53abfb88d6a56f7a71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261615"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect 同步處理：了解架構
-本主題介紹 Azure AD 連接同步的基本體系結構。在許多方面，它類似于其前身MIIS 2003、ILM 2007和FIM2010。 Azure AD Connect 同步處理是這些技術的進化。 如果您很熟悉上述任何較早期的技術，也會對本主題的內容感到熟悉。 如果您是同步處理的新手，這個主題很適合您。 但是，不一定需要了解本主題的詳細資料，才能成功地自訂 Azure AD Connect 同步處理 (在本主題中稱為「同步處理引擎」)。
+本主題涵蓋 Azure AD Connect 同步處理的基本架構。在許多方面，它類似于其前身的 MIIS 2003、ILM 2007 和 FIM 2010。 Azure AD Connect 同步處理是這些技術的進化。 如果您很熟悉上述任何較早期的技術，也會對本主題的內容感到熟悉。 如果您是同步處理的新手，這個主題很適合您。 但是，不一定需要了解本主題的詳細資料，才能成功地自訂 Azure AD Connect 同步處理 (在本主題中稱為「同步處理引擎」)。
 
 ## <a name="architecture"></a>架構
 同步處理引擎會為多個已連接的資料來源中儲存的物件建立整合式檢視，並管理這些資料來源中的身分識別資訊。 此整合式檢視取決於從連接的資料來源擷取的身分識別資訊，以及一組用來決定如何處理此資訊的規則。
@@ -179,8 +179,8 @@ Metaverse 物件包含同步處理引擎具有的連接器空間中預備物件�
 
 具有更新後資料的預備物件會標示為「擱置匯入」。 有不同的暫止匯入類型可以使用。 視匯入程序的結果而定，連接器空間中的預備物件具有下列其中一種擱置匯入類型：
 
-* **無**。 預備物件的任何屬性均沒有可用的變更。 同步處理引擎不會將此類型標示為「擱置匯入」。
-* **添加**。 預備物件是連接器空間中新的匯入物件。 同步處理引擎會將此類型標示為「擱置匯入」，以便在 Metaverse 中進行其他處理。
+* **None**： 預備物件的任何屬性均沒有可用的變更。 同步處理引擎不會將此類型標示為「擱置匯入」。
+* **新增**。 預備物件是連接器空間中新的匯入物件。 同步處理引擎會將此類型標示為「擱置匯入」，以便在 Metaverse 中進行其他處理。
 * **更新**。 同步處理引擎會在連接器空間中尋找對應的預備物件並此類型標示為「擱置匯入」，以便在 Metaverse 中處理屬性更新。 更新包含物件重新命名。
 * **刪除**。 同步處理引擎會在連接器空間中尋找對應的預備物件並將此類型標示為「擱置匯入」，以便刪除聯結的物件。
 * **刪除/新增**。 同步處理引擎會在連接器空間中尋找對應的預備物件，但物件類型不相符。 在此情況下，會預備刪除-新增的修改。 刪除-新增的修改會向同步處理引擎表示必須進行此物件的完整重新同步處理，因為物件類型變更時此物件會套用不同的規則組合。

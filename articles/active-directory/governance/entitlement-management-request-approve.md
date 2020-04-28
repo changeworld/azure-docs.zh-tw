@@ -1,6 +1,6 @@
 ---
-title: 批准或拒絕訪問請求 - Azure AD 授權管理
-description: 瞭解如何使用"我的訪問"門戶在 Azure 活動目錄授權管理中批准或拒絕對訪問包的請求。
+title: 核准或拒絕存取要求-Azure AD 的權利管理
+description: 瞭解如何使用我的存取權入口網站，在 Azure Active Directory 的權利管理中核准或拒絕存取套件的要求。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,63 +17,63 @@ ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 20ec63efe16f1120ca6e7d07c8917d8ad2b3a0e0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261719"
 ---
-# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 授權管理中批准或拒絕訪問請求
+# <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>核准或拒絕 Azure AD 權利管理中的存取要求
 
-使用 Azure AD 授權管理，可以將策略配置為需要訪問包的批准，並選擇一個或多個核准者。 本文介紹指定核准者如何批准或拒絕訪問包請求。
+透過 Azure AD 的權利管理，您可以設定原則以要求存取套件的核准，並選擇一或多個核准者。 本文說明指定的核准者可以如何核准或拒絕存取套件的要求。
 
-## <a name="open-request"></a>打開請求
+## <a name="open-request"></a>開啟要求
 
-批准或拒絕訪問請求的第一步是查找並打開待審批的訪問請求。 有兩種方法可以打開訪問請求。
+核准或拒絕存取要求的第一個步驟，是尋找並開啟待核准的存取要求。 有兩種方式可以開啟存取要求。
 
-**先決條件角色：** 批准人
+**先決條件角色：** 人員
 
-1. 查找來自 Microsoft Azure 的電子郵件，要求您批准或拒絕請求。 下面是一個示例電子郵件：
+1. 尋找 Microsoft Azure 的電子郵件，要求您核准或拒絕要求。 以下是範例電子郵件：
 
-    ![批准訪問包電子郵件的請求](./media/entitlement-management-shared/approver-request-email.png)
+    ![核准存取封裝電子郵件的要求](./media/entitlement-management-shared/approver-request-email.png)
 
-1. 按一下 **"批准"或"拒絕請求**"連結以打開訪問請求。
+1. 按一下 [**核准] 或 [拒絕要求**] 連結，以開啟存取要求。
 
-1. 登錄到"我的訪問"門戶。
+1. 登入我的存取權入口網站。
 
-如果您沒有電子郵件，您可以按照以下步驟找到等待批准的訪問請求。
+如果您沒有電子郵件，您可以遵循下列步驟來尋找待核准的存取要求。
 
-1. 登錄到 中的[https://myaccess.microsoft.com](https://myaccess.microsoft.com)"我的訪問"門戶。  （對於美國政府，"我的訪問"門戶連結中的域將為`myaccess.microsoft.us`.）
+1. 登入我的存取權入口網站，網址[https://myaccess.microsoft.com](https://myaccess.microsoft.com)為。  （針對美國政府，我的存取權入口網站中的網域連結會是`myaccess.microsoft.us`）。
 
-1. 在左側功能表中，按一下 **"審批"** 以查看待審批的訪問請求清單。
+1. 在左側功能表中，按一下 [**核准**] 以查看待核准的存取要求清單。
 
-1. 在 **"掛起"** 選項卡上，查找請求。
+1. 在 [**暫**止] 索引標籤上，尋找要求。
 
-## <a name="approve-or-deny-request"></a>批准或拒絕請求
+## <a name="approve-or-deny-request"></a>核准或拒絕要求
 
-在打開待審批的存取權限請求後，您可以看到可説明您做出批准或拒絕決策的詳細資訊。
+在您開啟待核准的存取要求之後，您可以看到可協助您做出核准或拒絕決策的詳細資料。
 
-**先決條件角色：** 批准人
+**先決條件角色：** 人員
 
 1. 按一下 [檢視]**** 連結以開啟 [存取要求] 窗格。
 
-1. 按一下 **"詳細資訊**"以查看有關訪問請求的詳細資訊。
+1. 按一下 [**詳細資料**] 以查看存取要求的詳細資料。
 
-    詳細資訊包括使用者名、組織、訪問開始日期和結束日期（如果提供）、業務理由、提交請求的時間以及請求何時過期。
+    詳細資料包括使用者的名稱、組織、存取開始和結束日期（如有提供）、商業理由、提交要求的時間，以及要求何時會過期。
 
-1. 按一下 **"批准**"或 **"拒絕**"。
+1. 按一下 [**核准**] 或 [**拒絕**]。
 
-1. 如有必要，輸入原因。
+1. 如有需要，請輸入原因。
 
     ![我的存取權入口網站 - 存取要求](./media/entitlement-management-request-approve/my-access-approve-request.png)
 
 1. 按一下 [提交]**** 以提交您的決定。
 
-    如果策略配置了多個核准者，則只有一個核准者需要對待決審批作出決定。 審批人向訪問請求提交其決策後，請求已完成，其他審批人無法再批准或拒絕該請求。 其他核准者可以在其"我的訪問"門戶中查看請求決策和決策者。 此時，僅支援單階段審批。
+    如果原則已設定多個核准者，則只有一位核准者需要做出有關等待核准的決策。 在核准者提交對存取要求的決策之後，要求會完成，而且其他核准者無法再核准或拒絕要求。 其他核准者可以在其我的存取權入口網站中查看要求決策和決策者。 目前僅支援單一階段核准。
 
-    如果任何已配置的核准者都不能批准或拒絕訪問請求，則請求將在配置的請求持續時間後過期。 使用者將收到其訪問請求已過期的通知，並且需要重新提交訪問請求。
+    如果沒有任何設定的核准者能夠核准或拒絕存取要求，則要求會在設定的要求持續時間後過期。 使用者會收到通知，指出其存取要求已過期，而且需要重新提交存取要求。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [請求訪問包](entitlement-management-request-access.md)
-- [請求流程和電子郵件通知](entitlement-management-process.md)
+- [要求存取權套件](entitlement-management-request-access.md)
+- [要求處理和電子郵件通知](entitlement-management-process.md)

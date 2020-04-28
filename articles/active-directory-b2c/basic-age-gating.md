@@ -11,10 +11,10 @@ ms.date: 11/13/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 56cbeb8e8fe21f4b39c2f5c6af43e83ae330e5d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189968"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中啟用年齡管制
@@ -23,9 +23,9 @@ ms.locfileid: "78189968"
 >這項功能處於公開預覽狀態。 請勿將功能用於生產應用程式。
 >
 
-Azure 活動目錄 B2C（Azure AD B2C）中的年齡門控使您能夠識別要使用應用程式的未成年人。 您可以選擇封鎖未成年人，使其無法登入應用程式。 使用者也可以返回應用程式，並確定其年齡群組和家長同意狀態。 Azure AD B2C 可以在不需要家長同意的情況下封鎖未成年人。 Azure AD B2C 也可以設定為允許應用程式決定如何處理未成年人。
+Azure Active Directory B2C （Azure AD B2C）中的年齡管制可讓您識別想要使用應用程式的未成年人。 您可以選擇封鎖未成年人，使其無法登入應用程式。 使用者也可以返回應用程式，並確定其年齡群組和家長同意狀態。 Azure AD B2C 可以在不需要家長同意的情況下封鎖未成年人。 Azure AD B2C 也可以設定為允許應用程式決定如何處理未成年人。
 
-在[使用者流](user-flow-overview.md)中啟用年齡門控後，使用者會詢問他們何時出生以及他們居住在哪些國家/地區。 如果使用者登入先前未輸入資訊，則他們需要在下次登入時輸入該資訊。 每次使用者登入時都會套用這些規則。
+在您的[使用者流程](user-flow-overview.md)中啟用年齡管制之後，系統會詢問使用者是否已出生，以及其居住所在的國家/地區。 如果使用者登入先前未輸入資訊，則他們需要在下次登入時輸入該資訊。 每次使用者登入時都會套用這些規則。
 
 Azure AD B2C 會使用使用者輸入的資訊，來確定他們是否為未成年人。 然後，會更新其帳戶中的 **ageGroup** 欄位。 值可為 `null`、`Undefined`、`Minor`、`Adult` 和 `NotAdult`。  然後，**ageGroup** 和 **consentProvidedForMinor** 欄位用於計算 **legalAgeGroupClassification** 的值。
 
@@ -90,7 +90,7 @@ Azure AD B2C 會使用使用者輸入的資訊，來確定他們是否為未成�
 
 若要在使用者流程中使用年齡管制，您必須設定租用戶，使其具有其他屬性。
 
-1. 通過在頂部功能表中選擇**目錄 + 訂閱**篩選器，請確保使用的目錄包含 Azure AD B2C 租戶。 選取包含您租用戶的目錄。
+1. 請選取頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，以確定您使用的是包含 Azure AD B2C 租使用者的目錄。 選取包含您租用戶的目錄。
 2. 選取 Azure 入口網站左上角的 [所有服務]****，搜尋並選取 [Azure AD B2C]****。
 3. 在左側功能表中為您的租用戶選取 [屬性]****。
 2. 在 [年齡管制]**** 區段下，按一下 [設定]****。

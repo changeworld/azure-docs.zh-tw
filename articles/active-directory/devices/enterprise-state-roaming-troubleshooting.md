@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 活動目錄中解決企業狀態漫遊問題
+title: 針對 Azure Active Directory 中的企業狀態漫遊進行疑難排解
 description: 回答 IT 系統管理員可能會遇到的設定和應用程式資料同步處理的一些問題。
 services: active-directory
 ms.service: active-directory
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae8ce24aeb665a7f99326e83dbe18d020e1b6196
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78672357"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>針對 Azure Active Directory 中的企業狀態漫遊設定進行疑難排解
@@ -25,7 +25,7 @@ ms.locfileid: "78672357"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> 本文適用于 2015 年 7 月隨 Windows 10 推出的基於 Windows 10 的基於 Microsoft 邊緣舊版 HTML 的瀏覽器。 本文不適用於 2020 年 1 月 15 日發佈的基於 Microsoft 邊緣鉻的新瀏覽器。 有關新 Microsoft 邊緣的同步行為的詳細資訊，請參閱[文章"Microsoft 邊緣同步](/deployedge/microsoft-edge-enterprise-sync)"。
+> 本文適用于2015年7月以 Windows 10 啟動的 Microsoft Edge 舊版 HTML 型瀏覽器。 本文不適用於2020年1月15日發行的新 Microsoft Edge Chromium 型瀏覽器。 如需新 Microsoft Edge 同步處理行為的詳細資訊，請參閱[Microsoft Edge 同步](/deployedge/microsoft-edge-enterprise-sync)處理一文。
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>疑難排解的預備步驟 
 
@@ -34,7 +34,7 @@ ms.locfileid: "78672357"
 1. 裝置上已安裝 Windows 10，包含最新更新且最低版本為 1511 (作業系統組建 10586 或更新版本)。 
 1. 裝置已加入 Azure AD 或已加入混合式 Azure AD。 如需詳細資訊，請參閱[如何取得在 Azure AD 控制之下的裝置](overview.md)。
 1. 請確定 Azure AD 中的租用戶已啟用**企業狀態漫遊**，如[啟用企業狀態漫遊](enterprise-state-roaming-enable.md)所述。 您可以對所有使用者或只對選取的使用者群組啟用漫遊。
-1. 為使用者分配 Azure 活動目錄高級許可證。  
+1. 系統會將 Azure Active Directory Premium 授權指派給使用者。  
 1. 必須重新啟動裝置，且使用者必須再次登入，才能存取企業狀態漫遊功能。
 
 ## <a name="information-to-include-when-you-need-help"></a>您需要協助時應包含的資訊
@@ -44,7 +44,7 @@ ms.locfileid: "78672357"
 * **受影響的使用者** – 是有一位還是多位使用者的同步處理成功/失敗？ 每個使用者涉及多少裝置？ 它們是否都沒有同步處理，或它們之間部分已同步處理，部分沒有同步處理？
 * **使用者的相關資訊** – 使用者是使用什麼身分識別來登入裝置？ 使用者如何登入裝置？ 它們是否屬於允許同步處理的所選安全性群組中的裝置？ 
 * **裝置的相關資訊** – 此裝置是否已經加入 Azure AD 或已經加入網域？ 此裝置使用哪一個組建？ 最新的更新是？
-* **日期/時間/時區**– 您看到錯誤的確切日期和時間是什麼（包括時區）？
+* **日期/時間/時區**–您看到錯誤的確切日期和時間（包括時區）為何？
 
 包含這項資訊有助於我們盡快為您解決問題。
 
@@ -54,7 +54,7 @@ ms.locfileid: "78672357"
 
 ## <a name="verify-sync-and-the-sync-your-settings-settings-page"></a>確認同步處理，以及 [同步您的設定] 設定頁面 
 
-1. 將您的 Windows 10 電腦加入已設定為允許企業狀態漫遊的網域之後，使用您的公司帳戶登入。 轉到 **"設置** > **帳戶** > **同步您的設置"** 並確認同步和各個設置已打開，並且"設置"頁的頂部指示您正在與工作帳戶同步。 確認同一帳戶也用作您的登錄帳戶在**設置** > **帳戶** > **您的資訊**。 
+1. 將您的 Windows 10 電腦加入已設定為允許企業狀態漫遊的網域之後，使用您的公司帳戶登入。 移至 [**設定** > ] [**帳戶** > ] [**同步您的設定**]，並確認同步處理和個別設定都已開啟，而且 [設定] 頁面頂端會指出您正在與您的工作帳戶進行同步處理。 確認相同的帳戶也會在 [**設定** > ] [**帳戶** > ] [**您的資訊**] 中作為登入帳戶使用。 
 1. 透過在原始電腦上進行一些變更 (例如將工作列移至畫面右側或頂端)，來確認同步處理可跨多部電腦運作。 監看變更是否在 5 分鐘內傳送至第二部電腦。 
 
    * 將畫面鎖定和解除鎖定 (Win + L) 有助於觸發同步處理。
@@ -70,21 +70,21 @@ ms.locfileid: "78672357"
 1. 命令提示字元開啟後，輸入 *dsregcmd.exe /status*。
 1. 若要獲得預期的輸出，[AzureAdJoined]**** 欄位值應該是 [YES]、[WamDefaultSet]**** 欄位值應該是 [YES]，而 [WamDefaultGUID]**** 欄位值則應該是一個結尾為 “(AzureAd)” 的 GUID。
 
-**潛在問題****：WamDefaultSet**和**AzureAdWith**在欄位值中都具有"NO"，設備已加入域並在 Azure AD 中註冊，並且設備不同步。如果顯示此情況，則設備可能需要等待應用策略，或者設備在連接到 Azure AD 時身份驗證失敗。 使用者可能需等待幾個小時來等待原則套用。 其他故障排除步驟可能包括通過登出和重新登錄重新嘗試自動註冊，或在任務計畫程式中啟動任務。 在某些情況下，於已提升權限的命令提示字元視窗中執行 *dsregcmd.exe /leave*、重新開機，然後再試一次註冊，可能有助於解決此問題。
+**可能的問題**： **WamDefaultSet**和**AzureAdJoined**在域值中都有「否」、裝置已加入網域並已向 Azure AD 註冊，且裝置未同步處理。如果顯示這種情況，裝置可能需要等待套用原則，或在連線到 Azure AD 時，裝置的驗證失敗。 使用者可能需等待幾個小時來等待原則套用。 其他疑難排解步驟可能包括登出後重新登入，或在工作排程器中啟動工作，以重試自動註冊。 在某些情況下，於已提升權限的命令提示字元視窗中執行 *dsregcmd.exe /leave*、重新開機，然後再試一次註冊，可能有助於解決此問題。
 
-**潛在問題** **：SettingsUrl**的欄位為空，設備不同步。在 Azure 活動目錄門戶中啟用企業狀態漫遊之前，使用者可能已上次登錄到設備。 重新啟動裝置並讓使用者登入。 或者，在門戶中，嘗試讓 IT 管理員導航到**Azure 活動目錄** > **設備** > **企業狀態漫遊**禁用並重新啟用**使用者可以跨設備同步設置和應用資料**。 重新啟用之後，請重新啟動裝置並讓使用者登入。 如果這不能解決問題，則如果設備證書損壞 **，SettingsUrl**可能為空。 在此情況下，於已提升權限的命令提示字元視窗中執行 *dsregcmd.exe /leave*、重新開機，然後再試一次註冊，可能有助於解決此問題。
+**可能的問題**： **SettingsUrl**的欄位是空的，且裝置不會同步。使用者可能會在 Azure Active Directory 入口網站中啟用企業狀態漫遊之前，最後登入裝置。 重新啟動裝置並讓使用者登入。 （選擇性）在入口網站中，嘗試讓 IT 系統管理員流覽至**Azure Active Directory** > **裝置** > **企業狀態漫遊**停用並重新啟用**使用者可以跨裝置同步設定和應用程式資料**。 重新啟用之後，請重新啟動裝置並讓使用者登入。 如果這樣做無法解決問題，則如果裝置憑證不正確， **SettingsUrl**可能會是空的。 在此情況下，於已提升權限的命令提示字元視窗中執行 *dsregcmd.exe /leave*、重新開機，然後再試一次註冊，可能有助於解決此問題。
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>企業狀態漫遊與 Multi-Factor Authentication 
 
-在某些情況下，如果設定了 Azure Multi-Factor Authentication，「企業狀態漫遊」可能會無法同步處理資料。 有關這些症狀的詳細資訊，請參閱支援文檔[KB3193683](https://support.microsoft.com/kb/3193683)。 
+在某些情況下，如果設定了 Azure Multi-Factor Authentication，「企業狀態漫遊」可能會無法同步處理資料。 如需有關這些徵兆的詳細資訊，請參閱支援檔[KB3193683](https://support.microsoft.com/kb/3193683)。 
 
 **可能的原因**：如果您的裝置已設定為在 Azure Active Directory 入口網站上需要 Multi-Factor Authentication，則使用密碼登入 Windows 10 裝置時，可能無法同步處理設定。 這類型的 Multi-Factor Authentication 組態是用來保護 Azure 系統管理員帳戶。 系統管理員使用者仍然能夠藉由使用 Microsoft Passport for Work PIN 登入他們的 Windows 10 裝置，或藉由在存取其他 Azure 服務 (例如 Office 365) 時完成 Multi-Factor Authentication，來進行同步處理。
 
-**潛在問題**：如果管理員配置了活動目錄聯合服務多重要素驗證條件訪問策略，並且設備上的訪問權杖過期，則同步可能會失敗。 務必使用 Microsoft Passport for Work PIN 來登入和登出，或在存取其他 Azure 服務 (例如 Office 365) 時完成 Multi-Factor Authentication。
+**可能的問題**：如果系統管理員設定 Active Directory 同盟服務多重要素驗證條件式存取原則，而裝置上的存取權杖到期，則同步處理可能會失敗。 務必使用 Microsoft Passport for Work PIN 來登入和登出，或在存取其他 Azure 服務 (例如 Office 365) 時完成 Multi-Factor Authentication。
 
 ### <a name="event-viewer"></a>事件檢視器
 
-進行進階疑難排解時，可以使用「事件檢視器」來找出特定錯誤。 這些錯誤記載在下面的表格中。 這些事件可以在事件檢視器>應用程式和服務日誌>**微軟** > **Windows** > **設置同步 Azure**和與身份相關的問題與同步**Microsoft** > **Windows** > **AAD**中找到 。
+進行進階疑難排解時，可以使用「事件檢視器」來找出特定錯誤。 這些錯誤記載在下面的表格中。 您可以在事件檢視器 > 應用程式和服務記錄檔 > **Microsoft** > **windows** > **SettingSync-Azure** ，以及同步處理**Microsoft** > **windows** > **AAD**的身分識別相關問題中找到這些事件。
 
 ## <a name="known-issues"></a>已知問題
 
@@ -108,7 +108,7 @@ ms.locfileid: "78672357"
 
 ### <a name="theme-is-not-syncing-as-well-as-data-protected-with-windows-information-protection"></a>佈景主題和使用「Windows 資訊保護」保護的資料不會同步處理 
 
-為了防止資料洩漏，受[Windows 資訊保護](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip)保護的資料不會通過使用 Windows 10 周年更新的設備的企業狀態漫遊同步。
+為避免資料洩漏，受[windows 資訊保護](https://technet.microsoft.com/itpro/windows/keep-secure/protect-enterprise-data-using-wip)保護的資料不會透過使用 windows 10 年度更新版之裝置的企業狀態漫遊進行同步處理。
 
 **建議的動作**  
 無。 未來的 Windows 更新可能會解決這個問題。
@@ -153,12 +153,12 @@ ms.locfileid: "78672357"
 
 ### <a name="azure-ad-joined-device-is-not-syncing-and-the-user-has-a-mixed-case-user-principal-name"></a>Azure AD 聯結裝置未同步處理，而且使用者的使用者主體名稱混用大小寫。
 
-如果使用者具有混合大小寫 UPN（例如，使用者名而不是使用者名），並且使用者位於 Azure AD 加入設備上，該設備從 Windows 10 生成 10586 升級到 14393，則使用者的設備可能無法同步。 
+如果使用者有混合的大小寫 UPN （例如 UserName，而不是 username），而使用者位於已從 Windows 10 組建10586升級為14393的已加入 Azure AD 裝置上，則使用者的裝置可能無法同步。 
 
 **建議的動作**  
-使用者必須退出裝置並重新加入到雲端。 為此，請以本地管理員使用者身份登錄，並通過訪問 **"設置** > **系統** > **"並**選擇"管理或斷開與工作或學校"來取消加入設備。 清理下面的檔，然後 Azure AD 在 **"設置** > **系統** > **"中**再次加入設備，然後選擇"連接到工作或學校"。 繼續將裝置加入 Azure Active Directory，並完成流程。
+使用者必須退出裝置並重新加入到雲端。 若要這麼做，請以本機系統管理員使用者身分登入，然後前往 [**設定** > ] [**系統** > ] [**關於**]，然後選取 [管理或中斷與公司或學校的連線]，將裝置退出。 清除下方的檔案，然後在 [**設定** > ] [**系統** > ] [**關於**] 和選取 [連線到公司或學校]，再次 Azure AD 加入裝置。 繼續將裝置加入 Azure Active Directory，並完成流程。
 
-在清理步驟中，清理以下檔：
+在清除步驟中，清除下列檔案：
 - `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\` 中的 Settings.dat
 - 資料夾 `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account` 下的所有檔案
 

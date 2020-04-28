@@ -24,14 +24,14 @@ ms.locfileid: "79255310"
 若要使用 WAImportExport 工具來準備硬碟，支援下列**支援 BitLocker 磁碟機加密的 64 位元作業系統**。
 
 
-|Platform |版本 |
+|平台 |版本 |
 |---------|---------|
 |Windows     | Windows 7 Enterprise、Windows 7 Ultimate <br> Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Windows 用戶端的其他必要軟體
 
-|Platform |版本 |
+|平台 |版本 |
 |---------|---------|
 |.NET Framework    | 4.5.1       |
 | BitLocker        |  _          |
@@ -41,7 +41,7 @@ ms.locfileid: "79255310"
 
 Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 
-- 標準通用 v2 存儲帳戶（建議在大多數情況下使用）
+- 標準通用 v2 儲存帳戶(建議在大多數情況下使用)
 - Blob 儲存體帳戶
 - 一般用途 v1 儲存體帳戶 (傳統或 Azure Resource Manager 部署)、
 
@@ -50,7 +50,7 @@ Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 每項工作都只能從僅只一個儲存體帳戶收送資料。 換句話說，單一匯入/匯出作業不能跨越多個儲存體帳戶。 如需建立新儲存體帳戶的詳細資訊，請參閱 [如何建立儲存體帳戶](storage-account-create.md)(英文)。
 
 > [!IMPORTANT]
-> Azure 導入匯出服務不支援已啟用[虛擬網路服務終結點](../../virtual-network/virtual-network-service-endpoints-overview.md) 功能的存儲帳戶。 
+> Azure 匯入匯出服務不支援已啟用[虛擬網路服務終結點](../../virtual-network/virtual-network-service-endpoints-overview.md) 功能的存儲帳戶。 
 
 ## <a name="supported-storage-types"></a>支援的儲存體類型
 
@@ -77,10 +77,10 @@ Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 |SSD    |   2.5 吋      |第三屆國家國際田貿會議          |
 |HDD     |  2.5 吋<br>3.5 吋       |SATA II、SATA III         |
 
-不支援以下磁片類型：
+不支援以下磁碟型態:
 - USB。
-- 帶內置 USB 配接器的外部硬碟。
-- 位於外部硬碟外殼內的磁片。
+- 帶內置 USB 適配器的外部硬碟。
+- 位於外部硬碟外殼內的磁碟。
 
 單一匯入/匯出作業可以有：
 - 最多 10 個 HDD/SSD。
@@ -94,5 +94,5 @@ Azure 匯入/匯出服務支援下列儲存體帳戶類型：
 ## <a name="next-steps"></a>後續步驟
 
 * [設定 WAImportExport 工具](storage-import-export-tool-how-to.md)
-* [使用 AzCopy 命令列實用程式傳輸資料](storage-use-azcopy.md)
+* [使用 AzCopy 指令列實用程式傳輸資料](storage-use-azcopy.md)
 * [Azure 匯入匯出 REST API 範例 (英文)](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)

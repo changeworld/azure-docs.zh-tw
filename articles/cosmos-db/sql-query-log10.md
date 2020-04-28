@@ -1,6 +1,6 @@
 ---
-title: Azure 宇宙 DB 查詢語言中的 LOG10
-description: 瞭解 Azure Cosmos DB 中的 LOG10 SQL 系統函數，以返回指定數位運算式的基礎-10對數
+title: Azure Cosmos DB 查詢語言中的 LOG10
+description: 深入瞭解 Azure Cosmos DB 中的 LOG10 SQL 系統函數，以傳回指定數值運算式的以10為底數的對數
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 6f47200f6978d91f46c010640bb9c2bb26e9b7d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302486"
 ---
-# <a name="log10-azure-cosmos-db"></a>LOG10（Azure 宇宙資料庫）
+# <a name="log10-azure-cosmos-db"></a>LOG10 （Azure Cosmos DB）
  傳回指定之數值運算式的以 10 為基底的對數。  
   
 ## <a name="syntax"></a>語法
@@ -52,10 +52,10 @@ SELECT LOG10(100) AS log10
 
 ## <a name="remarks"></a>備註
 
-此系統功能不會利用索引。
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [數學函數 Azure 宇宙 DB](sql-query-mathematical-functions.md)
-- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 簡介](introduction.md)
+- [數學函數 Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 簡介](introduction.md)

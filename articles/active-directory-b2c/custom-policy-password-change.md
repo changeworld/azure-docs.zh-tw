@@ -1,5 +1,5 @@
 ---
-title: 使用自訂策略配置密碼更改
+title: 使用自訂原則來設定密碼變更
 titleSuffix: Azure AD B2C
 description: 了解如何在 Azure Active Directory B2C 中使用自訂原則以讓使用者變更其密碼。
 services: active-directory-b2c
@@ -12,17 +12,17 @@ ms.date: 12/13/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 2c351f8a95110a32c53c68c5eb6095918578bc5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189169"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定密碼變更
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-在 Azure 活動目錄 B2C（Azure AD B2C）中，您可以啟用使用本地帳戶登錄的使用者更改其密碼，而無需通過電子郵件驗證證明其真實性。 如果在使用者進入密碼變更流程時工作階段到期，系統會提示他們重新登入。 本文說明如何在[自訂原則](custom-policy-overview.md)中設定密碼變更。 此外，您也可以為使用者流程設定[自助式密碼重設](user-flow-self-service-password-reset.md)。
+在 Azure Active Directory B2C （Azure AD B2C）中，您可以讓使用本機帳戶登入的使用者變更其密碼，而不需要透過電子郵件驗證來證明其真實性。 如果在使用者進入密碼變更流程時工作階段到期，系統會提示他們重新登入。 本文說明如何在[自訂原則](custom-policy-overview.md)中設定密碼變更。 此外，您也可以為使用者流程設定[自助式密碼重設](user-flow-self-service-password-reset.md)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -165,13 +165,13 @@ ms.locfileid: "78189169"
 
 ### <a name="upload-the-files"></a>上傳檔案
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
-2. 選取頂端功能表中的 [目錄 + 訂用帳戶]**** 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+2. 選取頂端功能表中的 [目錄 + 訂用帳戶]  篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
 3. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
 4. 選取 [識別體驗架構]****。
 5. 在 [自訂原則] 頁面上，按一下 [上傳原則]****。
 6. 選取 [覆寫現有的原則]****，然後搜尋並選取 TrustframeworkExtensions.xml** 檔案。
-7. 按一下 [上傳]****。
+7. 按一下 [上傳]  。
 8. 針對信賴憑證者檔案 (例如 *ProfileEditPasswordChange.xml*) 重複步驟 5 到 7。
 
 ### <a name="run-the-policy"></a>執行原則

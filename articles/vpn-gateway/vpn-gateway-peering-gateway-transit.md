@@ -10,10 +10,10 @@ ms.tgt_pltfrm: na
 ms.date: 03/25/2018
 ms.author: yushwang
 ms.openlocfilehash: 3917101ee7ac151cf624e5be0f51ccf01c8cb1cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77161880"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>為虛擬網路對等互連設定 VPN 閘道傳輸
@@ -48,11 +48,11 @@ ms.locfileid: "77161880"
 2. [以相同部署模型建立虛擬網路對等互連](../virtual-network/tutorial-connect-virtual-networks-portal.md)
 3. [以不同部署模型建立虛擬網路對等互連](../virtual-network/create-peering-different-deployment-models.md)
 
-## <a name="permissions"></a><a name="permissions"></a>許可權
+## <a name="permissions"></a><a name="permissions"></a>權限
 
 您用於建立虛擬網路對等互連的帳戶必須具有必要角色或權限。 在以下範例中，如果您要將兩個虛擬網路 (分別名為 Hub-RM 和 Spoke-Classic) 對等互連，您的帳戶必須具有每個虛擬網路的下列角色或權限：
     
-|虛擬網路|部署模型|角色|權限|
+|虛擬網路|部署模型|[角色]|權限|
 |---|---|---|---|
 |Hub-RM|Resource Manager|[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 | |傳統|[傳統網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|N/A|

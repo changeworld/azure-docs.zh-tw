@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: 42f3c7f3351bddab429489dccf28587549d76e18
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78897837"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>搭配 Gremlin SDK 使用 Azure Cosmos DB 資源權杖
@@ -95,7 +95,7 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>限制
 
-透過單一 Gremlin 帳戶，您可以發出不限數目的權杖。 不過，1 小時內只能同時使用最多 100 個權杖。 如果應用程式超過每小時的權杖限制，身份驗證請求將被拒絕，並且您會收到以下錯誤訊息："超出允許的資源權杖限制 100，可同時使用。 關閉使用特定權杖的作用中連線不會為新權杖釋出位置。 Azure Cosmos DB Gremlin 資料庫引擎會在緊接驗證要求之前的一小時內，持續追蹤唯一標記。
+透過單一 Gremlin 帳戶，您可以發出不限數目的權杖。 不過，1 小時內只能同時使用最多 100 個權杖。 如果應用程式超過每小時的權杖限制，則會拒絕驗證要求，而且您會收到下列錯誤訊息：「已超過允許的資源權杖限制100，可同時使用。」 關閉使用特定權杖的作用中連線不會為新權杖釋出位置。 Azure Cosmos DB Gremlin 資料庫引擎會在緊接驗證要求之前的一小時內，持續追蹤唯一標記。
 
 ## <a name="permission"></a>權限
 

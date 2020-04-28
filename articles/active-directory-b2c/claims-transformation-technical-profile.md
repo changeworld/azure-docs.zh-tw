@@ -1,5 +1,5 @@
 ---
-title: 定義索賠轉換技術設定檔
+title: 定義宣告轉換技術設定檔
 titleSuffix: Azure AD B2C
 description: 定義 Azure Active Directory B2C 自訂原則中的宣告轉換技術設定檔。
 services: active-directory-b2c
@@ -12,10 +12,10 @@ ms.date: 02/13/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84c1cf798e88e4067da8a495c1591143d2ee1bd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78189781"
 ---
 # <a name="define-a-claims-transformation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定義 Azure Active Directory B2C 自訂原則中的宣告轉換技術設定檔
@@ -104,7 +104,7 @@ TransformationClaimType="collection" />
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 包括索賠解決索賠處理  | 否 | 對於輸入和輸出聲明，指定[索賠解析](claim-resolver-overview.md)是否包含在技術設定檔中。 可能的值：`true`或`false` （預設值）。 如果要在技術設定檔中使用聲明解析器，則將此解決方案設置為`true`。 |
+| IncludeClaimResolvingInClaimsHandling  | 否 | 針對輸入和輸出宣告，指定技術設定檔中是否包含[宣告解析](claim-resolver-overview.md)。 可能的值`true`：、 `false`  或（預設）。 如果您想要在技術設定檔中使用宣告解析程式，請將`true`此設定為。 |
 
 ## <a name="use-a-validation-technical-profile"></a>使用驗證技術設定檔
 

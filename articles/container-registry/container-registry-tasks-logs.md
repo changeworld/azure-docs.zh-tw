@@ -1,33 +1,33 @@
 ---
-title: 查看任務運行日誌 - 任務
-description: 如何查看和管理由 ACR 任務生成的運行日誌。
+title: 查看工作執行記錄-工作
+description: 如何查看和管理 ACR 工作產生的執行記錄。
 ms.topic: article
 ms.date: 03/09/2020
 ms.openlocfilehash: f7098f470a3f8a0cdac019f4bf8eb8fe14330337
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79246964"
 ---
-# <a name="view-and-manage-task-run-logs"></a>查看和管理工作運行日誌
+# <a name="view-and-manage-task-run-logs"></a>查看和管理工作執行記錄
 
-[Azure 容器註冊表任務中](container-registry-tasks-overview.md)運行的每個任務都會生成日誌輸出，您可以檢查日誌輸出以確定任務步驟是否成功運行。 
+在[Azure Container Registry](container-registry-tasks-overview.md)工作中執行的每項工作都會產生記錄輸出，您可以檢查以判斷工作步驟是否成功執行。 
 
-本文介紹如何查看和管理工作運行日誌。
+本文說明如何查看和管理工作執行記錄。
 
-## <a name="view-streamed-logs"></a>查看流式日誌
+## <a name="view-streamed-logs"></a>查看資料流程處理的記錄
 
-手動觸發任務時，日誌輸出將直接資料流到主控台。 例如，當您使用[az acr 生成](/cli/azure/acr#az-acr-build)[、az acr 運行](/cli/azure/acr#az-acr-run)或 az [acr 任務運行](/cli/azure/acr/task#az-acr-task-run)命令手動觸發任務時，您將看到日誌輸出資料流到主控台。 
+當您手動觸發工作時，會將記錄輸出直接串流至主控台。 例如，當您使用[az acr build](/cli/azure/acr#az-acr-build)、 [az acr run](/cli/azure/acr#az-acr-run)或[az acr task run](/cli/azure/acr/task#az-acr-task-run)命令來手動觸發工作時，您會看到串流至主控台的記錄輸出。 
 
-以下示例[az acr 運行](/cli/azure/acr#az-acr-run)命令手動觸發運行從同一註冊表提取的容器的任務：
+下列範例[az acr run](/cli/azure/acr#az-acr-run)命令會手動觸發執行從相同登錄提取之容器的工作：
 
 ```azurecli
 az acr run --registry mycontainerregistry1220 \
   --cmd '$Registry/samples/hello-world:v1' /dev/null
 ```
 
-流式日誌：
+資料流程處理的記錄檔：
 
 ```console
 Queued a run with ID: cf4
@@ -56,34 +56,34 @@ This message shows that your installation appears to be working correctly.
 Run ID: cf4 was successful after 5s
 ```
 
-## <a name="view-stored-logs"></a>查看存儲的日誌 
+## <a name="view-stored-logs"></a>查看儲存的記錄 
 
-Azure 容器註冊表存儲所有任務的運行日誌。 您可以在 Azure 門戶中查看存儲的運行日誌。 或者，使用[az acr 任務日誌](/cli/azure/acr/task#az-acr-task-logs)命令查看選定的日誌。 預設情況下，日誌將保留 30 天。
+Azure Container Registry 儲存所有工作的執行記錄。 您可以在 Azure 入口網站中查看預存的執行記錄。 或者，使用[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)命令來查看選取的記錄檔。 根據預設，記錄會保留30天。
 
-如果任務自動觸發（例如由原始程式碼更新），則訪問存儲的日誌是查看運行日誌*的唯*一方法。 自動任務觸發器包括原始程式碼提交或拉取請求、基本映射更新和計時器觸發器。
+如果工作是自動觸發的（例如由原始程式碼更新），存取儲存的記錄檔就是*唯一*能夠查看執行記錄的方式。 自動工作觸發套裝程式括來來源程式代碼認可或提取要求、基底映射更新，以及計時器觸發程式。
 
-要查看門戶中的運行日誌，請查看：
+若要在入口網站中查看執行記錄：
 
-1. 導航到容器註冊表。
-1. 在 **"服務**"中，選擇 > **"任務運行**"。 **Tasks**
-1. 選擇**運行 ID**以查看運行狀態並運行日誌。 日誌包含與流式日誌相同的資訊（如果生成了）。
+1. 流覽至您的 container registry。
+1. 在 [**服務**] 中 **，選取** > [工作] [**執行**]。
+1. 選取**執行識別碼**以查看執行狀態和執行記錄。 記錄檔包含與資料流程處理記錄檔相同的資訊（如果有產生的話）。
 
-![查看任務運行登錄門戶](./media/container-registry-tasks-logs/portal-task-run-logs.png)
+![View task 執行登入入口網站](./media/container-registry-tasks-logs/portal-task-run-logs.png)
 
-要使用 Azure CLI 查看日誌，請運行[az acr 任務日誌](/cli/azure/acr/task#az-acr-task-logs)並指定運行 ID、任務名稱或生成任務創建的特定映射。 如果指定了任務名稱，該命令將顯示上次創建運行的日誌。
+若要使用 Azure CLI 來查看記錄，請執行[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) ，並指定執行識別碼、工作名稱或由組建工作所建立的特定映射。 如果指定了工作名稱，此命令會顯示上次建立執行的記錄檔。
 
-以下示例使用 ID *cf4*輸出運行的日誌：
+下列範例會針對識別碼為*cf4*的執行輸出記錄檔：
 
 ```azurecli
 az acr task logs --registry mycontainerregistry1220 \
   --run-id cf4
 ```
 
-## <a name="alternative-log-storage"></a>備用日誌存儲
+## <a name="alternative-log-storage"></a>替代記錄儲存體
 
-您可能希望在本地檔案系統上存儲任務運行日誌，或使用替代存檔解決方案（如 Azure 存儲）。
+您可能想要將工作執行記錄儲存在本機檔案系統上，或使用替代的封存解決方案，例如 Azure 儲存體。
 
-例如，創建本地*任務日誌*目錄，並將[az acr 任務日誌](/cli/azure/acr/task#az-acr-task-logs)的輸出重定向到本地檔：
+例如，建立本機*tasklogs*目錄，並將[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)的輸出重新導向至本機檔案：
 
 ```azurecli
 mkdir ~/tasklogs
@@ -92,12 +92,12 @@ az acr task logs --registry mycontainerregistry1220 \
   --run-id cf4 > ~/tasklogs/cf4.log
 ```
 
-還可以將本地日誌檔保存到 Azure 存儲。 例如，使用[Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) [、Azure 門戶](../storage/blobs/storage-quickstart-blobs-portal.md)或其他方法將檔上載到存儲帳戶。
+您也可以將本機記錄檔儲存到 Azure 儲存體。 例如，使用 [ [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md)]、[ [Azure 入口網站](../storage/blobs/storage-quickstart-blobs-portal.md)] 或其他方法，將檔案上傳至儲存體帳戶。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解有關[Azure 容器註冊表任務](container-registry-tasks-overview.md)
+* 深入瞭解[Azure Container Registry 工作](container-registry-tasks-overview.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/
