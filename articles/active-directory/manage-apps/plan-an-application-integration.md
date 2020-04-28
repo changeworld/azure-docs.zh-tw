@@ -16,10 +16,10 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063375"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>整合 Azure Active Directory 與應用程式入門指南
@@ -77,7 +77,7 @@ ms.locfileid: "77063375"
 透過 Microsoft Azure AD 應用程式 Proxy，您可以從任何地方及任何裝置上安全地為位於您的私人網路上的應用程式提供存取。 在您的環境中安裝應用程式 Proxy 連接器之後，可以輕鬆地使用 Azure AD 來加以設定。
 
 ### <a name="integrating-custom-applications"></a>整合自訂應用程式
-如果要編寫新應用程式，並希望説明開發人員利用 Azure AD 的強大功能，請參閱[指導開發人員](../active-directory-applications-guiding-developers-for-lob-applications.md)。
+如果您要撰寫新的應用程式，並想要協助開發人員充分利用 Azure AD 的功能，請參閱[引導開發人員](../active-directory-applications-guiding-developers-for-lob-applications.md)。
 
 如果您想要加入您的自訂應用程式至 Azure 應用程式資源庫，請參閱 [使用 Azure AD 自助 SAML 組態「自備應用程式」](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)。
 
@@ -87,15 +87,15 @@ ms.locfileid: "77063375"
 * [使用 Azure AD 管理應用程式的存取](what-is-access-management.md)
 * [使用 Azure AD 連接器自動化](../app-provisioning/user-provisioning.md)
 * [將使用者指派給應用程式](../active-directory-applications-guiding-developers-assigning-users.md)
-* [將組分配給應用程式](../active-directory-applications-guiding-developers-assigning-groups.md)
+* [將群組指派給應用程式](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [共用帳戶](../active-directory-sharing-accounts.md)
 
 ## <a name="next-steps"></a>後續步驟
-如需深入資訊，您可以從 [GitHub](https://aka.ms/deploymentplans) 下載 Azure Active Directory 部署計劃。 對於庫應用程式，您可以通過[Azure 門戶](https://portal.azure.com)下載單一登入、條件訪問和使用者預配的部署計畫。 
+如需深入資訊，您可以從 [GitHub](https://aka.ms/deploymentplans) 下載 Azure Active Directory 部署計劃。 針對資源庫應用程式，您可以透過[Azure 入口網站](https://portal.azure.com)下載單一登入、條件式存取和使用者布建的部署計畫。 
 
 若要從 Azure 入口網站下載部署計劃：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
-2. 選擇**企業應用程式** | **選擇應用** | **部署計畫**。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+2. 選取 [**企業應用程式** | ] [**選取應用** | 程式**部署計畫**]。
 
 請接受[部署計劃問卷調查](https://aka.ms/DeploymentPlanFeedback)，以提供關於部署計劃的意見反應。

@@ -1,5 +1,5 @@
 ---
-title: 將資料從 Blob 存儲複製到 SQL 資料庫 - Azure
+title: 將資料從 Blob 儲存體複製到 SQL Database-Azure
 description: 本教學課程向您說明如何使用 Azure Data Factory 管線中的複製活動，將資料從 Blob 儲存體複製到 SQL Database。
 services: data-factory
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75979733"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教學課程：使用 Data Factory 將資料從 Blob 儲存體複製到 SQL Database
@@ -25,8 +25,8 @@ ms.locfileid: "75979733"
 > * [概觀和必要條件](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [複製嚮導](data-factory-copy-data-wizard-tutorial.md)
 > * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-> * [電源外殼](data-factory-copy-activity-tutorial-using-powershell.md)
-> * [Azure 資源管理器範本](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+> * [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+> * [Azure Resource Manager 範本](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 > * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
@@ -45,9 +45,9 @@ ms.locfileid: "75979733"
 ## <a name="prerequisites-for-the-tutorial"></a>教學課程的必要條件
 開始進行本教學課程之前，您必須具備下列必要條件：
 
-* **Azure 訂閱**。  如果您沒有訂用帳戶，則只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [免費試用](https://azure.microsoft.com/pricing/free-trial/) 一文。
-* **Azure 存儲帳戶**。 在本教學課程中，您會使用 Blob 儲存體做為 **來源** 資料存放區。 如果沒有 Azure 存儲帳戶，請參閱[創建存儲帳戶](../../storage/common/storage-account-create.md)文章，瞭解創建存儲帳戶的步驟。
-* **Azure SQL 資料庫**。 在本教學課程中，您會使用 Azure SQL 資料庫做為 **目的地** 資料存放區。 如果您沒有可在教學課程中使用的 Azure SQL 資料庫，請參閱 [如何建立和設定 Azure SQL Database](../../sql-database/sql-database-get-started.md) 建立一個。
+* **Azure 訂用帳戶**。  如果您沒有訂用帳戶，則只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資料，請參閱 [免費試用](https://azure.microsoft.com/pricing/free-trial/) 一文。
+* **Azure 儲存體帳戶**。 在本教學課程中，您會使用 Blob 儲存體做為 **來源** 資料存放區。 如果您沒有 Azure 儲存體帳戶，請參閱[建立儲存體帳戶](../../storage/common/storage-account-create.md)一文，以瞭解建立的步驟。
+* **Azure SQL Database**。 在本教學課程中，您會使用 Azure SQL 資料庫做為 **目的地** 資料存放區。 如果您沒有可在教學課程中使用的 Azure SQL 資料庫，請參閱 [如何建立和設定 Azure SQL Database](../../sql-database/sql-database-get-started.md) 建立一個。
 * **SQL Server 2012/2014 或 Visual Studio 2013**。 您會使用 SQL Server Management Studio 或 Visual Studio，建立範例資料庫以及檢視資料庫中的結果資料。  
 
 ## <a name="collect-blob-storage-account-name-and-key"></a>收集 Blob 儲存體帳戶名稱和金鑰
@@ -91,7 +91,7 @@ ms.locfileid: "75979733"
     John, Doe
     Jane, Doe
     ```
-2. 使用 Azure[存儲資源管理器](https://storageexplorer.com/)等工具創建**adf 教程**容器並將**emp.txt**檔上載到容器。
+2. 使用[Azure 儲存體總管](https://storageexplorer.com/)之類的工具來建立**adftutorial**容器，並將**emp .txt**檔案上傳至容器。
 
 3. 使用下列 SQL 指令碼，在您的 Azure SQL Database 中建立 **emp** 資料表。  
 
@@ -116,8 +116,8 @@ ms.locfileid: "75979733"
 
 * [複製嚮導](data-factory-copy-data-wizard-tutorial.md)
 * [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
-* [電源外殼](data-factory-copy-activity-tutorial-using-powershell.md)
-* [Azure 資源管理器範本](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
+* [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
+* [Azure Resource Manager 範本](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
 * [REST API](data-factory-copy-activity-tutorial-using-rest-api.md)
 * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 

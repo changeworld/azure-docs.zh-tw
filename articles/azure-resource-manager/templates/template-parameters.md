@@ -1,24 +1,24 @@
 ---
 title: 範本中的參數
-description: 介紹如何在 Azure 資源管理器範本中定義參數。
+description: 描述如何在 Azure Resource Manager 範本中定義參數。
 ms.topic: conceptual
 ms.date: 09/05/2019
 ms.openlocfilehash: 89c6984c587e8dae59c1825a99d4f8da1c06dafb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76122418"
 ---
-# <a name="parameters-in-azure-resource-manager-templates"></a>Azure 資源管理器範本中的參數
+# <a name="parameters-in-azure-resource-manager-templates"></a>Azure Resource Manager 範本中的參數
 
-本文介紹如何在 Azure 資源管理器範本中定義和使用參數。 通過為參數提供不同的值，可以為不同的環境重用範本。
+本文說明如何定義及使用 Azure Resource Manager 範本中的參數。 藉由提供不同的參數值，您可以針對不同的環境重複使用範本。
 
-資源管理器在開始部署操作之前解析參數值。 無論在範本中使用參數，資源管理器都會將其替換為解析的值。
+Resource Manager 會在開始部署作業之前，先解析參數值。 在範本中使用參數的任何地方，Resource Manager 都會以已解析的值來取代它。
 
 ## <a name="define-parameter"></a>定義參數
 
-下列範例顯示簡單的參數定義。 它定義了一個名為**存儲SKU**的參數。 參數是字串值，僅接受對其預期用途有效的值。 當部署期間未提供任何值時，參數將使用預設值。
+下列範例顯示簡單的參數定義。 它會定義名為**storageSKU**的參數。 參數是字串值，且只接受適用于其預期用途的值。 當部署期間未提供任何值時，參數會使用預設值。
 
 ```json
 "parameters": {
@@ -41,7 +41,7 @@ ms.locfileid: "76122418"
 
 ## <a name="use-parameter"></a>使用參數
 
-在範本中，使用[參數](template-functions-deployment.md#parameters)函數傳址參數的值。 在下面的示例中，參數值用於為存儲帳戶設置 SKU。
+在範本中，您可以使用[parameters](template-functions-deployment.md#parameters)函數來參考參數的值。 在下列範例中，會使用參數值來設定儲存體帳戶的 SKU。
 
 ```json
 "resources": [
@@ -57,7 +57,7 @@ ms.locfileid: "76122418"
 
 ## <a name="template-functions"></a>範本函式
 
-為參數指定預設值時，您可以使用大部分的範本函式。 您可以使用另一個參數以建立預設值。 以下範本演示了函數在預設值中的使用。 當沒有為網站提供名稱時，它將創建一個唯一的字串值並將其追加到**網站**。 當主機計畫未提供名稱時，它將獲取網站的值，並追加 **-計畫**。
+為參數指定預設值時，您可以使用大部分的範本函式。 您可以使用另一個參數以建立預設值。 下列範本示範如何使用預設值中的函數。 未提供網站的名稱時，它會建立唯一的字串值，並將它附加至**網站**。 當沒有提供主機方案的名稱時，它會採用網站的值和附加**方案**。
 
 ```json
 "parameters": {
@@ -78,13 +78,13 @@ ms.locfileid: "76122418"
 }
 ```
 
-不能使用參數部分中的[引用](template-functions-resource.md#reference)函數或任何[清單](template-functions-resource.md#list)函數。 這些函數獲取資源的運行時狀態，並且在解析參數時無法在部署之前執行。
+您不能在 parameters 區段中使用[reference](template-functions-resource.md#reference)函式或任何[清單](template-functions-resource.md#list)函數。 這些函式會取得資源的執行時間狀態，而且在解析參數時，無法在部署之前執行。
 
 ## <a name="objects-as-parameters"></a>作為參數的物件
 
 藉由將相關值以物件的方式傳遞，可以更輕鬆地進行組織。 此方法也會減少範本中的參數數目。
 
-下面的示例顯示了作為物件的參數。 預設值顯示物件的預期屬性。
+下列範例會顯示屬於物件的參數。 預設值會顯示物件的預期屬性。
 
 ```json
 "parameters": {
@@ -114,7 +114,7 @@ ms.locfileid: "76122418"
 },
 ```
 
-通過使用點運算子引用物件的屬性。
+您可以使用點運算子來參考物件的屬性。
 
 ```json
 "resources": [
@@ -150,16 +150,16 @@ ms.locfileid: "76122418"
 
 ## <a name="example-templates"></a>範本的範例
 
-以下示例演示了使用參數的方案。
+下列範例示範使用參數的案例。
 
 |[範本]  |描述  |
 |---------|---------|
 |[具有預設值之帶有函式的參數](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 示範定義參數的預設值時，如何使用範本函式。 範本不會部署任何資源。 它會建構參數值，並傳回這些值。 |
-|[參數物件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 示範如何針對參數使用物件。 範本不會部署任何資源。 它會建構參數值，並傳回這些值。 |
+|[parameter 物件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 示範如何針對參數使用物件。 範本不會部署任何資源。 它會建構參數值，並傳回這些值。 |
 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要瞭解參數的可用屬性，請參閱[瞭解 Azure 資源管理器範本的結構和語法](template-syntax.md)。
-* 要瞭解如何將參數值作為檔傳入，請參閱[創建資源管理器參數檔](parameter-files.md)。
-* 有關創建參數的建議，請參閱最佳實踐[- 參數](template-best-practices.md#parameters)。
+* 若要瞭解參數可用的屬性，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。
+* 若要瞭解如何以檔案的形式傳入參數值，請參閱[建立 Resource Manager 參數](parameter-files.md)檔案。
+* 如需有關建立參數的建議，請參閱[最佳做法-參數](template-best-practices.md#parameters)。

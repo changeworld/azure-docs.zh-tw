@@ -15,18 +15,18 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 730ff3c274fd93e6344cec688ba2db212d285baf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76758934"
 ---
-使應用程式變得很棒：
+讓您的應用程式發揮絕佳的好處：
 
-- 啟用[日誌記錄](../articles/active-directory/develop/msal-logging.md)。
+- 啟用[記錄](../articles/active-directory/develop/msal-logging.md)。
 - 啟用遙測。
 - 啟用 [Proxy 和自訂 HTTP 用戶端](../articles/active-directory/develop/msal-net-provide-httpclient.md)。
 
-測試集成：
+測試您的整合：
 
-- 使用[微軟標識平臺的集成清單](../articles/active-directory/develop/identity-platform-integration-checklist.md)。
+- 使用[Microsoft 身分識別平臺的整合檢查清單](../articles/active-directory/develop/identity-platform-integration-checklist.md)。

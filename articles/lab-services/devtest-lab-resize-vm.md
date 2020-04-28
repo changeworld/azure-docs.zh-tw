@@ -1,6 +1,6 @@
 ---
 title: 在 Azure DevTest Labs 中調整實驗室中 VM 的大小
-description: 瞭解如何根據 CPU、網路或磁片性能的需求更改 Azure DevTest 實驗室中的虛擬機器 （VM） 大小。
+description: 瞭解如何根據您的 CPU、網路或磁片效能需求，在 Azure DevTest Labs 中變更虛擬機器（VM）的大小。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: bf7c425766a97aaa1d143133f04502a0aa3c36cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76756172"
 ---
 # <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中調整實驗室中 VM 的大小
@@ -31,7 +31,7 @@ Azure 虛擬機器的其中一個重要功能就是可讓您根據您的 CPU、�
 > [!NOTE]
 > 如果您是透過遠端桌面工作階段 (RDP) 連線至 VM，請儲存您的工作，然後先與 VM 中斷連線，再調整 VM 大小。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
 3. 從實驗室清單中，選取包含您想要調整大小之 VM 的實驗室。  
 4. 在左面板中，選取 [我的虛擬機器]****。 

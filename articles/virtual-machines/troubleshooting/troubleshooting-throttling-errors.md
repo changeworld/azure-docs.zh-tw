@@ -14,10 +14,10 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: f5fbd80fc9a8e519cf8f49ab16d7e747c6a8171b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76045354"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>針對 API 節流錯誤進行疑難排解 
@@ -80,7 +80,7 @@ Content-Type: application/json; charset=utf-8
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>API 呼叫率和節流處理錯誤分析器
 「計算」資源提供者的 API 有一個可用的預覽版疑難排解功能。 這些 PowerShell Cmdlet 提供與每一作業每一時間間隔之 API 要求率及每一作業群組 (原則) 之節流處理違規相關的統計資料：
 -   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
--   [匯出-分析限制請求](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
+-   [匯出-AzLogAnalyticThrottledRequest](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequest)
 
 API 呼叫統計資料可提供訂用帳戶用戶端行為的絕佳深入解析，讓您能夠輕鬆識別出造成節流的呼叫模式。
 

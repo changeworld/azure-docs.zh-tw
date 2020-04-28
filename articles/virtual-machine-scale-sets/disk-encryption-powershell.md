@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure PowerShell 加密 Azure 規模集的磁片
+title: 使用 Azure PowerShell 將 Azure 擴展集的磁片加密
 description: 了解如何使用 Azure PowerShell 加密 Windows 虛擬機器擴展集中的 VM 執行個體和已連結的磁碟
 author: msmbaldwin
 manager: rkarlin
@@ -9,15 +9,15 @@ ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bd7f92c104e06896f4b3c8bb2adef45983cf5d4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278991"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>使用 Azure PowerShell 在虛擬機器規模集中加密作業系統和附加資料磁片
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-azure-powershell"></a>使用 Azure PowerShell 在虛擬機器擴展集中加密作業系統和連結的資料磁片
 
-Azure PowerShell 模組用於從 PowerShell 命令列或在指令碼中建立和管理 Azure 資源。  本文介紹如何使用 Azure PowerShell 創建和加密虛擬機器規模集。 有關將 Azure 磁片加密應用於虛擬機器縮放集的詳細資訊，請參閱[虛擬機器縮放集的 Azure 磁片加密](disk-encryption-overview.md)。
+Azure PowerShell 模組用於從 PowerShell 命令列或在指令碼中建立和管理 Azure 資源。  本文說明如何使用 Azure PowerShell 來建立和加密虛擬機器擴展集。 如需將 Azure 磁碟加密套用至虛擬機器擴展集的詳細資訊，請參閱[虛擬機器擴展集的 Azure 磁碟加密](disk-encryption-overview.md)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -25,7 +25,7 @@ Azure PowerShell 模組用於從 PowerShell 命令列或在指令碼中建立和
 
 Azure 金鑰保存庫儲存可讓您安全地在應用程式和服務中實作的金鑰和密碼 (Secret 或 Password)。 密碼編譯金鑰會使用軟體保護功能儲存在 Azure 金鑰保存庫中，或者您可以在 FIPS 140-2 第 2 級標準認證的硬體安全性模組 (HSM) 中匯入或產生金鑰。 這些密碼編譯金鑰用來加密及解密連接到 VM 的虛擬磁碟。 您可保留這些密碼編譯金鑰的控制權，並可稽核其使用情況。
 
-使用[新 AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)創建金鑰保存庫。 若要允許 Key Vault 用於磁碟加密，請設定 EnabledForDiskEncryption** 參數。 下列範例也會定義資源群組名稱、Key Vault 名稱和位置的變數。 提供您自己唯一的 Key Vault 名稱：
+使用[AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault)建立 Key Vault。 若要允許 Key Vault 用於磁碟加密，請設定 EnabledForDiskEncryption** 參數。 下列範例也會定義資源群組名稱、Key Vault 名稱和位置的變數。 提供您自己唯一的 Key Vault 名稱：
 
 ```azurepowershell-interactive
 $rgName="myResourceGroup"
@@ -88,9 +88,9 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vm
 
 出現提示時，輸入 y** 以繼續擴展集虛擬機器執行個體上的磁碟加密程序。
 
-### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>使用 KEK 啟用加密以包裝金鑰
+### <a name="enable-encryption-using-kek-to-wrap-the-key"></a>使用 KEK 包裝金鑰來啟用加密
 
-在加密虛擬機器規模集時，還可以使用金鑰加密金鑰來增加安全性。
+加密虛擬機器擴展集時，您也可以使用金鑰加密金鑰來增加安全性。
 
 ```azurepowershell-interactive
 $diskEncryptionKeyVaultUrl=(Get-AzKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
@@ -103,10 +103,10 @@ Set-AzVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vm
 ```
 
 > [!NOTE]
->  磁片加密金鑰庫參數值的語法是完整的識別碼字串：</br>
-/訂閱/[訂閱-id-guid]/資源組/[資源組名稱]/提供程式/Microsoft.KeyVault/vault/[金鑰保存庫名稱]</br></br>
-> 金鑰加密金鑰參數值的值的語法是 KEK 的完整 URI，如：</br>
-HTTPs：//[鑰匙庫名稱]vault.azure.net/鍵/[kekname]/[kek-唯一id]
+>  磁片加密-keyvault 參數值的語法是完整的識別碼字串：</br>
+/subscriptions/[訂用帳戶識別碼-guid]/resourceGroups/[資源群組-名稱]/providers/Microsoft.KeyVault/vaults/[KeyVault-name]</br></br>
+> 金鑰加密金鑰參數值的語法是 KEK 的完整 URI，如下所示：</br>
+HTTPs：//[keyvault-name].. t a t/keys/[kekname]/[kek-唯一識別碼]
 
 ## <a name="check-encryption-progress"></a>檢查加密程序
 
@@ -148,5 +148,5 @@ Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssNam
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在本文中，您使用 Azure PowerShell 來加密虛擬機器擴展集。 您還可以使用[Azure CLI](disk-encryption-cli.md)或[Azure 資源管理器範本](disk-encryption-azure-resource-manager.md)。
-- 如果希望在預配另一個擴展後應用 Azure 磁片加密，則可以使用[擴展排序](virtual-machine-scale-sets-extension-sequencing.md)。
+- 在本文中，您使用 Azure PowerShell 來加密虛擬機器擴展集。 您也可以使用[Azure CLI](disk-encryption-cli.md)或[Azure Resource Manager 範本](disk-encryption-azure-resource-manager.md)。
+- 如果您想要在布建其他延伸模組之後套用 Azure 磁碟加密，您可以使用[擴充功能排序](virtual-machine-scale-sets-extension-sequencing.md)。

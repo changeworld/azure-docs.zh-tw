@@ -1,7 +1,7 @@
 ---
-title: 獲取&從權杖緩存 （MSAL4j） 中刪除帳戶 |蔚藍
+title: 取得 & 從權杖快取中移除帳戶（MSAL4j） |Azure
 titleSuffix: Microsoft identity platform
-description: 瞭解如何使用 JAVA 的 Microsoft 身份驗證庫從權杖緩存中查看和刪除帳戶。
+description: 瞭解如何使用適用于 JAVA 的 Microsoft 驗證程式庫，從權杖快取中查看和移除帳戶。
 services: active-directory
 author: sangonzal
 manager: CelesteDG
@@ -14,19 +14,19 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.openlocfilehash: 2b138678b186cc41b76254658ad604c2da2d76c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76696192"
 ---
-# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>使用 JAVA 的 MSAL 從權杖緩存獲取和刪除帳戶
+# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>使用適用于 JAVA 的 MSAL 從權杖快取取得和移除帳戶
 
-預設情況下，JAVA 的 MSAL 提供記憶體內權杖緩存。 記憶體中權杖緩存持續應用程式實例的持續時間。
+MSAL for JAVA 預設會提供記憶體中的權杖快取。 記憶體中的權杖快取會持續在應用程式實例的持續時間內。
 
-## <a name="see-which-accounts-are-in-the-cache"></a>查看緩存中哪些帳戶
+## <a name="see-which-accounts-are-in-the-cache"></a>查看快取中的帳戶
 
-可以通過調用`PublicClientApplication.getAccounts()`緩存中哪些帳戶來檢查以下示例所示：
+您可以藉由呼叫`PublicClientApplication.getAccounts()`來檢查快取中的帳戶，如下列範例所示：
 
 ```java
 PublicClientApplication pca = new PublicClientApplication.Builder(
@@ -37,9 +37,9 @@ PublicClientApplication pca = new PublicClientApplication.Builder(
 Set<IAccount> accounts = pca.getAccounts().join();
 ```
 
-## <a name="remove-accounts-from-the-cache"></a>從緩存中刪除帳戶
+## <a name="remove-accounts-from-the-cache"></a>從快取中移除帳戶
 
-要從緩存中刪除帳戶，請查找需要刪除的帳戶，然後調用`PublicClientApplicatoin.removeAccount()`如下示例所示：
+若要從快取中移除帳戶，請尋找需要移除的帳戶，然後呼叫`PublicClientApplicatoin.removeAccount()` ，如下列範例所示：
 
 ```java
 Set<IAccount> accounts = pca.getAccounts().join();
@@ -53,4 +53,4 @@ pca.removeAccount(accountToBeRemoved).join();
 
 ## <a name="learn-more"></a>深入了解
 
-如果使用 MSAL 進行 JAVA，則瞭解[JAVA 的 MSAL 中的自訂權杖緩存序列化](msal-java-token-cache-serialization.md)。
+如果您使用 MSAL for JAVA，請瞭解[MSAL For java 中的自訂權杖](msal-java-token-cache-serialization.md)快取序列化。

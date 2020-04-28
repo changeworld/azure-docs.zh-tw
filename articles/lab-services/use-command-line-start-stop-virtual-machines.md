@@ -1,6 +1,6 @@
 ---
-title: 使用命令列工具啟動和停止 VM Azure 開發人員測試實驗室
-description: 瞭解如何使用命令列工具在 Azure 開發人員測試實驗室中啟動和停止虛擬機器。
+title: 使用命令列工具來啟動和停止 Vm Azure DevTest Labs
+description: 瞭解如何使用命令列工具來啟動和停止 Azure DevTest Labs 中的虛擬機器。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,32 +13,32 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: fd643559a09d5c75aad9be5f35c653994c8488cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169258"
 ---
-# <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>使用命令列工具啟動和停止 Azure 開發人員測試實驗室虛擬機器
-本文介紹如何使用 Azure PowerShell 或 Azure CLI 在 Azure DevTest 實驗室的實驗室中啟動或停止虛擬機器。 您可以創建 PowerShell/CLI 腳本來自動執行這些操作。 
+# <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>使用命令列工具來啟動和停止 Azure DevTest Labs 虛擬機器
+本文說明如何使用 Azure PowerShell 或 Azure CLI，在 Azure DevTest Labs 中啟動或停止實驗室中的虛擬機器。 您可以建立 PowerShell/CLI 腳本，將這些作業自動化。 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>總覽
-Azure 開發人員測試實驗室是創建快速、簡單和精益開發/測試環境的一種方式。 它允許您管理成本、快速預配 VM 和儘量減少浪費。  Azure 門戶中有一些內置功能，允許您在實驗室中配置 VM 以在特定時間自動啟動和停止 VM。 
+## <a name="overview"></a>概觀
+Azure DevTest Labs 是建立快速、輕鬆且精簡的開發/測試環境的一種方式。 它可讓您管理成本、快速布建 Vm，並將浪費降至最低。  Azure 入口網站中有內建功能，可讓您將實驗室中的 Vm 設定為在特定時間自動啟動和停止。 
 
-但是，在某些情況下，您可能希望自動從 PowerShell/CLI 腳本啟動和停止 VM。 它為您提供了一些靈活性，可隨時啟動和停止單個機器，而不是在特定時間。 下面是使用腳本運行這些任務的一些情況。
+不過，在某些情況下，您可能會想要從 PowerShell/CLI 腳本自動啟動和停止 Vm。 它可讓您在任何時間，而不是在特定時間啟動和停止個別機器，而有一些彈性。 以下是使用腳本執行這些工作的一些情況會很有説明。
 
-- 將 3 層應用程式用作測試環境的一部分時，需要按順序啟動層。 
-- 滿足自訂條件以節省資金時關閉 VM。 
-- 將其用作 CI/CD 工作流中的任務，從流的開始開始，將 VM 用作生成電腦、測試電腦或基礎結構，然後在該過程完成後停止 VM。 例如，使用 Azure 開發人員測試實驗室的自訂映射工廠。  
+- 在測試環境中使用3層應用程式時，階層必須以序列啟動。 
+- 符合自訂準則以節省成本時，請關閉 VM。 
+- 在 CI/CD 工作流程內，使用它做為在流程開始時啟動、使用 Vm 作為組建電腦、測試電腦或基礎結構，然後在程式完成時停止 Vm。 其中一個範例是具有 Azure DevTest Labs 的自訂映射 factory。  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 > [!NOTE]
-> 以下腳本使用 Azure PowerShell Az 模組。 
+> 下列腳本會使用 Azure PowerShell Az 模組。 
 
-以下 PowerShell 腳本在實驗室中啟動 VM。 [調用-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0)是此腳本的主要焦點。 **ResourceId**參數是實驗室中 VM 完全限定的資源識別碼。 **"操作"** 參數是根據所需內容設置 **"開始**"或 **"停止"** 選項的位置。
+下列 PowerShell 腳本會在實驗室中啟動 VM。 [AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0)是此腳本的主要焦點。 **ResourceId**參數是實驗室中 VM 的完整資源識別碼。 **動作**參數是根據所需的設定，**啟動**或**停止**選項的位置。
 
 ```powershell
 # The id of the subscription
@@ -75,7 +75,7 @@ else {
 
 
 ## <a name="azure-cli"></a>Azure CLI
-[Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)是自動啟動和停止 DevTest 實驗室 VM 的另一種方法。 Azure CLI 可以[安裝在](/cli/azure/install-azure-cli?view=azure-cli-latest)不同的作業系統上。 以下腳本提供了在實驗室中啟動和停止 VM 的命令。 
+[Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)是將 DevTest Labs vm 的啟動和停止自動化的另一種方式。 Azure CLI 可以[安裝](/cli/azure/install-azure-cli?view=azure-cli-latest)在不同的作業系統上。 下列腳本提供在實驗室中啟動和停止 VM 的命令。 
 
 ```azurecli
 # Sign in to Azure
@@ -93,4 +93,4 @@ az lab vm stop --lab-name yourlabname --name vmname --resource-group labResource
 
 
 ## <a name="next-steps"></a>後續步驟
-有關使用 Azure 門戶執行這些操作，請參閱以下文章：[重新開機 VM](devtest-lab-restart-vm.md)。
+請參閱下列文章，以瞭解如何使用 Azure 入口網站來執行這些作業：[重新開機 VM](devtest-lab-restart-vm.md)。

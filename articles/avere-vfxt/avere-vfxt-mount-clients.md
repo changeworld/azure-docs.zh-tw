@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: rohogue
 ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76153406"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>掛接 Avere vFXT 叢集
@@ -62,25 +62,25 @@ function mount_round_robin() {
 ## <a name="create-the-mount-command"></a>建立掛接命令
 
 > [!NOTE]
-> 如果在創建 Avere vFXT 群集時未創建新的 Blob 容器，請按照["配置存儲"](avere-vfxt-add-storage.md)中所述添加存儲系統，然後再嘗試裝載用戶端。
+> 如果您在建立 Avere vFXT 叢集時未建立新的 Blob 容器，請依照在嘗試掛接用戶端之前[設定存放裝置](avere-vfxt-add-storage.md)中所述，新增存放裝置系統。
 
 在您的用戶端上，``mount`` 命令會將 vFXT 叢集上的虛擬伺服器 (vserver) 對應至本機檔案系統上的路徑。 其格式為 ``mount <vFXT path> <local path> {options}``
 
-裝載命令有三個元素：
+Mount 命令有三個元素：
 
-* vFXT 路徑 - 群集 9 所述群集上的 IP 位址和命名空間交匯點路徑的組合）
+* vFXT 路徑-叢集9described 上的 IP 位址與命名空間連接路徑的組合）
 * 本機路徑 - 用戶端上的路徑
-* 裝載命令選項 - 在["裝載"命令參數中列出](#mount-command-arguments)
+* 掛接命令選項-列于[掛接命令引數](#mount-command-arguments)中
 
 ### <a name="junction-and-ip"></a>連接點和 IP
 
 vserver 路徑由其 *IP 位址*和*命名空間連接點*的路徑組合而成。 命名空間連接點是在新增儲存體系統時所定義的虛擬路徑。
 
-如果群集是使用 Blob 存儲創建的，則該容器的命名空間路徑為`/msazure`
+如果您的叢集是使用 Blob 儲存體所建立，則該容器的命名空間路徑為`/msazure`
 
 範例： ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-如果在創建群集後添加了存儲，則命名空間交匯點路徑是在創建交匯點時在**命名空間路徑**中設置的值。 例如，如果您使用 ``/avere/files`` 作為命名空間路徑，則用戶端會將 *IP_address*:/ avere/files 掛接至其本機掛接點。
+如果您在建立叢集之後新增儲存體，命名空間的連接路徑就是您在建立連接點時，于**命名空間路徑**中設定的值。 例如，如果您使用 ``/avere/files`` 作為命名空間路徑，則用戶端會將 *IP_address*:/ avere/files 掛接至其本機掛接點。
 
 ![在命名空間路徑欄位中選取了的 /avere/files 的 [新增連接點] 對話方塊](media/avere-vfxt-create-junction-example.png) <!-- to do - change example and screenshot to vfxt/files instead of avere -->
 
@@ -111,8 +111,8 @@ vserver 路徑由其 *IP 位址*和*命名空間連接點*的路徑組合而成�
 
 ## <a name="next-steps"></a>後續步驟
 
-安裝用戶端後，可以使用它們將資料複製到群集上的新 Blob 存儲容器。 如果不需要填充新存儲，請閱讀其他連結以瞭解其他設置任務：
+裝載用戶端之後，您可以使用它們將資料複製到您叢集上的新 Blob 儲存體容器。 如果您不需要填入新的存放裝置，請閱讀其他連結以瞭解其他設定工作：
 
-* [將資料移動到群集核心檔程式](avere-vfxt-data-ingest.md)- 如何使用多個用戶端和執行緒有效地將資料上載到新的核心檔案伺服器
+* [將資料移至叢集核心檔案管理](avere-vfxt-data-ingest.md)工具-如何使用多個用戶端和執行緒有效率地將您的資料上傳至新的核心檔案管理工具
 * [自訂叢集調整](avere-vfxt-tuning.md) - 調整叢集設定以符合您的工作負載
 * [管理叢集](avere-vfxt-manage-cluster.md) - 如何啟動或停止叢集以及管理節點

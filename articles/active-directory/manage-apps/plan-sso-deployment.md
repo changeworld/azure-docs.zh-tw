@@ -1,6 +1,6 @@
 ---
-title: 規劃 Azure 活動目錄單一登入部署
-description: 説明您在組織中規劃、部署和管理 SSO 的指南。
+title: 規劃 Azure Active Directory 單一登入部署
+description: 協助您在組織中規劃、部署和管理 SSO 的指南。
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -13,315 +13,315 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92496fa572c5c1cae4588f82ac61c18de3024045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76512822"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>規劃單一登入部署
 
-單一登入 （SSO） 意味著僅使用單個使用者帳戶登錄一次即可訪問使用者需要的所有應用程式和資源。 使用 SSO，使用者可以訪問所有必需的應用程式，而無需進行第二次身份驗證。
+單一登入（SSO）表示只要使用單一使用者帳戶登入一次，就能存取使用者所需的所有應用程式和資源。 使用 SSO 時，使用者可以存取所有必要的應用程式，而不需要再次驗證。
 
-## <a name="benefits-of-sso"></a>SSO 的優勢
+## <a name="benefits-of-sso"></a>SSO 的優點
 
-當使用者登錄到 Azure 活動目錄 （Azure AD） 中的應用程式時，單一登入 （SSO） 增加了安全性和便利性。 
+當使用者登入 Azure Active Directory （Azure AD）中的應用程式時，單一登入（SSO）可增加安全性和便利性。 
 
-許多組織依賴軟體即服務 （SaaS） 應用程式（如 Office 365、Box 和 Salesforce）來提高最終使用者的工作效率。 從歷史上看，IT 人員需要在每個 SaaS 應用程式中單獨創建和更新使用者帳戶，使用者需要記住每個應用程式的密碼。
+許多組織都依賴軟體即服務（SaaS）應用程式，例如 Office 365、Box 和 Salesforce，以提供使用者生產力。 在過去，IT 人員需要在每個 SaaS 應用程式中個別建立並更新使用者帳戶，而使用者必須記住每個的密碼。
 
-Azure 應用商店具有 3000 多個具有預集成 SSO 連接的應用程式，因此可以輕鬆地將它們集成到租戶中。
+3000 Azure Marketplace 的應用程式具有預先整合的 SSO 連線，可讓您輕鬆地將它們整合到您的租使用者中。
 
 ## <a name="licensing"></a>授權
 
-- **Azure AD 許可**- 用於預集成 SaaS 應用程式的 SSO 是免費的。 但是，目錄中的物件數和要部署的功能可能需要其他許可證。 有關許可證要求的完整清單，請參閱[Azure 活動目錄定價](https://azure.microsoft.com/pricing/details/active-directory/)。
-- **應用程式許可**- 您需要為 SaaS 應用程式提供適當的許可證，以滿足您的業務需求。 與應用程式擁有者合作，確定分配給應用程式的使用者是否具有適合其在應用程式中角色的許可證。 如果 Azure AD 根據角色管理自動預配，則 Azure AD 中分配的角色必須與應用程式中擁有的許可證數一致。 應用程式中擁有的許可證數量不正確可能會導致使用者預配/更新期間出錯。
+- 適用于預先整合之 SaaS 應用程式的**Azure AD 授權**-SSO 是免費的。 不過，目錄中的物件數目和您想要部署的功能可能需要額外的授權。 如需授權需求的完整清單，請參閱[Azure Active Directory 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
+- **應用程式授權**-您需要有適當的授權，您的 SaaS 應用程式才能符合您的商務需求。 請與應用程式擁有者合作，以判斷指派給應用程式的使用者在應用程式內是否具有適當的角色授權。 如果 Azure AD 管理以角色為基礎的自動布建，Azure AD 中指派的角色必須符合應用程式中所擁有的授權數目。 應用程式所擁有的授權數目不正確，可能會在使用者布建/更新期間導致錯誤。
 
-## <a name="plan-your-sso-team"></a>規劃您的 SSO 團隊
+## <a name="plan-your-sso-team"></a>規劃您的 SSO 小組
 
-- **吸引合適的利益相關者**- 當技術專案失敗時，通常是由於對影響、結果和責任的期望不匹配。 為了避免這些陷阱，[請確保您與合適的利益相關者接洽](https://aka.ms/deploymentplans)，並確保利益相關者瞭解他們的角色。
-- **計畫通信**- 通信對於任何新服務的成功都至關重要。 主動向使用者傳達他們的體驗將如何變化、何時更改以及遇到問題時如何獲得支援。 查看[最終使用者如何訪問其啟用 SSO 的應用程式](end-user-experiences.md)的選項，並製作您的通信以匹配您的選擇。 
+- **吸引適當的專案關係人**-當技術專案失敗時，通常是因為對影響、結果和責任的期望不符。 若要避免這些錯誤，請[確定您參與的是正確的專案關係人](https://aka.ms/deploymentplans)，而且專案關係人瞭解他們的角色。
+- **規劃通訊**-通訊對於任何新服務都是成功的關鍵。 主動與您的使用者溝通他們的經驗如何改變、何時會變更，以及如何在遇到問題時取得支援。 請參閱[使用者如何存取啟用 SSO 之應用程式](end-user-experiences.md)的選項，並製作您的通訊以符合您的選擇。 
 
-## <a name="plan-your-sso-protocol"></a>規劃您的 SSO 協定
+## <a name="plan-your-sso-protocol"></a>規劃您的 SSO 通訊協定
 
-基於聯合協定的 SSO 實現提高了安全性、可靠性和最終使用者體驗，並且更易於實現。 許多應用程式都預先集成在 Azure AD 中，並提供[分步指南](../saas-apps/tutorial-list.md)。 您可以在我們的[Azure 應用商店](https://azuremarketplace.microsoft.com/marketplace/)中找到它們。 有關每個 SSO 方法的詳細資訊，請參閱 Azure[活動目錄中的應用程式單一登入](what-is-single-sign-on.md)一文。
+以同盟通訊協定為基礎的 SSO 執行可改善安全性、可靠性和使用者體驗，而且更容易實行。 許多應用程式已預先整合在 Azure AD 中，[提供逐步指南](../saas-apps/tutorial-list.md)。 您可以在我們的[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/)中找到它們。 如需每個 SSO 方法的詳細資訊，請參閱[Azure Active Directory 中的應用程式的單一登入一](what-is-single-sign-on.md)文。
 
-可通過兩種主要方式使使用者能夠單一登入應用：
+有兩種主要方式可讓您的使用者單一登入您的應用程式：
 
-- **具有聯合單登錄**Azure AD 使用其 Azure AD 帳戶對使用者進行身份驗證。 此方法支援支援 SAML 2.0、WS-聯合或 OpenID 連接等協定的應用程式，並且是單一登入最豐富的模式。 我們建議在應用程式支援 Azure AD 時將聯合 SSO 與 Azure AD 一起使用，而不是使用基於密碼的 SSO 和 ADFS。
+- **使用同盟單一登入**Azure AD 使用其 Azure AD 帳戶向應用程式驗證使用者。 支援像是 SAML 2.0、WS-同盟或 OpenID Connect 等通訊協定的應用程式支援此方法，而且是單一登入的最豐富模式。 我們建議在應用程式支援時，搭配 Azure AD 使用同盟 SSO，而不是以密碼為基礎的 SSO 和 ADFS。
 
-- **使用基於密碼的單一登入**使用者首次使用使用者名和密碼登錄到應用程式時，他們可以訪問該應用程式。 第一次登入之後，Azure AD 就會向應用程式提供使用者名稱和密碼。 密碼式單一登入可以使用網頁瀏覽器擴充功能或行動應用程式，安全儲存應用程式的密碼以及重新執行。 此選項利用應用程式提供的現有登錄過程，使管理員能夠管理密碼，並且不需要使用者知道密碼。
+- **使用密碼型單一登入**時，使用者會在第一次存取應用程式時，先使用使用者名稱和密碼登入。 第一次登入之後，Azure AD 就會向應用程式提供使用者名稱和密碼。 密碼式單一登入可以使用網頁瀏覽器擴充功能或行動應用程式，安全儲存應用程式的密碼以及重新執行。 此選項會利用應用程式提供的現有登入程式，讓系統管理員能夠管理密碼，而不需要使用者知道密碼。
 
-### <a name="considerations-for-federation-based-sso"></a>基於聯合的 SSO 的注意事項
+### <a name="considerations-for-federation-based-sso"></a>同盟型 SSO 的考慮
 
-- **使用 OpenID 連接和 OAuth** - 如果您要連接到的應用程式支援它，請使用 OIDC/OAuth 2.0 方法將您的 SSO 啟用該應用程式。 此方法需要較少的配置，並可實現更豐富的使用者體驗。 有關詳細資訊，請參閱[OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md) [、OpenID 連接 1.0](../develop/v2-protocols-oidc.md)和[Azure 活動目錄開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
-- **基於 SAML 的端點配置**- 如果您使用 SAML，則開發人員在配置應用程式之前將需要特定資訊。 有關詳細資訊，請參閱[編輯基本 SAML 配置](configure-single-sign-on-non-gallery-applications.md)。
-- **基於 SAML 的 SSO 證書管理**- 當您為應用程式啟用聯合 SSO 時，Azure AD 會創建預設有效期為三年的證書。 如果需要，您可以自訂該證書的到期日期。 確保您有在證書過期之前續訂證書的流程。 要瞭解更多資訊，請參閱[Azure AD 管理證書](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)。
+- **使用 OpenID connect 和 OAuth** -如果您要連線的應用程式支援它，請使用 OIDC/OAuth 2.0 方法，讓您的 SSO 能夠連到該應用程式。 此方法需要較少的設定，並可提供更豐富的使用者體驗。 如需詳細資訊，請參閱[OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)、 [OpenID connect 1.0](../develop/v2-protocols-oidc.md)和[Azure Active Directory 開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
+- **Saml 型 SSO 的端點**設定-如果您使用 saml，在設定應用程式之前，您的開發人員將需要特定資訊。 如需詳細資訊，請參閱[編輯基本 SAML](configure-single-sign-on-non-gallery-applications.md)設定。
+- **SAML 型 sso 的憑證管理**-當您為應用程式啟用同盟 SSO 時，Azure AD 會建立預設有效期限為三年的憑證。 如有需要，您可以自訂該憑證的到期日。 請確定您已備妥在到期前更新憑證的處理常式。 若要深入瞭解，請參閱[管理憑證 Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)。
 
-### <a name="considerations-for-password-based-sso"></a>基於密碼的 SSO 的注意事項
+### <a name="considerations-for-password-based-sso"></a>密碼型 SSO 的考慮
 
-使用 Azure AD 進行基於密碼的 SSO 需要部署瀏覽器延伸，該擴展將安全地檢索憑據並填寫登錄表單。 定義一種機制，以便使用[受支援的瀏覽器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)大規模部署擴展。 選項包括：
+使用密碼 SSO 的 Azure AD 需要部署瀏覽器延伸模組，以安全地抓取認證並填寫登入表單。 定義以[支援的瀏覽器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)進行大規模部署擴充功能的機制。 選項包括：
 
-- [Internet 資源管理器的群組原則](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
-- [互聯網資源管理器的組態管理員](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
-- [Chrome、火狐、微軟邊緣或 IE 的使用者驅動下載和配置](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+- [Internet Explorer 的群組原則](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
+- [Internet Explorer 的 Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
+- [適用于 Chrome、Firefox、Microsoft Edge 或 IE 的使用者導向下載和設定](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-要瞭解更多資訊，請參閱[如何配置密碼單一登入](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery)。
+若要深入瞭解，請參閱[如何設定密碼單一登入](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery)。
 
-#### <a name="capturing-login-forms-metadata-for-applications-that-arent-in-the-gallery"></a>捕獲不在庫中的應用程式的登錄表單中繼資料
+#### <a name="capturing-login-forms-metadata-for-applications-that-arent-in-the-gallery"></a>針對不在資源庫中的應用程式，捕獲登入表單中繼資料
 
-Microsoft 支援在 Web 應用程式上捕獲中繼資料以進行密碼保管（捕獲使用者名和密碼欄位）。 在配置應用程式以捕獲表單中繼資料的過程中導航到登錄 URL。 向應用程式擁有者詢問確切的登錄 URL。 此資訊在登錄過程中使用，在登錄期間將 Azure AD 憑據映射到應用程式。
+Microsoft 支援在 web 應用程式上捕獲中繼資料，以用於密碼保存庫（捕獲使用者名稱和密碼欄位）。 在設定應用程式以捕獲表單中繼資料的過程中，流覽至 [登入 URL]。 要求應用程式擁有者輸入確切的登入 URL。 此資訊會在登入程式期間使用，在登入期間將 Azure AD 認證對應至應用程式。
 
-要瞭解更多資訊，請參閱[什麼是使用 Azure AD 的應用程式訪問和 SSO？](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/)
+若要深入瞭解，請參閱[什麼是應用程式存取和 SSO 搭配 Azure AD？–密碼型 SSO](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/)。
 
-#### <a name="indications-that-metadata-in-forms-needs-to-be-recaptured"></a>指示需要重新捕獲表單中的中繼資料
+#### <a name="indications-that-metadata-in-forms-needs-to-be-recaptured"></a>指示表單中的中繼資料必須重新擷取
 
-當應用程式更改其 HTML 佈局時，您可能需要重新捕獲中繼資料以調整更改。 指示 HTML 佈局已更改的常見症狀包括：
+當應用程式變更其 HTML 版面配置時，您可能需要重新取得中繼資料，以針對變更進行調整。 指出 HTML 版面配置有變更的常見徵兆包括：
 
-- 使用者報告按一下應用程式會"卡住"登錄頁
-- 報告使用者名或密碼未填充的使用者
+- 報表按一下應用程式的使用者會在登入頁面中「停滯」
+- 報告使用者名稱或密碼未填入的使用者
 
 #### <a name="shared-accounts"></a>共用帳戶
 
-從登錄的角度來看，具有共用帳戶的應用程式與為單個使用者使用密碼 SSO 的庫應用程式沒有區別。 但是，在規劃和配置旨在使用共用帳戶的應用程式時，還需要執行一些其他步驟：
+從登入的觀點來看，具有共用帳戶的應用程式不會與針對個別使用者使用密碼 SSO 的資源庫應用程式不同。 不過，規劃和設定應用程式以使用共用帳戶時，需要一些額外的步驟：
 
-1. 與應用程式企業用戶合作記錄以下內容：
-   1. 組織中將使用應用程式的使用者集
-   1. 與使用者集關聯的應用程式中的現有憑據集 
-1. 對於使用者集和憑據的每個組合，根據您的要求在雲或本地創建安全性群組。
-1. 重置共用憑據。 在 Azure AD 中部署應用後，個人不需要共用帳戶的密碼。 由於 Azure AD 將存儲密碼，因此請考慮將其設置為非常長且複雜。 
-1. 如果應用程式支援密碼，則配置密碼的自動翻轉。 這樣，即使是進行初始設置的管理員也不會知道共用帳戶的密碼。 
+1. 與應用程式商務使用者合作以記載下列各項：
+   1. 將使用應用程式之組織中的使用者集合
+   1. 與一組使用者相關聯之應用程式中的現有認證集 
+1. 針對每個使用者集合和認證的組合，根據您的需求在雲端或內部部署中建立安全性群組。
+1. 重設共用認證。 在 Azure AD 中部署應用程式之後，個人就不需要共用帳戶的密碼。 因為 Azure AD 會儲存密碼，請考慮將它設定為非常長且複雜。 
+1. 設定自動變換密碼（如果應用程式支援的話）。 如此一來，即使是初始安裝的系統管理員，也不會知道共用帳戶的密碼。 
 
-## <a name="plan-your-authentication-method"></a>規劃身份驗證方法
+## <a name="plan-your-authentication-method"></a>規劃您的驗證方法
 
 選擇正確的驗證方法是設定 Azure AD 混合式身分識別解決方案的第一項重要決策。 請實作使用 Azure AD Connect 所設定的驗證方法，這也會在雲端佈建使用者。
 
-若要選擇驗證方法，需要考慮實作您選取項目的時間、現有基礎結構、複雜度及成本。 這些因素對每個組織而言不同，並可能隨時間改變。 您應該選擇最符合特定方案的方案。 有關詳細資訊，請參閱為[Azure 活動目錄混合標識解決方案選擇正確的身份驗證方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)。
+若要選擇驗證方法，需要考慮實作您選取項目的時間、現有基礎結構、複雜度及成本。 這些因素對每個組織而言不同，並可能隨時間改變。 您應該選擇最符合您特定案例的應用程式。 如需詳細資訊，請參閱[為您的 Azure Active Directory 混合式身分識別解決方案選擇正確的驗證方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)。
 
-## <a name="plan-your-security-and-governance"></a>規劃安全性和治理 
+## <a name="plan-your-security-and-governance"></a>規劃您的安全性與治理 
 
-身份是安全關注和投資的新的主要支點，因為隨著 BYOD 設備和雲應用程式的爆炸式發展，網路週邊變得越來越多孔，效率也越來越低。 
+身分識別是新的主要樞紐分析表，可用於安全性的考慮和投資，因為網路周邊越來越漏洞日益增加，而降低了 BYOD 裝置和雲端應用程式的激增。 
 
-### <a name="plan-access-reviews"></a>規劃訪問審核
+### <a name="plan-access-reviews"></a>規劃存取權審查
 
-[訪問審核](https://docs.microsoft.com/azure/active-directory/governance/create-access-review)使組織能夠高效地管理組成員身份、訪問企業應用程式和角色指派。 您應該計畫定期查看使用者存取權限，以確保只有合適的人員才能繼續訪問。
+[存取審查](https://docs.microsoft.com/azure/active-directory/governance/create-access-review)可讓組織有效率地管理群組成員資格、企業應用程式的存取權，以及角色指派。 您應該規劃定期審查使用者存取權，以確保只有適當的人員可以繼續存取。
 
-設置訪問審核時要規劃的一些關鍵主題包括：
+設定存取權審查時，需要規劃的一些重要主題包括：
 
-1. 確定適合您業務需求的訪問審核的節奏。 這可能像每週、每月、每年或按需練習一樣頻繁。
+1. 識別符合您商務需求的存取審查步調。 這可以是每週、每月、每年，或作為隨選練習的頻率。
 
-1. 創建表示應用訪問報表檢閱者的組。 您需要確保最熟悉應用及其目標使用者和用例的利益相關者是訪問審核的參與者
+1. 建立代表應用程式存取報表審查者的群組。 您必須確保專案關係人最熟悉應用程式及其目標使用者和使用案例，這是您的存取權審查中的參與者
 
-1. 完成訪問審核包括取消不再需要存取權限的使用者的應用存取權限。 計畫處理來自被拒絕使用者的潛在支援請求。 已刪除的使用者將在 Azure AD 中保留 30 天，在此期間，如有必要，管理員可以還原這些使用者。 經過 30 天後，該使用者將永久刪除。 使用 Azure 活動目錄門戶，全域管理員可以在達到該時間段之前顯式永久刪除最近刪除的使用者。
+1. 完成存取權審查包括將應用程式存取權限移至不再需要存取權的使用者。 規劃處理拒絕使用者的潛在支援要求。 已刪除的使用者 Azure AD 在30天內仍會繼續刪除，在這段期間內，系統管理員可以視需要加以還原。 經過 30 天後，該使用者將永久刪除。 使用 Azure Active Directory 入口網站，全域管理員可以在達到該時間週期之前明確地永久刪除最近刪除的使用者。
 
-### <a name="plan-auditing"></a>計畫審核
+### <a name="plan-auditing"></a>規劃審核
 
-Azure AD 提供[包含技術和業務見解的報告](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)。 
+Azure AD 提供[包含技術和商業深入](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)解析的報表。 
 
-安全和活動報告都可用。 安全報告顯示標記為風險的使用者，以及風險登錄。 活動報告通過詳細說明登錄活動並提供所有登錄的審核跟蹤，説明您瞭解組織中使用者的行為。 您可以使用報表來管理風險、提高工作效率和監控合規性。
+安全性和活動報告均可供使用。 安全性報告會顯示標示有風險的使用者和有風險的登入。活動報告藉由詳述登入活動並提供所有登入的審核線索，協助您瞭解組織中使用者的行為。 您可以使用報告來管理風險、提高生產力，以及監視合規性。
 
-| 報表類型 | 訪問審核 | 安全性報告 | 登錄報告 |
+| 報表類型 | 存取權審查 | 安全性報告 | 登入報告 |
 |-------------|---------------|------------------|----------------|
-| 用於查看 | 應用程式許可權和使用方式。 | 可能受損的帳戶 | 誰正在訪問應用程式 |
-| 潛在行動 | 審計訪問;撤銷許可權 | 撤銷存取權限;強制安全重置 | [撤銷存取權] |
+| 使用來審查 | 應用程式許可權和使用方式。 | 可能遭盜用的帳戶 | 誰正在存取應用程式 |
+| 可能的動作 | Audit access;撤銷許可權 | 撤銷存取權;強制安全性重設 | [撤銷存取權] |
 
-Azure AD 會保留大多數審核資料 30 天，並通過 Azure 監管中心或 API 提供資料，以便下載到分析系統中。
+Azure AD 會保留最多30天的審核資料，並透過 Azure 系統管理員入口網站或 API 提供資料，以供您下載至您的分析系統。
 
-### <a name="consider-using-microsoft-cloud-application-security"></a>考慮使用微軟雲應用程式安全性
+### <a name="consider-using-microsoft-cloud-application-security"></a>考慮使用 Microsoft Cloud 的應用程式安全性
 
-微軟雲應用安全 （MCAS） 是雲訪問安全代理 （CASB） 解決方案。 它使您能夠瞭解雲應用和服務，提供複雜的分析以識別和打擊網路威脅，並使您能夠控制資料傳輸方式。
+Microsoft Cloud App Security （MCAS）是一種雲端存取安全性代理程式（CASB）解決方案。 它可讓您瞭解您的雲端應用程式和服務，提供精密的分析來識別和對抗網路威脅，並可讓您控制資料的傳輸方式。
 
-部署 MCAS 使您能夠：
+部署 MCAS 可讓您：
 
-- 使用"雲發現"映射和標識雲環境以及您的組織正在使用的雲應用。
-- 在雲中制裁和取消制裁應用
-- 使用易於部署的應用連接器，利用供應商 API，查看和治理您連接到的應用
-- 使用條件訪問應用控制保護，獲得即時可見度並控制雲應用中的訪問和活動
-- 通過設置策略，然後持續微調策略，説明您獲得持續控制。
+- 使用 Cloud Discovery 來對應和識別您的雲端環境，以及貴組織正在使用的雲端應用程式。
+- 在雲端中批准和取消批准應用程式
+- 使用易於部署的應用程式連接器，利用提供者 Api 來可見度及管理您所連線的應用程式
+- 使用條件式存取應用程式控制保護，取得雲端應用程式內的存取和活動的即時可見度和控制
+- 藉由設定，然後持續微調原則，協助您持續掌控。
 
-Microsoft 雲應用程式安全 （MCAS） 會話控制項可用於任何作業系統上任何主要平臺上的任何瀏覽器。 您也可以封鎖或允許行動應用程式和傳統型應用程式。 通過本機與 Azure AD 集成，可以支援任何配置 SAML 的應用，或支援在 Azure AD 中單一登入的"打開 ID 連接"應用，包括[多個特色應用](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)。
+Microsoft Cloud 的應用程式安全性（MCAS）會話控制適用于任何作業系統上任何主要平臺上的任何瀏覽器。 您也可以封鎖或允許行動應用程式和傳統型應用程式。 藉由以原生方式與 Azure AD 整合，可支援任何以 SAML 設定的應用程式，或在 Azure AD 中使用單一登入的 Open ID Connect 應用程式，包括[數個精選應用](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)程式。
 
-有關 MCAS 的資訊，請參閱[Microsoft 雲應用安全概述](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)。 MCAS 是一種基於使用者的訂閱服務。 您可以在[MCAS 許可資料表中](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)查看許可詳細資訊。
+如需 MCAS 的詳細資訊，請參閱[Microsoft Cloud App Security 總覽](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)。 MCAS 是以使用者為基礎的訂用帳戶服務。 您可以在[MCAS 授權資料表](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)中查看授權詳細資料。
 
 ### <a name="use-conditional-access"></a>使用條件式存取
 
-借助條件訪問，您可以自動為雲應用做出基於條件的存取控制決策。
+透過條件式存取，您可以將雲端應用程式的準則型存取控制決策自動化。
 
-完成第一個要素驗證之後，即會強制執行條件式存取原則。 因此，條件訪問不是針對拒絕服務 （DoS） 攻擊等方案的第一線防禦，而是可以使用這些事件發出的信號來確定訪問。 例如，可以使用登錄風險級別、請求的位置等。 有關條件訪問的詳細資訊[，請參閱概述](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)和[部署計畫](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
+完成第一個要素驗證之後，即會強制執行條件式存取原則。 因此，條件式存取不適合做為拒絕服務（DoS）攻擊等案例的第一行防線，但可以使用這些事件的信號來判斷存取權。 例如，您可以使用登入風險層級、要求的位置等等。 如需條件式存取的詳細資訊，請參閱[總覽](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)和[部署計畫](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
 
-## <a name="azure-sso-technical-requirements"></a>Azure SSO 技術要求
+## <a name="azure-sso-technical-requirements"></a>Azure SSO 技術需求
 
-以下部分詳細介紹了配置特定應用程式的要求，包括必要的環境、終結點、宣告對應、所需屬性、證書和所使用的協定。 您需要此資訊才能在[Azure AD 門戶](https://portal.azure.com/)中配置 SSO。
+下一節詳細說明設定特定應用程式的需求，包括所需的環境、端點、宣告對應、必要的屬性、憑證和使用的通訊協定。 您將需要這項資訊，才能在[Azure AD 入口網站](https://portal.azure.com/)中設定 SSO。
 
-### <a name="authentication-mechanism-details"></a>身份驗證機制詳細資訊
+### <a name="authentication-mechanism-details"></a>驗證機制詳細資料
 
-對於所有預集成的 SaaS 應用，Microsoft 提供了教程，您不需要此資訊。 如果應用程式不在我們的應用程式市場/庫中，您可能需要收集以下資料片段：
+針對所有預先整合的 SaaS 應用程式，Microsoft 提供教學課程，您不需要此資訊。 如果應用程式不在我們的應用程式 marketplace/資源庫中，您可能需要收集下列資料片段：
 
-- **應用程式為 SSO 使用的當前標識提供程式（如果適用）** - 例如：AD FS、Ping Federate、Okta
-- **目標應用程式支援的協定**- 例如，SAML 2.0、OpenID 連接、OAuth、基於表單的 Auth、WS-Fed、WS-Trust
-- **協定配置 Azure AD** - 例如，SAML 2.0 或 1.1、OpenID 連接、OAuth、基於表單的 WS-Fed
+- **應用程式用於 SSO 的目前識別提供者（如果適用**），例如： AD FS、PingFederate、Okta
+- **目標應用程式所支援的通訊協定**，例如 SAML 2.0、OpenID Connect、OAuth、表單架構驗證、Ws-送出、ws-trust
+- **使用 Azure AD 設定的通訊協定**-例如，SAML 2.0 或1.1、OpenID Connect、OAuth、以表單為基礎的 WS-送出
 
-### <a name="attribute-requirements"></a>屬性要求
+### <a name="attribute-requirements"></a>屬性需求
 
-Azure AD 使用者物件和每個 SaaS 應用的使用者物件之間有一組預先配置的屬性和屬性對應。 某些應用管理其他類型的物件，如組。 規劃從 Azure AD 到應用程式的使用者屬性對應，並根據業務需求[自訂預設屬性映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。
+Azure AD 使用者物件和每個 SaaS 應用程式的使用者物件之間，有一組預先設定的屬性和屬性對應。 某些應用程式會管理其他類型的物件，例如群組。 規劃將使用者屬性從 Azure AD 到應用程式的對應，並根據您的業務需求[自訂預設的屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)對應。
 
 ### <a name="certificate-requirements"></a>憑證需求
 
-應用程式的證書必須是最新的，否則使用者可能會無法訪問該應用程式。 大多數 SaaS 應用程式證書的 36 個月都適用。 在應用程式邊欄選項卡中更改該證書持續時間。 請務必記錄過期情況，並瞭解如何管理證書續訂。 
+應用程式的憑證必須是最新的，或使用者無法存取應用程式的風險。 大部分的 SaaS 應用程式憑證都適用于36個月。 您在應用程式分頁中變更了該憑證的持續時間。 請務必記錄到期日，並瞭解您將如何管理憑證更新。 
 
-有兩種方法可以管理證書。 
+有兩種方式可以管理您的憑證。 
 
-- **自動證書滾動**- 微軟支援[在 Azure AD 中簽名金鑰滾動。](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover) 雖然這是我們管理證書的首選方法，但並非所有 ISV 都支援此方案。
+- **自動憑證變換**-Microsoft 支援[在 Azure AD 中簽署金鑰變換](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)。 雖然這是管理憑證的慣用方法，但並非所有 ISV 都支援此案例。
 
-- **手動更新**- 每個應用程式都有自己的證書，該證書會根據定義方式過期。 在應用程式的證書過期之前，請創建新證書並將其發送到 ISV。 可以從聯合中繼資料提取此資訊。 [在此處閱讀有關聯合中繼資料的更多內容。](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata)
+- **手動更新**-每個應用程式都有自己的憑證，它會根據其定義的方式過期。 在應用程式的憑證到期之前，請先建立新的憑證，並將它傳送給 ISV。 這種資訊可以從同盟中繼資料提取。 [如需深入瞭解同盟中繼資料，請參閱這裡。](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata)
 
-## <a name="implement-sso"></a>實現 SSO
+## <a name="implement-sso"></a>執行 SSO
 
-使用以下階段規劃和部署組織中的解決方案：
+使用下列階段在您的組織中規劃和部署您的解決方案：
 
-### <a name="user-configuration-for-sso"></a>SSO 的使用者配置
+### <a name="user-configuration-for-sso"></a>SSO 的使用者設定
 
-- **識別測試使用者**
+- **識別您的測試使用者**
 
-   聯繫應用擁有者，要求他們在應用程式中至少創建三個測試使用者。 確保正確填充主識別碼時使用的資訊，並匹配 Azure AD 中可用的屬性。 在大多數情況下，這將映射到基於 SAML 的應用程式的"NameID"。 對於 JWT 權杖，它是"preferred_username"。
+   請洽詢應用程式擁有者，並要求他們在應用程式內建立最少三個測試使用者。 請確定您將用來做為主要識別碼的資訊已正確填入，且符合 Azure AD 中可用的屬性。 在大部分情況下，這會對應至 SAML 型應用程式的「NameID」。 對於 JWT 權杖，這是「preferred_username」。
    
-   在 Azure AD 中手動創建使用者作為基於雲的使用者，或使用 Azure AD 連接同步引擎從本地同步使用者。 確保資訊與發送到應用程式的聲明匹配。
+   Azure AD 以以雲端為基礎的使用者身分以手動方式建立使用者，或使用 Azure AD Connect 同步處理引擎從內部部署同步處理使用者。 請確定資訊符合傳送至應用程式的宣告。
 
 - **設定 SSO**
 
-   從[應用程式清單中](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)，查找並打開應用程式的 SSO 教程，然後按照本教程的步驟成功配置 SaaS 應用程式。
+   從[應用程式清單](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)中，找出並開啟應用程式的 SSO 教學課程，然後依照教學課程的步驟，成功設定您的 SaaS 應用程式。
 
-   如果找不到應用程式，請參閱[自訂應用程式文檔](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)。 這將引導您瞭解如何添加不在 Azure AD 庫中的應用程式。
+   如果找不到您的應用程式，請參閱[自訂應用程式檔](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)。 這會逐步引導您瞭解如何新增不在 Azure AD 資源庫中的應用程式。
 
-   或者，您可以使用[Microsoft 的指導文檔](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)為企業應用程式使用 SAML 權杖中發出的聲明。 確保此映射到您希望在應用程式的 SAML 回應中收到的內容。 如果您在配置過程中遇到問題，請使用有關如何[調試 SSO 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)的指導。
+   （選擇性）您可以使用[Microsoft 的指引檔](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，針對企業應用程式的 SAML 權杖中發出的宣告。 請確定這會對應到您預期會在應用程式的 SAML 回應中收到的內容。 如果您在設定期間遇到問題，請使用我們的指引[來進行 SSO 整合的調試](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)。
 
-自訂應用程式載入是 Azure AD 高級 P1 或 P2 許可證功能。
+自訂應用程式上架是 Azure AD Premium P1 或 P2 授權功能。
 
-### <a name="provide-sso-change-communications-to-end-users"></a>向最終使用者提供 SSO 更改通信
+### <a name="provide-sso-change-communications-to-end-users"></a>為使用者提供 SSO 變更通訊
 
-實施溝通計畫。 確保您讓最終使用者知道更改即將出現、更改何時到達、現在該怎麼辦以及如何尋求説明。
+實行您的通訊計畫。 請確定您是讓終端使用者知道變更即將推出、何時抵達、現在該怎麼做，以及如何尋求協助。
 
-### <a name="verify-end-user-scenarios-for-sso"></a>驗證 SSO 的最終使用者方案
+### <a name="verify-end-user-scenarios-for-sso"></a>確認 SSO 的終端使用者案例
 
-您可以使用以下測試案例對公司擁有的設備和個人設備進行測試，以確保 SSO 配置按預期工作。 以下方案假定使用者正在導航到應用程式 URL 並遍達由服務提供者啟動的身份驗證流（SP 啟動身份驗證流）。
+您可以使用下列測試案例來進行公司擁有和個人裝置上的測試，以確保您的 SSO 設定如預期般運作。 下列案例假設使用者流覽至應用程式 URL，並通過服務提供者（SP 起始的驗證流程）所起始的驗證流程。
 
-| 狀況 | 按使用者對 SP 啟動的 auth 流的預期結果 |
+| 狀況 | 由使用者在 SP 起始的驗證流程上預期的結果 |
 |----------|---------------------------------------------------|
-| 在公司網路上登錄 IE 應用程式。 | 集成的 Windows 身份驗證 （IWA） 在沒有其他提示時發生。 |
-| 使用 IE 登錄到應用程式，同時使用新的登錄嘗試關閉公司網路。 | AD FS 伺服器上的基於表單的提示。 使用者成功登錄並提示 MFA。 |
-| 使用 IE 登錄到應用程式，同時使用當前會話關閉公司網路，並且從未執行 MFA。 | 使用者不會收到第一個因素的提示。 使用者收到 MFA 的提示。 |
-| 使用 IE 登錄到應用程式，同時使用當前會話關閉公司網路，並且已在此會話中執行 MFA。 | 使用者不會收到第一個因素的提示。 使用者不會收到 MFA。 使用者 SSO 進入應用程式。 |
-| 使用 Chrome/Firefox/Safari 登錄應用程式，同時使用當前會話關閉公司網路，並且已在此會話中執行 MFA。 | 使用者不會收到第一個因素的提示。 使用者不會收到 MFA。 使用者 SSO 進入應用程式。 |
-| 登錄進入應用程式與Chrome/火狐/Safari，而關閉公司網路與新的登錄嘗試。 | AD FS 伺服器上的基於表單的提示。 使用者成功登錄並提示 MFA。 |
-| 在商業網路上使用 Chrome/Firefox 在當前會話登錄應用程式。 | 使用者不會收到第一個因素的提示。 使用者不會收到 MFA。 使用者 SSO 進入應用程式。 |
-| 使用新的登錄嘗試使用應用程式移動應用程式登錄到應用程式。 | AD FS 伺服器上的基於表單的提示。 使用者成功登錄，ADAL 用戶端提示 MFA。 |
-| 未經授權的使用者嘗試使用登錄 URL 登錄應用程式。 | AD FS 伺服器上的基於表單的提示。 使用者無法使用第一個因素登錄。 |
-| 授權使用者嘗試登錄但輸入不正確的密碼。 | 使用者導航到應用程式 URL 並收到錯誤的使用者名/密碼錯誤。 |
-| 授權使用者按一下電子郵件中的連結，並已通過身份驗證。 | 使用者按一下 URL 並登錄到應用程式中，沒有其他提示。 |
-| 授權使用者按一下電子郵件中的連結，但尚未經過身份驗證。 | 使用者按一下 URL 並提示使用第一個因素進行身份驗證。 |
-| 授權使用者使用應用程式移動應用程式 （SP 啟動） 登錄應用程式，並嘗試新的登錄。 | AD FS 伺服器上的基於表單的提示。 使用者成功登錄，ADAL 用戶端提示 MFA。 |
-| 未經授權的使用者嘗試使用登錄 URL （SP 啟動） 登錄應用程式。 | AD FS 伺服器上的基於表單的提示。 使用者無法使用第一個因素登錄。 |
-| 授權使用者嘗試登錄但輸入不正確的密碼。| 使用者導航到應用程式 URL 並收到錯誤的使用者名/密碼錯誤。 |
-| 授權使用者登出，然後再次登錄。 | 如果配置了登出 URL，則使用者將登出所有服務並提示進行身份驗證。 |
-| 授權使用者登出，然後再次登錄。 | 如果未配置登出 URL，使用者將自動使用現有 Azure AD 瀏覽器會話中的現有權杖重新登錄。 |
-| 授權使用者按一下電子郵件中的連結，並已通過身份驗證。 | 使用者按一下 URL 並登錄到應用程式中，沒有其他提示。 |
-| 授權使用者按一下電子郵件中的連結，但尚未經過身份驗證。 | 使用者按一下 URL 並提示使用第一個因素進行身份驗證。 |
+| 在公司網路上使用 IE 登入應用程式。 | 整合式 Windows 驗證（IWA）會發生，而且不會出現任何額外的提示。 |
+| 透過新的登入嘗試，在公司網路中登入具有 IE 的應用程式。 | AD FS 伺服器上以表單為基礎的提示。 使用者成功登入 MFA 的瀏覽器提示。 |
+| 使用目前的會話來登入具有 IE 的應用程式，但從未執行過 MFA。 | 使用者不會收到第一個因素的提示。 使用者收到 MFA 的提示。 |
+| 以目前的會話關閉公司網路，並在此會話中執行 MFA 時，使用 IE 登入應用程式。 | 使用者不會收到第一個因素的提示。 使用者未收到 MFA。 使用者 SSOs 到應用程式。 |
+| 以目前的會話關閉公司網路，並在此會話中執行 MFA 時，以 Chrome/Firefox/Safari 登入應用程式。 | 使用者不會收到第一個因素的提示。 使用者未收到 MFA。 使用者 SSO 的應用程式。 |
+| 透過新的登入嘗試，以 Chrome/Firefox/Safari 登入應用程式，同時關閉公司網路。 | AD FS 伺服器上以表單為基礎的提示。 使用者成功登入 MFA 的瀏覽器提示。 |
+| 在具有目前會話的公司網路上，使用 Chrome/Firefox 登入應用程式。 | 使用者不會收到第一個因素的提示。 使用者未收到 MFA。 使用者 SSO 的應用程式。 |
+| 以具有新登入嘗試的應用程式行動應用程式登入應用程式。 | AD FS 伺服器上以表單為基礎的提示。 使用者成功登入和 ADAL 用戶端提示以進行 MFA。 |
+| 未經授權的使用者嘗試使用登入 URL 登入應用程式。 | AD FS 伺服器上以表單為基礎的提示。 使用者無法以第一個因素登入。 |
+| 授權的使用者嘗試登入，但輸入的密碼不正確。 | 使用者流覽至應用程式 URL，並收到錯誤的使用者名稱/密碼錯誤。 |
+| 已授權的使用者按一下電子郵件中的連結，並已通過驗證。 | 使用者按一下 [URL] 並登入應用程式，而不會出現其他提示。 |
+| 已授權的使用者按一下電子郵件中的連結，但尚未經過驗證。 | 使用者按一下 URL，系統會提示您使用第一個因素進行驗證。 |
+| 已授權的使用者使用應用程式行動應用程式（SP 起始）登入應用程式，並嘗試新的登入。 | AD FS 伺服器上以表單為基礎的提示。 使用者成功登入和 ADAL 用戶端提示以進行 MFA。 |
+| 未經授權的使用者嘗試使用登入 URL （SP 起始）登入應用程式。 | AD FS 伺服器上以表單為基礎的提示。 使用者無法以第一個因素登入。 |
+| 授權的使用者嘗試登入，但輸入的密碼不正確。| 使用者流覽至應用程式 URL，並收到錯誤的使用者名稱/密碼錯誤。 |
+| 已授權的使用者登出後再重新登入。 | 如果已設定登出 URL，則使用者會登出所有服務，並提示您進行驗證。 |
+| 已授權的使用者登出後再重新登入。 | 如果未設定 [登出 URL]，則會使用現有的 Azure AD 瀏覽器會話中現有的權杖自動重新登入使用者。 |
+| 已授權的使用者按一下電子郵件中的連結，並已通過驗證。 | 使用者按一下 [URL] 並登入應用程式，而不會出現其他提示。 |
+| 已授權的使用者按一下電子郵件中的連結，但尚未經過驗證。 | 使用者按一下 URL，系統會提示您使用第一個因素進行驗證。 |
 
 ## <a name="manage-sso"></a>管理 SSO
 
-本節概述了成功管理 SSO 的要求和建議。
+本節概述成功管理 SSO 的需求和建議。
 
-### <a name="required-administrative-roles"></a>所需的管理角色
+### <a name="required-administrative-roles"></a>必要的系統管理角色
 
-始終使用具有最少可用許可權的角色，以完成 Azure 活動目錄中所需的任務。 Microsoft 建議[查看可用的不同角色，](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)並選擇正確的角色來解決此應用程式每個角色的需求。 某些角色可能需要臨時應用並在部署完成後刪除。
+請一律使用具備最少許可權的角色，以在 Azure Active Directory 內完成必要的工作。 Microsoft 建議您[檢查可用的不同角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)，並選擇正確的角色來解決此應用程式每個角色的需求。 在完成部署後，可能需要暫時套用一些角色並加以移除。
 
-| 角色| 角色 | Azure AD 角色（如果需要） |
+| 生活| 角色 | Azure AD 角色（如有必要） |
 |--------|-------|-----------------------------|
-| 説明台管理員 | 第 1 層支援 | None |
-| 身份管理員 | 當問題影響 Azure AD 時配置和調試 | 全域管理員 |
-| 應用程式管理員 | 使用者在應用程式中的證明，對具有許可權的使用者的配置 | None |
-| 基礎架構管理員 | 證書滾存擁有者 | 全域管理員 |
-| 企業主/利益相關者 | 使用者在應用程式中的證明，對具有許可權的使用者的配置 | None |
+| 技術支援中心系統管理員 | 第1層支援 | None |
+| 身分識別管理員 | 在問題影響時設定和調試 Azure AD | 全域系統管理員 |
+| 應用程式管理員 | 應用程式中的使用者證明，具有許可權的使用者設定 | None |
+| 基礎結構管理員 | 憑證變換擁有者 | 全域系統管理員 |
+| 商務擁有者/專案關係人 | 應用程式中的使用者證明，具有許可權的使用者設定 | None |
 
-我們建議使用[特權標識管理](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)（PIM） 來管理您的角色，為具有目錄許可權的使用者提供其他審核、控制和訪問審查。
+我們建議使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) （PIM）來管理您的角色，以針對具有目錄許可權的使用者提供額外的審核、控制和存取權審查。
 
-### <a name="sso-certificate-lifecycle-management"></a>SSO 證書生命週期管理
+### <a name="sso-certificate-lifecycle-management"></a>SSO 憑證生命週期管理
 
-確定負責管理 Azure AD 和正在配置單一登入的應用程式之間的簽章憑證生命週期的正確角色和電子郵件通訊群組清單非常重要。 以下是我們建議的一些關鍵角色：
+請務必找出正確的角色和電子郵件通訊群組清單，負責管理 Azure AD 和使用單一登入設定之應用程式之間的簽署憑證生命週期。 以下是我們建議您備妥的一些重要角色：
 
-- 用於更新應用程式中的使用者屬性的擁有者
-- 使用者隨叫隨到，以尋求應用程式中斷/修復支援
-- 密切監視與證書相關的更改通知的電子郵件通訊群組清單
+- 在應用程式中更新使用者屬性的擁有者
+- 應用程式中斷/修正支援的擁有者-呼叫
+- 與憑證相關的變更通知密切受監視的電子郵件通訊群組清單
 
-證書的最大存留期為三年。 我們建議建立一個過程，介紹如何處理 Azure AD 和應用程式之間的證書更改。 這有助於防止或最小化由於證書過期或強制證書滾動而中斷。
+憑證的最長存留期為三年。 我們建議您建立如何處理 Azure AD 與應用程式之間憑證變更的流程。 這有助於防止或減少因憑證過期或強制憑證變換而造成的中斷。
 
-### <a name="rollback-process"></a>回滾過程
+### <a name="rollback-process"></a>復原進程
 
-完成基於測試案例的測試後，是時候隨應用程式進入生產。 遷移到生產意味著您將在生產租戶中實現計畫配置和測試組態，並將其推廣到使用者。 但是，請務必規劃在部署未按計劃進行的情況下該怎麼做。 如果 SSO 配置在部署期間失敗，您必須瞭解如何緩解任何中斷並減少對使用者的影響。
+當您根據測試案例完成測試之後，就可以使用您的應用程式移至生產環境。 移至生產環境表示您將在生產環境租使用者中執行規劃和測試的設定，並將其推出給您的使用者。 不過，如果您的部署未依照規劃執行，請務必規劃該怎麼做。 如果 SSO 設定在部署期間失敗，您必須瞭解如何減輕任何中斷情況，並降低對使用者的影響。
 
-應用程式中身份驗證方法的可用性將決定最佳策略。 始終確保為應用擁有者提供詳細的文檔，說明在部署遇到問題時如何回到原始登錄配置狀態。
+應用程式內的驗證方法可用性會決定您的最佳策略。 請務必確定您有應用程式擁有者的詳細檔，以瞭解您的部署是否遇到問題時，如何回到原始的登入設定狀態。
 
-- **如果應用支援多個識別提供程式**（例如 LDAP 和 AD FS 和 Ping），則在推出期間不要刪除現有的 SSO 配置。 而是在遷移期間禁用它，以防以後需要將其切換回來。 
+- **如果您的應用程式支援多個身分識別提供者**（例如 LDAP 和 AD FS 和 Ping），請不要在推出期間刪除現有的 SSO 設定。 相反地，在遷移期間停用它，以防您稍後需要將其切換回來。 
 
-- **如果應用不支援多個 IDP，** 但允許使用者使用基於表單的身份驗證（使用者名/密碼）登錄，請確保使用者可以在新的 SSO 配置推出失敗時回退此方法。
+- **如果您的應用程式不支援多個 idp** ，但允許使用者使用表單架構驗證（使用者名稱/密碼）登入，請確定在新的 SSO 設定推出失敗時，使用者可以切換回這種方法。
 
 ### <a name="access-management"></a>存取管理
 
-我們建議在管理對資源的訪問時選擇縮放的方法。 常見方法包括通過 Azure AD 連接同步來利用本機群組，[根據使用者屬性在 Azure AD 中創建動態組](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)，或在資源擁有者管理的 Azure AD 中創建[自助服務組](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)。
+我們建議您在管理資源的存取權時選擇調整的方法。 常見的方法包括利用內部部署群組，方法是透過 Azure AD Connect 同步處理、[根據使用者屬性在 Azure AD 中建立動態群組](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)，或在資源擁有者所管理的 Azure AD 中建立[自助群組](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)。
 
-### <a name="monitor-security"></a>監控安全性
+### <a name="monitor-security"></a>監視安全性
 
-我們建議設置常規節奏，其中查看 SaaS 應用安全性的不同方面，並執行所需的任何補救措施。
+我們建議您定期設定，以查看 SaaS 應用程式安全性的不同層面，並執行所需的任何補救動作。
 
 ### <a name="troubleshooting"></a>疑難排解
 
-以下連結存在故障排除方案。 您可能需要為支援人員創建一個特定的指南，其中包含這些方案和修復它們的步驟。
+下列連結呈現疑難排解案例。 您可能會想要建立支援人員的特定指南，其中包含這些案例和修正它們的步驟。
 
 #### <a name="consent-issues"></a>同意問題
 
-- [意外同意錯誤](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-prompt)
+- [未預期的同意錯誤](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-prompt)
 
 - [使用者同意錯誤](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-unexpected-user-consent-error)
 
 #### <a name="sign-in-issues"></a>登入問題
 
-- [從自訂門戶登錄時遇到問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
+- [從自訂入口網站登入時發生的問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
 
 - [從存取面板登入時發生問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
 
 - [應用程式登入頁面發生錯誤](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
 
-- [登錄到 Microsoft 應用程式時出現問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-first-party-microsoft)
+- [登入 Microsoft 應用程式時發生問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-first-party-microsoft)
 
-#### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>Azure 應用程式庫中列出的應用程式的 SSO 問題
+#### <a name="sso-issues-for-applications-listed-in-the-azure-application-gallery"></a>Azure 應用程式資源庫中所列應用程式的 SSO 問題
 
-- [Azure 應用程式庫中列出的應用程式的密碼 SSO 問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery) 
+- [Azure 應用程式資源庫中所列之應用程式的密碼 SSO 問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-gallery) 
 
-- [Azure 應用程式庫中列出的應用程式的聯合 SSO 問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-gallery)   
+- [Azure 應用程式資源庫中所列之應用程式的同盟 SSO 問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-gallery)   
 
-#### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>Azure 應用程式庫中未列出的應用程式的 SSO 問題
+#### <a name="sso-issues-for-applications-not-listed-in-the-azure-application-gallery"></a>Azure 應用程式資源庫中未列出之應用程式的 SSO 問題
 
-- [Azure 應用程式庫中未列出的應用程式的密碼 SSO 問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-non-gallery) 
+- [Azure 應用程式資源庫中未列出之應用程式的密碼 SSO 問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-password-sso-non-gallery) 
 
-- [Azure 應用程式庫中未列出的應用程式的聯合 SSO 問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
+- [Azure 應用程式資源庫中未列出之應用程式的同盟 SSO 問題](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-federated-sso-non-gallery)
 
 ## <a name="next-steps"></a>後續步驟
 
 [偵錯 SAML 型 SSO](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
 
-[通過 PowerShell 應用的宣告對應](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
+[透過 PowerShell 進行應用程式的宣告對應](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)
 
-[自訂在 SAML 權杖中發出的聲明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
+[自訂 SAML 權杖中發出的宣告](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
 
-[單登錄 SAML 協定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
+[單一登入 SAML 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
 
 [單一登出 SAML 通訊協定](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
 
-[Azure AD B2B（](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)適用于外部使用者（如合作夥伴和供應商）
+[AZURE AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) （適用于合作夥伴和廠商等外部使用者）
 
-[Azure AD 條件訪問](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+[Azure AD 條件式存取](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
 
-[Azure 標識保護](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
+[Azure 身分識別保護](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection)
 
 [SSO 存取](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[應用程式 SSO 教程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+[應用程式 SSO 教學課程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)

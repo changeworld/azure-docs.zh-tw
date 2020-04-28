@@ -1,6 +1,6 @@
 ---
-title: 電源 BI 集成 - Azure 時間序列見解 |微軟文檔
-description: 瞭解 Azure 時間序列洞察中的 Power BI 集成。
+title: Power BI 整合-Azure 時間序列深入解析 |Microsoft Docs
+description: 瞭解 Azure 時間序列深入解析中的 Power BI 整合。
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -9,60 +9,60 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.openlocfilehash: ce566080c6ddbc4784365ceda6011c3f6612732a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76276858"
 ---
-# <a name="connect-time-series-insights-to-power-bi"></a>將時間序列見解連接到 Power BI  
+# <a name="connect-time-series-insights-to-power-bi"></a>將時間序列深入解析連接到 Power BI  
 
-您是否正在尋找一種解決方案來説明關聯時間序列資料、創建生動的視覺化效果以及在整個組織中共用見解？
+您是否正在尋找可協助您將時間序列資料相互關聯的解決方案、建立生動的視覺效果，並在整個組織中分享見解？
 
-Azure 時間序列見解現在與 Power [BI](https://powerbi.microsoft.com/)無縫集成，可跨流資料為您提供更強大的視覺化和儀表板功能，並允許您在整個組織中共用見解和結果。
+Azure 時間序列深入解析現在與[Power BI](https://powerbi.microsoft.com/)緊密整合，為您提供串流資料的更強大視覺效果和儀表板管理功能，並可讓您在整個組織內共用見解和結果。
 
 ## <a name="video"></a>影片
 
-### <a name="learn-more-about-integrating-azure-time-series-insights-with-power-bibr"></a>瞭解有關將 Azure 時間序列見解與 Power BI 集成的更多詳細資訊。</br>
+### <a name="learn-more-about-integrating-azure-time-series-insights-with-power-bibr"></a>深入瞭解整合 Azure 時間序列深入解析與 Power BI。</br>
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>摘要
 
-   [![時間序列見解中的匯出選項](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
+   [![時間序列深入解析中的匯出選項](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 
-通過將資料連線到 Power BI，您現在可以：
+藉由將您的資料連線到 Power BI，您現在可以：
 
-* 與 Power BI 支援的其他資料來源執行關聯，並訪問大量不同的資料視覺化選項。 
-* 使用時序洞察資料創建 Power BI 儀表板和報表，並與您的組織共用它們。 
-* 以簡單、易用的方式解鎖資料互通方案，並比以往任何時候都更快地獲得見解。
-* 使用功能強大的高級編輯器修改 Power BI 中的時間序列見解資料。
+* 與 Power BI 支援的其他資料來源執行相互關聯，並存取不同資料視覺效果選項的主機。 
+* 使用您的時間序列深入解析資料建立 Power BI 儀表板和報表，並與您的組織共用。 
+* 以簡單、容易使用的方式來解除鎖定資料 interop 案例，並比以往更快取得深入解析。
+* 使用強大的進階編輯器，修改 Power BI 內的時間序列深入解析資料。
 
-## <a name="native-connector"></a>本機連接器
+## <a name="native-connector"></a>原生連接器
 
-連接資料需要不到一分鐘。 通過將視圖從時序 Insight 資源管理器快速匯出到 Power BI，組織中的任何人都可以直觀地訪問和直觀地轉換資料。
+連接您的資料所需的時間不到一分鐘。 藉由將您的視圖從時間序列深入解析瀏覽器快速匯出至 Power BI，組織中的任何人都可以直覺地存取並以視覺化方式轉換資料。
 
-配置選項包括在**原始****級別和聚合級別**資料之間進行選擇，以及選擇所需的時間範圍。 
+設定選項包括在**原始**和**匯總層級**資料之間選擇，並選取所需的時間範圍。 
 
-連接資料後，Power BI 的所有豐富的視覺化和圖表工具都可用於進一步增強資訊共用功能。 
+一旦資料連線之後，就可以使用所有 Power BI 的豐富視覺效果和圖表工具，進一步增強您的資訊共用功能。 
 
-   [![Power BI 中的圖表示例](./media/concepts-connect-power-bi/power-bi-tsi-example.png)](./media/concepts-connect-power-bi/power-bi-tsi-example.png#lightbox)
+   [![Power BI 中的圖表範例](./media/concepts-connect-power-bi/power-bi-tsi-example.png)](./media/concepts-connect-power-bi/power-bi-tsi-example.png#lightbox)
 
-閱讀[如何將時間序列見解連接到 Power BI，](./how-to-connect-power-bi.md)瞭解分步細節。
+如需逐步解說的詳細資訊，請參閱[如何將時間序列深入解析連接到 Power BI](./how-to-connect-power-bi.md) 。
 
-## <a name="flexible-workflow"></a>靈活的工作流程
+## <a name="flexible-workflow"></a>彈性工作流程
  
-在工作流的任意位置使用連接器：
+在工作流程中的任何位置使用連接器：
 
-* 如果您位於時間序列見解資源管理器中，則可以快速將視圖匯出到 Power BI。 
-* 如果您已在 Power BI 中，請使用時序見解查詢資料增強現有視覺化方案。
+* 如果您是在時間序列深入解析總管中，您可以快速地將您的視圖匯出至 Power BI。 
+* 如果您已經在 Power BI，請使用時間序列深入解析查詢資料來擴大現有的視覺效果案例。
 
-有關 Power BI 中的高級查詢和編輯功能，請使用 Power BI 的高級編輯器。
+如需 Power BI 內的先進查詢和編輯功能，請使用 Power BI 的進階編輯器。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 閱讀[如何將時間序列見解連接到 Power BI](./how-to-connect-power-bi.md)。
+* 閱讀[如何將時間序列深入解析連接到 Power BI](./how-to-connect-power-bi.md)。
 
-* 瞭解有關[Power BI](https://docs.microsoft.com/power-bi/)的更多。
+* 深入瞭解[Power BI](https://docs.microsoft.com/power-bi/)。
 
-* 下載[Power BI 桌面](https://powerbi.microsoft.com/desktop/)並開始連接資料。
+* 下載[Power BI desktop](https://powerbi.microsoft.com/desktop/)並開始連接您的資料。

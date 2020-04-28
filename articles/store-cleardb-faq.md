@@ -12,10 +12,10 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: ddbf1eb960a24cfaa8d09ab45b6febca07e6d504
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75979918"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL 資料庫搭配 Azure App Service 的常見問題集
@@ -30,7 +30,7 @@ ms.locfileid: "75979918"
 請參閱 [ClearDB](https://w2.cleardb.net/)，以取得該服務的最新資訊。 ClearDB 是 MySQL 代管服務，會為您管理 MySQL 基礎結構。 
 
 您有其他數個選項可以在 Azure 中裝載 MySQL：
-* [MySQL 的 Azure 資料庫](https://azure.microsoft.com/services/mysql/)
+* [適用於 MySQL 的 Azure 資料庫](https://azure.microsoft.com/services/mysql/)
 * [Azure VM 上執行的 MySQL 叢集](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
 * [Azure VM 上執行的 MySQL 單一執行個體](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
@@ -49,7 +49,7 @@ ms.locfileid: "75979918"
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>我在自己的 Azure 虛擬機器上執行 MySQL。 可以將我的 Azure Web 應用程式連接到我的資料庫嗎？
 是。 只要您的 Azure VM 已將遠端存取權提供給 Web 應用程式，Web 應用程式就能連線到您的資料庫。 如需詳細資訊，請參閱 [在虛擬機器上安裝 MySQL](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
-## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>在哪些國家/地區支援 ClearDB 高級 MySQL 群集？
+## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>哪些國家/地區支援 ClearDB Premium MySQL 叢集？
 ClearDB Premium MySQL 叢集適用於下列區域以外的全球所有 Azure 區域：印度、澳洲、巴西南部及中國。
 
 ## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>可以於使用 ClearDB Premium 叢集解決方案建立資料庫之前建立新的叢集嗎？
@@ -68,13 +68,13 @@ Azure Marketplace 無法供在亞塞拜然、克羅埃西亞、挪威或波多�
 在 [Azure 入口網站](https://portal.azure.com)，您可以相應增加 ClearDB 共用裝載資料庫。 閱讀[本文](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/)以深入了解。 我們目前不支援 Azure 入口網站中的 ClearDB 進階叢集升級。
 
 ## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>我在 Azure 入口網站中看不到我的 ClearDB 資料庫？
-如果在經典中創建了 ClearDB 資料庫，您將無法在[Azure 門戶](https://portal.azure.com)中看到資料庫。 這個問題目前無法解決。
+如果您已在傳統中建立 ClearDB 資料庫，將無法在[Azure 入口網站](https://portal.azure.com)中看到您的資料庫。 這個問題目前無法解決。
 
 ## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>我的資料庫關閉時應向誰連絡尋求支援？
 如有任何資料庫相關的問題，請連絡 [ClearDB 支援](https://www.cleardb.com/developers/help/support) 。 準備好提供問題資訊與您的 Azure 訂用帳戶資訊。
 
 ## <a name="can-i-create-additional-users-for-my-cleardb-mysql-database-cluster-solution"></a>我可以為自己的 ClearDB MySQL 資料庫叢集解決方案建立其他的使用者嗎？
-否。 您無法建立其他的使用者，但可以在自己的 ClearDB 資料庫叢集上建立其他的資料庫。  
+不可以。 您無法建立其他的使用者，但可以在自己的 ClearDB 資料庫叢集上建立其他的資料庫。  
 
 ## <a name="can-basicpro-series-databases-be-upgraded-in-place-similar-to-planetary-plans-today-on-cleardb-portal"></a>與 ClearDB 入口網站上目前的 Planetary 計劃類似，是否可以就地升級基本/專業系列資料庫嗎？
 是，可以就地升級基本系列資料庫 (基本 60 到基本 500)。 可以就地升級專業系列 (專業 125 到專業 1000)，但專業 60 除外。 我們目前不支援升級專業 60 資料庫。 

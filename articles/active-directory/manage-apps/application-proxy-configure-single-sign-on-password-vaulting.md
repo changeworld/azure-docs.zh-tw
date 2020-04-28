@@ -15,10 +15,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b0259a8d9fcb4c9c513ab2c31103c9a8488e90ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025736"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>使用應用程式 Proxy 進行單一登入的密碼保存庫
@@ -31,30 +31,30 @@ Azure Active Directory 應用程式 Proxy 可發佈內部部署應用程式，�
 
 ## <a name="set-up-password-vaulting-for-your-application"></a>為應用程式設定密碼儲存庫存
 
-1. 以管理員身份登錄到[Azure 門戶](https://portal.azure.com)。
-1. 選擇**Azure 活動目錄** > **企業應用程式** > **所有應用程式**。
+1. 以系統管理員身分登入[Azure 入口網站](https://portal.azure.com)。
+1. 選取 [ **Azure Active Directory** > **企業應用程式** > ] [**所有應用程式**]。
 1. 從清單中選取您要設定 SSO 的應用程式。  
 1. 選取 [應用程式 Proxy]****。 
-1. 將**預身份驗證類型**更改為 **"傳遞"，** 然後選擇 **"保存**"。 稍後，您可以再次切換回**Azure 活動目錄**類型！ 
-1. 選擇**單一登入**。
+1. 將 [**預先驗證類型**] 變更為 [**通過**]，然後選取 [**儲存**]。 稍後您可以再次切換回**Azure Active Directory**類型！ 
+1. 選取 [**單一登入**]。
 
-   ![從應用的概述頁面選擇單一登入](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
+   ![從應用程式的 [總覽] 頁面選取 [單一登入]](./media/application-proxy-configure-single-sign-on-password-vaulting/select-sso.png)
 
 1. 在 SSO 模式中，選擇 [密碼型登入]****。
 1. 在登入 URL 輸入頁面 URL，使用者將在該頁面輸入其使用者名稱和密碼，以登入公司網路外部的應用程式。 這可能是您透過應用程式 Proxy 發佈應用程式時建立的外部 URL。
 
    ![選擇密碼型登入並輸入您的 URL](./media/application-proxy-configure-single-sign-on-password-vaulting/password-sso.png)
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 1. 選取 [應用程式 Proxy]****。 
-1. 將**預身份驗證類型**更改為**Azure 活動目錄**，然後選擇 **"保存**"。 
-1. 選擇**使用者和組**。
-1. 通過選擇 **"添加使用者**"將使用者分配給應用程式。 
-1. 如果要預定義使用者的憑據，請選中使用者名前面的核取方塊，然後選擇 **"更新憑據**"。
-1. 選擇**Azure 活動目錄** > **應用註冊** > **所有應用程式**。
-1. 從清單中選擇使用密碼 SSO 配置的應用。
+1. 將 [**預先驗證] 類型**變更為**Azure Active Directory** ，然後選取 [**儲存**]。 
+1. 選取 [**使用者和群組**]。
+1. 選取 [**新增使用者**]，將使用者指派給應用程式。 
+1. 如果您想要預先定義使用者的認證，請核取使用者名稱前面的方塊，然後選取 [**更新認證**]。
+1. 選取 [ **Azure Active Directory** > ]**應用程式註冊** > [**所有應用程式**]。
+1. 從清單中，選取您使用密碼 SSO 設定的應用程式。
 1. 選取 [建立品牌]****。 
-1. 使用密碼 SSO 頁**中的"登錄 URL"** 更新**主頁 URL，** 然後選擇 **"保存**"。  
+1. 使用密碼 SSO 頁面中的 [登入**url** ] 來更新**首頁 url** ，然後選取 [**儲存**]。  
 
 
 
@@ -64,7 +64,7 @@ Azure Active Directory 應用程式 Proxy 可發佈內部部署應用程式，�
 
 ## <a name="test-your-app"></a>測試應用程式
 
-轉到"我的應用"門戶。 使用憑據（或使用存取權限設置的測試帳戶的憑據）登錄。 成功登錄後，按一下應用的圖示。 這可能會觸發安裝"我的應用安全登錄瀏覽器"擴展。 如果使用者具有預定義的憑據，則應用的身份驗證應自動進行，否則必須首次指定使用者名或密碼。 
+移至我的應用程式入口網站。 使用您的認證登入（或使用存取權設定的測試帳號憑證）。 成功登入之後，請按一下應用程式的圖示。 這可能會觸發我的應用程式安全登入瀏覽器延伸模組的安裝。 如果您的使用者具有預先定義的認證，應用程式的驗證應該會自動發生，否則您必須第一次指定使用者名稱或密碼。 
 
 ## <a name="next-steps"></a>後續步驟
 

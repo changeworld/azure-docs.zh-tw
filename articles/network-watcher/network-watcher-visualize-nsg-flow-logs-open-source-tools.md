@@ -1,5 +1,5 @@
 ---
-title: 視覺化 NSG 流日誌 - 彈性堆疊
+title: 視覺化 NSG 流量記錄-彈性堆疊
 titleSuffix: Azure Network Watcher
 description: 使用網路監看員和彈性堆疊在 Azure 中管理和分析網路安全性群組流量記錄。
 services: network-watcher
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840633"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>使用開放原始碼工具將 Azure 網路監看員 NSG 流量記錄視覺化
@@ -37,7 +37,7 @@ ms.locfileid: "76840633"
 ## <a name="steps"></a>步驟
 
 ### <a name="enable-network-security-group-flow-logging"></a>啟用網路安全性群組流量記錄
-在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 有關啟用網路安全流日誌的說明，請參閱以下文章[簡介網路安全性群組流日誌記錄](network-watcher-nsg-flow-logging-overview.md)。
+在此案例中，您必須在您的帳戶中至少一個網路安全性群組上啟用「網路安全性群組流量記錄」。 如需有關啟用網路安全性流程記錄的指示，請參閱下列文章：[網路安全性群組的流量記錄簡介](network-watcher-nsg-flow-logging-overview.md)。
 
 ### <a name="set-up-the-elastic-stack"></a>設定彈性堆疊
 藉由連線 NSG 流量記錄與彈性堆疊，我們可以建立 Kibana 儀表板，以便從記錄搜尋、繪圖、分析和洞察。
@@ -157,7 +157,7 @@ ms.locfileid: "76840633"
    }  
    ```
 
-有關安裝 Logstash 的進一步說明，請參閱[官方文檔](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)。
+如需安裝 Logstash 的進一步指示，請參閱[官方檔](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)。
 
 ### <a name="install-the-logstash-input-plugin-for-azure-blob-storage"></a>安裝 Azure blob 儲存體的 Logstash 輸入外掛程式
 

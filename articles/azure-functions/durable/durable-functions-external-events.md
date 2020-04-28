@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76262957"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>在 Durable Functions (Azure Functions) 中處理外部事件
@@ -20,7 +20,7 @@ ms.locfileid: "76262957"
 
 ## <a name="wait-for-events"></a>等候事件
 
-[業務流程觸發器綁定](durable-functions-bindings.md#orchestration-trigger)的`WaitForExternalEvent`（.NET） 和`waitForExternalEvent`（JavaScript） 方法允許協調器函數非同步等待和偵聽外來事件。 接聽協調器函式會宣告事件的「名稱」** 和預期收到的「資料形式」**。
+`WaitForExternalEvent` [協調流程觸發](durable-functions-bindings.md#orchestration-trigger)程式系`waitForExternalEvent`結的（.net）和（JavaScript）方法可讓協調器函式以非同步方式等候並接聽外來事件。 接聽協調器函式會宣告事件的「名稱」** 和預期收到的「資料形式」**。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -42,9 +42,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面的 C# 代碼用於持久函數 2.x。 對於持久函數 1.x，必須使用`DurableOrchestrationContext`而不是`IDurableOrchestrationContext`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
+> 先前的 c # 程式碼適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用`DurableOrchestrationContext` ，而不是`IDurableOrchestrationContext`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -93,9 +93,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面的 C# 代碼用於持久函數 2.x。 對於持久函數 1.x，必須使用`DurableOrchestrationContext`而不是`IDurableOrchestrationContext`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
+> 先前的 c # 程式碼適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用`DurableOrchestrationContext` ，而不是`IDurableOrchestrationContext`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -141,11 +141,11 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面的代碼用於持久函數 2.x。 對於持久函數 1.x，必須使用`DurableOrchestrationContext`而不是`IDurableOrchestrationContext`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
+> 先前的程式碼適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用`DurableOrchestrationContext` ，而不是`IDurableOrchestrationContext`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
 在 .NET 中，如果事件裝載無法轉換為預期的類型 `T`，則會擲回例外狀況。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -166,14 +166,14 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-`WaitForExternalEvent`無限期地等待某些輸入。  等候時可以安心卸載函式應用程式。 當此協調流程執行個體有事件抵達時，就會自動甦醒並立即處理事件。
+`WaitForExternalEvent`會無限期地等候某些輸入。  等候時可以安心卸載函式應用程式。 當此協調流程執行個體有事件抵達時，就會自動甦醒並立即處理事件。
 
 > [!NOTE]
 > 如果函數應用程式使用使用情況方案，則協調器函式等候來自 `WaitForExternalEvent` (.NET) 或 `waitForExternalEvent` (JavaScript) 的工作時，不論等多久都不會產生費用。
 
 ## <a name="send-events"></a>傳送事件
 
-[業務流程用戶端綁定](durable-functions-bindings.md#orchestration-client)的`RaiseEventAsync`（.NET） 或`raiseEvent`（JavaScript） 方法發送`WaitForExternalEvent`（.NET） 或`waitForExternalEvent`（JavaScript） 等待的事件。  `RaiseEventAsync` 方法接受 *eventName* 和 *eventData* 作為參數。 事件資料必須是 JSON 可序列化。
+[協調流程用戶端](durable-functions-bindings.md#orchestration-client)系`raiseEvent`結的`RaiseEventAsync` （.net）或（javascript）方法會傳送`WaitForExternalEvent` （.net）或`waitForExternalEvent` （javascript）等候的事件。  `RaiseEventAsync` 方法接受 *eventName* 和 *eventData* 作為參數。 事件資料必須是 JSON 可序列化。
 
 以下的範例佇列觸發函式會將「核准」事件傳送至協調器函式執行個體。 協調流程執行個體識別碼來自佇列訊息的本文。
 
@@ -190,9 +190,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> 前面的 C# 代碼用於持久函數 2.x。 對於持久函數 1.x，必須使用`OrchestrationClient`屬性而不是`DurableClient`屬性，並且必須使用`DurableOrchestrationClient`參數類型而不是`IDurableOrchestrationClient`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
+> 先前的 c # 程式碼適用于 Durable Functions 2.x。 針對 Durable Functions `OrchestrationClient` 1.x，您必須使用屬性，而不是`DurableClient`屬性，而且您必須使用`DurableOrchestrationClient`參數類型，而不是`IDurableOrchestrationClient`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -213,7 +213,7 @@ module.exports = async function(context, instanceId) {
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [瞭解如何實現錯誤處理](durable-functions-error-handling.md)
+> [瞭解如何執行錯誤處理](durable-functions-error-handling.md)
 
 > [!div class="nextstepaction"]
 > [執行等候人為互動的範例](durable-functions-phone-verification.md)

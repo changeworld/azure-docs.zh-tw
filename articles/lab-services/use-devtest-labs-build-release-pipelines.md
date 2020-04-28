@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Pipelines 建置和發行管線中的 DevTest 實驗室
-description: 瞭解如何在 Azure 管道生成和發佈管道中使用 Azure 開發人員測試實驗室。
+description: 瞭解如何使用 Azure Pipelines 組建和發行管線中的 Azure DevTest Labs。
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -13,90 +13,90 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: e16f3c5a0c0b2b86d6a893f541cefb275a8e7d07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169229"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>使用 Azure Pipelines 建置和發行管線中的 DevTest 實驗室
-本文提供有關如何在 Azure 管道生成和發佈管道中使用 DevTest Labs 的資訊。 
+本文提供如何在 Azure Pipelines 組建和發行管線中使用 DevTest Labs 的相關資訊。 
 
-## <a name="overall-flow"></a>總體流程
-基本流程是具有執行以下任務的**生成管道**：
+## <a name="overall-flow"></a>整體流程
+基本流程是使用**組建管線**來執行下列工作：
 
-1. 生成應用程式代碼。
-1. 在 DevTest 實驗室中創建基本環境。
-1. 使用自訂資訊更新環境。
-1. 將應用程式部署到開發人員測試實驗室環境
-1. 測試代碼。 
+1. 建立應用程式程式碼。
+1. 在 DevTest Labs 中建立基本環境。
+1. 以自訂資訊更新環境。
+1. 將應用程式部署至 DevTest Labs 環境
+1. 測試程式碼。 
 
-成功完成生成後，**發佈管道**將使用生成專案來部署暫存或生產。 
+成功完成組建之後，**發行管線**將會使用組建成品來部署預備或生產環境。 
 
-必要的前提之一是，在生成工件中提供重新創建測試生態系統所需的所有資訊，包括 Azure 資源的配置。 由於 Azure 資源在使用時會產生成本，因此公司希望控制或跟蹤這些資源的使用。 在某些情況下，用於創建和配置資源的 Azure 資源管理器範本可能由 IT 等其他部門管理。 而且，這些範本可能存儲在不同的存儲庫中。 它會導致一個有趣的情況，即將創建和測試生成，並且代碼和配置都需要存儲在生成工件中，以便在生產中正確重新創建系統。 
+其中一個必要的內部部署，就是可在組建成品內取得重新建立已測試的生態系統所需的所有資訊，包括 Azure 資源的設定。 因為 Azure 資源會在使用時產生成本，所以公司想要控制或追蹤這些資源的使用。 在某些情況下，用來建立和設定資源的 Azure Resource Manager 範本可能是由另一個部門（如 IT）所管理。 此外，這些範本可能會儲存在不同的儲存機制中。 它會產生一個有趣的情況，其中會建立並測試組建，而且程式碼和設定都必須儲存在組建成品中，才能在生產環境中適當地重新建立系統。 
 
-在生成/測試階段使用 DevTest Labs，可以將 Azure 資源管理器範本和支援檔添加到生成源，以便在發佈階段將用於測試的確切配置部署到生產階段。 使用正確配置**創建 Azure DevTest 實驗室環境**任務將資源管理器範本保存在生成工件中。 在此示例中，您將使用教程中的代碼[：在 Azure 應用服務中構建 .NET Core 和 SQL 資料庫 Web 應用](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)，以在 Azure 中部署和測試 Web 應用。
+在組建/測試階段使用 DevTest Labs 時，您可以將 Azure Resource Manager 範本和支援檔案加入至組建來源，以便在發行階段期間，用來測試的確切設定會部署到生產環境。 使用適當設定**建立 Azure DevTest Labs 環境**工作，將會在組建成品中儲存 Resource Manager 範本。 在此範例中，您將使用[教學課程：在 Azure App Service 中建立 .Net Core 和 SQL Database web 應用程式](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)中的程式碼，在 Azure 中部署和測試 web 應用程式。
 
-![總體流程](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
+![整體流程](./media/use-devtest-labs-build-release-pipelines/overall-flow.png)
 
 ## <a name="set-up-azure-resources"></a>設定 Azure 資源
-需要事先創建幾個項：
+您必須事先建立幾個專案：
 
-- 兩個存儲庫。 第一個包含教程中的代碼和資源管理器範本，其中有兩個額外的 VM。 第二個將包含基本 Azure 資源管理器範本（現有配置）。
-- 用於部署生產代碼和配置的資源組。
-- 需要使用與生成管道[的配置存儲庫的連接](devtest-lab-create-environment-from-arm.md)來設置實驗室。 需要將資源管理器範本作為 azuredeploy.json 與中繼資料.json 一起簽入配置存儲庫，以允許 DevTest Labs 識別和部署該範本。
+- 兩個存放庫。 第一個具有教學課程中的程式碼，以及另一個具有兩個額外 Vm 的 Resource Manager 範本。 第二個會包含基底 Azure Resource Manager 範本（現有的設定）。
+- 用於部署生產環境程式碼和設定的資源群組。
+- 您必須使用組建管線之設定存放庫的連線[來](devtest-lab-create-environment-from-arm.md)設定實驗室。 Resource Manager 範本必須簽入設定存放庫中，並以 azuredeploy.parameters.json」作為 json，以允許 DevTest Labs 辨識及部署範本。
 
-生成管道將創建一個 DevTest Labs 環境，並部署用於測試的代碼。
+組建管線會建立 DevTest Labs 環境，並部署程式碼來進行測試。
 
-## <a name="set-up-a-build-pipeline"></a>設置生成管道
-在 Azure 管道中，使用教程中的代碼創建生成管道[：在 Azure 應用服務中生成 .NET 核心和 SQL 資料庫 Web 應用](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)。 使用**ASP.NET核心**範本，該範本將填充生成、測試和發佈代碼所需的任務。
+## <a name="set-up-a-build-pipeline"></a>設定組建管線
+在 Azure Pipelines 中，使用[教學課程：在 Azure App Service 中建立 .Net Core 和 SQL Database web 應用程式](../app-service/app-service-web-tutorial-dotnetcore-sqldb.md)中的程式碼，建立組建管線。 使用 [ **ASP.NET Core** ] 範本，這會填入建立、測試及發佈程式碼所需的工作。
 
-![選擇ASP.NET範本](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
+![選取 ASP.NET 範本](./media/use-devtest-labs-build-release-pipelines/select-asp-net.png)
 
-您需要添加三個附加任務，以在 DevTest 實驗室中創建環境並部署到環境中。
+您必須新增三個額外的工作，以在 DevTest Labs 中建立環境，並部署至環境。
 
-![具有三個任務的管道](./media/use-devtest-labs-build-release-pipelines/pipeline-tasks.png)
+![具有三個工作的管線](./media/use-devtest-labs-build-release-pipelines/pipeline-tasks.png)
 
-### <a name="create-environment-task"></a>創建環境任務
-在創建環境任務 **（Azure DevTest 實驗室創建環境**任務）中使用下拉清單選擇以下值：
+### <a name="create-environment-task"></a>建立環境工作
+在 [建立環境] 工作（**Azure DevTest Labs 建立環境**] 工作）中，使用下拉式清單來選取下列值：
 
 - Azure 訂用帳戶
-- 實驗室名稱
-- 存儲庫的名稱
-- 範本的名稱（顯示存儲環境的資料夾）。 
+- 實驗室的名稱
+- 存放庫的名稱
+- 範本的名稱（顯示儲存環境的資料夾）。 
 
-我們建議您在頁面上使用下拉清單，而不是手動輸入資訊。 如果手動輸入資訊，請輸入完全合格的 Azure 資源識別碼。 任務顯示易記名稱而不是資源 Id。 
+我們建議您在頁面上使用下拉式清單，而不是手動輸入資訊。 如果您手動輸入資訊，請輸入完整的 Azure 資源識別碼。 此工作會顯示易記名稱，而不是資源識別碼。 
 
-環境名稱是開發人員測試實驗室中顯示的顯示名稱。 它應該是每個生成的唯一名稱。 例如 **：TestEnv$（生成.BuildId）**。 
+環境名稱是顯示在 DevTest Labs 內的名稱。 它應該是每個組建的唯一名稱。 例如： **TestEnv $ （BuildId）**。 
 
-您可以指定參數檔或參數以將資訊傳遞到資源管理器範本。 
+您可以指定參數檔案或參數，將資訊傳遞至 Resource Manager 範本。 
 
-**根據環境範本輸出選項選擇"創建輸出變數**"並輸入引用名稱。 在此示例中，輸入參考名稱的**BaseEnv。** 配置下一個任務時，您將使用此 BaseEnv。 
+選取 [**根據環境範本輸出建立輸出變數**] 選項，然後輸入參考名稱。 針對此範例，請輸入**BaseEnv**做為參考名稱。 當您設定下一個工作時，將會使用此 BaseEnv。 
 
-![創建 Azure 開發人員測試實驗室環境任務](./media/use-devtest-labs-build-release-pipelines/create-environment.png)
+![建立 Azure DevTest Labs 環境工作](./media/use-devtest-labs-build-release-pipelines/create-environment.png)
 
-### <a name="populate-environment-task"></a>填充環境任務
-第二個任務 **（Azure 開發人員測試實驗室填充環境**任務）是更新現有的開發人員測試實驗室環境。 創建環境任務輸出用於為此任務配置環境名稱的**BaseEnv.環境ResourceId。** 此示例的資源管理器範本有兩個參數 -**管理員使用者名**和**管理員密碼**。 
+### <a name="populate-environment-task"></a>填入環境工作
+第二個工作（**Azure DevTest Labs 填入環境**工作）是更新現有的 DevTest Labs 環境。 建立環境工作會輸出**BaseEnv environmentResourceId** ，用來設定這項工作的環境名稱。 此範例的 Resource Manager 範本有兩個參數- **adminUserName**和**adminPassword**。 
 
-![填充 Azure 開發人員測試實驗室環境任務](./media/use-devtest-labs-build-release-pipelines/populate-environment.png)
+![填入 Azure DevTest Labs 環境工作](./media/use-devtest-labs-build-release-pipelines/populate-environment.png)
 
-## <a name="app-service-deploy-task"></a>應用服務部署任務
-第三個任務是**Azure 應用服務部署**任務。 應用類型設置為 Web**應用**，應用服務名稱設置為 **$（WebSite）。**
+## <a name="app-service-deploy-task"></a>App Service 部署工作
+第三個工作是**Azure App Service 部署**工作。 [應用程式類型] 設定為 [ **Web 應用程式**]，而 [App Service 名稱] 設定為 **$ （網站）**。
 
-![應用服務部署任務](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
+![App Service 部署工作](./media/use-devtest-labs-build-release-pipelines/app-service-deploy.png)
 
-## <a name="set-up-release-pipeline"></a>設置發佈管道
-創建具有兩個任務的發佈管道 **：Azure 部署：創建或更新資源組**和**部署 Azure 應用服務**。 
+## <a name="set-up-release-pipeline"></a>設定發行管線
+您會建立具有兩個工作的發行管線： **Azure 部署：建立或更新資源群組**和**部署 Azure App Service**。 
 
-對於第一個任務，指定資源組的名稱和位置。 範本位置是連結專案。 如果資源管理器範本包含連結範本，則需要實施自訂資源組部署。 範本位於已發佈的刪除工件中。 覆蓋資源管理器範本的範本參數。 您可以將其餘設置保留為預設值。 
+針對第一個工作，指定資源群組的名稱和位置。 範本位置是連結的成品。 如果 Resource Manager 範本包含連結的範本，則必須實作為自訂資源群組部署。 範本位於已發行的卸載成品中。 覆寫 Resource Manager 範本的範本參數。 您可以保留其餘設定的預設值。 
 
-對於第二個任務 **"部署 Azure 應用服務**"，指定 Azure 訂閱，為**應用類型**選擇**Web 應用**，為**應用服務名稱**選擇 **$（WebSite）。** 您可以將其餘設置保留為預設值。 
+針對第二個工作 [**部署 Azure App Service**]，指定 [Azure 訂用帳戶]、選取 [**應用程式類型**的**Web 應用程式**] 和 [ **App Service 名稱**的 **$ （網站）** ]。 您可以保留其餘設定的預設值。 
 
 ## <a name="test-run"></a>測試執行
-現在，兩個管道都已設置，手動排隊生成，並看到它工作。 下一步是為生成設置適當的觸發器，並將生成連接到發佈管道。
+既然已設定這兩個管線，請手動將組建排入佇列，並查看其運作方式。 下一個步驟是為組建設定適當的觸發程式，並將組建連接至發行管線。
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：
 
-- [將 Azure 開發人員測試實驗室集成到 Azure 管道中，持續集成和交付管道](devtest-lab-integrate-ci-cd-vsts.md)
-- [將環境集成到 Azure 管道 CI/CD 管道中](integrate-environments-devops-pipeline.md)
+- [將 Azure DevTest Labs 整合到您的 Azure Pipelines 持續整合和傳遞管線](devtest-lab-integrate-ci-cd-vsts.md)
+- [將環境整合到您的 Azure Pipelines CI/CD 管線](integrate-environments-devops-pipeline.md)

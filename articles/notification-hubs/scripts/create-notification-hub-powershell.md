@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 創建 Azure 通知中心 |微軟文檔
-description: 瞭解如何使用 PowerShell 腳本創建 Azure 通知中心。
+title: 使用 PowerShell 建立 Azure 通知中樞 |Microsoft Docs
+description: 瞭解如何使用 PowerShell 腳本來建立 Azure 通知中樞。
 author: dimazaid
 manager: femila
 services: notification-hubs
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: dimazaid
 ms.openlocfilehash: 01749e1ae5c29a7e77b2143939e25cf1ccd1aec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263963"
 ---
 # <a name="use-powershell-to-create-an-azure-notification-hub"></a>使用 PowerShell 建立 Azure 通知中樞

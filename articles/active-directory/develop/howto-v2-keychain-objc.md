@@ -1,7 +1,7 @@
 ---
 title: 設定 keychain
 titleSuffix: Microsoft identity platform
-description: 瞭解如何配置鑰匙串，以便應用可以在鑰匙串中緩存權杖。
+description: 瞭解如何設定 keychain，讓您的應用程式可以在 keychain 中快取權杖。
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,39 +14,39 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: d94bf7ffe955c9ec9ee2a2e7f7c4dbaaa28df270
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77085859"
 ---
 # <a name="configure-keychain"></a>設定 keychain
 
-當[適用于 iOS 和 macOS](msal-overview.md) （MSAL） 的 Microsoft 身份驗證庫在使用者中簽名或刷新權杖時，它會嘗試在鑰匙串中緩存權杖。 鑰匙串中的緩存權杖允許 MSAL 在同一 Apple 開發人員分發的多個應用之間提供靜默單一登入 （SSO）。 SSO 是通過鑰匙串訪問組功能實現的。 有關詳細資訊，請參閱 Apple[的鑰匙串專案文檔](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)。
+當[適用于 iOS 和 macOS 的 Microsoft 驗證程式庫](msal-overview.md)（MSAL）登入使用者，或重新整理權杖時，它會嘗試在 keychain 中快取權杖。 在 keychain 中快取權杖，可讓 MSAL 在相同的 Apple 開發人員散發的多個應用程式之間提供無訊息單一登入（SSO）。 SSO 是透過 keychain 存取群組功能來達成。 如需詳細資訊，請參閱 Apple 的[Keychain 專案檔案](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)。
 
-本文介紹如何配置應用授權，以便 MSAL 可以寫入 iOS 和 macOS 鑰匙串緩存的權杖。
+本文涵蓋如何設定應用程式權利，讓 MSAL 可以將快取的權杖寫入 iOS 和 macOS keychain。
 
-## <a name="default-keychain-access-group"></a>預設鑰匙串訪問組
+## <a name="default-keychain-access-group"></a>預設 keychain 存取群組
 
 ### <a name="ios"></a>iOS
 
-預設情況下，iOS`com.microsoft.adalcache`上的 MSAL 使用訪問組。 這是 MSAL 和 Azure AD 身份驗證庫 （ADAL） SDK 使用的共用訪問組，可確保同一發行者中的多個應用之間獲得最佳的單一登入 （SSO） 體驗。
+IOS 上的 MSAL 預設`com.microsoft.adalcache`會使用存取群組。 這是 MSAL 和 Azure AD 驗證程式庫（ADAL） Sdk 所使用的共用存取群組，可確保來自相同發行者的多個應用程式之間的最佳單一登入（SSO）體驗。
 
-在 iOS 上`com.microsoft.adalcache`，在 **"專案設置** > **功能** > **鑰匙串共用**"下的 XCode 中將鑰匙串組添加到應用的權利
+在 iOS 上，將`com.microsoft.adalcache` keychain 群組新增至您的應用程式在 XCode 中的許可權，並在**專案設定** > **功能** > **keychain 共用**
 
 ### <a name="macos"></a>macOS
 
-預設情況下，macOS 上的`com.microsoft.identity.universalstorage`MSAL 使用訪問組。
+MacOS 上的 MSAL `com.microsoft.identity.universalstorage`預設會使用存取群組。
 
-由於 macOS 鑰匙串的限制，MSAL`access group`不會直接轉換為 macOS 10.14 及更早版本的鑰匙串訪問組屬性（請參閱[kSecAttrAccessGroup）。](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc) 但是，從 SSO 的角度來看，它的行為類似，可確保由同一 Apple 開發人員分發的多個應用程式可以具有靜默的 SSO。
+由於 macOS keychain 的限制，MSAL `access group`不會直接轉譯為 kSecAttrAccessGroup 10.14 和更早版本上的 keychain 存取群組屬性（請參閱[macOS](https://developer.apple.com/documentation/security/ksecattraccessgroup?language=objc)）。 不過，其行為類似于 SSO 的觀點，確保相同的 Apple 開發人員所散發的多個應用程式可以具有無訊息 SSO。
 
-在 macOS 10.15 起（macOS Catalina），MSAL 使用鑰匙串訪問組屬性實現靜默 SSO，類似于 iOS。
+在 macOS 10.15 （macOS Catalina）上，MSAL 會使用 keychain access group 屬性來達到無訊息 SSO，類似于 iOS。
 
-## <a name="custom-keychain-access-group"></a>自訂鑰匙串訪問組
+## <a name="custom-keychain-access-group"></a>自訂 keychain 存取群組
 
-如果要使用其他鑰匙串訪問組，可以在創建`MSALPublicClientApplicationConfig``MSALPublicClientApplication`之前傳遞自訂群組，如下所示：
+如果您想要使用不同的 keychain 存取群組，您可以在建立`MSALPublicClientApplicationConfig`之前傳遞自訂群組`MSALPublicClientApplication`，如下所示：
 
-# <a name="objective-c"></a>[目標C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -80,11 +80,11 @@ do {
 
 ---
 
-## <a name="disable-keychain-sharing"></a>禁用鑰匙串共用
+## <a name="disable-keychain-sharing"></a>停用 keychain 共用
 
-如果您不想在多個應用之間共用 SSO 狀態，或使用任何鑰匙串訪問組，請通過將應用程式捆綁包 ID 作為鑰匙串組來禁用鑰匙串共用：
+如果您不想要在多個應用程式之間共用 SSO 狀態，或使用任何 keychain 存取群組，請藉由傳遞應用程式套件組合識別碼作為 keychainGroup 來停用 keychain 共用：
 
-# <a name="objective-c"></a>[目標C](#tab/objc)
+# <a name="objective-c"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
@@ -100,14 +100,14 @@ if let bundleIdentifier = Bundle.main.bundleIdentifier {
 
 ---
 
-## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>控制碼 -34018 錯誤（無法將專案設置為鑰匙串）
+## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>處理-34018 錯誤（無法將專案設定為 keychain）
 
-錯誤 -34018 通常意味著鑰匙串配置不正確。 確保已在 MSAL 中配置的鑰匙串訪問組與授權中配置的金鑰串訪問組匹配。
+錯誤-34018 通常表示 keychain 未正確設定。 請確定已在 MSAL 中設定的 keychain 存取群組符合 [權利] 中所設定的許可權。
 
 ## <a name="ensure-your-application-is-properly-signed"></a>確定您的應用程式已正確簽署
 
-在 macOS 上，應用程式無需開發人員簽名即可執行。 雖然 MSAL 的大部分功能將繼續工作，但通過鑰匙串訪問 SSO 需要對應用程式進行簽名。 如果您遇到多個鑰匙串提示，請確保應用程式的簽名有效。
+在 macOS 上，應用程式可以在未由開發人員簽署的情況下執行。 雖然大部分的 MSAL 功能仍會繼續運作，但透過 keychain 存取的 SSO 需要簽署應用程式。 如果您遇到多個 keychain 提示，請確定您應用程式的簽章有效。
 
 ## <a name="next-steps"></a>後續步驟
 
-在 Apple 在[應用集合中共用對鑰匙串專案的存取權限](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)中瞭解有關鑰匙串訪問組的更多資訊。
+若要深入瞭解如何 keychain 存取群組，請參閱 Apple 的在[應用程式集合中 Keychain 專案的共用存取權一](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps?language=objc)文。

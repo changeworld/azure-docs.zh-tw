@@ -1,5 +1,5 @@
 ---
-title: 使用存儲資源管理器將 VHD 檔上載到 Azure 開發人員測試實驗室
+title: 使用儲存體總管將 VHD 檔案上傳至 Azure DevTest Labs
 description: 使用 Microsoft Azure 儲存體總管將 VHD 檔案上傳到實驗室的儲存體帳戶
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: defafdd5809b7e537b3b9abb78f8cb63d0033c16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76170379"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 儲存體總管將 VHD 檔案上傳到實驗室的儲存體帳戶
@@ -35,9 +35,9 @@ ms.locfileid: "76170379"
 
 1. 使用 Azure 入口網站來取得實驗室的儲存體帳戶名稱：
 
-    1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+    1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
     
-    1. 選擇**所有服務**，然後從清單中選擇**DevTest 實驗室**。
+    1. 選取 [**所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
     
     1. 從實驗室清單中，選取所需的實驗室。  
     
@@ -45,7 +45,7 @@ ms.locfileid: "76170379"
     
     1. 在實驗室的 [組態]**** 刀鋒視窗上，選取 [自訂映像 (VHD)]****。
     
-    1. 在 **"自訂圖像**"邊欄選項卡上，選擇 **"添加**"。 
+    1. 在 [**自訂映射**] 分頁上，選取 [ **+ 新增**]。 
     
     1. 在 [自訂映像]**** 刀鋒視窗上，選取 [VHD]****。
     

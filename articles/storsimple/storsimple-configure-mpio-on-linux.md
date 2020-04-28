@@ -1,5 +1,5 @@
 ---
-title: 在 StorSimple Linux 主機上配置 MPIO
+title: 在 StorSimple Linux 主機上設定 MPIO
 description: 在連線到執行 CentOS 6.6 之 Linux 主機的 StorSimple 上設定 MPIO
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alkohli
 ms.openlocfilehash: 5dadd231335e93839e947077168f32dbfe96eb45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278370"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在執行 CentOS 的 StorSimple 主機上設定 MPIO
@@ -60,7 +60,7 @@ multipath.conf 有五個區段：
 
 下列程序描述有兩個網路介面的 StorSimple 裝置連接到有兩個網路介面的主機時，要如何設定多重路徑。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 本節將詳細說明 CentOS 伺服器和 StorSimple 裝置的設定必要條件。
 
 ### <a name="on-centos-host"></a>在 CentOS 主機上
@@ -338,18 +338,18 @@ A. 確定這兩個路徑位於相同的子網路上並可路由傳送。 如果�
 
 Q. 當我列出可用的路徑時，我看不到任何輸出。
 
-A. 通常，看不到任何多路徑路徑會暗示多路徑守護進程存在問題，而且這裡很可能存在任何問題。 `multipath.conf`
+A. 一般來說，看不到任何多重路徑路徑，都是指多重路徑 daemon 的問題，而這裡`multipath.conf`很有可能發生任何問題。
 
-在連接到目標後，您實際上可以看到某些磁片還值得一試，因為來自多路徑清單的任何回應也可能意味著您沒有任何磁片。
+此外，您也可以檢查連線到目標之後，實際看到一些磁片，因為從多重路徑清單中沒有任何回應也可能表示您沒有任何磁片。
 
 * 使用下列命令來重新掃描 SCSI 匯流排：
   
-    `$ rescan-scsi-bus.sh`（sg3_utils包的一部分）
+    `$ rescan-scsi-bus.sh`（sg3_utils 封裝的一部分）
 * 輸入下列命令：
   
     `$ dmesg | grep sd*`
      
-     Or
+     或者
   
     `$ fdisk -l`
   
@@ -358,7 +358,7 @@ A. 通常，看不到任何多路徑路徑會暗示多路徑守護進程存在�
   
     `cat /sys/block/<DISK>/device/model`
   
-    這將返回一個字串，這將確定它是否是 StorSimple 磁片。
+    這會傳回一個字串，它會判斷它是否為 StorSimple 磁片。
 
 有一個比較不可能的可能原因也可能是 iscsid pid 過時。 使用下列命令從 iSCSI 工作階段登出：
 
@@ -410,10 +410,10 @@ A. 若要驗證您的裝置是否已列入允許清單，請使用下列疑難�
     dm-3 devnode blacklisted, unmonitored
 
 
-有關詳細資訊，請訪問[故障排除以進行多路徑。](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)
+如需詳細資訊，請移至[多重路徑的疑難排解](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/dm_multipath/mpio_admin-troubleshoot)。
 
 ## <a name="list-of-useful-commands"></a>有用的命令清單
-| 類型 | Command | 描述 |
+| 類型 | Command | 說明 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |啟動 iSCSI 服務 |
 | &nbsp; |`service iscsid stop` |停止 iSCSI 服務 |
@@ -428,7 +428,7 @@ A. 若要驗證您的裝置是否已列入允許清單，請使用下列疑難�
 | **多重路徑** |`service multipathd start` |啟動多重路徑 daemon |
 | &nbsp; |`service multipathd stop` |停止多重路徑 daemon |
 | &nbsp; |`service multipathd restart` |重新啟動多重路徑 daemon |
-| &nbsp; |`chkconfig multipathd on` </br> OR </br> `mpathconf -with_chkconfig y` |啟用多重路徑 daemon 以在開機時啟動 |
+| &nbsp; |`chkconfig multipathd on` </br> 或者 </br> `mpathconf -with_chkconfig y` |啟用多重路徑 daemon 以在開機時啟動 |
 | &nbsp; |`multipathd -k` |啟動互動式主控台以進行疑難排解 |
 | &nbsp; |`multipath -l` |列出多重路徑連接和裝置 |
 | &nbsp; |`mpathconf --enable` |在 `/etc/mulitpath.conf` |

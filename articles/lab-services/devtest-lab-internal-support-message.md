@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 591dcec36dc62143901d3b49db24196e84d58c29
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76170358"
 ---
 # <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>將內部支援陳述式新增到 Azure DevTest Labs 中的實驗室
@@ -31,7 +31,7 @@ Azure DevTest Labs 可讓您使用為使用者提供實驗室相關支援資訊�
 
 ## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>將支援陳述式新增到現有實驗室的步驟
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 視需要選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。 (您的實驗室可能已顯示在 [所有資源]**** 下方的儀表板上)。
 1. 從實驗室清單中，選取您想要在其中新增支援陳述式的實驗室。  
 1. 在實驗室的 [概觀]**** 區域中選取 [組態和原則]****。  

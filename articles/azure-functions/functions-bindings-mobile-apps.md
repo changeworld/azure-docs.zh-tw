@@ -6,16 +6,16 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 952a94797e01a3931fdd151461250af0c2590c11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76120536"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>適用於 Azure Functions 的 Mobile Apps 繫結 
 
 > [!NOTE]
-> Azure Mobile Apps 繫結僅適用於 Azure Functions 1.x。 Azure 函數 2.x 及更高版本不支援它們。
+> Azure Mobile Apps 繫結僅適用於 Azure Functions 1.x。 Azure Functions 2.x 和更新版本中不支援它們。
 
 本文說明如何在 Azure Functions 中使用 [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md)。 Azure Functions 支援 Mobile Apps 的輸入和輸出繫結。
 
@@ -132,16 +132,16 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---configuration"></a>輸入 - 組態
 
-下表介紹了您在*函數.json*檔和`MobileTable`屬性中設置的綁定配置屬性。
+下表說明您在*函數 json*檔案和`MobileTable`屬性中設定的系結設定屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-| **型別**| n/a | 必須設定為 "mobileTable"|
-| **direction**| n/a |必須設定為 "in"|
-| **名稱**| n/a | 函式簽章中的輸入參數名稱。|
-|**表名稱** |**表名稱**|行動裝置應用程式資料表的名稱|
+| **type**| n/a | 必須設定為 "mobileTable"|
+| **方向**| n/a |必須設定為 "in"|
+| **name**| n/a | 函式簽章中的輸入參數名稱。|
+|**tableName** |**TableName**|行動裝置應用程式資料表的名稱|
 | **id**| **Id** | 要擷取之記錄的識別碼。 可以是靜態，或以叫用函式的觸發程序作為基礎。 例如，如果您對函式使用佇列觸發程序，`"id": "{queueTrigger}"` 就會使用佇列訊息的字串值作為要擷取的記錄識別碼。|
-|**連接**|**連接**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
+|**connection**|**建立**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
 |**apiKey**|**ApiKey**|包含行動裝置應用程式 API 金鑰的應用程式設定名稱。 如果您[在您的 Node.js 行動裝置應用程式中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)，或[在您的 .NET 行動裝置應用程式中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，請提供 API 金鑰。 請提供金鑰，在包含 API 金鑰的函式應用程式中建立應用程式設定，然後在具有應用程式設定名稱的輸入繫結中新增 `apiKey` 屬性。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -167,7 +167,7 @@ module.exports = function (context, myQueueItem) {
 
 * [C#](#output---c-example)
 * [C# 指令碼 (.csx)](#output---c-script-example)
-* [JAVAscript](#output---javascript-example)
+* [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>輸出 - C# 範例
 
@@ -286,19 +286,19 @@ public static object Run(
 }
 ```
 
-有關完整示例，請參閱[輸出 - C# 示例](#output---c-example)。
+如需完整範例，請參閱[輸出-c # 範例](#output---c-example)。
 
 ## <a name="output---configuration"></a>輸出 - 設定
 
-下表介紹了您在*函數.json*檔和`MobileTable`屬性中設置的綁定配置屬性。
+下表說明您在*函數 json*檔案和`MobileTable`屬性中設定的系結設定屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-| **型別**| n/a | 必須設定為 "mobileTable"|
-| **direction**| n/a |必須設定為 "out"|
-| **名稱**| n/a | 函式簽章中的輸出參數名稱。|
-|**表名稱** |**表名稱**|行動裝置應用程式資料表的名稱|
-|**連接**|**MobileAppUriSetting**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
+| **type**| n/a | 必須設定為 "mobileTable"|
+| **方向**| n/a |必須設定為 "out"|
+| **name**| n/a | 函式簽章中的輸出參數名稱。|
+|**tableName** |**TableName**|行動裝置應用程式資料表的名稱|
+|**connection**|**MobileAppUriSetting**|包含行動裝置應用程式 URL 的應用程式設定名稱。 函式會使用此 URL 針對您的行動裝置應用程式建構所需的 REST 作業。 在包含您的行動裝置應用程式 URL 的函式應用程式中建立應用程式設定，然後在輸入繫結的 `connection` 屬性中，指定應用程式設定的名稱。 URL 看起來像這樣：`http://<appname>.azurewebsites.net`。
 |**apiKey**|**ApiKeySetting**|包含行動裝置應用程式 API 金鑰的應用程式設定名稱。 如果您[在您的 Node.js 行動裝置應用程式後端中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)，或[在您的 .NET 行動裝置應用程式後端中實作 API 金鑰](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key)，請提供 API 金鑰。 請提供金鑰，在包含 API 金鑰的函式應用程式中建立應用程式設定，然後在具有應用程式設定名稱的輸入繫結中新增 `apiKey` 屬性。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

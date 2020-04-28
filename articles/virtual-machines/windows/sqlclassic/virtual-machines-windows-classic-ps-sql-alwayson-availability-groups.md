@@ -15,22 +15,22 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978149"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>在 Azure VM 中使用 PowerShell 設定 Always On 可用性群組
 > [!div class="op_single_selector"]
 > * [傳統：UI](../classic/portal-sql-alwayson-availability-groups.md)
-> * [傳統：PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
+> * [傳統： PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 在開始之前，請考量您現在可以在 Azure Resource Manager 模型中完成這項工作。 我們建議針對新的部署使用 Azure Resource Manager 模型。 請參閱 [Azure 虛擬機器上的 SQL Server Always On 可用性群組](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)。
 
 > [!IMPORTANT]
-> 我們建議讓大部分的新部署使用 Resource Manager 模型。 Azure 有兩種不同的部署模型來創建和使用資源：[資源管理器和經典](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。
+> 我們建議讓大部分的新部署使用 Resource Manager 模型。 Azure 有兩種不同的部署模型可用於建立及使用資源： [Resource Manager 和傳統](../../../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。
 
 Azure 虛擬機器 (VM) 可協助資料庫管理員降低高可用性 SQL Server 系統的成本。 本教學課程將示範如何使用 Azure 環境中的 SQL Server Always On 端對端來實作可用性群組。 在本教學課程結束時，您 Azure 中的 SQL Server Always On 解決方案將包含下列項目：
 
@@ -46,7 +46,7 @@ Azure 虛擬機器 (VM) 可協助資料庫管理員降低高可用性 SQL Server
 
 * 您已經有訂閱虛擬機器訂用帳戶的 Azure 帳戶。
 * 您已安裝 [Azure PowerShell Cmdlet](/powershell/azure/overview)。
-* 您已非常熟悉內部部署解決方案的 Always On 可用性群組的功能。 有關詳細資訊，請參閱[始終打開可用性組 （SQL Server）。](https://msdn.microsoft.com/library/hh510230.aspx)
+* 您已非常熟悉內部部署解決方案的 Always On 可用性群組的功能。 如需詳細資訊，請參閱[Always On 可用性群組（SQL Server）](https://msdn.microsoft.com/library/hh510230.aspx)。
 
 ## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>連線至您的 Azure 訂用帳戶並建立虛擬網路
 1. 在您本機電腦上的 [PowerShell] 視窗中匯入 Azure 模組，再將發佈設定檔案下載至您的電腦，然後透過匯入所下載的發佈設定，將 PowerShell 工作階段連線至您的 Azure 訂用帳戶。
@@ -381,7 +381,7 @@ Azure 虛擬機器 (VM) 可協助資料庫管理員降低高可用性 SQL Server
 
 * 所有伺服器：必須安裝 [容錯移轉叢集]**** 功能。
 * 所有伺服器：您必須以電腦**系統管理員**的身分新增 **CORP\Install**。
-* 僅 ContosoSQL1 和 ContosoSQL2：您需要在預設資料庫中添加**CORP_Install**作為**系統管理員**角色。
+* 僅限 ContosoSQL1 和 ContosoSQL2：您必須加入**CORP\Install**做為預設資料庫中的**系統管理員（sysadmin** ）角色。
 * 僅 ContosoSQL1 和 ContosoSQL2：您必須以具備下列權限的登入身分新增 **NT AUTHORITY\System**：
 
   * 更改所有可用性群組

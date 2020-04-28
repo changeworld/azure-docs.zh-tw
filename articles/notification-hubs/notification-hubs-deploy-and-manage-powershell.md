@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 部署和管理通知中心
-description: 如何使用 PowerShell 創建和管理通知中心實現自動化
+title: 使用 PowerShell 部署和管理通知中樞
+description: 如何使用 PowerShell 來建立和管理通知中樞以進行自動化
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -17,15 +17,15 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 863fdb445cce41f0fe4cbee63a3d6198c0a79339
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76264639"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>使用 PowerShell 來部署和管理通知中樞
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文將說明如何使用 PowerShell 來建立和管理 Azure 通知中樞。 本文示範下列一般自動化工作。
 
@@ -159,7 +159,7 @@ else
 [購買選項]: https://azure.microsoft.com/pricing/purchase-options/
 [成員供應項目]: https://azure.microsoft.com/pricing/member-offers/
 [免費試用]: https://azure.microsoft.com/pricing/free-trial/
-[安裝和配置 Azure 電源外殼]: /powershell/azureps-cmdlets-docs
+[安裝和設定 Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [通知中樞的 .NET API]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
 [New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace

@@ -1,19 +1,19 @@
 ---
-title: 創建、編輯或擴展邏輯應用 JSON 工作流定義
-description: 如何在 Azure 邏輯應用中編寫、編輯和擴展邏輯應用的 JSON 工作流定義
+title: 建立、編輯或擴充邏輯應用程式 JSON 工作流程定義
+description: 如何在 Azure Logic Apps 中撰寫、編輯和擴充邏輯應用程式的 JSON 工作流程定義
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 0f5f01c757bf651beddaa76fc3eb8046b21b31eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75979384"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>為 Azure 邏輯應用中的邏輯應用工作流定義創建、編輯或擴展 JSON
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>在 Azure Logic Apps 中建立、編輯或擴充邏輯應用程式工作流程定義的 JSON
 
 當您在 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 中使用自動化工作流程建立企業整合解決方案時，基礎邏輯應用程式定義會針對其描述和驗證，使用簡單的宣告式 JavaScript 物件標記法 (JSON) 及[工作流程定義語言 (WDL) 結構描述](../logic-apps/logic-apps-workflow-definition-language.md)。 這些格式讓邏輯應用程式定義更容易閱讀及了解，且無須很多程式碼方面的知識。
 如果您想要自動化邏輯應用程式的建立及部署，您可以將邏輯應用程式定義納入 [Azure Resource Manager 範本](../azure-resource-manager/templates/overview.md)中的 [Azure 資源](../azure-resource-manager/management/overview.md)。
@@ -28,7 +28,7 @@ ms.locfileid: "75979384"
 
 ## <a name="edit-json---azure-portal"></a>編輯 JSON - Azure 入口網站
 
-1. 登錄到 Azure<a href="https://portal.azure.com" target="_blank">門戶</a>。
+1. 登入 <a href="https://portal.azure.com" target="_blank">Azure 入口網站</a>。
 
 2. 在左側功能表中，選擇 [所有服務]****。
 在搜尋方塊中尋找「邏輯應用程式」，然後從結果中選取您的邏輯應用程式。
@@ -65,21 +65,21 @@ ms.locfileid: "75979384"
 
 ## <a name="parameters"></a>參數
 
-部署生命週期通常具有不同的開發、測試、暫存和生產環境。 當您有要在整個邏輯應用中重用的值而不進行硬編碼或根據部署需求而異時，可以為工作流定義創建[Azure 資源管理器範本](../azure-resource-manager/management/overview.md)，以便還可以自動執行邏輯應用部署。
+部署生命週期通常會有不同的環境來進行開發、測試、預備和生產。 如果您想要在沒有硬式編碼的情況下重複使用邏輯應用程式，或是根據您的部署需求而有所不同的值，您可以為工作流程定義建立[Azure Resource Manager 範本](../azure-resource-manager/management/overview.md)，如此一來，您也可以將邏輯應用程式部署自動化。
 
-按照這些常規步驟來*參數化*，或者定義和使用這些值的參數。 然後，您可以在單獨的參數檔中提供值，這些值將這些值傳遞給範本。 這樣，您可以輕鬆地更改這些值，而無需更新和重新部署邏輯應用。 有關詳細資訊，請參閱[概述：使用 Azure 資源管理器範本自動部署邏輯應用](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
+請遵循下列一般步驟*來參數*化或定義和使用這些值的參數。 接著，您可以在個別的參數檔案中提供值，將這些值傳遞至您的範本。 如此一來，您就可以更輕鬆地變更這些值，而不需要更新和重新部署邏輯應用程式。 如需完整詳細資料，請參閱[總覽：使用 Azure Resource Manager 範本自動部署邏輯應用程式](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)。
 
-1. 在範本中，分別定義範本參數和工作流定義參數，以便分別接受在部署和運行時使用的值。
+1. 在您的範本中，定義範本參數和工作流程定義參數，分別接受部署和執行時間所使用的值。
 
-   範本參數在工作流定義之外的參數部分中定義，而工作流定義參數在工作流定義中的參數部分中定義。
+   範本參數是在工作流程定義外的 parameters 區段中定義，而工作流程定義參數則是在工作流程定義內的 parameters 區段中定義。
 
-1. 將硬編碼值替換為引用這些參數的運算式。 範本運算式使用的語法不同于工作流定義運算式。
+1. 將硬式編碼的值取代為參考這些參數的運算式。 範本運算式會使用與工作流程定義運算式不同的語法。
 
-   不使用在部署時計算的範本運算式（在部署時計算）來避免使代碼複雜化，這些運算式在運行時進行評估。 僅使用工作流定義之外的範本運算式。 在工作流定義中僅使用工作流定義運算式。
+   避免使用在部署時評估的範本運算式，在執行時間評估的工作流程定義運算式內，讓您的程式碼複雜化。 僅使用您工作流程定義以外的範本運算式。 僅使用工作流程定義內的工作流程定義運算式。
 
-   指定工作流定義參數的值時，可以使用工作流定義外部但仍位於邏輯應用的資源定義中的參數部分來引用範本參數。 這樣，可以將範本參數值傳遞到工作流定義參數中。
+   當您指定工作流程定義參數的值時，您可以使用工作流程定義外的 parameters 區段，但仍在邏輯應用程式的資源定義中，來參考範本參數。 如此一來，您就可以將範本參數值傳遞至您的工作流程定義參數。
 
-1. 將參數的值存儲在單獨的[參數檔中](../azure-resource-manager/templates/parameter-files.md)，並將該檔包含在部署中。
+1. 將參數的值儲存在個別的[參數](../azure-resource-manager/templates/parameter-files.md)檔案中，並將該檔案包含在您的部署中。
 
 ## <a name="process-strings-with-functions"></a>使用函式處理字串
 
@@ -127,18 +127,18 @@ Logic Apps 具有各種函式可處理字串。
 "uri": "https://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
-1. 獲取公司[`length()`](../logic-apps/logic-apps-workflow-definition-language.md)名稱的 ，以便獲取字元總數。
+1. [`length()`](../logic-apps/logic-apps-workflow-definition-language.md)取得公司名稱的，讓您取得總字元數。
 
 2. 若要取得較短的字串，請減去 `5`。
 
-3. 現在獲取[`substring()`](../logic-apps/logic-apps-workflow-definition-language.md)。
+3. 現在取得[`substring()`](../logic-apps/logic-apps-workflow-definition-language.md)。
 從索引 `5` 開始，並移至字串的其餘部分。
 
-4. 將此子字串轉換為[`base64()`](../logic-apps/logic-apps-workflow-definition-language.md)字串。
+4. 將這個子字串轉換[`base64()`](../logic-apps/logic-apps-workflow-definition-language.md)成字串。
 
-5. 現在[`replace()`](../logic-apps/logic-apps-workflow-definition-language.md)所有字元`+`與`-`字元。
+5. 現在[`replace()`](../logic-apps/logic-apps-workflow-definition-language.md)所有字元`+`都是`-`字元。
 
-6. 最後，[`replace()`](../logic-apps/logic-apps-workflow-definition-language.md)所有字元`/`與`_`字元。
+6. 最後， [`replace()`](../logic-apps/logic-apps-workflow-definition-language.md)所有字元`/`都是`_`字元。
 
 ## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>將清單項目對應到屬性值，然後使用對應作為參數
 
@@ -147,7 +147,7 @@ Logic Apps 具有各種函式可處理字串。
 例如，此工作流程會將某些類別定義為參數，以及定義可比對這些類別與特定 URL 的對應。
 首先，工作流程會取得文章清單。 接著，工作流程會使用此對應來尋找符合每篇文章之類別的 URL。
 
-*   該[`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md)函數檢查該類別是否與已知定義的類別匹配。
+*   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md)函式會檢查類別是否符合已知定義的分類。
 
 *   取得相符的類別之後，此範例會使用方括號來提取對應中的項目：`parameters[...]`
 
@@ -240,7 +240,7 @@ Logic Apps 具有各種函式可處理字串。
 
    如果第一個值小於第二個值，則自從訂單最初提交以來已超過一秒。
 
-若要將日期格式化，您可以使用字串格式器。 例如，要獲取 RFC1123，請使用[`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md)。
+若要將日期格式化，您可以使用字串格式器。 例如，若要取得 RFC1123，請使用[`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md)。
 深入了解[日期格式化](../logic-apps/logic-apps-workflow-definition-language.md)。
 
 ``` json

@@ -1,6 +1,6 @@
 ---
-title: 使用者定義的函數用戶端庫引用 - Azure 數位孿生 |微軟文檔
-description: Azure 數位雙月使用者定義的函數用戶端庫參考文檔。
+title: 使用者定義函式用戶端程式庫參考-Azure 數位 Twins |Microsoft Docs
+description: Azure 數位 Twins 使用者定義函式用戶端程式庫參考檔。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/17/2020
 ms.custom: seodec18
 ms.openlocfilehash: bd6095daca51ddca0cfb4b34ca86e763df9a3d02
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76276822"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>使用者定義函式用戶端程式庫參考
@@ -74,7 +74,7 @@ ms.locfileid: "76276822"
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
 | spaceId**  | `guid` | 空間識別碼 |
-| *值名稱* | `string` | 空間屬性名稱 |
+| *valueName* | `string` | 空間屬性名稱 |
 
 ### <a name="getsensorhistoryvaluessensorid-datatype--value"></a>getSensorHistoryValues(sensorId, dataType) ⇒ `value[]`
 
@@ -96,7 +96,7 @@ ms.locfileid: "76276822"
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
 | spaceId** | `guid` | 空間識別碼 |
-| *值名稱* | `string` | 空間屬性名稱 |
+| *valueName* | `string` | 空間屬性名稱 |
 
 ### <a name="getspacechildspacesspaceid--space"></a>getSpaceChildSpaces(spaceId) ⇒ `space[]`
 
@@ -136,7 +136,7 @@ ms.locfileid: "76276822"
 
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| *設備 Id* | `guid` | 裝置識別碼 |
+| *deviceId* | `guid` | 裝置識別碼 |
 
 ### <a name="getspaceparentspacechildspaceid--space"></a>getSpaceParentSpace(childSpaceId) ⇒ `space`
 
@@ -187,7 +187,7 @@ ms.locfileid: "76276822"
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
 | spaceId** | `guid` | 空間識別碼 |
-| *屬性名稱* | `string` | 空間屬性名稱 |
+| *propertyName* | `string` | 空間屬性名稱 |
 
 ### <a name="getsensorextendedpropertysensorid-propertyname--extendedproperty"></a>getSensorExtendedProperty(sensorId, propertyName) ⇒ `extendedProperty`
 
@@ -198,7 +198,7 @@ ms.locfileid: "76276822"
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
 | sensorId** | `guid` | 感應器識別碼 |
-| *屬性名稱* | `string` | 感應器屬性名稱 |
+| *propertyName* | `string` | 感應器屬性名稱 |
 
 ### <a name="getdeviceextendedpropertydeviceid-propertyname--extendedproperty"></a>getDeviceExtendedProperty(deviceId, propertyName) ⇒ `extendedProperty`
 
@@ -208,8 +208,8 @@ ms.locfileid: "76276822"
 
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| *設備 Id* | `guid` | 裝置識別碼 |
-| *屬性名稱* | `string` | 裝置屬性名稱 |
+| *deviceId* | `guid` | 裝置識別碼 |
+| *propertyName* | `string` | 裝置屬性名稱 |
 
 ### <a name="setsensorvaluesensorid-datatype-value"></a>setSensorValue(sensorId, dataType, value)
 
@@ -243,7 +243,7 @@ ms.locfileid: "76276822"
 
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| *消息* | `string` | 要記錄的訊息 |
+| *message* | `string` | 要記錄的訊息 |
 
 ### <a name="sendnotificationtopologyobjectid-topologyobjecttype-payload"></a>sendNotification(topologyObjectId, topologyObjectType, payload)
 
@@ -294,7 +294,7 @@ ms.locfileid: "76276822"
 
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| *屬性名稱* | `string` | 擴充屬性的名稱 |
+| *propertyName* | `string` | 擴充屬性的名稱 |
 
 #### <a name="valuevaluename--value"></a>Value(valueName) ⇒ `value`
 
@@ -302,7 +302,7 @@ ms.locfileid: "76276822"
 
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| *值名稱* | `string` | 值的名稱 |
+| *valueName* | `string` | 值的名稱 |
 
 #### <a name="historyvaluename--value"></a>History(valueName) ⇒ `value[]`
 
@@ -310,7 +310,7 @@ ms.locfileid: "76276822"
 
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| *值名稱* | `string` | 值的名稱 |
+| *valueName* | `string` | 值的名稱 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
@@ -354,7 +354,7 @@ ms.locfileid: "76276822"
 
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| *屬性名稱* | `string` | 擴充屬性的名稱 |
+| *propertyName* | `string` | 擴充屬性的名稱 |
 
 #### <a name="notifypayload"></a>Notify(payload)
 
@@ -402,7 +402,7 @@ ms.locfileid: "76276822"
 
 | 參數  | 類型                | 描述  |
 | ------ | ------------------- | ------------ |
-| *屬性名稱* | `string` | 擴充屬性的名稱 |
+| *propertyName* | `string` | 擴充屬性的名稱 |
 
 #### <a name="value--value"></a>Value() ⇒ `value`
 

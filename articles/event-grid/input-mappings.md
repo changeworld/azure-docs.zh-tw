@@ -1,6 +1,6 @@
 ---
 title: 將自訂欄位對應到 Azure 事件格線結構描述
-description: 本文介紹當事件資料與事件網格架構不匹配時，如何將自訂架構轉換為 Azure 事件網格架構。
+description: 本文說明當您的事件資料不符合事件方格架構時，如何將自訂架構轉換成 Azure 事件方格架構。
 services: event-grid
 author: spelluru
 manager: timlt
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: e8077068a265d659cf6009eb7762188637c373d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721654"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>將自訂欄位對應到事件格線結構描述
@@ -208,5 +208,5 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 ## <a name="next-steps"></a>後續步驟
 
 * 如需事件傳遞和重試的相關資訊，請參閱[事件格線訊息傳遞與重試](delivery-and-retry.md)。
-* 有關事件網格的簡介，請參閱[有關事件網格](overview.md)。
+* 如需 Event Grid 的簡介，請參閱[關於事件方格](overview.md)。
 * 若要快速地開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。

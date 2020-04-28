@@ -1,6 +1,6 @@
 ---
-title: 將所需狀態配置與虛擬機器縮放集一起使用
-description: 使用具有 Azure 所需狀態配置擴展的虛擬機器縮放集來配置虛擬機器。
+title: 搭配虛擬機器擴展集使用 Desired State Configuration
+description: 使用虛擬機器擴展集搭配 Azure Desired State Configuration 延伸模組來設定虛擬機器。
 author: zjalexander
 tags: azure-service-management,azure-resource-manager
 ms.assetid: c8f047b5-0e6c-4ef3-8a47-f1b284d32942
@@ -10,10 +10,10 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 04/05/2017
 ms.author: zachal
 ms.openlocfilehash: a93a8a9c27be5a1736a50e6c4c4b830980b7d974
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76278079"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>搭配 Azure DSC 擴充功能使用虛擬機器擴展集

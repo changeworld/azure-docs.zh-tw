@@ -9,10 +9,10 @@ ms.date: 01/26/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 33e6ecca0eb4ca05b1f6bf53cdb3bd4ac8c8d8a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978444"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>使用複製記錄檔來檢閱 Azure 匯入/匯出作業狀態
@@ -26,12 +26,12 @@ ms.locfileid: "75978444"
 
  `http://myaccount.blob.core.windows.net/ImportExportStatesPath/waies/myjob_9WM45A6Q_20130921-042122-021_error.xml`  
 
- 有關複製日誌的格式和狀態碼的完整清單，請參閱[導入/匯出服務日誌檔案格式](../storage-import-export-file-format-log.md)。  
+ 如需複製記錄的格式和狀態碼的完整清單，請參閱匯[入/匯出服務記錄檔格式](../storage-import-export-file-format-log.md)。  
 
 ## <a name="next-steps"></a>後續步驟
 
- * [設置 Azure 導入/匯出工具](storage-import-export-tool-setup-v1.md)   
- * [為導入作業準備硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
- * [修復導入作業](../storage-import-export-tool-repairing-an-import-job-v1.md)   
+ * [設定 Azure 匯入/匯出工具](storage-import-export-tool-setup-v1.md)   
+ * [準備匯入工作的硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+ * [修復匯入作業](../storage-import-export-tool-repairing-an-import-job-v1.md)   
  * [修復匯出作業](../storage-import-export-tool-repairing-an-export-job-v1.md)   
- * [排除 Azure 導入/匯出工具的故障](storage-import-export-tool-troubleshooting-v1.md)
+ * [針對 Azure 匯入/匯出工具進行疑難排解](storage-import-export-tool-troubleshooting-v1.md)

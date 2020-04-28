@@ -1,5 +1,5 @@
 ---
-title: 使用 .NET SDK 進行微軟 Azure StorSimple 資料管理器作業
+title: 將 .NET SDK 用於 Microsoft Azure StorSimple 資料管理員作業
 description: 了解如何使用 .NET SDK 啟動 StorSimple Data Manager 作業
 author: alkohli
 ms.service: storsimple
@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: b7cf1d3b9d4a9d751348c4792f904062b00ac104
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76270732"
 ---
-# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 啟動資料轉換
+# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>使用 .NET SDK 起始資料轉換
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本文說明如何使用 StorSimple Data Manager 服務中的資料轉換功能來轉換 StorSimple 裝置資料。 轉換後的資料由雲端中的其他 Azure 服務取用。
 
@@ -26,7 +26,7 @@ ms.locfileid: "76270732"
  
   本文詳細說明如何建立範例 .NET 主控台應用程式來起始資料轉換作業，然後追蹤直到完成為止。 若要深入了解如何透過自動化起始資料轉換，請前往[使用 Azure 自動化 Runbook 來觸發資料轉換作業](storsimple-data-manager-job-using-automation.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您有︰
 *   執行以下軟體的電腦：
@@ -36,7 +36,7 @@ ms.locfileid: "76270732"
     - Azure Powershell。 [下載 Azure Powershell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
 *   資源群組內 StorSimple 資料管理員中正確設定的作業定義。
 *   所有必要的 dll。 從 [GitHub 儲存機制](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)下載這些 dll。
-*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)來自 GitHub 存儲庫的腳本。
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)來自 GitHub 存放庫的腳本。
 
 ## <a name="step-by-step-procedure"></a>逐步程序
 
@@ -61,7 +61,7 @@ ms.locfileid: "76270732"
 
 3. 使用 Visual Studio 2012、2013 或 2015 建立 C# .NET 主控台應用程式。
 
-    1. 推出**視覺工作室 2012/2013/2015**.
+    1. 啟動**Visual Studio 2012/2013/2015**。
     1. 選取 [檔案] > [新增] > [專案]****。
 
         ![建立專案 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
@@ -83,7 +83,7 @@ ms.locfileid: "76270732"
 
        ![新增 dll 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
-5. 將以下**使用**語句添加到專案中的原始檔案 （Program.cs）。
+5. 將下列**using**語句新增至專案中的原始檔（Program.cs）。
 
     ```
     using System;
@@ -194,4 +194,4 @@ ms.locfileid: "76270732"
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 StorSimple 資料管理器 UI 轉換資料](storsimple-data-manager-ui.md)。
+[使用 StorSimple 資料管理員的 UI 來轉換您的資料](storsimple-data-manager-ui.md)。

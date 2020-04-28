@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 開發人員測試實驗室中部署嵌套範本環境
-description: 瞭解如何部署嵌套 Azure 資源管理器範本以使用 Azure 開發人員測試實驗室提供環境。
+title: 在 Azure DevTest Labs 中部署嵌套範本環境
+description: 瞭解如何部署嵌套的 Azure Resource Manager 範本，以提供 Azure DevTest Labs 的環境。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,22 +13,22 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: e83bc4e77a44f20d55fa3b56bc81aefd1d25bb03
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76168830"
 ---
-# <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>為測試環境部署嵌套 Azure 資源管理器範本
-嵌套部署允許您從主資源管理器範本中執行其他 Azure 資源管理器範本。 它使您能夠將部署分解為一組針對的目標和特定于目的的範本。 它在測試、重用和可讀性方面提供了優勢。 在[部署 Azure 資源時使用連結範本](../azure-resource-manager/templates/linked-templates.md)的文章提供了此解決方案的良好概述，並包含多個代碼示例。 本文提供了特定于 Azure 開發人員測試實驗室的示例。 
+# <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>部署適用于測試環境的嵌套 Azure Resource Manager 範本
+「嵌套部署」可讓您從主要 Resource Manager 範本內執行其他 Azure Resource Manager 範本。 它可讓您將部署分解成一組目標和特定用途的範本。 它提供測試、重複使用和可讀性等方面的優勢。 在[部署 Azure 資源時使用連結的範本](../azure-resource-manager/templates/linked-templates.md)一文提供了使用數個程式碼範例的此解決方案的絕佳總覽。 本文提供 Azure DevTest Labs 特定的範例。 
 
-## <a name="key-parameters"></a>關鍵參數
-雖然可以從頭開始創建自己的資源管理器範本，但我們建議您在 Visual Studio 中使用[Azure 資源組專案](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)，這樣可以輕鬆地開發和調試範本。 將嵌套部署資源添加到 azuredeploy.json 時，Visual Studio 會添加多個項以使範本更加靈活。 這些專案包括包含輔助範本和參數檔的子資料夾、主範本檔中的變數名稱以及新檔的存儲位置的兩個參數。 **_artifactsLocation**和 **_artifactsLocationSasToken**是 DevTest 實驗室使用的關鍵參數。 
+## <a name="key-parameters"></a>金鑰參數
+雖然您可以從頭開始建立自己的 Resource Manager 範本，但建議您使用 Visual Studio 中的[Azure 資源群組專案](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)，這可讓您輕鬆地開發和偵錯工具範本。 當您將嵌套的部署資源新增至 azuredeploy.parameters.json」時，Visual Studio 會新增數個專案，讓範本更具彈性。 這些專案包括具有次要範本和參數檔案的子資料夾、主要範本檔案中的變數名稱，以及新檔案儲存位置的兩個參數。 **_ArtifactsLocation**和 **_ArtifactsLocationSasToken**是 DevTest Labs 所使用的主要參數。 
 
-如果您不熟悉 DevTest Labs 如何使用環境，請參閱[使用 Azure 資源管理器範本創建多 VM 環境和 PaaS 資源](devtest-lab-create-environment-from-arm.md)。 範本存儲在連結到 DevTest 實驗室實驗室的存儲庫中。 使用這些範本創建新環境時，檔將移動到實驗室中的 Azure 存儲容器中。 為了能夠識別和複製嵌套檔，DevTest Labs 標識_artifactsLocation，並_artifactsLocationSasToken參數並將子資料夾複製到存儲容器。 然後，它會自動將位置和共用訪問簽名 （SaS） 權杖插入到參數中。 
+如果您不熟悉 DevTest Labs 如何與環境搭配運作，請參閱[使用 Azure Resource Manager 範本建立多 VM 環境和 PaaS 資源](devtest-lab-create-environment-from-arm.md)。 您的範本會儲存在 DevTest Labs 中連結至實驗室的存放庫中。 當您使用這些範本來建立新的環境時，這些檔案會移至實驗室中的 Azure 儲存體容器。 為了能夠識別並複製嵌套的檔案，DevTest Labs 會識別 _artifactsLocation 並 _artifactsLocationSasToken 參數，並將子資料夾複製到儲存體容器。 然後，它會自動將位置和共用存取簽章（SaS）權杖插入參數中。 
 
-## <a name="nested-deployment-example"></a>嵌套部署示例
-下面是嵌套部署的簡單示例：
+## <a name="nested-deployment-example"></a>嵌套部署範例
+以下是嵌套部署的簡單範例：
 
 ```json
 
@@ -66,17 +66,17 @@ ms.locfileid: "76168830"
 "outputs": {}
 ```
 
-存儲庫中包含此範本的資料夾有一個子資料夾`nestedtemplates`，其中包含檔**NestOne.json**和**NestOne.parameter.json**。 在**azuredeploy.json**中，範本的 URI 使用專案位置、嵌套範本資料夾、嵌套範本檔案名生成。 同樣，使用嵌套範本的專案位置、嵌套範本資料夾和參數檔構建參數的 URI。 
+存放庫中包含此範本的資料夾，具有`nestedtemplates` **NestOne**檔案的子資料夾和**NestOne**。 在**azuredeploy.parameters.json」** 中，範本的 URI 是使用成品位置、嵌套範本資料夾、嵌套範本檔案名所建立。 同樣地，使用嵌套範本的成品位置、嵌套範本資料夾和參數檔案，即可建立參數的 URI。 
 
-以下是 Visual Studio 中相同專案結構的圖像： 
+以下是 Visual Studio 中相同專案結構的影像： 
 
 ![Visual Studio 中的專案結構](./media/deploy-nested-template-environments/visual-studio-project-structure.png)
 
-您可以在主資料夾中添加其他資料夾，但不能比單個級別更深。 
+您可以在主要資料夾中新增其他資料夾，但不能在單一層級以外的任何深度。 
 
 ## <a name="next-steps"></a>後續步驟
-有關環境的詳細資訊，請參閱以下文章： 
+如需環境的詳細資訊，請參閱下列文章： 
 
 - [使用 Azure Resource Manager 範本建立多個 VM 環境和 PaaS 資源](devtest-lab-create-environment-from-arm.md)
 - [在 Azure DevTest Labs 中設定及使用公用環境](devtest-lab-configure-use-public-environments.md)
-- [在 Azure 開發人員測試實驗室中將環境連接到實驗室的虛擬網路](connect-environment-lab-virtual-network.md)
+- [在 Azure DevTest Labs 中將環境連線至實驗室的虛擬網路](connect-environment-lab-virtual-network.md)

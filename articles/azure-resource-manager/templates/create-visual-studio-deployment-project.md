@@ -4,10 +4,10 @@ description: 使用 Visual Studio 建立 Azure 資源群組專案，並將資源
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.openlocfilehash: 5127732ac0c33d4b27f70bd616fb23aaec5c871f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76152726"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>透過 Visual Studio 建立與部署 Azure 資源群組
@@ -20,7 +20,7 @@ ms.locfileid: "76152726"
 
 在這一節中，您會利用 **Web 應用程式**範本建立 Azure 資源群組專案。
 
-1. 在視覺化工作室中，選擇 **"檔**>**新專案**>**"。**
+1. 在 Visual Studio 中，**選擇 [**>檔案] [**新增**>] [**專案**]。
 1. 選取 [Azure 資源群組]**** 專案範本，然後選取 [下一步]****。
 
     ![建立專案](./media/create-visual-studio-deployment-project/create-project.png)
@@ -139,11 +139,11 @@ ms.locfileid: "76152726"
 
 對於 AzureRM 模組指令碼，請使用 Visual Studio：
 
-1. 在部署專案節點的快顯功能表上，選擇 **"部署** > **新建**"。
+1. 在部署專案節點的快捷方式功能表上，選擇 [**部署** > ] [**新增**]。
 
     ![新的部署功能表項目](./media/create-visual-studio-deployment-project/deploy.png)
 
-1. [部署至資源群組]**** 對話方塊隨即出現。 在 [資源群組]**** 下拉式方塊中，選擇現有的資源群組，或建立新的資源群組。 選取 [部署]****。
+1. [部署至資源群組]**** 對話方塊隨即出現。 在 [資源群組]**** 下拉式方塊中，選擇現有的資源群組，或建立新的資源群組。 選取 [部署]  。
 
     ![[部署到資源群組] 對話方塊](./media/create-visual-studio-deployment-project/show-deployment.png)
 
@@ -167,7 +167,7 @@ ms.locfileid: "76152726"
 
 此時，您已為您的應用程式部署基礎結構，但是專案尚未部署實際程式碼。
 
-1. 將專案新增至您的 Visual Studio 方案。 按右鍵解決方案，然後選擇"**添加新** > **專案**"。
+1. 將專案新增至您的 Visual Studio 方案。 以滑鼠右鍵按一下方案，然後選取 [**加入** > **新專案**]。
 
     ![新增專案](./media/create-visual-studio-deployment-project/add-project.png)
 
@@ -380,11 +380,11 @@ ms.locfileid: "76152726"
 
 1. 選取資源群組名稱。
 
-1. 從頂端功能表中選取 [刪除資源群組]****。
+1. 從頂端功能表中選取 [刪除資源群組]  。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您學習了如何使用 Visual Studio 創建和部署範本。 若要深入了解範本開發，請參閱我們的新初學者教學課程系列：
+在本文中，您已瞭解如何使用 Visual Studio 來建立及部署範本。 若要深入了解範本開發，請參閱我們的新初學者教學課程系列：
 
 > [!div class="nextstepaction"]
 > [初學者教學課程](./template-tutorial-create-first-template.md)

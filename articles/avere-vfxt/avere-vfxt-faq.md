@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.openlocfilehash: 186b2c048a9de42318e4af287393d731a4eb16f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76153457"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure 常見問題集
@@ -25,11 +25,11 @@ Avere vFXT for Azure 是高效能的檔案系統，可快取 Azure 計算中的�
 
 ### <a name="is-avere-vfxt-a-storage-solution"></a>Avere vFXT 是儲存體解決方案嗎？
 
-否。 Azure 的 Avere vFXT 是附加到存儲環境（如 EMC 或 NetApp NAS）或 Azure Blob 容器的檔案系統*緩存*。 Avere vFXT 可簡化用戶端的資料要求，並快取提供的資料，長時間大規模地改善效能。 Avere vFXT 本身不會儲存資料。 它沒有背後所儲存資料量的相關資訊。
+不可以。 Avere vFXT for Azure 是附加至儲存體環境*的檔案系統快*取，例如您的 EMC 或 NetApp NAS 或 Azure blob 容器。 Avere vFXT 可簡化用戶端的資料要求，並快取提供的資料，長時間大規模地改善效能。 Avere vFXT 本身不會儲存資料。 它沒有背後所儲存資料量的相關資訊。
 
 ### <a name="is-avere-vfxt-a-tiering-solution"></a>Avere vFXT 是階層處理解決方案嗎？
 
-Azure 的 Avere vFXT 不會自動在熱層和冷層之間分層資料。  
+Avere vFXT for Azure 不會自動將經常性存取層和非經常性存取層之間的資料分層。  
 
 ### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>如何得知環境是否適合使用 Avere vFXT？
 
@@ -47,9 +47,9 @@ Azure 的 Avere vFXT 不會自動在熱層和冷層之間分層資料。
 
 * HPC 應用程式以 NFSv3 用戶端為基礎。 (在某些情況下，可以使用 SMB 2.1 用戶端，但效能會受到限制。)
 
-下圖可以説明您回答這個問題。 工作流越靠近右上角，Azure 緩存解決方案的 Avere vFXT 就越適合您的環境。
+下圖可協助您回答這個問題。 您的工作流程越接近右上方，Avere vFXT for Azure 快取解決方案就越有可能適合您的環境。
 
-![圖表顯示，具有數千個用戶端的讀取負載更適合 Avere vFXT](media/avere-vfxt-fit-assessment.png)
+![圖表圖表顯示有數千個用戶端的大量讀取負載，更適合 Avere vFXT](media/avere-vfxt-fit-assessment.png)
 
 ### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>哪種用戶端規模最適合使用 Avere vFXT 解決方案？
 
@@ -59,15 +59,15 @@ Avere vFXT 快取解決方案的建置可處理數百、數千或成千上萬個
 
 ### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Avere vFXT 環境可以儲存多少資料？
 
-Azure 的 Avere vFXT 是緩存。 因此不會特別儲存資料。 而是結合使用 RAM 與 SSD 來儲存快取的資料。 資料會永久儲存在後端儲存體系統 (例如，NetApp NAS 系統或 Blob 容器)。 Avere vFXT 系統並沒有背後所儲存資料量的相關資訊。 Avere vFXT 只會快取用戶端所要求資料的子集。  
+Avere vFXT for Azure 是快取。 因此不會特別儲存資料。 而是結合使用 RAM 與 SSD 來儲存快取的資料。 資料會永久儲存在後端儲存體系統 (例如，NetApp NAS 系統或 Blob 容器)。 Avere vFXT 系統並沒有背後所儲存資料量的相關資訊。 Avere vFXT 只會快取用戶端所要求資料的子集。  
 
 ### <a name="what-regions-are-supported"></a>支援哪些區域？
 
-除主權區域（中國、德國）外，所有區域都支援 Azure 的 Avere vFXT。 請確定您所要使用的區域可支援數量龐大的計算核心，以及建立 Avere vFXT 叢集所需的 VM 執行個體。
+除了主權區域（中國、德國）之外，所有區域都支援 Avere vFXT for Azure。 請確定您所要使用的區域可支援數量龐大的計算核心，以及建立 Avere vFXT 叢集所需的 VM 執行個體。
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>如何取得 Avere vFXT 的相關協助？
 
-一組專門的支援人員為 Azure 提供了 Avere vFXT 的説明。 請依照[取得有關系統的協助](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)中的指示，從 Azure 入口網站開啟支援票證。
+一組特殊的支援人員會提供 Avere vFXT for Azure 的協助。 請依照[取得有關系統的協助](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)中的指示，從 Azure 入口網站開啟支援票證。
 
 ### <a name="is-avere-vfxt-highly-available"></a>Avere vFXT 可用性高嗎？
 
@@ -78,9 +78,9 @@ Azure 的 Avere vFXT 是緩存。 因此不會特別儲存資料。 而是結合
 是，客戶可使用一個以上的雲端提供者搭配 Avere vFXT 叢集。 它支援 AWS S3 標準貯體、Google 雲端服務標準貯體和 Azure Blob 容器。
 
 > [!NOTE]
-> 將 Avere vFXT 與 AWS 或 Google 雲存儲一起使用需支付軟體費用。 使用 Azure Blob 存儲無需支付額外的軟體費用。
+> 軟體費用適用于使用 Avere vFXT 搭配 AWS 或 Google 雲端儲存體。 使用 Azure blob 儲存體不需要額外的軟體費用。
 
-## <a name="technical-compute"></a>技術： 計算
+## <a name="technical-compute"></a>技術：計算
 
 ### <a name="can-you-describe-what-an-avere-vfxt-environment-looks-like"></a>您能夠描述 Avere vFXT 環境的「面貌」嗎？
 
@@ -88,7 +88,7 @@ Avere vFXT 是由多個 Azure 虛擬機器構成的叢集設備。 Python 程式
 
 ### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Avere vFXT 可在哪種 Azure 虛擬機器上執行？  
 
-Azure 群集的 Avere vFXT 使用 Microsoft Azure E32s_v3虛擬機器。
+Avere vFXT for Azure 叢集會使用 Microsoft Azure E32s_v3 虛擬機器。
 
 <!-- ### Can I mix and match virtual machine types for my cluster?
 
@@ -105,7 +105,7 @@ Avere vFXT 叢集可以小至三個虛擬機器，或大至 24 個節點。 如�
 
 ### <a name="does-the-avere-vfxt-environment-autoscale"></a>Avere vFXT 環境可以自動調整規模嗎？
 
-否。 您可以上下調整叢集大小，但新增或移除叢集節點的步驟須手動進行。
+不可以。 您可以上下調整叢集大小，但新增或移除叢集節點的步驟須手動進行。
 
 ### <a name="can-i-run-the-avere-vfxt-cluster-as-a-virtual-machine-scale-set"></a>Avere vFXT 叢集可以執行為虛擬機器擴展集嗎？
 
@@ -125,7 +125,7 @@ Avere vFXT 不支援部署虛擬機器擴展集。 數個內建的可用性支�
 
 ### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>可以在不同的可用性區域中執行 Avere vFXT 叢集機器嗎？
 
-否。 Avere vFXT 中之高可用性模型目前不支援位於不同可用性區域中的個別 Avere vFXT 叢集成員。
+不可以。 Avere vFXT 中之高可用性模型目前不支援位於不同可用性區域中的個別 Avere vFXT 叢集成員。
 
 ### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>可以複製 Avere vFXT 虛擬機器嗎？
 
@@ -135,7 +135,7 @@ Avere vFXT 不支援部署虛擬機器擴展集。 數個內建的可用性支�
 
 否，提供的系統就是叢集設備，並已在特定的虛擬機器類型上經過測試。 這項限制可協助客戶，避免其所建立系統不支援一般 Avere vFXT 工作流程的高效能需求。
 
-## <a name="technical-disks"></a>技術： 磁片
+## <a name="technical-disks"></a>技術：磁片
 
 ### <a name="what-types-of-disks-are-supported-for-the-azure-vms"></a>Azure VM 支援哪種磁碟？
 
@@ -161,14 +161,14 @@ Avere vFXT for Azure 目前不支援本機 SSD。 用於 Avere vFXT 的磁碟必
 
 資料會等量分散在磁碟，但不會加密。 不過，您可以將磁碟本身加密。 如需詳細資訊，請參閱[在 Azure 中的虛擬機器上保護及使用原則](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption)。
 
-## <a name="technical-networking"></a>技術：網路
+## <a name="technical-networking"></a>技術：網路功能
 
 ### <a name="what-network-is-recommended"></a>建議使用哪種網路？
 
-如果將本機存放區與 Avere vFXT 一起使用，則應在存儲和群集之間建立 1 Gbps 或更好的網路連接。 如果您有少量的資料，並願意在執行工作之前，將資料複製到雲端，VPN 連線必須要夠快。
+如果您使用內部部署儲存體搭配 Avere vFXT，您的儲存體和叢集之間應該要有 1 Gbps 或更好的網路連線。 如果您有少量的資料，並願意在執行工作之前，將資料複製到雲端，VPN 連線必須要夠快。
 
 > [!TIP]
-> 網路鏈路越慢，初始"冷"讀取速度越慢。 讀取速度緩慢會增加工作管線的延遲情況。
+> 網路連結越慢，初始「冷」讀取的速度就越慢。 讀取速度緩慢會增加工作管線的延遲情況。
 
 ### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>可以在計算叢集以外的虛擬網路中執行 Avere vFXT 嗎？
 
@@ -176,7 +176,7 @@ Avere vFXT for Azure 目前不支援本機 SSD。 用於 Avere vFXT 的磁碟必
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Avere vFXT 需要自己的子網路嗎？
 
-是。 Avere vFXT 嚴格作為高可用性 （HA） 群集運行，需要多個 IP 位址才能運行。 如果叢集位於自己的子網路中，您要避免 IP 位址發生衝突，這可能會造成安裝和一般操作發生問題。 只要沒有 IP 位址重疊，群集的子網可以位於其他資源使用的虛擬網路中。
+是。 Avere vFXT 完全以高可用性（HA）叢集的方式執行，而且需要多個 IP 位址才能運作。 如果叢集位於自己的子網路中，您要避免 IP 位址發生衝突，這可能會造成安裝和一般操作發生問題。 叢集的子網可以位於其他資源所使用的虛擬網路中，只要沒有 IP 位址重迭即可。
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>可以在 InfiniBand 上執行 Avere vFXT 嗎？
 
@@ -199,15 +199,15 @@ Avere vFXT 環境類似任何其他的 Azure VM，它需要透過網路閘道或
 
 不可以，用來運作 Avere vFXT 的網路環境應該要透過最佳做法加以保護。
 
-### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>我可以限制從群集的虛擬網路進行互聯網訪問嗎？
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>我可以限制從叢集的虛擬網路存取網際網路嗎？
 
-通常，您可以根據需要在虛擬網路上配置其他安全性，但某些限制可能會干擾群集的操作。
+一般來說，您可以視需要在虛擬網路上設定額外的安全性，但某些限制可能會干擾叢集的作業。
 
-例如，限制來自虛擬網路的出站 Internet 訪問會導致群集出現問題，除非您還添加顯式允許訪問 AzureCloud 的規則。 這種情況在[GitHub 上的補充文檔中](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)進行了描述。
+例如，限制來自虛擬網路的輸出網際網路存取會導致叢集發生問題，除非您也新增了明確允許存取 AzureCloud 的規則。 [GitHub 上的補充檔](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)會說明這種情況。
 
-有關自訂安全性的説明，請聯繫支援人員，如[獲取系統説明](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)中所述。
+如需自訂安全性的協助，請聯絡支援人員，如[取得系統協助](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)中所述。
 
-## <a name="technical-back-end-storage-core-filers"></a>技術：後端存儲（核心檔案伺服器）
+## <a name="technical-back-end-storage-core-filers"></a>技術：後端儲存體（核心檔存放區）
 
 ### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>單一 Avere vFXT 環境可支援多少核心檔案管理工具？
 
@@ -248,17 +248,17 @@ Avere vFXT 不支援私用物件儲存體。
 
 您的儲存體帳戶必須是一般用途 v2 (GPv2) 帳戶，並設定為只使用本地備援儲存體。 不支援異地備援儲存體和區域備援儲存體。
 
-有關存儲帳戶要求的詳細資訊，請閱讀[Azure Blob 存儲雲核心檔案伺服器](avere-vfxt-add-storage.md#azure-blob-storage-cloud-core-filer)。
+如需儲存體帳戶需求的詳細資訊，請參閱[Azure Blob 儲存體雲端核心檔案管理](avere-vfxt-add-storage.md#azure-blob-storage-cloud-core-filer)工具。
 
 ### <a name="can-i-use-archive-blob-storage"></a>可以使用封存 Blob 儲存體嗎？
 
-否。 封存儲存體的服務等級協定 (SLA) 與 Avere vFXT 系統的即時目錄和檔案存取需求不相容。
+不可以。 封存儲存體的服務等級協定 (SLA) 與 Avere vFXT 系統的即時目錄和檔案存取需求不相容。
 
 ### <a name="can-i-use-cool-blob-storage"></a>可以使用非經常性儲存層的 Blob 儲存體嗎？
 
-對於 Azure 核心檔程式的 Avere vFXT，通常不建議使用酷層 blob 存儲。 冷層提供更低的存儲成本，但更高的運營成本。 （有關詳細資訊，請參閱[塊 Blob 定價](<https://azure.microsoft.com/pricing/details/storage/blobs/>)。如果資料將被頻繁訪問、修改或刪除，請考慮使用熱層。
+非經常性存取層 blob 儲存體通常不建議用於 Avere vFXT for Azure 核心檔案管理工具。 非經常性存取層提供較低的儲存成本，但作業成本較高。 （如需詳細資訊，請參閱[區塊 blob 價格](<https://azure.microsoft.com/pricing/details/storage/blobs/>)）。如果資料會經常被存取、修改或刪除，請考慮使用熱層。
 
-[訪問層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier)提供了有關何時將酷層存儲用作 vFXT 核心檔案伺服器可能有意義的詳細資訊。
+[存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier)會提供詳細資訊，說明使用非經常性存取層儲存體做為 vFXT 核心檔案管理工具的時機。
 
 ### <a name="how-do-i-encrypt-the-blob-container"></a>如何加密 Blob 容器？
 
@@ -287,7 +287,7 @@ Avere vFXT 不支援私用物件儲存體。
 若要開始使用 Avere vFXT for Azure，請閱讀以下文章，了解如何規劃和部署自己的系統：
 
 * [規劃您的 Avere vFXT 系統](avere-vfxt-deploy-plan.md)
-* [部署概述](avere-vfxt-deploy-overview.md)
+* [部署總覽](avere-vfxt-deploy-overview.md)
 * [準備建立 Avere vFXT 叢集](avere-vfxt-prereqs.md)
 * [部署 Avere vFXT 叢集](avere-vfxt-deploy.md)
 

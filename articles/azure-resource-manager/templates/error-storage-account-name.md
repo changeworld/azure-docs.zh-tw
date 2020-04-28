@@ -1,13 +1,13 @@
 ---
-title: 存儲帳戶名稱錯誤
+title: 儲存體帳戶名稱錯誤
 description: 描述當指定儲存體帳戶名稱時，可能會遇到的錯誤。
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.openlocfilehash: 5b2706d8540ea38ef08bf7ca0f804e6811a93085
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76153967"
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>解決儲存體帳戶名稱的錯誤

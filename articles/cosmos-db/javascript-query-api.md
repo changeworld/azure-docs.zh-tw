@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Cosmos DB 預存程序和觸發器中使用 JavaScript 集成查詢 API
+title: 在 Azure Cosmos DB 預存程式和觸發程式中使用 JavaScript 整合式查詢 API
 description: 本文會介紹 JavaScript Language-integrated Query (LINQ) API 的概念，以在 Azure Cosmos DB 中建立預存程序和觸發程序。
 author: markjbrown
 ms.service: cosmos-db
@@ -8,19 +8,19 @@ ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76901830"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 JavaScript 查詢 API
 
-除了在 Azure Cosmos DB 中使用 SQL API 發出查詢外[，Cosmos DB 伺服器端 SDK](https://azure.github.io/azure-cosmosdb-js-server/)還提供 JavaScript 介面，用於在 Cosmos DB 預存程序和觸發器中執行優化的查詢。 不必一定要懂得 SQL 語言才能使用此 JavaScript 介面。 JavaScript 的查詢 API 使用 ECMAScript5 陣列內建和受歡迎的 JavaScript 程式庫如 lodash 所熟悉的語法，將述詞函式依序傳遞至函式呼叫，藉此以程式設計方式建立查詢。 JavaScript 執行階段會剖析查詢，並使用 Azure Cosmos DB 的索引，有效執行該查詢。
+除了在 Azure Cosmos DB 中使用 SQL API 發出查詢以外， [Cosmos DB 伺服器端 SDK](https://azure.github.io/azure-cosmosdb-js-server/)還提供 JavaScript 介面，可在 Cosmos DB 的預存程式和觸發程式中執行優化的查詢。 不必一定要懂得 SQL 語言才能使用此 JavaScript 介面。 JavaScript 的查詢 API 使用 ECMAScript5 陣列內建和受歡迎的 JavaScript 程式庫如 lodash 所熟悉的語法，將述詞函式依序傳遞至函式呼叫，藉此以程式設計方式建立查詢。 JavaScript 執行階段會剖析查詢，並使用 Azure Cosmos DB 的索引，有效執行該查詢。
 
 ## <a name="supported-javascript-functions"></a>支援的 JavaScript 函式
 
-| **函數** | **描述** |
+| **函數** | **說明** |
 |---------|---------|
 |`chain() ... .value([callback] [, options])`|啟動鏈結的呼叫，此呼叫必須以 value() 終止。|
 |`filter(predicateFunction [, options] [, callback])`|使用述詞函式來篩選輸入，此函式會傳回 true/false 以在結果集內篩出/篩除輸入文件。 此函式的行為類似於 SQL 中的 WHERE 子句。|
@@ -33,7 +33,7 @@ ms.locfileid: "76901830"
 
 當裡面包含述詞和/或選取器函式時，下列 JavaScript 建構會自動取得最佳化，以便直接在 Azure Cosmos DB 索引上執行：
 
-- 簡單運算子`=``+``-``*`： `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
+- 簡單運算子`=` `+` `-` `*` ： `/` `%` `|` `^` `&` `==` `!=` `===` `!===` `<` `>` `<=` `>=` `||` `&&` `<<` `>>` `>>>!``~`
 - 常值，包含物件常值：{}
 - var、return
 
@@ -51,7 +51,7 @@ ms.locfileid: "76901830"
 > [!NOTE]
 > 使用 JavaScript 查詢 API 時，`__` (雙底線) 是 `getContext().getCollection()` 的別名。
 
-|**SQL**|**JavaScript 查詢 API**|**描述**|
+|**SQL**|**JavaScript 查詢 API**|**說明**|
 |---|---|---|
 |SELECT *<br>FROM docs| __.map(function(doc) { <br>&nbsp;&nbsp;&nbsp;&nbsp;return doc;<br>});|所有文件中的結果 (使用連續權杖分頁)。|
 |SELECT <br>&nbsp;&nbsp;&nbsp;docs.id,<br>&nbsp;&nbsp;&nbsp;docs.message AS msg,<br>&nbsp;&nbsp;&nbsp;docs.actions <br>FROM docs|__.map(function(doc) {<br>&nbsp;&nbsp;&nbsp;&nbsp;return {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: doc.id,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;msg: doc.message,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;actions:doc.actions<br>&nbsp;&nbsp;&nbsp;&nbsp;};<br>});|投射識別碼、訊息 (別名為 msg)，和所有文件中的動作。|
@@ -65,7 +65,7 @@ ms.locfileid: "76901830"
 進一步了解更多相關概念，以及如何在 Azure Cosmos DB 中寫入和使用預存程序、觸發程序和使用者定義的函式：
 
 - [如何使用 Javascript 查詢 API 寫入預存程序和觸發程序](how-to-write-javascript-query-api.md)
-- [使用 Azure Cosmos DB 預存程序、觸發器和使用者定義的函數](stored-procedures-triggers-udfs.md)
+- [使用 Azure Cosmos DB 預存程式、觸發程式和使用者定義函數](stored-procedures-triggers-udfs.md)
 - [如何在 Azure Cosmos DB 中註冊和使用預存程序、觸發程序和使用者定義函式](how-to-use-stored-procedures-triggers-udfs.md)
 - [Azure Cosmos DB JavaScript 伺服器端 API 參考](https://azure.github.io/azure-cosmosdb-js-server) \(英文\)
 - [JavaScript ES6 (ECMA 2015)](https://www.ecma-international.org/ecma-262/6.0/)

@@ -1,6 +1,6 @@
 ---
-title: 通知中心企業推送架構
-description: 瞭解如何在企業環境中使用 Azure 通知中心
+title: 通知中樞企業推播架構
+description: 瞭解如何在企業環境中使用 Azure 通知中樞
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -17,17 +17,17 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 0104547a432f7f78d74731e11926bcd82088cef7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76264028"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>企業推送架構指引
 
 當代的企業正逐漸朝著為使用者 (外部) 或員工 (內部) 建立行動應用程式的方向邁進。 他們擁有現成的後端系統 (無論是大型主機還是某些 LoB 應用程式)，而這些系統必須整合到行動應用程式架構中。 本指南會討論如何以最佳方式進行整合，並針對常見案例建議適用的可行方案。
 
-常見的需求是當後端系統發生使用者感興趣的事件時，透過行動應用程式將推播通知傳送給使用者。 例如，在 iPhone 上擁有銀行銀行應用的銀行客戶希望在從該帳戶或 Intranet 方案中從某個帳戶或 Intranet 方案中借記超過一定金額時收到通知，因為財務部門的員工在 Windows Phone 上擁有預算審批應用，希望獲得該帳戶或內聯網方案收到核准請求時通知。
+常見的需求是當後端系統發生使用者感興趣的事件時，透過行動應用程式將推播通知傳送給使用者。 例如，在 iPhone 上擁有銀行銀行應用程式的銀行客戶，想要在從帳戶或內部網路案例中的特定金額付款時收到通知，而在 Windows Phone 想要在收到核准要求時收到通知的財務部門員工。
 
 銀行帳戶或核准處理很可能會在後端系統中完成，而這必須對使用者發出推送。 可能會有多個這樣的後端系統，而這些系統都必須建置相同的邏輯，以在事件觸發通知時進行推送。 其複雜度在於以單一推送系統整合數個後端系統，其中使用者可能會訂閱不同的通知，甚至擁有多個行動應用程式。 以內部網路行動應用程式為例，行動應用程式可能需要接收來自多個上述後端系統所傳送的通知。 由於後端系統不知道 (或不需要知道) 推送的語意/技術，因此常用的傳統方案是導入一個元件，該元件會輪詢後端系統是否有任何使用者感興趣的事件，並負責將推送訊息傳送給用戶端。
 
@@ -39,7 +39,7 @@ ms.locfileid: "76264028"
 
 ![][1]
 
-本架構圖中的關鍵是提供主題/訂用帳戶程式撰寫模型的 Azure 服務匯流排 (如需詳細資料，請參閱[服務匯流排發行/訂用帳戶程式撰寫])。 接收方（本例中為移動後端）是移動後端（通常是[Azure 移動服務]，它發起推送到移動應用程式）不會直接從後端系統接收消息，而是[Azure 服務匯流排]提供的中間抽象層，該層使移動後端能夠接收來自一個或多個後端系統的消息。 您需要為每個後端系統建立服務匯流排主題 (例如帳戶、HR、財務)，它們基本上是使用者感興趣的「主題」，能讓訊息以推播通知的形式傳送。 後端系統會將訊息傳送到這些主題。 藉由建立服務匯流排訂閱，行動後端能訂閱一或多個這類型的主題。 它能讓行動後端接收來自對應後端系統的通知。 行動後端會持續接聽與其訂閱相關的訊息，待訊息抵達後，它會立即轉向並以通知形式將訊息傳送到通知匯流排。 通知中樞接著會將訊息傳遞給行動應用程式。 以下是重要元件的清單：
+本架構圖中的關鍵是提供主題/訂用帳戶程式撰寫模型的 Azure 服務匯流排 (如需詳細資料，請參閱[服務匯流排發行/訂用帳戶程式撰寫])。 在此情況下，接收者是行動後端（通常是[Azure 行動服務]，它會起始推送至行動應用程式）不會直接從後端系統接收訊息，而是由[Azure 服務匯流排]所提供的中繼抽象層，讓行動後端接收來自一或多個後端系統的訊息。 您需要為每個後端系統建立服務匯流排主題 (例如帳戶、HR、財務)，它們基本上是使用者感興趣的「主題」，能讓訊息以推播通知的形式傳送。 後端系統會將訊息傳送到這些主題。 藉由建立服務匯流排訂閱，行動後端能訂閱一或多個這類型的主題。 它能讓行動後端接收來自對應後端系統的通知。 行動後端會持續接聽與其訂閱相關的訊息，待訊息抵達後，它會立即轉向並以通知形式將訊息傳送到通知匯流排。 通知中樞接著會將訊息傳遞給行動應用程式。 以下是重要元件的清單：
 
 1. 後端系統 (LoB/舊版系統)
    * 建立服務匯流排主題
@@ -71,7 +71,7 @@ ms.locfileid: "76264028"
 
 1. **EnterprisePushBackendSystem**
 
-    a. 該專案使用**WindowsAzure.ServiceBus** NuGet 包，並且基於[服務匯流排 Pub/Sub 程式設計]。
+    a. 此專案使用**Windowsazure.storage** NuGet 套件，並以[服務匯流排 Pub/Sub 程式設計]為基礎。
 
     b. 此應用程式為簡易的 C# 主控台應用程式，可用來模擬 LoB 系統，讓訊息得以傳遞到行動應用程式。
 
@@ -267,7 +267,7 @@ ms.locfileid: "76264028"
 ### <a name="running-the-sample"></a>執行範例
 
 1. 確認 WebJob 已成功執行，並已排定連續執行。
-2. 運行**企業應用，** 啟動 Windows 應用商店應用。
+2. 執行**enterprisepushmobileapp 以**，這會啟動 Windows Store 應用程式。
 3. 執行 **EnterprisePushBackendSystem** 主控台應用程式來模擬 LoB 後端並開始傳送訊息，您應該會看見與以下影像類似的快顯通知：
 
     ![][5]
@@ -291,4 +291,4 @@ ms.locfileid: "76264028"
 [服務匯流排發行/訂用帳戶程式撰寫]: https://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
 [Azure WebJob]: ../app-service/webjobs-create.md
 [通知中樞 - Windows Universal 教學課程]: https://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
-[Azure 門戶]: https://portal.azure.com/
+[Azure 入口網站]: https://portal.azure.com/

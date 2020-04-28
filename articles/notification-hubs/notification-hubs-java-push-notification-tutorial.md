@@ -1,5 +1,5 @@
 ---
-title: 如何使用 Azure 通知中心與 JAVA
+title: 如何搭配使用 Azure 通知中樞與 JAVA
 description: 了解如何從 Java 後端使用 Azure 通知中樞。
 services: notification-hubs
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263858"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>如何從 Java 使用通知中樞
@@ -41,7 +41,7 @@ SDK 目前支援：
 * 定期傳送
 * 排程的傳送
 * 透過 Java NIO 的非同步作業
-* 支援的平臺：APNS （iOS）、 FCM （安卓）、WNS（Windows 應用商店應用程式）、MPNS（Windows Phone）、ADM（亞馬遜Kindle Fire）、百度（沒有谷歌服務的安卓）
+* 支援的平臺： APNS （iOS）、FCM （Android）、WNS （Windows Store 應用程式）、MPNS （Windows Phone）、ADM （Amazon Kindle 火災）、百度（不含 Google 服務的 Android）
 
 ## <a name="sdk-usage"></a>SDK 的使用方式
 
@@ -71,7 +71,7 @@ SDK 目前支援：
     hub = namespaceManager.createNotificationHub(hub);
     ```
 
- OR
+ 或者
 
     ```java
     hub = new NotificationHub("connection string", "hubname");
@@ -132,7 +132,7 @@ SDK 目前支援：
     hub.createRegistration(reg);
     ```
 
-**使用創建註冊 ID + upsert 模式創建註冊：**
+**使用建立註冊識別碼 + upsert 模式來建立註冊：**
 
 移除因將註冊識別碼儲存在裝置上而導致任何遺失回應的複本：
 
@@ -384,7 +384,7 @@ SDK 目前支援：
   * [傳送通知給已驗證的使用者]
   * [傳送跨平台通知給已驗證的使用者]
 
-[JAVA SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
+[Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
 [Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
 [開始使用通知中心]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [傳送即時新聞]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md

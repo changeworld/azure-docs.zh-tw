@@ -14,10 +14,10 @@ ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897048"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>影響 Azure AD Connect 效能的因素
@@ -29,13 +29,13 @@ Azure AD Connect 會將 Active Directory 同步處理至 Azure AD。 此伺服�
 | 拓撲| Azure AD Connect 必須在網路上管理的端點和元件發佈。 |
 | 調整| 要由 Azure AD Connect 管理的使用者、群組和 OU 等物件的數目。 |
 | 硬體| Azure AD Connect 的硬體 (實體或虛擬) 以及每個硬體元件 (包括 CPU、記憶體、網路和硬碟組態) 的相依效能容量。 |
-| 組態| Azure AD Connect 處理目錄和資訊的方式。 |
+| 設定| Azure AD Connect 處理目錄和資訊的方式。 |
 | 載入| 物件的變更頻率。 一小時、一天或一週期間的負載可能各不相同。 視元件而定，您可能必須針對尖峰負載或平均負載進行設計。 |
 
 本文件的目的是要說明影響 Azure AD Connect 佈建引擎效能的因素。 大型或複雜的組織 (佈建超過 100,000 個物件的組織) 如果遇到本文件所述的任何效能問題，可使用文件中的建議來獲得最佳的 Azure AD Connect 實作。 Azure AD Connect 的其他元件 (例如 [Azure AD Connect Health](how-to-connect-health-agent-install.md)) 和代理程式不在本文件的討論範圍。
 
 > [!IMPORTANT]
-> Microsoft 不支援在正式記載的動作以外修改和操作 Azure AD Connect。 這些操作中的任何一個都可能導致 Azure AD 連接同步的不一致或不受支援的狀態。因此，Microsoft 無法為此類部署提供技術支援。
+> Microsoft 不支援在正式記載的動作以外修改和操作 Azure AD Connect。 這些動作中的任何一項可能會導致 Azure AD Connect 同步的狀態不一致或不受支援。因此，Microsoft 無法提供這類部署的技術支援。
 
 ## <a name="azure-ad-connect-component-factors"></a>Azure AD Connect 元件因素
 

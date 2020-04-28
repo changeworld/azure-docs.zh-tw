@@ -8,10 +8,10 @@ ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: b251096915506c3c7a4eebf45b6a03e24779a3d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277794"
 ---
 # <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>(已淘汰) 透過 Marathon Web UI 管理 Azure Container Service DC/OS 叢集
@@ -34,12 +34,12 @@ DC/OS 提供環境來部署及調整叢集工作負載，同時將基礎硬體�
 >
 
 ## <a name="explore-the-dcos-ui"></a>探索 DC/OS UI
-建立安全外殼 （SSH）[隧道後](../container-service-connect.md)，流覽到\/HTTP： /localhost/。 這會載入 DC/OS Web UI 並顯示叢集的相關資訊，例如使用的資源、作用中代理程式和執行中的服務。
+[建立](../container-service-connect.md)安全殼層（SSH）通道後，流覽至 HTTP：\//localhost/。 這會載入 DC/OS Web UI 並顯示叢集的相關資訊，例如使用的資源、作用中代理程式和執行中的服務。
 
 ![DC/OS UI](./media/container-service-mesos-marathon-ui/dcos2.png)
 
 ## <a name="explore-the-marathon-ui"></a>瀏覽 Marathon UI
-要查看馬拉松 UI，請流覽到 HTTP：\//本地主機/馬拉松。 在此畫面中，您可以啟動 Azure 容器服務 DC/OS 叢集上的新容器或其他應用程式。 您也可以看到有關執行容器和應用程式的資訊。  
+若要查看 Marathon UI，請流覽至 HTTP\/：/localhost/marathon。 在此畫面中，您可以啟動 Azure 容器服務 DC/OS 叢集上的新容器或其他應用程式。 您也可以看到有關執行容器和應用程式的資訊。  
 
 ![Marathon UI](./media/container-service-mesos-marathon-ui/dcos3.png)
 
@@ -48,9 +48,9 @@ DC/OS 提供環境來部署及調整叢集工作負載，同時將基礎硬體�
 
 | 欄位 | 值 |
 | --- | --- |
-| ID |nginx |
+| 識別碼 |nginx |
 | 記憶體 | 32 |
-| 映像 |nginx |
+| Image |nginx |
 | 網路 |橋接 |
 | 主機連接埠 |80 |
 | 通訊協定 |TCP |
@@ -83,7 +83,7 @@ DC/OS 叢集會使用一組私人和公用代理程式來進行部署。 若要�
 
 ![Marathon 主頁面 UI--容器部署狀態](./media/container-service-mesos-marathon-ui/dcos7.png)
 
-當您切換回 DC/OS Web UI（HTTP：\//localhost//）時，您會看到一個任務（在本例中為 Docker 格式的容器）正在 DC/OS 群集上運行。
+當您切換回 DC/OS web UI （HTTP：\//localhost/）時，您會看到 DC/os 叢集上正在執行一項工作（在此案例中為 Docker 格式的容器）。
 
 ![DC/OS Web UI--在叢集上執行的工作](./media/container-service-mesos-marathon-ui/dcos8.png)
 

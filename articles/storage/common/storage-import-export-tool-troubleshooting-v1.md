@@ -9,10 +9,10 @@ ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: 4eeeb538bcd39eed40a92dd45e7ba7bed25558e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75978410"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>針對 Azure 匯入/匯出工具進行疑難排解
@@ -34,7 +34,7 @@ ms.locfileid: "75978410"
 ## <a name="next-steps"></a>後續步驟
 
 * [設定 Azure 匯入/匯出工具](../storage-import-export-tool-setup-v1.md)   
-* [為導入作業準備硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
-* [使用副本日誌檔查看作業狀態](../storage-import-export-tool-reviewing-job-status-v1.md)   
-* [修復導入作業](../storage-import-export-tool-repairing-an-import-job-v1.md)   
+* [準備匯入工作的硬碟](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
+* [使用複製記錄檔來檢查作業狀態](../storage-import-export-tool-reviewing-job-status-v1.md)   
+* [修復匯入作業](../storage-import-export-tool-repairing-an-import-job-v1.md)   
 * [修復匯出作業](../storage-import-export-tool-repairing-an-export-job-v1.md)

@@ -1,20 +1,20 @@
 ---
-title: 具有 API 管理概述的 Azure 服務結構
+title: 使用 API 管理的 Azure Service Fabric 總覽
 description: 本文是使用「Azure API 管理」作為 Service Fabric 應用程式閘道的簡介。
 author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
 ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76028543"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Service Fabric 搭配 Azure API 管理概觀
 
-雲端應用程式通常需要前端閘道來為使用者、裝置或其他應用程式提供單一輸入點。 在 Service Fabric 中，閘道可以是任何無狀態服務，如[ASP.NET核心應用程式](service-fabric-reliable-services-communication-aspnetcore.md)，也可以是專為流量入口設計的另一個服務，如[事件中心](https://docs.microsoft.com/azure/event-hubs/)[、IoT 中心](https://docs.microsoft.com/azure/iot-hub/)或[Azure API 管理](https://docs.microsoft.com/azure/api-management/)。
+雲端應用程式通常需要前端閘道來為使用者、裝置或其他應用程式提供單一輸入點。 在 Service Fabric 中，閘道可以是任何無狀態服務（例如[ASP.NET Core 應用程式](service-fabric-reliable-services-communication-aspnetcore.md)），或是為流量輸入設計的另一個服務，例如[事件中樞](https://docs.microsoft.com/azure/event-hubs/)、 [IoT 中樞](https://docs.microsoft.com/azure/iot-hub/)或[Azure API 管理](https://docs.microsoft.com/azure/api-management/)。
 
 本文是使用「Azure API 管理」作為 Service Fabric 應用程式閘道的簡介。 「API 管理」直接與 Service Fabric 整合，可讓您將具有一組豐富路由規則的 API 發佈至後端 Service Fabric 服務。
 
@@ -45,7 +45,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 ## <a name="send-traffic-to-a-stateless-service"></a>將流量傳送到無狀態服務
 
-在最簡單的案例中，會將流量轉送到無狀態服務執行個體。 為了達成此目的，「API 管理」作業會包含一個具有 Service Fabric 後端的輸入處理原則，此後端會對應至 Service Fabric 後端中特定的無狀態服務執行個體。 發送到該服務的請求將發送到服務的隨機實例。
+在最簡單的案例中，會將流量轉送到無狀態服務執行個體。 為了達成此目的，「API 管理」作業會包含一個具有 Service Fabric 後端的輸入處理原則，此後端會對應至 Service Fabric 後端中特定的無狀態服務執行個體。 傳送至該服務的要求會傳送至服務的隨機實例。
 
 **範例**
 
@@ -69,7 +69,7 @@ Service Fabric 中的服務可以是無狀態或具狀態服務，並且可使�
 
 在較進階的案例中，您可以定義一個將要求對應至多個服務執行個體的「API 管理」作業。 在此情況下，每個作業都會包含一個原則，此原則會根據來自傳入 HTTP 要求的值 (例如 URL 路徑或查詢字串) 將要求對應至特定的服務執行個體，而在具狀態服務的案例中，則是會對應至服務執行個體內的分割區。
 
-為了達成此目的，「API 管理」作業會包含一個具有 Service Fabric 後端的輸入處理原則，此後端會根據從傳入 HTTP 要求擷取到的值，對應至 Service Fabric 後端中的無狀態服務執行個體。 對服務的請求將發送到服務的隨機實例。
+為了達成此目的，「API 管理」作業會包含一個具有 Service Fabric 後端的輸入處理原則，此後端會根據從傳入 HTTP 要求擷取到的值，對應至 Service Fabric 後端中的無狀態服務執行個體。 服務的要求會傳送至服務的隨機實例。
 
 **範例**
 

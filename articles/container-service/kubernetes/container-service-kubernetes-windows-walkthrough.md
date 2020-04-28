@@ -8,10 +8,10 @@ ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
 ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277653"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(已淘汰) 部署適用於 Windows 容器的 Kubernetes 叢集
@@ -34,7 +34,7 @@ Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。
 
 使用 [az group create](/cli/azure/group#az-group-create) 命令來建立資源群組。 Azure 資源群組是部署及管理 Azure 資源所在的邏輯群組。 
 
-下面的示例在*東部*位置創建名為*myResourceGroup*的資源組。
+下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -61,7 +61,7 @@ az acs create --orchestrator-type=kubernetes \
 
 ## <a name="install-kubectl"></a>安裝 kubectl
 
-要從用戶端電腦連接到庫伯內斯群集，請使用[`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)Kubernetes 命令列用戶端。 
+若要從用戶端電腦連接到 Kubernetes 叢集，請[`kubectl`](https://kubernetes.io/docs/user-guide/kubectl/)使用 Kubernetes 命令列用戶端。 
 
 如果您是使用 Azure CloudShell，就已安裝 `kubectl`。 如果您想要在本機進行安裝，可以使用 [az acs kubernetes install-cli](/cli/azure/acs/kubernetes) 命令。
 

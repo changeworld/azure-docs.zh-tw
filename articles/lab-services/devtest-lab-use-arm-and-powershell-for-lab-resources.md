@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 資源管理器範本創建或修改實驗室
+title: 使用 Azure Resource Manager 範本建立或修改實驗室
 description: 了解如何使用 Powershell 及 Azure Resource Manager 範本，在 DevTest 實驗室中自動建立或修改實驗室
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 180081829387afeb7e63defe7a22378aa8d417d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76170301"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>使用 PowerShell 及 Azure Resource Manager 範本自動建立或修改實驗室
@@ -28,7 +28,7 @@ DevTest 實驗室提供許多 Azure Resource Manager 範本和 PowerShell 指令
 本文循序指導您使用這些範本及指令碼，來自動化實驗室的建立、修改及部署。 本文也將說明，您將可以在哪裡找到如何使用 PowerShell 來執行 DevTest 實驗室中的若干一般工作的相關資訊。
 
 ## <a name="step-1-gather-your-templates-and-scripts"></a>步驟 1︰收集您的範本和指令碼
-您可以在我們的公共[GitHub 存儲庫](https://github.com/Azure/azure-devtestlab)中找到預先製作的[Azure 資源管理器範本](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)和[PowerShell 腳本](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts)。 直接使用，或針對您的需求進行自訂，並儲存在您自己的[私人 Git 存放庫](devtest-lab-add-artifact-repo.md)。
+您可以在我們的公用[GitHub 存放庫](https://github.com/Azure/azure-devtestlab)中找到預先製作的[Azure Resource Manager 範本](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)和[PowerShell 腳本](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts)。 直接使用，或針對您的需求進行自訂，並儲存在您自己的[私人 Git 存放庫](devtest-lab-add-artifact-repo.md)。
 
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>步驟 2：修改您的 Azure Resource Manager 範本
 如果您以前從未建立過範本，您可以遵循[建立第一個 Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)中的步驟。
@@ -49,4 +49,4 @@ DevTest 實驗室提供許多 Azure Resource Manager 範本和 PowerShell 指令
 
 ### <a name="next-steps"></a>後續步驟
 * 了解如何建立您將儲存自訂範本或指令碼的[私人 Git 存放庫](devtest-lab-add-artifact-repo.md)。
-* 從[Azure 快速入門範本庫中流覽 Azure 資源管理器範本](https://github.com/Azure/azure-quickstart-templates)。
+* 探索[Azure 快速入門範本資源庫中的 Azure Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates)。

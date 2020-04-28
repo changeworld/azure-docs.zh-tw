@@ -1,5 +1,5 @@
 ---
-title: 如何使用具有 PHP 的 Azure 通知中心
+title: 如何搭配使用 Azure 通知中樞與 PHP
 description: 了解如何從 PHP 後端使用 Azure 通知中樞。
 services: notification-hubs
 documentationcenter: ''
@@ -17,22 +17,22 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76263841"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>如何從 PHP 使用通知中樞
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-您可以使用通知中心 REST 介面從 JAVA/PHP/Ruby 後端訪問所有通知中心功能，如 MSDN 主題[通知中心 REST API](https://msdn.microsoft.com/library/dn223264.aspx)中所述。
+您可以使用通知中樞 REST 介面，從 JAVA/PHP/Ruby 後端存取所有通知中樞的功能，如 MSDN 主題[通知中樞 Rest api](https://msdn.microsoft.com/library/dn223264.aspx)中所述。
 
 在本主題中，我們將說明如何：
 
 * 在 PHP 中建置通知中心功能的 REST 用戶端；
-* 按照您選擇的移動平臺入門[教程](notification-hubs-ios-apple-push-notification-apns-get-started.md)，在 PHP 中實現後端部分。
+* 請遵循[開始使用教學](notification-hubs-ios-apple-push-notification-apns-get-started.md)課程，以瞭解您所選擇的行動平臺，並在 PHP 中執行後端部分。
 
 ## <a name="client-interface"></a>用戶端介面
 
@@ -55,7 +55,7 @@ ms.locfileid: "76263841"
 
 ## <a name="implementation"></a>實作
 
-如果尚未啟動，請按照["入門"教程]進行最後一節，以便實現後端。
+如果您還沒有這麼做，請遵循開始使用[教學]課程，直到您必須執行後端的最後一節。
 另外，若有需要，您可以使用 [PHP REST 包裝函式範例]的程式碼，並直接移至[完成教學課程](#complete-tutorial)一節。
 
 您可以在 [MSDN](https://msdn.microsoft.com/library/dn530746.aspx)上找到所有實作完整 REST 包裝函式的詳細資料。 在本節中，我們將針對存取通知中心 REST 端點所需主要步驟的 PHP 實作進行說明：

@@ -1,5 +1,5 @@
 ---
-title: 查看和使用虛擬機器的 Azure 資源管理器範本
+title: 查看和使用虛擬機器的 Azure Resource Manager 範本
 description: 了解如何從虛擬機器使用 Azure Resource Manager 範本來建立其他 VM
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: 7064fdeec04f4dc5ae2c73c1a3896cf2d10dd01d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169107"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立虛擬機器 
@@ -30,13 +30,13 @@ ms.locfileid: "76169107"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>多部 VM 與單一 VM Resource Manager 範本
-使用資源管理器範本在 DevTest 實驗室中創建 VM 的方法有兩種：預配 Microsoft.DevTestLab/實驗室/虛擬機器資源或預配 Microsoft.計算/虛擬機器資源。 每種方式都在不同案例中使用，而且需要不同的權限。
+有兩種方式可使用 Resource Manager 範本在 DevTest Labs 中建立 Vm：布建 Microsoft.devtestlab/Labs/virtualmachines 資源，或布建 Microsoft Compute/virtualmachines 資源。 每種方式都在不同案例中使用，而且需要不同的權限。
 
 - 使用 Microsoft.DevTestLab/labs/virtualmachines 資源類型 (在範本的 “resource” 屬性中宣告) 的 Resource Manager 範本可以佈建個別實驗室 VM。 然後每個 VM 會顯示為 DevTest Labs 虛擬機器清單中的單一項目：
 
    ![DevTest Labs 虛擬機器清單中單一項目之 VM 的清單](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   這種類型的資源管理器範本可以通過 Azure PowerShell 命令**New-AzResourceGroup 部署**或通過 Azure CLI 命令**az 組部署創建進行**預配。 它需要系統管理員權限，所以獲得 DevTest Labs 使用者角色指派的使用者無法執行部署。 
+   這種類型的 Resource Manager 範本可以透過 Azure PowerShell 命令**new-azresourcegroupdeployment**或透過 Azure CLI 命令**az group deployment create**來布建。 它需要系統管理員權限，所以獲得 DevTest Labs 使用者角色指派的使用者無法執行部署。 
 
 - 使用 Microsoft.Compute/virtualmachines 資源類型的 Resource Manager 範本可以將多個 VM 佈建為 DevTest Labs 虛擬機器清單中的單一環境：
 
@@ -51,7 +51,7 @@ ms.locfileid: "76169107"
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>檢視及儲存虛擬機器的 Resource Manager 範本
 1. 請依照[在實驗室中建立您的第一個 VM](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) 中的步驟，開始建立虛擬機器。
 1. 輸入虛擬機器的必要資訊，並且新增您想要用於此 VM 的任何成品。
-1. Swtich 到 **"高級設置"** 選項卡。 
+1. 切換至 [ **Advanced Settings** ] 索引標籤。 
 1. 在 [設定] 設定視窗底部，選擇 [檢視 ARM 範本]****。
 1. 複製及儲存 Resource Manager 範本，以便稍後用來建立另一個虛擬機器。
 
@@ -64,7 +64,7 @@ ms.locfileid: "76169107"
 Resource Manager 範本現在可用來[建立 VM](devtest-lab-create-environment-from-arm.md)。
 
 ## <a name="set-expiration-date"></a>設定到期日期
-在培訓、演示和試用等方案中，您可能希望創建虛擬機器，並在固定持續時間後自動刪除虛擬機器，這樣您就不會產生不必要的成本。 您可以通過指定 VM 的**到期日期**屬性來創建具有到期日期的實驗室 VM。 請查看[我們的 GitHub 存儲庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration)中的同一資源管理器範本。
+在訓練、示範和試用等案例中，您可能會想要建立虛擬機器，並在固定期間之後自動加以刪除，這樣就不會產生不必要的成本。 您可以藉由指定 VM 的**expirationDate**屬性，來建立具有到期日的實驗室 VM。 在[我們的 GitHub 存放庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration)中查看相同的 Resource Manager 範本。
 
 
 

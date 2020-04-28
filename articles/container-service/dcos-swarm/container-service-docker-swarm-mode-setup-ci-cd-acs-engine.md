@@ -8,10 +8,10 @@ ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
 ms.openlocfilehash: 1ec7ece6f5afd1bbd2613ae08af04b82e8a156b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76277922"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(已淘汰) 使用 Azure DevOps 的完整 CI/CD 管線，搭配 ACS 引擎和 Docker Swarm 模式在 Azure Container Service 上部署多容器應用程式
@@ -49,7 +49,7 @@ ms.locfileid: "76277922"
 
 - [使用 ACS 引擎在 Azure Container Service 中建立 Swarm 模式叢集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acsengine-swarmmode)
 - [連接到 Azure 容器服務中的 Swarm 叢集](../container-service-connect.md)
-- [創建 Azure 容器註冊表](../../container-registry/container-registry-get-started-portal.md)
+- [建立 Azure container registry](../../container-registry/container-registry-get-started-portal.md)
 - [具有 Azure DevOps 組織並已建立專案](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 - [在您的 GitHub 帳戶建立該 GitHub 存放庫的分叉 (英文)](https://github.com/jcorioland/MyShop/tree/docker-linux)
 
@@ -67,7 +67,7 @@ ms.locfileid: "76277922"
 
 設定 Azure DevOps 專案與 Azure 帳戶之間的連線。
 
-1. 在左側，按一下 **"新服務終結點** > **Azure 資源管理器**"。
+1. 在左側，按一下 [**新增服務端點** > ] [**Azure Resource Manager**]。
 2. 若要授權讓 Azure DevOps 使用您的 Azure 帳戶，請選取您的 [訂用帳戶]****，並按一下 [確定]****。
 
     ![Azure DevOps - 授權 Azure](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-azure.PNG)
@@ -76,7 +76,7 @@ ms.locfileid: "76277922"
 
 設定您的 Azure DevOps 專案與 GitHub 帳戶之間的連線。
 
-1. 在左側，按一下 **"新服務終結點** > **GitHub**"。
+1. 在左側，按一下 [**新增服務端點** > ] [**GitHub**]。
 2. 若要授權讓 Azure DevOps 與您的 GitHub 帳戶搭配使用，請按一下 [授權]****，並依照開啟視窗中的程序操作。
 
     ![Azure DevOps - 授權 GitHub](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github.png)
@@ -194,9 +194,9 @@ Azure DevOps 可讓您[跨環境管理發行](https://www.visualstudio.com/team-
 
 ### <a name="initial-release-setup"></a>初始發行設定
 
-1. 要創建發佈管道，請按一下 **"發佈** > **"**
+1. 若要建立發行管線，請按一下 [**發行** > **+ 發行**]
 
-2. 要設定項目源，請按一下 **"專案** > **連結專案"源**。 在此，請將這個新的發行管線連結到您在上一個步驟中定義的組建。 之後，就可以在發行程序中取得 docker-compose.yml 檔案。
+2. 若要設定成品來源，請按一下 [**構件** > ] [**連結成品來源**]。 在此，請將這個新的發行管線連結到您在上一個步驟中定義的組建。 之後，就可以在發行程序中取得 docker-compose.yml 檔案。
 
     ![Azure DevOps - 發行成品](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-artefacts.png) 
 
@@ -248,6 +248,6 @@ Azure DevOps 可讓您[跨環境管理發行](https://www.visualstudio.com/team-
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關使用 Azure DevOps 的 CI/CD 的詳細資訊，請參閱[Azure 管道文檔](/azure/devops/pipelines/?view=azure-devops)一文。
+* 如需 CI/CD 與 Azure DevOps 的詳細資訊，請參閱[Azure Pipelines 檔](/azure/devops/pipelines/?view=azure-devops)文章。
 * 如需 ACS 引擎的詳細資訊，請參閱 [ACS Engine GitHub repo](https://github.com/Azure/acs-engine) (ACS 引擎 GitHub 儲存機制)。
 * 如需 Docker Swarm 模式的詳細資訊，請參閱 [Swarm mode overview](https://docs.docker.com/engine/swarm/) (Swarm 模式概觀)。

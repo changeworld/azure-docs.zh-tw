@@ -1,5 +1,5 @@
 ---
-title: 啟動、停止和刪除 Azure 春雲應用程式 |微軟文檔
+title: 啟動、停止及刪除您的 Azure 春季雲端應用程式 |Microsoft Docs
 description: 如何啟動、停止和刪除您的 Azure Spring Cloud 應用程式
 author: bmitchell287
 ms.service: spring-cloud
@@ -7,37 +7,37 @@ ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: brendm
 ms.openlocfilehash: daa549e248668add54530e90174134c4e0059b3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76276829"
 ---
-# <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>啟動、停止和刪除 Azure 春雲應用程式
+# <a name="start-stop-and-delete-your-azure-spring-cloud-application"></a>啟動、停止及刪除您的 Azure 春季雲端應用程式
 
-本指南介紹如何使用 Azure 門戶或 Azure CLI 更改應用程式在 Azure 春雲中的狀態。
+本指南說明如何使用 Azure 入口網站或 Azure CLI，在 Azure 春季雲端中變更應用程式的狀態。
 
 ## <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-部署應用程式後，可以使用 Azure 門戶啟動、停止和刪除應用程式。
+部署應用程式之後，您可以使用 Azure 入口網站來啟動、停止和刪除它。
 
 1. 在 Azure 入口網站中，移至您的 Azure Spring Cloud 服務執行個體。
 1. 選取 [應用程式儀表板]**** 索引標籤。
 1. 選取您想要變更狀態的應用程式。
-1. 在該應用程式的 **"概述"** 頁上，選擇 **"開始/停止**"、"**重新開機**"或 **"刪除**"。
+1. 在該應用程式的 [總覽] 頁面上，選取 [**啟動/停止**]、[**重新開機**] 或 **[** **刪除**]。
 
 ## <a name="using-the-azure-cli"></a>使用 Azure CLI
 
 > [!NOTE]
-> 您可以搭配 Azure CLI 來使用選擇性參數及設定預設值。 通過閱讀[我們的參考文檔](spring-cloud-cli-reference.md)，瞭解有關 Azure CLI 的更多。  
+> 您可以搭配 Azure CLI 來使用選擇性參數及設定預設值。 閱讀[我們的參考檔](spring-cloud-cli-reference.md)，以深入瞭解 Azure CLI。  
 
-首先，為 Azure CLI 安裝 Azure 春雲擴展，如下所示：
+首先，安裝適用于 Azure CLI 的 Azure 春季雲端延伸模組，如下所示：
 
 ```azurecli
 az extension add --name spring-cloud
 ```
 
-接下來，選擇以下任一 Azure CLI 操作：
+接下來，選取下列其中一項 Azure CLI 作業：
 
 * 啟動您的應用程式：
 

@@ -9,11 +9,11 @@ ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: ce74966cab3469d59693c59831bb3d4ce625f90e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76159143"
 ---
 >[!NOTE]
->本文中描述的功能僅在 IoT 中心的標準層中可用。 有關基本和標準/免費 IoT 中心層的詳細資訊，請參閱[選擇正確的 IoT 中心層](../articles/iot-hub/iot-hub-scaling.md)。
+>本文中所述的功能僅適用于 IoT 中樞的標準層。 如需基本和標準/免費 IoT 中樞層的詳細資訊，請參閱[選擇正確的 IoT 中樞層](../articles/iot-hub/iot-hub-scaling.md)。

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azurite 模擬器進行本地 Azure 存儲開發
-description: Azurite 開源模擬器（預覽版）為測試 Azure 存儲應用程式提供了一個免費的本地環境。
+title: 使用 Azurite 模擬器進行本機 Azure 儲存體開發
+description: Azurite 開放原始碼模擬器（預覽）提供免費的本機環境來測試您的 Azure 儲存體應用程式。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 08/31/2019
@@ -8,82 +8,82 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76029918"
 ---
-# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>使用 Azurite 模擬器進行本地 Azure 存儲開發和測試（預覽）
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>使用 Azurite 模擬器進行本機 Azure 儲存體開發和測試（預覽）
 
-Azurite 版本 3.2 開源模擬器（預覽版）為測試 Azure Blob 和佇列存儲應用程式提供了一個免費的本地環境。 當您對應用程式在本地的工作方式感到滿意時，切換到在雲中使用 Azure 存儲帳戶。 模擬程式在 Windows、Linux 和 MacOS 上提供跨平臺支援。 Azurite v3 支援 Azure Blob 服務實現的 API。
+Azurite 版本3.2 開放原始碼模擬器（預覽）提供免費的本機環境來測試您的 Azure blob 和佇列儲存體應用程式。 當您對應用程式在本機運作的方式感到滿意時，請切換至使用雲端中的 Azure 儲存體帳戶。 模擬器提供 Windows、Linux 和 MacOS 的跨平臺支援。 Azurite v3 支援 Azure Blob 服務所執行的 Api。
 
-Azurite 是未來的存儲模擬器平臺。 Azurite 取代 Azure[存儲模擬器](storage-use-emulator.md)。 Azurite 將繼續更新以支援最新版本的 Azure 存儲 API。
+Azurite 是未來的儲存體模擬器平臺。 Azurite 會取代[Azure 儲存體模擬器](storage-use-emulator.md)。 Azurite 將繼續更新，以支援最新版本的 Azure 儲存體 Api。
 
-在本地系統上安裝和運行 Azurite 有幾種不同的方法：
+有幾種不同的方式可在您的本機系統上安裝和執行 Azurite：
 
-  1. [安裝並運行 Azurite 視覺化工作室代碼擴展](#install-and-run-the-azurite-visual-studio-code-extension)
-  1. [使用 NPM 安裝和運行 Azurite](#install-and-run-azurite-by-using-npm)
-  1. [安裝並運行 Azurite Docker 映射](#install-and-run-the-azurite-docker-image)
-  1. [從 GitHub 存儲庫克隆、生成和運行 Azurite](#clone-build-and-run-azurite-from-the-github-repository)
+  1. [安裝並執行 Azurite Visual Studio Code 擴充功能](#install-and-run-the-azurite-visual-studio-code-extension)
+  1. [使用 NPM 安裝及執行 Azurite](#install-and-run-azurite-by-using-npm)
+  1. [安裝並執行 Azurite Docker 映射](#install-and-run-the-azurite-docker-image)
+  1. [從 GitHub 存放庫複製、建立和執行 Azurite](#clone-build-and-run-azurite-from-the-github-repository)
 
-## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>安裝並運行 Azurite 視覺化工作室代碼擴展
+## <a name="install-and-run-the-azurite-visual-studio-code-extension"></a>安裝並執行 Azurite Visual Studio Code 擴充功能
 
-在視覺化工作室代碼中，選擇 **"擴展"** 窗格，並在 **"擴展：市場**"中搜索*Azurite。*
+在 Visual Studio Code 中，選取 [**擴充**功能] 窗格，然後在 [**擴充功能： MARKETPLACE**] 中搜尋*Azurite* 。
 
-![視覺化工作室代碼擴展市場](media/storage-use-azurite/azurite-vs-code-extension.png)
+![Visual Studio Code 延伸模組 marketplace](media/storage-use-azurite/azurite-vs-code-extension.png)
 
-或者，在瀏覽器中導航到[VS 代碼擴展市場](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)。 選擇 **"安裝**"按鈕以打開視覺化工作室代碼，然後直接轉到 Azurite 擴展頁。
+或者，在您的瀏覽器中流覽至[VS Code 延伸模組市場](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)。 選取 [**安裝**] 按鈕以開啟 Visual Studio Code，並直接移至 [Azurite 延伸模組] 頁面。
 
-您可以通過按一下 VS Code 狀態列中的 **[Azurite Blob 服務]** 或 **[Azurite 佇列服務]** 或在 VS Code 命令調色板中發出以下命令來快速啟動或關閉 Azurite。 要打開命令調色板，請按 VS 代碼中的**F1。**
+您可以快速啟動或關閉 Azurite，方法是按一下 VS Code 狀態列中的 **[Azurite Blob 服務]** 或 **[Azurite 佇列服務]** ，或在 VS Code 命令選擇區中發出下列命令。 若要開啟命令選擇區，請在 VS Code 中按**F1**鍵。
 
-擴展支援以下視覺化工作室代碼命令：
+延伸模組支援下列 Visual Studio Code 命令：
 
-   * **阿祖瑞特：開始**- 開始所有阿祖瑞特服務
-   * **阿祖瑞特：關閉**- 關閉所有阿祖雷特服務
-   * **Azurite： 清潔**- 重置所有 Azurite 服務持久性資料
-   * **Azurite： 啟動 Blob 服務**- 啟動 Blob 服務
-   * **Azurite： 關閉 Blob 服務**- 關閉 Blob 服務
-   * **Azurite： 清潔 Blob 服務**- 清潔 Blob 服務
-   * **Azurite： 啟動佇列服務**- 啟動佇列服務
-   * **Azurite： 關閉佇列服務**- 關閉佇列服務
-   * **Azurite： 清潔佇列服務**- 清潔佇列服務
+   * **Azurite：開始**-啟動所有 Azurite 服務
+   * **Azurite： close** -關閉所有 Azurite 服務
+   * **Azurite：清除**-重設所有 Azurite 服務持續性資料
+   * **Azurite：啟動 Blob 服務**-啟動 blob 服務
+   * **Azurite：關閉 Blob 服務**-關閉 blob 服務
+   * **Azurite：清除 Blob 服務**-清除 blob 服務
+   * **Azurite：啟動佇列服務**-啟動佇列服務
+   * **Azurite：關閉佇列服務**-關閉佇列服務
+   * **Azurite：清除佇列服務**-清除佇列服務
 
-要在視覺化工作室代碼中配置 Azurite，請選擇擴展窗格。 選擇**Azurite**的 **"管理**（齒輪）"圖示。 選擇 **"配置擴展設置**"。
+若要在 Visual Studio Code 內設定 Azurite，請選取 [擴充功能] 窗格。 選取 [ **Azurite**] 的 [**管理**] （齒輪）圖示。 選取 [**設定延伸模組設定**]。
 
-![Azurite 配置擴展設置](media/storage-use-azurite/azurite-configure-extension-settings.png)
+![Azurite 設定延伸模組設定](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
-支援以下設置：
+支援下列設定：
 
-   * **Azurite： Blob 主機**- Blob 服務偵聽終結點。 預設設置為 127.0.0.1。
-   * **Azurite： Blob 埠**- Blob 服務偵聽埠。 預設埠為 10000。
-   * **Azurite：調試**- 將調試日誌輸出到 Azurite 通道。 預設值為 **false**。
-   * **Azurite：位置**- 工作區位置路徑。 預設值為"視覺化工作室代碼"工作資料夾。
-   * **Azurite： 佇列主機**- 佇列服務偵聽終結點。 預設設置為 127.0.0.1。
-   * **Azurite： 佇列埠**- 佇列服務偵聽埠。 預設埠為 10001。
-   * **Azurite： 靜默**- 靜音模式禁用訪問日誌。 預設值為 **false**。
+   * **Azurite： Blob 主機**-Blob 服務接聽端點。 預設設定為127.0.0.1。
+   * **Azurite： Blob 埠**-Blob 服務接聽埠。 預設通訊埠為10000。
+   * **Azurite： debug** -將 Debug 記錄輸出至 Azurite 通道。 預設值為 **false**。
+   * **Azurite： location** -工作區位置路徑。 預設為 Visual Studio Code 工作資料夾。
+   * **Azurite： Queue Host** -佇列服務接聽端點。 預設設定為127.0.0.1。
+   * **Azurite：佇列埠**-佇列服務接聽埠。 預設通訊埠為10001。
+   * **Azurite：無**訊息-無訊息模式會停用存取記錄。 預設值為 **false**。
 
-## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安裝和運行 Azurite
+## <a name="install-and-run-azurite-by-using-npm"></a>使用 NPM 安裝及執行 Azurite
 
-此安裝方法要求您安裝[Node.js 版本 8.0 或更高版本](https://nodejs.org)。 **npm**是每個 Node.js 安裝中包含的包管理工具。 安裝 Node.js 後，執行以下**npm**命令以安裝 Azurite。
+此安裝方法會要求您必須安裝[node.js 8.0 版或更新](https://nodejs.org)版本。 **npm**是每個 node.js 安裝內含的套件管理工具。 安裝 node.js 之後，請執行下列**npm**命令來安裝 Azurite。
 
 ```console
 npm install -g azurite
 ```
 
-安裝 Azurite 後，請參閱[從命令列運行 Azurite。](#run-azurite-from-a-command-line)
+安裝 Azurite 之後，請參閱[從命令列執行 Azurite](#run-azurite-from-a-command-line)。
 
-## <a name="install-and-run-the-azurite-docker-image"></a>安裝並運行 Azurite Docker 映射
+## <a name="install-and-run-the-azurite-docker-image"></a>安裝並執行 Azurite Docker 映射
 
-使用[DockerHub](https://hub.docker.com/)使用以下命令提取[最新的 Azurite 映射](https://hub.docker.com/_/microsoft-azure-storage-azurite)：
+使用[DockerHub](https://hub.docker.com/)來提取[最新的 Azurite 映射](https://hub.docker.com/_/microsoft-azure-storage-azurite)，方法是使用下列命令：
 
 ```console
 docker pull mcr.microsoft.com/azure-storage/azurite
 ```
 
-**運行 Azurite Docker 映射**：
+**執行 Azurite Docker 映射**：
 
-以下命令運行 Azurite Docker 映射。 參數`-p 10000:10000`將請求從主機的埠 10000 重定向到 Docker 實例。
+下列命令會執行 Azurite Docker 映射。 參數`-p 10000:10000`會將要求從主機電腦的埠10000重新導向至 Docker 實例。
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
@@ -91,22 +91,22 @@ docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 
 **指定工作區位置**：
 
-在下面的示例中，`-v c:/azurite:/data`參數指定*c：/azurite*作為 Azurite 持久化的資料位置。 在運行 Docker 命令之前，必須創建目錄*c：/azurite。*
+在下列範例中， `-v c:/azurite:/data`參數會將*c：/Azurite*指定為 azurite 保存的資料位置。 在執行 Docker 命令之前，必須先建立目錄（ *c：/azurite*）。
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
 ```
 
-**僅運行 blob 服務**
+**僅執行 blob 服務**
 
 ```console
 docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
     azurite-blob --blobHost 0.0.0.0 --blobPort 10000
 ```
 
-**設置所有 Azurite 參數**：
+**設定所有 Azurite 參數**：
 
-此示例演示如何設置所有命令列參數。 以下所有參數都應放在單個命令列上。
+這個範例示範如何設定所有的命令列參數。 下列所有參數都應該放在單一命令列上。
 
 ```console
 docker run -p 8888:8888
@@ -120,17 +120,17 @@ docker run -p 8888:8888
            --queueHost 0.0.0.0
 ```
 
-有關在啟動時配置 Azurite 的詳細資訊，請參閱[命令列選項](#command-line-options)。
+如需在啟動時設定 Azurite 的詳細資訊，請參閱[命令列選項](#command-line-options)。
 
-## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>從 GitHub 存儲庫克隆、生成和運行 Azurite
+## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>從 GitHub 存放庫複製、建立和執行 Azurite
 
-此安裝方法要求您安裝[Git。](https://git-scm.com/) 使用以下主控台命令克隆 Azurite 專案的[GitHub 存儲庫](https://github.com/azure/azurite)。
+此安裝方法會要求您必須安裝[Git](https://git-scm.com/) 。 使用下列主控台命令來複製 Azurite 專案的[GitHub 存放庫](https://github.com/azure/azurite)。
 
 ```console
 git clone https://github.com/Azure/Azurite.git
 ```
 
-克隆原始程式碼後，從克隆的回購的根部執行以下命令以生成和安裝 Azurite。
+複製原始程式碼之後，請從複製之存放庫的根目錄執行下列命令，以建立和安裝 Azurite。
 
 ```console
 npm install
@@ -138,24 +138,24 @@ npm run build
 npm install -g
 ```
 
-安裝和生成 Azurite 後，請參閱[從命令列運行 Azurite。](#run-azurite-from-a-command-line)
+安裝和建立 Azurite 之後，請參閱[從命令列執行 Azurite](#run-azurite-from-a-command-line)。
 
-## <a name="run-azurite-from-a-command-line"></a>從命令列運行 Azurite
+## <a name="run-azurite-from-a-command-line"></a>從命令列執行 Azurite
 
 > [!NOTE]
-> 如果只安裝了 Visual Studio 代碼擴展，則無法從命令列運行 Azurite。 而是使用 VS Code 命令調色板。 有關詳細資訊，請參閱[安裝和運行 Azurite 視覺化工作室代碼擴展](#install-and-run-the-azurite-visual-studio-code-extension)。
+> 如果您只安裝了 Visual Studio Code 延伸模組，則無法從命令列執行 Azurite。 請改用 VS Code 命令選擇區。 如需詳細資訊，請參閱[安裝並執行 Azurite Visual Studio Code 延伸](#install-and-run-the-azurite-visual-studio-code-extension)模組。
 
-要立即開始使用命令列，請創建一個名為**c：_azurite 的**目錄，然後通過發出以下命令啟動 Azurite：
+若要立即開始使用命令列，請建立名為**c:\azurite**的目錄，然後發出下列命令來啟動 azurite：
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 ```
 
-此命令告訴 Azurite 將所有資料存儲在特定的目錄中 **，c：\azurite**。 如果省略 **--位置**選項，它將使用當前工作目錄。
+此命令會告訴 Azurite 將所有資料儲存在特定目錄**c:\azurite**中。 如果省略 **--location**選項，則會使用目前的工作目錄。
 
 ## <a name="command-line-options"></a>命令列選項
 
-本節詳細介紹了啟動 Azurite 時可用的命令列開關。 所有命令列交換器都是可選的。
+本節詳細說明啟動 Azurite 時可用的命令列參數。 所有命令列參數都是選擇性的。
 
 ```console
 C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>] 
@@ -164,91 +164,91 @@ C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>]
     [-s | --silent] [-h | --help]
 ```
 
-**-d**是 **-debug**的快捷方式 **，-l**開關是 **-位置****的快捷方式，-s**是 **-silent**的快捷方式 **，-h**是 **- 説明的**快捷方式。
+**-D**是 **--debug**的快捷方式， **-l**參數是-- **location**的快捷方式，- **s**是 **--silent**的快捷方式，而 **-h**是 **--help**的快捷方式。
 
-### <a name="blob-listening-host"></a>Blob 偵聽主機
+### <a name="blob-listening-host"></a>Blob 接聽主機
 
-**可選**預設情況下，Azurite 將偵聽 127.0.0.1 作為本機伺服器。 使用 **--blobHost**開關將位址設置為您的要求。
+**選擇性**根據預設，Azurite 會接聽127.0.0.1 做為本機伺服器。 使用 **--blobHost**參數來設定您的需求的位址。
 
-僅接受本地電腦上的請求：
+僅接受本機電腦上的要求：
 
 ```console
 azurite --blobHost 127.0.0.1
 ```
 
-允許遠端請求：
+允許遠端要求：
 
 ```console
 azurite --blobHost 0.0.0.0
 ```
 
 > [!CAUTION]
-> 允許遠端請求可能會使您的系統容易受到外部攻擊。
+> 允許遠端要求可能會讓您的系統容易遭受外部攻擊。
 
-### <a name="blob-listening-port-configuration"></a>Blob 偵聽埠配置
+### <a name="blob-listening-port-configuration"></a>Blob 接聽埠設定
 
-**可選**預設情況下，Azurite 將在埠 10000 上偵聽 Blob 服務。 使用 **--blobPort**開關指定所需的偵聽埠。
+**選擇性**根據預設，Azurite 會接聽埠10000上的 Blob 服務。 使用 **--blobPort**參數來指定您所需的接聽埠。
 
 > [!NOTE]
-> 使用自訂埠後，需要在 Azure 存儲工具或 SDK 中更新連接字串或相應的配置。
+> 使用自訂的埠之後，您必須在 Azure 儲存體工具或 Sdk 中更新連接字串或對應的設定。
 
-自訂 Blob 服務偵聽埠：
+自訂 Blob 服務接聽埠：
 
 ```console
 azurite --blobPort 8888
 ```
 
-讓系統自動選擇可用埠：
+讓系統自動選取可用的埠：
 
 ```console
 azurite --blobPort 0
 ```
 
-正在使用的埠顯示在 Azurite 啟動期間。
+使用中的埠會在 Azurite 啟動期間顯示。
 
-### <a name="queue-listening-host"></a>佇列偵聽主機
+### <a name="queue-listening-host"></a>佇列接聽主機
 
-**可選**預設情況下，Azurite 將偵聽 127.0.0.1 作為本機伺服器。 使用 **--queueHost**開關將位址設置為您的要求。
+**選擇性**根據預設，Azurite 會接聽127.0.0.1 做為本機伺服器。 使用 **--queueHost**參數來設定您的需求的位址。
 
-僅接受本地電腦上的請求：
+僅接受本機電腦上的要求：
 
 ```console
 azurite --queueHost 127.0.0.1
 ```
 
-允許遠端請求：
+允許遠端要求：
 
 ```console
 azurite --queueHost 0.0.0.0
 ```
 
 > [!CAUTION]
-> 允許遠端請求可能會使您的系統容易受到外部攻擊。
+> 允許遠端要求可能會讓您的系統容易遭受外部攻擊。
 
-### <a name="queue-listening-port-configuration"></a>佇列偵聽埠配置
+### <a name="queue-listening-port-configuration"></a>佇列接聽埠設定
 
-**可選**預設情況下，Azurite 將在埠 10001 上偵聽佇列服務。 使用 **--queuePort**開關指定所需的偵聽埠。
+**選擇性**根據預設，Azurite 會接聽埠10001上的佇列服務。 使用 **--queuePort**參數來指定您所需的接聽埠。
 
 > [!NOTE]
-> 使用自訂埠後，需要在 Azure 存儲工具或 SDK 中更新連接字串或相應的配置。
+> 使用自訂的埠之後，您必須在 Azure 儲存體工具或 Sdk 中更新連接字串或對應的設定。
 
-自訂佇列服務偵聽埠：
+自訂佇列服務接聽埠：
 
 ```console
 azurite --queuePort 8888
 ```
 
-讓系統自動選擇可用埠：
+讓系統自動選取可用的埠：
 
 ```console
 azurite --queuePort 0
 ```
 
-正在使用的埠顯示在 Azurite 啟動期間。
+使用中的埠會在 Azurite 啟動期間顯示。
 
 ### <a name="workspace-path"></a>工作區路徑
 
-**可選**Azurite 在執行任務期間將資料存儲到本地磁片。 使用 **--位置**開關將路徑指定為工作區位置。 預設情況下，將使用當前進程工作目錄。
+**選擇性**Azurite 會在執行期間將資料儲存到本機磁片。 使用 **--location**參數將路徑指定為工作區位置。 根據預設，將會使用目前的處理常式工作目錄。
 
 ```console
 azurite --location c:\azurite
@@ -260,7 +260,7 @@ azurite -l c:\azurite
 
 ### <a name="access-log"></a>存取記錄檔
 
-**可選**預設情況下，訪問日誌顯示在主控台視窗中。 使用 **-- 靜默**開關禁用訪問日誌的顯示。
+**選擇性**根據預設，存取記錄會顯示在主控台視窗中。 使用 **--silent**參數來停用存取記錄檔的顯示。
 
 ```console
 azurite --silent
@@ -270,9 +270,9 @@ azurite --silent
 azurite -s
 ```
 
-### <a name="debug-log"></a>調試日誌
+### <a name="debug-log"></a>Debug 記錄檔
 
-**可選**調試日誌包括有關每個請求和異常堆疊追蹤的詳細資訊。 通過向 **--調試**交換器提供有效的本地檔路徑來啟用調試日誌。
+**選擇性**Debug 記錄檔包含每個要求和例外狀況堆疊追蹤的詳細資訊。 藉由提供有效的本機檔案路徑給 **--debug**參數，啟用 debug 記錄檔。
 
 ```console
 azurite --debug path/debug.log
@@ -284,35 +284,35 @@ azurite -d path/debug.log
 
 ### <a name="loose-mode"></a>鬆散模式
 
-**可選**預設情況下，Azurite 應用嚴格模式來阻止不受支援的請求標頭和參數。 使用 **-loose**開關禁用嚴格模式。
+**選擇性**根據預設，Azurite 會套用 strict 模式來封鎖不支援的要求標頭和參數。 使用 **--鬆散**參數停用 strict 模式。
 
 ```console
 azurite --loose
 ```
 
-請注意大寫"L"快捷方式開關：
+請注意大寫的 ' L ' 快捷方式參數：
 
 ```console
 azurite -L
 ```
 
-## <a name="authorization-for-tools-and-sdks"></a>工具和 SDK 的授權
+## <a name="authorization-for-tools-and-sdks"></a>工具和 Sdk 的授權
 
-使用任何身份驗證策略從 Azure 存儲 SDK 或工具（如[Azure 存儲資源管理器](https://azure.microsoft.com/features/storage-explorer/)）連接到 Azurite。 身份驗證是必需的。 Azurite 支援使用共用金鑰和共用訪問簽名 （SAS） 進行授權。 Azurite 還支援匿名存取公共容器。
+使用任何驗證策略，從 Azure 儲存體 Sdk 或工具（例如[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)）連接到 Azurite。 需要驗證。 Azurite 支援使用共用金鑰和共用存取簽章（SAS）進行授權。 Azurite 也支援公用容器的匿名存取。
 
-### <a name="well-known-storage-account-and-key"></a>知名存儲帳戶和金鑰
+### <a name="well-known-storage-account-and-key"></a>知名的儲存體帳戶和金鑰
 
-您可以將以下帳戶名稱和金鑰與 Azurite 一起使用。 這是舊版 Azure 存儲模擬器使用的已知帳戶和金鑰。
+您可以使用下列帳戶名稱和金鑰搭配 Azurite。 這是舊版 Azure 儲存體模擬器所使用的相同知名帳戶和金鑰。
 
 * 帳戶名稱：`devstoreaccount1`
 * 帳戶金鑰：`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 > [!NOTE]
-> 除了共用金鑰身份驗證外，Azurite 還支援帳戶和服務 SAS 身份驗證。 當容器設置為允許公共訪問時，匿名存取也可用。
+> 除了 SharedKey authentication，Azurite 也支援帳戶和服務 SAS 驗證。 當容器設定為允許公用存取時，也可以使用匿名存取。
 
 ### <a name="connection-string"></a>連接字串
 
-從應用程式連接到 Azurite 的最簡單方法是在應用程式的設定檔中配置一個連接字串，該字串引用快捷方式*UseDevelopmentStorage_true*。 下面是*app.config*檔中的連接字串示例：
+從您的應用程式連線到 Azurite 最簡單的方式，就是在應用程式的設定檔中設定參考快捷方式*UseDevelopmentStorage = true*的連接字串。 以下是*app.config*檔案中的連接字串範例：
 
 ```xml
 <appSettings>
@@ -322,80 +322,80 @@ azurite -L
 
 如需詳細資訊，請參閱[設定 Azure 儲存體連接字串](storage-configure-connection-string.md)。
 
-### <a name="custom-storage-accounts-and-keys"></a>自訂存儲帳戶和金鑰
+### <a name="custom-storage-accounts-and-keys"></a>自訂儲存體帳戶和金鑰
 
-Azurite 通過設置`AZURITE_ACCOUNTS`以下格式的環境變數支援自訂存儲帳戶名稱和金鑰： `account1:key1[:key2];account2:key1[:key2];...`。
+Azurite 支援自訂儲存體帳戶名稱和金鑰，方法`AZURITE_ACCOUNTS`是以下列格式設定環境變數`account1:key1[:key2];account2:key1[:key2];...`：。
 
-例如，使用具有一個金鑰的自訂存儲帳戶：
+例如，使用具有一個金鑰的自訂儲存體帳戶：
 
 ```cmd
 set AZURITE_ACCOUNTS="account1:key1"
 ```
 
-或者使用多個存儲帳戶，每個帳戶有 2 個金鑰：
+或使用多個具有2個金鑰的儲存體帳戶：
 
 ```cmd
 set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
 ```
 
-預設情況下，Azurite 每分鐘都會從環境變數刷新自訂帳戶名稱和金鑰。 借助此功能，您可以動態旋轉帳戶金鑰，或添加新存儲帳戶，而無需重新開機 Azurite。
+根據預設，Azurite 會每分鐘重新整理來自環境變數的自訂帳戶名稱和金鑰。 透過這項功能，您可以在不重新開機 Azurite 的情況下，動態地旋轉帳戶金鑰，或新增新的儲存體帳戶。
 
 > [!NOTE]
-> 設置自訂`devstoreaccount1`存儲帳戶時，將禁用預設存儲帳戶。
+> 當您`devstoreaccount1`設定自訂儲存體帳戶時，預設儲存體帳戶會停用。
 
 > [!NOTE]
-> 使用自訂帳戶名稱和鍵時，請相應地更新連接字串。
+> 使用自訂帳戶名稱和金鑰時，請據以更新連接字串。
 
 > [!NOTE]
-> 使用`export`關鍵字在 Linux 環境中設置環境變數，`set`在 Windows 中使用。
+> 使用`export`關鍵字在 Linux 環境中設定環境變數，並在 Windows `set`中使用。
 
 ### <a name="storage-explorer"></a>儲存體總管
 
-在 Azure 存儲資源管理器中，通過按一下 **"添加帳戶**"圖示連接到 Azurite，然後選擇"**附加到本地模擬器**"，然後按一下"**連接**"。
+在 Azure 儲存體總管中，按一下 [**新增帳戶**] 圖示以連線至 Azurite，然後選取 [**附加至本機模擬器**]，再按一下 **[連接**]。
 
-## <a name="differences-between-azurite-and-azure-storage"></a>Azurite 和 Azure 存儲之間的差異
+## <a name="differences-between-azurite-and-azure-storage"></a>Azurite 和 Azure 儲存體之間的差異
 
-Azurite 的本地實例和雲中的 Azure 存儲帳戶之間存在功能差異。
+Azurite 的本機實例與雲端中的 Azure 儲存體帳戶之間有功能上的差異。
 
-### <a name="endpoint-and-connection-url"></a>端點和連接 URL
+### <a name="endpoint-and-connection-url"></a>端點和連線 URL
 
-Azurite 的服務終結點不同于 Azure 存儲帳戶的終結點。 本地電腦不執行功能變數名稱解析，要求 Azurite 終結點為本地位址。
+Azurite 的服務端點不同于 Azure 儲存體帳戶的端點。 本機電腦不會執行功能變數名稱解析，要求 Azurite 端點必須是本機位址。
 
-在 Azure 存儲帳戶中定址資源時，帳戶名稱是 URI 主機名稱的一部分。 要處理的資源是 URI 路徑的一部分：
+當您在 Azure 儲存體帳戶中定址資源時，帳戶名稱會是 URI 主機名稱的一部分。 所要定址的資源是 URI 路徑的一部分：
 
 `<http|https>://<account-name>.<service-name>.core.windows.net/<resource-path>`
 
-以下 URI 是 Azure 存儲帳戶中 Blob 的有效位址：
+下列 URI 是 Azure 儲存體帳戶中 blob 的有效位址：
 
 `https://myaccount.blob.core.windows.net/mycontainer/myblob.txt`
 
-由於本地電腦不執行功能變數名稱解析，因此帳戶名稱是 URI 路徑的一部分，而不是主機名稱。 對 Azurite 中的資源使用以下 URI 格式：
+因為本機電腦不會執行功能變數名稱解析，所以帳戶名稱是 URI 路徑的一部分，而不是主機名稱。 針對 Azurite 中的資源，請使用下列 URI 格式：
 
 `http://<local-machine-address>:<port>/<account-name>/<resource-path>`
 
-以下位址可用於訪問 Azurite 中的 blob：
+下列位址可能用於存取 Azurite 中的 blob：
 
 `http://127.0.0.1:10000/myaccount/mycontainer/myblob.txt`
 
-### <a name="scaling-and-performance"></a>縮放和性能
+### <a name="scaling-and-performance"></a>調整和效能
 
-Azurite 不是可擴展的存儲服務，不支援大量併發用戶端。 沒有性能保證。 Azurite 用於開發和測試目的。
+Azurite 不是可調整的儲存體服務，且不支援大量的並行用戶端。 沒有任何效能保證。 Azurite 適用于開發和測試用途。
 
 ### <a name="error-handling"></a>錯誤處理
 
-Azurite 與 Azure 存儲錯誤處理邏輯對齊，但存在差異。 例如，錯誤訊息可能不同，而錯誤狀態碼對齊。
+Azurite 與 Azure 儲存體錯誤處理邏輯一致，但有一些差異。 例如，錯誤訊息可能會不同，而錯誤狀態碼則會對齊。
 
 ### <a name="ra-grs"></a>RA-GRS
 
-Azurite 支援讀取存取異地冗余複製 （RA-GRS）。 對於存儲資源，通過將 **-輔助**位置追加到帳戶名稱來訪問輔助位置。 例如，以下位址可用於使用 Azurite 中的唯讀次要資料庫訪問 Blob：
+Azurite 支援讀取權限異地冗余複寫（RA-GRS）。 針對儲存體資源，請將 **-次要**附加至帳戶名稱，以存取次要位置。 例如，下列位址可能會用於在 Azurite 中使用唯讀次要資料庫來存取 blob：
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 
-## <a name="azurite-is-open-source"></a>阿祖裡特是開源的
+## <a name="azurite-is-open-source"></a>Azurite 是開放原始碼
 
-歡迎為阿蘇雷特提供捐助和建議。 轉到 Azurite [GitHub 專案](https://github.com/Azure/Azurite/projects)頁面或[GitHub 問題](https://github.com/Azure/Azurite/issues)，查看我們正在跟蹤的里程碑和工作專案，以跟蹤即將推出的功能和錯誤修復。 在 GitHub 中也跟蹤詳細的工作項。
+歡迎 Azurite 的貢獻和建議。 請移至 Azurite [GitHub 專案](https://github.com/Azure/Azurite/projects)頁面或[github 問題](https://github.com/Azure/Azurite/issues)，以取得我們正在追蹤的後續功能和 bug 修正的里程碑和工作專案。 GitHub 中也會追蹤詳細的工作專案。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用 Azure 存儲模擬器進行開發和測試](storage-use-emulator.md)文檔的舊 Azure 存儲模擬器，該模擬程式正被 Azurite 取代。
-* [配置 Azure 存儲連接字串](storage-configure-connection-string.md)說明如何組裝有效的 Azure Storage 連接字串。
+* [使用 azure 儲存體模擬器進行開發和測試](storage-use-emulator.md)檔舊版 azure 儲存體模擬器，其已由 Azurite 所取代。
+* [設定 Azure 儲存體連接字串](storage-configure-connection-string.md)說明如何組合有效的 Azure 儲存體連接字串。

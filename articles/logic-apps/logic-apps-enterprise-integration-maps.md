@@ -1,5 +1,5 @@
 ---
-title: 使用 XSLT 映射轉換 XML
+title: 使用 XSLT 對應轉換 XML
 description: 使用 Enterprise Integration Pack 在 Azure Logic Apps 中新增 XSLT 對應以轉換 XML
 services: logic-apps
 ms.suite: integration
@@ -9,15 +9,15 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
 ms.openlocfilehash: e186b9713c8464f8f37e1e0bf112c4118621925c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75979416"
 ---
 # <a name="transform-xml-with-maps-in-azure-logic-apps-with-enterprise-integration-pack"></a>使用 Enterprise Integration Pack 在 Azure Logic Apps 中以對應來轉換 XML
 
-要在 Azure 邏輯應用中的企業集成方案的格式之間傳輸 XML 資料，邏輯應用可以使用映射，或者更具體地說，使用可擴展樣式表語言轉換 （XSLT） 映射。 對應是一個 XML 文件，它描述如何將資料從 XML 文件轉換為其他格式。 
+若要在 Azure Logic Apps 中的企業整合案例格式之間傳輸 XML 資料，您的邏輯應用程式可以使用對應，或更具體的擴充樣式表單語言轉換（XSLT）對應。 對應是一個 XML 文件，它描述如何將資料從 XML 文件轉換為其他格式。 
 
 例如，假設您會定期收到客戶的 B2B 訂單或發票，而該客戶使用 YYYMMDD 日期格式。 不過，您的組織使用 MMDDYYY 日期格式。 您可以定義並使用對應，先將 YYYMMDD 日期格式轉換為 MMDDYYY 格式，然後再將訂單或發票儲存在您的客戶活動資料庫中。
 
@@ -29,18 +29,18 @@ ms.locfileid: "75979416"
 
 * [整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，您在其中為企業整合和企業對企業 (B2B) 解決方案儲存您的對應與其他成品。
 
-* 若您的對應參考外部組件，您必須上傳*兩個組件與對應*到您的整合帳戶。 請確保[*首先上載程式集*](#add-assembly)，然後上載引用程式集的映射。
+* 若您的對應參考外部組件，您必須上傳*兩個組件與對應*到您的整合帳戶。 請務必[*先上傳您的元件*](#add-assembly)，然後上傳參考元件的對應。
 
   若您的組件小於 2 MB，您可以*直接*從 Azure 入口網站將您的組件新增到您的整合帳戶。 不過，若您的組件或對應大於 2 MB 但未大於[組件或對應的大小限制](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)，您可以使用下列選項：
 
   * 針對組件，您需要 Azure Blob 容器 (以在其中上傳您的組件) 與該容器的位置。 如此一來，您就可以在稍後將組件新增到您的整合帳戶時提供該位置。 
   針對此工作，您需要下列項目：
 
-    | Item | 描述 |
+    | 項目 | 描述 |
     |------|-------------|
-    | [Azure 存儲帳戶](../storage/common/storage-account-overview.md) | 在此帳戶中，為您的組件建立 Azure Blob 容器。 [瞭解如何創建存儲帳戶](../storage/common/storage-account-create.md)。 |
+    | [Azure 儲存體帳戶](../storage/common/storage-account-overview.md) | 在此帳戶中，為您的組件建立 Azure Blob 容器。 瞭解[如何建立儲存體帳戶](../storage/common/storage-account-create.md)。 |
     | Blob 容器 | 在此容器中，您可以上傳您的組件。 當您將組件新增到您的整合帳戶時，您也需要此容器的位置。 了解如何[建立 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md)。 |
-    | [Azure 存儲資源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md) | 此工具可協助您更輕鬆地管理儲存體帳戶與 Blob 容器。 若要使用 [儲存體總管]，請[下載並安裝 Azure 儲存體總管](https://www.storageexplorer.com/)。 接著，依照[開始使用儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) [儲存體總管] 連線到您的儲存體帳戶。 要瞭解更多資訊，請參閱[快速入門：使用 Azure 存儲資源管理器在物件存儲中創建 Blob。](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) <p>或者，在 Azure 入口網站中，尋找並選取您的儲存體帳戶。 從您的儲存體帳戶功能表，選取 [儲存體總管]****。 |
+    | [Azure 儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) | 此工具可協助您更輕鬆地管理儲存體帳戶與 Blob 容器。 若要使用 [儲存體總管]，請[下載並安裝 Azure 儲存體總管](https://www.storageexplorer.com/)。 接著，依照[開始使用儲存體總管](../vs-azure-tools-storage-manage-with-storage-explorer.md) [儲存體總管] 連線到您的儲存體帳戶。 若要深入瞭解，請參閱[快速入門：使用 Azure 儲存體總管在物件儲存體中建立 blob](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。 <p>或者，在 Azure 入口網站中，尋找並選取您的儲存體帳戶。 從您的儲存體帳戶功能表，選取 [儲存體總管]****。 |
     |||
 
   * 針對對應，您目前可以使用 [Azure Logic Apps REST API - 對應](https://docs.microsoft.com/rest/api/logic/maps/createorupdate)新增更大的對應。
@@ -55,7 +55,7 @@ ms.locfileid: "75979416"
 
 1. 若要尋找並開啟您的整合帳戶，請開啟主 Azure 功能表，然後選取 [所有服務]****。 
    在搜尋方塊中，輸入「整合帳戶」。 
-   選擇**集成帳戶**。
+   選取 [**整合帳戶**]。
 
    ![尋找整合帳戶](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "75979416"
 
    ![選取 [組件]](./media/logic-apps-enterprise-integration-maps/select-assemblies.png)
 
-1. 打開 **"程式集"** 頁後，選擇 **"添加**"。
+1. 在 [**元件**] 頁面開啟之後，選擇 [**新增**]。
 
    ![選擇 [新增]](./media/logic-apps-enterprise-integration-maps/add-assembly.png)
 
@@ -75,7 +75,7 @@ ms.locfileid: "75979416"
 針對整合帳戶中的組件數量限制，請參閱 [Azure Logic Apps 的限制與設定](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits)。
 
 > [!NOTE]
-> 如果更改程式集，則無論地圖是否具有更改，都必須更新地圖。
+> 如果您變更元件，不論對應是否有變更，您也必須更新對應。
 
 <a name="smaller-assembly"></a>
 
@@ -101,7 +101,7 @@ ms.locfileid: "75979416"
 
 ### <a name="add-assemblies-more-than-2-mb"></a>新增大小超過 2 MB 的組件
 
-若要新增較大的組件，您可以在您的 Azure 儲存體帳戶中將您的組件上傳到 Azure Blob 容器。 添加程式集的步驟因 Blob 容器是否具有公共讀取存取許可權而異。 因此，首先，按照以下步驟檢查 Blob 容器是否具有公共讀取存取許可權：為[Blob 容器設置公共存取層級](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
+若要新增較大的組件，您可以在您的 Azure 儲存體帳戶中將您的組件上傳到 Azure Blob 容器。 您新增元件的步驟會根據您的 blob 容器是否有公用讀取權限而有所不同。 因此，請先依照下列步驟檢查您的 blob 容器是否有公用讀取權限：[設定 blob 容器的公用存取層級](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
 #### <a name="check-container-access-level"></a>檢查容器存取層級
 
@@ -111,11 +111,11 @@ ms.locfileid: "75979416"
 
 1. 從 Blob 容器的快顯功能表，選取 [設定公用存取層級]****。
 
-   * 如果 Blob 容器至少具有公共存取權限，請選擇 **"取消**"，然後按照本頁後面的以下步驟操作：[上載到具有公共存取權限的容器](#public-access-assemblies)
+   * 如果您的 blob 容器至少具有公用存取權，請選擇 [**取消**]，並遵循此頁面稍後的下列步驟：[上傳至具有公用存取權的容器](#public-access-assemblies)
 
      ![公用存取權](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
 
-   * 如果 Blob 容器沒有公共存取權限，請選擇 **"取消**"，然後按照本頁後面的以下步驟操作：[上載到沒有公共存取權限的容器](#no-public-access-assemblies)
+   * 如果您的 blob 容器沒有公用存取權，請選擇 [**取消**]，並遵循此頁面稍後的下列步驟：[上傳至沒有公用存取權的容器](#no-public-access-assemblies)
 
      ![沒有公用存取權](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
 
@@ -176,7 +176,7 @@ ms.locfileid: "75979416"
 
 1. 若您的整合帳戶尚未開啟，請在主 Azure 功能表上，選取 [所有服務]****。 
    在搜尋方塊中，輸入「整合帳戶」。 
-   選擇**集成帳戶**。
+   選取 [**整合帳戶**]。
 
    ![尋找整合帳戶](./media/logic-apps-enterprise-integration-maps/find-integration-account.png)
 
@@ -198,7 +198,7 @@ ms.locfileid: "75979416"
 
 1. 在 [新增對應]**** 下，輸入您的對應名稱。 
 
-1. 在 **"地圖類型**"下，選擇類型，例如**Liquid**：液體 **、XSLT、XSLT** **2.0**或**XSLT 3.0**。
+1. 在 [**對應類型**] 底下，選取類型，例如： [**液體**]、[ **xslt**]、[ **xslt 2.0**] 或 [ **xslt 3.0**]。
 
 1. 維持選取 [小型檔案]****。 在 [對應]**** 方塊旁，選擇資料夾圖示。 尋找並選取您要上傳的對應，例如：
 
@@ -314,7 +314,7 @@ the map appears in the **Maps** list.
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，尋找並開啟您的整合帳戶 (若它尚未開啟)。
 
-1. 在主要 Azure 功能表上，選取 [所有服務]****。 在搜尋方塊中，輸入「整合帳戶」。 選擇**集成帳戶**。
+1. 在主要 Azure 功能表上，選取 [所有服務]****。 在搜尋方塊中，輸入「整合帳戶」。 選取 [**整合帳戶**]。
 
 1. 選取要在其中更新對應的整合帳戶。
 
@@ -334,7 +334,7 @@ the map appears in the **Maps** list.
 
 1. 在主要 Azure 功能表上，選取 [所有服務]****。 
    在搜尋方塊中，輸入「整合帳戶」。 
-   選擇**集成帳戶**。
+   選取 [**整合帳戶**]。
 
 1. 選取要在其中刪除對應的整合帳戶。
 

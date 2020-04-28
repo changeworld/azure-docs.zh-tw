@@ -9,13 +9,13 @@ ms.date: 02/07/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e84a77629026bb8885a48b8ed928699825f07115
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77111240"
 ---
-| **供應商** | **裝置系列** | **韌體版本** |
+| **製造商** | **裝置系列** | **韌體版本** |
 | --- | --- | --- |
 |Cisco | ISR| IOS 15.1 (預覽)|
 |Cisco | ASA | 適用於版本低於 9.8 之 ASA 的 ASA ( * ) RouteBased (IKEv2 - 沒有 BGP) |
@@ -28,5 +28,5 @@ ms.locfileid: "77111240"
 |Ubiquiti| EdgeRouter| EdgeOS v1.10x RouteBased BGP|
 
 > [!NOTE]
-> ( * )必需：窄 Azure 流量選擇器（啟用基於使用策略的流量選擇選項）和自訂 Azure 策略（IKE/IPsec）
+> ( * )必要： NarrowAzureTrafficSelectors （啟用 UsePolicyBasedTrafficSelectors 選項）和 CustomAzurePolicies （IKE/IPsec）
 >

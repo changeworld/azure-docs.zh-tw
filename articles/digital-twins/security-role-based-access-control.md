@@ -1,6 +1,6 @@
 ---
-title: 瞭解基於角色的存取控制 - Azure 數位孿生 |微軟文檔
-description: 瞭解 Azure 數位孿生中基於角色的存取控制和版權管理。
+title: 瞭解角色型存取控制-Azure 數位 Twins |Microsoft Docs
+description: 瞭解 Azure 數位 Twins 中的角色型存取控制和管理許可權。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,15 +9,15 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: feda4b3a7f21b581fb4f08aec013f87c0fabb7e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76044956"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure Digital Twins 中的角色型存取控制
 
-Azure 數位孿生支援對空間圖中的特定資料、資源和操作進行精確存取控制。 它通過稱為[基於角色的存取控制](https://docs.microsoft.com/azure/role-based-access-control/)（RBAC） 的細微性角色和版權管理來這樣做。 RBAC 是由「角色」__ 和「角色指派」__ 所組成的。 角色會識別權限的層級。 角色指派會將角色與使用者或裝置產生關聯。
+Azure 數位 Twins 可對空間圖表中的特定資料、資源和動作進行精確的存取控制。 它會透過名[為角色型存取控制](https://docs.microsoft.com/azure/role-based-access-control/)（RBAC）的細微角色和版權管理來執行此動作。 RBAC 是由「角色」__ 和「角色指派」__ 所組成的。 角色會識別權限的層級。 角色指派會將角色與使用者或裝置產生關聯。
 
 使用 RBAC，就可以將權限授與：
 
@@ -49,7 +49,7 @@ RBAC 的特色在於其權限會向下繼承到空間圖形。
 
 ### <a name="role-definitions"></a>角色定義
 
-角色定義是權限和其他可構成角色之屬性的集合。 角色定義會列出允許的作業，包括任何具有該角色的物件可能執行的「建立」**、「讀取」**、「更新」** 和「刪除」**。 它還指定許可權應用於哪些物件類型。
+角色定義是權限和其他可構成角色之屬性的集合。 角色定義會列出允許的作業，包括任何具有該角色的物件可能執行的「建立」**、「讀取」**、「更新」** 和「刪除」**。 它也會指定要將許可權套用至哪些物件類型。
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
@@ -85,4 +85,4 @@ Azure Digital Twins 的角色指派會建立物件 (例如，使用者或 Azure 
 
 - 若要深入了解如何建立和管理 Azure Digital Twins 角色指派，請閱讀[建立和管理角色指派](./security-create-manage-role-assignments.md)。
 
-- 閱讀有關[Azure 的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/)的更多內容。
+- 深入瞭解[適用于 Azure 的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/)。

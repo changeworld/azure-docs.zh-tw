@@ -1,5 +1,5 @@
 ---
-title: 如何從 Azure 開發人員測試實驗室刪除和匯出個人資料
+title: 如何從 Azure DevTest Labs 刪除及匯出個人資料
 description: 了解如何從 Azure DevLast Labs 服務刪除及匯出個人資料，以履行您在一般資料保護規定 (GDPR) 下的責任。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
 ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76169691"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>從 Azure DevTest Labs 匯出或刪除個人資料
@@ -39,11 +39,11 @@ DevTest Labs 會依據使用者電子郵件地址，將自動關閉電子郵件�
 ### <a name="user-object-id"></a>使用者物件識別碼
 DevTest Labs 會透過使用者物件識別碼向實驗室管理員顯示逐月的成本趨勢，以及依資源列出的成本資訊。 它可讓管理員追蹤成本及管理其實驗室的閾值。 
 
-**當前日曆月的估計成本趨勢：**
-![當前日曆月的估計成本趨勢](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
+**目前行事曆月份的預估成本趨勢：**
+![目前行事曆月份的預估成本趨勢](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**按資源估算的月至今成本：**
-![按資源估算的月至今成本](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
+**依資源的預估月迄今成本：**
+![依資源的預估月迄今成本](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
 ## <a name="why-do-we-need-this-personal-data"></a>我們為何需要這項個人資料？
@@ -55,10 +55,10 @@ DevTest Labs 服務會基於運作目的使用個人資料。 這是服務為了
 例如，如果您刪除了 VM，或移除了電子郵件地址，DevTest Labs 服務將會在資源刪除的 30 天後將這項資料匿名處理。 刪除後保留 30 天的原則，是為了確保我們能為實驗室管理員提供精確的逐月成本預測。
 
 ## <a name="how-can-i-request-an-export-on-my-personal-data"></a>如何要求匯出我的個人資料？
-您可以使用 Azure 門戶或 PowerShell 匯出個人和實驗室使用方式資料。 資料匯出為兩個不同的 CSV 檔：
+您可以使用 Azure 入口網站或 PowerShell 來匯出個人和實驗室使用量資料。 資料會匯出為兩個不同的 CSV 檔案：
 
-- **disks.csv** - 包含有關不同 VM 正在使用的磁片的資訊
-- **虛擬機器.csv** - 包含有關實驗室中 VM 的資訊。
+- **磁片 .csv** -包含不同 vm 所使用之磁片的相關資訊
+- **virtualmachines** -包含實驗室中 vm 的相關資訊。
 
 ### <a name="azure-portal"></a>Azure 入口網站
 身為實驗室使用者，您可以要求匯出 DevTest Labs 服務所儲存的個人資料。 若要要求匯出，請瀏覽至實驗室 [概觀]**** 頁面上的 [個人資料]**** 選項。 選取 [要求匯出]**** 按鈕，即可開始在您實驗室管理員的儲存體帳戶中建立可下載的 Excel 檔案。 接著，您可以連絡實驗室管理員以檢視這項資料。
@@ -144,73 +144,73 @@ else
 }
 ```
 
-上述示例中的關鍵元件包括：
+上述範例中的主要元件如下：
 
-- 調用 AzureRm 資源操作命令。
+- AzureRmResourceAction 命令。
    
     ```
     Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
     ```
-- 兩個指令引數
-    - **blob 存儲絕對Sasuri** - 具有共用訪問簽名 （SAS） 權杖的存儲帳戶 URI。 在 PowerShell 腳本中，可以傳入此值，而不是存儲金鑰。
-    - **使用開始日期**- 提取資料的開始日期，結束日期為執行操作的當前日期。 細微性在日級，因此即使您添加時間資訊，也會忽略該資訊。
+- 兩個動作參數
+    - **blobStorageAbsoluteSasUri** -具有共用存取簽章（SAS）權杖的儲存體帳戶 URI。 在 PowerShell 腳本中，可以傳入此值，而不是儲存體金鑰。
+    - **usageStartDate** -提取資料的開始日期，而結束日期是執行動作的目前日期。 資料細微性是在 day 層級，因此即使您加入時間資訊，它也會被忽略。
 
-### <a name="exported-data---a-closer-look"></a>匯出的資料 - 仔細觀察
-現在，讓我們仔細看看匯出的資料。 如前所述，一旦資料成功匯出，將有兩個 CSV 檔。 
+### <a name="exported-data---a-closer-look"></a>匯出的資料-深入探討
+現在讓我們仔細看一下匯出的資料。 如先前所述，一旦成功匯出資料之後，將會有兩個 CSV 檔案。 
 
-**虛擬機器.csv**包含以下資料列：
+**Virtualmachines**包含下列資料行：
 
 | 資料行名稱 | 描述 |
 | ----------- | ----------- | 
-| SubscriptionId | 實驗室存在的訂閱識別碼。 |
-| 拉布伊德 | 實驗室的唯一 GUID 識別碼。 |
-| 實驗室名稱 | 實驗室名稱。 |
-| 實驗室資源Id | 完全合格的實驗室資源識別碼。 |
-| resourceGroupName | 包含 VM 的資源組的名稱 | 
-| ResourceId | VM 完全限定的資源識別碼。 |
-| 資源庫ID | VM 的 GUID |
+| SubscriptionId | 實驗室所在的訂用帳戶識別碼。 |
+| LabUId | 實驗室的唯一 GUID 識別碼。 |
+| LabName | 實驗室名稱。 |
+| LabResourceId | 完整的實驗室資源識別碼。 |
+| resourceGroupName | 包含 VM 的資源組名 | 
+| ResourceId | VM 的完整資源識別碼。 |
+| ResourceUId | VM 的 GUID |
 | 名稱 | 虛擬機器名稱。 |
-| CreatedTime | 創建 VM 的日期和時間。 |
-| DeletedDate | 刪除 VM 的日期和時間。 如果為空，則尚未發生刪除。 |
-| 資源擁有者 | VM 的擁有者。 如果該值為空，則該值要麼是可聲明 VM，要麼是由服務主體創建的。 |
-| 定價層 | VM 的定價層 |
-| 資源狀態 | VM 的可用性狀態。 如果 VM 已刪除，則處於活動狀態（如果仍然存在或處於非活動狀態）。 |
-| 計算資源 Id | 完全合格的虛擬機器計算資源識別碼。 |
-| 可索賠 | 如果 VM 是可聲明的 VM，則設置為 true | 
-| 環境Id | 在其中創建虛擬機器的環境資源識別碼。 當 VM 不是作為環境資源的一部分創建時，它是空的。 |
-| ExpirationDate | VM 的到期日期。 如果尚未設置到期日期，則將其設置為空。
-| 庫圖像參考版本 |  VM 基本映射的版本。 |
-| 畫廊圖片參考提供 | 提供 VM 基本映射。 |
-| 畫廊圖片參考發行者 | VM 基本映射的發行者。 |
-| 畫廊圖片參考庫 | VM 基本映射的 Sku |
-| 庫圖像參考類型 | VM 基本映射的作業系統類型 |
-| 自訂圖像 Id | VM 基本自訂映射的完全限定 ID。 |
+| CreatedTime | 建立 VM 的日期時間。 |
+| DeletedDate | 刪除 VM 的日期時間。 如果是空的，則刪除作業尚未發生。 |
+| ResourceOwner | VM 的擁有者。 如果值是空的，則為可宣告 VM，或由服務主體所建立。 |
+| PricingTier | VM 的定價層 |
+| ResourceStatus | VM 的可用性狀態。 如果 VM 已被刪除，則為作用中（如果仍然存在或非作用中）。 |
+| ComputeResourceId | 完整的虛擬機器計算資源識別碼。 |
+| 可宣告 | 如果 VM 是可宣告 VM，則設定為 true | 
+| EnvironmentId | 在其中建立虛擬機器的環境資源識別碼。 當 VM 不是在環境資源中建立時，它會是空的。 |
+| ExpirationDate | VM 的到期日。 如果尚未設定到期日，它會設為空白。
+| GalleryImageReferenceVersion |  VM 基底映射的版本。 |
+| GalleryImageReferenceOffer | VM 基底映射的供應專案。 |
+| GalleryImageReferencePublisher | VM 基底映射的發行者。 |
+| GalleryImageReferenceSku | VM 基底映射的 Sku |
+| GalleryImageReferenceOsType | VM 基底映射的 OS 類型 |
+| CustomImageId | VM 基底自訂映射的完整識別碼。 |
 
-**磁片.csv**中包含的資料列如下所示：
+下列列出**包含在 node.js 中的資料**行：
 
 | 資料行名稱 | 描述 | 
 | ----------- | ----------- | 
-| SubscriptionId | 包含實驗室的訂閱 ID |
-| 拉布伊德 | 實驗室 GUID |
-| 實驗室名稱 | 實驗室名稱 | 
-| 實驗室資源Id | 實驗室完全合格的資源識別碼 | 
-| resourceGroupName | 包含實驗室的資源組的名稱 | 
-| ResourceId | VM 完全限定的資源識別碼。 |
-| 資源庫ID | VM 的 GUID |
- |名稱 | 連接磁片的名稱 |
-| CreatedTime |創建資料磁片的日期和時間。 |
-| DeletedDate | 刪除資料磁片的日期和時間。 |
-| 資源狀態 | 資源的狀態。 如果資源存在，則處於活動狀態。 刪除時處於非活動狀態。 |
-| 磁片Blob名稱 | 資料磁片的 Blob 名稱。 |
-| 磁片大小GB | 資料磁片的大小。 |
-| DiskType | 資料磁片的類型。 0 表示標準，1 表示高級。 |
-| 租賃ByVmId | 已附加到資料磁片的 VM 的資源識別碼。 |
+| SubscriptionId | 包含實驗室之訂用帳戶的識別碼 |
+| LabUId | 實驗室的 GUID |
+| LabName | 實驗室的名稱 | 
+| LabResourceId | 實驗室的完整資源識別碼 | 
+| resourceGroupName | 包含實驗室的資源組名 | 
+| ResourceId | VM 的完整資源識別碼。 |
+| ResourceUId | VM 的 GUID |
+ |名稱 | 連接的磁片名稱 |
+| CreatedTime |資料磁片的建立日期和時間。 |
+| DeletedDate | 資料磁片被刪除的日期和時間。 |
+| ResourceStatus | 資源的狀態。 [作用中] （如果資源存在的話）。 非使用中，刪除時。 |
+| DiskBlobName | 資料磁片的 Blob 名稱。 |
+| DiskSizeGB | 資料磁片的大小。 |
+| DiskType | 資料磁片的類型。 0代表 Standard，1代表 Premium。 |
+| LeasedByVmId | 已連接資料磁片之 VM 的資源識別碼。 |
 
 
 > [!NOTE]
-> 如果您正在處理多個實驗室，並且想要獲取總體資訊，則兩個關鍵列是**LabUID**和**ResourceUID，** 它們是跨訂閱的唯一 ID。
+> 如果您要處理多個實驗室並想要取得整體資訊，這兩個索引鍵資料行是**LabUID**和**ResourceUId**，這是跨訂用帳戶的唯一識別碼。
 
-可以使用 SQL Server、Power BI 等工具操作和視覺化匯出的資料。當您要向可能使用與 Azure 訂閱相同的 Azure 訂閱的管理團隊報告實驗室的使用方式時，此功能特別有用。
+匯出的資料可以使用工具（例如 SQL Server、Power BI 等）進行操作和視覺化。當您想要將實驗室的使用方式回報給您的管理小組，而該團隊可能不會使用與您相同的 Azure 訂用帳戶時，這項功能特別有用。
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章： 

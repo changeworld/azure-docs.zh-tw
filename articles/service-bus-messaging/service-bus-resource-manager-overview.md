@@ -1,5 +1,5 @@
 ---
-title: 使用範本創建 Azure 服務匯流排資源
+title: 使用範本建立 Azure 服務匯流排資源
 description: 使用 Azure Resource Manager 範本自動建立服務匯流排資源
 services: service-bus-messaging
 documentationcenter: .net
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 9bc784ee57b9bde393408cbefa9a197aebc59b08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76264453"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本建立服務匯流排資源
@@ -36,7 +36,7 @@ Azure Resource Manager 範本會協助您定義要部署給解決方案的資源
 
 這些服務匯流排 Azure Resource Manager 範本可供下載和部署。 按一下下列連結可取得各自的詳細資料，並附有 GitHub 上的範本連結：
 
-* [創建服務匯流排命名空間](service-bus-resource-manager-namespace.md)
+* [建立服務匯流排命名空間](service-bus-resource-manager-namespace.md)
 * [建立服務匯流排命名空間與佇列](service-bus-resource-manager-namespace-queue.md)
 * [建立服務匯流排命名空間與主題和訂用帳戶](service-bus-resource-manager-namespace-topic.md)
 * [建立服務匯流排命名空間與佇列和授權規則](service-bus-resource-manager-namespace-auth-rule.md)
@@ -181,7 +181,7 @@ Set-AzContext -SubscriptionID <YourSubscriptionId>
 
 ### <a name="set-the-resource-group"></a>設定資源群組
 
-如果沒有現有資源組，請使用**New-AzResourceGroup**命令創建新的資源組。 提供您要使用的資源群組名稱和位置。 例如：
+如果您沒有現有的資源群組，請使用**remove-azresourcegroup**命令建立新的資源群組。 提供您要使用的資源群組名稱和位置。 例如：
 
 ```powershell
 New-AzResourceGroup -Name MyDemoRG -Location "West US"
@@ -207,7 +207,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path t
 
 ### <a name="create-the-deployment"></a>建立部署
 
-若要建立新的部署，請執行 `New-AzResourceGroupDeployment` Cmdlet，並於提示出現時提供必要的參數。 參數會包含部署的名稱、資源群組的名稱，以及範本檔案的路徑或 URL。 如果未指定**Mode**參數，則使用**增量**的預設值。 如需詳細資訊，請參閱[累加部署與完整部署](../azure-resource-manager/templates/deployment-modes.md)。
+若要建立新的部署，請執行 `New-AzResourceGroupDeployment` Cmdlet，並於提示出現時提供必要的參數。 參數會包含部署的名稱、資源群組的名稱，以及範本檔案的路徑或 URL。 如果未指定**Mode**參數，則會使用**增量**的預設值。 如需詳細資訊，請參閱[累加部署與完整部署](../azure-resource-manager/templates/deployment-modes.md)。
 
 下列命令會提示您在 PowerShell 視窗中輸入三個參數︰
 
@@ -255,7 +255,7 @@ Parameters        :
 ## <a name="next-steps"></a>後續步驟
 您現在已了解部署 Azure Resource Manager 範本的基本工作流程和命令。 如需更多的詳細資訊，請瀏覽下列連結內容：
 
-* [Azure 資源管理器概述][Azure Resource Manager overview]
+* [Azure Resource Manager 總覽][Azure Resource Manager overview]
 * [使用 Resource Manager 範本與 Azure PowerShell 來部署資源][Deploy resources with Azure Resource Manager templates]
 * [編寫 Azure 資源管理員範本](../azure-resource-manager/templates/template-syntax.md)
 * [Microsoft.ServiceBus 資源類型](/azure/templates/microsoft.servicebus/allversions)
