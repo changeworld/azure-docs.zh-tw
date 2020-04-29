@@ -13,10 +13,10 @@ ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
 ms.openlocfilehash: b4750ad9fdfa214aa4d7b6a0355c319e7eb1d9c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77484395"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>在 Azure 中建立、重新啟動或調整 VM 大小時，對配置失敗進行疑難排解
@@ -25,7 +25,7 @@ ms.locfileid: "77484395"
 
 **錯誤碼**：AllocationFailed 或 ZonalAllocationFailed
 
-**錯誤訊息**：「配置失敗。 我們在此區域沒有足夠的容量可供要求的 VM 大小使用。 在 HTTPs 上閱讀更多關於提高分配成功可能性\/的文章：/aka.ms/allocation-guidance"
+**錯誤訊息**：「配置失敗。 我們在此區域沒有足夠的容量可供要求的 VM 大小使用。 深入瞭解如何改善配置成功的可能性，網址為\/HTTPs：/aka.ms/allocation-guidance "
 
 本文說明一些常見的配置失敗原因，並建議可能的補救方法。
 
@@ -79,13 +79,13 @@ ms.locfileid: "77484395"
 
 如果您的配置要求相當大 (超過 500 個核心)，請參閱下列小節中的指引，將要求分解成較小的部署。
 
-嘗試[重新部署 VM](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)。 重新部署 VM 會將 VM 分配給區域內的新群集。
+請嘗試重新[部署 VM](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/redeploy-to-new-node-windows)。 重新部署 VM 會將 VM 配置到區域內的新叢集。
 
 ## <a name="allocation-failures-for-older-vm-sizes-av1-dv1-dsv1-d15v2-ds15v2-etc"></a>較舊版 VM 大小 (Av1、Dv1、DSv1、D15v2、DS15v2 等) 的配置失敗
 
 隨著我們擴充 Azure 基礎結構，我們會部署更新一代、專為支援最新虛擬機器類型而設計的硬體。 有些較舊系列的 VM 無法在我們最新一代的基礎結構上執行。 因此，客戶可能偶爾會遇到這些舊版 SKU 的配置失敗問題。 為了避免這個問題，我們鼓勵使用舊版系列虛擬機器的客戶考慮依據下列建議移轉至對等的較新版 VM：這些 VM 已針對最新硬體進行最佳化，將可讓您享有更好的定價和效能。 
 
-|傳統 VM 系列/大小|建議的較新版 VM 系列/大小|詳細資訊|
+|傳統 VM 系列/大小|建議的較新版 VM 系列/大小|更多資訊|
 |----------------------|----------------------------|--------------------|
 |Av1 系列|[Av2 系列](../av2-series.md)|https://azure.microsoft.com/blog/new-av2-series-vm-sizes/
 |Dv1 或 DSv1 系列 (D1 到 D5)|[Dv3 或 DSv3 系列](../dv3-dsv3-series.md)|https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/

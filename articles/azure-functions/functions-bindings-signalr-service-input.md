@@ -1,24 +1,24 @@
 ---
-title: Azure 函數信令器服務輸入綁定
-description: 瞭解如何在 Azure 函數中返回 SignalR 服務終結點 URL 和訪問權杖。
+title: Azure Functions SignalR Service 輸入系結
+description: 瞭解如何在 Azure Functions 中傳回 SignalR 服務端點 URL 和存取權杖。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77530259"
 ---
-# <a name="signalr-service-input-binding-for-azure-functions"></a>用於 Azure 函數的 SignalR 服務輸入綁定
+# <a name="signalr-service-input-binding-for-azure-functions"></a>Azure Functions 的 SignalR Service 輸入系結
 
 在用戶端可以連線到 Azure SignalR Service 之前，它必須擷取服務端點 URL 和有效的存取權杖。 SignalRConnectionInfo** 輸入繫結會產生 SignalR Service 端點 URL 和有效的存取權杖，可用來連線到服務。 因為權杖是限時的，且可用來驗證連線的特定使用者，所以您不應該快取權杖或者在用戶端之間共用權杖。 使用此繫結的 HTTP 觸發程序可以供用戶端用來擷取連線資訊。
 
-有關如何使用此綁定創建可由 SignalR 用戶端 SDK 使用的"協商"函數的詳細資訊，請參閱 SignalR 服務概念文檔中的[Azure 函數開發和配置一文](../azure-signalr/signalr-concept-serverless-development-config.md)。
+如需如何使用此系結來建立可供 SignalR 用戶端 SDK 使用的「negotiate」函式的詳細資訊，請參閱 SignalR Service 概念檔中的[Azure Functions 開發和](../azure-signalr/signalr-concept-serverless-development-config.md)設定一文。
 
-有關設置和配置詳細資訊的資訊，請參閱[概述](functions-bindings-signalr-service.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[總覽](functions-bindings-signalr-service.md)。
 
 ## <a name="example"></a>範例
 
@@ -36,9 +36,9 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-下面的示例顯示了*函數.json*檔中的 SignalR 連接資訊輸入綁定，以及使用綁定返回連接資訊的[C# 腳本函數](functions-reference-csharp.md)。
+下列範例顯示函式*json*檔案中的 SignalR 連線資訊輸入系結，以及使用該系結來傳回連接資訊的[c # 腳本](functions-reference-csharp.md)函式。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -54,7 +54,7 @@ function.json 範例：
 }
 ```
 
-下面是 C# 腳本代碼：
+以下是 c # 腳本程式碼：
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -66,7 +66,7 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例示範 function.json** 檔案中的 SignalR 連線資訊輸入繫結，以及使用繫結來傳回連線資訊的 [JavaScript 函式](functions-reference-node.md)。
 
@@ -94,7 +94,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例顯示*函數.json*檔中的 SignalR 連接資訊輸入綁定，以及使用綁定返回連接資訊的[Python 函數](functions-reference-python.md)。
+下列範例顯示在函式*json*檔案中的 SignalR 連線資訊輸入系結，以及使用該系結來傳回連接資訊的[Python](functions-reference-python.md)函式。
 
 以下是 *function.json* 檔案中的繫結資料：
 
@@ -123,9 +123,9 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
     )
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-下面的示例顯示了一個[JAVA 函數](functions-reference-java.md)，該函數使用輸入綁定獲取 SignalR 連接資訊，並通過 HTTP 返回它。
+下列範例示範的[JAVA](functions-reference-java.md)函式會使用輸入系結取得 SignalR 連接資訊，並透過 HTTP 傳回它。
 
 ```java
 @FunctionName("negotiate")
@@ -145,13 +145,13 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="authenticated-tokens"></a>已驗證權杖
 
-如果函式是由已驗證的用戶端觸發，您可以將使用者識別碼宣告新增至產生的權杖。 您可以使用[應用服務身份驗證](../app-service/overview-authentication-authorization.md)輕鬆將身份驗證添加到函數應用。
+如果函式是由已驗證的用戶端觸發，您可以將使用者識別碼宣告新增至產生的權杖。 您可以使用[App Service authentication](../app-service/overview-authentication-authorization.md)，輕鬆地將驗證新增至函數應用程式。
 
 App Service 驗證會設定名為 `x-ms-client-principal-id` 和 `x-ms-client-principal-name` 的 HTTP 標頭，這些標頭分別包含已驗證使用者的用戶端主體識別碼和名稱。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-可以使用[綁定運算式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` `UserId` ： 或`{headers.x-ms-client-principal-name}`，從標題將綁定的屬性設置為值。
+您可以使用系`UserId`結[運算式](./functions-bindings-expressions-patterns.md)，將系結的屬性設定為任一標頭的值`{headers.x-ms-client-principal-id}` ： `{headers.x-ms-client-principal-name}`或。
 
 ```cs
 [FunctionName("negotiate")]
@@ -166,9 +166,9 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-可以使用[綁定運算式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` `userId` ： 或`{headers.x-ms-client-principal-name}`，從標題將綁定的屬性設置為值。
+您可以使用系`userId`結[運算式](./functions-bindings-expressions-patterns.md)，將系結的屬性設定為任一標頭的值`{headers.x-ms-client-principal-id}` ： `{headers.x-ms-client-principal-name}`或。
 
 function.json 範例：
 
@@ -183,7 +183,7 @@ function.json 範例：
 }
 ```
 
-下面是 C# 腳本代碼：
+以下是 c # 腳本程式碼：
 
 ```cs
 #r "Microsoft.Azure.WebJobs.Extensions.SignalRService"
@@ -197,9 +197,9 @@ public static SignalRConnectionInfo Run(HttpRequest req, SignalRConnectionInfo c
 }
 ```
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-可以使用[綁定運算式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` `userId` ： 或`{headers.x-ms-client-principal-name}`，從標題將綁定的屬性設置為值。
+您可以使用系`userId`結[運算式](./functions-bindings-expressions-patterns.md)，將系結的屬性設定為任一標頭的值`{headers.x-ms-client-principal-id}` ： `{headers.x-ms-client-principal-name}`或。
 
 function.json 範例：
 
@@ -226,7 +226,7 @@ module.exports = async function (context, req, connectionInfo) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-可以使用[綁定運算式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` `userId` ： 或`{headers.x-ms-client-principal-name}`，從標題將綁定的屬性設置為值。
+您可以使用系`userId`結[運算式](./functions-bindings-expressions-patterns.md)，將系結的屬性設定為任一標頭的值`{headers.x-ms-client-principal-id}` ： `{headers.x-ms-client-principal-name}`或。
 
 function.json 範例：
 
@@ -256,9 +256,9 @@ def main(req: func.HttpRequest, connectionInfoJson: str) -> func.HttpResponse:
     )
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-可以使用[綁定運算式](./functions-bindings-expressions-patterns.md)`{headers.x-ms-client-principal-id}` `userId` ： 或`{headers.x-ms-client-principal-name}`，從標題將綁定的屬性設置為值。
+您可以使用系`userId`結[運算式](./functions-bindings-expressions-patterns.md)，將系結的屬性設定為任一標頭的值`{headers.x-ms-client-principal-id}` ： `{headers.x-ms-client-principal-name}`或。
 
 ```java
 @FunctionName("negotiate")
@@ -279,4 +279,4 @@ public SignalRConnectionInfo negotiate(
 
 ## <a name="next-steps"></a>後續步驟
 
-- [發送信號器服務消息（輸出綁定）](./functions-bindings-signalr-service-output.md) 
+- [傳送 SignalR Service 訊息（輸出系結）](./functions-bindings-signalr-service-output.md) 

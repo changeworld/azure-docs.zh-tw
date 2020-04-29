@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77562117"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions 中的監視器案例 - 天氣監看員範例
@@ -28,7 +28,7 @@ ms.locfileid: "77562117"
 * 監視器具有擴充性。 由於每個監視器都是協調流程執行個體，您可以建立多個監視器，而不必建立新函式或定義多個程式碼。
 * 監視器可輕鬆整合至大型工作流程。 監視器可以是更複雜之協調流程函式的一個區段，也可以是[子協調流程](durable-functions-sub-orchestrations.md)。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="configuring-twilio-integration"></a>設定 Twilio 整合
 
@@ -38,7 +38,7 @@ ms.locfileid: "77562117"
 
 這個範例涉及使用 Weather Underground API 來檢查某地點的目前天氣狀況。
 
-您首先需要的是 Weather Underground 帳戶。 您可以在 創建一個免費在[https://www.wunderground.com/signup](https://www.wunderground.com/signup)。 擁有帳戶後，您就需要取得 API 金鑰。 您可以通過訪問 （）[https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)然後選擇"鍵設置"來執行此操作。 Stratus Developer 是免費的方案，且足已執行此範例。
+您首先需要的是 Weather Underground 帳戶。 您可以在[https://www.wunderground.com/signup](https://www.wunderground.com/signup)免費建立一個。 擁有帳戶後，您就需要取得 API 金鑰。 您可以造訪[https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1)，然後選取 [金鑰設定] 來執行此動作。 Stratus Developer 是免費的方案，且足已執行此範例。
 
 擁有 API 金鑰後，將下列**應用程式設定**新增至您的函式應用程式。
 
@@ -50,19 +50,19 @@ ms.locfileid: "77562117"
 
 本文說明範例應用程式中的函式如下：
 
-* `E3_Monitor`：定期調用`E3_GetIsClear`的[業務流程函數](durable-functions-bindings.md#orchestration-trigger)。 如果 `E3_GetIsClear` 傳回 true，此函式會呼叫 `E3_SendGoodWeatherAlert`。
-* `E3_GetIsClear`： 檢查位置的當前天氣狀況[的活動函數](durable-functions-bindings.md#activity-trigger)。
+* `E3_Monitor`：定期[orchestrator function](durable-functions-bindings.md#orchestration-trigger)呼叫`E3_GetIsClear`的協調器函式。 如果 `E3_GetIsClear` 傳回 true，此函式會呼叫 `E3_SendGoodWeatherAlert`。
+* `E3_GetIsClear`：檢查位置目前天氣狀況的[活動](durable-functions-bindings.md#activity-trigger)函式。
 * `E3_SendGoodWeatherAlert`：會透過 Twilio 傳送手機簡訊的活動函式。
 
-### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor協調器功能
+### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor 協調器函式
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=41-78,97-115)]
 
-協調器需要一個位置來監視，並且需要電話號碼才能在位置是否變得清晰時發送消息。 此資料作為強型別`MonitorRequest`物件傳遞給協調器。
+協調器需要有要監視的位置，以及在該位置上是否清楚時，傳送訊息的電話號碼。 此資料會以強型別`MonitorRequest`物件的形式傳遞至 orchestrator。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 **E3_Monitor** 函式會使用協調器函式的標準 function.json**。
 
@@ -81,11 +81,11 @@ ms.locfileid: "77562117"
 3. 呼叫 **E3_GetIsClear** 來判斷所要求之地點的天空是否晴朗。
 4. 如果天氣晴朗，則呼叫 **E3_SendGoodWeatherAlert** 以將簡訊通知傳送至要求的電話號碼。
 5. 建立長期計時器以在下一個輪詢間隔繼續進行協調流程。 為求簡單明瞭，這個範例會使用硬式編碼值。
-6. 繼續運行，直到當前 UTC 時間超過監視器的過期時間，或發送 SMS 警報。
+6. 會繼續執行，直到目前的 UTC 時間通過監視的到期時間，或傳送了 SMS 警示為止。
 
-多個協調器實例可以通過多次調用協調器函數同時運行。 您可以指定要監視的地點以及要作為簡訊通知傳送目的地的電話號碼。
+多個協調器實例可以多次呼叫協調器函式來執行。 您可以指定要監視的地點以及要作為簡訊通知傳送目的地的電話號碼。
 
-### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear活動功能
+### <a name="e3_getisclear-activity-function"></a>E3_GetIsClear 活動函數
 
 如同其他範例一樣，協助程式活動函式是使用 `activityTrigger` 觸發程序繫結的一般函式。 **E3_GetIsClear** 函式會使用 Weather Underground API 取得目前的天氣狀況，並判斷天空是否晴朗。
 
@@ -93,7 +93,7 @@ ms.locfileid: "77562117"
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=80-85)]
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 function.json** 定義如下：
 
@@ -105,7 +105,7 @@ function.json** 定義如下：
 
 ---
 
-### <a name="e3_sendgoodweatheralert-activity-function"></a>E3_SendGoodWeatherAlert活動功能
+### <a name="e3_sendgoodweatheralert-activity-function"></a>E3_SendGoodWeatherAlert 活動函數
 
 **E3_SendGoodWeatherAlert** 函式會使用 Twilio 繫結來傳送手機簡訊，通知使用者這是散步的好時機。
 
@@ -114,9 +114,9 @@ function.json** 定義如下：
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs?range=87-96,140-205)]
 
 > [!NOTE]
-> 您需要安裝`Microsoft.Azure.WebJobs.Extensions.Twilio`Nuget 包才能運行示例代碼。
+> 您將需要安裝`Microsoft.Azure.WebJobs.Extensions.Twilio` Nuget 封裝，才能執行範例程式碼。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 其 function.json** 很簡單：
 

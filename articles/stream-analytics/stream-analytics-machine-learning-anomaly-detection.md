@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.openlocfilehash: 51b9c827d453eef2e2e75e1aa5222204eaa38d0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77525527"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Azure 串流分析中的異常偵測
@@ -20,11 +20,11 @@ Azure 串流分析 (在雲端和 Azure IoT Edge 中都可取得) 提供內建的
 
 機器學習模型假設有一個均勻取樣的時間序列。 如果此時間序列不均勻，您可以在呼叫異常偵測之前，透過輪轉視窗插入彙總步驟。
 
-機器學習操作目前不支援季節性趨勢或多變數相關性。
+機器學習作業目前不支援季節性趨勢或多變數行銷的相互關聯。
 
-## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>在 Azure 流分析中使用機器學習進行異常檢測
+## <a name="anomaly-detection-using-machine-learning-in-azure-stream-analytics"></a>在 Azure 中使用機器學習服務進行異常偵測串流分析
 
-以下視頻演示如何使用 Azure 流分析中的機器學習函數即時檢測異常。 
+下列影片示範如何使用 Azure 串流分析中的機器學習功能，即時偵測異常狀況。 
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Real-Time-ML-Based-Anomaly-Detection-In-Azure-Stream-Analytics/player]
 
@@ -34,11 +34,11 @@ Azure 串流分析 (在雲端和 Azure IoT Edge 中都可取得) 提供內建的
 
 函式的運作方式為根據其目前為止所看到的內容建立某種標準。 與所建立的標準進行比較 (在信賴等級內)，藉此識別極端值。 視窗大小應該以針對正常行為定型模型所需的事件數目下限為基礎，如此在發生異常狀況時，才能夠加以辨識。
 
-模型的回應時間隨歷史記錄大小而增加，因為它需要與大量過去的事件進行比較。 建議只包含所需的事件數目，以獲得較佳效能。
+模型的回應時間會隨著歷程記錄大小而增加，因為它需要與更多的過去事件進行比較。 建議只包含所需的事件數目，以獲得較佳效能。
 
-時間序列中的間距可能是未能在特定時間點及時收到事件的模型結果。 此情況由流分析使用歸因邏輯處理。 相同滑動視窗的歷程記錄大小，以及持續時間用來計算事件預計抵達的的平均速率。
+時間序列中的間距可能是未能在特定時間點及時收到事件的模型結果。 串流分析使用插補邏輯來處理這種情況。 相同滑動視窗的歷程記錄大小，以及持續時間用來計算事件預計抵達的的平均速率。
 
-[此處](https://aka.ms/asaanomalygenerator)提供的異常產生器可用於向 Iot 中心提供具有不同異常模式的資料。 可以使用這些異常檢測功能設置 ASA 作業，以便從此 Iot 中心讀取並檢測異常。
+[這裡](https://aka.ms/asaanomalygenerator)提供的異常產生器可以用來以具有不同異常模式的資料來饋送 Iot 中樞。 您可以使用這些異常偵測函式來設定 ASA 作業，以讀取此 Iot 中樞並偵測異常狀況。
 
 ## <a name="spike-and-dip"></a>峰值和谷值
 
@@ -47,7 +47,7 @@ Azure 串流分析 (在雲端和 Azure IoT Edge 中都可取得) 提供內建的
 
 ![峰值和谷值異常的範例](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
-在相同的滑動視窗中，如果第二個峰值小於第一個峰值，則較小峰值的計算分數可能不足以與指定的信賴等級內第一個峰值的分數比較。 您可以嘗試降低模型的置信度以檢測此類異常。 不過，如果您開始取得太多警示，則可使用較高的信賴區間。
+在相同的滑動視窗中，如果第二個峰值小於第一個峰值，則較小峰值的計算分數可能不足以與指定的信賴等級內第一個峰值的分數比較。 您可以嘗試降低模型的信賴等級，以偵測這類異常狀況。 不過，如果您開始取得太多警示，則可使用較高的信賴區間。
 
 下列範例查詢假設在歷程記錄有 120 個事件的 2 分鐘滑動視窗中，每秒一個事件的均勻輸入速率。 最終的 SELECT 陳述式會擷取並輸出 95% 信賴等級的分數和異常狀態。
 
@@ -110,55 +110,55 @@ FROM AnomalyDetectionStep
 
 ```
 
-## <a name="performance-characteristics"></a>性能特徵
+## <a name="performance-characteristics"></a>效能特性
 
-這些模型的性能取決於歷史記錄大小、視窗持續時間、事件裝載以及是否使用功能級別分區。 本節討論這些配置，並提供有關如何保持每秒 1K、5K 和 10K 事件的攝取速率的示例。
+這些模型的效能取決於記錄大小、視窗持續時間、事件裝載，以及是否使用函數層級資料分割。 本節將討論這些設定，並提供如何維持每秒1、2和10K 個事件的內嵌速率的範例。
 
-* **歷史大小**- 這些模型與**歷史大小**線性執行。 歷史記錄大小越長，模型對新事件進行評分的時間越長。 這是因為模型將新事件與歷史記錄緩衝區中的每個過去事件進行比較。
-* **視窗持續時間**-**視窗持續時間**應反映接收歷史記錄大小指定的相同事件所需的時間。 如果沒有視窗中的許多事件，Azure 流分析將造成缺少的值。 因此，CPU 限定是歷史記錄大小的函數。
-* **事件裝載**-**事件裝載**越大，模型執行的工作就越多，這會影響 CPU 限定。 假定業務邏輯使用更多輸入分區有意義，則可以通過使其令人尷尬的並行性來擴展。
-* **函數級分區** - **功能級別分區**是在異常檢測函式呼叫```PARTITION BY```中使用來完成的。 這種類型的分區會增加開銷，因為需要同時為多個模型維護狀態。 功能級分區用於設備級分區等方案。
+* 歷程**記錄大小**-這些模型會以**記錄大小**線性執行。 記錄大小愈久，模型為新事件評分所需的時間愈久。 這是因為模型會將新的事件與歷程記錄緩衝區中的每個過去事件進行比較。
+* **視窗持續時間**-**視窗持續時間**應該會反映接收記錄大小所指定的事件數目所花費的時間。 在視窗中沒有該多個事件時，Azure 串流分析會插補遺漏值。 因此，CPU 耗用量是歷程記錄大小的功能。
+* **事件裝載**-**事件裝載**愈大，模型所執行的工作越多，這會影響 CPU 耗用量。 此作業可以藉由讓它成為窘迫平行來相應放大，假設商務邏輯使用更多輸入資料分割是合理的。
+* **函數層級** - 的資料分割函式**層級資料分割**是在異常偵測函式呼叫中使用```PARTITION BY``` 。 這種類型的資料分割會增加額外負荷，因為必須同時維護多個模型的狀態。 在裝置層級分割之類的案例中，會使用函式層級的分割功能。
 
 ### <a name="relationship"></a>關聯性
-歷史記錄大小、視窗持續時間和事件總負載以下列方式相關：
+記錄大小、視窗持續時間和事件總負載會以下列方式相關：
 
-視窗持續時間（以毫秒計） = 1000 = 歷史記錄大小 / （每秒的總輸入事件 / 輸入分區計數）
+windowDuration （以毫秒為單位） = 1000 * historySize/（每秒輸入事件總數/輸入資料分割計數）
 
-按設備 Id 對函數進行分區時，將"分區 BY 設備 Id"添加到異常檢測函式呼叫中。
+以 deviceId 分割函式時，請將 "PARTITION BY deviceId" 加入至異常偵測函式呼叫。
 
 ### <a name="observations"></a>觀察
-下表包括非分區情況下單個節點 （6 SU） 的輸送量觀察值：
+下表包含非資料分割案例的單一節點（6 SU）的輸送量觀察：
 
-| 歷史記錄大小（事件） | 視窗持續時間（毫秒） | 每秒輸入事件總數 |
+| 記錄大小（事件） | 視窗持續時間（毫秒） | 每秒輸入事件總數 |
 | --------------------- | -------------------- | -------------------------- |
 | 60 | 55 | 2,200 |
-| 600 | 728 | 1,650 |
-| 6,000 | 10,910 | 1,100 |
+| 600 | 728 | 1650 |
+| 6,000 | 10910 | 1,100 |
 
-下表包括分區情況下單個節點 （6 SU） 的輸送量觀察值：
+下表包含分割區案例的單一節點（6 SU）的輸送量觀察：
 
-| 歷史記錄大小（事件） | 視窗持續時間（毫秒） | 每秒輸入事件總數 | 裝置計數 |
+| 記錄大小（事件） | 視窗持續時間（毫秒） | 每秒輸入事件總數 | 裝置計數 |
 | --------------------- | -------------------- | -------------------------- | ------------ |
-| 60 | 1,091 | 1,100 | 10 |
-| 600 | 10,910 | 1,100 | 10 |
-| 6,000 | 218,182 | <550 | 10 |
-| 60 | 21,819 | 550 | 100 |
-| 600 | 218,182 | 550 | 100 |
-| 6,000 | 2,181,819 | <550 | 100 |
+| 60 | 1091 | 1,100 | 10 |
+| 600 | 10910 | 1,100 | 10 |
+| 6,000 | 218182 | <550 | 10 |
+| 60 | 21819 | 550 | 100 |
+| 600 | 218182 | 550 | 100 |
+| 6,000 | 2181819 | <550 | 100 |
 
-運行上述非分區配置的示例代碼位於 Azure 示例的["流式處理"](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh)中。 該代碼創建一個沒有函數級分區的流分析作業，該作業使用事件中心作為輸入和輸出。 輸入負載使用測試用戶端生成。 每個輸入事件都是一個 1KB 的 json 文檔。 事件類比發送 JSON 資料的 IoT 設備（最多 1K 設備）。 歷史記錄大小、視窗持續時間和總事件裝載在 2 個輸入分區上變化。
+執行上述非分割設定的範例程式碼位於 Azure 範例的「[大規模串流](https://github.com/Azure-Samples/streaming-at-scale/blob/f3e66fa9d8c344df77a222812f89a99b7c27ef22/eventhubs-streamanalytics-eventhubs/anomalydetection/create-solution.sh)」存放庫中。 此程式碼會建立不含函式層級分割的串流分析作業，其使用事件中樞做為輸入和輸出。 輸入負載是使用測試用戶端產生的。 每個輸入事件都是 1KB json 檔。 事件會模擬傳送 JSON 資料的 IoT 裝置（適用于最多1K 部裝置）。 記錄大小、時間範圍和事件總負載會隨著2個輸入分割區而變化。
 
 > [!Note]
-> 要獲得更準確的估計，請自訂示例以適合您的方案。
+> 如需更精確的評估，請自訂範例以符合您的案例。
 
-### <a name="identifying-bottlenecks"></a>識別瓶頸
-使用 Azure 流分析作業中的"指標"窗格來識別管道中的瓶頸。 查看**輸入/輸出事件**中的輸送量和["浮水印延遲"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)或 **"積壓事件**"，以查看作業是否跟上輸入速率。 對於事件中心指標，請查找**限制請求**並相應地調整閾值單位。 對於 Cosmos DB 指標，請查看"輸送量"下**每個分區鍵範圍的最大值消耗的 RU/s，** 以確保分區金鑰範圍被統一使用。 對於 Azure SQL DB，請監視**日誌 IO**和**CPU**。
+### <a name="identifying-bottlenecks"></a>找出瓶頸
+使用 Azure 串流分析作業中的 [計量] 窗格，來識別管線中的瓶頸。 檢查輸送量的**輸入/輸出事件**和「[浮水印延遲](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/)」或待處理的**事件**，以查看作業是否與輸入速率保持一致。 針對事件中樞計量，尋找已**節流的要求**，並據以調整閾值單位。 如 Cosmos DB 計量，請參閱輸送量之下**每個分割區索引鍵範圍的最大使用 RU/秒**，以確保您的資料分割索引鍵範圍會一致地取用。 若為 Azure SQL DB，請監視**記錄 IO**和**CPU**。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [使用 Azure 流分析開始](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
-* [Azure 流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 

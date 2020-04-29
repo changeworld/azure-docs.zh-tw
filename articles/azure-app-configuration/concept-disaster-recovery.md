@@ -1,16 +1,16 @@
 ---
-title: Azure 應用配置恢復和災害復原
-description: 使用 Azure 應用配置實現恢復性和災害復原。
+title: Azure 應用程式組態復原和嚴重損壞修復
+description: 瞭解如何使用 Azure 應用程式組態執行復原和嚴重損壞修復。
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.openlocfilehash: 96ef09ac081aa328014217592a7fcd3ed6314c0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77523759"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>復原和災害復原
@@ -23,11 +23,11 @@ Azure 應用程式組態目前是一項區域性服務。 每個組態存放區�
 
 ![異地備援存放區](./media/geo-redundant-app-configuration-stores.png)
 
-您的應用程式會以平行方式同時從主要和次要存放區載入其組態。 如此將可提高成功取得組態資料的機率。 您有責任使兩個存儲中的資料保持同步。以下各節說明如何將地理恢復性構建到應用程式中。
+您的應用程式會以平行方式同時從主要和次要存放區載入其組態。 如此將可提高成功取得組態資料的機率。 您必須負責讓兩個存放區中的資料保持同步。下列各節說明如何在您的應用程式中建立異地復原。
 
 ## <a name="failover-between-configuration-stores"></a>組態存放區之間的容錯移轉
 
-技術上，您的應用程式並不會執行容錯移轉。 它會嘗試同時從兩個應用程式組態存放區擷取相同的組態資料集。 編排您的程式碼，使其先從次要存放區載入，然後再從主要存放區載入。 此方法可確保主要存放區中的組態資料在可用時即應優先使用。 以下程式碼片段顯示了如何在 .NET Core 中實現這種安排：
+技術上，您的應用程式並不會執行容錯移轉。 它會嘗試同時從兩個應用程式組態存放區擷取相同的組態資料集。 編排您的程式碼，使其先從次要存放區載入，然後再從主要存放區載入。 此方法可確保主要存放區中的組態資料在可用時即應優先使用。 下列程式碼片段示範如何在 .NET Core 中執行這種相片順序：
 
 #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
@@ -70,9 +70,9 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 1. 移至 [匯入/匯出]**** 索引標籤，然後選取 [匯出]**** > [應用程式組態]**** > [目標]**** > [選取資源]****。
 
-1. 在打開的新邊欄選項卡中，指定輔助存儲的訂閱、資源組和資源名稱，然後選擇 **"應用**"。
+1. 在開啟的新分頁中，指定訂用帳戶、資源群組和次要存放區的資源名稱，**然後選取 [** 套用]。
 
-1. UI 會更新，供您選擇要匯出至次要存放區的組態資料。 您可以將預設時間值保留為"**從"標籤**和 **"到"標籤**設置為相同的值。 選取 [**套用**]。
+1. UI 會更新，供您選擇要匯出至次要存放區的組態資料。 您可以保留預設的時間值，並將 [**從標籤**] 和 [**標籤**] 設定為相同的值。 選取 [套用]  。
 
 1. 重複先前步驟以進行所有組態變更。
 

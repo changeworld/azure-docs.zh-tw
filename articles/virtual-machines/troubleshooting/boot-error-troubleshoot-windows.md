@@ -1,6 +1,6 @@
 ---
-title: Azure 虛擬機器關閉在"重新開機、關閉"或"停止服務"時卡住 |微軟文檔
-description: 本文可説明您解決 Azure Windows 虛擬機器中的服務錯誤。
+title: Azure 虛擬機器關機停滯于重新開機、關閉或停止服務 |Microsoft Docs
+description: 本文可協助您針對 Azure Windows 虛擬機器中的服務錯誤進行疑難排解。
 services: virtual-machines-windows
 documentationCenter: ''
 author: v-miegge
@@ -13,87 +13,87 @@ ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
 ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77371367"
 ---
-# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 關機停留在"重新開機"、"關閉"或"停止服務"上
+# <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Azure Windows VM 關機停滯于 [重新開機]、[正在關閉] 或 [停止服務]
 
-本文提供瞭解決在 Microsoft Azure 中重新開機 Windows 虛擬機器 （VM） 時可能會遇到的"重新開機"、"關閉"或"停止服務"消息的步驟。
+本文提供解決在 Microsoft Azure 重新開機 Windows 虛擬機器（VM）時，可能會遇到「重新開機」、「正在關閉」或「停止服務」訊息之問題的步驟。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
-當您使用[引導診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)來查看 VM 的螢幕截圖時，您可能會看到螢幕截圖顯示消息"重新開機"、"關閉"或"停止服務"。
+當您使用 [[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)] 來查看 VM 的螢幕擷取畫面時，您可能會看到螢幕擷取畫面顯示「重新開機」、「正在關閉」或「停止服務」訊息。
 
-![重新開機、關閉和停止服務螢幕](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
+![重新開機、關閉和停止服務畫面](./media/boot-error-troubleshooting-windows/restart-shut-down-stop-service.png)
  
 ## <a name="cause"></a>原因
 
-Windows 使用關機過程執行系統維護操作，並處理更新、角色和功能等更改。 不建議在完成之前中斷此關鍵過程。 根據更新/更改的數量和 VM 大小，該過程可能需要很長時間。 如果進程停止，作業系統可能會損壞。 僅當進程時間過長時才會中斷。
+Windows 使用關機程式來執行系統維護作業，以及處理更新、角色和功能等變更。 不建議您中斷此重要程式，直到它完成為止。 視更新/變更的數目和 VM 大小而定，此程式可能需要很長的時間。 如果進程已停止，作業系統可能會損毀。 只有在進程耗費時間過長時，才會中斷程式。
 
 ## <a name="solution"></a>解決方法
 
-### <a name="collect-a-process-memory-dump"></a>收集進程記憶體傾印
+### <a name="collect-a-process-memory-dump"></a>收集處理常式記憶體傾印
 
-1. 將[Procdump 工具](http://download.sysinternals.com/files/Procdump.zip)下載到新的或現有的資料磁片中，該磁片從同一區域連接到工作 VM。
+1. 將[Procdump 工具](http://download.sysinternals.com/files/Procdump.zip)下載至新的或現有的資料磁片，並將其連接至相同區域中的工作中 VM。
 
-2. 從工作 VM 分離包含所需檔的磁片，並將磁片附加到損壞的 VM。 我們稱此磁片為**實用程式磁片**。
+2. 卸離包含工作中 VM 所需檔案的磁片，並將磁片連結至中斷的 VM。 我們正將此磁片呼叫到**公用程式磁片**。
 
-使用[串列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)完成以下步驟：
+使用[序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)來完成下列步驟：
 
-1. 打開管理電源shell 並檢查停止時掛起的服務。
+1. 開啟系統管理 Powershell，並檢查停止時暫停的服務。
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
    ``
 
-2. 在管理 CMD 上，獲取掛起服務的 PID。
+2. 在系統管理 CMD 上，取得無回應服務的 PID。
 
    ``
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. 從掛起的進程<STOPPING SERVICE>獲取記憶體傾印示例。
+3. 從無回應的進程<STOPPING SERVICE>取得記憶體傾印範例。
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. 現在終止掛起的進程以解鎖關機過程。
+4. 現在會終止停止回應程式，以解除鎖定關機進程。
 
    ``
    taskkill /PID <PID> /t /f
    ``
 
-作業系統再次啟動後，如果啟動正常，則只需確保作業系統的一致性正常。 如果報告損壞，則運行以下命令，直到磁片無損壞：
+當 OS 再次啟動時，如果它正常開機，則只需確定作業系統一致性是正常的。 如果報告損毀，請執行下列命令，直到磁片無損毀為止：
 
 ``
 dism /online /cleanup-image /restorehealth
 ``
 
-如果您無法收集進程記憶體傾印，或者此問題是遞迴的，並且需要根本原因分析，請繼續收集下面的 OS 記憶體傾印，然後繼續打開支援請求。
+如果您無法收集處理常式記憶體傾印，或此問題是遞迴的，而且您需要根本原因分析，請在下方收集 OS 記憶體傾印，繼續開啟支援要求。
 
 ### <a name="collect-an-os-memory-dump"></a>收集 OS 記憶體傾印
 
-如果在等待對進程的更改後問題未解決，則需要收集記憶體傾印檔並聯系支援人員。 若要收集傾印檔案，請遵循下列步驟：
+如果在等候變更之後無法解決問題，您就必須收集記憶體傾印檔案並聯絡支援。 若要收集傾印檔案，請遵循下列步驟：
 
-**將作業系統磁片連接到恢復 VM**
+**將 OS 磁片連結至復原 VM**
 
 1. 擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)。
 
-2. [將作業系統磁片附加到恢復 VM。](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)
+2. [將 OS 磁片連結至復原 VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)。
 
 3. 以遠端桌面連線到復原 VM。
 
-4. 如果作業系統磁片已加密，則必須在轉到下一步之前關閉加密。 有關詳細資訊，請參閱[解密無法啟動的 VM 中的加密 OS 磁片](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution)。
+4. 如果 OS 磁片已加密，您必須先關閉加密，再移至下一個步驟。 如需詳細資訊，請參閱在[無法開機的 VM 中解密加密的 OS 磁片](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-bitlocker-boot-error#solution)。
 
 **找出傾印檔案，並提交支援票證**
 
 1. 在復原 VM 上，移至已連結 OS 磁碟的 Windows 資料夾。 如果指派給已連結 OS 磁碟的磁碟機代號是 F，您必須移至 F:\Windows。
 
-2. 找到記憶體.dmp 檔，然後提交帶有轉儲檔[的支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+2. 找出記憶體 dmp 檔案，然後提交包含傾印檔案的[支援票證](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 如果找不到傾印檔案，請移到下一個步驟來啟用傾印記錄檔和序列主控台。
 
@@ -105,7 +105,7 @@ dism /online /cleanup-image /restorehealth
 
 2. 執行下列指令碼：
 
-   在此腳本中，我們假定分配給附加 OS 磁片的磁碟機號為 F. 將其替換為 VM 中的相應值。
+   在此腳本中，我們假設指派給所連結 OS 磁片的磁碟機號是 F。請將它取代為您 VM 中的適當值。
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -129,9 +129,9 @@ dism /online /cleanup-image /restorehealth
    reg unload HKLM\BROKENSYSTEM
    ```
 
-3. 驗證磁片上有足夠的空間來分配與 RAM 相同的記憶體，具體取決於您為此 VM 選擇的大小。
+3. 請確認磁片上有足夠的空間可配置 RAM，視您為此 VM 選取的大小而定。
 
-4. 如果沒有足夠的空間或 VM 很大（G、GS 或 E 系列），則可以更改將創建此檔的位置，並將其引用到連接到 VM 的任何其他資料磁片。 要更改位置，必須更改以下鍵：
+4. 如果沒有足夠的空間或 VM 很大（G、GS 或 E 系列），您可以變更此檔案的建立位置，並將其指向連結至 VM 的任何其他資料磁片。 若要變更位置，您必須變更下列機碼：
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -142,16 +142,16 @@ dism /online /cleanup-image /restorehealth
    reg unload HKLM\BROKENSYSTEM
    ```
 
-5. [分離 OS 磁片，然後將 OS 磁片重新連接到受影響的 VM。](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)
+5. 卸[離 os 磁片，然後將 os 磁片重新附加至受影響的 VM](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-recovery-disks-portal)。
 
-6. 啟動 VM 並訪問串列主控台。
+6. 啟動 VM 並存取序列主控台。
 
-7. 選擇"發送不可遮罩中斷 （NMI））"以觸發記憶體傾印。
+7. 選取 [傳送非遮罩式插斷（NMI）] 以觸發記憶體傾印。
 
-   ![發送非遮罩式插斷](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
+   ![傳送非遮罩式插斷](./media/boot-error-troubleshooting-windows/send-nonmaskable-interrupt.png)
 
-8. 再次將 OS 磁片連接到恢復 VM，收集轉儲檔。
+8. 再次將 OS 磁片連結至復原 VM，並收集傾印檔案。
 
 ## <a name="contact-microsoft-support"></a>連絡 Microsoft 支援
 
-收集轉儲檔後，請與 Microsoft 支援部門聯繫以確定根本原因。
+收集傾印檔案之後，請洽詢 Microsoft 支援服務以判斷根本原因。

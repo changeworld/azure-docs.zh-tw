@@ -1,21 +1,21 @@
 ---
-title: Azure 宇宙 DB 中的 SELECT 子句
-description: 瞭解 Azure 宇宙 DB 的 SQL SELECT 子句。 使用 SQL 作為 Azure 宇宙 DB JSON 查詢語言。
+title: Azure Cosmos DB 中的 SELECT 子句
+description: 瞭解 Azure Cosmos DB 的 SQL SELECT 子句。 使用 SQL 做為 Azure Cosmos DB JSON 查詢語言。
 author: ginarobinson
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
 ms.openlocfilehash: 013ebdcdbac41825c10a1362f73ab4c94052400d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77469930"
 ---
-# <a name="select-clause-in-azure-cosmos-db"></a>Azure 宇宙 DB 中的 SELECT 子句
+# <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 SELECT 子句
 
-每個查詢都包含一個 SELECT 子句和可選[的 FROM](sql-query-from.md)和[WHERE](sql-query-where.md)子句，每個查詢都包含 ANSI SQL 標準。 通常，將枚舉 FROM 子句中的源，並且 WHERE 子句在源上應用篩選器來檢索 JSON 項的子集。 然後，SELECT 子句在挑選清單中預測請求的 JSON 值。
+每個查詢都包含 SELECT 子句，以及每個 ANSI SQL 標準的選擇性[from](sql-query-from.md)和[WHERE](sql-query-where.md)子句。 通常會列舉 FROM 子句中的來源，而 WHERE 子句會在來源上套用篩選，以抓取 JSON 專案的子集。 然後，SELECT 子句會在選取清單中投射要求的 JSON 值。
 
 ## <a name="syntax"></a>語法
 
@@ -52,7 +52,7 @@ SELECT <select_specification>
  
 - `DISTINCT`
   
-  指定應刪除投影屬性的重複項。  
+  指定應該移除投影屬性的重複專案。  
 
 - `<scalar_expression>`  
 
@@ -78,7 +78,7 @@ SELECT <select_specification>
   
 ## <a name="examples"></a>範例
 
-以下 SELECT 查詢示例`address`返回`Families`其`id`匹配`AndersenFamily`項 ：
+下列 SELECT 查詢範例`address`會從`Families`符合`id` `AndersenFamily`的傳回：
 
 ```sql
     SELECT f.address
@@ -99,7 +99,7 @@ SELECT <select_specification>
 ```
 
 ### <a name="quoted-property-accessor"></a>加上引號的屬性存取子
-您可以使用引號屬性運算子 [] 訪問屬性。 例如， `SELECT c.grade` and `SELECT c["grade"]` 是相等的。 此語法可用於轉義包含空格、特殊字元或與 SQL 關鍵字或保留項同名的屬性。
+您可以使用加上引號的屬性運算子 [] 來存取屬性。 例如， `SELECT c.grade` and `SELECT c["grade"]` 是相等的。 此語法適用于將包含空格、特殊字元或名稱與 SQL 關鍵字或保留字相同的屬性加以轉義。
 
 ```sql
     SELECT f["lastName"]
@@ -109,7 +109,7 @@ SELECT <select_specification>
 
 ### <a name="nested-properties"></a>巢狀屬性
 
-下面的示例預測兩個嵌套屬性 和`f.address.state``f.address.city`。
+下列範例會投射兩個嵌套的`f.address.state`屬性`f.address.city`：和。
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -127,7 +127,7 @@ SELECT <select_specification>
 ```
 ### <a name="json-expressions"></a>JSON 運算式
 
-投影還支援 JSON 運算式，如以下示例所示：
+投射也支援 JSON 運算式，如下列範例所示：
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
@@ -147,7 +147,7 @@ SELECT <select_specification>
     }]
 ```
 
-在前面的示例中，SELECT 子句需要創建一個 JSON 物件，並且由於示例不提供任何鍵，因此子句使用隱式`$1`參數變數名稱 。 以下查詢返回兩個隱式參數變數： `$1` `$2`和 。
+在上述範例中，SELECT 子句需要建立 JSON 物件，而且由於此範例不提供索引鍵，因此子句會使用隱含引數變數名稱`$1`。 下列查詢會傳回兩個隱含引數`$1`變數`$2`：和。
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -169,11 +169,11 @@ SELECT <select_specification>
       }
     }]
 ```
-## <a name="reserved-keywords-and-special-characters"></a>保留關鍵字和特殊字元
+## <a name="reserved-keywords-and-special-characters"></a>保留的關鍵字和特殊字元
 
-如果資料包含與保留關鍵字（如"訂單"或"組"）相同的名稱的屬性，則對這些文檔的查詢將導致語法錯誤。 應顯式在字元中`[]`包含該屬性以成功執行查詢。
+如果您的資料所包含的屬性具有與保留關鍵字相同的名稱，例如 "order" 或 "Group"，則針對這些檔的查詢將會導致語法錯誤。 您應該明確地將屬性包含`[]`在字元中，才能成功執行查詢。
 
-例如，下面是一個帶有名為`order`屬性的文檔，`price($)`並且屬性包含特殊字元：
+例如，以下是具有名為`order`之屬性的檔，以及包含`price($)`特殊字元的屬性：
 
 ```json
 {
@@ -190,7 +190,7 @@ SELECT <select_specification>
 }
 ```
 
-如果運行包含屬性或`order``price($)`屬性的查詢，您將收到語法錯誤。
+如果您執行包含`order`屬性或`price($)`屬性的查詢，將會收到語法錯誤。
 
 ```sql
 SELECT * FROM c where c.order.orderid = "12345"
@@ -204,7 +204,7 @@ SELECT * FROM c where c.order.price($) > 50
 Syntax error, incorrect syntax near 'order'
 `
 
-應重寫與以下內容相同的查詢：
+您應該重寫相同的查詢，如下所示：
 
 ```sql
 SELECT * FROM c WHERE c["order"].orderId = "12345"
@@ -218,4 +218,4 @@ SELECT * FROM c WHERE c["order"]["price($)"] > 50
 
 - [開始使用](sql-query-getting-started.md)
 - [Azure Cosmos DB .NET 範例](https://github.com/Azure/azure-cosmos-dotnet-v3)
-- [WHERE 條款](sql-query-where.md)
+- [WHERE 子句](sql-query-where.md)

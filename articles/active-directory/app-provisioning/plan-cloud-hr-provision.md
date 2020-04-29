@@ -1,6 +1,6 @@
 ---
-title: 將雲 HR 應用程式規劃到 Azure 活動目錄使用者預配
-description: 本文介紹了將雲 HR 系統（如工作日和成功因素）與 Azure 活動目錄集成的部署過程。 將 Azure AD 與雲 HR 系統集成，可建立完整的身份生命週期管理系統。
+title: 規劃雲端 HR 應用程式以 Azure Active Directory 使用者布建
+description: 本文說明整合雲端 HR 系統（例如 Workday 和 SuccessFactors）與 Azure Active Directory 的部署流程。 將 Azure AD 與您的雲端 HR 系統整合，會產生完整的身分識別生命週期管理系統。
 services: active-directory
 author: martincoetzer
 manager: CelesteDG
@@ -13,395 +13,395 @@ ms.date: 11/22/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.openlocfilehash: 28abe2dfa5a1a13ba09e20202180cb5e47d94072
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77522427"
 ---
-# <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>將雲 HR 應用程式規劃到 Azure 活動目錄使用者預配
+# <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>規劃雲端 HR 應用程式以 Azure Active Directory 使用者布建
 
-從歷史上看，IT 員工一直依靠手動方法來創建、更新和刪除員工。 他們使用了上傳 CSV 檔或自訂腳本等方法來同步員工資料。 這些預配過程容易出錯、不安全且難以管理。
+在過去，IT 人員依賴手動方法來建立、更新和刪除員工。 他們使用了上傳 CSV 檔案或自訂腳本來同步員工資料的方法。 這些布建程式很容易出錯、不安全，而且難以管理。
 
-為了管理員工、供應商或臨時工作人員的身份生命週期[，Azure Active Directory （Azure AD） 使用者預配服務](../app-provisioning/user-provisioning.md)提供與基於雲的人力資源 （HR） 應用程式的集成。 應用程式的示例包括工作日或成功因素。
+為了管理員工、廠商或臨時員工的身分識別生命週期， [Azure Active Directory （Azure AD）使用者](../app-provisioning/user-provisioning.md)布建服務提供與雲端式人力資源（HR）應用程式的整合。 應用程式的範例包括 Workday 或 SuccessFactors。
 
-Azure AD 使用此集成啟用以下雲 HR 應用程式（應用）工作流：
+Azure AD 使用這項整合來啟用下列雲端 HR 應用程式（應用程式）工作流程：
 
-- **將使用者預配到活動目錄：** 將所選使用者集從雲 HR 應用預配到一個或多個活動目錄域中。
-- **將僅雲使用者預配到 Azure AD：** 在不使用 Active Directory 的情況下，將使用者直接從雲 HR 應用預配到 Azure AD。
-- **寫回雲 HR 應用：** 將 Azure AD 的電子郵件地址和使用者名屬性寫回雲 HR 應用。
+- **將使用者布建到 Active Directory：** 將選取的使用者集合從雲端 HR 應用程式布建到一或多個 Active Directory 網域。
+- **將僅限雲端的使用者布建到 Azure AD：** 在未使用 Active Directory 的情況下，請直接從雲端 HR 應用程式布建使用者，以 Azure AD。
+- **寫回雲端 HR 應用程式：** 將電子郵件地址和使用者名稱屬性從 Azure AD 寫回雲端 HR 應用程式。
 
 > [!NOTE]
-> 此部署計畫演示如何使用 Azure AD 使用者預配部署雲 HR 應用工作流。 有關如何將自動使用者預配部署到軟體即服務 （SaaS） 應用的資訊，請參閱[計畫自動使用者預配部署](https://aka.ms/deploymentplans/provisioning)。
+> 此部署計畫會示範如何使用 Azure AD 的使用者布建來部署您的雲端 HR 應用程式工作流程。 如需如何將自動使用者布建部署至軟體即服務（SaaS）應用程式的相關資訊，請參閱[規劃自動使用者](https://aka.ms/deploymentplans/provisioning)布建部署。
 
-## <a name="enabled-hr-scenarios"></a>啟用 HR 方案
+## <a name="enabled-hr-scenarios"></a>啟用的 HR 案例
 
-Azure AD 使用者預配服務支援以下基於 HR 的身份生命週期管理方案的自動化：
+Azure AD 的使用者布建服務可自動化下列以 HR 為基礎的身分識別生命週期管理案例：
 
-- **新員工招聘：** 將新員工添加到雲 HR 應用時，將自動在 Active Directory 和 Azure AD 中創建使用者帳戶，並可以選擇將電子郵件地址和使用者名屬性寫回雲 HR 應用。
-- **員工屬性和設定檔更新：** 在雲 HR 應用中更新員工記錄（如姓名、職務或經理）時，其使用者帳戶將自動在 Active Directory 和 Azure AD 中更新。
-- **員工解雇：** 當員工在雲 HR 應用中終止時，其使用者帳戶將自動在活動目錄和 Azure AD 中禁用。
-- **員工重新雇用：** 在雲 HR 應用中重新雇用員工時，可以自動重新啟動其舊帳戶或重新預配到活動目錄和 Azure AD。
+- **新員工招聘：** 將新員工新增至雲端 HR 應用程式時，會在 Active Directory 中自動建立使用者帳戶，並使用將電子郵件地址和使用者名稱屬性寫回至雲端 HR 應用程式的選項 Azure AD。
+- **員工屬性和設定檔更新：** 當雲端 HR 應用程式中的員工記錄（例如名稱、標題或管理員）更新時，其使用者帳戶會在 Active Directory 和 Azure AD 中自動更新。
+- **員工終止：** 當員工在雲端 HR 應用程式中終止時，其使用者帳戶會在 Active Directory 和 Azure AD 中自動停用。
+- **Employee rehires：** 當員工在雲端 HR 應用程式中 workday 時，他們的舊帳戶可以自動重新開機或重新布建為 Active Directory 和 Azure AD。
 
-## <a name="who-is-this-integration-best-suited-for"></a>這種集成最適合誰？
+## <a name="who-is-this-integration-best-suited-for"></a>此整合最適合哪一種？
 
-與 Azure AD 使用者預配的雲 HR 應用集成非常適合以下組織：
+雲端 HR 應用程式與 Azure AD 使用者布建整合非常適合下列組織：
 
-- 想要一個用於雲 HR 使用者預配的基於雲的預構建解決方案。
-- 需要從雲 HR 應用直接使用者預配到活動目錄或 Azure AD。
-- 要求使用從雲 HR 應用獲取的資料預配使用者。
-- 要求僅根據雲 HR 應用中檢測到的更改資訊將使用者連接到一個或多個活動目錄林、域和 O。
-- 使用 Office 365 進行電子郵件。
+- 需要雲端 HR 使用者布建的預先建立雲端式解決方案。
+- 需要從雲端 HR 應用程式直接布建使用者，以 Active Directory 或 Azure AD。
+- 需要使用從雲端 HR 應用程式取得的資料來布建使用者。
+- 視雲端 HR 應用程式中偵測到的變更資訊而定，需要加入、移動及讓使用者同步處理一或多個 Active Directory 的樹系、網域和 Ou。
+- 將 Office 365 用於電子郵件。
 
 ## <a name="learn"></a>學習
 
-使用者預配為持續的身份治理奠定了基礎。 它增強了依賴于權威標識資料的業務流程的品質。
+使用者布建會為持續的身分識別治理建立基礎。 它會增強依賴授權身分識別資料的商務程式品質。
 
 ### <a name="terms"></a>詞彙
 
-本文使用以下術語：
+本文使用下列詞彙：
 
-- **源系統**：Azure AD 提供的使用者的存儲庫。 例如雲 HR 應用，如工作日或成功因素。
-- **目標系統**：Azure AD 規定的使用者存儲庫。 示例包括活動目錄、Azure AD、Office 365 或其他 SaaS 應用。
-- **加入者-移動器-離開者流程**：使用雲 HR 應用作為記錄系統，用於新員工、轉移和終止的術語。 當服務成功向目標系統提供必要的屬性時，該過程將完成。
+- **來源系統**： Azure AD 從布建的使用者存放庫。 例如 Workday 或 SuccessFactors 之類的雲端 HR 應用程式。
+- **目標系統**： Azure AD 布建到的使用者存放庫。 範例包括 Active Directory、Azure AD、Office 365 或其他 SaaS 應用程式。
+- **權變-權變流程**：使用雲端 HR 應用程式做為記錄的系統，用於新進員工、轉移及終止的詞彙。 當服務成功將必要的屬性布建到目標系統時，此程式就會完成。
 
 ### <a name="key-benefits"></a>主要權益
 
-這種 HR 驅動的 IT 配置功能提供了以下重大業務優勢：
+這項 HR 驅動的 IT 布建功能提供下列顯著的商業優勢：
 
-- **提高生產率：** 您現在可以自動分配使用者帳戶和 Office 365 許可證，並提供對關鍵組的訪問。 自動化作業使新員工能夠立即訪問他們的工作工具並提高工作效率。
-- **管理風險：** 您可以通過根據員工狀態或組成員身份（資料從雲 HR 應用流入）自動進行更改來提高安全性。 自動更改可確保使用者身份和對關鍵應用的訪問在使用者過渡或離開組織時自動更新。
-- **解決合規性和治理問題：** Azure AD 支援本機稽核記錄，用於由源系統和目標系統的應用執行的使用者預配請求。 通過審核，您可以跟蹤誰可以從單個螢幕訪問應用。
-- **管理成本：** 自動預配通過避免與手動預配相關的效率低下和人為錯誤來降低成本。 它通過使用舊版和過時的平臺，減少了對長期構建的自訂開發的使用者預配解決方案的需求。
+- **提高生產力：** 您現在可以將使用者帳戶和 Office 365 授權的指派自動化，並提供金鑰群組的存取權。 自動指派可讓新進員工立即存取其作業工具並提高生產力。
+- **管理風險：** 您可以使用從雲端 HR 應用程式流入的資料，根據員工狀態或群組成員資格來自動化變更，以提高安全性。 自動化變更可確保使用者身分識別和金鑰應用程式的存取權會在使用者轉換或離開組織時自動更新。
+- **解決規範與治理：** Azure AD 針對來源和目標系統的應用程式所執行的使用者布建要求，支援原生的 audit 記錄。 透過 [審核]，您可以從單一畫面追蹤可存取應用程式的人員。
+- **管理成本：** 自動布建藉由避免與手動布建相關聯的效率和人為錯誤，來降低成本。 藉由使用舊版和過時的平臺，可以減少隨著時間建立的自訂開發使用者布建解決方案的需求。
 
 ### <a name="licensing"></a>授權
 
-要將雲 HR 應用配置為 Azure AD 使用者預配集成，需要有效的[Azure AD 高級許可證](https://azure.microsoft.com/pricing/details/active-directory/)和雲 HR 應用（如工作日或成功因素）的許可證。
+若要將雲端 HR 應用程式設定為 Azure AD 使用者布建整合，您需要有效的[Azure AD Premium 授權](https://azure.microsoft.com/pricing/details/active-directory/)和雲端 HR 應用程式的授權，例如 Workday 或 SuccessFactors。
 
-對於將從雲 HR 應用獲取並預配到活動目錄或 Azure AD 的每個使用者，還需要有效的 Azure AD 高級 P1 或更高訂閱許可證。 雲 HR 應用中擁有的任何不當數量的許可證都可能導致使用者預配過程中的錯誤。
+對於將來自雲端 HR 應用程式並布建到 Active Directory 或 Azure AD 的每個使用者，您也需要有效的 Azure AD Premium P1 或更高的訂用帳戶授權。 在雲端 HR 應用程式中所擁有的任何不正確授權數目，可能會在使用者布建期間導致錯誤。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
-- Azure AD 全域管理員訪問以配置 Azure AD 連接預配代理。
-- 雲 HR 應用的測試和生產實例。
-- 雲 HR 應用中的管理員許可權，用於創建系統集成使用者並更改以測試員工資料以進行測試。
-- 對於使用者預配到活動目錄，運行 Windows Server 2012 或更高版本具有 .NET 4.7.1+ 運行時的伺服器需要承載[Azure AD Connect 預配代理](https://go.microsoft.com/fwlink/?linkid=847801)。
-- [Azure AD 連接](../hybrid/whatis-azure-ad-connect.md)用於在活動目錄和 Azure AD 之間同步使用者。
+- Azure AD 全域管理員存取權來設定 Azure AD Connect 布建代理程式。
+- 雲端 HR 應用程式的測試和實際執行實例。
+- 雲端 HR 應用程式中的系統管理員許可權，用來建立系統整合使用者並進行變更以測試員工資料，以供測試之用。
+- 若要 Active Directory 的使用者布建，必須有執行 Windows Server 2012 或更新版本的伺服器，才能裝載 Azure AD Connect 布建[代理程式](https://go.microsoft.com/fwlink/?linkid=847801)。
+- 在 Active Directory 與 Azure AD 之間同步處理使用者的[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) 。
 
-### <a name="training-resources"></a>培訓資源
+### <a name="training-resources"></a>訓練資源
 
-| **資源** | **連結和說明** |
+| **資源** | **連結和描述** |
 |:-|:-|
-| 影片 | [活動 Azure 目錄中的使用者預配是什麼？](https://youtu.be/_ZjARPpI6NI) |
-| | [如何在活動 Azure 目錄中部署使用者預配](https://youtu.be/pKzyts6kfrw) |
-| 教學課程 | [有關如何將 SaaS 應用與 Azure AD 集成的教程清單](../saas-apps/tutorial-list.md) |
+| 影片 | [Azure Active Directory 中的使用者布建是什麼？](https://youtu.be/_ZjARPpI6NI) |
+| | [如何在 Active Directory 中部署使用者布建](https://youtu.be/pKzyts6kfrw) |
+| 教學課程 | [如何整合 SaaS 應用程式與 Azure AD 的教學課程清單](../saas-apps/tutorial-list.md) |
 | | [教學課程︰設定 Workday 來自動佈建使用者](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 | 常見問題集 | [自動的使用者佈建](../app-provisioning/user-provisioning.md#what-applications-and-systems-can-i-use-with-azure-ad-automatic-user-provisioning) |
-| | [從工作日預配到 Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
+| | [從 Workday 布建至 Azure AD](../saas-apps/workday-inbound-tutorial.md#frequently-asked-questions-faq) |
 
 ### <a name="solution-architecture"></a>方案架構
 
-以下示例描述了常見混合環境的端到端使用者預配解決方案體系結構，包括：
+下列範例說明適用于一般混合式環境的端對端使用者布建解決方案架構，包括：
 
-- **從雲 HR 應用到活動目錄的權威 HR 資料流程。** 在此流中，HR 事件（連接器-移動器-離開者進程）在雲 HR 應用租戶中啟動。 Azure AD 預配服務和 Azure AD 連接預配代理將雲 HR 應用租戶的使用者資料預配到活動目錄。 根據事件，它可能導致在 Active Directory 中創建、更新、啟用和禁用操作。
-- **與 Azure AD 同步，並將電子郵件和使用者名從本地活動目錄寫回雲 HR 應用。** 在活動目錄中更新帳戶後，它將通過 Azure AD 連接與 Azure AD 同步。 電子郵件地址和使用者名屬性可以寫回雲 HR 應用租戶。
+- **從雲端 HR 應用程式到 Active Directory 的授權 HR 資料流程。** 在此流程中，會在雲端 HR 應用程式租使用者中起始 HR 事件（權變-權變進程）。 Azure AD 的布建服務和 Azure AD Connect 布建代理程式會將雲端 HR 應用程式租使用者中的使用者資料提供給 Active Directory。 視事件而定，它可能會導致在 Active Directory 中建立、更新、啟用和停用作業。
+- **與 Azure AD 同步處理，並將內部部署 Active Directory 的電子郵件和使用者名稱寫回雲端 HR 應用程式。** Active Directory 中的帳戶更新之後，就會透過 Azure AD Connect 與 Azure AD 同步。 [電子郵件地址] 和 [使用者名稱] 屬性可以回寫到雲端 HR 應用程式租使用者。
 
 ![Workflow diagram](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img1.png)
 
-#### <a name="description-of-workflow"></a>工作流描述
+#### <a name="description-of-workflow"></a>工作流程的描述
 
-下圖中指明瞭以下關鍵步驟：  
+下列主要步驟會在圖表中顯示：  
 
-1. **HR 團隊**在雲 HR 應用租戶中執行事務。
-2. **Azure AD 預配服務**從雲 HR 應用租戶運行計畫週期，並標識需要處理的更改才能與 Active Directory 同步。
-3. **Azure AD 預配服務**調用 Azure AD Connect 預配代理，其請求有效負載包含活動目錄帳戶創建、更新、啟用和禁用操作。
-4. **Azure AD 連接預配代理**使用服務帳戶來管理活動目錄帳戶資料。
-5. **Azure AD 連接**運行增量[同步](../hybrid/how-to-connect-sync-whatis.md)以在活動目錄中提取更新。
-6. **活動目錄**更新與 Azure AD 同步。
-7. **Azure AD 預配服務**將電子郵件屬性和使用者名從 Azure AD 寫入雲 HR 應用租戶。
+1. **Hr 小組**會在雲端 hr 應用程式租使用者中執行交易。
+2. **Azure AD**布建服務會從雲端 HR 應用程式租使用者執行排程週期，並識別需要處理以與 Active Directory 同步的變更。
+3. **Azure AD**布建服務會使用包含 Active Directory 帳戶建立、更新、啟用和停用作業的要求承載，叫用 Azure AD Connect 布建代理程式。
+4. **Azure AD Connect 布建代理程式**會使用服務帳戶來管理 Active Directory 帳戶資料。
+5. **Azure AD Connect**會執行差異[同步](../hybrid/how-to-connect-sync-whatis.md)處理，以 Active Directory 中提取更新。
+6. **Active Directory**更新會與 Azure AD 同步處理。
+7. **Azure AD**布建服務會將電子郵件屬性和使用者名稱從 Azure AD 備份到雲端 HR 應用程式租使用者。
 
 ## <a name="plan-the-deployment-project"></a>規劃部署專案
 
-在確定環境中此部署的策略時，請考慮組織需求。
+當您在環境中判斷此部署的策略時，請考慮您的組織需求。
 
-### <a name="engage-the-right-stakeholders"></a>讓合適的利益相關者參與進來
+### <a name="engage-the-right-stakeholders"></a>參與適當的專案關係人
 
-當技術專案失敗時，它們通常是由於對影響、結果和責任的期望不匹配而達到這一要求。 為了避免這些陷阱[，請確保您與合適的利益相關者接洽](https://aka.ms/deploymentplans)。 還要確保專案中的利益相關者角色得到充分理解。 記錄利益相關者及其專案投入和責任。
+當技術專案失敗時，他們通常會原因，以不符合影響、結果和責任的預期。 若要避免這些錯誤，請[確定您參與的是正確的專案關係人](https://aka.ms/deploymentplans)。 也請確定專案中的專案關係人角色已充分瞭解。 記錄專案關係人及其專案的輸入和標準責任。
 
-包括人力資源組織的代表，他可以就現有 HR 業務流程和員工身份以及作業資料處理要求提供意見。
+包含 HR 組織的代表，可以提供現有 HR 商務程式和背景工作角色身分識別的輸入，以及工作資料處理需求。
 
-### <a name="plan-communications"></a>規劃通訊
+### <a name="plan-communications"></a>規劃溝通
 
-溝通對於任何新服務的成功都至關重要。 主動與使用者溝通，瞭解其體驗何時和如何變化。 讓他們知道，如果他們遇到問題，如何獲得支援。
+通訊對於任何新服務的成功非常重要。 與您的使用者主動溝通其體驗的時機與方式。 當他們遇到問題時，讓他們知道如何取得支援。
 
-### <a name="plan-a-pilot"></a>規劃試點
+### <a name="plan-a-pilot"></a>規劃試驗
 
-將 HR 業務流程和身份工作流從雲 HR 應用集成到目標系統需要大量資料驗證、資料轉換、資料清理和端到端測試，然後才能將解決方案部署到生產中。
+將 HR business process 和身分識別工作流程從雲端 HR 應用程式整合到目標系統需要進行大量的資料驗證、資料轉換、資料清理和端對端測試，才能將解決方案部署到生產環境。
 
-在將初始配置擴展到生產中的所有使用者之前，在[試驗環境中](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot)運行初始配置。
+請先在[試驗環境](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot)中執行初始設定，然後再將其調整為生產環境中的所有使用者。
 
-## <a name="select-cloud-hr-provisioning-connector-apps"></a>選擇雲 HR 預配連接器應用
+## <a name="select-cloud-hr-provisioning-connector-apps"></a>選取雲端 HR 布建連接器應用程式
 
-為了方便 Azure AD 預配雲 HR 應用和活動目錄之間的工作流，可以從 Azure AD 應用庫中添加多個預配連接器應用：
+若要協助 Azure AD 在雲端 HR 應用程式與 Active Directory 之間布建工作流程，您可以從 Azure AD 應用程式資源庫新增多個布建連接器應用程式：
 
-- **雲 HR 應用到活動目錄使用者預配**：此預配連接器應用有助於將使用者帳戶從雲 HR 應用預配到單個活動目錄域。 如果您擁有多個網域，則可以針對要進行佈建的每個 Active Directory 網域，從 Azure AD 應用程式庫新增此應用程式的執行個體。
-- **雲 HR 應用到 Azure AD 使用者預配**：雖然 Azure AD 連接是應該用於將 Active Directory 使用者同步到 Azure AD 的工具，但此預配連接器應用可用於促進將僅雲使用者從雲 HR 應用預配到單個 Azure AD 租戶。
-- **雲 HR 應用寫回**：此預配連接器應用便於將使用者的電子郵件地址從 Azure AD 寫回雲 HR 應用。
+- **雲端 hr 應用程式可 Active Directory 使用者**布建：此布建連接器應用程式可協助將使用者帳戶從雲端 HR 應用程式布建到單一 Active Directory 網域。 如果您擁有多個網域，則可以針對要進行佈建的每個 Active Directory 網域，從 Azure AD 應用程式庫新增此應用程式的執行個體。
+- **雲端 hr 應用程式可 Azure AD 使用者**布建：雖然 Azure AD Connect 是應該用來同步處理 Active Directory 使用者與 Azure AD 的工具，但此布建連接器應用程式可用來協助將雲端 HR 應用程式的僅限雲端使用者布建至單一 Azure AD 租使用者。
+- **雲端 HR 應用程式寫回**：此布建連接器應用程式可協助將使用者的電子郵件地址回寫，從 Azure AD 到雲端 hr 應用程式。
 
-例如，下圖列出了 Azure AD 應用庫中可用的工日連接器應用。
+例如，下圖列出 Azure AD 應用程式庫中可用的 Workday 連接器應用程式。
 
-![Azure 活動目錄門戶應用庫](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img2.png)
+![Azure Active Directory 入口網站應用程式庫](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img2.png)
 
-### <a name="decision-flow-chart"></a>決策流程圖
+### <a name="decision-flow-chart"></a>決策流程圖表
 
-使用以下決策流程圖確定哪些雲 HR 預配應用與您的方案相關。
+使用下列決策流程圖表來識別哪些雲端 HR 布建應用程式與您的案例相關。
 
-![決策流程圖](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img3.png)
+![決策流程圖表](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img3.png)
 
-## <a name="design-the-azure-ad-connect-provisioning-agent-deployment-topology"></a>設計 Azure AD 連接預配代理部署拓撲
+## <a name="design-the-azure-ad-connect-provisioning-agent-deployment-topology"></a>設計 Azure AD Connect 布建代理程式部署拓撲
 
-雲 HR 應用和活動目錄之間的預配集成需要四個元件：
+雲端 HR 應用程式和 Active Directory 之間的布建整合需要四個元件：
 
-- 雲 HR 應用租戶
-- 預配連接器應用
-- Azure AD 連接預配代理
+- 雲端 HR 應用程式租使用者
+- 布建連接器應用程式
+- Azure AD Connect 布建代理程式
 - Active Directory 網域
 
-Azure AD Connect 預配代理部署拓撲取決於計畫集成的雲 HR 應用租戶和活動目錄子域的數量。 如果您有多個活動目錄域，則取決於活動目錄域是連續的還是[不相聯的](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)。
+Azure AD Connect 布建代理程式部署拓撲取決於您打算整合的雲端 HR 應用程式租使用者和 Active Directory 子域數目。 如果您有多個 Active Directory 網域，則取決於 Active Directory 網域是[連續或相鄰](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)的。
 
-根據您的決策，選擇其中一種部署方案：
+根據您的決定，選擇其中一個部署案例：
 
-- 單個雲 HR 應用租戶 ->目標信任樹系中的單個或多個活動目錄子域
-- 單雲 HR 應用租戶 - >在不相交的活動目錄林中定位多個子域
+- 單一雲端 HR 應用程式租使用者-> 以受信任樹系中的單一或多個 Active Directory 子域為目標
+- 單一雲端 HR 應用程式租使用者-> 在脫離的 Active Directory 樹系中，以多個子域為目標
 
-### <a name="single-cloud-hr-app-tenant---target-single-or-multiple-active-directory-child-domains-in-a-trusted-forest"></a>單個雲 HR 應用租戶 ->目標信任樹系中的單個或多個活動目錄子域
+### <a name="single-cloud-hr-app-tenant---target-single-or-multiple-active-directory-child-domains-in-a-trusted-forest"></a>單一雲端 HR 應用程式租使用者-> 以受信任樹系中的單一或多個 Active Directory 子域為目標
 
-我們建議使用以下生產配置：
-
-|需求|建議|
-|:-|:-|
-|要部署的 Azure AD 連接預配代理數|兩個（用於高可用性和容錯移轉）
-|要配置的預配連接器應用數|每個子域一個應用|
-|Azure AD 連接預配代理的伺服器主機|Windows 2012 R2+ 具有定位活動目錄網域控制站的視線</br>可與 Azure AD 連接服務共存|
-
-![流向本地代理](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img4.png)
-
-### <a name="single-cloud-hr-app-tenant---target-multiple-child-domains-in-a-disjoint-active-directory-forest"></a>單雲 HR 應用租戶 - >在不相交的活動目錄林中定位多個子域
-
-此方案涉及將使用者從雲 HR 應用預配到不相交的活動目錄林中的域。
-
-我們建議使用以下生產配置：
+我們建議您執行下列生產環境設定：
 
 |需求|建議|
 |:-|:-|
-|要在本地部署的 Azure AD 連接預配代理數|每個不交合一的原始目錄林兩個|
-|要配置的預配連接器應用數|每個子域一個應用|
-|Azure AD 連接預配代理的伺服器主機|Windows 2012 R2+ 具有定位活動目錄網域控制站的視線</br>可與 Azure AD 連接服務共存|
+|要部署的 Azure AD Connect 布建代理程式數目|二（適用于高可用性和容錯移轉）
+|要設定的布建連接器應用程式數目|每個子網域一個應用程式|
+|Azure AD Connect 布建代理程式的伺服器主機|Windows 2012 R2 + 提供地理位置 Active Directory 網域控制站的視線</br>可以與 Azure AD Connect 服務並存|
 
-![單雲 HR 應用租戶不交對的活動目錄林](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img5.png)
+![流向內部部署代理程式](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img4.png)
 
-### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Azure AD 連接預配代理要求
+### <a name="single-cloud-hr-app-tenant---target-multiple-child-domains-in-a-disjoint-active-directory-forest"></a>單一雲端 HR 應用程式租使用者-> 在脫離的 Active Directory 樹系中，以多個子域為目標
 
-雲 HR 應用到 Active Directory 使用者預配解決方案要求您在運行 Windows 2012 R2 或更高版本的伺服器上部署一個或多個 Azure AD Connect 預配代理。 伺服器必須至少具有 4 GB RAM 和 .NET 4.7.1+ 運行時。 確保主機伺服器具有對目標活動目錄域的網路存取權限。
+此案例牽涉到將使用者從雲端 HR 應用程式布建到脫離的 Active Directory 樹系中的網域。
 
-要準備本地環境，Azure AD Connect 預配代理設定精靈將代理註冊到 Azure AD 租戶，[打開端口](../manage-apps/application-proxy-add-on-premises-application.md#open-ports)，[允許訪問 URL，](../manage-apps/application-proxy-add-on-premises-application.md#allow-access-to-urls)並支援[出站 HTTPS 代理配置](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)。
+我們建議您執行下列生產環境設定：
 
-預配代理使用服務帳戶與活動目錄域通信。 在安裝代理之前，請在 Active Directory 使用者和電腦中創建滿足以下要求的服務帳戶：
+|需求|建議|
+|:-|:-|
+|要部署在內部部署的 Azure AD Connect 布建代理程式數目|每個脫離的 Active Directory 樹系|
+|要設定的布建連接器應用程式數目|每個子網域一個應用程式|
+|Azure AD Connect 布建代理程式的伺服器主機|Windows 2012 R2 + 提供地理位置 Active Directory 網域控制站的視線</br>可以與 Azure AD Connect 服務並存|
 
-- 不會過期的密碼
-- 委派的讀取、創建、刪除和管理使用者帳戶的控制項許可權
+![單一雲端 HR 應用程式租使用者不相鄰 Active Directory 樹系](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img5.png)
 
-您可以選擇應處理預配請求的網域控制站。 如果您有多個地理分佈的網域控制站，請與首選網域控制站在同一網站中安裝預配代理。 這種定位提高了端到端解決方案的可靠性和性能。
+### <a name="azure-ad-connect-provisioning-agent-requirements"></a>Azure AD Connect 布建代理程式需求
 
-為獲得高可用性，可以部署多個 Azure AD Connect 預配代理。 註冊代理以處理同一組本地活動目錄域。
+若要 Active Directory 使用者布建解決方案的雲端 HR 應用程式，您必須在執行 Windows 2012 R2 或更新版本的伺服器上部署一或多個 Azure AD Connect 布建代理程式。 伺服器必須至少有 4 GB RAM 和 .NET 4.7.1 + 執行時間。 確定主機伺服器具有目標 Active Directory 網域的網路存取權。
+
+為了準備內部部署環境，Azure AD Connect 布建代理程式設定 wizard 會向您的 Azure AD 租使用者註冊代理程式、[開啟埠](../manage-apps/application-proxy-add-on-premises-application.md#open-ports)、[允許存取 url](../manage-apps/application-proxy-add-on-premises-application.md#allow-access-to-urls)，並支援[輸出 HTTPS proxy](../saas-apps/workday-inbound-tutorial.md#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)設定。
+
+布建代理程式會使用服務帳戶來與 Active Directory 網域進行通訊。 安裝代理程式之前，請在符合下列需求的 Active Directory 使用者和電腦中建立服務帳戶：
+
+- 未過期的密碼
+- 委派控制許可權以讀取、建立、刪除及管理使用者帳戶
+
+您可以選取應處理布建要求的網域控制站。 如果您有數個地理位置分散的網域控制站，請在與您慣用的網域控制站相同的網站中安裝布建代理程式。 此定位可改善端對端解決方案的可靠性和效能。
+
+為了達到高可用性，您可以部署多個 Azure AD Connect 布建代理程式。 註冊代理程式，以處理同一組內部部署 Active Directory 網域。
 
 ## <a name="plan-scoping-filters-and-attribute-mapping"></a>規劃範圍篩選器和屬性對應
 
-當您啟用從雲 HR 應用到活動目錄或 Azure AD 的預配時，Azure 門戶將通過屬性對應控制屬性值。
+當您啟用從雲端 HR 應用程式布建至 Active Directory 或 Azure AD 時，Azure 入口網站會透過屬性對應控制屬性值。
 
 ### <a name="define-scoping-filters"></a>定義範圍篩選器
 
-使用[範圍篩選器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)定義基於屬性的規則，這些規則確定應從雲 HR 應用預配到活動目錄或 Azure AD 的使用者。
+使用[範圍篩選器](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)來定義以屬性為基礎的規則，以決定哪些使用者應該從雲端 HR 應用程式布建到 Active Directory 或 Azure AD。
 
-啟動聯接器進程時，收集以下要求：
+當您起始權變流程時，請收集下列需求：
 
-- 雲 HR 應用是否用於引入員工和臨時員工？
-- 您是否計畫將雲 HR 應用用於 Azure AD 使用者預配來管理員工和臨時工作人員？
-- 您是否計畫僅為雲 HR 應用使用者的子集向 Azure AD 使用者預配雲 HR 應用？ 例如，員工可能只有員工。
+- 雲端 HR 應用程式是用來將員工和臨時員工帶進面板嗎？
+- 您是否計畫使用雲端 HR 應用程式來 Azure AD 使用者布建，以同時管理員工和臨時員工？
+- 您是否計畫推出雲端 HR 應用程式，只針對雲端 HR 應用程式使用者的子集 Azure AD 使用者布建？ 範例可能僅限員工。
 
-根據您的要求，在配置屬性對應時，可以設置 **"源物件範圍"** 欄位，以選擇雲 HR 應用中哪些使用者集應位於預配到活動目錄的範圍內。 有關詳細資訊，請參閱雲 HR 應用教程，瞭解常用的範圍篩選器。
+視您的需求而定，當您設定屬性對應時，可以設定 [**來源物件範圍**] 欄位，以選取雲端 HR 應用程式中的哪些使用者集合應該在布建到 Active Directory 的範圍內。 如需詳細資訊，請參閱雲端 HR 應用程式教學課程，以瞭解常用的範圍篩選器。
 
-### <a name="determine-matching-attributes"></a>確定匹配屬性
+### <a name="determine-matching-attributes"></a>判斷相符的屬性
 
-通過預配，您可以匹配源系統和目標系統之間的現有帳戶。 將雲 HR 應用與 Azure AD 預配服務集成時，可以[配置屬性對應](../app-provisioning/configure-automatic-user-provisioning-portal.md#mappings)以確定應從雲 HR 應用流向活動目錄或 Azure AD 的使用者資料。
+有了布建，您就能夠比對來源與目標系統之間的現有帳戶。 當您將雲端 HR 應用程式與 Azure AD 布建服務整合時，您可以[設定屬性對應](../app-provisioning/configure-automatic-user-provisioning-portal.md#mappings)，以判斷哪些使用者資料應該從雲端 HR 應用程式傳送到 Active Directory 或 Azure AD。
 
-啟動聯接器進程時，收集以下要求：
+當您起始權變流程時，請收集下列需求：
 
-- 此雲 HR 應用中用於標識每個使用者的唯一 ID 是什麼？
-- 從身份生命週期的角度來看，如何處理重新雇用？ 重新雇用員工保留其舊員工 ID 嗎？
-- 您是否處理未來雇傭關係並提前為其創建活動目錄帳戶？
-- 從身份生命週期的角度來看，您如何處理員工向臨時員工轉換，或者以其他方式？
-- 轉換後的使用者是否保留其舊的活動目錄帳戶，或者他們是否獲得新的活動目錄帳戶？
+- 此雲端 HR 應用程式中用來識別每個使用者的唯一識別碼為何？
+- 從身分識別生命週期的觀點來看，您要如何處理 rehires？ Rehires 要保留舊的員工識別碼嗎？
+- 您是否處理未來的員工，並事先為他們建立 Active Directory 帳戶？
+- 從身分識別生命週期的觀點來看，您要如何處理員工來進行背景工作的轉換，否則呢？
+- 轉換後的使用者是否保留舊的 Active Directory 帳戶，或是否取得新的帳戶？
 
-根據您的要求，Azure AD 支援通過為屬性對應提供常量值或[寫入運算式，](../app-provisioning/functions-for-customizing-application-data.md)支援直接的屬性到屬性對應。 這種靈活性使您能夠最終控制目標應用屬性中填充的內容。 您可以使用 Microsoft[圖形 API](../app-provisioning/export-import-provisioning-configuration.md)和圖形資源管理器將使用者預配屬性對應和架構匯出到 JSON 檔並將其導入 Azure AD。
+視您的需求而定，Azure AD 藉由提供常數值或[撰寫屬性對應的運算式](../app-provisioning/functions-for-customizing-application-data.md)，支援直接屬性與屬性的對應。 這項彈性可讓您最終控制已在目標應用程式屬性中填入的內容。 您可以使用[MICROSOFT GRAPH API](../app-provisioning/export-import-provisioning-configuration.md)和 Graph Explorer，將使用者布建屬性對應和架構匯出至 JSON 檔案，並將其匯入回 Azure AD。
 
-預設情況下，雲 HR 應用中表示唯一員工 ID 的屬性用作映射到 Active Directory*中的唯一屬性的*匹配屬性。 例如，在工作日應用方案中，**工作日****工作 ID**屬性對應到活動目錄**員工 ID**屬性。
+根據預設，雲端 HR 應用程式中代表唯一員工識別碼的屬性，會用來做為對應*至 Active Directory 中唯一屬性*的比對屬性。 例如，在 Workday 應用程式案例中， **workday** **WorkerID**屬性會對應至 Active Directory 的「**員工**」屬性。
 
-您可以設置多個匹配屬性並分配匹配優先順序。 它們按匹配優先順序進行評估。 只要找到相符項目，便不會評估進一步比對屬性。
+您可以設定多個相符的屬性，並指派相符的優先順序。 它們會根據比對優先順序進行評估。 只要找到相符項目，便不會評估進一步比對屬性。
 
-還可以[自訂預設屬性映射](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)，例如更改或刪除現有屬性對應。 您還可以根據業務需求創建新的屬性對應。 有關詳細資訊，請參閱雲 HR 應用教程（如[工作日](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)），瞭解要映射的自訂屬性的清單。
+您也可以[自訂預設的屬性](../app-provisioning/customize-application-attributes.md#understanding-attribute-mapping-types)對應，例如變更或刪除現有的屬性對應。 您也可以根據您的業務需求建立新的屬性對應。 如需詳細資訊，請參閱雲端 HR 應用程式教學課程（例如[Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)），以取得要對應的自訂屬性清單。
 
-### <a name="determine-user-account-status"></a>確定使用者帳戶狀態
+### <a name="determine-user-account-status"></a>判斷使用者帳戶狀態
 
-預設情況下，預配連接器應用將 HR 使用者設定檔狀態映射到 Active Directory 或 Azure AD 中的使用者帳戶狀態，以確定是啟用還是禁用使用者帳戶。
+根據預設，布建連接器應用程式會將 HR 使用者設定檔狀態對應到 Active Directory 或 Azure AD 中的使用者帳戶狀態，以決定是否要啟用或停用使用者帳戶。
 
-啟動"加入者-離開者"進程時，請收集以下要求。
-
-| Process | 需求 |
-| - | - |
-| **聯接器** | 從身份生命週期的角度來看，如何處理重新雇用？ 重新雇用員工保留其舊員工 ID 嗎？ |
-| | 您是否處理未來雇傭關係並提前為其創建活動目錄帳戶？ 這些帳戶是在啟用或禁用狀態下創建的？ |
-| | 從身份生命週期的角度來看，您如何處理員工向臨時員工轉換，或者以其他方式？ |
-| | 轉換後的使用者是否保留其舊的活動目錄帳戶，或者他們是否獲得新的活動目錄帳戶？ |
-| **畢業生** | 在 Active Directory 中，員工和臨時工作人員的解雇處理方式是否不同？ |
-| | 處理使用者終止時考慮生效日期是什麼？ |
-| | 員工和臨時工作人員轉換如何影響現有的活動目錄帳戶？ |
-| | 如何在活動目錄中處理"撤銷"操作？ 如果在"已加入者"流程的一部分在 Active Directory 中創建將來的日期雇用，則需要處理撤銷操作。 |
-
-根據您的要求，可以使用[Azure AD 運算式](../app-provisioning/functions-for-customizing-application-data.md)自訂映射邏輯，以便根據資料點的組合啟用或禁用 Active Directory 帳戶。
-
-### <a name="map-cloud-hr-app-to-active-directory-user-attributes"></a>將雲 HR 應用映射到活動目錄使用者屬性
-
-每個雲 HR 應用都附帶預設雲 HR 應用到活動目錄映射。
-
-啟動"連接者-移動器-離開者"進程時，請收集以下要求。
+當您起始權變-權變進程時，請收集下列需求。
 
 | Process | 需求 |
 | - | - |
-| **聯接器** | 活動目錄帳戶創建過程是手動、自動化還是部分自動化？ |
-| | 您是否計畫將自訂屬性從雲 HR 應用傳播到活動目錄？ |
-| **搬運工** | 每當雲 HR 應用中發生移動器操作時，您希望處理哪些屬性？ |
-| | 在使用者更新時，您是否執行任何特定的屬性驗證？ 如果是，請提供詳細資訊。 |
-| **畢業生** | 在 Active Directory 中，員工和臨時工作人員的解雇處理方式是否不同？ |
-| | 處理使用者終止時考慮生效日期是什麼？ |
-| | 員工和臨時工作人員轉換如何影響現有的活動目錄帳戶？ |
+| **權變** | 從身分識別生命週期的觀點來看，您要如何處理 rehires？ Rehires 要保留舊的員工識別碼嗎？ |
+| | 您是否處理未來的員工，並事先為他們建立 Active Directory 帳戶？ 這些帳戶是以已啟用或已停用狀態建立的嗎？ |
+| | 從身分識別生命週期的觀點來看，您要如何處理員工來進行背景工作的轉換，否則呢？ |
+| | 轉換後的使用者是否保留舊的 Active Directory 帳戶，或是否取得新的帳戶？ |
+| **權變** | 終止是否會以不同的方式處理 Active Directory 中的員工和臨時背景工作角色？ |
+| | 處理使用者終止時，會考慮哪些有效日期？ |
+| | 員工和臨時的背景工作轉換如何影響現有的 Active Directory 帳戶？ |
+| | 如何處理 Active Directory 中的 Rescind 作業？ 如果在 Active Directory 中建立了未來日期的員工，做為加入程式的一部分，則需要處理 Rescind 作業。 |
 
-根據您的要求，您可以修改映射以滿足您的集成目標。 有關詳細資訊，請參閱特定的雲 HR 應用教程（如[工作日](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)），瞭解要映射的自訂屬性的清單。
+根據您的需求，您可以使用[Azure AD 運算式](../app-provisioning/functions-for-customizing-application-data.md)來自訂對應邏輯，以便根據資料點的組合來啟用或停用 Active Directory 帳戶。
 
-### <a name="generate-a-unique-attribute-value"></a>生成唯一的屬性值
+### <a name="map-cloud-hr-app-to-active-directory-user-attributes"></a>將雲端 HR 應用程式對應至 Active Directory 的使用者屬性
 
-啟動聯接器進程時，在設置具有唯一約束的 CN、samAccountName 和 UPN 等屬性時，可能需要生成唯一的屬性值。
+每個雲端 HR 應用程式都會隨附預設的雲端 HR 應用程式，以 Active Directory 對應。
 
-Azure AD 函數["選擇唯一值](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue)"計算每個規則，然後檢查生成的值，以檢查目標系統中的唯一性。 例如，請參閱[為使用者主體名稱 （UPN） 屬性生成唯一值](../app-provisioning/functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute)。
+當您起始權變-權變進程時，請收集下列需求。
+
+| Process | 需求 |
+| - | - |
+| **權變** | Active Directory 帳戶建立程式是手動、自動化或部分自動化的嗎？ |
+| | 您是否計畫將自訂屬性從雲端 HR 應用程式傳播至 Active Directory？ |
+| **知名** | 每當在雲端 HR 應用程式中進行移動器作業時，您要處理哪些屬性？ |
+| | 您是否在使用者更新時執行任何特定的屬性驗證？ 如果是，請提供詳細資料。 |
+| **權變** | 終止是否會以不同的方式處理 Active Directory 中的員工和臨時背景工作角色？ |
+| | 處理使用者終止時，會考慮哪些有效日期？ |
+| | 員工和臨時的背景工作轉換如何影響現有的 Active Directory 帳戶？ |
+
+視您的需求而定，您可以修改對應以符合您的整合目標。 如需詳細資訊，請參閱特定的雲端 HR 應用程式教學課程（例如[Workday](../saas-apps/workday-inbound-tutorial.md#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)），以取得要對應的自訂屬性清單。
+
+### <a name="generate-a-unique-attribute-value"></a>產生唯一的屬性值
+
+當您起始權變流程時，您可能需要在設定具有唯一條件約束的屬性（例如 CN、samAccountName 和 UPN）時產生唯一的屬性值。
+
+Azure AD 函數[SelectUniqueValues](../app-provisioning/functions-for-customizing-application-data.md#selectuniquevalue)會評估每個規則，然後檢查在目標系統中為唯一性而產生的值。 如需範例，請參閱[產生 userPrincipalName （UPN）屬性的唯一值](../app-provisioning/functions-for-customizing-application-data.md#generate-unique-value-for-userprincipalname-upn-attribute)。
 
 > [!NOTE]
-> 當前僅支援"工作日到活動目錄"使用者預配此功能。 它不能與其他預配應用一起使用。
+> 此函式目前僅支援 Workday 來 Active Directory 使用者布建。 它不能與其他布建應用程式搭配使用。
 
-### <a name="configure-active-directory-ou-container-assignment"></a>配置活動目錄 OU 容器分配
+### <a name="configure-active-directory-ou-container-assignment"></a>設定 Active Directory OU 容器指派
 
-根據營業單位、位置和部門將 Active Directory 使用者帳戶放入容器中是一項常見要求。 啟動移動器進程時，如果監督組織發生更改，則可能需要在 Active Directory 中將使用者從一個 OU 移動到另一個 OU。
+根據業務單位、位置和部門，將 Active Directory 的使用者帳戶放入容器中是常見的需求。 當您起始移動程式程式，而且如果有監督的組織變更時，您可能需要在 Active Directory 中，將使用者從一個 OU 移至另一個。
 
-使用[Switch（）](../app-provisioning/functions-for-customizing-application-data.md#switch)函數配置 OU 分配的業務邏輯，並將其映射到活動目錄屬性**父分母名稱**。
+使用[Switch （）](../app-provisioning/functions-for-customizing-application-data.md#switch)函數來設定 OU 指派的商務邏輯，並將其對應至 Active Directory 屬性**parentDistinguishedName**。
 
-例如，如果要根據 HR 屬性 **"市政"** 在 OU 中創建使用者，則可以使用以下運算式：
+例如，如果您想要根據 HR 屬性**Municipality**在 OU 中建立使用者，您可以使用下列運算式：
 
 `
 Switch([Municipality], "OU=Default,OU=Users,DC=contoso,DC=com", "Dallas", "OU=Dallas,OU=Users,DC=contoso,DC=com", "Austin", "OU=Austin,OU=Users,DC=contoso,DC=com", "Seattle", "OU=Seattle,OU=Users,DC=contoso,DC=com", "London", "OU=London,OU=Users,DC=contoso,DC=com")
 `
 
-使用此運算式，如果市政值為達拉斯、奧斯丁、西雅圖或倫敦，則使用者帳戶將在相應的 OU 中創建。 如果沒有匹配項，則在預設 OU 中創建該帳戶。
+使用此運算式時，如果 Municipality 值為達拉斯、奧斯丁、西雅圖或倫敦，則會在對應的 OU 中建立使用者帳戶。 如果沒有相符的值，則會在預設 OU 中建立帳戶。
 
-## <a name="plan-for-password-delivery-of-new-user-accounts"></a>計畫新使用者帳戶的密碼傳遞
+## <a name="plan-for-password-delivery-of-new-user-accounts"></a>新使用者帳戶的密碼傳遞規劃
 
-啟動 Joiners 進程時，需要設置並傳遞新使用者帳戶的臨時密碼。 借助雲 HR 到 Azure AD 使用者預配，您可以在第一天為使用者推出 Azure AD[自助服務密碼重設](../authentication/quickstart-sspr.md)（SSPR） 功能。
+當您起始權變流程時，您需要設定並傳遞新使用者帳戶的暫時密碼。 使用雲端 HR Azure AD 使用者布建，您可以在第一天為使用者推出 Azure AD 的[自助式密碼重設](../authentication/quickstart-sspr.md)（SSPR）功能。
 
-SSPR 是 IT 管理員使使用者能夠重置密碼或解鎖帳戶的簡單方法。 您可以將**移動號碼**屬性從雲 HR 應用預配到活動目錄，並將其與 Azure AD 同步。 **移動號碼**屬性位於 Azure AD 中後，可以為使用者帳戶啟用 SSPR。 然後在第一天，新使用者可以使用已註冊和驗證的手機號碼進行身份驗證。
+SSPR 是一種簡單的方法，可讓 IT 系統管理員用來重設其密碼或解除鎖定其帳戶。 您可以從雲端 HR 應用程式布建 [**行動電話號碼**] 屬性，以 Active Directory，並將其與 Azure AD 同步處理。 [**行動電話號碼**] 屬性在 Azure AD 之後，您就可以啟用使用者帳戶的 SSPR。 然後，在第一天，新的使用者可以使用已註冊和已驗證的行動電話號碼進行驗證。
 
-## <a name="plan-for-initial-cycle"></a>計畫初始週期
+## <a name="plan-for-initial-cycle"></a>規劃初始週期
 
-首次運行 Azure AD 預配服務時，它會針對雲 HR 應用執行[初始週期](../app-provisioning/how-provisioning-works.md#initial-cycle)，以創建雲 HR 應用中所有使用者物件的快照。 初始週期所佔用的時間直接取決於源系統中有多少使用者。 對於具有 100，000 多個使用者的雲 HR 應用租戶而言，初始週期可能需要很長時間。
+當 Azure AD 布建服務第一次執行時，它會對雲端 HR 應用程式執行[初始迴圈](../app-provisioning/how-provisioning-works.md#initial-cycle)，以建立雲端 hr 應用程式中所有使用者物件的快照集。 初始週期所花費的時間，會直接取決於來源系統中有多少使用者。 有些雲端 HR 應用程式租使用者的初始週期若有超過100000個使用者，可能需要很長的時間。
 
-**對於大型雲 HR 應用租戶（>30，000 個使用者），** 在逐步階段運行初始週期。 僅在驗證在 Active Directory 中為不同的使用者預配方案設置了正確的屬性後，才能啟動增量更新。 按照此處的順序操作。
+**針對大型雲端 HR 應用程式租使用者（>30000 使用者），請**在漸進階段執行初始迴圈。 只有在您驗證是否已在不同的使用者布建案例 Active Directory 中設定正確的屬性之後，才啟動累加式更新。 遵循這裡的順序。
 
-1. 通過設置[範圍篩選器](#plan-scoping-filters-and-attribute-mapping)，僅為有限的使用者組運行初始週期。
-2. 驗證活動目錄帳戶預配和為首次運行選定的使用者設置的屬性值。 如果結果符合您的預期，請展開範圍篩選器以逐步包括更多使用者，並驗證第二次運行的結果。
+1. 藉由設定[範圍篩選器](#plan-scoping-filters-and-attribute-mapping)，只針對一組有限的使用者執行初始迴圈。
+2. 確認 Active Directory 帳戶布建，以及為第一次執行選取的使用者設定的屬性值。 如果結果符合您的預期，請展開 [範圍] 篩選器，以漸進方式包含更多使用者，並確認第二次執行的結果。
 
-對測試使用者的初始週期的結果感到滿意後，啟動[增量更新](../app-provisioning/how-provisioning-works.md#incremental-cycles)。
+當您滿意測試使用者的初始週期結果之後，請啟動累加[式更新](../app-provisioning/how-provisioning-works.md#incremental-cycles)。
 
-## <a name="plan-testing-and-security"></a>計畫測試和安全
+## <a name="plan-testing-and-security"></a>規劃測試和安全性
 
-在部署的每個階段，從初始試驗到啟用使用者預配，確保測試結果與預期結果一樣，並審核預配週期。
+在您部署的每個階段，透過啟用使用者布建來進行初始試驗，請確定您正在測試結果是否如預期般，並會審核布建週期。
 
-### <a name="plan-testing"></a>計畫測試
+### <a name="plan-testing"></a>規劃測試
 
-將雲 HR 應用配置為 Azure AD 使用者預配後，請運行測試案例以驗證此解決方案是否符合組織的要求。
+設定雲端 HR 應用程式以 Azure AD 使用者布建之後，請執行測試案例，以確認此解決方案是否符合您組織的需求。
 
 |案例|預期的結果|
 |:-|:-|
-|新員工在雲 HR 應用中被雇用。| - 使用者帳戶預配在活動目錄中。</br>- 使用者可以登錄到活動目錄域應用並執行所需的操作。</br>- 如果配置了 Azure AD 連接同步，則還會在 Azure AD 中創建使用者帳戶。
-|使用者在雲 HR 應用中終止。|- 在活動目錄中禁用使用者帳戶。</br>- 使用者無法登錄到受活動目錄保護的任何企業應用。
-|使用者監督組織在雲 HR 應用程式中更新。|根據屬性對應，使用者帳戶在活動目錄中從一個 OU 移動到另一個 OU。|
-|HR 在雲 HR 應用中更新使用者的經理。|活動目錄中的經理欄位將更新以反映新經理的名稱。|
-|人力資源部將員工重新雇用到新職位。|行為取決於雲 HR 應用如何配置為生成員工 ID：</br>- 如果重新雇用舊員工 ID，連接器將啟用使用者的現有 Active Directory 帳戶。</br>- 如果重新雇用獲取新的員工 ID，連接器將為使用者提供新的活動目錄帳戶。|
-|人力資源部將員工轉換為合同工作人員，反之亦然。|為新角色創建新的 Active Directory 帳戶，並在轉換生效日期禁用舊帳戶。|
+|新員工在雲端 HR 應用程式中雇用。| -使用者帳戶會在 Active Directory 中布建。</br>-使用者可以登入 Active Directory 網域應用程式，並執行所需的動作。</br>-如果已設定 Azure AD Connect 同步處理，則也會在 Azure AD 中建立使用者帳戶。
+|使用者已在雲端 HR 應用程式中終止。|-Active Directory 中的使用者帳戶已停用。</br>-使用者無法登入受 Active Directory 保護的任何企業應用程式。
+|已在雲端 HR 應用程式中更新使用者監督組織。|根據屬性對應，使用者帳戶會在 Active Directory 中從一個 OU 移到另一個。|
+|HR 會更新雲端 HR 應用程式中的使用者管理員。|Active Directory 中的 [管理員] 欄位會更新，以反映新管理員的名稱。|
+|HR rehires 員工成為新的角色。|行為取決於雲端 HR 應用程式設定來產生員工識別碼的方式：</br>-如果 rehire 的舊員工識別碼重複使用，連接器就會為使用者啟用現有的 Active Directory 帳戶。</br>-如果 rehire 取得新的員工識別碼，連接器會為使用者建立新的 Active Directory 帳戶。|
+|HR 會將員工轉換成合約背景工作角色，反之亦然。|新的角色會建立新的 Active Directory 帳戶，而舊的帳戶會在轉換生效日期停用。|
 
-使用前面的結果確定如何根據已建立的時程表將自動使用者預配實現轉換為生產。
+使用先前的結果，以判斷如何根據您所建立的時程表，將自動使用者布建實行轉換成生產環境。
 
 > [!TIP]
-> 使用使用生產資料刷新測試環境時，使用資料縮減和資料清理等技術來刪除或遮罩敏感的個人資料，以符合隱私和安全標準。 
+> 當您重新整理含有生產資料的測試環境以移除或遮罩敏感性個人資料以符合隱私權和安全性標準時，請使用資料縮減和資料清除等技術。 
 
 ### <a name="plan-security"></a>規劃安全性
 
-在部署新服務時，通常需要進行安全審查。 如果需要或尚未進行安全審核，請參閱許多 Azure AD 白皮書，這些[白皮書](https://www.microsoft.com/download/details.aspx?id=36391)提供作為服務的身份概述。
+在部署新服務時，需要進行安全性審查，這是很常見的情況。 如果安全性審查是必要或尚未進行，請參閱許多 Azure AD[白皮書](https://www.microsoft.com/download/details.aspx?id=36391)，其中提供身分識別即服務的總覽。
 
-### <a name="plan-rollback"></a>計畫回滾
+### <a name="plan-rollback"></a>計畫復原
 
-雲 HR 使用者預配實現可能無法在生產環境中根據需要工作。 如果是這樣，以下回滾步驟可以説明您恢復到以前的已知良好狀態。
+雲端 HR 使用者布建的執行可能會在生產環境中無法如預期般運作。 若是如此，下列復原步驟可協助您還原至先前已知良好的狀態。
 
-1. 查看[預配摘要報告](../app-provisioning/check-status-user-account-provisioning.md#getting-provisioning-reports-from-the-azure-portal)和[預配日誌](../app-provisioning/check-status-user-account-provisioning.md#provisioning-logs-preview)，以確定對受影響的使用者或組執行了哪些不正確的操作。 有關預配摘要報告和日誌的詳細資訊，請參閱[管理雲 HR 應用使用者預配](#manage-your-configuration)。
-2. 受影響的使用者或組的最後已知良好狀態可以通過預配稽核記錄或查看目標系統（Azure AD 或活動目錄）來確定。
-3. 使用應用擁有者使用最後一個已知良好的狀態值更新直接在應用中受影響的使用者或組。
+1. 請參閱布建[摘要報告](../app-provisioning/check-status-user-account-provisioning.md#getting-provisioning-reports-from-the-azure-portal)和布建[記錄](../app-provisioning/check-status-user-account-provisioning.md#provisioning-logs-preview)，以判斷受影響的使用者或群組上執行了哪些不正確的作業。 如需布建摘要報告和記錄的詳細資訊，請參閱[管理雲端 HR 應用程式使用者](#manage-your-configuration)布建。
+2. 受影響之使用者或群組的最後已知良好狀態可以透過布建的 audit 記錄，或藉由檢查目標系統（Azure AD 或 Active Directory）來決定。
+3. 與應用程式擁有者合作，使用最後一個已知的正確狀態值來更新直接在應用程式中影響的使用者或群組。
 
-## <a name="deploy-the-cloud-hr-app"></a>部署雲 HR 應用
+## <a name="deploy-the-cloud-hr-app"></a>部署雲端 HR 應用程式
 
-選擇符合解決方案要求的雲 HR 應用。
+選擇符合您解決方案需求的雲端 HR 應用程式。
 
-**工作日**：要將工作日的工作設定檔導入活動目錄和 Azure AD，請參閱[教程：為自動使用者預配配置工作日](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)。 或者，您可以將電子郵件地址和使用者名寫回工作日。
+**Workday**：若要將工作設定檔從 Workday 匯入 Active Directory 和 Azure AD，請參閱[教學課程：設定 workday 來自動](../saas-apps/workday-inbound-tutorial.md#planning-your-deployment)布建使用者。 （選擇性）您可以將電子郵件地址和使用者名稱寫回 Workday。
 
-## <a name="manage-your-configuration"></a>管理配置
+## <a name="manage-your-configuration"></a>管理您的設定
 
-Azure AD 可通過稽核記錄和報告提供有關組織使用者預配使用方式和操作運行狀況的其他見解。
+Azure AD 可以透過 audit 記錄和報告，為您組織的使用者布建使用量和操作健全狀況提供額外的深入解析。
 
-### <a name="gain-insights-from-reports-and-logs"></a>從報告和日誌中獲取見解
+### <a name="gain-insights-from-reports-and-logs"></a>從報表和記錄中取得見解
 
-成功[的初始週期](../app-provisioning/how-provisioning-works.md#initial-cycle)後，Azure AD 預配服務將繼續無限期地以特定于每個應用的教程中定義的間隔無限期地運行增量更新，直到發生以下事件之一：
+成功完成[初始迴圈](../app-provisioning/how-provisioning-works.md#initial-cycle)之後，Azure AD 布建服務會以無限期的間隔，以每個應用程式特定的教學課程中定義的間隔，持續執行回送增量更新，直到發生下列其中一個事件為止：
 
-- 該服務已手動停止。 通過使用[Azure 門戶](https://portal.azure.com/)或相應的 Microsoft[圖形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)命令觸發新的初始週期。
-- 由於屬性對應或範圍篩選器的變化，將觸發新的初始週期。
-- 由於錯誤率高，預配過程進入隔離狀態。 它在隔離中停留超過四周，此時它會自動禁用。
+- 已手動停止服務。 使用[Azure 入口網站](https://portal.azure.com/)或適當的[Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)命令來觸發新的初始迴圈。
+- 原因會觸發新的初始迴圈，以變更屬性對應或範圍篩選器。
+- 布建程式會因為高錯誤率而進入隔離。 它會保持隔離超過四周，在這段時間內會自動停用。
 
-要查看這些事件和預配服務執行的所有其他活動，[瞭解如何查看日誌並獲取有關預配活動的報告](../app-provisioning/check-status-user-account-provisioning.md)。
+若要查看布建服務所執行的這些事件和其他所有活動，請[瞭解如何檢查記錄並取得](../app-provisioning/check-status-user-account-provisioning.md)布建活動的報告。
 
 #### <a name="azure-monitor-logs"></a>Azure 監視器記錄
 
-預配服務執行的所有活動都記錄在 Azure AD 稽核記錄中。 您可以將 Azure AD 稽核記錄路由到 Azure 監視器日誌以進行進一步分析。 使用 Azure 監視器日誌（也稱為日誌分析工作區），可以查詢資料以查找事件、分析趨勢並跨各種資料來源執行相關性。 觀看此[視頻](https://youtu.be/MP5IaCTwkQg)，瞭解在實際使用者方案中使用 Azure AD 日誌的 Azure 監視器日誌的好處。
+布建服務所執行的所有活動都會記錄在 Azure AD audit 記錄檔中。 您可以將 Azure AD 審核記錄路由至 Azure 監視器記錄，以進行進一步的分析。 您可以使用 Azure 監視器記錄（也稱為 Log Analytics 工作區）來查詢資料，以尋找事件、分析趨勢，以及執行各種資料來源之間的相互關聯。 觀看這段[影片](https://youtu.be/MP5IaCTwkQg)，以瞭解在實際使用者案例中，使用 Azure 監視器記錄來 Azure AD 記錄的優點。
 
-安裝[Azure AD 活動日誌的日誌分析視圖](../reports-monitoring/howto-install-use-log-analytics-views.md)，以訪問有關環境中預配事件的[預構建報告](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views)。
+安裝[Azure AD 活動記錄的 log analytics 查看](../reports-monitoring/howto-install-use-log-analytics-views.md)，以取得在您環境中布建事件前後預先建立的[報表](https://github.com/AzureAD/Deployment-Plans/tree/master/Log%20Analytics%20Views)存取權。
 
-有關詳細資訊，請參閱如何使用 Azure[監視器日誌分析 Azure AD 活動日誌](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)。
+如需詳細資訊，請參閱如何[使用您的 Azure 監視器記錄來分析 Azure AD 活動記錄](../reports-monitoring/howto-analyze-activity-logs-log-analytics.md)。
 
 ### <a name="manage-personal-data"></a>管理個人資料
 
-Windows 伺服器上安裝的 Azure AD Connect 預配代理在 Windows 事件日誌中創建日誌，這些日誌可能包含個人資料，具體取決於雲 HR 應用到 Active Directory 屬性對應。 為了遵守使用者隱私義務，請設置 Windows 計畫任務以清除事件日誌，並確保資料不會保留超過 48 小時。
+安裝在 Windows server 上的 Azure AD Connect 布建代理程式會在 Windows 事件記錄檔中建立記錄，其中可能包含個人資料（視您的雲端 HR 應用程式 Active Directory 屬性對應而定）。 若要遵守使用者隱私權義務，請設定 Windows 排程工作以清除事件記錄檔，並確保不會保留超過48小時的資料。
 
-Azure AD 預配服務不會生成報告、執行分析或提供超過 30 天的見解，因為該服務不會存儲、處理或保留任何資料超過 30 天。
+Azure AD 布建服務不會產生報告、執行分析，或在30天內提供深入解析，因為服務不會儲存、處理或保留超過30天的任何資料。
 
 ### <a name="troubleshoot"></a>疑難排解
 
-要排除預配期間可能出現的任何問題，請參閱以下文章：
+若要針對可能在布建期間開啟的任何問題進行疑難排解，請參閱下列文章：
 
 - [設定 Azure AD 資源庫應用程式的使用者佈建時遇到的問題](application-provisioning-config-problem.md)
-- [將屬性從本地活動目錄同步到 Azure AD 以預配到應用程式](user-provisioning-sync-attributes-for-mapping.md)
+- [將內部部署 Active Directory 的屬性同步處理至 Azure AD 以布建至應用程式](user-provisioning-sync-attributes-for-mapping.md)
 - [將使用者佈建至 Azure AD 資源庫應用程式花費數小時以上](application-provisioning-when-will-provisioning-finish.md)
 - [在設定 Azure Active Directory 資源庫應用程式之使用者佈建的情況下儲存系統管理員認證時發生問題](application-provisioning-config-problem-storage-limit.md)
 - [未將任何使用者佈建至 Azure AD 資源庫應用程式](application-provisioning-config-problem-no-users-provisioned.md)
@@ -409,12 +409,12 @@ Azure AD 預配服務不會生成報告、執行分析或提供超過 30 天的�
 - [設定 Windows 事件檢視器以進行代理程式疑難排解](../saas-apps/workday-inbound-tutorial.md#setting-up-windows-event-viewer-for-agent-troubleshooting)
 - [設定 Azure 入口網站稽核記錄以進行服務疑難排解](../saas-apps/workday-inbound-tutorial.md#setting-up-azure-portal-audit-logs-for-service-troubleshooting)
 - [了解 AD 使用者帳戶建立作業的記錄](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-ad-user-account-create-operations)
-- [瞭解管理器更新操作的日誌](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
+- [瞭解管理員更新作業的記錄](../saas-apps/workday-inbound-tutorial.md#understanding-logs-for-manager-update-operations)
 - [解決常見的錯誤](../saas-apps/workday-inbound-tutorial.md#resolving-commonly-encountered-errors)
 
 ### <a name="next-steps"></a>後續步驟
 
-- [為屬性對應編寫運算式](functions-for-customizing-application-data.md)
+- [撰寫屬性對應的運算式](functions-for-customizing-application-data.md)
 - [Azure AD 同步處理 API 概觀](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
-- [跳過刪除超出範圍的使用者帳戶](skip-out-of-scope-deletions.md)
-- [Azure AD 連接預配代理：版本發佈歷史記錄](provisioning-agent-release-version-history.md)
+- [略過刪除超出範圍的使用者帳戶](skip-out-of-scope-deletions.md)
+- [Azure AD Connect 布建代理程式：版本發行歷程記錄](provisioning-agent-release-version-history.md)

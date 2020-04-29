@@ -1,5 +1,5 @@
 ---
-title: 配置 Azure AD 自訂角色 - 特權標識管理 （PIM）
+title: 設定 Azure AD 自訂角色 Privileged Identity Management （PIM）
 description: 如何在 Privileged Identity Management (PIM) 中設定 Azure AD 自訂角色
 services: active-directory
 documentationcenter: ''
@@ -17,10 +17,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3f087ffe824a198c578f076857cca7fdf0f0a60c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77498687"
 ---
 # <a name="configure-azure-ad-custom-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中設定 Azure AD 自訂角色
@@ -28,7 +28,7 @@ ms.locfileid: "77498687"
 特殊許可權角色管理員可變更在使用者啟用對自訂角色的指派時所套用的角色設定，並且可為指派自訂角色的其他應用程式管理員變更此設定。
 
 > [!NOTE]
-> 在預覽期間，Azure AD 自訂角色不會與內建目錄角色整合。 在功能正式推出後，角色管理就會在內建角色體驗中進行。 如果您看到以下橫幅，這些角色應在[內置角色體驗中](pim-how-to-activate-role.md)管理，本文不適用：
+> 在預覽期間，Azure AD 自訂角色不會與內建目錄角色整合。 在功能正式推出後，角色管理就會在內建角色體驗中進行。 如果您看到下列橫幅，這些角色應該[以內建角色的體驗](pim-how-to-activate-role.md)進行管理，本文並不適用：
 >
 > [![](media/pim-how-to-add-role-to-user/pim-new-version.png "Select Azure AD > Privileged Identity Management")](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
@@ -56,13 +56,13 @@ ms.locfileid: "77498687"
 
 您可以從下列*合格*指派持續時間選項中選擇一個。
 
-- **允許永久合格分配**：管理員可以分配永久符合條件的成員資格。
-- **過期符合條件的分配後**：管理員可以要求所有符合條件的分配具有指定的開始日期和結束日期。
+- **允許永久合格的指派**：系統管理員可以指派永久的合格成員資格。
+- **合格指派的到期**時間：系統管理員可以要求所有合格指派都具有指定的開始和結束日期。
 
 此外，您可以從下列*有效*指派持續時間選項中選擇一個：
 
-- **允許永久活動分配**：管理員可以分配永久活動成員身份。
-- **過期活動分配後**：管理員可以要求所有活動分配具有指定的開始日期和結束日期。
+- **允許永久有效的指派**：系統管理員可以指派永久有效的成員資格。
+- 作用中**指派的到期**時間：系統管理員可以要求所有作用中的指派都具有指定的開始和結束日期。
 
 ### <a name="require-azure-multi-factor-authentication"></a>要求使用 Azure Multi-Factor Authentication
 

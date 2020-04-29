@@ -1,6 +1,6 @@
 ---
-title: 將力點 DLP 連接到 Azure 哨兵*微軟文檔
-description: 瞭解如何將力點 DLP 連接到 Azure 哨兵。
+title: 將 Forcepoint DLP 連線到 Azure Sentinel |Microsoft Docs
+description: 瞭解如何將 Forcepoint DLP 連線到 Azure Sentinel。
 services: sentinel
 author: yelevin
 editor: ''
@@ -13,45 +13,45 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 3bdb9d2b23ce05929ba5612e0c6a03fe1aab05de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588241"
 ---
-# <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>將強制端點 DLP 連接到 Azure 哨兵
+# <a name="connect-your-forcepoint-dlp-to-azure-sentinel"></a>將您的 Forcepoint DLP 連線至 Azure Sentinel
 
 > [!IMPORTANT]
-> Azure Sentinel 中的強制端點資料丟失防護 （DLP） 資料連線器當前處於公共預覽版中。 此功能在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Sentinel 中的 Forcepoint 資料遺失防護（DLP）資料連線器目前為公開預覽狀態。 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
 
-Forcepoint DLP 連接器允許您自動將 DLP 事件資料匯出到 Azure Sentinel 中。 您可以使用它來瞭解使用者活動和資料丟失事件。 它還支援與 Azure 工作負荷和其他源中的資料關聯，並改進 Azure Sentinel 內工作手冊的監視功能。
+Forcepoint DLP 連接器可讓您自動將 DLP 事件-資料匯出至 Azure Sentinel。 您可以使用它來取得使用者活動和資料遺失事件的可見度。 它也可以與 Azure 工作負載和其他摘要中的資料相互關聯，並改善 Azure Sentinel 內活頁簿的監視功能。
 
 > [!NOTE]
-> 資料將存儲在運行 Azure Sentinel 的工作區的地理位置中。
+> 資料將會儲存在您執行 Azure Sentinel 之工作區的地理位置中。
 
-## <a name="configure-and-connect-forcepoint-dlp"></a>配置和連接強制端點 DLP
+## <a name="configure-and-connect-forcepoint-dlp"></a>設定及連接 Forcepoint DLP
 
-配置強制端點 DLP 以 JSON 格式將事件資料通過 REST API 轉發到 Azure 工作區，如[Forcepoint DLP 集成指南](https://frcpnt.com/dlp-sentinel)中所述。
-
-
-## <a name="find-your-data"></a>查找您的資料
-
-設置 Forcepoint DLP 連接器後，資料將顯示在自訂日誌**ForcepointDLPEvents_CL**下的日誌分析中。
+設定 Forcepoint DLP，透過如[FORCEPOINT DLP 整合指南](https://frcpnt.com/dlp-sentinel)中所述的 REST API，將事件資料以 JSON 格式轉送至您的 Azure 工作區。
 
 
-要在"強制端點 DLP 的日誌分析"中使用相關架構，請搜索**ForcepointDLPEvents_CL**。
+## <a name="find-your-data"></a>尋找您的資料
+
+設定 Forcepoint DLP 連接器之後，資料會顯示在 Log Analytics 的 [CustomLogs **ForcepointDLPEvents_CL**] 底下。
+
+
+若要在 Log Analytics 中使用 Forcepoint DLP 的相關架構，請搜尋**ForcepointDLPEvents_CL**。
 
 
 ## <a name="validate-connectivity"></a>驗證連線能力
 
-可能需要 20 分鐘以上，直到日誌開始出現在日誌分析中。
+可能需要20分鐘的時間，您的記錄才會開始出現在 Log Analytics 中。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文檔中，您學習了如何將力點 DLP 連接到 Azure 哨兵。 若要深入了解 Azure Sentinel，請參閱下列文章：
+在本檔中，您已瞭解如何將 Forcepoint DLP 連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。

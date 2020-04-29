@@ -15,10 +15,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77559228"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自訂網域名稱
@@ -30,14 +30,14 @@ ms.locfileid: "77559228"
 建立目錄時，初始網域名稱 (例如 ‘contoso.onmicrosoft.com’) 同時也是主要網域名稱。 當您建立新的使用者時，主要網域即為新使用者的預設網域名稱。 設定主要網域名稱可以簡化系統管理員在入口網站中建立新使用者的程序。 變更主要網域名稱：
 
 1. 使用具備目錄全域管理員身分的帳戶來登入 [Azure 入口網站](https://portal.azure.com)。
-2. 選擇**Azure 活動目錄**。
+2. 選取 **Azure Active Directory**。
 3. 選取 [自訂網域名稱]****。
   
-   ![打開使用者管理頁面](./media/domains-manage/add-custom-domain.png)
+   ![開啟 [使用者管理] 頁面](./media/domains-manage/add-custom-domain.png)
 4. 選取您想要設為主要網域的網域名稱。
 5. 選取 [設為主要]**** 命令。 出現提示時，請確認您的選擇。
   
-   ![使功能變數名稱成為主功能變數名稱](./media/domains-manage/make-primary-domain.png)
+   ![將功能變數名稱設為主要名稱](./media/domains-manage/make-primary-domain.png)
 
 您可以將目錄的主要網域名稱變更為任何已驗證的非同盟自訂網域。 變更目錄的主要網域時，並不會變更任何現有使用者的使用者名稱。
 
@@ -90,10 +90,10 @@ ms.locfileid: "77559228"
 **問：為什麼網域刪除失敗時，會收到錯誤訊息，表示我在這個網域名稱中擁有由 Exchange 主控的群組？** <br>
 **答：** 目前，已啟用郵件安全性群組和分散式清單等特定群組由 Exchange 佈建，且需在 [Exchange 管理中心 (EAC)](https://outlook.office365.com/ecp/) 手動清除。 可能會有停留的 ProxyAddresses 仰賴自訂網域名稱，且需要手動更新為其他網域名稱。 
 
-**問：我以管理員\@身份登錄contoso.com但不能刪除功能變數名稱"contoso.com"？**<br>
+**問：我是以系統管理員\@身分登入 contoso.com，但我無法刪除功能變數名稱 "contoso.com"？**<br>
 **答：** 您不能參考您在使用者帳戶名稱中嘗試刪除的自訂網域名稱。 請確認全域管理員帳戶使用初始預設網域名稱 (.onmicrosoft.com)，例如 admin@contoso.onmicrosoft.com。 使用不同的全域管理員帳戶 (例如 admin@contoso.onmicrosoft.com) 或其他帳戶是 admin@fabrikam.com 的自訂網域名稱 (例如「fabrikam.com」) 登入。
 
-**問：我按一下了"刪除域"按鈕，`In Progress`並查看"刪除"操作的狀態。需要多長時間？如果失敗，會發生什麼情況？**<br>
+**問：我已按下 [刪除網域] `In Progress`按鈕，並看到刪除作業的狀態。需要多久的時間？如果失敗，會發生什麼事？**<br>
 **答：** 刪除網域作業是非同步的背景工作，會將所有操考重新命名為網域名稱。 此作業應會在數分鐘內完成。 如果網域刪除失敗，請確定您不擁有：
 
 * 使用 appIdentifierURI 設定網域名稱的應用程式
@@ -102,12 +102,12 @@ ms.locfileid: "77559228"
 
 如果您發現任何不符合的條件，請手動清除參考，並再次嘗試刪除網域。
 
-## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>使用 PowerShell 或 Microsoft 圖形 API 管理功能變數名稱
+## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>使用 PowerShell 或 Microsoft Graph API 來管理功能變數名稱
 
-Azure 活動目錄中的功能變數名稱的大多數管理工作也可以使用 Microsoft PowerShell 完成，也可以使用 Microsoft 圖形 API 以程式設計方式完成。
+在 Azure Active Directory 中，大部分的功能變數名稱管理工作也可以使用 Microsoft PowerShell 來完成，或以程式設計方式使用 Microsoft Graph API。
 
 * [使用 PowerShell 管理 Azure AD 中的網域名稱](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
-* [域資源類型](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
+* [網域資源類型](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
-title: 將 F5 資料連線到 Azure 哨兵*微軟文檔
-description: 瞭解如何將 F5 資料連線到 Azure 哨兵。
+title: 將 F5 資料連線到 Azure Sentinel |Microsoft Docs
+description: 瞭解如何將 F5 資料連線到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,33 +16,33 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 6f33cecca1c67f91d0f2be64ab156f45ee500521
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588258"
 ---
-# <a name="connect-f5-to-azure-sentinel"></a>將 F5 連接到 Azure 哨兵
+# <a name="connect-f5-to-azure-sentinel"></a>將 F5 連接到 Azure Sentinel
 
-本文介紹如何將 F5 設備連接到 Azure Sentinel。 F5 資料連線器允許您輕鬆地將 F5 日誌與 Azure Sentinel 連接、查看儀表板、創建自訂警報以及改進調查。 在 Azure Sentinel 上使用 F5 將為您提供更多瞭解組織的 Internet 使用方式的資訊，並將增強其安全操作功能。 
+本文說明如何將您的 F5 設備連接到 Azure Sentinel。 F5 資料連線器可讓您輕鬆地將 F5 記錄與 Azure Sentinel 連線，以查看儀表板、建立自訂警示，以及改善調查。 在 Azure Sentinel 上使用 F5 可讓您深入瞭解組織的網際網路使用方式，並將增強其安全性作業功能。 
 
-## <a name="configure-your-f5-to-send-cef-messages"></a>配置 F5 以發送 CEF 消息
+## <a name="configure-your-f5-to-send-cef-messages"></a>設定 F5 以傳送 CEF 訊息
 
-1. 轉到[F5 配置應用程式安全事件日誌記錄](https://techdocs.f5.com/kb/en-us/products/big-ip_asm/manuals/product/asm-implementations-11-5-0/12.html)，然後按照說明使用以下準則設置遠端日誌記錄：
-   - 將**遠端存放類型**設置為**CEF**。
-   - 將**協定**設置為**TCP**。
-   - 將**IP 位址**設置為 Syslog 伺服器 IP 位址。
-   - 將**埠號**設置為**514**，或將代理設置為要使用的埠。
-   - 您可以將**最大查詢字串大小**設置為在代理中設置的大小。
+1. 請移至[F5 設定應用程式安全性事件記錄](https://techdocs.f5.com/kb/en-us/products/big-ip_asm/manuals/product/asm-implementations-11-5-0/12.html)，並遵循指示以使用下列指導方針來設定遠端記錄：
+   - 將**遠端存放裝置類型**設定為**CEF**。
+   - 將**通訊協定**設定為**TCP**。
+   - 將**ip 位址**設定為 SYSLOG 伺服器 ip 位址。
+   - 將**埠號碼**設定為**514**，或將代理程式設定為使用的埠。
+   - 您可以將**查詢字串大小上限**設定為您在代理程式中設定的大小。
 
-1. 要在日誌分析中為 CEF 事件使用相關架構，請`CommonSecurityLog`搜索 。
+1. 若要在 Log Analytics 中針對 CEF 事件使用相關的架構，請`CommonSecurityLog`搜尋。
 
-1. 繼續[執行步驟 3：驗證連接](connect-cef-verify.md)。
+1. 繼續進行[步驟3：驗證連線能力](connect-cef-verify.md)。
 
 
 ## <a name="next-steps"></a>後續步驟
-在本文檔中，您學習了如何將 F5 連接到 Azure 哨兵。 若要深入了解 Azure Sentinel，請參閱下列文章：
+在本檔中，您已瞭解如何將 F5 連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。
-- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
 

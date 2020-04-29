@@ -1,6 +1,6 @@
 ---
-title: 教程：按 Genesys 配置 PureCloud，以便使用 Azure 活動目錄進行自動使用者預配 |微軟文檔
-description: 瞭解如何通過 Genesys 自動預配和取消將使用者帳戶從 Azure AD 預配到 PureCloud。
+title: 教學課程：使用 Azure Active Directory 設定 Purecloud by by Genesys 來自動布建使用者 |Microsoft Docs
+description: 瞭解如何自動布建和取消布建使用者帳戶，從 Azure AD 到 Genesys 的 Purecloud by。
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -16,65 +16,65 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
 ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77370676"
 ---
-# <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教程：按 Genesys 配置 PureCloud 以進行自動使用者預配
+# <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教學課程：設定 Purecloud by by Genesys 來自動布建使用者
 
-本教程介紹需要在 Genesys 和 Azure 活動目錄 （Azure AD） 的 PureCloud 中執行的步驟來配置自動使用者預配。 配置後，Azure AD 使用 Azure AD 預配服務，[通過 Genesys](https://www.genesys.com)自動預配和取消向 PureCloud 預配使用者和組。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
+本教學課程說明您需要在 Purecloud by by Genesys 和 Azure Active Directory （Azure AD）中執行的步驟，以設定自動使用者布建。 設定之後，Azure AD 會使用 Azure AD 布建服務，將使用者和群組自動布建和取消布建至[purecloud by By Genesys](https://www.genesys.com) 。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../manage-apps/user-provisioning.md)。 
 
 
-## <a name="capabilities-supported"></a>支援功能
+## <a name="capabilities-supported"></a>支援的功能
 > [!div class="checklist"]
-> * 通過創世紀在 PureCloud 中創建使用者
-> * 在 PureCloud 中刪除使用者，當他們不再需要訪問時，按 Genesys 將其刪除
-> * 按 Genesys 使使用者屬性在 Azure AD 和 PureCloud 之間保持同步
-> * 按 Genesys 在 PureCloud 中預配組和組成員身份
-> * Genesys 單[次登錄](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial)PureCloud（推薦）
+> * 在 Purecloud by by Genesys 中建立使用者
+> * 當使用者不再需要存取權時，將其 Purecloud by by Genesys 移除
+> * 在 Genesys Azure AD 和 Purecloud by 之間保持使用者屬性同步處理
+> * 在 Purecloud by by Genesys 中布建群組和群組成員資格
+> * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial)Purecloud by by Genesys （建議）
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
-* [Azure AD 租戶](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Azure AD 中具有配置預配[許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的使用者帳戶（例如應用程式管理員、雲應用程式管理員、應用程式擁有者或全域管理員）。 
-* 純雲[組織](https://help.mypurecloud.com/?p=81984)。
-* 具有創建 Oauth 用戶端[的許可權](https://help.mypurecloud.com/?p=24360)的使用者。
+* [Azure AD 租使用者](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Azure AD 中的使用者帳戶，具有設定布建的[許可權](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)（例如，應用程式系統管理員、雲端應用程式系統管理員、應用程式擁有者或全域管理員）。 
+* Purecloud by[組織](https://help.mypurecloud.com/?p=81984)。
+* 具有[許可權](https://help.mypurecloud.com/?p=24360)可建立 Oauth 用戶端的使用者。
 
-## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃預配部署
-1. 瞭解[預配服務的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
-2. 確定誰將在[預配範圍內](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
-3. [通過 Genesys 確定要在 Azure AD 和 PureCloud 之間映射哪些資料](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。 
+## <a name="step-1-plan-your-provisioning-deployment"></a>步驟 1： 規劃您的布建部署
+1. 深入瞭解布建[服務的運作方式](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
+2. 判斷誰會在布建[範圍](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)內。
+3. 決定要[在 Azure AD 和 purecloud by 之間，以 Genesys 對應的](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)資料。 
 
-## <a name="step-2-configure-purecloud-by-genesys-to-support-provisioning-with-azure-ad"></a>步驟 2： 按 Genesys 配置純雲以支援使用 Azure AD 進行預配
+## <a name="step-2-configure-purecloud-by-genesys-to-support-provisioning-with-azure-ad"></a>步驟 2： 設定 Purecloud by by Genesys 以支援以 Azure AD 布建
 
-1. 創建在純雲組織中配置的[Oauth 用戶端](https://help.mypurecloud.com/?p=188023)。
-2. [使用您的用戶端](https://developer.mypurecloud.com/api/rest/authorization/use-client-credentials.html)生成權杖。
-3. 如果要在 PureCloud 中自動預配組成員身份，則必須在 PureCloud 中創建與 Azure AD 中的組同名的[組](https://help.mypurecloud.com/?p=52397)。
+1. 建立在您的 Purecloud by 組織中設定的[Oauth 用戶端](https://help.mypurecloud.com/?p=188023)。
+2. [使用您的 oauth 用戶端](https://developer.mypurecloud.com/api/rest/authorization/use-client-credentials.html)產生權杖。
+3. 如果您想要在 Purecloud by 中自動布建群組成員資格，您必須在 Azure AD 中的群組中，以相同的名稱[建立](https://help.mypurecloud.com/?p=52397)purecloud by 的群組。
 
-## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫按 Genesys 添加 PureCloud
+## <a name="step-3-add-purecloud-by-genesys-from-the-azure-ad-application-gallery"></a>步驟 3： 從 Azure AD 應用程式庫新增 Purecloud by by Genesys
 
-從 Azure AD 應用程式庫添加"Genesys"的 PureCloud，以開始管理 Genesys 對 PureCloud 的預配。 如果您以前為 SSO 設置了 PureCloud，則可以使用相同的應用程式。 但是，建議在最初測試集成時創建單獨的應用。 在此處瞭解有關從庫中添加應用程式[的更多詳細資訊](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)。 
+從 Azure AD 應用程式庫新增 Purecloud by by Genesys，以開始管理布建到 Purecloud by by Genesys。 如果您先前已針對 SSO 設定 Purecloud by by Genesys，您可以使用相同的應用程式。 不過，建議您在一開始測試整合時，建立個別的應用程式。 在[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)深入瞭解如何從資源庫新增應用程式。 
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義誰將處於預配範圍 
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>步驟 4： 定義將在布建範圍內的人員 
 
-Azure AD 預配服務允許您根據對應用程式的分配以及或基於使用者/組的屬性來限定誰將預配的範圍。 如果選擇根據分配將預配到應用的範圍，[則可以使用以下步驟將](../manage-apps/assign-user-or-group-access-portal.md)使用者和組分配給應用程式。 如果選擇僅根據使用者或組的屬性預配誰的範圍，則可以使用[此處](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的範圍篩選器。 
+Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據使用者/群組的屬性，來界定將布建的物件。 如果您選擇根據指派將布建到您的應用程式的範圍，您可以使用下列[步驟](../manage-apps/assign-user-or-group-access-portal.md)，將使用者和群組指派給應用程式。 如果您選擇將僅根據使用者或群組的屬性布建的使用者範圍，您可以使用範圍篩選器，如[這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述。 
 
-* 當通過 Genesys 將使用者和組分配給 PureCloud 時，您必須選擇**預設訪問**以外的角色。 具有預設存取權限角色的使用者從預配中排除，並且將在預配日誌中標記為無效許可權。 如果應用程式上唯一可用的角色是預設訪問角色，則可以[更新應用程式清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 將使用者和群組指派給 Purecloud by by Genesys 時，您必須選取**預設存取**以外的角色。 具有預設存取角色的使用者會從布建中排除，且在布建記錄中會被標示為不有效率。 如果應用程式上唯一可用的角色是預設存取角色，您可以[更新應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)來新增其他角色。 
 
-* 從小開始。 在向所有人推出之前，先與一小部分使用者和組進行測試。 將預配範圍設置為分配的使用者和組時，可以通過為應用分配一個或兩個使用者或組來控制這種情況。 當作用域設置為所有使用者和組時，可以指定[基於屬性的範圍篩選器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
+* 從小規模開始。 在推出給所有人之前，先使用一小組的使用者和群組進行測試。 當布建的範圍設定為 [已指派的使用者和群組] 時，您可以藉由將一或兩個使用者或群組指派給應用程式來控制此項。 當 [範圍] 設定為 [所有使用者和群組] 時，您可以指定以[屬性為基礎的範圍篩選器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-purecloud-by-genesys"></a>步驟 5。 通過 Genesys 配置自動使用者預配到 PureCloud 
+## <a name="step-5-configure-automatic-user-provisioning-to-purecloud-by-genesys"></a>步驟 5。 設定自動使用者布建至 Purecloud by by Genesys 
 
-本節將指導您完成將 Azure AD 預配服務配置為根據 Azure AD 中的使用者和/或組分配在 TestApp 中創建、更新和禁用使用者和/或組的步驟。
+本節將引導您逐步設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派，在 TestApp 中建立、更新和停用使用者和/或群組。
 
-### <a name="to-configure-automatic-user-provisioning-for-purecloud-by-genesys-in-azure-ad"></a>要在 Azure AD 中按 Genesys 配置純雲的自動使用者預配：
+### <a name="to-configure-automatic-user-provisioning-for-purecloud-by-genesys-in-azure-ad"></a>若要在 Azure AD 中設定 Purecloud by by Genesys 的自動使用者布建：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。 選擇**企業應用程式**，然後選擇**所有應用程式**。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**]，然後選取 [**所有應用程式**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -82,57 +82,57 @@ Azure AD 預配服務允許您根據對應用程式的分配以及或基於使�
 
     ![應用程式清單中的 PureCloud by Genesys 連結](common/all-applications.png)
 
-3. 選擇 **"預配"** 選項卡。
+3. 選取 [**布**建] 索引標籤。
 
-    ![預配選項卡](common/provisioning.png)
+    ![布建索引標籤](common/provisioning.png)
 
-4. 將**預配模式**設置為 **"自動**"。
+4. 將布建模式設定為 [**自動** **]** 。
 
-    ![預配選項卡](common/provisioning-automatic.png)
+    ![布建索引標籤](common/provisioning-automatic.png)
 
-5. 在 **"管理員憑據"** 部分下，通過 Genesys API URL 和 Oauth 權杖分別在**租戶 URL**和**秘密權杖**欄位中輸入純雲。 API URL 的結構將為`{{API Url}}/api/v2/scim/v2`，使用[純雲開發人員中心的](https://developer.mypurecloud.com/api/rest/index.html)PureCloud 區域的 API URL。 按一下 **"測試連接**"以確保 Azure AD 可以按 Genesys 連接到 PureCloud。 如果連接失敗，請確保您的 PureCloud 通過 Genesys 帳戶具有管理員許可權，然後重試。
+5. 在 [**管理員認證**] 區段底下，分別在 [**租使用者 URL** ] 和 [**秘密權杖**] 欄位中輸入您的 Purecloud by By Genesys API url 和 Oauth token。 API URL 將會結構化為`{{API Url}}/api/v2/scim/v2`，並使用來自[Purecloud by 開發人員中心](https://developer.mypurecloud.com/api/rest/index.html)的 purecloud by 區域 api url。 按一下 [**測試連接**] 以確保 Azure AD 可以透過 Genesys 連線至 purecloud by。 如果連線失敗，請確定您的 Purecloud by by Genesys 帳戶具有系統管理員許可權，然後再試一次。
 
     ![佈建](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
-6. 在 **"通知電子郵件"** 欄位中，輸入應接收預配錯誤通知的個人或組的電子郵件地址，然後選中"**在發生故障時發送電子郵件通知**"核取方塊。
+6. 在 [**通知電子郵件**] 欄位中，輸入應收到布建錯誤通知之個人或群組的電子郵件地址，然後選取 [**發生失敗時傳送電子郵件通知**] 核取方塊。
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 選取 [儲存]****。
+7. 選取 [儲存]  。
 
-8. 在 **"映射"** 部分下，選擇**按 Genesy 將 Azure 活動目錄使用者同步到純雲**。
+8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者 purecloud by by Genesys**]。
 
-9. 在**屬性對應**部分中查看按 Genesys 從 Azure AD 同步到純雲的使用者屬性。 選擇為 **"匹配屬性"** 的屬性用於與 Genesys 在 PureCloud 中的使用者帳戶匹配以進行更新操作。 如果選擇更改[匹配的目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，則需要確保 Genesys 的 PureCloud 支援根據該屬性篩選使用者。 選取 [儲存]**** 按鈕以認可所有變更。
+9. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到 Purecloud by by Genesys 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Purecloud by by Genesys 中的使用者帳戶以進行更新作業。 如果您選擇變更相符的[目標屬性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，就必須確定 Purecloud by BY Genesys API 支援根據該屬性來篩選使用者。 選取 [儲存]**** 按鈕以認可所有變更。
 
      |屬性|類型|
      |---|---|
-     |userName|String|
-     |作用中|Boolean|
-     |displayName|String|
-     |emails[type eq "work"].value|String|
-     |title|String|
-     |phoneNumbers[type eq "mobile"].value|String|
-     |phoneNumbers[type eq "work"].value|String|
-     |urn：ietf：參數：scim：架構：擴展：企業：2.0：使用者：部門|String|
-     |urn：ietf：參數：scim：架構：擴展：企業：2.0：使用者：經理|參考資料|
+     |userName|字串|
+     |作用中|布林值|
+     |displayName|字串|
+     |emails[type eq "work"].value|字串|
+     |title|字串|
+     |phoneNumbers[type eq "mobile"].value|字串|
+     |phoneNumbers[type eq "work"].value|字串|
+     |urn： ietf： params： scim：架構：擴充功能： enterprise：2.0： User：部門|字串|
+     |urn： ietf： params： scim：架構：擴充功能： enterprise：2.0： User： manager|參考|
 
-10. 在 **"映射"** 部分下，選擇**按 Genesy 將 Azure 活動目錄組同步到純雲**。
+10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 purecloud by by Genesys**]。
 
-11. 在**屬性對應**部分中查看按 Genesys 從 Azure AD 同步到純雲的組屬性。 選擇為 **"匹配屬性"** 的屬性用於匹配"Genesys 在 PureCloud 中匹配組以進行更新操作"。 選取 [儲存]**** 按鈕以認可所有變更。 Genesys 的 PureCloud 不支援組創建或刪除，僅支援組更新。
+11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到 Purecloud by by Genesys 的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Purecloud by by Genesys 中的群組以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。 Purecloud by by Genesys 不支援群組建立或刪除，而且只支援更新群組。
 
       |屬性|類型|
       |---|---|
-      |displayName|String|
-      |externalId|String|
-      |members|參考資料|
+      |displayName|字串|
+      |externalId|字串|
+      |members|參考|
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 要啟用按 Genesys 為 PureCloud 啟用 Azure AD 預配服務，在 **"設置"** 部分將**預配狀態**更改為 **"打開**"。
+13. 若要啟用 Purecloud by by Genesys 的 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 通過在 **"設置"** 部分中選擇"**範圍"** 中所需的值，定義您希望按 Genesys 預配到 PureCloud 的使用者和/或組。
+14. 藉由在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，定義您想要布建到 purecloud by by Genesys 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 
@@ -140,19 +140,19 @@ Azure AD 預配服務允許您根據對應用程式的分配以及或基於使�
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此操作將開始 **"設置"** 部分中 **"範圍**"中定義的所有使用者和組的初始同步週期。 初始週期執行的時間比後續週期長，只要 Azure AD 預配服務運行，則大約每 40 分鐘執行一次。 
+此作業會啟動 [**設定**] 區段的 [**範圍**] 中定義的所有使用者和群組的初始同步處理迴圈。 初始週期比後續迴圈花費更多時間執行，只要 Azure AD 布建服務正在執行，這大約每40分鐘就會發生一次。 
 
 ## <a name="step-6-monitor-your-deployment"></a>步驟 6. 監視您的部署
-配置預配後，請使用以下資源監視部署：
+設定布建之後，請使用下列資源來監視您的部署：
 
-* 使用[預配日誌](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)確定已成功預配或未成功預配哪些使用者
-* 檢查[進度列](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)以查看預配週期的狀態以及預配週期與完成有多近
-* 如果預配配置似乎處於不正常狀態，則應用程式將進入隔離狀態。 在此處瞭解有關隔離狀態的更多[。](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)
+* 使用布建[記錄](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)來判斷哪些使用者已成功布建或失敗
+* 檢查[進度](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)列以查看布建週期的狀態，以及關閉其完成的方式
+* 如果布建設定似乎處於狀況不良的狀態，應用程式將會進入隔離。 [在這裡](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)深入瞭解隔離狀態。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用的使用者帳戶預配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [管理企業應用程式的使用者帳戶布建](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 

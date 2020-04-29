@@ -1,6 +1,6 @@
 ---
 title: 設定容錯移轉群組
-description: 瞭解如何使用 Azure 門戶、Az CLI 和 PowerShell 為 Azure SQL 資料庫單個資料庫、彈性池和託管實例配置自動容錯移轉組。
+description: 瞭解如何使用 Azure 入口網站、Az CLI 和 PowerShell，為 Azure SQL Database 單一資料庫、彈性集區和受控實例設定自動容錯移轉群組。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,49 +12,49 @@ ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
 ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77461796"
 ---
-# <a name="configure-a-failover-group-for-azure-sql-database"></a>為 Azure SQL 資料庫配置容錯移轉組
+# <a name="configure-a-failover-group-for-azure-sql-database"></a>設定 Azure SQL Database 的容錯移轉群組
 
-本主題介紹如何使用 Azure 門戶或 PowerShell 為 Azure SQL 資料庫單個資料庫、彈性池和託管實例配置[自動容錯移轉組](sql-database-auto-failover-group.md)。 
+本主題將教您如何使用 Azure 入口網站或 PowerShell，為 Azure SQL Database 單一資料庫、彈性集區和受控實例設定[自動容錯移轉群組](sql-database-auto-failover-group.md)。 
 
 ## <a name="single-database"></a>單一資料庫
-創建容錯移轉組，並使用 Azure 門戶或 PowerShell 向其添加單個資料庫。
+使用 Azure 入口網站或 PowerShell，建立容錯移轉群組，並在其中新增單一資料庫。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
-請考慮以下先決條件：
+請考慮下列必要條件：
 
-- 次要伺服器的伺服器登錄和防火牆設置必須與主伺服器的設置匹配。 
+- 次要伺服器的伺服器登入和防火牆設定必須符合您的主伺服器。 
 
 ### <a name="create-failover-group"></a>建立容錯移轉群組
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-創建容錯移轉組並使用 Azure 門戶將單個資料庫添加到該組。
+建立您的容錯移轉群組，並使用 Azure 入口網站將您的單一資料庫新增至其中。
 
 
-1. 在[Azure 門戶](https://portal.azure.com)的左側功能表中選擇**Azure SQL。** 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
-1. 選擇要添加到容錯移轉組的單個資料庫。 
-1. 在 **"伺服器"名稱**下選擇伺服器的名稱以打開伺服器的設置。
+1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [ **Azure SQL** ]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
+1. 選取您想要新增到容錯移轉群組的單一資料庫。 
+1. 在 [**伺服器名稱**] 底下選取伺服器的名稱，以開啟伺服器的設定。
 
-   ![打開單個 db 的伺服器](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+   ![單一 db 的開啟伺服器](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 
-1. 在 **"設置"** 窗格下選擇**容錯移轉組**，然後選擇 **"添加組**"以創建新的容錯移轉組。 
+1. 在 [**設定**] 窗格下選取 [**容錯移轉群組**]，然後選取 [**新增群組**] 以建立新的容錯移轉群組。 
 
-    ![添加新容錯移轉組](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
+    ![加入新的容錯移轉群組](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
-1. 在**容錯移轉組**頁上，輸入或選擇所需值，然後選擇"**創建**"。
+1. 在 [**容錯移轉群組**] 頁面上，輸入或選取所需的值，然後選取 [**建立**]。
 
-   - **組中的資料庫**：選擇要添加到容錯移轉組的資料庫。 將資料庫添加到容錯移轉組將自動啟動異地複製過程。 
+   - **群組內的資料庫**：選擇您要加入至容錯移轉群組的資料庫。 將資料庫新增到容錯移轉群組，將會自動啟動異地複寫程式。 
         
-    ![將 SQL DB 添加到容錯移轉組](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
+    ![將 SQL DB 新增到容錯移轉群組](media/sql-database-single-database-failover-group-tutorial/add-sqldb-to-failover-group.png)
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
-創建容錯移轉組並使用 PowerShell 將單個資料庫添加到該組。 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+建立您的容錯移轉群組，並使用 PowerShell 將您的單一資料庫新增至其中。 
 
    ```powershell-interactive
    $subscriptionId = "<SubscriptionID>"
@@ -105,35 +105,35 @@ ms.locfileid: "77461796"
 
 ### <a name="test-failover"></a>測試容錯移轉 
 
-使用 Azure 門戶或 PowerShell 測試容錯移轉組容錯移轉。 
+使用 Azure 入口網站或 PowerShell 測試容錯移轉群組的容錯移轉。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 門戶測試容錯移轉組容錯移轉。 
+使用 Azure 入口網站測試容錯移轉群組的容錯移轉。 
 
-1. 在[Azure 門戶](https://portal.azure.com)的左側功能表中選擇**Azure SQL。** 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
-1. 選擇要添加到容錯移轉組的單個資料庫。 
+1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [ **Azure SQL** ]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
+1. 選取您想要新增到容錯移轉群組的單一資料庫。 
 
-   ![打開單個 db 的伺服器](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
+   ![單一 db 的開啟伺服器](media/sql-database-single-database-failover-group-tutorial/open-sql-db-server.png)
 
-1. 在 **"設置"** 窗格下選擇**容錯移轉組**，然後選擇剛剛創建的容錯移轉組。 
+1. 在 [**設定**] 窗格下選取 [**容錯移轉群組**]，然後選擇您剛建立的容錯移轉群組。 
   
-   ![從門戶中選擇容錯移轉組](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
+   ![從入口網站選取容錯移轉群組](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
-1. 查看主伺服器和次要伺服器。 
-1. 從工作窗格中選擇**容錯移轉**以容錯移轉包含單個資料庫的容錯移轉組。 
-1. 在警告上選擇 **"是**"，通知您 TDS 會話將斷開連接。 
+1. 檢查哪一個伺服器是主要伺服器，哪一個是次要伺服器。 
+1. 從工作窗格中選取 [**容錯移轉**]，以容錯移轉包含單一資料庫的容錯移轉群組。 
+1. 在通知您將會中斷 TDS 會話的警告上，選取 **[是]** 。 
 
-   ![容錯移轉組容錯移轉，其中包含 SQL 資料庫](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
+   ![容錯移轉包含 SQL 資料庫的容錯移轉群組](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
-1. 查看當前是主伺服器和次要伺服器。 如果容錯移轉成功，則兩台伺服器應交換角色。 
-1. 再次選擇**容錯移轉**，使伺服器故障回其最初的角色。 
+1. 檢查哪一個伺服器現在是主要的，哪個伺服器是次要的。 如果容錯移轉成功，這兩部伺服器應該會有已交換的角色。 
+1. 再次選取 [**容錯移轉**]，讓伺服器無法回到原先的角色。 
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 測試容錯移轉組容錯移轉。  
+使用 PowerShell 測試容錯移轉群組的容錯移轉。  
 
-檢查輔助副本的角色： 
+檢查次要複本的角色： 
 
    ```powershell-interactive
    # Set variables
@@ -148,7 +148,7 @@ ms.locfileid: "77461796"
       -ResourceGroupName $resourceGroupName `
       -ServerName $drServerName).ReplicationRole
    ```
-容錯移轉到次要伺服器： 
+故障切換到次要伺服器： 
 
    ```powershell-interactive
    # Set variables
@@ -185,45 +185,45 @@ ms.locfileid: "77461796"
 ---
 
 > [!IMPORTANT]
-> 如果需要刪除次要資料庫，請將其從容錯移轉組中刪除，然後再將其刪除。 在從容錯移轉組中刪除次要資料庫之前刪除該資料庫可能會導致不可預知的行為。 
+> 如果您需要刪除次要資料庫，請將它從容錯移轉群組中移除，然後再刪除它。 將次要資料庫從容錯移轉群組中移除之前先將它刪除，可能會導致無法預期的行為。 
 
 ## <a name="elastic-pool"></a>彈性集區
-創建容錯移轉組並使用 Azure 門戶或 PowerShell 向其添加彈性池。  
+使用 Azure 入口網站或 PowerShell，建立容錯移轉群組，並將彈性集區新增至其中。  
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
-請考慮以下先決條件：
+請考慮下列必要條件：
 
-- 次要伺服器的伺服器登錄和防火牆設置必須與主伺服器的設置匹配。 
+- 次要伺服器的伺服器登入和防火牆設定必須符合您的主伺服器。 
 
-### <a name="create-the-failover-group"></a>創建容錯移轉組 
+### <a name="create-the-failover-group"></a>建立容錯移轉群組 
 
-使用 Azure 門戶或 PowerShell 為彈性池創建容錯移轉組。 
+使用 Azure 入口網站或 PowerShell，為您的彈性集區建立容錯移轉群組。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-創建容錯移轉組並使用 Azure 門戶向其添加彈性池。
+建立您的容錯移轉群組，並使用 Azure 入口網站將彈性集區新增至其中。
 
-1. 在[Azure 門戶](https://portal.azure.com)的左側功能表中選擇**Azure SQL。** 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
-1. 選擇要添加到容錯移轉組的彈性池。 
-1. 在 **"概述"** 窗格中，選擇**伺服器名稱**下的伺服器名稱以打開伺服器的設置。
+1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [ **Azure SQL** ]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
+1. 選取您想要新增到容錯移轉群組的彈性集區。 
+1. 在 [**總覽**] 窗格中，選取 [**伺服器名稱**] 下的伺服器名稱，以開啟伺服器的設定。
   
-    ![用於彈性池的打開伺服器](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+    ![開啟適用于彈性集區的伺服器](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
 
-1. 在 **"設置"** 窗格下選擇**容錯移轉組**，然後選擇 **"添加組**"以創建新的容錯移轉組。 
+1. 在 [**設定**] 窗格下選取 [**容錯移轉群組**]，然後選取 [**新增群組**] 以建立新的容錯移轉群組。 
 
-    ![添加新容錯移轉組](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
+    ![加入新的容錯移轉群組](media/sql-database-single-database-failover-group-tutorial/sqldb-add-new-failover-group.png)
 
-1. 在**容錯移轉組**頁上，輸入或選擇所需值，然後選擇"**創建**"。 創建新次要伺服器，或選擇現有次要伺服器。 
+1. 在 [**容錯移轉群組**] 頁面上，輸入或選取所需的值，然後選取 [**建立**]。 請建立新的次要伺服器，或選取現有的次要伺服器。 
 
-1. 選擇**組中的資料庫，** 然後選擇要添加到容錯移轉組的彈性池。 如果次要伺服器上不存在彈性池，則會出現一條警告，提示您在次要伺服器上創建彈性池。 選擇警告，然後選擇 **"確定"** 以在次要伺服器上創建彈性池。 
+1. 選取**群組中**的 [資料庫]，然後選擇您想要新增到容錯移轉群組的彈性集區。 如果次要伺服器上還沒有彈性集區存在，則會出現警告，提示您在次要伺服器上建立彈性集區。 選取警告，然後選取 **[確定]** 以在次要伺服器上建立彈性集區。 
         
-    ![將彈性池添加到容錯移轉組](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
+    ![將彈性集區新增至容錯移轉群組](media/sql-database-elastic-pool-failover-group-tutorial/add-elastic-pool-to-failover-group.png)
         
-1. 選擇 **"選擇"** 可將彈性池設置應用於容錯移轉組，然後選擇 **"創建"** 以創建容錯移轉組。 將彈性池添加到容錯移轉組將自動啟動異地複製過程。 
+1. 選取 [**選取**] 將您的彈性集區設定套用到容錯移轉群組，然後選取 [**建立**] 以建立容錯移轉群組。 將彈性集區新增至容錯移轉群組，將會自動啟動異地複寫程式。 
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-創建容錯移轉組並使用 PowerShell 向其添加彈性池。 
+建立您的容錯移轉群組，並使用 PowerShell 將您的彈性集區新增至其中。 
 
    ```powershell-interactive
    $subscriptionId = "<SubscriptionID>"
@@ -269,35 +269,35 @@ ms.locfileid: "77461796"
 
 ### <a name="test-failover"></a>測試容錯移轉
 
-使用 Azure 門戶或 PowerShell 測試彈性池的容錯移轉。 
+使用 Azure 入口網站或 PowerShell 測試彈性集區的容錯移轉。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-容錯移轉組容錯移轉組容錯移轉到次要伺服器，然後使用 Azure 門戶故障返回。 
+將容錯移轉群組容錯移轉到次要伺服器，然後使用 Azure 入口網站進行容錯回復。 
 
-1. 在[Azure 門戶](https://portal.azure.com)的左側功能表中選擇**Azure SQL。** 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
-1. 選擇要添加到容錯移轉組的彈性池。 
-1. 在 **"概述"** 窗格中，選擇**伺服器名稱**下的伺服器名稱以打開伺服器的設置。
+1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [ **Azure SQL** ]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
+1. 選取您想要新增到容錯移轉群組的彈性集區。 
+1. 在 [**總覽**] 窗格中，選取 [**伺服器名稱**] 下的伺服器名稱，以開啟伺服器的設定。
   
-    ![用於彈性池的打開伺服器](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
-1. 在 **"設置"** 窗格下選擇**容錯移轉組**，然後選擇您在第 2 節中創建的容錯移轉組。 
+    ![開啟適用于彈性集區的伺服器](media/sql-database-elastic-pool-failover-group-tutorial/server-for-elastic-pool.png)
+1. 在 [**設定**] 窗格下選取 [**容錯移轉群組**]，然後選擇您在第2節中建立的容錯移轉群組。 
   
-   ![從門戶中選擇容錯移轉組](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
+   ![從入口網站選取容錯移轉群組](media/sql-database-single-database-failover-group-tutorial/select-failover-group.png)
 
-1. 查看主伺服器和次要伺服器。 
-1. 從工作窗格中選擇**容錯移轉**以容錯移轉包含彈性池的容錯移轉組。 
-1. 在警告上選擇 **"是**"，通知您 TDS 會話將斷開連接。 
+1. 檢查哪一台伺服器是主要的，哪個伺服器是次要的。 
+1. 從工作窗格中選取 [**容錯移轉**]，以容錯移轉包含彈性集區的容錯移轉群組。 
+1. 在通知您將會中斷 TDS 會話的警告上，選取 **[是]** 。 
 
-   ![容錯移轉組容錯移轉，其中包含 SQL 資料庫](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
+   ![容錯移轉包含 SQL 資料庫的容錯移轉群組](media/sql-database-single-database-failover-group-tutorial/failover-sql-db.png)
 
-1. 查看主伺服器，哪個伺服器是次要伺服器。 如果容錯移轉成功，則兩台伺服器應交換角色。 
-1. 再次選擇**容錯移轉**以容錯移轉組故障故障組故障回原始設置。 
+1. 檢查哪一個伺服器是主要的，哪一個是次要伺服器。 如果容錯移轉成功，這兩部伺服器應該會有已交換的角色。 
+1. 再次選取 [**容錯移轉**]，將容錯移轉群組容錯回復至原始設定。 
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 測試容錯移轉組容錯移轉。
+使用 PowerShell 測試容錯移轉群組的容錯移轉。
 
-檢查輔助副本的角色： 
+檢查次要複本的角色： 
 
    ```powershell-interactive
    # Set variables
@@ -313,7 +313,7 @@ ms.locfileid: "77461796"
       -ServerName $drServerName).ReplicationRole
    ```
 
-容錯移轉到次要伺服器： 
+故障切換到次要伺服器： 
 
    ```powershell-interactive
    # Set variables
@@ -333,66 +333,66 @@ ms.locfileid: "77461796"
 ---
 
 > [!IMPORTANT]
-> 如果需要刪除次要資料庫，請將其從容錯移轉組中刪除，然後再將其刪除。 在從容錯移轉組中刪除次要資料庫之前刪除該資料庫可能會導致不可預知的行為。 
+> 如果您需要刪除次要資料庫，請將它從容錯移轉群組中移除，然後再刪除它。 將次要資料庫從容錯移轉群組中移除之前先將它刪除，可能會導致無法預期的行為。 
 
 ## <a name="managed-instance"></a>受控執行個體
 
-使用 Azure 門戶或 PowerShell 在兩個託管實例之間創建容錯移轉組。 
+使用 Azure 入口網站或 PowerShell，在兩個受控實例之間建立容錯移轉群組。 
 
-您需要配置[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)或為每個託管實例的虛擬網路創建閘道，連接兩個閘道，然後創建容錯移轉組。 
+您將需要設定[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) ，或為每個受控實例的虛擬網路建立閘道、連接兩個閘道，然後建立容錯移轉群組。 
 
-### <a name="prerequisites"></a>Prerequisites
-請考慮以下先決條件：
+### <a name="prerequisites"></a>先決條件
+請考慮下列必要條件：
 
-- 輔助託管實例必須為空。
-- 輔助虛擬網路的子網範圍不得與主虛擬網路的子網範圍重疊。 
-- 輔助實例的排序規則和時區必須與主實例的排序規則和時區匹配。 
-- 連接兩個閘道時，共用**金鑰**對於兩個連接應相同。 
+- 次要受控實例必須是空的。
+- 次要虛擬網路的子網範圍不得與主要虛擬網路的子網範圍重迭。 
+- 次要實例的定序和時區必須符合主要實例的定序和時區。 
+- 連接這兩個閘道時，這兩個連線的**共用金鑰**應相同。 
 
-### <a name="create-primary-virtual-network-gateway"></a>創建主虛擬網路閘道 
+### <a name="create-primary-virtual-network-gateway"></a>建立主要虛擬網路閘道 
 
-如果尚未配置[ExpressRoute，](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)可以使用 Azure 門戶或 PowerShell 創建主虛擬網路閘道。 
+如果您尚未設定[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)，您可以使用 Azure 入口網站或 PowerShell 來建立主要虛擬網路閘道。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 門戶創建主虛擬網路閘道。 
+使用 Azure 入口網站建立主要虛擬網路閘道。 
 
-1. 在[Azure 門戶](https://portal.azure.com)中，轉到資源組並選擇主託管實例的**虛擬網路**資源。 
-1. 在 **"設置"** 下選擇**子網**，然後選擇添加新**的閘道子網**。 保留預設值。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，移至您的資源群組，然後選取主要受控實例的**虛擬網路**資源。 
+1. 選取 [**設定**] 底下的 [**子網**]，然後選取以新增新的**閘道子網**。 保留預設值。 
 
-   ![添加主託管實例的閘道](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
+   ![為主要受控實例新增閘道](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. 創建子網閘道後，選擇從左側功能窗格**創建資源**，然後在搜索框中鍵入`Virtual network gateway`。 選擇**微軟**發佈的**虛擬網路閘道**資源。 
+1. 建立子網閘道之後，從左側流覽窗格中選取 [**建立資源**]，然後`Virtual network gateway`在 [搜尋] 方塊中輸入。 選取**Microsoft**發佈的**虛擬網路閘道**資源。 
 
-   ![創建新的虛擬網路閘道](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
+   ![建立新的虛擬網路閘道](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
-1. 填寫所需的欄位來配置主託管實例的閘道。 
+1. 填寫必要欄位，以設定您的主要受控實例閘道。 
 
-   下表顯示了主託管實例的閘道所需的值：
+   下表顯示主要受控實例的閘道所需的值：
  
-    | **領域** | 值 |
+    | **欄位** | 值 |
     | --- | --- |
-    | **訂閱** |  主託管實例所在的訂閱。 |
-    | **名稱** | 虛擬網路閘道的名稱。 | 
-    | **地區** | 輔助託管實例所在的區域。 |
-    | **閘道類型** | 選擇**VPN**。 |
-    | **VPN 類型** | 選擇**基於路由** |
-    | **Sku**| 將 預設值`VpnGw1`保留 。 |
-    | **位置**| 輔助託管實例和輔助虛擬網路的位置。   |
-    | **虛擬網路**| 為輔助託管實例選擇虛擬網路。 |
-    | **公共 IP 位址**| 選取 [建立新的]****。 |
-    | **公共 IP 位址名稱**| 輸入 IP 位址的名稱。 |
+    | **訂用帳戶** |  您的主要受控實例所在的訂用帳戶。 |
+    | **Name** | 虛擬網路閘道的名稱。 | 
+    | **區域** | 次要受控實例所在的區域。 |
+    | **閘道類型** | 選取 [ **VPN**]。 |
+    | **VPN 類型** | 選取以**路由為基礎的** |
+    | **SKU**| 保留預設值`VpnGw1`。 |
+    | **位置**| 次要受控實例和次要虛擬網路所在的位置。   |
+    | **虛擬網路**| 選取次要受控實例的虛擬網路。 |
+    | **公用 IP 位址**| 選取 [建立新的]  。 |
+    | **公用 IP 位址名稱**| 輸入 IP 位址的 [名稱]。 |
     | &nbsp; | &nbsp; |
 
-1. 將其他值保留為預設值，然後選擇 **"查看 + 創建**"以查看虛擬網路閘道的設置。
+1. 將其他值保留為 [預設]，然後選取 [**檢查 + 建立**] 來檢查虛擬網路閘道的設定。
 
-   ![主要閘道設置](media/sql-database-managed-instance-failover-group-tutorial/settings-for-primary-gateway.png)
+   ![主要閘道設定](media/sql-database-managed-instance-failover-group-tutorial/settings-for-primary-gateway.png)
 
-1. 選擇 **"創建**"以創建新的虛擬網路閘道。 
+1. 選取 [**建立**] 以建立新的虛擬網路閘道。 
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 創建主虛擬網路閘道。 
+使用 PowerShell 建立主要虛擬網路閘道。 
 
    ```powershell-interactive
    $primaryResourceGroupName = "<Primary-Resource-Group>"
@@ -422,34 +422,34 @@ ms.locfileid: "77461796"
 
 ---
 
-### <a name="create-secondary-virtual-network-gateway"></a>創建輔助虛擬網路閘道
+### <a name="create-secondary-virtual-network-gateway"></a>建立次要虛擬網路閘道
 
-使用 Azure 門戶或 PowerShell 創建輔助虛擬網路閘道。 
+使用 Azure 入口網站或 PowerShell 建立次要虛擬網路閘道。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-重複上一節中的步驟，為輔助託管實例創建虛擬網路子網和閘道。 填寫所需的欄位來配置輔助託管實例的閘道。 
+重複上一節中的步驟，以建立次要受控實例的虛擬網路子網和閘道。 填寫必要欄位，為您的次要受控實例設定閘道。 
 
-   下表顯示了輔助託管實例的閘道所需的值：
+   下表顯示次要受控實例的閘道所需的值：
 
-   | **領域** | 值 |
+   | **欄位** | 值 |
    | --- | --- |
-   | **訂閱** |  輔助託管實例所在的訂閱。 |
-   | **名稱** | 虛擬網路閘道的名稱，如`secondary-mi-gateway`。 | 
-   | **地區** | 輔助託管實例所在的區域。 |
-   | **閘道類型** | 選擇**VPN**。 |
-   | **VPN 類型** | 選擇**基於路由** |
-   | **Sku**| 將 預設值`VpnGw1`保留 。 |
-   | **位置**| 輔助託管實例和輔助虛擬網路的位置。   |
-   | **虛擬網路**| 選擇在第 2 節中創建的虛擬網路，如`vnet-sql-mi-secondary`。 |
-   | **公共 IP 位址**| 選取 [建立新的]****。 |
-   | **公共 IP 位址名稱**| 輸入 IP 位址的名稱，如`secondary-gateway-IP`。 |
+   | **訂用帳戶** |  次要受控實例所在的訂用帳戶。 |
+   | **Name** | 虛擬網路閘道的名稱，例如`secondary-mi-gateway`。 | 
+   | **區域** | 次要受控實例所在的區域。 |
+   | **閘道類型** | 選取 [ **VPN**]。 |
+   | **VPN 類型** | 選取以**路由為基礎的** |
+   | **SKU**| 保留預設值`VpnGw1`。 |
+   | **位置**| 次要受控實例和次要虛擬網路所在的位置。   |
+   | **虛擬網路**| 選取在第2節中建立的虛擬網路，例如`vnet-sql-mi-secondary`。 |
+   | **公用 IP 位址**| 選取 [建立新的]  。 |
+   | **公用 IP 位址名稱**| 輸入 IP 位址的名稱，例如`secondary-gateway-IP`。 |
    | &nbsp; | &nbsp; |
 
-   ![輔助閘道設置](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
+   ![次要閘道設定](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 創建輔助虛擬網路閘道。 
+使用 PowerShell 建立次要虛擬網路閘道。 
 
    ```powershell-interactive
    $secondaryResourceGroupName = "<Secondary-Resource-Group>"
@@ -482,37 +482,37 @@ ms.locfileid: "77461796"
 
 
 ### <a name="connect-the-gateways"></a>連接閘道 
-使用 Azure 門戶或 PowerShell 在兩個閘道之間創建連接。 
+使用 Azure 入口網站或 PowerShell，建立兩個閘道之間的連線。 
 
-需要創建兩個連接 - 從主閘道到輔助閘道的連接，然後從輔助閘道連接到主閘道。 
+需要建立兩個連線-從主要閘道到次要閘道的連線，再到從次要閘道到主要閘道的連接。 
 
-用於兩個連接的共用金鑰組于每個連接應相同。 
+針對每個連線，這兩個連線所使用的共用金鑰應相同。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-使用 Azure 門戶在兩個閘道之間創建連接。 
+使用 Azure 入口網站建立兩個閘道之間的連接。 
 
-1. 選擇從[Azure 門戶](https://portal.azure.com)**創建資源**。
-1. 鍵入`connection`搜索框，然後按 Enter 進行搜索，這將帶您訪問 Microsoft 發佈的**連接**資源。
-1. 選擇 **"創建**"以創建連接。 
-1. 在 **"基本"** 選項卡上，選擇以下值，然後選擇 **"確定**"。 
-    1. 為`VNet-to-VNet`**連線類型**選擇 。 
+1. 從 [ [Azure 入口網站](https://portal.azure.com)中選取 [**建立資源**]。
+1. 在`connection`搜尋方塊中輸入，然後按 enter 鍵進行搜尋，這會帶您前往 Microsoft 所發佈的**連線資源。**
+1. 選取 [**建立**] 以建立連接。 
+1. 在 [**基本**] 索引標籤上，選取下列值，然後選取 **[確定]**。 
+    1. 選取`VNet-to-VNet` [] 作為 [連線**類型**]。 
     1. 從下拉式清單中選取訂用帳戶。 
-    1. 在下拉清單中選擇託管實例的資源組。 
-    1. 從下拉清單中選擇主託管實例的位置 
-1. 在 **"設置"** 選項卡上，選擇或輸入以下值，然後選擇 **"確定**" ：
-    1. 選擇**第一個虛擬網路閘道的主網路閘道**，如`Primary-Gateway`。  
-    1. 選擇**第二個虛擬網路閘道的輔助網路閘道**，例如`Secondary-Gateway`。 
-    1. 選擇 **"建立雙向連接"** 旁邊的核取方塊。 
-    1. 保留預設主連接名稱，或將其重命名為您選擇的值。 
-    1. 為連接提供**共用金鑰 （PSK），** 例如`mi1m2psk`。 
+    1. 在下拉式選單中，選取受控實例的資源群組。 
+    1. 從下拉式選單選取主要受控實例的位置 
+1. 在 [**設定**] 索引標籤上，選取或輸入下列值，然後選取 **[確定]**：
+    1. 選擇**第一個虛擬網路閘道**的主要網路閘道，例如`Primary-Gateway`。  
+    1. 選擇**第二個虛擬網路閘道**的 [次要網路閘道`Secondary-Gateway`]，例如。 
+    1. 選取 [**建立雙向連接**] 旁的核取方塊。 
+    1. 請保留預設的主要連線名稱，或將它重新命名為您選擇的值。 
+    1. 提供連接的**共用金鑰（PSK）** ，例如`mi1m2psk`。 
 
-   ![創建閘道連接](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
+   ![建立閘道連線](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
-1. 在 **"摘要"** 選項卡上，查看雙向連接的設置，然後選擇 **"確定"** 以創建連接。 
+1. 在 [**摘要**] 索引標籤上，檢查雙向連線的設定，然後選取 **[確定]** 以建立您的連線。 
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 在兩個閘道之間創建連接。 
+使用 PowerShell 建立兩個閘道之間的連線。 
 
    ```powershell-interactive
    $vpnSharedKey = "mi1mi2psk"
@@ -543,28 +543,28 @@ ms.locfileid: "77461796"
 
 ---
 
-### <a name="create-the-failover-group"></a>創建容錯移轉組 
-使用 Azure 門戶或 PowerShell 為託管實例創建容錯移轉組。 
+### <a name="create-the-failover-group"></a>建立容錯移轉群組 
+使用 Azure 入口網站或 PowerShell，為您的受控實例建立容錯移轉群組。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 門戶為託管實例創建容錯移轉組。 
+使用 Azure 入口網站，為您的受控實例建立容錯移轉群組。 
 
-1. 在[Azure 門戶](https://portal.azure.com)的左側功能表中選擇**Azure SQL。** 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
-1. 選擇要添加到容錯移轉組的主要託管實例。  
-1. 在 **"設置"** 下，導航到**實例容錯移轉組**，然後選擇**添加組**以打開**實例容錯移轉組**頁面。 
+1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [ **Azure SQL** ]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
+1. 選取您想要新增到容錯移轉群組的主要受控實例。  
+1. 在 [**設定**] 下，流覽至 [**實例容錯移轉群組**]，然後選擇 [**新增群組**] 以開啟 [**實例容錯移轉群組**] 頁面。 
 
-   ![添加容錯移轉組](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)
+   ![新增容錯移轉群組](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)
 
-1. 在 **"實例容錯移轉組"** 頁上，鍵入容錯移轉組的名稱，然後從下拉清單中選擇輔助託管實例。 選擇 **"創建**"以創建容錯移轉組。 
+1. 在 [**實例容錯移轉群組**] 頁面上，輸入容錯移轉群組的名稱，然後從下拉式選單選擇次要受控實例。 選取 [**建立**] 以建立您的容錯移轉群組。 
 
    ![建立容錯移轉群組](media/sql-database-managed-instance-failover-group-tutorial/create-failover-group.png)
 
-1. 容錯移轉組部署完成後，您將被帶回**容錯移轉組**頁面。 
+1. 容錯移轉群組部署完成後，您會回到 [**容錯移轉群組**] 頁面。 
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 為託管實例創建容錯移轉組。 
+使用 PowerShell 為您的受控實例建立容錯移轉群組。 
 
    ```powershell-interactive
    $primaryResourceGroupName = "<Primary-Resource-Group>"
@@ -586,27 +586,27 @@ ms.locfileid: "77461796"
 
 ### <a name="test-failover"></a>測試容錯移轉
 
-使用 Azure 門戶或 PowerShell 測試容錯移轉組容錯移轉。 
+使用 Azure 入口網站或 PowerShell 測試容錯移轉群組的容錯移轉。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 門戶測試容錯移轉組容錯移轉。 
+使用 Azure 入口網站測試容錯移轉群組的容錯移轉。 
 
-1. 導航到[Azure 門戶](https://portal.azure.com)中的_輔助_託管實例，並在設置下選擇**實例容錯移轉組**。 
-1. 查看哪個託管實例是主實例，哪個託管實例是輔助實例。 
-1. 選擇 **"容錯移轉**"，然後在有關 TDS 會話斷開連接的警告上選擇 **"是**"。 
+1. 流覽至[Azure 入口網站](https://portal.azure.com)內您的_次要_受控實例，然後選取 [設定] 底下的 [**實例容錯移轉群組**]。 
+1. 檢查哪個受控實例是主要複本，以及哪個受控實例是次要複本。 
+1. 選取 [**容錯移轉**]，然後在關於 TDS 會話中斷連線的警告上選取 **[是]** 。 
 
-   ![容錯移轉組容錯移轉](media/sql-database-managed-instance-failover-group-tutorial/failover-mi-failover-group.png)
+   ![容錯移轉群組](media/sql-database-managed-instance-failover-group-tutorial/failover-mi-failover-group.png)
 
-1. 查看哪個 manged 實例是主實例，哪個實例是輔助實例。 如果容錯移轉成功，則兩個實例應切換角色。 
+1. 檢查哪一個受控實例是主要複本，哪個實例是次要複本。 如果容錯移轉成功，這兩個實例應該已切換角色。 
 
-   ![託管實例在容錯移轉後切換角色](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
+   ![受控實例在容錯移轉後已切換角色](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. 轉到新的_輔助_託管實例，並再次選擇**容錯移轉**，使主實例故障回主角色。 
+1. 移至新的_次要_受控實例，然後再次選取 [**容錯移轉**]，將主要實例容錯回復至主要角色。 
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 測試容錯移轉組容錯移轉。 
+使用 PowerShell 測試容錯移轉群組的容錯移轉。 
 
    ```powershell-interactive
    $primaryResourceGroupName = "<Primary-Resource-Group>"
@@ -644,24 +644,24 @@ ms.locfileid: "77461796"
 
 ---
 
-## <a name="locate-listener-endpoint"></a>查找攔截器終結點
+## <a name="locate-listener-endpoint"></a>尋找接聽程式端點
 
-配置容錯移轉組後，將應用程式的連接字串更新到攔截器終結點。 這將使應用程式保持連接到容錯移轉組攔截器，而不是主資料庫、彈性池或託管實例。 這樣，您不必在每次 Azure SQL 資料庫實體失敗時手動更新連接字串，並且流量將路由到當前主實體。 
+一旦設定您的容錯移轉群組，請將應用程式的連接字串更新為接聽程式端點。 這會讓您的應用程式連接到容錯移轉群組接聽程式，而不是主資料庫、彈性集區或受控實例。 如此一來，您就不需要在每次 Azure SQL database 實體故障時手動更新連接字串，而會將流量路由傳送至目前主要的任何實體。 
 
-攔截器終結點以 的形式`fog-name.database.windows.net`出現，在 Azure 門戶中查看容錯移轉組時可見：
+接聽程式端點的形式為`fog-name.database.windows.net`，當您查看容錯移轉群組時，會顯示在 Azure 入口網站中：
 
-![容錯移轉組連接字串](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
+![容錯移轉群組連接字串](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
 
 ## <a name="remarks"></a>備註
 
-- 刪除單個或池資料庫的容錯移轉組不會停止複製，也不會刪除複製的資料庫。 如果要在刪除容錯移轉組後將單個或池資料庫添加回容錯移轉組，則需要手動停止異地複製並從次要伺服器中刪除資料庫。 如果執行任一操作，都可能導致類似于嘗試將資料庫`The operation cannot be performed due to multiple errors`添加到容錯移轉組時的錯誤。 
+- 移除單一或集區資料庫的容錯移轉群組並不會停止複寫，而且不會刪除複寫的資料庫。 如果您想要在移除容錯移轉群組後，將單一或集區資料庫重新加入至該群組，您必須手動停止異地複寫，並從次要伺服器刪除該資料庫。 `The operation cannot be performed due to multiple errors`當嘗試將資料庫新增到容錯移轉群組時，無法執行任何動作可能會導致類似的錯誤。 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-有關配置容錯移轉組的詳細步驟，請參閱以下教程：
-- [將單個資料庫添加到容錯移轉組](sql-database-single-database-failover-group-tutorial.md)
+如需設定容錯移轉群組的詳細步驟，請參閱下列教學課程：
+- [將單一資料庫新增至容錯移轉群組](sql-database-single-database-failover-group-tutorial.md)
 - [將彈性集區新增到容錯移轉群組](sql-database-elastic-pool-failover-group-tutorial.md)
-- [將託管實例添加到容錯移轉組](sql-database-managed-instance-failover-group-tutorial.md)
+- [將受控實例新增至容錯移轉群組](sql-database-managed-instance-failover-group-tutorial.md)
  
-有關 Azure SQL 資料庫高可用性選項的概述，請參閱[異地複製](sql-database-active-geo-replication.md)和[自動容錯移轉組](sql-database-auto-failover-group.md)。 
+如需 Azure SQL Database 高可用性選項的總覽，請參閱[異地](sql-database-active-geo-replication.md)複寫和[自動容錯移轉群組](sql-database-auto-failover-group.md)。 

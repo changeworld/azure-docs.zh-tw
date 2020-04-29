@@ -1,6 +1,6 @@
 ---
-title: 將強制端點產品連接到 Azure 哨兵*微軟文檔
-description: 瞭解如何將 Forcepoint 產品連接到 Azure 哨兵。
+title: 將 Forcepoint 產品連接到 Azure Sentinel |Microsoft Docs
+description: 瞭解如何將 Forcepoint 產品連線到 Azure Sentinel。
 services: sentinel
 author: yelevin
 editor: ''
@@ -13,47 +13,47 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: eb099a786a84f9b7d0a6f0dc6e6df9c3459af295
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588224"
 ---
-# <a name="connect-your-forcepoint-products-to-azure-sentinel"></a>將強制端點產品連接到 Azure 哨兵
+# <a name="connect-your-forcepoint-products-to-azure-sentinel"></a>將您的 Forcepoint 產品連線至 Azure Sentinel
 
 > [!IMPORTANT]
-> Azure Sentinel 中的 Forcepoint 產品資料連線器當前處於公共預覽版中。 此功能在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Sentinel 中的 Forcepoint products 資料連線器目前處於公開預覽狀態。 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
-本文介紹如何將 Forcepoint 產品連接到 Azure Sentinel。 
+本文說明如何將您的 Forcepoint 產品連線到 Azure Sentinel。 
 
-Forcepoint 資料連線器允許您將 Forcepoint 雲訪問安全代理和強制端點下一代防火牆日誌與 Azure Sentinel 連接。 通過這種方式，您可以自動將使用者定義的日誌即時匯出到 Azure Sentinel 中。 該連接器使您能夠豐富對 Forcepoint 產品記錄的使用者活動的可見度。 它還支援與 Azure 工作負荷和其他源中的資料進一步關聯，並改進 Azure Sentinel 內工作手冊的監視功能。
+Forcepoint 資料連線器可讓您將 Forcepoint Cloud Access Security Broker 和 Forcepoint 新一代防火牆記錄與 Azure Sentinel 連線。 如此一來，您就可以將使用者定義的記錄自動匯出至 Azure Sentinel。 此連接器可讓您更豐富地看到 Forcepoint 產品所記錄的使用者活動。 它也可以與 Azure 工作負載和其他摘要中的資料進一步相互關聯，並改善 Azure Sentinel 內活頁簿的監視功能。
 
 > [!NOTE]
-> 資料將存儲在運行 Azure Sentinel 的工作區的地理位置中。
+> 資料將會儲存在您執行 Azure Sentinel 之工作區的地理位置中。
 
 
 
-## <a name="forward-forcepoint-product-logs-to-the-syslog-agent"></a>將強制端點產品日誌轉發到 Syslog 代理 
+## <a name="forward-forcepoint-product-logs-to-the-syslog-agent"></a>將 Forcepoint 產品記錄轉送到 Syslog 代理程式 
 
-將強制端點產品配置為通過 Syslog 代理將 CEF 格式的 Syslog 消息轉發到 Azure 工作區。
+設定 Forcepoint 產品，以透過 Syslog 代理程式將 Syslog 訊息的 CEF 格式轉送至您的 Azure 工作區。
 
-1. 按照以下安裝指南中所述，將 Forcepoint 產品設置為 Azure Sentinel 集成：
- - [力點 CASB 集成指南](https://frcpnt.com/casb-sentinel)
- - [力點 NGFW 集成指南](https://frcpnt.com/ngfw-sentinel)
+1. 設定 Forcepoint 產品以 Azure Sentinel 整合，如下列安裝指南所述：
+ - [Forcepoint CASB 整合指南](https://frcpnt.com/casb-sentinel)
+ - [Forcepoint NGFW 整合指南](https://frcpnt.com/ngfw-sentinel)
 
-2. 搜索通用安全性記錄檔以使用與設備供應商名稱的日誌分析中的相關架構包含"強制端點"。 
+2. 搜尋 CommonSecurityLog 以使用 Log Analytics 中的相關架構，其 DeviceVendor 名稱包含 ' Forcepoint '。 
 
-3. 繼續[執行步驟 3：驗證連接](connect-cef-verify.md)。
+3. 繼續進行[步驟3：驗證連線能力](connect-cef-verify.md)。
 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文檔中，您學習了如何將 Forcepoint 產品連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+在本檔中，您已瞭解如何將 Forcepoint 產品連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
 
-- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。

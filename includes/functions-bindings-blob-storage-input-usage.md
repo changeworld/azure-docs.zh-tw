@@ -10,13 +10,13 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 512d05b245f1279a977ba61d5b4c4904fc0f6bf2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77202121"
 ---
-可以為 blob 輸入綁定使用以下參數類型：
+您可以針對 blob 輸入系結使用下列參數類型：
 
 * `Stream`
 * `TextReader`
@@ -24,10 +24,10 @@ ms.locfileid: "77202121"
 * `Byte[]`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
-* `ICloudBlob`<sup>1</sup>
-* `CloudBlockBlob`<sup>1</sup>
-* `CloudPageBlob`<sup>1</sup>
-* `CloudAppendBlob`<sup>1</sup>
+* `ICloudBlob`<sup>sha-1</sup>
+* `CloudBlockBlob`<sup>sha-1</sup>
+* `CloudPageBlob`<sup>sha-1</sup>
+* `CloudAppendBlob`<sup>sha-1</sup>
 
 <sup>1</sup> 在 *function.json* 或 `FileAccess.ReadWrite` C# 類別庫中需要 "inout" 繫結 `direction`。
 

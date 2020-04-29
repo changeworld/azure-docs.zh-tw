@@ -10,20 +10,20 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: 0c0ab0e62a5d951f0bc0e237f44cf55c5b8e16cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77202095"
 ---
-您可以綁定到以下類型來寫入 blob：
+您可以系結至下列類型來寫入 blob：
 
 * `TextWriter`
 * `out string`
 * `out Byte[]`
 * `CloudBlobStream`
 * `Stream`
-* `CloudBlobContainer`<sup>1</sup>
+* `CloudBlobContainer`<sup>sha-1</sup>
 * `CloudBlobDirectory`
 * `ICloudBlob`<sup>2</sup>
 * `CloudBlockBlob`<sup>2</sup>

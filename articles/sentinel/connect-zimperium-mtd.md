@@ -1,6 +1,6 @@
 ---
-title: 將 Zimperium 移動威脅防禦連接到 Azure 哨兵*微軟文檔
-description: 瞭解如何將 Zimperium 移動威脅防禦連接到 Azure 哨兵。
+title: 將 Zimperium 行動裝置威脅防護連線到 Azure Sentinel |Microsoft Docs
+description: 瞭解如何將 Zimperium 行動裝置威脅防護連線到 Azure Sentinel。
 services: sentinel
 author: yelevin
 editor: ''
@@ -13,68 +13,68 @@ ms.workload: na
 ms.date: 02/20/2020
 ms.author: yelevin
 ms.openlocfilehash: 86854fa22a49f09e5d3d2fc5fdb53c245850fbac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77587935"
 ---
-# <a name="connect-your-zimperium-mobile-threat-defense-to-azure-sentinel"></a>將 Zimperium 移動威脅防禦連接到 Azure 哨兵
+# <a name="connect-your-zimperium-mobile-threat-defense-to-azure-sentinel"></a>將您的 Zimperium 行動裝置威脅防護連線到 Azure Sentinel
 
 
 > [!IMPORTANT]
-> Azure Sentinel 中的 Zimperium 移動威脅防禦資料連線器當前處於公共預覽版中。
-> 此功能在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> Azure Sentinel 中的 Zimperium 行動裝置威脅防護資料連線器目前處於公開預覽狀態。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
 
-Zimperium 移動威脅防禦連接器使您能夠將 Zimperium 威脅日誌與 Azure Sentinel 連接，以查看儀表板、創建自訂警報並改進調查。 這使您可以更深入地瞭解組織的移動威脅環境，並增強您的安全操作功能。
+Zimperium 行動裝置威脅防護連接器可讓您將 Zimperium 威脅記錄與 Azure Sentinel 連線，以查看儀表板、建立自訂警示，以及改善調查。 這可讓您深入瞭解組織的行動威脅環境，並增強您的安全性作業功能。
 
 > [!NOTE]
-> 資料將存儲在運行 Azure Sentinel 的工作區的地理位置中。
+> 資料將會儲存在您執行 Azure Sentinel 之工作區的地理位置中。
 
-## <a name="configure-and-connect-zimperium-mobile-threat-defense"></a>配置和連接 Zimperium 移動威脅防禦
+## <a name="configure-and-connect-zimperium-mobile-threat-defense"></a>設定及連接 Zimperium 行動裝置威脅防護
 
-Zimperium 移動威脅防禦可以直接集成日誌並將其匯出到**Azure Sentinel。**
+Zimperium 行動裝置威脅防護可以將記錄直接整合到**Azure Sentinel**，並將其匯出。
 
-1. 在 Azure Sentinel 門戶中，按一下"資料連線器"並選擇 **"Zimperium 移動威脅防禦**"。
-2. 選擇 **"打開連接器"頁**。
-3. 按照**Zimperium 移動威脅防禦**連接器頁面上的說明進行操作，摘要如下。
- 1. 在 zConsole 中，按一下巡覽列上的 **"管理**"。
+1. 在 Azure Sentinel 入口網站中，按一下 [資料連線器]，然後選取 [ **Zimperium Mobile 威脅防護**]。
+2. 選取 [**開啟連接器] 頁面**。
+3. 依照 [ **Zimperium 行動威脅防護**連接器] 頁面上的指示進行，摘要如下。
+ 1. 在 zConsole 中，按一下巡覽列上的 [**管理**]。
  2. 按一下 [整合] **** 索引標籤。
- 3. 按一下**威脅報告**按鈕，然後按一下 **"添加集成"** 按鈕。
- 4. 通過從可用集成中選擇**Microsoft Azure 哨兵**來創建集成，並輸入工作區 ID 和主鍵以連接到 Azure Sentinel。
- 5. 也可以選擇用於將威脅資料推送到 Azure Sentinel 的篩選器級別的選項。 
+ 3. 按一下 [**威脅報告**] 按鈕，然後按 [**新增**整合] 按鈕。
+ 4. 從可用的整合選取 [ **Microsoft Azure Sentinel** ]，然後輸入 [工作區識別碼] 和 [主要金鑰] 來連線到 Azure Sentinel，以建立整合。
+ 5. 也提供選取要推送至 Azure Sentinel 之威脅資料的篩選準則層級選項。 
 
-4. 有關詳細資訊，請參閱[Zimperium 客戶支援門戶](https://support.zimperium.com)。
+4. 如需其他資訊，請參閱[Zimperium 客戶支援入口網站](https://support.zimperium.com)。
 
 
-## <a name="find-your-data"></a>查找您的資料
+## <a name="find-your-data"></a>尋找您的資料
 
-成功建立連接後，資料將顯示在自訂日誌ZimperiumThreatLog_CL和ZimperiumMitigationLog_CL下的日誌分析中。
+建立成功的連線之後，資料會顯示在 Log Analytics 的 [CustomLogs ZimperiumThreatLog_CL] 和 [ZimperiumMitigationLog_CL] 之下。
 
-要在日誌分析中使用相關架構進行 Zimperium 移動威脅防禦，請搜索ZimperiumThreatLog_CL並ZimperiumMitigationLog_CL。
+若要在 Log Analytics 中使用相關的 Zimperium 行動裝置威脅防護架構，請搜尋 ZimperiumThreatLog_CL 和 ZimperiumMitigationLog_CL。
 
 
 ## <a name="validate-connectivity"></a>驗證連線能力
 
-可能需要 20 分鐘以上，直到日誌開始出現在日誌分析中。
+可能需要20分鐘的時間，您的記錄才會開始出現在 Log Analytics 中。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您學習了如何將 Zimperium 移動威脅防禦連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+在本檔中，您已瞭解如何將 Zimperium 行動裝置威脅防護連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats-built-in.md)。
 
-- [使用活頁簿](tutorial-monitor-your-data.md)監視資料。
+- [使用活頁簿](tutorial-monitor-your-data.md)來監視您的資料。
 
-要瞭解有關 Zimperium 的更多，請參閱以下內容：
+若要深入瞭解 Zimperium，請參閱下列各項：
 
 - [Zimperium](https://zimperium.com)
 
-- [Zimperium 移動安全博客](https://blog.zimperium.com)
+- [Zimperium 行動安全性 Blog](https://blog.zimperium.com)
 
-- [Zimperium 客戶支援門戶](https://support.zimperium.com)
+- [Zimperium 客戶支援入口網站](https://support.zimperium.com)
 

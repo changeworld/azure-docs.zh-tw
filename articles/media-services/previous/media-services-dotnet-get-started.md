@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 7dd49df782115c8c328eed819395209ee7217fd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77566058"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>使用 .NET SDK 傳遞點播內容入門  
@@ -27,11 +27,11 @@ ms.locfileid: "77566058"
 
 本教學課程會逐步引導您使用 Azure 媒體服務 .NET SDK 實作含 Azure 媒體服務 (AMS) 應用程式的基本點播視訊 (VoD) 內容傳遞服務。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 需要有下列項目，才能完成教學課程：
 
-* 一個 Azure 帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* 一個 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 * .NET Framework 4.0 或更新版本。
 * Visual Studio。
@@ -46,7 +46,7 @@ ms.locfileid: "77566058"
 4. 發佈資產並取得串流和漸進式下載 URL。  
 5. 播放您的內容。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本教學課程會逐步完成使用 Azure Media Services (AMS) SDK for .NET 實作點播視訊 (VoD) 內容傳遞應用程式。
 
 教學課程中介紹基本的媒體服務工作流程，以及媒體服務開發最常用的程式設計物件和必要工作。 完成本教學課程時，您將能夠串流或漸進式下載您已上傳、編碼和下載的範例媒體檔案。
@@ -66,7 +66,7 @@ ms.locfileid: "77566058"
 使用 Azure 媒體服務時，其中一個最常見的案例是透過自適性串流提供影片。 媒體服務提供動態封裝，這讓您以媒體服務即時支援的串流格式 (MPEG DASH、HLS、Smooth Streaming) 提供自適性 MP4 編碼內容，而不必儲存這些串流格式個別的預先封裝版本。
 
 >[!NOTE]
->創建 AMS 帳戶時，**預設**流式處理終結點將添加到處于 **"已停止"** 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中]**** 狀態。
+>建立 AMS 帳戶時，**預設**串流端點會新增至您的帳戶處於 [**已停止**] 狀態。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中]**** 狀態。
 
 若要啟動串流端點，請執行下列作業︰
 
@@ -81,7 +81,7 @@ ms.locfileid: "77566058"
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-1. 設置開發環境，使用 連接資訊填充 app.config 檔，如使用[.NET 的媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
+1. 設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 2. 建立新的資料夾 (資料夾可在本機磁碟機上任意處)，並複製您想要編碼和串流處理或漸進式下載的 .mp4 檔案。 在此範例中，使用 "C:\VideoFiles" 路徑。
 
 ## <a name="connect-to-the-media-services-account"></a>連線到媒體服務帳戶
@@ -152,11 +152,11 @@ ms.locfileid: "77566058"
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>建立新資產並上傳視訊檔案
 
-在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。 **資產**實體可以包含視頻、音訊、圖像、縮略圖集合、文本軌道和隱藏字幕檔（以及有關這些檔的中繼資料）。 上傳檔後，您的內容將安全地存儲在雲中，以便進一步處理和資料流。 資產中的檔案稱為 **資產檔案**。
+在媒體服務中，您可以將數位檔案上傳 (或內嵌) 到資產。 **資產**實體可以包含影片、音訊、影像、縮圖集合、文字播放軌和隱藏式輔助字幕檔案（以及這些檔案的相關中繼資料）。 檔案上傳之後，您的內容就會安全地儲存在雲端，以進行進一步的處理和串流。 資產中的檔案稱為 **資產檔案**。
 
 下面所定義的 **UploadFile** 方法會呼叫 **CreateFromFile** (定義於 .NET SDK 延伸模組中)。 **CreateFromFile** 會建立要在其中上傳指定來源檔案的新資產。
 
-**CreateFromFile**方法採用**資產創建選項**，允許您指定以下資產創建選項之一：
+**CreateFromFile**方法會採用**AssetCreationOptions**，這可讓您指定下列其中一個資產建立選項：
 
 * **None** - 不使用加密。 這是預設值。 請注意，使用此選項時，您的內容在傳輸或儲存體中靜止時不會受到保護。
   如果您計劃使用漸進式下載傳遞 MP4，請使用此選項。
@@ -246,7 +246,7 @@ ms.locfileid: "77566058"
 
 #### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>MPEG DASH 的串流 URL 具有下列格式：
 
-[資料流終結點名稱-媒體服務帳戶名稱].streaming.mediaservices.windows.net/{定位器 ID}/{filename}.ism/清單 **（格式=mpd-time-csf）**
+{串流端點名稱-media services 帳戶名稱}. windowsazure.mediaservices.extensions/{定位器識別碼}/{filename}.ism/Manifest **（格式 = mpd-時間-csf）**
 
 #### <a name="a-streaming-url-for-hls-has-the-following-format"></a>HLS 的串流 URL 具有下列格式：
 

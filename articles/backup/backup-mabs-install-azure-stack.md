@@ -1,13 +1,13 @@
 ---
 title: 在 Azure Stack 上安裝 Azure 備份伺服器
-description: 在本文中，瞭解如何使用 Azure 備份伺服器保護或備份 Azure 堆疊中的工作負載。
+description: 在本文中，您將瞭解如何使用 Azure 備份伺服器來保護或備份 Azure Stack 中的工作負載。
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.openlocfilehash: b78e5a662bdcf23ad38cb33292658d4d2455e579
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77583430"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安裝 Azure 備份伺服器
@@ -107,7 +107,7 @@ Azure 備份伺服器一律加入網域。 如果您需要將 Azure 備份伺服
 
 ### <a name="set-storage-replication"></a>設定儲存體複寫
 
-復原服務保存庫儲存體複寫選項有異地備援儲存體和本地備援儲存體可供您選擇。 根據預設，復原服務保存庫會使用異地備援儲存體。 如果這個保存庫是您的主要保存庫，儲存體選項請保持設定為異地備援儲存體。 如果您想要更便宜但較不持久的選項，請選擇本地備援儲存體。 在[Azure 存儲複製概述](../storage/common/storage-redundancy.md)中瞭解有關[異地冗余](../storage/common/storage-redundancy-grs.md)和[本地冗余](../storage/common/storage-redundancy-lrs.md)存儲選項的詳細資訊。
+復原服務保存庫儲存體複寫選項有異地備援儲存體和本地備援儲存體可供您選擇。 根據預設，復原服務保存庫會使用異地備援儲存體。 如果這個保存庫是您的主要保存庫，儲存體選項請保持設定為異地備援儲存體。 如果您想要更便宜但較不持久的選項，請選擇本地備援儲存體。 在[Azure 儲存體複寫總覽](../storage/common/storage-redundancy.md)中，深入瞭解[異地多餘](../storage/common/storage-redundancy-grs.md)和[本機多餘](../storage/common/storage-redundancy-lrs.md)的儲存體選項。
 
 若要編輯儲存體複寫設定︰
 
@@ -163,7 +163,7 @@ Azure 備份伺服器一律加入網域。 如果您需要將 Azure 備份伺服
 
     ![下載中心 1](./media/backup-mabs-install-azure-stack/download-center-selected-files.png)
 
-    所有安裝檔的下載大小大於 3 GB。 在 10 Mbps 下載連結中，下載所有安裝檔案可能需要長達 60 分鐘。 檔案會下載到您指定的下載位置。
+    所有安裝檔案的下載大小大於 3 GB。 在 10 Mbps 下載連結中，下載所有安裝檔案可能需要長達 60 分鐘。 檔案會下載到您指定的下載位置。
 
 ## <a name="extract-azure-backup-server-install-files"></a>擷取 Azure 備份伺服器安裝檔案
 
@@ -217,7 +217,7 @@ Azure 備份伺服器與 Data Protection Manager 共用程式碼。 您會在 Az
 
     ![Azure 備份伺服器 - 歡迎使用和必要條件檢查](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-7.png)
 
-    如果您的環境具有所需的必要條件，就會看到訊息指出機器符合需求。 按 [下一步]****。  
+    如果您的環境具有所需的必要條件，就會看到訊息指出機器符合需求。 按 [下一步]  。  
 
     ![Azure 備份伺服器 - 必要條件檢查通過](./media/backup-mabs-install-azure-stack/mabs-install-wizard-pre-check-passed-8.png)
 
@@ -320,7 +320,7 @@ Azure 備份伺服器與 Data Protection Manager 共用程式碼。 您會在 Az
 
 Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運作。 若要驗證機器是否連接至 Azure，請在Azure 備份伺服器 PowerShell 主控台中使用 ```Get-DPMCloudConnection``` Cmdlet。 如果 Cmdlet 的輸出為 TRUE，表示連線存在，否則沒有連線。
 
-同時，Azure 訂用帳戶也必須處於狀況良好狀態。 要瞭解訂閱的狀態並對其進行管理，請登錄到[訂閱門戶](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
+同時，Azure 訂用帳戶也必須處於狀況良好狀態。 若要找出您的訂用帳戶狀態並加以管理，請登入[訂用帳戶入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)。
 
 在您了解 Azure 連線和 Azure 訂用帳戶的狀態後，您可以使用下表來確認提供的備份/還原功能會受到哪些影響。
 
@@ -335,7 +335,7 @@ Azure 備份伺服器需要連線至 Azure 備份服務，產品才能順利運�
 
 ### <a name="recovering-from-loss-of-connectivity"></a>從連線中斷的情況復原
 
-如果防火牆或代理阻止訪問 Azure，請在防火牆/代理設定檔中添加以下域位址，允許清單：
+如果防火牆或 proxy 無法存取 Azure，請在防火牆/proxy 設定檔允許清單中新增下列網域位址：
 
 - `http://www.msftncsi.com/ncsi.txt`
 - \*.Microsoft.com

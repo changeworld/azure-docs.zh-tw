@@ -1,6 +1,6 @@
 ---
-title: Linux VM 引導到格魯布救援
-description: 虛擬機器無法啟動，因為虛擬機器進入救援主控台
+title: Linux VM 開機至 Grub 修復
+description: 虛擬機器無法開機，因為虛擬機器已進入「修復主控台」
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -14,56 +14,56 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: c24a840716841d04537ac5b77bcaf26fca4b78cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77561944"
 ---
-# <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM 引導到格魯布救援
+# <a name="linux-vm-boots-to-grub-rescue"></a>Linux VM 開機至 Grub 修復
 
-我們已確定您的虛擬機器 （VM） 已進入救援主控台。 當 Linux VM 最近應用了內核更改（如內核升級），並且由於啟動過程中核心錯誤而不再正確啟動時，就會出現此問題。 在啟動過程中，當引導載入程式嘗試查找 Linux 內核並將其啟動控制交給它時，當移交失敗時，VM 將進入救援主控台。
+我們發現您的虛擬機器（VM）輸入了「修復主控台」。 當您的 Linux VM 最近套用核心變更（例如核心升級），而且因為開機程式期間的核心錯誤而無法正常啟動時，就會發生此問題。 在開機過程中，當開機載入器嘗試找出 Linux 核心並將開機控制交給它時，VM 會在送出失敗時進入「修復主控台」。
 
-如果發現將來無法連接到 VM，則可以使用 Azure 門戶中的引導診斷工具查看 VM 的螢幕截圖。 這樣可以協助您診斷問題，並且判斷問題原因是否為類似的開機錯誤。
+如果您未來發現無法連線到 VM，您可以使用 Azure 入口網站中的 [開機診斷] 分頁來查看 VM 的螢幕擷取畫面。 這樣可以協助您診斷問題，並且判斷問題原因是否為類似的開機錯誤。
 
 ## <a name="recommended-steps"></a>建議的步驟
 
-根據您收到的錯誤，請遵循以下緩解步驟：
+根據您收到的錯誤，遵循下列緩和步驟：
 
-### <a name="error---unknown-filesystem"></a>錯誤 - 未知檔案系統
+### <a name="error---unknown-filesystem"></a>錯誤-未知的檔案系統
 
-* 如果收到錯誤**未知檔案系統**，此錯誤可能會導致開機磁碟分割上的檔案系統損壞，或不正確的內核配置。
+* 如果您收到錯誤不明的**檔案系統**，此錯誤可能是由於開機磁碟分割上的檔案系統損毀或不正確的核心設定所造成。
 
-   * 對於檔案系統問題，請按照文章["Linux 恢復：由於檔案系統錯誤（fsck，iode）"而無法 SSH 到 Linux VM 的步驟](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/)。
-   * 對於內核問題，請按照文章[《Linux 恢復：手動修復與內核問題相關的非引導問題](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)》或["Linux 恢復：使用 chroot 修復與內核問題相關的非引導問題](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)"中的步驟。
+   * 針對檔案系統問題，請遵循[Linux 復原：由於檔案系統錯誤（fsck、inode）](https://blogs.msdn.microsoft.com/linuxonazure/2016/09/13/linux-recovery-cannot-ssh-to-linux-vm-due-to-file-system-errors-fsck-inodes/)一文中的步驟，而無法透過 SSH 連線到 linux VM。
+   * 針對核心問題，請遵循[Linux 復原：手動修正與核心問題相關的非開機問題](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-manually-fixing-non-boot-issues-related-to-kernel-problems/)一文中的步驟，或[linux 修復：使用 Chroot 修正與核心問題相關的非開機問題](https://blogs.msdn.microsoft.com/linuxonazure/2016/10/09/linux-recovery-fixing-non-boot-issues-related-to-kernel-problems-using-chroot/)。
    
-### <a name="error---file-not-found"></a>錯誤 - 找不到檔
+### <a name="error---file-not-found"></a>錯誤-找不到檔案
 
-* 如果您收到**錯誤錯誤 15：找不到檔或未找到初始 RAM 磁碟**或**未找到 initrd/initramfs 檔**，請按照以下步驟操作。
+* 如果您收到錯誤錯誤**15：找不**到檔案，或找不到初始 RAM 磁碟或**initrd/initramfs**檔案，請遵循下列步驟。
 
-    * 對於丟失的檔`/boot/grub2/grub.cfg`或`initrd/initramfs`繼續執行以下過程：
+    * 針對遺失的檔案`/boot/grub2/grub.cfg` ， `initrd/initramfs`或繼續進行下列程式：
 
-    1. 確保`/etc/default/grub`存在且具有正確的/所需設置。 如果您不知道哪些是預設設置，可以使用正常工作的 VM 進行檢查。
+    1. 請`/etc/default/grub`確定存在，而且具有正確/需要的設定。 如果您不知道哪些是預設設定，您可以使用運作中的 VM 來檢查。
 
-    2. 接下來，運行以下命令以重新生成其配置：`grub2-mkconfig -o /boot/grub2/grub.cfg`
+    2. 接下來，執行下列命令以重新產生其設定：`grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * `/boot/grub/menu.lst`如果缺少的檔是 ，則此錯誤適用于較舊的作業系統版本 **（RHEL 6.x、Centos**6.x 和**Ubuntu 14.04），** 因此命令可能有所不同。 **Centos 6.x** 您必須啟動舊伺服器並進行測試，以確保提供正確的命令。
+   * 如果遺失的檔案是`/boot/grub/menu.lst`，則此錯誤適用于較舊的 OS 版本（**RHEL**6.x、 **Centos** 6.x 和**Ubuntu 14.04**），因此命令可能會有所不同。 您必須加速舊的伺服器並進行測試，以確保提供正確的命令。
 
-### <a name="error---no-such-partition"></a>錯誤 - 沒有此類分區
+### <a name="error---no-such-partition"></a>錯誤-沒有這類資料分割
 
-* 如果你得到的錯誤**沒有這樣的分區**，請參閱[案例方案："沒有這樣的分區"錯誤，而嘗試啟動VM後，嘗試擴展操作系統磁碟機](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/)。
+* 如果您收到錯誤資料**分割**，請參閱[案例：在嘗試擴充 OS 磁片磁碟機之後，嘗試啟動 VM 時，「沒有這種分割區」錯誤](https://blogs.technet.microsoft.com/shwetanayak/2017/03/12/case-scenario-no-such-partition-error-while-trying-to-start-the-vm-after-attempting-to-extend-the-os-drive/)。
 
-### <a name="error---grubcfg-file-not-found"></a>錯誤 - 未找到 grub.cfg 檔
+### <a name="error---grubcfg-file-not-found"></a>錯誤-找不到 grub 檔案
 
-* 如果您收到錯誤 **/引導/grub2/grub.cfg 檔未找到**，請按照以下步驟操作。
+* 如果您收到「找不到錯誤 **/boot/grub2/grub.cfg**檔案」，請遵循下列步驟。
 
-    * 對於丟失的檔`/boot/grub2/grub.cfg`或`initrd/initramfs`繼續執行以下過程：
+    * 針對遺失的檔案`/boot/grub2/grub.cfg` ， `initrd/initramfs`或繼續進行下列程式：
 
-    1. 確保`/etc/default/grub`存在且具有正確的/所需設置。 如果您不知道哪些是預設設置，可以使用正常工作的 VM 進行檢查。
+    1. 請`/etc/default/grub`確定存在，而且具有正確/需要的設定。 如果您不知道哪些是預設設定，您可以使用運作中的 VM 來檢查。
 
-    2. 接下來，運行以下命令以重新生成其配置： `grub2-mkconfig -o /boot/grub2/grub.cfg`。
+    2. 接下來，執行下列命令以重新產生其設定`grub2-mkconfig -o /boot/grub2/grub.cfg`：。
 
-   * 如果缺少的檔`/boot/grub/menu.lst`是 ，此錯誤適用于較舊的作業系統版本 **（RHEL 6.x、Centos**6.x 和**Ubuntu 14.04），** 因此命令可能會延遲。 **Centos 6.x** 旋轉舊伺服器並對其進行測試，以確保提供正確的命令。
+   * 如果遺失的檔案是`/boot/grub/menu.lst`，則此錯誤適用于較舊的 OS 版本（**RHEL**6.x、 **Centos** 6.x 和**Ubuntu 14.04**），因此命令可能會延遲。 啟動舊伺服器並加以測試，以確保提供正確的命令。
 
 ## <a name="next-steps"></a>後續步驟
 

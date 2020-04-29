@@ -1,5 +1,5 @@
 ---
-title: 斯托簡單虛擬陣列的容錯移轉和災害復原
+title: StorSimple Virtual Array 的容錯移轉和嚴重損壞修復
 description: 深入了解如何容錯移轉 StorSimple Virtual Array。
 services: storsimple
 documentationcenter: NA
@@ -16,15 +16,15 @@ ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 464fa05f658dd6e6e25d79f8840ceeb939383149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77467210"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>透過 Azure 入口網站進行 StorSimple Virtual Array 的災害復原和裝置容錯移轉
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本文說明 Microsoft Azure StorSimple Virtual Array 的災害復原，包括容錯移轉至另一個虛擬陣列的詳細步驟。 容錯移轉可讓您將資料從資料中心的「來源」** 裝置移至「目標」** 裝置。 目標裝置可能位於相同或不同的地理位置。 裝置容錯移轉適用於整個裝置。 在容錯移轉期間，來源裝置的雲端資料會將擁有權變更為目標裝置雲端資料。
 
 本文僅適用於 StorSimple Virtual Array。 若要容錯移轉 8000 系列裝置，請參閱 [StorSimple 裝置的裝置容錯移轉和災害復原](storsimple-device-failover-disaster-recovery.md)。
@@ -40,11 +40,11 @@ ms.locfileid: "77467210"
 > 
 > 
 
-災害復原通過設備容錯移轉功能進行編排，並從 **"設備"** 邊欄選項卡啟動。 此刀鋒視窗會以表格列出所有連接至 StorSimple 裝置管理員服務的 StorSimple 裝置。 您可以看到每個裝置的易記名稱、狀態、已佈建和最大容量、類型及模型。
+嚴重損壞修復是透過裝置容錯移轉功能來進行協調，並且是從 [**裝置**] 分頁啟動。 此刀鋒視窗會以表格列出所有連接至 StorSimple 裝置管理員服務的 StorSimple 裝置。 您可以看到每個裝置的易記名稱、狀態、已佈建和最大容量、類型及模型。
 
 ## <a name="prerequisites-for-device-failover"></a>裝置容錯移轉需求
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 對於裝置容錯移轉，請確定符合下列必要條件：
 
@@ -57,12 +57,12 @@ ms.locfileid: "77467210"
   > 
 * 目標裝置不能與來源裝置同名。
 * 來源和目標裝置的類型必須相同。 您只能將設定為檔案伺服器的虛擬陣列容錯移轉至另一個檔案伺服器。 這適用於 iSCSI 伺服器。
-* 針對檔案伺服器 DR，建議您將目標裝置加入與來源相同的網域。 此設定可確保自動解析共用權限。 僅支援對同一域中的目標設備的容錯移轉。
+* 針對檔案伺服器 DR，建議您將目標裝置加入與來源相同的網域。 此設定可確保自動解析共用權限。 僅支援容錯移轉至相同網域中的目標裝置。
 * DR 的可用目標裝置是容量與來源裝置相同或更高的裝置。 已連接至服務但不符合足夠空間條件的裝置無法做為目標裝置。
 
 ### <a name="other-considerations"></a>其他考量
 
-* 對於計畫容錯移轉：
+* 規劃的容錯移轉：
   
   * 建議您將來源裝置上的所有磁碟區或共用離線。
   * 建議您先備份裝置，再繼續容錯移轉，以儘可能避免資料遺失。
@@ -138,7 +138,7 @@ DR 順利完成之後，來源裝置上雲端資料的擁有權會移轉給目�
 
     3. 勾選 [我了解這項作業會將資料容錯移轉至目標裝置]****。 
 
-    4. 按一下 **"容錯移轉**"。
+    4. 按一下 [**故障切換**]。
     
         ![](./media/storsimple-virtual-array-failover-dr/failover4.png)
 11. 容錯移轉工作起始，您會收到通知。 移至 [裝置] > [作業]**** 來監視容錯移轉。
@@ -162,7 +162,7 @@ DR 順利完成之後，來源裝置上雲端資料的擁有權會移轉給目�
 
 **DR 期間雲端連線能力中斷**
 
-從 DR 啟動之後到裝置還原完成之前，如果雲端連線中斷，DR 將會失敗。 您會收到故障通知。 DR 的目標裝置會標示為 [無法使用]**。 您無法將相同的目標裝置用於未來的 DR。
+從 DR 啟動之後到裝置還原完成之前，如果雲端連線中斷，DR 將會失敗。 您會收到失敗通知。 DR 的目標裝置會標示為 [無法使用]**。 您無法將相同的目標裝置用於未來的 DR。
 
 **沒有相容的目標裝置**
 

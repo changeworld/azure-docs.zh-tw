@@ -1,5 +1,5 @@
 ---
-title: 保護 Azure 安全中心的網路資源
+title: 保護 Azure 資訊安全中心中的網路資源
 description: 此文件說明可協助您保護 Azure 網路資源及遵守安全性原則的 Azure 資訊安全中心建議。
 services: security-center
 documentationcenter: na
@@ -14,20 +14,20 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
 ms.openlocfilehash: 792b95b120f67afcd360730acbd783a3071388b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77431480"
 ---
 # <a name="protect-your-network-resources"></a>保護您的網路資源
 Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲得網路安全性最佳做法。 當資訊安全中心發現潛在的安全性弱點時，它會建立可引導您完成所需控制之設定程序的建議，以加強並保護您的資源。
 
-本文介紹了安全中心資源安全部分**的網路頁面。**
+本文說明資訊安全中心的 [資源安全性] 區段中的 [**網路**] 頁面。
 
-有關網路建議的完整清單，請參閱[網路建議](recommendations-reference.md#recs-network)。
+如需網路建議的完整清單，請參閱[網路功能建議](recommendations-reference.md#recs-network)。
 
-此文章從網路安全性觀點，說明適用於您 Azure 資源的建議。 網路建議圍繞下一代防火牆、網路安全性群組、JIT VM 訪問、過度寬鬆的入站流量規則等進行。 如需網路建議和補救動作的清單，請參閱[管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)。
+此文章從網路安全性觀點，說明適用於您 Azure 資源的建議。 網路建議是在新一代防火牆、網路安全性群組、JIT VM 存取、過於寬鬆的輸入流量規則和其他方面的中心。 如需網路建議和補救動作的清單，請參閱[管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)。
 
 > [!NOTE]
 > [網路]**** 頁面可讓您從網路觀點深入了解您的 Azure 資源健康情況。 網路地圖和調適性網路控制僅適用於 Azure 資訊安全中心標準層。 [如果您使用免費層，可以按一下按鈕，**檢視舊版網路功能**並接收網路資源建議](#legacy-networking)。
@@ -53,8 +53,8 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 拓撲圖的預設檢視會顯示：
 
 - 您在 Azure 中選取的訂用帳戶。 此地圖支援多個訂用帳戶。
-- 資源管理器資源類型的 VM、子網和 VNet（不支援經典 Azure 資源）
-- 對等 VNet
+- Resource Manager 資源類型的 Vm、子網和 Vnet （不支援傳統 Azure 資源）
+- 對等互連 Vnet
 - 僅限包含嚴重性為高或中的[網路建議](security-center-recommendations.md)的資源  
 - 網際網路面向資源
 - 此地圖已針對您在 Azure 中選取的訂用帳戶最佳化。 如果您修改選取項目，將會根據新的設定重新計算地圖並重新最佳化。  
@@ -107,7 +107,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 若要向下切入到某個資源：
 
 1. 當您在地圖上選取特定的資源時，右窗格會開啟，並提供您資源的一般資訊、連線的安全性解決方案 (如果有的話)，以及與資源相關的建議。 對於您選取的每種類型資源而言，這是相同類型的行為。 
-2. 按一下 [流量]**** 可針對資源查看可能的輸出和輸入流量清單，這是誰可以與資源進行通訊、誰可以進行通訊，以及透過哪些通訊協定與連接埠的完整清單。 例如，當您選擇 VM 時，將顯示它可以通信的所有 VM，並且當您選擇子網時，將顯示它可以與其通信的所有子網。
+2. 按一下 [流量]**** 可針對資源查看可能的輸出和輸入流量清單，這是誰可以與資源進行通訊、誰可以進行通訊，以及透過哪些通訊協定與連接埠的完整清單。 例如，當您選取 VM 時，會顯示可與其通訊的所有 Vm，而且當您選取子網時，會顯示可與其通訊的所有子網。
 
 **此資料是以網路安全性群組以及進階機器學習演算法為基礎，後者可以分析多個規則，以了解其交叉與互動。** 
 
@@ -120,7 +120,7 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 
 若要存取此資訊，請在 [網路功能] 刀鋒視窗中，按一下 [檢視舊版網路功能]****。 
 
-[![傳統網路](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
+[![舊版網路功能](./media/security-center-network-recommendations/legacy-networking.png)](./media/security-center-network-recommendations/legacy-networking.png#lightbox)
 
 ### <a name="internet-facing-endpoints-section"></a>網際網路面向端點區段
 在 [網際網路面向端點]**** 區段中，您可以看到目前使用網際網路面向端點所設定的虛擬機器及其狀態。
@@ -132,9 +132,9 @@ Azure 資訊安全中心會持續分析 Azure 資源的安全性狀態，以獲�
 
 此表格是依嚴重性排序 (虛擬機器和子網路)。
 
-在此拓撲檢視中，第一層會顯示 Vnet。 第二層顯示子網，第三級顯示屬於這些子網的虛擬機器。 右欄會針對這些資源顯示網路安全性群組建議的目前狀態。
+在此拓撲檢視中，第一層會顯示 Vnet。 第二個會顯示子網，而第三個層級會顯示屬於這些子網的虛擬機器。 右欄會針對這些資源顯示網路安全性群組建議的目前狀態。
 
-第三層會顯示虛擬機器，類似上面所述。 您可以按一下任何資源以瞭解更多資訊或應用所需的安全控制或配置。
+第三層會顯示虛擬機器，類似上面所述。 您可以按一下任何資源，以深入瞭解或套用所需的安全性控制或設定。
 
 ## <a name="next-steps"></a>後續步驟
 

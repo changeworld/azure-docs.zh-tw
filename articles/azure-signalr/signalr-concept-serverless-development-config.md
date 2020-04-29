@@ -1,29 +1,29 @@
 ---
-title: 開發&配置 Azure 函數應用 - Azure 信號R
-description: 有關如何使用 Azure 函數和 Azure SignalR 服務開發和配置無伺服器即時應用程式的詳細資訊
+title: 開發 & 設定 Azure Functions 應用程式-Azure SignalR
+description: 有關如何使用 Azure Functions 和 Azure SignalR Service 開發和設定無伺服器即時應用程式的詳細資料
 author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77523165"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>使用 Azure SignalR Service 來開發與設定 Azure Functions
 
-Azure 函數應用程式可以利用[Azure SignalR 服務綁定](../azure-functions/functions-bindings-signalr-service.md)添加即時功能。 用戶端應用程式使用多種語言的用戶端 SDK 連接到 Azure SignalR 服務並接收即時消息。
+Azure Functions 應用程式可以利用[Azure SignalR Service](../azure-functions/functions-bindings-signalr-service.md)系結來新增即時功能。 用戶端應用程式會使用數種語言提供的用戶端 Sdk 來連接 Azure SignalR Service 並接收即時訊息。
 
-本文介紹了開發和配置與 SignalR 服務集成的 Azure 函數應用的概念。
+本文說明開發和設定與 SignalR Service 整合的 Azure 函式應用程式的概念。
 
-## <a name="signalr-service-configuration"></a>信號R服務配置
+## <a name="signalr-service-configuration"></a>SignalR Service 設定
 
-Azure SignalR 服務可以以不同的模式進行配置。 當與 Azure 函數一起使用時，必須在*無伺服器*模式下佈建服務。
+Azure SignalR Service 可以在不同的模式下設定。 與 Azure Functions 搭配使用時，服務必須以*無伺服器*模式設定。
 
-在 Azure 門戶中，找到 SignalR 服務資源的 *"設置"* 頁。 將*服務模式*設置為*無伺服器*。
+在 [Azure 入口網站中，找出您 SignalR Service 資源的 [*設定*] 頁面。 將 [*服務模式]* 設定為 [*無伺服器*]。
 
 ![SignalR Service 模式](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
@@ -34,40 +34,40 @@ Azure SignalR 服務可以以不同的模式進行配置。 當與 Azure 函數�
 * "negotiate" 函式，用戶端會呼叫該函式來取得有效的 SignalR Service 存取權杖和服務端點 URL
 * 傳送訊息或管理群組成員資格的一個或多個函式
 
-### <a name="negotiate-function"></a>協商功能
+### <a name="negotiate-function"></a>negotiate 函式
 
-用戶端應用程式需要有效的訪問權杖才能連接到 Azure SignalR 服務。 訪問權杖可以是匿名的，也可以對給定的使用者 ID 進行身份驗證。 無伺服器信號R 服務應用程式需要名為"協商"的 HTTP 終結點來獲取權杖和其他連接資訊，例如 SignalR 服務終結點 URL。
+用戶端應用程式需要有效的存取權杖，才能連接到 Azure SignalR Service。 存取權杖可以是匿名或通過指定的使用者識別碼驗證。 無伺服器 SignalR Service 應用程式需要名為「negotiate」的 HTTP 端點，才能取得權杖和其他連接資訊，例如 SignalR Service 端點 URL。
 
-使用 HTTP 觸發的 Azure 函數和*SignalRConnectionInfo*輸入綁定生成連接資訊物件。 函數必須具有以 結尾的`/negotiate`HTTP 路由。
+使用 HTTP 觸發的 Azure 函數和*SignalRConnectionInfo*輸入系結來產生連接資訊物件。 函式必須具有以結尾的 HTTP 路由`/negotiate`。
 
-有關如何創建協商函數的詳細資訊，請參閱[*SignalRConnectionInfo*輸入綁定引用](../azure-functions/functions-bindings-signalr-service-input.md)。
+如需有關如何建立 negotiate 函式的詳細資訊，請參閱[ *SignalRConnectionInfo*輸入](../azure-functions/functions-bindings-signalr-service-input.md)系結參考。
 
-要瞭解如何創建經過身份驗證的權杖，請參閱[使用應用服務身份驗證](#using-app-service-authentication)。
+若要瞭解如何建立已驗證的權杖，請參閱[使用 App Service 驗證](#using-app-service-authentication)。
 
-### <a name="sending-messages-and-managing-group-membership"></a>發送消息和管理組成員身份
+### <a name="sending-messages-and-managing-group-membership"></a>傳送訊息和管理群組成員資格
 
-使用*SignalR*輸出綁定將消息發送到連接到 Azure SignalR 服務的用戶端。 您可以將消息廣播給所有用戶端，也可以將它們發送到使用特定使用者 ID 進行身份驗證或已添加到特定組的用戶端子集。
+使用*SignalR*輸出系結，將訊息傳送至連線至 Azure SignalR Service 的用戶端。 您可以將訊息廣播到所有用戶端，也可以將它們傳送到以特定使用者識別碼驗證或已新增至特定群組的用戶端子集。
 
-使用者可以添加到一個或多個組。 您還可以使用*SignalR*輸出綁定將使用者添加或刪除組。
+使用者可以新增至一個或多個群組。 您也可以使用*SignalR*輸出系結，在群組中新增或移除使用者。
 
-有關詳細資訊，請參閱[*SignalR*輸出綁定引用](../azure-functions/functions-bindings-signalr-service-output.md)。
+如需詳細資訊，請參閱[ *SignalR*輸出](../azure-functions/functions-bindings-signalr-service-output.md)系結參考。
 
-### <a name="signalr-hubs"></a>信號器中心
+### <a name="signalr-hubs"></a>SignalR 中樞
 
-SignalR 具有"集線器"的概念。 每個用戶端連接和從 Azure 函數發送的每條消息都限定在特定中心。 可以使用集線器作為將連接和消息分隔到邏輯命名空間的一種方式。
+SignalR 具有「中樞」的概念。 每個用戶端連線以及從 Azure Functions 傳送的每個訊息都是以特定的中樞為範圍。 您可以使用中樞做為將連線和訊息分隔成邏輯命名空間的方式。
 
 ## <a name="client-development"></a>用戶端開發
 
-SignalR 用戶端應用程式可以利用多種語言之一的 SignalR 用戶端 SDK 輕鬆連接到 Azure SignalR 服務的消息。
+SignalR 用戶端應用程式可以利用其中一種語言的 SignalR 用戶端 SDK，輕鬆地連線到 Azure SignalR Service 並從中接收訊息。
 
-### <a name="configuring-a-client-connection"></a>配置用戶端連接
+### <a name="configuring-a-client-connection"></a>設定用戶端連接
 
-要連接到 SignalR 服務，用戶端必須完成包含以下步驟的成功連接協商：
+若要連接到 SignalR Service，用戶端必須完成由下列步驟所組成的成功連線協調：
 
-1. 向上面討論的*協商*HTTP 終結點發出請求以獲取有效的連接資訊
-1. 使用服務終結點 URL 和從*協商*終結點獲取的訪問權杖連接到 SignalR 服務
+1. 對上述的*negotiate* HTTP 端點提出要求，以取得有效的連接資訊
+1. 使用從*negotiate*端點取得的服務端點 URL 和存取權杖，連接到 SignalR Service
 
-SignalR 用戶端 SDK 已包含執行協商握手所需的邏輯。 將協商終結點的 URL（減去`negotiate`段）傳遞給 SDK 的`HubConnectionBuilder`。 下面是 JavaScript 中的一個示例：
+SignalR 用戶端 Sdk 已包含執行協調交握所需的邏輯。 將 negotiate 端點的 URL （減去`negotiate`區段）傳遞至 SDK 的。 `HubConnectionBuilder` 以下是 JavaScript 的範例：
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -75,37 +75,37 @@ const connection = new signalR.HubConnectionBuilder()
   .build()
 ```
 
-按照慣例，SDK 會自動追加`/negotiate`到 URL 並使用它開始協商。
+依照慣例，SDK 會自動附加`/negotiate`至 URL，並使用它來開始進行協商。
 
 > [!NOTE]
-> 如果您在瀏覽器中使用 JavaScript/TypeScript SDK，則需要在函數應用上[啟用跨源資源分享 （CORS）。](#enabling-cors)
+> 如果您在瀏覽器中使用 JavaScript/TypeScript SDK，您需要在您的函數應用程式上[啟用跨原始來源資源分享（CORS）](#enabling-cors) 。
 
-有關如何使用 SignalR 用戶端 SDK 的詳細資訊，請參閱語言文檔：
+如需有關如何使用 SignalR 用戶端 SDK 的詳細資訊，請參閱您語言的檔：
 
 * [.NET Standard](https://docs.microsoft.com/aspnet/core/signalr/dotnet-client)
-* [JAVAscript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
-* [JAVA](https://docs.microsoft.com/aspnet/core/signalr/java-client)
+* [JavaScript](https://docs.microsoft.com/aspnet/core/signalr/javascript-client)
+* [Java](https://docs.microsoft.com/aspnet/core/signalr/java-client)
 
-### <a name="sending-messages-from-a-client-to-the-service"></a>將消息從用戶端發送到服務
+### <a name="sending-messages-from-a-client-to-the-service"></a>從用戶端傳送訊息至服務
 
-儘管 SignalR SDK 允許用戶端應用程式在 SignalR 中心中調用後端邏輯，但在將 SignalR 服務與 Azure 函數一起使用時，此功能尚不受支援。 使用 HTTP 要求調用 Azure 函數。
+雖然 SignalR SDK 可讓用戶端應用程式叫用 SignalR 中樞的後端邏輯，但當您搭配 Azure Functions 使用 SignalR Service 時，尚不支援這項功能。 使用 HTTP 要求叫用 Azure Functions。
 
-## <a name="azure-functions-configuration"></a>Azure 函數配置
+## <a name="azure-functions-configuration"></a>Azure Functions 設定
 
-與 Azure SignalR 服務集成的 Azure 函數應用可以像任何典型的 Azure 函數應用一樣部署，使用[連續部署](../azure-functions/functions-continuous-deployment.md)[、zip 部署](../azure-functions/deployment-zip-push.md)和[從包運行](../azure-functions/run-functions-from-deployment-package.md)等技術。
+與 Azure SignalR Service 整合的 azure 函式應用程式可以像任何一般 Azure 函式應用程式一樣部署，方法是使用[持續部署](../azure-functions/functions-continuous-deployment.md)、 [zip 部署](../azure-functions/deployment-zip-push.md)和[從封裝執行](../azure-functions/run-functions-from-deployment-package.md)等技術。
 
-但是，對於使用 SignalR 服務綁定的應用，有幾個特殊注意事項。 如果用戶端在瀏覽器中運行，則必須啟用 CORS。 如果應用需要身份驗證，則可以將協商終結點與應用服務身份驗證集成。
+不過，使用 SignalR Service 系結的應用程式有幾個特殊考慮。 如果用戶端在瀏覽器中執行，則必須啟用 CORS。 而且，如果應用程式需要驗證，您可以將 negotiate 端點與 App Service Authentication 整合。
 
 ### <a name="enabling-cors"></a>啟用 CORS
 
-JavaScript/TypeScript 用戶端向協商函數發出 HTTP 要求以啟動連接協商。 當用戶端應用程式託管在與 Azure 函數應用不同的域上時，必須在功能應用上啟用跨源資源分享 （CORS），否則瀏覽器將阻止請求。
+JavaScript/TypeScript 用戶端會向 negotiate 函式發出 HTTP 要求，以起始連接協商。 當用戶端應用程式裝載于與 Azure Function 應用程式不同的網域時，必須在函數應用程式上啟用跨原始來源資源分享（CORS），否則瀏覽器將會封鎖要求。
 
 #### <a name="localhost"></a>Localhost
 
-在本地電腦上運行"功能"應用時，可以將`Host`節添加到*本地.settings.json*以啟用 CORS。 在本節`Host`中，添加兩個屬性：
+在您的本機電腦上執行`Host`函式應用程式時，您可以將區段新增至*本機. 設定*，以啟用 CORS。 在`Host`區段中，新增兩個屬性：
 
-* `CORS`- 輸入是用戶端應用程式源的基本 URL
-* `CORSCredentials`- 將其設置為`true`允許"帶憑據"請求
+* `CORS`-輸入做為用戶端應用程式來源的基底 URL
+* `CORSCredentials`-將它設定`true`為以允許 "withCredentials" 要求
 
 範例：
 
@@ -122,24 +122,24 @@ JavaScript/TypeScript 用戶端向協商函數發出 HTTP 要求以啟動連接�
 }
 ```
 
-#### <a name="cloud---azure-functions-cors"></a>雲 - Azure 功能 CORS
+#### <a name="cloud---azure-functions-cors"></a>雲端 Azure Functions CORS
 
-要在 Azure 函數應用上啟用 CORS，請轉到 Azure 門戶中"功能"應用*的平臺功能*選項卡下的 CORS 配置螢幕。
+若要在 Azure 函式應用程式上啟用 CORS，請移至 Azure 入口網站中函數應用程式的 [*平臺功能*] 索引標籤下的 [cors 設定] 畫面。
 
 > [!NOTE]
-> CORS 配置在 Azure 函數 Linux 使用計畫中尚不可用。 使用[Azure API 管理](#cloud---azure-api-management)啟用 CORS。
+> Azure Functions Linux 使用量計畫中尚未提供 CORS 設定。 使用[AZURE API 管理](#cloud---azure-api-management)來啟用 CORS。
 
-必須啟用具有存取控制允許憑據的 CORS，以便 SignalR 用戶端調用協商函數。 選擇核取方塊以啟用它。
+必須啟用 SignalR 用戶端的 CORS，才能呼叫 negotiate 函式。 選取核取方塊以啟用它。
 
-在 *"允許源"* 部分中，添加包含 Web 應用程式源基 URL 的條目。
+在 [*允許的來源*] 區段中，使用 web 應用程式的原始基底 URL 來新增專案。
 
-![配置 CORS](media/signalr-concept-serverless-development-config/cors-settings.png)
+![設定 CORS](media/signalr-concept-serverless-development-config/cors-settings.png)
 
-#### <a name="cloud---azure-api-management"></a>雲 - Azure API 管理
+#### <a name="cloud---azure-api-management"></a>雲端-Azure API 管理
 
-Azure API 管理提供 API 閘道，將功能添加到現有後端服務。 您可以使用它將 CORS 添加到函數應用。 它提供了一個消費層，即按行動付費定價和每月免費補助。
+Azure API 管理提供可將功能新增至現有後端服務的 API 閘道。 您可以使用它將 CORS 新增至您的函數應用程式。 它提供的取用量層具有按動作付費的定價和每月免費授與。
 
-有關如何[導入 Azure 函數應用](../api-management/import-function-app-as-api.md)的資訊，請參閱 API 管理文檔。 導入後，可以添加入站策略，以啟用具有存取控制允許憑據支援的 CORS。
+如需如何匯[入 Azure 函數應用程式](../api-management/import-function-app-as-api.md)的相關資訊，請參閱 API 管理檔。 匯入之後，您可以新增輸入原則，以啟用具有存取控制-允許憑證支援的 CORS。
 
 ```xml
 <cors allow-credentials="true">
@@ -159,17 +159,17 @@ Azure API 管理提供 API 閘道，將功能添加到現有後端服務。 您�
 </cors>
 ```
 
-將 SignalR 用戶端配置為使用 API 管理 URL。
+將您的 SignalR 用戶端設定為使用 API 管理 URL。
 
-### <a name="using-app-service-authentication"></a>使用應用服務身份驗證
+### <a name="using-app-service-authentication"></a>使用 App Service 驗證
 
-Azure 功能具有內置身份驗證，支援 Facebook、Twitter、微軟帳戶、Google 和 Azure 活動目錄等熱門供應商。 此功能可與*SignalRConnectionInfo*綁定集成，以創建與 Azure SignalR 服務的連接，該服務已通過使用者 ID 進行身份驗證。 您的應用程式可以使用面向該使用者 ID 的*SignalR*輸出綁定發送消息。
+Azure Functions 具有內建的驗證，可支援 Facebook、Twitter、Microsoft 帳戶、Google 和 Azure Active Directory 等熱門提供者。 這項功能可以與*SignalRConnectionInfo*系結整合，以建立與已驗證使用者識別碼之 Azure SignalR Service 的連接。 您的應用程式可以使用以該使用者識別碼為目標的*SignalR*輸出系結來傳送訊息。
 
-在 Azure 門戶中，在"功能"應用*的平臺功能*選項卡中，打開*身份驗證/授權*設置視窗。 按照[應用服務身份驗證](../app-service/overview-authentication-authorization.md)的文檔使用您選擇的標識提供程式配置身份驗證。
+在 Azure 入口網站的函數應用程式的 [*平臺功能*] 索引標籤中，開啟 [*驗證/授權*設定] 視窗。 遵循[App Service 驗證](../app-service/overview-authentication-authorization.md)的檔，使用您選擇的身分識別提供者來設定驗證。
 
-配置後，經過身份驗證的 HTTP`x-ms-client-principal-name`請求`x-ms-client-principal-id`將分別包含包含經過身份驗證標識的使用者名和使用者 ID 的標頭。
+一旦設定之後，經過驗證的 HTTP `x-ms-client-principal-name`要求`x-ms-client-principal-id`將會包含和標頭，分別包含已驗證身分識別的使用者名稱和使用者識別碼。
 
-您可以在*SignalRConnectionInfo*綁定配置中使用這些標頭來創建經過身份驗證的連接。 下面是使用標頭的示例`x-ms-client-principal-id`C# 協商函數。
+您可以在*SignalRConnectionInfo*系結設定中使用這些標頭來建立已驗證的連接。 以下是使用`x-ms-client-principal-id`標頭的範例 c # negotiate 函式。
 
 ```csharp
 [FunctionName("negotiate")]
@@ -184,7 +184,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-然後，您可以通過設置 SignalR 消息`UserId`的屬性向該使用者發送消息。
+接著，您可以藉由設定 SignalR 訊息的`UserId`屬性，將訊息傳送給該使用者。
 
 ```csharp
 [FunctionName("SendMessage")]
@@ -203,8 +203,8 @@ public static Task SendMessage(
 }
 ```
 
-有關其他語言的資訊，請參閱 Azure 信號[R 服務綁定](../azure-functions/functions-bindings-signalr-service.md)，瞭解 Azure 函數引用。
+如需其他語言的詳細資訊，請參閱 Azure Functions 參考的[Azure SignalR Service](../azure-functions/functions-bindings-signalr-service.md)系結。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您已經瞭解如何使用 Azure 函數開發和配置無伺服器 SignalR 服務應用程式。 嘗試使用[SignalR 服務概述頁上](index.yml)的快速啟動或教程之一自行創建應用程式。
+在本文中，您已瞭解如何使用 Azure Functions 開發和設定無伺服器 SignalR Service 應用程式。 嘗試使用 [ [SignalR Service 總覽] 頁面](index.yml)上的其中一個 [快速入門] 或 [教學課程] 自行建立應用程式。

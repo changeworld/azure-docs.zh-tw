@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: fcf31fcc266358911612c25e0b73a0a9de696b1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77539007"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>在 Azure 實驗室服務中建立和管理教室範本
@@ -28,26 +28,26 @@ ms.locfileid: "77539007"
 ## <a name="set-or-update-template-title-and-description"></a>設定或更新範本標題和描述
 使用下列步驟，第一次設定標題和描述，且稍後加以更新。 
 
-1. 在 **"範本"** 頁上，輸入實驗室的新**標題**。  
-2. 輸入範本的新**說明**。 當您將焦點移出文字方塊時，它會自動儲存。 
+1. 在 [**範本**] 頁面上，輸入實驗室的新**標題**。  
+2. 輸入範本的新**描述**。 當您將焦點移出文字方塊時，它會自動儲存。 
 
     ![範本名稱和描述](../media/how-to-create-manage-template/template-name-description.png)
 
 ## <a name="update-a-template-vm"></a>更新範本 VM
-使用以下步驟更新範本 VM。  
+使用下列步驟來更新範本 VM。  
 
-1. 等待範本 VM 啟動，然後選擇工具列上的 **"連接到範本**"以連接到範本 VM，然後按照說明操作。 如果是 Windows 電腦，您將看到下載 RDP 檔的選項。 
-1. 連接到範本並進行更改後，該範本將不再具有與上次發佈到使用者的虛擬機器相同的設置。 範本更改不會反映在使用者的現有虛擬機器上，直到您再次發佈之後。
+1. 等待範本 VM 啟動，然後選取工具列上的 **[連線至範本**] 以連線至範本 vm，並遵循指示進行。 如果是 Windows 電腦，您會看到下載 RDP 檔案的選項。 
+1. 一旦您連接到範本並進行變更後，它將不再具有與最後發佈給使用者的虛擬機器相同的設定。 在您再次發佈之前，範本變更不會反映在使用者的現有虛擬機器上。
 
     ![連線至範本 VM](../media/how-to-create-manage-template/connect-template-vm.png)
     
 1. 安裝學生使用實驗室所需的任何軟體 (例如，Visual Studio、Azure 儲存體總管等)。 
 1. 中斷範本 VM 的連線 (關閉您的遠端桌面工作階段)。 
-1. 通過選擇 **"停止"範本**停止範本，**停止**範本 VM。 
-1. 按照下一節中的步驟**發佈**更新的範本 VM。 
+1. 選取 [**停止範本**]，以**停止**範本 VM。 
+1. 遵循下一節中的步驟，**發佈**已更新的範本 VM。 
 
 ## <a name="publish-the-template-vm"></a>發佈範本 VM  
-在此步驟中，請發佈範本 VM。 發佈範本 VM 時，Azure 實驗室服務使用範本在實驗室中創建 VM。 所有虛擬機器都有與範本相同的設定。
+在此步驟中，請發佈範本 VM。 當您發佈範本 VM 時，Azure 實驗室服務會使用範本在實驗室中建立 Vm。 所有虛擬機器都有與範本相同的設定。
 
 
 1. 在 [範本]**** 頁面上，選取工具列上的 [發佈]****。 

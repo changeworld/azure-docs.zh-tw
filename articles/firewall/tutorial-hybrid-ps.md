@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 部署&配置混合網路中的 Azure 防火牆
-description: 在本文中，您將瞭解如何使用 Azure PowerShell 部署和配置 Azure 防火牆。
+title: 部署 & 使用 PowerShell 在混合式網路中設定 Azure 防火牆
+description: 在本文中，您將瞭解如何使用 Azure PowerShell 來部署和設定 Azure 防火牆。
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -9,10 +9,10 @@ ms.date: 01/08/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
 ms.openlocfilehash: 37bb28419f23fee2c179171a2e5c0e4e851ac9a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77471749"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>使用 Azure PowerShell 在混合式網路中部署及設定 Azure 防火牆
@@ -21,11 +21,11 @@ ms.locfileid: "77471749"
 
 您可以使用定義允許和拒絕網路流量的規則，在混合式網路中使用 Azure 防火牆來控制網路存取。
 
-在本文中，您可以創建三個虛擬網路：
+在本文中，您會建立三個虛擬網路：
 
 - **VNet-Hub** - 防火牆位於此虛擬網路中。
 - **VNet-Spoke** - 輪輻虛擬網路代表位於 Azure 的工作負載。
-- **VNet-Onprem** - 內部部署虛擬網路代表內部部署網路。 在實際部署中，它可經由 VPN 或 ExpressRoute 連線來連線。 為簡單起見，本文使用 VPN 閘道連接，並且基於 Azure 的虛擬網路用於表示本地網路。
+- **VNet-Onprem** - 內部部署虛擬網路代表內部部署網路。 在實際部署中，它可經由 VPN 或 ExpressRoute 連線來連線。 為了簡單起見，本文使用 VPN 閘道連線，而 Azure 位置的虛擬網路則用來代表內部部署網路。
 
 ![混合式網路中的防火牆](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
@@ -43,28 +43,28 @@ ms.locfileid: "77471749"
 > * 建立虛擬機器
 > * 測試防火牆
 
-如果要使用 Azure 門戶來完成本教程，請參閱[教程：使用 Azure 門戶在混合網路中部署和配置 Azure 防火牆](tutorial-hybrid-portal.md)。
+如果您想要改為使用 Azure 入口網站來完成本教學課程，請參閱[教學課程：使用 Azure 入口網站在混合式網路中部署和設定 Azure 防火牆](tutorial-hybrid-portal.md)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-本文要求您在本地運行 PowerShell。 您必須已安裝 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 驗證 PowerShell 版本之後，請執行 `Login-AzAccount` 以建立與 Azure 的連線。
+本文會要求您在本機執行 PowerShell。 您必須已安裝 Azure PowerShell 模組。 執行 `Get-Module -ListAvailable Az` 以尋找版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 驗證 PowerShell 版本之後，請執行 `Login-AzAccount` 以建立與 Azure 的連線。
 
 要讓此案例正常運作有三項重要需求：
 
-- 輪輻子網路上使用者定義的路由 (UDR) 會指向 Azure 防火牆 IP 位址，作為預設閘道。 必須在此路由表上**禁用**虛擬網路閘道路由傳播。
+- 輪輻子網路上使用者定義的路由 (UDR) 會指向 Azure 防火牆 IP 位址，作為預設閘道。 必須**停用**此路由表上的虛擬網路閘道路由傳播。
 - 中樞閘道子網路上的 UDR 必須指向防火牆 IP 位址，作為輪輻網路的下一個躍點。
 
    Azure 防火牆子網路不需要任何 UDR，因為可從 BGP 得知路由。
 - 請務必在將 VNet-Hub 對等互連至 VNet-Spoke 時設定 **AllowGatewayTransit**，以及在將 VNet-Spoke 對等互連至 VNet-Hub 時設定 **UseRemoteGateways**。
 
-請參閱本文中的["創建路由](#create-the-routes)"部分，瞭解如何創建這些路由。
+請參閱本文中的[建立路由](#create-the-routes)一節，以瞭解如何建立這些路由。
 
 >[!NOTE]
 >「Azure 防火牆」必須能夠直接連線到網際網路。 如果您的 AzureFirewallSubnet 學習到透過 BGP 連至您內部部署網路的預設路由，您必須將其覆寫為 0.0.0.0/0 UDR，且 **NextHopType** 值必須設為 [網際網路]****，以保有直接網際網路連線。
 >
->Azure 防火牆可以配置為支援強制隧道。 有關詳細資訊，請參閱[Azure 防火牆強制隧道 。](forced-tunneling.md)
+>Azure 防火牆可以設定為支援強制通道。 如需詳細資訊，請參閱[Azure 防火牆強制通道](forced-tunneling.md)。
 
 >[!NOTE]
 >即使 UDR 指向「Azure 防火牆」作為預設閘道，系統仍會直接路由直接對等互連之 VNet 間的流量。 在此案例中若要將子網路對子網路流量傳送到防火牆，UDR 必須在這兩個子網路上同時明確包含目標子網路網路首碼。
@@ -75,7 +75,7 @@ ms.locfileid: "77471749"
 
 ## <a name="declare-the-variables"></a>宣告變數
 
-下面的示例使用本文的值聲明變數。 在某些情況下，您可能需要以自己的值取代一些值，才能在您的訂用帳戶中運作。 視需要修改變數，然後將其複製並貼到您的 PowerShell 主控台中。
+下列範例會使用本文的值宣告變數。 在某些情況下，您可能需要以自己的值取代一些值，才能在您的訂用帳戶中運作。 視需要修改變數，然後將其複製並貼到您的 PowerShell 主控台中。
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
@@ -119,7 +119,7 @@ $SNnameGW = "GatewaySubnet"
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>建立防火牆中樞虛擬網路
 
-首先，創建資源組以包含本文的資源：
+首先，建立資源群組以包含本文的資源：
 
 ```azurepowershell
   New-AzResourceGroup -Name $RG1 -Location $Location1
@@ -464,7 +464,7 @@ $NIC.IpConfigurations.privateipaddress
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-在**VM-Onprem**上打開 Web 瀏覽器，\<然後流覽到 HTTP:// VM\>分支-01 專用 IP 。
+在**Vm 內部部署**上開啟網頁瀏覽器，並流覽至 HTTP://\<VM------\>01 私人 IP。
 
 您應該會看到 Internet Information Services 預設頁面。
 

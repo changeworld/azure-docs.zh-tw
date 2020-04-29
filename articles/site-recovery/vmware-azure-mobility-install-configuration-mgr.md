@@ -1,75 +1,75 @@
 ---
-title: 自動化移動服務，用於在 Azure 網站恢復中恢復安裝
-description: 如何通過 Azure 網站恢復自動安裝用於 VMware/物理伺服器災害復原的移動服務。
+title: 將行動服務自動化，以在 Azure Site Recovery 中進行安裝的嚴重損壞修復
+description: 如何使用 Azure Site Recovery 自動安裝適用于 VMware/physical server 嚴重損壞修復的行動服務。
 author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77252222"
 ---
-# <a name="automate-mobility-service-installation"></a>自動移動服務安裝
+# <a name="automate-mobility-service-installation"></a>自動安裝行動服務
 
-本文介紹如何在[Azure 網站恢復](site-recovery-overview.md)中自動安裝和更新移動服務代理。
+本文說明如何在[Azure Site Recovery](site-recovery-overview.md)中，自動執行行動服務代理程式的安裝和更新。
 
-將網站恢復部署到 Azure 時，將網站恢復用於本地 VMware VM 和物理伺服器的災害復原，在要複製的每台電腦上安裝移動服務代理。 移動服務捕獲電腦上寫入的資料，並將它們轉發到網站恢復進程伺服器進行複製。 您可以通過以下幾種方式部署移動服務：
+當您將內部部署 VMware Vm 和實體伺服器的嚴重損壞修復 Site Recovery 部署到 Azure 時，您會在您要複寫的每部機器上安裝行動服務代理程式。 行動服務會在機器上捕獲資料寫入，然後將它們轉送到 Site Recovery 的進程伺服器進行複寫。 您可以透過幾種方式來部署行動服務：
 
-- **推送安裝**：在 Azure 門戶中為電腦啟用複製時，讓網站恢復安裝移動服務代理。
-- **手動安裝**：在每台電腦上手動安裝移動服務。 [瞭解有關](vmware-physical-mobility-service-overview.md)推送和手動安裝的更多詳細資訊。
-- **自動部署**：使用軟體部署工具（如 Microsoft 端點組態管理員）或協力廠商工具（如 JetPatch）自動安裝。
+- **推入安裝**：當您為 Azure 入口網站中的機器啟用複寫時，讓 Site Recovery 安裝行動服務代理程式。
+- **手動安裝**：在每部電腦上手動安裝行動服務。 [深入瞭解](vmware-physical-mobility-service-overview.md)推送和手動安裝。
+- **自動化部署**：使用軟體部署工具（例如 Microsoft Endpoint Configuration Manager）或協力廠商工具（例如 JetPatch）來自動化安裝。
 
-自動安裝和更新可在：
+自動安裝和更新提供下列解決方案：
 
-- 您的組織不允許在受保護的伺服器上推送安裝。
-- 公司政策要求定期更改密碼。 您必須為推送安裝指定密碼。
-- 您的安全性原則不允許為特定電腦添加防火牆異常。
-- 您充當託管服務提供者，並且不希望提供使用網站恢復推送安裝所需的客戶電腦憑據。
-- 您需要同時將代理安裝擴展到大量伺服器。
-- 您希望在計畫維護時段內安排安裝和升級。
+- 您的組織不允許在受保護的伺服器上進行推送安裝。
+- 您的公司原則需要定期變更密碼。 您必須指定推入安裝的密碼。
+- 您的安全性原則不允許為特定機器新增防火牆例外。
+- 您擔任的是主機服務提供者，而不想提供使用 Site Recovery 進行推送安裝所需的客戶電腦認證。
+- 您需要同時將代理程式安裝調整到許多伺服器。
+- 您想要在規劃的維護時段排程安裝和升級。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-要自動安裝，您需要以下專案：
+若要自動安裝，您需要下列專案：
 
-- 已部署的軟體安裝解決方案，如[組態管理員](/configmgr/)或[JetPatch](https://jetpatch.com/microsoft-azure-site-recovery/)。
-- [在 Azure](tutorial-prepare-azure.md)和[本地](vmware-azure-tutorial-prepare-on-premises.md)部署先決條件，用於 VMware 災害復原或[物理伺服器](physical-azure-disaster-recovery.md)災害復原。 查看災害復原[的支援要求](vmware-physical-azure-support-matrix.md)。
+- 已部署的軟體安裝解決方案，例如[Configuration Manager](/configmgr/)或[JetPatch](https://jetpatch.com/microsoft-azure-site-recovery/)。
+- 在[Azure](tutorial-prepare-azure.md)和[內部](vmware-azure-tutorial-prepare-on-premises.md)部署環境中，適用于 VMware 嚴重損壞修復或[實體伺服器](physical-azure-disaster-recovery.md)嚴重損壞修復的部署必要條件。 請參閱嚴重損壞修復的[支援需求](vmware-physical-azure-support-matrix.md)。
 
-## <a name="prepare-for-automated-deployment"></a>為自動部署做好準備
+## <a name="prepare-for-automated-deployment"></a>準備自動部署
 
-下表總結了自動化移動服務部署的工具和流程。
+下表摘要說明自動化行動服務部署的工具和程式。
 
 **工具** | **詳細資料** | **指示**
 --- | --- | ---
-**組態管理員** | 1. 驗證您是否具備上面列出的[先決條件](#prerequisites)。 <br/><br/> 2. 通過設置源環境（包括下載 OVA 檔）使用 OVF 範本將網站恢復佈建服務器部署為 VMware VM 來部署災害復原。<br/><br/> 3. 將佈建服務器註冊到網站恢復服務，設置目標 Azure 環境，並配置複寫原則。<br/><br/> 4. 對於自動移動服務部署，您可以創建包含佈建服務器密碼和移動服務安裝檔的網路共用。<br/><br/> 5. 創建包含安裝或更新的組態管理員包，並為移動服務部署做好準備。<br/><br/> 6. 然後，您可以為安裝了移動服務的電腦啟用複製到 Azure。 | [使用組態管理員自動執行](#automate-with-configuration-manager)
-**JetPatch** | 1. 驗證您是否具備上面列出的[先決條件](#prerequisites)。 <br/><br/> 2. 通過設置源環境（包括下載和部署 JetPatch 代理管理器以在網站恢復環境中使用 OVF 範本）來部署災害復原。<br/><br/> 3. 將佈建服務器註冊為網站恢復，設置目標 Azure 環境，並配置複寫原則。<br/><br/> 4. 對於自動部署，初始化和完成 JetPatch 代理管理器配置。<br/><br/> 5. 在 JetPatch 中，您可以創建網站修復原則，以自動部署和升級移動服務代理。 <br/><br/> 6. 然後，您可以為安裝了移動服務的電腦啟用複製到 Azure。 | [使用 JetPatch 代理管理器實現自動化](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/)<br/><br/> [在 JetPatch 中排除代理安裝故障](https://kc.jetpatch.com/hc/articles/360035981812)
+**Configuration Manager** | 1. 確認您有上述[必要條件](#prerequisites)。 <br/><br/> 2. 藉由設定來源環境來部署嚴重損壞修復，包括下載 OVA 檔案，以使用 OVF 範本將 Site Recovery 設定伺服器部署為 VMware VM。<br/><br/> 3. 向 Site Recovery 服務註冊設定伺服器、設定目標 Azure 環境，以及設定複寫原則。<br/><br/> 4. 若要進行自動化行動服務部署，您可以建立包含設定伺服器複雜密碼和行動服務安裝檔案的網路共用。<br/><br/> 5. 建立包含安裝或更新的 Configuration Manager 套件，並準備行動服務部署。<br/><br/> 6. 接著，您可以針對已安裝行動服務的機器，啟用 Azure 的複寫。 | [使用 Configuration Manager 自動化](#automate-with-configuration-manager)
+**JetPatch** | 1. 確認您有上述[必要條件](#prerequisites)。 <br/><br/> 2. 藉由設定來源環境來部署嚴重損壞修復，包括使用 OVF 範本下載和部署 Site Recovery 環境中 Azure Site Recovery 的 JetPatch 代理程式管理員。<br/><br/> 3. 向 Site Recovery 註冊設定伺服器、設定目標 Azure 環境，以及設定複寫原則。<br/><br/> 4. 若要進行自動化部署，請初始化並完成 JetPatch 代理程式管理員設定。<br/><br/> 5. 在 JetPatch 中，您可以建立 Site Recovery 原則，以自動化行動服務代理程式的部署和升級。 <br/><br/> 6. 接著，您可以針對已安裝行動服務的機器，啟用 Azure 的複寫。 | [使用 JetPatch 代理程式管理員進行自動化](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/)<br/><br/> [針對 JetPatch 中的代理程式安裝進行疑難排解](https://kc.jetpatch.com/hc/articles/360035981812)
 
-## <a name="automate-with-configuration-manager"></a>使用組態管理員自動執行
+## <a name="automate-with-configuration-manager"></a>使用 Configuration Manager 自動化
 
-### <a name="prepare-the-installation-files"></a>準備安裝檔
+### <a name="prepare-the-installation-files"></a>準備安裝檔案
 
-1. 請確保您已具備先決條件。
-1. 創建回合組態伺服器的電腦可以訪問的安全網路檔共用 （SMB 共用）。
-1. 在組態管理員中，對要安裝或更新移動服務的[伺服器進行分類](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections)。 一個集合應包含所有 Windows 伺服器，另一個包含所有 Linux 伺服器。
-1. 在網路共用上，創建一個資料夾：
+1. 請確定您已準備好必要條件。
+1. 建立可由執行設定伺服器的電腦存取的安全網路檔案共用（SMB 共用）。
+1. 在 Configuration Manager 中，將您想要安裝或更新行動服務[的伺服器分類](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections)。 其中一個集合應該包含所有的 Windows 伺服器，也就是其他所有的 Linux 伺服器。
+1. 在網路共用上，建立資料夾：
 
-   - 要在 Windows 電腦上安裝，請創建一個名為_MobSvcWindows_的資料夾。
-   - 要在 Linux 電腦上安裝，請創建一個名為_MobSvcLinux_的資料夾。
+   - 若要在 Windows 電腦上安裝，請建立名為_MobSvcWindows_的資料夾。
+   - 若要在 Linux 機器上安裝，請建立名為_MobSvcLinux_的資料夾。
 
 1. 登入設定伺服器電腦。
-1. 在佈建服務器電腦上，打開管理命令提示符。
-1. 要生成密碼檔，運行以下命令：
+1. 在設定伺服器電腦上，開啟系統管理命令提示字元。
+1. 若要產生複雜密碼檔案，請執行此命令：
 
     ```Console
     cd %ProgramData%\ASR\home\svsystems\bin
     genpassphrase.exe -v > MobSvc.passphrase
     ```
 
-1. 將_MobSvc.passphrase 檔_複製到 Windows 資料夾和 Linux 資料夾。
-1. 要流覽到包含安裝檔的資料夾，請運行以下命令：
+1. 將 [ _mobsvc.passphrase_ ] 檔案複製到 [Windows] 資料夾和 [Linux] 資料夾。
+1. 若要流覽至包含安裝檔案的資料夾，請執行下列命令：
 
     ```Console
     cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository
@@ -77,27 +77,27 @@ ms.locfileid: "77252222"
 
 1. 將這些安裝檔案複製到網路共用：
 
-   - 對於 Windows，請將_Microsoft ASR_UA_version_Windows_GA_date_Release.exe_複製到_MobSvcWindows_。
-   - 對於 Linux，請將以下檔案複製到_MobSvcLinux_：
-     - _微軟-ASR_UARHEL6-64發佈.tar.gz_
-     - _微軟-ASR_UARHEL7-64發佈.tar.gz_
-     - _微軟-ASR_UASLES11-SP3-64發行.tar.gz_
-     - _微軟-ASR_UASLES11-SP4-64發行.tar.gz_
-     - _微軟-ASR_UAOL6-64發佈.tar.gz_
-     - _微軟-ASR_UAUBUNTU-14.04-64發佈.tar.gz_
+   - 若是 Windows，請將_Microsoft ASR_UA_version_Windows_GA_date_Release .exe_複製到_MobSvcWindows_。
+   - 若為 Linux，請將下列檔案複製到_MobSvcLinux_：
+     - _Microsoft ASR_UARHEL6-64release. tar. gz_
+     - _Microsoft ASR_UARHEL7-64release. tar. gz_
+     - _Microsoft ASR_UASLES11-SP3-64release. tar. gz_
+     - _Microsoft ASR_UASLES11-SP4-64release. tar. gz_
+     - _Microsoft ASR_UAOL6-64release. tar. gz_
+     - _ASR_UAUBUNTU 14.04-64release. gz_
 
-1. 如以下過程所述，請將代碼複製到 Windows 或 Linux 資料夾。 我們假設：
+1. 如下列程式所述，將程式碼複製到 Windows 或 Linux 資料夾。 我們假設：
 
-   - 佈建服務器的 IP 位址為`192.168.3.121`。
-   - 安全網路檔共用為`\\ContosoSecureFS\MobilityServiceInstallers`。
+   - 設定伺服器的 IP 位址是`192.168.3.121`。
+   - 安全網路檔案共用是`\\ContosoSecureFS\MobilityServiceInstallers`。
 
-### <a name="copy-code-to-the-windows-folder"></a>將代碼複製到 Windows 資料夾
+### <a name="copy-code-to-the-windows-folder"></a>將程式碼複製到 Windows 資料夾
 
-複製以下代碼：
+複製下列程式碼：
 
-- 將_MobSvcWindows_資料夾中的代碼保存為_安裝.bat_。
-- 將此`[CSIP]`腳本中的預留位置替換為佈建服務器的 IP 位址的實際值。
-- 該腳本支援移動服務代理的新安裝，以及對已安裝的代理的更新。
+- 將_MobSvcWindows_資料夾中的程式碼儲存為_install .bat_。
+- 將此`[CSIP]`腳本中的預留位置取代為設定伺服器 IP 位址的實際值。
+- 此腳本支援行動服務代理程式的新安裝，以及已安裝之代理程式的更新。
 
 ```DOS
 Time /t >> C:\Temp\logfile.log
@@ -194,13 +194,13 @@ IF NOT %ERRORLEVEL% EQU 0 (
     echo "End of script." >> C:\Temp\logfile.log
 ```
 
-### <a name="copy-code-to-the-linux-folder"></a>將代碼複製到 Linux 資料夾
+### <a name="copy-code-to-the-linux-folder"></a>將程式碼複製到 Linux 資料夾
 
-複製以下代碼：
+複製下列程式碼：
 
-- 將_MobSvcLinux_資料夾中的代碼另存為_install_linux._
-- 將此`[CSIP]`腳本中的預留位置替換為佈建服務器的 IP 位址的實際值。
-- 該腳本支援移動服務代理的新安裝，以及對已安裝的代理的更新。
+- 將_MobSvcLinux_資料夾中的程式碼儲存為_install_linux sh_。
+- 將此`[CSIP]`腳本中的預留位置取代為設定伺服器 IP 位址的實際值。
+- 此腳本支援行動服務代理程式的新安裝，以及已安裝之代理程式的更新。
 
 ```Bash
 #!/usr/bin/env bash
@@ -338,65 +338,65 @@ cd /tmp
 
 ### <a name="create-a-package"></a>建立套件
 
-1. 登錄到組態管理員主控台並轉到**軟體庫** > **應用程式管理** > **包**。
-1. 按右鍵 **"包** > **創建包**"。
-1. 提供包詳細資訊，包括名稱、說明、製造商、語言和版本。
-1. 選擇**此包包含原始檔案**。
-1. 按一下 **"流覽**"，然後選擇包含相關安裝程式 _（MobSvcWindows_或_MobSvcLinux）_ 的網路共用和資料夾。 然後，選擇 **"下一步**"。
+1. 登入 Configuration Manager 主控台，並移至 [**軟體程式庫** > ] [**應用程式管理** > ] [**套件**]。
+1. 以滑鼠右鍵按一下 [**封裝** > ] [**建立套件**]。
+1. 提供套件詳細資料，包括名稱、描述、製造商、語言和版本。
+1. 選取 [**此套件包含來源**檔案]。
+1. 按一下 **[流覽]**，然後選取包含相關安裝程式的網路共用和資料夾（_MobSvcWindows_或_MobSvcLinux_）。 然後，選取 [下一步]  。
 
    ![建立套件和程式精靈的螢幕擷取畫面](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-1. 在**選擇要創建頁面的程式類型**中，選擇"**下一步****標準程式** > "。
+1. 在 **[選擇您要建立的程式類型**] 頁面上，選取 [**標準程式** > **] [下一步]**。
 
    ![建立套件和程式精靈的螢幕擷取畫面](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
-1. 在 **"指定有關此標準程式頁的資訊**"中，指定以下值：
+1. 在 [**指定此標準程式的相關資訊**] 頁面中，指定下列值：
 
-    **參數** | **視窗值** | **Linux 值**
+    **參數** | **Windows 值** | **Linux 值**
     --- | --- | ---
-    **名稱** | 安裝 Microsoft Azure 行動服務 (Windows) | 安裝 Microsoft Azure 移動服務 （Linux）。
+    **Name** | 安裝 Microsoft Azure 行動服務 (Windows) | 安裝 Microsoft Azure 行動服務（Linux）。
     **命令列** | install.bat | ./install_linux.sh
     **程式可以執行** | 使用者是否登入 | 使用者是否登入
-    **其他參數** | 使用預設設置 | 使用預設設置
+    **其他參數** | 使用預設設定 | 使用預設設定
 
    ![建立套件和程式精靈的螢幕擷取畫面](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
-1. 在**指定此標準程式的要求中**，執行以下任務：
+1. 在 **[指定此標準程式的需求**] 中，執行下列工作：
 
-   - 對於 Windows 電腦，選擇**此程式只能在指定的平臺上運行**。 然後，選擇[受支援的 Windows 作業系統](vmware-physical-azure-support-matrix.md#replicated-machines)，然後選擇 **"下一步**"。
-   - 對於 Linux 電腦，選擇**此程式可以在任何平臺上運行**。 然後選擇 **"下一步**"。
+   - 若為 Windows 機器，請選取 [**此程式只能在指定的平臺上執行**]。 然後選取支援的[Windows 作業系統](vmware-physical-azure-support-matrix.md#replicated-machines)，然後選取 **[下一步]**。
+   - 針對 Linux 電腦，請選取 [**此程式可以在任何平臺上執行**]。 然後選取 [下一步]  。
 
 1. 完成精靈。
 
 ### <a name="deploy-the-package"></a>部署套件
 
-1. 在組態管理員主控台中，按右鍵包並選擇 **"分發內容**"。
+1. 在 Configuration Manager 主控台中，以滑鼠右鍵按一下套件，然後選取 [**發佈內容**]。
 
    ![Configuration Manager 主控台的螢幕擷取畫面](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 
 1. 選取應該將套件複製過去的發佈點。 [深入了解](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points)。
 1. 完成精靈。 套件便會開始複寫至指定的發佈點。
-1. 包分發完成後，按右鍵包>**部署**。
+1. 封裝散發完成後，以滑鼠右鍵按一下封裝 >**部署**]。
 
    ![Configuration Manager 主控台的螢幕擷取畫面](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 
-1. 選擇您以前創建的 Windows 或 Linux 設備集合。
-1. 在 **"指定內容目標**"頁上，選擇**發佈點**。
-1. 在 **"指定設置以控制此軟體的部署方式"** 頁中，將 **"使用目的"** 設置為 **"必需**"。
+1. 選取您先前建立的 Windows 或 Linux 裝置集合。
+1. 在 [**指定內容目的地**] 頁面上，選取 [**發佈點**]。
+1. 在 [**指定控制此軟體部署方式的設定**] 頁面中，將 [**目的**] 設定為 [**必要**]。
 
    ![部署軟體精靈的螢幕擷取畫面](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-1. 在 **"指定此部署的計畫**"中，設置計畫。 [深入了解](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched)。
+1. 在 [**指定此部署的排程**] 中，設定排程。 [深入了解](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched)。
 
-   - 移動服務按照您指定的計畫進行安裝。
+   - 行動服務會根據您指定的排程安裝。
    - 為了避免不必要的重新開機，請排定在每月維護期間或軟體更新期間安裝套件。
 
-1. 在 **"發佈點"** 頁上，配置設置並完成嚮導。
-1. 在組態管理員 主控台中監視部署進度。 轉到**監視** > **Deployments** > _部署\<包名稱\>_。
+1. 在 [**發佈點**] 頁面上，設定設定並完成嚮導。
+1. 在 Configuration Manager 主控台中監視部署進度。 移至 [**監視** > ] [**部署** > _\<] [您的套件名稱\>_]。
 
-### <a name="uninstall-the-mobility-service"></a>卸載移動服務
+### <a name="uninstall-the-mobility-service"></a>卸載行動服務
 
-您可以創建組態管理員包以卸載移動服務。 例如，以下腳本卸載移動服務：
+您可以建立 Configuration Manager 封裝來卸載行動服務。 例如，下列腳本會卸載行動服務：
 
 ```DOS
 Time /t >> C:\logfile.log
@@ -420,4 +420,4 @@ IF  %ERRORLEVEL% EQU 1 (GOTO :INSTALL) ELSE GOTO :UNINSTALL
 
 ## <a name="next-steps"></a>後續步驟
 
-為 VM[啟用複製](vmware-azure-enable-replication.md)。
+[啟用](vmware-azure-enable-replication.md)vm 的複寫。

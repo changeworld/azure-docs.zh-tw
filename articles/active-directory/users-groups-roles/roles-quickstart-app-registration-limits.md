@@ -1,6 +1,6 @@
 ---
-title: 刪除創建應用註冊的限制 - Azure AD |微軟文檔
-description: 分配自訂角色以在 Azure AD 活動目錄中授予不受限制的應用註冊
+title: 移除建立應用程式註冊的限制-Azure AD |Microsoft Docs
+description: 指派自訂角色，以在 Azure AD 中授與不受限制的應用程式註冊 Active Directory
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,61 +14,61 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7acd76ff45f783f614b2a1d3f0d5c10d800a1ea9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77559040"
 ---
-# <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>快速入門：授予創建無限制應用註冊的許可權
+# <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>快速入門：授與建立無限制應用程式註冊的許可權
 
-在此快速入門中，您將創建一個自訂角色，具有創建無限數量的應用註冊的許可權，然後將該角色指派給使用者。 然後，分配的使用者可以使用 Azure AD 門戶、Azure AD PowerShell 或 Microsoft 圖形 API 創建應用程式註冊。 與內置應用程式開發人員角色不同，此自訂角色授予創建無限數量的應用程式註冊的能力。 應用程式開發人員角色授予該功能，但創建的物件總數限制為 250，以防止達到[目錄範圍的物件配額](directory-service-limits-restrictions.md)。
+在本快速入門中，您將建立自訂角色，其具有建立不限數目的應用程式註冊的許可權，然後將該角色指派給使用者。 然後，指派的使用者可以使用 Azure AD 入口網站、Azure AD PowerShell 或 Microsoft Graph API 來建立應用程式註冊。 與內建應用程式開發人員角色不同的是，這個自訂角色會授與建立不限數目之應用程式註冊的能力。 應用程式開發人員角色會授與能力，但已建立的物件總數限制為250，以防止達到全[目錄的物件配額](directory-service-limits-restrictions.md)。
 
-如果沒有 Azure 訂閱，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
+如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisite"></a>必要條件
 
-創建和分配 Azure AD 自訂角色所需的最低特權角色是特權角色管理員。
+建立和指派 Azure AD 自訂角色所需的最低特殊許可權角色是特殊許可權角色管理員。
 
-## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>使用 Azure AD 門戶創建新的自訂角色
+## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>使用 Azure AD 入口網站建立新的自訂角色
 
-1. 在 Azure [AD](https://aad.portal.azure.com) 組織中使用特權角色管理員或全域管理員許可權登錄到 Azure AD 管理中心。
-1. 選擇**Azure 活動目錄**，選擇**角色和管理員**，然後選擇 **"新建自訂角色**"。
+1. 使用特殊許可權角色管理員或在 Azure AD 組織中全域管理員許可權，登入 [Azure AD 系統管理中心。](https://aad.portal.azure.com)  
+1. 選取 [ **Azure Active Directory**]，選取 [**角色和系統管理員**]，然後選取 [**新增自訂角色**]。
 
-    ![從角色和管理員頁面創建或編輯角色](./media/roles-create-custom/new-custom-role.png)
+    ![從 [角色和系統管理員] 頁面建立或編輯角色](./media/roles-create-custom/new-custom-role.png)
 
-1. 在 **"基本"** 選項卡上，為角色的名稱提供"應用程式註冊建立者"，並為角色描述提供"可以創建無限數量的應用程式註冊"，然後選擇 **"下一步**"。
+1. 在 [**基本**] 索引標籤上，為角色的名稱提供「應用程式註冊建立者」，並在角色描述中輸入「可建立無限數量的應用程式註冊」，然後選取 **[下一步]**。
 
-    ![在"基本"選項卡上提供自訂角色的名稱和說明](./media/roles-quickstart-app-registration-limits/basics-tab.png)
+    ![在 [基本] 索引標籤上提供自訂角色的名稱和描述](./media/roles-quickstart-app-registration-limits/basics-tab.png)
 
-1. 在 **"許可權"** 選項卡上，在搜索框中輸入"microsoft.directory/應用程式/創建"，然後選擇所需許可權旁邊的核取方塊，然後選擇 **"下一步**"。
+1. 在 [**許可權**] 索引標籤的 [搜尋] 方塊中，輸入 "microsoft. directory/applications/create"，然後選取所需許可權旁的核取方塊，然後選取 [**下一步]**。
 
-    ![在"許可權"選項卡上選擇自訂角色的許可權](./media/roles-quickstart-app-registration-limits/permissions-tab.png)
+    ![在 [許可權] 索引標籤上選取自訂角色的許可權](./media/roles-quickstart-app-registration-limits/permissions-tab.png)
 
-1. 在 **"審閱 + 創建**"選項卡上，查看許可權並選擇"**創建**"。
+1. 在 [**審查 + 建立**] 索引標籤上，檢查許可權，然後選取 [**建立**]。
 
-### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>使用 Azure AD 門戶將角色指派給使用者
+### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>使用 Azure AD 入口網站將角色指派給使用者
 
-1. 在 Azure [AD](https://aad.portal.azure.com) 組織中使用特權角色管理員或全域管理員許可權登錄到 Azure AD 管理中心。
-1. 選擇**Azure 活動目錄**，然後選擇**角色和管理員**。
-1. 選擇應用程式註冊建立者角色並選擇 **"添加分配**"。
-1. 選擇所需的使用者，然後按一下 **"選擇"** 將使用者添加到角色。
+1. 使用特殊權限角色管理員或全域管理員 Azure AD 組織中的許可權登入 [Azure AD 系統管理中心。](https://aad.portal.azure.com)  
+1. 選取 [ **Azure Active Directory** ]，然後選取 [**角色和系統管理員**]。
+1. 選取 [應用程式註冊建立者] 角色，然後選取 [**新增指派**]。
+1. 選取所需的使用者，然後按一下 [**選取**] 將使用者新增至角色。
 
-完成！ 在此快速入門中，您成功創建了一個自訂角色，並有權創建無限數量的應用註冊，然後將該角色指派給使用者。
+完成！ 在本快速入門中，您已成功建立自訂角色，且其許可權可建立不限數目的應用程式註冊，然後將該角色指派給使用者。
 
 > [!TIP]
-> 要使用 Azure AD 門戶將角色指派給應用程式，請在分配頁的搜索框中輸入應用程式的名稱。 預設情況下，應用程式不顯示在清單中，但在搜尋結果中返回。
+> 若要使用 Azure AD 入口網站將角色指派給應用程式，請在 [指派] 頁面的 [搜尋] 方塊中，輸入應用程式的名稱。 應用程式預設不會顯示在清單中，但會在搜尋結果中傳回。
 
-### <a name="app-registration-permissions"></a>應用註冊許可權
+### <a name="app-registration-permissions"></a>應用程式註冊許可權
 
-有兩個許可權可用於授予創建應用程式註冊的功能，每個許可權具有不同的行為。
+有兩種許可權可以授與建立應用程式註冊的能力，每個都有不同的行為。
 
-- Microsoft.directory/應用程式/createAsowner：分配此許可權會導致建立者添加為創建的應用註冊的第一個擁有者，並且創建的應用註冊將計入建立者的 250 個創建物件配額。
-- Microsoft.directory/應用程式策略/創建：分配此許可權會導致建立者未添加為已創建應用註冊的第一個擁有者，並且創建的應用註冊不會計入建立者的 250 個創建物件配額。 請謹慎使用此許可權，因為在命中目錄級配額之前，不會阻止受讓人創建應用註冊。 如果同時分配了兩個許可權，則此許可權優先。
+- microsoft 目錄/應用程式/createAsOwner：指派此許可權會導致建立者新增為所建立應用程式註冊的第一個擁有者，而所建立的應用程式註冊將計入建立者的250建立物件配額中。
+- microsoft directory/applicationPolicies/create：指派此許可權會導致建立者不會被新增為所建立應用程式註冊的第一個擁有者，而建立的應用程式註冊將不會算在建立者的250建立物件配額中。 請謹慎使用此許可權，因為在達到目錄層級配額之前，不會讓受託人建立應用程式註冊。 如果同時指派這兩個許可權，則會優先使用此許可權。
 
-## <a name="create-a-custom-role-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 創建自訂角色
+## <a name="create-a-custom-role-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 建立自訂角色
 
-使用以下 PowerShell 腳本創建新角色：
+使用下列 PowerShell 腳本建立新的角色：
 
 ``` PowerShell
 # Basic role information
@@ -89,17 +89,17 @@ $rolePermissions = $rolePermission
 $customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
 ```
 
-### <a name="assign-the-custom-role-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 分配自訂角色
+### <a name="assign-the-custom-role-using-azure-ad-powershell"></a>使用 Azure AD PowerShell 指派自訂角色
 
-#### <a name="prepare-powershell"></a>準備電源外殼
+#### <a name="prepare-powershell"></a>準備 PowerShell
 
-首先，從[PowerShell 庫](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)安裝 Azure AD PowerShell 模組。 然後使用以下命令導入 Azure AD PowerShell 預覽模組：
+首先，從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.17)安裝 Azure AD PowerShell 模組。 然後使用下列命令匯入 Azure AD PowerShell 預覽模組：
 
 ```powershell
 import-module azureadpreview
 ```
 
-要驗證模組是否已準備好使用，請將以下命令返回的版本與此處列出的版本匹配：
+若要確認模組已備妥可供使用，請將下列命令所傳回的版本與此處所列的版本進行比對：
 
 ```powershell
 get-module azureadpreview
@@ -108,9 +108,9 @@ get-module azureadpreview
   Binary     2.0.0.115    azureadpreview               {Add-AzureADAdministrati...}
 ```
 
-#### <a name="assign-the-custom-role"></a>分配自訂角色
+#### <a name="assign-the-custom-role"></a>指派自訂角色
 
-使用以下 PowerShell 腳本分配角色：
+使用下列 PowerShell 腳本指派角色：
 
 ``` PowerShell
 # Basic role information
@@ -131,9 +131,9 @@ $rolePermissions = $rolePermission
 $customRole = New-AzureAdRoleDefinition -RolePermissions $rolePermissions -DisplayName $displayName -Description $description -TemplateId $templateId -IsEnabled $true
 ```
 
-### <a name="create-a-custom-role-using-microsoft-graph-api"></a>使用 Microsoft 圖形 API 創建自訂角色
+### <a name="create-a-custom-role-using-microsoft-graph-api"></a>使用 Microsoft Graph API 建立自訂角色
 
-HTTP 要求以創建自訂角色。
+建立自訂角色的 HTTP 要求。
 
 POST
 
@@ -166,11 +166,11 @@ body
 }
 ```
 
-### <a name="assign-the-custom-role-using-microsoft-graph-api"></a>使用 Microsoft 圖形 API 分配自訂角色
+### <a name="assign-the-custom-role-using-microsoft-graph-api"></a>使用 Microsoft Graph API 指派自訂角色
 
-角色指派結合了安全主體 ID（可以是使用者或服務主體）、角色定義（角色）ID 和 Azure AD 資源作用域。
+角色指派結合了安全性主體識別碼（可以是使用者或服務主體）、角色定義（角色）識別碼，以及 Azure AD 資源範圍。
 
-分配自訂角色的 HTTP 要求。
+指派自訂角色的 HTTP 要求。
 
 POST
 

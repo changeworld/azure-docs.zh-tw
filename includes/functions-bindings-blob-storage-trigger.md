@@ -10,23 +10,23 @@ ms.date: 08/02/2019
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: fa3888d28c52625684676036def7e2920b77b5ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77202108"
 ---
-可以為觸發 blob 使用以下參數類型：
+您可以針對觸發 blob 使用下列參數類型：
 
 * `Stream`
 * `TextReader`
 * `string`
 * `Byte[]`
 * 可序列化為 JSON 的 POCO
-* `ICloudBlob`<sup>1</sup>
-* `CloudBlockBlob`<sup>1</sup>
-* `CloudPageBlob`<sup>1</sup>
-* `CloudAppendBlob`<sup>1</sup>
+* `ICloudBlob`<sup>sha-1</sup>
+* `CloudBlockBlob`<sup>sha-1</sup>
+* `CloudPageBlob`<sup>sha-1</sup>
+* `CloudAppendBlob`<sup>sha-1</sup>
 
 <sup>1</sup> 在 *function.json* 或 `FileAccess.ReadWrite` C# 類別庫中需要 "inout" 繫結 `direction`。
 
