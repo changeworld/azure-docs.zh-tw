@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80549196"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure 可用的安全性服務與技術
@@ -36,7 +36,7 @@ ms.locfileid: "80549196"
 |[Azure&nbsp;資訊安全&nbsp;中心](/azure/security-center/security-center-intro)| 雲端工作負載保護解決方案，可為混合式雲端工作負載提供安全性管理和進階威脅保護。|
 |[Azure 金鑰保存庫](/azure/key-vault/key-vault-overview)| 安全的祕密存放區，可存放密碼、連接字串，以及讓應用程式保持運作所需的其他資訊。 |
 |[Azure 監視器記錄](/azure/log-analytics/log-analytics-overview)|監視服務，可收集遙測和其他資料，並提供查詢語言和分析引擎，以提供您應用程式和資源的作業見解。 可以單獨使用，或搭配資訊安全中心等其他服務使用。 |
-|[Azure 開發或測試實驗室](/azure/lab-services/devtest-lab-overview)|這項服務可協助開發人員和測試人員在 Azure 中建立快速環境，同時將浪費降至最低並控制成本。  |
+|[Azure 開發/測試實驗室](/azure/lab-services/devtest-lab-overview)|這項服務可協助開發人員和測試人員在 Azure 中建立快速環境，同時將浪費降至最低並控制成本。  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
 
@@ -48,8 +48,8 @@ ms.locfileid: "80549196"
 |[Azure 用戶端加密](/azure/storage/common/storage-client-side-encryption)| 用戶端加密解決方案，可在上傳至 Azure 儲存體之前，將用戶端應用程式內的資料加密，也可在下載時將資料解密。 |
 | [Azure 儲存體共用存取簽章](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)|共用存取簽章可提供您儲存體帳戶中資源的委派存取。  |
 |[Azure 儲存體帳戶金鑰](/azure/storage/common/storage-create-storage-account)| Azure 儲存體的存取控制方法，用於在存取儲存體帳戶時進行驗證。 |
-|[Azure 檔案分享 SMB 3.0 加密](/azure/storage/files/storage-files-introduction)|網路安全性技術，可啟用伺服器訊息區塊 (SMB) 檔案共用通訊協定的網路自動加密功能。 |
-|[Azure 儲存分析](/rest/api/storageservices/Storage-Analytics)| 記錄和度量產生技術，適用於儲存體帳戶中的資料。 |
+|[具有 SMB 3.0 加密的 Azure 檔案共用](/azure/storage/files/storage-files-introduction)|網路安全性技術，可啟用伺服器訊息區塊 (SMB) 檔案共用通訊協定的網路自動加密功能。 |
+|[Azure 儲存體分析](/rest/api/storageservices/Storage-Analytics)| 記錄和度量產生技術，適用於儲存體帳戶中的資料。 |
 
 <!------>
 
@@ -77,19 +77,19 @@ ms.locfileid: "80549196"
 |服務|描述|
 |------|--------|
 | [Azure&nbsp;備份](/azure/backup/backup-introduction-to-azure-backup)| 以 Azure 為基礎的服務，用來備份和還原 Azure 雲端中的資料。 |
-| [Azure&nbsp;&nbsp;網站恢復](/azure/site-recovery/site-recovery-overview)|一項線上服務，可將實體和虛擬機器 (VM) 上執行的工作負載從主要網站複寫到次要位置，以便在失敗後復原服務。 |
+| [Azure&nbsp;Site&nbsp;Recovery](/azure/site-recovery/site-recovery-overview)|一項線上服務，可將實體和虛擬機器 (VM) 上執行的工作負載從主要網站複寫到次要位置，以便在失敗後復原服務。 |
 
 ## <a name="networking"></a>網路功能
 |服務|描述|
 |------|--------|
-| [網路安全&nbsp;&nbsp;群組](/azure/virtual-network/virtual-networks-nsg)| 以網路為基礎的存取控制功能，其使用 5-tuple 來允許或拒絕決策。  |
+| [網路&nbsp;安全&nbsp;組](/azure/virtual-network/virtual-networks-nsg)| 以網路為基礎的存取控制功能，其使用 5-tuple 來允許或拒絕決策。  |
 | [Azure VPN 閘道](/azure/vpn-gateway/vpn-gateway-about-vpngateways)| 作為 VPN 端點使用的網路裝置，可允許跨單位存取 Azure 虛擬網路。  |
 | [Azure 應用程式閘道](/azure/application-gateway/application-gateway-introduction)|進階 Web 應用程式負載平衡器，可根據 URL 路由傳送並執行 SSL 卸載。 |
-|[Web 應用程式防火牆](/azure/frontdoor/waf-overview)(WAF)|「應用程式閘道」的一項功能，可集中保護您的 Web 應用程式，防止常見惡意探索和弱點危害|
-| [Azure 負載均衡器](/azure/load-balancer/load-balancer-overview)|TCP/UDP 應用程式網路負載平衡器。 |
+|[Web 應用程式防火牆](/azure/frontdoor/waf-overview)（WAF）|「應用程式閘道」的一項功能，可集中保護您的 Web 應用程式，防止常見惡意探索和弱點危害|
+| [Azure Load Balancer](/azure/load-balancer/load-balancer-overview)|TCP/UDP 應用程式網路負載平衡器。 |
 | [Azure ExpressRoute](/azure/expressroute/expressroute-introduction)| 內部部署網路與 Azure 虛擬網路之間的專用 WAN 連結。 |
 | [Azure 流量管理員](/azure/traffic-manager/traffic-manager-overview)| 全域 DNS 負載平衡器。|
 | [Azure 應用程式 Proxy](/azure/active-directory/active-directory-application-proxy-get-started)| 驗證前端，用於保護內部裝載 Web 應用程式的遠端存取。 |
 |[Azure 防火牆](/azure/firewall/overview)|一個受控的雲端式網路安全性服務，可保護您的「Azure 虛擬網路」資源。|
 |[Azure DDoS 保護](/azure/virtual-network/ddos-protection-overview)|與應用程式設計最佳做法結合，可抵禦 DDoS 攻擊。|
-|[虛擬網路服務終結點](/azure/virtual-network/virtual-network-service-endpoints-overview)|可透過直接連線，將您的虛擬網路私人位址空間和您的 VNet 身分識別延伸至 Azure 服務。|
+|[虛擬網路服務端點](/azure/virtual-network/virtual-network-service-endpoints-overview)|可透過直接連線，將您的虛擬網路私人位址空間和您的 VNet 身分識別延伸至 Azure 服務。|

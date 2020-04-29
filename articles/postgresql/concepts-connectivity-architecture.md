@@ -1,35 +1,35 @@
 ---
-title: 連線架構結構 - 用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
-description: 描述後處理SQL - 單伺服器 Azure 資料庫的連接體系結構。
+title: 連線性架構-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 描述適用於 PostgreSQL 的 Azure 資料庫單一伺服器的連接架構。
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.openlocfilehash: d23a59e97ee3fc935a0d0954bc70b547b727fddc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546604"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Azure 資料庫中用於 PostgreSQL 的連線架構結構
-本文介紹了用於 PostgreSQL 連接體系結構的 Azure 資料庫,以及如何將流量從 Azure 內外的用戶端定向到 Azure 資料庫的 PostgreSQL 資料庫實例。
+# <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>適用於 PostgreSQL 的 Azure 資料庫中的連線架構
+本文說明適用於 PostgreSQL 的 Azure 資料庫連線架構，以及如何從 Azure 內部和外部的用戶端，將流量導向至您的適用於 PostgreSQL 的 Azure 資料庫資料庫實例。
 
 ## <a name="connectivity-architecture"></a>連線架構
-通過閘道建立與 PostgreSQL Azure 資料庫的連接,該閘道負責將傳入連接路由到群集中伺服器的物理位置。 下圖說明瞭流量流。
+您的適用於 PostgreSQL 的 Azure 資料庫的連線是透過負責將連入連線路由至叢集中伺服器實體位置的閘道所建立。 下圖說明流量的流程。
 
-![連接結構概述](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+![連線性架構的總覽](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-當用戶端連接到資料庫時,它們會收到連接到閘道的連接字串。 此閘道具有偵聽埠 5432 的公共 IP 位址。 在資料庫群集流量內,流量將轉發到相應的 Azure 資料庫,用於 PostgreSQL。 因此,為了連接到您的伺服器(例如來自公司網路),必須打開用戶端防火牆,以便出站流量能夠到達我們的網關。 下面您可以找到我們每個區域的閘道使用的 IP 位址的完整清單。
+當用戶端連接到資料庫時，它們會取得連接到閘道的連接字串。 此閘道的公用 IP 位址會接聽埠5432。 在資料庫叢集中，會將流量轉送到適當的適用於 PostgreSQL 的 Azure 資料庫。 因此，為了連接到您的伺服器（例如從公司網路），必須開啟用戶端防火牆，以允許輸出流量能夠連線到我們的閘道。 您可以在下方找到每個區域的閘道所使用的 IP 位址的完整清單。
 
-## <a name="azure-database-for-postgresql-gateway-ip-addresses"></a>PostgreSQL 閘道 IP 位址的 Azure 資料庫
-下表列出了所有資料區域的 PostgreSQL 閘道 Azure 資料庫的主 IP 和輔助 IP。 主要 IP 位址是閘道的 IP 位址,第二個 IP 位址是主位址發生故障時故障轉移 IP 位址。 如前所述,客戶應允許向外站到兩個 IP 位址。 第二個 IP 位址不會偵聽任何服務,直到 Azure 資料庫為 PostgreSQL 啟動接受連接。
+## <a name="azure-database-for-postgresql-gateway-ip-addresses"></a>適用於 PostgreSQL 的 Azure 資料庫閘道 IP 位址
+下表列出所有資料區域之適用於 PostgreSQL 的 Azure 資料庫閘道的主要和次要 Ip。 主要 IP 位址是閘道目前的 IP 位址，而第二個 IP 位址是容錯移轉的 IP 位址（萬一主要複本失敗時）。 如前所述，客戶應允許輸出到這兩個 IP 位址。 第二個 IP 位址不會在任何服務上接聽，直到適用於 PostgreSQL 的 Azure 資料庫啟用以接受連線為止。
 
-| **地區名稱** | **閘道 IP 位址** |
+| **區功能變數名稱稱** | **閘道 IP 位址** |
 |:----------------|:-------------|
 | 澳大利亞中部| 20.36.105.0     |
-| 澳大利亞中部2     | 20.36.113.0   |
+| 澳大利亞 Central2     | 20.36.113.0   |
 | 澳大利亞東部 | 13.75.149.87, 40.79.161.1     |
 | 澳大利亞東南部 |191.239.192.109, 13.73.109.251   |
 | 巴西南部 | 104.41.11.5, 191.233.201.8, 191.233.200.16  |

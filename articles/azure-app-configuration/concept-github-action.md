@@ -1,41 +1,41 @@
 ---
-title: 將 GitHub 儲存函式庫同步到應用設定
-description: 使用 GitHub 操作在更新 GitHub 儲存庫時自動更新應用配置實例。
+title: 將您的 GitHub 存放庫同步至應用程式組態
+description: 當您更新 GitHub 存放庫時，請使用 GitHub 動作自動更新您的應用程式組態實例。
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
 ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585487"
 ---
-# <a name="sync-your-github-repository-to-app-configuration"></a>將 GitHub 儲存函式庫同步到應用設定
+# <a name="sync-your-github-repository-to-app-configuration"></a>將您的 GitHub 存放庫同步至應用程式組態
 
-希望繼續使用其現有原始程式碼管理實務的團隊可以使用GitHub操作自動將其GitHub儲存庫與其應用配置儲存同步。 這允許您像通常一樣對設定檔進行更改,同時獲得應用配置優勢,例如: <br>
-&nbsp;&nbsp;&nbsp;&nbsp;• 程式碼之外的集中設定 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;• 更新配置,而無需重新部署整個應用 <br>
-&nbsp;&nbsp;&nbsp;&nbsp;• 與 Azure 應用服務和功能等服務整合。 
+想要繼續使用現有原始檔控制實務的小組可以使用 GitHub 動作，自動將其 GitHub 存放庫與其應用程式組態存放區同步。 這可讓您以平常的方式對設定檔進行變更，同時取得應用程式組態的優點，例如： <br>
+&nbsp;&nbsp;&nbsp;&nbsp;•程式碼之外的集中式設定 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;•更新設定而不重新部署整個應用程式 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;•與 Azure App Service 和函數之類的服務整合。 
 
-GitHub 操作[工作流](https://help.github.com/articles/about-github-actions#workflow)定義 GitHub 儲存庫中的自動化進程。 對來源儲存庫進行更改時 *,Azure 應用配置同步*操作會觸發對應用配置實例的更新。 它使用在儲存庫路徑中找到的`/.github/workflows/`YAML (.yml) 檔案來定義步驟和參數。 在推送、查看或分支應用配置檔時,可以觸發配置更新,就像使用應用代碼一樣。
+GitHub 動作[工作流程](https://help.github.com/articles/about-github-actions#workflow)會在 github 存放庫中定義自動化程式。 當對來源存放庫進行變更時， *Azure 應用程式組態同步*動作會觸發應用程式組態實例的更新。 它會使用在您的存放庫`/.github/workflows/`路徑中找到的 YAML （. yml）檔案，來定義步驟和參數。 您可以在推送、查看或分支應用程式佈建檔時觸發設定更新，就像使用應用程式程式碼一樣。
 
-GitHub[文件](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow)提供 GitHub 工作流和操作的深入檢視。 
+GitHub[檔](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow)可讓您深入瞭解 github 工作流程和動作。 
 
-## <a name="enable-github-actions-in-your-repository"></a>在儲存式庫中開啟 GitHub 操作
-要開始使用這個 GitHub 操作,請轉到儲存函式庫並選擇「**動作」** 選項卡。按下 **'新增工作流**」,然後**自己設定工作流**。 最後,在市場搜索"Azure 應用配置同步"。
+## <a name="enable-github-actions-in-your-repository"></a>在您的存放庫中啟用 GitHub 動作
+若要開始使用此 GitHub 動作，請移至您的存放庫並選取 [**動作**] 索引標籤。按一下 [**新增工作流程**]，然後**自行設定工作流程**。 最後，在 marketplace 中搜尋「Azure 應用程式組態同步」。
 > [!div class="mx-imgBorder"]
-> ![選擇「動作」選項卡](media/find-github-action.png)
+> ![選取 [動作] 索引標籤](media/find-github-action.png)
 
 > [!div class="mx-imgBorder"]
-> ![選擇應用設定同步作業](media/app-configuration-sync-action.png)
+> ![選取應用程式設定同步動作](media/app-configuration-sync-action.png)
 
-## <a name="sync-configuration-files-after-a-push"></a>發送後同步設定檔
-此操作在將更改推送到`appsettings.json`時同步 Azure 應用配置檔。 當開發人員將更改推送到`appsettings.json`時,應用配置同步操作使用新值更新應用配置實例。
+## <a name="sync-configuration-files-after-a-push"></a>推送之後同步處理設定檔案
+當變更推送至時， `appsettings.json`此動作會同步處理 Azure 應用程式組態的檔案。 當開發人員將變更推送至`appsettings.json`時，應用程式組態同步動作會使用新的值來更新應用程式組態實例。
 
-此工作流的第一部分指定`appsettings.json`操作在包含*為主分支的**推送**上*觸發。 第二部分列出了觸發操作後運行的作業。 該操作檢查相關文件並使用儲存庫中作為機密存儲的連接字串更新應用配置實例。  有關在 GitHub 中使用機密的詳細資訊,請參閱[GitHub](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)有關創建和使用加密機密的文章。
+此工作流程的第一個區段會指定動作會*在*包含*push* `appsettings.json`到*主要*分支的推送上觸發。 第二個區段會列出觸發動作之後執行的作業。 動作會簽出相關的檔案，並使用儲存在存放庫中做為秘密的連接字串來更新應用程式組態實例。  如需在 GitHub 中使用密碼的詳細資訊，請參閱 Github 的關於建立和使用加密密碼[的文章](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)。
 
 ```json
 on: 
@@ -61,10 +61,10 @@ jobs:
           separator: ':' 
 ```
 
-## <a name="use-a-dynamic-label-on-sync"></a>在同步時使用動態標籤
-每當更新時`appsettings.json`,前面的操作都會更新應用配置實例。 此操作在每個同步上插入一個動態標籤,確保可以唯一標識每個同步,並允許將代碼更改映射到配置更改。
+## <a name="use-a-dynamic-label-on-sync"></a>在同步處理時使用動態磁碟區標
+當`appsettings.json`更新時，上一個動作會更新應用程式組態實例。 這個動作會在每次同步處理時插入動態磁碟區標，確保每個同步處理都可以唯一識別，並允許程式碼變更對應到設定變更。
 
-此工作流的第一部分指定`appsettings.json`操作在包含*為主分支的**推送**上*觸發。 第二部分運行一個作業,該作業基於提交哈希為配置更新創建唯一標籤。 然後,作業使用新值和此更新的唯一標籤更新應用配置實例。
+此工作流程的第一個區段會指定動作會*在*包含*push* `appsettings.json`到*主要*分支的推送上觸發。 第二個區段會執行作業，以根據認可雜湊來建立設定更新的唯一標籤。 然後，作業會使用新的值和此更新的唯一標籤來更新應用程式組態實例。
 
 ```json
 on: 
@@ -95,10 +95,10 @@ jobs:
           label: ${{ steps.determine_label.outputs.LABEL }} 
 ```
 
-## <a name="use-strict-sync"></a>使用嚴格同步
-啟用嚴格模式後,同步可確保應用配置實例與給定首碼和標籤的設定檔完全匹配。 刪除設定檔中未具有相同首碼和標籤的鍵值對。 
+## <a name="use-strict-sync"></a>使用嚴格同步處理
+啟用 strict 模式時，同步處理可確保應用程式組態實例完全符合指定前置詞和標籤的設定檔。 具有與不在設定檔中相同前置詞和標籤的索引鍵/值組會被刪除。 
  
-如果未啟用嚴格模式,則同步將僅設定設定檔中的鍵值。 不會刪除任何鍵值對。 
+如果未啟用 strict 模式，同步處理只會從設定檔案中設定索引鍵/值。 將不會刪除索引鍵/值組。 
 
 ```json
 on: 
@@ -127,12 +127,12 @@ jobs:
           strict: true 
 ```
 
-## <a name="use-max-depth-to-limit-github-action"></a>使用最大深度限制 GitHub 操作
-嵌套 JSON 屬性的默認行為是拼平整個物件。  下面的 JSON 定義此鍵值對:
+## <a name="use-max-depth-to-limit-github-action"></a>使用最大深度來限制 GitHub 動作
+Nested JSON 屬性的預設行為是將整個物件壓平合併。  下列 JSON 會定義此索引鍵/值組：
 
 | Key | 值 |
 | --- | --- |
-| 物件:內部鍵:內鍵 | 內部價值 |
+| 物件：內部： InnerKey | InnerValue |
 
 ```json
 { "Object": 
@@ -144,7 +144,7 @@ jobs:
 }
 ```
 
-如果嵌套物件旨在將值推送到配置實例,則可以使用*深度*值在適當的深度停止展平。 
+如果將嵌套物件視為推送至設定實例的值，您可以使用*深度*值，以適當的深度停止簡維。 
 
 ```json
 on: 
@@ -171,31 +171,31 @@ jobs:
           depth: 2 
 ```
 
-給定深度為 2,上述範例現在返回以下鍵值對:
+假設深度為2，則上述範例現在會傳回下列機碼值組：
 
 | Key | 值 |
 | --- | --- |
-| 物件:內部 | {"內鍵":"內部價值"} |
+| 物件：內部 | {"InnerKey":"InnerValue"} |
 
-## <a name="understand-action-inputs"></a>瞭解操作輸入
-輸入參數指定操作在運行時使用的數據。  下表包含應用配置同步接受的輸入參數和每個參數的預期值。  有關 GitHub 操作的操作輸入的詳細資訊,請參閱 GitHub[的文件](https://help.github.com/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions#inputs)。
+## <a name="understand-action-inputs"></a>瞭解動作輸入
+輸入參數會指定在執行時間期間，動作所使用的資料。  下表包含應用程式組態同步處理所接受的輸入參數，以及每個的預期值。  如需 GitHub 動作之動作輸入的詳細資訊，請參閱 GitHub[檔](https://help.github.com/actions/automating-your-workflow-with-github-actions/metadata-syntax-for-github-actions#inputs)。
 
 > [!Note]
-> 輸入指示號不區分大小寫。
+> 輸入識別碼不區分大小寫。
 
 
-| 輸入名稱 | 必要項？ | 值 |
+| 輸入名稱 | 必要？ | 值 |
 |----|----|----|
-| 設定檔 | 是 | 儲存庫中設定檔的相對路徑。  Glob 模式受支援,可以包含多個檔。 |
-| format | 是 | 設定檔的檔案格式。  有效格式包括:JSON、YAML、屬性。 |
-| connectionString | 是 | 應用配置實例的連接字串。 連接字串應作為機密存儲在 GitHub 儲存庫中,並且在工作流中應僅使用機密名稱。 |
-| separator | 是 | 將設定檔拼平到鍵值對時使用的分隔符。  合法值為: 。 , ; : - _ __ / |
-| prefix | 否 | 要添加到鍵開頭的首碼。 |
-| 標籤 | 否 | 設置鍵值對時使用的標籤。 如果未指定,則使用空標籤。 |
-| strict | 否 | 確定是否啟用嚴格模式的布爾值。 預設值為 false。 |
-| 深度 | 否 | 用於拼平配置檔的最大深度。  深度必須為正數。  默認值將沒有最大深度。 |
-| tags | 否 | 指定在鍵值對上設置的標記。  預期格式是以下形狀的 JSON 物件的字串化形式: { 屬性名稱: 字串":字串;每個屬性名稱值都將成為標記。 |
+| configurationFile | 是 | 存放庫中設定檔的相對路徑。  支援 Glob 模式，而且可以包含多個檔案。 |
+| format | 是 | 設定檔案的檔案格式。  有效的格式為： JSON、YAML、properties。 |
+| connectionString | 是 | 應用程式組態實例的連接字串。 連接字串應儲存為 GitHub 存放庫中的秘密，而且工作流程中只能使用秘密名稱。 |
+| separator | 是 | 將設定檔簡維成成對的機碼值時，所使用的分隔符號。  有效的值為：。 , ; : - _ __ / |
+| prefix | 否 | 要加入至索引鍵開頭的前置詞。 |
+| 標籤 | 否 | 設定索引鍵/值組時使用的標籤。 如果未指定，則會使用 null 標籤。 |
+| strict | 否 | 判斷是否已啟用 strict 模式的布林值。 預設值為 false。 |
+| 豐富 | 否 | 簡維設定檔的最大深度。  深度必須是正數。  預設值將沒有最大深度。 |
+| tags | 否 | 指定在索引鍵/值組上設定的標記。  預期的格式為下列圖形之 JSON 物件的 stringified 形式： {[propertyName： string]： string;}每個屬性名稱-值都會變成一個標記。 |
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中,您瞭解了應用配置同步 GitHub 操作及其如何使用它來自動更新應用配置實例。 要瞭解 Azure 應用設定對鍵值對中的更改有何反應,請繼續執行下一[篇文章](./concept-app-configuration-event.md)。
+在本文中，您已瞭解應用程式組態同步 GitHub 動作，以及如何使用它來自動化應用程式組態實例的更新。 若要瞭解 Azure 應用程式組態如何對索引鍵/值組中的變更做出反應，請繼續進行下一篇[文章](./concept-app-configuration-event.md)。

@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
 ms.openlocfilehash: 2a048ddefbcd76193436da13cd3ba68b8b6ffb0a
-ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80607602"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>搭配 Azure SQL Database 中單一、集區和執行個體資料庫使用的異動複寫
@@ -27,9 +27,9 @@ ms.locfileid: "80607602"
 異動複寫對於下列情況非常有用：
 - 發佈在資料庫中的一或多個資料表中所進行的變更，然後將它們散發到訂閱變更的 SQL Server 或 Azure SQL 資料庫。
 - 讓數個散發資料庫處於同步狀態。
-- 通過不斷發佈更改,將資料庫從一個 SQL Server 或託管實例遷移到另一個資料庫。
+- 藉由持續發佈變更，將資料庫從一個 SQL Server 或受控實例遷移至另一個資料庫。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 下圖顯示異動複寫中的主要元件：  
 
@@ -45,11 +45,11 @@ ms.locfileid: "80607602"
 - SQL Server 2012 SP2 CU8 (11.0.5634.0)
 - 針對其他不支援發行到 Azure 中物件的 SQL Server 版本，可以利用[重新發行](https://docs.microsoft.com/sql/relational-databases/replication/republish-data)資料方法將資料移動到版本較新的 SQL Server。 
 
-**散發者**是執行個體過伺服器，它會從發行者收集文章中的變更，然後將變更散發到訂閱者。 分發伺服器可以是 Azure SQL 資料庫託管實例或 SQL Server(任何版本,只要它等於或高於發行者版本)。 
+**散發者**是執行個體過伺服器，它會從發行者收集文章中的變更，然後將變更散發到訂閱者。 散發者可以是 Azure SQL Database 受控實例或 SQL Server （任何版本只要等於或高於發行者版本）。 
 
 **訂閱者**是執行個體或伺服器，它會接收所收到的發行者所做的變更。 訂閱者可以是 Azure SQL Database 或 SQL Server 資料庫中的單一、集區和執行個體資料庫。 單一或集區資料庫上的訂閱者必須設定為發送訂閱者。 
 
-| 角色 | 單一和集區資料庫 | 執行個體資料庫 |
+| [角色] | 單一和集區資料庫 | 執行個體資料庫 |
 | :----| :------------- | :--------------- |
 | **發行者** | 否 | 是 | 
 | **散發者** | 否 | 是|
@@ -58,27 +58,27 @@ ms.locfileid: "80607602"
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
-  > 當分發伺服器是實例資料庫且訂閱者不是時,不支援拉取訂閱。 
+  > 當散發者是實例資料庫而不支援提取訂閱時，則不支援提取訂閱。 
 
 [複寫有不同類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)：
 
 
 | 複寫 | 單一和集區資料庫 | 執行個體資料庫|
 | :----| :------------- | :--------------- |
-| [**標準交易**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | 是 (僅作為訂閱者) | 是 | 
+| [**標準交易式**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | 是 (僅作為訂閱者) | 是 | 
 | [**快照式**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | 是 (僅作為訂閱者) | 是|
-| [**合併複製**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
-| [**點對點**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
+| [**合併式複寫**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | 否 | 否|
+| [**對等**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | 否 | 否|
 | [**雙向**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | 否 | 是|
-| [**可備份訂閱**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | 否 | 否|
+| [**可更新的訂閱**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | 否 | 否|
 | &nbsp; | &nbsp; | &nbsp; |
 
   >[!NOTE]
   > - 嘗試使用舊版設定複寫可能會導致錯誤號碼 MSSQL_REPL20084 (處理序無法連線到訂閱者。) 和 MSSQ_REPL40532 (無法開啟登入所要求的公開伺服器 \<名稱>。 登入失敗。)。
   > - 若要使用 Azure SQL Database 的所有功能，您必須使用最新版的 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。
   
-  ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>實體資料庫與本地端系統的可支援性矩陣
-  實例資料庫的複製可支援性矩陣與本地 SQL Server 的複製支援矩陣相同。 
+  ### <a name="supportability-matrix-for-instance-databases-and-on-premises-systems"></a>實例資料庫和內部部署系統的可支援性矩陣
+  實例資料庫的複寫可支援性對照表與內部部署 SQL Server 的相同。 
   
 | **發行者**   | **散發者** | **訂閱者** |
 | :------------   | :-------------- | :------------- |
@@ -94,14 +94,14 @@ ms.locfileid: "80607602"
 
 - 連線會在複寫參與者之間使用 SQL 驗證。 
 - 與工作目錄共用且用於複寫的 Azure 儲存體帳戶。 
-- 埠 445(TCP 出站)需要在託管實例子網的安全規則中打開才能訪問 Azure 文件共用。 
-- 如果發佈伺服器/分發伺服器位於託管實例上且訂閱者不在託管實例上,則需要打開埠 1433(TCP 出站)。 您可能還需要將連接埠`allow_linkedserver_outbound`1433**目標服務標記**的託管實例 NSG 出`virtualnetwork`站安全`internet`規則從 變更為 。 
-- 所有類型的複製參與者(發佈伺服器、分發伺服器、拉取訂閱伺服器和推送訂閱伺服器)都可以放置在託管實例上,但發佈者和分發伺服器必須同時位於雲中或同時位於本地。
-- 如果發佈商、分發伺服器和/或訂閱者存在於不同的虛擬網路中,則必須在每個實體之間建立 VPN 對等互連,以便發佈者和分發伺服器之間存在 VPN 對等互連,並且/或分發伺服器和訂閱者之間存在 VPN 對等互連。 
+- 埠445（TCP 輸出）必須在受控實例子網的安全性規則中開啟，才能存取 Azure 檔案共用。 
+- 如果發行者/散發者位於受控實例上，而且訂閱者不是，則必須開啟埠1433（TCP 輸出）。 您也可能需要將埠 1433**目的地服務**標籤的 [受控`allow_linkedserver_outbound`實例 NSG 輸出安全性規則] 從`virtualnetwork`變更為`internet`。 
+- 所有類型的複寫參與者（發行者、散發者、提取訂閱者和發送訂閱者）都可以放在受控實例上，但發行者和散發者必須同時位於雲端或內部部署兩者。
+- 如果「發行者」、「散發者」和/或「訂閱者」存在於不同的虛擬網路中，則必須在每個實體之間建立 VPN 對等互連，使「發行者」與「散發者」之間有 VPN 對等互連，以及（或）「散發者」與「訂閱者」之間有 VPN 
 
 
 >[!NOTE]
-> - 如果分發伺服器是實例資料庫且訂閱者位於本地時,出站網路安全組 (NSG) 埠 445 被阻止,則連接到 Azure 儲存檔時可能會遇到錯誤 53。 [更新 vNet NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)以解決此問題。 
+> - 當「散發者」為實例資料庫且「訂閱者」為內部部署時，如果輸出網路安全性群組（NSG）埠445遭到封鎖，您可能會在連接到 Azure 儲存體檔案時遇到錯誤53。 [更新 VNET NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)以解決此問題。 
 
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>比較資料同步與異動複寫
@@ -116,21 +116,21 @@ ms.locfileid: "80607602"
 
 一般情況下，發行者和散發者必須位在雲端或內部部署中。 不支援下列設定： 
 
-### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>在託管實例上具有本地分發伺服器的伺服器
+### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>在受控實例上具有本機散發者的發行者
 
 ![單一執行個體作為發行者和散發者](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
-發佈伺服器和分發伺服器在單個託管實例中配置,並將更改分發到其他託管實例、單個資料庫、池資料庫或本地 SQL Server。 
+發行者和散發者設定在單一受控實例內，並將變更散發到其他受控實例、單一資料庫、集區資料庫或內部部署 SQL Server。 
 
-### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>在託管實例上具有遠端分發伺服器的伺服器
+### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>在受控實例上具有遠端散發者的發行者
 
-在此配置中,一個託管實例發佈對放置在另一個託管實例上的分發伺服器的更改,該實例可以服務許多源託管實例,並將更改分發到託管實例、單個資料庫、池資料庫或 SQL Server 上的一個或多個目標。
+在此設定中，一個受控實例會將變更發佈至位於另一個受控實例上的散發者，而該服務可提供許多來源受控實例，並將變更散發到受控實例、單一資料庫、集區資料庫或 SQL Server 上的一或多個目標。
 
 ![發行者和散發者使用個別的執行個體](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 
-在兩個受控執行個體上設定發行者和散發者。 此設定存在一些約束: 
+在兩個受控執行個體上設定發行者和散發者。 此設定有一些條件約束： 
 
-- 兩個託管實例都位於同一個 vNet 上。
+- 這兩個受控實例都位於相同的 vNet 上。
 - 這兩個受控執行個體位於相同的位置。
 
 
@@ -140,18 +140,18 @@ ms.locfileid: "80607602"
  
 在此設定中，Azure SQL Database (單一、集區和執行個體資料庫) 是訂閱者。 此設定支援從內部部署移轉至 Azure。 如果訂閱者位於單一或集區資料庫上，則它必須處於發送模式。  
 
-## <a name="with-failover-groups"></a>帶容錯移轉群組
+## <a name="with-failover-groups"></a>使用容錯移轉群組
 
-如果在[故障轉移組中](sql-database-auto-failover-group.md)的**發行者**或**分發商**實例上啟用了異地複製,則託管實例管理員必須清理舊主伺服器上的所有發佈,並在故障轉移發生后在新主伺服器上重新配置它們。 在這種情況下,需要以下活動:
+如果在[容錯移轉群組](sql-database-auto-failover-group.md)中的「**發行者**」或「散發者」實例上啟用「地理複寫」，則「受控實例管理員」必須清除舊主要複本上的所有發行集，並在容錯移轉之後于新的主**伺服器**上重新設定它們。 此案例中需要下列活動：
 
-1. 停止在資料庫上運行的所有複製作業(如果有)。
-2. 透過在發行者資料庫上執行以下文稿從發行者中刪除訂閱元資料:
+1. 停止在資料庫上執行的所有複寫作業（如果有的話）。
+2. 在發行者資料庫上執行下列腳本，以卸載發行者的訂閱中繼資料：
 
    ```sql
    EXEC sp_dropsubscription @publication='<name of publication>', @article='all',@subscriber='<name of subscriber>'
    ```             
  
-1. 從訂閱伺服器刪除訂閱元數據。 訂閱伺服器上的訂閱資料庫上執行以下文稿:
+1. 捨棄訂閱者的訂閱中繼資料。 在訂閱者實例上的訂閱資料庫上執行下列腳本：
 
    ```sql
    EXEC sp_subscription_cleanup
@@ -160,43 +160,43 @@ ms.locfileid: "80607602"
       @publication = N'<name of publication>'; 
    ```                
 
-1. 通過在已發佈的資料庫中運行以下文稿,強制從發行者中刪除所有複製物件:
+1. 藉由在已發行的資料庫中執行下列腳本，強制卸載「發行者」中的所有複寫物件：
 
    ```sql
    EXEC sp_removedbreplication
    ```
 
-1. 強制將舊分發伺服器從原始主實例中刪除(如果失敗返回以前具有分發伺服器的舊主資料庫)。 在舊分發伺服器託管實體的主資料庫上執行以下文稿:
+1. 從原始的主要實例強制卸載舊的散發者（如果容錯回復到用來擁有「散發者」的舊主伺服器）。 在舊的散發者受控實例的 master 資料庫上執行下列腳本：
 
    ```sql
    EXEC sp_dropdistributor 1,1
    ```
 
-如果在故障轉移組中的**訂戶**實例上啟用了異地複製,則應將發佈配置為連接到訂閱伺服器託管實例的故障轉移組偵聽器終結點。 在發生故障轉移時,託管實例管理員的後續操作取決於發生的故障轉移的類型: 
+如果在容錯移轉群組的**訂閱者**實例上啟用異地複寫，則應該將發行集設定為連接到訂閱者受控實例的容錯移轉群組接聽程式端點。 在容錯移轉時，受管理的實例系統管理員後續採取的動作取決於發生的容錯移轉類型： 
 
-- 對於沒有數據丟失的故障轉移,複製將在故障轉移後繼續工作。 
-- 對於具有數據丟失的故障轉移,複製也將有效。 它將再次複製丟失的更改。 
-- 對於具有數據丟失的故障轉移,但數據丟失超出分發資料庫保留期,託管實例管理員將需要重新初始化訂閱資料庫。 
+- 對於不會遺失資料的容錯移轉，複寫將會在容錯移轉後繼續運作。 
+- 對於資料遺失的容錯移轉，複寫也會運作。 這會再次複寫遺失的變更。 
+- 對於資料遺失的容錯移轉，但資料遺失超出散發資料庫保留期限，受管理的實例系統管理員將需要重新初始化訂閱資料庫。 
 
 ## <a name="next-steps"></a>後續步驟
 
-- [設定 MI 發行者和訂閱者之間的複製](replication-with-sql-database-managed-instance.md)
-- [設定 MI 發行者、MI 分發伺服器和 SQL Server 訂閱者之間的複製](sql-database-managed-instance-configure-replication-tutorial.md)
-- [建立出版物](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)。
+- [設定 MI 發行者與訂閱者之間的複寫](replication-with-sql-database-managed-instance.md)
+- [設定 MI 發行者、MI 散發者和 SQL Server 訂閱者之間的複寫](sql-database-managed-instance-configure-replication-tutorial.md)
+- [建立發行](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)集。
 - [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription)，方法是使用 Azure SQL Database 伺服器名稱作為訂閱者 (例如 `N'azuresqldbdns.database.windows.net`)，並使用 Azure SQL Database 名稱作為目的地資料庫 (例如 **AdventureWorks**)。 )
 
 
-有關配置事務複製的詳細資訊,請參閱以下教程:
+如需有關設定異動複寫的詳細資訊，請參閱下列教學課程：
 
 
 
 ## <a name="see-also"></a>另請參閱  
 
-- [使用 MI 和故障轉移群組的複製](sql-database-managed-instance-transact-sql-information.md#replication)
+- [使用 MI 和容錯移轉群組進行複寫](sql-database-managed-instance-transact-sql-information.md#replication)
 - [複寫至 SQL Database](replication-to-sql-database.md)
-- [複製到託管實體](replication-with-sql-database-managed-instance.md)
+- [複寫至受控實例](replication-with-sql-database-managed-instance.md)
 - [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
-- [複寫的類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
+- [複寫類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
 - [監視 (複寫)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
 - [初始化訂閱](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  

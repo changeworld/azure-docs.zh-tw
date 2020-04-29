@@ -1,5 +1,5 @@
 ---
-title: 管理 Azure 網站恢復中物理伺服器的設定伺服器
+title: 在 Azure Site Recovery 中管理實體伺服器的設定伺服器
 description: 本文說明如何針對實體伺服器至 Azure 的災害復原管理 Azure Site Recovery 組態伺服器。
 services: site-recovery
 author: mayurigupta13
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478975"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>管理實體伺服器災害復原的組態伺服器
@@ -20,11 +20,11 @@ ms.locfileid: "80478975"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 下表摘要說明部署內部部署組態伺服器機器的必要條件。
 
-| **元件** | **要求** |
+| **元件** | **需求** |
 | --- |---|
 | CPU 核心| 8 |
 | RAM | 16 GB|
@@ -36,7 +36,7 @@ ms.locfileid: "80478975"
 | VMware vSphere PowerCLI 版本 | 不需要|
 | Windows Server 角色 | 請勿啟用這些角色： <br> - Active Directory Domain Services <br>- 網際網路資訊服務 <br> - Hyper-V |
 | 群組原則| 請勿啟用這些群組原則： <br> - 防止存取命令提示字元 <br> - 防止存取登錄編輯工具 <br> - 檔案附件的信任邏輯 <br> - 開啟指令碼執行 <br> [深入了解](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-| IIS | - 沒有預先存在的預設網站 <br> - 開啟[匿名身份驗證](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 啟用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定  <br> - 沒有預先存在的網站/應用程式接聽連接埠 443<br>|
+| IIS | - 沒有預先存在的預設網站 <br> -啟用[匿名驗證](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - 啟用 [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定  <br> - 沒有預先存在的網站/應用程式接聽連接埠 443<br>|
 | NIC 類型 | VMXNET3 (部署為 VMware VM 時) |
 | IP 位址類型 | 靜態 |
 | 網際網路存取 | 伺服器需要存取這些 URL： <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - `https://management.azure.com` <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (相應放大處理序伺服器不需要) <br> - time.nist.gov <br> - time.windows.com |
@@ -47,7 +47,7 @@ ms.locfileid: "80478975"
 Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。 此外，您可以從 [Microsoft 下載中心](https://aka.ms/unifiedsetup)下載。
 
 1. 登入 Azure 入口網站並瀏覽至您的復原服務保存庫。
-2. 瀏覽到**站點恢復基礎結構** > **配置伺服器**(在 VMware &物理计算机下)。
+2. 流覽至**Site Recovery 的基礎結構** > 設定**伺服器**（適用于 VMware & 實體機器）。
 3. 按一下 [+伺服器]**** 按鈕。
 4. 在 [新增伺服器]**** 頁面上，按一下 [下載] 按鈕，下載註冊金鑰。 在組態伺服器安裝期間，您需要使用此金鑰向 Azure Site Recovery 服務註冊它。
 5. 按一下 [下載 Microsoft Azure Site Recovery 整合安裝]**** 連結，以下載最新版本的組態伺服器。
@@ -60,7 +60,7 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
 1. 執行統一安裝的安裝檔案。
 2. 在 [開始之前]**** 選取 [安裝設定伺服器和處理序伺服器]****。
 
-    ![開始之前](./media/physical-manage-configuration-server/combined-wiz1.png)
+    ![在您開始使用 Intune 之前](./media/physical-manage-configuration-server/combined-wiz1.png)
 
 3. 在 [協力廠商軟體授權]**** 中，按一下 [我接受]**** 來下載並安裝 MySQL。
 4. 在 [網際網路設定]**** 中，指定在設定伺服器上執行的 Provider 要如何透過網際網路連接到 Azure Site Recovery。 確定您已允許必要的 URL。
@@ -69,9 +69,9 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
     - 如果您想要讓提供者直接連接，請選取 [不使用 Proxy 伺服器直接連線到 Azure Site Recovery]****。
     - 如果現有的 Proxy 需要驗證，或是您想要讓 Provider 使用自訂 Proxy 來連線，請選取 [以自訂 Proxy 設定連線]****，並指定位址、連接埠和認證。
      ![防火牆](./media/physical-manage-configuration-server/combined-wiz4.png)
-6. 在**先決條件檢查**中,安裝程式運行檢查以確保安裝可以運行。 如果出現有關**全域時間同步檢查**的警告,請驗證系統時鐘上的時間(**日期和時間**設置)是否與時區相同。
+6. 在 [**必要條件檢查**] 中，安裝程式會執行檢查，以確定可以執行安裝。 如果出現有關「**通用時間同步檢查**」的警告，請確認系統時鐘的時間（[**日期和時間**] 設定）與時區相同。
 
-    ![Prerequisites](./media/physical-manage-configuration-server/combined-wiz5.png)
+    ![先決條件](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. 在 [MySQL 組態]**** 中，建立認證來登入已安裝的 MySQL 伺服器執行個體。
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)
@@ -87,7 +87,7 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
 11. 在 [摘要]**** 中檢閱資訊，然後按一下 [安裝]****。 安裝完成時，會產生複雜密碼。 在您啟用複寫時會需要它，所以請將它複製並保存在安全的位置。
 
 
-註冊完成後,伺服器將顯示在保管庫中的 **「設定** > **伺服器」** 邊欄選項卡上。
+註冊完成後，伺服器會顯示在保存庫的 [**設定** > ] [**伺服器**] 分頁上。
 
 
 ## <a name="install-from-the-command-line"></a>從命令列安裝
@@ -108,7 +108,7 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
 
 ### <a name="parameters"></a>參數
 
-|參數名稱| 類型 | 描述| 值|
+|參數名稱| 類型 | 說明| 值|
 |-|-|-|-|
 | /ServerMode|必要|指定應該同時安裝組態和處理序伺服器，還是只安裝處理序伺服器|CS<br>PS|
 |/InstallLocation|必要|安裝元件的資料夾| 電腦上的任何資料夾|
@@ -118,12 +118,12 @@ Site Recovery 入口網站中提供最新版本的組態伺服器安裝檔案。
 |/PSIP|必要|要用於複寫資料傳輸的 NIC IP 位址| 任何有效的 IP 位址|
 |/CSIP|必要|接聽組態伺服器的 NIC IP 位址| 任何有效的 IP 位址|
 |/PassphraseFilePath|必要|複雜密碼檔案的位置完整路徑|有效的檔案路徑|
-|/BypassProxy|選用|指定組態伺服器不使用 Proxy 連接至 Azure|若要這樣做，請從 Venu 取得此值|
-|/ProxySettingsFilePath|選用|Proxy 設定 (預設的 Proxy 需要驗證或自訂的 Proxy)|此檔案應該具備如下所指定的格式|
-|DataTransferSecurePort|選用|要用於複寫資料的 PSIP 上的連接埠號碼| 有效的連接埠號碼 (預設值是 9433)|
-|/SkipSpaceCheck|選用|略過快取磁碟的空間檢查| |
+|/BypassProxy|選擇性|指定組態伺服器不使用 Proxy 連接至 Azure|若要這樣做，請從 Venu 取得此值|
+|/ProxySettingsFilePath|選擇性|Proxy 設定 (預設的 Proxy 需要驗證或自訂的 Proxy)|此檔案應該具備如下所指定的格式|
+|DataTransferSecurePort|選擇性|要用於複寫資料的 PSIP 上的連接埠號碼| 有效的連接埠號碼 (預設值是 9433)|
+|/SkipSpaceCheck|選擇性|略過快取磁碟的空間檢查| |
 |/AcceptThirdpartyEULA|必要|旗標表示接受協力廠商使用者授權合約| |
-|/ShowThirdpartyEULA|選用|顯示協力廠商使用者授權合約。 如果提供作為輸入，則會忽略所有其他參數| |
+|/ShowThirdpartyEULA|選擇性|顯示協力廠商使用者授權合約。 如果提供作為輸入，則會忽略所有其他參數| |
 
 
 
@@ -158,7 +158,7 @@ ProxyPassword="Password"
    ![註冊組態伺服器](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. 提供新的 Proxy 詳細資料，然後按一下 [註冊]**** 按鈕。
 6. 開啟系統管理 PowerShell 命令視窗。
-7. 執行以下命令：
+7. 執行下列命令：
 
    ```powershell
    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -237,12 +237,12 @@ ProxyPassword="Password"
 > [!WARNING]
 > 在開始解除委任組態伺服器之前，請確認下列事項。
 > 1. [停用保護](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)此組態伺服器下的所有虛擬機器。
-> 2. [取消關聯](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)並從配置伺服器[中刪除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)所有複製策略。
+> 2. [解除關聯](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)並[刪除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)設定伺服器中的所有複寫原則。
 > 3. [刪除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)與組態伺服器相關聯的所有 VCenters 伺服器/vSphere 主機。
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>從 Azure 入口網站刪除組態伺服器
-1. 在 Azure 門戶中,從 Vault 選單瀏覽到**站台恢復基礎結構** > **設定伺服器**。
+1. 在 Azure 入口網站中，流覽至 [保存庫] 功能表中的 [ **Site Recovery 基礎結構** > 設定**伺服器**]。
 2. 按一下您需要解除委任的組態伺服器。
 3. 在組態伺服器的詳細資料頁面上，按一下 [刪除]**** 按鈕。
 4. 按一下 [是]**** 以確認刪除伺服器。
@@ -288,10 +288,10 @@ ProxyPassword="Password"
     `Remove-AzSiteRecoveryFabric -Fabric $Fabric [-Force]`
 
 > [!NOTE]
-> "刪除-AzSite恢復Fabric"中的 **-Force**選項可用於強制刪除/刪除配置伺服器。
+> AzSiteRecoveryFabric 中的 **-Force**選項可以用來強制移除/刪除設定伺服器。
 
-## <a name="renew-tlsssl-certificates"></a>續訂 TLS/SSL 憑證
-設定伺服器有內建的 Web 伺服器，可協調它所連線的行動服務、處理伺服器和主要目標伺服器的活動。 Web 伺服器使用 TLS/SSL 憑證對用戶端進行身份驗證。 憑證會在三年後到期，且可隨時更新。
+## <a name="renew-tlsssl-certificates"></a>更新 TLS/SSL 憑證
+設定伺服器有內建的 Web 伺服器，可協調它所連線的行動服務、處理伺服器和主要目標伺服器的活動。 網頁伺服器會使用 TLS/SSL 憑證來驗證用戶端。 憑證會在三年後到期，且可隨時更新。
 
 ### <a name="check-expiry"></a>檢查到期日
 
@@ -303,8 +303,8 @@ ProxyPassword="Password"
 
 ### <a name="renew-the-certificate"></a>更新憑證
 
-1. 在保管庫中,打開**站點恢復基礎結構** > **配置伺服器**,然後單擊所需的配置伺服器。
-2. 到期日期顯示在**設定伺服器執行狀況**下
+1. 在保存庫中，開啟**Site Recovery 基礎結構** > 設定**伺服器**]，然後按一下所需的設定伺服器。
+2. 到期日會顯示在 [設定**伺服器健全狀況**] 底下
 3. 按一下 [更新憑證]****。 
 
 

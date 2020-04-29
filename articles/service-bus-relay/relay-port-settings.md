@@ -1,6 +1,6 @@
 ---
 title: Azure 轉送連接埠設定 | Microsoft Docs
-description: 本文包括一個表,其中描述了 Azure 中繼的埠值所需的配置。
+description: 本文包含一個表格，說明 Azure 轉送的埠值所需的設定。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 532e3c297c42ea16b1f462a01699fc2fd71c6cce
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80529118"
 ---
 # <a name="azure-relay-port-settings"></a>Azure 轉送連接埠設定
@@ -27,7 +27,7 @@ ms.locfileid: "80529118"
 
 ## <a name="hybrid-connections"></a>混合式連線
 
-混合連接在埠 443 上使用 WebSocket,TLS 作為基礎傳輸機制,該機制僅使用**HTTPS。** 
+混合式連線會在埠443上使用 Websocket，並以 TLS 作為基礎傳輸機制，這只會使用**HTTPS** 。 
 
 ## <a name="wcf-relays"></a>WCF 轉送
   

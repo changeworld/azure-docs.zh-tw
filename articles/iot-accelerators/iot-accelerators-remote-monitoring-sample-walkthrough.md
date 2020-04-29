@@ -1,6 +1,6 @@
 ---
 title: 遠端監視解決方案加速器概觀 - Azure | Microsoft Docs
-description: 本文概述了遠端監視解決方案的一些關鍵元素,使您能夠瞭解其工作原理。
+description: 本文概要說明遠端監視解決方案的一些重要元素，讓您瞭解它的運作方式。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
 ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80546304"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>遠端監視解決方案加速器概觀
@@ -32,7 +32,7 @@ GitHub 提供遠端監視解決方案加速器程式碼：
 
 ## <a name="logical-architecture"></a>邏輯架構
 
-下圖概述了覆蓋在[IoT 架構結構](../iot-fundamentals/iot-introduction.md)上的遠端監視解決方案加速器的邏輯元件:
+下圖概述[IoT 架構](../iot-fundamentals/iot-introduction.md)上重迭的遠端監視解決方案加速器的邏輯元件：
 
 ![邏輯架構](./media/iot-accelerators-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
@@ -167,4 +167,4 @@ ASA 作業從連線裝置將遙測資料傳送到 Time Series Insights 進行儲
 詳細的方案架構圖表：
 * [遠端監視架構的解決方案加速器](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture) \(英文\)。
 
-有關遠端監視解決方案加速器的更多概念資訊,請參閱[自訂解決方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。
+如需遠端監視解決方案加速器的詳細概念資訊，請參閱[自訂解決方案加速器](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md)。
