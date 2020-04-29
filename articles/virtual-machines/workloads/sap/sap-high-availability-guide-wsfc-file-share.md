@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 中的檔共用在 WSFC 上群集 SAP ASCS/SCS |微軟文檔
+title: 使用 Azure 中的檔案共用在 WSFC 上叢集 SAP ASCS/SCS |Microsoft Docs
 description: 了解如何在 Azure 中使用檔案共用於 Windows 容錯移轉叢集上進行 SAP ASCS/SCS 執行個體叢集處理。
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -17,10 +17,10 @@ ms.date: 07/24/2019
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 545bcd1fa521b945d822b7eb69945cf381bf480a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918660"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -212,7 +212,7 @@ Windows Server 容錯移轉叢集是 Windows 中高可用性 SAP ASCS/SCS 安裝
 
 容錯移轉叢集是由 1+n 個獨立伺服器 (節點) 所組成的群組，這些伺服器會共同運作以提升應用程式和服務的可用性。 如果發生節點失敗，Windows Server 容錯移轉叢集會計算發生的失敗次數，以及仍然維持狀況良好的叢集，以提供應用程式和服務。 您可以從不同的仲裁模式選擇以達成容錯移轉叢集。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 在開始本文所述的工作之前，請檢閱此文章：
 
 * [SAP NetWeaver 的 Azure 虛擬機器高可用性架構和案例][sap-high-availability-architecture-scenarios]
@@ -291,11 +291,11 @@ _**圖 4：** 用來保護 SAP 全域主機檔案的向外延展檔案共用_
 
 儲存空間直接存取會當作向外延展檔案共用的共用磁碟使用。 您可以使用儲存空間直接存取搭配使用伺服器與本機儲存體來建立高度可用且可調整的儲存體。 用於向外延展檔案共用 (例如用於 SAP 全域主機檔案) 的共用儲存體不是單一失敗點。
 
-選擇存儲空間直接時，請考慮以下用例：
+選擇儲存空間直接存取時，請考慮下列使用案例：
 
-- 用於構建存儲空間直接群集的虛擬機器需要在 Azure 可用性集中部署。
-- 對於存儲空間直接群集的災害復原，可以使用[Azure 網站恢復服務](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)。
-- 不支援跨不同的 Azure 可用性區域拉伸存儲空間直接群集。
+- 用來建立儲存空間直接存取叢集的虛擬機器必須部署在 Azure 可用性設定組中。
+- 針對儲存空間直接存取叢集的嚴重損壞修復，您可以使用[Azure Site Recovery 服務](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix#replicated-machines---storage)。
+- 不支援跨不同 Azure 可用性區域延展儲存空間直接存取叢集。
 
 ### <a name="sap-prerequisites-for-scale-out-file-shares-in-azure"></a>Azure 中向外延展檔案共用的 SAP 必要條件
 
@@ -338,7 +338,7 @@ _**圖 4：** 用來保護 SAP 全域主機檔案的向外延展檔案共用_
 _**圖 5：** 在兩個叢集中部署的 SAP ASCS/SCS 執行個體和向外延展檔案共用_
 
 > [!IMPORTANT]
-> 在 Azure 雲中，用於 SAP 和橫向擴展檔共用的每個群集都必須部署在其自己的 Azure 可用性集中或跨 Azure 可用性區域。 這可確保叢集 VM 在基礎 Azure 基礎結構中，以分散方式放置。 此技術支援可用性區域部署。
+> 在 Azure 雲端中，用於 SAP 和向外延展檔案共用的每個叢集都必須部署在自己的 Azure 可用性設定組或跨 Azure 可用性區域。 這可確保叢集 VM 在基礎 Azure 基礎結構中，以分散方式放置。 這項技術支援可用性區域部署。
 >
 
 ## <a name="generic-file-share-with-sios-datakeeper-as-cluster-shared-disks"></a>將 SIOS DataKeeper 當作叢集共用磁碟的一般檔案共用
@@ -352,6 +352,6 @@ _**圖 5：** 在兩個叢集中部署的 SAP ASCS/SCS 執行個體和向外延�
 
 * [使用 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和檔案共用，為 SAP HA 準備 Azure 基礎結構][sap-high-availability-infrastructure-wsfc-file-share]
 * [在 SAP ASCS/SCS 執行個體的 Windows 容錯移轉叢集和檔案共用上安裝 SAP NetWeaver HA][sap-high-availability-installation-wsfc-shared-disk]
-* [在 Azure 中針對 UDP 儲存體部署兩個節點的儲存空間直接存取向外延展檔案伺服器][deploy-sofs-s2d-in-azure]
-* [直接在 Windows 伺服器中的存儲空間 2016][s2d-in-win-2016]
+* [部署雙節點儲存空間直接存取向外延展檔案伺服器以在 Azure 中儲存 UPD][deploy-sofs-s2d-in-azure]
+* [Windows Server 2016 中的儲存空間直接存取][s2d-in-win-2016]
 * [深入探討：儲存空間直接存取中的磁碟區][deep-dive-volumes-in-s2d]

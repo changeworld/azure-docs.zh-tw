@@ -1,7 +1,7 @@
 ---
-title: Azure CLI 腳本示例 - 配置 IPv6 前端
+title: Azure CLI 腳本範例-設定 IPv6 前端
 titlesuffix: Azure Virtual Network
-description: 在 Azure 虛擬網路中使用 Azure CLI 啟用 IPv6 終結點
+description: 使用 Azure 虛擬網路中的 Azure CLI 啟用 IPv6 端點
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,29 +13,29 @@ ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
 ms.openlocfilehash: 1ef8742bc4f8de2d08d9bb4fc98b3df6f9420737
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235033"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虛擬網路腳本示例中配置 IPv6 終結點（預覽）
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>在虛擬網路中設定 IPv6 端點腳本範例（預覽）
 
-本文介紹如何在 Azure 中部署雙堆疊 （IPv4 + IPv6） 應用程式，該應用程式包括具有雙堆疊子網的雙堆疊虛擬網路、具有雙 （IPv4 + IPv6） 前端配置的負載等化器、具有雙 IP 配置的 NIC 的 VM，雙網路安全性群組規則，和雙公共IP。
+本文說明如何在 Azure 中部署雙重堆疊（IPv4 + IPv6）應用程式，其中包含具有雙重堆疊子網的雙協定堆疊虛擬網路、具有雙重（IPv4 + IPv6）前端設定的負載平衡器、具有雙重 IP 設定的 Vm、雙重網路安全性群組規則，以及雙重公用 Ip。
 
 您可以從 Azure [Cloud Shell](https://shell.azure.com/bash) 或從本機的 Azure CLI 安裝來執行指令碼。 如果是在本機使用 CLI，需要執行 2.0.28 版或更新版本，方可使用該指令碼。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 如果您在本機執行 CLI，則也需要執行 `az login` 以建立與 Azure 的連線。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
-要將 IPv6 用於 Azure 虛擬網路功能，必須僅配置訂閱一次，如下所示：
+## <a name="prerequisites"></a>先決條件
+若要使用 IPv6 for Azure 虛擬網路功能，您必須只設定訂用帳戶一次，如下所示：
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-需要 30 分鐘才能完成功能註冊。 您可以通過運行以下 Azure CLI 命令來檢查註冊狀態：
+需要 30 分鐘才能完成功能註冊。 您可以執行下列 Azure CLI 命令來檢查註冊狀態：
 
 ```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network

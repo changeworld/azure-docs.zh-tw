@@ -3,24 +3,24 @@ title: 與 Windows 容器互動
 services: azure-dev-spaces
 ms.date: 01/16/2020
 ms.topic: conceptual
-description: 瞭解如何使用 Windows 容器在現有群集上運行 Azure 開發人員空間
-keywords: Azure 開發空間、開發空間、Docker、庫伯奈斯、Azure、AKS、Azure 庫伯奈斯服務、容器、Windows 容器
+description: 瞭解如何在具有 Windows 容器的現有叢集上執行 Azure Dev Spaces
+keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器，Windows 容器
 ms.openlocfilehash: 0b3f221c9e62343a02ba8742e4cf988c7cf26c12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240493"
 ---
-# <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>使用 Azure 開發空間與 Windows 容器交互
+# <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>使用 Azure Dev Spaces 與 Windows 容器互動
 
-您可以在新的 Kubernetes 命名空間上啟用 Azure 開發空間。 Azure 開發空間將運行並檢測在 Linux 容器上運行的服務。 這些服務還可以與在同一命名空間中的 Windows 容器上運行的應用程式進行交互。 本文介紹如何使用開發人員空間在現有 Windows 容器的命名空間中運行服務。 此時，您無法調試或附加到具有 Azure 開發空間的 Windows 容器。
+您可以在新的和現有的 Kubernetes 命名空間上啟用 Azure Dev Spaces。 Azure Dev Spaces 將會執行並檢測在 Linux 容器上執行的服務。 這些服務也可以與在相同命名空間中的 Windows 容器上執行的應用程式互動。 本文說明如何在具有現有 Windows 容器的命名空間中，使用 Dev Spaces 來執行服務。 目前，您無法使用 Azure Dev Spaces 來進行調試或附加至 Windows 容器。
 
-## <a name="set-up-your-cluster"></a>設置群集
+## <a name="set-up-your-cluster"></a>設定您的叢集
 
-本文假定您已經有一個同時具有 Linux 和 Windows 節點池的群集。 如果需要創建具有 Linux 和 Windows 節點池的群集，可以[按照此處][windows-container-cli]的說明操作。
+本文假設您已經有一個具有 Linux 和 Windows 節點集區的叢集。 如果您需要使用 Linux 和 Windows 節點集區建立叢集，您可以依照[此處][windows-container-cli]的指示進行。
 
-使用庫貝內特斯命令列用戶端[庫布埃特爾][kubectl]連接到群集。 若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令會下載憑證並設定 Kubernetes CLI 以供使用。
+使用[kubectl][kubectl]（Kubernetes 命令列用戶端）連接到您的叢集。 若要設定 `kubectl` 以連線到 Kubernetes 叢集，請使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令會下載憑證並設定 Kubernetes CLI 以供使用。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -32,7 +32,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-以下示例輸出顯示了同時具有 Windows 和 Linux 節點的群集。 在繼續操作之前，請確保每個節點的狀態*已就緒*。
+下列範例輸出顯示同時具有 Windows 和 Linux 節點的叢集。 請確定每個節點的狀態都是 [*就緒*]，然後再繼續。
 
 ```console
 NAME                                STATUS   ROLES   AGE    VERSION
@@ -41,27 +41,27 @@ aks-nodepool1-12345678-vmss000001   Ready    agent   13m    v1.14.8
 aksnpwin000000                      Ready    agent   108s   v1.14.8
 ```
 
-對 Windows 節點應用[污點][using-taints]。 Windows 節點上的污點阻止開發人員空間將 Linux 容器安排在 Windows 節點上運行。 以下命令示例命令對上一個示例中的*aksnpwin987654* Windows 節點應用污點。
+將[污點][using-taints]套用至您的 Windows 節點。 Windows 節點上的污點可防止 Dev Spaces 排程 Linux 容器，以在您的 Windows 節點上執行。 下列命令範例命令會將污點套用至上一個範例中的 [ *aksnpwin987654* Windows] 節點。
 
 ```azurecli-interactive
 kubectl taint node aksnpwin987654 sku=win-node:NoSchedule
 ```
 
 > [!IMPORTANT]
-> 將污點應用於節點時，必須在服務的部署範本中配置匹配的容忍，才能在該節點上運行服務。 應用程式範例已配置了與上一命令中配置的污點[匹配的容忍][sample-application-toleration-example]。
+> 當您將污點套用至節點時，您必須在服務的部署範本中設定相符的 toleration，才能在該節點上執行您的服務。 範例應用程式已經使用[對應的 toleration][sample-application-toleration-example]來設定您在上一個命令中設定的污點。
 
-## <a name="run-your-windows-service"></a>運行 Windows 服務
+## <a name="run-your-windows-service"></a>執行您的 Windows 服務
 
-在 AKS 群集上運行 Windows 服務，並驗證其處於 *"正在運行"* 狀態。 本文使用[應用程式範例][sample-application]來演示群集上運行的 Windows 和 Linux 服務。
+在 AKS 叢集上執行您的 Windows 服務，並確認它處於*執行中*狀態。 本文使用[範例應用程式][sample-application]來示範在您的叢集上執行的 Windows 和 Linux 服務。
 
-從 GitHub 克隆應用程式範例並導航到`dev-spaces/samples/existingWindowsBackend/mywebapi-windows`目錄中：
+從 GitHub 複製範例應用程式，並流覽至`dev-spaces/samples/existingWindowsBackend/mywebapi-windows`目錄：
 
 ```console
 git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-應用程式範例使用[Helm 3][helm-installed]在群集上運行 Windows 服務。 導航到`charts`目錄並使用 Helm 運行 Windows 服務：
+範例應用程式會使用[Helm 3][helm-installed]來執行叢集上的 Windows 服務。 流覽至`charts`目錄，並使用 Helm 執行 Windows 服務：
 
 ```console
 cd charts/
@@ -69,9 +69,9 @@ kubectl create ns dev
 helm install windows-service . --namespace dev
 ```
 
-上述命令使用 Helm 在*開發命名*空間中運行 Windows 服務。 如果沒有名為*dev*的命名空間，它將創建它。
+上述命令會使用 Helm 在*dev*命名空間中執行您的 Windows 服務。 如果您沒有名為*dev*的命名空間，則會建立它。
 
-使用`kubectl get pods`命令驗證您的 Windows 服務在群集中運行。 
+使用`kubectl get pods`命令來確認您的 Windows 服務正在叢集中執行。 
 
 ```console
 $ kubectl get pods --namespace dev --watch
@@ -81,19 +81,19 @@ myapi-4b9667d123-1a2b3   0/1     ContainerCreating   0          47s
 myapi-4b9667d123-1a2b3   1/1     Running             0          98s
 ```
 
-## <a name="enable-azure-dev-spaces"></a>啟用 Azure 開發空間
+## <a name="enable-azure-dev-spaces"></a>啟用 Azure Dev Spaces
 
-在用於運行 Windows 服務的相同命名空間中啟用開發空間。 以下命令支援*開發空間中的開發*空間：
+在您用來執行 Windows 服務的相同命名空間中啟用 Dev Spaces。 下列命令會在*dev*命名空間中啟用 dev Spaces：
 
 ```console
 az aks use-dev-spaces -g myResourceGroup -n myAKSCluster --space dev --yes
 ```
 
-## <a name="update-your-windows-service-for-dev-spaces"></a>更新開發空間的 Windows 服務
+## <a name="update-your-windows-service-for-dev-spaces"></a>更新適用于 Dev Spaces 的 Windows 服務
 
-預設情況下，當您在現有命名空間上啟用 Dev Spaces 時，該容器已運行，預設情況下，開發人員空間將嘗試並檢測該命名空間中運行的任何新容器。 開發空間還將嘗試檢測為已在命名空間中運行的服務創建的任何新容器。 為防止開發人員空間檢測在命名空間中運行的容器，請將*非代理*標頭添加到 。 `deployment.yaml`
+當您使用已在執行的容器在現有命名空間上啟用 Dev Spaces 時，根據預設，Dev Spaces 會嘗試並檢測在該命名空間中執行的任何新容器。 開發人員空間也會嘗試並檢測為已在命名空間中執行的服務所建立的任何新容器。 若要避免 Dev Spaces 檢測在您的命名空間中執行的容器，請將*無 proxy*標`deployment.yaml`頭新增至。
 
-添加到`azds.io/no-proxy: "true"``existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml`檔：
+將`azds.io/no-proxy: "true"`新增至`existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml`檔案：
 
 ```yaml
 apiVersion: apps/v1
@@ -112,7 +112,7 @@ spec:
         azds.io/no-proxy: "true"
 ```
 
-用於`helm list`列出 Windows 服務的部署：
+使用`helm list`列出 Windows 服務的部署：
 
 ```cmd
 $ helm list --namespace dev
@@ -120,17 +120,17 @@ NAME              REVISION  UPDATED                     STATUS      CHART       
 windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-在上面的示例中，部署的名稱是*視窗服務*。 使用 更新 Windows 服務，使用`helm upgrade`：
+在上述範例中，您的部署名稱是*windows 服務*。 使用`helm upgrade`新的設定更新您的 Windows 服務：
 
 ```cmd
 helm upgrade windows-service . --namespace dev
 ```
 
-由於您更新了`deployment.yaml`，開發空間將不會嘗試並檢測您的服務。
+由於您已更新`deployment.yaml`您的，因此 Dev Spaces 不會嘗試並檢測您的服務。
 
-## <a name="run-your-linux-application-with-azure-dev-spaces"></a>使用 Azure 開發空間運行 Linux 應用程式
+## <a name="run-your-linux-application-with-azure-dev-spaces"></a>使用 Azure Dev Spaces 執行您的 Linux 應用程式
 
-導航到目錄`webfrontend`，並使用`azds prep`和`azds up`命令在群集上運行 Linux 應用程式。
+流覽至`webfrontend`目錄，並使用`azds prep`和`azds up`命令在叢集上執行您的 Linux 應用程式。
 
 ```console
 cd ../../webfrontend-linux/
@@ -138,12 +138,12 @@ azds prep --enable-ingress
 azds up
 ```
 
-該`azds prep --enable-ingress`命令為您的應用程式生成 Helm 圖表和 Dockerfile。
+`azds prep --enable-ingress`命令會為您的應用程式產生 Helm 圖表和 dockerfile。
 
 > [!TIP]
 > Azure Dev Spaces 會使用專案的 [Dockerfile 和 Helm 圖表](../how-dev-spaces-works-prep.md#prepare-your-code)來建置和執行您的程式碼，但如果您想要變更專案的建置和執行方式，可以修改這些檔案。
 
-該`azds up`命令在命名空間中運行服務。
+`azds up`命令會在命名空間中執行您的服務。
 
 ```console
 $ azds up
@@ -161,9 +161,9 @@ Service 'webfrontend' port 'http' is available at http://dev.webfrontend.abcdef0
 Service 'webfrontend' port 80 (http) is available via port forwarding at http://localhost:57648
 ```
 
-您可以通過打開公共 URL 來查看服務運行，該 URL 顯示在 azds up 命令的輸出中。 在此範例中，公用 URL 為 `http://dev.webfrontend.abcdef0123.eus.azds.io/`。 在瀏覽器中導航到服務，然後按一下"*關於*頂部"。 驗證您看到來自*mywebapi*服務的消息，其中包含容器正在使用的 Windows 版本。
+您可以藉由開啟公用 URL （顯示在 azds up 命令的輸出中），查看執行中的服務。 在此範例中，公用 URL 為 `http://dev.webfrontend.abcdef0123.eus.azds.io/`  。 在瀏覽器中流覽至服務，然後按一下頂端的 [*關於*]。 確認您看到來自*mywebapi*服務的訊息，其中包含容器所使用的 Windows 版本。
 
-![示例應用，顯示來自 mywebapi 的 Windows 版本](../media/run-dev-spaces-windows-containers/sample-app.png)
+![顯示來自 mywebapi 之 Windows 版本的範例應用程式](../media/run-dev-spaces-windows-containers/sample-app.png)
 
 ## <a name="next-steps"></a>後續步驟
 

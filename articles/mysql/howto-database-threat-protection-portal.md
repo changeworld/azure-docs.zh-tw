@@ -1,16 +1,16 @@
 ---
-title: 高級威脅防護 - Azure 門戶 - MySQL 的 Azure 資料庫
-description: 瞭解如何配置高級威脅防護以檢測指示資料庫潛在安全威脅的異常資料庫活動。
+title: 先進的威脅防護-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
+description: 瞭解如何設定「先進的威脅防護」來偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
 author: bolzmj
 ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 8eec40006a280b69387e14a5841360da65616ca5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062347"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure SQL 資料庫進階威脅防護
@@ -27,7 +27,7 @@ ms.locfileid: "80062347"
 > 如果適用於 MySQL 的 Azure 資料庫是針對「一般用途」和「記憶體最佳化」伺服器來部署的，則此功能可在所有 Azure 區域中使用。
 
 ## <a name="set-up-threat-detection"></a>設定威脅偵測
-1. 在 啟動 Azure[https://portal.azure.com](https://portal.azure.com)門戶。
+1. 啟動 Azure 入口網站，網址[https://portal.azure.com](https://portal.azure.com)為。
 2. 瀏覽至所要保護的 適用於 MySQL 的 Azure 資料庫伺服器的設定頁面。 在 [安全性] 設定中，選取 [進階威脅防護 (預覽)]****。
 3. 在 [進階威脅防護 (預覽)]**** 設定頁面上：
 
@@ -54,7 +54,7 @@ ms.locfileid: "80062347"
 
 ## <a name="explore-threat-detection-alerts"></a>探索威脅偵測警示
 
-SQL Database 威脅偵測將自有的警示與 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)整合。 即時 SQL 威脅檢測磁貼跟蹤 Azure 門戶中的資料庫和 SQL ATP 頁上的活動威脅的狀態。
+SQL Database 威脅偵測將自有的警示與 [Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)整合。 [即時 SQL 威脅偵測] 磚會追蹤資料庫中的作用中威脅的狀態，以及 Azure 入口網站中的 SQL ATP 頁面。
 
 按一下 [威脅偵測警示]**** 會啟動 Azure 資訊安全中心的警示頁面，並獲得在資料庫中偵測到的作用中 SQL 威脅概觀。
 
@@ -63,5 +63,5 @@ SQL Database 威脅偵測將自有的警示與 [Azure 資訊安全中心](https:
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解有關[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* 深入瞭解[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * 如需定價的詳細資訊，請參閱[適用於 MySQL 的 Azure 資料庫價格頁面](https://azure.microsoft.com/pricing/details/mysql/)  

@@ -1,5 +1,5 @@
 ---
-title: 教程：將 MySQL 連線遷移到 MySQL 的 Azure 資料庫
+title: 教學課程：將 MySQL online 遷移至適用於 MySQL 的 Azure 資料庫
 titleSuffix: Azure Database Migration Service
 description: 了解如何使用 Azure 資料庫移轉服務，在線上將內部部署的 MySQL 移轉至適用於 MySQL 的 Azure 資料庫。
 services: dms
@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: 7c8087a01bb71657e816be89b6a562dd4783b271
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240748"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>教學課程：使用 DMS 在線上將 MySQL 移轉至適用於 MySQL 的 Azure 資料庫
@@ -38,16 +38,16 @@ ms.locfileid: "80240748"
 > [!IMPORTANT]
 > 為了獲得最佳的移轉體驗，Microsoft 建議在目標資料庫所在的同一個 Azure 區域中，建立 Azure 資料庫移轉服務的執行個體。 跨區域或地理位置移動資料可能使移轉程序變慢，並產生錯誤。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要完成本教學課程，您需要：
 
 * 下載並安裝 [MySQL 社群版](https://dev.mysql.com/downloads/mysql/) 5.6 或 5.7。 內部部署 MySQL 版本必須符合「適用於 MySQL 的 Azure 資料庫」的版本。 例如，MySQL 5.6 只能移轉至「適用於 MySQL 的 Azure 資料庫」5.6，而無法升級至 5.7。
 * [在適用於 MySQL 的 Azure 資料庫中建立執行個體](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal)。 如需關於如何使用 Azure 入口網站連接及建立資料庫的詳細資訊，請參閱[使用 MySQL Workbench 來連接及查詢資料](https://docs.microsoft.com/azure/mysql/connect-workbench)一文。  
-* 通過使用 Azure 資源管理器部署模型為 Azure 資料庫移轉服務創建 Microsoft Azure 虛擬網路，該模型通過使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)提供與本地源伺服器的網站到網站的連接。 有關創建虛擬網路的詳細資訊，請參閱[虛擬網路文檔](https://docs.microsoft.com/azure/virtual-network/)，尤其是包含分步詳細資訊的快速入門文章。
+* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力。 如需有關建立虛擬網路的詳細資訊，請參閱[虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，其中包含逐步解說的詳細資料。
 
     > [!NOTE]
-    > 在虛擬網路網路設置期間，如果將 ExpressRoute 與網路對等對等連接到 Microsoft，則向將服務預配的子網添加以下服務[終結點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)：
+    > 在虛擬 networkNet 設定期間，如果您搭配使用 ExpressRoute 與網路對等互連，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將布建服務的子網：
     >
     > * 目標資料庫端點 (例如，SQL 端點、Cosmos DB 端點等)
     > * 儲存體端點
@@ -55,11 +55,11 @@ ms.locfileid: "80240748"
     >
     > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。
 
-* 確保虛擬網路網路安全性群組規則不會阻止以下到 Azure 資料庫移轉服務的入站通訊連接埠：443、53、9354、445、12000。 有關虛擬網路 NSG 流量篩選的更多詳細資訊，請參閱文章["使用網路安全性群組篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)"。
+* 請確定您的虛擬網路網路安全性群組規則不會對 Azure 資料庫移轉服務封鎖下列輸入通訊埠：443、53、9354、445、12000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)一文。
 * 設定[用於 Database Engine 存取的 Windows 防火牆](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 MySQL Server (依預設會使用 TCP 連接埠 3306)。
 * 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
-* 為適用於 MySQL 的 Azure 資料庫建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務的虛擬網路的子網範圍。
+* 為適用於 MySQL 的 Azure 資料庫建立伺服器層級的[防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)，以允許 Azure 資料庫移轉服務存取目標資料庫。 提供用於 Azure 資料庫移轉服務之虛擬網路的子網範圍。
 * 來源 MySQL 必須位於支援的 MySQL 社群版上。 若要判斷 MySQL 公用程式或 MySQL Workbench 中的 MySQL 執行個體版本，請執行下列命令：
 
     ```
@@ -87,7 +87,7 @@ ms.locfileid: "80240748"
 
 若要完成所有資料表物件 (例如資料表結構描述、索引和預存程序)，我們必須從來源資料庫擷取結構描述，並套用至資料庫。 若要擷取結構描述，您可以使用 mysqldump 搭配 `--no-data` 參數。
 
-假設本地系統中有 MySQL**員工**示例資料庫，則使用 mysqldump 執行架構遷移的命令是：
+假設您在內部部署系統中有 MySQL**員工**範例資料庫，使用 mysqldump 執行架構遷移的命令為：
 
 ```
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
@@ -154,7 +154,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     ![顯示資源提供者](media/tutorial-mysql-to-azure-mysql-online/portal-select-resource-provider.png)
 
-3. 搜索遷移，然後搜索 Microsoft 的右側 **。** **Register**
+3. 搜尋 [遷移]，然後在 [ **microsoft.datamigration**] 的右邊，選取 [**註冊**]。
 
     ![註冊資源提供者](media/tutorial-mysql-to-azure-mysql-online/portal-register-resource-provider.png)
 
@@ -170,15 +170,15 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
   
 3. 在 [建立移轉服務]**** 畫面上，指定服務的名稱、訂用帳戶，以及新的或現有的資源群組。
 
-4. 選擇現有虛擬網路或創建新虛擬網路。
+4. 選取現有的虛擬網路，或建立一個新的。
 
-    虛擬網路為 Azure 資料庫移轉服務提供對源 SQL Server 和目標 Azure SQL 資料庫實例的訪問。
+    虛擬網路會為 Azure 資料庫移轉服務提供來源 SQL Server 和目標 Azure SQL Database 實例的存取權。
 
-    有關如何在 Azure 門戶中創建虛擬網路的詳細資訊，請參閱[使用 Azure 門戶創建虛擬網路](https://aka.ms/DMSVnet)的文章。
+    如需有關如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
 
 5. 選取定價層。
 
-    有關成本和定價層的詳細資訊，請參閱[定價頁](https://aka.ms/dms-pricing)。
+    如需成本和定價層的詳細資訊，請參閱[定價頁面](https://aka.ms/dms-pricing)。
 
     ![設定 Azure 資料庫移轉服務執行個體設定](media/tutorial-mysql-to-azure-mysql-online/dms-settings3.png)
 
@@ -225,7 +225,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     ![對應到目標資料庫](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
    > [!NOTE] 
-   > 儘管可以在此步驟中選擇多個資料庫，但 Azure 資料庫移轉服務的每個實例最多支援四個資料庫進行併發遷移。 此外，訂閱中每個區域都有兩個 Azure 資料庫移轉服務實例的限制。 例如，如果您有 40 個要遷移的資料庫，則只能同時遷移其中 8 個資料庫，並且僅當創建了 Azure 資料庫移轉服務的兩個實例時。
+   > 雖然您可以在此步驟中選取多個資料庫，但 Azure 資料庫移轉服務的每個實例最多可支援四個資料庫來進行並行遷移。 此外，訂用帳戶中的每個區域都有兩個 Azure 資料庫移轉服務實例的限制。 例如，如果您有要遷移的40資料庫，您只能同時遷移其中八個，而且只有在您已建立兩個 Azure 資料庫移轉服務實例時才可以。
 
 3. 選取 [儲存]****，在 [移轉摘要]**** 畫面的 [活動名稱]**** 文字方塊中，指定移轉活動的名稱，然後檢閱摘要，以確定來源和目標詳細資料都與您先前的指定相符。
 

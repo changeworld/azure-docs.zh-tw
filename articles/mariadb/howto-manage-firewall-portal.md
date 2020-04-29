@@ -1,5 +1,5 @@
 ---
-title: 管理防火牆規則 - Azure 門戶 - MariaDB 的 Azure 資料庫
+title: 管理防火牆規則-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
 description: 使用 Azure 入口網站建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則
 author: ajlam
 ms.author: andrela
@@ -7,16 +7,16 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 8be8e948595cfb93049c0d6c93f421e4902e771d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79530660"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 入口網站建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則
-伺服器級防火牆規則可用於管理從指定的 IP 位址或一系列 IP 位址對 MariaDB 伺服器 Azure 資料庫的訪問。
+伺服器層級防火牆規則可用來從指定的 IP 位址或 IP 位址範圍，管理適用於 MariaDB 的 Azure 資料庫伺服器的存取權。
 
-虛擬網路 （VNet） 規則也可用於保護對伺服器的訪問。 詳細瞭解如何使用[Azure 門戶創建和管理虛擬網路服務終結點和規則](howto-manage-vnet-portal.md)。
+虛擬網路（VNet）規則也可以用來保護對您伺服器的存取。 深入瞭解如何[使用 Azure 入口網站建立和管理虛擬網路服務端點和規則](howto-manage-vnet-portal.md)。
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 入口網站中建立伺服器層級的防火牆規則
 
@@ -55,5 +55,5 @@ ms.locfileid: "79530660"
 * 若要刪除現有的規則，按一下省略符號 [...]，然後按一下 [刪除]****。 按一下 **[儲存]**，儲存變更。
 
 ## <a name="next-steps"></a>後續步驟
- - 同樣，您可以使用 Azure [CLI 編寫腳本來為 MariaDB 防火牆規則創建和管理 Azure 資料庫](howto-manage-firewall-cli.md)。
- - [通過使用 Azure 門戶創建和管理虛擬網路服務終結點和規則，](howto-manage-vnet-portal.md)進一步安全地訪問伺服器。
+ - 同樣地，您可以使用 Azure CLI 編寫腳本，以[建立和管理適用於 MariaDB 的 Azure 資料庫防火牆規則](howto-manage-firewall-cli.md)。
+ - 藉由[使用 Azure 入口網站建立和管理虛擬網路服務端點和規則](howto-manage-vnet-portal.md)，進一步保護您的伺服器存取。

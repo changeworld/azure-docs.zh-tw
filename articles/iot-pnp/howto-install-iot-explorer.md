@@ -1,6 +1,6 @@
 ---
-title: 安裝和使用 Azure IoT 資源管理器 |微軟文檔
-description: 安裝 Azure IoT 資源管理器工具，並使用它與連接到 IoT 中心的 IoT 隨插即用預覽設備進行交互。
+title: 安裝和使用 Azure IoT explorer |Microsoft Docs
+description: 安裝 Azure IoT explorer 工具，並使用它來與連線到 IoT 中樞的 IoT 隨插即用預覽裝置互動。
 author: miagdp
 ms.author: miag
 ms.date: 12/27/2019
@@ -9,119 +9,119 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 963421fa1ef06599448c9a4197f0d7a6ad2e142d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80159178"
 ---
-# <a name="install-and-use-azure-iot-explorer"></a>安裝和使用 Azure IoT 資源管理器
+# <a name="install-and-use-azure-iot-explorer"></a>安裝和使用 Azure IoT explorer
 
-Azure IoT 資源管理器是一種圖形工具，用於與 IoT 隨插即用預覽設備進行交互和測試。 在本地電腦上安裝該工具後，可以使用該工具連接到設備。 您可以使用該工具查看設備發送的遙測資料、使用裝置屬性和調用命令。
+Azure IoT explorer 是一種圖形化工具，可與您的 IoT 隨插即用預覽裝置互動和測試。 在本機電腦上安裝此工具之後，您就可以使用它來連線到裝置。 您可以使用此工具來查看裝置正在傳送的遙測資料、使用裝置屬性，以及呼叫命令。
 
 本文示範如何：
 
-- 安裝和配置 Azure IoT 資源管理器工具。
-- 使用該工具與設備交互和測試設備。
+- 安裝和設定 Azure IoT explorer 工具。
+- 使用此工具來與您的裝置互動並加以測試。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-要使用 Azure IoT 資源管理器工具，您需要：
+若要使用 Azure IoT explorer 工具，您需要：
 
-- Azure IoT 中樞。 有許多方法可以將 IoT 中心添加到 Azure 訂閱中，例如[使用 Azure CLI 創建 IoT 中心](../iot-hub/iot-hub-create-using-cli.md)。 您需要 IoT 中心連接字串來運行 Azure IoT 資源管理器工具。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- 在 IoT 中心註冊的設備。 可以使用以下 Azure CLI 命令註冊設備。 請務必用值替換`{YourIoTHubName}`和`{YourDeviceID}`預留位置：
+- Azure IoT 中樞。 有許多方法可將 IoT 中樞新增至您的 Azure 訂用帳戶，例如[使用 Azure CLI 建立 iot 中樞](../iot-hub/iot-hub-create-using-cli.md)。 您需要 IoT 中樞連接字串，才能執行 Azure IoT explorer 工具。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 在 IoT 中樞註冊的裝置。 您可以使用下列 Azure CLI 命令來註冊裝置。 請務必以您的`{YourIoTHubName}`值`{YourDeviceID}`取代和預留位置：
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
     ```
 
-## <a name="install-azure-iot-explorer"></a>安裝 Azure IoT 資源管理器
+## <a name="install-azure-iot-explorer"></a>安裝 Azure IoT explorer
 
-轉到[Azure IoT 資源管理器版本](https://github.com/Azure/azure-iot-explorer/releases)並展開最新版本的資產清單。 下載並安裝應用程式的最新版本。
+移至[Azure IoT explorer [發行](https://github.com/Azure/azure-iot-explorer/releases)]，並展開最新版本的資產清單。 下載並安裝最新版本的應用程式。
 
-## <a name="use-azure-iot-explorer"></a>使用 Azure IoT 資源管理器
+## <a name="use-azure-iot-explorer"></a>使用 Azure IoT explorer
 
-對於設備，您可以連接自己的設備，或使用我們的類比示例設備之一。 按照[這些說明](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples)運行類比設備示例。
+針對裝置，您可以連接您自己的裝置，或使用我們的其中一個範例模擬裝置。 請遵循[這些指示](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples)來執行模擬裝置範例。
 
-### <a name="connect-to-your-hub"></a>連接到您的中心
+### <a name="connect-to-your-hub"></a>連接到您的中樞
 
-首次運行 Azure IoT 資源管理器時，系統會提示您使用 IoT 中心的連接字串。 添加連接字串後，選擇 **"連接**"。 您可以使用該工具的設置通過更新連接字串切換到另一個 IoT 中心。
+第一次執行 Azure IoT explorer 時，系統會提示您輸入 IoT 中樞的連接字串。 新增連接字串之後，請選取 **[連接]**。 藉由更新連接字串，您可以使用此工具的設定來切換至另一個 IoT 中樞。
 
-IoT 隨插即用裝置的模型定義存儲在公共存儲庫、公司存儲庫或連接的設備中。 預設情況下，該工具在公共模型存儲庫和連接的設備中查找模型定義。 您可以在 **"設置"** 中添加和刪除源，或配置源的優先順序：
+IoT 隨插即用裝置的模型定義會儲存在公用儲存機制、公司存放庫或已連線的裝置中。 根據預設，此工具會在公用模型存放庫和已連線的裝置中尋找您的模型定義。 您可以新增和移除來源，或在 [**設定**] 中設定來源的優先順序：
 
-要添加源：
-
-1. 移至 [設定]****。
-1. 選擇 **"新建"** 並選擇源。
-1. 如果要添加公司模型存儲庫，請提供連接字串。
-
-要刪除源：
+若要新增來源：
 
 1. 移至 [設定]****。
-1. 查找要刪除的源。
-1. 選擇**X**將其刪除。 無法刪除公共模型存儲庫，因為公共介面定義來自此存儲庫。
+1. 選取 [**新增**]，然後選擇您的來源。
+1. 如果您要新增公司模型存放庫，請提供連接字串。
 
-更改源優先順序：
+若要移除來源：
 
-您可以將其中一個模型定義源拖放到清單中的不同排名。 如果存在衝突，排名較高的定義源將覆蓋排名較低的源。
+1. 移至 [設定]****。
+1. 尋找您要移除的來源。
+1. 選取**X**以將它移除。 因為通用介面定義來自此存放庫，所以您無法移除該公用模型存放庫。
+
+變更來源優先順序：
+
+您可以將其中一個模型定義來源拖放到清單中的不同等級。 如果發生衝突，則具有較高排名的定義來源會覆寫具有較低排名的來源。
 
 ### <a name="view-devices"></a>檢視裝置
 
-該工具連接到 IoT 中心後，將顯示列出在 IoT 中心註冊的設備標識**的設備**清單頁。 您可以展開清單中的任何條目以查看詳細資訊。
+在此工具連線到您的 IoT 中樞之後，它會顯示 [**裝置**清單] 頁面，其中會列出向 IoT 中樞註冊的裝置身分識別。 您可以展開清單中的任何專案，以查看詳細資訊。
 
-在 **"設備"** 清單頁上，您可以：
+在 [**裝置**清單] 頁面上，您可以：
 
-- 選擇 **"添加"** 可向集線器註冊新設備。 然後輸入裝置識別碼。 使用預設設置自動生成身份驗證金鑰並啟用到集線器的連接。
-- 選擇設備，然後選擇 **"刪除**"以刪除設備標識。 在完成此操作之前，請查看設備詳細資訊，以確保刪除正確的設備標識。
-- 查詢者`capabilityID``interfaceID`和 。 添加或`capabilityID``interfaceID`作為參數來查詢設備。
+- 選取 [**新增**] 以向您的中樞註冊新的裝置。 然後輸入 [裝置識別碼]。 使用預設設定來自動產生驗證金鑰，並啟用與中樞的連線。
+- 選取裝置，然後選取 [**刪除**] 以刪除裝置身分識別。 完成此動作之前，請先檢查裝置詳細資料，以確定您正在刪除正確的裝置身分識別。
+- 依`capabilityID`和`interfaceID`查詢。 新增您`capabilityID`的或`interfaceID`做為參數，以查詢您的裝置。
 
-## <a name="interact-with-a-device"></a>與設備交互
+## <a name="interact-with-a-device"></a>與裝置互動
 
-在"**設備"** 清單頁上，在 **"裝置識別碼"** 列中選擇一個值以查看已註冊設備的詳細資訊頁。 對於每個設備有兩個部分：**設備和****數位孿生**。
+在 [**裝置**清單] 頁面上，選取 [**裝置識別碼**] 欄中的值，以查看已註冊裝置的詳細資料頁面。 每個裝置都有兩個區段： [**裝置**] 和 [**數位**對應項]。
 
 ### <a name="device"></a>裝置
 
-本節包括**設備標識**、**設備孿生**、**遙測**、**直接方法和****雲到設備消息**選項卡。
+本節包含裝置身分**識別**、**裝置**對應項、**遙測**、**直接方法**和**雲端到裝置的訊息**索引標籤。
 
-- 您可以在 **"設備標識**"選項卡上查看和更新[設備標識](../iot-hub/iot-hub-devguide-identity-registry.md)資訊。
-- 您可以在 **"設備孿生"** 選項卡上訪問[設備孿生](../iot-hub/iot-hub-devguide-device-twins.md)資訊。
-- 如果設備已連接並主動發送資料，則可以在 **"遙測"** 選項卡上查看[遙測](../iot-hub/iot-hub-devguide-messages-read-builtin.md)資料。
-- 您可以在**Direct 方法**選項卡上調用設備上[的直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
-- 您可以在"**雲到設備消息**"選項卡上發送[雲到設備消息](../iot-hub/iot-hub-devguide-messages-c2d.md)。
+- 您可以在 [**裝置身分識別**] 索引標籤上，查看並更新[裝置身分識別](../iot-hub/iot-hub-devguide-identity-registry.md)資訊。
+- 您可以在 [**裝置**對應項] 索引標籤上存取[裝置](../iot-hub/iot-hub-devguide-device-twins.md)對應項資訊。
+- 如果裝置已連線並主動傳送資料，您可以在 [**遙測**] 索引標籤上查看[遙測](../iot-hub/iot-hub-devguide-messages-read-builtin.md)。
+- 您可以在 [**直接方法**] 索引標籤上呼叫裝置上的[直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
+- 您可以在 [**雲端到裝置訊息**] 索引標籤上傳送[雲端到裝置訊息](../iot-hub/iot-hub-devguide-messages-c2d.md)。
 
-### <a name="digital-twin"></a>數位孿生
+### <a name="digital-twin"></a>數位對應項
 
-您可以使用該工具查看設備的數位孿生實例。 對於 IoT 隨插即用裝置，與裝置功能模型關聯的所有介面都顯示在工具的此部分中。 選擇一個介面來擴展其相應的[IoT 隨插即用基元](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)。
+您可以使用此工具來查看裝置的數位對應項實例。 針對 IoT 隨插即用裝置，與裝置功能模型相關聯的所有介面都會顯示在此工具的這一節中。 選取介面，以展開其對應的[IoT 隨插即用基本](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)專案。
 
 ### <a name="interface"></a>介面
 
-在 **"介面"** 頁上，您可以查看介面的 JSON 定義。
+在 [**介面**] 頁面上，您可以查看介面的 JSON 定義。
 
 #### <a name="properties"></a>屬性
 
-您可以查看在 **"不可寫入屬性**"頁上的介面中定義的唯讀屬性。 您可以更新"**可寫入屬性**"頁上的介面中定義的可寫入屬性：
+您可以在 [**不可寫入的屬性**] 頁面上，查看介面中定義的唯讀屬性。 您可以在 [可**寫入屬性**] 頁面上更新介面中定義的可寫入屬性：
 
-1. 轉到 **"可寫屬性"** 頁。
-1. 按一下要更新的屬性。
+1. 移至 [**可寫入屬性**] 頁面。
+1. 按一下您要更新的屬性。
 1. 輸入屬性的新值。
-1. 預覽要發送到設備的有效負載。
-1. 提交更改。
+1. 預覽要傳送至裝置的承載。
+1. 提交變更。
 
-提交更改後，可以跟蹤更新狀態：**同步**、**成功**或**錯誤**。 合成完成後，您將在 **"報告屬性"** 列中看到屬性的新值。 如果在合成完成之前導航到其他頁面，該工具仍會在更新完成後通知您。 您還可以使用工具的通知中心查看通知歷史記錄。
+提交變更之後，您可以追蹤更新狀態： [**同步**]、[**成功**] 或 [**錯誤**]。 當同步完成時，您會在 [**回報的屬性**] 資料行中看到屬性的新值。 如果您在同步完成之前流覽至其他頁面，此工具仍會在更新完成時通知您。 您也可以使用工具的通知中心查看通知歷程記錄。
 
 #### <a name="commands"></a>命令
 
-要向設備發送命令，請轉到 **"命令"** 頁：
+若要將命令傳送至裝置，請移至 [**命令**] 頁面：
 
-1. 在命令清單中，展開要觸發的命令。
-1. 輸入命令的任何必需值。
-1. 預覽要發送到設備的有效負載。
+1. 在命令清單中，展開您要觸發的命令。
+1. 輸入命令所需的任何值。
+1. 預覽要傳送至裝置的承載。
 1. 提交命令。
 
 #### <a name="telemetry"></a>遙測
 
-要查看所選介面的遙測資料，請訪問其**遙測**頁面。
+若要查看所選介面的遙測，請移至其 [**遙測**] 頁面。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本"執行"一文中，您學習了如何安裝和使用 Azure IoT 資源管理器與 IoT 隨插即用裝置進行交互。 建議的下一步是瞭解如何[安裝和使用 Azure CLI 擴展](./howto-install-pnp-cli.md)。
+在此操作說明文章中，您已瞭解如何安裝和使用 Azure IoT explorer，以與您的 IoT 隨插即用裝置互動。 建議的下一個步驟是瞭解如何[安裝及使用 Azure CLI 延伸](./howto-install-pnp-cli.md)模組。

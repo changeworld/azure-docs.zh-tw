@@ -1,57 +1,57 @@
 ---
-title: 將開發電腦連接到 AKS 群集的工作原理
+title: 將您的開發電腦連接到 AKS 叢集的運作方式
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: 描述使用 Azure 開發人員空間將開發電腦連接到 Azure Kubernetes 服務群集的過程
-keywords: Azure 開發空間、開發空間、Docker、庫伯奈斯、Azure、AKS、Azure 庫伯奈斯服務、容器
+description: 說明使用 Azure Dev Spaces 將您的開發電腦連接到 Azure Kubernetes Service 叢集的處理常式
+keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器
 ms.openlocfilehash: a74a5a623006ccd64441023c2c4bc9ad3dcb517e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241708"
 ---
-# <a name="how-connecting-your-development-computer-to-your-aks-cluster-works"></a>將開發電腦連接到 AKS 群集的工作原理
+# <a name="how-connecting-your-development-computer-to-your-aks-cluster-works"></a>將您的開發電腦連接到 AKS 叢集的運作方式
 
-使用 Azure 開發人員空間，可以將開發電腦連接到 AKS 群集，從而可以在開發電腦上運行和調試代碼，就像它在群集上運行一樣。 Azure 開發人員空間通過在群集上運行充當遠端代理的 Pod 來重定向連接的 AKS 群集之間的流量，從而在開發電腦和群集之間重定向流量。 此流量重定向允許開發電腦上的代碼和在 AKS 群集中運行的服務進行通信，就像它們位於同一 AKS 群集中一樣。 此連接還允許您在開發電腦上運行和調試具有或不帶容器的代碼。 將開發電腦連接到群集可説明您快速開發應用程式並執行端到端測試。
+有了 Azure Dev Spaces，您就可以將開發電腦連接到 AKS 叢集，讓您在開發電腦上執行和偵錯工具代碼，就像是在叢集上執行一樣。 Azure Dev Spaces 會藉由在叢集上執行 pod 做為遠端代理程式，在您的開發電腦與叢集之間重新導向流量，以重新導向已連線 AKS 叢集之間的流量。 此流量重新導向可讓您的開發電腦上執行的程式碼和在 AKS 叢集中執行的服務進行通訊，就好像它們位於相同的 AKS 叢集中一樣。 此連接也可讓您在開發電腦上，使用或不使用容器來執行和偵錯工具代碼。 將您的開發電腦連接到您的叢集，可協助您快速開發應用程式，並執行端對端測試。
 
-## <a name="connecting-to-your-cluster"></a>連接到群集
+## <a name="connecting-to-your-cluster"></a>連接到您的叢集
 
-使用[視覺化工作室代碼][vs-code]連接到現有的 AKS 群集，在 MacOS 或 Windows 10 上安裝了[Azure 開發空間][azds-vs-code]擴展。 建立連接時，可以選擇將所有流量重定向到群集中的新或現有窗格到開發電腦。
+您可以使用已安裝于 MacOS 或 Windows 10 的[Azure Dev Spaces][azds-vs-code]延伸模組[Visual Studio Code][vs-code] ，連線到現有的 AKS 叢集。 當您建立連線時，可以選擇將叢集中新的或現有 pod 的所有流量重新導向至您的開發電腦。
 
 > [!NOTE]
-> 使用 Visual Studio 代碼連接到群集時，Azure 開發人員空間擴展提供了將服務重定向到開發電腦的選項。 此選項是標識用於重定向的窗格的便捷方法。 AKS 群集和開發電腦之間的所有重定向都用於 pod。
+> 使用 Visual Studio Code 連接到您的叢集時，Azure Dev Spaces 延伸模組可讓您選擇將服務重新導向至您的開發電腦。 此選項是識別重新導向之 pod 的便利方式。 AKS 叢集與開發電腦之間的所有重新導向都適用于 pod。
 
-連接到群集不需要在群集上啟用 Azure 開發空間。 相反，當 Azure 開發人員空間擴展建立到群集的連接時，它會：
+連接到您的叢集不需要在叢集上啟用 Azure Dev Spaces。 相反地，當 Azure Dev Spaces 擴充功能建立與叢集的連線時，它會：
 
-* 將 AKS 群集上的窗格中的容器替換為遠端代理容器，該容器將流量重定向到開發電腦。 重定向新窗格時，Azure 開發人員空間會使用遠端代理在 AKS 群集中創建新的 Pod。
-* 在開發電腦上運行[kubectl 埠轉發][kubectl-port-forward]，將流量從開發電腦轉發到群集中運行的遠端代理。
-* 使用遠端代理從群集收集環境資訊。 此環境資訊包括環境變數、可見服務、卷裝載和機密裝載。
-* 在 Visual Studio Code 終端中設置環境，以便開發電腦上的服務可以訪問與在群集上運行相同的變數。  
-* 更新主機檔，將 AKS 群集上的服務映射到開發電腦上的本地 IP 位址。 這些主機檔條目允許開發電腦上運行的代碼向群集中運行的其他服務發出請求。 要更新主機檔，Azure 開發人員空間將在連接到群集時請求開發電腦上的管理員存取權限。
+* 以將流量重新導向至您的開發電腦的遠端代理程式容器，取代 AKS 叢集上 pod 中的容器。 重新導向新的 pod 時，Azure Dev Spaces 會使用遠端代理程式在 AKS 叢集中建立新的 pod。
+* 在您的開發電腦上執行[kubectl 埠轉送][kubectl-port-forward]，以將流量從您的開發電腦轉送到叢集中正在執行的遠端代理程式。
+* 使用遠端代理程式，從您的叢集收集環境資訊。 此環境資訊包括環境變數、可見服務、磁片區掛接和密碼裝載。
+* 在 Visual Studio Code 終端機中設定環境，讓開發電腦上的服務可以存取與在叢集上執行相同的變數。  
+* 更新您的 hosts 檔案，將 AKS 叢集上的服務對應至開發電腦上的本機 IP 位址。 這些裝載的檔案專案允許在您的開發電腦上執行的程式碼，對在您的叢集中執行的其他服務提出要求。 若要更新您的主機檔案，Azure Dev Spaces 在連線到您的叢集時，會要求您的開發電腦上具有系統管理員存取權。
 
-如果群集上確實啟用了 Azure 開發空間，則還可以選擇使用[Azure 開發空間提供的流量重定向][how-it-works-routing]。 Azure 開發空間提供的流量重定向允許您連接到在子開發空間中運行的服務的副本。 使用子開發空間可説明您避免中斷在父開發空間中工作的其他人，因為您只是重定向針對子空間的服務實例的流量，使服務的父空間實例未修改。
+如果您已在叢集上啟用 Azure Dev Spaces，您也可以選擇使用 Azure Dev Spaces 所提供的[流量][how-it-works-routing]重新導向。 Azure Dev Spaces 所提供的「流量重新導向」，可讓您連接到在子開發人員空間中執行的服務複本。 使用子開發人員空間可協助您避免中斷父開發人員空間中的其他工作，因為您只會將目標設為服務之子空間實例的流量重新導向，而讓服務的父空間實例未經修改。
 
-連接到群集後，無論開發電腦上是否運行服務，流量都會路由到開發電腦。
+連線到您的叢集之後，無論您的開發電腦上是否有執行服務，都會將流量路由傳送至您的開發電腦。
 
-## <a name="running-code-on-your-development-computer"></a>在開發電腦上運行代碼
+## <a name="running-code-on-your-development-computer"></a>在您的開發電腦上執行程式碼
 
-建立與 AKS 群集的連接後，可以在電腦上以本機方式運行任何代碼，而無需容器化。 遠端代理接收的任何網路流量都會重定向到連接期間指定的本地埠，以便本機運行的代碼可以接受和處理該流量。 群集中的環境變數、卷和機密可用於在開發電腦上運行的代碼。 此外，由於 Azure Dev Space 向開發人員電腦添加了主機檔條目和埠轉發，代碼可以使用群集中的服務名稱將網路流量發送到群集上運行的服務，並且該流量將轉發到群集中運行的服務。
+建立與 AKS 叢集的連線之後，您可以在電腦上以原生方式執行任何程式碼，而不需要容器化。 遠端代理程式接收的任何網路流量都會重新導向至連線期間指定的本機埠，讓您的原生執行程式碼可以接受並處理該流量。 您的叢集環境變數、磁片區和密碼可供在開發電腦上執行的程式碼使用。 此外，由於 Azure Dev Spaces 將主機檔案專案和埠轉送新增至您的開發人員電腦，因此您的程式碼可以使用叢集的服務名稱，將網路流量傳送至叢集上執行的服務，並將流量轉送到叢集中正在執行的服務。
 
-由於代碼在開發電腦上運行，因此您可以靈活地使用開發中通常使用的任何工具來運行代碼並對其進行調試。 在整個連線時間，流量在開發電腦和群集之間路由。 此持久連接允許您根據需要啟動、停止和重新開機代碼，而無需重新建立連接。
+由於您的程式碼是在開發電腦上執行，因此您可以彈性地使用您平常用於開發的任何工具來執行您的程式碼並加以調試。 您的開發電腦與叢集之間的流量會在您連線的整個時間進行路由。 這個持續性連接可讓您視需要啟動、停止和重新開機程式碼，而不必重新建立連接。
 
-此外，Azure 開發人員空間提供了一種通過*azds-local.env*檔案複製開發電腦 AKS 群集中可用於 POD 的環境變數和裝載的檔的方法。 您還可以使用此檔創建新的環境變數和卷裝載。
+此外，Azure Dev Spaces 提供一種方法，可透過*azds-local* ，將環境變數和掛接的檔案複寫到開發電腦的 AKS 叢集中的 pod。 您也可以使用這個檔案來建立新的環境變數和磁片區裝載。
 
-## <a name="additional-configuration-with-azds-localenv"></a>附加配置與 azds-local.env
+## <a name="additional-configuration-with-azds-localenv"></a>使用 azds-local 的其他設定
 
-*azds-local.env*檔允許您複製 AKS 群集中可供窗格使用的環境變數和裝載的檔。 您可以在*azds-local.env*檔中指定以下操作：
+*Azds-local*檔案可讓您將環境變數和掛接的檔案複寫至 AKS 叢集中的 pod。 您可以在*azds-local 的 env*檔案中指定下列動作：
 
-* 下載卷並將該卷的路徑設置為環境變數。
-* 從卷下載單個檔或檔集，並將其裝載到開發電腦上。
-* 無論您連接到哪個群集，都能使用服務。
+* 下載磁片區，並將該磁片區的路徑設定為環境變數。
+* 從磁片區下載個別檔案或一組檔案，並將它裝載在您的開發電腦上。
+* 無論您連線的叢集為何，皆可使用服務。
 
-下面是*一個示例 azds-local.env*檔：
+以下是範例*azds-local*檔案：
 
 ```
 # This downloads the "whitelist" volume from the container,
@@ -82,15 +82,15 @@ MYAPP1_SERVICE_HOST=${services.myapp1}
 MYAPP2_SERVICE_HOST=${services.mynamespace.myapp2}
 ```
 
-不會自動創建預設*的 azds-local.env*檔，因此您必須在專案的根目錄上手動創建該檔。
+預設*azds-local*不會自動建立，因此您必須在專案的根目錄手動建立檔案。
 
 ## <a name="diagnostics-and-logging"></a>診斷和記錄
 
-連接到 AKS 群集時，群集的診斷日誌將記錄到開發電腦[的臨時目錄][azds-tmp-dir]。 使用 Visual Studio 代碼，您還可以使用 *"顯示診斷資訊"* 命令從 AKS 群集列印當前環境變數和 DNS 條目。
+連線到您的 AKS 叢集時，叢集的診斷記錄會記錄到開發電腦的[臨時目錄][azds-tmp-dir]中。 使用 Visual Studio Code，您也可以使用 [*顯示診斷資訊*] 命令，從您的 AKS 叢集中列印目前的環境變數和 DNS 專案。
 
 ## <a name="next-steps"></a>後續步驟
 
-要開始將本地開發電腦連接到 AKS 群集，請參閱[將開發電腦連接到 AKS 群集][connect]。
+若要開始將您的本機開發電腦連接到 AKS 叢集，請參閱[將您的開發電腦連線到 AKS][connect]叢集。
 
 [azds-tmp-dir]: troubleshooting.md#before-you-begin
 [azds-vs-code]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds

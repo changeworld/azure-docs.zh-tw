@@ -1,6 +1,6 @@
 ---
-title: 為 Azure 配置 Azure 到 Azure 災害復原的移動服務代理設置 |微軟文檔
-description: 提供有關客戶在其源環境中使用代理時如何配置移動服務的詳細資訊。
+title: 設定 Azure 到 Azure 嚴重損壞修復的行動服務 Proxy 設定 |Microsoft Docs
+description: 提供當客戶在其來源環境中使用 proxy 時，如何設定行動服務的詳細資料。
 services: site-recovery
 author: sideeksh
 manager: rochakm
@@ -9,50 +9,50 @@ ms.topic: article
 ms.date: 03/18/2020
 ms.author: sideeksh
 ms.openlocfilehash: 3d33b5a89a718a41e5c547551f6e7eb4f7033a63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503123"
 ---
-# <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>為 Azure 配置移動服務代理設置以 Azure 災害復原
+# <a name="configure-mobility-service-proxy-settings-for-azure-to-azure-disaster-recovery"></a>設定 Azure 到 Azure 嚴重損壞修復的行動服務 Proxy 設定
 
-本文提供有關使用[Azure 網站恢復](site-recovery-overview.md)將 Azure VM 從一個區域複製和恢復 Azure VM 時在目標 Azure 虛擬機器 （VM） 上自訂網路設定的指導。
+當您使用[Azure Site Recovery](site-recovery-overview.md)將 Azure vm 從一個區域複寫及復原到另一個區域時，本文提供在目標 Azure 虛擬機器（VM）上自訂網路設定的指引。
 
-本文檔的目的是提供步驟，在 Azure 到 Azure 災害復原方案中為 Azure 網站恢復移動服務配置代理設置。 
+本檔的目的是要在 Azure 到 Azure 的嚴重損壞修復案例中，提供設定 Azure Site Recovery 行動服務 Proxy 設定的步驟。 
 
-代理是允許/不允許網路連接到終結點的網路閘道。 通常，代理是用戶端電腦外嘗試訪問網路終結點的電腦。 旁路清單允許用戶端直接連接到終結點，而無需通過代理。 網路系統管理員可以選擇為代理設置使用者名和密碼，以便只有經過身份驗證的用戶端才能使用代理。 
+Proxy 是允許/禁止端點之網路連線的網路閘道。 Proxy 通常是用戶端機器外的電腦，它會嘗試存取網路端點。 略過清單可讓用戶端直接連線到端點，而不需要通過 proxy。 網路系統管理員可以選擇性地為 proxy 設定使用者名稱和密碼，如此一來，只有經過驗證的用戶端才能使用 proxy。 
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 了解 Site Recovery 如何針對[這種情況](azure-to-azure-architecture.md)提供災害復原。
-使用[Azure 網站恢復](site-recovery-overview.md)將 Azure VM 從一個區域複製和恢復到另一個區域時，瞭解[網路指南](azure-to-azure-about-networking.md)。
-確保根據組織的需求適當地設置代理。
+瞭解當您使用[Azure Site Recovery](site-recovery-overview.md)將 Azure vm 從一個區域複寫及復原到另一個區域時的[網路指引](azure-to-azure-about-networking.md)。
+確定您的 proxy 已根據貴組織的需求適當地設定。
 
-## <a name="configure-the-mobility-service"></a>配置移動服務
+## <a name="configure-the-mobility-service"></a>設定行動服務
 
-移動服務僅支援未經身份驗證的代理。 它提供了兩種輸入代理詳細資訊的方法，以便與網站恢復終結點通信。 
+行動服務僅支援未驗證的 proxy。 它提供兩種方式來輸入 proxy 詳細資料，以便與 Site Recovery 端點進行通訊。 
 
-### <a name="method-1-auto-detection"></a>方法 1：自動檢測
+### <a name="method-1-auto-detection"></a>方法1：自動偵測
 
-移動服務在啟用複製期間自動檢測環境設置或 IE 設置（僅限 Windows）的代理設置。 
+行動服務會在啟用複寫期間，自動偵測環境設定或 IE 設定（僅限 Windows）中的 proxy 設定。 
 
-- Windows OS：在啟用複製期間，移動服務檢測本地系統使用者在 Internet 資源管理器中配置的代理設置。 要為本機系統帳戶設置代理，管理員可以使用 psexec 啟動命令提示符，然後使用 Internet 資源管理器。 
-- Windows OS：代理設置配置為環境變數HTTP_proxy和no_proxy。 
-- Linux OS：代理設置在 /etc/設定檔或 /etc//環境中配置為環境變數HTTP_proxy，no_proxy。 
-- 自動檢測到的代理設置將保存到移動服務代理設定檔代理資訊.conf 
-- 代理資訊.conf 的預設位置 
-    - 視窗：C：\程式資料\微軟 Azure 網站恢復\Config_代理資訊.conf 
-    - Linux： /usr/本地/Inmage/配置/代理資訊.conf
+- Windows 作業系統：在啟用複寫期間，行動服務會偵測 Internet Explorer 中針對本機系統使用者所設定的 proxy 設定。 若要設定本機系統帳戶的 proxy，系統管理員可以使用 psexec 來啟動命令提示字元，然後執行 Internet Explorer。 
+- Windows OS： Proxy 設定會設定為 HTTP_proxy 和 no_proxy 的環境變數。 
+- Linux OS：在/etc/profile 或/etc/environment 中，將 Proxy 設定設定為 HTTP_proxy，no_proxy 的環境變數。 
+- 自動偵測到的 proxy 設定會儲存至行動服務 proxy 設定檔 Proxyinfo.conf 
+- Proxyinfo.conf 的預設位置 
+    - Windows： C:\ProgramData\Microsoft Azure Site Recovery\Config\ProxyInfo.conf 
+    - Linux：/usr/local/InMage/config/ProxyInfo.conf
 
 
-### <a name="method-2-provide-custom-application-proxy-settings"></a>方法 2：提供自訂應用程式代理設置
+### <a name="method-2-provide-custom-application-proxy-settings"></a>方法2：提供自訂的應用程式 proxy 設定
 
-在這種情況下，客戶在移動服務設定檔 ProxyInfo.conf 中提供自訂應用程式代理設置。 此方法允許客戶僅為移動服務提供代理，或者為 Azure 網站恢復移動服務提供與電腦上的其餘應用程式的代理（或無代理）不同的代理。
+在此情況下，客戶會在行動服務設定檔 Proxyinfo.conf 中提供自訂的應用程式 proxy 設定。 此方法可讓客戶僅針對行動服務提供 proxy，或針對電腦上其餘應用程式的 proxy （或沒有 proxy），為 Azure Site Recovery 行動服務提供不同的 proxy。
 
-## <a name="proxy-template"></a>代理範本
-ProxyInfo.conf 包含以下範本 [代理] 位址http://1.2.3.4= 埠=5678 繞過清單_超v恢復管理器.windowsazure.com，login.microsoftonline.com，blob.core.windows.net。 旁路清單不支援"*.windows.net"之類的萬用字元，但給出windows.net足以繞過。 
+## <a name="proxy-template"></a>Proxy 範本
+Proxyinfo.conf 包含下列範本 [proxy] Address =http://1.2.3.4 Port = 5678 BypassList = hypervrecoverymanager. windowsazure.storage .com，Login.，net.tcp. core.。 BypassList 不支援萬用字元，例如 ' *. windows.net '，但讓 windows.net 的效果足以略過。 
 
 ## <a name="next-steps"></a>後續步驟：
-- 閱讀複製 Azure VM[的網路指南](site-recovery-azure-to-azure-networking-guidance.md)。
+- 閱讀複寫 Azure Vm 的[網路指引](site-recovery-azure-to-azure-networking-guidance.md)。
 - 透過[複寫 Azure VM](site-recovery-azure-to-azure.md) 來部署災害復原。

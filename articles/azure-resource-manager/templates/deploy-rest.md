@@ -1,48 +1,48 @@
 ---
 title: 使用 REST API 和範本部署資源
-description: 使用 Azure 資源管理器和資源管理器 REST API 將資源部署到 Azure。 資源會定義在 Resource Manager 範本中。
+description: 使用 Azure Resource Manager 和 Resource Manager REST API 將資源部署至 Azure。 資源會定義在 Resource Manager 範本中。
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.openlocfilehash: 9cdb7b668e5170917b41ef49639bd9a17e538766
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153228"
 ---
-# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>使用 ARM 範本和資源管理器 REST API 部署資源
+# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>使用 ARM 範本和 Resource Manager 部署資源 REST API
 
-本文介紹如何使用資源管理器 REST API 與 Azure 資源管理器 （ARM） 範本一起將資源部署到 Azure。
+本文說明如何使用 Resource Manager REST API 搭配 Azure Resource Manager （ARM）範本，將您的資源部署至 Azure。
 
 您可以在要求本文中納入範本，也可以連結至檔案。 使用檔案時，該檔案可以是本機檔案，也可以是透過 URI 所取得的外部檔案。 當範本位於儲存體帳戶中時，您可以限制範本的存取權，並在部署期間提供共用存取簽章 (SAS) 權杖。
 
 ## <a name="deployment-scope"></a>部署範圍
 
-您可以將部署定位為管理組、Azure 訂閱或資源組。 在大多數情況下，您將將部署目標鎖定到資源組。 使用管理組或訂閱部署在指定的範圍內應用策略和角色指派。 您還可以使用訂閱部署創建資源組並將資源部署到該資源。 根據部署的範圍，使用不同的命令。
+您可以將部署的目標設為管理群組、Azure 訂用帳戶或資源群組。 在大部分情況下，您會將部署目標設為資源群組。 使用管理群組或訂用帳戶部署，在指定的範圍內套用原則和角色指派。 您也可以使用「訂用帳戶」部署來建立資源群組，並將資源部署到其中。 視部署的範圍而定，您可以使用不同的命令。
 
-要部署到**資源組**，請使用["部署 - 創建](/rest/api/resources/deployments/createorupdate)"。 要求傳送到：
+若要部署至**資源群組**，請使用 [[部署-建立](/rest/api/resources/deployments/createorupdate)]。 要求會傳送至：
 
 ```HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-要部署到**訂閱**，請使用部署[- 在訂閱範圍內創建](/rest/api/resources/deployments/createorupdateatsubscriptionscope)。 要求傳送到：
+若要部署至**訂**用帳戶，請使用 [[部署-在訂用帳戶範圍建立](/rest/api/resources/deployments/createorupdateatsubscriptionscope)]。 要求會傳送至：
 
 ```HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-有關訂閱級別部署的詳細資訊，請參閱[在訂閱級別創建資源組和資源](deploy-to-subscription.md)。
+如需訂用帳戶層級部署的詳細資訊，請參閱在訂用帳戶[層級建立資源群組和資源](deploy-to-subscription.md)。
 
-要部署到**管理組**，請使用部署[- 在管理組作用域中創建](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)。 要求傳送到：
+若要部署至**管理群組**，請使用 [[部署-在管理群組範圍建立](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)]。 要求會傳送至：
 
 ```HTTP
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-有關管理組級別部署的詳細資訊，請參閱[在管理組級別創建資源](deploy-to-management-group.md)。
+如需管理群組層級部署的詳細資訊，請參閱在[管理群組層級建立資源](deploy-to-management-group.md)。
 
-本文中的示例使用資源組部署。
+本文中的範例會使用資源群組部署。
 
 ## <a name="deploy-with-the-rest-api"></a>使用 REST API 部署
 
@@ -67,15 +67,15 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 1. 請先執行[驗證範本部署作業](/rest/api/resources/deployments/validate)來驗證部署，然後再執行部署。 測試部署時，請提供與執行部署時完全一致的參數 (如下個步驟所示)。
 
-1. 要部署範本，請提供訂閱 ID、資源組的名稱、請求 URI 中的部署名稱。
+1. 若要部署範本，請在要求 URI 中提供您的訂用帳戶 ID、資源群組的名稱、部署的名稱。
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
    ```
 
-   在請求正文中，提供指向範本和參數檔的連結。 有關參數檔的詳細資訊，請參閱[創建資源管理器參數檔](parameter-files.md)。
+   在 [要求本文] 中，提供您的範本和參數檔案的連結。 如需參數檔案的詳細資訊，請參閱[建立 Resource Manager 參數](parameter-files.md)檔案。
 
-   請注意，**mode** 是設為 **Incremental**。 要運行完全部署，將**模式**設置為 **"完成**"。 使用完整模式時請務必謹慎，因為您可能會不小心刪除不在範本中的資源。
+   請注意，**mode** 是設為 **Incremental**。 若要執行完整部署，請將 [**模式]** 設定為 [**完成**]。 使用完整模式時請務必謹慎，因為您可能會不小心刪除不在範本中的資源。
 
    ```json
    {
@@ -116,9 +116,9 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
     您可以設定儲存體帳戶以使用共用存取簽章 (SAS) Token。 如需詳細資訊，請參閱[使用共用存取簽章委派存取](/rest/api/storageservices/delegating-access-with-a-shared-access-signature)。
 
-    如果您需要提供參數機密的值 (例如密碼)，請將該值加入金鑰保存庫。 在部署期間擷取金鑰保存庫，如先前範例所示。 有關詳細資訊，請參閱[在部署期間傳遞安全值](key-vault-parameter.md)。
+    如果您需要提供參數機密的值 (例如密碼)，請將該值加入金鑰保存庫。 在部署期間擷取金鑰保存庫，如先前範例所示。 如需詳細資訊，請參閱[在部署期間傳遞安全值](key-vault-parameter.md)。
 
-1. 不要連結至含有範本和參數的檔案，而是將它們納入要求本文中。 下面的示例顯示具有範本和參數內聯的請求正文：
+1. 不要連結至含有範本和參數的檔案，而是將它們納入要求本文中。 下列範例顯示具有範本和參數內嵌的要求本文：
 
    ```json
    {
@@ -181,7 +181,7 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
    }
    ```
 
-1. 要獲取範本部署的狀態，請使用["部署 - 獲取](/rest/api/resources/deployments/get)"。
+1. 若要取得範本部署的狀態，請使用 [[部署-取得](/rest/api/resources/deployments/get)]。
 
    ```HTTP
    GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
@@ -189,8 +189,8 @@ PUT https://management.azure.com/providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>後續步驟
 
-- 要在收到錯誤時回滾到成功部署，請參閱[在錯誤時回滾到成功部署](rollback-on-error.md)。
+- 當您收到錯誤時，若要回復為成功的部署，請參閱[發生錯誤時回復至部署成功](rollback-on-error.md)。
 - 若要指定如何處理存在於資源群組中、但尚未定義於範本中的資源，請參閱 [Azure Resource Manager 部署模式](deployment-modes.md)。
 - 若要了解如何處理非同步 REST 作業，請參閱[追蹤非同步 Azure 作業 (英文)](../management/async-operations.md)。
-- 要瞭解有關範本的更多資訊，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
+- 若要深入瞭解範本，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
 

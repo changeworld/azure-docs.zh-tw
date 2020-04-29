@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80246512"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 入口網站中的登入活動報告
@@ -30,26 +30,26 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - **活動** 
     - **登入** – 受控應用程式和使用者登入活動的使用情況相關資訊。
-    - **稽核記錄** - [稽核記錄](concept-audit-logs.md)提供有關使用者和組管理、託管應用程式和目錄活動的系統活動資訊。
+    - **Audit logs** - [audit logs](concept-audit-logs.md)提供使用者和群組管理、受控應用程式和目錄活動的相關系統活動資訊。
 - **安全性** 
-    - **風險**登錄 -[風險登錄](concept-risky-sign-ins.md)是非使用者帳戶合法擁有者的使用者嘗試登錄的指示器。
-    - **標記為風險的使用者**-[風險使用者](concept-user-at-risk.md)是可能已洩露的使用者帳戶的指示器。
+    - 有**風險**的登入-有風險的登[入](concept-risky-sign-ins.md)是指不是使用者帳戶合法擁有者的人登入嘗試的指標。
+    - **標示有風險的使用者**-有[風險的使用者](concept-user-at-risk.md)是可能遭盜用之使用者帳戶的指標。
 
-本文概述了登錄報告。
+本文提供登入報告的總覽。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 ### <a name="who-can-access-the-data"></a>誰可以存取資料？
 
-* 安全管理員、安全讀取器、全域閱讀器和報表閱讀器角色中的使用者
+* 安全性系統管理員、安全性讀取者、全域讀取者和報告讀取者角色中的使用者
 * 全域系統管理員
 * 任何使用者 (非系統管理員) 都可以存取自己的登入 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>您需要哪項 Azure AD 授權才能存取登入活動？
 
-- 登錄活動報告在所有[版本的 Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)中都有可用。
+- [所有版本的 Azure AD](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)都提供登入活動報告。
 
-- 如果要使用 API 訪問登錄資料，租戶必須具有與其關聯的[Azure 活動目錄高級](../fundamentals/active-directory-get-started-premium.md)許可證。
+- 如果您想要使用 API 存取登入資料，您的租使用者必須有相關聯的[Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md)授權。
 
 
 
@@ -61,15 +61,15 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 * 一週內有多少使用者登入？
 * 這些登入的狀態為何？
 
-在[Azure 門戶](https://portal.azure.com)功能表上，選擇**Azure 活動目錄**，或從任何頁面搜索並選擇**Azure 活動目錄**。
+在 [ [Azure 入口網站](https://portal.azure.com)] 功能表上，選取 [ **Azure Active Directory**]，或搜尋並從任何頁面選取 [ **Azure Active Directory** ]。
 
 ![選取 Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
-在 **"監視"** 下，選擇**登錄**以打開[登錄報告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
+在 [**監視**] 底下，選取 [登**入**] 以開啟登[入報告](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)。
 
-![登錄活動](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "登入活動")
+![登入活動](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "登入活動")
 
-某些登錄記錄最多可能需要兩個小時才能顯示在門戶中。
+最多可能需要兩個小時，才會在入口網站中顯示某些登入記錄。
 
 > [!IMPORTANT]
 > 登入報告只會顯示使用者透過使用者名稱和密碼以手動方式登入的**互動式**登入。 非互動式登入 (例如服務對服務驗證) 不會顯示在登入報告中。 
@@ -78,55 +78,55 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 - 登入日期
 - 相關的使用者
-- 使用者已登錄到的應用程式
+- 使用者已登入的應用程式
 - 登入狀態
 - 風險偵測的狀態
 - 多重要素驗證 (MFA) 需求的狀態
 
-![登錄活動](./media/concept-sign-ins/sign-in-activity.png "登入活動")
+![登入活動](./media/concept-sign-ins/sign-in-activity.png "登入活動")
 
-您可以通過按一下工具列中的**列**來自訂清單視圖。
+您可以按一下工具列中的 [資料**行**] 來自訂清單視圖。
 
-![登錄活動](./media/concept-sign-ins/19.png "登入活動")
+![登入活動](./media/concept-sign-ins/19.png "登入活動")
 
-"**列**"對話方塊允許您訪問可選屬性。 在登錄報表中，不能將給定登錄請求具有多個值的欄位作為列。 例如，對於身份驗證詳細資訊、條件訪問資料和網路位置，這是事實。   
+[資料**行**] 對話方塊可讓您存取可選取的屬性。 在登入報告中，針對指定的登入要求，您不能有一個以上的值做為資料行。 例如，針對驗證詳細資料、條件式存取資料和網路位置為 true。   
 
-![登錄活動](./media/concept-sign-ins/columns.png "登入活動")
+![登入活動](./media/concept-sign-ins/columns.png "登入活動")
 
 選取清單檢視中的項目，即可取得更詳細的資訊。
 
-![登錄活動](./media/concept-sign-ins/basic-sign-in.png "登入活動")
+![登入活動](./media/concept-sign-ins/basic-sign-in.png "登入活動")
 
 > [!NOTE]
-> 客戶現在可以通過所有登錄報告對條件訪問策略進行故障排除。 通過按一下登錄記錄的 **"條件訪問**"選項卡，客戶可以查看條件訪問狀態，並深入瞭解應用於登錄的策略的詳細資訊以及每個策略的結果。
+> 客戶現在可以透過所有登入報告來針對條件式存取原則進行疑難排解。 藉由按一下登入記錄的 [**條件式存取**] 索引標籤，客戶可以檢查條件式存取狀態，並深入探索套用至每個原則登入和結果的原則詳細資料。
 > 如需詳細資訊，請參閱[所有登入中的 CA 資訊相關常見問題集](reports-faq.md#conditional-access)。
 
 
 
 ## <a name="filter-sign-in-activities"></a>篩選登入活動
 
-首先，將報告的資料縮小到適合您的水準。 其次，使用日期欄位作為預設篩選器篩選登錄資料。 Azure AD 為您提供了可以設置的各種附加篩選器：
+首先，將報告的資料縮小至適合您的層級。 第二，使用 [日期] 欄位作為預設篩選準則來篩選登入資料。 Azure AD 提供您可設定的各種額外篩選準則：
 
-![登錄活動](./media/concept-sign-ins/04.png "登入活動")
+![登入活動](./media/concept-sign-ins/04.png "登入活動")
 
-**請求 ID** - 您關心的請求的 ID。
+**要求識別碼**-您關心的要求識別碼。
 
-**使用者**- 您關心的使用者的名稱或使用者主體名稱 （UPN）。
+**使用者**-您關心的使用者名稱或使用者主體名稱（UPN）。
 
-**應用程式**- 目標應用程式的名稱。
+**應用程式**-目標應用程式的名稱。
  
-**狀態**- 您關心的登錄狀態：
+**狀態**-您關心的登入狀態：
 
-- Success
+- 成功
 
 - 失敗
 
-- 打斷
+- 會
 
 
-**IP 位址**- 用於連接到租戶的設備的 IP 位址。
+**Ip 位址**-用來連線到您的租使用者之裝置的 ip 位址。
 
-**位置**- 連接從以下位置啟動的位置：
+**位置**-連接起始的位置：
 
 - City
 
@@ -135,56 +135,56 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 - 國家/區域
 
 
-**資源**- 用於登錄的服務的名稱。
+**資源**-用來登入的服務名稱。
 
 
-**資源識別碼**- 用於登錄的服務的 ID。
+**資源識別碼**-用於登入之服務的識別碼。
 
 
-**用戶端應用**- 用於連接到租戶的用戶端應用的類型：
+**用戶端應用程式**-用來連接到您租使用者的用戶端應用程式類型：
 
-![用戶端應用篩選器](./media/concept-sign-ins/client-app-filter.png)
+![用戶端應用程式篩選器](./media/concept-sign-ins/client-app-filter.png)
 
 
-|名稱|現代身份驗證|描述|
+|Name|新式驗證|描述|
 |---|:-:|---|
-|經過身份驗證的 SMTP| |POP 和 IMAP 用戶端用於發送電子郵件。|
-|自動探索| |Outlook 和 EAS 用戶端用於查找和連接到連線交換中的郵箱。|
-|Exchange ActiveSync| |此篩選器顯示嘗試 EAS 協定的所有登錄嘗試。|
-|瀏覽器|![勾選](./media/concept-sign-ins/check.png)|顯示使用 Web 瀏覽器的使用者的所有登錄嘗試|
-|Exchange ActiveSync| | 使用 Exchange ActiceSync 顯示使用用戶端應用的使用者連接到線上交換的所有登錄嘗試|
-|Exchange Online PowerShell| |用於使用遠端 PowerShell 連接到連線交換。 如果阻止 Exchange 線上 PowerShell 的基本驗證，則需要使用 Exchange 線上 PowerShell 模組進行連接。 有關說明，請參閱[使用多重要素驗證連接到交換線上 PowerShell。](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)|
-|Exchange Web 服務| |Outlook、Mac Outlook 和協力廠商應用使用的程式設計介面。|
-|IMAP4| |使用 IMAP 檢索電子郵件的舊郵件用戶端。|
-|通過 HTTP 的 MAPI| |由 Outlook 2010 及更高版本使用。|
-|行動裝置應用程式和桌面用戶端|![勾選](./media/concept-sign-ins/check.png)|顯示使用移動應用和桌面用戶端的使用者的所有登錄嘗試。|
-|離線通訊錄| |Outlook 下載和使用的地址清單集合的副本。|
-|隨時隨地進行展望（通過 HTTP 進行 RPC）| |由 Outlook 2016 及更早版本使用。|
-|展望服務| |由 Windows 10 的郵件和日曆應用使用。|
-|POP3| |使用 POP3 檢索電子郵件的舊郵件用戶端。|
-|報告 Web 服務| |用於在"連線交換"中檢索報表資料。|
-|其他用戶端| |顯示未包含用戶端應用或未知使用者的所有登錄嘗試。|
+|已驗證的 SMTP| |由 POP 和 IMAP 用戶端用來傳送電子郵件訊息。|
+|發現| |供 Outlook 和 EAS 用戶端用來尋找並聯機到 Exchange Online 中的信箱。|
+|Exchange ActiveSync| |此篩選會顯示已嘗試 EAS 通訊協定的所有登入嘗試。|
+|瀏覽器|![勾選](./media/concept-sign-ins/check.png)|使用網頁瀏覽器顯示使用者的所有登入嘗試|
+|Exchange ActiveSync| | 顯示使用者在使用 Exchange ActiceSync 連線至 Exchange Online 時，使用用戶端應用程式進行的所有登入嘗試|
+|Exchange Online PowerShell| |用來透過遠端 PowerShell 連接到 Exchange Online。 如果您封鎖 Exchange Online PowerShell 的基本驗證，您需要使用 Exchange Online PowerShell 模組來連接。 如需指示，請參閱[使用多重要素驗證連接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
+|Exchange Web 服務| |Outlook、Outlook for Mac 和協力廠商應用程式所使用的程式設計介面。|
+|IMAP4| |使用 IMAP 抓取電子郵件的舊版郵件用戶端。|
+|透過 HTTP 的 MAPI| |由 Outlook 2010 和更新版本使用。|
+|行動裝置應用程式和桌面用戶端|![勾選](./media/concept-sign-ins/check.png)|顯示使用者使用行動應用程式和桌面用戶端的所有登入嘗試。|
+|離線通訊錄| |Outlook 下載並使用的地址清單集合複本。|
+|Outlook Anywhere （RPC over HTTP）| |由 Outlook 2016 和更早版本使用。|
+|Outlook 服務| |適用于 Windows 10 的郵件及行事曆應用程式。|
+|POP3| |使用 POP3 抓取電子郵件的舊版郵件用戶端。|
+|報表 Web 服務| |用來在 Exchange Online 中取出報表資料。|
+|其他用戶端| |顯示用戶端應用程式未包含或不明的使用者進行的所有登入嘗試。|
 
 
 
-**作業系統**- 設備上運行的作業系統使用登錄到租戶。 
+**作業系統**-裝置上執行的作業系統，用來登入您的租使用者。 
 
 
-**設備瀏覽器**- 如果連接是從瀏覽器啟動的，則此欄位允許您按瀏覽器名稱進行篩選。
+**裝置瀏覽器**-如果連接是從瀏覽器起始，此欄位可讓您依瀏覽器名稱篩選。
 
 
-**關聯 ID** - 活動的相關 ID。
+相互**關聯識別碼**-活動的相互關聯識別碼。
 
 
 
 
-**條件訪問**- 應用的條件訪問規則的狀態
+**條件存取**-套用的條件式存取規則狀態
 
-- **未應用**：在登錄期間未應用於使用者和應用程式的策略。
+- **未**套用：在登入期間不會將原則套用至使用者和應用程式。
 
-- **成功**：在登錄期間應用於使用者和應用程式（但不一定是其他條件）的一個或多個條件訪問策略。 
+- **成功**：在登入期間套用至使用者和應用程式的一或多個條件式存取原則（但不一定是其他條件）。 
 
-- **失敗**：應用了一個或多個條件訪問策略，但在登錄期間未滿足。
+- **失敗**：已套用一或多個條件式存取原則，但在登入期間未滿足。
 
 
 
@@ -196,7 +196,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 ## <a name="download-sign-in-activities"></a>下載登入活動
 
-按一下 **"下載**"選項可創建最近 250，000 條記錄的 CSV 或 JSON 檔。 如果要在 Azure 門戶之外使用[登錄資料，請從下載登錄資料](quickstart-download-sign-in-report.md)開始。  
+按一下 [**下載**] 選項，以建立最新250000記錄的 CSV 或 JSON 檔案。 如果您想要在 Azure 入口網站外使用，請從[下載登入資料](quickstart-download-sign-in-report.md)開始。  
 
 ![下載](./media/concept-sign-ins/71.png "下載")
 
@@ -206,7 +206,7 @@ Azure Active Directory (Azure AD) 中的報告架構包含下列元件：
 
 ## <a name="sign-ins-data-shortcuts"></a>登入資料捷徑
 
-Azure AD 和 Azure 門戶都為您提供登錄資料的其他進入點：
+Azure AD 和 Azure 入口網站都提供登入資料的額外進入點：
 
 - 身分識別安全性保護概觀
 - 使用者
@@ -215,9 +215,9 @@ Azure AD 和 Azure 門戶都為您提供登錄資料的其他進入點：
 
 ### <a name="users-sign-ins-data-in-identity-security-protection"></a>身分識別安全性保護中的使用者登入資料
 
-**標識安全保護**概述頁中的使用者登錄圖顯示登錄的每週聚合。時間段的預設值為 30 天。
+[身分**識別安全性保護**] 總覽頁面中的使用者登入圖表會顯示每週的登入匯總。時間週期的預設值為30天。
 
-![登錄活動](./media/concept-sign-ins/06.png "登入活動")
+![登入活動](./media/concept-sign-ins/06.png "登入活動")
 
 當您按一下登入圖中的某一天時，會取得當日登入活動的概觀。
 
@@ -236,7 +236,7 @@ Azure AD 和 Azure 門戶都為您提供登錄資料的其他進入點：
 - 應用程式識別碼
 - Application
 - Client
-- Location
+- 位置
 - IP 位址
 - Date
 - 需要 MFA
@@ -247,23 +247,23 @@ Azure AD 和 Azure 門戶都為您提供登錄資料的其他進入點：
 
 在 [使用者]**** 頁面上，按一下 [活動]**** 區段中的 [登入]****，即可取得所有使用者登入的完整概觀。
 
-![登錄活動](./media/concept-sign-ins/08.png "登入活動")
+![登入活動](./media/concept-sign-ins/08.png "登入活動")
 
 ## <a name="usage-of-managed-applications"></a>受控應用程式的使用情況
 
 利用登入資料以應用程式為主的檢視，您可以回答下列問題︰
 
 * 誰在使用我的應用程式？
-* 您的組織中的三大應用程式是什麼？
-* 我的最新應用程式是如何做的？
+* 貴組織中的前三個應用程式是什麼？
+* 我的最新應用程式如何執行？
 
-此資料的切入點是組織中的前三個應用程式。 這些資料包含在**企業應用程式**下的 **"概述"** 部分的最後 30 天報告中。
+此資料的進入點是組織中的前三個應用程式。 資料會包含在 [**企業應用程式**] 底下 [**總覽**] 區段的 [最近30天] 報表中。
 
-![登錄活動](./media/concept-sign-ins/10.png "登入活動")
+![登入活動](./media/concept-sign-ins/10.png "登入活動")
 
-應用使用方式圖表可繪製給定時間段內前三個應用程式的登錄的每週聚合圖。 時間週期的預設值是 30 天。
+應用程式使用方式會在指定的時間週期內，針對您前三個應用程式的每週登入匯總進行匯總。 時間週期的預設值是 30 天。
 
-![登錄活動](./media/concept-sign-ins/graph-chart.png "登入活動")
+![登入活動](./media/concept-sign-ins/graph-chart.png "登入活動")
 
 如果您想要，您可以將焦點設在特定的應用程式。
 
@@ -275,9 +275,9 @@ Azure AD 和 Azure 門戶都為您提供登錄資料的其他進入點：
 
 ## <a name="office-365-activity-logs"></a>Office 365 活動記錄
 
-您可以查看來自[Microsoft 365 管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)的 Office 365 活動日誌。 請考慮以下幾點：Office 365 活動和 Azure AD 活動日誌共用大量目錄資源。 只有 Microsoft 365 管理中心提供 Office 365 活動日誌的完整視圖。 
+您可以從[Microsoft 365 系統管理中心](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center)觀看 Office 365 活動記錄。 請考慮 Office 365 活動和 Azure AD 活動記錄共用大量目錄資源的時間點。 只有 Microsoft 365 系統管理中心才會提供 Office 365 活動記錄的完整觀點。 
 
-您還可以使用[Office 365 管理 API](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)以程式設計方式訪問 Office 365 活動日誌。
+您也可以使用[office 365 管理 api](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview)，以程式設計方式存取 office 365 活動記錄。
 
 ## <a name="next-steps"></a>後續步驟
 

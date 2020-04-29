@@ -1,5 +1,5 @@
 ---
-title: 連接字串 - MariaDB 的 Azure 資料庫
+title: 連接字串-適用於 MariaDB 的 Azure 資料庫
 description: 此文件列出目前支援讓應用程式與「適用於 MariaDB 的 Azure 資料庫」連線的所有連接字串，包括 ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python 與 Ruby。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 74574fb905ae4ebd2552ef97cd0b5430eea6363a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79530218"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>如何將應用程式連線至適用於 MariaDB 的 Azure 資料庫

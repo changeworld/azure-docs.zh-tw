@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 資料湖存儲 Gen2 中對檔& ACL 使用 JavaScript
-description: 使用 JavaScript 的 Azure 存儲資料湖用戶端庫管理已啟用階層命名空間 （HNS） 的存儲帳戶中的目錄、檔和目錄存取控制清單 （ACL）。
+title: 在 Azure Data Lake Storage Gen2 中使用 & Acl 的 JavaScript
+description: 使用 Azure 儲存體 Data Lake 適用于 JavaScript 的用戶端程式庫，來管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄和檔案和目錄存取控制清單（ACL）。
 author: normesta
 ms.service: storage
 ms.date: 03/20/2020
@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 04d0d23bdbdaeda6a4823c900badb3133ba9eeae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061548"
 ---
-# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure 資料存儲庫 Gen2 中的目錄、檔和 ACL
+# <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>使用 JavaScript 管理 Azure Data Lake Storage Gen2 中的目錄、檔案和 Acl
 
-本文介紹如何使用 JavaScript 在已啟用階層命名空間 （HNS） 的存儲帳戶中創建和管理目錄、檔和許可權。 
+本文說明如何使用 JavaScript 來建立和管理已啟用階層命名空間（HNS）之儲存體帳戶中的目錄、檔案和許可權。 
 
-[包（節點包管理器）](https://www.npmjs.com/package/@azure/storage-file-datalake) | [示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [提供回饋](https://github.com/Azure/azure-sdk-for-java/issues)
+[封裝（節點套件管理員）](https://www.npmjs.com/package/@azure/storage-file-datalake) | [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [提供意見](https://github.com/Azure/azure-sdk-for-java/issues)反應
 
 ## <a name="prerequisites"></a>Prerequisites
 
 > [!div class="checklist"]
 > * Azure 訂用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-> * 已啟用階層命名空間 （HNS） 的存儲帳戶。 按照[這些](data-lake-storage-quickstart-create-account.md)說明創建一個。
-> * 如果在 Node.js 應用程式中使用此包，則需要 Node.js 8.0.0 或更高版本。
+> * 已啟用階層命名空間（HNS）的儲存體帳戶。 請遵循[這些](data-lake-storage-quickstart-create-account.md)指示來建立一個。
+> * 如果您在 node.js 應用程式中使用此套件，您將需要 node.js 8.0.0 或更新版本。
 
 ## <a name="set-up-your-project"></a>設定專案
 
-通過打開終端視窗，然後鍵入以下命令，為 JavaScript 安裝資料湖用戶端庫。
+開啟終端機視窗，然後輸入下列命令，以安裝適用于 JavaScript 的 Data Lake 用戶端程式庫。
 
 ```javascript
 npm install @azure/storage-file-datalake
 ```
 
-通過將此`storage-file-datalake`語句放在代碼檔的頂部來導入包。 
+將此`storage-file-datalake`語句放在程式碼檔案的頂端，以匯入封裝。 
 
 ```javascript
 const AzureStorageDataLake = require("@azure/storage-file-datalake");
@@ -44,13 +44,13 @@ const AzureStorageDataLake = require("@azure/storage-file-datalake");
 
 ## <a name="connect-to-the-account"></a>連接到帳戶 
 
-要使用本文中的程式碼片段，您需要創建表示存儲帳戶**的 DataLakeServiceClient**實例。 
+若要使用本文中的程式碼片段，您必須建立代表儲存體帳戶的**DataLakeServiceClient**實例。 
 
 ### <a name="connect-by-using-an-account-key"></a>使用帳戶金鑰進行連接
 
-這是連接到帳戶的最簡單方法。 
+這是連接到帳戶最簡單的方式。 
 
-本示例使用帳戶金鑰創建**DataLakeServiceClient**實例。
+這個範例會使用帳戶金鑰來建立**DataLakeServiceClient**實例。
 
 ```javascript
 
@@ -67,13 +67,13 @@ function GetDataLakeServiceClient(accountName, accountKey) {
 
 ```
 > [!NOTE]
-> 這種授權方法僅適用于 Node.js 應用程式。 如果計畫在瀏覽器中運行代碼，則可以使用 Azure 活動目錄 （AD） 進行授權。 
+> 這種授權方法僅適用于 node.js 應用程式。 如果您打算在瀏覽器中執行程式碼，您可以使用 Azure Active Directory （AD）來進行授權。 
 
-### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure 活動目錄 （AD） 進行連接
+### <a name="connect-by-using-azure-active-directory-ad"></a>使用 Azure Active Directory （AD）進行連接
 
-可以使用 JS[的 Azure 標識用戶端庫](https://www.npmjs.com/package/@azure/identity)使用 Azure AD 對應用程式進行身份驗證。
+您可以使用[適用于 JS 的 Azure 身分識別用戶端程式庫](https://www.npmjs.com/package/@azure/identity)，透過 Azure AD 來驗證您的應用程式。
 
-本示例使用用戶端 ID、用戶端機密和租戶 ID 創建**DataLakeServiceClient**實例。  要獲取這些值，請參閱[從 Azure AD 獲取權杖以授權來自用戶端應用程式的請求](../common/storage-auth-aad-app.md)。
+這個範例會使用用戶端識別碼、用戶端密碼和租使用者識別碼來建立**DataLakeServiceClient**實例。  若要取得這些值，請參閱[從 Azure AD 取得權杖，以從用戶端應用程式授權要求](../common/storage-auth-aad-app.md)。
 
 ```javascript
 function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantID) {
@@ -88,13 +88,13 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 ```
 
 > [!NOTE]
-> 有關詳細資訊，請參閱 Azure[標識用戶端庫，瞭解 JS](https://www.npmjs.com/package/@azure/identity)文檔。
+> 如需更多範例，請參閱[適用于 JS 的 Azure 身分識別用戶端程式庫](https://www.npmjs.com/package/@azure/identity)檔。
 
 ## <a name="create-a-file-system"></a>建立檔案系統
 
-檔案系統充當檔的容器。 您可以通過獲取**檔案系統用戶端**實例，然後調用**FileSystemClient.Create**方法來創建一個實例。
+檔案系統作為檔案的容器。 您可以藉由取得**FileSystemClient**實例，然後呼叫**FileSystemClient. create**方法來建立一個。
 
-本示例創建名為 的`my-file-system`檔案系統。 
+這個範例會建立名為`my-file-system`的檔案系統。 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -110,9 +110,9 @@ async function CreateFileSystem(datalakeServiceClient) {
 
 ## <a name="create-a-directory"></a>建立目錄
 
-通過獲取**目錄用戶端**實例，然後調用**目錄用戶端.create**方法，創建目錄引用。
+藉由取得**DirectoryClient**實例，然後呼叫**DirectoryClient. create**方法來建立目錄參考。
 
-本示例向檔案系統添加名為`my-directory`的目錄。 
+這個範例會將名`my-directory`為的目錄新增至檔案系統。 
 
 ```javascript
 async function CreateDirectory(fileSystemClient) {
@@ -126,9 +126,9 @@ async function CreateDirectory(fileSystemClient) {
 
 ## <a name="rename-or-move-a-directory"></a>重新命名目錄或移動目錄
 
-通過調用**DirectoryClient.重命名**方法重命名或移動目錄。 傳遞所需目錄的路徑參數。 
+藉由呼叫 DirectoryClient 重新命名或移動目錄 **。** 傳遞所需目錄的路徑 a 參數。 
 
-本示例將子目錄重命名為 名稱`my-directory-renamed`。
+這個範例會將子目錄重新命名為名稱`my-directory-renamed`。
 
 ```javascript
 async function RenameDirectory(fileSystemClient) {
@@ -139,7 +139,7 @@ async function RenameDirectory(fileSystemClient) {
 }
 ```
 
-本示例將名為`my-directory-renamed`的目錄移動到名為`my-directory-2`的目錄的子目錄。 
+這個範例會將名`my-directory-renamed`為的目錄移至名`my-directory-2`為之目錄的子目錄。 
 
 ```javascript
 async function MoveDirectory(fileSystemClient) {
@@ -152,9 +152,9 @@ async function MoveDirectory(fileSystemClient) {
 
 ## <a name="delete-a-directory"></a>刪除目錄
 
-通過調用**目錄用戶端.delete**方法刪除目錄。
+藉由呼叫**DirectoryClient**方法來刪除目錄。
 
-此示例刪除名為 的`my-directory`目錄。   
+這個範例會刪除名為`my-directory`的目錄。   
 
 ```javascript
 async function DeleteDirectory(fileSystemClient) {
@@ -167,10 +167,10 @@ async function DeleteDirectory(fileSystemClient) {
 
 ## <a name="manage-a-directory-acl"></a>管理目錄 ACL
 
-此示例獲取並設置名為 的`my-directory`目錄的 ACL。 此示例授予擁有的使用者讀取、寫入和執行許可權，僅授予擁有組讀取和執行許可權，並授予所有其他讀取存取許可權。
+這個範例會取得並設定名為`my-directory`之目錄的 ACL。 這個範例提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供其他所有讀取權限。
 
 > [!NOTE]
-> 如果應用程式使用 Azure 活動目錄 （Azure AD） 授權訪問，則請確保已分配應用程式用於授權訪問的安全[主體。](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 要瞭解有關如何應用 ACL 許可權及其更改效果的更多內容，請參閱[Azure 資料湖存儲 Gen2 中的訪問控制項](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入瞭解如何套用 ACL 許可權，以及變更它們的影響，請參閱[Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
 
 ```javascript
 async function ManageDirectoryACLs(fileSystemClient) {
@@ -219,11 +219,11 @@ async function ManageDirectoryACLs(fileSystemClient) {
 }
 ```
 
-## <a name="upload-a-file-to-a-directory"></a>將檔上載到目錄
+## <a name="upload-a-file-to-a-directory"></a>將檔案上傳到目錄
 
-首先，讀取檔。 此示例使用 Node.js`fs`模組。 然後，通過創建**FileClient**實例，然後調用**FileClient.create**方法，在目標目錄中創建檔引用。 通過調用**FileClient.append**方法上載檔。 請確保通過調用**FileClient.flush**方法完成上載。
+首先，讀取檔案。 這個範例會使用 node.js `fs`模組。 然後，藉由建立**FileClient**實例，然後呼叫**FileClient. create**方法，在目標目錄中建立檔案參考。 藉由呼叫**FileClient. append**方法來上傳檔案。 請務必呼叫**FileClient**方法來完成上傳。
 
-本示例將文字檔上載到名為`my-directory`的目錄。
+這個範例會將文字檔上傳至名為`my-directory`的目錄。
 
 ```javascript
 async function UploadFile(fileSystemClient) {
@@ -247,12 +247,12 @@ async function UploadFile(fileSystemClient) {
 }
 ```
 
-## <a name="manage-a-file-acl"></a>管理檔 ACL
+## <a name="manage-a-file-acl"></a>管理檔案 ACL
 
-此示例獲取並設置名為`upload-file.txt`的檔的 ACL。 此示例授予擁有的使用者讀取、寫入和執行許可權，僅授予擁有組讀取和執行許可權，並授予所有其他讀取存取許可權。
+這個範例會取得並設定名為`upload-file.txt`之檔案的 ACL。 這個範例提供擁有使用者的讀取、寫入和執行許可權，授與擁有群組 [讀取] 和 [執行] 許可權，並提供其他所有讀取權限。
 
 > [!NOTE]
-> 如果應用程式使用 Azure 活動目錄 （Azure AD） 授權訪問，則請確保已分配應用程式用於授權訪問的安全[主體。](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) 要瞭解有關如何應用 ACL 許可權及其更改效果的更多內容，請參閱[Azure 資料湖存儲 Gen2 中的訪問控制項](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
+> 如果您的應用程式使用 Azure Active Directory （Azure AD）來授權存取，請確定您的應用程式用來授權存取的安全性主體已獲指派[儲存體 Blob 資料擁有者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)。 若要深入瞭解如何套用 ACL 許可權，以及變更它們的影響，請參閱[Azure Data Lake Storage Gen2 中的存取控制](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。
 
 ```javascript
 async function ManageFileACLs(fileSystemClient) {
@@ -301,12 +301,12 @@ await fileClient.setAccessControl(acl);
 }
 ```
 
-## <a name="download-from-a-directory"></a>從目錄中下載
+## <a name="download-from-a-directory"></a>從目錄下載
 
-首先，創建一個表示要下載的檔的**FileSystemClient**實例。 使用**FileSystemClient.read**方法讀取該檔。 然後，編寫檔。 此示例使用 Node.js`fs`模組執行此操作。 
+首先，建立代表您要下載之檔案的**FileSystemClient**實例。 使用**FileSystemClient**讀取檔案。 然後，寫入檔案。 這個範例會使用 node.js `fs`模組來執行此動作。 
 
 > [!NOTE]
-> 這種下載檔案的方法僅適用于 Node.js 應用程式。 如果計畫在瀏覽器中運行代碼，請參閱 JavaScript readme 檔的[Azure 存儲檔資料湖用戶端庫](https://www.npmjs.com/package/@azure/storage-file-datalake)，瞭解如何在瀏覽器中執行此操作。 
+> 此下載檔案的方法僅適用于 node.js 應用程式。 如果您打算在瀏覽器中執行程式碼，請參閱 JavaScript 讀我檔案的[Azure 儲存體檔案 Data Lake 用戶端程式庫](https://www.npmjs.com/package/@azure/storage-file-datalake)，以取得如何在瀏覽器中執行這項操作的範例。 
 
 ```javascript
 async function DownloadFile(fileSystemClient) {
@@ -341,7 +341,7 @@ async function DownloadFile(fileSystemClient) {
 
 ## <a name="list-directory-contents"></a>列出目錄內容
 
-此示例列印位於名為`my-directory`的目錄中的每個目錄和檔的名稱。
+這個範例會列印每個目錄的名稱，以及位於名`my-directory`為的目錄中的檔案名。
 
 ```javascript
 async function ListFilesInDirectory(fileSystemClient) {
@@ -358,8 +358,8 @@ async function ListFilesInDirectory(fileSystemClient) {
 }
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-* [包（節點包管理器）](https://www.npmjs.com/package/@azure/storage-file-datalake)
-* [樣品](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
-* [提供回饋](https://github.com/Azure/azure-sdk-for-java/issues)
+* [封裝（Node Package Manager）](https://www.npmjs.com/package/@azure/storage-file-datalake)
+* [範例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)
+* [提供意見反應](https://github.com/Azure/azure-sdk-for-java/issues)

@@ -18,10 +18,10 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 5fa94b93e081ab6334c39b848068f50682f5f1f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235058"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>使用 Azure CLI 以路由表路由網路流量
@@ -40,7 +40,7 @@ ms.locfileid: "80235058"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
+如果您選擇在本機安裝和使用 CLI，本快速入門會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
 
 ## <a name="create-a-route-table"></a>建立路由表
 
@@ -210,7 +210,7 @@ az vm create \
 
 ## <a name="route-traffic-through-an-nva"></a>透過 NVA 路由傳送流量
 
-使用下列命令來對 myVmPrivate** 虛擬機器建立 SSH 工作階段。 將*\<公共 Ip 位址>* 替換為 VM 的公共 IP 位址。 在上述範例中，IP 位址是 *13.90.242.231*。
+使用下列命令來對 myVmPrivate** 虛擬機器建立 SSH 工作階段。 以您 VM 的公用 IP 位址取代* \<publicIpAddress>* 。 在上述範例中，IP 位址是 *13.90.242.231*。
 
 ```bash
 ssh azureuser@<publicIpAddress>

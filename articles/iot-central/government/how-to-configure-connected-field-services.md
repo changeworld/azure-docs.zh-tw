@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 7c708268eaeade1cfb625c73ff8758a1941ff5b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80157444"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>了解如何使用 Azure IoT Central 和 Dynamics 365 Field Service 建置端對端解決方案 
@@ -21,7 +21,7 @@ ms.locfileid: "80157444"
 作為建置者，您可以將 Azure IoT Central 應用程式整合到其他商務系統。 
 
 
-例如，在聯網廢棄物管理解決方案中，您可以將垃圾收集車的派遣最佳化。 優化可以基於來自連接的垃圾箱的 IoT 感應器資料進行。在[IoT 中央連接的廢物管理應用程式中](./tutorial-connected-waste-management.md)，您可以配置規則和操作，並將其設置為觸發動態現場服務中創建警報。 此案例是使用 Microsoft Flow 來完成，您可以直接在 IoT Central 中設定此服務，以自動化應用程式和服務之間的工作流程。 此外，根據 Field Service 中的服務活動，資訊也可以送回 Azure IoT Central。 
+例如，在聯網廢棄物管理解決方案中，您可以將垃圾收集車的派遣最佳化。 您可以根據來自已連線浪費區間的 IoT 感應器資料來進行優化。在[IoT Central 連線的垃圾管理應用程式](./tutorial-connected-waste-management.md)中，您可以設定規則和動作，並將其設為觸發在 Dynamics Field Service 中建立警示。 此案例是使用 Microsoft Flow 來完成，您可以直接在 IoT Central 中設定此服務，以自動化應用程式和服務之間的工作流程。 此外，根據 Field Service 中的服務活動，資訊也可以送回 Azure IoT Central。 
 
 ## <a name="how-to-connect-your-azure-iot-central-application-with-dynamics-365-field-services"></a>如何建立 Azure IoT Central 應用程式與 Dynamics 365 Field Services 的連線 
 

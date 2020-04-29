@@ -1,48 +1,48 @@
 ---
-title: 使用 Azure 通知中心發送 APNS VOIP 通知
-description: 瞭解如何通過 Azure 通知中心（不受官方支援）發送 APNS VOIP 通知。
+title: 使用 Azure 通知中樞傳送 APNS VOIP 通知
+description: 瞭解如何透過 Azure 通知中樞（未正式支援）傳送 APNS VOIP 通知。
 author: sethmanheim
 ms.author: sethm
 ms.date: 3/23/2020
 ms.topic: how-to
 ms.service: notification-hubs
 ms.openlocfilehash: c99af881b8f93b75633741c2352dc5df17dd2963
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80146884"
 ---
-# <a name="use-apns-voip-through-notification-hubs-not-officially-supported"></a>通過通知中心使用 APNS VOIP（不受官方支援）
+# <a name="use-apns-voip-through-notification-hubs-not-officially-supported"></a>透過通知中樞使用 APNS VOIP （未正式支援）
 
-可以通過 Azure 通知中心使用 APNS VOIP 通知;然而，沒有官方支援這一方案。
+您可以透過 Azure 通知中樞來使用 APNS VOIP 通知;不過，此案例沒有官方支援。
 
 ## <a name="considerations"></a>考量
 
-如果您仍然選擇通過通知中心發送 APNS VOIP 通知，請注意以下限制：
+如果您仍然選擇透過通知中樞傳送 APNS VOIP 通知，請注意下列限制：
 
-- 發送 VOIP 通知需要`apns-topic`將標頭設置為應用程式捆綁包 ID 和`.voip`尾碼。 例如，對於具有捆綁 ID`com.microsoft.nhubsample`的示例應用，`apns-topic`應將標頭設置為`com.microsoft.nhubsample.voip.`
+- 傳送 VOIP 通知需要將`apns-topic`標頭設定為應用程式套件組合識別碼 + `.voip`尾碼。 例如，針對具有配套識別碼`com.microsoft.nhubsample`的範例應用程式， `apns-topic`標頭應該設定為`com.microsoft.nhubsample.voip.`
 
-   此方法不能很好地使用 Azure 通知中心，因為應用的捆綁 ID 必須配置為集線器的 APNS 憑據的一部分，並且無法更改該值。 此外，通知中心不允許在運行時重寫`apns-topic`標頭的值。
+   這個方法不適用於 Azure 通知中樞，因為應用程式的套件組合識別碼必須設定為中樞的 APNS 認證的一部分，而且無法變更此值。 此外，通知中樞不允許在執行時間覆寫`apns-topic`標頭的值。
 
-   要發送 VOIP 通知，必須使用`.voip`應用捆綁包 ID 配置單獨的通知中心。
+   若要傳送 VOIP 通知，您必須使用`.voip`應用程式套件組合識別碼來設定個別的通知中樞。
 
-- 發送 VOIP 通知要求將`apns-push-type`標頭設置為 值`voip`。
+- 傳送 VOIP 通知需要將`apns-push-type`標頭設定為值。 `voip`
 
-   為了説明客戶過渡到 iOS 13，通知中心嘗試推斷`apns-push-type`標頭的正確值。 推理邏輯故意很簡單，以避免違反標準通知。 遺憾的是，此方法會導致 VOIP 通知出現問題，因為 Apple 將 VOIP 通知視為不符合標準通知的相同規則的特殊情況。
+   為了協助客戶轉換到 iOS 13，通知中樞嘗試推斷正確的`apns-push-type`標頭值。 推斷邏輯是刻意簡單的工作，以避免中斷標準通知。 可惜的是，此方法會導致 VOIP 通知的問題，因為 Apple 會將 VOIP 通知視為不遵循與標準通知相同規則的特殊案例。
 
-   要發送 VOIP 通知，必須為`apns-push-type`標頭指定顯式值。
+   若要傳送 VOIP 通知，您必須為`apns-push-type`標頭指定明確的值。
 
-- 通知中心將 APNS 負載限制為 4 KB，如 Apple 所記錄的那樣。 對於 VOIP 通知，Apple 允許有效負載高達 5 KB。 通知中心不區分標準和 VOIP 通知;因此，通知中心不會區分"通知"和"VOIP"通知。因此，所有通知都限制為 4 KB。
+- 通知中樞會將 APNS 承載限制為 4 KB，如 Apple 所記載。 針對 VOIP 通知，Apple 允許最多 5 KB 的承載。 通知中樞不會區分標準和 VOIP 通知;因此，所有通知都限制為 4 KB。
 
-   要發送 VOIP 通知，您不得超過 4 KB 有效負載大小限制。
+   若要傳送 VOIP 通知，您不得超過 4 KB 的承載大小限制。
 
 ## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱下列連結：
 
-- [文檔和`apns-push-type`標頭和值，包括 VOIP 通知的特殊情況。 `apns-topic` ](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)
+- 和標頭[ `apns-push-type`和值的檔，包括 VOIP 通知的特殊`apns-topic`案例](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/sending_notification_requests_to_apns)。
 
-- [有效負載大小限制的文檔](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification)。
+- 裝載[大小限制的檔](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/generating_a_remote_notification)。
 
-- [iOS 13 的通知中心更新](push-notification-updates-ios-13.md#apns-push-type)。
+- [通知中樞 iOS 13 的更新](push-notification-updates-ios-13.md#apns-push-type)。

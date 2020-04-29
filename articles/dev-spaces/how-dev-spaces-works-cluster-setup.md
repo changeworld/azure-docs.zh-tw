@@ -1,98 +1,98 @@
 ---
-title: 為 Azure 開發空間設置群集的工作原理
+title: 設定 Azure Dev Spaces 叢集的運作方式
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: 描述為 Azure 開發人員空間設置 Azure 庫伯奈斯服務群集的工作原理
-keywords: Azure 開發空間、開發空間、Docker、庫伯奈斯、Azure、AKS、Azure 庫伯奈斯服務、容器
+description: 說明如何設定適用于 Azure Dev Spaces 的 Azure Kubernetes Service 叢集
+keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器
 ms.openlocfilehash: 00f8262f3008ce9ba82726960f78d18395458a2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241721"
 ---
-# <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>為 Azure 開發空間設置群集的工作原理
+# <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>設定 Azure Dev Spaces 叢集的運作方式
 
-Azure 開發人員空間為您提供了多種方法來快速反覆運算和調試 Kubernetes 應用程式，並與您的團隊協作處理 Azure Kubernetes 服務 （AKS） 群集。 一種方法是在 AKS 群集上啟用 Azure 開發空間，以便您可以[直接在群集上運行服務][how-it-works-up]，並使用[其他網路和路由功能][how-it-works-routing]。 本文介紹準備群集和啟用 Azure 開發空間時會發生什麼情況。
+Azure Dev Spaces 提供多種方式來快速反復查看和 Kubernetes 應用程式，並在 Azure Kubernetes Service （AKS）叢集上與您的小組共同作業。 其中一種方式是在 AKS 叢集上啟用 Azure Dev Spaces，讓您可以[直接在叢集上執行服務][how-it-works-up]，並使用[額外的網路和路由功能][how-it-works-routing]。 本文說明當您準備叢集並啟用 Azure Dev Spaces 時，會發生什麼事。
 
-## <a name="prepare-your-aks-cluster"></a>準備 AKS 群集
+## <a name="prepare-your-aks-cluster"></a>準備您的 AKS 叢集
 
-要為開發空間準備 AKS 群集，請驗證 AKS 群集位於[Azure 開發空間支援][supported-regions]的區域中，並且運行 Kubernetes 1.10.3 或更高版本。 要從 Azure 門戶在群集上啟用 Azure 開發空間，請導航到群集，請按一下 *"開發空間*"，將 *"使用開發空間*更改為*是*"，然後按一下"*保存*"。 還可以通過運行`az aks use-dev-spaces`從 Azure CLI 啟用 Azure 開發空間。
+若要為 Dev Spaces 準備 AKS 叢集，請確認您的 AKS 叢集位於[Azure Dev Spaces 支援][supported-regions]的區域中，而且您正在執行 Kubernetes 1.10.3 或更新版本。 若要從 Azure 入口網站啟用叢集上的 Azure Dev Spaces，請流覽至您的叢集，然後按一下 [ *Dev Spaces*]，將 [*使用 dev spaces* ] 變更為 *[是]*，然後按一下 [*儲存*]。 您也可以藉由執行，從 Azure CLI 啟用`az aks use-dev-spaces`Azure Dev Spaces。
 
-有關為開發人員空間設置 AKS 群集的示例，請參閱[團隊開發快速入門][quickstart-team]。
+如需為 Dev Spaces 設定 AKS 叢集的範例，請參閱[小組開發快速入門][quickstart-team]。
 
-在 AKS 群集上啟用 Azure 開發空間後，它將安裝群集的控制器。 控制器位於 AKS 群集之外。 它驅動用戶端工具與 AKS 群集之間的行為和通信。 啟用後，您可以使用用戶端工具與控制器進行交互。
+當您的 AKS 叢集上啟用了 Azure Dev Spaces 時，它會為您的叢集安裝控制器。 控制器位於您的 AKS 叢集之外。 它會驅動用戶端工具與 AKS 叢集之間的行為和通訊。 一旦啟用後，您就可以使用用戶端工具與控制器進行互動。
 
-控制器執行以下操作：
+控制器會執行下列動作：
 
-* 管理開發空間的創建和選擇。
-* 安裝應用程式的 Helm 圖表並創建庫伯內斯物件。
-* 生成應用程式的容器映射。
-* 將應用程式部署到 AKS。
-* 當原始程式碼更改時，執行增量生成和重新開機。
-* 管理日誌和 HTTP 跟蹤。
-* 將穩貞和穩穩地轉發到用戶端工具。
-* 為空間內的應用程式以及跨父空間和子空間配置路由。
+* 管理開發人員空間的建立和選取。
+* 安裝您應用程式的 Helm 圖，並建立 Kubernetes 物件。
+* 建立應用程式的容器映射。
+* 將您的應用程式部署至 AKS。
+* 當您的原始程式碼變更時，會執行累加式組建並重新啟動。
+* 記錄管理檔和 HTTP 追蹤。
+* 將 stdout 和 stderr 轉送至用戶端工具。
+* 設定應用程式在空間內的路由，以及跨父系和子空間。
 
-控制器是群集外部的單獨 Azure 資源，對群集中的資源執行以下操作：
+控制器是叢集外的個別 Azure 資源，並會對叢集中的資源執行下列動作：
 
-* 創建或指定 Kubernetes 命名空間以用作開發空間。
-* 刪除任何名為*azds*的庫伯內斯命名空間（如果存在）並創建新的命名空間。
-* 部署庫伯奈斯 Webhook 配置。
-* 部署 Webhook 准入伺服器。
+* 建立或指定要做為開發人員空間使用的 Kubernetes 命名空間。
+* 移除名為*azds*的任何 Kubernetes 命名空間（如果有的話），並建立一個新的。
+* 部署 Kubernetes webhook 設定。
+* 部署 webhook 許可伺服器。
 
-它使用與 AKS 群集用於對其他 Azure 開發人員空間元件進行服務調用相同的服務主體。
+它會使用您的 AKS 叢集用來對其他 Azure Dev Spaces 元件進行服務呼叫的相同服務主體。
 
-![Azure 開發空間準備群集](media/how-dev-spaces-works/prepare-cluster.svg)
+![Azure Dev Spaces 準備叢集](media/how-dev-spaces-works/prepare-cluster.svg)
 
-為了使用 Azure 開發空間，必須至少有一個開發空間。 Azure 開發空間使用 AKS 群集中的庫伯內斯命名空間來開發空間。 安裝控制器時，它會提示您創建新的 Kubernetes 命名空間或選擇現有命名空間作為第一個開發空間使用。 預設情況下，控制器提供將現有*預設*Kubernetes 命名空間升級到第一個開發空間。
+若要使用 Azure Dev Spaces，必須至少有一個開發人員空間。 Azure Dev Spaces 在您的 AKS 叢集中使用 Dev Spaces 的 Kubernetes 命名空間。 安裝控制器時，它會提示您建立新的 Kubernetes 命名空間，或選擇現有的命名空間做為您的第一個開發人員空間。 根據預設，控制器會提供將現有的*預設*Kubernetes 命名空間升級為您的第一個開發人員空間。
 
-當命名空間被指定為開發空間時，控制器會向該命名空間添加*azds.io/space=true*標籤，以將其標識為開發空間。 預設情況下，在準備群集後，將選擇您創建或指定的初始開發空間。 選擇空間後，Azure 開發人員空間會將其用於創建新工作負荷。
+當命名空間指定為開發人員空間時，控制器會將*azds.io/space=true*標籤新增至該命名空間，以將其識別為開發人員空間。 在準備好叢集之後，預設會選取您建立或指定的初始開發人員空間。 選取空間時，Azure Dev Spaces 會使用它來建立新的工作負載。
 
-您可以使用用戶端工具創建新的開發空間並刪除現有的開發空間。 由於 Kubernets 中的限制，無法刪除*預設*開發空間。 控制器還會刪除任何名為*azds*的現有 Kubernetes 命名空間，以避免`azds`與用戶端工具使用的命令發生衝突。
+您可以使用用戶端工具來建立新的開發人員空間，並移除現有的開發人員空間。 由於 Kubernetes 的限制，無法移除*預設*的開發人員空間。 控制器也會移除名為*azds*的任何現有 Kubernetes 命名空間，以`azds`避免與用戶端工具所使用的命令發生衝突。
 
-Kubernetes Webhook 准入伺服器用於在部署檢測期間向 Pod 注入三個容器：開發空間代理容器、開發空間代理-init 容器和開發空間生成容器。 **所有這些容器都使用 AKS 群集上的根訪問運行。** 它們還使用 AKS 群集用於對其他 Azure 開發人員空間元件進行服務調用的相同服務主體。
+Kubernetes webhook 許可伺服器是用來在部署檢測時，將具有三個容器的 pod 插入： devspaces proxy 容器、devspaces proxy-init 容器和 devspaces 組建容器。 **這三個容器都是在 AKS 叢集上以根存取的方式執行。** 它們也會使用您的 AKS 叢集用來對其他 Azure Dev Spaces 元件進行服務呼叫的相同服務主體。
 
-![Azure 開發空間庫伯內斯網訪問伺服器](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
+![Azure Dev Spaces Kubernetes webhook 許可伺服器](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
-開發空間代理容器是一個側車容器，用於處理進出應用程式容器的所有 TCP 流量，並説明執行路由。 如果使用某些空格，則開發空間代理容器將重新路由 HTTP 消息。 例如，它可以説明在父空間和子空間中的應用程式之間路由 HTTP 消息。 所有非 HTTP 流量都通過未修改的開發人員空間代理。 開發空間代理容器還記錄所有入站和出站 HTTP 消息，並將它們作為跟蹤發送到用戶端工具。 然後，開發人員可以查看這些跟蹤以檢查應用程式的行為。
+Devspaces proxy 容器是一個側車容器，可處理進出應用程式容器的所有 TCP 流量，並協助執行路由。 如果使用了某些空格，devspaces proxy 容器會將 HTTP 訊息重排。 例如，它可以協助在父和子空間中的應用程式之間路由傳送 HTTP 訊息。 所有非 HTTP 流量都會透過未修改的 devspaces-proxy 傳遞。 Devspaces proxy 容器也會記錄所有輸入和輸出 HTTP 訊息，並將它們以追蹤的形式傳送給用戶端工具。 然後，開發人員可以看到這些追蹤來檢查應用程式的行為。
 
-開發空間代理-init 容器是一個[init 容器](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)，它根據空間層次結構向應用程式的容器添加其他路由規則。 它通過在應用程式容器的 */etc/resolv.conf*檔和 iptables 配置啟動之前更新路由規則來添加路由規則。 對 */etc/resolv.conf*的更新允許在父空間中解析服務。 iptables 配置更新可確保通過開發空間代理路由進出應用程式容器的所有 TCP 流量。 除了 Kubernetes 添加的規則之外，來自開發空間-代理-它的所有更新都會發生。
+Devspaces-proxy-init 容器是一個[init 容器](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)，它會根據空間階層，將額外的路由規則新增至應用程式的容器。 它會在應用程式容器的 */etc/resolv.conf*檔啟動之前，先更新並進行 iptables 設定，藉以新增路由規則。 */Etc/resolv.conf*的更新可讓您在父空間中解析服務的 DNS。 Iptables 設定更新可確保進出應用程式容器的所有 TCP 流量都會透過 devspaces-proxy 來路由傳送。 除了 Kubernetes 新增的規則之外，devspaces 中的所有更新-proxy-init 也會發生。
 
-開發空間生成容器是 init 容器，並裝載了專案原始程式碼和 Docker 通訊端。 專案原始程式碼和對 Docker 的訪問允許由 pod 直接生成應用程式容器。
+Devspaces 組建容器是 init 容器，並已裝載專案原始程式碼和 Docker 通訊端。 專案原始碼和 Docker 的存取權可讓 pod 直接建立應用程式容器。
 
 > [!NOTE]
-> Azure 開發空間使用相同的節點來構建應用程式的容器並運行它。 因此，Azure 開發人員空間不需要外部容器註冊表來構建和運行應用程式。
+> Azure Dev Spaces 使用相同的節點來建立應用程式的容器，並加以執行。 因此，Azure Dev Spaces 不需要外部容器登錄來建立和執行您的應用程式。
 
-Kubernetes Webhook 進入伺服器偵聽在 AKS 群集中創建的任何新 pod。 如果該窗格部署到帶有*azds.io/space=true*標籤的任何命名空間，它將該窗格注入其他容器。 僅當使用用戶端工具運行應用程式的容器時，才會注入開發空間生成容器。
+Kubernetes webhook 許可伺服器會接聽在 AKS 叢集中建立的任何新 pod。 如果該 pod 部署到具有*azds.io/space=true*標籤的任何命名空間，它會插入該 pod 與其他容器。 只有在使用用戶端工具執行應用程式的容器時，才會插入 devspaces-組建容器。
 
-準備好 AKS 群集後，可以使用用戶端工具在開發空間中準備和運行代碼。
+準備好 AKS 叢集之後，您可以使用用戶端工具來準備和執行您在開發人員空間中的程式碼。
 
 ## <a name="client-side-tooling"></a>用戶端工具
 
-用戶端工具允許使用者：
-* 為應用程式生成 Dockerfile、Helm 圖表和 Azure 開發人員空間設定檔。
-* 創建父和子開發空間。
-* 告訴控制器生成和啟動應用程式。
+用戶端工具可讓使用者：
+* 產生應用程式的 Dockerfile、Helm 圖表和 Azure Dev Spaces 設定檔。
+* 建立父系和子開發人員空間。
+* 告知控制器建立並啟動您的應用程式。
 
-應用程式運行時，用戶端工具也：
-* 接收並顯示在 AKS 中運行的應用程式的穩貞和穩穩。
-* 使用[埠轉發](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)允許使用 HTTP：\//localhost 對應用程式進行 Web 訪問。
-* 將調試器附加到 AKS 中正在運行的應用程式。
-* 當檢測到增量生成更改時，將原始程式碼同步到開發空間，從而允許快速反覆運算。
-* 允許您將開發人員電腦直接連接到 AKS 群集。
+當您的應用程式正在執行時，用戶端工具也會：
+* 從您在 AKS 中執行的應用程式接收並顯示 stdout 和 stderr。
+* 使用[埠向前轉送](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/)，以允許使用 HTTP：\//localhost. 對您的應用程式進行 web 存取
+* 在 AKS 中，將偵錯工具附加至您正在執行的應用程式。
+* 針對累加組建偵測到變更時，將原始程式碼同步處理至您的開發人員空間，以加速反復專案。
+* 可讓您將開發人員機器直接連線到 AKS 叢集。
 
-可以使用命令列中的用戶端工具作為命令的一`azds`部分。 您還可以使用用戶端工具：
+您可以使用命令列中的用戶端工具做為`azds`命令的一部分。 您也可以搭配使用用戶端工具與：
 
-* 使用[Azure 開發空間擴展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)的視覺化工作室代碼 。
-* 視覺工作室與[視覺工作室工具為庫伯內特](https://aka.ms/get-vsk8stools)斯。
+* 使用[Azure Dev Spaces 延伸](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)模組 Visual Studio Code。
+* [適用於 Kubernetes 的 Visual Studio Tools](https://aka.ms/get-vsk8stools)的 Visual Studio。
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解有關使用用戶端工具在開發空間中準備和運行代碼的詳細資訊，請參閱[為 Azure 開發人員空間準備專案的工作原理][how-it-works-prep]。
+若要深入瞭解如何使用用戶端工具在您的開發人員空間中準備和執行程式碼，請參閱[準備專案以進行 Azure Dev Spaces 的運作方式][how-it-works-prep]。
 
-要開始使用 Azure 開發人員空間進行團隊開發，請參閱[Azure 開發人員空間中的團隊開發][quickstart-team]快速入門。
+若要開始使用 Azure Dev Spaces 進行小組開發，請參閱[Azure Dev Spaces 快速入門中的小組開發][quickstart-team]。
 
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md

@@ -1,5 +1,5 @@
 ---
-title: 管理防火牆規則 - Azure 門戶 - MySQL 的 Azure 資料庫
+title: 管理防火牆規則-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
 description: 使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則
 author: ajlam
 ms.author: andrela
@@ -7,16 +7,16 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: edd6403ed3d7607eb96bc7c6a603c3fef8a4f99e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063556"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 入口網站建立和管理適用於 MySQL 的 Azure 資料庫防火牆規則
-伺服器級防火牆規則可用於管理從指定的 IP 位址或一系列 IP 位址對 MySQL Server Azure 資料庫的訪問。 
+伺服器層級防火牆規則可用來從指定的 IP 位址或 IP 位址範圍，管理適用於 MySQL 的 Azure 資料庫伺服器的存取權。 
 
-虛擬網路 （VNet） 規則也可用於保護對伺服器的訪問。 詳細瞭解如何使用[Azure 門戶創建和管理虛擬網路服務終結點和規則](howto-manage-vnet-using-portal.md)。
+虛擬網路（VNet）規則也可以用來保護對您伺服器的存取。 深入瞭解如何[使用 Azure 入口網站建立和管理虛擬網路服務端點和規則](howto-manage-vnet-using-portal.md)。
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 入口網站中建立伺服器層級的防火牆規則
 
@@ -41,7 +41,7 @@ ms.locfileid: "80063556"
    ![Azure 入口網站 - 按一下 [儲存]](./media/howto-manage-firewall-using-portal/5-save-firewall-rule.png)
 
 ## <a name="connecting-from-azure"></a>從 Azure 連線
-若要允許應用程式從 Azure 連線到您適用於 MySQL 的 Azure 資料庫伺服器，必須啟用 Azure 連線。 例如，裝載 Azure Web Apps 應用程式或在 Azure VM 中執行的應用程式，或是從 Azure Data Factory 資料管理閘道連線。 資源不需要在相同虛擬網路 (VNet) 或資源群組，防火牆規則就可以啟用這些連線。 當 Azure 的應用程式嘗試連線到您的資料庫伺服器時，防火牆會確認是否允許 Azure 連線。 有幾種方法可以啟用這些類型的連線。 開始和結束位址等於 0.0.0.0 的防火牆設定表示允許這些連線。 或者，可以從連接安全窗格將"**允許訪問 Azure 服務**"選項設置為 **"打開****"，** 然後點擊 **"保存**"。 如果不允許連線嘗試，要求就不會到達適用於 MySQL 的 Azure 資料庫伺服器。
+若要允許應用程式從 Azure 連線到您適用於 MySQL 的 Azure 資料庫伺服器，必須啟用 Azure 連線。 例如，裝載 Azure Web Apps 應用程式或在 Azure VM 中執行的應用程式，或是從 Azure Data Factory 資料管理閘道連線。 資源不需要在相同虛擬網路 (VNet) 或資源群組，防火牆規則就可以啟用這些連線。 當 Azure 的應用程式嘗試連線到您的資料庫伺服器時，防火牆會確認是否允許 Azure 連線。 有幾種方法可以啟用這些類型的連線。 開始和結束位址等於 0.0.0.0 的防火牆設定表示允許這些連線。 或者，您可以在入口網站的 [連線**安全性**] 窗格中，將 [**允許存取 Azure 服務**] 選項設定為 [**開啟**]，然後點擊 [**儲存**]。 如果不允許連線嘗試，要求就不會到達適用於 MySQL 的 Azure 資料庫伺服器。
 
 > [!IMPORTANT]
 > 這個選項會設定防火牆，以允許所有來自 Azure 的連線，包括來自其他客戶訂用帳戶的連線。 選取這個選項時，請確定您的登入和使用者權限會限制為只有授權的使用者才能存取。

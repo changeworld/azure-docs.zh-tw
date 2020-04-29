@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/08/2019
 ms.openlocfilehash: 00de9c803ef796eda8da609a4009e0a8cfcb3664
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79455362"
 ---
 # <a name="registration-management"></a>註冊管理
@@ -33,10 +33,10 @@ ms.locfileid: "79455362"
 
 ### <a name="registrations"></a>註冊
 
-註冊會將裝置的「平台通知服務」(PNS) 控制代碼與標記 (以及也可能與範本) 建立關聯。 PNS 控制碼可以是通道URI、設備權杖或 FCM 註冊 ID。 標記是用來將通知路由至一組正確的裝置控制代碼。 有關詳細資訊，請參閱[路由和標記運算式](notification-hubs-tags-segment-push-message.md)。 範本是用來實作每一註冊的轉換。 如需詳細資訊，請參閱 [範本](notification-hubs-templates-cross-platform-push-messages.md)。
+註冊會將裝置的「平台通知服務」(PNS) 控制代碼與標記 (以及也可能與範本) 建立關聯。 PNS 控制碼可能是 ChannelURI、裝置權杖或 FCM 註冊識別碼。 標記是用來將通知路由至一組正確的裝置控制代碼。 如需詳細資訊，請參閱[路由與標記運算式](notification-hubs-tags-segment-push-message.md)。 範本是用來實作每一註冊的轉換。 如需詳細資訊，請參閱 [範本](notification-hubs-templates-cross-platform-push-messages.md)。
 
 > [!NOTE]
-> Azure 通知中心最多支援每台設備 60 個標記。
+> Azure 通知中樞支援每個裝置最多60個標記。
 
 ### <a name="installations"></a>安裝
 
@@ -45,7 +45,7 @@ ms.locfileid: "79455362"
 以下是使用安裝的一些主要優點：
 
 - 建立或更新安裝是完全等冪的。 因此您可以重試它，而不需顧慮重複註冊的情況。
-- 安裝模型支援一種特殊標記格式`$InstallationId:{INSTALLATION_ID}`（ ， 允許將通知直接發送到特定設備。 例如，如果應用的代碼為此特定設備設置了 的`joe93developer`安裝 ID，則開發人員可以在向`$InstallationId:{joe93developer}`標記發送通知時針對此設備。 這使您能夠定位特定設備，而無需執行任何其他編碼。
+- 安裝模型支援特殊標記格式（`$InstallationId:{INSTALLATION_ID}`），可讓您直接將通知傳送至特定裝置。 例如，如果應用程式的程式碼`joe93developer`為此特定裝置設定安裝識別碼，開發人員可以在傳送通知給`$InstallationId:{joe93developer}`標記時，將此裝置設為目標。 這可讓您以特定裝置為目標，而不需要執行任何額外的編碼。
 - 使用安裝也可讓您進行部分註冊更新。 要求部分安裝更新時，是使用 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902)以 PATCH 方法來要求。 當您想要更新註冊的相關標記時，這會特別有用。 您不需要移除整個註冊，然後再次重新傳送所有先前的標記。
 
 安裝可以包含下列屬性。 如需完整的安裝屬性清單，請參閱[使用 REST API 建立或覆寫安裝](/rest/api/notificationhubs/create-overwrite-installation)或[安裝屬性](/dotnet/api/microsoft.azure.notificationhubs.installation)。
@@ -92,7 +92,7 @@ ms.locfileid: "79455362"
 註冊與安裝必須包含每個裝置/通道的有效 PNS 控制代碼。 由於 PNS 控制代碼只能在裝置上的用戶端 app 中取得，因此有一種模式是直接在該裝置上使用用戶端 app 進行註冊。 另一方面，與標記相關的安全性考量和商務邏輯可能會需要您在 app 後端管理裝置註冊。
 
 > [!NOTE]
-> 安裝 API 不支援百度服務（儘管註冊 API 支援）。 
+> 安裝 API 不支援百度服務（雖然註冊 API 會執行）。 
 
 ### <a name="templates"></a>範本
 
@@ -110,7 +110,7 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
 
 從用戶端 app 管理裝置註冊時，後端只負責傳送通知。 用戶端 app 會讓 PNS 控制代碼保持在最新狀態，並且會註冊標記。 下圖說明這個模式。
 
-![從設備註冊](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
+![從裝置註冊](./media/notification-hubs-registration-management/notification-hubs-registering-on-device.png)
 
 裝置會先從 PNS 抓取 PNS 控制代碼，然後直接向通知中心進行註冊。 註冊成功之後，app 後端即可傳送以該註冊為目標的通知。 如需有關如何傳送通知的詳細資訊，請參閱 [路由與標記運算式](notification-hubs-tags-segment-push-message.md)。
 
@@ -119,7 +119,7 @@ SecondaryTiles 字典使用的 TileId 會與在「Windows 市集」應用程式�
 從裝置註冊是最簡單的方法，但有一些缺點：
 
 - 用戶端應用程式只能在應用程式作用中時更新。 舉例來說，如果使用者有兩個註冊球隊相關標記的裝置，當第一個裝置註冊另一個標記 (例如 Seahawks) 時，第二個裝置必須等到第二次執行時，才會收到有關 Seahawks 的通知。 更普遍來說，當標記受多個裝置影響時，從後端管理標記是一個較理想的選項。
-- 由於應用可能會遭到駭客攻擊，因此，保護註冊到特定標記需要格外小心，如《[安全》](notification-hubs-push-notification-security.md)一文中所述。
+- 由於應用程式可能遭到駭客入侵，保護特定標籤的註冊需要特別小心，如[安全性](notification-hubs-push-notification-security.md)一文所述。
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>使用安裝從裝置向通知中樞註冊的範例程式碼
 
@@ -269,7 +269,7 @@ catch (Microsoft.WindowsAzure.Messaging.RegistrationGoneException e)
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-backend-using-an-installation"></a>使用安裝從後端向通知中樞註冊的範例程式碼
 
-用戶端設備仍像以前一樣獲取其 PNS 控制碼和相關安裝屬性，並在後端調用自訂 API，該 API 可以執行註冊和授權標記等。後端可以利用[通知中心 SDK 進行後端操作](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+用戶端裝置仍會像之前一樣取得其 PNS 控制碼和相關的安裝屬性，並在後端呼叫自訂 API，以執行註冊和授權標記等。後端可以利用[適用于後端作業的通知中樞 SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 
 您也可以使用 [JSON-Patch 標準](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法更新安裝。
 

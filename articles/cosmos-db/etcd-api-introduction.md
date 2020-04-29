@@ -1,59 +1,59 @@
 ---
-title: Azure 宇宙 DB 蝕刻 API 簡介
-description: 本文概述了 Azure Cosmos DB 中蝕刻 API 的概述和關鍵優勢
+title: Azure Cosmos DB etcd API 簡介
+description: 本文提供 etcd API 在 Azure Cosmos DB 中的總覽和主要優點
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: acd87fac5ec2edc40d27d98f073e13c0acae8d8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c7fcb1429438ee024cb226b63cfcdcab05ed9f8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79498588"
 ---
-# <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Azure 宇宙 DB 蝕刻 API 簡介（預覽版）
+# <a name="introduction-to-the-azure-cosmos-db-etcd-api-preview"></a>Azure Cosmos DB etcd API （預覽）簡介
 
-Azure Cosmos DB 是 Microsoft 全域發佈的多模型資料庫服務，適用於任務關鍵性應用程式。 它提供交鑰匙全球分發、輸送量和存儲的彈性擴展、第 99 個百分位數的單位毫秒延遲，以及保證的高可用性，所有這些都由行業領先的 SLA 支援。
+Azure Cosmos DB 是 Microsoft 全域發佈的多模型資料庫服務，適用於任務關鍵性應用程式。 它提供了全包式的全域散發、彈性調整的輸送量和儲存體、在第99個百分位數的單一數位毫秒延遲，以及保證的高可用性，全部都由領先業界的 SLA 所支援。
 
-[蝕刻](https://github.com/etcd-io/etcd)是一個分散式金鑰/值存儲。 在[庫伯奈斯](https://kubernetes.io/)，蝕刻用於存儲庫伯奈斯集群的狀態和配置。 確保蝕刻的可用性、可靠性和性能對於 Kubernetes 群集的整體群集運行狀況、可擴充性、彈性可用性和性能至關重要。 
+[Etcd](https://github.com/etcd-io/etcd)是分散式索引鍵/值存放區。 在[Kubernetes](https://kubernetes.io/)中，etcd 是用來儲存 Kubernetes 叢集的狀態和設定。 確保 etcd 的可用性、可靠性和效能對於 Kubernetes 叢集的整體叢集健全狀況、擴充性、彈性可用性和效能非常重要。 
 
-Azure 宇宙 DB 中的蝕刻 API 允許您使用 Azure 宇宙 DB 作為[Azure 庫伯奈的](../aks/index.yml)後端存儲。 Azure Cosmos DB 中的 etcd API 目前為預覽狀態。 Azure 宇宙 DB 實現蝕刻線協定。 借助 Azure Cosmos DB 中的蝕刻 API，開發人員將自動獲得高度可靠、[可用](high-availability.md)、[全域分佈](distribute-data-globally.md)的 Kubernetes。 此 API 允許開發人員在完全託管的雲本機 PaaS 服務上擴展 Kubernetes 狀態管理。 
+Azure Cosmos DB 中的 etcd API 可讓您使用 Azure Cosmos DB 作為[Azure Kubernetes](../aks/index.yml)的後端存放區。 Azure Cosmos DB 中的 etcd API 目前為預覽狀態。 Azure Cosmos DB 會執行 etcd 有線通訊協定。 在 Azure Cosmos DB 中使用 etcd API，開發人員將會自動取得高度可靠、[可用](high-availability.md)、[全域散發](distribute-data-globally.md)的 Kubernetes。 此 API 可讓開發人員在完全受控的雲端原生 PaaS 服務上調整 Kubernetes 狀態管理。 
 
 > [!NOTE]
-> 與 Azure Cosmos DB 中的其他 API 不同，不能通過 Azure 門戶、CLI 或 SDK 預配蝕刻 API 帳戶。 您可以通過僅部署資源管理器範本來預配蝕刻 API 帳戶;有關詳細步驟，請參閱[如何使用 Azure Cosmos DB 提供 Azure 庫伯奈斯](bootstrap-kubernetes-cluster.md)。 Azure 宇宙 DB 蝕刻 API 當前處於有限預覽狀態。 您可以通過填寫註冊表單[來註冊預覽](https://aka.ms/cosmosetcdapi-signup)。
+> 不同于 Azure Cosmos DB 中的其他 Api，您無法透過 Azure 入口網站、CLI 或 Sdk 來布建 etcd API 帳戶。 您只能藉由部署 Resource Manager 範本來布建 etcd API 帳戶;如需詳細步驟，請參閱[如何使用 Azure Cosmos DB 布建 Azure Kubernetes](bootstrap-kubernetes-cluster.md)一文。 Azure Cosmos DB etcd API 目前處於有限預覽狀態。 您可以填寫註冊表單，[以註冊預覽](https://aka.ms/cosmosetcdapi-signup)。
 
-## <a name="wire-level-compatibility"></a>電線級相容性
+## <a name="wire-level-compatibility"></a>連線層級相容性
 
-Azure Cosmos DB 實現了蝕刻版本 3 的有線協定，並允許[主節點的](https://kubernetes.io/docs/concepts/overview/components/)API 伺服器使用 Azure Cosmos DB，就像在本地安裝的蝕刻環境中一樣。 蝕刻 API 支援 TLS 相互身份驗證。 
+Azure Cosmos DB 會執行 etcd 第3版的線路通訊協定，並允許[主要節點的](https://kubernetes.io/docs/concepts/overview/components/)API 伺服器使用 Azure Cosmos DB，就像在本機安裝的 etcd 環境中所做的一樣。 Etcd API 支援 TLS 相互驗證。 
 
-下圖顯示了庫伯內斯群集的元件。 在群集主機中，API 伺服器使用 Azure Cosmos DB 蝕刻 API，而不是本地安裝的等號。 
+下圖顯示 Kubernetes 叢集的元件。 在叢集主機中，API 伺服器會使用 Azure Cosmos DB etcd API，而不是本機安裝的 etcd。 
 
-![Azure 宇宙 DB 實現蝕刻線協定](./media/etcd-api-introduction/etcd-api-wire-protocol.png)
+![Azure Cosmos DB 實施 etcd 的線路通訊協定](./media/etcd-api-introduction/etcd-api-wire-protocol.png)
 
 ## <a name="key-benefits"></a>主要權益
 
-### <a name="no-etcd-operations-management"></a>無蝕刻操作管理
+### <a name="no-etcd-operations-management"></a>沒有 etcd 作業管理
 
-作為完全託管的本機雲服務，Azure Cosmos DB 無需 Kubernetes 開發人員來設置和管理等項。 Azure Cosmos DB 中的蝕刻 API 可擴展、高可用性、容錯，並提供高性能。 設置跨多個節點進行複製、執行滾動更新、安全修補程式和監視等運行狀況的開銷由 Azure Cosmos DB 處理。
+做為完全受控的原生雲端服務，Azure Cosmos DB 不再需要 Kubernetes 開發人員設定和管理 etcd。 Azure Cosmos DB 中的 etcd API 可調整、高可用性、容錯，並提供高效能。 在多個節點間設定複寫、執行輪流更新、安全性修補程式，以及監視 etcd 健全狀況的額外負荷，都是由 Azure Cosmos DB 來處理。
 
-### <a name="global-distribution--high-availability"></a>全球分銷&高可用性 
+### <a name="global-distribution--high-availability"></a>全域散發 & 高可用性 
 
-通過使用蝕刻 API，Azure Cosmos DB 可確保單個區域中的資料讀取和寫入 99.99% 的可用性，以及跨多個區域 99.99% 的可用性。 
+藉由使用 etcd API，Azure Cosmos DB 保證在單一區域中讀取和寫入資料的99.99% 可用性，以及跨多個區域的99.999% 可用性。 
 
 ### <a name="elastic-scalability"></a>彈性延展性
 
-Azure Cosmos DB 為不同區域的讀寫請求提供彈性可伸縮性。
-隨著 Kubernetes 群集的增長，Azure Cosmos DB 中的蝕刻 API 帳戶彈性擴展，而不會產生任何停機時間。 在 Azure Cosmos DB 中存儲蝕刻資料，而不是 Kubernetes 主節點還可以實現更靈活的主節點縮放。 
+Azure Cosmos DB 為跨不同區域的讀取和寫入要求提供彈性的擴充性。
+隨著 Kubernetes 叢集成長，Azure Cosmos DB 彈性中的 etcd API 帳戶會進行調整，而不會造成任何停機時間。 將 etcd 資料儲存在 Azure Cosmos DB 中，而不是 Kubernetes 主要節點也可以提供更有彈性的主要節點調整。 
 
-### <a name="security--enterprise-readiness"></a>安全&企業就緒性
+### <a name="security--enterprise-readiness"></a>安全性 & 企業就緒
 
-當蝕刻資料存儲在 Azure Cosmos DB 中時，Kubernetes 開發人員會自動獲取 Azure Cosmos DB 支援的[內置加密](database-encryption-at-rest.md)、[認證和合規性](compliance.md)以及[備份和還原功能](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)。 
+當 etcd 資料儲存在 Azure Cosmos DB 中時，Kubernetes 開發人員會自動取得待用的[內建加密](database-encryption-at-rest.md)、[認證和合規性](compliance.md)，以及 Azure Cosmos DB 所支援的[備份和還原功能](online-backup-and-restore.md)。 
 
 ## <a name="next-steps"></a>後續步驟
 
 * [如何使用採用 Azure Cosmos DB 的 Azure Kubernetes](bootstrap-kubernetes-cluster.md)
-* [Azure 宇宙資料庫的主要優勢](introduction.md)
-* [AKS 發動機快速起動指南](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md)
+* [Azure Cosmos DB 的主要優點](introduction.md)
+* [AKS 引擎快速入門手冊](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/quickstart.md)

@@ -1,100 +1,100 @@
 ---
-title: 使用 Azure 開發空間運行代碼的工作原理
+title: 如何搭配 Azure Dev Spaces 執行您的程式碼
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: 描述使用 Azure 開發人員空間在 Azure 庫伯內斯服務上運行代碼的過程
-keywords: azds.yaml， Azure 開發空間， 開發空間， Docker， 庫伯奈斯， Azure， AKS， Azure 庫伯奈斯服務， 容器
+description: 描述在 Azure Kubernetes Service 上使用 Azure Dev Spaces 執行程式碼的流程
+keywords: azds. yaml，Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器
 ms.openlocfilehash: 6851c04ac0b72db1bd13c991875c16b0beadc573
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241357"
 ---
-# <a name="how-running-your-code-with-azure-dev-spaces-works"></a>使用 Azure 開發空間運行代碼的工作原理
+# <a name="how-running-your-code-with-azure-dev-spaces-works"></a>如何搭配 Azure Dev Spaces 執行您的程式碼
 
-Azure 開發人員空間為您提供了多種方法來快速反覆運算和調試 Kubernetes 應用程式，並與您的團隊協作處理 Azure Kubernetes 服務 （AKS） 群集。 一旦[專案準備在開發空間中運行][how-it-works-prep]，您可以使用開發人員空間在 AKS 群集中生成和運行專案。
+Azure Dev Spaces 提供多種方式來快速反復查看和 Kubernetes 應用程式，並在 Azure Kubernetes Service （AKS）叢集上與您的小組共同作業。 當您的[專案準備好要在開發人員空間中執行][how-it-works-prep]之後，您就可以使用 dev Spaces，在 AKS 叢集中建立並執行您的專案。
 
-本文介紹了在具有開發空間的 AKS 中運行代碼的情況。
+本文說明在 AKS 中使用 Dev Spaces 執行程式碼的情況。
 
-## <a name="run-your-code"></a>運行代碼
+## <a name="run-your-code"></a>執行您的程式碼
 
-要在開發空間中運行代碼，`up`請發出與`azds.yaml`檔相同的目錄中的命令：
+若要在開發人員空間中執行您的程式`up`代碼，請在與`azds.yaml`檔案相同的目錄中發出命令：
 
 ```cmd
 azds up
 ```
 
-該`up`命令將生成和運行專案所需的應用程式原始檔案和其他專案上載到開發空間。 從那裡，開發空間中的控制器：
+`up`命令會將您的應用程式來源檔案和其他成品上傳到開發人員空間，以建立並執行您的專案。 在此，您的開發人員空間中的控制器：
 
-1. 創建庫伯奈斯物件以部署應用程式。
-1. 為應用程式生成容器。
-1. 將應用程式部署到開發空間。
-1. 如果配置了應用程式終結點，則為應用程式終結點創建可公開訪問的 DNS 名稱。
-1. 使用*埠轉發*提供對應用程式終結點的訪問。 http://localhost
-1. 將穩貞和穩穩地轉發到用戶端工具。
+1. 建立 Kubernetes 物件以部署您的應用程式。
+1. 建立應用程式的容器。
+1. 將您的應用程式部署至開發人員空間。
+1. 如果已設定，則為您的應用程式端點建立可公開存取的 DNS 名稱。
+1. 使用*埠向前轉送*，以使用http://localhost來提供應用程式端點的存取權。
+1. 將 stdout 和 stderr 轉送至用戶端工具。
 
 
 ## <a name="starting-a-service"></a>啟動服務
 
-在開發空間中啟動服務時，用戶端工具和控制器協調工作，以同步原始檔案、創建容器和 Kubernetes 物件以及運行應用程式。
+當您在開發人員空間中啟動服務時，用戶端工具和控制器會協調以同步處理您的來源檔案、建立容器和 Kubernetes 物件，以及執行您的應用程式。
 
-在更精細的級別上，下面是運行`azds up`時發生的情況：
+在更細微的層級中，當您執行`azds up`時，會發生下列情況：
 
-1. [檔][sync-section]從使用者的電腦同步到使用者 AKS 群集獨有的 Azure 檔存儲。 將上載原始程式碼、Helm 圖表和設定檔。
-1. 控制器創建啟動新會話的請求。 此請求包含多個屬性，包括唯一 ID、空格名稱、原始程式碼路徑和調試標誌。
-1. 控制器將 Helm 圖表中的 *$（標記）* 預留位置替換為唯一的會話 ID，並為您的服務安裝 Helm 圖表。 向 Helm 圖表添加對唯一會話 ID 的引用允許將部署到此特定會話的 AKS 群集的容器綁定回會話請求和相關資訊。
-1. 在安裝 Helm 圖表期間，Kubernetes Webhook 准入伺服器向應用程式的窗格中添加了其他容器，以便進行檢測並訪問專案的原始程式碼。 添加開發空間代理和開發空間代理-init 容器以提供 HTTP 跟蹤和空間路由。 添加 devspace-build 容器是為了向 pod 提供對 Docker 實例和專案原始程式碼的訪問，以便生成應用程式的容器。
-1. 啟動應用程式的 pod 時，使用開發空間生成容器和開發空間代理 -init 容器來生成應用程式容器。 然後啟動應用程式容器和開發空間代理容器。
-1. 應用程式容器啟動後，用戶端功能使用 Kubernetes*埠轉發*功能通過http://localhost提供對應用程式的 HTTP 訪問。 此埠轉發將開發電腦連接到開發空間中的服務。
-1. 當窗格中的所有容器都啟動時，服務正在運行。 此時，用戶端功能開始資料流 HTTP 跟蹤、抖痕和穩穩。 此資訊由開發人員的用戶端功能顯示。
+1. 檔案會從使用者的電腦[同步][sync-section]處理到使用者的 AKS 叢集獨有的 Azure 檔案儲存體。 已上傳原始程式碼、Helm 圖和設定檔案。
+1. 控制器會建立一個要求來啟動新的會話。 此要求包含數個屬性，包括唯一的識別碼、空間名稱、原始程式碼的路徑，以及偵錯工具旗標。
+1. 控制器會以唯一的會話識別碼取代 Helm 圖中的 *$ （tag）* 預留位置，並為您的服務安裝 Helm 圖表。 將唯一會話識別碼的參考新增至 Helm 圖表，可讓針對此特定會話部署至 AKS 叢集的容器，系結回到會話要求和相關聯的資訊。
+1. 在安裝 Helm 圖期間，Kubernetes webhook 許可伺服器會將額外的容器新增至您應用程式的 pod，以進行檢測並存取專案的原始程式碼。 新增 devspaces-proxy 和 devspaces proxy-init 容器，以提供 HTTP 追蹤和空間路由。 已新增 devspaces-build 容器，以提供可存取 Docker 實例和專案原始程式碼的 pod，以建立應用程式的容器。
+1. 啟動應用程式的 pod 時，會使用 devspaces-build 容器和 devspaces proxy-init 容器來建立應用程式容器。 接著會啟動應用程式容器和 devspaces proxy 容器。
+1. 在應用程式容器啟動之後，用戶端功能會使用 Kubernetes 的*埠轉送*功能，透過將 HTTP 存取提供給您的應用http://localhost程式。 此埠轉送會將您的開發電腦連接到您的開發人員空間中的服務。
+1. 當 pod 中的所有容器都已啟動時，服務就會在執行中。 此時，用戶端功能會開始串流 HTTP 追蹤、stdout 和 stderr。 這項資訊是由開發人員的用戶端功能所顯示。
 
-## <a name="updating-a-running-service"></a>更新正在運行的服務
+## <a name="updating-a-running-service"></a>正在更新執行中的服務
 
-在服務運行時，如果任何專案原始檔案出現更改，Azure 開發人員空間可以更新該服務。 Dev Spaces 還會根據更改的檔案類型以不同的方式處理更新服務。 開發空間可通過三種方式更新正在運行的服務：
+當服務正在執行時，如果有任何專案來源檔案變更，Azure Dev Spaces 就能夠更新該服務。 根據變更的檔案類型，Dev Spaces 也會以不同方式處理服務的更新。 開發人員空間有三種方式可以更新執行中的服務：
 
-* 直接更新檔
-* 在正在運行的應用程式的容器內重建和重新開機應用程式的進程
+* 直接更新檔案
+* 在執行中應用程式的容器內重建並重新啟動應用程式的進程
 * 重建和重新部署應用程式的容器
 
-![Azure 開發空間檔同步](media/how-dev-spaces-works/file-sync.svg)
+![Azure Dev Spaces 檔案同步](media/how-dev-spaces-works/file-sync.svg)
 
-某些靜態資源的專案檔案（如 html、css 和 cshtml 檔）可以直接在應用程式的容器中更新，而無需重新開機任何內容。 如果靜態資產發生更改，則新檔將同步到開發空間，然後由正在運行的容器使用。
+某些屬於靜態資產的專案檔，例如 html、css 和 cshtml 檔案，可以直接在應用程式的容器中更新，而不需要重新開機任何專案。 如果靜態資產變更，新的檔案就會同步處理到開發人員空間，然後由執行中的容器使用。
 
-可以通過在正在運行的容器中重新開機應用程式的進程來應用對檔（如原始程式碼或應用程式佈建檔）的更改。 同步這些檔後，將使用*devhostagent*進程在正在運行的容器中重新開機應用程式的進程。 最初創建應用程式的容器時，控制器將應用程式的啟動命令替換為稱為*devhostagent*的不同進程。 然後，應用程式的實際進程在*devhostagent*下作為子進程運行，並且其輸出使用*devhostagent*的輸出進行管道輸出。 *devhostagent*進程也是開發空間的一部分，可以代表開發人員空間在正在運行的容器中執行命令。 執行重新開機時 *，devhostagent*：
+您可以在執行中的容器內重新開機應用程式的進程，以套用原始程式碼或應用程式佈建檔等檔案的變更。 這些檔案一旦同步處理之後，應用程式就會在執行中的容器內使用*devhostagent*進程重新開機。 一開始建立應用程式的容器時，控制器會將應用程式的啟動命令取代為不同的進程，稱為*devhostagent*。 然後，應用程式的實際進程會在*devhostagent*下以子進程的形式執行，並使用*devhostagent*的輸出輸送輸出。 *Devhostagent*程式也是 dev spaces 的一部分，而且可以代表 dev spaces 在執行中的容器中執行命令。 執行重新開機時，請*devhostagent*：
 
-* 停止與應用程式關聯的當前進程或進程
+* 停止目前的進程或與應用程式相關聯的進程
 * 重建應用程式
-* 重新開機與應用程式關聯的進程或進程
+* 重新開機與應用程式相關聯的進程
 
-在[`azds.yaml`中配置][azds-yaml-section]*了 devhostagent*執行上述步驟的方式。
+*Devhostagent*執行上述步驟的方式是[在中`azds.yaml`設定][azds-yaml-section]。
 
-對專案檔案（如 Dockerfile、csproj 檔）或 Helm 圖表的任何部分的更新都需要重新生成和重新部署應用程式的容器。 當其中一個檔同步到開發空間時，控制器將運行[掌舵升級][helm-upgrade]命令，並重新生成和重新部署應用程式的容器。
+專案檔（例如 Dockerfile、.csproj 檔案或 Helm 圖表的任何部分）的更新需要重建和重新部署應用程式的容器。 當其中一個檔案同步處理到開發人員空間時，控制器會執行[helm upgrade][helm-upgrade]命令，並重建並重新部署應用程式的容器。
 
-## <a name="file-synchronization"></a>檔同步
+## <a name="file-synchronization"></a>檔案同步處理
 
-第一次在開發空間中啟動應用程式時，將上載應用程式的所有原始檔案。 當應用程式正在運行並在以後重新開機時，僅上載已更改的檔。 兩個檔用於協調此過程：用戶端檔和控制器端檔。
+第一次在開發人員空間中啟動應用程式時，會上傳所有應用程式的來源檔案。 當應用程式正在執行，且稍後重新開機時，只會上傳變更的檔案。 有兩個檔案用來協調這個進程：用戶端檔案和控制器端檔案。
 
-用戶端檔存儲在臨時目錄中，並根據在開發人員空間中運行的專案目錄的雜湊值命名。 例如，在 Windows 上，您將有一個檔，如*使用者\USERNAME_AppData_Local_Temp_1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog。* 您的專案。 在 Linux 上，用戶端檔存儲在 */tmp*目錄中。 您可以通過運行`echo $TMPDIR`命令在 macOS 上找到目錄。
+用戶端檔案會儲存在臨時目錄中，並根據您在 Dev Spaces 中執行之專案目錄的雜湊來命名。 例如，在 Windows 上，您的專案會有類似*Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog*的檔案。 在 Linux 上，用戶端檔案會儲存在 */tmp*目錄中。 您可以執行`echo $TMPDIR`命令，在 macOS 上尋找目錄。
 
-此檔採用 JSON 格式，包含：
+這個檔案是 JSON 格式，而且包含：
 
-* 與開發空間同步的每個專案檔案的條目
-* 同步 ID
-* 上次同步操作的時間戳記
+* 與開發人員空間同步處理之每個專案檔的專案
+* 同步處理識別碼
+* 上次同步作業的時間戳記
 
-每個專案檔案條目都包含檔的路徑及其時間戳記。
+每個專案檔案專案都包含檔案的路徑和其時間戳記。
 
-控制器端檔存儲在 AKS 群集上。 它包含同步 ID 和上次同步的時間戳記。
+控制器端檔案會儲存在 AKS 叢集上。 其中包含上一次同步處理的同步處理識別碼和時間戳記。
 
-當同步時間戳記在用戶端和控制器端檔之間不匹配時，將發生同步。 在同步期間，用戶端工具會遍遍用戶端檔中的檔條目。 如果檔的時間戳記位於同步時間戳記之後，則該檔將同步到開發空間。 同步完成後，在用戶端和控制器端檔上更新同步時間戳記。
+同步處理時間戳記在用戶端與控制器端檔案之間不相符時，就會進行同步處理。 在同步處理期間，用戶端工具會逐一查看用戶端檔案中的檔案專案。 如果檔案的時間戳記在同步時間戳記之後，該檔案就會同步處理到開發人員空間。 同步處理完成後，就會在用戶端和控制器端檔案上更新同步時間戳記。
 
-如果用戶端檔不存在，則所有專案檔案都同步。 此行為允許您通過刪除用戶端檔來強制完全同步。
+如果用戶端檔案不存在，則會同步處理所有專案檔案。 此行為可讓您藉由刪除用戶端檔案來強制執行完整同步處理。
 
-## <a name="how-running-your-code-is-configured"></a>如何配置代碼的運行方式
+## <a name="how-running-your-code-is-configured"></a>如何設定執行您的程式碼
 
-Azure 開發空間使用`azds.yaml`該檔來安裝和佈建服務。 控制器使用`install``azds.yaml`檔中的屬性來安裝 Helm 圖表並創建 Kubernetes 物件：
+Azure Dev Spaces 使用`azds.yaml`檔案來安裝和設定您的服務。 控制器會使用檔案`install`中`azds.yaml`的屬性來安裝 Helm 圖表，並建立 Kubernetes 物件：
 
 ```yaml
 ...
@@ -120,25 +120,25 @@ install:
 ...
 ```
 
-預設情況下，該`prep`命令將生成 Helm 圖表。 它還將*安裝.chart*屬性設置為 Helm 圖表的目錄。 如果要在不同位置使用 Helm 圖表，可以更新此屬性以使用該位置。
+根據預設，此`prep`命令會產生 Helm 圖表。 它也會將 [*安裝] 圖表*屬性設定為 Helm 圖表的目錄。 如果您想要在不同位置使用 Helm 圖，可以更新此屬性，以使用該位置。
 
-安裝 Helm 圖表時，Azure 開發人員空間提供了一種覆蓋 Helm 圖表中的值的方法。 Helm 圖表的預設值在`charts/APP_NAME/values.yaml`中。
+安裝 Helm 圖表時，Azure Dev Spaces 會提供覆寫 Helm 圖表中之值的方法。 Helm 圖表的預設值為`charts/APP_NAME/values.yaml`。
 
-使用*install.value*屬性，可以列出一個或多個檔，這些檔定義要在 Helm 圖表中替換的值。 例如，如果需要主機名稱或資料庫配置，特別是在開發空間中運行應用程式時，則可以使用此覆蓋功能。 您還可以添加 *？* 在任何檔案名的末尾將其設置為可選。
+您可以使用*install. values*屬性來列出一個或多個檔案，這些檔案會定義您想要在 Helm 圖中取代的值。 例如，如果您想要在開發人員空間中執行應用程式時，特別要有主機名稱或資料庫設定，您可以使用此覆寫功能。 您也可以加入 *？* 在任何檔案名的結尾，將它設定為選擇性。
 
-*安裝.set*屬性允許您配置要在 Helm 圖表中替換的一個或多個值。 在*install.set*中配置的任何值都將覆蓋*在 install.值*中列出的檔中配置的值。 *install.set*下的屬性取決於 Helm 圖表中的值，並且可能因生成的 Helm 圖表而異。
+[ *Install* ] （設定）屬性可讓您設定要在 Helm 圖中取代的一個或多個值。 在*install. set 中設定*的任何值都會覆寫在 [*安裝*] 中所列之檔案中所設定的值。 [ *Install* ] 底下的屬性取決於 Helm 圖中的值，而且可能會根據產生的 Helm 圖表而有所不同。
 
-在上面的示例中 *，install.set.replicaCount*屬性告訴控制器在開發空間中運行應用程式有多少實例。 根據您的方案，可以增加此值，但它會影響將調試器附加到應用程式的 pod。 有關詳細資訊，請參閱[故障排除文章][troubleshooting]。
+在上述範例中， *replicaCount*屬性會告訴控制器您的應用程式有多少實例要在您的開發人員空間中執行。 根據您的案例而定，您可以增加這個值，但它會影響將偵錯工具附加至應用程式的 pod。 如需詳細資訊，請參閱[疑難排解文章][troubleshooting]。
 
-在生成的 Helm 圖表中，容器圖像設置為 *{ } 。值.image.repository_：]。值.image.tag]*。 預設情況下`azds.yaml`，該檔將*安裝.set.image.tag*屬性定義為 *$（標記），* 它用作 *{ 的值。值.image.tag]*。 通過以這種方式設置*install.set.image.tag*屬性，它允許在運行 Azure 開發人員空間時以不同方式標記應用程式的容器映射。 在此特定情況下，圖像被標記為*\<圖像中的值>。* 您必須使用 *$（標記）* 變數作為*安裝.set.image.tag*的值，以便開發人員空間識別和定位 AKS 群集中的容器。
+在產生的 Helm 圖表中，容器映射會設定為 *{{。值。圖像儲存機制}}： {{。值。圖像標記}}*。 檔案預設會將*install. image. tag*屬性定義為 *$ （tag）* ，這會當做 {{的值使用。 `azds.yaml` *值。圖像標記}}*。 藉由以這種方式設定*install. tag*屬性，可讓您應用程式的容器映射在執行 Azure Dev Spaces 時以不同的方式標記。 在此特定案例中，影像會標記為* \<影像中的值。存放庫>： $ （tag）*。 您必須使用 *$ （標記）* 變數作為 [ *install* ] 的值，才能辨識 DEV Spaces 並在 AKS 叢集中尋找容器。
 
-在上面的示例中，`azds.yaml`定義*安裝.set.ingress.hosts*。 *安裝.set.ingress.hosts*屬性為公共終結點定義主機名稱格式。 此屬性還使用 *$（空格首碼）$（**根空間首碼）* 和 *$（主機Suffix），* 它們是控制器提供的值。
+在上述範例中， `azds.yaml`會定義*install. set. hosts*。 [ *Install* ] 屬性會定義公用端點的主機名稱格式。 這個屬性也會使用 *$ （spacePrefix）*、 *$ （rootSpacePrefix）* 和 *$ （hostSuffix）*，這是控制器所提供的值。
 
-*$（空格首碼）* 是子開發空間的名稱，它採用*SPACENAME.s*的形式。 *$（根空間首碼）* 是父空格的名稱。 例如，如果*Azureuser*是*預設*的子空間，則 *$（rootSpace首碼）* 的值*為預設值*，*並且值 $（空格首碼）* 為*azureuser.s*。 如果空格不是子空格，*則 $（空格首碼）* 為空。 例如，如果*預設*空間沒有父空間，則 *$（根空間首碼）* 的值為*預設值*，並且值 *$（空格首碼）為*空。 *$（主機Suffix）* 是指向在 AKS 群集中運行的 Azure 開發空間入口控制器的 DNS 尾碼。 此 DNS 尾碼對應于萬用字元 DNS 條目，*\*例如 。RANDOM_VALUE.eus.azds.io*）是在將 Azure 開發人員空間控制器添加到 AKS 群集時創建的。
+*$ （SpacePrefix）* 是子開發人員空間的名稱，其採用的格式為*SPACENAME*。 *$ （RootSpacePrefix）* 是父空間的名稱。 例如，如果*azureuser*是*預設*的子空間， *$ （rootSpacePrefix）* 的值就是*default* ， *$ （spacePrefix）* 的值則是*azureuser. s*。 如果空間不是子空間， *$ （spacePrefix）* 是空白。 例如，如果*預設*空間沒有父空間， *$ （rootSpacePrefix）* 的值為*default* ， *$ （spacePrefix）* 的值則為空白。 *$ （HostSuffix）* 是 DNS 尾碼，指向在您的 AKS 叢集中執行的 Azure Dev Spaces 輸入控制器。 此 DNS 尾碼會對應至萬用字元 DNS 專案，例如* \*。* Azure Dev Spaces 控制器新增至 AKS 叢集時所建立的 RANDOM_VALUE eus. azds。
 
-在上面`azds.yaml`的檔中，您還可以更新*安裝.set.ingress.hosts*來更改應用程式的主機名稱。 例如，如果要將應用程式的主機名稱從 *$（空格首碼）$（根空間首碼）Webfrontend$（主機Suffix）* 簡化為 *$（空格首碼）$（rootSpace首碼）web$（主機素綴）。*
+在上述`azds.yaml`檔案中，您也可以更新*install. set. hosts*來變更應用程式的主機名稱。 例如，如果您想要將應用程式的主機名稱從 *$ （spacePrefix） $ （rootSpacePrefix） webfrontend $ （hostSuffix）* 簡化為 $ （spacePrefix） $ （rootSpacePrefix） *Web $ （hostSuffix）*。
 
-要為應用程式構建容器，控制器使用設定檔的`azds.yaml`以下部分：
+若要為您的應用程式建立容器，控制器會使用`azds.yaml`設定檔的下列區段：
 
 ```yaml
 build:
@@ -155,13 +155,13 @@ configurations:
 ...
 ```
 
-控制器使用 Dockerfile 生成和運行應用程式。
+控制器會使用 Dockerfile 來建立及執行您的應用程式。
 
-*build.coNtext*屬性列出了 Dockerfile 存在的目錄。 *build.dockerfile*屬性定義用於生成應用程式的生產版本的 Dockerfile 的名稱。 *配置.開發.build.dockerfile*屬性為應用程式的開發版本配置 Dockerfile 的名稱。
+[ *Build. coNtext* ] 屬性會列出 dockerfile 所在的目錄。 *Dockerfile*屬性會定義 dockerfile 的名稱，以建立應用程式的實際執行版本。 *Dockerfile*屬性會針對應用程式的開發版本設定 dockerfile 的名稱。
 
-具有不同的 Dockerfile 進行開發和生產允許您在開發期間啟用某些內容，並禁用這些項以進行生產部署。 例如，您可以在開發期間啟用調試或更詳細的日誌記錄，並在生產環境中禁用。 如果 Dockerfile 的命名方式不同或位於其他位置，也可以更新這些屬性。
+針對開發和生產環境使用不同的 Dockerfile，可讓您在開發期間啟用某些專案，並針對生產環境部署停用這些專案。 例如，您可以在開發期間啟用偵錯工具或更詳細的記錄，並在生產環境中停用。 如果您的 Dockerfile 名稱不同或位於不同的位置，您也可以更新這些屬性。
 
-為了説明您在開發過程中快速反覆運算，Azure 開發人員空間將同步本地專案的更改並逐步更新應用程式。 設定檔中的`azds.yaml`以下部分用於配置同步和更新：
+為了協助您在開發期間快速反復查看，Azure Dev Spaces 會同步處理本機專案的變更，並以累加方式更新您的應用程式。 `azds.yaml`設定檔中的下一節是用來設定同步處理和更新：
 
 ```yaml
 ...
@@ -182,13 +182,13 @@ configurations:
 ...
 ```
 
-將同步更改的檔和目錄列在*配置.d.d.s.container.sync*屬性中。 在運行命令時以及檢測到更改時，`up`最初會同步這些目錄。 如果希望將其他目錄或不同目錄同步到開發空間，則可以更改此屬性。
+將同步變更的檔案和目錄會列在 [設定]. [*開發] 容器*中。 這些目錄一開始會在您執行`up`命令以及偵測到變更時進行同步處理。 如果您想要將其他或不同的目錄同步到您的開發人員空間，您可以變更此屬性。
 
-*配置.dd.容器.itit.buildCommands*屬性指定如何在開發方案中生成應用程式。 *配置.dd.容器.命令*屬性提供在開發方案中運行應用程式的命令。 如果要在開發期間使用其他生成或運行時標誌或參數，則可能需要更新這些屬性之一。
+*BuildCommands*屬性會指定如何在開發案例中建立應用程式。 [設定] 會*提供命令，* 讓您在開發案例中執行應用程式。 如果您想要在開發期間使用其他組建或執行時間旗標或參數，您可能會想要更新其中一個屬性。
 
-*配置.dd.容器.iterate.進程ToKill*列出了要終止的進程以停止應用程式。 如果要在開發期間更改應用程式的重新開機行為，則可能需要更新此屬性。 例如，如果您更新了*配置.d.d.s.容器.itite.buildCommand*或*配置.d.is.container.命令*屬性來更改應用程式的生成或啟動方式，則可能需要更改停止的進程。
+*ProcessesToKill*會列出要終止的進程，以停止應用程式。 如果您想要在開發期間變更應用程式的重新開機行為，您可能會想要更新此屬性。 例如，如果您更新了*buildCommands*或設定，請使用 [*開發*] 來變更應用程式的建立或啟動方式，您可能需要變更停止的進程。
 
-使用`azds prep`命令準備代碼時，可以選擇添加`--enable-ingress`標誌。 添加該`--enable-ingress`標誌可為應用程式創建可公開訪問的 URL。 如果省略此標誌，則應用程式只能在群集中或使用本地主機隧道訪問。 運行命令`azds prep`後，可以在 中更改更改*ininin.啟用*屬性的`charts/APPNAME/values.yaml`此設置。
+使用`azds prep`命令來準備程式碼時，您可以選擇新增`--enable-ingress`旗標。 新增`--enable-ingress`旗標會為您的應用程式建立可公開存取的 URL。 如果您省略此旗標，則只能在叢集內或使用 localhost 通道來存取應用程式。 執行`azds prep`命令之後，您可以變更此設定，修改中`charts/APPNAME/values.yaml`的 [*啟用*] 屬性：
 
 ```yaml
 ingress:
@@ -197,17 +197,17 @@ ingress:
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解有關網路以及如何在 Azure 開發人員空間中路由有關，請參閱[路由如何與 Azure 開發空間一起工作][how-it-works-routing]。
+若要深入瞭解網路功能以及如何在中路由傳送要求 Azure Dev Spaces 查看[路由如何與 Azure Dev Spaces 搭配運作][how-it-works-routing]。
 
-要瞭解有關使用 Azure 開發人員空間快速反覆運算和開發有關詳細資訊，請參閱[如何將開發電腦連接到開發空間工作，][how-it-works-connect]以及使用[Azure 開發人員空間遠端偵錯代碼的工作原理][how-it-works-remote-debugging]。
+若要深入瞭解如何使用 Azure Dev Spaces 快速反復查看和開發，請參閱將[您的開發電腦連接到開發人員空間的運作][how-it-works-connect]方式，以及[如何使用 Azure Dev Spaces 運作的遠端偵錯程式碼][how-it-works-remote-debugging]。
 
-要開始使用 Azure 開發空間來運行專案，請參閱以下快速入門：
+若要開始使用 Azure Dev Spaces 來執行您的專案，請參閱下列快速入門：
 
-* [使用視覺化工作室代碼和 JAVA 快速反覆運算和調試][quickstart-java]
-* [使用視覺化工作室代碼和 .NET 快速反覆運算和調試][quickstart-netcore]
-* [使用視覺化工作室代碼和 Node.js 快速反覆運算和調試][quickstart-node]
-* [使用 Visual Studio 和 .NET 核心快速反覆運算和調試][quickstart-vs]
-* [使用 CLI 在庫伯奈斯開發應用程式][quickstart-cli]
+* [使用 Visual Studio Code 和 JAVA 快速反復查看和調試][quickstart-java]
+* [使用 Visual Studio Code 和 .NET 快速反復查看和調試][quickstart-netcore]
+* [使用 Visual Studio Code 和 node.js 快速反復查看和調試][quickstart-node]
+* [使用 Visual Studio 和 .NET Core 快速反復查看和調試][quickstart-vs]
+* [使用 CLI 在 Kubernetes 上開發應用程式][quickstart-cli]
 
 
 [azds-yaml-section]: #how-running-your-code-is-configured

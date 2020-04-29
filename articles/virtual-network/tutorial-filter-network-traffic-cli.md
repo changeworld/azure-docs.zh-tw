@@ -18,10 +18,10 @@ ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 72c8b4d57b5064af34665cff1386179e62324938
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80235084"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>使用 Azure CLI 透過網路安全性群組篩選網路流量
@@ -37,7 +37,7 @@ ms.locfileid: "80235084"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
+如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 
 
 
 ## <a name="create-a-network-security-group"></a>建立網路安全性群組
@@ -119,7 +119,7 @@ az network nsg rule create \
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
-創建具有 az[網路 vnet 創建的](/cli/azure/network/vnet)虛擬網路。 下列範例會建立名為 myVirtualNetwork** 的虛擬網路：
+使用 [az network vnet create](/cli/azure/network/vnet) 建立虛擬網路。 下列範例會建立名為 myVirtualNetwork** 的虛擬網路：
 
 ```azurecli-interactive 
 az network vnet create \
@@ -143,7 +143,7 @@ az network vnet subnet create \
 
 在虛擬網路中建立兩個 VM，以便在後續步驟中驗證流量篩選。 
 
-創建具有[az vm 的](/cli/azure/vm)VM。 下列範例會建立將作為 Web 伺服器的 VM。 `--asgs myAsgWebServers` 選項會使 Azure 將它為 VM 建立的網路介面設為 *myAsgWebServers* 應用程式安全性群組的成員。
+使用 [az vm create](/cli/azure/vm) 建立 VM。 下列範例會建立將作為 Web 伺服器的 VM。 `--asgs myAsgWebServers` 選項會使 Azure 將它為 VM 建立的網路介面設為 *myAsgWebServers* 應用程式安全性群組的成員。
 
 指定 `--nsg ""` 選項時，Azure 將無法為它在建立 VM 時所建立的網路介面建立預設網路安全性群組。 為了簡化本文，我們會使用密碼。 金鑰通常用於生產環境部署中。 如果您使用金鑰，您還必須設定 SSH 代理程式轉送才能完成其餘步驟。 如需詳細資訊，請參閱 SSH 用戶端的文件。 在下列命令中，將 `<replace-with-your-password>` 取代為您選擇的密碼。
 
@@ -196,7 +196,7 @@ az vm create \
 
 ## <a name="test-traffic-filters"></a>測試流量篩選
 
-使用下列命令建立 myVmMgmt** VM 的 SSH 工作階段。 將*\<公共 Ip 位址>* 替換為 VM 的公共 IP 位址。 在上述範例中，IP 位址是 *13.90.242.231*。
+使用下列命令建立 myVmMgmt** VM 的 SSH 工作階段。 以您 VM 的公用 IP 位址取代* \<publicIpAddress>* 。 在上述範例中，IP 位址是 *13.90.242.231*。
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -230,7 +230,7 @@ sudo apt-get -y install nginx
 curl myVmWeb
 ```
 
-登出 myVmMgmt** VM。 若要確認您可以從 Azure 外部存取 myVmWeb** Web 伺服器，請從您自己的電腦輸入 `curl <publicIpAddress>`。 連接成功，因為埠 80 允許從 Internet 進入*連接到連接到 myVmWeb* VM 的網路介面的*myAsgWebServer*應用程式安全性群組。
+登出 myVmMgmt** VM。 若要確認您可以從 Azure 外部存取 myVmWeb** Web 伺服器，請從您自己的電腦輸入 `curl <publicIpAddress>`。 連線成功，因為允許埠80從網際網路輸入連接至*myVmWeb* VM 的網路介面所在的*myAsgWebServers*應用程式安全性群組。
 
 ## <a name="clean-up-resources"></a>清除資源
 

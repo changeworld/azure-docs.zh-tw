@@ -1,72 +1,72 @@
 ---
-title: 路由如何與 Azure 開發空間配合使用
+title: 路由如何與 Azure Dev Spaces 搭配運作
 services: azure-dev-spaces
 ms.date: 03/24/2020
 ms.topic: conceptual
-description: 描述為 Azure 開發空間供電的過程以及路由的工作原理
-keywords: Azure 開發空間、開發空間、Docker、庫伯奈斯、Azure、AKS、Azure 庫伯奈斯服務、容器
+description: 描述 power Azure Dev Spaces 的處理常式，以及路由的運作方式
+keywords: Azure Dev Spaces，Dev Spaces，Docker，Kubernetes，Azure，AKS，Azure Kubernetes Service，容器
 ms.openlocfilehash: e9bc1875c053335da6a8e2603406bcdb34a6dd04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241383"
 ---
-# <a name="how-routing-works-with-azure-dev-spaces"></a>路由如何與 Azure 開發空間配合使用
+# <a name="how-routing-works-with-azure-dev-spaces"></a>路由如何與 Azure Dev Spaces 搭配運作
 
-Azure 開發人員空間為您提供了多種方法來快速反覆運算和調試 Kubernetes 應用程式，並與您的團隊協作處理 Azure Kubernetes 服務 （AKS） 群集。 專案在開發空間中運行後，Azure 開發人員空間會為專案提供其他網路和路由功能。
+Azure Dev Spaces 提供多種方式來快速反復查看和 Kubernetes 應用程式，並在 Azure Kubernetes Service （AKS）叢集上與您的小組共同作業。 當您的專案在開發人員空間中執行之後，Azure Dev Spaces 會為您的專案提供額外的網路和路由功能。
 
-本文介紹了路由如何使用開發空間。
+本文說明路由如何與 Dev Spaces 搭配運作。
 
-## <a name="how-routing-works"></a>路由的工作原理
+## <a name="how-routing-works"></a>路由的運作方式
 
-開發空間構建在 AKS 之上，使用相同的[網路概念](../aks/concepts-network.md)。 Azure 開發人員空間還具有集中*式入口管理器*服務，並將自己的入口控制器部署到 AKS 群集。 *入口管理器*服務使用開發空間監視 AKS 群集，並將群集中的 Azure 開發空間入口控制器與入口物件增強以路由到應用程式窗格。 每個窗格中的開發人員空間代理容器將 HTTP`azds-route-as`流量的 HTTP 標頭添加到基於 URL 的開發空間。 例如，對 URL*http://azureuser.s.default.serviceA.fedcba09...azds.io*的請求將獲得帶有`azds-route-as: azureuser`的 HTTP 標頭。 如果已存在`azds-route-as`，則 devspace 代理容器不會添加標頭。
+開發人員空間是以 AKS 為基礎，並使用相同的[網路概念](../aks/concepts-network.md)。 Azure Dev Spaces 也有一個集中式*ingressmanager*服務，並將它自己的輸入控制器部署到 AKS 叢集。 *Ingressmanager*服務會監視具有 dev SPACES 的 AKS 叢集，並使用用於路由傳送至應用程式 pod 的輸入物件，來擴大叢集中的 Azure Dev Spaces 輸入控制器。 每個 pod 中的 devspaces proxy 容器都會根據`azds-route-as` URL，將 HTTP 流量的 HTTP 標頭新增至開發人員空間。 例如，URL *http://azureuser.s.default.serviceA.fedcba09...azds.io*的要求會取得具有`azds-route-as: azureuser`的 HTTP 標頭。 Devspaces proxy 容器若已存在，則不`azds-route-as`會新增標頭。
 
-當從群集外部向服務發出 HTTP 要求時，該請求將轉到入口控制器。 入口控制器根據其入口物件和規則將請求直接路由到相應的窗格。 窗格中的 devspace 代理容器接收請求，根據 URL 添加`azds-route-as`標頭，然後將請求路由到應用程式容器。
+從叢集外部對服務發出 HTTP 要求時，要求會移至輸入控制器。 輸入控制器會根據輸入物件和規則，將要求直接路由傳送至適當的 pod。 Pod 中的 devspaces proxy 容器會接收要求、根據 URL 新增`azds-route-as`標頭，然後將要求路由傳送至應用程式容器。
 
-當從群集中的另一個服務向服務發出 HTTP 要求時，請求首先通過調用服務的 devspace 代理容器。 開發空間代理容器查看 HTTP 要求並檢查`azds-route-as`標頭。 根據標頭，開發空間代理容器將查找與標頭值關聯的服務的 IP 位址。 如果找到 IP 位址，則開發空間代理容器將請求重新路由到該 IP 位址。 如果未找到 IP 位址，則 devspace 代理容器將請求路由到父應用程式容器。
+當從叢集內的另一個服務對服務發出 HTTP 要求時，要求會先經過呼叫服務的 devspaces proxy 容器。 Devspaces proxy 容器會查看 HTTP 要求，並檢查`azds-route-as`標頭。 根據標頭，devspaces proxy 容器會查閱與標頭值相關聯之服務的 IP 位址。 如果找到 IP 位址，devspaces proxy 容器會將要求重設為該 IP 位址。 如果找不到 IP 位址，devspaces proxy 容器會將要求路由傳送至父應用程式容器。
 
-例如，應用程式服務*A* *和服務 B*部署到稱為*預設*的父開發空間。 *服務A*依賴于*服務 B*並對此進行 HTTP 調用。 Azure 使用者基於稱為*azureuser*的*預設*空間創建子開發空間。 Azure 使用者還將自己的*服務 A*版本部署到其子空間。 請求時*http://azureuser.s.default.serviceA.fedcba09...azds.io*：
+例如，應用程式*serviceA*和*serviceB*會部署到名為*default*的父開發人員空間。 *serviceA*依賴*serviceB*並對其進行 HTTP 呼叫。 Azure 使用者會根據名為*azureuser*的*預設*空間來建立子開發人員空間。 Azure 使用者也會將自己的*serviceA*版本部署到其子空間。 當提出要求時*http://azureuser.s.default.serviceA.fedcba09...azds.io*：
 
-![Azure 開發空間路由](media/how-dev-spaces-works/routing.svg)
+![Azure Dev Spaces 路由](media/how-dev-spaces-works/routing.svg)
 
-1. 入口控制器查找與 URL 關聯的 pod 的 IP，該 URL 是*serviceA.azureuser*。
-1. 入口控制器在 Azure 使用者的開發空間中查找 Pod 的 IP，並將請求路由到*服務 A.azureuser* pod。
-1. *服務 A.azureuser*窗格中的開發人員空間代理容器接收請求並添加`azds-route-as: azureuser`為 HTTP 標頭。
-1. *服務 A.azureuser*窗格中的開發空間代理容器將請求路由到*服務 A.azureuser*窗格中的*服務 A*應用程式容器。
-1. *服務 A.azureuser*窗格中的應用程式調用*服務 B*。 *serviceA* *serviceA*應用程式還包含用於保留現有`azds-route-as`標頭的代碼，在這種情況下，該標頭為`azds-route-as: azureuser`。
-1. *serviceA.azureuser*窗格中的開發空間代理容器接收請求，並根據標頭的值查找*服務 B*的`azds-route-as`IP。
-1. *服務 A.azureuser*窗格中的開發空間代理容器找不到*服務 B.azureuser*的 IP。
-1. *serviceA.azureuser*窗格中的開發空間代理容器在父空間中查找服務*B*的 IP，即服務*B.default*。
-1. *serviceA.azureuser*窗格中的開發人員空間代理容器查找*服務 B.default*的 IP 並將請求路由到*服務 B.default* pod。
-1. *服務 B.default*窗格中的 devspace 代理容器接收請求並將請求路由到*服務 B.default* pod 中的*服務 B*應用程式容器。
-1. *服務 B.default* pod 中的*服務 B*應用程式返回對*服務 A.azureuser* pod 的回應。
-1. *serviceA.azureuser*窗格中的開發空間代理容器接收回應並將回應路由到*serviceA.azureuser*窗格中的*服務 A*應用程式容器。
-1. *服務 應用程式*接收回應，然後返回自己的回應。
-1. *serviceA.azureuser*窗格中的 devspace 代理容器接收來自*服務 A*應用程式容器的回應，並將回應路由到群集外部的原始調用方。
+1. 輸入控制器會查閱與 URL 相關聯之 pod 的 IP，也就是*serviceA. azureuser*。
+1. 輸入控制器會在 Azure 使用者的開發人員空間中尋找 pod 的 IP，並將要求路由傳送至*serviceA. azureuser* pod。
+1. *ServiceA. azureuser* pod 中的 devspaces proxy 容器會接收要求，並將新增`azds-route-as: azureuser`為 HTTP 標頭。
+1. *ServiceA. azureuser* pod 中的 devspaces proxy 容器會將要求路由至*serviceA* pod 中的*serviceA*應用程式容器。
+1. *ServiceA. azureuser* pod 中的*serviceA*應用程式會呼叫*serviceB*。 *ServiceA*應用程式也包含用來保留現有`azds-route-as`標頭的程式碼，在此`azds-route-as: azureuser`案例中為。
+1. *ServiceA. azureuser* pod 中的 devspaces proxy 容器會接收要求，並根據`azds-route-as`標頭的值查閱*serviceB*的 IP。
+1. *ServiceA. azureuser* pod 中的 devspaces proxy 容器找不到*serviceB. azureuser*的 IP。
+1. *ServiceA. azureuser* pod 中的 devspaces proxy 容器會在父空間中查詢*serviceB*的 IP，這是*serviceB。預設值*。
+1. *ServiceA. azureuser* pod 中的 devspaces proxy 容器會尋找*serviceB*的 IP，並將要求路由傳送至*serviceB. default* pod。
+1. *ServiceB*中的 devspaces proxy 容器會接收要求，並將要求路由傳送至*ServiceB*中的*serviceB*應用程式容器。
+1. *ServiceB*中的*serviceB*應用程式會傳回*serviceA azureuser* pod 的回應。
+1. *ServiceA. azureuser* pod 中的 devspaces proxy 容器會接收回應，並將回應路由至*serviceA* pod 中的*serviceA*應用程式容器。
+1. *ServiceA*應用程式會接收回應，然後傳回自己的回應。
+1. *ServiceA. azureuser* pod 中的 devspaces proxy 容器會接收來自*serviceA*應用程式容器的回應，並將回應路由至叢集外的原始呼叫端。
 
-所有其他非 HTTP 的 TCP 流量都未經修改地通過入口控制器和開發空間代理容器。
+所有其他非 HTTP 的 TCP 流量都會通過未修改的輸入控制器和 devspaces proxy 容器。
 
-## <a name="sharing-a-dev-space"></a>共用開發空間
+## <a name="sharing-a-dev-space"></a>共用開發人員空間
 
-與團隊合作時，可以[跨整個團隊共用開發空間](how-to/share-dev-spaces.md)並創建派生開發空間。 具有對開發空間資源組的貢獻者存取權限的任何人都可以使用開發空間。
+與小組合作時，您可以在[整個小組之間共用開發人員空間](how-to/share-dev-spaces.md)，並建立衍生的 dev spaces。 具有 dev 空間之資源群組之參與者存取權的任何人都可以使用開發人員空間。
 
-您還可以創建從另一個開發空間派生的新開發空間。 創建派生開發空間時 *，azds.io/parent-space=PARENT-SPACE-NAME*標籤將添加到派生開發空間的命名空間中。 此外，來自父開發空間的所有應用程式都與派生的開發空間共用。 如果將應用程式的更新版本部署到派生的開發空間，則應用程式將僅存在於派生的開發空間中，並且父開發空間將不受影響。 最多可以有三個級別的派生開發空間或*祖父母*空間。
+您也可以建立一個衍生自另一個開發人員空間的新開發人員空間。 當您建立衍生的開發人員空間時， *azds.io/parent-space=PARENT-SPACE-NAME*標籤會加入至衍生的開發人員空間的命名空間。 此外，父開發人員空間中的所有應用程式都會與衍生的開發人員空間共用。 如果您將應用程式的更新版本部署至衍生的開發人員空間，它只會存在於衍生的開發人員空間中，而父開發人員空間則不會受到影響。 您最多可以有三個層級的衍生 dev spaces 或*祖*空白字元。
 
-派生的開發空間還將在自己的應用程式和從其父應用程式共用的應用程式之間智慧路由請求。 路由的工作原理是嘗試將請求路由到派生開發空間中的應用程式，並從父開發空間返回共用應用程式。 如果應用程式不在父空間中，則路由將回退到父級空間中的共用應用程式。
+衍生的開發人員空間也會在其本身的應用程式與從其父系共用的應用程式之間，以智慧方式路由傳送要求。 路由的運作方式是嘗試將要求路由至衍生的開發人員空間中的應用程式，並從父開發人員空間回到共用應用程式。 如果應用程式不在父空間中，路由將會切換回祖系空間中的共用應用程式。
 
 例如：
-* 開發空間*預設值*具有應用程式*服務 A* *和服務 B*。
-* 開發空間*azureuser*派生自*預設值*。
-* *服務 A*的更新版本部署到*azureuser*。
+* 開發人員空間的*預設值*有應用程式*serviceA*和*serviceB*。
+* [開發人員空間] *azureuser*衍生自*預設值*。
+* *ServiceA*的更新版本會部署到*azureuser*。
 
-使用*azureuser*時，服務*A*的所有請求都將路由到*azureuser*中的更新版本。 對*服務B*的請求將首先嘗試路由到*服務B*的*azureuser*版本。 由於它不存在，它將路由到*預設*版本的*服務B。* 如果刪除*服務 A*的*azureuser*版本，則所有對*服務 A*的請求都將回退到使用服務*A*的*預設*版本。
+使用*azureuser*時，對*serviceA*的所有要求都會路由至*azureuser*中的更新版本。 *ServiceB*的要求會先嘗試路由至*serviceB*的*azureuser*版本。 因為它不存在，所以會路由傳送至*預設*版本的*serviceB*。 如果移除*serviceA*的*azureuser*版本，所有對*serviceA*的要求都會切換回使用*預設*的*serviceA*版本。
 
 ## <a name="next-steps"></a>後續步驟
 
-要查看 Azure 開發人員空間如何使用路由來提供快速反覆運算和開發的示例，請參閱[如何將開發電腦連接到開發空間工作][how-it-works-connect]原理、[使用 Azure 開發人員空間遠端偵錯代碼的工作原理][how-it-works-remote-debugging]以及[& Azure Kubernetes 服務的 GitHub 操作][pr-flow]。
+若要查看 Azure Dev Spaces 如何使用路由來提供快速反復專案和開發的一些範例，請參閱將[您的開發電腦連接到開發人員空間的運作][how-it-works-connect]方式、[使用 Azure Dev Spaces 運作的遠端偵錯程式碼][how-it-works-remote-debugging]，以及[& Azure Kubernetes Service 的 GitHub 動作][pr-flow]。
 
-要開始使用 Azure 開發人員空間的路由進行團隊開發，請參閱[Azure 開發人員空間中的團隊開發][quickstart-team]快速入門。
+若要開始使用 Azure Dev Spaces 的路由進行小組開發，請參閱[Azure Dev Spaces 快速入門中的小組開發][quickstart-team]。
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 [how-it-works-connect]: how-dev-spaces-works-connect.md

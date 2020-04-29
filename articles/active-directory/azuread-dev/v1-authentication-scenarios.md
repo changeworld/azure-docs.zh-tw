@@ -1,6 +1,6 @@
 ---
-title: 面向開發人員的 Azure AD （v1.0） |蔚藍
-description: 瞭解開發人員 （v1.0） 的 Azure AD 身份驗證基礎知識，例如應用模型、API、預配和最常見的身份驗證方案。
+title: 適用于開發人員的 Azure AD （v1.0） |Azure
+description: 瞭解適用于開發人員的 Azure AD 驗證基本概念（v1.0），例如應用程式模型、API、布建，以及最常見的驗證案例。
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154724"
 ---
 # <a name="what-is-authentication"></a>什麼是驗證？
@@ -29,49 +29,49 @@ ms.locfileid: "80154724"
 
 *授權*是授與已驗證的安全性主體權限以執行某些工作的動作。 它會指定您可以存取哪些資料，以及可以將該資料用於哪些用途。 授權 (Authorization) 有時會被簡稱為 AuthZ。
 
-面向開發人員的 Azure 活動目錄 （v1.0） （Azure AD） 通過提供身份作為服務簡化應用程式開發人員的身份驗證，並支援行業標準協定（如 OAuth 2.0 和 OpenID Connect）以及開源庫用於不同的平臺，説明您快速開始編碼。
+適用于開發人員的 Azure Active Directory （v1.0）（Azure AD）藉由提供身分識別即服務來簡化應用程式開發人員的驗證，並支援業界標準的通訊協定（例如 OAuth 2.0 和 OpenID Connect），以及適用于不同平臺的開放原始碼程式庫，協助您快速開始編碼。
 
 在 Azure AD 程式設計模型中有兩大使用案例︰
 
 * 在 OAuth 2.0 授權授與流程期間：當資源擁有者授與授權給用戶端應用程式時，允許用戶端存取資源擁有者的資源。
 * 在用戶端存取資源期間：和資源伺服器所實作的一樣，使用存取權杖所提供的宣告值來據以做出存取控制決定。
 
-## <a name="authentication-basics-in-azure-ad"></a>Azure AD 中的身份驗證基礎知識
+## <a name="authentication-basics-in-azure-ad"></a>Azure AD 中的驗證基本概念
 
 試想一下需要身分識別的最基本案例：網頁瀏覽器中的使用者需要向 Web 應用程式進行驗證。 下圖顯示此案例：
 
 ![登入 Web 應用程式概觀](./media/v1-authentication-scenarios/auth-basics-microsoft-identity-platform.svg)
 
-以下是您需要瞭解的關於關係圖中顯示的各種元件的內容：
+以下是您需要瞭解的圖表中所示的各種元件：
 
-* Azure AD 是身分識別提供者。 標識提供程式負責驗證組織目錄中存在的使用者和應用程式的身份，並在成功驗證這些使用者和應用程式後頒發安全權杖。
-* 希望將身份驗證外包給 Azure AD 的應用程式必須在 Azure 活動目錄 （Azure AD） 中註冊。 Azure AD 會在目錄中註冊並唯一識別該應用程式。
+* Azure AD 是身分識別提供者。 身分識別提供者負責驗證存在於組織目錄中的使用者和應用程式的身分識別，並在成功驗證這些使用者和應用程式時發出安全性權杖。
+* 想要將驗證外包給 Azure AD 的應用程式必須在 Azure Active Directory （Azure AD）中註冊。 Azure AD 會在目錄中註冊並唯一識別該應用程式。
 * 開發人員可以使用開放原始碼 Azure AD 驗證程式庫，為您處理通訊協定的細節，以輕鬆完成驗證。 如需詳細資訊，請參閱 Microsoft 身分識別平台的 [v2.0 驗證程式庫](../develop/reference-v2-libraries.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)和 [v1.0 驗證程式庫](active-directory-authentication-libraries.md)。
-* 使用者經過身份驗證後，應用程式必須驗證使用者的安全權杖，以確保身份驗證成功。 您可以找到以各種不同語言和架構提供的快速入門、教學課程和程式碼範例，它們會說明應用程式必須執行哪些作業。
+* 使用者通過驗證之後，應用程式必須驗證使用者的安全性權杖，以確保驗證成功。 您可以找到以各種不同語言和架構提供的快速入門、教學課程和程式碼範例，它們會說明應用程式必須執行哪些作業。
   * 若要快速建置應用程式並新增諸如取得權杖、重新整理權杖、將使用者登入、顯示部分使用者資訊等功能，請參閱文件的＜快速入門＞**** 一節。
   * 若要取得適用於最常見驗證開發人員工作 (例如，取得存取權杖並使用它們呼叫 Microsoft Graph API 與其他 API、使用 OpenID Connect 搭配傳統網頁瀏覽器型應用程式實作「使用 Microsoft 登入」，以及其他工作) 的深入且以案例為基礎的程序，請參閱文件的＜教學課程＞**** 一節。
   * 若要下載程式碼範例，請前往 [GitHub](https://github.com/Azure-Samples?q=active-directory) \(英文\)。
-* 驗證程序的要求和回應流程是由您所使用的驗證通訊協定決定，例如 OAuth 2.0、OpenID Connect、WS-同盟或 SAML 2.0。 有關協定的詳細資訊，請參閱文檔的概**念>身份驗證協定**部分。
+* 驗證程序的要求和回應流程是由您所使用的驗證通訊協定決定，例如 OAuth 2.0、OpenID Connect、WS-同盟或 SAML 2.0。 如需有關通訊協定的詳細資訊，請參閱檔中 **> 驗證通訊協定的概念**一節。
 
 在上述範例案例中，您可以依據這兩個角色區別應用程式：
 
 * 需要安全存取資源的應用程式
 * 扮演資源角色的應用程式
 
-### <a name="how-each-flow-emits-tokens-and-codes"></a>每個流如何發出權杖和代碼
+### <a name="how-each-flow-emits-tokens-and-codes"></a>每個流程如何發出權杖和代碼
 
-根據用戶端的構建方式，它可以使用 Azure AD 支援的身份驗證流的一個（或多個）。 這些流可以生成各種權杖（id_tokens、刷新權杖、訪問權杖）以及授權代碼，並且需要不同的權杖才能使其正常工作。 此圖表提供概述：
+視用戶端的建立方式而定，它可以使用 Azure AD 所支援的一或多個驗證流程。 這些流程可能會產生各種權杖（id_tokens、重新整理權杖、存取權杖）以及授權碼，而且需要不同的權杖才能使其運作。 此圖表提供總覽：
 
-|Flow | 需要 | id_token | 存取權杖 | 刷新權杖 | 授權碼 | 
+|Flow | 具備 | id_token | 存取權杖 | 重新整理權杖 | 授權碼 | 
 |-----|----------|----------|--------------|---------------|--------------------|
-|[授權代碼流](v1-protocols-oauth-code.md) | | x | x | x | x|  
+|[授權碼流程](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[隱含流程](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[混合 OIDC 流](v1-protocols-openid-connect-code.md#get-access-tokens)| | x  | |          |            x   |
-|[刷新權杖兌換](v1-protocols-oauth-code.md#refreshing-the-access-tokens) | 刷新權杖 | x | x | x| |
+|[混合式 OIDC 流程](v1-protocols-openid-connect-code.md#get-access-tokens)| | x  | |          |            x   |
+|[重新整理權杖兌換](v1-protocols-oauth-code.md#refreshing-the-access-tokens) | 重新整理權杖 | x | x | x| |
 |[代理者流程](v1-oauth2-on-behalf-of-flow.md) | 存取權杖| x| x| x| |
-|[用戶端認證](v1-oauth2-client-creds-grant-flow.md) | | | x（僅限應用）| | |
+|[用戶端認證](v1-oauth2-client-creds-grant-flow.md) | | | x （僅限應用程式）| | |
 
-通過隱式模式發出的權杖由於通過 URL（或`response_mode` `query` `fragment`） 傳回瀏覽器，因此存在長度限制。  某些瀏覽器對 URL 的大小有限制，可以放入瀏覽器欄中，如果時間過長，則失敗。  因此，這些權杖沒有`groups`或`wids`聲明。 
+透過隱含模式發行的權杖有長度限制，因為透過 URL 傳遞回瀏覽器（其中`response_mode`是`query`或`fragment`）。  有些瀏覽器對於可以放在瀏覽器列中的 URL 大小有限制，而且太長時也會失敗。  因此，這些權杖不具有`groups`或`wids`宣告。 
 
 現在，您已具備基本概念的概觀，請繼續往下閱讀即可了解身分識別應用程式模型與 API、Azure AD 中佈建的運作方式，以及 Azure AD 所支援之常見案例的相關詳細資訊連結。
 
@@ -101,7 +101,7 @@ Azure AD 會代表遵循特定模型的應用程式，此模型是為了滿足�
 1. 租用戶 B 的使用者嘗試透過應用程式登入，授權端點會要求應用程式提供權杖。
 1. 系統會取得並驗證使用者認證
 1. 系統會提示使用者同意讓應用程式存取租用戶 B
-1. Azure AD 使用租戶 A 中的應用程式物件作為在租戶 B 中創建服務主體的藍圖
+1. Azure AD 使用租使用者 A 中的應用程式物件作為藍圖，在租使用者 B 中建立服務主體
 1. 使用者會收到要求的權杖
 
 您可以視需要針對其他租用戶 (C、D 等) 無數次地重複此程序。 租用戶 A 會保留應用程式的藍圖 (應用程式物件)。 應用程式已取得同意之所有其他租用戶的使用者和系統管理員，都可以透過每個租用戶中相對應的服務主體物件，保留控制應用程式可執行哪些作業的能力。 如需詳細資訊，請參閱 [Microsoft 身分識別平台中的應用程式和服務主體物件](../develop/app-objects-and-service-principals.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
@@ -117,7 +117,7 @@ Azure AD 所簽發的安全性權杖 (存取權杖和識別碼權杖) 包含宣�
 
 任何給定的安全性權杖中的宣告取決於權杖類型、用來驗證使用者的認證類型，以及應用程式組態。
 
-下表提供由 Azure AD 發出的每一種宣告的簡短描述。 有關詳細資訊，請參閱 Azure AD 頒發的[訪問權杖](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)和[ID 權杖](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
+下表提供由 Azure AD 發出的每一種宣告的簡短描述。 如需詳細資訊，請參閱 Azure AD 所簽發的[存取權杖](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)和[識別碼權杖](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 
 | 宣告 | 描述 |
 | --- | --- |
@@ -132,7 +132,7 @@ Azure AD 所簽發的安全性權杖 (存取權杖和識別碼權杖) 包含宣�
 | 發出時間 | 記錄核發權杖的時間，通常用於權杖有效期限。 |
 | 簽發者 | 識別發出權杖的 STS，以及 Azure AD 租用戶。 |
 | 姓氏 | 提供 Azure AD 中設定的使用者姓氏。 |
-| 名稱 | 提供人類看得懂的值，用以識別權杖的主體。 |
+| Name | 提供人類看得懂的值，用以識別權杖的主體。 |
 | 物件識別碼 | 包含主體在 Azure AD 中不可變的唯一識別碼。 |
 | 角色 | 包含已授與使用者的 Azure AD 應用程式角色的易記名稱。 |
 | 影響範圍 | 指出授與用戶端應用程式的權限。 |

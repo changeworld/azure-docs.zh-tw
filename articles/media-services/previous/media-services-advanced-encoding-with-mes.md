@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 5f7611fd9df207df51fa0e51218d8a234583b1f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529778"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>自訂 MES 預設值來執行進階編碼 
@@ -30,7 +30,7 @@ ms.locfileid: "79529778"
 如果使用 XML 預設值，請務必維持元素的順序，如下列 XML 範例所示 (例如，KeyFrameInterval 應在 SceneChangeDetection 之前)。
 
 > [!NOTE] 
-> 媒體編碼器標準的許多高級媒體服務 v2 功能目前不在 v3 中。 有關詳細資訊，請參閱[功能間隙](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis)。
+> 在 v3 中目前無法使用媒體編碼器標準的許多 advanced 媒體服務 v2 功能。 如需詳細資訊，請參閱[功能差距](https://docs.microsoft.com/azure/media-services/latest/media-services-v2-vs-v3#feature-gaps-with-respect-to-v2-apis)。
 
 ## <a name="support-for-relative-sizes"></a>支援相對大小
 
@@ -49,7 +49,7 @@ ms.locfileid: "79529778"
 本節說明如何自訂產生縮圖的預設值。 下面定義的預設值包含有關如何將檔案編碼的資訊，以及產生縮圖時所需的資訊。 您可以使用[此](media-services-mes-presets-overview.md)節記載的任何 MES 預設值，並加入可產生縮圖的程式碼。  
 
 > [!NOTE]
-> 僅當編碼為單個位元速率視頻時，以下預設中的**SceneChange 檢測**設置才能設置為 true。 如果您是針對多位元速率視訊進行編碼，並將 **SceneChangeDetection** 設為 true，編碼器會傳回錯誤。  
+> 如果您要編碼為單一位元速率影片，下列預設值中的**SceneChangeDetection**設定只能設定為 true。 如果您是針對多位元速率視訊進行編碼，並將 **SceneChangeDetection** 設為 true，編碼器會傳回錯誤。  
 >
 >
 
@@ -57,7 +57,7 @@ ms.locfileid: "79529778"
 
 請務必閱讀 [考量](#considerations) 一節。
 
-### <a name="json-preset"></a><a id="json"></a>JSON 預設
+### <a name="json-preset"></a><a id="json"></a>JSON 預設值
     {
       "Version": 1.0,
       "Codecs": [
@@ -157,7 +157,7 @@ ms.locfileid: "79529778"
     }
 
 
-### <a name="xml-preset"></a><a id="xml"></a>XML 預設
+### <a name="xml-preset"></a><a id="xml"></a>XML 預設值
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -243,7 +243,7 @@ ms.locfileid: "79529778"
 
     您可以隨意混合使用標記法。
 
-    此外，Start 還支援一個特殊的宏：[最佳]，它嘗試確定內容注釋的第一個"有趣"框架：（當"開始"設置為 [最佳]時，將忽略步驟和範圍。
+    此外，Start 也支援特殊宏： {最佳}，它會嘗試判斷內容的第一個「有趣」的畫面格備註：（當 Start 設定為 {最佳} 時，會忽略步驟和範圍）
   * 預設值：Start:{Best}
 * 必須明確地提供每個影像格式的輸出格式：Jpg/Png/BmpFormat。 顯示時，MES 會比對 JpgVideo 與 JpgFormat，依此類推。 OutputFormat 引進了新的影像轉碼器特定巨集 (即 {Index})，必須針對影像輸出格式提供一次 (只需一次)。
 
@@ -252,7 +252,7 @@ ms.locfileid: "79529778"
 
 若要修剪您的影片，您可以使用[此](media-services-mes-presets-overview.md)節記載的任何 MES 預設值，並修改 **Sources** 元素 (如下所示)。 StartTime 值必須符合輸入視訊的絕對時間戳記。 例如，如果輸入視訊的第一個畫面有 12:00:10.000 的時間戳記，則 StartTime 至少應該為 12:00:10.000 以上。 在下列範例中，我們假設輸入視訊的開始時間戳記為零。 **Sources** 應該位於預設值開頭。
 
-### <a name="json-preset"></a><a id="json"></a>JSON 預設
+### <a name="json-preset"></a><a id="json"></a>JSON 預設值
     {
       "Version": 1.0,
       "Sources": [
@@ -720,7 +720,7 @@ Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援�
     </AACAudio>
 
 ## <a name="disable-auto-de-interlacing"></a><a id="deinterlacing"></a>停用自動去交錯
-如果客戶喜歡隔行間內容自動消除隔行掃描，則無需執行任何操作。 當自動去交錯開啟 (預設) 時，MES 會自動偵測交錯式畫面，並且只會將標示為交錯式的畫面去交錯。
+如果客戶喜歡交錯內容自動取消交錯，則不需要執行任何動作。 當自動去交錯開啟 (預設) 時，MES 會自動偵測交錯式畫面，並且只會將標示為交錯式的畫面去交錯。
 
 您可以關閉自動去交錯。 不建議使用此選項。
 
@@ -917,7 +917,7 @@ Media Encoder Standard 可讓您在現有影片上疊加影像。 目前支援�
 
 ### <a name="inserting-video-at-only-the-lowest-bitrate"></a>於最低位元速率插入視訊
 
-假設您正在使用多個位元速率編碼預設（如["H264 多位元率 720p"）](media-services-mes-preset-h264-multiple-bitrate-720p.md)對流式處理的整個輸入目錄進行編碼，其中包含視頻檔和僅音訊檔的組合。 在這個案例中，當輸入沒有視訊時，您可能需要強制編碼器於最低位元速率插入單色視訊播放軌，而非於所有輸出位元速率插入視訊。 為達成此目的，您必須使用 **InsertBlackIfNoVideoBottomLayerOnly** 旗標。
+假設您正在使用多重位元速率編碼預設值（例如「 [H264 多重位元速率 720p](media-services-mes-preset-h264-multiple-bitrate-720p.md) 」）來將整個輸入目錄編碼成串流，其中包含混合的影片檔案和僅限音訊的檔案。 在這個案例中，當輸入沒有視訊時，您可能需要強制編碼器於最低位元速率插入單色視訊播放軌，而非於所有輸出位元速率插入視訊。 為達成此目的，您必須使用 **InsertBlackIfNoVideoBottomLayerOnly** 旗標。
 
 您可以使用[此](media-services-mes-presets-overview.md)節記載的任何 MES 預設值，並執行以下修改：
 
