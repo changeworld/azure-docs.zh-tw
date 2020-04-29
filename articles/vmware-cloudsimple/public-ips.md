@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解決方案（按雲簡單 ） - 分配公共 IP 位址
-description: 描述如何在私有雲環境中為虛擬機器分配公共 IP 位址
+title: 依 CloudSimple 的 Azure VMware 解決方案-配置公用 IP 位址
+description: 說明如何為私人雲端環境中的虛擬機器配置公用 IP 位址
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -9,29 +9,29 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024291"
 ---
-# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>為私有雲環境分配公共 IP 位址
+# <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>配置私人雲端環境的公用 IP 位址
 
-打開"網路"頁上的公共 IP 選項卡，為私有雲環境中的虛擬機器分配公共 IP 位址。
+開啟 [網路] 頁面上的 [公用 ip] 索引標籤，為您的私人雲端環境中的虛擬機器配置公用 IP 位址。
 
-1. [訪問雲簡單門戶](access-cloudsimple-portal.md)，並在側功能表上選擇 **"網路**"。
-2. 選擇**公共 IP**。
-3. 按一下 **"新的公共 IP**"。
+1. [存取 CloudSimple 入口網站](access-cloudsimple-portal.md)，然後選取側邊功能表上的 [**網路**]。
+2. 選取 [**公用 ip**]。
+3. 按一下 [**新增公用 IP**]。
 
-    ![公共 IP 頁面](media/public-ips-page.png)
+    ![公用 Ip 頁面](media/public-ips-page.png)
 
-4. 輸入名稱以標識 IP 位址條目。
+4. 輸入名稱以識別 IP 位址專案。
 5. 保留預設位置。
-6. 如果需要，使用滑塊更改空閒超時。
-7. 輸入要為其分配公共 IP 位址的本地 IP 位址。
-8. 輸入關聯的 DNS 名稱。
-9. 按一下 [提交]****。
+6. 如有需要，請使用滑杆來變更閒置的時間。
+7. 輸入您要為其指派公用 IP 位址的本機 IP 位址。
+8. 輸入相關聯的 DNS 名稱。
+9. 按一下 [提交]  。
 
-![分配公共 IP](media/network-public-ip-allocate.png)
+![配置公用 Ip](media/network-public-ip-allocate.png)
 
-分配公共 IP 位址的任務開始。 您可以在"**活動>任務**"頁上檢查任務的狀態。 分配完成後，新條目將顯示在公共 IP 頁上。
+開始配置公用 IP 位址的工作。 您可以在 [**活動 >** 工作] 頁面上檢查工作的狀態。 配置完成時，新的專案會顯示在 [公用 Ip] 頁面上。

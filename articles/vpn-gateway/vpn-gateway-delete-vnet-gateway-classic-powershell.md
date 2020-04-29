@@ -1,5 +1,5 @@
 ---
-title: 刪除虛擬網路閘道：Azure 經典
+title: 刪除虛擬網路閘道： Azure 傳統
 description: 在傳統部署模型中使用 PowerShell 刪除虛擬網路閘道。
 titleSuffix: Azure VPN Gateway
 services: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: e7283f5e28edc6f7beaad3a2743aa155f6ea6e14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77198644"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>使用 PowerShell (傳統) 刪除虛擬網路閘道
@@ -31,11 +31,11 @@ ms.locfileid: "77198644"
 
 [!INCLUDE [vpn-gateway-classic-powershell](../../includes/vpn-gateway-powershell-classic-locally.md)]
 
-### <a name="2-connect-to-your-azure-account"></a>2. 連接到 Azure 帳戶。
+### <a name="2-connect-to-your-azure-account"></a>2. 連接到您的 Azure 帳戶。
 
 以提高的權限開啟 PowerShell 主控台並連接到您的帳戶。 使用下列範例來協助您連接：
 
-1. 使用提升許可權打開 PowerShell 主控台。 要切換到服務管理，請使用此命令：
+1. 以更高的許可權開啟 PowerShell 主控台。 若要切換至服務管理，請使用下列命令：
 
    ```powershell
    azure config mode asm
@@ -56,7 +56,7 @@ ms.locfileid: "77198644"
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-使用文字編輯器開啟檔案，並檢視傳統 VNet 的名稱。 當您在 Azure 入口網站中建立 VNet 時，不會在入口網站中顯示 Azure 所使用的完整名稱。 例如，在 Azure 入口網站中名稱顯示為 'ClassicVNet1' 的 VNet，在網路組態檔中的名稱可能更長。 名稱可能如下︰'Group ClassicRG1 ClassicVNet1'。 虛擬網路名稱列為 **"虛擬網路網站名稱 *"。** 執行 PowerShell Cmdlet 時，請使用網路組態檔中的名稱。
+使用文字編輯器開啟檔案，並檢視傳統 VNet 的名稱。 當您在 Azure 入口網站中建立 VNet 時，不會在入口網站中顯示 Azure 所使用的完整名稱。 例如，在 Azure 入口網站中名稱顯示為 'ClassicVNet1' 的 VNet，在網路組態檔中的名稱可能更長。 名稱可能如下︰'Group ClassicRG1 ClassicVNet1'。 虛擬網路名稱會列為 **' VirtualNetworkSite name = '**。 執行 PowerShell Cmdlet 時，請使用網路組態檔中的名稱。
 
 ## <a name="step-3-delete-the-virtual-network-gateway"></a><a name="delete"></a>步驟 3：刪除虛擬網路閘道
 
@@ -80,7 +80,7 @@ Status : Successful
 
 ### <a name="local-network-site-references"></a><a name="lnsref"></a>區域網路網站參考
 
-若要移除網站參考資訊，請對 **ConnectionsToLocalNetwork/LocalNetworkSiteRef** 進行組態變更。 移除區域網站參考會觸發 Azure 刪除通道。 根據您創建的配置，您可能沒有列出**本地網路網站參考。**
+若要移除網站參考資訊，請對 **ConnectionsToLocalNetwork/LocalNetworkSiteRef** 進行組態變更。 移除區域網站參考會觸發 Azure 刪除通道。 根據您所建立的設定，您可能不會列出**LocalNetworkSiteRef** 。
 
 ```
 <Gateway>
@@ -101,7 +101,7 @@ Status : Successful
  </Gateway>
 ```
 
-### <a name="local-network-sites"></a><a name="lns"></a>本地網路網站
+### <a name="local-network-sites"></a><a name="lns"></a>區域網路網站
 
 移除所有您不再使用的區域網站。 根據您所建立的組態而定，您可能並未列出 **LocalNetworkSite**。
 
@@ -137,7 +137,7 @@ Status : Successful
 
 ### <a name="client-addresspool"></a><a name="clientaddresss"></a>用戶端 AddressPool
 
-如果您有到 VNet 的 P2S 連接，您將有一個**VPNClient位址集區**。 移除對應至您已刪除之虛擬網路閘道的用戶端位址集區。
+如果您有 VNet 的 P2S 連線，您將會有**VPNClientAddressPool**。 移除對應至您已刪除之虛擬網路閘道的用戶端位址集區。
 
 ```
 <Gateway>
@@ -156,9 +156,9 @@ Status : Successful
  </Gateway>
 ```
 
-### <a name="gatewaysubnet"></a><a name="gwsub"></a>閘道子網
+### <a name="gatewaysubnet"></a><a name="gwsub"></a>GatewaySubnet
 
-刪除與 VNet 對應的**閘道子網**。
+刪除對應至 VNet 的**GatewaySubnet** 。
 
 ```
 <Subnets>

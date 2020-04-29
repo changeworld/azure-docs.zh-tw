@@ -1,5 +1,5 @@
 ---
-title: 將經典虛擬網路連接到 Azure 資源管理器 VNets：PowerShell
+title: 將傳統虛擬網路連線至 Azure Resource Manager Vnet： PowerShell
 description: 使用 VPN 閘道和 PowerShell 在傳統 VNet 和 Resource Manager VNet 之間建立 VPN 連線。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.openlocfilehash: 1dc0eec6178420976181b05a059e9f8b4859ec2a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77152001"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>使用 PowerShell 從不同的部署模型連接虛擬網路
@@ -21,7 +21,7 @@ ms.locfileid: "77152001"
 
 > [!div class="op_single_selector"]
 > * [入口網站](vpn-gateway-connect-different-deployment-models-portal.md)
-> * [電源外殼](vpn-gateway-connect-different-deployment-models-powershell.md)
+> * [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 > 
 > 
 
@@ -33,7 +33,7 @@ ms.locfileid: "77152001"
 
 下列步驟引導您完成為每個 VNet 設定動態或路由式閘道，以及建立閘道之間的 VPN 連線所需的設定。 此組態不支援靜態或路由式閘道。
 
-### <a name="prerequisites"></a><a name="pre"></a>Prerequisites
+### <a name="prerequisites"></a><a name="pre"></a>必要條件
 
 * 已建立兩個 Vnet。 如果您需要建立資源管理員虛擬網路，請參閱[建立資源群組和虛擬網路](../virtual-network/quick-create-powershell.md#create-a-resource-group-and-a-virtual-network)。 若要建立重統虛擬網路，請參閱[建立傳統 VNet](https://docs.microsoft.com/azure/virtual-network/create-virtual-network-classic)。
 * Vnet 的位址範圍不會彼此重疊，或與閘道可能連接的任何其他連線範圍重疊。
@@ -97,7 +97,7 @@ GatewaySubnet = 192.168.0.0/26 <br>
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
-**例子：**
+**範例：**
 
     <VirtualNetworkSites>
       <VirtualNetworkSite name="ClassicVNet" Location="West US">
@@ -115,7 +115,7 @@ GatewaySubnet = 192.168.0.0/26 <br>
       </VirtualNetworkSite>
     </VirtualNetworkSites>
 
-### <a name="3-add-the-local-network-site"></a>3. 添加本地網路網站
+### <a name="3-add-the-local-network-site"></a>3. 新增區域網路網站
 您新增的區域網路站台代表您要連接的 RM VNet。 將 **LocalNetworkSites** 元素 (如果尚未存在) 加入至檔案。 此時在組態中，VPNGatewayAddress 可以是任何有效的公用 IP 位址，因為我們尚未建立 Resource Manager VNet 的閘道。 一旦建立閘道，我們會以指派給 RM 閘道的正確公用 IP 位址取代此預留位置 IP 位址。
 
     <LocalNetworkSites>
@@ -127,7 +127,7 @@ GatewaySubnet = 192.168.0.0/26 <br>
       </LocalNetworkSite>
     </LocalNetworkSites>
 
-### <a name="4-associate-the-vnet-with-the-local-network-site"></a>4. 將 VNet 與本地網路網站關聯
+### <a name="4-associate-the-vnet-with-the-local-network-site"></a>4. 建立 VNet 與區域網路網站的關聯
 在此區段中，我們會指定您要 VNet 連接的區域網路站台。 在此例中，這是您稍早參考的 Resource Manager VNet。 確定名稱相符。 此步驟不會建立閘道。 它會指定閘道將要連接的區域網路。
 
         <Gateway>
@@ -138,7 +138,7 @@ GatewaySubnet = 192.168.0.0/26 <br>
           </ConnectionsToLocalNetwork>
         </Gateway>
 
-### <a name="5-save-the-file-and-upload"></a>5. 保存檔並上傳
+### <a name="5-save-the-file-and-upload"></a>5. 儲存檔案並上傳
 儲存檔案，然後執行下列命令，將它匯入至 Azure。 確定您會視需要變更環境的檔案路徑。
 
 ```azurepowershell
@@ -151,7 +151,7 @@ Set-AzureVNetConfig -ConfigurationPath C:\AzureNet\NetworkConfig.xml
         --------------------        -----------                      ---------------                                                
         Set-AzureVNetConfig        e0ee6e66-9167-cfa7-a746-7casb9    Succeeded 
 
-### <a name="6-create-the-gateway"></a>6. 創建閘道
+### <a name="6-create-the-gateway"></a>6. 建立閘道
 
 執行此範例之前，請參閱您針對 Azure 預期看到的確切名稱所下載的網路組態檔。 網路組態檔包含傳統虛擬網路的值。 因為部署模型中的差異，當在 Azure 入口網站中建立傳統 VNet 設定時，有時候傳統 VNet 的名稱會變更。 例如，如果您使用 Azure 入口網站在名稱為 'ClassicRG' 的資源群組中，建立一個名稱為 'Classic VNet' 的傳統 VNet，網路組態檔中所包含的名稱會轉換為 'Group ClassicRG Classic VNet'。 當指定包含空格的 VNet 名稱時，請使用引號括住值。
 
@@ -266,7 +266,7 @@ New-AzureVNetGateway -VNetName ClassicVNet -GatewayType DynamicRouting
 ## <a name="section-4---create-a-connection-between-the-gateways"></a><a name="connect"></a>第 4 節 - 在閘道之間建立連線
 在閘道之間建立連線需要 PowerShell。 您可能需要新增 Azure 帳戶，才能使用傳統版 PowerShell Cmdlet。 若要這麼做，請使用 **Add-azureaccount**。
 
-1. 在 PowerShell 主控台中，設定您的共用金鑰。 執行 Cmdlet 之前，請參閱您針對 Azure 預期看到的確切名稱所下載的網路組態檔。 當指定包含空格的 VNet 名稱時，請使用單引號括住值。<br><br>在下列範例中，**-VNetName** 是傳統 VNet 的名稱，**-LocalNetworkSiteName** 是您為區域網路網站指定的名稱。 **-共用金鑰**是您生成和指定的值。 在範例中，我們使用的是 'abc123'，但是您可以產生並使用更為複雜的值。 重要的是，您在此指定的值必須與您在下一個步驟中建立連線時指定的值相同。 傳回應顯示 [狀態: 成功]****。
+1. 在 PowerShell 主控台中，設定您的共用金鑰。 執行 Cmdlet 之前，請參閱您針對 Azure 預期看到的確切名稱所下載的網路組態檔。 當指定包含空格的 VNet 名稱時，請使用單引號括住值。<br><br>在下列範例中，**-VNetName** 是傳統 VNet 的名稱，**-LocalNetworkSiteName** 是您為區域網路網站指定的名稱。 **-SharedKey**是您產生和指定的值。 在範例中，我們使用的是 'abc123'，但是您可以產生並使用更為複雜的值。 重要的是，您在此指定的值必須與您在下一個步驟中建立連線時指定的值相同。 傳回應顯示 [狀態: 成功]****。
 
    ```azurepowershell
    Set-AzureVNetGatewayKey -VNetName ClassicVNet `

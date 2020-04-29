@@ -1,6 +1,6 @@
 ---
-title: 通過雲簡單私有雲刪除 Azure VMware 解決方案
-description: 描述如何刪除雲簡單私有雲。
+title: 透過 CloudSimple 私用雲端來刪除 Azure VMware 解決方案
+description: 說明如何刪除 CloudSimple 私用雲端。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/06/2019
@@ -9,52 +9,52 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 6bc3e7030c500ea2d6072a1cce0f0b3d9fc62801
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024750"
 ---
-# <a name="delete-a-cloudsimple-private-cloud"></a>刪除雲簡單私有雲
+# <a name="delete-a-cloudsimple-private-cloud"></a>刪除 CloudSimple 私用雲端
 
-雲簡單提供了刪除私有雲的靈活性。  私有雲由一個或多個 vSphere 群集組成。 每個群集可以有 3 到 16 個節點。 刪除私有雲時，將刪除所有群集。
+CloudSimple 提供刪除私人雲端的彈性。  私人雲端是由一或多個 vSphere 叢集所組成。 每個叢集可以有3到16個節點。 當您刪除私人雲端時，將會刪除所有的叢集。
 
 ## <a name="before-you-begin"></a>開始之前
 
-刪除私有雲將刪除整個私有雲。  私有雲的所有元件都將被刪除。  如果要保留任何資料，請確保將資料備份到本機存放區或 Azure 存儲。
+刪除私人雲端會刪除整個私人雲端。  將會刪除私人雲端的所有元件。  如果您想要保留任何資料，請確定您已將資料備份至內部部署儲存體或 Azure 儲存體。
 
-私有雲的元件包括：
+私用雲端的元件包括：
 
-* 雲簡單節點
+* CloudSimple 節點
 * 虛擬機器
 * VLAN/子網路
-* 存儲在私有雲上的所有使用者資料
+* 所有儲存在私人雲端上的使用者資料
 * VLAN/子網的所有防火牆規則附件
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-登錄到 中的[https://portal.azure.com](https://portal.azure.com)Azure 門戶。
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="delete-a-private-cloud"></a>刪除私人雲端
 
-1. [訪問雲簡單門戶](access-cloudsimple-portal.md)。
+1. [存取 CloudSimple 入口網站](access-cloudsimple-portal.md)。
 
-2. 打開 **"資源"** 頁。
+2. 開啟 [**資源**] 頁面。
 
-3. 按一下要刪除的私有雲
+3. 按一下您要刪除的私人雲端
 
-4. 在摘要頁上，按一下"**刪除**"。
+4. 在 [摘要] 頁面上，按一下 [**刪除**]。
 
-    ![刪除私有雲](media/delete-private-cloud.png)
+    ![刪除私人雲端](media/delete-private-cloud.png)
 
-5. 在確認頁面上，輸入私有雲的名稱，然後按一下"**刪除**"。 
+5. 在 [確認] 頁面上，輸入私人雲端的名稱，然後按一下 [**刪除**]。 
 
-    ![刪除私有雲 - 確認](media/delete-private-cloud-confirm.png)
+    ![刪除私人雲端-確認](media/delete-private-cloud-confirm.png)
 
-私有雲標記為刪除。  刪除過程在三小時後開始，並刪除私有雲。
+私人雲端已標示為要刪除。  刪除程式會在三個小時後啟動，並刪除私人雲端。
 
 > [!CAUTION]
-> 刪除私有雲後必須刪除節點。  節點的計數將繼續，直到從訂閱中刪除節點。
+> 刪除私人雲端之後，必須刪除節點。  節點的計量會繼續，直到從您的訂用帳戶刪除節點為止。
 
 ## <a name="next-steps"></a>後續步驟
 

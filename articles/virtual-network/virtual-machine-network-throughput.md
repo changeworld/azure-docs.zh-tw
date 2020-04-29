@@ -16,10 +16,10 @@ ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
 ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79245430"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虛擬機器網路頻寬
@@ -46,27 +46,27 @@ Azure 虛擬機器必須連結一個 (但可以有數個) 網路介面。 配置
 
 ## <a name="network-flow-limits"></a>網路流量限制
 
-除了頻寬之外，任何給定時間 VM 上存在的網路連接數可能會影響其網路性能。 Azure 網路堆疊在稱為"流"的資料結構中維護 TCP/UDP 連接的每個方向的狀態。 典型的 TCP/UDP 連接將創建 2 個流，一個用於入站，另一個用於出站方向。 
+除了頻寬，VM 上的網路連線數目會在任何指定的時間內出現，可能會影響其網路效能。 Azure 網路堆疊會針對稱為「流程」的資料結構中的每個方向，維護 TCP/UDP 連線的狀態。 一般的 TCP/UDP 連接會建立2個流程，一個用於輸入，另一個用於輸出方向。 
 
-端點之間的資料傳輸除了需要創建多個流外，還需要創建多個流。 以下是為 DNS 解析度創建的流，以及為負載等化器運行狀況探測器創建的流。 另請注意，網路虛擬裝置 （NVA）（如閘道、代理、防火牆）將看到為設備終止並由設備啟動的連接創建流。 
+端點之間的資料傳輸除了執行資料傳輸的流程之外，還需要建立數個流量。 某些範例是針對 DNS 解析建立的流程，以及針對負載平衡器健康情況探查所建立的流程。 另請注意，網路虛擬裝置（Nva）（例如閘道、proxy、防火牆）將會看到針對在設備上終止的連線所建立的流程，並由設備產生。 
 
-![通過轉發設備進行 TCP 對話的流量計數](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+![透過轉送設備的 TCP 交談流量計數](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>流量限制和建議
+## <a name="flow-limits-and-recommendations"></a>流程限制與建議
 
-如今，Azure 網路堆疊支援 250K 網路流，對於 CPU 內核大於 8 的 VM 和 100k 總流具有良好性能的 VM，對於 CPU 內核少於 8 的 VM，性能良好。 超過此限制的網路性能會正常降低，因為額外的流高達 500K 總流量、250K 入站和 250K 出站硬限制，之後將丟棄其他流。
+目前，Azure 網路堆疊針對具有8個以上 CPU 核心和100k 流量總計的 Vm，支援250K 的總網路流量，並在 CPU 核心少於8個的 Vm 上提供良好的效能。 超過此限制時，網路效能會正常降低，而其他流量則會以固定限制500K 總流量，250K 輸入和250K 輸出，在這之後會捨棄額外的流程。
 
-||具有 <8 個 CPU 內核的 VM|具有 8 個 CPU 內核的 VM|
+||具有 <8 個 CPU 核心的 Vm|具有8個以上 CPU 核心的 Vm|
 |---|---|---|
-|<b>良好的性能</b>|100K 流量 |250K 流量|
-|<b>性能下降</b>|超過 100k 流量|超過 250K 流量|
-|<b>流量限制</b>|500K 流量|500K 流量|
+|<b>良好的效能</b>|100K 流量 |250K 流程|
+|<b>效能降低</b>|超過100k 流量|上述250K 流程|
+|<b>流程限制</b>|500K 流程|500K 流程|
 
-在[Azure 監視器](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)中提供指標，用於跟蹤 VM 或 VMSS 實例上的網路流數和流創建速率。
+[Azure 監視器](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)中提供計量，可追蹤 VM 或 VMSS 實例上的網路流量和流量建立速率。
 
-![azure 監視器-流度量.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![azure-monitor-flow-metrics .png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
-連接建立和終止率也會影響網路性能，因為連接建立和終止將 CPU 與資料包處理常式共用。 我們建議您根據預期的流量模式對工作負載進行基準測試，並適當擴展工作負載，以滿足您的性能需求。 
+連接建立和終止速率也會影響網路效能，因為連線建立和終止共用 CPU 與封包處理常式。 建議您根據預期的流量模式來基準工作負載，並適當地相應放大工作負載，以符合您的效能需求。 
 
 ## <a name="next-steps"></a>後續步驟
 

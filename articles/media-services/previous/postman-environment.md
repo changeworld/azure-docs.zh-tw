@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8254d121c62a20de0a1593920b7793195f8eb50e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78926703"
 ---
 # <a name="import-the-postman-environment"></a>匯入 Postman 環境  
@@ -25,7 +25,7 @@ ms.locfileid: "78926703"
 本文包含用於 [Postman 集合](postman-collection.md)的 **Postman** 環境變數定義，其中包含呼叫媒體服務 REST API 的分組 HTTP 要求。 此環境與集合檔案適用於[設定 Postman 以進行媒體服務 REST API 呼叫](media-rest-apis-with-postman.md)教學課程。
 
 > [!NOTE]
-> `AzureADSTSEndpoint `  = 的值`https://login.microsoftonline.com/{{TenantId}}/oauth2/token`。 要獲取租戶 ID，可以將滑鼠懸停在門戶中的使用者名上（右上角），並且它將位於"目錄：微軟 （[TENANTID]]）中"。
+> 的值`AzureADSTSEndpoint `  =  `https://login.microsoftonline.com/{{TenantId}}/oauth2/token`。 若要取得您的租使用者識別碼，您可以將滑鼠停留在入口網站中的使用者名稱（在右上角），它將會在 "Directory： Microsoft （{{TENANTID}}）中。
 
 ```
 {

@@ -1,6 +1,6 @@
 ---
-title: 搜索類別 |微軟 Azure 地圖
-description: 在本文中，您將瞭解 Microsoft Azure 地圖中受支援的搜索類別。
+title: 搜尋類別 |Microsoft Azure 對應
+description: 在本文中，您將瞭解 Microsoft Azure 對應中支援的搜尋類別。
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 9dbcae6e3947576a7d2bc204c2a3a6fb2e95953d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76988277"
 ---
 # <a name="azure-maps-supported-categories"></a>Azure 地圖服務支援的類別
 
-執行興趣點的[類別搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)時，有超過一百個支援的類別。 以下是支援類別名稱的類別代碼清單。 為頂級類別生成類別代碼。 所有子類別均共用相同的類別代碼。 此類別清單可能會隨著新的資料版本而更改。
+執行興趣點的[類別搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)時，有超過一百個支援的類別。 以下是支援類別名稱的類別代碼清單。 類別代碼會針對最上層類別產生。 所有子類別均共用相同的類別代碼。 此類別清單可能會隨著新的資料發行而變更。
 
 <br/>
 
@@ -45,7 +45,7 @@ ms.locfileid: "76988277"
 | COLLEGE\_UNIVERSITY | 專科學校/社區大學、學院/大學、學院、大學先修班、大學 |
 | COMMERCIAL\_BUILDING | 辦公大樓、公園管理處、商業建築 |
 | COMMUNITY\_CENTER | 社區中心 |
-| COMPANY | 電子、製造、電腦資料服務、公共衛生技術、多元化金融、動物收容所、航空公司、設備租賃、服務、郵件/包裹/貨運、公交線路、家電維修、清潔服務、oem、稅務服務、石油天然氣、法律服務、建築、電信、運輸、汽車製造、化學品、殯葬服務太平間、橋樑隧道運營、汽車、機械工程、服務、投資顧問、廣告/行銷、移動存儲、儲蓄機構、保險、電腦軟體、製藥、餐飲、婚禮服務、農業技術、房地產、計程車、豪華轎車穿梭服務、巴士包機租賃、採礦、出版技術、電纜電話、進出口分銷、公司、庇護、煤礦、房地產、啤酒廠、金礦（） |
+| COMPANY | 電子產品，製造，電腦資料服務，公用健康技術，多樣化財務，動物收容所，航空公司，設備出租，服務，郵件/套件/貨運傳遞，匯流排線路，家庭設備修復，清潔服務，oem，稅務服務，石油天然天然氣，法律服務，建築，電信，運輸，汽車製造，化學用品，殯儀服務太平間，橋樑通道作業，汽車，機械工程服務，投資顧問，廣告/行銷，移動存放裝置，節約機構，保險，電腦軟體，藥物，餐飲，婚禮服務，農業技術，房地產，計程車，禮車往復服務，匯流排章程，，挖掘，發行技術，有線電話，匯入/匯出散發，公司，asylum，煤力地雷，房地產，brewery，黃金型 |
 | COURTHOUSE | 法院大樓 |
 | CULTURAL\_CENTER | 文化中心 |
 | DENTIST | 牙醫 |
@@ -105,7 +105,7 @@ ms.locfileid: "76988277"
 | REPAIR\_FACILITY | 車身車間、輪胎服務、修車廠、汽車玻璃更換商店、一般汽車維修服務、汽車配件銷售安裝、摩托車維修、卡車維修服務、維修設施 |
 | RESEARCH\_FACILITY | 研究設施 |
 | RESIDENTIAL\_ACCOMMODATION | 退休社區、多棟聯建住宅社區、公寓/公寓型社區、連棟公寓、住宅地產、居所 |
-| RESTAURANT | 德語， 克裡奧爾卡瓊， 荷蘭文， 宴會廳， 小酒館， 以色列， 斯洛伐克文， 牙買加， 素食， 海鮮， 越南文， 馬爾他文， 四川， 威爾士， 中文， 日本人， 阿爾及利亞， 加州， 融合， 山東， 沙拉吧， 薩沃伊安， 西班牙， 埃塞俄比亞， 臺灣， 甜甜圈， 伊朗， 加拿大， 美國， 挪威語， 法國， 湖南， 波利尼西亞， 阿富汗， 路邊， 亞洲， 瑞士， 色情， 克裡佩里， 蘇利南， 埃及， 匈牙利， 尼泊爾， 燒烤， 火鍋， 漢堡， 地中海， 地中海，， 廣東， 亞洲 （其他）， 自助餐， 壽司， 蒙古文， 國際， 貝類， 泰國， 委內瑞拉， 魯馬尼亞， 雞肉， 湯， 猶太， 牛排屋， 優酪乳/果汁吧， 義大利， 韓國人， 賽普勒斯， 波士尼亞， 玻利維亞， 多明尼加， 比利時， 突尼斯， 蘇格蘭， 英語， 巴基斯坦， 捷克， 夏威夷文， 馬格裡布， 西藏， 阿拉伯， 中東， 智利， 上海， 拋光， 菲律賓， 蘇丹語， 緬甸文， 巴西， 斯堪的納維亞， 保加利亞人， 靈魂食品， 哥倫比亞， 猶太人， 比薩餅， 西西里，烏拉圭人， 自助餐廳， 芬蘭， 非洲， 科西嘉， 敘利亞， 加勒比， 東北， 俄羅斯， 燒烤， 帶走， 速食， 澳大利亞， 愛爾蘭， 酒吧食品， 火鍋， 黎巴嫩， 印尼， 丹麥， 普羅旺斯， 特帕尼亞基， 印度， 模里西斯， 西部大陸， 秘魯， 柬埔寨， 小吃， 瑞典， 大生物， 霜淇淋客廳， 斯拉夫語， 土耳其文， 阿根廷， 奧地利， 異國情調， 葡萄牙， 盧森堡， 盧森堡， 摩洛哥三明治 |
+| RESTAURANT | 德文、克裡奧爾文-Cajun、荷蘭文、宴會室、bistro、以色列、斯洛伐克文、牙買加、蔬菜、海鮮、越南文、馬爾他文、Sichuan、威爾士文、中文、日文、阿爾及利亞、Californian、融合、Shandong、沙拉 bar、Savoy an、西班牙文、Ethiopian、繁體中文、doughnuts、伊朗、加拿大、美國、挪威文、法文、Hunan、Polynesian、阿富汗、踏、亞洲、瑞士、erotic、crêperie、Surinamese、埃及、匈牙利文、尼泊爾、烤肉、等熱、漢堡、地中海、拉丁美洲、tapas、英屬、墨西哥、廣東核電集團、亞洲（其他）、buffet、壽司、蒙古文、國際、mussels、泰文、Venezuelan、Rumanian、雞、湯品、kosher、牛排館房屋、yogurt/juice bar、義大利文、韓文、Cypriot、波士尼亞、Bolivian、多明尼加、比利時、Tunisian、蘇格蘭、英文、巴基斯坦、捷克文、夏威夷、Maghrib、藏語、阿拉伯、中東、智利文、上海、波蘭文、菲律賓文、蘇丹、亞美尼亞文、緬甸文、巴西、波蘭文、保加利亞文、靈魂食物、哥倫比亞、Jewish、比薩、Sicilian、有機、希臘文、巴斯克文、烏拉圭、cafeterias、芬蘭、非洲、Corsican-100、敘利亞、加勒比海、Dongbei、俄文，燒烤，take，快速食物，澳大利亞，愛爾蘭，pub 食物，fondue，黎巴嫩，印尼，丹麥文，Provençal，teppanyaki，印度，模裡西斯，西方大陸，秘魯，Cambodian，點心，瑞典文，macrobiotic，霜淇淋店，斯拉夫，土耳其文，Argentinean，奧地利，外來，葡萄牙文，Luxembourgian，摩洛哥，澳大利亞，古巴，餐廳 |
 | RESTAURANT\_AREA | 餐廳區 |
 | REST\_AREA | 休息區、野餐場所 |
 | SCENIC\_PANORAMIC\_VIEW | 風景/全景、觀測點 |

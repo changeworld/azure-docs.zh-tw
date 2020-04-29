@@ -9,26 +9,26 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
 ms.openlocfilehash: 2d6182ba01507c2fb361628e01bb52e1ea821f44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77152647"
 ---
 # <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure Logic Apps 與 Enterprise Integration Pack 來編碼或解碼一般檔案
 
-在企業對企業 (B2B) 案例中，您可能會希望先將 XML 內容編碼，然後再傳送給企業夥伴。 在邏輯應用程式中，您可以使用一般檔案編碼連接器來執行此動作。 您所建立的邏輯應用程式可從各種來源取得其 XML 內容，包括 HTTP 要求觸發程序、另一個應用程式，或甚至是這其中任一種 [連接器](../connectors/apis-list.md)。 有關邏輯應用的詳細資訊，請參閱[邏輯應用文檔](logic-apps-overview.md "瞭解有關邏輯應用的更多資訊")。  
+在企業對企業 (B2B) 案例中，您可能會希望先將 XML 內容編碼，然後再傳送給企業夥伴。 在邏輯應用程式中，您可以使用一般檔案編碼連接器來執行此動作。 您所建立的邏輯應用程式可從各種來源取得其 XML 內容，包括 HTTP 要求觸發程序、另一個應用程式，或甚至是這其中任一種 [連接器](../connectors/apis-list.md)。 如需邏輯應用程式的詳細資訊，請參閱[邏輯應用程式檔](logic-apps-overview.md "深入瞭解邏輯應用程式")。  
 
 ## <a name="create-the-flat-file-encoding-connector"></a>建立一般檔案編碼連接器
 請遵循下列步驟，將一般檔案編碼連接器新增到邏輯應用程式。
 
-1. 創建邏輯應用並將其[連結到您的集成帳戶](logic-apps-enterprise-integration-accounts.md "瞭解如何將集成帳戶連結到邏輯應用")。 此帳戶包含您將用來編碼 XML 資料的結構描述。  
+1. 建立邏輯應用程式，並將[它連結到您的整合帳戶](logic-apps-enterprise-integration-accounts.md "瞭解如何將整合帳戶連結至邏輯應用程式")。 此帳戶包含您將用來編碼 XML 資料的結構描述。  
 
-1. 在邏輯應用設計器中，將**何時收到 HTTP 要求**觸發器添加到邏輯應用。
+1. 在邏輯應用程式設計工具中，將 [**收到 HTTP 要求時**] 觸發程式新增至邏輯應用程式。
 
 1. 新增一般檔案編碼動作，如下所示︰
 
-   a. 選擇**加號**。
+   a. 選取**加號**。
 
    b. 選取 [新增動作]**** 連結 (會在選取加號之後出現)。
 
@@ -63,11 +63,11 @@ ms.locfileid: "77152647"
 > [!NOTE]
 > 為了完成這些步驟，您必須已將結構描述檔案上傳到您的整合帳戶。
 
-1. 在邏輯應用設計器中，將**何時收到 HTTP 要求**觸發器添加到邏輯應用。
+1. 在邏輯應用程式設計工具中，將 [**收到 HTTP 要求時**] 觸發程式新增至邏輯應用程式。
 
 1. 新增一般檔案解碼動作，如下所示︰
 
-   a. 選擇**加號**。
+   a. 選取**加號**。
 
    b. 選取 [新增動作]**** 連結 (會在選取加號之後出現)。
 
@@ -94,5 +94,5 @@ ms.locfileid: "77152647"
 您現在可以測試連接器，方法是向 HTTP 端點提出要求，並在要求內文中包含您想要解碼的 XML 內容。  
 
 ## <a name="next-steps"></a>後續步驟
-* [詳細瞭解企業集成包](logic-apps-enterprise-integration-overview.md "瞭解企業集成包")。  
+* [深入瞭解企業整合套件](logic-apps-enterprise-integration-overview.md "瞭解企業整合套件")。  
 

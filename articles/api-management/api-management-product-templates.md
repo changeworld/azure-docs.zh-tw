@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 393563427e936e07315cd44b78cb793d4292b352
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243922"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的產品範本
@@ -28,7 +28,7 @@ ms.locfileid: "79243922"
   
 -   [產品清單](#ProductList)  
   
--   [產品](#Product)  
+-   [基礎](#Product)  
   
 > [!NOTE]
 >  下列文件中包含範例預設範本，但範本可能會因持續進行的改善而有變更。 您可以瀏覽至想要的個別範本，來檢視開發人員入口網站中的即時預設範本。 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
@@ -75,7 +75,7 @@ ms.locfileid: "79243922"
   
 -   [分頁控制](api-management-page-controls.md#paging-control)  
   
--   [搜索控制](api-management-page-controls.md#search-control)  
+-   [搜尋-控制項](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>資料模型  
   
@@ -123,10 +123,10 @@ ms.locfileid: "79243922"
 }  
 ```  
   
-##  <a name="product"></a><a name="Product"></a>產品  
+##  <a name="product"></a><a name="Product"></a>基礎  
  **產品**範本可讓您自訂開發人員入口網站的產品頁面主體。  
   
- ![開發人員門戶產品頁面](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
+ ![開發人員入口網站產品頁面](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -200,20 +200,20 @@ ms.locfileid: "79243922"
 ### <a name="controls"></a>控制項  
  `Product list` 範本可能會使用下列[頁面控制項](api-management-page-controls.md)。  
   
--   [訂閱按鈕](api-management-page-controls.md#subscribe-button)  
+-   [訂閱-按鈕](api-management-page-controls.md#subscribe-button)  
   
 ### <a name="data-model"></a>資料模型  
   
 |屬性|類型|描述|  
 |--------------|----------|-----------------|  
-|Products|[產品](api-management-template-data-model-reference.md#Product)|指定的產品。|  
+|Products|[基礎](api-management-template-data-model-reference.md#Product)|指定的產品。|  
 |IsDeveloperSubscribed|boolean|目前的使用者是否已訂閱此產品。|  
 |SubscriptionState|number|訂用帳戶的狀態。 可能的狀態為：<br /><br /> -   `0 - suspended` – 訂用帳戶已遭封鎖，而且訂閱者無法呼叫產品的任何 API。<br />-   `1 - active` – 訂用帳戶是作用中狀態。<br />-   `2 - expired` – 訂用帳戶已達到期日，因此已停用。<br />-   `3 - submitted` – 開發人員已提出訂用帳戶要求，但尚未進行核准或拒絕。<br />-   `4 - rejected` – 系統管理員已拒絕訂用帳戶要求。<br />-   `5 - cancelled` – 開發人員或系統管理員已取消訂用帳戶。|  
 |限制|array|此屬性已過時而不應使用。|  
 |DelegatedSubscriptionEnabled|boolean|此訂用帳戶是否已啟用[委派](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)。|  
 |DelegatedSubscriptionUrl|字串|如果已啟用委派，則是所委派的訂用帳戶 URL。|  
 |IsAgreed|boolean|如果產品有條款，目前的使用者是否已同意條款。|  
-|訂用帳戶|[訂用帳戶摘要](api-management-template-data-model-reference.md#SubscriptionSummary)實體的集合。|產品的訂用帳戶。|  
+|訂閱|[訂用帳戶摘要](api-management-template-data-model-reference.md#SubscriptionSummary)實體的集合。|產品的訂用帳戶。|  
 |Apis|[API](api-management-template-data-model-reference.md#API) 實體的集合。|此產品中的 API。|  
 |CannotAddBecauseSubscriptionNumberLimitReached|boolean|就訂用帳戶限制而言，目前的使用者是否有資格訂閱此產品。|  
 |CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|就是否允許多個訂用帳戶而言，目前的使用者是否有資格訂閱此產品。|  

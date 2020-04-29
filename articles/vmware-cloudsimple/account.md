@@ -1,6 +1,6 @@
 ---
-title: 帳戶管理 - 通過雲簡單門戶提供的 Azure VMware 解決方案
-description: 介紹如何通過雲簡單門戶管理 Azure VMware 解決方案上的帳戶
+title: 帳戶管理-依 CloudSimple 的 Azure VMware 解決方案入口網站
+description: 說明如何透過 CloudSimple 入口網站來管理 Azure VMware 解決方案上的帳戶
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,32 +9,32 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025362"
 ---
-# <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>按雲簡單門戶管理 Azure VMware 解決方案上的帳戶
+# <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>透過 CloudSimple 入口網站管理 Azure VMware 解決方案上的帳戶
 
-當您創建雲簡單服務時，它會在 CloudSimple 上創建一個帳戶。 該帳戶與服務所在的 Azure 訂閱相關聯。 訂閱中具有擁有者和參與者角色的所有使用者都有權訪問 CloudSimple 門戶。 與 CloudSimple 服務關聯的 Azure 訂閱 ID 和租戶 ID 位於"帳戶"頁上。
+當您建立 CloudSimple 服務時，它會在 CloudSimple 上建立帳戶。 此帳戶會與服務所在的 Azure 訂用帳戶相關聯。 訂用帳戶中具有「擁有者」和「參與者」角色的所有使用者都可以存取 CloudSimple 入口網站。 您可以在 [帳戶] 頁面上找到與 CloudSimple 服務相關聯的 Azure 訂用帳戶識別碼和租使用者識別碼。
 
-要管理雲簡單門戶中的帳戶[，請訪問門戶](access-cloudsimple-portal.md)並選擇側功能表上的 **"帳戶**"。
+若要在 CloudSimple 入口網站中管理帳戶，請[存取入口網站](access-cloudsimple-portal.md)，然後選取側邊功能表上的 [**帳戶**]。
 
-選擇 **"摘要"** 以查看有關公司雲簡單配置的資訊。 將顯示雲配置的當前容量，包括私有雲數、總存儲數、vSphere 群集配置、節點數和計算核心數。 如果當前配置不能滿足所有需求，則包含一個連結以購買其他節點。
+選取 [**摘要**] 以查看貴公司 CloudSimple 設定的相關資訊。 您的雲端設定目前的容量會顯示，包括私人雲端的數目、儲存體總計、vSphere 叢集設定、節點數目，以及計算核心數目。 如果目前的設定不符合您的所有需求，則會包含一個連結來購買其他節點。
 
 ## <a name="email-alerts"></a>電子郵件警示
 
-您可以添加要通知的任何人的電子郵件地址，瞭解私有雲配置的更改。
+您可以為想要通知私人雲端設定變更的任何人，新增電子郵件地址。
 
-1. 在 **"其他電子郵件警報**"區域中，按一下"**添加新**"。
+1. 在 [**其他電子郵件警示**] 區域中，按一下 [**加入新**的]。
 2. 輸入電子郵件地址。
-3. 按返回。  
+3. 按下 Return。  
 
-要項目剪除，請按一下**X**。
+若要移除專案，請按一下 [ **X**]。
 
-## <a name="cloudsimple-operator-access"></a>雲簡單操作員訪問
+## <a name="cloudsimple-operator-access"></a>CloudSimple 操作員存取
 
-操作員訪問設置允許 CloudSimple 允許您支援工程師登錄到雲簡單門戶，從而説明您進行故障排除。  預設情況下啟用該設置。 支援工程師在登錄客戶帳戶時執行的所有操作都記錄在**活動** > **審核**頁面上，可供您查看。
+操作員存取設定允許支援工程師登入您的 CloudSimple 入口網站，讓 CloudSimple 協助您進行疑難排解。  預設會啟用此設定。 支援工程師在登入您的客戶帳戶時所執行的所有動作都會記錄下來，並可供您在 [**活動** > **審核**] 頁面上進行審核。
 
-按一下**啟用 CloudSimple 操作員訪問**切換以打開或關閉訪問。
+按一下 [ **CloudSimple 操作員存取已啟用**] 切換以開啟或關閉存取。

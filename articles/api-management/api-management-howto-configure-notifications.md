@@ -1,5 +1,5 @@
 ---
-title: 配置通知和電子郵件範本
+title: 設定通知和電子郵件範本
 titleSuffix: Azure API Management
 description: 了解如何在 Azure API 管理中設定通知和電子郵件範本。
 services: api-management
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: apimpm
 ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244065"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>如何在 Azure API 管理中設定通知和電子郵件範本
 
 API 管理可讓您設定特定事件的通知，以及設定用來與 API 管理執行個體的管理員和開發人員通訊的電子郵件範本。 本文說明如何為可用的事件設定通知，並提供設定這些事件所使用之電子郵件範本的概觀。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 如果您沒有 API 管理服務執行個體，請完成下列快速入門：[建立 Azure API 管理執行個體](get-started-create-service-instance.md)。
 
@@ -32,7 +32,7 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
 
 ## <a name="configure-notifications"></a><a name="publisher-notifications"> </a>設定通知
 
-1.  選擇**API 管理**實例。
+1.  選取您的**API 管理**實例。
 2.  按一下 [通知]**** 以檢視可用的通知。
 
     ![Publisher notifications][api-management-publisher-notifications]
@@ -48,7 +48,7 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
     -   **接近訂用帳戶配額限制** - 當訂用帳戶使用量接近使用量配額時，下列電子郵件收件者和使用者會收到電子郵件通知。
 
         > [!NOTE]
-        > 通知僅[由訂閱策略的配額](api-management-access-restriction-policies.md#SetUsageQuota)觸發。 [按鍵策略的配額](api-management-access-restriction-policies.md#SetUsageQuotaByKey)不會生成通知。
+        > 只有[訂用](api-management-access-restriction-policies.md#SetUsageQuota)帳戶原則會根據配額觸發通知。 [依金鑰原則的配額](api-management-access-restriction-policies.md#SetUsageQuotaByKey)不會產生通知。
 
     針對每一個事件，您可以使用電子郵件地址文字方塊來指定電子郵件地址，或從清單中選取使用者。
 
@@ -77,7 +77,7 @@ API 管理可讓您設定特定事件的通知，以及設定用來與 API 管�
 
 若要檢視並設定您的 API 管理執行個體的電子郵件範本，請按一下 [通知範本]****。
 
-![Email templates][api-management-email-templates]
+![電子郵件範本][api-management-email-templates]
 
 每一個電子郵件範本都有純文字的主旨，以及 HTML 格式的本文定義。 可依需要自訂每一個項目。
 

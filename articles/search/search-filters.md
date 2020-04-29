@@ -1,7 +1,7 @@
 ---
-title: 搜尋結果的篩選
+title: 篩選搜尋結果
 titleSuffix: Azure Cognitive Search
-description: 按使用者安全標識、語言、地理位置或數值進行篩選，以減少 Azure 認知搜索（Microsoft Azure 上的託管雲搜索服務）中查詢上的搜尋結果。
+description: 依使用者安全性身分識別、語言、地理位置或數值進行篩選，以減少 Azure 認知搜尋（Microsoft Azure 上託管的雲端搜尋服務）中查詢的搜尋結果。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,15 +9,15 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 03333e853a2ab7606ebe60cc3f68bcb5facfbdb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77191009"
 ---
-# <a name="filters-in-azure-cognitive-search"></a>Azure 認知搜索中的篩選器 
+# <a name="filters-in-azure-cognitive-search"></a>Azure 認知搜尋中的篩選 
 
-*篩選器*提供選擇 Azure 認知搜索查詢中使用的文檔的條件。 未篩選的搜尋會包含索引中的所有文件。 篩選條件會將搜尋查詢的範圍設定為文件子集。 例如，篩選條件可以限制只對具有特定品牌或色彩且超過特定閾值之價格點的產品進行全文檢索搜尋。
+*篩選*條件提供選取 Azure 認知搜尋查詢中使用之檔的準則。 未篩選的搜尋會包含索引中的所有文件。 篩選條件會將搜尋查詢的範圍設定為文件子集。 例如，篩選條件可以限制只對具有特定品牌或色彩且超過特定閾值之價格點的產品進行全文檢索搜尋。
 
 某些搜尋體驗會強制實行篩選條件需求以作為實作的一部分，但是，當您想要使用「以值為基礎」** 的準則 (針對 "Simon & Schuster" 所發行的類別 "non-fiction"，將搜尋範圍設定為產品類型 "books") 來限制搜尋時，隨時都可使用篩選條件。
 
@@ -49,23 +49,23 @@ ms.locfileid: "77191009"
 
  + `searchFields` 查詢參數會將搜尋限制為特定欄位。 例如，如果您的索引分別提供適用於英文和西班牙文描述的欄位，您可以使用 searchFields，將目標設定為要用來進行全文檢索搜尋的欄位。 
 
-+ `$select` 參數可用來指定要包含在結果集中的欄位，先有效地調整回應，然後將它傳送至呼叫應用程式。 此參數不會優化查詢或減少文件組合，但如果目標是較小的回應，則此參數是需要考慮的選項。 
++ `$select` 參數可用來指定要包含在結果集中的欄位，先有效地調整回應，然後將它傳送至呼叫應用程式。 此參數不會縮小查詢範圍或減少檔集合，但如果您的目標是較小的回應，則此參數是要考慮的選項。 
 
 如需其中任一個參數的詳細資訊，請參閱[搜尋文件 > 要求 > 查詢參數](/rest/api/searchservice/search-documents#query-parameters) \(英文\)。
 
 
-## <a name="how-filters-are-executed"></a>篩選器的執行方式
+## <a name="how-filters-are-executed"></a>如何執行篩選
 
-在查詢時，篩選器解析器接受條件作為輸入，將運算式轉換為表示為樹的原子布林運算式，然後在索引中的可篩選欄位上計算篩選器樹。
+在查詢時，篩選剖析器會接受準則做為輸入，將運算式轉換成以樹狀結構表示的不可部分完成的布林運算式，然後在索引的可篩選欄位上評估篩選樹狀結構。
 
-篩選與搜索同步進行，從而限定在下游處理中要包括哪些文檔以進行文檔檢索和相關性評分。 當與搜索字串配對時，篩選器可有效地減少後續搜索操作的撤回集。 單獨使用時 (例如，當查詢字串空白時，其中 `search=*`)，篩選條件準則會是唯一的輸入。 
+篩選會與搜尋一併進行，以符合要在檔抓取和相關性評分的下游處理中包含哪些檔。 當與搜尋字串配對時，篩選準則會有效減少後續搜尋作業的重新叫用組。 單獨使用時 (例如，當查詢字串空白時，其中 `search=*`)，篩選條件準則會是唯一的輸入。 
 
 ## <a name="defining-filters"></a>定義篩選器
-篩選器是 OData 運算式，使用[Azure 認知搜索 中支援的 OData V4 語法子集](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)進行表達。 
+篩選器是 OData 運算式，使用[Azure 認知搜尋中支援的 Odata V4 語法子集](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)進行明確表述。 
 
-您可以為每個**搜索**操作指定一個篩選器，但篩選器本身可以包含多個欄位、多個條件，如果使用**ismatch**函數、多個全文檢索搜尋運算式。 在多部件篩選器運算式中，可以按任意順序指定謂詞（但須遵守運算子優先順序的規則）。 如果您嘗試以特定順序重新整理述詞，則不會有任何顯著的效能改善。
+您可以針對每個**搜尋**作業指定一個篩選準則，但篩選準則本身可以包含多個欄位、多個準則，而且如果您使用**ismatch**函數，多個全文檢索搜尋運算式。 在多部分的篩選條件運算式中，您可以依任何順序指定述詞（受限於運算子優先順序的規則）。 如果您嘗試以特定順序重新整理述詞，則不會有任何顯著的效能改善。
 
-篩選器運算式的限制之一是請求的最大大小限制。 整個要求 (包含篩選條件) 針對 POST 最多可有 16 MB，針對 GET 則是 8 KB。 篩選器運算式中子句的數量也有限制。 最佳經驗法則是，如果您有數百個子句，則必須承擔達到限制的風險。 我們建議以這類不會產生無大小限制之篩選條件的方式來設計您的應用程式。
+篩選條件運算式的其中一個限制是要求的大小上限。 整個要求 (包含篩選條件) 針對 POST 最多可有 16 MB，針對 GET 則是 8 KB。 您的篩選條件運算式中的子句數目也有限制。 最佳經驗法則是，如果您有數百個子句，則必須承擔達到限制的風險。 我們建議以這類不會產生無大小限制之篩選條件的方式來設計您的應用程式。
 
 下列範例會呈現數個 API 中的典型篩選條件定義。
 
@@ -95,21 +95,21 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="filter-usage-patterns"></a>篩選使用模式
 
-以下示例說明了篩選器方案的幾個使用模式。 如需更多概念，請參閱 [OData 運算式語法 > 範例](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples) \(英文\) 。
+下列範例說明篩選準則案例的數種使用模式。 如需更多概念，請參閱 [OData 運算式語法 > 範例](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples) \(英文\) 。
 
-+ 獨立的 **$filter** (不含查詢字串)，在篩選條件運算式能夠完全限定為感興趣的文件時很有用。 沒有查詢字串，就沒有語彙或語言分析、沒有計分且沒有排名。 請注意，搜索字串只是一個星號，這意味著"匹配所有文檔"。
++ 獨立的 **$filter** (不含查詢字串)，在篩選條件運算式能夠完全限定為感興趣的文件時很有用。 沒有查詢字串，就沒有語彙或語言分析、沒有計分且沒有排名。 請注意，搜尋字串只是一個星號，這表示「符合所有檔」。
 
    ```
    search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
    ```
 
-+ 查詢字串和 **$filter** 的組合，其中的篩選條件會建立子集，而查詢字串會提供字詞輸入，以便在篩選的子集上進行全文檢索搜尋。 添加術語（步行距離影院）在結果中引入了搜索分數，其中最匹配術語的文檔的排名較高。 將篩選器與查詢字串一起使用是最常見的使用模式。
++ 查詢字串和 **$filter** 的組合，其中的篩選條件會建立子集，而查詢字串會提供字詞輸入，以便在篩選的子集上進行全文檢索搜尋。 新增詞彙（走距離電影院）會在結果中引進搜尋分數，其中最符合詞彙的檔會排名較高。 使用含有查詢字串的篩選是最常見的使用模式。
 
    ```
   search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
    ```
 
-+ 複合式查詢 (以 "or" 分隔)，每個均有自己的篩選條件準則 (例如，'dog' 中的 'beagles' 或 'cat' 中的 'siamese')。 與 運算式`or`結合計算單獨計算，與回應中發送的每個運算式匹配的文檔的合併。 此使用模式是通過 函數`search.ismatchscoring`實現的。 您還可以使用非評分版本`search.ismatch`。
++ 複合式查詢 (以 "or" 分隔)，每個均有自己的篩選條件準則 (例如，'dog' 中的 'beagles' 或 'cat' 中的 'siamese')。 與`or`結合的運算式會個別進行評估，並具有符合回應中傳回之每個運算式的檔聯集。 此使用模式是透過`search.ismatchscoring`函式來達成。 您也可以使用非計分版本`search.ismatch`。
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
@@ -119,7 +119,7 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
    $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
-  `search.ismatchscoring`也可以將全文檢索搜尋與使用`and`而不是 的`or`篩選器合併，但這在功能上等效于在搜索請求中使用 和`search``$filter`參數。 例如，以下兩個查詢會產生相同的結果：
+  您`search.ismatchscoring`也可以使用`and` （而不是`or`）將全文檢索搜尋與篩選結合，但這在功能上相當於在搜尋`search`要求`$filter`中使用和參數。 例如，下列兩個查詢會產生相同的結果：
 
   ```
   $filter=search.ismatchscoring('pool') and Rating ge 4
@@ -135,32 +135,32 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 ## <a name="field-requirements-for-filtering"></a>進行篩選的欄位需求
 
-在 REST API 中，預設情況下，對於簡單欄位，可篩選為*打開*。 可篩選的欄位會增加索引大小；請務必針對您不打算在篩選條件中實際使用的欄位設定 `"filterable": false`。 如需適用於欄位定義之設定的詳細資訊，請參閱[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index) \(英文\)。
+在 REST API 中，簡單欄位的可篩選預設為 [*開啟*]。 可篩選的欄位會增加索引大小；請務必針對您不打算在篩選條件中實際使用的欄位設定 `"filterable": false`。 如需適用於欄位定義之設定的詳細資訊，請參閱[建立索引](https://docs.microsoft.com/rest/api/searchservice/create-index) \(英文\)。
 
-在 .NET SDK 中，可篩選預設為 *off*。 通過將相應[欄位](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet)物件的`true`["可篩選"屬性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)設置為 ，可以使欄位可篩選。 您還可以使用[Is 可篩選屬性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)以聲明性方式執行此操作。 在下面的示例中，屬性設置在`BaseRate`映射到索引定義的模型類的屬性上。
+在 .NET SDK 中，可篩選預設為 *off*。 您可以將對應[欄位](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet)物件的`true` [IsFilterable 屬性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)設定為，以篩選欄位。 您也可以使用[IsFilterable 屬性](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute)，以宣告方式執行這項操作。 在下列範例中，屬性是在對應至索引`BaseRate`定義之模型類別的屬性上設定。
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
     public double? BaseRate { get; set; }
 ```
 
-### <a name="making-an-existing-field-filterable"></a>使現有欄位可過濾
+### <a name="making-an-existing-field-filterable"></a>將現有欄位設為可篩選
 
-不能修改現有欄位以使它們可過濾。 相反，您需要添加新欄位或重建索引。 有關重建索引或重新填充欄位的詳細資訊，請參閱[如何重建 Azure 認知搜索索引](search-howto-reindex.md)。
+您無法修改現有的欄位，使其可進行篩選。 相反地，您需要加入新的欄位，或重建索引。 如需重建索引或重新填入欄位的詳細資訊，請參閱[如何重建 Azure 認知搜尋索引](search-howto-reindex.md)。
 
 ## <a name="text-filter-fundamentals"></a>文字篩選條件基本概念
 
-文本篩選器將字串欄位與篩選器中提供的文本字串匹配。 與全文檢索搜尋不同，文本篩選器沒有詞法分析或斷字，因此僅對匹配進行比較。 例如，假設欄位*f*包含"陽光日"，`$filter=f eq 'Sunny'`不匹配，但`$filter=f eq 'sunny day'`將。 
+文字篩選準則會比對字串欄位與您在篩選準則中提供的常值字串。 不同于全文檢索搜尋，文字篩選不會有任何詞法分析或斷詞，因此比較僅適用于完全相符的專案。 例如，假設欄位*f*包含 "sunny day"， `$filter=f eq 'Sunny'`不符合，但`$filter=f eq 'sunny day'`會是。 
 
-文字字串會區分大小寫。 大寫字沒有小寫字：`$filter=f eq 'Sunny day'`找不到"晴天"。
+文字字串會區分大小寫。 大小寫不太大寫的單字： `$filter=f eq 'Sunny day'`將找不到 "sunny day"。
 
-### <a name="approaches-for-filtering-on-text"></a>文本篩選方法
+### <a name="approaches-for-filtering-on-text"></a>篩選文字的方法
 
 | 方法 | 描述 | 使用時機 |
 |----------|-------------|-------------|
-| [`search.in`](search-query-odata-search-in-function.md) | 將欄位與分隔的字串清單匹配的函數。 | 建議用於[安全篩選器](search-security-trimming-for-azure-search.md)和需要與字串欄位匹配許多原始文本值的任何篩選器。 **search.in**函數是專為速度設計的，比顯式比較欄位與使用`eq`和`or`的每個字串要快得多。 | 
-| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | 此函式可讓您在相同的篩選條件運算式中，混用全文檢索搜尋作業以及純布林值篩選作業。 | 當您想要在一個請求中有多個搜索篩選器組合時，請使用**搜索.ismatch（** 或其計分等效項，**搜索.ismatch計分**）。 您也可以將它用於 *contains* 篩選條件，以篩選較大字串內的部分字串。 |
-| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | 使用者定義的運算式，由欄位、運算子和值所組成。 | 如果要查找字串欄位和字串值之間的精確匹配項，請使用此選項。 |
+| [`search.in`](search-query-odata-search-in-function.md) | 符合欄位的函式，可針對字串的分隔清單。 | 建議用於[安全性篩選](search-security-trimming-for-azure-search.md)和任何篩選準則，其中有許多原始文字值需要與字串欄位相符。 **Search.in**函數是針對速度而設計的，比使用`eq`和`or`針對每個字串明確比較欄位更快。 | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | 此函式可讓您在相同的篩選條件運算式中，混用全文檢索搜尋作業以及純布林值篩選作業。 | 當您想要在一個要求中有多個搜尋篩選器組合時，請使用**ismatch** （或其評分對等的**ismatchscoring**）。 您也可以將它用於 *contains* 篩選條件，以篩選較大字串內的部分字串。 |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | 使用者定義的運算式，由欄位、運算子和值所組成。 | 當您想要在字串欄位與字串值之間尋找完全相符專案時，請使用此專案。 |
 
 ## <a name="numeric-filter-fundamentals"></a>數值篩選條件基本概念
 
@@ -195,10 +195,10 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 
 若要使用更多範例，請參閱 [OData 篩選條件運算式語法 > 範例](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples) \(英文\)。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [全文檢索搜尋如何在 Azure 認知搜尋中運作](search-lucene-query-architecture.md)
-+ [搜索文檔 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [搜尋檔 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [簡單查詢語法](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene 查詢語法](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 + [支援的資料類型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)

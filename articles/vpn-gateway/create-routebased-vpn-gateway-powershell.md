@@ -1,5 +1,5 @@
 ---
-title: Azure VPN 閘道：創建基於路由的閘道：PowerShell
+title: Azure VPN 閘道：建立以路由為基礎的閘道： PowerShell
 description: 使用 PowerShell 來快速建立路由型 VPN 閘道
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/10/2020
 ms.author: cherylmc
 ms.openlocfilehash: 8a4bb9d2ac7b8124fa9b1e00f3ecceda4f4a4cdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77152953"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>使用 PowerShell 來建立路由型 VPN 閘道
@@ -28,13 +28,13 @@ ms.locfileid: "77152953"
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
-使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 建立資源群組。 如果在本地運行 PowerShell，請打開具有提升許可權的 PowerShell 主控台，並使用 命令`Connect-AzAccount`連接到 Azure。
+使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立 Azure 資源群組。 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 建立資源群組。 如果您在本機執行 PowerShell，請以較高的許可權開啟 PowerShell 主控台，並使用`Connect-AzAccount`命令連接到 Azure。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name TestRG1 -Location EastUS
 ```
 
-## <a name="create-a-virtual-network"></a><a name="vnet"></a>創建虛擬網路
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>建立虛擬網路
 
 使用 [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) 建立虛擬網路。 下列範例會在 **EastUS** 位置中建立名為 **VNet1** 的虛擬網路：
 
@@ -84,7 +84,7 @@ Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0
 $vnet | Set-AzVirtualNetwork
 ```
 
-## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>請求公共 IP 位址
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>要求公用 IP 位址
 
 VPN 閘道必須具有動態配置的公用 IP 位址。 當您建立與 VPN 閘道的連線時，這就是您指定的 IP 位址。 請使用下列範例來要求公用 IP 位址：
 
@@ -214,6 +214,6 @@ Remove-AzResourceGroup -Name TestRG1
 閘道建立完成之後，您便可在您的虛擬網路與另一個 VNet 之間建立連線。 或是在您的虛擬網路與內部部署位置之間建立連線。
 
 > [!div class="nextstepaction"]
-> [創建網站到網站的連接](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
+> [建立站對站連線](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
 > [建立點對站連線](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
 > [建立與另一個 VNet 的連線](vpn-gateway-vnet-vnet-rm-ps.md)

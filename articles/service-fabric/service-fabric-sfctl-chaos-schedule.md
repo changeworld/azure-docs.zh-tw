@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構 CLI-sfctl 混亂計畫
-description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括用於混沌調度的命令清單。
+title: Azure Service Fabric CLI-sfctl 混亂排程
+description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用於混亂排程的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 29b365c48e405830e238945f1d94156f477c15b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906181"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
@@ -31,7 +31,7 @@ ms.locfileid: "76906181"
 
 |引數|描述|
 | --- | --- |
-| --timeout -t | 伺服器超時，用於在幾秒鐘內執行操作。 此超時指定用戶端願意等待請求的操作完成的時間持續時間。 此參數的預設值為 60 秒。  預設值\: 60。 |
+| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
@@ -46,7 +46,7 @@ ms.locfileid: "76906181"
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
 設定 Chaos 使用的排程。
 
-Chaos 會根據 Chaos 排程自動排定執行。 如果提供的版本與伺服器上的版本匹配，則混沌計畫將更新。 更新混沌計畫時，伺服器上的版本將遞增 1。 到達大量數位後，伺服器上的版本將換回 0。 如果 Chaos 在進行此呼叫時正在執行，此呼叫將會失敗。
+Chaos 會根據 Chaos 排程自動排定執行。 如果提供的版本與伺服器上的版本相符，就會更新混亂排程。 更新混亂排程時，伺服器上的版本會遞增1。 到達大量數位之後，伺服器上的版本將會換回0。 如果 Chaos 在進行此呼叫時正在執行，此呼叫將會失敗。
 
 ### <a name="arguments"></a>引數
 
@@ -140,5 +140,5 @@ sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z"
 
 
 ## <a name="next-steps"></a>後續步驟
-- [設置](service-fabric-cli.md)服務結構 CLI。
+- [設定](service-fabric-cli.md)Service Fabric CLI。
 - 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。

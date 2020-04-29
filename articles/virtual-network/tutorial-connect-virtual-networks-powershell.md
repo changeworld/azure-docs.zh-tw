@@ -1,5 +1,5 @@
 ---
-title: 將虛擬網路與 VNet 對等互連連接 - Azure PowerShell
+title: 使用 VNet 對等互連來連接虛擬網路-Azure PowerShell
 description: 在本文中，您將了解如何使用 Azure PowerShell，透過虛擬網路對等互連來連線虛擬網路。
 services: virtual-network
 documentationcenter: virtual-network
@@ -16,10 +16,10 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: caa620c2389bb6e2387636bc262ceb2de99d8e34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77201283"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>使用 PowerShell 以虛擬網路對等互連連線虛擬網路
@@ -41,7 +41,7 @@ ms.locfileid: "77201283"
 
 ## <a name="create-virtual-networks"></a>建立虛擬網路
 
-建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下面的示例在*東部*位置創建名為*myResourceGroup*的資源組。
+建立虛擬網路之前，您必須為虛擬網路以及在本文中建立的所有其他資源，建立資源群組。 使用 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
 
 ```azurepowershell-interactive
 New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
@@ -57,7 +57,7 @@ $virtualNetwork1 = New-AzVirtualNetwork `
   -AddressPrefix 10.0.0.0/16
 ```
 
-使用[New-Az 虛擬網路子網配置創建子網配置](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)。 下列範例會建立具有 10.0.0.0/24 位址首碼的子網路組態：
+使用[new-azvirtualnetworksubnetconfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)建立子網設定。 下列範例會建立具有 10.0.0.0/24 位址首碼的子網路組態：
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
@@ -66,7 +66,7 @@ $subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork1
 ```
 
-使用[Set-AzVirtualNetwork](/powershell/module/az.network/Set-azVirtualNetwork)將子網配置寫入虛擬網路，該網路創建子網：
+使用[New-azvirtualnetwork 將](/powershell/module/az.network/Set-azVirtualNetwork)子網設定寫入至虛擬網路，以建立子網：
 
 ```azurepowershell-interactive
 $virtualNetwork1 | Set-AzVirtualNetwork
@@ -94,7 +94,7 @@ $virtualNetwork2 | Set-AzVirtualNetwork
 
 ## <a name="peer-virtual-networks"></a>對等互連虛擬網路
 
-使用[Add-Az 虛擬網路對等互連](/powershell/module/az.network/add-azvirtualnetworkpeering)創建對等互連。 下列範例會將 myVirtualNetwork1** 對等互連至 myVirtualNetwork2**。
+使用[Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)建立對等互連。 下列範例會將 myVirtualNetwork1** 對等互連至 myVirtualNetwork2**。
 
 ```azurepowershell-interactive
 Add-AzVirtualNetworkPeering `
@@ -112,7 +112,7 @@ Add-AzVirtualNetworkPeering `
   -RemoteVirtualNetworkId $virtualNetwork1.Id
 ```
 
-在執行上一個命令之後所傳回的輸出中，您會看到 **PeeringState** 是「已連線」**。 Azure 也會將 myVirtualNetwork1-myVirtualNetwork2** 對等互連的對等互連狀態變更為「已連線」**。 確認*myVirtualNetwork1-myVirtualNetwork2*對等互連的對等狀態更改為"與[獲取-Az虛擬網路對等互連](/powershell/module/az.network/get-azvirtualnetworkpeering)*連接*"。
+在執行上一個命令之後所傳回的輸出中，您會看到 **PeeringState** 是「已連線」**。 Azure 也會將 myVirtualNetwork1-myVirtualNetwork2** 對等互連的對等互連狀態變更為「已連線」**。 確認*myVirtualNetwork1-myVirtualNetwork2*對等互連的對等互連狀態已變更為 [*已連線*] [AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering)。
 
 ```azurepowershell-interactive
 Get-AzVirtualNetworkPeering `
@@ -172,7 +172,7 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-將會建立一個「遠端桌面通訊協定」(.rdp) 檔案、下載至您的電腦並開啟。 輸入使用者名稱和密碼 (您可能需要選取 [更多選擇]****，然後選取 [使用不同的帳戶]**** 以指定您在建立虛擬機器時輸入的認證)，然後按一下 [確定]****。 您可能會在登入過程中收到憑證警告。 按一下"**是**"或 **"繼續**"繼續連接。
+將會建立一個「遠端桌面通訊協定」(.rdp) 檔案、下載至您的電腦並開啟。 輸入使用者名稱和密碼 (您可能需要選取 [更多選擇]****，然後選取 [使用不同的帳戶]**** 以指定您在建立虛擬機器時輸入的認證)，然後按一下 [確定]****。 您可能會在登入過程中收到憑證警告。 按一下 **[是]** 或 [**繼續**] 繼續進行連接。
 
 在 myVm1** 虛擬機器上，讓網際網路控制訊息通訊協定 (ICMP) 通過 Windows 防火牆，您就可以在稍後的步驟中使用 PowerShell 從 myVm2** 針對此虛擬機器進行 Ping 操作：
 
@@ -198,7 +198,7 @@ ping 10.0.0.4
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當不再需要時，請使用[Remove-AzResourcegroup](/powershell/module/az.resources/remove-azresourcegroup)刪除資源組及其包含的所有資源。
+不再需要時，請使用[remove-azresourcegroup](/powershell/module/az.resources/remove-azresourcegroup)移除資源群組及其包含的所有資源。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

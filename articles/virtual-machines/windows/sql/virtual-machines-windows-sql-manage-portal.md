@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 門戶管理 Azure 中的 SQL 伺服器 VM |微軟文檔
-description: 瞭解如何訪問 Azure 門戶中託管在 Azure 上的 SQL Server VM 的 SQL 虛擬機器資源。
+title: 使用 Azure 入口網站在 Azure 中管理 SQL Server Vm |Microsoft Docs
+description: 瞭解如何在 Azure 入口網站中，針對裝載于 Azure 上的 SQL Server VM 存取 SQL 虛擬機器資源。
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,63 +14,63 @@ ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 244ad7d079fd7baf25f8079557576c42d25ca785
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243207"
 ---
-# <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>使用 Azure 門戶管理 Azure 中的 SQL 伺服器 VM
+# <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>使用 Azure 入口網站管理 Azure 中的 SQL Server Vm
 
-在[Azure 門戶](https://portal.azure.com)中 **，SQL 虛擬機器**資源是一個獨立的管理服務。 您可以使用它同時查看所有 SQL Server VM 並修改專用於 SQL Server 的設置： 
+在[Azure 入口網站](https://portal.azure.com)中， **SQL 虛擬機器**資源是獨立的管理服務。 您可以使用它同時查看所有 SQL Server 的 Vm，並修改 SQL Server 專用的設定： 
 
 ![SQL 虛擬機器資源](media/virtual-machines-windows-sql-manage-portal/sql-vm-manage.png)
 
 
 ## <a name="remarks"></a>備註
 
-- 我們建議您使用**SQL 虛擬機器**資源在 Azure 中查看和管理 SQL Server VM。 但是，目前 SQL**虛擬機器**資源不支援[管理支援終止](virtual-machines-windows-sql-server-2008-eos-extend-support.md)SQL Server VM。 要管理支援終止 SQL Server VM 的設置，請使用已棄用的[SQL Server 配置選項卡](#access-the-sql-server-configuration-tab)。 
-- **SQL 虛擬機器**資源僅適用于[已註冊到 SQL VM 資來源提供者的](virtual-machines-windows-sql-register-with-resource-provider.md)SQL Server VM。 
+- 我們建議您在 Azure 中使用**SQL 虛擬機器**資源來查看和管理您的 SQL Server vm。 但目前**SQL 虛擬機器**資源不支援管理 SQL Server vm 的[支援](virtual-machines-windows-sql-server-2008-eos-extend-support.md)。 若要管理 SQL Server Vm 之結束支援的設定，請改用已淘汰的 [ [SQL Server 設定]](#access-the-sql-server-configuration-tab)索引標籤。 
+- **Sql 虛擬機器**資源僅適用于已[向 SQL VM 資源提供者註冊](virtual-machines-windows-sql-register-with-resource-provider.md)的 SQL Server vm。 
 
 
-## <a name="access-the-sql-virtual-machines-resource"></a>訪問 SQL 虛擬機器資源
-要訪問**SQL 虛擬機器**資源，可以執行以下操作：
+## <a name="access-the-sql-virtual-machines-resource"></a>存取 SQL 虛擬機器資源
+若要存取**SQL 虛擬機器**資源，請執行下列動作：
 
-1. 打開[Azure 門戶](https://portal.azure.com)。 
-1. 選擇**所有服務**。 
-1. 在搜索框中輸入**SQL 虛擬機器**。
-1. （可選）：選擇**SQL 虛擬機器**旁邊的星形，將此選項添加到**我的最愛**功能表中。 
-1. 選擇**SQL 虛擬機器**。 
+1. 開啟 [Azure 入口網站](https://portal.azure.com)。 
+1. 選取 [**所有服務**]。 
+1. 在 [搜尋] 方塊中輸入**SQL 虛擬機器**。
+1. （選擇性）：選取 [ **SQL 虛擬機器**] 旁的星號，將此選項新增至您的 [我的最愛 **]** 功能表。 
+1. 選取 **[SQL 虛擬機器**]。 
 
-   ![在所有服務中查找 SQL Server 虛擬機器](media/virtual-machines-windows-sql-manage-portal/sql-vm-search.png)
+   ![在所有服務中尋找 SQL Server 的虛擬機器](media/virtual-machines-windows-sql-manage-portal/sql-vm-search.png)
 
-1. 門戶列出了訂閱中可用的所有 SQL Server VM。 選擇要管理以打開**SQL 虛擬機器**資源。 如果 SQL Server VM 未顯示，請使用搜索框。 
+1. 入口網站會列出訂用帳戶內可用的所有 SQL Server Vm。 選取您想要管理的帳戶，以開啟 [ **SQL 虛擬機器**] 資源。 如果您的 SQL Server VM 未出現，請使用 [搜尋] 方塊。 
 
-   ![所有可用的 SQL 伺服器 VM](media/virtual-machines-windows-sql-manage-portal/all-sql-vms.png)
+   ![所有可用的 SQL Server Vm](media/virtual-machines-windows-sql-manage-portal/all-sql-vms.png)
 
-   選擇 SQL Server VM 將打開**SQL 虛擬機器**資源： 
+   選取您的 SQL Server VM 會開啟 [ **SQL 虛擬機器**] 資源： 
 
 
    ![SQL 虛擬機器資源](media/virtual-machines-windows-sql-manage-portal/sql-vm-resource.png)
 
 > [!TIP]
-> **SQL 虛擬機器**資源用於專用 SQL Server 設置。 在**虛擬機器**框中選擇 VM 的名稱以打開特定于 VM 但不特定于 SQL Server 的設置。 
+> **SQL 虛擬機器**資源適用于專用的 SQL Server 設定。 在 [**虛擬機器**] 方塊中選取 vm 的名稱，以開啟 vm 特定的設定，但不限於 SQL Server。 
 
-## <a name="access-the-sql-server-configuration-tab"></a>訪問 SQL 伺服器配置選項卡
-已棄用**SQL Server 配置**選項卡。 此時，它是管理[支援終止](virtual-machines-windows-sql-server-2008-eos-extend-support.md)SQL Server VM 和尚未[向 SQL VM 資來源提供者註冊的](virtual-machines-windows-sql-register-with-resource-provider.md)SQL Server VM 的唯一方法。
+## <a name="access-the-sql-server-configuration-tab"></a>存取 SQL Server 設定] 索引標籤
+[ **SQL Server**設定] 索引標籤已被取代。 目前，這是管理 SQL Server Vm[終止支援](virtual-machines-windows-sql-server-2008-eos-extend-support.md)的唯一方法，以及尚未[向 SQL VM 資源提供者註冊](virtual-machines-windows-sql-register-with-resource-provider.md)的 SQL Server vm。
 
-要訪問已棄用的**SQL Server 配置**選項卡，請訪問**虛擬機器**資源。 使用下列步驟：
+若要存取已淘汰的**SQL Server**設定] 索引標籤，請移至 [**虛擬機器**] 資源。 使用下列步驟：
 
-1. 打開[Azure 門戶](https://portal.azure.com)。 
-1. 選擇**所有服務**。 
-1. 在搜索框中輸入**虛擬機器**。
-1. （可選）：選擇**虛擬機器**旁邊的星形，將此選項添加到**我的最愛**功能表。 
-1. 選擇**虛擬機器**。 
+1. 開啟 [Azure 入口網站](https://portal.azure.com)。 
+1. 選取 [**所有服務**]。 
+1. 在搜尋方塊中輸入 [**虛擬機器**]。
+1. （選擇性）：選取 [**虛擬機器**] 旁的星號，將此選項新增至您的 [我的最愛 **]** 功能表。 
+1. 選取 [**虛擬機器**]。 
 
-   ![搜索虛擬機器](media/virtual-machines-windows-sql-manage-portal/vm-search.png)
+   ![搜尋虛擬機器](media/virtual-machines-windows-sql-manage-portal/vm-search.png)
 
-1. 門戶列出訂閱中的所有虛擬機器。 選擇要管理以打開**虛擬機器**資源。 如果 SQL Server VM 未顯示，請使用搜索框。 
-1. 在 **"設置"** 窗格中選擇**SQL Server 配置**以管理 SQL Server VM。 
+1. 入口網站會列出訂用帳戶中的所有虛擬機器。 選取您想要管理的帳戶，以開啟 [**虛擬機器**] 資源。 如果您的 SQL Server VM 未出現，請使用 [搜尋] 方塊。 
+1. 在 [設定] 窗格中選取**SQL Server** **設定**]，以管理您的 SQL Server VM。 
 
    ![SQL Server 設定](media/virtual-machines-windows-sql-manage-portal/sql-vm-configuration.png)
 
@@ -78,9 +78,9 @@ ms.locfileid: "79243207"
 
 如需詳細資訊，請參閱下列文章： 
 
-* [Windows VM 上的 SQL 伺服器概述](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Windows VM 上的 SQL 伺服器常見問題解答](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Windows VM 上的 SQL 伺服器定價指南](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Windows VM 上的 SQL 伺服器的版本資訊](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [Windows VM 上的 SQL Server 總覽](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Windows VM 上的 SQL Server 常見問題](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Windows VM 上 SQL Server 的定價指導方針](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [Windows VM 上 SQL Server 的版本資訊](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

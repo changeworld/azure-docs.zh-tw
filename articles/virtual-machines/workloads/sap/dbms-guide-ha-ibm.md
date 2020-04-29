@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 虛擬機器 （VM） 上設置 IBM Db2 HADR |微軟文檔
-description: 在 Azure 虛擬機器 （VM） 上建立 IBM Db2 LUW 的高可用性。
+title: 在 Azure 虛擬機器（Vm）上設定 IBM Db2 HADR |Microsoft Docs
+description: 在 Azure 虛擬機器（Vm）上建立 IBM Db2 LUW 的高可用性。
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
 ms.openlocfilehash: 614ac8b651224a3b6ec605a6bffd520449a1d793
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78926752"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
@@ -48,187 +48,187 @@ ms.locfileid: "78926752"
 
 
 
-# <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>使用起搏器的 SUSE Linux 企業伺服器上的 Azure VM 上 IBM Db2 LUW 的高可用性
+# <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>使用 Pacemaker SUSE Linux Enterprise Server 上的 Azure Vm 上的 IBM Db2 LUW 高可用性
 
-適用于 Linux、UNIX 和 Windows （LUW） 的高[可用性和災害復原 （HADR） 配置](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html)的 IBM Db2 由運行主資料庫實例的一個節點和至少一個運行次要資料庫實例的節點組成。 對主資料庫實例的更改會同步或非同步複製到次要資料庫實例，具體取決於您的配置。 
+[高可用性和嚴重損壞修復（HADR）](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_10.5.0/com.ibm.db2.luw.admin.ha.doc/doc/c0011267.html)設定中的 IBM Db2 for LINUX、UNIX 和 WINDOWS （LUW）是由一個執行主資料庫實例的節點，以及至少一個執行次要資料庫實例的節點所組成。 主資料庫實例的變更會以同步或非同步方式複寫到次要資料庫實例，視您的設定而定。 
 
-本文介紹如何部署和配置 Azure 虛擬機器 （VM）、安裝群集框架以及使用 HADR 配置安裝 IBM Db2 LUW。 
+本文說明如何部署和設定 Azure 虛擬機器（Vm）、安裝叢集架構，以及安裝具有 HADR 設定的 IBM Db2 LUW。 
 
-本文不介紹如何使用 HADR 或 SAP 軟體安裝來安裝和配置 IBM Db2 LUW。 為了説明您完成這些任務，我們提供了 SAP 和 IBM 安裝手冊的參考。 本文重點介紹特定于 Azure 環境的部件。 
+本文並未涵蓋如何使用 HADR 或 SAP 軟體安裝來安裝和設定 IBM Db2 LUW。 為了協助您完成這些工作，我們提供 SAP 和 IBM 安裝手冊的參考。 本文著重于 Azure 環境的特定元件。 
 
-支援的 IBM Db2 版本是 10.5 及更高版本，如 SAP 注釋[1928533]中所述。
+支援的 IBM Db2 版本為10.5 和更新版本，如 SAP 附注[1928533]中所述。
 
-在開始安裝之前，請參閱以下 SAP 說明和文檔：
+在開始安裝之前，請參閱下列 SAP 附注和檔：
 
-| SAP 注釋 | 描述 |
+| SAP 附注 | 描述 |
 | --- | --- |
-| [1928533] | Azure 上的 SAP 應用程式：受支援的產品和 Azure VM 類型 |
-| [2015553] | Azure 上的 SAP：支援先決條件 |
-| [2178632] | Azure 上 SAP 的關鍵監視指標 |
-| [2191498] | 使用 Azure 在 Linux 上 SAP：增強的監視 |
-| [2243692] | Azure （IaaS） VM 上的 Linux：SAP 許可證問題 |
+| [1928533] | Azure 上的 SAP 應用程式：支援的產品和 Azure VM 類型 |
+| [2015553] | Azure 上的 SAP：支援必要條件 |
+| [2178632] | Azure 上的 SAP 的重要監視計量 |
+| [2191498] | Linux 上使用 Azure 的 SAP：增強型監視 |
+| [2243692] | Linux on Azure （IaaS） VM： SAP 授權問題 |
 | [1984787] | SUSE LINUX Enterprise Server 12：安裝注意事項 |
 | [1999351] | 對適用於 SAP 的增強型 Azure 監視功能進行疑難排解 |
-| [2233094] | DB6：在 Azure 上使用 IBM Db2 進行 Linux、UNIX 和 Windows 的 SAP 應用程式 - 其他資訊 |
-| [1612105] | DB6：DB2 上的常見問題解答，帶 HADR |
+| [2233094] | DB6： Azure 上使用 IBM Db2 for Linux、UNIX 和 Windows 的 SAP 應用程式-其他資訊 |
+| [1612105] | DB6： Db2 上的使用 HADR 的常見問題 |
 
 
 | 文件 | 
 | --- |
-| [SAP社區維琪](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)：擁有所有必需的 LINUX SAP 說明 |
-| [在 Linux 指南上為 SAP 規劃和實現的 Azure 虛擬機器][planning-guide] |
-| [在 Linux 上為 SAP 部署的 Azure 虛擬機器][deployment-guide]（本文） |
-| [Azure 虛擬機器資料庫管理系統 （DBMS） 在 Linux 指南上為 SAP 部署][dbms-guide] |
+| [Sap 社區 Wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)：包含適用于 Linux 的所有必要 SAP 附注 |
+| [適用于 SAP On Linux 的 Azure 虛擬機器規劃和執行][planning-guide]指南 |
+| [適用于 SAP On Linux 的 Azure 虛擬機器部署][deployment-guide]（本文） |
+| [適用于 SAP On Linux 的 Azure 虛擬機器資料庫管理系統（DBMS）部署][dbms-guide]指南 |
 | [Azure 上 SAP 工作負載的規劃和部署檢查清單][azr-sap-plancheck] |
-| [用於 SAP 應用程式的 SUSE Linux 企業伺服器 12 SP4 最佳實踐指南][sles-for-sap-bp] |
-| [SUSE Linux 企業高可用性擴展 12 SP4][sles-ha-guide] |
-| [IBM Db2 Azure 虛擬機器 DBMS 部署，用於 SAP 工作負荷][dbms-db2] |
-| [IBM Db2 HADR 11.1][db2-hadr-11.1] |
-| [IBM Db2 HADR R 10.5][db2-hadr-10.5] |
+| [適用于 SAP 應用程式的 SUSE Linux Enterprise Server 12 SP4 最佳做法指南][sles-for-sap-bp] |
+| [SUSE Linux Enterprise 高可用性擴充功能 12 SP4][sles-ha-guide] |
+| [適用于 SAP 工作負載的 IBM Db2 Azure 虛擬機器 DBMS 部署][dbms-db2] |
+| [IBM Db2 HADR 11。1][db2-hadr-11.1] |
+| [IBM Db2 HADR R 10。5][db2-hadr-10.5] |
 
 ## <a name="overview"></a>總覽
-為了實現高可用性，IBM Db2 LUW 與 HADR 安裝在至少兩個 Azure 虛擬機器上，它們部署在[Azure 可用性集中](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)或跨[Azure 可用性區域](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)。 
+為了達到高可用性，IBM Db2 LUW with HADR 會安裝在至少兩個 Azure 虛擬機器上，它們會部署在[azure 可用性設定組](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)或跨[Azure 可用性區域](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones)。 
 
-下圖顯示兩個資料庫伺服器 Azure VM 的設置。 兩個資料庫伺服器 Azure VM 都附加了自己的存儲，並且已啟動並運行。 在 HADR 中，其中一個 Azure VM 中的一個資料庫實例具有主實例的角色。 所有用戶端都連接到此主實例。 資料庫事務中的所有更改都保存在 Db2 事務日誌中本地。 當事務日誌記錄在本地保留時，記錄通過 TCP/IP 傳輸到第二個資料庫伺服器、待命伺服器或備用實例上的資料庫實例。 備用實例通過向前滾動傳輸的事務日誌記錄來更新本機資料庫。 這樣，待命伺服器與主伺服器保持同步。
+下列圖形顯示兩個資料庫伺服器 Azure Vm 的設定。 這兩個資料庫伺服器 Azure Vm 都有自己的儲存體，且已啟動並執行。 在 HADR 中，其中一個 Azure Vm 中的一個資料庫實例具有主要實例的角色。 所有用戶端都已連線到此主要實例。 資料庫交易中的所有變更都會保存在 Db2 交易記錄檔的本機。 當交易記錄檔記錄在本機保存時，記錄會透過 TCP/IP 傳輸到第二個資料庫伺服器、待命伺服器或待命實例上的資料庫實例。 待命實例會藉由向前復原已傳送的交易記錄檔記錄來更新本機資料庫。 如此一來，待命伺服器就會與主伺服器保持同步。
 
-HADR 只是一種複製功能。 它沒有故障檢測，也沒有自動接管或容錯移轉設施。 接管或傳輸到待命伺服器必須由資料庫管理員手動啟動。 要實現自動接管和故障檢測，可以使用 Linux 起搏器聚類功能。 起搏器監視兩個資料庫伺服器實例。 當主資料庫伺服器實例崩潰時，Pacemaker 會啟動待命伺服器*的自動*HADR 接管。 起搏器還確保將虛擬 IP 位址分配給新的主伺服器。
+HADR 只是一種複寫功能。 它沒有任何失敗偵測，也沒有自動接管或容錯移轉功能。 待命伺服器的接管或轉移必須由資料庫管理員手動起始。 若要達成自動接管和失敗偵測，您可以使用 Linux Pacemaker 叢集功能。 Pacemaker 會監視兩個資料庫伺服器實例。 當主資料庫伺服器實例損毀時，Pacemaker 會由待命伺服器起始*自動*HADR 接管。 Pacemaker 也可確保將虛擬 IP 位址指派給新的主伺服器。
 
-![IBM Db2 高可用性概述](./media/dbms-guide-ha-ibm/ha-db2-hadr-lb.png)
+![IBM Db2 高可用性總覽](./media/dbms-guide-ha-ibm/ha-db2-hadr-lb.png)
 
-要使 SAP 應用程式伺服器連接到主資料庫，您需要一個虛擬主機名稱和一個虛擬 IP 位址。 如果發生容錯移轉，SAP 應用程式伺服器將連接到新的主資料庫實例。 在 Azure 環境中，需要[Azure 負載等化器](https://microsoft.sharepoint.com/teams/WAG/AzureNetworking/Wiki/Load%20Balancing.aspx)以 IBM Db2 的 HADR 所需的方式使用虛擬 IP 位址。 
+若要讓 SAP 應用程式伺服器連接到主資料庫，您需要虛擬主機名稱和虛擬 IP 位址。 在容錯移轉的情況下，SAP 應用程式伺服器將會連接到新的主資料庫實例。 在 Azure 環境中，需要有[azure 負載平衡器](https://microsoft.sharepoint.com/teams/WAG/AzureNetworking/Wiki/Load%20Balancing.aspx)，才能使用虛擬 IP 位址，這是針對 IBM Db2 HADR 所需的方式。 
 
-為了説明您完全理解 IBM Db2 LUW 與 HADR 和起搏器如何適應高可用 SAP 系統設置，下圖概述了基於 IBM Db2 資料庫的 SAP 系統的高度可用設置。 本文僅介紹 IBM Db2，但它提供了有關如何設置 SAP 系統其他元件的其他文章的參考。
+為了協助您完全瞭解 IBM Db2 LUW with HADR 和 Pacemaker 如何融入高可用性的 SAP 系統設定，下圖提供以 IBM Db2 資料庫為基礎之 SAP 系統的高可用性設定總覽。 本文僅涵蓋 IBM Db2，但它提供有關如何設定 SAP 系統之其他元件的其他文章參考。
 
-![IBM DB2 高可用性全環境概述](.//media/dbms-guide-ha-ibm/end-2-end-ha.png)
+![IBM DB2 高可用性完整環境總覽](.//media/dbms-guide-ha-ibm/end-2-end-ha.png)
 
 
-### <a name="high-level-overview-of-the-required-steps"></a>所需步驟的高級概述
-要部署 IBM Db2 配置，您需要執行以下步驟：
+### <a name="high-level-overview-of-the-required-steps"></a>必要步驟的高階總覽
+若要部署 IBM Db2 設定，您需要遵循下列步驟：
 
   + 規劃您的環境。
-  + 部署 VM。
-  + 更新 SUSE Linux 並配置檔案系統。
-  + 安裝和配置起搏器。
-  + 安裝[高可用 NFS][nfs-ha]。
-  + 在[單獨的群集上安裝 ASCS/ERS。][ascs-ha]
-  + 使用分散式/高可用性選項 （SWPM） 安裝 IBM Db2 資料庫。
-  + 安裝並創建次要資料庫節點和實例，並配置 HADR。
-  + 確認 HADR 工作。
-  + 應用起搏器配置來控制 IBM Db2。
-  + 配置 Azure 負載等化器。
-  + 安裝主應用程式伺服器和對話方塊應用程式伺服器。
-  + 檢查和調整 SAP 應用程式伺服器的配置。
+  + 部署 Vm。
+  + 更新 SUSE Linux 並設定檔案系統。
+  + 安裝和設定 Pacemaker。
+  + 安裝[高可用性 NFS][nfs-ha]。
+  + [在不同的叢集上安裝 ASCS/ERS][ascs-ha]。
+  + 安裝具有分散式/高可用性選項（SWPM）的 IBM Db2 資料庫。
+  + 安裝並建立次要資料庫節點和實例，並設定 HADR。
+  + 確認 HADR 正在運作。
+  + 套用 Pacemaker 設定來控制 IBM Db2。
+  + 設定 Azure Load Balancer。
+  + 安裝主要和對話方塊應用程式伺服器。
+  + 檢查並調整 SAP 應用程式伺服器的設定。
   + 執行容錯移轉和接管測試。
 
 
 
-## <a name="plan-azure-infrastructure-for-hosting-ibm-db2-luw-with-hadr"></a>規劃 Azure 基礎結構，以便使用 HADR 託管 IBM Db2 LUW
+## <a name="plan-azure-infrastructure-for-hosting-ibm-db2-luw-with-hadr"></a>規劃使用 HADR 裝載 IBM Db2 LUW 的 Azure 基礎結構
 
-在執行部署之前完成規劃過程。 規劃為在 Azure 中部署具有 HADR 的 Db2 配置奠定了基礎。 下表列出了需要作為 IMB Db2 LUW（SAP 環境資料庫部分）規劃一部分的關鍵元素：
+在執行部署之前，請先完成規劃程式。 規劃會建立在 Azure 中使用 HADR 部署 Db2 設定的基礎。 下表列出需要屬於規劃 IMB-M43 Db2 LUW （SAP 環境的資料庫部分）的重要元素：
 
 | 主題 | 簡短描述 |
 | --- | --- |
-| 定義 Azure 資源組 | 部署 VM、VNet、Azure 負載平衡器和其他資源的資源組。 可以是現有的，也可以是新的。 |
-| 虛擬網路/子網定義 | 部署 IBM Db2 和 Azure 負載等化器的 VM 的位置。 可以現有或新創建。 |
-| 託管 IBM Db2 LUW 的虛擬機器 | VM 大小、存儲、網路、IP 位址。 |
-| IBM Db2 資料庫的虛擬主機名稱和虛擬 IP| 用於連接 SAP 應用程式伺服器的虛擬 IP 或主機名稱。 **db-virt-主機名稱** **db-virt-ip**。 |
-| Azure 遮罩 | Azure 遮罩或 SBD 遮罩（強烈建議）。 避免大腦分裂的方法。 |
-| SBD VM | SBD 虛擬機器大小、存儲、網路。 |
-| Azure Load Balancer | 使用 Db2 資料庫的基本或標準（建議）探測埠（我們的建議 62500）**探針埠**。 |
-| 名稱解析| 名稱解析在環境中的工作原理。 強烈建議提供 DNS 服務。 可以使用本地主機檔。 |
+| 定義 Azure 資源群組 | 您部署 VM、VNet、Azure Load Balancer 和其他資源的資源群組。 可以是現有或新的。 |
+| 虛擬網路/子網定義 | 要在其中部署 IBM Db2 和 Azure Load Balancer 的 Vm。 可以是現有或新建立的。 |
+| 裝載 IBM Db2 LUW 的虛擬機器 | VM 大小、儲存體、網路、IP 位址。 |
+| IBM Db2 資料庫的虛擬主機名稱和虛擬 IP| 用來連接 SAP 應用程式伺服器的虛擬 IP 或主機名稱。 **virt-hostname**、 **db-virt-ip**。 |
+| Azure 隔離 | Azure 防護或 SBD 隔離（強烈建議）。 避免分裂腦情況的方法。 |
+| SBD VM | SBD 虛擬機器大小、儲存體、網路。 |
+| Azure Load Balancer | 使用基本或標準（建議），適用于 Db2 資料庫的探查埠（我們的建議62500）**探查-埠**。 |
+| 名稱解析| 名稱解析在環境中的運作方式。 強烈建議使用 DNS 服務。 可以使用本機主機檔案。 |
     
-有關 Azure 中的 Linux 起搏器的詳細資訊，請參閱[在 Azure 中的 SUSE Linux 企業伺服器上設置起搏器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)。
+如需 Azure 中 Linux Pacemaker 的詳細資訊，請參閱在[azure 中的 SUSE Linux Enterprise Server 上設定 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)。
 
 ## <a name="deployment-on-suse-linux"></a>在 SUSE Linux 上部署
 
-IBM Db2 LUW 的資源代理包含在 SAP 應用程式的 SUSE Linux 企業伺服器中。 對於本文檔中描述的設置，必須使用 SAP 應用程式的 SUSE Linux 伺服器。 Azure 應用商店包含用於 SAP 應用程式 SUSE 企業伺服器 12 的映射，可用於部署新的 Azure 虛擬機器。 在 Azure VM 應用商店中選擇 VM 映射時，請注意 SUSE 通過 Azure 應用商店提供的各種支援或服務模型。 
+IBM Db2 LUW 的資源代理套裝程式含在適用于 SAP 應用程式的 SUSE Linux Enterprise Server 中。 針對本檔中所述的設定，您必須使用適用于 SAP 應用程式的 SUSE Linux Server。 Azure Marketplace 包含 SUSE Enterprise Server for SAP Applications 12 的映射，您可以用來部署新的 Azure 虛擬機器。 當您選擇 Azure VM Marketplace 中的 VM 映射時，請留意 SUSE 透過 Azure Marketplace 提供的各種支援或服務模型。 
 
-### <a name="hosts-dns-updates"></a>主機：DNS 更新
-列出所有主機名稱（包括虛擬主機名稱），並更新 DNS 伺服器以啟用正確的 IP 位址以解析主機名稱。 如果 DNS 伺服器不存在，或者您無法更新和創建 DNS 條目，則需要使用參與此方案的各個 VM 的本地主機檔。 如果使用主機檔條目，請確保這些條目已應用於 SAP 系統內容中的所有 VM。 但是，我們建議您使用 DNS，理想情況下，DNS 會擴展到 Azure
+### <a name="hosts-dns-updates"></a>主機： DNS 更新
+建立所有主機名稱的清單，包括虛擬主機名稱，並更新您的 DNS 伺服器，以啟用適當的 IP 位址來解析主機名稱。 如果 DNS 伺服器不存在，或您無法更新及建立 DNS 專案，您必須使用參與此案例之個別 Vm 的本機主機檔案。 如果您使用的是主機檔案專案，請確定專案會套用至 SAP 系統內容中的所有 Vm。 不過，我們建議您最好使用您的 DNS，這在理想情況下會延伸到 Azure
 
 
 ### <a name="manual-deployment"></a>手動部署
 
-確保 IBM/SAP 支援 IBM Db2 LUW 的選定作業系統。 Azure VM 和 Db2 版本的受支援作業系統版本清單在 SAP 注釋[1928533 中]提供。 各個 Db2 版本的作業系統版本清單在 SAP 產品可用性矩陣中提供。 我們強烈建議至少使用 SLES 12 SP4，因為在此或更高版本的 SUSE Linux 版本中，與 Azure 相關的性能改進。
+請確定 ibm/SAP 已針對 IBM Db2 LUW 支援所選的作業系統。 Azure Vm 和 Db2 版本支援的 OS 版本清單可在 SAP 附注[1928533]中取得。 SAP 產品可用性對照表提供個別 Db2 版本的 OS 版本清單。 我們強烈建議至少 SLES 12 SP4，因為此或更新版本的 SUSE Linux 版本中有與 Azure 相關的效能改進。
 
-1. 創建或選擇資源組。
-1. 創建或選擇虛擬網路和子網。
-1. 創建 Azure 可用性集或部署可用性區域。
-    + 對於可用性集，將最大更新域設置為 2。
-1. 創建虛擬機器 1。
-    + 在 Azure 應用商店中對 SAP 映射使用 SLES。
-    + 選擇在步驟 3 中創建的 Azure 可用性集，或選擇"可用性區域"。
-1.  創建虛擬機器 2。
-    + 在 Azure 應用商店中對 SAP 映射使用 SLES。
-    + 選擇在步驟 3 中創建的 Azure 可用性集，或選擇可用性區域（與步驟 3 中不同的區域）。
-1. 將資料磁片添加到 VM，然後檢查文章 IBM [Db2 Azure 虛擬機器 DBMS 部署 SAP 工作負載][dbms-db2]中的檔案系統設置的建議。
+1. 建立或選取資源群組。
+1. 建立或選取虛擬網路和子網。
+1. 建立 Azure 可用性設定組或部署可用性區域。
+    + 針對可用性設定組，將 [更新網域上限] 設定為2。
+1. 建立虛擬機器1。
+    + 在 Azure Marketplace 中使用 SLES for SAP 映射。
+    + 選取您在步驟3中建立的 Azure 可用性設定組，或選取 [可用性區域]。
+1.  建立虛擬機器2。
+    + 在 Azure Marketplace 中使用 SLES for SAP 映射。
+    + 選取您在步驟3中建立的 Azure 可用性設定組，或選取 [可用性區域] （與步驟3中的區域不同）。
+1. 將資料磁片新增至 Vm，然後在[適用于 SAP 工作負載的 IBM Db2 Azure 虛擬機器 DBMS 部署][dbms-db2]一文中，檢查檔案系統設定的建議。
 
 ## <a name="create-the-pacemaker-cluster"></a>建立 Pacemaker 叢集
     
-要為此 IBM Db2 伺服器創建基本起搏器群集，請參閱 [在 Azure 中的 SUSE Linux 企業伺服器上設置起搏器][sles-pacemaker]。 
+若要建立此 IBM Db2 伺服器的基本 Pacemaker 叢集，請參閱 [在 Azure 中的 SUSE Linux Enterprise Server 上設定 Pacemaker][sles-pacemaker]。 
 
 ## <a name="install-the-ibm-db2-luw-and-sap-environment"></a>安裝 IBM Db2 LUW 和 SAP 環境
 
-在開始安裝基於 IBM Db2 LUW 的 SAP 環境之前，請查看以下文檔：
+在您開始安裝以 IBM Db2 LUW 為基礎的 SAP 環境之前，請先參閱下列檔：
 
 + Azure 文件
-+ SAP 文檔
-+ IBM 文檔
++ SAP 檔
++ IBM 檔
 
-本文檔的連結在本文的介紹部分提供。
+本文的簡介一節會提供這份檔的連結。
 
-查看有關在 IBM Db2 LUW 上安裝基於 NetWeaver 的應用程式的 SAP 安裝手冊。
+請參閱 SAP 安裝手冊，以瞭解如何在 IBM Db2 LUW 上安裝 NetWeaver 應用程式。
 
-您可以使用[SAP 安裝指南查找器][sap-instfind]在 SAP 説明門戶上找到指南。
+您可以使用[Sap 安裝指南搜尋工具][sap-instfind]，在 sap 說明入口網站上找到指南。
 
-您可以通過設置以下篩選器來減少門戶中顯示的輔助線數量：
+您可以藉由設定下列篩選來減少入口網站中顯示的指南數目：
 
-- 我想："安裝一個新系統"
-- 我的資料庫："用於 Linux、Unix 和 Windows 的 IBM Db2"
-- 用於 SAP NetWeaver 版本、堆疊配置或作業系統的其他篩選器
+- 我想要：「安裝新的系統」
+- 我的資料庫：「IBM Db2 for Linux，Unix，and Windows」
+- SAP NetWeaver 版本、堆疊設定或作業系統的其他篩選器
 
-### <a name="installation-hints-for-setting-up-ibm-db2-luw-with-hadr"></a>安裝提示，用於使用 HADR 設置 IBM Db2 LUW
+### <a name="installation-hints-for-setting-up-ibm-db2-luw-with-hadr"></a>使用 HADR 設定 IBM Db2 LUW 的安裝提示
 
-要設置主 IBM Db2 LUW 資料庫實例，
+若要設定主要的 IBM Db2 LUW 資料庫實例：
 
-- 使用高可用性或分散式選項。
+- 使用 [高可用性] 或 [分散式] 選項。
 - 安裝 SAP ASCS/ERS 和資料庫實例。
-- 備份新安裝的資料庫。
+- 製作新安裝之資料庫的備份。
 
 
 > [!IMPORTANT] 
-> 記下安裝期間設置的"資料庫通訊連接埠"。 對於兩個資料庫實例，它必須是相同的埠號
+> 記下在安裝期間設定的「資料庫通訊埠」。 這兩個資料庫實例的埠號碼必須相同
 
-要使用 SAP 同質系統複製過程設置備用資料庫伺服器，請執行以下步驟：
+若要使用 SAP 同質系統複製程式來設定待命資料庫伺服器，請執行下列步驟：
 
-1. 選擇 **"系統複製**選項>**目標系統** > **分散式** > **資料庫實例**。
-1. 作為複製方法，選擇 **"同質系統"，** 以便可以使用備份還原待命伺服器實例上的備份。
-1. 當您到達用於還原資料庫以進行同質系統複製的退出步驟時，請退出安裝程式。 從主主機的備份還原資料庫。 所有後續安裝階段已在主資料庫伺服器上執行。
-1. 為 IBM Db2 設置 HADR。
+1. 選取 [**系統複製**選項] > [**目標系統** > ] [**分散式** > **資料庫實例**]。
+1. 在 [複製方法] 中，選取 [**同質系統**]，讓您可以使用 [備份] 來還原待命伺服器實例上的備份。
+1. 當您到達針對同質系統複製還原資料庫的結束步驟時，請結束安裝程式。 從主要主機的備份還原資料庫。 所有後續的安裝階段都已經在主資料庫伺服器上執行。
+1. 設定適用于 IBM Db2 的 HADR。
 
    > [!NOTE]
-   > 對於特定于 Azure 和起搏器的安裝和配置：在通過 SAP 軟體組態管理員進行安裝過程中，存在關於 IBM Db2 LUW 高可用性的明確問題：
-   >+ 不要選擇**IBM Db2 純標額**。
-   >+ 不要選擇**為多平臺安裝 IBM Tivoli 系統自動化**。
-   >+ 不要選擇 **"生成群集設定檔**"。
+   > 針對 Azure 和 Pacemaker 的特定安裝和設定：在透過 SAP 軟體布建管理員進行安裝程式期間，IBM Db2 LUW 的高可用性有明確的問題：
+   >+ 請勿選取 [ **IBM Db2 pureScale**]。
+   >+ 請勿選取 [**安裝適用于 Multiplatforms 的 IBM Tivoli 系統自動化**]。
+   >+ 請勿選取 [**產生叢集設定檔**]。
 
-   當您為 Linux 起搏器使用 SBD 設備時，設置以下 Db2 HADR 參數：
-   + HADR 對等視窗持續時間（秒） （HADR_PEER_WINDOW） = 300  
-   + HADR 超時值 （HADR_TIMEOUT） = 60
+   當您使用適用于 Linux Pacemaker 的 SBD 裝置時，請設定下列 Db2 HADR 參數：
+   + HADR 對等視窗持續時間（秒）（HADR_PEER_WINDOW） = 300  
+   + HADR timeout 值（HADR_TIMEOUT） = 60
 
-   使用 Azure 起搏器擊劍代理時，設置以下參數：
-   + HADR 對等視窗持續時間（秒） （HADR_PEER_WINDOW） = 900  
-   + HADR 超時值 （HADR_TIMEOUT） = 60
+   當您使用 Azure Pacemaker 防護代理程式時，請設定下列參數：
+   + HADR 對等視窗持續時間（秒）（HADR_PEER_WINDOW） = 900  
+   + HADR timeout 值（HADR_TIMEOUT） = 60
 
-我們建議基於初始容錯移轉/接管測試的上述參數。 您必須使用這些參數設置測試容錯移轉和接管的正確功能。 由於單個配置可能有所不同，因此參數可能需要調整。 
+我們建議以初始容錯移轉/接管測試為基礎的先前參數。 您必須測試是否有適當的容錯移轉功能，並使用這些參數設定接管。 因為個別的設定可能有所不同，所以參數可能需要調整。 
 
 > [!IMPORTANT]
-> 特定于具有 HADR 配置且具有正常啟動的 IBM Db2：次要資料庫或備用資料庫實例必須啟動並運行，然後才能啟動主資料庫實例。
+> 專屬於具有一般啟動之 HADR 設定的 IBM Db2：次要或待命資料庫實例必須已啟動並執行，您才能啟動主資料庫實例。
 
-為了演示目的和本文中描述的過程，資料庫 SID 是**PTR**。
+為了示範用途和本文所述的程式，資料庫 SID 是**PTR**。
 
-#### <a name="ibm-db2-hadr-check"></a>IBM Db2 哈德哈德檢查
-配置 HADR 後，狀態為"PEER"和"在主節點和備用節點上連接"，請執行以下檢查：
+#### <a name="ibm-db2-hadr-check"></a>IBM Db2 HADR 檢查
+在您設定了 HADR，且主要和待命節點上的狀態為 [對等] 和 [已連線] 之後，請執行下列檢查：
 
 <pre><code>
 Execute command as db2&lt;sid&gt; db2pd -hadr -db &lt;SID&gt;
@@ -330,38 +330,38 @@ Execute command as db2&lt;sid&gt; db2pd -hadr -db &lt;SID&gt;
 
 
 
-## <a name="db2-pacemaker-configuration"></a>Db2 起搏器配置
+## <a name="db2-pacemaker-configuration"></a>Db2 Pacemaker 設定
 
-在節點發生故障時，使用起搏器進行自動容錯移轉時，需要相應地配置 Db2 實例和起搏器。 本節介紹這種類型的配置。
+當您在發生節點失敗時，使用 Pacemaker 進行自動容錯移轉時，您必須據以設定 Db2 實例和 Pacemaker。 本節說明這種類型的設定。
 
-以下項以以下任一項為預綴：
+下列專案的前面會加上：
 
-- **[A]**： 適用于所有節點
-- **[1]**： 僅適用于節點 1 
-- **[2]**： 僅適用于節點 2
+- **[A]**：適用于所有節點
+- **[1]**：僅適用于節點1 
+- **[2]**：僅適用于節點2
 
-**[A]** 起搏器配置的先決條件：
-1. 使用 db2stop 關閉使用者\<db2 sid>兩個資料庫伺服器。
-1. 將 db2\<sid>使用者的 shell 環境更改為 */bin/ksh*。 我們建議您使用 Yast 工具。 
+**[A] Pacemaker 設定**的必要條件：
+1. 以 db2stop 的使用者 db2\<sid> 關閉這兩個資料庫伺服器。
+1. 將 [db2\<sid> 使用者的 shell 環境] 變更為 [ */bin/ksh*]。 建議您使用 Yast 工具。 
 
 
-### <a name="pacemaker-configuration"></a>起搏器配置
+### <a name="pacemaker-configuration"></a>Pacemaker 設定
 
 > [!IMPORTANT]
-> 最近的測試揭示了 Netcat 由於積壓和僅處理一個連接的限制而停止回應請求的情況。 netcat 資源停止偵聽 Azure 負載等化器請求，浮動 IP 將不可用。  
-> 對於現有的起搏器集群，我們過去曾建議用索卡特取代網貓。 目前，我們建議使用 Azure-lb 資源代理（這是包資源代理的一部分），具有以下包版本要求：
-> - 對於 SLES 12 SP4/SP5，版本必須至少為資源代理-4.3.018.a7fb5035-3.30.1。  
-> - 對於 SLES 15/15 SP1，版本必須至少為資源代理-4.3.0184.6ee15eb2-4.13.1。  
+> 最近的測試顯示的情況下，netcat 會因待處理專案而停止回應要求，而且其限制只會處理一個連接。 Netcat 資源會停止接聽 Azure 負載平衡器要求，而浮動 IP 會變成無法使用。  
+> 針對現有的 Pacemaker 叢集，我們建議在過去將 netcat 取代為 socat。 目前，我們建議使用 azure-lb 資源代理程式，這是套件資源代理程式的一部分，並具有下列套件版本需求：
+> - 對於 SLES 12 SP4/SP5，版本必須至少是 4.3.018. a7fb5035-3.30.1。  
+> - SLES 15/15 SP1 的版本至少必須是資源代理程式-4.3.0184.6 ee15eb2-4.13.1。  
 >
-> 請注意，更改將需要短暫的停機時間。  
-> 對於現有的起搏器群集，如果配置已更改為使用[Azure 負載等化器檢測強化](https://www.suse.com/support/kb/doc/?id=7024128)中所述的 socat，則無需立即切換到 Azure-lb 資源代理。
+> 請注意，變更將需要短暫的停機時間。  
+> 針對現有的 Pacemaker 叢集，如果設定已變更為使用 socat （如[Azure 負載平衡器偵測強化](https://www.suse.com/support/kb/doc/?id=7024128)中所述），則不需要立即切換至 azure-lb 資源代理程式。
 
-**[1]** IBM Db2 特定于 HADR 的起搏器配置：
+**[1]** IBM Db2 HADR 特定的 Pacemaker 設定：
 <pre><code># Put Pacemaker into maintenance mode
 sudo crm configure property maintenance-mode=true
 </code></pre>
 
-**[1]** 創建 IBM Db2 資源：
+**[1]** 建立 IBM Db2 資源：
 <pre><code># Replace **bold strings** with your instance name db2sid, database SID, and virtual IP address/Azure Load Balancer.
 
 sudo crm configure primitive rsc_Db2_db2ptr_<b>PTR</b> db2 \
@@ -395,148 +395,148 @@ sudo crm configure rsc_defaults migration-threshold=5000
 </code></pre>
 
 **[1]** 啟動 IBM Db2 資源：
-* 將起搏器置於維護模式。
+* 將 Pacemaker 置於維護模式之外。
 <pre><code># Put Pacemaker out of maintenance-mode - that start IBM Db2
 sudo crm configure property maintenance-mode=false</pre></code>
 
-**{1}** 確保群集狀態正常，並且所有資源都已啟動。 資源運行的節點並不重要。
+**[1]** 確定叢集狀態為 [確定]，而且所有資源都已啟動。 資源執行所在的節點並不重要。
 <pre><code>sudo crm status</code>
 
-# <a name="2-nodes-configured"></a>配置了 2 個節點
-# <a name="5-resources-configured"></a>配置了 5 個資源
+# <a name="2-nodes-configured"></a>2個設定的節點
+# <a name="5-resources-configured"></a>已設定5個資源
 
-# <a name="online--azibmdb01-azibmdb02-"></a>線上： [ azibmdb01 azibmdb02 ]
+# <a name="online--azibmdb01-azibmdb02-"></a>線上： [azibmdb01 azibmdb02]
 
-# <a name="full-list-of-resources"></a>資源的完整清單：
+# <a name="full-list-of-resources"></a>完整的資源清單：
 
-#  <a name="stonith-sbd----stonithexternalsbd-started-azibmdb02"></a>石石石-sbd（石石：外部/sbd）：開始 azibmdb02
-#  <a name="resource-group-g_ip_db2ptr_ptr"></a>資源組：g_ip_db2ptr_PTR
-#      <a name="rsc_ip_db2ptr_ptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR（ocf：心跳：IPaddr2）：啟動 azibmdb02
-#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatazure-lb------started-azibmdb02"></a>rsc_nc_db2ptr_PTR（ocf：：心跳：azure-lb）：啟動 azibmdb02
-#  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>主/從集：msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
-#      <a name="masters--azibmdb02-"></a>大師： [ azibmdb02 ]
-#      <a name="slaves--azibmdb01-"></a>奴隸： [ azibmdb01 ]
+#  <a name="stonith-sbd----stonithexternalsbd-started-azibmdb02"></a>stonith-sbd （stonith： external/sbd）：已啟動 azibmdb02
+#  <a name="resource-group-g_ip_db2ptr_ptr"></a>資源群組： g_ip_db2ptr_PTR
+#      <a name="rsc_ip_db2ptr_ptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR （ocf：：心跳： IPaddr2）：已啟動 azibmdb02
+#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatazure-lb------started-azibmdb02"></a>rsc_nc_db2ptr_PTR （ocf：：心跳： azure-lb）：已啟動 azibmdb02
+#  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>主要/從屬集： msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
+#      <a name="masters--azibmdb02-"></a>主機： [azibmdb02]
+#      <a name="slaves--azibmdb01-"></a>從屬節點： [azibmdb01]
 </pre>
 
 > [!IMPORTANT]
-> 您必須使用起搏器工具管理起搏器群集 Db2 實例。 如果使用 db2 命令（如 db2stop），Pacemaker 會將該操作檢測為資源故障。 如果執行維護，可以將節點或資源置於維護模式。 起搏器將暫停監視資源，然後您可以使用正常的 db2 管理命令。
+> 您必須使用 Pacemaker 工具來管理 Pacemaker 叢集 Db2 實例。 如果您使用 db2 命令（例如 db2stop），Pacemaker 會將動作偵測為資源失敗。 如果您正在執行維護，您可以將節點或資源置於維護模式。 Pacemaker 會暫停監視資源，然後您就可以使用一般的 db2 管理命令。
 
 
 ### <a name="configure-azure-load-balancer"></a>設定 Azure 負載平衡器
-要配置 Azure 負載等化器，我們建議您使用 Azure 標準負載等化器 SKU，然後執行以下操作;因此，請使用[Azure 標準負載等化器 SKU。](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)
+若要設定 Azure Load Balancer，建議使用[Azure STANDARD LOAD BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) ，然後執行下列動作：
 
 > [!NOTE]
-> 標準負載等化器 SKU 具有從負載等化器下方的節點訪問公共 IP 位址的限制。 在[SAP 高可用性方案中使用 Azure 標準負載等化器的虛擬機器的公共終結點連接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)文章介紹了如何啟用這些節點訪問公共 IP 位址的方法
+> Standard Load Balancer SKU 有從 Load Balancer 之下的節點存取公用 IP 位址的限制。 在[SAP 高可用性案例中使用 Azure Standard Load Balancer 虛擬機器的公用端點](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)連線一文說明如何讓這些節點存取公用 IP 位址的方式
 
-1. 創建前端 IP 池：
+1. 建立前端 IP 集區：
 
-   a. 在 Azure 門戶中，打開 Azure 負載等化器，選擇**前端 IP 池**，然後選擇 **"添加**"。
+   a. 在 [Azure 入口網站中，開啟 [Azure Load Balancer，選取 [**前端 IP 集**區]，然後選取 [**新增**]。
 
-   b. 輸入新的前端 IP 池的名稱（例如 **，Db2 連接**）。
+   b. 輸入新前端 IP 集區的名稱（例如， **Db2-connection**）。
 
-   c. 將**分配**設置為**靜態**，並輸入在開頭定義的 IP 位址**虛擬 IP。**
+   c. 將 [**指派**] 設定為 [**靜態**]，然後輸入在一開始定義的 ip 位址**虛擬 ip** 。
 
-   d. 選取 [確定]****。
+   d. 選取 [確定]  。
 
    e. 建立新的前端 IP 集區之後，請記下集區 IP 位址。
 
-1. 創建後端池：
+1. 建立後端集區：
 
-   a. 在 Azure 門戶中，打開 Azure 負載等化器，選擇**後端池**，然後選擇 **"添加**"。
+   a. 在 [Azure 入口網站中，開啟 Azure Load Balancer，選取 [**後端**集區]，然後選取 [**新增**]。
 
-   b. 輸入新後端池的名稱（例如 **，Db2 後端**）。
+   b. 輸入新後端集區的名稱（例如， **Db2-後**端）。
 
    c. 選取 [新增虛擬機器]****。
 
-   d. 選擇上一步中創建的可用性集或承載 IBM Db2 資料庫的虛擬機器。
+   d. 選取在上一個步驟中建立的 [可用性設定組] 或 [裝載 IBM Db2 資料庫的虛擬機器]。
 
-   e. 選擇 IBM Db2 群集的虛擬機器。
+   e. 選取 IBM Db2 叢集的虛擬機器。
 
-   f. 選取 [確定]****。
+   f. 選取 [確定]  。
 
-1. 創建運行狀況探測：
+1. 建立健康情況探查：
 
-   a. 在 Azure 門戶中，打開 Azure 負載等化器，選擇**運行狀況探測**，然後選擇 **"添加**"。
+   a. 在 [Azure 入口網站中，開啟 Azure Load Balancer，選取 [**健康情況探查**]，然後選取 [**新增**]。
 
-   b. 輸入新運行狀況探測的名稱（例如 **，Db2-hp**）。
+   b. 輸入新健康狀態探查的名稱（例如， **Db2-hp**）。
 
-   c. 選擇**TCP**作為協定和埠**62500**。 將**間隔**值設置為**5**，並將**不正常閾值**設置為**2**。
+   c. 選取 [ **TCP** ] 作為通訊協定和埠**62500**。 將 [**間隔**] 值保持設定為 [ **5**]，並將 [**狀況不良臨界**值] 設定為**2**。
 
-   d. 選取 [確定]****。
+   d. 選取 [確定]  。
 
-1. 創建負載平衡規則：
+1. 建立負載平衡規則：
 
-   a. 在 Azure 門戶中，打開 Azure 負載平衡器，選擇 **"負載平衡規則**"，然後選擇 **"添加**"。
+   a. 在 [Azure 入口網站中，開啟 Azure Load Balancer，選取 [**負載平衡規則**]，然後選取 [**新增**]。
 
-   b. 輸入新的負載等化器規則的名稱（例如 **，Db2-SID）。**
+   b. 輸入新 Load Balancer 規則的名稱（例如， **Db2-SID**）。
 
-   c. 選擇前端 IP 位址、後端池和您之前創建的運行狀況探測（例如 **，Db2 前端**）。
+   c. 選取您稍早建立的前端 IP 位址、後端集區及健康情況探查（例如， **Db2-前端**）。
 
-   d. 將**協定**設置為**TCP**，然後輸入埠*資料庫通訊連接埠*。
+   d. 將 [通訊**協定**] 保持設定為 [ **TCP**]，然後輸入 [埠*資料庫通訊連接埠*]。
 
    e. 將 [閒置逾時]**** 增加為 30 分鐘。
 
-   f. 請確保**啟用浮動 IP**。
+   f. 請務必**啟用浮動 IP**。
 
-   g. 選取 [確定]****。
+   g. 選取 [確定]  。
 
 
-### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>更改 SAP 設定檔以使用虛擬 IP 進行連接
-要連接到 HADR 配置的主實例，SAP 應用程式層需要使用為 Azure 負載等化器定義和配置的虛擬 IP 位址。 需要進行以下更改：
+### <a name="make-changes-to-sap-profiles-to-use-virtual-ip-for-connection"></a>對 SAP 設定檔進行變更，以使用虛擬 IP 進行連線
+若要連接到 HADR 設定的主要實例，SAP 應用層必須使用您為 Azure Load Balancer 所定義和設定的虛擬 IP 位址。 需要進行下列變更：
 
-/sapmnt/SID\<>/設定檔/DEFAULT。人陣
+/sapmnt/\<SID>/profile/default。DEFAULT.PFL
 <pre><code>SAPDBHOST = db-virt-hostname
 j2ee/dbhost = db-virt-hostname
 </code></pre>
 
-/sapmnt/\<SID>/全域/db6/db2cli.ini
+/sapmnt/\<SID>/global/db6/db2cli.ini
 <pre><code>Hostname=db-virt-hostname
 </code></pre>
 
 
 
-## <a name="install-primary-and-dialog-application-servers"></a>安裝主應用程式伺服器和對話方塊應用程式伺服器
+## <a name="install-primary-and-dialog-application-servers"></a>安裝主要和對話方塊應用程式伺服器
 
-安裝針對 Db2 HADR 配置的主應用程式伺服器和對話方塊應用程式伺服器時，請使用為配置選擇的虛擬主機名稱。 
+當您針對 Db2 HADR 設定安裝主要和對話方塊應用程式伺服器時，請使用您為設定選取的虛擬主機名稱。 
 
-如果在創建 Db2 HADR 配置之前執行了安裝，則按照上一節所述進行更改，如下如下 SAP JAVA 堆疊。
+如果您在建立 Db2 HADR 設定之前執行安裝，請依照上一節所述進行變更，如 SAP JAVA 堆疊所示。
 
-### <a name="abapjava-or-java-stack-systems-jdbc-url-check"></a>ABAP_JAVA 或 JAVA 堆疊系統 JDBC URL 檢查
+### <a name="abapjava-or-java-stack-systems-jdbc-url-check"></a>ABAP + JAVA 或 JAVA stack 系統 JDBC URL 檢查
 
-使用 J2EE 組態工具檢查或更新 JDBC URL。 由於 J2EE 組態工具是一個圖形工具，因此您需要安裝 X 伺服器：
+使用 J2EE 設定工具來檢查或更新 JDBC URL。 因為 J2EE 設定工具是圖形化工具，所以您必須安裝 X 伺服器：
  
-1. 登錄到 J2EE 實例的主應用程式伺服器並執行：`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
-1. 在左側框架中，選擇**安全存儲**。
-1. 在正確的框架中，選擇鍵 jdbc/池/SAPSID\<>/url。
-1. 將 JDBC URL 中的主機名稱更改為虛擬主機名稱。
+1. 登入 J2EE 實例的主要應用程式伺服器，並執行：`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
+1. 在左側畫面中，選擇 [**安全性存放區**]。
+1. 在右邊的畫面中，選擇 [jdbc/pool/\<SAPSID] 這個關鍵字>/url。
+1. 將 JDBC URL 中的主機名稱變更為虛擬主機名稱。
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. 選取 [加入]****。
-1. 要保存更改，請選擇左上角的磁片圖示。
-1. 關閉組態工具。
+1. 選取 [新增]  。
+1. 若要儲存您的變更，請選取左上方的 [磁片] 圖示。
+1. 關閉設定工具。
 1. 重新開機 JAVA 實例。
 
-## <a name="configure-log-archiving-for-hadr-setup"></a>為 HADR 設置配置日誌存檔
-要為 HADR 設置配置 Db2 日誌存檔，我們建議您將主資料庫和備用資料庫配置為具有來自所有日誌存檔位置的自動日誌檢索功能。 主資料庫和備用資料庫都必須能夠從資料庫實例之一可能存檔日誌檔的所有日誌存檔位置檢索日誌檔。 
+## <a name="configure-log-archiving-for-hadr-setup"></a>設定 HADR 設定的記錄檔封存
+若要設定 HADR 設定的 Db2 記錄封存，建議您設定主要和待命資料庫，使其具有來自所有記錄封存位置的自動記錄檔抓取功能。 主要和待命資料庫都必須能夠從所有記錄檔封存位置（其中一個資料庫實例可能封存記錄檔）中取出記錄封存檔案。 
 
-日誌存檔僅由主資料庫執行。 如果更改資料庫伺服器的 HADR 角色，或者發生故障，則新的主資料庫負責日誌存檔。 如果設置了多個日誌存檔位置，則日誌可能會存檔兩次。 如果發生本地或遠端追趕，您可能還必須手動將存檔的日誌從舊主伺服器複製到新主伺服器的活動日誌位置。
+只有主資料庫才會執行記錄檔封存。 如果您變更資料庫伺服器的 HADR 角色，或如果發生失敗，新的主資料庫就會負責記錄檔封存。 如果您已設定多個記錄保存位置，您的記錄可能會封存兩次。 在本機或遠端趕上的事件中，您可能也必須手動將封存的記錄檔從舊的主伺服器複製到新主伺服器的使用中記錄檔位置。
 
-我們建議配置從兩個節點寫入日誌的通用 NFS 共用。 NFS 共用必須高度可用。 
+我們建議您設定一個通用 NFS 共用，其中記錄是從兩個節點寫入。 NFS 共用必須具有高度可用性。 
 
-您可以將現有的高可用 NFS 共用用於傳輸或設定檔目錄。 如需詳細資訊，請參閱
+您可以使用現有的高可用性 NFS 共用來進行傳輸或設定檔目錄。 如需詳細資訊，請參閱：
 
 - [SUSE Linux Enterprise Server 上 Azure VM 的 NFS 高可用性][nfs-ha] 
-- [SUSE Linux 企業伺服器上的 AZURE VM 上的 SAP NetWeaver 的高可用性，具有用於 SAP 應用程式的 Azure NetApp 檔](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
-- [Azure NetApp 檔](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction)（創建 NFS 共用）
+- [SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 高可用性與適用于 SAP 應用程式的 Azure NetApp Files](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+- [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction) （用來建立 NFS 共用）
 
 
 ## <a name="test-the-cluster-setup"></a>測試叢集設定
 
-本節介紹如何測試 Db2 HADR 設置。 *每個測試都假定您以使用者根身份登錄*，IBM Db2 主資料庫在*azibmdb01*虛擬機器上運行。
+本節說明您可以如何測試 Db2 HADR 設定。 *每項測試都假設您以使用者根目錄登入*，而 IBM Db2 主要節點是在*azibmdb01*虛擬機器上執行。
 
-此處說明了所有測試案例的初始狀態：（crm_mon -r 或 crm 狀態）
+所有測試案例的初始狀態會在這裡說明：（crm_mon-r 或 crm 狀態）
 
-- **crm 狀態**是起搏器執行時狀態的快照 
-- **crm_mon -r**是起搏器狀態的連續輸出
+- **crm 狀態**是在執行時間 Pacemaker 狀態的快照集 
+- **crm_mon-r**是 Pacemaker 狀態的連續輸出
 
 <pre><code>2 nodes configured
 5 resources configured
@@ -554,27 +554,27 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Slaves: [ azibmdb02 ]
 </code></pre>
 
-SAP 系統中的原始狀態記錄在事務 DBACOCKPIT > 配置>概述中，如下圖所示：
+SAP 系統中的原始狀態記載于 Transaction DBACOCKPIT > Configuration > 總覽中，如下圖所示：
 
-![DBACockpit - 遷移前](./media/dbms-guide-ha-ibm/hadr-sap-mgr-org.png)
-
-
+![DBACockpit-預先遷移](./media/dbms-guide-ha-ibm/hadr-sap-mgr-org.png)
 
 
-### <a name="test-takeover-of-ibm-db2"></a>測試 IBM Db2 的接管
+
+
+### <a name="test-takeover-of-ibm-db2"></a>IBM Db2 的測試接管
 
 
 > [!IMPORTANT] 
-> 在開始測試之前，請確保：
-> * 起搏器沒有任何失敗操作（crm 狀態）。
-> * 沒有位置約束（遷移測試的剩下）
-> * IBM Db2 HADR 同步工作。 請與使用者 db2\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> 開始測試之前，請先確定：
+> * Pacemaker 沒有任何失敗的動作（crm 狀態）。
+> * 沒有位置條件約束（leftovers 的遷移測試）
+> * IBM Db2 HADR 同步處理運作正常。 檢查使用者 db2\<sid> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
-通過執行以下命令遷移運行主 Db2 資料庫的節點：
+藉由執行下列命令，遷移正在執行主要 Db2 資料庫的節點：
 <pre><code>crm resource migrate msl_<b>Db2_db2ptr_PTR</b> azibmdb02</code></pre>
 
-遷移完成後，crm 狀態輸出如下所示：
+完成遷移之後，crm 狀態輸出看起來會像這樣：
 <pre><code>2 nodes configured
 5 resources configured
 
@@ -591,24 +591,24 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Slaves: [ azibmdb01 ]
 </code></pre>
 
-SAP 系統中的原始狀態記錄在事務 DBACOCKPIT > 配置>概述中，如下圖所示：
+SAP 系統中的原始狀態記載于 Transaction DBACOCKPIT > Configuration > 總覽中，如下圖所示：
 
-![DBACockpit - 遷移後](./media/dbms-guide-ha-ibm/hadr-sap-mgr-post.png)
+![DBACockpit-遷移後](./media/dbms-guide-ha-ibm/hadr-sap-mgr-post.png)
 
-使用"crm 資源遷移"的資源遷移會創建位置約束。 應刪除位置約束。 如果未刪除位置約束，則資源無法故障恢復，或者您可能會遇到不需要的接管。 
+具有「crm 資源遷移」的資源遷移會建立位置條件約束。 應刪除位置條件約束。 如果未刪除位置條件約束，資源就無法容錯回復，或者您可能會遇到不想要的接管。 
 
-將資源遷移回*azibmdb01*並清除位置約束
+將資源遷移回*azibmdb01* ，並清除位置條件約束
 <pre><code>crm resource migrate msl_<b>Db2_db2ptr_PTR</b> azibmdb01
 crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
-- **crm 資源\<遷移res_name>\<主機>：** 創建位置約束，並可能導致收購問題
-- **crm 資源\<清除res_name>：** 清除位置約束
-- **crm 資源\<清理res_name>：** 清除資源的所有錯誤
+- **crm 資源遷移\<res_name> \<主機>：** 建立位置條件約束，並可能造成接管問題
+- **crm 資源清除\<res_name>**：清除位置條件約束
+- **crm 資源清理\<res_name>**：清除資源的所有錯誤
 
-### <a name="test-the-fencing-agent"></a>測試擊劍代理
+### <a name="test-the-fencing-agent"></a>測試隔離代理程式
 
-在這種情況下，我們測試 SBD 遮罩，我們建議您在使用 SUSE Linux 時執行此操作。
+在此情況下，我們會測試 SBD 隔離，我們建議您在使用 SUSE Linux 時執行此動作。
 
 <pre><code>
 azibmdb01:~ # ps -ef|grep sbd
@@ -620,15 +620,15 @@ root       2380   2374  0 Feb05 ?        00:00:18 sbd: watcher: Cluster
 azibmdb01:~ # kill -9 2374
 </code></pre>
 
-應重新開機叢集節點*azibmdb01。* IBM Db2 主 HADR 角色將移動到*azibmdb02*。 當*azibmdb01*重新連線時，Db2 實例將移動到次要資料庫實例的角色中。 
+叢集節點*azibmdb01*應該重新開機。 IBM Db2 主要 HADR 角色即將移至*azibmdb02*。 當*azibmdb01*重新上線時，Db2 實例會移至次要資料庫實例的角色。 
 
-如果起搏器服務未在重新開機的前主資料庫上自動啟動，請確保手動啟動它：
+如果 Pacemaker 服務未在重新開機的先前主要複本上自動啟動，請務必以手動方式啟動它：
 
 <code><pre>sudo service pacemaker start</code></pre>
 
 ### <a name="test-a-manual-takeover"></a>測試手動接管
 
-您可以通過在*azibmdb01*節點上停止起搏器服務來測試手動接管：
+您可以藉由停止*azibmdb01*節點上的 Pacemaker 服務來測試手動接管：
 <pre><code>service pacemaker stop</code></pre>
 
 *azibmdb02*上的狀態
@@ -650,11 +650,11 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Stopped: [ azibmdb01 ]
 </code></pre>
 
-容錯移轉後，您可以在*azibmdb01*上再次啟動服務。
+容錯移轉之後，您可以在*azibmdb01*上再次啟動服務。
 <pre><code>service pacemaker start</code></pre>
 
 
-### <a name="kill-the-db2-process-on-the-node-that-runs-the-hadr-primary-database"></a>在運行 HADR 主資料庫的節點上終止 Db2 進程
+### <a name="kill-the-db2-process-on-the-node-that-runs-the-hadr-primary-database"></a>在執行 HADR 主資料庫的節點上終止 Db2 進程
 
 <pre><code>#Kill main db2 process - db2sysc
 azibmdb01:~ # ps -ef|grep db2s
@@ -663,7 +663,7 @@ db2ptr    34598  34596  8 14:21 ?        00:00:07 db2sysc 0
 azibmdb01:~ # kill -9 34598
 </code></pre>
 
-Db2 實例將失敗，起搏器將報告以下狀態：
+Db2 實例將會失敗，且 Pacemaker 會報告下列狀態：
 
 <pre><code>
 2 nodes configured
@@ -687,7 +687,7 @@ Failed Actions:
 
 </code></pre>
 
-Pacemaker 將重新開機同一節點上的 Db2 主資料庫實例，否則它將容錯移轉到運行次要資料庫實例的節點，並報告錯誤。
+Pacemaker 將會在相同節點上重新開機 Db2 主資料庫實例，或將它故障切換至執行次要資料庫實例的節點，並回報錯誤。
 
 <pre><code>2 nodes configured
 5 resources configured
@@ -710,14 +710,14 @@ Failed Actions:
 </code></pre>
 
 
-### <a name="kill-the-db2-process-on-the-node-that-runs-the-secondary-database-instance"></a>在運行次要資料庫實例的節點上終止 Db2 進程
+### <a name="kill-the-db2-process-on-the-node-that-runs-the-secondary-database-instance"></a>在執行次要資料庫實例的節點上終止 Db2 進程
 
 <pre><code>azibmdb02:~ # ps -ef|grep db2s
 db2ptr    65250  65248  0 Feb11 ?        00:09:27 db2sysc 0
 
 azibmdb02:~ # kill -9</code></pre>
 
-節點進入未遂聲明和報告錯誤
+節點進入失敗並回報錯誤
 <pre><code>2 nodes configured
 5 resources configured
 
@@ -737,7 +737,7 @@ Failed Actions:
 * rsc_Db2_db2ptr_PTR_monitor_30000 on azibmdb02 'not running' (7): call=144, status=complete, exitreason='',
 last-rc-change='Tue Feb 12 14:36:59 2019', queued=0ms, exec=0ms</code></pre>
 
-Db2 實例在以前分配的輔助角色中重新開機。
+Db2 實例會以先前指派的次要角色重新開機。
 
 <pre><code>2 nodes configured
 5 resources configured
@@ -760,7 +760,7 @@ Failed Actions:
 
 
 
-### <a name="stop-db-via-db2stop-force-on-the-node-that-runs-the-hadr-primary-database-instance"></a>通過運行 HADR 主資料庫實例的節點上的 db2stop 力停止資料庫
+### <a name="stop-db-via-db2stop-force-on-the-node-that-runs-the-hadr-primary-database-instance"></a>在執行 HADR 主資料庫實例的節點上，透過 db2stop force 停止 DB
 
 <pre><code>2 nodes configured
 5 resources configured
@@ -777,11 +777,11 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb01
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
 
-作為使用者 db2\<sid>執行命令 db2stop 力：
+As user db2\<sid> 執行命令 db2stop force：
 <pre><code>azibmdb01:~ # su - db2ptr
 azibmdb01:db2ptr> db2stop force</code></pre>
 
-檢測到故障
+偵測到失敗
 <pre><code>2 nodes configured
 5 resources configured
 
@@ -801,7 +801,7 @@ Failed Actions:
 * rsc_Db2_db2ptr_PTR_demote_0 on azibmdb01 'unknown error' (1): call=201, status=complete, exitreason='',
     last-rc-change='Tue Feb 12 14:45:25 2019', queued=1ms, exec=150ms</code></pre>
 
-Db2 HADR 次要資料庫實例已提升為主角色
+Db2 HADR 次要資料庫實例已升級為主要角色
 <pre><code> nodes configured
 5 resources configured
 
@@ -823,12 +823,12 @@ us=complete, exitreason='',
     last-rc-change='Tue Feb 12 14:45:27 2019', queued=0ms, exec=865ms</pre></code>
 
 
-### <a name="crash-vm-with-restart-on-the-node-that-runs-the-hadr-primary-database-instance"></a>在運行 HADR 主資料庫實例的節點上重新開機 VM 時崩潰
+### <a name="crash-vm-with-restart-on-the-node-that-runs-the-hadr-primary-database-instance"></a>執行 HADR 主資料庫實例的節點上具有重新開機的 VM 損毀
 
 <pre><code>#Linux kernel panic - with OS restart
 azibmdb01:~ # echo b > /proc/sysrq-trigger</code></pre>
 
-起搏器將輔助實例提升為主要實例角色。 舊主實例將在 VM 之後進入輔助角色，並且所有服務在 VM 重新開機後全部還原：
+Pacemaker 會將次要實例升級為主要實例角色。 在 vm 重新開機之後，舊的主要實例會移至次要角色，而所有服務都會完全還原：
 
 <pre><code> nodes configured
 5 resources configured
@@ -847,12 +847,12 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
 
 
 
-### <a name="crash-the-vm-that-runs-the-hadr-primary-database-instance-with-halt"></a>將運行 HADR 主資料庫實例的 VM 與"halt"崩潰
+### <a name="crash-the-vm-that-runs-the-hadr-primary-database-instance-with-halt"></a>損毀執行 HADR 主資料庫實例的 VM，並出現「停止」
 
 <pre><code>#Linux kernel panic - halts OS
 azibmdb01:~ # echo b > /proc/sysrq-trigger</code></pre>
 
-在這種情況下，Pacemaker 將檢測運行主資料庫實例的節點未回應。
+在這種情況下，Pacemaker 會偵測到執行主資料庫實例的節點沒有回應。
 
 <pre><code>2 nodes configured
 5 resources configured
@@ -870,7 +870,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Masters: [ azibmdb01 ]
      Slaves: [ azibmdb02 ]</code></pre>
 
-下一步是檢查*分裂大腦*的情況。 在倖存的節點確定上次運行主資料庫實例的節點已關閉後，將執行資源容錯移轉。
+下一個步驟是檢查*分割的大腦*狀況。 當倖存的節點判斷出上一次執行主資料庫實例的節點已關閉時，就會執行資源的容錯移轉。
 <pre><code>2 nodes configured
 5 resources configured
 
@@ -888,7 +888,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
      Stopped: [ azibmdb01 ] </code></pre>
 
 
-如果節點"停止"，必須通過 Azure 管理工具（在 Azure 門戶、PowerShell 或 Azure CLI）重新開機故障節點。 故障節點重新連線後，它將 Db2 實例啟動到輔助角色中。
+在節點「停止」的事件中，必須透過 Azure 管理工具（在 Azure 入口網站、PowerShell 或 Azure CLI）重新開機失敗的節點。 當失敗的節點重新上線之後，它會將 Db2 實例啟動為次要角色。
 
 <pre><code>2 nodes configured
 5 resources configured
@@ -907,5 +907,5 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
 
 ## <a name="next-steps"></a>後續步驟
 - [SAP NetWeaver 的高可用性架構和案例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
-- [在 Azure 中的 SUSE Linux 企業伺服器上設置起搏器](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
+- [在 Azure 中的 SUSE Linux Enterprise Server 上設定 Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
 

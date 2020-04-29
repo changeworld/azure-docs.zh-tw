@@ -1,6 +1,6 @@
 ---
-title: 使用 .NET - Azure 存儲列出 blob
-description: 瞭解如何使用 .NET 用戶端庫在 Azure 存儲帳戶中的容器中列出 blob。 代碼示例演示如何在平面清單中列出 blob，或者如何分層列出 blob，就像它們被組織到目錄或資料夾中一樣。
+title: 使用 .NET 列出 blob-Azure 儲存體
+description: 瞭解如何使用 .NET 用戶端程式庫，列出 Azure 儲存體帳戶中容器內的 blob。 程式碼範例會示範如何列出一般清單中的 blob，或如何以階層方式列出 blob，如同它們已組織成目錄或資料夾。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,63 +9,63 @@ ms.date: 02/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: eb62883859a3efeb1c05deb38d8a40fba76e9cdf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79137915"
 ---
-# <a name="list-blobs-with-net"></a>列出帶 .NET 的 blob
+# <a name="list-blobs-with-net"></a>使用 .NET 列出 blob
 
-從代碼中列出 Blob 時，可以指定許多選項來管理如何從 Azure 存儲返回結果。 您可以指定要在每組結果中返回的結果數，然後檢索後續集。 您可以指定一個首碼來返回其名稱以該字元或字串開頭的 Blob。 您可以在平面清單結構中列出 blob，也可以分層列出 Blob。 分層清單返回 blob，就像它們被組織到資料夾中一樣。 
+當您列出程式碼中的 blob 時，您可以指定數個選項來管理 Azure 儲存體傳回結果的方式。 您可以指定要在每一組結果中傳回的結果數目，然後取得後續的集合。 您可以指定前置詞，以傳回名稱開頭為該字元或字串的 blob。 而且您可以列出一般清單結構中或階層式的 blob。 階層式清單會傳回 blob，就好像它們已組織成資料夾一樣。 
 
-本文演示如何使用 .NET 的[Azure 存儲用戶端庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)列出 blob。  
+本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來列出 blob。  
 
-## <a name="understand-blob-listing-options"></a>瞭解 Blob 清單選項
+## <a name="understand-blob-listing-options"></a>瞭解 blob 清單選項
 
-要列出存儲帳戶中的 Blob，請調用以下方法之一：
+若要列出儲存體帳戶中的 blob，請呼叫下列其中一種方法：
 
-- [雲BlobClient.listBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
-- [雲 BlobClient.清單Blob分段](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
-- [雲 BlobClient.清單Blobs分段Async](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync)
+- [CloudBlobClient. ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
+- [CloudBlobClient. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
+- [CloudBlobClient. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmentedasync)
 
-要列出容器中的 blob，請調用以下方法之一：
+若要列出容器中的 blob，請呼叫下列其中一個方法：
 
-- [雲 Blob 容器.清單Blobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs)
-- [雲 Blob 容器.清單 Blob 分段](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
-- [雲 Blob 容器.清單 Blob 分段 Async](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
+- [CloudBlobContainer. ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobs)
+- [CloudBlobContainer. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)
+- [CloudBlobContainer. ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync)
 
-這些方法的重載提供了用於管理清單操作如何返回 Blob 的其他選項。 這些選項在以下各節仲介紹。
+這些方法的多載會提供其他選項來管理清單作業傳回 blob 的方式。 下列各節將說明這些選項。
 
-### <a name="manage-how-many-results-are-returned"></a>管理返回的結果數
+### <a name="manage-how-many-results-are-returned"></a>管理傳回的結果數目
 
-預設情況下，清單操作一次最多返回 5000 個結果。 要返回較小的結果集，在調用**ListBlobs**方法之`maxresults`一時，為參數提供非零值。
+根據預設，清單作業一次最多會傳回5000個結果。 若要傳回較小的結果集，請在呼叫其中一個`maxresults` **ListBlobs**方法時，為參數提供非零值。
 
-如果清單操作返回超過 5000 個 blob，或者已為`maxresults`清單操作指定了一個值，以便清單操作返回存儲帳戶中的容器子集，則 Azure 存儲將返回包含 blob 清單的*延續權杖*。 延續權杖是一個不透明值，可用於從 Azure 存儲檢索下一組結果。
+如果清單作業傳回超過5000個 blob，或如果您已指定的值`maxresults` ，讓清單作業傳回儲存體帳戶中的容器子集，則 Azure 儲存體會傳回包含 blob 清單的*接續權杖*。 接續 token 是不透明的值，可讓您用來抓取 Azure 儲存體的下一組結果。
 
-在代碼中，檢查延續權杖的值以確定它是否為空。 當延續權杖為空時，結果集即完成。 如果延續權杖不是 null，則再次調用清單操作，傳入延續權杖以檢索下一組結果，直到延續權杖為空。
+在您的程式碼中，檢查接續 token 的值，以判斷它是否為 null。 當接續 token 為 null 時，結果集就會完成。 如果接續 token 不是 null，則再次呼叫 [列出作業]，傳遞接續 token 來抓取下一組結果，直到接續 token 為 null 為止。
 
-### <a name="filter-results-with-a-prefix"></a>使用首碼篩選結果
+### <a name="filter-results-with-a-prefix"></a>使用前置詞篩選結果
 
-要篩選容器清單，請為`prefix`參數指定字串。 首碼字串可以包含一個或多個字元。 然後，Azure 存儲僅返回其名稱以該首碼開頭的 Blob。
+若要篩選容器清單，請指定`prefix`參數的字串。 前置詞字串可以包含一或多個字元。 Azure 儲存體接著只會傳回名稱開頭為該前置詞的 blob。
 
-### <a name="return-metadata"></a>返回中繼資料
+### <a name="return-metadata"></a>傳回中繼資料
 
-要返回具有結果的 Blob 中繼資料，請指定[Blob 清單詳細資訊](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails)枚舉的**中繼資料**值。 Azure 存儲包括返回每個 Blob 的中繼資料，因此無需在此上下文中調用其中一個**FetchAttributes**方法來檢索 Blob 中繼資料。
+若要傳回含有結果的 blob 中繼資料，請指定[BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails)列舉的**中繼資料**值。 Azure 儲存體包含每個傳回之 blob 的中繼資料，因此您不需要在此內容中呼叫其中一個**FetchAttributes**方法來抓取 blob 中繼資料。
 
-### <a name="flat-listing-versus-hierarchical-listing"></a>平面清單與分層清單
+### <a name="flat-listing-versus-hierarchical-listing"></a>一般清單與階層式清單
 
-Azure 存儲中的 Blob 以平面範例組織，而不是分層範例（如經典檔案系統）。 但是，您可以將 blob 組織到*虛擬目錄中*，以便類比資料夾結構。 虛擬目錄是 blob 名稱的一部分，由分隔符號字元指示。
+Azure 儲存體中的 blob 是以一般架構來組織，而不是階層式架構（例如傳統檔案系統）。 不過，您可以將 blob 組織成*虛擬目錄*，以便模擬資料夾結構。 虛擬目錄會形成 blob 名稱的一部分，並以分隔符號來表示。
 
-要將 blob 組織到虛擬目錄中，請使用 blob 名稱中的分隔符號字元。 預設分隔符號字元是向前斜杠 （/），但您可以將任何字元指定為分隔符號。
+若要將 blob 組織成虛擬目錄，請在 blob 名稱中使用分隔符號。 預設的分隔符號是正斜線（/），但您可以指定任何字元做為分隔符號。
 
-如果使用分隔符號命名 Blob，則可以選擇分層列出 Blob。 對於分層清單操作，Azure 存儲返回父物件下的任何虛擬目錄和 Blob。 您可以遞迴地調用清單操作來遍歷層次結構，類似于以程式設計方式遍歷經典檔案系統的方式。
+如果您使用分隔符號來命名 blob，則可以選擇階層式列出 blob。 若為階層式清單作業，Azure 儲存體會傳回父物件底下的任何虛擬目錄和 blob。 您可以遞迴呼叫清單作業來遍歷階層，類似于以程式設計方式來進行傳統檔案系統的處理方式。
 
-## <a name="use-a-flat-listing"></a>使用平面清單
+## <a name="use-a-flat-listing"></a>使用一般清單
 
-預設情況下，清單操作返回平面清單中的 blob。 在平面清單中，blob 不由虛擬目錄組織。
+根據預設，清單作業會傳回一般清單中的 blob。 在一般清單中，blob 不會依虛擬目錄來組織。
 
-下面的示例使用平面清單列出指定容器中的 blob，並指定可選的段大小，並將 blob 名稱寫入主控台視窗。
+下列範例會使用一般清單來列出指定容器中的 blob，並指定選擇性區段大小，並將 blob 名稱寫入主控台視窗。
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -108,7 +108,7 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
-示例輸出類似于：
+範例輸出類似于：
 
 ```
 Blob name: FolderA/blob1.txt
@@ -122,13 +122,13 @@ Blob name: FolderA/FolderB/FolderC/blob2.txt
 Blob name: FolderA/FolderB/FolderC/blob3.txt
 ```
 
-## <a name="use-a-hierarchical-listing"></a>使用分層清單
+## <a name="use-a-hierarchical-listing"></a>使用階層式清單
 
-分層調用清單操作時，Azure 存儲將返回層次結構第一級的虛擬目錄和 blob。 設置每個虛擬目錄[的首碼](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix)屬性，以便您可以傳遞遞迴呼叫中的首碼以檢索下一個目錄。
+當您以階層方式呼叫清單作業時，Azure 儲存體會在階層的第一個層級傳回虛擬目錄和 blob。 系統會設定每個虛擬目錄的[prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix)屬性，讓您可以在遞迴呼叫中傳遞前置詞，以取出下一個目錄。
 
-要分層列出 blob，將`useFlatBlobListing`清單方法的參數設置為**false**。
+若要以階層方式列出 blob `useFlatBlobListing` ，請將清單方法的參數設定為**false**。
 
-下面的示例使用平面清單列出指定容器中的 blob，並指定可選的段大小，並將 blob 名稱寫入主控台視窗。
+下列範例會使用一般清單來列出指定容器中的 blob，並指定選擇性區段大小，並將 blob 名稱寫入主控台視窗。
 
 ```csharp
 private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer container, string prefix)
@@ -183,7 +183,7 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
 }
 ```
 
-示例輸出類似于：
+範例輸出類似于：
 
 ```
 Virtual directory prefix: FolderA/
@@ -203,11 +203,11 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 ```
 
 > [!NOTE]
-> Blob 快照無法在分層清單操作中列出。
+> Blob 快照集不能列在階層式列出作業中。
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-- [清單 Blob](/rest/api/storageservices/list-blobs)
+- [列出 Blob](/rest/api/storageservices/list-blobs)
 - [列舉 Blob 資源](/rest/api/storageservices/enumerating-blob-resources)

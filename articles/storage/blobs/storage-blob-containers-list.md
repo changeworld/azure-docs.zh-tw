@@ -1,6 +1,6 @@
 ---
-title: 列出具有 .NET - Azure 存儲的 blob 容器
-description: 瞭解如何使用 .NET 用戶端庫在 Azure 存儲帳戶中列出 blob 容器。
+title: 使用 .NET 列出 blob 容器-Azure 儲存體
+description: 瞭解如何使用 .NET 用戶端程式庫，列出 Azure 儲存體帳戶中的 blob 容器。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,44 +9,44 @@ ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79135899"
 ---
-# <a name="list-blob-containers-with-net"></a>列出具有 .NET 的 blob 容器
+# <a name="list-blob-containers-with-net"></a>使用 .NET 列出 blob 容器
 
-從代碼中列出 Azure 存儲帳戶中的容器時，可以指定許多選項來管理如何從 Azure 存儲返回結果。 本文演示如何使用 .NET 的[Azure 存儲用戶端庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)列出容器。  
+當您從程式碼列出 Azure 儲存體帳戶中的容器時，您可以指定數個選項來管理從 Azure 儲存體傳回結果的方式。 本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來列出容器。  
 
 ## <a name="understand-container-listing-options"></a>瞭解容器清單選項
 
-要列出存儲帳戶中的容器，請調用以下方法之一：
+若要列出儲存體帳戶中的容器，請呼叫下列其中一個方法：
 
-- [清單容器分段](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
-- [清單容器分段 Async](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
+- [ListContainersSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmented)
+- [ListContainersSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listcontainerssegmentedasync)
 
-這些方法的重載提供了用於管理清單操作返回容器方式的其他選項。 這些選項在以下各節仲介紹。
+這些方法的多載會提供其他選項來管理清單作業傳回容器的方式。 下列各節將說明這些選項。
 
-### <a name="manage-how-many-results-are-returned"></a>管理返回的結果數
+### <a name="manage-how-many-results-are-returned"></a>管理傳回的結果數目
 
-預設情況下，清單操作一次最多返回 5000 個結果。 要返回較小的結果集，請為`maxresults`參數在調用**ListContainer 分段**方法之一時提供非零值。
+根據預設，清單作業一次最多會傳回5000個結果。 若要傳回較小的結果集，請在呼叫其中一個`maxresults` **ListContainerSegmented**方法時，為參數提供非零值。
 
-如果存儲帳戶包含超過 5000 個容器，或者已指定一個值，`maxresults`以便清單操作返回存儲帳戶中的容器子集，則 Azure 存儲將返回包含容器清單的*延續權杖*。 延續權杖是一個不透明值，可用於從 Azure 存儲檢索下一組結果。
+如果您的儲存體帳戶包含超過5000個容器，或如果您已指定一個值`maxresults`讓清單作業傳回儲存體帳戶中的容器子集，則 Azure 儲存體會傳回包含容器清單的*接續權杖*。 接續 token 是不透明的值，可讓您用來抓取 Azure 儲存體的下一組結果。
 
-在代碼中，檢查延續權杖的值以確定它是否為空。 當延續權杖為空時，結果集即完成。 如果延續權杖不是 null，則再次調用**List 容器分段**或**清單容器分段 Async，** 傳入延續權杖以檢索下一組結果，直到延續權杖為空。
+在您的程式碼中，檢查接續 token 的值，以判斷它是否為 null。 當接續 token 為 null 時，結果集就會完成。 如果接續 token 不是 null，則再次呼叫**ListContainersSegmented**或**ListContainersSegmentedAsync** ，傳入接續 token 來抓取下一組結果，直到接續 token 為 null 為止。
 
-### <a name="filter-results-with-a-prefix"></a>使用首碼篩選結果
+### <a name="filter-results-with-a-prefix"></a>使用前置詞篩選結果
 
-要篩選容器清單，請為`prefix`參數指定字串。 首碼字串可以包含一個或多個字元。 然後，Azure 存儲僅返回其名稱以該首碼開頭的容器。
+若要篩選容器清單，請指定`prefix`參數的字串。 前置詞字串可以包含一或多個字元。 Azure 儲存體接著只會傳回名稱開頭為該前置詞的容器。
 
-### <a name="return-metadata"></a>返回中繼資料
+### <a name="return-metadata"></a>傳回中繼資料
 
-要返回具有結果的容器中繼資料，請指定[容器清單詳細資訊](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails)枚舉的**中繼資料**值。 Azure 存儲包括返回每個容器的中繼資料，因此您無需調用其中一個**FetchAttributes**方法來檢索容器中繼資料。
+若要傳回具有結果的容器中繼資料，請指定[ContainerListingDetails](/dotnet/api/microsoft.azure.storage.blob.containerlistingdetails)列舉的**中繼資料**值。 Azure 儲存體包含每個傳回的容器的中繼資料，因此您也不需要呼叫其中一個**FetchAttributes**方法來取得容器中繼資料。
 
-## <a name="example-list-containers"></a>示例：清單容器
+## <a name="example-list-containers"></a>範例：列出容器
 
-下面的示例非同步列出存儲帳戶中的容器，這些容器以指定的首碼開頭。 該示例以一次 5 個結果的增量列出容器，並使用延續權杖獲取下一段結果。 該示例還返回具有結果的容器中繼資料。
+下列範例會以非同步方式列出儲存體帳戶中以指定前置詞開頭的容器。 此範例會一次以5個結果的增量來列出容器，並使用接續 token 來取得結果的下一個區段。 此範例也會傳回具有結果的容器中繼資料。
 
 ```csharp
 private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
@@ -98,7 +98,7 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 [列出](/rest/api/storageservices/list-containers2)
-[枚舉 Blob 資源的](/rest/api/storageservices/enumerating-blob-resources)容器
+[列舉 Blob 資源](/rest/api/storageservices/enumerating-blob-resources)的容器

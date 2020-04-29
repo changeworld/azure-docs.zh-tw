@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e27287a414a2a4edef3e9090b7d91beb1c70f554
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897305"
 ---
 # <a name="using-azure-ad-connect-health-with-ad-ds"></a>在 AD DS 使用 Azure AD Connect Health
@@ -61,7 +61,7 @@ ms.locfileid: "76897305"
 * [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)
 * [Azure AD Connect Health 操作](how-to-connect-health-operations.md)
 * [使用 Azure AD Connect Health 搭配 AD FS](how-to-connect-health-adfs.md)
-* [使用 Azure AD 連接運行狀況進行同步](how-to-connect-health-sync.md)
+* [使用 Azure AD Connect Health 進行同步處理](how-to-connect-health-sync.md)
 * [Azure AD Connect Health 常見問題集](reference-connect-health-faq.md)
-* [Azure AD 連接運行狀況版本歷程記錄](reference-connect-health-version-history.md)
+* [Azure AD Connect Health 版本歷程記錄](reference-connect-health-version-history.md)
 

@@ -1,6 +1,6 @@
 ---
-title: 按雲簡單配置 VMware 解決方案 - Azure
-description: 瞭解如何使用 CloudSimple 部署將節點添加到 VMWare
+title: CloudSimple 的 VMware 解決方案布建節點-Azure
+description: 瞭解如何使用 CloudSimple 部署將節點新增至 VMWare
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -9,43 +9,43 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77024801"
 ---
-# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>按雲簡單調配 Azure VMware 解決方案
+# <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>針對 Azure VMware Solution by CloudSimple 布建節點
 
-在 Azure 門戶中預配節點。 然後，您可以為雲簡單私有雲環境設置即付容量。
+在 Azure 入口網站中布建節點。 接著，您可以為 CloudSimple 私人雲端環境設定隨用隨付容量。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-登錄到 中的[https://portal.azure.com](https://portal.azure.com)Azure 門戶。
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
-## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>將節點添加到雲簡單私有雲
+## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>將節點新增至您的 CloudSimple 私人雲端
 
-1. 選擇**所有服務**。
-2. 搜索**雲簡單節點**。
+1. 選取 [所有服務]  。
+2. 搜尋**CloudSimple 節點**。
 
-   ![搜索雲簡單節點](media/create-cloudsimple-node-search.png)
+   ![搜尋 CloudSimple 節點](media/create-cloudsimple-node-search.png)
 
-3. 選擇**雲簡單節點**。
-4. 按一下"**添加**"以創建節點。
+3. 選取 [ **CloudSimple 節點**]。
+4. 按一下 [**新增**] 以建立節點。
 
-    ![添加雲簡單節點](media/create-cloudsimple-node-add.png)
+    ![新增 CloudSimple 節點](media/create-cloudsimple-node-add.png)
 
-5. 選擇要預配雲簡單節點的訂閱。
-6. 選擇節點的資源組。 要添加新資源組，請按一下"**新建**"。
-7. 輸入首碼以標識節點。
-8. 選擇節點資源的位置。
-9. 選擇託管節點資源的專用位置。
-10. 選擇[節點類型](cloudsimple-node.md)。
-11. 選擇要預配的節點數。
-12. 選擇 **"審閱 " 創建**。
-13. 查看設置。 要修改任何設置，請按一下"**上一個**"。
-14. 選取 [建立]****。
+5. 選取您要布建 CloudSimple 節點的訂用帳戶。
+6. 選取節點的資源群組。 若要新增新的資源群組，**請按一下 [新建]**。
+7. 輸入前置詞以識別節點。
+8. 選取節點資源的 [位置]。
+9. 選取要裝載節點資源的專用位置。
+10. 選取[節點類型](cloudsimple-node.md)。
+11. 選取要布建的節點數目。
+12. 選取 [檢閱 + 建立]  。
+13. 檢查設定。 若要修改任何設定，請按一下 [**上一步**]。
+14. 選取 [建立]  。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [創建私有雲](create-private-cloud.md)
+* [建立私用雲端](create-private-cloud.md)

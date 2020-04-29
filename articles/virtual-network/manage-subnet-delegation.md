@@ -1,7 +1,7 @@
 ---
-title: 在 Azure 虛擬網路中添加或刪除子網委派
+title: 在 Azure 虛擬網路中新增或移除子網委派
 titlesuffix: Azure Virtual Network
-description: 瞭解如何在 Azure 中添加或刪除服務的委派子網。
+description: 瞭解如何在 Azure 中新增或移除服務的委派子網。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
 ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77201861"
 ---
-# <a name="add-or-remove-a-subnet-delegation"></a>添加或刪除子網委派
+# <a name="add-or-remove-a-subnet-delegation"></a>新增或移除子網委派
 
-子網路委派提供明確的權限給服務以在部署服務時使用唯一識別碼在子網路中建立服務特定資源。 本文介紹如何為 Azure 服務添加或刪除委派子網。
+子網路委派提供明確的權限給服務以在部署服務時使用唯一識別碼在子網路中建立服務特定資源。 本文說明如何為 Azure 服務新增或移除委派的子網。
 
 ## <a name="portal"></a>入口網站
 
@@ -31,55 +31,55 @@ ms.locfileid: "77201861"
 
 ### <a name="create-the-virtual-network"></a>建立虛擬網路
 
-在本節中，您將創建一個虛擬網路和子網，稍後將委託給 Azure 服務。
+在本節中，您會建立虛擬網路和您稍後將委派給 Azure 服務的子網。
 
-1. 在螢幕的左上角，選擇 **"創建資源** > **網路** > **虛擬網路**"。
+1. 在畫面的左上方，選取 [**建立資源** > ] [**網路** > ] [**虛擬網路**]。
 1. 在 [建立虛擬網路]**** 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
-    | 名稱 | 輸入*我的虛擬網路*。 |
+    | 名稱 | 輸入*MyVirtualNetwork*。 |
     | 位址空間 | 輸入 *10.0.0.0/16*。 |
     | 訂用帳戶 | 選取您的訂用帳戶。|
     | 資源群組 | 選取 [新建]****，輸入 *myResourceGroup*，然後選取 [確定]****。 |
-    | Location | 選擇**東美國**。|
+    | 位置 | 選取 [ **EastUS**]。|
     | 子網路 - 名稱 | 輸入 mySubnet**。 |
     | 子網路 - 位址範圍 | 輸入 *10.0.0.0/24*。 |
     |||
-1. 將其餘部分保留為預設值，然後選擇 **"創建**"。
+1. 將其餘部分保留為預設值，然後選取 [**建立**]。
 
 ### <a name="permissions"></a>權限
 
-如果未創建要委派到 Azure 服務的子網，則需要以下許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
+如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
 
-內置[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色還包含必要的許可權。
+內建[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色也包含必要的許可權。
 
 ### <a name="delegate-a-subnet-to-an-azure-service"></a>將子網委派給 Azure 服務
 
-在本節中，您將上一節中創建的子網委派給 Azure 服務。
+在本節中，您會將您在上一節中建立的子網委派給 Azure 服務。
 
 1. 在入口網站的搜尋列中，輸入 *myVirtualNetwork*。 當搜尋結果中出現 **myVirtualNetwork** 時加以選取。
-2. 在搜尋結果中，選擇*我的虛擬網路*。
-3. 選擇"**設置"** 下的**子網**，然後選擇 **"我的子網**"。
-4. 在*mySubnet*頁上，對於**子網委派**清單，從**委託子網下列出的服務中選擇服務**（例如 **，Microsoft.DBforPostgreSQL/serverv2）。**  
+2. 在搜尋結果中，選取 [ *myVirtualNetwork*]。
+3. 選取 [**設定**] 底下的 [**子網**]，然後選取 [ **mySubnet**]。
+4. 在 [ *mySubnet* ] 頁面的 [**子網委派**] 清單中，從 [**委派子網**] 底下所列的服務中選取服務（例如， **DBforPostgreSQL/serversv2**）。  
 
-### <a name="remove-subnet-delegation-from-an-azure-service"></a>從 Azure 服務中刪除子網委派
+### <a name="remove-subnet-delegation-from-an-azure-service"></a>從 Azure 服務移除子網委派
 
 1. 在入口網站的搜尋列中，輸入 *myVirtualNetwork*。 當搜尋結果中出現 **myVirtualNetwork** 時加以選取。
-2. 在搜尋結果中，選擇*我的虛擬網路*。
-3. 選擇"**設置"** 下的**子網**，然後選擇 **"我的子網**"。
-4. 在 *"我的子網*"頁中，對於**子網委派**清單，從**委託子網**下列出的服務中選擇 **"無**"到服務 。 
+2. 在搜尋結果中，選取 [ *myVirtualNetwork*]。
+3. 選取 [**設定**] 底下的 [**子網**]，然後選取 [ **mySubnet**]。
+4. 在 [ *mySubnet* ] 頁面的 [**子網委派**] 清單中，從 [**委派子網至服務**] 底下所列的服務中選取 [**無**]。 
 
 ## <a name="azure-cli"></a>Azure CLI
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果您決定在本地安裝和使用 Azure CLI，則本文要求您使用 Azure CLI 版本 2.0.28 或更高版本。 若要尋找您安裝的版本，請執行 `az --version`。 如需安裝或升級的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
+如果您決定改為在本機安裝和使用 Azure CLI，本文會要求您使用 Azure CLI 版本2.0.28 版或更新版本。 若要尋找您安裝的版本，請執行 `az --version`。 如需安裝或升級的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
 ### <a name="create-a-resource-group"></a>建立資源群組
 使用 [az group create](https://docs.microsoft.com/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下面的示例在**東部**位置創建名為**myResourceGroup**的資源組：
+下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurecli-interactive
 
@@ -90,7 +90,7 @@ ms.locfileid: "77201861"
 ```
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
-使用 az 網路 vnet 創建，在**myResourceGroup**中創建名為**myVnet**的子網，創建名為**myVnet**的虛擬[網路](https://docs.microsoft.com/cli/azure/network/vnet)。
+使用[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet)，在**myResourceGroup**中建立名為**myVnet**的虛擬網路，並使用名為**mySubnet**的子網。
 
 ```azurecli-interactive
   az network vnet create \
@@ -103,15 +103,15 @@ ms.locfileid: "77201861"
 ```
 ### <a name="permissions"></a>權限
 
-如果未創建要委派到 Azure 服務的子網，則需要以下許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
+如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
 
-內置[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色還包含必要的許可權。
+內建[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色也包含必要的許可權。
 
 ### <a name="delegate-a-subnet-to-an-azure-service"></a>將子網委派給 Azure 服務
 
-在本節中，您將上一節中創建的子網委派給 Azure 服務。 
+在本節中，您會將您在上一節中建立的子網委派給 Azure 服務。 
 
-使用[az 網路 vnet 子網更新](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)更新名為**mySubnet**的子網，並委派到 Azure 服務。  在此示例中 **，Microsoft.DBforPostgreSQL/serverv2**用於示例委派：
+使用[az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) ，以 Azure 服務的委派來更新名為**mySubnet**的子網。  在此範例中，會使用**DBforPostgreSQL/serversv2**來進行範例委派：
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -121,7 +121,7 @@ ms.locfileid: "77201861"
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-要驗證已應用委派，請使用[az 網路 vnet 子網顯示](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 驗證服務是否委託給屬性**服務名稱**下的子網：
+若要確認已套用委派，請使用[az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 確認服務已委派給屬性為**serviceName**的子網：
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -148,9 +148,9 @@ ms.locfileid: "77201861"
 ]
 ```
 
-### <a name="remove-subnet-delegation-from-an-azure-service"></a>從 Azure 服務中刪除子網委派
+### <a name="remove-subnet-delegation-from-an-azure-service"></a>從 Azure 服務移除子網委派
 
-使用[az 網路 vnet 子網更新](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)從名為**mySubnet**的子網中刪除委派：
+使用[az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) ，從名為**mySubnet**的子網移除委派：
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -159,7 +159,7 @@ ms.locfileid: "77201861"
   --vnet-name myVnet \
   --remove delegations
 ```
-要驗證已刪除委派，請使用[az 網路 vnet 子網顯示](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 驗證服務從屬性**服務名稱**下的子網中刪除：
+若要確認已移除委派，請使用[az network vnet subnet show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)。 確認服務已從屬性**serviceName**的子網中移除：
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -168,7 +168,7 @@ ms.locfileid: "77201861"
   --vnet-name myVnet \
   --query delegations
 ```
-來自命令的輸出為空括弧：
+命令的輸出是空的括弧：
 ```json
 []
 ```
@@ -186,14 +186,14 @@ ms.locfileid: "77201861"
 ### <a name="create-a-resource-group"></a>建立資源群組
 使用 [New-AzResourceGroup](https://docs.microsoft.com/cli/azure/group) 來建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。
 
-下面的示例在*東部*位置創建名為*myResourceGroup*的資源組：
+下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurepowershell-interactive
   New-AzResourceGroup -Name myResourceGroup -Location eastus
 ```
 ### <a name="create-virtual-network"></a>建立虛擬網路
 
-使用["新-Az虛擬網路](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest)"在 **"新資源組**"中使用名為**mySubnet**的子網創建名為**myVnet** [的虛擬網路](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest)。 虛擬網路的 IP 位址空間為**10.0.0.0/16**。 虛擬網路中的子網為**10.0.0.0/24**。  
+使用**myResourceGroup**中的[new-azvirtualnetworksubnetconfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) ，建立名為**myVnet**的虛擬網路，其名稱為**MySubnet**的子網使用 new [-new-azvirtualnetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest)。 虛擬網路的 IP 位址空間是**10.0.0.0/16**。 虛擬網路內的子網為**10.0.0.0/24**。  
 
 ```azurepowershell-interactive
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"
@@ -202,15 +202,15 @@ ms.locfileid: "77201861"
 ```
 ### <a name="permissions"></a>權限
 
-如果未創建要委派到 Azure 服務的子網，則需要以下許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
+如果您未建立想要委派給 Azure 服務的子網，您需要下列許可權： `Microsoft.Network/virtualNetworks/subnets/write`。
 
-內置[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色還包含必要的許可權。
+內建[網路參與者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)角色也包含必要的許可權。
 
 ### <a name="delegate-a-subnet-to-an-azure-service"></a>將子網委派給 Azure 服務
 
-在本節中，您將上一節中創建的子網委派給 Azure 服務。 
+在本節中，您會將您在上一節中建立的子網委派給 Azure 服務。 
 
-使用[Add-Az委派](https://docs.microsoft.com/powershell/module/az.network/add-azdelegation?view=latest)將名為**mySubnet**的子網與名為 **"i委派"** 的委派更新到 Azure 服務。  在此示例中 **，Microsoft.DBforPostgreSQL/serverv2**用於示例委派：
+使用[AzDelegation](https://docs.microsoft.com/powershell/module/az.network/add-azdelegation?view=latest) ，將名為**mySubnet**的子網，使用名為**MyDelegation**的委派更新至 Azure 服務。  在此範例中，會使用**DBforPostgreSQL/serversv2**來進行範例委派：
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
@@ -218,7 +218,7 @@ ms.locfileid: "77201861"
   $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.DBforPostgreSQL/serversv2" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-使用[Get-Az委派](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest)驗證委派：
+使用[AzDelegation](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest)來驗證委派：
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -232,9 +232,9 @@ ms.locfileid: "77201861"
   Id                : /subscriptions/3bf09329-ca61-4fee-88cb-7e30b9ee305b/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet/delegations/myDelegation
 
 ```
-### <a name="remove-subnet-delegation-from-an-azure-service"></a>從 Azure 服務中刪除子網委派
+### <a name="remove-subnet-delegation-from-an-azure-service"></a>從 Azure 服務移除子網委派
 
-使用[Remove-Az委派](https://docs.microsoft.com/powershell/module/az.network/remove-azdelegation?view=latest)從名為**mySubnet**的子網中刪除委派：
+使用[AzDelegation](https://docs.microsoft.com/powershell/module/az.network/remove-azdelegation?view=latest)從名為**mySubnet**的子網移除委派：
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
@@ -242,7 +242,7 @@ ms.locfileid: "77201861"
   $subnet = Remove-AzDelegation -Name "myDelegation" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-使用[Get-Az委派](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest)驗證已刪除委派：
+使用[AzDelegation](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest)來確認已移除委派：
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -253,4 +253,4 @@ ms.locfileid: "77201861"
 ```
 
 ## <a name="next-steps"></a>後續步驟
-- 瞭解如何在[Azure 中管理子網](virtual-network-manage-subnet.md)。
+- 瞭解如何[管理 Azure 中的子網](virtual-network-manage-subnet.md)。

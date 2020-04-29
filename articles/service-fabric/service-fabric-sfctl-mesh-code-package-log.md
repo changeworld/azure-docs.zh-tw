@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構 CLI-sfctl 網格代碼-包日誌
-description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括用於獲取指定代碼包的日誌的命令清單。
+title: Azure Service Fabric CLI-sfctl 網格程式碼-封裝-記錄檔
+description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來取得指定程式碼封裝之記錄檔的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: f8665e75e4c921a3305c9965601e2ee0825c8995
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906040"
 ---
 # <a name="sfctl-mesh-code-package-log"></a>sfctl mesh code-package-log
@@ -48,5 +48,5 @@ ms.locfileid: "76906040"
 
 
 ## <a name="next-steps"></a>後續步驟
-- [設置](service-fabric-cli.md)服務結構 CLI。
+- [設定](service-fabric-cli.md)Service Fabric CLI。
 - 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。

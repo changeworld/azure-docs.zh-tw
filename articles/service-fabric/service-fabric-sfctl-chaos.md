@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構 CLI-sfctl 混亂
-description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括用於管理混沌的命令清單。
+title: Azure Service Fabric CLI-sfctl 混亂
+description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來管理混亂的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 6668446363361fbc6d24afc3d11a36a0b786667d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76906175"
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
@@ -18,7 +18,7 @@ ms.locfileid: "76906175"
 ## <a name="subgroups"></a>子群組
 |子群組|描述|
 | --- | --- |
-| [附表](service-fabric-sfctl-chaos-schedule.md) | 取得並設定 chaos 排程。 |
+| [任務](service-fabric-sfctl-chaos-schedule.md) | 取得並設定 chaos 排程。 |
 ## <a name="commands"></a>命令
 
 |Command|描述|
@@ -41,7 +41,7 @@ ms.locfileid: "76906175"
 | --end-time-utc | 表示要產生 Chaos 報告之時間範圍結束時間的 Windows 檔案時間。 如需詳細資料，請參閱 [DateTime.ToFileTimeUtc 方法](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) \(機器翻譯\)。 |
 | --max-results | 分頁式查詢時傳回的最大結果數目。 此參數定義傳回結果數目的上限。 根據設定中所定義的訊息大小限制上限，如果所傳回的結果無法放入訊息中，則它們可以小於指定的結果上限。 如果此參數為零或未指定，則分頁式查詢會在傳回訊息中盡可能包含較多結果。 |
 | --start-time-utc | 表示要產生 Chaos 報告之時間範圍開始時間的 Windows 檔案時間。 如需詳細資料，請參閱 [DateTime.ToFileTimeUtc 方法](https\://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx) \(機器翻譯\)。 |
-| --timeout -t | 伺服器超時，用於在幾秒鐘內執行操作。 此超時指定用戶端願意等待請求的操作完成的時間持續時間。 此參數的預設值為 60 秒。  預設值\: 60。 |
+| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
@@ -62,7 +62,7 @@ ms.locfileid: "76906175"
 
 |引數|描述|
 | --- | --- |
-| --timeout -t | 伺服器超時，用於在幾秒鐘內執行操作。 此超時指定用戶端願意等待請求的操作完成的時間持續時間。 此參數的預設值為 60 秒。  預設值\: 60。 |
+| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
@@ -77,7 +77,7 @@ ms.locfileid: "76906175"
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
 在叢集中啟動 Chaos。
 
-如果 Chaos 尚未在叢集中執行，此命令會使用傳入的 Chaos 參數啟動 Chaos。 如果在進行這個呼叫時 Chaos 已在執行中，則呼叫會失敗，錯誤碼為 FABRIC_E_CHAOS_ALREADY_RUNNING。 有關詳細資訊，請參閱文章["在服務結構群集中誘導受控混沌](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)"。
+如果 Chaos 尚未在叢集中執行，此命令會使用傳入的 Chaos 參數啟動 Chaos。 如果在進行這個呼叫時 Chaos 已在執行中，則呼叫會失敗，錯誤碼為 FABRIC_E_CHAOS_ALREADY_RUNNING。 如需詳細資訊，請參閱在[Service Fabric 叢集中引發受控制的混亂](https\://docs.microsoft.com/azure/service-fabric/service-fabric-controlled-chaos)一文。
 
 ### <a name="arguments"></a>引數
 
@@ -116,7 +116,7 @@ ms.locfileid: "76906175"
 
 |引數|描述|
 | --- | --- |
-| --timeout -t | 伺服器超時，用於在幾秒鐘內執行操作。 此超時指定用戶端願意等待請求的操作完成的時間持續時間。 此參數的預設值為 60 秒。  預設值\: 60。 |
+| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 

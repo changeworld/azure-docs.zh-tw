@@ -1,6 +1,6 @@
 ---
-title: 教程：配置賽門鐵克 Web 安全服務 （WSS）， 以便使用 Azure 活動目錄自動預配使用者 |微軟文檔
-description: 瞭解如何將 Azure 活動目錄配置為自動預配和取消向賽門鐵克 Web 安全服務 （WSS） 預配和取消預配使用者帳戶。
+title: 教學課程：使用 Azure Active Directory 來設定 Symantec Web Security Service （WSS）以進行自動使用者布建 |Microsoft Docs
+description: 瞭解如何設定 Azure Active Directory 以自動布建和取消布建使用者帳戶至 Symantec Web Security Service （WSS）。
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,110 +16,110 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
 ms.openlocfilehash: fbd105ca1623512a3c16f3b609374f5c4055898b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063113"
 ---
-# <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>教程：為自動使用者預配配置賽門鐵克網路安全服務 （WSS）
+# <a name="tutorial-configure-symantec-web-security-service-wss-for-automatic-user-provisioning"></a>教學課程：設定 Symantec Web Security Service （WSS）來自動布建使用者
 
-本教程的目的是演示在賽門鐵克 Web 安全服務 （WSS） 和 Azure 活動目錄 （Azure AD） 中執行的步驟，以將 Azure AD 配置為自動預配和取消向賽門鐵克 Web 安全服務 （WSS） 預配和取消預配使用者和/或組。
+本教學課程的目的是要示範在 Symantec web Security Service （WSS）和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者和/或群組至 Symantec Web Security Service （WSS）。
 
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * Azure AD 租用戶
-* [賽門鐵克網路安全服務 （WSS） 租戶](https://www.websecurity.symantec.com/buy-renew?inid=brmenu_nav_brhome)
-* 賽門鐵克網路安全服務 （WSS） 中的使用者帳戶，具有管理員許可權。
+* [Symantec Web Security Service （WSS）租使用者](https://www.websecurity.symantec.com/buy-renew?inid=brmenu_nav_brhome)
+* Symantec Web Security Service （WSS）中具有系統管理員許可權的使用者帳戶。
 
-## <a name="assigning-users-to-symantec-web-security-service-wss"></a>將使用者分配給賽門鐵克網路安全服務 （WSS）
+## <a name="assigning-users-to-symantec-web-security-service-wss"></a>將使用者指派給 Symantec Web Security Service （WSS）
 
-Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收對選定應用的存取權限。 在自動使用者預配的上下文中，只有分配給 Azure AD 中應用程式的使用者和/或組才會同步。
+Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有已指派給 Azure AD 中應用程式的使用者和/或群組會進行同步處理。
 
-在配置和啟用自動使用者預配之前，應決定 Azure AD 中的哪些使用者和/或組需要訪問賽門鐵克 Web 安全服務 （WSS）。 決定後，您可以按照此處的說明將這些使用者和/或組分配給賽門鐵克網路安全服務 （WSS）：
+在設定並啟用自動使用者布建之前，您應該決定 Azure AD 中的哪些使用者和/或群組需要存取 Symantec Web Security Service （WSS）。 一旦決定後，您可以遵循此處的指示，將這些使用者和/或群組指派給 Symantec Web Security Service （WSS）：
 * [將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
 
-##  <a name="important-tips-for-assigning-users-to-symantec-web-security-service-wss"></a>將使用者分配給賽門鐵克網路安全服務 （WSS） 的重要提示
+##  <a name="important-tips-for-assigning-users-to-symantec-web-security-service-wss"></a>將使用者指派給 Symantec Web Security Service （WSS）的重要秘訣
 
-* 建議將單個 Azure AD 使用者分配給賽門鐵克 Web 安全服務 （WSS） 以測試自動使用者預配配置。 其他使用者及/或群組可能會稍後再指派。
+* 建議將單一 Azure AD 使用者指派給 Symantec Web Security Service （WSS），以測試自動使用者布建設定。 其他使用者及/或群組可能會稍後再指派。
 
-* 將使用者分配給賽門鐵克 Web 安全服務 （WSS） 時，必須在分配對話方塊中選擇任何有效的特定于應用程式的角色（如果可用）。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派給 Symantec Web Security Service （WSS）時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色（如果有的話）。 具有**預設存取**角色的使用者會從佈建中排除。
 
-## <a name="setup-symantec-web-security-service-wss-for-provisioning"></a>設置賽門鐵克網路安全服務 （WSS） 進行預配
+## <a name="setup-symantec-web-security-service-wss-for-provisioning"></a>設定 Symantec Web Security Service （WSS）以提供布建
 
-在配置賽門鐵克 Web 安全服務 （WSS） 以使用 Azure AD 進行自動使用者預配之前，您需要在賽門鐵克 Web 安全服務 （WSS） 上啟用 SCIM 預配。
+將 Symantec Web Security Service （WSS）設定為使用 Azure AD 自動布建使用者之前，您必須在 Symantec Web Security Service （WSS）上啟用 SCIM 布建。
 
-1. 登錄到您的[賽門鐵克網路安全服務管理主控台](https://portal.threatpulse.com/login.jsp)。 導航到**解決方案** > **服務**。
+1. 登入您的[Symantec Web Security Service 管理主控台](https://portal.threatpulse.com/login.jsp)。 流覽至 [**解決方案** > **服務**]。
 
-    ![賽門鐵克網路安全服務 （WSS）](media/symantec-web-security-service/service.png)
+    ![Symantec Web Security Service （WSS）](media/symantec-web-security-service/service.png)
 
-2. 導航到**帳戶維護** > **集成** > **新集成**。
+2. 流覽至**帳戶維護** > **Integrations** > 整合**新整合**。
 
     ![Symantec Web Security Service (WSS)](media/symantec-web-security-service/acount.png)
 
-3.  選擇**協力廠商使用者&組同步**。 
+3.  選取 [**協力廠商使用者 & 群組同步**]。 
 
     ![Symantec Web Security Service](media/symantec-web-security-service/third-party-users.png)
 
-4.  複製**SCIM URL**和**權杖**。 這些值將在 Azure 門戶中賽門鐵克 Web 安全服務 （WSS） 應用程式的預配選項卡中的 **"租戶 URL"** 和 **"秘密權杖"** 欄位中輸入。
+4.  複製**SCIM URL**和**Token**。 這些值會在 Azure 入口網站中 Symantec Web Security Service （WSS）應用程式的 [布建] 索引標籤的 [**租使用者 URL** ] 和 [**秘密權杖**] 欄位中輸入。
 
     ![Symantec Web Security Service](media/symantec-web-security-service/scim.png)
 
-## <a name="add-symantec-web-security-service-wss-from-the-gallery"></a>從庫中添加賽門鐵克網路安全服務 （WSS）
+## <a name="add-symantec-web-security-service-wss-from-the-gallery"></a>從資源庫新增 Symantec Web Security Service （WSS）
 
-要配置賽門鐵克 Web 安全服務 （WSS） 以自動預配 Azure AD，您需要將賽門鐵克 Web 安全服務 （WSS） 從 Azure AD 應用程式庫添加到託管 SaaS 應用程式清單中。
+若要使用 Azure AD 來設定 Symantec Web Security Service （WSS）來自動布建使用者，您需要從 Azure AD 應用程式庫將 Symantec Web Security Service （WSS）新增至受控 SaaS 應用程式清單。
 
-**要從 Azure AD 應用程式庫添加賽門鐵克 Web 安全服務 （WSS），請執行以下步驟：**
+**若要從 Azure AD 應用程式庫新增 Symantec Web Security Service （WSS），請執行下列步驟：**
 
-1. 在**[Azure 門戶](https://portal.azure.com)** 中，在左側導航面板中，選擇**Azure 活動目錄**。
+1. 在**[Azure 入口網站](https://portal.azure.com)** 的左側導覽窗格中，選取 [ **Azure Active Directory**]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 轉到**企業應用程式**，然後選擇 **"所有應用程式**"。
+2. 移至 [**企業應用程式**]，然後選取 [**所有應用程式**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 要添加新應用程式，請選擇窗格頂部的 **"新建應用程式**"按鈕。
+3. 若要新增新的應用程式，請選取窗格頂端的 [**新增應用程式**] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜索框中，輸入**賽門鐵克網路安全服務**，在結果面板中選擇**賽門鐵克網路安全服務**，然後按一下 **"添加**"按鈕以添加應用程式。
+4. 在搜尋方塊中，輸入**Symantec Web Security service**，在結果面板中選取 [ **Symantec web security service** ]，然後按一下 [**新增**] 按鈕以新增應用程式。
 
     ![結果清單中的 Symantec Web Security Service (WSS)](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-symantec-web-security-service-wss"></a>將自動使用者預配配置配置給賽門鐵克網路安全服務 （WSS）
+## <a name="configuring-automatic-user-provisioning-to-symantec-web-security-service-wss"></a>設定自動使用者布建至 Symantec Web Security Service （WSS）
 
-本節將指導您完成將 Azure AD 預配服務配置為根據 Azure AD 中的使用者和/或組分配在賽門鐵克 Web 安全服務 （WSS） 中創建、更新和禁用使用者和/或組的步驟。
+本節將引導您逐步設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派，在 Symantec Web Security Service （WSS）中建立、更新和停用使用者和/或群組。
 
 > [!TIP]
-> 您也可以根據[賽門鐵克網路安全服務 （WSS） 單一登入教程](symantec-tutorial.md)中提供的說明，選擇啟用賽門鐵克網路安全服務 （WSS） 基於 SAML 的單一登入。 單一登入可以獨立于自動使用者預配進行配置，儘管這兩個功能相輔相成。
+> 您也可以選擇啟用 Symantec Web Security Service （WSS）的 SAML 型單一登入，請遵循[Symantec Web Security service （wss）單一登入教學](symantec-tutorial.md)課程中提供的指示。 單一登入可以與自動使用者布建分開設定，雖然這兩個功能彼此互補。
 
-### <a name="to-configure-automatic-user-provisioning-for-symantec-web-security-service-wss-in-azure-ad"></a>要在 Azure AD 中為賽門鐵克 Web 安全服務 （WSS） 配置自動使用者預配：
+### <a name="to-configure-automatic-user-provisioning-for-symantec-web-security-service-wss-in-azure-ad"></a>若要在 Azure AD 中設定 Symantec Web Security Service （WSS）的自動使用者布建：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。 選擇**企業應用程式**，然後選擇**所有應用程式**。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**]，然後選取 [**所有應用程式**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-2. 在應用程式清單中，選擇**賽門鐵克網路安全服務**。
+2. 在應用程式清單中，選取 [ **Symantec Web Security Service**]。
 
     ![應用程式清單中的 [Symantec Web Security Service (WSS)] 連結](common/all-applications.png)
 
-3. 選擇 **"預配"** 選項卡。
+3. 選取 [**布**建] 索引標籤。
 
-    ![預配選項卡](common/provisioning.png)
+    ![布建索引標籤](common/provisioning.png)
 
-4. 將**預配模式**設置為 **"自動**"。
+4. 將布建模式設定為 [**自動** **]** 。
 
-    ![預配選項卡](common/provisioning-automatic.png)
+    ![布建索引標籤](common/provisioning-automatic.png)
 
-5. 在"管理認證"部分下，分別輸入**在租戶 URL**和**秘密權杖**中檢索的**SCIM URL**和**權杖**值。 按一下 **"測試連接**"以確保 Azure AD 可以連接到賽門鐵克網路安全服務。 如果連接失敗，請確保您的賽門鐵克網路安全服務 （WSS） 帳戶具有管理員許可權，然後重試。
+5. 在 [管理員認證] 區段下，分別輸入 [**租使用者 URL** ] 和 [**秘密權杖**] 中稍早取得的**SCIM URL**和**權杖**值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Symantec Web Security Service。 如果連線失敗，請確定您的 Symantec Web Security Service （WSS）帳戶具有系統管理員許可權，然後再試一次。
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -127,31 +127,31 @@ Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [儲存]****。
+7. 按一下 **[儲存]** 。
 
-8. 在 **"映射**"部分下，選擇**將 Azure 活動目錄使用者同步到賽門鐵克 Web 安全服務 （WSS）。**
+8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者到 Symantec Web SECURITY Service （WSS）**]。
 
-    ![賽門鐵克網路安全服務 （WSS） 使用者映射](media/symantec-web-security-service/usermapping.png)
+    ![Symantec Web Security Service （WSS）使用者對應](media/symantec-web-security-service/usermapping.png)
 
-9. 在**屬性對應**部分中查看從 Azure AD 同步到賽門鐵克 Web 安全服務 （WSS） 的使用者屬性。 選擇為**匹配**屬性的屬性用於匹配賽門鐵克網路安全服務 （WSS） 中的使用者帳戶以進行更新操作。 選取 [儲存]**** 按鈕以認可所有變更。
+9. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Symantec Web Security SERVICE （WSS）的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Symantec Web Security SERVICE （WSS）中的使用者帳戶，以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
 
-    ![賽門鐵克網路安全服務 （WSS） 使用者映射](media/symantec-web-security-service/userattribute.png)
+    ![Symantec Web Security Service （WSS）使用者對應](media/symantec-web-security-service/userattribute.png)
 
-10. 在 **"映射**"部分下，選擇**將 Azure 活動目錄組同步到賽門鐵克 Web 安全服務**。
+10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組到 Symantec Web Security Service**]。
 
-    ![賽門鐵克網路安全服務 （WSS） 使用者映射](media/symantec-web-security-service/groupmapping.png)
+    ![Symantec Web Security Service （WSS）使用者對應](media/symantec-web-security-service/groupmapping.png)
 
-11. 在**屬性對應**部分中查看從 Azure AD 同步到賽門鐵克 Web 安全服務 （WSS） 的組屬性。 選擇為**匹配**屬性的屬性用於匹配賽門鐵克 Web 安全服務 （WSS） 中的組以進行更新操作。 選取 [儲存]**** 按鈕以認可所有變更。
+11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Symantec Web Security SERVICE （WSS）的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Symantec Web Security SERVICE （WSS）中的群組以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
 
-    ![賽門鐵克網路安全服務 （WSS） 使用者映射](media/symantec-web-security-service/groupattribute.png)
+    ![Symantec Web Security Service （WSS）使用者對應](media/symantec-web-security-service/groupattribute.png)
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 要為賽門鐵克 Web 安全服務啟用 Azure AD 預配服務，在 **"設置"** 部分將**預配狀態**更改為 **"打開**"。
+13. 若要啟用 Symantec Web Security Service 的 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 通過在 **"設置"** 部分中選擇"**範圍"** 中所需的值，定義要預配到賽門鐵克網路安全服務 （WSS） 的使用者和/或組。
+14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Symantec WEB Security Service （WSS）的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 
@@ -159,14 +159,14 @@ Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步執行的時間比後續同步長。 有關使用者和/或組預配需要多長時間的詳細資訊，請參閱[預配使用者需要多長時間](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
+此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行。 如需布建使用者和/或群組所需時間長度的詳細資訊，請參閱布建[使用者需要多久時間](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
 
-可以使用"**目前狀態**"部分監視進度並遵循指向預配活動報告的連結，該報表描述由賽門鐵克 Web 安全服務 （WSS） 上執行的 Azure AD 預配服務執行的所有操作。 有關詳細資訊，請參閱[檢查使用者預配的狀態](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 要讀取 Azure AD 預配日誌，請參閱[報告自動使用者帳戶預配](../app-provisioning/check-status-user-account-provisioning.md)。
+您可以使用 [**目前狀態**] 區段來監視進度，並遵循 [布建活動報告] 的連結，其描述 Symantec Web Security SERVICE （WSS）上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用的使用者帳戶預配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 

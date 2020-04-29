@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 門戶中管理使用者分配的託管標識 - Azure AD
+title: 在 Azure 入口網站 Azure AD 中管理使用者指派的受控識別
 description: 如何對使用者指派的受控識別建立、列出、刪除和指派角色的逐步指示。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10caa9e5e61dc1dd0c1062583f55a7357c643ce5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79244130"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>使用 Azure 入口網站對使用者指派的受控識別建立、列出、刪除或指派角色
@@ -30,7 +30,7 @@ ms.locfileid: "79244130"
 
 在本文中，您會了解如何使用 Azure 入口網站對使用者指派的受控識別建立、列出、刪除或指派角色。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
@@ -40,13 +40,13 @@ ms.locfileid: "79244130"
 若要建立使用者指派的受控識別，您的帳戶需要[受控識別參與者](/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色指派。
 
 1. 使用與 Azure 訂用帳戶相關聯的帳戶登入 [Azure 入口網站](https://portal.azure.com)，以建立使用者指派的受控識別。
-2. 在搜索框中，鍵入 *"託管標識*"，並在 **"服務**"下按一下 **"託管標識**"。
+2. 在搜尋方塊中，輸入*受控*識別，然後在 [**服務**] 下，按一下 [**受控**識別]。
 3. 按一下 [新增]****，並在 [建立使用者指派的受控識別]**** 窗格底下的下列欄位中輸入值：
    - **資源名稱**：這是使用者指派的受控識別名稱，例如 UAI1。
    - **訂用帳戶**：選擇訂用帳戶，以在其下方建立使用者指派的受控識別
    - **資源群組**：建立新資源群組來包含使用者指派的受控識別，或選擇 [使用現有項目]**** 在現有的資源群組中建立使用者指派的受控識別。
    - **位置**：選擇位置來部署使用者指派的受控識別，例如**美國西部**。
-4. 按一下 **[建立]**。
+4. 按一下 [建立]  。
 
 ![建立使用者指派的受控識別](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 

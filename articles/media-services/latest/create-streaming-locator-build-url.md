@@ -1,6 +1,6 @@
 ---
-title: 創建流定位器並生成 URL - Azure 媒體服務
-description: 本文演示如何創建流式定位器和生成 URL。
+title: 建立串流定位器和組建 Url-Azure 媒體服務
+description: 本文示範如何建立串流定位器和建立 Url。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,21 +12,21 @@ ms.topic: article
 ms.date: 03/04/2020
 ms.author: juliako
 ms.openlocfilehash: 2972c60aa5874c21a6f7bce21020ad58b5f3b556
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78304559"
 ---
-# <a name="create-a-streaming-locator-and-build-urls"></a>創建流式定位器並生成 URL
+# <a name="create-a-streaming-locator-and-build-urls"></a>建立串流定位器並建置 URL
 
-在 Azure 媒體服務中，要生成流式處理 URL，需要首先創建[流式處理器](streaming-locators-concept.md)。 然後串聯[流終結點](https://docs.microsoft.com/rest/api/media/streamingendpoints)主機名稱和**流式處理器**路徑。 此範例會使用預設的** **串流端點**。 首次創建媒體服務帳戶時，此*預設***流式處理終結點**將處於停止狀態，因此您需要調用**Start**開始資料流。
+在 Azure 媒體服務中，若要建立串流 URL，您必須先建立[串流定位器](streaming-locators-concept.md)。 接著，您會串連[串流端點](https://docs.microsoft.com/rest/api/media/streamingendpoints)主機名稱和**串流定位器**路徑。 此範例會使用預設的  **串流端點**。 當您第一次建立媒體服務帳戶時，此*預設***串流端點**會處於 [已停止] 狀態，因此您必須呼叫 [**啟動**] 以開始串流。
 
-本文演示如何創建流式處理器並使用 JAVA 和 .NET SDK 構建流式處理 URL。
+本文示範如何建立串流定位器，並使用 JAVA 和 .NET Sdk 建立串流 URL。
 
 ## <a name="prerequisite"></a>必要條件 
 
-預覽[動態打包](dynamic-packaging-overview.md)
+預覽[動態封裝](dynamic-packaging-overview.md)
 
 ## <a name="java"></a>Java
 
@@ -85,7 +85,7 @@ private static List<String> getStreamingUrls(MediaManager manager, String resour
 }
 ```
 
-請參閱完整的代碼示例：[使用預定義預設進行編碼](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
+請參閱完整的程式碼範例： [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-java/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/src/main/java/sample/EncodingWithMESPredefinedPreset.java)
 
 ## <a name="net"></a>.NET
 
@@ -158,9 +158,9 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 }
 ```
 
-請參閱完整的代碼示例：[使用預定義預設進行編碼](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
+請參閱完整的程式碼範例： [EncodingWithMESPredefinedPreset](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/VideoEncoding/EncodingWithMESPredefinedPreset/Program.cs)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [使用 .NET 建立篩選器](filters-dynamic-manifest-dotnet-howto.md)
 * [使用 REST 建立篩選器](filters-dynamic-manifest-rest-howto.md)

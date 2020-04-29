@@ -1,6 +1,6 @@
 ---
-title: 修復了"無法從這裡到達那裡"錯誤 - Azure AD
-description: 查找潛在的解決方法，瞭解您收到"無法從這裡到達那裡"錯誤訊息的原因。
+title: 修正「您無法從這裡取得」錯誤-Azure AD
+description: 尋找您為什麼會收到「無法從這裡取得」錯誤訊息的潛在修正。
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,13 +14,13 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 2484de4e554d16ba049d206981a44654ede28a3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77190034"
 ---
-# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>"您無法從這裡到達那裡"錯誤訊息的可能修復
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>可能的修正程式「您無法從這裡取得」錯誤訊息
 
 存取貴組織的內部 Web 應用程式或服務時收到錯誤訊息，指出：**您無法從這裡完成**。 此訊息表示貴組織已讓原則就位，防止您的裝置存取貴組織的資源。 雖然最終您可能還是需要連絡技術服務人員來修正此問題，但是以下是您可以先嘗試的一些動作。
 
@@ -34,13 +34,13 @@ ms.locfileid: "77190034"
 ## <a name="make-sure-youre-using-a-supported-operating-system"></a>請確定您使用支援的作業系統
 請確定您執行支援版本的作業系統，包括：
 
-- **視窗用戶端。** Windows 7 或更新版本。
+- **Windows 用戶端。** Windows 7 或更新版本。
 
-- **視窗伺服器。** Windows Server 2008 R2 或更新版本。
+- **Windows Server。** Windows Server 2008 R2 或更新版本。
 
 - **macOS.** macOS X 或更新版本
 
-- **安卓和 iOS。** 最新版本的 Android 和 iOS 行動裝置作業系統
+- **Android 和 iOS。** 最新版本的 Android 和 iOS 行動裝置作業系統
 
 若要修正此問題，您必須安裝並執行支援的作業系統。
 
@@ -63,9 +63,9 @@ ms.locfileid: "77190034"
 ### <a name="to-join-your-device-to-your-network"></a>若要將裝置加入您的網路
 如果您的裝置未加入貴組織的網路，可以執行下列其中一項操作：
 
-- **加入工作裝置。** 將您工作用的 Windows 10 裝置加入組織的網路，如此就能存取可能受限的資源。 如需詳細資訊和逐步指示，請參閱[將工作裝置加入貴組織的網路](user-help-join-device-on-network.md)。
+- **加入您的工作裝置。** 將您工作用的 Windows 10 裝置加入組織的網路，如此就能存取可能受限的資源。 如需詳細資訊和逐步指示，請參閱[將工作裝置加入貴組織的網路](user-help-join-device-on-network.md)。
 
-- **註冊用於工作的個人裝置。** 在組織的網路上註冊您的個人裝置，通常是手機或平板電腦。 註冊您的裝置之後，該裝置就可以存取組織的受限資源。 如需詳細資訊和逐步指示，請參閱[在貴組織的網路上註冊您的個人裝置](user-help-register-device-on-network.md)。
+- **註冊您的個人裝置以進行工作。** 在組織的網路上註冊您的個人裝置，通常是手機或平板電腦。 註冊您的裝置之後，該裝置就可以存取組織的受限資源。 如需詳細資訊和逐步指示，請參閱[在貴組織的網路上註冊您的個人裝置](user-help-register-device-on-network.md)。
 
 ## <a name="next-steps"></a>後續步驟
 - [什麼是 MyApps 入口網站？](active-directory-saas-access-panel-introduction.md)

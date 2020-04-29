@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構 CLI-sfctl 網格機密
-description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括用於獲取和刪除服務結構網格機密資源的命令清單。
+title: Azure Service Fabric CLI-sfctl 網格秘密
+description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來取得和刪除 Service Fabric 網格秘密資源的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: fab388ff223eb95020e2ba0945c76532bc54f224
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905976"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh secret
@@ -19,7 +19,7 @@ ms.locfileid: "76905976"
 
 |Command|描述|
 | --- | --- |
-| delete | 刪除秘密資源。 |
+| [刪除] | 刪除秘密資源。 |
 | list | 列出所有秘密資源。 |
 | 顯示 | 取得指定名稱的秘密資源。 |
 
@@ -82,5 +82,5 @@ ms.locfileid: "76905976"
 
 
 ## <a name="next-steps"></a>後續步驟
-- [設置](service-fabric-cli.md)服務結構 CLI。
+- [設定](service-fabric-cli.md)Service Fabric CLI。
 - 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。
