@@ -1,5 +1,5 @@
 ---
-title: B2B 邀請電子郵件的元素 - Azure 活動目錄 |微軟文件
+title: B2B 邀請電子郵件的元素-Azure Active Directory |Microsoft Docs
 description: Azure Active Directory B2B 共同作業邀請電子郵件範本
 services: active-directory
 ms.service: active-directory
@@ -13,20 +13,20 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0429cfb62c319675806d76b4759b776a7b32dbcb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81407181"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B 共同作業邀請電子郵件的元素 - Azure Active Directory
 
-邀請電子郵件是一個可讓合作夥伴在 Azure AD 中以 B2B 共同作業使用者身分上線的重要元件。 雖然[不需要您發送電子郵件來邀請使用 B2B 協作的使用者](add-user-without-invite.md),但這樣做為使用者提供了決定是否接受您的邀請所需的所有資訊。 它還為他們提供了一個連結,當他們需要返回到您的資源時,他們將來可以隨時參考。
+邀請電子郵件是一個可讓合作夥伴在 Azure AD 中以 B2B 共同作業使用者身分上線的重要元件。 雖然[您不需要傳送電子郵件來邀請使用 B2B](add-user-without-invite.md)共同作業的人，但這麼做會為使用者提供所需的所有資訊，以決定是否接受您的邀請。 它也會提供連結，讓他們在未來需要返回您的資源時，可以隨時參考它們。
 
 ![顯示 B2B 邀請電子郵件的螢幕擷取畫面](media/invitation-email-elements/invitation-email.png)
 
 > [!NOTE]
-> 此新電子郵件範本仍在向所有租戶推出,因此某些租戶仍在使用較舊的設計。 到 2020 年 5 月底,來自所有租戶的邀請都將使用此範本。
+> 這個新的電子郵件範本仍會推出給所有租使用者，因此有些租使用者仍在使用較舊的設計。 從2020月底開始，所有租使用者的邀請都會使用此範本。
 
 ## <a name="explaining-the-email"></a>說明電子郵件
 
@@ -34,13 +34,13 @@ ms.locfileid: "81407181"
 
 ### <a name="subject"></a>主體
 
-電子郵件的主題遵循以下模式:
+電子郵件的主旨會遵循此模式：
 
-&lt;使用者名&gt;邀請您訪問其組織內的應用程式。
+&lt;使用者&gt;名稱邀請您存取其組織內的應用程式。
 
 ### <a name="from-address"></a>寄件者地址
 
-針對「寄件者地址」，我們使用類似 LinkedIn 的模式。 此模式應明確說明,雖然電子郵件來自invites@microsoft.com,但邀請來自另一個組織。 格式是:微軟 <invites@microsoft.com>邀請或代表租戶&lt;&gt; <invites@microsoft.com>名稱 的微軟邀請。 
+針對「寄件者地址」，我們使用類似 LinkedIn 的模式。 此模式應該可以清楚指出，雖然電子郵件來自于invites@microsoft.com另一個組織，但邀請來自其他組織。 格式 <invites@microsoft.com>為：代表&lt;tenantname&gt; <invites@microsoft.com>的 microsoft 邀請或 microsoft 邀請。 
 
 ### <a name="reply-to"></a>回覆地址
 
@@ -48,33 +48,33 @@ ms.locfileid: "81407181"
 
 ### <a name="phishing-warning"></a>網路釣魚警告
 
-電子郵件首先向使用者發出有關網路釣魚的簡短警告,提醒用戶他們只接受他們期望的邀請。 最好能確保您邀請的合作夥伴不會因為您的邀請而感到驚訝,提前向他們提及邀請。
+此電子郵件會從使用者相關的網路釣魚簡短警告開始，警示他們應該只接受預期的邀請。 最好的作法是確保您邀請的合作夥伴不會因為您的邀請而感到驚訝。
 
 ![電子郵件中網路釣魚警告的影像](media/invitation-email-elements/phishing-warning.png)
 
 ### <a name="inviters-information"></a>邀請者的資訊
 
-電子郵件包括有關邀請者及其發送邀請的組織的資訊。 這包括寄件者的姓名和電子郵寄地址,以及與組織關聯的名稱和主要域。 所有這些資訊都應幫助被邀請者就接受邀請做出明智的決定。
+此電子郵件包含邀請者的相關資訊，以及他們正在傳送邀請的組織。 這包括寄件者的名稱和電子郵件地址，以及與組織相關聯的名稱和主要網域。 所有這項資訊都應該協助被邀請者做出有關接受邀請的明智決策。
 
-![邀請者資訊在電子郵件中的影像](media/invitation-email-elements/inviters-information.png)
+![邀請者在電子郵件中的資訊影像](media/invitation-email-elements/inviters-information.png)
 
 ### <a name="invitation-message"></a>邀請訊息
 
-如果邀請者在[邀請來賓使用者訪問目錄、組或應用](add-users-administrator.md)或使用[邀請 API](customize-invitation-api.md)時,將郵件作為邀請的一部分,則該郵件將突出顯示到電子郵件的主部分。 還包括被邀請者的姓名和個人資料圖像(如果他們設置了一個)。 郵件本身是一個文字區域,因此出於安全原因,它不處理 HTML 標記。
+如果邀請者在邀請[來賓使用者到目錄、群組或應用程式](add-users-administrator.md)，或當他們[使用邀請 API](customize-invitation-api.md)時，將訊息包含在其邀請中，則會在電子郵件的主要區段中反白顯示該訊息。 也包含邀請者的名稱和設定檔映射（如果已設定的話）。 訊息本身是一個文字區域，因此基於安全性考慮，它不會處理 HTML 標籤。
 
-![電子郵件中邀請郵件的影像](media/invitation-email-elements/invitation-message.png)
+![電子郵件中的邀請訊息影像](media/invitation-email-elements/invitation-message.png)
 
-### <a name="accept-button-and-redirect-url"></a>接受按鈕與重定到網址
+### <a name="accept-button-and-redirect-url"></a>接受按鈕和重新導向 URL
 
-電子郵件的下一部分包含有關被邀請者接受邀請後將採取哪些內容的資訊,以及執行此操作的按鈕。  將來,被邀請者始終可以使用此連結直接返回到您的資源。
+電子郵件的下一節包含在接受邀請之後，將會在何處採取的相關資訊，以及用來執行這項操作的按鈕。  在未來，受邀者一律可以使用此連結直接回到您的資源。
 
-![接受按鈕的影像與電子郵件中的重定向網址](media/invitation-email-elements/accept-button.png)
+![電子郵件中 [接受] 按鈕和 [重新導向 URL] 的影像](media/invitation-email-elements/accept-button.png)
 
 ### <a name="footer-section"></a>頁尾區段
 
-頁腳包含有關要發送的邀請的詳細資訊。 邀請者始終可以選擇阻止將來的邀請。 如果組織[設置了隱私聲明](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area),則指向該語句的連結將在此處顯示。  否則,註釋指示組織未設置隱私聲明。
+頁尾包含所傳送邀請的詳細資訊。 受邀者一律可以選擇封鎖未來的邀請。 如果組織已[設定隱私權聲明](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-properties-area)，則會在這裡顯示語句的連結。  否則，附注表示組織尚未設定隱私權聲明。
 
-![電子郵件中註腳部分的影像](media/invitation-email-elements/footer-section.png)
+![電子郵件中頁尾區段的影像](media/invitation-email-elements/footer-section.png)
  
 ## <a name="how-the-language-is-determined"></a>如何決定語言
 
@@ -91,7 +91,7 @@ ms.locfileid: "81407181"
 
 請參閱下列有關 Azure AD B2B 共同作業的文章：
 
-- [什麼是 Azure AD B2B 協作](what-is-b2b.md)
+- [什麼是 B2B 共同作業 Azure AD](what-is-b2b.md)
 - [Azure Active Directory 系統管理員如何新增 B2B 共同作業使用者？](add-users-administrator.md)
 - [資訊工作者如何新增 B2B 共同作業使用者？](add-users-information-worker.md)
 - [B2B 共同作業邀請兌換](redemption-experience.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure 突觸分析(以前的 SQL DW)中的數據倉儲單元 (DWU)
-description: 關於選擇理想數量的數據倉庫單位 (DWU) 以優化價格和性能以及如何更改單位數量的建議。
+title: Azure Synapse Analytics （先前稱為 SQL DW）中的資料倉儲單位（Dwu）
+description: 選擇理想的資料倉儲單位 (DWU) 數目以獲得最佳價格與效能，以及如何變更單位數目的建議。
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -12,31 +12,31 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: db282bae92ec14c1cb4f6a61b61d435814b0f13c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81408057"
 ---
-# <a name="data-warehouse-units-dwus"></a>資料倉儲單位
+# <a name="data-warehouse-units-dwus"></a>資料倉儲單位（Dwu）
 
-關於選擇理想數量的數據倉庫單位 (DWU) 以優化價格和性能以及如何更改單位數量的建議。
+選擇理想的資料倉儲單位 (DWU) 數目以獲得最佳價格與效能，以及如何變更單位數目的建議。
 
 ## <a name="what-are-data-warehouse-units"></a>什麼是資料倉儲單位
 
-[Synapse SQL 池](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)表示正在預配的分析資源的集合。 分析資源定義為 CPU、記憶體和 IO 的組合。
+[SYNAPSE SQL 集](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)區代表所布建的分析資源集合。 分析資源是以 CPU、記憶體和 IO 的組合來定義。
 
-這三個資源被捆綁到稱為數據倉庫單元 (DWU) 的計算規模單位中。 DWU 能以抽象而標準化的量值來呈現計算資源與效能。
+這三個資源會組合成計算規模的單位，我們稱之為「資料倉儲單位 (DWU)」。 DWU 能以抽象而標準化的量值來呈現計算資源與效能。
 
-對服務等級的更改會更改系統可用的 DWU 數量,從而調整系統的性能和成本。
+變更服務等級即可改變可供系統使用的 DWU 數目，進而調整系統的效能與成本。
 
-為了獲得更高的性能,可以增加數據倉庫單位的數量。 為了降低性能,請減少數據倉庫單位。 儲存體和計算成本會分別計費，因此，變更資料倉儲單位不會影響儲存體成本。
+若要提升效能，則可以增加資料倉儲單位數。 若要降低效能，則請降低資料倉儲單位。 儲存體和計算成本會分別計費，因此，變更資料倉儲單位不會影響儲存體成本。
 
 資料倉儲單位的效能是以這些資料倉儲工作負載計量為根據：
 
-- 標準 SQL 池查詢可以掃描大量行,然後執行複雜的聚合的速度。 這個作業是 I/O 和 CPU 密集型作業。
-- SQL 池從 Azure 存儲 Blob 或 Azure 數據湖中引入數據的速度有多快。 這個作業是網路和 CPU 密集型作業。
-- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 命令複製表的速度有多快。 這個作業牽涉到從儲存體讀取資料、跨應用裝置的節點散發資料，以及重新寫入至儲存體。 這個作業是 CPU、IO 和網路密集型作業。
+- 標準 SQL 集區查詢可以多快掃描大量資料列，然後執行複雜的匯總。 這個作業是 I/O 和 CPU 密集型作業。
+- SQL 集區可以多快從 Azure 儲存體 Blob 或 Azure Data Lake 內嵌資料。 這個作業是網路和 CPU 密集型作業。
+- [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL 命令能以多快的速度複製資料表。 這個作業牽涉到從儲存體讀取資料、跨應用裝置的節點散發資料，以及重新寫入至儲存體。 這個作業是 CPU、IO 和網路密集型作業。
 
 增加 DWU：
 
@@ -48,12 +48,12 @@ ms.locfileid: "81408057"
 
 服務等級目標 (SLO) 是決定您資料倉儲之成本和效能層級的延展性設定。 Gen2 的服務等級會以計算資料倉儲單位 (cDWU) 來測量，例如 DW2000c。 Gen1 服務等級則會以 DWU 來測量，例如 DW2000。
 
-服務等級目標 (SLO) 是確定 SQL 池的成本和性能級別的可伸縮性設置。 Gen2 SQL 池的服務級別以數據倉庫單元 (DWU)(例如 DW2000c)來衡量。
+服務等級目標（SLO）是可決定 SQL 集區成本和效能等級的擴充性設定。 Gen2 SQL 集區的服務等級會以資料倉儲單位 (DWU) 來測量，例如 DW2000c。
 
 > [!NOTE]
 > Azure SQL 資料倉儲 Gen2 最近新增了其他調整規模功能，以支援最低 100 計算資料倉儲單位的計算層。 目前在 Gen1 上需要較低計算層的現有資料倉儲，現在可以升級到目前可用的區域中的 Gen2，不需要額外成本。  如果尚不支援您的區域，您仍然可以升級到支援的地區。 如需詳細資訊，請參閱[升級至 Gen2](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-在 T-SQL 中,SERVICE_OBJECTIVE設置確定 SQL 池的服務級別和性能層。
+在 T-SQL 中，SERVICE_OBJECTIVE 設定會決定您 SQL 集區適用的服務等級和效能層級。
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -86,9 +86,9 @@ DWU 和 cDWU 均支援將計算相應增加或減少，並且在您不需使用�
 
 1. 首先選取較小的 DWU。
 2. 當您的測試資料載入系統時監視應用程式效能，觀察比較所選 DWU 數目與您觀察到的效能。
-3. 針對定期的尖峰活動期間，識別任何其他需求。 可能需要頻繁縮放活動中顯示顯著高峰和低谷的工作負載。
+3. 針對定期的尖峰活動期間，識別任何其他需求。 在活動中顯示明顯尖峰和低谷的工作負載可能需要經常擴縮。
 
-SQL 池是一個橫向擴展系統,它可以提供大量的計算和查詢量大的數據。
+SQL 集區是一個擴增系統，可以佈建大量的計算以及查詢相當大量的資料。
 
 若要查看真正用以調整的功能 (尤其是在較大的 DWU 上)，建議您在進行調整以確定有足夠資料可提供給 CPU 時調整資料集。 針對調整測試，我們建議至少使用 1 TB。
 
@@ -123,19 +123,19 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-要變更 DWU:
+若要變更 DWU：
 
-1. 開啟 [Azure 入口網站](https://portal.azure.com)、開啟您的資料庫，然後按一下 [調整]****。
+1. 開啟 [Azure 入口網站](https://portal.azure.com)、開啟您的資料庫，然後按一下 [調整]  。
 
-2. 在 [調整]**** 下方，將滑桿向左或右移動來變更 DWU 設定。
+2. 在 [調整]  下方，將滑桿向左或右移動來變更 DWU 設定。
 
-3. 按一下 [檔案]  。 確認訊息隨即出現。 按一下 [是]**** 以確認或 [否]**** 以取消。
+3. 按一下 [檔案]  。 確認訊息隨即出現。 按一下 [是]  以確認或 [否]  以取消。
 
 #### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-要更改 DWU,請使用[集-AzSql 資料庫](/powershell/module/az.sql/set-azsqldatabase)PowerShell cmdlet。 下列範例會將裝載在 MyServer 伺服器上的資料庫 MySQLDW 的服務等級目標設定為 DW1000。
+若要變更 DWU，請使用 [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell Cmdlet。 下列範例會將裝載在 MyServer 伺服器上的資料庫 MySQLDW 的服務等級目標設定為 DW1000。
 
 ```Powershell
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
@@ -145,12 +145,12 @@ Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServi
 
 ### <a name="t-sql"></a>T-SQL
 
-使用 T-SQL,您可以查看當前的 DWU 設置、更改設定並檢查進度。
+利用 T-SQL，您可以檢視目前的 DWU 設定、變更設定，以及檢查進度。
 
 若要變更 DWU︰
 
 1. 連接到與您的邏輯 SQL Database 伺服器相關聯的 master 資料庫。
-2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL 陳述式。 下面的範例將資料庫 MySQLDW 的服務等級目標設置為 DW1000c。
+2. 使用 [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) TSQL 陳述式。 下例範例會將資料庫 MySQLDW 的服務等級目標設定為 DW1000c。
 
 ```Sql
 ALTER DATABASE MySQLDW
@@ -160,7 +160,7 @@ MODIFY (SERVICE_OBJECTIVE = 'DW1000c')
 
 ### <a name="rest-apis"></a>REST API
 
-若要變更 DWU，請使用[建立或更新資料庫](/rest/api/sql/databases/createorupdate) REST API。 下面的範例將託管在伺服器上的 MySQLServer 資料庫的 DW1000c 的服務層級目標設定為 DW1000c。 此伺服器位於 ResourceGroup1 這個 Azure 資源群組。
+若要變更 DWU，請使用[建立或更新資料庫](/rest/api/sql/databases/createorupdate) REST API。 下例會將裝載在 MyServer 伺服器上的資料庫 MySQLDW 的服務等級目標設定為 DW1000c。 此伺服器位於 ResourceGroup1 這個 Azure 資源群組。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01-preview HTTP/1.1
@@ -204,14 +204,14 @@ FROM      sys.databases
     ;
     ```
 
-此 DMV 傳回有關 SQL 池上各種管理操作的資訊,例如操作和操作的狀態,這些操作IN_PROGRESS或"已完成"。
+此 DMV 會傳回您的 SQL 集區上各種管理作業的相關資訊，例如，作業和作業的狀態 (不是 IN_PROGRESS 就是 COMPLETED)。
 
 ## <a name="the-scaling-workflow"></a>調整工作流程
 
-啟動縮放操作時,系統首先終止所有打開的會話,回滾任何打開的事務以確保一致狀態。 針對調整規模作業，只有在這個交易回復完成後調整才會發生。  
+當您啟動擴縮作業時，系統會先刪除所有開啟的工作階段，回復所有開啟的交易以確保一致性狀態。 針對調整規模作業，只有在這個交易回復完成後調整才會發生。  
 
-- 對於放大操作,系統將分離所有計算節點,規定額外的計算節點,然後重新附加到存儲層。
-- 對於縮減操作,系統將分離所有計算節點,然後僅將所需的節點重新附加到存儲層。
+- 針對擴大作業，系統會將所有計算節點中斷連結、佈建額外的計算節點，然後重新連結到儲存層。
+- 針對連結作業，系統則會將所有計算節點中斷連結，然後只將所需的節點重新連結到儲存層。
 
 ## <a name="next-steps"></a>後續步驟
 

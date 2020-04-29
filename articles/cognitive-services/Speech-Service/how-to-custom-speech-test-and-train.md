@@ -1,7 +1,7 @@
 ---
-title: 為自訂語音 - 語音服務準備資料
+title: 準備自訂語音語音服務的資料
 titleSuffix: Azure Cognitive Services
-description: 在測試 Microsoft 語音辨識的準確性或訓練自訂模型時,您需要音訊和文字數據。 在此頁上,我們將介紹數據類型、如何使用和管理它們。
+description: 測試 Microsoft 語音辨識的正確性或訓練您的自訂模型時，您將需要音訊和文字資料。 在此頁面上，我們將討論資料類型、如何使用及管理它們。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,56 +11,56 @@ ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 78857709447f99895c36f23d8760f44f8468ba7c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402133"
 ---
 # <a name="prepare-data-for-custom-speech"></a>準備自訂語音的資料
 
-在測試 Microsoft 語音辨識的準確性或訓練自訂模型時,您需要音訊和文字數據。 在此頁上,我們將介紹數據類型、如何使用和管理它們。
+測試 Microsoft 語音辨識的正確性或訓練您的自訂模型時，您將需要音訊和文字資料。 在此頁面上，我們將討論資料類型、如何使用及管理它們。
 
 ## <a name="data-types"></a>資料類型
 
-此表列出了可接受的數據類型、應何時使用每種數據類型以及建議的數量。 創建模型並非需要每種數據類型。 數據要求因您創建測試還是訓練模型而異。
+此資料表會列出已接受的資料類型、應使用的每個資料類型，以及建議的數量。 建立模型時，不需要每種資料類型。 資料需求會根據您是建立測試或定型模型而有所不同。
 
-| 資料類型 | 測試 | 推薦數量 | 用於培訓 | 推薦數量 |
+| 資料類型 | 用於測試 | 建議數量 | 用於定型 | 建議數量 |
 |-----------|-----------------|----------|-------------------|----------|
-| [音訊](#audio-data-for-testing) | 是<br>檢視檢查 | 5+ 音效檔案 | 否 | N/a |
-| [音效 + 人工標記的文稿](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用於評估準確性 | 0.5-5 小時的音訊 | 是 | 1-1,000 小時的音訊 |
+| [音訊](#audio-data-for-testing) | 是<br>用於視覺檢查 | 5 + 音訊檔案 | 否 | N/a |
+| [音訊 + 人為標記的文字記錄](#audio--human-labeled-transcript-data-for-testingtraining) | 是<br>用來評估精確度 | 0.5-5 小時的音訊 | 是 | 1-1000 小時的音訊 |
 | [相關文字](#related-text-data-for-training) | 否 | N/a | 是 | 1-200 MB 的相關文字 |
 
-檔應按類型分組到資料集中,並上載為 .zip 檔。 每個數據集只能包含單個數據類型。
+檔案應該依類型分組至資料集，並上傳為 .zip 檔案。 每個資料集只能包含單一資料類型。
 
 > [!TIP]
-> 要快速入門,請考慮使用範例數據。 有關<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">自定義語音<span class="docon docon-navigate-external x-hidden-focus"></span>資料 的範例</a>,請參閱此 GitHub 儲存庫
+> 若要快速開始，請考慮使用範例資料。 如需<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">範例自訂語音資料<span class="docon docon-navigate-external x-hidden-focus"></span> </a> ，請參閱此 GitHub 存放庫
 
 ## <a name="upload-data"></a>上傳資料
 
-要上傳資料,請瀏覽到<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂語音<span class="docon docon-navigate-external x-hidden-focus"></span>門戶</a>。 從門戶中,按一下 **「上傳數據**」以啟動精靈並創建第一個數據集。 在允許您上傳數據之前,系統將要求您為數據集選擇語音數據類型。
+若要上傳您的資料，請流覽至<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂語音入口網站<span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 在入口網站中，按一下 [**上傳資料**] 以啟動精靈，並建立您的第一個資料集。 系統會要求您選取資料集的語音資料類型，然後才允許您上傳資料。
 
-![從語音門戶中選擇音訊](./media/custom-speech/custom-speech-select-audio.png)
+![從語音入口網站選取音訊](./media/custom-speech/custom-speech-select-audio.png)
 
-您上傳的每個資料集都必須符合您選擇的數據類型的要求。 在上傳數據之前,必須正確格式化數據。 正確格式化的數據可確保自定義語音服務能夠準確處理這些數據。 要求列在以下各節中。
+您上傳的每個資料集都必須符合所選資料類型的需求。 您的資料必須在上傳之前正確格式化。 正確格式化的資料可確保「自訂語音服務」能夠精確地處理它。 下列各節會列出需求。
 
-上傳資料集後,有幾個選項:
+在您的資料集上傳之後，您有幾個選項：
 
-* 您可以導航到 **「測試」** 選項卡,並直覺地檢查音訊或音訊和人工標記的轉錄資料。
-* 您可以瀏覽到 **「訓練」** 選項卡,並使用音訊和人工轉錄資料或相關文本資料來訓練自訂模型。
+* 您可以流覽至 [**測試**] 索引標籤，並以視覺化方式檢查 [僅音訊] 或 [音訊 + 人為標記的轉譯資料]
+* 您可以流覽至 [**定型**] 索引標籤，並使用音訊 + 人為轉譯資料或相關的文字資料來定型自訂模型。
 
-## <a name="audio-data-for-testing"></a>測試音訊資料
+## <a name="audio-data-for-testing"></a>用於測試的音訊資料
 
-音訊資料是測試 Microsoft 基準語音到文本模型或自定義模型的準確性的最佳選擇。 請記住,音訊數據用於檢查特定模型性能的語音準確性。 如果要量化模型的準確性,請使用[音效和人工標記的轉錄資料](#audio--human-labeled-transcript-data-for-testingtraining)。
+音訊資料是測試 Microsoft 基準語音轉換文字模型或自訂模型精確度的最佳做法。 請記住，音訊資料是用來檢查特定模型效能的語音準確度。 如果您想要量化模型的精確度，請使用[音訊 + 人為標記](#audio--human-labeled-transcript-data-for-testingtraining)的轉譯資料。
 
-使用此表可確保音訊檔案的格式正確,以便與自訂語音一起使用:
+使用此表格來確保您的音訊檔案格式正確，可與自訂語音搭配使用：
 
 | 屬性                 | 值                 |
 |--------------------------|-----------------------|
 | 檔案格式              | RIFF (WAV)            |
-| 採樣速率              | 8,000 Hz 或 16,000 Hz |
+| 採樣速率              | 8000 hz 或 16000 Hz |
 | 聲道                 | 1 (mono)              |
-| 每個音訊的最大長度 | 2 小時               |
+| 每一音訊的最大長度 | 2 小時               |
 | 樣本格式            | PCM，16 位元           |
 | 封存格式           | .zip                  |
 | 封存大小上限     | 2 GB                  |
@@ -68,35 +68,35 @@ ms.locfileid: "81402133"
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!TIP]
-> 上傳訓練和測試數據時,.zip 檔大小不能超過 2 GB。 如果需要更多數據進行培訓,請將其劃分為多個 .zip 文件並單獨上載。 稍後,您可以選擇從*多個*資料集進行訓練。 但是,您只能從*單個*數據集進行測試。
+> 上傳定型和測試資料時，.zip 檔案大小不能超過 2 GB。 如果您需要更多資料來進行定型，請將其分成數個 .zip 檔案，並分別上傳它們。 稍後，您可以選擇從*多個*資料集進行定型。 不過，您只能從*單一*資料集進行測試。
 
-使用<a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX<span class="docon docon-navigate-external x-hidden-focus"></span></a>驗證音訊屬性或將現有音訊轉換為適當的格式。 以下是如何透過 SoX 命令列完成每個這些活動的一些範例:
+使用<a href="http://sox.sourceforge.net" target="_blank" rel="noopener">[ <span class="docon docon-navigate-external x-hidden-focus"></span> SoX</a> ] 來驗證音訊內容，或將現有的音訊轉換成適當的格式。 以下是每個活動如何透過 SoX 命令列來完成的一些範例：
 
 | 活動 | 描述 | SoX 命令 |
 |----------|-------------|-------------|
-| 檢查音訊格式 | 使用此指令來檢查<br>音訊檔案格式。 | `sox --i <filename>` |
-| 轉換音訊格式 | 使用此指令可轉換<br>音訊檔到單聲道,16位,16 KHz。 | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
+| 檢查音訊格式 | 使用此命令來檢查<br>音訊檔案格式。 | `sox --i <filename>` |
+| 轉換音訊格式 | 使用此命令轉換<br>音訊檔案到單聲道，16位，16 KHz。 | `sox <input> -b 16 -e signed-integer -c 1 -r 16k -t wav <output>.wav` |
 
-## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>測試/培訓的音訊和人工標記的文稿資料
+## <a name="audio--human-labeled-transcript-data-for-testingtraining"></a>音訊 + 用於測試/定型的人為標記的文字記錄資料
 
-要測量 Microsoft 在處理音訊檔時的語音到文本準確性的準確性,必須提供人工標記的轉錄(逐字進行比較)。 雖然人工標記的轉錄通常很耗時,但有必要評估準確性並針對用例訓練模型。 請記住,識別方面的改進將只與提供的數據一樣好。 因此,只上傳高品質的成績單非常重要。
+若要在處理您的音訊檔案時測量 Microsoft 的語音轉換文字精確度準確度，您必須提供人為標記的轉譯（單字）以進行比較。 雖然人加上標記的轉譯經常耗用時間，但還是必須評估精確度，並針對您的使用案例來定型模型。 請記住，辨識的改進只會與所提供的資料一樣好。 基於這個理由，請務必只上傳高品質的文字記錄。
 
 | 屬性                 | 值                               |
 |--------------------------|-------------------------------------|
 | 檔案格式              | RIFF (WAV)                          |
-| 採樣速率              | 8,000 Hz 或 16,000 Hz               |
+| 採樣速率              | 8000 hz 或 16000 Hz               |
 | 聲道                 | 1 (mono)                            |
-| 每個音訊的最大長度 | 2 小時 (測試) / 60 s (培訓) |
+| 每一音訊的最大長度 | 2小時（測試）/60 秒（訓練） |
 | 樣本格式            | PCM，16 位元                         |
 | 封存格式           | .zip                                |
-| 最大大小大小         | 2 GB                                |
+| 最大 zip 大小         | 2 GB                                |
 
 [!INCLUDE [supported-audio-formats](includes/supported-audio-formats.md)]
 
 > [!NOTE]
-> 上傳訓練和測試數據時,.zip 檔大小不能超過 2 GB。 只能從*單個*數據集進行測試,請確保將其保持在適當的檔大小內。 此外,每個訓練檔不能超過 60 秒,否則它會出錯。
+> 上傳定型和測試資料時，.zip 檔案大小不能超過 2 GB。 您只能從*單一*資料集進行測試，請務必將它保留在適當的檔案大小內。 此外，每個定型檔案不能超過60秒，否則會發生錯誤。
 
-為了解決單詞刪除或替換等問題,需要大量數據來提高識別性。 通常,建議提供大約 10 到 1,000 小時的音訊逐字轉錄。 所有 WAV 檔案的文字記錄應包含在單一純文字檔案中。 文字記錄檔案的每一行都應包含其中一個音訊檔案的名稱，然後後面接著相對應的文字記錄。 檔案名稱和文字記錄應該以定位字元 (\t) 分隔。
+若要解決 word 刪除或替代等問題，需要大量的資料來改善辨識。 一般來說，建議您提供大約10到1000小時音訊的單字文字轉譯。 所有 WAV 檔案的文字記錄應包含在單一純文字檔案中。 文字記錄檔案的每一行都應包含其中一個音訊檔案的名稱，然後後面接著相對應的文字記錄。 檔案名稱和文字記錄應該以定位字元 (\t) 分隔。
 
   例如：
 ```
@@ -108,31 +108,31 @@ ms.locfileid: "81402133"
 > [!IMPORTANT]
 > 文字記錄應使用 UTF-8 位元組順序標記 (BOM) 編碼。
 
-文字記錄會經過文字正規化，以便系統進行處理。 但是,在將數據上載到語音工作室之前,必須執行一些重要的規範化。 有關準備轉錄時要使用的適當語言,請參閱[如何創建人工標記的轉錄](how-to-custom-speech-human-labeled-transcriptions.md)
+文字記錄會經過文字正規化，以便系統進行處理。 不過，在將資料上傳到語音 Studio 之前，必須先完成一些重要的正規化。 若要在準備轉譯時使用適當的語言，請參閱[如何建立人為標記](how-to-custom-speech-human-labeled-transcriptions.md)的轉譯
 
-收集音訊檔與相應的轉錄後,將它們打包為單個 .zip 檔案,然後再上傳到<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂語音門<span class="docon docon-navigate-external x-hidden-focus"></span>戶</a>。 下面是一個包含三個音訊檔和人工標記轉錄檔的範例資料集:
+收集音訊檔案和對應的轉譯之後，請將它們封裝成單一 .zip 檔案，然後再上傳至<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂語音<span class="docon docon-navigate-external x-hidden-focus"></span>入口網站</a>。 以下是包含三個音訊檔案和人為標記轉譯檔案的範例資料集：
 
 > [!div class="mx-imgBorder"]
-> ![從語音門戶中選擇音訊](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
+> ![從語音入口網站選取音訊](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
-## <a name="related-text-data-for-training"></a>訓練的相關文字資料
+## <a name="related-text-data-for-training"></a>定型的相關文字資料
 
-產品名稱或功能是唯一的,應包括用於培訓的相關文本數據。 相關文本有助於確保正確識別。 可以提供兩種類型的相關文本數據,以提高識別性:
+唯一的產品名稱或功能應該包含用於定型的相關文字資料。 相關的文字有助於確保正確辨識。 可以提供兩種類型的相關文字資料來改善辨識：
 
-| 資料類型 | 這些資料如何提高辨識性 |
+| 資料類型 | 此資料如何改善辨識 |
 |-----------|------------------------------------|
-| 句子(句子) | 在句子上下文中識別產品名稱或行業特定詞彙時提高準確性。 |
-| 發音 | 使用未定義的發音改進不常見術語、首字母縮略詞或其他單詞的發音。 |
+| 句子（語句） | 在辨識產品名稱或句子內容中的產業特定詞彙時，改善正確性。 |
+| 發音 | 使用未定義的發音來改善不常見詞彙、縮略字或其他單字的發音。 |
 
-句子可以作為單個文本檔或多個文本檔提供。 為提高準確性,請使用更接近預期口頭陳述的文本數據。 發音應作為單個文本檔提供。 一切都可以打包為單一個 zip 檔,並上傳到<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂<span class="docon docon-navigate-external x-hidden-focus"></span>語音門戶</a>。
+句子可以當做單一文字檔或多個文字檔來提供。 若要改善正確性，請使用更接近預期說話語句的文字資料。 發音應以單一文字檔的形式提供。 所有專案都可以封裝成單一 zip 檔案，並上傳至<a href="https://speech.microsoft.com/customspeech" target="_blank">自訂<span class="docon docon-navigate-external x-hidden-focus"></span>語音入口網站</a>。
 
-### <a name="guidelines-to-create-a-sentences-file"></a>建立句子檔案的指南
+### <a name="guidelines-to-create-a-sentences-file"></a>建立句子檔案的指導方針
 
-要使用句子創建自定義模型,您需要提供範例陳述的清單。 陳述_不需要_完整或語法正確,但它們必須準確反映您在生產中期望的口頭輸入。 如果希望某些術語具有更高的權重,請添加包含這些特定術語的幾個句子。
+若要使用句子建立自訂模型，您必須提供範例語句的清單。 語句_不_需要完整或語法正確，但必須精確地反映您預期在生產環境中的說話輸入。 如果您想要特定詞彙的權數增加，請新增數個包含這些特定詞彙的句子。
 
-作為一般指導,當培訓文本盡可能接近生產中預期的實際文本時,模型適應最為有效。 要增強的特定於域的行話和短語應包含在培訓文本中。 如果可能,請嘗試在單獨的行上控制一個句子或關鍵字。 對於對您重要的關鍵字和短語(例如產品名稱),您可以複製幾次。 但請記住,不要複製太多 - 它可能會影響整體識別率。
+作為一般指引，當定型文字盡可能接近生產環境中所預期的實際文字時，模型調整就最有效。 您要增強的目標網域特定術語和片語應包含在訓練文字中。 可能的話，請嘗試在個別行上控制一個句子或關鍵字。 對於您很重要的關鍵字和片語（例如，產品名稱），您可以將它們複製幾次。 但請記住，不要複製太多-它可能會影響整體辨識速率。
 
-使用此表可確保正確格式化相關陳述的資料檔:
+請使用此資料表來確保語句的相關資料檔案格式正確：
 
 | 屬性 | 值 |
 |----------|-------|
@@ -140,47 +140,47 @@ ms.locfileid: "81402133"
 | 每一行的語句數目 | 1 |
 | 檔案大小上限 | 200 MB |
 
-此外,您需要考慮以下限制:
+此外，您會想要考慮下列限制：
 
-* 避免重複字元超過四次。 例如:「aaaa」或「uuuu」。
-* 不要使用上面`U+00A1`的特殊字元或 UTF-8 字元。
-* URI將被拒絕。
+* 避免重複字元超過四次。 例如： "aaaa" 或 "uuuu"。
+* 請不要使用上述`U+00A1`的特殊字元或 utf-8 字元。
+* Uri 將會遭到拒絕。
 
-### <a name="guidelines-to-create-a-pronunciation-file"></a>建立發音檔案的指南
+### <a name="guidelines-to-create-a-pronunciation-file"></a>建立發音檔案的指導方針
 
-如果有不常見的術語,沒有標準發音,您的使用者將遇到或使用,你可以提供一個自定義的發音檔,以提高識別。
+如果有不尋常的詞彙，而您的使用者將會遇到或使用標準發音，您可以提供自訂發音檔案來改善辨識。
 
 > [!IMPORTANT]
-> 不建議使用自定義發音檔來更改常用單詞的發音。
+> 不建議使用自訂發音檔案來改變常用單字的發音。
 
-這包括口頭陳述的範例,以及每個單詞的自訂發音:
+這包括說語句的範例，以及每個的自訂發音：
 
-| 識別/顯示表單 | 口語形式 |
+| 已辨識/已顯示的表單 | 口語形式 |
 |--------------|--------------------------|
 | 3CPO | 三個 c p o |
 | CNTK | c n t k |
-| IEEE | i 三重 e |
+| IEEE | 我三個 e |
 
-口語形式是拼寫出來的拼音序列。它可以由字母、單詞、音節或所有三者的組合組成。
+說出的形式就是語音順序。它可以包含字母、字組、音節或全部三種組合。
 
-自訂發音有英文`en-US`( )`de-DE`和德語 ( . 此表依語言顯示受支援的字元:
+自訂發音提供英文（`en-US`）和德文（`de-DE`）。 下表依語言顯示支援的字元：
 
 | Language | Locale | 字元 |
 |----------|--------|------------|
 | 英文 | `en-US` | `a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 | 德文 | `de-DE` | `ä, ö, ü, a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z` |
 
-使用下表確保發音的相關數據檔格式正確。 發音檔很小,應該只有幾千位元組的大小。
+請使用下表來確保發音的相關資料檔案格式正確。 發音檔案很小，而且應該只有幾 kb 的大小。
 
 | 屬性 | 值 |
 |----------|-------|
-| 文字編碼 | UTF-8 BOM(英語也支援 ANSI) |
-| 每行發音的 * | 1 |
-| 檔案大小上限 | 1 MB(免費套餐 1 KB) |
+| 文字編碼 | UTF-8 BOM （ANSI 也支援英文） |
+| 每行的發音數 | 1 |
+| 檔案大小上限 | 1 MB （免費層為 1 KB） |
 
 ## <a name="next-steps"></a>後續步驟
 
-* [檢查資料](how-to-custom-speech-inspect-data.md)
+* [檢查您的資料](how-to-custom-speech-inspect-data.md)
 * [評估您的資料](how-to-custom-speech-evaluate-data.md)
-* [定型您的模型](how-to-custom-speech-train-model.md)
+* [定型模型](how-to-custom-speech-train-model.md)
 * [部署模型](how-to-custom-speech-deploy-model.md)

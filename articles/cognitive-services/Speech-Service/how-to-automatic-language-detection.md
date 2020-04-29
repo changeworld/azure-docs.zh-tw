@@ -1,7 +1,7 @@
 ---
-title: 如何對語音文字使用自動語言偵測
+title: 如何使用語音轉換文字的自動語言偵測
 titleSuffix: Azure Cognitive Services
-description: 語音 SDK 支援語音到文字的自動語言檢測。 使用此功能時,提供的音訊與提供的語言清單進行比較,並確定最有可能的匹配。 然後,返回的值可用於選擇用於語音到文本的語言模型。
+description: 語音 SDK 支援語音轉換文字的自動語言偵測。 使用這項功能時，所提供的音訊會與提供的語言清單進行比較，並決定最可能的相符項。 然後，傳回的值可以用來選取用於語音轉換文字的語言模型。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,29 +12,29 @@ ms.date: 03/16/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: fefbe793fa4a6b90ba9bf8d468d42dcbd315759c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402201"
 ---
-# <a name="automatic-language-detection-for-speech-to-text"></a>語音到文字的自動語言偵測
+# <a name="automatic-language-detection-for-speech-to-text"></a>語音轉換文字的自動語言偵測
 
-與提供的語言清單進行比較時,自動語言檢測用於確定傳遞給語音 SDK 的音訊的最可能匹配項。 然後,自動語言檢測返回的值用於選擇語音到文本的語言模型,從而為您提供更準確的轉錄。 要檢視哪些語言可用,請參考[語言支援](language-support.md)。
+自動語言偵測是用來判斷與所提供語言清單相較之下，傳遞至語音 SDK 的音訊最可能相符的情況。 然後，自動語言偵測傳回的值會用來選取語音轉換文字的語言模型，為您提供更精確的轉譯。 若要查看有哪些語言可供使用，請參閱[語言支援](language-support.md)。
 
-在本文中,您將學習如何使用`AutoDetectSourceLanguageConfig`來構`SpeechRecognizer`造 物件並檢索檢測到的語言。
+在本文中，您將瞭解如何使用`AutoDetectSourceLanguageConfig`來建立`SpeechRecognizer`物件，並取出偵測到的語言。
 
 > [!IMPORTANT]
-> 此功能僅適用於 C#、C++、Java 和 Python 的語音 SDK。
+> 這項功能僅適用于適用于 c #、c + +、JAVA 和 Python 的語音 SDK。
 
-## <a name="automatic-language-detection-with-the-speech-sdk"></a>使用語音 SDK 自動偵測語言
+## <a name="automatic-language-detection-with-the-speech-sdk"></a>使用語音 SDK 進行自動語言偵測
 
-自動語言檢測目前具有每次檢測兩種語言的服務側限制。 構造`AudoDetectSourceLanguageConfig`物件時,請記住此限制。 在下面的範例中,您將建立一個`AutoDetectSourceLanguageConfig`,然後使用它建構 一`SpeechRecognizer`個 。
+自動語言偵測目前在每次偵測時有兩種語言的服務端限制。 在建設您`AudoDetectSourceLanguageConfig`的物件時，請記住這項限制。 在下列範例中，您將建立`AutoDetectSourceLanguageConfig`，然後使用它來建立。 `SpeechRecognizer`
 
 > [!TIP]
-> 還可以指定在將語音執行文本時使用的自定義模型。 有關詳細資訊,請參閱[使用自訂模型進行自動語言偵測](#use-a-custom-model-for-automatic-language-detection)。
+> 您也可以指定要在執行語音轉換文字時使用的自訂模型。 如需詳細資訊，請參閱[使用自訂模型進行自動語言偵測](#use-a-custom-model-for-automatic-language-detection)。
 
-以下代碼段說明瞭如何在應用中使用自動語言檢測:
+下列程式碼片段說明如何在您的應用程式中使用自動語言偵測：
 
 ::: zone pivot="programming-language-csharp"
 
@@ -120,9 +120,9 @@ detected_language = auto_detect_source_language_result.language
 
 ## <a name="use-a-custom-model-for-automatic-language-detection"></a>使用自訂模型進行自動語言偵測
 
-除了使用語音服務模型進行語言檢測外,您還可以指定自定義模型以增強識別。 如果未提供自定義模型,該服務將使用默認語言模型。
+除了使用語音服務模型偵測語言之外，您還可以指定自訂模型來進行增強式辨識。 如果未提供自訂模型，服務將會使用預設語言模型。
 
-以下代碼段說明瞭如何在對語音服務的調用中指定自定義模型。 如果檢測到的語言為`en-US`,則使用預設模型。 如果檢測到的語言為`fr-FR`,則使用自定義模型的終結點:
+下列程式碼片段說明如何在您的語音服務呼叫中指定自訂模型。 如果偵測到的語言`en-US`是，則會使用預設模型。 如果偵測到的語言`fr-FR`是，則會使用自訂模型的端點：
 
 ::: zone pivot="programming-language-csharp"
 
@@ -184,4 +184,4 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig =
 
 ## <a name="next-steps"></a>後續步驟
 
-- [語音 SDK 文件](speech-sdk.md)
+- [語音 SDK 參考檔](speech-sdk.md)

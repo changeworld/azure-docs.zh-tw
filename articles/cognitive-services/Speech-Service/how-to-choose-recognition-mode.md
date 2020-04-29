@@ -1,7 +1,7 @@
 ---
 title: 使用語音 SDK 選擇語音辨識模式
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何在使用語音 SDK 時選擇最佳識別模式。
+description: 瞭解如何在使用語音 SDK 時選擇最佳辨識模式。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,25 +12,25 @@ ms.date: 03/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 5fdca371e9188ef69068ddbcaa416cbb2b44054c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402162"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>選擇語音辨識模式
 
-在考慮語音到文字識別操作時,[語音 SDK](speech-sdk.md)提供了多種處理語音的模式。 從概念上講,有時稱為*辨識模式*。 本文比較了各種識別模式。
+當您考慮語音轉換文字辨識作業時，[語音 SDK](speech-sdk.md)會提供多種模式來處理語音。 在概念上，有時稱為辨識*模式*。 本文會比較各種辨識模式。
 
-## <a name="recognize-once"></a>識別一次
+## <a name="recognize-once"></a>辨識一次
 
-如果要一次處理一個"句子",請使用"識別一次"功能。 此方法將從檢測到的語音開始,直到下一次暫停,從輸入中檢測識別的說出。 通常,暫停標誌著句子或思路的結束。
+如果您想要一次處理一個「句子」的語句，請使用「辨識一次」函式。 這個方法會偵測到從偵測到的語音開頭開始的輸入所識別的語句，直到下一次暫停為止。 通常，暫停會標示句子的結尾或預定的行。
 
-在一個可識別的話語結束時,服務將停止處理來自該請求的音訊。 識別的最大限制是 20 秒的句子持續時間。
+在一個可辨識的語句結束時，服務會停止處理該要求的音訊。 辨識的最大限制為20秒的句子持續時間。
 
 ::: zone pivot="programming-language-csharp"
 
-有關使用 函`RecognizeOnceAsync`數 的詳細資訊,請參閱[.NET 語音 SDK 文件](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)。
+如需使用`RecognizeOnceAsync`函數的詳細資訊，請參閱[.net 語音 SDK](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechrecognizer.recognizeonceasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechRecognizer_RecognizeOnceAsync)檔。
 
 ```csharp
 var result = await recognizer.RecognizeOnceAsync();
@@ -39,7 +39,7 @@ var result = await recognizer.RecognizeOnceAsync();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-有關使用 函`RecognizeOnceAsync`數 的詳細資訊,請參閱[C++語音 SDK 文件](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)。
+如需使用`RecognizeOnceAsync`函數的詳細資訊，請參閱[c + + 語音 SDK](https://docs.microsoft.com/cpp/cognitive-services/speech/asyncrecognizer#recognizeonceasync)檔。
 
 ```cpp
 auto result = recognize->RecognizeOnceAsync().get();
@@ -48,7 +48,7 @@ auto result = recognize->RecognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-有關使用 函`recognizeOnceAsync`數 的詳細資訊,請參閱 Java[語音 SDK 文件](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable)。
+如需使用`recognizeOnceAsync`函數的詳細資訊，請參閱[JAVA 語音 SDK](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechRecognizer.recognizeOnceAsync?view=azure-java-stable)檔。
 
 ```java
 SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
@@ -57,7 +57,7 @@ SpeechRecognitionResult result = recognizer.recognizeOnceAsync().get();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-有關使用 函`recognize_once`數 的詳細資訊,請參考 Python[語音 SDK 文件](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult)。
+如需使用`recognize_once`函數的詳細資訊，請參閱[Python 語音 SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechrecognizer?view=azure-python#recognize-once------azure-cognitiveservices-speech-speechrecognitionresult)檔。
 
 ```python
 result = speech_recognizer.recognize_once()
@@ -66,13 +66,13 @@ result = speech_recognizer.recognize_once()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-有關其他語言,請參閱[語音 SDK 參考文件](speech-to-text.md#speech-sdk-reference-docs)。
+如需其他語言，請參閱[語音 SDK 參考](speech-to-text.md#speech-sdk-reference-docs)檔。
 
 ::: zone-end
 
 ## <a name="continuous"></a>連續
 
-如果需要長時間運行的識別,請使用啟動和相應的停止函數進行連續識別。 start 函數將開始並繼續處理所有陳述,直到調用停止函數,或直到超過太多時間在沉默中過去。 使用連續模式時,請確保註冊到發生時將觸發的各種事件。 例如,當發生語音辨識時,將觸發"識別"事件。 您需要有一個事件處理程序來處理識別。
+如果您需要長時間執行的辨識，請使用啟動和對應的 stop 函式來進行連續辨識。 啟動函式會啟動並繼續處理所有的語句，直到您叫用 stop 函式為止，或直到超過過多時間為止。 使用連續模式時，請務必註冊將在發生時引發的各種事件。 例如，當語音辨識發生時，就會引發「已辨識」事件。 您需要有事件處理常式，才能處理辨識。
 
 ::: zone pivot="programming-language-csharp"
 
@@ -154,7 +154,7 @@ speech_recognizer.stop_continuous_recognition()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-有關其他語言,請參閱[語音 SDK 參考文件](speech-to-text.md#speech-sdk-reference-docs)。
+如需其他語言，請參閱[語音 SDK 參考](speech-to-text.md#speech-sdk-reference-docs)檔。
 
 ::: zone-end
 
@@ -164,7 +164,7 @@ speech_recognizer.stop_continuous_recognition()
 
 ::: zone pivot="programming-language-csharp"
 
-有關使用 函`EnableDictation`數 的詳細資訊,請參閱[.NET 語音 SDK 文件](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)。
+如需使用`EnableDictation`函數的詳細資訊，請參閱[.net 語音 SDK](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.enabledictation?view=azure-dotnet#Microsoft_CognitiveServices_Speech_SpeechConfig_EnableDictation)檔。
 
 ```csharp
 // Enable diction
@@ -174,7 +174,7 @@ SpeechConfig.EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-cpp"
 
-有關使用 函`EnableDictation`數 的詳細資訊,請參閱[C++語音 SDK 文件](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)。
+如需使用`EnableDictation`函數的詳細資訊，請參閱[c + + 語音 SDK](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig#enabledictation)檔。
 
 ```cpp
 // Enable diction
@@ -184,7 +184,7 @@ SpeechConfig->EnableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-java"
 
-有關使用 函`enableDictation`數 的詳細資訊,請參閱 Java[語音 SDK 文件](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)。
+如需使用`enableDictation`函數的詳細資訊，請參閱[JAVA 語音 SDK](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.SpeechConfig.enableDictation?view=azure-java-stable)檔。
 
 ```java
 // Enable diction
@@ -194,7 +194,7 @@ SpeechConfig.enableDictation();
 ::: zone-end
 ::: zone pivot="programming-language-python"
 
-有關使用 函`enable_dictation`數 的詳細資訊,請參考 Python[語音 SDK 文件](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)。
+如需使用`enable_dictation`函數的詳細資訊，請參閱[Python 語音 SDK](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python#enable-dictation--)檔。
 
 ```python
 # Enable diction
@@ -204,11 +204,11 @@ SpeechConfig.enable_dictation()
 ::: zone-end
 ::: zone pivot="programming-language-more"
 
-有關其他語言,請參閱[語音 SDK 參考文件](speech-to-text.md#speech-sdk-reference-docs)。
+如需其他語言，請參閱[語音 SDK 參考](speech-to-text.md#speech-sdk-reference-docs)檔。
 
 ::: zone-end
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [在 GitHub 上瀏覽其他語音 SDK 範例](https://aka.ms/csspeech/samples)
+> [探索 GitHub 上的其他語音 SDK 範例](https://aka.ms/csspeech/samples)

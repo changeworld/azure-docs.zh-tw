@@ -1,7 +1,7 @@
 ---
-title: 音效內容建立 - 語音服務
+title: 建立音訊內容-語音服務
 titleSuffix: Azure Cognitive Services
-description: 音訊內容創建是一個線上工具,允許您自定義和微調 Microsoft 的應用和產品的文本到語音輸出。
+description: 建立音訊內容是一種線上工具，可讓您針對應用程式和產品自訂及微調 Microsoft 的文字到語音轉換輸出。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,65 +11,65 @@ ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
 ms.openlocfilehash: a263e7e17cda64a8519bab215f97fdf26e88d9d2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81402232"
 ---
-# <a name="improve-synthesis-with-audio-content-creation"></a>以音效內容建立改進合成
+# <a name="improve-synthesis-with-audio-content-creation"></a>透過建立音訊內容來改善合成
 
-[音訊內容創建](https://aka.ms/audiocontentcreation)是一個線上工具,允許您自定義和微調 Microsoft 的應用和產品的文本到語音輸出。 您可以使用此工具微調公共和自定義語音,以便更準確的自然表達,並在雲中管理輸出。
+[建立音訊內容](https://aka.ms/audiocontentcreation)是一種線上工具，可讓您針對應用程式和產品自訂及微調 Microsoft 的文字到語音轉換輸出。 您可以使用此工具來微調公用和自訂語音，以取得更精確的自然運算式，並管理您在雲端中的輸出。
 
-音訊內容創建工具基於[語音合成標記語言 (SSML)。](speech-synthesis-markup.md) 為了簡化自定義和調優,音訊內容創建允許您即時直觀地檢查文本到語音輸出。
+音訊內容建立工具是以[語音合成標記語言（SSML）](speech-synthesis-markup.md)為基礎。 為了簡化自訂和微調，音訊內容的建立可讓您以視覺化方式即時檢查文字轉換語音的輸出。
 
 ## <a name="how-does-it-work"></a>運作方式
 
-此圖顯示了調整和匯出自定義語音到文本輸出的步驟。 使用以下連結瞭解有關每個步驟的更多內容。
+下圖顯示微調和匯出自訂的語音轉換文字輸出所需的步驟。 若要深入瞭解每個步驟，請使用下列連結。
 
 ![](media/audio-content-creation/audio-content-creation-diagram.jpg)
 
-1. 第一步是建立[Azure 帳號、註冊語音資源並獲得訂閱金鑰](#create-a-speech-resource)。 擁有訂閱金鑰後,可以使用它呼叫語音服務,並存[取音效內容建立](https://aka.ms/audiocontentcreation)。
-2. 使用純文字或 SSML[建立音訊調諧檔](#create-an-audio-tuning-file)。
-3. 選擇要調整的聲音和語言。 音效內容建立包括所有[Microsoft 文本到語音語音](language-support.md#text-to-speech)。 您可以使用標準、神經或您自己的自定義語音。
+1. 第一個步驟是[建立 Azure 帳戶、註冊語音資源，並取得訂用帳戶金鑰](#create-a-speech-resource)。 擁有訂用帳戶金鑰之後，您就可以使用它來呼叫語音服務，以及存取[音訊內容的建立](https://aka.ms/audiocontentcreation)。
+2. 使用純文字或 SSML[建立音訊微調](#create-an-audio-tuning-file)檔案。
+3. 選擇您想要微調的語音和語言。 音訊內容的建立包含所有[Microsoft 文字轉換語音的聲音](language-support.md#text-to-speech)。 您可以使用標準、類神經或您自己的自訂語音。
    >[!NOTE]
-   > 門控訪問可用於自定義神經語音,允許您創建類似於自然語音的高清語音。 有關詳細資訊,請參閱[門控過程](https://aka.ms/ignite2019/speech/ethics)。
+   > 閘道存取適用于自訂類神經語音，可讓您建立類似自然發音語音的高定義語音。 如需其他詳細資訊，請參閱控制[流程](https://aka.ms/ignite2019/speech/ethics)。
 
-4. 查看默認結果。 然後使用調優工具調整發音、音調、速率、語調、語音樣式等。 有關選項的完整清單,請參閱[語音合成標記語言](speech-synthesis-markup.md)。
-5. 儲存並[匯出已調諧的音訊](#export-tuned-audio)。 在系統中保存調諧軌道時,可以繼續工作並在輸出上反覆運算。 當您對輸出滿意時,可以使用匯出功能創建音訊創建任務。 您可以觀察匯出任務的狀態,並下載輸出以用於應用和產品。
-6. 最後一步是在應用和產品中使用自定義調諧語音。
+4. 檢查預設結果。 然後使用微調工具來調整發音、音調、速率、聲調、語音樣式等等。 如需完整的選項清單，請參閱[語音合成標記語言](speech-synthesis-markup.md)。
+5. 儲存並[匯出您調整的音訊](#export-tuned-audio)。 當您在系統中儲存微調播放軌時，您可以繼續工作並逐一查看輸出。 當您對輸出感到滿意時，可以使用匯出功能來建立音訊建立工作。 您可以觀察匯出工作的狀態，並下載輸出以用於您的應用程式和產品。
+6. 最後一個步驟是在您的應用程式和產品中使用自訂調整語音。
 
 ## <a name="create-a-speech-resource"></a>建立語音資源
 
-按照以下步驟創建語音資源並將其連接到語音工作室。
+請遵循下列步驟來建立語音資源，並將它與語音 Studio 連線。
 
-1. 以這些說明註冊[Azure 帳號](get-started.md#new-resource)並[建立語音資源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource)。 請確定您的定價層設定為**S0**。 如果使用「神經」語音之一,請確保在[受支援的區域](regions.md#standard-and-neural-voices)中創建資源。
-2. 登入[音效內容建立](https://aka.ms/audiocontentcreation)。
-3. 選擇現有專案,或單擊"**新建**"。
-4. 您可以隨時使用位於頂部導航的 **「設定」** 選項修改訂閱。
+1. 請遵循這些指示來[註冊 Azure 帳戶](get-started.md#new-resource)，並[建立語音資源](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-the-resource)。 請確定您的定價層已設定為**S0**。 如果您使用其中一個類神經語音，請務必在[支援的區域](regions.md#standard-and-neural-voices)中建立您的資源。
+2. 登入[音訊內容建立](https://aka.ms/audiocontentcreation)。
+3. 選取現有的專案，或按一下 **[新建]。**
+4. 您可以隨時使用 [**設定**] 選項（位於頂端導覽）修改訂閱。
 
-## <a name="create-an-audio-tuning-file"></a>建立音訊調優檔案
+## <a name="create-an-audio-tuning-file"></a>建立音訊微調檔案
 
-有兩種方法可以將內容放入「音訊內容創建」工具中。
+有兩種方式可讓您的內容進入音訊內容建立工具。
 
 **選項 1：**
 
-1. 登錄[音訊內容創建](https://aka.ms/audiocontentcreation)後,按一下 **「音訊調優」** 以創建新的音訊調優檔。
-2. 當出現編輯視窗時,您最多可以輸入 10,000 個字元。
-3. 別忘了存錢。
+1. 在您登入[音訊內容建立](https://aka.ms/audiocontentcreation)之後，請按一下 [**音訊微調**] 來建立新的音訊微調檔案。
+2. 當編輯視窗出現時，您最多可以輸入10000個字元。
+3. 別忘了儲存。
 
 **選項 2：**
 
-1. 登入[音效內容建立](https://aka.ms/audiocontentcreation)後,按一下「**上傳**」以匯入一個或多個文字檔。 支援純文字和 SSML。
-2. 上傳文本檔時,請確保內容滿足這些要求。
+1. 在您登入[音訊內容建立](https://aka.ms/audiocontentcreation)之後，請按一下 **[上傳**] 以匯入一或多個文字檔。 支援純文字和 SSML。
+2. 當您上傳文字檔時，請確定內容符合這些需求。
 
-   | 屬性 | 值/註解 |
+   | 屬性 | 值/附注 |
    |----------|---------------|
-   | 檔案格式 | 純文字 (.txt)<br/> SSML 文字 (.txt)<br/> 不支援 Zip 檔案 |
+   | 檔案格式 | 純文字 (.txt)<br/> SSML 文字（.txt）<br/> 不支援 Zip 檔案 |
    | 編碼格式 | UTF-8 |
-   | 檔案名稱 | 每個文件必須具有唯一的名稱。 不支持重複項。 |
-   | 文字長度 | 文本檔不得超過 10,000 個字元。 |
-   | SSML 限制 | 每個 SSML 檔只能包含一段 SSML。 |
+   | 檔案名稱 | 每個檔案都必須有唯一的名稱。 不支援重複的專案。 |
+   | 文字長度 | 文字檔不得超過10000個字元。 |
+   | SSML 限制 | 每個 SSML 檔案只能包含一段 SSML。 |
 
 ### <a name="plain-text-example"></a>純文字範例
 
@@ -87,24 +87,24 @@ Welcome to use Audio Content Creation to customize audio output for your product
 </speak>
 ```
 
-## <a name="export-tuned-audio"></a>匯出調諧音訊
+## <a name="export-tuned-audio"></a>匯出調整的音訊
 
-查看音訊輸出並對調優和調整感到滿意后,可以匯出音訊。
+在您審核音訊輸出並滿足微調和調整之後，您可以匯出音訊。
 
-1. 在[「音訊內容建立](https://aka.ms/audiocontentcreation)」工具中,按一下「**匯出**」以建立音訊建立任務。
-2. 選擇已調諧音訊的輸出格式。 支援格式和採樣率的清單如下。
-3. 您可以在 **「匯出任務」** 選項卡上查看任務的狀態。如果任務失敗,請參閱完整報表的詳細資訊頁。
-4. 任務完成後,您的音訊可在 **「音訊庫」** 選項卡上下載。
-5. 按一下 [下載]  。 現在,您可以在應用或產品中使用自定義調諧音訊。
+1. 從 [[音訊內容建立](https://aka.ms/audiocontentcreation)] 工具中，按一下 [**匯出**] 以建立音訊建立工作。
+2. 選擇您調整音訊的輸出格式。 以下提供支援的格式清單和取樣率。
+3. 您可以在 [**匯出**工作] 索引標籤上，查看工作的狀態。如果工作失敗，請參閱詳細資訊頁面以取得完整的報表。
+4. 當工作完成時，您可以在 [**音訊媒體**櫃] 索引標籤上下載您的音訊。
+5. 按一下 [下載]  。 現在您已準備好在應用程式或產品中使用您的自訂調整音訊。
 
 ### <a name="supported-audio-formats"></a>支援的音訊格式
 
-| [格式] | 16 kHz 取樣率 | 24 kHz 取樣率 |
+| 格式 | 16 kHz 取樣率 | 24 kHz 取樣率 |
 |--------|--------------------|--------------------|
-| wav | 里夫-16khz-16位單件 | riff-24khz-16 位單位 pcm |
-| mp3 | 音訊-16khz-128kbitrate-單聲道mp3 | 音訊-24khz-160kbitrate-單聲道mp3 |
+| wav | riff-riff-16khz-16bit-mono-pcm-dxil 16 位-mono-pcm | riff-24khz-dxil 16 位-mono-pcm |
+| mp3 | 音訊-riff-16khz-16bit-mono-pcm-128kbitrate-單聲道-mp3 | 音訊-24khz-160kbitrate-單聲道-mp3 |
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [長音訊 API](https://aka.ms/long-audio-api)
 

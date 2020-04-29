@@ -1,7 +1,7 @@
 ---
 title: 影像仲裁 - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: 使用內容審閱者的計算機輔助圖像審核和人迴圈審閱工具來調節成人和淫穢內容的圖像。
+description: 使用內容仲裁的電腦輔助影像仲裁和人對迴圈審核工具來審核成人和猥褻內容的影像。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81404255"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解影像仲裁概念
 
-使用內容審閱者的計算機輔助圖像審核和[人迴圈審閱工具](Review-Tool-User-Guide/human-in-the-loop.md)來調節成人和淫穢內容的圖像。 掃描影像的文字內容並擷取該文字，然後偵測臉部。 您可以根據自訂清單比對影像，並採取進一步的動作。
+使用內容仲裁的電腦輔助影像仲裁和[人對迴圈審核工具](Review-Tool-User-Guide/human-in-the-loop.md)來審核成人和猥褻內容的影像。 掃描影像的文字內容並擷取該文字，然後偵測臉部。 您可以根據自訂清單比對影像，並採取進一步的動作。
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>評估成人和猥褻內容
 
@@ -66,7 +66,7 @@ ms.locfileid: "81404255"
 
 ## <a name="detecting-faces"></a>偵測臉部
 
-檢測人臉有助於檢測個人數據,如圖像中的人臉。 您可以偵測每個影像中的潛在臉部和潛在臉部數量。
+偵測臉部有助於偵測個人資料，例如影像中的臉部。 您可以偵測每個影像中的潛在臉部和潛在臉部數量。
 
 回應包含下列資訊：
 
@@ -141,10 +141,10 @@ ms.locfileid: "81404255"
 
 ## <a name="review-tool"></a>檢閱工具
 
-有關更細微的情況,請使用內容審閱者[審閱工具](Review-Tool-User-Guide/human-in-the-loop.md)及其 API 在審核中為人工審閱人顯示審核結果和內容。 其會檢閱電腦指派的標籤，並確認其最終決策。
+如需更差別細微的案例，請使用內容仲裁[審查工具](Review-Tool-User-Guide/human-in-the-loop.md)和其 API，為您的人力仲裁者呈現審核結果和內容。 其會檢閱電腦指派的標籤，並確認其最終決策。
 
 ![給人工仲裁的影像檢閱](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>後續步驟
 
-試用[影像仲裁 API 主控台](try-image-api.md)，並使用 REST API 程式碼範例。 如果您熟悉 Visual Studio 和 C#,請查看[.NET SDK 快速入門](dotnet-sdk-quickstart.md)的映射審核部分。
+試用[影像仲裁 API 主控台](try-image-api.md)，並使用 REST API 程式碼範例。 如果您熟悉 Visual Studio 和 c #，請同時查看[.NET SDK 快速入門](dotnet-sdk-quickstart.md)的「影像仲裁」一節。
