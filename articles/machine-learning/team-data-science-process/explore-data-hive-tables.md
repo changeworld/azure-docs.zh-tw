@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 75dce2b5a83d13fe4a7d166595456e9a8d6324ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76722164"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>使用 Hive 查詢來瀏覽 Hive 資料表的資料
@@ -24,11 +24,11 @@ ms.locfileid: "76722164"
 
 此工作是 [Team Data Science Process](overview.md) 中的一個步驟。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱[建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
-* 佈建含有 HDInsight 服務的自訂 Hadoop 叢集。 如果需要說明，請參閱[自訂 Azure HDInsight Hadoop 群集以進行高級分析](customize-hadoop-cluster.md)。
+* 佈建含有 HDInsight 服務的自訂 Hadoop 叢集。 如需相關指示，請參閱[自訂適用于 Advanced Analytics 的 Azure HDInsight Hadoop](customize-hadoop-cluster.md)叢集。
 * 已將資料上傳至 Azure HDInsight Hadoop 叢集中的 Hive 資料表。 如果沒有，請遵循 [建立資料並載入 Hive 資料表](move-hive-tables.md) 中的指示，先將資料上傳至 Hive 資料表。
 * 啟用叢集的遠端存取。 如需指示，請參閱 [存取 Hadoop 叢集的前端節點](customize-hadoop-cluster.md)。
 * 如果您需要如何提交 Hive 查詢的指示，請參閱 [如何提交 Hive 查詢](move-hive-tables.md#submit)
@@ -69,5 +69,5 @@ ms.locfileid: "76722164"
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>計程車路線資料案例的其他查詢指令碼
-[GitHub 存儲庫](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中還提供了特定于[NYC 計程車旅行資料](https://chriswhong.com/open-data/foil_nyc_taxi/)方案的查詢示例。 這些查詢已經具備指定的資料結構描述，且準備好進行提交來執行。
+[GitHub 存放庫](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)中也會提供[NYC 計程車路線資料](https://chriswhong.com/open-data/foil_nyc_taxi/)案例特定的查詢範例。 這些查詢已經具備指定的資料結構描述，且準備好進行提交來執行。
 

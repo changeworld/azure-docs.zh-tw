@@ -17,10 +17,10 @@ ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fcb3fe009a6482c8e512899a952694beaed361a7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77058972"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>教學課程︰設定 BlueJeans 來自動佈建使用者
@@ -30,7 +30,7 @@ ms.locfileid: "77058972"
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -47,19 +47,19 @@ ms.locfileid: "77058972"
 
 **若要從 Azure AD 應用程式庫新增 BlueJeans，請執行下列步驟：**
 
-1. 在**[Azure 門戶](https://portal.azure.com)** 中，在左側導航面板中，選擇**Azure 活動目錄**。
+1. 在**[Azure 入口網站](https://portal.azure.com)** 的左側導覽窗格中，選取 [ **Azure Active Directory**]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 轉到**企業應用程式**，然後選擇 **"所有應用程式**"。
+2. 移至 [**企業應用程式**]，然後選取 [**所有應用程式**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 要添加新應用程式，請選擇窗格頂部的 **"新建應用程式**"按鈕。
+3. 若要新增新的應用程式，請選取窗格頂端的 [**新增應用程式**] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜索框中，在結果面板中選擇**BlueJeans，** 然後選擇**BlueJeans****"添加**"按鈕以添加應用程式。
+4. 在搜尋方塊中，輸入**BlueJeans**，在結果面板中選取 [ **BlueJeans** ]，然後選取 [**新增**] 按鈕以新增應用程式。
 
     ![結果清單中的 BlueJeans](common/search-new-app.png)
 
@@ -86,7 +86,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>在 Azure AD 中為 BlueJeans 設定自動使用者佈建：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)並選擇**企業應用程式**，選擇**所有應用程式**，然後選擇**BlueJeans**。
+1. 登入[Azure 入口網站](https://portal.azure.com)並選取 [**企業應用程式**]，選取 [**所有應用程式**]，然後選取 [ **BlueJeans**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -94,11 +94,11 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![應用程式清單中的 BlueJeans 連結](common/all-applications.png)
 
-3. 選擇 **"預配"** 選項卡。
+3. 選取 [**布**建] 索引標籤。
 
     ![BlueJeans 佈建](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
 
-4. 將**預配模式**設置為 **"自動**"。
+4. 將布建模式設定為 [**自動** **]** 。
 
     ![BlueJeans 佈建](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
 
@@ -116,7 +116,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
     ![BlueJeans 佈建](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
 
-8. 按一下 [儲存]****。
+8. 按一下 **[儲存]** 。
 
 9. 在 [對應]**** 區段中，選取 [同步處理 Azure Active Directory 使用者至 BlueJeans]****。
 
@@ -150,8 +150,8 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用的使用者帳戶預配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 

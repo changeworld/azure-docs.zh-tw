@@ -1,6 +1,6 @@
 ---
 title: Azure 流量管理員中的流量檢視
-description: 在本簡介中，瞭解流量管理器流量視圖的工作原理。
+description: 在此簡介中，瞭解「流量管理員」流量視圖的運作方式。
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -13,10 +13,10 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: d5a03fde564b14baee97f50fa63fd58bf83694b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938348"
 ---
 # <a name="traffic-manager-traffic-view"></a>流量管理員流量檢視
@@ -36,7 +36,7 @@ ms.locfileid: "76938348"
 流量檢視的運作方式是讓流量管理員查看在過去七天內針對已啟用此功能之設定檔所收到的連入查詢。 流量檢視會根據連入查詢資訊擷取 DNS 解析程式的來源 IP，然後用來作為使用者位置的代表。 然後會在 DNS 解析程式層級資料粒度群組在一起，藉由使用由流量管理員維護之 IP 位址的地理資訊，來建立使用者群體區域。 流量管理員接著會查看查詢路由前往的 Azure 區域，並且為這些區域的使用者建構流量流程對應。  
 在下一個步驟中，流量管理員會將 Azure 區域對應的使用者群組區域與它為不同使用者網路維護的網路智慧延遲資料表相互關聯，以了解當連接到 Azure 區域時，這些區域的使用者所體驗的平均延遲。 所有這些計算接著會在呈現給您之前，在每個本機 DNS 解析程式 IP 層級上合併。 您可以用各種方式使用該資訊。
 
-流量視圖資料更新的頻率取決於多個內部服務變數。 但是，資料通常每 24 小時更新一次。
+流量視圖資料更新的頻率取決於多個內部服務變數。 不過，資料通常會每隔24小時更新一次。
 
 >[!NOTE]
 >流量檢視中所述的延遲是使用者與已連線 Azure 區域間的代表性延遲，不是 DNS 查詢延遲。 流量檢視對本機 DNS 解析程式與查詢路由前往的 Azure 區域之間的延遲進行最佳投入量估算，如果資料不足，則傳回的延遲將為 Null。 
@@ -45,7 +45,7 @@ ms.locfileid: "76938348"
 
 當您瀏覽至流量管理員頁面中的 [流量檢視]**** 區段時，您會看到覆蓋流量檢視深入分析的地理區域地圖。 地圖會提供流量管理員設定檔的使用者群體和端點相關資訊。
 
-![流量管理器流量視圖地理視圖][1]
+![流量管理員流量視圖地理視圖][1]
 
 ### <a name="user-base-information"></a>使用者群體資訊
 

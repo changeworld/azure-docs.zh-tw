@@ -1,7 +1,7 @@
 ---
-title: 創建和使用 v2 自訂規則
+title: 建立和使用 v2 自訂規則
 titleSuffix: Azure Web Application Firewall
-description: 本文提供有關如何在 Azure 應用程式閘道中創建 Web 應用程式防火牆 （WAF） v2 自訂規則的資訊。
+description: 本文提供如何在 Azure 應用程式閘道中建立 Web 應用程式防火牆（WAF） v2 自訂規則的相關資訊。
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -9,17 +9,17 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77368297"
 ---
-# <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>在應用程式閘道上創建和使用 Web 應用程式防火牆 v2 自訂規則
+# <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>在應用程式閘道上建立和使用 Web 應用程式防火牆 v2 自訂規則
 
-Azure 應用程式閘道上的 Web 應用程式防火牆 （WAF） v2 為 Web 應用程式提供保護。 此保護由開放 Web 應用程式安全專案 （OWASP） 核心規則集 （CRS） 提供。 在某些情況下，您可能需要創建自己的自訂規則，以滿足您的特定需求。 有關 WAF 自訂規則的詳細資訊，請參閱[自訂 Web 應用程式防火牆規則概述](custom-waf-rules-overview.md)。
+Azure 應用程式閘道上的 Web 應用程式防火牆（WAF） v2 提供 web 應用程式的保護。 這項保護是由開放式 Web 應用程式安全性專案（OWASP）核心規則集（CRS）提供。 在某些情況下，您可能需要建立自己的自訂規則，以符合您的特定需求。 如需 WAF 自訂規則的詳細資訊，請參閱[自訂 web 應用程式防火牆規則總覽](custom-waf-rules-overview.md)。
 
-本文將介紹一些自訂規則示例，您可以創建這些規則並將其用於 v2 WAF。 要瞭解如何使用 Azure PowerShell 使用自訂規則部署 WAF，請參閱[使用 Azure PowerShell 配置 Web 應用程式防火牆自訂規則](configure-waf-custom-rules.md)。
+本文說明您可以建立的一些範例自訂規則，並與您的 v2 WAF 搭配使用。 若要瞭解如何使用 Azure PowerShell 部署具有自訂規則的 WAF，請參閱[使用 Azure PowerShell 設定 Web 應用程式防火牆自訂規則](configure-waf-custom-rules.md)。
 
 >[!NOTE]
 > 如果您的應用程式閘道並未使用 WAF 層，右窗格中會出現將應用程式閘道升級至 WAF 層的選項。
@@ -28,7 +28,7 @@ Azure 應用程式閘道上的 Web 應用程式防火牆 （WAF） v2 為 Web �
 
 ## <a name="example-1"></a>範例 1
 
-你知道有一個機器人叫*邪惡機器人*，你想阻止爬你的網站。 在這種情況下，您將在請求標頭中阻止使用者代理*邪惡機器人*。
+您知道有一個名為*evilbot*的 bot，您想要封鎖它來編目您的網站。 在此情況下，您會在要求標頭中的使用者代理程式*evilbot*上封鎖。
 
 邏輯： p
 
@@ -52,7 +52,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-下面是相應的 JSON：
+以下是對應的 JSON：
 
 ```json
   {
@@ -76,11 +76,11 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-要查看使用此自訂規則部署的 WAF，請參閱[使用 Azure PowerShell 配置 Web 應用程式防火牆自訂規則](configure-waf-custom-rules.md)。
+若要查看使用此自訂規則部署的 WAF，請參閱[使用 Azure PowerShell 設定 Web 應用程式防火牆自訂規則](configure-waf-custom-rules.md)。
 
-### <a name="example-1a"></a>示例 1a
+### <a name="example-1a"></a>範例1a
 
-您可以使用正則運算式完成相同的任務：
+您可以使用正則運算式來達到相同的目的：
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -102,7 +102,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-和相應的JSON：
+和對應的 JSON：
 
 ```json
   {
@@ -128,7 +128,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-2"></a>範例 2
 
-您希望使用 GeoMatch 運算子允許來自美國的流量：
+您想要使用 GeoMatch 運算子允許來自美國的流量：
 
 ```azurepowershell
 $variable = New-AzApplicationGatewayFirewallMatchVariable `
@@ -149,7 +149,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Allow
 ```
 
-和相應的JSON：
+和對應的 JSON：
 
 ```json
   {
@@ -177,9 +177,9 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-3"></a>範例 3
 
-您希望阻止來自 198.168.5.0/24 範圍內 IP 位址的所有請求。
+您想要封鎖 198.168.5.0/24 範圍內來自 IP 位址的所有要求。
 
-在此示例中，您將阻止來自 IP 位址範圍的所有流量。 規則的名稱為*myrule1，* 優先順序設置為 10。
+在此範例中，您將會封鎖來自 IP 位址範圍的所有流量。 規則的名稱是*myrule1* ，而優先順序設定為10。
 
 邏輯： p
 
@@ -201,7 +201,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-下面是相應的 JSON：
+以下是對應的 JSON：
 
 ```json
   {
@@ -225,13 +225,13 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-相應的 CRS 規則：`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+對應的 CRS 規則：`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-4"></a>範例 4
 
-在此示例中，您希望阻止使用者代理*邪惡機器人*和範圍 192.168.5.0/24 中的流量。 為此，您可以創建兩個單獨的匹配條件，並將它們放在相同的規則中。 這可確保如果使用者代理標頭中的*邪惡機器人***和**範圍 192.168.5.0/24 中的 IP 位址都匹配，則請求將被阻止。
+在此範例中，您想要封鎖使用者代理程式*evilbot*，以及範圍 192.168.5.0/24 中的流量。 若要完成這項操作，您可以建立兩個不同的比對條件，並將兩者都放在相同的規則中。 這可確保如果使用者代理程式標頭中的兩個*evilbot* **和**範圍 192.168.5.0/24 的 IP 位址相符，則會封鎖要求。
 
-邏輯：p**和**q
+邏輯： p**和**q
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -262,7 +262,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
    -Action Block
 ```
 
-下面是相應的 JSON：
+以下是對應的 JSON：
 
 ```json
 { 
@@ -301,9 +301,9 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 ## <a name="example-5"></a>範例 5
 
-在此示例中，如果請求超出 IP 位址範圍*192.168.5.0/24，* 或者使用者代理字串不是*Chrome（* 這意味著使用者不使用 Chrome 瀏覽器），則要阻止該請求。 由於此邏輯使用**或**，這兩個條件位於單獨的規則中，如下例所示。 *myrule1*和*myrule2*都需要匹配以阻止流量。
+在此範例中，您想要封鎖要求是否位於 IP 位址範圍*192.168.5.0/24*以外，或使用者代理字串不是*chrome* （這表示使用者不會使用 chrome 瀏覽器）。 因為此邏輯使用**或**，所以這兩個條件會位於不同的規則中，如下列範例所示。 *myrule1*和*myrule2*都必須符合，才能封鎖流量。
 
-邏輯：**不**（p**和**q） =**不**p**或不是**q。
+邏輯： **not** （p**和**q） = **not** p**或 not** q。
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -341,7 +341,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-和相應的JSON：
+和對應的 JSON：
 
 ```json
 {
@@ -388,9 +388,9 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-6"></a>範例 6
 
-您希望阻止自訂 SQLI。 由於此處使用的邏輯是**或**，並且所有值都在*RequestUri*中，因此所有*匹配值*都可以在逗號分隔清單中。
+您想要封鎖自訂 SQLI。 因為此處使用的邏輯是**或**，而且所有的值都在*RequestUri*中，所以所有的*MatchValues*都可以是以逗號分隔的清單。
 
-邏輯：p**或**q**或**r
+邏輯： p**或**q**或**r
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -409,7 +409,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-相應的 JSON：
+對應的 JSON：
 
 ```json
   {
@@ -435,7 +435,7 @@ $rule1 = New-AzApplicationGatewayFirewallCustomRule `
   }
 ```
 
-替代 Azure 電源外殼：
+替代 Azure PowerShell：
 
 ```azurepowershell
 $variable1 = New-AzApplicationGatewayFirewallMatchVariable `
@@ -486,7 +486,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
    -Action Block
 ```
 
-相應的 JSON：
+對應的 JSON：
 
 ```json
   {
@@ -545,6 +545,6 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="next-steps"></a>後續步驟
 
-創建自訂規則後，可以瞭解如何查看 WAF 日誌。 有關詳細資訊，請參閱[應用程式閘道診斷](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)。
+建立自訂規則之後，您可以瞭解如何查看您的 WAF 記錄。 如需詳細資訊，請參閱[應用程式閘道診斷](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)。
 
 [fig1]: ../media/create-custom-waf-rules/1.png

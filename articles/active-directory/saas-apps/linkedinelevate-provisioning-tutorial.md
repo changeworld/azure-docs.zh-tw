@@ -1,5 +1,5 @@
 ---
-title: 教程：使用者預配LinkedIn提升 - Azure AD
+title: 教學課程： LinkedIn 的使用者布建提升-Azure AD
 description: 了解如何設定 Azure Active Directory 來自動佈建並取消佈建使用者帳戶至 LinkedIn Elevate。
 services: active-directory
 documentationcenter: ''
@@ -16,17 +16,17 @@ ms.date: 03/28/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa0a26eaeac431ed2c78c5bd938bbbe7dff14e0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77057408"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>教學課程︰設定 LinkedIn Elevate 來自動佈建使用者
 
 本教學課程旨在說明您需要在 LinkedIn Elevate 和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 LinkedIn Elevate。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -84,7 +84,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 5. 按一下 [產生權杖]****。 您應該會看到您的存取權杖顯示在存取權杖]**** 欄位下。
 
-6. 離開頁面之前，請將訪問權杖保存到剪貼簿或電腦。
+6. 在離開頁面之前，請先將您的存取權杖儲存到剪貼簿或電腦。
 
 7. 接下來，登入 [Azure 入口網站](https://portal.azure.com)中，瀏覽至 [Azure Active Directory] > [企業應用程式] > [所有應用程式]**** 區段。
 
@@ -92,7 +92,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 9. 選取您的 LinkedIn Elevate 執行個體，然後選取 [佈建]**** 索引標籤。
 
-10. 將**預配模式**設置為 **"自動**"。
+10. 將布建模式設定為 [**自動** **]** 。
 
     ![LinkedIn Elevate 佈建](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
@@ -106,7 +106,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 12. 在 [通知電子郵件]**** 欄位中輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選下列核取方塊。
 
-13. 按一下 [儲存]****。
+13. 按一下 **[儲存]** 。
 
 14. 在 [屬性對應]**** 區段中，檢閱將從 Azure AD 同步至 LinkedIn Elevate 的使用者和群組屬性。 請注意，選取為 [比對]**** 屬性的屬性會用來比對 LinkedIn Elevate 中的使用者帳戶和群組以進行更新作業。 選取 [儲存] 按鈕以認可任何變更。
 
@@ -114,7 +114,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 15. 若要啟用 LinkedIn Elevate 的 Azure AD 佈建服務，在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
 
-16. 按一下 [儲存]****。
+16. 按一下 **[儲存]** 。
 
 這會啟動在 [使用者和群組] 區段中指派給 LinkedIn Elevate 的任何使用者和/或群組之初始同步處理。 請注意，初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述您 LinkedIn Elevate 應用程式上佈建服務所執行的所有動作。
 
@@ -122,5 +122,5 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用的使用者帳戶預配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)

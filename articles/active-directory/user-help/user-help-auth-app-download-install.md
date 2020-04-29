@@ -1,6 +1,6 @@
 ---
-title: 下載並安裝微軟身份驗證器應用 - Azure AD
-description: 下載並安裝 Microsoft 身份驗證器應用，以驗證您的身份，同時使用雙重驗證。
+title: 下載並安裝 Microsoft Authenticator 應用程式 Azure AD
+description: 下載並安裝 Microsoft Authenticator 應用程式，以在使用雙因素驗證時驗證您的身分識別。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,10 +13,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 9d8ea02c91dc6aec41a1b548eff148e85111fc32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063895"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>下載並安裝 Microsoft Authenticator 應用程式
@@ -32,7 +32,7 @@ ms.locfileid: "77063895"
 
 - **手機登入。** 雙因素驗證的其中一個版本，可讓您以使用者名稱和行動裝置加上指紋、臉部或 PIN 來進行登入，而不必輸入密碼。
 
-- **代碼生成。** 為任何支援驗證器應用程式的其他帳戶產生程式碼。
+- **程式碼產生。** 為任何支援驗證器應用程式的其他帳戶產生程式碼。
 
 > [!Important]
 > Microsoft Authenticator 應用程式適用於任何使用雙因素驗證且支援限時單次密碼 (TOTP) 標準的帳戶。
@@ -46,16 +46,16 @@ ms.locfileid: "77063895"
 
 根據您的作業系統，安裝最新版的 Microsoft Authenticator 應用程式：
 
-- **谷歌安卓。** 在 Android 裝置上，移至 Google Play 以[下載並安裝 Microsoft Authenticator 應用程式](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator)。
+- **Google Android。** 在 Android 裝置上，移至 Google Play 以[下載並安裝 Microsoft Authenticator 應用程式](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator)。
 
-- **蘋果iOS。** 在 Apple iOS 裝置上，移至 App Store 以[下載並安裝 Microsoft Authenticator 應用程式](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)。
+- **Apple iOS。** 在 Apple iOS 裝置上，移至 App Store 以[下載並安裝 Microsoft Authenticator 應用程式](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458)。
 
 >[!Important]
->如果您當前不在行動裝置上，您仍可以通過從[Microsoft 身份驗證器頁面](https://www.microsoft.com/en-us/account/authenticator)向自己發送下載連結來獲取 Microsoft 身份驗證器應用。
+>如果您目前不在行動裝置上，您仍然可以從 [ [Microsoft Authenticator] 頁面](https://www.microsoft.com/en-us/account/authenticator)傳送下載連結給自己，以取得 Microsoft Authenticator 應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 
-下載並安裝應用程式之後，您必須新增各種帳戶。 如需詳細資訊，請參閱
+下載並安裝應用程式之後，您必須新增各種帳戶。 如需詳細資訊，請參閱：
 
 - **驗證器應用程式。** 下載並使用驗證器應用程式，以取得核准通知或隨機產生的核准代碼來進行雙步驟驗證或密碼重設。 如需如何設定和使用 Microsoft Authenticator 應用程式的逐步指示，請參閱[將安全性資訊設定為使用驗證器應用程式](security-info-setup-auth-app.md)。
 
@@ -63,8 +63,8 @@ ms.locfileid: "77063895"
 
 - **行動裝置或公司電話。** 輸入您的行動裝置號碼，然後等候來電以進行雙步驟驗證或密碼重設。 如需如何透過電話號碼驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用電話](security-info-setup-phone-number.md)。
 
-- **安全金鑰。** 註冊相容 Microsoft 的安全金鑰並將其與 PIN 一起用於兩步驗證或密碼重設。 有關如何使用安全金鑰驗證身份的分步說明，請參閱[設置安全資訊以使用安全金鑰](security-info-setup-security-key.md)。
+- **安全性金鑰。** 註冊與 Microsoft 相容的安全性金鑰，並使用它搭配 PIN 進行雙步驟驗證或密碼重設。 如需如何使用安全性金鑰驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用安全性金鑰](security-info-setup-security-key.md)。
 
 - **電子郵件地址。** 輸入您的公司或學校電子郵件地址以接收用於密碼重設的電子郵件。 此選項不適用於雙步驟驗證。 如需如何設定電子郵件的逐步指示，請參閱[將安全性資訊設定為使用電子郵件](security-info-setup-email.md)。
 
-- **安全問題。** 回答由您的系統管理員為組織所建立的一些安全性問題。 此選項僅適用於密碼重設，不適用雙步驟驗證。 如需如何設定安全性問題的逐步指示，請參閱[將安全性資訊設定為使用安全性問題](security-info-setup-questions.md)一文。
+- **安全性問題。** 回答由您的系統管理員為組織所建立的一些安全性問題。 此選項僅適用於密碼重設，不適用雙步驟驗證。 如需如何設定安全性問題的逐步指示，請參閱[將安全性資訊設定為使用安全性問題](security-info-setup-questions.md)一文。

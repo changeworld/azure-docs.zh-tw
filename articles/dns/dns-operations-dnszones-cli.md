@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: rohink
 ms.openlocfilehash: 413c2ab3ee04249c2bb52bf42ca6a31a58fb9082
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76936935"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>如何使用 Azure CLI 管理 Azure DNS 中的 DNS 區域
 
 > [!div class="op_single_selector"]
 > * [入口網站](dns-operations-dnszones-portal.md)
-> * [電源外殼](dns-operations-dnszones.md)
+> * [PowerShell](dns-operations-dnszones.md)
 > * [Azure CLI](dns-operations-dnszones-cli.md)
 
 
@@ -42,13 +42,13 @@ ms.locfileid: "76936935"
 
 在開始設定之前，請確認您具備下列項目。
 
-* Azure 訂用帳戶。 如果您還沒有 Azure 訂閱，則可以啟動[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，您可以啟用[MSDN 訂閱者權益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或註冊[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 * 安裝最新版的 Azure CLI，該 CLI 適用於 Windows、Linux 或 MAC。 您可以在 [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2)中取得詳細資訊。
 
 ### <a name="sign-in-to-your-azure-account"></a>登入您的 Azure 帳戶
 
-開啟主控台視窗，並驗證您的認證。 有關詳細資訊，請參閱從[Azure CLI 登錄 Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
+開啟主控台視窗，並驗證您的認證。 如需詳細資訊，請參閱[從 Azure CLI 登入 Azure](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)
 
 ```
 az login
@@ -68,8 +68,8 @@ az account list
 az account set --subscription "subscription name"
 ```
 
-### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>可選：安裝/使用 Azure DNS 私人區域功能
-Azure DNS 私人區域功能可通過 Azure CLI 的擴展提供。 安裝 “dns” Azure CLI 擴充功能 
+### <a name="optional-to-installuse-azure-dns-private-zones-feature"></a>選擇性：安裝/使用 Azure DNS 私人區域功能
+Azure DNS 私人區域功能可透過 Azure CLI 的延伸模組取得。 安裝 “dns” Azure CLI 擴充功能 
 ```
 az extension add --name dns
 ``` 
@@ -98,7 +98,7 @@ az network dns zone create --help
 
 使用 `az network dns zone create` 命令建立 DNS 區域。 如需協助，請參閱 `az network dns zone create -h`。
 
-以下示例在名為*MyResourceGroup*的資源組中創建名為*contoso.com*的 DNS 區域：
+下列範例會在名為*MyResourceGroup*的資源群組中建立名為*contoso.com*的 DNS 區域：
 
 ```azurecli
 az network dns zone create --resource-group MyResourceGroup --name contoso.com

@@ -1,21 +1,21 @@
 ---
-title: 使用 REST API 創建備份策略
-description: 在本文中，您將學習如何使用 REST API 創建和管理備份策略（計畫和保留）。
+title: 使用 REST API 建立備份原則
+description: 在本文中，您將瞭解如何使用 REST API 來建立和管理備份原則（排程和保留）。
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: 0718ebc3612f53f1c2cc279096dd92de69bb5ef6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76963847"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 建立 Azure 復原服務備份原則
 
 [原則 REST API 文件](/rest/api/backup/protectionpolicies/createorupdate)概述為 Azure 復原服務保存庫建立備份原則的步驟。 讓我們使用這份文件作為參考，以建立 Azure VM 備份的原則。
 
-## <a name="create-or-update-a-policy"></a>創建或更新策略
+## <a name="create-or-update-a-policy"></a>建立或更新原則
 
 若要建立或更新 Azure 備份原則，請使用下列 PUT** 作業
 
@@ -29,7 +29,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 例如，若要建立 Azure VM 備份的原則，以下是要求本文的元件。
 
-|名稱  |必要  |類型  |描述  |
+|Name  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
 |properties     |   True      |  ProtectionPolicy：[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource 屬性        |
 |tags     |         | Object        |  資源標籤       |
@@ -135,7 +135,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 備份原則的建立/更新為[非同步作業](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations)。 這表示此作業會建立另一項需要個別追蹤的作業。
 
-它返回兩個回應：創建另一個操作時為 202（已接受），當該操作完成時返回 200 （OK）。
+它會傳回兩個回應：在建立另一個作業時，202（已接受），然後在該作業完成時傳回200（確定）。
 
 |名稱  |類型  |描述  |
 |---------|---------|---------|

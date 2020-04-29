@@ -1,5 +1,5 @@
 ---
-title: 教程：Pingboard 的使用者預配 - Azure AD
+title: 教學課程： Pingboard 的使用者布建-Azure AD
 description: 了解如何設定 Azure Active Directory 將使用者帳戶自動佈建和取消佈建至 Pingboard。
 services: active-directory
 documentationcenter: ''
@@ -16,22 +16,22 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c64c40d93f9b525ac6adeca276797df65f32ef3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77061270"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>教學課程︰設定 Pingboard 來自動佈建使用者
 
 本教學課程旨在說明您需要遵循的步驟，以將使用者帳戶從 Azure Active Directory (Azure AD) 自動佈建和取消佈建至 Pingboard。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
 * Azure AD 租用戶
-* Pingboard 租戶[專業帳戶](https://pingboard.com/pricing)
+* Pingboard 租使用者[Pro 帳戶](https://pingboard.com/pricing)
 * Pingboard 中具有管理員權限的使用者帳戶
 
 > [!NOTE]
@@ -74,7 +74,7 @@ Azure AD 會使用稱為「指派」的概念，來判斷哪些使用者應收�
 
     b. 使用系統管理員帳戶登入 [Pingboard](https://pingboard.com/)。
 
-    c. 選擇**載入項** > **集成** > **Azure 活動目錄**。
+    c. 選取 [**附加** > **Integrations** > 元件整合]**Azure Active Directory**。
 
     d. 移至 [設定]**** 索引標籤，然後選取 [啟用從 Azure 進行使用者佈建]****。
 
@@ -84,9 +84,9 @@ Azure AD 會使用稱為「指派」的概念，來判斷哪些使用者應收�
 
 1. 在 [通知電子郵件]**** 中，輸入應收到佈建錯誤通知之個人或群組的電子郵件地址。 選取下方的核取方塊。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
-1. 在 **"映射**"部分下，選擇**將 Azure 活動目錄使用者同步到 Pingboard**。
+1. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Pingboard**]。
 
 1. 在 [屬性對應]**** 區段中，檢閱要從 Azure AD 同步至 Pingboard 的使用者屬性。 選取為 [比對]**** 屬性的屬性會用來比對 Pingboard 中的使用者帳戶，以進行更新作業。 選取 [儲存]**** 認可任何變更。 如需詳細資訊，請參閱[自訂使用者佈建屬性對應](../app-provisioning/customize-application-attributes.md)。
 
@@ -101,5 +101,5 @@ Azure AD 會使用稱為「指派」的概念，來判斷哪些使用者應收�
 ## <a name="additional-resources"></a>其他資源
 
 * [管理企業應用程式的使用者帳戶佈建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
-* [配置單登錄](pingboard-tutorial.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [設定單一登入](pingboard-tutorial.md)

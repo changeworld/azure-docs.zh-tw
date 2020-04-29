@@ -16,10 +16,10 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: f5ea0ddff38532b119d8d984f2dabd6d898b44a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77031351"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虛擬機器中的 SQL Server 安全性考量
@@ -59,7 +59,7 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 ## <a name="encryption"></a>加密
 
-託管磁片提供伺服器端加密和 Azure 磁片加密。 [伺服器端加密](/azure/virtual-machines/windows/disk-encryption)提供靜態加密，並保護您的資料，以滿足您的組織安全性和合規性承諾。 [Azure 磁片加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)使用 Bitlocker 或 DM-Crypt 技術，並與 Azure 金鑰保存庫集成以加密作業系統和資料磁片。 
+受控磁片提供伺服器端加密，並 Azure 磁碟加密。 [伺服器端加密](/azure/virtual-machines/windows/disk-encryption)提供待用加密，並保護您的資料，以符合您的組織安全性和合規性承諾。 [Azure 磁碟加密](/azure/security/fundamentals/azure-disk-encryption-vms-vmss)使用 BITLOCKER 或 DM Crypt 技術，並與 Azure Key Vault 整合，以加密作業系統和資料磁片。 
 
 ## <a name="use-a-non-default-port"></a>使用非預設連接埠
 
@@ -69,7 +69,7 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
 
 若要在佈建後進行此設定，您有兩個選項：
 
-- 對於資源管理器 VM，您可以從[SQL 虛擬機器資源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)中選擇 **"安全性**"。 這可提供變更連接埠的選項。
+- 針對 Resource Manager Vm，您可以從 [ [SQL 虛擬機器] 資源](virtual-machines-windows-sql-manage-portal.md#access-the-sql-virtual-machines-resource)選取 [**安全性**]。 這可提供變更連接埠的選項。
 
   ![在入口網站中變更 TCP 連接埠](./media/virtual-machines-windows-sql-security/sql-vm-change-tcp-port.png)
 
@@ -93,17 +93,17 @@ Azure 符合多種業界規範及標準，可讓您使用在虛擬機器中執�
   - 使用具有 **sysadmin** 成員資格的唯一名稱建立 SQL 帳戶。 在佈建期間啟用 **SQL 驗證**，即可從入口網站執行此作業。
 
     > [!TIP] 
-    > 如果您未在佈建期間啟用 SQL 驗證，您必須將驗證模式手動變更為 **SQL Server 和 Windows 驗證模式**。 有關詳細資訊，請參閱[更改伺服器身份驗證模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode)。
+    > 如果您未在佈建期間啟用 SQL 驗證，您必須將驗證模式手動變更為 **SQL Server 和 Windows 驗證模式**。 如需詳細資訊，請參閱[變更伺服器驗證模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode)。
 
   - 如果您必須使用 **SA** 登入，請在佈建後啟用此登入，然後指派新的強式密碼。
 
 ## <a name="additional-best-practices"></a>其他最佳做法
 
-除了本主題中描述的實踐外，我們建議您查看並實施傳統本地安全實踐和虛擬機器安全最佳實踐的安全最佳實踐。 
+除了本主題中所述的作法以外，我們也建議您從傳統內部部署安全性作法，以及虛擬機器安全性最佳作法，檢查並執行安全性最佳作法。 
 
-有關本地安全實踐的詳細資訊，請參閱[SQL 伺服器安裝](/sql/sql-server/install/security-considerations-for-a-sql-server-installation)[和安全中心](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)的安全注意事項。 
+如需內部部署安全性作法的詳細資訊，請參閱 SQL Server 安裝和資訊[安全中心](/sql/relational-databases/security/security-center-for-sql-server-database-engine-and-azure-sql-database)的[安全性考慮](/sql/sql-server/install/security-considerations-for-a-sql-server-installation)。 
 
-有關虛擬機器安全性的詳細資訊，請參閱[虛擬機器安全概述](/azure/security/fundamentals/virtual-machines-overview)。
+如需虛擬機器安全性的詳細資訊，請參閱[虛擬機器安全性總覽](/azure/security/fundamentals/virtual-machines-overview)。
 
 
 ## <a name="next-steps"></a>後續步驟

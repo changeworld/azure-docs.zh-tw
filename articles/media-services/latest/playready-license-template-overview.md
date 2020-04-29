@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務 v3 與微軟 PlayReady 許可證範本
+title: 使用 Microsoft PlayReady 授權範本 Azure 媒體服務 v3
 description: 本主題提供了用來設定 PlayReady 授權之 PlayReady 授權範本的概觀。
 author: juliako
 manager: femila
@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: juliako
 ms.openlocfilehash: 6b12dcee2303632c4ec2ccc3602348a4e17fcd05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76705882"
 ---
-# <a name="media-services-v3-with-playready-license-template"></a>媒體服務 v3 與 PlayReady 許可證範本 
+# <a name="media-services-v3-with-playready-license-template"></a>使用 PlayReady 授權範本媒體服務 v3 
 
 Azure 媒體服務可讓您使用 **Microsoft PlayReady** 來加密您的內容。 媒體服務也提供傳遞 PlayReady 授權的服務。 您可以使用媒體服務 API 來設定 PlayReady 授權。 當播放程式嘗試播放以 PlayReady 保護的內容時，會將要求傳送到授權傳遞服務來取得授權。 如果授權服務核准要求，就會發出授權以傳送給用戶端，並將它用來解密和播放所指定內容。
 
@@ -31,7 +31,7 @@ PlayReady 授權包含您要 PlayReady 數位版權管理 (DRM) 執行階段在�
 * 針對要儲存在用戶端上永續性儲存體的授權。 永續性授權通常會用來允許離線播放內容。
 * 播放器播放您的內容必須具有的最低安全性層級。 
 * audio\video 內容的輸出控制輸出保護層級。 
-* 有關詳細資訊，請參閱[PlayReady 合規性規則](https://www.microsoft.com/playready/licensing/compliance/)文檔中的"輸出控制項"部分 （3.5）。
+* 如需詳細資訊，請參閱[PlayReady 相容性規則](https://www.microsoft.com/playready/licensing/compliance/)檔中的「輸出控制項」一節（3.5）。
 
 > [!NOTE]
 > 目前，您只能設定 PlayReady 授權的 PlayRight。 這是必要權限。 PlayRight 可讓用戶端播放內容。 您也可以使用 PlayRight 來設定播放特定的限制。 

@@ -1,5 +1,5 @@
 ---
-title: 更改 Office 365 依賴方信任的簽名雜湊演算法 - Azure
+title: 變更 Office 365 信賴憑證者信任的簽章雜湊演算法-Azure
 description: 本頁面提供變更與 Office 365 搭配運作之同盟信任的 SHA 演算法的指導方針
 keywords: SHA1,SHA256,O365,同盟,aadconnect,adfs,ad fs,變更 sha,同盟信任,信賴憑證者信任
 services: active-directory
@@ -18,10 +18,10 @@ ms.date: 10/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2233b434fda628dcf812a62f06541fc4b0296aba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897346"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>變更 Office 365 信賴憑證者信任的簽章雜湊演算法
@@ -39,7 +39,7 @@ Active Directory 同盟服務 (AD FS) 會將其權杖簽署到 Microsoft Azure A
 2. 展開 AD FS 節點，然後按一下 [信賴憑證者信任] ****。
 3. 在您的 Office 365/Azure 信賴憑證者信任上按一下滑鼠右鍵，然後選取 [屬性] ****。
 4. 選取 [進階] **** 索引標籤，然後選取安全雜湊演算法 SHA256。
-5. 按一下 [確定]****。
+5. 按一下 [確定]  。
 
 ![SHA256 簽署演算法--MMC](./media/how-to-connect-fed-sha256-guidance/mmc.png)
 

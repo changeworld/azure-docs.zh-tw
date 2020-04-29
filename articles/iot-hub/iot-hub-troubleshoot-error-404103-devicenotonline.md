@@ -1,6 +1,6 @@
 ---
-title: 故障排除 Azure IoT 中心錯誤 404103 設備不線上
-description: 瞭解如何修復錯誤 404103 設備不線上
+title: 疑難排解 Azure IoT 中樞錯誤 404103 DeviceNotOnline
+description: 瞭解如何修正錯誤 404103 DeviceNotOnline
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -9,24 +9,24 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: e648428f924cfc33421c8591c41f7ac85b05a033
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76960811"
 ---
 # <a name="404103-devicenotonline"></a>404103 DeviceNotOnline
 
-本文介紹了**404103 設備不線上**錯誤的原因和解決方案。
+本文說明**404103 DeviceNotOnline**錯誤的原因和解決方案。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
-直接到設備的方法失敗，錯誤**404103 設備NotOnline，** 即使設備處於線上狀態也是如此。 
+裝置的直接方法會因錯誤**404103 DeviceNotOnline**而失敗，即使裝置已上線也一樣。 
 
 ## <a name="cause"></a>原因
 
-如果您知道設備處於線上狀態，但仍收到錯誤，則很可能是因為直接方法回檔未在設備上註冊。
+如果您知道裝置已上線，而且仍然收到錯誤，可能是因為直接方法回呼未在裝置上註冊。
 
 ## <a name="solution"></a>解決方法
 
-要正確配置設備以進行直接方法回檔，請參閱[在設備上處理直接方法](iot-hub-devguide-direct-methods.md#handle-a-direct-method-on-a-device)。
+若要正確設定您的裝置以進行直接方法回呼，請參閱[在裝置上處理直接方法](iot-hub-devguide-direct-methods.md#handle-a-direct-method-on-a-device)。

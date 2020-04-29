@@ -1,6 +1,6 @@
 ---
-title: 使用身份身份驗證資訊登錄 - Azure AD
-description: 瞭解如何在安全資訊中使用各種身份驗證方法登錄。
+title: 使用您的身分識別驗證資訊登入-Azure AD
+description: 深入瞭解如何使用安全性資訊中的各種身分識別驗證方法進行登入。
 services: active-directory
 author: curtand
 manager: daveba
@@ -13,20 +13,20 @@ ms.date: 07/18/2019
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: 7d1d27cede6c593150d3937bb3aa0ca59394eea9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062161"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>使用雙步驟驗證或安全性資訊登入
 
-設置兩步驗證或安全資訊後，您可以使用指定的驗證方法登錄您的帳戶。
+設定雙步驟驗證或安全性資訊之後，您將能夠使用您指定的驗證方法來登入帳戶。
 
 > [!Note]
-> 如果您仍在使用兩步驗證體驗，則需要按照"[設置我的帳戶進行兩步驗證](multi-factor-authentication-end-user-first-time.md)"文章中的說明來設置驗證方法。
+> 如果您仍在使用雙步驟驗證體驗，則必須遵循[針對雙步驟驗證設定我的帳戶](multi-factor-authentication-end-user-first-time.md)一文中的指示來設定您的驗證方法。
 >
-> 如果管理員已打開安全資訊體驗，則需要使用以下分步文章設置驗證方法：<ul><li>[將安全性資訊設定為使用驗證應用程式](security-info-setup-auth-app.md)</li><li>[將安全性資訊設定為使用簡訊](security-info-setup-text-msg.md)</li><li>[將安全性資訊設定為使用電話](security-info-setup-phone-number.md)</li><li>[將安全資訊設置為使用安全金鑰](security-info-setup-security-key.md)</li></ul>
+> 如果您的系統管理員已開啟安全性資訊體驗，您將需要使用下列逐步文章來設定您的驗證方法：<ul><li>[將安全性資訊設定為使用驗證應用程式](security-info-setup-auth-app.md)</li><li>[將安全性資訊設定為使用簡訊](security-info-setup-text-msg.md)</li><li>[將安全性資訊設定為使用電話](security-info-setup-phone-number.md)</li><li>[將安全性資訊設定為使用安全性金鑰](security-info-setup-security-key.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>在行動裝置上使用驗證器應用程式通知來登入
 
@@ -52,37 +52,37 @@ ms.locfileid: "77062161"
 
 2. 開啟簡訊，然後將簡訊中的代碼輸入到 [輸入驗證碼]**** 方塊中。
 
-## <a name="sign-in-using-a-security-key-at-the-lock-screen"></a>使用鎖屏介面的安全金鑰登錄
+## <a name="sign-in-using-a-security-key-at-the-lock-screen"></a>在鎖定畫面上使用安全性金鑰登入
 
-1. 註冊安全金鑰後，請從 Windows 10 鎖屏介面中選擇安全金鑰圖像。
+1. 在您註冊安全性金鑰之後，請從 Windows 10 鎖定畫面中選取安全性金鑰映射。
 
-2. 將安全金鑰插入設備的 USB 埠，並使用安全金鑰 PIN 登錄到 Windows。
+2. 將您的安全性金鑰插入裝置的 USB 埠，並使用您的安全性金鑰 PIN 來登入 Windows。
 
-    ![Windows 10 鎖屏介面上的安全金鑰登錄](./media/security-info/security-info-windows-10-lock-screen-security-key.png)
+    ![Windows 10 鎖定畫面上的安全性金鑰登入](./media/security-info/security-info-windows-10-lock-screen-security-key.png)
 
-## <a name="sign-in-using-a-security-key-and-the-microsoft-edge-browser"></a>使用安全金鑰和 Microsoft 邊緣瀏覽器登錄
+## <a name="sign-in-using-a-security-key-and-the-microsoft-edge-browser"></a>使用安全性金鑰和 Microsoft Edge 瀏覽器登入
 
-1. 註冊安全金鑰後，打開 Microsoft 邊緣瀏覽器。
+1. 在您註冊安全性金鑰之後，請開啟 Microsoft Edge 瀏覽器。
 
-2. 當提示您登錄時，請將安全金鑰插入設備的 USB 埠，並使用安全金鑰 PIN 登錄到 Windows。
+2. 當系統提示您登入時，請將您的安全性金鑰插入裝置的 USB 埠，並使用您的安全性金鑰 PIN 碼登入 Windows。
 
-    ![使用 Microsoft 邊緣瀏覽器登錄安全金鑰](./media/security-info/security-info-edge-security-key.png)
+    ![使用 Microsoft Edge 瀏覽器的安全性金鑰登入](./media/security-info/security-info-edge-security-key.png)
 
     >[!NOTE]
-    >有關使用 Microsoft 身份驗證器應用登錄的資訊，請參閱文章，請使用[Microsoft 身份驗證器應用登錄到您的帳戶](user-help-auth-app-sign-in.md)。
+    >如需使用 Microsoft Authenticator 應用程式登入的詳細資訊，請參閱[使用 Microsoft Authenticator 應用程式登入您的帳戶](user-help-auth-app-sign-in.md)一文。
 
 ## <a name="sign-in-using-another-verification-method"></a>使用另一個驗證方法登入
 
-如果由於某種原因無法使用主登錄方法，則可以使用其他以前設置的驗證方法。
+如果基於某些原因而無法使用您的主要登入方法，您可以使用另一個先前設定的驗證方法。
 
-1. 正常登錄您的帳戶，然後在 **"兩步驗證**"頁上選擇 **"以另一種方式登錄"** 連結。
+1. 正常登入您的帳戶，然後在**雙步驟驗證**頁面上選擇 [**以另一種方式登入**] 連結。
 
     ![變更登入驗證方法](media/security-info/two-factor-auth-signin-another-way.png)
 
     >[!Note]
-    >如果您沒有看到 **"以其他方式登錄"** 連結，則意味著您尚未設置任何其他驗證方法，並且您必須聯繫管理員以獲取登錄帳戶的説明。 管理員説明您登錄後，請確保添加其他驗證方法。 如需新增驗證方法的詳細資訊，請參閱[管理雙步驟驗證設定](multi-factor-authentication-end-user-manage-settings.md)一文。
+    >如果您沒有看到 [**以另一種方式登入**] 連結，表示您尚未設定任何其他驗證方法，而且您必須聯絡系統管理員，以協助登入您的帳戶。 當您的系統管理員協助您登入之後，請確定您已新增額外的驗證方法。 如需新增驗證方法的詳細資訊，請參閱[管理雙步驟驗證設定](multi-factor-authentication-end-user-manage-settings.md)一文。
     >
-    >如果您看到 **"以其他方式登錄"** 連結，但仍看不到任何其他驗證方法，則必須聯繫管理員以獲取登錄帳戶的説明。
+    >如果您看到 [**以另一種方式登入**] 連結，但仍看不到任何其他驗證方法，則必須聯絡系統管理員，以協助登入您的帳戶。
 
 2. 選擇您的替代驗證方法，並繼續雙步驟驗證的程序。
 

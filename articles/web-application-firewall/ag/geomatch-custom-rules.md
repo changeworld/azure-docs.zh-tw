@@ -1,6 +1,6 @@
 ---
-title: Azure Web 應用程式防火牆 （WAF） 地理匹配自訂規則
-description: 本文概述了 Azure 應用程式閘道上的 Web 應用程式防火牆 （WAF） 地理匹配自訂規則。
+title: Azure Web 應用程式防火牆（WAF） Geomatch 自訂規則
+description: 本文概述 Web 應用程式防火牆（WAF）在 Azure 應用程式閘道上 geomatch 自訂規則。
 services: web-application-firewall
 ms.topic: article
 author: vhorne
@@ -8,24 +8,24 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6725e1de21dbd103850071f7511e2800c6bd7b69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76961084"
 ---
-# <a name="geomatch-custom-rules-preview"></a>地理匹配自訂規則（預覽）
+# <a name="geomatch-custom-rules-preview"></a>Geomatch 自訂規則（預覽）
 
-自訂規則允許您創建量身定制的規則，以滿足應用程式和安全性原則的確切需求。 現在，您可以按國家/地區限制對 Web 應用程式的訪問。 與所有自訂規則一樣，此邏輯可以與其他規則複合，以滿足應用程式的需求。
+自訂規則可讓您建立量身打造的規則，以符合您應用程式和安全性原則的確切需求。 現在，您可以依國家/地區限制對 web 應用程式的存取。 如同所有的自訂規則，此邏輯可以與其他規則更複雜，以符合您應用程式的需求。
 
-要創建地理篩選自訂規則，只需選擇*地理位置*作為匹配類型，然後從應用程式中選擇要允許/阻止的國家/地區。 有關詳細資訊[，請參閱如何在 Powershell 中創建自訂規則](configure-waf-custom-rules.md)和更多自訂規則示例（創建自訂-waf-rules.md）。
+若要建立地區篩選自訂規則，只要選取 [*地理位置*] 作為 [比對類型]，然後從您的應用程式中選取您想要允許/封鎖的國家/地區。 如需詳細資訊，請參閱[如何在 Powershell 中建立自訂規則](configure-waf-custom-rules.md)和其他自訂規則範例（建立-自訂-waf-rules.md）。
 
 > [!IMPORTANT]
 > 此公開預覽版是在沒有服務等級協定的情況下提供，不得用於生產工作負載。 可能不支援特定功能、可能已經限制功能，或者可能無法在所有 Azure 位置提供使用。 如需詳細資訊，請參閱 [Microsoft Azure 預覽專用的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="country-codes"></a>國碼
 
-如果使用 Geomatch 運算子，則選擇器可以是以下兩位國家/地區代碼中的任何一個。 
+如果您使用 Geomatch 運算子，則選取器可以是下列兩位數的國家/地區代碼。 
 
 |國碼 (地區碼) | 國家/地區名稱 |
 | ----- | ----- |
@@ -91,16 +91,16 @@ ms.locfileid: "76961084"
 | GF | 法屬圭亞那|
 | GH | 迦納|
 | GN | 幾內亞|
-| GP | 哥德洛普|
+| GP | 哥德普洛|
 | GR | 希臘|
 | GT | 瓜地馬拉|
-| GY | 蓋亞那|
+| GY | 蓋亞納|
 | HK | 香港特別行政區|
 | HN | 宏都拉斯|
 | HR | 克羅埃西亞|
 | HT | 海地|
 | HU | 匈牙利|
-| ID | 印尼|
+| 識別碼 | 印尼|
 | IE | 愛爾蘭|
 | IL | 以色列|
 | IN | 印度|
@@ -209,4 +209,4 @@ ms.locfileid: "76961084"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解自訂規則後，[請創建自己的自訂規則](create-custom-waf-rules.md)。
+瞭解自訂規則之後，請[建立您自己的自訂規則](create-custom-waf-rules.md)。

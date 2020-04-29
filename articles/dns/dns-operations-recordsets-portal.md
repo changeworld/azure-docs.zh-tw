@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/6/2018
 ms.author: rohink
 ms.openlocfilehash: 4012b32eb2684126b8dc64b9e86bf35a016e9fba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76936831"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>使用 Azure 入口網站管理 DNS 記錄和記錄集
@@ -70,7 +70,7 @@ ms.locfileid: "76936831"
 您可以使用 Azure 入口網站來從記錄集移除記錄。 請注意，移除記錄集的最後一筆記錄不會刪除記錄集。
 
 1. 在記錄集的 [記錄集屬性] **** 刀鋒視窗中搜尋記錄。
-2. 按一下您想要移除的記錄。 然後選擇 **"刪除**"。
+2. 按一下您想要移除的記錄。 然後選取 [**移除**]。
 
     ![移除記錄](./media/dns-operations-recordsets-portal/removerecord500.png)
 

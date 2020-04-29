@@ -1,5 +1,5 @@
 ---
-title: 監視主題和事件訂閱 - Azure 事件網格 IoT 邊緣 |微軟文檔
+title: 監視主題和事件訂閱-Azure Event Grid IoT Edge |Microsoft Docs
 description: 監視主題和事件訂閱
 author: banisadr
 ms.author: babanisa
@@ -9,19 +9,19 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77086670"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>監視主題和事件訂閱
 
-邊緣上的事件網格以[Prometheus 展示格式](https://prometheus.io/docs/instrumenting/exposition_formats/)公開主題和事件訂閱的一些指標。 本文介紹了可用的指標以及如何啟用它們。
+邊緣的事件方格會以[Prometheus 展示格式](https://prometheus.io/docs/instrumenting/exposition_formats/)公開一些主題和事件訂閱的計量。 本文說明可用的計量，以及如何加以啟用。
 
 ## <a name="enable-metrics"></a>啟用度量
 
-通過將`metrics__reporterType`環境變數設置為容器創建選項`prometheus`，將模組配置為發出指標：
+在容器建立選項中，將`metrics__reporterType`環境變數設為`prometheus` ，以設定要發出計量的模組：
 
  ```json
         {
@@ -40,32 +40,32 @@ ms.locfileid: "77086670"
         }
  ```    
 
-指標將在模組中`5888/metrics`提供 HTTP 和`4438/metrics`HTTPs。 例如，`http://<modulename>:5888/metrics?api-version=2019-01-01-preview`對於 HTTP。 此時，指標模組可以輪詢終結點以收集指標，如本[示例體系結構](https://github.com/veyalla/ehm)中所示。
+計量會在適用于`5888/metrics` HTTP 和`4438/metrics` HTTPs 的模組中提供。 例如， `http://<modulename>:5888/metrics?api-version=2019-01-01-preview`針對 HTTP。 此時，計量模組可以輪詢端點以收集此[範例架構](https://github.com/veyalla/ehm)中的計量。
 
 ## <a name="available-metrics"></a>可用的計量
 
-主題和事件訂閱都會發佈指標，讓您深入瞭解事件交付和模組性能。
+主題和事件訂閱都會發出計量，讓您深入瞭解事件傳遞和模組效能。
 
-### <a name="topic-metrics"></a>主題指標
-
-| 計量 | 描述 |
-| ------ | ----------- |
-| 收到的事件 | 發佈到主題的事件數
-| 不匹配的事件 | 發佈到主題的事件數與事件訂閱不匹配並被刪除
-| 成功請求 | 主題收到的入站發佈請求數
-| 系統錯誤請求 | 由於內部系統錯誤而失敗的入站發佈請求數
-| 使用者錯誤請求 | 由於使用者錯誤（如格式錯誤的 JSON），入站發佈請求上的編號失敗
-| 成功請求延遲M | 以毫秒為單位發佈請求回應延遲
-
-
-### <a name="event-subscription-metrics"></a>事件訂閱指標
+### <a name="topic-metrics"></a>主題計量
 
 | 計量 | 描述 |
 | ------ | ----------- |
-| 交付成功計數 | 成功傳遞到配置的終結點的事件數
-| 交付失敗計數 | 未能傳遞到配置的終結點的事件數
-| 交付成功延遲M | 以毫秒為單位成功交付的事件延遲
-| 交付失敗延遲M | 事件傳遞失敗的延遲（以毫秒為單位）
-| 系統延遲首次嘗試 | 在第一次傳遞嘗試之前的事件的系統延遲（以毫秒為單位）
-| 交付嘗試計數 | 事件傳遞嘗試次數 - 成功和失敗
-| 過期計數 | 過期且未傳遞到配置的終結點的事件數
+| EventsReceived | 發佈至主題的事件數目
+| UnmatchedEvents | 發行至主題的事件數目不符合事件訂用帳戶且已卸載
+| SuccessRequests | 主題收到的輸入發行要求數
+| SystemErrorRequests | 因內部系統錯誤而導致的輸入發佈要求數失敗
+| UserErrorRequests | 由於使用者錯誤（例如 JSON 格式錯誤），輸入發佈要求的數目失敗
+| SuccessRequestLatencyMs | 發佈要求回應延遲（以毫秒為單位）
+
+
+### <a name="event-subscription-metrics"></a>事件訂閱計量
+
+| 計量 | 描述 |
+| ------ | ----------- |
+| DeliverySuccessCounts | 成功傳遞至已設定端點的事件數目
+| DeliveryFailureCounts | 無法傳遞至已設定端點的事件數目
+| DeliverySuccessLatencyMs | 成功傳遞事件的延遲（以毫秒為單位）
+| DeliveryFailureLatencyMs | 事件傳遞失敗的延遲（以毫秒為單位）
+| SystemDelayForFirstAttemptMs | 第一次嘗試傳遞之前事件的系統延遲（以毫秒為單位）
+| DeliveryAttemptsCount | 事件傳遞嘗試次數-成功和失敗
+| ExpiredCounts | 已過期且未傳遞至已設定端點的事件數目

@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure 活動目錄配置工作網格以自動預配使用者 |微軟文檔
-description: 瞭解如何將 Azure 活動目錄配置為自動預配和取消預配到工作網格的使用者帳戶。
+title: 教學課程：使用 Azure Active Directory 設定 Workgrid 來自動布建使用者 |Microsoft Docs
+description: 瞭解如何設定 Azure Active Directory 以自動布建和取消布建使用者帳戶至 Workgrid。
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,107 +16,107 @@ ms.topic: article
 ms.date: 08/17/2019
 ms.author: Zhchia
 ms.openlocfilehash: 94d70447117c73a309959ddf66972c921aa5e687
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062801"
 ---
-# <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>教程：為自動使用者預配配置工作網格
+# <a name="tutorial-configure-workgrid--for-automatic-user-provisioning"></a>教學課程：設定 Workgrid 來自動布建使用者
 
-本教程的目的是演示要在工作網格和 Azure 活動目錄 （Azure AD） 中執行的步驟，以將 Azure AD 配置為自動預配和取消向工作網格預配使用者和/或組。
+本教學課程的目的是要示範要在 Workgrid 和 Azure Active Directory （Azure AD）中執行的步驟，以設定 Azure AD 自動布建和取消布建使用者和/或群組至 Workgrid。
 
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * Azure AD 租用戶。
-* [工作網格租戶](https://www.workgrid.com/)
-* 具有管理員許可權的工作網格中的使用者帳戶。
+* [Workgrid 租使用者](https://www.workgrid.com/)
+* Workgrid 中具有系統管理員許可權的使用者帳戶。
 
-## <a name="assigning-users-to-workgrid"></a>將使用者分配給工作網格 
+## <a name="assigning-users-to-workgrid"></a>將使用者指派給 Workgrid 
 
-Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收對選定應用的存取權限。 在自動使用者預配的上下文中，只有分配給 Azure AD 中應用程式的使用者和/或組才會同步。
+Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有已指派給 Azure AD 中應用程式的使用者和/或群組會進行同步處理。
 
-在配置和啟用自動使用者預配之前，應決定 Azure AD 中的哪些使用者和/或組需要訪問工作網格。 一旦確定，您可以按照此處的說明將這些使用者和/或組分配給 Workgrid：
+在設定並啟用自動使用者布建之前，您應該決定 Azure AD 中的哪些使用者和/或群組需要存取 Workgrid。 一旦決定後，您可以遵循此處的指示，將這些使用者和/或群組指派給 Workgrid：
 * [將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-workgrid"></a>將使用者分配給工作網格的重要提示 
+## <a name="important-tips-for-assigning-users-to-workgrid"></a>將使用者指派給 Workgrid 的重要秘訣 
 
-* 建議將單個 Azure AD 使用者分配到工作網格以測試自動使用者預配配置。 其他使用者及/或群組可能會稍後再指派。
+* 建議將單一 Azure AD 使用者指派給 Workgrid，以測試自動使用者布建設定。 其他使用者及/或群組可能會稍後再指派。
 
-* 將使用者分配給 Workgrid 時，必須在分配對話方塊中選擇任何有效的特定于應用程式的角色（如果可用）。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派給 Workgrid 時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色（如果有的話）。 具有**預設存取**角色的使用者會從佈建中排除。
 
-## <a name="set-up-workgrid-for-provisioning"></a>設置用於預配的工作網格
+## <a name="set-up-workgrid-for-provisioning"></a>設定 Workgrid 以提供布建
 
-在使用 Azure AD 配置工作網格以自動預配使用者之前，需要在工作網格上啟用 SCIM 預配。
+將 Workgrid 設定為使用 Azure AD 自動布建使用者之前，您必須啟用 Workgrid 上的 SCIM 布建。
 
-1. 登錄到工作網格。 導航到**使用者>使用者預配**。
+1. 登入 Workgrid。 流覽至 [**使用者] > 使用者**布建]。
 
     ![Workgrid](media/Workgrid-provisioning-tutorial/user.png)
 
-2. 在**帳戶管理 API**下，按一下"**創建憑據**"。
+2. 在 [**帳戶管理 API**] 底下，按一下 [**建立認證**]。
 
     ![Workgrid](media/Workgrid-provisioning-tutorial/scim.png)
 
-3. 複製**SCIM 終結點**和**訪問權杖**值。 這些將在 Azure 門戶中工作網格應用程式的預配選項卡中的 **"租戶 URL"** 和 **"秘密權杖"** 欄位中輸入。
+3. 複製 [ **SCIM 端點**] 和 [**存取權杖**] 值。 這些會在 Azure 入口網站中 Workgrid 應用程式的 [布建] 索引標籤的 [**租使用者 URL** ] 和 [**秘密權杖**] 欄位中輸入。
 
     ![Workgrid](media/Workgrid-provisioning-tutorial/token.png)
 
 
-## <a name="add-workgrid--from-the-gallery"></a>從庫中添加工作網格
+## <a name="add-workgrid--from-the-gallery"></a>從資源庫新增 Workgrid
 
-要配置工作網格以使用 Azure AD 自動預配使用者，需要將工作網格從 Azure AD 應用程式庫添加到託管 SaaS 應用程式清單中。
+若要使用 Azure AD 設定 Workgrid 來自動布建使用者，您需要從 Azure AD 應用程式資源庫將 Workgrid 新增至受控 SaaS 應用程式清單。
 
-**要從 Azure AD 應用程式庫添加工作網格，請執行以下步驟：**
+**若要從 Azure AD 應用程式庫新增 Workgrid，請執行下列步驟：**
 
-1. 在**[Azure 門戶](https://portal.azure.com)** 中，在左側導航面板中，選擇**Azure 活動目錄**。
+1. 在**[Azure 入口網站](https://portal.azure.com)** 的左側導覽窗格中，選取 [ **Azure Active Directory**]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 轉到**企業應用程式**，然後選擇 **"所有應用程式**"。
+2. 移至 [**企業應用程式**]，然後選取 [**所有應用程式**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 要添加新應用程式，請選擇窗格頂部的 **"新建應用程式**"按鈕。
+3. 若要新增新的應用程式，請選取窗格頂端的 [**新增應用程式**] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜索框中，在"**工作網格**"中輸入"工作網格"，在結果面板中選擇 **"工作網格**"，然後按一下"**添加**"按鈕以添加應用程式。
+4. 在搜尋方塊中，輸入**Workgrid**，在結果面板中選取 [ **Workgrid** ]，然後按一下 [**新增**] 按鈕以新增應用程式。
 
-    ![結果清單中的工作網格](common/search-new-app.png)
+    ![結果清單中的 Workgrid](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-workgrid"></a>將自動使用者預配配置配置為工作網格  
+## <a name="configuring-automatic-user-provisioning-to-workgrid"></a>設定自動使用者布建至 Workgrid  
 
-本節將指導您完成將 Azure AD 預配服務配置為根據 Azure AD 中的使用者和/或組分配在工作網格中創建、更新和禁用使用者和/或組的步驟。
+本節將引導您逐步設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派，在 Workgrid 中建立、更新和停用使用者和/或群組。
 
 > [!TIP]
-> 您也可以根據[工作網格單一登入教程](Workgrid-tutorial.md)中提供的說明，選擇啟用基於 SAML 的單一登入工作網格。 單一登入可以獨立于自動使用者預配進行配置，儘管這兩個功能相互補充
+> 您也可以選擇啟用 Workgrid 的 SAML 型單一登入，請遵循[Workgrid 單一登入教學](Workgrid-tutorial.md)課程中提供的指示。 單一登入可以與自動使用者布建分開設定，雖然這兩個功能彼此的補充
 
-### <a name="to-configure-automatic-user-provisioning-for-workgrid--in-azure-ad"></a>要在 Azure AD 中配置工作網格的自動使用者預配：
+### <a name="to-configure-automatic-user-provisioning-for-workgrid--in-azure-ad"></a>若要在 Azure AD 中設定 Workgrid 的自動使用者布建：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。 選擇**企業應用程式**，然後選擇**所有應用程式**。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**]，然後選取 [**所有應用程式**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
 2. 在應用程式清單中，選取 [Workgrid]****。
 
-    !["應用程式"清單中的工作網格連結](common/all-applications.png)
+    ![應用程式清單中的 Workgrid 連結](common/all-applications.png)
 
-3. 選擇 **"預配"** 選項卡。
+3. 選取 [**布**建] 索引標籤。
 
-    ![預配選項卡](common/provisioning.png)
+    ![布建索引標籤](common/provisioning.png)
 
-4. 將**預配模式**設置為 **"自動**"。
+4. 將布建模式設定為 [**自動** **]** 。
 
-    ![預配選項卡](common/provisioning-automatic.png)
+    ![布建索引標籤](common/provisioning-automatic.png)
 
-5. 在"管理認證"部分下，輸入之前在**租戶 URL**和 **"秘密權杖"** 中檢索的**SCIM 終結點**和**訪問權杖**值。 按一下 **"測試連接**"以確保 Azure AD 可以連接到工作網格。 如果連接失敗，請確保您的工作網格帳戶具有管理員許可權，然後重試。
+5. 在 [管理員認證] 區段底下，分別輸入 [**租使用者 URL** ] 和 [**秘密權杖**] 中稍早取得的**SCIM 端點**和**存取權杖**值。 按一下 [**測試連接**] 以確保 Azure AD 可以連接到 Workgrid。 如果連線失敗，請確定您的 Workgrid 帳戶具有系統管理員許可權，然後再試一次。
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -124,31 +124,31 @@ Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-7. 按一下 [儲存]****。
+7. 按一下 **[儲存]** 。
 
-8. 在 **"映射**"部分下，選擇**將 Azure 活動目錄使用者同步到工作網格**。
+8. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者至 Workgrid**]。
 
-    ![工作網格使用者映射](media/Workgrid-provisioning-tutorial/usermapping.png)
+    ![Workgrid 使用者對應](media/Workgrid-provisioning-tutorial/usermapping.png)
 
-9. 在**屬性對應**部分中查看從 Azure AD 同步到工作網格的使用者屬性。 選擇為 **"匹配屬性"** 的屬性用於與 Workgrid 中的使用者帳戶匹配以進行更新操作。 選取 [儲存]**** 按鈕以認可所有變更。
+9. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到 Workgrid 的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Workgrid 中的使用者帳戶，以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
 
-    ![工作網格使用者屬性](media/Workgrid-provisioning-tutorial/userattribute.png)
+    ![Workgrid 使用者屬性](media/Workgrid-provisioning-tutorial/userattribute.png)
 
-10. 在 **"映射**"部分下，選擇**將 Azure 活動目錄組同步到工作網格**
+10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 群組至 Workgrid**
 
-    ![工作網格使用者映射](media/Workgrid-provisioning-tutorial/groupmapping.png)
+    ![Workgrid 使用者對應](media/Workgrid-provisioning-tutorial/groupmapping.png)
 
-12. 在**屬性對應**部分中查看從 Azure AD 同步到工作網格的組屬性。 選擇為 **"匹配屬性"** 的屬性用於與 Workgrid 中的使用者帳戶匹配以進行更新操作。 選取 [儲存]**** 按鈕以認可所有變更。
+12. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步至 Workgrid 的群組屬性。 選取為 [比對] 屬性**的屬性會**用來比對 Workgrid 中的使用者帳戶，以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
 
-    ![工作網格使用者映射](media/Workgrid-provisioning-tutorial/groupattribute.png)
+    ![Workgrid 使用者對應](media/Workgrid-provisioning-tutorial/groupattribute.png)
 
 13. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-14. 要為工作網格啟用 Azure AD 預配服務，在 **"設置"** 部分將**預配狀態**更改為 **"打開**"。
+14. 若要啟用 Workgrid 的 Azure AD 布建服務，請在 [**設定**] 區段中將 [布建**狀態**] 變更為 [**開啟**]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-15. 通過在 **"設置"** 部分中選擇"**範圍"** 中所需的值，定義要預配到工作網格的使用者和/或組。
+15. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到 Workgrid 的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 
@@ -156,14 +156,14 @@ Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步執行的時間比後續同步長。 有關使用者和/或組預配需要多長時間的詳細資訊，請參閱[預配使用者需要多長時間](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
+此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行。 如需布建使用者和/或群組所需時間長度的詳細資訊，請參閱布建[使用者需要多久時間](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)。
 
-可以使用"**目前狀態**"部分監視進度並遵循指向預配活動報告的連結，該報表描述 Azure AD 預配服務在工作網格上執行的所有操作。 有關詳細資訊，請參閱[檢查使用者預配的狀態](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)。 要讀取 Azure AD 預配日誌，請參閱[報告自動使用者帳戶預配](../app-provisioning/check-status-user-account-provisioning.md)。
+您可以使用 [**目前狀態**] 區段來監視進度，並遵循 [布建活動報告] 的連結，其中描述 Workgrid 上的 Azure AD 布建服務所執行的所有動作。 如需詳細資訊，請參閱[檢查使用者](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)布建的狀態。 若要讀取 Azure AD 布建記錄，請參閱[關於自動使用者帳戶](../app-provisioning/check-status-user-account-provisioning.md)布建的報告。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用的使用者帳戶預配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 

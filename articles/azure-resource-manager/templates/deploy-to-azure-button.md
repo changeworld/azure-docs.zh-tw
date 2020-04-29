@@ -1,76 +1,76 @@
 ---
 title: 部署至 Azure 按鈕
-description: 使用按鈕從 GitHub 存儲庫部署 Azure 資源管理器範本。
+description: 使用按鈕，從 GitHub 存放庫部署 Azure Resource Manager 範本。
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: 88436eac970b252d7b0bc7bccee4131e06e9e0cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77109041"
 ---
-# <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用部署按鈕從 GitHub 存儲庫部署範本
+# <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用 [部署] 按鈕來部署 GitHub 存放庫中的範本
 
-本文介紹如何使用 **"部署到 Azure"** 按鈕從 GitHub 存儲庫部署範本。 您可以將該按鈕直接添加到 GitHub 存儲庫中的README.md檔或引用存儲庫的網頁。
+本文說明如何使用 [**部署至 Azure** ] 按鈕，從 GitHub 存放庫部署範本。 您可以將按鈕直接新增至 GitHub 存放庫中的 README.md 檔案，或加入至參考存放庫的網頁。
 
-## <a name="use-common-image"></a>使用通用圖像
+## <a name="use-common-image"></a>使用通用映射
 
-要將按鈕添加到網頁或存儲庫，請使用以下圖像：
+若要將按鈕新增至您的網頁或存放庫，請使用下列影像：
 
 ```html
 <img src="https://aka.ms/deploytoazurebutton"/>
 ```
 
-圖像顯示為：
+影像會顯示為：
 
 ![部署至 Azure 按鈕](https://aka.ms/deploytoazurebutton)
 
-## <a name="create-url-for-deploying-template"></a>創建用於部署範本的 URL
+## <a name="create-url-for-deploying-template"></a>建立用來部署範本的 URL
 
-要為範本創建 URL，請從回購中範本的原始 URL 開始：
+若要建立範本的 URL，請從存放庫中範本的原始 URL 開始：
 
 ```html
 https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
 ```
 
-然後，URL 對其進行編碼。 您可以使用連線編碼器或運行命令。 下面的 PowerShell 示例演示如何對值進行 URL 編碼。
+然後，URL 將它編碼。 您可以使用線上編碼器或執行命令。 下列 PowerShell 範例示範如何對值進行 URL 編碼。
 
 ```powershell
 [uri]::EscapeDataString($url)
 ```
 
-在 URL 編碼時，示例 URL 具有以下值。
+URL 編碼時，範例 URL 具有下列值。
 
 ```html
 https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json
 ```
 
-每個連結都以相同的基本 URL 開頭：
+每個連結的開頭都是相同的基底 URL：
 
 ```html
 https://portal.azure.com/#create/Microsoft.Template/uri/
 ```
 
-將 URL 編碼的範本連結添加到基本 URL 的末尾。
+將 URL 編碼的範本連結新增至基底 URL 的結尾。
 
 ```html
 https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json
 ```
 
-您擁有連結的完整 URL。
+您有連結的完整 URL。
 
-## <a name="create-deploy-to-azure-button"></a>創建部署到 Azure 按鈕
+## <a name="create-deploy-to-azure-button"></a>建立 [部署至 Azure] 按鈕
 
-最後，將連結和圖像放在一起。
+最後，將連結和影像放在一起。
 
-要在 GitHub 存儲庫或網頁中的README.md檔中添加帶有 Markdown 的按鈕，請使用：
+若要在 GitHub 存放庫或網頁的 README.md 檔案中新增具有 Markdown 的按鈕，請使用：
 
 ```markdown
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 ```
 
-對於 HTML，請使用：
+若是 HTML，請使用：
 
 ```html
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
@@ -80,14 +80,14 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 ## <a name="deploy-the-template"></a>部署範本
 
-要測試完整解決方案，請選擇以下按鈕：
+若要測試完整的解決方案，請選取下列按鈕：
 
-[![部署到 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
+[![部署至 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
 
-門戶顯示一個窗格，允許您輕鬆提供參數值。 參數預先填充範本中的預設值。
+入口網站會顯示一個窗格，讓您輕鬆地提供參數值。 這些參數會預先填入範本中的預設值。
 
-![使用門戶進行部署](./media/deploy-to-azure-button/portal.png)
+![使用入口網站進行部署](./media/deploy-to-azure-button/portal.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- 要瞭解有關範本的更多資訊，請參閱[瞭解 Azure 資源管理器範本的結構和語法](template-syntax.md)。
+- 若要深入瞭解範本，請參閱[瞭解 Azure Resource Manager 範本的結構和語法](template-syntax.md)。

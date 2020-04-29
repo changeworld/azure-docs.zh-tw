@@ -1,6 +1,6 @@
 ---
-title: 將非 Microsoft 帳戶添加到 Microsoft 身份驗證器應用 - Azure AD
-description: 將非 Microsoft 帳戶（如 Google 或 Facebook）添加到 Microsoft 身份驗證器應用，以在使用雙重驗證時驗證您的身份。
+title: 將非 Microsoft 帳戶新增至 Microsoft Authenticator 應用程式-Azure AD
+description: 將非 Microsoft 帳戶（例如 Google 或 Facebook）新增至 Microsoft Authenticator 應用程式，以在使用雙因素驗證時驗證您的身分識別。
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,13 +12,13 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 8650d0170e8ff910140e2b432dd1c998d19e72d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063946"
 ---
-# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>將非 Microsoft 帳戶添加到 Microsoft 身份驗證器應用
+# <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>將非 Microsoft 帳戶新增至 Microsoft Authenticator 應用程式
 
 將非 Microsoft 帳戶 (例如 Google、Facebook 或 GitHub 的帳戶) 新增至 Microsoft Authenticator 應用程式以進行雙因素驗證。 Microsoft Authenticator 應用程式適用於任何使用雙因素驗證的應用程式，以及任何支援限時單次密碼 (TOTP) 標準的帳戶。
 
@@ -34,7 +34,7 @@ ms.locfileid: "77063946"
 2. 將帳戶新增至 Microsoft Authenticator 應用程式。 系統可能會要求您掃描 QR 代碼作為此程序的一部分。
 
     >[!Note]
-    >如果這是您第一次設定 Microsoft Authenticator 應用程式，系統可能會顯示提示詢問您是否允許應用程式存取您的相機 (iOS)，或是否允許應用程式拍攝相片和錄製影片 (Android)。 您必須選取 [允許]****，讓驗證器應用程式能夠存取您的相機，以在下一個步驟中拍攝 QR 代碼的相片。 如果您不允許存取相機，您仍可設定驗證器應用程式，但必須手動新增代碼資訊。 如需如何手動新增代碼的相關資訊，請參閱[手動新增帳戶至應用程式](user-help-auth-app-add-account-manual.md)。
+    >如果這是您第一次設定 Microsoft Authenticator 應用程式，系統可能會顯示提示詢問您是否允許應用程式存取您的相機 (iOS)，或是否允許應用程式拍攝相片和錄製影片 (Android)。 您必須選取 [允許]  ，讓驗證器應用程式能夠存取您的相機，以在下一個步驟中拍攝 QR 代碼的相片。 如果您不允許存取相機，您仍可設定驗證器應用程式，但必須手動新增代碼資訊。 如需如何手動新增代碼的相關資訊，請參閱[手動新增帳戶至應用程式](user-help-auth-app-add-account-manual.md)。
 
 我們在此提供的是 Facebook、Google、GitHub 及 Amazon 帳戶的相關程序，但此程序也適用於任何其他應用程式，例如 Instagram、Netflix 或 Adobe。
 
@@ -80,13 +80,13 @@ ms.locfileid: "77063946"
 
 ### <a name="turn-on-two-factor-verification"></a>開啟雙因素驗證
 
-1. 在電腦上，打開 Facebook，選擇右上角的下拉式功能表，然後轉到 **"設置** > **安全和登錄**"。
+1. 在您的電腦上開啟 Facebook，並選取右上角的下拉式功能表，然後移至 [**設定** > ] [**安全性] 和 [登**入]。
 
     [安全性和登入]**** 頁面隨即出現。
 
 2. 向下移至 [雙因素驗證]**** 區段中的 [使用雙因素驗證]**** 選項，然後選取 [編輯]****。
 
-    將顯示 **"雙重身份驗證"** 頁。
+    [**雙因素驗證**] 頁面隨即出現。
 
 3. 選取 [開啟]****。
 
@@ -163,7 +163,7 @@ ms.locfileid: "77063946"
 
     [進階安全性設定]**** 頁面隨即出現。
 
-3. 選取 **[馬上開始] **。
+3. 選取 [**開始**使用]。
 
 4. 從 [選擇接收代碼的方式]**** 頁面中選取 [Authenticator 應用程式]****。
 
@@ -186,7 +186,7 @@ ms.locfileid: "77063946"
 
 10. 在您電腦的 [新增備份驗證方法]**** 頁面上，為您的 Amazon 帳戶輸入備份驗證方法所提供的六位數驗證碼，然後選取 [驗證代碼並繼續]****。
 
-11. 在 **"幾乎完成"** 頁上，決定是否使電腦成為受信任的設備，然後選擇 **"已將其打開"。打開兩步驗證**。
+11. 在 [**即將完成**] 頁面上，決定是否要讓您的電腦成為受信任的裝置，然後選取 [**獲得]。開啟雙步驟驗證**。
 
     [進階安全性設定]**** 頁面隨即出現，顯示更新的雙因素驗證詳細資料。
 

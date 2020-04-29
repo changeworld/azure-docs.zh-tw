@@ -1,6 +1,6 @@
 ---
-title: 安裝 Azure 分析服務的本地資料閘道 |微軟文檔
-description: 瞭解如何安裝和配置本地資料閘道以連接到 Azure 分析服務伺服器的本地資料來源。
+title: 安裝適用于 Azure Analysis Services 的內部部署資料閘道 |Microsoft Docs
+description: 瞭解如何安裝和設定內部部署資料閘道，以從 Azure Analysis Services 伺服器連線到內部部署資料來源。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,38 +8,38 @@ ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f6218b32fb9574adf62384d2a6ee5a62f3788de8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062144"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安裝及設定內部部署資料閘道
 
-如果相同區域中有一或多部 Analysis Services 伺服器連線到內部部署資料來源，則需要一個內部部署閘道。  雖然安裝的閘道與其他服務（如 Power BI、Power App 和邏輯應用）使用相同，但安裝 Azure 分析服務時，還需要完成一些其他步驟。 此安裝文章特定于**Azure 分析服務**。 
+如果相同區域中有一或多部 Analysis Services 伺服器連線到內部部署資料來源，則需要一個內部部署閘道。  雖然您安裝的閘道與其他服務（例如 Power BI、Power Apps 和 Logic Apps）所使用的相同，但在安裝 for Azure Analysis Services 時，還有一些額外的步驟需要完成。 本安裝文章專屬於**Azure Analysis Services**。 
 
-要瞭解有關 Azure 分析服務如何使用閘道，請參閱[連接到本地資料來源](analysis-services-gateway.md)。 要瞭解有關高級安裝方案和閘道（通常）的更多情況，請參閱[本地資料閘道文檔](/data-integration/gateway/service-gateway-onprem)。
+若要深入瞭解 Azure Analysis Services 如何與閘道搭配運作，請參閱[連接到內部部署資料來源](analysis-services-gateway.md)。 若要深入瞭解有關先進的安裝案例和閘道的詳細資訊，請參閱內部[部署資料閘道檔](/data-integration/gateway/service-gateway-onprem)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 **最低需求：**
 
 * .NET 4.5 Framework
-* 64 位版本的 Windows 8 / Windows 伺服器 2012 R2 （或更高版本）
+* 64位版本的 Windows 8/Windows Server 2012 R2 （或更新版本）
 
-**推薦：**
+**使用**
 
 * 8 核心 CPU
 * 8 GB 記憶體
-* 64 位版本的 Windows 8 / Windows 伺服器 2012 R2 （或更高版本）
+* 64位版本的 Windows 8/Windows Server 2012 R2 （或更新版本）
 
-**重要考慮因素：**
+**重要考慮：**
 
-* 在設定期間，向 Azure 註冊您的閘道時，系統會選取您訂用帳戶的預設區域。 您可以選擇不同的訂閱和區域。 如果您有伺服器位於多個區域中，您必須針對每個區域安裝一個閘道。 
+* 在設定期間，向 Azure 註冊您的閘道時，系統會選取您訂用帳戶的預設區域。 您可以選擇不同的訂用帳戶和區域。 如果您有伺服器位於多個區域中，您必須針對每個區域安裝一個閘道。 
 * 閘道無法安裝在網域控制站上。
 * 一部電腦只能安裝一個閘道。
 * 請在電源維持開啟且不會進入睡眠狀態的電腦上安裝閘道。
-* 請勿在僅與網路進行無線連接的電腦上安裝閘道。 效能會因此降低。
+* 請勿在只有無線連線到您網路的電腦上安裝閘道。 效能會因此降低。
 * 安裝閘道時，您用來登入電腦的使用者帳戶必須具有「登入為服務」權限。 安裝完成時，內部部署資料閘道服務會使用 NT SERVICE\PBIEgwService 帳戶登入為服務。 在安裝期間可以指定不同的帳戶，或是可在安裝完成後於服務中指定。 在安裝時請確定群組原則設定允許您用於登入的帳戶，且您選擇的服務帳戶具有「登入為服務」權限。
 * 如果[租用戶](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant)與您要註冊閘道的訂用帳戶相同，請以 Azure AD 中的帳戶登入 Azure。 安裝和註冊閘道時不支援 Azure B2B (來賓) 帳戶。
 * 如果資料來源位於 Azure 虛擬網路 (VNet) 上，您必須設定 [AlwaysUseGateway](analysis-services-vnet-gateway.md) 伺服器屬性。
@@ -52,9 +52,9 @@ ms.locfileid: "77062144"
 
 1. 執行安裝程式。
 
-2. 選擇**本地資料閘道**。
+2. 選取 [內部**部署資料閘道**]。
 
-   ![選取](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![Select](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. 選取位置，接受條款，然後按一下 [安裝]****。
 
@@ -85,9 +85,9 @@ ms.locfileid: "77062144"
 
 ## <a name="create-an-azure-gateway-resource"></a><a name="create-resource"></a>建立 Azure 閘道資源
 
-安裝和註冊閘道後，需要在 Azure 中創建閘道資源。 使用您用於註冊閘道的相同帳戶登入 Azure。
+安裝並註冊閘道之後，您必須在 Azure 中建立閘道資源。 使用您用於註冊閘道的相同帳戶登入 Azure。
 
-1. 在 Azure 門戶中，按一下"**創建資源**"，然後搜索**本地資料閘道**，然後按一下"**創建**"。
+1. 在 Azure 入口網站中，按一下 [**建立資源**]，然後搜尋 [**內部部署資料閘道**]，再按一下 [**建立**]。
 
    ![建立閘道資源](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "77062144"
 
    * **位置**：選取您註冊閘道的區域。
 
-   * **安裝名稱**：如果閘道安裝尚未選擇，請選擇電腦上安裝並註冊的閘道。 
+   * **安裝名稱**：如果您的閘道安裝尚未選取，請選取您安裝在電腦上並註冊的閘道。 
 
      完成之後，請按一下 [建立] ****。
 
@@ -120,10 +120,10 @@ ms.locfileid: "77062144"
     > [!NOTE]
     > 如果您的閘道並未出現在清單中，您的伺服器可能不在註冊閘道時所指定的相同區域中。
 
-    當伺服器和閘道資源之間的連接成功時，狀態將顯示為 "**已連接**"。
+    當您的伺服器和閘道資源之間的連線成功時，狀態將會顯示 [**已連接**]。
 
 
-    ![將伺服器連接到閘道資源成功](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
+    ![將伺服器連線至閘道資源成功](media/analysis-services-gateway-install/aas-gateway-connect-success.png)
 
 就這麼簡單。 如果您需要開啟連接埠，或進行疑難排解，請務必簽出[內部部署資料閘道](analysis-services-gateway.md)。
 

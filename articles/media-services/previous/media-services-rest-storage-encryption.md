@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 2a5ef1837375cc395a871f9a9860fa8bde572a94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773593"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>以儲存體加密來加密您的內容 
 
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 媒體服務 v2 中未添加任何新功能或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 不會在媒體服務 v2 中新增任何新功能或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 >   
 
 高度建議使用 AES-256 位元加密對您的內容進行本機加密，然後將其上傳到將靜止加密儲存的 Azure 儲存體。
@@ -115,9 +115,9 @@ AMS 儲存體加密會將 **AES-CTR** 模式加密套用至整個檔案。  AES 
 
     要求本文屬性    | 描述
     ---|---
-    Id | 內容金鑰識別碼 使用以下格式生成，"nb：kid：UUID：\<新 GUID>"。
+    Id | ContentKey 識別碼會使用下列格式產生：「nb：小孩： UUID：\<NEW GUID>」。
     ContentKeyType | 內容金鑰類型是可定義索引鍵的整數。 若為儲存體加密格式，此值為 1。
-    EncryptedContentKey | 我們會建立新的內容金鑰值，其為 256 位元 (32 位元組) 的值。 此金鑰是藉由針對 GetProtectionKeyId 與 GetProtectionKey 方法執行 HTTP GET 要求，使用我們從 Microsoft Azure 媒體服務擷取的儲存體加密 X.509 憑證來加密的。 例如，請參閱以下 .NET 代碼：[此處](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)定義的**加密對稱KeyData**方法。
+    EncryptedContentKey | 我們會建立新的內容金鑰值，其為 256 位元 (32 位元組) 的值。 此金鑰是藉由針對 GetProtectionKeyId 與 GetProtectionKey 方法執行 HTTP GET 要求，使用我們從 Microsoft Azure 媒體服務擷取的儲存體加密 X.509 憑證來加密的。 如需範例，請參閱下列 .NET 程式碼：[這裡](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)定義的**EncryptSymmetricKeyData**方法。
     ProtectionKeyId | 這是適用於儲存體加密 X.509 憑證的保護金鑰識別碼，可用來加密我們的內容金鑰。
     ProtectionKeyType | 這是適用於保護金鑰的加密類型，可用來將內容金鑰加密。 針對本文範例，此值為 StorageEncryption(1)。
     總和檢查碼 |MD5 會針對內容金鑰計算出總和檢查碼。 這是使用內容金鑰將內容識別碼加密計算而得。 範例程式碼示範如何計算總和檢查碼。
@@ -193,7 +193,7 @@ AMS 儲存體加密會將 **AES-CTR** 模式加密套用至整個檔案。  AES 
 
 建立內容金鑰時必須設定的其中一個值是類型。 使用儲存體加密時，此值應設定為 '1'。 
 
-下面的示例演示如何使用用於存儲加密**的 ContentKeyType**集創建 ContentKey（"1"）和保護**ContentKey****金鑰類型**設置為"0"以指示保護金鑰識別碼 是 X.509 憑證指紋。  
+下列範例示範如何建立**ContentKey** ，並將**ContentKeyType**設定為儲存加密（"1"），並將**ProtectionKeyType**設定為 "0"，以表示保護金鑰識別碼是 x.509 憑證指紋。  
 
 要求
 

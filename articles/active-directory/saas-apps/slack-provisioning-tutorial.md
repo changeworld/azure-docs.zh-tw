@@ -1,5 +1,5 @@
 ---
-title: 教程：為鬆弛提供使用者預配 - Azure AD
+title: 教學課程：使用者布建的時差-Azure AD
 description: 了解如何設定 Azure Active Directory 來自動佈建並取消佈建使用者帳戶至 Slack。
 services: active-directory
 documentationcenter: ''
@@ -16,17 +16,17 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdc912c2df435f9b7e591d7c5475e126e6b0aeb7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062824"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教學課程︰設定 Slack 來自動佈建使用者
 
 本教學課程旨在說明您需要在 Slack 和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 Slack。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -34,7 +34,7 @@ ms.locfileid: "77062824"
 * 已啟用具有 [Plus 方案](https://aadsyncfabric.slack.com/pricing)或更高方案的 Slack
 * 具有小組系統管理員權限的 Slack 使用者帳戶
 
-注意：Azure AD 預配集成依賴于[Slack SCIM API，](https://api.slack.com/scim)在 Plus 計畫或更高版本上可供 Slack 團隊使用。
+注意： Azure AD 布建整合依賴[SCIM API](https://api.slack.com/scim)的「時差」，這可供「增加」方案或更高的「時差」小組使用。
 
 ## <a name="assigning-users-to-slack"></a>將使用者指派給 Slack
 
@@ -64,7 +64,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 3. 選取您的 Slack 執行個體，然後選取 [佈建]**** 索引標籤。
 
-4. 將**預配模式**設置為 **"自動**"。
+4. 將布建模式設定為 [**自動** **]** 。
 
    ![Slack 佈建](./media/slack-provisioning-tutorial/slack1.png)
 
@@ -78,7 +78,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 8. 在 [通知電子郵件]**** 欄位中輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選下列核取方塊。
 
-9. 按一下 [儲存]****。
+9. 按一下 **[儲存]** 。
 
 10. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 Slack]****。
 
@@ -86,7 +86,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 12. 若要啟用 Slack 的 Azure AD 佈建服務，在 [設定]**** 區段中，將 [佈建狀態]**** 變更為 [開啟]****
 
-13. 按一下 [儲存]****。
+13. 按一下 **[儲存]** 。
 
 這會啟動在 [使用者和群組] 區段中指派給 Slack 的任何使用者和/或群組之初始同步處理。 請注意，初始同步處理會比後續的同步處理花費較多時間執行，只要服務正在執行，這大約每 10 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並遵循連結來佈建活動報告，其會描述您 Slack 應用程式上的佈建服務所執行之所有動作。
 
@@ -102,7 +102,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 3. 在 [屬性對應]**** 區段中，檢閱將從 Azure AD 同步至 Slack 的群組屬性。 請注意，選取為 [比對]**** 屬性的屬性會用來比對 Slack 中的群組以進行更新作業。 
 
-4. 按一下 [儲存]****。
+4. 按一下 **[儲存]** 。
 
 這會造成在 [使用者和群組]**** 區段中指派至 Slack 的任何群組物件完全從 Azure AD 同步至 Slack。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述您 Slack 應用程式上佈建服務所執行的所有動作。
 
@@ -122,9 +122,9 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
   
 * Slack 的 **userName** 屬性必須少於 21 個字元且具備唯一值。
 
-* Slack 只允許與屬性**使用者名**和**電子郵件**匹配。  
+* 時差只允許與屬性使用者**名稱**和**電子郵件**相符。  
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用的使用者帳戶預配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)

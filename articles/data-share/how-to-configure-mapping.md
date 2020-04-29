@@ -1,41 +1,41 @@
 ---
-title: 在 Azure 資料共用中配置資料集映射
-description: 瞭解如何使用 Azure 資料共用為收到的共用配置資料集映射。
+title: 設定 Azure 資料共用中的資料集對應
+description: 瞭解如何使用 Azure 資料共用來設定已接收共用的資料集對應。
 author: joannapea
 ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.openlocfilehash: 1ff432c2073536448c8194ebe537c8bf8cf00663
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76964238"
 ---
-# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>如何為 Azure 資料共用中接收的共用配置資料集映射
+# <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>如何為 Azure 資料共用中已接收的共用設定資料集對應
 
-本文介紹如何使用 Azure 資料共用為接收共用配置資料集映射。 如果您接受了資料共用邀請，但選擇"稍後接受和配置"，或者資料就地共用，則需要執行此操作。 如果需要更改要與您共用的資料的目標，或者要將資料接收到 SQL Server 中，則可能需要配置資料集映射。 
+本文說明如何使用 Azure 資料共用來設定已接收共用的資料集對應。 如果您接受資料共用邀請，但選擇「接受並設定之後」，或如果資料是就地共用，則您會想要這麼做。 如果您需要變更與您共用之資料的目的地，或想要將資料接收到 SQL Server，您可能會想要設定資料集對應。 
 
-## <a name="navigate-to-a-received-data-share"></a>導航到接收的資料共用
+## <a name="navigate-to-a-received-data-share"></a>流覽至接收的資料共用
 
-在 Azure 資料共用服務中，導航到收到的共用並選擇"**詳細資訊**"選項卡。 
+在 Azure 資料共用服務中，流覽至您收到的共用，然後選取 [**詳細資料**] 索引標籤。 
 
-![資料集映射](./media/dataset-mapping.png "資料集映射") 
+![資料集對應](./media/dataset-mapping.png "資料集對應") 
 
-選中要將目標分配給的資料集旁邊的核取方塊。 選擇 **"取消映射**"以取消映射現有地圖。 選擇 **" 地圖"以選擇要定位**的目標。 
+勾選您想要指派目的地的資料集旁的方塊。 選取 **[** 取消對應] 以取消現有對應的對應。 選取 [ **+ 對應至目標**] 以選擇新的目的地存放區。 
 
-![映射到目標](./media/dataset-map-target.png "映射到目標") 
+![對應至目標](./media/dataset-map-target.png "對應至目標") 
 
-## <a name="select-a-new-target-store"></a>選擇新的目標存儲
+## <a name="select-a-new-target-store"></a>選取新的目標存放區
 
-選擇要將資料輸入的目標資料類型。 對於基於快照的共用，任何以前映射的存儲帳戶中已存在的任何資料都不會自動移動到新的目標存儲。 對於就地共用，請選擇指定位置中的資料存儲。 位置是資料提供程式的來源資料存儲所在的 Azure 資料中心。
+選取您想要讓資料進入的目標資料類型。 針對以快照集為基礎的共用，任何先前對應的儲存體帳戶中現有的資料，都不會自動移至新的目標存放區。 針對 [就地共用]，請選取指定位置中的資料存放區。 位置是資料提供者的來源資料存放區所在的 Azure 資料中心。
 
 ![目標儲存體帳戶](./media/dataset-map-target-sql.png "目標儲存體") 
 
-## <a name="select-a-file-format-sql-sources-only"></a>選擇檔案格式（僅限 SQL 源）
+## <a name="select-a-file-format-sql-sources-only"></a>選取檔案格式（僅限 SQL 來源）
 
-如果來源資料來自基於 SQL 的源，則可以選擇接收該資料來源的格式。 
+如果來源資料來自于以 SQL 為基礎的來源，您可以選擇收到的格式。 
 
 ![選擇格式](./media/sql-file-formats.png "SQL 檔案格式")
 

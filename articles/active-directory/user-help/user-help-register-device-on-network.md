@@ -1,5 +1,5 @@
 ---
-title: 在組織的網路上註冊個人設備 - Azure AD
+title: 在組織的網路上註冊個人裝置-Azure AD
 description: 了解如何在組織的網路上註冊您的個人裝置，讓您可以存取組織的受保護資源。
 services: active-directory
 author: curtand
@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: e2e6585bac100a09f3f98037e90b24738e22816f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063861"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>在組織的網路上註冊您的個人裝置

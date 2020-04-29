@@ -1,6 +1,6 @@
 ---
-title: Azure VMware 解決方案（按雲簡單 - 升級雲簡單許可權）
-description: 描述如何升級雲簡單許可權以在私有雲 vCenter 中執行管理功能
+title: Azure VMware Solution by CloudSimple-提升 CloudSimple 許可權
+description: 說明如何提升 CloudSimple 許可權，以在私用雲端 vCenter 中執行系統管理功能
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -9,32 +9,32 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 36c6969ed89d0bb9222f52aa81de0d4128b9e533
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77025328"
 ---
-# <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>升級雲簡單許可權，以在私有雲 vCenter 中執行管理功能
+# <a name="escalate-cloudsimple-privileges-to-perform-administrative-functions-in-private-cloud-vcenter"></a>提升 CloudSimple 許可權以在私用雲端 vCenter 中執行系統管理功能
 
-CloudSimple 許可權方法旨在為 vCenter 使用者提供執行正常操作所需的許可權。 在某些情況下，使用者可能需要其他許可權才能執行特定任務。  您可以在有限時間內升級 vCenter SSO 使用者的許可權。
+CloudSimple 許可權方法的設計，是為了讓 vCenter 使用者能夠執行正常作業所需的許可權。 在某些情況下，使用者可能需要額外的許可權來執行特定工作。  您可以在有限的期間內提升 vCenter SSO 使用者的許可權。
 
-升級特權的原因可能包括：
+提高許可權的原因可能包括下列各項：
 
-* 標識源的配置
+* 身分識別來源的設定
 * 使用者管理
-* 刪除分散式埠組
-* 安裝 vCenter 解決方案（如備份應用）
+* 刪除分散式通訊埠群組
+* 安裝 vCenter 解決方案（例如備份應用程式）
 * 建立服務帳戶
 
 > [!WARNING]
-> 在升級的特權狀態下執行的操作可能會對系統產生負面影響，並可能導致系統不可用。 在上報期間僅執行必要的操作。
+> 在提高許可權狀態中採取的動作可能會對您的系統造成不良影響，而且可能會導致系統無法使用。 在擴大期間只執行必要的動作。
 
-從雲簡單門戶中，[在](escalate-private-cloud-privileges.md)vCenter SSO 上升級雲擁有者本地使用者的許可權。  僅當在 vCenter 上配置了其他標識提供程式時，才能提升遠端使用者的許可權。  許可權升級涉及將所選使用者添加到 vSphere 內置管理員組。  只有一個使用者可以具有升級的許可權。  如果需要升級其他使用者的許可權，請首先取消升級當前使用者的許可權。
+從 CloudSimple 入口網站，針對 vCenter SSO 上的 CloudOwner 本機使用者[提升許可權](escalate-private-cloud-privileges.md)。  只有在 vCenter 上設定了其他身分識別提供者時，您才可以呈報遠端使用者的許可權。  提升許可權牽涉到將選取的使用者新增至 vSphere 內建的系統管理員群組。  只有一位使用者可以有較高的權限。  如果您需要呈報其他使用者的許可權，請先取消升級目前使用者的許可權。
 
-必須添加來自其他標識源的使用者作為 CloudOwner 組的成員。
+來自其他身分識別來源的使用者必須新增為 CloudOwner 群組的成員。
 
 > [!CAUTION]
-> 新使用者只能添加到*雲擁有者組*、*雲-全球群集-管理員組*、*雲-全球-存儲-管理員組*、*雲-全球-網路-管理員組*或*雲-全球-VM-管理員組*。  添加到*管理員*組的使用者將自動刪除。  只能將服務帳戶添加到*管理員*組，並且不得使用服務帳戶登錄到 vSphere Web UI。
+> 新使用者必須僅新增至*雲端擁有者群組*、*雲端全域叢集-管理群組*、雲端-全域*存放裝置-* 系統管理群組、雲端-全域*網路-* 系統管理群組或*雲端全域 VM-管理群組*。  新增至系統*管理員*群組的使用者將會自動移除。  只有服務帳戶必須新增至*Administrators*群組，而服務帳戶不能用來登入 VSPHERE web UI。
 
-在升級期間，CloudSimple 使用自動監視與關聯的警報通知來識別對環境的任何意外更改。
+在擴大期間，CloudSimple 會使用具有相關聯警示通知的自動化監視，來識別對環境的任何意外變更。

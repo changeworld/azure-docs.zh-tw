@@ -1,6 +1,6 @@
 ---
-title: 更改工作或學校帳戶密碼 - Azure AD
-description: 瞭解如何從"我的帳戶"門戶的"更改密碼"頁面更改您的工作或學校帳戶密碼。
+title: 變更您的公司或學校帳戶密碼-Azure AD
+description: 瞭解如何從我的帳戶入口網站的 [變更密碼] 頁面變更您的工作或學校帳戶密碼。
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,45 +12,45 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
 ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064048"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>從"更改密碼"頁更改您的工作或學校帳戶密碼
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>從 [變更密碼] 頁面變更您的公司或學校帳戶密碼
 
-"**我的帳戶"** 門戶的 **"更改密碼**"頁面可説明您更新工作或學校帳戶的現有密碼，前提是您記住密碼，並且您未鎖定在帳戶之外。 如果您不記得密碼，如果您被鎖定在帳戶之外，或者從未從組織獲得密碼，則可以使用安全資訊和行動裝置重置密碼。
+[**我的帳戶**] 入口網站的 [**變更密碼**] 頁面可協助您針對公司或學校帳戶更新現有的密碼，並假設您記得該密碼，而且您的帳戶未被鎖定。 如果您不記得密碼，或您的帳戶已被鎖定，或者如果您沒有組織的密碼，則可以使用您的安全性資訊和行動裝置來重設密碼。
 
 >[!Important]
->本文適用于嘗試更新現有工作或學校帳戶的已知密碼的使用者。 如果您是試圖進入個人帳戶的使用者（如 Xbox、Hotmail 或Outlook.com，請嘗試在"[何時無法登錄 Microsoft 帳戶](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)"文章中提供建議。 如果您是管理員，試圖查找有關如何為員工或其他使用者測試自助服務密碼重設的詳細資訊，請參閱[自助服務密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)。
+>本文適用于嘗試更新現有工作或學校帳戶之已知密碼的使用者。 如果您是嘗試進入個人帳戶的使用者（例如 Xbox、Hotmail 或 Outlook.com），[當您無法登入您的 Microsoft 帳戶文章時](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)，請嘗試中的建議。 如果您是系統管理員，嘗試尋找有關如何為您的員工或其他使用者測試自助式密碼重設的詳細資訊，請參閱[自助式密碼重設](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)。
 
-## <a name="update-a-password-from-the-change-password-page"></a>從"更改密碼"頁更新密碼
+## <a name="update-a-password-from-the-change-password-page"></a>從 [變更密碼] 頁面更新密碼
 
-1. 使用現有密碼登錄到您的工作或學校帳戶，然後轉到 **"我的帳戶**"（https://myprofile.microsoft.com/)頁面）。
+1. 使用現有的密碼登入您的公司或學校帳戶，然後移至**我的帳戶**（https://myprofile.microsoft.com/)頁面。
 
-2. 從左側功能窗格中選擇 **"密碼"** 或從 **"密碼**"塊中選擇 **"更改密碼**"連結。
+2. 從左側流覽窗格中選取 [**密碼**]，或從 [**密碼**] 區塊選取 [**變更密碼**] 連結。
 
-    ![我的帳戶頁面，顯示突出顯示的"更改密碼"連結](media/my-account-portal/my-account-portal-change-password.png)
+    ![[我的帳戶] 頁面，顯示反白顯示的變更密碼連結](media/my-account-portal/my-account-portal-change-password.png)
 
-3. 鍵入舊密碼，然後創建和確認新密碼。
+3. 輸入您的舊密碼，然後建立並確認您的新密碼。
 
-    ![更改密碼頁，顯示密碼欄位](media/my-account-portal/my-account-portal-change-password-page.png)
+    ![[變更密碼] 頁面，顯示密碼欄位](media/my-account-portal/my-account-portal-change-password-page.png)
 
-4. 選取 [提交]****。
+4. 選取 [提交]  。
 
-    您的密碼將被更改，系統將要求您再次登錄您的工作或學校帳戶。
+    您的密碼將會變更，並要求您再次登入您的公司或學校帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 
-更改密碼後，您可以：
+變更您的密碼之後，您可以：
 
-- 查看或管理[您的安全資訊](user-help-security-info-overview.md)。
+- 查看或管理您的[安全性資訊](user-help-security-info-overview.md)。
 
-- 查看或管理連接[的設備](my-account-portal-devices-page.md)。
+- 查看或管理已連線的[裝置](my-account-portal-devices-page.md)。
 
-- 查看或[管理您的組織。](my-account-portal-organizations-page.md)
+- 查看或管理您的[組織](my-account-portal-organizations-page.md)。
 
-- 查看您的[登錄活動](my-account-portal-sign-ins-page.md)。
+- 查看您的登[入活動](my-account-portal-sign-ins-page.md)。
 
-- 查看您的組織如何使用[您的隱私相關資料](my-account-portal-privacy-page.md)。
+- 瞭解您的組織如何[使用您的隱私權相關資料](my-account-portal-privacy-page.md)。

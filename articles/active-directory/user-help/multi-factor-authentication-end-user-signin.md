@@ -1,6 +1,6 @@
 ---
-title: 使用與工作或學校帳戶的身份驗證登錄 - Azure AD
-description: 瞭解如何使用各種雙因素驗證方法登錄到您的工作或學校帳戶。
+title: 使用驗證搭配公司或學校帳戶登入-Azure AD
+description: 瞭解如何使用各種雙因素驗證方法來登入您的公司或學校帳戶。
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,13 +14,13 @@ ms.author: curtand
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
 ms.openlocfilehash: 33cf9e284d2206ea497af7a5da7c3cf4a890cc87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064082"
 ---
-# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用雙因素驗證方法登錄到您的工作或學校帳戶
+# <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>使用您的雙因素驗證方法來登入您的公司或學校帳戶
 
 > [!NOTE]
 > 本文的目的逐步解說典型的登入體驗。 如需登入的說明或疑難排解問題，請參閱 [使用 Azure Multi-Factor Authentication 時碰到困難](multi-factor-authentication-end-user-troubleshoot.md)。

@@ -1,6 +1,6 @@
 ---
-title: 將電話號碼設置為驗證方法 - Azure AD
-description: 如何設置安全資訊（預覽）頁面，以使用電話號碼和行動裝置作為驗證方法驗證您的身份。
+title: 將您的電話號碼設定為您的驗證方法-Azure AD
+description: 如何設定您的安全性資訊（預覽）頁面，以使用您的電話號碼和行動裝置做為驗證方法來驗證您的身分識別。
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: e85be9140aabe5b66e63d3ccdd4a3ea907a1d6fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062399"
 ---
-# <a name="set-up-a-phone-number-as-your-verification-method"></a>將電話號碼設置為驗證方法
+# <a name="set-up-a-phone-number-as-your-verification-method"></a>設定電話號碼作為驗證方法
 
 您可以遵循下列步驟來新增雙因素驗證和密碼重設方法。 在您首次將此設定好之後，即可返回 [安全性資訊]**** 頁面來新增、更新或刪除安全性資訊。
 
@@ -29,7 +29,7 @@ ms.locfileid: "77062399"
 > [!Note]
 > 安全性資訊不支援使用電話分機。 即使您新增適當格式 +1 4255551234X12345，在撥號之前仍會移除該分機號碼。
 >
-> 如果您沒有看到電話選項，則您的組織可能不允許使用此選項進行驗證。 在這種情況下，您需要選擇其他方法或聯繫組織的説明台以獲得更多説明。
+> 如果您沒有看到電話選項，可能是您的組織不允許您使用此選項來進行驗證。 在此情況下，您必須選擇其他方法，或洽詢貴組織的技術支援人員以取得更多協助。
 
 ## <a name="security-verification-versus-password-reset-authentication"></a>安全性驗證與密碼重設驗證
 
@@ -116,11 +116,11 @@ ms.locfileid: "77062399"
 
 - **行動裝置簡訊。** 輸入您的行動裝置號碼，然後取得將用來進行雙步驟驗證或密碼重設的代碼簡訊。 如需如何透過簡訊 (SMS) 驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用簡訊 (SMS)](security-info-setup-text-msg.md)。
 
-- **安全金鑰。** 註冊相容 Microsoft 的安全金鑰並將其與 PIN 一起用於兩步驗證或密碼重設。 有關如何使用安全金鑰驗證身份的分步說明，請參閱[設置安全資訊以使用安全金鑰](security-info-setup-security-key.md)。
+- **安全性金鑰。** 註冊與 Microsoft 相容的安全性金鑰，並使用它搭配 PIN 進行雙步驟驗證或密碼重設。 如需如何使用安全性金鑰驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用安全性金鑰](security-info-setup-security-key.md)。
 
 - **電子郵件地址。** 輸入您的公司或學校電子郵件地址以接收用於密碼重設的電子郵件。 此選項不適用於雙步驟驗證。 如需如何設定電子郵件的逐步指示，請參閱[將安全性資訊設定為使用電子郵件](security-info-setup-email.md)。
 
-- **安全問題。** 回答由您的系統管理員為組織所建立的一些安全性問題。 此選項僅適用於密碼重設，不適用雙步驟驗證。 如需如何設定安全性問題的逐步指示，請參閱[將安全性資訊設定為使用安全性問題](security-info-setup-questions.md)一文。
+- **安全性問題。** 回答由您的系統管理員為組織所建立的一些安全性問題。 此選項僅適用於密碼重設，不適用雙步驟驗證。 如需如何設定安全性問題的逐步指示，請參閱[將安全性資訊設定為使用安全性問題](security-info-setup-questions.md)一文。
 
     >[!Note]
     >如果這其中一些選項遺失，很可能是因為您的組織不允許那些方法。 如果發生這種情況，您將必須選擇可用的方法，或連絡您的系統管理員以取得更多協助。

@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure 活動目錄配置動態信號以自動預配使用者 |微軟文檔
-description: 瞭解如何將 Azure 活動目錄配置為自動預配和取消將使用者帳戶預配到動態信號。
+title: 教學課程：使用 Azure Active Directory 設定動態信號來自動布建使用者 |Microsoft Docs
+description: 瞭解如何設定 Azure Active Directory 以自動布建和取消布建使用者帳戶至動態信號。
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,75 +16,75 @@ ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 2ec91d42dff8f3a1fc4b036aa1c3ec77faf6a0fc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77058037"
 ---
-# <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>教程：為自動使用者預配配置動態信號
+# <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的動態信號
 
-本教程的目的是演示在動態信號和 Azure 活動目錄 （Azure AD） 中執行的步驟，以將 Azure AD 配置為自動預配和取消將使用者和/或組預配到動態信號。
+本教學課程的目的是示範要在動態信號中執行的步驟，並 Azure Active Directory （Azure AD）設定 Azure AD 自動布建和取消布建使用者和/或群組至動態信號。
 
 > [!NOTE]
 > 本教學課程會說明建置在 Azure AD 使用者佈建服務之上的連接器。 如需此服務的用途、運作方式和常見問題等重要詳細資訊，請參閱[使用 Azure Active Directory 對 SaaS 應用程式自動佈建和取消佈建使用者](../app-provisioning/user-provisioning.md)。
 >
 > 此連接器目前為公開預覽版。 如需有關預覽功能的一般 Microsoft Azure 使用規定詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用規定](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
 * Azure AD 租用戶
-* [動態信號租戶](https://dynamicsignal.com/)
-* 具有管理員許可權的動態信號中的使用者帳戶。
+* [動態信號租使用者](https://dynamicsignal.com/)
+* 具有系統管理員許可權之動態信號中的使用者帳戶。
 
-## <a name="add-dynamic-signal-from-the-gallery"></a>從庫中添加動態信號
+## <a name="add-dynamic-signal-from-the-gallery"></a>從資源庫新增動態信號
 
-在使用 Azure AD 配置用於自動使用者預配的動態信號之前，需要將 Azure AD 應用程式庫中的動態信號添加到託管 SaaS 應用程式清單中。
+將動態信號設定為使用 Azure AD 自動布建使用者之前，您必須將來自 Azure AD 應用程式庫的動態信號新增至受控 SaaS 應用程式清單。
 
-**要從 Azure AD 應用程式庫添加動態信號，請執行以下步驟：**
+**若要從 Azure AD 應用程式庫新增動態信號，請執行下列步驟：**
 
-1. 在**[Azure 門戶](https://portal.azure.com)** 中，在左側導航面板中，選擇**Azure 活動目錄**。
+1. 在**[Azure 入口網站](https://portal.azure.com)** 的左側導覽窗格中，選取 [ **Azure Active Directory**]。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png)
 
-2. 轉到**企業應用程式**，然後選擇 **"所有應用程式**"。
+2. 移至 [**企業應用程式**]，然後選取 [**所有應用程式**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
-3. 要添加新應用程式，請選擇窗格頂部的 **"新建應用程式**"按鈕。
+3. 若要新增新的應用程式，請選取窗格頂端的 [**新增應用程式**] 按鈕。
 
     ![新增應用程式按鈕](common/add-new-app.png)
 
-4. 在搜索框中，在"**動態信號**"中輸入"動態信號"，在結果面板中選擇 **"動態信號**"，然後按一下"**添加**"按鈕以添加應用程式。
+4. 在搜尋方塊中，輸入 [**動態信號**]，在結果面板中選取 [**動態信號**]，然後按一下 [**新增**] 按鈕以新增應用程式。
 
     ![結果清單中的 Dynamic Signal](common/search-new-app.png)
 
-## <a name="assigning-users-to-dynamic-signal"></a>將使用者分配給動態信號
+## <a name="assigning-users-to-dynamic-signal"></a>將使用者指派給動態信號
 
-Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收對選定應用的存取權限。 在自動使用者預配的上下文中，只有分配給 Azure AD 中應用程式的使用者和/或組才會同步。
+Azure Active Directory 使用稱為「*指派*」的概念，來判斷哪些使用者應接收所選應用程式的存取權。 在自動使用者布建的內容中，只有已指派給 Azure AD 中應用程式的使用者和/或群組會進行同步處理。
 
-在配置和啟用自動使用者預配之前，應決定 Azure AD 中的哪些使用者和/或組需要訪問動態信號。 一旦確定，您可以按照此處的說明將這些使用者和/或組分配給動態信號：
+在設定並啟用自動使用者布建之前，您應該決定 Azure AD 中的哪些使用者和/或群組需要存取動態信號。 一旦決定後，您可以遵循此處的指示，將這些使用者和/或群組指派給動態信號：
 
 * [將使用者或群組指派給企業應用程式](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-dynamic-signal"></a>將使用者分配給動態信號的重要提示
+### <a name="important-tips-for-assigning-users-to-dynamic-signal"></a>將使用者指派給動態信號的重要秘訣
 
-* 建議將單個 Azure AD 使用者分配給動態信號以測試自動使用者預配配置。 其他使用者及/或群組可能會稍後再指派。
+* 建議將單一 Azure AD 的使用者指派給動態信號，以測試自動使用者布建設定。 其他使用者及/或群組可能會稍後再指派。
 
-* 將使用者分配給動態信號時，必須在分配對話方塊中選擇任何有效的特定于應用程式的角色（如果可用）。 具有**預設存取**角色的使用者會從佈建中排除。
+* 將使用者指派給動態信號時，您必須在 [指派] 對話方塊中選取任何有效的應用程式特定角色（如果有的話）。 具有**預設存取**角色的使用者會從佈建中排除。
 
-## <a name="configuring-automatic-user-provisioning-to-dynamic-signal"></a>配置動態信號的自動使用者預配 
+## <a name="configuring-automatic-user-provisioning-to-dynamic-signal"></a>設定自動使用者布建至動態信號 
 
-本節將指導您完成配置 Azure AD 預配服務的步驟，以便根據 Azure AD 中的使用者和/或組分配在動態信號中創建、更新和禁用使用者和/或組。
+本節會引導您完成設定 Azure AD 布建服務，以根據 Azure AD 中的使用者和/或群組指派來建立、更新和停用動態信號中的使用者和/或群組的步驟。
 
 > [!TIP]
-> 您也可以選擇啟用基於 SAML 的單一登入動態信號，按照[動態信號單點登錄教程](dynamicsignal-tutorial.md)中提供的說明。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將它們分開設定。
+> 您也可以選擇啟用動態信號的 SAML 型單一登入，請遵循[動態信號單一登入教學](dynamicsignal-tutorial.md)課程中提供的指示。 雖然自動使用者佈建和單一登入這兩個功能互相補充，您還是可以將它們分開設定。
 
-### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>要在 Azure AD 中配置動態信號的自動使用者預配：
+### <a name="to-configure-automatic-user-provisioning-for-dynamic-signal-in-azure-ad"></a>若要在 Azure AD 中設定動態信號的自動使用者布建：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。 選擇**企業應用程式**，然後選擇**所有應用程式**。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 選取 [**企業應用程式**]，然後選取 [**所有應用程式**]。
 
     ![企業應用程式刀鋒視窗](common/enterprise-applications.png)
 
@@ -92,25 +92,25 @@ Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收
 
     ![應用程式清單中的 Dynamic Signal 連結](common/all-applications.png)
 
-3. 選擇 **"預配"** 選項卡。
+3. 選取 [**布**建] 索引標籤。
 
-    ![預配選項卡](common/provisioning.png)
+    ![布建索引標籤](common/provisioning.png)
 
-4. 將**預配模式**設置為 **"自動**"。
+4. 將布建模式設定為 [**自動** **]** 。
 
-    ![預配選項卡](common/provisioning-automatic.png)
+    ![布建索引標籤](common/provisioning-automatic.png)
 
-5. 在 **"管理認證"** 部分下，輸入動態信號帳戶的**租戶 URL**和**機密權杖**，如步驟 6 所述。
+5. 在 [**管理員認證**] 區段底下，輸入您的動態信號帳戶的**租使用者 URL**和**秘密權杖**，如步驟6所述。
 
-6. 在動態信號管理主控台中，導航到**管理員>高級> API**。
+6. 在動態信號管理主控台中，流覽至 [系統**管理] > Advanced > API**。
 
-    ![動態信號配置](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
+    ![動態信號布建](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
 
-    將**SCIM API URL**複製到**租戶 URL**。 按一下 **"生成新權杖**"以生成**無記名權杖**並將該值複製到**機密權杖**。
+    將 [ **SCIM API url** ] 複製到 [**租使用者 URL**]。 按一下 [**產生新權杖**] 以產生**持有人權杖**，並將值複製到 [**秘密權杖**]。
 
-    ![動態信號配置](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
+    ![動態信號布建](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
 
-7. 填充步驟 5 中所示的欄位後，按一下 **"測試連接**"以確保 Azure AD 可以連接到動態信號。 如果連接失敗，請確保您的動態信號帳戶具有管理員許可權，然後重試。
+7. 填入步驟5所示的欄位之後，按一下 [**測試連接**] 以確保 Azure AD 可以連接到動態信號。 如果連線失敗，請確定您的動態信號帳戶具有系統管理員許可權，然後再試一次。
 
     ![租用戶 URL + 權杖](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -118,23 +118,23 @@ Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收
 
     ![通知電子郵件](common/provisioning-notification-email.png)
 
-9. 按一下 [儲存]****。
+9. 按一下 **[儲存]** 。
 
-10. 在 **"映射**"部分下，選擇**將 Azure 活動目錄使用者同步到動態信號**。
+10. **在 [對應**] 區段下，選取 [**同步處理 Azure Active Directory 使用者到動態信號**]。
 
-    ![動態信號使用者映射](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
+    ![動態信號使用者對應](media/dynamic-signal-provisioning-tutorial/user-mappings.png)
 
-11. 在**屬性對應**部分中查看從 Azure AD 同步到動態信號的使用者屬性。 選擇為 **"匹配屬性"** 的屬性用於匹配動態信號中的使用者帳戶以進行更新操作。 選取 [儲存]**** 按鈕以認可所有變更。
+11. 在 [**屬性對應**] 區段中，檢查從 Azure AD 同步處理到動態信號的使用者屬性。 選取為 [比對] 屬性**的屬性會**用來比對動態信號中的使用者帳戶以進行更新作業。 選取 [儲存]**** 按鈕以認可所有變更。
 
     ![動態信號使用者屬性](media/dynamic-signal-provisioning-tutorial/user-mapping-attributes.png)
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 
-13. 要啟用動態信號的 Azure AD 預配服務，在 **"設置"** 部分將**預配狀態**更改為 **"打開**"。
+13. 若要啟用動態信號的 Azure AD 布建服務，請在 [**設定**] 區段中，將 [布建**狀態**] 變更為 [**開啟**]。
 
     ![佈建狀態已切換為開啟](common/provisioning-toggle-on.png)
 
-14. 通過在 **"設置"** 部分中選擇"**範圍"** 中所需的值，定義要預配到動態信號的使用者和/或組。
+14. 在 [**設定**] 區段的 [**範圍**] 中選擇所需的值，以定義您想要布建到動態信號的使用者和/或群組。
 
     ![佈建範圍](common/provisioning-scope.png)
 
@@ -142,19 +142,19 @@ Azure 活動目錄使用稱為*分配*的概念來確定哪些使用者應接收
 
     ![儲存雲端佈建設定](common/provisioning-configuration-save.png)
 
-此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 可以使用 **"同步詳細資訊"** 部分監視進度並遵循指向預配活動報告的連結，該報表描述 Azure AD 預配服務在動態信號上執行的所有操作。
+此作業會對在 [設定]**** 區段的 [範圍]**** 中定義的所有使用者和/或群組，啟動首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要 Azure AD 佈建服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [**同步處理詳細資料**] 區段來監視進度，並遵循連結來布建活動報告，其中描述動態信號上的 Azure AD 布建服務所執行的所有動作。
 
 如需如何讀取 Azure AD 佈建記錄的詳細資訊，請參閱[關於使用者帳戶自動佈建的報告](../app-provisioning/check-status-user-account-provisioning.md)。
 
 ## <a name="connector-limitations"></a>連接器限制
 
-* 動態信號不支援從 Azure AD 中刪除永久使用者。 要在動態信號中永久刪除使用者，必須通過動態信號管理主控台 UI 進行操作。 
-* 動態信號當前不支援組。
+* 動態信號不支援從 Azure AD 永久使用者刪除。 若要永久刪除動態信號中的使用者，必須透過動態信號管理主控台 UI 來執行此操作。 
+* 動態信號目前不支援群組。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用的使用者帳戶預配](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [管理企業應用程式的使用者帳戶布建](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>後續步驟
 

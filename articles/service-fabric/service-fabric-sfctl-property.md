@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構 CLI-sfctl 屬性
-description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括用於存儲和查詢屬性的命令清單。
+title: Azure Service Fabric CLI-sfctl 屬性
+description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來儲存和查詢屬性的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: a9bd75e0b7f8bfceb50a71ca83b60ff1e7b45508
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905823"
 ---
 # <a name="sfctl-property"></a>sfctl property
@@ -19,7 +19,7 @@ ms.locfileid: "76905823"
 
 |Command|描述|
 | --- | --- |
-| delete | 刪除指定的 Service Fabric 屬性。 |
+| [刪除] | 刪除指定的 Service Fabric 屬性。 |
 | get | 取得指定的 Service Fabric 屬性。 |
 | list | 取得指定名稱下所有 Service Fabric 屬性的相關資訊。 |
 | put | 建立或更新 Service Fabric 屬性。 |
@@ -35,7 +35,7 @@ ms.locfileid: "76905823"
 | --- | --- |
 | --name-id       [必要] | 不含 'fabric\:' URI 配置的 Service Fabric 名稱。 |
 | --property-name [必要] | 指定要取得之屬性的名稱。 |
-| --timeout -t | 伺服器超時，用於在幾秒鐘內執行操作。 此超時指定用戶端願意等待請求的操作完成的時間持續時間。 此參數的預設值為 60 秒。  預設值\: 60。 |
+| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
@@ -58,7 +58,7 @@ ms.locfileid: "76905823"
 | --- | --- |
 | --name-id       [必要] | 不含 'fabric\:' URI 配置的 Service Fabric 名稱。 |
 | --property-name [必要] | 指定要取得之屬性的名稱。 |
-| --timeout -t | 伺服器超時，用於在幾秒鐘內執行操作。 此超時指定用戶端願意等待請求的操作完成的時間持續時間。 此參數的預設值為 60 秒。  預設值\: 60。 |
+| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
@@ -82,7 +82,7 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 | --name-id [必要] | 不含 'fabric\:' URI 配置的 Service Fabric 名稱。 |
 | --continuation-token | 接續權杖參數可用來取得下一組結果。 當來自系統的結果無法放入單一回應中時，API 的回應中會包含具有非空白值的接續權杖。 當此值傳遞至下一個 API 呼叫時，API 會傳回下一組結果。 如果沒有任何進一步的結果，接續權杖就不會包含值。 此參數的值不能經過 URL 編碼。 |
 | --include-values | 允許指定是否要包含所傳回屬性的值。 如果值應該與中繼資料一起傳回，即為 True；若只要傳回屬性中繼資料，則為 False。 |
-| --timeout -t | 伺服器超時，用於在幾秒鐘內執行操作。 此超時指定用戶端願意等待請求的操作完成的時間持續時間。 此參數的預設值為 60 秒。  預設值\: 60。 |
+| --timeout -t | 執行作業的伺服器超時（以秒為單位）。 這個超時時間會指定用戶端願意等待要求的作業完成的持續期間。 此參數的預設值為60秒。  預設值\: 60。 |
 
 ### <a name="global-arguments"></a>全域引數
 
@@ -105,7 +105,7 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 | --- | --- |
 | --name-id       [必要] | 不含 'fabric\:' URI 配置的 Service Fabric 名稱。 |
 | --property-name [必要] | Service Fabric 屬性的名稱。 |
-| --value         [必要] | 描述 Service Fabric 屬性值。 這是一個 JSON 字串。 <br><br> json 字串有兩個欄位，即資料的"Kind"和作為資料的"資料"輸入的值。 'Kind' 值必須是 JSON 字串中第一個出現的項目，其值可以是 'Binary'、'Int64'、'Double'、'String' 或 'Guid'。 此值應該是可序列化成所指定類型的值。 'Kind' 和 'Data' 值都應該以字串形式提供。 |
+| --value         [必要] | 描述 Service Fabric 屬性值。 這是一個 JSON 字串。 <br><br> Json 字串有兩個欄位（資料的「種類」）和值（輸入為數據的「資料」）。 'Kind' 值必須是 JSON 字串中第一個出現的項目，其值可以是 'Binary'、'Int64'、'Double'、'String' 或 'Guid'。 此值應該是可序列化成所指定類型的值。 'Kind' 和 'Data' 值都應該以字串形式提供。 |
 | --custom-id-type | 屬性的自訂類型識別碼。 使用此屬性時，使用者將能夠標記屬性值的類型。 |
 | --timeout -t | 預設值\: 60。 |
 
@@ -121,5 +121,5 @@ Service Fabric 名稱可以包含一或多個儲存自訂資訊的具名屬性�
 
 
 ## <a name="next-steps"></a>後續步驟
-- [設置](service-fabric-cli.md)服務結構 CLI。
+- [設定](service-fabric-cli.md)Service Fabric CLI。
 - 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。

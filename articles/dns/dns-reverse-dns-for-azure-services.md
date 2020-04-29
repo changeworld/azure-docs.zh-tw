@@ -1,6 +1,6 @@
 ---
-title: Azure 服務的反向 DNS - Azure DNS
-description: 使用此學習路徑，開始為 Azure 中託管的服務配置反向 DNS 查找。
+title: Azure 服務的反向 DNS-Azure DNS
+description: 透過此學習路徑，開始為 Azure 中裝載的服務設定反向 DNS 查閱。
 services: dns
 documentationcenter: na
 author: rohinkoul
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: 073e84ece11f6817bfe2c5a94735ec6e16dac4fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76932361"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>設定 Azure 託管服務的反向 DNS
@@ -61,7 +61,7 @@ Azure 目前只支援 IPv4 PublicIpAddress 資源的反向 DNS。 其不支援 I
 
 #### <a name="powershell"></a>PowerShell
 
-要將反向 DNS 更新到現有的公共 Ip 位址，
+若要將反向 DNS 更新為現有的 PublicIpAddress：
 
 ```powershell
 $pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"

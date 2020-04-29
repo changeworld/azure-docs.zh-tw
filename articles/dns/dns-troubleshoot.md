@@ -1,6 +1,6 @@
 ---
-title: 故障排除指南 - Azure DNS
-description: 在此學習路徑中，開始使用 Azure DNS 解決常見問題
+title: 疑難排解指南-Azure DNS
+description: 在此學習路徑中，開始針對 Azure DNS 的常見問題進行疑難排解
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 09/20/2019
 ms.author: rohink
 ms.openlocfilehash: b5e1624bf852256f6e8fb0b616258f932c5a8998
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76939036"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS 疑難排解指南
 
-本文提供有關常見 Azure DNS 問題的故障排除資訊。
+本文提供常見 Azure DNS 問題的疑難排解資訊。
 
-如果這些步驟未能解決問題，您也可以在 [MSDN 上的社群支援論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)搜尋或張貼您的問題。 或者，您可以打開 Azure 支援請求。
+如果這些步驟未能解決問題，您也可以在 [MSDN 上的社群支援論壇](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)搜尋或張貼您的問題。 或者，您可以開啟 Azure 支援要求。
 
 
 ## <a name="i-cant-create-a-dns-zone"></a>我無法建立 DNS 區域
@@ -26,9 +26,9 @@ ms.locfileid: "76939036"
 若要解決常見的問題，請嘗試下列步驟：
 
 1.  檢閱 Azure DNS 稽核記錄以判斷失敗原因。
-2.  每個 DNS 區域名稱都必須是其資源群組中唯一的。 也就是說，兩個具有相同名稱的 DNS 區域不能共用資源組。 請嘗試使用不同的區域名稱，或不同的資源群組。
+2.  每個 DNS 區域名稱都必須是其資源群組中唯一的。 也就是說，兩個名稱相同的 DNS 區域無法共用資源群組。 請嘗試使用不同的區域名稱，或不同的資源群組。
 3.  您會看到「您已達到或超過訂用帳戶 {subscription id} 中的區域數目上限。」的錯誤訊息。 請使用其他 Azure 訂用帳戶、刪除相同的區域或聯絡 Azure 支援中心以提高您的訂用帳戶限制。
-4.  您會看到「區域 '{zone name}' 無法使用。」的錯誤訊息。 此錯誤表示 Azure DNS 無法為此 DNS 區域配置名稱伺服器。 請嘗試使用不同的區域名稱。 或者，如果您是功能變數名稱擁有者，則可以聯繫 Azure 支援部門為您分配名稱伺服器。
+4.  您會看到「區域 '{zone name}' 無法使用。」的錯誤訊息。 此錯誤表示 Azure DNS 無法為此 DNS 區域配置名稱伺服器。 請嘗試使用不同的區域名稱。 或者，如果您是功能變數名稱擁有者，您可以聯絡 Azure 支援來為您配置名稱伺服器。
 
 
 ### <a name="recommended-articles"></a>建議文章
@@ -42,9 +42,9 @@ ms.locfileid: "76939036"
 
 1.  檢閱 Azure DNS 稽核記錄以判斷失敗原因。
 2.  記錄集是否已經存在？  Azure DNS 是使用記錄*集*管理記錄，記錄集是名稱與類型相同之記錄的集合。 如果已經有名稱與類型相同的記錄存在，此時若要新增其他此類型記錄，您應該編輯現有的記錄集。
-3.  您是否正嘗試在 DNS 區域頂點 (區域的 [根]) 建立記錄？ 如果是，DNS 慣例是使用 ‘@’ 字元做為記錄名稱。 另請注意，DNS 標準不允許在區域頂點記錄 CNAME 記錄。
-4.  您有 CNAME 衝突嗎？  DNS 標準不允許具有與任何其他類型的記錄同名的 CNAME 記錄。 如果您有現有的 CNAME，建立不同類型但名稱相同的記錄將會失敗。  同樣地，如果名稱和不同類型的現有記錄相同，建立 CNAME 將會失敗。 請透過移除其他記錄或選擇不同的記錄名稱來排除衝突。
-5.  您已達到 DNS 區域中允許的記錄集數目限制嗎？ Azure 入口網站中，區域的 [內容] 底下會顯示目前的記錄集數目和記錄集數目上限。 如果已達到此限制，則刪除某些記錄集或與 Azure 支援聯繫以提升此區域的記錄集限制，然後重試。 
+3.  您是否正嘗試在 DNS 區域頂點 (區域的 [根]) 建立記錄？ 如果是，DNS 慣例是使用 ‘@’ 字元做為記錄名稱。 另請注意，DNS 標準不允許在區域頂點的 CNAME 記錄。
+4.  您有 CNAME 衝突嗎？  DNS 標準不允許與任何其他類型的記錄具有相同名稱的 CNAME 記錄。 如果您有現有的 CNAME，建立不同類型但名稱相同的記錄將會失敗。  同樣地，如果名稱和不同類型的現有記錄相同，建立 CNAME 將會失敗。 請透過移除其他記錄或選擇不同的記錄名稱來排除衝突。
+5.  您已達到 DNS 區域中允許的記錄集數目限制嗎？ Azure 入口網站中，區域的 [內容] 底下會顯示目前的記錄集數目和記錄集數目上限。 如果您已達到此限制，請刪除部分記錄集或聯絡 Azure 支援以提高此區域的記錄集限制，然後再試一次。 
 
 
 ### <a name="recommended-articles"></a>建議文章

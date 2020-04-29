@@ -1,6 +1,6 @@
 ---
-title: 使用網頁進行真實使用者度量 - Azure 流量管理器
-description: 在本文中，瞭解如何設置網頁以向 Azure 流量管理器發送真實使用者度量。
+title: 使用網頁進行實際使用者度量-Azure 流量管理員
+description: 在本文中，您將瞭解如何設定您的網頁，以將實際使用者度量傳送至 Azure 流量管理員。
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -14,10 +14,10 @@ ms.date: 03/16/2018
 ms.author: rohink
 ms.custom: ''
 ms.openlocfilehash: 927d774ee30a291607a8a47fc2fd6878c1bc6fee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76938688"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>如何使用網頁將實際使用者度量傳送給 Azure 流量管理員

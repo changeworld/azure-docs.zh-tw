@@ -1,6 +1,6 @@
 ---
-title: 將 Microsoft 身份驗證器應用設置為驗證方法 - Azure AD
-description: 如何使用 Microsoft 身份驗證器應用作為驗證方法設置安全資訊（預覽）頁面以驗證您的身份。
+title: 將 Microsoft Authenticator 應用程式設定為您的驗證方法-Azure AD
+description: 如何設定您的安全性資訊（預覽）頁面，以使用 Microsoft Authenticator 應用程式作為驗證方法來驗證您的身分識別。
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 16cb512d3f8f8afcc199cb52c13e09b12107576f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77062416"
 ---
 # <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>將 Microsoft Authenticator 應用程式設定為您的驗證方法
@@ -27,9 +27,9 @@ ms.locfileid: "77062416"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
-> 如果您沒有看到身份驗證器應用選項，則您的組織可能不允許使用此選項進行驗證。 在這種情況下，您需要選擇其他方法或聯繫組織的説明台以獲得更多説明。
+> 如果您沒有看到驗證器應用程式選項，您的組織可能不允許您使用此選項來進行驗證。 在此情況下，您必須選擇其他方法，或洽詢貴組織的技術支援人員以取得更多協助。
 
-## <a name="security-vs-password-reset-verification"></a>安全與密碼重設驗證
+## <a name="security-vs-password-reset-verification"></a>安全性與密碼重設驗證
 
 雙因素安全性驗證和密碼重設都會使用安全性資訊方法。 不過，並非所有方法都同時適用於這兩者。
 
@@ -67,22 +67,22 @@ ms.locfileid: "77062416"
     ![從取得應用程式開始的頁面](media/security-info/securityinfo-myprofile-getauthapp.png)
 
    > [!Note]
-   > 如果您想要使用 Microsoft Authenticator 應用程式以外的驗證器應用程式，請選取 [我想要使用其他驗證器應用程式]**** 連結。
+   > 如果您想要使用 Microsoft Authenticator 應用程式以外的驗證器應用程式，請選取 [我想要使用其他驗證器應用程式]  連結。
    >
-   > 如果您的組織允許您選擇驗證器應用程式以外的方法，您可以選取 [我想要設定其他方法連結]****。
+   > 如果您的組織允許您選擇驗證器應用程式以外的方法，您可以選取 [我想要設定其他方法連結]  。
 
-5. 在行動裝置上設定 Microsoft Authenticator 應用程式時，請讓 [設定帳戶]**** 頁面保持開啟。
+5. 在行動裝置上設定 Microsoft Authenticator 應用程式時，請讓 [設定帳戶]  頁面保持開啟。
 
     ![設定驗證器應用程式的頁面](media/security-info/securityinfo-myprofile-setupauthapp.png)
 
-6. 開啟 Microsoft Authenticator 應用程式、選取要允許通知 (若出現提示)、從右上角的 [自訂和控制]**** 圖示中選取 [新增帳戶]****，然後選取 [公司或學校帳戶]****。
+6. 開啟 Microsoft Authenticator 應用程式、選取要允許通知 (若出現提示)、從右上角的 [自訂和控制]  圖示中選取 [新增帳戶]  ，然後選取 [公司或學校帳戶]  。
 
     >[!Note]
-    >如果這是您第一次設定 Microsoft Authenticator 應用程式，系統可能會顯示提示詢問您是否允許應用程式存取您的相機 (iOS)，或是否允許應用程式拍攝相片和錄製影片 (Android)。 您必須選取 [允許]****，讓驗證器應用程式能夠存取您的相機，以在下一個步驟中拍攝 QR 代碼的相片。 如果您不允許存取相機，您仍可設定驗證器應用程式，但必須手動新增代碼資訊。 如需如何手動新增代碼的相關資訊，請參閱[手動新增帳戶至應用程式](user-help-auth-app-add-account-manual.md)。
+    >如果這是您第一次設定 Microsoft Authenticator 應用程式，系統可能會顯示提示詢問您是否允許應用程式存取您的相機 (iOS)，或是否允許應用程式拍攝相片和錄製影片 (Android)。 您必須選取 [允許]  ，讓驗證器應用程式能夠存取您的相機，以在下一個步驟中拍攝 QR 代碼的相片。 如果您不允許存取相機，您仍可設定驗證器應用程式，但必須手動新增代碼資訊。 如需如何手動新增代碼的相關資訊，請參閱[手動新增帳戶至應用程式](user-help-auth-app-add-account-manual.md)。
 
-7. 返回電腦上的 [設定帳戶]**** 頁面，然後選取 [下一步]****。
+7. 返回電腦上的 [設定帳戶]  頁面，然後選取 [下一步]  。
 
-    [掃描 QR 代碼]**** 頁面隨即出現。
+    [掃描 QR 代碼]  頁面隨即出現。
 
     ![使用驗證器應用程式的 [掃描 QR 代碼]](media/security-info/securityinfo-myprofile-qrcodeauthapp.png)
 
@@ -90,13 +90,13 @@ ms.locfileid: "77062416"
 
     驗證器應用程式應會成功新增您的工作或學校帳戶，而不需要您提供任何額外的資訊。 不過，如果您的 QR 代碼讀取器無法讀取代碼，您可以選取 [無法掃描 QR 代碼]**** 連結，然後以手動方式將代碼和 URL 輸入到 Microsoft Authenticator 應用程式。 如需手動新增代碼的詳細資訊，請參閱[手動新增帳戶至應用程式](user-help-auth-app-add-account-manual.md)。
 
-9. 在電腦的 [掃描 QR 代碼]**** 頁面上選取 [下一步]****。
+9. 在電腦的 [掃描 QR 代碼]  頁面上選取 [下一步]  。
 
     此時會有通知傳送到您行動裝置上的 Microsoft Authenticator 應用程式，用以測試您的帳戶。
 
     ![使用驗證器應用程式測試您的帳戶](media/security-info/securityinfo-myprofile-tryitauthapp.png)
 
-10. 在 Microsoft Authenticator 應用程式中核准通知，然後選取 [下一步]****。
+10. 在 Microsoft Authenticator 應用程式中核准通知，然後選取 [下一步]  。
 
      ![成功通知，指出正在連線應用程式和您的帳戶](media/security-info/securityinfo-myprofile-successauthapp.png)
 
@@ -147,18 +147,18 @@ ms.locfileid: "77062416"
 
 - **行動裝置或公司電話。** 輸入您的行動裝置號碼，然後等候來電以進行雙步驟驗證或密碼重設。 如需如何透過電話號碼驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用電話](security-info-setup-phone-number.md)。
 
-- **安全金鑰。** 註冊相容 Microsoft 的安全金鑰並將其與 PIN 一起用於兩步驗證或密碼重設。 有關如何使用安全金鑰驗證身份的分步說明，請參閱[設置安全資訊以使用安全金鑰](security-info-setup-security-key.md)。
+- **安全性金鑰。** 註冊與 Microsoft 相容的安全性金鑰，並使用它搭配 PIN 進行雙步驟驗證或密碼重設。 如需如何使用安全性金鑰驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用安全性金鑰](security-info-setup-security-key.md)。
 
 - **電子郵件地址。** 輸入您的公司或學校電子郵件地址以接收用於密碼重設的電子郵件。 此選項不適用於雙步驟驗證。 如需如何設定電子郵件的逐步指示，請參閱[將安全性資訊設定為使用電子郵件](security-info-setup-email.md)。
 
-- **安全問題。** 回答由您的系統管理員為組織所建立的一些安全性問題。 此選項僅適用於密碼重設，不適用雙步驟驗證。 如需如何設定安全性問題的逐步指示，請參閱[將安全性資訊設定為使用安全性問題](security-info-setup-questions.md)一文。
+- **安全性問題。** 回答由您的系統管理員為組織所建立的一些安全性問題。 此選項僅適用於密碼重設，不適用雙步驟驗證。 如需如何設定安全性問題的逐步指示，請參閱[將安全性資訊設定為使用安全性問題](security-info-setup-questions.md)一文。
 
     >[!Note]
     >如果這其中一些選項遺失，很可能是因為您的組織不允許那些方法。 如果發生這種情況，您將必須選擇可用的方法，或連絡您的系統管理員以取得更多協助。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 使用 Microsoft 身份驗證器應用登錄，[按照使用兩步驗證或安全資訊文章中的登錄](security-info-setup-signin.md)步驟進行登錄。
+- 使用 Microsoft Authenticator 應用程式登入，請遵循[使用雙步驟驗證或安全性資訊登入一](security-info-setup-signin.md)文中的步驟進行。
 
 - 如果您遺失或忘記密碼，請從[密碼重設入口網站](https://passwordreset.microsoftonline.com/)或遵循[重設公司或學校密碼](active-directory-passwords-update-your-own-password.md)一文中的步驟來重設密碼。
 

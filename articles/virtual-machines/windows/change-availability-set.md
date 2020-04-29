@@ -1,22 +1,22 @@
 ---
-title: 更改 VM 可用性集
-description: 瞭解如何使用 Azure PowerShell 更改虛擬機器的可用性集。
+title: 變更 Vm 可用性設定組
+description: 瞭解如何使用 Azure PowerShell 來變更虛擬機器的可用性設定組。
 ms.service: virtual-machines
 author: cynthn
 ms.topic: article
 ms.date: 01/31/2020
 ms.author: cynthn
 ms.openlocfilehash: 092dafff6622d3402322eb96d0fe4215e52e16b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76964918"
 ---
 # <a name="change-the-availability-set-for-a-vm"></a>變更 VM 的可用性設定組
 下列步驟說明如何使用 Azure PowerShell 來變更 VM 的可用性設定組。 只有在建立 VM 時，才能將 VM 新增到可用性設定組中。 若要變更可用性設定組，您必須將虛擬機器刪除，然後再重新建立。 
 
-本文適用于 Linux 和 Windows VM。
+本文適用于 Linux 和 Windows Vm。
 
 本文最後一次測試是在 2019 年 2 月 12 日，使用 [Azure Cloud Shell](https://shell.azure.com/powershell) 和 [Az PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps) 1.2.0 版進行的。
 

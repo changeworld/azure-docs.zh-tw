@@ -1,5 +1,5 @@
 ---
-title: SAP HANA 橫向擴展 HSR-Pacemaker，在 Azure VM 故障排除上使用 SLES 進行故障排除*微軟文檔
+title: SAP Hana 向外延展 HSR-Pacemaker 與 Azure Vm 上的 SLES 疑難排解 |Microsoft Docs
 description: 在 Azure 虛擬機器執行的 SLES 12 SP3 上，針對根據 SAP HANA System Replication (HSR) 和 Pacemaker 的複雜 SAP HANA scale-out 高可用性設定進行檢查和疑難排解的指南
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: e93b3412785817050ac53030be9ff2172a678c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617130"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>在 SLES 12 SP3 上驗證 SAP HANA scale-out 高可用性設定並為其進行疑難排解 
@@ -119,7 +119,7 @@ inet addr:10.0.2.42  Bcast:10.0.2.255  Mask:255.255.255.0
 select * from "SYS"."M_SYSTEM_OVERVIEW"
 </code></pre>
 
-要查找正確的埠號，例如，您可以在**配置**下的 HANA Studio 中或通過 SQL 語句查找：
+若要尋找正確的埠號碼，您可以在 HANA Studio 中的 [設定]**或透過**SQL 語句來尋找：
 
 <pre><code>
 select * from M_INIFILE_CONTENTS WHERE KEY LIKE 'listen%'
@@ -202,7 +202,7 @@ totem {
 }
 </code></pre>
 
-第二**部分日誌記錄未**從給定預設值更改：
+第二個區段（**記錄**）未從指定的預設值變更：
 
 <pre><code>
 logging {
@@ -255,7 +255,7 @@ nodelist {
 }
 </code></pre>
 
-在最後一節，**仲裁**中，正確設置**expected_votes**的值非常重要。 它必須是節點數目 (包含多數製作者節點)。 而且 **two_node** 的值必須是 **0**。 請不要整個移除項目。 只需要將值設定為 **0**。
+在最後一節**仲裁**中，請務必正確地設定**expected_votes**的值。 它必須是節點數目 (包含多數製作者節點)。 而且 **two_node** 的值必須是 **0**。 請不要整個移除項目。 只需要將值設定為 **0**。
 
 <pre><code>
 quorum {
@@ -457,7 +457,7 @@ node.startup = automatic
 5. 在啟動器名稱上方，確定 [啟動服務]**** 值設定為 [開機時]****。
 6. 如果尚未設定，則請將其設定為 [開機時]****，而不是 [手動]****。
 7. 接下來，將最上層索引標籤切換至 [連線的目標]****。
-8. 在 **"已連接目標"** 螢幕上，您應該會看到 SBD 設備的條目，例如 **：10.0.0.19：3260 iqn.2006-04.dbhso.local：dbhso**。
+8. 在 [**連接的目標**] 畫面上，您應該會看到 SBD 裝置的專案，如下列範例所示： **10.0.0.19： 3260 iqn. 2006-04. dbhso. local： dbhso**。
 9. 檢查 [啟動]**** 值是否設定為 **on boot**。
 10. 若不是，請選擇 [編輯]**** 予以變更。
 11. 儲存變更並結束 YaST2。
@@ -504,7 +504,7 @@ systemctl enable pacemaker
 crm status
 </code></pre>
 
-輸出看起來應如下列範例所示。 多數製作者 VM (**hso-hana-dm**) 上的 **cln** 和 **msl** 資源顯示為已停止是正常的。 多數製作者節點上並未安裝 SAP HANA。 因此，**cln** 和 **msl** 資源會顯示為已停止。 重要的是，它顯示正確的 VM 總數**7**。 所有屬於叢集一部分的 VM，都必須以 [連線]**** 狀態列出。 目前主要的主要節點必須正確辨識。 在此範例中為 **hso-hana-vm-s1-0**：
+輸出看起來應如下列範例所示。 多數製作者 VM (**hso-hana-dm**) 上的 **cln** 和 **msl** 資源顯示為已停止是正常的。 多數製作者節點上並未安裝 SAP HANA。 因此，**cln** 和 **msl** 資源會顯示為已停止。 請務必顯示正確的 Vm 總數（ **7**）。 所有屬於叢集一部分的 VM，都必須以 [連線]**** 狀態列出。 目前主要的主要節點必須正確辨識。 在此範例中為 **hso-hana-vm-s1-0**：
 
 <pre><code>
 Stack: corosync
@@ -682,7 +682,7 @@ watch SAPHanaSR-showAttr
 
 需要重試數次，避免不必要的容錯移轉。 只有在狀態從 [正常]**** (傳回值 **4**) 變更為 [錯誤]**** (傳回值 **1**) 時，叢集才會做出反應。 因此，如果 **SAPHanaSR-showAttr** 的輸出顯示狀態為**離線**的 VM，即為正確。 但目前並沒有活動可切換主要和次要。 只要 SAP HANA 未傳回錯誤，就不會觸發任何叢集活動。
 
-您可以通過按如下方式調用 SAP Python 腳本來監視 SAP HANA 環境運行狀況狀態，作為使用者**\<HANA SID\>adm。** 您可能必須調整路徑：
+您可以藉由呼叫 SAP Python 腳本，以監視 SAP Hana 橫向健全狀況狀態作為使用者** \<HANA SID\>adm** ，如下所示。 您可能必須調整路徑：
 
 <pre><code>
 watch python /hana/shared/HSO/exe/linuxx86_64/HDB_2.00.032.00.1533114046_eeaf4723ec52ed3935ae0dc9769c9411ed73fec5/python_support/landscapeHostConfiguration.py
@@ -731,7 +731,7 @@ Transition Summary:
 
 在這部分有兩種不同的情況：
 
-- **計畫對當前輔助進行維護**。 在此情況下，您只能讓叢集進入維護模式，以及在次要上執行工作，而不影響叢集。
+- **目前次要資料庫上預定進行的維護**。 在此情況下，您只能讓叢集進入維護模式，以及在次要上執行工作，而不影響叢集。
 
 - **目前主要站台上的計劃性維護**。 若要讓使用者可以在維護期間繼續工作，您需要強制容錯移轉。 使用此方式，您必須由 Pacemaker 觸發叢集容錯移轉，而不只是在 SAP HANA HSR 層級上。 Pacemaker 設定會自動觸發 SAP HANA 接管。 您也需要在讓叢集進入維護模式前，先完成容錯移轉。
 
@@ -945,7 +945,7 @@ listeninterface = .internal
 ## <a name="hawk"></a>Hawk
 
 叢集解決方案可提供瀏覽器介面，為偏好功能表和圖形 (相較於殼層層級上的所有命令) 的人員提供 GUI。
-要使用瀏覽器介面，請將**\<節點\>** 替換為以下 URL 中的實際 SAP HANA 節點。 然後輸入叢集的認證 (使用者**叢集**)：
+若要使用瀏覽器介面，請將** \<node\> **取代為下列 URL 中的實際 SAP Hana 節點。 然後輸入叢集的認證 (使用者**叢集**)：
 
 <pre><code>
 https://&ltnode&gt:7630

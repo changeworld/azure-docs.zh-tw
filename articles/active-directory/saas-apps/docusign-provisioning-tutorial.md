@@ -16,17 +16,17 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 88b65c8e8962ad8420ded47da1a343672123c589
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77058173"
 ---
 # <a name="tutorial-configure-docusign-for-automatic-user-provisioning"></a>教學課程︰設定 DocuSign 來自動佈建使用者
 
 本教學課程旨在說明您需要在 DocuSign 和 Azure AD 中執行的步驟，以將使用者帳戶從 Azure AD 自動佈建和取消佈建至 DocuSign。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -62,13 +62,13 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 本節的目的是要說明如何對 DocuSign 啟用 Active Directory 使用者帳戶的使用者佈建。
 
-1. 在[Azure 門戶](https://portal.azure.com)中，流覽到**Azure 活動目錄>企業應用>所有應用程式**部分。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至 [ **Azure Active Directory > 企業應用程式] > [所有應用程式**] 區段。
 
 1. 如果您已經設定單一登入的 DocuSign，使用 [搜尋] 欄位搜尋您的 DocuSign 執行個體。 否則，請選取 [新增]****，並在應用程式庫中搜尋 [DocuSign]****。 從搜尋結果中選取 DocuSign，並將它新增至您的應用程式清單。
 
 1. 選取您的 DocuSign 執行個體，然後選取 [佈建]**** 索引標籤。
 
-1. 將**預配模式**設置為 **"自動**"。 
+1. 將布建模式設定為 [**自動** **]** 。 
 
     ![佈建](./media/docusign-provisioning-tutorial/provisioning.png)
 
@@ -82,7 +82,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. 在 [通知電子郵件]**** 欄位中，輸入應收到佈建錯誤通知的個人或群組之電子郵件地址，然後勾選 [發生失敗時傳送電子郵件通知] 核取方塊。
 
-1. 按一下"**保存"。**
+1. 按一下 [**儲存]。**
 
 1. 在 [對應] 區段中，選取 [同步處理 Azure Active Directory 使用者至 DocuSign]****。
 
@@ -90,7 +90,7 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 1. 若要啟用 DocuSign 的 Azure AD 佈建服務，在 [設定] 區段中，將 [佈建狀態]**** 變更為 [開啟]****
 
-1. 按一下"**保存"。**
+1. 按一下 [**儲存]。**
 
 這會啟動在 [使用者和群組] 區段中指派給 DocuSign 之任何使用者的首次同步處理。 初始同步處理會比後續同步處理花費更多時間執行，只要服務正在執行，這大約每 40 分鐘便會發生一次。 您可以使用 [同步處理詳細資料]**** 區段來監視進度，並依循連結前往佈建活動記錄，此記錄會描述您 DocuSign 應用程式上佈建服務所執行的所有動作。
 
@@ -98,6 +98,6 @@ Azure Active Directory 會使用稱為「指派」的概念，來判斷哪些使
 
 ## <a name="additional-resources"></a>其他資源
 
-* [管理企業應用的使用者帳戶預配](tutorial-list.md)
-* [什麼是使用 Azure 活動目錄的應用程式訪問和單一登入？](../manage-apps/what-is-single-sign-on.md)
-* [配置單點登錄](docusign-tutorial.md)
+* [管理企業應用程式的使用者帳戶布建](tutorial-list.md)
+* [什麼是搭配 Azure Active Directory 的應用程式存取和單一登入？](../manage-apps/what-is-single-sign-on.md)
+* [設定單一登入](docusign-tutorial.md)

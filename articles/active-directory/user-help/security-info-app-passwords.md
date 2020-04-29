@@ -1,6 +1,6 @@
 ---
-title: 從安全資訊（預覽）頁面創建應用密碼 - Azure AD
-description: 創建自動生成的密碼（應用密碼），以便用於組織中的任何非瀏覽器應用或任何不支援雙重驗證的應用。 此應用程式密碼與一般密碼不同，可以在安全性資訊頁面上設定。
+title: 從 [安全性資訊（預覽）] 頁面建立應用程式密碼-Azure AD
+description: 建立自動產生的密碼（應用程式密碼），以用於任何非瀏覽器應用程式，或在您的組織中不支援雙因素驗證的任何應用程式。 此應用程式密碼與一般密碼不同，可以在安全性資訊頁面上設定。
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: curtand
 ms.openlocfilehash: 787fa67ee77997fd1f9967db3abdbfc83d4ffad2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77064065"
 ---
-# <a name="create-app-passwords-from-the-security-info-preview-page"></a>從"安全資訊（預覽）"頁面創建應用密碼
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>從 [安全性資訊（預覽）] 頁面建立應用程式密碼
 
 某些應用程式 (例如 Outlook 2010) 不支援雙步驟驗證。 缺乏支援的意思就是，如果您在組織中使用雙步驟驗證，應用程式會無法運作。 若要解決此問題，您可以建立自動產生的密碼來與每個非瀏覽器應用程式搭配使用，此密碼與您的一般密碼不同。
 
@@ -29,7 +29,7 @@ ms.locfileid: "77064065"
 
 使用應用程式密碼時，請務必記住：
 
-- 應用密碼是自動生成的，應創建並輸入每個應用一次。
+- 應用程式密碼會自動產生，且應針對每個應用程式建立並輸入一次。
 
 - 每位使用者的密碼以 40 組為限。 如果您在到達該限制之後嘗試建立一個密碼，系統就會提示您先刪除現有的密碼，然後才能建立新密碼。
 

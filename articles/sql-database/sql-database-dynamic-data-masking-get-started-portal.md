@@ -1,5 +1,5 @@
 ---
-title: Azure 門戶：動態資料遮罩
+title: Azure 入口網站：動態資料遮罩
 description: 如何開始在 Azure 入口網站中使用 SQL Database 動態資料遮罩
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/04/2018
 ms.openlocfilehash: a8098b31c6b389b640fc03e756da44c70d9f3a70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76722113"
 ---
 # <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>透過 Azure 入口網站開始使用 SQL Database 動態資料遮罩
@@ -24,7 +24,7 @@ ms.locfileid: "76722113"
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>使用 Azure 入口網站為您的資料庫設定動態資料遮罩
 
-1. 在 啟動 Azure[https://portal.azure.com](https://portal.azure.com)門戶。
+1. 啟動 Azure 入口網站，網址[https://portal.azure.com](https://portal.azure.com)為。
 2. 導覽至您要遮罩處理的敏感性資料所在資料庫的設定頁面。
 3. 按一下 [動態資料遮罩]**** 圖格，以啟動 [動態資料遮罩]**** 組態頁面。
 

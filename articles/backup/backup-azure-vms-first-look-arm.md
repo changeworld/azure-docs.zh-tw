@@ -1,23 +1,23 @@
 ---
 title: 從 VM 設定備份 Azure VM
-description: 在本文中，瞭解如何使用 Azure 備份服務備份奇異 Azure VM 或多個 Azure VM。
+description: 在本文中，您將瞭解如何使用 Azure 備份服務來備份單一 Azure VM 或多個 Azure Vm。
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.openlocfilehash: 72d6e5657add3e815bb0d77fadbdbc716712bee5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76705440"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>從 VM 設定備份 Azure VM
 
 本文將說明如何使用 [Azure 備份](backup-overview.md)服務來備份 Azure VM。 您可以使用幾個方法來備份 Azure VM：
 
-- 單個 Azure VM：本文中的說明介紹如何直接從 VM 設置備份 Azure VM。
-- 多個 Azure VM：您可以設置恢復服務保存庫並為多個 Azure VM 配置備份。 針對此案例，請依照[本文](backup-azure-arm-vms-prepare.md)中的指示。
+- 單一 Azure VM：本文中的指示會說明如何直接從 VM 設定來備份 Azure VM。
+- 多個 Azure Vm：您可以設定復原服務保存庫，並為多個 Azure Vm 設定備份。 針對此案例，請依照[本文](backup-azure-arm-vms-prepare.md)中的指示。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 1. [了解](backup-architecture.md#how-does-azure-backup-work)備份的運作方式，以及[確認](backup-support-matrix.md#azure-vm-backup-support)支援需求。
 2. [取得 Azure VM 備份的概觀](backup-azure-vms-introduction.md)。
@@ -31,7 +31,7 @@ ms.locfileid: "76705440"
 
 ## <a name="back-up-from-azure-vm-settings"></a>從 Azure VM 設定進行備份
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 按一下 [所有服務]****，然後在 [篩選] 中輸入**虛擬機器**，然後按一下 [虛擬機器]****。
 3. 在 VM 清單中，選取要備份的 VM。
 4. 在 VM 功能表中，按一下 [備份]****。
@@ -49,7 +49,7 @@ ms.locfileid: "76705440"
 
    ![選取備份原則](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
-7. 按一下**啟用備份**。 這會使備份原則與 VM 相關聯。
+7. 按一下 [**啟用備份**]。 這會使備份原則與 VM 相關聯。
 
     ![啟用備份按鈕](./media/backup-azure-vms-first-look-arm/vm-management-menu-enable-backup-button.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "76705440"
 
 ## <a name="run-a-backup-immediately"></a>立即執行備份
 
-1. 要立即運行備份，請在 VM 功能表中按一下**Backup** > **"立即備份**備份"。
+1. 若要立即執行備份，請在 VM 功能表中，按一下 [立即**備份** > **備份**]。
 
     ![執行備份](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
@@ -81,9 +81,9 @@ ms.locfileid: "76705440"
 >[!NOTE]
 > **Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇性磁片備份和還原。**
 >
->如今，Azure 備份支援使用虛擬機器備份解決方案一起備份 VM 中的所有磁片（作業系統和資料）。 使用排除磁片功能，您可以選擇從 VM 中的許多資料磁片備份一個或多個資料磁片。 這為備份和恢復需求提供了高效且經濟高效的解決方案。 每個復原點都包含備份操作中包含的磁片的資料，這進一步允許您在還原操作期間從給定復原點復原磁碟子集。 這適用于從快照和保存庫還原。
+>目前，Azure 備份支援使用虛擬機器備份解決方案，同時備份 VM 中的所有磁片（作業系統和資料）。 使用 [排除磁片] 功能時，您可以選擇從 VM 中的多個資料磁片備份一或數個。 這為您的備份和還原需求提供有效率且符合成本效益的解決方案。 每個復原點都包含備份作業中包含的磁片資料，這可讓您在還原作業期間，擁有從指定復原點還原的磁片子集。 這適用于從快照集和保存庫還原兩者。
 >
->**要註冊預覽版，請寫信給我們：AskAzureBackupTeam@microsoft.com**
+>**若要註冊預覽版，請于前寫信給我們AskAzureBackupTeam@microsoft.com**
 
 ## <a name="next-steps"></a>後續步驟
 

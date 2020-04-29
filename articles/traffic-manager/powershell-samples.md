@@ -1,6 +1,6 @@
 ---
 title: 流量管理員的 Azure PowerShell 範例 | Microsoft Docs
-description: 使用此示例，使用 Azure PowerShell 部署和配置 Azure 流量管理器。
+description: 使用此範例時，請使用 Azure PowerShell 來部署和設定 Azure 流量管理員。
 services: traffic-manager
 documentationcenter: traffic-manager
 author: rohinkoul
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: rohink
 ms.openlocfilehash: 25864e3b419d86cbe1ec816bea4438958ca33124
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76934539"
 ---
 # <a name="azure-powershell-samples-for-traffic-manager"></a>流量管理員的 Azure PowerShell 範例

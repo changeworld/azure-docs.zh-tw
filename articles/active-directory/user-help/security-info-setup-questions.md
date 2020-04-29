@@ -1,6 +1,6 @@
 ---
-title: 將安全問題設置為驗證方法 - Azure AD
-description: 如何設置安全資訊（預覽）頁面，使用預定義的安全問題作為驗證方法驗證您的身份。
+title: 將安全性問題設定為您的驗證方法-Azure AD
+description: 如何設定您的安全性資訊（預覽）頁面，以使用預先定義的安全性問題做為驗證方法來驗證您的身分識別。
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: curtand
 ms.openlocfilehash: 236f1e4e41488b926d9fc2e5e717e68090a0ed7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77063963"
 ---
-# <a name="set-up-security-questions-as-your-verification-method"></a>將安全問題設置為驗證方法
+# <a name="set-up-security-questions-as-your-verification-method"></a>將安全性問題設定為您的驗證方法
 
 您可以遵循下列步驟來新增密碼重設方法。 在您首次將此設定好之後，即可返回 [安全性資訊]**** 頁面來新增、更新或刪除安全性資訊。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->如果看不到安全問題選項，則您的組織可能不允許對密碼重設方法使用此選項。 在這種情況下，您需要選擇其他方法或聯繫組織的説明台以尋求更多説明。
+>如果您沒有看到 [安全性問題] 選項，可能是您的組織不允許您將此選項用於您的密碼重設方法。 在此情況下，您必須選擇其他方法，或洽詢貴組織的技術支援人員以取得更多協助。
 
 ## <a name="security-verification-versus-password-reset-authentication"></a>安全性驗證與密碼重設驗證
 
@@ -51,7 +51,7 @@ ms.locfileid: "77063963"
 >
 > 如果您未看到安全性問題選項，可能是因為您的組織不允許您使用安全性問題進行驗證。 如果發生這種情況，您將必須選擇其他方法，或連絡您的系統管理員以取得更多協助。
 >
-> 不允許管理員帳戶使用安全問題作為密碼重設方法。 如果您作為管理員級帳戶登錄，您將看不到這些選項。
+> 系統管理員帳戶不允許使用安全性問題做為密碼重設方法。 如果您以系統管理員層級帳戶登入，將不會看到這些選項。
 
 ### <a name="to-set-up-your-security-questions"></a>設定安全性問題
 
@@ -98,7 +98,7 @@ ms.locfileid: "77063963"
 
 - **行動裝置或公司電話。** 輸入您的行動裝置號碼，然後等候來電以進行雙步驟驗證或密碼重設。 如需如何透過電話號碼驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用電話](security-info-setup-phone-number.md)。
 
-- **安全金鑰。** 註冊相容 Microsoft 的安全金鑰並將其與 PIN 一起用於兩步驗證或密碼重設。 有關如何使用安全金鑰驗證身份的分步說明，請參閱[設置安全資訊以使用安全金鑰](security-info-setup-security-key.md)。
+- **安全性金鑰。** 註冊與 Microsoft 相容的安全性金鑰，並使用它搭配 PIN 進行雙步驟驗證或密碼重設。 如需如何使用安全性金鑰驗證您身分識別的逐步指示，請參閱[將安全性資訊設定為使用安全性金鑰](security-info-setup-security-key.md)。
 
 - **電子郵件地址。** 輸入您的公司或學校電子郵件地址以接收用於密碼重設的電子郵件。 此選項不適用於雙步驟驗證。 如需如何設定電子郵件的逐步指示，請參閱[將安全性資訊設定為使用電子郵件](security-info-setup-email.md)。
 

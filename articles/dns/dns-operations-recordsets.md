@@ -15,19 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: rohink
 ms.openlocfilehash: b9244d9b2bdc9cb20195bbc103c0b1eb48a9de63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76932537"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>使用 Azure PowerShell 管理 Azure DNS 中的 DNS 記錄和記錄集
 
 > [!div class="op_single_selector"]
-> * [Azure 門戶](dns-operations-recordsets-portal.md)
-> * [Azure 經典 CLI](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure 入口網站](dns-operations-recordsets-portal.md)
+> * [Azure 傳統 CLI](dns-operations-recordsets-cli-nodejs.md)
 > * [Azure CLI](dns-operations-recordsets-cli.md)
-> * [電源外殼](dns-operations-recordsets.md)
+> * [PowerShell](dns-operations-recordsets.md)
 
 本文說明如何使用 Azure PowerShell 來管理 DNS 區域的 DNS 記錄。 也可以使用跨平台 [Azure CLI](dns-operations-recordsets-cli.md) 或 [Azure 入口網站](dns-operations-recordsets-portal.md)來管理 DNS 記錄。
 
@@ -46,7 +46,7 @@ ms.locfileid: "76932537"
 
 ## <a name="create-a-new-dns-record"></a>建立新的 DNS 區域
 
-如果新記錄的名稱和類型與現有記錄相同，則需要[將其添加到現有記錄集](#add-a-record-to-an-existing-record-set)。 否則，如果新記錄的名稱和類型與現有記錄不同，則必須建立新的記錄集。 
+如果新記錄的名稱和類型與現有記錄相同，您需要[將它加入至現有的記錄集](#add-a-record-to-an-existing-record-set)。 否則，如果新記錄的名稱和類型與現有記錄不同，則必須建立新的記錄集。 
 
 ### <a name="create-a-records-in-a-new-record-set"></a>在新的記錄集中建立 'A' 記錄
 
