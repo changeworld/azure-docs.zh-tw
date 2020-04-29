@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 2676dbf72309eeb51be1f08e7bae2c1502cc671e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280196"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>在發佈入口網站中設定您的應用程式
@@ -20,7 +20,7 @@ ms.locfileid: "80280196"
 
 ## <a name="login-and-create-a-new-offer"></a>登入並建立新的供應項目
 
-1. 登錄到[雲合作夥伴門戶](https://cloudpartner.azure.com/)。
+1. 登入[Cloud Partner 入口網站](https://cloudpartner.azure.com/)。
 2. 從左側導覽列，按一下 [+ 新增供應項目] 並選取 [Dynamics 365 for Customer Engagement]。
 
 ![選取新的供應項目](./media/CRMScreenShot14.png)
@@ -29,7 +29,7 @@ ms.locfileid: "80280196"
 
 ![新增供應項目畫面](./media/CRMScreenShot15.png)
 
-1. 「編輯器」檢視左側中會出現需要填寫的「表單」。 每個"表單"由一組要填寫的欄位組成。所需欄位用紅色星號 （ ）\*標記。
+1. 「編輯器」檢視左側中會出現需要填寫的「表單」。 每個「表單」都包含一組要填寫的欄位。必要欄位會以紅色星號（\*）標示。
 
 製作 Dynamics 365 for Customer Engagement 供應項目，有四個主要的表單
 
@@ -46,15 +46,15 @@ ms.locfileid: "80280196"
 
 這是在發行者設定檔內供應項目的唯一識別碼。 此識別碼會出現在產品 URL 中。 此識別碼只能包含小寫英數字元或連字號 (-)。 此識別碼不能以連字號結尾，且不能超過 50 個字元。 供應項目上架後，此欄位便會鎖住。
 
-例如，如果發佈商 **"contoso"** 發行者創建報價**ID"示例 WebApp"** 的要約，它將在 AppSource 中顯示為"HTTPs：/appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"\/
+例如，如果「 **contoso** 」發行者建立了供應專案識別碼為 **"sample-WebApp"** 的供應專案，則會在 AppSource 中顯示為 "HTTPs：\//appsource.microsoft.com/marketplace/apps/contoso.sample-WebApp?tab=Overview"
 
 ### <a name="publisher-id"></a>發行者識別碼
 
 此下拉式表單，可讓您選擇您想要在什麼發行者設定檔之下發佈此供應項目。 供應項目上架後，此欄位便會鎖住。
 
-### <a name="name"></a>名稱
+### <a name="name"></a>Name
 
-您供應項目的顯示名稱。 這是將在[AppSource](https://appsource.microsoft.com/)中顯示的名稱。 它最多不能超過 50 個字元。
+您供應項目的顯示名稱。 這是要在[AppSource](https://appsource.microsoft.com/)中顯示的名稱。 它最多不能超過 50 個字元。
 
 按一下 [儲存] 即可儲存您的進度。 下一步是為您的供應項目新增技術資訊。
 
@@ -77,11 +77,11 @@ ms.locfileid: "80280196"
 
 * 您套件的檔案名稱：建立您 CRM AppSource 套件的 zip 檔案時，於上一步所建立的檔案名稱。 在上述範例中，其為 "Microsoft\_SamplePackage.zip"。
 * 您套件位置的 URL：此為包含上方指定套件檔案名稱的 Azure 儲存體帳戶 URL。 其為上一節步驟 9 時所建立的 URL。
-* 您套件檔案中有一個以上的 CRM 套件嗎：**只有**當您以其他套件支援 CRM 的多個版本時，才請選取 [是]。 對大部分的合作夥伴來說，應為 [否]。 若選擇了 [是]，則需要為每一個解決方案的版本，建立 AppSource 套件。 _注意：這不是問你是否有多個**zip**檔。如果您有多個解決方案.ZIP 檔案，但只有一個版本，您仍應選擇"否"。包裝工具會自動將這些組合在一起。_
+* 您套件檔案中有一個以上的 CRM 套件嗎：**只有**當您以其他套件支援 CRM 的多個版本時，才請選取 [是]。 對大部分的合作夥伴來說，應為 [否]。 若選擇了 [是]，則需要為每一個解決方案的版本，建立 AppSource 套件。 _注意：這不會詢問您是否有多個**zip**檔案。如果您有多個解決方案 .zip 檔案，但只有一個版本，您仍然應該選取 [否]。封裝工具會自動將這些整合在一起。_
 
 ### <a name="crm-package-availability"></a>CRM 套件可用性
 
-在本節中，請選取可使用您套件的 CRM 區域。 有關哪些 CRM 區域服務于哪些國家/地區的資訊，請參閱連結：[https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
+在本節中，請選取可使用您套件的 CRM 區域。 如需哪些 CRM 區域提供哪些國家/地區的相關資訊，請參閱連結：[https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 注意：部署至德國「主權與 US Gov 雲端」主權區域，需要特殊權限且認證期間需要進行驗證
 
@@ -117,7 +117,7 @@ ms.locfileid: "80280196"
 
 ### <a name="supported-languages"></a>支援的語言
 
-選取您應用程式支援的語言。 如果您的應用支援此清單中未包含的其他語言，請繼續發佈您的優惠，併發送電子郵件至：[appsource@microsoft.com](mailto:appsource@microsoft.com)告知我們。
+選取您應用程式支援的語言。 如果您的應用程式支援不在此清單上的其他語言，請繼續發佈您的供應專案， [appsource@microsoft.com](mailto:appsource@microsoft.com)並傳送電子郵件給我們：以讓我們知道。
 
 ### <a name="app-version"></a>應用程式版本
 
@@ -167,7 +167,7 @@ ms.locfileid: "80280196"
 
 輸入您應用程式隱私權原則的 URL
 
-### <a name="terms-of-use"></a>使用規定
+### <a name="terms-of-use"></a>使用條款
 
 輸入您應用程式的使用條款。 AppSource 客戶必須先接受這些條款，才可試用您的應用程式
 
@@ -179,7 +179,7 @@ ms.locfileid: "80280196"
 
 選取將儲存您潛在客戶的 CRM 系統。 若您使用下列其中一個 CRM 系統，請於此處選取 [Azure 資料表]： Salesforce、Marketo 與 Microsoft Dynamics CRM。 我們會於您於此處所選的 CRM 系統上，寫入在 AppSource (潛在客戶) 上試用您應用程式的終端使用者詳細資料。 請根據您所選取的 CRM 系統，按一下下面相對應的 URL 來取得完成下一組欄位的資訊
 
-* [Azure 表](./cloud-partner-portal-lead-management-instructions-azure-table.md)
+* [Azure 資料表](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 * [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)
 * [Microsoft Dynamics CRM](./cloud-partner-portal-lead-management-instructions-dynamics.md)
 * [Salesforce](./cloud-partner-portal-lead-management-instructions-salesforce.md)

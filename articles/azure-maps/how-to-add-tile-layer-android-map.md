@@ -1,6 +1,6 @@
 ---
-title: 向 Android 地圖添加切片圖層 |微軟 Azure 地圖
-description: 在本文中，您將學習如何使用 Microsoft Azure 地圖 Android SDK 在地圖上呈現切片圖層。
+title: 將圖格圖層新增至 Android 地圖 |Microsoft Azure 對應
+description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Android SDK，在地圖上轉譯磚圖層。
 author: philmea
 ms.author: philmea
 ms.date: 04/26/2019
@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: f98598bd1307bb1b46ff23814780c5f809b9ac90
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335569"
 ---
-# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure 地圖 Android SDK 將切片圖層添加到地圖
+# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>使用 Azure 地圖服務 Android SDK 將磚圖層新增至地圖
 
-本文演示如何使用 Azure 地圖 Android SDK 在地圖上呈現切片圖層。 圖格圖層可讓您在 Azure 地圖服務的地圖底圖上覆蓋影像。 您可以在[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)文件中找到有關 Azure 地圖服務圖格顯示系統的詳細資訊。
+本文說明如何使用 Azure 地圖服務 Android SDK，在地圖上轉譯磚圖層。 圖格圖層可讓您在 Azure 地圖服務的地圖底圖上覆蓋影像。 您可以在[縮放層級和圖格格線](zoom-levels-and-tile-grid.md)文件中找到有關 Azure 地圖服務圖格顯示系統的詳細資訊。
 
-磁貼圖層從伺服器載入切片。 這些圖像可以像伺服器上的任何其他圖像一樣，使用切片層可以理解的命名約定進行預渲染和存儲。 或者，這些圖像可以使用動態服務進行渲染，該服務可近乎即時地生成圖像。 Azure 地圖切片層類支援三種不同的切片服務命名約定：
+磚圖層會從伺服器載入磚。 您可以使用圖格圖層所瞭解的命名慣例，預先轉譯和儲存這些映射，就像伺服器上的任何其他影像一樣。 或者，您可以使用動態服務來呈現這些映射，以近乎即時的方式產生影像。 Azure 地圖服務 TileLayer 類別支援三種不同的磚服務命名慣例：
 
 * X、Y、縮放標記法 - 以縮放層級為基礎，在圖格格線中的圖格上，x 是資料行位置，而 y 是資料列位置。
 * Quadkey 標記法 - 將 x、y、縮放資訊結合成單一字串值，以作為圖格的唯一識別碼。
@@ -35,20 +35,20 @@ ms.locfileid: "80335569"
 * `{z}` 圖格的縮放層級。 也需要 `{x}` 和 `{y}`。
 * `{quadkey}` -圖格 quadkey 識別碼，以 Bing Maps 圖格系統的命名慣例為基礎。
 * `{bbox-epsg-3857}` - 使用 `{west},{south},{east},{north}` 格式的週框方塊字串，位在 EPSG 3857 空間參考系統中。
-* `{subdomain}`- 如果指定子域值，則子域值的預留位置。
+* `{subdomain}`-如果已指定子域值，則為子域值的預留位置。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-要完成本文中的過程，您需要安裝[Azure 地圖 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)來載入地圖。
+若要完成本文中的程式，您必須安裝[Azure 地圖服務 Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library)以載入對應。
 
 
-## <a name="add-a-tile-layer-to-the-map"></a>向地圖添加切片圖層
+## <a name="add-a-tile-layer-to-the-map"></a>將圖格圖層新增至地圖
 
- 此示例演示如何創建指向一組切片的切片圖層。 這些切片使用"x、y、縮放"切片系統。 此圖格圖層的來源是天氣雷達覆疊圖，資料來源：[愛荷華州立大學的愛荷華州環境氣象網 (Iowa Environmental Mesonet of Iowa State University)](https://mesonet.agron.iastate.edu/ogc/)。 
+ 這個範例會示範如何建立指向一組磚的磚圖層。 這些磚使用「x，y，zoom」並排顯示系統。 此圖格圖層的來源是天氣雷達覆疊圖，資料來源：[愛荷華州立大學的愛荷華州環境氣象網 (Iowa Environmental Mesonet of Iowa State University)](https://mesonet.agron.iastate.edu/ogc/)。 
 
-您可以按照以下步驟向地圖添加切片圖層。
+您可以遵循下列步驟，將圖格圖層新增至地圖。
 
-1. **>activity_main.xml 編輯>佈局**，以便它看起來像下面的佈局：
+1. 編輯**res > layout > activity_main .xml** ，使其看起來如下所示：
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ ms.locfileid: "80335569"
     </FrameLayout>
     ```
 
-2. 將以下程式碼片段複製到類`MainActivity.java`的**onCreate（）** 方法中。
+2. 將下列程式碼片段複製到您`MainActivity.java`類別的**onCreate （）** 方法中。
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ ms.locfileid: "80335569"
     });
     ```
     
-    上面的程式碼片段首先使用**onReady（）** 回檔方法獲取 Azure 地圖映射控制項實例。 然後，它創建`TileLayer`一個物件，並將格式化的**xyz**磁貼`tileUrl`URL 傳遞到該選項中。 圖層的不極性設置為`0.8`，並且由於正在使用的磁貼服務的切片為 256 圖元切片，因此此資訊將傳遞到選項中。 `tileSize` 然後，切片圖層將傳遞到地圖圖層管理器中。
+    上述程式碼片段會先使用**onReady （）** 回呼方法來取得 Azure 地圖服務的地圖控制項實例。 接著，它會`TileLayer`建立物件，並將格式化的**xyz**磚 URL `tileUrl`傳遞到選項中。 圖層的不透明度設定為`0.8` ，因為所使用之磚服務的磚是256圖元磚，所以這項資訊會傳遞到`tileSize`選項中。 圖格圖層接著會傳遞至 maps 圖層管理員。
 
-    添加上面的程式碼片段後，應`MainActivity.java`如下所示：
+    新增上述程式碼片段之後，您`MainActivity.java`的看起來應該如下所示：
     
     ```Java
     package com.example.myapplication;
@@ -168,15 +168,15 @@ ms.locfileid: "80335569"
     }
     ```
 
-如果現在運行應用程式，您應該在地圖上看到一條線，如下所示：
+如果您現在執行應用程式，您應該會在地圖上看到一行，如下所示：
 
 <center>
 
-![安卓地圖線](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
+![Android 地圖線條](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱以下文章，瞭解有關設置地圖樣式的方法
+請參閱下列文章，以深入瞭解設定地圖樣式的方式
 
 > [!div class="nextstepaction"]
-> [更改 Android 地圖中的地圖樣式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)
+> [變更 Android 地圖中的地圖樣式](https://docs.microsoft.com/azure/azure-maps/set-android-map-styles)

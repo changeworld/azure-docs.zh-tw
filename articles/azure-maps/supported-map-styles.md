@@ -1,6 +1,6 @@
 ---
-title: 支援的地圖樣式 |微軟 Azure 地圖
-description: 在本文中，您將瞭解 Microsoft Azure 地圖支援的不同地圖呈現樣式。
+title: 支援的地圖樣式 |Microsoft Azure 對應
+description: 在本文中，您將瞭解 Microsoft Azure 對應所支援的不同地圖轉譯樣式。
 author: philmea
 ms.author: philmea
 ms.date: 05/06/2019
@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 2eafe3c16a89723d55ec52fde785e9ec69e45e0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334029"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure 地圖服務支援的地圖樣式
@@ -21,20 +21,20 @@ ms.locfileid: "80334029"
 ## <a name="road"></a>路段
 **路段**圖是標準的地圖，其中顯示道路、自然和人工景觀，以及這些景觀的標籤。
 
-![路線圖樣式](./media/supported-map-styles/road.png)
+![道路圖樣式](./media/supported-map-styles/road.png)
 
 **適用 API：**
 * [地圖影像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [地圖磁貼](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK 地圖控制項
-* 安卓地圖控制項
+* Android 地圖控制項
 
-## <a name="blank-and-blank_accessible"></a>空白和blank_accessible
+## <a name="blank-and-blank_accessible"></a>空白和 blank_accessible
 
-**空白**和**blank_accessible**地圖樣式提供了一個空白畫布，用於在其中視覺化資料。 **blank_accessible**樣式將繼續提供帶有地圖位置詳細資訊的螢幕閱讀器更新，即使不顯示底地圖也是如此。
+[**空白**] 和 [ **blank_accessible**地圖樣式] 提供了空白畫布，可在其上將資料視覺化。 即使未顯示基底地圖， **blank_accessible**樣式仍會繼續提供具有地圖位置詳細資料的螢幕閱讀程式更新。
 
 > [!Note]
-> 在 Web SDK 中，您可以通過設置地圖 DIV 元素的 CSS`background-color`樣式來更改地圖的背景顏色。
+> 在 web SDK 中，您可以藉由設定地圖 DIV 元素的 CSS `background-color`樣式來變更地圖的背景色彩。
 
 **適用 API：**
 * Web SDK 地圖控制項
@@ -42,66 +42,66 @@ ms.locfileid: "80334029"
 ## <a name="satellite"></a>衛星 
 **衛星**樣式是衛星和空拍影像的結合。
 
-![衛星瓷磚地圖樣式](./media/supported-map-styles/satellite.png)
+![附屬磚地圖樣式](./media/supported-map-styles/satellite.png)
 
 **適用 API：**
 * [衛星底圖](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * Web SDK 地圖控制項
-* 安卓地圖控制項
+* Android 地圖控制項
 
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 此地圖樣式包含道路及覆蓋在衛星和空拍影像上的標籤。
 
-![satellite_road_labels地圖樣式](./media/supported-map-styles/satellite-road-labels.png)
+![satellite_road_labels 地圖樣式](./media/supported-map-styles/satellite-road-labels.png)
 
 **適用 API：**
 * Web SDK 地圖控制項
-* 安卓地圖控制項
+* Android 地圖控制項
 
 ## <a name="grayscale_dark"></a>grayscale_dark
 **深灰階**是路段圖樣式的深色版本。
 
-![gray_scale地圖樣式](./media/supported-map-styles/grayscale-dark.png)
+![gray_scale 地圖樣式](./media/supported-map-styles/grayscale-dark.png)
 
 **適用 API：**
 * [地圖影像](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
-* [地圖磁貼](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK 地圖控制項 
-* 安卓地圖控制項
+* Android 地圖控制項
 
 
 ## <a name="grayscale_light"></a>grayscale_light
-**灰度光**是路線圖樣式的淺色版本。
+「**灰階光線**」是道路地圖樣式的輕量版本。
 
-![灰度光貼圖樣式](./media/supported-map-styles/grayscale-light.png)
+![灰階 light 地圖樣式](./media/supported-map-styles/grayscale-light.png)
 
 **適用 API：**
 * Web SDK 地圖控制項
-* 安卓地圖控制項
+* Android 地圖控制項
 
 
 ## <a name="night"></a>夜間
 **夜間**是路段圖樣式的深色版本，具有彩色的道路和符號。
 
-![夜地圖樣式](./media/supported-map-styles/night.png)
+![夜間地圖樣式](./media/supported-map-styles/night.png)
 
 **適用 API：**
 * Web SDK 地圖控制項
-* 安卓地圖控制項
+* Android 地圖控制項
 
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 **路段陰影起伏圖**是以地球等高線完成的「Azure 地圖服務」的主要樣式。
 
-![底子浮雕地圖樣式](./media/supported-map-styles/shaded-relief.png)
+![陰影起伏圖樣式](./media/supported-map-styles/shaded-relief.png)
 
 **適用 API：**
-* [地圖磁貼](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+* [地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK 地圖控制項
-* 安卓地圖控制項
+* Android 地圖控制項
 
 ## <a name="high_contrast_dark"></a>high_contrast_dark
 
-**high_contrast_dark**是一種暗地圖樣式，與其他樣式相比對比度更高。
+**high_contrast_dark**是深色地圖樣式，其對比高於其他樣式。
 
 ![高對比深色地圖樣式](./media/supported-map-styles/high-contrast-dark.png)
 
@@ -110,7 +110,7 @@ ms.locfileid: "80334029"
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何在 Azure 地圖中設置地圖樣式：
+瞭解如何在 Azure 地圖服務中設定地圖樣式：
 
 > [!div class="nextstepaction"]
 > [選擇地圖樣式](https://docs.microsoft.com/azure/azure-maps/choose-map-style)

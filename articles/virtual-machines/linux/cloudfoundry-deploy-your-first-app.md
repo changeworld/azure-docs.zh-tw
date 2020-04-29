@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 06/14/2017
 ms.author: seanmck
 ms.openlocfilehash: 793a8f291be4fcca6fad19d486849253dddc089f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294796"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>將第一個應用程式部署到 Microsoft Azure 上的 Cloud Foundry
@@ -27,11 +27,11 @@ ms.locfileid: "80294796"
 - [直接部署開放原始碼 Cloud Foundry 套件][oss-cf-bosh]，方法是設定 [BOSH](https://bosh.io) 導向器，這是一個 VM，它會協調 Cloud Foundry 環境的部署。
 
 > [!IMPORTANT] 
-> 如果您正在從 Azure Marketplace 部署 PCF，請記下存取 Pivotal Apps Manager 所需的 SYSTEMDOMAINURL 和管理員認證，這兩個項目都在市集部署指南中提及。 需要這兩個項目才能完成本教學課程。 對於市場部署，SYSTEMDOMAINURL 的形式`https://system.*ip-address*.cf.pcfazure.com`為 。
+> 如果您正在從 Azure Marketplace 部署 PCF，請記下存取 Pivotal Apps Manager 所需的 SYSTEMDOMAINURL 和管理員認證，這兩個項目都在市集部署指南中提及。 需要這兩個項目才能完成本教學課程。 針對 marketplace 部署，SYSTEMDOMAINURL 的格式`https://system.*ip-address*.cf.pcfazure.com`為。
 
 ## <a name="connect-to-the-cloud-controller"></a>連線至 Cloud Controller
 
-Cloud Controller 是到 Cloud Foundry 環境以部署和管理應用程式的主要進入點。 核心 Cloud Controller API (CCAPI) 是 REST API，但是可以透過各種工具存取。 在此情況下，我們透過 [Cloud Foundry CLI][cf-cli] 與它互動。 您可以在 Linux、macOS 或 Windows 上安裝 CLI，但如果根本不希望安裝它，則可以在[Azure 雲外殼][cloudshell-docs]中預先安裝它。
+Cloud Controller 是到 Cloud Foundry 環境以部署和管理應用程式的主要進入點。 核心 Cloud Controller API (CCAPI) 是 REST API，但是可以透過各種工具存取。 在此情況下，我們透過 [Cloud Foundry CLI][cf-cli] 與它互動。 您可以在 Linux、macOS 或 Windows 上安裝 CLI，但如果您不想安裝它，則可預先安裝在[Azure Cloud Shell][cloudshell-docs]中。
 
 若要登入，請在您從市集部署取得的 SYSTEMDOMAINURL 前面加上 `api`。 由於預設部署使用自我簽署憑證，您也應該包含 `skip-ssl-validation` 參數。
 

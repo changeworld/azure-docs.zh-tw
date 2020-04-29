@@ -1,6 +1,6 @@
 ---
-title: 配置銷售隊伍的潛在客戶管理 |Azure 應用商店
-description: 為 Azure 應用商店客戶配置銷售隊伍上的潛在客戶管理。
+title: 設定 Salesforce 的潛在客戶管理 |Azure Marketplace
+description: 為 Azure Marketplace 客戶設定 Salesforce 上的潛在客戶管理。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
 ms.openlocfilehash: 4261f16cbe76a788f8a8a91445d432f2f810c4ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280247"
 ---
 # <a name="configure-lead-management-for-salesforce"></a>針對 Salesforce 設定潛在客戶管理
@@ -31,4 +31,4 @@ ms.locfileid: "80280247"
 5. 在 [建立 Web 到潛在客戶表單]**** 上，選取 [產生]**** ![Salesforce 產生](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce4.png)
 
 6. 複製範例中的 OID 並儲存。 您要在 Cloud Partner 入口網站上的 [物件識別碼]**** 欄位中貼上 OID。
-![銷售隊伍獲取 OID](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce5.png)
+![Salesforce 取得 OID](./media/cloud-partner-portal-lead-management-instructions-salesforce/salesforce5.png)

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 監視器查看指標
-description: 本文演示如何使用 Azure 門戶圖表和 Azure CLI 監視指標。
+title: 使用 Azure 監視器來查看計量
+description: 本文說明如何使用 Azure 入口網站圖表和 Azure CLI 監視計量。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,50 +14,50 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
 ms.openlocfilehash: c230e1e950bb924631032940642a6202acf4ade8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382931"
 ---
 # <a name="monitor-media-services-metrics"></a>監視媒體服務計量
 
-[Azure 監視器](../../azure-monitor/overview.md)使您能夠監視指標和診斷日誌，以説明您瞭解應用程式的性能。 有關此功能的詳細說明，並瞭解為什麼要使用 Azure 媒體服務指標和診斷日誌，請參閱[監視媒體服務指標和診斷日誌](media-services-metrics-diagnostic-logs.md)。
+[Azure 監視器](../../azure-monitor/overview.md)可讓您監視計量和診斷記錄，以協助您瞭解應用程式的執行狀況。 如需這項功能的詳細描述，以及查看為何要使用 Azure 媒體服務計量和診斷記錄，請參閱[監視媒體服務計量和診斷記錄](media-services-metrics-diagnostic-logs.md)。
 
-Azure 監視器提供了幾種與指標進行交互的方法，包括在門戶中繪製指標的圖表、通過 REST API 訪問指標或使用 Azure CLI 查詢指標。 本文演示如何使用 Azure 門戶圖表和 Azure CLI 監視指標。
+Azure 監視器提供數種與計量互動的方式，包括在入口網站中繪製圖表、透過 REST API 存取它們，或使用 Azure CLI 來查詢它們。 本文說明如何使用 Azure 入口網站圖表和 Azure CLI 監視計量。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - [建立媒體服務帳戶](create-account-cli-how-to.md)
-- 查看[監視器媒體服務指標和診斷日誌](media-services-metrics-diagnostic-logs.md)
+- 審查[監視器媒體服務計量和診斷記錄](media-services-metrics-diagnostic-logs.md)
 
-## <a name="view-metrics-in-azure-portal"></a>在 Azure 門戶中查看指標
+## <a name="view-metrics-in-azure-portal"></a>查看 Azure 入口網站中的計量
 
 1. 在 https://portal.azure.com 登入 Azure 入口網站。
-1. 導航到 Azure 媒體服務帳戶並選擇**指標**。
-1. 按一下 **"資源"** 框並選擇要監視指標的資源。
+1. 流覽至您的 Azure 媒體服務帳戶，然後選取 [**計量**]。
+1. 按一下 [**資源**] 方塊，然後選取您要監視計量的資源。
 
-    "**選擇資源**"視窗顯示在右側，並列出可供您使用的資源。 在這種情況下，您將看到：
+    [**選取資源**] 視窗會出現在右側，並顯示您可以使用的資源清單。 在此情況下，您會看到：
 
     * &lt;媒體服務帳戶名稱&gt;
-    * &lt;媒體服務帳戶名稱&gt;/&lt;流式處理終結點名稱&gt;
-    * &lt;存儲帳戶名稱&gt;
+    * &lt;媒體服務帳戶名稱&gt;/&lt;串流端點名稱&gt;
+    * &lt;儲存體帳戶名稱&gt;
 
-    選擇資源並按 **"應用**"。 有關受支援的資源和指標的詳細資訊，請參閱[監視媒體服務指標](media-services-metrics-diagnostic-logs.md)。
+    選取資源，**然後按 [** 套用]。 如需支援的資源和計量的詳細資訊，請參閱[監視媒體服務計量](media-services-metrics-diagnostic-logs.md)。
 
     ![計量](media/media-services-metrics/metrics02.png)
 
     > [!NOTE]
-    > 要在要監視指標的資源之間切換，請再次按一下 **"資源"** 框並重複此步驟。
-1. （可選）為您的圖表指定一個名稱（通過按下頂部的鉛筆編輯名稱）。
-1. 添加要查看的指標。
+    > 若要在您想要監視計量的資源之間切換，請再次按一下**資源**箱並重複此步驟。
+1. （選擇性）為您的圖表命名（按頂端的鉛筆來編輯名稱）。
+1. 新增您想要查看的度量。
 
     ![計量](media/media-services-metrics/metrics03.png)
-1. 您可以將圖表固定到儀表板。
+1. 您可以將圖表釘選到儀表板。
 
-## <a name="view-metrics-with-azure-cli"></a>使用 Azure CLI 查看指標
+## <a name="view-metrics-with-azure-cli"></a>使用 Azure CLI 來查看計量
 
-要使用 Azure CLI 獲取"出口"指標，將運行以下`az monitor metrics`命令：
+若要使用 Azure CLI 取得「輸出」計量，您可以執行下列`az monitor metrics`命令：
 
 ```azurecli-interactive
 az monitor metrics list --resource \
@@ -65,13 +65,13 @@ az monitor metrics list --resource \
    --metric "Egress"
 ```
 
-要獲取其他指標，將"出口"替換為您感興趣的指標名稱。
+若要取得其他計量，請將您感興趣的度量名稱替換為「輸出」。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-* [Azure 監視器指標](../../azure-monitor/platform/data-platform.md)
-* [使用 Azure 監視器 創建、查看和管理指標警報](../../azure-monitor/platform/alerts-metric.md)。
+* [Azure 監視器計量](../../azure-monitor/platform/data-platform.md)
+* [使用 Azure 監視器建立、查看及管理計量警示](../../azure-monitor/platform/alerts-metric.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-[診斷日誌](media-services-diagnostic-logs-howto.md)
+[診斷記錄](media-services-diagnostic-logs-howto.md)

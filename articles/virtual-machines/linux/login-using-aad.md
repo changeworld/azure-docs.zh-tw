@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 活動目錄憑據登錄到 Linux VM
-description: 瞭解如何創建和配置 Linux VM 以使用 Azure 活動目錄身份驗證登錄。
+title: 使用 Azure Active Directory 認證登入 Linux VM
+description: 瞭解如何建立和設定 Linux VM，以使用 Azure Active Directory authentication 進行登入。
 author: iainfoulds
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -8,19 +8,19 @@ ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
 ms.openlocfilehash: 2731693667d2129a72da72455c6bbdd74c277697
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80366493"
 ---
-# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>預覽：使用 Azure 活動目錄身份驗證登錄到 Azure 中的 Linux 虛擬機器
+# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>預覽：使用 Azure Active Directory authentication 登入 Azure 中的 Linux 虛擬機器
 
 若要在 Azure 中改善 Linux 虛擬機器 (VM) 的安全性，您可以整合 Azure Active Directory (AD) 驗證。 當您將 Azure AD 驗證用於 Linux VM 時，您將可集中控制和強制執行允許或拒絕存取 VM 的原則。 本文說明如何建立及設定使用 Azure AD 驗證的 Linux VM。
 
 
 > [!IMPORTANT]
-> Azure 活動目錄身份驗證當前處於公共預覽版中。
+> Azure Active Directory authentication 目前為公開預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 > 請在您預期要在測試後捨棄的測試虛擬機器上使用此功能。
 >
@@ -28,7 +28,7 @@ ms.locfileid: "80366493"
 
 在 Azure 中使用 Azure AD 驗證登入 Linux VM 有許多優點，包括：
 
-- **提高了安全性：**
+- **改良的安全性：**
   - 您可以使用公司 AD 認證來登入 Azure Linux VM。 不需要建立本機系統管理員帳戶及管理認證存留期。
   - 藉由減少您對本機系統管理員帳戶的依賴，您無須再擔心認證遺失/遭竊、使用者設定弱式認證等問題。
   - 針對 Azure AD 目錄而設定的密碼複雜性及密碼存留期原則，也有助於保護 Linux VM。
@@ -58,14 +58,14 @@ ms.locfileid: "80366493"
 >[!IMPORTANT]
 > 若要使用這項預覽功能，請您僅在支援的 Azure 區域中部署支援的 Linux 發行版。 Azure Government 或主權雲端不支援這項功能。
 >
-> 不支援在 Azure 庫伯奈斯服務 （AKS） 群集上使用此擴展。 有關詳細資訊，請參閱[AKS 的支援策略](../../aks/support-policies.md)。
+> 不支援在 Azure Kubernetes Service （AKS）叢集上使用此延伸模組。 如需詳細資訊，請參閱[AKS 的支援原則](../../aks/support-policies.md)。
 
 
-如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.31 版或更新版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，本教學課程會要求您執行 Azure CLI 2.0.31 版或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="network-requirements"></a>網路需求
 
-要為 Azure 中的 Linux VM 啟用 Azure AD 身份驗證，需要確保 VM 網路設定允許通過 TCP 埠 443 對以下終結點進行出站訪問：
+若要在 Azure 中啟用 Linux Vm 的 Azure AD 驗證，您必須確定您的 Vm 網路設定允許透過 TCP 埠443對下列端點進行輸出存取：
 
 * https:\//login.microsoftonline.com
 * https:\//login.windows.net
@@ -75,7 +75,7 @@ ms.locfileid: "80366493"
 * HTTPs：\//packages.microsoft.com
 
 > [!NOTE]
-> 目前，無法為使用 Azure AD 身份驗證啟用的 VM 配置 Azure 網路安全性群組。
+> 目前，您無法針對以 Azure AD authentication 啟用的 Vm 設定 Azure 網路安全性群組。
 
 ## <a name="create-a-linux-virtual-machine"></a>建立 Linux 虛擬機器
 
@@ -97,9 +97,9 @@ az vm create \
 ## <a name="install-the-azure-ad-login-vm-extension"></a>安裝 Azure AD 登入 VM 擴充功能。
 
 > [!NOTE]
-> 如果將此擴展部署到以前創建的 VM，請確保電腦至少分配了 1GB 的記憶體，否則擴展將無法安裝
+> 如果將此延伸模組部署到先前建立的 VM，請確定電腦已配置至少1GB 的記憶體，否則將無法安裝延伸模組
 
-要使用 Azure AD 憑據登錄到 Linux VM，請安裝 Azure 活動目錄登錄 VM 擴展。 VM 擴充功能是小型的應用程式，可在「Azure 虛擬機器」上提供部署後設定及自動化工作。 使用 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set)，將 *AADLoginForLinux* 擴充功能安裝在 *myResourceGroup* 資源群組中名為 *myVM* 的 VM 上：
+若要使用 Azure AD 認證登入 Linux VM，請安裝 Azure Active Directory 登入 VM 擴充功能。 VM 擴充功能是小型的應用程式，可在「Azure 虛擬機器」上提供部署後設定及自動化工作。 使用 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set)，將 *AADLoginForLinux* 擴充功能安裝在 *myResourceGroup* 資源群組中名為 *myVM* 的 VM 上：
 
 ```azurecli-interactive
 az vm extension set \
@@ -109,7 +109,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-成功安裝擴展後，將顯示 *"成功*"的*預配狀態*。 VM 需要正在運行的 VM 代理來安裝擴展。 有關詳細資訊，請參閱[VM 代理概述](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
+在 VM 上成功安裝延伸模組後，就會顯示 [*成功*] 的*provisioningState* 。 VM 需要執行中的 VM 代理程式才能安裝延伸模組。 如需詳細資訊，請參閱[VM 代理程式總覽](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>設定 VM 的角色指派
 
@@ -148,21 +148,21 @@ az role assignment create \
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-使用 Azure AD 認證登入 Azure Linux 虛擬機器。 `-l` 參數可讓您指定自己的 Azure AD 帳戶位址。 將示例帳戶替換為您自己的示例帳戶。 請以小寫輸入整個帳戶地址。 將示例 IP 位址替換為上一命令中的 VM 的公共 IP 位址。
+使用 Azure AD 認證登入 Azure Linux 虛擬機器。 `-l` 參數可讓您指定自己的 Azure AD 帳戶位址。 以您自己的帳戶取代範例帳戶。 請以小寫輸入整個帳戶地址。 使用上一個命令中 VM 的公用 IP 位址來取代範例 IP 位址。
 
 ```console
 ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-系統將提示您使用 中的[https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)一次性使用代碼登錄到 Azure AD。 複製一次性使用代碼並將其粘貼到設備登錄頁中。
+系統會提示您使用中的一次性程式碼登入 Azure AD [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)。 將一次性使用程式碼複製並貼到裝置登入頁面。
 
 出現提示時，請在登入頁面上輸入您的 Azure AD 登入認證。 
 
-成功驗證後，Web 瀏覽器中將顯示以下消息：`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+當您成功驗證之後，網頁瀏覽器中會顯示下列訊息：`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
 關閉瀏覽器視窗，返回 SSH 提示字元，然後按 **Enter** 鍵。 
 
-您此時會已使用指派的角色權限 (例如 [VM 使用者]** 或 [VM 系統管理員]**) 登入 Azure Linux 虛擬機器。 如果您的使用者帳戶已分配*虛擬機器管理員登錄*角色，則可以使用`sudo`運行需要根許可權的命令。
+您此時會已使用指派的角色權限 (例如 [VM 使用者]** 或 [VM 系統管理員]**) 登入 Azure Linux 虛擬機器。 如果您的使用者帳戶已獲指派*虛擬機器系統管理員登*入角色， `sudo`您可以使用來執行需要根許可權的命令。
 
 ## <a name="sudo-and-aad-login"></a>Sudo 和 AAD 登入
 
@@ -200,13 +200,13 @@ Access denied
 
 如果您已在網頁瀏覽器中成功完成驗證步驟，系統可能會立即提示您再次登入以全新的使用碼登入。 之所以發生此錯誤，通常是因為您在 SSH 提示字元中指定的登入名稱與您用來登入 Azure AD 的帳戶不相符。 若要更正此問題：
 
-- 確認在 SSH 提示字元中指定的登入名稱正確無誤。 登入名稱若有拼字錯誤，即可能導致您在 SSH 提示字元中指定的登入名稱與您用來登入 Azure AD 的帳戶不相符。 例如，鍵入*azuresuer\@contoso.onmicrosoft.com*而不是*azureuser\@contoso.onmicrosoft.com*。
+- 確認在 SSH 提示字元中指定的登入名稱正確無誤。 登入名稱若有拼字錯誤，即可能導致您在 SSH 提示字元中指定的登入名稱與您用來登入 Azure AD 的帳戶不相符。 例如，您輸入*azuresuer\@contoso.onmicrosoft.com* ，而不*是\@azureuser contoso.onmicrosoft.com*。
 - 如果您有多個使用者帳戶，請確定您在登入 Azure AD 時，並未在瀏覽器視窗中提供不同的使用者帳戶。
 - Linux 是區分大小寫的作業系統。 'Azureuser@contoso.onmicrosoft.com' 和 'azureuser@contoso.onmicrosoft.com' 之間的差異可能會導致不相符。 請確定您在 SSH 提示字元中指定 UPN 時使用的是正確的大小寫設定。
 
 ### <a name="other-limitations"></a>其他限制
 
-當前不支援通過嵌套組或角色指派繼承存取權限的使用者。 必須直接分配使用者或組[所需的角色指派](#configure-role-assignments-for-the-vm)。 例如，使用管理組或嵌套組角色指派不會授予允許使用者登錄的正確許可權。
+目前不支援透過嵌套群組或角色指派繼承存取權限的使用者。 使用者或群組必須直接被指派[所需的角色指派](#configure-role-assignments-for-the-vm)。 例如，使用管理群組或嵌套群組角色指派，並不會授與正確許可權以允許使用者登入。
 
 ## <a name="preview-feedback"></a>預覽意見反應
 

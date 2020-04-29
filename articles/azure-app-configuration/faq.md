@@ -1,6 +1,6 @@
 ---
-title: Azure 應用配置常見問題解答
-description: 有關 Azure 應用配置的常見問題
+title: Azure 應用程式組態常見問題
+description: 關於 Azure 應用程式組態的常見問題
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -8,123 +8,123 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
 ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80348779"
 ---
-# <a name="azure-app-configuration-faq"></a>Azure 應用配置常見問題解答
+# <a name="azure-app-configuration-faq"></a>Azure 應用程式組態常見問題
 
-本文回答了有關 Azure 應用配置的常見問題。
+本文會回答有關 Azure 應用程式組態的常見問題。
 
-## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>應用配置與 Azure 金鑰保存庫有什麼不同？
+## <a name="how-is-app-configuration-different-from-azure-key-vault"></a>應用程式組態與 Azure Key Vault 有何不同？
 
-應用配置可説明開發人員管理應用程式設置和控制功能可用性。 它旨在簡化處理複雜配置資料的許多工。
+應用程式組態可協助開發人員管理應用程式設定，並控制功能的可用性。 它的目的是要簡化處理複雜設定資料的許多工。
 
-應用配置支援：
+應用程式組態支援：
 
 - 階層命名空間
 - 標記
-- 廣泛的查詢
+- 大量查詢
 - 批次擷取
-- 專業化管理業務
+- 特殊化的管理作業
 - 功能管理使用者介面
 
-應用配置是對金鑰保存庫的補充，在大多數應用程式部署中，應並排使用這兩個庫。
+應用程式組態補充 Key Vault，而這兩者應該在大部分的應用程式部署中並存使用。
 
-## <a name="should-i-store-secrets-in-app-configuration"></a>我應該在應用配置中存儲機密嗎？
+## <a name="should-i-store-secrets-in-app-configuration"></a>我應該將秘密儲存在應用程式組態嗎？
 
-儘管應用配置提供了強化的安全性，但金鑰保存庫仍然是存儲應用程式機密的最佳位置。 金鑰保存庫提供硬體級加密、細微性訪問策略和管理操作（如證書輪換）。
+雖然應用程式組態提供強化的安全性，但 Key Vault 仍然是儲存應用程式秘密的最佳位置。 Key Vault 提供硬體層級加密、細微存取原則和管理作業（例如憑證輪替）。
 
-您可以創建應用配置值，這些值引用存儲在金鑰保存庫中的機密。 有關詳細資訊，請參閱在[ASP.NET 核心應用中使用金鑰保存庫引用](./use-key-vault-references-dotnet-core.md)。
+您可以建立應用程式組態值來參考儲存在 Key Vault 中的秘密。 如需詳細資訊，請參閱[在 ASP.NET Core 應用程式中使用 Key Vault 參考](./use-key-vault-references-dotnet-core.md)。
 
-## <a name="does-app-configuration-encrypt-my-data"></a>應用配置是否加密我的資料？
+## <a name="does-app-configuration-encrypt-my-data"></a>應用程式組態加密我的資料嗎？
 
-是。 應用配置加密它保留的所有金鑰值，並加密網路通信。 金鑰名稱和標籤用作檢索配置資料的索引，並且未加密。
+是。 應用程式組態會加密它所保留的所有金鑰值，並將網路通訊加密。 金鑰名稱和標籤會用來做為抓取設定資料的索引，而且不會加密。
 
-## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>應用配置與 Azure 應用服務設置有什麼不同？
+## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>應用程式組態與 Azure App Service 設定有何不同？
 
-Azure 應用服務允許您為每個應用服務實例定義應用設置。 這些設置作為環境變數傳遞給應用程式代碼。 如果需要，可以將設置與特定部署槽相關聯。 有關詳細資訊，請參閱[配置應用設置](/azure/app-service/configure-common#configure-app-settings)。
+Azure App Service 可讓您定義每個 App Service 實例的應用程式設定。 這些設定會以環境變數的形式傳遞給應用程式程式碼。 如有需要，您可以將設定與特定部署位置產生關聯。 如需詳細資訊，請參閱[設定應用程式設定](/azure/app-service/configure-common#configure-app-settings)。
 
-相反，Azure 應用配置允許您定義可在多個應用之間共用的設置。 這包括在應用服務中運行的應用以及其他平臺。 應用程式代碼通過 .NET 和 JAVA 的配置提供程式、通過 Azure SDK 或直接通過 REST API 訪問這些設置。
+相反地，Azure 應用程式組態可讓您定義可以在多個應用程式之間共用的設定。 這包括在 App Service 中執行的應用程式，以及其他平臺。 您的應用程式程式碼會透過 .NET 和 JAVA 的設定提供者、透過 Azure SDK，或直接透過 REST Api 來存取這些設定。
 
-您還可以在應用服務和應用配置之間導入和匯出設置。 此功能允許您根據現有應用服務設置快速設置新的應用配置存儲。 您還可以與依賴于應用服務設置的現有應用共用配置。
+您也可以在 App Service 和應用程式組態之間匯入和匯出設定。 這項功能可讓您根據現有的 App Service 設定快速地設定新的應用程式組態存放區。 您也可以與依賴 App Service 設定的現有應用程式共用設定。
 
-## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>應用配置中存儲的金鑰和值是否有任何大小限制？
+## <a name="are-there-any-size-limitations-on-keys-and-values-stored-in-app-configuration"></a>應用程式組態中儲存的索引鍵和值是否有任何大小限制？
 
-單個鍵值項的限制為 10 KB。
+單一索引鍵/值專案有 10 KB 的限制。
 
-## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>如何存儲多個環境（測試、暫存、生產等）的配置？
+## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>如何儲存多個環境的設定（測試、預備、生產等等）？
 
-您可以控制誰可以在每商店級別訪問應用配置。 對需要不同許可權的每個環境使用單獨的存儲。 此方法提供最佳的安全隔離。
+您可以控制誰可以存取每個商店層級的應用程式組態。 針對每個需要不同許可權的環境使用個別的存放區。 這種方法可提供最佳的安全性隔離。
 
-如果不需要環境之間的安全隔離，則可以使用標籤來區分配置值。 [使用標籤為不同的環境啟用不同的配置](./howto-labels-aspnet-core.md)提供了一個完整的示例。
+如果您不需要環境之間的安全性隔離，可以使用標籤來區別設定值。 [使用標籤來為不同的環境啟用不同](./howto-labels-aspnet-core.md)的設定，提供完整的範例。
 
-## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>使用應用配置的建議方法有哪些？
+## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>使用應用程式組態的建議方式為何？
 
-請參閱[最佳實踐](./howto-best-practices.md)。
+請參閱[最佳做法](./howto-best-practices.md)。
 
-## <a name="how-much-does-app-configuration-cost"></a>應用配置費用是多少？
+## <a name="how-much-does-app-configuration-cost"></a>應用程式組態的成本是多少？
 
-有兩個定價層：
+定價層有兩種：
 
 - 免費層
 - 標準層。
 
-如果在引入標準層之前創建了商店，則該商店會在一般可用性時自動移動到免費層。 您可以選擇升級到標準層或保留在免費層上。
+如果您在引進標準層之前建立了存放區，它會在公開上市時自動移至免費層。 您可以選擇升級至標準層，或保留在免費層。
 
-不能將商店從標準層降級到免費層。 您可以在 Free 層中創建新存儲，然後將配置資料導入該存儲。
+您無法將存放區從標準層降級至免費層。 您可以在免費層中建立新的存放區，然後將設定資料匯入該存放區。
 
-## <a name="which-app-configuration-tier-should-i-use"></a>我應該使用哪個應用配置層？
+## <a name="which-app-configuration-tier-should-i-use"></a>應該使用哪個應用程式組態層？
 
-兩個應用配置層都提供核心功能，包括配置設置、功能標誌、金鑰保存庫引用、基本管理操作、指標和日誌。
+應用程式組態層都提供核心功能，包括 config 設定、功能旗標、Key Vault 參考、基本管理作業、計量和記錄。
 
-以下是選擇層的注意事項。
+以下是選擇層的考慮。
 
-- **每個訂閱的資源**：資源由單個配置存儲組成。 每個訂閱僅限於免費套餐中的一個配置存儲。 訂閱可以在標準層中具有無限數量的配置存儲。
-- **每個資源的存儲**：在免費層中，每個配置存儲限制為 10 MB 的存儲。 在標準層中，每個配置存儲最多可以使用 1 GB 的存儲空間。
-- **金鑰歷史記錄**：應用配置存儲對金鑰所做的所有更改的歷史記錄。 在免費套餐中，此歷史記錄存儲七天。 在標準層中，此歷史記錄存儲 30 天。
-- **每天的請求**：免費套餐商店每天限制為 1，000 個請求。 一旦存儲達到 1，000 個請求，它將返回所有請求的 HTTP 狀態碼 429，直到 UTC 午夜。
+- **每個訂**用帳戶的資源：資源是由單一設定存放區所組成。 每個訂用帳戶僅限免費層中的一個設定存放區。 在標準層中，訂用帳戶可以有不限數量的設定存放區。
+- **每個資源的儲存體**：在免費層中，每個設定存放區的儲存空間限制為 10 MB。 在標準層中，每個設定存放區最多可以使用 1 GB 的儲存空間。
+- **金鑰歷程記錄**：應用程式組態儲存對金鑰所做之所有變更的歷程記錄。 在免費層中，此歷程記錄會儲存7天。 在標準層中，此歷程記錄會儲存30天。
+- **每日要求**數：免費層存放區受限於每日1000個要求。 一旦存放區到達1000要求，它會傳回 HTTP 狀態碼429給所有要求，直到 UTC 午夜。
 
-    對於標準層商店，每天的前 200，000 個請求包含在每日費用中。 其他請求被計費為超額。
+    針對標準層存放區，每日費用會包含前200000個要求。 其他要求則會以超額部分計費。
 
-- **服務等級協定**：標準層的 SLA 可用性為 99.9%。 免費層沒有 SLA。
-- **安全功能**：這兩個層都包括基本安全功能，包括使用 Microsoft 管理的金鑰進行加密、通過 HMAC 或 Azure 活動目錄進行身份驗證、RBAC 支援和託管標識。 標準層提供更高級的安全功能，包括專用連結支援和客戶管理的金鑰加密。
-- **成本**：標準層商店每天收取使用費。 對於超過每日分配的請求，還收取超額費用。 使用免費套餐商店無需任何費用。
+- **服務等級協定**：標準層的 SLA 為99.9% 的可用性。 免費層不提供 SLA。
+- **安全性功能**：兩個層級都包含基本的安全性功能，包括使用 Microsoft 管理的金鑰進行加密、透過 HMAC 或 Azure Active Directory 的驗證、RBAC 支援和受控識別。 標準層提供更先進的安全性功能，包括私人連結支援，以及使用客戶管理的金鑰進行加密。
+- **成本**：標準層商店具有每日使用量費用。 對於過去每日配置的要求，也會收取超額費用。 使用免費層存放區不會產生任何費用。
 
-## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>是否可以將商店從免費層升級到標準層？ 我可以將商店從標準層降級到免費層嗎？
+## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>我可以將商店從免費層升級至標準層嗎？ 我可以將存放區從標準層降級為免費層嗎？
 
-您可以隨時從免費套餐升級到標準層。
+您可以隨時從免費層升級至標準層。
 
-不能將商店從標準層降級到免費層。 您可以在 Free 層中創建新存儲，然後將[配置資料導入該存儲](howto-import-export-data.md)。
+您無法將存放區從標準層降級至免費層。 您可以在免費層中建立新的存放區，然後將設定[資料匯入該存放區](howto-import-export-data.md)。
 
-## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>向應用配置發出的請求數是否有任何限制？
+## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>對應用程式組態提出的要求數目是否有任何限制？
 
-免費套餐中的配置存儲限制為每天 1，000 個請求。 當請求速率超過每小時 20，000 個請求時，標準層中的配置存儲可能會遇到臨時限制。
+免費層中的設定存放區每天限制為1000個要求。 當要求速率超過每小時20000個要求時，標準層中的設定存放區可能會遇到暫時節流。
 
-當存儲達到其限制時，它將返回 HTTP 狀態碼 429，用於在時間段到期之前發出的所有請求。 回應`retry-after-ms`中的標頭在重試請求之前給出建議的等待時間（以毫秒為單位）。
+當存放區達到其限制時，會針對所有提出的要求傳回 HTTP 狀態碼429，直到時間週期到期為止。 回應`retry-after-ms`中的標頭會提供建議的等候時間（以毫秒為單位），然後再重試要求。
 
-如果應用程式定期遇到 HTTP 狀態碼 429 回應，請考慮重新設計它以減少發出的請求數。 有關詳細資訊，請參閱[減少對應用配置的請求](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
+如果您的應用程式經常遇到 HTTP 狀態碼429回應，請考慮將它重新設計，以減少提出的要求數目。 如需詳細資訊，請參閱[減少對應用程式組態提出的要求](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 
-## <a name="my-application-receives-http-status-code-429-responses-why"></a>我的應用程式接收 HTTP 狀態碼 429 回應。 原因為何？
+## <a name="my-application-receives-http-status-code-429-responses-why"></a>我的應用程式收到 HTTP 狀態碼429回應。 原因為何？
 
-在這些情況下，您將收到 HTTP 狀態碼 429 回應：
+在這些情況下，您會收到 HTTP 狀態碼429回應：
 
-* 超過免費套餐中商店的每日請求限制。
-* 臨時限制，因為標準層中的存儲請求率很高。
-* 頻寬使用過多。
-* 嘗試在超過存儲報價時創建或修改金鑰。
+* 超過免費層中存放區的每日要求限制。
+* 暫時節流，因為標準層中存放區的要求率過高。
+* 頻寬使用量過高。
+* 在超過儲存報價時嘗試建立或修改金鑰。
 
-檢查 429 回應的正文，瞭解請求失敗的具體原因。
+如需要求失敗的特定原因，請檢查429回應的主體。
 
-## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>如何接收有關新版本的公告以及與應用配置相關的其他資訊？
+## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>如何接收新版本的公告和與應用程式組態相關的其他資訊？
 
-訂閱我們的[GitHub 公告存儲庫](https://github.com/Azure/AppConfiguration-Announcements)。
+訂閱我們的[GitHub 公告](https://github.com/Azure/AppConfiguration-Announcements)存放庫。
 
-## <a name="how-can-i-report-an-issue-or-give-a-suggestion"></a>如何報告問題或提出建議？
+## <a name="how-can-i-report-an-issue-or-give-a-suggestion"></a>如何報告問題或提供建議？
 
-你可以直接在[GitHub](https://github.com/Azure/AppConfiguration/issues)上聯繫我們。
+您可以直接在[GitHub](https://github.com/Azure/AppConfiguration/issues)上聯繫我們。
 
 ## <a name="next-steps"></a>後續步驟
 

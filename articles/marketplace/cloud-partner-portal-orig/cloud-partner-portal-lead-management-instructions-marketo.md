@@ -1,6 +1,6 @@
 ---
-title: 在 Marketo 中配置潛在客戶管理 |Azure 應用商店
-description: 為 Azure 市場客戶配置 Marketo 的潛在客戶管理。
+title: 在 Marketo 中設定潛在客戶管理 |Azure Marketplace
+description: 為 Azure marketplace 客戶設定 Marketo 的潛在客戶管理。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
 ms.openlocfilehash: 9fa05eae2d297cbd6ae7243d191cae5a7a3f990e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288524"
 ---
 # <a name="configure-lead-management-in-marketo"></a>在 Marketo 中設定潛在客戶管理

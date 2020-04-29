@@ -1,6 +1,6 @@
 ---
-title: 流量覆蓋範圍 |微軟 Azure 地圖
-description: 在本文中，您將瞭解 Microsoft Azure 地圖中的流量覆蓋範圍。
+title: 流量涵蓋範圍 |Microsoft Azure 對應
+description: 在本文中，您將瞭解 Microsoft Azure 對應中的流量涵蓋範圍。
 author: philmea
 ms.author: philmea
 ms.date: 09/22/2018
@@ -9,17 +9,17 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 836a924bb371aaf2879e951501c6febbe51e182e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80333951"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure 地圖服務交通涵蓋範圍
 
 Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交通資訊。 此資料可以在地圖上以視覺形式呈現，或用來產生將行車條件納入考量的更聰明路線。
 
-但是，對於所有國家或地區，地圖的資訊和準確性都不同。 下表提供有關可以從每個國家或地區請求的流量資訊類型的資訊： 
+不過，對應的資訊層級與所有國家或地區的精確度並不相同。 下表提供您可以從每個國家或地區要求的流量資訊類型的相關資訊： 
 
 ## <a name="americas"></a>美洲
 
@@ -110,8 +110,8 @@ Azure 地圖服務會以交通**流量**和**事件**的形式提供豐富的交
 |烏克蘭     |✓         |✓         |
 |United Kingdom     |✓         |✓         |
 |+直布羅陀     |✓         |✓         |
-|*格恩西&澤西     |✓         |✓         |
-|*曼城島     |✓         |✓         |
+|+ 根息島 & Jersey     |✓         |✓         |
+|+ Isle 的 Man     |✓         |✓         |
 |梵蒂岡   |✓         |✓         |
 
 

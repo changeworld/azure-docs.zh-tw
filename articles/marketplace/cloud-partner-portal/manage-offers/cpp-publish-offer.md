@@ -1,5 +1,5 @@
 ---
-title: 發佈市場優惠 |Azure 應用商店
+title: 發佈 Marketplace 供應專案 |Azure Marketplace
 description: 使用 Cloud Partner 入口網站在 Azure 和 AppSource Marketplace 上發行供應項目
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/12/2019
 ms.author: dsindona
 ms.openlocfilehash: ab75afd2278433dc36c3d1280b41edfa1e34ddce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286399"
 ---
 # <a name="publish-azure-marketplace-and-appsource-offers"></a>發行 Azure Marketplace 和 AppSource 供應項目

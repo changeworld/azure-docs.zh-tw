@@ -1,5 +1,5 @@
 ---
-title: 入門 |Azure 應用商店
+title: 消費者入門 |Azure Marketplace
 description: 開始使用 Cloud Partner 入口網站。
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dsindona
 ms.openlocfilehash: d7c317463dbf6d2b78390a90c412031ce10a01ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280264"
 ---
 # <a name="getting-started-with-the-cloud-partner-portal"></a>開始使用 Cloud Partner 入口網站
@@ -34,7 +34,7 @@ Cloud Partner 入口網站包含您所需的一切，能讓您在雲端中提供
 - **新增供應項目** - 在此開始新的供應項目。
 - **所有供應項目** - 檢查您目前所有供應項目的狀態。
 - **使用者** - [管理及控制您公司的存取權限](./cloud-partner-portal-manage-users.md)。
-- **學習**- 快速啟動您的學習，並隨時瞭解合作夥伴門戶中的新增內容。
+- **學習**-快速開始學習，並隨時掌握合作夥伴入口網站的新功能。
 - **Insights** -造訪 Insights 入口網站，了解您的產品及客戶的洞見分析及使用狀況資訊。
 
 ### <a name="offer-page"></a>供應項目頁面
@@ -44,9 +44,9 @@ Cloud Partner 入口網站包含您所需的一切，能讓您在雲端中提供
 ![供應項目頁面](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/offer-page.png)
 
 在供應項目頁面上，您可以：
-- 通過在兩種頂級模式之間切換添加內容或檢查產品/服務的狀態：**編輯器**和**狀態**。
-- 使用 **"操作"欄**通過保存和丟棄輸入來顯式管理產品/服務所做的更改。
-- 在更改產品/服務設置時，在每個產品/服務所需的**表單**之間導航。
+- 藉由切換兩個最上層模式來新增內容或檢查您的供應專案狀態： [**編輯器**] 和 [**狀態**]。
+- 藉由儲存和捨棄您的輸入，使用**動作**列明確管理您的供應專案變更。
+- 當您變更供應專案設定時，請在每個供應專案的必要**表單**之間流覽。
 
 ### <a name="menu-bar"></a>功能表列
 
@@ -55,5 +55,5 @@ Cloud Partner 入口網站包含您所需的一切，能讓您在雲端中提供
 ![功能表列](./media/cloud-partner-portal-getting-started-with-the-cloud-partner-portal/menu-bar.png)
 
 -   **需要協助嗎？** - 如果您曾感到困惑並需要協助，請建立支援要求，並尋找相關文件連結。
--   **回饋**- 你有什麼要說的嗎？ 請在這裡告訴我們。 Microsoft 想要讓 Azure Marketplace、AppSource 發佈程序及整體 Cloud Partner 入口網站體驗盡可能簡單，盡可能直覺化。 我們會將所有意見反應分級並檢閱，而且我們永遠尊重您的隱私權。 我們只會在要求更多資訊時連絡您。
+-   **意見**反應-有您想要說的東西嗎？ 請在這裡告訴我們。 Microsoft 想要讓 Azure Marketplace、AppSource 發佈程序及整體 Cloud Partner 入口網站體驗盡可能簡單，盡可能直覺化。 我們會將所有意見反應分級並檢閱，而且我們永遠尊重您的隱私權。 我們只會在要求更多資訊時連絡您。
 - **發佈者帳戶** - 當您第一次造訪入口網站時，將會看到發佈者合約，接受合約內容即可成為發佈者。 從那之後，您便可以在此編輯發佈者設定檔，或重新閱覽合約內容。 您也能此處連結您的開發人員中心帳戶，藉此銷售您的供應項目。

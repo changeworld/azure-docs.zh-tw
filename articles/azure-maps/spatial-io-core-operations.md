@@ -1,6 +1,6 @@
 ---
-title: 核心 IO 操作 |微軟 Azure 地圖
-description: 瞭解如何使用空間 IO 模組中的核心庫高效地讀取和寫入 XML 和分隔資料。
+title: 核心 IO 作業 |Microsoft Azure 對應
+description: 瞭解如何使用空間 IO 模組中的核心程式庫，有效率地讀取和寫入 XML 和分隔的資料。
 author: philmea
 ms.author: philmea
 ms.date: 03/03/2020
@@ -9,26 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 0b8fe1b319dc480879944d28f10645025a8cb38e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80371449"
 ---
-# <a name="core-io-operations"></a>核心 IO 操作
+# <a name="core-io-operations"></a>核心 IO 作業
 
-除了提供讀取空間資料檔的工具外，空間 IO 模組還公開核心基礎庫以快速高效地讀取和寫入 XML 和分隔資料。
+除了提供讀取空間資料檔的工具之外，空間 IO 模組還會公開核心基礎程式庫，以快速且有效率地讀取和寫入 XML 和分隔的資料。
 
-命名`atlas.io.core`空間包含兩個低級類，可以快速讀取和寫入 CSV 和 XML 資料。 這些基類為空間 IO 模組中的空間資料讀取器和編寫器提供動力。 隨意使用它們為 CSV 或 XML 檔添加額外的讀取和寫入支援。
+`atlas.io.core`命名空間包含兩個低層級的類別，可以快速地讀取和寫入 CSV 和 XML 資料。 這些基類會增強空間 IO 模組中的空間資料讀取器和寫入器。 您可以隨意使用它們來新增其他讀取和寫入 CSV 或 XML 檔案的支援。
  
-## <a name="read-delimited-files"></a>讀取已分隔的檔
+## <a name="read-delimited-files"></a>讀取分隔的檔案
 
-類`atlas.io.core.CsvReader`讀取包含分隔資料集的字串。 此類提供兩種讀取資料的方法：
+`atlas.io.core.CsvReader`類別會讀取包含分隔資料集的字串。 此類別提供兩種讀取資料的方法：
 
-- 該`read`函數將讀取完整資料集，並返回表示分隔資料集的所有儲存格的二維字串陣列。
-- 函數`getNextRow`讀取分隔資料集中的每行文本，並返回表示該資料集中所有儲存格的字串陣列。 在處理下一行之前，使用者可以處理該行並釋放該行中不需要的任何記憶體。 因此，函數更具有記憶體效率。
+- `read`函式會讀取完整的資料集，並傳回字串的二維陣列，代表分隔資料集的所有儲存格。
+- `getNextRow`函式會讀取分隔資料集中的每一行文字，並傳回字串陣列，代表該行資料集內的所有儲存格。 在處理下一個資料列之前，使用者可以處理資料列，並處置該資料列中任何不需要的記憶體。 因此，函式的記憶體效率較高。
 
-預設情況下，讀取器將使用逗號字元作為分隔符號。 但是，分隔符號可以更改為任何單個字元或設置為`'auto'`。 `'auto'`設置為 時，讀取器將分析字串中的第一行文本。 然後，它將從下表中選擇最常用的字元作為分隔符號使用。
+根據預設，讀取器會使用逗號字元做為分隔符號。 不過，分隔符號可以變更為任何單一字元，或設為`'auto'`。 當設定為`'auto'`時，讀取器會分析字串中的第一行文字。 然後，它會從下表中選取最常見的字元來當做分隔符號使用。
 
 | | |
 | :-- | :-- |
@@ -36,27 +36,27 @@ ms.locfileid: "80371449"
 | 索引標籤 | `\t` |
 | Pipe | `|` |
 
-此讀取器還支援用於處理包含分隔符號字元的儲存格的文本限定詞。 引號`'"'`（ ） 字元是預設文本限定詞，但可以更改為任何單個字元。
+此讀取器也支援文字限定詞，這些辨識符號是用來處理包含分隔符號的資料格。 引號（`'"'`）字元是預設的文字辨識符號，但可以變更為任何單一字元。
 
-## <a name="write-delimited-files"></a>寫入分隔檔
+## <a name="write-delimited-files"></a>寫入分隔的檔案
 
-將`atlas.io.core.CsvWriter`物件陣列寫入分隔字串。 任何單個字元都可以用作分隔符號或文本限定詞。 預設分隔符號為逗號 （`','`）， 預設文本限定詞是引號`'"'`（ ） 字元。
+會`atlas.io.core.CsvWriter`以分隔字串的形式寫入物件的陣列。 任何單一字元都可以用來做為分隔符號或文字辨識符號。 預設的分隔符號是逗號（`','`），而預設的文字辨識符號是引號`'"'`（）字元。
 
-要使用此類，請按照以下步驟操作：
+若要使用此類別，請遵循下列步驟：
 
-- 創建類的實例，並可以選擇設置自訂分隔符號或文本限定詞。
-- 使用`write`函數或`writeRow`函數將資料寫入類。 對於函數`write`，傳遞表示多個行和儲存格的物件的二維陣列。 要使用`writeRow`函數，傳遞表示具有多列的資料行的物件陣列。
-- 調用函數`toString`以檢索分隔字串。 
-- 任由選擇，`clear`調用方法以使編寫器可重用並減少其資源配置，或調用`delete`方法以釋放編寫器實例。
+- 建立類別的實例，並選擇性地設定自訂分隔符號或文字辨識符號。
+- 使用`write`函數或`writeRow`函式將資料寫入類別。 `write`針對函式，傳遞代表多個資料列和資料格的二維物件陣列。 若要使用`writeRow`函數，請傳遞物件的陣列，代表具有多個資料行的資料列。
+- `toString`呼叫函式以取出分隔字串。 
+- （選擇性）呼叫`clear`方法，讓寫入器可重複使用並減少其資源配置，或`delete`呼叫方法來處置寫入器實例。
 
 > [!Note]
-> 寫入的列數將限制為傳遞給寫入器的資料的第一行中的儲存格數。
+> 寫入的資料行數目會限制為傳遞給寫入器之資料的第一列中的儲存格數目。
 
-## <a name="read-xml-files"></a>讀取 XML 檔
+## <a name="read-xml-files"></a>讀取 XML 檔案
 
-與`atlas.io.core.SimpleXmlReader`分析 XML 檔相比`DOMParser`，該類在解析 XML 檔時速度更快。 但是，`atlas.io.core.SimpleXmlReader`該類要求 XML 檔案格式設置好。 格式不好的 XML 檔（例如缺少關閉標記）可能會導致錯誤。
+在`atlas.io.core.SimpleXmlReader`剖析 XML 檔案時，類別的速度`DOMParser`比更快。 不過， `atlas.io.core.SimpleXmlReader`類別需要 XML 檔案的格式正確。 格式不正確的 XML 檔案（例如遺漏結束記號）可能會導致錯誤。
 
-以下代碼演示如何使用 類`SimpleXmlReader`將 XML 字串解析為 JSON 物件並將其序列化為所需的格式。
+下列程式碼示範如何使用`SimpleXmlReader`類別，將 XML 字串剖析為 JSON 物件，並將它序列化為所需的格式。
 
 ```javascript
 //Create an instance of the SimpleXmlReader and parse an XML string into a JSON object.
@@ -78,11 +78,11 @@ if (xmlDoc && xmlDoc.root && xmlDoc.root.tagName && xmlDoc.root.tagName === '<Yo
 }
 ```
 
-## <a name="write-xml-files"></a>寫入 XML 檔
+## <a name="write-xml-files"></a>寫入 XML 檔案
 
-該`atlas.io.core.SimpleXmlWriter`類以高效記憶體的方式編寫格式良好的 XML。
+`atlas.io.core.SimpleXmlWriter`類別會以記憶體有效率的方式寫入格式正確的 XML。
 
-以下代碼演示如何使用 類`SimpleXmlWriter`生成格式良好的 XML 字串。
+下列程式碼示範如何使用`SimpleXmlWriter`類別來產生格式正確的 XML 字串。
 
 ```javascript
 //Create an instance of the SimpleXmlWriter class.
@@ -115,7 +115,7 @@ writer.writeEndElement().writeEndDocument();
 var xmlString = writer.toString();
 ```
 
-從上述代碼生成的 XML 如下所示。
+上述程式碼所產生的 XML 看起來會像下面這樣。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -137,12 +137,12 @@ var xmlString = writer.toString();
 > [CsvWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.csvwriter)
 
 > [!div class="nextstepaction"]
-> [簡單Xml閱讀器](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)
+> [SimpleXmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlreader)
 
 > [!div class="nextstepaction"]
-> [簡單XmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
+> [SimpleXmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.simplexmlwriter)
 
 請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 
 > [!div class="nextstepaction"]
-> [支援的資料格式詳細資訊](spatial-io-supported-data-format-details.md)
+> [支援的資料格式詳細資料](spatial-io-supported-data-format-details.md)

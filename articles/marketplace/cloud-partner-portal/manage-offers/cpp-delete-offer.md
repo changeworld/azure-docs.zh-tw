@@ -1,5 +1,5 @@
 ---
-title: 刪除市場優惠 |Azure 應用商店
+title: 刪除 marketplace 供應專案 |Azure Marketplace
 description: 使用 Cloud Partner 入口網站刪除 Azure 和 AppSource Marketplace 上的供應項目
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: dsindona
 ms.openlocfilehash: fa8ee834bd6d9261c47c540e9517c200c894b6c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286450"
 ---
 # <a name="delete-azure-marketplace-and-appsource-offers-or-skus"></a>刪除 Azure Marketplace 和 AppSource 的供應項目或 SKU
@@ -19,9 +19,9 @@ ms.locfileid: "80286450"
 基於各種原因，您可能會決定從 Microsoft 市集中撤消供應項目，而這可能有兩種形式：
 
 - 「移除供應項目」** 可確保新的客戶無法再購買或部署您的供應項目，但是對現有客戶沒有任何影響，現有客戶指的是您必須根據授權合約和相關法規繼續支援的客戶。 
-- *終止產品/服務*的過程是終止您與現有客戶之間的服務和/或授權合約的過程。 
+- *供應專案終止*是終止您與現有客戶之間之服務及/或授權合約的程式。 
 
-與產品/服務刪除和終止相關的指導和政策受[Microsoft 應用商店發佈商協定](https://go.microsoft.com/fwlink/?LinkID=699560)[和參與政策](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)（[提供暫停和刪除](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)部分）的約束。 
+供應專案移除及終止的相關指導方針和原則，受[Microsoft Marketplace 發行者合約](https://go.microsoft.com/fwlink/?LinkID=699560)和[參與原則](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)（[提供擱置和移除](https://docs.microsoft.com/legal/marketplace/participation-policy#offering-suspension-and-removal)的區段）所規範。 
 
 本文件討論所支援的不同刪除案例，以及執行每個案例所需的步驟。  
 
@@ -33,7 +33,7 @@ ms.locfileid: "80286450"
 
 您可以使用下列步驟從 Azure Marketplace 刪除已發佈的 SKU︰
 
-1.  登錄到[雲合作夥伴門戶](https://cloudpartner.azure.com/)。
+1.  登入[Cloud Partner 入口網站](https://cloudpartner.azure.com/)。
 2.  在 [所有供應項目]**** 頁面中選取您的供應項目。  您的供應項目應該會顯示在 [編輯器]**** 索引標籤中。
 3.  在左邊工具列中，選取 [SKU]**** 索引標籤。 
 4.  選取您要刪除的 SKU，然後按一下 [刪除]**** 按鈕。

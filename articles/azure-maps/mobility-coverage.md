@@ -1,6 +1,6 @@
 ---
-title: 移動（過境）覆蓋範圍 |微軟 Azure 地圖
-description: 在本文中，您將瞭解 Microsoft Azure 地圖中的移動覆蓋範圍
+title: 行動性（傳輸）涵蓋範圍 |Microsoft Azure 對應
+description: 在本文中，您將瞭解 Microsoft Azure 對應中的行動性涵蓋範圍
 author: philmea
 ms.author: philmea
 ms.date: 06/05/2019
@@ -9,149 +9,149 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 85988d74d21c411586a368e12972450116259a45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334391"
 ---
-# <a name="azure-maps-mobility-coverage"></a>Azure 地圖移動性覆蓋範圍
+# <a name="azure-maps-mobility-coverage"></a>Azure 地圖服務行動性涵蓋範圍
 
-Azure 地圖提供[移動服務](https://aka.ms/AzureMapsMobilityService)。 移動服務提高了具有公共交通、自行車共用和滑板車共用功能的應用開發時間。 公共交通的功能包括搜索附近的車站、搜索停靠點、搜索中轉線路、檢索時程表資訊、檢索即時公共交通到達、列出停靠點和列出路線指南。 該服務將即時和靜態可用性資訊返回給共用車輛，如汽車、自行車和滑板車。 此外，移動服務還提供路由功能和多模式行程規劃選項。 多式聯運旅行規劃包括騎自行車、騎馬和中轉選項，全部為一次旅行。 使用者凸輪訪問詳細和多模式分步行程和服務警報。
+Azure 地圖服務提供[行動服務](https://aka.ms/AzureMapsMobilityService)。 行動服務可改善應用程式的開發時間，以公開傳輸、自行車共用和機車分享功能。 公用傳輸的功能包括搜尋附近的工作站、搜尋停止、搜尋運輸線、取得排程資訊、取得即時公開傳輸抵達、清單停止和列出路線指南。 服務會將即時和靜態可用性資訊傳回給共用車輛，例如汽車、自行車和 scooters。 此外，行動服務會提供具有限時行程規劃選項的路由功能。 多模行程規劃結合了腳踏車、hailing 和運輸選項，全都是一趟旅程。 使用者凸輪會存取詳細和多重架構的逐步路線和服務警示。
 
-對於所有城市和國家/地區，Azure 地圖的資訊和準確性級別不同。 呼叫交通資料的能力取決於城市。 而且，這些資料可能不包括所有為城市服務的公共交通選項和機構。
+Azure 地圖服務對於所有城市和國家/地區沒有相同層級的資訊和精確度。 呼叫傳輸資料的能力取決於城市。 而且，資料可能不包含所有服務城市的公開運輸選項和機關。
 
-下表提供了 Azure 地圖移動服務的覆蓋範圍資訊。
+下表提供 Azure 地圖服務行動服務的涵蓋範圍資訊。
 
 
 | 符號 | 意義 |
 |--------|---------|
-| *      |國家/地區幾乎全覆蓋。|
+| *      |該國家/地區幾乎完全涵蓋。|
 
 ## <a name="americas"></a>美洲
 
-| 國家/區域 |  城市（大都市區） |
+| 國家/地區 |  城市（Metro 區域） |
 |----------------|---------|
-| 阿根廷       | <p>巴哈布蘭卡、布宜諾斯艾利斯、卡萊塔·奧利維亞、奇維爾科伊、科莫多羅·裡瓦達維亞、科爾多瓦、科達特斯、皮科將軍、拉里奧哈、馬德普拉塔、門多薩、米拉馬爾、紐昆、奧伯雷、奧拉瓦拉、帕拉納、波薩亞斯、裡奧·特塞羅、羅薩里奧、薩爾塔、聖卡洛斯·德巴里洛切、聖路易斯聖佩德羅， 聖菲， 坦迪爾， 烏斯懷亞， 維多利亞， 瑪麗亞別墅</p>|
-| 巴貝多       |  巴巴多斯* |
-| 巴西         | <p>安格拉多斯雷斯、阿內波利斯、阿普卡拉納、阿拉卡朱、阿拉拉夸拉、阿拉薩、阿拉查圖巴、巴吉、巴雷托、巴魯、貝倫、貝洛奧裡藏特、布盧梅瑙、博阿維斯塔、巴西利亞、卡爾達斯·諾瓦斯、坎皮納格蘭德、坎皮納斯、坎波貝洛、坎波格蘭德、卡拉瓜塔圖巴、卡卡塔圖巴、卡卡韋塔 卡塔瓜斯、凱西亞斯、利奧波丁娜·雷吉尼奧、卡塔萊尼奧、南凱西亞斯、查帕奇、恰諾特、康塞爾海羅·拉法埃特、科魯姆巴、克裡西埃 馬、克魯塞羅多蘇爾、庫亞貝、庫里蒂巴、庫里蒂巴諾、特洛伊洛、迪亞曼蒂納、迪維內波利斯、杜拉多斯、埃斯特雷拉、費拉·德桑塔納、費爾南多·德諾羅尼亞、弗洛裡亞奧波利斯， 福塔雷薩， 福斯多伊瓜蘇， 弗蘭卡、加蘭洪斯、戈亞納、瓦拉達雷斯、瓜拉普瓦、英佩拉提茲、伊帕廷加、伊拉蒂、伊塔比拉、伊塔布納、伊塔賈伊、伊圖烏塔巴、賈拉瓜多蘇、若昂奧·佩索阿、坎維爾、朱澤羅·多·諾特、尤伊茲·德福拉、瓊迪亞、拉吉斯、隆德里納 馬卡、馬塞、馬夫拉裡奧內格羅、馬瑙斯、曼瓦庫、馬林加、馬利亞、蒙特卡梅洛、蒙特斯克拉羅斯、莫索雷、納塔爾、奧索裡奧、奧林霍斯、奧利奧·普雷托、帕爾馬斯、帕拉卡圖、巴拉那蓋、帕爾納伊巴、帕索·費多、帕索斯、帕托斯·德米納斯、帕托·德米納斯、佩洛塔斯、皮拉奇卡巴、波科斯·德卡爾達斯、蓬塔格羅薩、阿雷格里港、費雷拉港、塞古羅港、波爾圖韋略、培亞格蘭德、累西腓、裡貝裡尼奧普雷托、裡約、裡奧布蘭科、朗多波利斯、薩利納斯、薩爾瓦多、聖克魯斯多南、聖瑪麗亞、聖麗塔·多薩普卡伊、桑特雷姆、 桑托斯、聖加布裡埃爾多奧斯特、聖若昂德爾雷伊、蒂拉登特斯·雷焦、聖約瑟多裡奧普雷托、聖馬特烏斯、聖保羅、索羅薩巴、聖卡洛斯、聖法蘭西斯科多南、聖約瑟·多斯坎波斯、聖洛雷尼奧、聖盧埃內斯、陶埃、特萊馬科·博爾巴、特奧菲洛·奧托尼拉戈斯、圖庫魯伊、烏巴圖巴、烏貝拉巴、烏貝蘭迪亞、烏巴、烏魯瓜亞納、瓦爾吉尼亞、維戈薩、維代拉&弗雷布林戈、維塔里亞、維塔里亞·達孔奎斯塔、沃爾塔·雷東達、沃圖波蘭加 </p>|
-| Canada | 班夫（AB），布蘭登（MB），卡爾加里（AB），科莫克斯谷（不列顛哥倫比亞省），科維坎谷（BC），埃德蒙頓（AB），聖約翰堡，弗雷德里克頓（NB），大薩德伯裡（ON），大溫哥華（BC），哈利法克斯（NS），坎盧普斯（BC），基洛納（BC），京斯敦（ON），倫敦（ON）， 蒙克頓（NB），蒙特利爾（QC），納奈莫（不列顛哥倫比亞省），渥太華（ON），喬治王子（不列顛哥倫比亞省），魁北克市（QC），紅鹿（AB），雷吉納（SK），裡穆斯基（QC），薩斯卡通（SK），舍布魯克（QC），斯誇米什（不列顛哥倫比亞省），聖約翰（NL），陽光海岸，雷灣（ON），多倫多（ON），維多利亞（不列顛哥倫比亞省），惠斯勒（不列顛哥倫比亞省））， 溫莎 （ON）， 溫尼伯 （MB）， 伍德斯托克</p>|
-| 智利  | <p>安托法加斯塔、阿里卡、艾森、奇蘭、康塞普西翁、康斯蒂蒂西翁、科皮亞佩、庫裡卡、伊基克、拉塞雷納和科金博、利納雷斯、洛杉磯（智利）、洛斯拉各斯、蓬塔阿雷納斯、蘭卡瓜、聖地牙哥、塔爾卡、特穆科、瓦爾的維亞、瓦爾帕萊索、維尼亞德爾馬</p>|
-| 哥倫比亞 | <p>巴蘭基亞、波哥大、布卡拉曼加、卡利、卡塔赫納、伊巴蓋、麥德林、帕斯托、波帕揚、聖馬爾塔、索萊霍、瓦萊杜帕爾</p>|  
-| 哥斯大黎加 | 聖約瑟|
-| 厄瓜多 | 昆卡， 瓜亞基爾， 曼塔|
-| 墨西哥 | 阿瓜斯卡達特斯， 墨西哥城， 瓜達拉哈拉， 獅子， 梅里達， 蒙特雷， 布埃布拉， 克雷塔羅， 聖路易波托西|
+| 阿根廷       | <p>Bahía Blanca、布宜諾斯艾利斯、Caleta Olivia、Chivilcoy、Comodoro Rivadavia、Córdoba、Corrientes、General Pico、La Rioja、Mar del Plata、門多薩、Miramar、Neuquén、Oberá、Olavarría、Paraná、Posadas、Rio Tercero、Rosario、Salta、San Carlos de Bariloche、San Luis、San Pedro、聖誕老人、Tandil、Ushuaia、維多利亞、別墅 María</p>|
+| 巴貝多       |  巴貝多 |
+| 巴西         | <p>Angra dos Reis、Anápolis、Apucarana、Aracaju、Araraquara、Araxa、Araçatuba、Bage、Barretos、Bauru、貝倫、Belo Horizonte、Blumenau、Boa Vista，巴西利亞，Caldas Novas，Campina 格蘭德，Campinas，Campo Belo，Campo 格蘭德，Caraguatatuba，Cascavel，Cataguases，Caxias，Leopoldina e Região，Catalão，Caxias do Sul，Chapecó，Cianorte，Conselheiro Lafaiete，Corumbá，Criciúma，Cruzeiro do Sul，Cuiabá，Curitiba，Curitibanos，Curvelo，Diamantina，Divinópolis，Dourados，Estrela，Feira de Santana，Fernando de 諾拉哈，Florianópolis、Fortaleza、Foz do Iguaçu、著稱、Garanhuns、Goiania、Governador Valadares、Guarapuava、Imperatriz、Ipatinga、Irati、Itabira、Itabuna、Itajaí、Ituiutaba、Jaraguá do Sul、Joao Pessoa、Joinville、Juazeiro do Norte、Juiz de 方針、Jundiaí、Lages、Londrina、Macapa、Macaé、Maceió、Mafra e Rio Negro、瑪瑙斯、Manhuacu、Maringá、Marília、Monte Carmelo、Montes Claros、Mossoró、Natal、Osorio、Ourinhos、Ouro Preto、Palmas、Paracatu、Paranaguá、Parnaíba、Passo Fundo，Passos，Patos de 米，Patrocínio、Pelotas、Piracicaba、Poco de Caldas、Ponta Grossa、韋 Alegre、韋 Ferreira、韋 Seguro、韋 Velho、Praia 格蘭德、Recife、Ribeirão Preto、Rio、Rio 約布蘭科、Rondonópolis、Salinas、、聖誕老人 Cruz do Sul、Rita、Sapucaí、Santarem、Santos、Gabriel、Oeste、聖多美 Joao do Rei、聖多美 Tiradentes del Regiao、e、聖多美執行 Rio Preto、聖多美 Mateus、聖保羅、Sorocaba、聖多美 Carlos、聖多美 do Sul、聖多美 José dos Campos、聖多美 Lourenço、聖多美 Luís、Taubaté、Telemaco Borba、Teofilo Otoni、Teresina、托利多、Três Lagoas、Tucurui、Ubatuba、Uberaba、Uberlândia、Ubá、Uruguaiana、Varginha、Vicosa、Videira & Fraiburgo、Vitória、Vitória da Conquista、Volta Redonda、Votuporanga </p>|
+| Canada | Banff （AB）、Brandon （MB）、Calgary （AB）、Comox 谷（BC）、Cowichan 谷（BC）、埃德蒙頓（AB）、Fort 聖 John、Fredericton （NB）、更多 Sudbury （ON）、更大的范和（BC）、Halifax （NS）、Kamloops （BC）、Kelowna （BC）、Kingston （ON）、倫敦（ON）、Moncton （NB）、蒙特利爾（QC）、Nanaimo （BC）、渥太華（ON）、Prince George （BC）、Québec City （QC）、Red 鹿（AB）、雷吉納（SK）、Rimouski （QC）、Saskatoon （BC），聖 John （NL），陽光 Coast，大圖示機架（開啟），多倫多（ON），維多利亞（BC），Whistler （BC），Windsor （ON），溫尼柏（MB），Woodstock</p>|
+| 智利  | <p>Antofagasta、Arica、Aysén、Chillán、Concepción、Constitución、Copiapó、Curicó、Iquique、La Serena y Coquimbo、Linares、洛杉磯（智利）、Los 拉哥斯、蓬 Arenas、Rancagua、聖地牙哥、Talca、Temuco、Valdivia、瓦爾帕萊索、Viña del Mar</p>|
+| 哥倫比亞 | <p>Barranquilla、Bogotá、Bucaramanga、Cali、Cartagena、Ibagué、Medellín、Pasto、Popayán、聖誕老人 Marta、Sincelejo、Valledupar</p>|  
+| 哥斯大黎加 | San José|
+| 厄瓜多 | Cuenca、圭亞基爾、Manta|
+| 墨西哥 | Aguascalientes、墨西哥城、Guadalajara、Lion、Merida、蒙特雷、Puebla、Querétaro、San Luis Potosi|
 | 尼加拉瓜 | 馬納瓜 | 
-| 巴拿馬 | 巴拿馬*| 
-| 祕魯 | 庫斯科， 利馬 |
-| 波多黎各 | 聖胡安 |
-| 烏拉圭 | 蒙特維多， 埃斯特角 |
-| 美國 | <p>奧爾巴尼（紐約）、阿爾伯克爾基（NM）、安克雷奇（AK）、阿爾普頓-奧什科什-尼娜（WI）、阿什維爾（北卡羅來納州）、雅典（俄亥俄州）、亞特蘭大（佐治亞州）、奧斯丁（德克薩斯州）、貝克斯菲爾德（加利福尼亞州）、巴爾的摩州、貝爾維尤（WA）、本德-雷德蒙德（澳大利亞）、伯克希爾郡（MA）、伯明罕（AL）、布隆明頓（IN）、博伊西 （ID）， 波士頓 （MA）， 博爾德 （CO）， 佈雷瓦德縣 （佛羅里達州）， 布法羅 （紐約）， 布特 （MT）， 科德角）， 中心縣 （PA）， 香檳-厄巴納 （IL）， 查爾斯頓 （SC）， 查爾斯頓 （WV）， 夏洛特 （NC）， 夏洛特維爾 （弗吉尼亞州）， 查塔努加 （TN）， 謝延 （WY）， 芝加哥 （IL），辛辛那提 （OH）， 柑橘縣 （佛羅里達州）， 克利夫蘭 （OH）， 科切拉谷 （CA）， 科羅拉多斯普林斯 （CO）， 哥倫比亞 （TN）， 哥倫比亞 （SC）， 哥倫布 （OH）， 科珀斯克里斯蒂 （TX）， 達拉斯/福斯沃思 （TX）， 代頓 （OH）， 特拉華州， 丹佛（CO）、得梅因（IA）、底特律（密歇根州）、杜盧斯（MN）、埃爾帕索（TX）、尤金（澳大利亞）、費爾班克斯（AK）、法戈（ND）、菲耶特維爾（北卡羅來納州）、弗拉格斯塔夫（AZ）、弗林特（MI）柯林斯堡（CO）、韋恩堡（IN）、弗雷斯諾（加利福尼亞州）、基因斯維爾（佛羅里達州）、大福克斯（州）（密歇根州）、格林斯蘭岡尼森（CO）、漢普頓路（弗吉尼亞州）、漢福德（加利福尼亞州）、哈特福德（CT）、赫南多縣（佛羅里達州）、海因斯維爾（GA）、（火奴魯魯（HI）、休斯頓（德克薩斯州）、洪堡縣（加利福尼亞州）、亨茨維爾（AL）、印弟安納波里斯（IN）、伊薩卡（紐約）、傑克遜（MS）、傑克遜（田納西州）、傑克遜維爾-聖 約翰縣（FL）、詹森市（田納西州）、瓊斯伯勒（AR）、喬普林（MO）、朱諾（AK）、卡拉馬祖（密歇根州）、卡里斯貝爾（MT）、坎薩斯城（MO）、考艾（HI）、凱丘姆（ID）、諾克斯維爾（田納西州）、拉斐特（IN）、蘭開斯特（賓夕法尼亞州）、蘭辛（密歇根州）、拉斯維加斯（內華達州）、勞倫斯（KS）、李縣（佛羅里達州），列克星敦 （KY）、 林肯縣 （OR）、 小石城 （AR）、 洛杉磯 （CA）、 路易斯維爾 （KY）、 麥迪森 （WI）、 曼徹斯特 （NH）、 麥卡倫 （TX）、 孟菲斯 （TN）、 邁阿密 （FL）、 密爾沃基/沃克沙 （WI）、 明尼阿波利斯-聖 保羅（明尼蘇達州）、米蘇拉（MT）、莫德斯托（美國）、莫林（伊利諾州）、門羅縣（賓夕法尼亞州）、蒙哥馬利（AL）、摩根敦（WV）、納什維爾（田納西州）、納瓦霍民族、紐黑文（CT）、新奧爾良（洛杉磯）、紐約-新澤西州、奧卡拉（佛羅里達州）、奧卡洛薩縣（佛羅里達州）、奧克拉荷馬城（澳大利亞）、奧馬哈（佛羅里達州）、巴拿馬市費城（賓夕法尼亞州）、費尼克斯（AZ）、匹茲堡（賓夕法尼亞州）、波特蘭（明尼蘇達州）、波特蘭（OR）、拉辛（WI）、羅利（北卡羅來納州）、雷丁（加利福尼亞州）、雷諾&塔霍湖（內華達州）、羅阿諾克谷（弗吉尼亞州-林奇堡）、羅切斯特（紐約州）、洛磯山國家公園）、流氓谷（OR）、羅斯堡（澳大利亞）、羅斯維爾（加利福尼亞州）， 薩克拉門托（CA）、賽勒姆（OR）、鹽湖城（UT）、聖安東尼奧（德克薩斯州）、聖地牙哥（加利福尼亞州）、聖路易斯奧比斯波（加利福尼亞州）、聖巴巴拉（加利福尼亞州）、聖菲（NM）、薩拉索塔（佛羅里達州）、薩凡納（佐治亞州）、海岸區域（NH）、西雅圖-塔科馬-貝爾維尤（WA）、Sios灣區（加利福尼亞州）、蘇城市 （IA）， 蘇福爾斯 （SD）， 錫特卡 （AK）， 斯波坎 （WA）， 斯普林菲爾德 （IL）， 斯普林菲爾德 （麻塞諸塞州）， 聖喬治 （UT）， 聖路易斯 （MO）， 斯托克頓 （CA）， 錫拉丘茲-烏蒂卡 （紐約）， 達拉哈西 （佛羅里達州）， 坦帕-聖. 彼得斯堡（佛羅里達州）、特雷豪特（IN）、托萊多（俄亥俄州）、托皮卡（KS）、特拉弗斯市（密歇根州）、圖森（AZ）、塔爾薩（OK）、佛蒙特州、維克托維爾（加利福尼亞州）、沃盧西亞縣（佛羅里達州）、瓦科（德克薩斯州）、華盛頓（華盛頓特區）、沃特伯裡（CT）、威奇托（KS）、威爾明頓（北卡羅來納州）、亞基馬縣（賓夕法尼亞州）、尤馬縣（加利福尼亞州）</p>|
-| *美屬維爾京群島 | 美屬維爾京群島* |
+| 巴拿馬 | 巴拿馬| 
+| 祕魯 | Cusco，利馬 |
+| 波多黎各 | San Juan |
+| 烏拉圭 | 蒙特維多，蓬 del i |
+| 美國 | <p>Albany （紐約州）、新墨西哥（NM）、Anchorage （AK）、Appleton 徹底改變-Oshkosh-Neenah （WI-FI）、是 asheville （NC）、雅典（華盛頓）、亞特蘭大（GA）、奧斯丁（德克薩斯州）、Bakersfield （CA）、巴爾的摩）、Bellevue （WA）、彎曲-Redmond （或）、Berkshire 縣（MA）、伯明罕（AL）、Bloomington （在中）、Boise （ID）、波士頓（MA）、科羅拉多（CO）、德維縣市（佛羅里達州）、Buffalo （紐約州）、Butte （MT）、維德角貨文）、中心縣（PA）、分校-大學香檳（IL）、Charleston （SC）、Charleston （WV）、Charlotte （NC）、Charlottesville （VA）、Chattanooga （TN）、Cheyenne （WY）、芝加哥（IL）、辛辛那提（華盛頓州）、柑橘縣（佛羅里達）、克裡夫蘭（華盛頓）、Coachella 洛杉磯（CA）、科羅拉多彈簧（CO）、哥倫比亞特區（TN）、哥倫比亞特區（德克薩斯州）、Columbus （華盛頓）、主體 Christi （德克薩斯州）、達拉斯/矽谷（德克薩斯州）、Dayton （哦）、特拉華、丹佛（CO）、Des Moines （IA）、底特律（MI）、北極圈（MN）、El Paso （德克薩斯州）、Eugene （OR）、Fairbanks （AK）、Fargo （ND）、Fayetteville （NC）、Flagstaff （AZ）、Flint （MI） Fort Collins （CO）、Fort Wayne （在中）、Fresno （CA）、Gainesville （FL）、向上分支（ND）、總計 Rapids （MI）、綠色 Bay （WI-FI）、Greensboro （NC）、Greenville （SC）、Gunnison （CO）、Hampton 道路（VA）、Hanford （CA）、Hartford （CT）、Hernando 縣（FL）、Hinesville （GA）、（檀香山（HI），休士頓（德克薩斯州），Humboldt 縣（加拿大），亞拉巴馬（AL），Indianapolis （IN），Ithaca （NY），Jackson （MS），Jackson （TN），Pre-jacksonville-聖 John 的縣（佛羅里達），Johnson city （TN），Jonesboro （AR），Joplin （MO），Juneau （AK），Kalamazoo （MI）、Kalispell （MT）、Kansas City （中）、Kauai （HI）、Ketchum （ID）、田納西州諾克斯維爾（TN）、Lafayette （在中）、蘭卡斯特（PA）、Lansing （MI）、內華達州（內華達）、Lawrence （KS）、先生/地區（佛羅里達）、Lexington （KY）、林肯縣市（或）、小岩石（AR）、洛杉磯（CA）、Louisville （KY）、Madison （WI-FI）、曼徹斯特（NH）、McAllen （德克薩斯州）、Memphis （TN）、邁阿密（FL）、Milwaukee/Waukesha （WI-FI）、Minneapolis-聖 Paul （MN）、Missoula （MT）、Modesto （美國）、Moline （IL）、門羅縣（PA）、蒙哥馬利（AL）、Morgantown （WV）、納什維爾（TN）、Navajo 國家/地區、新的（CT）、新的奧爾良（LA）、NYC-NJ）、Ocala （FL）、Okaloosa 縣（佛羅里達）、Oklahoma City （OK）、Omaha （NE）、奧蘭多（佛羅里達州）、巴拿馬 City （FL）、Pensacola （FL）、Peoria （IL）、賓夕法尼亞州費城（PA）、Phoenix （AZ）、Pittsburgh （PA）、中北部（ME）、中（OR）、Racine （WI-FI）、Raleigh （NC）、Redding （CA）、Reno & Lake Tahoe （NV）、Roanoke 洛杉磯（VA-Lynchburg）、Rochester （紐約州）、Rocky 山區國家公園）、Rogue 洛杉磯（或）、Roseburg （或）、Roseville （CA）、Sacramento （CA）、Salem （或）、Salt Lake City （）、San Antonio （德克薩斯州）、聖地牙哥（CA）、San Luis Obispo （CA）、聖誕老人 Barbara （CA）、洛杉磯（NM）、Sarasota （FL）、Savannah （GA）、Seacoast Region （NH）、西雅圖-Tacoma-Bellevue （WA）、SF Bay 區域（CA）、Sioux City （IA）、Sioux 落（SD）、Sitka （AK）、Spokane （WA）、Springfield （IL）、Springfield （大型）、聖 George （Stockton）、聖港（中）、鳩（CA）、Utica-Tallahassee （NY）、坦帕市（FL）、Terre-聖彼德堡（FL）、Haute 托利多（IN）、（）、Topeka （KS）、穿越城市（MI）、Tucson （AZ）、Tulsa （OK）、佛蒙特州、Victorville （CA）、Volusia 縣（佛羅里達）、Waco （德克薩斯州）、華盛頓州（DC）、Waterbury （CT）、Wichita （KS）、Wilmington （NC）、Yakima （WA）、紐約市（PA）、Yuma 縣（AZ）</p>|
+| + 美屬英屬維爾京群島 | 美國英屬維爾京群島 * |
 
 
 ## <a name="asia-pacific"></a>亞太地區
 
-| 國家/區域 |  城市（大都市區） |
+| 國家/地區 |  城市（Metro 區域） |
 |--------|---------|
-| 澳大利亞      | <p>阿德萊德、愛麗絲泉、博文、布里斯班、班達伯格QLD、伯尼、凱恩斯、坎培拉、達爾文、格拉德斯通、霍巴特、因尼斯費、朗塞斯頓、麥凱、磁島、瑪麗伯勒-赫維灣、墨爾本、新南威爾士州、珀斯、羅克漢普頓、昆士蘭東南部，悉尼， 圖翁巴， 湯斯維爾， 維多利亞， 瓦立克， 耶蓬</p> |
-| 中國 | <p> 長春、長沙、成都、重慶、大連、大同、東莞、杭州、江陰、濟南、南京、南通、寧波、平頂山、青島、瀋陽、蘇州、唐山、天津、魏坊、武漢、無錫、煙臺、宜興、珠海、上海、北京、廣州、深圳、鄭州</P>| 
-| 香港特別行政區 | 香港特別行政區*|
-| 澳門特別行政區 | 澳門特區*|
-| 印度 | 艾哈默德巴德、 班加羅爾、 德里、 孟買、 邁蘇魯、 浦那|
-| 印尼 | 萬隆、班尤旺吉、巴淡、登巴薩、雅加達、凱迪裡、馬朗、帕倫邦、桑馬朗、蘇拉巴亞、蘇拉卡塔、日惹 |
-| 日本 | 靜岡縣，東京，山梨縣瓦卡奈 |
-| 馬來西亞 | 怡保， 喬哈爾巴魯， 吉隆坡， 檳城 |
-| 紐西蘭 | 奧克蘭、 基督城、 達尼丁、 皇后鎮、 蒂馬魯、 威靈頓|
+| 澳大利亞      | <p>阿德萊德、Alice 彈簧、Bowen、布里斯班、Bundaberg QLD、Burnie、Cairns、坎培拉、達爾文、Gladstone、霍巴特、Innisfail、Launceston、Mercer-mackay、磁性島、Maryborough-Hervey Bay、墨爾本、新的南威爾士、通過、RockHampton、東南亞昆士蘭、悉尼、Toowoomba、Townsville、維多利亞、Warwick、Yeppoon</p> |
+| 中國 | <p> Changchun、Changsha、Chengdu、重慶、Dalian、Datong、Dongguan、杭州、Jiangyin、Jinan、南京、Nantong、Ningbo、Pingdingshan、Qingdao、Shenyang、Suzhou、Tangshan、Tianjin、Weifang、Wuhan、Wuxi、Yantai、Yixing、Zhuhai、上海、北京、廣州、Shenzhen、Zhengzhou</P>| 
+| 香港特別行政區 | 香港特別行政區 *|
+| 澳門特別行政區 | 澳門特別行政區 *|
+| 印度 | Ahmedabad、Bengaluru、新德里、孟買、Mysuru、Pune|
+| 印尼 | 萬隆、Banyuwangi、巴丹島、Denpasar、雅加達、Kediri、Malang、Palembang、Semarang、Surabaya、Surakarta、Yogyakarta |
+| 日本 | Shizuoka 玉縣、東京、Wakkanai、Yamanashi 玉縣 |
+| 馬來西亞 | Ipoh、Johar Bahru、吉隆坡、Penang |
+| 紐西蘭 | 奧克蘭，Christchurch，Dunedin，Queenstown，Timaru，威靈頓|
 | 菲律賓 | 馬尼拉 |
-| 新加坡 | 新加坡* |
+| 新加坡 | 新加坡 |
 | 南韓 | 釜山、首爾 |
-| 台灣 | 彰化縣， 臺北 | 
-| 泰國 | 曼谷， 清邁 | 
-| 越南 | 河內， 胡志明市 | 
+| 台灣 | Changhua 縣市、臺北 | 
+| 泰國 | 曼谷，Chiang Mai | 
+| 越南 | 河內，Ho 卡胡志明市城市 | 
 
 
 ## <a name="europe"></a>歐洲
 
-| 國家/區域 |  城市（大都市區） |
+| 國家/地區 |  城市（Metro 區域） |
 |----------------|---------|
-| 安道爾        | 安道爾拉韋拉 |
-| 雅典         | 基奧斯 | 
+| 安道爾        | 安道爾 la Vella |
+| 雅典         | Chios | 
 | 奧地利        | 維也納 |
-| 白俄羅斯        | 戈梅爾、格羅德諾、波洛茨克&諾沃波洛特克、日洛金、維利卡、馬拉齊埃納、明斯克、雷希察 | 
-| 比利時        | 比利時* |
-| 玻利維亞        | 拉巴斯， 聖克魯斯德拉塞拉 | 
+| 白俄羅斯        | Gomel、Grodno、Polotsk & Novopolotsk、Zhlobin、Vileyka、Maladziečna、明斯克、Rechytsa | 
+| 比利時        | 比利時 |
+| 玻利維亞        | La 巴斯，聖誕老人 Cruz de la | 
 | 波士尼亞赫塞哥維納 | 塞拉耶佛 | 
-| 保加利亞       | <p>巴爾奇克、布拉戈耶夫格勒、布林加斯、多布裡希、加布羅沃、哈斯科沃、卡爾紮利、洛維奇、內塞巴爾、帕紮爾日克、普列文、普羅夫迪夫、魯塞、舒門、斯利夫恩、斯塔拉·紮戈拉、弗拉察、延博爾、瓦爾納、韋利科、索菲亞</P> |
-| 克羅埃西亞 | 克裡克維尼察、杜布羅夫尼克、里耶卡、斯洛萬斯基·布羅德、札格雷布 | 
-| 賽浦路斯 | 拉納卡， 利馬索爾， 尼古西亞 | 
-| 捷克共和國 | 布爾諾、 賈洛內克、 卡羅維·瓦裡、 利貝萊克、 俄斯特拉發、 布拉格 | 
-| 丹麥   | 丹麥* |
-| 愛沙尼亞   | 愛沙尼亞* |   
-| 芬蘭   | 哈梅林納、赫爾辛基、約恩蘇、約維茨基萊、卡賈尼、庫沃拉 -科特卡、庫奧皮奧、拉皮恩蘭塔、米凱利、烏盧、塞內喬基、坦佩雷、圖爾庫、瓦薩|
-| 法國    | <p>安博裡厄-恩-布吉、亞眠、安格斯、安妮西、安諾奈、阿拉斯、奧貝納斯、巴約內、貝桑、布威斯、波爾多、布洛涅·蘇爾梅爾、布列斯特、布賴恩松、戛納、查隆-恩-香檳、查特雷斯、克萊蒙特-費朗、科爾馬、達克斯、 迪洪、格勒諾布爾、黑格瑙、拉羅謝爾、勒芒、倫斯、里爾、洛里昂、里昂、麥克斯、馬賽&普羅旺斯、梅茲、米盧、蒙彼利埃、穆豪斯、南茜、南特、尼斯、尼姆、諾曼第、尼恩斯、巴黎、波蒂耶斯、普里瓦斯、昆佩爾、雷恩、聖馬婁薩雷堡， 塞特， 斯特拉斯堡， 塔貝， 圖盧茲， 旅遊</P> | 
-| *法屬圭亞那 | 卡宴 |
-| *新赫里多尼亞 | 諾美亞  |
+| 保加利亞       | <p>Balchik、Blagoevgrad、Burgas、Dobrich、Gabrovo、Haskovo、Kardzhali、Lovech、Nessebar、Pazardzhik、Pleven、Plovdiv、Ruse、Shumen、Sliven、Stara Zagora、Vratsa、Yambol、Varna、Veliko、索菲亞</P> |
+| 克羅埃西亞 | Crikvenica、Dubrovnik、Rijeka、Slovanski Brod、札格雷布 | 
+| 賽浦路斯 | Larnaca、Limassol、尼古西亞 | 
+| 捷克共和國 | Brno、Jablonec、Karlovy Vary、Liberec、Ostrava、布拉格 | 
+| 丹麥   | 丹麥 |
+| 愛沙尼亞   | 愛沙尼亞 |   
+| 芬蘭   | Hämeenlinna、赫爾辛基、Joensuu、Jyväskylä、Kajaani、Kouvola-Kotka、Kuopio、Lappeenranta、Mikkeli、Oulu、Seinäjoki、Tampere、Turku、Vaasa|
+| 法國    | <p>Amberieu-Bugey、Amiens、Angers、Annecy、Annonay、Arras、Aubenas、Bayonne、Besançon、Blois、Bordeaux、Boulogne sur、Brest、Briançon、cannes、Châlons-en-Champagne、Chartres、Clermont-Ferrand、Colmar、Dax、Dijon、Grenoble、Haguenau、La Rochelle、Le 黑心遊記，透鏡，Lille，Lorient，Lyon，MAC，馬賽 & Provence，Metz，Millau，Mont-Marsan，Montpellier，Mulhouse，南，Nantes，Nice，Nimes，Normandy，Nyons，巴黎，Poitiers，Privas，Quimper，Rennes，聖 Malo，聖-Étienne，聖 Nazaire，Saintes，Sarrebourg，Sete，Strasbourg，Tarbes，Toulouse，演講</P> | 
+| + 法文蓋亞納 | 開雲 |
+| + 新赫里多尼亞群島 | Nouméa  |
 | 喬治亞 | 第比利斯 | 
-| 德國 | <p>柏林、勃蘭登堡、不來梅&尼德納森、科隆、艾塞納赫、法蘭克福、漢堡、卡爾斯魯厄、美因茨、明興 -慕尼克、萊因-內卡爾大區、萊因-魯爾大區、斯圖加特、蒂蒂西-諾伊施塔特、烏爾姆</P> | 
-| 希臘 | <p>雅典、阿爾塔、阿莫戈斯、哈尼亞、科孚島、基奧斯科斯、赫拉基翁、約阿尼納、卡瓦拉、卡拉馬塔、科莫蒂尼、科斯、拉里薩、梅甘尼西、米洛斯、米科諾斯、派特拉、雷欽諾、羅茲、聖托裡尼、塞雷斯、西羅斯、蒂諾斯、塞薩洛尼基、維裡亞、沃羅斯 </P> |
-| 匈牙利 | 布達佩斯， 諾格勒縣， 塞格德， 塞克斯費瓦爾維爾 |
-| 冰島 | 斯蘭 - 冰島* | 
-| 愛爾蘭 | 愛爾蘭* |   
-| 義大利   | <p>阿格雷根托、亞歷山德里亞、安科納、巴里、博洛尼亞 - 博洛尼亞 - 博洛涅、卡利亞里 - 薩丁島、坎波巴索、卡塔尼亞·梅西納、科森紮、克雷馬、克雷莫納、克羅通、庫內奧、火熱斯 - 佛羅倫斯、福賈、熱那亞、伊格萊西亞斯、拉斯佩齊亞、萊切、馬泰拉、米蘭 - 米蘭 - 那不勒斯， 帕多瓦， 巴勒莫， 帕爾馬， 佩魯賈， 佩斯卡拉， 比薩， 波滕紮， 羅馬 - 羅馬， 錫耶納 e 格羅塞托， 錫拉庫薩 - 錫拉丘茲， 塔蘭托， 都靈 - 都靈， 特倫托， 裡雅斯特， 烏丁， 威尼斯 - 威尼斯， </p> |
-| 拉脫維亞 | 雷加 |
-| 立陶宛 | 德魯斯金凱、 考諾、 克萊佩達、 帕內維希、 維爾紐斯 |
-| 盧森堡 | 盧森堡* |
-| 摩爾多瓦 | 基希訥烏 |
-| 蒙特內哥羅 | 波德戈里察 |
-| 荷蘭 | 荷蘭* |
-| 挪威 | 挪威* | 
-| 波蘭 | <p>弗羅茨瓦夫，比亞伊斯托克， 拜戈什茨、埃爾布列格、戈爾佐、科爾齊納、克拉科夫、萊斯茲諾、洛茲、盧布林、姆雷戈沃、奧爾施泰因、波茲納、熱什烏、薩諾克、斯塔拉維切、什切金、特裡蒂、華沙、沃齊索瓦·什爾斯基</p> |
-| 葡萄牙 | 布拉加尼亞、 科英布拉、 豐沙爾、 萊裡亞、 利斯博亞、 波爾蒂芒、 波爾圖|
-| 馬爾他 | 馬爾他* | 
-| 羅馬尼亞 | <p>阿爾巴·尤利亞、阿拉德、比斯特裡亞、布呂伊拉、布拉索夫、 布加勒斯特、布紮烏、克盧伊·納波卡、康斯坦察、克拉約娃、德瓦、福恰尼、加拉蒂、伊亞希、米爾庫雷阿·丘克、奧拉代亞、皮亞特拉·內姆特、皮特拉蒂、普洛伊蒂、雷尼亞、薩圖·馬雷、西比烏、蘇恰瓦、塔爾古雷斯、蒂米索拉</p> | 
-| 俄羅斯  | 頓河畔羅斯托夫、伏爾加格勒、葉卡捷琳堡、喀山、基洛夫、克拉斯諾達爾、莫斯科、納爾奇克、下諾夫哥羅德、新西伯利亞、諾亞布林斯克、鄂木斯克、彼爾姆、聖彼德堡、特維爾、托斯克 |
-| 塞爾維亞  | 貝奧格拉德、克拉古耶瓦茨、尼斯、諾維薩德、瓦列沃、蘇博蒂卡 | 
-| 斯洛伐克 | 班斯卡·拜斯蒂卡、布拉提斯拉瓦、科西切、普雷索夫、普裡維紮、斯塔盧布奧韋察、特倫金 | 
-| 斯洛維尼亞 | 科珀， 盧布亞納 | 
-| 西班牙    | <p>科倫納、阿利坎特、阿爾梅裡亞、阿斯圖裡亞斯、阿維拉、巴達霍斯、卡迪斯灣、巴賽隆納、畢爾巴鄂、布林戈斯、卡塞雷斯、直布羅陀坎波、普拉納、休達、雷亞爾城、科爾多瓦、昆卡、埃爾希羅、費羅爾、富埃特文圖拉、大加那利島、格拉納達、韋爾瓦、韋爾瓦、伊維薩島、 詹恩 - 奧貝達、 拉戈梅拉、 拉帕爾馬、 蘭索羅特島、 萊昂、 萊伊達、 洛格羅尼奧、 盧戈、 馬德里、 馬拉加、 馬略卡 - 馬略卡島、 梅利利亞、 梅諾卡、 梅里達、 穆爾西亞、 烏倫塞、帕倫西亞、潘普洛納、 薩拉曼卡、聖塞巴斯蒂安、桑坦德、 聖地牙哥-德孔波斯特拉、 塞戈維亞、 塞戈維亞， 索裡亞， 塔拉戈納 - 雷烏斯， 特內裡費， 托萊多， 瓦倫西亞， 巴利亞多利德， 維戈， 維多利亞-加斯泰茲， 薩拉戈薩 - 薩拉戈薩</p> |
-| 瑞典 | 哥德堡/哥德堡/瓊科平、瑪律默·科姆蒙 - 瑪律默、諾爾克平奧赫·林克平、斯德哥爾摩、桑茲瓦爾 |
-| 瑞士 | 巴塞爾， 日內瓦， 伊弗頓-萊斯-班斯， 蘇黎世 | 
-| 土耳其 | 阿達納-梅爾辛、安卡拉、安塔利亞、巴萊克西爾、比利奇克、博盧、布爾薩、德尼茲利、杜澤、艾拉齊格、埃斯基謝希爾、伊斯坦布爾、伊茲密爾-艾丁、卡赫拉曼馬拉斯、凱塞裡、科尼亞、馬拉蒂亞、穆拉、薩姆松、桑盧爾法 |    
-| United Kingdom | 東安格利亞、東米德蘭茲、倫敦和東南、東北、西北、北愛爾蘭、蘇格蘭、西南、威爾士、西米德蘭茲、約克郡 |
-| 烏克蘭 | 哈爾科夫， 日托梅爾， 基輔， 利沃夫， 切爾尼夫茨 |
+| 德國 | <p>柏林、Brandenburg、Bremen & Niedersachsen、Cologne、Eisenach、法蘭克福、Hamburg、Karlsruhe、Mainz、慕尼克-慕尼克、Rhein-Neckar Region、Rhein-Ruhr Region、斯圖加特、Titisee-Neustadt、Ulm</P> | 
+| 希臘 | <p>雅典、Arta、Amorgos、Chania、Corfu、Chios Kos、Heraklion、Ioannina、Kavala、Kalamata、Komotini、Kos、Larissa、Meganisi、Milos、Mykonos、Patra、Rethimno、Rhodes、Santorini、Serres、Syros、Tinos、Thessaloniki、Veria、Volos、Xanthi </P> |
+| 匈牙利 | 布達佩斯，Nograd 縣市，Szeged，Székesfehérvár |
+| 冰島 | Ísland-冰島 * | 
+| 愛爾蘭 | 設立 |   
+| 義大利   | <p>Agrigento、Alessandria、Ancona、Bari、Bologna-Bologne、Cagliari-Sardinia、Campobasso、Catania e Messina、Cosenza、Crema、Cremona、Crotone、Cuneo、Firenze-Florence、Foggia、Genova、Genoa、Iglesias、La Spezia、Lecce、Matera、Milano-米蘭、Napoli、Naples、Padova、Palermo、Parma、Perugia、Pescara、Pisa、Potenza、Roma、siena [、Grosseto、Siracusa、鳩、Taranto、Torino、Turin、 </p> |
+| 拉脫維亞 | Rīga |
+| 立陶宛 | Druskininkai、Kauno、Klaipėda、Panevėžys、維爾紐斯 |
+| 盧森堡 | 公國 |
+| 摩爾多瓦 | 奇西瑙 |
+| 蒙特內哥羅 | Podgorica |
+| 荷蘭 | 限 |
+| 挪威 | 挪威 | 
+| 波蘭 | <p>Wrocław、Białystok、Bydgoszcz、Elbląg、Gorzow、Kętrzyna、Krakow、Leszno、Lodz、Lublin、Mrągowo、Olsztyn、Poznań、Rzeszów、Sanok、Starachowice、Świonujście、Szczecin、Tricity、華沙、Wodzisław Śląski、Wrocław、Zakopane</p> |
+| 葡萄牙 | Bragança、Coimbra、Funchal、Leiria、Lisboa、Portimao、韋|
+| 馬爾他 | 馬爾他 | 
+| 羅馬尼亞 | <p>Alba Iulia、Arad、Bistrița、Brăila、Braşov、布加勒斯特、Buzau、Cluj Napoca、Constanța、Craiova、Deva、Focșani、Galati、Iaşi、Miercurea Ciuc、Oradea、Piatra Neamt、Pitești、Ploieşti、Reșița、Satu Mare、Sibiu、Suceava、Targu Mures、Timisoara、Tulcea、Zalau</p> | 
+| 俄羅斯  | Rostov-Don，伏爾加格勒，Kazan，Kirov，Krasnodar，莫斯科，Nalchik，Nizhny Novgorod，新西伯利亞，Noyabrsk，鄂木斯克，永久，St，Tver，托木斯克 |
+| 塞爾維亞  | Beograd、Kragujevac、Nis、Novi 悲傷、Valjevo、Subotica | 
+| 斯洛伐克 | Banská Bystrica, Bratislava, Kosice, Presov, Prievidza, Stará Ľubovňa, Trencin | 
+| 斯洛維尼亞 | Koper、盧布亞納 | 
+| 西班牙    | <p>Corunna、Alicante、Almería、Asturias、Avila、Badajoz、Cadiz 的機架、巴塞羅納、Bilbao、Burgos、Caceres、Campo de 直布羅陀、Castellon de la Plana、修達，Ciudad Real，Cordoba，Cuenca，El Hierro，Ferrol，Fuerteventura，Gran Canaria，Granada，Huelva，Huesca，Ibiza，Jaén，Úbeda，La Gomera，La Palma，Lanzarote，León，Lleida，Logroño，Lugo，馬德里，Malaga，馬約卡，Majorca，Melilla，Menorca，Merida，Murcia，Ourense，Palencia，Pamplona，Salamanca，Sebastian、聖地牙哥 de Compostela、Segovia、Seville、Soria、Tarragona-Reus、Tenerife、托利多、瓦倫西亞、Valladolid、Vigo、Vitoria-Gasteiz、Morelos-zaragoza-Saragossa</p> |
+| 瑞典 | Goteborg/Gothenburg/Jonkoping、Malmö kommun-Malmö、Norrköping och Linköping、斯德哥爾摩、Sundsvall |
+| 瑞士 | Basel、Geneva、Yverdon-les-Bains、蘇黎世 | 
+| 土耳其 | Adana-Mersin、Ankara、Antalya、Balıkesir、Bilecik、Bolu、Bursa、Denizli、Duzce、Elazig、Eskisehir、伊斯坦布爾、Izmir-Aydin、Kahramanmaras、Kayseri、Konya、Malatya、Muğla、Samsun、Şanlıurfa |    
+| United Kingdom | 東部 Anglia、東部 Midlands、倫敦和東南亞、北東部、北歐、北愛爾蘭、蘇格蘭、東南亞、威爾士、西 Midlands、Yorkshire |
+| 烏克蘭 | Kharkiv、Zhytomyr、基輔、Lviv、Chernivtsi |
 
 
 ## <a name="middle-east-and-africa"></a>中東與非洲
 
-| 國家/區域 |  城市（大都市區） |
+| 國家/地區 |  城市（Metro 區域） |
 |---------|---------|
-| 巴林 | 巴林* |
+| 巴林 | 群島 |
 | 埃及 | Cairo    |
-| 以色列| 以色列*  |
+| 以色列| 以色列  |
 | 肯亞 | 奈洛比  | 
 | 馬達加斯加 | 安塔那那利佛 |
-| 摩洛哥 | 卡薩布蘭卡， 庫裡布加， 特圖安|
-| 卡達| 杜哈|
-| 沙烏地阿拉伯 | 圖瓦爾 |
+| 摩洛哥 | Casablanca、Khouribga、Tétouan|
+| 卡達| Doha|
+| 沙烏地阿拉伯 | Thuwal |
 | 南非 | 開普敦 |
-| 突尼西亞 | 凱魯安 |
-| 阿拉伯聯合大公國  | 阿布達比， 迪拜 |
+| 突尼西亞 | Kairouan |
+| 阿拉伯聯合大公國  | 阿布達比阿布達比，杜拜 |
 
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用移動服務請求傳輸資料：
+瞭解如何使用行動服務要求傳輸資料：
 
 > [!div class="nextstepaction"]
-> [如何請求傳輸資料](how-to-request-transit-data.md)
+> [如何要求傳輸資料](how-to-request-transit-data.md)
 
-瞭解如何使用移動服務請求即時資料：
-
-> [!div class="nextstepaction"]
-> [如何請求即時資料](how-to-request-real-time-data.md)
-
-流覽 Azure 地圖移動服務 API 文檔
+瞭解如何使用行動服務來要求即時資料：
 
 > [!div class="nextstepaction"]
-> [移動服務 API 文檔](https://aka.ms/AzureMapsMobilityService)
+> [如何要求即時資料](how-to-request-real-time-data.md)
+
+探索 Azure 地圖服務行動服務 API 檔
+
+> [!div class="nextstepaction"]
+> [行動服務 API 檔](https://aka.ms/AzureMapsMobilityService)

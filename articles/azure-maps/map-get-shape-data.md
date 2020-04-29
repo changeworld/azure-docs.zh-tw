@@ -1,6 +1,6 @@
 ---
-title: 從地圖上的形狀獲取資料 |微軟 Azure 地圖
-description: 在本文中，瞭解如何使用 Microsoft Azure 地圖 Web SDK 在地圖上繪製圖形資料。
+title: 從地圖上的圖形取得資料 |Microsoft Azure 對應
+description: 在本文中，您將瞭解如何使用 Microsoft Azure Maps Web SDK 來取得地圖上繪製的圖形資料。
 author: philmea
 ms.author: philmea
 ms.date: 09/04/2019
@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 88db018575f92e777223f383c65cd6db51ba515a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334402"
 ---
 # <a name="get-shape-data"></a>取得圖形資料
 
-本文介紹如何獲取在地圖上繪製的形狀的資料。 我們使用**繪圖管理器內部的繪圖管理器.getSource（）** 函數。 [drawing manager](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--) 當您要提取繪製形狀的 Geojson 資料並將其用於其他位置時，有各種方案。  
+本文說明如何取得地圖上繪製的圖形資料。 我們在[繪圖管理員](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest#getsource--)內使用**drawingManager. getSource （）** 函數。 在許多情況下，您會想要將繪製圖形的 geojson 資料解壓縮，並在其他地方使用。  
 
 
-## <a name="get-data-from-drawn-shape"></a>從繪製的形狀獲取資料
+## <a name="get-data-from-drawn-shape"></a>從繪製的圖形取得資料
 
-以下函數獲取繪製的形狀的來源資料並將其輸出到螢幕。 
+下列函式會取得所繪製圖形的來源資料，並將它輸出到螢幕上。 
 
 ```Javascript
 function getDrawnShapes() {
@@ -32,17 +32,17 @@ function getDrawnShapes() {
 }
 ```
 
-下面是完整的運行代碼示例，您可以在其中繪製形狀以測試功能：
+以下是完整的執行中程式碼範例，您可以在其中繪製圖形來測試功能：
 
 <br/>
 
-<iframe height="686" title="取得圖形資料" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>在<a href='https://codepen.io'>CodePen</a>上，請參閱按<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure 映射 （）<a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>獲取圖形資料的</a>筆。
+<iframe height="686" title="取得圖形資料" src="//codepen.io/azuremaps/embed/xxKgBVz/?height=265&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true" style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上的以 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）<a href='https://codepen.io/azuremaps/pen/xxKgBVz/'>取得圖形資料</a>的畫筆。
 </iframe>
 
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何使用繪圖工具模組的其他功能：
+瞭解如何使用 [繪圖工具] 模組的其他功能：
 
 > [!div class="nextstepaction"]
 > [回應繪圖事件](drawing-tools-events.md)
@@ -56,7 +56,7 @@ function getDrawnShapes() {
 > [地圖](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [繪圖管理器](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
+> [繪圖管理員](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.drawing.drawingmanager?view=azure-node-latest)
 
 > [!div class="nextstepaction"]
-> [繪圖工具欄](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)
+> [繪製工具列](https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/atlas.control.drawingtoolbar?view=azure-node-latest)

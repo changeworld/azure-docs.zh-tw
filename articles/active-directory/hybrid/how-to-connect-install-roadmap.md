@@ -14,10 +14,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f9ed613972f166f1f9955fc34e9bb640d87da6b5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331433"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安裝藍圖
@@ -25,11 +25,11 @@ ms.locfileid: "80331433"
 ## <a name="install-azure-ad-connect"></a>安裝 Azure AD Connect。
 
 > [!IMPORTANT]
-> Microsoft 不支援在正式記載的動作以外修改和操作 Azure AD Connect 同步處理。 這些操作中的任何一個都可能導致 Azure AD 連接同步的不一致或不受支援的狀態。因此，Microsoft 無法為此類部署提供技術支援。
+> Microsoft 不支援在正式記載的動作以外修改和操作 Azure AD Connect 同步處理。 這些動作中的任何一項可能會導致 Azure AD Connect 同步的狀態不一致或不受支援。因此，Microsoft 無法提供這類部署的技術支援。
 
 您可以在 [Microsoft 下載中心](https://go.microsoft.com/fwlink/?LinkId=615771)下載 Azure AD Connect。
 
-| 解決方法 | 狀況 |
+| 解決方法 | 案例 |
 | --- | --- |
 | 開始之前 - [硬體和必要條件](how-to-connect-install-prerequisites.md) |<li>開始安裝 Azure AD Connect 之前所應完成的步驟。</li> |
 | [快速設定](how-to-connect-install-express.md) |<li>如果您有單一樹系 AD，則這是建議使用的選項。</li> <li>使用密碼同步處理以相同的密碼進行使用者登入。</li> |
@@ -46,7 +46,7 @@ ms.locfileid: "80331433"
 |使用快速設定進行安裝 | [快速安裝 Azure AD Connect](./how-to-connect-install-express.md)|
 |使用自訂設定進行安裝 | [自訂 Azure AD Connect 安裝](./how-to-connect-install-custom.md)|
 |從 DirSync 升級 | [從 Azure AD 同步作業工具 (DirSync) 升級](./how-to-dirsync-upgrade-get-started.md)|
-|安裝後 | [驗證安裝並分配許可證](how-to-connect-post-installation.md)|
+|安裝後 | [驗證安裝和指派授權](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>深入了解安裝 Azure AD Connect
 您也想要準備 [操作](how-to-connect-sync-operations.md) 考量。 您可以準備一個待命伺服器，以便在[災害](how-to-connect-sync-staging-server.md#disaster-recovery)發生時輕鬆地進行容錯移轉。 如果您打算進行頻繁的組態變更，則應該規劃 [預備模式](how-to-connect-sync-staging-server.md) 伺服器。
@@ -57,7 +57,7 @@ ms.locfileid: "80331433"
 |設計概念 | [Azure AD Connect 的設計概念](plan-connect-design-concepts.md)|
 |用於安裝的帳戶 | [進一步了解 Azure AD Connect 認證和權限](reference-connect-accounts-permissions.md)|
 |作業規劃 | [Azure AD Connect 同步處理：作業工作和考量](how-to-connect-sync-operations.md)|
-|使用者登入選項 | [Azure AD 連接使用者登錄選項](plan-connect-user-signin.md)|
+|使用者登入選項 | [Azure AD Connect 使用者登入選項](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>設定同步處理功能
 Azure AD Connect 隨附數個您可以選擇性地開啟或預設為啟用的功能。 在特定案例與拓撲中，有些功能有時可能需要進行其他設定。
@@ -68,7 +68,7 @@ Azure AD Connect 隨附數個您可以選擇性地開啟或預設為啟用的功
 
 [密碼回寫](../authentication/quickstart-sspr.md) 將可讓您的使用者在雲端中變更和重設其密碼，並套用您的內部部署密碼原則。
 
-[設備回寫](how-to-connect-device-writeback.md)將允許將 Azure AD 中註冊的設備寫回本地活動目錄，以便它可用於條件訪問。
+[裝置回寫](how-to-connect-device-writeback.md)可讓 Azure AD 中註冊的裝置寫回內部部署 Active Directory，以便用於條件式存取。
 
 [防止意外刪除](how-to-connect-sync-feature-prevent-accidental-deletes.md) 功能預設為開啟，它會保護您的雲端目錄，避免同時進行多次刪除。 根據預設，它每回允許 500 次刪除。 您可以根據您組織的大小來變更此設定。
 
@@ -77,9 +77,9 @@ Azure AD Connect 隨附數個您可以選擇性地開啟或預設為啟用的功
 ### <a name="next-steps-to-configure-sync-features"></a>設定同步處理功能的後續步驟
 |主題 |連結|  
 | --- | --- |
-|設定篩選 | [Azure AD 連接同步：配置篩選](how-to-connect-sync-configure-filtering.md)|
-|密碼雜湊同步處理 | [密碼雜湊同步](how-to-connect-password-hash-synchronization.md)|
-|傳遞驗證 | [直通身份驗證](how-to-connect-pta.md)
+|設定篩選 | [Azure AD Connect 同步：設定篩選](how-to-connect-sync-configure-filtering.md)|
+|密碼雜湊同步處理 | [密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)|
+|傳遞驗證 | [傳遞驗證](how-to-connect-pta.md)
 |密碼回寫 | [開始使用密碼管理](../authentication/quickstart-sspr.md)|
 |裝置回寫 | [在 Azure AD Connect 中啟用裝置回寫](how-to-connect-device-writeback.md)|
 |防止意外刪除 | [Azure AD Connect 同步處理：防止意外刪除](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
@@ -97,8 +97,8 @@ Azure AD Connect 同步處理隨附一個適用於大部分客戶和拓撲的預
 ### <a name="next-steps-to-customize-azure-ad-connect-sync"></a>自訂 Azure AD Connect 同步處理的後續步驟。
 |主題 |連結|  
 | --- | --- |
-|所有 Azure AD Connect 同步處理文章 | [Azure AD 連接同步](how-to-connect-sync-whatis.md)|
-|技術概念 | [Azure AD 連接同步：技術概念](how-to-connect-sync-technical-concepts.md)|
+|所有 Azure AD Connect 同步處理文章 | [Azure AD Connect 同步](how-to-connect-sync-whatis.md)|
+|技術概念 | [Azure AD Connect 同步：技術概念](how-to-connect-sync-technical-concepts.md)|
 |了解預設組態 | [Azure AD Connect 同步處理：了解預設組態](concept-azure-ad-connect-sync-default-configuration.md)|
 |了解使用者和連絡人 | [Azure AD Connect 同步處理：了解使用者和連絡人](concept-azure-ad-connect-sync-user-and-contacts.md)|
 |宣告式佈建 | [Azure AD Connect 同步處理：了解宣告式佈建運算式](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)|
@@ -108,7 +108,7 @@ Azure AD Connect 同步處理隨附一個適用於大部分客戶和拓撲的預
 
 Azure AD Connect 提供數種功能，可簡化使用 AD FS 與 Azure AD 的同盟，以及管理您的同盟信任。 Azure AD Connect 在 Windows Server 2012R2 或更新版本上支援 AD FS。
 
-[更新 AD FS 伺服器場的 TLS/SSL 憑證](how-to-connect-fed-ssl-update.md)，即使您不使用 Azure AD 連接來管理聯合信任。
+[更新 AD FS 伺服器陣列的 TLS/SSL 憑證](how-to-connect-fed-ssl-update.md)，即使您未使用 Azure AD Connect 來管理同盟信任也一樣。
 
 [新增 AD FS 伺服器](how-to-connect-fed-management.md#addadfsserver)至伺服器陣列，以視需要擴大伺服器陣列。
 
@@ -116,7 +116,7 @@ Azure AD Connect 提供數種功能，可簡化使用 AD FS 與 Azure AD 的同�
 
 ADFS 可以設定為支援 [多個網域](how-to-connect-install-multiple-domains.md)。 例如，您可以有多個必須用於同盟的最上層網域。
 
-如果 ADFS 伺服器尚未配置為自動更新 Azure AD 中的證書，或者如果您使用非 ADFS 解決方案，則當您必須[更新證書](how-to-connect-fed-o365-certs.md)時，您將收到通知。
+如果您的 ADFS 伺服器尚未設定為從 Azure AD 自動更新憑證，或如果您使用非 ADFS 解決方案，則當您必須[更新憑證](how-to-connect-fed-o365-certs.md)時，系統會通知您。
 
 ### <a name="next-steps-to-configure-federation-features"></a>設定同盟功能的後續步驟
 |主題 |連結|  
@@ -130,9 +130,9 @@ ADFS 可以設定為支援 [多個網域](how-to-connect-install-multiple-domain
 ## <a name="get-started-with-azure-ad-connect-health"></a>開始使用 Azure AD Connect Health
 若要開始使用 Azure AD Connect Health，請使用下列步驟：
 
-1. [獲取 Azure AD 高級](../fundamentals/active-directory-get-started-premium.md)版或[啟動試用版](https://azure.microsoft.com/trial/get-started-active-directory/)。
-2. [在標識伺服器上下載並安裝 Azure AD 連接運行狀況代理](#download-and-install-azure-ad-connect-health-agent)。
-3. 在 上[https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)查看 Azure AD 連接運行狀況儀表板。
+1. [取得 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)或[開始試用](https://azure.microsoft.com/trial/get-started-active-directory/)。
+2. 在您的身分識別伺服器上[下載並安裝 Azure AD Connect Health 代理](#download-and-install-azure-ad-connect-health-agent)程式。
+3. 在[https://aka.ms/aadconnecthealth](https://aka.ms/aadconnecthealth)中查看 Azure AD Connect Health 儀表板。
 
 > [!NOTE]
 > 請記住，您必須先在目標伺服器上安裝 Azure AD Connect Health 代理程式，Azure AD Connect Health 儀表板中才會出現資料。
@@ -143,16 +143,16 @@ ADFS 可以設定為支援 [多個網域](how-to-connect-install-multiple-domain
 * 確定您符合 Azure AD Connect Health 的[需求](how-to-connect-health-agent-install.md#requirements)。
 * 開始使用適用於 AD FS 的 Azure AD Connect Health
     * [下載適用於 AD FS 的 Azure AD Connect Health 代理程式](https://go.microsoft.com/fwlink/?LinkID=518973)
-    * [請參閱安裝說明](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)。
+    * [請參閱安裝指示](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs)。
 * 開始使用適用於同步處理的 Azure AD Connect Health
     * [下載並安裝最新版的 Azure AD Connect](https://go.microsoft.com/fwlink/?linkid=615771)。 適用於同步處理的健康狀態代理程式將會隨著 Azure AD Connect 安裝 (1.0.9125.0 或更高版本) 一起安裝。
 * 開始使用適用於 AD DS 的 Azure AD Connect Health
-    * [下載 AZURE AD 連接 AD DS 的運行狀況代理](https://go.microsoft.com/fwlink/?LinkID=820540)。
-    * [請參閱安裝說明](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds)。
+    * [下載 AD DS 的 Azure AD Connect Health 代理程式](https://go.microsoft.com/fwlink/?LinkID=820540)。
+    * [請參閱安裝指示](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds)。
 
 
 ## <a name="azure-ad-connect-health-portal"></a>Azure AD Connect Health 入口網站
-Azure AD Connect Health 入口網站會顯示警示、效能監視和使用情況分析。 https://aka.ms/aadconnecthealth URL 會帶您前往 Azure AD Connect Health 的主要刀鋒視窗。 您可以將刀鋒視窗視為視窗。 在主邊欄選項卡上，請參閱 Azure AD 連接運行狀況中的**快速入門**、服務和其他配置選項。 請參閱下列螢幕擷取畫面，以及螢幕擷取畫面後面的簡短說明。 部署代理程式之後，健康狀態服務會自動識別 Azure AD Connect Health 所監視的服務。
+Azure AD Connect Health 入口網站會顯示警示、效能監視和使用情況分析。 https://aka.ms/aadconnecthealth URL 會帶您前往 Azure AD Connect Health 的主要刀鋒視窗。 您可以將刀鋒視窗視為視窗。 在主要的分頁上，您會看到 [**快速入門**]、[Azure AD Connect Health 中的服務] 和其他設定選項。 請參閱下列螢幕擷取畫面，以及螢幕擷取畫面後面的簡短說明。 部署代理程式之後，健康狀態服務會自動識別 Azure AD Connect Health 所監視的服務。
 
 > [!NOTE]
 > 如需授權資訊，請參閱 [Azure AD Connect Health 常見問題集](reference-connect-health-faq.md)或 [Azure AD 定價頁面](https://aka.ms/aadpricing)。
@@ -165,8 +165,8 @@ Azure AD Connect Health 入口網站會顯示警示、效能監視和使用情�
 * **Active Directory Domain Services**：此選項會顯示 Azure AD Connect Health 目前正在監視的所有 AD DS 樹系。 當您選取樹系時，開啟的刀鋒視窗會顯示該樹系的相關資訊。 這項資訊包括基本資訊概觀、網域控制站儀表板、複寫狀態儀表板、警示和監視。 如需深入了解這些功能，請參閱[在 AD DS 使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
 * **設定**︰本節包含開啟或關閉下列功能的選項︰
 
-   - Azure AD 將運行狀況代理**的自動更新**到最新版本：每當有新版本可用時，Azure AD Connect 運行狀況代理都會自動更新。 這個選項預設為啟用。
-   - Microsoft 僅出於故障排除目的訪問 Azure AD 目錄完整性**的資料**：如果啟用了此選項，Microsoft 可以訪問使用者查看的相同資料。 此資訊可用於故障排除和提供必要的説明。 預設情況下禁用此選項
+   - Azure AD Connect Health 代理程式**自動更新**為最新版本：每當有新版本可用時，就會自動更新 Azure AD Connect Health 代理程式。 這個選項預設為啟用。
+   - 僅針對疑難排解目的，從 Azure AD directory 完整性的**資料存取**：如果啟用此選項，microsoft 可以存取使用者所查看的相同資料。 這種資訊有助於疑難排解，並提供必要的協助。 預設會停用此選項
 * **角色型存取控制 (IAM)** 是用來管理角色基底中 Connect Health 資料存取權的區段。 
 
 ## <a name="next-steps"></a>後續步驟
@@ -174,8 +174,8 @@ Azure AD Connect Health 入口網站會顯示警示、效能監視和使用情�
 - [硬體和先決條件](how-to-connect-install-prerequisites.md) 
 - [快速設定](how-to-connect-install-express.md)
 - [自訂設定](how-to-connect-install-custom.md)
-- [密碼雜湊同步](how-to-connect-password-hash-synchronization.md)|
-- [直通身份驗證](how-to-connect-pta.md)
+- [密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)|
+- [傳遞驗證](how-to-connect-pta.md)
 - [Azure AD Connect 和同盟](how-to-connect-fed-whatis.md)
 - [安裝 Azure AD Connect Health 代理程式](how-to-connect-health-agent-install.md) 
-- [Azure AD 連接同步](how-to-connect-sync-whatis.md)
+- [Azure AD Connect 同步](how-to-connect-sync-whatis.md)

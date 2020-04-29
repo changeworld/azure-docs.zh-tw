@@ -8,17 +8,17 @@ ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 58d61df932da06e32bb4c8f21a3a296b185f02d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298995"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>遠端連線至 StorSimple 8000 系列裝置
 
 ## <a name="overview"></a>總覽
 
-您可以透過 Windows PowerShell，從遠端連線到您的裝置。 當您以這種方式連線時，不會看到功能表。 （僅當使用設備上的串列主控台進行連接時，才會看到功能表。通過 Windows PowerShell 遠端處理，您可以連接到特定的運行空間。 您也可以指定顯示語言。
+您可以透過 Windows PowerShell，從遠端連線到您的裝置。 當您以這種方式連線時，不會看到功能表。 （只有當您使用裝置上的序列主控台進行連線時，才會看到功能表。）使用 Windows PowerShell 遠端功能，您可以連接到特定的執行時間。 您也可以指定顯示語言。
 
 如需有關如何使用 Windows PowerShell 遠端來管理裝置的詳細資訊，請移至 [使用 Windows PowerShell for StorSimple 管理您的 StorSimple 裝置](storsimple-8000-windows-powershell-administration.md)。
 
@@ -54,7 +54,7 @@ ms.locfileid: "80298995"
 1. 移至您的 StorSimple 裝置管理員服務。 選取 [裝置]****，然後選取並按一下您想要設定遠端管理的裝置。 移至 [裝置設定] > [安全性]****。
 2. 在 [安全性設定]**** 刀鋒視窗中，按一下 [遠端管理]****。
 3. 在 [遠端管理]**** 刀鋒視窗中，將 [啟用遠端管理]**** 設定為 [是]****。
-4. 您現在可以選擇使用 HTTP 來連接。 （預設值是通過 HTTPS 進行連接。確保選擇了 HTTP。
+4. 您現在可以選擇使用 HTTP 來連接。 （預設值是透過 HTTPS 連接）。請確定已選取 [HTTP]。
    
    > [!NOTE]
    > 只有受信任的網路上才接受透過 HTTP 來連接。
@@ -133,7 +133,7 @@ ms.locfileid: "80298995"
 1. 移至您的 StorSimple 裝置管理員服務。 選取 [裝置]****，然後選取並按一下您想要設定遠端管理的裝置。 移至 [裝置設定] > [安全性]****。
 2. 在 [安全性設定]**** 刀鋒視窗中，按一下 [遠端管理]****。
 3. 將 **[啟用遠端管理]** 設為 **[是]**。
-4. 您現在可以選擇使用 HTTPS 來連線。 （預設值是通過 HTTPS 進行連接。確保選擇了 HTTPS。
+4. 您現在可以選擇使用 HTTPS 來連線。 （預設值是透過 HTTPS 連接）。請確定已選取 [HTTPS]。
 5. 按一下 [...]，然後按一下 [下載遠端管理憑證]****。 指定要儲存此檔案的位置。 您必須將此憑證安裝在將用來連線到裝置的用戶端或主機電腦上。
 6. 按一下 [儲存]****，系統提示您進行確認時，按一下 [是]****。
 
@@ -176,7 +176,7 @@ ms.locfileid: "80298995"
 
 若要準備使用 HTTPS 工作階段進行遠端連線的主機電腦，請執行下列程序：
 
-* [將 .cer 檔導入用戶端或遠端主機的根存儲](#to-import-the-certificate-on-the-remote-host)。
+* 將 .cer 檔案匯[入至用戶端或遠端主機的根存放區](#to-import-the-certificate-on-the-remote-host)。
 * [將裝置序號新增至遠端主機上的主機檔案](#to-add-device-serial-numbers-to-the-remote-host)。
 
 以下說明上述各程序。
@@ -185,11 +185,11 @@ ms.locfileid: "80298995"
 1. 在 .cer 檔案上按一下滑鼠右鍵，然後選取 [安裝憑證]****。 這會啟動 [憑證匯入精靈]。
    
     ![憑證匯入精靈 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
-2. 對於 [存放區位置]****，選取 [本機電腦]****，然後按 [下一步]****。
-3. 選取 [將所有憑證放入以下的存放區]****，然後按一下 [瀏覽]****。 瀏覽至遠端主機的根存放區，然後按 [下一步]****。
+2. [存放區位置]  請選取 [本機電腦]  ，然後按一下 [下一步]  。
+3. 選取 [將所有憑證放入以下的存放區]  ，然後按一下 [瀏覽]  。 導覽至遠端主機的根存放區，然後按一下 [ **下一步**]。
    
     ![憑證匯入精靈  2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. 按一下 **[完成]**。 會出現訊息告訴您匯入成功。
+4. 按一下 [完成]  。 會出現訊息告訴您匯入成功。
    
     ![憑證匯入精靈  3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 
@@ -203,11 +203,11 @@ ms.locfileid: "80298995"
 
 ### <a name="connect-to-the-device-from-the-remote-host"></a>從遠端主機連線至裝置
 
-使用 Windows PowerShell 和 TLS 從遠端主機或用戶端在設備上輸入 SSAdmin 會話。 SSAdmin 工作階段會對應至裝置的[序列主控台](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)功能表中的選項 1。
+使用 Windows PowerShell 和 TLS，在您的裝置上從遠端主機或用戶端輸入 SSAdmin 會話。 SSAdmin 工作階段會對應至裝置的[序列主控台](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)功能表中的選項 1。
 
 從您要建立遠端 Windows PowerShell 連線的電腦上執行下列程序。
 
-#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-tls"></a>使用 Windows PowerShell 和 TLS 在設備上輸入 SSAdmin 會話
+#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-tls"></a>使用 Windows PowerShell 和 TLS 在裝置上輸入 SSAdmin 會話
 1. 以系統管理員的身分開啟 Windows PowerShell工作階段。 如果使用 Windows 10 用戶端，Windows 遠端管理服務預設會設定為手動。 您可能需要輸入下列命令以啟動服務：
 
     `Start-Service WinRM`
@@ -232,7 +232,7 @@ ms.locfileid: "80298995"
 5. 輸入：
    
      `Enter-PSSession $session`
-6. 您需要等待幾分鐘，然後通過 TLS 通過 HTTPS 連接到您的設備。 您會看到訊息，指出您已連線到裝置。
+6. 您需要等候幾分鐘的時間，然後您會透過 TLS 透過 HTTPS 連線到您的裝置。 您會看到訊息，指出您已連線到裝置。
    
     ![使用 HTTPS 和 TLS 進行 PowerShell 遠端處理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: rohink
 ms.openlocfilehash: 4863ffd383cfcd46bad462156e26293d145fd418
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294861"
 ---
 # <a name="how-traffic-manager-works"></a>流量管理員的運作方式
@@ -60,7 +60,7 @@ Contoso Corp 開發出新的合作夥伴入口網站。 此入口網站的 URL �
 
     - 每個端點已設定的狀態 (不會傳回已停用的端點)
     - 每個端點目前的健康狀態，由流量管理員健康狀態檢查所決定。 如需詳細資訊，請參閱 [流量管理員端點監視](traffic-manager-monitoring.md)。
-    - 所選的流量路由方法。 有關詳細資訊，請參閱[流量管理器路由方法](traffic-manager-routing-methods.md)。
+    - 所選的流量路由方法。 如需詳細資訊，請參閱[流量管理員路由方法](traffic-manager-routing-methods.md)。
 
 5. 選擇的端點會傳回成為另一筆 DNS CNAME 記錄。 在此例子中，我們假設傳回 contoso us.cloudapp.net。
 6. 接下來，遞迴 DNS 服務會尋找 'cloudapp.net' 網域的名稱伺服器。 它會連絡這些名稱伺服器，以要求 'contoso-us.cloudapp.net' DNS 記錄。 將會傳回一筆 DNS 'A' 記錄，內含美國地區服務端點的 IP 位址。
@@ -75,7 +75,7 @@ Contoso Corp 開發出新的合作夥伴入口網站。 此入口網站的 URL �
 
 * [哪種類型的流量可以使用流量管理員路由傳送？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-traffic-can-be-routed-using-traffic-manager)
 
-* [流量管理器是否支援"粘性"會話？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
+* [流量管理員支援「粘滯」會話嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-support-sticky-sessions)
 
 * [我在使用流量管理員時為何看到 HTTP 錯誤？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#why-am-i-seeing-an-http-error-when-using-traffic-manager)
 
@@ -83,7 +83,7 @@ Contoso Corp 開發出新的合作夥伴入口網站。 此入口網站的 URL �
 
 * [我可以搭配「流量管理員」使用哪些應用程式通訊協定？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-application-protocols-can-i-use-with-traffic-manager)
 
-* [我可以使用帶有"裸"功能變數名稱的流量管理器嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
+* [我可以使用具有「naked」功能變數名稱的流量管理員嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-with-a-naked-domain-name)
 
 * [處理 DNS 查詢時，流量管理員會考量用戶端子網路位址嗎？](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries)
 

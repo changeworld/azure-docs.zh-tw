@@ -1,43 +1,43 @@
 ---
-title: 使用現有 Azure 負載等化器配置虛擬機器規模集 - Azure CLI
-description: 瞭解如何使用現有 Azure 負載等化器配置虛擬機器規模集。
+title: 使用現有的 Azure Load Balancer Azure CLI 設定虛擬機器擴展集
+description: 瞭解如何使用現有的 Azure Load Balancer 來設定虛擬機器擴展集。
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: article
 ms.date: 03/25/2020
 ms.openlocfilehash: a7f44a21dd404c556d6f3d8444fa70583cd71c57
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80349741"
 ---
-# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 配置具有現有 Azure 負載等化器的虛擬機器規模集
+# <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-the-azure-cli"></a>使用 Azure CLI 設定具有現有 Azure Load Balancer 的虛擬機器擴展集
 
-在本文中，您將瞭解如何使用現有的 Azure 負載等化器配置虛擬機器規模集。 
+在本文中，您將瞭解如何使用現有的 Azure Load Balancer 來設定虛擬機器擴展集。 
 
 ## <a name="prerequisites"></a>Prerequisites
 
 - Azure 訂用帳戶。
-- 將部署虛擬機器規模集的訂閱中的現有標準 sKU 負載等化器。
-- 虛擬機器縮放集的 Azure 虛擬網路。
+- 訂用帳戶中的現有標準 sku 負載平衡器，將會在其中部署虛擬機器擴展集。
+- 適用于虛擬機器擴展集的 Azure 虛擬網路。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-如果選擇在本地使用 CLI，則本文要求您安裝 Azure CLI 版本 2.0.28 或更高版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
+如果您選擇在本機使用 CLI，本文會要求您安裝 Azure CLI 版本的2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI 2.0]( /cli/azure/install-azure-cli)。
 
 ## <a name="sign-in-to-azure-cli"></a>登入 Azure CLI
 
-登錄到 Azure。
+登入 Azure。
 
 ```azurecli-interactive
 az login
 ```
 
-## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>使用現有負載等化器部署虛擬機器規模集
+## <a name="deploy-a-virtual-machine-scale-set-with-existing-load-balancer"></a>使用現有的負載平衡器部署虛擬機器擴展集
 
-將括弧中的值替換為配置中資源的名稱。
+將括弧中的值取代為您的設定中的資源名稱。
 
 ```azurecli-interactive
 az vmss create \
@@ -54,15 +54,15 @@ az vmss create \
     --backend-pool-name <backend-pool-name>
 ```
 
-下面的示例部署虛擬機器規模集，該集具有：
+下列範例會使用下列內容來部署虛擬機器擴展集：
 
-- 名為**myVMSS 的**虛擬機器規模集
-- Azure 負載等化器名為**myLoad 平衡器**
-- 負載等化器後端池名為 **"我的後端池**"
-- 名為**myVnet 的**Azure 虛擬網路
-- 名為 **"我的子網"的子網**
-- 名為 **"我的資源組"的資源組**
-- 虛擬機器規模集的 Ubuntu 伺服器映射
+- 名為**myVMSS**的虛擬機器擴展集
+- 名為**myLoadBalancer**的 Azure Load Balancer
+- 名為**myBackendPool**的負載平衡器後端集區
+- 名為**myVnet**的 Azure 虛擬網路
+- 名為**mySubnet**的子網
+- 名為**myResourceGroup**的資源群組
+- 虛擬機器擴展集的 Ubuntu Server 映射
 
 ```azurecli-interactive
 az vmss create \
@@ -79,11 +79,11 @@ az vmss create \
     --backend-pool-name myBackendPool
 ```
 > [!NOTE]
-> 創建比例集後，無法為負載等化器的運行狀況探測使用的負載平衡規則修改後端埠。 要更改埠，可以通過更新 Azure 虛擬機器縮放集、更新埠然後再次配置運行狀況探測來刪除運行狀況探測。
+> 建立擴展集之後，無法修改負載平衡器健全狀況探查所使用的負載平衡規則的後端埠。 若要變更埠，您可以藉由更新 Azure 虛擬機器擴展集來移除健康情況探查、更新埠，然後再次設定健康情況探查。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您部署了一個虛擬機器縮放集與現有的 Azure 負載等化器。  要瞭解有關虛擬機器縮放集和負載等化器的更多詳細資訊，請參閱：
+在本文中，您已使用現有的 Azure Load Balancer 來部署虛擬機器擴展集。  若要深入瞭解虛擬機器擴展集和負載平衡器，請參閱：
 
 - [什麼是 Azure Load Balancer？](load-balancer-overview.md)
 - [什麼是虛擬機器擴展集？](../virtual-machine-scale-sets/overview.md)

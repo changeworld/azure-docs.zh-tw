@@ -1,5 +1,5 @@
 ---
-title: 創建微軟開發人員帳戶 |Azure 應用商店
+title: 建立 Microsoft 開發人員帳戶 |Azure Marketplace
 description: 建立 Microsoft 開發人員帳戶的需求與步驟。
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 161abde1ef0dfd86842fb56afe699fa632e0d9ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280366"
 ---
 <a name="create-a-microsoft-developer-account"></a>建立 Microsoft 開發人員帳戶
@@ -70,7 +70,7 @@ Microsoft 開發人員中心用於註冊一次公司資訊。 註冊者必須是
 >[!IMPORTANT]
 >您必須完成下列開發人員設定檔元件，才能進行供應項目建立和部署程序的各個階段。
 
-| 開發人員設定檔     | 開始草擬    | 預備       | 免費發佈與解決方案範本   | 商業發佈   |
+| 開發人員設定檔     | 開始草擬    | 執行       | 免費發佈與解決方案範本   | 商業發佈   |
 |---------------------- |----------------   |-----------    |-------------------------------------  |---------------------  |
 | 公司註冊  | 必備         | 必備     | 必備                             | 必備             |
 | 稅務設定檔識別碼        | 選用          | 選用      | 選用                              | 必備             |
@@ -99,7 +99,7 @@ Microsoft 開發人員中心用於註冊一次公司資訊。 註冊者必須是
    ![選取國家/地區](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >"銷售"國家/地區：為了在 Azure 應用商店中銷售服務，您的註冊實體必須來自下拉清單中顯示的已批准的"銷售"國家/地區之一。 這項限制是基於付款和稅務理由。 如需詳細資訊，請參閱 Marketplace 參與原則。
+    >「銷售來源」國家/地區：若要在 Azure Marketplace 上銷售您的服務，您的已註冊實體必須是下拉式清單中所顯示的其中一個已核准的「銷售來源」國家/地區。 這項限制是基於付款和稅務理由。 如需詳細資訊，請參閱 Marketplace 參與原則。
 
 5. 針對您的 [帳戶類型] 選取 [公司]****，然後選取 [下一步]****。
 
@@ -162,7 +162,7 @@ Microsoft 開發人員中心用於註冊一次公司資訊。 註冊者必須是
     >
     >變更您的付款帳戶會延遲您的付款最多一次付款週期。 會發生此延遲是因為我們必須確認帳戶變更，就像我們在您第一次設定付款帳戶時所做的一樣。 您仍然會在帳戶確認之後收到全額款項。當期付款週期未付的款項會新增至下一期。
 
-4.  選取 [下一步]****。
+4.  選取 [下一步]  。
 
 **提供稅務資訊**
 
@@ -171,7 +171,7 @@ Microsoft 開發人員中心用於註冊一次公司資訊。 註冊者必須是
 3.  在 [ 設定您的稅單]**** 頁面上：
     - 選取您永久居住的國家或地區。
     - 選取您持有主要公民身分的國家或地區。
-    - 選取 [下一步]****。
+    - 選取 [下一步]  。
 4.  輸入稅務詳細資料，然後選取 [下一步]****。
 
 >[!WARNING]
@@ -181,7 +181,7 @@ Microsoft 開發人員中心用於註冊一次公司資訊。 註冊者必須是
 
 如果在開發人員中心註冊時發生問題，請使用下列步驟建立支援票證。
 
-1.  轉到[支援連結](https://developer.microsoft.com/windows/support)。
+1.  移至[支援連結](https://developer.microsoft.com/windows/support)。
 2.  在 [與我們連絡]**** 下，選取 [提交事件]**** 按鈕。
     ![開啟票證](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_02.png)
 3.  針對 [問題類型]**** 選取 [開發人員中心協助]，並針對 [類別]**** 選取 [發行和管理應用程式]。 選取 [開始電子郵件]****。

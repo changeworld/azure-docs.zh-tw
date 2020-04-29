@@ -1,5 +1,5 @@
 ---
-title: 創建基於路由的 Azure VPN 閘道：CLI
+title: 建立以路由為基礎的 Azure VPN 閘道： CLI
 description: 快速了解如何使用 CLI 來建立 VPN 閘道
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
 ms.openlocfilehash: 121790fce220874babedf67cd72471caa7e92ae6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80241095"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>使用 CLI 來建立路由型 VPN 閘道
@@ -33,7 +33,7 @@ ms.locfileid: "80241095"
 az group create --name TestRG1 --location eastus
 ```
 
-## <a name="create-a-virtual-network"></a><a name="vnet"></a>創建虛擬網路
+## <a name="create-a-virtual-network"></a><a name="vnet"></a>建立虛擬網路
 
 使用 [az network vnet create](/cli/azure/network/vnet) 命令來建立虛擬網路。 下列範例會在 **EastUS** 位置中建立名為 **VNet1** 的虛擬網路：
 
@@ -59,7 +59,7 @@ az network vnet subnet create \
   --address-prefix 10.1.255.0/27 
 ```
 
-## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>請求公共 IP 位址
+## <a name="request-a-public-ip-address"></a><a name="PublicIP"></a>要求公用 IP 位址
 
 VPN 閘道必須具有動態配置的公用 IP 位址。 公用 IP 位址將會配置給您為虛擬網路建立的 VPN 閘道。 請使用下列範例來要求公用 IP 位址：
 
@@ -184,6 +184,6 @@ az group delete --name TestRG1 --yes
 閘道建立完成之後，您便可在您的虛擬網路與另一個 VNet 之間建立連線。 或是在您的虛擬網路與內部部署位置之間建立連線。
 
 > [!div class="nextstepaction"]
-> [創建網站到網站的連接](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
+> [建立站對站連線](vpn-gateway-create-site-to-site-rm-powershell.md)<br><br>
 > [建立點對站連線](vpn-gateway-howto-point-to-site-rm-ps.md)<br><br>
 > [建立與另一個 VNet 的連線](vpn-gateway-vnet-vnet-rm-ps.md)

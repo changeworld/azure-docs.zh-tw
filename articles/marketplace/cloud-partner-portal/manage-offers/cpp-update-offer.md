@@ -1,5 +1,5 @@
 ---
-title: 更新市場優惠 |Azure 應用商店
+title: 更新 marketplace 供應專案 |Azure Marketplace
 description: 使用 Cloud Partner 入口網站更新 Azure 和 AppSource Marketplace 上的供應項目
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: dsindona
 ms.openlocfilehash: 101369a050770be3acd9534cef6229037fe1c366
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288507"
 ---
 # <a name="update-azure-marketplace-and-appsource-offers"></a>更新 Azure Marketplace 和 AppSource 的供應項目
@@ -46,7 +46,7 @@ ms.locfileid: "80288507"
 
 使用下列步驟來更新供應項目的支援連絡人。
 1. 在 [所有供應項目]**** 頁面中選取供應項目。
-2. 選擇 **"連絡人"** 選項卡。更新連絡人。
+2. 選取 [**連絡人**] 索引標籤。更新您的連絡人。
 3. 選取 [儲存]**** 按鈕。
 4. 選取 [發佈]**** 即可啟動發佈程序。
 
@@ -61,7 +61,7 @@ ms.locfileid: "80288507"
 
 針對 Azure Marketplace 供應項目：
 
-1. 選擇**SKU**選項卡。 選擇要修改的 SKU。
+1. 選取 [ **sku** ] 索引標籤。 選取要修改的 SKU。
 1. 按一下 [國家/區域可用性]**** 欄位之下的 [選取國家 (地區)]**** 按鈕。
 1. 在 [區域可用性] 對話方塊中，新增或移除此 SKU 的區域。
 
@@ -90,7 +90,7 @@ ms.locfileid: "80288507"
 
 ### <a name="update-offer-marketplace-assets"></a>更新供應項目市集資產
 
-您可能有需要更新市場文本和圖像資產的方案，例如公司徽標、產品/服務說明等。使用以下步驟更新這些資產。
+在某些情況下，您可能需要更新 marketplace 文字型和影像資產，例如您的公司標誌、供應專案描述等等。使用下列步驟來更新這些資產。
 
 1. 在 [所有供應項目]**** 頁面中尋找您的供應項目。 
 2. 選取 [市集]**** 索引標籤，然後依照供應項目的*市集索引標籤*主題中的指示操作。
@@ -103,7 +103,7 @@ ms.locfileid: "80288507"
 
 1. 選取您要降低價格的 SKU。
 2. 您必須使用原本使用的相同機制設定更優惠的價格：直接在入口網站 UI 中或使用匯入/匯出試算表。
-3. 按一下 [儲存]****。
+3. 按一下 **[儲存]** 。
 4. 按一下 [發佈]**** 即可啟動發佈程序。
 
 一旦供應項目在市集上架，其定價就會顯示給新客戶，而且所有新客戶都只需要支付新的降價後價格。  至於現有的客戶，降低後的價格可追溯到降價開始生效時的帳單週期開始時間。  如果客戶在降價時已遭收取費用，則會在下一個帳單週期收到退款單，以補償降價後的價格。

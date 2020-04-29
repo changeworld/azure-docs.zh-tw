@@ -16,25 +16,25 @@ ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.openlocfilehash: f3bd7bc78eeb62cc33a01ed31bb04d94078cae4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294342"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>適用於 Android 的離線 Widevine 串流  
 
-> [!div class="op_single_selector" title1="選擇您正在使用的媒體服務版本："]
+> [!div class="op_single_selector" title1="選取您要使用的媒體服務版本："]
 > * [第 3 版](../latest/offline-widevine-for-android.md)
-> * [版本 2](offline-widevine-for-android.md)
+> * [第 2 版](offline-widevine-for-android.md)
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
 除了保護線上串流的內容之外，媒體內容訂用帳戶與租賃服務能提供可在未連線到網際網路時使用的可下載內容。 在和網路中斷連線的飛行途中，您可能需要先將內容下載至手機或平板電腦，以在飛航模式中播放。 您可能會想要下載內容的其他案例如下：
 
-- 某些內容提供者可能會禁止將 DRM 許可證交付到國家/地區邊界以外。 如果使用者想要在出國旅行時觀賞內容，則需要離線下載。
-- 在某些國家/地區，互聯網可用性和/或頻寬有限。 使用者可能會選擇下載內容，以便能以較高的解析度觀賞，來獲得令人滿意的檢視體驗。
+- 某些內容提供者可能不允許超出國家/地區框線的 DRM 授權傳遞。 如果使用者想要在出國旅行時觀賞內容，則需要離線下載。
+- 在某些國家/地區，網際網路可用性和/或頻寬會受到限制。 使用者可能會選擇下載內容，以便能以較高的解析度觀賞，來獲得令人滿意的檢視體驗。
 
 本文討論如何針對 Android 裝置上受 Widevine 保護的 DASH 內容實作離線模式播放。 離線 DRM 可讓您為內容提供訂用帳戶、租賃及採購模式，讓服務的客戶能在和網際網路中斷連線時，輕鬆地隨身攜帶內容。
 
@@ -108,7 +108,7 @@ private static string ConfigureWidevineLicenseTemplateOffline(Uri keyDeliveryUrl
 
 ## <a name="configuring-the-android-player-for-offline-playback"></a>設定 Android 播放程式以進行離線播放
 
-若要開發適用於 Android 裝置的原生播放應用程式，最簡單的方法就是使用 [Google ExoPlayer SDK](https://github.com/google/ExoPlayer) \(英文\) 開放原始碼視訊播放程式 SDK。 ExoPlayer 支援 Android 的本機 MediaPlayer API 當前不支援的功能，包括 MPEG-DASH 和 Microsoft 平滑流交付協定。
+若要開發適用於 Android 裝置的原生播放應用程式，最簡單的方法就是使用 [Google ExoPlayer SDK](https://github.com/google/ExoPlayer) \(英文\) 開放原始碼視訊播放程式 SDK。 ExoPlayer 支援 Android 的原生 MediaPlayer API 目前不支援的功能，包括 MPEG-2 和 Microsoft Smooth Streaming 傳遞通訊協定。
 
 ExoPlayer 2.6 版及更新版本包括許多支援離線 Widevine DRM 播放的類別。 其中 OfflineLicenseHelper 類別能提供公用程式函式，以利於使用 DefaultDrmSessionManager 進行下載、更新及發行離線授權。 SDK 資料夾 "library/core/src/main/java/com/google/android/exoplayer2/offline/" 中所提供的類別支援下載離線視訊內容。
 
@@ -146,7 +146,7 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 ## <a name="chrome-player-apps-for-android"></a>適用於 Android 的 Chrome 播放應用程式
 
-從[Android 的 Chrome v. 62](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates)發佈開始，EME 中支援持久許可證。 適用於 Android 的 Chrome 現在也支援 [Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) \(英文\)。 如果您的使用者具有此版本 (或更新版本) 的 Chrome，這可讓您在 Chrome 中建立離線播放應用程式。 
+從[適用于 Android 62 的 Chrome](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates)版本開始，支援 EME 中的持續性授權。 適用於 Android 的 Chrome 現在也支援 [Widevine L1](https://developers.google.com/web/updates/2017/09/chrome-62-media-updates#widevine_l1) \(英文\)。 如果您的使用者具有此版本 (或更新版本) 的 Chrome，這可讓您在 Chrome 中建立離線播放應用程式。 
 
 此外，Google 已推出 Progressive Web App (PWA) 範例，並將它作為開放原始碼提供： 
 
@@ -157,7 +157,7 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 上述的開放原始碼 PWA 應用程式是以 Node.js 撰寫。 如果您想在 Ubuntu 伺服器上裝載自己的版本，請留意下列會阻礙播放的常見問題：
 
-1. CORS 問題：範例應用程式中的範例視訊是裝載於 https://storage.googleapis.com/biograf-video-files/videos/。 Google 已為所有裝載於 Google Cloud Storage 貯體中的測試範例設定 CORS。 它們也會搭配 CORS 標頭提供，明確指定出 CORS 項目 `https://biograf-155113.appspot.com` (Google 用來裝載其範例的網域)，防止由其他網站存取。 如果嘗試，您將看到以下 HTTP 錯誤：`Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
+1. CORS 問題：範例應用程式中的範例視訊是裝載於 https://storage.googleapis.com/biograf-video-files/videos/。 Google 已為所有裝載於 Google Cloud Storage 貯體中的測試範例設定 CORS。 它們也會搭配 CORS 標頭提供，明確指定出 CORS 項目 `https://biograf-155113.appspot.com` (Google 用來裝載其範例的網域)，防止由其他網站存取。 如果您嘗試，就會看到下列 HTTP 錯誤：`Failed to load https://storage.googleapis.com/biograf-video-files/videos/poly-sizzle-2015/mp4/dash.mpd: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'https:\//13.85.80.81:8080' is therefore not allowed access. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.`
 2. 憑證問題：從 Chrome v 58 開始，針對 Widevine 的 EME 將要求使用 HTTPS。 因此，您必須搭配 X509 憑證透過 HTTPS 裝載範例應用程式。 由於下列需求使得一般測試憑證沒有作用：您必須先取得符合以下最低需求的憑證：
     - Chrome 和 Firefox 都需要憑證中存在 SAN (主體別名) 設定
     - 憑證必須要有信任的 CA，自我簽署的開發憑證將不會有作用
@@ -170,22 +170,22 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 我要如何針對部分用戶端/使用者傳遞持續性授權 (已啟用離線)，並針對其他用戶端/使用者傳遞非持續性授權 (已停用離線)？ 我是否必須複製內容並使用個別的內容金鑰？
 
 ### <a name="answer"></a>Answer
-您不需要複製內容。 您只需使用內容的單個副本和單個內容金鑰授權策略，但兩個單獨的內容金鑰授權策略選項：
+您不需要複製內容。 您可以只使用單一的內容複本和單一 ContentKeyAuthorizationPolicy，但有兩個不同的 ContentKeyAuthorizationPolicyOption：
 
-1. IContentKey 授權策略選項 1：使用持久許可證和內容金鑰授權策略限制 1，其中包含license_type = "持久"
-2. IContentKey 授權策略選項 2：使用非持久性許可證，以及包含license_type = "非持久性"等聲明的內容金鑰授權策略限制 2
+1. IContentKeyAuthorizationPolicyOption 1：使用持續性授權，以及包含 license_type = "Persistent" 這類宣告的 ContentKeyAuthorizationPolicyRestriction 1
+2. IContentKeyAuthorizationPolicyOption 2：使用非持續性授權，以及包含宣告的 ContentKeyAuthorizationPolicyRestriction 2，例如 license_type = "永久性"
 
-如此一來，當有來自用戶端應用程式的授權要求時，從授權要求的角度將不會有任何不同。 但是，對於不同的最終使用者/設備，STS 應具有發佈包含不同聲明的不同 JWT 權杖的業務邏輯（上述兩license_type之一）。 系統會使用 JWT 權杖中的宣告值，來讓授權服務決定要發出哪種授權類型：持續性或非持續性。
+如此一來，當有來自用戶端應用程式的授權要求時，從授權要求的角度將不會有任何不同。 不過，針對不同的使用者/裝置，STS 應具有商務邏輯來發行包含不同宣告的不同 JWT 權杖（上述兩個 license_type 的其中一個）。 系統會使用 JWT 權杖中的宣告值，來讓授權服務決定要發出哪種授權類型：持續性或非持續性。
 
 這表示安全權杖服務 (STS) 需要有商務邏輯與用戶端/裝置資訊，以將對應的宣告值新增至權杖。
 
 ### <a name="question"></a>問題
 
-對於 Widevine 安全級別，在 Google 的[Widevine DRM 架構概述文檔](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)文檔中，它定義了三個不同的安全級別。 然而，[關於 Widevine 授權範本的 Azure 媒體服務文件](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)則將安全性層級分成五個不同的層級。 這兩組不同的安全性層級之間有什麼關聯和對應？
+如需 Widevine 安全性等級，在 Google 的[WIDEVINE DRM 架構總覽](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)檔中，它會定義三個不同的安全性層級。 然而，[關於 Widevine 授權範本的 Azure 媒體服務文件](https://docs.microsoft.com/azure/media-services/media-services-widevine-license-template-overview)則將安全性層級分成五個不同的層級。 這兩組不同的安全性層級之間有什麼關聯和對應？
 
 ### <a name="answer"></a>Answer
 
-在谷歌的[Widevine DRM架構概述](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)中，它定義了以下三個安全級別：
+在 Google 的[WIDEVINE DRM 架構總覽](https://storage.googleapis.com/wvdocs/Widevine_DRM_Architecture_Overview.pdf)中，它會定義下列三個安全性層級：
 
 1.  安全性層級 1：所有內容處理、密碼編譯及控制，都會在受信任執行環境 (TEE) 內執行。 在某些實作模型中，安全性處理可能是在不同的晶片中執行。
 2.  安全性層級 2：在 TEE 內執行密碼編譯 (但非視訊處理)：解密的緩衝區會傳回應用程式網域，並透過個別的視訊硬體或軟體進行處理。 不過，層級 2 中的密碼編譯資訊仍然只會在 TEE 內處理。
@@ -203,7 +203,7 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 | **Widevine 架構中定義的安全性層級** |**Widevine API 中使用的安全性層級**|
 |---|---| 
-| **安全級別 1：** 所有內容處理、加密和控制都在受信任的執行環境 （TEE） 中執行。 在某些實作模型中，安全性處理可能是在不同的晶片中執行。|**security_level=5**：加密、解密和媒體 (壓縮和未壓縮) 的所有處理，都必須在受硬體支援的 TEE 內處理。<br/><br/>**security_level=4**：內容的加密和解密必須在受硬體支援的 TEE 內執行。|
+| **安全性層級 1**：所有內容處理、密碼編譯和控制都是在信任的執行環境（t）內執行。 在某些實作模型中，安全性處理可能是在不同的晶片中執行。|**security_level=5**：加密、解密和媒體 (壓縮和未壓縮) 的所有處理，都必須在受硬體支援的 TEE 內處理。<br/><br/>**security_level=4**：內容的加密和解密必須在受硬體支援的 TEE 內執行。|
 **安全性層級 2**：在 TEE 內執行密碼編譯 (但非視訊處理)：解密的緩衝區會傳回應用程式網域，並透過個別的視訊硬體或軟體進行處理。 不過，層級 2 中的密碼編譯資訊仍然只會在 TEE 內處理。| **security_level=3**：金鑰資料和加密作業必須在受硬體支援的 TEE 內執行。 |
 | **安全性層級 3**：裝置上沒有 TEE。 可採取適當的措施以保護主機作業系統上的密碼編譯資訊和解密內容。 層級 3 實作也可能包括硬體密碼編譯引擎，但那只會提升效能，而非安全性。 | **security_level=2**：軟體加密和模糊化的解碼器為必要。<br/><br/>**security_level=1**：以軟體為基礎的白箱加密為必要。|
 
@@ -224,6 +224,6 @@ Android 5.0 Lollipop 或更新版本不會發生此問題，因為 Android 5.0 �
 
 * Widevine 是 Google Inc. 所提供的服務，並受到 Google Inc. 的服務條款和隱私權原則所約束。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>[摘要]
 
 本文已討論如何針對 Android 裝置上受 Widevine 保護的 DASH 內容實作離線模式播放。  文中也回答一些和離線串流受 Widevine 保護的內容相關的常見問題。

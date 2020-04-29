@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: mvc
 ms.openlocfilehash: 7bd781a21a32ca29fe3f5dd2f4432dbf1e5ca411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80292133"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>整合 API 管理與 Azure 中的 Service Fabric
@@ -25,12 +25,12 @@ ms.locfileid: "80292133"
 > [!IMPORTANT]
 > 由於這項功能需要支援虛擬網路，因此可用於 API 管理的**進階**與**開發人員**層級。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 開始之前：
 
-* 如果沒有 Azure 訂閱，請創建[一個免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-* 安裝 [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) 或 [Azure CLI](/cli/azure/install-azure-cli)。
+* 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* 安裝[Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps)或[Azure CLI](/cli/azure/install-azure-cli)。
 * 在網路安全性群組中建立安全的 [Windows 叢集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)。
 * 如果您部署 Windows 叢集，請設定 Windows 開發環境。 安裝 [Visual Studio 2019](https://www.visualstudio.com) 和 **Azure 開發**、**ASP.NET 和 Web 開發**以及 **.NET Core 跨平台開發**工作負載。  然後設定 [.NET 開發環境](service-fabric-get-started.md)。
 
@@ -66,7 +66,7 @@ az account set --subscription <guid>
  1. 在 Visual Studio 中，選取 [檔案] -> [新增專案]。
  2. 選取 [雲端] 底下的 [Service Fabric 應用程式] 範本，然後將它命名為 **"ApiApplication"**。
  3. 選取無狀態 ASP.NET Core 服務範本，然後將專案命名為 **"WebApiService"**。
- 4. 選擇 Web API ASP.NET核心 2.1 專案範本。
+ 4. 選取 [Web API ASP.NET Core 2.1] 專案範本。
  5. 建立專案之後，開啟 `PackageRoot\ServiceManifest.xml`，然後從端點資源組態中移除 `Port` 屬性：
 
     ```xml
@@ -77,7 +77,7 @@ az account set --subscription <guid>
     </Resources>
     ```
 
-    刪除埠允許 Service Fabric 從群集資源管理器範本中通過網路安全性群組打開的應用程式埠範圍動態指定埠，從而允許流量從 API 管理流向它。
+    移除埠可讓 Service Fabric 從應用程式埠範圍動態指定埠，透過叢集 Resource Manager 範本中的「網路安全性群組」開啟，允許流量從「API 管理」流到它。
 
  6. 在 Visual Studio 中按 F5 以確認本機有提供 Web API。
 
@@ -134,7 +134,7 @@ az account set --subscription <guid>
 
 * **displayName** 可以是 API 的任何名稱。 本文使用 "Service Fabric App"。
 * **name** 提供 API 的唯一和描述性名稱，例如 "service-fabric-app"。 它會顯示在開發人員和發行者入口網站中。
-* **serviceUrl** 會參考實作 API 的 HTTP 服務。 API 管理則將要求轉送至此位址。 就 Service Fabric 後端而言，並不使用此 URL 值。 您可以在這裡輸入任何值。 對於本文，例如"HTTP：/Servicefabric"。\/
+* **serviceUrl** 會參考實作 API 的 HTTP 服務。 API 管理則將要求轉送至此位址。 就 Service Fabric 後端而言，並不使用此 URL 值。 您可以在這裡輸入任何值。 針對本文，例如 "HTTP：\//servicefabric"。
 * **path** 會附加至 API 管理服務的基底 URL 後面。 基礎 URL 是 API 管理服務主控的所有 API 所共有。 API 管理依尾碼來區分 API，因此，特定發行者的每一個 API 必須有唯一的尾碼。
 * **protocols** 會決定可使用哪些通訊協定來存取 API。 在本文中，請列出 **http** 和 **https**。
 * **path** 是 API 的尾碼。 在本文中，請使用 "myapp"。
@@ -277,7 +277,7 @@ az group deployment create --name ApiMgmtDeployment --resource-group $ResourceGr
 
 叢集是由叢集資源本身和其他 Azure 資源所構成。 刪除叢集及其取用之所有資源的最簡單方式，就是刪除資源群組。
 
-登入 Azure 並選取您要移除叢集的訂用帳戶識別碼。  您可以通過登錄到[Azure 門戶](https://portal.azure.com)來查找訂閱 ID。 使用[刪除 AzResourceGroup Cmdlet](/en-us/powershell/module/az.resources/remove-azresourcegroup)刪除資源組和所有群集資源。
+登入 Azure 並選取您要移除叢集的訂用帳戶識別碼。  您可以藉由登入[Azure 入口網站](https://portal.azure.com)來尋找您的訂用帳戶識別碼。 使用[remove-azresourcegroup Cmdlet](/en-us/powershell/module/az.resources/remove-azresourcegroup)來刪除資源群組和所有叢集資源。
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"
@@ -303,7 +303,7 @@ az group delete --name $ResourceGroupName
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
-副結構腳本和範本/blob/主/範本/服務集成/網路-apim.參數.jsonn
+vice-fabric-scripts-and-templates/blob/master/templates/service-integration/network-apim。n
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png

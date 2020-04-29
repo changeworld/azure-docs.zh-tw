@@ -1,5 +1,5 @@
 ---
-title: 創建市場優惠 |Azure 應用商店
+title: 建立 Marketplace 供應專案 |Azure Marketplace
 description: 使用 Cloud Partner 入口網站建立 Azure 和 AppSource Marketplace 上的供應項目
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: dsindona
 ms.openlocfilehash: d14940eff569a80759e9db0bfa2d6d1541a01377
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286467"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>建立 Azure Marketplace 和 AppSource 的供應項目
@@ -35,7 +35,7 @@ Cloud Partner 入口網站的一個基本目的是使發行者能夠建立 (並�
 | **儲存**    | 儲存任何最近的資料輸入變更。  您必須在離開該頁面之前以手動方式儲存變更，否則您的變更將會遺失。 | 
 | **捨棄** | 捨棄最近的資料輸入變更 (自上次儲存以來)             |
 | **比較** | 將目前的供應項目與已發佈的供應項目的狀態進行比較。  僅在成功發佈供應項目之後啟用。  |
-| **發佈** | 開始此供應項目的發佈程序                       |
+| **Publish** | 開始此供應項目的發佈程序                       |
 | **刪除**  | 請在建立之後但在發佈之前刪除此供應項目。 |
 |   |   |
 
@@ -46,7 +46,7 @@ Cloud Partner 入口網站的一個基本目的是使發行者能夠建立 (並�
 
 |      索引標籤名稱       |   目的                                                            |
 |      --------       |   -------                                                            |
-| **供應項目設定**  | 收集供應項目和發行者身分識別資訊。                    |
+| **供應專案設定**  | 收集供應項目和發行者身分識別資訊。                    |
 | **SKU**            | 定義供應項目的每個庫存單位 (SKU) 版本的技術和商務特性 |
 | **試用產品**      | 針對支援此選擇性功能的類型，請為您的供應項目定義示範。  如需詳細資訊，請參閱[什麼是試用產品？](../test-drive/what-is-test-drive.md)  |
 | **市集**或**店面** | 收集用來列出市集中的供應項目的文字字串、文件和影像 |

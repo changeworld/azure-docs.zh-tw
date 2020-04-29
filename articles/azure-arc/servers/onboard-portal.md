@@ -9,10 +9,10 @@ ms.author: magoedte
 ms.date: 03/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: 40885e1de4ff4c16d2a50399c654d8596396ab53
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80366377"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>從 Azure 入口網站將混合式機器連線至 Azure
@@ -43,11 +43,11 @@ ms.locfileid: "80366377"
     >- WestEurope
     >- WestAsia
     >
-    >在"概述"一文中[在此處](overview.md#supported-regions)選擇區域時，請查看其他注意事項。
+    >在 [總覽][文章中選取區域時，請](overview.md#supported-regions)參閱其他考慮。
 
 1. 在 [產生指令碼]**** 頁面的 [作業系統]**** 下拉式清單中，選取要作為指令碼執行平台的作業系統。
 
-1. 如果電腦正在通過代理伺服器進行通信以連接到互聯網，請選擇"**下一步：代理伺服器**"。 
+1. 如果電腦透過 proxy 伺服器進行通訊以連線到網際網路，請選取 **[下一步： Proxy 伺服器]**。 
 1. 在 [Proxy 伺服器]**** 索引標籤上，指定要供機器用來與 Proxy 伺服器通訊的 Proxy 伺服器 IP 位址或名稱與連接埠號碼。 請以 `http://<proxyURL>:<proxyport>` 格式輸入值。 
 1. 選取 [檢閱 + 產生]****。
 
@@ -65,21 +65,21 @@ ms.locfileid: "80366377"
 
 如果機器需要透過 Proxy 伺服器與服務通訊，則在安裝代理程式之後，您必須執行本文稍後所述的命令。 這會設定 Proxy 伺服器系統環境變數 `https_proxy`。
 
-如果您不熟悉 Windows 安裝程式包的命令列選項，請查看[Msiexec 標準命令列選項](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)和[Msiexec 命令列選項](https://docs.microsoft.com/windows/win32/msi/command-line-options)。
+如果您不熟悉 Windows Installer 封裝的命令列選項，請參閱[Msiexec 標準命令列選項](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)和[Msiexec 命令列選項](https://docs.microsoft.com/windows/win32/msi/command-line-options)。
 
-例如，使用`/?`參數運行安裝程式以查看説明和快速參考選項。 
+例如，請使用`/?`參數來執行安裝程式，以查看 [說明] 和 [快速參考] 選項。 
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-要靜默安裝代理並在資料夾中創建設置日誌檔，`C:\Support\Logs`請運行以下命令。
+若要以無訊息模式安裝代理程式，並在`C:\Support\Logs`資料夾中建立安裝記錄檔，請執行下列命令。
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
 ```
 
-預設情況下，已連接的電腦代理的檔安裝在*C：*程式檔_Azure連接電腦代理*中。 如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 記錄目錄是「%Programfiles%\AzureConnectedMachineAgentAgent\logs」**。
+連線機器代理程式的檔案預設會安裝在*C:\Program Files\AzureConnectedMachineAgent*中。 如果此代理程式在安裝完成之後無法啟動，請檢查記錄以取得詳細的錯誤資訊。 記錄目錄是「%Programfiles%\AzureConnectedMachineAgentAgent\logs」**。
 
 ### <a name="install-with-the-scripted-method"></a>使用指令碼方法來安裝
 
@@ -156,6 +156,6 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何使用[Azure 策略](../../governance/policy/overview.md)管理電腦，用於 VM[來賓配置](../../governance/policy/concepts/guest-configuration.md)、驗證電腦是否報告到預期的日誌分析工作區、使用 VM 啟用 Azure[監視器](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)等操作。
+- 瞭解如何使用[Azure 原則](../../governance/policy/overview.md)來管理您的機器，例如 VM[來賓](../../governance/policy/concepts/guest-configuration.md)設定、確認機器回報至預期的 Log Analytics 工作區、使用[vm 的 Azure 監視器](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)來啟用監視等功能。
 
-- 瞭解有關[日誌分析代理](../../azure-monitor/platform/log-analytics-agent.md)的更多資訊。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。
+- 深入瞭解[Log Analytics 代理程式](../../azure-monitor/platform/log-analytics-agent.md)。 您需要適用於 Windows 和 Linux 的 Log Analytics 代理程式來主動監視機器上執行的作業系統和工作負載、使用自動化 Runbook 或解決方案 (例如更新管理) 來管理機器，或使用其他 Azure 服務 (例如 [Azure 資訊安全中心](../../security-center/security-center-intro.md))。

@@ -1,53 +1,53 @@
 ---
-title: Azure 函數自訂處理常式（預覽）
-description: 瞭解如何將 Azure 函數與任何語言或執行階段版本一起使用。
+title: Azure Functions 自訂處理常式（預覽）
+description: 瞭解如何使用任何語言或執行階段版本的 Azure Functions。
 author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
 ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79479250"
 ---
-# <a name="azure-functions-custom-handlers-preview"></a>Azure 函數自訂處理常式（預覽）
+# <a name="azure-functions-custom-handlers-preview"></a>Azure Functions 自訂處理常式（預覽）
 
-每個函數應用都由特定于語言的處理常式執行。 雖然預設情況下 Azure 函數支援許多[語言處理常式](./supported-languages.md)，但在某些情況下，您可能需要對應用執行環境進行額外控制。 自訂處理常式為您提供此附加控制項。
+每個函式應用程式都是由特定語言的處理常式執行。 雖然 Azure Functions 預設支援許多[語言處理常式](./supported-languages.md)，但在某些情況下，您可能會想要對應用程式執行環境進行額外的控制。 自訂處理常式會提供您額外的控制。
 
-自訂處理常式是從函數主機接收事件的羽量級 Web 服務器。 任何支援 HTTP 基元的語言都可以實現自訂處理常式。
+自訂處理常式是從函式主機接收事件的輕量 web 伺服器。 任何支援 HTTP 基本物件的語言都可以執行自訂處理常式。
 
-自訂處理常式最適合您希望：
+自訂處理常式最適用于您想要執行下列動作的情況：
 
-- 在官方支援的語言之外，使用語言實現函數應用
-- 在語言版本或運行時中實現預設情況下不支援的功能應用
-- 對應用執行環境進行精細控制
+- 以正式支援語言以外的語言來執行函數應用程式
+- 根據預設不支援的語言版本或執行時間來執行函數應用程式
+- 對應用程式執行環境有細微的控制
 
-對於自訂處理常式，所有[觸發器以及輸入和輸出綁定](./functions-triggers-bindings.md)都通過[擴展包](./functions-bindings-register.md)支援。
+透過自訂處理常式，所有[觸發程式和輸入和輸出](./functions-triggers-bindings.md)系結都可透過[延伸](./functions-bindings-register.md)模組組合來支援。
 
 ## <a name="overview"></a>總覽
 
-下圖顯示了函數主機和作為自訂處理常式實現的 Web 服務器之間的關係。
+下圖顯示函數主機和實作為自訂處理常式的 web 伺服器之間的關聯性。
 
-![Azure 函數自訂處理常式概述](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
+![Azure Functions 自訂處理常式總覽](./media/functions-custom-handlers/azure-functions-custom-handlers-overview.png)
 
-- 事件觸發發送到函數主機的請求。 該事件攜帶原始 HTTP 負載（對於沒有綁定的 HTTP 觸發函數）或保存函數的輸入綁定資料的有效負載。
-- 然後，函數主機通過發出[請求負載](#request-payload)將請求代理到 Web 服務器。
-- Web 服務器執行單個函數，並將[回應負載](#response-payload)返回給函數主機。
-- 函數主機將回應代理為目標的輸出綁定負載。
+- 事件會觸發傳送至函數主機的要求。 事件會攜帶未經處理的 HTTP 承載（適用于沒有系結的 HTTP 觸發函式），或包含函式之輸入系結資料的裝載。
+- 然後，函式主機會藉由發出[要求](#request-payload)承載，以 proxy 將要求送至 web 伺服器。
+- Web 服務器會執行個別的函式，並將[回應](#response-payload)承載傳回給函式主機。
+- 函式會將回應做為輸出系結裝載的目標 proxy。
 
-作為自訂處理常式實現的 Azure 函數應用必須根據幾個約定配置*host.json*和*函數.json*檔。
+實作為自訂處理常式的 Azure Functions 應用程式必須根據幾個慣例來設定*主機. json*和函式*json*檔案。
 
 ## <a name="application-structure"></a>應用程式結構
 
-要實現自訂處理常式，需要應用程式中的以下幾個方面：
+若要執行自訂處理常式，您的應用程式需要下列層面：
 
-- 應用根目錄的*host.json*檔
-- 每個*函數的函數.json*檔（在與函數名稱匹配的資料夾中）
-- 運行 Web 服務器的命令、腳本或可執行檔
+- 位於應用程式根目錄的*host. json*檔案
+- 每個函式的*函數. json*檔案（位於符合函式名稱的資料夾內）
+- 執行網頁伺服器的命令、腳本或可執行檔
 
-下圖顯示了這些檔在檔案系統上查找名為"order"的函數的方式。
+下圖顯示這些檔案如何在檔案系統上查看名為 "order" 的函式。
 
 ```bash
 | /order
@@ -56,11 +56,11 @@ ms.locfileid: "79479250"
 | host.json
 ```
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
-應用程式通過*主機.json*檔進行配置。 此檔通過指向能夠處理 HTTP 事件的 Web 服務器告訴函數主機發送請求的位置。
+應用程式是透過*host. json*檔案進行設定。 這個檔案會指示函式裝載在何處傳送要求，方法是指向能夠處理 HTTP 事件的 web 伺服器。
 
-自訂處理常式是通過配置*host.json*檔來定義的，該檔包含有關如何通過`httpWorker`該部分運行 Web 服務器的詳細資訊。
+藉由設定*host. json*檔案，以及如何透過`httpWorker`一節執行 web 伺服器的詳細資料，來定義自訂處理常式。
 
 ```json
 {
@@ -73,9 +73,9 @@ ms.locfileid: "79479250"
 }
 ```
 
-該`httpWorker`節指向 由 定義的目標`defaultExecutablePath`。 執行目標可以是命令、可執行檔或實現 Web 服務器的檔。
+`httpWorker`區段會指向所`defaultExecutablePath`定義的目標。 執行目標可能是用來執行 web 伺服器的命令、可執行檔或檔案。
 
-對於腳本化應用，`defaultExecutablePath`指向指令碼語言的運行時並`defaultWorkerPath`指向指令檔位置。 下面的示例顯示了 Node.js 中的 JavaScript 應用如何配置為自訂處理常式。
+針對已編寫腳本`defaultExecutablePath`的應用程式，會指向指令碼語言`defaultWorkerPath`的執行時間，並指向腳本檔案位置。 下列範例顯示如何將 node.js 中的 JavaScript 應用程式設定為自訂處理常式。
 
 ```json
 {
@@ -89,7 +89,7 @@ ms.locfileid: "79479250"
 }
 ```
 
-您還可以使用`arguments`陣列傳遞參數：
+您也可以使用`arguments`陣列傳遞引數：
 
 ```json
 {
@@ -104,32 +104,32 @@ ms.locfileid: "79479250"
 }
 ```
 
-許多調試設置都有必要使用參數。 有關詳細資訊，請參閱[調試](#debugging)部分。
+引數是許多偵錯工具的必要參數。 如需詳細資訊，請參閱[調試](#debugging)程式一節。
 
 > [!NOTE]
-> *host.json*檔必須與正在運行的 Web 服務器處於目錄結構中的同一級別。 預設情況下，某些語言和工具鏈可能不會將此檔放在應用程式根目錄。
+> *主機. json*檔案必須與執行中 web 伺服器位於相同層級的目錄結構中。 某些語言和工具鏈預設可能不會將這個檔案放在應用程式根目錄。
 
-#### <a name="bindings-support"></a>綁定支援
+#### <a name="bindings-support"></a>系結支援
 
-標準觸發器以及輸入和輸出綁定可通過引用*host.json*檔中[的擴展包](./functions-bindings-register.md)來獲取。
+在您的*host. json*檔案中參考[延伸](./functions-bindings-register.md)模組組合，即可取得標準觸發程式以及輸入和輸出系結。
 
 ### <a name="function-metadata"></a>函數中繼資料
 
-當與自訂處理常式一起使用時，*函數.json*內容與在任何其他上下文中定義函數的方式沒有什麼不同。 唯一的要求是*函數.json*檔必須位於命名的資料夾中，以匹配函數名稱。
+與自訂處理常式搭配使用時，*函數. json*內容與您在任何其他內容下定義函式的方式並無不同。 唯一的要求是*函數. json*檔案必須位於名為的資料夾中，以符合函式名稱。
 
-### <a name="request-payload"></a>請求有效負載
+### <a name="request-payload"></a>要求承載
 
-純 HTTP 函數的請求負載是原始 HTTP 要求負載。 純 HTTP 函式定義為沒有輸入或輸出綁定的函數，這些函數返回 HTTP 回應。
+純 HTTP 函式的要求承載是原始 HTTP 要求承載。 純 HTTP 函式定義為沒有輸入或輸出系結的函式，會傳回 HTTP 回應。
 
-任何包含輸入、輸出綁定或通過 HTTP 以外的事件源觸發的其他類型的函數都有自訂請求負載。
+任何其他類型的函式，包括輸入、輸出系結或透過 HTTP 以外的事件來源觸發，都有自訂要求承載。
 
-以下代碼表示示例請求負載。 有效負載包括一個 JSON 結構，`Data`其中包含`Metadata`兩個成員：和 。
+下列程式碼代表範例要求承載。 裝載包含具有兩個成員的 JSON 結構： `Data`和`Metadata`。
 
-成員`Data`包括匹配*函數.json*檔中綁定陣列中定義的輸入和觸發器名稱的鍵。
+`Data`成員包含的索引鍵，會符合函式 *. json*檔案中系結陣列中所定義的輸入和觸發程式名稱。
 
-該`Metadata`成員包括[從事件源生成的中繼資料](./functions-bindings-expressions-patterns.md#trigger-metadata)。
+`Metadata`成員包含[從事件來源產生的中繼資料](./functions-bindings-expressions-patterns.md#trigger-metadata)。
 
-給定以下*函數.json*檔中定義的綁定：
+假設下列*函數 json*檔案中定義了系結：
 
 ```json
 {
@@ -152,7 +152,7 @@ ms.locfileid: "79479250"
 }
 ```
 
-返回與此示例類似的請求負載：
+會傳回類似此範例的要求承載：
 
 ```json
 {
@@ -175,30 +175,30 @@ ms.locfileid: "79479250"
 }
 ```
 
-### <a name="response-payload"></a>回應有效負載
+### <a name="response-payload"></a>回應承載
 
-按照慣例，函數回應格式化為鍵/值對。 支援的金鑰包括：
+依照慣例，函數回應會格式化為索引鍵/值組。 支援的金鑰包括：
 
-| <nobr>有效負載鍵</nobr>   | 資料類型 | 備註                                                      |
+| <nobr>承載金鑰</nobr>   | 資料類型 | 備註                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | 保存`bindings`*函數.json*檔陣列定義的回應值。<br /><br />例如，如果函數配置了名為"blob"的 Blob 存儲輸出綁定，則`Outputs`包含名為 的鍵`blob`，該鍵設置為 blob 的值。 |
-| `Logs`        | array     | 消息將顯示在函式呼叫日誌中。<br /><br />在 Azure 中運行時，消息將顯示在應用程式見解中。 |
-| `ReturnValue` | 字串    | 用於在將輸出配置為`$return`*函數.json*檔中時提供回應。 |
+| `Outputs`     | JSON      | 保留`bindings` *函數. json*檔案陣列所定義的回應值。<br /><br />例如，如果已使用名為 "blob" 的 blob 儲存體輸出系結來設定函式`Outputs` ，則會包含`blob`名為的索引鍵，它會設定為 blob 的值。 |
+| `Logs`        | array     | 訊息會出現在函式呼叫記錄中。<br /><br />在 Azure 中執行時，訊息會顯示在 Application Insights 中。 |
+| `ReturnValue` | 字串    | 當輸出設定為`$return` *函數. json*檔案中的時，用來提供回應。 |
 
-有關[示例有效負載，請參閱示例](#bindings-implementation)。
+如需[範例](#bindings-implementation)承載，請參閱範例。
 
 ## <a name="examples"></a>範例
 
-自訂處理常式可以使用支援 HTTP 事件的任何語言實現。 雖然 Azure 函數[完全支援 JavaScript 和 Node.js，](./functions-reference-node.md)但以下示例演示如何在 Node.js 中使用 JavaScript 實現自訂處理常式以進行教學。
+自訂處理常式可以用任何支援 HTTP 事件的語言來執行。 雖然 Azure Functions[完全支援 JavaScript 和 node.js](./functions-reference-node.md)，但下列範例會示範如何使用 node.js 中的 javascript 來執行自訂處理常式，以用於指示。
 
 > [!TIP]
-> 作為學習如何以其他語言實現自訂處理常式的指南，如果希望在不支援的 Node.js 版本中運行函數應用，則此處顯示的基於 Node.js 的示例可能也很有用。
+> 在瞭解如何以其他語言執行自訂處理常式的指南中，如果您想要在不支援的 node.js 版本中執行函式應用程式，此處所示的 node.js 架構範例可能也很有用。
 
-## <a name="http-only-function"></a>僅 HTTP 函數
+## <a name="http-only-function"></a>僅限 HTTP 函式
 
-下面的示例演示如何配置沒有附加綁定或輸出的 HTTP 觸發函數。 在此示例中實現的方案具有一個名為 的`http`函數，該函數`GET`接受`POST`或 。
+下列範例示範如何設定不含其他系結或輸出的 HTTP 觸發函式。 在此範例中執行的案例具有名為`http`的函式`GET` ， `POST`可接受或。
 
-以下程式碼片段表示如何組成對函數的請求。
+下列程式碼片段代表如何撰寫對函式的要求。
 
 ```http
 POST http://127.0.0.1:7071/api/hello HTTP/1.1
@@ -213,7 +213,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>實作
 
-在名為*HTTP*的資料夾中，*函數.json*檔配置 HTTP 觸發的功能。
+在名為*HTTP*的資料夾中，*函數. json*檔案會設定 HTTP 觸發的函式。
 
 ```json
 {
@@ -233,9 +233,9 @@ content-type: application/json
 }
 ```
 
-該函數配置為接受 和`GET``POST`請求，結果值通過名為 的`res`參數提供。
+函式已設定為接受`GET`和`POST`要求，而且結果值是透過名為`res`的引數提供。
 
-在應用的根目錄 *，host.json*檔配置為運行 Node.js 並指向`server.js`該檔。
+在應用程式的根目錄，會將*主機. json*檔案設定為執行 node.js 並指向`server.js`檔案。
 
 ```json
 {
@@ -249,7 +249,7 @@ content-type: application/json
 }
 ```
 
-檔*伺服器.js*檔實現 Web 服務器和 HTTP 功能。
+檔*伺服器 .js*檔案會實行 web 伺服器和 HTTP 函式。
 
 ```javascript
 const express = require("express");
@@ -274,18 +274,18 @@ app.post("/hello", (req, res) => {
 });
 ```
 
-在此示例中，Express 用於創建 Web 服務器來處理 HTTP 事件，並設置為通過 偵聽請求`FUNCTIONS_HTTPWORKER_PORT`。
+在此範例中，會使用 Express 來建立 web 伺服器來處理 HTTP 事件，並將設定為透過接聽要求`FUNCTIONS_HTTPWORKER_PORT`。
 
-函數在 的路徑上定義`/hello`。 `GET`請求通過返回一個簡單的 JSON 物件進行處理`POST`，並且請求可以通過`req.body`訪問請求正文。
+函式定義于的路徑`/hello`。 `GET`要求是藉由傳回簡單的 JSON 物件來處理`POST` ，而要求則可以透過存取要求`req.body`主體。
 
-此處的 order 函數的路由`/hello`是，`/api/hello`而不是因為函數主機將請求代理到自訂處理常式。
+這裡的 order 函式路由是， `/hello`而不`/api/hello`是因為函式主機會將要求代理至自訂處理常式。
 
 >[!NOTE]
->`FUNCTIONS_HTTPWORKER_PORT`不是用於調用函數的面向公共埠。 函數主機使用此埠調用自訂處理常式。
+>不`FUNCTIONS_HTTPWORKER_PORT`是用來呼叫函數的公用埠。 函式主機會使用此埠來呼叫自訂處理常式。
 
-## <a name="function-with-bindings"></a>帶綁定的功能
+## <a name="function-with-bindings"></a>具有系結的函式
 
-在此示例中實現的方案具有一個名為 的`order`函數，該函數接受`POST`具有表示產品訂單的有效負載的 函數。 當訂單過帳到函數時，將創建佇列存儲消息並返回 HTTP 回應。
+在此範例中執行的案例具有名為`order`的函式`POST` ，它會接受具有代表產品訂單之裝載的。 當訂單張貼至函式時，會建立佇列儲存體訊息並傳回 HTTP 回應。
 
 ```http
 POST http://127.0.0.1:7071/api/order HTTP/1.1
@@ -302,7 +302,7 @@ content-type: application/json
 
 ### <a name="implementation"></a>實作
 
-在名為*順序*的資料夾中，*函數.json*檔配置 HTTP 觸發的功能。
+在名為*order*的資料夾中，*函數. json*檔案會設定 HTTP 觸發的函式。
 
 ```json
 {
@@ -331,9 +331,9 @@ content-type: application/json
 
 ```
 
-此功能定義為[HTTP 觸發函數](./functions-bindings-http-webhook-trigger.md)，該函數返回[HTTP 回應](./functions-bindings-http-webhook-output.md)並輸出[佇列存儲](./functions-bindings-storage-queue-output.md)消息。
+此函式定義為[HTTP 觸發](./functions-bindings-http-webhook-trigger.md)的函式，會傳回[HTTP 回應](./functions-bindings-http-webhook-output.md)並輸出[佇列儲存體](./functions-bindings-storage-queue-output.md)訊息。
 
-在應用的根目錄 *，host.json*檔配置為運行 Node.js 並指向`server.js`該檔。
+在應用程式的根目錄，會將*主機. json*檔案設定為執行 node.js 並指向`server.js`檔案。
 
 ```json
 {
@@ -347,7 +347,7 @@ content-type: application/json
 }
 ```
 
-檔*伺服器.js*檔實現 Web 服務器和 HTTP 功能。
+檔*伺服器 .js*檔案會實行 web 伺服器和 HTTP 函式。
 
 ```javascript
 const express = require("express");
@@ -379,24 +379,24 @@ app.post("/order", (req, res) => {
 });
 ```
 
-在此示例中，Express 用於創建 Web 服務器來處理 HTTP 事件，並設置為通過 偵聽請求`FUNCTIONS_HTTPWORKER_PORT`。
+在此範例中，會使用 Express 來建立 web 伺服器來處理 HTTP 事件，並將設定為透過接聽要求`FUNCTIONS_HTTPWORKER_PORT`。
 
-函數在 的路徑上定義`/order`。  此處的 order 函數的路由`/order`是，`/api/order`而不是因為函數主機將請求代理到自訂處理常式。
+函式定義于的路徑`/order` 。  這裡的 order 函式路由是， `/order`而不`/api/order`是因為函式主機會將要求代理至自訂處理常式。
 
-當`POST`要求傳送到此函數時，資料將通過幾個點公開：
+當`POST`要求傳送至這個函式時，資料會透過幾個重點公開：
 
-- 請求正文可通過`req.body`
-- 發佈到函數的資料可通過`req.body.Data.req.Body`
+- 您可以透過取得要求本文`req.body`
+- 張貼至函數的資料可透過`req.body.Data.req.Body`
 
-函數的回應格式化為鍵/值對，`Outputs`其中成員持有 JSON 值，其中鍵與*函數.json*檔中定義的輸出匹配。
+函式的回應會格式化成索引鍵/值組，其中`Outputs`的成員會保留 json 值，其中的索引鍵符合函式 *. json*檔案中定義的輸出。
 
-通過設置`message`等於來自請求的消息和`res`預期的 HTTP 回應，此函數將消息輸出到佇列存儲並返回 HTTP 回應。
+藉由`message`設定等於來自要求的訊息和`res`預期的 HTTP 回應，此函式會將訊息輸出到佇列儲存體，並傳回 HTTP 回應。
 
 ## <a name="debugging"></a>偵錯
 
-要調試函數自訂處理常式應用，您需要添加適合語言和運行時的參數以啟用調試。
+若要對函式自訂處理常式應用程式進行「偵測」，您必須加入適用于語言和執行時間的引數，以啟用偵測。
 
-例如，要調試 Node.js 應用程式，標誌`--inspect`將作為*host.json*檔中的參數傳遞。
+例如，若要對 node.js 應用程式進行 debug 錯， `--inspect`此旗標會當做引數傳遞至*host. json*檔案。
 
 ```json
 {
@@ -412,21 +412,21 @@ app.post("/order", (req, res) => {
 ```
 
 > [!NOTE]
-> 調試配置是*host.json*檔的一部分，這意味著您可能需要在部署到生產之前刪除某些參數。
+> 「偵錯工具設定」是您的*host. json*檔案的一部分，這表示您可能需要先移除一些引數，然後再部署到生產環境。
 
-使用此配置，可以使用以下命令啟動函數的主機進程：
+使用此設定時，您可以使用下列命令來啟動函式的主機進程：
 
 ```bash
 func host start
 ```
 
-啟動該過程後，可以附加調試器並命中中斷點。
+啟動程式之後，您可以附加偵錯工具，並叫用中斷點。
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-下面的示例配置演示如何設置*啟動.json*檔，將應用連接到 Visual Studio 代碼調試器。
+下列範例會示範如何設定您的*啟動 json*檔案，以將您的應用程式連線至 Visual Studio Code 偵錯工具。
 
-此示例適用于 Node.js，因此您可能需要更改其他語言或運行時的此示例。
+這是適用于 node.js 的範例，因此您可能必須針對其他語言或執行時間改變此範例。
 
 ```json
 {
@@ -445,13 +445,13 @@ func host start
 
 ## <a name="deploying"></a>正在部署
 
-自訂處理常式可以部署到幾乎每個 Azure 函數託管選項（請參閱[限制](#restrictions)）。 如果處理常式需要自訂依賴項（如語言運行時），則可能需要使用[自訂容器](./functions-create-function-linux-custom-image.md)。
+自訂處理常式幾乎可以部署到每個 Azure Functions 裝載選項（請參閱[限制](#restrictions)）。 如果您的處理常式需要自訂相依性（例如語言執行時間），您可能需要使用[自訂容器](./functions-create-function-linux-custom-image.md)。
 
 ## <a name="restrictions"></a>限制
 
-- Linux 消費計畫中不支援自訂處理常式。
-- Web 服務器需要在 60 秒內啟動。
+- Linux 耗用量方案中不支援自訂處理常式。
+- 網頁伺服器必須在60秒內啟動。
 
 ## <a name="samples"></a>範例
 
-有關如何在各種不同語言中實現函數的示例，請參閱[自訂處理常式示例 GitHub 存儲庫](https://github.com/Azure-Samples/functions-custom-handlers)。
+如需如何以各種不同的語言來執行函式的範例，請參閱[自訂處理常式範例 GitHub](https://github.com/Azure-Samples/functions-custom-handlers)存放庫。

@@ -1,6 +1,6 @@
 ---
-title: Azure 到 Azure 災害復原體系結構在 Azure 網站恢復中
-description: 使用 Azure 網站恢復服務在 Azure 區域之間設置災害復原時使用的體系結構概述。
+title: Azure Site Recovery 中的 azure 至 Azure 嚴重損壞修復架構
+description: 當您使用 Azure Site Recovery 服務，在 azure Vm 的 Azure 區域之間設定嚴重損壞修復時，所使用的架構總覽。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
 ms.openlocfilehash: 94da1639b5398a03b36fba3ff88877468a97ec36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294107"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 至 Azure 災害復原架構
@@ -26,12 +26,12 @@ ms.locfileid: "80294107"
 
 下表摘要說明 Azure VM 的災害復原所使用的元件。
 
-**元件** | **需求**
+**元件** | **Requirements**
 --- | ---
 **來源區域中的 VM** | [支援的來源區域](azure-to-azure-support-matrix.md#region-support)中的一或多個 Azure VM。<br/><br/> VM 可執行任何[支援的作業系統](azure-to-azure-support-matrix.md#replicated-machine-operating-systems)。
 **來源 VM 儲存體** | Azure VM 可以是受控的，或具有分散於不同儲存體帳戶間的非受控磁碟。<br/><br/>[深入了解](azure-to-azure-support-matrix.md#replicated-machines---storage)支援的 Azure 儲存體。
 **來源 VM 網路** | VM 可在來源區域中位於虛擬網路 (VNet) 內的一或多個子網路上。 [深入了解](azure-to-azure-support-matrix.md#replicated-machines---networking)網路需求。
-**快取儲存體帳戶** | 您必須要有位於來源網路中的快取儲存體帳戶。 在複寫期間，VM 變更會先儲存在快取中，再傳送至目標儲存體。  緩存存儲帳戶必須是標準帳戶。<br/><br/> 使用快取可確保在 VM 上執行的生產應用程式所受到的影響會降到最低。<br/><br/> [深入了解](azure-to-azure-support-matrix.md#cache-storage)快取儲存體需求。 
+**快取儲存體帳戶** | 您必須要有位於來源網路中的快取儲存體帳戶。 在複寫期間，VM 變更會先儲存在快取中，再傳送至目標儲存體。  快取儲存體帳戶必須是標準。<br/><br/> 使用快取可確保在 VM 上執行的生產應用程式所受到的影響會降到最低。<br/><br/> [深入了解](azure-to-azure-support-matrix.md#cache-storage)快取儲存體需求。 
 **目標資源** | 在複寫期間和執行容錯移轉時，都會使用目標資源。 Site Recovery 可依預設進行目標資源設定，您也可自行加以建立/自訂。<br/><br/> 在目標區域中，請確認您能夠建立 VM，且您的訂用帳戶有足夠的資源可支援目標區域中所需的 VM 大小。 
 
 ![來源和目標複寫](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
@@ -42,12 +42,12 @@ ms.locfileid: "80294107"
 
 **目標資源** | **預設設定**
 --- | ---
-**目標訂閱** | 與來源訂用帳戶相同。
-**目標資源組** | VM 在容錯移轉之後所屬的資源群組。<br/><br/> 此群組可位於來源區域以外的任何 Azure 區域中。<br/><br/> Site Recovery 會在目標區域中建立具有 "asr" 尾碼的新資源群組。<br/><br/>
+**目標訂用帳戶** | 與來源訂用帳戶相同。
+**目標資源群組** | VM 在容錯移轉之後所屬的資源群組。<br/><br/> 此群組可位於來源區域以外的任何 Azure 區域中。<br/><br/> Site Recovery 會在目標區域中建立具有 "asr" 尾碼的新資源群組。<br/><br/>
 **目標 VNet** | 複寫的 VM 在容錯移轉之後所在的虛擬網路 (VNet)。 在來源和目標的虛擬網路之間會建立網路對應，反之亦然。<br/><br/> Site Recovery 會建立具有 "asr" 尾碼的新 VNet 和子網路。
 **目標儲存體帳戶** |  如果 VM 未使用受控磁碟，這將是資料複寫到的儲存體帳戶。<br/><br/> Site Recovery 會在目標區域中建立新的儲存體帳戶，以反映來源儲存體帳戶。
 **複本受控磁碟** | 如果 VM 使用受控磁碟，這將是資料複寫到的受控磁碟。<br/><br/> Site Recovery 會在儲存體區域中建立複本受控磁碟，以反映來源。
-**目標可用性集** |  複寫的 VM 在容錯移轉之後所在的可用性設定組。<br/><br/> Site Recovery 會針對來源位置中的可用性設定組所包含的 VM，在目標區域中建立具有 "asr" 尾碼的可用性設定組。 如果有可用性設定組存在，則會加以使用，而不建立新的。
+**目標可用性設定組** |  複寫的 VM 在容錯移轉之後所在的可用性設定組。<br/><br/> Site Recovery 會針對來源位置中的可用性設定組所包含的 VM，在目標區域中建立具有 "asr" 尾碼的可用性設定組。 如果有可用性設定組存在，則會加以使用，而不建立新的。
 **目標可用性區域** | 如果目標區域支援可用性區域，Site Recovery 就會指派在來源區域中使用的相同區域編號。
 
 ### <a name="managing-target-resources"></a>管理目標資源
@@ -63,10 +63,10 @@ ms.locfileid: "80294107"
 
 當您啟用 Azure VM 複寫時，Site Recovery 依預設會以下表中摘要說明的預設設定建立新的複寫原則。
 
-**原則設定** | **詳細資料** | **預設**
+**原則設定** | **詳細資料** | **預設值**
 --- | --- | ---
-**復原點保留** | 指定 Site Recovery 會保留復原點多久 | 24 小時
-**應用一致的快照頻率** | Site Recovery 建立應用程式一致快照集的頻率。 | 每四小時
+**復原點保留期** | 指定 Site Recovery 會保留復原點多久 | 24 小時
+**應用程式一致的快照頻率** | Site Recovery 建立應用程式一致快照集的頻率。 | 每四個小時
 
 ### <a name="managing-replication-policies"></a>管理複寫原則
 
@@ -97,13 +97,13 @@ Site Recovery 會依照下列方式建立快照集：
 
 ### <a name="crash-consistent"></a>絕對一致
 
-**描述** | **詳細資料** | **建議**
+**說明** | **詳細資料** | **建議**
 --- | --- | ---
 絕對一致的快照集會擷取在快照建立時位於磁碟上的資料。 其中不含記憶體中的任何資料。<br/><br/> 其中所含的資料，相當於設若在建立快照集時發生 VM 當機的狀況，或從伺服器上拔開電源線，所將存在於磁碟上的資料。<br/><br/> 「絕對一致」並不保證資料在作業系統上或 VM 的應用程式間可保有一致性。 | Site Recovery 依預設會每五分鐘建立一次絕對一致復原點。 此設定無法修改。<br/><br/>  | 現在，大部分的應用程式都可以從絕對一致復原點妥善復原。<br/><br/> 對作業系統的複寫，以及 DHCP 伺服器和列印伺服器之類的應用程式而言，使用絕對一致復原點通常就已足夠。
 
 ### <a name="app-consistent"></a>應用程式一致
 
-**描述** | **詳細資料** | **建議**
+**說明** | **詳細資料** | **建議**
 --- | --- | ---
 應用程式一致復原點可從應用程式一致快照集建立。<br/><br/> 應用程式一致的快照集包含絕對一致快照集中的所有資訊，以及記憶體和進行中的交易所包含的所有資料。 | 應用程式一致快照集會使用磁碟區陰影複製服務 (VSS)：<br/><br/>   1) 在起始快照集時，VSS 會在磁碟區上執行「寫入時複製」(COW) 作業。<br/><br/>   2) 在執行 COW 之前，VSS 會通知機器上的每個應用程式它需要將其記憶體常駐資料排清到磁碟。<br/><br/>   3) 接著，VSS 會允許備份/災害復原應用程式 (在此案例中為 Site Recovery) 讀取快照集資料並繼續執行。 | 應用程式一致快照集會依據您指定的頻率建立。 此頻率一律應小於您的保留復原點設定。 例如，如果您使用預設設定 24 小時來保留復原點，您所設定的頻率就應該小於 24 小時。<br/><br/>此類快照集比絕對一致快照集更複雜，且需要較長的時間才能完成。<br/><br/> 在 VM 上執行且已啟用複寫的應用程式，效能將會受其影響。 
 
@@ -129,41 +129,41 @@ Site Recovery 會依照下列方式建立快照集：
 
 如果使用 URL 來控制 VM 的輸出存取，請允許這些 URL。
 
-| **Url** | **詳細資料** |
+| **URL** | **詳細資料** |
 | ------- | ----------- |
 | *.blob.core.windows.net | 允許將資料從 VM 寫入來源區域的快取儲存體帳戶中。 |
 | login.microsoftonline.com | 提供 Site Recovery 服務 URL 的授權和驗證。 |
 | *.hypervrecoverymanager.windowsazure.com | 允許 VM 與 Site Recovery 服務進行通訊。 |
 | *.servicebus.windows.net | 允許 VM 寫入 Site Recovery 監視和診斷資料。 |
-| *.vault.azure.net | 允許訪問通過門戶啟用啟用 ADE 的虛擬機器的複製
-| *.automation.ext.azure.com | 允許通過門戶自動升級複製的專案的移動代理
+| *.vault.azure.net | 允許存取透過入口網站啟用已啟用 ADE 之虛擬機器的複寫
+| *. automation.ext.azure.com | 允許透過入口網站為複寫的專案啟用自動升級行動代理程式
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 位址範圍的輸出連線能力
 
 若要使用 IP 位址控制 VM 的輸出連線能力，請允許這些位址。
-請注意，網路連接要求的詳細資訊可在[網路白皮書](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)中找到 
+請注意，網路連接需求的詳細資料可在[網路技術白皮書](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)中找到 
 
 #### <a name="source-region-rules"></a>來源區域規則
 
-**規則** |  **詳細資料** | **服務標籤**
+**規則** |  **詳細資料** | **服務標記**
 --- | --- | --- 
-允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域儲存體帳戶的範圍 | 存儲。\<區功能變數名稱稱>
-允許 HTTPS 輸出：連接埠 443 | 允許與 Azure 活動目錄（Azure AD）對應的範圍  | AzureActiveDirectory
-允許 HTTPS 輸出：連接埠 443 | 允許與目的地區域中的事件中心相對應的範圍。 | 事件中心。\<區功能變數名稱稱>
-允許 HTTPS 輸出：連接埠 443 | 允許與 Azure 網站恢復對應的範圍  | Azure 網站恢復
-允許 HTTPS 輸出：連接埠 443 | 允許與 Azure 金鑰保存庫對應的範圍（這僅適用于通過門戶啟用 ADE 的虛擬機器複製） | Azure 金鑰庫
-允許 HTTPS 輸出：連接埠 443 | 允許與 Azure 自動化控制器對應的範圍（這僅適用于通過門戶為複製的專案啟用移動代理的自動升級） | 賓客和混合管理
+允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域儲存體帳戶的範圍 | 容量.\<區功能變數名稱稱>
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Active Directory 的範圍（Azure AD）  | AzureActiveDirectory
+允許 HTTPS 輸出：連接埠 443 | 允許對應至目的地區域中事件中樞的範圍。 | EventsHub.\<區功能變數名稱稱>
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Site Recovery 的範圍  | AzureSiteRecovery
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Key Vault 的範圍（這只有在啟用啟用 ADE 的虛擬機器透過入口網站複寫時才需要） | AzureKeyVault
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure 自動化控制器的範圍（只有針對透過入口網站啟用複寫專案的行動代理程式自動升級時才需要） | GuestAndHybridManagement
 
 #### <a name="target-region-rules"></a>目標區域規則
 
-**規則** |  **詳細資料** | **服務標籤**
+**規則** |  **詳細資料** | **服務標記**
 --- | --- | --- 
-允許 HTTPS 輸出：連接埠 443 | 允許與目的地區域中的存儲帳戶對應的範圍 | 存儲。\<區功能變數名稱稱>
-允許 HTTPS 輸出：連接埠 443 | 允許與 Azure AD 對應的範圍  | AzureActiveDirectory
-允許 HTTPS 輸出：連接埠 443 | 允許與源區域中的事件中心相對應的範圍。 | 事件中心。\<區功能變數名稱稱>
-允許 HTTPS 輸出：連接埠 443 | 允許與 Azure 網站恢復對應的範圍  | Azure 網站恢復
-允許 HTTPS 輸出：連接埠 443 | 允許與 Azure 金鑰保存庫對應的範圍（這僅適用于通過門戶啟用 ADE 的虛擬機器複製） | Azure 金鑰庫
-允許 HTTPS 輸出：連接埠 443 | 允許與 Azure 自動化控制器對應的範圍（這僅適用于通過門戶為複製的專案啟用移動代理的自動升級） | 賓客和混合管理
+允許 HTTPS 輸出：連接埠 443 | 允許與目的地區域中的儲存體帳戶對應的範圍 | 容量.\<區功能變數名稱稱>
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure AD 的範圍  | AzureActiveDirectory
+允許 HTTPS 輸出：連接埠 443 | 允許對應至來源區域中事件中樞的範圍。 | EventsHub.\<區功能變數名稱稱>
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Site Recovery 的範圍  | AzureSiteRecovery
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure Key Vault 的範圍（這只有在啟用啟用 ADE 的虛擬機器透過入口網站複寫時才需要） | AzureKeyVault
+允許 HTTPS 輸出：連接埠 443 | 允許對應至 Azure 自動化控制器的範圍（只有針對透過入口網站啟用複寫專案的行動代理程式自動升級時才需要） | GuestAndHybridManagement
 
 
 #### <a name="control-access-with-nsg-rules"></a>使用 NSG 規則控制存取

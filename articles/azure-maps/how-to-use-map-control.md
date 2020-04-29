@@ -1,6 +1,6 @@
 ---
-title: 開始使用 Web 地圖控制項 |微軟 Azure 地圖
-description: 瞭解如何使用 Microsoft Azure 地圖映射控制用戶端 JavaScript 庫，將地圖和嵌入 Azure 地圖功能呈現到 Web 或移動應用程式中。
+title: 開始使用 web 地圖控制項 |Microsoft Azure 對應
+description: 瞭解如何使用 Microsoft Azure 地圖的地圖控制項用戶端 JavaScript 程式庫，將地圖和內嵌的 Azure 地圖服務功能轉譯成您的 web 或行動應用程式。
 author: philmea
 ms.author: philmea
 ms.date: 01/15/2020
@@ -9,32 +9,32 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: 6becb504671c1fa380207fda9d7d553fca8ceddf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335240"
 ---
-# <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖映射控制項
+# <a name="use-the-azure-maps-map-control"></a>使用 Azure 地圖服務地圖控制項
 
-地圖控制項用戶端 JavaScript 庫允許您在 Web 或移動應用程式中呈現地圖和嵌入 Azure 地圖功能。
+地圖控制項用戶端 JavaScript 程式庫可讓您將地圖和內嵌 Azure 地圖服務功能轉譯到 web 或行動應用程式中。
 
 ## <a name="create-a-new-map-in-a-web-page"></a>在網頁中建立新的地圖
 
-您可以使用地圖控制項用戶端 JavaScript 庫將地圖嵌入網頁中。
+您可以使用地圖控制項的用戶端 JavaScript 程式庫，在網頁中內嵌對應。
 
 1. 建立新的 HTML 檔案。
 
-2. 載入 Azure 地圖服務 Web SDK。 您可以選擇兩個選項之一;您可以選擇兩個選項之一。
+2. 載入 Azure 地圖服務 Web SDK。 您可以選擇兩個選項的其中一個：
 
-    * 通過在 HTML 檔案`<head>`元素中添加對 JavaScript 和樣式表的引用，使用全域託管的 Azure 地圖 Web SDK 版本：
+    * 藉由在 HTML 檔案的`<head>`元素中新增 JavaScript 和樣式表單的參考，使用 AZURE 地圖服務 Web SDK 的全域裝載 CDN 版本：
 
         ```HTML
         <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
         <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
         ```
 
-    * 使用[Azure 映射控制項](https://www.npmjs.com/package/azure-maps-control)NPM 包在本地載入 Azure 映射 Web SDK 原始程式碼，並將其與應用一起託管。 此套件也包含 TypeScript 定義。
+    * 使用[Azure 地圖服務控制](https://www.npmjs.com/package/azure-maps-control)NPM 套件在本機載入 AZURE 地圖服務 Web SDK 原始程式碼，並將其與您的應用程式搭配使用。 此套件也包含 TypeScript 定義。
 
         > **npm 安裝 azure-maps-control**
 
@@ -46,7 +46,7 @@ ms.locfileid: "80335240"
         ```
 
     > [!Note]
-    > 可以通過添加以下代碼將類型腳本定義導入到應用程式中：
+    > 您可以藉由新增下列程式碼，將 Typescript 定義匯入至您的應用程式：
     >
     > ```Javascript
     > import * as atlas from 'azure-maps-control';
@@ -75,11 +75,11 @@ ms.locfileid: "80335240"
     </body>
    ```
 
-5. 要初始化地圖控制項，請在 html 正文中定義一個新的腳本標記。 在創建`Map`類`id`的實例時`<div>`，將`HTMLElement`映射或 （`document.getElementById('myMap')`例如 ）， 作為第一個參數傳遞。 使用您自己的 Azure 地圖服務帳戶金鑰或 Azure Active Directory (AAD) 認證來使用[驗證選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)驗證地圖。 
+5. 若要初始化地圖控制項，請在 html 主體中定義新的腳本標記。 `id`建立`Map`類別的實例時， `<div>`傳入對應`HTMLElement`或的（例如`document.getElementById('myMap')`，）作為第一個參數。 使用您自己的 Azure 地圖服務帳戶金鑰或 Azure Active Directory (AAD) 認證來使用[驗證選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)驗證地圖。 
 
-   如果需要創建帳戶或查找金鑰，請按照["創建帳戶"中的](quick-demo-map-app.md#create-an-account-with-azure-maps)說明[獲取主金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
+   如果您需要建立帳戶或尋找您的金鑰，請依照[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)和[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的指示進行。 
 
-   [語言]**** 選項會指定要用於地圖標籤和控制項的語言。 有關受支援語言的詳細資訊，請參閱[支援的語言](supported-languages.md)。如果使用訂閱金鑰進行身份驗證，請使用以下操作：
+   [語言]**** 選項會指定要用於地圖標籤和控制項的語言。 如需支援語言的詳細資訊，請參閱[支援的語言](supported-languages.md)。如果您使用訂用帳戶金鑰進行驗證，請使用下列各項：
 
    ```HTML
     <script type="text/javascript">
@@ -95,7 +95,7 @@ ms.locfileid: "80335240"
     </script>
     ```
 
-   如果使用 Azure 活動目錄 （AAD） 進行身份驗證，請使用以下操作：
+   如果您使用 Azure Active Directory （AAD）進行驗證，請使用下列各項：
 
    ```HTML
     <script type="text/javascript">
@@ -113,9 +113,9 @@ ms.locfileid: "80335240"
     </script>
    ```
 
-   此處列出了如何將 Azure 活動目錄 （AAD） 與 Azure 映射集成[的示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)清單。 
+   您可以在[這裡](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)找到示範如何整合 AZURE ACTIVE DIRECTORY （AAD）與 Azure 地圖服務的範例清單。 
     
-   有關詳細資訊，請參閱 Azure[映射](azure-maps-authentication.md)文檔和 Azure 映射[Azure AD 身份驗證示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)。
+   如需詳細資訊，請參閱[使用 Azure 地圖服務的驗證](azure-maps-authentication.md)檔和[Azure 地圖服務 Azure AD 驗證範例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)。
 
 6. 除此之外，將下列中繼標籤元素新增到頁面的標頭可能會對您很有幫助：
 
@@ -127,7 +127,7 @@ ms.locfileid: "80335240"
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    ```
 
-7. 將其全部放在一起的 HTML 檔案應類似于以下代碼：
+7. 將它全部放在您的 HTML 檔案中看起來應該像下面這段程式碼：
 
    ```HTML
     <!DOCTYPE html>
@@ -177,20 +177,20 @@ ms.locfileid: "80335240"
     </html>
     ```
 
-8. 在網頁瀏覽器中開啟此檔案，並檢視轉譯的地圖。 它應類似于下圖：
+8. 在網頁瀏覽器中開啟此檔案，並檢視轉譯的地圖。 看起來應該如下圖所示：
 
-   ![顯示渲染結果的地圖圖像](./media/how-to-use-map-control/map-of-seattle.png)
+   ![顯示呈現結果的地圖影像](./media/how-to-use-map-control/map-of-seattle.png)
 
 ## <a name="localizing-the-map"></a>將地圖當地語系化
 
-Azure 地圖提供了兩種不同的方法來設置渲染地圖的語言和區域視圖。 第一個選項是將此資訊添加到全域`atlas`命名空間，這將導致應用中的所有地圖控制實例預設為這些設置。 下面將語言設置為法語（"fr-FR"），區域視圖為"自動"：
+Azure 地圖服務提供兩種不同的方式來設定轉譯地圖的語言和地區視圖。 第一個選項是將這項資訊新增至全域`atlas`命名空間，這會導致應用程式中的所有地圖控制項實例預設為這些設定。 以下會將語言設定為法文（"fr-fr"），並將地區視圖設為「自動」：
 
 ```javascript
 atlas.setLanguage('fr-FR');
 atlas.setView('Auto');
 ```
 
-第二個選項是在載入地圖時將此資訊傳遞到地圖選項中，如下所示：
+第二個選項是在載入對應時，將此資訊傳入對應選項，如下所示：
 
 ```javascript
 map = new atlas.Map('myMap', {
@@ -207,33 +207,33 @@ map = new atlas.Map('myMap', {
 ```
 
 > [!Note]
-> 使用 Web SDK，可以在同一頁上載入具有不同語言和地區設定的多個映射實例。 此外，這些設置可以在地圖載入後使用`setStyle`地圖的功能進行更新。 
+> 使用 Web SDK，可以使用不同的語言和區域設定，在相同的頁面上載入多個對應實例。 此外，您可以在使用`setStyle`對應的函式載入對應之後，更新這些設定。 
 
-下面是 Azure 映射的示例，其語言設置為"fr-FR"，區域視圖設置為"自動"。
+以下是語言設為 "fr-fr" 且地區視圖設為 "Auto" 的 Azure 地圖服務範例。
 
-![以法語顯示標籤的地圖圖像](./media/how-to-use-map-control/websdk-localization.png)
+![以法文顯示標籤的地圖影像](./media/how-to-use-map-control/websdk-localization.png)
 
 如需支援的語言和區域檢視的完整清單，請參閱[這裡](supported-languages.md)。
 
-## <a name="azure-government-cloud-support"></a>Azure 政府雲支援
+## <a name="azure-government-cloud-support"></a>Azure Government 雲端支援
 
-Azure 地圖 Web SDK 支援 Azure 政府雲。 用於訪問 Azure 地圖 Web SDK 的所有 JavaScript 和 CSS URL 保持不變。 連接到 Azure 地圖平臺的 Azure 政府雲版本需要執行以下任務。
+Azure 地圖服務 Web SDK 支援 Azure Government 雲端。 所有用來存取 Azure 地圖服務 Web SDK 的 JavaScript 和 CSS Url 都會保持不變。 您必須完成下列工作，才能連接到 Azure 地圖服務平臺的 Azure Government cloud 版本。
 
-使用互動式地圖控制項時，在創建`Map`類的實例之前添加以下程式碼。 
+使用互動式地圖控制項時，請在建立`Map`類別的實例之前，加入下列程式程式碼。 
 
 ```javascript
 atlas.setDomain('atlas.azure.us');
 ```
 
-在驗證地圖和服務時，請確保使用 Azure 政府雲平臺中的 Azure 映射身份驗證詳細資訊。
+驗證對應和服務時，請務必使用來自 Azure Government 雲端平臺的 Azure 地圖服務驗證詳細資料。
 
-使用服務模組時，需要在創建 API URL 終結點的實例時設置服務的域。 例如，以下代碼創建類的`SearchURL`實例，並將域指向 Azure 政府雲。
+使用服務模組時，必須在建立 API URL 端點的實例時設定服務的網域。 例如，下列程式碼會建立`SearchURL`類別的實例，並將該網域指向 Azure Government 雲端。
 
 ```javascript
 var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 ```
 
-如果直接存取 Azure 映射 REST 服務，則將`atlas.azure.us`URL 域更改為 。 例如，如果使用搜索 API 服務，則將 URL 域`https://atlas.microsoft.com/search/`從`https://atlas.azure.us/search/`更改為 。
+如果直接存取 Azure 地圖服務 REST 服務，請將 URL 網域變更為`atlas.azure.us`。 例如，如果使用搜尋 API 服務，請將 URL 網域從`https://atlas.microsoft.com/search/`變更為。 `https://atlas.azure.us/search/`
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -247,7 +247,7 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 > [!div class="nextstepaction"]
 > [選擇地圖樣式](choose-map-style.md)
 
-要向地圖添加更多資料，請進行：
+若要將更多資料新增至您的對應：
 
 > [!div class="nextstepaction"]
 > [建立地圖](map-create.md)
@@ -255,7 +255,7 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 > [!div class="nextstepaction"]
 > [程式碼範例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
 
-有關如何將 Azure 活動目錄 （AAD） 與 Azure 映射集成的示例清單，請參閱：
+如需顯示如何整合 Azure Active Directory （AAD）與 Azure 地圖服務的範例清單，請參閱：
 
 > [!div class="nextstepaction"]
-> [Azure AD 身份驗證示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+> [Azure AD 驗證範例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

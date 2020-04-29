@@ -1,5 +1,5 @@
 ---
-title: 網路效能監視器中的效能監視器
+title: 網路效能監控中的效能監視器
 description: 網路效能監控中的效能監控功能可以協助您監控網路中各個點之間的網路連線。 您可以監控雲端部署和內部部署位置、多個資料中心和分公司，以及任務關鍵性多層式應用程式或微服務。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,10 +7,10 @@ author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
 ms.openlocfilehash: 126cca9d3606b378e59e4f4e1c5b52d985d19d94
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80055695"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>網路效能監控解決方案：效能監控
@@ -26,7 +26,7 @@ ms.locfileid: "80055695"
 
 ![網路效能監視器](media/network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 若要開啟網路效能監控的組態，請開啟[網路效能監控解決方案](network-performance-monitor.md)，然後選取 [設定]****。
 
 ![設定網路效能監控](media/network-performance-monitor-performance-monitor/npm-configure-button.png)
@@ -81,9 +81,9 @@ ms.locfileid: "80055695"
 
 * **探索多個網路路由。** TCP 在探索多個路由時精確度較高，而且在每個子網路中需要的代理程式較少。 例如，只要有一或二個使用 TCP 的代理程式，就可以探索子網路之間的所有備援路徑。 您需要數個使用 ICMP 的代理程式才能達到類似的結果。 如果使用 ICMP，假設您在 2 個子網路之間有 N 個路由，您在來源或目標子網路就需要超過 5N 個代理程式。
 
-* **結果的準確性。** 路由器和交換器對於 ICMP ECHO 封包會指派比 TCP 封包較低的優先順序。 在某些情況下，當網路裝置處於大量負載狀態時，透過 TCP 取得的資料會更貼切地反映應用程式發生的遺失和延遲。 這是因為大部分的應用程式流量都是透過 TCP 傳送。 在這種情況下，ICMP 提供的結果精確度就不及 TCP。 
+* **結果的精確度。** 路由器和交換器對於 ICMP ECHO 封包會指派比 TCP 封包較低的優先順序。 在某些情況下，當網路裝置處於大量負載狀態時，透過 TCP 取得的資料會更貼切地反映應用程式發生的遺失和延遲。 這是因為大部分的應用程式流量都是透過 TCP 傳送。 在這種情況下，ICMP 提供的結果精確度就不及 TCP。 
 
-* **防火牆配置。** TCP 通訊協定會要求 TCP 封包傳送至目的地連接埠。 網路效能監控代理程式所使用的預設連接埠是 8084。 您可以在設定代理程式時變更此連接埠。 確定您的網路防火牆或網路安全性群組 (NSG) 規則 (在 Azure 中) 允許該連接埠的流量。 您也必須確定安裝代理程式的電腦本機防火牆設定為允許這個連接埠的流量。 您可以使用 PowerShell 指令碼在執行 Windows 的電腦上設定防火牆規則，但您必須手動設定網路防火牆。 相反地，ICMP 無法透過連接埠運作。 在大部分的企業案例中，會允許 ICMP 流量通過防火牆，讓您可以使用如 Ping 公用程式的網路診斷工具。 如果您可以從另一部電腦 Ping 某部電腦，則可以使用 ICMP 通訊協定，而不需要手動設定防火牆。
+* **防火牆設定。** TCP 通訊協定會要求 TCP 封包傳送至目的地連接埠。 網路效能監控代理程式所使用的預設連接埠是 8084。 您可以在設定代理程式時變更此連接埠。 確定您的網路防火牆或網路安全性群組 (NSG) 規則 (在 Azure 中) 允許該連接埠的流量。 您也必須確定安裝代理程式的電腦本機防火牆設定為允許這個連接埠的流量。 您可以使用 PowerShell 指令碼在執行 Windows 的電腦上設定防火牆規則，但您必須手動設定網路防火牆。 相反地，ICMP 無法透過連接埠運作。 在大部分的企業案例中，會允許 ICMP 流量通過防火牆，讓您可以使用如 Ping 公用程式的網路診斷工具。 如果您可以從另一部電腦 Ping 某部電腦，則可以使用 ICMP 通訊協定，而不需要手動設定防火牆。
 
 >[!NOTE] 
 > 某些防火牆可能會封鎖 ICMP，這可能導致重新傳輸，進而在安全性資訊和事件管理系統中產生大量的事件。 請確定您所選擇的通訊協定未遭到網路防火牆或 NSG 封鎖。 否則，網路效能監控無法監視網路區段。 我們建議您使用 TCP 進行監視。 請在無法使用 TCP 的情況下使用 ICMP，例如以下情況： 
@@ -94,7 +94,7 @@ ms.locfileid: "80055695"
 
 如果您在部署期間選擇使用 ICMP，您可以隨時編輯預設監視規則來切換為 TCP。
 
-1. 轉到**網路性能** > **監視器** > **Monitor** **Configure**配置 監視器 。> 然後選取  **[預設規則]**。 
+1. 移至 [**網路效能** > **監控** >] [ **設定** > **監視**]。 然後選取  **[預設規則]**。 
 2. 捲動至 [通訊協定]**** 區段，然後選取您要使用的通訊協定。 
 3. 選取 [儲存]**** 來套用設定。 
 

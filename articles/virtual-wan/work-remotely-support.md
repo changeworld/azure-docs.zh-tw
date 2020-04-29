@@ -1,6 +1,6 @@
 ---
 title: Azure 虛擬 WAN 和遠端工作
-description: 本頁介紹如何利用 Azure 虛擬 WAN 啟用由於 COVID-19 大流行而遠端工作。
+description: 此頁面說明如何利用 Azure 虛擬 WAN，讓您能夠從遠端工作，因為 COVID-19 流感。
 services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
@@ -8,50 +8,50 @@ ms.topic: article
 ms.date: 03/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ce212b5da90906966025674b58884d0e2f5bb064
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80337134"
 ---
 # <a name="azure-virtual-wan-and-supporting-remote-work"></a>Azure 虛擬 WAN 和支援遠端工作
 
 >[!NOTE]
->本文介紹如何利用 Azure 虛擬 WAN、Azure、Microsoft 網路和 Azure 合作夥伴生態系統遠端工作並緩解因 COVID-19 危機而面臨的網路問題。
+>本文說明如何運用 Azure 虛擬 WAN、Azure、Microsoft 網路和 Azure 合作夥伴生態系統，從遠端工作，並減輕因 COVID-19 危機而面臨的網路問題。
 >
 
-您是否爭先恐後地為遠端使用者提供連接？
-您是否突然看到需要支援超出計畫的使用者激增？
-您是否需要使用者從家裡進行連接，不僅訪問雲，而且能夠到達本地？
-您是否需要遠端使用者能夠訪問專用廣域網路背後的資源？
-您是否需要使用者訪問雲內部資源，而無需設置區域之間的連接？
-由於此全球大流行在我們周圍創造了前所未有的變化，Azure 虛擬 WAN 團隊在這裡為您滿足您的連接需求。
+您是否想要為遠端使用者提供連線能力？
+您是否突然看到需要支援超過所計畫之使用者的浪湧？
+您需要使用者從家裡進行連線，而不只是存取雲端，同時也能連線到內部部署？
+您是否需要遠端使用者才能連線到私人 WAN 後方的資源？
+您是否需要使用者存取雲端資源，而不需要設定區域之間的連線能力？
+由於此全域流感會為我們建立前所未有的變更，因此 Azure 虛擬 WAN 小組在此提供您滿足連線需求的能力。
 
-Azure 虛擬 WAN 是一種網路服務，它彙集了許多網路、安全和路由功能，以提供單個操作介面。 這些功能包括分支連接（通過虛擬 WAN 合作夥伴設備（如 SD-WAN 或 VPN CPE）的連接自動化）、網站到網站 VPN 連接、遠端使用者 VPN（點對點）連接、專用（快速路由）連接、雲內連接（虛擬網路的傳輸連接）、VPN 快速路由互連、路由、Azure 防火牆、專用連線加密等。您不必擁有所有這些用例，就無需開始使用虛擬 WAN。 您可以開始使用一個用例，並隨著網路的發展進行調整。
+Azure 虛擬 WAN 是一種網路服務，可將許多網路、安全性和路由功能結合在一起，以提供單一操作介面。 這些功能包括分支連線能力（透過來自虛擬 WAN 合作夥伴裝置的連線自動化，例如 SD-WAN 或 VPN CPE）、站對站 VPN 連線能力、遠端使用者 VPN （點對站）連線、私人（ExpressRoute）連線、雲端連線能力、VPN ExpressRoute 互連能力、路由、Azure 防火牆、私人連線加密等等。您不需要擁有所有這些使用案例，就能開始使用虛擬 WAN。 只有一個使用案例可以開始使用，並在您的網路演變時加以調整。
 
 ![虛擬 WAN 的圖表](./media/virtual-wan-about/virtualwan1.png)
 
-現在，在談論遠端使用者，讓我們來看看需要什麼來啟動和運行您的網路：
+現在談到遠端使用者，讓我們看看您需要哪些功能才能啟動和執行您的網路：
 
-## <a name="set-up-remote-user-connectivity"></a><a name="connectivity"></a>設置遠端使用者連接
+## <a name="set-up-remote-user-connectivity"></a><a name="connectivity"></a>設定遠端使用者連線能力
 
-您可以透過 IPsec/IKE (IKEv2) 或 OpenVPN 連線，來連線到您在 Azure 中的資源。 這種類型的連接需要為遠端使用者配置 VPN 用戶端。 此用戶端可以是[Azure VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)或 OpenVPN 用戶端或支援 IKEv2 的任何用戶端。 如需詳細資訊，請參閱[建立點對站連線](virtual-wan-point-to-site-portal.md)。
+您可以透過 IPsec/IKE (IKEv2) 或 OpenVPN 連線，來連線到您在 Azure 中的資源。 這種類型的連接需要為遠端使用者設定 VPN 用戶端。 此用戶端可以是[AZURE VPN 用戶端](https://go.microsoft.com/fwlink/?linkid=2117554)、OpenVPN 用戶端或任何支援 IKEv2 的用戶端。 如需詳細資訊，請參閱[建立點對站連線](virtual-wan-point-to-site-portal.md)。
 
-## <a name="connectivity-from-the-remote-user-to-on-premises"></a><a name="remote user connectivity"></a>從遠端使用者到本地的連接
+## <a name="connectivity-from-the-remote-user-to-on-premises"></a><a name="remote user connectivity"></a>從遠端使用者到內部部署的連線能力
 
-這裡有兩個選項：
+您有兩個選項：
 
-* 與任何現有 VPN 設備佈建網站到網站的連接。 將 IPsec VPN 設備連接到 Azure 虛擬廣域網路中心時，點對點使用者 VPN（遠端使用者）和網站到網站 VPN 之間的互連是自動的。 有關如何從本地 VPN 設備到 Azure 虛擬 WAN 佈建網站到網站 VPN 的詳細資訊，請參閱[使用虛擬 WAN 創建網站到網站的連接](virtual-wan-site-to-site-portal.md)。
+* 設定與任何現有 VPN 裝置間的站對站連線能力。 當您將 IPsec VPN 裝置連線到 Azure 虛擬 WAN 中樞時，點對站使用者 VPN （遠端使用者）與站對站 VPN 之間的互連能力會自動進行。 如需有關如何設定從內部部署 VPN 裝置到 Azure 虛擬 WAN 的站對站 VPN 的詳細資訊，請參閱[使用虛擬 Wan 建立站對](virtual-wan-site-to-site-portal.md)站連線。
 
-* 將快速路由電路連接到虛擬廣域網路集線器。 連接快速路由電路需要在虛擬廣域網路中部署快速路由閘道。 部署一個網站使用者 VPN 和 ExpressRoute 使用者之間的互連是自動的。 要創建快速路由連接，請參閱[使用虛擬 WAN 創建快速路由連接](virtual-wan-expressroute-portal.md)。 您可以使用現有的 ExpressRoute 電路連接到 Azure 虛擬廣域網路。
+* 將您的 ExpressRoute 線路連線至虛擬 WAN 中樞。 連接 ExpressRoute 電路需要在虛擬 WAN 中部署 ExpressRoute 閘道。 一旦您部署了一個，點對站使用者 VPN 和 ExpressRoute 使用者之間的互連能力會自動進行。 若要建立 ExpressRoute 連線，請參閱[使用虛擬 WAN 建立 expressroute](virtual-wan-expressroute-portal.md)連線。 您可以使用現有的 ExpressRoute 線路連接到 Azure 虛擬 WAN。
 
-## <a name="existing-basic-virtual-wan-customer"></a><a name="basic vWAN"></a>現有基本虛擬廣域網路客戶
+## <a name="existing-basic-virtual-wan-customer"></a><a name="basic vWAN"></a>現有的基本虛擬 WAN 客戶
 
-基本虛擬 WAN 僅提供網站到網站 VPN。 為了使遠端使用者進行連接，您需要將虛擬 WAN 升級到標準虛擬廣域網路。 有關升級虛擬 WAN 的步驟，請參閱[將虛擬 WAN 從基本 WAN 升級到標準](upgrade-virtual-wan.md)
+基本虛擬 WAN 只提供站對站 VPN。 為了讓遠端使用者能夠連線，您必須將虛擬 WAN 升級為標準虛擬 WAN。 如需升級虛擬 WAN 的步驟，請參閱將[虛擬 wan 從基本升級至標準](upgrade-virtual-wan.md)
 
 ## <a name="additional-information"></a><a name="other considerations"></a>其他資訊
 
-虛擬 WAN 支援每個區域/位置一個集線器。 如需位置資訊，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。 每個集線器支援多達 10，000 個遠端使用者連接、1，000 個分支連接、4 個 ExpressRoute 電路和多達 500 個虛擬網路連接。 在擴展遠端使用者時，如果您有任何問題，請毫不猶豫地向 發送電子郵件尋求説明azurevirtualwan@microsoft.com。 如果需要技術支援，請確保從 Azure 門戶打開支援票證，並且説明即將提供。
+虛擬 WAN 支援每個區域/位置有一個中樞。 如需位置資訊，請參閱[虛擬 WAN 夥伴與位置](virtual-wan-locations-partners.md)一文。 每個中樞最多支援10000個遠端使用者連線、1000分支連線、四個 ExpressRoute 線路，以及最多500虛擬網路連線。 當您相應增加遠端使用者時，如果您有任何問題，請不要將電子郵件傳送至azurevirtualwan@microsoft.com來尋求協助。 如果您需要技術支援，請務必從 Azure 入口網站開啟支援票證，並將會提供說明。
 
 ## <a name="faq"></a><a name="faq"></a>常見問題集
 
@@ -59,4 +59,4 @@ Azure 虛擬 WAN 是一種網路服務，它彙集了許多網路、安全和路
 
 ## <a name="next-steps"></a>後續步驟
 
-有關虛擬 WAN 的詳細資訊，請參閱[虛擬 WAN 概述](virtual-wan-about.md)
+如需有關虛擬 WAN 的詳細資訊，請參閱[虛擬 wan 總覽](virtual-wan-about.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure 應用商店的審核歷史記錄頁
-description: Azure 應用商店雲合作夥伴門戶中的審核歷史記錄頁面概述。
+title: Azure Marketplace 的 [審查歷程記錄] 頁面
+description: Azure Marketplace 的 Cloud Partner 入口網站中的 [Audit 歷程記錄] 頁面總覽。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dsindona
 ms.openlocfilehash: cd9577a4bcdb1914ac0a7a23e4a98c31f6e43030
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288898"
 ---
 # <a name="audit-history-page"></a>稽核歷程記錄頁面

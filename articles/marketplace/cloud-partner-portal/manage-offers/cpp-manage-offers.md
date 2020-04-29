@@ -1,5 +1,5 @@
 ---
-title: 管理 Azure 和 AppSource 應用商店服務 |Azure 應用商店
+title: 管理 Azure 和 AppSource Marketplace 供應專案 |Azure Marketplace
 description: 管理 Azure 與 AppSource Marketplace 上的供應項目
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: dsindona
 ms.openlocfilehash: 8b964075a7ad38cae43b8f3bda15f7d8c76318ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80286433"
 ---
 # <a name="manage-azure-and-appsource-marketplace-offers"></a>管理 Azure 與 AppSource Marketplace 供應項目

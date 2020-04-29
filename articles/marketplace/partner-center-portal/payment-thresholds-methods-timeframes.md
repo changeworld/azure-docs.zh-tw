@@ -1,21 +1,21 @@
 ---
 Description: 轉撥款項的預估時間、適用的付款門檻，以及您可以收到款項所在的 Microsoft 市場可能會依您的國家/地區以及支付帳戶類型而有所不同。
-title: 商業市場中的付款閾值、方法和時間範圍 |Azure 應用商店
+title: 商業 marketplace 中的付款閾值、方法和時間範圍 |Azure Marketplace
 ms.date: 12/10/2019
 ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.openlocfilehash: fe18fab4a2ea61f41e017704105e37f28c20e456
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80279720"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>付款閾值、方法和時間範圍
 
-付款的預計時間以及您可以接收付款的 Microsoft 市場可能因您所在的國家/地區和付款帳戶類型而異。 本主題概述了每個國家/地區支援的付款條件。
+根據您的國家/地區和付款帳戶類型而定，傳輸付款的預估時間，以及您可以接收付款的 Microsoft marketplace 可能會有所不同。 本主題概要說明每個國家/地區所支援的付款方法。
 
 針對任何特定國家/地區，我們將使用 ACH/SEPA 或電匯支付款項。 此外，部分國家/地區支援 PayPal 做為付款方式。
 
@@ -34,12 +34,12 @@ ms.locfileid: "80279720"
 
 若要查看每個市場所使用的這些付款方式所在的國家/地區，請檢閱下表。
 
-## <a name="payment-methods-in-countriesregions"></a>國家/地區的付款條件
+## <a name="payment-methods-in-countriesregions"></a>國家/區域中的付款條件
 
 > [!NOTE]
-> 所有地區的付款門檻為 50 美元。
+> 所有區域的付款閾值為 $50 美元。
 
-| Country                          | Azure Marketplace | 商店、廣告、混合器和 Minecraft | Office | 貝寶支付 |
+| Country                          | Azure Marketplace | 商店、廣告、混音器和 Minecraft | Office | PayPal 付款 |
 |----------------------------------|-------------------|------------------------------------------|--------|-----------------|
 | 阿富汗                      | 是               | 是                                      | 否     | 否              |
 | 阿爾巴尼亞                          | 是               | 是                                      | 是    | 是             |
@@ -73,10 +73,10 @@ ms.locfileid: "80279720"
 | 中國                            | 否                | 是                                      | 是    | 是             |
 | 哥倫比亞                         | 是               | 是                                      | 是    | 是             |
 | 葛摩                          | 是               | 是                                      | 否     | 否              |
-| 剛果民主共和國                      | 是               | 是                                      | 是    | 否              |
-| 剛果， 共和國               | 是               | 是                                      | 是    | 否              |
+| 剛果民主共和國 (DRC)                      | 是               | 是                                      | 是    | 否              |
+| 剛果民主共和國               | 是               | 是                                      | 是    | 否              |
 | 哥斯大黎加                       | 是               | 是                                      | 是    | 是             |
-| 象牙海岸                    | 是               | 是                                      | 是    | 否              |
+| 象牙海岸的象牙海岸                    | 是               | 是                                      | 是    | 否              |
 | 克羅埃西亞                          | 是               | 是                                      | 是    | 否              |
 | 賽浦路斯                           | 是               | 是                                      | 是    | 是             |
 | 捷克共和國                   | 是               | 是                                      | 是    | 是             |
@@ -114,7 +114,7 @@ ms.locfileid: "80279720"
 | 約旦                           | 是               | 是                                      | 是    | 是             |
 | 哈薩克                       | 是               | 是                                      | 是    | 是             |
 | 肯亞                            | 是               | 是                                      | 是    | 是             |
-| 韓國（韓國）                    | 是               | 是                                      | 是    | 否              |
+| 韓國（南部）                    | 是               | 是                                      | 是    | 否              |
 | 科威特                           | 是               | 是                                      | 是    | 是             |
 | 吉爾吉斯                       | 否                | 否                                       | 是    | 否              |
 | 寮國                             | 是               | 是                                      | 是    | 否              |

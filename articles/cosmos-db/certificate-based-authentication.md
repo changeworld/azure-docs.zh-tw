@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Cosmos DB 和活動目錄進行基於證書的身份驗證
-description: 瞭解如何為基於證書的身份驗證配置 Azure AD 標識，以便從 Azure Cosmos DB 訪問金鑰。
+title: 以憑證為基礎的驗證與 Azure Cosmos DB 和 Active Directory
+description: 瞭解如何設定 Azure AD 身分識別以進行憑證型驗證，以從 Azure Cosmos DB 存取金鑰。
 author: voellm
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,51 +8,51 @@ ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
 ms.openlocfilehash: 085280a8064e4d12ac63939ada7cdb296d47dc70
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80365780"
 ---
-# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Azure AD 標識的基於證書的身份驗證，用於從 Azure Cosmos DB 帳戶訪問金鑰
+# <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>以憑證為基礎的驗證，用於從 Azure Cosmos DB 帳戶存取金鑰的 Azure AD 身分識別
 
-憑證式驗證可讓您使用 Azure Active Directory (Azure AD) 搭配用戶端憑證，驗證您的用戶端應用程式。 您可以在需要身分識別的電腦 (例如 Azure 中的內部部署機器或虛擬機器) 上執行憑證式驗證。 然後，應用程式可以讀取 Azure Cosmos DB 金鑰，而無需直接在應用程式中使用金鑰。 本文介紹如何創建示例 Azure AD 應用程式，將其配置為基於證書的身份驗證，使用新的應用程式標識登錄到 Azure，然後從 Azure Cosmos 帳戶檢索金鑰。 本文使用 Azure PowerShell 設置標識，並提供一個 C# 示例應用，用於驗證和訪問 Azure Cosmos 帳戶中的金鑰。  
+憑證式驗證可讓您使用 Azure Active Directory (Azure AD) 搭配用戶端憑證，驗證您的用戶端應用程式。 您可以在需要身分識別的電腦 (例如 Azure 中的內部部署機器或虛擬機器) 上執行憑證式驗證。 您的應用程式可以讀取 Azure Cosmos DB 金鑰，而不需要直接在應用程式中擁有金鑰。 本文說明如何建立範例 Azure AD 應用程式、將其設定為以憑證為基礎的驗證、使用新的應用程式身分識別登入 Azure，然後從您的 Azure Cosmos 帳戶中抓取金鑰。 本文使用 Azure PowerShell 來設定身分識別，並提供 c # 範例應用程式來驗證和存取 Azure Cosmos 帳戶中的金鑰。  
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* 安裝[最新版本](/powershell/azure/install-az-ps)的 Azure PowerShell。
+* 安裝[最新版](/powershell/azure/install-az-ps)的 Azure PowerShell。
 
-* 如果沒有[Azure 訂閱](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，請先創建[一個免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。然後開始。
+* 如果您沒有 [Azure 訂用帳戶](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
 ## <a name="register-an-app-in-azure-ad"></a>在 Azure AD 中註冊應用程式
 
-在此步驟中，您將在 Azure AD 帳戶中註冊示例 Web 應用程式。 此應用程式後來用於從 Azure Cosmos DB 帳戶讀取金鑰。 使用以下步驟註冊應用程式： 
+在此步驟中，您將在 Azure AD 帳戶中註冊範例 web 應用程式。 稍後會使用此應用程式從您的 Azure Cosmos DB 帳戶讀取金鑰。 使用下列步驟來註冊應用程式： 
 
-1. 登錄到[Azure 門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 打開 Azure**活動目錄**窗格，轉到**應用註冊**窗格，然後選擇 **"新建註冊**"。 
+1. 開啟 [Azure **Active Directory** ] 窗格，移至**應用程式註冊**窗格，然後選取 [**新增註冊**]。 
 
-   ![活動目錄中的新應用程式註冊](./media/certificate-based-authentication/new-app-registration.png)
+   ![Active Directory 中的新應用程式註冊](./media/certificate-based-authentication/new-app-registration.png)
 
-1. 填寫**申請**表，填寫以下詳細資訊：  
+1. 在 [**註冊應用程式**] 表單中填入下列詳細資料：  
 
-   * **名稱**= 為應用程式提供名稱，可以是任何名稱，如"示例應用"。
-   * **支援的帳戶類型**–**僅選擇此組織目錄中的帳戶（預設目錄），** 以允許目前的目錄中的資源訪問此應用程式。 
-   * **重定向 URL** - 選擇**Web**類型的應用程式並提供託管應用程式的 URL，它可以是任何 URL。 在此示例中，您可以提供測試 URL，例如`https://sampleApp.com`即使應用不存在也沒關係。
+   * **名稱**–提供應用程式的名稱，它可以是任何名稱，例如 "sampleApp"。
+   * **支援的帳戶類型**–選擇 [**僅限此組織目錄中的帳戶（預設目錄）** ]，以允許您目前的目錄中的資源存取此應用程式。 
+   * 重新**導向 URL** –選擇**Web**類型的應用程式，並提供裝載您應用程式的 url，它可以是任何 url。 在此範例中，即使應用程式不存在，您`https://sampleApp.com`也可以提供測試 URL （例如）。
 
-   ![註冊示例 Web 應用程式](./media/certificate-based-authentication/register-sample-web-app.png)
+   ![註冊範例 web 應用程式](./media/certificate-based-authentication/register-sample-web-app.png)
 
-1. 在填寫表單後選擇 **"註冊**"。
+1. 填寫表單之後，請選取 [**註冊**]。
 
-1. 註冊應用後，記下**應用程式（用戶端）ID**和**物件識別碼，** 您將在後續步驟中使用這些詳細資訊。 
+1. 註冊應用程式之後，記下 [**應用程式（用戶端）識別碼**] 和 [**物件識別碼**]，您將在後續步驟中使用這些詳細資料。 
 
-   ![獲取應用程式和物件指示](./media/certificate-based-authentication/get-app-object-ids.png)
+   ![取得應用程式和物件識別碼](./media/certificate-based-authentication/get-app-object-ids.png)
 
 ## <a name="install-the-azuread-module"></a>安裝 AzureAD 模組
 
-在此步驟中，您將安裝 Azure AD PowerShell 模組。 此模組需要獲取您在上一步中註冊的應用程式的 ID，並將自簽章憑證關聯到該應用程式。 
+在此步驟中，您將安裝 Azure AD PowerShell 模組。 需要此模組才能取得您在上一個步驟中註冊的應用程式識別碼，並將自我簽署憑證與該應用程式產生關聯。 
 
-1. 使用管理員許可權打開 Windows PowerShell ISE。 如果您尚未完成，請安裝 AZ PowerShell 模組並連接到您的訂閱。 如果您有多個訂閱，則可以設置當前訂閱的上下文，如以下命令所示：
+1. 以系統管理員許可權開啟 Windows PowerShell ISE。 如果您尚未這麼做，請安裝 AZ PowerShell 模組，並連接到您的訂用帳戶。 如果您有多個訂閱，您可以設定目前訂用帳戶的內容，如下列命令所示：
 
    ```powershell
    Install-Module -Name Az -AllowClobber
@@ -63,16 +63,16 @@ ms.locfileid: "80365780"
    Set-AzContext $context 
    ```
 
-1. 安裝並導入[AzureAD](/powershell/module/azuread/?view=azureadps-2.0)模組
+1. 安裝和匯入[AzureAD](/powershell/module/azuread/?view=azureadps-2.0)模組
 
    ```powershell
    Install-Module AzureAD
    Import-Module AzureAD 
    ```
 
-## <a name="sign-into-your-azure-ad"></a>登錄到 Azure AD
+## <a name="sign-into-your-azure-ad"></a>登入您的 Azure AD
 
-在註冊應用程式的位置登錄到 Azure AD。 使用連接 AzureAD 命令登錄到您的帳戶，請在快顯視窗中輸入 Azure 帳戶憑據。 
+登入您已註冊應用程式的 Azure AD。 使用 AzureAD 命令登入您的帳戶，並在快顯視窗中輸入您的 Azure 帳號憑證。 
 
 ```powershell
 Connect-AzureAD 
@@ -80,16 +80,16 @@ Connect-AzureAD
 
 ## <a name="create-a-self-signed-certificate"></a>建立自我簽署憑證
 
-打開 Windows PowerShell ISE 的另一個實例，並運行以下命令以創建自簽章憑證並讀取與證書關聯的金鑰：
+開啟 Windows PowerShell ISE 的另一個實例，然後執行下列命令來建立自我簽署憑證，並讀取與憑證相關聯的金鑰：
 
 ```powershell
 $cert = New-SelfSignedCertificate -CertStoreLocation "Cert:\CurrentUser\My" -Subject "CN=sampleAppCert" -KeySpec KeyExchange
 $keyValue = [System.Convert]::ToBase64String($cert.GetRawCertData()) 
 ```
 
-## <a name="create-the-certificate-based-credential"></a>創建基於證書的憑據 
+## <a name="create-the-certificate-based-credential"></a>建立以憑證為基礎的認證 
 
-接下來運行以下命令以獲取應用程式的物件識別碼 並創建基於證書的憑據。 在此示例中，我們將證書設置為一年後過期，您可以將其設置為任何必需的結束日期。
+接下來，執行下列命令以取得應用程式的物件識別碼，並建立以憑證為基礎的認證。 在此範例中，我們會將憑證設定為一年後到期，您可以將它設定為任何所需的結束日期。
 
 ```powershell
 $application = Get-AzureADApplication -ObjectId <Object_ID_of_Your_Application>
@@ -97,47 +97,47 @@ $application = Get-AzureADApplication -ObjectId <Object_ID_of_Your_Application>
 New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyIdentifier "Key1" -Type AsymmetricX509Cert -Usage Verify -Value $keyValue -EndDate "2020-01-01"
 ```
 
-上述命令的輸出類似于下面的螢幕截圖：
+上述命令會產生類似下列螢幕擷取畫面的輸出：
 
-![基於證書的憑據創建輸出](./media/certificate-based-authentication/certificate-based-credential-output.png)
+![以憑證為基礎的認證建立輸出](./media/certificate-based-authentication/certificate-based-credential-output.png)
 
-## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>將 Azure Cosmos 帳戶配置為使用新標識
+## <a name="configure-your-azure-cosmos-account-to-use-the-new-identity"></a>設定您的 Azure Cosmos 帳戶以使用新的身分識別
 
-1. 登錄到[Azure 門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 導航到 Azure Cosmos 帳戶，打開**存取控制 （IAM）** 邊欄選項卡。
+1. 流覽至您的 Azure Cosmos 帳戶，開啟 [**存取控制（IAM）** ] 分頁。
 
-1. 選擇 **"添加**和**添加角色指派**"。 添加您在上一步中創建的示例應用與**參與者**角色，如以下螢幕截圖所示：
+1. 選取 [**新增**並**新增角色指派**]。 新增您在上一個步驟中使用**參與者**角色建立的 sampleApp，如下列螢幕擷取畫面所示：
 
-   ![將 Azure 宇宙帳戶配置為使用新標識](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
+   ![設定 Azure Cosmos 帳戶以使用新的身分識別](./media/certificate-based-authentication/configure-cosmos-account-with-identify.png)
 
-1. 填寫表單後選擇 **"保存"**
+1. 填寫表單之後，選取 [**儲存**]
 
 ## <a name="register-your-certificate-with-azure-ad"></a>使用 Azure AD 註冊您的憑證
 
-可以從 Azure 門戶將基於證書的憑據與 Azure AD 中的用戶端應用程式相關聯。 要關聯憑據，必須上載證書檔，並執行以下步驟：
+您可以在 Azure 入口網站的 Azure AD 中，將憑證型認證與用戶端應用程式建立關聯。 若要建立認證的關聯，您必須使用下列步驟來上傳憑證檔案：
 
 在用戶端應用程式的 Azure 應用程式註冊中：
 
-1. 登錄到[Azure 門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
-1. 打開 Azure**活動目錄**窗格，轉到**應用註冊**窗格，然後打開在上一步中創建的示例應用。 
+1. 開啟 [Azure **Active Directory** ] 窗格，移至 [**應用程式註冊**] 窗格，然後開啟您在上一個步驟中建立的範例應用程式。 
 
-1. 選擇**證書&機密**，然後**上載證書**。 流覽您在上一步中創建的要上載的證書檔。
+1. 選取 [**憑證 & 密碼**]，然後**上傳 [憑證**]。 流覽您在上一個步驟中建立的憑證檔案，以進行上傳。
 
-1. 選取 [加入]****。 上載證書後，將顯示指紋、開始日期和過期值。
+1. 選取 [新增]  。 憑證上傳之後，即會顯示 [指紋]、[開始日期] 和 [到期] 值。
 
-## <a name="access-the-keys-from-powershell"></a>從 PowerShell 訪問金鑰
+## <a name="access-the-keys-from-powershell"></a>從 PowerShell 存取金鑰
 
-在此步驟中，您將使用創建的應用程式和證書登錄到 Azure 帳戶的金鑰。 
+在此步驟中，您將使用應用程式和您建立的憑證來登入 Azure，並存取您的 Azure Cosmos 帳戶金鑰。 
 
-1. 最初清除用於登錄帳戶的 Azure 帳戶憑據。 可以使用以下命令清除憑據：
+1. 一開始會清除您用來登入帳戶的 Azure 帳號憑證。 您可以使用下列命令來清除認證：
 
    ```powershell
    Disconnect-AzAccount -Username <Your_Azure_account_email_id> 
    ```
 
-1. 接下來驗證是否可以使用應用程式的憑據登錄到 Azure 門戶並訪問 Azure Cosmos 資料庫鍵：
+1. 接下來，請驗證您可以使用應用程式的認證登入 Azure 入口網站，並存取 Azure Cosmos DB 金鑰：
 
    ```powershell
    Login-AzAccount -ApplicationId <Your_Application_ID> -CertificateThumbprint $cert.Thumbprint -ServicePrincipal -Tenant <Tenant_ID_of_your_application>
@@ -148,13 +148,13 @@ New-AzureADApplicationKeyCredential -ObjectId $application.ObjectId -CustomKeyId
       -Type "Keys"
    ```
 
-前面的命令將顯示 Azure Cosmos 帳戶的主主金鑰和輔助主金鑰。 您可以查看 Azure Cosmos 帳戶的活動日誌，以驗證獲取金鑰請求是否成功，並且事件是否由"示例應用"應用程式啟動。
+上一個命令會顯示 Azure Cosmos 帳戶的主要和次要主要金鑰。 您可以查看 Azure Cosmos 帳戶的活動記錄，以驗證 get 金鑰要求成功，且事件是由 "sampleApp" 應用程式所起始。
 
-![驗證 Azure AD 中的獲取金鑰調用](./media/certificate-based-authentication/activity-log-validate-results.png)
+![驗證 Azure AD 中的 get 金鑰呼叫](./media/certificate-based-authentication/activity-log-validate-results.png)
 
-## <a name="access-the-keys-from-a-c-application"></a>從 C# 應用程式訪問金鑰 
+## <a name="access-the-keys-from-a-c-application"></a>從 c # 應用程式存取金鑰 
 
-還可以通過從 C# 應用程式訪問金鑰來驗證此方案。 以下 C# 主控台應用程式，該應用程式可以使用在 Active Directory 中註冊的應用程式訪問 Azure Cosmos DB 金鑰。 在運行代碼之前，請確保更新租戶 Id、用戶端 ID、證書名稱、資源組名稱、訂閱 ID、Azure Cosmos 帳戶名稱詳細資訊。 
+您也可以從 c # 應用程式存取金鑰來驗證此案例。 下列 c # 主控台應用程式，可使用 Active Directory 中註冊的應用程式來存取 Azure Cosmos DB 金鑰。 執行程式碼之前，請務必先更新 tenantId、clientID、certName、資源組名、訂用帳戶識別碼、Azure Cosmos 帳戶名稱詳細資料。 
 
 ```csharp
 using System;
@@ -236,15 +236,15 @@ namespace TodoListDaemonWithCert
 }
 ```
 
-此腳本輸出主主金鑰和輔助主金鑰，如以下螢幕截圖所示：
+此腳本會輸出主要和次要主要金鑰，如下列螢幕擷取畫面所示：
 
-![c尖銳應用輸出](./media/certificate-based-authentication/csharp-application-output.png)
+![csharp 應用程式輸出](./media/certificate-based-authentication/csharp-application-output.png)
 
-與上一節類似，您可以查看 Azure Cosmos 帳戶的活動日誌，以驗證獲取金鑰請求事件是否由"示例應用"應用程式啟動。 
+類似上一節，您可以查看 Azure Cosmos 帳戶的活動記錄，以驗證「取得金鑰要求」事件是由「sampleApp」應用程式所起始。 
 
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Azure Key Vault 保護 Azure Cosmos 金鑰](access-secrets-from-keyvault.md)
 
-* [Azure 宇宙資料庫的安全基線](security-baseline.md)
+* [Azure Cosmos DB 的安全性基準](security-baseline.md)

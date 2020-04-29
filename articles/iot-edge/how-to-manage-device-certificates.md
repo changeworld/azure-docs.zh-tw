@@ -1,6 +1,6 @@
 ---
-title: 管理設備證書 - Azure IoT 邊緣 |微軟文檔
-description: 在 Azure IoT Edge 設備上創建測試憑證、安裝和管理這些證書，以便為生產部署做好準備。
+title: 管理裝置憑證-Azure IoT Edge |Microsoft Docs
+description: 在 Azure IoT Edge 裝置上建立測試憑證、安裝及管理，以準備進行生產環境部署。
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,67 +9,67 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c18c3d560adb3c3cae54bda808ee5842c260fd6b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79539204"
 ---
-# <a name="manage-certificates-on-an-iot-edge-device"></a>在 IoT 邊緣設備上管理證書
+# <a name="manage-certificates-on-an-iot-edge-device"></a>管理 IoT Edge 裝置上的憑證
 
-所有 IoT Edge 設備都使用證書在運行時和設備上運行的任何模組之間創建安全連線。 充當閘道的 IoT Edge 設備也使用這些相同的證書連接到其下游設備。
+所有 IoT Edge 裝置都會使用憑證，在執行時間和裝置上執行的任何模組之間建立安全的連線。 做為閘道的 IoT Edge 裝置也會使用這些相同的憑證來連線至其下游裝置。
 
 ## <a name="install-production-certificates"></a>安裝生產憑證
 
-首次安裝 IoT Edge 並預配設備時，設備將設置臨時證書，以便可以測試服務。
-這些臨時證書將在 90 天后過期，或者可以通過重新開機電腦來重置。
-準備好將設備移動到生產方案中，或者想要創建閘道方案後，需要提供自己的證書。
-本文演示了在 IoT Edge 設備上安裝證書的步驟。
+當您第一次安裝 IoT Edge 並布建裝置時，會使用暫時憑證設定裝置，讓您可以測試服務。
+這些暫時性憑證會在90天后到期，或者可以藉由重新開機電腦來重設。
+當您準備好要將裝置移到生產環境案例，或想要建立閘道案例時，您需要提供自己的憑證。
+本文示範在您的 IoT Edge 裝置上安裝憑證的步驟。
 
-要瞭解有關 IoT Edge 方案中不同類型的證書及其角色的更多資訊，請參閱瞭解 Azure [IoT 邊緣如何使用證書](iot-edge-certs.md)。
+若要在 IoT Edge 案例中深入瞭解不同類型的憑證及其角色，請參閱[瞭解 Azure IoT Edge 如何使用憑證](iot-edge-certs.md)。
 
 >[!NOTE]
->本文中使用的術語"根 CA"是指 IoT 解決方案憑證連結的最頂層頒發機構公共證書。 您無需使用聯合憑證授權單位的證書根或組織的憑證授權單位的根。 在許多情況下，它實際上是一個中間的CA公共證書。
+>本文中使用的「根 CA」一詞指的是 IoT 解決方案的憑證鏈最上層授權公開憑證。 您不需要使用聯合憑證授權單位單位的憑證根目錄，或組織的憑證授權單位單位的根。 在許多情況下，它實際上是中繼 CA 公開憑證。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
-* 在[Windows](how-to-install-iot-edge-windows.md)或[Linux](how-to-install-iot-edge-linux.md)上運行的 IoT 邊緣設備。
-* 擁有根憑證授權單位 （CA） 證書，由自簽名或從受信任的商業憑證授權單位（如巴爾的摩、威瑞信、DigiCert 或 GlobalSign）購買。
+* 在[Windows](how-to-install-iot-edge-windows.md)或[Linux](how-to-install-iot-edge-linux.md)上執行的 IoT Edge 裝置。
+* 擁有根憑證授權單位（CA）憑證，可以自我簽署或從受信任的商業憑證授權單位單位（例如巴爾的摩、Verisign、DigiCert 或透過 globalsign）購買。
 
-如果您還沒有根憑證授權單位，但想要嘗試需要生產證書（如閘道方案）的 IoT Edge 功能，則可以[創建演示證書來測試 IoT Edge 裝置功能](how-to-create-test-certificates.md)。
+如果您還沒有根憑證授權單位，但想要嘗試 IoT Edge 需要生產憑證的功能（例如閘道案例），您可以[建立示範憑證來測試 IoT Edge 的裝置功能](how-to-create-test-certificates.md)。
 
-### <a name="create-production-certificates"></a>創建生產證書
+### <a name="create-production-certificates"></a>建立生產環境憑證
 
-應使用自己的憑證授權單位創建以下檔：
+您應該使用自己的憑證授權單位單位來建立下列檔案：
 
 * 根 CA
 * 裝置 CA 憑證
-* 設備 CA 私密金鑰
+* 裝置 CA 私密金鑰
 
-在本文中，我們所說的*根 CA*不是組織最重要的憑證授權單位。 它是 IoT Edge 方案的最高憑證授權單位，IoT Edge 中心模組、使用者模組和任何下游設備都使用該憑證授權單位來在彼此之間建立信任。
+在本文中，我們指的是*根 CA*不是組織最上層的憑證授權單位單位。 這是 IoT Edge 案例的最上層憑證授權單位單位，其中 IoT Edge 中樞模組、使用者模組和任何下游裝置都使用它來建立彼此之間的信任。
 
-要查看這些證書的示例，請查看[在管理示例和教程的測試 CA 憑證](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)中創建演示證書的腳本。
+若要查看這些憑證的範例，請參閱在[管理測試 CA 憑證以取得範例和教學](https://github.com/Azure/iotedge/tree/master/tools/CACertificates)課程中建立示範憑證的腳本。
 
-### <a name="install-certificates-on-the-device"></a>在設備上安裝證書
+### <a name="install-certificates-on-the-device"></a>在裝置上安裝憑證
 
-在 IoT Edge 設備上安裝憑證連結，並將 IoT Edge 運行時配置為引用新證書。
+在 IoT Edge 裝置上安裝您的憑證鏈，並將 IoT Edge 執行時間設定為參考新的憑證。
 
-例如，如果您使用示例腳本[創建演示證書](how-to-create-test-certificates.md)，請將以下檔案複製到 IoT 邊緣設備上：
+例如，如果您使用範例腳本來[建立示範憑證](how-to-create-test-certificates.md)，請將下列檔案複製到您的 IoT Edge 裝置：
 
-* 設備 CA 憑證：`<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
-* 設備 CA 私密金鑰：`<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
+* 裝置 CA 憑證：`<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
+* 裝置 CA 私密金鑰：`<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
 * 根 CA：`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-1. 將三個證書和金鑰檔案複製到 IoT Edge 設備上。
+1. 將三個憑證和金鑰檔案複製到您的 IoT Edge 裝置上。
 
-   您可以使用[Azure 金鑰保存庫](https://docs.microsoft.com/azure/key-vault)等服務或[安全複製協定](https://www.ssh.com/ssh/scp/)等函數來移動證書檔。  如果在 IoT Edge 設備本身上生成證書，則可以跳過此步驟並使用工作目錄的路徑。
+   您可以使用像是[Azure Key Vault](https://docs.microsoft.com/azure/key-vault)的服務或類似[安全複製通訊協定](https://www.ssh.com/ssh/scp/)的功能來移動憑證檔案。  如果您在 IoT Edge 裝置本身產生憑證，可以略過此步驟，並使用工作目錄的路徑。
 
 1. 開啟 IoT Edge 安全性精靈組態檔。
 
    * Windows：`C:\ProgramData\iotedge\config.yaml`
    * Linux：`/etc/iotedge/config.yaml`
 
-1. 將 config.yaml 檔中的**證書**屬性設置為 IoT Edge 設備上證書和金鑰檔的完整路徑。 刪除證書`#`屬性之前的字元以取消注釋四行。 確保**證書：** 行沒有前面的空格，並且嵌套項由兩個空格縮進。 例如：
+1. 將 yaml 檔案中的**憑證**屬性設定為憑證的完整路徑和 IoT Edge 裝置上的金鑰檔案。 移除憑證`#`屬性前面的字元，以取消批註四行。 請確定 [**憑證：** ] 行沒有前面的空白字元，且已將該嵌套專案縮排為兩個空格。 例如：
 
    * Windows：
 
@@ -89,29 +89,29 @@ ms.locfileid: "79539204"
         trusted_ca_certs: "<path>/root-ca.root.ca.cert.pem"
       ```
 
-1. 在 Linux 設備上，請確保使用者**iotedge**具有持有證書的目錄的讀取權限。
+1. 在 Linux 裝置上，請確定使用者**iotedge**具有保存憑證之目錄的 [讀取] 許可權。
 
-1. 如果您以前在設備上使用了 IoT Edge 的任何其他證書，請在啟動或重新開機 IoT Edge 之前刪除以下兩個目錄中的檔：
+1. 如果您之前已在裝置上使用任何其他憑證來進行 IoT Edge，請先刪除下列兩個目錄中的檔案，然後再啟動或重新開機 IoT Edge：
 
-   * 視窗：`C:\ProgramData\iotedge\hsm\certs`和`C:\ProgramData\iotedge\hsm\cert_keys`
+   * Windows： `C:\ProgramData\iotedge\hsm\certs`和`C:\ProgramData\iotedge\hsm\cert_keys`
 
-   * Linux：`/var/lib/iotedge/hsm/certs`和`/var/lib/iotedge/hsm/cert_keys`
+   * Linux： `/var/lib/iotedge/hsm/certs`和`/var/lib/iotedge/hsm/cert_keys`
 
-## <a name="customize-certificate-lifetime"></a>自訂證書存留期
+## <a name="customize-certificate-lifetime"></a>自訂憑證存留期
 
-IoT Edge 在若干種情況下自動在設備上生成證書，包括：
+IoT Edge 在數種情況下會在裝置上自動產生憑證，包括：
 
-* 如果在安裝和預配 IoT Edge 時未提供自己的生產證書，IoT Edge 安全管理器將自動生成設備**CA 憑證**。 此自簽章憑證僅用於開發和測試方案，而不是用於生產。 此證書將在 90 天后過期。
-* IoT Edge 安全管理器還生成由設備 CA 憑證簽名**的工作負載 CA 憑證**
+* 如果您在安裝和布建 IoT Edge 時未提供自己的實際執行憑證，IoT Edge 安全性管理員會自動產生**裝置 CA 憑證**。 此自我簽署憑證僅適用于開發和測試案例，而非生產環境。 此憑證會在90天后過期。
+* IoT Edge 安全性管理員也會產生由裝置 CA 憑證簽署的**工作負載 ca 憑證**
 
-有關 IoT Edge 設備上不同證書的功能的詳細資訊，請參閱瞭解 Azure [IoT 邊緣如何使用證書](iot-edge-certs.md)。
+如需 IoT Edge 裝置上不同憑證功能的詳細資訊，請參閱[瞭解 Azure IoT Edge 如何使用憑證](iot-edge-certs.md)。
 
-對於這兩個自動生成的證書，您可以選擇在 config.yaml 中設置**auto_generated_ca_lifetime_days**標誌，以配置證書存留期的天數。
+針對這兩個自動產生的憑證，您可以選擇在 yaml 中設定**auto_generated_ca_lifetime_days**旗標，以設定憑證存留期的天數。
 
 >[!NOTE]
->IoT Edge 安全管理器創建了第三個自動生成的證書，**即 IoT Edge 中心伺服器憑證**。 此證書始終有 90 天，但在過期之前會自動續訂。 **auto_generated_ca_lifetime_days**值不會影響此證書。
+>IoT Edge 的安全性管理員所建立的第三個自動產生的憑證， **IoT Edge 中樞伺服器憑證**。 此憑證一律有90天，但會在到期前自動更新。 **Auto_generated_ca_lifetime_days**值不會影響此憑證。
 
-要將證書過期配置為預設 90 天以外的內容，請將該值以天形式添加到 config.yaml 檔的**證書**部分。
+若要將憑證到期設定為預設90天以外的值，請在 yaml 檔案的 [**憑證**] 區段中新增以天為單位的值。
 
 ```yaml
 certificates:
@@ -121,15 +121,15 @@ certificates:
   auto_generated_ca_lifetime_days: <value>
 ```
 
-如果您提供了自己的設備 CA 憑證，則此值仍適用于工作負載 CA 憑證，前提是您設置的存留期值短于設備 CA 憑證的存留期。
+如果您提供自己的裝置 CA 憑證，則此值仍然適用于工作負載 CA 憑證，前提是您所設定的存留期值比裝置 CA 憑證的存留期短。
 
-在 config.yaml 檔中指定標誌後，請執行以下步驟：
+在 yaml 檔案中指定旗標之後，請執行下列步驟：
 
 1. 刪除`hsm`資料夾的內容。
 
-   視窗`C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys`： Linux：`/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
+   Windows： `C:\ProgramData\iotedge\hsm\certs and C:\ProgramData\iotedge\hsm\cert_keys` Linux：`/var/lib/iotedge/hsm/certs and /var/lib/iotedge/hsm/cert_keys`
 
-1. 重新開機 IoT 邊緣服務。
+1. 重新開機 IoT Edge 服務。
 
    Windows：
 
@@ -143,7 +143,7 @@ certificates:
    sudo systemctl restart iotedge
    ```
 
-1. 確認存留期設置。
+1. 確認存留期設定。
 
    Windows：
 
@@ -157,8 +157,8 @@ certificates:
    sudo iotedge check --verbose
    ```
 
-   檢查生產就緒狀態的輸出 **：證書**檢查，其中列出自動生成的設備 CA 憑證過期之前的天數。
+   檢查 [**生產環境就緒：憑證**檢查] 的輸出，其中會列出自動產生的裝置 CA 憑證到期前的天數。
 
 ## <a name="next-steps"></a>後續步驟
 
-在 IoT Edge 設備上安裝證書是在生產中部署解決方案之前的必要步驟。 詳細瞭解如何[準備在生產中部署 IoT 邊緣解決方案](production-checklist.md)。
+在生產環境中部署解決方案之前，在 IoT Edge 裝置上安裝憑證是必要的步驟。 深入瞭解如何[準備在生產環境中部署您的 IoT Edge 解決方案](production-checklist.md)。

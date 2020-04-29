@@ -19,10 +19,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fcbeedddc65a916f869a778616779917a9571181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331972"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>使用 Azure AD Connect 管理和自訂 Active Directory Federation Services
@@ -32,11 +32,11 @@ ms.locfileid: "80331972"
 |:--- |:--- |
 | **管理 AD FS** | |
 | [修復信任](#repairthetrust) |如何修復與 Office 365 的同盟信任。 |
-| [使用備用登入識別碼 與 Azure AD 聯合](#alternateid) | 使用替代登入識別碼設定同盟  |
-| [添加 AD FS 伺服器](#addadfsserver) |如何使用額外的 AD FS 伺服器擴充 AD FS 伺服器陣列。 |
+| [使用替代登入識別碼與 Azure AD 同盟](#alternateid) | 使用替代登入識別碼設定同盟  |
+| [新增 AD FS 伺服器](#addadfsserver) |如何使用額外的 AD FS 伺服器擴充 AD FS 伺服器陣列。 |
 | [新增 AD FS Web 應用程式 Proxy 伺服器](#addwapserver) |如何使用其他 Web 應用程式 Proxy (WAP) 伺服器展開 AD FS 陣列。 |
 | [新增同盟網域](#addfeddomain) |如何新增同盟網域。 |
-| [更新 TLS/SSL 憑證](how-to-connect-fed-ssl-update.md)| 如何更新 AD FS 場的 TLS/SSL 憑證。 |
+| [更新 TLS/SSL 憑證](how-to-connect-fed-ssl-update.md)| 如何更新 AD FS 伺服器陣列的 TLS/SSL 憑證。 |
 | **自訂 AD FS** | |
 | [新增自訂公司標誌或圖例](#customlogo) |如何使用公司標誌與圖例自訂 AD FS 登入頁面。 |
 | [新增登入說明](#addsignindescription) |如何新增登入頁面說明。 |
@@ -71,7 +71,7 @@ ms.locfileid: "80331972"
 > [!NOTE]
 > Azure AD Connect 只可以對自我簽署的憑證進行修復或採取動作。 Azure AD Connect 無法修復第三方憑證。
 
-## <a name="federate-with-azure-ad-using-alternateid"></a><a name="alternateid"></a>使用備用 ID 與 Azure AD 聯合 
+## <a name="federate-with-azure-ad-using-alternateid"></a><a name="alternateid"></a>使用替代識別碼與 Azure AD 建立同盟 
 建議您讓內部部署使用者主體名稱 (UPN) 和雲端使用者主體名稱保持相同。 如果內部部署 UPN 使用無法路由傳送的網域 (例如︰ Contoso.local)，或是由於本機應用程式相依性而無法變更，我們會建議您設定替代登入識別碼。 替代登入識別碼可讓您設定登入體驗，讓使用者可以透過其 UPN 以外的屬性 (例如 mail) 來進行登入。 Azure AD Connect 預設會選擇 Active Directory 中的 userPrincipalName 屬性來作為使用者主體名稱。 如果您選擇任何其他屬性來作為使用者主體名稱，而且您使用 AD FS 來建立同盟，則 Azure AD Connect 會就替代登入識別碼對 AD FS 進行設定。 選擇不同屬性來作為使用者主體名稱的範例如下所示︰
 
 ![替代識別碼屬性的選擇](./media/how-to-connect-fed-management/attributeselection.png)
@@ -87,7 +87,7 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 > [!NOTE]
 > 如需替代識別碼以及手動設定步驟的詳細資訊，請閱讀[設定替代登入識別碼](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id)
 
-## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>添加 AD FS 伺服器 
+## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>新增 AD FS 伺服器 
 
 > [!NOTE]
 > 若要新增 AD FS 伺服器，Azure AD Connect 需要 PFX 憑證檔案。 因此，只有當您使用 Azure AD Connect 來設定 AD FS 伺服器陣列時，才可以執行這項作業。
@@ -120,7 +120,7 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 
     ![安裝完成](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
-## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>添加 AD FS WAP 伺服器 
+## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>新增 AD FS WAP 伺服器 
 
 > [!NOTE]
 > 若要新增 WAP 伺服器，Azure AD Connect 需要 PFX 憑證檔案。 因此，只有當您使用 Azure AD Connect 來設定 AD FS 伺服器陣列時，才可以執行這項作業。
@@ -176,7 +176,7 @@ AD FS 替代登入識別碼的設定作業包含兩個主要步驟︰
 
     選擇網域之後，精靈會提供您關於精靈將採取的進一步動作和組態影響的適當資訊。 在某些情況下，如果您選取尚未在 Azure AD 中驗證的網域，精靈將提供資訊協助您驗證網域。 如需詳細資訊，請參閱 [將您的自訂網域名稱新增至 Azure Active Directory](../active-directory-domains-add-azure-portal.md) 。
 
-5. 按 [下一步]****。 按 [下一步]****，然後 [準備設定] 頁面就會顯示 Azure AD Connect 將會執行的動作清單。 按一下 [安裝] **** 以完成組態。
+5. 按 [下一步]  。 按 [下一步]****，然後 [準備設定] 頁面就會顯示 Azure AD Connect 將會執行的動作清單。 按一下 [安裝] **** 以完成組態。
 
    ![準備設定](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 

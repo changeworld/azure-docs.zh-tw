@@ -1,6 +1,6 @@
 ---
-title: Azure 應用商店的所有優惠頁面
-description: Azure 應用商店雲合作夥伴門戶中"所有產品/服務"頁的概述。
+title: Azure Marketplace 的所有供應專案頁面
+description: Azure Marketplace 的 Cloud Partner 入口網站中的 [所有供應專案] 頁面的總覽。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: dsindona
 ms.openlocfilehash: e4001651d422d9197a849be5e7985107f9bf43dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80288983"
 ---
 # <a name="all-offers-page"></a>所有供應項目頁面

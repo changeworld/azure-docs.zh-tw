@@ -1,6 +1,6 @@
 ---
-title: Azure 地圖搜索服務的最佳做法 |微軟 Azure 地圖
-description: 瞭解如何在使用 Microsoft Azure 地圖中的搜索服務時應用最佳做法。
+title: Azure 地圖服務搜尋服務的最佳做法 |Microsoft Azure 對應
+description: 瞭解如何在使用 Microsoft Azure 對應的搜尋服務時，套用最佳作法。
 author: philmea
 ms.author: philmea
 ms.date: 01/23/2020
@@ -9,85 +9,85 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 8d62d7d278323baa0ae49b9e12f46468efb067a0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80335313"
 ---
-# <a name="best-practices-for-azure-maps-search-service"></a>Azure 地圖搜索服務的最佳做法
+# <a name="best-practices-for-azure-maps-search-service"></a>Azure 地圖服務搜尋服務的最佳做法
 
-Azure 地圖[搜索服務](https://docs.microsoft.com/rest/api/maps/search)包括提供各種功能的 API。 例如，搜索位址 API 可以查找特定位置周圍的感興趣點 （POI） 或資料。 
+Azure 地圖服務[搜尋服務](https://docs.microsoft.com/rest/api/maps/search)包含提供各種功能的 api。 例如，搜尋位址 API 可以尋找特定位置的相關點數（POI）或資料。 
 
-本文介紹如何在從 Azure 地圖搜索服務調用資料時應用聲音實踐。 您將學習如何：
+本文說明當您從 Azure 地圖服務搜尋服務呼叫資料時，如何套用音效實務。 您將學習如何：
 
-* 生成查詢以返回相關匹配項。
+* 建立查詢以傳回相關的相符專案。
 * 限制搜尋結果。
 * 瞭解結果類型之間的差異。
-* 讀取位址搜索-回應結構。
+* 讀取位址搜尋-回應結構。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-要調用 Azure 地圖服務 API，需要 Azure 地圖帳戶和金鑰。 有關詳細資訊，請參閱[創建帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)並[獲取主金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
+若要對 Azure 地圖服務服務 Api 進行呼叫，您需要 Azure 地圖服務帳戶和金鑰。 如需詳細資訊，請參閱[建立帳戶](quick-demo-map-app.md#create-an-account-with-azure-maps)並[取得主要金鑰](quick-demo-map-app.md#get-the-primary-key-for-your-account)。 
 
-有關 Azure 映射中的身份驗證的資訊，請參閱[在 Azure 映射中管理身份驗證](./how-to-manage-authentication.md)。
+如需 Azure 地圖服務中驗證的相關資訊，請參閱[Azure 地圖服務中的管理驗證](./how-to-manage-authentication.md)。
 
 > [!TIP]
-> 要查詢搜索服務，可以使用[Postman 應用](https://www.getpostman.com/apps)生成 REST 調用。 或者，您可以使用任何您喜歡的 API 開發環境。
+> 若要查詢搜尋服務，您可以使用[Postman 應用程式](https://www.getpostman.com/apps)來建立 REST 呼叫。 或者，您可以使用您偏好的任何 API 開發環境。
 
 ## <a name="best-practices-to-geocode-addresses"></a>地理編碼位址的最佳做法
 
-使用 Azure 地圖搜索服務搜索完整或部分位址時，API 將從搜索查詢中讀取關鍵字。 然後返回位址的經度和緯度座標。 此過程稱為*地理編碼*。 
+當您使用 Azure 地圖服務搜尋服務來搜尋完整或部分位址時，API 會從您的搜尋查詢讀取關鍵字。 然後，它會傳回位址的經度和緯度座標。 此程式稱為*地理編碼*。 
 
-國家/地區地理編碼的能力取決於道路資料的可用性和地理編碼服務的準確性。 有關按國家或地區對 Azure 地圖進行地理編碼功能的詳細資訊，請參閱[地理編碼覆蓋範圍](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)。
+在國家/地區地理編碼的能力取決於道路資料的可用性和地理編碼服務的精確度。 如需依國家或地區 Azure 地圖服務地理編碼功能的詳細資訊，請參閱[地理編碼涵蓋範圍](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)。
 
 ### <a name="limit-search-results"></a>限制搜尋結果
 
- Azure 地圖搜索 API 可以説明您適當地限制搜尋結果。 限制結果，以便向使用者顯示相關資料。
+ Azure 地圖服務搜尋 API 可協助您適當地限制搜尋結果。 您可以限制結果，以便向您的使用者顯示相關資料。
 
 > [!NOTE]
-> 搜索 API 支援更多的參數，而不僅僅是本文討論的參數。
+> 搜尋 Api 支援的參數比本文所討論的還要多。
 
-#### <a name="geobiased-search-results"></a>地緣搜尋結果
+#### <a name="geobiased-search-results"></a>Geobiased 搜尋結果
 
-要將地理偏置結果添加到使用者的相關區域，請始終添加盡可能多的位置詳細資訊。 您可能希望通過指定某些輸入類型來限制搜尋結果：
+若要將結果 geobias 至使用者的相關區域，請一律盡可能新增最多位置詳細資料。 您可能想要藉由指定一些輸入類型來限制搜尋結果：
 
-* 設置`countrySet`參數。 例如，您可以將其設置為`US,FR`。。 預設情況下，API 會搜索整個世界，以便返回不必要的結果。 如果查詢沒有`countrySet`參數，則搜索可能會返回不准確的結果。 例如，搜索名為*貝爾維尤*的城市返回來自美國和法國的結果，因為這兩個國家都包含一個名為*貝爾維尤*的城市。
+* 設定`countrySet`參數。 例如，您可以將`US,FR`它設定為。 根據預設，API 會搜尋整個世界，因此它可能會傳回不必要的結果。 如果您的查詢沒有`countrySet`參數，則搜尋可能會傳回不正確的結果。 例如，名為*Bellevue*的城市搜尋會傳回美國和法國的結果，因為兩個國家/地區都包含一個名為*Bellevue*的城市。
 
-* 可以使用 和`btmRight``topleft`參數設置邊界框。 這些參數將搜索限制為地圖上的特定區域。
+* 您可以使用`btmRight`和`topleft`參數來設定周框方塊。 這些參數會將搜尋限制在地圖上的特定區域。
 
-* 要影響與結果相關的區域，請定義`lat`和`lon`座標參數。 使用`radius`參數設置搜索區域的半徑。
+* 若要影響結果的相關性區域，請定義`lat`和`lon`座標參數。 使用`radius`參數來設定搜尋區域的半徑。
 
 
-#### <a name="fuzzy-search-parameters"></a>模糊搜索參數
+#### <a name="fuzzy-search-parameters"></a>模糊搜尋參數
 
-當不知道搜索查詢的使用者輸入時，我們建議您使用 Azure 地圖[搜索模糊 API。](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) API 將 POI 搜索和地理編碼合併為規範*的單行搜索*： 
+當您不知道搜尋查詢的使用者輸入時，建議使用 Azure 地圖服務[搜尋模糊 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) 。 此 API 會將 POI 搜尋和地理編碼結合成標準的*單行搜尋*： 
 
-* `minFuzzyLevel`和`maxFuzzyLevel`參數説明返回相關匹配項，即使查詢參數與使用者需要的資訊不完全符合也是如此。 為了最大限度地提高性能和減少異常結果，請將搜索查詢設置為 和`minFuzzyLevel=1``maxFuzzyLevel=2`的預設值。 
+* `minFuzzyLevel`和`maxFuzzyLevel`參數可協助傳回相關的相符專案，即使查詢參數不完全符合使用者想要的資訊。 若要將效能最大化並減少不尋常的結果，請`minFuzzyLevel=1`將`maxFuzzyLevel=2`搜尋查詢設定為和的預設值。 
 
-    例如，當`maxFuzzyLevel`參數設置為 2 時，搜索術語*restrant*與*餐廳*匹配。 您可以在需要時覆蓋預設的模糊級別。 
+    例如，當`maxFuzzyLevel`參數設定為2時，搜尋詞彙*restrant*會與*餐廳*相符。 當您需要時，可以覆寫預設的模糊層級。 
 
-* 使用`idxSet`參數確定結果類型的確切集的優先順序。 要確定一組確切結果的優先順序，可以提交逗號分隔的索引清單。 在清單中，物料訂單並不重要。 Azure 映射支援以下索引：
+* 使用`idxSet`參數來排列一組確切結果類型的優先順序。 若要設定一組確切結果的優先順序，您可以提交以逗號分隔的索引清單。 在您的清單中，專案順序並不重要。 Azure 地圖服務支援下列索引：
 
-* `Addr` - **位址範圍**：從街道的開頭和結尾插值的位址點。 這些點表示為位址範圍。
-* `Geo` - **地域**：土地的行政區劃。 例如，地理位置可以是國家/地區、州或城市。
-* `PAD` - **點位址**：包含街道名稱和編號的位址。 點位址可以在索引中找到。 索*克爾博士2501就是一*個例子。 點位址為位址提供最高級別的精度。  
-* `POI` - **興趣點**：地圖上被認為值得注意或可能有趣的點。 [搜索位址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)不會返回 POIs。  
+* `Addr` - **位址範圍**：從街道開頭和結尾處插補的位址點。 這些點會以位址範圍表示。
+* `Geo` - **地理**位置：土地的管理部門。 例如，地理位置可以是國家/地區、州或城市。
+* `PAD` - **點位址**：包含街道名稱和號碼的位址。 您可以在索引中找到點位址。 例如， *Soquel Dr 2501*。 點位址提供位址可用的最高精確度層級。  
+* `POI` - **感興趣的點**：對應上被視為值得注意或可能很有趣的點。 [搜尋位址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)不會傳回 poi。  
 * `Str` - **街道**：地圖上的街道。
-* `XStr` - **交叉街道或交叉點**：兩條街道相交的交匯點或地點。
+* `XStr` - **交叉街道或交集**：兩個街道相交的接合或位置。
 
 
 #### <a name="usage-examples"></a>使用範例
 
-* `idxSet=POI`- 僅搜索 POIs。 
+* `idxSet=POI`-僅搜尋 Poi。 
 
-* `idxSet=PAD,Addr`- 僅搜索位址。 `PAD`指示點位址，並`Addr`指示位址範圍。
+* `idxSet=PAD,Addr`-僅搜尋位址。 `PAD`指出點位址，並`Addr`指出位址範圍。
 
-### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>地理實體類型的反向地理編碼和篩選器
+### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Geography 實體類型的反向地理編碼和篩選
 
-在[搜索位址反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)中執行反向地理編碼搜索時，服務可以返回管理區域的多邊形。要將搜尋範圍縮小到特定的地理實體類型，請在`entityType`請求中包括參數。 
+當您在[搜尋位址反向 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)中執行反向地理編碼搜尋時，服務可以傳回系統管理區域的多邊形。若要將搜尋範圍縮小至特定地理位置實體類型`entityType` ，請在您的要求中包含參數。 
 
-生成的回應包含地理 ID 和匹配的實體類型。 如果提供了多個實體，則終結點將返回*可用的最小實體*。 您可以使用返回的幾何 ID 通過[搜索多邊形服務](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)獲取地理的幾何體。
+產生的回應會包含地理識別碼，以及符合的實體類型。 如果您提供一個以上的實體，則端點會傳回*可用的最小實體*。 您可以使用傳回的幾何識別碼，透過[搜尋多邊形服務](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)取得地理位置的幾何。
 
 #### <a name="sample-request"></a>範例要求
 
@@ -128,18 +128,18 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 }
 ```
 
-### <a name="set-the-results-language"></a>設置結果語言
+### <a name="set-the-results-language"></a>設定結果語言
 
-使用`language`參數設置返回的搜尋結果的語言。 如果請求未設置該語言，則預設情況下，搜索服務使用國家或地區中最常見的語言。 當指定語言沒有可用的資料時，將使用預設語言。 
+使用`language`參數來設定所傳回搜尋結果的語言。 如果要求未設定語言，則根據預設，搜尋服務會在國家或地區中使用最常見的語言。 當指定的語言中沒有可用的資料時，會使用預設語言。 
 
-有關詳細資訊，請參閱[Azure 映射支援的語言](https://docs.microsoft.com/azure/azure-maps/supported-languages)。
+如需詳細資訊，請參閱[Azure 地圖服務支援的語言](https://docs.microsoft.com/azure/azure-maps/supported-languages)。
 
 
 ### <a name="use-predictive-mode-automatic-suggestions"></a>使用預測模式（自動建議）
 
-要查找部分查詢的更多匹配項，將`typeahead`參數設置為`true`。 此查詢被解釋為部分輸入，並且搜索進入預測模式。 如果未將`typeahead`參數設置為`true`，則服務假定已傳入所有相關資訊。
+若要尋找部分查詢的更多相符專案`typeahead` ，請`true`將參數設定為。 此查詢會被視為部分輸入，而且搜尋會進入預測模式。 如果您未將`typeahead`參數設定為`true`，則服務會假設所有相關資訊都已經傳入。
 
-在以下依例查詢中，搜索位址服務將查詢*Microso*。 此處，參數`typeahead`設置為`true`。 回應顯示搜索服務將查詢解釋為部分查詢。 回應包含自動建議的查詢的結果。
+在下列範例查詢中，會查詢搜尋位址服務是否有*Microso*。 此處的`typeahead`參數設定為`true`。 回應會顯示搜尋服務將查詢轉譯為部分查詢。 回應包含自動建議查詢的結果。
 
 #### <a name="sample-query"></a>範例查詢
 
@@ -407,27 +407,27 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="encode-a-uri-to-handle-special-characters"></a>編碼 URI 以處理特殊字元 
 
-要查找跨街位址，必須對 URI 進行編碼以處理位址中的特殊字元。 以這個位址為例：*西雅圖聯合街第一大道&聯合街*。 在這裡，在發送請求之前對安培`&`字元 （ ） 進行編碼。 
+若要尋找交叉街道位址，您必須編碼 URI 以處理位址中的特殊字元。 請考慮此位址範例：*第1個 & 聯集街道，西雅圖*。 在這裡，您會在傳送`&`要求之前，先編碼連字號（）。 
 
-我們建議您在 URI 中對字元資料進行編碼。 在 URI 中，使用與字元的 UTF-8 代碼對應的百分比符號 （`%`） 和兩個字元十六進位值對所有字元進行編碼。
+我們建議您在 URI 中編碼字元資料。 在 URI 中，您可以使用百分比符號（）和兩個`%`字元的十六進位值（對應至字元的 utf-8 程式碼）來編碼所有字元。
 
 #### <a name="usage-examples"></a>使用範例
 
-從此位址開始：
+從這個位址開始：
 
 ```
 query=1st Avenue & E 111th St, New York
 ```
 
-對位址進行編碼：
+將位址編碼：
 
 ```
 query=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 ```
 
-可以使用以下方法。
+您可以使用下列方法。
 
-JavaScript 或類型腳本：
+JavaScript 或 TypeScript：
 ```Javascript
 encodeURIComponent(query)
 ```
@@ -459,7 +459,7 @@ PHP：
 urlencode(query)
 ```
 
-紅寶石：
+加注
 ```Ruby
 CGI::escape(query) 
 ```
@@ -469,26 +469,26 @@ Swift：
 query.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) 
 ```
 
-去：
+消失
 ```Go
 import ("net/url") 
 url.QueryEscape(query)
 ```
 
 
-## <a name="best-practices-for-poi-searching"></a>POI 搜索的最佳實踐
+## <a name="best-practices-for-poi-searching"></a>POI 搜尋的最佳做法
 
-在 POI 搜索中，您可以按名稱請求 POI 結果。 例如，您可以按名稱搜索企業。 
+在 POI 搜尋中，您可以依名稱要求 POI 結果。 例如，您可以依名稱搜尋商務。 
 
-我們強烈建議您使用該`countrySet`參數指定應用程式需要覆蓋的國家/地區。 預設行為是搜索整個世界。 此廣泛搜索可能會返回不必要的結果，並且搜索可能需要很長時間。
+我們強烈建議您使用`countrySet`參數來指定應用程式需要涵蓋範圍的國家/地區。 預設行為是搜尋整個世界。 這種廣泛的搜尋可能會傳回不必要的結果，而且搜尋可能會花很長的時間。
 
-### <a name="brand-search"></a>品牌搜索
+### <a name="brand-search"></a>品牌搜尋
 
-為了提高結果和回應中資訊的相關性，POI 搜索回應包括品牌資訊。 您可以使用此資訊進一步分析回應。
+為了改善結果的相關性和回應中的資訊，POI 搜尋回應包含品牌資訊。 您可以使用此資訊進一步剖析回應。
 
-在請求中，您可以提交逗號分隔的品牌名稱清單。 使用清單通過設置`brandSet`參數將結果限制為特定品牌。 在清單中，物料訂單並不重要。 當您提供多個品牌清單時，返回的結果必須至少屬於您的一個清單。
+在要求中，您可以提交以逗號分隔的品牌名稱清單。 使用清單來設定`brandSet`參數，以將結果限制為特定品牌。 在您的清單中，專案順序並不重要。 當您提供多個品牌清單時，傳回的結果必須至少屬於您的其中一個清單。
 
-為了探索品牌搜索，讓我們提出[一個POI類別搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)請求。 在下面的示例中，我們在華盛頓雷德蒙德的 Microsoft 園區附近尋找加油站。 回應顯示返回的每個 POI 的品牌資訊。
+若要探索品牌搜尋，讓我們建立[POI 類別搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory)要求。 在下列範例中，我們會尋找位於華盛頓州 Redmond 的 Microsoft 校園附近的天然氣站。 回應會顯示所傳回之每個 POI 的品牌資訊。
 
 #### <a name="sample-query"></a>範例查詢
 
@@ -739,9 +739,9 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 ```
 
 
-### <a name="airport-search"></a>機場搜索
+### <a name="airport-search"></a>機場搜尋
 
-通過使用搜索 POI API，您可以使用其官方代碼查找機場。 例如，您可以使用*SEA*查找西雅圖-塔科馬國際機場： 
+藉由使用搜尋 POI API，您可以使用其官方程式碼來尋找機場。 例如，您可以使用*海運*來尋找西雅圖 Tacoma 國際機場： 
 
 ```HTTP
 https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=SEA 
@@ -749,13 +749,13 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 
 ### <a name="nearby-search"></a>鄰近搜尋
 
-若要在特定位置周圍檢索 POI 結果，可以嘗試使用["搜索附近"API](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby)。 終結點僅返回 POI 結果。 它不採用搜索查詢參數。 
+若要取得有關特定位置的 POI 結果，您可以嘗試使用[鄰近的 API 搜尋](https://docs.microsoft.com/rest/api/maps/search/getsearchnearby)。 端點只會傳回 POI 結果。 它不會接受搜尋查詢參數。 
 
-要限制結果，我們建議您設置半徑。
+若要限制結果，我們建議您設定 radius。
 
 ## <a name="understanding-the-responses"></a>瞭解回應
 
-讓我們通過向 Azure 地圖搜索服務發出位址搜索請求來查找西雅圖的位址。 在以下請求 URL 中，我們將`countrySet`參數`US`設置為搜索美國的位址。
+讓我們在西雅圖尋找位址，方法是對 Azure 地圖服務搜尋服務提出位址搜尋要求。 在下列要求 URL 中，我們會將`countrySet`參數設定`US`為，以搜尋美國的位址。
 
 ### <a name="sample-query"></a>範例查詢
 
@@ -765,29 +765,29 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="supported-types-of-results"></a>支援的結果類型
 
-* **點位址**：地圖上具有街道名稱和編號的特定位址的點。 點位址為位址提供最高級別的精度。 
+* **點位址**：指向具有街道名稱和數位之特定位址的地圖上的點。 [點位址] 提供位址最高的精確度等級。 
 
-* **位址範圍**：從街道的開頭和結尾插值的位址點的範圍。  
+* **位址範圍**：從街道開頭和結尾處插補的位址點範圍。  
 
-* **地理位置**：地圖上表示土地行政區劃的區域，例如國家、州或城市。 
+* **Geography**：地圖上的區域，代表土地的管理部門，例如國家/地區、州或城市。 
 
-* **POI**：地圖上值得注意的點，可能很有趣。
+* **POI**：位於地圖上的點值得注意，而且可能會有興趣。
 
-* **街道**：地圖上的街道。 位址解析為包含位址的街道的緯度和經度座標。 房屋號碼可能無法處理。 
+* **街道**：地圖上的街道。 位址會解析為包含位址之街道的緯度和經度座標。 可能不會處理房屋號碼。 
 
-* **十字街**：交叉路口。 交叉街道表示兩條街道相交的交匯點。
+* **交叉街道**：交集。 交叉街道代表兩個街道相交的接合。
 
 ### <a name="response"></a>回應
 
-讓我們來看看回應結構。 在隨後的回應中，結果物件的類型不同。 如果仔細查看，您將看到三種類型的結果物件：
+讓我們看一下回應結構。 在接下來的回應中，結果物件的類型是不同的。 如果您仔細查看，您會看到三種類型的結果物件：
 
 * 點位址
 * Street
-* 十字街
+* 交叉街道
 
-請注意，位址搜索不會返回 POIs。  
+請注意，位址搜尋不會傳回 Poi。  
 
-每個`Score`回應物件的參數指示匹配分數如何與同一回應中其他物件的分數相關。 有關回應物件參數的詳細資訊，請參閱[獲取搜索位址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)。
+每`Score`個回應物件的參數會指出符合分數如何與相同回應中其他物件的分數產生關聯。 如需回應物件參數的詳細資訊，請參閱[取得搜尋位址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)。
 
 ```JSON
 {
@@ -951,10 +951,10 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="geometry"></a>幾何
 
-*幾何體的*回應類型可以包括在 和`dataSources``geometry``id`下的物件中返回的幾何 ID。 例如，可以使用[搜索多邊形服務](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)以 GeoJSON 格式請求幾何資料。 通過使用此格式，您可以獲取一組實體的城市或機場大綱。 然後，可以使用此邊界資料在幾何體內[設置地理圍欄](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence)或[搜索 POIs。](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)
+*Geometry*的回應類型可以包含在和`dataSources` `geometry` `id`下的物件中傳回的 geometry 識別碼。 例如，您可以使用「[搜尋多邊形」服務](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)，以 GeoJSON 格式來要求 geometry 資料。 藉由使用此格式，您可以取得一組實體的城市或機場外框。 接著，您可以使用此界限資料，在幾何內[設定地理柵欄](https://docs.microsoft.com/azure/azure-maps/tutorial-geofence)或[搜尋 poi](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)。
 
 
-[搜索位址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)API 或[搜索模糊](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)API 的回應可以包括在 和 下`dataSources``geometry`的物件中返回的幾何`id`ID 和 ：
+[搜尋位址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)Api 或[搜尋模糊](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)api 的回應可以包含在`dataSources`物件下`geometry`和`id`中傳回的 geometry ID：
 
 
 ```JSON 
@@ -967,10 +967,10 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解更多資訊，請參閱：
+若要深入瞭解，請參閱：
 
 > [!div class="nextstepaction"]
-> [如何生成 Azure 地圖搜索服務請求](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+> [如何建立 Azure 地圖服務搜尋服務要求](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
 
 > [!div class="nextstepaction"]
-> [搜索服務 API 文檔](https://docs.microsoft.com/rest/api/maps/search)
+> [搜尋服務 API 檔](https://docs.microsoft.com/rest/api/maps/search)

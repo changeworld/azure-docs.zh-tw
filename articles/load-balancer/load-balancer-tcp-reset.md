@@ -1,7 +1,7 @@
 ---
 title: Azure 中的 Load Balancer 閒置 TCP 重設
 titleSuffix: Azure Load Balancer
-description: 通過本文，瞭解在空閒超時時使用雙向 TCP RST 資料包的 Azure 負載等化器。
+description: 在本文中，您將瞭解在閒置超時時，使用雙向 TCP RST 封包的 Azure Load Balancer。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
 ms.openlocfilehash: d3d836ddea8d07a25ad09e6f19d9f17a680decd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80294411"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle"></a>在空閒時使用 TCP 重置的負載等化器
+# <a name="load-balancer-with-tcp-reset-on-idle"></a>在閒置時使用 TCP 重設 Load Balancer
 
 您可以使用 [Standard Load Balancer](load-balancer-standard-overview.md)，藉由對某個指定規則啟用「閒置時重設 TCP」，來為您的案例建立更容易預測的應用程式行為。 Load Balancer 的預設行為是在達到流程的閒置逾時時，以無訊息模式卸除流程。  啟用此功能會讓 Load Balancer 在閒置逾時的時候，傳送雙向的 TCP 重設 (TCP RST 封包)。  這會讓您的應用程式端點知道，連線已逾時且無法再供使用。  如有需要，端點可以立即建立新的連線。
 
@@ -70,10 +70,10 @@ ms.locfileid: "80294411"
 
 ## <a name="limitations"></a>限制
 
-- TCP RST 僅在 TCP 連接期間以"已"狀態發送。
+- TCP RST 只會在已建立狀態的 TCP 連線期間傳送。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入了解 [Standard Load Balancer](load-balancer-standard-overview.md)。
-- 深入了解[輸出規則](load-balancer-outbound-rules-overview.md)。
-- [在空閒超時時配置 TCP RST](load-balancer-tcp-idle-timeout.md)
+- 深入瞭解[Standard Load Balancer](load-balancer-standard-overview.md)。
+- 深入瞭解[輸出規則](load-balancer-outbound-rules-overview.md)。
+- [設定閒置超時的 TCP RST](load-balancer-tcp-idle-timeout.md)

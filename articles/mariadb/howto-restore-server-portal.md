@@ -1,5 +1,5 @@
 ---
-title: 備份和恢復 - Azure 門戶 - MariaDB 的 Azure 資料庫
+title: 備份與還原-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
 description: 此文章說明如何使用 Azure 入口網站，在適用於 MariaDB 的 Azure 資料庫中還原伺服器。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: fa8ead8daa202f5747c134a62fbd43bcdf2af0d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80369252"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>如何使用 Azure 入口網站在適用於 MariaDB 的 Azure 資料庫中備份及還原伺服器
@@ -18,7 +18,7 @@ ms.locfileid: "80369252"
 ## <a name="backup-happens-automatically"></a>備份會自動進行
 為了能使用還原功能，適用於 MariaDB 的 Azure 資料庫伺服器會定期備份。 透過此功能，您可以將伺服器和其所有資料庫還原至更早的時間點 (在新的伺服器上)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 若要完成本操作說明指南，您需要：
 - [適用於 MariaDB 的 Azure 資料庫伺服器與資料庫](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
@@ -37,7 +37,7 @@ ms.locfileid: "80369252"
 如需在建立期間設定這些值的詳細資訊，請參閱[適用於 MariaDB 的 Azure 資料庫伺服器快速入門](quickstart-create-mariadb-server-database-using-azure-portal.md)。
 
 透過下列步驟可變更伺服器上的備份保留期限：
-1. 登錄到[Azure 門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 2. 選取適用於 MariaDB 的 Azure 資料庫伺服器。 這個動作會開啟 [概觀]**** 頁面。
 
@@ -76,13 +76,13 @@ ms.locfileid: "80369252"
 
 所選時間點上的現有伺服器與時間點還原所建立的新伺服器，具有相同且有效的伺服器管理員登入名稱和密碼。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-還原期間創建的新伺服器沒有原始伺服器上存在的 VNet 服務終結點。 這些規則需要為此新伺服器單獨設置。 將還原原始伺服器中的防火牆規則。
+在還原期間建立的新伺服器沒有存在於源伺服器上的 VNet 服務端點。 這些規則必須針對這個新的伺服器分別設定。 系統會還原來自源伺服器的防火牆規則。
 
 ## <a name="geo-restore"></a>異地還原
 
 如果您已將伺服器設定為使用異地備援備份，則可以從現有伺服器的備份建立新的伺服器。 您可以在任何可使用「適用於 MariaDB 的 Azure 資料庫」的區域中建立這個新伺服器。  
 
-1. 為**MariaDB**選擇**資料庫** > Azure 資料庫 。 您也可以在搜尋方塊中輸入 **MariaDB** 以尋找此服務。
+1. 選取 [**資料庫** > ]**適用於 MariaDB 的 Azure 資料庫**。 您也可以在搜尋方塊中輸入 **MariaDB** 以尋找此服務。
 
    ![[適用於 MariaDB 的 Azure 資料庫] 選項](./media/howto-restore-server-portal/2_navigate-to-mariadb.png)
 
@@ -97,9 +97,9 @@ ms.locfileid: "80369252"
 
 還原啟動時的現有伺服器與異地還原所建立的新伺服器，具有相同且有效的伺服器管理員登入名稱和密碼。 您可以從新伺服器的 [概觀]**** 頁面變更密碼。
 
-還原期間創建的新伺服器沒有原始伺服器上存在的 VNet 服務終結點。 這些規則需要為此新伺服器單獨設置。 將還原原始伺服器中的防火牆規則。
+在還原期間建立的新伺服器沒有存在於源伺服器上的 VNet 服務端點。 這些規則必須針對這個新的伺服器分別設定。 系統會還原來自源伺服器的防火牆規則。
 
 ## <a name="next-steps"></a>後續步驟
-- 瞭解有關服務[備份](concepts-backup.md)的更多
-- 瞭解[副本](concepts-read-replicas.md)
-- 瞭解有關[業務連續性](concepts-business-continuity.md)選項的詳細資訊
+- 深入瞭解服務的[備份](concepts-backup.md)
+- 瞭解[複本](concepts-read-replicas.md)
+- 深入瞭解[商務持續性](concepts-business-continuity.md)選項

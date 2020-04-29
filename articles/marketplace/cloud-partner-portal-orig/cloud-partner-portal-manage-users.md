@@ -1,5 +1,5 @@
 ---
-title: 在雲合作夥伴門戶上管理使用者 |Azure 應用商店
+title: 在 cloud partner 入口網站上管理使用者 |Azure Marketplace
 description: 在 Cloud Partner 入口網站上管理使用者
 author: qianw211
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 441f466fcbeb05d06d565dbe1af237d01554d844
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80280213"
 ---
 <a name="managing-users-on-cloud-partner-portal"></a>在 Cloud Partner 入口網站上管理使用者
@@ -53,7 +53,7 @@ o 確保在 Cloud Partner 入口網站上提供的電子郵件識別碼，在與
 ----------------------------------------------------------------------------------------------------------------------------
 
 > [!NOTE]
-> 將電子郵件添加為擁有者或參與者的"發行者名稱"將顯示在發行者清單的下拉清單中供選擇。
+> 將您的電子郵件新增為擁有者或參與者的 [發行者名稱]，將會顯示在 [發行者] 的下拉式清單中以供選取。
 
 ![指派角色 - 選取發行者](./media/cloud-partner-portal-how-to-manage-users/assignselectpublisher.png)
 

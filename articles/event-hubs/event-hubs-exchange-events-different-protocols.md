@@ -1,5 +1,5 @@
 ---
-title: Azure 事件中心 - 使用不同的協定交換事件
+title: Azure 事件中樞-使用不同通訊協定的交換事件
 description: 本文將說明使用不同通訊協定 (AMQP、Apache Kafka 及 HTTPS) 的取用者和產生者如何在使用 Azure 事件中樞時交換事件。
 services: event-hubs
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: femila
 ms.openlocfilehash: 368cc568c40e878338e6b45205e74cba1d0b6378
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80372203"
 ---
 # <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>在使用不同通訊協定的取用者和產生者之間交換事件：AMQP、Kafka 及 HTTPS
@@ -339,10 +339,10 @@ String myStringProperty = new String(rawbytes, StandardCharsets.UTF_8);
 ```
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您學習了如何在不更改協定用戶端或運行自己的群集的情況式傳輸到事件中心。 若要深入了解事件中樞和適用於 Kafka 的事件中樞，請參閱下列文章：  
+在本文中，您已了解如何串流至事件中樞，而不需要變更通訊協定用戶端或執行您自己的叢集。 若要深入了解事件中樞和適用於 Kafka 的事件中樞，請參閱下列文章：  
 
 * [了解事件中樞](event-hubs-what-is-event-hubs.md)
 * [了解適用於 Kafka 的事件中樞](event-hubs-for-kafka-ecosystem-overview.md)
 * [在適用於 Kafka 的事件中樞上探索更多範例 (GitHub)](https://github.com/Azure/azure-event-hubs-for-kafka)
-* 使用[鏡像製造商](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330)將[事件從本地的 Kafka 資料流到雲上的事件中心。](event-hubs-kafka-mirror-maker-tutorial.md)
-* 瞭解如何使用[原生 Kafka 應用程式](event-hubs-quickstart-kafka-enabled-event-hubs.md)[、Apache Flink](event-hubs-kafka-flink-tutorial.md)或[Akka 流](event-hubs-kafka-akka-streams-tutorial.md)資料流到事件中心
+* 使用[MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) ，將[事件從內部部署 Kafka 串流至雲端上的事件中樞。](event-hubs-kafka-mirror-maker-tutorial.md)
+* 瞭解如何使用[原生 Kafka 應用程式](event-hubs-quickstart-kafka-enabled-event-hubs.md)、 [Apache Flink](event-hubs-kafka-flink-tutorial.md)或[akka streams 串流](event-hubs-kafka-akka-streams-tutorial.md)串流至事件中樞

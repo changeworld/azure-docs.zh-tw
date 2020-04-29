@@ -15,16 +15,16 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
 ms.openlocfilehash: a693eb374365670da3fe8c4b2bb8ce664a024217
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295432"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>使用 Azure AD 驗證搭配 REST 存取媒體服務 API
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
 使用 Azure AD 驗證搭配 Azure 媒體服務時，您可以下列其中一種方式進行驗證：
 
@@ -50,7 +50,7 @@ ms.locfileid: "80295432"
 ## <a name="prerequisites"></a>Prerequisites
 
 - 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
-- [使用 Azure 門戶創建 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
+- [使用 Azure 入口網站建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)。
 - 請先複習[使用 Azure AD 驗證存取 Azure 媒體服務 API 概觀](media-services-use-aad-auth-to-access-ams-api.md)一文。
 - 安裝 [Postman](https://www.getpostman.com/) \(英文\) REST 用戶端，來執行在本文中示範的 REST API。 
 
@@ -75,7 +75,7 @@ ms.locfileid: "80295432"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 瀏覽至您的 AMS 執行個體。
-3. 選擇**API 訪問**。
+3. 選取 [ **API 存取**]。
 4. 按一下 [使用服務主體連線到 Azure 媒體服務 API]****。
 
     ![API 存取](./media/connect-with-rest/connect-with-rest01.png)
@@ -83,7 +83,7 @@ ms.locfileid: "80295432"
 5. 選取現有的 **Azure AD 應用程式**或建立新的 Azure AD 應用程式 (如下所示)。
 
     > [!NOTE]
-    > 要使 Azure 媒體 REST 請求成功，調用使用者必須具有它嘗試訪問的媒體服務帳戶**的參與者或****擁有者**角色。 如果您收到例外狀況指出「遠端伺服器傳回錯誤：(401) 未授權」，請參閱[存取控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)。
+    > Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有其嘗試存取之媒體服務帳戶的「**參與者**」或「**擁有**者」角色。 如果您收到例外狀況指出「遠端伺服器傳回錯誤：(401) 未授權」，請參閱[存取控制](media-services-use-aad-auth-to-access-ams-api.md#access-control)。
 
     如果您需要建立新的 AD 應用程式，請依照下列步驟操作：
     
@@ -125,7 +125,7 @@ ms.locfileid: "80295432"
 本節示範如何使用 **Postman** 來執行 REST API，從而傳回 JWT 持有人權杖 (存取權杖)。 若要呼叫任何媒體服務 REST API，您必須將「授權」標頭新增至呼叫，並將 "Bearer *your_access_token*" 的值新增至每個呼叫 (如本教學課程的下一節所示)。 
 
 1. 開啟 **Postman**。
-2. 選取 [POST] ****。
+2. 選取 [POST]  。
 3. 輸入 URL，其中包含您的租用戶名稱，且使用下列格式：租用戶名稱結尾應為 **.onmicrosoft.com**，且 URL 結尾應為 **oauth2/token**： 
 
     `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
@@ -152,7 +152,7 @@ ms.locfileid: "80295432"
         client_secret:{Your client secret that you got from your Azure AD Application's Keys}
         resource:https://rest.media.azure.net
 
-8. 按 [傳送]****。
+8. 按 [傳送]  。
 
     ![取得權杖](./media/connect-with-rest/connect-with-rest04.png)
 
@@ -186,7 +186,7 @@ ms.locfileid: "80295432"
         DataServiceVersion:3.0
         MaxDataServiceVersion:3.0
 
-7. 按 [傳送]****。
+7. 按 [傳送]  。
 
 傳回的回應會包含您帳戶中的資產。
 

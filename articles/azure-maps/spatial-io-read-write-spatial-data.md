@@ -1,6 +1,6 @@
 ---
-title: 讀取和寫入空間資料 |微軟 Azure 地圖
-description: 瞭解如何使用 Azure 地圖 Web SDK 提供的空間 IO 模組讀取和寫入資料。
+title: 讀取和寫入空間資料 |Microsoft Azure 對應
+description: 瞭解如何使用 Azure 地圖服務 Web SDK 所提供的空間 IO 模組來讀取及寫入資料。
 author: philmea
 ms.author: philmea
 ms.date: 03/01/2020
@@ -9,64 +9,64 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4c47335689401ebce98224992c74c3396821a1dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80334162"
 ---
 # <a name="read-and-write-spatial-data"></a>讀取和寫入空間資料
 
-下表列出了空間 IO 模組的讀取和寫入操作所支援的空間檔案格式。
+下表列出使用空間 IO 模組進行讀取和寫入作業時支援的空間檔案格式。
 
 | 資料格式       | 讀取 | 寫入 |
 |-------------------|------|-------|
 | GeoJSON           | ✓  |  ✓  |
-| 地質學            | ✓  |  ✓  |
-| Gml               | ✓  |  ✓  |
-| GPX               | ✓  |  ✓  |
-| Kml               | ✓  |  ✓  |
+| GeoRSS            | ✓  |  ✓  |
+| GML               | ✓  |  ✓  |
+| .GPX               | ✓  |  ✓  |
+| KML               | ✓  |  ✓  |
 | KMZ               | ✓  |  ✓  |
 | 空間 CSV       | ✓  |  ✓  |
-| 知名文本   | ✓  |  ✓  |
+| 知名文字   | ✓  |  ✓  |
 
-以下各節概述了使用空間 IO 模組讀取和寫入空間資料的所有不同工具。
+以下幾節將概述使用空間 IO 模組來讀取和寫入空間資料的所有不同工具。
 
 ## <a name="read-spatial-data"></a>讀取空間資料
 
-該`atlas.io.read`函數是用於讀取常用空間資料格式的主要函數，例如 KML、GPX、GeoRSS、GeoJSON 和包含空間資料的 CSV 檔。 此功能還可以讀取這些格式的壓縮版本，作為 ZIP 檔案或 KMZ 檔。 KMZ 檔案格式是 KML 的壓縮版本，還可以包括圖像等資產。 或者，讀取函數可以採用以任何這些格式指向檔的 URL。 URL 應託管在啟用 CORS 的終結點上，或者應在讀取選項中提供代理服務。 代理服務用於載入未啟用 CORS 的域上的資源。 讀取函數返回將圖像圖示添加到地圖的承諾，並非同步處理資料，以儘量減少對 UI 執行緒的影響。
+`atlas.io.read`函式是用來讀取一般空間資料格式的主要函式，例如 KML、.Gpx、GeoRSS、GEOJSON 和 CSV 檔案（具有空間資料）。 此函式也可以讀取這些格式的壓縮版本，例如 zip 檔案或 KMZ 檔。 KMZ 檔案格式是 KML 的壓縮版本，也可以包含像是影像的資產。 或者，read 函式可以採用指向其中任何一種格式之檔案的 URL。 Url 應裝載在啟用 CORS 的端點上，或應在讀取選項中提供 proxy 服務。 Proxy 服務用來在未啟用 CORS 的網域上載入資源。 Read 函式會傳回承諾，將影像圖示新增至地圖，並以非同步方式處理資料，以將對 UI 執行緒的影響降至最低。
 
-讀取壓縮檔（作為 zip 或 KMZ）時，將解壓縮並掃描第一個有效檔。 例如，doc.kml 或其他有效副檔名的檔，例如：.kml、.xml、geojson、.json、.csv、.tsv 或 .txt。 然後，預先載入 KML 和 GeoRSS 檔中引用的圖像，以確保它們易於訪問。 無法訪問的圖像資料可能會載入備用回退圖像，或將從樣式中刪除。 從 KMZ 檔中提取的圖像將轉換為數據 URI。
+以 zip 或 KMZ 的形式讀取壓縮檔案時，會將檔案解壓縮並掃描為第一個有效的檔案。 例如，kml 或具有其他有效副檔名的檔案，例如：. kml、.xml、geojson、json、.csv、tsv 或 .txt。 然後，會預先載入 KML 和 GeoRSS 檔案中所參考的影像，以確保它們可以存取。 無法存取的影像資料可能會載入替代的回溯影像，或將從樣式中移除。 從 KMZ 檔案解壓縮的影像將會轉換成資料 Uri。
 
-讀取函數的結果是一個`SpatialDataSet`物件。 此物件擴展 GeoJSON 要素集合類。 它可以很容易地傳遞到一個`DataSource`正樣，以呈現其要素在地圖上。 不僅`SpatialDataSet`包含功能資訊，而且還可能包括下表中概述的 KML 地面疊加、處理指標和其他詳細資訊。
+Read 函式的結果是`SpatialDataSet`物件。 此物件會擴充 GeoJSON FeatureCollection 類別。 您可以輕鬆地依`DataSource`原樣傳遞至，以在地圖上轉譯其功能。 `SpatialDataSet`不僅包含功能資訊，也可能包含 KML 的基礎重迭、處理計量，以及下表中所述的其他詳細資料。
 
 | 屬性名稱 | 類型 | 描述 | 
 |---------------|------|-------------|
-| `bbox` | `BoundingBox` | 資料集中所有資料的邊界框。 |
-| `features` | `Feature[]` | 資料集中的 GeoJSON 功能。 |
-| `groundOverlays` | `(atlas.layer.ImageLayer | atlas.layers.OgcMapLayer)[]` | KML 接地疊加陣列。 |
-| `icons` | 記錄&lt;字串，字串&gt; | 一組圖示 URL。 鍵 = 圖示名稱，值 = URL。 |
-| properties | 任意 | 在空間資料集的文檔級別提供的屬性資訊。 |
-| `stats` | `SpatialDataSetStats` | 有關空間資料集的內容和處理時間的統計資訊。 |
+| `bbox` | `BoundingBox` | 資料集中所有資料的周框方塊。 |
+| `features` | `Feature[]` | GeoJSON 資料集內的功能。 |
+| `groundOverlays` | `(atlas.layer.ImageLayer | atlas.layers.OgcMapLayer)[]` | KML GroundOverlays 的陣列。 |
+| `icons` | 記錄&lt;字串，字串&gt; | 一組圖示 Url。 索引鍵 = 圖示名稱，值 = URL。 |
+| properties | 任意 | 在空間資料集的檔層級提供的屬性資訊。 |
+| `stats` | `SpatialDataSetStats` | 空間資料集之內容和處理時間的相關統計資料。 |
 | `type` | `'FeatureCollection'` | 唯讀 GeoJSON 類型值。 |
 
-## <a name="examples-of-reading-spatial-data"></a>讀取空間資料的示例
+## <a name="examples-of-reading-spatial-data"></a>讀取空間資料的範例
 
-以下代碼演示如何讀取空間資料集，以及如何使用 類`SimpleDataLayer`在地圖上呈現它。 該代碼使用 URL 指向的 GPX 檔。
-
-<br/>
-
-<iframe height='500' scrolling='no' title='載入空間資料簡單' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>在<a href='https://codepen.io'>CodePen</a>上，請參閱按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （） 顯示筆<a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>載入空間資料簡單</a>。
-</iframe>
-
-下一個代碼演示演示如何讀取 KML 或 KMZ 到地圖。 KML 可以包含接地疊加，其形式為`ImageLyaer`或`OgcMapLayer`。 這些疊加必須與要素分開添加到地圖上。 此外，如果資料集具有自訂圖示，則這些圖示需要在載入要素之前載入到地圖資源。
+下列程式碼會示範如何讀取空間資料集，並使用`SimpleDataLayer`類別在地圖上呈現它。 程式碼會使用 URL 所指向的 .GPX 檔案。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='將 KML 載入到地圖上' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>在<a href='https://codepen.io'>CodePen</a>上，請參閱按 Azure 映射<a href='https://codepen.io/azuremaps'>@azuremaps</a>（） 顯示筆<a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>載入 KML 到地圖</a>。
+<iframe height='500' scrolling='no' title='簡單載入空間資料' src='//codepen.io/azuremaps/embed/yLNXrZx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上的畫筆透過 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）來<a href='https://codepen.io/azuremaps/pen/yLNXrZx/'>載入空間資料 Simple</a> 。
 </iframe>
 
-您可以選擇提供代理服務來訪問可能未啟用 CORS 的跨域資產。 讀取函數將首先嘗試使用 CORS 訪問另一個域上的檔。 首次使用 CORS 無法訪問其他域上的任何資源後，它僅在提供代理服務時才會請求其他檔。 讀取函數將檔 URL 追加到提供的代理 URL 的末尾。 此程式碼片段演示如何將代理服務傳遞到讀取函數：
+下一個程式碼示範如何將 KML （或 KMZ）讀取和載入至對應。 KML 可以包含地面重迭，其格式為`ImageLyaer`或。 `OgcMapLayer` 這些重迭必須在對應上與功能分開新增。 此外，如果資料集具有自訂圖示，則在載入功能之前，必須先將這些圖示載入至對應資源。
+
+<br/>
+
+<iframe height='500' scrolling='no' title='將 KML 載入至對應' src='//codepen.io/azuremaps/embed/XWbgwxX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>在<a href='https://codepen.io'>CodePen</a>上，以 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的方式，在地圖上查看 [畫筆<a href='https://codepen.io/azuremaps/pen/XWbgwxX/'>載入 KML</a> ]。
+</iframe>
+
+您可以選擇性地提供 proxy 服務，以存取可能未啟用 CORS 的跨網域資產。 Read 函式會嘗試先使用 CORS 來存取另一個網域上的檔案。 第一次無法使用 CORS 存取另一個網域上的任何資源時，只有在提供 proxy 服務時，才會要求額外的檔案。 Read 函式會將檔案 URL 附加至所提供 proxy URL 的結尾。 這段程式碼會示範如何將 proxy 服務傳遞至 read 函式：
 
 ```javascript
 //Read a file from a URL or pass in a raw data as a string.
@@ -81,34 +81,34 @@ atlas.io.read('https://nonCorsDomain.example.com/mySuperCoolData.xml', {
 
 ```
 
-下面的演示演示如何讀取已劃定的檔並在地圖上呈現該檔。 在這種情況下，代碼使用具有空間資料列的 CSV 檔。
+下列示範顯示如何讀取分隔的檔案，並將其轉譯在地圖上。 在此情況下，程式碼會使用具有空間資料行的 CSV 檔案。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='添加已限制的檔' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱在 CodePen 上按 Azure 映射<a href='https://codepen.io/azuremaps'>@azuremaps</a>（）<a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>添加"已限制檔</a>"<a href='https://codepen.io'>的筆</a>。
+<iframe height='500' scrolling='no' title='新增分隔的檔案' src='//codepen.io/azuremaps/embed/ExjXBEb/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上的透過 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的畫筆<a href='https://codepen.io/azuremaps/pen/ExjXBEb/'>新增分隔的</a>檔案。
 </iframe>
 
 ## <a name="write-spatial-data"></a>寫入空間資料
 
-空間 IO 模組中有兩個主要寫入函數。 函數`atlas.io.write`生成字串，`atlas.io.writeCompressed`而函數生成壓縮 ZIP 檔案。 壓縮的 ZIP 檔案將包含一個基於文本的檔，其中包含空間資料。 這兩個函數都返回將資料添加到檔中的承諾。 並且，它們都可以編寫以下任何資料`SpatialDataSet`：、、、、`DataSource``ImageLayer``OgcMapLayer`特徵、幾何或這些資料類型的任意組合陣列。 使用任一函數寫入時，可以指定想要的檔案格式。 如果未指定檔案格式，則資料將寫入 KML。
+空間 IO 模組中有兩個主要寫入功能。 `atlas.io.write`函數會產生字串，而`atlas.io.writeCompressed`函式會產生壓縮的 zip 檔案。 壓縮的 zip 檔案會包含具有空間資料的文字型檔案。 這兩個函式都會傳回將資料新增至檔案的承諾。 而且，它們都可以寫入下列任何資料`SpatialDataSet`：、 `DataSource`、 `ImageLayer`、 `OgcMapLayer`、功能集合、功能、幾何，或這些資料類型的任何組合陣列。 使用其中一個函式撰寫時，您可以指定想要的檔案格式。 如果未指定檔案格式，則會將資料寫入為 KML。
 
-下面的工具演示了可用於`atlas.io.write`函數的大多數寫入選項。
-
-<br/>
-
-<iframe height='700' scrolling='no' title='空間資料寫入選項' src='//codepen.io/azuremaps/embed/YzXxXPG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>在<a href='https://codepen.io'>CodePen</a>上按 Azure 映射<a href='https://codepen.io/azuremaps'>@azuremaps</a>（） 查看筆<a href='https://codepen.io/azuremaps/pen/YzXxXPG/'>空間資料寫入選項</a>。
-</iframe>
-
-## <a name="example-of-writing-spatial-data"></a>編寫空間資料的示例
-
-以下示例允許您拖放，然後在地圖上載入空間檔。 可以從地圖匯出 GeoJSON 資料，並將其以受支援的空間資料格式之一寫成字串或壓縮檔。
+下列工具示範可搭配函式使用`atlas.io.write`的大部分寫入選項。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='將空間檔拖放到地圖上' src='//codepen.io/azuremaps/embed/zYGdGoO/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>在<a href='https://codepen.io'>CodePen</a>上，通過 Azure 地圖 （）<a href='https://codepen.io/azuremaps'>@azuremaps</a>查看筆<a href='https://codepen.io/azuremaps/pen/zYGdGoO/'>拖放空間檔到地圖上</a>。
+<iframe height='700' scrolling='no' title='空間資料寫入選項' src='//codepen.io/azuremaps/embed/YzXxXPG/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的畫筆<a href='https://codepen.io/azuremaps/pen/YzXxXPG/'>空間資料寫入選項</a>。
 </iframe>
 
-您可以選擇提供代理服務來訪問可能未啟用 CORS 的跨域資產。 此程式碼片段顯示您可以合併代理服務：
+## <a name="example-of-writing-spatial-data"></a>寫入空間資料的範例
+
+下列範例可讓您拖放，然後在地圖上載入空間檔案。 您可以從對應匯出 GeoJSON 資料，並以字串或壓縮檔案的其中一個支援的空間資料格式加以寫入。
+
+<br/>
+
+<iframe height='700' scrolling='no' title='將空間檔案拖放到對應上' src='//codepen.io/azuremaps/embed/zYGdGoO/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>），請參閱畫筆<a href='https://codepen.io/azuremaps/pen/zYGdGoO/'>將空間檔案拖放到地圖</a>上。
+</iframe>
+
+您可以選擇性地提供 proxy 服務，以存取可能未啟用 CORS 的跨網域資產。 這段程式碼顯示您可以合併 proxy 服務：
 
 ```javascript
 atlas.io.read(data, {
@@ -122,69 +122,69 @@ atlas.io.read(data, {
 );
 ```
 
-## <a name="read-and-write-well-known-text-wkt"></a>閱讀和寫入知名文本 （WKT）
+## <a name="read-and-write-well-known-text-wkt"></a>讀取和寫入已知的文字（WKT）
 
-[眾所周知的文本](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry)（WKT） 是開放地理空間聯盟 （OGC） 標準，用於將空間幾何表示為文本。 許多地理空間系統都支援 WKT，例如使用 PostGIS 外掛程式的 Azure SQL 和 Azure PostgreSQL。 與大多數 OGC 標準一樣，座標被格式化為"經緯度"，以符合"x y"約定。 例如，經度 -110 和緯度 45 處的點`POINT(-110 45)`可以編寫為使用 WKT 格式。
+[已知的文字](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry)（WKT）是將空間幾何表示為文字的開放地理空間協會（OGC）標準。 許多地理空間系統都支援 WKT，例如使用 PostGIS 外掛程式的 Azure SQL 和 Azure 于 postgresql。 如同大部分的 OGC 標準，座標會格式化為「經度緯度」，以配合「x y」慣例。 例如，您可以`POINT(-110 45)`使用 WKT 格式，將經度-110 和緯度45的點寫入。
 
-可以使用 函數讀取`atlas.io.ogc.WKT.read`已知文本，並使用 函數`atlas.io.ogc.WKT.write`編寫。
+已知的文字可以使用`atlas.io.ogc.WKT.read`函式來讀取，並使用`atlas.io.ogc.WKT.write`函數撰寫。
 
-## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>閱讀和編寫知名文本的示例 （WKT）
+## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>讀取和寫入已知文字的範例（WKT）
 
-以下代碼演示如何讀取已知文本字串`POINT(-122.34009 47.60995)`並使用氣泡圖層在地圖上呈現它。
+下列程式碼示範如何讀取已知的文字字串`POINT(-122.34009 47.60995)` ，並使用反升圖層將其轉譯在地圖上。
 
 <br/>
 
-<iframe height='500' scrolling='no' title='閱讀已知文本' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>在 CodePen 上，請參閱按 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 （）<a href='https://codepen.io/azuremaps/pen/XWbabLd/'>讀取已知文本</a><a href='https://codepen.io'>的筆</a>。
+<iframe height='500' scrolling='no' title='讀取知名文字' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>），手寫筆<a href='https://codepen.io/azuremaps/pen/XWbabLd/'>讀取已知的文字</a>。
 </iframe>
 
-以下代碼演示了來回閱讀和編寫眾所周知的文本。
+下列程式碼示範如何在前後讀取和寫入已知的文字。
 
 <br/>
 
-<iframe height='700' scrolling='no' title='閱讀和寫入知名文本' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>在 CodePen 上，請參閱按 Azure 映射<a href='https://codepen.io/azuremaps'>@azuremaps</a>（）<a href='https://codepen.io/azuremaps/pen/JjdyYav/'>讀取和寫入已知文本</a><a href='https://codepen.io'>的筆</a>。
+<iframe height='700' scrolling='no' title='讀取和寫入知名文字' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>請參閱在<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>）的畫筆<a href='https://codepen.io/azuremaps/pen/JjdyYav/'>讀取和寫入已知的文字</a>。
 </iframe>
 
 ## <a name="read-and-write-gml"></a>讀取和寫入 GML
 
-GML 是一種空間 XML 檔規範，通常用作其他 XML 規範的副檔名。 使用 函數可以使用 GML 標記`atlas.io.core.GmlWriter.write`將 GeoJSON 資料編寫為 XML。 可以使用 函數讀取`atlas.io.core.GmlReader.read`包含 GML 的 XML。 讀取函數有兩個選項：
+GML 是空間 XML 檔案規格，通常用來做為其他 XML 規格的延伸。 您可以使用`atlas.io.core.GmlWriter.write`函式，將 GeoJSON 資料寫入為具有 GML 標記的 XML。 包含 GML 的 XML 可以使用`atlas.io.core.GmlReader.read`函數來讀取。 Read 函式有兩個選項：
 
-- 選項`isAxisOrderLonLat`- 座標"緯度、經度"或"經度、緯度"的軸順序可能因資料集而異，並且並不總是定義良好。 預設情況下，GML 讀取器將座標資料讀取為"緯度、經度"，但將此選項設置為 true 會將其讀取為"經度、緯度"。
-- 選項`propertyTypes`- 此選項是鍵值查閱資料表，其中鍵是資料集中屬性的名稱。 該值是分析時要將值轉換為的物件類型。 支援的類型值是： `string`、、`boolean``date``number`和 。 如果屬性不在查閱資料表中或未定義類型，則該屬性將作為字串進行解析。
+- `isAxisOrderLonLat`選項-[緯度、經度] 或 [經度，緯度] 座標的軸順序可能會因資料集而異，而且不一定會妥善定義。 根據預設，GML 讀取器會將座標資料讀取為「緯度，經度」，但將此選項設定為 true 會將其讀取為「經度，緯度」。
+- `propertyTypes`選項-此選項是索引鍵值查閱資料表，其中索引鍵是資料集中的屬性名稱。 值是剖析時要將值轉換成的物件類型。 支援的類型值為： `string`、 `number`、 `boolean`和`date`。 如果屬性不在查閱資料表中，或未定義類型，則會將屬性剖析為字串。
 
-當`atlas.io.read``atlas.io.core.GmlReader.read`函數檢測到輸入資料是 XML 時，它將預設為函數，但資料不是其他支援空間 XML 格式之一。
+`atlas.io.read`函式會在偵測到`atlas.io.core.GmlReader.read`輸入資料為 XML 時，預設為函式，但資料不是其他支援空間 XML 格式的其中一個。
 
 ## <a name="next-steps"></a>後續步驟
 
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [atlas.io靜態函數](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io)
+> [atlas.io 靜態函式](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io)
 
 > [!div class="nextstepaction"]
-> [空間資料集](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdataset)
+> [SpatialDataSet](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdataset)
 
 > [!div class="nextstepaction"]
-> [空間資料集統計](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdatasetstats)
+> [SpatialDataSetStats](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.spatialdatasetstats)
 
 > [!div class="nextstepaction"]
-> [格姆閱讀器](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader?view=azure-maps-typescript-latest)
+> [GmlReader](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlreader?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [格姆作家](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter?view=azure-maps-typescript-latest)
+> [GmlWriter](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.core.gmlwriter?view=azure-maps-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [阿特拉斯.io.ogc.WKT 功能](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.ogc.wkt)
+> [ogc. WKT 函式](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/atlas.io.ogc.wkt)
 
 請參閱下列文章，以取得更多可新增至地圖的程式碼範例：
 
 > [!div class="nextstepaction"]
-> [添加 OGC 地圖圖層](spatial-io-add-ogc-map-layer.md)
+> [新增 OGC 地圖圖層](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
-> [連接到 WFS 服務](spatial-io-connect-wfs-service.md)
+> [連接到工作流程服務](spatial-io-connect-wfs-service.md)
 
 > [!div class="nextstepaction"]
-> [利用核心業務](spatial-io-core-operations.md)
+> [利用核心作業](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [支援的資料格式詳細資訊](spatial-io-supported-data-format-details.md)
+> [支援的資料格式詳細資料](spatial-io-supported-data-format-details.md)

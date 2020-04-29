@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 48bd909eefbaea15cf6ca2427e106ad9bc0ffbb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80298752"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 診斷工具針對 8000 系列裝置問題進行疑難排解
@@ -323,7 +323,7 @@ hcs_startup                                   Stopped hcs_startup
 
 ### <a name="network-test"></a>網路測試
 
-此測試驗證網路介面、埠、DNS 和 NTP 伺服器連接、TLS/SSL 憑證、存儲帳戶憑據、與補救伺服器的連接以及 StorSimple 設備上的 Web 代理連接的狀態。
+這項測試會驗證網路介面、埠、DNS 和 NTP 伺服器連線的狀態、TLS/SSL 憑證、儲存體帳號憑證、與補救伺服器的連接，以及 Web Proxy StorSimple 裝置上的連接。
 
 #### <a name="sample-output-of-network-test-when-only-data0-is-enabled"></a>僅啟用 DATA0 時的網路測試輸出範例
 
@@ -417,8 +417,8 @@ Controller0>
 | PowerShell 參數    | 描述  |
 |-------------------------|------------------|
 | 執行個體識別碼             | 每個控制器都有相關聯的唯一識別碼或 GUID。|
-| 名稱                    | 在裝置部署期間，透過 Azure 入口網站設定的裝置易記名稱。 預設的易記名稱是裝置序號。 |
-| 模型                   | StorSimple 8000 系列裝置的機型。 機型可以是 8100 或 8600。|
+| Name                    | 在裝置部署期間，透過 Azure 入口網站設定的裝置易記名稱。 預設的易記名稱是裝置序號。 |
+| 型號                   | StorSimple 8000 系列裝置的機型。 機型可以是 8100 或 8600。|
 | SerialNumber            | 裝置序號是在工廠裡指派，長度為 15 個字元。 例如，8600-SHX0991003G44HT 表示：<br> 8600 – 裝置機型。<br>SHX – 製造場所。<br> 0991003 – 特定產品。 <br> G44HT– 最後 5 位數會遞增以產生唯一序號。 這可能不是連續的組合。|
 | TimeZone                | 裝置時區是在裝置部署期間於 Azure 入口網站中設定。|
 | CurrentController       | 您透過 StorSimple 裝置的 Windows PowerShell 介面連接的控制器。|

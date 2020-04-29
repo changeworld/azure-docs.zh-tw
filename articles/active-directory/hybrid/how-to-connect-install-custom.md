@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5f83fa040de501adf3afa523086e100244fa619
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331796"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>自訂 Azure AD Connect 安裝
@@ -39,8 +39,8 @@ ms.locfileid: "80331796"
 
 | 選用組態 | 描述 |
 | --- | --- |
-| 使用現有的 SQL Server |可讓您指定 SQL Server 名稱和執行個體名稱。 如果您已經有想要使用的 ad 資料庫伺服器，請選擇這個選項。 如果您的 SQL Server 未啟用瀏覽，請在 [執行個體名稱] **** 中輸入執行個體名稱加上逗號及連接埠號碼。  然後指定 Azure AD 連接資料庫的名稱。  您的 SQL 許可權確定是創建新資料庫還是 SQL 管理員必須提前創建資料庫。  如果您有 SQL SA 許可權[，請參閱如何使用現有資料庫進行安裝](how-to-connect-install-existing-database.md)。  如果已委派許可權 （DBO），請參閱安裝[Azure AD 連接以 SQL 委派的管理員許可權](how-to-connect-install-sql-delegation.md)。 |
-| 使用現有的服務帳戶 |Azure AD Connect 預設會使用虛擬服務帳戶，以供同步處理服務使用。 如果使用遠端 SQL 伺服器或使用需要身份驗證的代理，則需要使用**託管服務帳戶**或使用域中的服務帳戶並知道密碼。 在這類情況下，請輸入要使用的帳戶。 請確定執行安裝的使用者為 SQL 中的 SA，才可建立服務帳戶的登入。  請參閱[Azure AD 連接帳戶和許可權](reference-connect-accounts-permissions.md#adsync-service-account)。 </br></br>使用最新的組建，SQL 管理員即可執行頻外資料庫佈建，然後由具有資料庫擁有者權限的 Azure AD Connect 管理員進行安裝。  如需詳細資訊，請參閱[使用 SQL 委派的管理員權限安裝 Azure AD Connect](how-to-connect-install-sql-delegation.md)。|
+| 使用現有的 SQL Server |可讓您指定 SQL Server 名稱和執行個體名稱。 如果您已經有想要使用的 ad 資料庫伺服器，請選擇這個選項。 如果您的 SQL Server 未啟用瀏覽，請在 [執行個體名稱] **** 中輸入執行個體名稱加上逗號及連接埠號碼。  然後指定 Azure AD Connect 資料庫的名稱。  您的 SQL 許可權會決定是否要建立新的資料庫，或者您的 SQL 系統管理員必須事先建立資料庫。  如果您有 SQL SA 許可權，請參閱[如何使用現有的資料庫來安裝](how-to-connect-install-existing-database.md)。  如果您已委派許可權（DBO），請參閱[使用 SQL 委派的系統管理員許可權安裝 Azure AD Connect](how-to-connect-install-sql-delegation.md)。 |
+| 使用現有的服務帳戶 |Azure AD Connect 預設會使用虛擬服務帳戶，以供同步處理服務使用。 如果您使用遠端 SQL server 或使用需要驗證的 proxy，則必須使用**受管理的服務帳戶**，或使用網域中的服務帳戶並知道密碼。 在這類情況下，請輸入要使用的帳戶。 請確定執行安裝的使用者為 SQL 中的 SA，才可建立服務帳戶的登入。  請參閱[Azure AD Connect 帳戶和許可權](reference-connect-accounts-permissions.md#adsync-service-account)。 </br></br>使用最新的組建，SQL 管理員即可執行頻外資料庫佈建，然後由具有資料庫擁有者權限的 Azure AD Connect 管理員進行安裝。  如需詳細資訊，請參閱[使用 SQL 委派的管理員權限安裝 Azure AD Connect](how-to-connect-install-sql-delegation.md)。|
 | 指定自訂同步群組 |Azure AD Connect 預設會在安裝同步處理服務時，建立四個伺服器的本機群組。 這些群組如下：[系統管理員] 群組、[操作員] 群組、[瀏覽] 群組和 [密碼重設群組]。 您可以在此指定自己的群組。 群組必須位於伺服器本機上，不能位於網域中。 |
 
 ### <a name="user-sign-in"></a>使用者登入
@@ -86,10 +86,10 @@ ms.locfileid: "80331796"
 
 ![連線目錄](./media/how-to-connect-install-custom/connectdir02.png)
 
-#### <a name="enterprise-admin-and-domain-admin-accounts-not-supported"></a>不支援企業管理員和域管理員帳戶
-自生成 1.4.18.0 起，不再支援將企業管理員或域管理員帳戶用作 AD DS 連接器帳戶。  如果在指定**使用現有帳戶**時嘗試輸入企業管理員或域管理員的帳戶，您將收到以下錯誤：
+#### <a name="enterprise-admin-and-domain-admin-accounts-not-supported"></a>不支援企業系統管理員和網域系統管理員帳戶
+在組建1.4.18.0 時，不再支援使用企業系統管理員或網域系統管理員帳戶作為 AD DS 連接器帳戶。  如果您在指定 [**使用現有的帳戶**] 時，嘗試輸入屬於企業系統管理員或網域管理員的帳戶，您將會收到下列錯誤：
 
-  **不允許將企業或域管理員帳戶用於 AD 林帳戶。 讓 Azure AD Connect 為您創建帳戶，或指定具有正確許可權的同步帳戶。 &lt;瞭解更多&gt;"**
+  **「不允許為您的 AD 樹系帳戶使用企業或網域系統管理員帳戶。 讓 Azure AD Connect 為您建立帳戶，或指定具有正確許可權的同步處理帳戶。 &lt; &gt;**
 
 ### <a name="azure-ad-sign-in-configuration"></a>Azure AD 登入組態
 此頁面可讓您檢閱內部部署 AD DS 中存在的 UPN 網域，以及已在 Azure AD 中驗證的 UPN 網域。 此頁面也可讓您設定要用於 userPrincipalName 的屬性。
@@ -97,7 +97,7 @@ ms.locfileid: "80331796"
 ![未驗證的網域](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
 檢閱每一個標示為**未新增**和**未驗證**的網域。 確定您所使用的網域皆已在 Azure AD 中完成驗證。 驗證好網域時，按一下 [重新整理] 符號。 如需詳細資訊，請參閱[新增並驗證網域](../active-directory-domains-add-azure-portal.md)
 
-**UserPrincipalName** ：屬性 userPrincipalName 是使用者登入 Azure AD 和 Office 365 時會使用的屬性。 使用的網域 (也稱為 UPN 尾碼)，應該會在同步處理使用者前於 Azure AD 中進行驗證。 Microsoft 建議保留預設屬性 userPrincipalName。 如果此屬性不可路由傳送且無法驗證，則可以選取另一個屬性。 例如，您可以選取電子郵件做為保存登入識別碼的屬性。 使用 userPrincipalName 之外的其他屬性稱為 **替代 ID**。 替代 ID 屬性值必須遵循 RFC822 標準。 替代 ID 可與密碼雜湊同步處理、傳遞驗證和同盟搭配使用。 此屬性不得在 Active Directory 中定義為多重值 (即使它只有單一值)。 有關備用 ID 的詳細資訊，請參閱[常見問題](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)主題。
+**UserPrincipalName** ：屬性 userPrincipalName 是使用者登入 Azure AD 和 Office 365 時會使用的屬性。 使用的網域 (也稱為 UPN 尾碼)，應該會在同步處理使用者前於 Azure AD 中進行驗證。 Microsoft 建議保留預設屬性 userPrincipalName。 如果此屬性不可路由傳送且無法驗證，則可以選取另一個屬性。 例如，您可以選取電子郵件做為保存登入識別碼的屬性。 使用 userPrincipalName 之外的其他屬性稱為 **替代 ID**。 替代 ID 屬性值必須遵循 RFC822 標準。 替代 ID 可與密碼雜湊同步處理、傳遞驗證和同盟搭配使用。 此屬性不得在 Active Directory 中定義為多重值 (即使它只有單一值)。 如需替代識別碼的詳細資訊，請參閱[常見問題](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)主題。
 
 >[!NOTE]
 > 當您啟用傳遞驗證時，您必須至少有一個已驗證網域才能繼續執行精靈。
@@ -182,7 +182,7 @@ ms.locfileid: "80331796"
 | 密碼雜湊同步處理 |如果您選取同盟做為登入解決方案，您可以啟用此選項。 密碼雜湊同步處理可作為備份選項。 如需其他資訊，請參閱[密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)。 </br></br>如果您已選取傳遞驗證，則預設也會啟用此選項，確保能夠支援舊版用戶端並作為備用選項。 如需其他資訊，請參閱[密碼雜湊同步處理](how-to-connect-password-hash-synchronization.md)。|
 | 密碼回寫 |透過啟用密碼回寫，在 Azure AD 中產生的密碼變更會回寫至內部部署目錄。 如需詳細資訊，請參閱[開始使用密碼管理](../authentication/quickstart-sspr.md)。 |
 | 群組回寫 |如果您使用 [Office 365 群組] **** 功能，就可以在內部部署的 Active Directory 中顯示這些群組。 只有當您內部部署的 Active Directory 中已經有 Exchange 時，才能使用此選項。 如需詳細資訊，請參閱[群組回寫](how-to-connect-preview.md#group-writeback)。 |
-| 裝置回寫 |允許您將 Azure AD 中的設備物件寫回到本地活動目錄，用於條件訪問方案。 如需詳細資訊，請參閱[在 Azure AD Connect 中啟用裝置回寫](how-to-connect-device-writeback.md)。 |
+| 裝置回寫 |可讓您將 Azure AD 中的裝置物件回寫至內部部署 Active Directory，以進行條件式存取案例。 如需詳細資訊，請參閱[在 Azure AD Connect 中啟用裝置回寫](how-to-connect-device-writeback.md)。 |
 | 目錄擴充屬性同步處理 |透過啟用目錄擴充屬性同步處理，指定的屬性將會同步處理至 Azure AD。 如需詳細資訊，請參閱[目錄擴充](how-to-connect-sync-feature-directory-extensions.md)。 |
 
 ### <a name="azure-ad-app-and-attribute-filtering"></a>Azure AD 應用程式和屬性篩選
@@ -224,7 +224,7 @@ ms.locfileid: "80331796"
 >如果您不想對特定樹系使用單一登入，您可以略過該樹系。
 
 #### <a name="configure-the-intranet-zone-for-client-machines"></a>設定用戶端機器的內部網路區域
-為了確保用戶端登錄在 Intranet 區域中自動，您需要確保 URL 是 Intranet 區域的一部分。 這可確保加入網域的電腦會在連接到公司網路時自動將 Kerberos 票證傳送至 Azure AD。
+若要確保用戶端會自動登入內部網路區域，您必須確定 URL 是內部網路區域的一部分。 這可確保加入網域的電腦會在連接到公司網路時自動將 Kerberos 票證傳送至 Azure AD。
 在具有群組原則管理工具的電腦上。
 
 1.  開啟 [群組原則管理工具]
@@ -239,23 +239,23 @@ ms.locfileid: "80331796"
 5.  看起來應類似下列範例：  
 ![內部網路區域](./media/how-to-connect-install-custom/sitezone.png)
 
-6.  按一下 **"確定"** 兩次。
+6.  按兩次 **[確定]** 。
 
 ## <a name="configuring-federation-with-ad-fs"></a>設定與 AD FS 同盟
 使用 Azure AD Connect 設定 AD FS 的作業很簡單，只需要按幾下就能完成。 進行設定之前必須先具備下列項目。
 
 * 做為同盟伺服器的 Windows Server 2012 R2 或更新版本伺服器，且已啟用遠端管理
 * 做為 Web 應用程式 Proxy 伺服器的 Windows Server 2012 R2 或更新版本伺服器，且已啟用遠端管理
-* 要使用的聯合服務名稱的 TLS/SSL 憑證（例如sts.contoso.com）
+* 您想要使用之 federation service 名稱的 TLS/SSL 憑證（例如 sts.contoso.com）
 
 >[!NOTE]
->您可以使用 Azure AD Connect 更新 AD FS 伺服器場的 TLS/SSL 憑證，即使您不使用它來管理識別身分同盟信任也是如此。
+>您可以使用 Azure AD Connect 更新 AD FS 伺服器陣列的 TLS/SSL 憑證，即使您未使用它來管理您的同盟信任也一樣。
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>AD FS 組態必要條件
 若要使用 Azure AD Connect 設定 AD FS 伺服器陣列，請確定已在遠端伺服器啟用 WinRM。 確定您已完成[同盟必要條件](how-to-connect-install-prerequisites.md#prerequisites-for-federation-installation-and-configuration)中的其他工作。 此外，請完成[表 3 - Azure AD Connect 和同盟伺服器/WAP](reference-connect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap) 中列出的連接埠需求。
 
 ### <a name="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm"></a>建立新的 AD FS 伺服器陣列或使用現有的 AD FS 伺服器陣列
-您可以使用現有的 AD FS 伺服器陣列，或選擇建立新的 AD FS 伺服器陣列。 如果選擇創建新證書，則需要提供 TLS/SSL 憑證。 如果 TLS/SSL 憑證受密碼保護，系統將提示您輸入密碼。
+您可以使用現有的 AD FS 伺服器陣列，或選擇建立新的 AD FS 伺服器陣列。 如果您選擇建立新的帳戶，則必須提供 TLS/SSL 憑證。 如果 TLS/SSL 憑證受到密碼保護，系統會提示您輸入密碼。
 
 ![AD FS 伺服器陣列](./media/how-to-connect-install-custom/adfs1.png)
 
@@ -320,7 +320,7 @@ AD FS 服務需要網域服務帳戶來驗證使用者，以及在 Active Direct
 ## <a name="configuring-federation-with-pingfederate"></a>設定與 PingFederate 的同盟
 使用 Azure AD Connect 設定 PingFederate 的作業很簡單，只需要按幾下就能完成。 但您必須符合下列必要條件。
 - PingFederate 8.4 或更新版本。  如需詳細資訊，請參閱 [PingFederate 與 Azure Active Directory 和 Office 365 的整合](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html)
-- 要使用的聯合服務名稱的 TLS/SSL 憑證（例如sts.contoso.com）
+- 您想要使用之 federation service 名稱的 TLS/SSL 憑證（例如 sts.contoso.com）
 
 ### <a name="verify-the-domain"></a>驗證網域
 選取 [與 PingFederate 同盟] 後，系統會要求您驗證要建立同盟的網域。  從下拉式方塊中選取網域。
@@ -397,7 +397,7 @@ Azure AD Connect 會嘗試驗證在上一個步驟中從 PingFederate 中繼資�
 下一節包含遇到 Azure AD Connect 安裝問題時，您可以使用的疑難排解和資訊。
 
 ### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>「ADSync 資料庫已包含資料，而且無法覆寫」
-當您自訂安裝 Azure AD 連接並選擇"在**安裝所需元件**"頁上**使用現有 SQL 伺服器**時，可能會遇到一個錯誤，指出**ADSync 資料庫已包含資料，並且無法覆蓋。請刪除現有資料庫，然後重試。**
+當您自訂安裝 Azure AD Connect 並在 [**安裝必要元件**] 頁面上選取 [**使用現有的 SQL server** ] 選項時，您可能會遇到錯誤，指出**ADSync 資料庫已包含資料，而且無法覆寫。請移除現有的資料庫，然後再試一次。**
 
 ![錯誤](./media/how-to-connect-install-custom/error1.png)
 

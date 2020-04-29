@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0518c58abf156c718ee083ffadb0ef8e0a590252
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80331533"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect 和同盟
@@ -34,18 +34,18 @@ Azure Active Directory (Azure AD) Connect 可讓您使用內部部署 Active Dir
 | **Azure AD Connect 使用者登入選項** | |
 | [了解使用者登入選項](plan-connect-user-signin.md) |了解各種使用者登入選項及其如何影響 Azure 登入使用者體驗。 |
 | **使用 Azure AD Connect 安裝 AD FS** | |
-| [必要條件](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |請查看透過 Azure AD Connect 成功安裝 AD FS 安裝的必要條件。 |
+| [先決條件](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |請查看透過 Azure AD Connect 成功安裝 AD FS 安裝的必要條件。 |
 | [設定 AD FS 伺服器陣列](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |使用 Azure AD Connect 安裝新的 AD FS 伺服器陣列。 |
-| [使用備用登入識別碼 與 Azure AD 聯合](how-to-connect-fed-management.md#alternateid) | 使用替代登入識別碼設定同盟  |
+| [使用替代登入識別碼與 Azure AD 同盟](how-to-connect-fed-management.md#alternateid) | 使用替代登入識別碼設定同盟  |
 | **修改 AD FS 組態** | |
 | [修復信任](how-to-connect-fed-management.md#repairthetrust) |修復內部部署 AD FS 和 Office 365/Azure 之間目前的信任。 |
 | [新增 AD FS 伺服器](how-to-connect-fed-management.md#addadfsserver) |在初始安裝之後，增加 AD FS 伺服器來擴充 AD FS 伺服器陣列。 |
 | [新增 AD FS WAP 伺服器](how-to-connect-fed-management.md#addwapserver) |在初始安裝之後，增加 Web 應用程式 Proxy (WAP) 伺服器來擴充 AD FS 伺服器陣列。 |
 | [新增新的同盟網域](how-to-connect-fed-management.md#addfeddomain) |新增要與 Azure AD 同盟的其他網域。 |
-| [更新 TLS/SSL 憑證](how-to-connect-fed-ssl-update.md)| 更新 AD FS 場的 TLS/SSL 憑證。 |
+| [更新 TLS/SSL 憑證](how-to-connect-fed-ssl-update.md)| 更新 AD FS 伺服器陣列的 TLS/SSL 憑證。 |
 | [更新 Office 365 和 Azure AD 的同盟憑證](how-to-connect-fed-o365-certs.md)|使用 Azure AD 來更新 O365 憑證。|
 | **其他同盟組態** | |
-| [將多個 Azure AD 執行個體與單一 AD FS 執行個體同盟](how-to-connect-fed-single-adfs-multitenant-federation.md) | 將多個 Azure AD 和單一 AD FS 伺服器陣列建立同盟關係| 
+| [將多個 Azure AD 執行個體和單一 AD FS 執行個體建立同盟](how-to-connect-fed-single-adfs-multitenant-federation.md) | 將多個 Azure AD 和單一 AD FS 伺服器陣列建立同盟關係| 
 | [新增自訂公司標誌/圖例](how-to-connect-fed-management.md#customlogo) |指定要顯示於 AD FS 登入頁面的自訂標誌來修改登入體驗。 |
 | [新增登入說明](how-to-connect-fed-management.md#addsignindescription) |變更 AD FS 登入頁面上的登入說明。 |
 | [修改 AD FS 宣告規則](how-to-connect-fed-management.md#modclaims) |修改或新增對應至 Azure AD Connect 同步組態之 AD FS 中的宣告規則。 |

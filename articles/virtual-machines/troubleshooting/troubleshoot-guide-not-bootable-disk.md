@@ -1,6 +1,6 @@
 ---
-title: 啟動錯誤 = "這不是可引導磁片"
-description: 本文提供瞭解決磁片在 Azure 虛擬機器中無法啟動的問題的步驟
+title: 開機錯誤–「這不是可開機的磁片」
+description: 本文提供的步驟可解決 Azure 虛擬機器中磁片無法開機的問題
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,114 +15,114 @@ ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 9f0c6350b89dcfecefcadcc166f7af35abc4b128
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80300975"
 ---
-# <a name="boot-error--this-is-not-a-bootable-disk"></a>啟動錯誤 = 這不是可引導磁片
+# <a name="boot-error--this-is-not-a-bootable-disk"></a>開機錯誤–這不是可開機的磁片
 
-本文提供瞭解決磁片在 Azure 虛擬機器 （VM） 中無法啟動的問題的步驟。
+本文提供的步驟可解決 Azure 虛擬機器（VM）中的磁片無法啟動的問題。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
-當您使用[Boot 診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)來查看 VM 的螢幕截圖時，您將看到螢幕截圖顯示提示，提示顯示消息"這不是可引導磁片"。 請插入可啟動軟碟，然後按任意鍵重試..."。
+當您使用 [[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)] 來觀看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示了「這不是可開機的磁片」訊息的提示。 請插入可開機的軟碟，然後按任意鍵再試一次 ...」。
 
    圖 1
 
-   ![圖 1 顯示了消息 #"這不是可引導磁片。 請插入可啟動軟碟，然後按任意鍵重試..."。](media/troubleshoot-guide-not-bootable-disk/1.jpg)
+   ![[圖 1] 顯示「這不是可開機的磁片」訊息。 請插入可開機的軟碟，然後按任意鍵再試一次 ...」 *](media/troubleshoot-guide-not-bootable-disk/1.jpg)
 
 ## <a name="cause"></a>原因
 
-此錯誤訊息表示作業系統啟動進程找不到活動系統磁碟分割。 此錯誤還可能意味著啟動配置資料 （BCD） 存儲中缺少引用，從而阻止它定位 Windows 分區。
+此錯誤訊息表示 OS 開機程式找不到使用中的系統磁碟分割。 此錯誤也可能表示開機設定資料（BCD）存放區中遺漏了參照，使其無法找到 Windows 磁碟分割。
 
 ## <a name="solution"></a>解決方法
 
 ### <a name="process-overview"></a>程序概觀
 
-1. 創建和訪問修復 VM。
-2. 將分區狀態設置為"活動"。
-3. 修復磁碟分割。
-4. **建議**：在重建 VM 之前，請啟用串列主控台和記憶體傾印集合。
+1. 建立和存取修復 VM。
+2. 將分割區狀態設定為作用中。
+3. 修正磁碟分割。
+4. **建議**：重建 VM 之前，請先啟用序列主控台和記憶體傾印集合。
 5. 重建原始 VM。
 
    > [!NOTE]
-   > 遇到此啟動錯誤時，客體作業系統無法運行。 您將在離線模式下進行故障排除以解決此問題。
+   > 當遇到此開機錯誤時，虛擬作業系統無法運作。 您將會在離線模式中進行疑難排解，以解決此問題。
 
-### <a name="create-and-access-a-repair-vm"></a>創建和訪問修復 VM
+### <a name="create-and-access-a-repair-vm"></a>建立和存取修復 VM
 
-1. 使用[VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步驟 1-3 準備修復 VM。
+1. 使用[VM 修復命令](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)的步驟1-3 來準備修復 VM。
 2. 使用遠端桌面連線連接到修復 VM。
 
-### <a name="set-partition-status-to-active"></a>將分區狀態設置為活動
+### <a name="set-partition-status-to-active"></a>將分割區狀態設定為作用中
 
-第 1 代 VM 應首先驗證保存 BCD 存儲的作業系統分區是否標記為*活動*。 如果您有第 2 代 VM，請跳到修復[磁碟分割](#fix-the-disk-partition)，因為*狀態*標誌在後一代中被棄用。
+第1代 Vm 應先確認保存 BCD 存放區的 OS 分割區已標示為使用*中。* 如果您有第2代 VM，請直接跳到[修正磁碟分割](#fix-the-disk-partition)，因為在之後的世代中，*狀態*旗標已被取代。
 
-1. 打開提升的命令提示*符 （cmd.exe）。*
-2. 輸入*磁片部分*以啟動 DISKPART 工具。
-3. 輸入*清單磁片*以列出系統上的磁片並標識附加的 OS VHD。
-4. 找到連接的 OS VHD 後，輸入*sel 磁片 +* 以選擇磁片。  參見圖 2，其中磁片 1 是附加的 OS VHD。
+1. 開啟提升許可權的命令提示字元 *（cmd.exe）*。
+2. 輸入*diskpart*以啟動 diskpart 工具。
+3. 輸入*list disk*以列出系統上的磁片，並識別連結的 OS VHD。
+4. 一旦連接的 OS VHD，請輸入*sel disk #* 以選取磁片。  請參閱 [圖 2]，其中 Disk 1 是連接的 OS VHD。
 
    圖 2
 
-   ![圖 2 顯示了表中顯示清單磁片命令、磁片 0 和磁片 1 的輸出的 [DISKPART] 視窗。  還顯示 sel 磁片 1 命令的輸出，磁片 1 是所選磁片](media/troubleshoot-guide-not-bootable-disk/2.jpg)
+   ![[圖 2] 顯示的是 * DISKPART * 視窗，其中顯示資料表中顯示的清單磁片命令、磁片0和磁片1的輸出。  同時顯示 [sel disk 1] 命令的輸出，磁片1是選取的磁片](media/troubleshoot-guide-not-bootable-disk/2.jpg)
 
-5. 選擇磁片後，輸入*清單分區*以列出所選磁片的分區。
-6. 識別引導分區後，輸入*sel 分區 +* 以選擇分區。  通常引導分區的大小約為 350 MB。  參見圖 3，其中分區 1 是引導分區。
+5. 選取磁片後，請輸入 [*清單磁碟分割*]，列出所選磁片的磁碟分割。
+6. 一旦識別開機磁碟分割，請輸入*sel partition #* 以選取磁碟分割。  通常開機磁碟分割的大小大約是 350 MB。  請參閱 [圖 3]，其中磁碟分割1是開機磁碟分割。
 
    圖 3
 
-   ![圖 3 顯示了具有 [清單分區] 命令輸出的 [DISKPART] 視窗。 分區 1 和分區 2 顯示在表中。 當分區 1 是所選磁片時，它還顯示 [sel 分區 1] 命令的輸出。](media/troubleshoot-guide-not-bootable-disk/3.jpg)
+   ![[圖 3] 顯示 * DISKPART * 視窗，其中包含 * list partition * 命令的輸出。 資料分割1和資料分割2會顯示在資料表中。 當分割區1是選取的磁片時，它也會顯示 * sel partition 1 * 命令的輸出。](media/troubleshoot-guide-not-bootable-disk/3.jpg)
 
-7. 輸入"詳細分區"以檢查分區的狀態。 參見圖 4，其中分區為 *"活動：否*"或圖 5，其中分區為"活動：是"。
+7. 輸入「詳細資料分割」以檢查分割區的狀態。 請參閱 [圖 4]，其中分割區為作用中 *： [否*] 或 [圖 5]，其中分割區為「作用中：是」。
 
    圖 4
 
-   ![圖 4 顯示了 [詳細分區] 命令的輸出的 [DISKPART] 視窗，當分區 1 設置為 [活動：否] 時](media/troubleshoot-guide-not-bootable-disk/4.jpg)
+   ![[圖 4] 顯示 * DISKPART * 視窗，其中包含 * detail partition * 命令的輸出（當 Partition 1 設定為 * Active： No * 時）](media/troubleshoot-guide-not-bootable-disk/4.jpg)
 
    圖 5
 
-   ![圖 5 顯示了 [磁片部分] 視窗，其中輸出了 [詳細分區] 命令，當分區 1 設置為 [活動：是]時。](media/troubleshoot-guide-not-bootable-disk/5.jpg)
+   ![[圖 5] 顯示 [資料分割 1] 設定為 * [作用中：是] 時，包含 * detail partition * 命令輸出的 * DISKPART * 視窗。](media/troubleshoot-guide-not-bootable-disk/5.jpg)
 
-8. 如果分區**未處於活動狀態**，請輸入*活動*以更改*活動*標誌。
-9. 通過鍵入*詳細資訊分區*，檢查狀態更改是否正確完成。
+8. 如果分割區**不**在使用中，請輸入*active*來變更作用*中的旗*標。
+9. 輸入*詳細資料分割*，檢查狀態變更是否已正確完成。
 
    圖 6
 
-   ![圖 6 顯示了具有 [詳細分區] 命令輸出的磁片部分視窗，當分區 1 設置為 [活動：是]](media/troubleshoot-guide-not-bootable-disk/6.jpg)
+   ![[圖 6] 顯示 [資料分割 1] 設定為 * [作用中：是] 時，包含 * detail partition * 命令輸出的 diskpart 視窗](media/troubleshoot-guide-not-bootable-disk/6.jpg)
 
-10. 輸入*退出*以關閉 DISKPART 工具並保存配置更改。
+10. 輸入*exit*關閉 DISKPART 工具並儲存您的設定變更。
 
-### <a name="fix-the-disk-partition"></a>修復磁碟分割
+### <a name="fix-the-disk-partition"></a>修正磁碟分割
 
-1. 打開提升的命令提示符 （cmd.exe）。
-2. 使用以下命令在磁片上運行*CHKDSK*並修復錯誤：
+1. 開啟提升許可權的命令提示字元（cmd.exe）。
+2. 使用下列命令在磁片上執行*CHKDSK*並修正錯誤：
 
    `chkdsk <DRIVE LETTER>: /f`
 
-   添加"/f"命令選項將修復磁片上的任何錯誤。 請確保替換為<DRIVE LETTER>隨附的 OS VHD 的字母。
+   新增 '/f ' 命令選項將會修正磁片上的任何錯誤。 請務必將取代<DRIVE LETTER>為附加的 OS VHD 的字母。
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>建議：在重建 VM 之前，請啟用串列主控台和記憶體傾印集合
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>建議：重建 VM 之前，請先啟用序列主控台和記憶體傾印集合
 
-要啟用記憶體傾印集合和串列主控台，請運行以下腳本：
+若要啟用記憶體傾印收集和序列主控台，請執行下列腳本：
 
-1. 打開提升的命令提示會話（以管理員身份運行）。
+1. 開啟提升許可權的命令提示字元會話（以系統管理員身分執行）。
 2. 執行下列命令：
 
-   啟用串列主控台
+   啟用序列主控台
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON`
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-3. 驗證 OS 磁片上的可用空間是否與 VM 上的記憶體大小 （RAM） 相同。
+3. 確認 OS 磁片上的可用空間，與 VM 上的記憶體大小（RAM）一樣大。
 
-   如果 OS 磁片上沒有足夠的空間，則應更改將創建記憶體傾印檔的位置，並將其引用到連接到具有足夠可用空間的 VM 的任何資料磁片。 要更改位置，請將"%SystemRoot%"替換為以下命令中資料磁片的磁碟機號（例如"F："）。
+   如果 OS 磁片上沒有足夠的空間，您應該變更記憶體傾印檔案的建立位置，並將其指向任何連接至具有足夠可用空間之 VM 的資料磁片。 若要變更位置，請在下列命令中使用資料磁片的磁碟機號（例如 "F："）取代 "% SystemRoot%"。
 
-#### <a name="suggested-configuration-to-enable-os-dump"></a>啟用 OS 轉儲的建議配置
+#### <a name="suggested-configuration-to-enable-os-dump"></a>啟用 OS 轉儲的建議設定
 
-**載入損壞的 OS 磁片**：
+**載入中斷的 OS 磁片**：
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
@@ -142,10 +142,10 @@ ms.locfileid: "80300975"
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**卸載損壞的 OS 磁片：**
+**卸載中斷的 OS 磁片：**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
 ### <a name="rebuild-the-original-vm"></a>重建原始 VM
 
-使用[VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)重新組裝 VM。
+使用[Vm 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)來重新組裝 vm。

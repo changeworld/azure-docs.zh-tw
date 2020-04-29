@@ -1,5 +1,5 @@
 ---
-title: 為 Azure Cosmos 帳戶配置基於虛擬網路的訪問
+title: 針對 Azure Cosmos 帳戶設定以虛擬網路為基礎的存取
 description: 本文件將說明設定 Azure Cosmos DB 虛擬網路服務端點所需的步驟。
 author: markjbrown
 ms.service: cosmos-db
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mjbrown
 ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80366238"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>設定從虛擬網路 (VNet) 存取
@@ -40,7 +40,7 @@ ms.locfileid: "80366238"
 
 1. 若要將存取權授與現有虛擬網路的子網路，請在 [虛擬網路]**** 下選取 [新增現有 Azure 虛擬網路]****。
 
-1. 選取您要從中新增 Azure 虛擬網路的**訂用帳戶**。 選取要提供 Azure Cosmos DB 帳戶存取權的 Azure **虛擬網路**和**子網路**。 接下來，選取 [啟用]**** 以啟用具有 "Microsoft.AzureCosmosDB" 服務端點的選定網路。 完成後，選擇 **"添加**"。
+1. 選取您要從中新增 Azure 虛擬網路的**訂用帳戶**。 選取要提供 Azure Cosmos DB 帳戶存取權的 Azure **虛擬網路**和**子網路**。 接下來，選取 [啟用]**** 以啟用具有 "Microsoft.AzureCosmosDB" 服務端點的選定網路。 完成時，請選取 [**新增**]。
 
    ![選取虛擬網路和子網路](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
 
@@ -52,9 +52,9 @@ ms.locfileid: "80366238"
 > 若要啟用虛擬網路服務端點，您必須具備下列訂用帳戶權限：
 >   * 虛擬網路的訂用帳戶：網路參與者
 >   * Azure Cosmos DB 帳戶的訂用帳戶：DocumentDB 帳戶參與者
->   * 如果您的虛擬網路和 Azure Cosmos DB 帳戶位於不同的訂閱中，請確保具有虛擬網路的訂閱也已`Microsoft.DocumentDB`註冊資來源提供者。 要註冊資來源提供者，請參閱[Azure 資來源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)文章。
+>   * 如果您的虛擬網路和 Azure Cosmos DB 帳戶位於不同的訂用帳戶中，請確定具有虛擬網路的訂閱`Microsoft.DocumentDB`也已註冊資源提供者。 若要註冊資源提供者，請參閱[Azure 資源提供者和類型](../azure-resource-manager/management/resource-providers-and-types.md)一文。
 
-以下是向資來源提供者註冊訂閱的說明。
+以下是向資源提供者註冊訂用帳戶的指示。
 
 ### <a name="configure-a-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>對新的 Azure 虛擬網路和子網路設定服務端點
 
@@ -68,7 +68,7 @@ ms.locfileid: "80366238"
 
    ![選取虛擬網路與新虛擬網路的子網路](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-如果 Azure Cosmos DB 帳戶由 Azure 認知搜索等其他 Azure 服務使用，或者從流分析或 Power BI 訪問，則可以通過選擇**從全域 Azure 資料中心中的"接受連接**"來允許訪問。
+如果您的 Azure Cosmos DB 帳戶由其他 Azure 服務（例如 Azure 認知搜尋）使用，或是從串流分析或 Power BI 存取，則您可以選取 [**接受來自全球 Azure 資料中心內的**連線] 來允許存取。
 
 若要確保您可以從入口網站存取 Azure Cosmos DB 計量，您必須啟用 [允許從 Azure 入口網站存取]**** 選項。 若要深入了解這些選項，請參閱[設定 IP 防火牆](how-to-configure-firewall.md)一文。 啟用存取之後，請選取 [儲存]**** 以儲存設定。
 
@@ -120,14 +120,14 @@ ms.locfileid: "80366238"
    $subnetId = $vnet.Id + "/subnets/" + $subnetName
    ```
 
-1. 準備宇宙資料庫虛擬網路規則
+1. 準備 Cosmos DB 虛擬網路規則
 
    ```powershell
    $vnetRule = New-AzCosmosDBVirtualNetworkRule `
       -Id $subnetId
    ```
 
-1. 使用新的虛擬網路終結點配置更新 Azure Cosmos DB 帳戶屬性： 
+1. 使用新的虛擬網路端點設定來更新 Azure Cosmos DB 帳戶屬性： 
 
    ```powershell
    $accountName = "<Cosmos DB account name>"
@@ -152,11 +152,11 @@ ms.locfileid: "80366238"
 
 ## <a name="configure-a-service-endpoint-by-using-the-azure-cli"></a><a id="configure-using-cli"></a>使用 Azure CLI 來設定服務端點
 
-如果子網已為其配置，則可以為服務終結點配置 Azure Cosmos 帳戶。 還可以在 Cosmos 帳戶上啟用服務終結點，其中子網尚未為其配置，然後在以後配置子網時開始工作。 這種靈活性允許同時無法訪問 Cosmos 帳戶和虛擬網路資源的管理員使其配置彼此獨立。
+如果您已針對服務端點建立或更新 Azure Cosmos 帳戶，則可以在稍後加以設定。 您也可以在尚未對其設定子網的 Cosmos 帳戶上啟用服務端點，然後在稍後設定子網時，將會開始工作。 這項彈性可讓沒有 Cosmos 帳戶和虛擬網路資源存取權的系統管理員，彼此獨立進行設定。
 
-### <a name="create-a-new-cosmos-account-and-connect-it-to-a-back-end-subnet-for-a-new-virtual-network"></a>創建新的 Cosmos 帳戶並將其連接到新虛擬網路的後端子網
+### <a name="create-a-new-cosmos-account-and-connect-it-to-a-back-end-subnet-for-a-new-virtual-network"></a>建立新的 Cosmos 帳戶，並將它連線到新虛擬網路的後端子網
 
-在此示例中，虛擬網路和子網在創建時啟用了服務終結點。
+在此範例中，建立虛擬網路和子網時，會使用已啟用的服務端點。
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -200,9 +200,9 @@ az cosmosdb create \
    --virtual-network-rules $svcEndpoint
 ```
 
-### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>獨立地將 Cosmos 帳戶連接到後端子網
+### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>將 Cosmos 帳戶獨立連線並設定為後端子網
 
-此示例旨在演示如何將 Azure Cosmos 帳戶連接到現有新虛擬網路，其中子網尚未配置為服務終結點。 這是通過使用 參數來完成的`--ignore-missing-vnet-service-endpoint`。 這允許 Cosmos 帳戶的配置在完成虛擬網路子網的配置之前完成，而不會出錯。 子網路設定完成後，便可透過已設定的子網路存取 Cosmos 帳戶。
+此範例的目的是要說明如何將 Azure Cosmos 帳戶連線到現有的新虛擬網路，其中子網尚未針對服務端點進行設定。 這項作業是使用`--ignore-missing-vnet-service-endpoint`參數來完成。 這可讓 Cosmos 帳戶的設定在虛擬網路的子網的設定完成之前，不會發生錯誤。 子網路設定完成後，便可透過已設定的子網路存取 Cosmos 帳戶。
 
 ```azurecli-interactive
 # Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
@@ -260,13 +260,13 @@ az network vnet subnet update \
 
 ## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>從 IP 防火牆規則移轉至虛擬網路 ACL
 
-要將 Azure Cosmos DB 帳戶從使用 IP 防火牆規則遷移到使用虛擬網路服務終結點，請使用以下步驟。
+若要將 Azure Cosmos DB 帳戶從使用 IP 防火牆規則遷移到使用虛擬網路服務端點，請使用下列步驟。
 
-為子網的服務終結點配置 Azure Cosmos DB 帳戶後，來自該子網的請求將發送到 Azure Cosmos DB，其中包含虛擬網路和子網源資訊，而不是源公共 IP 位址。 這些請求將不再與 Azure Cosmos DB 帳戶上配置的 IP 篩選器匹配，因此需要以下步驟來避免停機。
+為子網的服務端點設定 Azure Cosmos DB 帳戶之後，來自該子網的要求會傳送至具有虛擬網路和子網來源資訊的 Azure Cosmos DB，而不是來源公用 IP 位址。 這些要求將不再符合 Azure Cosmos DB 帳戶上設定的 IP 篩選器，這也是為什麼需要進行下列步驟以避免停機的原因。
 
-在繼續操作之前，請使用上面顯示的步驟在虛擬網路和子網上啟用 Azure Cosmos DB 服務終結點，這些步驟"為虛擬網路的現有子網啟用服務終結點"。
+在繼續之前，請使用上述的步驟，在虛擬網路和子網上啟用 Azure Cosmos DB 服務端點，如啟用虛擬網路的現有子網的服務端點中所示。
 
-1. 獲取虛擬網路和子網資訊：
+1. 取得虛擬網路和子網資訊：
 
    ```powershell
    $resourceGroupName = "myResourceGroup"
@@ -281,14 +281,14 @@ az network vnet subnet update \
    $subnetId = $vnet.Id + "/subnets/" + $subnetName
    ```
 
-1. 為 Azure Cosmos DB 帳戶準備新的虛擬網路規則物件：
+1. 準備 Azure Cosmos DB 帳戶的新虛擬網路規則物件：
 
    ```powershell
    $vnetRule = New-AzCosmosDBVirtualNetworkRule `
       -Id $subnetId
    ```
 
-1. 更新 Azure Cosmos DB 帳戶以啟用從子網訪問服務終結點：
+1. 更新 Azure Cosmos DB 帳戶，以從子網啟用服務端點存取：
 
    ```powershell
    Update-AzCosmosDBAccount `
@@ -298,9 +298,9 @@ az network vnet subnet update \
       -VirtualNetworkRuleObject @($vnetRule)
    ```
 
-1. 對從子網訪問的所有 Azure Cosmos DB 帳戶重複上述步驟。
+1. 針對從子網存取的所有 Azure Cosmos DB 帳戶重複上述步驟。
 
-1. 從 Azure Cosmos DB 帳戶的防火牆規則中刪除子網的 IP 防火牆規則。
+1. 從 Azure Cosmos DB 帳戶的防火牆規則中移除子網的 IP 防火牆規則。
 
 ## <a name="next-steps"></a>後續步驟
 

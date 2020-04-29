@@ -1,5 +1,5 @@
 ---
-title: 診斷 VM 網路路由問題 - Azure CLI
+title: 診斷 VM 網路路由問題-Azure CLI
 titleSuffix: Azure Network Watcher
 description: 在本文章中，您將了解如何使用 Azure 網路監看員的下一個躍點功能，以診斷虛擬機器網路路由問題。
 services: network-watcher
@@ -18,10 +18,10 @@ ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: ''
 ms.openlocfilehash: ae139ea7aca7c3896fcd7b0acf2bf6673490a2f4
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382897"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>診斷虛擬機器網路路由問題 - Azure CLI
@@ -32,17 +32,17 @@ ms.locfileid: "80382897"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果選擇在本地安裝和使用 Azure CLI，則本文要求您運行 Azure CLI 版本 2.0.28 或更高版本。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 驗證 Azure CLI 版本後，`az login`運行以創建與 Azure 的連接。 本文中的 Azure CLI 命令格式化為在 Bash 外殼中運行。
+如果您選擇在本機安裝和使用 Azure CLI，本文會要求您執行 Azure CLI 版本2.0.28 版或更新版本。 若要尋找已安裝的版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。 驗證 Azure CLI 版本之後，請執行 `az login` 以建立與 Azure 的連線。 本文中的 Azure CLI 命令會格式化為在 Bash shell 中執行。
 
 ## <a name="create-a-vm"></a>建立 VM
 
-您必須先建立資源群組來包含 VM，才能建立 VM。 使用 [az group create](/cli/azure/group#az-group-create) 來建立資源群組。 下面的示例在*東部*位置創建名為*myResourceGroup*的資源組：
+您必須先建立資源群組來包含 VM，才能建立 VM。 使用 [az group create](/cli/azure/group#az-group-create) 來建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-創建具有[az vm 的](/cli/azure/vm#az-vm-create)VM。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。 下面的示例創建名為*myVm 的 VM*：
+使用 [az vm create](/cli/azure/vm#az-vm-create) 建立 VM。 如果預設金鑰位置中還沒有 SSH 金鑰，此命令將會建立這些金鑰。 若要使用一組特定金鑰，請使用 `--ssh-key-value` 選項。 下列範例會建立名為 myVm  的 VM：
 
 ```azurecli-interactive
 az vm create \
@@ -52,7 +52,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-建立 VM 需要幾分鐘的時間。 在創建 VM 並返回輸出之前，不要繼續執行其餘步驟。
+建立 VM 需要幾分鐘的時間。 在建立 VM 且 Azure CLI 傳回輸出之前，請勿繼續進行其餘步驟。
 
 ## <a name="test-network-communication"></a>測試網路通訊
 
@@ -85,7 +85,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-幾秒鐘後，輸出會通知您**下一個HopType**是**Internet，** 並且**路由TableId**是**系統路由**。 此結果可讓您知道通往目的地的路由是有效的。
+幾秒鐘之後，輸出就會通知您**nextHopType**是**網際網路**，而**routeTableId**則是**系統路由**。 此結果可讓您知道通往目的地的路由是有效的。
 
 測試從 VM 輸出至 172.31.0.100 的通訊：
 
@@ -99,7 +99,7 @@ az network watcher show-next-hop \
   --out table
 ```
 
-返回的輸出通知您 **"無**"是**下一個 HopType，** 並且**路由 TableId**也是**系統路由**。 此結果可讓您知道，雖然通往目的地的系統路由是有效的，但沒有下一個躍點可將流量路由至目的地。
+傳回的**輸出會通知您沒有** **NextHopType**，而且**routeTableId**也是**系統路由**。 此結果可讓您知道，雖然通往目的地的系統路由是有效的，但沒有下一個躍點可將流量路由至目的地。
 
 ## <a name="view-details-of-a-route"></a>檢視路由的詳細資料
 
