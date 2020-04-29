@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417214"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory 中的篩選活動
@@ -39,14 +39,14 @@ ms.locfileid: "81417214"
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-NAME | `Filter` 活動的名稱。 | String | 是
+名稱 | `Filter` 活動的名稱。 | String | 是
 type | 必須設定為**篩選**。 | String | 是
 condition (條件) | 要用來篩選輸入的條件。 | 運算是 | 是
 項目 | 應套用篩選條件的輸入陣列。 | 運算是 | 是
 
 ## <a name="example"></a>範例
 
-在此範例中，管線有兩個活動：**篩選**與 **ForEach**。 篩選活動設定為會對值大於 3 之項目的輸入陣列進行篩選。 然後,"ForEach"活動遍越對篩選的值進行遍向,並將變數**測試**設置為當前值。
+在此範例中，管線有兩個活動：**篩選**與 **ForEach**。 篩選活動設定為會對值大於 3 之項目的輸入陣列進行篩選。 ForEach 活動接著會逐一查看篩選的值，並將變數**測試**設定為目前的值。
 
 ```json
 {

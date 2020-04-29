@@ -1,6 +1,6 @@
 ---
 title: 資料載入最佳做法
-description: 將資料載入 SynapsE SQL 的建議和效能最佳化
+description: 將資料載入 Synapse SQL 的建議和效能優化
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: b80fe79a2c27de7dbaaa2edccf7b4598c6c63f47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431042"
 ---
-# <a name="best-practices-for-loading-data-for-data-warehousing"></a>增入資料主目錄資料的最佳做法
+# <a name="best-practices-for-loading-data-for-data-warehousing"></a>載入資料倉儲資料的最佳作法
 
-增入資料的建議和效能最佳化
+載入資料的建議和效能優化
 
 ## <a name="preparing-data-in-azure-storage"></a>在 Azure 儲存體中準備資料
 
@@ -36,9 +36,9 @@ PolyBase 無法載入具有超過 1 百萬個位元組之資料的資料列。 �
 
 ## <a name="running-loads-with-enough-compute"></a>使用足夠的計算資源執行載入
 
-如需最快的載入速度，一次只執行一項載入作業。 如果不可行，請同時執行數量最少的載入。 如果預期載入作業會很大,請考慮在載入之前向上擴展 SQL 池。
+如需最快的載入速度，一次只執行一項載入作業。 如果不可行，請同時執行數量最少的載入。 如果您預期會有大量載入作業，請考慮在負載前相應增加您的 SQL 集區。
 
-若要以適當的計算資源執行載入，請建立為了執行載入而指定的載入使用者。 將每個載入使用者分配給特定的資源類或工作負荷組。 要運行負載,請作為載入使用者之一登錄,然後運行負載。 載入會利用使用者的資源類別來執行。  相較於嘗試變更使用者的資源類別，以符合目前的資源類別需求，這個方法比較簡單。
+若要以適當的計算資源執行載入，請建立為了執行載入而指定的載入使用者。 將每個載入使用者指派給特定的資源類別或工作負載群組。 若要執行負載，請以其中一個載入使用者身分登入，然後執行負載。 載入會利用使用者的資源類別來執行。  相較於嘗試變更使用者的資源類別，以符合目前的資源類別需求，這個方法比較簡單。
 
 ### <a name="example-of-creating-a-loading-user"></a>建立載入使用者的範例
 
@@ -58,7 +58,7 @@ PolyBase 無法載入具有超過 1 百萬個位元組之資料的資料列。 �
    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
 ```
 
-要使用靜態 RC20 資源類的資源運行負載,請登錄載入器RC20並運行負載。
+若要使用 staticRC20 資源類別的資源來執行負載，請以 LoaderRC20 的身分登入並執行負載。
 
 在靜態資源類別，而不是動態資源類別之下執行載入。 不論您的[資料倉儲單位](resource-consumption-models.md)為何，使用靜態資源類別可保證相同的資源。 如果您使用動態資源類別，資源就會根據您的服務層級而有所不同。 對於動態類別，較低服務層級表示您可能需要對您的載入使用者使用較大的資源類別。
 
@@ -73,7 +73,7 @@ PolyBase 無法載入具有超過 1 百萬個位元組之資料的資料列。 �
    DENY CONTROL ON SCHEMA :: schema_B TO user_A;
 ```
 
-User_A和user_B現在被鎖定在其他部門的架構之外。
+User_A 和 user_B 現在已從其他部門的架構鎖定。
 
 ## <a name="loading-to-a-staging-table"></a>載入至暫存表格
 
@@ -88,9 +88,9 @@ User_A和user_B現在被鎖定在其他部門的架構之外。
 - 若要確保載入使用者有足夠的記憶體可達到最大的壓縮率，請使用是中型或大型資源類別成員的載入使用者。
 - 載入足夠的資料列，完全填滿新的資料列群組。 在大量載入期間，每 1,048,576 個資料列會以完整資料列群組形式直接壓縮到資料行存放區中。 若載入的資料列少於 102,400 個，則會將資料列傳送至差異存放區，其中的資料列會保存在 b 型樹狀結構索引中。 如果您載入太少資料列，這些資料列可能全都會移至差異存放區，並不會立即壓縮成資料行存放區格式。
 
-## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SQLBulkCopy API 或 BCP 時增加批次處理大小
+## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>使用 SQLBulkCopy API 或 BCP 時增加批次大小
 
-如前所述,使用 PolyBase 載入將提供使用 Synapse SQL 池的最高輸送量。 如果無法使用 PolyBase 載入,並且必須使用 SQLBulkCopy API(或 BCP),則應考慮增加批次處理大小以提供更好的輸送量 - 一個很好的經驗法則是 100K 到 1M 行之間的批次處理大小。
+如先前所述，使用 PolyBase 載入會提供 Synapse SQL 集區的最高輸送量。 如果您無法使用 PolyBase 來載入，且必須使用 SQLBulkCopy API （或 BCP），您應該考慮增加批次大小以獲得更好的輸送量，這是一個很好的經驗法則，這是批次大小介於100K 到1M 個數據列之間。
 
 ## <a name="handling-loading-failures"></a>處理載入失敗
 
@@ -106,9 +106,9 @@ User_A和user_B現在被鎖定在其他部門的架構之外。
 
 ## <a name="creating-statistics-after-the-load"></a>建立載入後的統計資料
 
-為了改善查詢效能，在首次載入資料或資料發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。  這可以手動完成,也可以啟用[自動建立統計資訊](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+為了改善查詢效能，在首次載入資料或資料發生重大變更之後，建立所有資料表的所有資料行統計資料非常重要。  這可以手動完成，也可以啟用[自動建立統計資料](../sql-data-warehouse/sql-data-warehouse-tables-statistics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
-如需統計資料的詳細說明，請參閱[統計資料](develop-tables-statistics.md)。 下面的範例示範如何手動創建Customer_Speed表的五列的統計資訊。
+如需統計資料的詳細說明，請參閱[統計資料](develop-tables-statistics.md)。 下列範例顯示如何在 Customer_Speed 資料表的五個數據行上手動建立統計資料。
 
 ```sql
 create statistics [SensorKey] on [Customer_Speed] ([SensorKey]);

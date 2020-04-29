@@ -1,6 +1,6 @@
 ---
 title: 使用預存程序
-description: 通過在 Synapse SQL 池中實現儲存過程來開發解決方案的提示。
+description: 在 Synapse SQL 集區中執行預存程式以開發解決方案的秘訣。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,40 +11,40 @@ ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 3ffdf7a66c2562b43fc2ed02bb088ab1095118fb
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416166"
 ---
-# <a name="using-stored-procedures-in-synapse-sql-pool"></a>在 Synapse SQL 池中使用儲存過程
+# <a name="using-stored-procedures-in-synapse-sql-pool"></a>在 Synapse SQL 集區中使用預存程式
 
-本文提供了透過實現儲存過程來開發SQL池解決方案的提示。
+本文提供藉由執行預存程式來開發 SQL 集區解決方案的秘訣。
 
 ## <a name="what-to-expect"></a>未來展望
 
-SQL 池支援 SQL Server 中使用的許多 T-SQL 功能。 更重要的是有相應放大的特定功能，您可用來將解決方案效能最大化。
+SQL 集區支援 SQL Server 中使用的許多 T-sql 功能。 更重要的是有相應放大的特定功能，您可用來將解決方案效能最大化。
 
-此外,為了説明您保持 SQL 池的規模和性能,還有其他具有行為差異的功能和功能。
+此外，為了協助您維護 SQL 集區的規模和效能，還有其他具有行為差異的特性和功能。
 
 ## <a name="introducing-stored-procedures"></a>預存程序簡介
 
-儲存過程是封裝 SQL 代碼的好方法,該代碼存儲在 SQL 池數據附近。 存儲過程還説明開發人員通過將代碼封裝到可管理單元中來模組化其解決方案,從而促進更高的代碼可重用性。 每個預存程序也可接受參數，使其更具彈性。
+預存程式是封裝 SQL 程式碼的絕佳方法，它會儲存在您的 SQL 集區資料附近。 預存程式也協助開發人員藉由將程式碼封裝成可管理的單位來模組化其解決方案，進而促進更好的程式碼重複使用 每個預存程序也可接受參數，使其更具彈性。
 
-SQL 池提供了簡化和簡化的儲存過程實現。 與 SQL Server 相比,最大的區別是存儲過程不是預編譯代碼。
+SQL 集區提供簡化且精簡的預存程式執行。 相較于 SQL Server，最大的差異是預存程式不是預先編譯器代碼。
 
-通常,對於數據倉庫,與針對大量數據卷運行查詢所需的時間相比,編譯時間較小。 更重要的是確保存儲過程代碼正確優化為大型查詢。
+一般來說，對於資料倉儲而言，編譯時間與針對大型資料磁片區執行查詢所花費的時間很小。 請務必確保預存程式程式碼已針對大型查詢進行正確的優化。
 
 > [!TIP]
-> 目標是要節省時數、分鐘數和秒數，而不是毫秒數。 因此,將儲存過程視為 SQL 邏輯的容器會很有説明。
+> 目標是要節省時數、分鐘數和秒數，而不是毫秒數。 因此，將預存程式視為 SQL 邏輯的容器是很有説明的。
 
-當 SQL 池執行儲存過程時,SQL 語句將在運行時進行分析、轉換和優化。 在此過程中，每個陳述式都會轉換為分散式查詢。 針對資料執行的 SQL 程式碼與提交的查詢不同。
+當 SQL 集區執行您的預存程式時，SQL 語句會在執行時間進行剖析、轉譯和優化。 在此過程中，每個陳述式都會轉換為分散式查詢。 針對資料執行的 SQL 程式碼與提交的查詢不同。
 
 ## <a name="nesting-stored-procedures"></a>巢狀預存程序
 
 當預存程序呼叫其他預存程序或執行動態 SQL 時，內部預存程序或程式碼叫用據稱就是巢狀。
 
-SQL 池最多支援八個嵌套級別。 相反,SQL Server 中的嵌套級別為 32。
+SQL 集區最多支援八個嵌套層級。 相反地，SQL Server 中的嵌套層級為32。
 
 最上層預存程序呼叫等同於巢狀層級 1。
 
@@ -72,15 +72,15 @@ GO
 EXEC prc_nesting
 ```
 
-SQL 池目前不支援[@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 因此,您需要跟蹤嵌套級別。 您不太可能超過八個嵌套級別限制。 但是,如果您這樣做,則需要重新編寫代碼以適合此限制中的嵌套級別。
+SQL 集區目前不[支援@NESTLEVEL@](/sql/t-sql/functions/nestlevel-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 因此，您必須追蹤「嵌套」層級。 您不太可能會超過八個嵌套層級的限制。 但是，如果您這樣做，您必須重新修改程式碼，以符合此限制內的嵌套層級。
 
 ## <a name="insertexecute"></a>INSERT..EXECUTE
 
-SQL 池不允許使用 INSERT 語句使用儲存過程的結果集。 但是,可以使用替代方法。 如需範例，請參閱[暫存資料表](sql-data-warehouse-tables-temporary.md)上的文章。
+SQL 集區不允許您使用含有 INSERT 語句之預存程式的結果集。 不過，您可以使用另一種方法。 如需範例，請參閱[暫存資料表](sql-data-warehouse-tables-temporary.md)上的文章。
 
 ## <a name="limitations"></a>限制
 
-Transact-SQL 儲存過程的某些方面未在 SQL 池中實現,如下所示:
+Transact-sql 預存程式的某些層面並未在 SQL 集區中執行，如下所示：
 
 * 暫存預存程序
 * 編號預存程序

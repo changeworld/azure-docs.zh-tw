@@ -1,6 +1,6 @@
 ---
-title: 將暫存表與 Synapse SQL 一起使用
-description: 在 Synapse SQL 中使用暫時表的基本指南。
+title: 搭配 Synapse SQL 使用臨時表
+description: 在 Synapse SQL 中使用臨時表的基本指引。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,25 +11,25 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 090f453771dba6f537ad60605c6e9b96f3ca9957
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428754"
 ---
-# <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的暫存表
+# <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的臨時表
 
-本文包含使用臨時表的基本指南,並重點介紹了 Synapse SQL 中的會話級臨時表的原則。 
+本文包含使用臨時表的基本指引，並強調 Synapse SQL 中工作階段層級臨時表的原則。 
 
-SQL 池和 SQL 按需(預覽)資源都可以利用臨時表。 SQL 按需具有本文末尾討論的限制。 
+SQL 集區和 SQL 隨選（預覽）資源都可以利用臨時表。 SQL 隨選的限制會在本文結尾處討論。 
 
 ## <a name="what-are-temporary-tables"></a>什麼是暫存資料表？
 
-臨時表在處理數據時很有用,尤其是在轉換期間,中間結果是暫時的。 使用 Synapse SQL,臨時表存在於工作階段級別。  它們僅在創建它們的會話中可見。 因此,當會話註銷時,它們會自動丟棄。 
+臨時表在處理資料時很有用，尤其是在轉換期間，中繼結果是暫時性的。 在 Synapse SQL 中，臨時表存在於工作階段層級。  只有在建立它們的會話才會看到它們。 如此一來，當該會話登出時，就會自動卸載它們。 
 
-## <a name="temporary-tables-in-sql-pool"></a>SQL 池中的暫時
+## <a name="temporary-tables-in-sql-pool"></a>SQL 集區中的臨時表
 
-在 SQL 池資源中,臨時表提供性能優勢,因為它們的結果寫入本地存儲而不是遠端存儲。
+在 SQL 集區資源中，臨時表會提供效能優勢，因為它們的結果會寫入本機而不是遠端儲存體。
 
 ### <a name="create-a-temporary-table"></a>建立暫存資料表
 
@@ -99,7 +99,7 @@ GROUP BY
 > 
 
 ### <a name="dropping-temporary-tables"></a>捨棄暫存資料表
-建立新的工作階段時，不應該存在任何暫存資料表。  但是,如果您調用的相同儲存過程建立具有相同名稱的個臨時過程,以確保語句`CREATE TABLE`成功,請使用以下簡單存在前檢查`DROP`: 
+建立新的工作階段時，不應該存在任何暫存資料表。  不過，如果您呼叫的相同預存程式會建立具有相同名稱的臨時表，若要確保`CREATE TABLE`語句成功，請搭配使用簡單的預先存在檢查： `DROP` 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -108,16 +108,16 @@ BEGIN
 END
 ```
 
-對於編碼一致性,最好將此模式同時用於表和臨時表。  完成臨時表後,最好使用`DROP TABLE`刪除臨時表。  
+針對程式碼一致性，將此模式用於資料表和臨時表是很好的作法。  當您完成使用臨時表時， `DROP TABLE`也最好使用來移除它們。  
 
-在存儲過程開發中,通常可以看到放置命令在過程結束時捆綁在一起,以確保清理這些物件。
+在預存程式開發中，通常會在程式結束時看到連結在一起的 drop 命令，以確保清除這些物件。
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
 ### <a name="modularizing-code"></a>模組化程式碼
-臨時表可以在用戶會話的任意位置使用。 然後可以利用此功能來説明您模組化應用程式代碼。  為了演示,以下儲存過程將生成 DDL 以按統計資訊名稱更新資料庫中的所有統計資訊:
+在使用者會話中的任何位置都可以使用臨時表。 如此一來，就可以利用這項功能來協助您模組化應用程式的程式碼。  為了示範，下列預存程式會產生 DDL，以依據統計資料名稱來更新資料庫中的所有統計資料：
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -191,11 +191,11 @@ FROM    t1
 GO
 ```
 
-在此階段,發生的唯一操作是創建生成#stats_ddl臨時表的存儲過程。  如果存儲過程已存在,則#stats_ddl。 如果會話中運行多次,此丟棄可確保它不會失敗。  
+在這個階段，唯一發生的動作是建立會產生 #stats_ddl 臨時表的預存程式。  預存程式會卸載 #stats_ddl （如果已經存在）。 如果在會話中執行一次以上，此卸載可確保它不會失敗。  
 
-由於存儲過程末尾沒有`DROP TABLE`a,因此當存儲過程完成時,創建的表將保留,並且可以在存儲過程之外讀取。  
+因為預存程式`DROP TABLE`結尾沒有，當預存程式完成時，建立的資料表會保留，而且可以在預存程式之外讀取。  
 
-與其他 SQL Server 資料庫相比,Synapse SQL 允許您在創建它的過程之外使用臨時表。  通過 SQL 池創建的臨時表可以在會話內的**任意位置**使用。 因此,您將擁有更模組化和可管理的代碼,如下示例所示:
+相較于其他 SQL Server 資料庫，Synapse SQL 可讓您在建立它的程式以外使用臨時表。  透過 SQL 集區建立的臨時表可以在會話內的**任何位置**使用。 因此，您將會有更多模組化和可管理的程式碼，如下列範例所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -218,19 +218,19 @@ DROP TABLE #stats_ddl;
 
 ### <a name="temporary-table-limitations"></a>暫存資料表限制
 
-SQL 池對於臨時表確實有一些實現限制:
+SQL 集區對臨時表有幾個執行限制：
 
-- 僅支援會話作用域的臨時表。  不支援全域臨時表。
-- 無法在臨時表上創建檢視。
-- 只能使用哈希或迴圈分佈創建臨時表。  不支援複製的臨時表分發。 
+- 僅支援會話範圍的臨時表。  不支援全域臨時表。
+- 無法在臨時表上建立 Views。
+- 只能使用雜湊或迴圈配置資源散發來建立臨時表。  不支援複寫的臨時表散發。 
 
-## <a name="temporary-tables-in-sql-on-demand-preview"></a>SQL 依需表(預覽)
+## <a name="temporary-tables-in-sql-on-demand-preview"></a>隨選 SQL 中的臨時表（預覽）
 
-支援 SQL 按需中的臨時表,但其使用範圍有限。 它們不能用於目標文件的查詢。 
+支援 SQL 隨選中的臨時表，但其使用方式有限。 它們不能用在目標檔案的查詢中。 
 
-例如,不能將來自存儲檔中的數據聯接暫時表。 臨時表的數量限制為 100,其總大小限制為 100MB。
+例如，您無法聯結具有儲存體中檔案資料的臨時表。 臨時表的數目限制為100，而其大小總計限制為 100 MB。
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解有關開發表的更多內容,請參閱[使用 Synapse SQL 資源設計表](develop-tables-overview.md)一文。
+若要深入瞭解如何開發資料表，請參閱[使用 SYNAPSE SQL 資源設計資料表](develop-tables-overview.md)一文。
 

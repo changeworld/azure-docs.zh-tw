@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2018
 ms.openlocfilehash: e6158938d01b6e5da74ed046d2a74e0dfd827f47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417907"
 ---
-# <a name="execute-wait-activity-in-azure-data-factory"></a>在 Azure 資料工廠執行等候活動
+# <a name="execute-wait-activity-in-azure-data-factory"></a>執行 Azure Data Factory 中的 wait 活動
 在管線中使用 Wait (等待) 活動時，管線便會等待一段指定的時間，然後再繼續執行後續的活動。 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "81417907"
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-NAME | `Wait` 活動的名稱。 | String | 是
+名稱 | `Wait` 活動的名稱。 | String | 是
 type | 必須設為 **Wait**。 | String | 是
 waitTimeInSeconds | 管線繼續進行處理之前所等待的秒數。 | 整數 | 是
 

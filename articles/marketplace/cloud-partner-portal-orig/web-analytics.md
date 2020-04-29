@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: bd6d6375b19689c582c0f129378c76936e624e04
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416273"
 ---
 <a name="web-analytics"></a>Web 分析
@@ -70,7 +70,7 @@ ms.locfileid: "81416273"
     2.  登陸頁面 URL = ```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
 3. 使用者按一「嘗試我的產品」連結並連到 AppSource。
     1. 轉介 URL =  ```https://contoso.com/?utm_campaign=MyCampaignAdName&utm_source=MySourceAdName```
-    2. 登入頁面網**址 (\_確保此\_URL 已新增到此網址的 utm 市場活動來源和 utm 源**) |```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**```
+    2. 登陸頁面 URL （**請確定此 url 已將\_utm 行銷活動\_和 utm 來源新增至此 url**） =```https://appsource.microsoft.com/product/dynamics-365/contoso.offername?**utm\_campaign=MyCampaignAdName&utm\_source=MySourceAdName**```
 
 <a name="how-to-evaluate-the-success-of-a-campaign"></a>如何評估行銷活動是否成功
 -----------------------------------------

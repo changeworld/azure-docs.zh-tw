@@ -1,6 +1,6 @@
 ---
-title: Azure 資料工廠中的鑲木地板格式
-description: 本主題介紹如何在 Azure 數據工廠中處理鑲木地板格式。
+title: Azure Data Factory 中的 Parquet 格式
+description: 本主題說明如何處理 Azure Data Factory 中的 Parquet 格式。
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,33 +10,33 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
 ms.openlocfilehash: 223b1b996b82acaa753eb55723e251dc5901bbec
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417703"
 ---
-# <a name="parquet-format-in-azure-data-factory"></a>Azure 資料工廠中的鑲木地板格式
+# <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory 中的 Parquet 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-當您要**解析 Parquet 檔或將資料寫入 Parquet 格式時,** 請按照本文進行操作。 
+當您想要**剖析 Parquet 檔案，或將資料寫入 Parquet 格式**時，請遵循這篇文章。 
 
-支援以下連接器的 Parquet 格式[:Amazon S3、Azure](connector-amazon-simple-storage-service.md) [Blob、Azure 資料儲存湖儲存第 1 代](connector-azure-data-lake-store.md)[、Azure 資料儲存湖儲存第 2 代](connector-azure-data-lake-storage.md)[、Azure 檔案儲存](connector-azure-file-storage.md),[檔案系統](connector-file-system.md)[、FTP、Google](connector-ftp.md)[雲端儲存](connector-google-cloud-storage.md)[、HDFS、HTTP](connector-hdfs.md)和[SFTP。](connector-sftp.md) [Azure Blob](connector-azure-blob-storage.md) [HTTP](connector-http.md)
+下列連接器支援 Parquet 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure 檔案儲存體](connector-azure-file-storage.md)、[檔案系統](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Parquet 數據集支援的屬性清單。
+如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Parquet 資料集所支援的屬性清單。
 
 | 屬性         | 描述                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 資料集的類型屬性必須設定為**Parquet**。 | 是      |
-| location         | 檔的位置設置。 每個基於檔的連接器都有自己的位置類型和受支援的屬性。 `location` **請參考連接器文章 ->数据集属性部分的详细信息**。 | 是      |
-| 壓縮碼 | 寫入 Parquet 檔時使用的壓縮編解碼器。 從 Parquet 檔案讀取時,資料工廠根據檔元數據自動確定壓縮編解碼器。<br>支援的類型是「**無****」,「gzip」,「快速****snappy**」(預設)和 **「lzo」。。** 注意 目前複製活動不支援 LZO 讀取/寫入 Parquet 檔。 | 否       |
+| location         | 檔案的位置設定。 每個以檔案為基礎的連接器在下`location`都有自己的位置類型和支援的屬性。 **請參閱連接器文章-> 資料集屬性一節中的詳細資訊**。 | 是      |
+| compressionCodec | 寫入 Parquet 檔案時要使用的壓縮編解碼器。 從 Parquet 檔案讀取時，Data factory 會自動根據檔案中繼資料來決定壓縮編解碼器。<br>支援的類型為 "**none**"、"**gzip**"、"**snappy**" （預設值）和 "**lzo**"。 注意：在讀取/寫入 Parquet 檔案時，目前複製活動不支援 LZO。 | 否       |
 
 > [!NOTE]
-> Parquet 檔案不支援列名中的空格。
+> Parquet 檔不支援資料行名稱中的空白字元。
 
-下面是 Azure Blob 儲存上的 Parquet 資料集範例:
+以下是 Azure Blob 儲存體上的 Parquet 資料集範例：
 
 ```json
 {
@@ -62,55 +62,55 @@ ms.locfileid: "81417703"
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
-如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)一文。 本節提供 Parquet 源和接收器支援的屬性清單。
+如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)一文。 本節提供 Parquet 來源和接收所支援的屬性清單。
 
-### <a name="parquet-as-source"></a>鑲木地板作為來源
+### <a name="parquet-as-source"></a>Parquet 作為來源
 
-複製活動***\*\*源***部分支援以下屬性。
+複製活動*** \* \* ***的 [來源] 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 複製活動來源的類型屬性必須設定為**ParquetSource**。 | 是      |
-| 商店設置 | 有關如何從數據存儲讀取數據的一組屬性。 每個基於檔的連接器在`storeSettings`下 都有自己的受支援的讀取設置。 **請參考連接器文章 -> 複製活動屬性部份的詳細資訊**。 | 否       |
+| storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下`storeSettings`都有自己支援的讀取設定。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
 
-### <a name="parquet-as-sink"></a>鑲木地板作為水槽
+### <a name="parquet-as-sink"></a>Parquet 作為接收
 
-複製活動***\*接收\*器***部分支援以下屬性。
+複製活動*** \* \* ***的 [接收] 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 複製活動來源的類型屬性必須設定為**ParquetSink**。 | 是      |
-| 商店設置 | 有關如何將數據寫入數據存儲的一組屬性。 每個基於檔的連接器在`storeSettings`下 都有自己的支援的寫入設置。 **請參考連接器文章 -> 複製活動屬性部份的詳細資訊**。 | 否       |
+| storeSettings | 一組屬性，說明如何將資料寫入資料存放區。 每個以檔案為基礎的連接器在下`storeSettings`都有它自己的支援寫入設定。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
 
 ## <a name="mapping-data-flow-properties"></a>對應資料流程屬性
 
-在映射資料流中從[源轉換](data-flow-source.md)和[接收器轉換](data-flow-sink.md)中瞭解詳細資訊。
+深入瞭解對應資料流程中[來源轉換](data-flow-source.md)和[接收轉換](data-flow-sink.md)的詳細資料。
 
 ## <a name="data-type-support"></a>資料類型支援
 
-目前不支援鑲有複雜數據類型(例如 MAP、LIST、STRUCT)。
+目前不支援 Parquet 複雜的資料類型（例如 MAP、LIST、STRUCT）。
 
-## <a name="using-self-hosted-integration-runtime"></a>使用自託管整合時
+## <a name="using-self-hosted-integration-runtime"></a>使用自我裝載的 Integration Runtime
 
 > [!IMPORTANT]
-> 對於從系統整合時(例如本地資料儲存與雲端資料儲存之間)授權的複本,如果您未**按本身份**複製 Parquet 檔案,則需要在 IR 電腦上安裝**64 位元 JRE 8(Java 執行時環境)或 OpenJDK**和**Microsoft Visual C++ 2010 可再分發套件**。 有關詳細資訊,請查看以下段落。
+> 針對由自我裝載 Integration Runtime （例如在內部部署和雲端資料存放區之間）提供的複製，如果您不是依預設複製 Parquet**檔案，則**需要在 IR 機器上安裝**64 位 JRE 8 （JAVA Runtime Environment）或 OpenJDK**和**Microsoft Visual C++ 2010**可轉散發套件。 請參閱下列段落，其中包含更多詳細資料。
 
-對於在具有 Parquet 檔序列化/反序列化的自承載 IR 上運行的副本,ADF*`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* 首先檢查註冊表 以查找 JRE(如果未找到*`JAVA_HOME`*)來定位 JAVA 運行時 ,其次檢查 OpenJDK 的系統變數。
+針對在自我裝載 IR 上搭配 Parquet 檔案序列化/還原序列化來執行的複製，ADF 會找出 JAVA 執行時間*`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* ，方法是先檢查登錄是否有 JRE，如果*`JAVA_HOME`* 找不到，則接著檢查系統變數是否有 OpenJDK。
 
-- **要使用 JRE**: 64 位 IR 需要 64 位 JRE。 您可以從[這裡](https://go.microsoft.com/fwlink/?LinkId=808605)找到該程式。
-- **使用 OpenJDK**: 自 IR 版本 3.13 以來,它一直支援它。 請將 jvm.dll 與所有其他必要的 OpenJDK 組件一起封裝至自我裝載 IR 機器，然後相應地設定 JAVA_HOME 系統環境變數。
-- **要安裝 Visual C++ 2010 可分發包**: 可視C++ 2010 可分發包未安裝自託管的 IR 安裝。 您可以從[這裡](https://www.microsoft.com/download/details.aspx?id=14632)找到該程式。
+- **若要使用 JRE**：64位 IR 需要64位 JRE。 您可以從[這裡](https://go.microsoft.com/fwlink/?LinkId=808605)找到該程式。
+- **若要使用 OpenJDK**：從 IR 版本3.13 開始支援。 請將 jvm.dll 與所有其他必要的 OpenJDK 組件一起封裝至自我裝載 IR 機器，然後相應地設定 JAVA_HOME 系統環境變數。
+- **若要安裝 Visual C++ 2010 可**轉散發套件： Visual C++ 2010 可轉散發套件不會隨自我裝載 IR 安裝一起安裝。 您可以從[這裡](https://www.microsoft.com/download/details.aspx?id=14632)找到該程式。
 
 > [!TIP]
 > 如果您使用自我裝載 Integration Runtime 將資料複製到 Parquet 格式 (或從該格式複製資料)，而且遇到錯誤顯示 [叫用 Java 時發生錯誤。訊息: **java.lang.OutOfMemoryError:Java heap space**]，您可以在裝載自我裝載 IR 的機器中新增環境變數 `_JAVA_OPTIONS`，以調整 JVM 的堆積大小下限/上限，使系統能執行這樣的複製，然後重新執行管線。
 
 ![在自我裝載 IR 上設定 JVM 堆積大小](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-範例：將變數 `_JAVA_OPTIONS` 的值設定為 `-Xms256m -Xmx16g`。 旗標 `Xms` 指定 JAVA 虛擬機器 (JVM) 的初始記憶體配置集區，而 `Xmx` 指定記憶體配置集區的最大值。 這表示 JVM 啟動時有 `Xms` 數量的記憶體，且最多可以使用 `Xmx` 數量的記憶體。 默認情況下,ADF 使用最小 64 MB 和最大 1G。
+範例：將變數 `_JAVA_OPTIONS` 的值設定為 `-Xms256m -Xmx16g`。 旗標 `Xms` 指定 JAVA 虛擬機器 (JVM) 的初始記憶體配置集區，而 `Xmx` 指定記憶體配置集區的最大值。 這表示 JVM 啟動時有 `Xms` 數量的記憶體，且最多可以使用 `Xmx` 數量的記憶體。 根據預設，ADF 會使用最小的 64 MB 和最大1G。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [複製活動概述](copy-activity-overview.md)
-- [對應資料串流](concepts-data-flow-overview.md)
-- [尋找活動](control-flow-lookup-activity.md)
-- [取得中繼資料活動](control-flow-get-metadata-activity.md)
+- [複製活動總覽](copy-activity-overview.md)
+- [對應資料流程](concepts-data-flow-overview.md)
+- [查閱活動](control-flow-lookup-activity.md)
+- [GetMetadata 活動](control-flow-get-metadata-activity.md)

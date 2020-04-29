@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: cc12cc9a4828404e960aee239bd388af5b1ea3b7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431900"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>使用 Azure 事件方格監視 Key Vault (預覽)
@@ -44,7 +44,7 @@ Event Grid 使用[事件訂閱](../../event-grid/concepts.md#event-subscriptions
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 金鑰保存函式庫概述](overview.md))
+- [Azure Key Vault 概觀](overview.md))
 - [Azure 事件方格概觀](../../event-grid/overview.md)
 - 如何：[將 Key Vault 事件路由傳送至自動化 Runbook (預覽)](event-grid-tutorial.md)。
 - 如何：[在金鑰保存庫祕密變更時收到電子郵件](event-grid-logicapps.md)

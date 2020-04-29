@@ -1,6 +1,6 @@
 ---
-title: 在 SynapsE SQL 中使用查詢分頁
-description: 本文中包括在 Synapse SQL 中使用查詢標籤的基本提示。
+title: 在 Synapse SQL 中使用查詢標籤
+description: 本文中所包含的重要秘訣，是在 Synapse SQL 中使用查詢標籤。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,20 +12,20 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 47b476cbc6997ca5ec63968bdc269e2273662100
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430028"
 ---
-# <a name="use-query-labels-in-synapse-sql"></a>在 SynapsE SQL 中使用查詢分頁
-本文中包括在 Synapse SQL 中使用查詢標籤的基本提示。
+# <a name="use-query-labels-in-synapse-sql"></a>在 Synapse SQL 中使用查詢標籤
+本文中所包含的重要秘訣，是在 Synapse SQL 中使用查詢標籤。
 
 > [!NOTE]
-> SQL 按需(預覽)不支援標記查詢。
+> SQL 隨選（預覽）不支援標示查詢。
 
-## <a name="what-are-query-labels"></a>什麼是查詢分頁
-SQL 池支援一個稱為查詢標籤的概念。 繼續進行之前，讓我們看看一個範例：
+## <a name="what-are-query-labels"></a>什麼是查詢標籤
+SQL 集區支援稱為「查詢標籤」的概念。 繼續進行之前，讓我們看看一個範例：
 
 ```sql
 SELECT *
@@ -34,11 +34,11 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-最後一行將字串 'My Query Label' 標記為查詢。 此標籤特別有幫助，因為標籤可透過 DMV 查詢。 對標籤的查詢提供了一種查找問題查詢的機制,並有助於通過 ELT 運行辨識進度。
+最後一行將字串 'My Query Label' 標記為查詢。 此標籤特別有幫助，因為標籤可透過 DMV 查詢。 查詢標籤會提供一個機制來尋找問題查詢，並協助您透過 ELT 執行識別進度。
 
-良好的命名約定最有説明。 例如,使用 PROJECT、程式、聲明或註釋啟動標籤可唯一標識原始程式碼管理中的所有代碼之間的查詢。
+良好的命名慣例最有用。 例如，以專案、程式、語句或批註開頭的標籤，可唯一識別原始檔控制中所有程式碼之間的查詢。
 
-以下查詢使用動態管理檢視按分頁進行搜尋:
+下列查詢會使用動態管理檢視依標籤進行搜尋：
 
 ```sql
 SELECT  *

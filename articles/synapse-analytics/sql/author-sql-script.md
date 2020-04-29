@@ -1,6 +1,6 @@
 ---
-title: Azure 同步工作室中的 SQL 文稿(預覽版)
-description: 簡介 Azure Synapse 工作室(預覽)SQL 腳本
+title: Azure Synapse Studio 中的 SQL 腳本（預覽）
+description: 簡介 Azure Synapse Studio （預覽） SQL 腳本
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,84 +9,84 @@ ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
 ms.openlocfilehash: 940c6d6d96c5c1aa062397d21ea96dace2c09bae
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431068"
 ---
-# <a name="using-sql-script-in-azure-synapse-studio-preview"></a>在 Azure 同步工作室中使用 SQL 文稿(預覽版)
+# <a name="using-sql-script-in-azure-synapse-studio-preview"></a>在 Azure Synapse Studio 中使用 SQL 腳本（預覽）
 
-Azure Synapse 工作室(預覽版)提供了一個 SQL 文本 Web 介面,供您創作 SQL 查詢。 您可以連接到 SQL 池(預覽)或 SQL 按需(預覽)。 
+Azure Synapse Studio （預覽）提供 SQL 腳本 web 介面，可讓您撰寫 SQL 查詢。 您可以連接到 SQL 集區（預覽）或隨選 SQL （預覽）。 
 
-## <a name="begin-authoring-in-sql-script"></a>開始在 SQL 文稿中創作 
+## <a name="begin-authoring-in-sql-script"></a>開始撰寫 SQL 腳本 
 
-有幾種方法可以在 SQL 腳本中開始創作體驗。 您可以通過以下方法之一創建新的 SQL 文稿。
+有數種方式可以啟動 SQL 腳本中的撰寫體驗。 您可以透過下列其中一種方法來建立新的 SQL 腳本。
 
-1. 選擇「+」圖示並選擇 SQL 腳本。
-
-    > [!div class="mx-imgBorder"] 
-    >![新文稿](./media/author-sql-script/newsqlscript.png)
-
-2. 從開發 SQL 腳本下的「操作」功能表中從開發 SQL 腳本下的「操作」功能表中選擇「新 SQL 文本」。 
+1. 選取 [+] 圖示，然後選擇 [SQL 腳本]。
 
     > [!div class="mx-imgBorder"] 
-    > ![新文稿](./media/author-sql-script/newsqlscript2actions.png)
+    >![newsqlscript](./media/author-sql-script/newsqlscript.png)
+
+2. 從 [開發 SQL 腳本] 底下的 [動作] 功能表，選擇 [開發 SQL 腳本] 底下 [動作] 功能表中的 [新增 SQL 腳本]。 
+
+    > [!div class="mx-imgBorder"] 
+    > ![newsqlscript](./media/author-sql-script/newsqlscript2actions.png)
 
 或 
 
-3. 從開發 SQL 文稿下的「操作」功能表中選擇「導入」,並從本地存儲中選擇現有 SQL 腳本。
+3. 從 [開發 SQL 腳本] 底下的 [動作] 功能表中選擇 [匯入]，然後從您的本機儲存體選取現有的 SQL 腳本。
 
     > [!div class="mx-imgBorder"] 
-    > ![新文稿](./media/author-sql-script/newsqlscript3actions.png)
+    > ![newsqlscript](./media/author-sql-script/newsqlscript3actions.png)
 
-## <a name="create-your-sql-script"></a>建立 SQL 文稿
+## <a name="create-your-sql-script"></a>建立您的 SQL 腳本
 
-1. 通過選擇"屬性"按鈕並替換分配給 SQL 文本的預設名稱,為 SQL 腳本選擇名稱。
-
-    > [!div class="mx-imgBorder"] 
-    > ![新文稿](./media/author-sql-script/newsqlscriptrename.png)
-
-1. 從"連接到"下拉菜單中選擇特定的 SQL 池或按需 SQL。 或者,如有必要,從"使用資料庫"中選擇資料庫。
+1. 選取 [屬性] 按鈕，並取代指派給 SQL 腳本的預設名稱，以選擇 SQL 腳本的名稱。
 
     > [!div class="mx-imgBorder"] 
-    > ![新文稿](./media/author-sql-script/newsqlchoosepool.png)
+    > ![newsqlscript](./media/author-sql-script/newsqlscriptrename.png)
 
-1. 使用"無意義"功能開始創作 SQL 腳本。
+1. 從 [連接到] 下拉式功能表選擇特定的 SQL 集區或 SQL 隨選。 或者，如有需要，請從 [使用資料庫] 中選擇資料庫。
 
     > [!div class="mx-imgBorder"] 
-    > ![新文稿](./media/author-sql-script/newsqlintellisense.png)
+    > ![newsqlscript](./media/author-sql-script/newsqlchoosepool.png)
 
-## <a name="run-your-sql-script"></a>執行 SQL 文稿
+1. 使用 intellisense 功能開始撰寫 SQL 腳本。
 
-選擇「執行」按鈕以執行 SQL 文稿。 默認情況下,結果將顯示在表中。
+    > [!div class="mx-imgBorder"] 
+    > ![newsqlscript](./media/author-sql-script/newsqlintellisense.png)
 
-> [!div class="mx-imgBorder"] 
-> ![新文稿](./media/author-sql-script/newsqlscriptresultstable.png)
+## <a name="run-your-sql-script"></a>執行您的 SQL 腳本
 
-## <a name="export-your-results"></a>匯出結果
-
-您可以通過選擇「匯出結果」並選擇擴展,以不同格式(包括 CSV、Excel、JSON、XML)將結果匯出到本地存儲。
-
-您還可以通過選擇「圖表」按鈕在圖表中可視化 SQL 腳本結果。 選擇「圖表類型」 和「類別欄」。 您可以通過選擇「保存為影像」 將圖表匯出到圖片中。 
+選取 [執行] 按鈕來執行您的 SQL 腳本。 根據預設，結果會顯示在資料表中。
 
 > [!div class="mx-imgBorder"] 
-> ![新文稿](./media/author-sql-script/newsqlscriptresultschart.png)
+> ![newsqlscript](./media/author-sql-script/newsqlscriptresultstable.png)
 
-## <a name="explore-data-from-a-parquet-file"></a>從鑲木地板文件中瀏覽數據。
+## <a name="export-your-results"></a>匯出您的結果
 
-您可以使用 SQL 文本瀏覽儲存帳戶中的 Parquet 檔案來預覽檔內容。 
+您可以選取 [匯出結果]，然後選擇延伸模組，以不同的格式（包括 CSV、Excel、JSON、XML）將結果匯出至本機儲存體。
 
-> [!div class="mx-imgBorder"] 
-> ![新文稿](./media/author-sql-script/newscriptsqlodparquet.png)
-
-## <a name="sql-tables-external-tables-views"></a>SQL 表、外部表、檢視
-
-通過選擇資料下的「操作」功能表,您可以選擇多個操作,如:「新 SQL 文本」、「選擇前 1000 行」、「創建」、「創建」和「創建」。。 通過右鍵按下 SQL 池和 SQL 按需節點來流覽可用的手勢。
+您也可以選取 [圖表] 按鈕，在圖表中將 SQL 腳本結果視覺化。 選取 [圖表類型] 和 [分類資料行]。 您可以選取 [另存新檔]，將圖表匯出成圖片。 
 
 > [!div class="mx-imgBorder"] 
-> ![新文稿](./media/author-sql-script/newscriptdatabase.png)
+> ![newsqlscript](./media/author-sql-script/newsqlscriptresultschart.png)
+
+## <a name="explore-data-from-a-parquet-file"></a>探索 Parquet 檔案中的資料。
+
+您可以使用 SQL 腳本來預覽檔案內容，以探索儲存體帳戶中的 Parquet 檔案。 
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/newscriptsqlodparquet.png)
+
+## <a name="sql-tables-external-tables-views"></a>SQL 資料表、外部資料表、視圖
+
+藉由選取 [資料] 底下的 [動作] 功能表，您可以選取數個動作，例如：「新增 SQL 腳本」、「選取前1000個數據列」、「建立」、「卸載並建立」。 以滑鼠右鍵按一下 SQL 集區的節點和 [視需要的 SQL]，以探索可用的手勢。
+
+> [!div class="mx-imgBorder"] 
+> ![newsqlscript](./media/author-sql-script/newscriptdatabase.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-有關創作 SQL 文稿的詳細資訊,請參閱[Azure 同步分析](https://docs.microsoft.com/azure/synapse-analytics)。
+如需撰寫 SQL 腳本的詳細資訊，請參閱[Azure Synapse 分析](https://docs.microsoft.com/azure/synapse-analytics)。

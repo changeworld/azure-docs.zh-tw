@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 33e3bc13e67e268b82bf517033b4b1c7c51c361f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430886"
 ---
 # <a name="authentication-requests-and-responses"></a>驗證、要求和回應
@@ -65,7 +65,7 @@ Azure Key Vault 支援 JSON 格式化要求和回應。 搭配使用 HTTPS 與�
 
 - 3xx – 重新導向：可能會傳回 304「未修改」，以滿足條件式 GET。 未來可能會使用其他 3xx 代碼指出 DNS 和路徑變更。  
 
-- 4xx = 用戶端錯誤:用於錯誤請求、缺少密鑰、語法錯誤、無效參數、身份驗證錯誤等。回應正文將包含詳細的錯誤說明。  
+- 4xx –用戶端錯誤：用於不正確的要求、遺漏金鑰、語法錯誤、無效參數、驗證錯誤等等。回應主體會包含詳細的錯誤說明。  
 
 - 5xx – 伺服器錯誤：用於內部伺服器錯誤。 回應本文將會包含摘要錯誤資訊。  
 
@@ -113,5 +113,5 @@ WWW-Authenticate: Bearer authorization="…", resource="…"
 
 -   authorization：可能用來取得要求存取權杖之 OAuth2 授權服務的位址。  
 
--   資源:要在授權請求中使用的資源`https://vault.azure.net`的名稱。  
+-   資源：要在授權要求中使用`https://vault.azure.net`的資源名稱（）。  
 

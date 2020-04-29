@@ -1,6 +1,6 @@
 ---
-title: 持續整合及部署
-description: 企業級資料庫 DevOps 體驗,用於數據倉庫,內置支援使用 Azure 管道進行持續整合和部署。
+title: 持續整合與部署
+description: 適用于資料倉儲的企業級資料庫 DevOps 體驗，內建支援使用 Azure Pipelines 進行持續整合和部署。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: ddd24eb510405d49465ca4e0e0f326f7260e2ed1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416234"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>持續整合及部署資料主目錄
+# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>資料倉儲的持續整合與部署
 
-此簡易教學課程會概述如何將您的 SQL Server Data tools (SSDT) 資料庫專案與 Azure DevOps 整合，並運用 Azure Pipelines 來設定持續整合及部署。 本教程是構建數據倉庫的持續集成和部署管道的第二步。
+此簡易教學課程會概述如何將您的 SQL Server Data tools (SSDT) 資料庫專案與 Azure DevOps 整合，並運用 Azure Pipelines 來設定持續整合及部署。 本教學課程是為數據倉儲建立持續整合和部署管線的第二個步驟。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -60,7 +60,7 @@ ms.locfileid: "81416234"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 探索[突觸 SQL 池 MPP 體系結構](massively-parallel-processing-mpp-architecture.md)
+- 探索[SYNAPSE SQL 集區 MPP 架構](massively-parallel-processing-mpp-architecture.md)
 - 快速[建立 SQL 集區](create-data-warehouse-portal.md)
-- [載入樣本資料](load-data-from-azure-blob-storage-using-polybase.md)
+- [載入範例資料](load-data-from-azure-blob-storage-using-polybase.md)
 - 探索[影片](sql-data-warehouse-videos.md)

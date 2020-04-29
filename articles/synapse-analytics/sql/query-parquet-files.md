@@ -1,6 +1,6 @@
 ---
-title: 使用 SQL 以查詢 Parquet 檔案(預覽)
-description: 在本文中,您將學習如何使用 SQL 按需(預覽)查詢 Parquet 檔。
+title: 使用 SQL 隨選查詢 Parquet 檔（預覽）
+description: 在本文中，您將瞭解如何使用隨選 SQL （預覽）來查詢 Parquet 檔案。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,50 +10,50 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 0b272a8c8ce81fc40585014e5930f5d7b1b5f2c0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431692"
 ---
-# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure 同步分析中使用 SQL 按需(預覽)查詢 Parquet 檔案
+# <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的 SQL 隨選（預覽）來查詢 Parquet 檔案
 
-在本文中,您將學習如何使用 SQL 按需(預覽)編寫查詢,該 SQL 將讀取 Parquet 檔。
+在本文中，您將瞭解如何使用可讀取 Parquet 檔案的 SQL 隨選（預覽）來撰寫查詢。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-在閱讀本文的其餘部分之前,請查看以下文章:
+閱讀本文的其餘部分之前，請先參閱下列文章：
 
-- [首次設定](query-data-storage.md#first-time-setup)
+- [第一次設定](query-data-storage.md#first-time-setup)
 - [先決條件](query-data-storage.md#prerequisites)
 
 ## <a name="dataset"></a>資料集
 
-您可以查詢 Parquet 檔,就像讀取 CSV 檔一樣。 唯一的區別是,應將 FILEFORMAT 參數設置為 PARQUET。 本文中的範例顯示了讀取 Parquet 檔的細節。
+您可以用讀取 CSV 檔案的相同方式來查詢 Parquet 檔案。 唯一的差別在於 FILEFORMAT 參數應該設定為 PARQUET。 本文中的範例會示範讀取 Parquet 檔的細節。
 
 > [!NOTE]
-> 讀取鑲木地板檔時,不必在 OPENROWSET WITH 子句中指定列。 SQL 按需將使用 Parquet 檔中的中繼資料,並按名稱綁定列。
+> 在讀取 parquet 檔時，您不需要在 OPENROWSET WITH 子句中指定資料行。 SQL 隨選會使用 Parquet 檔案中的中繼資料，並依名稱系結資料行。
 
-您將使用資料夾*鑲木地板/計程車*進行範例查詢。 它包含紐約計程車 - 黃色計程車旅行記錄數據從2016年7月。 至2018年6月。
+您將使用*parquet/計程車*資料夾來進行範例查詢。 它包含2016年7月的 NYC 計程車-黃色計程車旅程記錄資料。 2018年6月。
 
-數據按年和月進行分區,文件結構如下:
+資料是依年和月分割，而資料夾結構如下所示：
 
-- 年份=2016年
-  - 月=6
+- year = 2016
+  - 月份 = 6
   - ...
-  - 月=12
-- 年份=2017
-  - 月=1
+  - 月份 = 12
+- year = 2017
+  - 月份 = 1
   - ...
-  - 月=12
-- 年份=2018
-  - 月=1
+  - 月份 = 12
+- year = 2018
+  - 月份 = 1
   - ...
-  - 月=6
+  - 月份 = 6
 
-## <a name="query-set-of-parquet-files"></a>查詢鑲木地板檔案集
+## <a name="query-set-of-parquet-files"></a>Parquet 檔的查詢集
 
-查詢 Parquet 檔時,只能指定感興趣的欄。
+當您查詢 Parquet 檔案時，您可以只指定感利率的資料行。
 
 ```sql
 SELECT
@@ -76,14 +76,14 @@ ORDER BY
     passenger_count;
 ```
 
-## <a name="automatic-schema-inference"></a>自動架構推理
+## <a name="automatic-schema-inference"></a>自動推斷結構描述
 
-讀取 Parquet 檔時,不需要使用 OPENROWSET WITH 子句。 列名稱和資料類型會自動從 Parquet 檔案中讀取。
+在讀取 Parquet 檔時，您不需要使用 OPENROWSET WITH 子句。 資料行名稱和資料類型會自動從 Parquet 檔案讀取。
 
-下面的範例顯示了 Parquet 檔的自動架構推理功能。 它不指定架構即可返回 2017 年 9 月的行數。
+下列範例顯示 Parquet 檔案的自動架構推斷功能。 它會傳回2017年9月的資料列數目，而不指定架構。
 
 > [!NOTE]
-> 讀取 Parquet 檔時,不必在"OPENROWSET WITH"子句中指定列。 在這種情況下,SQL 按需查詢服務將利用 Parquet 檔中的中繼資料,並按名稱綁定列。
+> 在讀取 Parquet 檔時，您不需要在 OPENROWSET WITH 子句中指定資料行。 在這種情況下，SQL 隨選查詢服務會利用 Parquet 檔案中的中繼資料，並依名稱系結資料行。
 
 ```sql
 SELECT
@@ -95,12 +95,12 @@ FROM
     ) AS nyc;
 ```
 
-### <a name="query-partitioned-data"></a>查詢分割區資料
+### <a name="query-partitioned-data"></a>查詢分割的資料
 
-此示例中提供的數據集被劃分為(分區)到單獨的子資料夾中。 您可以使用檔案路徑函數定位特定分區。 此示例顯示 2017 年前三個月的票價金額(按年份、月份和 payment_type。
+這個範例中提供的資料集會分割（分割）成不同的子資料夾。 您可以使用 filepath 函數，以特定的資料分割為目標。 這個範例會依年、月和 payment_type 顯示2017前三個月的費用金額。
 
 > [!NOTE]
-> SQL 按需查詢與 Hive/Hadoop 分區方案相容。
+> SQL 隨選查詢與 Hive/Hadoop 資料分割配置相容。
 
 ```sql
 SELECT
@@ -129,44 +129,44 @@ ORDER BY
 
 ## <a name="type-mapping"></a>類型對應
 
-鑲木地板檔包含每列的類型描述。 下表描述了如何將鑲木地板類型映射到 SQL 本機類型。
+Parquet files 包含每個資料行的類型描述。 下表描述 Parquet 類型如何對應至 SQL 原生類型。
 
-| 鑲木地板類型 | 鑲木地板邏輯類型(註解) | SQL 資料類型 |
+| Parquet 類型 | Parquet 邏輯類型（注釋） | SQL 資料類型 |
 | --- | --- | --- |
 | BOOLEAN | | bit |
-| 二進位 / BYTE_ARRAY | | varbinary |
+| 二進位/BYTE_ARRAY | | varbinary |
 | DOUBLE | | FLOAT |
 | FLOAT | | real |
 | INT32 | | int |
 | INT64 | | BIGINT |
 | INT96 | |datetime2 |
 | FIXED_LEN_BYTE_ARRAY | |BINARY |
-| BINARY |UTF8 |瓦爾查爾\*(UTF8 排序) |
-| BINARY |STRING |瓦爾查爾\*(UTF8 排序) |
-| BINARY |枚舉|瓦爾查爾\*(UTF8 排序) |
+| BINARY |UTF8 |Varchar \*（UTF8 定序） |
+| BINARY |STRING |Varchar \*（UTF8 定序） |
+| BINARY |列舉|Varchar \*（UTF8 定序） |
 | BINARY |UUID |UNIQUEIDENTIFIER |
 | BINARY |DECIMAL |decimal |
-| BINARY |JSON |瓦爾恰爾(最大\*) (UTF8 排序) |
-| BINARY |布森 |varbinary(max) |
+| BINARY |JSON |Varchar （max） \*（UTF8 定序） |
+| BINARY |BSON |varbinary(max) |
 | FIXED_LEN_BYTE_ARRAY |DECIMAL |decimal |
-| BYTE_ARRAY |INTERVAL |varchar(最大),序列化為標準化格式 |
-| INT32 |INT(8,真) |SMALLINT |
-| INT32 |INT (16, 真) |SMALLINT |
-| INT32 |INT (32, 真) |int |
-| INT32 |INT(8,假) |TINYINT |
-| INT32 |INT (16, 假) |int |
-| INT32 |INT (32, 假) |BIGINT |
+| BYTE_ARRAY |INTERVAL |Varchar （max），序列化為標準化格式 |
+| INT32 |INT （8，true） |SMALLINT |
+| INT32 |INT （16，true） |SMALLINT |
+| INT32 |INT （32，true） |int |
+| INT32 |INT （8，false） |TINYINT |
+| INT32 |INT （16，false） |int |
+| INT32 |INT （32，false） |BIGINT |
 | INT32 |日期 |date |
 | INT32 |DECIMAL |decimal |
-| INT32 |時間 (米莉斯 )|time |
-| INT64 |INT (64, 真 ) |BIGINT |
-| INT64 |INT (64, 假 ) |十進制 (20,0) |
+| INT32 |時間（MILLIS）|time |
+| INT64 |INT （64，true） |BIGINT |
+| INT64 |INT （64，false） |decimal （20，0） |
 | INT64 |DECIMAL |decimal |
-| INT64 |時間(MICROS / NANOS) |time |
-|INT64 |時間戳 (米裡斯 / MICROS / NANOS) |datetime2 |
-|[複雜類型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |清單 |瓦爾恰爾(最大),序列化為JSON |
-|[複雜類型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|瓦爾恰爾(最大),序列化為JSON |
+| INT64 |TIME （MICROS/NANOS） |time |
+|INT64 |TIMESTAMP （MILLIS/MICROS/NANOS） |datetime2 |
+|[複雜類型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#lists) |清單 |Varchar （max），序列化為 JSON |
+|[複雜類型](https://github.com/apache/parquet-format/blob/master/LogicalTypes.md#maps)|MAP|Varchar （max），序列化為 JSON |
 
 ## <a name="next-steps"></a>後續步驟
 
-往下一篇文章,瞭解如何查詢[Parquet 巢狀態 。](query-parquet-nested-types.md)
+前進到下一篇文章，以瞭解如何[查詢 Parquet 的巢狀型別](query-parquet-nested-types.md)。

@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: 666decfe3982ea58f5db3561eb9fb6e96965df5c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422048"
 ---
-要以壓縮音訊格式串流式傳輸到語音服務,請建立`PullAudioInputStream``PushAudioInputStream`或 。 然後,從流`AudioConfig`類的實例創建一個,指定流的壓縮格式。
+若要以壓縮的音訊格式串流到語音服務，請建立`PullAudioInputStream`或`PushAudioInputStream`。 然後， `AudioConfig`從您的資料流程類別的實例建立，並指定資料流程的壓縮格式。
 
-假設您有一個已調用`pullStream`的輸入流類,並且正在使用 OPUS/OGG。 您的程式碼看起來可能像這樣：
+假設您有一個名`pullStream`為的輸入資料流程類別，而且使用 OPUS/OGG。 您的程式碼看起來可能像這樣：
 
 ```java
 import com.microsoft.cognitiveservices.speech.audio.AudioConfig;

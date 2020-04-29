@@ -12,10 +12,10 @@ ms.author: daperlov
 manager: jroth
 ms.reviewer: maghan
 ms.openlocfilehash: e5bd3d10e4e43daf3031aae5083ee917cfe65ede
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417975"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure Data Factory 中的設定變數活動
@@ -27,17 +27,17 @@ ms.locfileid: "81417975"
 
 屬性 | 描述 | 必要
 -------- | ----------- | --------
-NAME | 管線中的活動名稱 | 是
+名稱 | 管線中的活動名稱 | 是
 description | 說明活動用途的文字 | 否
-type | 必須設置為 **"設置變數"** | 是
-value | 將變數配置給的字串文字或表示式物件值值 | 是
+type | 必須設定為**SetVariable** | 是
+value | 將指派變數的字串常值或運算式物件值 | 是
 variableName | 此活動所將設定的變數名稱 | 是
 
-## <a name="incrementing-a-variable"></a>增加變數
+## <a name="incrementing-a-variable"></a>遞增變數
 
-Azure 資料工廠中涉及變數的常見方案是在每個活動之前或每個活動中使用變數作為反覆運算器。 在集變數活動中,不能引用欄位中正在設置的`value`變數。 要解決此限制,請設置臨時變數,然後創建第二個集變數活動。 第二組變數活動將反覆運算器的值設置為臨時變數。 
+關於 Azure Data Factory 中的變數，常見的案例是在 until 或 foreach 活動內使用變數做為反覆運算器。 在 [ `value`設定變數] 活動中，您無法參考要在欄位中設定的變數。 若要解決這項限制，請設定暫存變數，然後建立第二個集合變數活動。 第二個 [設定變數] 活動會將反覆運算器的值設定為暫存變數。 
 
-下面是此模式的範例:
+以下是此模式的範例：
 
 ![遞增變數](media/control-flow-set-variable-activity/increment-variable.png "遞增變數")
 

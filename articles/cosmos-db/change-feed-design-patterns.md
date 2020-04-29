@@ -1,116 +1,116 @@
 ---
-title: 變更 Azure Cosmos DB 的來源設計模式
-description: 常見變更來源模式概述
+title: 變更 Azure Cosmos DB 中的摘要設計模式
+description: 一般變更摘要設計模式的總覽
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 012d27b44ecfbdd460adf241742df397880f78c6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81450346"
 ---
-# <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>變更 Azure Cosmos DB 的來源設計模式
+# <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>變更 Azure Cosmos DB 中的摘要設計模式
 
-Azure Cosmos DB 更改源支援高效處理具有大量寫入量的大型數據集。 變更摘要也提供了替代方式，以查詢整個資料集來識別已變更的項目。 本文檔重點介紹常見的更改源設計模式、設計權衡和更改源限制。
+Azure Cosmos DB 變更摘要可有效率地處理具有大量寫入量的大型資料集。 變更摘要也提供了替代方式，以查詢整個資料集來識別已變更的項目。 本檔著重于常見的變更摘要設計模式、設計取捨和變更摘要限制。
 
 Azure Cosmos DB 非常適合用於 IoT、遊戲、零售，以及操作記錄應用程式。 這類應用程式常用的設計模式，是利用資料的變更觸發其他動作。 其他動作的範例包括：
 
 * 於插入或修改項目時觸發通知或呼叫 API。
 * IoT 的即時串流處理或在操作資料上的即時分析處理。
-* 數據移動,如與緩存、搜尋引擎、數據倉庫或冷存儲同步。
+* 資料移動，例如與快取、搜尋引擎、資料倉儲或冷儲存體進行同步處理。
 
 Azure Cosmos DB 中的變更摘要可讓您針對每一個模式建置有效率且可調整的解決方案，如下圖所示：
 
 ![使用 Azure Cosmos DB 變更摘要來提供即時分析和事件導向的計算案例](./media/change-feed/changefeedoverview.png)
 
-## <a name="event-computing-and-notifications"></a>事件計算與通知
+## <a name="event-computing-and-notifications"></a>事件計算和通知
 
-Azure Cosmos DB 更改來源可以簡化需要根據特定事件觸發通知或調用 API 的方案。 您可以使用[更改源程序庫](change-feed-processor.md)自動輪詢容器以進行更改,並在每次寫入或更新時調用外部 API。
+Azure Cosmos DB 變更摘要可以簡化需要根據特定事件觸發通知或呼叫 API 的案例。 您可以使用變更摘要程式連結[庫](change-feed-processor.md)，自動輪詢容器的變更，並在每次有寫入或更新時呼叫外部 API。
 
-您還可以根據特定條件有選擇地觸發通知或向 API 發送調用。 例如,如果使用[Azure 函數](change-feed-functions.md)從更改源讀取 ,則可以將邏輯放入函數中,以便僅在滿足特定條件時發送通知。 雖然 Azure 函數代碼將在每次寫入和更新期間執行,但只有滿足特定條件時才會發送通知。
+您也可以根據特定準則，選擇性地觸發通知或傳送對 API 的呼叫。 例如，如果您要使用[Azure Functions](change-feed-functions.md)讀取變更摘要，您可以將邏輯放入函式，以便只在符合特定準則時才傳送通知。 雖然 Azure 函式程式碼會在每次寫入和更新期間執行，但只有在符合特定準則時，才會傳送通知。
 
-## <a name="real-time-stream-processing"></a>即時流程處理
+## <a name="real-time-stream-processing"></a>即時串流處理
 
-Azure Cosmos DB 更改源可用於 IoT 的即時流處理或操作數據的即時分析處理。
-例如,您可能會從設備、感測器、基礎設施和應用程式接收和存儲事件數據,並使用[Spark](../hdinsight/spark/apache-spark-overview.md)即時處理這些事件。 下圖顯示了如何透過變更來源使用 Azure Cosmos DB 實現 lambda 體系結構:
+Azure Cosmos DB 變更摘要可用於 IoT 的即時串流處理，或對運算元據進行即時分析處理。
+例如，您可能會接收並儲存來自裝置、感應器、基礎結構和應用程式的事件資料，並使用[Spark](../hdinsight/spark/apache-spark-overview.md)即時處理這些事件。 下圖顯示如何透過變更摘要，使用 Azure Cosmos DB 來執行 lambda 架構：
 
 ![運用 Azure Cosmos DB 進行擷取和查詢的 lambda 管線](./media/change-feed/lambda.png)
 
-在許多情況處理實現首先接收大量傳入數據到臨時消息佇列(如 Azure 事件中心或 Apache Kafka )。 更改源是一個偉大的替代方法,因為 Azure Cosmos DB 能夠支援持續高速率的數據引入,並且保證低讀取和寫入延遲。 Azure Cosmos DB 更改饋送相對於消息佇列的優點包括:
+在許多情況下，串流處理的執行會先將大量的傳入資料接收到臨時訊息佇列，例如 Azure 事件中樞或 Apache Kafka。 變更摘要是很好的替代方案，因為 Azure Cosmos DB 能夠以保證的低讀取和寫入延遲來支援持續性高的資料內嵌速度。 透過訊息佇列的 Azure Cosmos DB 變更摘要的優點包括：
 
 ### <a name="data-persistence"></a>資料持續性
 
-寫入 Azure Cosmos DB 的資料將顯示在更改來源中,並保留到刪除。 消息佇列通常具有最大保留期。 例如[,Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)提供最多 90 天的數據保留時間。
+寫入 Azure Cosmos DB 的資料會顯示在變更摘要中，並保留到刪除為止。 訊息佇列通常具有最長保留期限。 例如， [Azure 事件中樞](https://azure.microsoft.com/services/event-hubs/)最多可提供90天的資料保留期。
 
 ### <a name="querying-ability"></a>查詢能力
 
-除了從Cosmos容器的更改源中讀取外,還可以對存儲在Azure Cosmos DB中的數據運行SQL查詢。 更改源不是容器中已有數據的重複,而只是讀取數據的不同機制。 因此,如果從更改源讀取數據,它將始終與同一 Azure Cosmos DB 容器的查詢一致。
+除了從 Cosmos 容器的變更摘要讀取之外，您也可以對 Azure Cosmos DB 中儲存的資料執行 SQL 查詢。 變更摘要不是容器中已有的資料重複，而是只是不同的資料讀取機制。 因此，如果您從變更摘要讀取資料，它一定會與相同 Azure Cosmos DB 容器的查詢一致。
 
 ### <a name="high-availability"></a>高可用性
 
-Azure Cosmos DB 提供高達 99.999% 的讀寫可用性。 與許多消息佇列不同,Azure Cosmos DB 數據可以輕鬆全域分佈,並且配置的[RTO(恢復時間目標)](consistency-levels-tradeoffs.md#rto)為零。
+Azure Cosmos DB 最多可提供99.999% 的讀取和寫入可用性。 不同于許多訊息佇列，Azure Cosmos DB 資料可以輕鬆地以零的[RTO （復原時間目標）](consistency-levels-tradeoffs.md#rto)進行全域散發和設定。
 
-在更改源中處理項後,可以生成具體化視圖,並在 Azure Cosmos DB 中保留聚合值。 例如，如果您使用 Azure Cosmos DB 來建置遊戲，就可以根據完成遊戲的分數，使用變更摘要來實作即時排行榜。
+在處理變更摘要中的專案之後，您可以建立具體化視圖，並在 Azure Cosmos DB 中保存匯總的值。 例如，如果您使用 Azure Cosmos DB 來建置遊戲，就可以根據完成遊戲的分數，使用變更摘要來實作即時排行榜。
 
 ## <a name="data-movement"></a>資料移動
 
-您還可以從更改源中讀取即時資料移動。
+您也可以讀取變更摘要以進行即時資料移動。
 
-例如,更改來源可説明您高效地執行以下任務:
+例如，變更摘要可協助您有效率地執行下列工作：
 
-* 使用存儲在 Azure Cosmos DB 中的數據更新緩存、搜索索引或數據倉庫。
+* 使用儲存在 Azure Cosmos DB 中的資料來更新快取、搜尋索引或資料倉儲。
 
 * 執行零停機時間移轉至另一個 Azure Cosmos 帳戶或具有不同邏輯分割區索引鍵的另一個 Azure Cosmos 容器。
 
-* 實現應用程式級數據分層和存檔。 例如,您可以將「熱資料」儲存在 Azure Cosmos DB 中,並將「冷資料」 老化到其他儲存系統,如[Azure Blob 儲存](../storage/common/storage-introduction.md)。
+* 實行應用層級的資料分層和封存。 例如，您可以在 Azure Cosmos DB 中儲存「熱資料」，並將「冷資料」存留到其他儲存系統，例如[Azure Blob 儲存體](../storage/common/storage-introduction.md)。
 
-當必須[跨分區和容器取消數據規範化](how-to-model-partition-example.md#v2-introducing-denormalization-to-optimize-read-queries
-)時,可以從容器的更改源中讀取此數據複製的源。 使用更改源進行即時數據複製只能保證最終的一致性。 您可以[監視更改饋送處理器](how-to-use-change-feed-estimator.md)在處理 Cosmos 容器中的更改時落後多遠。
+當您必須跨分割區[和容器反正規化資料](how-to-model-partition-example.md#v2-introducing-denormalization-to-optimize-read-queries
+)時，您可以從容器的變更摘要讀取做為此資料複寫的來源。 具有變更摘要的即時資料複寫，只能保證最終一致性。 您可以監視在 Cosmos 容器中處理變更時[，變更摘要處理器落後的程度](how-to-use-change-feed-estimator.md)。
 
-## <a name="event-sourcing"></a>活動採購
+## <a name="event-sourcing"></a>事件來源
 
-[事件來源模式](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)涉及使用僅追加儲存來記錄對該資料的完整系列操作。 Azure Cosmos DB 的更改源是事件源體系結構中的中央數據存儲的絕佳選擇,其中所有數據引入都建模為寫入(不更新或刪除)。 在這種情況下,每個寫入 Azure Cosmos DB 都是一個「事件」,您將在更改源中記錄過去的事件的完整記錄。 中心事件存儲發佈的事件的典型用途是維護具體化視圖或與外部系統集成。 由於更改源中沒有保留時間限制,因此可以通過從Cosmos容器的更改源的開頭讀取來重播所有過去的事件。
+[事件來源模式](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)牽涉到使用附加專用存放區來記錄該資料的完整系列動作。 Azure Cosmos DB 的變更摘要是一個絕佳的選擇，做為事件來源架構中的中央資料存放區，其中所有的資料內嵌會模型化為寫入（無更新或刪除）。 在此情況下，每次寫入 Azure Cosmos DB 都是「事件」，而您在變更摘要中會有過去事件的完整記錄。 中央事件存放區所發佈之事件的一般用法，是用來維護具體化的視圖或與外部系統整合。 由於變更摘要中沒有保留時間限制，因此您可以從 Cosmos 容器的變更摘要的開頭讀取，以重新執行所有過去的事件。
 
-您可以[讓多個變更來源使用者訂閱一個容器的變更來源](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers)。 除了[租用容器的](change-feed-processor.md#components-of-the-change-feed-processor)預配輸送量外,使用更改源不花費任何成本。 無論更改源是否被使用,更改源在每個容器中都可用。
+您可以讓[多個變更摘要取用者訂閱相同容器的變更](how-to-create-multiple-cosmos-db-triggers.md#optimizing-containers-for-multiple-triggers)摘要。 除了[租用容器的](change-feed-processor.md#components-of-the-change-feed-processor)布建輸送量外，利用變更摘要也不會產生任何費用。 變更摘要適用于每個容器，不論是否已使用。
 
-Azure Cosmos DB 是事件源模式中僅集中追加的持久數據存儲,因為它具有水準可擴展性和高可用性的優勢。 此外,更改源處理器庫提供[「至少一次」](change-feed-processor.md#error-handling)保證,確保您不會錯過處理任何事件。
+Azure Cosmos DB 是事件來源模式中的絕佳集中附加-唯一持續性資料存放區，因為它的優勢在於水準擴充和高可用性。 此外，變更摘要處理器程式庫提供「[至少一次](change-feed-processor.md#error-handling)」保證，確保您不會錯過任何事件的處理。
 
 ## <a name="current-limitations"></a>目前的限制
 
-更改源具有您應該瞭解的重要限制。 雖然Cosmos容器中的項將始終保留在更改源中,但更改源不是完整的操作日誌。 在設計利用更改源的應用程式時,需要考慮一些重要方面。
+變更摘要具有您應該瞭解的重要限制。 Cosmos 容器中的專案一律會保留在變更摘要中，而變更摘要則不是完整的作業記錄。 設計使用變更摘要的應用程式時，需要考慮一些重要的區域。
 
-### <a name="intermediate-updates"></a>中間更新
+### <a name="intermediate-updates"></a>中繼更新
 
-更改源中僅包含給定項的最新更改。 處理更改時,您將讀取最新的可用物料版本。 如果在短時間內對同一項有多個更新,則可能會錯過處理中間更新。 如果要跟蹤更新並能夠重播項目過去的更新,我們建議將這些更新建模為一系列寫入。
+只有指定專案的最近變更才會包含在變更摘要中。 在處理變更時，您將會讀取最新可用的專案版本。 如果在短時間內有多個相同專案的更新，可能會遺漏處理中繼更新。 如果您想要追蹤更新並能夠重新執行專案的過去更新，建議您改為將這些更新模型化為一系列的寫入。
 
 ### <a name="deletes"></a>Deletes
 
-更改源不捕獲刪除。 如果從容器中刪除專案,也會從更改源中刪除該專案。 處理此操作的最常見方法是在要刪除的項上添加軟標記。 您可以添加名為"已刪除"的屬性,並在刪除時將其設置為"true"。 此文件更新將顯示在更改源中。 您可以在此專案上設置 TTL,以便以後可以自動刪除它。
+變更摘要不會捕捉刪除。 如果您從容器中刪除專案，它也會從變更摘要中移除。 最常見的處理方法是在要刪除的專案上新增軟標記。 您可以新增名為「已刪除」的屬性，並在刪除時將其設定為 "true"。 此檔更新會顯示在變更摘要中。 您可以在此專案上設定 TTL，以便稍後可以自動刪除。
 
-### <a name="guaranteed-order"></a>保證訂單
+### <a name="guaranteed-order"></a>保證的順序
 
-分區鍵值中的更改源中有保證的順序,但不跨分區鍵值。 您應該選擇一個分區鍵,為您提供有意義的訂單保證。
+資料分割索引鍵值（而不是跨資料分割索引鍵值）中的變更摘要有保證的順序。 您應該選取資料分割索引鍵，以提供有意義的順序保證。
 
-例如,考慮使用事件源設計模式的零售應用程式。 在此應用程式中,不同的使用者操作是每個"事件",這些"事件"建模為寫入 Azure Cosmos DB。 想像一下,如果一些範例事件按以下順序發生:
+例如，請考慮使用「事件來源」設計模式的零售應用程式。 在此應用程式中，不同的使用者動作分別是模型化為 Azure Cosmos DB 寫入的「事件」。 假設有一些範例事件發生在下列順序中：
 
-1. 客戶將專案 A 新增到購物車
-2. 客戶將專案 B 新增到購物車
-3. 客戶從購物車中移除專案 A
-4. 客戶簽出和購物車內容已發貨
+1. 客戶將專案 A 新增至其購物車
+2. 客戶將專案 B 新增至其購物車
+3. 客戶從購物車移除專案 A
+4. 客戶簽出及購物車內容已寄出
 
-為每個客戶維護當前購物車內容的物化視圖。 此應用程式必須確保按這些事件發生的順序處理這些事件。 例如,如果在專案 A 刪除之前處理購物車結帳,則客戶很可能已裝運專案 A,而不是所需的專案 B。為了保證這四個事件按其發生順序進行處理,它們應屬於相同的分區鍵值。 如果選擇**使用者名**(每個客戶都有唯一的使用者名)作為分區鍵,則可以保證這些事件以寫入 Azure Cosmos DB 的相同順序顯示在更改源中。
+針對每個客戶維護目前購物車內容的具體化視圖。 此應用程式必須確保這些事件會依照發生的順序進行處理。 例如，如果在專案 A 移除之前先處理購物車結帳，則客戶可能會將專案 A 出貨，而不是所需的專案 B。為了保證這四個事件會依照發生的順序進行處理，它們應該落在相同的分割區索引鍵值中。 如果選取 [使用者**名稱**] （每個客戶都有唯一的使用者名稱）做為分割區索引鍵，您可以保證這些事件在變更摘要中會以其寫入 Azure Cosmos DB 的相同順序顯示。
 
 ## <a name="examples"></a>範例
 
-下面是一些超出 Microsoft 文件中範例範圍的實際更改原始碼範例:
+以下是一些真實世界的變更摘要程式碼範例，其延伸超出 Microsoft 檔中提供的範例範圍：
 
-- [變更來源簡介](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html)
-- [以變更來源為中心的 IoT 使用例](https://github.com/AzureCosmosDB/scenario-based-labs)
-- [以變更來源為中心的零售用例](https://github.com/AzureCosmosDB/scenario-based-labs)
+- [變更摘要簡介](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html)
+- [以變更摘要為中心的 IoT 使用案例](https://github.com/AzureCosmosDB/scenario-based-labs)
+- [零售使用案例以變更摘要為中心](https://github.com/AzureCosmosDB/scenario-based-labs)
 
 ## <a name="next-steps"></a>後續步驟
 

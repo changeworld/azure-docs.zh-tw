@@ -1,6 +1,6 @@
 ---
-title: 優化 SQL 池的事務
-description: 瞭解如何在 SQL 池(數據倉庫)中優化事務代碼的性能,同時將長期回滾的風險降至最低。
+title: 優化 SQL 集區的交易
+description: 瞭解如何將 SQL 集區（資料倉儲）中的交易式程式碼效能優化，同時將長時間回復的風險降至最低。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,21 +11,21 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: d6902b2b076df86012cec6941be417ad0f0c7660
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428728"
 ---
-# <a name="optimizing-transactions-in-sql-pool"></a>優化 SQL 池中的事務
+# <a name="optimizing-transactions-in-sql-pool"></a>優化 SQL 集區中的交易
 
-瞭解如何優化 SQL 池中的事務代碼的性能,同時將長期回滾的風險降至最低。
+瞭解如何將 SQL 集區中的交易式程式碼效能優化，同時將長時間回復的風險降至最低。
 
 ## <a name="transactions-and-logging"></a>交易和記錄
 
-交易是關聯式資料庫引擎的重要元件。 SQL 池在數據修改期間使用事務。 這些交易可以是明確或隱含的。 單一 INSERT、UPDATE 和 DELETE 陳述式都是隱含交易的範例。 明確交易會使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 通常在多個修改陳述式必須一起連結為單一不可部分完成單位的時候會使用明確交易。
+交易是關聯式資料庫引擎的重要元件。 SQL 集區會在資料修改期間使用交易。 這些交易可以是明確或隱含的。 單一 INSERT、UPDATE 和 DELETE 陳述式都是隱含交易的範例。 明確交易會使用 BEGIN TRAN、COMMIT TRAN 或 ROLLBACK TRAN。 通常在多個修改陳述式必須一起連結為單一不可部分完成單位的時候會使用明確交易。
 
-SQL 池使用事務日誌向資料庫提交更改。 每個散發套件都有自己的交易記錄檔。 交易記錄檔寫入是自動的。 不需要任何組態。 不過，儘管這個程序可保證寫入，但是它會在系統中引進額外負荷。 您可以藉由撰寫交易式的有效程式碼，將影響降到最低。 交易式的有效程式碼大致分為兩個類別。
+SQL 集區會使用交易記錄來認可對資料庫所做的變更。 每個散發套件都有自己的交易記錄檔。 交易記錄檔寫入是自動的。 不需要任何組態。 不過，儘管這個程序可保證寫入，但是它會在系統中引進額外負荷。 您可以藉由撰寫交易式的有效程式碼，將影響降到最低。 交易式的有效程式碼大致分為兩個類別。
 
 * 盡可能使用最低限度的記錄建構
 * 使用已設定範圍的批次處理資料，以避免單數的長時間執行交易
@@ -44,7 +44,7 @@ SQL 池使用事務日誌向資料庫提交更改。 每個散發套件都有自
 
 下列作業也能以最低限度記錄︰
 
-* 建立表做選擇 ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+* CREATE TABLE 為 SELECT （[CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 * INSERT..SELECT
 * CREATE INDEX
 * ALTER INDEX REBUILD
@@ -78,7 +78,7 @@ CTAS 和 INSERT...SELECT 都是大量載入作業。 不過，兩者都會受到
 值得注意的是任何更新次要或非叢集索引的寫入一定是完整記錄作業。
 
 > [!IMPORTANT]
-> SQL 池有 60 個分發。 因此，假設所有資料列平均散發，並位於單一分割中，您的批次必須包含 6,144,000 個資料列或更大刑，才能在寫入叢集資料行存放區索引時進行最低限度記錄。 如果資料表已分割，且插入的資料列跨越分割界限，每個假設平均資料散發的分割界限將需要 6,144,000 個資料列。 每個散發套件中的每個分割必須獨立超過 102,400 的資料列臨界值，才能讓插入以最低限度記錄在散發套件中。
+> SQL 集區有60發行版本。 因此，假設所有資料列平均散發，並位於單一分割中，您的批次必須包含 6,144,000 個資料列或更大刑，才能在寫入叢集資料行存放區索引時進行最低限度記錄。 如果資料表已分割，且插入的資料列跨越分割界限，每個假設平均資料散發的分割界限將需要 6,144,000 個資料列。 每個散發套件中的每個分割必須獨立超過 102,400 的資料列臨界值，才能讓插入以最低限度記錄在散發套件中。
 
 利用叢集索引將資料載入非空白資料表中，通常會混合包含完整記錄和最低限度記錄資料列。 叢集索引是頁面的平衡樹狀結構 (b 型樹狀目錄)。 如果寫入的頁面中已包含另一個交易的資料列，則這些寫入將會完整記錄。 不過，如果頁面是空的，則該頁面的寫入將會以最低限度記錄。
 
@@ -116,7 +116,7 @@ RENAME OBJECT [dbo].[FactInternetSales_d] TO [FactInternetSales];
 
 ## <a name="optimizing-updates"></a>最佳化更新
 
-UPDATE 作業會有完整的記錄。  如果需要更新表或分區中的大量行,則使用最低記錄的操作(如[CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)通常效率更高。
+UPDATE 作業會有完整的記錄。  如果您需要更新資料表或資料分割中的大量資料列，使用最低限度記錄作業（例如[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) ）來執行這項操作，通常會更有效率。
 
 在下方的範例中，完整的資料表更新已轉換成 CTAS，以便進行最低限度的記錄。
 
@@ -177,7 +177,7 @@ DROP TABLE [dbo].[FactInternetSales_old]
 ```
 
 > [!NOTE]
-> 使用 SQL 池工作負載管理功能可以重新創建大型錶。 如需詳細資訊，請參閱[適用於工作負載管理的資源類別](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
+> 重新建立大型資料表可能會因為使用 SQL 集區工作負載管理功能而獲益。 如需詳細資訊，請參閱[適用於工作負載管理的資源類別](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。
 
 ## <a name="optimizing-with-partition-switching"></a>利用分割切換進行最佳化
 
@@ -406,20 +406,20 @@ END
 
 ## <a name="pause-and-scaling-guidance"></a>暫停和調整指引
 
-Azure 同步分析允許您按需[暫停、恢復和擴展](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)SQL 池。 
+Azure Synapse Analytics 可讓您視需要[暫停、繼續及調整](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)您的 SQL 集區。 
 
-當您暫停或擴展 SQL 池時,請務必瞭解任何在途事務都立即終止;導致回滾任何打開的事務。 
+當您暫停或調整您的 SQL 集區時，請務必瞭解任何進行中的交易都會立即終止;導致任何開啟的交易回復。 
 
-如果您的工作負載在暫停或調整作業之前發出長時間執行且不完整的資料修改，則這項工作必須復原。 此復原可能會影響暫停或縮放 SQL 池所需的時間。 
+如果您的工作負載在暫停或調整作業之前發出長時間執行且不完整的資料修改，則這項工作必須復原。 這種復原可能會影響暫停或調整 SQL 集區所需的時間。 
 
 > [!IMPORTANT]
 > `UPDATE` 和 `DELETE` 都是完整記錄作業，因此這些復原/重做作業花費的時間可能會比對等的最低限度記錄作業長很多。
 
-最佳方案是讓飛行數據修改事務在暫停或縮放 SQL 池之前完成。 但是，此案例不一定都可行。 若要降低長時間回復的風險，請考慮下列其中一個選項：
+最佳案例是讓進行中的資料修改交易在暫停或調整 SQL 集區之前完成。 但是，此案例不一定都可行。 若要降低長時間回復的風險，請考慮下列其中一個選項：
 
 * 使用[CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)重寫長時間執行的作業
 * 將作業分成多個區塊；在資料列子集上運作
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[SQL 池中的事務](develop-transactions.md),瞭解有關隔離級別和事務限制的更多內容。  有關其他最佳做法的概述,請參閱[SQL 池最佳實踐](best-practices-sql-pool.md)。
+若要深入瞭解隔離等級和交易限制，請參閱[SQL 集區中的交易](develop-transactions.md)。  如需其他最佳作法的總覽，請參閱[SQL 集區最佳做法](best-practices-sql-pool.md)。

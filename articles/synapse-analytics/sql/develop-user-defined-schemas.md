@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL 中使用者定義的架構
-description: 在以下各節中,您將找到使用 T-SQL 使用者定義的架構使用 Azure 突觸分析的突觸 SQL 功能開發解決方案的各種提示。
+title: Synapse SQL 中的使用者定義架構
+description: 在下列各節中，您將找到各種使用 T-sql 使用者定義架構來開發解決方案的秘訣，其中包含 Azure Synapse Analytics 的 Synapse SQL 功能。
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,49 +10,49 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: ac4753da1405fe6b8cd209bb4899192e9f317aa1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428702"
 ---
-# <a name="user-defined-schemas-within-synapse-sql"></a>Synapse SQL 中使用者定義的架構
+# <a name="user-defined-schemas-within-synapse-sql"></a>Synapse SQL 中的使用者定義架構
 
-在以下各節中,您將找到使用 T-SQL 使用者定義的架構在 Synapse SQL 中開發解決方案的各種提示。
+在下列各節中，您會發現在 Synapse SQL 中使用 T-sql 使用者定義架構來開發解決方案的各種秘訣。
 
 ## <a name="schemas-for-application-boundaries"></a>應用程式界限的結構描述
 
-傳統的分析體系結構通常使用單獨的資料庫來根據工作負載、域或安全性創建應用程序邊界。 例如,傳統的 SQL Server 分析基礎結構可能包括暫存資料庫、分析資料庫和數據集市資料庫。 在此拓撲中,每個資料庫在體系結構中作為工作負載和安全邊界運行。
+傳統的分析架構通常會使用不同的資料庫來建立以工作負載、網域或安全性為基礎的應用程式界限。 例如，傳統 SQL Server 分析基礎結構可能包含臨時資料庫、分析資料庫和資料超市資料庫。 在此拓撲中，每個資料庫都是以工作負載和架構中的安全性界限來運作。
 
-相反,Synapse SQL 在一個資料庫中運行整個分析工作負荷。 不允許跨資料庫聯接。 Synapse SQL 期望倉庫使用的所有表都存儲在一個資料庫中。
+相反地，Synapse SQL 會在一個資料庫中執行整個分析工作負載。 不允許跨資料庫聯結。 Synapse SQL 需要倉儲所使用的所有資料表都儲存在一個資料庫中。
 
 > [!NOTE]
-> SQL 池不支援任何類型的跨資料庫查詢。 因此,需要修訂利用此模式的分析實現。 SQL 按需(預覽)支援跨資料庫查詢。
+> SQL 集區不支援任何種類的跨資料庫查詢。 因此，使用此模式的分析實現將需要修訂。 SQL 隨選（預覽）支援跨資料庫查詢。
 
 ## <a name="user-defined-schema-recommendations"></a>使用者定義的架構建議
 
-其中包括使用使用者定義的架構整合工作負載、安全性、域和功能邊界的建議:
+其中包含使用使用者定義的架構來合併工作負載、安全性、網域和功能界限的建議：
 
-- 使用一個資料庫運行整個分析工作負荷。
-- 整合現有分析環境以使用一個資料庫。
+- 使用一個資料庫來執行整個分析工作負載。
+- 整合現有的分析環境，以使用一個資料庫。
 - 運用 **使用者定義的結構描述** 來提供先前使用資料庫實作的界限。
 
-如果以前未使用使用者定義的架構,則您擁有乾淨的石板。 使用舊資料庫名稱作為 Synapse SQL 資料庫中使用者定義的架構的基礎。
+如果先前未曾用過使用者定義的架構，您就會有乾淨的平板電腦。 使用舊的資料庫名稱做為 Synapse SQL 資料庫中使用者定義架構的基礎。
 
-如果架構已被使用,則有幾個選項:
+如果已使用架構，則您有幾個選項：
 
 - 移除舊版結構描述名稱並重新開始
-- 以將舊架構名稱預先掛到表格名稱來保留舊架構名稱
-- 通過在額外的架構中實現對表的視圖來保留舊架構名稱,從而重新創建舊的架構結構。
+- 將舊版架構名稱預先擱置至資料表名稱，以保留舊版架構名稱
+- 藉由在額外的架構中執行資料表的視圖，以重新建立舊的架構結構，以保留舊版架構名稱。
 
 > [!NOTE]
-> 在第一次檢查時,選項 3 可能看起來是最具吸引力的選擇。 視圖僅在 Synapse SQL 中讀取。 必須對基底資料表執行任何的資料表或資料修改。 選項 3 還在您的系統中引進了一個檢視層。 如果您已經在體系結構中使用視圖,則可能需要對此進行額外的考慮。
+> 第一次檢查時，選項3看起來會像是最吸引人的選擇。 Views 在 Synapse SQL 中是唯讀的。 必須對基底資料表執行任何的資料表或資料修改。 選項 3 還在您的系統中引進了一個檢視層。 如果您已經在架構中使用 views，您可能會想要另外考慮一下。
 > 
 > 
 
 ### <a name="examples"></a>範例
 
-基於資料庫名稱實現使用者定義的架構。
+根據資料庫名稱來執行使用者定義的架構。
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -70,7 +70,7 @@ CREATE TABLE [edw].[customer] -- create analytics tables in the edw schema
 );
 ```
 
-通過將舊架構名稱預先掛起到表名稱來保留它們。 使用工作負載界限的結構描述。
+保留舊版架構名稱，方法是將它們預先暫止于資料表名稱。 使用工作負載界限的結構描述。
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -88,7 +88,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-使用檢視保留舊架構名稱。
+使用 views 保留舊版架構名稱。
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -116,10 +116,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> 架構策略的任何更改都需要檢查資料庫的安全模型。 在許多情況下,您可以通過在架構級別分配許可權來簡化安全模型。
+> 架構策略中的任何變更都需要審查資料庫的安全性模型。 在許多情況下，您可能可以在架構層級指派許可權，以簡化安全性模型。
 
-如果需要更精細的許可權,則可以使用資料庫角色。 有關資料庫角色的詳細資訊,請參閱[管理資料庫角色和使用者](../../analysis-services/analysis-services-database-users.md)一文。
+如果需要更細微的許可權，您可以使用資料庫角色。 如需資料庫角色的詳細資訊，請參閱[管理資料庫角色和使用者](../../analysis-services/analysis-services-database-users.md)一文。
 
 ## <a name="next-steps"></a>後續步驟
 
-有關更多開發提示,請參閱[Synapse SQL 開發概述](develop-overview.md)。
+如需更多開發秘訣，請參閱[SYNAPSE SQL 開發總覽](develop-overview.md)。

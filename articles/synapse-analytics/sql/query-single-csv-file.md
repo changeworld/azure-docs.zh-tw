@@ -1,6 +1,6 @@
 ---
-title: 使用 SQL 以查詢 CSV 檔(預覽)
-description: 在本文中,您將學習如何使用 SQL 按需(預覽)查詢具有不同檔案格式的單個 CSV 檔。
+title: 使用隨選 SQL 查詢 CSV 檔案（預覽）
+description: 在本文中，您將瞭解如何使用 SQL 隨選（預覽）來查詢具有不同檔案格式的單一 CSV 檔案。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,37 +10,37 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 3d09692c06bcdffbb070f545950092592e417838
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431588"
 ---
 # <a name="query-csv-files"></a>查詢 CSV 檔案
 
-在本文中,您將學習如何在 Azure 同步分析中使用 SQL 按需(預覽)查詢單個 CSV 檔。 CSV 檔案可能具有不同的格式: 
+在本文中，您將瞭解如何使用 Azure Synapse 分析中的 SQL 隨選（預覽）來查詢單一 CSV 檔案。 CSV 檔案可能會有不同的格式： 
 
-- 標題與未命名列
-- 逗號和製表符分隔值
-- 視窗與 Unix 樣式行結尾
-- 非引號和引號值以及轉義字元
+- 包含和不含標頭資料列
+- 逗號和定位字元分隔值
+- Windows 和 Unix 樣式行尾結束符號
+- 非引號和引號的值，以及逸出字元
 
-下面將介紹上述所有變體。
+以下將涵蓋上述所有變化。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-在閱讀本文的其餘部分之前,請查看以下文章:
+閱讀本文的其餘部分之前，請先參閱下列文章：
 
-- [首次設定](query-data-storage.md#first-time-setup)
+- [第一次設定](query-data-storage.md#first-time-setup)
 - [先決條件](query-data-storage.md#prerequisites)
 
-## <a name="windows-style-new-line"></a>Windows 樣式新行
+## <a name="windows-style-new-line"></a>Windows 樣式的新行
 
-以下查詢演示如何讀取沒有標題行、Windows 樣式的新行和逗號分隔列的 CSV 檔。
+下列查詢顯示如何讀取沒有標頭資料列的 CSV 檔案、Windows 樣式的新行，以及逗號分隔的資料行。
 
-檔案預覽:
+檔案預覽：
 
-![CSV 檔的前 10 行沒有標頭,Windows 樣式新行。](./media/query-single-csv-file/population.png)
+![CSV 檔案中的前 10 個資料列沒有標頭，採用 Windows 樣式新行。](./media/query-single-csv-file/population.png)
 
 ```sql
 SELECT *
@@ -61,13 +61,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="unix-style-new-line"></a>Unix 風格的新行
+## <a name="unix-style-new-line"></a>Unix 樣式的新行
 
-以下查詢演示如何讀取沒有標題行、具有 Unix 樣式的新行和逗號分隔列的檔。 請注意檔與其他示例相比的不同位置。
+下列查詢顯示如何讀取沒有標頭資料列的檔案、具有 Unix 樣式的新行，以及逗號分隔的資料行。 請注意，與其他範例相比，檔案的不同位置。
 
-檔案預覽:
+檔案預覽：
 
-![CSV 檔的前 10 行沒有頭行和 Unix 樣式新行。](./media/query-single-csv-file/population-unix.png)
+![CSV 檔案中的前10個數據列，不含標頭列，且具有 Unix 樣式的新行。](./media/query-single-csv-file/population-unix.png)
 
 ```sql
 SELECT *
@@ -88,13 +88,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="header-row"></a>標題列
+## <a name="header-row"></a>標頭資料列
 
-以下查詢示範如何使用頭行、Unix 樣式的新行和逗號分隔列的讀取檔。 請注意檔與其他示例相比的不同位置。
+下列查詢示範如何使用標頭資料列、以 Unix 樣式的新行和以逗號分隔的資料行來讀取檔案。 請注意，與其他範例相比，檔案的不同位置。
 
-檔案預覽:
+檔案預覽：
 
-![CSV 檔的前 10 行,包含頭行和 Unix 樣式新行。](./media/query-single-csv-file/population-unix-hdr.png)
+![CSV 檔案的前10個數據列，其中包含標頭列，以及 Unix 樣式的新行。](./media/query-single-csv-file/population-unix-hdr.png)
 
 ```sql
 SELECT *
@@ -115,13 +115,13 @@ WHERE
     AND year = 2017;
 ```
 
-## <a name="custom-quote-character"></a>自訂報價字元
+## <a name="custom-quote-character"></a>自訂引號字元
 
-以下查詢示範如何讀取具有頭行、具有 Unix 樣式的新行、逗號分隔列和引號值的檔。 請注意檔與其他示例相比的不同位置。
+下列查詢顯示如何讀取具有標頭資料列的檔案，以及 Unix 樣式的新行、以逗號分隔的資料行，以及加上引號的值。 請注意，與其他範例相比，檔案的不同位置。
 
-檔案預覽:
+檔案預覽：
 
-![CSV 檔的前 10 行,包含頭行和 Unix 樣式新行和引用值。](./media/query-single-csv-file/population-unix-hdr-quoted.png)
+![CSV 檔案的前10個數據列，其中包含標頭列，以及 Unix 樣式的新行和引號值。](./media/query-single-csv-file/population-unix-hdr-quoted.png)
 
 ```sql
 SELECT *
@@ -145,15 +145,15 @@ WHERE
 ```
 
 > [!NOTE]
-> 如果省略 FIELDQUOTE 參數,則此查詢將返回相同的結果,因為 FIELDQUOTE 的預設值為雙引號。
+> 如果您省略 FIELDQUOTE 參數，則此查詢會傳回相同的結果，因為 FIELDQUOTE 的預設值是雙引號。
 
 ## <a name="escaping-characters"></a>逸出字元
 
-以下查詢演示如何讀取具有頭行的檔,該檔具有 Unix 樣式的新行、逗號分隔列和用於值內欄位分隔符 (逗號)的轉義字元。 請注意檔與其他示例相比的不同位置。
+下列查詢顯示如何讀取具有標頭資料列的檔案，其中包含 Unix 樣式的新行、逗號分隔的資料行，以及用於值內欄位分隔符號（逗號）的 escape 字元。 請注意，與其他範例相比，檔案的不同位置。
 
-檔案預覽:
+檔案預覽：
 
-![CSV 檔的前 10 行,包含頭行和 Unix 樣式新行和用於欄位分隔符的轉義字元。](./media/query-single-csv-file/population-unix-hdr-escape.png)
+![CSV 檔案中的前10個數據列，其中包含標頭列，以及用於欄位分隔符號的 Unix 樣式新行和 escape 字元。](./media/query-single-csv-file/population-unix-hdr-escape.png)
 
 ```sql
 SELECT *
@@ -176,15 +176,15 @@ WHERE
 ```
 
 > [!NOTE]
-> 如果未指定 ESCAPECHAR,則此查詢將失敗,因為「Slov,enia」中的逗號將被視為欄位分隔符,而不是國家名稱的一部分。 "斯洛夫,伊尼亞"將被視為兩列。 因此,特定行的列數將大於其他行,並且一列的列將超過在 WITH 子句中定義的列。
+> 如果未指定 ESCAPECHAR，此查詢將會失敗，因為 "之外，enia" 中的逗號會被視為欄位分隔符號，而不是國家/地區名稱的一部分。 "之外，enia" 會視為兩個數據行。 因此，特定資料列會有一個以上的資料行，而不是在 WITH 子句中定義的資料行。
 
-## <a name="tab-delimited-files"></a>選項卡分隔檔案
+## <a name="tab-delimited-files"></a>Tab 鍵分隔檔案
 
-以下查詢示範如何使用頭行、Unix 樣式的新行和選項卡分隔列讀取檔。 請注意檔與其他示例相比的不同位置。
+下列查詢會示範如何使用標頭資料列、以 Unix 樣式的新行，以及 tab 鍵分隔的資料行來讀取檔案。 請注意，與其他範例相比，檔案的不同位置。
 
-檔案預覽:
+檔案預覽：
 
-![CSV 檔的前 10 行,包含頭行和 Unix 樣式新行和選項卡分隔符。](./media/query-single-csv-file/population-unix-hdr-tsv.png)
+![CSV 檔案的前10個數據列，含有標題列，以及 Unix 樣式的新行和定位字元分隔符號。](./media/query-single-csv-file/population-unix-hdr-tsv.png)
 
 ```sql
 SELECT *
@@ -206,14 +206,14 @@ WHERE
     AND year = 2017
 ```
 
-## <a name="returning-subset-of-columns"></a>返回欄子集
+## <a name="returning-subset-of-columns"></a>傳回資料行的子集
 
-到目前為止,您已經使用 WITH 並列出所有列指定了 CSV 檔架構。 您只能為每個所需的列使用一個批號來指定查詢中實際需要的列。 您還將省略不感興趣的列。
+到目前為止，您已使用搭配來指定 CSV 檔案架構，並列出所有資料行。 在查詢中，您只能針對所需的每個資料行使用序數來指定您實際需要的資料行。 您也會省略不感的資料行。
 
-以下查詢傳回檔案中不同的國家/地區名稱數,僅指定所需的欄:
+下列查詢會傳回檔案中不同國家/地區名稱的數目，僅指定所需的資料行：
 
 > [!NOTE]
-> 請查看下面的查詢中的 WITH 子句,並注意行末尾有"2"(無引號),您可以在其中定義 *[country_name]* 列。 這意味著 *[country_name]* 列是檔中的第二列。 查詢將忽略檔中的所有列,但第二列除外。
+> 請查看下方查詢中的 WITH 子句，並注意在您定義 *[country_name]* 資料行的資料列結尾有 "2" （不含引號）。 這表示 *[country_name]* 資料行是檔案中的第二個數據行。 此查詢會忽略檔案中的所有資料行，但不包括第二個。
 
 ```sql
 SELECT
@@ -234,7 +234,7 @@ WITH (
 
 ## <a name="next-steps"></a>後續步驟
 
-下一篇文章將向您展示如何:
+下一篇文章將為您示範如何：
 
 - [查詢 Parquet 檔案](query-parquet-files.md)
-- [查詢資料夾與多個檔案](query-folders-multiple-csv-files.md)
+- [查詢資料夾和多個檔案](query-folders-multiple-csv-files.md)

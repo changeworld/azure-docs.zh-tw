@@ -1,5 +1,5 @@
 ---
-title: 從亞馬遜紅移複製資料
+title: 從 Amazon Redshift 複製資料
 description: 了解如何使用 Azure Data Factory 將資料從 Amazon Redshift 複製到支援的接收資料存放區。
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.openlocfilehash: ce63da745fb84ebccd57b246fc934f595dd7cda1
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418247"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>使用 Azure Data Factory 從 Amazon Redshift 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](v1/data-factory-amazon-redshift-connector.md)
-> * [目前版本](connector-amazon-redshift.md)
+> * [第 1 版](v1/data-factory-amazon-redshift-connector.md)
+> * [目前的版本](connector-amazon-redshift.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -30,10 +30,10 @@ ms.locfileid: "81418247"
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-此 Amazon 紅移連接器支援用於以下活動:
+下列活動支援此 Amazon Redshift 連接器：
 
-- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [尋找活動](control-flow-lookup-activity.md)
+- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- [查閱活動](control-flow-lookup-activity.md)
 
 您可以將資料從 Amazon Redshift 複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
@@ -42,7 +42,7 @@ ms.locfileid: "81418247"
 > [!TIP]
 > 在 Redshift 中複製大量資料時，若想獲得最佳效能，請考慮透過 Amazon S3 使用內建的 Redshift UNLOAD。 如需詳細資料，請參閱「[使用 UNLOAD 複製 Amazon Redshift 中的資料](#use-unload-to-copy-data-from-amazon-redshift)」章節。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 如果您要使用[自我裝載 Integration Runtime](create-self-hosted-integration-runtime.md) 將資料複製到內部部署資料存放區，請將 Amazon Redshift 叢集的存取權授與 Integration Runtime (使用電腦的 IP 位址)。 如需相關指示，請參閱 [授權存取叢集](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 。
 * 如果您要將資料複製到 Azure 資料存放區，請參閱 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653) 以取得 Azure 資料中心所使用的計算 IP 位址和 SQL 範圍。
@@ -59,15 +59,15 @@ ms.locfileid: "81418247"
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 類型屬性必須設定為:**亞馬遜紅移** | 是 |
+| type | Type 屬性必須設定為： **AmazonRedshift** | 是 |
 | 伺服器 |Amazon Redshift 伺服器的 IP 位址或主機名稱。 |是 |
 | 連接埠 |Amazon Redshift 伺服器用來接聽用戶端連線的 TCP 連接埠號碼。 |否，預設值為 5439 |
 | [資料庫] |Amazon Redshift 資料庫的名稱。 |是 |
 | username |可存取資料庫之使用者的名稱。 |是 |
-| 密碼 |使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
+| password |使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 您可以使用 Azure Integration Runtime 或「自我裝載 Integration Runtime」(如果您的資料存放區位於私人網路中)。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
-**範例:**
+**範例：**
 
 ```json
 {
@@ -95,16 +95,16 @@ ms.locfileid: "81418247"
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Amazon Redshift 資料集所支援的屬性清單。
+如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Amazon Redshift 資料集所支援的屬性清單。
 
-要從 Amazon Redshift 複製資料,支援以下屬性:
+若要從 Amazon Redshift 複製資料，支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為 **:AmazonRedshiftTable** | 是 |
+| type | 資料集的類型屬性必須設定為： **AmazonRedshiftTable** | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (如果已指定活動來源中的「查詢」)  |
 | 資料表 | 資料表的名稱。 |否 (如果已指定活動來源中的「查詢」)  |
-| tableName | 具有架構的表的名稱。 此屬性支援向後相容性。 用於`schema`新`table`工作負載。 | 否 (如果已指定活動來源中的「查詢」) |
+| tableName | 具有架構之資料表的名稱。 此屬性支援回溯相容性。 針對`schema`新`table`的工作負載使用和。 | 否 (如果已指定活動來源中的「查詢」) |
 
 **範例**
 
@@ -124,7 +124,7 @@ ms.locfileid: "81418247"
 }
 ```
 
-如果使用`RelationalTable`類型化數據集,則仍支援該數據集,同時建議您今後使用新數據集。
+如果您使用`RelationalTable`的是具類型的資料集，則仍會受到支援，但建議您在未來使用新的 dataset。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -132,7 +132,7 @@ ms.locfileid: "81418247"
 
 ### <a name="amazon-redshift-as-source"></a>Amazon Redshift 作為來源
 
-若要從 Amazon Redshift 複製資料，請將複製活動中的來源類型設定為 **AmazonRedshiftSource**。 複製活動**來源**部份支援以下屬性:
+若要從 Amazon Redshift 複製資料，請將複製活動中的來源類型設定為 **AmazonRedshiftSource**。 複製活動的 [**來源**] 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -221,21 +221,21 @@ ms.locfileid: "81418247"
 | Amazon Redshift 資料類型 | Data Factory 過渡期資料類型 |
 |:--- |:--- |
 | bigint |Int64 |
-| BOOLEAN |String |
-| CHAR |String |
+| BOOLEAN |字串 |
+| CHAR |字串 |
 | 日期 |Datetime |
 | DECIMAL |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
 | real |Single |
 | SMALLINT |Int16 |
-| TEXT |String |
+| TEXT |字串 |
 | timestamp |Datetime |
 | VARCHAR |String |
 
-## <a name="lookup-activity-properties"></a>尋找活動屬性
+## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
+若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

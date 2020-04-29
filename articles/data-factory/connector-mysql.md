@@ -12,35 +12,35 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
 ms.openlocfilehash: 8467bbe1512e45342b86ff62d51a3f66b3096f03
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418128"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>使用 Azure Data Factory 從 MySQL 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](v1/data-factory-onprem-mysql-connector.md)
-> * [目前版本](connector-mysql.md)
+> * [第 1 版](v1/data-factory-onprem-mysql-connector.md)
+> * [目前的版本](connector-mysql.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 MySQL 資料庫複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
 
 >[!NOTE]
->要將資料從或複製到[Azure 資料庫以進行 MySQL](../mysql/overview.md)服務,請使用[MySQL 連接器的](connector-azure-database-for-mysql.md)專用 Azure 資料庫。
+>若要將資料從或複製到[適用於 MySQL 的 Azure 資料庫](../mysql/overview.md)服務，請使用特殊化的[適用於 MySQL 的 Azure 資料庫連接器](connector-azure-database-for-mysql.md)。
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-此 MySQL 連接器支援用於以下活動:
+此 MySQL 連接器支援下列活動：
 
-- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [尋找活動](control-flow-lookup-activity.md)
+- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- [查閱活動](control-flow-lookup-activity.md)
 
 您可以將資料從 MySQL 資料庫複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
 具體而言，這個 MySQL 連接器支援 MySQL **5.6 和 5.7 版**。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -60,16 +60,16 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**MySql** | 是 |
 | connectionString | 指定連線到適用於 MySQL 的 Azure 資料庫執行個體所需的資訊。<br/> 您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `password` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
-| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 從[先決條件](#prerequisites)部分瞭解更多資訊。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
 一般的連接字串為 `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`。 您可以根據您的案例設定更多屬性：
 
-| 屬性 | 描述 | 選項。 | 必要 |
+| 屬性 | 描述 | 選項 | 必要 |
 |:--- |:--- |:--- |:--- |
-| SSLMode | 這個選項指定驅動程式在連接到 MySQL 時是否使用 TLS 加密和驗證。 例如,`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(預設)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
+| SSLMode | 此選項會指定驅動程式是否會在連線到 MySQL 時使用 TLS 加密和驗證。 例如，`SSLMode=<0/1/2/3/4>`| DISABLED (0) / PREFERRED (1) **(預設)** / REQUIRED (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | 否 |
 | UseSystemTrustStore | 此選項指定是否使用來自系統信任存放區或來自指定 PEM 檔案的 CA 憑證。 例如 `UseSystemTrustStore=<0/1>;`| 啟用 (1) / 停用 (0) **(預設)** | 否 |
 
-**範例:**
+**範例：**
 
 ```json
 {
@@ -141,13 +141,13 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 MySQL 資料集所支援的屬性清單。
+如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 MySQL 資料集所支援的屬性清單。
 
-要從 MySQL 複製資料,請支援以下屬性:
+若要從 MySQL 複製資料，支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為 **:MySqlTable** | 是 |
+| type | 資料集的類型屬性必須設定為： **MySqlTable** | 是 |
 | tableName | MySQL 資料庫中的資料表名稱。 | 否 (如果已指定活動來源中的「查詢」) |
 
 **範例**
@@ -168,7 +168,7 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 }
 ```
 
-如果使用`RelationalTable`類型化數據集,則仍支援該數據集,同時建議您今後使用新數據集。
+如果您使用`RelationalTable`的是具類型的資料集，則仍會受到支援，但建議您在未來使用新的 dataset。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -176,14 +176,14 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 
 ### <a name="mysql-as-source"></a>MySQL 作為來源
 
-要從 MySQL 複製資料,複製活動**來源**部分支援以下屬性:
+若要從 MySQL 複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 必須複製活動來源類型屬性設定**為 :MySqlSource** | 是 |
+| type | 複製活動來源的類型屬性必須設定為： **MySqlSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"SELECT * FROM MyTable"` 。 | 否 (如果已指定資料集中的 "tableName") |
 
-**範例:**
+**範例：**
 
 ```json
 "activities":[
@@ -215,7 +215,7 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 ]
 ```
 
-如果使用`RelationalSource`類型化源,它仍然支援按"當前",同時建議您今後使用新的源。
+如果您使用`RelationalSource`的是具類型的來源，則仍會受到支援，但建議您在未來使用新的來源。
 
 ## <a name="data-type-mapping-for-mysql"></a>MySQL 的資料類型對應
 
@@ -265,9 +265,9 @@ Integration Runtime 從 3.7 版開始提供內建的 MySQL 驅動程式，因此
 | `year` |`Int` |
 
 
-## <a name="lookup-activity-properties"></a>尋找活動屬性
+## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
+若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。

@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 7/5/2019
 ms.author: trbye
 ms.openlocfilehash: 8abd520a7bb80f1f9a2d8ebcbe46b90fe59a96ec
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81422073"
 ---
 ## <a name="create-a-speech-resource"></a>建立語音資源
 
-1. 登入[Azure 門戶](https://portal.azure.com)
-1. 點選[「建立**聲音」**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)資源
+1. 登入 [Azure 入口網站](https://portal.azure.com)
+1. 按一下 [[建立**語音**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)資源]
 1. 輸入所有必要的設定：
 
     |設定|值|
@@ -29,10 +29,10 @@ ms.locfileid: "81422073"
     |定價層|`F0` - 最低定價層|
     |資源群組|選取可用的資源群組|
 
-1. 按一下 [建立]****，並等待系統建立資源。 建立後,瀏覽到資源頁
-1. 收集已`endpoint`設定的 API 金鑰:
+1. 按一下 [建立]  ，並等待系統建立資源。 建立之後，流覽至 [資源] 頁面
+1. 收集已`endpoint`設定的和 API 金鑰：
 
-    |門戶中的資源選項卡|設定|值|
+    |入口網站的 [資源] 索引標籤|設定|值|
     |--|--|--|
-    |**概觀**|端點|複製終結點。 看起來類似於`https://speech.cognitiveservices.azure.com/sts/v1.0/issuetoken`|
-    |**索引鍵**|API 金鑰|複製兩個鍵中的 1 個。 它是一個 32 個字母數位字元字串,沒有空格或破`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`折 號。|
+    |**概觀**|端點|複製端點。 看起來類似`https://speech.cognitiveservices.azure.com/sts/v1.0/issuetoken`|
+    |**[索引鍵]**|API 金鑰|複製這兩個金鑰的1。 它是32英數位元字串， `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`不含空格或連字號。|

@@ -7,18 +7,18 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 1773e22a54cc86e7736c91e4be757caa0250cbf7
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81421926"
 ---
-### <a name="speech-to-text-or-custom-speech-to-text"></a>語音到文字或自訂語音到文字
+### <a name="speech-to-text-or-custom-speech-to-text"></a>語音轉換文字或自訂語音轉換文字
 
-該容器提供基於 Websocket 的查詢終結點 API,這些 API 透過[語音 SDK](../index.yml)進行訪問。 默認情況下,語音 SDK 使用連線語音服務。 若要使用容器，您必須變更初始化方法。
+容器提供以 websocket 為基礎的查詢端點 Api，可透過[語音 SDK](../index.yml)存取。 根據預設，語音 SDK 會使用線上語音服務。 若要使用容器，您必須變更初始化方法。
 
 > [!TIP]
-> 將語音 SDK 與容器一起使用時,不需要提供 Azure 語音資源[訂閱金鑰或身份驗證承載權杖](../rest-speech-to-text.md#authentication)。
+> 搭配使用語音 SDK 與容器時，您不需要提供 Azure 語音資源訂用帳戶[金鑰或驗證持有人權杖](../rest-speech-to-text.md#authentication)。
 
 請參閱以下範例。
 
@@ -30,7 +30,7 @@ ms.locfileid: "81421926"
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 ```
 
-使用此容器[主機](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)呼叫 :
+若要使用容器[主機](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.fromhost?view=azure-dotnet)進行此呼叫：
 
 ```csharp
 var config = SpeechConfig.FromHost(
@@ -45,7 +45,7 @@ speech_config = speechsdk.SpeechConfig(
     subscription=speech_key, region=service_region)
 ```
 
-使用此容器[主機](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)呼叫 :
+若要使用容器[主機](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python)進行此呼叫：
 
 ```python
 speech_config = speechsdk.SpeechConfig(

@@ -1,30 +1,30 @@
 ---
-title: 指定服務交換矩陣服務終結點
+title: 指定 Service Fabric 服務端點
 description: 如何在服務資訊清單中描述端點資源，包括如何設定 HTTPS 端點
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 88e71d15829e68bde635f5b4d40224b8fa914f40
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417584"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服務資訊清單中指定資源
-## <a name="overview"></a>概觀
-服務清單允許在不更改編譯代碼的情況下聲明或更改服務使用的資源。 服務交換矩陣支援配置服務的終結點資源。 透過應用程式資訊清單中的 SecurityGroup，即可控制存取服務資訊清單中的指定資源。 資源宣告可讓您在部署階段變更這些資源，也就是服務不需要導入新的組態機制。 ServiceManifest.xml 檔案的結構描述定義是和 Service Fabric SDK 及工具一起安裝在 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
+## <a name="overview"></a>總覽
+服務資訊清單可讓服務所使用的資源進行宣告或變更，而不需要變更已編譯的程式碼。 Service Fabric 支援設定服務的端點資源。 透過應用程式資訊清單中的 SecurityGroup，即可控制存取服務資訊清單中的指定資源。 資源宣告可讓您在部署階段變更這些資源，也就是服務不需要導入新的組態機制。 ServiceManifest.xml 檔案的結構描述定義是和 Service Fabric SDK 及工具一起安裝在 *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*。
 
 ## <a name="endpoints"></a>端點
 在服務資訊清單中定義端點資源時，若沒有明確指定連接埠，Service Fabric 會從保留的應用程式連接埠範圍指派連接埠。 例如，請看本段落之後提供的資訊清單片段中所指定的端點 *ServiceEndpoint1* 。 此外，服務也可以在資源中要求特定連接埠。 不同的連接埠號碼可以指派給在不同叢集節點上執行的服務複本，而在同一節點上執行的服務複本可以共用連接埠。 然後服務複本就可以在需要時使用這些連接埠進行複寫和接聽用戶端要求。
 
-啟動指定 Htcrit 的服務後,Service Fabric 將設置埠的存取控制項目,將指定的伺服器證書綁定到埠,並授予服務作為證書私鑰的許可權執行的標識。 每次 Service Fabric 啟動時,或者通過升級更改應用程式的證書聲明時,都會調用啟動流。 還將監視終結點證書的更改/續訂,並在必要時定期重新應用許可權。
+啟動指定 HTTPs 端點的服務時，Service Fabric 將會設定埠的存取控制專案、將指定的伺服器憑證系結至埠，同時也將服務執行的身分識別授與憑證的私密金鑰許可權。 每次 Service Fabric 啟動，或應用程式的憑證宣告透過升級變更時，就會叫用啟用流程。 端點憑證也會針對變更/更新進行監視，並且會視需要定期重新套用許可權。
 
-服務終止後,Service Fabric 將清理終結點訪問控制條目,並刪除證書綁定。 但是,不會清除應用於證書私鑰的任何許可權。
+服務終止後，Service Fabric 將會清除端點存取控制專案，並移除憑證系結。 不過，將不會清除任何套用至憑證私密金鑰的許可權。
 
 > [!WARNING] 
-> 根據設計,靜態埠不應與 ClusterManifest 中指定的應用程式埠範圍重疊。 如果指定靜態埠,請將其分配到應用程式埠範圍之外,否則將導致埠衝突。 使用版本 6.5CU2 時,我們將在檢測到此類衝突時發出**運行狀況警告**,但允許部署繼續與已發貨的 6.5 行為同步。 但是,我們可能會阻止應用程式部署從下一個主要版本。
+> 依照設計，靜態埠不應該與 ClusterManifest 中指定的應用程式埠範圍重迭。 如果您指定靜態通訊埠，請在應用程式埠範圍外指派它，否則會導致埠衝突。 在 release 6.5 CU2 中，我們會在偵測到這類衝突時發出**健全狀況警告**，但讓部署繼續與隨附的6.5 行為同步。 不過，我們可能會防止應用程式部署到下一個主要版本。
 >
-> 使用版本 7.0 時,我們將發出**運行狀況警告**,當我們檢測到應用程式埠範圍使用方式超出託管配置::應用程式波特Exhaust閾值百分比(預設 80%)時。
+> 在7.0 版中，我們會在偵測到應用程式埠範圍的使用量超過 HostingConfig：： ApplicationPortExhaustThresholdPercentage （預設80%）時發出**健康情況警告**。
 >
 
 ```xml
@@ -111,7 +111,7 @@ HTTPS 通訊協定提供伺服器驗證，也能用於加密用戶端-伺服器�
 > 使用 HTTPS 時，請勿對部署至相同節點的不同服務執行個體 (獨立於應用程式) 使用相同連接埠和憑證。 在不同的應用程式執行個體中，使用相同連接埠來升級兩個不同的服務，將會導致升級失敗。 如需詳細資訊，請參閱[使用 HTTPS 端點來升級多個應用程式](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)。
 >
 
-下面是演示 HTTPS 終結點所需的配置的應用程式清單示例。 伺服器/終結點證書可以通過指紋或主題通用名稱聲明,並且必須提供值。 終結點Ref 是服務清單中終結點資源的引用,其協議必須設置為"Hs"協定。 您可以加入一個以上的 EndpointCertificate。  
+以下是示範 HTTPS 端點所需設定的範例 ApplicationManifest。 伺服器/端點憑證可能會以指紋或主體一般名稱宣告，而且必須提供值。 EndpointRef 是 ServiceManifest 中 EndpointResource 的參考，其通訊協定必須設定為 ' HTTPs ' 通訊協定。 您可以加入一個以上的 EndpointCertificate。  
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -216,4 +216,4 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 且應用程式參數的 Port1 和 Protocol1 值是 Null 或空白。 連接埠仍是由 ServiceFabric 決定。 且通訊協定將 tcp。
 
-假設您指定錯誤的值。 與 Port 一樣,您指定了字串值「Foo」而不是 int。 New-ServiceFabric應用程式命令將失敗,但出現錯誤:"資源覆蓋"部分中名稱為"服務終結點1"屬性"Port1"的覆蓋參數無效。 指定的值是 'Foo'，而所需為 'int'。
+假設您指定錯誤的值。 就像針對埠所指定的字串值為 "Foo"，而不是 int。 Remove-servicefabricapplication 命令將會失敗並出現錯誤：區段 ' ResourceOverrides ' 中名為 ' ServiceEndpoint1 ' 屬性 ' Port1 ' 的覆寫參數無效。 指定的值是 'Foo'，而所需為 'int'。

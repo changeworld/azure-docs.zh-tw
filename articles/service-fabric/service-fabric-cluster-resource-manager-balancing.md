@@ -1,15 +1,15 @@
 ---
-title: 平衡 Azure 服務結構叢集
+title: 平衡您的 Azure Service Fabric 叢集
 description: 使用 Azure Service Fabric 叢集資源管理員平衡叢集的簡介。
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: b6df25b525975f2d4fe6a02064e81f359a804c58
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416259"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>平衡 Service Fabric 叢集
@@ -29,7 +29,7 @@ ms.locfileid: "81416259"
 * 每 1/10 秒掃描一次其狀態並套用更新 (例如記錄某個節點已關閉)
 * 每秒設定放置檢查旗標
 * 設定每秒條件約束檢查旗標
-* 每五秒設定一次平衡的旗標
+* 每五秒設定一次平衡旗標
 
 控管這些計時器的設定範例如下：
 
@@ -123,7 +123,7 @@ ClusterManifest.xml
 
 <center>
 
-![平衡閾值範例操作][Image2]
+![平衡臨界值範例動作][Image2]
 </center>
 
 > [!NOTE]
@@ -202,10 +202,10 @@ ClusterManifest.xml
 </center>
 
 ## <a name="next-steps"></a>後續步驟
-* 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 要瞭解有關指標以及如何配置指標的更多[,請查看本文](service-fabric-cluster-resource-manager-metrics.md)
+* 度量是 Service Fabric 叢集資源管理員管理叢集中的耗用量和容量的方式。 若要深入瞭解計量和其設定方式，請參閱[這篇文章](service-fabric-cluster-resource-manager-metrics.md)
 * 移動成本是向叢集資源管理員發出訊號，表示移動某些服務會比較貴的其中一種方式。 如需有關移動成本的詳細資訊，請參閱[這篇文章](service-fabric-cluster-resource-manager-movement-cost.md)
 * 叢集資源管理員有數個為減緩叢集的流失而可以設定的節流。 這些節流通常不是必要的，但若有需要，您可以參閱 [這裡](service-fabric-cluster-resource-manager-advanced-throttling.md)
-* 叢集資源管理員可以識別和處理子群集(有時在使用放置約束和平衡時出現這種情況)。 要瞭解子群集如何影響平衡以及如何處理平衡,請參閱[此處](cluster-resource-manager-subclustering.md)
+* 叢集 Resource Manager 可以辨識和處理 subclustering （有時候當您使用放置條件約束和平衡時，會發生這種情況）。 若要瞭解 subclustering 如何影響平衡，以及如何處理它，請參閱[這裡](cluster-resource-manager-subclustering.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
 [Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png

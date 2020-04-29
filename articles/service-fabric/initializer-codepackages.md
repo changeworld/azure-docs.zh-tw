@@ -1,34 +1,34 @@
 ---
-title: 服務結構中初始化程式
-description: 描述服務結構中的初始化器代碼包。
+title: Service Fabric 中的初始化運算式 Codepackage
+description: 描述 Service Fabric 中的初始化運算式 Codepackage。
 author: shsha-msft
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: shsha
 ms.openlocfilehash: 8483e00f55d0dd49ba57db58b99b237ce0a169e5
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430626"
 ---
-# <a name="initializer-codepackages"></a>初始化器碼包
+# <a name="initializer-codepackages"></a>初始設定式 Codepackage
 
-從版本 7.1 開始,Service Fabric 支援[容器][containers-introduction-link]和[來賓可執行][guest-executables-introduction-link]應用程式的**初始化器代碼包**。 初始化器代碼包提供了在其他代碼包開始執行之前在服務包作用域執行初始化的機會。 它們與服務包的關係類似於代碼包的[SetupEntryPoint。][setup-entry-point-link]
+從7.1 版開始，Service Fabric 支援[容器][containers-introduction-link]和[來賓可執行檔][guest-executables-introduction-link]應用程式的**初始化運算式 codepackage** 。 初始化運算式 Codepackage 可讓您在其他 Codepackage 開始執行之前，先在 ServicePackage 範圍執行初始化。 其與 ServicePackage 的關聯性類似于 CodePackage 的[SetupEntryPoint][setup-entry-point-link] 。
 
-在繼續本文之前,我們建議熟悉[服務結構應用程式模型][application-model-link][和服務結構託管模型][hosting-model-link]。
+繼續進行本文之前，建議您先熟悉[Service Fabric 應用程式模型][application-model-link]和[Service Fabric 裝載模型][hosting-model-link]。
 
 > [!NOTE]
-> 使用[可靠服務][reliable-services-link]程式設計模型編寫的服務目前不支援初始化碼包。
+> 使用[Reliable Services][reliable-services-link]程式設計模型所撰寫的服務目前不支援初始化運算式 codepackage。
  
 ## <a name="semantics"></a>語意
 
-初始化器代碼包預計將運行到**成功完成(退出代碼 0)。** 故障的初始化程式代碼包將重新啟動,直到它成功完成。 在服務包中的其他程式碼包開始執行**之前,允許**並**sequentially**按指定順序執行多個初始化器代碼包,並按**指定順序**執行。
+初始化運算式 CodePackage 預期會執行**成功完成（結束代碼0）**。 失敗的初始化運算式 CodePackage 會重新開機，直到成功完成為止。 系統會允許多個初始化運算式 Codepackage，並在 ServicePackage 開始執行中的其他 Codepackage 之前，依照**指定的順序**，**順序**執行到**成功完成**。
 
-## <a name="specifying-initializer-codepackages"></a>指定初始化器碼包
-透過在服務清單中將**初始化器**屬性設定為**true,** 可以將程式碼包標記為初始化程式。 當有多個初始化器代碼包時,可以通過**ExecOrder**屬性指定其執行順序。 **ExecOrder**必須是非負整數,並且僅適用於初始化代碼包。 首先執行具有**執行 Order**較低值的初始化代碼包。 如果未為初始化器代碼包指定**ExecOrder,** 則假定預設值 0。 未指定具有相同**ExecOrder**值的初始化代碼包的相對執行順序。
+## <a name="specifying-initializer-codepackages"></a>指定初始化運算式 Codepackage
+您可以藉由將 ServiceManifest 中的**初始化運算式**屬性設定為**True** ，將 CodePackage 標記為初始化運算式。 當有多個初始化運算式 Codepackage 時，可以透過**ExecOrder**屬性指定其執行順序。 **ExecOrder**必須是非負值的整數，而且只對初始化運算式 codepackage 有效。 較低值為**ExecOrder**的初始化運算式 codepackage 會先執行。 如果未指定初始化運算式 CodePackage 的**ExecOrder** ，則會假設為預設值0。 未指定具有相同**ExecOrder**值之初始化運算式 codepackage 的相對執行順序。
 
-以下服務清單代碼段描述了三個代碼包,其中兩個標記為初始化程式。 啟動此服務套件時,首先執行*InitCodePackage0,* 因為它具有最低值**ExecOrder**。 成功完成*InitCode 包 0*後,將執行*InitCode 包 1。* 最後,在成功完成*InitCode 套件 1*後,將執行*工作負載程式*。
+下列 ServiceManifest 程式碼片段描述三個已標記為初始化運算式的 Codepackage。 當此 ServicePackage 啟動時，會先執行*InitCodePackage0* ，因為它的最小值為**ExecOrder**。 當*InitCodePackage0*成功完成（結束代碼0）時，會執行*InitCodePackage1* 。 最後，當*InitCodePackage1*成功完成時，就會執行*WorkloadCodePackage* 。
 
 ```xml
 <CodePackage Name="InitCodePackage0" Version="1.0" Initializer="true" ExecOrder="0">
@@ -43,16 +43,16 @@ ms.locfileid: "81430626"
   ...
 </CodePackage>
 ```
-## <a name="complete-example-using-initializer-codepackages"></a>使用初始化器碼套件的完整範例
+## <a name="complete-example-using-initializer-codepackages"></a>使用初始化運算式 Codepackage 的完整範例
 
-讓我們看一個使用初始化器代碼包的完整範例。
+讓我們來看一個使用初始化運算式 Codepackage 的完整範例。
 
 > [!IMPORTANT]
-> 下面的範例假定熟悉使用 Service Fabric 和 Docker 建立[Windows 容器應用程式][containers-getting-started-link]。
+> 下列範例假設您已熟悉如何[使用 Service Fabric 和 Docker 建立 Windows 容器應用程式][containers-getting-started-link]。
 >
-> 此示例引用mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器在主機 OS 的所有版本之間不相容。 若要深入了解，請參閱 [Windows 容器版本相容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
+> 這個範例會參考 mcr.microsoft.com/windows/nanoserver:1809。 Windows Server 容器在主機 OS 的所有版本之間不相容。 若要深入了解，請參閱 [Windows 容器版本相容性](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility)。
 
-以下服務清單.xml 基於前面介紹的服務清單代碼段。 *InitCode包0* *,InitCode包1*和*工作負載代碼包*是表示容器的代碼包。 啟動後,首先執行*InitCode 包 0。* 它將消息記錄到檔並退出。 接下來,執行*InitCodePackage1,* 該程式還會將消息記錄到檔和退出。 最後,*工作負載程式碼包*開始執行。 它還將消息記錄到檔,輸出檔的內容以**進行停滯**,然後永久 ping。
+下列 ServiceManifest 是以先前所述的 ServiceManifest 程式碼片段為基礎。 *InitCodePackage0*、 *InitCodePackage1*和*WorkloadCodePackage*都是代表容器的 codepackage。 啟用時，會先執行*InitCodePackage0* 。 它會將訊息記錄到檔案並結束。 接下來，會執行*InitCodePackage1* ，這也會將訊息記錄到檔案並結束。 最後， *WorkloadCodePackage*會開始執行。 它也會將訊息記錄到檔案中，將檔案的內容輸出到**stdout** ，然後永遠進行 ping。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,7 +93,7 @@ ms.locfileid: "81430626"
 </ServiceManifest>
 ```
 
-以下應用程式清單.xml 描述了基於上述討論的 ServiceManifest.xml 的應用程式。 請注意,它為所有容器指定相同的**卷**裝載,即**C:_WorkspaceOnHost**安裝在所有三個容器上的**C:_WorkspaceOn容器**中。 最終結果是,所有容器都按啟動順序寫入同一日誌檔。
+下列 ApplicationManifest 描述以上述的 ServiceManifest 為基礎的應用程式。 請注意，它會為所有容器指定相同的**磁片**區掛接，亦即**C:\WorkspaceOnHost**會裝載在所有三個容器的**C:\WorkspaceOnContainer**上。 最後的結果是所有容器都會依照啟動的順序寫入相同的記錄檔。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -127,7 +127,7 @@ ms.locfileid: "81430626"
   </DefaultServices>
 </ApplicationManifest>
 ```
-成功啟動服務包后 **,C:_WorkspaceOnHost_log.txt**的內容應如下。
+成功啟用 ServicePackage 之後， **C:\WorkspaceOnHost\log.txt**的內容應如下所示。
 
 ```console
 C:\Users\test>type C:\WorkspaceOnHost\log.txt
@@ -138,10 +138,10 @@ Hi from WorkloadCodePackage.
 
 ## <a name="next-steps"></a>後續步驟
 
-有關相關信息,請參閱以下文章。
+如需相關資訊，請參閱下列文章。
 
-* [服務結構和容器。][containers-introduction-link]
-* [服務結構和來賓可執行檔。][guest-executables-introduction-link]
+* [Service Fabric 和容器。][containers-introduction-link]
+* [Service Fabric 和來賓可執行檔。][guest-executables-introduction-link]
 
 <!-- Links -->
 [containers-introduction-link]: service-fabric-containers-overview.md

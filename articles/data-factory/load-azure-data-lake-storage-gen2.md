@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
 ms.openlocfilehash: 96674f059e9cbc21c5c8c64eff8c94c810c4aa32
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417771"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>使用 Azure Data Factory 將資料載入 Azure Data Lake Storage Gen2 中
@@ -25,7 +25,7 @@ ms.locfileid: "81417771"
 
 Azure Data Lake Storage Gen2 是一組巨量資料分析的專屬功能，內建於 [Azure Blob 儲存體](../storage/blobs/storage-blobs-introduction.md)。 此功能可讓您使用檔案系統和物件儲存範例連接您的資料。
 
-Azure 資料工廠 (ADF) 是一個完全託管的基於雲端資料整合服務。 您可以使用此服務，在建置分析解決方案時，於 Lake 中置入來自豐富的內部部署集合和雲端式資料存放區的資料，並節省時間。 如需受支援連接器的詳細清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)資料表。
+Azure Data Factory （ADF）是完全受控的雲端架構資料整合服務。 您可以使用此服務，在建置分析解決方案時，於 Lake 中置入來自豐富的內部部署集合和雲端式資料存放區的資料，並節省時間。 如需受支援連接器的詳細清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)資料表。
 
 Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由於 ADF 具有相應放大架構，因此能以高輸送量來內嵌資料。 如需詳細資料，請參閱[複製活動效能](copy-activity-performance.md)。
 
@@ -34,15 +34,15 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 >[!TIP]
 >若要將資料從 Azure Data Lake Storage Gen1 複製到 Gen2，請參閱[此特定逐步解說](load-azure-data-lake-storage-gen2-from-gen1.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* Azure 訂閱:如果沒有 Azure 訂閱,請先建立一個[免費帳戶](https://azure.microsoft.com/free/)。
-* 開啟資料儲存庫第 2 代的 Azure 儲存帳戶:如果沒有儲存帳戶,[請建立帳戶](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。
+* Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
+* 已啟用 Data Lake Storage Gen2 的 Azure 儲存體帳戶：如果您沒有儲存體帳戶，請[建立帳戶](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。
 * AWS 帳戶，具有包含資料的 S3 貯體：本文示範如何從 Amazon S3 複製資料。 您可以依照類似的步驟來使用其他資料存放區。
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
-1. 在左邊選單上,選擇 **「建立資源** > **資料 + 分析** > **資料工廠**」 :
+1. 在左側功能表上，選取 [**建立資源** > ] [**資料 + 分析** > ] [**Data Factory**：
    
    ![在 [新增] 窗格中選取資料處理站](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -92,7 +92,7 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 
     ![選擇輸入檔案或資料夾](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
 
-6. 勾選 [以遞迴方式複製檔案]**** 和 [二進位複製]**** 選項來選取複製行為。 選擇**下一步**:
+6. 勾選 [以遞迴方式複製檔案]**** 和 [二進位複製]**** 選項來選取複製行為。 選取 **[下一步]**：
 
     ![指定輸出資料夾](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
@@ -107,7 +107,7 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
    
    ![指定 Azure Data Lake Storage Gen2 帳戶](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 
-9. 在**選擇輸出檔或資料夾**「頁中,將**froms3」 複製**作為輸出資料夾名稱,然後選擇 **「下一步**」 。 ADF 將在複製期間創建相應的 ADLS Gen2 檔案系統和子資料夾(如果不存在)。
+9. 在 [**選擇輸出檔案或資料夾**] 頁面上，輸入 **[copyfroms3]** 作為輸出檔案夾名稱，然後選取 **[下一步]**。 ADF 會在複製期間建立對應的 ADLS Gen2 檔案系統和子資料夾（如果不存在）。
 
     ![指定輸出資料夾](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 
@@ -120,7 +120,7 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 12. 在 [部署]**** 頁面中選取 [監視]**** 來監視管線：
 
     ![部署頁面](./media/load-azure-data-lake-storage-gen2/deployment-page.png)
-13. 請注意，系統會自動選取左側的 [監視]**** 索引標籤。 **' 操作'** 列包含用於檢視活動執行詳細資訊與重新執行導管的連結:
+13. 請注意，系統會自動選取左側的 [監視]**** 索引標籤。 [**動作**] 資料行包含可查看活動執行詳細資料，以及重新執行管線的連結：
 
     ![監視管線回合](./media/load-azure-data-lake-storage-gen2/monitor-pipeline-runs.png)
 
@@ -136,5 +136,5 @@ Azure Data Factory 提供可向外延展的受控資料移動解決方案。 由
 
 ## <a name="next-steps"></a>後續步驟
 
-* [複製活動概述](copy-activity-overview.md)
+* [複製活動總覽](copy-activity-overview.md)
 * [Azure Data Lake Storage Gen2 連接器](connector-azure-data-lake-storage.md)

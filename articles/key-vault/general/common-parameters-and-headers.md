@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d0ada9c1e6b45b1be17b15b67f67fc64fc266203
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81430873"
 ---
 # <a name="common-parameters-and-headers"></a>通用參數和標頭
@@ -26,7 +26,7 @@ ms.locfileid: "81430873"
 - 將 `{resource-group-name}` 取代為資源群組。 如需詳細資訊，請參閱＜使用資源群組管理 Azure 資源＞。
 - 將 `{vault-name}` 取代為 URI 中您的金鑰保存庫名稱。
 - 將 Content-Type 標頭設定為 application/json。
-- 將 Authorization 標頭設定為您從 Azure Active Directory (AAD) 取得的 JSON Web 權杖。 有關詳細資訊,請參閱身份驗證[Azure 資源管理員](authentication-requests-and-responses.md)請求。
+- 將 Authorization 標頭設定為您從 Azure Active Directory (AAD) 取得的 JSON Web 權杖。 如需詳細資訊，請參閱[驗證 Azure Resource Manager](authentication-requests-and-responses.md)要求。
 
 ## <a name="common-error-response"></a>通用錯誤回應
 服務將使用 HTTP 狀態碼指出成功或失敗。 此外，失敗包含下列格式的回應：
@@ -40,10 +40,10 @@ ms.locfileid: "81430873"
    }  
 ```
 
-|元素名稱 | 類型 | 描述 |
+|元素名稱 | 類型 | 說明 |
 |---|---|---|
-| 代碼 | 字串 | 所發生錯誤的類型。|
-| message | 字串 | 造成錯誤之原因的描述。 |
+| code | 字串 | 所發生錯誤的類型。|
+| 訊息 | 字串 | 造成錯誤之原因的描述。 |
 
 
 

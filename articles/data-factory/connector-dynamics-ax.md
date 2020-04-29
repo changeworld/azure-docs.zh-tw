@@ -1,5 +1,5 @@
 ---
-title: 從動態 AX 複製資料
+title: 從 Dynamics AX 複製資料
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 Dynamics AX 複製到支援的接收資料存放區。
 services: data-factory
 documentationcenter: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: 4dd82eea0a80ef81a0f972d1964a62e6c17a80c0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417374"
 ---
-# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>使用 Azure 資料工廠從動態 AX 複製資料
+# <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Dynamics AX 複製資料
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,10 +27,10 @@ ms.locfileid: "81417374"
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-此動態 AX 連接器支援以下活動:
+此 Dynamics AX 連接器支援下列活動：
 
-- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [尋找活動](control-flow-lookup-activity.md)
+- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- [查閱活動](control-flow-lookup-activity.md)
 
 您可以將資料從 Dynamics AX 複製到任何支援的接收資料存放區。 如需複製活動作為來源和接收端支援的資料存放區清單，請參閱[支援的資料存放區和格式](copy-activity-overview.md#supported-data-stores-and-formats)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "81417374"
 
 下列各節提供屬性的相關詳細資料，您可使用這些屬性來定義 Dynamics AX 連接器專屬的 Data Factory 實體。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要使用服務主體驗證，請遵循下列步驟：
 
@@ -108,7 +108,7 @@ ms.locfileid: "81417374"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的 [type]**** 屬性必須設定為 [DynamicsAXResource]****。 | 是 |
-| path | Dynamics AX OData 實體的路徑。 | 是 |
+| 路徑 | Dynamics AX OData 實體的路徑。 | 是 |
 
 **範例**
 
@@ -137,7 +137,7 @@ ms.locfileid: "81417374"
 
 ### <a name="dynamics-ax-as-source"></a>Dynamics AX 作為來源
 
-若要從 Dynamics AX 複製資料，請將複製活動中的 [source]**** 類型設定為 [DynamicsAXSource]****。 複製活動**來源**部份支援以下屬性:
+若要從 Dynamics AX 複製資料，請將複製活動中的 [source]**** 類型設定為 [DynamicsAXSource]****。 複製活動的 [**來源**] 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
@@ -177,9 +177,9 @@ ms.locfileid: "81417374"
 ```
 
 
-## <a name="lookup-activity-properties"></a>尋找活動屬性
+## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
+若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

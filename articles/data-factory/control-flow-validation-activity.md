@@ -1,6 +1,6 @@
 ---
-title: Azure 資料工廠中的驗證活動
-description: 驗證活動不會繼續執行管道,直到它驗證附加數據集與使用者指定的特定條件。
+title: Azure Data Factory 中的驗證活動
+description: 驗證活動不會繼續執行管線，直到它以使用者指定的特定準則驗證附加的資料集為止。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.openlocfilehash: 764b41d1823e8edce134c5099e066486f4f08acc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417924"
 ---
-# <a name="validation-activity-in-azure-data-factory"></a>Azure 資料工廠中的驗證活動
+# <a name="validation-activity-in-azure-data-factory"></a>Azure Data Factory 中的驗證活動
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-您可以在管道中使用驗證,以確保管道僅在驗證附加數據集引用存在、滿足指定條件或已達到超時後繼續執行。
+您可以在管線中使用驗證，確保管線只會在驗證附加的資料集參考存在、符合指定的準則，或已達到 timeout 時，才繼續執行。
 
 
 ## <a name="syntax"></a>語法
@@ -62,13 +62,13 @@ ms.locfileid: "81417924"
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-NAME | '驗證'活動名稱 | String | 是 |
-type | 必須設定為**驗證**。 | String | 是 |
-資料集 | 活動將阻止執行,直到它驗證此數據集引用存在,並且它滿足指定的條件,或者已達到超時。 提供的數據集應支援"最小大小"或"子專案"屬性。 | 資料集參考 | 是 |
-timeout | 指定活動執行的逾時。 如果未指定值,則預設值為 7 天("7.00:00:00")。 格式為 d.hh:mm:ss | String | 否 |
-sleep | 驗證嘗試之間的延遲(以秒為單位)。 如果未指定值,則預設值為 10 秒。 | 整數 | 否 |
-childItems | 檢查資料夾是否具有子專案。 可以設置為 true:驗證該資料夾是否存在,並且該資料夾是否具有專案。 塊,直到資料夾中至少有一個項目或達到超時值。 塊,直到資料夾為空或達到超時值。 如果未指定值,則活動將阻止,直到資料夾存在或達到超時。 | Boolean | 否 |
-最小大小 | 以位元組為單位的檔的最小大小。 沒有指定值,則預設值為 0 位元組 | 整數 | 否 |
+名稱 | 「驗證」活動的名稱 | String | 是 |
+type | 必須設定為 [**驗證**]。 | String | 是 |
+資料集 | 活動會封鎖執行，直到其驗證此資料集參考存在，而且符合指定的準則，或已達到 timeout 為止。 提供的資料集應該支援 "MinimumSize" 或 "ChildItems" 屬性。 | 資料集參考 | 是 |
+timeout | 指定活動執行的逾時。 如果未指定任何值，預設值為7天（"7.00：00： 00"）。 格式為 d. hh： mm： ss | 字串 | 否 |
+sleep | 驗證嘗試之間的延遲（以秒為單位）。 如果未指定任何值，預設值為10秒。 | 整數 | 否 |
+childItems | 檢查資料夾是否有子專案。 可以設定為-true：驗證資料夾是否存在，以及它是否有專案。 封鎖，直到至少有一個專案出現在資料夾中，或到達 timeout 值為止。-false：驗證資料夾是否存在，以及它是否為空白。 封鎖，直到資料夾是空的或到達 timeout 值為止。 如果未指定任何值，活動將會封鎖，直到資料夾存在或達到 timeout 為止。 | 布林值 | 否 |
+minimumSize | 檔案大小下限（以位元組為單位）。 如果未指定任何值，預設值為0個位元組 | 整數 | 否 |
 
 
 ## <a name="next-steps"></a>後續步驟

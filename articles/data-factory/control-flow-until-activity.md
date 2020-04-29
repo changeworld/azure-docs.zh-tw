@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 63873a4f8301d3cb20488b02b32200f476922276
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417941"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Azure Data Factory 中的 Until 活動
@@ -55,7 +55,7 @@ Until 活動所提供的功能，與 do-until 迴圈結構在程式設計語言�
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-NAME | `Until` 活動的名稱。 | String | 是
+名稱 | `Until` 活動的名稱。 | String | 是
 type | 必須設為 **Until**。 | String | 是
 expression | 必須評估為 true 或 false 的運算式 | 運算式。  | 是
 timeout | do-until 迴圈在經過於此指定的時間之後便會逾時。 | 字串。 `d.hh:mm:ss` (或) `hh:mm:ss`。 預設值為 7 天。 最大值為 90 天。 | 否

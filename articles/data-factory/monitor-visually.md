@@ -1,6 +1,6 @@
 ---
-title: 視覺化監視 Azure 資料工廠
-description: 瞭解如何直覺地監視 Azure 資料工廠
+title: 以視覺化方式監視 Azure Data Factory
+description: 瞭解如何以視覺化方式監視 Azure data factory
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,116 +11,116 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 40b1b8d040c4b3ea76372920f88551fba35c5f26
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81419437"
 ---
-# <a name="visually-monitor-azure-data-factory"></a>視覺化監視 Azure 資料工廠
+# <a name="visually-monitor-azure-data-factory"></a>以視覺化方式監視 Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-在 Azure 數據工廠中創建和發佈管道後,可以將其與觸發器關聯,或手動啟動臨時運行。 您可以在 Azure 數據工廠使用者體驗中監視本機運行的所有管道。 要打開監視體驗,請在[Azure 門戶](https://portal.azure.com/)的數據工廠邊欄選項卡中選擇 **「監視器&管理**磁貼」。。 如果您已經在 ADF UX 中,請按一邊邊列上的 **「監視器」** 圖示。
+在 Azure Data Factory 中建立併發布管線之後，您可以將它與觸發程式建立關聯，或手動啟動臨機操作執行。 您可以在 Azure Data Factory 使用者體驗中，以原生方式監視您所有的管線執行。 若要開啟監視體驗，請在[Azure 入口網站](https://portal.azure.com/)的 [data factory] 分頁中選取 [**監視] & [管理**] 磚。 如果您已經在 ADF UX 中，請按一下左側邊欄上的 [**監視**] 圖示。
 
-所有數據工廠運行都顯示在瀏覽器的本地時區中。 如果更改時區,則所有日期/時間欄位將捕捉到您選擇的時間欄位。
+所有的資料處理站執行都會顯示在瀏覽器的當地時區中。 如果您變更時區，所有日期/時間欄位都會貼齊您選取的區域。
 
 ## <a name="monitor-pipeline-runs"></a>監視管線回合
 
-默認監視檢視是所選時間段內運行的管道的清單。 系統會顯示下列資料行：
+預設監視視圖是所選時段內的管線執行清單。 系統會顯示下列資料行：
 
 | **資料行名稱** | **說明** |
 | --- | --- |
 | 管線名稱 | 管線的名稱 |
-| 動作 | 允許您檢視活動詳細資訊、取消或重新執行管道的圖示 |
-| 回合開始 | 管機執行的開始日期和時間(MM/DD/YYYY,HH:MM:SS AM/PM) |
+| 動作 | 可讓您查看活動詳細資料、取消或重新執行管線的圖示 |
+| 回合開始 | 管線執行的開始日期和時間（MM/DD/YYYY、HH： MM： SS AM/PM） |
 | Duration | 回合持續時間 (HH:MM:SS) |
-| 觸發方式 | 啟動導管的觸發器名稱 |
-| 狀態 | **失敗**,**成功**,**正在取消**或已重新排。 已**取消**或**已排入**。 |
-| 註解 | 與導管關聯的可篩選標記  |
-| 參數 | 管線執行的參數(名稱/值對) |
-| 錯誤 | 如果導管失敗,則執行錯誤 |
+| 觸發方式 | 啟動管線之觸發程式的名稱 |
+| 狀態 | **失敗**、**成功**、**進行中**、**已取消或已****排入佇列** |
+| 標註 | 與管線相關聯的可篩選標記  |
+| 參數 | 管線執行的參數（名稱/值配對） |
+| 錯誤 | 如果管線失敗，則執行錯誤 |
 | 回合識別碼 | 管線執行的識別碼 |
 
-![監視導管執行的列表檢視](media/monitor-visually/pipeline-runs.png)
+![監視管線執行的清單視圖](media/monitor-visually/pipeline-runs.png)
 
-您需要手動選擇 **「刷新**」按鈕以刷新管道和活動運行的清單。 當前不支援自動刷新。
+您需要手動選取 [重新整理]**按鈕，以**重新整理管線和活動執行的清單。 目前不支援 Autorefresh。
 
 ![重新整理按鈕](media/monitor-visually/refresh.png)
 
 ## <a name="monitor-activity-runs"></a>監視活動回合
 
-要檢視每個管道運行的活動,請在 **「操作」** 列下選擇 **「檢視活動運行**」圖示。 清單檢視顯示對應於每個管道運行的活動運行。
+若要查看每個管線執行的活動執行，請選取 [**動作**] 資料行底下的 [ **view activity 執行**] 圖示。 清單視圖會顯示對應至每個管線執行的活動執行。
 
 | **資料行名稱** | **說明** |
 | --- | --- |
-| 活動名稱 | 導管內活動的名稱 |
-| 活動類型 | 作用的類型,如**複製**、**執行資料串**流或**AzureML 執行導管** |
-| 動作 | 允許您檢視 JSON 輸入資訊、JSON 輸出資訊或特定於活動的詳細監視體驗的圖示 | 
-| 回合開始 | 活動執行的開始日期和時間(MM/DD/YYYY,HH:MM:SS AM/PM) |
+| 活動名稱 | 管線內的活動名稱 |
+| 活動類型 | 活動的類型，例如**Copy**、 **ExecuteDataFlow**或**AzureMLExecutePipeline** |
+| 動作 | 圖示，可讓您查看 JSON 輸入資訊、JSON 輸出資訊，或詳細的活動特定監視體驗 | 
+| 回合開始 | 活動執行的開始日期和時間（MM/DD/YYYY，HH： MM： SS AM/PM） |
 | Duration | 回合持續時間 (HH:MM:SS) |
-| 狀態 | **失敗**,**成功**,**正在取消****或取消** |
-| 整合執行時 | 作用在哪一個整合的執行時執行 |
-| 使用者屬性 | 作用的使用者定義屬性 |
-| 錯誤 | 如果作用失敗,則執行錯誤 |
+| 狀態 | **失敗**、**成功**、**進行中**或**已取消** |
+| Integration Runtime | 活動執行的 Integration Runtime |
+| 使用者屬性 | 活動的使用者定義屬性 |
+| 錯誤 | 如果活動失敗，則執行錯誤 |
 | 回合識別碼 | 活動執行的識別碼 |
 
-![監控活動執行的列表檢視](media/monitor-visually/activity-runs.png)
+![監視活動執行的清單視圖](media/monitor-visually/activity-runs.png)
 
 ### <a name="promote-user-properties-to-monitor"></a>將使用者屬性升階以便監視
 
-將任何管道活動屬性提升為使用者屬性,以便它成為您監視的實體。 例如,您可以將管道中複製活動的**源****和目標**屬性提升為使用者屬性。 選擇 **「自動產生**」可產生複製活動的**源****和目標**使用者屬性。
+將任何管線活動屬性升階為使用者屬性，使其成為您所監視的實體。 例如，您可以將管線中複製活動的 [**來源**] 和 [**目的地**] 屬性升階為使用者屬性。 選取 [**自動產生**] 以產生複製活動的**來源**和**目的地**使用者屬性。
 
 ![建立使用者屬性](media/monitor-visually/monitor-user-properties-image1.png)
 
 > [!NOTE]
-> 您只能將最多五個管道活動屬性提升為使用者屬性。
+> 您最多隻能將五個管線活動屬性升階為使用者屬性。
 
-創建使用者屬性後,可以在監視清單檢視中監視它們。 如果複製活動的源是表名稱,則可以在運行活動的列表檢視中將源表名稱作為列進行監視。
+建立使用者內容之後，您可以在 [監視] 清單視圖中監視這些屬性。 如果複製活動的來源是資料表名稱，您可以在活動執行的清單視圖中，監視來源資料表名稱的資料行。
 
 ![活動執行清單沒有使用者屬性](media/monitor-visually/monitor-user-properties-image2.png)
 
-![將使用者屬性的欄位到活動執行清單](media/monitor-visually/monitor-user-properties-image3.png)
+![將使用者屬性的資料行新增至活動執行清單](media/monitor-visually/monitor-user-properties-image3.png)
 
 ![活動執行清單具有使用者屬性的資料行](media/monitor-visually/monitor-user-properties-image4.png)
 
 ## <a name="configure-the-list-view"></a>設定清單檢視
 
-### <a name="order-and-filter"></a>訂購和篩選
+### <a name="order-and-filter"></a>訂單和篩選
 
-根據運行開始時間切換管道運行是降序還是提升。 過濾導管使用以下欄位執行:
+根據執行開始時間，切換管線執行是遞減還是遞增的。 使用下列資料行篩選管線執行：
 
 | **資料行名稱** | **說明** |
 | --- | --- |
-| 管線名稱 | 按管道的名稱進行篩選。 |
-| 回合開始 |  確定顯示的管道運行的時間範圍。 選項包括**最近 24 小時**、**上周**和**最近 30 天**的快速篩選器,或選擇自訂日期和時間。 |
-| 回合狀態 | 篩選器按狀態運行:**成功**「、」**失敗**「、」**已排隊**「、」**已取消「** 或 **」 正在進行**」。 |
-| 註解 | 按套用於每個導管的標記進行篩選 |
-| 執行 | 篩選是否要檢視重新執行的導管 |
+| 管線名稱 | 依管線的名稱篩選。 |
+| 回合開始 |  決定顯示管線執行的時間範圍。 選項包括**過去24小時**、**過去一周**和**過去30天**的快速篩選，或是選取自訂的日期和時間。 |
+| 回合狀態 | 依狀態篩選執行：**成功**、**失敗**、已**排入佇列**、**已取消**或**進行中**。 |
+| 標註 | 依套用至每個管線的標記篩選 |
+| 執行 | 篩選是否要查看不見了管線 |
 
-![以篩選的選項](media/monitor-visually/filter.png)
+![篩選選項](media/monitor-visually/filter.png)
 
 ### <a name="add-or-remove-columns"></a>新增或移除資料行
-右鍵按一下列表檢視標題並選擇要顯示在清單檢視中的欄。
+以滑鼠右鍵按一下清單視圖標題，然後選擇您想要在清單視圖中顯示的資料行。
 
-![欄位選項](media/monitor-visually/columns.png)
+![資料行的選項](media/monitor-visually/columns.png)
 
 ### <a name="adjust-column-widths"></a>調整資料行寬度
-通過懸停在列標題上,增加和減少列表視圖中的列寬度。
+將滑鼠停留在資料行標頭上方，以增加和減少清單視圖中的資料行寬度。
 
 ## <a name="rerun-activities-inside-a-pipeline"></a>在管線中重新執行活動
 
-您可以在管道中重新執行活動。 選擇 **「查看活動運行**」,然後選擇管道中要重新執行管道的活動。
+您可以重新執行管線內的活動。 選取 [ **View activity 執行**]，然後選取您的管線中要重新執行管線的活動。
 
 ![檢視活動執行](media/monitor-visually/rerun-activities-image1.png)
 
 ![選取活動執行](media/monitor-visually/rerun-activities-image2.png)
 
-### <a name="rerun-from-failed-activity"></a>從失敗活動重新執行
+### <a name="rerun-from-failed-activity"></a>從失敗的活動重新執行
 
-如果活動失敗、超時或已取消,則可以通過**從失敗活動中選擇"重新運行**"來從該失敗活動重新運行管道。
+如果活動失敗、超時或已取消，您可以選取 [**從失敗的活動重新**執行]，從該失敗的活動重新執行管線。
 
-![重新執行失敗活動](media/monitor-visually/rerun-failed-activity.png)
+![重新執行失敗的活動](media/monitor-visually/rerun-failed-activity.png)
 
 ### <a name="view-rerun-history"></a>檢視重新執行歷程記錄
 
@@ -132,30 +132,30 @@ ms.locfileid: "81419437"
 
 ![檢視管線執行的歷程記錄](media/monitor-visually/rerun-history-image2.png)
 
-## <a name="gantt-views"></a>甘特檢視
+## <a name="gantt-views"></a>甘特圖視圖
 
-使用甘特檢視快速可視化管道和活動運行。
+使用 [甘特圖] 視圖以快速視覺化您的管線和活動執行。
 
-![甘特圖表示例](media/monitor-visually/gantt1.png)
+![甘特圖的範例](media/monitor-visually/gantt1.png)
 
-您可以查看每個管道的 Gantt 檢視,也可以通過您在管道上創建的註釋/標記進行分組。
+您可以查看每個管線的 [甘特圖] 或 [依您在管線上建立的批註/標記群組]。
 
-![甘特圖註解](media/monitor-visually/gantt2.png)
+![甘特圖注釋](media/monitor-visually/gantt2.png)
 
-條形的長度通知管道的持續時間。 您還可以選擇該欄以查看更多詳細資訊。
+橫條的長度會通知管線的持續時間。 您也可以選取橫條以查看更多詳細資料。
 
-![甘特圖表持續時間](media/monitor-visually/gantt3.png)
+![甘特圖持續時間](media/monitor-visually/gantt3.png)
 
 ## <a name="guided-tours"></a>導覽
-選擇左下角**的資訊圖示。** 然後選擇 **「引導之旅」** 取得有關如何監視管道和活動運行的分步說明。
+選取左下方的**資訊**圖示。 然後選取 [**引導式導覽**]，以取得如何監視管線和活動執行的逐步指示。
 
 ![導覽](media/monitor-visually/guided-tours.png)
 
 ## <a name="alerts"></a>警示
 
-您可以針對 Data Factory 中支援的計量提出警示。 在數據工廠監視頁上選擇 **「監視** > **警報&指標**以開始。
+您可以針對 Data Factory 中支援的計量提出警示。 選取 [Data Factory 監視] 頁面上的 [**監視** > **警示 & 計量**] 以開始使用。
 
-![資料工廠監視器頁面](media/monitor-visually/alerts01.png)
+![Data factory [監視] 頁面](media/monitor-visually/alerts01.png)
 
 如需此功能的 7 分鐘簡介與示範，請觀看下列影片：
 
@@ -163,25 +163,25 @@ ms.locfileid: "81419437"
 
 ### <a name="create-alerts"></a>建立警示
 
-1.  選擇 **「新警報規則**」以創建新警報。
+1.  選取 [**新增警示規則**] 以建立新的警示。
 
-    ![新警示規則按鈕](media/monitor-visually/alerts02.png)
+    ![[新增警示規則] 按鈕](media/monitor-visually/alerts02.png)
 
-1.  指定規則名稱並選擇警報嚴重性。
+1.  指定規則名稱，然後選取警示嚴重性。
 
-    ![規則名稱與嚴重性框](media/monitor-visually/alerts03.png)
+    ![規則名稱和嚴重性的方塊](media/monitor-visually/alerts03.png)
 
-1.  選擇警報條件。
+1.  選取警示準則。
 
-    ![目標條件框](media/monitor-visually/alerts04.png)
+    ![目標準則的 Box](media/monitor-visually/alerts04.png)
 
-    ![條件清單](media/monitor-visually/alerts05.png)
+    ![準則清單](media/monitor-visually/alerts05.png)
 
-1.  配置警報邏輯。 您可以針對所有管線和對應活動，建立所選計量的警示。 您還可以選擇特定的活動類型、活動名稱、管道名稱或失敗類型。
+1.  設定警示邏輯。 您可以針對所有管線和對應活動，建立所選計量的警示。 您也可以選取特定的 [活動類型]、[活動名稱]、[管線名稱] 或 [失敗類型]。
 
     ![設定警示邏輯的選項](media/monitor-visually/alerts06.png)
 
-1.  為警報配置電子郵件、簡訊、推送和語音通知。 為警報通知創建操作組或選擇現有操作組。
+1.  設定警示的電子郵件、SMS、推播和語音通知。 為警示通知建立動作群組，或選擇現有的群組。
 
     ![設定通知的選項](media/monitor-visually/alerts07.png)
 
@@ -193,4 +193,4 @@ ms.locfileid: "81419437"
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解如何監視和管理管道,請參閱[監視器並以程式設計方式管理管道](https://docs.microsoft.com/azure/data-factory/monitor-programmatically)一文。
+若要瞭解如何監視和管理管線，請參閱以程式設計[方式監視和管理管線](https://docs.microsoft.com/azure/data-factory/monitor-programmatically)一文。

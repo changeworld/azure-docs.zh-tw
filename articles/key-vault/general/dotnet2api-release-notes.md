@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
 ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81431913"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 金鑰保存庫 .NET 2.0 - 版本資訊和移轉指南
@@ -49,12 +49,12 @@ Key Vault 憑證可管理 x509 憑證，並支援下列行為：
 
 * *Secret* 已變更為 *SecretBundle*
 * *Dictionary* 已變更為 *IDictionary*
-* *清單\<T>,字串 ** 更改為*\<IList T>*
+* *List\<t>，string []* 已變更*為\<IList T>*
 * *NextList* 已變更為 *NextPageLink*
 
 ## <a name="return-types"></a>傳回類型
 
-* **金鑰清單**與**金鑰清單**現在傳回*\<IPage T>* 而不是*清單金鑰回應訊息*
+* **KeyList**和**SecretList**現在會*傳回\<IPage T>* ，而不是*非 listkeysresponsemessage*
 * 產生的 **BackupKeyAsync** 現在會傳回 BackupKeyResult**，其包含 Value** (備份 Blob)。 此方法在過去會進行包裝並只傳回值。
 
 ## <a name="exceptions"></a>例外狀況
@@ -90,8 +90,8 @@ Key Vault 憑證可管理 x509 憑證，並支援下列行為：
 
 ## <a name="class-changes"></a>類別變更
 
-* **UnixEpoch**類已被刪除。
-* **Base64Url轉換器**類被重命名為**Base64UrlJsonConverter。**
+* 已移除**UnixEpoch**類別。
+* **Base64UrlConverter**類別已重新命名為**Base64UrlJsonConverter**。
 
 ## <a name="other-changes"></a>其他變更
 
@@ -99,7 +99,7 @@ Key Vault 憑證可管理 x509 憑證，並支援下列行為：
 
 ## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
 
-* 對於返回*保管庫*的操作,返回類型是包含**保管庫**屬性的類。 傳回類型現在是 *Vault*。
+* 針對傳回保存*庫*的作業，傳回類型是包含保存**庫**屬性的類別。 傳回類型現在是 *Vault*。
 * *PermissionsToKeys* 和 *PermissionsToSecrets* 現在是 *Permissions.Keys* 和 *Permissions.Secrets*
 * 某些傳回類型變更也會套用至控制平面。
 

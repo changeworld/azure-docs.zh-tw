@@ -1,6 +1,6 @@
 ---
-title: 依選項群組
-description: 在 Synapse SQL 池中按選項實現組的技巧。
+title: 使用 group by 選項
+description: 在 Synapse SQL 集區中執行 group by 選項的秘訣。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5d8d4c6d47e33ca365415542c2da9779b4d7d1dd
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416204"
 ---
-# <a name="group-by-options-in-synapse-sql-pool"></a>依 Synapse SQL 池中的選項群組
+# <a name="group-by-options-in-synapse-sql-pool"></a>Synapse SQL 集區中的群組依據選項
 
-在本文中,您將在 SQL 池中找到按選項實現組的提示。
+在本文中，您會找到在 SQL 集區中執行 group by 選項的秘訣。
 
 ## <a name="what-does-group-by-do"></a>GROUP BY 有什麼用途？
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 子句可將資料彙總至摘要的一組資料列。 GROUP BY 具有 SQL 池不支援的一些選項。 這些選項具有解決方法,如下所示:
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 子句可將資料彙總至摘要的一組資料列。 GROUP BY 具有 SQL 集區不支援的某些選項。 這些選項有因應措施，如下所示：
 
 * GROUP BY 搭配 ROLLUP
 * GROUPING SETS
@@ -32,7 +32,7 @@ ms.locfileid: "81416204"
 
 ## <a name="rollup-and-grouping-sets-options"></a>Rollup 和 grouping sets 選項
 
-此處最簡單的選項是使用 UNION ALL 執行匯總,而不是依賴顯式語法。 結果完全相同。
+此處最簡單的選項是使用 UNION ALL 來執行匯總，而不是依賴明確的語法。 結果會完全相同。
 
 下列範例使用 GROUP BY 陳述式搭配 ROLLUP 選項：
 
@@ -86,11 +86,11 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 
 ## <a name="cube-options"></a>Cube 選項
 
-可以使用"全聯盟"方法創建具有 CUBE 的組。 問題是程式碼可能很快就會很麻煩且不易處理。 要緩解此問題,可以使用此更高級的方法。
+您可以使用「聯集全部」方法，以 CUBE 建立 GROUP BY。 問題是程式碼可能很快就會很麻煩且不易處理。 若要減少此問題，您可以使用這個更先進的方法。
 
-使用前面的示例,第一步是定義「多維數據集」,該「多維數據集」定義我們想要創建的所有聚合級別。
+使用上述範例時，第一個步驟是定義「cube」，以定義我們想要建立的所有匯總層級。
 
-請注意兩個派生表的 CROSS JOIN,因為這為我們生成所有級別。 代碼的其餘部份用於格式化:
+請記下這兩個衍生資料表的交叉聯結，因為這會為我們產生所有層級。 其餘的程式碼則是用來進行格式設定：
 
 ```sql
 CREATE TABLE #Cube
@@ -121,11 +121,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-下圖顯示了 CTAS 的結果:
+下圖顯示 CTAS 的結果：
 
 ![依 Cube 分組](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
-第二步是指定用於儲存中期結果的目標表:
+第二個步驟是指定用來儲存過渡結果的目標資料表：
 
 ```sql
 DECLARE
@@ -148,7 +148,7 @@ WITH
 ;
 ```
 
-第三個步驟是對執行彙總的資料行 cube 執行迴圈。 查詢將針對臨時表中的每一行運行一次#Cube。 結果儲存在#Results暫時:
+第三個步驟是對執行彙總的資料行 cube 執行迴圈。 查詢將會針對 #Cube 臨時表中的每個資料列執行一次。 結果會儲存在 #Results 臨時表中：
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -172,7 +172,7 @@ BEGIN
 END
 ```
 
-最後,您可以通過從#Results暫時讀取來傳回結果:
+最後，您可以從 #Results 的臨時表中讀取來傳回結果：
 
 ```sql
 SELECT *
@@ -181,7 +181,7 @@ ORDER BY 1,2,3
 ;
 ```
 
-通過將代碼分解為多個部分並生成迴圈構造,代碼變得更加可管理和可維護。
+藉由將程式碼分成幾個區段並產生迴圈結構，程式碼就會變得更容易管理和維護。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,6 +1,6 @@
 ---
 title: 使用交易
-description: 用於開發解決方案的 SQL 池(資料倉庫)中實現事務的提示。
+description: 在 SQL 集區（資料倉儲）中執行交易以開發解決方案的秘訣。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,25 +11,25 @@ ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 9b9ce5110a03ec4d67b3e8af6d9b18e5ad6836af
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81428715"
 ---
-# <a name="using-transactions-in-sql-pool"></a>在 SQL 池中使用事務
+# <a name="using-transactions-in-sql-pool"></a>在 SQL 集區中使用交易
 
-用於開發解決方案的 SQL 池(資料倉庫)中實現事務的提示。
+在 SQL 集區（資料倉儲）中執行交易以開發解決方案的秘訣。
 
 ## <a name="what-to-expect"></a>未來展望
 
-如您所料,SQL 池支援事務作為數據倉庫工作負載的一部分。 但是,為了確保 SQL 池的性能保持規模,與 SQL Server 相比,某些功能是有限的。 本文特別強調差異，並列出其他交易。
+如您所預期，SQL 集區支援交易做為資料倉儲工作負載的一部分。 不過，為了確保能夠大規模維護 SQL 集區的效能，有些功能會受到限制（相較于 SQL Server）。 本文特別強調差異，並列出其他交易。
 
 ## <a name="transaction-isolation-levels"></a>交易隔離層級
 
-SQL 池實現 ACID 事務。 事務支援的隔離級別預設為"讀取未提交」。  在連接到主資料庫時,可以通過打開用戶資料庫的READ_COMMITTED_SNAPSHOT資料庫選項將其更改為「讀取共用快照」。  
+SQL 集區會執行 ACID 交易。 交易式支援的隔離等級預設為讀取未認可。  您可以在連接到 master 資料庫時，針對使用者資料庫開啟 [READ_COMMITTED_SNAPSHOT 資料庫] 選項，將它變更為 [讀取認可的快照集隔離]。  
 
-啟用後,此資料庫中的所有事務都將在"讀取"狀態下執行,並且在會話級別設置"未執行"將不受遵守。 有關詳細資訊,請查看[ALTER 資料庫設置選項(轉算-SQL)。](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)
+啟用之後，此資料庫中的所有交易都會在讀取認可的快照集隔離下執行，而且不會接受工作階段層級的「讀取未認可」設定。 如需詳細資料，請參閱[ALTER DATABASE SET 選項（transact-sql）](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) 。
 
 ## <a name="transaction-size"></a>交易大小
 單一資料修改交易的大小是有限制的。 每個散發都會套用的限制。 因此，將限制乘以散發計數可算出總配置。 
@@ -43,7 +43,7 @@ SQL 池實現 ACID 事務。 事務支援的隔離級別預設為"讀取未提�
 
 ## <a name="gen2"></a>Gen2
 
-| [DWU](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每個分發上限 (GB) | 散發的數目 | 最大事務大小 (GB) | 每個散發的資料列數 | 每個交易的資料列數上限 |
+| [DWU](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每個散發的上限（GB） | 散發的數目 | 交易大小上限（GB） | 每個散發的資料列數 | 每個交易的資料列數上限 |
 | --- | --- | --- | --- | --- | --- |
 | DW100c |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200c |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -53,18 +53,18 @@ SQL 池實現 ACID 事務。 事務支援的隔離級別預設為"讀取未提�
 | DW1000c |7.5 |60 |450 |30,000,000 |1,800,000,000 |
 | DW1500c |11.25 |60 |675 |45,000,000 |2,700,000,000 |
 | DW2000c |15 |60 |900 |60,000,000 |3,600,000,000 |
-| DW2500c |18.75 |60 |1125 |75,000,000 |4,500,000,000 |
+| DW2500c |18.75 |60 |1125 |75000000 |4500000000 |
 | DW3000c |22.5 |60 |1,350 |90,000,000 |5,400,000,000 |
-| DW5000c |37.5 |60 |2,250 |150,000,000 |9,000,000,000 |
+| DW5000c |37.5 |60 |2250 |150000000 |9000000000 |
 | DW6000c |45 |60 |2,700 |180,000,000 |10,800,000,000 |
-| DW7500c |56.25 |60 |3,375 |225,000,000 |13,500,000,000 |
-| DW10000c |75 |60 |4,500 |300,000,000 |18,000,000,000 |
-| DW15000c |112.5 |60 |6,750 |450,000,000 |27,000,000,000 |
-| DW30000c |225 |60 |13,500 |900,000,000 |54,000,000,000 |
+| DW7500c |56.25 |60 |3375 |225000000 |13500000000 |
+| DW10000c |75 |60 |4,500 |300,000,000 |18000000000 |
+| DW15000c |112.5 |60 |6,750 |450000000 |27000000000 |
+| DW30000c |225 |60 |13500 |900,000,000 |54000000000 |
 
 ## <a name="gen1"></a>Gen1
 
-| [DWU](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每個分發上限 (GB) | 散發的數目 | 最大事務大小 (GB) | 每個散發的資料列數 | 每個交易的資料列數上限 |
+| [DWU](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | 每個散發的上限（GB） | 散發的數目 | 交易大小上限（GB） | 每個散發的資料列數 | 每個交易的資料列數上限 |
 | --- | --- | --- | --- | --- | --- |
 | DW100 |1 |60 |60 |4,000,000 |240,000,000 |
 | DW200 |1.5 |60 |90 |6,000,000 |360,000,000 |
@@ -89,10 +89,10 @@ SQL 池實現 ACID 事務。 事務支援的隔離級別預設為"讀取未提�
 
 ## <a name="transaction-state"></a>交易狀態
 
-SQL 池使用 XACT_STATE() 函數使用值 -2 報告失敗的事務。 這個值表示交易已失敗並標示為僅可復原。
+SQL 集區會使用 XACT_STATE （）函數來報告失敗的交易，並使用值-2。 這個值表示交易已失敗並標示為僅可復原。
 
 > [!NOTE]
-> XACT_STATE 函式使用 -2 表示失敗的交易，以代表 SQL Server 中不同的行為。 SQL Server 使用值 -1 來代表無法認可的交易。 SQL Server 可以容忍交易內的某些錯誤，而不需將其標示為無法認可。 例如，`SELECT 1/0` 會導致錯誤，但不會強制交易進入無法認可的狀態。 SQL Server 也允許讀取無法認可的交易。 但是,SQL 池不允許您執行此操作。 如果 SQL 池事務中發生錯誤,它將自動進入 -2 狀態,並且在語句回滾之前,您將無法進行任何進一步的選擇語句。 因此，檢查您的應用程式程式碼是否使用 XACT_STATE() 就相當重要，因為您可能需要修改程式碼。
+> XACT_STATE 函式使用 -2 表示失敗的交易，以代表 SQL Server 中不同的行為。 SQL Server 使用值 -1 來代表無法認可的交易。 SQL Server 可以容忍交易內的某些錯誤，而不需將其標示為無法認可。 例如，`SELECT 1/0` 會導致錯誤，但不會強制交易進入無法認可的狀態。 SQL Server 也允許讀取無法認可的交易。 不過，SQL 集區不會讓您這麼做。 如果 SQL 集區交易內發生錯誤，它會自動進入-2 狀態，而且您將無法再進行任何 select 語句，直到語句回復為止。 因此，檢查您的應用程式程式碼是否使用 XACT_STATE() 就相當重要，因為您可能需要修改程式碼。
 
 比方說，在 SQL Server 中，您可能會看到如下所示的交易：
 
@@ -138,7 +138,7 @@ Msg 111233, Level 16, State 1, Line 1 111233; 目前的交易已經中止，並�
 
 您不會收到 ERROR_* 函式的輸出。
 
-在 SQL 池中,需要稍微更改代碼:
+在 SQL 集區中，程式碼必須稍微改變：
 
 ```sql
 SET NOCOUNT ON;
@@ -181,11 +181,11 @@ SELECT @xact_state AS TransactionState;
 
 ## <a name="error_line-function"></a>Error_Line() 函式
 
-還值得注意的是,SQL 池不實現或支援ERROR_LINE() 函數。 如果代碼中具有此內容,則需要將其刪除以符合 SQL 池。 在程式碼中使用查詢標籤，而不需實作對等的功能。 如需詳細資訊，請參閱 [LABEL](develop-label.md) 文章。
+另外值得一提的是，SQL 集區不會執行或支援 ERROR_LINE （）函數。 如果您的程式碼中有這項功能，您必須將它移除以符合 SQL 集區的規範。 在程式碼中使用查詢標籤，而不需實作對等的功能。 如需詳細資訊，請參閱 [LABEL](develop-label.md) 文章。
 
 ## <a name="using-throw-and-raiserror"></a>使用 THROW 和 RAISERROR
 
-THROW 是用於在 SQL 池中引發異常的更現代的實現,但也支援 RAISERROR。 不過，有一些值得注意的差異。
+THROW 是在 SQL 集區中引發例外狀況的現代化實作為，但也支援 RAISERROR。 不過，有一些值得注意的差異。
 
 * 對於 THROW，使用者定義的錯誤訊息數目不能在 100,000 - 150,000 範圍內
 * RAISERROR 錯誤訊息固定為 50,000
@@ -193,7 +193,7 @@ THROW 是用於在 SQL 池中引發異常的更現代的實現,但也支援 RAIS
 
 ## <a name="limitations"></a>限制
 
-SQL 池確實有一些與事務相關的其他限制。
+SQL 集區有一些與交易相關的其他限制。
 
 如下所示：
 
@@ -206,4 +206,4 @@ SQL 池確實有一些與事務相關的其他限制。
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入了解最佳化交易，請參閱[交易的最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 還提供[SQL 池](best-practices-sql-pool.md)和[SQL 按需(預覽)](on-demand-workspace-overview.md)的其他最佳實務指南。
+若要深入了解最佳化交易，請參閱[交易的最佳做法](../sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)。 另外也提供[sql 集](best-practices-sql-pool.md)區和 sql 隨選的其他最佳作法指南[（預覽）](on-demand-workspace-overview.md)。

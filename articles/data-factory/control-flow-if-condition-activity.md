@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9b491c4f0cc99395c44d989bf19fa2a7b03da696
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81417159"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory 中的 If Condition 活動
@@ -67,7 +67,7 @@ If Condition 活動所提供的功能，與 If 陳述式在程式設計語言中
 
 屬性 | 描述 | 允許的值 | 必要
 -------- | ----------- | -------------- | --------
-NAME | If-Condition 活動的名稱。 | String | 是
+名稱 | If-Condition 活動的名稱。 | String | 是
 type | 必須設為 [IfCondition]**** | String | 是
 expression | 必須評估為 true 或 false 的運算式 | 結果類型為布林的運算式 | 是
 ifTrueActivities | 會在運算式評估為 `true` 時執行的一系列活動。 | Array | 是

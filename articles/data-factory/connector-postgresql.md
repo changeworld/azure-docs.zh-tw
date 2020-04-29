@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 資料工廠從 PostgreSQL 複製資料
+title: 使用 Azure Data Factory 從于 postgresql 複製資料
 description: 了解如何使用 Azure Data Factory 管線中的複製活動，將資料從 PostgreSQL 複製到支援的接收資料存放區。
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: jingwang
 ms.openlocfilehash: 6d10e7b9b24817eb738172bd0f2d2c3e7f8f2cbf
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81416756"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 PostgreSQL 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](v1/data-factory-onprem-postgresql-connector.md)
-> * [目前版本](connector-postgresql.md)
+> * [第 1 版](v1/data-factory-onprem-postgresql-connector.md)
+> * [目前的版本](connector-postgresql.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
@@ -29,16 +29,16 @@ ms.locfileid: "81416756"
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-此 PostgreSQL 連接器支援用於以下活動:
+下列活動支援此于 postgresql 連接器：
 
-- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [尋找活動](control-flow-lookup-activity.md)
+- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- [查閱活動](control-flow-lookup-activity.md)
 
 您可以將資料從 PostgreSQL 資料庫複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
 具體而言，這個 PostgreSQL 連接器支援 PostgreSQL **7.4 版和更新版本**。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -58,16 +58,16 @@ Integration Runtime 從版本 3.7 開始提供內建的 PostgreSQL 驅動程式�
 |:--- |:--- |:--- |
 | type | 類型屬性必須設定為：**PostgreSql** | 是 |
 | connectionString | ODBC 連接字串，用於連線到適用於 PostgreSQL 的 Azure 資料庫。 <br/>您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `password` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
-| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 從[先決條件](#prerequisites)部分瞭解更多資訊。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
 一般的連接字串為 `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`。 您可以根據您的案例設定更多屬性：
 
-| 屬性 | 描述 | 選項。 | 必要 |
+| 屬性 | 描述 | 選項 | 必要 |
 |:--- |:--- |:--- |:--- |
-| EncryptionMethod (EM)| 驅動程式用來加密在驅動程式和資料庫伺服器之間傳送之資料的方法。 例如,`EncryptionMethod=<0/1/6>;`| 0 (無加密) **(預設)** / 1 (SSL) / 6 (RequestSSL) | 否 |
-| ValidateServerCertificate (VSC) | 決定啟用 SSL 加密時，驅動程式是否驗證由資料庫伺服器所傳送的憑證 (加密方法 = 1)。 例如,`ValidateServerCertificate=<0/1>;`| 0 (停用) **(預設)** / 1 (啟用) | 否 |
+| EncryptionMethod (EM)| 驅動程式用來加密在驅動程式和資料庫伺服器之間傳送之資料的方法。 例如，`EncryptionMethod=<0/1/6>;`| 0 (無加密) **(預設)** / 1 (SSL) / 6 (RequestSSL) | 否 |
+| ValidateServerCertificate (VSC) | 決定啟用 SSL 加密時，驅動程式是否驗證由資料庫伺服器所傳送的憑證 (加密方法 = 1)。 例如，`ValidateServerCertificate=<0/1>;`| 0 (停用) **(預設)** / 1 (啟用) | 否 |
 
-**範例:**
+**範例：**
 
 ```json
 {
@@ -139,16 +139,16 @@ Integration Runtime 從版本 3.7 開始提供內建的 PostgreSQL 驅動程式�
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 PostgreSQL 資料集所支援的屬性清單。
+如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 PostgreSQL 資料集所支援的屬性清單。
 
-要從 PostgreSQL 複製資料,支援以下屬性:
+若要從于 postgresql 複製資料，支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 資料集的類型屬性必須設定為 **:PostgreSqlTable** | 是 |
+| type | 資料集的類型屬性必須設定為： **PostgreSqlTable** | 是 |
 | 結構描述 | 結構描述的名稱。 |否 (如果已指定活動來源中的「查詢」)  |
 | 資料表 | 資料表的名稱。 |否 (如果已指定活動來源中的「查詢」)  |
-| tableName | 具有架構的表的名稱。 此屬性支援向後相容性。 用於`schema`新`table`工作負載。 | 否 (如果已指定活動來源中的「查詢」) |
+| tableName | 具有架構之資料表的名稱。 此屬性支援回溯相容性。 針對`schema`新`table`的工作負載使用和。 | 否 (如果已指定活動來源中的「查詢」) |
 
 **範例**
 
@@ -168,7 +168,7 @@ Integration Runtime 從版本 3.7 開始提供內建的 PostgreSQL 驅動程式�
 }
 ```
 
-如果使用`RelationalTable`類型化資料集,則它仍然支援按"以" ,同時建議您今後使用新的數據集。
+如果您使用`RelationalTable`的是具類型的資料集，則仍會受到支援，但建議您在未來使用新的 dataset。
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
@@ -176,17 +176,17 @@ Integration Runtime 從版本 3.7 開始提供內建的 PostgreSQL 驅動程式�
 
 ### <a name="postgresql-as-source"></a>PostgreSQL 作為來源
 
-要從 PostgreSQL 複製資料,複製活動**來源**部分支援以下屬性:
+若要從于 postgresql 複製資料，複製活動的 [**來源**] 區段中支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 必須複製活動來源的類型屬性設定為 **:PostgreSqlSource** | 是 |
+| type | 複製活動來源的類型屬性必須設定為： **PostgreSqlSource** | 是 |
 | 查詢 | 使用自訂 SQL 查詢來讀取資料。 例如： `"query": "SELECT * FROM \"MySchema\".\"MyTable\""` 。 | 否 (如果已指定資料集中的 "tableName") |
 
 > [!NOTE]
 > 結構描述和資料表名稱會區分大小寫。 在查詢中以 `""` (雙引號) 括住它們。
 
-**範例:**
+**範例：**
 
 ```json
 "activities":[
@@ -218,11 +218,11 @@ Integration Runtime 從版本 3.7 開始提供內建的 PostgreSQL 驅動程式�
 ]
 ```
 
-如果使用`RelationalSource`類型化源,它仍然支援按"當前",同時建議您今後使用新的源。
+如果您使用`RelationalSource`的是具類型的來源，則仍會受到支援，但建議您在未來使用新的來源。
 
-## <a name="lookup-activity-properties"></a>尋找活動屬性
+## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
+若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
 
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,5 +1,5 @@
 ---
-title: 使用 Hadoop 蜂巢活動轉換資料
+title: 使用 Hadoop Hive 活動轉換資料
 description: 了解如何使用 Azure 資料處理站中的 Hive 活動，以在隨選/您自己的 HDInsight 叢集上執行 Hive 查詢。
 services: data-factory
 ms.service: data-factory
@@ -12,17 +12,17 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/15/2019
 ms.openlocfilehash: 8c5c917e12b1314c40763f58a7723a4df787ffa0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81418927"
 ---
 # <a name="transform-data-using-hadoop-hive-activity-in-azure-data-factory"></a>使用 Azure Data Factory 中的 Hadoop Hive 活動轉換資料
 
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](v1/data-factory-hive-activity.md)
-> * [目前版本](transform-data-using-hadoop-hive.md)
+> * [第 1 版](v1/data-factory-hive-activity.md)
+> * [目前的版本](transform-data-using-hadoop-hive.md)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -60,7 +60,7 @@ Data Factory [管線](concepts-pipelines-activities.md)中的 HDInsight Hive 活
 ## <a name="syntax-details"></a>語法詳細資料
 | 屬性            | 描述                                                  | 必要 |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| NAME                | 活動的名稱                                         | 是      |
+| 名稱                | 活動的名稱                                         | 是      |
 | description         | 說明活動用途的文字                | 否       |
 | type                | 對於 Hive 活動，活動類型為 HDinsightHive        | 是      |
 | linkedServiceName   | 參考 HDInsight 叢集註冊為 Data Factory 中的連結服務。 若要深入了解此已連結的服務，請參閱[計算已連結的服務](compute-linked-services.md)一文。 | 是      |
@@ -75,10 +75,10 @@ Data Factory [管線](concepts-pipelines-activities.md)中的 HDInsight Hive 活
 請參閱下列文章，其說明如何以其他方式轉換資料： 
 
 * [U-SQL 活動](transform-data-using-data-lake-analytics.md)
-* [豬活動](transform-data-using-hadoop-pig.md)
+* [Pig 活動](transform-data-using-hadoop-pig.md)
 * [MapReduce 活動](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop 串流活動](transform-data-using-hadoop-streaming.md)
-* [火花活動](transform-data-using-spark.md)
+* [Spark 活動](transform-data-using-spark.md)
 * [.NET 自訂活動](transform-data-using-dotnet-custom-activity.md)
-* [機器學習批次處理執行活動](transform-data-using-machine-learning.md)
-* [預存程序活動](transform-data-using-stored-procedure.md)
+* [Machine Learning 批次執行活動](transform-data-using-machine-learning.md)
+* [預存程式活動](transform-data-using-stored-procedure.md)
