@@ -11,136 +11,136 @@ author: peterclu
 ms.date: 02/24/2020
 ms.custom: Ignite2019
 ms.openlocfilehash: 01d69bffcf2c17abceba8ba2e0893360bead8b12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477216"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具執行批次預測 (預覽)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-在本文中，您將瞭解如何使用設計器創建批次處理預測管道。 批次處理預測允許您使用可以從任何 HTTP 庫觸發的 Web 服務持續按需對大型資料集進行評分。
+在本文中，您將瞭解如何使用設計工具來建立批次預測管線。 批次預測可讓您使用可從任何 HTTP 程式庫觸發的 web 服務，依需求持續計分大型資料集。
 
-在此操作操作中，您將學習執行以下任務：
+在此操作說明中，您將學習如何執行下列工作：
 
 > [!div class="checklist"]
-> * 創建和發佈批次處理推理管道
-> * 使用管道終結點
-> * 管理終結點版本
+> * 建立和發佈批次推斷管線
+> * 使用管線端點
+> * 管理端點版本
 
-要瞭解如何使用 SDK 設置批次處理評分服務，請參閱隨附的["如何"](how-to-run-batch-predictions.md)
+若要瞭解如何使用 SDK 設定批次評分服務，請參閱隨附的操作[說明](how-to-run-batch-predictions.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-此如何假定您已經具有培訓管道。 有關設計師的導覽介紹，請完成[設計器教程的第一部分](tutorial-designer-automobile-price-train-score.md)。 
+本操作說明假設您已經有訓練管線。 如需設計工具的引導式簡介，請完成設計工具教學課程的[第一個部分](tutorial-designer-automobile-price-train-score.md)。 
 
 ## <a name="create-a-batch-inference-pipeline"></a>建立批次推斷管線
 
-您的訓練管道必須至少運行一次才能創建推斷管道。
+您的定型管線必須至少執行一次，才能建立推斷管線。
 
-1. 轉到工作區中的 **"設計器"** 選項卡。
+1. 移至工作區中的 [**設計**工具] 索引標籤。
 
-1. 選擇訓練要用於預測模型的訓練管道。
+1. 選取訓練管線，以訓練您要用來進行預測的模型。
 
-1. **提交**管道。
+1. **提交**管線。
 
     ![提交管線](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
-現在訓練管道已經運行，您可以創建批次處理推理管道。
+現在已執行定型管線，您可以建立批次推斷管線。
 
-1. 在 **"提交"** 旁邊，選擇新的下拉清單**創建推理管道**。
+1. 在 [**提交**] 旁，選取新的下拉式清單 [**建立推斷管線**]。
 
-1. 選擇**批次處理推理管道**。
+1. 選取 [**批次推斷管線**]。
 
     ![建立批次推斷管線](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
     
 結果將是預設批次推斷管線。 
 
-### <a name="add-a-pipeline-parameter"></a>添加管道參數
+### <a name="add-a-pipeline-parameter"></a>新增管線參數
 
-要創建新資料的預測，可以在此管道草稿視圖中手動連接其他資料集，也可以為資料集創建參數。 參數允許您更改運行時批次處理推斷過程的行為。
+若要建立新資料的預測，您可以手動連接此管線草稿視圖中的不同資料集，或為您的資料集建立參數。 參數可讓您在執行時間變更批次推斷進程的行為。
 
-在本節中，您將創建一個資料集參數來指定要進行預測的不同資料集。
+在本節中，您會建立資料集參數，以指定要進行預測的不同資料集。
 
-1. 選擇資料集模組。
+1. 選取 [資料集] 模組。
 
-1. 畫布右側將顯示一個窗格。 在窗格的底部，選擇 **"設置為管道參數**"。
+1. 窗格會出現在畫布的右邊。 在窗格底部，選取 [**設定為管線參數**]。
    
     輸入參數的名稱，或接受預設值。
 
-## <a name="publish-your-batch-inferencing-pipeline"></a>發佈批次處理推斷管道
+## <a name="publish-your-batch-inferencing-pipeline"></a>發佈您的 batch 推斷管線
 
-現在，您已準備好部署推斷管道。 這將部署管道，並使它可供其他人使用。
+現在您已經準備好部署推斷管線。 這會部署管線，並使其可供其他人使用。
 
 1. 選取 [發佈]**** 按鈕。
 
-1. 在顯示的對話方塊中，展開**管道終結點**的下拉清單，然後選擇 **"新建管道終結點**"。
+1. 在出現的對話方塊中，展開 [ **PipelineEndpoint**] 的下拉式，然後選取 [**新增 PipelineEndpoint**]。
 
-1. 提供終結點名稱和可選說明。
+1. 提供端點名稱和選擇性描述。
 
-    在對話方塊底部附近，您可以看到使用定型期間使用的資料集 ID 的預設值配置的參數。
+    在靠近對話方塊底部的地方，您可以看到您使用定型期間所使用之資料集識別碼的預設值所設定的參數。
 
-1. 選取 [發行]****。
+1. 選取 [發佈]  。
 
 ![發佈管線](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
 
-## <a name="consume-an-endpoint"></a>使用終結點
+## <a name="consume-an-endpoint"></a>使用端點
 
-現在，您有一個已發佈的管道，具有資料集參數。 管道將使用在訓練管道中創建的定型模型來對作為參數提供的資料集進行評分。
+現在，您有一個已發行的管線，其中包含資料集參數。 管線會使用定型管線中建立的定型模型，將您提供的資料集評分為參數。
 
-### <a name="submit-a-pipeline-run"></a>提交管道運行 
+### <a name="submit-a-pipeline-run"></a>提交管線執行 
 
-在本節中，您將設置手動管道運行並更改管道參數以為新資料評分。 
+在本節中，您將設定手動管線執行並改變管線參數，以對新資料進行評分。 
 
-1. 部署完成後，轉到 **"終結點"** 部分。
+1. 部署完成之後，請移至 [**端點**] 區段。
 
-1. 選擇**管道終結點**。
+1. 選取 [**管線端點**]。
 
-1. 選擇您創建的終結點的名稱。
+1. 選取您建立的端點名稱。
 
 ![端點連結](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
 
-1. 選擇**已發佈的管道**。
+1. 選取 [**已發佈的管線**]。
 
-    此螢幕顯示在此終結點下發布的所有已發佈的管道。
+    此畫面會顯示在此端點下發布的所有已發佈管線。
 
-1. 選擇您發佈的管道。
+1. 選取您發佈的管線。
 
-    管道詳細資訊頁顯示管道的詳細執行歷程記錄和連接字串資訊。 
+    [管線詳細資料] 頁面會顯示管線的詳細執行歷程記錄和連接字串資訊。 
     
-1. 選擇 **"提交**"以創建管道的手動運行。
+1. 選取 [**提交**] 以建立管線的手動執行。
 
     ![管線詳細資料](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
     
-1. 更改參數以使用其他資料集。
+1. 將參數變更為使用不同的資料集。
     
-1. 選擇 **"提交**"以運行管道。
+1. 選取 [**提交**] 以執行管線。
 
-### <a name="use-the-rest-endpoint"></a>使用 REST 終結點
+### <a name="use-the-rest-endpoint"></a>使用 REST 端點
 
-您可以在 **"終結點"** 部分中查找有關如何使用管道終結點和已發佈的管道的資訊。
+您可以在 [**端點**] 區段中找到如何使用管線端點和已發佈管線的相關資訊。
 
-您可以在運行概述面板中找到管道終結點的 REST 終結點。 通過調用終結點，您將使用其預設發佈的管道。
+您可以在 [執行總覽] 面板中找到管線端點的 REST 端點。 藉由呼叫端點，您會使用其預設的已發佈管線。
 
-您還可以在 **"已發佈"管道**頁中使用已發佈的管道。 選擇已發佈的管道並查找其 REST 終結點。 
+您也可以在 [**已發佈的管線**] 頁面中使用已發佈的管線。 選取已發佈的管線並尋找其 REST 端點。 
 
-![休息終結點詳細資訊](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+![Rest 端點詳細資料](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
 
-要進行 REST 調用，您需要一個 OAuth 2.0 承載式身份驗證標頭。 若要進一步了解如何設定對工作區進行驗證以及如何進行參數化 REST 呼叫，請參閱下列[教學課程章節](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)。
+若要進行 REST 呼叫，您將需要 OAuth 2.0 持有人類型驗證標頭。 若要進一步了解如何設定對工作區進行驗證以及如何進行參數化 REST 呼叫，請參閱下列[教學課程章節](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)。
 
-## <a name="versioning-endpoints"></a>版本控制終結點
+## <a name="versioning-endpoints"></a>版本設定端點
 
-設計器將一個版本分配給發佈到終結點的每個後續管道。 您可以在 REST 調用中指定要作為參數執行的管道版本。 如果不指定版本號，設計器將使用預設管道。
+設計工具會將版本指派給您發行至端點的每個後續管線。 您可以在 REST 呼叫中指定要當做參數執行的管線版本。 如果您未指定版本號碼，則設計工具會使用預設管線。
 
-發佈管道時，可以選擇使其成為該終結點的新預設管道。
+當您發佈管線時，您可以選擇讓它成為該端點的新預設管線。
 
-![設置預設管道](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
+![設定預設管線](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
 
-您還可以在終結點的 **"已發佈管道"** 選項卡中設置新的預設管道。
+您也可以在端點的 [**已發佈的管線**] 索引標籤中設定新的預設管線。
 
-![設置預設管道](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
+![設定預設管線](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>後續步驟
 
