@@ -1,6 +1,6 @@
 ---
-title: 元件&先決條件
-description: 使用 Azure 安全中心開始使用 IoT 服務先決條件所需的一切詳細資訊。
+title: 元件 & 必要條件
+description: 開始使用 IoT 服務必要條件 Azure 資訊安全中心所需的所有專案的詳細資料。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,31 +16,31 @@ ms.workload: na
 ms.date: 09/25/2019
 ms.author: mlottner
 ms.openlocfilehash: fb5c42ad490ed04f14ff150093a44b552434ed9e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310588"
 ---
-# <a name="azure-security-center-for-iot-prerequisites"></a>適用於 IoT 先決條件的 Azure 安全中心
+# <a name="azure-security-center-for-iot-prerequisites"></a>適用于 IoT 必要條件的 Azure 資訊安全中心
 
-本文介紹了 Azure IoT 服務安全中心的不同元件、需要開始的內容,並解釋了幫助瞭解服務的基本概念。
+本文說明 IoT 服務的 Azure 資訊安全中心的不同元件、您需要開始的事項，並說明可協助您瞭解服務的基本概念。
 
-## <a name="minimum-requirements"></a>最低需求
+## <a name="minimum-requirements"></a>最低要求條件
 
-- IoT 中心標準層
-  - RBAC 角色**擁有者**等級權限
-- [紀錄分析工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
-- Azure 安全中心(推薦)
-  - 使用 Azure 安全中心是一項建議,而不是一項要求。 如果沒有 Azure 安全中心,您將無法查看 IoT 中心中的其他 Azure 資源。
+- IoT 中樞標準層
+  - RBAC 角色**擁有**者層級許可權
+- [Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)
+- Azure 資訊安全中心（建議）
+  - Azure 資訊安全中心的使用是建議事項，而不是必要條件。 若沒有 Azure 資訊安全中心，您將無法在 IoT 中樞內查看其他 Azure 資源。
 
-## <a name="working-with-azure-security-center-for-iot-service"></a>使用 Azure IoT 服務安全中心
+## <a name="working-with-azure-security-center-for-iot-service"></a>使用適用于 IoT 服務的 Azure 資訊安全中心
 
-Azure 安全中心可用於 IoT 見解和報告,可透過 Azure IoT 中心和 Azure 安全中心提供。 要在 Azure IoT 中心啟用 IoT 的 Azure 安全中心,需要具有**擁有者**級別許可權的帳戶。 在 IoT 中心中為 IoT 啟用 ASC 後,用於 IoT 見解的 Azure 安全中心將顯示為 Azure IoT 中心**中的安全**功能和 Azure 安全中心的**IoT。**
+您可以使用 Azure IoT 中樞和 Azure 資訊安全中心取得 IoT 深入解析和報告的 Azure 資訊安全中心。 若要在您的 Azure IoT 中樞上啟用 IoT 的 Azure 資訊安全中心，則需要具有**擁有**者層級許可權的帳戶。 在您的 IoT 中樞中啟用適用于 IoT 的 ASC 之後，IoT 深入解析的 Azure 資訊安全中心會顯示為 Azure IoT 中樞中的**安全性**功能，以及 Azure 資訊安全中心中的**iot** 。
 
 ## <a name="supported-service-regions"></a>支援的服務區域
 
-IoT 的 Azure 安全中心目前支援以下 Azure 區域中的 IoT 中心:
+下列 Azure 區域中的 IoT 中樞目前支援 IoT 的 Azure 資訊安全中心：
 
 - 美國中部
 - 美國東部
@@ -70,23 +70,23 @@ IoT 的 Azure 安全中心目前支援以下 Azure 區域中的 IoT 中心:
 - 印度中部
 - 印度南部
 
-IoT Azure 安全中心將所有流量從所有歐洲區域路由到西歐區域資料中心和所有剩餘區域到美國中部區域數據中心。
+適用于 IoT 的 Azure 資訊安全中心會將所有歐洲地區的所有流量路由傳送至西歐地區資料中心，並將所有其他區域路由至美國中部區域資料中心。
 
-## <a name="wheres-my-iot-hub"></a>我的 IoT 中心在哪裡?
+## <a name="wheres-my-iot-hub"></a>我的 IoT 中樞在哪裡？
 
-在開始之前,請檢查 IoT 中心位置以驗證服務可用性。
+開始之前，請先檢查您的 IoT 中樞位置以確認服務可用性。
 
 1. 開啟 IoT 中樞。
-1. 按一下 [概觀]****。
-1. 驗證列出的位置與[受支援的服務區域](#supported-service-regions)之一匹配。
+1. 按一下 [概觀]  。
+1. 確認列出的位置符合其中一個[支援的服務區域](#supported-service-regions)。
 
-## <a name="supported-platforms-for-agents"></a>支援的代理平台
+## <a name="supported-platforms-for-agents"></a>代理程式支援的平臺
 
-IoT 代理的 Azure 安全中心支援越來越多的設備和平臺清單。 請參閱[支援的平臺清單](how-to-deploy-agent.md)以檢查現有或計劃的設備庫。
+IoT 代理程式的 Azure 資訊安全中心支援不斷增長的裝置和平臺清單。 請參閱[支援的平臺清單](how-to-deploy-agent.md)，以檢查您現有或已規劃的裝置程式庫。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 閱讀 Azure IoT 安全[概述](overview.md)
+- 閱讀 Azure IoT 安全性[總覽](overview.md)
 - 瞭解如何[啟用服務](quickstart-onboard-iot-hub.md)
-- 閱讀[Azure 安全中心瞭解 IoT 常見問題解答](resources-frequently-asked-questions.md)
-- 瞭解如何瞭解[IoT 警報的 Azure 安全中心](concept-security-alerts.md)
+- 閱讀[適用于 IoT 的 AZURE 資訊安全中心常見問題](resources-frequently-asked-questions.md)
+- 探索如何[瞭解 IoT 警示的 Azure 資訊安全中心](concept-security-alerts.md)

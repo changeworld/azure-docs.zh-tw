@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 3d9718d7c1b3182d1f7bc16cd81b38635c051a85
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399969"
 ---
 :::row:::
     :::column span="3":::
-        在為 Android 開發時,有兩個語音 SDK 可用。 Java 語音 SDK 作為 Android 包在本機上可用,或者 .NET 語音 SDK 可在 Xamarin.Android 實現 .NET 標準 2.0 時與**Xamarin.Android**一起使用。
+        針對 Android 進行開發時，有兩個語音 Sdk 可供使用。 JAVA 語音 SDK 原本就是以 Android 套件的形式提供，或者 .NET 語音 SDK 可以與**Xamarin**一起使用，因為它會實作為 .NET Standard 2.0。
     :::column-end:::
     :::column:::
         <br>
@@ -31,7 +31,7 @@ ms.locfileid: "81399969"
 
 :::row:::
     :::column span="3":::
-        Xamarin.Android 公開了適用於 .NET 開發人員的完整 Android SDK。 在 Visual Studio 中使用 C# 或 F# 建置完全原生的 Android 應用程式。 有關詳細資訊,請參閱<a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin.<span class="docon docon-navigate-external x-hidden-focus"></span>安卓</a>
+        Xamarin.Android 公開了適用於 .NET 開發人員的完整 Android SDK。 在 Visual Studio 中使用 C# 或 F# 建置完全原生的 Android 應用程式。 如需詳細資訊，請參閱<a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin <span class="docon docon-navigate-external x-hidden-focus"></span> . Android</a>
     :::column-end:::
     :::column:::
         <br>

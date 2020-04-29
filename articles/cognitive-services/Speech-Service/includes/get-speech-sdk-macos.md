@@ -5,30 +5,30 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: 57de7f1e7c37fec66cda666d3f144e52849a026f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399886"
 ---
-在為 macOS 開發時,有三個語音 SDK 可用。
+針對 macOS 進行開發時，有三種語音 Sdk 可供使用。
 
-- 目標 C 語音 SDK 為 CocoaPod 套件提供於本機上提供
-- .NET 語音 SDK 可與**Xamarin.Mac**一起使用,因為它實現了 .NET 標準 2.0
-- Python 語音 SDK 可作為 PyPI 模組提供
+- CocoaPod 套件是以原生方式提供的目標 C 語音 SDK
+- .NET 語音 SDK 可與**Xamarin**搭配使用，因為它會執行 .NET Standard 2。0
+- Python 語音 SDK 以 PyPI 模組的形式提供
 
 > [!TIP]
-> 有關使用帶有 Swift 的目標-C 語音 SDK 的詳細資訊,請參閱<a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">將目標<span class="docon docon-navigate-external x-hidden-focus"></span>C 匯入 Swift </a>。
+> 如需搭配使用目標-C 語音 SDK 與 Swift 的詳細資訊，請參閱將<a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">客觀<span class="docon docon-navigate-external x-hidden-focus"> </span>-c 匯入 swift </a>。
 
 ### <a name="system-requirements"></a>系統需求
 
-- macOS 版本 10.13 或更高版本
+- MacOS 10.13 或更新版本
 
 # <a name="xcode"></a>[Xcode](#tab/mac-xcode)
 
 :::row:::
     :::column span="3":::
-        macOS CocoaPod 軟體套件可供下載,可與<a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1(或更高版本<span class="docon docon-navigate-external x-hidden-focus"></span>)</a>集成開發環境 (IDE) 一起下載和使用。 首先<a href="https://aka.ms/csspeech/macosbinary" target="_blank">,下載二進位可哥<span class="docon docon-navigate-external x-hidden-focus"></span>盒</a>。 在同一目錄中提取 Pod 以支援其的版本,建立*Podfile*並將`pod`列為`target`。
+        MacOS CocoaPod 套件可供下載及搭配<a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 （或更新版本） <span class="docon docon-navigate-external x-hidden-focus"></span> </a>的整合式開發環境（IDE）使用。 首先，<a href="https://aka.ms/csspeech/macosbinary" target="_blank">下載二進位 CocoaPod <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。 在相同的目錄中，將 pod 解壓縮以供其用途使用、建立*Podfile* ， `pod`並將`target`清單列為。
     :::column-end:::
     :::column:::
         <br>
@@ -47,11 +47,11 @@ target 'MyApp' do
 end
 ```
 
-# <a name="xamarinmac"></a>[薩馬林.麥克](#tab/mac-xamarin)
+# <a name="xamarinmac"></a>[Xamarin. Mac](#tab/mac-xamarin)
 
 :::row:::
     :::column span="3":::
-        Xamarin.Mac 會為 .NET 開發人員公開完整的 macOS SDK，可使用 C# 建置原生 Mac 應用程式。 有關詳細資訊,請參閱<a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin.Mac <span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
+        Xamarin.Mac 會為 .NET 開發人員公開完整的 macOS SDK，可使用 C# 建置原生 Mac 應用程式。 如需詳細資訊，請參閱<a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin <span class="docon docon-navigate-external x-hidden-focus"> </span>. Mac </a>。
     :::column-end:::
     :::column:::
         <br>
@@ -71,5 +71,5 @@ end
 
 #### <a name="additional-resources"></a>其他資源
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos" target="_blank">macOS 語音 SDK 快速入門目標 C 源碼<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos" target="_blank">macOS 語音 SDK 快速入門 Swift 原始碼<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos" target="_blank">macOS 語音 SDK 快速入門目標-C 原始程式碼<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos" target="_blank">macOS 語音 SDK 快速入門 Swift 原始程式碼<span class="docon docon-navigate-external x-hidden-focus"></span></a>

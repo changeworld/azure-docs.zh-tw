@@ -1,13 +1,13 @@
 ---
-title: 從門戶更新現有配置
-description: 瞭解從 Azure 藍圖中的門戶更新現有藍圖分配的機制。
+title: 從入口網站更新現有的指派
+description: 瞭解在 Azure 藍圖中，從入口網站更新現有藍圖指派的機制。
 ms.date: 04/15/2020
 ms.topic: how-to
 ms.openlocfilehash: a00a8bcc10b37af576777e3816a794225a3832f7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81381797"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新現有的藍圖指派
@@ -24,20 +24,20 @@ ms.locfileid: "81381797"
 
 1. 選取頁面左側的 [指派的藍圖]  。
 
-1. 在藍圖清單中，以滑鼠左鍵按一下藍圖指派。 然後按下 **「更新分配」** 按鈕或右鍵按一下藍圖分配並選擇 **「更新分配**」 。
+1. 在藍圖清單中，以滑鼠左鍵按一下藍圖指派。 然後按一下 [**更新指派**] 按鈕，或以滑鼠右鍵按一下藍圖指派，然後選取 [**更新指派**]。
 
-   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="更新現有藍圖配置" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/update-assignment.png" alt-text="更新現有的藍圖指派" border="false":::
 
-1. "**分配藍圖"** 頁將預先載入原始分配中的所有值。
+1. [**指派藍圖**] 頁面會預先填入原始指派中的所有值。
    您可以變更**藍圖定義版本**、**鎖定指派**狀態，以及任何存在於藍圖定義的動態參數。 完成變更後，按一下 [指派]****。
 
 1. 在更新後的指派詳細資料頁面上，查看新的狀態。 在此範例中，我們對指派新增了**鎖定**。
 
-   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="更新現有藍圖配置 ─ 鎖定模式已變更" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/updated-assignment.png" alt-text="已更新現有的藍圖指派-鎖定模式" border="false":::
 
-1. 使用下拉清單流覽有關其他**分配操作**的詳細資訊。 **託管資源**表按選定的分配操作更新。
+1. 使用下拉式按鈕探索其他**指派作業**的詳細資料。 **受管理資源**的資料表會依選取的指派作業進行更新。
 
-   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="藍圖配置的配置操作" border="false":::
+   :::image type="content" source="../media/update-existing-assignments/assignment-operations.png" alt-text="藍圖指派的指派作業" border="false":::
 
 ## <a name="rules-for-updating-assignments"></a>用於更新指派的規則
 
@@ -65,8 +65,8 @@ ms.locfileid: "81381797"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[藍圖生命週期](../concepts/lifecycle.md)。
+- 了解[藍圖生命週期](../concepts/lifecycle.md)。
 - 了解如何使用[靜態與動態參數](../concepts/parameters.md)。
 - 了解如何自訂[藍圖排序順序](../concepts/sequencing-order.md)。
 - 了解如何使用[藍圖資源鎖定](../concepts/resource-locking.md)。
-- 在分配藍圖期間使用[常規故障排除時](../troubleshoot/general.md)解決問題。
+- 使用[一般疑難排解](../troubleshoot/general.md)來解決藍圖指派期間發生的問題。

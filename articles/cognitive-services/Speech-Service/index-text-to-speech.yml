@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 文字轉換語音文件
-summary: 語音服務中的文字到語音轉換使應用程式、工具或設備能夠將文字轉換為類似人類的合成語音。
+summary: 語音服務中的文字轉換語音可讓您的應用程式、工具或裝置將文字轉換成類似人類的合成語音。
 metadata:
-  title: 文字到語音文檔 - 教程,API 參考 - Azure 認知服務 |微軟文件
+  title: 文字轉換語音檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 83bf5f9e623d1d777834e5efdd26fa4cdbc42819
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401434"
 landingContent:
-- title: 關於文字到語音
+- title: 關於文字轉換語音
   linkLists:
   - linkListType: overview
     links:
@@ -34,7 +34,7 @@ landingContent:
       url: quickstarts/text-to-speech-audio-file.md
     - text: 使用長格式音訊合成語音
       url: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
-- title: 使用文字到語音進行開發
+- title: 使用文字轉換語音進行開發
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -62,5 +62,5 @@ landingContent:
       url: language-support.md#neural-voices
     - text: SSML 注音集合
       url: speech-ssml-phonetic-sets.md
-    - text: 文字到語音轉換定價
+    - text: 文字轉換語音定價
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

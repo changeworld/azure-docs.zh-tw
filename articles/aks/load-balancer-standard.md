@@ -1,76 +1,76 @@
 ---
-title: 使用標準 SKU 負載均衡器
+title: 使用標準 SKU 負載平衡器
 titleSuffix: Azure Kubernetes Service
-description: 瞭解如何使用具有標準 SKU 的負載均衡器使用 Azure 庫伯奈斯服務 (AKS) 公開服務。
+description: 瞭解如何使用具有標準 SKU 的負載平衡器，以 Azure Kubernetes Service （AKS）公開您的服務。
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
 ms.openlocfilehash: c1d2c0e48394fbde1b595ae4b405d84f437dc5e4
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81392820"
 ---
-# <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure 庫伯奈斯服務 (AKS) 中使用標準 SKU 負載均衡器
+# <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中使用標準 SKU 負載平衡器（AKS）
 
-要透過 Azure 庫伯奈斯服務 (AKS) 中的 Kubernetes 類型的`LoadBalancer`服務提供對應用程式的訪問,可以使用 Azure 負載均衡器。 在 AKS 上執行的負載均衡器可用作內部負載均衡器或外部負載均衡器。 內部負載均衡器使 Kubernetes 服務只能對在 AKS 群集相同的虛擬網路中運行的應用程序訪問。 外部負載均衡器接收一個或多個用於入口的公共 IP,並使 Kubernetes 服務使用公共 IP 在外部訪問。
+若要透過 Azure Kubernetes Service （AKS）中類型`LoadBalancer`的 Kubernetes 服務來提供應用程式的存取權，您可以使用 Azure Load Balancer。 在 AKS 上執行的負載平衡器可做為內部或外部負載平衡器使用。 內部負載平衡器可讓 Kubernetes 服務僅供在與 AKS 叢集相同的虛擬網路中執行的應用程式存取。 外部負載平衡器會接收一或多個公用 Ip 進行輸入，並使用公用 Ip 讓 Kubernetes 服務可從外部進行存取。
 
-Azure Load Balancer 有兩種 SKU -「基本」** 和「標準」**。 默認情況下,在創建 AKS 群集時使用*標準*SKU。 使用*標準*SKU 負載均衡器可提供其他特性和功能,例如更大的後端池大小和可用性區域。 在選擇使用哪種負載之前,請務必了解*標準*負載均衡器和*基本*負載均衡器之間的差異。 創建 AKS 群集後,無法更改該群集的負載均衡器 SKU。 有關*基本*和*標準*SKU 的詳細資訊,請參閱[Azure 負載均衡器 SKU 比較][azure-lb-comparison]。
+Azure Load Balancer 有兩種 SKU -「基本」** 和「標準」**。 根據預設，當您建立 AKS 叢集時，會使用*標準*SKU。 使用*標準*SKU 負載平衡器提供額外的特性和功能，例如較大的後端集區大小和可用性區域。 請務必先瞭解*標準*和*基本*負載平衡器之間的差異，再選擇要使用哪一個。 建立 AKS 叢集之後，您就無法變更該叢集的負載平衡器 SKU。 如需*基本*和*標準*sku 的詳細資訊，請參閱[Azure 負載平衡器 sku 比較][azure-lb-comparison]。
 
-本文假定對庫伯奈斯和 Azure 負載均衡器概念的基本理解。 有關詳細資訊,請參閱[Azure 庫伯奈斯服務 (AKS) 的核心概念][kubernetes-concepts]和什麼是[Azure 負載均衡器?][azure-lb]
+本文假設您對 Kubernetes 和 Azure Load Balancer 概念有基本瞭解。 如需詳細資訊，請參閱[Kubernetes 的核心概念 Azure Kubernetes Service （AKS）][kubernetes-concepts]和[Azure Load Balancer 的內容？][azure-lb]。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果選擇在本地安裝和使用 CLI,則本文要求您運行 Azure CLI 版本 2.0.81 或更高版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
+如果您選擇在本機安裝和使用 CLI，本文會要求您執行 Azure CLI 版2.0.81 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][install-azure-cli]。
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文假定您具有具有*標準*SKU Azure 負載均衡器的 AKS 群集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
+本文假設您的 AKS 叢集具有*標準*SKU Azure Load Balancer。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-如果使用現有子網或資源組,AKS 群集服務主體還需要管理網路資源的許可權。 通常,在委派的資源上將*網路參與者*角色分配給您的服務主體。 您還可以使用分配給託管標識的系統來訪問許可權,而不是服務主體。 有關詳細資訊,請參閱[使用託管標識](use-managed-identity.md)。 有關權限的詳細資訊,請參閱將[AKS 存取委託給其他 Azure 資源][aks-sp]。
+如果您使用現有的子網或資源群組，則 AKS 叢集服務主體也需要管理網路資源的許可權。 一般來說，請將「*網路參與者*」角色指派給委派資源上的服務主體。 您也可以使用系統指派的受控識別來取得許可權，而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。 如需許可權的詳細資訊，請參閱[將 AKS 存取權委派給其他 Azure 資源][aks-sp]。
 
-### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>從基本 SKU 負載均衡器遷移到標準 SKU
+### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>從基本 SKU Load Balancer 移至標準 SKU
 
-如果現有群集具有基本 SKU 負載均衡器,則在遷移以使用標準 SKU 負載均衡器時,需要注意重要的行為差異。
+如果您現有的叢集具有基本 SKU Load Balancer，則在遷移以使用具有標準 SKU Load Balancer 的叢集時，有重要的行為差異需要注意。
 
-例如,將藍色/綠色部署用於遷移群集是一種常見做法,`load-balancer-sku`因為群集的類型只能在群集創建時定義。 但是,*基本 SKU*負載均衡器使用*基本 SKU* IP 位址,這些位址與*標準 SKU*負載均衡器不相容,因為它們需要*標準 SKU* IP 位址。 遷移群集以升級負載均衡器 SKU 時,將需要具有相容 IP 位址 SKU 的新 IP 位址。
+例如，讓藍色/綠色部署遷移叢集是常見的作法，因為叢集的`load-balancer-sku`類型只能在建立叢集時定義。 不過，*基本 sku*負載平衡器會使用與*標準*sku 負載平衡器不相容的*基本 sku* Ip 位址，因為它們需要*標準 sku* ip 位址。 當遷移叢集以 Load Balancer Sku 升級時，將需要具有相容 IP 位址 SKU 的新 IP 位址。
 
-有關如何遷移群集的更多注意事項,請造訪[有關遷移注意事項的文檔](aks-migration.md),查看遷移時要考慮的重要主題清單。 在 AKS 中使用標準 SKU 負載均衡器時,以下限制也是需要注意的重要行為差異。
+如需有關如何遷移叢集的詳細考慮，請流覽[有關遷移考慮的檔](aks-migration.md)，以查看遷移時要考慮的重要主題清單。 下列限制也是在 AKS 中使用標準 SKU 負載平衡器時，所要注意的重要行為差異。
 
 ### <a name="limitations"></a>限制
 
-當您使用*標準*SKU 建立與管理支援負載均衡器的 AKS 叢集時,以下限制適用:
+當您建立和管理支援具有*標準*SKU 之負載平衡器的 AKS 叢集時，適用下列限制：
 
-* 允許從 AKS 群集傳出流量至少需要一個公共 IP 或 IP 首碼。 公共 IP 或 IP 首碼還需要維護控制平面和代理節點之間的連接,以及保持與早期版本的 AKS 的相容性。 具有以下選項,用於使用*標準*SKU 負載均衡器指定公共 IP 或 IP 首碼:
-    * 提供您自己的公共 IP。
-    * 提供您自己的公共 IP 首碼。
-    * 指定最多 100 個數位,允許 AKS 群集建立與 AKS 群集相同的資源組中的許多*標準*SKU 公共 IP,該群集通常在開始時以*MC_* 命名。 AKS 將公共 IP 分配給*標準*SKU 負載均衡器。 預設情況下,如果未指定公共 IP、公共 IP 首碼或 IP 數量,則將自動在與 AKS 群集相同的資源組中創建一個公共 IP。 您還必須允許公共位址,並避免創建任何禁止創建 IP 的 Azure 策略。
-* 將*標準*SKU 用於負載均衡器時,必須使用 Kubernetes 版本*1.13 或更高*版本。
-* 僅當創建 AKS 群集時,才能定義負載均衡器 SKU。 創建 AKS 群集後,無法更改負載均衡器 SKU。
-* 只能在單個群集中使用一種類型的負載均衡器 SKU(基本或標準)。
-* *標準*SKU 負載均衡器僅支援*標準*SKU IP 位址。
+* 必須至少有一個公用 IP 或 IP 首碼，才能允許來自 AKS 叢集的輸出流量。 此外，也需要公用 IP 或 IP 首碼，以維護控制平面和代理程式節點之間的連線，以及維護與舊版 AKS 的相容性。 您有下列選項可使用*標準*SKU 負載平衡器來指定公用 IP 或 IP 首碼：
+    * 提供您自己的公用 Ip。
+    * 提供您自己的公用 IP 首碼。
+    * 指定最多100的數位，以允許 AKS 叢集在建立為 AKS 叢集的相同資源群組中建立許多*標準*SKU 公用 ip，這通常會在一開始就使用*MC_* 來命名。 AKS 會將公用 IP 指派給*標準*SKU 負載平衡器。 根據預設，如果未指定公用 IP、公用 IP 首碼或 Ip 數目，則會在與 AKS 叢集相同的資源群組中自動建立一個公用 IP。 您也必須允許公用位址，並避免建立 ban IP 建立的任何 Azure 原則。
+* 使用負載平衡器的*標準*SKU 時，您必須使用 Kubernetes *1.13 或更高*版本。
+* 只有當您建立 AKS 叢集時，才可以定義負載平衡器 SKU。 建立 AKS 叢集之後，您就無法變更負載平衡器 SKU。
+* 在單一叢集中，您只能使用一種類型的負載平衡器 SKU （基本或標準）。
+* *標準*SKU 負載平衡器只支援*標準*SKU IP 位址。
 
-## <a name="use-the-standard-sku-load-balancer"></a>使用*標準*SKU 負載均衡器
+## <a name="use-the-standard-sku-load-balancer"></a>使用*標準*SKU 負載平衡器
 
-默認情況下,當您創建 AKS 群集時,在群集中運行服務時將使用*標準*SKU 負載均衡器。 例如[,使用 Azure CLI 的快速入門][aks-quickstart-cli]部署使用*標準*SKU 負載均衡器的範例應用程式。
+當您建立 AKS 叢集時，根據預設，當您在該叢集中執行服務時，會使用*標準*SKU 負載平衡器。 例如，[使用 Azure CLI 的快速入門][aks-quickstart-cli]會部署使用*標準*SKU 負載平衡器的範例應用程式。
 
 > [!IMPORTANT]
-> 透過自訂使用者定義的路由 (UDR), 可以避免公共 IP 位址。 將 AKS 群集的出站類型指定為 UDR 可以跳過 AKS 創建的 Azure 負載均衡器的 IP 預先和後端池設定。 請參閱[將群`outboundType`集 設置為「使用者定義路由」。](egress-outboundtype.md)
+> 藉由自訂使用者定義的路由（UDR），可以避免公用 IP 位址。 將 AKS 叢集的輸出類型指定為 UDR，可以略過 AKS 所建立 Azure 負載平衡器的 IP 布建和後端集區設定。 請參閱[將叢集設定`outboundType`為 ' userDefinedRouting '](egress-outboundtype.md)。
 
-## <a name="configure-the-load-balancer-to-be-internal"></a>將負載均衡器設定為內部
+## <a name="configure-the-load-balancer-to-be-internal"></a>將負載平衡器設定為內部
 
-您還可以將負載均衡器配置為內部,而不是公開公共 IP。 要將負載均衡器配置為內部,請添加`service.beta.kubernetes.io/azure-load-balancer-internal: "true"`為*Load平衡器*服務的註釋。 你可以[在這裡][internal-lb-yaml]看到一個示例 yaml 清單以及有關內部負載均衡器的更多詳細資訊。
+您也可以將負載平衡器設定為內部，而不公開公用 IP。 若要將負載平衡器設定為內部`service.beta.kubernetes.io/azure-load-balancer-internal: "true"` ，請新增作為「 *LoadBalancer* 」服務的注釋。 您可以在[這裡][internal-lb-yaml]查看範例 yaml 資訊清單，以及有關內部負載平衡器的詳細資料。
 
-## <a name="scale-the-number-of-managed-public-ips"></a>擴充託管公共 IP 的數量
+## <a name="scale-the-number-of-managed-public-ips"></a>調整受控公用 Ip 的數目
 
-在預設情況下創建的託管出站公共 IP 中使用*標準*SKU 負載均衡器時,可以使用*負載均衡器託管 ip 計數*參數縮放託管出站公共 IP 的數量。
+使用*標準*SKU 負載平衡器搭配預設建立的受控輸出公用 ip 時，您可以使用*負載平衡器管理的 ip 計數*參數來調整受控輸出公用 ip 數目。
 
-要更新現有群集,請運行以下命令。 此參數也可以設置為群集創建時間,以具有多個託管出站公共 IP。
+若要更新現有的叢集，請執行下列命令。 此參數也可以在叢集建立時設定，以擁有多個受控輸出公用 Ip。
 
 ```azurecli-interactive
 az aks update \
@@ -79,34 +79,34 @@ az aks update \
     --load-balancer-managed-outbound-ip-count 2
 ```
 
-上述示例將*myAKSCluster 群集*的託管出站公共 IP*myResourceGroup*數設置為*2。* 
+上述範例會將*myResourceGroup*中*myAKSCluster*叢集的受控輸出公用 ip 數目設定為*2* 。 
 
-您還可以使用*負載均衡器管理 ip 計數*參數通過在創建群集時設置託管出站公共 IP 的`--load-balancer-managed-outbound-ip-count`初始數量,從而附加 參數並將其設置為所需的值。 託管出站公共 IP 的預設數為 1。
+您也可以在建立叢集時，使用*負載平衡器管理的 ip 計數*參數來設定初始受控輸出公用 ip 數目，方法是附加`--load-balancer-managed-outbound-ip-count`參數並將它設定為您想要的值。 受控輸出公用 Ip 的預設數目為1。
 
-## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>為出口提供您自己的公共 IP 或前置碼
+## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>提供您自己的公用 Ip 或輸出的首碼
 
-使用*標準*SKU 負載均衡器時,AKS 群集會自動在為 AKS 群集創建的同一資源組中創建公共 IP,並將公共 IP 分配給*標準*SKU 負載均衡器。 或者,您可以在群集創建時分配自己的公共 IP,也可以更新現有群集的負載均衡器屬性。
+使用*標準*sku 負載平衡器時，AKS 叢集會自動在針對 AKS 叢集所建立的相同資源群組中建立公用 ip，並將公用 ip 指派給*標準*SKU 負載平衡器。 或者，您也可以在建立叢集時指派自己的公用 IP，或更新現有叢集的負載平衡器屬性。
 
-以引入多個 IP 位址或前置碼,您可以在在單個負載均衡器物件後面定義 IP 位址時定義多個支援服務。 特定節點的出入口終結點將取決於它們與哪些服務相關聯。
+藉由帶入多個 IP 位址或首碼，您可以在定義單一負載平衡器物件後方的 IP 位址時，定義多個支援服務。 特定節點的輸出端點將取決於它們所關聯的服務。
 
 > [!IMPORTANT]
-> 您必須使用*標準*SKU 公共 IP 與*您的標準*SKU 負載均衡器一起出口。 您可以使用[az 網路公共 ip 顯示][az-network-public-ip-show]命令驗證公共 IP 的 SKU:
+> 您必須使用*標準*Sku 公用 ip，搭配您的*標準*sku 與您的負載平衡器。 您可以使用[az network public-ip show][az-network-public-ip-show]命令來驗證公用 IP 的 SKU：
 >
 > ```azurecli-interactive
 > az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
 > ```
 
-使用[az 網路公共 ip 顯示][az-network-public-ip-show]命令列出公共 IP 的 IP 的 IP 的 IP。
+使用[az network public-ip show][az-network-public-ip-show]命令來列出公用 Ip 的識別碼。
 
 ```azurecli-interactive
 az network public-ip show --resource-group myResourceGroup --name myPublicIP --query id -o tsv
 ```
 
-上述命令顯示*myPublicIP 公共*IP 在*myResourceGroup*資源組中的 ID。
+上述命令會顯示*myResourceGroup*資源群組中*myPublicIP*公用 IP 的識別碼。
 
-使用具有*負載均衡器-出站 ips*參數的*az aks 更新*命令使用公共 IP 更新群集。
+使用*az aks update*命令搭配*負載平衡器-輸出 ip*參數，將您的叢集更新為您的公用 ip。
 
-下面的範例使用*負載均衡器-出站ips*參數與上一個命令中的IP。
+下列範例會使用*負載平衡器-輸出 ip*參數與上一個命令中的識別碼。
 
 ```azurecli-interactive
 az aks update \
@@ -115,15 +115,15 @@ az aks update \
     --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
 ```
 
-您還可以使用公共 IP 首碼進行*與標準*SKU 負載均衡器一起出口。 下面的範例使用[az 網路公共 ip 首碼顯示][az-network-public-ip-prefix-show]命令列出公共 IP 首碼的 ID:
+您也可以使用公用 IP 首碼，搭配*標準*SKU 負載平衡器進行輸出。 下列範例會使用[az network public-ip prefix show][az-network-public-ip-prefix-show]命令來列出公用 ip 首碼的識別碼：
 
 ```azurecli-interactive
 az network public-ip prefix show --resource-group myResourceGroup --name myPublicIPPrefix --query id -o tsv
 ```
 
-上述命令顯示*myForipIpPrefix*公共 IP 首碼在*myResourceGroup*資源組中的 ID。
+上述命令會顯示*myResourceGroup*資源群組中*myPublicIPPrefix*公用 IP 首碼的識別碼。
 
-下面的範例使用*負載均衡器-出站ip首碼參數*與上一個命令中的"指示"一起。
+下列範例會使用*負載平衡器-輸出 ip-* 前置詞參數與上一個命令的識別碼。
 
 ```azurecli-interactive
 az aks update \
@@ -133,13 +133,13 @@ az aks update \
 ```
 
 > [!IMPORTANT]
-> 公共 IP 和 IP 首碼必須與 AKS 群集位於同一區域和同一訂閱的一部分。 
+> 公用 Ip 和 IP 首碼必須位於與您的 AKS 叢集相同的區域中，且屬於相同的訂用帳戶。 
 
-### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>在叢集建立時定義您自己的公共 IP 或前置字串
+### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>在叢集建立時間定義您自己的公用 IP 或首碼
 
-您可能希望在群集創建時為出口引入自己的 IP 位址或 IP 首碼,以支援諸如白名單出口終結點等方案。 將上面顯示的相同參數追加到群集創建步驟中,以在群集生命週期開始時定義您自己的公共 IP 和 IP 首碼。
+您可能想要在叢集建立時，將您自己的 IP 位址或 IP 首碼帶入輸出，以支援允許清單輸出端點之類的案例。 將上面顯示的相同參數附加至叢集建立步驟，以在叢集生命週期開始時定義您自己的公用 Ip 和 IP 首碼。
 
-使用*az aks 創建*命令與*負載均衡器-出站 ips*參數一起創建具有公共 IP 的新群集。
+使用*az aks create*命令搭配*負載平衡器-輸出 ip*參數，在一開始就建立含有公用 ip 的新叢集。
 
 ```azurecli-interactive
 az aks create \
@@ -152,7 +152,7 @@ az aks create \
     --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
 ```
 
-使用*az aks 創建*命令與*負載均衡器-出站 ip 首碼參數*一起創建具有公共 IP 首碼的新群集。
+使用*az aks create*命令搭配*負載平衡器-輸出 ip-首碼*參數，在開始時建立具有公用 ip 首碼的新叢集。
 
 ```azurecli-interactive
 az aks create \
@@ -165,21 +165,21 @@ az aks create \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
 
-## <a name="configure-outbound-ports-and-idle-timeout"></a>設定出站埠和空閒逾時
+## <a name="configure-outbound-ports-and-idle-timeout"></a>設定輸出埠和閒置超時
 
 > [!WARNING]
-> 以下部分適用於大規模網路的先進方案或用於解決預設配置的 SNAT 耗盡問題。 在將*配置的出站埠*或*IdleTimeoutInM*從預設值更改之前,您必須準確列出 VM 和 IP 位址的可用配額,以便維護健康的群集。
+> 下一節適用于較大規模網路的先進案例，或使用預設設定來解決 SNAT 耗盡問題。 您必須先正確清查 Vm 和 IP 位址的可用配額，才能從其預設值變更*AllocatedOutboundPorts*或*IdleTimeoutInMinutes* ，以便維持狀況良好的叢集。
 > 
-> 更改*分配的出站埠*和*IdleTimeoutInM 值*可能會顯著更改負載均衡器的出站規則的行為。 在更新這些值之前,請查看 Azure 中的[負載均衡器出站規則][azure-lb-outbound-rules-overview]、[負載均衡器出站規則][azure-lb-outbound-rules]和[出站連接][azure-lb-outbound-connections],以充分瞭解更改的影響。
+> 改變*AllocatedOutboundPorts*和*IdleTimeoutInMinutes*的值，可能會大幅變更負載平衡器輸出規則的行為。 請先參閱[Azure 中][azure-lb-outbound-connections]的[Load Balancer 輸出規則][azure-lb-outbound-rules-overview]、[負載平衡器輸出規則][azure-lb-outbound-rules]和輸出連線，再更新這些值，以充分瞭解變更的影響。
 
-出站配置的連接埠及其空閒超時用於[SNAT][azure-lb-outbound-connections]。 預設情況下,*標準*SKU 負載均衡器[根據後端池大小對出站埠數使用自動分配][azure-lb-outbound-preallocatedports],每個埠的空閒超時為 30 分鐘。 要檢視這些值,請使用[az 網路 lb 出站規則清單][az-network-lb-outbound-rule-list]來顯示負載均衡器的出站規則:
+輸出配置的埠及其閒置的超時會用於[SNAT][azure-lb-outbound-connections]。 根據預設，*標準*SKU 負載平衡器會[針對以後端集區大小為基礎的輸出埠數目][azure-lb-outbound-preallocatedports]，以及每個埠30分鐘的閒置超時，使用自動指派。 若要查看這些值，請使用[az network lb 輸出規則清單][az-network-lb-outbound-rule-list]來顯示負載平衡器的輸出規則：
 
 ```azurecli-interactive
 NODE_RG=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az network lb outbound-rule list --resource-group $NODE_RG --lb-name kubernetes -o table
 ```
 
-前面的指令將列出負載均衡器的出站規則,例如:
+先前的命令會列出負載平衡器的輸出規則，例如：
 
 ```console
 AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name             Protocol    ProvisioningState    ResourceGroup
@@ -187,9 +187,9 @@ AllocatedOutboundPorts    EnableTcpReset    IdleTimeoutInMinutes    Name        
 0                         True              30                      aksOutboundRule  All         Succeeded            MC_myResourceGroup_myAKSCluster_eastus  
 ```
 
-範例輸出顯示*分配的出站埠*和*空閒時間分鐘中的*預設值。 *"已分配出站埠*"的值為 0,使用基於後端池大小自動分配出站埠數來設置出站埠數。 例如,如果群集具有 50 個或更少的節點,則為每個節點分配 1024 個埠。
+範例輸出會顯示*AllocatedOutboundPorts*和*IdleTimeoutInMinutes*的預設值。 *AllocatedOutboundPorts*值為0時，會根據後端集區大小，使用自動指派的輸出埠數目來設定輸出埠的數目。 例如，如果叢集有50或更少的節點，則會配置每個節點的1024埠。
 
-如果您希望基於上述預設設定面臨 SNAT 耗盡,請考慮更改*已分配的出站埠*或*空閒時間分鐘設定*。 每個附加的 IP 位址啟用 64,000 個附加連接埠進行分配,但是 Azure 標準負載均衡器不會在添加更多 IP 位址時自動增加每個節點的埠。 您可以通過設定*負載平衡器出站埠*和*負載平衡器空閑超時*參數來更改這些值。 例如：
+如果您預期會根據上述預設設定來面對 SNAT 耗盡，請考慮變更*allocatedOutboundPorts*或*IdleTimeoutInMinutes*的設定。 每個額外的 IP 位址會啟用64000額外的埠來進行配置，不過，新增更多 IP 位址時，Azure Standard Load Balancer 不會自動增加每個節點的埠。 您可以藉由設定*負載平衡器-輸出埠*和*負載平衡器-閒置-timeout*參數來變更這些值。 例如：
 
 ```azurecli-interactive
 az aks update \
@@ -200,9 +200,9 @@ az aks update \
 ```
 
 > [!IMPORTANT]
-> 在自定義*分配的出站埠*之前,必須[計算所需的配額][calculate-required-quota],以避免連接或縮放問題。 為*分配的出站埠*指定的值也必須為 8 的倍數。
+> 您必須在自訂*allocatedOutboundPorts*之前[計算所需的配額][calculate-required-quota]，以避免連線或調整問題。 您為*allocatedOutboundPorts*指定的值也必須是8的倍數。
 
-建立叢集時,還可以使用*負載均衡器-出站埠*和*負載均衡器空閒超時*參數,但還必須指定*負載均衡器管理-出站 ip 計數*、*負載均衡器-出站-ips*或*負載均衡器-出站-ip 前綴*。  例如：
+建立叢集時，您也可以使用*負載平衡器-輸出埠*和*負載平衡器-閒置時間*參數，但您也必須指定*負載平衡器管理-*-------------------------- *---* ---------- *---*-  例如：
 
 ```azurecli-interactive
 az aks create \
@@ -217,20 +217,20 @@ az aks create \
     --load-balancer-idle-timeout 30
 ```
 
-當從預設值更改*負載平衡器出站埠*和*負載均衡器空閑超時*參數時,它會影響負載均衡器配置檔的行為,該配置檔會影響整個群集。
+從預設值改變*負載平衡器-輸出埠*和*負載平衡器-閒置時間*參數時，它會影響負載平衡器設定檔的行為，這會影響整個叢集。
 
-### <a name="required-quota-for-customizing-allocatedoutboundports"></a>自訂配置的出站埠所需的配額
-您必須有足夠的出站 IP 容量,具體取決於節點 VM 的數量和所需的分配的出站埠數。 要驗證您有足夠的出站 IP 容量,請使用以下公式: 
+### <a name="required-quota-for-customizing-allocatedoutboundports"></a>自訂 allocatedOutboundPorts 所需的配額
+您必須根據節點 Vm 的數目和所需配置的輸出埠，擁有足夠的輸出 IP 容量。 若要驗證您有足夠的輸出 IP 容量，請使用下列公式： 
  
-*出站 IP* \* \> 64,000*節點 VM* \* *需要分配的出站埠*。
+*outboundIPs* \* 64000 \> *nodeVMs* nodeVMs \* *desiredAllocatedOutboundPorts*。
  
-例如,如果您有 3*個節點 VM*和 50,000*個所需的分配出站埠*,則需要至少 3 個*出站 IP*。 建議您合併超出所需範圍的其他出站 IP 容量。 此外,在計算出站 IP 容量時,必須考慮群集自動縮放器以及節點池升級的可能性。 對於群集自動縮放器,請查看當前節點計數和最大節點計數,並使用較高的值。 要進行升級,可以為每個允許升級的節點池考慮一個額外的節點 VM。
+例如，如果您有3個*nodeVMs*和 50000 *desiredAllocatedOutboundPorts*，您至少必須有3個*outboundIPs*。 建議您將額外的輸出 IP 容量納入所需的範圍外。 此外，您必須考慮叢集自動調整程式，以及在計算輸出 IP 容量時，節點集區升級的可能性。 針對叢集自動調整程式，請檢查目前的節點計數和最大節點計數，並使用較高的值。 若要進行升級，請針對允許升級的每個節點集區，考慮其他節點 VM。
  
-將*IdleTimeoutIn分鐘*設置為與預設值 30 分鐘不同的值時,請考慮工作負荷需要出站連接多長時間。 還要考慮 AKS 外部使用*的標準*SKU 負載均衡器的預設超時值為 4 分鐘。 能夠更準確地反映特定 AKS 工作負載*的 IdleTimeoutIn分鐘*值可幫助減少因不再使用連接而導致的 SNAT 耗盡。
+將*IdleTimeoutInMinutes*設定為不同于預設30分鐘的值時，請考慮您的工作負載需要輸出連線的時間長度。 也請考慮在 AKS 外部使用的*標準*SKU 負載平衡器的預設超時值為4分鐘。 *IdleTimeoutInMinutes*值可更精確地反映您的特定 AKS 工作負載，有助於減少因不再使用連接而造成的 SNAT 耗盡。
 
 ## <a name="restrict-access-to-specific-ip-ranges"></a>限制對特定 IP 範圍的存取
 
-默認情況下,與負載均衡器的虛擬網路關聯的網路安全組 (NSG) 具有允許所有入站外部流量的規則。 您可以更新此規則,以僅允許入站流量的特定 IP 範圍。 以下清單使用*loadBalancerSourceRange*為入站外部流量指定新的 IP 範圍:
+根據預設，與負載平衡器的虛擬網路相關聯的網路安全性群組（NSG）具有允許所有輸入外部流量的規則。 您可以將此規則更新為只允許輸入流量的特定 IP 範圍。 下列資訊清單會使用*loadBalancerSourceRanges*來指定輸入外部流量的新 IP 範圍：
 
 ```yaml
 apiVersion: v1
@@ -247,7 +247,7 @@ spec:
   - MY_EXTERNAL_IP_RANGE
 ```
 
-上述示例更新規則,以僅允許來自*MY_EXTERNAL_IP_RANGE*範圍的入站外部流量。 有關使用此方法限制對負載均衡器服務的存取的詳細資訊,請參閱[Kubernetes 文件][kubernetes-cloud-provider-firewall]。
+上述範例會將規則更新為只允許來自*MY_EXTERNAL_IP_RANGE*範圍的輸入外部流量。 如需使用此方法來限制負載平衡器服務存取權的詳細資訊，請[參閱 Kubernetes 檔][kubernetes-cloud-provider-firewall]（英文）。
 
 ## <a name="next-steps"></a>後續步驟
 

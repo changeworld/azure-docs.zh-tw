@@ -1,55 +1,55 @@
 ---
-title: 如何手動修復 ServiceNow 同步問題
-description: 重置與 ServiceNow 的連接,以便 Microsoft Azure 中的警報可以再次調用 ServiceNow
+title: 如何手動修正 ServiceNow 同步問題
+description: 重設 ServiceNow 的連線，讓 Microsoft Azure 中的警示可以再次呼叫 ServiceNow
 ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
 ms.openlocfilehash: f09f5010c18f5ea064b02f0fbbae107bf473e1f8
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81313673"
 ---
-# <a name="how-to-manually-fix-servicenow-sync-problems"></a>如何手動修復 ServiceNow 同步問題
+# <a name="how-to-manually-fix-servicenow-sync-problems"></a>如何手動修正 ServiceNow 同步問題
 
-Azure 監視器可以連接到第三方 IT 服務管理 (ITSM) 提供程式。 ServiceNow 是這些供應商之一。
+Azure 監視器可以連接到協力廠商的 IT 服務管理（ITSM）提供者。 ServiceNow 是其中一個提供者。
 
-出於安全原因,您可能需要刷新用於與 ServiceNow 連接的身份驗證令牌。
-使用以下同步過程重新啟動連線並刷新權杖:
+基於安全性理由，您可能需要重新整理用於與 ServiceNow 連線的驗證權杖。
+使用下列同步處理常式重新啟用連線，並重新整理權杖：
 
 
-1. 在頂部搜尋橫幅中搜尋解決方案,然後選擇相關解決方案
+1. 在頂端搜尋橫幅中搜尋解決方案，然後選取相關的解決方案
 
     ![新增連線](media/itsmc-resync-servicenow/solution-search-8bit.png)
 
-1. 在解決方案螢幕中,在訂閱篩選器中選擇「全部」,然後按「服務台」進行篩選
+1. 在 [方案畫面] 中，選擇訂用帳戶篩選中的 [全選]，然後依 "ServiceDesk" 篩選
 
     ![新增連線](media/itsmc-resync-servicenow/solutions-list-8bit.png)
 
-1. 選擇 ITSM 連接的解決方案。
-1. 在左側橫幅中選擇 ITSM 連接。
+1. 選取 ITSM 連接的解決方案。
+1. 在左邊的橫幅中選取 [ITSM 連線]。
 
     ![新增連線](media/itsmc-resync-servicenow/itsm-connector-8bit.png)
 
-1. 從清單中選擇每個連接器。 
-    1. 點選連接器名稱以對其進行設定
-    1. 移除不再使用的任何連線器
+1. 從清單中選取每個連接器。 
+    1. 按一下連接器名稱以進行設定
+    1. 刪除不再使用的任何連接器
 
-    1. 根據合作夥伴類型根據[這些定義](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)更新欄位
+    1. 根據您的合作夥伴類型，依據[這些定義](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-connections)更新欄位
 
-    1. 點選同步
+    1. 按一下 [同步]
 
        ![新增連線](media/itsmc-resync-servicenow/resync-8bit2.png)
 
-    1. 單擊"保存"
+    1. 按一下 [儲存]
 
         ![新增連線](media/itsmc-resync-servicenow/save-8bit.png)
 
-f.    檢視通知以檢視流程是否成功 
+f.    查看通知以查看進程是否已順利完成 
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解有關[IT 服務管理連線](itsmc-connections.md)的更多
+深入瞭解[IT 服務管理](itsmc-connections.md)連線

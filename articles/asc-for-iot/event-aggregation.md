@@ -1,6 +1,6 @@
 ---
 title: 事件彙總
-description: 瞭解用於 IoT 事件聚合的 Azure 安全中心。
+description: 深入瞭解 IoT 事件匯總 Azure 資訊安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,89 +16,89 @@ ms.workload: na
 ms.date: 09/26/2019
 ms.author: mlottner
 ms.openlocfilehash: f72ef8cc5161bd6f885249e7d39344a57fa2368e
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311407"
 ---
-# <a name="azure-security-center-for-iot-event-aggregation"></a>用於 IoT 事件聚合的 Azure 安全中心
+# <a name="azure-security-center-for-iot-event-aggregation"></a>IoT 事件匯總的 Azure 資訊安全中心
 
-IoT 安全代理 Azure 安全中心從本地設備收集數據和系統事件,並將此資料發送到 Azure 雲端處理和分析。 安全代理收集多種類型的設備事件,包括新進程和新的連接事件。 新流程和新連接事件可能都會在一秒內合法地在設備上發生,雖然對於強大和全面的安全性很重要,但安全代理被迫發送的消息數可能快速達到或超過 IoT 中心配額和成本限制。 但是,這些事件包含非常有價值的安全信息,這些資訊對於保護您的設備至關重要。
+Azure 資訊安全中心 IoT 安全性代理程式會從您的本機裝置收集資料和系統事件，並將此資料傳送至 Azure 雲端進行處理和分析。 安全性代理程式會收集許多類型的裝置事件，包括新的進程和新的連接事件。 新的進程和新的線上活動可能會在一秒內于裝置上合法地發生，而且對於健全且全面的安全性來說，安全性代理程式強制傳送的訊息數目可能會快速達到或超過您的 IoT 中樞配額和成本限制。 不過，這些事件包含非常重要的安全性資訊，對保護您的裝置很重要。
 
-為了減少額外的配額和成本,同時保持設備受到保護,IoT 代理的 Azure 安全中心聚合這些類型的事件。
+為了減少額外的配額和成本，同時保護您的裝置，Azure 資訊安全中心 IoT 代理程式會匯總這些類型的事件。
 
-預設情況下,事件聚合處於**打開狀態**,儘管不建議這樣做,但可以隨時手動**關閉**。
+事件匯總預設為**開啟**，但不建議，可以**隨時以手動方式關閉。**
 
-彙總目前可用於以下類型的事件:
+匯總目前適用于下列類型的事件：
 
-* 流程建立
-* 連線建立
-* 行程終止(僅限視窗)
+* ProcessCreate
+* ConnectionCreate
+* ProcessTerminate （僅限 Windows）
 
-## <a name="how-does-event-aggregation-work"></a>事件聚合如何工作?
+## <a name="how-does-event-aggregation-work"></a>事件匯總如何運作？
 
-當事件聚合處於**打開狀態時**,IoT 代理的 Azure 安全中心將事件聚合為間隔期間或時間段。
-間隔期結束后,代理會將聚合事件發送到 Azure 雲進行進一步分析。
-聚合事件存儲在記憶體中,直到發送到 Azure 雲。
+當事件匯總**已保留時**，IoT 代理程式 Azure 資訊安全中心會匯總間隔期間或時間範圍的事件。
+一旦超過間隔期間，代理程式就會將匯總的事件傳送至 Azure 雲端，以供進一步分析。
+匯總的事件會儲存在記憶體中，直到傳送至 Azure 雲端為止。
 
-為了減少代理的記憶體佔用空間,每當代理收集與已保存在記憶體中的事件相同的事件時,代理都會增加此特定事件的命中計數。 當聚合時間窗口過去時,代理發送發生的每種特定類型的事件的命中計數。 事件聚合只是每個收集類型的事件的熱門計數的聚合。
+為了降低代理程式的記憶體使用量，每當代理程式收集到已保留在記憶體中的事件時，代理程式就會增加此特定事件的計數。 當匯總時間範圍通過時，代理程式會傳送每個發生之特定事件種類的計數。 事件匯總只是每個收集之事件種類的計數匯總。
 
-僅當滿足以下條件時,事件才被視為相同:
+只有在符合下列條件時，才會將事件視為相同：
 
-* 行程建立事件 - 當**指令列**,**可執行項目**,**使用者名稱**與**userid**相同時
-* 連線建立事件 - 當**指令列**,**使用者 Id**,**方向**,**本地位址**,**遠端位址**、_協定**與目標埠**相同時
-* 行程終止事件 ─ 當**執行****與離開狀態**相同時
+* ProcessCreate 事件-**命令列**、**可執行檔**、使用者**名稱**和**userid**都相同
+* ConnectionCreate 事件-**命令列**、 **userId**、 **direction**、**本機位址**、**遠端位址**、* * 通訊協定和**目的地埠**都相同
+* ProcessTerminate 事件-當**可執行檔**和結束**狀態**完全相同時
 
-### <a name="working-with-aggregated-events"></a>使用集合活動事件
+### <a name="working-with-aggregated-events"></a>使用匯總事件
 
-在聚合期間,將丟棄未聚合的事件屬性,並顯示在值為 0 的日誌分析中。
+在匯總期間，系統會捨棄未匯總的事件屬性，並顯示在 log analytics 中，其值為0。
 
-* 行程建立事件 -**行程 Id**與**父行程Id**設定為 0
-* 連線建立事件 -**行程 Id**與**來源連接埠**設定為 0
+* ProcessCreate 事件- **processId**，而**parentProcessId**設定為0
+* ConnectionCreate 事件- **processId**，而**來源埠**設定為0
 
-## <a name="event-aggregation-based-alerts"></a>基於事件聚合的警報
+## <a name="event-aggregation-based-alerts"></a>以事件匯總為基礎的警示
 
-分析後,IoT Azure 安全中心會為可疑的聚合事件創建安全警報。 從聚合事件創建的警報僅為每個聚合事件顯示一次。
+分析之後，適用于 IoT 的 Azure 資訊安全中心會針對可疑的匯總事件建立安全性警示。 從匯總事件建立的警示只會針對每個匯總事件出現一次。
 
-每個事件的聚合開始時間、結束時間和命中計數都記錄在日誌分析中的「額外**詳細資訊**」事件欄位中,以便在調查期間使用。
+每個事件的匯總開始時間、結束時間和計數都會記錄在 Log Analytics 中的 [事件**ExtraDetails** ] 欄位內，以供調查期間使用。
 
-每個聚合事件表示收集的警報的 24 小時週期。 使用每個事件左上角的事件選項功能表,可以**關閉**每個聚合事件。
+每個匯總事件都代表一段24小時的收集警示。 使用每個事件左上方的 [事件選項] 功能表，您可以**關閉**每個個別的匯總事件。
 
-## <a name="event-aggregation-twin-configuration"></a>事件聚合孿生配置
+## <a name="event-aggregation-twin-configuration"></a>事件匯總對應項設定
 
-更改**Azureiot 安全**模組模組的模組孿生標識的[代理配置物件](how-to-agent-configuration.md)內的 IoT 事件聚合 Azure 安全中心配置。
+在**azureiotsecurity**模組之模組對應項識別的[agent 設定物件](how-to-agent-configuration.md)中，對 IoT 事件匯總的設定進行 Azure 資訊安全中心變更。
 
 | 組態名稱 | 可能值 | 詳細資料 | 備註 |
 |:-----------|:---------------|:--------|:--------|
-| 彙總啟用行程建立 | boolean | 開啟/關閉行程建立事件的事件聚合 |
-| 彙總間隔行程建立 | ISO8601 時間跨度字串 | 行程建立事件的集合間隔 |
-| 彙總啟用連線建立 | boolean| 開啟/關閉連線建立事件的事件聚合 |
-| 聚合間隔連線建立 | ISO8601 時間跨度字串 | 連線建立事件的集合間隔 |
-| 彙總啟用行程終止 | boolean | 開啟/關閉行程終止事件的事件集合 | 僅限 Windows|
-| 聚合間隔行程終止 | ISO8601 時間跨度字串 | 行程終止事件的集合時間隔 | 僅限 Windows|
+| aggregationEnabledProcessCreate | boolean | 啟用/停用進程建立事件的事件匯總 |
+| aggregationIntervalProcessCreate | ISO8601 Timespan 字串 | 進程建立事件的匯總間隔 |
+| aggregationEnabledConnectionCreate | boolean| 啟用/停用連接建立事件的事件匯總 |
+| aggregationIntervalConnectionCreate | ISO8601 Timespan 字串 | 連接建立事件的匯總間隔 |
+| aggregationEnabledProcessTerminate | boolean | 啟用/停用進程終止事件的事件匯總 | 僅限 Windows|
+| aggregationIntervalProcessTerminate | ISO8601 Timespan 字串 | 進程終止事件的匯總間隔 | 僅限 Windows|
 |
 
-## <a name="default-configurations-settings"></a>預設設定設定
+## <a name="default-configurations-settings"></a>預設設定值
 
 | 組態名稱 | 預設值 |
 |:-----------|:---------------|
-| 彙總啟用行程建立 | true |
-| 彙總間隔行程建立 | "PT1H"|
-| 彙總啟用連線建立 | true |
-| 聚合間隔連線建立 | "PT1H"|
-| 彙總啟用行程終止 | true |
-| 聚合間隔行程終止 | "PT1H"|
+| aggregationEnabledProcessCreate | true |
+| aggregationIntervalProcessCreate | PT1H|
+| aggregationEnabledConnectionCreate | true |
+| aggregationIntervalConnectionCreate | PT1H|
+| aggregationEnabledProcessTerminate | true |
+| aggregationIntervalProcessTerminate | PT1H|
 |
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中,您瞭解了用於 IoT 安全代理聚合的 Azure 安全中心以及可用的事件配置選項。
+在本文中，您已瞭解 IoT 安全性代理程式匯總的 Azure 資訊安全中心，以及可用的事件設定選項。
 
-要繼續使用用於 IoT 部署的 Azure 安全中心,請使用以下文章:
+若要繼續開始使用 Azure 資訊安全中心進行 IoT 部署，請使用下列文章：
 
-- 瞭解[安全性代理身份驗證方法](concept-security-agent-authentication-methods.md)
-- 選擇並部署[安全代理](how-to-deploy-agent.md)
-- 檢視 Azure 安全中心,查看 IoT[服務先決條件](service-prerequisites.md)
-- 瞭解如何在[IoT 中心啟用 IoT 服務的 Azure 安全中心](quickstart-onboard-iot-hub.md)
-- 從[IoT 常見問題解答的 Azure 安全中心](resources-frequently-asked-questions.md)瞭解有關該服務
+- 瞭解[安全性代理程式驗證方法](concept-security-agent-authentication-methods.md)
+- 選取並部署[安全性代理程式](how-to-deploy-agent.md)
+- 審查 IoT[服務必要條件](service-prerequisites.md)Azure 資訊安全中心
+- 瞭解如何[在您的 IoT 中樞中啟用 IoT 服務的 Azure 資訊安全中心](quickstart-onboard-iot-hub.md)
+- 深入瞭解[適用于 IoT 的 Azure 資訊安全中心](resources-frequently-asked-questions.md)的服務常見問題

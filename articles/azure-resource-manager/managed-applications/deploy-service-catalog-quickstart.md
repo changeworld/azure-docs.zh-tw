@@ -1,18 +1,18 @@
 ---
-title: 使用 Azure 門戶部署服務目錄應用
+title: 使用 Azure 入口網站部署服務類別目錄應用程式
 description: 示範受控應用程式的取用者如何透過 Azure 入口網站來部署服務目錄應用程式。
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: ce58fc69496f54c078b0a0a55a8a3c7cad82a051
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81391717"
 ---
-# <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>快速入門:通過 Azure 門戶部署服務目錄應用
+# <a name="quickstart-deploy-service-catalog-app-through-azure-portal"></a>快速入門：透過 Azure 入口網站部署服務目錄應用程式
 
 在[前一個快速入門](publish-service-catalog-app.md)中，您已發行受控應用程式定義。 在此快速入門中，您可以從該定義建立服務目錄應用程式。
 
@@ -36,7 +36,7 @@ ms.locfileid: "81391717"
 
    ![選取要部署的定義](./media/deploy-service-catalog-quickstart/select-definition.png)
 
-1. 選擇**一個選擇的基本選項**。 選擇 Azure 訂閱以將服務目錄應用部署到 。 建立名為 **applicationGroup** 的新資源群組。 選取應用程式的位置。 完成後，選取 [確定]****。
+1. 提供 [**基本**] 索引標籤的值。選取要部署服務目錄應用程式的 Azure 訂用帳戶。 建立名為 **applicationGroup** 的新資源群組。 選取應用程式的位置。 完成後，選取 [確定]****。
 
    ![提供基本的值](./media/deploy-service-catalog-quickstart/provide-basics.png)
 

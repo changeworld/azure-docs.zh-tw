@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 語音轉文字文件
-summary: 語音服務中的語音到文字(也稱為語音辨識)可即時批量將音訊流轉錄到文本中。
+summary: 語音服務的語音轉換文字（也稱為語音辨識）可將音訊串流的即時和批次轉譯成文字。
 metadata:
-  title: 語音到文字文件 - 教程,API 參考 - Azure 認知服務 |微軟文件
+  title: 語音轉換文字檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/19/2020
   ms.author: trbye
   ms.openlocfilehash: 717c4e0322b48eca0acfacd20ed527a629bd1ff0
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401413"
 landingContent:
-- title: 關於語音到文字
+- title: 關於語音轉換文字
   linkLists:
   - linkListType: overview
     links:
@@ -36,7 +36,7 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: 辨識儲存在 Blob 儲存體中的語音
       url: quickstarts/from-blob.md
-- title: 使用語音到文字進行開發
+- title: 使用語音轉換文字進行開發
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -68,5 +68,5 @@ landingContent:
       url: language-support.md#speech-to-text
     - text: 語音轉換文字常見問題集
       url: faq-stt.md
-    - text: 語音到文字定價
+    - text: 語音轉換文字定價
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services

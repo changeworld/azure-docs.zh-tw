@@ -1,5 +1,5 @@
 ---
-title: 與內部負載均衡器一起使用 - Azure 應用程式閘道
+title: 搭配內部 Load Balancer Azure 應用程式閘道使用
 description: 本頁面提供使用 Azure 資源管理員建立、設定、啟動、刪除搭配內部負載平衡器 (ILB) 的 Azure 應用程式閘道的指示。
 services: application-gateway
 author: vhorne
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 406dcdb419dba2e8044a173f4c05028abbaba3da
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312409"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>利用內部負載平衡器 (ILB) 建立應用程式閘道
 
-可以使用網際網路對向的 VIP 或不會對網際網路公開的內部端點 (也稱為內部負載平衡器 (ILB) 端點) 來設定 Azure 應用程式閘道。 使用 ILB 設定閘道適合不會對網際網路公開的內部企業營運應用程式。 它還適用於多層應用程式中的服務和層,這些應用程式位於未向 Internet 公開但仍需要迴圈負載分發、會話粘性或傳輸層安全 (TLS)(以前稱為安全套接字層 (SSL))終止的安全邊界中。
+可以使用網際網路對向的 VIP 或不會對網際網路公開的內部端點 (也稱為內部負載平衡器 (ILB) 端點) 來設定 Azure 應用程式閘道。 使用 ILB 設定閘道適合不會對網際網路公開的內部企業營運應用程式。 對於位於不會公開至網際網路的安全性界限中的多層式應用程式內的服務和層級也很有用，但仍然需要迴圈配置資源負載分配、會話未使用或傳輸層安全性（TLS），先前稱為安全通訊端層（SSL），終止。
 
 本文會逐步引導您完成使用 ILB 設定應用程式閘道。
 
@@ -24,14 +24,14 @@ ms.locfileid: "81312409"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. 按照[安裝說明](/powershell/azure/install-az-ps)安裝最新版本的 Azure PowerShell 模組。
+1. 遵循[安裝指示](/powershell/azure/install-az-ps)，安裝最新版的 Azure PowerShell 模組。
 2. 您會建立應用程式閘道的虛擬網路和子網路。 請確定沒有虛擬機器或是雲端部署正在使用子網路。 應用程式閘道必須單獨在虛擬網路子網路中。
 3. 您要設定來使用應用程式閘道的伺服器必須存在，或是在虛擬網路中建立其端點，或是已指派公用 IP/VIP。
 
 ## <a name="what-is-required-to-create-an-application-gateway"></a>建立應用程式閘道需要什麼？
 
 * **後端伺服器集區：** 後端伺服器的 IP 位址清單。 列出的 IP 位址應屬於虛擬網路，但在應用程式閘道的不同子網路中，或應該是公用 IP/VIP。
-* **後端伺服器池設定:** 每個池都有埠、協定和基於 Cookie 的關聯等設置。 這些設定會繫結至集區，並套用至集區內所有伺服器。
+* **後端伺服器集區設定：** 每個集區都有設定，例如埠、通訊協定和以 cookie 為基礎的親和性。 這些設定會繫結至集區，並套用至集區內所有伺服器。
 * **前端連接埠：** 此連接埠是在應用程式閘道上開啟的公用連接埠。 流量會達到此連接埠，然後重新導向至其中一個後端伺服器。
 * **接聽程式：** 接聽程式具有前端連接埠、通訊協定 (Http 或 Https，都區分大小寫) 和 SSL 憑證名稱 (如果已設定 SSL 卸載)。
 * **規則：** 規則會繫結接聽程式和後端伺服器集區，並定義流量達到特定接聽程式時應該導向至哪個後端伺服器集區。 目前只支援 *基本* 規則。 *基本* 規則是循環配置資源的負載分配。
@@ -50,7 +50,7 @@ ms.locfileid: "81312409"
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>建立資源管理員的資源群組
 
-請確定您切換 PowerShell 模式以使用 Azure 資源管理員 Cmdlet。 有關詳細資訊,請參閱使用[Windows PowerShell 與資源管理員](../powershell-azure-resource-manager.md)。
+請確定您切換 PowerShell 模式以使用 Azure 資源管理員 Cmdlet。 如需詳細資訊，請[使用 Windows PowerShell 搭配 Resource Manager](../powershell-azure-resource-manager.md)。
 
 ### <a name="step-1"></a>步驟 1
 
@@ -262,6 +262,6 @@ Get-AzureApplicationGateway : ResourceNotFound: The gateway does not exist.
 
 如果您想進一步了解一般負載平衡選項，請參閱：
 
-* [Azure 負載均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
+* [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理員](https://azure.microsoft.com/documentation/services/traffic-manager/)
 

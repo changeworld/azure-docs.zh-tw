@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
 ms.openlocfilehash: 2b72d52463164c2a059fce316cc11a63aad62e7c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81380939"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL 資料同步最佳做法 
@@ -25,7 +25,7 @@ ms.locfileid: "81380939"
 如需 SQL 資料同步的概觀，請參閱[使用 Azure SQL 資料同步，跨多個雲端和內部部署資料庫同步處理資料](sql-database-sync-data.md)。
 
 > [!IMPORTANT]
-> Azure SQL 資料同步此時**不支援**Azure SQL 資料庫託管實例。
+> Azure SQL 資料同步目前**不**支援 Azure SQL Database 受控執行個體。
 
 ## <a name="security-and-reliability"></a><a name="security-and-reliability"></a> 安全性與可靠性
 
@@ -41,7 +41,7 @@ ms.locfileid: "81380939"
 
 -   **針對同步安裝**。 建立/更改資料表、更改資料庫、建立程序、選取/更改結構描述、建立使用者定義型別。
 
--   **對持續同步**。選擇/插入/更新/刪除為同步而選擇的表,以及同步中繼資料和追蹤表;對服務創建的存儲過程執行許可權;對使用者定義的表類型執行許可權。
+-   **進行中的同步**處理。選取/插入/更新/刪除選取要同步處理的資料表，以及同步處理中繼資料和追蹤資料表;服務所建立之預存程式的 Execute 許可權;使用者定義資料表類型的 Execute 許可權。
 
 -   **針對取消佈建**。 在同步作業中針對資料表所做的更改、針對同步處理中繼資料資料表的選取/刪除、針對同步處理追蹤資料表、預存程序和使用者定義型別的控制。
 
@@ -94,7 +94,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 -   不會佈建來源資料表上的現有觸發程序。  
 -   不會在目的地資料庫上建立檢視和預存程序。
 -   目的地資料表中不會針對外部索引鍵限制式重新建立 ON UPDATE CASCADE 和 ON DELETE CASCADE 動作。
--   如果小數列或數位列的精度大於 28,則 SQL 資料同步在同步期間可能會遇到轉換溢出問題。我們建議您將小數列或數位列的精度限制為 28 或更少。
+-   如果您有有效位數大於28的十進位或數值資料行，SQL 資料同步可能會在同步處理期間遇到轉換溢位問題。我們建議您將 decimal 或 numeric 資料行的有效位數限制為28或更少。
 
 #### <a name="recommendations"></a>建議
 
@@ -116,7 +116,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 
 請將前述指導方針套用在複雜的同步群組設定，例如混合企業到雲端和雲端到雲端等案例的設定。
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>同步
 
 ### <a name="avoid-slow-and-costly-initial-sync"></a><a name="avoid-a-slow-and-costly-initial-synchronization"></a> 避免慢速和高成本的首次同步處理
 
@@ -193,7 +193,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 
 在某些情況下，向用戶端代理程式取消註冊資料庫可能會導致同步處理失敗。
 
-#### <a name="scenario"></a>狀況
+#### <a name="scenario"></a>案例
 
 1. 同步群組 A 係使用 SQL Database 執行個體和內部部署 SQL Server 資料庫建立，其與本機代理程式 1 建立關聯。
 2. 相同的內部部署資料庫已向本機代理程式 2 註冊 (此代理程式並未與任何同步群組建立關聯)。
@@ -218,13 +218,13 @@ SQL 資料同步提供基本資料庫自動佈建。
 
 如果您嘗試移除資料庫，然後編輯同步群組而不先部署其中一項變更，則其中一項作業會失敗。 入口網站介面也可能會呈現不一致的狀態。 發生這種情況時，您可以重新整理頁面以還原正確狀態。
 
-### <a name="avoid-schema-refresh-timeout"></a>避免架構刷新逾時
+### <a name="avoid-schema-refresh-timeout"></a>避免架構重新整理超時
 
-如果要同步的複雜架構,則如果同步元數據資料庫的 SKU 較低(例如:基本),則在架構刷新期間可能會遇到"操作超時"。 
+如果您有要同步處理的複雜架構，如果同步中繼資料資料庫的 SKU 較低（例如：基本），您可能會在架構重新整理期間遇到「作業超時」。 
 
 #### <a name="solution"></a>解決方法
 
-要緩解此問題,請向上擴展同步元數據資料庫以具有更高的 SKU,如 S3。 
+若要減少此問題，請將您的同步中繼資料資料庫相應增加為具有較高的 SKU，例如 S3。 
 
 ## <a name="next-steps"></a>後續步驟
 如需有關 SQL 資料同步的詳細資訊，請參閱：
@@ -233,7 +233,7 @@ SQL 資料同步提供基本資料庫自動佈建。
 -   設定資料同步
     - 在入口網站中 - [教學課程：設定 SQL 資料同步以同步處理 Azure SQL Database 與內部部署 SQL Server 之間的資料](sql-database-get-started-sql-data-sync.md)
     - 透過 PowerShell
-        -  [使用 PowerShell 在多個 Azure SQL 資料庫之間同步](scripts/sql-database-sync-data-between-sql-databases.md)
+        -  [使用 PowerShell 在多個 Azure SQL 資料庫之間進行同步處理](scripts/sql-database-sync-data-between-sql-databases.md)
         -  [使用 PowerShell 設定「資料同步」在內部部署的 Azure SQL Database 和 SQL Server 之間進行同步處理](scripts/sql-database-sync-data-between-azure-onprem.md)
 -   Data Sync Agent - [適用於 Azure SQL Data Sync 的 Data Sync Agent](sql-database-data-sync-agent.md)
 -   監視 - [使用 Azure 監視器記錄監視 SQL 資料同步](sql-database-sync-monitor-oms.md)

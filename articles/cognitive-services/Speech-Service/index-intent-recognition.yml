@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 意圖辨識文件
-summary: 使用語音和語言理解 (LUIS) 服務進行意向識別,可即時將音訊流轉錄到文本中,同時識別意圖和實體。
+summary: 使用語音和 Language Understanding （LUIS）服務進行意圖辨識，可將音訊串流即時轉譯為文字，同時識別意圖和實體。
 metadata:
-  title: 意向辨識文件 - 教程,API 參考 - Azure 認知服務 |微軟文件
+  title: 意圖辨識檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,19 +12,19 @@ metadata:
   ms.date: 03/10/2020
   ms.author: trbye
   ms.openlocfilehash: 65b3f2322c4683eedef8cdfbc328664d4597df58
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401495"
 landingContent:
-- title: 關於意向識別
+- title: 關於意圖辨識
   linkLists:
   - linkListType: quickstart
     links:
     - text: 辨識語音、意圖和實體
       url: quickstarts/intent-recognition.md
-- title: 意圖識別
+- title: 使用意圖辨識進行開發
   linkLists:
   - linkListType: how-to-guide
     links:
@@ -40,5 +40,5 @@ landingContent:
       url: ../luis/developer-reference-resource.md
     - text: 語言支援
       url: ../luis/luis-language-support.md#languages-supported
-    - text: 意向識別定價
+    - text: 意圖辨識定價
       url: https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services

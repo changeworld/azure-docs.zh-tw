@@ -1,7 +1,7 @@
 ---
-title: 文字到語音 - 語音服務
+title: 文字轉換語音-語音服務
 titleSuffix: Azure Cognitive Services
-description: 語音服務中的文字到語音功能使應用程式、工具或設備能夠將文字轉換為自然的類似人類的合成語音。 選擇預設的聲音或創建自己的自定義語音。
+description: 語音服務中的文字轉換語音功能，可讓您的應用程式、工具或裝置將文字轉換成自然的人類合成語音。 選擇 [預設語音] 或建立您自己的自訂語音。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,68 +11,68 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.openlocfilehash: 1a8b458eb004b44d0045f36b18d88e11e019c4d2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399509"
 ---
 # <a name="what-is-text-to-speech"></a>什麼是文字轉換語音？
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-語音服務中的文字到語音轉換使應用程式、工具或設備能夠將文字轉換為類似人類的合成語音。 從標準和神經語音中進行選擇,或創建產品或品牌獨有的自定義語音。 75+ 標準語音提供超過 45 種語言和區域設置,5 個神經語音以精選的語言和區域設置提供。 有關支援的聲音、語言和區域設定的完整清單,請參閱[支援的語言](language-support.md#text-to-speech)。
+語音服務中的文字轉換語音可讓您的應用程式、工具或裝置將文字轉換成類似人類的合成語音。 從標準和類神經語音中選擇，或為您的產品或品牌建立獨特的自訂語音。 75 + standard 語音提供45以上的語言和地區設定，而5類神經語音則提供一系列精選的語言和地區設定。 如需支援的語音、語言和地區設定的完整清單，請參閱[支援的語言](language-support.md#text-to-speech)。
 
 > [!NOTE]
-> 必應演講於2019年10月15日退役。 如果您的應用程式、工具或產品正在使用必應語音 API 或自訂語音,則我們創建了指南以説明您遷移到語音服務。
-> - [從必應語音遷移到語音服務](how-to-migrate-from-bing-speech.md)
+> Bing 語音已于2019年10月15日解除委任。 如果您的應用程式、工具或產品使用 Bing 語音 Api 或自訂語音，我們建立了指南，協助您遷移至語音服務。
+> - [從 Bing 語音遷移至語音服務](how-to-migrate-from-bing-speech.md)
 
 ## <a name="core-features"></a>核心功能
 
-* 語音合成 - 使用[語音 SDK](quickstarts/text-to-speech-audio-file.md)或 REST [API](rest-text-to-speech.md)使用標準語音、神經語音或自訂語音將文字轉換為語音。
+* 語音合成-使用[語音 SDK](quickstarts/text-to-speech-audio-file.md)或[REST API](rest-text-to-speech.md) ，使用標準、類神經或自訂語音將文字轉換為語音。
 
-* 長音訊的非同步合成 - 使用[長音訊 API](long-audio-api.md)非同步合成文字到語音檔案的時間超過 10 分鐘(例如有聲讀物或講座)。 與使用語音 SDK 或語音到文字 REST API 執行的合成不同,回應不會即時返回。 期望以非同步方式發送請求,輪詢回應,並在從服務中提供時下載合成的音訊。 僅支援自定義神經語音。
+* 非同步合成長音訊-使用[長音訊 API](long-audio-api.md)以非同步方式合成長達10分鐘的文字轉換語音檔案（例如，音訊書籍或演講）。 不同于使用語音 SDK 或語音轉換文字 REST API 執行的合成，回應不會即時傳回。 預期的情況是要求會以非同步方式傳送、針對輪詢回應，並在從服務提供時下載合成的音訊。 僅支援自訂類神經語音。
 
-* 標準語音 - 使用統計參數合成和/或串聯合成技術創建。 這些聲音是高度易聽和聲音自然。 您可以輕鬆使應用程式能夠使用超過 45 種語言,並提供廣泛的語音選項。 這些語音提供高發音精度,包括支援縮寫、首字母縮略詞擴展、日期/時間解釋、多聽器等。 有關標準語音的完整清單,請參閱[支援的語言](language-support.md#text-to-speech)。
+* 標準語音-使用統計參數合成和（或）串連合成技術所建立。 這些聲音具有高度可理解和自然的音效。 您可以輕鬆地讓您的應用程式以多種語音選項，在45以上的語言中說話。 這些聲音提供高發音精確度，包括縮寫、縮寫擴充、日期/時間解讀、polyphones 等等的支援。 如需標準語音的完整清單，請參閱[支援的語言](language-support.md#text-to-speech)。
 
-* 神經語音 - 深度神經網路用於克服傳統語音合成在口語中壓力和語調的極限。 前列腺預測和語音合成同時執行,從而產生更流暢和自然的聲音輸出。 神經語音可用於使與聊天機器人和語音助理的互動更自然、更吸引人,將電子書等數位文本轉換為有聲讀物,並增強車載導航系統。 通過類似人類的自然表達和清晰的詞表達,神經聲音顯著減少聽力疲勞,當你與AI系統互動。 有關神經語音的完整清單,請參閱[支援的語言](language-support.md#text-to-speech)。
+* 類神經語音-深度類神經網路可用來克服傳統語音合成的限制，以及語音語言的壓力和聲調。 韻律預測和語音合成會同時執行，這會導致更流暢且自然發音的輸出。 神經語音可以用來與聊天機器人和語音助理互動，使其更自然且吸引人、將數位文字（例如電子書）轉換成有聲書;，以及增強汽車內流覽系統。 有了人類的自然韻律和清楚的單字文字清晰度，神經語音會在您與 AI 系統互動時，大幅減少聆聽的疲勞。 如需神經語音的完整清單，請參閱[支援的語言](language-support.md#text-to-speech)。
 
-* 語音合成標記語言 (SSML) - 一種基於 XML 的標記語言,用於自訂語音到文字輸出。 使用 SSML,您可以調整音調、添加暫停、提高發音、加快或減慢說話速率、增加或減少音量,並將多個語音歸因於單個文檔。 請參考[SSML](speech-synthesis-markup.md)。
+* 語音合成標記語言（SSML）-以 XML 為基礎的標記語言，用來自訂語音轉換文字輸出。 透過 SSML，您可以調整音調、新增暫停、改善發音、加速或減緩說話速率、增加或減少音量，以及將多個聲音屬性設為單一檔。 請參閱[SSML](speech-synthesis-markup.md)。
 
 ## <a name="get-started"></a>開始使用
 
-文本到語音服務可透過[語音 SDK](speech-sdk.md)獲得。 有多種常見方案可作為快速入門,使用各種語言和平臺:
+文字轉換語音服務可透過[語音 SDK](speech-sdk.md)取得。 在各種不同的語言和平臺中，有幾個常見的案例可做為快速入門：
 
 * [將語音合成至音訊檔案](quickstarts/text-to-speech-audio-file.md)
 * [將語音合成至喇叭](quickstarts/text-to-speech.md)
-* [非同步合成長格式音訊](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+* [以非同步方式合成長格式的音訊](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 
-如果您願意,可通過[REST](rest-text-to-speech.md)可以訪問文本到語音轉換服務。
+如果您想要的話，文字轉換語音服務可以透過[REST](rest-text-to-speech.md)來存取。
 
 ## <a name="sample-code"></a>範例程式碼
 
-GitHub 上提供了文字到語音轉換的範例碼。 這些示例涵蓋了最流行的程式設計語言中的文本到語音轉換。
+您可以在 GitHub 上取得文字轉換語音的範例程式碼。 這些範例涵蓋了最受歡迎的程式設計語言的文字轉換語音。
 
-- [文字到語音轉換範例 (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [文字轉換語音範例（SDK）](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [文字轉語音範例 (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="customization"></a>自訂
 
-除了標準和神經語音之外,您還可以創建和微調產品或品牌特有的自定義聲音。 入門只需一小撮音頻檔和相關的轉錄。 有關詳細資訊,請參閱[開始使用自訂語音](how-to-custom-voice.md)
+除了標準和類神經語音以外，您還可以建立及微調您產品或品牌特有的自訂語音。 開始使用是一些音訊檔案和相關聯的轉譯。 如需詳細資訊，請參閱[開始使用自訂語音](how-to-custom-voice.md)
 
-## <a name="pricing-note"></a>定價說明
+## <a name="pricing-note"></a>定價注意事項
 
-使用文字到語音服務時,將針對轉換為語音的每個字元(包括標點符號)計費。 雖然 SSML 文檔本身不可計費,但用於調整文本轉換為語音方式的可選元素(如音詞和音高)將計為計費字元。 下面是可計費內容的清單:
+使用文字轉換語音服務時，會向您收取轉換成語音的每個字元的費用，包括標點符號。 雖然 SSML 檔本身無法計費，但用來調整文字轉換成語音的選擇性元素（例如音素和音調）會視為計費字元。 以下是可計費的清單：
 
-- 文字傳遞到要求的 SSML 本文的文字到語音轉換服務
-- 要求正文的文字欄位中以 SSML 格式進行的所有標籤,`<speak>`除`<voice>`與標籤外
-- 字母、標點符號、空白、制表元、標記和所有空白字元
+- 在要求的 SSML 主體中傳遞至文字轉換語音服務的文字
+- 在要求本文中，以 SSML 格式的文字欄位內的所有標記，但`<speak>`和`<voice>`標記除外
+- 字母、標點符號、空格、定位字元、標記和所有空白字元
 - 以 Unicode 定義的每個字碼指標
 
-有關詳細資訊,請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
+如需詳細資訊，請參閱[定價](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 > [!IMPORTANT]
-> 每個中文、日語和韓語字元都計為兩個字元進行計費。
+> 每個中文、日文和韓文語言字元會視為兩個要計費的字元。
 
 ## <a name="reference-docs"></a>參考文件
 
@@ -81,5 +81,5 @@ GitHub 上提供了文字到語音轉換的範例碼。 這些示例涵蓋了最
 
 ## <a name="next-steps"></a>後續步驟
 
-- [取得免費語音服務訂閱](get-started.md)
+- [取得免費的語音服務訂用帳戶](get-started.md)
 - [取得語音 SDK](speech-sdk.md)

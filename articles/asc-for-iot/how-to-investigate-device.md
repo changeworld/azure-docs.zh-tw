@@ -1,6 +1,6 @@
 ---
-title: 調查可疑設備
-description: 如何指導如何使用IoT Azure安全中心使用日誌分析調查可疑的IoT設備。
+title: 調查可疑裝置
+description: 本作法指南說明如何使用適用于 IoT 的 Azure 資訊安全中心，利用 Log Analytics 來調查可疑的 IoT 裝置。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,46 +16,46 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: f333f28dc0e02e8d010f5521f298d0f0b031dbf2
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311039"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>調查可疑的 IoT 裝置
 
-Azure IoT 服務警報安全中心在懷疑 IoT 設備參與可疑活動或存在設備受到威脅的跡象時提供明確指示。
+IoT 服務警示的 Azure 資訊安全中心在懷疑有可疑活動的介入，或裝置遭到入侵的跡象時，提供清楚的指示。
 
-在本指南中,使用提供的調查建議來幫助確定組織的潛在風險,決定如何修復,並發現防止將來發生類似攻擊的最佳方式。
+在本指南中，請使用所提供的調查建議來協助判斷組織的潛在風險、決定如何進行修復，以及探索未來避免類似攻擊的最佳方式。
 
 > [!div class="checklist"]
 > * 尋找您的裝置資料
 > * 使用 kql 查詢進行調查
 
-## <a name="how-can-i-access-my-data"></a>如何訪問我的數據?
+## <a name="how-can-i-access-my-data"></a>如何存取我的資料？
 
-默認情況下,適用於IoT的Azure安全中心會在日誌分析工作區中存儲安全警報和建議。 您也可以選擇儲存未經處理的安全性資料。
+根據預設，IoT 的 Azure 資訊安全中心會將您的安全性警示和建議儲存在 Log Analytics 工作區中。 您也可以選擇儲存未經處理的安全性資料。
 
-要查找用於資料儲存的紀錄分析工作區,請執行以下操作:
+若要尋找您的 Log Analytics 工作區來儲存資料：
 
 1. 開啟 IoT 中樞，
-1. 在 **"安全"** 下,單擊 **"概述**",然後選擇 **"設置**"。
+1. 在 [**安全性**] 底下，按一下 **[總覽**]，然後選取 [**設定**]。
 1. 變更 Log Analytics 工作區的組態詳細資料。
-1. 按一下 [檔案]  。
+1. 按一下 **[儲存]** 。
 
 下列組態，執行下列步驟來存取儲存在 Log Analytics 工作區中的資料：
 
-1. 選擇並按一下 IoT 中心中的 IoT 警報 Azure 安全中心。
+1. 在您的 IoT 中樞中，選取並按一下 [適用于 IoT 警示的 Azure 資訊安全中心]。
 1. 按一下 [進一步調查]****。
 1. 選取 [若要查看哪些裝置有此警示，請按一下這裡並檢視 DeviceId 資料行]****。
 
 ## <a name="investigation-steps-for-suspicious-iot-devices"></a>可疑 IoT 裝置的調查步驟
 
-要檢視有關 IoT 裝置的見解與原始資料,請轉到紀錄分析工作區[以存取資料](#how-can-i-access-my-data)。
+若要查看 IoT 裝置的深入解析和原始資料，請移至您的 Log Analytics 工作區[以存取您的資料](#how-can-i-access-my-data)。
 
-請參閱下面的範例 kql 查詢,以便開始調查設備上的警報和活動。
+請參閱下面的範例 kql 查詢，以開始調查裝置上的警示和活動。
 
-### <a name="related-alerts"></a>相關警報
+### <a name="related-alerts"></a>相關警示
 
 若要了解同一時間前後是否觸發了其他警示，請使用下列 kql 查詢：
 
@@ -67,7 +67,7 @@ Azure IoT 服務警報安全中心在懷疑 IoT 設備參與可疑活動或存�
   | project TimeGenerated, AlertName, AlertSeverity, Description, ExtendedProperties
   ```
 
-### <a name="users-with-access"></a>具有存取權限的使用者
+### <a name="users-with-access"></a>具有存取權的使用者
 
 若要了解哪些使用者可以存取此裝置，請使用下列 kql 查詢：
 
@@ -87,11 +87,11 @@ Azure IoT 服務警報安全中心在懷疑 IoT 設備參與可疑活動或存�
 請使用這項資料來了解︰
 
 - 哪些使用者可以存取此裝置？
-- 具有訪問許可權的使用者具有預期的許可權級別嗎?
+- 具有存取權的使用者是否具有所需的許可權等級？
 
 ### <a name="open-ports"></a>開啟連接埠
 
-要瞭解裝置中的哪些埠目前正在使用或使用,請使用以下 kql 查詢:
+若要找出裝置中目前正在使用或已使用的埠，請使用下列 kql 查詢：
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -114,12 +114,12 @@ Azure IoT 服務警報安全中心在懷疑 IoT 設備參與可疑活動或存�
 請使用這項資料來了解︰
 
 - 裝置上目前作用中的接聽通訊端有哪些？
-- 是否應允許當前處於活動狀態的偵聽套接字?
-- 是否有任何可疑的遠端位址連接到設備?
+- 是否允許目前作用中的接聽通訊端？
+- 是否有任何可疑的遠端位址連線到裝置？
 
 ### <a name="user-logins"></a>使用者登入
 
-要查找登入裝置的使用者,請使用以下 kql 查詢:
+若要尋找登入裝置的使用者，請使用下列 kql 查詢：
 
  ```
   let device = "YOUR_DEVICE_ID";
@@ -146,12 +146,12 @@ Azure IoT 服務警報安全中心在懷疑 IoT 設備參與可疑活動或存�
 請使用查詢結果來了解︰
 
 - 有哪些使用者登入過此裝置？
-- 登錄的用戶應該登錄嗎?
+- 登入的使用者是否應該登入？
 - 登入過的使用者是從預期還是非預期的 IP 位址進行連線的？
 
-### <a name="process-list"></a>流程清單
+### <a name="process-list"></a>進程清單
 
-要瞭解流程清單是否按預期,請使用以下 kql 查詢:
+若要找出流程清單是否如預期般運作，請使用下列 kql 查詢：
 
  ```
   let device = "YOUR_DEVICE_ID";

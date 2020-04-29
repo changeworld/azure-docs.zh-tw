@@ -1,6 +1,6 @@
 ---
 title: 了解 Azure VM 擴展集 VM 的執行個體識別碼
-description: 瞭解 Azure VM 規模設置虛擬機器的實例識別及其顯示的各種方式。
+description: 瞭解 Azure VM 擴展集虛擬機器的實例識別碼，以及它們所呈現的各種方式。
 author: mimckitt
 tags: azure-resource-manager
 ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: mimckitt
 ms.openlocfilehash: aa8b88bde4b6f8f02f6c9c81d0742d0dede761ac
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273676"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>了解 Azure VM 擴展集 VM 的執行個體識別碼
@@ -26,7 +26,7 @@ REST API：`POST https://management.azure.com/subscriptions/{subscriptionId}/res
 
 Powershell：`Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (如需詳細資訊，請參閱 [Powershell 文件](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm) \(英文\))
 
-CLI:(`az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}`有關詳細資訊,請參閱[CLI 文檔](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest))。
+CLI： `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` （如需詳細資訊，請參閱[CLI 檔](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
 
 您可以列出擴展集中的所有執行個體，以取得執行個體識別碼的清單：
 
@@ -34,7 +34,7 @@ REST API：`GET https://management.azure.com/subscriptions/{subscriptionId}/reso
 
 Powershell：`Get-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}` (如需詳細資訊，請參閱 [Powershell 文件](https://docs.microsoft.com/powershell/module/az.compute/get-azvmssvm) \(英文\))
 
-CLI:(`az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}`有關詳細資訊,請參閱[CLI 文檔](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest))。
+CLI： `az vmss list-instances -g {resourceGroupName} -n {vmScaleSetName}` （如需詳細資訊，請參閱[CLI 檔](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)）。
 
 您也可以使用 [resources.azure.com](https://resources.azure.com) 或 [Azure SDK](https://azure.microsoft.com/downloads/) 來列出擴展集中的 VM。
 

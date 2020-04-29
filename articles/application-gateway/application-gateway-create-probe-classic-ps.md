@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell - Azure 應用程式閘道建立自訂探測
+title: 使用 PowerShell Azure 應用程式閘道建立自訂探查
 description: 了解如何在傳統部署模型中使用 PowerShell 建立應用程式閘道的自訂探查
 services: application-gateway
 author: vhorne
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 0ba3e9ae7b5075d1f5457cb2960423ad1c737e94
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312560"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>使用 PowerShell 建立 Azure 應用程式閘道 (傳統) 的自訂探查
@@ -19,12 +19,12 @@ ms.locfileid: "81312560"
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
-> * [Azure 經典電源外殼](application-gateway-create-probe-classic-ps.md)
+> * [Azure 傳統 PowerShell](application-gateway-create-probe-classic-ps.md)
 
 在本文中，您會使用 PowerShell 將自訂探查新增到現有的應用程式閘道。 對於具有特定健康狀態檢查頁面的應用程式，或是在預設 Web 應用程式上不提供成功回應的應用程式，自訂探查非常實用。
 
 > [!IMPORTANT]
-> Azure 有兩種不同的部署模型來建立與使用資源:[資源管理員和經典](../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。  了解如何[使用 Resource Manager 模型執行這些步驟](application-gateway-create-probe-ps.md)。
+> Azure 有兩種不同的部署模型可用於建立及使用資源： [Resource Manager 和傳統](../azure-resource-manager/management/deployment-models.md)。 本文涵蓋之內容包括使用傳統部署模型。 Microsoft 建議讓大部分的新部署使用 Resource Manager 模式。  了解如何[使用 Resource Manager 模型執行這些步驟](application-gateway-create-probe-ps.md)。
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
@@ -53,11 +53,11 @@ Get-AzureApplicationGateway AppGwTest
 ```
 
 > [!NOTE]
-> *實例計數*的預設值為 2,最大值為 10。 *GatewaySize* 的預設值是 Medium。 您可以選擇 Small、Medium 和 Large。
+> *InstanceCount*的預設值為2，最大值為10。 *GatewaySize* 的預設值是 Medium。 您可以選擇 Small、Medium 和 Large。
 > 
 > 
 
-*虛擬 IP*和*DnsName*顯示為空,因為閘道尚未啟動。 閘道處於執行中狀態之後，就會建立這些值。
+因為尚未啟動閘道，所以*VirtualIPs*和*DnsName*會顯示為空白。 閘道處於執行中狀態之後，就會建立這些值。
 
 ### <a name="configure-an-application-gateway-by-using-xml"></a>使用 XML 設定應用程式閘道
 
@@ -144,9 +144,9 @@ Get-AzureApplicationGateway AppGwTest
 |---|---|
 |**名稱** |自訂探查的參考名稱。 |
 | **通訊協定** | 使用的通訊協定 (可能的值是 HTTP 或 HTTPS)。|
-| **Host** 和 **Path** | 應用程式閘道所叫用的完整 URL 路徑，可藉以判斷執行個體健康狀態。 例如,如果您有一個網站 http:\//contoso.com/,則可以將自定義探測器配置為\/"http: /contoso.com/path/custompath.htm",以便進行探測檢查,以便成功進行 HTTP 回應。|
-| **區間** | 以秒為單位設定探查間隔檢查。|
-| **超時** | 定義 HTTP 回應檢查的探查逾時。|
+| **Host** 和 **Path** | 應用程式閘道所叫用的完整 URL 路徑，可藉以判斷執行個體健康狀態。 例如，如果您有網站 HTTP：\//contoso.com/，則可以為 "HTTP：\//contoso.com/path/custompath.htm" 設定自訂探查，以便讓探查檢查有成功的 HTTP 回應。|
+| **期間** | 以秒為單位設定探查間隔檢查。|
+| **逾時** | 定義 HTTP 回應檢查的探查逾時。|
 | **UnhealthyThreshold** | 要將後端執行個體標記為「狀況不良」** 所需的失敗 HTTP 回應次數。|
 
 \<BackendHttpSettings\> 組態中會參考探查名稱，以指派哪個後端集區會使用自訂探查設定。
@@ -200,7 +200,7 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>後續步驟
 
-如果要設定傳輸層安全 (TLS),以前稱為安全套接字層 (SSL) 卸載,請參閱[為 TLS 卸載設定應用程式閘道](application-gateway-ssl.md)。
+如果您想要設定傳輸層安全性（TLS），先前稱為安全通訊端層（SSL）卸載，請參閱[設定 TLS 卸載的應用程式閘道](application-gateway-ssl.md)。
 
 如果您想要設定要與內部負載平衡器搭配使用的應用程式閘道，請參閱 [建立具有內部負載平衡器 (ILB) 的應用程式閘道](application-gateway-ilb.md)。
 

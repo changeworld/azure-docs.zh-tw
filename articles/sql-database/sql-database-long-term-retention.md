@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 05/18/2019
-ms.openlocfilehash: e85c8c0990a2659dba1f254a8f1aa7c7be7852eb
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: d015eea21bcfa499d6751e024a882a7316b7f1a5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508083"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81380749"
 ---
 # <a name="azure-sql-database-long-term-retention"></a>SQL Database 長期保留
 
@@ -84,7 +84,8 @@ W=12 週 (84 天)、M=12 個月 (365 天)、Y=10 年 (3650 天)、WeekOfYear=15 
 - **有限的公開預覽**-此預覽僅適用于 EA 和 CSP 訂用帳戶，且受限於有限的可用性。  
 - [**僅限 PowerShell**](sql-database-managed-instance-long-term-backup-retention-configure.md) -目前沒有 Azure 入口網站支援。 必須使用 PowerShell 來啟用 LTR。 
 
-若要要求註冊，請建立[Azure 支援票證](https://azure.microsoft.com/support/create-ticket/)。 針對 [問題類型]，選取 [技術問題]，針對 [服務] 選擇 [SQL Database 受控執行個體]，並針對 [問題類型] 選取 [**備份、還原和商務持續性/長期備份保留**]。 在您的要求中，請陳述您想要註冊為受控實例之 LTR 的有限公開預覽版。
+若要要求註冊，請在支援主題 [備份] **、[還原] 和 [商務持續性/長期備份保留**] 底下建立[Azure 支援票證](https://azure.microsoft.com/support/create-ticket/)。
+
 
 ## <a name="configure-long-term-backup-retention"></a>設定長期備份保留期
 
@@ -92,7 +93,7 @@ W=12 週 (84 天)、M=12 個月 (365 天)、Y=10 年 (3650 天)、WeekOfYear=15 
 
 ## <a name="restore-database-from-ltr-backup"></a>從 LTR 備份還原資料庫
 
-若要從 LTR 儲存體還原資料庫，可以依時間戳記選取特定備份。 可將資料庫還原至原始資料庫相同訂用帳戶底下的任何現有伺服器。 若要瞭解如何使用 Azure 入口網站或 PowerShell 從 LTR 備份還原資料庫，請參閱[管理 Azure SQL Database 長期備份保留](sql-database-long-term-backup-retention-configure.md)。 在您的要求中，請確定您想要在受管理的實例之 LTR 公開預覽中註冊。
+若要從 LTR 儲存體還原資料庫，可以依時間戳記選取特定備份。 可將資料庫還原至原始資料庫相同訂用帳戶底下的任何現有伺服器。 若要瞭解如何使用 Azure 入口網站或 PowerShell 從 LTR 備份還原資料庫，請參閱[管理 Azure SQL Database 長期備份保留](sql-database-long-term-backup-retention-configure.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

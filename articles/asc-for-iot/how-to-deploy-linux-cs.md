@@ -1,6 +1,6 @@
 ---
-title: 安裝&部署 Linux C# 代理
-description: 瞭解如何在 32 位元和 64 位 Linux 上安裝 IoT 代理的 Azure 安全中心。
+title: '安裝 & 部署 Linux c # 代理程式'
+description: 瞭解如何在32位和64位的 Linux 上安裝適用于 IoT 代理程式的 Azure 資訊安全中心。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 40c6ea91fd84a0f088ed770cd7c4c3ea7b8b1c91
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311135"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>針對 Linux 部署適用於 IoT 的 Azure 資訊安全中心 (以 C# 為基礎) 安全性代理程式
 
-本指南介紹了如何在 Linux 上安裝和部署基於 IoT C# 的安全代理的 Azure 安全中心。
+本指南說明如何在 Linux 上安裝和部署適用于 IoT c # 型安全性代理程式的 Azure 資訊安全中心。
 
 在本指南中，您將了解如何：
 
@@ -34,9 +34,9 @@ ms.locfileid: "81311135"
 > * 解除安裝代理程式
 > * 疑難排解
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-有關其他平臺和代理風格,請參閱[選擇正確的安全代理](how-to-deploy-agent.md)。
+如需其他平臺和代理程式類別，請參閱[選擇正確的安全性代理程式](how-to-deploy-agent.md)。
 
 1. 若要部署安全性代理程式，您必須在將要用來安裝代理程式的電腦上，擁有其本機系統管理員的權限。
 
@@ -44,31 +44,31 @@ ms.locfileid: "81311135"
 
 ## <a name="installation"></a>安裝
 
-要部署安全代理,請使用以下步驟:
+若要部署安全性代理程式，請使用下列步驟：
 
-1. 從[GitHub](https://aka.ms/iot-security-github-cs)將最新版本下載到您的電腦。
+1. 從[GitHub](https://aka.ms/iot-security-github-cs)下載最新版本到您的電腦。
 
-1. 提取包的內容並導航到 _/安裝_資料夾。
+1. 將套件的內容解壓縮，並流覽至 _/Install_資料夾。
 
 1. 執行 `chmod +x InstallSecurityAgent.sh` 將執行權限新增至 **InstallSecurityAgent** 指令碼
 
-1. 接下來,使用**根權限**執行以下指令 :
+1. 接下來，以**根許可權**執行下列命令：
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
    ```
 
-   關於認證參數的詳細資訊,請參考[如何設定認證](concept-security-agent-authentication-methods.md)。
+   如需驗證參數的詳細資訊，請參閱[如何設定驗證](concept-security-agent-authentication-methods.md)。
 
 此指令碼會執行下列動作：
 
 - 安裝必要條件。
 
-- 添加服務使用者(禁用互動式登錄)。
+- 新增服務使用者（已停用互動式登入）。
 
-- 將代理安裝為**守護程序**- 假定設備使用**系統**用於經典部署模型。
+- 將代理程式安裝為**Daemon** -假設裝置針對傳統部署模型使用**systemd** 。
 
-- 配置**sudoers**以允許代理作為根執行某些任務。
+- 設定**sudoers**以允許代理程式以 root 身分執行特定工作。
 
 - 使用所提供的驗證參數來設定代理程式。
 
@@ -122,8 +122,8 @@ ms.locfileid: "81311135"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 閱讀 Azure 安全中心,瞭解 IoT 服務[概述](overview.md)
-- 瞭解有關 IoT[架構結構](architecture.md)的 Azure 安全中心
+- 閱讀 IoT 服務的 Azure 資訊安全中心[總覽](overview.md)
+- 深入瞭解 IoT[架構](architecture.md)的 Azure 資訊安全中心
 - 啟用[服務](quickstart-onboard-iot-hub.md)
-- 閱讀[常見問題解答](resources-frequently-asked-questions.md)
+- 閱讀[常見問題](resources-frequently-asked-questions.md)
 - 了解[警示](concept-security-alerts.md)

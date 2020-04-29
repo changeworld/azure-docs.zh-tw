@@ -1,6 +1,6 @@
 ---
 title: 連線處理站解決方案的常見問題集 - Azure | Microsoft Docs
-description: 本文回答了連接工廠解決方案加速器的常見問題。 它包括指向 GitHub 儲存庫的連結。
+description: 本文會回答連線處理站解決方案加速器的常見問題。 它包含 GitHub 存放庫的連結。
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81313593"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>連線處理站解決方案加速器的常見問題集
@@ -148,7 +148,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 您也可以在部署之後將 Azure 地圖服務帳戶金鑰新增至解決方案加速器。 瀏覽至 Azure 入口網站，並存取連線處理站部署中的 App Service 資源。 瀏覽至 [應用程式設定]****，您可以在此找到 [應用程式設定]**** 區段。 將 **MapApiQueryKey** 設定為 [Azure 地圖服務帳戶的金鑰](../azure-maps/how-to-manage-account-keys.md)。 儲存設定，然後瀏覽至 [概觀]****，並重新啟動 App Service。
 
-### <a name="how-do-i-create-an-azure-maps-account"></a>如何創建 Azure 地圖帳戶?
+### <a name="how-do-i-create-an-azure-maps-account"></a>如何? 建立 Azure 地圖服務帳戶？
 
 請參閱[如何管理 Azure 地圖服務帳戶和金鑰](../azure-maps/how-to-manage-account-keys.md)。
 

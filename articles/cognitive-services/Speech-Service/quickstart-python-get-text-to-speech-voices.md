@@ -1,7 +1,7 @@
 ---
 title: 列出文字轉語音的語音，Python - 語音服務
 titleSuffix: Azure Cognitive Services
-description: 在本文中,您將學習如何使用 Python 獲取區域/終結點的標準語音和神經語音的完整清單。 清單會傳回為 JSON，而語音可用性會因區域而異。
+description: 在本文中，您將瞭解如何使用 Python 取得區域/端點的標準和類神經語音完整清單。 清單會傳回為 JSON，而語音可用性會因區域而異。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: how-to
 ms.date: 04/13/2020
 ms.author: trbye
 ms.openlocfilehash: b388c8d8b61e2fc638ae2bce5bc6d9eeb25ee0d4
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81401022"
 ---
 # <a name="get-the-list-of-text-to-speech-voices-using-python"></a>使用 Python 取得文字轉語音的語音清單
 
-在本文中,您將學習如何使用 Python 獲取區域/終結點的標準語音和神經語音的完整清單。 清單會傳回為 JSON，而語音可用性會因區域而異。 如需支援區域的清單，請參閱[區域](regions.md)。
+在本文中，您將瞭解如何使用 Python 取得區域/端點的標準和類神經語音完整清單。 清單會傳回為 JSON，而語音可用性會因區域而異。 如需支援區域的清單，請參閱[區域](regions.md)。
 
-本文需要具有語音[服務資源的 Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您還沒有帳戶，可以使用[免費試用](get-started.md)來取得訂用帳戶金鑰。
+本文需要具有語音服務資源的[Azure 認知服務帳戶](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)。 如果您還沒有帳戶，可以使用[免費試用](get-started.md)來取得訂用帳戶金鑰。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Python 2.7.x 或 3.x
-* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">視覺工作室<span class="docon docon-navigate-external x-hidden-focus"></span></a>,<a href="https://code.visualstudio.com/download" target="_blank">視覺<span class="docon docon-navigate-external x-hidden-focus"></span>工作室碼</a>, 或您最喜愛的文字編輯器
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio  <span class="docon docon-navigate-external x-hidden-focus"></span></a>、<a href="https://code.visualstudio.com/download" target="_blank"> Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"></span></a>，或您最愛的文字編輯器
 * 適用於語音服務的 Azure 訂用帳戶金鑰
 
 ## <a name="create-a-project-and-import-required-modules"></a>建立專案，並匯入所需的模組
@@ -135,5 +135,5 @@ python get-voices.py
 ## <a name="see-also"></a>另請參閱
 
 * [文字轉換語音 API 參考](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)
-* [建立客製化聲音音調](how-to-customize-voice-font.md)
+* [建立自訂語音調](how-to-customize-voice-font.md)
 * [錄製語音樣本來建立自訂語音](record-custom-voice-samples.md)

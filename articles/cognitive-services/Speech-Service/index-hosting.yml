@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 裝載文件
-summary: 語音服務容器可用於語音到文本和文本到語音轉換方案,包括標準模型或自定義模型。
+summary: 語音服務容器適用于語音轉換文字和文字轉換語音案例，包含標準或自訂的模型。
 metadata:
-  title: 託管文件 - 教程,API 參考 - Azure 認知服務 |微軟文件
+  title: 裝載檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,13 +12,13 @@ metadata:
   ms.date: 03/23/2020
   ms.author: trbye
   ms.openlocfilehash: 640c1b8e9c51059bc4c296ef93a4e6dd54ea7a42
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401504"
 landingContent:
-- title: 關於託管
+- title: 關於裝載
   linkLists:
   - linkListType: concept
     links:
@@ -28,7 +28,7 @@ landingContent:
       url: speech-container-howto-on-premises.md
     - text: Azure 容器執行個體上的語音容器
       url: deploy-speech-on-container-instances.md
-- title: 建立與設定
+- title: 建立和設定
   linkLists:
   - linkListType: how-to-guide
     links:

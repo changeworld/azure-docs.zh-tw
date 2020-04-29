@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: e47c8bc4dc814f1d4c5cb115a2da911544dd55f8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400018"
 ---
 :::row:::
     :::column span="3":::
-        語音 SDK 僅支援**Ubuntu 16.04/18.04、Debian** **9、****紅帽企業 Linux (RHEL) 7/8**和**CentOS 7/8**與 Linux 一起使用時在以下目標體系結構上:
+        在搭配 Linux 使用時，語音 SDK 僅支援下列目標架構上的**Ubuntu 16.04/18.04**、 **Debian 9**、 **Red Hat Enterprise Linux （RHEL） 7/8**和**CentOS 7/8** ：
         - x64
     :::column-end:::
     :::column:::
@@ -25,20 +25,20 @@ ms.locfileid: "81400018"
 :::row-end:::
 
 > [!IMPORTANT]
-> 當瞄準Linux ARM64時,並使用 C# - .NET Core 3.x(dotnet-sdk-3.x 包)是必需的。 如果您的目標是 ARM32 或 ARM64,則不支援 Python。
+> 以 Linux ARM64 為目標並使用 c # 時，需要 .NET Core 3.x （dotnet-3.x 套件）。 如果您的目標是 ARM32 或 ARM64，則不支援 Python。
 
 > [!NOTE]
-> Ubuntu 16.04、Ubuntu 18.04 和 Debian 9 的 x86 體系結構僅支援使用語音 SDK C++開發。
+> Ubuntu 16.04、Ubuntu 18.04 和 Debian 9 的 x86 架構僅支援使用語音 SDK 進行 c + + 開發。
 
 ### <a name="system-requirements"></a>系統需求
 
-對於本機應用程式,語音 SDK`libMicrosoft.CognitiveServices.Speech.core.so`依賴於 。 確保目標體系結構 (x86, x64) 與應用程式匹配。 根據 Linux 版本,可能需要其他依賴項。
+針對原生應用程式，語音 SDK 會依賴`libMicrosoft.CognitiveServices.Speech.core.so`。 請確定目標架構（x86、x64）符合應用程式。 視 Linux 版本而定，可能需要額外的相依性。
 
 - GNU C 程式庫的共用程式庫 (包括 POSIX 執行緒程式設計程式庫 `libpthreads`)
-- OpenSSL`libssl.so.1.0.0`函`libssl.so.1.0.2`式庫( 或 )
+- OpenSSL 程式庫（`libssl.so.1.0.0`或`libssl.so.1.0.2`）
 - ALSA 應用程式的共用程式庫 (`libasound.so.2`)
 
-# <a name="ubuntu-16041804"></a>[烏本圖 16.04/18.04](#tab/ubuntu)
+# <a name="ubuntu-16041804"></a>[Ubuntu 16.04/18.04](#tab/ubuntu)
 
 ```Bash
 sudo apt-get update
@@ -60,7 +60,7 @@ sudo yum install alsa-lib openssl
 ```
 
 > [!IMPORTANT]
-> 按照有關如何[為語音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)的說明。
+> 請遵循[如何設定 RHEL/CentOS 7 For SPEECH SDK](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)的指示。
 
 > [!TIP]
 > 在 RHEL/CentOS 8 上，依照[如何設定適用於 Linux 的 OpenSSL](../how-to-configure-openssl-linux.md) 上的指示進行。

@@ -1,13 +1,13 @@
 ---
-title: 很好的例子話語 - LUIS
+title: 良好的範例語句-LUIS
 description: 語句是應用程式需要解譯的使用者輸入。 收集您認為使用者會輸入的片語。 納入意義相同但以不同單字長度和單字位置建構的語句。
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: d851082a4ec4a003619826eeffd4f4b856a67824
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382282"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解適合您 LUIS 應用程式的語句
@@ -23,7 +23,7 @@ ms.locfileid: "81382282"
 * 複數表示
 * 詞幹分析
 * 名詞和動詞的選擇
-* [標點](luis-reference-application-settings.md#punctuation-normalization)符號 - 使用正確、不正確且沒有語法的良好品種
+* [標點符號](luis-reference-application-settings.md#punctuation-normalization)-使用正確、不正確和無文法的絕佳種類
 
 ## <a name="how-to-choose-varied-utterances"></a>如何選擇各種語句
 
@@ -52,11 +52,11 @@ ms.locfileid: "81382282"
 |我想要取得電腦，如何著手呢？|
 |我何時可擁有電腦？|
 
-這裡的核心術語"計算機"並不多樣化。 可使用桌上型電腦、膝上型電腦、工作站，甚至只稱為機器來替代。 LUIS 可以從上下文智慧地推斷同義詞,但當您為訓練創建話語時,最好更改它們。
+這裡的核心詞彙「電腦」並不會有任何不同。 可使用桌上型電腦、膝上型電腦、工作站，甚至只稱為機器來替代。 LUIS 可以智慧地從內容推斷同義字，但當您建立定型的語句時，一定會改變它們。
 
 ## <a name="example-utterances-in-each-intent"></a>每個意圖的範例語句
 
-每個意圖都必須至少要有 15 個範例語句。 如果是沒有任何範例語句的意圖，則無法將 LUIS 定型。 如果您的意圖是包含一個或極少數示例陳述,LUIS 可能無法準確預測意圖。
+每個意圖都必須至少要有 15 個範例語句。 如果是沒有任何範例語句的意圖，則無法將 LUIS 定型。 如果您有一或多個範例語句的意圖，LUIS 可能無法精確預測意圖。
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>對每個製作反覆項目新增多個 15 個語句構成的群組
 
@@ -66,23 +66,23 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 
 最好從少量語句開始，然後[檢閱端點語句](luis-how-to-review-endpoint-utterances.md)，以正確地預測意圖和擷取實體。
 
-## <a name="utterance-normalization"></a>陳述規格化
+## <a name="utterance-normalization"></a>語句正規化
 
-共化規範化是在訓練和預測過程中忽略標點符號和音調符號的影響的過程。 使用[應用程式設置](luis-reference-application-settings.md)控制話語規範化如何影響陳述預測。
+語句正規化是在定型和預測期間忽略標點符號和變音符號效果的程式。 使用[應用程式設定](luis-reference-application-settings.md)來控制語句正規化如何影響語句預測。
 
-## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>音調符號和標點符號的可規範化
+## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>變音符號和標點符號的語句正規化
 
-在創建或導入應用時,定義「提交」規範化,因為它是應用 JSON 檔中的設置。 默認情況下,話語規範化設置處於關閉狀態。
+當您建立或匯入應用程式時，會定義語句正規化，因為它是應用程式 JSON 檔案中的設定。 預設會關閉語句正規化設定。
 
-音調符號是文字中的標記或符號,例如:
+變音符號是文字中的標記或符號，例如：
 
 ```
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-如果應用打開規範化,**則「測試」** 窗格、批次處理測試和終結點查詢中的分數將更改使用音調符號或標點符號的所有陳述。
+如果您的應用程式開啟正規化，則在 [**測試**] 窗格中，批次測試和端點查詢的分數會針對所有使用變音符號或標點符號的語句進行變更。
 
-在`settings`參數中打開音調符號或標點符號對 LUIS JSON 應用檔的話語規範化。
+在參數中，為您的`settings` LUIS JSON 應用程式檔開啟語句正規化的字元或標點符號。
 
 ```JSON
 "settings": [
@@ -91,25 +91,25 @@ LUIS 會利用由 LUIS 模型建立者精挑細選的語句來建置有效的模
 ]
 ```
 
-規範化**標點**符號意味著在模型接受培訓之前和在預測終結點查詢之前,標點符號將從陳述中刪除。
+正規化**標點符號**表示在您的模型經過定型之前，在您的端點查詢預測之前，會從語句中移除標點符號。
 
-規範化**音調符號**將字元替換為普通字元的話語中的音調符號。 例如:`Je parle français`變`Je parle francais`為 。
+正規化**變音符號**會以一般字元，在語句中以變音符號取代字元。 例如： `Je parle français`變成`Je parle francais`。
 
-規範化並不意味著你不會在示例陳述或預測回應中看到標點符號和音調符號,而只是表示在訓練和預測過程中會忽略它們。
+正規化並不表示您不會在範例語句或預測回應中看到標點符號和變音符號，只是在定型和預測期間會忽略它們。
 
 ### <a name="punctuation-marks"></a>標點符號
 
-標點符號在 LUIS 中是個別的語彙基元。 包含末尾的句點與不包含末尾句的表述是兩個不同的陳述,並且可能會獲得兩個不同的預測。
+標點符號在 LUIS 中是個別的語彙基元。 在結尾處包含句號的語句，以及在結尾不包含句號的語句是兩個不同的語句，而且可能會得到兩個不同的預測。
 
-如果標點符號未規範化,LUIS 不會忽略標點符號,預設情況下,因為某些用戶端應用程式可能會在這些標記上放置顯著性。 請確定您的範例語句應有使用標點符號和不使用標點符號兩種版本，讓這兩種樣式傳回相同的相對分數。
+如果標點符號不正規化，LUIS 預設不會忽略標點符號，因為有些用戶端應用程式可能會對這些標記有重要性。 請確定您的範例語句應有使用標點符號和不使用標點符號兩種版本，讓這兩種樣式傳回相同的相對分數。
 
 請確定模型會在範例語句 (含標點符號和不含標點符號) 或在更容易使用特殊語法來忽略標點符號的[模式](luis-concept-patterns.md)中處理標點符號：`I am applying for the {Job} position[.]`
 
-如果標點符號在客戶端應用程式中沒有特定的含義,請考慮通過規範化標點符號[來忽略標點](#utterance-normalization)符號。
+如果標點符號在您的用戶端應用程式中沒有特定意義，請考慮以正規化標點符號來[忽略標點符號](#utterance-normalization)。
 
 ### <a name="ignoring-words-and-punctuation"></a>忽略單字和標點符號
 
-勾選此選項, 您可以忽略模式的字串或標點符號,[請使用有平方](luis-concept-patterns.md#pattern-syntax)括號`[]`_的忽略_語法的模式 。
+如果您想要忽略模式中的特定單字或標點符號，請搭配使用[模式](luis-concept-patterns.md#pattern-syntax)與_略_過方括弧的語法`[]`。
 
 ## <a name="training-utterances"></a>將語句定型
 

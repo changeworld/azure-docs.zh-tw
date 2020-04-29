@@ -1,5 +1,5 @@
 ---
-title: 將應用程式執行狀況延伸與 Azure 虛擬機器縮放集一起使用
+title: 搭配 Azure 虛擬機器擴展集使用應用程式健康狀態延伸模組
 description: 了解如何使用應用程式健康狀態延伸模組，以監視虛擬機器擴展集上所部署應用程式的健康狀態。
 author: mimckitt
 tags: azure-resource-manager
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: mimckitt
 ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273727"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>搭配虛擬機器擴展集使用應用程式健康狀態延伸模組
@@ -19,9 +19,9 @@ ms.locfileid: "81273727"
 
 本文描述如何使用應用程式健康狀態延伸模組，以監視虛擬機器擴展集上所部署應用程式的健康狀態。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 本文假設您已熟悉以下各項：
--   Azure 虛擬機器[擴充](../virtual-machines/extensions/overview.md)
+-   Azure 虛擬機器[擴充](../virtual-machines/extensions/overview.md)功能
 -   [修改](virtual-machine-scale-sets-upgrade-scale-set.md)虛擬機器擴展集
 
 ## <a name="when-to-use-the-application-health-extension"></a>使用應用程式健康狀態延伸模組的時機
@@ -55,7 +55,7 @@ ms.locfileid: "81273727"
 
 ### <a name="property-values"></a>屬性值
 
-| 名稱 | 值 / 範例 | 資料類型
+| Name | 值 / 範例 | 資料類型
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | date |
 | publisher | `Microsoft.ManagedServices` | 字串 |
@@ -64,7 +64,7 @@ ms.locfileid: "81273727"
 
 ### <a name="settings"></a>設定
 
-| 名稱 | 值 / 範例 | 資料類型
+| Name | 值 / 範例 | 資料類型
 | ---- | ---- | ----
 | protocol | `http` 或 `tcp` | 字串 |
 | 連接埠 | 通訊協定是 `http` 時為選擇性項目；通訊協定是 `tcp` 時則為必要項目 | int |
@@ -141,7 +141,7 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 
 使用 [az vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set)，可將應用程式健康狀態延伸模組新增至擴展集模型定義。
 
-下面的範例將應用程式運行狀況擴展添加到基於 Linux 的比例集的比例集模型。
+下列範例會將應用程式健康情況擴充功能新增至以 Linux 為基礎的擴展集的擴展集模型。
 
 ```azurecli-interactive
 az vmss extension set \
@@ -152,7 +152,7 @@ az vmss extension set \
   --vmss-name <myVMScaleSet> \
   --settings ./extension.json
 ```
-擴展名.json 文件內容。
+擴充功能 json 檔案內容。
 
 ```json
 {

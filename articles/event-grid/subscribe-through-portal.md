@@ -1,6 +1,6 @@
 ---
 title: 透過入口網站的 Azure 事件方格訂閱
-description: 本文介紹如何使用 Azure 門戶為受支援的源(如 Azure Blob 儲存)創建事件網格訂閱。
+description: 本文說明如何使用 Azure 入口網站，為支援的來源建立 Event Grid 訂用帳戶，例如 Azure Blob 儲存體。
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 599f48ed241010d8551bd110c7f778c9ef508eac
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393167"
 ---
 # <a name="subscribe-to-events-through-portal"></a>透過入口網站訂閱事件
@@ -67,5 +67,5 @@ ms.locfileid: "81393167"
 ## <a name="next-steps"></a>後續步驟
 
 * 如需事件傳遞和重試的相關資訊，請參閱[事件格線訊息傳遞與重試](delivery-and-retry.md)。
-* 有關事件網格的簡介,請參閱[有關事件網格](overview.md)。
+* 如需 Event Grid 的簡介，請參閱[關於事件方格](overview.md)。
 * 若要快速地開始使用 Event Grid，請參閱[使用 Azure Event Grid 建立和路由傳送自訂事件](custom-event-quickstart.md)。

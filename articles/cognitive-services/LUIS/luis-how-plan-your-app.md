@@ -1,56 +1,56 @@
 ---
-title: 規劃您的應用程式 - LUIS
+title: 規劃您的應用程式-LUIS
 description: 概述相關的應用程式意圖和實體，然後在 Language Understanding Intelligent Service (LUIS) 中建立應用程式計畫。
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81382295"
 ---
-# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>使用主題網域和資料提取規劃 LUIS 應用架構
+# <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>規劃您的 LUIS 應用程式架構與主旨網域和資料提取
 
-LUIS 應用程式架構包含與您的主題[網域](luis-glossary.md#domain)相關的[意圖](luis-glossary.md#intent)與[實體](luis-glossary.md#entity)。 意圖對使用者[陳述](luis-glossary.md#utterance)進行分類,實體從使用者陳述中提取數據。
+LUIS 應用程式架構包含與您的主體[網域](luis-glossary.md#domain)相關的[意圖](luis-glossary.md#intent)和[實體](luis-glossary.md#entity)。 這些意圖會分類使用者[語句](luis-glossary.md#utterance)，而實體會從使用者語句解壓縮資料。
 
 ## <a name="identify-your-domain"></a>識別您的領域
 
-LUIS 應用以主題域為中心。 例如,您可能有一個旅行應用來處理機票、航班、酒店和租車的預訂。 另一個應用程式則可以提供與運動、追蹤健身進度及設定目標相關的內容。 識別域可説明您找到與您的域相關的單詞或短語。
+LUIS 應用程式是以主體網域為中心。 例如，您可能有一個旅遊應用程式，負責處理票證、航班、旅館和計程車輛的預訂。 另一個應用程式則可以提供與運動、追蹤健身進度及設定目標相關的內容。 識別網域可協助您尋找與您的網域相關的單字或片語。
 
 > [!TIP]
 > LUIS 有針對許多常見案例提供[預先建置的領域](luis-how-to-use-prebuilt-domains.md)。 請確認您是否能使用預先建置的領域作為應用程式的起點。
 
 ## <a name="identify-your-intents"></a>識別您的意圖
 
-考慮[對應用程式](luis-concept-intent.md)任務很重要的意圖。
+請考慮對應用程式工作而言很重要的[意圖](luis-concept-intent.md)。
 
-讓我們以一個旅遊應用程式作為例子。這個應用程式能夠預訂航班，並可查看使用者目的地的天氣。 您可以定義這些操作`BookFlight``GetWeather`的和意圖。
+讓我們以一個旅遊應用程式作為例子。這個應用程式能夠預訂航班，並可查看使用者目的地的天氣。 您可以為這些`BookFlight`動作`GetWeather`定義和意圖。
 
-在具有更多函數的更複雜的應用中,您有更多的意圖,並且應該仔細定義它們,以便意圖不會太具體。 `BookFlight`例如,`BookHotel`並且可能需要是單獨的意圖,`BookInternationalFlight`但`BookDomesticFlight`可能太相似了。
+在具有更多功能的更複雜應用程式中，您會有更多意圖，而且您應該謹慎定義它們，讓意圖不是特定的。 例如， `BookFlight`和`BookHotel`可能需要是不同的意圖，但`BookInternationalFlight`和`BookDomesticFlight`可能太相似。
 
 > [!NOTE]
-> 最佳做法是僅使用必要的意圖數目來執行應用程式的功能。 若您定義過多的意圖，LUIS 可能會無法正確地分類語句。 如果定義太少,它們可能過於一般,以至於它們重疊。
+> 最佳做法是僅使用必要的意圖數目來執行應用程式的功能。 若您定義過多的意圖，LUIS 可能會無法正確地分類語句。 如果您定義的太少，它們可能會重迭。
 
-如果不需要識別總體用戶意圖,請將所有範例使用者陳述添加到意圖中`None`。 如果應用增長到需要更多意圖,則可以稍後創建它們。
+如果您不需要識別整體使用者意圖，請將所有範例使用者語句新增至`None`意圖。 如果您的應用程式成長到需要更多意圖，您可以稍後再建立。
 
 ## <a name="create-example-utterances-for-each-intent"></a>建立每個意圖的範例語句
 
-首先,避免為每個意圖創建過多的話語。 確定意圖後,請按意圖創建 15 到 30 個範例陳述。 每個陳述應不同於以前提供的話語。 話語中的多種內容包括總字數、單字選擇、動詞時態和[標點符號](luis-reference-application-settings.md#punctuation-normalization)。
+一開始，請避免為每個意圖建立太多語句。 決定意圖之後，請建立每個意圖15到30個範例語句。 每個語句應該與先前提供的語句不同。 語句中的絕佳功能包括整體字數統計、單字選擇、動詞時態和[標點符號](luis-reference-application-settings.md#punctuation-normalization)。
 
-有關詳細資訊,請參閱瞭解[LUIS 應用的良好表述](luis-concept-utterance.md)。
+如需詳細資訊，請參閱[瞭解 LUIS apps 的良好語句](luis-concept-utterance.md)。
 
 ## <a name="identify-your-entities"></a>識別您的實體
 
-在範例語句中，識別您要擷取的實體。 要預訂航班,您需要目的地、日期、機票類別和艙位等資訊。 為這些資料類型建立實體,然後在範例陳述中標記[實體](luis-concept-entity-types.md)。 實體對於實現意圖非常重要。
+在範例語句中，識別您要擷取的實體。 若要預訂航班，您需要「目的地」、「日期」、「航空公司」、「票證」類別和「旅遊」等資訊。 建立這些資料類型的實體，然後在範例語句中標示[實體](luis-concept-entity-types.md)。 實體對於完成意圖很重要。
 
-確定要在應用中使用哪些實體時,請記住,存在不同類型的實體來捕獲對象類型之間的關係。 [LUIS 中的實體](luis-concept-entity-types.md)能提供有關這些不同類型的詳細資料。
+在決定要在您的應用程式中使用哪些實體時，請記住，有不同類型的實體可用於捕捉物件類型之間的關聯性。 [LUIS 中的實體](luis-concept-entity-types.md)能提供有關這些不同類型的詳細資料。
 
 > [!TIP]
-> LUIS 為常見的工作階段使用者方案提供[預建的實體](luis-prebuilt-entities.md)。 請考慮使用預建構的實體作為應用程式開發的起點。
+> LUIS 提供[預先](luis-prebuilt-entities.md)建立的實體，適用于常見的對話式使用者案例。 請考慮使用預先建立的實體作為應用程式開發的起點。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [學習LUIS開發生活](luis-concept-app-iteration.md)
+> [學習 LUIS 開發 lifecylce](luis-concept-app-iteration.md)
 

@@ -1,7 +1,7 @@
 ---
-title: 專案可用性 - 語音服務
+title: 案例可用性-語音服務
 titleSuffix: Azure Cognitive Services
-description: 語音 SDK 具有跨各種程式設計語言和環境的許多方案。 並非所有方案都適用於所有程式設計語言或所有環境。 下面列出了每種方案的可用性。
+description: 語音 SDK 具有各種不同程式設計語言和環境的多種案例。 並非所有的案例都適用于所有的程式設計語言或所有環境。 以下列出每個案例的可用性。
 services: cognitive-services
 author: chrisbasoglu
 manager: xdh
@@ -11,52 +11,52 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cbasoglu
 ms.openlocfilehash: a72e5055a3b0f858a732ec28eeab511b09dd450c
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81400151"
 ---
-# <a name="scenario-availability"></a>專案可用性
+# <a name="scenario-availability"></a>案例可用性
 
-語音 SDK 具有跨各種程式設計語言和環境的許多方案。 並非所有方案都適用於所有程式設計語言或所有環境。 下面列出了每種方案的可用性。
+語音 SDK 具有各種不同程式設計語言和環境的多種案例。 並非所有的案例都適用于所有的程式設計語言或所有環境。 以下列出每個案例的可用性。
 
-- **語音辨識 (SR)、短語清單、意圖、翻譯和本地容器**
-  - C++/視窗&linux&macOS
-  - C# (框架& .NET 核心)/Windows & UWP &统一& Xamarin & Linux & macOS
-  - Java(Jre 和安卓)
-  - JavaScript (布羅伯和節點JS)
+- **語音辨識（SR）、片語清單、意圖、翻譯和內部部署容器**
+  - C + +/Windows & Linux & macOS
+  - C # （Framework & .NET Core）/Windows & UWP & Unity & Xamarin & Linux & macOS
+  - JAVA （Jre 和 Android）
+  - JavaScript （瀏覽器和 NodeJS）
   - Python
   - Swift
   - Objective-C  
-- **文字到語音 (TTS)**
-  - C++/視窗&Linux
-  - C#/視窗& UWP &统一
-  - Java(Jre 和安卓)
+- **文字轉換語音（TTS）**
+  - C + +/Windows & Linux
+  - & UWP & Unity 的 c #/Windows
+  - JAVA （Jre 和 Android）
   - Python
   - Swift
   - Objective-C
-  - TTS REST API 可用於其他所有情況。
-- **關鍵字識別 (KWS)**
-  - C++/視窗&Linux
-  - C#/視窗&Linux
-  - Python/視窗&Linux
-  - Java/Windows&Linux&安卓(語音設備SDK)
-  - 關鍵字發現 (KWS) 功能可能適用於任何麥克風類型,但官方 KWS 支援目前僅限於 Azure Kinect DK 硬體或語音裝置 SDK 中的麥克風陣列
+  - TTS REST API 可以在其他所有情況下使用。
+- **關鍵字找出（KWS.TABLE）**
+  - C + +/Windows & Linux
+  - C #/Windows & Linux
+  - Python/Windows & Linux
+  - JAVA/Windows & Linux & Android （語音裝置 SDK）
+  - 關鍵字找出（KWS.TABLE）功能可能適用于任何麥克風類型，但官方 KWS.TABLE 支援目前僅限於在 Azure Kinect DK 硬體或語音裝置 SDK 中找到的麥克風陣列
 - **語音助理**
-  - C++/視窗&linux&macOS
+  - C + +/Windows & Linux & macOS
   - C#/Windows
-  - Java/Windows&Linux& macOS & Android(語音裝置 SDK)
+  - JAVA/Windows & Linux & macOS & Android （語音裝置 SDK）
 - **對話轉譯**
-  - C++/視窗&Linux
-  - C# (框架& .NET 核心)/Windows & UWP & Linux
-  - Java/Windows&Linux&安卓(語音設備SDK)
+  - C + +/Windows & Linux
+  - C # （Framework & .NET Core）/Windows & UWP & Linux
+  - JAVA/Windows & Linux & Android （語音裝置 SDK）
 - **多裝置交談**
-  - C++/窗戶
-  - C# (框架& .NET 核心)/視窗
-- **通話轉錄**
-  - REST API,可在任何情況下使用
-- **編解碼器壓縮音訊輸入**
-  - C++/Linux
-  - C#/Linux
-  - Java/Linux、安卓和iOS
+  - C + +/Windows
+  - C # （Framework & .NET Core）/Windows
+- **撥打電話中心轉譯**
+  - REST API 和可以在任何情況下使用
+- **編解碼器壓縮的音訊輸入**
+  - C + +/Linux
+  - C #/Linux
+  - JAVA/Linux、Android 和 iOS

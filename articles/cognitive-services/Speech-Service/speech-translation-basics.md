@@ -1,7 +1,7 @@
 ---
-title: 語音翻譯基礎知識 - 語音服務
+title: 語音翻譯基本概念-語音服務
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何使用語音 SDK 翻譯語音。 在本文中,您將瞭解物件建構、支援的音訊輸入格式以及語音轉換的配置選項。
+description: 瞭解如何使用語音 SDK 轉譯語音。 在本文中，您將瞭解物件結構、支援的音訊輸入格式，以及語音翻譯的設定選項。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -12,18 +12,18 @@ ms.date: 04/13/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: 04ece5ccf91056af02bd450eb760534b82de5959
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399662"
 ---
-# <a name="learn-the-basics-of-speech-translation"></a>學習語音翻譯的基礎知識
+# <a name="learn-the-basics-of-speech-translation"></a>瞭解語音翻譯的基本概念
 
-語音服務的核心功能之一是能夠識別人類語音並將其翻譯成其他語言。 在本文中,您將學習如何在應用和產品中使用語音 SDK 來執行高品質的語音翻譯。
+語音服務的其中一項核心功能，就是能夠辨識人類語音並將它翻譯成其他語言。 在本文中，您將瞭解如何在您的應用程式和產品中使用語音 SDK，以執行高品質的語音翻譯。
 
 > [!TIP]
-> 如果您沒有機會完成我們的快速入門,我們鼓勵您踢輪胎並嘗試自己語音翻譯。
+> 如果您還沒有機會完成我們的其中一個快速入門，我們鼓勵您開始使用輪，並自行嘗試語音翻譯。
 > * [翻譯語音轉換文字](quickstarts/translate-speech-to-text.md)
 > * [將語音翻譯成多種語言](quickstarts/translate-speech-to-text-multiple-languages.md)
 > * [翻譯語音轉換語音](quickstarts/translate-speech-to-speech.md)

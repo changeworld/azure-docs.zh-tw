@@ -1,7 +1,7 @@
 ---
-title: 關於語音 SDK - 語音服務
+title: 關於語音 SDK-語音服務
 titleSuffix: Azure Cognitive Services
-description: 語音軟體開發工具套件 (SDK) 公開了許多語音服務功能,從而更輕鬆地開發啟用語音的應用程式。
+description: 語音軟體發展工具組（SDK）公開許多語音服務功能，可讓您更輕鬆地開發啟用語音的應用程式。
 services: cognitive-services
 author: trevorbye
 manager: nitinme
@@ -11,81 +11,81 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
 ms.openlocfilehash: f663c9af8c352d0170c633fe76b3fbc5268aad1e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81399951"
 ---
 # <a name="about-the-speech-sdk"></a>關於語音 SDK
 
-語音軟體開發工具套件 (SDK) 公開了許多語音服務功能,使您能夠開發支援語音的應用程式。 語音 SDK 提供許多程式設計語言和所有平臺。
+語音軟體發展工具組（SDK）公開許多語音服務功能，可讓您開發具備語音功能的應用程式。 語音 SDK 適用于許多程式設計語言，以及跨所有平臺。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-## <a name="scenario-capabilities"></a>專案功能
+## <a name="scenario-capabilities"></a>案例功能
 
-語音 SDK 公開了語音服務中的許多功能,但不是全部功能。 語音 SDK 的功能通常與方案相關聯。 語音 SDK 非常適合使用本地設備、檔、Azure Blob 儲存,甚至輸入和輸出流的即時和非即時方案。 當語音 SDK 無法實現方案時,請查找 REST API 替代方案。
+語音 SDK 會公開來自語音服務的許多功能，但不是全部。 語音 SDK 的功能通常會與案例相關聯。 語音 SDK 適用于即時和非即時案例，使用本機裝置、檔案、Azure blob 儲存體，甚至是輸入和輸出資料流程。 當使用語音 SDK 無法達成案例時，請尋找 REST API 替代方案。
 
 ### <a name="speech-to-text"></a>語音轉文字
 
-[語音到文字](speech-to-text.md)(也稱為*語音辨識*)將音訊流轉錄到應用程式、工具或設備可以使用或顯示的文本。 若搭配 [Language Understanding (LUIS)](../luis/index.yml) 使用語音轉文字，即可從轉譯的語音衍生使用者意圖，以及根據語音命令執行動作。 使用[語音翻譯](speech-translation.md)將語音輸入轉換為具有單個調用的不同語言。 有關詳細資訊,請參閱[語音到文字基礎知識](speech-to-text-basics.md)。
+[語音轉換文字](speech-to-text.md)（也稱為*語音辨識*）可將您的應用程式、工具或裝置可以取用或顯示的文字串流。 若搭配 [Language Understanding (LUIS)](../luis/index.yml) 使用語音轉文字，即可從轉譯的語音衍生使用者意圖，以及根據語音命令執行動作。 使用[語音翻譯](speech-translation.md)，透過單一呼叫將語音輸入翻譯成不同的語言。 如需詳細資訊，請參閱[語音轉換文字的基本概念](speech-to-text-basics.md)。
 
 ### <a name="text-to-speech"></a>文字轉換語音
 
-[文字到語音](text-to-speech.md)(也稱為*語音合成*)將文字轉換為類似人類的合成語音。 輸入文字是字串文字或使用[語音合成標記語言 (SSML)。](speech-synthesis-markup.md) 有關標準語音或神經語音的詳細資訊,請參閱[文字到語音語言和語音支援](language-support.md#text-to-speech)。
+[文字到語音](text-to-speech.md)轉換（也稱為*語音合成*）會將文字轉換成類似人類的合成語音。 輸入文字可以是字串常值，或使用[語音合成標記語言（SSML）](speech-synthesis-markup.md)。 如需標準或類神經語音的詳細資訊，請參閱[文字轉換語音語言和語音支援](language-support.md#text-to-speech)。
 
 ### <a name="voice-assistants"></a>語音助理
 
-使用語音 SDK 的語音助理使開發人員能夠為其應用程式和體驗創建自然的、類似於人的對話介面。 語音助理服務提供設備和助手之間快速、可靠的交互。 實現使用機器人框架的直線語音通道或集成的自定義命令(預覽)服務來完成任務。 此外,可以使用[自訂語音門戶](https://aka.ms/customvoice)創建語音助理,以創建獨特的語音體驗。
+語音助理使用語音 SDK，可讓開發人員為其應用程式和體驗建立自然、人類類似的對話介面。 語音助理服務可提供裝置與助理之間快速可靠的互動。 執行作業會使用 Bot Framework 的 Direct Line 語音通道或整合式自訂命令（預覽）服務來完成工作。 此外，您也可以使用[自訂語音入口網站](https://aka.ms/customvoice)建立語音助理，以建立獨特的語音體驗。
 
-#### <a name="keyword-spotting"></a>關鍵字發現
+#### <a name="keyword-spotting"></a>關鍵字找出
 
-語音 SDK 中支援[關鍵字發現](speech-devices-sdk-create-kws.md)的概念。 關鍵字識別是識別語音中關鍵字的行為,隨後在聽到關鍵字時執行操作。 例如,「嘿,Cortana」將啟動 Cortana 助手。
+語音 SDK 支援[關鍵字找出](speech-devices-sdk-create-kws.md)的概念。 關鍵字找出是用來識別語音中關鍵字的動作，後面接著在聽到關鍵字時的動作。 例如，「嘿 Cortana」會啟用 Cortana assistant。
 
-### <a name="meeting-scenarios"></a>會議機制
+### <a name="meeting-scenarios"></a>會議案例
 
-語音 SDK 非常適合從單個設備或多設備對話轉錄會議方案。
+無論是從單一裝置或多裝置交談，語音 SDK 都適用于轉譯會議案例。
 
 #### <a name="conversation-transcription"></a>對話轉譯
 
-[對話轉錄](conversation-transcription.md)支援對每個演講者的即時(和非同步)語音辨識、揚聲器辨識和句子歸屬(也稱為*二分化*)。 非常適合利用辨識說話者的能力來轉譯面對面會議。
+[對話](conversation-transcription.md)轉譯可對每個說話者（也稱為*diarization*）進行即時（和非同步）語音辨識、說話者識別和句子特性。 非常適合利用辨識說話者的能力來轉譯面對面會議。
 
 #### <a name="multi-device-conversation"></a>多裝置交談
 
-使用[多設備對話](multi-device-conversation.md),在對話中連接多個設備或用戶端,發送基於語音或基於文本的消息,輕鬆支援轉錄和翻譯。
+透過[多重裝置交談](multi-device-conversation.md)，連接多個裝置或交談中的用戶端以傳送以語音為基礎或以文字為基礎的訊息，輕鬆地支援轉譯和翻譯。
 
-### <a name="custom--agent-scenarios"></a>自訂/代理方案
+### <a name="custom--agent-scenarios"></a>自訂/代理程式案例
 
-語音 SDK 可用於轉錄呼叫中心方案,其中生成電話數據。
+語音 SDK 可用於轉譯撥打電話中心案例，其中會產生電話語音資料。
 
 #### <a name="call-center-transcription"></a>話務中心轉譯
 
-[呼叫中心轉錄](call-center-transcription.md)是語音到文本的常見方案,用於轉錄可能來自各種系統(如互動式語音回應 (IVR))的大量電話數據。 語音服務的最新語音辨識模型擅長轉錄此電話數據,即使在數據難以理解的情況下也是如此。
+[話務中心](call-center-transcription.md)轉譯是語音轉換文字的常見案例，用於轉譯可能來自各種系統（例如互動式語音回應（IVR））的大量電話語音資料。 來自語音服務 excel 的最新語音辨識模型會轉譯此電話語音資料，即使是資料很容易瞭解的情況也是如此。
 
-### <a name="codec-compressed-audio-input"></a>編解碼器壓縮音訊輸入
+### <a name="codec-compressed-audio-input"></a>編解碼器壓縮的音訊輸入
 
-一些語音 SDK 程式設計語言支援編解碼器壓縮音訊輸入流。 關於詳細資訊,請參考<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">來壓縮音訊輸入格式<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+有數個語音 SDK 程式設計語言支援編解碼器壓縮的音訊輸入資料流程。 如需詳細資訊，請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">使用壓縮的<span class="docon docon-navigate-external x-hidden-focus"></span>音訊輸入格式</a>。
 
 ## <a name="rest-api"></a>REST API
 
-雖然語音 SDK 涵蓋語音服務的許多功能功能,但對於某些方案,您可能需要使用 REST API。
+雖然語音 SDK 涵蓋語音服務的許多功能，但在某些情況下，您可能會想要使用 REST API。
 
 ### <a name="batch-transcription"></a>批次轉譯
 
-[批處理轉錄](batch-transcription.md)支援對大量數據的非同步語音轉錄。 批處理轉錄只能從 REST API 進行。 除了將語音音訊轉換為文本外,批量語音到文本還允許分二化和情緒分析。
+[批次](batch-transcription.md)轉譯可進行大量資料的非同步語音轉換文字轉譯。 只有 REST API 可以進行批次轉譯。 除了將語音音訊轉換成文字外，batch 語音轉換文字也允許進行 diarization 和情感分析。
 
 ## <a name="customization"></a>自訂
 
-語音服務具有跨語音到文本、文本到語音轉換和語音轉換的預設模型,提供了出色的功能。 有時,您可能希望提高基準性能,以更好地使用獨特的用例。 語音服務具有各種無代碼自定義工具,使之變得簡單,並允許您利用基於您自己的數據的自定義模型創建競爭優勢。 這些模型將僅對您和您的組織可用。
+語音服務會在語音轉換文字、文字轉換語音和語音翻譯之間，提供其預設模型的絕佳功能。 有時候，您可能會想要增加基準效能，使其更適合您的獨特使用案例。 語音服務具有各種無程式碼自訂工具，可讓您輕鬆地進行，並可讓您利用以自己的資料為基礎的自訂模型，建立競爭優勢。 這些模型只會提供給您和您的組織使用。
 
-### <a name="custom-speech-to-text"></a>自訂語音到文字
+### <a name="custom-speech-to-text"></a>自訂語音轉換文字
 
-在獨特的環境中使用語音到文本進行識別和轉錄時,您可以創建並訓練自定義聲學、語言和發音模型,以解決環境噪音或行業特定的詞彙。 創建和管理無代碼自定義語音模型可通過[自定義語音門戶](https://aka.ms/customspeech)獲得。 發佈自定義語音模型後,語音 SDK 就可以使用它。
+在獨特的環境中使用語音轉換文字進行辨識和轉譯時，您可以建立及定型自訂聲場、語言和發音模型，以解決環境雜訊或產業特定的詞彙。 建立和管理無程式碼自訂語音模型可透過[自訂語音入口網站](https://aka.ms/customspeech)取得。 一旦自訂語音模型發佈之後，語音 SDK 就可以使用它。
 
-### <a name="custom-text-to-speech"></a>自訂文字到語音
+### <a name="custom-text-to-speech"></a>自訂文字轉換語音
 
-自訂文字到語音,也稱為自訂語音是一組線上工具,允許您為您的品牌創建可識別的、一種類型的聲音。 創建和管理無代碼自定義語音模型可通過[自定義語音門戶](https://aka.ms/customvoice)獲得。 發佈自定義語音模型後,語音 SDK 就可以使用它。
+自訂文字轉換語音（也稱為「自訂語音」）是一組線上工具，可讓您為您的品牌建立可辨識的一種語音。 您可以透過[自訂語音入口網站](https://aka.ms/customvoice)來建立和管理無程式碼自訂語音模型。 一旦自訂語音模型發佈之後，語音 SDK 就可以使用它。
 
 ## <a name="get-the-speech-sdk"></a>取得語音 SDK
 

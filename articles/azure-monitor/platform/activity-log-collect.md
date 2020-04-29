@@ -1,131 +1,131 @@
 ---
-title: 在 Azure 監視器中收集和分析 Azure 活動紀錄
-description: 在 Azure 監視器日誌中收集 Azure 活動日誌,並使用監視解決方案跨所有 Azure 訂閱分析和搜索 Azure 活動日誌。
+title: 收集並分析 Azure 監視器中的 Azure 活動記錄
+description: 收集 Azure 監視器記錄中的 Azure 活動記錄，並使用監視解決方案來分析和搜尋所有 Azure 訂用帳戶的 Azure 活動記錄。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/14/2020
 ms.openlocfilehash: 098aeaa06a26c57744402722aa3eacc51ea85fb7
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382862"
 ---
-# <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>在 Azure 監視器中收集和分析 Azure 活動紀錄
-[Azure 活動日誌](platform-logs-overview.md)是一個[平台日誌](platform-logs-overview.md),用於深入瞭解 Azure 中發生的訂閱級事件。 雖然可以在 Azure 門戶中查看活動日誌,但應將其配置為發送到日誌分析工作區以啟用 Azure 監視器的其他功能。 本文介紹如何執行此配置以及如何將活動日誌發送到 Azure 存儲和事件中心。
+# <a name="collect-and-analyze-azure-activity-log-in-azure-monitor"></a>收集並分析 Azure 監視器中的 Azure 活動記錄
+[Azure 活動記錄](platform-logs-overview.md)是一個[平臺記錄](platform-logs-overview.md)，可讓您深入瞭解 Azure 中發生的訂用帳戶層級事件。 雖然您可以在 Azure 入口網站中查看活動記錄，但您應該將它設定為傳送至 Log Analytics 工作區，以啟用 Azure 監視器的其他功能。 本文說明如何執行這項設定，以及如何將活動記錄傳送至 Azure 儲存體和事件中樞。
 
-在日誌分析工作區中收集活動日誌具有以下優點:
+在 Log Analytics 工作區中收集活動記錄可提供下列優點：
 
-- 日誌分析工作區中存儲的活動日誌數據無需數據引入或數據保留費用。
-- 將活動日誌數據與 Azure 監視器收集的其他監視數據相關聯。
-- 使用日誌查詢執行複雜的分析,並獲得對活動日誌條目的深入瞭解。
-- 將日誌警報與活動條目一起使用,允許更複雜的警報邏輯。
-- 存儲活動日誌條目超過 90 天。
-- 將多個 Azure 訂閱和租戶的日誌條目合併到一個位置,以便一起分析。
+- 儲存在 Log Analytics 工作區中的活動記錄資料不會有任何資料內嵌或資料保留費用。
+- 將活動記錄資料與 Azure 監視器所收集的其他監視資料相互關聯。
+- 使用記錄查詢來執行複雜的分析，並取得活動記錄專案的深入見解。
+- 使用記錄警示搭配活動專案，以允許更複雜的警示邏輯。
+- 儲存活動記錄專案超過90天。
+- 將多個 Azure 訂用帳戶和租使用者中的記錄專案合併成一個位置，以供分析一起進行。
 
 > [!IMPORTANT]
-> 跨租戶收集紀錄需要[Azure 燈塔](/azure/lighthouse)。
+> 跨租使用者收集記錄需要[Azure 燈塔](/azure/lighthouse)。
 
-## <a name="collecting-activity-log"></a>收集活動記錄
-活動紀錄將自動收集,以便[在 Azure 門戶中檢視](activity-log-view.md)。 要在紀錄分析工作區中收集它或將其傳送 Azure 儲存或事件中心,請建立[一個診斷設定](diagnostic-settings.md)。 這是資源日誌使用的方法,使其對所有[平台日誌](platform-logs-overview.md)保持一致。  
+## <a name="collecting-activity-log"></a>正在收集活動記錄
+系統會自動收集活動記錄，以便[在 Azure 入口網站中進行查看](activity-log-view.md)。 若要在 Log Analytics 工作區中收集該檔案，或將它傳送至 Azure 儲存體或事件中樞，請建立[診斷設定](diagnostic-settings.md)。 這是資源記錄檔所使用的相同方法，使其對所有[平臺記錄](platform-logs-overview.md)檔都是一致的。  
 
-要為作用紀錄建立診斷設定,請從 Azure 監視器中的 **「活動紀錄**」選單中選擇 **「診斷」設定**。 有關建立設定的詳細資訊,請參閱[建立診斷設定以在 Azure 中收集平台紀錄和指標](diagnostic-settings.md)。 有關可以篩選的類別的說明,請參閱[活動紀錄中的類別](activity-log-view.md#categories-in-the-activity-log)。 如果您有任何舊版設置,請確保在創建診斷設置之前禁用它們。 同時啟用這兩個功能可能會導致資料重複。
+若要建立活動記錄的診斷設定，請從 Azure 監視器的 [**活動記錄**] 功能表中選取 [**診斷設定**]。 如需建立設定的詳細資訊，請參閱[建立診斷設定以收集 Azure 中的平臺記錄和計量](diagnostic-settings.md)。 如需您可以篩選之類別的描述，請參閱[活動記錄中的類別](activity-log-view.md#categories-in-the-activity-log)。 如果您有任何舊版設定，請務必在建立診斷設定之前將它們停用。 啟用這兩個可能會導致重複的資料。
 
 ![診斷設定](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
 
 > [!NOTE]
-> 目前,您只能使用 Azure 門戶和資源管理器範本創建訂閱級診斷設置。 
+> 目前，您只能使用 [Azure 入口網站] 和 [Resource Manager] 範本來建立訂用帳戶層級的診斷設定。 
 
 
 ## <a name="legacy-settings"></a>舊版設定 
-雖然診斷設置是將活動日誌發送到不同目標的首選方法,但如果不選擇替換為診斷設置,舊方法將繼續工作。 與舊方法不同,診斷設置具有以下優勢,建議您更新配置:
+雖然診斷設定是將活動記錄傳送至不同目的地的慣用方法，但如果您不選擇以診斷設定取代，舊版方法仍會繼續工作。 診斷設定與舊版方法相比具有下列優點，建議您更新設定：
 
-- 收集所有平台日誌的一致方法。
-- 跨多個訂閱和租戶收集活動日誌。
-- 篩選集合以僅收集特定類別的日誌。
-- 收集所有活動日誌類別。 某些類別不會使用舊方法收集。
-- 日誌引入的延遲更快。 前一種方法的延遲約為15分鐘,而診斷設置僅添加約1分鐘。
+- 收集所有平臺記錄的一致方法。
+- 跨多個訂用帳戶和租使用者收集活動記錄。
+- 篩選集合，只收集特定類別的記錄。
+- 收集所有活動記錄類別。 某些分類不會使用舊版方法收集。
+- 記錄內嵌的延遲較快。 先前的方法大約會有15分鐘的延遲，而診斷設定只會加上1分鐘。
 
 
 
 ### <a name="log-profiles"></a>記錄檔的設定檔
-紀錄設定檔是將活動日誌發送到 Azure 儲存或事件中心的傳統方法。 使用以下過程繼續使用日誌配置檔或禁用它,以便遷移到診斷設置。
+記錄檔設定檔是將活動記錄傳送至 Azure 儲存體或事件中樞的舊版方法。 使用下列程式繼續使用記錄檔設定檔，或在準備遷移至診斷設定時加以停用。
 
-1. 從 Azure 門戶中的**Azure 監視器**選單中,選擇**活動紀錄**。
-3. 按下 **「診斷設置**」。
+1. 從 Azure 入口網站的 [ **Azure 監視器**] 功能表中，選取 [**活動記錄**]。
+3. 按一下 [**診斷設定**]。
 
    ![診斷設定](media/diagnostic-settings-subscription/diagnostic-settings.png)
 
-4. 單擊紫色橫幅即可獲得舊體驗。
+4. 按一下 [紫色] 橫幅以取得舊版體驗。
 
-    ![傳統體驗](media/diagnostic-settings-subscription/legacy-experience.png)
+    ![舊版體驗](media/diagnostic-settings-subscription/legacy-experience.png)
 
 ### <a name="log-analytics-workspace"></a>Log Analytics 工作區
-將活動日誌收集到日誌分析工作區的傳統方法是在工作區配置中連接日誌。 
+將活動記錄收集到 Log Analytics 工作區的舊版方法，是連接工作區設定中的記錄。 
 
-1. 從 Azure 門戶中的 **「日誌分析」工作區**功能表中,選擇工作區以收集活動日誌。
-1. 在工作區選單的工作**區資料來源**部份中,選擇**Azure 活動紀錄**。
-1. 按一下要連接的訂閱。
+1. 從 [Azure 入口網站中的 [ **Log Analytics 工作區**] 功能表，選取要收集活動記錄的工作區。
+1. 在工作區功能表的 [**工作區資料來源**] 區段中，選取 [ **Azure 活動記錄**]。
+1. 按一下您要連接的訂用帳戶。
 
     ![工作區](media/activity-log-collect/workspaces.png)
 
-1. 按下 **「連線**」將訂閱中的活動日誌連接到所選工作區。 如果訂閱已連接到另一個工作區,請單擊"首先**斷開連接**"以斷開連接。
+1. 按一下 [連線 **]** ，將訂用帳戶中的活動記錄連接到選取的工作區。 如果訂用帳戶已連接到另一個工作區，請按一下 [先**中斷**連線] 將其中斷連接。
 
-    ![連線工作區](media/activity-log-collect/connect-workspace.png)
-
-
-要禁用該設置,請執行相同的過程,然後單擊 **「斷開連接**」以從工作區中刪除訂閱。
+    ![連接工作區](media/activity-log-collect/connect-workspace.png)
 
 
-## <a name="analyze-activity-log-in-log-analytics-workspace"></a>在紀錄分析工作區中分析活動紀錄
-將活動日誌連接到日誌分析工作區時,條目將寫入工作區,該表名為*AzureActivity,* 您可以使用[日誌查詢](../log-query/log-query-overview.md)檢索該表。 此表的結構因[日誌條目的類別](activity-log-view.md#categories-in-the-activity-log)而異。 有關每個類別的說明,請參閱[Azure 活動紀錄事件架構](activity-log-schema.md)。
+若要停用此設定，請執行相同的程式，然後按一下 **[中斷連線]** ，從工作區移除訂用帳戶。
+
+
+## <a name="analyze-activity-log-in-log-analytics-workspace"></a>分析 Log Analytics 工作區中的活動記錄
+當您將活動記錄檔連接到 Log Analytics 工作區時，專案會寫入至名為*AzureActivity*的資料表，您可以使用[記錄查詢](../log-query/log-query-overview.md)來加以抓取。 這個資料表的結構會根據[記錄專案的類別](activity-log-view.md#categories-in-the-activity-log)而有所不同。 如需每個類別的說明，請參閱[Azure 活動記錄事件架構](activity-log-schema.md)。
 
 
 ### <a name="data-structure-changes"></a>資料結構變更
-診斷設置收集的數據與用於收集活動日誌的舊方法相同的數據,對*AzureActivity*表的結構進行了一些更改。
+診斷設定會收集與用來收集活動記錄檔的舊版方法相同的資料，其中包含*AzureActivity*資料表結構的某些變更。
 
-下表中的列已棄用更新的架構。 它們仍然存在於*AzureActivity 中,* 但它們將沒有數據。 這些列的替換不是新的,但它們包含的數據與棄用列相同。 它們採用不同的格式,因此您可能需要修改使用它們的日誌查詢。 
+下表中的資料行已在更新的架構中被取代。 它們仍然存在於*AzureActivity*中，但不會有任何資料。 這些資料行的取代並不是新的，但它們包含與已被取代資料行相同的資料。 它們的格式不同，因此您可能需要修改使用它們的記錄查詢。 
 
-| 已棄用欄 | 取代欄位 |
+| 已取代的資料行 | 取代資料行 |
 |:---|:---|
-| 活動狀態    | ActivityStatusValue    |
-| 作用子級狀態 | 作用子狀態值 |
-| OperationName     | 操作名稱值     |
-| ResourceProvider  | 資源提供者價值  |
+| ActivityStatus    | ActivityStatusValue    |
+| ActivitySubstatus | ActivitySubstatusValue |
+| OperationName     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
 
 > [!IMPORTANT]
-> 在某些情況下,這些列中的值可能在所有大寫中。 如果查詢包含這些列,則應使用[* 運算子](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)執行不區分大小寫的比較。
+> 在某些情況下，這些資料行中的值可能全部大寫。 如果您有包含這些資料行的查詢，您應該使用[= ~ 運算子](https://docs.microsoft.com/azure/kusto/query/datatypes-string-operators)來執行不區分大小寫的比較。
 
-以下列已新增到更新的架構中的*AzureActivity:*
+下列資料行已新增至已更新之架構中的*AzureActivity* ：
 
 - Authorization_d
 - Claims_d
 - Properties_d
 
 
-## <a name="activity-logs-analytics-monitoring-solution"></a>活動紀錄分析監視解決方案
-Azure 日誌分析監視解決方案將很快棄用,並使用日誌分析工作區中更新的架構替換為工作簿。 如果已啟用該解決方案,您仍可以使用該解決方案,但只能使用舊版設置收集活動日誌時才能使用它。 
+## <a name="activity-logs-analytics-monitoring-solution"></a>活動記錄分析監視解決方案
+Azure Log Analytics 監視解決方案即將淘汰，並由使用 Log Analytics 工作區中更新架構的活頁簿所取代。 如果您已經啟用解決方案，您仍然可以使用它，但只有在使用舊版設定收集活動記錄檔時，才可以使用它。 
 
 
 
 ### <a name="use-the-solution"></a>使用解決方案
-監視解決方案從 Azure 門戶中的 **「監視器」** 功能表存取。 在 **「見解」** 部分中選擇 **「更多**」以使用解決方案磁貼打開 **「概述」** 頁。 Azure**活動日誌**磁貼顯示工作區中**AzureActivity**記錄數的計數。
+監視解決方案可從 Azure 入口網站中的 [**監視**] 功能表存取。 在 [**深入**解析] 區段中選取 [**更多**]，以開啟具有方案磚的 [**總覽**] 頁面。 [ **Azure 活動記錄**] 圖格會顯示工作區中**AzureActivity**記錄的數目。
 
 ![Azure 活動記錄圖格](media/collect-activity-logs/azure-activity-logs-tile.png)
 
 
-按**下 Azure 活動日誌**磁貼以打開**Azure 活動日誌**檢視。 視圖包括下表中的可視化部分。 每個部件最多列出 10 個與指定時間範圍的零件條件相匹配的專案。 可以通過按一下「查看零件底部**的所有記錄**」來運行回所有匹配記錄的日誌查詢。
+按一下 [ **Azure 活動記錄**] 圖格，以開啟 [ **azure 活動記錄**] 視圖。 此視圖包含下表中的視覺效果元件。 每個部分會列出最多10個專案，符合所指定時間範圍內的部分準則。 您可以按一下元件底部的 [**查看全部**]，來執行記錄查詢，以傳回所有相符的記錄。
 
 ![Azure 活動記錄儀表板](media/collect-activity-logs/activity-log-dash.png)
 
 
-### <a name="enable-the-solution-for-new-subscriptions"></a>開啟新訂閱的解決方案
-您將很快不再能夠使用 Azure 入口將活動日誌分析解決方案添加到訂閱中。 您可以使用以下過程與資源管理器範本一起添加它。 
+### <a name="enable-the-solution-for-new-subscriptions"></a>為新訂閱啟用解決方案
+您很快就無法再使用 Azure 入口網站將活動記錄分析解決方案新增至您的訂用帳戶。 您可以使用下列程式搭配 resource manager 範本來新增它。 
 
-1. 將以下 json 複製到名為*活動日誌範本*.json 的檔。
+1. 將下列 json 複製到名為*ActivityLogTemplate*的檔案中。
 
     ```json
     {
@@ -203,7 +203,7 @@ Azure 日誌分析監視解決方案將很快棄用,並使用日誌分析工作�
     }    
     ```
 
-2. 使用以下 PowerShell 命令部署樣本:
+2. 使用下列 PowerShell 命令來部署範本：
 
     ```PowerShell
     Connect-AzAccount
@@ -214,6 +214,6 @@ Azure 日誌分析監視解決方案將很快棄用,並使用日誌分析工作�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解有關[活動日誌](platform-logs-overview.md)的更多內容。
-- 瞭解有關 Azure[監視器數據平臺](data-platform.md)的更多資訊。
-- 使用[紀錄查詢](../log-query/log-query-overview.md)查看活動日誌中的詳細資訊。
+- 深入瞭解[活動記錄](platform-logs-overview.md)。
+- 深入瞭解[Azure 監視器資料平臺](data-platform.md)。
+- 使用[記錄查詢](../log-query/log-query-overview.md)，從您的活動記錄中查看詳細資訊。

@@ -1,7 +1,7 @@
 ---
 title: 文字仲裁 - Content Moderator
 titleSuffix: Azure Cognitive Services
-description: 對可能不需要的文本、個人數據和自定義術語清單使用文本審核。
+description: 針對可能不想要的文字、個人資料，以及自訂的字詞清單，使用文字仲裁。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81274005"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文字仲裁概念
 
-使用內容審閱者的計算機輔助文本審閱和[人工審閱](Review-Tool-User-Guide/human-in-the-loop.md)功能來調節文本內容。
+使用內容仲裁的電腦輔助文字仲裁和[人工審核](Review-Tool-User-Guide/human-in-the-loop.md)功能來仲裁文字內容。
 
 您可以根據您的原則及閾值來封鎖、核准或檢閱內容。 使用它來增強合作夥伴、員工和取用者產生之文字內容所在環境的人工仲裁審核。 這些環境包括聊天室、討論區、聊天機器人、電子商務目錄和文件。 
 
@@ -51,7 +51,7 @@ ms.locfileid: "81274005"
 
 ## <a name="classification"></a>分類
 
-內容審閱者的計算機輔助**文本分類功能****僅支援英語**,有助於檢測可能不需要的內容。 所標幟的內容可能是依據上下文而被評估為不當的內容。 它會傳遞每個類別的可能性，而且可能會建議人工審核。 此功能使用定型模型來識別可能的濫用、毀謗性或歧視性語言。 這包括要供審核的俚語、縮寫單字、冒犯性及刻意拼錯的單字。 
+內容仲裁的電腦輔助**文字分類功能**僅支援**英文**，並協助偵測可能不想要的內容。 所標幟的內容可能是依據上下文而被評估為不當的內容。 它會傳遞每個類別的可能性，而且可能會建議人工審核。 此功能使用定型模型來識別可能的濫用、毀謗性或歧視性語言。 這包括要供審核的俚語、縮寫單字、冒犯性及刻意拼錯的單字。 
 
 以下 JSON 擷取內容顯示一個範例輸出︰
 
@@ -78,10 +78,10 @@ ms.locfileid: "81274005"
 
 ## <a name="personal-data"></a>個人資料
 
-個人資料功能可偵測此資訊的潛在存在:
+「個人資料」功能會偵測這項資訊的可能存在：
 
 - 電子郵件地址
-- 美國郵寄位址
+- 美國郵寄地址
 - IP 位址
 - 美國電話號碼
 
@@ -125,7 +125,7 @@ ms.locfileid: "81274005"
 
 ## <a name="auto-correction"></a>自動校正
 
-假設輸入文本為("lzay"和"f0x"是有意的):
+假設輸入文字是（「lzay」和「f0x」是故意的）：
 
     The qu!ck brown f0x jumps over the lzay dog.
 
@@ -155,4 +155,4 @@ Content Moderator 有提供一個[字詞清單 API](https://westus.dev.cognitive
 
 ## <a name="next-steps"></a>後續步驟
 
-試用[文字仲裁 API 主控台](try-text-api.md)，並使用 REST API 程式碼範例。 如果您熟悉 Visual Studio 和 C#,請查看[.NET SDK 快速入門](dotnet-sdk-quickstart.md)的文本審核部分。
+試用[文字仲裁 API 主控台](try-text-api.md)，並使用 REST API 程式碼範例。 如果您熟悉 Visual Studio 和 c #，請同時查看[.NET SDK 快速入門](dotnet-sdk-quickstart.md)的文字審核一節。

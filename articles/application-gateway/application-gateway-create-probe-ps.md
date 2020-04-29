@@ -1,5 +1,5 @@
 ---
-title: 使用 PowerShell 建立自訂偵測器
+title: 使用 PowerShell 建立自訂探查
 titleSuffix: Azure Application Gateway
 description: 了解如何在資源管理員中使用 PowerShell 建立應用程式閘道的自訂探查
 services: application-gateway
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: f720a94d3467ce15ea5d58a8ece6de2a669f6258
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312594"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-by-using-powershell-for-azure-resource-manager"></a>使用 Azure 資源管理員的 PowerShell 建立 Azure 應用程式閘道的自訂探查
@@ -20,7 +20,7 @@ ms.locfileid: "81312594"
 > [!div class="op_single_selector"]
 > * [Azure 入口網站](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
-> * [Azure 經典電源外殼](application-gateway-create-probe-classic-ps.md)
+> * [Azure 傳統 PowerShell](application-gateway-create-probe-classic-ps.md)
 
 在本文中，您會使用 PowerShell 將自訂探查新增到現有的應用程式閘道。 對於具有特定健康狀態檢查頁面的應用程式，或是在預設 Web 應用程式上不提供成功回應的應用程式，自訂探查非常實用。
 
@@ -77,7 +77,7 @@ $subnet = $vnet.Subnets[0]
 
 ### <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>建立前端組態的公用 IP 位址
 
-在資源組**appgw-rg**中為美國西部區域創建公共 IP 資源**公共 IP01。** 此範例使用公用 IP 位址做為應用程式閘道的前端 IP 位址。  應用程式閘道需要公用 IP 位址才能具有動態建立的 DNS 名稱，因此在公用 IP 位址建立期間無法指定 `-DomainNameLabel`。
+在「美國西部」區域的資源群組**為 appgw-rg-rg**中建立公用 IP 資源**群組 publicip01** 。 此範例使用公用 IP 位址做為應用程式閘道的前端 IP 位址。  應用程式閘道需要公用 IP 位址才能具有動態建立的 DNS 名稱，因此在公用 IP 位址建立期間無法指定 `-DomainNameLabel`。
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -Location 'West US' -AllocationMethod Dynamic
@@ -90,7 +90,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName appgw-rg -Name publicIP01 -
 | **元件** | **說明** |
 |---|---|
 | **閘道 IP 設定** | 應用程式閘道的 IP 設定。|
-| **後端池** | 這是應用程式伺服器的 IP 位址、FQDN 或 NIC 的集區，此應用程式伺服器負責裝載 Web 應用程式|
+| **後端集區** | 這是應用程式伺服器的 IP 位址、FQDN 或 NIC 的集區，此應用程式伺服器負責裝載 Web 應用程式|
 | **健全狀況探查** | 用於監視後端集區成員健康狀態的自訂探查|
 | **HTTP 設定** | 包括連接埠、通訊協定、以 Cookie 為依據的親和性、探查和逾時等設定的集合。  這些設定會決定流量路由傳送到後端集區成員的方式|
 | **前端連接埠** | 應用程式閘道接聽流量的連接埠|
@@ -197,5 +197,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>後續步驟
 
-透過存取如何設定 TLS 卸載:[設定 TLS 卸載](application-gateway-ssl-arm.md)
+若要瞭解如何設定 TLS 卸載，請造訪：[設定 tls](application-gateway-ssl-arm.md)卸載
 

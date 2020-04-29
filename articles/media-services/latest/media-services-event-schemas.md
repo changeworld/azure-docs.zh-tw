@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 02/25/2020
 ms.author: juliako
 ms.openlocfilehash: 3733a641bc116b57556c5ad4f5750bec69e10e9b
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393740"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure 媒體服務事件的 Azure 事件格線結構描述
@@ -44,13 +44,13 @@ ms.locfileid: "81393740"
 
 請參閱接下來將說明的[結構描述範例](#event-schema-examples)。
 
-### <a name="monitoring-job-output-state-changes"></a>監視工作輸出狀態變更
+### <a name="monitoring-job-output-state-changes"></a>監視作業輸出狀態變更
 
-作業可能包含多個作業輸出(如果將轉換配置為具有多個作業輸出)。如果要跟蹤各個作業輸出的詳細資訊,請偵聽作業輸出更改事件。
+作業可以包含多個作業輸出（如果您將轉換設定為具有多個作業輸出）。如果您想要追蹤個別作業輸出的詳細資料，請接聽作業輸出變更事件。
 
-每個**作業**的級別都將高於**作業輸出**,因此作業輸出事件將在相應的作業中觸發。 
+每項**作業**的層級會高於**JobOutput**，因此作業輸出事件會在對應的作業內引發。 
 
-中的`JobFinished`錯誤訊息`JobCanceled`,`JobError`輸出每個工作輸出的聚合結果 - 當所有這些工作完成。 然而,作業輸出事件會隨著每個任務完成而觸發。 例如,如果您有編碼輸出,後跟視頻分析輸出,則在最後的 Job 完成事件觸發聚合數據之前,將觸發兩個事件作為作業輸出事件。
+中`JobFinished` `JobCanceled`的錯誤訊息會`JobError`輸出每個作業輸出的匯總結果–全部完成時。 不過，作業輸出事件會在每個工作完成時引發。 例如，如果您有編碼輸出，接著是影片分析輸出，您會在最後一個 JobFinished 事件引發後，以匯總資料的形式引發兩個事件，做為作業輸出事件。
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
@@ -64,7 +64,7 @@ ms.locfileid: "81393740"
 
 請參閱接下來將說明的[結構描述範例](#event-schema-examples)。
 
-### <a name="monitoring-job-output-progress"></a>監視工作輸出進度
+### <a name="monitoring-job-output-progress"></a>監視作業輸出進度
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
@@ -93,17 +93,17 @@ ms.locfileid: "81393740"
 資料軌層級事件會以每個資料軌為基礎來引發。 
 
 > [!NOTE]
-> 連接即時編碼器後,將引發所有跟蹤級事件。
+> 在即時編碼器連線之後，會引發所有追蹤層級事件。
 
-軌道級事件類型包括:
+追蹤層級的事件種類如下：
 
 | 事件類型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.Media.LiveEventIncomingDataChunkDropped | 媒體伺服器卸除資料區塊，原因是其來得太晚或有重疊的時間戳記 (新資料區塊的時間戳記小於先前資料區塊的結束時間)。 |
 | Microsoft.Media.LiveEventIncomingStreamReceived | 媒體伺服器收到資料流或連線中每個資料軌的第一個資料區塊。 |
-| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | 媒體伺服器檢測到音訊和視頻流不同步。用作警告,因為用戶體驗可能不會受到影響。 |
-| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | 媒體伺服器檢測到來自外部編碼器的兩個視頻流中的任何一個不同步。用作警告,因為用戶體驗可能不會受到影響。 |
-| Microsoft.Media.LiveEventIngestHeartbeat | 當即時事件執行時，會針對每個資料軌每 20 秒發佈一次。 提供內嵌健康情況摘要。<br/><br/>最初連接編碼器後,無論編碼器是否仍在連接,檢測信號事件仍每 20 秒發出一次。 |
+| Microsoft.Media.LiveEventIncomingStreamsOutOfSync | 媒體伺服器偵測到音訊和影片串流不同步。請使用做為警告，因為使用者體驗可能不會受到影響。 |
+| Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | 媒體伺服器偵測到來自外部編碼器的兩個影片資料流程中，有任何一個都不同步。請使用做為警告，因為使用者體驗可能不會受到影響。 |
+| Microsoft.Media.LiveEventIngestHeartbeat | 當即時事件執行時，會針對每個資料軌每 20 秒發佈一次。 提供內嵌健康情況摘要。<br/><br/>第一次連線編碼器之後，無論編碼器是否仍在連線中，每隔20秒就會繼續發出訊號事件。 |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | 媒體伺服器偵測到內送的資料軌發生中斷。 |
 
 請參閱接下來將說明的[結構描述範例](#event-schema-examples)。
@@ -137,7 +137,7 @@ ms.locfileid: "81393740"
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
 | previousState | 字串 | 工作在該事件之前的狀態。 |
-| state | 字串 | 在此事件中，被通知的工作新狀態。 例如,"計劃:作業已準備好開始"或"已完成:作業已完成"。|
+| State | 字串 | 在此事件中，被通知的工作新狀態。 例如，「已排程：作業已準備好開始」或「已完成：作業已完成」。|
 
 工作狀態可以是以下其中一個值：*已排入佇列*、*已排程*、*處理中*、*已完成*、*錯誤*、*已取消*、*取消中*
 
@@ -328,7 +328,7 @@ ms.locfileid: "81393740"
 | encoderPort | 字串 | 此資料流來源編碼器的連接埠。 |
 | ResultCode | 字串 | 連線遭到拒絕的原因。 結果碼列於下表。 |
 
-您可以在[即時事件錯誤程式](live-event-error-codes.md)碼中找不到錯誤結果代碼。
+您可以在[即時事件錯誤碼](live-event-error-codes.md)中找到錯誤的結果碼。
 
 ### <a name="liveeventencoderconnected"></a>LiveEventEncoderConnected
 
@@ -398,7 +398,7 @@ ms.locfileid: "81393740"
 | encoderPort | 字串 | 此資料流來源編碼器的連接埠。 |
 | ResultCode | 字串 | 編碼器中斷連線的原因。 可能是正常中斷連線或錯誤所致。 結果碼列於下表。 |
 
-您可以在[即時事件錯誤程式](live-event-error-codes.md)碼中找不到錯誤結果代碼。
+您可以在[即時事件錯誤碼](live-event-error-codes.md)中找到錯誤的結果碼。
 
 正常中斷連線的結果碼如下：
 
@@ -609,7 +609,7 @@ ms.locfileid: "81393740"
 | discontinuityCount | integer | 在過去 20 秒所觀察到的中斷次數。 |
 | nonIncreasingCount | integer | 在過去 20 秒所收到有過去時間戳記的資料區塊數目。 |
 | unexpectedBitrate | bool | 在過去 20 秒內，預期和實際的位元速率差異是否超過允許的限制。 只有在「incomingBitrate >= 2* 位元速率」或「incomingBitrate <= 位元速率/2」或「IncomingBitrate = 0」時，才會是 true。 |
-| state | 字串 | 即時事件的狀態。 |
+| State | 字串 | 即時事件的狀態。 |
 | healthy | bool | 根據計數和旗標來指出內嵌是否狀況良好。 如果 overlapCount = 0 && discontinuityCount = 0 && nonIncreasingCount = 0 && unexpectedBitrate = false，則健康情況為 true。 |
 
 ### <a name="liveeventtrackdiscontinuitydetected"></a>LiveEventTrackDiscontinuityDetected
@@ -662,7 +662,7 @@ ms.locfileid: "81393740"
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 例如，"Microsoft.Media.JobStateChange"。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 事件的唯一識別碼。 |
-| data | 物件 (object) | 媒體服務事件資料。 |
+| data | 物件 | 媒體服務事件資料。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
@@ -670,7 +670,7 @@ ms.locfileid: "81393740"
 
 [登記工作狀態變更事件](job-state-events-cli-how-to.md)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [包含媒體服務事件的 EventGrid .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/)
 - [媒體服務事件的定義](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/eventgrid/data-plane/Microsoft.Media/stable/2018-01-01/MediaServices.json)

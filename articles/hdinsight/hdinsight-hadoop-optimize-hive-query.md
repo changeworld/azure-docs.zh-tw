@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81390303"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>將 Azure HDInsight 中的 Apache Hive 查詢最佳化
 
-在 Azure HDInsight 中，有數種叢集類型與技術可執行 Apache Hive查詢。 選擇適當的群集類型,以幫助優化性能以滿足工作負載需求。
+在 Azure HDInsight 中，有數種叢集類型與技術可執行 Apache Hive查詢。 選擇適當的叢集類型，以協助針對您的工作負載需求將效能優化。
 
-例如,選擇**互動式查詢**群集類型以`ad hoc`優化 互動式查詢。 選擇 Apache **Hadoop** 叢集類型，將作為批次程序使用的 Hive 查詢最佳化。 **Spark** 與 **HBase** 叢集類型也可以執行 Hive 查詢。 如需針對不同 HDInsight 叢集類型執行 Hive 查詢的詳細資訊，請參閱[Azure HDInsight 上的 Apache Hive 和 HiveQL 是什麼？](hadoop/hdinsight-use-hive.md)。
+例如，選擇 [**互動式查詢**叢集類型]，以`ad hoc`針對互動式查詢進行優化。 選擇 Apache **Hadoop** 叢集類型，將作為批次程序使用的 Hive 查詢最佳化。 **Spark** 與 **HBase** 叢集類型也可以執行 Hive 查詢。 如需針對不同 HDInsight 叢集類型執行 Hive 查詢的詳細資訊，請參閱[Azure HDInsight 上的 Apache Hive 和 HiveQL 是什麼？](hadoop/hdinsight-use-hive.md)。
 
-默認情況下,Hadoop 群集類型的 HDInsight 群集未針對性能進行優化。 本文說明幾個將 Hive 效能最佳化的最常見方法，您可將這些方法套用於查詢。
+根據預設，Hadoop 叢集類型的 HDInsight 叢集不會針對效能優化。 本文說明幾個將 Hive 效能最佳化的最常見方法，您可將這些方法套用於查詢。
 
 ## <a name="scale-out-worker-nodes"></a>相應放大背景工作節點
 
-增加 HDInsight 群集中的工作節點數,使工作能夠使用更多的映射器和減少器並行運行。 在 HDInsight 中您有兩種方法可相應放大：
+增加 HDInsight 叢集中的背景工作節點數目，可讓工作使用更多的對應程式和歸納器以平行方式執行。 在 HDInsight 中您有兩種方法可相應放大：
 
-* 創建群集時,可以使用 Azure 門戶、Azure PowerShell 或命令行介面指定輔助節點的數量。  如需詳細資訊，請參閱[管理 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)。 下列畫面顯示 Azure 入口網站上的背景工作節點組態：
+* 當您建立叢集時，您可以使用 Azure 入口網站、Azure PowerShell 或命令列介面來指定背景工作節點的數目。  如需詳細資訊，請參閱[管理 HDInsight 叢集](hdinsight-hadoop-provision-linux-clusters.md)。 下列畫面顯示 Azure 入口網站上的背景工作節點組態：
   
-    ![Azure 門戶群集大小節點](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
+    ![Azure 入口網站叢集大小節點](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
 * 建立之後，您也可以編輯背景工作節點數目，以進一步相應放大叢集，而不必重新建立：
 
-    ![Azure 門戶縮放叢集大小](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
+    ![Azure 入口網站調整叢集大小](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
 
 如需調整 HDInsight 的詳細資訊，請參閱[調整 HDInsight 叢集](hdinsight-scaling-best-practices.md)
 
@@ -41,14 +41,14 @@ ms.locfileid: "81390303"
 
 [Apache Tez](https://tez.apache.org/)是 MapReduce 引擎的替代執行引擎。 Linux 的 HDInsight 叢集預設會啟用 Tez。
 
-![HDInsight 阿帕奇 Tez 概述圖](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
+![HDInsight Apache Tez 總覽圖表](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
 
 Tez 比較迅速，因為：
 
-* **在 MapReduce 引擎中執行有向非循環圖 (DAG) 作為單一作業**。 DAG 要求每一組對應程式後面有一組歸納器。 此要求會導致為每個 Hive 查詢分割多個 MapReduce 作業。 Tez 沒有這樣的約束,可以將複雜的DAG作為一個作業,最大限度地減少作業啟動開銷。
-* **避免不必要的寫入**。 使用多個作業，在 MapReduce 引擎中處理相同的 Hive 查詢。 每個 MapReduce 作業的輸出都會寫入 HDFS，作為中繼資料。 由於 Tez 將每個 Hive 查詢的作業數降至最低,因此它能夠避免不必要的寫入。
+* **在 MapReduce 引擎中執行有向非循環圖 (DAG) 作為單一作業**。 DAG 要求每一組對應程式後面有一組歸納器。 這項需求會導致每個 Hive 查詢都有多個 MapReduce 工作的旋轉。 Tez 沒有這類條件約束，而且可以將複雜的 DAG 當做一項工作處理，將工作啟動額外負荷降到最低
+* **避免不必要的寫入**。 使用多個作業，在 MapReduce 引擎中處理相同的 Hive 查詢。 每個 MapReduce 作業的輸出都會寫入 HDFS，作為中繼資料。 因為 Tez 會將每個 Hive 查詢的工作數目降至最低，所以能夠避免不必要的寫入。
 * **將啟動延遲最小化**。 Tez 會減少需要啟動的對應器數目，同時提升整個最佳化，因此較能夠將啟動延遲降到最低。
-* **重複使用容器**。 只要有可能,Tez將重用容器,以確保減少啟動容器的延遲。
+* **重複使用容器**。 可能的話，Tez 會重複使用容器，以確保啟動容器的延遲會降低。
 * **連續最佳化技巧**。 習慣上，是在編譯階段進行最佳化。 但是有更多關於輸入的資訊可用，所以在執行階段進行最佳化比較理想。 Tez 會使用連續最佳化技巧，進一步在執行階段將計劃最佳化。
 
 如需這些概念的詳細資訊，請參閱 [Apache TEZ](https://tez.apache.org/)。
@@ -65,12 +65,12 @@ I/O 作業是執行 Hive 查詢的主要效能瓶頸。 如果可以減少需要
 
 Hive 資料分割的實作方法是將未經處理的資料重新整理成新的目錄。 每個分割區都有自己的檔案目錄。 由使用者定義的資料分割。 下圖說明如何依據 *年度*資料行來分割 Hive 資料表。 每年都會建立新的目錄。
 
-![HDInsight 阿帕奇蜂巢分區](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
+![HDInsight Apache Hive 分割](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
 一些分割考量：
 
-* **不要在分割區下**- 對只有幾個值的列進行分區可能會導致分區數。 例如,性別分區僅創建兩個分區(男性分區和分區),因此將延遲最多減少一半。
-* **不要過度分區**- 另一極端,在具有唯一值(例如,userid)的列上創建分區會導致多個分區。 過度分割會在叢集 namenode 上造成太多壓力，因為它必須處理大量目錄。
+* **不要**在只有少數值的資料行下進行分割區分割，可能會造成少數的磁碟分割。 例如，根據性別進行分割時，只會建立兩個要建立的磁碟分割（男性和女性），因此請將延遲降到最多一半。
+* **不要超過資料分割**-另一方面，在具有唯一值的資料行上建立資料分割（例如 userid）會造成多個分割區。 過度分割會在叢集 namenode 上造成太多壓力，因為它必須處理大量目錄。
 * **避免資料扭曲** - 明智地選擇分割索引鍵，讓所有分割區的大小平均。 例如，「州/省」** 資料行上的資料分割可能會扭曲資料的分佈。 由於加州的人口幾乎是佛蒙特州的 30 倍，分割區大小可能會有偏差，且效能可能會有極大的差異。
 
 若要建立分割資料表，請使用 *Partitioned By* 子句：
@@ -101,7 +101,7 @@ STORED AS TEXTFILE;
    LOCATION 'wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
 
-* **動態分割** 表示您要 Hive 為您自動建立分割區。 由於您已經從暫存表創建了分區表,因此只需將資料插入分區表:
+* **動態分割** 表示您要 Hive 為您自動建立分割區。 由於您已從臨時表建立分割資料表，您只需要將資料插入至分割資料表：
   
    ```hive
    SET hive.exec.dynamic.partition = true;
@@ -191,12 +191,12 @@ set hive.vectorized.execution.enabled = true;
 
 * **Hive 值區：** 能將大型資料集叢集化或分段以最佳化查詢效能的技術。
 * **聯結最佳化：** Hive 的查詢執行計劃最佳化，可改善聯結的效率並減少使用者提示的需求。 如需詳細資訊，請參閱 [聯結最佳化](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)。
-* **增加減少器**。
+* **增加歸納器**。
 
 ## <a name="next-steps"></a>後續步驟
 
 在本文中，您學到幾種常見的 Hive 查詢最佳化方法。 如需詳細資訊，請參閱下列文章：
 
 * [在 HDInsight 中使用 Apache Hive](hadoop/hdinsight-use-hive.md)
-* [在 HDInsight 中使用互動式查詢分析航班延誤資料](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [在 HDInsight 中使用互動式查詢來分析航班延誤資料](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [在 HDInsight 中使用 Apache Hive 分析 Twitter 資料](hdinsight-analyze-twitter-data-linux.md)

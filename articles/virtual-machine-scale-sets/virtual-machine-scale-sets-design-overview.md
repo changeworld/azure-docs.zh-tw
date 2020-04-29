@@ -1,6 +1,6 @@
 ---
-title: Azure 虛擬機器縮放集的設計注意事項
-description: 瞭解 Azure 虛擬機器縮放集的設計注意事項。 將比例集功能與 VM 功能進行比較。
+title: Azure 虛擬機器擴展集的設計考慮
+description: 瞭解 Azure 虛擬機器擴展集的設計考慮。 比較擴展集功能與 VM 功能。
 keywords: linux 虛擬機器, 虛擬機器擴展集
 author: mimckitt
 tags: azure-resource-manager
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: mimckitt
 ms.openlocfilehash: 20f6cb08781c7c6aca7a4022e75a7be8640ef18a
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273761"
 ---
 # <a name="design-considerations-for-scale-sets"></a>擴展集的設計考量
@@ -25,7 +25,7 @@ ms.locfileid: "81273761"
 
 ### <a name="scale-set-specific-features"></a>擴展集特定的功能
 
-- 指定比例集配置後,可以更新*容量*屬性以並行部署更多 VM。 比起撰寫指令碼，此程序更適合用來協調同時部署許多個別 VM 的作業。
+- 指定擴展集設定後，您可以更新*容量*屬性，以平行方式部署更多 vm。 比起撰寫指令碼，此程序更適合用來協調同時部署許多個別 VM 的作業。
 - 您可以[使用 Azure 自動調整規模自動調整擴展集](./virtual-machine-scale-sets-autoscale-overview.md)，但無法針對個別 VM 執行。
 - 您可以[重新安裝擴展集 VM 的映像](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)，但[無法針對個別 VM](https://docs.microsoft.com/rest/api/compute/virtualmachines) 執行。
 - 您可以[過度佈建](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)擴展集 VM，以提高可靠性並加快部署速度。 除非您撰寫自訂程式碼來執行這個動作，否則無法過度佈建個別 VM。

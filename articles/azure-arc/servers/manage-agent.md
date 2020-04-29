@@ -1,6 +1,6 @@
 ---
-title: 管理伺服器 (預覽) 代理的 Azure 弧
-description: 本文介紹了在 Azure Arc 生命週期中為伺服器連接的計算機代理執行的不同管理任務。
+title: 管理伺服器的 Azure Arc （預覽）代理程式
+description: 本文說明您通常會在與伺服器連線的電腦代理程式的 Azure Arc 生命週期期間執行的不同管理工作。
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -9,50 +9,50 @@ ms.author: magoedte
 ms.date: 04/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5ad2127b4cb9da3ca83aa04bd1885908a88dba62
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81308963"
 ---
-# <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理並維護連線的電腦代理
+# <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理和維護已連線的機器代理程式
 
-在 Windows 或 Linux 的伺服器(預覽)連接電腦代理的 Azure Arc 初始部署後,如果代理在其生命週期中已達到停用階段,則可能需要重新配置代理、升級代理或將其從電腦中刪除。 您可以手動或自動的方式輕鬆地管理這些例行維護工作，後者可以降低操作錯誤和費用。
+初次部署適用于 Windows 或 Linux 的已連線機器代理程式的 Azure Arc 之後，您可能需要重新設定代理程式、將其升級，或從電腦移除（如果已達到其生命週期的淘汰階段）。 您可以手動或自動的方式輕鬆地管理這些例行維護工作，後者可以降低操作錯誤和費用。
 
-## <a name="upgrading-agent"></a>升級代理
+## <a name="upgrading-agent"></a>正在升級代理程式
 
-Windows 和 Linux 的 Azure 連接電腦代理可以手動或自動升級到最新版本,具體取決於您的要求。 下表描述了為執行代理升級而支援的方法。
+您可以根據需求，以手動或自動方式將適用於 Windows 和 Linux 的 Azure Connected Machine 代理程式升級為最新版本。 下表描述執行代理程式升級所支援的方法。
 
 | 作業系統 | 升級方法 |
 |------------------|----------------|
 | Windows | 手動<br> Windows Update |
-| Ubuntu | [容易](https://help.ubuntu.com/lts/serverguide/apt.html) |
-| SUSE Linux Enterprise Server | [齊珀](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
-| 紅帽企業, 亞馬遜, CentOS Linux | [百 勝](https://wiki.centos.org/PackageManagement/Yum) | 
+| Ubuntu | [Apt](https://help.ubuntu.com/lts/serverguide/apt.html) |
+| SUSE Linux Enterprise Server | [zypper](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
+| RedHat Enterprise、Amazon、CentOS Linux | [yum](https://wiki.centos.org/PackageManagement/Yum) | 
 
 ### <a name="windows-agent"></a>Windows 代理程式
 
-要將 Windows 電腦上的代理更新到最新版本,該代理可從 Microsoft Update 獲得,並且可以使用現有的軟體更新管理過程進行部署。 也可以從指令提示符、文稿或其他自動化解決方案手動執行它,也可以通過執行 從 UI 精靈手`AzureConnectedMachine.msi`動執行 。 
+若要將 Windows 電腦上的代理程式更新為最新版本，代理程式可從 Microsoft Update 取得，而且可以使用現有的軟體更新管理流程進行部署。 您也可以從命令提示字元、腳本或其他自動化解決方案，或透過執行`AzureConnectedMachine.msi`，從 UI wizard 手動執行。 
 
 > [!NOTE]
-> * 要升級代理,您必須具有*管理員*許可權。
-> * 要手動升級,必須首先將安裝程式包下載並複製到目標伺服器上的資料夾或從共用網路資料夾中。 
+> * 若要升級代理程式，您必須具有*系統管理員*許可權。
+> * 若要手動升級，您必須先下載安裝程式套件，並將其複製到目標伺服器上的資料夾，或從共用網路資料夾。 
 
-如果您不熟悉 Windows 安裝程式套件的指令列選項,請查看[Msiexec 標準命令列選項](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)與[Msiexec 命令列選項](https://docs.microsoft.com/windows/win32/msi/command-line-options)。
+如果您不熟悉 Windows Installer 封裝的命令列選項，請參閱[Msiexec 標準命令列選項](https://docs.microsoft.com/windows/win32/msi/standard-installer-command-line-options)和[Msiexec 命令列選項](https://docs.microsoft.com/windows/win32/msi/command-line-options)。
 
-#### <a name="to-upgrade-using-the-setup-wizard"></a>使用設定精靈進行升級
+#### <a name="to-upgrade-using-the-setup-wizard"></a>若要使用安裝精靈進行升級
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 執行**Azure 連接電腦代理.msi**以啟動安裝程式精靈。
+2. 執行**AzureConnectedMachineAgent** ，以啟動安裝精靈。
 
-安裝程式向導發現是否存在以前的版本,然後它會自動執行代理的升級。 升級完成後,設置嚮導將自動關閉。
+安裝程式會探索先前版本是否存在，然後自動執行代理程式的升級。 當升級完成時，安裝精靈會自動關閉。
 
 #### <a name="to-upgrade-from-the-command-line"></a>從命令列升級
 
 1. 以具有系統管理權限的帳戶登入電腦。
 
-2. 要靜默升級代理並在資料夾中建立設定紀錄檔,`C:\Support\Logs`請執行以下命令。
+2. 若要以無訊息方式升級代理程式，並在`C:\Support\Logs`資料夾中建立安裝記錄檔，請執行下列命令。
 
     ```dos
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentupgradesetup.log"
@@ -60,138 +60,138 @@ Windows 和 Linux 的 Azure 連接電腦代理可以手動或自動升級到最�
 
 ### <a name="linux-agent"></a>Linux 代理程式
 
-要將 Linux 電腦上的代理更新到最新版本,它涉及兩個命令。 一個命令使用儲存庫中的最新可用包清單更新本地包索引,以及一個用於升級本地包的命令。 
+若要將 Linux 電腦上的代理程式更新為最新版本，它會牽涉到兩個命令。 一個命令，用來以存放庫中最新可用的套件清單來更新本機封裝索引，並使用一個命令來升級本機封裝。 
 
 > [!NOTE]
-> 要升級代理,您必須具有*根*訪問許可權或使用 Sudo 具有提升許可權的帳戶。
+> 若要升級代理程式，您必須具有*根*存取權限，或具有使用 Sudo 提升許可權的帳戶。
 
-#### <a name="upgrade-ubuntu"></a>升級烏本圖
+#### <a name="upgrade-ubuntu"></a>升級 Ubuntu
 
-1. 要使用儲存函式庫中所做的最新變更更新本地端索引,請執行以下命令:
+1. 若要使用存放庫中所做的最新變更來更新本機封裝索引，請執行下列命令：
 
     ```bash
     apt update
     ```
 
-2. 要升級系統,請執行以下命令:
+2. 若要升級您的系統，請執行下列命令：
 
     ```bash
     apt upgrade
     ```
 
-[apt](https://help.ubuntu.com/lts/serverguide/apt.html)指令的作業(如套件的安裝與刪除)會記錄在紀錄檔中`/var/log/dpkg.log`。
+[Apt](https://help.ubuntu.com/lts/serverguide/apt.html)命令的動作（例如安裝和移除封裝）會記錄在`/var/log/dpkg.log`記錄檔中。
 
-#### <a name="upgrade-red-hatcentosamazon-linux"></a>升級紅帽/CentOS/亞馬遜Linux
+#### <a name="upgrade-red-hatcentosamazon-linux"></a>升級 Red Hat/CentOS/Amazon Linux
 
-1. 要使用儲存函式庫中所做的最新變更更新本地端索引,請執行以下命令:
+1. 若要使用存放庫中所做的最新變更來更新本機封裝索引，請執行下列命令：
 
     ```bash
     yum check-update
     ```
 
-2. 要升級系統,請執行以下命令:
+2. 若要升級您的系統，請執行下列命令：
 
     ```bash
     yum update
     ```
 
-[yum](https://access.redhat.com/articles/yum-cheat-sheet)指令的操作(如套件的安裝與刪除)會記錄在紀錄檔中`/var/log/yum.log`。 
+[Yum](https://access.redhat.com/articles/yum-cheat-sheet)命令的動作（例如安裝和移除封裝）會記錄在`/var/log/yum.log`記錄檔中。 
 
-#### <a name="upgrade-suse-linux-enterprise"></a>升級 SUSE Linux 企業
+#### <a name="upgrade-suse-linux-enterprise"></a>升級 SUSE Linux Enterprise
 
-1. 要使用儲存函式庫中所做的最新變更更新本地端索引,請執行以下命令:
+1. 若要使用存放庫中所做的最新變更來更新本機封裝索引，請執行下列命令：
 
     ```bash
     zypper refresh
     ```
 
-2. 要升級系統,請執行以下命令:
+2. 若要升級您的系統，請執行下列命令：
 
     ```bash
     zypper update
     ```
 
-[zypper](https://en.opensuse.org/Portal:Zypper)指令的操作 (如套件的安裝與刪除)會記錄在紀錄檔`/var/log/zypper.log`中 。 
+[Zypper](https://en.opensuse.org/Portal:Zypper)命令的動作（例如安裝和移除封裝）會記錄在`/var/log/zypper.log`記錄檔中。 
 
-## <a name="about-the-azcmagent-tool"></a>關於阿茲cmagent工具
+## <a name="about-the-azcmagent-tool"></a>關於 Azcmagent 工具
 
-Azcmagent 工具 (Azcmagent.exe) 用於在安裝過程中為伺服器(預覽)連接的電腦代理設定 Azure Arc,或在安裝後修改代理的初始配置。 Azcmagent.exe 提供指令列參數以自訂代理並查看其狀態:
+Azcmagent 工具（Azcmagent）是用來在安裝期間設定 Azure Arc for server （預覽）連線的機器代理程式，或在安裝後修改代理程式的初始設定。 Azcmagent 提供命令列參數來自訂代理程式並查看其狀態：
 
-* **連線**- 將電腦連線到 Azure 弧線
+* **連接**-將機器連線至 Azure Arc
 
-* **離線**- 斷開電腦與 Azure 弧的連線
+* **中斷**連線-中斷電腦與 Azure Arc 的連線
 
-* **重新連線**- 將斷線連接的電腦重新連線到 Azure 弧
+* **重新連接**-將已中斷連線的電腦重新連線至 Azure Arc
 
-* **顯示**- 查看代理狀態及其配置屬性(資源組名稱、訂閱 ID、版本等),這些屬性在解決代理問題時會有所説明。
+* **顯示**視圖代理程式狀態及其設定屬性（資源組名、訂用帳戶識別碼、版本等等），這有助於疑難排解代理程式的問題。
 
-* **-h 或 -- 說明**- 顯示可用的指令列參數
+* **-h 或--help** -顯示可用的命令列參數
 
-    例如,要檢視 **「重新連線**」參數的詳細說明,請`azcmagent reconnect -h`鍵入 。 
+    例如，若要查看**重新**連線參數的詳細說明，請`azcmagent reconnect -h`輸入。 
 
-* **-v 或 - 詳細**- 開啟詳細紀錄記錄
+* **-v 或--verbose** -啟用詳細資訊記錄
 
-您可以在互動登入時手動執行**連接**、**斷開連線**和**重新連接**,或者使用用於將多個代理或 Microsoft 識別平台[存取權杖](../../active-directory/develop/access-tokens.md)的同一服務主體自動執行。 如果未使用服務主體將計算機註冊到 Azure Arc 伺服器(預覽),請參閱以下[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)以創建服務主體。
+您可以在以互動方式登入的情況下，手動執行**連接**、**中斷**連線和**重新**連線，或使用您用來上架多個代理程式或 Microsoft 身分識別平臺[存取權杖](../../active-directory/develop/access-tokens.md)的相同服務主體來自動化。 如果您未使用服務主體向 Azure Arc 伺服器註冊電腦（預覽），請參閱下列[文章](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)來建立服務主體。
 
 ### <a name="connect"></a>連線
 
-這裡指定 Azure 資源管理員中代表在 Azure 中建立電腦的資源。 資源位於指定的訂閱和資源組中,有關計算機的數據存儲在`--location`設置指定的 Azure 區域中。 如果未指定,預設資源名稱是此電腦的主機名。
+此參數會指定 Azure Resource Manager 中的資源，代表在 Azure 中建立的機器。 資源位於指定的訂用帳戶和資源群組中，而電腦的相關資料則儲存在`--location`設定所指定的 Azure 區域中。 如果未指定，預設資源名稱就是這部電腦的主機名稱。
 
-然後,在本地下載並存儲與機器的系統分配標識對應的證書。 完成此步驟後,Azure 連接的計算機元數據服務和來賓配置代理將開始與伺服器的 Azure Arc 同步(預覽)。
+接著會下載與系統指派之電腦身分識別對應的憑證，並儲存在本機。 完成此步驟之後，Azure 連線的機器 Metadata Service 和來賓設定代理程式會開始與適用于伺服器的 Azure Arc 進行同步處理（預覽）。
 
-要使用服務主體進行連接,請運行以下命令:
+若要使用服務主體進行連接，請執行下列命令：
 
 `azcmagent connect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
 
-要使用存取權杖進行連線,請執行以下指令:
+若要使用存取權杖進行連接，請執行下列命令：
 
 `azcmagent connect --access-token <> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
 
-要使用提升的登入認證(互動式)進行連接,請執行以下命令:
+若要使用您的已提升許可權登入認證（互動式）來連線，請執行下列命令：
 
 `azcmagent connect --tenant-id <TenantID> --subscription-id <subscriptionID> --resource-group <ResourceGroupName> --location <resourceLocation>`
 
 ### <a name="disconnect"></a>中斷連接
 
-此參數指定 Azure 資源管理員中表示在 Azure 中刪除電腦的資源。 它不會從電腦中刪除代理,這必須作為單獨的步驟完成。 斷開電腦後,如果要將其重新註冊到伺服器 Azure Arc(預覽),`azcmagent connect`請使用 ,以便在 Azure 中為其創建新資源。
+此參數會指定 Azure Resource Manager 中的資源，表示已在 Azure 中刪除該電腦。 它不會從電腦刪除代理程式，這必須以個別步驟來完成。 電腦中斷連線後，如果您想要使用適用于伺服器的 Azure Arc 重新註冊（預覽），請使用`azcmagent connect` ，以便在 azure 中為其建立新的資源。
 
-要使用服務主體斷開連接,請運行以下命令:
+若要使用服務主體中斷連線，請執行下列命令：
 
 `azcmagent disconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
 
-要使用存取權杖斷連線,請執行以下指令:
+若要使用存取權杖中斷連線，請執行下列命令：
 
 `azcmagent disconnect --access-token <accessToken>`
 
-要斷開與提升的登入認證(互動式)的連線,請執行以下命令:
+若要中斷與您的已提高許可權登入認證（互動式）的連線，請執行下列命令：
 
 `azcmagent disconnect --tenant-id <tenantID>`
 
 ### <a name="reconnect"></a>重新連接
 
-此參數將已註冊或連接的電腦與伺服器 Azure Arc 重新連接(預覽)。 如果機器已關閉至少 45 天,其證書過期,則可能需要這樣做。 此參數使用提供的身份驗證選項來檢索對應於表示此計算機的 Azure 資源管理器資源的新認證。
+此參數會重新連接已註冊或已連線的電腦與適用于伺服器的 Azure Arc （預覽）。 如果機器已關閉（至少45天）讓其憑證過期，這可能是必要的。 此參數會使用所提供的驗證選項，來抓取對應于代表這部電腦之 Azure Resource Manager 資源的新認證。
 
-此命令需要比[Azure 連接的電腦載入](overview.md#required-permissions)角色更高的許可權。
+此命令所需的許可權高於[Azure 連線的電腦](overview.md#required-permissions)上線角色。
 
-要使用服務主體重新連接,請運行以下命令:
+若要使用服務主體重新連線，請執行下列命令：
 
 `azcmagent reconnect --service-principal-id <serviceprincipalAppID> --service-principal-secret <serviceprincipalPassword> --tenant-id <tenantID>`
 
-要使用存取權杖重新連線,請執行以下指令:
+若要使用存取權杖重新連線，請執行下列命令：
 
 `azcmagent reconnect --access-token <accessToken>`
 
-要重新連接已提升的登入認證(互動式),請執行以下命令:
+若要使用您的已提升許可權登入認證（互動式）重新連線，請執行下列命令：
 
 `azcmagent reconnect --tenant-id <tenantID>`
 
 ## <a name="remove-the-agent"></a>移除代理程式
 
-執行以下方法之一,從電腦卸載 Windows 或 Linux 連接的電腦代理。 刪除代理不會將電腦與 Arc 登出為伺服器(預覽),這是當您不再需要在 Azure 中管理電腦時執行的單獨過程。
+執行下列其中一種方法，從電腦卸載 Windows 或 Linux 連線的電腦代理程式。 移除代理程式並不會使用伺服器的 Arc （預覽）取消註冊電腦，這是您不再需要在 Azure 中管理電腦時所執行的個別程式。
 
 ### <a name="windows-agent"></a>Windows 代理程式
 
-以下兩種方法都移除代理,但它們不會刪除電腦上的*C:*程式檔案_AzureConnectedMachineAgent 資料夾*。
+下列兩種方法都會移除代理程式，但不會移除電腦上的*C:\Program Files\AzureConnectedMachineAgent*資料夾。
 
 #### <a name="uninstall-from-control-panel"></a>從控制台解除安裝
 
@@ -206,21 +206,21 @@ Azcmagent 工具 (Azcmagent.exe) 用於在安裝過程中為伺服器(預覽)連
 
 #### <a name="uninstall-from-the-command-line"></a>從命令列解除安裝
 
-要從命令提示符手動卸載代理或使用自動方法(如腳本),可以使用以下範例。 首先,您需要從作業系統中檢索產品代碼,即作為應用程式包的主要標識符的 GUID。 卸載使用 msiexec.exe 命令`msiexec /x {Product Code}`列 - 執行。
+若要從命令提示字元手動卸載代理程式，或使用自動化方法（例如腳本），您可以使用下列範例。 首先，您必須從作業系統取出產品代碼，這是應用程式封裝主體識別碼的 GUID。 卸載的執行方式是使用 Msiexec 命令列- `msiexec /x {Product Code}`。
     
 1. 開啟登錄編輯程式。
 
 2. 在登錄機碼 `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` 底下，尋找並複製產品代碼 GUID。
 
-3. 然後,您可以使用以下範例使用 Msiexec 卸載代理:
+3. 接著，您可以使用 Msiexec 來卸載代理程式，請使用下列範例：
 
-   * 從命令列型態:
+   * 從命令列輸入：
 
        ```dos
        msiexec.exe /x {product code GUID} /qn
        ```
 
-   * 您可以使用 PowerShell 執行相同的步驟:
+   * 您可以使用 PowerShell 執行相同的步驟：
 
        ```powershell
        Get-ChildItem -Path HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall | `
@@ -232,23 +232,23 @@ Azcmagent 工具 (Azcmagent.exe) 用於在安裝過程中為伺服器(預覽)連
 ### <a name="linux-agent"></a>Linux 代理程式
 
 > [!NOTE]
-> 要卸載代理,您必須具有*根*訪問許可權或使用 Sudo 具有提升許可權的帳戶。
+> 若要卸載代理程式，您必須具有*根*存取權限，或具有使用 Sudo 提升許可權的帳戶。
 
-要卸載 Linux 代理,要使用的命令取決於 Linux 作業系統。
+若要卸載 Linux 代理程式，要使用的命令取決於 Linux 作業系統。
 
-- 對於 Ubuntu,執行以下命令:
+- 若是 Ubuntu，請執行下列命令：
 
     ```bash
     sudo apt purge azcmagent
     ```
 
-- 對於 RHEL、CentOS 和 Amazon Linux,執行以下命令:
+- 針對 RHEL、CentOS 和 Amazon Linux，請執行下列命令：
 
     ```bash
     sudo yum remove azcmagent
     ```
 
-- 對於 SLES,執行以下指令:
+- 針對 SLES，執行下列命令：
 
     ```bash
     sudo zypper remove azcmagent
@@ -256,7 +256,7 @@ Azcmagent 工具 (Azcmagent.exe) 用於在安裝過程中為伺服器(預覽)連
 
 ## <a name="unregister-machine"></a>取消註冊電腦
 
-如果計劃停止使用 Azure 中的支援服務管理電腦,請執行以下步驟,將電腦與 Arc 登出以用於伺服器(預覽)。 您可以在從電腦中刪除已連接的電腦代理之前或之後執行這些步驟。
+如果您打算停止使用 Azure 中的支援服務來管理電腦，請執行下列步驟，使用伺服器的 Arc （預覽）將機器取消註冊。 您可以在從電腦移除已連線的電腦代理程式之前或之後，執行這些步驟。
 
 1. 移至 [Azure 入口網站](https://aka.ms/hybridmachineportal)來開啟適用於伺服器的 Azure Arc (預覽)。
 

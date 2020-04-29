@@ -1,73 +1,73 @@
 ---
-title: 存取稽核紀錄 ─ Azure 門戶 - MariaDB 的 Azure 資料庫
-description: 本文介紹如何從 Azure 門戶配置和訪問 MariaDB Azure 資料庫中的審核日誌。
+title: 存取 audit 記錄-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
+description: 本文說明如何從 Azure 入口網站設定和存取適用於 MariaDB 的 Azure 資料庫中的 audit 記錄。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: 506bf076c955beb5c5e57811bbdb42bfedb8cbe3
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81382959"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>在 Azure 門戶中設定和存取稽核紀錄
+# <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>設定和存取 Azure 入口網站中的 audit 記錄
 
-可以從 Azure 門戶[為 MariaDB 審核日誌](concepts-audit-logs.md)和診斷設置配置 Azure 資料庫。
+您可以從 Azure 入口網站設定[適用於 MariaDB 的 Azure 資料庫的審核記錄](concepts-audit-logs.md)和診斷設定。
 
 > [!IMPORTANT]
-> 審核日誌功能當前處於預覽狀態。
+> Audit log 功能目前為預覽狀態。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要逐步執行本作法指南，您需要︰
 
 - [適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
-## <a name="configure-audit-logging"></a>設定稽核記錄記錄
+## <a name="configure-audit-logging"></a>設定審核記錄
 
-啟用和配置審核日誌記錄。
+啟用和設定 audit 記錄。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 1. 選取適用於 MariaDB 的 Azure 資料庫伺服器。
 
-1. 在邊列中的 **「設定」** 部份下,選擇 **「伺服器」參數**。
+1. 在提要欄位的 [**設定**] 區段底下，選取 [**伺服器參數**]。
     ![伺服器參數](./media/howto-configure-audit-logs-portal/server-parameters.png)
 
-1. 將**audit_log_enabled**參數更新為"打開"
-    ![開啟稽核紀錄](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
+1. 將**audit_log_enabled**參數更新為 ON。
+    ![啟用 audit 記錄](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
-1. 透過更新**audit_log_events**參數選擇要記錄[的事件型態](concepts-audit-logs.md#configure-audit-logging)。
-    ![稽核紀錄事件](./media/howto-configure-audit-logs-portal/audit-log-events.png)
+1. 藉由更新**audit_log_events**參數來選取要記錄的[事件種類](concepts-audit-logs.md#configure-audit-logging)。
+    ![Audit 記錄事件](./media/howto-configure-audit-logs-portal/audit-log-events.png)
 
-1. 通過更新**audit_log_exclude_users**參數,添加要從日誌記錄中排除的任何 MariaDB 使用者。 通過提供 MariaDB 使用者名指定使用者。
-    ![稽核紀錄排除使用者](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
+1. 藉由更新**audit_log_exclude_users**參數，新增要排除在記錄之外的任何適用于 mariadb 使用者。 藉由提供適用于 mariadb 使用者名稱來指定使用者。
+    ![Audit log 排除使用者](./media/howto-configure-audit-logs-portal/audit-log-exclude-users.png)
 
 1. 變更參數之後，您可以按一下 [儲存]****。 或者，也可以 [捨棄]**** 您的變更。
     ![儲存](./media/howto-configure-audit-logs-portal/save-parameters.png)
 
 ## <a name="set-up-diagnostic-logs"></a>設定診斷記錄
 
-1. 在側邊欄中的 **「監視**」部分下,選擇 **「診斷設置**」。
+1. 在提要欄位的 [**監視**] 區段下，選取 [**診斷設定**]。
 
-1. 點選「+ 新增診斷設定![」 新增診斷設定](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. 按一下 [+ 新增診斷設定] [ ![新增診斷設定]](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
-1. 提供診斷設置名稱。
+1. 提供診斷設定名稱。
 
-1. 指定要發送審核日誌的數據接收器(存儲帳戶、事件中心和/或日誌分析工作區)。
+1. 指定要傳送 audit 記錄（儲存體帳戶、事件中樞和/或 Log Analytics 工作區）的資料接收。
 
-1. 選擇"MySqlAuditLogs"作為日誌類型。
+1. 選取 "MySqlAuditLogs" 作為記錄類型。
 ![設定診斷設定](./media/howto-configure-audit-logs-portal/configure-diagnostic-setting.png)
 
-1. 將資料接收器設定為將審核日誌管道到一起後,可以按下「**保存**」。
+1. 當您設定資料接收以管道傳送 audit 記錄檔之後，您可以按一下 [**儲存**]。
 ![儲存診斷設定](./media/howto-configure-audit-logs-portal/save-diagnostic-setting.png)
 
-1. 通過在配置的數據接收器中瀏覽審核日誌來訪問審核日誌。 日誌的顯示可能需要長達 10 分鐘。
+1. 藉由在您設定的資料接收器中探索來存取 audit 記錄。 最多可能需要10分鐘的時間，記錄才會出現。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解有關 MariaDB Azure 資料庫中[的稽核紀錄](concepts-audit-logs.md)的詳細資訊
-- 瞭解如何在[Azure CLI](howto-configure-audit-logs-cli.md)中設定稽核紀錄
+- 深入瞭解適用於 MariaDB 的 Azure 資料庫中的[audit 記錄](concepts-audit-logs.md)
+- 瞭解如何在[Azure CLI](howto-configure-audit-logs-cli.md)中設定 audit 記錄

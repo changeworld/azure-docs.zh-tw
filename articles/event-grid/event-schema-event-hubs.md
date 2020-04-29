@@ -1,5 +1,5 @@
 ---
-title: Azure 事件中心作為事件網格源
+title: 做為事件方格來源 Azure 事件中樞
 description: 描述 Azure Event Grid 中事件中樞事件的屬性
 services: event-grid
 author: spelluru
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: fd65c20f07a091fa1fc8a6cbf003986e1096ebe3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393346"
 ---
-# <a name="azure-event-hubs-as-an-event-grid-source"></a>Azure 事件中心作為事件網格源
+# <a name="azure-event-hubs-as-an-event-grid-source"></a>做為事件方格來源 Azure 事件中樞
 
 本文提供事件中樞事件的屬性與結構描述。如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](event-schema.md)。
 
@@ -57,20 +57,20 @@ ms.locfileid: "81393346"
 
 事件具有下列的最高層級資料：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | 主題 | 字串 | 事件來源的完整資源路徑。 此欄位不可寫入。 Event Grid 提供此值。 |
 | subject | 字串 | 發行者定義事件主體的路徑。 |
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 事件的唯一識別碼。 |
-| data | 物件 (object) | 事件中樞事件資料。 |
+| data | 物件 | 事件中樞事件資料。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | fileUrl | 字串 | 擷取檔案的路徑。 |
 | fileType | 字串 | 擷取檔案的檔案類型。 |
@@ -82,7 +82,7 @@ ms.locfileid: "81393346"
 | firstEnqueueTime | 字串 | 來自佇列的第一個時間。 |
 | lastEnqueueTime | 字串 | 來自佇列的最後一個時間。 |
 
-## <a name="tutorials-and-how-tos"></a>教學和如何
+## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
 
 |Title  |描述  |
 |---------|---------|

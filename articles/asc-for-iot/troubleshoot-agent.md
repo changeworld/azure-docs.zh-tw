@@ -1,6 +1,6 @@
 ---
-title: 容錯排除安全代理啟動 (Linux)
-description: 使用 Azure 安全中心為 Linux 的 IoT 安全代理進行故障排除。
+title: 針對安全性代理程式啟動進行疑難排解（Linux）
+description: 針對適用于 Linux 的 IoT 安全性代理程式使用 Azure 資訊安全中心進行疑難排解。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,114 +16,114 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
 ms.openlocfilehash: 935a99dd34b0a4e3d4970e8d91f9332d2bc1489a
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81310556"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>安全性代理程式疑難排解指南 (Linux)
 
-本文介紹了如何解決安全代理啟動過程中的潛在問題。
+本文說明如何解決安全性代理程式啟動程式中的潛在問題。
 
-安裝後立即啟動 IoT 代理的 Azure 安全中心。 代理啟動過程包括讀取本地配置、連接到 Azure IoT 中心以及檢索遠端孿生配置。 這些步驟中的任何一個失敗都可能導致安全代理失敗。
+IoT 代理程式的 Azure 資訊安全中心會在安裝後立即啟動。 代理程式啟動進程包括讀取本機設定、連接到 Azure IoT 中樞，以及抓取遠端對應項設定。 任何一個步驟中的失敗都可能會導致安全性代理程式失敗。
 
-在此故障排除指南中,您將瞭解如何:
+在此疑難排解指南中，您將瞭解如何：
 
 > [!div class="checklist"]
-> * 驗證安全代理是否正在執行
-> * 取得安全代理程式錯誤
-> * 瞭解並修復安全代理程式錯誤
+> * 驗證安全性代理程式是否正在執行
+> * 取得安全性代理程式錯誤
+> * 瞭解及補救安全性代理程式錯誤
 
-## <a name="validate-if-the-security-agent-is-running"></a>驗證安全代理是否正在執行
+## <a name="validate-if-the-security-agent-is-running"></a>驗證安全性代理程式是否正在執行
 
-1. 要驗證安全代理是否正在運行,請在安裝代理后等待幾分鐘並運行以下命令。
+1. 若要驗證安全性代理程式是否正在執行，請在安裝代理程式之後等候幾分鐘，然後執行下列命令。
      <br>
 
-    **C 代理**
+    **C 代理程式**
 
     ```bash
     grep "ASC for IoT Agent initialized" /var/log/syslog
     ```
 
-    **C# 代理**
+    **C # 代理程式**
 
     ```bash
     grep "Agent is initialized!" /var/log/syslog
     ```
 
-1. 如果命令返回空行,則安全代理無法成功啟動。
+1. 如果命令傳回空白行，安全性代理程式就無法順利啟動。
 
-## <a name="force-stop-the-security-agent"></a>強制停止安全代理
+## <a name="force-stop-the-security-agent"></a>強制停止安全性代理程式
 
-如果安全代理無法啟動,請使用以下指令停止代理,然後繼續到下面的錯誤表:
+在安全性代理程式無法啟動的情況下，請使用下列命令停止代理程式，然後繼續進行下列錯誤表格：
 
 ```bash
 systemctl stop ASCIoTAgent.service
 ```
 
-## <a name="get-security-agent-errors"></a>取得安全代理程式錯誤
+## <a name="get-security-agent-errors"></a>取得安全性代理程式錯誤
 
-1. 通過執行以下指令檢索安全代理錯誤:
+1. 執行下列命令來取出安全性代理程式錯誤：
 
     ```bash
     grep ASCIoTAgent /var/log/syslog
     ```
 
-1. 獲取安全代理錯誤命令檢索由 IoT 代理的 Azure 安全中心創建的所有日誌。 使用下表瞭解錯誤並採取正確的方法進行補救。
+1. [取得安全性代理程式錯誤] 命令會抓取 IoT 代理程式的 Azure 資訊安全中心所建立的所有記錄。 請使用下表來瞭解錯誤，並採取正確的補救步驟。
 
 > [!Note]
-> 錯誤日誌按時間順序顯示。 請務必記下每個錯誤的時間戳,以幫助進行補救。
+> 錯誤記錄會以時間順序顯示。 請務必記下每個錯誤的時間戳記，以協助您進行補救。
 
 ## <a name="restart-the-agent"></a>重新啟動代理程式
 
-1. 尋找和修復安全代理錯誤後,請嘗試通過運行以下命令重新啟動代理。
+1. 找出並修正安全性代理程式錯誤之後，請執行下列命令來嘗試重新開機代理程式。
 
     ```bash
     systemctl restart ASCIoTAgent.service
     ```
 
-1. 如果代理繼續失敗啟動過程,請重複上一個進程以檢索停止並檢索錯誤。
+1. 重複先前的進程來抓取 stop，如果代理程式繼續使啟動進程失敗，則抓取錯誤。
 
 ## <a name="understand-security-agent-errors"></a>瞭解安全性代理程式錯誤
 
-大多數安全代理錯誤以以下格式顯示:
+大部分的安全性代理程式錯誤會以下列格式顯示：
 
 ```
 Azure Security Center for IoT agent encountered an error! Error in: {Error Code}, reason: {Error sub code}, extra details: {error specific details}
 ```
 
-| 錯誤碼 | 錯誤子代碼 | 錯誤詳細資料 | 修復 C | 修復 C# |
+| 錯誤碼 | 錯誤副程式代碼 | 錯誤詳細資料 | 補救 C | 補救 C# |
 |:-----------|:---------------|:--------|:------------|:------------|
-| 本地設定 | 遺失設定 | 本地設定檔中缺少配置。 錯誤消息應說明缺少哪個密鑰。 | 將缺少的金鑰加入 /var/Local 設定.json 檔,有關詳細資訊,請參考[cs 本地設定參考](azure-iot-security-local-configuration-c.md)。| 將缺少的鍵加入 General.config 檔案,有關詳細資訊,請參考[c#本地設定參考](azure-iot-security-local-configuration-csharp.md)。 |
-| 本地設定 | 無法剖析設定 | 無法分析配置值。 錯誤消息應說明無法解析的鍵。 無法分析配置值,因為該值不在預期類型中,或者該值不在範圍範圍內。 | 修復了 /var/Local 設定.json 檔中密鑰的值,以便它與本地設定架構匹配,有關詳細資訊,請參閱[c#本地設定參考](azure-iot-security-local-configuration-csharp.md)。 |  修復了 General.config 檔中的鍵的值,以便它與架構符合,有關詳細資訊,請參閱[cs-localconfig 引用](azure-iot-security-local-configuration-c.md)。|
-| 本地設定 | 檔案格式 | 無法分析配置檔。 | 設定檔已損壞,下載代理並重新安裝。 | |
-| 遠端設定 | 逾時 | 代理無法在超時期間獲取 Azureiotasecurity 模組孿生。 | 請確保身份驗證配置正確,然後重試。 | 代理無法在超時期間獲取 Azureiotasecurity 模組孿生。 | 請確保身份驗證配置正確,然後重試。 |
-| 驗證 | 檔案不存在 | 給定路徑中的檔不存在。 | 請確保該檔存在於給定的路徑中,或轉到**Local 配置.json**檔並更改**FilePath**配置。 | 請確保該檔存在於給定的路徑中,或轉到**身份驗證.config**檔並更改**檔案Path**配置。|
-| 驗證 | 檔案權限 | 代理沒有足夠的許可權來打開該檔。 | 為**asciotagent**使用者授予給定路徑中檔的讀取許可權。 | 確保文件可訪問。 |
-| 驗證 | 檔案格式 | 給定的檔案格式不正確。 | 確保檔格式正確。 支援的檔案類型是 .pfx 和 .pem。 | 確保該檔是有效的證書檔。 |
-| 驗證 | 未經授權 | 代理無法使用給定的認證對IoT中心進行身分驗證。 | 驗證本地設定檔中的身份驗證配置,通過身份驗證配置並確保所有詳細資訊都正確,驗證檔中的機密是否與經過身份驗證的標識匹配。 | 驗證身份驗證配置在身份驗證.config 中,通過身份驗證配置並確保所有詳細資訊都正確,然後驗證檔中的機密是否與經過身份驗證的標識匹配。
-| 驗證 | 找不到 | 找到設備/模組。 | 驗證身份驗證配置 - 確保主機名正確,設備存在於 IoT 中心中,並且具有 Azureiot 安全孿模組。 |  驗證身份驗證配置 - 確保主機名正確,設備存在於 IoT 中心中,並且具有 Azureiot 安全孿模組。 |
-| 驗證 | 遺失設定 | *身份驗證.config 檔中*缺少配置。 錯誤消息應說明缺少哪個密鑰。 | 將丟失的金鑰添加到*本機設定.json*檔。| 將遺失的金鑰加入*認證.config*檔案,有關詳細資訊,請參考[c#本地設定參考](azure-iot-security-local-configuration-csharp.md)。 |
-| 驗證 | 無法剖析設定 | 無法分析配置值。 錯誤消息應說明無法解析的鍵。 無法分析配置值,因為該值不是預期類型,或者該值不在範圍範圍內。 |修復**本地設定.json**檔中金鑰的值。 |修復了**認證.config**檔中的金鑰的值以符合架構,有關詳細資訊,請參考[cs-localconfig 。](azure-iot-security-local-configuration-c.md)|
+| 本機設定 | 遺失設定 | 本機設定檔中遺漏了設定。 錯誤訊息應會陳述遺失的索引鍵。 | 將遺漏的金鑰新增至/var/LocalConfiguration.json 檔案，如需詳細資訊，請參閱[cs-localconfig-參考](azure-iot-security-local-configuration-c.md)。| 將遺漏的金鑰加入至一般 .config 檔案中，如需詳細資訊，請參閱[c #-localconfig-參考](azure-iot-security-local-configuration-csharp.md)。 |
+| 本機設定 | 無法剖析設定 | 無法剖析設定值。 錯誤訊息應會陳述無法剖析的金鑰。 因為值不是預期的類型，或值超出範圍，所以無法剖析設定值。 | 修正/var/LocalConfiguration.json 檔案中的金鑰值，使其符合 LocalConfiguration 架構，如需詳細資訊，請參閱[c #-localconfig-參考](azure-iot-security-local-configuration-csharp.md)。 |  修正一般 .config 檔案中的金鑰值，使其符合架構，如需詳細資訊，請參閱[cs-localconfig-參考](azure-iot-security-local-configuration-c.md)。|
+| 本機設定 | 檔案格式 | 無法剖析設定檔案。 | 設定檔案已損毀，請下載代理程式並重新安裝。 | |
+| 遠端設定 | 逾時 | 代理程式無法在超時時間內提取 azureiotsecurity 模組對應項。 | 請確定驗證設定正確，然後再試一次。 | 代理程式無法在超時時間內提取 azureiotsecurity 模組對應項。 | 請確定驗證設定正確，然後再試一次。 |
+| 驗證 | 檔案不存在 | 指定路徑中的檔案不存在。 | 請確定檔案存在於指定的路徑中，或移至**LocalConfiguration**檔案，並變更**FilePath**設定。 | 請確定檔案存在於指定的路徑中，或移至**驗證 .config**檔案，然後變更**filePath**設定。|
+| 驗證 | File 許可權 | 代理程式沒有足夠的許可權來開啟檔案。 | 授與**asciotagent**使用者指定路徑中檔案的讀取權限。 | 請確定該檔案可供存取。 |
+| 驗證 | 檔案格式 | 指定的檔案格式不正確。 | 請確定檔案的格式正確。 支援的檔案類型為 .pfx 和 pem。 | 請確定檔案是有效的憑證檔案。 |
+| 驗證 | 未經授權 | 代理程式無法使用指定的認證對 IoT 中樞進行驗證。 | 驗證 LocalConfiguration 檔案中的驗證設定，進行驗證設定，並確定所有詳細資料都正確無誤，並驗證檔案中的密碼是否符合驗證的身分識別。 | 驗證 config.xml 中的驗證設定，流覽驗證設定，並確定所有詳細資料都正確無誤，然後驗證檔案中的密碼是否符合驗證的身分識別。
+| 驗證 | 找不到 | 找到裝置/模組。 | 驗證驗證設定-請確定主機名稱正確，裝置存在於 IoT 中樞中，而且具有 azureiotsecurity 對應項模組。 |  驗證驗證設定-請確定主機名稱正確，裝置存在於 IoT 中樞中，而且具有 azureiotsecurity 對應項模組。 |
+| 驗證 | 遺失設定 | *驗證 .config*檔案中遺漏了設定。 錯誤訊息應會陳述遺失的索引鍵。 | 將遺漏的金鑰新增至*LocalConfiguration。*| 將遺漏的金鑰加入至*Authentication*檔案中，如需詳細資訊，請參閱[c #-localconfig-參考](azure-iot-security-local-configuration-csharp.md)。 |
+| 驗證 | 無法剖析設定 | 無法剖析設定值。 錯誤訊息應會陳述無法剖析的金鑰。 無法剖析設定值，因為值不是預期的類型，或值超出範圍。 |修正**LocalConfiguration**中的金鑰值。 |修正**驗證 .config**檔案中的金鑰值以符合架構，如需詳細資訊，請參閱[cs-localconfig-參考](azure-iot-security-local-configuration-c.md)。|
 |
 
 ## <a name="restart-the-agent"></a>重新啟動代理程式
 
-1. 尋找及修復安全代理錯誤後,透過執行以下指令重新啟動代理:
+1. 找出並修正安全性代理程式錯誤之後，請執行下列命令來重新開機代理程式：
 
     ```bash
     systemctl restart ASCIoTAgent.service
     ```
 
-1. 如果需要,請重複前面的進程以強制停止代理,並在代理繼續失敗的啟動過程時檢索錯誤。
+1. 如有需要，請重複先前的進程，以強制停止代理程式，並在代理程式繼續使啟動進程失敗時，抓取錯誤。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 閱讀 Azure 安全中心,瞭解 IoT 服務[概述](overview.md)
-- 瞭解有關 IoT[架構結構](architecture.md)的 Azure 安全中心
-- 啟用適用於 IoT[服務的](quickstart-onboard-iot-hub.md)Azure 安全中心
-- 閱讀 Azure 安全中心,瞭解 IoT 服務[常見問題解答](resources-frequently-asked-questions.md)
+- 閱讀 IoT 服務的 Azure 資訊安全中心[總覽](overview.md)
+- 深入瞭解 IoT[架構](architecture.md)的 Azure 資訊安全中心
+- 啟用 IoT[服務](quickstart-onboard-iot-hub.md)的 Azure 資訊安全中心
+- 閱讀 IoT 服務的 Azure 資訊安全中心[常見問題](resources-frequently-asked-questions.md)
 - 了解如何存取[未經處理的安全性資料](how-to-security-data-access.md)
 - 了解[建議](concept-recommendations.md)
-- 瞭解安全[警報](concept-security-alerts.md)
+- 瞭解安全性[警示](concept-security-alerts.md)

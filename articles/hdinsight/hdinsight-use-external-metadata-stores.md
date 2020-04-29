@@ -1,6 +1,6 @@
 ---
 title: 使用外部中繼資料存放區 - Azure HDInsight
-description: 使用具有 Azure HDInsight 群集的外部元數據存儲。
+description: 搭配 Azure HDInsight 叢集使用外部中繼資料存放區。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/03/2020
 ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81313951"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>在 Azure HDInsight 中使用外部中繼資料存放區
 
-HDInsight 允許您透過外部資料儲存控制數據和中繼資料。 此功能可用於[阿帕契蜂巢元儲存](#custom-metastore),[阿帕奇烏齊元儲存](#apache-oozie-metastore),和[阿帕契巴里資料庫](#custom-ambari-db)。
+HDInsight 可讓您利用外部資料存放區來控制您的資料和中繼資料。 這項功能適用于[Apache Hive 中繼存放區](#custom-metastore)、 [apache Oozie 中繼存放區](#apache-oozie-metastore)和[apache Ambari 資料庫](#custom-ambari-db)。
 
-HDInsight 中的 Apache Hive 中繼存放區是 Apache Hadoop 架構不可或缺的一部分。 元存儲是中央架構存儲庫。 元存儲由其他大數據訪問工具(如 Apache Spark、互動式查詢 (LLAP)、Presto 或 Apache Pig)使用。 HDInsight 使用 Azure SQL Database 作為 Hive 中繼存放區。
+HDInsight 中的 Apache Hive 中繼存放區是 Apache Hadoop 架構不可或缺的一部分。 中繼存放區是中央架構存放庫。 中繼存放區是由其他海量資料存取工具（例如 Apache Spark、互動式查詢（LLAP）、Presto 或 Apache Pig）使用。 HDInsight 使用 Azure SQL Database 作為 Hive 中繼存放區。
 
 ![HDInsight Hive 中繼資料存放區架構](./media/hdinsight-use-external-metadata-stores/metadata-store-architecture.png)
 
@@ -36,10 +36,10 @@ HDInsight 中的 Apache Hive 中繼存放區是 Apache Hadoop 架構不可或缺
 
 * 每個預設中繼存放區是叢集生命週期的一部分。 當您刪除叢集時，相應的中繼存放區和中繼資料會一併刪除。
 
-* 不能與其他群集共用預設元存儲。
+* 您無法與其他叢集共用預設中繼存放區。
 
 * 預設中繼存放區會使用基本的 Azure SQL DB，它具有五個 DTU (資料庫交易單位) 限制。
-此預設元存儲通常用於相對簡單的工作負載。 不需要多個群集且不需要在群集生命周期之後保留元數據的工作負載。
+此預設中繼存放區通常用於相對簡單的工作負載。 不需要多個叢集，且不需要保留超過叢集生命週期的中繼資料的工作負載。
 
 ## <a name="custom-metastore"></a>自訂中繼存放區
 
@@ -47,7 +47,7 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 * 您將自己的 Azure SQL Database 指定為中繼存放區。
 
-* 元存儲的生命週期不綁定到群集生命週期,因此您可以創建和刪除群集,而不會丟失元數據。 即使您刪除並重新建立 HDInsight 叢集之後，中繼資料 (例如您的 Hive 結構描述) 仍會保存。
+* 中繼存放區的生命週期不會系結至叢集生命週期，因此您可以建立和刪除叢集，而不會遺失中繼資料。 即使您刪除並重新建立 HDInsight 叢集之後，中繼資料 (例如您的 Hive 結構描述) 仍會保存。
 
 * 自訂中繼存放區可讓您將多個叢集與叢集類型連結至該中繼存放區。 例如，單一中繼存放區可以在 HDInsight 中的互動式查詢、Hive 和 Spark 叢集之間共用。
 
@@ -55,27 +55,27 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 * 您可以視需要相應增加中繼存放區。
 
-* 群集和外部元存儲必須託管在同一區域中。
+* 叢集和外部中繼存放區必須裝載在相同的區域中。
 
 ![HDInsight Hive 中繼資料存放區使用案例](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
 
-### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>為自訂中儲存建立及設定 Azure SQL 資料庫
+### <a name="create-and-config-azure-sql-database-for-the-custom-metastore"></a>建立和設定自訂中繼存放區的 Azure SQL Database
 
-在為 HDInsight 群集設置自訂 Hive 儲存之前,創建或擁有現有的 Azure SQL 資料庫。  有關詳細資訊,請參閱[快速入門:在 Azure SQL DB 建立單個資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)。
+在設定 HDInsight 叢集的自訂 Hive 中繼存放區之前，建立或擁有現有的 Azure SQL Database。  如需詳細資訊，請參閱[快速入門：在 AZURE SQL DB 中建立單一資料庫](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal)。
 
-創建群集時,HDInsight 服務需要連接到外部元存儲並驗證認證認證。 配置 Azure SQL 資料庫防火牆規則以允許 Azure 服務和資源存取伺服器。 通過選擇 **「設定伺服器防火牆」** 在 Azure 門戶中啟用此選項。 然後選擇 **「拒絕公共網路存取**」下**為「否****」,在**「允許 Azure 服務和資源」下選擇「允許**Azure 服務和資源存取 Azure** SQL 資料庫伺服器或資料庫的此伺服器。 有關詳細資訊,請參閱[建立及管理 IP 防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
+建立叢集時，HDInsight 服務必須連接到外部中繼存放區並驗證您的認證。 設定 Azure SQL Database 防火牆規則，以允許 Azure 服務和資源存取伺服器。 選取 [**設定伺服器防火牆**]，在 Azure 入口網站中啟用此選項。 然後，在 [**拒絕公用網路存取**] 底下選取 [**否**]，然後在 [**允許 Azure 服務和資源存取此伺服器**以取得 Azure SQL Database 伺服器或資料庫 **]** 底下。 如需詳細資訊，請參閱[建立和管理 IP 防火牆規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)
 
-![設定伺服器防火牆按鈕](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
+![[設定伺服器防火牆] 按鈕](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
-![允許 Azure 服務存取](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
+![允許 azure 服務存取](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall2.png)
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>在叢集建立期間選取自訂中繼存放區
 
-您可以隨時將群集指向以前創建的 Azure SQL 資料庫。 對於通過門戶創建群集,將從**存儲>元存儲設置中**指定該選項。
+您可以隨時將叢集指向先前建立的 Azure SQL Database。 若要透過入口網站建立叢集，請從**儲存體 > 中繼存放區設定**指定選項。
 
 ![HDInsight Hive 中繼資料存放區 Azure 入口網站](./media/hdinsight-use-external-metadata-stores/azure-portal-cluster-storage-metastore.png)
 
-## <a name="hive-metastore-guidelines"></a>蜂巢元儲存指南
+## <a name="hive-metastore-guidelines"></a>Hive 中繼存放區方針
 
 * 盡可能使用自訂中繼存放區，這樣有助於個別計算資源 (您的執行中叢集) 和中繼資料 (儲存在中繼存放區)。
 
@@ -85,25 +85,25 @@ HDInsight 也支援自訂中繼存放區，這是針對生產叢集建議的中�
 
 * 定期備份您的自訂中繼存放區。 Azure SQL Database 會自動產生備份，但備份保留時間範圍有所不同。 如需詳細資訊，請參閱[了解自動 SQL Database 備份](../sql-database/sql-database-automated-backups.md)。
 
-* 在同一區域中尋找您的元儲存和 HDInsight 叢集。 此配置將提供最高性能和最低的網路出口費用。
+* 在相同的區域中找出您的中繼存放區和 HDInsight 叢集。 此設定會提供最高效能和最低的網路輸出費用。
 
-* 使用 Azure SQL 資料庫監視工具或 Azure 監視器日誌監視元儲存的性能和可用性。
+* 使用 Azure SQL Database 監視工具或 Azure 監視器記錄，監視中繼存放區的效能和可用性。
 
-* 當針對現有自定義元儲存資料庫創建新的更高版本的 Azure HDInsight 時,系統將升級元儲存的架構。 升級是不可逆的,無需從備份還原資料庫。
+* 針對現有的自訂中繼存放區資料庫建立新的較高版本的 Azure HDInsight 時，系統會升級中繼存放區的架構。 升級無法復原，而不需要從備份還原資料庫。
 
-* 如果您在多個叢集間共用中繼存放區，請確定所有叢集都是相同的 HDInsight 版本。 不同的 Hive 版本會使用不同的中繼存放區資料庫結構描述。 例如,不能跨 Hive 2.1 和 Hive 3.1 版本群集共用元存儲。
+* 如果您在多個叢集間共用中繼存放區，請確定所有叢集都是相同的 HDInsight 版本。 不同的 Hive 版本會使用不同的中繼存放區資料庫結構描述。 例如，您無法在 Hive 2.1 和 Hive 3.1 版本的叢集間共用中繼存放區。
 
-* 在 HDInsight 4.0 中,Spark 和 Hive 使用獨立的目錄來訪問 SparkSQL 或 Hive 表。 Spark 創建的表位於Spark目錄中。 Hive 創建的表位於 Hive 目錄中。 此行為不同於 HDInsight 3.6,其中 Hive 和 Spark 共用通用目錄。 HDInsight 4.0 中的蜂巢和火花集成依賴於蜂巢倉庫連接器 (HWC)。 HWC是火花和蜂巢之間的橋樑。 [瞭解蜂巢主目錄連接器](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)。
+* 在 HDInsight 4.0 中，Spark 和 Hive 會使用獨立目錄來存取 SparkSQL 或 Hive 資料表。 Spark 所建立的資料表存在於 Spark 目錄中。 Hive 所建立的資料表存在於 Hive 目錄中。 此行為不同于 HDInsight 3.6，其中 Hive 和 Spark 共用通用目錄。 HDInsight 4.0 中的 hive 和 Spark 整合依賴 Hive 倉儲連接器（HWC）。 HWC 可做為 Spark 與 Hive 之間的橋樑。 [瞭解 Hive 倉儲連接器](../hdinsight/interactive-query/apache-hive-warehouse-connector.md)。
 
-## <a name="apache-oozie-metastore"></a>阿帕奇烏齊元存儲
+## <a name="apache-oozie-metastore"></a>Apache Oozie 中繼存放區
 
-Apache Oozie 是一個可管理 Hadoop 作業的工作流程協調系統。 Oozie 支援 Apache MapReduce、Pig、Hive 等等的 Hadoop 作業。  Oozie 使用元存儲來存儲有關工作流的詳細資訊。 為提升使用 Oozie 時的效能，您可以使用 Azure SQL Database 作為自訂中繼存放區。 刪除群集后,元存儲提供對 Oozie 作業數據的訪問。
+Apache Oozie 是一個可管理 Hadoop 作業的工作流程協調系統。 Oozie 支援 Apache MapReduce、Pig、Hive 等等的 Hadoop 作業。  Oozie 會使用中繼存放區來儲存工作流程的相關詳細資料。 為提升使用 Oozie 時的效能，您可以使用 Azure SQL Database 作為自訂中繼存放區。 中繼存放區會在您刪除叢集之後，提供 Oozie 作業資料的存取權。
 
 如需有關使用 Azure SQL Database 來建立 Oozie 中繼存放區的指示，請參閱[使用 Apache Oozie 來處理工作流程](hdinsight-use-oozie-linux-mac.md)。
 
 ## <a name="custom-ambari-db"></a>自訂 Ambari DB
 
-要在 HDInsight 上使用自己的外部資料庫,請參閱[自訂阿帕奇 Ambari 資料庫](hdinsight-custom-ambari-db.md)。
+若要使用您自己的外部資料庫搭配 Apache Ambari on HDInsight，請參閱[自訂 Apache Ambari 資料庫](hdinsight-custom-ambari-db.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

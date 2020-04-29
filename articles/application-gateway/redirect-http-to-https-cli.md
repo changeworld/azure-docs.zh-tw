@@ -1,7 +1,7 @@
 ---
-title: 使用 CLI 向 HTTPS 重定向
+title: 使用 CLI 的 HTTP 至 HTTPS 重新導向
 titleSuffix: Azure Application Gateway
-description: 瞭解如何使用 Azure CLI 創建應用程式閘道和添加 TLS 終止證書。
+description: 瞭解如何建立應用程式閘道，並使用 Azure CLI 新增 TLS 終止的憑證。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: victorh
 ms.openlocfilehash: 6bf8f3b7bfb446db78f0c97a246977fec6cd54cb
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81312150"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>使用 Azure CLI 來建立具有 HTTP 到 HTTPS 重新導向功能的應用程式閘道
 
-可以使用 Azure CLI 建立具有 TLS/SSL 終止憑證[的應用程式閘道](overview.md)。 路由規則可用來將 HTTP 流量重新導向至您應用程式閘道中的 HTTPS 連接埠。 在此範例中，您也會為應用程式閘道的後端集區，建立一個包含兩個虛擬機器執行個體的[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
+您可以使用 Azure CLI 來建立具有 TLS/SSL 終止憑證的[應用程式閘道](overview.md)。 路由規則可用來將 HTTP 流量重新導向至您應用程式閘道中的 HTTPS 連接埠。 在此範例中，您也會為應用程式閘道的後端集區，建立一個包含兩個虛擬機器執行個體的[虛擬機器擴展集](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)。
 
 在本文中，您將學會如何：
 
@@ -84,7 +84,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>建立應用程式閘道
 
-您可以使用[az 網路應用程式閘道建立](/cli/azure/network/application-gateway#az-network-application-gateway-create)來建立名為*myAppGateway*的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 
+您可以使用[az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create)來建立名為*myAppGateway*的應用程式閘道。 當您使用 Azure CLI 建立應用程式閘道時，需要指定設定資訊，例如容量、SKU 和 HTTP 設定。 
 
 應用程式閘道會指派給您先前建立的 myAGSubnet** 和 myAGPublicIPAddress**。 在此範例中，您會在建立應用程式閘道時讓您建立的憑證與其密碼產生關聯。 
 

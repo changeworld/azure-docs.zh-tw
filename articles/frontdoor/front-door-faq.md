@@ -1,6 +1,6 @@
 ---
-title: Azure 前門 ─ 常見問題
-description: 本頁提供有關 Azure 前門的常見問題的解答
+title: Azure Front 門板-常見問題
+description: 本頁面提供 Azure Front 的常見問題解答
 services: frontdoor
 documentationcenter: ''
 author: sohamnchatterjee
@@ -12,158 +12,158 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
 ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81313761"
 ---
-# <a name="frequently-asked-questions-for-azure-front-door"></a>Azure 前門的常見問題
+# <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front 的常見問題
 
-本文回答了有關 Azure 前門特性和功能的常見問題。 如果您找不到問題的答案，可透過下列管道 (依先後順序) 和我們連絡：
+本文會回答有關 Azure Front 門板特性和功能的常見問題。 如果您找不到問題的答案，可透過下列管道 (依先後順序) 和我們連絡：
 
 1. 本文的留言區。
-2. [Azure 前門使用者語音](https://feedback.azure.com/forums/217313-networking?category_id=345025)。
-3. **微軟支援:** 要建立新的支援請求,請在 Azure 門戶中「**説明」** 選項卡上選擇 **「幫助 + 支援**」按鈕,然後選擇 **「新建支援請求**」。
+2. [Azure Front 大門 UserVoice](https://feedback.azure.com/forums/217313-networking?category_id=345025)。
+3. **Microsoft 支援服務：** 若要建立新的支援要求，請在**Azure 入口網站的 [說明] 索引**標籤上，選取 [說明 **+ 支援**] 按鈕，然後選取 [**新增支援要求**]。
 
 ## <a name="general"></a>一般
 
 ### <a name="what-is-azure-front-door"></a>Azure Front Door 是什麼？
 
-Azure 前門是應用程式交付網路 (ADN) 作為服務,為您的應用程式提供各種第 7 層負載平衡功能。 它提供動態網站加速 (DSA)以及全域負載平衡和近乎即時故障轉移。 它是一個高度可用且可擴展的服務,完全由 Azure 管理。
+Azure Front 門板是應用程式傳遞網路（ADN）即服務，為您的應用程式提供各種第7層負載平衡功能。 它提供動態的網站加速（DSA）以及具有近乎即時容錯移轉的全域負載平衡。 這是高可用性且可調整的服務，完全由 Azure 管理。
 
-### <a name="what-features-does-azure-front-door-support"></a>Azure 前門支援哪些功能?
+### <a name="what-features-does-azure-front-door-support"></a>Azure 前端支援哪些功能？
 
-Azure 前門支援動態網站加速 (DSA)、TLS/SSL 卸載和端到端 TLS、Web 應用程式防火牆、基於 Cookie 的作業階段關聯性、基於 URL 路徑的路由、免費證書和多個域管理等。 有關支援功能的完整清單,請參閱[Azure 前門概述](front-door-overview.md)。
+Azure Front 門板支援動態網站加速（DSA）、TLS/SSL 卸載和端對端 TLS、Web 應用程式防火牆、以 cookie 為基礎的會話親和性、url 路徑型路由、免費憑證和多網域管理等。 如需支援功能的完整清單，請參閱[Azure Front 門板的總覽](front-door-overview.md)。
 
-### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Azure 前門和 Azure 應用程式閘道之間的區別是什麼?
+### <a name="what-is-the-difference-between-azure-front-door-and-azure-application-gateway"></a>Azure 前端和 Azure 應用程式閘道之間有何差異？
 
-雖然前門網關和應用程式閘道都是第 7 層 (HTTP/HTTPS) 負載均衡器,但主要區別是前門是一個全域服務,而應用程式閘道是區域服務。 雖然前門可以跨區域在不同比例單位/群集/標記單元之間負載平衡,但應用程式閘道允許您在比例單位內的 VM/容器等之間進行負載平衡。
+雖然 Front 和應用程式閘道都是第7層（HTTP/HTTPS）負載平衡器，但主要的差異在於前端是一個全域服務，而應用程式閘道是區域服務。 雖然 Front 門板可以在不同的縮放單位/叢集/戳記單位之間進行負載平衡，但應用程式閘道可讓您在您的 Vm/容器和縮放單位內進行負載平衡。
 
-### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>我們何時應該在前門後面部署應用程式閘道?
+### <a name="when-should-we-deploy-an-application-gateway-behind-front-door"></a>我們何時應該將應用程式閘道部署在 Front 後方？
 
-使用前門後的應用程式閘道的關鍵方案包括:
+主要案例為何應該使用前端應用程式閘道：
 
-- 前門只能在全域級別執行基於路徑的負載平衡,但如果希望在虛擬網路 (VNET) 內進一步載入流量,則應使用應用程式閘道。
-- 由於前門在 VM/容器級別不工作,因此無法執行連接耗盡。 但是,應用程式閘道允許您執行連接耗盡。 
-- 借助 AFD 背後的應用程式閘道,可以實現 100% TLS/SSL 卸載,並且僅路由其虛擬網路 (VNET) 中的 HTTP 請求。
-- 前門和應用程式閘道都支援會話相關性。 雖然前門可以將後續流量從使用者會話定向到給定區域中的同一群集或後端,但應用程式網關可以將流量定向到群集中的同一伺服器。  
+- Front 門板只能在全域層級執行路徑型負載平衡，但如果您想要在其虛擬網路（VNET）內進一步平衡流量負載，則應該使用應用程式閘道。
+- 因為 Front 門無法在 VM/容器層級運作，所以無法進行連線清空。 不過，應用程式閘道可讓您清空連接。 
+- 在 AFD 背後的應用程式閘道之後，可以達到100% 的 TLS/SSL 卸載，並只在其虛擬網路（VNET）中路由傳送 HTTP 要求。
+- Front 和應用程式閘道都支援會話親和性。 雖然 Front 門可以將使用者會話的後續流量導向至指定區域中的相同叢集或後端，應用程式閘道可以將流量導向到叢集中的相同伺服器。  
 
-### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>我們可以在前門後面部署 Azure 負載平衡器嗎?
+### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>我們可以在前門後方部署 Azure Load Balancer 嗎？
 
-Azure 前門需要公共 VIP 或公開可用的 DNS 名稱才能將流量路由到。 在前門後面部署 Azure 負載均衡器是一個常見的用例。
+Azure 前端需要公用 VIP 或公開可用的 DNS 名稱，才能將流量路由傳送至。 在 Front 門後方部署 Azure Load Balancer 是常見的使用案例。
 
-### <a name="what-protocols-does-azure-front-door-support"></a>Azure 前門支援哪些協定?
+### <a name="what-protocols-does-azure-front-door-support"></a>Azure Front 支援哪些通訊協定？
 
-Azure 前門支援 HTTP、HTTPS 和 HTTP/2。
+Azure Front 門板支援 HTTP、HTTPS 和 HTTP/2。
 
-### <a name="how-does-azure-front-door-support-http2"></a>Azure 前門如何支援 HTTP/2?
+### <a name="how-does-azure-front-door-support-http2"></a>Azure Front 門板如何支援 HTTP/2？
 
-HTTP/2 協定支援僅適用於連接到 Azure 前門的用戶端。 與後端池後端的通訊通過 HTTP/1.1。 默認情況下啟用 HTTP/2 支援。
+只有連線到 Azure Front 大門的用戶端可以使用 HTTP/2 通訊協定支援。 後端集區中後端的通訊是透過 HTTP/1.1。 預設會啟用 HTTP/2 支援。
 
 ### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>目前支援哪些資源做為後端集區的一部分？
 
-後端介面可以由儲存、Web 應用、庫伯奈斯實例或任何其他具有公共連接的自訂主機名組成。 Azure 前門要求透過公共 IP 或公開解析的 DNS 主機名定義後端。 後端池的成員可以跨區域、區域,甚至 Azure 外部,只要它們具有公共連接。
+後端集區可以由儲存體、Web 應用程式、Kubernetes 實例或任何其他具有公用連線的自訂主機名稱組成。 Azure Front 後端必須透過公用 IP 或可公開解析的 DNS 主機名稱來定義。 後端集區的成員可以跨區域、區域，甚至是在 Azure 外部，只要它們具有公用連線能力。
 
 ### <a name="what-regions-is-the-service-available-in"></a>哪些區域提供此服務？
 
-Azure 前門是一個全域服務,不綁定到任何特定的 Azure 區域。 創建前門時需要指定的唯一位置是資源組位置,它基本上指定資源組的元數據存儲位置。 前門資源本身創建為全域資源,配置全域部署到所有持久性有機污染物(存在點)。 
+Azure Front 大門是一種全域服務，並不會系結至任何特定的 Azure 區域。 在建立 Front 門時，您唯一需要指定的位置是資源群組位置，基本上是指定將儲存資源群組中繼資料的位置。 Front 門板資源本身會建立為全域資源，而且設定會全域部署到所有 Pop （目前狀態點）。 
 
-### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure 前門的 POP 位置是什麼?
+### <a name="what-are-the-pop-locations-for-azure-front-door"></a>Azure Front 門板的 POP 位置為何？
 
-Azure 前門的 POP(存在點)位置列表與來自 Microsoft 的 Azure CDN 的位置清單相同。 有關持久性有機污染物的完整清單,請參閱 Microsoft[的 Azure CDN POP 位置](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)。
+Azure Front 門板具有與來自 Microsoft 的 Azure CDN 相同的 POP （存在點）位置清單。 如需 Pop 的完整清單，請參閱[Microsoft 的 AZURE CDN POP 位置](https://docs.microsoft.com/azure/cdn/cdn-pop-locations)。
 
-### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure 前門是應用程式的專用部署,還是跨客戶共用?
+### <a name="is-azure-front-door-a-dedicated-deployment-for-my-application-or-is-it-shared-across-customers"></a>Azure Front 大門是我的應用程式專用的部署，還是跨客戶共用？
 
-Azure 前門是一種全域分佈的多租戶服務。 因此,前門的基礎設施在所有客戶之間共用。 但是,通過創建前門配置檔,您可以定義應用程式所需的特定配置,並且對前門所做的任何更改不會影響其他前門配置。
+Azure Front 大門是全域散發的多租使用者服務。 因此，Front 的基礎結構會在其所有客戶之間共用。 不過，藉由建立 Front 門板設定檔，您可以定義應用程式所需的特定設定，而不會影響到其他 Front 設定的任何變更。
 
 ### <a name="is-http-https-redirection-supported"></a>是否支援 HTTP->HTTPS 重新導向？
 
-是。 事實上,Azure 前門支援主機、路徑和查詢字串重定向以及 URL 重定向的一部分。 瞭解有關[URL 重定向](front-door-url-redirect.md)的更多。 
+是。 事實上，Azure Front 門板支援主機、路徑和查詢字串重新導向，以及 URL 重新導向的一部分。 深入瞭解[URL](front-door-url-redirect.md)重新導向。 
 
-### <a name="in-what-order-are-routing-rules-processed"></a>路由規則的處理方式是什麼?
+### <a name="in-what-order-are-routing-rules-processed"></a>路由規則的處理順序為何？
 
-未訂購前門的路線,並根據最佳匹配選擇特定路線。 詳細瞭解[前門如何將要求符合到路由規則](front-door-route-matching.md)。
+您 Front 的路線不會排序，而且會根據最符合的順序來選取特定的路由。 深入瞭解[Front 門板如何比對要求與路由規則](front-door-route-matching.md)。
 
-### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>如何鎖定對後端的訪問許可權,僅訪問 Azure 前門?
+### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>如何? 將我的後端存取權鎖定為僅限 Azure Front 大門嗎？
 
-要鎖定應用程式僅接受來自特定前門的流量,您需要為後端設置 IP ACL,然後將後端上的流量限制為前門發送的標頭「X-Azure-FDID」的特定值。 這些步驟如下:
+若要鎖定您的應用程式，使其只接受來自特定 Front 的流量，您必須為後端設定 IP Acl，然後將後端的流量限制為前端所傳送之標頭 ' X-Azure-FDID ' 的特定值。 這些步驟的詳細說明如下：
 
-- 為後端介面設定 IP 交流,以便僅接受來自 Azure 前門後端 IP 位址空間和 Azure 基礎結構服務的流量。 有關換回後端,請參閱下面的 IP 詳細資訊:
+- 設定後端的 IP 執行 acl，以接受來自 Azure 前端的後端 IP 位址空間和 Azure 基礎結構服務的流量。 請參閱下方的 IP 詳細資料，以執行 acl 您的後端：
  
-    - 在[Azure IP 範圍和服務標記](https://www.microsoft.com/download/details.aspx?id=56519)中為前門的 IPv4 後端 IP 位址範圍請參閱*Azure FrontDoor.後端*部分,也可以使用服務標記*AzureFrontDoor.* 在[網路安全組中](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)的後端或與[Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)一起。
-    - 前門的**IPv6**後端 IP 空間,而涵蓋在服務標記中,不列在 Azure IP 範圍 JSON 檔中。 如果您要尋找顯示式 IPv6 位址範圍,它目前限制為`2a01:111:2050::/44`
-    - Azure 透過虛擬化主機 IP 位址提供[的基本基礎結構服務](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations): `168.63.129.16``169.254.169.254`
+    - 如需前端的 IPv4 後端 IP 位址範圍，請參閱[AZURE IP 範圍和服務](https://www.microsoft.com/download/details.aspx?id=56519)標籤中的*AzureFrontDoor*一節，或者您也可以使用[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中的服務標記*AzureFrontDoor*或[Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)。
+    - 在服務標籤中涵蓋的前端**IPv6**後端 IP 空間，不會列在 Azure IP 範圍 JSON 檔案中。 如果您要尋找明確的 IPv6 位址範圍，則目前限制為`2a01:111:2050::/44`
+    - 透過虛擬化主機 IP 位址的 Azure[基本基礎結構服務](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)： `168.63.129.16`和`169.254.169.254`
 
     > [!WARNING]
-    > 前門的後端 IP 空間可能會稍後更改,但是,我們將確保在此之前,我們將與[Azure IP 範圍和服務標記](https://www.microsoft.com/download/details.aspx?id=56519)集成。 對於任何變更或更新,我們建議您訂閱[Azure IP 範圍和服務標記](https://www.microsoft.com/download/details.aspx?id=56519)。
+    > 前端的後端 IP 空間可能會在稍後變更，不過我們會在這之前，確保我們已整合[AZURE IP 範圍和服務](https://www.microsoft.com/download/details.aspx?id=56519)標籤。 我們建議您訂閱[AZURE IP 範圍和服務](https://www.microsoft.com/download/details.aspx?id=56519)標籤，以進行任何變更或更新。
 
--    使用 API`2020-01-01`版本或更高版本在前門執行 GET 操作。 在 API 呼叫`frontdoorID`中, 尋找欄位。 前門發送到後端的傳入標頭 **「X-Azure-FDID」** 上的篩選器,該值與`frontdoorID`字段的值相同。 
+-    在您的 Front 門上，使用 API 版本或更`2020-01-01`高版本執行取得作業。 在 API 呼叫中，尋找 [ `frontdoorID` ] 欄位。 以欄位`frontdoorID`的值，篩選由 Front 門傳送給您後端的連入標頭 '**X-Azure-FDID**'。 
 
-### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>在我的前門的生命週期內,任何轉換的 IP 是否可以更改?
+### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>可以在我的 Front 生命週期內變更任意傳播 IP 嗎？
 
-前門的前端任何投射 IP 通常不應更改,並且在前門的使用壽命內可能保持靜態。 但是,沒有同樣的**保證**。 請不要對知識產權採取任何直接依賴關係。
+前端的前端任意傳播 IP 通常不會變更，而且在 Front 的存留期間可能會保持靜態。 不過，**不保證**相同。 請不要對 IP 採取任何直接相依性。
 
-### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Azure 前門是否支援靜態 IP 或專用 IP?
+### <a name="does-azure-front-door-support-static-or-dedicated-ips"></a>Azure Front 大門是否支援靜態或專用 Ip？
 
-否,Azure 前門當前不支援靜態或專用前端任何廣播 IP。 
+否，Azure Front 門板目前不支援靜態或專用的前端任意傳播 Ip。 
 
-### <a name="does-azure-front-door-support-x-forwarded-for-headers"></a>Azure 前門是否支援 x 轉發標頭?
+### <a name="does-azure-front-door-support-x-forwarded-for-headers"></a>Azure Front 門板是否支援 x 轉送-適用于標頭？
 
-是的,Azure 前門支援 X-前轉-For、X 轉發主機和 X 轉發-Proto 標頭。 對於 X-前轉 -For,如果標頭已存在,則前門會將用戶端套接字 IP 追加到它。 否則,它將標頭添加用戶端套接字 IP 作為值。 對於 X 轉寄主機和 X 轉發 Proto,該值將被覆蓋。
+是，Azure Front 門板支援 X 轉送的、X 轉送的主機和 X 轉送的協定標頭。 針對 X 轉送-如果標頭已存在，則 Front 門會在其上附加用戶端通訊端 IP。 否則，它會以用戶端通訊端 IP 作為值來新增標頭。 若為 X 轉送主機和 X 轉送-Proto，則會覆寫值。
 
-詳細瞭解[前門支援的 HTTP 標頭](front-door-http-headers-protocol.md)。  
+深入瞭解[Front 支援的 HTTP 標頭](front-door-http-headers-protocol.md)。  
 
-### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>部署 Azure 前門需要多長時間? 更新時,我的前門是否仍然正常工作?
+### <a name="how-long-does-it-take-to-deploy-an-azure-front-door-does-my-front-door-still-work-when-being-updated"></a>部署 Azure Front 大門需要多久的時間？ 我的 Front 門在更新時仍可運作嗎？
 
-新的前門創建或對現有前門的任何更新大約需要 3 到 5 分鐘進行全域部署。 這意味著在大約 3 到 5 分鐘內,您的前門配置將部署到我們全球的所有持久性有機污染物中。
+新的 Front 門板建立或現有 Front 的任何更新約需要3到5分鐘的時間進行全域部署。 這表示在大約3到5分鐘內，您的 Front 門板設定會在全球所有的 Pop 上部署。
 
-注意 - 自定義 TLS/SSL 證書更新大約需要 30 分鐘才能全域部署。
+注意-自訂 TLS/SSL 憑證更新需要大約30分鐘的時間來進行全域部署。
 
-對路由或後端池等的任何更新都是無縫的,將導致零停機時間(如果新配置正確)。 證書更新也是原子的,不會導致任何中斷,除非從"AFD 託管"切換到"使用您自己的證書",反之亦然。
+對路由或後端集區進行的任何更新等都是順暢的，而且會導致零停機（如果新的設定是正確的）。 憑證更新也不可部分完成，而且不會造成任何中斷，除非從「AFD 受控」切換到「使用您自己的憑證」，反之亦然。
 
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
-### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure 前門負載能否在虛擬網路中平衡或路由流量?
+### <a name="can-azure-front-door-load-balance-or-route-traffic-within-a-virtual-network"></a>Azure Front 門板是否可以在虛擬網路內進行負載平衡或路由流量？
 
-Azure 前門 (AFD) 需要公共 IP 或公開解析的 DNS 名稱來路由流量。 因此,答案是沒有 AFD 不能直接路由在虛擬網路中,但使用應用程式網路或 Azure 負載均衡器之間將解決此方案。
+Azure Front 門板（AFD）需要公用 IP 或可公開解析的 DNS 名稱來路由傳送流量。 因此，答案無法直接在虛擬網路內進行路由傳送，但是在其間使用應用程式閘道或 Azure Load Balancer 會解決此案例。
 
-### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure 前門有哪些不同的超時和限制?
+### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door"></a>Azure Front 的各種不同的超時和限制為何？
 
-瞭解 Azure 前門的所有記錄[超時和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)。
+瞭解 Azure Front 的所有記載的[超時和限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits)。
 
 ## <a name="performance"></a>效能
 
-### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Azure 前門如何支援高可用性和可擴充性?
+### <a name="how-does-azure-front-door-support-high-availability-and-scalability"></a>Azure Front 門板如何支援高可用性和擴充性？
 
-Azure 前門是一個全球分佈的多租戶平臺,具有巨大的容量,可滿足應用程式的可擴充性需求。 前門從 Microsoft 全球網路的邊緣交付,提供全域負載平衡功能,允許您跨區域或不同雲端故障接管整個應用程式,甚至單個微服務。
+Azure Front 大門是全域散發的多租使用者平臺，具有大量容量，可滿足您應用程式的擴充性需求。 Front 門板是從 Microsoft 全球網路的邊緣提供的全域負載平衡功能，可讓您故障處理整個應用程式，甚至是跨區域或不同雲端的個別微服務。
 
 ## <a name="tls-configuration"></a>TLS 設定
 
-### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Azure 前門支援哪些 TLS 版本?
+### <a name="what-tls-versions-are-supported-by-azure-front-door"></a>Azure Front 支援哪些 TLS 版本？
 
-2019 年 9 月之後創建的所有前門配置檔均使用 TLS 1.2 作為預設最小值。
+2019年9月之後建立的所有 Front 設定檔都使用 TLS 1.2 做為預設的最小值。
 
-前門支援 TLS 版本 1.0、1.1 和 1.2。 TLS 1.3 尚不受支援。
+Front 門板支援 TLS 版本1.0、1.1 和1.2。 尚不支援 TLS 1.3。
 
-### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure 前門支援哪些證書?
+### <a name="what-certificates-are-supported-on-azure-front-door"></a>Azure Front 支援哪些憑證？
 
-要啟用 HTTPS 協定,以便在前門自定義域上安全地傳遞內容,可以選擇使用由 Azure 前門管理的證書或使用自己的證書。
-前門託管選項通過 Digicert 提供標準的 TLS/SSL 證書,並存儲在前門的鑰匙庫中。 如果選擇使用自己的證書,則可以從受支援的 CA 上載證書,也可以是標準 TLS、擴展驗證證書,甚至是通配符證書。 不支援自簽名證書。 [瞭解如何為自定義域啟用 HTTPS。](https://aka.ms/FrontDoorCustomDomainHTTPS)
+若要啟用 HTTPS 通訊協定以在 Front 門板自訂網域上安全地傳遞內容，您可以選擇使用 Azure Front 所管理的憑證，或使用您自己的憑證。
+「前端管理」選項會透過 Digicert 布建標準的 TLS/SSL 憑證，並儲存在前門的 Key Vault 中。 如果您選擇使用自己的憑證，則可以從支援的 CA 上架憑證，而且可以是標準 TLS、擴充驗證憑證，甚至是萬用字元憑證。 不支援自我簽署憑證。 瞭解[如何為自訂網域啟用 HTTPS](https://aka.ms/FrontDoorCustomDomainHTTPS)。
 
-### <a name="does-front-door-support-autorotation-of-certificates"></a>前門是否支援證書的自動旋轉?
+### <a name="does-front-door-support-autorotation-of-certificates"></a>Front 門板是否支援憑證的 autorotation？
 
-對於前門託管證書選項,證書由前門自動旋轉。 如果您使用的是前門託管證書,並且看到證書到期日期少於 60 天,則提交支援票證。
-</br>對於您自己的自定義 TLS/SSL 證書,不支援自動旋轉。 與首次為給定自定義域設置前門類似,您需要將前門指向密鑰保管庫中的右證書版本,並確保前門的服務主體仍有權訪問密鑰保管庫。 前門此更新的證書推出操作是原子的,不會造成任何生產影響,前提是證書的主題名稱或 SAN 不會更改。
+對於 [Front 門板受控憑證] 選項，憑證是由 Front 門 autorotated。 如果您使用的是 Front 的受控憑證，並看到憑證到期日少於60天，請提出支援票證。
+</br>針對您自己自訂的 TLS/SSL 憑證，不支援 autorotation。 與第一次為指定的自訂網域設定的方式類似，您必須將 Front 大門指向您 Key Vault 中的正確憑證版本，並確定 Front 的服務主體仍然可以存取 Key Vault。 這個由 Front 門板更新的憑證推出作業是不可部分完成的，不會造成任何實際執行的影響，因為憑證的主體名稱或 SAN 不會變更。
 
-### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure 前門支援的當前密碼套件有哪些?
+### <a name="what-are-the-current-cipher-suites-supported-by-azure-front-door"></a>Azure Front？目前支援哪些加密套件？
 
-對 TLS1.2 支援以下密碼套件
+TLS 1.2 支援下列加密套件
 
-TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256TLS_DHE_RSA_WITH_AES_256_GCM_SHA384TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 
-開啟 TLS1.0/1.1 的自訂網域時,支援以下密碼套件:
+使用已啟用 TLS 1.0/1.1 的自訂網域時，支援下列加密套件：
 
 - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
@@ -186,54 +186,54 @@ TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256TLS_DH
 - TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
 - TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
-### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>我可以配置 TLS 策略來控制 TLS 協定版本嗎?
+### <a name="can-i-configure-tls-policy-to-control-tls-protocol-versions"></a>我可以設定 TLS 原則來控制 TLS 通訊協定版本嗎？
 
-您可以通過 Azure 門戶或[Azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)在自訂網功能 HTTPS 設定中配置 Azure 前門中的最低 TLS 版本。 目前,您可以選擇 1.0 和 1.2。
+您可以透過 Azure 入口網站或[Azure REST API](https://docs.microsoft.com/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion)，在 Azure Front 中設定自訂網域 HTTPS 設定的最低 TLS 版本。 目前，您可以選擇1.0 和1.2。
 
-### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>是否可以將前門配置為僅支援特定密碼套件?
+### <a name="can-i-configure-front-door-to-only-support-specific-cipher-suites"></a>我可以將 Front 門板設定為僅支援特定的加密套件嗎？
 
-否,不支援為特定密碼套件配置前門。 但是,您可以從證書頒發機構(例如威瑞信、委託或 Digicert)獲取您自己的自定義 TLS/SSL 證書,並在生成證書時在證書上標記特定的密碼套件。 
+否，不支援為特定的加密套件設定 Front 門。 不過，您可以從憑證授權單位單位（例如 Verisign、Entrust 或 Digicert）取得您自己的自訂 TLS/SSL 憑證，並在產生憑證時，將特定的加密套件標示在憑證上。 
 
-### <a name="does-front-door-support-ocsp-stapling"></a>前門是否支援 OCSP 卡帶?
+### <a name="does-front-door-support-ocsp-stapling"></a>Front 門板是否支援 OCSP 裝訂？
 
-是的,前門預設支援 OCSP 卡帶,無需配置。
+是，Front 門預設支援 OCSP 裝訂，而且不需要任何設定。
 
-### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure 前門是否還支援對後端的流量進行重新加密?
+### <a name="does-azure-front-door-also-support-re-encryption-of-traffic-to-the-backend"></a>Azure Front 門也支援對後端的流量重新加密嗎？
 
-是的,Azure 前門支援 TLS/SSL 卸載,以及端到端 TLS,後者重新加密到後端的流量。 事實上,由於與後端的連接透過公共 IP 進行,因此建議您設定前門以使用 HTTPS 作為轉發協定。
+是，Azure Front 門板支援 TLS/SSL 卸載和端對端 TLS，這會重新加密後端的流量。 事實上，由於與後端的連線是透過其公用 IP 進行，因此建議您將 Front 門板設定為使用 HTTPS 做為轉送通訊協定。
 
-### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>前門是否支援 HTTPS 連接後端上的自簽名證書?
+### <a name="does-front-door-support-self-signed-certificates-on-the-backend-for-https-connection"></a>Front 門板是否支援 HTTPS 連線後端的自我簽署憑證？
 
-否,前門不支援自簽名證書,並且限制同時適用於:
+否，前端不支援自我簽署的憑證，而且此限制適用于兩者：
 
-1. **後端**介面 :當您將流量轉發為 HTTPS 或 HTTPS 運行狀況探測或從源填充緩存以啟用緩存的路由規則時,不能使用自簽名證書。
-2. **前端**:在使用自己的自定義 TLS/SSL 證書在自訂網域上啟用 HTTPS 時,不能使用自簽名證書。
+1. **後端**：當您將流量轉送為 HTTPS 或 HTTPS 健康情況探查，或從來源填入快取以啟用快取時，您不能使用自我簽署憑證。
+2. **前端**：使用您自己的自訂 TLS/SSL 憑證來啟用自訂網域上的 HTTPS 時，您無法使用自我簽署憑證。
 
-### <a name="why-is-https-traffic-to-my-backend-failing"></a>為什麼到後端的 HTTPS 流量失敗?
+### <a name="why-is-https-traffic-to-my-backend-failing"></a>為什麼我的後端的 HTTPS 流量失敗？
 
-對於成功連接到後端的 HTTPS 連接,無論是用於運行狀況探測還是用於轉發請求,HTTPS 流量可能失敗的原因可能有兩個:
+若要讓您的後端能夠順利進行 HTTPS 連線，不論是針對健康情況探查或轉送要求，HTTPS 流量可能會失敗的原因有兩個：
 
-1. **憑證主題名稱不匹配**:對於 HTTPS 連接,前門希望後端提供具有與後端主機名匹配的主題名稱的有效 CA 的證書。 例如,如果後端主機名設置為,`myapp-centralus.contosonews.net`並且後端在 TLS 握手期間呈現的`myapp-centralus.contosonews.net`證書既`*myapp-centralus*.contosonews.net`沒有 ,也未在主題名稱中,則前門將拒絕連接並導致錯誤。 
-    1. **解決方案**:雖然從合規性角度來看不建議這樣做,但您可以通過禁用前門的證書主題名稱檢查來解決此錯誤。 這在 Azure 門戶中的「設定」下和 API 中的後端池設置下存在。
-2. **來自無效 CA 的後端託管證書**:只有[來自有效 CA](/azure/frontdoor/front-door-troubleshoot-allowed-ca)的證書才能在前門的後端使用。 不允許來自內部 C 或自簽名證書的證書。
+1. **憑證主體名稱不符**：若為 HTTPS 連線，Front 門會預期您的後端會從有效的 CA 出示符合後端主機名稱的憑證。 例如，如果您的後端主機名稱設定為`myapp-centralus.contosonews.net` ，而您的後端在 TLS 交握`myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net`期間所提供的憑證沒有主體名稱，則前端會拒絕連線並產生錯誤。 
+    1. **解決方案**：雖然不建議從合規性的觀點來看，您可以藉由停用 Front 的憑證主體名稱檢查來解決此錯誤。 這會出現在 Azure 入口網站的 [設定] 和 API 的 [BackendPoolsSettings] 底下。
+2. **來自無效 ca 的後端裝載憑證**：只有來自[有效 ca](/azure/frontdoor/front-door-troubleshoot-allowed-ca)的憑證可以在後端使用 Front。 不允許來自內部 Ca 或自我簽署憑證的憑證。
 
 ## <a name="diagnostics-and-logging"></a>診斷和記錄
 
-### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door"></a>Azure 前門提供哪些類型的指標和日誌?
+### <a name="what-types-of-metrics-and-logs-are-available-with-azure-front-door"></a>Azure Front 可以使用哪些類型的計量和記錄？
 
-有關日誌和其他診斷功能的資訊,請參閱[前門的監視指標和日誌](front-door-diagnostics.md)。
+如需記錄和其他診斷功能的詳細資訊，請參閱[適用于 Front 的監視計量和記錄](front-door-diagnostics.md)。
 
 ### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>診斷記錄的保留原則為何？
 
-診斷記錄會送至客戶儲存體帳戶，而客戶可以根據其喜好來設定保留原則。 診斷記錄也可以傳送至事件中樞或 Azure 監視器記錄。 有關詳細資訊,請參閱[Azure 前門診斷](front-door-diagnostics.md)。
+診斷記錄會送至客戶儲存體帳戶，而客戶可以根據其喜好來設定保留原則。 診斷記錄也可以傳送至事件中樞或 Azure 監視器記錄。 如需詳細資訊，請參閱[Azure Front 門板診斷](front-door-diagnostics.md)。
 
-### <a name="how-do-i-get-audit-logs-for-azure-front-door"></a>如何獲取 Azure 前門的審核日誌?
+### <a name="how-do-i-get-audit-logs-for-azure-front-door"></a>如何? 取得 Azure Front 的審核記錄嗎？
 
-審核日誌可用於 Azure 前門。 在門戶中,按一下前門功能表邊欄選項卡中的 **「活動日誌」** 以訪問審核日誌。 
+Audit 記錄適用于 Azure Front。 在入口網站中，按一下您 Front 入口的功能表分頁中的 [**活動記錄**]，以存取 audit 記錄。 
 
-### <a name="can-i-set-alerts-with-azure-front-door"></a>是否可以使用 Azure 前門設置警報?
+### <a name="can-i-set-alerts-with-azure-front-door"></a>我可以使用 Azure Front 來設定警示嗎？
 
-是的,Azure 前門確實支援警報。 您可以針對計量設定警示。 
+是，Azure Front 門板支援警示。 您可以針對計量設定警示。 
 
 ## <a name="next-steps"></a>後續步驟
 

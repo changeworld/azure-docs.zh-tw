@@ -1,5 +1,5 @@
 ---
-title: Azure 對應為事件網格源
+title: 做為事件方格來源 Azure 地圖服務
 description: 描述使用 Azure 事件方格提供給 Azure 地圖服務事件的屬性和結構描述
 services: event-grid
 author: banisadr
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: babanisa
 ms.openlocfilehash: e879ec3442f2e7912acb450a97079d80d7d95a01
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81393408"
 ---
-# <a name="azure-maps-as-an-event-grid-source"></a>Azure 對應為事件網格源
+# <a name="azure-maps-as-an-event-grid-source"></a>做為事件方格來源 Azure 地圖服務
 
-本文提供 Azure 地圖服務事件的屬性和結構描述。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](https://docs.microsoft.com/azure/event-grid/event-schema)。 它還為您提供了使用 Azure 映射作為事件來源的快速開始和教程的清單。
+本文提供 Azure 地圖服務事件的屬性和結構描述。 如需事件結構描述的簡介，請參閱 [Azure Event Grid 事件結構描述](https://docs.microsoft.com/azure/event-grid/event-schema)。 它也會提供快速入門和教學課程的清單，供您使用 Azure 地圖服務作為事件來源。
 
 ## <a name="event-grid-event-schema"></a>Event Grid 事件結構描述
 
@@ -111,7 +111,7 @@ Azure 地圖服務帳戶會發出下列事件類型：
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 事件的唯一識別碼。 |
-| data | 物件 (object) | 地理柵欄事件資料。 |
+| data | 物件 | 地理柵欄事件資料。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
@@ -121,9 +121,9 @@ Azure 地圖服務帳戶會發出下列事件類型：
 | -------- | ---- | ----------- |
 | apiCategory | 字串 | 事件的 API 類別。 |
 | apiName | 字串 | API 的名稱。 |
-| 問題 | 物件 (object) | 列出在處理期間遇到的問題。 如果傳回任何問題，則不會有任何幾何隨回應傳回。 |
+| 問題 | 物件 | 列出在處理期間遇到的問題。 如果傳回任何問題，則不會有任何幾何隨回應傳回。 |
 | responseCode | number | HTTP 回應碼 |
-| geometries | 物件 (object) | 列出包含該座標位置或在該位置與 searchBuffer 周圍重疊的柵欄幾何。 |
+| geometries | 物件 | 列出包含該座標位置或在該位置與 searchBuffer 周圍重疊的柵欄幾何。 |
 
 在地圖服務 API 中發生錯誤時，會傳回錯誤物件。 錯誤物件具有下列屬性：
 
@@ -133,21 +133,21 @@ Azure 地圖服務帳戶會發出下列事件類型：
 
 在地圖服務 API 中發生錯誤時，會傳回 ErrorDetails 物件。 ErrorDetails 或物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
-| 代碼 | 字串 | HTTP 狀態碼。 |
-| message | 字串 | 人類看得懂的錯誤描述 (若可取得)。 |
+| code | 字串 | HTTP 狀態碼。 |
+| 訊息 | 字串 | 人類看得懂的錯誤描述 (若可取得)。 |
 | innererror | InnerError | 包含有關錯誤之服務特定資訊的物件 (若可取得)。 |
 
 InnerError 是物件，其中包含有關錯誤的服務特定資訊。 InnerError 物件具有下列屬性： 
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
-| 代碼 | 字串 | 錯誤訊息。 |
+| code | 字串 | 錯誤訊息。 |
 
 幾何物件，列出地理柵欄的幾何識別碼，這些識別碼相對於要求中的使用者時間已經過期。 幾何物件有包含下列屬性的幾何項目： 
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 |:-------- |:---- |:----------- |
 | deviceid | 字串 | 裝置識別碼。 |
 | distance | 字串 | <p>從該座標到幾何邊界的最短距離。 正值表示座標在地理柵欄外。 如果座標位在地理柵欄外，但與地理柵欄邊界的最短距離超過 searchBuffer 的值，則該值為 999。 負數表示座標在地理柵欄內。 如果座標位在多邊形內，但與地理柵欄邊界的最短距離超過 searchBuffer 的值，則該值為 -999。 值為 999 表示座標在地理柵欄外是極可信的。 值為 -999 表示座標在地理柵欄內是極可信的。<p> |
@@ -158,18 +158,18 @@ InnerError 是物件，其中包含有關錯誤的服務特定資訊。 InnerErr
 
 資料物件具有下列屬性：
 
-| 屬性 | 類型 | 描述 |
+| 屬性 | 類型 | 說明 |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | string[] | 地理柵欄的幾何識別碼清單，其中的識別碼相對於要求中的使用者時間已經過期。 |
 | geometries | geometries[] |列出包含該座標位置或在該位置與 searchBuffer 周圍重疊的柵欄幾何。 |
 | invalidPeriodGeofenceGeometryId | string[]  | 地理柵欄的幾何識別碼清單，其中的識別碼相對於要求中的使用者時間處於無效期間。 |
 | isEventPublished | boolean | 如果至少有一個事件發佈到 Azure 地圖服務事件訂閱者，則為 True。如果沒有事件發佈到 Azure 地圖服務事件訂閱者，則為 False。 |
 
-## <a name="tutorials-and-how-tos"></a>教學和如何
+## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
 |Title  |描述  |
 |---------|---------|
 | [使用事件方格來回應 Azure 地圖服務事件](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 整合「Azure 地圖服務」與「事件方格」的概觀。 |
-| [教學:設定地理圍列](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教學課程會逐步引導您完成使用「Azure 地圖服務」來設定地理柵欄的基本步驟。 您會使用「Azure 事件方格」來串流處理地理柵欄結果，並根據地理柵欄結果設定通知。 |
+| [教學課程：設定地理柵欄](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | 本教學課程會逐步引導您完成使用「Azure 地圖服務」來設定地理柵欄的基本步驟。 您會使用「Azure 事件方格」來串流處理地理柵欄結果，並根據地理柵欄結果設定通知。 |
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,8 +1,8 @@
 ### YamlMime:Landing
 title: 語音翻譯文件
-summary: 語音服務的語音翻譯支援音訊串流的即時、多語言語音語音和語音到文字的翻譯
+summary: 語音服務的語音翻譯可讓您即時、多語言的語音轉換語音和語音轉換文字轉譯音訊串流
 metadata:
-  title: 語音翻譯文件 - 教程,API 參考 - Azure 認知服務 |微軟文件
+  title: 語音翻譯檔-教學課程和 API 參考-Azure 認知服務 |Microsoft Docs
   titleSuffix: Azure Cognitive Services
   services: cognitive-services
   author: trevorbye
@@ -12,10 +12,10 @@ metadata:
   ms.date: 04/13/2020
   ms.author: trbye
   ms.openlocfilehash: 5d5c1cdae695b68f45d55b51b76d88c2f93c50d1
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: MT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 04/16/2020
+  ms.lasthandoff: 04/29/2020
   ms.locfileid: "81401428"
 landingContent:
 - title: 關於語音翻譯
@@ -34,11 +34,11 @@ landingContent:
       url: quickstarts/translate-speech-to-text-multiple-languages.md
     - text: 翻譯語音轉換語音
       url: quickstarts/translate-speech-to-speech.md
-- title: 以語音翻譯進行開發
+- title: 使用語音翻譯進行開發
   linkLists:
   - linkListType: learn
     links:
-    - text: 即時翻譯語音
+    - text: 即時轉譯語音
       url: https://docs.microsoft.com/learn/modules/convert-speech-to-text
   - linkListType: tutorial
     links:

@@ -1,6 +1,6 @@
 ---
 title: 部署選項
-description: 開始瞭解 IoT 功能和服務的 Azure 安全中心的基本工作流。
+description: 開始瞭解 IoT 功能和服務 Azure 資訊安全中心的基本工作流程。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,37 +16,37 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 452372f187e97a95b9eee88936b15a0409dd4fe0
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81311380"
 ---
 # <a name="get-started-with-azure-security-center-for-iot"></a>開始使用適用於 IoT 的 Azure 資訊安全中心
 
-本文介紹了適用於 IoT 服務的 Azure 安全中心的不同元件,並解釋了如何使用兩個可能的部署選項開始使用該服務。
+本文提供 IoT 服務的不同 Azure 資訊安全中心元件的說明，並說明如何使用兩種可能的部署選項來開始使用服務。
 
 ## <a name="deployment-options"></a>部署選項
 
-選擇最符合 IoT 設備和環境要求的服務方案。
+選擇最符合您的 IoT 裝置和環境需求的服務案例。
 
 ### <a name="built-in-deployment"></a>內建部署
 
-使用無縫的內建部署選項,可以快速將 IoT Azure 安全中心整合到 IoT 中心中,並提供 IoT 中心配置、設備標識和管理以及中心設備通訊模式的安全分析。
+使用順暢的內建部署選項，適用于 IoT 的 Azure 資訊安全中心可以快速地整合到您的 IoT 中樞，並提供 IoT 中樞設定、裝置身分識別與管理，以及中樞裝置通訊模式的安全性分析。
 
-啟動包含 IoT 中心監控[與建議的內建部署](iot-hub-integration.md)。
+啟動[內建的部署](iot-hub-integration.md)，並提供 IoT 中樞的監視和建議。
     <br>
 
 ### <a name="enhanced-deployment"></a>增強部署
 
-為了增強安全功能,為IoT代理部署Azure安全中心,除了啟用IoT Hub安全外,還提供基於代理的事件收集、分析和威脅檢測IoT設備的關鍵安全資料以及全面的安全狀態管理功能。
+為了增強安全性功能，除了啟用 IoT 中樞安全性以外，部署 IoT 代理程式的 Azure 資訊安全中心可提供代理程式事件集合、分析和威脅偵測來自 IoT 裝置的關鍵安全性資料，以及全方位的安全性狀態管理功能。
 
-啟動[增強部署](security-agents.md),採用基於代理的全面威脅保護和安全態勢管理解決方案。
+開始[加強的部署](security-agents.md)，其具備以代理程式為基礎的全方位威脅防護和安全性狀態管理解決方案。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 為 IoT 啟用[Azure 安全中心](quickstart-onboard-iot-hub.md)
-- 設定[解決方案](quickstart-configure-your-solution.md)
+- 啟用[IoT 的 Azure 資訊安全中心](quickstart-onboard-iot-hub.md)
+- 設定您的[解決方案](quickstart-configure-your-solution.md)
 - [建立安全性模組](quickstart-create-security-twin.md)
 - 設定[自訂警示](quickstart-create-custom-alerts.md)
 - [部署安全性代理程式](how-to-deploy-agent.md)
