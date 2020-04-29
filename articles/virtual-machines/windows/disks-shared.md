@@ -1,6 +1,6 @@
 ---
-title: 跨 VM 分享 Azure 託管磁碟(預覽)
-description: 瞭解如何跨多個 VM 共用 Azure 託管磁碟。
+title: 跨 Vm 共用 Azure 受控磁片（預覽）
+description: 瞭解如何跨多個 Vm 共用 Azure 受控磁片。
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 04/09/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 97eb39772715fad8a1ca065a8bfdfa81bd7e132f
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085495"
 ---
-# <a name="azure-shared-disks"></a>Azure 分享磁碟
+# <a name="azure-shared-disks"></a>Azure 共用磁片
 
 [!INCLUDE [virtual-machines-disks-shared](../../../includes/virtual-machines-disks-shared.md)]
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您有興趣為託管磁碟啟用和使用共用磁碟,請繼續執行我們的文章[「啟用共用磁碟](disks-shared-enable.md)」。
+如果您想要針對受控磁片啟用和使用共用磁片，請繼續進行我們的文章[啟用共用磁片](disks-shared-enable.md)。

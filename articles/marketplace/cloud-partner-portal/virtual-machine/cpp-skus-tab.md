@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
 ms.openlocfilehash: 6ca2ebf9d02c43c3fe6bb3abec6bc0d5815fac74
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82143020"
 ---
 # <a name="virtual-machine-skus-tab"></a>虛擬機器 SKU 索引標籤
@@ -40,14 +40,14 @@ ms.locfileid: "82143020"
 
 <!-- TD: I took a new screenshot, and the fields differ somewhat from description in the VM Pub Guide.  Needs review. -->
 
-|  **欄位**       |     **描述**                                                          |
+|  **欄位**       |     **說明**                                                          |
 |  ---------       |     ---------------                                                          |
 |  *SKU 設定*   |    |
 | **SKU 識別碼\***       | 此 SKU 的識別碼。  此名稱的長度上限為 50 個字元，由小寫英數字元或連字號 (-) 組成，但不能以連字號結尾。  發佈供應項目之後，即無法進行修改。  |
 |  *SKU 詳細資料*   |  |
-| **標題\***        | 要在市集中顯示的供應項目易記名稱。 長度上限為 50 個字元。 |
-| **摘要\***      | 要在市集中顯示的供應項目精簡說明。 長度上限是 100 個字元。 |
-| **說明\***  | 進一步詳盡說明該供應項目的介紹文字。  <!-- TD: max len/guidance? 3k characters -->  |
+| **主題\***        | 要在市集中顯示的供應項目易記名稱。 長度上限為 50 個字元。 |
+| **[摘要]\***      | 要在市集中顯示的供應項目精簡說明。 長度上限是 100 個字元。 |
+| **描述\***  | 進一步詳盡說明該供應項目的介紹文字。  <!-- TD: max len/guidance? 3k characters -->  |
 | **隱藏此 SKU\*** | 表明是否要在市集中向客戶顯示該 SKU。  如果您只想要透過解決方案範本來提供此 SKU，而非以單獨購買的方式供應，則可隱藏此 SKU。  若是要進行初始測試，或是供應項目屬於暫時性或季節性，此功能也相當實用。 |
 | **雲端可用性\*** | 決定該 SKU 應在何種雲端上供應。  預設為 Azure 公用版本。  Microsoft Azure Government 是政府社群雲端，US 聯邦政府、州政府、本地政府或部落政府機構，以及通過認證的合作夥伴，皆擁有此雲端的控管權限。  如需有關政府雲端的詳細資訊，請參閱[歡迎使用 Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome) (英文)。 |
 | **這是否為私人 SKU？\*** | 表明 SKU 為私人或公用。 預設值為 [否]**** (公用)。  如需詳細資訊，請參閱[私人 SKU](../../cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)。 |

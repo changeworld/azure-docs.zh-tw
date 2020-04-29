@@ -1,32 +1,32 @@
 ---
 title: 管理多部 Azure 虛擬機器的更新
-description: 本文介紹如何管理 Azure 和非 Azure 虛擬機器的更新。
+description: 本文說明如何管理 Azure 和非 Azure 虛擬機器的更新。
 services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
 ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676436"
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>管理多部 Azure 虛擬機器的更新
 
-可以使用 Azure 自動化更新管理來管理 Windows 和 Linux 虛擬機器更新和修補程式。 您可以從您的 [Azure 自動化](automation-offering-get-started.md)帳戶：
+您可以使用 Azure 自動化更新管理來管理 Windows 和 Linux 虛擬機器的更新和修補程式。 您可以從您的 [Azure 自動化](automation-offering-get-started.md)帳戶：
 
 - 上架虛擬機器。
 - 評估可用更新的狀態。
 - 排程必要更新的安裝。
-- 查看部署結果,以驗證更新是否已成功應用於為其啟用更新管理的所有虛擬機器。
+- 檢查部署結果，以確認更新已成功套用至已啟用更新管理的所有虛擬機器。
 
-要瞭解更新管理的系統要求,請參閱[更新管理用戶端要求](automation-update-management.md#clients)。
+若要瞭解更新管理的系統需求，請參閱[更新管理用戶端需求](automation-update-management.md#clients)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 已安裝其中一個支援作業系統的虛擬機器或電腦。
-* 訪問已連接到更新管理的 Linux VM 的更新儲存庫。
+* 存取 Linux Vm 的更新存放庫上架至更新管理。
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>為 Azure 虛擬機器啟用「更新管理」
 
@@ -46,7 +46,7 @@ ms.locfileid: "81676436"
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>為非 Azure 虛擬機器和電腦啟用「更新管理」
 
-Windows 和 Linux 的日誌分析代理需要在公司網路或其他雲端環境中運行的 VM 上安裝,以便透過更新管理啟用它們。 要瞭解將代理部署到 Azure 外部託管的電腦的系統要求和支援的方法,請參閱[紀錄分析代理概述](../azure-monitor/platform/log-analytics-agent.md)。
+適用于 Windows 和 Linux 的 Log Analytics 代理程式必須安裝在公司網路或其他雲端環境上執行的 Vm 上，才能使用更新管理來啟用它們。 若要瞭解將代理程式部署至裝載于 Azure 外部之機器的系統需求和支援的方法，請參閱[Log Analytics 代理程式的總覽](../azure-monitor/platform/log-analytics-agent.md)。
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>檢視連結到自動化帳戶的電腦
 
@@ -54,19 +54,19 @@ Windows 和 Linux 的日誌分析代理需要在公司網路或其他雲端環�
 
   ![檢視電腦索引標籤](./media/manage-update-multi/update-computers-tab.png)
 
-最近啟用「更新管理」的電腦可能尚未經過評估。 這些電腦的符合性狀態為`Not assessed`。 以下是可能的合規性狀態值清單：
+最近啟用「更新管理」的電腦可能尚未經過評估。 這些電腦的合規性狀態為`Not assessed`。 以下是可能的合規性狀態值清單：
 
-- `Compliant`:未缺少關鍵或安全更新的計算機。
-- `Non-compliant`:至少缺少一個關鍵或安全更新的計算機。
-- `Not assessed`:更新評估數據未在預期的時間內從計算機接收。 對於 Linux 計算機,預期的時間範圍是最後一小時。 對於 Windows 計算機,預期時間範圍是最後 12 小時。
+- `Compliant`：未遺失重大或安全性更新的電腦。
+- `Non-compliant`：至少遺失一個重大或安全性更新的電腦。
+- `Not assessed`：在預期的時間範圍內，未收到來自電腦的更新評估資料。 針對 Linux 電腦，預期的時間範圍是過去一小時。 在 Windows 電腦上，預期的時間範圍是過去12小時。
 
-要查看代理的狀態,請在 **「更新代理就緒」** 列中選擇連結。 選取這個選項會開啟 [混合式背景工作角色] 窗格，並顯示混合式背景工作角色的狀態。 下圖顯示長期未連線至「更新管理」的代理程式範例：
+若要查看代理程式的狀態，請選取 [**更新代理程式準備就緒**] 資料行中的連結。 選取這個選項會開啟 [混合式背景工作角色] 窗格，並顯示混合式背景工作角色的狀態。 下圖顯示長期未連線至「更新管理」的代理程式範例：
 
 ![檢視電腦索引標籤](./media/manage-update-multi/update-agent-broken.png)
 
 ## <a name="view-an-update-assessment"></a>檢視更新評估
 
-啟用更新管理後,將打開"更新管理"窗格。 您可以在 [遺失更新]**** 索引標籤上看到遺失的更新清單。
+啟用更新管理之後，就會開啟 [更新管理] 窗格。 您可以在 [遺失更新]**** 索引標籤上看到遺失的更新清單。
 
 ## <a name="collect-data"></a>收集資料
 
@@ -85,11 +85,11 @@ Windows 和 Linux 的日誌分析代理需要在公司網路或其他雲端環�
 
 ### <a name="collection-frequency"></a>收集頻率
 
-計算機完成更新合規性掃描後,代理將資訊批量轉發到 Azure 監視器日誌。 在 Windows 電腦上，合規性掃描預設會每 12 小時執行一次。
+在電腦完成更新相容性掃描之後，代理程式會將大量資訊轉送至 Azure 監視器記錄。 在 Windows 電腦上，合規性掃描預設會每 12 小時執行一次。
 
 除了掃描排程，如果在更新安裝之前與更新安裝之後重新啟動 MMA，則會在 15 分鐘內起始更新合規性掃描。
 
-默認情況下,對於 Linux 計算機,每小時執行一次合規性掃描。 若 MMA 代理程式重新啟動，則會在 15 分鐘內起始合規性掃描。
+針對 Linux 電腦，預設會每小時執行合規性掃描。 若 MMA 代理程式重新啟動，則會在 15 分鐘內起始合規性掃描。
 
 儀表板可能需要 30 分鐘到 6 小時，才能顯示來自受控電腦的已更新資料。
 
@@ -107,17 +107,17 @@ Windows 和 Linux 的日誌分析代理需要在公司網路或其他雲端環�
 
 - **名稱**：輸入唯一名稱來識別更新部署。
 - **作業系統**：選取 [Windows]**** 或 [Linux]****。
-- **要更新的組**:基於訂閱、資源組、位置和標記的組合定義查詢,以生成要包含在部署中的 Azure VM 的動態群組。 對於非 Azure VM,保存的搜索用於創建要包含在部署中的動態組。 要瞭解更多資訊,[請參考動態群組](automation-update-management-groups.md)。
+- **要更新的群組**：根據訂用帳戶、資源群組、位置及標記的組合來定義查詢，以建立要包含在您部署中的動態 Azure vm 群組。 針對非 Azure Vm，已儲存的搜尋是用來建立要包含在您部署中的動態群組。 若要深入瞭解，請參閱[動態群組](automation-update-management-groups.md)。
 - **要更新的機器**：選取已儲存的搜尋或已匯入的群組，或選取機器，以選擇您想要更新的機器。
 
    >[!NOTE]
-   >選擇"保存的搜索"選項不會返回計算機標識,而只返回其名稱。 如果多個資源組中有多個具有相同名稱的 VM,則結果將返回它們。 建議使用 **「組」更新**選項,以確保包含符合條件的唯一 VM。
+   >選取 [已儲存的搜尋] 選項並不會傳回電腦身分識別，只會傳回其名稱。 如果您在多個資源群組之間有多個相同名稱的 Vm，它們會在結果中傳回。 建議使用 [**群組至更新**] 選項，以確保您包含符合您準則的唯一 vm。
 
-   如果選擇 **「電腦」,** 則電腦的就緒狀態將顯示在 **「更新代理就緒」** 列中。 您可以在排程更新部署之前，先查看機器的健康情況。 要瞭解在 Azure 監視器紀錄中建立電腦群組的不同方法,請參閱[Azure 監視器紀錄中的電腦群組](../azure-monitor/platform/computer-groups.md)
+   如果您選擇 [**機器**]，電腦的就緒狀態會顯示在 [**更新代理程式準備就緒**] 欄中。 您可以在排程更新部署之前，先查看機器的健康情況。 若要瞭解在 Azure 監視器記錄中建立電腦群組的不同方法，請參閱[Azure 監視器記錄中的電腦群組](../azure-monitor/platform/computer-groups.md)
 
   ![[新增更新部署] 窗格](./media/manage-update-multi/update-select-computers.png)
 
-- **更新分類**：選取要包括在更新部署中的軟體類型。 有關分類類型的說明,請參閱[更新分類](automation-view-update-assessments.md#update-classifications)。 分類類型包括：
+- **更新分類**：選取要包括在更新部署中的軟體類型。 如需分類類型的說明，請參閱[更新分類](automation-view-update-assessments.md#update-classifications)。 分類類型包括：
   - 重大更新
   - 安全性更新
   - 更新彙總套件
@@ -127,7 +127,7 @@ Windows 和 Linux 的日誌分析代理需要在公司網路或其他雲端環�
   - 工具
   - 更新
 
-- **要包含/排除的更新** - 這會開啟 [包含]/[排除] 頁面。 要包含或排除的更新會在個別的索引標籤上。 有關如何處理包含的其他資訊,請參閱[計畫更新部署](automation-tutorial-update-management.md#schedule-an-update-deployment)。
+- **要包含/排除的更新** - 這會開啟 [包含]/[排除] 頁面。 要包含或排除的更新會在個別的索引標籤上。 如需有關如何處理包含的詳細資訊，請參閱[排程更新部署](automation-tutorial-update-management.md#schedule-an-update-deployment)。
 
 > [!NOTE]
 > 請務必了解，排除會覆寫包含。 例如，如果您定義 `*` 排除規則，系統便不會安裝任何修補程式或套件，因為已將它們全部排除。 排除的修補程式仍然會顯示為從機器中遺漏。 就 Linux 機器而言，如果已包含某個套件，但排除了它的某個相依套件，就不會安裝該套件。
@@ -173,9 +173,9 @@ Windows 和 Linux 的日誌分析代理需要在公司網路或其他雲端環�
 
 [更新結果] 窗格會顯示虛擬機器的更新總數和部署結果。 右邊的表格會提供每個更新的明細與安裝結果。 安裝結果可為下列其中一個值：
 
-- `Not attempted`: 未安裝更新,因為根據定義的維護視窗可用時間不足。
-- `Succeeded`:更新成功。
-- `Failed`:更新失敗。
+- `Not attempted`：未安裝更新，因為根據定義的維護時間範圍，有足夠的時間可用。
+- `Succeeded`：更新成功。
+- `Failed`：更新失敗。
 
 若要查看部署已建立的所有記錄項目，請選取 [所有記錄]****。
 
@@ -185,4 +185,4 @@ Windows 和 Linux 的日誌分析代理需要在公司網路或其他雲端環�
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解有關更新管理紀錄、輸出與錯誤的詳細資訊,請參閱[更新管理的查詢更新紀錄](automation-update-management-query-logs.md)。
+若要深入瞭解更新管理記錄、輸出和錯誤，請參閱[更新管理的查詢更新記錄](automation-update-management-query-logs.md)。

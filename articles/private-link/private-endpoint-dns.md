@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 46ecf1bf2f5bd7900677cd115f8571ec3551a874
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 477a5ffa971120d1a98c09ac4ae8ebda1c82b770
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82134269"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209021"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure 私人端點 DNS 設定
 
@@ -55,7 +55,7 @@ Azure 服務會在公用 DNS 上建立正式名稱 DNS 記錄（CNAME），以�
 |適用於 MySQL 的 Azure 資料庫（Microsoft.dbformysql/servers）|mysqlServer|privatelink.mysql.database.azure.com|
 |適用於 MariaDB 的 Azure 資料庫（DBforMariaDB/servers）|mariadbServer|privatelink.mariadb.database.azure.com|
 |Azure Key Vault （KeyVault/保存庫）|保存庫|privatelink.vaultcore.azure.net|
-|Azure Kubernetes Service Kubernetes API （Microsoft.containerservice/managedClusters）    | managedCluster | {guid}. privatelink。<region>. azmk8s.io|
+|Azure Kubernetes Service Kubernetes API （Microsoft.containerservice/managedClusters）    | managedCluster | {guid}. privatelink。{region}. azmk8s. io|
 |Azure 搜尋服務（Microsoft 搜尋/searchServices）|searchService|privatelink.search.windows.net|   
 |Azure Container Registry （ContainerRegistry/登錄） | 登錄 | privatelink.azurecr.io |
 |Azure 應用程式組態（Appconfiguration/configurationStores）| configurationStore | privatelink.azconfig.io|

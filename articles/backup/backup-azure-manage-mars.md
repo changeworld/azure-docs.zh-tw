@@ -1,174 +1,174 @@
 ---
-title: 管理並監控 MARS 代理程式
-description: 瞭解如何使用 Azure 備份服務管理和監視 Microsoft Azure 恢復服務 (MARS) 代理備份。
+title: 管理和監視 MARS 代理程式備份
+description: 瞭解如何使用 Azure 備份服務來管理和監視 Microsoft Azure 復原服務（MARS）代理程式備份。
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025096"
 ---
-# <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 備份服務管理 Microsoft Azure 復原服務 (MARS) 代理備份
+# <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 備份服務管理 Microsoft Azure 復原服務（MARS）代理程式備份
 
-本文介紹如何管理使用 Microsoft Azure 恢復服務代理備份的檔和資料夾。
+本文說明如何管理使用 Microsoft Azure 復原服務代理程式備份的檔案和資料夾。
 
 ## <a name="modify-a-backup-policy"></a>修改備份原則
 
-修改備份策略時,可以添加新專案、從備份中刪除現有專案,或使用排除設置排除備份檔。
+當您修改備份原則時，可以加入新的專案、從備份中移除現有的專案，或排除檔案，使其無法使用排除設定進行備份。
 
-- **添加專案**僅用於添加新項目進行備份。 要刪除現有專案,請使用 **「刪除項目**」或 **「排除設定」** 選項。  
-- **移除專案**使用此選項從備份中刪除專案。
-  - 使用**排除設定**刪除所選取的所有項目,而不是**刪除項目**。
-  - 清除卷中的所有選擇會導致專案的舊備份(根據上次備份時保留的保留設置)保留,而沒有修改的餘地。
-  - 重新選擇這些專案,將會導致第一次完全備份,並且新的策略更改不會應用於舊備份。
-  - 取消選擇整個卷將保留過去的備份,沒有任何修改保留策略的餘地。
-- **排除設置**使用此選項從備份中排除特定項。
+- [**新增專案**] 僅使用此選項來新增要備份的新專案。 若要移除現有的專案，請使用 [**移除專案**] 或 [**排除設定**] 選項。  
+- [**移除專案**] 使用此選項可移除要備份的專案。
+  - 使用**排除設定**來移除磁片區中的所有專案，而不是**移除專案**。
+  - 清除磁片區中的所有選取專案時，會在最後一次備份時，根據保留設定保留舊的專案備份，而不需要修改範圍。
+  - 重新選取這些專案，會導致第一次完整備份，而新的原則變更不會套用到舊的備份。
+  - 取消取消全磁片區會保留過去的備份，而不需要任何範圍來修改保留原則。
+- **排除設定**使用此選項可排除要備份的特定專案。
 
-### <a name="add-new-items-to-existing-policy"></a>新增新專案加入現有政策
+### <a name="add-new-items-to-existing-policy"></a>將新專案新增至現有的原則
 
-1. 在 **"操作"** 中,單擊 **「計劃備份**」。。
+1. 在 [**動作**] 中，按一下 [**排程備份**]。
 
     ![Windows Server 備份排程](./media/backup-configure-vault/schedule-first-backup.png)
 
-2. 在 **「選擇策略項**」選項卡中,然後選擇 **「修改檔案和資料夾的備份計畫**」,然後按下「**下一步**」。
+2. 在 [**選取原則專案**] 索引標籤中，選取 [**修改檔案和資料夾的備份排程**] 並按 **[下一步]**。
 
-    ![選擇原則項目](./media/backup-azure-manage-mars/select-policy-items.png)
+    ![選取原則專案](./media/backup-azure-manage-mars/select-policy-items.png)
 
-3. 在 **"修改或停止計劃備份**"選項卡中,選擇 **"更改備份專案或時間**",然後按一下"**下一步**" 。
+3. 在 [**修改或停止排程備份**] 索引標籤中選取 [**變更備份專案或時間**]，然後按 **[下一步]**。
 
-    ![變更或計劃備份](./media/backup-azure-manage-mars/modify-schedule-backup.png)
+    ![修改或排程備份](./media/backup-azure-manage-mars/modify-schedule-backup.png)
 
-4. 在 **「將項目選擇備份**」選項卡中,按下「**添加專案**」以添加要備份的專案。
+4. 在 [**選取要備份的專案**] 索引標籤中，按一下 [**新增專案**] 以新增您要備份的專案。
 
-    ![變更或計劃備份新增專案](./media/backup-azure-manage-mars/modify-schedule-backup-add-items.png)
+    ![修改或排程備份新增專案](./media/backup-azure-manage-mars/modify-schedule-backup-add-items.png)
 
-5. 在 **「選擇項目」** 視窗中,選擇要添加的蒼蠅或資料夾,然後單擊「**確定**」。
+5. 在 [**選取專案**] 視窗中，選取要新增的 [飛出] 或 [資料夾]，然後按一下 **[確定]**。
 
-    ![選擇項目](./media/backup-azure-manage-mars/select-item.png)
+    ![選取專案](./media/backup-azure-manage-mars/select-item.png)
 
-6. 完成後續步驟,然後單擊 **"完成"** 以完成操作。
+6. 完成後續步驟，然後按一下 **[完成]** 以完成操作。
 
-### <a name="add-exclusion-rules-to-existing-policy"></a>將排除規則新增到現有政策
+### <a name="add-exclusion-rules-to-existing-policy"></a>將排除規則新增至現有的原則
 
-您可以添加排除規則來跳過不想備份的檔案和資料夾。 您可以在定義新策略或修改現有策略期間執行此操作。
+您可以新增排除規則，以略過您不想要備份的檔案和資料夾。 在定義新原則或修改現有原則時，您可以執行此動作。
 
-1. 在「操作」窗格中,按下 **「計畫備份**」 。。 跳到 **「選擇要備份的專案**」,然後單擊 **「排除設置**」 。。
+1. 按一下 [動作] 窗格中的 [**排程備份**]。 移至 [**選取要備份的專案**]，然後按一下 [**排除設定**]。
 
-    ![選擇項目](./media/backup-azure-manage-mars/select-exclusion-settings.png)
+    ![選取專案](./media/backup-azure-manage-mars/select-exclusion-settings.png)
 
-2. 在**排除設置中**,按下「**添加排除**」。。
+2. 在 [**排除設定**] 中，按一下 [**新增排除**]。
 
-    ![選擇項目](./media/backup-azure-manage-mars/add-exclusion.png)
+    ![選取專案](./media/backup-azure-manage-mars/add-exclusion.png)
 
-3. 從 **「選擇項目」到「排除**」,瀏覽檔和資料夾並選擇要排除的項目,然後按下「**確定**」。
+3. 從 [**選取要排除的專案**] 中，流覽檔案和資料夾，並選取您要排除的專案，然後按一下 **[確定]**。
 
-    ![選擇項目](./media/backup-azure-manage-mars/select-items-exclude.png)
+    ![選取專案](./media/backup-azure-manage-mars/select-items-exclude.png)
 
-4. 預設情況下,所選**資料夾中的所有子資料夾**都被排除在外。 您可以通過選擇 **「或****」或 「否**」來更改此。 您可以編輯和指定要排除的檔案類型,如下所示:
+4. 預設會排除所選資料夾內的所有**子資料夾**。 您可以選取 **[是]** 或 [**否**] 加以變更。 您可以編輯並指定要排除的檔案類型，如下所示：
 
-    ![選擇項目](./media/backup-azure-manage-mars/subfolders-type.png)
+    ![選取專案](./media/backup-azure-manage-mars/subfolders-type.png)
 
-5. 完成後續步驟,然後單擊 **"完成"** 以完成操作。
+5. 完成後續步驟，然後按一下 **[完成]** 以完成操作。
 
-### <a name="remove-items-from-existing-policy"></a>從現有策略中移除項目
+### <a name="remove-items-from-existing-policy"></a>從現有的原則移除專案
 
-1. 在「操作」窗格中,按下 **「計畫備份**」 。。 跳到**選擇要備份的專案**。 從清單中,選擇要從備份計畫中刪除的檔和資料夾,然後單擊 **「刪除專案**」。。
+1. 按一下 [動作] 窗格中的 [**排程備份**]。 移至 [**選取要備份的專案**]。 從清單中，選取您想要從備份排程中移除的檔案和資料夾，然後按一下 [**移除專案**]。
 
-    ![選擇項目](./media/backup-azure-manage-mars/select-items-remove.png)
+    ![選取專案](./media/backup-azure-manage-mars/select-items-remove.png)
 
     > [!NOTE]
-    > 從策略中完全刪除卷時,請小心操作。  如果需要再次添加它,則它將被視為新卷。 下一個計劃備份將執行初始備份(完全備份),而不是增量備份。 如果需要稍後臨時刪除和添加項目,建議使用 **「排除設置」** 而不是 **「刪除專案**」來確保增量備份而不是完全備份。
+    > 當您從原則中完全移除磁片區時，請務必小心。  如果您需要再次新增，則會將它視為新的磁片區。 下一個排定的備份將會執行初始備份（完整備份），而不是增量備份。 如果您稍後需要暫時移除並新增專案，建議使用**排除設定**而不是**移除專案**，以確保增量備份，而不是完整備份。
 
-2. 完成後續步驟,然後單擊 **"完成"** 以完成操作。
+2. 完成後續步驟，然後按一下 **[完成]** 以完成操作。
 
-## <a name="stop-protecting-files-and-folder-backup"></a>停止保護檔案與資料夾備份
+## <a name="stop-protecting-files-and-folder-backup"></a>停止保護檔案和資料夾備份
 
-有兩種方法可以停止保護檔案和資料夾備份:
+有兩種方式可停止保護檔案和資料夾備份：
 
 - **停止保護並保留備份資料**。
-  - 此選項將停止保護以後的所有備份作業。
-  - Azure 備份服務將繼續保留所有現有的恢復點。  
-  - 您將能夠為未過期的恢復點還原備份的數據。
-  - 如果您決定恢復保護,則可以使用 *「重新啟用備份計劃」* 選項。 之後,將根據新的保留政策保留數據。
-- **停止保護並移除備份資料**。
-  - 這個選項將停止所有將來的備份作業保護數據並刪除所有恢復點。
-  - 您將收到刪除備份資料警報電子郵件,郵件顯示*此備份項目的數據已被刪除。此數據將暫時使用 14 天,之後將被永久刪除*,建議在*14 天內重新保護備份專案以恢復您的數據。*
-  - 要恢復保護,請從刪除操作的 14 天內重新保護。
+  - 此選項會停止所有未來的備份作業，使其無法進行保護。
+  - Azure 備份服務會繼續保留所有現有的復原點。  
+  - 您將能夠還原未過期復原點的已備份資料。
+  - 如果您決定繼續保護，則可以使用 [*重新啟用備份排程*] 選項。 之後，資料會根據新的保留原則加以保留。
+- **停止保護並刪除備份資料**。
+  - 此選項會停止所有未來的備份工作，保護您的資料並刪除所有復原點。
+  - 您將會收到一封「刪除備份資料警示」電子郵件，其中包含已*刪除此備份專案的資料。此資料將暫時可供使用14天，之後將會永久刪除*，並在*14 天內重新保護備份專案，以復原您的資料。*
+  - 若要繼續保護，請在14天內從刪除作業進行重新保護。
 
 ### <a name="stop-protection-and-retain-backup-data"></a>停止保護並保留備份資料
 
-1. 打開 MARS 管理主控台,轉到 **"操作"窗格**,然後**選擇"計劃備份**"。
+1. 開啟 MARS 管理主控台，移至 [**動作] 窗格**，然後**選取 [排程備份**]。
 
-    ![修改或停止計劃備份。](./media/backup-azure-manage-mars/mars-actions.png)
-1. 在**選擇策略項目「** 頁**中,選擇」修改檔案和資料夾的備份計畫**」,然後按下 **「 下一步**」。
+    ![修改或停止排定的備份。](./media/backup-azure-manage-mars/mars-actions.png)
+1. 在 [**選取原則專案**] 頁面中，選取 [**修改檔案和資料夾的備份排程**]，然後按 **[下一步]**。
 
-    ![修改或停止計劃備份。](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. 在 **"修改或停止計劃備份" 頁中**,選擇 **「停止使用此備份計畫」,但保留儲存的備份,直到計畫再次啟動**。 然後，選取 [下一步]  。
+    ![修改或停止排定的備份。](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
+1. 從 [**修改或停止排程備份**] 頁面，選取 [**停止使用此備份排程]，但保留儲存的備份，直到重新開機排程為止**。 然後，選取 [下一步]  。
 
-    ![修改或停止計劃備份。](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. 在**暫停計劃備份**中查看資訊,然後按一**下 「完成**」。
+    ![修改或停止排定的備份。](./media/backup-azure-manage-mars/stop-schedule-backup.png)
+1. 在 [**暫停排程備份**] 中，查看資訊，然後按一下 **[完成]**。
 
-    ![修改或停止計劃備份。](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. 在 **「修改備份過程」** 中,請檢查您的計畫備份暫停處於成功狀態,然後單擊**接近**完成。
+    ![修改或停止排定的備份。](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+1. 在 [**修改備份**程式] 中，檢查您的排程備份暫停處於成功狀態，然後按一下 [**關閉**] 以完成。
 
-### <a name="stop-protection-and-delete-backup-data"></a>停止保護並移除備份資料
+### <a name="stop-protection-and-delete-backup-data"></a>停止保護並刪除備份資料
 
-1. 打開 MARS 管理主控台,轉到 **"操作"** 窗格,然後選擇 **「計畫備份**」。。
-2. 在 **「修改或停止計劃備份」 頁中**,選擇 **「停止使用此備份計畫」 並移除所有儲存的備份**。 然後，選取 [下一步]  。
+1. 開啟 MARS 管理主控台，移至 [**動作**] 窗格，然後選取 [**排程備份**]。
+2. 從 [**修改或停止排程備份**] 頁面，選取 [**停止使用此備份排程] 並刪除所有儲存的備份**。 然後，選取 [下一步]  。
 
-    ![修改或停止計劃備份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
+    ![修改或停止排定的備份。](./media/backup-azure-delete-vault/modify-schedule-backup.png)
 
-3. 在 **「停止計劃備份**」頁中,選擇 **「完成**」。。
+3. 從 [**停止排程的備份**] 頁面，選取 **[完成]**。
 
-    ![停止計劃備份。](./media/backup-azure-delete-vault/stop-schedule-backup.png)
-4. 系統將提示您輸入安全 PIN(個人識別號),您必須手動生成該 PIN 碼。 為此,請先登錄到 Azure 門戶。
-5. 跳到**修復服務保存庫** > **設定** > **屬性**。
-6. 在 **"安全 PIN"** 下,選擇 **"生成**"。 複製此 PIN。 PIN 僅有效五分鐘。
-7. 在管理控制台中,粘貼 PIN,然後選擇 **「確定**」。。
+    ![停止排程的備份。](./media/backup-azure-delete-vault/stop-schedule-backup.png)
+4. 系統會提示您輸入您必須手動產生的安全性 PIN 碼（個人識別碼）。 若要這麼做，請先登入 Azure 入口網站。
+5. 移至 [復原**服務保存庫** > ] [**設定** > ] [**屬性**]。
+6. 在 [**安全性 PIN**] 底下，選取 [**產生**]。 複製此 PIN。 PIN 僅適用于五分鐘。
+7. 在管理主控台中，貼上 PIN，然後選取 **[確定]**。
 
-    ![生成安全 PIN。](./media/backup-azure-delete-vault/security-pin.png)
+    ![產生安全性 PIN 碼。](./media/backup-azure-delete-vault/security-pin.png)
 
-8. 在 **「修改備份進度」** 頁中,將顯示以下消息:*已刪除的備份資料將保留 14 天。之後,備份數據將被永久刪除。*  
+8. 在 [**修改備份進度**] 頁面中，會出現下列訊息：*已刪除的備份資料將會保留14天。在這段時間之後，備份資料將會永久刪除。*  
 
     ![刪除備份基礎結構。](./media/backup-azure-delete-vault/deleted-backup-data.png)
 
-刪除本地備份項后,請按照門戶中的後續步驟操作。
+刪除內部部署備份專案之後，請遵循入口網站中的後續步驟。
 
-## <a name="re-enable-protection"></a>重新開啟保護
+## <a name="re-enable-protection"></a>重新啟用保護
 
-如果在保留數據時停止保護,並決定恢復保護,則可以使用修改備份策略重新啟用備份計劃。
+如果您在保留資料時停止保護，並決定繼續保護，則可以使用 [修改備份原則] 重新啟用備份排程。
 
-1. 在 **『操作』** 上選擇**計畫備份**。
-1. 選擇 **「重新啟用備份計畫」。您還可以修改備份項目或時間**,然後按下 **「下一步**」。<br>
+1. 在 [**動作**] 選取 [**排程備份**]。
+1. 選取 [**重新啟用備份排程]。您也可以修改備份專案或時間**，然後按 **[下一步]**。<br>
 
     ![刪除備份基礎結構。](./media/backup-azure-manage-mars/re-enable-policy-next.png)
-1. 在 **「選擇要備份的專案**」中,按**下「下一步**」 。
+1. 在 [**選取要備份的專案**] 中，按 **[下一步]**。
 
     ![刪除備份基礎結構。](./media/backup-azure-manage-mars/re-enable-next.png)
-1. 在 **「指定備份計劃」** 中,指定備份計畫,然後單擊「**下一步**」。
-1. 在 **「選擇保留策略」** 中,指定保留期限,然後單擊 **「下一步**」 。
-1. 最後在**確認**螢幕中,查看策略詳細資訊,然後單擊 **「完成**」。
+1. 在 [**指定備份排程**] 中，指定備份排程，然後按 **[下一步]**。
+1. 在 [**選取保留原則**] 中，指定保留期間，然後按 **[下一步]**。
+1. 最後，在 [**確認**] 畫面中，檢查原則詳細資料，然後按一下 **[完成]**。
 
-## <a name="re-generate-passphrase"></a>重新產生密碼短語
+## <a name="re-generate-passphrase"></a>重新產生複雜密碼
 
-密碼短語用於加密和解密數據,同時使用 MARS 代理備份或還原本地或本地電腦以從 Azure 備份或還原本地電腦。 如果您丟失或忘記了密碼短語,則可以按照以下步驟重新生成密碼短語(前提是您的電腦仍在恢復服務保管庫註冊並配置了備份):
+複雜密碼是用來加密和解密資料，同時使用 MARS 代理程式在 Azure 中備份或還原內部部署或本機電腦。 如果遺失或忘記複雜密碼，您可以依照下列步驟重新產生複雜密碼（前提是您的電腦仍已向復原服務保存庫註冊，並已設定備份）：
 
-- 從 MARS 代理主控台轉到**操作窗格** > **更改屬性**>。 然後轉到**加密選項卡**。<br>
-- 選擇 **「更改密碼」** 選方塊。<br>
-- 輸入新的密碼短語或單擊 **「生成密碼短語**」。
-- 按下 **「瀏覽」** 以保存新密碼。
+- 從 MARS 代理程式主控台，移至 [**動作] 窗格** > **變更屬性**>]。 然後移至 [**加密]** 索引標籤。<br>
+- 選取 [**變更複雜密碼**] 核取方塊。<br>
+- 輸入新的複雜密碼，或按一下 [**產生複雜密碼**]。
+- 按一下 **[流覽]** 以儲存新的複雜密碼。
 
-    ![生成密碼。](./media/backup-azure-manage-mars/passphrase.png)
-- 按下「**確定」** 以應用更改。  如果在恢復服務保管庫的 Azure 門戶上啟用[了安全功能](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features),則系統將提示您輸入安全 PIN。 要接收 PIN,請按照[本文](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations)中列出的步驟操作。<br>
-- 從門戶粘貼安全 PIN 並按下 **「確定」** 以應用更改。<br>
+    ![產生複雜密碼。](./media/backup-azure-manage-mars/passphrase.png)
+- 按一下 **[確定]** 以套用變更。  如果已在復原服務保存庫的 Azure 入口網站上啟用[安全性功能](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features)，系統會提示您輸入安全性 PIN 碼。 若要接收 PIN，請遵循這[篇文章](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations)中所列的步驟。<br>
+- 從入口網站貼上安全性 PIN 碼，然後按一下 **[確定]** 套用變更。<br>
 
-    ![生成密碼。](./media/backup-azure-manage-mars/passphrase2.png)
-- 確保密碼短語安全地保存在備用位置(原始電腦之外),最好保存在 Azure 密鑰保管庫中。 如果使用 MARS 代理備份多台電腦,請追蹤所有密碼。
+    ![產生複雜密碼。](./media/backup-azure-manage-mars/passphrase2.png)
+- 確保複雜密碼安全地儲存在替代位置（來源機器以外），最好是在 Azure Key Vault 中。 如果您有多部電腦要使用 MARS 代理程式進行備份，請追蹤所有的複雜密碼。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 有關受支援的方案和限制的資訊,請參閱 MARS[代理的支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)。
-- 詳細瞭解[按備份原則保留行為](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior)。
+- 如需有關支援的案例和限制的詳細資訊，請參閱[MARS 代理程式的支援矩陣](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)。
+- 深入瞭解[隨選備份原則保留行為](backup-windows-with-mars-agent.md#set-up-on-demand-backup-policy-retention-behavior)。

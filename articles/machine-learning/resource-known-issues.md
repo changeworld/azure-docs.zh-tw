@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82127576"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知問題和疑難排解 Azure Machine Learning
@@ -107,7 +107,7 @@ ms.locfileid: "82127576"
 
 * **Azure 入口網站**：如果您直接從 SDK 或入口網站的共用連結查看您的工作區，您將無法在此延伸模組中使用訂用帳戶資訊來查看一般的 **[總覽**] 頁面。 您也無法切換至另一個工作區。 如果您需要查看另一個工作區，請直接移至[Azure Machine Learning studio](https://ml.azure.com)並搜尋工作區名稱。
 
-## <a name="set-up-your-environment"></a>設定您的環境
+## <a name="set-up-your-environment"></a>設定環境
 
 * **建立 AmlCompute 時遇到問題**：在 GA 版本之前，從 Azure 入口網站建立其 Azure Machine Learning 工作區的使用者很罕見，可能無法在該工作區中建立 AmlCompute。 您可以對服務提出支援要求，或透過入口網站或 SDK 建立新的工作區來立即解除封鎖。
 
@@ -134,7 +134,7 @@ ms.locfileid: "82127576"
 
 ### <a name="data-labeling-projects"></a>標記專案的資料
 
-|問題  |解決方法  |
+|問題  |解決方案  |
 |---------|---------|
 |只能使用在 blob 資料存放區上建立的資料集     |  這是目前版本的已知限制。       |
 |建立之後，專案會顯示「正在初始化」一段很長的時間     | 手動重新整理頁面。 初始化應該會在大約每秒20資料點時繼續。 缺乏 autorefresh 是已知的問題。         |
@@ -198,7 +198,7 @@ ms.locfileid: "82127576"
 
 針對下列錯誤，請採取下列動作：
 
-|錯誤  | 解決方法  |
+|錯誤  | 解決方案  |
 |---------|---------|
 |部署 web 服務時映射建立失敗     |  將 "pynacl = = 1.2.1" 新增為 Conda 檔案的 pip 相依性以進行映射設定       |
 |`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   將部署中所使用 Vm 的 SKU 變更為具有更多記憶體的 SKU。 |

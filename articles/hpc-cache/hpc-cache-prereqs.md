@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: rohogue
 ms.openlocfilehash: 4508ef7583760a7ef7503f8a6f37202af2684d81
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106503"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC 快取的必要條件
@@ -115,7 +115,7 @@ Azure HPC 快取需要具有下列品質的專用子網：
 
   * 如果您無法使用此`rpcinfo`命令，請確定這些常用的埠允許輸入和輸出流量：
 
-    | 通訊協定 | 連接埠  | 服務  |
+    | 通訊協定 | 連接埠  | Service  |
     |----------|-------|----------|
     | TCP/UDP  | 111   | rpcbind  |
     | TCP/UDP  | 2049  | NFS      |

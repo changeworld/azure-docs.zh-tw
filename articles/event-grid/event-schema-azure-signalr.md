@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: babanisa
 ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133726"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>適用于 SignalR Service 的 Azure 事件方格事件架構
@@ -24,7 +24,7 @@ ms.locfileid: "82133726"
 
 SignalR Service 會發出下列事件種類：
 
-| 事件類型 | 說明 |
+| 事件類型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.signalrservice. ClientConnectionConnected | 當用戶端連接連接時引發。 |
 | Microsoft.signalrservice. ClientConnectionDisconnected | 在用戶端連接中斷連線時引發。 |

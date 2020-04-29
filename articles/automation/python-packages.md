@@ -6,62 +6,62 @@ ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
 ms.openlocfilehash: 9f52dfd92d430abffe5857d231898dd4b0e7745e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81679910"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>管理 Azure 自動化中的 Python 2 封裝
 
-Azure 自動化可讓您在 Azure 和 Linux 混合式 Runbook 背景工作角色上執行 Python 2 Runbook。 若要協助簡化 Runbook，您可以使用 Python 封裝來匯入需要的模組。 本文介紹如何在 Azure 自動化中管理和使用 Python 包。
+Azure 自動化可讓您在 Azure 和 Linux 混合式 Runbook 背景工作角色上執行 Python 2 Runbook。 若要協助簡化 Runbook，您可以使用 Python 封裝來匯入需要的模組。 本文說明如何管理和使用 Azure 自動化中的 Python 套件。
 
 ## <a name="import-packages"></a>匯入套件
 
-在自動化帳戶中,在**分享資源**下選擇**Python 2 套件**。 按一下 [+ 新增 Python 2 封裝]****。
+在您的自動化帳戶中，選取 [**共用資源**] 底下的 [ **Python 2 套件**]。 按一下 [+ 新增 Python 2 封裝]****。
 
 ![新增 Python 封裝](media/python-packages/add-python-package.png)
 
-在 [新增 Python 2 封裝] 頁面上，選取要上載的本機封裝。 包可以是 **.whl**或 **.tar.gz**檔。 選擇包后,單擊 **「確定」** 以上載它。
+在 [新增 Python 2 封裝] 頁面上，選取要上載的本機封裝。 封裝可以是 **.whl**或 **. gz**檔案。 選取封裝後，按一下 **[確定]** 將它上傳。
 
 ![新增 Python 封裝](media/python-packages/upload-package.png)
 
-導入包後,該包將列在自動化帳戶中的 Python 2 包頁面上。 如果需要刪除包,請選擇包並按下「**刪除**」。
+匯入套件之後，它會列在您的自動化帳戶中的 [Python 2 封裝] 頁面上。 如果您需要移除封裝，請選取套件，然後按一下 [**刪除**]。
 
 ![套件清單](media/python-packages/package-list.png)
 
-## <a name="import-packages-with-dependencies"></a>具有相依項匯入套件
+## <a name="import-packages-with-dependencies"></a>匯入具有相依性的套件
 
-Azure 自動化不會在導入過程中解決 python 包的依賴項。 有兩種方法可以導入具有其所有依賴項的包。 只需使用以下步驟之一才能將包導入自動化帳戶。
+在匯入過程中，Azure 自動化不會解析 python 套件的相依性。 有兩種方式可匯入套件及其所有相依性。 只有下列其中一個步驟需要用來將套件匯入至您的自動化帳戶。
 
 ### <a name="manually-download"></a>手動下載
 
-在安裝了[python2.7](https://www.python.org/downloads/release/latest/python2)和[pip](https://pip.pypa.io/en/stable/)的 Windows 64 位元電腦上,執行以下命令以下載套件及其所有依賴項:
+在安裝[python 2.7](https://www.python.org/downloads/release/latest/python2)和[pip](https://pip.pypa.io/en/stable/)的 Windows 64 位電腦上，執行下列命令以下載套件及其所有相依性：
 
 ```cmd
 C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 ```
 
-下載包后,您可以將其導入自動化帳戶。
+下載套件之後，您就可以將它們匯入到您的自動化帳戶。
 
 ### <a name="runbook"></a>Runbook
 
-將 python runbook[匯入 Python 2 包從 pypi 導入 Azure 自動化帳戶](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509),從庫導入自動化帳戶。 確保執行設定設定為**Azure,** 然後使用參數啟動 Runbook。 Runbook 需要一個"運行為"帳戶,以便自動化帳戶正常工作。 對每個參數,請確保使用以下清單和影像中的開關啟動它:
+匯入 python runbook 將[python 2 套件從 pypi](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509)匯入到您的自動化帳戶，從資源庫匯入到 Azure 自動化帳戶。 請確定回合設定已設定為**Azure** ，並使用參數啟動 runbook。 Runbook 需要執行身分帳戶，自動化帳戶才能運作。 針對每個參數，請確定您已使用交換器來啟動它，如下列清單和影像所示：
 
-* -s\<訂閱 Id\>
-* -g\<資源群組\>
-* -一\<個自動化帳戶\>
-* -m\<模組包\>
+* -s \<subscriptionId\>
+* -g \<resourceGroup\>
+* -a \<automationAccount\>
+* -m \<modulePackage\>
 
 ![套件清單](media/python-packages/import-python-runbook.png)
 
-Runbook 允許您指定要下載的包。 例如,使用參數`Azure`會下載所有 Azure 模組和所有依賴項(約 105)。
+Runbook 可讓您指定要下載的套件。 例如，使用`Azure`參數會下載所有 Azure 模組和所有相依性（大約105）。
 
-運行簿完成後,可以檢查自動化帳戶中的**分享資源**下的**Python 2 包**,以驗證包是否正確導入。
+Runbook 完成後，您可以在自動化帳戶中的 [**共用資源**] 底下檢查**Python 2 套件**，以確認套件已正確匯入。
 
 ## <a name="use-a-package-in-a-runbook"></a>在 Runbook 中使用封裝
 
-導入包后,可以在 Runbook 中使用它。 下面的範例使用[Azure 自動化實用程式套件](https://github.com/azureautomation/azure_automation_utility)。 此封裝可讓您更輕鬆配合使用 Python 與 Azure 自動化。 要使用包,請按照 GitHub 儲存庫中的說明將其添加到 Runbook。 例如,可以使用`from azure_automation_utility import get_automation_runas_credential`導入函數以檢索"運行為"帳戶。
+匯入套件之後，您就可以在 runbook 中使用它。 下列範例會使用[Azure 自動化公用程式封裝](https://github.com/azureautomation/azure_automation_utility)。 此封裝可讓您更輕鬆配合使用 Python 與 Azure 自動化。 若要使用套件，請遵循 GitHub 存放庫中的指示，並將其新增至 runbook。 例如，您可以使用`from azure_automation_utility import get_automation_runas_credential`匯入函式來抓取執行身分帳戶。
 
 ```python
 import azure.mgmt.resource
@@ -89,4 +89,4 @@ for group in groups:
 
 ## <a name="next-steps"></a>後續步驟
 
-要開始使用 Python 2 執行簿,請參考[我的第一個 Python 2 執行簿](automation-first-runbook-textual-python2.md)。
+若要開始使用 Python 2 runbook，請參閱[我的第一個 python 2 runbook](automation-first-runbook-textual-python2.md)。

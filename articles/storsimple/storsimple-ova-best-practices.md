@@ -15,15 +15,15 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81460642"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array 的最佳作法
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -159,10 +159,10 @@ StorSimple Virtual Array 可與單一儲存體帳戶相關聯。 此儲存體帳
 
 在虛擬裝置上佈建共用或磁碟區時，請記住下列最佳作法。
 
-* 相對於已佈建的分層式共用大小的檔案大小可能會影響分層效能。 使用大型檔可能會導致層數變慢。使用大型檔時,我們建議最大檔小於共用大小的 3%。
+* 相對於已佈建的分層式共用大小的檔案大小可能會影響分層效能。 使用大型檔案可能會導致較慢的層級。使用大型檔案時，建議最大的檔案小於共用大小的3%。
 * 虛擬陣列上最多可以建立 16 個磁碟區/共用。 如需本機固定和分層式磁碟區/共用的大小限制，請一律參考 [StorSimple Virtual Array 限制](storsimple-ova-limits.md)。
-* 在建立磁碟區時，請將預期的資料使用量以及未來成長量納入考量。 以後無法展開卷或共用。
-* 創建卷/共用後,無法縮小 StorSimple 上的卷/共用大小。
+* 在建立磁碟區時，請將預期的資料使用量以及未來成長量納入考量。 稍後無法擴充磁片區或共用。
+* 建立磁片區/共用之後，您就無法壓縮 StorSimple 上的磁片區/共用大小。
 * 在寫入 StorSimple 上的分層式磁碟區時，當磁碟區資料到達特定臨界值 (相對於保留給磁碟區的本機空間)，就會節流 IO。 繼續寫入這個磁碟區會讓 IO 明顯變慢。 雖然您可以在分層式磁碟區寫入超過其佈建容量 (我們不要主動停止使用者寫入時超出已佈建的容量)，但您會看到警示通知指出您已超過訂閱量。 一旦您看到警示，請務必採取補救措施，例如刪除磁碟區資料 (目前不支援擴充磁碟區)。
 * 針對災害復原使用案例，可允許的共用/磁碟區數目為 16 個，而且可平行處理的共用/磁碟區數目上限也是 16 個，因此共用/磁碟區數目並不會影響到 RPO 和 RTO。
 
@@ -200,7 +200,7 @@ StorSimple Virtual Array 可與單一儲存體帳戶相關聯。 此儲存體帳
 StorSimple Virtual Array 擁有資料安全性和加密功能，可確保資料的機密性和完整性。 在使用這些功能時，建議您遵循下列最佳作法︰ 
 
 * 先定義用來產生 AES-256 加密的雲端儲存體加密金鑰，再將資料從虛擬陣列傳送至雲端。 如果資料一開始就已加密，則不需要此金鑰。 使用金鑰管理系統 (例如 [Azure 金鑰保存庫](../key-vault/general/overview.md)) 即可產生並妥善保存金鑰。
-* 通過 StorSimple Manager 服務配置儲存帳戶時,請確保啟用 TLS 模式,以便在 StorSimple 設備和雲端之間創建用於網路通訊的安全通道。
+* 透過 StorSimple Manager 服務來設定儲存體帳戶時，請確定您已啟用 TLS 模式，以建立 StorSimple 裝置與雲端之間網路通訊的安全通道。
 * 定期重新產生儲存體帳戶的金鑰 (藉由存取 Azure 儲存體服務)，以說明因為系統管理員清單變更而造成的存取權變更。
 * 虛擬陣列上的資料會先壓縮並進行重複資料刪除，再傳送至 Azure。 Windows Server 主機上不建議使用「重複資料刪除」角色服務。
 
@@ -287,6 +287,6 @@ StorSimple Virtual Array 可以自動將資料從本機層提升到 Microsoft Az
 * 從負載平衡的觀點來看，如果部署多個虛擬陣列，建議您將這些陣列分散到不同的 Hypervisor 主機。
 * 分散式檔案系統命名空間中可以部署多個虛擬陣列 (設定為檔案伺服器或 iSCSI 伺服器時)。 如需詳細步驟，請移至 [使用混合式雲端儲存體的分散式檔案系統命名空間解決方案部署指南](https://www.microsoft.com/download/details.aspx?id=45507)。 分散式檔案系統複寫目前不建議用於虛擬陣列。 
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 了解如何透過 StorSimple Manager 服務 [管理 StorSimple Virtual Array](storsimple-virtual-array-manager-service-administration.md) 。
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure IoT 中心大規模自動裝置管理 |微軟文件
-description: 使用 Azure IoT 中心自動設定管理多個 IoT 裝置和模組
+title: 使用 Azure IoT 中樞進行大規模的自動裝置管理 |Microsoft Docs
+description: 使用 Azure IoT 中樞自動設定來管理多個 IoT 裝置和模組
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: robinsh
 ms.openlocfilehash: 276f115f579fbd1ab077722b220a4a0c6c571850
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025062"
 ---
-# <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>使用 Azure 門戶自動 IoT 裝置與模組管理
+# <a name="automatic-iot-device-and-module-management-using-the-azure-portal"></a>使用 Azure 入口網站自動進行 IoT 裝置和模組管理
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Azure IoT Hub 中的自動裝置管理可自動執行管理大型設備佇列的許多重複性和複雜的任務。 通過自動裝置管理,您可以根據設備的屬性定位一組設備,定義所需的配置,然後讓 IoT 中心在設備進入作用域時更新它們。 此更新使用_自動設備配置_或_自動模組配置_完成,它允許您總結完成和合規性,處理合併和衝突,並分階段推出配置。
+Azure IoT 中樞中的自動裝置管理，可將管理大型裝置機群的許多重複且複雜的工作自動化。 使用自動裝置管理時，您可以根據裝置的內容，定義所需的設定，然後讓 IoT 中樞在裝置進入範圍時進行更新。 此更新是使用_自動裝置_設定或_自動模組_設定來完成，這可讓您摘要完成和合規性、處理合併和衝突，以及以階段式方法推出設定。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-自動設備管理的工作原理是更新一組具有所需屬性的設備孿生或模組孿生,並報告基於孿生報告屬性的摘要。  它引入了一個新的類和 JSON 文檔,稱為*配置*,包含三個部分:
+自動裝置管理的運作方式是使用所需的屬性來更新一組裝置 twins 或模組 twins，並根據對應項報告屬性來報告摘要。  它引進了名為設定的新類別和 JSON 檔 *，其中包含*三個部分：
 
-* **目標條件**定義要更新的設備孿生或模組孿生的範圍。 目標條件被指定為對孿生標記和/或報告屬性的查詢。
+* **目標條件**會定義要更新之裝置 twins 或模組 twins 的範圍。 目標條件會指定為對應項標記和（或）報告屬性的查詢。
 
-* **目標內容**定義要在目標設備孿生或模組孿生中添加或更新所需的屬性。 內容包含了一個路徑，連往所要變更屬性的區段。
+* **目標內容**會定義要在目標裝置 twins 或模組 twins 中新增或更新的所需屬性。 內容包含了一個路徑，連往所要變更屬性的區段。
 
-* **計量**會定義各種設定狀態 (例如 **Success**、**Progress** 及 **Error**) 的摘要計數。 自定義指標指定為對孿生報告屬性的查詢。  系統指標是衡量孿生更新狀態的默認指標,例如目標雙胞胎數和已成功更新的雙胞胎數。
+* **計量**會定義各種設定狀態 (例如 **Success**、**Progress** 及 **Error**) 的摘要計數。 自訂計量會指定為對應項報告屬性上的查詢。  系統計量是測量對應項更新狀態的預設度量，例如目標的 twins 數目，以及已成功更新的 twins 數目。
 
-自動配置在創建配置后不久首次運行,然後每隔五分鐘運行一次。 每次運行自動配置時都會運行指標查詢。
+第一次在建立設定之後，以及每隔五分鐘的間隔執行自動設定。 每次執行自動設定時，都會執行計量查詢。
 
-## <a name="implement-twins"></a>實施雙胞胎
+## <a name="implement-twins"></a>執行 twins
 
-自動裝置設定需要使用裝置對應項，以同步處理雲端和裝置之間的狀態。  有關詳細資訊,請參閱在[IoT 中心中瞭解和使用裝置孿生](iot-hub-devguide-device-twins.md)。
+自動裝置設定需要使用裝置對應項，以同步處理雲端和裝置之間的狀態。  如需詳細資訊，請參閱[瞭解及使用 IoT 中樞中的裝置 twins](iot-hub-devguide-device-twins.md)。
 
-自動模組配置需要使用模組孿生來在雲和模組之間同步狀態。 有關詳細資訊,請參閱在[IoT 中心中瞭解和使用模組孿生](iot-hub-devguide-module-twins.md)。
+自動模組設定需要使用模組 twins 來同步處理雲端與模組之間的狀態。 如需詳細資訊，請參閱[瞭解及使用 IoT 中樞中的模組 twins](iot-hub-devguide-module-twins.md)。
 
-## <a name="use-tags-to-target-twins"></a>使用標記定位雙胞胎
+## <a name="use-tags-to-target-twins"></a>使用標籤來以 twins 為目標
 
-在創建配置之前,必須指定要影響的設備或模組。 Azure IoT 中心標識設備並使用設備孿生中的標記,並使用模組孿生中的標記標識模組。 每個設備或模組可以有多個標記,您可以以任何對解決方案有意義的方式定義它們。 例如,如果您管理不同位置的設備,則向設備孿生添加以下標記:
+建立設定之前，您必須指定想要影響的裝置或模組。 Azure IoT 中樞可識別裝置，並在裝置對應項中使用標記，並使用模組對應項中的標籤來識別模組。 每個裝置或模組都可以有多個標籤，而您可以用任何對解決方案有意義的方式來定義它們。 例如，如果您管理不同位置的裝置，請將下列標記新增至裝置對應項：
 
 ```json
 "tags": {
@@ -57,7 +57,7 @@ Azure IoT Hub 中的自動裝置管理可自動執行管理大型設備佇列的
 
 2. 選取 [IoT 裝置組態]****。
 
-3. 選擇 **'新增裝置設定**' 或 **'新增模組' 設定**。
+3. 選取 [**新增裝置**設定] 或 [**新增模組**設定]。
 
    ![新增裝置設定或模組設定](./media/iot-hub-automatic-device-management/create-automatic-configuration.png)
 
@@ -73,9 +73,9 @@ Azure IoT Hub 中的自動裝置管理可自動執行管理大型設備佇列的
 
 ### <a name="specify-settings"></a>指定設定
 
-本節定義要在目標設備或模組孿生中設置的內容。 每組設定都有兩個輸入。 第一個是雙路徑,它是要設置的雙所需屬性中通往 JSON 部分的路徑。  第二個是要插入該區段的 JSON 內容。 
+此區段會定義要在目標裝置或模組 twins 中設定的內容。 每組設定都有兩個輸入。 第一個是對應項路徑，這是將設定之對應項所需屬性內 JSON 區段的路徑。  第二個是要插入該區段的 JSON 內容。 
 
-例如,您可以將雙路徑設定為,`properties.desired.chiller-water`然後提供以下 JSON 內容: 
+例如，您可以將對應項路徑設定為`properties.desired.chiller-water` ，然後提供下列 JSON 內容： 
 
 ```json
 {
@@ -84,24 +84,24 @@ Azure IoT Hub 中的自動裝置管理可自動執行管理大型設備佇列的
 }
 ```
 
-![設定雙路徑與內容](./media/iot-hub-automatic-device-management/module-config-twin-settings.png)
+![設定對應項路徑和內容](./media/iot-hub-automatic-device-management/module-config-twin-settings.png)
 
 
-還可以通過指定整個孿生路徑並提供沒有括弧的值來設置各個設置。 例如,使用雙路徑`properties.desired.chiller-water.temperature`,將內容設定`66`為 。 然後為壓力屬性創建新的雙設置。 
+您也可以藉由指定整個對應項路徑，並提供不含括弧的值，來設定個別設定。 例如，使用對應項路徑`properties.desired.chiller-water.temperature`，將內容設定為。 `66` 然後為 [壓力] 屬性建立新的對應項設定。 
 
-如果兩個或多個配置針對同一雙路徑,則將應用來自最高優先順序配置的內容(優先順序在步驟 4 中定義)。
+如果有兩個或多個設定的目標為相同的對應項路徑，則會套用最高優先順序設定的內容（優先順序定義于步驟4）。
 
-如果要刪除現有屬性,請指定 屬性值`null`到 。
+如果您想要移除現有的屬性，請將屬性值指定`null`為。
 
-您可以通過選擇 **「添加設備孿生設置**」或 **「添加模組孿生設置**」來添加其他設置。
+您可以選取 [**新增裝置**對應項設定] 或 [**新增模組**對應項設定] 來新增其他設定。
 
 ### <a name="specify-metrics-optional"></a>指定計量 (選擇性)
 
-指標提供設備或模組在應用配置內容後可能報告的各種狀態的匯總計數。 例如，您可以建立擱置設定變更的計量、錯誤的計量，以及成功設定變更的計量。
+計量會提供裝置或模組在套用設定內容之後可能回報的各種狀態的摘要計數。 例如，您可以建立擱置設定變更的計量、錯誤的計量，以及成功設定變更的計量。
 
-每個配置最多可以有五個自定義指標。 
+每個設定最多可有五個自訂計量。 
 
-1. 輸入**指標名稱**的名稱。
+1. 輸入 [**度量名稱**] 的名稱。
 
 2. 在 [計量準則]**** 輸入查詢。  查詢是根據裝置對應項報告屬性。  此計量代表查詢所傳回的資料列數目。
 
@@ -120,7 +120,7 @@ SELECT deviceId FROM devices
   WHERE configurations.[[yourconfigname]].status='Applied'
 ```
 
-如果要建置要回報已設定模組的指標,請從中`moduleId``devices.modules`選擇 。 例如：
+如果您要建立度量來報告已設定的模組，請`moduleId`選取`devices.modules`[從]。 例如：
 
 ```sql
 SELECT deviceId, moduleId FROM devices.modules
@@ -129,19 +129,19 @@ SELECT deviceId, moduleId FROM devices.modules
 
 ### <a name="target-devices"></a>目標裝置
 
-使用孿生標記屬性來定位應接收此配置的特定設備或模組。 您還可以定位孿生報告的屬性。
+使用 twins 中的 tags 屬性，將目標設為應該接收此設定的特定裝置或模組。 您也可以將對應項報告屬性設為目標。
 
-自動設備配置只能針對設備孿生標記,而自動模組配置只能針對模組孿生標記。 
+自動裝置設定只能以裝置對應項標記為目標，而自動模組設定只能以模組對應項標記為目標。 
 
-由於多個配置可能針對同一設備或模組,因此每個配置都需要一個優先順序編號。 如果發生衝突，則會優先選擇優先順序最高的設定。 
+因為多個設定可能以相同的裝置或模組為目標，所以每個設定都需要優先順序號碼。 如果發生衝突，則會優先選擇優先順序最高的設定。 
 
 1. 為設定的 [優先順序]**** 輸入一個正整數。 最高的數值會視為最高優先順序。 如果有兩個設定具有相同的優先順序號碼，則會優先選擇最新建立的設定。 
 
-2. 輸入**目標條件**,以確定此設定將針對哪些設備或模組。 條件基於孿生標記或孿生報告屬性,應與表達式格式匹配。 
+2. 輸入**目標條件**，以決定將以這種設定為目標的裝置或模組。 條件是以對應項標記或對應項所報告的屬性為基礎，且應符合運算式格式。 
 
-   對於自動裝置配置,您可以僅指定要定位的標記或報告屬性。 例如，`tags.environment='test'` 或 `properties.reported.chillerProperties.model='4000x'`。 您可以指定 `*` 以將所有裝置設為目標。 
+   針對自動裝置設定，您可以只指定要設為目標的標記或報告屬性。 例如，`tags.environment='test'` 或 `properties.reported.chillerProperties.model='4000x'`。 您可以指定 `*` 以將所有裝置設為目標。 
    
-   對於自動模組配置,請使用查詢指定註冊到IoT中心模組的標記或報告屬性。 例如，`from devices.modules where tags.environment='test'` 或 `from devices.modules where properties.reported.chillerProperties.model='4000x'`。 通配符不能用於針對所有模組。 
+   針對自動模組設定，請使用查詢，從向 IoT 中樞註冊的模組指定標記或報告屬性。 例如，`from devices.modules where tags.environment='test'` 或 `from devices.modules where properties.reported.chillerProperties.model='4000x'`。 萬用字元不能用來以所有模組為目標。 
 
 3. 選取 [下一步]**** 移到最後一個步驟。
 
@@ -161,7 +161,7 @@ SELECT deviceId, moduleId FROM devices.modules
 
    * **識別碼**：設定的名稱。
 
-   * **目標條件**- 用於定義目標設備或模組的查詢。
+   * **目標條件**-用來定義目標裝置或模組的查詢。
 
    * **優先順序**：指派給設定的優先順序號碼。
 
@@ -169,31 +169,31 @@ SELECT deviceId, moduleId FROM devices.modules
 
    * **系統計量**：由 IoT 中樞所計算且無法由開發人員自訂的計量。 [目標] 會指定符合目標條件的裝置對應項數目。 [套用] 會指定由設定所修改的裝置對應項數目，這在有優先順序較高的個別設定同時也做出變更的情況下，可能會包含局部修改。 
 
-   * **自定義指標**- 開發人員指定為對孿生報告屬性的查詢的指標。  每個設定最多可定義五個自訂計量。 
+   * **自訂計量**-由開發人員指定的度量，做為對應項所報告屬性的查詢。  每個設定最多可定義五個自訂計量。 
    
 4. 選取您想要監視的設定。  
 
 5. 檢查設定詳細資料。 針對接收設定的裝置，您可以使用索引標籤來檢視裝置的特定詳細資料。
 
-   * **目標條件**- 與目標條件匹配的設備或模組。 
+   * **目標條件**-符合目標條件的裝置或模組。 
 
-   * **計量**：系統計量和自訂計量的清單。  您可以透過在下拉清單中選擇指標,然後選擇 **「查看裝置**」或「**查看模組**」來查看針對每個指標計算的設備或模組的清單。
+   * **計量**：系統計量和自訂計量的清單。  您可以藉由在下拉式清單中選取計量，然後選取 [**查看裝置**] 或 [**查看模組**]，來查看為每個計量計算的裝置或模組清單。
 
-   * **設備孿生設置**或**模組孿生設置**- 由配置設置的孿生設置。 
+   * **裝置**對應項設定或**模組**對應項設定-設定所設定的對應項設定。 
 
    * **設定標籤**：用來描述設定的機碼值組。  標籤對功能沒有任何影響。 
 
 ## <a name="modify-a-configuration"></a>修改設定
 
-修改設定時,更改會立即複製到所有目標設備或模組。 
+當您修改設定時，變更會立即複寫到所有目標裝置或模組。 
 
 如果您更新目標條件，就會發生下列更新：
 
-* 如果孿生不符合舊的目標條件,但滿足新的目標條件,並且此配置是該孿生的最高優先順序,則應用此配置。 
+* 如果對應項不符合舊的目標條件，但符合新的目標條件，而此設定是該對應項的最高優先順序，則會套用此設定。 
 
-* 如果當前運行此配置的孿生不再滿足目標條件,則配置中的設置將被刪除,並且孿生將由下一個最高優先順序配置修改。 
+* 如果目前正在執行此設定的對應項不再符合目標條件，則會移除設定中的設定，並由下一個最高優先順序的設定來修改對應項。 
 
-* 如果當前運行此配置的孿生不再滿足目標條件,並且不符合任何其他配置的目標條件,則將刪除配置中的設置,並且不會對孿生進行其他更改。 
+* 如果目前執行此設定的對應項不再符合目標條件，且不符合任何其他設定的目標條件，則會移除設定中的設定，而且不會在對應項上進行其他變更。 
 
 若要修改設定，請使用下列步驟： 
 
@@ -230,7 +230,7 @@ SELECT deviceId, moduleId FROM devices.modules
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中,您學習了如何大規模配置和監視 IoT 設備。 遵循下列連結以深入了解如何管理 Azure IoT 中樞：
+在本文中，您已瞭解如何大規模設定和監視 IoT 裝置。 遵循下列連結以深入了解如何管理 Azure IoT 中樞：
 
 * [管理大量的 IoT 中樞裝置身分識別](iot-hub-bulk-identity-mgmt.md)
 * [IoT 中樞度量](iot-hub-metrics.md)
@@ -238,7 +238,7 @@ SELECT deviceId, moduleId FROM devices.modules
 
 若要進一步探索 IoT 中樞的功能，請參閱︰
 
-* [IoT 中心開發人員指南](iot-hub-devguide.md)
+* [IoT 中樞開發人員指南](iot-hub-devguide.md)
 * [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/tutorial-simulate-device-linux.md)
 
 若要探索使用 IoT 中樞裝置佈建服務進行 Just-In-Time 自動佈建，請參閱： 

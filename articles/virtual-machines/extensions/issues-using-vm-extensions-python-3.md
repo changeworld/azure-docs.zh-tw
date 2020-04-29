@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.assetid: 3cd520fd-eaf7-4ef9-b4d3-4827057e5028
 ms.openlocfilehash: 944abc62f25473ea52836af7dc1fdcd1e16d9269
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82120778"
 ---
 # <a name="issues-using-vm-extensions-in-python-3-enabled-linux-azure-virtual-machines-systems"></a>在已啟用 Python 3 的 Linux Azure 虛擬機器系統中使用 VM 擴充功能的問題
@@ -41,7 +41,7 @@ ms.locfileid: "82120778"
 
 就地升級（例如從**Ubuntu 18.04 LTS**升級至**ubuntu 20.04 LTS**）應保留`/usr/bin/python`符號，並保持不受影響。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 在先前于摘要中所述的已知受影響案例中部署擴充功能之前，請先考慮下列一般建議：
 

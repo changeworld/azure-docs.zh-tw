@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: c8273025b92a74286d3f918289ef9f21bd992182
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82143131"
 ---
 # <a name="create-a-power-bi-app-offer"></a>建立 Power BI 應用程式供應項目
@@ -23,7 +23,7 @@ ms.locfileid: "82143131"
 
 下表說明這些資產群組：
 
-|   資產群組      | 說明                                                                         |
+|   資產群組      | 描述                                                                         |
 | ----------------   | ----------------                                                                    |
 | 供應項目設定     | 供應項目的主要識別和名稱。                                      |
 | 技術資訊     | 您用來在用戶端的 Power BI 工作區中安裝應用程式的安裝程式 URL。 如需如何產生此 URL 的詳細資訊，請參閱 [Power BI 應用程式文件](https://go.microsoft.com/fwlink/?linkid=2028636)。 |

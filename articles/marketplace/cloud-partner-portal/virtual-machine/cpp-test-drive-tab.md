@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
 ms.openlocfilehash: adac73d64feb6280c5043776249072e9f7595faa
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142980"
 ---
 # <a name="virtual-machine-test-drive-tab"></a>虛擬機器試用產品索引標籤
@@ -34,7 +34,7 @@ ms.locfileid: "82142980"
 |    欄位                  |       描述                                                            |
 |  ---------                |     ---------------                                                          |
 |  *詳細資料*   |  |
-| **說明\***           | 提供您試用產品情況的概觀。 佈建試用產品時，此文字會顯示給使用者。 此欄位支援基本 HTML，因此您可以提供格式豐富的內容。  |
+| **描述\***           | 提供您試用產品情況的概觀。 佈建試用產品時，此文字會顯示給使用者。 此欄位支援基本 HTML，因此您可以提供格式豐富的內容。  |
 | **使用者手冊\***           | 上傳詳細的使用者手冊 (.pdf)，協助試用產品使用者了解如何使用您的解決方案。  |
 | **試用產品示範影片** | 上傳展示解決方案的影片。  如果您選擇此選項，您必須提供名稱、影片 URL (裝載於 YouTube 或 Vimeo) 和 (533x324 像素) 影片縮圖。 |
 | *技術設定* |  |

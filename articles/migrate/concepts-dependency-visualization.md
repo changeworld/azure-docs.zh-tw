@@ -1,84 +1,84 @@
 ---
-title: Azure 移植伺服器來依分析的相依項分析
-description: 介紹如何使用 Azure 遷移伺服器評估使用依賴項分析進行評估。
+title: Azure Migrate Server 評估中的相依性分析
+description: 說明如何使用相依性分析進行評估，使用 Azure Migrate Server 評估。
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024756"
 ---
 # <a name="dependency-analysis"></a>相依性分析
 
-本文介紹 Azure 遷移:伺服器評估中的依賴項分析。
+本文描述 Azure Migrate 中的相依性分析：伺服器評估。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-依賴項分析可説明您確定要評估和遷移到 Azure 的本地電腦之間的依賴關係。 
+相依性分析可協助您識別您想要評估並遷移至 Azure 的內部部署機器之間的相依性。 
 
-- 在 Azure 遷移:伺服器評估中,將計算機收集到組中,然後評估該組。 依賴關係分析可説明您更準確地對計算機進行分組,並高度自信地進行評估。
-- 依賴項分析使您能夠識別必須一起遷移的計算機。 您可以識別電腦是否正在使用中,或者是否可以停用而不是遷移它們。
-- 分析依賴項有助於確保不會留下任何內容,並避免在遷移期間出現意外中斷。
-- 如果您不確定電腦是否是要遷移到 Azure 的應用部署的一部分,則分析特別有用。
-- [查看](common-questions-discovery-assessment.md#what-is-dependency-visualization)有關依賴項分析的常見問題。
+- 在 Azure Migrate：伺服器評估中，您會將機器收集到群組中，然後評估該群組。 相依性分析可協助您更精確地將機器分組，並具有高信賴度的評量。
+- 相依性分析可讓您識別必須一起遷移的機器。 您可以識別機器是否正在使用中，或者是否可以解除委任，而不是遷移。
+- 分析相依性有助於確保不會留下任何內容，並避免在遷移期間發生意外的中斷。
+- 如果您不確定機器是否屬於您想要遷移至 Azure 的應用程式部署，則分析特別有用。
+- [查看](common-questions-discovery-assessment.md#what-is-dependency-visualization)相依性分析的相關常見問題。
 
-有兩種用於部署相依項分析的選項
+有兩個選項可用於部署相依性分析
 
-- **基於代理**:基於代理的依賴項分析要求在要分析的每個本地電腦上安裝代理。
-- **無代理**:使用無代理分析,您無需在要交叉檢查的電腦上安裝代理。 此選項目前處於預覽狀態,僅適用於 VMware VM。
+- 以代理程式為**基礎**：代理程式相依性分析需要在您要分析的每個內部部署機器上安裝代理程式。
+- **無代理**程式：使用無代理程式分析，您不需要在要交叉檢查的電腦上安裝代理程式。 此選項目前為預覽狀態，且僅適用于 VMware Vm。
 
 > [!NOTE]
-> Azure 政府中不提供基於代理的依賴項分析。 您可以使用無代理依賴項分析。
+> Azure Government 不提供以代理程式為基礎的相依性分析。 您可以使用無代理程式相依性分析。
 
-## <a name="agentless-analysis"></a>沒有代理分析
+## <a name="agentless-analysis"></a>無代理程式分析
 
-無代理依賴項分析的工作原理是從啟用 TCP 連接數據的電腦上捕獲 TCP 連接數據。 要分析的電腦上未安裝代理。
-
-### <a name="collected-data"></a>收集的資料
-
-依賴項發現開始后,設備每隔五分鐘輪詢來自計算機的數據以收集數據。 這些數據通過 vCenter 伺服器通過 vSphere API 從來賓 VM 中收集。 收集的數據在 Azure 遷移設備上處理,以推斷標識資訊,並每六小時發送到 Azure 遷移。
-
-輪詢從電腦收集此資料: 
-- 具有活動連接的進程的名稱。
-- 運行具有活動連接的程序的應用程式的名稱。
-- 活動連接上的目標埠。
-
-## <a name="agent-based-analysis"></a>代理伺服器分析
-
-對於基於代理的分析,伺服器評估使用 Azure 監視器中的[服務映射解決方案](../azure-monitor/insights/service-map.md)來啟用依賴項可視化和分析。 [Microsoft 監視代理/日誌分析代理](../azure-monitor/platform/agents-overview.md#log-analytics-agent)和[依賴項代理](../azure-monitor/platform/agents-overview.md#dependency-agent)必須安裝在要分析的每台電腦上。
+無代理程式相依性分析的運作方式是從已啟用它的機器中，捕獲 TCP 連接資料。 您想要分析的機器上未安裝任何代理程式。
 
 ### <a name="collected-data"></a>收集的資料
 
-對於基於代理的分析,將收集以下數據:
+相依性探索開始之後，設備會每隔五分鐘從機器輪詢資料，以收集資料。 此資料是使用 vSphere Api，透過 vCenter Server 從來賓 Vm 收集而來。 收集的資料會在 Azure Migrate 設備上處理，以推算身分識別資訊，並每隔六小時傳送至 Azure Migrate。
 
-- 源電腦伺服器名稱、程序、應用程式名稱。
-- 目標計算機伺服器名稱、程序、應用程式名稱和埠。
-- 收集連接數、延遲和數據傳輸資訊,並可用於日誌分析查詢。 
+輪詢會從機器收集這種資料： 
+- 具有使用中連接之進程的名稱。
+- 執行具有使用中連接之進程的應用程式名稱。
+- 作用中連接上的目的地埠。
+
+## <a name="agent-based-analysis"></a>以代理程式為基礎的分析
+
+針對以代理程式為基礎的分析，伺服器評估會使用 Azure 監視器中的[服務對應方案](../azure-monitor/insights/service-map.md)來啟用相依性視覺效果和分析。 [Microsoft Monitoring Agent/Log Analytics 代理程式](../azure-monitor/platform/agents-overview.md#log-analytics-agent)和相依性[代理程式](../azure-monitor/platform/agents-overview.md#dependency-agent)必須安裝在您想要分析的每部機器上。
+
+### <a name="collected-data"></a>收集的資料
+
+針對以代理程式為基礎的分析，會收集下列資料：
+
+- 來源電腦伺服器名稱、進程、應用程式名稱。
+- 目的地電腦伺服器名稱、進程、應用程式名稱和埠。
+- 系統會收集連線、延遲和資料傳輸資訊的數目，並可供 Log Analytics 查詢使用。 
 
 
-## <a name="compare-agentless-and-agent-based"></a>比較無代理與代理伺服器
+## <a name="compare-agentless-and-agent-based"></a>比較無代理程式和代理程式型
 
-表中總結了無代理可視化和基於代理的可視化之間的區別。
+「無代理程式」視覺效果和以代理程式為基礎的視覺效果之間的差異摘要于表格中。
 
-**需求** | **無代理程式** | **基於代理**
+**需求** | **無代理程式** | **以代理程式為基礎**
 --- | --- | ---
-支援 | 此選項目前處於預覽狀態,僅適用於 VMware VM。 [查看](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)支援的作業系統。 | 在一般可用性 (GA) 中。
-代理程式 | 無需在要交叉檢查的電腦上安裝代理。 | 要安裝在要分析的每個本地電腦上的[代理伺服器 :Microsoft 監視代理 (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)與[相依項代理](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
-Log Analytics | 不需要。 | Azure 遷移使用[Azure 監視器日誌](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服務映射](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解決方案進行分析。 
-運作方式 | 在啟用依賴項可視化的電腦上捕獲 TCP 連接數據。 發現后,它每隔五分鐘收集數據。 | 安裝在電腦上的服務映射代理收集有關每個進程的 TCP 進程和入站/出站連接的數據。
-資料 | 源電腦伺服器名稱、程序、應用程式名稱。<br/><br/> 目標計算機伺服器名稱、程序、應用程式名稱和埠。 | 源電腦伺服器名稱、程序、應用程式名稱。<br/><br/> 目標計算機伺服器名稱、程序、應用程式名稱和埠。<br/><br/> 收集連接數、延遲和數據傳輸資訊,並可用於日誌分析查詢。 
-視覺效果 | 單個伺服器的依賴項映射可在 1 小時到 30 天的持續時間內查看。 | 單個伺服器的依賴項映射。<br/><br/> 地圖只能查看一個多小時。<br/><br/> 一組伺服器的依賴項映射。<br/><br/> 從地圖檢視添加和刪除組中的伺服器。
-資料匯出 | 目前無法以表格格式下載。 | 數據可以通過日誌分析進行查詢。
+支援 | 此選項目前為預覽狀態，且僅適用于 VMware Vm。 [檢查](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)支援的作業系統。 | 正式運作（GA）。
+代理程式 | 不需要在您要交叉檢查的電腦上安裝代理程式。 | 要在每個您想要分析的內部部署機器上安裝的代理[程式： Microsoft Monitoring agent （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)和[Dependency agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
+Log Analytics | 不需要。 | Azure Migrate 使用[Azure 監視器記錄](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服務對應](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解決方案進行相依性分析。 
+運作方式 | 會在啟用相依性視覺效果的電腦上，捕獲 TCP 連線資料。 探索之後，它會以五分鐘的間隔收集資料。 | 安裝在電腦上的服務對應代理程式會收集有關 TCP 進程的資料，以及每個進程的輸入/輸出連接。
+資料 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。<br/><br/> 系統會收集連線、延遲和資料傳輸資訊的數目，並可供 Log Analytics 查詢使用。 
+視覺效果 | 單一伺服器的相依性對應可以在一小時到30天的期間內查看。 | 單一伺服器的相依性對應。<br/><br/> 只能在一小時內查看對應。<br/><br/> 伺服器群組的相依性對應。<br/><br/> 從地圖視圖新增和移除群組中的伺服器。
+資料匯出 | 目前無法以表格式格式下載。 | 您可以使用 Log Analytics 來查詢資料。
 
 
 
 ## <a name="next-steps"></a>後續步驟
-- 查看為[VMware VM、](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements)[物理伺服器](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)和[超](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)VM 設置基於代理的分析的要求。
-- [查看](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)VMware VM 無代理分析的要求。
-- [設定](how-to-create-group-machine-dependencies.md)基於代理的依賴項視覺化
-- [嘗試](how-to-create-group-machine-dependencies-agentless.md)VMware VM 的無代理依賴項可視化。
-- 檢視有關相依項視覺化的[常見問題](common-questions-discovery-assessment.md#what-is-dependency-visualization)。
+- 針對[VMware vm](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements)、[實體伺服器](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)和[hyper-v vm](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)，審查設定代理程式式分析的需求。
+- 請[參閱](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)VMware vm 的無代理程式分析需求。
+- [設定](how-to-create-group-machine-dependencies.md)以代理程式為基礎的相依性視覺效果
+- [試用](how-to-create-group-machine-dependencies-agentless.md)VMware vm 的無代理程式相依性視覺效果。
+- 查看關於相依性視覺效果的[常見問題](common-questions-discovery-assessment.md#what-is-dependency-visualization)。
 
 

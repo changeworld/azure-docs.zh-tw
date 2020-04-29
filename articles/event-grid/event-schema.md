@@ -9,10 +9,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: babanisa
 ms.openlocfilehash: 7c45b8f634868024a84f9f3b75bb23031c09b40c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82113998"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid 事件結構描述
@@ -87,7 +87,7 @@ ms.locfileid: "82113998"
 | eventType | 字串 | 是 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 是 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 是 | 事件的唯一識別碼。 |
-| data | 物件 (object) | 否 | 資源提供者特有的事件資料。 |
+| data | 物件 | 否 | 資源提供者特有的事件資料。 |
 | dataVersion | 字串 | 否，但會以空值加以戳記。 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 不需要，但如果包含的話，必須完全符合事件方格`metadataVersion`架構（目前僅限`1`）。 如果未包含，事件方格會戳記至事件。 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 

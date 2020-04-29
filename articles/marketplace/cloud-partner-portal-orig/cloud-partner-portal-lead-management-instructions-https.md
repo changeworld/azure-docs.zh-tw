@@ -1,6 +1,6 @@
 ---
-title: 使用 HTTPS 終結點設定潛在顧客管理 |Azure 應用商店
-description: 瞭解如何使用 HTTP 終結點來處理 Microsoft AppSource 和 Azure 應用商店潛在顧客。
+title: 使用 HTTPS 端點設定潛在客戶管理 |Azure Marketplace
+description: 瞭解如何使用 HTTP 端點來處理 Microsoft AppSource 和 Azure Marketplace 潛在客戶。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: dsindona
 ms.openlocfilehash: f56cc5aaad7d77ff8dc753115ef1becb08ddde73
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770205"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>使用 HTTPS 端點設定潛在客戶管理
 
-您可以使用 HTTPS 終結點來處理 Microsoft AppSource 和 Azure 應用商店潛在顧客。 這些潛在顧客可以寫入客戶關係管理 (CRM) 系統,也可以作為電子郵件通知發送。 本文介紹如何使用[Microsoft 電源自動化](https://powerapps.microsoft.com/automate-processes/)自動化服務來配置潛在顧客管理。
+您可以使用 HTTPS 端點來處理 Microsoft AppSource 和 Azure Marketplace 潛在客戶。 這些潛在客戶可以寫入客戶關係管理（CRM）系統，或以電子郵件通知的形式傳送。 本文說明如何使用[Microsoft Power 自動化](https://powerapps.microsoft.com/automate-processes/)自動化服務來設定潛在客戶管理。
 
-## <a name="create-a-flow-using-microsoft-power-automate"></a>使用微軟電源自動功能建立串流
+## <a name="create-a-flow-using-microsoft-power-automate"></a>使用 Microsoft 電源自動化建立流程
 
-1. 打開[電源自動功能](https://flow.microsoft.com/)網頁。 選取 [登入]**** 或選取 [免費註冊]**** 以建立免費的 Flow 帳戶。
+1. 開啟 [[自動啟動](https://flow.microsoft.com/)網頁]。 選取 [登入]**** 或選取 [免費註冊]**** 以建立免費的 Flow 帳戶。
 
 1. 登入並選取功能表列上的 [我的流程]****。
     > [!div class="mx-imgBorder"]
     > ![我的流程](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows.png)
 
-1. 在 **( 新增**) 選擇 =**即時的名稱 。**
+1. 在 [ **+ 新增**] 底下，選取 [ **+ 立即-從空白**]。
     > [!div class="mx-imgBorder"]
     > ![從空白建立](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-1. 命名您的流,然後在 **「選擇如何觸發此流**」下,選擇 **「何時收到 HTTP 請求**」。。
+1. 為您的流程命名，然後在 **[選擇觸發此流程的方式**] 底下，選取 [**收到 HTTP 要求時**]。
 
     > [!div class="mx-imgBorder"]
     > ![選取 HTTP 要求接收觸發程序](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-1. 單擊流步驟以展開它。
+1. 按一下 [流程] 步驟，將它展開。
 
     > [!div class="mx-imgBorder"]
-    > ![展開流步驟](./media/cloud-partner-portal-lead-management-instructions-https/expand-flow-step.png)
+    > ![展開流程步驟](./media/cloud-partner-portal-lead-management-instructions-https/expand-flow-step.png)
 
-1. 使用以下方法之一設定**要求正文 JSON 架構**:
+1. 使用下列其中一種方法來設定**要求主體 JSON 架構**：
 
    - 將此文章結尾的 [JSON 結構描述](#json-schema)複製到**要求本文 JSON 結構描述**文字方塊。
    - 選取 [使用範例承載來產生結構描述]****。 在 [輸入或貼上範例 JSON 承載]**** 文字方塊中，貼上 [JSON 範例](#json-example)。 選取 [完成]**** 以建立結構描述。
@@ -98,11 +98,11 @@ ms.locfileid: "81770205"
 
 ## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>設定您的供應項目，以便將潛在客戶傳送至 HTTPS 端點
 
-為產品/服務配置潛在顧客管理資訊時,為**潛在顧客目標**選擇**HTTPS 終結點**,並貼上一步中複製的 HTTP POST URL 中。  
+當您為供應專案設定潛在客戶管理資訊時，請選取 [ **HTTPS 端點**] 作為 [**潛在客戶目的地**]，並貼上您在上一個步驟中複製的 HTTP POST URL。  
 
 ![新增動態內容](./media/cloud-partner-portal-lead-management-instructions-https/https-image017.png)
 
-生成潛在顧客時,Microsoft 會將潛在顧客發送到您的 Power 自動流,該流將路由到您配置的 CRM 系統或電子郵寄地址。
+當產生潛在客戶時，Microsoft 會將潛在客戶傳送至您的電源自動化流程，這會路由至您所設定的 CRM 系統或電子郵件地址。
 
 ## <a name="json-schema-and-example"></a>JSON 結構描述和範例
 
@@ -171,7 +171,7 @@ JSON 測試範例會使用下列結構描述：
 }
 ```
 
-您可以複製和編輯以下 JSON 範例,以用作流中的測試。
+您可以複製並編輯下列 JSON 範例，做為流程中的測試使用。
 
 ### <a name="json-example"></a>JSON 範例
 

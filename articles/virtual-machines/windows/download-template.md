@@ -1,6 +1,6 @@
 ---
-title: 下載 Azure VM 的樣本
-description: 使用門戶或 PowerShell 下載 VM 的範本。
+title: 下載 Azure VM 的範本
+description: 使用入口網站或 PowerShell 下載 VM 的範本。
 author: cynthn
 manager: gwallace
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
 ms.openlocfilehash: af6905f0ba62a9053e44134348721312ade6b9d7
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085377"
 ---
 # <a name="download-the-template-for-a-vm"></a>下載 VM 的範本

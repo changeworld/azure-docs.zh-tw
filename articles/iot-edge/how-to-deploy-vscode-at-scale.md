@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 92540c57179ae0198f78b588681167fe48097362
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82134360"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>使用 Visual Studio Code 大規模部署 IoT Edge 模組
@@ -24,7 +24,7 @@ ms.locfileid: "82134360"
 
 在本文中，您會設定 Visual Studio Code 和 IoT 擴充功能。 接著，您將瞭解如何將模組部署到一組 IoT Edge 裝置。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure 訂用帳戶中的[IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
 * 已安裝 IoT Edge 執行階段的 [IoT Edge 裝置](how-to-register-device.md#register-with-visual-studio-code)。
@@ -220,7 +220,7 @@ ms.locfileid: "82134360"
 
    指定這些參數的值：
 
-  | 參數 | 說明 |
+  | 參數 | 描述 |
   | --- | --- |
   | 部署 ID | 將在 IoT 中樞中建立的部署名稱。 為部署指定唯一的名稱，最長為 128 個小寫字母。 避免空格和下列無效字元：`& ^ [ ] { } \ | " < > /`。 |
   | 目標條件 | 輸入目標條件，以決定將以這個部署為目標的裝置。條件會以裝置對應項標籤或裝置對應項報告屬性為基礎，且應符合運算式格式。例如， `tags.environment='test' and properties.reported.devicemodel='4000x'`。 |

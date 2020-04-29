@@ -1,6 +1,6 @@
 ---
-title: 依雲端簡單私有雲端管理 Azure VMware 解決方案
-description: 描述可用於管理雲端簡單私有雲端資源和活動的功能
+title: 透過 CloudSimple 私用雲端管理 Azure VMware 解決方案
+description: 描述可用來管理 CloudSimple 私用雲端資源和活動的功能
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/10/2019
@@ -9,15 +9,15 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 13496a18f4c99b69a5b8095caf5b74a04d1bba88
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869290"
 ---
-# <a name="manage-private-cloud-resources-and-activity"></a>管理私有雲資源和活動
+# <a name="manage-private-cloud-resources-and-activity"></a>管理私人雲端資源和活動
 
-私有雲由雲簡單門戶管理。  從 CloudSimple 門戶檢查狀態、可用資源、私有雲上的活動和其他設置。
+私人雲端是從 CloudSimple 入口網站進行管理。  檢查 [狀態]、[可用的資源]、私人雲端上的活動，以及 [CloudSimple] 入口網站中的其他設定。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -25,70 +25,70 @@ ms.locfileid: "81869290"
 
 ## <a name="access-the-cloudsimple-portal"></a>存取 CloudSimple 入口網站
 
-存[取 雲簡單門戶](access-cloudsimple-portal.md)。
+存取[CloudSimple 入口網站](access-cloudsimple-portal.md)。
 
-## <a name="view-the-list-of-private-clouds"></a>檢視私有雲清單
+## <a name="view-the-list-of-private-clouds"></a>查看私人雲端清單
 
-**"資源**"頁上的 **"私有雲**"選項卡列出了訂閱中的所有私有雲。 資訊包括名稱、vSphere 群集的數量、位置、私有雲的當前狀態以及資源資訊。
+[**資源**] 頁面上的 [**私人**雲端] 索引標籤會列出您訂用帳戶中的所有私人雲端。 資訊包括 [名稱]、[vSphere 叢集數目]、[位置]、私人雲端的 [目前狀態] 和 [資源資訊]。
 
-![私有雲頁面](media/manage-private-cloud.png)
+![[私人雲端] 頁面](media/manage-private-cloud.png)
 
-選擇私有雲以獲取其他資訊和操作。
+選取私人雲端以取得其他資訊和動作。
 
-## <a name="private-cloud-summary"></a>私有雲摘要
+## <a name="private-cloud-summary"></a>私人雲端摘要
 
-查看所選私有雲的全面摘要。  摘要頁面包括部署在私有雲上的 DNS 伺服器。  您可以將 DNS 轉發從本地 DNS 伺服器連接到私有雲 DNS 伺服器。  有關 DNS 轉寄的詳細資訊,請參考[設定 DNS 以瞭解本地私有雲 vCenter 的名稱解析](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/)。
+查看所選私用雲端的完整摘要。  [摘要] 頁面包含部署在私人雲端上的 DNS 伺服器。  您可以設定從內部部署 DNS 伺服器到私人雲端 DNS 伺服器的 DNS 轉送。  如需 DNS 轉送的詳細資訊，請參閱針對[私人雲端 vCenter 從內部部署設定 DNS 以進行名稱解析](https://docs.microsoft.com/azure/vmware-cloudsimple/on-premises-dns-setup/)。
 
-![私有雲摘要](media/private-cloud-summary.png)
-
-### <a name="available-actions"></a>可用動作
-
-* [啟動 vSphere 用戶端](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access)。 訪問此私有雲的 vCenter。
-* [購買節點](create-nodes.md)。 向此私有雲添加節點。
-* [展開](expand-private-cloud.md)。 向此私有雲添加節點。
-* **刷新**。 更新此頁面上的資訊。
-* **刪除**。 您可以隨時刪除私有雲。 **在刪除之前,請確保已備份所有系統和數據。** 刪除私有雲將刪除所有 VM、vCenter 配置和數據。 按下所選私有雲的摘要部分中的 **「刪除**」。 刪除后,所有私有雲數據在安全、高度合規的擦除過程中被擦除。
-* [變更 vSphere 權限](escalate-private-cloud-privileges.md)。  上報您在此私有雲上的許可權。
-
-## <a name="private-cloud-vlanssubnets"></a>私有雲 VLANS/子網
-
-查看選取的私有雲端的已定義 VLAN/子網的清單。  該清單包括創建私有雲時創建的管理 VLAN/子網。
-
-![私有雲 - VLAN/子網](media/private-cloud-vlans-subnets.png) 
+![私人雲端摘要](media/private-cloud-summary.png)
 
 ### <a name="available-actions"></a>可用動作
 
-* [新增 VLANS/子網](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)。 向此私有雲添加 VLAN/子集。
+* [啟動 vSphere 用戶端](https://docs.microsoft.com/azure/vmware-cloudsimple/vcenter-access)。 存取此私人雲端的 vCenter。
+* [購買節點](create-nodes.md)。 將節點新增至此私人雲端。
+* [展開](expand-private-cloud.md)。 將節點新增至此私人雲端。
+* 重新**整理。** 更新此頁面上的資訊。
+* **刪除**。 您可以隨時刪除私人雲端。 **在刪除之前，請確定您已備份所有系統和資料。** 刪除私人雲端會刪除所有的 Vm、vCenter 設定和資料。 在所選私用雲端的 [摘要] 區段中，按一下 [**刪除**]。 刪除之後，所有私用雲端資料都會以安全且高度相容的抹除程式來清除。
+* [變更 vSphere 許可權](escalate-private-cloud-privileges.md)。  在此私人雲端上提升您的許可權。
 
-選擇 VLAN/子網路以進行以下動作
-* [附加防火牆表](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/)。 將防火牆表附加到此私有雲。
+## <a name="private-cloud-vlanssubnets"></a>私人雲端 VLAN/子網
+
+針對選取的私人雲端，查看已定義的 Vlan/子網清單。  此清單包含建立私人雲端時所建立的管理 Vlan/子網。
+
+![私用雲端-Vlan/子網](media/private-cloud-vlans-subnets.png) 
+
+### <a name="available-actions"></a>可用動作
+
+* [新增 vlan/子網](https://docs.microsoft.com/azure/vmware-cloudsimple/create-vlan-subnet/)。 將 VLAN/子集新增至此私人雲端。
+
+選取 VLAN/子網以執行下列動作
+* [附加防火牆資料表](https://docs.microsoft.com/azure/vmware-cloudsimple/firewall/)。 將防火牆資料表附加到此私人雲端。
 * **編輯**
-* **刪除**(只有限制使用者定義的 VLAN/子網路)
+* **刪除**（僅限使用者定義的 Vlan/子網）
 
-## <a name="private-cloud-activity"></a>私有雲活動
+## <a name="private-cloud-activity"></a>私用雲端活動
 
-查看所選私有雲的以下資訊。  活動資訊是所選私有雲所有活動的篩選清單。  此頁面顯示多達 25 個最近的活動。
+查看所選取私人雲端的下列資訊。  活動資訊是所選私人雲端之所有活動的篩選清單。  此頁面會顯示最多25個最近的活動。
 
 * 最近的警示
-* 最近事件
+* 最近的事件
 * 最近的工作
-* 最近的審計
+* 最近的審核
 
-![私有雲 - 活動](media/private-cloud-activity.png)
+![私用雲端-活動](media/private-cloud-activity.png)
 
-## <a name="cloud-racks"></a>雲機架
+## <a name="cloud-racks"></a>雲端機架
 
-雲機架是私有雲的構建基塊。 每個機架提供一個容量單元。 CloudSimple 在創建或擴展私有雲時,根據您的選擇自動配置雲機架。  查看雲機架的完整清單,包括每個雲分配給的私有雲。
+雲端機架是私用雲端的基礎構件。 每個機架都會提供一個單位的容量。 CloudSimple 會在您建立或擴充私人雲端時，根據您的選擇自動設定雲端機架。  查看雲端機架的完整清單，包括每個已指派給的私人雲端。
 
-![私有雲 - 雲機架](media/private-cloud-cloudracks.png)
+![私用雲端-雲端機架](media/private-cloud-cloudracks.png)
 
 ## <a name="vsphere-management-network"></a>vSphere 管理網路
 
-當前在私有雲端配置的 VMware 管理資源和虛擬機器的清單。 資訊包括軟體版本、完全限定的功能變數名稱 (FQDN) 和資源的 IP 位址。
+目前在私人雲端上設定的 VMware 管理資源和虛擬機器清單。 資訊包括軟體版本、完整功能變數名稱（FQDN），以及資源的 IP 位址。
 
-![私有雲 - vSphere 管理網路](media/private-cloud-vsphere-management-network.png)
+![私用雲端-vSphere 管理網路](media/private-cloud-vsphere-management-network.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 * [在 Azure 上取用 VMware VM](quickstart-create-vmware-virtual-machine.md)
-* 瞭解有關[私有雲](cloudsimple-private-cloud.md)的更多
+* 深入瞭解[私人](cloudsimple-private-cloud.md)雲端

@@ -1,7 +1,7 @@
 ---
-title: 解釋&解釋 Python 中的 ML 模型
+title: 解讀 & 在 Python 中說明 ML 模型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何獲取有關機器學習模型如何確定功能重要性的說明,並在使用 Azure 機器學習 SDK 時進行預測。
+description: 瞭解如何在使用 Azure Machine Learning SDK 時，取得機器學習服務模型判斷功能重要性及進行預測的說明。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,43 +11,43 @@ author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
 ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81769812"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>使用可解釋性包解釋 Python 中&預測的 ML 模型
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>使用 interpretability 套件來說明 Python 中 & 預測的 ML 模型
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在此操作指南中,您將瞭解如何使用 Azure 機器學習 Python SDK 的可解釋性套件來執行以下任務:
+在本操作指南中，您將瞭解如何使用 Azure Machine Learning Python SDK 的 interpretability 套件來執行下列工作：
 
 
-* 在本地解釋個人計算機上的整個模型行為或單個預測。
+* 在本機上說明整個模型行為或個人電腦上的個別預測。
 
-* 為工程功能啟用可解釋性技術。
+* 啟用 interpretability 技術來設計功能。
 
-* 解釋 Azure 中整個模型和單個預測的行為。
+* 說明 Azure 中整個模型和個別預測的行為。
 
-* 使用可視化儀錶板與模型說明進行交互。
+* 使用視覺效果儀表板來與您的模型說明互動。
 
-* 在模型旁邊部署評分解釋器,以觀察推斷過程中的說明。
+* 將評分說明與您的模型一起部署，以觀察推斷期間的說明。
 
 
 
-有關支援的可解釋性技術和機器學習模型的詳細資訊,請參閱 Azure 機器學習和[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)[中的模型可解釋性](how-to-machine-learning-interpretability.md)。
+如需有關支援的 interpretability 技術和機器學習模型的詳細資訊，請參閱[模型 interpretability （位於 Azure Machine Learning](how-to-machine-learning-interpretability.md)和[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)中）。
 
-## <a name="generate-feature-importance-value-on-your-personal-machine"></a>在個人電腦產生功能重要性值 
-下面的示例演示如何在不聯繫 Azure 服務的情況下在個人計算機上使用可解釋性包。
+## <a name="generate-feature-importance-value-on-your-personal-machine"></a>在您的個人電腦上產生功能重要性值 
+下列範例顯示如何在您的個人電腦上使用 interpretability 套件，而不需要聯絡 Azure 服務。
 
-1. 安裝`azureml-interpret`和`azureml-contrib-interpret`打包。
+1. 安裝`azureml-interpret`和`azureml-contrib-interpret`套件。
     ```bash
     pip install azureml-interpret
     pip install azureml-contrib-interpret
     ```
 
-2. 在本地聚居器筆記本中訓練示例模型。
+2. 在本機 Jupyter 筆記本中訓練範例模型。
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -67,13 +67,13 @@ ms.locfileid: "81769812"
     model = clf.fit(x_train, y_train)
     ```
 
-3. 在本地呼叫解釋者。
-   * 要初始化解釋器物件,請將模型和一些訓練數據傳遞給解釋器的構造函數。
-   * 為了使解釋和可視化更加豐富,如果執行分類,可以選擇傳遞要素名稱和輸出類名稱。
+3. 在本機呼叫說明。
+   * 若要初始化說明物件，請將您的模型和一些定型資料傳遞至說明的函式。
+   * 若要讓您的說明和視覺效果更具資訊性，您可以在執行分類時選擇傳入功能名稱和輸出類別名稱。
 
-   以下代碼塊演示如何實例化解釋器物件,`TabularExplainer``MimicExplainer``PFIExplainer`以及本地。
-   * `TabularExplainer`呼叫下面三個 SHAP 直譯`TreeExplainer``DeepExplainer`器之`KernelExplainer`一 (, 或 )。
-   * `TabularExplainer`自動為用例選擇最合適的一個,但您可以直接調用其三個基礎解釋器中的每個。
+   下列程式碼區塊示範如何使用、 `TabularExplainer` `MimicExplainer`和`PFIExplainer`在本機具現化說明物件。
+   * `TabularExplainer`呼叫底下三個 SHAP explainers 的其中一個`TreeExplainer`（ `DeepExplainer`、或`KernelExplainer`）。
+   * `TabularExplainer`會自動為您的使用案例選取最適合的一個，但是您可以直接呼叫它的三個基礎 explainers。
 
     ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -122,9 +122,9 @@ ms.locfileid: "81769812"
                              classes=classes)
     ```
 
-### <a name="explain-the-entire-model-behavior-global-explanation"></a>解釋整個模型行為(全域解釋) 
+### <a name="explain-the-entire-model-behavior-global-explanation"></a>說明整個模型行為（全域說明） 
 
-請參閱以下範例,以説明您獲取聚合(全域)要素重要性值。
+請參閱下列範例，以協助您取得匯總（全域）功能的重要性值。
 
 ```python
 
@@ -143,10 +143,10 @@ dict(zip(sorted_global_importance_names, sorted_global_importance_values))
 global_explanation.get_feature_importance_dict()
 ```
 
-### <a name="explain-an-individual-prediction-local-explanation"></a>解釋單一預測(本地解釋)
-通過調用單個實例或一組實例的說明來獲取不同數據點的單個要素重要性值。
+### <a name="explain-an-individual-prediction-local-explanation"></a>說明個別的預測（本機說明）
+藉由呼叫個別實例或實例群組的說明，取得不同資料點的個別功能重要性值。
 > [!NOTE]
-> `PFIExplainer`不支援本地解釋。
+> `PFIExplainer`不支援本機說明。
 
 ```python
 # get explanation for the first data point in the test set
@@ -157,13 +157,13 @@ sorted_local_importance_names = local_explanation.get_ranked_local_names()
 sorted_local_importance_values = local_explanation.get_ranked_local_values()
 ```
 
-### <a name="raw-feature-transformations"></a>原始特徵轉換
+### <a name="raw-feature-transformations"></a>原始功能轉換
 
-您可以選擇從原始、未轉換的功能(而非工程特徵)獲得解釋。 對於此選項,您將功能轉換管道傳遞給中的`train_explain.py`解釋器。 否則,解釋器會根據工程特徵提供解釋。
+您可以選擇根據原始的未轉換功能，而不是設計的功能來取得說明。 在此選項中，您會將功能轉換管線傳遞至中`train_explain.py`的說明。 否則，說明會提供工程化功能的說明。
 
-支援的轉換格式與[「學習熊貓」](https://github.com/scikit-learn-contrib/sklearn-pandas)中所述的格式相同。 通常,只要任何轉換在單個列上操作,即可支援任何轉換,以便它們顯然是一對多的。
+支援的轉換格式與[sklearn-pandas](https://github.com/scikit-learn-contrib/sklearn-pandas)中所述相同。 一般而言，只要作業在單一資料行上運作，就可以支援任何轉換，讓它們清楚地是一對多的。
 
-通過使用 或帶有已安裝變壓器元`sklearn.compose.ColumnTransformer`數 列表,獲取有關原始功能的說明。 下面的範例使用`sklearn.compose.ColumnTransformer`。
+使用`sklearn.compose.ColumnTransformer`或搭配合適的轉換器元組清單，取得原始功能的說明。 下列範例會使用`sklearn.compose.ColumnTransformer`。
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -197,7 +197,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
                                      transformations=preprocessor)
 ```
 
-如果要使用已安裝的變壓器套件清單執行範例,請使用以下代碼:
+如果您想要以合適的轉換器元組清單來執行範例，請使用下列程式碼：
 
 ```python
 from sklearn.pipeline import Pipeline
@@ -231,14 +231,14 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
                                      transformations=transformations)
 ```
 
-## <a name="generate-feature-importance-values-via-remote-runs"></a>以遠端執行產生要素重要性值
+## <a name="generate-feature-importance-values-via-remote-runs"></a>透過遠端執行產生功能重要性值
 
-下面的範例展示如何使用`ExplanationClient`類 為遠端運行啟用模型可解釋性。 它在概念上類似於本地流程,但您除外:
+下列範例會示範如何使用`ExplanationClient`類別來啟用遠端執行的模型 interpretability。 它在概念上類似于本機進程，不同之處在于：
 
-* 使用`ExplanationClient`遠端運行中上載可解釋性上下文。
-* 稍後在本地環境中下載上下文。
+* 使用遠端`ExplanationClient`執行中的來上傳 interpretability 內容。
+* 稍後在本機環境中下載內容。
 
-1. 安裝`azureml-interpret`和`azureml-interpret-contrib`打包。
+1. 安裝`azureml-interpret`和`azureml-interpret-contrib`套件。
     ```bash
     pip install azureml-interpret
     pip install azureml-interpret-contrib
@@ -274,9 +274,9 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. 將 Azure 機器學習計算設置為計算目標,並提交培訓運行。 請參閱[為模型培訓設置計算目標](how-to-set-up-training-targets.md#amlcompute),瞭解說明。 您可能還會發現[示例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)很有用。
+1. 設定 Azure Machine Learning 計算作為計算目標，並提交定型回合。 如需相關指示，請參閱為[模型定型設定計算目標](how-to-set-up-training-targets.md#amlcompute)。 您可能也會發現[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)很有用。
 
-1. 在您當地的 Jupyter 筆記本中下載說明。
+1. 在您的本機 Jupyter 筆記本中下載說明。
 
     ```python
     from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
@@ -297,42 +297,42 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="visualizations"></a>視覺效果
 
-在本地 Jupyter 筆記本中下載說明後,可以使用可視化儀錶板來理解和解釋模型。
+在您的本機 Jupyter 筆記本中下載說明之後，您可以使用 [視覺效果儀表板] 來瞭解並解讀您的模型。
 
-### <a name="understand-entire-model-behavior-global-explanation"></a>瞭解整個模型行為(全域解釋) 
+### <a name="understand-entire-model-behavior-global-explanation"></a>瞭解整個模型行為（全域說明） 
 
-以下圖提供了已訓練模型的總體視圖及其預測和說明。
+下圖提供定型模型的整體觀點，以及其預測和說明。
 
-|情節|描述|
+|標|描述|
 |----|-----------|
-|資料探索| 顯示數據集的概覽以及預測值。|
-|全球重要性|聚合具有單個數據點的重要性值,以顯示模型的總體頂部 K(可配置 K) 重要要素。 幫助瞭解基礎模型的整體行為。|
-|解釋探索|演示要素如何影響模型預測值的變化或預測值的概率。 顯示要素交互的影響。|
-|摘要重要性|在所有數據點上使用單個要素重要性值來顯示每個要素對預測值的影響分佈。 使用此關係圖,可以調查要素值對預測值的影響方向。
+|資料探索| 顯示資料集和預測值的總覽。|
+|全球重要性|匯總個別資料點的特徵重要性值，以顯示模型的整體主要 K （可設定的 K）重要功能。 有助於瞭解基礎模型的整體行為。|
+|說明探索|示範功能如何影響模型預測值的變更，或預測值的機率。 顯示功能互動的影響。|
+|摘要重要性|在所有資料點上使用個別功能重要性值，以顯示每項功能對預測值的影響分佈。 您可以使用此圖表來調查功能值影響預測值的方向。
 |
 
-[![視覺化儀錶板全域](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
+[![視覺效果儀表板全域](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
 
-### <a name="understand-individual-predictions-local-explanation"></a>瞭解單一預測(本地解釋) 
+### <a name="understand-individual-predictions-local-explanation"></a>瞭解個別預測（本機說明） 
 
-通過單擊任何整體圖中的任何單個數據點,可以載入任何數據點的單個要素重要性圖。
+您可以按一下任何一種整體繪圖中的任何個別資料點，為任何資料點載入個別功能的重要性圖。
 
-|情節|描述|
+|標|描述|
 |----|-----------|
-|本機重要性|顯示單個預測的前 K(可配置 K)重要要素。 有助於說明基礎模型在特定數據點上的局部行為。|
-|擾動探索(如果分析)|允許更改所選數據點的要素值,並觀察對預測值的結果更改。|
-|個人條件期望 (ICE)| 允許要素值從最小值更改為最大值。 有助於說明當要素更改時數據點的預測如何變化。|
+|本機重要性|顯示個別預測的前 K 個（可設定的 K）重要功能。 協助說明特定資料點上基礎模型的本機行為。|
+|Perturbation 探索（如果分析）|允許變更所選資料點的功能值，並觀察對預測值所產生的變更。|
+|個別條件式預期（ICE）| 允許將功能值從最小值變更為最大值。 協助說明當功能變更時，資料點的預測如何改變。|
 
-[![視覺化儀表板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
-
-
-[![視覺化儀錶板功能擾動](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
+[![視覺效果儀表板區域功能重要性](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
 
 
-[![視覺化儀表板 ICE 繪圖](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
+[![視覺效果儀表板功能 Perturbation](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
+
+
+[![視覺效果儀表板 ICE 繪圖](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
 
 > [!NOTE]
-> 在 Jupyter 內核啟動之前,請確保為可視化儀錶板啟用小部件擴展。
+> 在 Jupyter 核心啟動之前，請確定您已啟用視覺效果儀表板的 widget 延伸模組。
 
 * Jupyter Notebook
 
@@ -341,14 +341,14 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
     ```
 
-* 朱皮特拉布
+* JupyterLab
 
     ```shell
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
     jupyter labextension install microsoft-mli-widget
     ```
 
-要載入視覺化儀表板,請使用以下代碼。
+若要載入視覺效果儀表板，請使用下列程式碼。
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -356,30 +356,30 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, x_test)
 ```
 
-### <a name="visualization-in-azure-machine-learning-studio"></a>Azure 機器學習工作室中的視覺化
+### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning studio 中的視覺效果
 
-如果完成[遠端可解釋性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)步驟(將生成的解釋上載到 Azure 機器學習運行歷史記錄),則可以在[Azure 機器學習工作室](https://ml.azure.com)中查看可視化儀錶板。 此儀錶板是上面解釋的可視化儀錶板的較簡單的版本(由於工作室中沒有可以執行其實時計算的活動計算,因此禁用了解釋探索和 ICE 繪圖)。
+如果您完成[遠端 interpretability](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)步驟（將產生的說明上傳至 Azure Machine Learning 執行歷程記錄），您可以在[Azure Machine Learning studio](https://ml.azure.com)中查看視覺效果儀表板。 此儀表板是上述視覺效果儀表板的較簡單版本（說明探索和 ICE 繪圖已停用，因為 studio 中沒有可執行其即時運算的作用中計算）。
 
-如果數據集、全域和本地說明可用,則數據將填充所有選項卡(擾動探索和 ICE 除外)。 如果只有全域說明可用,則禁用「摘要重要性」選項卡和所有本地說明選項卡。
+如果有資料集、全域和本機說明，則資料會填入所有索引標籤（Perturbation 探索和 ICE 除外）。 如果只有全域說明可供使用，則會停用 [摘要重要性] 索引標籤和所有 [本機說明] 索引標籤。
 
-按照以下路徑之一訪問 Azure 機器學習工作室中的可視化儀錶板:
+遵循下列其中一個路徑來存取 Azure Machine Learning studio 中的視覺效果儀表板：
 
-* **實驗**窗格(預覽)
-  1. 在左側窗格中選擇 **「實驗」** 以查看在 Azure 機器學習上運行的實驗清單。
-  1. 選擇特定實驗以查看該實驗中的所有運行。
-  1. 選擇執行,然後選擇「**解釋」** 選項卡到解釋可視化儀錶板。
+* **實驗**窗格（預覽）
+  1. 在左窗格中選取 [**實驗**]，以查看您在 Azure Machine Learning 上執行的實驗清單。
+  1. 選取特定的實驗，以在該實驗中查看所有執行。
+  1. 依序選取 [執行] 和 [說明] 視覺效果儀表板的 [**說明**] 索引標籤。
 
-   [![視覺化儀表板本地功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![視覺效果儀表板區域功能重要性](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
 
 * **模型**窗格
-  1. 如果按照[Azure 機器學習中的「部署模型」](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步驟註冊原始模型,則可以在左側窗格中選擇 **「模型**」來查看它。
-  1. 選擇模型,然後選擇 **「說明」** 選項卡以查看解釋可視化儀錶板。
+  1. 如果您[依照使用 Azure Machine Learning 部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步驟來註冊原始模型，您可以選取左窗格中的 [**模型**] 來進行查看。
+  1. 選取模型，然後選取 [**說明**] 索引標籤，以查看說明視覺效果儀表板。
 
-## <a name="interpretability-at-inference-time"></a>推理時的解釋性
+## <a name="interpretability-at-inference-time"></a>在推斷階段 Interpretability
 
-您可以將解釋器與原始模型一起部署,並在推理時使用它為新任何新數據點提供單個要素重要性值(本地解釋)。 我們還提供較輕的評分解釋器,以提高推理時的解釋性能。 部署較輕的評分解釋器的過程類似於部署模型,包括以下步驟:
+您可以部署說明和原始模型，並在推斷時使用它，針對新的任何新的時間點提供個別功能的重要性值（本機說明）。 我們也提供較輕量的評分 explainers，以在推斷階段改善 interpretability 效能。 部署較輕量計分說明的程式類似于部署模型，並包含下列步驟：
 
-1. 創建解釋物件。 例如,可以使用`TabularExplainer`:
+1. 建立說明物件。 例如，您可以使用`TabularExplainer`：
 
    ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -392,7 +392,7 @@ ExplanationDashboard(global_explanation, model, x_test)
                                 transformations=transformations)
    ```
 
-1. 使用解釋對象創建評分解釋器。
+1. 使用說明物件建立評分說明。
 
    ```python
    from azureml.interpret.scoring.scoring_explainer import KernelScoringExplainer, save
@@ -406,7 +406,7 @@ ExplanationDashboard(global_explanation, model, x_test)
    save(scoring_explainer, directory=OUTPUT_DIR, exist_ok=True)
    ```
 
-1. 配置並註冊使用評分解釋器模型的圖像。
+1. 設定並註冊使用評分說明模型的影像。
 
    ```python
    # register explainer model using the path from ScoringExplainer.save - could be done on remote compute
@@ -418,7 +418,7 @@ ExplanationDashboard(global_explanation, model, x_test)
    print(scoring_explainer_model.name, scoring_explainer_model.id, scoring_explainer_model.version, sep = '\t')
    ```
 
-1. 作為可選步驟,可以從雲檢索評分解釋器並測試說明。
+1. 您可以選擇從雲端抓取評分說明並測試說明，這是選擇性步驟。
 
    ```python
    from azureml.interpret.scoring.scoring_explainer import load
@@ -435,11 +435,11 @@ ExplanationDashboard(global_explanation, model, x_test)
    print(preds)
    ```
 
-1. 依以下步驟將映像部署到計算目標:
+1. 依照下列步驟，將映射部署到計算目標：
 
-   1. 如果需要,請按照[Azure 機器學習中部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步驟註冊原始預測模型。
+   1. 如有需要，請遵循[使用 Azure Machine Learning 部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)中的步驟來註冊您的原始預測模型。
 
-   1. 創建評分檔。
+   1. 建立評分檔案。
 
          ```python
          %%writefile score.py
@@ -477,7 +477,7 @@ ExplanationDashboard(global_explanation, model, x_test)
          ```
    1. 定義部署設定。
 
-         此配置取決於模型的要求。 下面的範例定義使用一個 CPU 內核和一 GB 記憶體的配置。
+         此設定取決於您模型的需求。 下列範例會定義使用一個 CPU 核心和一個 GB 記憶體的設定。
 
          ```python
          from azureml.core.webservice import AciWebservice
@@ -489,7 +489,7 @@ ExplanationDashboard(global_explanation, model, x_test)
                                                     description='Get local explanations for NAME_OF_THE_PROBLEM')
          ```
 
-   1. 創建具有環境依賴性的檔。
+   1. 建立具有環境相依性的檔案。
 
          ```python
          from azureml.core.conda_dependencies import CondaDependencies
@@ -512,16 +512,16 @@ ExplanationDashboard(global_explanation, model, x_test)
             print(f.read())
          ```
 
-   1. 建立安裝 g# 的自訂 Docker 檔案。
+   1. 建立已安裝 g + + 的自訂 dockerfile。
 
          ```python
          %%writefile dockerfile
          RUN apt-get update && apt-get install -y g++
          ```
 
-   1. 部署創建的映射。
+   1. 部署所建立的映射。
    
-         此過程大約需要五分鐘。
+         此程式大約需要五分鐘的時間。
 
          ```python
          from azureml.core.webservice import Webservice
@@ -568,7 +568,7 @@ ExplanationDashboard(global_explanation, model, x_test)
 
 ## <a name="next-steps"></a>後續步驟
 
-[瞭解有關模型可解釋性的更多](how-to-machine-learning-interpretability.md)
+[深入瞭解模型 interpretability](how-to-machine-learning-interpretability.md)
 
-[檢視 Azure 機器學習可解釋性範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
+[查看 Azure Machine Learning Interpretability 範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
 

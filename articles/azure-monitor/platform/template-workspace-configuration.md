@@ -1,5 +1,5 @@
 ---
-title: 紀錄分析工作區的 Azure 資源管理員樣本
+title: 適用于 Log Analytics 工作區的 Azure Resource Manager 範本
 description: 您可以使用 Azure Resource Manager 範本來建立和設定 Log Analytics 工作區。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,19 +7,19 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
 ms.openlocfilehash: dbeaa58da109c5afceb03a560e69e0c8bf63ad42
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768126"
 ---
-# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure 資源管理員樣本管理紀錄分析工作區
+# <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本管理 Log Analytics 工作區
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-可以使用[Azure 資源管理器範本](../../azure-resource-manager/templates/template-syntax.md)在 Azure 監視器中創建和配置日誌分析工作區。 您可以使用範本執行的工作範例包括︰
+您可以使用[Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)，在 Azure 監視器中建立和設定 Log Analytics 工作區。 您可以使用範本執行的工作範例包括︰
 
-* 建立工作區,包括設定定價層和容量預留
+* 建立工作區，包括設定定價層和容量保留
 * 新增解決方案
 * 建立已儲存的搜尋
 * 建立電腦群組
@@ -27,7 +27,7 @@ ms.locfileid: "81768126"
 * 從 Linux 和 Windows 電腦收集效能計數器
 * 在 Linux 電腦上收集 syslog 事件 
 * 從 Windows 事件記錄收集事件
-* 從 Windows 電腦收集自訂紀錄
+* 從 Windows 電腦收集自訂記錄檔
 * 將記錄分析代理程式加入至 Azure 虛擬機器
 * 設定記錄分析將 Azure 診斷所收集的資料編製索引
 
@@ -46,22 +46,22 @@ ms.locfileid: "81768126"
 
 ## <a name="create-a-log-analytics-workspace"></a>建立 Log Analytics 工作區
 
-下面的範例使用本地電腦中的範本創建工作區。 JSON 範本配置為僅需要新工作區的名稱和位置。 它使用為其他工作區參數指定的值,如[訪問控制模式](design-logs-deployment.md#access-control-mode)、定價層、保留和容量預留級別。
+下列範例會使用您本機電腦上的範本來建立工作區。 JSON 範本會設定為只需要新工作區的名稱和位置。 它會使用針對其他工作區參數指定的值，例如[存取控制模式](design-logs-deployment.md#access-control-mode)、定價層、保留和容量保留層級。
 
 > [!WARNING]
-> 以下範本創建日誌分析工作區並配置數據收集。 這可能會更改您的計費設置。 使用[Azure 監視器日誌查看管理使用方式和成本](manage-cost-storage.md),以瞭解日誌分析工作區中收集的數據的計費,然後再將其應用於 Azure 環境。
+> 下列範本會建立 Log Analytics 工作區，並設定資料收集。 這可能會變更您的帳單設定。 請參閱[使用 Azure 監視器記錄來管理使用量和成本](manage-cost-storage.md)，以瞭解 Log Analytics 工作區中所收集資料的計費，然後再將它套用至您的 Azure 環境。
 
-對於容量預留,通過指定屬性`CapacityReservation``capacityReservationLevel`的 SKU 和 GB 的值來定義用於引入數據的選定容量預留。 以下清單詳細介紹了配置受支援的值和行為。
+針對容量保留，您可以藉由指定 SKU `CapacityReservation`和屬性`capacityReservationLevel`的值（以 GB 為單位），為內嵌資料定義選取的容量保留。 下列清單詳細說明設定時支援的值和行為。
 
-- 設置預訂限制后,您不能在 31 天內更改為其他 SKU。
+- 設定保留限制之後，您就無法在31天內變更為不同的 SKU。
 
-- 設置預留值後,只能在 31 天內增加預訂值。
+- 設定保留值後，您只能在31天內增加。
 
-- 只能以 100`capacityReservationLevel`的倍數設置的值,最大值為 50000。
+- 您只能將的值`capacityReservationLevel`設定為100的倍數，最大值為50000。
 
-- 如果增加預留級別,計時器將重置,並且在此更新后 31 天內無法更改計時器。  
+- 如果您增加保留層級，則會重設計時器，而且您無法在此更新中變更另31天。  
 
-- 如果修改工作區的任何其他屬性,但保留限制保留到同一級別,則計時器不會重置。 
+- 如果您修改工作區的任何其他屬性，但保留相同層級的保留限制，則不會重設計時器。 
 
 ### <a name="create-and-deploy-template"></a>建立和部署範本
 
@@ -149,15 +149,15 @@ ms.locfileid: "81768126"
     ```
 
    >[!NOTE]
-   >對於容量預留設定,請使用「sKU」下的這些屬性:
-   >* "名稱":"容量保留",
-   >* '容量保留等級": 100
+   >針對容量保留設定，請在 [sku] 底下使用這些屬性：
+   >* "name"： "CapacityReservation"，
+   >* "capacityReservationLevel"：100
 
-2. 編輯範本以符合您的需求。 請考慮創建[資源管理器參數檔](../../azure-resource-manager/templates/parameter-files.md),而不是將參數作為內聯值傳遞。 檢閱 [Microsoft.OperationalInsights/workspaces 範本](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)參考，以了解支援哪些屬性和值。 
+2. 編輯範本以符合您的需求。 請考慮建立[Resource Manager 參數](../../azure-resource-manager/templates/parameter-files.md)檔案，而不是以內嵌值傳遞參數。 檢閱 [Microsoft.OperationalInsights/workspaces 範本](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/2015-11-01-preview/workspaces)參考，以了解支援哪些屬性和值。 
 
 3. 將此檔案儲存為本機資料夾的 deploylaworkspacetemplate.json****。
 
-4. 您已準備好部署此範本。 您可以使用 PowerShell 或命令列創建工作區,將工作區名稱和位置指定為命令的一部分。 工作區名稱必須在所有 Azure 訂閱中全域唯一。
+4. 您已準備好部署此範本。 您可以使用 PowerShell 或命令列來建立工作區，並將工作區名稱和位置指定為命令的一部分。 在所有 Azure 訂用帳戶中，工作區名稱必須是全域唯一的。
 
    * 對於 PowerShell，從包含範本的資料夾使用下列命令：
    
@@ -179,8 +179,8 @@ ms.locfileid: "81768126"
 下列範例範本說明如何：
 
 1. 將方案加入至工作區
-2. 建立保存的搜索。 為了確保部署不會意外覆蓋已保存的搜索,應在"已保存的搜索"資源中添加 eTag 屬性,以覆蓋和維護已保存搜索的陽萎性。
-3. 創建保存的函數。 應添加 eTag 以覆蓋功能並保持效力。
+2. 建立已儲存的搜尋。 為了確保部署不會意外覆寫已儲存的搜尋，應在 "savedSearches" 資源中新增 eTag 屬性，以覆寫並維護已儲存搜尋的等冪性。
+3. 建立已儲存的函式。 ETag 應新增至 override 函式並維護等冪性。
 4. 建立電腦群組
 5. 從已安裝 Windows 代理程式的電腦啟用 IIS 記錄收集功能
 6. 從 Linux 電腦收集邏輯磁碟效能計數器 (% Used Inodes; Free Megabytes; % Used Space; Disk Transfers/sec; Disk Reads/sec; Disk Writes/sec)
@@ -188,7 +188,7 @@ ms.locfileid: "81768126"
 8. 從 Windows 電腦的應用程式事件記錄檔收集錯誤和警告事件
 9. 從 Windows 電腦收集記憶體可用 Mb 效能計數器
 10. 收集 Azure 診斷寫入儲存體帳戶的 IIS 記錄和 Windows 事件記錄
-11. 從 Windows 電腦收集自訂紀錄
+11. 從 Windows 電腦收集自訂記錄檔
 
 ```json
 {

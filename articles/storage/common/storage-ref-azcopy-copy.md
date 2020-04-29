@@ -1,6 +1,6 @@
 ---
-title: 茲抄本*微軟文件
-description: 本文為 azcopy 複製命令提供了參考資訊。
+title: azcopy 複製 |Microsoft Docs
+description: 本文提供 azcopy copy 命令的參考資訊。
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,51 +9,51 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253334"
 ---
 # <a name="azcopy-copy"></a>azcopy 複製
 
-將源資料複製到目標位置。
+將來源資料複製到目的地位置。
 
 ## <a name="synopsis"></a>概要
 
-將源資料複製到目標位置。 支援的方向包括:
+將來源資料複製到目的地位置。 支援的指示如下：
 
-  - 本地<> Azure Blob(SAS 或身份驗證)
-  - 本地<> Azure 檔案(共用/目錄 SAS 身份驗證)
-  - 本地<> ADLS 第 2 代(SAS、OAuth 或分享金鑰身份驗證)
-  - Azure Blob(SAS 或公共) -> Azure Blob(SAS 或身份驗證)
-  - Azure Blob(SAS 或公共) -> Azure 檔案 (SAS)
-  - Azure 檔案 (SAS) -> Azure 檔案 (SAS)
-  - Azure 檔案 (SAS) -> Azure Blob(SAS 或身份驗證)
-  - AWS S3(存取金鑰) -> Azure 塊 Blob(SAS 或身份驗證)
+  - 本機 <-> Azure Blob （SAS 或 OAuth 驗證）
+  - 本機 <-> Azure 檔案儲存體（共用/目錄 SAS 驗證）
+  - 本機 <-> ADLS Gen 2 （SAS、OAuth 或 SharedKey authentication）
+  - Azure Blob （SAS 或公用）-> Azure Blob （SAS 或 OAuth 驗證）
+  - Azure Blob （SAS 或公用）-> Azure 檔案儲存體（SAS）
+  - Azure 檔案儲存體（SAS）-> Azure 檔案儲存體（SAS）
+  - Azure 檔案儲存體（SAS）-> Azure Blob （SAS 或 OAuth 驗證）
+  - AWS S3 （存取金鑰）-> Azure 區塊 Blob （SAS 或 OAuth 驗證）
 
-有關詳細資訊,請參閱示例。
+如需詳細資訊，請參閱範例。
 
-## <a name="related-conceptual-articles"></a>相關概念文章
+## <a name="related-conceptual-articles"></a>相關的概念性文章
 
 - [開始使用 AzCopy](storage-use-azcopy-v10.md)
-- [使用 AzCopy 與 Blob 儲存傳輸資料](storage-use-azcopy-blobs.md)
+- [使用 AzCopy 和 Blob 儲存體傳輸資料](storage-use-azcopy-blobs.md)
 - [使用 AzCopy 和檔案儲存體轉送資料](storage-use-azcopy-files.md)
 - [對 AzCopy 進行設定、最佳化及疑難排解](storage-use-azcopy-configure.md)
 
 ## <a name="advanced"></a>進階
 
-根據檔案副檔名或內容(如果未指定副檔名),從本地磁碟上載時,AzCopy 會自動檢測檔的內容類型。
+從本機磁片上傳時，AzCopy 會根據副檔名或內容（如果未指定副檔名），自動偵測檔案的內容類型。
 
-內建搜尋表很小,但在 Unix 上,它由本地系統的 mime.type 檔(如果可在以下一個或多個名稱下)增強:
+內建查閱資料表很小，但是在 Unix 上，它會透過本機系統的 mime. 類型檔案來擴充（如果有一或多個這些名稱可使用的話）：
 
-- /等/mime.類型
-- /等/apache2/mime.類型
-- /等/apache/mime.類型
+- /etc/mime.types
+- /etc/apache2/mime.types
+- /etc/apache/mime.types
 
-在 Windows 上,從註冊表中提取 MIME 類型。 此功能可以在標誌的説明下關閉。 請參閱標誌部分。
+在 Windows 上，MIME 類型會從登錄中解壓縮。 您可以使用旗標的協助來關閉這項功能。 請參閱旗標一節。
 
-如果使用命令列設置環境變數,則該變數將在命令行歷史記錄中可讀。 請考慮清除包含命令行歷史記錄中憑據的變數。 要防止變數出現在歷史記錄中,可以使用腳本提示使用者輸入其憑據,並設置環境變數。
+如果您使用命令列設定環境變數，該變數將可在您的命令列歷程記錄中讀取。 請考慮從您的命令列歷程記錄中清除包含認證的變數。 若要讓變數不會出現在歷程記錄中，您可以使用腳本來提示使用者輸入其認證，並設定環境變數。
 
 ```
 azcopy copy [source] [destination] [flags]
@@ -61,194 +61,194 @@ azcopy copy [source] [destination] [flags]
 
 ## <a name="examples"></a>範例
 
-使用 OAuth 身份驗證上載單個檔。 如果您尚未登錄到 AzCopy,請在執行以下命令之前執行 azcopy 登入命令。
+使用 OAuth 驗證上傳單一檔案。 如果您尚未登入 AzCopy，請先執行 AzCopy login 命令，然後再執行下列命令。
 
-- azcopy cp"/路徑/到/file.txt" "HTTPs://帳戶_blob.core.windows.net/[容器]/[路徑/到/blob]"
+- azcopy cp "/path/to/file.txt" "HTTPs：//[account]. net/[container]/[path/to/blob]"
 
-與上述相同,但這次還計算檔內容的 MD5 哈希並將其保存為 blob 的 Content-MD5 屬性:
+與上述相同，但這次也會計算檔案內容的 MD5 雜湊，並將它儲存為 blob 的 Content-MD5 屬性：
 
-- azcopy cp"/路徑/到/file.txt" "HTTPs://帳戶_blob.core.windows.net/[容器]/[路徑/到/blob]" -- put-md5
+- azcopy cp "/path/to/file.txt" "HTTPs：//[account]. .net/[container]/[path/to/blob]"--put-md5
 
-使用 SAS 權杖上載單檔案:
+使用 SAS 權杖上傳單一檔案：
 
-- 茲複製 cp "/路徑/到/file.txt" "HTTPs://帳戶_blob.core.windows.net/[容器]/[路徑/到/blob]?[SAS]"
+- azcopy cp "/path/to/file.txt" "HTTPs：//[account]. net/[container]/[path/to/blob]？[SAS] "
 
-使用 SAS 權杖與導管上載單檔案(只有限制的限制)
+使用 SAS 權杖和管線（僅限區塊 blob）上傳單一檔案：
   
-- 貓"/路徑/到/檔.txt" |azcopy cp"HTTTPs://_帳戶]blob.core.net/[容器]/[路徑/到/blob]?[SAS]"
+- 貓 "/path/to/file.txt" |azcopy cp "HTTPs：//[account]. core. net/[container]/[path/to/blob]？[SAS] "
 
-使用 SAS 權杖上載整個目錄:
+使用 SAS 權杖上傳整個目錄：
   
-- 茲比比 cp "/路徑/到/dir" "HTTPs://帳戶_blob.core.windows.net/[容器]/[路徑/到/目錄]?[SAS]" -- 遞迴_true
+- azcopy cp "/path/to/dir" "HTTPs：//[帳戶]. net/[container]/[路徑/到/目錄]？[SAS] "--recursive = true
 
 或
 
-- 茲比比 cp "/路徑/到/dir" "HTTPs://帳戶_blob.core.windows.net/[容器]/[路徑/到/目錄]?[SAS]" -- 遞歸=真實 -put-md5
+- azcopy cp "/path/to/dir" "HTTPs：//[帳戶]. net/[container]/[路徑/到/目錄]？[SAS] "--遞迴 = true--put-md5
 
-使用 SAS 權碼與通配符 (*) 上傳一組檔案:
+使用 SAS 權杖和萬用字元（*）字元來上傳一組檔案：
 
-- 茲比比 cp "/路徑 */foo/bar/\.pdf"HTTPs://* 帳戶_blob.core.windows.net/[容器]/[路徑/到/目錄]?[SAS]"
+- azcopy cp "/path/*foo/* bar/* .pdf" "HTTPs：//[account]. .net/[container]/[路徑/到/目錄]？[SAS] "
 
-使用 SAS 權碼與通配符 (*) 來上傳檔案與目錄:
+使用 SAS 權杖和萬用字元（*）字元來上傳檔案和目錄：
 
-- 茲比比 cp "/路徑 */foo/bar_" HTTPs://* 帳戶_blob.core.windows.net/[容器]/[路徑/到/目錄]?[SAS]" -- 遞迴_true
+- azcopy cp "/path/*foo/* bar *" "HTTPs：//[account]. net/[container]/[路徑/到/目錄]？[SAS] "--recursive = true
 
-使用 OAuth 身份驗證下載單個檔。 如果您尚未登錄到 AzCopy,請在執行以下命令之前執行 azcopy 登入命令。
+使用 OAuth 驗證來下載單一檔案。 如果您尚未登入 AzCopy，請先執行 AzCopy login 命令，然後再執行下列命令。
 
-- azcopy cp"HTTPs://_account_blob.core.net/[容器]/[路徑/到/blob]""/路徑/到/檔.txt"
+- azcopy cp "HTTPs：//[account]. core. net/[container]/[path/to/blob]" "/path/to/file.txt"
 
-使用 SAS 權杖下載單一檔案:
+使用 SAS 權杖下載單一檔案：
 
-- azcopy cp"HTTTPs://_帳戶]blob.core.net/[容器]/[路徑/到/blob]?[SAS]" "/路徑/到/檔.txt"
+- azcopy cp "HTTPs：//[account]. core. net/[container]/[path/to/blob]？[SAS] ""/path/to/file.txt "
 
-使用 SAS 權杖下載單一檔案,然後將輸出導管到檔案(僅限阻止 Blob):
+使用 SAS 權杖下載單一檔案，然後將輸出輸送至檔案（僅限區塊 blob）：
   
-- azcopy cp"HTTTPs://_帳戶]blob.core.net/[容器]/[路徑/到/blob]?[SAS]">"/路徑/檔.txt"
+- azcopy cp "HTTPs：//[account]. core. net/[container]/[path/to/blob]？[SAS] ">"/path/to/file.txt "
 
-使用 SAS 權杖下載整個目錄:
+使用 SAS 權杖下載整個目錄：
   
-- azcopy cp"HTTTPs://_帳戶]blob.core.net/[容器]/[路徑/到/目錄]?[SAS]" "/路徑/到/dir" -- 遞歸=真實
+- azcopy cp "HTTPs：//[account]. .net/[container]/[路徑/到/目錄]？[SAS] ""/path/to/dir "--recursive = true
 
-有關在網址中使用通配符 (*) 的說明:
+在 Url 中使用萬用字元（*）的注意事項：
 
-在 URL 中使用通配符的方法只有兩種支援。 
+在 URL 中使用萬用字元僅有兩種支援的方式。 
 
-- 您可以在 URL 的最終前斜杠 (/) 之後使用。 這將將目錄中的所有檔直接複製到目標,而不會將它們放入子目錄中。
+- 您可以在 URL 的最後一個正斜線（/）正後方使用一個。 這樣會將目錄中的所有檔案直接複製到目的地，而不會將它們放入子目錄中。
 
-- 只要 URL 僅引用容器而不是 Blob,也可以在容器的名稱中使用一個容器。 可以使用此方法從容器子集獲取檔。
+- 您也可以在容器的名稱中使用一個，只要 URL 只會參考容器，而不是 blob。 您可以使用這個方法，從容器的子集取得檔案。
 
-下載目錄的內容,而不複製包含目錄本身。
+下載目錄的內容，而不復制包含的目錄本身。
 
-- azcopy cp"HTTPs://srcaccount_blob.core.windows.net/[容器]/[路徑/到/資料夾]?[SAS]" "/路徑/到/dir"
+- azcopy cp "HTTPs：//[srcaccount]. core. net/[container]/[path/to/folder]/*？[SAS] ""/path/to/dir "
 
-下載整個存儲帳戶。
+下載整個儲存體帳戶。
 
-- azcopy cp"HTTPs://srcaccount_blob.core.net/" /路徑/到/dir" -- 遞歸
+- azcopy cp "HTTPs：//[srcaccount]. .net/" "/path/to/dir"--遞迴
 
-使用容器名稱中的通配符符號 (*) 下載存儲帳戶中的容器子集。
+在容器名稱中使用萬用字元符號（*），以在儲存體帳戶內下載容器的子集。
 
-- azcopy cp"HTTPs://srcaccount_blob.core.net/[容器]名稱""/路徑/到/dir" -- 遞歸
+- azcopy cp "HTTPs：//[srcaccount]. .net/[container * name]" "/path/to/dir"--遞迴
 
-使用 SAS 權杖將單個 Blob 複製到另一個 Blob。
+使用 SAS 權杖，將單一 blob 複製到另一個 blob。
 
-- azcopy cp"HTTPs://srcaccount_blob.core.windows.net/[容器]/[路徑/到/blob]?[SAS]" "HTTPs://_destaccount_blob.core.windows.net/[容器]/[路徑/到/blob]?[SAS]"
+- azcopy cp "HTTPs：//[srcaccount]. net/[container]/[path/to/blob]？[SAS] "" HTTPs：//[destcontainer]. .net/[container]/[path/to/blob]？[SAS] "
 
-使用 SAS 權杖和 OAuth 權杖將單個 Blob 複製到另一個 Blob。 您必須在源帳戶 URL 的末尾使用 SAS 令牌,但如果使用 azcopy 登錄命令登錄到 AzCopy,則目標帳戶不需要。 
+使用 SAS 權杖和 OAuth 權杖，將單一 blob 複製到另一個 blob。 您必須在來源帳戶 URL 的結尾使用 SAS 權杖，但如果您使用 AzCopy login 命令登入 AzCopy，則目的地帳戶不需要一個。 
 
-- azcopy cp"HTTPs://srcaccount_blob.core.windows.net/[容器]/[路徑/到/blob]?[SAS]" "HTTPs://_destaccount_blob.core.windows.net/[容器]/[路徑/到/blob]"
+- azcopy cp "HTTPs：//[srcaccount]. net/[container]/[path/to/blob]？[SAS] "" HTTPs：//[destcontainer]. .net/[container]/[path/to/blob] "
 
-使用 SAS 權杖將一個 Blob 虛擬目錄複製到另一個 blob 虛擬目錄:
+使用 SAS 權杖將一個 blob 虛擬目錄複製到另一個：
 
-- azcopy cp"HTTPs://srcaccount_blob.core.windows.net/[容器]/[路徑/到/目錄]?[SAS]" "HTTPs://_destaccount_blob.core.windows.net/[容器]/[路徑/到/目錄]?[SAS]" -- 遞迴_true
+- azcopy cp "HTTPs：//[srcaccount]. .net/[容器]/[路徑/到/目錄]？[SAS] "" HTTPs：//[destcontainer]. .net/[容器]/[路徑/到/目錄]？[SAS] "--recursive = true
 
-使用 SAS 權杖將所有 Blob 容器、目錄及 Blob 從儲存帳戶複製到另一個帳戶:
+使用 SAS 權杖，將所有 blob 容器、目錄和 blob 從儲存體帳戶複製到另一個：
 
-- 茲比比 cp "HTTPs://srcaccount_blob.core.windows.net?[SAS]" "HTTPs://_destaccount_blob.core.windows.net?[SAS]" -- 遞迴_true
+- azcopy cp "HTTPs：//[srcaccount]. core. net？[SAS] "" HTTPs：//[destcontainer]. core. net？[SAS] "--recursive = true
 
-使用存取金鑰和 SAS 權杖從 Amazon Web 服務 (AWS) S3 將單個物件複製到 Blob 儲存。 首先,設置 AWS S3 源的環境變數AWS_ACCESS_KEY_ID和AWS_SECRET_ACCESS_KEY。
+使用存取金鑰和 SAS 權杖，將單一物件從 Amazon Web Services （AWS） S3 複製到 Blob 儲存體。 首先，設定 AWS S3 來源的環境變數 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
   
-- azcopyhttps://s3.amazonaws.com/cp " [存儲桶]/[物件]"HTTPs://_destaccount_blob.core.windows.net/[容器]/[路徑/到/blob]?[SAS]"
+- azcopy cp "https://s3.amazonaws.com/[bucket]/[object]" "HTTPs：//[destcontainer]. .net/[container]/[路徑/到/blob]？[SAS] "
 
-使用存取金鑰和 SAS 權杖從 AWS S3 將整個目錄複製到 Blob 儲存。 首先,設置 AWS S3 源的環境變數AWS_ACCESS_KEY_ID和AWS_SECRET_ACCESS_KEY。
+使用存取金鑰和 SAS 權杖，將整個目錄複寫到 AWS S3 的 Blob 儲存體。 首先，設定 AWS S3 來源的環境變數 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- azcopyhttps://s3.amazonaws.com/cp " [存儲桶]/[資料夾]"HTTPs://_destaccount_blob.core.windows.net/[容器]/[路徑/到/目錄]?[SAS]" -- 遞迴_true
+- azcopy cp "https://s3.amazonaws.com/[bucket]/[folder]" "HTTPs：//[destcontainer]. .net/[container]/[路徑/到/目錄]？[SAS] "--recursive = true
 
-請參考https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html以更好地瞭解 [資料夾] 占位符。
+請參閱， https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html以進一步瞭解 [資料夾] 預留位置。
 
-使用存取金鑰和 SAS 權杖將所有儲存桶複製到從 Amazon Web 服務 (AWS) 到 Blob 儲存。 首先,設置 AWS S3 源的環境變數AWS_ACCESS_KEY_ID和AWS_SECRET_ACCESS_KEY。
+使用存取金鑰和 SAS 權杖，將所有值區複製到 Amazon Web Services （AWS）中的 Blob 儲存體。 首先，設定 AWS S3 來源的環境變數 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- 茲比比https://s3.amazonaws.com/cp" "HTTPs://_destaccount_blob.core.windows.net?[SAS]" -- 遞迴_true
+- azcopy cp "https://s3.amazonaws.com/" "HTTPs：//[destcontainer]. .net？[SAS] "--recursive = true
 
-使用存取金鑰和 SAS 權杖,將所有儲存桶複製到來自 Amazon Web 服務 (AWS) 區域的 Blob 儲存。 首先,設置 AWS S3 源的環境變數AWS_ACCESS_KEY_ID和AWS_SECRET_ACCESS_KEY。
+使用存取金鑰和 SAS 權杖，從 Amazon Web Services （AWS）區域將所有 bucket 複製到 Blob 儲存體。 首先，設定 AWS S3 來源的環境變數 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- azcopyhttps://s3-cp " [地區]amazonaws.com/" HTTPs://_destaccount_blob.core.net?[SAS]" -- 遞迴_true
+- azcopy cp "https://s3-[region]. amazonaws .com/" "HTTPs：//[destcontainer]. core. net？[SAS] "--recursive = true
 
-使用存儲桶名稱中的通配符符號 (*) 複製存儲桶子集。 與前面的範例一樣,您需要存取金鑰和 SAS 權杖。 請確保為 AWS S3 源設定環境變數AWS_ACCESS_KEY_ID和AWS_SECRET_ACCESS_KEY。
+使用值區名稱中的萬用字元符號（*），複製值區的子集。 如同先前的範例，您將需要存取金鑰和 SAS 權杖。 請務必為 AWS S3 來源設定環境變數 AWS_ACCESS_KEY_ID 和 AWS_SECRET_ACCESS_KEY。
 
-- azcopyhttps://s3.amazonaws.com/cp " [bucket]name}/" HTT _destaccount_blobT[SAS]" -- 遞迴_true
+- azcopy cp "https://s3.amazonaws.com/[bucket * name]/" "HTTPs：//[destcontainer]. core. net？[SAS] "--recursive = true
 
-## <a name="options"></a>選項。
+## <a name="options"></a>選項
 
-**--備份**                              啟動 Windows 的 SeBackup 權限進行上載,或為下載啟用 SeRestore 特權,允許 AzCopy 查看讀取所有檔(無論其檔案系統許可權如何)以及還原所有許可權。 要求運行 AzCopy 的帳戶已具有這些許可權(例如,具有管理員許可權或是"備份操作員"組的成員)。 此標誌所做的只是啟動帳戶已具有的許可權。
+**--備份**                              針對上傳啟用 Windows ' SeBackupPrivilege，或 SeRestorePrivilege 下載，以允許 AzCopy 查看所有檔案（不論其檔案系統許可權為何），並還原擁有權限。 要求執行 AzCopy 的帳戶必須具有這些許可權（例如具有系統管理員許可權，或為「備份操作員」群組的成員）。 此旗標會執行帳戶已有的「啟動」許可權。
 
-**--blob 類型**字串 定義目標上的 blob 類型。 這用於上載 blob 和在帳戶之間複製時(預設的"檢測")。 有效值包括"檢測"、"塊 Blob"、"PageBlob"和"附加Blob"。 在帳戶之間複製時,值"檢測"會導致 AzCopy 使用來源 blob 的類型來確定目標 blob 的類型。 上傳檔時,"檢測"根據檔副檔名確定檔是 VHD 還是 VHDX 檔。 如果檔是 VHD 或 VHDX 檔,AzCopy 會將該檔視為頁面 blob。 (預設"檢測")
+**--blob 類型**字串會定義目的地的 blob 類型。 這是用來上傳 blob，以及在帳戶之間進行複製時（預設值為 ' 偵測 '）。 有效值包括 ' 偵測 '、' BlockBlob '、' PageBlob ' 和 ' AppendBlob '。 在帳戶之間進行複製時，' 偵測 ' 的值會導致 AzCopy 使用來源 blob 的類型來決定目的地 blob 的類型。 上傳檔案時，「偵測」會根據副檔名判斷檔案是否為 VHD 或 VHDX 檔案。 如果檔案是乙太幣 VHD 或 VHDX 檔案，AzCopy 會將檔案視為分頁 blob。 （預設值為 "偵測"）
 
-**-區塊的區**塊的區塊直接載入您選擇的[存取層](../blobs/storage-blob-storage-tiers.md)。 (預設為"無")。 有效值包括"無"、"熱"、"酷"和"存檔"。 如果傳遞"無"或未傳遞層,Blob 將繼承存儲帳戶的層。
+**--區塊-blob 層**字串上傳區塊 blob 直接寫入您選擇的[存取層](../blobs/storage-blob-storage-tiers.md)。 （預設值為 [無]）。 有效值包括「無」、「經常性」、「非經常性」和「封存」。 如果未傳遞「無」或沒有階層，blob 將會繼承儲存體帳戶的層級。
 
-**--塊大小-mb**浮動 在上載到 Azure 儲存並從 Azure 儲存下載時使用此塊大小(在 MiB 中指定)。 預設值根據檔大小自動計算。 允許小數分數(例如:0.25)。
+--當上傳至 Azure 儲存體並從 Azure 儲存體下載時，**區塊大小-mb** float 使用此區塊大小（以 MiB 指定）。 預設值會根據檔案大小自動計算。 允許小數分數（例如：0.25）。
 
-**--快取控制**字串 設定快取控制標頭。 下載時返回。
+**--** 快取控制字元串設定了快取控制標頭。 在下載時傳回。
 
-**--檢查長度**                        傳輸後檢查目標上檔的長度。 如果源和目標不匹配,則傳輸將標記為失敗。 ( 預設為 true)
+**--check-length**                        在傳送後檢查目的地上的檔案長度。 如果來源與目的地之間有不相符的情況，則會將傳輸標示為失敗。 （預設值為 true）
 
-**--檢查 md5**字串 指定下載時應嚴格驗證 MD5 哈希。 僅在下載時可用。 可用選項:無檢查、僅日誌、失敗、失敗或缺失。 ( 預設'失敗")
+**--check-md5**字串指定在下載時應如何驗證嚴格的 md5 雜湊。 只有在下載時才可使用。 可用的選項： NoCheck、LogOnly、FailIfDifferent、FailIfDifferentOrMissing。 （預設值為 "FailIfDifferent"）
 
-**--內容處置**字串 設置內容處置標頭。 下載時返回。
+**--內容**配置字串設定內容配置標頭。 在下載時傳回。
 
-**--內容編碼**字串 設定內容編碼標頭。 下載時返回。
+**--內容編碼**字串設定內容編碼標頭。 在下載時傳回。
 
-**--內容語言**字串 設定內容語言標題。 下載時返回。
+**--content-語言**字串設定內容語言標頭。 在下載時傳回。
 
-**--內容類型**字串 指定檔案的內容類型。 暗示無猜測-mime 類型。 下載時返回。
+**--content 類型**字串指定檔案的內容類型。 意指不猜測 mime 類型。 在下載時傳回。
 
-**--解壓縮**                          如果下載文件的內容編碼指示檔被壓縮,則自動解壓縮檔。 支援的內容編碼值為"gzip"和"deflate" 不需要".gz'/'.gzip"或".zz"的檔擴展名,但如果存在,將被刪除。
+**--解壓縮**                          下載時，如果檔案的內容編碼指示已壓縮，則會自動解壓縮檔案。 支援的內容編碼值為 [gzip] 和 [deflate]。 '. Gz '/' gzip ' 或 '. zz ' 的副檔名不是必要項，但如果存在，將會予以移除。
 
-**--排除屬性**字串(僅限 Windows) 排除其屬性與屬性列表匹配的檔。 例如:A;S;R
+**--exclude-** attribute 字串（僅限 Windows）排除其屬性符合屬性清單的檔案。 例如： A;今日R
 
-**--排除 blob 類型**字串 可選地指定從容器或帳戶複製 Blob 時要排除的 blob 類型(塊 Blob/PageBlob/AppendBlob)。 使用此標誌不適用於將數據從非 azure 服務複製到服務。 多個 Blob 應由";"分隔。
+**--exclude-blob 類型**字串可選擇性地指定從容器或帳戶複製 blob 時要排除的 blob 類型（BlockBlob/PageBlob/AppendBlob）。 使用此旗標不適用於將資料從非 azure 服務複製到服務。 一個以上的 blob 應以 '; ' 分隔。
 
-**--外**字串複製時排除這些路徑。 此選項不支援通配符 (*)。 檢查相對路徑前置字(例如:我的資料夾;我的資料夾/子 DirName/file.pdf)。 當與帳戶遍歷結合使用時,路徑不包括容器名稱。
+**--exclude-** 在複製時排除這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： myFolder; myFolder/subDirName/file .pdf）。 與帳戶遍歷搭配使用時，路徑不會包含容器名稱。
 
-**--外模式**字串複製時排除這些檔。 這個選項支援通配符 (*)
+**--exclude-模式**字串在複製時排除這些檔案。 此選項支援萬用字元（*）
 
-**--後續符號連結**                     從本地文件系統上傳時遵循符號連結。
+**--跟隨-符號連結**                     從本機檔案系統上傳時，請遵循符號連結。
 
-**--從到**字串可選地指定原始目標組合。 例如:本地 Blob、Blob 本地、本地 BlobFS。
+**--from-to**字串選擇性地指定來源目的地組合。 例如： LocalBlob、BlobLocal、LocalBlobFS。
 
-**-h, -- 說明**複製
+**-h、--** 適用于複製的說明協助
 
-**--包括屬性**字串(僅限 Windows) 包括其屬性與屬性列表匹配的檔。 例如:A;S;R
+**--include-屬性**字串（僅限 Windows）包含其屬性符合屬性清單的檔案。 例如： A;今日R
 
-**--包含路徑**字串在複製時僅包含這些路徑。 此選項不支援通配符 (*)。 檢查相對路徑前置字(例如:我的資料夾;我的資料夾/子 DirName/file.pdf)。
+**--include-path**字串只包含複製時的這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞（例如： myFolder; myFolder/subDirName/file .pdf）。
 
-**--包括模式**字串在複製時僅包含這些檔。 此選項支援通配符 (*)。 使用";"分隔檔。
+**--include-模式**字串只會在複製時包含這些檔案。 此選項支援萬用字元（*）。 使用 '; ' 來分隔檔案。
 
-**--日誌級**字串 定義日誌檔的日誌詳細性、可用級別:INFO(所有請求/回應)、警告(慢速回應)、ERROR(僅失敗的請求)和 NONE(無輸出日誌)。 ( 預設'INFO")
+**--記錄層級**字串會定義記錄檔的記錄詳細資訊、可用的層級： INFO （所有要求/回應）、警告（回應緩慢）、錯誤（僅限失敗的要求）和無（沒有輸出記錄）。 （預設值為 "INFO"）
 
-**--元資料**字串將這些鍵值對上載到 Azure 存儲,作為元數據。
+**--中繼資料**字串上傳至以這些索引鍵/值組做為中繼資料的 Azure 儲存體。
 
-**--無猜測-啞劇型**                  防止 AzCopy 根據檔副檔名或內容檢測內容類型。
+**--不猜測-mime 類型**                  防止 AzCopy 根據檔案的副檔名或內容來偵測內容類型。
 
-**--** 覆蓋字串覆蓋目標處的衝突檔和 blob,如果此標誌設定為 true。 可能的值包括"true","假","如果來源更新"和"提示"。 ( 預設的 true))
+**--** 如果此旗標設定為 true，則覆寫字串會覆寫目的地上的衝突檔案和 blob。 可能的值包括 ' true '、' false '、' ifSourceNewer ' 和 ' prompt '。 （預設值為 "true"）
 
-**--使用**此 Blob 層將頁面 blob 上傳到 Azure 儲存。 (預設"無")
+**--分頁-blob 層**字串上傳分頁 blob 至使用此 blob 層的 Azure 儲存體。 （預設值為 "None"）
 
-**--保留最後修改時間**         僅當目標為文件系統時才可用。
+**--保留-上次修改時間**         只有當目的地是檔案系統時才可使用。
 
-**--默認情況下保留 smb 權限**字串 False。 在感知資源(Windows和 Azure 文件)之間保留 SMB ACL。 對於下載,您還需要使用`--backup`標誌來還原新擁有者將不是運行 AzCopy 的用戶的許可權。 此標誌同時適用於檔案和資料夾,除非指定了僅檔案篩選器(例如`include-pattern`)。
+**--保留-smb-許可權**字串 False 預設為 False。 保留感知資源（Windows 和 Azure 檔案儲存體）之間的 SMB Acl。 針對下載，您也必須使用`--backup`旗標來還原許可權，其中新的擁有者將不會是執行 AzCopy 的使用者。 這個旗標會套用到檔案和資料夾，除非指定了僅限檔案的篩選（例如`include-pattern`）。
 
-**--預設情況下,保留 smb-info**字串 False。 在 SMB 感知資源(Windows 和 Azure 檔案)之間保留 SMB 屬性資訊(上次寫入時間、創建時間、屬性位)。 將僅傳輸 Azure 檔案支援的屬性位;因此,將傳輸 Azure 檔案支援的屬性位。任何其他將被忽略。 此標誌同時適用於檔案和資料夾,除非指定了僅檔案篩選器(例如,包括模式)。 為資料夾傳輸的資訊與檔案的資訊相同,但上次寫入時間除外,因為上次寫入時間永遠不會保留為資料夾。
+**--保留-smb-資訊**字串預設為 False。 會保留 SMB 屬性資訊（上次寫入時間、建立時間、屬性位），並在 SMB 感知資源（Windows 和 Azure 檔案儲存體）之間保存。 只會傳送 Azure 檔案儲存體所支援的屬性位;任何其他專案將會被忽略。 這個旗標會套用到檔案和資料夾，除非指定了僅限檔案的篩選（例如包含模式）。 針對資料夾所傳送的資訊與檔案相同，但不會保留資料夾的上次寫入時間。
 
-**--保留擁有者**                      僅在下載數據時具有效果,並且僅在使用`--preserve-smb-permissions`時 具有效果。 如果為 true(預設值),則檔擁有者和組將保留在下載中。 如果此標誌設置為 false,仍`--preserve-smb-permissions`將保留 ACL,但擁有者和組將基於運行 AzCopy 的使用者。
+**--保留-擁有**者                      只有在下載資料時才`--preserve-smb-permissions`會有效果，而且只有在使用時才會生效。 如果為 true （預設值），則表示檔案擁有者和群組會保留在下載中。 如果此旗標設定為 false， `--preserve-smb-permissions`仍然會保留 acl，但擁有者和群組將會以執行 AzCopy 的使用者為基礎。
 
-**--put-md5**                            創建每個檔的 MD5 哈希,並將哈希保存為目標 blob 或檔的內容-MD5 屬性。 (默認情況下不會創建哈希。僅在上載時可用。
+**--put-md5**                            建立每個檔案的 MD5 雜湊，並將雜湊儲存為目的地 blob 或檔案的 Content-MD5 屬性。 （根據預設，不會建立雜湊）。只有在上傳時才可使用。
 
-**--遞歸**                           從本地檔案系統上載時,可重複地查看子目錄。
+**--遞迴**                           從本機檔案系統上傳時，會以遞迴方式查看子目錄。
 
-**--s2s 偵測源變更**          在枚舉後檢查源是否已更改。
+**--s2s-偵測-來源-已變更**          檢查列舉之後，來源是否已變更。
 
-**--s2s 句柄無效元數據**字串指定如何處理無效的元數據密鑰。 可用選項:排除無效、失敗無效、重新命名無效。 (預設'排除無效")
+**--s2s-handle-無效-中繼資料**字串指定如何處理不正確中繼資料索引鍵。 可用的選項： ExcludeIfInvalid、FailIfInvalid、RenameIfInvalid。 （預設值為 "ExcludeIfInvalid"）
 
-**--s2s-保留-存取層**            在服務期間保留對服務副本的訪問層。 請參閱[Azure Blob 儲存:熱、酷和存檔存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers),以確保目標存儲帳戶支援設置存取層。 如果不支援設置訪問層,請使用 s2sPreserveAccessTier_false 繞過複製訪問層。 ( 預設為 true)
+**--s2s-保留-存取層**            在服務對服務複製期間保留存取層。 請參閱[Azure Blob 儲存體：經常性、非經常性和封存存取層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)，以確保目的地儲存體帳戶支援設定存取層。 在不支援設定存取層的情況下，請使用 s2sPreserveAccessTier = false 來略過複製存取層。 （預設值為 true）
 
-**--s2s-保留屬性**             在服務期間保留完整的屬性以服務副本。 對於 AWS S3 和 Azure 檔非單一檔源,清單操作不會返回物件和檔案的完整屬性。 要保留完整屬性,AzCopy 需要每個物件或檔發送一個附加請求。 ( 預設為 true)
+**--s2s-保留-屬性**             保留服務到服務複製期間的完整屬性。 針對 AWS S3 和 Azure 檔案非單一檔案來源，清單作業不會傳回物件和檔案的完整屬性。 若要保留完整的屬性，AzCopy 必須針對每個物件或檔案傳送一個額外的要求。 （預設值為 true）
 
-## <a name="options-inherited-from-parent-commands"></a>從父命令繼承的選項
+## <a name="options-inherited-from-parent-commands"></a>繼承自父命令的選項
 
-**--蓋-mbps uint32**     以每秒兆位錶示傳輸速率上限。 逐時輸送量可能與上限略有不同。 如果此選項設置為零,或者省略此選項,則輸送量不會上限。
+**--cap-mbps uint32**     上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。
 
-**--輸出類型**字串 指令輸出的格式。 選項包括:文本,json。 默認值為"文本"。 ( 預設文字)
+**--輸出-** 命令輸出的類型字串格式。 選項包括： text、json。 預設值為「文字」。 （預設值為 "text"）
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [azcopy](storage-ref-azcopy.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
 ms.openlocfilehash: 2fb04e2e953e2bcbe479f7685b8042fdc7ea1767
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146999"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>從 Azure Marketplace 部署虛擬機器
@@ -27,7 +27,7 @@ ms.locfileid: "82146999"
 
 快速入門 Azure VM 部署範本，可以線上檔案 [azuredeploy.json](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json) 的形式取得。  該範本包含下列參數：
 
-|  **參數**        |   **描述**                                 |
+|  **參數**        |   **說明**                                 |
 |  -------------        |   ---------------                                 |
 | newStorageAccountName    | 儲存體帳戶的名稱                       |
 | dnsNameForPublicIP    | 公用 IP 的 DNS 名稱。 必須是小寫字母。    |

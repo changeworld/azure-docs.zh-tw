@@ -14,10 +14,10 @@ ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: fc6cbbd0aa9cb0750e497c7cc7edbd42f21bda55
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82024994"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>協調 Azure DevTest Labs 的實作
@@ -43,13 +43,13 @@ ms.locfileid: "82024994"
 ## <a name="milestone-2-deploy-the-pilot-lab"></a>里程碑 2：部署試驗實驗室
 當網路拓撲就緒之後，就能採用下列步驟來建立第一個/試驗實驗室：
 
-1. 創建初始開發人員測試實驗室環境。
+1. 建立初始的 DevTest Labs 環境。
 2. 判斷允許的 VM 映像和大小，以便與實驗室搭配使用。 決定是否可將自訂映像上傳至 Azure，以便與 DevTest Labs 搭配使用。
 3. 藉由為實驗室 (實驗室擁有者和實驗室使用者) 建立初始角色型存取控制 (RBAC)，來保護對實驗室的存取。 我們建議搭配 Azure Active Directory 使用同步處理的 Active Directory 帳戶，以使用 DevTest Labs 進行身分識別。
 4. 設定 DevTest Labs 來使用原則，例如排程、成本管理、可認領 VM、自訂映像或公式。
 5. 建立 Azure Repos/Git 之類的線上存放庫。
 6. 決定使用公用或私人存放庫或兩者的組合。 組織 JSON 範本以用於部署和長期維持流程。
-7. 視需要建立自訂成品。 此為選用步驟。 
+7. 視需要建立自訂成品。 這是選擇性步驟。 
 
 ## <a name="milestone-3-documentation-support-learn-and-improve"></a>里程碑 3：文件、支援、了解及改善
 最初的試驗小組可能需要深入支援以便快速入門。 使用他們的體驗來確保正確的文件及支援均已就緒，可繼續推出 Azure DevTest Labs。

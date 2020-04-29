@@ -1,5 +1,5 @@
 ---
-title: 備份選項概述
+title: 備份選項總覽
 description: 概述 Azure Windows 虛擬機器的備份選項。
 author: cynthn
 ms.service: virtual-machines
@@ -10,10 +10,10 @@ ms.workload: infrastructure
 ms.date: 09/13/2017
 ms.author: cynthn
 ms.openlocfilehash: 79ce6ee6b15b0e9bdf5e0f48c44731c476069d93
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82083558"
 ---
 # <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Azure 中虛擬機器的備份和還原選項

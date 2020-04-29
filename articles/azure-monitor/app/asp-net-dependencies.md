@@ -1,64 +1,64 @@
 ---
 title: Azure Application Insights 中的相依性追蹤 | Microsoft Docs
-description: 使用應用程式見解監視來自本地或Microsoft Azure Web 應用程式的依賴項調用。
+description: 使用 Application Insights 監視來自內部部署或 Microsoft Azure web 應用程式的相依性呼叫。
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731500"
 ---
-# <a name="dependency-tracking-in-azure-application-insights"></a>Azure 應用程式見解中的相依項追蹤 
+# <a name="dependency-tracking-in-azure-application-insights"></a>Azure 應用程式深入解析中的相依性追蹤 
 
-*依賴項*是應用程式調用的外部元件。 這通常是使用 HTTP 呼叫的服務，或資料庫，或檔案系統。 [應用程式見解](../../azure-monitor/app/app-insights-overview.md)測量依賴項調用的持續時間,無論其失敗與否,以及依賴項名稱等其他資訊。 您可以調查特定的依賴項調用,並將它們與請求和異常相關聯。
+「相依性」（ *dependency* ）是指應用程式所呼叫的外部元件。 這通常是使用 HTTP 呼叫的服務，或資料庫，或檔案系統。 [Application Insights](../../azure-monitor/app/app-insights-overview.md)會測量相依性呼叫的持續時間，不論其是否失敗，以及其他資訊（例如相依性的名稱等等）。 您可以調查特定的相依性呼叫，並將它們與要求和例外狀況相互關聯。
 
-## <a name="automatically-tracked-dependencies"></a>自動追蹤相依項
+## <a name="automatically-tracked-dependencies"></a>自動追蹤的相依性
 
-.NET 和 .NET`DependencyTrackingTelemetryModule`核心附帶 的應用程式見解 SDK 是自動收集依賴項的遙測模組。 根據連結的官方文檔配置時,將自動為[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)和[ASP.NET 核心](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)應用程式啟用此依賴項集合。`DependencyTrackingTelemetryModule`作為[此](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/)NuGet 包發貨,在使用`Microsoft.ApplicationInsights.Web`NuGet 包或`Microsoft.ApplicationInsights.AspNetCore`時自動攜帶。
+適用于 .NET 和 .NET Core 的 Application Insights Sdk `DependencyTrackingTelemetryModule`隨附于，其為自動收集相依性的遙測模組。 根據連結的官方檔設定時，會自動為[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)和[ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)應用程式啟用此相依性集合。`DependencyTrackingTelemetryModule`隨附為[此](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/)nuget 套件，並會在使用其中一個 nuget 套件`Microsoft.ApplicationInsights.Web`或`Microsoft.ApplicationInsights.AspNetCore`時自動帶入。
 
- `DependencyTrackingTelemetryModule`目前自動追蹤以下的相依項:
+ `DependencyTrackingTelemetryModule`目前會自動追蹤下列相依性：
 
 |相依性 |詳細資料|
 |---------------|-------|
-|HTTP/H. H0 | 本地或遠端 HTTP/ht 執行程式 |
-|WCF 呼叫| 僅當使用基於 HTTP 的綁定時,才自動跟蹤。|
-|SQL | 使用`SqlClient`進行的電話。 請參閱[此](#advanced-sql-tracking-to-get-full-sql-query)以捕獲 SQL 查詢。  |
-|[Azure 儲存(Blob、表、佇列)](https://www.nuget.org/packages/WindowsAzure.Storage/) | 使用 Azure 儲存用戶端進行的調用。 |
-|[事件中心客戶端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 版本1.1.0及以上。 |
-|[ServiceBus 用戶端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 版本3.0.0及以上。 |
-|Azure Cosmos DB | 僅在使用 HTTP/HTTPS 時自動追蹤。 Application Insights 不會擷取 TCP 模式。 |
+|Http/Https | 本機或遠端 HTTP/HTTPs 呼叫 |
+|WCF 呼叫| 只有在使用以 Http 為基礎的系結時，才會自動追蹤。|
+|SQL | 以進行的`SqlClient`呼叫。 如需瞭解 SQL 查詢，請參閱[此](#advanced-sql-tracking-to-get-full-sql-query)程式。  |
+|[Azure 儲存體（Blob、資料表、佇列）](https://www.nuget.org/packages/WindowsAzure.Storage/) | Azure 儲存體用戶端所提出的呼叫。 |
+|[EventHub 用戶端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 和更新版本。 |
+|[ServiceBus 用戶端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3.0.0 和更新版本。 |
+|Azure Cosmos DB | 只有在使用 HTTP/HTTPS 時才會自動追蹤。 Application Insights 不會擷取 TCP 模式。 |
 
-如果您缺少依賴項,或者使用其他 SDK 請確保它位於[自動收集的依賴項](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)清單中。 如果依賴項未自動收集,您仍可以使用[跟蹤依賴項調用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手動跟蹤它。
+如果您遺失相依性，或使用不同的 SDK，請確定它是在[自動收集](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)的相依性清單中。 如果不會自動收集相依性，您仍然可以使用追蹤相依性[呼叫](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)來手動進行追蹤。
 
-## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>在主控台應用中設定自動依賴項追蹤
+## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>在主控台應用程式中設定自動相依性追蹤
 
-要自動追蹤來自 .NET 控制台應用的依賴項,`Microsoft.ApplicationInsights.DependencyCollector`請安裝`DependencyTrackingTelemetryModule`Nuget 套件 ,並按照以下方式初始化:
+若要從 .NET 主控台應用程式自動追蹤相依性，請`Microsoft.ApplicationInsights.DependencyCollector`安裝 Nuget 套件`DependencyTrackingTelemetryModule` ，並將其初始化，如下所示：
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
     depModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-對於 .NET 核心控制台應用遙測配置.活動已過時。 請參考[您的工作人員服務文件](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)與[ASP.NET 核心監控文件中](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)的指南
+針對 .NET Core 主控台應用程式 TelemetryConfiguration。 Active 已過時。 請參閱背景[工作服務檔](https://docs.microsoft.com/azure/azure-monitor/app/worker-service)中的指引和[ASP.NET Core 監視檔](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)
 
-### <a name="how-automatic-dependency-monitoring-works"></a>自動依賴項監控的工作原理是什麼?
+### <a name="how-automatic-dependency-monitoring-works"></a>自動相依性監視如何運作？
 
-使用以下技術之一自動收集依賴項:
+相依性會使用下列其中一項技術自動收集：
 
-* 在選擇方法周圍使用位元組碼檢測。 ( 從狀態監視器或 Azure Web 應用擴充進行偵測引擎)
-* 事件源回檔
-* 診斷源回檔(在最新的 .NET/.NET 核心 SDK 中)
+* 針對 select 方法使用位元組程式碼檢測。 （從 StatusMonitor 或 Azure Web 應用程式擴充功能 InstrumentationEngine）
+* EventSource 回呼
+* DiagnosticSource 回呼（在最新的 .NET/.NET Core Sdk 中）
 
-## <a name="manually-tracking-dependencies"></a>手動追蹤相依項
+## <a name="manually-tracking-dependencies"></a>手動追蹤相依性
 
-以下是一些依賴項示例,這些依賴項不會自動收集,因此需要手動跟蹤。
+以下是一些不會自動收集的相依性範例，因此需要手動追蹤。
 
 * 只有在使用 [HTTP/HTTPS](../../cosmos-db/performance-tips.md#networking) 的情況下，才會自動追蹤 Azure Cosmos DB。 Application Insights 不會擷取 TCP 模式。
 * Redis
 
-對於 SDK 未自動收集的這些依賴項,您可以使用標準自動收集模組使用的[Track 依賴項 API](api-custom-events-metrics.md#trackdependency)手動追蹤它們。
+針對不是由 SDK 自動收集的相依性，您可以使用標準自動收集模組所使用的[TRACKDEPENDENCY API](api-custom-events-metrics.md#trackdependency) ，以手動方式加以追蹤。
 
 例如，如果您建置程式碼的組件不是您自己撰寫的，您可以計算對組件的所有呼叫，以找出它佔回應時間的比例。 若要在 Application Insights 中的相依性圖表中顯示此資料，請使用 `TrackDependency`傳送。
 
@@ -78,68 +78,68 @@ ms.locfileid: "81731500"
     }
 ```
 
-或者,`TelemetryClient`提供擴`StartOperation`充`StopOperation`方法, 並可用於手動追蹤依賴項,[如下所示](custom-operations-tracking.md#outgoing-dependencies-tracking)
+或者， `TelemetryClient`提供擴充方法`StartOperation` ， `StopOperation`並可用於手動追蹤相依性，[如下所示](custom-operations-tracking.md#outgoing-dependencies-tracking)
 
-如果要關閉標準依賴項跟蹤模組,請刪除[應用程式 Insights.config](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中對依賴項追蹤遙測模組的引用,ASP.NET應用程式。 對於ASP.NET核心應用程式,請[按照此處](asp-net-core.md#configuring-or-removing-default-telemetrymodules)的說明操作。
+如果您想要關閉標準的相依性追蹤模組，請在 ASP.NET 應用程式的[ApplicationInsights](../../azure-monitor/app/configuration-with-applicationinsights-config.md)中移除對 applicationinsights.config dependencytrackingtelemetrymodule 的參考。 如需 ASP.NET Core 應用程式，請遵循[這裡](asp-net-core.md#configuring-or-removing-default-telemetrymodules)的指示。
 
-## <a name="tracking-ajax-calls-from-web-pages"></a>追蹤來自網頁的AJAX通話
+## <a name="tracking-ajax-calls-from-web-pages"></a>從網頁追蹤 AJAX 呼叫
 
-對於網頁,應用程式見解 JavaScript SDK 會自動收集 AJAX 調用作為依賴項。
+若為網頁，Application Insights JavaScript SDK 會自動將 AJAX 呼叫收集為相依性。
 
-## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>進階 SQL 追蹤,取得完整的 SQL 查詢
+## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>先進的 SQL 追蹤以取得完整的 SQL 查詢
 
-對於 SQL 調用,伺服器和資料庫的名稱始終作為`DependencyTelemetry`收集的的名稱收集和存儲。 還有一個稱為「數據」的附加欄位,它可以包含完整的 SQL 查詢文本。
+針對 SQL 呼叫，一律會收集伺服器和資料庫的名稱，並將其儲存為所收集`DependencyTelemetry`之的名稱。 還有一個稱為「資料」的額外欄位，它可以包含完整的 SQL 查詢文字。
 
-對於ASP.NET核心應用程式,無需執行其他步驟即可獲取完整的SQL查詢。
+對於 ASP.NET Core 的應用程式，取得完整的 SQL 查詢並不需要額外的步驟。
 
-對於ASP.NET應用程式,使用位元組碼檢測收集完整的SQL查詢,這需要檢測引擎。 需要其他特定於平臺的步驟,如下所述。
+針對 ASP.NET 應用程式，會收集完整的 SQL 查詢，並提供需要檢測引擎的位元組程式碼檢測的協助。 需要其他平臺特定的步驟，如下所述。
 
 | 平台 | 取得完整 SQL 查詢所需的步驟 |
 | --- | --- |
-| Azure Web 應用程式 |在 Web 應用程式控制面板中,[開啟應用程式的字列](../../azure-monitor/app/azure-web-apps.md),並在 .NET 下啟用 SQL 命令 |
-| IIS 伺服器(Azure VM、上部伺服器等)。 | 使用狀態監視器 PowerShell 模組[安裝檢測引擎](../../azure-monitor/app/status-monitor-v2-api-reference.md)並重新啟動 IIS。 |
-| Azure 雲端服務 | 新增[開機工作以安裝狀態監視器](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> 套用應用程式在產生時透過[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)或[ASP.NET 核心應用程式](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)安裝 NuGet 套件,在產生時將其裝機到應用程式 Insights SDK |
+| Azure Web 應用程式 |在您的 web 應用程式控制台中，[開啟 [Application Insights](../../azure-monitor/app/azure-web-apps.md) ] 分頁，並在 .net 底下啟用 SQL 命令 |
+| IIS 伺服器（Azure VM、內部內部部署等等）。 | 使用狀態監視器 PowerShell 模組來[安裝檢測引擎](../../azure-monitor/app/status-monitor-v2-api-reference.md)並重新啟動 IIS。 |
+| Azure 雲端服務 | 新增[啟動工作以安裝 StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> 您的應用程式應該在組建階段上架至 ApplicationInsights SDK，方法是安裝[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)或[ASP.NET Core 應用程式](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)的 NuGet 套件 |
 | IIS Express | 不支援
 
-在上述情況下,驗證儀器引擎是否正確安裝的正確方法是驗證收集的`DependencyTelemetry`SDK 版本是「rddp」。。 "rdddsd"或"rddf"表示依賴項是通過診斷源或事件源回調收集的,因此不會捕獲完整的 SQL 查詢。
+在上述情況下，驗證所收集`DependencyTelemetry`的 SDK 版本是 ' rddp '，正確地驗證檢測引擎已正確安裝。 ' rdddsd ' 或 ' rddf ' 表示相依性是透過 DiagnosticSource 或 EventSource 回呼來收集，因此不會捕捉完整的 SQL 查詢。
 
 ## <a name="where-to-find-dependency-data"></a>哪裡可以找到相依性資料
 
 * [應用程式對應](app-map.md)會以視覺化方式顯示您應用程式與相鄰元件之間的相依性。
-* [事務診斷](transaction-diagnostics.md)顯示統一的、相關的伺服器數據。
-* [瀏覽器選項卡](javascript.md)顯示來自用戶瀏覽器的 AJAX 呼叫。
+* [交易診斷](transaction-diagnostics.md)會顯示統一、相互關聯的伺服器資料。
+* [[瀏覽器]](javascript.md)索引標籤會顯示來自您使用者瀏覽器的 AJAX 呼叫。
 * 從速度緩慢或失敗的要求逐一點選以檢查其相依性呼叫。
 * [分析](#logs-analytics)可用來查詢相依性資料。
 
 ## <a name="diagnose-slow-requests"></a><a name="diagnosis"></a> 診斷速度緩慢的要求
 
-每個請求事件都與應用處理請求時跟蹤的依賴項調用、異常和其他事件相關聯。 因此,如果某些請求表現不佳,您可以找出這是否是由於依賴項回應緩慢。
+每個要求事件都會與您的應用程式處理要求時所追蹤的相依性呼叫、例外狀況和其他事件相關聯。 因此，如果某些要求的效能不佳，您可以找出這是因為相依性的回應緩慢。
 
 ### <a name="tracing-from-requests-to-dependencies"></a>進行從要求到相依性的追蹤
 
-打開 **"性能"** 選項卡,然後導航到操作旁邊的頂部的 **"依賴項**"選項卡。
+開啟 [**效能**] 索引標籤，並流覽至 [作業] 旁頂端**的 [相依**性] 索引標籤。
 
-點選此選項**的相依項目名稱**。 選擇依賴項后,該依賴項的持續時間分布圖將顯示在右側。
+按一下 [整體] 底下的相依性**名稱**。 選取相依性之後，該相依性的持續時間分布圖表就會顯示在右邊。
 
-![在「性能」選項卡中,按一下頂部的「依賴項」選項卡,然後單擊圖表中的「依賴項」名稱](./media/asp-net-dependencies/2-perf-dependencies.png)
+![在 [效能] 索引標籤中，按一下頂端的 [相依性] 索引標籤，然後按圖表中的相依性名稱](./media/asp-net-dependencies/2-perf-dependencies.png)
 
-按下右下角的藍色 **「示例」** 按鈕,然後按一下範例以查看端到端交易記錄詳細資訊。
+按一下右下方的藍色 [**範例**] 按鈕，然後在範例上查看端對端交易詳細資料。
 
-![點選範例以瀏覽端到端事務詳細資訊](./media/asp-net-dependencies/3-end-to-end.png)
+![按一下範例以查看端對端交易詳細資料](./media/asp-net-dependencies/3-end-to-end.png)
 
 ### <a name="profile-your-live-site"></a>剖析您的即時網站
 
-不清楚時間花在哪裡嗎？ [應用程式見解探查器](../../azure-monitor/app/profiler.md)跟蹤對即時網站的 HTTP 調用,並顯示代碼中耗時最長的函數。
+不清楚時間花在哪裡嗎？ [Application Insights](../../azure-monitor/app/profiler.md)分析工具會追蹤對您的即時網站發出的 HTTP 呼叫，並向您顯示程式碼中花費最長時間的函式。
 
 ## <a name="failed-requests"></a>失敗的要求
 
 失敗的要求可能也會與失敗的相依性呼叫關聯。
 
-我們可以轉到左側的 **「失敗」** 選項卡,然後單擊頂部的依賴**項**選項卡。
+我們可以移至左側的 [**失敗**] 索引標籤，然後按一下頂端的 [相依**性] 索引**標籤。
 
 ![按一下失敗要求的圖表](./media/asp-net-dependencies/4-fail.png)
 
-在這裡,您可以看到失敗的依賴項計數。 獲取有關嘗試單擊底部表中的依賴項名稱失敗事件的詳細資訊。 您可以按下右下角的藍色**依賴項**按鈕,獲取端到端事務詳細資訊。
+在這裡，您將能夠看到失敗的相依性計數。 若要取得有關失敗發生的詳細資料，請嘗試按一下底端資料表中的相依性名稱。 您可以按一下右下方的藍色 [相依性 **]** 按鈕，以取得端對端交易詳細資料。
 
 ## <a name="logs-analytics"></a>記錄 (分析)
 
@@ -182,12 +182,12 @@ ms.locfileid: "81731500"
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*自動依賴項收集器如何報告對依賴項的失敗調用?*
+### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*自動相依性收集器如何報告對相依性的呼叫失敗？*
 
-* 失敗的依賴項調用將"成功"欄位設置為 False。 `DependencyTrackingTelemetryModule`不要回報`ExceptionTelemetry`。 [此處](data-model-dependency-telemetry.md)介紹了依賴項的完整數據模型。
+* 失敗的相依性呼叫會將「成功」欄位設定為 False。 `DependencyTrackingTelemetryModule`不會報告`ExceptionTelemetry`。 [此處](data-model-dependency-telemetry.md)會說明相依性的完整資料模型。
 
 ## <a name="open-source-sdk"></a>開放原始碼 SDK
-與每個應用程式見解 SDK 一樣,依賴項收集模組也是開源的。 閱讀並貢獻代碼,或在[官方的 GitHub 存儲庫](https://github.com/Microsoft/ApplicationInsights-dotnet-server)中報告問題。
+就像每個 Application Insights SDK，相依性集合模組也是開放原始碼。 閱讀並貢獻程式碼，或報告[官方 GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server)存放庫的問題。
 
 ## <a name="next-steps"></a>後續步驟
 

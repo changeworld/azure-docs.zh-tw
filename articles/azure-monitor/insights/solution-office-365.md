@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/30/2020
 ms.openlocfilehash: 2c6eb5407ec62b6e9e771ce257b66fca2a91e0a5
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82023600"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解決方案 (預覽)
@@ -19,33 +19,33 @@ ms.locfileid: "82023600"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>解決方案更新
-> 此解決方案已被[Azure Sentinel](../../sentinel/overview.md)中的[Office 365](../../sentinel/connect-office-365.md)通用可用性解決方案和[Azure AD 報告和監視解決方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)所取代。 它們共同提供了以前的 Azure 監視器 Office 365 解決方案的更新版本,並改進了配置體驗。 您可以繼續使用現有解決方案,直到 2020 年 7 月 30 日。
+> 此解決方案已由[Azure Sentinel](../../sentinel/overview.md)中的[Office 365](../../sentinel/connect-office-365.md)一般可用性解決方案和[Azure AD 的報告和監視解決方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)所取代。 它們一起提供舊版 Azure 監視器 Office 365 解決方案的更新版本，並具有改良的設定體驗。 您可以繼續使用現有的解決方案，直到2020年7月30日為止。
 > 
-> Azure Sentinel 是雲原生安全資訊和事件管理解決方案,用於引入日誌並提供其他 SIEM 功能,包括檢測、調查、搜索和機器學習驅動的見解。 現在,使用 Azure Sentinel 將為您提供 Office 365 SharePoint 活動和 Exchange 管理日誌的引入。
+> Azure Sentinel 是雲端原生安全性資訊和事件管理解決方案，可內嵌記錄並提供額外的 SIEM 功能，包括偵測、調查、搜尋及機器學習導向的深入解析。 使用 Azure Sentinel 現在會提供您內嵌 Office 365 SharePoint 活動和 Exchange 記錄管理檔。
 > 
-> Azure AD 報告提供了環境中 Azure AD 活動中日誌的更全面的檢視,包括登入事件、審核事件和目錄更改。 要連接 Azure AD 紀錄,可以使用[Azure Sentinel Azure AD 連接器](../../sentinel/connect-azure-active-directory.md)或設定 Azure AD[紀錄與 Azure 監視器的整合](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。 
+> Azure AD 報告可讓您更全面地瞭解環境中 Azure AD 活動的記錄，包括登入事件、audit 事件和您目錄的變更。 若要連接 Azure AD 記錄，您可以使用[Azure Sentinel Azure AD 連接器](../../sentinel/connect-azure-active-directory.md)，或設定[Azure AD 記錄與 Azure 監視器整合](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。 
 >
-> Azure AD 日誌的集合受 Azure 監視器定價。  有關詳細資訊,請參閱[Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
+> Azure AD 記錄的集合會受到 Azure 監視器定價。  如需詳細資訊，請參閱[Azure 監視器定價](https://azure.microsoft.com/pricing/details/monitor/)。
 >
-> 要使用 Azure 哨兵辦公室 365 解決方案,請使用:
-> 1. 在 Azure Sentinel 中使用 Office 365 連接器會影響工作區的定價。 有關詳細資訊,請參閱[Azure Sentinel 定價](https://azure.microsoft.com/pricing/details/azure-sentinel/)。
-> 2. 如果您已經在使用 Azure 監視器 Office 365 解決方案,則必須首先使用[下面的卸載部分](#uninstall)中的腳本卸載它。
-> 3. [在工作區啟用 Azure Sentinel 解決方案](../../sentinel/quickstart-onboard.md)。
-> 4. 跳到 Azure 哨兵中**的資料連接器**頁面並啟用**Office 365**連接器。
+> 若要使用 Azure Sentinel Office 365 解決方案：
+> 1. 在 Azure Sentinel 中使用 Office 365 連接器會影響您工作區的定價。 如需詳細資訊，請參閱[Azure Sentinel 定價](https://azure.microsoft.com/pricing/details/azure-sentinel/)。
+> 2. 如果您已經在使用 Azure 監視器 Office 365 解決方案，則必須先使用[卸載一節](#uninstall)中的腳本將它卸載。
+> 3. 在您的工作區上[啟用 Azure Sentinel 解決方案](../../sentinel/quickstart-onboard.md)。
+> 4. 移至 Azure Sentinel 中的 [**資料連線器**] 頁面，並啟用**Office 365**連接器。
 >
 > ## <a name="frequently-asked-questions"></a>常見問題集
 > 
-> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>問:從現在到 7 月 30 日,是否可以在 Office 365 Azure 監視器解決方案中加入?
-> 否,Azure 監視器 Office 365 解決方案載入腳本不再可用。 解決方案將於 7 月 30 日刪除。
+> ### <a name="q-is-it-possible-to-on-board-the-office-365-azure-monitor-solution-between-now-and-july-30th"></a>問：在現在和7月30日前，Office 365 Azure 監視器解決方案是否可以上線？
+> 否，已無法再使用 Azure 監視器 Office 365 解決方案上架腳本。 解決方案將于7月30日移除。
 > 
-> ### <a name="q-will-the-tables-and-schemas-be-changed"></a>問:表和架構是否會更改?
-> **OfficeActivity**表名稱和架構將保持不變,與當前解決方案中相同。 您可以在新解決方案中繼續使用相同的查詢,不包括引用 Azure AD 資料的查詢。
+> ### <a name="q-will-the-tables-and-schemas-be-changed"></a>問：資料表和架構是否會變更？
+> **OfficeActivity**資料表名稱和架構將維持與目前方案中的相同。 您可以繼續在新的方案中使用相同的查詢，但不包括參考 Azure AD 資料的查詢。
 > 
-> 新的[Azure AD 報告與監視解決方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)紀錄將被引入[到 SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md)和[稽核紀錄](../../active-directory/reports-monitoring/concept-audit-logs.md)表中,而不是**OfficeActivity**。 有關詳細資訊,請參閱[如何分析 Azure AD 日誌](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md),這與 Azure Sentinel 和 Azure 監視器使用者也相關。
+> 新的[Azure AD 報告和監視解決方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)記錄將會內嵌至[SigninLogs](../../active-directory/reports-monitoring/concept-sign-ins.md)和[AuditLogs](../../active-directory/reports-monitoring/concept-audit-logs.md)資料表，而不是**OfficeActivity**。 如需詳細資訊，請參閱[如何分析 Azure AD 記錄](../../active-directory/reports-monitoring/howto-analyze-activity-logs-log-analytics.md)，這也適用于 Azure Sentinel 和 Azure 監視器使用者。
 > 
-> 以下是將查詢從**OfficeActivity**轉換為**SigninLogs 的範例**:
+> 以下是將查詢從**OfficeActivity**轉換為**SigninLogs**的範例：
 > 
-> **以使用者查詢失敗的登入:**
+> **依使用者查詢失敗的登入：**
 > 
 > ```Kusto
 > OfficeActivity
@@ -61,7 +61,7 @@ ms.locfileid: "82023600"
 > | summarize count() by UserDisplayName
 > ```
 > 
-> **檢視 Azure AD 操作:**
+> **View Azure AD 作業：**
 > 
 > ```Kusto
 > OfficeActivity
@@ -75,41 +75,41 @@ ms.locfileid: "82023600"
 > | summarize count() by OperationName
 > ```
 > 
-> ### <a name="q-how-can-i-on-board-azure-sentinel"></a>問:如何登上 Azure Sentinel?
-> Azure Sentinel 是一種解決方案,您可以在新的或現有的日誌分析工作區上啟用。 要瞭解更多資訊,請參閱[Azure Sentinel 載入文件](../../sentinel/quickstart-onboard.md)。
+> ### <a name="q-how-can-i-on-board-azure-sentinel"></a>問：如何 Azure Sentinel 的面板？
+> Azure Sentinel 是您可以在新的或現有的 Log Analytics 工作區上啟用的解決方案。 若要深入瞭解，請參閱[Azure Sentinel 的上線檔](../../sentinel/quickstart-onboard.md)。
 >
-> ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>問:是否需要 Azure Sentinel 來連接 Azure AD 日誌?
-> 您可以配置[Azure AD 日誌與 Azure 監視器的整合](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md),這與 Azure Sentinel 解決方案無關。 Azure Sentinel 為 Azure AD 日誌提供本機連接器和開箱即用內容。 有關詳細資訊,請參閱以下有關面向安全的內容的問題。
+> ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>問：我是否需要 Azure Sentinel 來連接 Azure AD 記錄？
+> 您可以設定[Azure AD 記錄與 Azure 監視器](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)（與 Azure Sentinel 解決方案無關）整合。 Azure Sentinel 提供 Azure AD 記錄的原生連接器和現成可用的內容。 如需詳細資訊，請參閱以下關于現成安全性導向內容的問題。
 >
-> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>問:從 Azure 哨兵和 Azure 監視器連接 Azure AD 日誌時有哪些區別?
-> Azure 哨兵和 Azure 監視器基於相同的[Azure AD 報告和監視解決方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)連接到 Azure AD 日誌。 Azure Sentinel 提供一鍵式本機連接器,用於連接相同的數據並提供監視資訊。
+> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>問：從 Azure Sentinel 和 Azure 監視器連接 Azure AD 記錄時有何差異？
+> Azure Sentinel 和 Azure 監視器會根據相同的[Azure AD 報告和監視解決方案](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)，連接到 Azure AD 記錄。 Azure Sentinel 提供單鍵的原生連接器，以連接相同的資料並提供監視資訊。
 >
-> ###    <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>問:移動到新的 Azure AD 報告和監視表時,我需要更改哪些內容?
-> 使用 Azure AD 數據的所有查詢(包括警報中的查詢、儀錶板以及使用 Office 365 Azure AD 資料創建的任何內容)都必須使用新表重新創建。
+> ###    <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>問：移至新的 Azure AD 報表和監視資料表時，我需要變更什麼？
+> 所有使用 Azure AD 資料的查詢，包括警示、儀表板中的查詢，以及您使用 Office 365 Azure AD 資料所建立的任何內容，都必須使用新的資料表重新建立。
 >
-> Azure 哨兵和 Azure AD 提供內建內容,可在移動到 Azure AD 報告和監視解決方案時使用。 有關詳細資訊,請參閱有關面向安全的開箱即用內容的下一個問題以及如何[將 Azure 監視器工作簿用於 Azure 活動目錄報表](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)。 
+> Azure Sentinel 和 Azure AD 提供內建內容，可讓您在移至 Azure AD 報告和監視解決方案時使用。 如需詳細資訊，請參閱關於現成可用的安全性導向內容的下一個問題，以及[如何使用 Azure 監視器活頁簿來 Azure Active Directory 報表](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)。 
 >
-> ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>問:如何使用 Azure Sentinel 面向安全的現裝內容?
-> Azure Sentinel 提供面向安全的現成儀錶板、自定義警報查詢、搜索查詢、調查和基於 Office 365 和 Azure AD 日誌的自動回應功能。 瀏覽 Azure 哨兵 GitHub 和教程以瞭解更多資訊:
+> ### <a name="q-how-i-can-use-the-azure-sentinel-out-of-the-box-security-oriented-content"></a>問：如何使用 Azure Sentinel 現成可用的安全性導向內容？
+> Azure Sentinel 根據 Office 365 和 Azure AD 記錄，提供現成可用的安全性導向儀表板、自訂警示查詢、搜尋查詢、調查和自動化回應功能。 若要深入瞭解，請流覽 Azure Sentinel GitHub 和教學課程：
 >
-> - [偵測開箱即用的威脅](../../sentinel/tutorial-detect-threats-built-in.md)
+> - [預設偵測到威脅](../../sentinel/tutorial-detect-threats-built-in.md)
 > - [建立自訂分析規則來偵測可疑的威脅](../../sentinel/tutorial-detect-threats-custom.md)
 > - [監視您的資料](../../sentinel/tutorial-monitor-your-data.md)
-> - [使用 Azure 哨兵調查事件](../../sentinel/tutorial-investigate-cases.md)
+> - [使用 Azure Sentinel 調查事件](../../sentinel/tutorial-investigate-cases.md)
 > - [在 Azure Sentinel 中設定自動化威脅回應](../../sentinel/tutorial-respond-threats-playbook.md)
-> - [Azure 哨兵 GitHub 社區](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
+> - [Azure Sentinel GitHub 社區](https://github.com/Azure/Azure-Sentinel/tree/master/Playbooks)
 > 
-> ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>問:Azure Sentinel 是否作為解決方案的一部分提供了其他連接器?
-> 是的,請參閱[Azure Sentinel 連接資料來源](../../sentinel/connect-data-sources.md)。
+> ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>問： Azure Sentinel 是否會在解決方案中提供其他連接器？
+> 是，請參閱[Azure Sentinel 連接資料來源](../../sentinel/connect-data-sources.md)。
 > 
-> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>問:7月30日會發生什麼? 我需要事先離開嗎?
+> ###    <a name="q-what-will-happen-on-july-30-do-i-need-to-offboard-beforehand"></a>問：7月30日會發生什麼事？ 我是否需要事先下架？
 > 
-> - 您將無法從**Office365**解決方案接收數據。 該解決方案將不再在應用商店中可用
-> - 對於 Azure 哨兵客戶,日誌分析工作區解決方案**Office365**將包含在 Azure 哨兵**安全見解**解決方案中。
-> - 如果您不手動關閉解決方案,您的數據將在 7 月 30 日自動斷開連接。
+> - 您將無法從**Office365**解決方案接收資料。 解決方案將不再于 Marketplace 中提供
+> - 針對 Azure Sentinel 客戶，Log Analytics 工作區解決方案**Office365**將包含在 Azure Sentinel **SecurityInsights**解決方案中。
+> - 如果您未手動下架解決方案，您的資料將會在7月30日自動中斷連線。
 > 
-> ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>問:我的數據傳輸是否會傳輸到新解決方案?
-> 是。 從工作區中刪除**Office 365**解決方案時,由於架構被刪除,其數據將暫時不可用。 在 Sentinel 中啟用新的**Office 365**連接器時,架構將還原到工作區,並且已經收集的任何數據都將可用。 
+> ### <a name="q-will-my-data-transfer-to-the-new-solution"></a>問：我的資料是否會傳送到新的解決方案？
+> 是。 當您從工作區中移除**Office 365**解決方案時，其資料將會暫時無法使用，因為已移除架構。 當您在 Sentinel 中啟用新的**Office 365**連接器時，架構會還原至工作區，而且任何已收集的資料都將會變成可用。 
  
 
 Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 環境。
@@ -224,9 +224,9 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
     ```
 
-系統將提示您輸入認證。 提供日誌分析工作區的憑據。
+系統會提示您輸入認證。 提供 Log Analytics 工作區的認證。
 
-## <a name="data-collection"></a>資料收集
+## <a name="data-collection"></a>資料集合
 
 一開始收集資料可能會需要幾個小時。 一旦開始收集資料，每次建立一筆記錄時，Office 365 都會將 [Webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) \(英文\) 連同詳細資料傳送至 Azure 監視器。 收到此記錄的幾分鐘內，即可將其用於 Azure 監視器。
 
@@ -247,7 +247,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 |:--|:--|
 | 作業 | 提供所有受監視 Office 365 訂閱中之作用中使用者的相關資訊。 您也可以查看一段時間內發生的活動數。
 | Exchange | 顯示 Exchange Server 活動細目，例如 Add-Mailbox 權限或 Set-Mailbox。 |
-| SharePoint | 顯示使用者最常對 SharePoint 文件執行的活動。 當您從此圖格向下鑽研時，搜尋頁面會顯示這些活動的詳細資料，例如此活動的目標文件與位置。 例如,對於檔案訪問事件,您將能夠看到正在訪問的文檔、其關聯的帳戶名稱和IP位址。 |
+| SharePoint | 顯示使用者最常對 SharePoint 文件執行的活動。 當您從此圖格向下鑽研時，搜尋頁面會顯示這些活動的詳細資料，例如此活動的目標文件與位置。 例如，針對檔案存取事件，您可以看到正在存取的檔、其相關聯的帳戶名稱和 IP 位址。 |
 | Azure Active Directory | 包含熱門使用者活動，例如「重設使用者密碼」和「登入嘗試」。 向下鑽研時，您可以像「結果狀態」一般地查看這些活動的詳細資料。 如果您想要監視 Azure Active Directory 上的可疑活動，這會很有幫助。 |
 
 
@@ -272,7 +272,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 | ResultStatus | 指出 (Operation 屬性中指定的) 動作是否成功。 可能的值為 Succeeded、PartiallySucceeded 或 Failed。 對於 Exchange 管理員活動，這個值將會是 True 或 False。 |
 | UserId | 執行動作導致記下該記錄之使用者的 UPN (使用者主體名稱)，例如 my_name@my_domain_name。 請注意，由系統帳戶 (例如 SHAREPOINT\system 或 NTAUTHORITY\SYSTEM) 所執行之活動的記錄也會包含在內。 | 
 | UserKey | UserId 屬性所識別之使用者的替代識別碼。  例如，針對由使用者在 SharePoint、商務用 OneDrive 及 Exchange 中所執行的事件，此屬性都會填入 Passport 唯一識別碼 (PUID)。 針對在其他服務中所發生的事件，以及由系統帳戶所執行的事件，此屬性也可能會將相同的值指定為 UserID 屬性|
-| UserType | 執行作業的使用者類型。<br><br>管理<br>Application<br>DcAdmin<br>Regular<br>Reserved<br>ServicePrincipal<br>系統 |
+| UserType | 執行作業的使用者類型。<br><br>系統管理員<br>Application<br>DcAdmin<br>Regular<br>Reserved<br>ServicePrincipal<br>System (系統) |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory 基底
@@ -381,7 +381,7 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| Item | 表示對之執行作業的項目 | 
+| 項目 | 表示對之執行作業的項目 | 
 | SendAsUserMailboxGuid | 存取以傳送電子郵件之信箱的 Exchange GUID。 |
 | SendAsUserSmtp | 被模擬之使用者的 SMTP 位址。 |
 | SendonBehalfOfUserMailboxGuid | 存取以代為傳送電子郵件之信箱的 Exchange GUID。 |
@@ -458,15 +458,15 @@ Office 365 管理解決方案可讓您監視 Azure 監視器中的 Office 365 �
 
 
 
-## <a name="sample-log-queries"></a>範例紀錄查詢
+## <a name="sample-log-queries"></a>範例記錄查詢
 
-下表提供了此解決方案收集的更新記錄的範例日誌查詢。
+下表提供此解決方案所收集之更新記錄的記錄查詢範例。
 
 | 查詢 | 描述 |
 | --- | --- |
 |Office 365 訂閱上所有作業的計數 |OfficeActivity &#124; summarize count() by Operation |
-|SharePoint 網站的使用情況|Office 活動&#124;其中 Office 工作負荷 =\|"共用點"&#124;按 SiteUrl 排序(按計數 asc 匯總計數)|
-|依使用者類型分類的檔案存取作業 | 依使用者類型&#124;匯總計數()的 Office 活動 |
+|SharePoint 網站的使用情況|OfficeActivity &#124; where OfficeWorkload = ~ "sharepoint" &#124; 摘要計數（）依據計數\| Asc 的 SiteUrl 排序|
+|依使用者類型分類的檔案存取作業 | UserType 的 OfficeActivity &#124; 摘要 count （） |
 |監視 Exchange 上的外部動作|OfficeActivity &#124; where OfficeWorkload =~ "exchange" and ExternalAccess == true|
 
 

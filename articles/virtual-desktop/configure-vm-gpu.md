@@ -1,6 +1,6 @@
 ---
-title: Windows 虛擬桌面設定 GPU - Azure
-description: 如何在 Windows 虛擬桌面中啟用 GPU 加速呈現和編碼。
+title: 設定 Windows 虛擬桌面的 GPU-Azure
+description: 如何在 Windows 虛擬桌面中啟用 GPU 加速轉譯和編碼。
 services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
@@ -8,87 +8,87 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
 ms.openlocfilehash: 8b675a78041b68210fa7583510582783c506c720
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81767037"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>為 Windows 虛擬桌面設定圖形處理單元 (GPU) 加速
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>設定 Windows 虛擬桌面的圖形處理器（GPU）加速
 
-Windows 虛擬桌面支援 GPU 加速呈現和編碼,以提高應用性能和可伸縮性。 GPU 加速對於圖形密集型應用尤為重要。
+Windows 虛擬桌面支援 GPU 加速轉譯和編碼，以改善應用程式效能和擴充性。 GPU 加速對於需要大量圖形的應用程式特別重要。
 
-按照本文中的說明創建 GPU 優化的 Azure 虛擬機器,將其添加到主機池,並將其配置為使用 GPU 加速進行渲染和編碼。 本文假定您已經配置了 Windows 虛擬桌面租戶。
+請遵循本文中的指示來建立 GPU 優化的 Azure 虛擬機器、將它新增至您的主機集區，並將其設定為使用 GPU 加速進行轉譯和編碼。 本文假設您已設定 Windows 虛擬桌面的租使用者。
 
-## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>選擇 GPU 的 Azure 虛擬機器大小
+## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>選取 GPU 優化的 Azure 虛擬機器大小
 
-Azure 提供許多[GPU 的虛擬機器大小](/azure/virtual-machines/windows/sizes-gpu)。 主機池的正確選擇取決於許多因素,包括您的特定應用工作負載、所需的用戶體驗品質和成本。 通常,更大、功能更強的 GPU 在給定使用者密度下提供更好的用戶體驗。
+Azure 提供一些[GPU 優化的虛擬機器大小](/azure/virtual-machines/windows/sizes-gpu)。 主機集區的正確選擇取決於數個因素，包括您的特定應用程式工作負載、所需的使用者體驗品質和成本。 一般而言，較大且更有能力的 Gpu 可在指定的使用者密度上提供更好的使用者體驗。
 
-## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>建立主機池、預配虛擬機器和設定軟體
+## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>建立主機集區、布建您的虛擬機器，以及設定應用程式群組
 
-使用所選大小的 VM 創建新的主機池。 有關說明,請參閱[教程:使用 Azure 應用商店創建主機池](/azure/virtual-desktop/create-host-pools-azure-marketplace)。
+使用您所選大小的 VM，建立新的主機集區。 如需指示，請參閱[教學課程：使用 Azure Marketplace 建立主機集](/azure/virtual-desktop/create-host-pools-azure-marketplace)區。
 
-Windows 虛擬桌面支援 GPU 加速呈現與編碼在以下作業系統中:
+Windows 虛擬桌面支援下列作業系統中的 GPU 加速轉譯和編碼：
 
-* Windows 10 版本 1511 或更新
+* Windows 10 1511 版或更新版本
 * Windows Server 2016 或更新版本
 
-您還必須配置應用組,或使用在創建新主機池時自動創建的預設桌面應用組(名為"桌面應用程式群組")。 有關說明,請參閱[教學:管理 Windows 虛擬桌面的應用程式](/azure/virtual-desktop/manage-app-groups)。
+您也必須設定應用程式群組，或使用當您建立新的主機集區時，自動建立的預設桌面應用程式群組（名為「桌面應用程式群組」）。 如需指示，請參閱[教學課程：管理 Windows 虛擬桌面的應用程式群組](/azure/virtual-desktop/manage-app-groups)。
 
-## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>安裝於虛擬機中安裝的圖像化驅動程式
+## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>在您的虛擬機器中安裝支援的圖形驅動程式
 
-要利用 Windows 虛擬桌面中的 Azure N 系列 VM 的 GPU 功能,必須安裝相應的圖形驅動程式。 按照[支援作業系統和驅動程式](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)的說明,手動或使用 Azure VM 擴展安裝來自相應圖形供應商的驅動程式。
+若要在 Windows 虛擬桌面中利用 Azure N 系列 Vm 的 GPU 功能，您必須安裝適當的圖形驅動程式。 遵循[支援的作業系統和驅動程式](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers)上的指示，以手動方式或使用 Azure VM 擴充功能，從適當的圖形廠商安裝驅動程式。
 
-只有 Azure 分發的驅動程式支援 Windows 虛擬桌面。 附加功能,對於具有 NVIDIA GPU 的 Azure VM,Windows 虛擬桌面僅支援[NVIDIA 網格驅動程式](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)。
+Windows 虛擬桌面僅支援由 Azure 散發的驅動程式。 Additionaly，針對具有 NVIDIA Gpu 的 Azure Vm，只有[NVIDIA GRID 驅動程式](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)支援 Windows 虛擬桌面。
 
-驅動程式安裝後,需要重新啟動 VM。 使用上述說明中的驗證步驟確認已成功安裝圖形驅動程式。
+安裝驅動程式之後，需要重新開機 VM。 使用上述指示中的驗證步驟，確認已成功安裝圖形驅動程式。
 
-## <a name="configure-gpu-accelerated-app-rendering"></a>設定 GPU 加速應用
+## <a name="configure-gpu-accelerated-app-rendering"></a>設定 GPU 加速應用程式轉譯
 
-默認情況下,以多會話配置運行的應用和桌面使用 CPU 呈現,並且不利用可用的 GPU 進行呈現。 為工作階段主機設定群組策略以開啟 GPU 加速呈現:
+根據預設，在多會話設定中執行的應用程式和桌面會隨著 CPU 轉譯，而且不會利用可用的 Gpu 進行轉譯。 設定工作階段主機的群組原則，以啟用 GPU 加速轉譯：
 
-1. 使用具有本地管理員許可權的帳戶連接到 VM 的桌面。
-2. 打開"開始"功能表併鍵入"gpedit.msc"以打開組策略編輯器。
-3. 將樹瀏覽**到電腦設定** > **管理樣本** > **Windows 元件** > **遠端桌面服務** > **遠端桌面工作階段主機** > **遠端作業階段**。
-4. 選擇策略**使用所有遠端桌面服務工作階段的硬體預設圖形適配器**,並將此策略設置為 **「已啟用」,** 以便在遠端作業階段中啟用 GPU 呈現。
+1. 使用具有本機系統管理員許可權的帳戶連接到 VM 的桌面。
+2. 開啟 [開始] 功能表，然後輸入 "gpedit.msc" 以開啟 [群組原則編輯器]。
+3. 流覽樹狀結構， ** **  > **系統管理範本** > **Windows 元件** > **遠端桌面服務** > **遠端桌面工作階段主機** > **遠端會話環境**中的電腦設定。
+4. 選取 [原則] **[使用所有遠端桌面服務會話的硬體預設圖形配接器**]，並將此原則設定為 [**啟用**]，以在遠端會話中啟用 GPU 轉譯。
 
-## <a name="configure-gpu-accelerated-frame-encoding"></a>設定 GPU 加速的畫面
+## <a name="configure-gpu-accelerated-frame-encoding"></a>設定 GPU 加速框架編碼
 
-遠端桌面對應用和桌面呈現的所有圖形(無論是使用 GPU 渲染還是 CPU)進行編碼,以便傳輸到遠端桌面用戶端。 預設情況下,遠端桌面不會利用可用於此編碼的可用 GPU。 為工作階段主機配置組策略以啟用 GPU 加速幀編碼。 繼續上述步驟:
+遠端桌面會將應用程式和桌上型電腦（無論以 GPU 或 CPU 轉譯）所轉譯的所有圖形編碼，以傳輸到遠端桌面用戶端。 根據預設，遠端桌面不會利用可用的 Gpu 來進行此編碼。 設定工作階段主機的群組原則，以啟用 GPU 加速的框架編碼。 繼續上述步驟：
 
-1. 為**遠端桌面連接選擇"H.264/AVC 444 圖形模式"策略優先順序**,並將此策略設置為**啟用**以強制遠端作業階段中的 H.264/AVC 444 編解碼器。
-2. 選擇策略**為遠端桌面連接配置 H.264/AVC 硬體編碼**,並將此策略設定為 **「已啟用」,** 以便在遠端作業階段中啟用 AVC/H.264 的硬體編碼。
+1. **針對遠端桌面連線選取原則優先順序： h.264/AVC 444 圖形模式**，並將此原則設定為 [**啟用**]，以在遠端會話中強制執行 h.264/AVC 444 編解碼器。
+2. 選取 [原則] [設定**遠端桌面連線的 h.264/AVC 硬體編碼**]，並將此原則設為 [**啟用**]，以在遠端會話中啟用 AVC/h.264 的硬體編碼。
 
     >[!NOTE]
-    >在 Windows 伺服器 2016 中,設定選項 **「首選 AVC 硬體編碼**」 以**始終嘗試**。
+    >在 Windows Server 2016 中，將選項 [**偏好 AVC 硬體編碼**] 設定為 [**一律嘗試**]。
 
-3. 現在,組策略已過編輯,請強制進行組策略更新。 開啟命令提示符並鍵入:
+3. 現在已編輯過群組原則，強制執行群組原則更新。 開啟命令提示字元，然後輸入：
 
     ```batch
     gpupdate.exe /force
     ```
 
-4. 從遠端桌面作業階段登出。
+4. 登出遠端桌面會話。
 
-## <a name="verify-gpu-accelerated-app-rendering"></a>認證 GPU 加速應用
+## <a name="verify-gpu-accelerated-app-rendering"></a>確認 GPU 加速應用程式轉譯
 
-要驗證應用是否使用 GPU 進行渲染,請嘗試以下任一操作:
+若要驗證應用程式是否使用 GPU 進行轉譯，請嘗試下列任一項：
 
-* 對於具有 NVIDIA GPU 的`nvidia-smi`Azure VM,請使用[『驗證驅動程式安裝](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)』中所述的實用程式,以檢查執行應用時的 GPU 利用率。
-* 在支援的作業系統版本上,可以使用任務管理器檢查 GPU 利用率。 在「效能」選項卡中選擇 GPU 以查看應用是否正在使用 GPU。
+* 針對具有 NVIDIA GPU 的 Azure Vm，請依照`nvidia-smi` [確認驅動程式安裝](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)中所述，使用公用程式來檢查執行應用程式時的 GPU 使用量。
+* 在支援的作業系統版本上，您可以使用工作管理員來檢查 GPU 使用率。 在 [效能] 索引標籤中選取 GPU，以查看應用程式是否正在利用 GPU。
 
-## <a name="verify-gpu-accelerated-frame-encoding"></a>驗證 GPU 加速的畫面
+## <a name="verify-gpu-accelerated-frame-encoding"></a>確認 GPU 加速畫面編碼
 
-要驗證遠端桌面是否使用 GPU 加速編碼,
+若要確認遠端桌面使用的是 GPU 加速編碼：
 
 1. 使用 Windows 虛擬桌面用戶端連接到 VM 的桌面。
-2. 啟動事件檢視器並瀏覽到以下節點:**應用程式和服務紀錄** > **微軟** > **Windows** > **遠端桌面服務-RdpCoreCDV** > **操作**
-3. 要確定是否使用 GPU 加速編碼,請查找事件 ID 170。 如果您看到「AVC 硬體編碼器已啟用:1」,則使用 GPU 編碼。
-4. 要確定是否使用 AVC 444 模式,請查找事件 ID 162。 如果您看到「AVC 可用:1 初始配置檔:2048」,則使用 AVC 444。
+2. 啟動事件檢視器並流覽至下列節點： [**應用程式及服務記錄** > 檔] [**Microsoft** > **Windows** > **RemoteDesktopServices-RdpCoreCDV** > **操作**]
+3. 若要判斷是否使用 GPU 加速編碼，請尋找事件識別碼170。 如果您看到「已啟用 AVC 硬體編碼器：1」，則會使用 GPU 編碼。
+4. 若要判斷是否使用 AVC 444 模式，請尋找事件識別碼162。 如果您看到「可用的 AVC：1個初始設定檔：2048」，則會使用 AVC 444。
 
 ## <a name="next-steps"></a>後續步驟
 
-這些說明應該讓您在一個工作階段主機(一個 VM)上使用 GPU 加速啟動和運行。 跨較大主機池啟用 GPU 加速的一些其他注意事項:
+這些指示應該讓您能夠在一個工作階段主機（一個 VM）上啟動並執行 GPU 加速。 在較大的主機集區上啟用 GPU 加速的一些額外考慮：
 
-* 請考慮使用[VM 擴展](/azure/virtual-machines/extensions/overview)來簡化跨多個 VM 的驅動程式安裝和更新。 使用[NVIDIA GPU 驅動程式擴充](/azure/virtual-machines/extensions/hpccompute-gpu-windows)功能,用於具有 NVIDIA GPU 的 VM,並使用 AMD GPU 驅動程式擴展(即將推出)用於具有 AMD GPU 的 VM。
-* 請考慮使用 Active 目錄組策略來簡化多個 VM 的組策略配置。 有關在活動目錄網域中部署群組政策的資訊,請參考[使用群組原則物件](https://go.microsoft.com/fwlink/p/?LinkId=620889)。
+* 請考慮使用[VM 擴充](/azure/virtual-machines/extensions/overview)功能來簡化多部 vm 的驅動程式安裝和更新。 針對具有 NVIDIA Gpu 的 Vm 使用[NVIDIA Gpu 驅動程式擴充](/azure/virtual-machines/extensions/hpccompute-gpu-windows)功能，並針對具有 amd Gpu 的 VM 使用 Amd Gpu 驅動程式擴充功能（即將推出）。
+* 請考慮使用 Active Directory 群組原則，以簡化多個 Vm 的群組原則設定。 如需在 Active Directory 網域中部署群組原則的詳細資訊，請參閱[使用群組原則物件](https://go.microsoft.com/fwlink/p/?LinkId=620889)。

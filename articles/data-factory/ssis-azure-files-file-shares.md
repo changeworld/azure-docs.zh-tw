@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 中部署的 SSIS 套件開啟及儲存檔案
+title: 使用 Azure 中部署的 SSIS 套件開啟並儲存檔案
 description: 了解當您將使用本機檔案系統的 SSIS 套件隨即轉移至 Azure 中的 SSIS 時，如何在內部部署與 Azure 中開啟和儲存檔案
 ms.date: 06/27/2018
 ms.topic: conceptual
@@ -9,10 +9,10 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
 ms.openlocfilehash: 630a8ead409ad60b9146838f062210a3301b43b5
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81760195"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>在 SSIS 套件部署於 Azure 的情況下，於內部部署與 Azure 中開啟和儲存檔案
@@ -51,4 +51,4 @@ ms.locfileid: "81760195"
 
 - 部署您的套件。 如需詳細資訊，請參閱[使用 SSMS 將 SSIS 專案部署到 Azure](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-deploy-ssms)。
 - 執行您的套件。 如需詳細資訊，請參閱[在 Azure 中使用 SSMS 執行 SSIS 套件](https://docs.microsoft.com/sql/integration-services/ssis-quickstart-run-ssms)。
-- 排程您的套件。 有關詳細資訊,請參閱[Azure 中的計畫 SSIS 套件](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)。
+- 排程您的套件。 如需詳細資訊，請參閱[在 Azure 中排程 SSIS 套件](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-schedule-packages-ssms?view=sql-server-ver15)。

@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
 ms.openlocfilehash: c0cb4800bdabe5eb500422fca55b3060b6422e8e
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82139234"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>控制維護控制和 Azure 入口網站的更新
@@ -26,7 +26,7 @@ ms.locfileid: "82139234"
 
    ![顯示如何開啟維護設定的螢幕擷取畫面](media/virtual-machines-maintenance-control-portal/maintenance-configurations-search.png)
 
-1. 按一下 **[新增]** 。
+1. 按一下 [加入]  。
 
    ![顯示如何新增維護設定的螢幕擷取畫面](media/virtual-machines-maintenance-control-portal/maintenance-configurations-add.png)
 

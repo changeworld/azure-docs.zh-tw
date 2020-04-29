@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: spelluru
 ms.openlocfilehash: caea8d515964510fce432eb0497e3af19ecc1369
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101632"
 ---
 # <a name="update-pricing-tier"></a>更新定價層 
@@ -57,7 +57,7 @@ ms.locfileid: "82101632"
 ## <a name="use-azure-cli"></a>使用 Azure CLI
 本節說明如何使用 Azure CLI 命令來變更主題的定價層。 若要更新網域的定價層，請以`az eventgrid domain update`類似的方式使用命令。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 執行下列命令來更新適用于 CLI 的 Azure 事件方格延伸模組： 
 
 ```azurecli-interactive

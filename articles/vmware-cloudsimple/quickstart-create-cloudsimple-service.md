@@ -1,7 +1,7 @@
 ---
-title: 快速入門:創建 VMware 雲簡單服務
+title: 快速入門：建立 VMware CloudSimple 服務
 titleSuffix: Azure VMware Solution by CloudSimple
-description: 瞭解如何建立雲端簡單服務、購買節點和預留節點
+description: 瞭解如何建立 CloudSimple 服務、購買節點和保留節點
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/16/2019
@@ -10,27 +10,27 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: d7c137a75c0a021aa8bca3aec23da6c4d1ada300
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868021"
 ---
-# <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>快速入門 ─透過雲端簡單服務建立 Azure VMware 解決方案
+# <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>快速入門-建立 Azure VMware Solution by CloudSimple 服務
 
-要開始,請在 Azure 門戶中按雲端簡單創建 Azure VMware 解決方案。
+若要開始使用，請在 Azure 入口網站中建立 Azure VMware Solution by CloudSimple。
 
-## <a name="vmware-solution-by-cloudsimple---service-overview"></a>VMware 解決方案(按雲簡單 ) - 服務概述
+## <a name="vmware-solution-by-cloudsimple---service-overview"></a>VMware Solution by CloudSimple-服務總覽
 
-雲端簡單服務允許您使用 Azure VMware 解決方案(按雲端簡單。  創建服務允許您預配節點、保留節點和創建私有雲。  在雲端簡單服務可用的每個 Azure 區域中添加雲端簡單服務。  該服務透過雲端簡單定義 Azure VMware 解決方案的邊緣網路。  此邊緣網路用於包括 VPN、ExpressRoute 和 Internet 連接到私有雲端服務。
+CloudSimple 服務可讓您使用 CloudSimple 的 Azure VMware 解決方案。  建立服務可讓您布建節點、保留節點，以及建立私人雲端。  您會在可使用 CloudSimple 服務的每個 Azure 區域中新增 CloudSimple 服務。  服務會依 CloudSimple 定義 Azure VMware 解決方案的邊緣網路。  此 edge 網路適用于包含 VPN、ExpressRoute 和網際網路連線的服務，可連接到您的私人雲端。
 
-要添加 CloudSimple 服務,必須創建閘道閘。 創建邊緣網路時使用閘道網,並且需要 /28 CIDR 塊。 閘道網地址空間必須是唯一的。 它不能與任何本地網路地址空間或 Azure 虛擬網路位址空間重疊。
+若要新增 CloudSimple 服務，您必須建立閘道子網。 建立 edge 網路時，會使用閘道子網，而且需要/28 CIDR 區塊。 閘道子網位址空間必須是唯一的。 它不能與您的任何內部部署網路位址空間或 Azure 虛擬網路位址空間重迭。
 
 ## <a name="before-you-begin"></a>開始之前
 
-為閘道配置 /28 CIDR 塊。  每個 CloudSimple 服務都需要閘道,並且對於創建閘道的區域是唯一的。 閘道網路網路網路網路網路網路網路網路網路網路服務,需要 /28 CIDR 塊)。 閘道網地址空間必須是唯一的。 它不得與任何與 CloudSimple 環境通信的網路重疊。  與 CloudSimple 通訊的網路包括本地網路和 Azure 虛擬網路。
+為閘道子網配置/28 CIDR 區塊。  每個 CloudSimple 服務都需要閘道子網，而且對其建立所在的區域而言是唯一的。 閘道子網可用於 Azure VMware 解決方案，方法是 CloudSimple edge 網路服務，而且需要/28 CIDR 區塊。 閘道子網位址空間必須是唯一的。 它不得與任何與 CloudSimple 環境通訊的網路重迭。  與 CloudSimple 通訊的網路包括內部部署網路和 Azure 虛擬網路。
 
-檢視[網路先決條件](cloudsimple-network-checklist.md)。 
+審查[網路必要條件](cloudsimple-network-checklist.md)。 
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -39,52 +39,52 @@ ms.locfileid: "81868021"
 ## <a name="create-the-service"></a>建立服務
 
 1. 選取 [所有服務]  。
-2. 搜尋**雲簡單服務**。
+2. 搜尋**CloudSimple 服務**。
 
-    ![搜尋雲簡單服務](media/create-cloudsimple-service-search.png)
+    ![搜尋 CloudSimple 服務](media/create-cloudsimple-service-search.png)
 
-3. 選擇**雲簡單服務**。
-4. 按下「**新增**」 以創建新服務。
+3. 選取 [ **CloudSimple 服務**]。
+4. 按一下 [**新增**] 以建立新的服務。
 
-    ![新增雲端簡單服務](media/create-cloudsimple-service-add.png)
+    ![新增 CloudSimple 服務](media/create-cloudsimple-service-add.png)
 
-5. 選擇要創建雲端簡單服務的訂閱。
-6. 選擇服務的資源組。 要添加新資源組,請按一下**新**"。
-7. 輸入名稱以標識服務。
-8. 輸入服務閘道的 CIDR。 指定不與任何本地子網、Azure 子網或計劃的 CloudSimple 子網重疊的 /28 子網。 建立服務後,無法更改 CIDR。
+5. 選取您要在其中建立 CloudSimple 服務的訂用帳戶。
+6. 選取服務的資源群組。 若要新增新的資源群組，**請按一下 [新建]**。
+7. 輸入名稱以識別服務。
+8. 輸入服務閘道的 CIDR。 指定/28 子網，而不會與任何內部部署子網、Azure 子網或規劃的 CloudSimple 子網重迭。 建立服務之後，您就無法變更 CIDR。
 
-    ![建立雲端簡單服務](media/create-cloudsimple-service.png)
+    ![建立 CloudSimple 服務](media/create-cloudsimple-service.png)
 
 9. 按一下 [確定]  。
 
-該服務將創建並添加到服務清單中。
+隨即建立服務，並將其新增至服務清單。
 
 ## <a name="provision-nodes"></a>佈建節點
 
-要為雲簡單私有雲環境設置即付容量,首先在 Azure 門戶中預配節點。
+若要設定 CloudSimple 私用雲端環境的隨用隨付容量，請先在 Azure 入口網站中布建節點。
 
 1. 選取 [所有服務]  。
-2. 搜尋**雲簡單節點**。
+2. 搜尋**CloudSimple 節點**。
 
-    ![搜尋雲簡單節點](media/create-cloudsimple-node-search.png)
+    ![搜尋 CloudSimple 節點](media/create-cloudsimple-node-search.png)
 
-3. 選擇**雲簡單節點**。
-4. 按下「**新增**」 以建立節點。
+3. 選取 [ **CloudSimple 節點**]。
+4. 按一下 [**新增**] 以建立節點。
 
-    ![新增雲端簡單節點](media/create-cloudsimple-node-add.png)
+    ![新增 CloudSimple 節點](media/create-cloudsimple-node-add.png)
 
-5. 選擇要預配雲簡單節點的訂閱。
-6. 選擇節點的資源組。 要添加新資源組,請按一下**新**"。
-7. 輸入首碼以標識節點。
-8. 選擇節點資源的位置。
-9. 選擇託管節點資源的專用位置。
-10. 選擇[節點型態](cloudsimple-node.md)。
-11. 選擇要預配的節點數。
+5. 選取您要布建 CloudSimple 節點的訂用帳戶。
+6. 選取節點的資源群組。 若要新增新的資源群組，**請按一下 [新建]**。
+7. 輸入前置詞以識別節點。
+8. 選取節點資源的 [位置]。
+9. 選取要裝載節點資源的專用位置。
+10. 選取[節點類型](cloudsimple-node.md)。
+11. 選取要布建的節點數目。
 12. 選取 [檢閱 + 建立]  。
-13. 查看設置。 要修改任何設置,請單擊「**上一個**」。
+13. 檢查設定。 若要修改任何設定，請按一下 [**上一步**]。
 14. 選取 [建立]  。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [建立私有雲端並設定環境](quickstart-create-private-cloud.md)
-* 瞭解有關[雲簡單服務](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service)的更多
+* [建立私用雲端及設定環境](quickstart-create-private-cloud.md)
+* 深入瞭解[CloudSimple 服務](https://docs.microsoft.com/azure/vmware-cloudsimple/cloudsimple-service)

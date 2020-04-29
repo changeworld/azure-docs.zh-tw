@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: dsindona
 ms.openlocfilehash: 15bbd7776f2ac8fef78cde43a22e59b0e60a6f50
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142992"
 ---
 # <a name="virtual-machine-support-tab"></a>虛擬機器支援索引標籤
@@ -30,11 +30,11 @@ ms.locfileid: "82142992"
 |         欄位                 |       描述                                                        |
 |        -------                |       ------------                                                       |
 | *工程連絡人*     | Microsoft 與貴組織的技術連絡人 | 
-| **Name\***                | 負責技術/工程支援的人員或群組名稱     |
+| **檔案名\***                | 負責技術/工程支援的人員或群組名稱     |
 | **電子郵件\***               | 此技術連絡人的電子郵件地址                                      |
 | **來電\***               | 此技術連絡人的電話號碼                                           |
 | *客戶支援*        | 接收客戶在 Azure 中開啟的支援票證 |
-| **Name\***                | 負責客戶支援的人員或群組名稱                  |
+| **檔案名\***                | 負責客戶支援的人員或群組名稱                  |
 | **電子郵件\***               | 客戶支援部門的電子郵件地址                                            |
 | **來電\***               | 客戶支援部門的電話號碼                                            |
 | *支援 URL*            | 當您的客戶開啟支援票證時，Microsoft 會使用這些支援網站 |

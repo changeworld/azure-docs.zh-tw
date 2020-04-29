@@ -1,5 +1,5 @@
 ---
-title: 從 Azure 中的專用 VHD 建立 Windows VM
+title: 在 Azure 中從特製化的 VHD 建立 Windows VM
 description: 使用 Resource Manager 部署模型，藉由連結特製化受控磁碟作為 OS 磁碟，建立新的 Windows VM。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: 2939726898abc2abc0e62d0e36feedbfe7ba3645
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086397"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>使用 PowerShell 從特製化磁碟建立 Windows VM
@@ -27,9 +27,9 @@ ms.locfileid: "82086397"
 
 您也可以使用 Azure 入口網站，[從特定的 VHD 建立新的虛擬機器](create-vm-specialized-portal.md)。
 
-本文說明如何使用受控磁碟。 如果您有需要使用存儲帳戶的舊部署,請參閱[在存儲帳戶中從專用 VHD 創建 VM。](sa-create-vm-specialized.md)
+本文說明如何使用受控磁碟。 如果您有需要使用儲存體帳戶的舊版部署，請參閱[從儲存體帳戶中的特製化 VHD 建立 VM](sa-create-vm-specialized.md)。
 
-我們建議您將單個 VHD 或快照的併發部署數限制為 20 個 VM。 
+我們建議您從單一 VHD 或快照集，將並行部署數目限制為20個 Vm。 
 
 ## <a name="option-1-use-an-existing-disk"></a>選項 1. 使用現有磁碟
 
@@ -51,20 +51,20 @@ $osDisk = Get-AzDisk `
 ### <a name="prepare-the-vm"></a>準備 VM
 依現況使用 VHD 來建立新 VM。 
   
-  * [準備要上載到 Azure 的 Windows VHD。](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 請**勿**使用 Sysprep 將 VM一般化。
+  * [準備要上傳至 Azure 的 WINDOWS VHD](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 請**勿**使用 Sysprep 將 VM一般化。
   * 移除已安裝在 VM 上的所有客體虛擬化工具和代理程式 (例如 VMware 工具)。
   * 確認已將 VM 設定成從 DHCP 取得 IP 位址和 DNS 設定。 這可確保伺服器在啟動時取得虛擬網路內的 IP 位址。 
 
 
 ### <a name="upload-the-vhd"></a>上傳 VHD
 
-您現在可以將 VHD 直接上傳到託管磁碟。 有關說明,請參閱[使用 Azure PowerShell 將 VHD 上傳到 Azure。](disks-upload-vhd-to-managed-disk-powershell.md)
+您現在可以將 VHD 直接上傳至受控磁片。 如需指示，請參閱[使用 Azure PowerShell 將 VHD 上傳至 Azure](disks-upload-vhd-to-managed-disk-powershell.md)。
 
 ## <a name="option-3-copy-an-existing-azure-vm"></a>選項 3：複製現有的 Azure 虛擬機器
 
 您可以藉由建立 VM 的快照集，然後使用該快照集來建立新的受控磁碟和新的 VM，建立使用受控磁碟的 VM 複本。
 
-如果要將現有 VM 複製到其他區域,可能需要使用 azcopy[在另一個區域中建立磁碟的複本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
+如果您想要將現有的 VM 複製到另一個區域，您可能會想要使用 azcopy，[在另一個區域中建立磁片的複本](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)。 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>製作 OS 磁碟的快照集
 
@@ -112,7 +112,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-要使用此快照創建需要高性能的 VM,請將`-AccountType Premium_LRS`參數 添加到 New-AzSnapshot Config 命令。 此參數建立的快照集會儲存為「進階受控磁碟」。 「進階受控磁碟」比「標準磁碟」費用高，因此請先確定您需要「進階磁碟」，再使用此參數。
+若要使用此快照集來建立需要執行高效能的 VM，請將參數`-AccountType Premium_LRS`新增至 AzSnapshotConfig 命令。 此參數建立的快照集會儲存為「進階受控磁碟」。 「進階受控磁碟」比「標準磁碟」費用高，因此請先確定您需要「進階磁碟」，再使用此參數。
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>從快照集建立新的磁碟
 
@@ -261,7 +261,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>確認已建立 VM
-您應該在 **「瀏覽** > **」下**的 Azure[門戶](https://portal.azure.com)中看到新創建的 VM,或者使用以下 PowerShell 命令。
+您應該會在 [**流覽]** > [**虛擬機器**] 底下的[Azure 入口網站](https://portal.azure.com)中看到新建立的 VM，或使用下列 PowerShell 命令。
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

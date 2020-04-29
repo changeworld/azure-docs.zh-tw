@@ -1,14 +1,14 @@
 ---
-title: 輸入站/出站 IP 位址
-description: 瞭解在 Azure 應用服務中如何使用入站和出站 IP 位址、更改時間以及如何查找應用的位址。
+title: 輸入/輸出 IP 位址
+description: 瞭解輸入和輸出 IP 位址在 Azure App Service 中的使用方式、變更時間，以及如何尋找您的應用程式位址。
 ms.topic: article
 ms.date: 06/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 8bcd80fde95e467513590f3ed09b1dadd2646aee
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537622"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service 中的輸入和輸出 IP 位址
@@ -23,19 +23,19 @@ ms.locfileid: "81537622"
 
 - 刪除應用程式，並在不同資源群組中重建。
 - 刪除資源群組和__ 區域組合中的最後一個應用程式，並予以重建。
-- 刪除現有的 TLS 綁定,例如在證書續訂期間(請參閱[續訂證書](configure-ssl-certificate.md#renew-certificate))。
+- 刪除現有的 TLS 系結，例如在憑證更新期間（請參閱[更新憑證](configure-ssl-certificate.md#renew-certificate)）。
 
-## <a name="find-the-inbound-ip"></a>尋找站 IP
+## <a name="find-the-inbound-ip"></a>尋找輸入 IP
 
-只需在本地終端機中執行以下指令:
+只要在本機終端機中執行下列命令：
 
 ```bash
 nslookup <app-name>.azurewebsites.net
 ```
 
-## <a name="get-a-static-inbound-ip"></a>取得靜態入站 IP
+## <a name="get-a-static-inbound-ip"></a>取得靜態的輸入 IP
 
-有時候您可能會想讓應用程式使用專用的靜態 IP 位址。 要取得靜態入站 IP 位址,您需要[保護自訂網域](configure-ssl-bindings.md#secure-a-custom-domain)。 如果您實際上不需要 TLS 功能來保護你的應用,您甚至可以為此綁定上傳自簽名證書。 在基於 IP 的 TLS 綁定中,證書綁定到 IP 位址本身,因此應用服務會提供靜態 IP 位址來實現。 
+有時候您可能會想讓應用程式使用專用的靜態 IP 位址。 若要取得靜態的輸入 IP 位址，您必須[保護自訂網域](configure-ssl-bindings.md#secure-a-custom-domain)。 如果您實際上不需要 TLS 功能來保護您的應用程式，您甚至可以上傳此系結的自我簽署憑證。 在以 IP 為基礎的 TLS 系結中，憑證會系結至 IP 位址本身，因此 App Service 會布建靜態 IP 位址來進行這項操作。 
 
 ## <a name="when-outbound-ips-change"></a>當輸出 IP 變更時
 
@@ -43,11 +43,11 @@ nslookup <app-name>.azurewebsites.net
 
 當您在較低層級 (**基本**、**標準**和**進階**) 和**進階 V2** 層級之間調整應用程式時，應用程式的該組輸出 IP 位址會變更。
 
-您可以通過尋找`possibleOutboundIpAddresses`屬性或在 Azure 入口中 **「屬性**」欄選項卡中的 **「其他出站 IP 位址**」欄位中尋找應用可以使用的所有可能的出站 IP 位址集,而不考慮定價層。 請參閱[尋找輸出 IP](#find-outbound-ips)。
+您可以在 Azure 入口網站**的 [內容**] 分頁中，尋找`possibleOutboundIpAddresses`屬性或 [**其他輸出 ip 位址**] 欄位，以尋找您的應用程式可以使用的所有可能輸出 ip 位址集合（不論定價層為何）。 請參閱[尋找輸出 IP](#find-outbound-ips)。
 
 ## <a name="find-outbound-ips"></a>尋找輸出 IP
 
-若要在 Azure 入口網站中尋找應用程式目前所使用的輸出 IP 位址，請按一下應用程式左側導覽中的 [屬性]****。 它們列在**出站 IP 位址**欄位中。
+若要在 Azure 入口網站中尋找應用程式目前所使用的輸出 IP 位址，請按一下應用程式左側導覽中的 [屬性]****。 它們會列在 [**輸出 IP 位址**] 欄位中。
 
 您可以在 [Cloud Shell](../cloud-shell/quickstart.md) 中執行下列命令來找到同樣的資訊。
 
@@ -59,7 +59,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query outboundI
 (Get-AzWebApp -ResourceGroup <group_name> -name <app_name>).OutboundIpAddresses
 ```
 
-要查找應用_的所有_可能的出站 IP 位址,無論定價層如何,請單擊應用左側導航中的 **"屬性**"。 它們列在「**其他出站 IP 位址」** 欄位中。
+若要尋找應用程式的_所有_可能輸出 IP 位址，不論定價層為何，請按一下應用程式左側導覽中的 [**屬性**]。 它們會列在 [**其他輸出 IP 位址**] 欄位中。
 
 您可以在 [Cloud Shell](../cloud-shell/quickstart.md) 中執行下列命令來找到同樣的資訊。
 

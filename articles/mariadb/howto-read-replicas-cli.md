@@ -1,32 +1,32 @@
 ---
-title: 管理讀取複本 ─ Azure CLI,REST API - MariaDB 的 Azure 資料庫
-description: 本文介紹如何使用 Azure CLI 和 REST API 在 MariaDB 的 Azure 資料庫中設置和管理讀取副本。
+title: 管理讀取複本-Azure CLI、REST API 適用於 MariaDB 的 Azure 資料庫
+description: 本文說明如何使用 Azure CLI 和 REST API 來設定和管理適用於 MariaDB 的 Azure 資料庫中的讀取複本。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/21/2020
 ms.openlocfilehash: c5062bce572fbeda4143902ae6a04b31b9a89754
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82025045"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 與 REST API 在 MariaDB 的 Azure 資料庫建立及管理讀取複本
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>如何使用 Azure CLI 和 REST API 來建立和管理適用於 MariaDB 的 Azure 資料庫中的讀取複本
 
-在本文中,您將學習如何使用 Azure CLI 和 REST API 在 MariaDB 服務的 Azure 資料庫中創建和管理讀取複本。
+在本文中，您將瞭解如何使用 Azure CLI 和 REST API 來建立和管理適用於 MariaDB 的 Azure 資料庫服務中的讀取複本。
 
 ## <a name="azure-cli"></a>Azure CLI
-可以使用 Azure CLI 創建和管理讀取複本。
+您可以使用 Azure CLI 建立及管理讀取複本。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 - [安裝 Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-- 將用作主伺服器[的 MariaDB 伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md)的 Azure 資料庫。 
+- 將做為主伺服器使用的[適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md)。 
 
 > [!IMPORTANT]
-> 讀取副本功能僅適用於「通用」或「記憶體優化定價層」中 MariaDB 伺服器的 Azure 資料庫。 請確定主要伺服器處於這些定價層中。
+> 「讀取複本」功能僅適用于一般用途或記憶體優化定價層中的適用於 MariaDB 的 Azure 資料庫伺服器。 請確定主要伺服器處於這些定價層中。
 
 ### <a name="create-a-read-replica"></a>建立讀取複本
 
@@ -41,19 +41,19 @@ az mariadb server replica create --name mydemoreplicaserver --source-server myde
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  複本伺服器會建立於其中的資源群組。  |
-| NAME | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
+| 名稱 | mydemoreplicaserver | 所建立的新複本伺服器名稱。 |
 | source-server | mydemoserver | 要從中複寫的現有主要伺服器的名稱或識別碼。 |
 
-要建立跨區域讀取複本,請使用參數`--location`。 
+若要建立跨區域讀取複本，請使用`--location`參數。 
 
-下面的 CLI 範例在美國西部創建副本。
+下列 CLI 範例會在美國西部建立複本。
 
 ```azurecli-interactive
 az mariadb server replica create --name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup --location westus
 ```
 
 > [!NOTE]
-> 要詳細瞭解可以在哪些區域建立複本,請造[訪讀取複本概念一文](concepts-read-replicas.md)。 
+> 若要深入瞭解您可以在哪些區域中建立複本，請造訪[讀取複本概念一文](concepts-read-replicas.md)。 
 
 > [!NOTE]
 > 系統會以與主要伺服器相同的伺服器設定建立讀取複本。 複本伺服器設定在建立後可以變更。 建議複本伺服器設定的值應保持等於或大於主要伺服器，以確保複本伺服器能保持與主要伺服器一致。
@@ -89,11 +89,11 @@ az mariadb server replica stop --name mydemoreplicaserver --resource-group myres
 | 設定 | 範例值 | 描述  |
 | --- | --- | --- |
 | resource-group |  myresourcegroup |  複本伺服器所在的資源群組。  |
-| NAME | mydemoreplicaserver | 要停止複寫的複本伺服器名稱。 |
+| 名稱 | mydemoreplicaserver | 要停止複寫的複本伺服器名稱。 |
 
 ### <a name="delete-a-replica-server"></a>刪除複本伺服器
 
-通過執行**[az mariadb 伺服器刪除](/cli/azure/mariadb/server)** 命令,可以刪除讀取副本伺服器。
+若要刪除讀取複本伺服器，可以執行**[az 適用于 mariadb server delete](/cli/azure/mariadb/server)** 命令。
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoreplicaserver
@@ -104,17 +104,17 @@ az mariadb server delete --resource-group myresourcegroup --name mydemoreplicase
 > [!IMPORTANT]
 > 刪除主要伺服器會停止對所有複本伺服器複寫，並刪除主要伺服器本身。 複本伺服器會變成獨立伺服器，進而支援讀取和寫入。
 
-要刪除主伺服器,可以運行 az **[mariadb 伺服器刪除](/cli/azure/mariadb/server)** 命令。
+若要刪除主伺服器，您可以執行**[az 適用于 mariadb server delete](/cli/azure/mariadb/server)** 命令。
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
 ## <a name="rest-api"></a>REST API
-可以使用[Azure REST API](/rest/api/azure/)創建和管理讀取複本。
+您可以使用[Azure REST API](/rest/api/azure/)來建立及管理讀取複本。
 
 ### <a name="create-a-read-replica"></a>建立讀取複本
-可以使用[建立 API](/rest/api/mariadb/servers/create)建立讀取複本:
+您可以使用[建立 API](/rest/api/mariadb/servers/create)來建立讀取複本：
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{replicaName}?api-version=2017-12-01
@@ -131,25 +131,25 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 > [!NOTE]
-> 要詳細瞭解可以在哪些區域建立複本,請造[訪讀取複本概念一文](concepts-read-replicas.md)。 
+> 若要深入瞭解您可以在哪些區域中建立複本，請造訪[讀取複本概念一文](concepts-read-replicas.md)。 
 
-如果尚未將`azure.replication_support`參數設定為通用或記憶體最佳化主伺服器上**的 REPLICA**並重新啟動伺服器,則收到錯誤。 在創建副本之前完成這兩個步驟。
+如果您尚未在一般用途`azure.replication_support`或記憶體優化的主伺服器上，將參數設定為 [**複本**]，並重新啟動伺服器，就會收到錯誤。 建立複本之前，請先完成這兩個步驟。
 
-複本使用與主副本相同的計算和存儲設置創建。 建立複本之後，以下設定可以個別地從主要伺服器進行變更：計算世代、虛擬核心、儲存體及備份保留期間。 定價層也可以個別變更，但不能變更為基本層，或從基本層變更為別的層。
+使用與主伺服器相同的計算和儲存設定來建立複本。 建立複本之後，以下設定可以個別地從主要伺服器進行變更：計算世代、虛擬核心、儲存體及備份保留期間。 定價層也可以個別變更，但不能變更為基本層，或從基本層變更為別的層。
 
 
 > [!IMPORTANT]
-> 在將主伺服器設置更新為新值之前,將副本設置更新為相等或更大的值。 此操作可説明副本跟上對主副本所做的任何更改。
+> 將主伺服器設定更新為新值之前，請將複本設定更新為相等或更大的值。 此動作可協助複本跟上對主伺服器所做的任何變更。
 
 ### <a name="list-replicas"></a>列出複本
-您可以使用[複本清單 API](/rest/api/mariadb/replicas/listbyserver)檢視伺服器的複本清單:
+您可以使用[複本清單 API](/rest/api/mariadb/replicas/listbyserver)來查看主伺服器的複本清單：
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>停止複寫至複本伺服器
-您可以使用[更新 API](/rest/api/mariadb/servers/update)停止伺服器和讀取複本之間的複製。
+您可以使用[更新 API](/rest/api/mariadb/servers/update)來停止主伺服器與讀取複本之間的複寫。
 
 停止主要伺服器和讀取複本的複寫之後，即無法再復原。 讀取複本會變成支援讀取和寫入的獨立伺服器。 獨立伺服器無法再次設定為複本。
 
@@ -165,8 +165,8 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 }
 ```
 
-### <a name="delete-a-master-or-replica-server"></a>刪除主伺服器或複本伺服器
-要刪除主伺服器或複本伺服器,請使用移除[API](/rest/api/mariadb/servers/delete):
+### <a name="delete-a-master-or-replica-server"></a>刪除主要或複本伺服器
+若要刪除主要或複本伺服器，您可以使用[刪除 API](/rest/api/mariadb/servers/delete)：
 
 刪除主要伺服器時，所有讀取複本上的複寫都會停止。 讀取複本會變成獨立伺服器，進而支援讀取和寫入。
 

@@ -1,6 +1,6 @@
 ---
-title: 設定呼叫 Web API 的桌面應用 - 微軟識別平臺 |蔚藍
-description: 瞭解如何設定呼叫 Web API 的桌面應用程式的代碼
+title: 設定呼叫 web Api 的傳統型應用程式-Microsoft 身分識別平臺 |Azure
+description: 瞭解如何設定呼叫 web Api 的傳統型應用程式代碼
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,47 +12,47 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: e0b43f7563c9dfac6374590f6b081197536fe31e
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869003"
 ---
-# <a name="desktop-app-that-calls-web-apis-code-configuration"></a>呼叫 Web API 的桌面應用程式:程式碼設定
+# <a name="desktop-app-that-calls-web-apis-code-configuration"></a>呼叫 web Api 的桌面應用程式：程式碼設定
 
-現在,您已經創建了應用程式,您將瞭解如何使用應用程式的座標配置代碼。
+既然您已建立應用程式，您將瞭解如何使用應用程式的座標來設定程式碼。
 
-## <a name="microsoft-authentication-libraries"></a>微軟驗證庫
+## <a name="microsoft-authentication-libraries"></a>Microsoft 驗證程式庫
 
-以下 Microsoft 身份驗證庫 (MSA) 支援桌面應用程式。
+下列 Microsoft 驗證程式庫（MSALs）支援桌面應用程式。
 
   Microsoft 驗證程式庫 | 描述
   ------------ | ----------
-  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支援在多個平臺(如 Linux、Windows 和 macOS)中構建桌面應用程式。
-  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支援在多個平台中構建桌面應用程式。
-  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 支援在多個平台中構建桌面應用程式。
-  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | 支援僅在 macOS 上運行的桌面應用程式。
+  ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | 支援在多個平臺（例如 Linux、Windows 和 macOS）中建立桌面應用程式。
+  ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | 支援在多個平臺中建立桌面應用程式。
+  ![Java](media/sample-v2-code/logo_java.png) <br/> MSAL Java | 支援在多個平臺中建立桌面應用程式。
+  ![MSAL iOS](media/sample-v2-code/logo_iOS.png) <br/> MSAL iOS | 僅支援在 macOS 上執行的桌面應用程式。
 
-## <a name="public-client-application"></a>公開用戶端應用程式
+## <a name="public-client-application"></a>公用用戶端應用程式
 
-從程式碼的角度來看,桌面應用程式是公共用戶端應用程式。 根據是否使用互動式身份驗證,配置將略有不同。
+就程式碼的觀點而言，桌面應用程式是公用用戶端應用程式。 根據您是否使用互動式驗證，設定會有點不同。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-您需要建置和操作MSAL.NET。 `IPublicClientApplication`
+您將需要建立和操作 MSAL.NET `IPublicClientApplication`。
 
-![IPublicClient 應用程式](media/scenarios/public-client-application.png)
+![IPublicClientApplication](media/scenarios/public-client-application.png)
 
-### <a name="exclusively-by-code"></a>完全由代碼
+### <a name="exclusively-by-code"></a>由程式碼獨佔
 
-以下代碼使用工作或學校帳戶或個人 Microsoft 帳戶實例化公共用戶端應用程式並在 Microsoft Azure 公共雲中登錄使用者。
+下列程式碼會具現化公用用戶端應用程式，並使用工作或學校帳戶或個人 Microsoft 帳戶登入 Microsoft Azure 公用雲端中的使用者。
 
 ```csharp
 IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-如果要使用互動式身份驗證或設備代碼流(如前所述),請使用`.WithRedirectUri`修改器。
+如果您想要使用互動式驗證或裝置程式碼流程（如先前所示） `.WithRedirectUri` ，請使用修飾詞。
 
 ```csharp
 IPublicClientApplication app;
@@ -63,7 +63,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="use-configuration-files"></a>使用組態檔
 
-以下代碼從配置物件實例化公共用戶端應用程式,該物件可以以程式設計方式填充或從配置檔中讀取。
+下列程式碼會從設定物件具現化公用用戶端應用程式，這可以用程式設計方式填入，或從設定檔讀取。
 
 ```csharp
 PublicClientApplicationOptions options = GetOptions(); // your own method
@@ -72,9 +72,9 @@ IPublicClientApplication app = PublicClientApplicationBuilder.CreateWithApplicat
         .Build();
 ```
 
-### <a name="more-elaborated-configuration"></a>更詳細設定
+### <a name="more-elaborated-configuration"></a>更複雜的設定
 
-您可以通過添加許多修改器來詳細說明應用程式構建。 例如,如果您希望應用程式是國家雲中的多租戶應用程式,如此處所示的美國政府,您可以編寫:
+您可以藉由加入數個修飾詞來更精細地建立應用程式。 比方說，如果您想要讓應用程式成為國家雲端中的多租使用者應用程式，例如這裡所示的美國政府，您可以撰寫：
 
 ```csharp
 IPublicClientApplication app;
@@ -85,7 +85,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-MSAL.NET還包含活動目錄聯合服務 2019 的修飾符:
+MSAL.NET 也包含 Active Directory 同盟服務2019的修飾詞：
 
 ```csharp
 IPublicClientApplication app;
@@ -94,7 +94,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .Build();
 ```
 
-最後,如果要為 Azure 活動目錄 (Azure AD) B2C 租戶獲取權杖,請指定租戶,如以下代碼段所示:
+最後，如果您想要取得 Azure Active Directory （Azure AD） B2C 租使用者的權杖，請指定您的租使用者，如下列程式碼片段所示：
 
 ```csharp
 IPublicClientApplication app;
@@ -105,14 +105,14 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 ### <a name="learn-more"></a>深入了解
 
-要瞭解有關如何設定MSAL.NET桌面應用程式(如何配置)的更多:
+若要深入瞭解如何設定 MSAL.NET 桌面應用程式：
 
-- 有關`PublicClientApplicationBuilder`上 提供的所有修改器的清單,請參考文件[PublicClient 應用程式產生器](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)。
-- 有關`PublicClientApplicationOptions`中公開的所有選項的說明,請參考文件中[的 PublicClient 應用程式選項](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions)。
+- 如需上`PublicClientApplicationBuilder`可用的所有修飾詞清單，請參閱參考檔[PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods)。
+- 如需中`PublicClientApplicationOptions`公開之所有選項的說明，請參閱參考檔中的[PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) 。
 
-### <a name="complete-example-with-configuration-options"></a>使用設定選項完成範例
+### <a name="complete-example-with-configuration-options"></a>含設定選項的完整範例
 
-想像一下.NET 核心主控台應用程式`appsettings.json`具有以下 設定檔:
+假設有一個具有下列`appsettings.json`設定檔的 .net Core 主控台應用程式：
 
 ```json
 {
@@ -128,7 +128,7 @@ app = PublicClientApplicationBuilder.Create(clientId)
 }
 ```
 
-使用 時,使用此檔中幾乎沒有要讀取的代碼。NET 提供的設定架構:
+您有很少的程式碼，無法使用來讀取此檔案。NET 提供的設定架構：
 
 ```csharp
 public class SampleConfiguration
@@ -171,7 +171,7 @@ public class SampleConfiguration
 }
 ```
 
-現在,要建立應用程式,請編寫以下代碼:
+現在，若要建立您的應用程式，請撰寫下列程式碼：
 
 ```csharp
 SampleConfiguration config = SampleConfiguration.ReadFromJsonFile("appsettings.json");
@@ -180,11 +180,11 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
            .Build();
 ```
 
-在調用`.Build()`方法之前,可以使用對方法`.WithXXX`的 調用重寫配置,如前所述。
+在呼叫`.Build()`方法之前，您可以使用方法的呼叫來`.WithXXX`覆寫您的設定，如先前所示。
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面是 MSAL Java 開發範例中用於設定範例的類別[:TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
+以下是 MSAL JAVA 開發範例中用來設定範例的類別： [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java)。
 
 ```Java
 PublicClientApplication pca = PublicClientApplication.builder(CLIENT_ID)
@@ -207,7 +207,7 @@ app = msal.PublicClientApplication(
 
 # <a name="macos"></a>[MacOS](#tab/macOS)
 
-以下代碼使用工作或學校帳戶或個人 Microsoft 帳戶實例化公共用戶端應用程式並在 Microsoft Azure 公共雲中登錄使用者。
+下列程式碼會具現化公用用戶端應用程式，並使用工作或學校帳戶或個人 Microsoft 帳戶登入 Microsoft Azure 公用雲端中的使用者。
 
 ### <a name="quick-configuration"></a>快速設定
 
@@ -226,9 +226,9 @@ let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>"
 if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
 ```
 
-### <a name="more-elaborated-configuration"></a>更詳細設定
+### <a name="more-elaborated-configuration"></a>更複雜的設定
 
-您可以通過添加許多修改器來詳細說明應用程式構建。 例如,如果您希望應用程式是國家雲中的多租戶應用程式,如此處所示的美國政府,您可以編寫:
+您可以藉由加入數個修飾詞來更精細地建立應用程式。 比方說，如果您想要讓應用程式成為國家雲端中的多租使用者應用程式，例如這裡所示的美國政府，您可以撰寫：
 
 Objective-C：
 
@@ -262,4 +262,4 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [取得桌面應用程式的權杖](scenario-desktop-acquire-token.md)
+> [取得傳統型應用程式的權杖](scenario-desktop-acquire-token.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5d9dc1595e3cc812ba060d958b6e981867500ae2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5ff9ab8e2fcc1bb3b72f56348a1c86dc173bafc
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "73161505"
+ms.locfileid: "82203857"
 ---
 # <a name="security-frame-session-management"></a>安全性架構︰工作階段管理
 | 產品/服務 | 發行項 |
@@ -221,7 +221,7 @@ HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationD
 | **適用的技術** | Web Form |
 | **屬性**              | N/A  |
 | **參考**              | [FormsAuthentication.RequireSSL 屬性](https://msdn.microsoft.com/library/system.web.security.formsauthentication.requiressl.aspx) |
-| **步驟** | RequireSSL 屬性值是使用組態元素的 requireSSL 屬性來設定於 ASP.NET 應用程式的組態檔中。 您可以藉由設定 requireSSL 屬性，在 ASP.NET 應用程式的 Web.config 檔案中指定 SSL (安全通訊端層) 是否需要將表單驗證 Cookie 傳回給伺服器。|
+| **步驟** | RequireSSL 屬性值是使用組態元素的 requireSSL 屬性來設定於 ASP.NET 應用程式的組態檔中。 您可以在 ASP.NET 應用程式的 web.config 檔案中指定，而不論傳輸層安全性（TLS）（先前稱為 SSL （安全通訊端層））是否需要藉由設定 requireSSL 屬性，將表單驗證 cookie 傳回至伺服器。|
 
 ### <a name="example"></a>範例 
 下列程式碼範例會在 Web.config 檔案中設定 requireSSL 屬性。

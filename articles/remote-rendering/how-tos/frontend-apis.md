@@ -1,26 +1,26 @@
 ---
-title: 認證的 Azure 前端 API
-description: 說明如何使用 C# 前端 API 進行認證
+title: 用於驗證的 Azure 前端 Api
+description: '說明如何使用 c # 前端 API 來進行驗證'
 author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
 ms.openlocfilehash: 04296a3dab61fdb569126abc1bc1f975d69e226d
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681346"
 ---
-# <a name="use-the-azure-frontend-apis-for-authentication"></a>使用 Azure 前端 API 進行認證
+# <a name="use-the-azure-frontend-apis-for-authentication"></a>使用 Azure 前端 API 進行驗證
 
-在本節中,我們將介紹如何使用 C# API 進行身份驗證。
+在本節中，我們將說明如何使用 c # API 來進行驗證。
 
-## <a name="azurefrontendaccountinfo"></a>Azure 前端帳戶資訊
+## <a name="azurefrontendaccountinfo"></a>AzureFrontendAccountInfo
 
-Azure Frontend 帳戶資訊用於設置 SDK 中```AzureFrontend```實體身分驗證資訊。
+AzureFrontendAccountInfo 是用來設定 SDK 中```AzureFrontend```實例的驗證資訊。
 
-重要領域包括:
+重要欄位如下：
 
 ```cs
 
@@ -41,27 +41,27 @@ Azure Frontend 帳戶資訊用於設置 SDK 中```AzureFrontend```實體身分�
 
 ```
 
-在網域的_區域_部份,請使用[您附近的區域](../reference/regions.md)。
+針對網域中的_區域_部分，請使用[您附近的區域](../reference/regions.md)。
 
-帳戶資訊可以從門戶獲取,如[檢索帳戶資訊](create-an-account.md#retrieve-the-account-information)段落中所述。
+您可以從入口網站取得帳戶資訊，如[取得帳戶資訊](create-an-account.md#retrieve-the-account-information)段落中所述。
 
 ## <a name="azure-frontend"></a>Azure 前端
 
-相關類別是```AzureFrontend```與```AzureSession```。 ```AzureFrontend```用於帳戶管理和帳戶級別功能,包括:資產轉換和呈現會話創建。 ```AzureSession```用於會話級功能,包括:會話更新、查詢、續訂和停用。
+相關的類別為```AzureFrontend```和```AzureSession```。 ```AzureFrontend```用於帳戶管理和帳戶層級功能，其中包括：資產轉換和轉譯會話的建立。 ```AzureSession```用於工作階段層級功能，其中包括：會話更新、查詢、更新和解除委任。
 
-每個打開/創建的```AzureSession```都將保留對創建它的前端的引用。 要乾淨地關閉,所有會話都必須在前端處理之前進行處理。
+每個已開啟```AzureSession``` /已建立的會保留所建立之前端的參考。 若要完全關閉，必須先解除配置所有會話，然後才會解除配置前端。
 
-取消分配工作階段不會停止 Azure 上的`AzureSession.StopAsync`VM, 必須顯式調用。
+解除配置會話並不會停止 Azure 上的 VM `AzureSession.StopAsync` ，必須明確地呼叫。
 
-建立工作階段並將其狀態標記為就緒後,它可以使用 連接到遠端呈現執行`AzureSession.ConnectToRuntime`時 。
+一旦建立會話且其狀態已標示為 [就緒]，就可以使用`AzureSession.ConnectToRuntime`連接到遠端轉譯執行時間。
 
 ### <a name="threading"></a>執行緒
 
-所有 AzureSession 和 Azure Frontend 同步調用都在後台線程中完成,而不是主應用程式線程。
+所有的 AzureSession 和 AzureFrontend 非同步呼叫都是在背景執行緒中完成，而不是主應用程式執行緒。
 
-### <a name="conversion-apis"></a>轉換 API
+### <a name="conversion-apis"></a>轉換 Api
 
-有關轉換服務的詳細資訊,請參閱[模型轉換 REST API](conversion/conversion-rest-api.md)。
+如需轉換服務的詳細資訊，請參閱[模型轉換 REST API](conversion/conversion-rest-api.md)。
 
 #### <a name="start-asset-conversion"></a>開始資產轉換
 
@@ -89,7 +89,7 @@ void StartAssetConversion(AzureFrontend frontend, string modelName, string model
 }
 ```
 
-#### <a name="get-conversion-status"></a>取得轉化狀態
+#### <a name="get-conversion-status"></a>取得轉換狀態
 
 ``` cs
 private ConversionStatusAsync _pendingAsync = null
@@ -113,13 +113,13 @@ void GetConversionStatus(AzureFrontend frontend, string assetId)
 }
 ```
 
-### <a name="rendering-apis"></a>成像 API
+### <a name="rendering-apis"></a>轉譯 Api
 
-有關[會話管理的詳細資訊,請參閱會話管理 REST API。](session-rest-api.md)
+如需會話管理的詳細資訊，請參閱[會話管理 REST API](session-rest-api.md) 。
 
-渲染會話可以在服務上動態創建,也可以將已有的工作階段 ID"打開"到 AzureSession 物件中。
+您可以在服務上動態建立轉譯會話，或已經存在的會話識別碼可以「開啟」至 AzureSession 物件。
 
-#### <a name="create-rendering-session"></a>建立成成一個支援的作業階段
+#### <a name="create-rendering-session"></a>建立轉譯會話
 
 ``` cs
 private CreateSessionAsync _pendingAsync = null;
@@ -144,9 +144,9 @@ void CreateRenderingSession(AzureFrontend frontend, RenderingSessionVmSize vmSiz
 }
 ```
 
-#### <a name="open-an-existing-rendering-session"></a>開啟現有的工作階段
+#### <a name="open-an-existing-rendering-session"></a>開啟現有的轉譯會話
 
-打開現有會話是同步調用。
+開啟現有的會話是同步呼叫。
 
 ``` cs
 void CreateRenderingSession(AzureFrontend frontend, string sessionId)
@@ -156,7 +156,7 @@ void CreateRenderingSession(AzureFrontend frontend, string sessionId)
 }
 ```
 
-#### <a name="get-current-rendering-sessions"></a>取得目前呈現工作階段
+#### <a name="get-current-rendering-sessions"></a>取得目前的轉譯會話
 
 ``` cs
 private SessionPropertiesArrayAsync _pendingAsync = null;
@@ -179,9 +179,9 @@ void GetCurrentRenderingSessions(AzureFrontend frontend)
 }
 ```
 
-### <a name="session-apis"></a>工作階段 API
+### <a name="session-apis"></a>會話 Api
 
-#### <a name="get-rendering-session-properties"></a>取得一個工作階段屬性
+#### <a name="get-rendering-session-properties"></a>取得轉譯會話屬性
 
 ``` cs
 private SessionPropertiesAsync _pendingAsync = null;
@@ -204,7 +204,7 @@ void GetRenderingSessionProperties(AzureSession session)
 }
 ```
 
-#### <a name="update-rendering-session"></a>更新呈現工作階段
+#### <a name="update-rendering-session"></a>更新轉譯會話
 
 ``` cs
 private SessionAsync _pendingAsync;
@@ -228,7 +228,7 @@ void UpdateRenderingSession(AzureSession session, ARRTimeSpan updatedLease)
 }
 ```
 
-#### <a name="stop-rendering-session"></a>停止成成下階段
+#### <a name="stop-rendering-session"></a>停止轉譯會話
 
 ``` cs
 private SessionAsync _pendingAsync;
@@ -251,7 +251,7 @@ void StopRenderingSession(AzureSession session)
 }
 ```
 
-#### <a name="connect-to-arr-inspector"></a>連接到 ARR 檢查器
+#### <a name="connect-to-arr-inspector"></a>連接到 ARR inspector
 
 ``` cs
 private ArrInspectorAsync _pendingAsync = null;
@@ -289,4 +289,4 @@ void ConnectToArrInspector(AzureSession session, string hostname)
 ## <a name="next-steps"></a>後續步驟
 
 * [建立帳戶](create-an-account.md)
-* [電源外殼文稿範例](../samples/powershell-example-scripts.md)
+* [PowerShell 指令碼範例](../samples/powershell-example-scripts.md)

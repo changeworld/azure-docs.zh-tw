@@ -1,6 +1,6 @@
 ---
-title: 從基本公共升級到標準公共 - Azure 負載均衡器
-description: 本文介紹如何將 Azure 基本內部負載平衡器升級到標準公共負載均衡器
+title: 從基本公用升級至標準公用 Azure Load Balancer
+description: 本文說明如何將 Azure 基本內部 Load Balancer 升級至標準公用 Load Balancer
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
@@ -8,78 +8,78 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770408"
 ---
-# <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升級 Azure 內部負載均衡器 ─需要出站連線
-[Azure 標準負載均衡器](load-balancer-overview.md)通過區域冗餘提供了豐富的功能集和高可用性。 要瞭解有關負載均衡器 SKU 的更多,請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。 由於標準內部負載均衡器不提供出站連接,因此我們提供了創建標準公共負載均衡器的解決方案。
+# <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升級 Azure 內部 Load Balancer-需要輸出連線
+[Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。 由於 Standard Internal Load Balancer 並不提供輸出連線，因此我們提供了一個解決方案，改為建立標準的公用 Load Balancer。
 
-升級分為四個階段:
+升級有四個階段：
 
-1. 將設定移轉到標準公共負載均衡器
-2. 新增 VM 新增到標準公共負載均衡器的後端池
-3. 為應避免從互聯網到網路的子網/VM 設置 NSG 規則
+1. 將設定遷移至標準公用 Load Balancer
+2. 將 Vm 新增至標準公用 Load Balancer 的後端集區
+3. 針對應從網際網路都避免的子網/Vm 設定 NSG 規則
 
-本文介紹配置遷移。 將 VM 添加到後端池可能因特定環境而異。 然而,[提供了](#add-vms-to-backend-pools-of-standard-load-balancer)一些高層次的一般性建議。
+本文涵蓋設定遷移。 將 Vm 新增至後端集區可能會根據您的特定環境而有所不同。 不過，[系統會提供](#add-vms-to-backend-pools-of-standard-load-balancer)一些高階的一般建議。
 
 ## <a name="upgrade-overview"></a>升級概觀
 
-Azure PowerShell 文稿可用於執行以下操作:
+有 Azure PowerShell 腳本可執行下列動作：
 
-* 在指定的資源組和位置中創建標準 SKU 公共負載均衡器。
-* 將基本 SKU 內部負載均衡器的配置無縫複製到新創建的標準公共負載均衡器。
-* 創建一個實現出口連接的出站規則。
+* 在您指定的資源群組和位置中建立標準 SKU 公用 Load Balancer。
+* 將基本 SKU 內部 Load Balancer 的設定順暢地複製到新建立的標準公用 Load Balancer。
+* 建立輸出規則，以啟用輸出連線能力。
 
-### <a name="caveatslimitations"></a>警告\限制
+### <a name="caveatslimitations"></a>Caveats\Limitations
 
-* 腳本支援需要出站連接的內部負載均衡器升級。 如果任何 VM 不需要出站連接,請參閱[此頁面](upgrade-basicInternal-standard.md)進行最佳實踐。
-* 標準負載均衡器具有新的公共位址。 不可能將與現有基本內部負載平衡器關聯的 IP 位址無縫移動到標準公共負載均衡器,因為它們具有不同的 SKU。
-* 如果標準負載均衡器是在不同區域中創建的,您將無法將舊區域中現有的 VM 與新創建的標準負載均衡器相關聯。 要解決此限制,請確保在新區域中創建新的 VM。
-* 如果您的負載均衡器沒有任何前端 IP 配置或後端池,則執行文稿時可能會遇到錯誤。  確保它們不為空。
+* 腳本支援內部 Load Balancer 升級，其中需要輸出連接。 如果任何 Vm 都不需要輸出連線，請參閱[此頁面](upgrade-basicInternal-standard.md)以取得最佳作法。
+* Standard Load Balancer 具有新的公用位址。 不可能將與現有基本內部 Load Balancer 相關聯的 IP 位址順暢地移至標準公用 Load Balancer，因為它們有不同的 Sku。
+* 如果在不同的區域中建立標準負載平衡器，您將無法將舊區域中現有的 Vm 與新建立的 Standard Load Balancer 建立關聯。 若要解決這項限制，請務必在新的區域中建立新的 VM。
+* 如果您的 Load Balancer 沒有任何前端 IP 設定或後端集區，您可能會遇到執行腳本的錯誤。  請確定它們不是空的。
 
-## <a name="download-the-script"></a>下載文稿
+## <a name="download-the-script"></a>下載腳本
 
-從[PowerShell 庫](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0)下載遷移腳本。
-## <a name="use-the-script"></a>使用文稿
+從[PowerShell 資源庫](https://www.powershellgallery.com/packages/AzureLBUpgrade/2.0)下載遷移腳本。
+## <a name="use-the-script"></a>使用腳本
 
-從您的本地 PowerShell 環境設定與偏好設定,有兩個選項可供您使用:
+有兩個選項可供您選擇，視您的本機 PowerShell 環境設定和偏好而定：
 
-* 如果未安裝 Azure Az 模組,或者不介意卸載 Azure Az 模組`Install-Script`,則最佳選項是使用 選項運行腳本。
-* 如果需要保留 Azure Az 模組,最好下載腳本並直接運行它。
+* 如果您未安裝 Azure Az 模組，或不想卸載 Azure Az 模組，最好的方法是使用`Install-Script`選項來執行腳本。
+* 如果您需要保留 Azure Az 模組，最好是下載並直接執行腳本。
 
-要確定是否安裝 Azure Az 模組`Get-InstalledModule -Name az`,請執行 。 如果看不到任何已安裝的 Az 模組,則可以`Install-Script`使用方法 。
+若要判斷您是否已安裝 Azure Az 模組，請`Get-InstalledModule -Name az`執行。 如果您看不到任何已安裝的`Install-Script` Az 模組，則可以使用方法。
 
-### <a name="install-using-the-install-script-method"></a>使用安裝文稿方法進行安裝
+### <a name="install-using-the-install-script-method"></a>使用安裝腳本方法進行安裝
 
-要使用此選項,不得在電腦上安裝 Azure Az 模組。 如果安裝了它們,則以下命令將顯示錯誤。 您可以卸載 Azure Az 模組,也可以使用另一個選項手動下載腳本並運行文稿。
+若要使用此選項，您的電腦上不得安裝 Azure Az 模組。 如果已安裝，下列命令就會顯示錯誤。 您可以卸載 Azure Az 模組，或使用另一個選項手動下載腳本並加以執行。
   
 使用下列命令來執行指令碼：
 
 `Install-Script -Name AzurePublicLBUpgrade`
 
-此命令還安裝所需的 Az 模組。  
+此命令也會安裝必要的 Az 模組。  
 
-### <a name="install-using-the-script-directly"></a>直接使用文稿安裝
+### <a name="install-using-the-script-directly"></a>直接使用腳本安裝
 
-如果確實安裝了某些 Azure Az 模組,但無法卸載它們(或不想卸載它們),則可以使用腳本下載連結中的 **「手動下載**」選項卡手動下載腳本。 腳本下載為原始 nupkg 檔。 要從此 nupkg 檔案安裝文稿,請參閱[手動套件下載](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
+如果您已安裝一些 Azure Az 模組，但無法將它們卸載（或不想要將它們卸載），您可以使用腳本下載連結中的 [**手動下載**] 索引標籤，手動下載腳本。 腳本會下載為原始的 nupkg 檔案。 若要從這個 nupkg 檔安裝腳本，請參閱[手動套件下載](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)。
 
 執行指令碼：
 
-1. 用於`Connect-AzAccount`連接到 Azure。
+1. 使用`Connect-AzAccount`來連接到 Azure。
 
-1. 用於`Import-Module Az`導入 Az 模組。
+1. 使用`Import-Module Az`匯入 Az 模組。
 
-1. 檢查所需的參數:
+1. 檢查必要的參數：
 
-   * **舊 RgName: [String]: 必需**– 這是要升級的現有基本負載均衡器的資源組。 要查找此字串值,請導航到 Azure 門戶,選擇基本負載均衡器源,然後單擊負載均衡器的 **「概述**」。 資源組位於該頁上。
-   * **舊 LB 名稱: [字串]: 必需**– 這是要升級的現有基本平衡器的名稱。 
-   * **NewrgName: [String]: 必需**– 這是將在其中創建標準負載均衡器的資源組。 它可以是一個新的資源組,也可以是現有的資源組。 如果選擇現有資源組,請注意負載均衡器的名稱必須在資源組中是唯一的。 
-   * **新定位: [String]: 必需**– 這是將創建標準負載均衡器的位置。 我們建議將所選基本負載均衡器的相同位置繼承到標準負載均衡器,以便更好地與其他現有資源關聯。
-   * **新 LB 名稱: [字串]: 必需**– 這是要創建的標準負載均衡器的名稱。
-1. 使用適當的參數運行腳本。 可能需要五到七分鐘才能完成。
+   * **oldRgName： [String]： Required** –這是您想要升級的現有基本 Load Balancer 的資源群組。 若要尋找此字串值，請流覽至 Azure 入口網站，選取您的基本 Load Balancer 來源，然後按一下負載平衡器的**總覽**。 資源群組位於該頁面。
+   * **oldLBName： [String]： Required** –這是您想要升級的現有基本平衡器名稱。 
+   * **newrgName： [String]： Required** –這是將在其中建立 Standard Load Balancer 的資源群組。 它可以是新的資源群組或現有的。 如果您選擇現有的資源群組，請注意，Load Balancer 的名稱在資源群組內必須是唯一的。 
+   * **newlocation： [String]： Required** –這是將在其中建立 Standard Load Balancer 的位置。 建議您將所選基本 Load Balancer 的相同位置繼承到 Standard Load Balancer，以便與其他現有資源更好的關聯。
+   * **newLBName： [String]： Required** –這是要建立之 Standard Load Balancer 的名稱。
+1. 使用適當的參數來執行腳本。 可能需要五到七分鐘的時間才能完成。
 
     **範例**
 
@@ -87,53 +87,53 @@ Azure PowerShell 文稿可用於執行以下操作:
    AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
-### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>將 VM 新增到標準負載均衡器的後端池
+### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>將 Vm 新增至 Standard Load Balancer 的後端集區
 
-首先,仔細檢查腳本成功創建了新的標準公共負載均衡器,其確切配置是從基本公共負載均衡器遷移過來的。 可以從 Azure 門戶驗證此情況。
+首先，再次檢查腳本是否已成功建立新的標準公用 Load Balancer，並從您的基本公用 Load Balancer 遷移確切的設定。 您可以從 [Azure 入口網站] 進行驗證。
 
-請務必通過標準負載均衡器發送少量流量作為手動測試。
+請務必透過 Standard Load Balancer 來傳送少量的流量以進行手動測試。
   
-以下是有關如何將 VM 添加到新創建的標準公共負載均衡器的後端池的一些方案,以及我們對每個方案的建議:
+以下幾個案例會說明如何將 Vm 新增至新建立之標準公用 Load Balancer 的後端集區，以及我們對每個設定的建議：
 
-* **將現有 VM 從舊基本公共負載均衡器的後端池移至新建立的標準公共負載均衡器的後端池**。
+* **將現有的 vm 從舊版基本公用 Load Balancer 的後端集區移到新建立之標準公用 Load Balancer 的後端**集區。
     1. 若要進行本快速入門中的工作，請登入 [Azure 入口網站](https://portal.azure.com)。
  
-    1. 選擇左方選單上**的資源**,然後從資源清單中選擇**新建立的標準負載均衡器**。
+    1. 選取左側功能表上的 [**所有資源**]，然後從資源清單中選取**新建立的 Standard Load Balancer** 。
    
     1. 在 [設定]**** 底下選取 [後端集區]****。
    
-    1. 選擇與基本負載均衡器的後端池匹配的後端池,選擇以下值: 
-      - **虛擬機**:從基本負載均衡器的匹配後端池下拉並選擇 VM。
+    1. 選取符合基本 Load Balancer 後端集區的後端集區，然後選取下列值： 
+      - **虛擬機器**：下拉並從基本 Load Balancer 的相符後端集區中選取 vm。
     1. 選取 [儲存]  。
     >[!NOTE]
-    >對於具有公共 IP 的 VM,您需要首先創建標準 IP 位址,而該位址不保證相同的 IP 位址。 取消 VM 與基本 IP 的關聯,並將其與新創建的標準 IP 位址相關聯。 然後,您將能夠按照說明將 VM 添加到標準負載均衡器的後端池中。 
+    >針對具有公用 Ip 的 Vm，您必須先建立標準 IP 位址，而不保證會有相同的 IP 位址。 將 Vm 與基本 Ip 解除關聯，並將它們與新建立的標準 IP 位址建立關聯。 接著，您將能夠遵循指示，將 Vm 新增至 Standard Load Balancer 的後端集區。 
 
-* **建立新 VM 以新增到新建立的標準公共負載均衡器的後端池**。
-    * 有關如何創建 VM 並將其與標準負載均衡器關聯的更多說明[,請參閱此處](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)。
+* **建立新的 vm，以新增至新建立之標準公用 Load Balancer 的後端**集區。
+    * 如需有關如何建立 VM 並將它與 Standard Load Balancer 相關聯的詳細指示，請參閱[這裡](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)。
 
-### <a name="create-an-outbound-rule-for-outbound-connection"></a>為出站連線建立出站規則
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>建立連出連線的輸出規則
 
-以[說明](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration)建立站規則,以便您可以
-* 從頭開始定義出站 NAT。
-* 縮放和調整現有出站 NAT 的行為。
+遵循[指示](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration)來建立輸出規則，讓您可以
+* 從頭開始定義輸出 NAT。
+* 調整並調整現有輸出 NAT 的行為。
 
-### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>為 VM 建立 NSG 規則,這些規則可避免與 Internet 通訊
-如果要避免 Internet 流量到 VM,則可以在 VM 的網路介面上建立[NSG 規則](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
+### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>建立 Vm 的 NSG 規則，以避免網際網路的通訊
+如果您想要避免網際網路流量到達您的 Vm，您可以在 Vm 的網路介面上建立[NSG 規則](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)。
 
 ## <a name="common-questions"></a>常見問題
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell 文本是否有任何限制,可以將配置從 v1 遷移到 v2?
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell 腳本是否有任何限制，可將設定從 v1 遷移至 v2？
 
-是。 請參考[警告 / 限制](#caveatslimitations)。
+是。 請參閱[警告/限制](#caveatslimitations)。
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否還會將流量從基本負載均衡器切換到新創建的標準負載均衡器?
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否也會將來自我的基本 Load Balancer 的流量切換到新建立的 Standard Load Balancer？
 
-否。 Azure PowerShell 腳本僅遷移配置。 實際流量遷移是您的責任,也是您的控制。
+否。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我遇到了使用此腳本的一些問題。 如何獲得説明?
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我在使用此腳本時遇到一些問題。 如何取得協助？
   
-您可以向slbupgradesupport@microsoft.com、打開 Azure 支援案例的電子郵件,也可以同時執行此操作。
+您可以將電子郵件傳送slbupgradesupport@microsoft.com至，並使用 Azure 支援服務開啟支援案例，或同時執行這兩項操作。
 
 ## <a name="next-steps"></a>後續步驟
 
-[瞭解標準負載均衡器](load-balancer-overview.md)
+[深入瞭解 Standard Load Balancer](load-balancer-overview.md)

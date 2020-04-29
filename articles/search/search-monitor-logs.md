@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: 192591dedb0b5519fdcecde8c8683be87237c828
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82127821"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>收集並分析 Azure 認知搜尋的記錄資料
@@ -23,7 +23,7 @@ ms.locfileid: "82127821"
 
 下表列舉用來收集和保存資料的選項。
 
-| 資源 | 用於 |
+| 資源 | 用途 |
 |----------|----------|
 | [傳送至 Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs) | 系統會將事件和計量傳送至 Log Analytics 工作區，您可以在入口網站中進行查詢，以傳回詳細資訊。 如需簡介，請參閱[開始使用 Azure 監視器記錄](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [使用 Blob 儲存體封存](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | 事件和計量會封存到 Blob 容器，並儲存在 JSON 檔案中。 記錄可以很細微（以小時/分鐘為單位），適用于研究特定事件，但不適合用于開放式調查。 使用 JSON 編輯器來查看原始記錄檔或 Power BI，以匯總記錄資料並加以視覺化。|
@@ -31,7 +31,7 @@ ms.locfileid: "82127821"
 
 Azure 監視器記錄和 Blob 儲存體皆以免費服務的形式提供，因此您可以在 Azure 訂用帳戶的存留期免費試用。 Application Insights 可供免費註冊和使用，只要應用程式資料大小在特定限制範圍內即可 (如需詳細資訊，請參閱[價格頁面](https://azure.microsoft.com/pricing/details/monitor/))。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 如果您使用 Log Analytics 或 Azure 儲存體，您可以事先建立資源。
 
@@ -99,7 +99,7 @@ Azure 監視器記錄和 Blob 儲存體皆以免費服務的形式提供，因�
 
 下表是資源記錄常見的部分欄位清單。
 
-| 名稱 | 類型 | 範例 | 注意 |
+| 名稱 | 類型 | 範例 | 備忘錄 |
 | --- | --- | --- | --- |
 | timeGenerated |Datetime |"2018-12-07T00:00:43.6872559Z" |作業的時間戳記 |
 | resourceId |字串 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>  MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |您的 ResourceId |
@@ -115,7 +115,7 @@ Azure 監視器記錄和 Blob 儲存體皆以免費服務的形式提供，因�
 
 下列屬性專屬於 Azure 認知搜尋。
 
-| 名稱 | 類型 | 範例 | 注意 |
+| 名稱 | 類型 | 範例 | 備忘錄 |
 | --- | --- | --- | --- |
 | Description_s |字串 |"GET /indexes('content')/docs" |作業的端點 |
 | Documents_d |int |42 |處理的文件數目 |
@@ -126,7 +126,7 @@ Azure 監視器記錄和 Blob 儲存體皆以免費服務的形式提供，因�
 
 系統會針對查詢要求捕捉計量，並以一分鐘的間隔進行測量。 每個度量會顯示每分鐘的最小值、最大值和平均值。 如需詳細資訊，請參閱[監視查詢要求](search-monitor-queries.md)。
 
-| 名稱 | 類型 | 範例 | 注意 |
+| 名稱 | 類型 | 範例 | 備忘錄 |
 | --- | --- | --- | --- |
 | resourceId |字串 |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |您的資源識別碼 |
 | metricName |字串 |"Latency" |度量的名稱 |

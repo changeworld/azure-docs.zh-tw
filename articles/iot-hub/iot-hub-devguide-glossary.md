@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 73981cb0f124e1577690f893ead60e6375f16298
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133137"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT 中樞術語詞彙
@@ -94,7 +94,7 @@ Azure IoT 中樞中的自動裝置管理，可將管理大群大型裝置的許�
 
 意指從 IoT 中樞傳送到連線裝置的訊息。 這些訊息通常是指示裝置採取行動的命令。 如需詳細資訊，請參閱[使用 IoT 中樞傳送及接收訊息](iot-hub-devguide-messaging.md)。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 在[自動裝置設定](iot-hub-auto-device-config.md)的內容中，IoT 中樞內的設定會為一組裝置對應項定義所需的設定，並提供一組計量來報告狀態與進度。
 
@@ -329,7 +329,7 @@ Azure 訂用帳戶是發生帳單的地方。 您建立的每個 Azure 資源，
 
 在[裝置對應項](iot-hub-devguide-device-twins.md)的內容中，系統屬性是唯讀屬性，內含關於裝置使用方式的資訊，例如上次活動時間和連線狀態。
 
-## <a name="tags"></a>標記
+## <a name="tags"></a>Tags
 
 在[裝置對應項](iot-hub-devguide-device-twins.md)的內容中，標籤是解決方案後端以 JSON 文件形式儲存和擷取的裝置中繼資料。 裝置上的應用程式看不到標籤。
 

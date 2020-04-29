@@ -11,10 +11,10 @@ ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 05d658c052c5bc12f49d957bb29ad085c269c57b
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82137347"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自動定型時間序列預測模型
@@ -53,13 +53,13 @@ ms.locfileid: "82137347"
 自動化 ML 會為使用者提供原生時間序列和深度學習模型，做為建議系統的一部分。 
 
 
-模型| 說明 | 優點
+模型| 描述 | 優點
 ----|----|---
 Prophet （預覽）|Prophet 最適合用於具有強烈季節性效果的時間序列，以及數個季節的歷程記錄資料。 | 精確的 & 快速、健全的極端值、遺漏的資料，以及時間序列中的重大變更。
 自動 ARIMA （預覽）|自動回歸整合式移動平均（ARIMA）可在資料為固定時執行最佳效果。 這表示其統計屬性（如平均值和變異數）在整個集合上是常數。 例如，如果您翻轉一條硬幣，則不論您今天、明天或下一年，您都可以使用50% 來取得列印頭的機率。| 適用于單一變數數列，因為過去的值是用來預測未來的值。
 ForecastTCN （預覽）| ForecastTCN 是一種類神經網路模型，其設計目的是要處理最嚴苛的預測工作，並在您的資料中捕捉非線性的本機和全球趨勢，以及時間序列之間的關聯性。|能夠在您的資料中運用複雜的趨勢，並可立即調整為最大的資料集。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Azure Machine Learning 工作區。 若要建立工作區，請參閱[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 * 本文假設您對設定自動化機器學習實驗的基本概念十分熟悉。 依照[教學](tutorial-auto-train-models.md)課程或[如何](how-to-configure-auto-train.md)操作來查看基本的自動化機器學習實驗設計模式。
@@ -134,7 +134,7 @@ automl_config = AutoMLConfig(task='forecasting',
 
 [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)物件會定義自動化機器學習工作所需的設定和資料。 類似于回歸問題，您可以定義標準訓練參數，例如工作類型、反復專案數目、定型資料，以及交叉驗證的數目。 針對預測工作，還有一些必須設定的參數會影響實驗。 下表說明每個參數和其使用方式。
 
-| 參數&nbsp;名稱 | 說明 | 必要 |
+| 參數&nbsp;名稱 | 描述 | 必要 |
 |-------|-------|-------|
 |`time_column_name`|用來指定輸入資料中用來建立時間序列並推斷其頻率的日期時間資料行。|✓|
 |`grain_column_names`|在輸入資料中定義個別數列群組的名稱。 如果未定義細微性，則會假設資料集為一個時間序列。||

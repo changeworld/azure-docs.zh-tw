@@ -4,10 +4,10 @@ description: 在本文中，您將瞭解如何使用 Azure 備份服務和 Power
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: 865cfc6daa7568236b0306ba591b42a9f7704dd4
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101173"
 ---
 # <a name="back-up-azure-files-with-powershell"></a>使用 PowerShell 備份 Azure 檔案儲存體
@@ -23,7 +23,7 @@ ms.locfileid: "82101173"
 > * 設定 Azure 檔案共用的備份。
 > * 執行備份作業。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 * [深入瞭解](backup-azure-recovery-services-vault-overview.md)復原服務保存庫。
 * 請參閱復原服務的 PowerShell 物件階層。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Java 建立及管理 Azure 虛擬機器
+title: 使用 JAVA 建立和管理 Azure 虛擬機器
 description: 使用 JAVA 和 Azure Resource Manager 來部署虛擬機器及其所有支援的資源。
 services: virtual-machines-windows
 author: cynthn
@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870037"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>在 Azure 中使用 JAVA 建立並管理 Windows VM
@@ -33,7 +33,7 @@ ms.locfileid: "81870037"
 ## <a name="create-a-maven-project"></a>建立 Maven 專案
 
 1. 如果尚未這麼做，請先安裝 [JAVA](https://aka.ms/azure-jdks)。
-2. 安裝[馬文](https://maven.apache.org/download.cgi)。
+2. 安裝[Maven](https://maven.apache.org/download.cgi)。
 3. 建立新的資料夾和專案：
     
     ```
@@ -127,7 +127,7 @@ ms.locfileid: "81870037"
     graphURL=https://graph.microsoft.com/
     ```
 
-    將**&lt;訂閱&gt;ID**取代為訂閱識別碼,**&lt;將應用程式&gt;ID**取代為 Active Directory 應用程式識別碼,**&lt;&gt;使用應用程式金鑰進行身份驗證金鑰**,將**&lt;租戶 ID&gt;** 替換為租戶識別符。
+    將** &lt; &gt;訂**用帳戶識別碼取代為您的訂用帳戶識別碼、 ** &lt; &gt; ** ** &lt; &gt; ** ** &lt; &gt; **具有 Active Directory 應用程式識別碼的應用程式 id、具有應用程式金鑰的驗證金鑰，以及具有租使用者識別碼的租使用者 id。
 
 2. 儲存檔案。
 3. 使用驗證檔案的完整路徑，在殼層中設定名稱為 AZURE_AUTH_LOCATION 的環境變數。
@@ -182,7 +182,7 @@ ms.locfileid: "81870037"
 
 ### <a name="create-the-resource-group"></a>建立資源群組
 
-所有資源都必須包含在[資源群組中](../../azure-resource-manager/management/overview.md)。
+所有資源都必須包含在[資源群組](../../azure-resource-manager/management/overview.md)中。
 
 若要指定應用程式的值並建立資源群組，請將以下程式碼新增到 Main 方法中的 try 區塊：
 
@@ -211,7 +211,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>建立公用 IP 位址
 
-需要[公共 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器通訊。
+需要[公用 IP 位址](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)才能與虛擬機器通訊。
 
 若要為虛擬機器建立公用 IP 位址，請將以下程式碼新增到 Main 方法中的 try 區塊：
 

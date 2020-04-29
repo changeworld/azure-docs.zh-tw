@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
 ms.openlocfilehash: 4aea624c2127c9b0a61d72b8d14929ce6f47df24
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142497"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>連線至您的 Azure 型虛擬機器

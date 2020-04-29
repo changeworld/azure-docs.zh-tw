@@ -1,32 +1,32 @@
 ---
-title: 自訂角色定義的概述
-description: 描述為託管應用程式創建自定義角色定義的概念。
+title: 自訂角色定義的總覽
+description: 說明為受控應用程式建立自訂角色定義的概念。
 ms.topic: conceptual
 ms.author: jobreen
 author: jjbfour
 ms.date: 09/16/2019
 ms.openlocfilehash: 7b7fff913c177703f959bfa103c8e310d01059e2
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81391833"
 ---
-# <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Azure 託管應用程式中的自訂角色定義項目
+# <a name="custom-role-definition-artifact-in-azure-managed-applications"></a>Azure 受控應用程式中的自訂角色定義成品
 
-自定義角色定義是託管應用程式中的可選專案。 它用於確定託管應用程式執行其功能所需的許可權。
+自訂角色定義是受控應用程式中的選擇性成品。 它可用來判斷受控應用程式執行其功能所需的許可權。
 
-本文概述了自定義角色定義專案及其功能。
+本文提供自訂角色定義成品及其功能的總覽。
 
-## <a name="custom-role-definition-artifact"></a>自訂角色定義項目
+## <a name="custom-role-definition-artifact"></a>自訂角色定義成品
 
-您需要命名自定義角色定義專案自定義角色定義.json。 將其置於創建託管應用程式定義的 .zip 包中的 createUiDefinition.json 和 mainTemplate.json 相同的級別。 要瞭解如何創建 .zip 包併發佈託管應用程式定義,請參閱[發佈託管應用程式定義。](publish-service-catalog-app.md)
+您必須將自訂角色定義構件命名為 customRoleDefinition。 將它放在建立受控應用程式定義的 .zip 封裝中與 createUiDefinition 相同的層級和 mainTemplate。 若要瞭解如何建立 .zip 套件併發布受控應用程式定義，請參閱[發佈受控應用程式定義。](publish-service-catalog-app.md)
 
 ## <a name="custom-role-definition-schema"></a>自訂角色定義架構
 
-自定義RoleDefinition.json檔具有一個頂級`roles`屬性,該屬性是角色陣組。 這些角色是託管應用程式需要運行的許可權。 目前,只允許內置角色,但您可以指定多個角色。 角色定義 ID 或角色名稱可以引用角色。
+CustomRoleDefinition 是最上層的`roles`屬性，其為角色陣列。 這些角色是受控應用程式必須運作的許可權。 目前只允許內建角色，但您可以指定多個角色。 角色定義的識別碼或角色名稱可以參考角色。
 
-自訂角色定義的範例 JSON:
+自訂角色定義的範例 JSON：
 
 ```json
 {
@@ -49,7 +49,7 @@ ms.locfileid: "81391833"
 
 ## <a name="roles"></a>角色
 
-角色由`$.properties.roleName`或組成`id`。
+角色是由`$.properties.roleName`或組成`id`：
 
 ```json
 {
@@ -61,9 +61,9 @@ ms.locfileid: "81391833"
 ```
 
 > [!NOTE]
-> 可以使用或`id``roleName`欄位。 只需要一個。 這些欄位用於查找應應用的角色定義。 如果同時提供兩者,`id`將使用該欄位。
+> 您可以使用`id`或`roleName`欄位。 只需要一個。 這些欄位是用來查閱應套用的角色定義。 如果同時提供這兩者， `id`則會使用欄位。
 
-|屬性|必要項？|描述|
+|屬性|必要？|描述|
 |---------|---------|---------|
-|id|是|內置角色的 ID。 您可以使用完整 ID 或僅使用 GUID。|
-|角色名稱|是|內置角色的名稱。|
+|id|是|內建角色的識別碼。 您可以使用完整識別碼，或只是 GUID。|
+|roleName|是|內建角色的名稱。|

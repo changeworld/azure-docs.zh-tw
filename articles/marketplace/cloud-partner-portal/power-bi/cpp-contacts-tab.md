@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: f3c6f3b07f878bac6e67be90947fb7109b840a3c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146757"
 ---
 # <a name="power-bi-app-contacts-tab"></a>Power BI 應用程式的 [連絡人] 索引標籤
@@ -31,11 +31,11 @@ ms.locfileid: "82146757"
 |   欄位               |   描述                                                            |
 |-----------------------|--------------------------------------------------------------------------|
 | *工程連絡人* | AppSource 與貴組織的技術連絡人。    |
-| **Name\***              | 負責技術/工程支援的人員或群組名稱。 |
+| **檔案名\***              | 負責技術/工程支援的人員或群組名稱。 |
 | **電子郵件\***             | 此技術連絡人的電子郵件地址。                                  |
 | **來電\***             | 此技術連絡人的電話號碼。                                       |
 | *支援連絡人*     | 接收客戶在 AppSource 中開立的支援票證。            |
-| **Name\***              | 負責客戶支援的人員或群組名稱。              |
+| **檔案名\***              | 負責客戶支援的人員或群組名稱。              |
 | **電子郵件\***             | 客戶支援部門的電子郵件地址。                                        |
 |   |   |
 

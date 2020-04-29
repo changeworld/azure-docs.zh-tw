@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
 ms.openlocfilehash: 8d22f8a2722dc55a13ce8e3752ca69d6e7251070
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115120"
 ---
 # <a name="azure-blob-storage-as-an-event-grid-source"></a>做為事件方格來源 Azure Blob 儲存體
@@ -28,7 +28,7 @@ ms.locfileid: "82115120"
 
 當用戶端藉由呼叫 Blob REST Api 來建立、取代或刪除 blob 時，就會觸發這些事件。
 
- |事件名稱 |說明|
+ |事件名稱 |描述|
  |----------|-----------|
  |**Microsoft.Storage.BlobCreated** |建立或取代 blob 時觸發。 <br>具體而言，當用戶端使用可在 Blob `PutBlob`REST API `PutBlockList`中取得`CopyBlob`的、或作業時，就會觸發此事件。   |
  |**Microsoft.Storage.BlobDeleted** |刪除 blob 時觸發。 <br>具體而言，當用戶端呼叫`DeleteBlob` Blob REST API 中可用的作業時，就會觸發此事件。 |
@@ -40,7 +40,7 @@ ms.locfileid: "82115120"
 
 如果您在儲存體帳戶上啟用階層式命名空間，而且用戶端呼叫 Azure Data Lake Storage Gen2 REST Api，就會觸發這些事件。 如需 bout about Azure Data Lake Storage Gen2 的詳細資訊，請參閱[Azure Data Lake Storage Gen2 簡介](../storage/blobs/data-lake-storage-introduction.md)。
 
-|事件名稱|說明|
+|事件名稱|描述|
 |----------|-----------|
 |**Microsoft.Storage.BlobCreated** | 建立或取代 blob 時觸發。 <br>具體而言，當用戶端使用 Azure Data Lake Storage Gen2 REST API 中`CreateFile`提供`FlushWithClose`的和作業時，就會觸發此事件。 |
 |**Microsoft.Storage.BlobDeleted** |刪除 blob 時觸發。 <br>具體而言，當用戶端呼叫`DeleteFile` Azure Data Lake Storage Gen2 REST API 中提供的作業時，也會觸發此事件。 |
@@ -300,7 +300,7 @@ ms.locfileid: "82115120"
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | id | 字串 | 事件的唯一識別碼。 |
-| data | 物件 (object) | blob 儲存體帳戶。 |
+| data | 物件 | blob 儲存體帳戶。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
 | metadataVersion | 字串 | 事件中繼資料的結構描述版本。 Event Grid 會定義最上層屬性的結構描述。 Event Grid 提供此值。 |
 
@@ -321,7 +321,7 @@ ms.locfileid: "82115120"
 | url | 字串 | blob 的路徑。 <br>如果用戶端使用 Blob REST API，則 url 會有下列結構： * \< \>blob.core.windows.net/\<容器名稱\>/\<檔案名\>*。 <br>如果用戶端使用 REST API 的 Data Lake Storage，則 url 會有下列結構： * \< \> \<dfs.core.windows.net/\>/\<\>* 檔案-name 檔案名。 |
 | 遞迴 | 字串 | `True`在所有子目錄上執行作業;否則`False`為。 <br>只有在具有階層命名空間的 blob 儲存體帳戶上觸發的事件才會出現。 |
 | 排序器 | 字串 | 不透明的字串值表示任何特定 Blob 名稱之事件的邏輯順序。  使用者可使用標準字串比較，以了解 Blob 名稱相同之兩個事件的相對順序。 |
-| storageDiagnostics | 物件 (object) | Azure 儲存體服務偶爾包含診斷資料。 出現時，事件消費者應該予以忽略。 |
+| storageDiagnostics | 物件 | Azure 儲存體服務偶爾包含診斷資料。 出現時，事件消費者應該予以忽略。 |
 
 ## <a name="tutorials-and-how-tos"></a>教學課程和操作說明
 |Title  |描述  |

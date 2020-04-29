@@ -1,6 +1,6 @@
 ---
 title: 資料探索與分類
-description: Azure SQL 資料庫和 Azure 突觸分析的資料發現&分類
+description: Azure SQL Database 和 Azure Synapse 分析的資料探索 & 分類
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -14,112 +14,112 @@ ms.reviewer: vanto
 ms.date: 04/21/2020
 tags: azure-synapse
 ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81766961"
 ---
-# <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL 資料庫和 Azure 突觸分析的資料發現&分類
+# <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database 和 Azure Synapse 分析的資料探索 & 分類
 
-數據發現&分類內置於 Azure SQL 資料庫中。 它提供了用於發現、分類、標記和報告資料庫中敏感數據的高級功能。
+Azure SQL Database 內建 & 分類的資料探索。 它提供先進的功能來探索、分類、標記和報告您資料庫中的敏感性資料。
 
-您最敏感的數據可能包括業務、財務、醫療保健或個人資訊。 發現和分類此數據可以在組織的資訊保護方法中發揮關鍵作用。 它可以作為下列的基礎結構：
+您最敏感的資料可能包括商務、財務、醫療保健或個人資訊。 探索和分類這項資料可以在貴組織的資訊保護方法中扮演 pivotal 角色。 它可以作為下列的基礎結構：
 
-- 幫助滿足數據隱私標準和法規遵從性要求。
+- 協助符合法規合規性的資料隱私權和需求的標準。
 - 各種安全性案例，例如針對敏感性資料異常存取的監視 (稽核) 及警示。
-- 控制對包含高度敏感數據的資料庫的訪問並強化安全性。
+- 控制存取和強化包含高度敏感性資料之資料庫的安全性。
 
-數據發現&分類是[高級數據安全](sql-database-advanced-data-security.md)產品(用於高級 SQL 安全功能的統一包)的一部分。 您可以通過 Azure 門戶的中央**SQL 高級數據安全**部分訪問和管理數據發現&分類。
+資料探索 & 分類是[先進的資料安全性](sql-database-advanced-data-security.md)供應專案的一部分，這是適用于 advanced SQL 安全性功能的整合套件。 您可以透過 Azure 入口網站的中央**SQL Advanced Data Security**區段來存取和管理資料探索 & 分類。
 
 > [!NOTE]
-> 本文涉及 Azure SQL 資料庫和 Azure 突觸分析。 為簡單起見,我們在此處使用*SQL 資料庫*來引用 SQL 資料庫和 Azure 突觸。 有關 SQL 伺服器 (本地)的資訊,請參考[SQL 資料發現與分類](https://go.microsoft.com/fwlink/?linkid=866999)。
+> 本文與 Azure SQL Database 和 Azure Synapse 分析相關。 為了簡單起見，我們在這裡使用*SQL Database*來參考 SQL Database 和 Azure Synapse。 如需 SQL Server （內部部署）的相關資訊，請參閱[SQL 資料探索與分類](https://go.microsoft.com/fwlink/?linkid=866999)。
 
-## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>什麼是數據發現&分類?
+## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>什麼是資料探索 & 分類？
 
-數據發現&分類引入了一組高級服務和新的SQL資料庫功能。 它為 SQL 資料庫形成了一種新的資訊保護範例,旨在保護數據,而不僅僅是資料庫。 範例包括:
+資料探索 & 分類引進一組先進的服務和新的 SQL Database 功能。 它會形成 SQL Database 的新資訊保護範例，其目標是保護資料而不只是資料庫。 此範例包含：
 
-- **找到與建議:** 分類引擎掃描資料庫並標識包含潛在敏感數據的列。 然後,它提供了一種通過 Azure 門戶查看和應用建議分類的簡單方法。
+- **探索和建議：** 分類引擎會掃描您的資料庫，並識別包含潛在敏感性資料的資料行。 接著，它會提供您一個簡單的方法，讓您透過 Azure 入口網站來檢查並套用建議的分類。
 
-- **標籤:** 通過使用已添加到 SQL 資料庫引擎的新元數據屬性,可以持久地將敏感度分類標籤應用於列。 然後,此元數據可用於高級、基於靈敏度的審核和保護方案。
+- 卷**標：** 您可以使用已加入至 SQL database engine 的新中繼資料屬性，將敏感度分類標籤持續套用至資料行。 然後，此中繼資料可用於高級、以敏感度為基礎的審核和保護案例。
 
-- **查詢結果集敏感度:** 查詢結果集的靈敏度是即時計算的,以便進行審核。
+- **查詢結果-設定敏感度：** 查詢結果集的敏感度是以即時方式計算，以供進行審核之用。
 
-- **可見度:** 您可以在 Azure 門戶中的詳細儀表板中查看資料庫分類狀態。 此外,您還可以下載 Excel 格式的報告,用於合規性和審核目的以及其他需求。
+- **可見度：** 您可以在 Azure 入口網站的詳細儀表板中，查看資料庫分類狀態。 此外，您也可以下載 Excel 格式的報表，以用於合規性和審核用途及其他需求。
 
-## <a name="discover-classify-and-label-sensitive-columns"></a><a id="discover-classify-columns"></a>找到、分類和標記敏感欄位
+## <a name="discover-classify-and-label-sensitive-columns"></a><a id="discover-classify-columns"></a>探索、分類和標記敏感性資料行
 
-本節介紹以下步驟:
+本節說明下列步驟：
 
-- 發現、分類和標記資料庫中包含敏感數據的列。
-- 查看資料庫的當前分類狀態並匯出報表。
+- 探索、分類和標記包含資料庫中敏感性資料的資料行。
+- 查看資料庫的目前分類狀態，並匯出報表。
 
 分類包含兩個中繼資料屬性：
 
-- **標籤**:用於定義存儲在列中的數據的敏感度級別的主要分類屬性。  
-- **資訊類型**:提供有關列中存儲的數據類型的更精細資訊的屬性。
+- **標籤**：主要分類屬性，用來定義儲存在資料行中之資料的敏感度層級。  
+- **資訊類型**：提供有關儲存在資料行中之資料類型的更細微資訊的屬性。
 
 ### <a name="define-and-customize-your-classification-taxonomy"></a>定義及自訂您的類別分類法
 
-數據發現&分類附帶一組內置的敏感度標籤和一組內置的資訊類型和發現邏輯。 您現在可以自訂此分類法，並定義專門針對您的環境建構之類別的集合和順位。
+資料探索 & 分類隨附一組內建的敏感度標籤，以及一組內建的資訊類型和探索邏輯。 您現在可以自訂此分類法，並定義專門針對您的環境建構之類別的集合和順位。
 
-在整個 Azure 組織的一個中心位置定義和自定義分類分類。 該位置位於[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)中,作為安全策略的一部分。 只有具有組織根管理組管理許可權的人員才能執行此任務。
+您可以在一個集中位置定義和自訂您的分類分類，以供整個 Azure 組織。 該位置位於[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)中，作為安全性原則的一部分。 只有在組織根管理群組上具有系統管理許可權的人員可以執行這項工作。
 
-作為 SQL 資訊保護原則管理的一部分,您可以定義自訂標籤、對它們進行排名,並將它們與一組選定的資訊類型相關聯。 您還可以添加自己的自定義資訊類型,並配置它們與字串模式。 模式將添加到發現邏輯中,用於標識資料庫中的此類數據。
+作為 SQL 資訊保護的原則管理的一部分，您可以定義自訂標籤、對其進行分級，並將它們與一組選取的資訊類型產生關聯。 您也可以加入自己的自訂資訊類型，並使用字串模式來設定它們。 系統會將模式新增至探索邏輯，以便在您的資料庫中識別這種類型的資料。
 
-在[SQL 資訊保護原則「指南」](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)中瞭解有關自定義和管理原則的詳細資訊。
+若要深入瞭解如何自訂和管理您的原則，請前往[SQL 資訊保護原則操作指南](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)。
 
-定義全組織策略后,可以使用自定義策略繼續對各個資料庫進行分類。
+定義整個組織的原則之後，您可以使用自訂原則繼續分類個別的資料庫。
 
-### <a name="classify-your-sql-database"></a>SQL 資料庫進行類別
+### <a name="classify-your-sql-database"></a>分類您的 SQL 資料庫
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
 
-2. 跳到 Azure SQL 資料庫窗格中 **「安全**」標題下的 **「進階資料安全**」。 選擇**進階資料安全性**,然後選擇 **「資料發現&分類**卡。
+2. 在 [Azure SQL Database] 窗格中，移至 [**安全性**] 標題下的 [ **Advanced Data Security** ]。 選取 [ **Advanced data security**]，然後選取 [**資料探索 & 分類**卡]。
 
-   ![Azure 門戶中的進階資料安全窗格](./media/sql-data-discovery-and-classification/data_classification.png)
+   ![Azure 入口網站中的 [Advanced Data Security] 窗格](./media/sql-data-discovery-and-classification/data_classification.png)
 
-3. 在 **「資料發現&分類**頁上,」**概述「** 選項卡包含資料庫當前分類狀態的摘要。 摘要包括所有分類列的詳細清單,您還可以篩選該清單以僅顯示特定的架構部件、資訊類型和標籤。 如果尚未對任何欄位進行類別,[請跳到步驟 5](#step-5)。
+3. 在 [**資料探索 & 分類**] 頁面上，[**總覽**] 索引標籤包含資料庫目前分類狀態的摘要。 摘要包含所有已分類資料行的詳細清單，您也可以篩選這些資料行，只顯示特定的架構元件、資訊類型和標籤。 如果您還沒有分類任何資料行，請[跳到步驟 5](#step-5)。
 
    ![目前分類狀態的摘要](./media/sql-data-discovery-and-classification/2_data_classification_overview_dashboard.png)
 
-4. 要下載 Excel 格式的報表,請在窗格的頂部功能表中選擇 **「匯出**」。
+4. 若要下載 Excel 格式的報表，請選取窗格頂端功能表中的 [**匯出**]。
 
-5. <a id="step-5"></a>要開始對資料進行分類,請選擇 **「資料發現&分類**頁上的 **」分類」** 選項卡。
+5. <a id="step-5"></a>若要開始分類您的資料，請選取 [**資料探索 & 分類**] 頁面上的 [**分類**] 索引標籤。
 
-    分類引擎掃描資料庫,以尋找包含潛在敏感數據的列,並提供建議的列分類清單。
+    分類引擎會掃描您的資料庫中是否有包含潛在敏感性資料的資料行，並提供建議的資料行分類清單。
 
-6. 檢視並套用類別建議:
+6. 查看和套用分類建議：
 
-   - 要查看建議的列分類清單,請選擇窗格底部的建議面板。
+   - 若要查看建議的資料行分類清單，請選取窗格底部的 [建議] 面板。
 
-   - 要接受特定列的建議,請選擇相關行左列中的複選框。 要將所有建議標記為已接受,請在建議表標題中選擇最左側的複選框。
+   - 若要接受特定資料行的建議，請選取相關資料列左欄中的核取方塊。 若要將所有建議標示為已接受，請選取 [建議] 資料表標頭中最左邊的核取方塊。
 
-       ![從分類建議清單中查看與選擇](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
+       ![審查並從分類建議清單中選取](./media/sql-data-discovery-and-classification/6_data_classification_recommendations_list.png)
 
-   - 要應用所選建議,請選擇"**接受所選建議**"。
+   - 若要套用選取的建議，請選取 [**接受選取的建議**]。
 
-7. 您還可以手動對列進行分類,作為替代分類,或者除基於建議的分類之外:
+7. 您也可以手動將資料行分類，以替代方式或除了以建議為基礎的分類之外：
 
-   1. 在窗格的頂部功能表中選擇 **「添加分類**」。
+   1. 在窗格的上方功能表中，選取 [**新增分類**]。
 
-   1. 在打開的上下文視窗中,選擇要分類的架構、表和列以及資訊類型和敏感度標籤。
+   1. 在開啟的內容視窗中，選取您想要分類的架構、資料表和資料行，以及 [資訊類型] 和 [敏感度] 標籤。
 
-   1. 選擇 **「在**上下文視窗底部添加分類」。
+   1. 選取內容視窗底部的 [**新增分類**]。
 
-      ![選擇要分類的欄位](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
+      ![選取要分類的資料行](./media/sql-data-discovery-and-classification/9_data_classification_manual_classification.png)
 
-8. 要使用新的分類元資料完成分類並持續標記資料庫列,請選擇「**保存在**視窗的頂部功能表」。
+8. 若要完成您的分類，並使用新的分類中繼資料持續加上標籤（標記）資料庫資料行，請選取視窗頂端功能表中的 [**儲存**]。
 
-## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>稽核資料存取
+## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>對敏感性資料的審核存取
 
-信息保護範式的一個重要方面是能夠監視對敏感數據的訪問。 [Azure SQL 資料庫審核](sql-database-auditing.md)已得到增強,以在審核日誌中包括`data_sensitivity_information`一個名為 的新欄位。 此欄位記錄查詢返回的數據的敏感度分類(標籤)。 以下是範例：
+資訊保護範例的一個重要層面是能夠監視機密資料的存取權。 [Azure SQL Database 的審核](sql-database-auditing.md)功能已增強，可在名`data_sensitivity_information`為的 audit 記錄檔中加入新的欄位。 這個欄位會記錄查詢所傳回之資料的敏感度分類（標籤）。 範例如下：
 
 ![稽核記錄檔](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
-## <a name="permissions"></a><a id="permissions"></a>權限
+## <a name="permissions"></a><a id="permissions"></a>無權
 
-這些內建角色可以讀取 Azure SQL 資料庫的資料類別:
+這些內建角色可以讀取 Azure SQL database 的資料分類：
 
 - 擁有者
 - 讀取者
@@ -127,67 +127,67 @@ ms.locfileid: "81766961"
 - SQL 安全性管理員
 - 使用者存取系統管理員
 
-這些內建角色可以修改 Azure SQL 資料庫的資料類別:
+這些內建角色可以修改 Azure SQL database 的資料分類：
 
 - 擁有者
 - 參與者
 - SQL 安全性管理員
 
-詳細瞭解[Azure 資源的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)中基於角色的許可權。
+深入瞭解[適用于 Azure 資源的 RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)中以角色為基礎的許可權。
 
 ## <a name="manage-classifications"></a><a id="manage-classification"></a>管理分類
 
-您可以使用 TSQL、REST API 或 PowerShell 來管理分類。
+您可以使用 T-sql、REST API 或 PowerShell 來管理分類。
 
 ### <a name="use-t-sql"></a>使用 T-SQL
 
-可以使用 T-SQL 添加或刪除列分類,並檢索整個資料庫的所有分類。
+您可以使用 T-sql 來新增或移除資料行分類，以及取得整個資料庫的所有分類。
 
 > [!NOTE]
-> 使用 T-SQL 管理標籤時,無法驗證添加到列中的標籤存在於組織的資訊保護策略(門戶建議中顯示的標籤集)中。 因此,由您來驗證這一點。
+> 當您使用 T-sql 來管理標籤時，不會驗證您新增至資料行的標籤是否存在於組織的資訊保護原則中（出現在入口網站建議中的標籤集合）。 因此，您必須自行驗證。
 
-有關將 T-SQL 用於分類的資訊,請參閱以下引用:
+如需使用 T-sql 進行分類的相關資訊，請參閱下列參考：
 
-- 要新增或更新一個或多個欄的類別:[加入敏感類別](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-- 要從一個或多個欄中移除類別[:DROP 敏感分類](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-- 要檢視資料庫上的所有類別[:sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- 若要新增或更新一或多個資料行的分類：[新增敏感度分類](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+- 若要從一或多個資料行移除分類： [DROP 敏感度分類](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+- 若要查看資料庫上的所有分類： [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="use-the-rest-api"></a>使用休息 API
+### <a name="use-the-rest-api"></a>使用 Rest API
 
-您可以使用 REST API 以程式設計方式管理分類和建議。 已發布的 REST API 支援以下操作:
+您可以使用 REST API 以程式設計方式管理分類和建議。 已發佈的 REST API 支援下列作業：
 
-- [建立或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate):創建或更新指定列的敏感度標籤。
-- [刪除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete):刪除指定列的敏感度標籤。
-- [禁用建議](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation):禁用指定列上的敏感度建議。
-- [啟用建議](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation):啟用指定列上的敏感度建議。 (默認情況下在所有列上啟用建議。
-- [獲取](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get):獲取指定列的敏感度標籤。
-- [依資料庫列出當前](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase)值值 :獲取指定資料庫的當前敏感度標籤。
-- [依資料庫推薦清單](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase):獲取指定資料庫的建議敏感度標籤。
+- [建立或更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate)：建立或更新指定資料行的敏感度標籤。
+- [Delete](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete)：刪除指定資料行的敏感度標籤。
+- [停用建議](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation)：停用指定資料行的敏感度建議。
+- [啟用建議](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation)：在指定的資料行上啟用敏感度建議。 （預設會在所有資料行上啟用建議）。
+- [Get：取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get)指定資料行的敏感度標籤。
+- [依資料庫列出目前](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase)的：取得指定資料庫目前的敏感度標籤。
+- [資料庫所建議的清單](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase)：取得指定之資料庫的建議敏感度標籤。
 
 ### <a name="use-powershell-cmdlets"></a>使用 PowerShell Cmdlet
-可以使用 PowerShell 管理 Azure SQL 資料庫和託管實例的分類和建議。
+您可以使用 PowerShell 來管理 Azure SQL Database 和受控實例的分類和建議。
 
-#### <a name="powershell-cmdlets-for-sql-database"></a>SQL 資料庫的 PowerShell cmdlet
+#### <a name="powershell-cmdlets-for-sql-database"></a>適用于 SQL Database 的 PowerShell Cmdlet
 
-- [取得-AzSql資料庫敏感性分類](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
-- [設定-AzSql資料庫敏感性分類](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
-- [刪除-AzSql資料庫敏感性分類](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
-- [取得-AzSql資料庫敏感性建議](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
-- [開啟-AzSqlDatabaSe敏感性建議](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
-- [關閉-AzSql資料庫敏感性建議](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
+- [AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityclassification)
+- [設定-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasesensitivityclassification)
+- [移除-AzSqlDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasesensitivityclassification)
+- [AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasesensitivityrecommendation)
+- [啟用-AzSqlDatabaSesensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqldatabasesensitivityrecommendation)
+- [停用-AzSqlDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqldatabasesensitivityrecommendation)
 
-#### <a name="powershell-cmdlets-for-managed-instances"></a>管理管實體的 PowerShell cmdlet
+#### <a name="powershell-cmdlets-for-managed-instances"></a>適用于受控實例的 PowerShell Cmdlet
 
-- [取得-AzSqlinstance 資料庫敏感性分類](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
-- [集-AzSql實例資料庫敏感性分類](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
-- [刪除-AzSql實體資料庫敏感性分類](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
-- [取得-AzSqlinstance 資料庫敏感性建議](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
-- [開啟-AzSqlinstance 資料庫敏感性建議](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
-- [關閉-AzSqlinstance 資料庫敏感性建議](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
+- [AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityclassification)
+- [設定-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasesensitivityclassification)
+- [移除-AzSqlInstanceDatabaseSensitivityClassification](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabasesensitivityclassification)
+- [AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabasesensitivityrecommendation)
+- [啟用-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
+- [停用-AzSqlInstanceDatabaseSensitivityRecommendation](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
 
 ## <a name="next-steps"></a><a id="next-steps"></a>後續步驟
 
-- 瞭解有關[高級數據安全性](sql-database-advanced-data-security.md)的更多。
+- 深入瞭解[Advanced Data Security](sql-database-advanced-data-security.md)。
 - 請考慮設定 [Azure SQL Database 稽核](sql-database-auditing.md)，以監視和稽核對已分類敏感性資料的存取。
-- 有關包含數據發現和分類的演示文稿,請參閱[發現、分類、標記&保護 SQL 數據 |資料暴露](https://www.youtube.com/watch?v=itVi9bkJUNc)。
+- 如需包含資料探索和分類的簡報，請參閱[探索、分類、標記 & 保護 SQL 資料 |公開的資料](https://www.youtube.com/watch?v=itVi9bkJUNc)。

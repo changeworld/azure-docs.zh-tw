@@ -1,6 +1,6 @@
 ---
-title: Azure 活動目錄基於 SMS 的使用者登入
-description: 瞭解如何設定與使用使用者能夠使用 SMS 登入 Azure 活動目錄(預覽)
+title: 以 SMS 為基礎的使用者登入 Azure Active Directory
+description: 瞭解如何設定及讓使用者使用 SMS 登入 Azure Active Directory （預覽）
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,143 +12,143 @@ manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 845948d9aec28ee79a11fb11aaef4cfbf1b263fa
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770558"
 ---
-# <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>使用 Azure 的目錄設定與開啟使用者進行基於 SMS 的身份驗證(預覽)
+# <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>使用 Azure Active Directory （預覽）設定和啟用以 SMS 為基礎之驗證的使用者
 
-為了降低使用者登錄到應用程式和服務的複雜性和安全風險,Azure 活動目錄 (Azure AD) 提供了多個身份驗證選項。 基於 SMS 的身份驗證當前處於預覽狀態,允許使用者無需提供甚至知道使用者名和密碼即可登錄。 身份管理員創建其帳戶後,他們可以在登錄提示符處輸入其電話號碼,並提供通過簡訊發送給他們的身份驗證代碼。 此身份驗證方法簡化了對應用程式和服務的訪問,尤其是對於前線工作人員。
+為了降低使用者登入應用程式和服務的複雜性和安全性風險，Azure Active Directory （Azure AD）提供多個驗證選項。 以 SMS 為基礎的驗證（目前處於預覽狀態）可讓使用者登入，而不需要提供或甚至知道他們的使用者名稱和密碼。 在身分識別管理員建立帳戶之後，他們可以在登入提示字元中輸入其電話號碼，並提供透過文字訊息傳送給他們的驗證碼。 此驗證方法會簡化對應用程式和服務的存取，特別是針對 front line worker。
 
-本文介紹如何為 Azure AD 中選定的使用者或組啟用基於 SMS 的身份驗證。
+本文說明如何針對 Azure AD 中的選取使用者或群組啟用以 SMS 為基礎的驗證。
 
 |     |
 | --- |
-| 基於 SMS 的使用者身份驗證是 Azure 活動目錄的公共預覽功能。 有關預覽的詳細資訊,請參閱 Microsoft [Azure 預覽的補充使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| [以 SMS 為基礎的使用者驗證] 是 Azure Active Directory 的公開預覽功能。 如需有關預覽的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定|
 |     |
 
 ## <a name="before-you-begin"></a>開始之前
 
-要完成本文,您需要以下資源和特權:
+若要完成本文，您需要下列資源和許可權：
 
 * 有效的 Azure 訂用帳戶。
     * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-* 與訂閱關聯的 Azure 活動目錄租戶。
+* 與您的訂用帳戶相關聯的 Azure Active Directory 租使用者。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
-* 需要在 Azure AD 租戶中具有*全域管理員*許可權才能啟用基於 SMS 的身份驗證。
-* 在文本消息身份驗證方法策略中啟用的每個用戶都必須獲得許可,即使他們不使用它。 每個啟用的使用者必須具有以下 Azure AD 或 Microsoft 365 許可證之一:
+* 您需要 Azure AD 租使用者中的*全域系統管理員*許可權，才能啟用以 SMS 為基礎的驗證。
+* 在文字訊息驗證方法原則中啟用的每個使用者都必須獲得授權，即使它們未使用。 每個啟用的使用者都必須具有下列其中一項 Azure AD 或 Microsoft 365 授權：
     * [Azure AD Premium P1 或 P2][azuread-licensing]
-    * [微軟 365 (M365) F1 或 F3][m365-firstline-workers-licensing]
-    * [企業移動性 + 安全 (EMS) E3 或 E5][ems-licensing]或[Microsoft 365 (M365) E3 或 E5][m365-licensing]
+    * [Microsoft 365 （M365） F1 或 F3][m365-firstline-workers-licensing]
+    * [Enterprise Mobility + Security （EMS） e3 或 e5][ems-licensing]或[Microsoft 365 （M365） e3 或 e5][m365-licensing]
 
 ## <a name="limitations"></a>限制
 
-在基於 SMS 的身份驗證的公共預覽期間,以下限制適用:
+在以 SMS 為基礎之驗證的公開預覽期間，適用下列限制：
 
-* 基於 SMS 的身份驗證當前與 Azure 多重身份驗證不相容。
-* 除 Teams 外,基於 SMS 的身份驗證當前與本機 Office 應用程式不相容。
-* 不建議 B2B 帳戶使用基於 SMS 的身份驗證。
-* 聯合使用者不會在主租戶中進行身份驗證。 它們僅在雲中進行身份驗證。
+* 以 SMS 為基礎的驗證目前不相容 Azure 多重要素驗證。
+* 除了團隊以外，SMS 驗證目前並不相容于原生 Office 應用程式。
+* B2B 帳戶不建議以 SMS 為基礎的驗證。
+* 同盟使用者不會在家庭租使用者中進行驗證。 他們只會在雲端中進行驗證。
 
-## <a name="enable-the-sms-based-authentication-method"></a>開啟基於 SMS 的身分驗證方法
+## <a name="enable-the-sms-based-authentication-method"></a>啟用以 SMS 為基礎的驗證方法
 
-您的組織中啟用與使用基於 SMS 的身分驗證有三個主要步驟:
+在您的組織中啟用和使用以 SMS 為基礎的驗證有三個主要步驟：
 
-* 啟用身份驗證方法策略。
-* 選擇可以使用基於 SMS 的身份驗證方法的使用者或組。
-* 為每個使用者帳戶分配電話號碼。
-    * 此電話號碼可以在 Azure 門戶(本文中所示)和 *「我的員工*」或 *「我的個人資料*」中分配。
+* 啟用驗證方法原則。
+* 選取可以使用以 SMS 為基礎之驗證方法的使用者或群組。
+* 指派每個使用者帳戶的電話號碼。
+    * 這個電話號碼可以在 Azure 入口網站（如本文所示）和 [*我的員工*] 或 [*我的個人資料*] 中指派。
 
-首先,讓我們為 Azure AD 租戶啟用基於 SMS 的身份驗證。
+首先，讓我們為您的 Azure AD 租使用者啟用以 SMS 為基礎的驗證。
 
-1. 以*全域管理員*身份登入[Azure 門戶][azure-portal]。
+1. 以*全域管理員*身分登入[Azure 入口網站][azure-portal]。
 1. 搜尋並選取 [Azure Active Directory]  。
-1. 從 Azure 活動目錄視窗左側的導航功能表中,選擇 **「安全>身份驗證方法>身份驗證方法策略(預覽)。**
+1. 從 [Azure Active Directory] 視窗左側的導覽功能表中，選取 [**安全性 > 驗證方法] > [驗證方法原則（預覽）**]。
 
     [![](media/howto-authentication-sms-signin/authentication-method-policy-cropped.png "Browse to and select the Authentication method policy (preview) window in the Azure portal")](media/howto-authentication-sms-signin/authentication-method-policy.png#lightbox)
 
-1. 從可用身份驗證方法清單中,選擇 **「文本訊息**」。
-1. 將**啟用設定為***"是*"。
+1. 從可用的驗證方法清單中，選取 [**文字訊息**]。
+1. 將 [**啟用**] 設定為 *[是]*。
 
-    ![在認證方法原則視窗中啟用文字身份驗證](./media/howto-authentication-sms-signin/enable-text-authentication-method.png)
+    ![在 [驗證方法原則] 視窗中啟用文字驗證](./media/howto-authentication-sms-signin/enable-text-authentication-method.png)
 
-    您可以選擇為*所有使用者*或*選擇使用者*和組啟用基於 SMS 的身份驗證。 在下一節中,您可以為測試使用者啟用基於 SMS 的身份驗證。
+    您可以選擇為*所有使用者*啟用 SMS 型驗證，或*選取 [使用者*和群組]。 在下一節中，您會為測試使用者啟用以 SMS 為基礎的驗證。
 
-## <a name="assign-the-authentication-method-to-users-and-groups"></a>將認證方法分配給使用者和群組
+## <a name="assign-the-authentication-method-to-users-and-groups"></a>將驗證方法指派給使用者和群組
 
-在 Azure AD 租戶中啟用基於 SMS 的身份驗證後,現在選擇允許使用此身份驗證方法的某些使用者或組。
+在您的 Azure AD 租使用者中啟用 SMS 驗證之後，現在請選取要允許使用此驗證方法的某些使用者或群組。
 
-1. 在簡訊身份驗證策略視窗中,將 **「目標」** 設定為 *「選擇使用者*」 。
-1. 選擇新增**使用者或群組**,然後選擇測試使用者或群組,如*Contoso 使用者*或*Contoso SMS 使用者*。
+1. 在 [文字訊息驗證原則] 視窗中，將 [**目標**] 設定為 [*選取使用者*]。
+1. 選擇 [**新增使用者或群組**]，然後選取測試使用者或群組，例如 [ *contoso 使用者*] 或 [ *contoso SMS users*]。
 
     [![](media/howto-authentication-sms-signin/add-users-or-groups-cropped.png "Choose users or groups to enable for SMS-based authentication in the Azure portal")](media/howto-authentication-sms-signin/add-users-or-groups.png#lightbox)
 
-1. 選擇使用者或組后,**選擇"選擇**",然後**保存**更新的身份驗證方法策略。
+1. 當您選取使用者或群組之後，請選擇 [**選取**]，然後**儲存**已更新的驗證方法原則。
 
-在文本消息身份驗證方法策略中啟用的每個用戶都必須獲得許可,即使他們不使用它。 請確保為身份驗證方法策略中啟用的使用者提供了適當的許可證,尤其是在為大型使用者組啟用該功能時。
+在文字訊息驗證方法原則中啟用的每個使用者都必須獲得授權，即使它們未使用。 請確定您擁有在驗證方法原則中啟用之使用者的適當授權，特別是當您為大型使用者群組啟用此功能時。
 
 ## <a name="set-a-phone-number-for-user-accounts"></a>設定使用者帳戶的電話號碼
 
-用戶現在已啟用基於 SMS 的身份驗證,但其電話號碼必須與 Azure AD 中的使用者配置檔關聯,然後才能登錄。 用戶可以在 *「我的設定檔」* 中[自行設定此電話號碼](../user-help/sms-sign-in-explainer.md),也可以使用 Azure 門戶分配電話號碼。 電話號碼可以由*全域管理員*、*身份驗證管理員*或*特權身份驗證管理員*設置。
+使用者現在已啟用 SMS 驗證，但其電話號碼必須與使用者配置 Azure AD 檔建立關聯，才能登入。 使用者可以在*設定檔*中[設定此電話號碼本身](../user-help/sms-sign-in-explainer.md)，或者您可以使用 Azure 入口網站指派電話號碼。 電話號碼可以由*全域管理員*、*驗證管理員*或特殊*許可權驗證管理員*設定。
 
-當為 SMS 簽名設定電話號碼時,它也可以與[Azure 多重身份驗證][tutorial-azure-mfa]和[自助服務密碼重置][tutorial-sspr]一起使用。
+當電話號碼設定為進行 SMS 簽署時，它也可與[Azure 多重要素驗證][tutorial-azure-mfa]和[自助式密碼重設][tutorial-sspr]搭配使用。
 
 1. 搜尋並選取 [Azure Active Directory]  。
-1. 從 Azure 活動目錄視窗左側的導航功能表中,選擇 **「使用者**」 。。
-1. 在上一個項目(如*Contoso User)* 選擇開啟 SMS 的身分驗證的使用者,然後選擇**認證方法**。
-1. 輸入使用者的電話號碼,包括國家/地區代碼,如 *#1 xxxxxxxxx*。 Azure 門戶驗證電話號碼的格式正確。
+1. 從 [Azure Active Directory] 視窗左側的導覽功能表中，選取 [**使用者**]。
+1. 選取您在上一節中啟用以 SMS 為基礎之驗證的使用者（例如*Contoso user*），然後選取 [**驗證方法**]。
+1. 輸入使用者的電話號碼，包括國家/地區代碼，例如 *+ 1 xxxxxxxxx*。 Azure 入口網站驗證電話號碼的格式是否正確。
 
-    ![為 Azure 門戶中的使用者設定電話號碼,以便與基於 SMS 的身份驗證一起使用](./media/howto-authentication-sms-signin/set-user-phone-number.png)
+    ![在 Azure 入口網站中設定使用者的電話號碼，以用於以 SMS 為基礎的驗證](./media/howto-authentication-sms-signin/set-user-phone-number.png)
 
-    電話號碼在租戶中必須是唯一的。 如果嘗試對多個使用者使用相同的電話號碼,將顯示一條錯誤消息。
+    電話號碼在您的租使用者中必須是唯一的。 如果您嘗試為多個使用者使用相同的電話號碼，則會顯示錯誤訊息。
 
-1. 要將電話號碼應用於使用者帳戶,請選擇"**保存**"。
+1. 若要將電話號碼套用至使用者的帳戶，請選取 [**儲存**]。
 
-成功預先接後,*將顯示啟用 SMS 登入的*複選標記。
+成功布建時，會顯示*已啟用 SMS 登入*的核取記號。
 
-## <a name="test-sms-based-sign-in"></a>測試基於 SMS 的登入
+## <a name="test-sms-based-sign-in"></a>測試以 SMS 為基礎的登入
 
-要測試現在啟用的基於 SMS 的登入的使用者帳戶,請完成以下步驟:
+若要測試現在已啟用 SMS 登入的使用者帳戶，請完成下列步驟：
 
-1. 打開新的 InPrivate 或隱身 Web 瀏覽器視窗,[https://www.office.com][office]
-1. 在右上角,選擇 **「登錄」。**
-1. 在登錄提示符中,在上一節中輸入與使用者關聯的電話號碼,然後選擇 **「下一步**」。。
+1. 開啟新的 InPrivate 或 Incognito 網頁瀏覽器視窗[https://www.office.com][office]
+1. 在右上角，選取 [登**入**]。
+1. 在登入提示字元中，輸入與上一節中的使用者相關聯的電話號碼，然後選取 **[下一步]**。
 
-    ![在測試使用者的登入提示處輸入電話號碼](./media/howto-authentication-sms-signin/sign-in-with-phone-number.png)
+    ![在測試使用者的登入提示字元中輸入電話號碼](./media/howto-authentication-sms-signin/sign-in-with-phone-number.png)
 
-1. 文本消息發送到提供的電話號碼。 要完成登錄過程,請在登錄提示符的簡訊中輸入 6 位元碼。
+1. 文字訊息會傳送至所提供的電話號碼。 若要完成登入程式，請在登入提示字元輸入文字訊息中提供的6位數代碼。
 
-    ![輸入透過簡訊傳送到使用者電話號碼的確認代碼](./media/howto-authentication-sms-signin/sign-in-with-phone-number-confirmation-code.png)
+    ![輸入透過文字訊息傳送至使用者電話號碼的確認碼](./media/howto-authentication-sms-signin/sign-in-with-phone-number-confirmation-code.png)
 
-1. 用戶現在登錄而無需提供使用者名或密碼。
+1. 使用者現在已登入，而不需要提供使用者名稱或密碼。
 
-## <a name="troubleshoot-sms-based-sign-in"></a>排除基於 SMS 的登入故障
+## <a name="troubleshoot-sms-based-sign-in"></a>針對以 SMS 為基礎的登入進行疑難排解
 
-如果在啟用和使用基於 SMS 的登錄時遇到問題,可以使用以下方案和故障排除步驟。
+如果您有啟用和使用 SMS 登入的問題，可以使用下列案例和疑難排解步驟。
 
 ### <a name="phone-number-already-set-for-a-user-account"></a>已為使用者帳戶設定的電話號碼
 
-如果用戶已註冊 Azure 多重身份驗證和/或自助服務密碼重置 (SSPR),則他們已具有與其帳戶關聯的電話號碼。 此電話號碼不能自動用於基於 SMS 的登錄。
+如果使用者已註冊 Azure 多重要素驗證和（或）自助式密碼重設（SSPR），他們的帳戶已有相關聯的電話號碼。 此電話號碼不會自動提供給以 SMS 為基礎的登入使用。
 
-已設定電話號碼的使用者會顯示一個按鈕,用於在其 **「我的個人資料」** 頁*中啟用 SMS 登入*。 選擇此按鈕,該帳戶將啟用,以便與基於 SMS 的登錄和以前的 Azure 多重身份驗證或 SSPR 註冊一起使用。
+已為其帳戶設定電話號碼的使用者會顯示按鈕，以在其 [**我的設定檔**] 頁面中*啟用 SMS 登入*。 選取此按鈕，就會啟用帳戶以搭配 SMS 登入和先前的 Azure 多因素驗證或 SSPR 註冊使用。
 
-有關最終使用者體驗的詳細資訊,請參閱[SMS 登錄使用者體驗的電話號碼(預覽)。](../user-help/sms-sign-in-explainer.md)
+如需使用者體驗的詳細資訊，請參閱[適用于電話號碼的 SMS 登入使用者體驗（預覽）](../user-help/sms-sign-in-explainer.md)。
 
-### <a name="error-when-trying-to-set-a-phone-number-on-a-users-account"></a>嘗試在使用者帳戶上設定電話號碼時出錯
+### <a name="error-when-trying-to-set-a-phone-number-on-a-users-account"></a>嘗試在使用者帳戶上設定電話號碼時發生錯誤
 
-如果在 Azure 門戶中嘗試為使用者帳戶設定電話號碼時收到錯誤,請查看以下故障排除步驟:
+當您嘗試在 Azure 入口網站中設定使用者帳戶的電話號碼時，如果收到錯誤，請參閱下列疑難排解步驟：
 
-1. 確保已啟用基於 SMS 的登錄預覽。
-1. 確認在*簡訊*身份驗證方法策略中啟用了使用者帳戶。
-1. 請確保使用 Azure 門戶中驗證的正確格式設置電話號碼(如 *+1 4251234567)。*
-1. 確保電話號碼在租戶的其他地方未使用。
-1. 檢查帳戶上未設置語音號碼。 如果設置了語音號碼,請刪除並再次嘗試電話號碼。
+1. 請確定您已啟用 SMS 登入預覽。
+1. 確認已在*文字訊息*驗證方法原則中啟用使用者帳戶。
+1. 請確定您設定的電話號碼具有適當的格式，如 Azure 入口網站中所驗證（例如 *+ 1 4251234567*）。
+1. 請確定您的租使用者中的其他地方未使用電話號碼。
+1. 請檢查帳戶上未設定任何語音號碼。 若已設定語音號碼，請刪除並再次嘗試電話號碼。
 
 ## <a name="next-steps"></a>後續步驟
 
-有關在沒有密碼的情況下登入 Azure AD 的其他方法,例如 Microsoft 身份驗證器應用或 FIDO2 安全金鑰,請參閱[Azure AD 的無密碼身份驗證選項][concepts-passwordless]。
+如需在沒有密碼的情況下登入 Azure AD 的其他方式（例如 Microsoft Authenticator 應用程式或 FIDO2 安全性金鑰），請參閱[Azure AD 的無密碼驗證選項][concepts-passwordless]。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md

@@ -1,6 +1,6 @@
 ---
-title: 套用與 Azure 虛擬網路整合
-description: 將 Azure 應用服務中的應用與 Azure 虛擬網路整合。
+title: 整合應用程式與 Azure 虛擬網路
+description: 將 Azure App Service 中的應用程式與 Azure 虛擬網路整合。
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
@@ -8,79 +8,79 @@ ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 78b49b8b7e17f12d49825390a302e28a61e10d16
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81770846"
 ---
-# <a name="integrate-your-app-with-an-azure-virtual-network"></a>套用與 Azure 虛擬網路整合
+# <a name="integrate-your-app-with-an-azure-virtual-network"></a>將您的應用程式與 Azure 虛擬網路整合
 
-本文介紹 Azure 應用服務 VNet 集成功能以及如何在[Azure 應用服務](https://go.microsoft.com/fwlink/?LinkId=529714)中使用應用進行設置。 使用[Azure 虛擬網路][VNETOverview](VNet),可以將許多 Azure 資源放在非 Internet 可路由網路中。
+本文說明 Azure App Service VNet 整合功能，以及如何在[Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)中設定應用程式。 使用[Azure 虛擬網路][VNETOverview]（vnet），您可以將許多 Azure 資源放在非網際網路可路由網路中。
 
-Azure 應用服務有兩種變體:
+Azure App Service 有兩種變化：
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
-## <a name="enable-vnet-integration"></a>開啟 VNet 整合
+## <a name="enable-vnet-integration"></a>啟用 VNet 整合
 
 > [!NOTE]
-> 如果在 Linux 應用的功能表中禁用「網路」邊欄選項卡(灰顯),則表示該功能當前不可用。
+> 如果您的 Linux 應用程式功能表中的 [網路] 分頁已停用（呈現灰色），表示該功能目前無法使用。
 >
 
-1. 轉到應用服務門戶中的**網路**UI。 在**VNet 整合**下,選擇 **「按一次設定」。**
+1. 在 App Service 入口網站中，移至**網路**UI。 在 [ **VNet 整合**] 底下，選取 [**按一下這裡進行設定**]。
 
 1. 選取 [新增 VNet]****。
 
-   ![選擇 VNet 整合][1]
+   ![選取 VNet 整合][1]
 
-1. 下拉清單包含同一區域中訂閱中的所有 Azure 資源管理器虛擬網路。 下面是所有其他區域中的資源管理器虛擬網路的清單。 選擇要整合的 VNet。
+1. 下拉式清單包含您的訂用帳戶中相同區域內的所有 Azure Resource Manager 虛擬網路。 底下的清單會列出所有其他區域中的 Resource Manager 虛擬網路。 選取您想要整合的 VNet。
 
-   ![選擇 VNet][2]
+   ![選取 VNet][2]
 
-   * 如果 VNet 位於同一區域中,請創建新子網或選擇空的預先存在的子網。
-   * 要選擇另一個區域中的 VNet,必須啟用 VNet 閘道,並啟用指向網站。
-   * 要與經典 VNet 整合,請選擇 **「 按一下此處連接到經典 VNet」** 而不是選擇**虛擬網路**下拉清單。 選擇您想要的經典虛擬網路。 目標 VNet 必須已啟用啟用點對點的虛擬網路閘道。
+   * 如果 VNet 位於相同的區域中，請建立新的子網，或選取空白的預先存在的子網。
+   * 若要選取另一個區域中的 VNet，您必須已布建 VNet 閘道，並啟用點對站。
+   * 若要與傳統 VNet 整合，請選取 [**按一下這裡以連線到傳統 vnet]**，而不是選取 [**虛擬網路**] 下拉式清單。 選取您想要的傳統虛擬網路。 目標 VNet 必須已經布建虛擬網路閘道，並啟用點對站。
 
-    ![選擇傳統 VNet][3]
+    ![選取傳統 VNet][3]
 
-整合期間，會重新啟動您的應用程式。 集成完成後,您將在要集成的 VNet 上看到詳細資訊。
+整合期間，會重新啟動您的應用程式。 當整合完成時，您會看到與您整合之 VNet 的詳細資料。
 
 ## <a name="regional-vnet-integration"></a>區域 VNet 整合
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-regional.md)]
 
-### <a name="how-regional-vnet-integration-works"></a>區域 VNet 整合的工作原理
+### <a name="how-regional-vnet-integration-works"></a>區域 VNet 整合的運作方式
 
-應用服務中的應用託管在輔助角色上。 基本和更高的定價計劃是專用的託管計劃,其中沒有其他客戶的工作負載在同一工作人員上運行。 區域 VNet 整合的工作原理是安裝具有委派子網中位址的虛擬介面。 由於 from 位址位於 VNet 中,因此它可以像 VNet 中的 VM 一樣在 VNet 中或透過 VNet 訪問大多數內容。 網路實現不同於在 VNet 中運行 VM。 這就是為什麼某些網路功能尚未用於此功能的原因。
+App Service 中的應用程式會裝載于背景工作角色上。 基本和較高的定價方案是專用的主控方案，其中沒有其他客戶的工作負載在同一背景工作上執行。 區域 VNet 整合的運作方式是使用委派子網中的位址掛接虛擬介面。 由於「來源」位址位於您的 VNet 中，因此它可以存取您的 vnet 中的大部分專案，例如 VNet 中的 VM。 網路功能與在您的 VNet 中執行 VM 不同。 這就是為什麼這項功能尚無法使用某些網路功能的原因。
 
-![區域 VNet 整合的工作原理][5]
+![區域 VNet 整合的運作方式][5]
 
-啟用區域 VNet 整合後,你的應用會透過與正常相同的管道向 Internet 進行出站呼叫。 應用屬性門戶中列出的出站位址是應用仍在使用的位址。 應用的更改是對服務終結點安全服務的調用,或 VNet 中輸入的 RFC 1918 位址。 如果WEBSITE_VNET_ROUTE_ALL設置為 1,則所有出站流量都可以發送到 VNet。
+啟用區域 VNet 整合時，您的應用程式會透過與正常相同的通道，對網際網路進行輸出呼叫。 應用程式屬性入口網站中所列的輸出位址是您的應用程式仍會使用的位址。 您的應用程式有哪些變更是對服務端點安全服務的呼叫，或 RFC 1918 位址會進入您的 VNet。 如果 WEBSITE_VNET_ROUTE_ALL 設定為1，則所有輸出流量都可以傳送至您的 VNet。
 
-該功能僅支援每個工作人員一個虛擬介面。 每個工作人員一個虛擬介面意味著每個應用服務計劃的一個區域 VNet 集成。 同一應用服務計劃中的所有應用都可以使用相同的 VNet 整合。 如果需要應用連接到其他 VNet,則需要創建另一個應用服務計畫。 使用的虛擬介面不是客戶可以直接存取的資源。
+此功能僅針對每個背景工作支援一個虛擬介面。 每個工作者一個虛擬介面，表示每個 App Service 方案一個區域 VNet 整合。 相同 App Service 方案中的所有應用程式都可以使用相同的 VNet 整合。 如果您需要應用程式來連線至其他 VNet，則需要建立另一個 App Service 方案。 使用的虛擬介面不是客戶可直接存取的資源。
 
-由於此技術運行方式的性質,與 VNet 整合使用的流量不會顯示在 Azure 網路觀察程式或 NSG 串流日誌中。
+由於這項技術的運作方式，與 VNet 整合搭配使用的流量不會顯示在 Azure 網路監看員或 NSG 流量記錄中。
 
-## <a name="gateway-required-vnet-integration"></a>閘道所需的 VNet 整合
+## <a name="gateway-required-vnet-integration"></a>閘道-必要的 VNet 整合
 
-閘道所需的 VNet 整合支援連接到另一個區域中的 VNet 或經典虛擬網路。 閘道所需的 VNet 整合:
+閘道所需的 VNet 整合支援連接到另一個區域中的 VNet 或傳統虛擬網路。 閘道-必要的 VNet 整合：
 
-* 使應用一次只能連接到一個 VNet。
-* 使最多五個 VNet 能夠整合到應用服務計畫中。
-* 允許應用服務計畫中的多個應用使用同一 VNet,而不會影響應用服務計畫可以使用的總數。 如果同一應用服務計劃中有六個應用使用相同的 VNet,則這計為正在使用的一個 VNet。
-* 由於閘道上的 SLA,支援 99.9% 的 SLA。
-* 使應用能夠使用 VNet 配置的 DNS。
-* 需要使用 SSTP 點對點 VPN 配置的基於虛擬網路路由的閘道才能連接到應用。
+* 讓應用程式一次只能連接到一個 VNet。
+* 最多可在 App Service 方案內整合五個 Vnet。
+* 允許 App Service 方案中的多個應用程式使用相同的 VNet，而不會影響 App Service 方案所能使用的總次數。 如果您在相同的 App Service 方案中，有六個應用程式使用相同的 VNet，則會計算為使用的一個 VNet。
+* 因閘道上的 SLA 而支援99.9% 的 SLA。
+* 可讓您的應用程式使用已設定 VNet 的 DNS。
+* 需要以 SSTP 點對站 VPN 設定虛擬網路路由式閘道，才能將它連線到應用程式。
 
-無法使用閘道所需的 VNet 整合:
+您不能使用閘道所需的 VNet 整合：
 
 * 使用 Linux 應用程式。
-* 使用 Azure ExpressRoute 連接的 VNet。
-* 訪問服務終結點安全資源。
-* 具有同時支援 ExpressRoute 和點對點或網站到網站 VPN 的共存閘道。
+* 使用與 Azure ExpressRoute 連線的 VNet。
+* 存取服務端點保護的資源。
+* 具有同時支援 ExpressRoute 和點對站或站對站 Vpn 的共存閘道。
 
-### <a name="set-up-a-gateway-in-your-azure-virtual-network"></a>在 Azure 虛擬網路中設定閘道 ###
+### <a name="set-up-a-gateway-in-your-azure-virtual-network"></a>在您的 Azure 虛擬網路中設定閘道 ###
 
 若要建立閘道：
 
@@ -88,64 +88,64 @@ Azure 應用服務有兩種變體:
 
 1. [建立 VPN 閘道][creategateway]。 選取路由式 VPN 類型。
 
-1. [設定點對點位址][setp2saddresses]。 如果閘道不在基本 SKU 中，則必須在點對站組態中停用 IKEV2，而且必須選取 SSTP。 點對點位址空間必須位於 RFC 1918 位址塊 10.0.0.0/8、172.16.0.0/12 和 192.168.0.0/16 中。
+1. [設定點對站位址][setp2saddresses]。 如果閘道不在基本 SKU 中，則必須在點對站組態中停用 IKEV2，而且必須選取 SSTP。 點對站位址空間必須是 RFC 1918 位址區塊 10.0.0.0/8、172.16.0.0/12 和 192.168.0.0/16。
 
-如果創建閘道以用於應用服務 VNet 整合,則無需上傳證書。 建立閘道可能需要 30 分鐘。 在預先接閘道之前,您將無法將應用與 VNet 整合。
+如果您建立用於 App Service VNet 整合的閘道，則不需要上傳憑證。 建立閘道可能需要 30 分鐘。 在布建閘道之前，您將無法將應用程式與 VNet 整合。
 
-### <a name="how-gateway-required-vnet-integration-works"></a>閘道要求的 VNet 整合的工作原理
+### <a name="how-gateway-required-vnet-integration-works"></a>閘道所需的 VNet 整合如何運作
 
-閘道所需的 VNet 整合建構在點對點 VPN 技術之上。 點對點 VPN 限制對承載應用的虛擬機器的網路存取。 應用僅限於透過混合連接或透過 VNet 整合將流量發送到網路。 當應用配置了門戶以使用閘道所需的 VNet 整合時,將代表您管理複雜的協商,以在閘道和應用程式端創建和分配證書。 結果是,用於託管應用的工作人員能夠直接連接到所選 VNet 中的虛擬網路閘道。
+閘道所需的 VNet 整合是以點對站 VPN 技術為基礎。 點對站 Vpn 會限制對裝載應用程式之虛擬機器的網路存取。 應用程式只能透過混合式連線或透過 VNet 整合，將流量傳送到網際網路。 當您的應用程式使用入口網站設定為使用閘道所需的 VNet 整合時，會代表您管理複雜的協商，以在閘道和應用程式端建立及指派憑證。 結果是，用來裝載應用程式的工作者可以直接連線到所選 VNet 中的虛擬網路閘道。
 
-![閘道要求的 VNet 整合的工作原理][6]
+![閘道所需的 VNet 整合如何運作][6]
 
-### <a name="access-on-premises-resources"></a>存取本地資源
+### <a name="access-on-premises-resources"></a>存取內部部署資源
 
-應用程式可以透過與具有站對站連線的 VNnet 整合以存取內部部署資源。 如果使用閘道所需的 VNet 整合,請使用指向網站的位址區塊更新本地 VPN 閘道網路由。 第一次設定站對站 VPN 時，用來設定它的指令碼應該設定路由，包括點對站 VPN。 如果您在建立站對站 VPN 之後新增點對站 VPN，則需要手動更新路由。 有關如何執行此操作的詳細資訊因閘道而異,此處未對此進行說明。 不能使用網站到網站 VPN 連接配置 BGP。
+應用程式可以透過與具有站對站連線的 VNnet 整合以存取內部部署資源。 如果您使用閘道所需的 VNet 整合，請使用您的點對站位址區塊來更新您的內部部署 VPN 閘道路由。 第一次設定站對站 VPN 時，用來設定它的指令碼應該設定路由，包括點對站 VPN。 如果您在建立站對站 VPN 之後新增點對站 VPN，則需要手動更新路由。 有關如何執行此動作的詳細資料會因閘道而有所不同，此處並未說明。 您不能使用站對站 VPN 連線來設定 BGP。
 
-區域 VNet 整合功能無需額外配置即可透過 VNet 到本地資源進行訪問。 您只需使用 ExpressRoute 或網站到網站 VPN 將 VNet 連接到本地資源即可。
+區域 VNet 整合功能不需要進行其他設定，就能透過 VNet 連線到內部部署資源。 您只需要使用 ExpressRoute 或站對站 VPN，將您的 VNet 連線到內部部署資源。
 
 > [!NOTE]
-> 閘道所需的 VNet 整合功能不會將應用與具有 ExpressRoute 閘道的 VNet 整合。 即使 ExpressRoute 閘道配置為[共存模式][VPNERCoex],VNet 整合也不起作用。 如果需要透過 ExpressRoute 連線存取資源,請使用 VNet 中執行的區域 VNet 整合功能或[套用服務環境][ASE]。
+> 閘道所需的 VNet 整合功能不會將應用程式與具有 ExpressRoute 閘道的 VNet 整合。 即使在[共存模式][VPNERCoex]中設定 ExpressRoute 閘道，VNet 整合仍無法正常執行。 如果您需要透過 ExpressRoute 連線存取資源，請使用區域 VNet 整合功能，或在您的 VNet 中執行的[App Service 環境][ASE]。
 > 
 > 
 
 ### <a name="peering"></a>對等互連
 
-如果對等互連區域 VNet 集成,則無需執行任何其他配置。
+如果您使用與區域 VNet 整合的對等互連，則不需要執行任何額外的設定。
 
-如果使用閘道所需的 VNet 整合進行對等互連,則需要配置一些其他專案。 若要設定對等互連以搭配您的應用程式使用：
+如果您使用閘道所需的 VNet 與對等互連整合，您必須設定一些額外的專案。 若要設定對等互連以搭配您的應用程式使用：
 
-1. 在您的應用程式連線到的 VNet 上新增對等互連連線。 新增對等互連連線時,啟用**允許虛擬網路存取**,然後選擇 **「允許轉發流量**」和「**允許閘道傳輸**」。
-1. 在 VNet 上添加對等互連連接,該連接將與您連接到的 VNet 進行對等互連。 在目標 VNet 上新增對等互連連線時,啟用**允許虛擬網路存取**並選擇 **「允許轉發流量**」和「**允許遠端閘道**」。
-1. 轉到門戶中的**應用服務計劃** > **網路** > **VNet 集成**UI。 選取您的應用程式連線到的 VNet。 在路由部分下,添加與應用連接到的 VNet 對等的 VNet 的位址範圍。
+1. 在您的應用程式連線到的 VNet 上新增對等互連連線。 新增對等互連連線時，請啟用 [**允許虛擬網路存取**]，然後選取 [**允許轉送的流量**] 和 [**允許閘道傳輸**]。
+1. 在要對等互連至您所連接之 VNet 的 VNet 上新增對等互連連線。 當您在目的地 VNet 上新增對等互連連線時，啟用 [**允許虛擬網路存取**]，然後選取 [**允許轉送的流量**] 和 [**允許遠端閘道**]。
+1. 移至入口網站中的**App Service 方案** > **網路** > **VNet 整合**UI。 選取您的應用程式連線到的 VNet。 在 [路由] 區段下，新增與您的應用程式所連線的 VNet 對等互連之 VNet 的位址範圍。
 
 ## <a name="manage-vnet-integration"></a>管理 VNet 整合
 
-與 VNet 連接和斷開連接處於應用級別。 可能影響跨多個應用的 VNet 整合的操作處於應用服務計畫等級。 從**應用>網络** > **VNet 整合**門戶,您可以在 VNet 上獲取詳細資訊。 您可以在**應用服務計畫** > **網路** > **VNet 整合**門戶的應用服務計畫等級看到類似的資訊。
+連接和中斷與 VNet 的連線是在應用層級。 會在多個應用程式之間影響 VNet 整合的作業位於 App Service 方案層級。 從應用程式 >**網路** > **VNet 整合**入口網站，您可以取得 VNet 的詳細資料。 您可以在**App Service 方案** > **網路** > **VNet 整合**入口網站中的 App Service 方案層級看到類似的資訊。
 
-在 VNet 整合實體的應用檢視中,唯一可以採用的操作是斷開應用與當前連接到的 VNet 的連接。 若要中斷您應用程式與 VNet 的連線，請選取 [中斷連線]****。 與 VNet 斷開連接時,你的應用將重新啟動。 中斷連線不會變更您的 VNet。 子網或閘道未被刪除。 如果隨後要刪除 VNet,請先斷開應用與 VNet 的連接,然後刪除其中的資源,如閘道。
+您可以在 VNet 整合實例的應用程式視圖中採取的唯一作業，就是將應用程式與目前連線的 VNet 中斷連接。 若要中斷您應用程式與 VNet 的連線，請選取 [中斷連線]****。 當您從 VNet 中斷連線時，您的應用程式會重新開機。 中斷連線不會變更您的 VNet。 不會移除子網或閘道。 如果您想要刪除 VNet，請先中斷應用程式與 VNet 的連線，並刪除其中的資源，例如閘道。
 
-應用服務計畫 VNet 整合 UI 顯示應用服務計畫中應用使用的所有 VNet 整合。 要查看每個 VNet 的詳細資訊,請選擇您感興趣的 VNet。 您可以在此執行兩個操作,以便進行閘道所需的 VNet 整合:
+App Service 方案 VNet 整合 UI 會顯示您的 App Service 方案中，應用程式所使用的所有 VNet 整合。 若要查看每個 VNet 的詳細資料，請選取您想要的 VNet。 您可以在這裡針對閘道所需的 VNet 整合執行兩個動作：
 
-* **同步網路**:同步網路操作僅用於閘道相關的 VNet 整合功能。 執行同步網路操作可確保證書和網路資訊同步。如果添加或更改 VNet 的 DNS,請執行同步網路操作。 此操作將重新啟動使用此 VNet 的任何應用。
-* **添加路由**:添加路由會驅動出站流量到 VNet。
+* **同步網路**：同步處理網路作業僅用於與閘道相關的 VNet 整合功能。 執行同步網路作業可確保您的憑證和網路資訊同步。如果您新增或變更 VNet 的 DNS，請執行同步網路操作。 此操作會重新開機任何使用此 VNet 的應用程式。
+* **新增路由**：新增路由會將輸出流量帶到您的 VNet。
 
-### <a name="gateway-required-vnet-integration-routing"></a>閘道所需的 VNet 整合路由
-VNet 中定義的路由用於從應用將流量定向到 VNet。 要向 VNet 發送其他出站流量,請在此處添加這些位址塊。 此功能僅適用於閘道所需的 VNet 整合。 當您使用閘道所需的 VNet 整合時,路由表不會影響應用流量,就像它們使用區域 VNet 整合一那樣。
+### <a name="gateway-required-vnet-integration-routing"></a>閘道-必要的 VNet 整合路由
+您的 VNet 中定義的路由會用來將流量從您的應用程式導向至您的 VNet。 若要將額外的輸出流量傳送至 VNet，請在這裡新增這些位址區塊。 這項功能僅適用于閘道所需的 VNet 整合。 當您使用閘道所需的 VNet 整合時，路由表不會影響您的應用程式流量，其方式與區域 VNet 整合相同。
 
-### <a name="gateway-required-vnet-integration-certificates"></a>閘道所需的 VNet 整合憑證
-啟用閘道所需的 VNet 整合後,需要交換證書以確保連接的安全性。 除了憑證以外，還有 DNS 組態、路由，以及其他描述網路的類似項目。
+### <a name="gateway-required-vnet-integration-certificates"></a>閘道-必要的 VNet 整合憑證
+啟用閘道所需的 VNet 整合時，需要交換憑證以確保連線的安全性。 除了憑證以外，還有 DNS 組態、路由，以及其他描述網路的類似項目。
 
-如果證書或網路資訊已更改,請選擇 **「同步網路**」。。 選擇**同步網路**時,會導致應用和 VNet 之間的連接短暫中斷。 如果應用程式未重新啟動，失去連線會導致您的網站無法正常運作。
+如果憑證或網路資訊已變更，請選取 [**同步網路**]。 當您選取 [**同步網路**] 時，您會導致應用程式與 VNet 之間的連線短暫中斷。 如果應用程式未重新啟動，失去連線會導致您的網站無法正常運作。
 
 ## <a name="pricing-details"></a>價格詳細資料
-除了應用服務計劃定價層費用之外,區域 VNet 集成功能無需支付額外費用。
+除了 App Service 方案定價層費用以外，區域 VNet 整合功能不需額外付費。
 
-三項費用與使用閘道所需的 VNet 整合功能有關:
+使用閘道所需的 VNet 整合功能時，有三個費用相關：
 
-* **應用服務計劃定價層費用**:你的應用必須處於標準、高級或高級 V2 應用服務計劃中。 有關這些成本的詳細資訊,請參閱[應用服務定價][ASPricing]。
-* **數據傳輸成本**:即使 VNet 位於同一數據中心中,數據出口也會收取費用。 這些費用在[數據傳輸定價詳細資訊][DataPricing]中描述。
-* **VPN 閘道成本**:點對點 VPN 需要虛擬網路閘道的成本。 有關詳細資訊,請參閱[VPN 閘道定價][VNETPricing]。
+* **App Service 方案定價層費用**：您的應用程式必須是標準、Premium 或 PremiumV2 App Service 方案。 如需這些成本的詳細資訊，請參閱[App Service 定價][ASPricing]。
+* **資料傳輸成本**：即使 VNet 位於相同的資料中心，也會收取資料輸出費用。 這些費用會在[資料傳輸定價詳細資料][DataPricing]中說明。
+* **VPN 閘道成本**：點對站 VPN 需要虛擬網路閘道的成本。 如需詳細資訊，請參閱[VPN 閘道定價][VNETPricing]。
 
 ## <a name="troubleshooting"></a>疑難排解
 
@@ -153,7 +153,7 @@ VNet 中定義的路由用於從應用將流量定向到 VNet。 要向 VNet 發
 
 ## <a name="automation"></a>自動化
 
-CLI 支援可用於區域 VNet 整合。 要存取以下指令[,請安裝 Azure CLI][installCLI]。
+適用于區域 VNet 整合的 CLI 支援。 若要存取下列命令，請[安裝 Azure CLI][installCLI]。
 
         az webapp vnet-integration --help
 
@@ -175,7 +175,7 @@ CLI 支援可用於區域 VNet 整合。 要存取以下指令[,請安裝 Azure 
         Commands:
             list : List the virtual network integrations used in an appservice plan.
 
-對於閘道所需的 VNet 整合,可以使用 PowerShell 將應用服務與 Azure 虛擬網路整合。 有關即用即用腳稿,請參閱將[Azure 應用服務中的應用連線到 Azure 虛擬網路](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)。
+針對閘道所需的 VNet 整合，您可以使用 PowerShell 將 App Service 整合到 Azure 虛擬網路。 如需已準備好執行的腳本，請參閱[將 Azure App Service 中的應用程式連線到 Azure 虛擬網路](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3)。
 
 
 <!--Image references-->

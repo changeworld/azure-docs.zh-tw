@@ -1,6 +1,6 @@
 ---
-title: 為商業市場中的客戶參與度& PowerApps 產品創建新動態 365
-description: 如何為客戶參與創建新的 Dynamics 365 & PowerApps 產品,用於在 Azure 應用商店、AppSource 中或透過雲端解決方案供應商 (CSP) 計畫使用 Microsoft 合作夥伴中心的商業應用商店門戶進行上市或銷售。
+title: 在商業 Marketplace 中建立新的 Dynamics 365 for Customer Engagement & PowerApps 供應專案
+description: 如何使用 Microsoft 合作夥伴中心的商業 Marketplace 入口網站，建立新的 Dynamics 365 for Customer Engagement & PowerApps 供應專案，以便在 Azure Marketplace、AppSource 或透過雲端解決方案提供者（CSP）方案中進行列出或銷售。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
@@ -8,96 +8,96 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.openlocfilehash: 0ec62095f14b38d0c4ffebfabc14c4a0a27a70fb
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869832"
 ---
-# <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>為客戶互動& PowerApps 產品創建新動態 365
+# <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>為客戶參與 & PowerApps 供應專案建立新的 Dynamics 365
 
-本主題介紹如何為客戶參與度創建新的動態 365 & PowerApps 產品。 Dynamics 365 面向客戶參與的所有應用(PowerApps、銷售、服務、專案服務和現場服務)都必須經過我們的認證流程並支援試用體驗。 認證程序會檢查您的解決方案是否符合標準需求、相容性和適當的做法。 試用體驗可讓使用者將解決方案部署至即時 Dynamics 365 環境。
+本主題說明如何建立新的 Dynamics 365 for Customer Engagement & PowerApps 供應專案。 Dynamics 365 for Customer Engagement （PowerApps、銷售、服務、專案服務和現場服務）的所有應用程式都必須經過我們的認證流程，並支援試用版體驗。 認證程序會檢查您的解決方案是否符合標準需求、相容性和適當的做法。 試用體驗可讓使用者將解決方案部署至即時 Dynamics 365 環境。
 
-要開始為客戶參與創建 Dynamics 365 & PowerApps 優惠,請確保首先[創建合作夥伴中心帳戶](./create-account.md)並打開[商業市場儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers),並選中 **「概述**」選項卡。
+若要開始建立 Dynamics 365 for Customer Engagement & PowerApps 供應專案，請務必先[建立合作夥伴中心帳戶](./create-account.md)並開啟 [[商業 Marketplace] 儀表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，並選取 [**總覽**] 索引標籤。
 
-![合作夥伴中心上的商業市場儀錶板](./media/new-offer-overview.png)
+![合作夥伴中心的商業 Marketplace 儀表板](./media/new-offer-overview.png)
 
 >[!Note]
-> 產品/服務發佈後,只有在重新發佈後,才會在系統和商店前面更新對合作夥伴中心中提供的優惠進行編輯。 請確保在進行更改後提交要發佈的產品/服務。
+> 發行供應專案之後，在 [合作夥伴中心] 中對供應專案所做的編輯，只會在系統中更新，並在重新發佈之後儲存。 進行變更之後，請確定您提交發行集的供應專案。
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
-選擇 **"+ 新產品/服務**"按鈕,然後選擇**Dynamics 365 以用於客戶參與度& PowerApps**選單項。 將顯示「**新建產品/服務**」對話框。
+選取 [ **+ 新增供應**專案] 按鈕，然後選取 [ **Dynamics 365 for Customer Engagement & PowerApps** ] 功能表項目。 [**新增供應**專案] 對話方塊隨即出現。
 
-### <a name="offer-id-and-alias"></a>優惠識別碼與別名
+### <a name="offer-id-and-alias"></a>供應專案識別碼和別名
 
-- **優惠 ID**:帳戶中每個產品/服務的唯一標識符。 此 ID 將在市場產品/服務的 URL 位址和 Azure 資源管理器範本(如果適用)中向客戶可見。 優惠ID必須是小寫字母數位字元(包括連字元和下劃線,但沒有空格)。 ID 限制為 50 個字元,在選擇「**建立**」後無法更改。 例如,如果您在此處輸入*測試報價 1,* 則產品/服務`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`網址將為 。
+- **供應專案 ID**：您帳戶中每個供應專案的唯一識別碼。 在 marketplace 供應專案的 URL 位址中，客戶會看到此識別碼，而 Azure Resource Manager 範本（如果適用）。 供應專案識別碼必須是小寫的英數位元（包括連字號和底線，但不能有空格）。 識別碼限制為50個字元，且在您選取 [**建立**] 之後無法變更。 例如，如果您在這裡輸入 [*測試-供應專案-1* ]，則供應`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`專案 URL 會是。
 
-- **優惠別名**:用於指合作夥伴中心內產品/服務的名稱。 此名稱不會在市場中使用,並且與向客戶顯示的要約名稱和其他值不同。 選擇 「**建立**」 後,無法更改此值。
+- **供應專案別名**：用來參照合作夥伴中心內供應專案的名稱。 此名稱不會在 marketplace 中使用，而且與供應專案名稱和其他將向客戶顯示的值不同。 在您選取 [**建立**] 之後，就無法變更這個值。
 
-輸入**優惠 ID**和**優惠別名**後,選擇 **"創建**"。 然後,您將能夠處理產品/服務的所有不同部分。
+輸入**供應專案識別碼**和供應專案**別名**之後，請選取 [**建立**]。 接著，您就能夠處理供應專案的所有不同部分。
 
-## <a name="offer-setup"></a>優惠設定
+## <a name="offer-setup"></a>供應專案設定
 
-**"產品/服務設置"** 頁要求提供以下資訊。 請務必在完成這些欄位後選擇 **「保存**」。
+[**供應專案設定**] 頁面會要求您提供下列資訊。 完成這些欄位之後，請務必選取 [**儲存**]。
 
-### <a name="how-do-you-want-potential-customers-to-interact-with-this-listing-offer"></a>您希望潛在客戶如何與此上市產品進行交互?
+### <a name="how-do-you-want-potential-customers-to-interact-with-this-listing-offer"></a>您要如何讓潛在客戶與此清單供應專案互動？
 
-選擇要用於此優惠的選項。
+選取您想要用於此供應專案的選項。
 
-#### <a name="get-it-now-free"></a>立即取得(免費)
+#### <a name="get-it-now-free"></a>立即取得（免費）
 
-通過提供有效的 URL(從*http*或*Hths*開頭),客戶可以存取你的應用,從而免費向客戶列出您的優惠。  例如： `https://contoso.com/my-app`
+提供可存取您應用程式的有效 URL （從*HTTP*或*HTTPs*開始），免費向客戶列出您的供應專案。  例如：`https://contoso.com/my-app`
 
-#### <a name="free-trial-listing"></a>免費試用(清單)
+#### <a name="free-trial-listing"></a>免費試用（清單）
 
-通過提供有效的 URL(從*http*或*Htht*開頭),以便客戶獲得試用版,從而向客戶列出您的優惠。"  例如： `https://contoso.com/trial/my-app` 。 免費試用版產品清單的優惠由您的服務創建、管理和配置,並且沒有由 Microsoft 管理的訂閱。
+藉由提供有效的 URL （從*HTTP*或*HTTPs*開始），向客戶列出您的供應專案，以取得試用版的連結。  例如： `https://contoso.com/trial/my-app` 。 供應專案列出免費試用版是由您的服務所建立、管理及設定，而且沒有由 Microsoft 管理的訂用帳戶。
 
 > [!NOTE]
-> 應用程式將透過試用連結收到的權杖只能用於透過 Azure 活動目錄 (Azure AD) 取得使用者資訊,以自動在應用中創建帳戶。 使用此令牌進行身份驗證不支援 Microsoft 帳戶。
+> 您的應用程式將透過試用連結接收的權杖，只能透過 Azure Active Directory （Azure AD）取得使用者資訊，以在您的應用程式中自動建立帳戶。 Microsoft 帳戶不支援使用此權杖進行驗證。
 
 #### <a name="contact-me"></a>與我連絡
 
-通過連接客戶關係管理 (CRM) 系統收集客戶聯繫資訊。 將請求客戶共用其信息的許可權。 這些客戶詳細資訊以及找到產品/服務的產品/服務的產品/地區的產品/服務名稱、ID和市場源將發送到您配置的 CRM 系統。 有關設定 CRM 的詳細資訊,請參考[連線潛在客戶管理](#connect-lead-management)。 
+藉由連接客戶關係管理（CRM）系統來收集客戶連絡人資訊。 系統會要求客戶提供共用其資訊的許可權。 這些客戶詳細資料以及他們找到您供應專案的供應專案名稱、識別碼和 marketplace 來源，都會傳送至您所設定的 CRM 系統。 如需設定 CRM 的詳細資訊，請參閱[連接潛在客戶管理](#connect-lead-management)。 
 
 ### <a name="test-drive"></a>試用產品
 
-試駕是向潛在客戶展示您的報價的絕佳方式,為他們提供"購買前試用"選項,從而提高轉化率並生成高素質潛在客戶。 [瞭解有關測試驅動器的更多詳細資訊。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+試用產品是向潛在客戶展示您的供應專案的絕佳方式，方法是讓他們選擇「在購買前試用」，進而提升轉換並產生高度合格的潛在客戶。 [深入瞭解試用產品。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-要啟用試駕,請選中 **「啟用試駕」** 框。 然後,您需要在[測試驅動器技術配置](#test-drive-technical-configuration)配置中配置演示環境,以便客戶在固定時間段內試用您的產品/服務。 
+若要啟用試用產品，請核取 [**啟用試用**產品] 方塊。 接著，您必須在試用產品的[技術](#test-drive-technical-configuration)設定中設定示範環境，讓客戶可以在一段固定時間內試用您的供應專案。 
 
-#### <a name="type-of-test-drive"></a>試駕類型
+#### <a name="type-of-test-drive"></a>試用產品的類型
 
 然後選取下列選項：
 
-- **[Azure 資源管理員](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)**:包含構成解決方案的所有 Azure 資源的部署範本。 適合此方案的產品僅使用 Azure 資源。
-- **[面向業務中心的動態 365:Microsoft](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)** 託管和維護業務中央企業資源規劃系統(財務、運營、供應鏈、CRM 等)的試駕服務(包括配置和部署)。  
-- **[面向客戶參與的動態 365:Microsoft](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)** 託管和維護客戶參與系統的試駕服務(包括配置和部署)(銷售、服務、專案服務、現場服務等)。  
-- **[操作動態 365:](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)** Microsoft 託管和維護財務和運營企業資源規劃系統(財務、運營、製造、供應鏈等)的試駕服務(包括配置和部署)。 
-- **[邏輯應用](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)**:包含所有複雜解決方案體系結構的部署範本。 任何自定義產品都應使用這種類型的試駕。
-- **[Power BI:](https://docs.microsoft.com/power-bi/service-template-apps-overview)** 指向自定義儀錶板的嵌入式連結。 想要展示互動式 Power BI 視覺物件的產品應使用這種類型的測試驅動器。 您只需要上傳內嵌的 Power BI URL。
+- **[Azure Resource Manager](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)**：部署範本，其中包含構成解決方案的所有 Azure 資源。 符合此案例的產品只會使用 Azure 資源。
+- **[Dynamics 365 For Business central](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-business-central-offer)**： Microsoft 主控並維護 business central 企業資源規劃系統（財務、營運、供應鏈、CRM 等）的試用產品服務（包括布建和部署）。  
+- **[Dynamics 365 For Customer engagement](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/dyn365ce/cpp-customer-engagement-offer)**： Microsoft 會託管並維護客戶參與系統（銷售、服務、專案服務、現場服務等）的試用產品服務（包括布建和部署）。  
+- **[適用于作業的 Dynamics 365](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer)**： Microsoft 會主控並維護財務和營運企業資源規劃系統（財務、營運、製造、供應鏈等）的試用產品服務（包括布建和部署）。 
+- **[邏輯應用程式](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)**：包含所有複雜解決方案架構的部署範本。 任何自訂產品都應該使用這種類型的試用產品。
+- **[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)**：自訂建立儀表板的內嵌連結。 想要示範互動式 Power BI 視覺效果的產品應該使用這種類型的試用產品。 您只需要上傳內嵌的 Power BI URL。
 
-#### <a name="additional-test-drive-resources"></a>其他試駕資源
+#### <a name="additional-test-drive-resources"></a>其他試用產品資源
 
-- [試駕技術最佳實踐](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
-- [試駕行銷最佳實踐](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
-- [試駕概述一個尋呼機](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
+- [試用技術最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
+- [試用產品行銷最佳做法](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/marketing-and-best-practices)
+- [試用產品總覽一頁](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)
 
-## <a name="connect-lead-management"></a>連線潛在客戶管理
+## <a name="connect-lead-management"></a>連接潛在客戶管理
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-有關詳細資訊,請參閱[潛在顧客管理概述](./commercial-marketplace-get-customer-leads.md)。
+如需詳細資訊，請參閱[潛在客戶管理總覽](./commercial-marketplace-get-customer-leads.md)。
 
-在繼續下一節之前,請記住**儲存**。
+請記得先**儲存**再繼續進行下一節。
 
 ## <a name="properties"></a>屬性
 
-屬性**頁面**允許您定義用於在市場對產品/服務進行分組的類別和行業、應用版本和支援產品/服務的法律合同。 完成此頁面後選擇 **「儲存**」。
+[**屬性**] 頁面可讓您定義用來在 marketplace 上分組供應專案的類別和產業、應用程式版本，以及支援供應專案的法律合約。 完成此頁面後，選取 [**儲存**]。
 
 ### <a name="category"></a>類別
 
-選擇至少一個,最多選擇三個類別。 該**類別**將用於將您的產品/服務放入相應的市場搜索區域。 請務必在產品/服務說明中標註您的產品/服務如何支援這些類別。
+選取最少1個，最多三個類別。 **類別**將用來將您的供應專案放入適當的 marketplace 搜尋區域。 請務必在供應專案描述中，呼叫您的供應專案如何支援這些類別。
 
 ### <a name="industry"></a>業界
 
@@ -105,32 +105,32 @@ ms.locfileid: "81869832"
 
 ### <a name="applicable-dynamics-365-products"></a>適用的 Dynamics 365 產品
 
-選擇此產品適用的 Dynamics 365 產品。
+選取此供應專案適用的所有 Dynamics 365 產品。
 
 ### <a name="app-version"></a>應用程式版本
 
-輸入產品/服務的版本號。 客戶將在產品/服務的詳細信息頁面上看到此版本。 如果由於市場行銷/描述性更改而僅更新版本號,請選中 **「僅限市場行銷更改」** 框。 此選項允許產品/服務繞過認證和預配階段。
+輸入供應專案的版本號碼。 客戶會看到此版本列在供應專案的詳細資料頁面上。 如果您只是因為行銷/描述性變更而更新版本號碼，請核取 [**僅限行銷] 變更**框。 此選項可讓供應專案略過認證和布建階段。
 
 ### <a name="terms-and-conditions"></a>條款及條件
 
-在條款與條件欄位中提供您自己的法律**條款和條件**。 您還可以提供可在其中找到您的條款和條件的 URL。 客戶在試用您的優惠之前,必須接受這些條款。
+在 [**條款及條件**] 欄位中提供您自己的法律條款與條件。 您也可以提供 URL，以便找到您的條款及條件。 客戶必須接受這些條款，才能試用您的供應專案。
 
-## <a name="offer-listing"></a>優惠清單
+## <a name="offer-listing"></a>供應專案清單
 
-"產品/服務"列表頁顯示您的優惠將在其中列出的語言。 目前,**英語(美國)** 是唯一可用的選項。
+[供應專案清單] 頁面會顯示您的供應專案列出的語言。 目前，**英文（美國）** 是唯一可用的選項。
 
-您需要為每個語言/市場定義市場詳細資訊(報價名稱、說明、圖像等)。 選擇語言/市場名稱以提供此資訊。
+您將需要針對每個語言/市場定義 marketplace 詳細資料（供應專案名稱、描述、影像等）。 選取語言/市場名稱來提供此資訊。
 
 > [!NOTE]
-> 報價清單內容(如說明、文檔、螢幕截圖、使用條款等)不需要以英文表示,只要要約說明以短語開頭,"此應用程式僅以 [非英語語言]提供。 提供*有用的連結 URL*以提供產品/服務列表內容中所用語言以外的語言提供內容也是可接受的。
+> 供應專案清單內容（例如描述、檔、螢幕擷取畫面、使用規定等）不一定要使用英文，只要供應專案的描述開頭為片語，「此應用程式僅適用于 [非英文語言]。」 您也可以提供*有用的連結 URL*來提供內容，而不是供應專案清單內容所使用的語言。
 
-### <a name="name"></a>名稱
+### <a name="name"></a>Name
 
-您在此處輸入的名稱將作為產品/服務列表的標題顯示給客戶。 此欄位預填充了創建產品/服務時為 **「產品/服務」別名**輸入的文本,但您可以更改此值。 此名稱可以註冊商標(您可以包括商標或版權符號)。 名稱不能超過 50 個字元,不能包含任何表情符號。
+您在此處輸入的名稱會向客戶顯示，做為供應專案清單的標題。 當您建立供應專案時，此欄位會預先填入您在**供應專案別名**中輸入的文字，但您可以變更此值。 此名稱可能是商標（您可以包含商標或著作權符號）。 名稱不能超過50個字元，而且不能包含任何 emoji。
 
 ### <a name="short-description"></a>簡短描述
 
-提供優惠的簡短說明(最多 100 個字元)。 此說明可用於市場搜尋結果。
+提供供應專案的簡短描述（最多100個字元）。 此描述可用於 marketplace 搜尋結果。
 
 
 
@@ -144,36 +144,36 @@ ms.locfileid: "81869832"
 
 ### <a name="description"></a>描述
 
-提供更久的報價說明(最多 3,000 個字元)。 此描述將顯示在市場清單概述中的客戶。 包括您的產品/服務的價值主張、主要優勢、類別和/或行業協會、應用內購買機會以及任何必需的披露。
+提供供應專案的較長描述（最多3000個字元）。 在 marketplace 清單總覽中，客戶會看到這項描述。 包含您供應專案的價值主張、主要優點、類別及/或產業關聯、應用程式內購買機會，以及任何必要的公開。
 
-編寫說明的一些提示:  
+撰寫描述的一些秘訣：  
 
-- 在您的描述中的前幾個句子清楚描述您供應項目的價值主張。 在價值主張中包括以下資訊:
+- 在您的描述中的前幾個句子清楚描述您供應項目的價值主張。 在您的價值主張中包含下列資訊：
   - 產品的描述
-  - 從產品中受益的使用者類型
-  - 產品解決的客戶需求或痛苦
+  - 受益于產品的使用者類型
+  - 客戶需要或痛苦的產品位址
 - 請記住，前幾個句子可能會顯示在搜尋引擎結果中。  
 - 請勿依賴特色與功能來銷售您的產品。 反之，要鎖定在您所提供的價值。  
 - 請盡可能使用業界特定詞彙或凸顯優點的字眼。
-- 請考慮使用 HTML 標記來格式化您的描述,使其更具吸引力。
+- 請考慮使用 HTML 標籤來格式化您的描述，使其更吸引人。
 
-為了使您的報價描述更具吸引力,請使用豐富的文本編輯器來設置您的說明格式。
+若要讓您的供應專案描述更吸引人，請使用 rtf 編輯器來格式化您的描述。
 
-![使用富文字編輯器](./media/text-editor2.png)
+![使用 rich 文字編輯器](./media/text-editor2.png)
 
-使用以下說明使用富文字編輯器:
+使用下列指示來使用 rich 文字編輯器：
 
-- 要更改內容的格式,請突出顯示要設定格式的文字並選擇文字樣式,如下所示:
+- 若要變更內容的格式，請反白顯示您想要格式化的文字，然後選取文字樣式，如下所示：
 
-     ![使用富文字編輯器改變文字格式](./media/text-editor3.png)
+     ![使用 rich 文字編輯器來變更文字格式](./media/text-editor3.png)
 
-- 要加入文字加入項目符號或編號清單,請使用以下選項:
+- 若要將專案符號或編號清單新增至文字，請使用下列選項：
 
-     ![使用富文字編輯器加入清單](./media/text-editor4.png)
+     ![使用 rich 文字編輯器加入清單](./media/text-editor4.png)
 
-- 要向文字加入或刪除縮排,請使用以下選項:
+- 若要新增或移除文字的縮排，請使用下列選項：
 
-     ![使用富文字編輯器縮排](./media/text-editor5.png)
+     ![使用 rich 文字編輯器縮排](./media/text-editor5.png)
 
 
 
@@ -183,224 +183,224 @@ ms.locfileid: "81869832"
 
 ### <a name="search-keywords"></a>搜尋關鍵字
 
-您可以選擇輸入最多三個搜索關鍵字,幫助客戶在市場上找到您的產品/服務。 為獲得最佳效果,請嘗試在描述中使用這些關鍵字。
+您可以選擇性地輸入最多三個搜尋關鍵字，以協助客戶在 marketplace 中尋找您的供應專案。 為了獲得最佳結果，請在您的描述中也嘗試使用這些關鍵字。
 
 ### <a name="products-your-app-works-with"></a>與您的應用程式一起運作的產品
 
-如果您想讓客戶知道你的應用適用於特定產品,請在此處輸入最多三個產品名稱。
+如果您想要讓客戶知道您的應用程式可以使用特定產品，請在這裡輸入最多三個產品名稱。
 
-### <a name="support-urls"></a>支援網址
+### <a name="support-urls"></a>支援 Url
 
-本部分允許您提供連結,幫助客戶更好地瞭解您的產品/服務。
+本節可讓您提供連結，以協助客戶深入瞭解您的供應專案。
 
-#### <a name="help-link"></a>協助連結
+#### <a name="help-link"></a>說明連結
 
-輸入客戶可以詳細瞭解您的優惠的 URL。
+輸入客戶可以深入瞭解您供應專案的 URL。
 
 #### <a name="privacy-policy-url"></a>隱私權原則 URL
 
-輸入組織隱私政策的 URL。 您有責任確保您的應用符合隱私法律和法規,並提供有效的隱私政策。
+輸入您組織隱私權原則的 URL。 貴使用者必須負責確保您的應用程式符合隱私權法律和法規，以及提供有效的隱私權原則。
 
 ### <a name="contacts"></a>連絡人
 
-在本節中,您必須提供**支援聯繫人**和**工程聯繫人**的姓名、電子郵件和電話號碼。 此資訊不會向客戶顯示,但可供 Microsoft 使用,並且可能會提供給 CSP 合作夥伴。
+在本節中，您必須提供**支援連絡人**的名稱、電子郵件和電話號碼，以及**工程連絡人**。 此資訊不會向客戶顯示，但可供 Microsoft 使用，並可提供給 CSP 合作夥伴。
 
-在 **"支援"連絡人**部分中,還必須提供**支援 URL,** 其中 CSP 合作夥伴可以找到對您的產品/服務的支援。
+在**支援連絡人**區段中，您也必須提供**支援 URL** ，讓 CSP 合作夥伴可以在其中找到您的供應專案支援。
 
-### <a name="supporting-documents"></a>證明檔案
+### <a name="supporting-documents"></a>支援檔
 
-您必須在此處至少提供一份(最多三份)相關營銷文檔,如白皮書、摺頁冊、檢查表或演示文稿。 這些檔案必須採用 .pdf 格式。
+您必須在此提供至少一個（及最多三個）相關的行銷檔，例如白皮書、摺頁冊、檢查清單或簡報。 這些檔必須是 .pdf 格式。
 
-### <a name="marketplace-images"></a>市場映射
+### <a name="marketplace-images"></a>Marketplace 映射
 
-在本節中,您可以提供向客戶展示產品/服務時將使用的徽標和圖像。 所有圖像必須採用 .png 格式。
+在本節中，您可以提供向客戶顯示供應專案時所要使用的標誌和影像。 所有影像都必須是 .png 格式。
 
 >[!Note]
->如果上傳文件出現問題,請確保本地網路不會阻止合作夥伴中心使用https://upload.xboxlive.com的服務。
+>如果您在上傳檔案時發生問題，請確定您的區域網路不會https://upload.xboxlive.com封鎖合作夥伴中心所使用的服務。
 
 #### <a name="store-logos"></a>Microsoft Store標誌。
 
-您可以提供三種尺寸的優惠徽標:**小 (48 x 48)**、**大 (216 x 216)** 和 寬 **(255 x 115)。** 需要小尺寸和大尺寸。
+您可以提供下列三種大小的供應專案標誌：**小型（48 x 48）**、**大型（216 x 216）** 和**寬（255 x 115）**。 需要小型和大型大小。
 
 #### <a name="hero"></a>主圖
 
-英雄形象是可選的。 如果提供一個,它必須測量 815 x 290 圖元。
+主圖影像是選擇性的。 如果您提供一個，則必須測量 815 x 290 圖元。
 
 #### <a name="screenshots"></a>螢幕擷取畫面
 
-添加顯示優惠工作原理的螢幕截圖。 至少需要一個屏幕截圖,您最多只能添加五個屏幕截圖。 所有螢幕截圖必須為 1280 x 720 圖元。
+新增螢幕擷取畫面，以顯示供應專案的運作方式。 至少需要一個螢幕擷取畫面，而且您最多可以加上五個。 所有螢幕擷取畫面都必須是 1280 x 720 圖元。
 
 #### <a name="videos"></a>影片
 
-您可以選擇添加最多四個展示您的優惠的視頻。 這些影片應託管在 YouTube 和/或 Vimeo 上。 對於每個視訊,輸入影片的名稱、URL 和視訊的縮圖影像(1280 x 720 像素)
+您可以選擇性地新增最多四個示範您供應專案的影片。 這些影片應裝載于 YouTube 和/或 Vimeo。 針對每一個，輸入影片的名稱、其 URL 和影片的縮圖影像（1280 x 720 圖元）
 
-#### <a name="additional-marketplace-listing-resources"></a>其他市場清單資源
+#### <a name="additional-marketplace-listing-resources"></a>其他 marketplace 清單資源
 
-- [市場產品/服務清單的最佳實務](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
+- [Marketplace 供應專案清單的最佳做法](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
 ## <a name="availability"></a>可用性
 
-"**可用性「** 頁面為您提供了有關產品/服務在何處以及如何提供的選項」。
+[**可用性**] 頁面可讓您選擇要提供供應專案的位置和方式。
 
 ### <a name="markets"></a>市場
 
-本部分允許您指定報價可用的市場。 為此,請選擇 **「編輯市場**」,該市場將顯示**市場選擇**彈出視窗。
+此區段可讓您指定供應專案可供使用的市場。 若要這麼做，請選取 [**編輯市場**]，這將會顯示 [**市場選擇**] 快顯視窗。
 
-默認情況下,不會選擇任何市場,但您必須選擇至少一個市場才能發佈您的報價。 按下 **「選擇全部」** 以使您的產品/服務在每個可能的市場都可用,或選擇要添加的特定市場。 完成後,選擇"**保存**"。
+根據預設，不會選取任何市場，但您必須至少選取一個市場，才能發佈您的供應專案。 按一下 [**全選**]，讓您的供應專案在每個可能的市場推出，或選取您想要新增的特定市場。 完成後，請選取 [**儲存**]。
 
-此處的選擇僅適用於新的收購;如果有人已經擁有你的應用程式在某一市場,你後來刪除該市場,誰已經在這個市場的報價的人可以繼續使用它,但沒有新的客戶,在這個市場將能夠得到您的報價。
+這裡的選擇僅適用于新的收購;如果有人在某個市場上已經有您的應用程式，而您後來又移除該市場，則該市場中已經有該供應專案的人員可以繼續使用它，但該市場中沒有新的客戶能夠取得您的供應專案。
 
 > [!IMPORTANT]
-> 您有責任滿足任何當地法律要求,即使這些要求未在此處或合作夥伴中心列出。 即使您選擇所有市場,當地法律和限制或其他因素也可能阻止某些優惠在某些國家和地區上市。
+> 即使這些需求並未列于此處或合作夥伴中心，您仍須負責符合任何當地法律需求。 即使您選取 [所有市場]，當地法律和限制或其他因素可能會導致某些國家/地區不會列出特定優惠。
 
-### <a name="preview-audience"></a>預覽受眾
+### <a name="preview-audience"></a>預覽物件
 
-在將優惠即時發布到更廣泛的市場產品/服務之前,您首先需要將其提供給有限的**預覽版受眾**。 在此處輸入**Hide 鍵**(僅使用小寫字母和/或數位的任何字串)。 預覽受眾的成員可以使用此隱藏鍵作為令牌,在市場中查看優惠的預覽。
+將您的供應專案即時發佈到更廣泛的 marketplace 供應專案之前，您必須先將其提供給有限的**預覽物件**。 在這裡輸入**隱藏索引鍵**（僅使用小寫字母和/或數位的任何字串）。 預覽物件的成員可以使用此隱藏金鑰做為權杖，以在 marketplace 中查看供應專案的預覽。
 
-然後,當您準備好使產品/服務可用並刪除預覽限制時,您需要刪除**隱藏鍵**並再次發佈。
+然後，當您準備好讓供應專案可供使用並移除預覽限制時，您將需要移除**隱藏金鑰**，然後再發佈一次。
 
 ## <a name="technical-configuration"></a>技術設定
 
-"**技術設定**「頁定義用於連接到產品/服務的技術詳細資訊。 此連接使我們能夠為最終客戶提供您的報價,如果他們選擇購買。
+[**技術**設定] 頁面會定義用來連線到您的供應專案的技術詳細資料。 此連線可讓我們為終端客戶布建您的供應專案（如果他們選擇取得）。
 
 ### <a name="base-license-model"></a>基本授權模型
 
-基本許可證模型確定如何在 CRM 管理中心中分配客戶。 如果每個租戶分配了一個許可證,請選擇 **「資源**」以進行基於實例的許可許可或 **「使用者**」。。
+基本授權模型會決定客戶如何在 CRM 系統管理中心指派您的應用程式。 針對 [以實例為基礎的授權] 選取 [**資源**]，如果每個租**使用者**指派授權一項
 
-### <a name="requires-s2s-outbound-and-crm-secure-store-access"></a>需要 S2S 出站和 CRM 安全儲存存取
+### <a name="requires-s2s-outbound-and-crm-secure-store-access"></a>需要 S2S 輸出和 CRM 安全存放區存取
 
-勾選此方塊可啟用 CRM 安全儲存或伺服器到伺服器 (S2S) 出站存取的設定。 這項功能需要 Dynamics 365 小組在認證階段期間的特殊考量。 Microsoft 會連絡您完成其他步驟，以支援這項功能。
+核取此方塊，以啟用 CRM 安全存放區或伺服器對伺服器（S2S）輸出存取的設定。 這項功能需要 Dynamics 365 小組在認證階段期間的特殊考量。 Microsoft 會連絡您完成其他步驟，以支援這項功能。
 
-### <a name="application-configuration-url"></a>應用程式設定網址
+### <a name="application-configuration-url"></a>應用程式設定 URL
 
-提供可使客戶能夠配置應用的設定網頁的 URL。
+提供設定網頁的 URL，讓客戶能夠設定您的應用程式。
 
 ### <a name="crm-package"></a>CRM 套件
 
-在**包位置欄位的網址**中,輸入包含上載的 CRM 包 .zip 檔的 Azure 儲存帳戶的 URL。 此 URL 應包括一個唯讀 SAS 密鑰,以允許 Microsoft 拿起您的包進行驗證。
+在 [**您的套件位置的 url** ] 欄位中，輸入包含上傳的 CRM 封裝 .zip 檔案之 Azure 儲存體帳戶的 url。 此 URL 應包含唯讀 SAS 金鑰，以允許 Microsoft 收取您的套件以進行驗證。
 
-選中標記為「**我的包檔中有多個 CRM 套件**」複選框(如果適用)。 如果是這樣,請確保在 .zip 檔中包含所有包。
+核取 [**我的套件檔案中有一個以上的 CRM 套件**] 方塊（如果有的話）。 若是如此，請務必將所有套件包含在您的 .zip 檔案中。
 
 ### <a name="crm-package-availability"></a>CRM 套件可用性
 
-在本節中,選擇 **「添加區域」** 以指定 CRM 包可供客戶的地理區域。 部署到以下主權區域需要在認證過程中獲得特殊許可和驗證:[德國](https://docs.microsoft.com/azure/germany/)、[美國政府雲](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)和 TIP。
+在本節中，選取 [ **+ 新增區域**]，以指定可供客戶使用 CRM 套件的地理區域。 部署到下列主權區域需要在認證程式期間進行特殊許可權和驗證：[德國](https://docs.microsoft.com/azure/germany/)、[美國政府雲端](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)和秘訣。
 
-預設情況下,您上面輸入**的應用程式設定 URL**將用於每個區域。 如果您願意,可以為一個或多個特定區域輸入單獨的應用程式配置 URL。 
+根據預設，您在上方輸入的**應用程式設定 URL**將會用於每個區域。 如果您想要的話，可以針對一或多個特定區域輸入個別的應用程式設定 URL。 
 
-## <a name="test-drive-technical-configuration"></a>試駕技術設定
+## <a name="test-drive-technical-configuration"></a>試用產品技術設定
 
-如果在[「產品/服務設置」](#offer-setup)頁中選擇 **「啟用試駕**」,則需要在此處提供詳細資訊,以便客戶體驗您的產品/服務中的試駕。
+如果您在 [[供應專案設定](#offer-setup)] 頁面中選取 [**啟用試用**產品]，您必須在這裡提供詳細資料，讓客戶體驗您供應專案的試用產品。
 
-通過 **「測試驅動器**」頁面,您可以設置示範(或"試駕"),使客戶能夠在承諾購買之前試用您的產品/服務。 在文章"[什麼是試駕"中瞭解更多資訊。](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive) 如果您不想再為產品/服務提供試駕,請返回**[「產品/服務設定](#offer-setup)**」頁面並取消選中**啟用試駕**。
+[**試用**產品] 頁面可讓您設定示範（或「試用產品」），讓客戶可以在承諾購買之前先試用您的供應專案。 若要深入瞭解，請參閱[什麼是試用產品？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)一文。 如果您不想再為供應專案提供試用產品，請返回 [供應專案**[設定](#offer-setup)**] 頁面，然後取消核取 [**啟用試用**產品]。
 
-提供以下類型的測試驅動器,每種驅動器都有自己的技術配置要求。
+下列是可用的試用產品類型，每個都有自己的技術設定需求。
 
 - [Azure Resource Manager](#technical-configuration-for-azure-resource-manager-test-drive)
 - [Dynamics 365](#technical-configuration-for-dynamics-365-test-drive)
 - [邏輯應用程式](#technical-configuration-for-logic-app-test-drive)
-- [電源 BI(](#technical-configuration-not-required-for-power-bi-test-drives)不需要技術設定 )
+- [Power BI](#technical-configuration-not-required-for-power-bi-test-drives) （不需要技術設定）
 
-### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Azure 資源管理員測試磁碟機的技術設定
+### <a name="technical-configuration-for-azure-resource-manager-test-drive"></a>Azure Resource Manager 試用產品的技術設定
 
-包含構成解決方案的所有 Azure 資源的部署範本。 適合此方案的產品僅使用 Azure 資源。 詳細瞭解如何設定 Azure[資源管理員測試磁碟機](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)。
+部署範本，其中包含組成您解決方案的所有 Azure 資源。 符合此案例的產品只會使用 Azure 資源。 深入瞭解如何設定 Azure Resource Manager 的[試用](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)產品。
 
-- **區域**(必需):目前有 26 個 Azure 支援的區域,可以在其中提供您的試駕。 通常,您需要在預期客戶數量最多的區域提供試駕,以便他們選擇最接近的區域以獲得最佳性能。 您需要確保允許訂閱部署所選擇的每個區域所需的所有資源。
+- **區域**（必要）：目前有26個 Azure 支援的區域，可供使用您的試用產品。 一般來說，您會想要讓試用產品在您預期最大客戶數目的區域中使用，以便他們可以選取最接近的區域，以獲得最佳效能。 您必須確定您的訂用帳戶可以在您所選取的每個區域中部署所需的所有資源。
 
-- **實例**:選擇類型(熱或冷)和可用實例數,這些實例將乘以產品/服務可用的區域數。
+- **實例**：選取類型（經常性存取或非經常性存取）和可用的實例數目，這會乘以供應專案可用的區域數目。
 
-**熱**:這種類型的實例已部署,並等待每個選定區域的訪問。 客戶可以立即存取測試驅動器*的熱*實例,而無需等待部署。 缺點是，這些執行個體一直在您的 Azure 訂用帳戶中執行，因此將會產生可觀的運作成本。 強烈建議至少使用一個*熱*實例,因為大多數客戶不希望等待完全部署,如果沒有*熱*實例,則會導致客戶使用量下降。
+經常性 **：此**類型的實例已部署，並會在每個選取的區域等待存取。 客戶可以立即存取試用產品的*熱*實例，而不必等待部署。 缺點是，這些執行個體一直在您的 Azure 訂用帳戶中執行，因此將會產生可觀的運作成本。 強烈建議至少有一個*熱*實例，因為大部分的客戶不想等候完整部署，因此如果沒有可用的*熱*實例，客戶使用量就會有下降。
 
-**冷**:這種類型的實例表示每個區域可能部署的實例總數。 冷實例要求在整個測試驅動器資源管理器範本在客戶請求試駕時進行部署,因此*冷*實例的載入速度比*熱*實例慢得多。 權衡是,您只需要在試駕期間付費,它*並不總是*像*使用熱*實例那樣在 Azure 訂閱上運行。
+**冷**：這種類型的實例代表每個區域可能部署的實例總數。 冷實例需要整個試用產品 Resource Manager 範本，以便在客戶要求試用產品時進行部署，因此*冷*實例的載入速度會比*熱*實例慢很多。 取捨是您只需要支付試用產品的持續時間，而*不*一定會在您的 Azure 訂用帳戶上執行，就像使用*熱*實例一樣。
 
-- **試用 Azure 資源管理員樣本**:上傳包含 Azure 資源管理器範本的 .zip。  在快速入門文章使用[Azure 門戶建立和部署 Azure 資源管理器樣本"](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)中瞭解有關建立 Azure 資源管理器樣本詳細資訊。
+- **試用產品 Azure Resource Manager 範本**：上傳包含 Azure Resource Manager 範本的 .zip。  若要深入瞭解如何建立 Azure Resource Manager 範本，請參閱[使用 Azure 入口網站建立和部署 Azure Resource Manager 範本](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)的快速入門文章。
 
-- **試駕持續時間**(必需):輸入試駕將保持活動狀態的時間長度(以小時數計)。 在此持續時間過後，試用產品將會自動終止。 此持續時間只能由整小時數設置(例如,"2"小時;"1.5"無效)。
+- **試用產品持續時間**（必要）：輸入試用產品將維持作用中狀態的時間長度（以小時為單位）。 在此持續時間過後，試用產品將會自動終止。 此持續時間可能只會由整數小時數（例如，"2" 小時）設定。"1.5" 無效）。
 
-### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Dynamics 365 試駕的技術配置
+### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Dynamics 365 試用產品的技術設定
 
-Microsoft 可以通過託管和維護使用此類測試驅動器的服務預配和部署來消除設置測試驅動器的複雜性。 無論試駕是面向業務中心、客戶參與還是運營受眾,此類託管試駕的配置都是相同的。
+Microsoft 可以藉由使用這種類型的試用產品來裝載和維護服務布建和部署，藉此降低設定試用產品的複雜性。 無論試用產品是以商業中心、客戶參與或營運物件為目標，此類型的託管試用產品的設定都相同。
 
-- **最大併發測試驅動器**(必需):設置一次可以使用試駕的最大客戶數。 每個併發使用者將在測試驅動器處於活動狀態時使用 Dynamics 365 許可證,因此您需要確保有足夠的許可證來支援最大限制集。 建議值為 3-5 個。
+- **最大並行試用**產品（必要）：設定一次可以使用試用產品的客戶數目上限。 當試用產品在使用中時，每個並行使用者都會取用 Dynamics 365 授權，因此您必須確保您有足夠的授權可支援所設定的上限。 建議值為 3-5 個。
 
-- **試駕持續時間**(必需):通過定義小時數輸入試駕將保持活動狀態的時間長度。 在此多小時後,會話將結束,不再使用您的許可證之一。 根據產品/服務的複雜性,我們建議值為 2-24 小時。 此持續時間只能由整小時數設置(例如,"2"小時;"1.5"無效)。 如果使用者時間已用完,並且希望再次訪問試駕,用戶可以請求新的會話。
+- **試用產品持續時間**（必要）：藉由定義時數來輸入試用產品保持作用中狀態的時間長度。 過了數小時之後，會話就會結束，而且不再使用您的其中一個授權。 我們建議的值為2-24 小時，視您的供應專案複雜度而定。 此持續時間可能只會由整數小時數（例如，"2" 小時）設定。"1.5" 無效）。 使用者可以要求新的會話（如果工作時間已用盡），並想要再次存取試用產品。
 
-- **實體設定網址(** 必要):客戶將開始其試駕的網址。 通常,使用安裝示例數據(例如,)`https://testdrive.crm.dynamics.com`運行應用的 Dynamics 365 實例的 URL。
+- **實例 url** （必要）：客戶將開始其試用產品的 URL。 通常是您的 Dynamics 365 實例 URL，執行您的應用程式並安裝範例資料（ `https://testdrive.crm.dynamics.com`例如）。
 
-- **實體 Web API URL(** 必要 ):透過登入到 Microsoft 365 帳戶並瀏覽到 **「設定**\&」gt,檢索 Dynamics 365 實體的 Web API URL;**自定義**\&gt;**開發人員資源**\&gt;**實體 Web API(服務根 URL),** 複製此處找到`https://testdrive.crm.dynamics.com/api/data/v9.0`的網址( 例如。
+- **實例 Web api url** （必要）：藉由登入您的 Microsoft 365 帳戶並流覽至 [**設定** \&] >，取出 Dynamics 365 實例的 Web API url。**自訂** \&gt;**開發人員資源** \&gt;**實例 WEB API （服務根 URL）**，複製此處找到的 URL （例如， `https://testdrive.crm.dynamics.com/api/data/v9.0`）。
 
-- **角色名稱**(必需):提供您在自定義 Dynamics 365 試駕中定義的安全角色名稱。 此安全角色名稱將在使用者試駕期間(例如,測試-驅動器角色)分配給使用者。
+- **角色名稱**（必要）：提供您在自訂 Dynamics 365 試用產品中定義的安全性角色名稱。 此安全性角色名稱將會在其試用產品（例如，測試磁片磁碟機-角色）期間指派給使用者。
 
-### <a name="technical-configuration-for-logic-app-test-drive"></a>邏輯應用試駕的技術設定
+### <a name="technical-configuration-for-logic-app-test-drive"></a>邏輯應用程式試用產品的技術設定
 
-任何自定義產品都應使用這種類型的試駕部署範本,該範本包含各種複雜的解決方案體系結構。 有關設定邏輯應用測試驅動器的詳細資訊,請造訪 GitHub 上的[操作](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md)[和客戶參與度](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)。
+任何自訂產品都應該使用這種類型的試用產品部署範本，其中包含各種複雜的解決方案架構。 如需設定邏輯應用程式試用產品的詳細資訊，請造訪 GitHub 上的[作業](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md)和[客戶參與](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app)。
 
-- **區域**(必需,單選下拉清單):目前有 26 個 Azure 支援的區域,可以在其中提供您的試駕。 邏輯應用的資源將部署在您選擇的區域中。 如果邏輯應用在特定區域中存儲了任何自定義資源,請確保在此處選擇該區域。 最好的方法是在門戶中的 Azure 訂閱中本地完全部署邏輯應用,並在進行此選擇之前驗證其是否正常工作。
+- **區域**（必要，單一選取下拉式清單）：目前有26個 Azure 支援的區域可供使用您的試用產品。 邏輯應用程式的資源將會部署在您選取的區域中。 如果您的邏輯應用程式有任何自訂資源儲存在特定區域中，請確定已在此處選取該區域。 執行此動作的最佳方式是在入口網站中的 Azure 訂用帳戶本機上完整部署邏輯應用程式，並確認其正常運作，然後再進行此選取。
 
-- **最大併發測試驅動器**(必需):設置一次可以使用試駕的最大客戶數。 這些測試驅動器已部署,使客戶能夠立即訪問它們,而無需等待部署。
+- **最大並行試用**產品（必要）：設定一次可以使用試用產品的客戶數目上限。 這些試用產品已部署，讓客戶可以立即存取它們，而不需要等候部署。
 
-- **試駕持續時間**(必需):輸入試駕將保持活動狀態的時間長度(以小時數計)。 此時間段結束后,試駕將自動終止。
+- **試用產品持續時間**（必要）：輸入試用產品將維持作用中狀態的時間長度（以小時為單位）。 試用產品會在此時間週期結束後自動終止。
 
-- **Azure 資源組名稱**(必需):輸入邏輯應用測試驅動器保存的[Azure 資源組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)名稱。
+- **Azure 資源組名**（必要）：輸入您的邏輯應用程式試用產品儲存所在的[Azure 資源組](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)名。
 
-- **Azure 邏輯應用名稱**(必需):輸入將測試驅動器分配給使用者的邏輯應用的名稱。 此邏輯應用必須保存在上面的 Azure 資源組中。
+- **Azure 邏輯應用程式名稱**（必要）：輸入將試用產品指派給使用者的邏輯應用程式名稱。 此邏輯應用程式必須儲存在上述的 Azure 資源群組中。
 
-- **取消預配邏輯應用程式名稱**(必需):輸入邏輯應用的名稱,該應用在客戶完成後取消配置試駕。 此邏輯應用必須保存在上面的 Azure 資源組中。
+- 取消布建**邏輯應用程式名稱**（必要）：輸入在客戶完成後取消布建試用產品的邏輯應用程式名稱。 此邏輯應用程式必須儲存在上述的 Azure 資源群組中。
 
-### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>Power BI 測試磁碟機不需要技術設定
+### <a name="technical-configuration-not-required-for-power-bi-test-drives"></a>不需要 Power BI 試用產品的技術設定
 
-想要示範互動式Power BI視覺物件的產品可以使用嵌入式連結共用自訂儀錶板作為試駕,無需進一步的技術配置。 詳細瞭解如何設置[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)範本應用。
+想要示範互動式 Power BI 視覺效果的產品可以使用內嵌連結來共用自訂的儀表板作為其試用產品，而不需要進一步的技術設定。 深入瞭解如何設定[Power BI](https://docs.microsoft.com/power-bi/service-template-apps-overview)範本應用程式。
 
-### <a name="deployment-subscription-details"></a>部署訂閱詳細資訊
+### <a name="deployment-subscription-details"></a>部署訂用帳戶詳細資料
 
-為了代表您部署測試驅動器,請建立並提供單獨的唯一 Azure 訂閱(Power BI 測試驅動器不需要)。
+若要代表您部署試用產品，請建立並提供另一個唯一的 Azure 訂用帳戶（Power BI 試用產品並不需要）。
 
-- **Azure 訂閱 ID(Azure**資源管理員和邏輯應用需要):輸入訂閱 ID 以授予對 Azure 帳戶服務的訪問許可權,以便進行資源使用方式報告和計費。 如果尚未創建,我們建議您考慮[創建單獨的 Azure 訂閱](https://docs.microsoft.com/azure/billing/billing-create-subscription)以用於測試驅動器。 您可以通過登入[Azure 門戶](https://portal.azure.com/)並瀏覽到左側選單的 **「訂閱」** 選項卡來查找 Azure 訂閱 ID。 選擇該選項卡將顯示您的訂閱 ID(例如,"a83645ac-1234-5ab6-6789-1h234g764ghty")。
+- **Azure 訂**用帳戶識別碼（Azure Resource Manager 和邏輯應用程式的必要）：輸入訂用帳戶識別碼，以授與存取權給您的 azure 帳戶服務，以進行資源使用量報告和計費。 我們建議您考慮[建立個別的 Azure 訂](https://docs.microsoft.com/azure/billing/billing-create-subscription)用帳戶，以用於試用產品（如果您還沒有的話）。 您可以藉由登入[Azure 入口網站](https://portal.azure.com/)並流覽至左側功能表的 [**訂閱**] 索引標籤，來尋找您的 AZURE 訂用帳戶識別碼。 選取此索引標籤會顯示您的訂用帳戶識別碼（例如，"a83645ac-1234-5ab6-6789-1h234g764ghty"）。
 
-- **Azure AD 租戶代碼(** 必要):輸入 Azure 活動目錄 (AD)[租戶 ID](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 要查找此 ID,請登錄到[Azure 門戶](https://portal.azure.com/),選擇左側功能表中的「活動目錄」選項卡,選擇 **「屬性**」,然後查找列出的**目錄 ID**號(例如,50c464d3-4930-494c-963c-1e951d15360e)。 您還可以使用網域名稱網址[https://www.whatismytenantid.com](https://www.whatismytenantid.com)在 : 尋找組織的租戶 ID。
+- **Azure AD 租使用者識別碼**（必要）：輸入您的 AZURE ACTIVE DIRECTORY （AD）[租使用者識別碼](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要尋找此識別碼，請登入[Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [**屬性**]，然後尋找列出的**目錄識別碼**（例如，50c464d3-4930-494c-963c-1e951d15360e）。 您也可以在下列位置使用您的功能變數名稱 URL 來查詢組織的租使用者[https://www.whatismytenantid.com](https://www.whatismytenantid.com)識別碼：。
 
-- **Azure AD 租戶名稱**(動態 365 需要):輸入 Azure 活動目錄 (AD) 名稱。 要查找此名稱,請登錄到[Azure 門戶](https://portal.azure.com/),在右上角,租戶名稱將列在您的帳戶名稱下。
+- **Azure AD 租使用者名稱**（動態365所需）：輸入您的 AZURE ACTIVE DIRECTORY （AD）名稱。 若要尋找此名稱，請登入[Azure 入口網站](https://portal.azure.com/)，在右上角，您的租使用者名稱會列在 [您的帳戶名稱] 底下。
 
-- **Azure AD 應用程式 ID(** 必要):輸入 Azure 的目錄 (AD)[應用程式代碼](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 要查找此 ID,請登錄到[Azure 門戶](https://portal.azure.com/),選擇左側功能表中的「活動目錄」選項卡,選擇**應用註冊**,然後查找列出的應用程式**ID**號(例如,50c464d3-4930-494c-963c-1e951d15360e)。
+- **Azure AD 應用程式識別碼**（必要）：輸入您的 AZURE ACTIVE DIRECTORY （AD）[應用程式識別碼](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)。 若要尋找此識別碼，請登入[Azure 入口網站](https://portal.azure.com/)，選取左側功能表中的 [Active Directory] 索引標籤，選取 [**應用程式註冊**]，然後尋找所列的**應用程式識別碼**編號（例如，50c464d3-4930-494c-963c-1e951d15360e）。
 
-- **Azure AD 應用程式客戶端機密**(必要):輸入 Azure AD 應用程式[客戶端金鑰](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 要尋找此值,請登入 Azure[門戶](https://portal.azure.com/)。 選擇左側功能表中的**Azure 活動目錄**選項卡,選擇**應用註冊**,然後選擇試駕應用。 接下來,選擇**證書和機密**,選擇 **"新建用戶端機密**",輸入說明,選擇 **"從不在過期**"下,**Never**然後選擇"**添加**"。 請確保向下複製該值。 在向下複製該值之前,不要離開頁面,否則您將無法訪問該值。
+- **Azure AD 應用程式用戶端密碼**（必要）：輸入您的 Azure AD 應用程式[用戶端密碼](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)。 若要尋找此值，請登入[Azure 入口網站](https://portal.azure.com/)。 選取左側功能表中的 [ **Azure Active Directory** ] 索引標籤，選取 [**應用程式註冊**]，然後選取您的試用產品應用程式。 接下來，依序選取 [**憑證和秘密**]、[**新增用戶端密碼**]、[描述]、[**永不****過期**]，然後選擇 [**新增**]。 請務必向下複製值。 在您複製值或無法存取值之前，請不要離開頁面。）
 
-### <a name="test-drive-marketplace-listings"></a>試駕市場清單
+### <a name="test-drive-marketplace-listings"></a>試用產品 marketplace 清單
 
-**測試驅動器**選項卡下的 **「應用商店列表**」選項顯示您的試駕可用的語言。 目前,**英語(美國)** 是唯一可用的地點。 選擇語言名稱以輸入描述試駕體驗的資訊。
+[**試用**產品] 索引標籤下的 [ **Marketplace 清單**] 選項會顯示您的試用產品可用的語言。 目前，**英文（美國）** 是唯一可用的位置。 選取語言名稱，以輸入描述試用產品體驗的資訊。
 
-- **說明**(必需):描述您的試駕、演示的內容、供用戶試驗的目標、要流覽的功能以及任何相關資訊,以説明使用者確定是否獲取您的產品/服務。 此欄位中最多可輸入 3,000 個字元的文本。 
+- **描述**（必要）：描述您的試用產品、要示範的專案、要進行實驗的目標、探索的功能，以及可協助使用者決定是否要取得您供應專案的任何相關資訊。 最多可以在此欄位中輸入3000個字元的文字。 
 
-- **訪問資訊**(Azure 資源管理員和邏輯測試驅動器所需的資訊):解釋客戶需要瞭解哪些內容才能存取和使用此測試驅動器。 演練使用產品/服務的方案,以及客戶在整個試駕中訪問功能的準確情況。 此欄位中最多可輸入 10,000 個字元的文本。
+- **存取訊號**（Azure Resource Manager 和邏輯試用產品所需）：說明客戶必須知道才能存取和使用此試用產品的內容。 逐步解說使用您的供應專案的案例，以及客戶在整個試用產品中存取功能的確切方式。 最多可以在此欄位中輸入10000個字元的文字。
 
-- **用戶手冊**(必需):對試駕體驗的深入演練。 《用戶手冊》應準確介紹您希望客戶從體驗試駕中獲得什麼,並作為他們可能存在的任何問題的參考。 檔案必須採用 PDF 格式,並在上載後命名(最多 255 個字元)。
+- **使用者手冊**（必要）：您的試用產品體驗的深入逐步解說。 使用者手冊應涵蓋您想要讓客戶從試用產品中取得的確切內容，並做為參考，以取得他們可能會遇到的任何問題。 檔案必須是 PDF 格式，並在上傳後命名為（最多255個字元）。
 
-- **視頻:添加視頻**(可選):視頻可以上傳到 YouTube 或 Vimeo,並在此處引用連結和縮略圖圖像 (533 x 324 圖元),以便客戶可以查看資訊的演練,以幫助他們更好地瞭解試駕,包括如何成功使用您的產品/服務的功能,並瞭解突出其優勢的方案。
-  - **名稱**(必要)
-  - **網址(僅限 YouTube 或 Vimeo)(** 必填)
-  - **縮圖 (533 x 324px)**: 影像檔案必須採用 PNG 格式。
+- 影片 **：新增**影片（選擇性）：您可以將影片上傳到 YouTube 或 Vimeo，並在這裡參考連結和縮圖影像（533 x 324 圖元），讓客戶可以查看資訊的逐步解說，以協助他們深入瞭解試用產品，包括如何成功使用供應專案的功能，並瞭解強調其優點的案例。
+  - **名稱**（必要）
+  - **URL （僅限 YouTube 或 Vimeo）** （必要）
+  - **縮圖（533 x 324px）**：影像檔案必須是 PNG 格式。
 
-## <a name="supplemental-content"></a>補集內容
+## <a name="supplemental-content"></a>補充內容
 
-此頁面允許您提供有關您的優惠的其他資訊,以幫助我們驗證您的產品/服務。 此資訊不會向客戶顯示或發佈到市場。
+此頁面可讓您提供供應專案的其他相關資訊，以協助我們驗證您的供應專案。 此資訊不會向客戶顯示或發佈至 marketplace。
 
-### <a name="key-usage-scenario"></a>關鍵使用機制
+### <a name="key-usage-scenario"></a>金鑰使用案例
 
-有必要上傳一個 .pdf 檔,該檔列出了文檔中列出的產品/服務的關鍵使用方案(.pdf 格式)。 在我們批准您的市場報價之前,我們的驗證團隊可能會驗證此處列出的所有方案。
+必須上傳一個 .pdf 檔案，其中列出您供應專案的金鑰使用案例，該檔列于檔中（.pdf 格式）。 在我們核准您的 marketplace 供應專案之前，我們的驗證小組可能會驗證此處所列的所有案例。
 
-## <a name="publish"></a>發佈
+## <a name="publish"></a>發行
 
-### <a name="submit-offer-to-preview"></a>提交優惠以預覽
+### <a name="submit-offer-to-preview"></a>提交供應專案以供預覽
 
-完成產品/服務的所有必需部分後,選擇門戶右上角的**發佈**。 您將被重定向到 **「審閱」和「發布」** 頁。
+當您完成供應專案的所有必要區段之後，請選取入口網站右上角的 [**發佈**]。 系統會將您重新導向至 [**審核及發佈**] 頁面。
 
-如果您是首次發佈此產品/服務,您可以:
+如果這是您第一次發佈此供應專案，您可以：
 
-- 請參閱產品/服務的每個部分的完成狀態。
-    - *未啟動*- 表示該部分尚未觸摸,應完成。
-    - *不完整*- 表示該節有需要修復的錯誤或需要提供更多資訊。 返回部分並更新它。
-    - *完成*- 表示部分已完成,提供了所有必需的數據,並且沒有錯誤。 報價的所有部分都必須處於完全狀態,然後才能提交報價。
-- 在 **「認證備註」** 部分中,除了任何有助於瞭解應用的補充說明外,請向認證團隊提供測試說明,以確保正確測試應用。
-- 通過選擇 **「提交**」提交要發布的產品/ 我們將向您發送一封電子郵件,告知您何時可以審核和批准優惠的預覽版本。 返回合作夥伴中心,選擇 **「Go-live」** 以向公眾發佈產品/服務(如果是私人優惠,則將其發布到私人受眾)。
+- 請參閱供應專案每個區段的完成狀態。
+    - *未啟動*-表示區段尚未觸及，應完成。
+    - *不完整*-表示區段具有必須修正的錯誤，或需要提供更多資訊的詳細資訊。 回到一節，並加以更新。
+    - *Complete* -表示區段已完成，所有必要的資料都已提供，而且沒有任何錯誤。 供應專案的所有區段都必須處於「完整」狀態，您才能提交供應專案。
+- 在 [**認證的注意事項**] 區段中，提供測試指示給認證小組，確保您的應用程式已正確測試，以及有助於瞭解應用程式的任何補充注意事項。
+- 選取 [**提交**] 以提交供應專案進行發佈。 我們會傳送一封電子郵件給您，讓您知道供應專案的預覽版本何時可供您審查和核准。 返回 [合作夥伴中心]，並選取供應專案的 [**上線**]，以發佈至 [公開] （如果是私人供應專案，則為私人物件）。
 
 ## <a name="next-steps"></a>後續步驟
 

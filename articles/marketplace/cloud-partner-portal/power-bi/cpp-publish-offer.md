@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: eb31520c81a4064edbe54a0256b694c4ad88fb49
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82141704"
 ---
 # <a name="publish-a-power-bi-app-offer"></a>發佈 Power BI 應用程式供應專案
@@ -30,7 +30,7 @@ ms.locfileid: "82141704"
 
 下表描述每個步驟，並提供其預估完成時間：
 
-|   發行步驟            |   時間     |   說明                                                                  |
+|   發行步驟            |   時間     |   描述                                                                  |
 | --------------------         |------------| ----------------                                                               |
 | 檢查必要條件       | 15 分鐘     | 檢查供應項目資訊和供應項目設定。                            |
 | 認證                | 1-7 天   | Power BI 認證小組會分析您的供應專案。 小組會透過手動驗證測試來執行您的 Power BI 應用程式，方法是透過提供的安裝 URL 來安裝應用程式。 主要驗證會在應用程式認證過程中執行（本檔稍後會加以說明）。         |

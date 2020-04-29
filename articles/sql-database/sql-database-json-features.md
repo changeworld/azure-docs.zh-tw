@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 04/19/2020
 ms.openlocfilehash: 992c981d49e7c6fbf8b6156570f6554a05caab5d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687747"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>開始使用 Azure SQL Database 中的 JSON 功能
@@ -69,7 +69,7 @@ FOR JSON PATH, WITHOUT_ARRAY_WRAPPER
 }
 ```
 
-在此示例中,我們通過指定[WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx)選項返回單個 JSON 物件而不是數位。 如果您知道您要傳回單一物件來作為查詢結果，就可以使用此選項。
+在此範例中，我們會藉由指定[WITHOUT_ARRAY_WRAPPER](https://msdn.microsoft.com/library/mt631354.aspx)選項來傳回單一 JSON 物件，而不是陣列。 如果您知道您要傳回單一物件來作為查詢結果，就可以使用此選項。
 
 FOR JSON 子句的主要價值在於，它可讓您從資料庫傳回格式化為巢狀 JSON 物件或陣列的複雜階層式資料。 下列範例說明如何將屬於 `Customer` 之 `Orders` 資料表中的資料列包含為 `Orders` 的巢狀陣列：
 

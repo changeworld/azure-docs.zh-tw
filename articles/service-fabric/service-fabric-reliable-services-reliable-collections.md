@@ -1,13 +1,13 @@
 ---
-title: 可靠館藏簡介
+title: 可靠的集合簡介
 description: Service Fabric 具狀態服務提供可靠的集合，可讓您撰寫高度可用、可調整且低延遲的雲端應用程式。
 ms.topic: conceptual
 ms.date: 3/10/2020
 ms.openlocfilehash: 78ecc57a4da43bf416839226253e6d0e2f4c1651
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81398439"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Azure Service Fabric 具狀態服務中可靠的集合簡介
@@ -26,7 +26,7 @@ ms.locfileid: "81398439"
 * 可複寫：進行狀態變更複寫以確保高可用性。
 * 非同步：API 是非同步的，可確保在產生 IO 時不會封鎖執行緒。
 * 交易式：API 會利用交易的抽象方法，讓您能夠輕鬆管理服務內多個可靠的集合。
-* 持久或易失性:數據可以保存到磁碟,以抵禦大規模中斷(例如,數據中心斷電)的持久性。 某些可靠集合還支援一種易失性模式(帶[警告),](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)其中所有數據都保存在記憶體中,例如複製的記憶體緩存。
+* 保存或變動：資料可以保存到磁片中，以因應大規模中斷（例如，資料中心停電）的持久性。 某些可靠的集合也支援變動性模式（有[警告](service-fabric-reliable-services-reliable-collections-guidelines.md#volatile-reliable-collections)），其中所有資料都會保留在記憶體中，例如複寫的記憶體內部快取。
 
 Reliable Collection 具有增強式一致性保證，可讓您更輕鬆地推論應用程式的狀態。
 增強式一致性的實現方式是藉由確保僅有在整個交易已記錄到複本多數仲裁之後 (包括主要複本)，才認可交易。
@@ -35,7 +35,7 @@ Reliable Collection 具有增強式一致性保證，可讓您更輕鬆地推論
 可靠的集合 API 是並行集合 API (位於 **System.Collections.Concurrent** 命名空間) 的一種演化：
 
 * 非同步：會傳回工作；不同於並行集合，其作業會受到複寫及保存。
-* 無出參數:用於`ConditionalValue<T>`返回`bool`和值而不是 out 參數。 `ConditionalValue<T>` 就像 `Nullable<T>`，但不需要 T 就可以成為結構。
+* 沒有 out 參數：使用`ConditionalValue<T>`傳回`bool`和值，而不是 out 參數。 `ConditionalValue<T>` 就像 `Nullable<T>`，但不需要 T 就可以成為結構。
 * 交易：使用交易物件，讓使用者可在交易中的多個可靠的集合上群組動作。
 
 現在，Microsoft.ServiceFabric.Data.Collections**** 包含三個集合：
@@ -46,11 +46,11 @@ Reliable Collection 具有增強式一致性保證，可讓您更輕鬆地推論
 
 ## <a name="next-steps"></a>後續步驟
 
-* [可靠的收集指南&建議](service-fabric-reliable-services-reliable-collections-guidelines.md)
+* [可靠的集合指導方針 & 建議](service-fabric-reliable-services-reliable-collections-guidelines.md)
 * [使用可靠的集合](service-fabric-work-with-reliable-collections.md)
-* [事務和鎖](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
+* [交易和鎖定](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * 管理資料
-  * [備份和還原](service-fabric-reliable-services-backup-restore.md)
+  * [備份與還原](service-fabric-reliable-services-backup-restore.md)
   * [通知](service-fabric-reliable-services-notifications.md)
   * [Reliable Collection 序列化](service-fabric-reliable-services-reliable-collections-serialization.md)
   * [序列化與升級](service-fabric-application-upgrade-data-serialization.md)

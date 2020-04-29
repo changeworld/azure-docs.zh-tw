@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
 ms.openlocfilehash: 42d3360b7defaab2ff0a62dc125a213860b13a6a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133593"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 網路服務總覽
@@ -97,7 +97,7 @@ Azure 對等服務可加強客戶對 Microsoft 雲端服務的連線，例如 Of
 |[Azure 防火牆](#firewall)|Azure 防火牆是受控、雲端式網路安全性服務，可以保護您的 Azure 虛擬網路資源。 它是完全具狀態的防火牆即服務，具有內建的高可用性和不受限制的雲端延展性。|<p>[在 Vnet 中部署 Azure 防火牆](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[-在混合式網路中部署 Azure 防火牆](../firewall/tutorial-hybrid-ps.md)</p> <p>[使用 Azure 防火牆 DNAT 篩選輸入流量](../firewall/tutorial-firewall-dnat.md)</p>|
 |[網路安全性群組](#nsg)|VM/子網中所有網路流量流程的完整細微分散式結束節點控制|[使用網路安全性群組來篩選網路流量](../virtual-network/tutorial-filter-network-traffic.md)|
 |[虛擬網路服務端點](#serviceendpoints)|可讓您限制某些 Azure 服務資源對虛擬網路子網的網路存取|[限制對 PaaS 資源的網路存取](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
-[私人連結](#privatelink)|可讓您透過虛擬網路中的私人端點，存取 Azure PaaS 服務（例如，Azure 儲存體和 SQL Database）和 Azure 託管的客戶所擁有/合作夥伴服務。|<p>[建立私人端點](../private-link/create-private-endpoint-portal.md)</p><p>[建立 Private Link 服務](../private-link/create-private-link-service-portal.md)</p>|
+[私人連結](#privatelink)|可讓您透過虛擬網路中的私人端點，存取 Azure PaaS 服務（例如，Azure 儲存體和 SQL Database）和 Azure 託管的客戶所擁有/合作夥伴服務。|<p>[建立私用端點](../private-link/create-private-endpoint-portal.md)</p><p>[建立 Private Link 服務](../private-link/create-private-link-service-portal.md)</p>|
 |||
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS 保護 
 [Azure DDoS 保護](../virtual-network/manage-ddos-protection.md)針對最複雜的 DDoS 威脅提供對策。 此服務為您的應用程式和虛擬網路中部署的資源，提供增強的 DDoS 風險降低功能。 此外，使用 Azure DDoS 保護的客戶可以存取 DDoS 快速回應支援，以在主動攻擊期間與 DDoS 專家接洽。

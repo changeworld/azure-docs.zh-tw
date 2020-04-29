@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: 9db01941c21dbd26d149f3623319557e4c625350
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82141799"
 ---
 # <a name="power-bi-app-storefront-details-tab"></a>Power BI 應用程式店面詳細資料索引標籤
@@ -69,14 +69,14 @@ ms.locfileid: "82141799"
 | **供應專案標誌（png 格式，48x48）\***   | 上傳標誌以顯示在應用程式的總覽或應用程式搜尋結果中。 AppSource 僅支援 PNG 格式，解析度為 48 x 48 px。  |
 | **供應項目標誌 (png 格式，216x216)\*** | 上傳標誌以顯示在應用程式的詳細資料頁面上。  AppSource 僅支援 PNG 格式，解析度為 216 x 216 px。  |
 | *影片*                             |                                                                   |
-| **名稱**                             | 輸入您的應用程式名稱或標題。                                          |
+| **Name**                             | 輸入您的應用程式名稱或標題。                                          |
 | **URL**                              | 輸入 YouTube 或 Vimeo 上主控的影片 URL。                              |
 | **縮圖**                        | 新增應用程式的縮圖影像。  AppSource 僅支援 PNG 格式，解析度為 1280 x 720 px。   |
 | *文件*                          | 在 [**深入瞭解**] 標題下，新增最多三個要顯示在 AppSource 上的檔。  |
-| **名稱**                             | 輸入支援檔的名稱或標題。                              |
+| **Name**                             | 輸入支援檔的名稱或標題。                              |
 | **檔案**                             | 上傳 PDF 檔案。                             |
 | *螢幕擷取畫面\**                      | 最多可新增五個螢幕擷取畫面。                        |
-| **名稱**                             | 輸入螢幕擷取畫面的名稱或標題。                                       |
+| **Name**                             | 輸入螢幕擷取畫面的名稱或標題。                                       |
 | **影像**                            | 上傳 PNG 螢幕擷取畫面。 其解析度必須是 1280 x 720 px。  | 
 |   |   |
 
@@ -97,7 +97,7 @@ ms.locfileid: "82141799"
 |   欄位                |   描述                           |
 |------------------------|--------------------------------------   |
 | **隱私權原則 URL\*** | 已張貼隱私權原則的 URL       |
-| **使用規定\***       | 您的使用原則，格式為純文字或簡單 HTML     |
+| **使用條款\***       | 您的使用原則，格式為純文字或簡單 HTML     |
 |  |  |
 
 
@@ -112,7 +112,7 @@ ms.locfileid: "82141799"
 
 |    欄位               |   潛在客戶目的地                               |
 |------------------------|--------------------------------------            |
-|  **None**              | 不收集潛在客戶。 這是預設選項。  |
+|  **無**              | 不收集潛在客戶。 這是預設選項。  |
 | **Azure Blob (已淘汰)** | 使用容器名稱和連接字串來指定[Azure Blob 儲存體](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)。  此選項已被取代。 請改用**Azure 資料表**。  |
 | **Azure 資料表**        | 使用連接字串來指定[Azure 資料表儲存體](https://docs.microsoft.com/azure/cosmos-db/table-storage-overview)。  |
 | **Dynamics CRM Online** | 使用 URL 和驗證認證來指定[Dynamics 365](https://dynamics.microsoft.com/) 。 |

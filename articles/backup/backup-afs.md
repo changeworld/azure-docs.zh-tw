@@ -4,10 +4,10 @@ description: 瞭解如何使用 Azure 入口網站來備份復原服務保存庫
 ms.topic: conceptual
 ms.date: 01/20/2020
 ms.openlocfilehash: da2c7fa4cc5c3b7b948604a6f6d3999671cb3697
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82101245"
 ---
 # <a name="back-up-azure-file-shares-in-a-recovery-services-vault"></a>備份復原服務保存庫中的 Azure 檔案共用
@@ -20,7 +20,7 @@ ms.locfileid: "82101245"
 * 探索檔案共用並設定備份。
 * 執行隨選備份作業以建立還原點。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 在與裝載檔案共用的儲存體帳戶相同的區域中，識別或建立復原[服務保存庫](#create-a-recovery-services-vault)。
 * 請確定檔案共用存在於其中一種支援的[儲存體帳戶類型](azure-file-share-support-matrix.md)中。

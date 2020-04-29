@@ -4,10 +4,10 @@ description: 在本文中，您將瞭解如何使用 Azure 備份服務和 Power
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.openlocfilehash: bcd85635dbacceb7d1c125bb550feedbdb57e04a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82097637"
 ---
 # <a name="restore-azure-files-with-powershell"></a>使用 PowerShell 還原 Azure 檔案儲存體

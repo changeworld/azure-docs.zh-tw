@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: dsindona
 ms.openlocfilehash: a25f6877f1fb4940fb1de127b81d83975c8e835c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142715"
 ---
 # <a name="create-virtual-machine-offer"></a>建立虛擬機器供應項目
@@ -25,7 +25,7 @@ ms.locfileid: "82142715"
 
 其中：
 
-|  **資產群組**   |  **描述**  |
+|  **資產群組**   |  **說明**  |
 |  ---------------   |  ---------------  |
 |    SKU            |  供應項目的最小購買單位。 單一供應項目 (產品類別) 可與多個 SKU 相關聯，以便區分支援的功能、 虛擬機器映像型別與計費模式。 |
 |  Marketplace       | 包含行銷、法律及潛在客戶管理的資產和規格。  <ul><li> 行銷資產包括供應項目名稱、說明和標誌</li> <li> 法律資產包括隱私權原則、使用條款及其他法律文件</li>  <li> 潛在客戶管理原則可指定於 Microsoft Azure Marketplace 使用者入口網站管理潛在客戶的方式。</li> </ul> |

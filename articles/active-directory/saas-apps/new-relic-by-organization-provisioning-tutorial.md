@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.author: Zhchia
 ms.openlocfilehash: 3197ac3033c6550b72bdfdf39fd23c55dda20d90
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82134230"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>教學課程：設定自動使用者布建的新 New relic by 組織
@@ -35,7 +35,7 @@ ms.locfileid: "82134230"
 > * 依組織在新 New relic 中布建群組和群組成員資格
 > * [單一登入](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial)（依組織）的新 new relic （建議使用）
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 本教學課程中概述的案例假設您已經具有下列必要條件：
 
@@ -115,13 +115,13 @@ Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據�
 
    |屬性|類型|
    |---|---|
-   |userName|String|
-   |externalId|String|
-   |作用中|Boolean|
-   |emails[type eq "work"].value|String|
-   |name.givenName|String|
-   |名稱。格式化|String|
-   |timezone|String|
+   |userName|字串|
+   |externalId|字串|
+   |作用中|布林值|
+   |emails[type eq "work"].value|字串|
+   |name.givenName|字串|
+   |名稱。格式化|字串|
+   |timezone|字串|
 
 10. 在 [**對應**] 區段下，選取 [將**Azure Active Directory 群組同步處理到組織的新 new relic**]。
 
@@ -129,9 +129,9 @@ Azure AD 布建服務可讓您根據指派給應用程式的人員，或根據�
 
       |屬性|類型|
       |---|---|
-      |displayName|String|
-      |externalId|String|
-      |members|參考|
+      |displayName|字串|
+      |externalId|字串|
+      |members|參考資料|
 
 12. 若要設定範圍篩選，請參閱[範圍篩選教學課程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的下列指示。
 

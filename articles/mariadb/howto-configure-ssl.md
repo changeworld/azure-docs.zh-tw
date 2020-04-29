@@ -1,5 +1,5 @@
 ---
-title: 設定 SSL - MariaDB 的 Azure 資料庫
+title: 設定 SSL-適用於 MariaDB 的 Azure 資料庫
 description: 有關如何適當設定「適用於 MariaDB 的 Azure 資料庫」及相關聯應用程式以適當使用 SSL 連線的指示
 author: ajlam
 ms.author: andrela
@@ -7,33 +7,33 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/21/2020
 ms.openlocfilehash: 0af94d04f4e50fd039f01c5746b3a5d47a3698b3
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81769934"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>在您的應用程式中設定 SSL 連線能力，以安全地連線至適用於 MariaDB 的 Azure 資料庫
 適用於 MariaDB 的 Azure 資料庫支援使用安全通訊端層 (SSL)，將適用於 MariaDB 的 Azure 資料庫伺服器連線至用戶端應用程式。 在您的資料庫伺服器和用戶端應用程式之間強制使用 SSL 連線，可將兩者之間的資料流加密，有助於抵禦「中間人」攻擊。
 
 ## <a name="obtain-ssl-certificate"></a>取得 SSL 憑證
-下載透過 SSL 與 MariaDB 伺服器的[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)Azure 資料庫進行通訊所需的憑證,並將憑證檔儲存到本地驅動器(例如,本教程使用 c:\ssl)。
+下載透過 SSL 與您的適用於 MariaDB 的 Azure 資料庫伺服器進行通訊所需的[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)憑證，並將憑證檔案儲存到本機磁片磁碟機（例如，本教學課程使用 c:\ssl）。
 **針對 Microsoft Internet Explorer 和 Microsoft Edge：** 在下載完成後，請將憑證重新命名為 BaltimoreCyberTrustRoot.crt.pem。
 
 ## <a name="bind-ssl"></a>繫結 SSL
 
-### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>透過 SSL 使用 MySQL 工作台連線到伺服器
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL 工作臺透過 SSL 連線到伺服器
 設定使 MySQL Workbench 安全地透過 SSL 連線。 
 
 1. 從 [設定新連線] 對話方塊，瀏覽至 [SSL]**** 索引標籤。 
 
-1. 將**使用 SSL**欄位更新為" 需要"
+1. 將 [**使用 SSL** ] 欄位更新為 [需要]。
 
 1. 在 [SSL CA 檔案:]**** 欄位中輸入 **BaltimoreCyberTrustRoot.crt.pem** 的檔案位置。 
     
     ![儲存 SSL 設定](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-對於現有連接,您可以通過右鍵按一下連接圖示並選擇編輯來綁定 SSL。 然後瀏覽至 [SSL]**** 索引標籤上，並繫結憑證檔案。
+針對現有的連線，您可以用滑鼠右鍵按一下連線圖示來系結 SSL，然後選擇 [編輯]。 然後瀏覽至 [SSL]**** 索引標籤上，並繫結憑證檔案。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>使用 MySQL CLI 透過 SSL 連線至伺服器
 有另一個繫結 SSL 憑證的方法，就是藉由執行下列命令來使用 MySQL 命令列介面。 
@@ -184,7 +184,7 @@ properties.setProperty("password", 'yourpassword');
 conn = DriverManager.getConnection(url, properties);
 ```
 
-### <a name="net-mysqlconnector"></a>.NET (MySqlConnector)
+### <a name="net-mysqlconnector"></a>.NET （MySqlConnector）
 ```csharp
 var builder = new MySqlConnectionStringBuilder
 {

@@ -1,5 +1,5 @@
 ---
-title: Azure 基礎結構演練範例
+title: 範例 Azure 基礎結構逐步解說
 description: 了解適合用來在 Azure 中部署範例基礎結構的關鍵設計和實作指導方針。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -9,10 +9,10 @@ ms.date: 12/15/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 43e96b891e60dfcf8bc3c29b202bb60213905372
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869475"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>適用於 Windows VM 的範例 Azure 基礎結構逐步解說
@@ -45,7 +45,7 @@ Adventure Works Cycles 想要在 Azure 中建置一個線上商店，該商店�
 以上各項會遵循下列命名慣例：
 
 * Adventure Works Cycles 使用 **[IT workload]-[location]-[Azure resource]** 做為首碼
-  * 對於此範例 **,「azos」(Azure**線上商店)是 IT 工作負載名稱,"**使用**"(東 US 2)是位置
+  * 針對此範例，"**azos**" （Azure 線上商店）是 IT 工作負載名稱，而 "**USE**" （美國東部2）是位置
 * 虛擬網路會使用 AZOS-USE-VN **[number]**
 * 可用性設定組會使用 azos-use-as-**[role]**
 * 虛擬機器名稱會使用 azos-use-vm-**[vmname]**

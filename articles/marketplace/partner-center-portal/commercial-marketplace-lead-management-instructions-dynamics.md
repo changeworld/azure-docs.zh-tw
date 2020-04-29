@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
 ms.openlocfilehash: b9158f7b2e3fc73a2fe2a9b20ead2558b7467f6f
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82131046"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>為 Dynamics 365 Customer Engagement 設定潛在客戶管理
@@ -21,7 +21,7 @@ ms.locfileid: "82131046"
 >[!NOTE]
 >這些指示專屬於適用于 Dynamics 365 Customer Engagement 的 Microsoft 託管雲端環境。 目前不支援直接連接到 Dynamics 內部部署環境。 還有其他選項可讓您接收潛在客戶，例如設定[HTTPS 端點](./commercial-marketplace-lead-management-instructions-https.md)或[Azure 資料表](./commercial-marketplace-lead-management-instructions-azure-table.md)。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 若要完成本文中的步驟，需要下列使用者權限。 您必須：
 
@@ -124,7 +124,7 @@ ms.locfileid: "82131046"
 
     ![Microsoft 365 系統管理中心新增使用者選項](./media/commercial-marketplace-lead-management-instructions-dynamics/ms-365-add-user.png)
 
-1. 為潛在客戶寫入器服務建立新使用者。 設定下列設定：
+1. 為潛在客戶寫入器服務建立新使用者。 進行以下設定：
 
     * 輸入使用者名稱。
     * 輸入密碼，並清除 [**讓此使用者在第一次登入時變更密碼**] 選項。

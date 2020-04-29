@@ -6,13 +6,13 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: conceptual
 manager: gwallace
-description: 瞭解如何使用 Azure 開發人員空間使用 Azure DevOps 設定連續整合/連續部署
+description: 瞭解如何使用 Azure DevOps 搭配 Azure Dev Spaces 設定持續整合/持續部署
 keywords: Docker、Kubernetes、Azure、AKS、Azure Container Service、容器
 ms.openlocfilehash: f2eb9449518b32ab74f2dbbca6b5489aed325db7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81685622"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>使用 CI/CD 搭配 Azure Dev Spaces
@@ -23,7 +23,7 @@ ms.locfileid: "81685622"
 
 雖然此文章將引導您使用 Azure DevOps，但相同的概念適用於 Jenkins、TeamCity 等 CI/CD 系統。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 * [啟用 Azure Dev Spaces 的 Azure Kubernetes Service (AKS) 叢集](../get-started-netcore.md)
 * [已安裝 Azure Dev Spaces CLI](upgrade-tools.md)
 * [Azure DevOps 組織與專案](https://docs.microsoft.com/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
@@ -41,9 +41,9 @@ ms.locfileid: "81685622"
 azds space select -n dev
 ```
 
-當系統提示您選擇父開發空間時,_\<請\>選擇 「無_」。
+當系統提示您選取父開發人員空間時_ \<，\>_ 請選取 [無]。
 
-創建開發空間後,需要確定主機後綴。 使用`azds show-context`命令顯示 Azure 開發空間入口控制器的主機後綴。
+建立開發人員空間之後，您必須決定主機尾碼。 使用`azds show-context`命令來顯示 Azure Dev Spaces 輸入控制器的主機尾碼。
 
 ```cmd
 $ azds show-context
@@ -52,7 +52,7 @@ Name   ResourceGroup    DevSpace  HostSuffix
 MyAKS  MyResourceGroup  dev       fedcba098.eus.azds.io
 ```
 
-在上面的範例中,主機後綴_fedcba098.eus.azds.io_。 稍後將創建發佈定義時使用此值。
+在上述範例中，主機尾碼為_fedcba098.eus.azds.io_。 稍後當您建立發行定義時，會使用此值。
 
 _dev_ 空間將始終包含存放庫的最新狀態 (即基線)，以便開發人員可以從 _dev_ 建立_子空間_，以測試較大應用程式之內容中的隔離變更。 此概念在 Dev Spaces 教學課程中會更詳細地討論。
 
@@ -73,17 +73,17 @@ _dev_ 空間將始終包含存放庫的最新狀態 (即基線)，以便開發�
 根據您所選擇的語言，管線 YAML 已在類似於 `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml` 的路徑中簽入
 
 若要從此檔案建立管線：
-1. 在 DevOps 專案主頁上,導航到"生成>管道。
-1. 選擇創建**新**管道的選項。
-1. 選擇**GitHub**作為源,如有必要,使用 GitHub 帳戶進行授權,並從_開發空間_範例應用程式儲存庫的分叉版本中選擇_azds_updates_分支。
-1. 選擇 **「設定」作為代碼**,或作為**YAML**作為範本。
-1. 現在，您將看到建置管線的組態頁面。 如上所述,使用 **...** 按鈕導航到**YAML 檔路徑**的語言特定路徑。 例如： `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml` 。
-1. 跳到 **"變數"** 選項卡。
+1. 在您的 DevOps 專案主頁面上，流覽至 [管線] [> 組建]。
+1. 選取選項以建立**新**的組建管線。
+1. 選取 [ **github** ] 做為來源，必要時請使用您的 GitHub 帳戶進行授權，然後從您的_開發人員空間_範例應用程式存放庫的分支版中選取 [ _azds_updates_ ] 分支。
+1. 選取 [設定**為程式碼**] 或 [ **YAML**] 作為您的範本。
+1. 現在，您將看到建置管線的組態頁面。 如前所述，使用 **...** 按鈕，流覽至**YAML 檔案路徑**的語言特定路徑。 例如： `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml` 。
+1. 移至 [**變數**] 索引標籤。
 1. 手動將 _dockerId_ 新增為變數，該變數是 [Azure Container Registry 系統管理員帳戶](../../container-registry/container-registry-authentication.md#admin-account)的使用者名稱。 (如文章先決條件中所述)
 1. 手動將 _dockerPassword_ 新增為變數，該變數是 [Azure Container Registry 系統管理員帳戶](../../container-registry/container-registry-authentication.md#admin-account)的密碼。 基於安全性考量，請務必將 _dockerPassword_ 指定為祕密 (藉由選取鎖頭圖示)。
-1. 選擇 **'儲存&佇列**。
+1. 選取 [**儲存 & 佇列**]。
 
-您現在擁有一個 CI 解決方案，可以自動建置 *mywebapi* 和 *webfrontend*，以便將任何更新推送到 GitHub 分支的 _azds_updates_ 分支。 您可以通過瀏覽到 Azure 門戶、選擇 Azure 容器註冊表和流覽**儲存庫**選項卡來驗證 Docker 映射已被推送。映射可能需要幾分鐘才能生成並顯示在容器註冊表中。
+您現在擁有一個 CI 解決方案，可以自動建置 *mywebapi* 和 *webfrontend*，以便將任何更新推送到 GitHub 分支的 _azds_updates_ 分支。 您可以流覽至 [Azure 入口網站]，選取您的 Azure Container Registry，然後流覽 [**存放庫**] 索引標籤，以確認 Docker 映射是否已推送。可能需要幾分鐘的時間，映射才會建立並出現在容器登錄中。
 
 ![Azure Container Registry 存放庫](../media/common/ci-cd-images-verify.png)
 
@@ -91,52 +91,52 @@ _dev_ 空間將始終包含存放庫的最新狀態 (即基線)，以便開發�
 
 1. 在 DevOps 專案主頁面上，瀏覽至 [管線] > [發行]
 1. 如果您正在使用尚未包含發行定義的全新 DevOps 專案，則必須先建立一個空的發行定義，然後再繼續。 除非您有現有發行定義，否則 [匯入] 選項不會顯示在 UI 中。
-1. 在左側,按一下 **+ 新建**按鈕,然後按一下「**導入管道**」 。。
-1. 點選 **「瀏覽」** 並從項目`samples/release.json`中選擇 。
+1. 在左側按一下 [ **+ 新增**] 按鈕，然後按一下 [匯**入管線**]。
+1. 按一下 **[流覽]** ，然後從您的專案中選取`samples/release.json` 。
 1. 按一下 [確定]  。 請注意，會載入 [管線] 窗格並顯示 [發行定義編輯] 頁面。 另請注意，有一些紅色警告圖示表示仍然必須設定特定叢集的詳細資料。
 1. 在 [管線] 窗格的左側，按一下 [新增成品]**** 泡泡。
-1. 在 **「源**」下拉下清單中,選擇之前創建的生成管道。
-1. 對於**預設版本**,**從具有標記的生成管道預設分支中選擇" 最新"**
-1. 將**標記**留空。
-1. 將 [來源別名]**** 設定為 `drop`。 **源別名**值由預定義的發佈任務使用,因此必須設置它。
-1. 按一下 [新增]  。
+1. 在 [**來源**] 下拉式清單中，選取您稍早建立的組建管線。
+1. 針對**預設版本**，請**從具有標記的組建管線預設分支選擇 [最新**]。
+1. 將 [**標記**] 保留空白。
+1. 將 [來源別名]**** 設定為 `drop`。 預先定義的發行工作會使用**來源別名**值，因此必須加以設定。
+1. 按一下 [加入]  。
 1. 現在按一下新建立的 `drop` 成品來源上的閃電圖示，如下所示：
 
     ![發行成品持續部署設定](../media/common/release-artifact-cd-setup.png)
-1. 開啟**連續部署觸發器**。
-1. 將滑鼠懸停在**管道**旁邊的 **「工作」** 選項卡上,然後單擊 _「開發」_ 以編輯_開發_階段任務。
-1. 在**連接類型**「下選擇」驗證**Azure 資源管理員**。 您會看到以紅色突顯的三個下拉控制器:![發佈定義設定](../media/common/release-setup-tasks.png)
-1. 選擇使用 Azure 開發空間的 Azure 訂閱。 您可能還需要按下 **「授權**」。
-1. 選擇使用 Azure 開發空間的資源組和群集。
-1. 按下 **「代理作業**」。
-1. 選擇**託管 Ubuntu 1604**下的**代理池**。
-1. 將滑鼠懸停在頂部**的"任務"** 選擇器上,按一下_prod_以編輯_prod_階段任務。
-1. 在**連接類型**「下選擇」驗證**Azure 資源管理員**。 選擇與 Azure 開發空間一起使用的 Azure 訂閱、資源組和叢集。
-1. 按下 **「代理作業**」。
-1. 選擇**託管 Ubuntu 1604**下的**代理池**。
-1. 按下 **「變數」** 選項卡以更新版本的變數。
-1. 將**DevSpacesHostSuffix**的值從**UPDATE_ME**更新到主機後綴。 在較早之前執行命令時,`azds show-context`將顯示主機後綴。
+1. 啟用**持續部署觸發**程式。
+1. 將滑鼠停留**在 [** **管線**] 旁的 [工作] 索引標籤，然後按一下 [_開發_] 以編輯_開發_階段工作。
+1. 確認已選取 [連線**類型**] 底下的 [ **Azure Resource Manager** ]。 您會看到三個下拉式控制項反白顯示為![紅色：發行定義設定](../media/common/release-setup-tasks.png)
+1. 選取您要與 Azure Dev Spaces 搭配使用的 Azure 訂用帳戶。 您也可能需要按一下 [**授權**]。
+1. 選取您要搭配 Azure Dev Spaces 使用的資源群組和叢集。
+1. 按一下 [**代理程式作業**]。
+1. 選取 [**代理程式組件**區] 下的 [**託管 Ubuntu 1604** ]。
+1. 將滑鼠停留在頂端的 **[工作]** 選取器上方，按一下 [_生產_] 以編輯「_生產_階段」工作。
+1. 確認已選取 [連線**類型**] 底下的 [ **Azure Resource Manager** ]。 然後選取您要與 Azure Dev Spaces 搭配使用的 Azure 訂用帳戶、資源群組和叢集。
+1. 按一下 [**代理程式作業**]。
+1. 選取 [**代理程式組件**區] 下的 [**託管 Ubuntu 1604** ]。
+1. 按一下 [**變數**] 索引標籤，以更新您的發行的變數。
+1. 將**DevSpacesHostSuffix**的值從**UPDATE_ME**更新為您的主機尾碼。 當您稍早執行`azds show-context`命令時，會顯示主機尾碼。
 1. 按一下右上方的 [儲存]****，然後按一下 [確定]****。
 1. 按一下 [+ 發行]**** ([儲存] 按鈕旁邊)，然後按一下 [建立發行]****。
-1. 在 **「專案」** 下,從生成管道中驗證最新生成被選中。
-1. 按一下頁面底部的 [新增]  。
+1. 在 [**構件**] 底下，確認已選取組建管線中的最新組建。
+1. 按一下 [建立]  。
 
-自動化發行處理程序將立即開始，將 *mywebapi* 和 *webfrontend* 圖表部署至 _dev_ 最上層空間中的 Kubernetes 叢集。 您可以在 Azure DevOps Web 入口上監視發佈進度:
+自動化發行處理程序將立即開始，將 *mywebapi* 和 *webfrontend* 圖表部署至 _dev_ 最上層空間中的 Kubernetes 叢集。 您可以在 Azure DevOps 入口網站上監視發行的進度：
 
-1. 導覽到導管下的 **「發布****」 部分**。
-1. 按一下範例應用程式的發布管道。
+1. 流覽至 [**管線**] 底下的 [**發行**] 區段。
+1. 按一下範例應用程式的發行管線。
 1. 按一下最新版本的名稱。
-1. 將滑鼠懸停在 **「階段」** 下的**開發**框上,然後按一下「**日誌**」。
+1. 將滑鼠停留在 [**階段**] 底下**的 [** **dev** box]，然後按一下 [
 
-發佈在所有任務完成後完成。
+當所有工作都完成時，就會完成此發行作業。
 
 > [!TIP]
-> 如果您的發行失敗，並顯示類似 *UPGRADE FAILED: timed out waiting for the condition* 的錯誤訊息，請嘗試[使用 Kubernetes 儀表板](../../aks/kubernetes-dashboard.md)檢查叢集中的 Pod。 如果您看到 pod 未能從錯誤訊息開始,如*無法提取影像「azdsexample.azurecr.io/mywebapi:122」:rpc 錯誤:代碼 = 未知 desc =\/來自守護程序的錯誤回應:獲取 HTW /azdsexample.azurecr.io/v2/mywebapi/manifests/122:未經授權的身份驗證:需要身份驗證*,可能是因為群集尚未授權從 Azure 容器註冊表中提取。 請確定您已完成[授權您的 AKS 叢集從 Azure Container Registry 提取](../../aks/cluster-container-registry-integration.md)的先決條件。
+> 如果您的發行失敗，並顯示類似 *UPGRADE FAILED: timed out waiting for the condition* 的錯誤訊息，請嘗試[使用 Kubernetes 儀表板](../../aks/kubernetes-dashboard.md)檢查叢集中的 Pod。 如果您看到 pod 無法啟動，並出現錯誤訊息（例如*無法提取映射 "azdsexample.azurecr.io/mywebapi:122"）： rpc 錯誤：程式碼 = 未知的 desc = 來自 daemon 的錯誤回應：\/Get HTTPs：/azdsexample.azurecr.io/v2/mywebapi/manifests/122：未經授權：需要驗證*，可能是因為您的叢集尚未獲得授權，無法從您的 Azure Container Registry 提取。 請確定您已完成[授權您的 AKS 叢集從 Azure Container Registry 提取](../../aks/cluster-container-registry-integration.md)的先決條件。
 
 您現在擁有一個完全自動的 CI/CD 管線，用於 Dev Spaces 範例應用程式的 GitHub 分支。 每次認可並推送程式碼時，建置管線都會建置並將 *mywebapi* 和 *webfrontend* 映像推送至您的自訂 ACR 執行個體。 然後，發行管線會將每個應用程式的 Helm 圖表部署到啟用 Dev Spaces 之叢集上的 _dev_ 空間。
 
 ## <a name="accessing-your-_dev_-services"></a>存取您的 _dev_ 服務
-部署之後，可以使用公用 URL 存取 _dev_ 版本的 *webfrontend*，例如：`http://dev.webfrontend.fedcba098.eus.azds.io`。 您可以透過`azds list-uri`執行 指令找到此網址: 
+部署之後，可以使用公用 URL 存取 _dev_ 版本的 *webfrontend*，例如：`http://dev.webfrontend.fedcba098.eus.azds.io`。 您可以藉由執行下列`azds list-uri`命令來尋找此 URL： 
 
 ```cmd
 $ azds list-uris
@@ -149,18 +149,18 @@ http://dev.webfrontend.fedcba098.eus.azds.io  Available
 ## <a name="deploying-to-production"></a>部署至生產環境
 
 使用此教學課程中建立的 CI/CD 系統手動將特定發行升級到 _prod_：
-1. 導覽到導管下的 **「發布****」 部分**。
-1. 按一下範例應用程式的發布管道。
+1. 流覽至 [**管線**] 底下的 [**發行**] 區段。
+1. 按一下範例應用程式的發行管線。
 1. 按一下最新版本的名稱。
-1. 將滑鼠懸停在 **「階段**」下的**prod**框上,然後按一下「**部署**」。
+1. 將滑鼠停留在 [**階段**] 底下的 [**生產**] 方塊，然後按一下 [**部署**]
     ![升級到生產環境](../media/common/prod-promote.png)
-1. 再次將滑鼠懸停在 **「階段」** 下的**prod**框上,然後按一下「**日誌**」。。
+1. 將滑鼠停留在 [**階段**] 下的 [**生產**箱]，然後按一下 [**記錄**]
 
-發佈在所有任務完成後完成。
+當所有工作都完成時，就會完成此發行作業。
 
-CI/CD 管道的_prod_階段使用負載均衡器而不是開發人員空間入口控制器來提供對_prod_服務的訪問。 在_prod_階段部署的服務可作為 IP 位址而不是 DNS 名稱訪問。 在生產環境中,您可以選擇創建自己的入口控制器,以便根據自己的 DNS 配置託管服務。
+CI/CD 管線的_生產_階段會使用負載平衡器（而非 Dev Spaces 輸入控制器）來提供_生產_服務的存取權。 在_生產_階段中部署的服務可作為 IP 位址（而不是 DNS 名稱）存取。 在生產環境中，您可以選擇建立您自己的輸入控制器，根據您自己的 DNS 設定來裝載您的服務。
 
-要確定 Webfrontend 服務的 IP,請單擊 **「列印 Webfrontend 公共 IP」** 步驟以擴展日誌輸出。 使用日誌輸出中顯示的 IP 訪問**Webfrontend**應用程式。
+若要判斷 webfrontend 服務的 IP，請按一下 [**列印 webfrontend 公用 IP** ] 步驟以展開記錄輸出。 使用記錄輸出中顯示的 IP 來存取**webfrontend**應用程式。
 
 ```cmd
 ...

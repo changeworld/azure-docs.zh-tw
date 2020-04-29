@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.openlocfilehash: 873fc41585c387246d83008a8f97d6c4d9a32c3b
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985060"
 ---
 # <a name="monitor-performance-in-web-applications"></a>監視 Web 應用程式的效能
@@ -93,7 +93,7 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 
 請小心注意系統要求您輸入臨界值時所使用的單位。
 
-*我看不到"添加警報"按鈕。* 我沒有看到 [新增警示] 按鈕 - 您只擁有此群組帳戶的唯讀權限嗎？ 請洽詢帳戶管理員。
+*我看不到 [新增警示] 按鈕。* 我沒有看到 [新增警示] 按鈕 - 您只擁有此群組帳戶的唯讀權限嗎？ 請洽詢帳戶管理員。
 
 ## <a name="diagnosing-issues"></a><a name="diagnosis"></a>診斷問題
 以下是幾個尋找及診斷效能問題的訣竅：
@@ -102,7 +102,7 @@ HTTP 要求包括分頁、資料及映像的所有 GET 或 POST 要求。
 * 比較要求計數與其他度量，了解失敗或回應過慢的情況是否與負載有關。
 * 在程式碼中[插入及搜尋追蹤陳述式][diagnostic]有助於找出問題所在。
 * 使用[即時計量資料流][livestream]監視作業中的 Web 應用程式。
-* 使用[快照除錯器][snapshot]擷取 .NET 應用程式的狀態。
+* 使用[快照偵錯工具][snapshot]來捕獲 .net 應用程式的狀態。
 
 ## <a name="find-and-fix-performance-bottlenecks-with-performance-investigation-experience"></a>使用效能調查體驗尋找及修正效能瓶頸
 

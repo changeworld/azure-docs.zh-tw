@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
 ms.openlocfilehash: b676c2647fbf7c93d271e1d7f68653452125e39b
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82137190"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 儲存體傳輸資料
@@ -31,7 +31,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製資料�
 >
 > 如果您想要使用 SAS 權杖來授權 blob 資料的存取權，您可以在每個 AzCopy 命令中，將該權杖附加至資源 URL。
 >
-> 例如：`'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'`。
+> 例如： `'https://<storage-account-name>.blob.core.windows.net/<container-name><SAS-token>'` 。
 
 ## <a name="create-a-container"></a>建立容器
 
