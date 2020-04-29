@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
 ms.openlocfilehash: a720627e1783d2e29ef180b7855132ea59444cab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79248745"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>儲存在 Log Analytics 和 Application Insights 中的個人資料指引
@@ -59,7 +59,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
     | where timestamp > ago(1d)
     | summarize numNonObfuscatedIPs_24h = count() by $table
     ```
-* *使用者識別碼*：依預設，Application Insights 會使用隨機產生的識別碼來追蹤使用者和工作階段。 不過，通常這些欄位會經過覆寫以儲存與應用程式更相關的識別碼。 例如：使用者名、AAD GUID 等。這些資料通常被視為個人資料的範圍之內，因此應適當處理。 建議一律嘗試將這些識別碼模糊或匿名處理。 通常包含這些值的欄位有 session_Id、user_Id、user_AuthenticatedId、user_AccountId 以及 customDimensions。
+* *使用者識別碼*：依預設，Application Insights 會使用隨機產生的識別碼來追蹤使用者和工作階段。 不過，通常這些欄位會經過覆寫以儲存與應用程式更相關的識別碼。 例如：使用者名稱、AAD Guid 等。這些識別碼通常會被視為在個人資料的範圍內，因此應該適當地處理。 建議一律嘗試將這些識別碼模糊或匿名處理。 通常包含這些值的欄位有 session_Id、user_Id、user_AuthenticatedId、user_AccountId 以及 customDimensions。
 * *自訂資料*：Application Insights 能讓您將一組自訂維度附加至任何資料類型。 這些維度可以是*任何*資料。 您可以使用以下查詢來識別過去 24 小時內收集的任何自訂維度：
     ```
     search * 
@@ -81,7 +81,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 針對檢視和匯出資料的要求，均應使用 [Log Analytics 查詢 API](https://dev.loganalytics.io/) 或 [Application Insights 查詢 API](https://dev.applicationinsights.io/quickstart)。 至於要如何將資料轉換為適當形式以提供給使用者，其實作邏輯則由您自行決定。 [Azure Functions](https://azure.microsoft.com/services/functions/) 很適合用來裝載這類邏輯。
 
 > [!IMPORTANT]
->  雖然絕大多數清除操作的完成速度可能比 SLA 快得多，但由於清除操作對所使用的資料平臺影響很大，**因此完成清除操作的正式 SLA 設置為 30 天**。 這是一個自動化的過程;無法要求更快地處理操作。
+>  雖然絕大多數清除作業的完成速度可能會比 SLA 快，但**完成清除作業的正式 SLA 是設定為30天**，因為對所使用的資料平臺會有相當大的影響。 這是自動化的程式;沒有任何方法可以要求更快處理作業。
 
 ### <a name="delete"></a>刪除
 
@@ -93,7 +93,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
 清除作業極需相關權限，若未對 Azure 中的應用程式或使用者 (甚至包括資源擁有者) 明確授與 Azure Resource Manager 角色，其將無權執行此作業。 這個角色便是「資料清除者」__，由於可能會遺失資料，委派此角色時請務必小心。 
 
 > [!IMPORTANT]
-> 為了管理系統資源，清除請求每小時限制 50 個請求。 應通過發送一個命令來批次處理清除請求的執行，該命令的謂詞包含需要清除的所有使用者標識。 使用[in 運算子](/azure/kusto/query/inoperator)指定多個識別。 在執行清除請求之前，應執行查詢，以驗證預期結果。 
+> 為了管理系統資源，清除要求會在每小時的50要求進行節流。 您應該藉由傳送單一命令（其述詞包含所有需要清除的使用者身分識別）來批次處理清除要求的執行。 使用[in 運算子](/azure/kusto/query/inoperator)來指定多個身分識別。 您應該在執行清除要求之前先執行查詢，以確認結果是否符合預期。 
 
 
 
@@ -109,7 +109,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
     ```
 
 > [!IMPORTANT]
->  雖然我們預計絕大多數的清除操作完成得比我們的SLA快得多，但由於它們對 Log Analytics 使用的資料平臺影響很大，**但完成清除操作的正式 SLA 設置為 30 天**。 
+>  雖然絕大多數清除作業的完成速度會比我們的 SLA 快得多，但因為對 Log Analytics 所使用的資料平臺會有相當大的影響，所以**清除作業的正式 SLA 會設定為30天**。 
 
 #### <a name="application-data"></a>應用程式資料
 
@@ -121,7 +121,7 @@ Log Analytics 是彈性的存放區，在指定資料結構描述的同時，允
    ```
 
 > [!IMPORTANT]
->  雖然絕大多數的清除操作可能比 SLA 更快地完成，但由於它們對應用程式見解使用的資料平臺影響很大，**但完成清除操作的正式 SLA 設置為 30 天**。
+>  雖然絕大多數清除作業的完成速度可能會比 SLA 快得多，但由於其對 Application Insights 所使用的資料平臺產生重大的影響，因此**清除作業的正式 SLA 已設定為30天**。
 
 ## <a name="next-steps"></a>後續步驟
 - 若要深入了解 Log Analytics 資料的收集、處理和保護方式，請參閱 [Log Analytics 資料安全性](../../azure-monitor/platform/data-security.md)。

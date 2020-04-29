@@ -1,5 +1,5 @@
 ---
-title: 管理 Stor 簡單卷（更新 3）
+title: 管理 StorSimple 磁片區（Update 3）
 description: 說明如何加入、修改及監視 StorSimple 磁碟區，以及如何在必要時使其離線。
 author: alkohli
 ms.service: storsimple
@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f32f8925bca33d90afa48071d0c0944ba63861cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254764"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 裝置管理員服務來管理磁碟區 (Update 3 或更新版本)
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明如何使用 StorSimple 裝置管理員服務來建立和管理執行 Update 3 和更新版本之 StorSimple 8000 系列裝置上的磁碟區。
 
@@ -112,7 +112,7 @@ StorSimple 磁碟區可以是：
       
        如果您在 8100 裝置上佈建 8.5 TB (允許的大小上限) 且固定在本機的磁碟區，則您會用盡裝置上所有可用的本機空間。 從那時起，您就無法建立任何分層磁碟區，因為裝置上已沒有任何本機空間，可用來裝載分層磁碟區的工作集。 現有的分層磁碟區也會影響可用的空間。 例如，如果您的 8100 裝置已經有大約 106 TB 的分層磁碟區，則固定在本機的磁碟區僅只有 4 TB 的可用空間。
 
-    6. 在 [已連線的主機]**** 欄位中，按一下箭號。 在 [已連線的主機]**** 刀鋒視窗中，選擇現有的 ACR 或新的 ACR。 如果您選擇新的 ACR，請提供 ACR 的 [名稱]****，並提供 Windows 主機的 [iSCSI 限定名稱]**** \(IQN)。 如果沒有 IQN，請移至「取得 Windows Server 主機的 IQN」。 按一下 **[建立]**。 使用指定的設定來建立磁碟區。
+    6. 在 [已連線的主機]**** 欄位中，按一下箭號。 在 [已連線的主機]**** 刀鋒視窗中，選擇現有的 ACR 或新的 ACR。 如果您選擇新的 ACR，請提供 ACR 的 [名稱]****，並提供 Windows 主機的 [iSCSI 限定名稱]**** \(IQN)。 如果沒有 IQN，請移至「取得 Windows Server 主機的 IQN」。 按一下 [建立]  。 使用指定的設定來建立磁碟區。
 
         ![按一下 [建立專案]。](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -163,10 +163,10 @@ StorSimple 磁碟區可以是：
 
 7. 如果您要延伸磁碟區，請在 Windows 主機電腦上完成下列步驟：
    
-   1. 轉到**電腦管理** ->**磁片管理**。
+   1. 移至 [**電腦管理** ->] [**磁片管理**]。
    2. 以滑鼠右鍵按一下 [磁碟管理]****，並選取 [重新掃描磁碟]****。
-   3. 在磁碟清單中，選取您已更新的磁碟區，按一下滑鼠右鍵，然後選取 [延伸磁碟區] ****。 [延伸磁碟區精靈] 隨即啟動。 按 [下一步]****。
-   4. 使用預設值完成精靈。 完成精靈後，磁碟區應該會顯示增加的大小。
+   3. 在磁碟清單中，選取您已更新的磁碟區，按一下滑鼠右鍵，然後選取 [延伸磁碟區] ****。 [延伸磁碟區精靈] 隨即啟動。 按 [下一步]  。
+   4. 接受預設值，完成精靈。 完成精靈後，磁碟區應該會顯示增加的大小。
       
       > [!NOTE]
       > 如果您擴充固定在本機的磁碟區，然後立即擴充另一個固定在本機的磁碟區，磁碟區擴充作業會依序執行。 必須先完成第一個磁碟區擴充作業，才能開始下一個磁碟區擴充作業。

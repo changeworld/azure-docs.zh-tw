@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 12/05/2017
 ms.author: alkohli
 ms.openlocfilehash: 84734aefb72a3330d99c5707b461de2cd5e30484
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254998"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>在 Azure 入口網站中，使用 StorSimple 裝置管理員服務來複製磁碟區
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本教學課程說明如何透過 [備份類別目錄]**** 刀鋒視窗使用備份組來複製個別磁碟區。 它也會說明「暫時性」** 與「永久」** 複製之間的差異。 本教學課程中的指導適用於執行 Update 3 或更新版本的所有 StorSimple 8000 系列裝置。
 
@@ -118,6 +118,6 @@ StorSimple 裝置管理員服務 [備份類別目錄] **** 刀鋒視窗會顯示
 您需要確認生產環境中的測試錯誤。 您在生產環境中建立磁碟區的複製，並採用這個複製的雲端快照來建立獨立的複製磁碟區。 在此案例中，使用的是永久複製。
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解如何[從備份組中還原 StorSimple 卷](storsimple-8000-restore-from-backup-set-u2.md)。
+* 瞭解如何[從備份組還原 StorSimple 磁片](storsimple-8000-restore-from-backup-set-u2.md)區。
 * 了解如何[使用 StorSimple 裝置管理員服務管理 StorSimple 裝置](storsimple-8000-manager-service-administration.md)。
 

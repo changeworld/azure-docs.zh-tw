@@ -8,10 +8,10 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 2656716560b981481273c3032fc0c7b1a06be8a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255089"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>使用 Azure 檔案同步管理已註冊的伺服器
@@ -22,7 +22,7 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 ## <a name="registerunregister-a-server-with-storage-sync-service"></a>使用儲存體同步服務來註冊/取消註冊伺服器
 使用 Azure 檔案同步來註冊伺服器可在 Windows Server 與 Azure 之間建立信任關係。 此關係可用來在伺服器上建立伺服器端點**，其代表應與 Azure 檔案共用 (也稱為雲端端點**) 同步的特定資料夾。 
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 若要使用儲存體同步服務來註冊伺服器，您必須先準備好符合下列必要條件的伺服器：
 
 * 伺服器必須執行支援的 Windows 版本。 如需詳細資訊，請參閱 [Azure 檔案同步系統需求和互通性](storage-sync-files-planning.md#windows-file-server-considerations)。
@@ -146,7 +146,7 @@ Get-AzStorageSyncGroup -ResourceGroupName $resourceGroup -StorageSyncServiceName
 #### <a name="unregister-the-server"></a>取消註冊伺服器
 回收所有資料並從所有同步群組移除伺服器之後，即可將伺服器取消註冊。 
 
-1. 在 Azure 門戶中，導航到存儲同步服務的 *"已註冊伺服器*"部分。
+1. 在 [Azure 入口網站中，流覽至儲存體同步服務的 [*已註冊的伺服器*] 區段。
 2. 以滑鼠右鍵按一下您要取消註冊的伺服器，然後按一下 [取消註冊伺服器]。
 
     ![將伺服器取消註冊](media/storage-sync-files-server-registration/unregister-server-1.png)
@@ -185,8 +185,8 @@ Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -I
 ### <a name="use-windows-server-storage-qos"></a>使用 Windows Server 儲存體服務品質 (QoS) 
 當 Azure 檔案同步裝載於 Windows Server 虛擬主機上執行的虛擬機器時，您可以使用儲存體 QoS (儲存體服務品質) 來規範儲存體 IO 耗用量。 儲存體 QoS 原則可以設定為最大值 (或限制，如上述強制執行 StorageSyncNetwork 限制的方式) 或最小值 (或保留)。 設定最小值而不是最大值時，可讓 Azure 檔案同步在其他工作負載不使用時，盡可能使用可用的儲存體頻寬。 如需詳細資訊，請參閱[儲存體服務品質](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview)。
 
-## <a name="see-also"></a>另請參閱
-- [規劃 Azure 檔同步部署](storage-sync-files-planning.md)
+## <a name="see-also"></a>請參閱
+- [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
 - [部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)
 - [監視 Azure 檔案同步](storage-sync-files-monitoring.md)
 - [針對 Azure 檔案同步進行移難排解](storage-sync-files-troubleshoot.md)

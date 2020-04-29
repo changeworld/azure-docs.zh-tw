@@ -1,6 +1,6 @@
 ---
-title: 泛型服務層
-description: 瞭解 Azure SQL 資料庫通用層
+title: 一般用途服務層級
+description: 深入瞭解 Azure SQL Database 一般用途層
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,16 +12,16 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
 ms.openlocfilehash: 7c57755ae63f8af5a2a4faa4764bc6a9597e8c2d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255882"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>一般用途服務層級 - Azure SQL Database
 
 > [!NOTE]
-> 基於 vCore 的採購模型中的泛型服務層稱為基於 DTU 的採購模型中的標準服務層。 如需以虛擬核心為基礎的購買模型與以 DTU 為基礎的購買模型的比較，請參閱 [Azure SQL Database 購買模型和資源](sql-database-purchase-models.md)。
+> VCore 為基礎的購買模型中的一般用途服務層級，在以 DTU 為基礎的購買模型中稱為「標準」服務層級。 如需以虛擬核心為基礎的購買模型與以 DTU 為基礎的購買模型的比較，請參閱 [Azure SQL Database 購買模型和資源](sql-database-purchase-models.md)。
 
 Azure SQL Database 是以會針對雲端環境調整的 SQL Server 資料庫引擎架構為基礎，以確保 99.99% 的可用性 (即使在基礎結構失敗的情況下)。 Azure SQL Database 中使用三個服務層級，每個服務層級具有不同的架構模型。 這些服務層級為：
 
@@ -29,13 +29,13 @@ Azure SQL Database 是以會針對雲端環境調整的 SQL Server 資料庫引�
 - 業務關鍵
 - 超大規模資料庫
 
-泛型服務層的體系結構模型基於計算和存儲的分離。 此架構模型仰賴 Azure Blob 儲存體的高可用性和可靠性，可以透明的方式複寫資料庫檔案，並保證當基礎結構發生失敗時也不會遺失資料。
+一般用途服務層級的架構模型是以計算和儲存體的分隔為基礎。 此架構模型仰賴 Azure Blob 儲存體的高可用性和可靠性，可以透明的方式複寫資料庫檔案，並保證當基礎結構發生失敗時也不會遺失資料。
 
 下圖顯示標準架構模型中具有分隔計算和儲存體層的四個節點。
 
 ![分隔計算與儲存體](media/sql-database-managed-instance/general-purpose-service-tier.png)
 
-在泛型服務層的體系結構模型中，有兩個層：
+在一般用途服務層的架構模型中，有兩個層級：
 
 - 無狀態計算層，執行 `sqlservr.exe` 流程並且僅包含暫時性和快取資料 (例如計畫快取、緩衝集區、列儲存集區)。 此無狀態 SQL Server 節點是由 Azure Service Fabric 操作，可初始化流程、控制節點的健康情況，並在必要時執行故障轉移至其他位置。
 - 具狀態資料層，包含儲存在 Azure Blob 儲存體中的資料庫檔案 (.mdf/.ldf)。 Azure Blob 可確保任何資料庫檔案中放置的任何記錄都不會遺失資料。 Azure 儲存體具有內建的資料可用性/備援，即使 SQL Server 流程損毀，也可以確保保留資料檔案中記錄檔或頁面中的每項記錄。
@@ -44,11 +44,11 @@ Azure SQL Database 是以會針對雲端環境調整的 SQL Server 資料庫引�
 
 ## <a name="when-to-choose-this-service-tier"></a>選擇此服務層級的時機
 
-一般目的服務層級是 Azure SQL Database 中的預設服務層級，專供大部分的一般工作負載使用。 如果需要具有 99.99% SLA 的完全託管資料庫引擎，在大多數情況下，存儲延遲在 5 到 10 毫秒之間與 Azure SQL IaaS 匹配，則通用層是您的最佳選擇。
+一般目的服務層級是 Azure SQL Database 中的預設服務層級，專供大部分的一般工作負載使用。 如果您需要具有 99.99% SLA 的完全受控資料庫引擎，且在大部分情況下都符合 Azure SQL IaaS 的儲存體延遲為5到10毫秒，則您可以選擇一般用途層。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在[託管實例](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)中查找通用/標準層的資源特徵（核心數、IO、記憶體數），[在 vCore 模型](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4)或[DTU 模型中](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)查找單個資料庫，或在[vCore 模型](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose---provisioned-compute---gen4)和[DTU 模型中](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)查找彈性池。
+- 尋找[受控執行個體](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)中一般用途/標準層的資源特性（核心數目、IO、記憶體）、 [vCore 模型](sql-database-vcore-resource-limits-single-databases.md#general-purpose---provisioned-compute---gen4)中的單一資料庫或[dtu 模型](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)，或[VCore 模型](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose---provisioned-compute---gen4)和[dtu 模型](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits)中的彈性集區。
 - 了解[業務關鍵](sql-database-service-tier-business-critical.md)和[超大規模資料庫](sql-database-service-tier-hyperscale.md)層。
-- 瞭解[服務結構](../service-fabric/service-fabric-overview.md)。
-- 有關高可用性和災害復原的更多選項，請參閱[業務連續性](sql-database-business-continuity.md)。
+- 深入瞭解[Service Fabric](../service-fabric/service-fabric-overview.md)。
+- 如需高可用性和嚴重損壞修復的更多選項，請參閱[商務持續性](sql-database-business-continuity.md)。

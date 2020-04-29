@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/05/2019
 ms.openlocfilehash: 4740034bd970f42833125fa43bfdf72f710ac147
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249603"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>在 Azure 監視器中執行跨資源記錄查詢  
@@ -21,9 +21,9 @@ ms.locfileid: "79249603"
 
 ## <a name="cross-resource-query-limits"></a>跨資源查詢限制 
 
-* 可在單個查詢中包含的應用程式見解資源和日誌分析工作區的數量限制為 100。
-* 視圖設計器不支援跨資源查詢。 您可以在日誌分析中創作查詢，並將其固定到 Azure 儀表板以[視覺化日誌查詢](../learn/tutorial-logs-dashboards.md)。 
-* 新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支援記錄警示中的跨資源查詢。 根據預設，Azure 監視器會使用[舊版 Log Analytics 警示 API](../platform/api-alerts.md) 從 Azure 入口網站建立新的記錄警示規則，除非您從[舊版記錄警示 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切換。 切換之後，新的 API 將成為 Azure 入口網站中新警示規則的預設值，並允許您建立跨資源查詢記錄警示規則。 您可以使用[計畫查詢規則 API 的 Azure 資源管理器範本](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)創建跨資源查詢日誌警報規則，而無需進行切換，但此警報規則可以通過[計畫查詢規則 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)而不是從 Azure 門戶進行管理。
+* 您可以包含在單一查詢中的 Application Insights 資源和 Log Analytics 工作區數目限制為100。
+* View Designer 不支援跨資源查詢。 您可以在 Log Analytics 中撰寫查詢，並將它釘選到 Azure 儀表板，以將[記錄查詢視覺化](../learn/tutorial-logs-dashboards.md)。 
+* 新的 [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) 支援記錄警示中的跨資源查詢。 根據預設，Azure 監視器會使用[舊版 Log Analytics 警示 API](../platform/api-alerts.md) 從 Azure 入口網站建立新的記錄警示規則，除非您從[舊版記錄警示 API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) 切換。 切換之後，新的 API 將成為 Azure 入口網站中新警示規則的預設值，並允許您建立跨資源查詢記錄警示規則。 您可以使用[SCHEDULEDQUERYRULES api 的 Azure Resource Manager 範本](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template)來建立跨資源查詢記錄警示規則，而不需進行切換，但此警示規則可透過[scheduledQueryRules api](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)來管理，而不是從 Azure 入口網站。
 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>跨 Log Analytics 工作區和從 Application Insights 查詢
@@ -38,7 +38,7 @@ ms.locfileid: "79249603"
 
     `workspace("contosoretail-it").Update | count`
 
-* 限定名稱 - 是工作區的"全名"，由此格式的訂閱名稱、資源組和元件名稱組成：*訂閱名稱/資源組/元件名稱*。 
+* 限定名稱-是工作區的「完整名稱」，由訂用帳戶名稱、資源群組和元件名稱所組成，其格式如下： *subscriptionName/resourceGroup/componentName*。 
 
     `workspace('contoso/contosoretail/contosoretail-it').Update | count`
 
@@ -67,7 +67,7 @@ ms.locfileid: "79249603"
     `app("fabrikamapp")`
 
     >[!NOTE]
-    >按名稱標識應用程式假定所有可訪問的訂閱都是唯一的。 如果您有多個應用程式具有該指定名稱，查詢就會因為語意模糊而失敗。 在此情況下，您必須使用其中一種其他識別碼。
+    >依名稱識別應用程式會在所有可存取的訂用帳戶中採用唯一性。 如果您有多個應用程式具有該指定名稱，查詢就會因為語意模糊而失敗。 在此情況下，您必須使用其中一種其他識別碼。
 
 * 限定名稱 - 是應用程式的「完整名稱」，由訂用帳戶名稱、資源群組及元件名稱所組成，格式如下：*subscriptionName/resourceGroup/componentName*。 
 
@@ -129,7 +129,7 @@ applicationsScoping
 ```
 
 >[!NOTE]
->此方法不能與日誌警報一起使用，因為警報規則資源（包括工作區和應用程式）的訪問驗證是在警報創建時執行的。 不支援在創建警報後向函數添加新資源。 如果希望使用函數在日誌警報中定義資源，則需要在門戶中編輯警報規則，或者使用資源管理器範本來更新作用域資源。 或者，您可以在日誌警報查詢中包含資源清單。
+>這個方法無法搭配記錄警示使用，因為警示規則資源（包括工作區和應用程式）的存取驗證是在警示建立期間執行。 不支援在建立警示之後，將新資源新增至函式。 如果您想要針對記錄警示中的資源範圍使用函式，您必須在入口網站中編輯警示規則，或使用 Resource Manager 範本來更新已設定範圍的資源。 或者，您可以在記錄警示查詢中包含資源的清單。
 
 
 ![時間圖](media/cross-workspace-query/chart.png)

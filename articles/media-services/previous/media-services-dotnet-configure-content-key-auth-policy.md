@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251202"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>設定內容金鑰授權原則
 
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
  您可以使用 Azure 媒體服務來傳遞受到進階加密標準 (AES) 保護的 MPEG DASH、Smooth Streaming 和 HTTP Live Streaming (HLS) 串流，方法是使用 128 位元加密金鑰或 [PlayReady 數位版權管理 (DRM)](https://www.microsoft.com/playready/overview/)。 使用媒體服務，您還可以傳遞使用 Widevine DRM 加密的 DASH 串流。 PlayReady 和 Widevine 是依照一般加密 (ISO/IEC 23001-7 CENC) 規格加密。
 
 媒體服務也提供金鑰/授權傳遞服務，用戶端可以從該處取得 AES 金鑰或 PlayReady/Widevine 授權，以便播放加密的內容。
@@ -34,7 +34,7 @@ ms.locfileid: "79251202"
 
 播放程式要求串流時，媒體服務便會使用 AES 或 DRM 加密，使用指定的金鑰動態加密您的內容。 為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了決定使用者是否有權取得金鑰，服務會評估為金鑰指定的授權原則。
 
-媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可以有一或多個授權限制。 選項包括開放式或權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 Web 權杖 （[SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)） 格式和 JSON Web 權杖 （[JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)） 格式的權杖.
+媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可以有一或多個授權限制。 選項包括開放式或權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 web 權杖（[SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)）格式和 JSON web 權杖（[JWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)）格式的權杖。
 
 媒體服務不提供 STS。 您可以建立自訂 STS，或使用 Azure 存取控制服務來發行權杖。 STS 必須設定為建立使用指定金鑰簽署的權杖，並發行在權杖限制組態中指定的宣告 (如本文中所述)。 如果權杖有效，且權杖中的宣告符合為內容金鑰設定的宣告，媒體服務金鑰傳遞服務會將加密金鑰傳回給用戶端。
 
@@ -231,7 +231,7 @@ Open 限制表示系統會將金鑰傳遞給提出金鑰要求的任何人。 �
 ## <a name="playready-dynamic-encryption"></a>PlayReady 動態加密。
 您可以使用媒體服務來設定您要 PlayReady DRM 執行階段在使用者嘗試播放受保護內容時強制執行的權限和限制。 
 
-當您使用 PlayReady 保護內容時，需要在授權策略中指定的內容之一是定義[PlayReady 許可證範本](media-services-playready-license-template-overview.md)的 XML 字串。 在適用於 .NET 的媒體服務 SDK 中，PlayReadyLicenseResponseTemplate 和 PlayReadyLicenseTemplate 類別可協助您定義 PlayReady 授權範本。
+當您使用 PlayReady 保護內容時，您需要在授權原則中指定的其中一件事是定義[PlayReady 授權範本](media-services-playready-license-template-overview.md)的 XML 字串。 在適用於 .NET 的媒體服務 SDK 中，PlayReadyLicenseResponseTemplate 和 PlayReadyLicenseTemplate 類別可協助您定義 PlayReady 授權範本。
 
 若要了解如何使用 PlayReady 和 Widevine 來加密內容，請參閱[使用 PlayReady 和/或 Widevine 動態一般加密](media-services-protect-with-playready-widevine.md)。
 
@@ -416,7 +416,7 @@ Open 限制表示系統會將金鑰傳遞給提出金鑰要求的任何人。 �
     }
 ```
 
-### <a name="tokentype"></a><a id="TokenType"></a>權杖類型
+### <a name="tokentype"></a><a id="TokenType"></a>TokenType
 
 ```csharp
     public enum TokenType

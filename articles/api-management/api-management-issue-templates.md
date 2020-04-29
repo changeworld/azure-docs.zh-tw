@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1dac90053797caf66af79e458b9dbb95b682cd17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249577"
 ---
 # <a name="issue-templates-in-azure-api-management"></a>Azure API 管理中的問題範本
@@ -37,7 +37,7 @@ ms.locfileid: "79249577"
 ##  <a name="issue-list"></a><a name="IssueList"></a>問題清單  
  「問題清單」**** 範本可讓您自訂開發人員入口網站中問題清單頁面的主體。  
   
- ![問題清單 開發人員門戶](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 問題清單開發人員門戶")  
+ ![問題清單開發人員入口網站](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "APIM 問題清單開發人員入口網站")  
   
 ### <a name="default-template"></a>預設範本  
   

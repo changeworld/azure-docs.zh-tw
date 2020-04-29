@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
 ms.openlocfilehash: e76fc2da8da2325a8bb0cda47c4405c9eb03c8f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249993"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>使用 Azure 入口網站將 OS 磁碟連結至復原 VM，以針對 Windows VM 進行疑難排解
@@ -26,32 +26,32 @@ ms.locfileid: "79249993"
 疑難排解程序如下所示︰
 
 1. 停止受影響的 VM。
-1. 為 VM 的 OS 磁片創建快照。
-1. 從快照創建虛擬硬碟。
+1. 為 VM 的 OS 磁片建立快照集。
+1. 從快照集建立虛擬硬碟。
 1. 將虛擬硬碟連結和掛接至另一個 Windows VM，以進行疑難排解。
 1. 連接至疑難排解 VM。 編輯檔案或執行任何工具來修正原始虛擬硬碟的問題。
 1. 從疑難排解 VM 卸載並中斷連結虛擬硬碟。
-1. 將作業系統磁片交換為 VM。
+1. 交換 VM 的 OS 磁片。
 
 > [!NOTE]
-> 本文不適用於具有非託管磁片的 VM。
+> 本文不適用於具有非受控磁片的 VM。
 
-## <a name="take-a-snapshot-of-the-os-disk"></a>拍攝作業系統磁片的快照
-快照集是完整的虛擬硬碟 (VHD) 唯讀複本。 我們建議您在拍攝快照之前乾淨地關閉 VM，以清除正在進行的任何進程。 要拍攝作業系統磁片的快照，請按照以下步驟操作：
+## <a name="take-a-snapshot-of-the-os-disk"></a>建立 OS 磁片的快照集
+快照集是完整的虛擬硬碟 (VHD) 唯讀複本。 建議您在建立快照集之前，先完全關閉 VM，以清除正在進行中的任何處理程式。 若要建立 OS 磁片的快照集，請依照下列步驟進行：
 
-1. 移至 [Azure 入口網站 ](https://portal.azure.com)。 從側邊欄中選擇**虛擬機器**，然後選擇有問題的 VM。
-1. 在左側窗格中，選擇**磁片**，然後選擇 OS 磁片的名稱。
-    ![有關作業系統磁片名稱的圖像](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
-1. 在 OS 磁片的 **"概述"** 頁上，然後選擇 **"創建快照**"。
-1. 在與作業系統磁片相同的位置創建快照。
+1. 移至 [Azure 入口網站 ](https://portal.azure.com)。 從側邊欄選取 [**虛擬機器**]，然後選取發生問題的 VM。
+1. 在左窗格中選取 [**磁片**]，然後選取作業系統磁片的名稱。
+    ![關於 OS 磁片名稱的影像](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
+1. 在作業系統磁片的 [**總覽**] 頁面上，選取 [**建立快照**集]。
+1. 在與 OS 磁片相同的位置中建立快照集。
 
 ## <a name="create-a-disk-from-the-snapshot"></a>從快照集建立磁碟
-要從快照創建磁片，請按照以下步驟操作：
+若要從快照集建立磁片，請遵循下列步驟：
 
-1. 從 Azure 門戶中選擇**雲外殼**。
+1. 從 Azure 入口網站選取 [ **Cloud Shell** ]。
 
-    ![有關開放雲外殼的圖像](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
-1. 運行以下 PowerShell 命令，從快照創建託管磁片。 應將這些示例名稱替換為適當的名稱。
+    ![開啟 Cloud Shell 的相關影像](./media/troubleshoot-recovery-disks-portal-windows/cloud-shell.png)
+1. 執行下列 PowerShell 命令，以從快照集建立受控磁片。 您應該以適當的名稱取代這些範例名稱。
 
     ```powershell
     #Provide the name of your resource group
@@ -81,22 +81,22 @@ ms.locfileid: "79249993"
      
     New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
     ```
-3. 如果命令成功運行，您將在提供的資源組中看到新磁片。
+3. 如果命令執行成功，您將會在您提供的資源群組中看到新的磁片。
 
-## <a name="attach-the-disk-to-another-vm"></a>將磁片連接到另一個 VM
-在接下來幾個步驟中，您將使用另一個 VM 進行疑難排解。 將磁片附加到故障排除 VM 後，可以流覽和編輯磁片的內容。 此過程允許您更正任何配置錯誤或查看其他應用程式或系統日誌檔。 要將磁片附加到其他 VM，請按照以下步驟操作：
+## <a name="attach-the-disk-to-another-vm"></a>將磁片連結至另一個 VM
+在接下來幾個步驟中，您將使用另一個 VM 進行疑難排解。 將磁片連結至疑難排解 VM 之後，您可以流覽並編輯磁片的內容。 此程式可讓您更正任何設定錯誤，或檢查其他應用程式或系統記錄檔。 若要將磁片連結至另一個 VM，請遵循下列步驟：
 
-1. 從入口網站選取資源群組，然後選取疑難排解 VM。 選擇**磁片**，選擇 **"編輯**"，然後按一下"**添加資料磁片**：
+1. 從入口網站選取資源群組，然後選取疑難排解 VM。 選取 [**磁片**]，選取 [**編輯**]，然後按一下 [**新增資料磁片**]：
 
     ![在入口網站中連結現有磁碟](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
-2. 在 **"資料磁片"** 清單中，選擇您標識的 VM 的 OS 磁片。 如果看不到 OS 磁片，請確保對 VM 和 OS 磁片進行故障排除，並在同一區域（位置）中。 
-3. 選擇 **"保存"** 以應用更改。
+2. 在 [**資料磁片**] 清單中，選取您所識別 VM 的 OS 磁片。 如果您看不到 OS 磁片，請確定疑難排解 VM 和 OS 磁片位於相同的區域（位置）。 
+3. 選取 [**儲存**] 以套用變更。
 
-## <a name="mount-the-attached-data-disk-to-the-vm"></a>將附加的資料磁片安裝到 VM
+## <a name="mount-the-attached-data-disk-to-the-vm"></a>將連結的資料磁片掛接至 VM
 
-1. 打開遠端桌面連線到故障排除 VM。 
-2. 在疑難排解 VM 中，打開**伺服器管理員**，然後選擇**檔和存儲服務**。 
+1. 開啟對疑難排解 VM 的遠端桌面連線。 
+2. 在 [疑難排解 VM] 中，開啟 [**伺服器管理員**]，然後選取 [檔案**和存放服務**]。 
 
     ![選取伺服器管理員內的檔案和存放服務](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
@@ -119,21 +119,21 @@ ms.locfileid: "79249993"
     ![在伺服器管理員中將資料磁碟設為離線](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
 
 3. 現在從 VM 中斷連結虛擬硬碟。 在 Azure 入口網站中選取 VM，然後按一下 [磁碟]****。 
-4. 選擇 **"編輯**"，選擇您連接的 OS 磁片，然後按一下 **"分離**" ：
+4. 選取 [**編輯**]，選取您連接的 OS 磁片，然後按一下 [卸**離**]：
 
     ![將現有虛擬硬碟中斷連結](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
     請稍候，等待 VM 成功將資料磁碟中斷連結再繼續。
 
-## <a name="swap-the-os-disk-for-the-vm"></a>將作業系統磁片交換為 VM
+## <a name="swap-the-os-disk-for-the-vm"></a>交換 VM 的 OS 磁片
 
-Azure 門戶現在支援更改 VM 的 OS 磁片。 若要這樣做，請遵循下列步驟：
+Azure 入口網站現在支援變更 VM 的 OS 磁片。 若要執行此動作，請依照下列步驟執行：
 
-1. 移至 [Azure 入口網站 ](https://portal.azure.com)。 從側邊欄中選擇**虛擬機器**，然後選擇有問題的 VM。
-1. 在左側窗格中，選擇**磁片**，然後選擇 **"交換 OS 磁片**"。
-        ![有關 Azure 門戶中交換 OS 磁片的圖像](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
+1. 移至 [Azure 入口網站 ](https://portal.azure.com)。 從側邊欄選取 [**虛擬機器**]，然後選取發生問題的 VM。
+1. 在左窗格中選取 [**磁片**]，然後選取 [**交換 OS 磁片**]。
+        ![Azure 入口網站中交換 OS 磁片的相關影像](./media/troubleshoot-recovery-disks-portal-windows/swap-os-ui.png)
 
-1. 選擇您修復的新磁片，然後鍵入 VM 的名稱以確認更改。 如果在清單中看不到磁片，請等待 10 + 15 分鐘後，您將磁片從故障排除 VM 中分離。 還要確保磁片與 VM 處於同一位置。
+1. 選擇您已修復的新磁片，然後輸入 VM 的名稱以確認變更。 如果您在清單中看不到磁片，請在從疑難排解 VM 卸離磁片後，等待 10 ~ 15 分鐘。 也請確定磁片與 VM 位於相同的位置。
 1. 選取 [確定]。
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,6 +1,6 @@
 ---
-title: Azure 經典 CLI 命令
-description: Azure 命令列介面 （CLI） 命令來管理資源。
+title: Azure 傳統 CLI 命令
+description: 用來管理資源的 Azure 命令列介面（CLI）命令。
 author: cynthn
 manager: gwallace
 ms.service: virtual-machines
@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
 ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250877"
 ---
-# <a name="azure-classic-cli-commands"></a>Azure 經典 CLI 命令 
+# <a name="azure-classic-cli-commands"></a>Azure 傳統 CLI 命令 
 
 [!INCLUDE [classic-vm-deprecation](../../includes/classic-vm-deprecation.md)]
 
-本主題將說明如何安裝 Azure 傳統 CLI。 傳統 CLI 已有替代產品，應只搭配傳統部署模型使用。 對於所有其他部署，請使用 Azure [CLI](https://docs.microsoft.com/cli/azure/)。
+本主題將說明如何安裝 Azure 傳統 CLI。 傳統 CLI 已有替代產品，應只搭配傳統部署模型使用。 針對所有其他部署，請使用[Azure CLI](https://docs.microsoft.com/cli/azure/)。
 
-本文提供了通常用於創建和管理 Azure 資源的 Azure 經典命令列介面 （CLI） 命令的語法和選項。 這不是完整的參考，您的 CLI 版本可能會顯示稍微不同的命令或參數。 
+本文提供您通常用來建立和管理 Azure 資源的 Azure 傳統命令列介面（CLI）命令的語法和選項。 這不是完整的參考，您的 CLI 版本可能會顯示稍微不同的命令或參數。 
 
-要開始，請先[安裝 Azure 經典 CLI](../cli-install-nodejs.md)並[連接到 Azure 訂閱](/cli/azure/authenticate-azure-cli)。
+若要開始使用，請先[安裝 azure 傳統 CLI](../cli-install-nodejs.md) ，並[連接到您的 azure 訂](/cli/azure/authenticate-azure-cli)用帳戶。
 
 如需在資源管理員模式中命令列目前的命令語法和選項，請輸入 `azure help`，或顯示特定命令的說明 `azure help [command]`。 也可以在文件中找到建立和管理特定 Azure 服務的 CLI 範例。
 
@@ -112,7 +112,7 @@ ms.locfileid: "79250877"
 
     availset delete [options] <resource-group> <name>
 
-## <a name="local-settings"></a>本地設置
+## <a name="local-settings"></a>本機設定
 **列出 Azure CLI 組態設定**
 
     config list [options]
@@ -301,7 +301,7 @@ ms.locfileid: "79250877"
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>見解（事件、警報規則、自動縮放設置、指標）
+## <a name="insights-events-alert-rules-autoscale-settings-metrics"></a>深入解析（事件、警示規則、自動調整設定、計量）
 **擷取訂用帳戶、CorrelationID、資源群組、資源或資源提供者的作業記錄**
 
     insights logs list [options]
@@ -1330,7 +1330,7 @@ ms.locfileid: "79250877"
 <br>
 
     network public-ip list [options] <resource-group>
-列出資源組中的所有公共 IP 資源。
+列出資源群組內的所有公用 IP 資源。
 
     azure network public-ip list -g myresourcegroup
 
@@ -1503,7 +1503,7 @@ ms.locfileid: "79250877"
 
     network gateway list [options] <resource-group>
 
-## <a name="resource-provider-registrations"></a>資源供應商註冊
+## <a name="resource-provider-registrations"></a>資源提供者註冊
 **列出 Resource Manager 中目前已註冊的提供者**
 
     provider list [options]
