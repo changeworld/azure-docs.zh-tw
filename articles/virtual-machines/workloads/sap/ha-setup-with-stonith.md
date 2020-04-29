@@ -14,17 +14,17 @@ ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4060dbe936af8ff1f9dd8c958f64834cb06525de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77615093"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>使用 STONITH 在 SUSE 中進行高可用性設定
 本文件提供使用 STONITH 裝置在 SUSE 作業系統上進行高可用性設定的詳細逐步指示。
 
-**免責聲明：***本指南是通過在 Microsoft HANA 大型實例環境中測試設定派生的，該設置已成功工作。由於 HANA 大型實例的 Microsoft 服務管理團隊不支援作業系統，您可能需要聯繫 SUSE 以進行進一步的故障排除或對作業系統層進行澄清。Microsoft 服務管理團隊確實設置了 STONITH 設備並完全支援並可以參與對 STONITH 設備問題的故障排除。*
-## <a name="overview"></a>總覽
+**免責聲明：** *本指南的衍生方式是在 Microsoft HANA 大型實例環境中測試安裝程式，這項功能成功運作。由於適用于 HANA 大型實例的 Microsoft 服務管理小組不支援作業系統，因此您可能需要聯繫 SUSE，以在作業系統層進行進一步的疑難排解或澄清。Microsoft 服務管理小組會設定 STONITH 裝置並完全支援，並可用於針對 STONITH 裝置問題進行疑難排解。*
+## <a name="overview"></a>概觀
 若要使用 SUSE 叢集進行高可用性設定，必須符合下列先決條件。
 ### <a name="pre-requisites"></a>必要條件
 - 已佈建 HANA 大型執行個體
@@ -63,7 +63,7 @@ ms.locfileid: "77615093"
 7.  設定叢集資源
 8.  測試容錯移轉程序
 
-## <a name="1---identify-the-sbd-device"></a>1. 識別 SBD 設備
+## <a name="1---identify-the-sbd-device"></a>1. 識別 SBD 裝置
 本節說明在 Microsoft 服務管理小組設定 STONITH 之後，如何為您的設定判斷 SBD 裝置。 **本節僅適用於現有客戶**。 如果您是新客戶，Microsoft 服務管理小組會提供 SBD 裝置名稱給您，而您可以略過本節。
 
 1.1 將 */etc/iscsi/initiatorname.isci* 修改為 
@@ -85,14 +85,14 @@ iscsiadm -m discovery -t st -p <IP address provided by Service Management>:3260
 
 ![iSCSIadmDiscovery.png](media/HowToHLI/HASetupWithStonith/iSCSIadmDiscovery.png)
 
-1.4 執行命令以登入 iSCSI 裝置，它會顯示四個工作階段。 在**兩個**節點上運行它。
+1.4 執行命令以登入 iSCSI 裝置，它會顯示四個工作階段。 在**這兩個**節點上執行。
 
 ```
 iscsiadm -m node -l
 ```
 ![iSCSIadmLogin.png](media/HowToHLI/HASetupWithStonith/iSCSIadmLogin.png)
 
-1.5 執行重新掃描腳本 *：rescan-scsi-bus.sh*。 此腳本顯示為您創建的新磁片。  請在這兩個節點上執行。 您應會看到大於零的 LUN (例如 1、2 等)。
+1.5 執行重新掃描腳本： *rescan-scsi-bus.sh*。 此腳本會顯示為您建立的新磁片。  請在這兩個節點上執行。 您應會看到大於零的 LUN (例如 1、2 等)。
 
 ```
 rescan-scsi-bus.sh
@@ -107,7 +107,7 @@ rescan-scsi-bus.sh
 
 ![fdisk-l.png](media/HowToHLI/HASetupWithStonith/fdisk-l.png)
 
-## <a name="2---initialize-the-sbd-device"></a>2. 初始化 SBD 設備
+## <a name="2---initialize-the-sbd-device"></a>2. 初始化 SBD 裝置
 
 2.1 在這**兩個**節點上初始化 SBD 裝置
 
@@ -122,7 +122,7 @@ sbd -d <SBD Device Name> create
 sbd -d <SBD Device Name> dump
 ```
 
-## <a name="3---configuring-the-cluster"></a>3. 配置群集
+## <a name="3---configuring-the-cluster"></a>3. 設定叢集
 本節說明設定 SUSE HA 叢集的步驟。
 ### <a name="31-package-installation"></a>3.1 套件安裝
 3.1.1   請確定已安裝 ha_sles 和 SAPHanaSR-doc 模式。 如果未安裝，請安裝它們。 在這**兩個**節點上安裝。
@@ -143,10 +143,10 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-hawk-continue.png](media/HowToHLI/HASetupWithStonith/yast-hawk-continue.png)
 
-按一下"**繼續"**
+按一下 [**繼續**]
 
-預期值 = 部署的節點數（在本例中![為](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png)2）yast-Cluster-Security.png 按一下 **"下一個**
-![yast-](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)群集配置-csync2.png 添加節點名稱"，然後按一下"添加建議的檔"
+預期值 = 部署的節點數目（在此案例中為![2） yast-Cluster-Security](media/HowToHLI/HASetupWithStonith/yast-Cluster-Security.png) ，請按 **[下一步 yast-cluster-configure-csync2] [** 
+ ![ ](media/HowToHLI/HASetupWithStonith/yast-cluster-configure-csync2.png)新增節點名稱]，然後按一下 [新增建議的檔案]
 
 按一下 [Turn csync2 ON] \(開啟 csync2\)
 
@@ -154,19 +154,19 @@ zypper in SAPHanaSR SAPHanaSR-doc
 
 ![yast-key-file.png](media/HowToHLI/HASetupWithStonith/yast-key-file.png)
 
-按一下 [確定]****。
+按一下 [檔案] &gt; [新增] &gt; [專案] 
 
 驗證會使用 IP 位址和 Csync2 中的預先共用金鑰執行。 金鑰檔案是使用 csync2 -k /etc/csync2/key_hagroup 產生。 檔案 key_hagroup 應在建立之後手動複製到叢集的所有成員。 **務必將檔案從 node1 複製到 node2**。
 
 ![yast-cluster-conntrackd.png](media/HowToHLI/HASetupWithStonith/yast-cluster-conntrackd.png)
 
-按一下 **"下一個**
-![yast-叢集服務.png"](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
+按 **[下一步**
+![yast-cluster-service .png]](media/HowToHLI/HASetupWithStonith/yast-cluster-service.png)
 
 在預設選項中，[Booting] \(開機\) 處於關閉狀態，請將它變更為 [on] \(開啟\)，以在開機時啟動 Pacemaker。 您可以根據自己的設定需求來選擇。
 按一下 [下一步]****，叢集設定就完成了。
 
-## <a name="4---setting-up-the-softdog-watchdog"></a>4. 設置軟狗看門狗
+## <a name="4---setting-up-the-softdog-watchdog"></a>4. 設定 Softdog 看門狗
 本節說明監視程式 (softdog) 的設定。
 
 4.1 在這**兩個**節點上將下行加入至 /etc/init.d/boot.local**。
@@ -233,7 +233,7 @@ systemctl start pacemaker
 
 如果 Pacemaker 服務*失敗*，請參閱「案例 5：Pacemaker 服務失敗」**
 
-## <a name="5---joining-the-cluster"></a>5. 加入群集
+## <a name="5---joining-the-cluster"></a>5. 加入叢集
 本節說明如何將節點加入叢集。
 
 ### <a name="51-add-the-node"></a>5.1 新增節點
@@ -243,7 +243,7 @@ ha-cluster-join
 ```
 如果您在加入叢集期間收到*錯誤*，請參閱「案例 6：節點 2 無法加入叢集」**。
 
-## <a name="6---validating-the-cluster"></a>6. 驗證群集
+## <a name="6---validating-the-cluster"></a>6. 驗證叢集
 
 ### <a name="61-start-the-cluster-service"></a>6.1 啟動叢集服務
 檢查並選擇性地在第一次在這**兩者**節點上啟動叢集。
@@ -257,9 +257,9 @@ systemctl start pacemaker
 ```
 crm_mon
 ```
-![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png)您還可以登錄到 hawk 以檢查群集狀態*HTTPs://\<節點 IP>：7630*。 預設使用者為 hacluster，而密碼為 linux。 如有需要，您可以使用 *passwd* 命令來變更密碼。
+![crm-mon](media/HowToHLI/HASetupWithStonith/crm-mon.png)您也可以登入 hawk 以檢查叢集狀態*HTTPs://\<節點 IP>： 7630*。 預設使用者為 hacluster，而密碼為 linux。 如有需要，您可以使用 *passwd* 命令來變更密碼。
 
-## <a name="7-configure-cluster-properties-and-resources"></a>7. 配置群集屬性和資源 
+## <a name="7-configure-cluster-properties-and-resources"></a>7. 設定叢集屬性和資源 
 本節說明設定叢集資源的步驟。
 在此範例中，設定下列資源，其他部分可以 (視需要) 參考 SUSE HA 指南來設定。 只需要在**其中一個節點**執行此設定。 請在主要節點上執行。
 
@@ -322,11 +322,11 @@ crm configure load update crm-vip.txt
 當您執行命令 *crm_mon* 時，您可以看到有兩個資源。
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-此外，您還可以在*HTTPs://\<節點 IP 位址>：7630/cib/即時/狀態*處查看狀態
+此外，您可以在*HTTPs://\<節點 IP 位址>： 7630/cib/live/state*中查看狀態
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 
-## <a name="8-testing-the-failover-process"></a>8. 測試容錯移轉過程
+## <a name="8-testing-the-failover-process"></a>8. 測試容錯移轉程式
 若要測試容錯移轉程序，請停止 node1 上的 Pacemaker 服務，並將資源容錯移轉至 node2。
 ```
 Service pacemaker stop
@@ -334,14 +334,14 @@ Service pacemaker stop
 現在，停止 **node2** 上的 Pacemaker 服務，然後將資源容錯移轉至 **node1**
 
 **容錯移轉之前**  
-![容錯移轉前.png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
+![Before-failover .png](media/HowToHLI/HASetupWithStonith/Before-failover.png)  
 
 **容錯移轉之後**  
-![容錯移轉後.png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
-![容錯移轉後一個 crm](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
+![after-failover .png](media/HowToHLI/HASetupWithStonith/after-failover.png)  
+![crm-mon-after-failover .png](media/HowToHLI/HASetupWithStonith/crm-mon-after-failover.png)  
 
 
-## <a name="9-troubleshooting"></a>9. 故障排除
+## <a name="9-troubleshooting"></a>9. 疑難排解
 本節說明可能會在設定期間遇到的一些失敗案例。 您不一定會遇到這些問題。
 
 ### <a name="scenario-1-cluster-node-not-online"></a>案例 1：叢集節點未連線
@@ -436,11 +436,11 @@ zypper -n install libyui-qt
 ![yast-pattern1.png](media/HowToHLI/HASetupWithStonith/yast-pattern1.png)
 ![yast-pattern2.png](media/HowToHLI/HASetupWithStonith/yast-pattern2.png)
 
-按一下 [接受]****
+按一下 [**接受**]
 
 ![yast-changed-packages.png](media/HowToHLI/HASetupWithStonith/yast-changed-packages.png)
 
-按一下"**繼續"**
+按一下 [**繼續**]
 
 ![yast2-performing-installation.png](media/HowToHLI/HASetupWithStonith/yast2-performing-installation.png)
 

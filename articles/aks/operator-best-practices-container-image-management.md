@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: efe72157f598c336248e407c57bce92fe87da23a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594734"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中的容器映像管理與安全性最佳做法
@@ -23,7 +23,7 @@ ms.locfileid: "77594734"
 
 您也可以閱讀適用於[叢集安全性][best-practices-cluster-security]與 [Pod 安全性][best-practices-pod-security]的最佳做法。
 
-您還可以使用[安全中心的容器安全][security-center-containers]功能來説明掃描容器中的漏洞。  Azure[容器註冊表][security-center-acr]與安全中心集成，以説明保護映射和註冊表免受漏洞。
+您也可以使用[資訊安全中心中的容器安全性][security-center-containers]，協助掃描您的容器是否有弱點。  此外，也[Azure Container Registry][security-center-acr]與資訊安全中心整合，以協助保護您的映射和登錄不受弱點影響。
 
 ## <a name="secure-the-images-and-run-time"></a>保護映像與執行階段
 

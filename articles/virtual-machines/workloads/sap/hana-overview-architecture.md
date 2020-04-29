@@ -14,10 +14,10 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 39fcf5d0fe2273c4debd3ae5ebe5fd1190ddc959
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616957"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>什麼是 SAP HANA on Azure (大型執行個體)？
@@ -26,7 +26,7 @@ SAP HANA on Azure (大型執行個體) 是 Azure 獨有的解決方案。 除了
 
 客戶在基礎結構戳記內是利用租用戶來區隔，如下所示：
 
-- **網路**：通過每個客戶分配的租戶的虛擬網路隔離基礎結構堆疊中的客戶。 一個租用戶只會指派給單一客戶。 但一個客戶可以擁有多個租用戶。 租用戶的網路區隔會在基礎結構戳記層級禁止租用戶之間的網路通訊，即使租用戶屬於相同客戶亦然。
+- **網路**功能：透過每個客戶指派的租使用者，將基礎結構堆疊中的客戶隔離到虛擬網路。 一個租用戶只會指派給單一客戶。 但一個客戶可以擁有多個租用戶。 租用戶的網路區隔會在基礎結構戳記層級禁止租用戶之間的網路通訊，即使租用戶屬於相同客戶亦然。
 - **儲存體元件**：透過已被指派存放磁碟區的存放虛擬機器來區隔。 存放磁碟區只能指派給一個存放虛擬機器。 一個存放虛擬機器只會指派給已通過 SAP HANA TDI 認證之基礎結構堆疊中的一個租用戶。 因此，指派給存放虛擬機器的存放磁碟區只能在一個特定且相關的租用戶中受到存取。 它們在已部署的不同租用戶之間是不可見的。
 - **伺服器或主機**：伺服器或主機單位不會在客戶或租用戶之間共用。 部署給客戶的伺服器或主機是不可分割的裸機計算單位，並且只會指派給一個租用戶。 您*無法*使用任何可讓您與其他客戶共用主機或伺服器的硬體分割或軟體分割。 指派給特定租用戶之存放虛擬機器的存放磁碟區會掛接到這類伺服器。 一個租用戶可以獨佔方式獲得不同 SKU 的一個到多個伺服器單位。
 - SAP HANA on Azure (大型執行個體) 的基礎結構戳記內會部署許多不同的租用戶，並透過租用戶概念在網路、儲存體和計算層級將這些租用戶彼此區隔。 
@@ -34,10 +34,10 @@ SAP HANA on Azure (大型執行個體) 是 Azure 獨有的解決方案。 除了
 
 這些裸機伺服器單位只支援用來執行 SAP HANA。 SAP 應用程式層或工作負載中介軟體層會在虛擬機器中執行。 執行 SAP HANA on Azure (大型執行個體) 單位的基礎結構戳記會連線至 Azure 網路服務骨幹。 如此，即可提供 SAP HANA on Azure (大型執行個體) 單位與虛擬機器之間的低延遲連線。
 
-截至 2019 年 7 月，我們區分了兩個不同的 HANA 大型實例圖章修訂版和部署位置：
+從2019年7月起，我們會區別 HANA 大型實例戳記的兩個不同修訂和部署位置：
 
-- "修訂版 3"（修訂版 3）：是否提供給客戶在 2019 年 7 月之前部署的印章
-- "修訂版 4"（修訂版 4）：在靠近 Azure VM 主機部署的新戳記設計，到目前為止，這些設計在 Azure 區域中發佈：
+- "修訂 3" （修訂版3）：是在2019年7月之前，可供客戶部署的戳記
+- "修訂 4" （第4版）：部署于接近 Azure VM 主機且目前為止的新戳記設計會在的 Azure 區域中發行：
     -  美國西部 2 
     -  美國東部 
     -  西歐
@@ -49,13 +49,13 @@ SAP HANA on Azure (大型執行個體) 是 Azure 獨有的解決方案。 除了
 
 HANA 大型執行個體指南的不同文件涵蓋下列領域：
 
-- [Azure 上的 SAP HANA（大型實例）概述和體系結構](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA（大型實例）在 Azure 上的基礎結構和連接](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 上的 SAP Hana （大型實例）總覽和架構](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 上的 SAP Hana （大型實例）基礎結構和連線能力](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [在 Azure 上安裝和設定 SAP HANA (大型執行個體)](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA（大型實例）在 Azure 上高可用性和災害復原](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA（大型實例）在 Azure 上進行故障排除和監視](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [在 Azure 上 SAP Hana （大型實例）高可用性和嚴重損壞修復](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Azure 上的 SAP Hana （大型實例）疑難排解和監視](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [使用 STONITH 在 SUSE 中進行高可用性設定](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [版本 3 戳的 II 型 SKU 的作業系統備份和恢復](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+- [修訂版3戳記之類型 II Sku 的 OS 備份和還原](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 **後續步驟**
 - 請參閱[認識詞彙](hana-know-terms.md)

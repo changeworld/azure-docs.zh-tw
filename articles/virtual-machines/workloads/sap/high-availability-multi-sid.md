@@ -17,10 +17,10 @@ ms.date: 12/09/2016
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8c7c6b797605da2884c6bffc47e593ffc9a3faca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77615144"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>建立 SAP NetWeaver 多 SID 組態
@@ -444,7 +444,7 @@ ms.locfileid: "77615144"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-2016 年 9 月，Microsoft 發佈了一項功能，即可以使用 Azure[內部負載等化器][load-balancer-multivip-overview]管理多個虛擬 IP 位址。 這項功能已存在 Azure 外部負載平衡器。
+Microsoft 于2016年9月發行了一項功能，可讓您使用[Azure 內部負載平衡器][load-balancer-multivip-overview]管理多個虛擬 IP 位址。 這項功能已存在 Azure 外部負載平衡器。
 
 如果您有 SAP 部署，可以使用內部負載平衡器針對 SAP 的 ASCS/SCS 建立 Windows 叢集組態，如 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]所述。
 
@@ -455,7 +455,7 @@ ms.locfileid: "77615144"
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 您已經設定用於一個 SAP ASCS/SCS 執行個體的 WSFC 叢集，如 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide]所述及如下圖所示。
 
 ![高可用性的 SAP ASCS/SCS 執行個體][sap-ha-guide-figure-6001]
@@ -642,7 +642,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 高階程序如下所示︰
 
 1. [安裝 SAP 第一個叢集節點][sap-ha-guide-9.1.2]。  
- 在此步驟中，您將在**存在 WSFC 叢集節點 1**上安裝具有高可用性 ASCS/SCS 實例的 SAP。
+ 在此步驟中，您會在**現有 WSFC 叢集節點 1**上使用高可用性 ASCS/SCS 實例安裝 SAP。
 
 2. [修改 ASCS/SCS 實例的 SAP 設定檔][sap-ha-guide-9.1.3]。
 
@@ -659,13 +659,13 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
  在用於 SAP ASCS/SCS 執行個體的兩個叢集節點上，您要開啟 SAP ASCS/SCS 所使用的所有 Windows 防火牆連接埠。 如需這些連接埠的清單，請參閱 [Windows VM 上的高可用性 SAP NetWeaver 指南][sap-ha-guide-8.8]。  
  此外，開啟 Azure 內部負載平衡器探查連接埠，在我們的案例中為 62350。
 
-7. [更改 SAP ERS Windows 服務實例的開始類型][sap-ha-guide-9.4]。
+7. [變更 SAP ERS Windows 服務實例的啟動類型][sap-ha-guide-9.4]。
 
 8. 在新的專用 VM 上[安裝 SAP 主要應用程式伺服器][sap-ha-guide-9.5]。
 
 9. 在新的專用 VM 上[安裝 SAP 額外應用程式伺服器][sap-ha-guide-9.6]。
 
-10. [測試 SAP ASCS/SCS 實例容錯移轉和 SIOS 複製][sap-ha-guide-10]。
+10. [測試 SAP ASCS/SCS 實例容錯移轉和 SIOS][sap-ha-guide-10]複寫。
 
 ## <a name="next-steps"></a>後續步驟
 

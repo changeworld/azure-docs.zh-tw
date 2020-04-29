@@ -1,15 +1,15 @@
 ---
-title: 在視覺化工作室中調試應用程式
+title: 在 Visual Studio 中偵錯工具
 description: 利用本機開發叢集上的 Visual Studio 來開發服務及為服務偵錯，以便改善您服務的可靠性和效能。
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: fff8a19d5643f7ce866c9eb9c57486340b6f8a50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77624129"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>使用 Visual Studio 偵錯 Service Fabric 應用程式
@@ -20,7 +20,7 @@ ms.locfileid: "77624129"
 
 
 ## <a name="debug-a-local-service-fabric-application"></a>偵錯本機 Service Fabric 應用程式
-您可以在本機電腦開發叢集中開發和偵錯 Azure Service Fabric 應用程式來節省時間和金錢。 Visual Studio 2019 或 2015 可以將應用程式部署到本地群集，並自動將調試器連接到應用程式的所有實例。 可視工作室必須以管理員身份運行才能連接調試器。
+您可以在本機電腦開發叢集中開發和偵錯 Azure Service Fabric 應用程式來節省時間和金錢。 Visual Studio 2019 或2015可以將應用程式部署至本機叢集，並自動將偵錯工具連接至應用程式的所有實例。 Visual Studio 必須以系統管理員身分執行，才能連接偵錯工具。
 
 1. 遵循 [設定 Service Fabric 開發環境](service-fabric-get-started.md)中的步驟來啟動本機開發叢集。
 2. 按 **F5** 或按一下 [偵錯]**** >  [開始偵錯]****。
@@ -39,7 +39,7 @@ ms.locfileid: "77624129"
    
     ![開啟診斷事件視窗][viewdiagnosticevents]
    
-    如果要將跟蹤篩選到特定服務或應用程式，請對該特定服務或應用程式啟用流式處理跟蹤。
+    如果您想要將追蹤篩選至特定的服務或應用程式，請在該特定服務或應用程式上啟用串流追蹤。
 6. 您可以在自動產生的 **ServiceEventSource.cs** 檔案中查看診斷事件，並從應用程式程式碼進行呼叫。
    
     ```csharp
@@ -48,21 +48,21 @@ ms.locfileid: "77624129"
 7. [診斷事件]**** 視窗支援篩選、暫停和即時檢查事件。  篩選是事件訊息的簡易字串搜尋，包括其內容。
    
     ![篩選、暫停和繼續，或即時檢查事件][diagnosticeventsactions]
-8. 偵錯服務如同偵錯任何其他應用程式。 您通常會通過 Visual Studio 設置中斷點，以便輕鬆調試。 即使可靠集合會在多個節點上複寫，它們仍會實作 IEnumerable。 此實現意味著您可以在調試時在視覺化工作室中使用"結果檢視"來查看您存儲在其中的內容。 為此，請設置代碼中的任意位置的中斷點。
+8. 偵錯服務如同偵錯任何其他應用程式。 您通常會透過 Visual Studio 設定中斷點，以方便進行偵錯工具。 即使可靠集合會在多個節點上複寫，它們仍會實作 IEnumerable。 此實作為表示您可以在進行偵錯工具時，使用 Visual Studio 中的 [結果] 視圖來查看您已儲存的內容。 若要這麼做，請在程式碼中的任何位置設定中斷點。
    
     ![開始偵錯應用程式][breakpoint]
 
 
-### <a name="running-a-script-as-part-of-debugging"></a>在調試中運行腳本
-在某些情況下，您可能需要在啟動調試會話時（例如不使用預設服務時）運行腳本。
+### <a name="running-a-script-as-part-of-debugging"></a>在進行調試過程中執行腳本
+在某些情況下，您可能需要在啟動調試過程中執行腳本（例如，不使用預設服務時）。
 
-在 Visual Studio 中，您可以在服務結構應用程式專案 （.sfproj） 的**腳本**資料夾中添加名為 **"啟動服務.ps1"** 的檔。 在本地群集中創建應用程式後，將調用此腳本。
+在 Visual Studio 中，您可以在 [Service Fabric 應用程式專案（. .sfproj）] 的 [**腳本**] 資料夾中新增名為**Start-Service**的檔案。 在本機叢集中建立應用程式之後，將會叫用此腳本。
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## <a name="debug-a-remote-service-fabric-application"></a>偵錯遠端 Service Fabric 應用程式
-如果 Service Fabric 應用程式在 Azure 中的 Service Fabric 群集上運行，則可以直接從 Visual Studio 遠端偵錯這些應用程式。
+如果您的 Service Fabric 應用程式是在 Azure 中的 Service Fabric 叢集上執行，您可以從 Visual Studio 直接從遠端偵錯這些應用程式。
 
 > [!NOTE]
 > 此功能需要 [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) 和 [Azure SDK for.NET 2.9](https://azure.microsoft.com/downloads/)。    
@@ -71,11 +71,11 @@ ms.locfileid: "77624129"
 > [!WARNING]
 > 遠端偵錯適用於開發/測試案例，而非用於生產環境中，因為會對執行中的應用程式造成影響。
 
-1. 在**雲資源管理器**中導航到群集。 按右鍵並選擇**啟用調試**
+1. 在**Cloud Explorer**中，流覽至您的叢集。 以滑鼠右鍵按一下並選擇 [**啟用調試**
    
     ![啟用遠端偵錯][enableremotedebugging]
    
-    此操作將啟動在叢集節點和所需網路設定上啟用遠端偵錯擴展的過程。
+    此動作將會開始在您的叢集節點上啟用遠端偵錯程式延伸模組和所需網路設定的程式。
 2. 在 [雲端總管]**** 中的叢集節點上按一下滑鼠右鍵，然後選擇 [附加偵錯工具]****
    
     ![連結偵錯工具][attachdebugger]
@@ -87,9 +87,9 @@ ms.locfileid: "77624129"
    
     偵錯工具將會複製至執行處理序的所有節點。
    
-   * 在調試無狀態服務的情況下，所有節點上服務的所有實例都是調試會話的一部分。
-   * 如果要調試有狀態服務，則只有任何分區的主副本處於活動狀態，因此被調試器捕獲。 如果在偵錯工作階段期間移動主要複本，仍會在偵錯工作階段內處理該複本。
-   * 要僅捕獲給定服務的相關分區或實例，可以使用條件中斷點僅中斷特定分區或實例。
+   * 如果您要對無狀態服務進行調試，所有節點上服務的所有實例都是 debug 會話的一部分。
+   * 如果您要對具狀態服務進行偵錯工具，則只有任何分割區的主要複本會處於作用中狀態，因此偵錯工具會攔截到它。 如果在偵錯工作階段期間移動主要複本，仍會在偵錯工作階段內處理該複本。
+   * 若只要捕捉指定服務的相關資料分割或實例，您可以使用條件式中斷點，只中斷特定的分割區或實例。
      
      ![條件式中斷點][conditionalbreakpoint]
      
@@ -102,7 +102,7 @@ ms.locfileid: "77624129"
     ![停用遠端偵錯][disableremotedebugging]
 
 ## <a name="streaming-traces-from-a-remote-cluster-node"></a>從遠端叢集節點串流追蹤
-您還可以將跟蹤直接從遠端叢集節點資料流到 Visual Studio。 這項功能可讓您串流在 Service Fabric 叢集節點上產生的 ETW 追蹤事件。
+您也可以直接從遠端叢集節點將追蹤串流至 Visual Studio。 這項功能可讓您串流在 Service Fabric 叢集節點上產生的 ETW 追蹤事件。
 
 > [!NOTE]
 > 此功能需要 [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) 和 [Azure SDK for.NET 2.9](https://azure.microsoft.com/downloads/)。
@@ -115,11 +115,11 @@ ms.locfileid: "77624129"
 > 串流追蹤適用於開發/測試案例，而非用於生產環境中，因為會對執行中的應用程式造成影響。
 > 在生產案例中，您應依賴使用 Azure 診斷轉送事件。
 
-1. 在**雲資源管理器**中導航到群集。 按右鍵並選擇**啟用流跟蹤**
+1. 在**Cloud Explorer**中，流覽至您的叢集。 以滑鼠右鍵按一下並選擇 [**啟用串流追蹤**]
    
     ![啟用遠端串流追蹤][enablestreamingtraces]
    
-    此操作將啟動在叢集節點上啟用流式跟蹤擴展以及所需網路設定的過程。
+    此動作會啟動在叢集節點上啟用串流追蹤延伸模組的程式，以及必要的網路設定。
 2. 展開 [雲端總管]**** 中的 [節點]**** 元素，以滑鼠右鍵按一下您要串流追蹤的節點，然後選擇 [檢視串流追蹤]****
    
     ![檢視遠端串流追蹤][viewremotestreamingtraces]
@@ -134,7 +134,7 @@ ms.locfileid: "77624129"
     ![停用遠端串流追蹤][disablestreamingtraces]
 
 ## <a name="next-steps"></a>後續步驟
-* [測試服務交換矩陣服務](service-fabric-testability-overview.md)。
+* [測試 Service Fabric 服務](service-fabric-testability-overview.md)。
 * [在 Visual Studio 中管理 Service Fabric 應用程式](service-fabric-manage-application-in-visual-studio.md)。
 
 <!--Image references-->

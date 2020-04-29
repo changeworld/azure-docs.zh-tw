@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: sngun
 ms.openlocfilehash: 40735f91e2ca58cc42f723c7993686d92f0e5ff0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77623335"
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>淘汰 S1、S2 和 S3 效能層級
@@ -26,7 +26,7 @@ ms.locfileid: "77623335"
 - [我該怎麼做才能確保不中斷地的存取我的資料？](#uninterrupted-access)
 - [在移轉之後我的集合會如何變更？](#collection-change)
 - [我移轉至單一資料分割集合之後，我的帳單將如何變更呢？](#billing-change)
-- [如果我需要超過 20 GB 的存儲空間，該怎麼辦？](#more-storage-needed)
+- [如果我需要超過 20 GB 的儲存體，該怎麼辦？](#more-storage-needed)
 - [在計劃性移轉之前，我可以在 S1、S2 和 S3 效能層級之間變更嗎？](#change-before)
 - [如何自己從 S1、S2、S3 效能層級移轉至單一資料分割集合？](#migrate-diy)
 - [如果我是 EA 客戶會受到什麼影響？](#ea-customer)
@@ -80,9 +80,9 @@ S1、S2 和 S3 效能層級不提供標準 Azure Cosmos DB 所提供的彈性。
 
 <a name="more-storage-needed"></a>
 
-## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>如果我需要超過 20 GB 的存儲空間，該怎麼辦？
+## <a name="what-if-i-need-more-than-20-gb-of-storage"></a>如果我需要超過 20 GB 的儲存體，該怎麼辦？
 
-無論是具有具有 S1、S2 或 S3 性能級別的集合，還是具有單個分區集合（所有分區集合都可用 20 GB 的存儲空間），都可以使用 Azure Cosmos DB 資料移轉工具將資料移轉到具有虛擬分區集合的資料無限存儲空間。 如需資料分割集合優點的相關詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割與規模調整](sql-api-partition-data.md)。 
+無論您的集合具有 S1、S2 或 S3 效能層級，或具有單一分割區集合，全都有 20 GB 的可用儲存空間，您可以使用 Azure Cosmos DB 資料移轉工具，將您的資料移轉至具有幾乎無限制儲存體的分割集合。 如需資料分割集合優點的相關詳細資訊，請參閱 [Azure Cosmos DB 中的資料分割與規模調整](sql-api-partition-data.md)。 
 
 <a name="change-before"></a>
 
@@ -134,4 +134,4 @@ EA 客戶將會受保護的價格，直到其目前合約結束。
 
 1.  [在 Cosmos DB 中分割資料](sql-api-partition-data.md)。 了解單一資料分割容器和資料分割容器的差異，以及實作資料分割策略以順暢地調整的秘訣。
 2.  [Cosmos DB 定價](https://azure.microsoft.com/pricing/details/cosmos-db/)。 深入了解佈建輸送量和使用儲存體的成本。
-3.  [請求單位](request-units.md)。 了解不同作業類型，例如讀取、寫入、查詢的輸送量耗用量。
+3.  [要求單位](request-units.md)。 了解不同作業類型，例如讀取、寫入、查詢的輸送量耗用量。

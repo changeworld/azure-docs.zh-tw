@@ -1,5 +1,5 @@
 ---
-title: 為 Cosmos DB 創建多個獨立的 Azure 函數觸發器
+title: 為 Cosmos DB 建立多個獨立的 Azure Functions 觸發程式
 description: 了解如何設定多個獨立的「Azure Functions 的 Cosmos DB 觸發程序」，以建立事件驅動的架構。
 author: ealsur
 ms.service: cosmos-db
@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
 ms.openlocfilehash: 32b680acdee29bf97a0e132fee93d5fee3377245
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77604952"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>建立多個 Azure Functions 的 Cosmos DB 觸發程序
@@ -31,8 +31,8 @@ ms.locfileid: "77604952"
 
 在此，您有兩個選項：
 
-* **根據函數創建一個租約容器**：此方法可以轉換為額外的成本，除非您使用的是[共用輸送量資料庫](./set-throughput.md#set-throughput-on-a-database)。 請記住，容器層級的最小輸送量為 400 個[要求單位](./request-units.md)，而在租用容器的案例中，只會用來檢查進度及維護狀態。
-* 擁有**一個租約容器並共用它**用於所有函數：第二個選項更好地利用容器上的預配請求單位，因為它允許多個 Azure 函數共用和使用相同的預配輸送量。
+* **針對每個函式建立一個租用容器**：除非您使用的是[共用輸送量資料庫](./set-throughput.md#set-throughput-on-a-database)，否則此方法會轉譯為額外成本。 請記住，容器層級的最小輸送量為 400 個[要求單位](./request-units.md)，而在租用容器的案例中，只會用來檢查進度及維護狀態。
+* 有**一個租用容器，並將它共用**于您所有的函式：第二個選項可讓您更有效地使用容器上已布建的要求單位，因為它可讓多個 Azure Functions 共用並使用相同的布建輸送量。
 
 本文的目標是引導您完成第二個選項。
 

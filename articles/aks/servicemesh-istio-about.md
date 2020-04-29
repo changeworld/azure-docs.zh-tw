@@ -1,46 +1,46 @@
 ---
-title: 伊斯特奧概述
-description: 獲取伊斯特奧的概述
+title: Istio 的總覽
+description: 取得 Istio 的總覽
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8518e30a54c2486abf84cd9ac026cc4dccb3fa84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77593895"
 ---
-# <a name="istio"></a>伊斯特奧
+# <a name="istio"></a>Istio
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
-[Istio][istio]是一個功能齊全、可自訂且可擴展的服務網格。
+[Istio][istio]是功能完整、可藉且可擴充的服務網格。
 
 ## <a name="architecture"></a>架構
 
-Istio 提供了一個資料平面，該平面由[基於特使][envoy-proxy]的側車組成。 這些智慧代理控制網格化應用和工作負載中進出的所有網路流量。
+Istio 提供由以[Envoy][envoy-proxy]為基礎的 sidecar 所組成的資料平面。 這些智慧型 proxy 會控制進出網狀應用程式和工作負載的所有網路流量。
 
-控制平面通過以下[元件][what-is-istio]管理配置、策略和遙測：
+控制平面會透過下列[元件][what-is-istio]來管理設定、原則和遙測：
 
-- **混合器**- 實施存取控制和使用策略。 從推送到[普羅米塞烏斯][prometheus]的代理中收集遙測資料。
+- **混音**器-強制執行存取控制和使用原則。 從已推送至[Prometheus][prometheus]的 proxy 收集遙測。
 
-- **試驗**- 為代理提供服務發現和流量管理原則/配置。
+- **試驗**-提供 proxy 的服務探索和流量管理原則/設定。
 
-- **Citadel** - 提供允許服務之間的 mTLS 的標識和安全功能。
+- **Citadel** -提供身分識別和安全性功能，允許服務之間的 mTLS。
 
-- **Galley** - 摘要，並為元件提供配置。
+- 向外**條**-抽象化並提供元件的設定。
 
-下面的體系結構圖演示了資料平面和控制平面中的各個元件如何交互。
-
-
-![Istio 元件和體系結構概述。](media/servicemesh/istio/about-architecture.png)
+下列架構圖表示范資料平面和控制平面內的各種元件如何互動。
 
 
-## <a name="selection-criteria"></a>選擇標準
+![Istio 元件和架構的總覽。](media/servicemesh/istio/about-architecture.png)
 
-在評估 Istio 的工作負載時，瞭解並考慮以下方面非常重要：
+
+## <a name="selection-criteria"></a>選取準則
+
+針對您的工作負載評估 Istio 時，請務必瞭解並考慮下列各方面：
 
 - [設計目標](#design-goals)
 - [功能](#capabilities)
@@ -49,51 +49,51 @@ Istio 提供了一個資料平面，該平面由[基於特使][envoy-proxy]的�
 
 ### <a name="design-goals"></a>設計目標
 
-以下設計目標[指導][design-goals]了 Istio 專案：
+下列設計目標會[引導][design-goals]Istio 專案：
 
-- **最大化透明度**- 允許採用最少的工作量，從系統中獲得實際價值。
+- **最大化透明度**-允許採用最少量的工作，以從系統中取得真正的價值。
 
-- **可擴充性**- 必須能夠成長和適應不斷變化的需求。
+- 擴充性-必須能夠隨著不斷**變化的需求**成長及調整。
 
-- **可攜性**- 在不同類型的環境中輕鬆運行 - 雲，本地。
+- 可**移植性**-在不同類型的環境中輕鬆執行-雲端、內部部署。
 
-- **策略一致性**- 不同資源的政策定義的一致性。
+- **原則一致性**-跨各種資源的原則定義中的一致性。
 
 
 ### <a name="capabilities"></a>功能
 
-Istio 提供以下功能集：
+Istio 提供下列功能集：
 
-- **網格**+ 閘道（多群集）、虛擬機器（網格擴展）
+- **網格**–閘道（多叢集）、虛擬機器（網格擴充）
 
-- **交通管理**– 路由、拆分、超時、斷路器、重試、入口、出口
+- **流量管理**–路由，分割，超時，斷路器，重試，輸入，輸出
 
-- **策略**= 存取控制、速率限制、配額、自訂策略配接器
+- **原則**–存取控制、速率限制、配額、自訂原則介面卡
 
-- **安全性**+ 身份驗證 （jwt）、授權、加密 （mTLS）、外部 CA（HashiCorp 保險庫）
+- **安全性**–驗證（jwt）、authorisation、加密（mTLS）、外部 CA （HashiCorp Vault）
 
-- **可觀測性**– 黃金指標、鏡像、跟蹤、自訂配接器、普羅米古斯、格拉法納
+- **可檢視性**–黃金標準，鏡像，追蹤，自訂介面卡，prometheus，grafana
 
 ### <a name="scenarios"></a>案例
 
-Istio 非常適合並針對以下方案建議：
+Istio 非常適合和建議用於下列案例：
 
-- 需要可擴充性和豐富的功能集
+- 需要擴充性和豐富的功能集
 
-- 網格擴展以包括基於 VM 的工作負載
+- 網格擴充以包含以 VM 為基礎的工作負載
 
 - 多叢集服務網格
 
 ## <a name="next-steps"></a>後續步驟
 
-以下文檔介紹如何在 Azure 庫伯奈斯服務 （AKS） 上安裝 Istio：
+下列檔會說明如何在 Azure Kubernetes Service （AKS）上安裝 Istio：
 
 > [!div class="nextstepaction"]
 > [在 Azure Kubernetes Service (AKS) 中安裝 Istio][istio-install]
 
-您還可以進一步探索 Istio 概念和其他部署模型：
+您也可以進一步探索 Istio 概念和其他部署模型：
 
-- [伊斯特奧概念][what-is-istio]
+- [Istio 概念][what-is-istio]
 - [Istio 部署模型][deployment-models]
 
 <!-- LINKS - external -->

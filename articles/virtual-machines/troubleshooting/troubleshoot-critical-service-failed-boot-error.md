@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: 54ba87b681a055bb46b81ca81d2bcdd103491f27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77921448"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>將 Azure VM 重新開機時，Windows 會在藍色畫面上顯示 "CRITICAL SERVICE FAILED"
@@ -44,7 +44,7 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](./boot-diagnostics.m
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>將 OS 磁碟連結至復原 VM
 
 1. 擷取受影響虛擬機器作業系統磁碟的快照集作為備份。 如需詳細資訊，請參閱[擷取磁碟快照集](../windows/snapshot-copy-managed-disk.md)。
-2. [將作業系統磁片附加到恢復 VM。](./troubleshoot-recovery-disks-portal-windows.md) 
+2. [將 OS 磁片連結至復原 VM](./troubleshoot-recovery-disks-portal-windows.md)。 
 3. 對復原 VM 建立遠端桌面連線。
 
 ### <a name="enable-dump-logs-and-serial-console"></a>啟用傾印記錄和序列主控台
@@ -90,7 +90,7 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](./boot-diagnostics.m
 
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
-2. [分離 OS 磁片，然後將 OS 磁片重新附加到受影響的 VM。](troubleshoot-recovery-disks-portal-windows.md) VM 會開機進入安全模式。 若錯誤持續發生，請前往選用步驟。
+2. 卸[離 os 磁片，然後將 os 磁片重新連結至受影響的 VM](troubleshoot-recovery-disks-portal-windows.md)。 VM 會開機進入安全模式。 若錯誤持續發生，請前往選用步驟。
 3. 開啟 [執行]**** 方塊，並執行 [驗證器]**** 以啟動磁碟機驗證器管理工具。
 4. 選取 [自動選取未簽署的驅動程式]****，然後按一下 [下一步]****。
 5. 您會取得未簽署的驅動程式檔案清單。 記下檔案名稱。
@@ -103,19 +103,19 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](./boot-diagnostics.m
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>選用：分析傾印損毀模式中的傾印記錄
 
-要自行分析轉儲日誌，請按照以下步驟操作：
+若要自行分析傾印記錄，請遵循下列步驟：
 
 1. 將 OS 磁碟連結至還原 VM。
-2. 在您連接的作業系統磁片上，流覽到 **[windows_system32_config**。將所有檔案複製為備份，以防需要回滾。
+2. 在您連接的 OS 磁片上，流覽至**\windows\system32\config**。複製所有檔案作為備份，以防需要復原。
 3. 啟動 [登錄編輯程式]**** (regedit.exe)。
-4. 選取 [HKEY_LOCAL_MACHINE]**** 機碼。 在功能表上，選擇 **"檔** > **載入蜂巢**"。
-5. 流覽到您連接的作業系統磁片上的 **[windows_system32_config_SYSTEM] 系統**資料夾。 針對 Hive 的名稱，輸入 **BROKENSYSTEM**。 新的 Hive 會顯示在 [HKEY_LOCAL_MACHINE]**** 機碼下方。
+4. 選取 [HKEY_LOCAL_MACHINE]**** 機碼。 在功能表上 **，選取** > [檔案] [**載入 Hive**]。
+5. 流覽至您連接的 OS 磁片上的**\windows\system32\config\SYSTEM**資料夾。 針對 Hive 的名稱，輸入 **BROKENSYSTEM**。 新的 Hive 會顯示在 [HKEY_LOCAL_MACHINE]**** 機碼下方。
 6. 瀏覽至 **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** 並進行下列變更：
 
     Autoreboot = 0
 
     CrashDumpEnabled = 2
-7.  選取 [BROKENSYSTEM]****。 從功能表中，選擇 **"檔** > **卸載 Hive**"。
+7.  選取 [BROKENSYSTEM]****。 從功能表中 **，選取** > **[** 檔案] [卸載 Hive]。
 8.  修改 BCD 設定以開機進入偵錯模式。 從提升權限的命令提示字元執行下列命令：
 
     ```cmd
@@ -132,7 +132,7 @@ Windows 虛擬機器未啟動。 當您檢查[開機診斷](./boot-diagnostics.m
     bcdedit /store <OS DISK LETTER>:\boot\bcd /set {default} recoveryenabled no
     bcdedit /store <OS DISK LETTER>:\boot\bcd /set {default} integrityservices disable
     ```
-9. [分離 OS 磁片，然後將 OS 磁片重新附加到受影響的 VM。](troubleshoot-recovery-disks-portal-windows.md)
+9. 卸[離 os 磁片，然後將 os 磁片重新連結至受影響的 VM](troubleshoot-recovery-disks-portal-windows.md)。
 10. 將 VM 開機，以查看其是否顯示傾印分析。 尋找無法載入的檔案。 您需要以運作中 VM 的檔案取代此檔案。 
 
     下列是傾印分析範例。 您可看到 **FAILURE** 位於 filecrypt.sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys" 上。

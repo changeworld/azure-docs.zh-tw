@@ -14,10 +14,10 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617066"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>從 HANA 端進行監視和疑難排解
@@ -35,7 +35,7 @@ ms.locfileid: "77617066"
 
 ## <a name="sap-hana-alerts"></a>SAP HANA 警示
 
-第一個步驟是查看目前的 SAP HANA 警示記錄。 在 SAP HANA 工作室中，轉到**管理主控台：警報：顯示：所有警報**。 此索引標籤會顯示在所設定最小和最大臨界值範圍外之特定值的所有 SAP HANA 警示 (可用實體記憶體、CPU 使用率等)。 根據預設，檢查會每隔 15 分鐘自動重新整理一次。
+第一個步驟是查看目前的 SAP HANA 警示記錄。 在 SAP Hana Studio 中，移至 [**管理主控台：警示：顯示：所有警示**]。 此索引標籤會顯示在所設定最小和最大臨界值範圍外之特定值的所有 SAP HANA 警示 (可用實體記憶體、CPU 使用率等)。 根據預設，檢查會每隔 15 分鐘自動重新整理一次。
 
 ![在 SAP HANA Studio 中，移至 [Administration Console: Alerts: Show: all alerts] \(管理主控台：警示：顯示：所有警示)。](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
@@ -62,7 +62,7 @@ Load (負載) 圖表可能會顯示 CPU 耗用量過高，或過去耗用量過�
 
 ![Load (負載) 圖表可能會顯示 CPU 耗用量過高，或過去耗用量過高](./media/troubleshooting-monitoring/image4-load-graph.png)
 
-由於 CPU 利用率高而觸發的警報可能由多種原因引起，包括但不限於：執行某些事務、資料載入、未回應的作業、長時間運行的 SQL 語句和糟糕的查詢性能（例如，HANA 立方體上帶有 BW）。
+由於 CPU 使用率過高而觸發的警示可能是由多種原因所造成，包括但不限於：執行特定交易、資料載入、沒有回應的作業、長時間執行的 SQL 語句，以及不良的查詢效能（例如，在 HANA cube 上使用 BW）。
 
 如需詳細的疑難排解步驟，請參考 [SAP HANA 疑難排解：CPU 相關的原因和解決方案](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false)網站。
 
@@ -105,9 +105,9 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 如需詳細的疑難排解步驟，請參考 [SAP HANA 疑難排解：網路效能和連線問題](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false)網站。
 
-## <a name="storage"></a>存放裝置
+## <a name="storage"></a>儲存體
 
-從最終使用者的角度來看，應用程式（或整個系統）運行緩慢、無回應，或者，如果 I/O 性能有問題，甚至可以停止回應。 在 SAP HANA Studio 的 [Volumes] \(磁碟區)**** 索引標籤中，您可以看到連接的磁碟區，以及每個服務使用哪些磁碟區。
+從使用者的觀點來看，應用程式（或整個系統）會執行緩慢、沒有回應，或甚至可能會在 i/o 效能發生問題時停止回應。 在 SAP HANA Studio 的 [Volumes] \(磁碟區)**** 索引標籤中，您可以看到連接的磁碟區，以及每個服務使用哪些磁碟區。
 
 ![在 SAP HANA Studio 的 [Volumes] \(磁碟區) 索引標籤中，您可以看到連接的磁碟區，以及每個服務使用哪些磁碟區。](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
@@ -123,7 +123,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 請參考 [SAP 附註 #1969700 - SAP HANA 的 SQL 陳述式集合](https://launchpad.support.sap.com/#/notes/1969700)，並下載該附註隨附的 SQL Statements.zip 檔案。 請將這個 .zip 檔案儲存在本機硬碟。
 
-在 SAP HANA 工作室中，在 **"系統資訊**"選項卡上，按右鍵 **"名稱**"列並選擇 **"導入 SQL 語句**"。
+在 SAP Hana Studio 的 [**系統資訊**] 索引標籤上，以滑鼠右鍵按一下 [**名稱**] 資料行，然後選取 [匯**入 SQL 語句]**。
 
 ![在 SAP HANA Studio 的 [System Information] \(系統資訊) 索引標籤上，於 [Name] \(名稱) 資料行上按一下滑鼠右鍵，然後選取 [Import SQL Statements] \(匯入 SQL 陳述式)](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
@@ -135,7 +135,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 ![將會開啟完整的 SQL 陳述式，讓您變更輸入參數 (modification 區段)，然後加以執行](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-另一個範例是在 [Replication: Overview] \(複寫：概觀)**** 底下的陳述式上按一下滑鼠右鍵。 從內容功能表中選擇 **"執行**"：
+另一個範例是在 [Replication: Overview] \(複寫：概觀)**** 底下的陳述式上按一下滑鼠右鍵。 從內容功能表中選取 [**執行**]：
 
 ![另一個範例是在 [Replication: Overview] \(複寫：概觀) 底下的陳述式上按一下滑鼠右鍵。 從操作功能表中，選取 [Execute] \(執行)](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
@@ -163,7 +163,7 @@ SAP HANA on Linux 的其中一項最重要檢查就是要確保停用 Transparen
 
 ![HANA\_Configuration\_Overview\_Rev110+：：適用於 SAP HANA 執行個體的一般相關資訊](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-**HANA\_\_配置參數\_Rev70+** 以檢查 SAP HANA 參數。
+**HANA\_設定\_參數\_rev70: 用 +** 來檢查 SAP Hana 參數。
 
 ![HANA\_Configuration\_Parameters\_Rev70+：用來檢查 SAP HANA 參數](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 

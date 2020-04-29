@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: d2b25fb93a1e35ffa82cf49c60d181b841b1692d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616182"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure 認知搜尋中的 AI 擴充適用的文件資源
@@ -23,9 +23,9 @@ AI 擴充是 Azure 認知搜尋索引的一項功能，可在非文字來源和�
 
 ## <a name="getting-started"></a>開始使用
 + [Azure 認知搜尋中的 AI 簡介](cognitive-search-concept-intro.md)
-+ [快速入門：在 Azure 門戶中創建認知技能集](cognitive-search-quickstart-blob.md)
-+ [教程：使用 AI 豐富索引](cognitive-search-tutorial-blob.md)
-+ [示例：為 AI 擴充創建自訂技能](cognitive-search-create-custom-skill-example.md)
++ [快速入門：在 Azure 入口網站中建立認知技能集](cognitive-search-quickstart-blob.md)
++ [教學課程：使用 AI 擴充索引](cognitive-search-tutorial-blob.md)
++ [範例：建立 AI 擴充的自訂技能](cognitive-search-create-custom-skill-example.md)
 
 ## <a name="how-to-guidance"></a>做法指引
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
@@ -34,9 +34,9 @@ AI 擴充是 Azure 認知搜尋索引的一項功能，可在非文字來源和�
 + [如何處理影像並從影像擷取資訊](cognitive-search-concept-image-scenarios.md)
 + [如何重建 Azure 認知搜尋索引](search-howto-reindex.md)
 + [如何定義自訂技能介面](cognitive-search-custom-skill-interface.md)
-+ [故障排除提示](cognitive-search-concept-troubleshooting.md)
++ [疑難排解秘訣](cognitive-search-concept-troubleshooting.md)
 
-## <a name="reference"></a>參考資料
+## <a name="reference"></a>參考
 
 + [內建技能](cognitive-search-predefined-skills.md)
   + [Microsoft.Skills.Text.KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
@@ -63,7 +63,7 @@ AI 擴充是 Azure 認知搜尋索引的一項功能，可在非文字來源和�
   + [建立技能集 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
   + [建立索引子 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [Azure 認知搜尋 REST API](https://docs.microsoft.com/rest/api/searchservice/)
 + [Azure 認知搜尋中的索引子](search-indexer-overview.md)

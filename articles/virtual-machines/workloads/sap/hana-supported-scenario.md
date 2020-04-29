@@ -1,5 +1,5 @@
 ---
-title: Azure 上 SAP HANA 支援的方案（大型實例）*微軟文檔
+title: Azure （大型實例）上 SAP Hana 的支援案例 |Microsoft Docs
 description: SAP Hana on Azure (大型執行個體) 的支援案例及其架構詳細資料
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,109 +14,109 @@ ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 019f462d4264d19bcc4806d91223029a95f9d819
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617173"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>HANA 大型執行個體的支援案例
-本文介紹了 HANA 大型實例 （HLI） 支援的方案和體系結構詳細資訊。
+本文說明「HANA 大型實例」（今年）支援的案例和架構詳細資料。
 
 >[!NOTE]
->如果本文中未提及所需的方案，請與 Microsoft 服務管理團隊聯繫以評估您的要求。
-在設置 HLI 單元之前，請與 SAP 或服務實施合作夥伴驗證設計。
+>如果本文未提及您的必要案例，請洽詢 Microsoft 服務管理小組，以評估您的需求。
+在您設定：開始之前，請先驗證 SAP 或您的服務實施合作夥伴的設計。
 
 ## <a name="terms-and-definitions"></a>詞彙和定義
-讓我們瞭解本文中使用的術語和定義：
+讓我們來瞭解本文中使用的詞彙和定義：
 
-- **SID**：HANA 系統的系統識別碼
-- **HLI**： 哈納大實例
-- **DR**： 災害復原
-- **普通 DR**：僅出於 DR 目的使用專用資源的系統設置
-- **多用途 DR**： 配置為將非生產環境與為 DR 事件配置的生產實例一起使用的 DR 網站系統 
-- **單 SID**：安裝一個實例的系統
-- **多 SID**：配置多個實例的系統;也稱為 MCOS 環境
-- **HSR**： SAP HANA 系統複製
+- **SID**： HANA 系統的系統識別碼
+- **B-hli**： Hana 大型實例
+- **DR**：嚴重損壞修復
+- **一般 dr**：僅供 dr 用途專用資源的系統設定
+- 多**用途 dr**：設定為使用非生產環境以及針對 DR 事件設定之生產實例的 dr 網站系統 
+- **單一 SID**：已安裝一個實例的系統
+- **多重 SID**：已設定多個實例的系統;也稱為 MCOS 環境
+- **HSR**： SAP Hana 系統複寫
 
-## <a name="overview"></a>總覽
-HANA 大型實例支援各種體系結構，可説明您滿足業務需求。 以下各節介紹體系結構方案及其配置詳細資訊。 
+## <a name="overview"></a>概觀
+HANA 大型實例支援各種不同的架構，可協助您達成業務需求。 下列各節涵蓋架構案例和其設定詳細資料。 
 
-派生體系結構設計完全從基礎結構角度設計，您必須諮詢 SAP 或實施合作夥伴進行 HANA 部署。 如果本文未列出您的方案，請與 Microsoft 帳戶團隊聯繫，查看體系結構並為您派生解決方案。
+衍生的架構設計純粹是從基礎結構的觀點來看，您必須諮詢 SAP 或您的執行合作夥伴以進行 HANA 部署。 如果本文未列出您的案例，請洽詢 Microsoft 帳戶小組來審查架構，並為您衍生解決方案。
 
 > [!NOTE]
-> 這些架構完全符合定制資料整合 （TDI） 設計，並由 SAP 提供支援。
+> 這些架構完全符合量身打造的資料整合（TDI）設計，並受到 SAP 的支援。
 
-本文介紹了每個受支援的體系結構中的兩個元件的詳細資訊：
+本文說明每個支援的架構中的兩個元件詳細資料：
 
 - 乙太網路
-- 存放裝置
+- 儲存體
 
 ### <a name="ethernet"></a>乙太網路
 
-每個預配伺服器都預配置了乙太網介面集。 在每個 HLI 單元上配置的乙太網介面分為四種類型：
+每個布建的伺服器都已預先設定一組乙太網路介面。 在每個：每個在每個的一間設定乙太網路介面分為四種類型：
 
-- **A**： 用於用戶端存取或由用戶端存取使用。
-- **B**： 用於節點到節點的通信。 此介面在所有伺服器上配置（無論請求的拓撲如何），但僅用於橫向擴展方案。
-- **C**： 用於節點到存儲連接。
-- **D**： 用於用於 STONITH 設置的節點到 iSCSI 設備連接。 僅當請求 HSR 設置時，才配置此介面。  
+- **A**：用於或用戶端存取。
+- **B**：用於節點對節點通訊。 此介面是在所有伺服器上設定（不論要求的拓撲），但僅用於向外延展案例。
+- **C**：用於節點對儲存體連線能力。
+- **D**：用於 STONITH 設定的節點對 iSCSI 裝置連線。 只有在要求 HSR 安裝程式時，才會設定此介面。  
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI |
-| B | 類型一 | eth2.tenant | eno3.tenant | 節點到節點|
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端對 |
+| B | 類型一 | eth2.tenant | eno3.tenant | 節點對節點|
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | STONITH |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 節點到節點|
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | STONITH |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點|
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | STONITH |
 
-根據在 HLI 單元上配置的拓撲選擇介面。 例如，介面"B"為節點到節點通訊設定，這在配置橫向擴展拓撲時非常有用。 此介面不用於單個節點、放大配置。 有關介面使用方式的詳細資訊，請查看所需的方案（本文後面）。 
+您可以根據在的圖上設定的拓撲來選擇介面。 例如，針對節點對節點通訊設定介面 "B"，這在您已設定相應放大拓撲時很有用。 此介面不會用於單一節點、相應增加設定。 如需有關介面使用方式的詳細資訊，請參閱您的必要案例（在本文稍後）。 
 
-如有必要，您可以自行定義其他 NIC 卡。 但是，*無法*更改現有 NIC 的配置。
-
->[!NOTE]
->您可能會發現其他介面是物理介面或綁定。 您應該只考慮用例前面提到的介面。 任何其他都可以忽略。
-
-具有兩個分配 IP 位址的單位的分佈應如下所示：
-
-- 乙太網"A"應具有分配給的 IP 位址，該 IP 位址在您提交給 Microsoft 的伺服器 IP 池位址範圍內。 此 IP 位址應保存在作業系統的 */etc/主機*目錄中。
-
-- 乙太網"C"應具有用於與 NFS 通信的已分配 IP 位址。 不需要在*等/主機*目錄中維護此位址，以允許租戶中的實例到實例流量。 *not*
-
-對於 HANA 系統複製或 HANA 橫向擴展部署，不適合具有兩個分配的 IP 位址的刀片配置。 如果只有兩個分配的 IP 位址，並且想要部署此類配置，請與 Azure 服務管理上的 SAP HANA 聯繫。 他們可以在第三個 VLAN 中為您分配第三個 IP 位址。 對於在三個 NIC 埠上具有三個分配 IP 位址的 HANA 大型實例單元，適用以下使用規則：
-
-- 乙太網"A"應具有分配給的 IP 位址，該 IP 位址超出您提交給 Microsoft 的伺服器 IP 池位址範圍。 不應在作業系統*的等/主機*目錄中維護此 IP 位址。
-
-- 乙太網"B"應只保存在*等/主機*目錄中，以便在各種實例之間進行通信。 這些是在橫向擴展的 HANA 配置中維護的 IP 位址，因為 HANA 用於節點間配置的 IP 位址。
-
-- 乙太網"C"應具有用於與 NFS 存儲通信的已分配 IP 位址。 此類位址不應在*等/主機*目錄中保留。
-
-- 乙太網"D"應僅用於訪問起搏器的 STONITH 設備。 當您配置 HANA 系統複製並且希望使用基於 SBD 的設備實現作業系統的自動容錯移轉時，需要此介面。
-
-
-### <a name="storage"></a>存放裝置
-存儲根據請求的拓撲進行預配置。 卷大小和裝載點因伺服器數量、SKU 數量和配置的拓撲而異。 有關詳細資訊，請查看所需的方案（本文後面）。 如果您需要更多存儲空間，可以以 1 TB 的增量購買。
+如有需要，您可以自行定義額外的 NIC 卡。 不過，您*無法*變更現有 nic 的設定。
 
 >[!NOTE]
->裝載點 /usr/sap/\<SID>是指向 /hana/共用裝載點的符號連結。
+>您可能會發現其他介面是實體介面或聯結。 您應該只考慮先前針對您的使用案例所提及的介面。 任何其他人都可以忽略。
+
+具有兩個已指派 IP 位址的單位分佈應如下所示：
+
+- 乙太網路 "A" 應有指派的 IP 位址，其位於您提交給 Microsoft 的伺服器 IP 集區位址範圍內。 此 IP 位址應保留在 OS 的 */etc/hosts*目錄中。
+
+- Ethernet "C" 應具有指派的 IP 位址，以用於與 NFS 的通訊。 此位址不*需要在* *etc/hosts*目錄中進行維護，即可允許租使用者內的實例對實例流量。
+
+對於 HANA 系統複寫或 HANA 向外延展部署，有兩個已指派 IP 位址的分頁設定並不適用。 如果您只有兩個已指派的 IP 位址，而您想要部署這類設定，請在 Azure 服務管理上聯絡 SAP Hana。 他們可以在第三個 VLAN 中指派第三個 IP 位址。 對於三個 NIC 埠上具有三個指派 IP 位址的 HANA 大型實例單位，適用下列使用規則：
+
+- 乙太網路 "A" 應該有指派的 IP 位址，而該位址不在您提交給 Microsoft 的伺服器 IP 集區位址範圍內。 此 IP 位址不應在 OS 的*etc/hosts*目錄中維護。
+
+- 乙太網路 "B" 應專門在*etc/hosts*目錄中進行維護，以供不同實例之間的通訊。 這些是要在向外延展 HANA 設定中維護的 IP 位址，做為 HANA 用於節點間設定的 IP 位址。
+
+- Ethernet "C" 應具有指派的 IP 位址，以用於與 NFS 儲存體的通訊。 此類型的位址不應在*etc/hosts*目錄中維護。
+
+- Ethernet "D" 應專門用來存取 STONITH 裝置以進行 Pacemaker。 當您設定 HANA 系統複寫，而且想要使用以 SBD 為基礎的裝置來達到作業系統的自動容錯移轉時，需要此介面。
+
+
+### <a name="storage"></a>儲存體
+儲存體會根據要求的拓撲預先設定。 磁片區大小和掛接點會根據伺服器數目、Sku 數目和設定的拓撲而有所不同。 如需詳細資訊，請參閱您的必要案例（在本文稍後）。 如果您需要更多儲存空間，您可以在 1 TB 的增量中購買。
+
+>[!NOTE]
+>掛接點/usr/sap/\<SID> 是/hana/shared 掛接點的符號連結。
 
 
 ## <a name="supported-scenarios"></a>支援的案例
 
-下一節中的體系結構圖使用以下符號：
+下一節中的架構圖表會使用下列標記法：
 
-[![體系結構圖表](media/hana-supported-scenario/Legends.png)](media/hana-supported-scenario/Legends.png#lightbox)
+[![架構圖表的資料表](media/hana-supported-scenario/Legends.png)](media/hana-supported-scenario/Legends.png#lightbox)
 
-以下是支援的方案：
+以下是支援的案例：
 
 * 具有一個 SID 的單一節點
 * 單一節點 MCOS
-* 帶 DR 的單節點（正常）
-* 帶 DR 的單節點（多用途）
+* 具有 DR 的單一節點（一般）
+* 具有 DR （多用途）的單一節點
 * 具有 STONITH 的 HSR
-* 帶 DR 的 HSR（普通/多用途） 
+* 具有 DR 的 HSR （一般/多用途） 
 * 主機自動容錯移轉 (1+1) 
 * 具待命相應放大
 * 不具待命相應放大
@@ -124,7 +124,7 @@ HANA 大型實例支援各種體系結構，可説明您滿足業務需求。 �
 
 ## <a name="single-node-with-one-sid"></a>具有一個 SID 的單一節點
 
-此拓撲支援一個使用一個 SID 的擴展配置中的節點。
+此拓撲支援具有一個 SID 的相應增加設定中的一個節點。
 
 ### <a name="architecture-diagram"></a>架構圖  
 
@@ -135,23 +135,23 @@ HANA 大型實例支援各種體系結構，可説明您滿足業務需求。 �
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端對 |
 | B | 類型一 | eth2.tenant | eno3.tenant | 已設定但未使用 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |/hana/shared/SID | HANA 安裝 | 
 |/hana/data/SID/mnt00001 | 資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 日誌檔安裝 | 
+|/hana/log/SID/mnt00001 | 記錄檔安裝 | 
 |/hana/logbackups/SID | 重做記錄 |
 
 ### <a name="key-considerations"></a>主要考量
@@ -159,7 +159,7 @@ HANA 大型實例支援各種體系結構，可説明您滿足業務需求。 �
 
 ## <a name="single-node-mcos"></a>單一節點 MCOS
 
-此拓撲支援具有多個 S 的擴展配置中的一個節點。
+此拓撲支援具有多個 Sid 的相應增加設定中的一個節點。
 
 ### <a name="architecture-diagram"></a>架構圖  
 
@@ -170,134 +170,134 @@ HANA 大型實例支援各種體系結構，可説明您滿足業務需求。 �
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端對 |
 | B | 類型一 | eth2.tenant | eno3.tenant | 已設定但未使用 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
-|/hana/shared/SID1 | 用於 SID1 的 HANA 安裝 | 
-|/hana/data/SID1/mnt00001 | 為 SID1 安裝資料檔案 | 
-|/hana/log/SID1/mnt00001 | SID1 的日誌檔安裝 | 
+|/hana/shared/SID1 | 適用于 SID1 的 HANA 安裝 | 
+|/hana/data/SID1/mnt00001 | 適用于 SID1 的資料檔案安裝 | 
+|/hana/log/SID1/mnt00001 | SID1 的記錄檔安裝 | 
 |/hana/logbackups/SID1 | 適用於 SID1 的重做記錄 |
-|/hana/shared/SID2 | SID2 的 HANA 安裝 | 
-|/hana/data/SID2/mnt00001 | SID2 的資料檔案安裝 | 
-|/hana/log/SID2/mnt00001 | SID2 的日誌檔安裝 | 
+|/hana/shared/SID2 | 適用于 SID2 的 HANA 安裝 | 
+|/hana/data/SID2/mnt00001 | 適用于 SID2 的資料檔案安裝 | 
+|/hana/log/SID2/mnt00001 | SID2 的記錄檔安裝 | 
 |/hana/logbackups/SID2 | 適用於 SID2 的重做記錄 |
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 卷大小分佈基於記憶體中的資料庫大小。 要瞭解多 SID 環境中支援記憶體中的資料庫大小，請參閱[概述和體系結構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
 
-## <a name="single-node-with-dr-using-storage-replication"></a>使用存儲複製的 DR 的單節點
+## <a name="single-node-with-dr-using-storage-replication"></a>具有使用儲存體複寫之 DR 的單一節點
  
-此拓撲支援具有一個或多個 SID 的擴展配置中的一個節點，並基於存儲複製到主 SID 的 DR 網站。 在圖中，主網站只描述了單 SID 系統，但也支援 MCOS 系統。
+此拓撲支援相應增加設定中具有一或多個 Sid 的一個節點，並以儲存體為基礎的複寫至主要 SID 的 DR 網站。 在此圖中，只有單一 SID 系統會在主要網站上說明，但也支援 MCOS 系統。
 
 ### <a name="architecture-diagram"></a>架構圖  
 
-![使用存儲複製的 DR 的單節點](media/hana-supported-scenario/Single-node-with-dr.png)
+![具有使用儲存體複寫之 DR 的單一節點](media/hana-supported-scenario/Single-node-with-dr.png)
 
 ### <a name="ethernet"></a>乙太網路
 下列網路介面已預先設定：
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端對 |
 | B | 類型一 | eth2.tenant | eno3.tenant | 已設定但未使用 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
-|/hana/shared/SID | 用於 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 為 SID 安裝資料檔案 | 
-|/hana/log/SID/mnt00001 | SID 的日誌檔安裝 | 
+|/hana/shared/SID | 適用于 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於 SID 的重做記錄 |
 
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 對於 MCOS：卷大小分佈基於記憶體中的資料庫大小。 要瞭解多 SID 環境中支援記憶體中的資料庫大小，請參閱[概述和體系結構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
-- 在 DR 網站：為 DR HLI 單元的生產 HANA 實例安裝配置了卷和裝載點（標記為"HANA 安裝需要"。 
-- 在 DR 網站：資料、記錄備份和共用卷（標記為"存儲複製"）通過生產網站的快照進行複製。 這些卷僅在容錯移轉期間裝載。 有關詳細資訊，請參閱[災害復原容錯移轉過程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)。
-- *SKU 類型 I 類*的開機磁碟區將複製到 DR 節點。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 在 DR 網站上：磁片區和掛接點已設定（標示為「HANA 安裝所需」），以便在 DR 的 HANA 單位上安裝生產 HANA 實例。 
+- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)程式。
+- *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
 
 
-## <a name="single-node-with-dr-multipurpose-using-storage-replication"></a>使用存儲複製的具有 DR（多用途）的單節點
+## <a name="single-node-with-dr-multipurpose-using-storage-replication"></a>具有 DR （多用途）的單一節點（使用儲存體複寫）
  
-此拓撲支援具有一個或多個 SID 的擴展配置中的一個節點，並基於存儲複製到主 SID 的 DR 網站。 在圖中，主網站只描述了單 SID 系統，但也支援多 SID （MCOS） 系統。 在 DR 網站，當生產操作從主網站運行時，HLI 單元用於 QA 實例。 在 DR 容錯移轉（或容錯移轉測試）期間，DR 網站的 QA 實例將被關閉。
+此拓撲支援相應增加設定中具有一或多個 Sid 的一個節點，並以儲存體為基礎的複寫至主要 SID 的 DR 網站。 在此圖中，只有單一 SID 系統會在主要網站上說明，但也支援多重 SID （MCOS）系統。 在 DR 網站上，當生產作業從主要網站執行時，會在 QA 實例中使用：的單位。 在 DR 容錯移轉（或容錯移轉測試）期間，會使 DR 網站上的 QA 實例停止執行。
 
 ### <a name="architecture-diagram"></a>架構圖  
 
-![使用存儲複製的具有 DR（多用途）的單節點](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
+![具有 DR （多用途）的單一節點（使用儲存體複寫）](media/hana-supported-scenario/single-node-with-dr-multipurpose.png)
 
 ### <a name="ethernet"></a>乙太網路
 下列網路介面已預先設定：
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端對 |
 | B | 類型一 | eth2.tenant | eno3.tenant | 已設定但未使用 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |**在主要網站上**|
-|/hana/shared/SID | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|/hana/shared/SID | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 |**在 DR 網站上**|
-|/hana/shared/SID | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
-|/hana/shared/QA-SID | QA SID 的 HANA 安裝 | 
-|/hana/data/QA-SID/mnt00001 | QA SID 的資料檔案安裝 | 
-|/hana/log/QA-SID/mnt00001 | QA SID 的日誌檔安裝 |
+|/hana/shared/SID | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
+|/hana/shared/QA-SID | 適用于 QA SID 的 HANA 安裝 | 
+|/hana/data/QA-SID/mnt00001 | 適用于 QA SID 的資料檔案安裝 | 
+|/hana/log/QA-SID/mnt00001 | QA SID 的記錄檔安裝 |
 |/hana/logbackups/QA-SID | 適用於 QA SID 的重做記錄 |
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 對於 MCOS：卷大小分佈基於記憶體中的資料庫大小。 要瞭解多 SID 環境中支援記憶體中的資料庫大小，請參閱[概述和體系結構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
-- 在 DR 網站：為 DR HLI 單元的生產 HANA 實例安裝配置了卷和裝載點（標記為"HANA 安裝需要"。 
-- 在 DR 網站：資料、記錄備份和共用卷（標記為"存儲複製"）通過生產網站的快照進行複製。 這些卷僅在容錯移轉期間裝載。 有關詳細資訊，請參閱[災害復原容錯移轉過程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)。 
-- 在 DR 網站：為 QA 實例安裝配置 QA 的資料、記錄備份、日誌和共用卷（標記為"QA 實例安裝"）。
-- *SKU 類型 I 類*的開機磁碟區將複製到 DR 節點。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 在 DR 網站上：磁片區和掛接點已設定（標示為「HANA 安裝所需」），以便在 DR 的 HANA 單位上安裝生產 HANA 實例。 
+- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)程式。 
+- 在 DR 網站上：已針對 qa 實例安裝設定適用于 QA 的資料、記錄備份、記錄和共用磁片區（標示為「QA 實例安裝」）。
+- *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
 
-## <a name="hsr-with-stonith-for-high-availability"></a>具有 STONITH 的 HSR，提供高可用性
+## <a name="hsr-with-stonith-for-high-availability"></a>具有 STONITH 的 HSR 以提供高可用性
  
-此拓撲支援 HANA 系統複製配置的兩個節點。 此配置僅支援節點上的單個 HANA 實例。 這意味著*不支援*MCOS 方案。
+此拓撲支援 HANA 系統複寫設定的兩個節點。 此設定僅支援節點上的單一 HANA 實例。 這表示*不*支援 MCOS 案例。
 
 > [!NOTE]
-> 截至 2019 年 12 月，此體系結構僅支援 SUSE 作業系統。
+> 從2019年12月起，只有 SUSE 作業系統才支援此架構。
 
 
 ### <a name="architecture-diagram"></a>架構圖  
 
-![具有 STONITH 的 HSR，提供高可用性](media/hana-supported-scenario/HSR-with-STONITH.png)
+![具有 STONITH 的 HSR 以提供高可用性](media/hana-supported-scenario/HSR-with-STONITH.png)
 
 
 
@@ -306,99 +306,99 @@ HANA 大型實例支援各種體系結構，可説明您滿足業務需求。 �
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端對 |
 | B | 類型一 | eth2.tenant | eno3.tenant | 已設定但未使用 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 用於 STONITH |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 用於 STONITH |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 用於 STONITH |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |**在主要節點上**|
-|/hana/shared/SID | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|/hana/shared/SID | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 |**在次要節點上**|
-|/hana/shared/SID | 用於輔助 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 為輔助 SID 安裝資料檔案 | 
-|/hana/log/SID/mnt00001 | 為輔助 SID 安裝日誌檔 | 
+|/hana/shared/SID | 適用于次要 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 次要 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 次要 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於次要 SID 的重做記錄 |
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 對於 MCOS：卷大小分佈基於記憶體中的資料庫大小。 要瞭解多 SID 環境中支援記憶體中的資料庫大小，請參閱[概述和體系結構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
-- STONITH：已針對 STONITH 安裝程式設定 SBD。 但是，使用 STONITH 是可選的。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- STONITH：已針對 STONITH 安裝程式設定 SBD。 不過，使用 STONITH 是選擇性的。
 
 
-## <a name="high-availability-with-hsr-and-dr-with-storage-replication"></a>具有 HSR 和 DR 的高可用性以及存儲複製
+## <a name="high-availability-with-hsr-and-dr-with-storage-replication"></a>具有儲存體複寫的 HSR 和 DR 高可用性
  
-此拓撲支援 HANA 系統複製配置的兩個節點。 支援普通和多用途 DR。 這些配置僅支援節點上的單個 HANA 實例。 這意味著這些配置*不支援*MCOS 方案。
+此拓撲支援 HANA 系統複寫設定的兩個節點。 一般和多用途 DRs 都受到支援。 只有節點上的單一 HANA 實例支援這些設定。 這表示這些設定*不*支援 MCOS 案例。
 
-在圖中，在 DR 網站中描述了一個多用途方案，其中 HLI 單元用於 QA 實例，而生產操作從主網站運行。 在 DR 容錯移轉（或容錯移轉測試）期間，DR 網站的 QA 實例將被關閉。 
+在此圖中，多用途案例會在 DR 網站上描述，其中，在生產環境作業從主要網站執行時，會在 QA 實例中使用： 在 DR 容錯移轉（或容錯移轉測試）期間，會使 DR 網站上的 QA 實例停止執行。 
 
 ### <a name="architecture-diagram"></a>架構圖  
 
-![具有 HSR 和 DR 的高可用性以及存儲複製](media/hana-supported-scenario/HSR-with-DR.png)
+![具有儲存體複寫的 HSR 和 DR 高可用性](media/hana-supported-scenario/HSR-with-DR.png)
 
 ### <a name="ethernet"></a>乙太網路
 下列網路介面已預先設定：
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端對 |
 | B | 類型一 | eth2.tenant | eno3.tenant | 已設定但未使用 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 用於 STONITH |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 用於 STONITH |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 用於 STONITH |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |**在主要網站的主要節點上**|
-|/hana/shared/SID | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|/hana/shared/SID | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 |**在主要網站的次要節點上**|
-|/hana/shared/SID | 用於輔助 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 為輔助 SID 安裝資料檔案 | 
-|/hana/log/SID/mnt00001 | 為輔助 SID 安裝日誌檔 | 
+|/hana/shared/SID | 適用于次要 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 次要 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 次要 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於次要 SID 的重做記錄 |
 |**在 DR 網站上**|
-|/hana/shared/SID | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
-|/hana/shared/QA-SID | QA SID 的 HANA 安裝 | 
-|/hana/data/QA-SID/mnt00001 | QA SID 的資料檔案安裝 | 
-|/hana/log/QA-SID/mnt00001 | QA SID 的日誌檔安裝 |
+|/hana/shared/SID | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
+|/hana/shared/QA-SID | 適用于 QA SID 的 HANA 安裝 | 
+|/hana/data/QA-SID/mnt00001 | 適用于 QA SID 的資料檔案安裝 | 
+|/hana/log/QA-SID/mnt00001 | QA SID 的記錄檔安裝 |
 |/hana/logbackups/QA-SID | 適用於 QA SID 的重做記錄 |
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 對於 MCOS：卷大小分佈基於記憶體中的資料庫大小。 要瞭解多 SID 環境中支援記憶體中的資料庫大小，請參閱[概述和體系結構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
-- STONITH：已針對 STONITH 安裝程式設定 SBD。 但是，使用 STONITH 是可選的。
-- 在 DR 網站：主節點和輔助節點複製*需要兩組存儲卷*。
-- 在 DR 網站：為 DR HLI 單元的生產 HANA 實例安裝配置了卷和裝載點（標記為"HANA 安裝需要"。 
-- 在 DR 網站：資料、記錄備份和共用卷（標記為"存儲複製"）通過生產網站的快照進行複製。 這些卷僅在容錯移轉期間裝載。 有關詳細資訊，請參閱[災害復原容錯移轉過程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)。 
-- 在 DR 網站：為 QA 實例安裝配置 QA 的資料、記錄備份、日誌和共用卷（標記為"QA 實例安裝"）。
-- *SKU 類型 I 類*的開機磁碟區將複製到 DR 節點。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- STONITH：已針對 STONITH 安裝程式設定 SBD。 不過，使用 STONITH 是選擇性的。
+- 在 DR 網站上：主要和次要節點複寫*需要兩組儲存體磁片區*。
+- 在 DR 網站上：磁片區和掛接點已設定（標示為「HANA 安裝所需」），以便在 DR 的 HANA 單位上安裝生產 HANA 實例。 
+- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)程式。 
+- 在 DR 網站上：已針對 qa 實例安裝設定適用于 QA 的資料、記錄備份、記錄和共用磁片區（標示為「QA 實例安裝」）。
+- *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
 
 
 ## <a name="host-auto-failover-11"></a>主機自動容錯移轉 (1+1)
  
-此拓撲支援主機自動容錯移轉設定中的兩個節點。 有一個節點具有主/輔助角色，另一個節點作為備用節點。 *SAP 僅支援此方案，適用于 S/4 HANA。* 有關詳細資訊，請參閱[OSS 注釋 2408419 - SAP S/4HANA - 多節點支援](https://launchpad.support.sap.com/#/notes/2408419)。
+此拓撲支援主機自動容錯移轉設定中的兩個節點。 有一個節點具有主要/背景工作角色，另一個則作為待命。 *SAP 僅針對 S/4 HANA 支援此案例。* 如需詳細資訊，請參閱[OSS 附注 2408419-SAP S/4HANA-多節點支援](https://launchpad.support.sap.com/#/notes/2408419)。
 
 
 
@@ -411,36 +411,36 @@ HANA 大型實例支援各種體系結構，可説明您滿足業務需求。 �
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI |
-| B | 類型一 | eth2.tenant | eno3.tenant | 節點到節點通信 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端對 |
+| B | 類型一 | eth2.tenant | eno3.tenant | 節點對節點通訊 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 節點到節點通信 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點通訊 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |**在主要和待命節點上**|
-|HANA/shared | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|HANA/shared | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 
 
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 待機時：為備用單元的 HANA 實例安裝配置了卷和裝載點（標記為"HANA 安裝需要"。
+- 待命：磁片區和掛接點已設定（標示為「HANA 安裝所需」），以便在待命單位安裝 HANA 實例。
  
 
 ## <a name="scale-out-with-standby"></a>具待命相應放大
  
-此拓撲支援相應放大組態中的多個節點。 有一個節點具有主角色，一個或多個節點具有輔助角色，一個或多個節點作為備用節點。 但是，在任何單個時間點只能有一個主節點。
+此拓撲支援相應放大組態中的多個節點。 有一個節點具有主要角色、一或多個具有背景工作角色的節點，以及一或多個節點做為待命。 不過，在任何單一時間點都只能有一個主要節點。
 
 
 ### <a name="architecture-diagram"></a>架構圖  
@@ -452,30 +452,30 @@ HANA 大型實例支援各種體系結構，可説明您滿足業務需求。 �
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI |
-| B | 類型一 | eth2.tenant | eno3.tenant | 節點到節點通信 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端對 |
+| B | 類型一 | eth2.tenant | eno3.tenant | 節點對節點通訊 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 節點到節點通信 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點通訊 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |**在主要、背景工作角色和待命節點上**|
-|HANA/shared | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|HANA/shared | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 
 
 ## <a name="scale-out-without-standby"></a>不具待命相應放大
  
-此拓撲支援相應放大組態中的多個節點。 有一個節點具有主角色，一個或多個節點具有輔助角色。 但是，在任何單個時間點只能有一個主節點。
+此拓撲支援相應放大組態中的多個節點。 有一個節點具有主要角色，以及一或多個具有背景工作角色的節點。 不過，在任何單一時間點都只能有一個主要節點。
 
 
 ### <a name="architecture-diagram"></a>架構圖  
@@ -488,38 +488,38 @@ HANA 大型實例支援各種體系結構，可説明您滿足業務需求。 �
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI |
-| B | 類型一 | eth2.tenant | eno3.tenant | 節點到節點通信 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端對 |
+| B | 類型一 | eth2.tenant | eno3.tenant | 節點對節點通訊 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 節點到節點通信 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點通訊 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |**在主要和背景工作角色節點上**|
-|HANA/shared | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|HANA/shared | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
 
-## <a name="scale-out-with-dr-using-storage-replication"></a>使用存儲複製使用 DR 橫向擴展
+## <a name="scale-out-with-dr-using-storage-replication"></a>使用儲存體複寫以 DR 進行相應放大
  
-此拓撲支援具 DR 相應放大中的多個節點。 支援普通和多用途 DR。 圖表中僅描繪單一用途 DR。 您可以要求此拓撲，不論是否具有待命節點。
+此拓撲支援具 DR 相應放大中的多個節點。 一般和多用途 DRs 都受到支援。 圖表中僅描繪單一用途 DR。 您可以要求此拓撲，不論是否具有待命節點。
 
 
 ### <a name="architecture-diagram"></a>架構圖  
 
-![使用存儲複製使用 DR 橫向擴展](media/hana-supported-scenario/scaleout-with-dr.png)
+![使用儲存體複寫以 DR 進行相應放大](media/hana-supported-scenario/scaleout-with-dr.png)
 
 
 ### <a name="ethernet"></a>乙太網路
@@ -527,231 +527,231 @@ HANA 大型實例支援各種體系結構，可説明您滿足業務需求。 �
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI |
-| B | 類型一 | eth2.tenant | eno3.tenant | 節點到節點通信 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端對 |
+| B | 類型一 | eth2.tenant | eno3.tenant | 節點對節點通訊 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 節點到節點通信 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端對 |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點通訊 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |**在主要節點上**|
-|HANA/shared | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|HANA/shared | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 |**在 DR 節點上**|
-|HANA/shared | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|HANA/shared | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
--  在 DR 網站：為 DR HLI 單元的生產 HANA 實例安裝配置了卷和裝載點（標記為"HANA 安裝需要"。 
-- 在 DR 網站：資料、記錄備份和共用卷（標記為"存儲複製"）通過生產網站的快照進行複製。 這些卷僅在容錯移轉期間裝載。 有關詳細資訊，請參閱[災害復原容錯移轉過程](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)。 
-- *SKU 類型 I 類*的開機磁碟區將複製到 DR 節點。
+-  在 DR 網站上：磁片區和掛接點已設定（標示為「HANA 安裝所需」），以便在 DR 的 HANA 單位上安裝生產 HANA 實例。 
+- 在 DR 網站上：資料、記錄備份和共用磁片區（標示為「儲存體複寫」）是透過生產網站的快照集來複寫。 這些磁片區只會在容錯移轉期間掛接。 如需詳細資訊，請參閱[災難修復容錯移轉](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)程式。 
+- *SKU 類型 I 類別*的開機磁碟區已複寫到 DR 節點。
 
 
-## <a name="single-node-with-dr-using-hsr"></a>使用 HSR 使用 DR 的單節點
+## <a name="single-node-with-dr-using-hsr"></a>具有使用 HSR 之 DR 的單一節點
  
-此拓撲支援一個使用一個 SID 進行擴展配置的節點，將 HANA 系統複製到主 SID 的 DR 網站。 在圖中，主網站只描述了單 SID 系統，但也支援多 SID （MCOS） 系統。
+此拓撲支援具有一個 SID 的相應增加設定中的一個節點，並將 HANA 系統複寫至主要 SID 的 DR 網站。 在此圖中，只有單一 SID 系統會在主要網站上說明，但也支援多重 SID （MCOS）系統。
 
 ### <a name="architecture-diagram"></a>架構圖  
 
-![使用 HSR 使用 DR 的單節點](media/hana-supported-scenario/single-node-hsr-dr-111.png)
+![具有使用 HSR 之 DR 的單一節點](media/hana-supported-scenario/single-node-hsr-dr-111.png)
 
 ### <a name="ethernet"></a>乙太網路
 下列網路介面已預先設定：
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI/HSR |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HSR |
 | B | 類型一 | eth2.tenant | eno3.tenant | 已設定但未使用 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI/HSR |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端到 HSR |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-以下安裝點在 HLI 單元（主和 DR）上進行了預配置：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定于：（主要和 DR）上：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
-|/hana/shared/SID | 用於 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 為 SID 安裝資料檔案 | 
-|/hana/log/SID/mnt00001 | SID 的日誌檔安裝 | 
+|/hana/shared/SID | 適用于 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於 SID 的重做記錄 |
 
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 對於 MCOS：卷大小分佈基於記憶體中的資料庫大小。 要瞭解多 SID 環境中支援記憶體中的資料庫大小，請參閱[概述和體系結構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
-- 主節點使用 HANA 系統複製與 DR 節點同步。 
-- [全域覆蓋](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用於將 ExpressRoute 電路連結在一起，在區域網路之間建立私人網路絡。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 主要節點會使用 HANA 系統複寫與 DR 節點同步。 
+- [全球範圍](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
 
 
 
-## <a name="single-node-hsr-to-dr-cost-optimized"></a>單個節點 HSR 到 DR（成本優化） 
+## <a name="single-node-hsr-to-dr-cost-optimized"></a>單一節點 HSR 至 DR （成本優化） 
  
- 此拓撲支援一個使用一個 SID 進行擴展配置的節點，將 HANA 系統複製到主 SID 的 DR 網站。 在圖中，主網站只描述了單 SID 系統，但也支援多 SID （MCOS） 系統。 在 DR 網站，當生產操作從主網站運行時，Qa 實例使用 HLI 單元。 在 DR 容錯移轉（或容錯移轉測試）期間，DR 網站的 QA 實例將被關閉。
+ 此拓撲支援具有一個 SID 的相應增加設定中的一個節點，並將 HANA 系統複寫至主要 SID 的 DR 網站。 在此圖中，只有單一 SID 系統會在主要網站上說明，但也支援多重 SID （MCOS）系統。 在 DR 網站上，當生產作業從主要網站執行時，會在 QA 實例中使用一單位。 在 DR 容錯移轉（或容錯移轉測試）期間，會使 DR 網站上的 QA 實例停止執行。
 
 ### <a name="architecture-diagram"></a>架構圖  
 
-![單個節點 HSR 到 DR（成本優化）](media/hana-supported-scenario/single-node-hsr-dr-cost-optimized-121.png)
+![單一節點 HSR 至 DR （成本優化）](media/hana-supported-scenario/single-node-hsr-dr-cost-optimized-121.png)
 
 ### <a name="ethernet"></a>乙太網路
 下列網路介面已預先設定：
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI/HSR |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HSR |
 | B | 類型一 | eth2.tenant | eno3.tenant | 已設定但未使用 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI/HSR |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端到 HSR |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |**在主要網站上**|
-|/hana/shared/SID | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|/hana/shared/SID | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 |**在 DR 網站上**|
-|/hana/shared/SID | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|/hana/shared/SID | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
-|/hana/shared/QA-SID | QA SID 的 HANA 安裝 | 
-|/hana/data/QA-SID/mnt00001 | QA SID 的資料檔案安裝 | 
-|/hana/log/QA-SID/mnt00001 | QA SID 的日誌檔安裝 |
+|/hana/shared/QA-SID | 適用于 QA SID 的 HANA 安裝 | 
+|/hana/data/QA-SID/mnt00001 | 適用于 QA SID 的資料檔案安裝 | 
+|/hana/log/QA-SID/mnt00001 | QA SID 的記錄檔安裝 |
 |/hana/logbackups/QA-SID | 適用於 QA SID 的重做記錄 |
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 對於 MCOS：卷大小分佈基於記憶體中的資料庫大小。 要瞭解多 SID 環境中支援記憶體中的資料庫大小，請參閱[概述和體系結構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
-- 在 DR 網站：為 DR HLI 單元中的生產 HANA 實例安裝配置卷和裝載點（標記為"DR 網站上的 PROD 實例"）。 
-- 在 DR 網站：為 QA 實例安裝配置 QA 的資料、記錄備份、日誌和共用卷（標記為"QA 實例安裝"）。
-- 主節點使用 HANA 系統複製與 DR 節點同步。 
-- [全域覆蓋](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用於將 ExpressRoute 電路連結在一起，在區域網路之間建立私人網路絡。
+- 針對 MCOS：磁片區大小散發是以記憶體中的資料庫大小為基礎。 若要瞭解多個 SID 環境中的記憶體支援哪些資料庫大小，請參閱[總覽和架構](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。
+- 在 DR 網站上：磁片區和掛接點已設定（標示為「DR 網站的生產實例」），以用於 DR 的 HANA 實例安裝。 
+- 在 DR 網站上：已針對 qa 實例安裝設定適用于 QA 的資料、記錄備份、記錄和共用磁片區（標示為「QA 實例安裝」）。
+- 主要節點會使用 HANA 系統複寫與 DR 節點同步。 
+- [全球範圍](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
 
-## <a name="high-availability-and-disaster-recovery-with-hsr"></a>使用 HSR 提供高可用性和災害復原 
+## <a name="high-availability-and-disaster-recovery-with-hsr"></a>使用 HSR 的高可用性和嚴重損壞修復 
  
- 此拓撲支援兩個節點，用於針對本地區域的高可用性的 HANA 系統複製配置。 對於 DR，DR 區域的第三個節點使用 HSR（非同步模式）與主網站同步。 
+ 此拓撲支援兩個節點，適用于本地區域高可用性的 HANA 系統複寫設定。 針對 DR，DR 區域的第三個節點會使用 HSR （非同步模式）與主要網站同步。 
 
 ### <a name="architecture-diagram"></a>架構圖  
 
-![使用 HSR 提供高可用性和災害復原](media/hana-supported-scenario/hana-system-replication-dr-131.png)
+![使用 HSR 的高可用性和嚴重損壞修復](media/hana-supported-scenario/hana-system-replication-dr-131.png)
 
 ### <a name="ethernet"></a>乙太網路
 下列網路介面已預先設定：
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI/HSR |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HSR |
 | B | 類型一 | eth2.tenant | eno3.tenant | 已設定但未使用 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI/HSR |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端到 HSR |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |**在主要網站上**|
-|/hana/shared/SID | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|/hana/shared/SID | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 |**在 DR 網站上**|
-|/hana/shared/SID | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|/hana/shared/SID | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 在 DR 網站：為 DR HLI 單元中的生產 HANA 實例安裝配置卷和裝載點（標記為"PROD DR 實例"）。 
-- 主網站節點使用 HANA 系統複製與 DR 節點同步。 
-- [全域覆蓋](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用於將 ExpressRoute 電路連結在一起，在區域網路之間建立私人網路絡。
+- 在 DR 網站上：磁片區和掛接點已設定（標示為「生產 DR 實例」），以供在 DR 的 HANA 單位上安裝生產 HANA 實例。 
+- 主要網站節點會使用 HANA 系統複寫與 DR 節點同步。 
+- [全球範圍](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
 
-## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>通過 HSR 的高可用性和災害復原（成本優化）
+## <a name="high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>使用 HSR 進行高可用性和嚴重損壞修復（成本優化）
  
- 此拓撲支援兩個節點，用於用於本地區域的高可用性的 HANA 系統複製配置。 對於 DR，DR 區域的第三個節點使用 HSR（非同步模式）與主網站同步，而另一個實例（例如 QA）已經從 DR 節點耗盡。 
+ 此拓撲支援兩個節點，適用于本地區域高可用性的 HANA 系統複寫設定。 針對 DR，DR 區域的第三個節點會使用 HSR （非同步模式）與主要網站同步，而另一個實例（例如 QA）則已從 DR 節點執行。 
 
 ### <a name="architecture-diagram"></a>架構圖  
 
-![通過 HSR 的高可用性和災害復原（成本優化）](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
+![使用 HSR 進行高可用性和嚴重損壞修復（成本優化）](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
 
 ### <a name="ethernet"></a>乙太網路
 下列網路介面已預先設定：
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI/HSR |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HSR |
 | B | 類型一 | eth2.tenant | eno3.tenant | 已設定但未使用 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI/HSR |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 已設定但未使用 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端到 HSR |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 已設定但未使用 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |**在主要網站上**|
-|/hana/shared/SID | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|/hana/shared/SID | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 |**在 DR 網站上**|
-|/hana/shared/SID | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|/hana/shared/SID | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
-|/hana/shared/QA-SID | QA SID 的 HANA 安裝 | 
-|/hana/data/QA-SID/mnt00001 | QA SID 的資料檔案安裝 | 
-|/hana/log/QA-SID/mnt00001 | QA SID 的日誌檔安裝 |
+|/hana/shared/QA-SID | 適用于 QA SID 的 HANA 安裝 | 
+|/hana/data/QA-SID/mnt00001 | 適用于 QA SID 的資料檔案安裝 | 
+|/hana/log/QA-SID/mnt00001 | QA SID 的記錄檔安裝 |
 |/hana/logbackups/QA-SID | 適用於 QA SID 的重做記錄 |
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 在 DR 網站：為 DR HLI 單元中的生產 HANA 實例安裝配置卷和裝載點（標記為"PROD DR 實例"）。 
-- 在 DR 網站：為 QA 實例安裝配置 QA 的資料、記錄備份、日誌和共用卷（標記為"QA 實例安裝"）。
-- 主網站節點使用 HANA 系統複製與 DR 節點同步。 
-- [全域覆蓋](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用於將 ExpressRoute 電路連結在一起，在區域網路之間建立私人網路絡。
+- 在 DR 網站上：磁片區和掛接點已設定（標示為「生產 DR 實例」），以供在 DR 的 HANA 單位上安裝生產 HANA 實例。 
+- 在 DR 網站上：已針對 qa 實例安裝設定適用于 QA 的資料、記錄備份、記錄和共用磁片區（標示為「QA 實例安裝」）。
+- 主要網站節點會使用 HANA 系統複寫與 DR 節點同步。 
+- [全球範圍](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
 
-## <a name="scale-out-with-dr-using-hsr"></a>使用 HSR 使用 DR 橫向擴展
+## <a name="scale-out-with-dr-using-hsr"></a>使用 HSR 相應放大 DR
  
-此拓撲支援具 DR 相應放大中的多個節點。 您可以要求此拓撲，不論是否具有待命節點。 主網站節點使用 HANA 系統複製（非同步模式）與 DR 網站節點同步。
+此拓撲支援具 DR 相應放大中的多個節點。 您可以要求此拓撲，不論是否具有待命節點。 主要網站節點會使用 HANA 系統複寫（非同步模式）與 DR 網站節點同步。
 
 
 ### <a name="architecture-diagram"></a>架構圖  
 
-[![使用 HSR 使用 DR 橫向擴展](media/hana-supported-scenario/scale-out-dr-hsr-151.png)](media/hana-supported-scenario/scale-out-dr-hsr-151.png#lightbox)
+[![使用 HSR 相應放大 DR](media/hana-supported-scenario/scale-out-dr-hsr-151.png)](media/hana-supported-scenario/scale-out-dr-hsr-151.png#lightbox)
 
 
 ### <a name="ethernet"></a>乙太網路
@@ -759,39 +759,39 @@ HANA 大型實例支援各種體系結構，可説明您滿足業務需求。 �
 
 | NIC 邏輯介面 | SKU 類型 | 以 SUSE 作業系統命名 | 以 RHEL 作業系統命名 | 使用案例|
 | --- | --- | --- | --- | --- |
-| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HLI/HSR |
-| B | 類型一 | eth2.tenant | eno3.tenant | 節點到節點通信 |
-| C | 類型一 | eth1.tenant | eno2.tenant | 節點到存儲 |
+| A | 類型一 | eth0.tenant | eno1.tenant | 用戶端到 HSR |
+| B | 類型一 | eth2.tenant | eno3.tenant | 節點對節點通訊 |
+| C | 類型一 | eth1.tenant | eno2.tenant | 節點對儲存體 |
 | D | 類型一 | eth4.tenant | eno4.tenant | 已設定但未使用 |
-| A | 類型二 | vlan\<租戶 無> | team0.tenant | 用戶端到 HLI/HSR |
-| B | 類型二 | vlan\<租戶 No+2> | team0.tenant+2 | 節點到節點通信 |
-| C | 類型二 | vlan\<租戶 No+1> | team0.tenant+1 | 節點到存儲 |
-| D | 類型二 | vlan\<租戶 No+3> | team0.tenant+3 | 已設定但未使用 |
+| A | 類型二 | vlan\<tenantNo> | team0.tenant | 用戶端到 HSR |
+| B | 類型二 | vlan\<tenantNo + 2> | team0.tenant+2 | 節點對節點通訊 |
+| C | 類型二 | vlan\<tenantNo + 1> | team0.tenant+1 | 節點對儲存體 |
+| D | 類型二 | vlan\<tenantNo + 3> | team0.tenant+3 | 已設定但未使用 |
 
-### <a name="storage"></a>存放裝置
-預配置了以下安裝點：
+### <a name="storage"></a>儲存體
+下列掛接點已預先設定：
 
 | 掛接點 | 使用案例 | 
 | --- | --- |
 |**在主要節點上**|
-|HANA/shared | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|HANA/shared | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 |**在 DR 節點上**|
-|HANA/shared | 用於生產 SID 的 HANA 安裝 | 
-|/hana/data/SID/mnt00001 | 用於生產 SID 的資料檔案安裝 | 
-|/hana/log/SID/mnt00001 | 用於生產 SID 的日誌檔安裝 | 
+|HANA/shared | 適用于生產 SID 的 HANA 安裝 | 
+|/hana/data/SID/mnt00001 | 適用于生產 SID 的資料檔案安裝 | 
+|/hana/log/SID/mnt00001 | 適用于生產 SID 的記錄檔安裝 | 
 |/hana/logbackups/SID | 適用於生產 SID 的重做記錄 |
 
 
 ### <a name="key-considerations"></a>主要考量
 - /usr/sap/SID 是 /hana/shared/SID 的符號連結。
-- 在 DR 網站：為 DR HLI 單元的生產 HANA 實例安裝配置卷和裝載點。 
-- 主網站節點使用 HANA 系統複製與 DR 節點同步。 
-- [全域覆蓋](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用於將 ExpressRoute 電路連結在一起，在區域網路之間建立私人網路絡。
+- 在 DR 網站上：磁片區和掛接點是針對在 DR 的生產 HANA 實例安裝進行設定。 
+- 主要網站節點會使用 HANA 系統複寫與 DR 節點同步。 
+- [全球範圍](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)用來將 ExpressRoute 線路連結在一起，以在您的地區網路之間建立私人網路。
 
 
 ## <a name="next-steps"></a>後續步驟
-- HANA 大型實例的[基礎架構和連接](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
-- HANA 大型實例[的高可用性和災害復原](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
+- 適用于 HANA 大型實例的[基礎結構和連線能力](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity)
+- HANA 大型實例的[高可用性和嚴重損壞修復](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)

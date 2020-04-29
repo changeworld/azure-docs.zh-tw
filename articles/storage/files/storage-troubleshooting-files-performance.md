@@ -1,6 +1,6 @@
 ---
-title: Azure 檔性能故障排除指南
-description: Azure 檔共用和相關解決方法的已知性能問題。
+title: Azure 檔案儲存體效能疑難排解指南
+description: Azure 檔案共用和相關的因應措施的已知效能問題。
 author: gunjanj
 ms.service: storage
 ms.topic: conceptual
@@ -8,201 +8,201 @@ ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
 ms.openlocfilehash: 09e55abcd97317b87f8a272afa51c6b4ace572e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77598080"
 ---
-# <a name="troubleshoot-azure-files-performance-issues"></a>解決 Azure 檔性能問題
+# <a name="troubleshoot-azure-files-performance-issues"></a>針對 Azure 檔案儲存體效能問題進行疑難排解
 
-本文列出了與 Azure 檔共用相關的一些常見問題。 當遇到這些問題時，它提供了潛在的原因和解決方法。
+本文列出一些與 Azure 檔案共用相關的常見問題。 當遇到這些問題時，它會提供可能的原因和因應措施。
 
-## <a name="high-latency-low-throughput-and-general-performance-issues"></a>高延遲、低輸送量和一般性能問題
+## <a name="high-latency-low-throughput-and-general-performance-issues"></a>高延遲、低輸送量和一般效能問題
 
-### <a name="cause-1-share-experiencing-throttling"></a>原因 1：共用體驗限制
+### <a name="cause-1-share-experiencing-throttling"></a>原因1：共用遇到節流
 
-高級共用的預設配額為 100 GiB，它提供了 100 個基準 IOPS（一小時可能會爆裂 300 個）。 有關預配及其與 IOPS 的關係的詳細資訊，請參閱規劃指南的[預配共用](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)部分。
+Premium 共用上的預設配額為 100 GiB，可提供100基準 IOPS （最高可達一個小時的300）。 如需布建和其 IOPS 關聯性的詳細資訊，請參閱《規劃指南》中的布[建的共用](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)一節。
 
-要確認共用是否受到限制，可以在門戶中利用 Azure 指標。
+若要確認您的共用是否正在進行節流處理，您可以在入口網站中利用 Azure 計量。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 選擇**所有服務**，然後搜索**指標**。
+1. 選取 [**所有服務**]，然後搜尋 [**計量**]。
 
-1. 選擇**指標**。
+1. 選取 [**計量**]。
 
-1. 選擇存儲帳戶作為資源。
+1. 選取您的儲存體帳戶作為資源。
 
-1. 選擇 **"檔**"作為指標命名空間。
+1. 選取 **[** 檔案] 做為計量命名空間。
 
-1. 選擇**交易記錄**作為指標。
+1. 選取 [**交易**] 作為 [度量]。
 
-1. 為**回應類型**添加篩選器，並檢查是否有任何請求具有 **"成功與旋轉**"（用於 SMB）或**用戶端旋轉錯誤**（用於 REST）的回應代碼。
+1. 新增**ResponseType**的篩選準則，並查看是否有任何要求的回應碼為**SuccessWithThrottling** （適用于 SMB）或**ClientThrottlingError** （適用于 REST）。
 
-![高級檔共用的指標選項](media/storage-troubleshooting-premium-fileshares/metrics.png)
+![Premium 檔案共用的計量選項](media/storage-troubleshooting-premium-fileshares/metrics.png)
 
 > [!NOTE]
-> 要在檔共用被限制時接收警報，請參閱[如何在檔共用被限制時創建警報](#how-to-create-an-alert-if-a-file-share-is-throttled)。
+> 若要在檔案共用受到節流處理時收到警示，請參閱如何在檔案[共用已節流時建立警示](#how-to-create-an-alert-if-a-file-share-is-throttled)。
 
 ### <a name="solution"></a>解決方法
 
-- 通過在共用上指定更高的配額來增加份額預配容量。
+- 藉由在您的共用上指定較高的配額，以增加共用布建的容量。
 
-### <a name="cause-2-metadatanamespace-heavy-workload"></a>原因 2：中繼資料/命名空間繁重的工作負載
+### <a name="cause-2-metadatanamespace-heavy-workload"></a>原因2：中繼資料/命名空間繁重的工作負載
 
-如果大多數請求以中繼資料為中心（例如創建檔/打開檔/關閉檔/查詢資訊/查詢目錄），則與讀/寫操作相比，延遲將更為嚴重。
+如果大部分的要求都是以中繼資料為中心（例如 createfile/openfile/對應 closefile/queryinfo/querydirectory），則相較于讀取/寫入作業，延遲將會更糟。
 
-要確認大多數請求是否以中繼資料為中心，可以使用與上述相同的步驟。 除了不添加**回應類型的**篩選器外，添加**API 名稱**的篩選器。
+若要確認您的大部分要求是否以中繼資料為中心，您可以使用與上述相同的步驟。 除了新增**ResponseType**的篩選準則以外，請新增**API 名稱**的篩選。
 
-![指標中的 API 名稱篩選器](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
+![篩選計量中的 API 名稱](media/storage-troubleshooting-premium-fileshares/MetadataMetrics.png)
 
 ### <a name="workaround"></a>因應措施
 
-- 檢查是否可以修改應用程式以減少中繼資料操作的數量。
-- 在檔共用上添加 VHD，並從用戶端將 VHD 裝載到 SMB 上，以便對資料執行檔操作。 此方法適用于單個編寫器和多個讀取器方案，並允許中繼資料操作為本地操作，提供類似于本地直接連接存儲的性能。
+- 檢查是否可以修改應用程式，以減少中繼資料作業的數目。
+- 在檔案共用上新增 VHD，並從用戶端透過 SMB 掛接 VHD，以對資料執行檔案作業。 這種方法適用于單一寫入器和多個讀取器案例，可讓中繼資料作業成為本機，以提供類似本機直接附加儲存體的效能。
 
-### <a name="cause-3-single-threaded-application"></a>原因 3：單線程應用程式
+### <a name="cause-3-single-threaded-application"></a>原因3：單一執行緒應用程式
 
-如果客戶使用的應用程式是單線程的，則根據預配的共用大小，這可能導致 IOPS/輸送量明顯低於最大可能。
+如果客戶使用的應用程式是單一執行緒，這可能會導致 IOPS/輸送量明顯低於根據您布建的共用大小所可能的最大值。
 
 ### <a name="solution"></a>解決方法
 
-- 通過增加執行緒數來增加應用程式並行性。
-- 切換到可能並行化的應用程式。 例如，對於複製操作，客戶可以使用 Windows 用戶端的 AzCopy 或 RoboCopy，也可以使用 Linux 用戶端上的**並行**命令。
+- 藉由增加執行緒的數目來增加應用程式平行處理原則。
+- 切換至可以平行處理的應用程式。 例如，對於複製作業，客戶可以從 Windows 用戶端使用 AzCopy 或 RoboCopy，或在 Linux 用戶端上使用**parallel**命令。
 
-## <a name="very-high-latency-for-requests"></a>請求延遲非常高
+## <a name="very-high-latency-for-requests"></a>非常高的要求延遲
 
 ### <a name="cause"></a>原因
 
-用戶端 VM 可以位於與檔共用不同的區域中。
+用戶端 VM 可能位於與檔案共用不同的區域中。
 
 ### <a name="solution"></a>解決方法
 
-- 從與檔共用位於同一區域的 VM 運行應用程式。
+- 從與檔案共用位於相同區域的 VM 執行應用程式。
 
-## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>用戶端無法實現網路支援的最大輸送量
+## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>用戶端無法達到網路支援的最大輸送量
 
-造成這種情況的一個潛在原因是缺乏離岸 SMB 多管道支援。 目前，Azure 檔共用僅支援單個通道，因此從用戶端 VM 到伺服器只有一個連接。 此單個連接與用戶端 VM 上的單個內核相關聯，因此從 VM 可實現的最大輸送量由單個內核綁定。
+其中一個可能的原因是缺少 SMB 多通道支援。 目前，Azure 檔案共用僅支援單一通道，因此只有一個從用戶端 VM 到伺服器的連線。 此單一連線已限定為用戶端 VM 上的單一核心，因此可從 VM 達到的最大輸送量是由單一核心所系結。
 
 ### <a name="workaround"></a>因應措施
 
-- 使用更大的內核獲取 VM 可能有助於提高輸送量。
-- 從多個 VM 運行用戶端應用程式將提高輸送量。
+- 取得具有較大核心的 VM 可能有助於改善輸送量。
+- 從多個 Vm 執行用戶端應用程式將會增加輸送量。
 
-- 盡可能使用 REST API。
+- 盡可能使用 REST Api。
 
-## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>與 Windows 用戶端相比，Linux 用戶端的輸送量要低得多。
+## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>相較于 Windows 用戶端，Linux 用戶端上的輸送量會大幅降低。
 
 ### <a name="cause"></a>原因
 
-這是一個已知的問題，與在Linux上實現SMB用戶端。
+這是在 Linux 上執行 SMB 用戶端的已知問題。
 
 ### <a name="workaround"></a>因應措施
 
-- 將負載分散到多個 VM 上。
-- 在同一 VM 上，使用具有**nosharesock**選項的多個裝載點，並將負載分散到這些裝載點上。
-- 在 Linux 上，嘗試安裝**帶有無嚴格同步**選項，以避免強制 SMB 刷新每個**fsync**調用。 對於 Azure 檔，此選項不會干擾資料一致性，但可能會導致目錄清單 **（ls-l**命令） 上的檔中繼資料陳舊。 直接查詢檔中繼資料 **（stat**命令）將返回最新的檔中繼資料。
+- 將負載分散到多個 Vm。
+- 在相同的 VM 上，使用多個掛接點搭配**nosharesock**選項，並將負載分散到這些掛接點。
+- 在 Linux 上，請嘗試使用**nostrictsync**選項掛接，以避免在每次**fsync**呼叫時強制執行 SMB 清除。 針對 Azure 檔案儲存體，此選項不會影響資料的一致性，但可能會導致目錄清單（**ls-l**命令）上的過時檔案中繼資料。 直接查詢檔案的中繼資料（**stat**命令）將會傳回最新的檔案中繼資料。
 
-## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>涉及大量開/關操作的中繼資料繁重工作負載的延遲率高。
+## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>包含大量開啟/關閉作業的中繼資料繁重工作負載的高延遲。
 
 ### <a name="cause"></a>原因
 
-不支援目錄租約。
+缺少目錄租用的支援。
 
 ### <a name="workaround"></a>因應措施
 
-- 如果可能，避免在短時間內在同一目錄上過多的打開和關閉控制碼。
-- 對於 Linux VM，通過將**actimeo_\<sec>** 指定為裝載選項來增加目錄條目緩存超時。 預設情況下，它是一秒，因此像三或五個這樣的較大值可能會有所説明。
-- 對於 Linux VM，將內核升級到 4.20 或更高版本。
+- 可能的話，請在短時間內避免在同一個目錄上有過度的開啟/關閉控制碼。
+- 針對 Linux Vm，請將**actimeo =\<sec>** 指定為掛接選項，以增加目錄專案快取超時。 根據預設，它是一秒，因此較大的值（例如三或五）可能會有説明。
+- 針對 Linux Vm，請將核心升級為4.20 或更高版本。
 
 ## <a name="low-iops-on-centosrhel"></a>CentOS/RHEL 上的低 IOPS
 
 ### <a name="cause"></a>原因
 
-CentOS/RHEL 不支援大於 1 的 IO 深度。
+CentOS/RHEL 不支援大於1的 IO 深度。
 
 ### <a name="workaround"></a>因應措施
 
-- 升級到 CentOS 8 / RHEL 8。
-- 更改為 Ubuntu。
+- 升級至 CentOS 8/RHEL 8。
+- 變更為 Ubuntu。
 
 ## <a name="slow-file-copying-to-and-from-azure-files-in-linux"></a>從 Linux 中的 Azure 檔案服務複製檔案或將檔案複製到其中的速度變慢
 
-如果遇到與 Azure 檔案複製和從 Azure 檔案複製的速度很慢，請查看 Linux 疑難排解指南中 Linux 部分[中的"緩慢檔案複製"和"從 Azure 檔案複製](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux)"。
+如果您遇到 Azure 檔案儲存體的檔案複製速度變慢，請參閱 Linux 疑難排解指南中的[從 linux Azure 檔案儲存體複製速度緩慢](storage-troubleshoot-linux-file-connection-problems.md#slow-file-copying-to-and-from-azure-files-in-linux)的檔案一節。
 
-## <a name="jitterysaw-tooth-pattern-for-iops"></a>IOPS 的抖動/鋸齒圖案
+## <a name="jitterysaw-tooth-pattern-for-iops"></a>抖動/看到的 IOPS 模式
 
 ### <a name="cause"></a>原因
 
-用戶端應用程式始終超過基線 IOPS。 目前，請求負載沒有服務端平滑，因此，如果用戶端超過基線 IOPS，則服務將限制它。 這種限制可能導致用戶端遇到抖動/鋸齒 IOPS 模式。 在這種情況下，用戶端實現的平均 IOPS 可能低於基線 IOPS。
+用戶端應用程式一致地超過基準 IOPS。 目前，要求負載沒有服務端平滑處理，因此，如果用戶端超過基準 IOPS，服務就會對其進行節流。 該節流會導致用戶端遇到抖動/已看到的 IOPS 模式。 在此情況下，用戶端所達到的平均 IOPS 可能低於基準 IOPS。
 
 ### <a name="workaround"></a>因應措施
 
-- 減少來自用戶端應用程式的請求負載，以便共用不會受到限制。
-- 增加共用的配額，以便共用不會受到限制。
+- 減少用戶端應用程式的要求負載，讓共用不會受到節流。
+- 增加共用的配額，讓共用不會受到節流。
 
-## <a name="excessive-directoryopendirectoryclose-calls"></a>目錄打開/目錄關閉呼叫過多
+## <a name="excessive-directoryopendirectoryclose-calls"></a>過多的 DirectoryOpen/DirectoryClose 呼叫
 
 ### <a name="cause"></a>原因
 
-如果目錄 Open/DirectoryClose 調用的數量屬於頂級 API 呼叫，並且您不希望用戶端進行那麼多調用，則可能是 Azure 用戶端 VM 上安裝的防病毒問題。
+如果 DirectoryOpen/DirectoryClose 呼叫的數目是在最上層的 API 呼叫中，而您不希望用戶端進行多次呼叫，則可能是 Azure 用戶端 VM 上安裝了防毒軟體的問題。
 
 ### <a name="workaround"></a>因應措施
 
-- 此問題的修復程式可在[4 月平臺更新的 Windows](https://support.microsoft.com/help/4052623/update-for-windows-defender-antimalware-platform)中提供。
+- [Windows 的四月平臺更新](https://support.microsoft.com/help/4052623/update-for-windows-defender-antimalware-platform)提供此問題的修正。
 
-## <a name="file-creation-is-slower-than-expected"></a>檔創建速度比預期慢
+## <a name="file-creation-is-slower-than-expected"></a>檔案建立速度比預期慢
 
 ### <a name="cause"></a>原因
 
-依賴于創建大量檔的工作負載不會看到高級檔共用和標準檔共用的性能之間存在顯著差異。
+依賴建立大量檔案的工作負載不會在高階檔案共用與標準檔案共用的效能上看到明顯的差異。
 
 ### <a name="workaround"></a>因應措施
 
 - 無。
 
-## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Windows 8.1 或伺服器 2012 R2 的性能降低
+## <a name="slow-performance-from-windows-81-or-server-2012-r2"></a>Windows 8.1 或伺服器 2012 R2 的效能變慢
 
 ### <a name="cause"></a>原因
 
-訪問 Azure 檔的 Azure 檔的延遲高於預期，用於 IO 密集型工作負荷。
+高於存取 IO 密集型工作負載 Azure 檔案儲存體所需的延遲。
 
 ### <a name="workaround"></a>因應措施
 
 - 安裝可用的[修補程式](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1)。
 
-## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>如果檔共用受到限制，如何創建警報
+## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>如何在檔案共用已節流時建立警示
 
-1. 在[Azure 門戶](https://portal.azure.com)中，按一下**監視器**。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，按一下 [**監視**]。 
 
-2. 按一下 **"警報"，** 然後按一下 **"新警報規則**"。
+2. 按一下 [**警示**]，然後按一下 [ **+ 新增警示規則**]。
 
-3. 按一下 **"選擇"** 以選擇包含要提醒的檔共用的**存儲帳戶/檔**資源，然後按一下"**完成**"。 例如，如果存儲帳戶名稱是 contoso，請選擇 contoso/檔資源。
+3. 按一下 [**選取**] 以選取包含您要發出警示之檔案共用的**儲存體帳戶/** 檔案資源，然後按一下 [**完成**]。 例如，如果儲存體帳戶名稱是 contoso，請選取 [contoso/file] 資源。
 
-4. 按一下"**添加**"以添加條件。
+4. 按一下 [**新增**] 以新增條件。
 
-5. 您將看到存儲帳戶支援的信號清單，選擇**交易記錄**指標。
+5. 您會看到儲存體帳戶支援的信號清單，請選取 [**交易**] 計量。
 
-6. 在 **"配置信號邏輯**"邊欄選項卡上，轉到**回應類型**維度，按一下"**維度值**下拉"，然後選擇 **"成功與旋轉**（用於 SMB）"或 **"用戶端旋轉錯誤**"（用於 REST）。 
-
-  > [!NOTE]
-  > 如果未列出成功與旋轉或用戶端限制錯誤維度值，則表示資源未被限制。  要添加維度值，**+** 請按一下 **"維度值**"旁邊的下拉清單，鍵入 **"成功與旋轉**"或 **"用戶端旋轉錯誤**"，按一下"**確定**"，然後#6重複步驟。
-
-7. 轉到 **"檔共用**"維度，按一下"**維度"值**下拉清單，然後選擇要提醒的檔共用。 
+6. 在 [**設定信號邏輯**] 分頁上，移至 [**回應類型**] 維度，按一下 [**維度值**] 下拉式選單，然後選取 [ **SuccessWithThrottling** （適用于 SMB）] 或 [ **ClientThrottlingError** （適用于 REST）]。 
 
   > [!NOTE]
-  > 如果檔共用是標準檔共用，則維度值下拉將為空，因為每股指標不適用於標準檔共用。 如果存儲帳戶中的任何檔共用受到限制，並且警報不會標識哪個檔共用被限制，將觸發標準檔共用的限制警報。 由於每股指標不適用於標準檔共用，因此建議每個存儲帳戶有一個檔共用。 
+  > 如果未列出 [SuccessWithThrottling] 或 [ClientThrottlingError] 維度值，這表示資源尚未進行節流。  若要加入維度值，請按一下**+** [**維度值**] 下拉式標題旁的，**輸入 SuccessWithThrottling**或**ClientThrottlingError**，按一下 **[確定]** ，然後重複步驟 #6。
 
-8. 定義用於評估指標警報規則的**警報參數**（閾值、運算子、聚合細微性和頻率），然後按一下 **"完成**"。
+7. 移至 [檔案**共用**] 維度，按一下 [**維度值**] 下拉式選單，然後選取您想要警示的檔案共用。 
+
+  > [!NOTE]
+  > 如果檔案共用是標準的檔案共用，則 [維度值] 下拉式會是空白的，因為標準檔案共用無法使用個別共用的計量。 如果儲存體帳戶中的任何檔案共用受到節流處理，且警示無法識別已節流的檔案共用，則會觸發標準檔案共用的節流警示。 由於標準檔案共用不提供每個共用的計量，因此建議每個儲存體帳戶都有一個檔案共用。 
+
+8. 定義用來評估計量警示規則的**警示參數**（閾值、運算子、匯總資料細微性和頻率），然後按一下 [**完成**]。
 
   > [!TIP]
-  > 如果使用靜態閾值，則指標圖表可説明確定檔共用當前被限制的合理閾值。 如果使用動態閾值，則指標圖表將顯示基於最近資料的計算閾值。
+  > 如果您使用靜態閾值，如果檔案共用目前正在進行節流，計量圖表可以協助判斷合理的閾值。 如果您使用的是動態閾值，計量圖表會顯示以最近資料為基礎的計算臨界值。
 
-9. 通過選擇現有操作組或創建新操作組，將**操作組**（電子郵件、SMS 等）添加到警報中。
+9. 藉由選取現有的動作群組或建立新的動作群組，將**動作群組**（電子郵件、SMS 等）新增至警示。
 
-10. 填寫**警報詳細資訊**，如**警報規則名稱**、**描述**和**嚴重性**。
+10. 填寫**警示詳細資料**，例如**警示規則名稱**、**描述**和**嚴重性**。
 
-11. 按一下 **"創建警報規則**"以創建警報。
+11. 按一下 [**建立警示規則**] 來建立警示。
 
-要瞭解有關在 Azure 監視器中配置警報的詳細資訊，請參閱[Microsoft Azure 中的警報概述]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
+若要深入瞭解如何在 Azure 監視器中設定警示，請參閱[Microsoft Azure 中的警示總覽]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。

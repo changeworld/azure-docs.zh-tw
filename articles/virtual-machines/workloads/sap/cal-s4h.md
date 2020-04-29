@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
 ms.openlocfilehash: c110a4e0429ba52e01c472097a2241f91d504cf5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616214"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>在 Azure 上部署 SAP S/4HANA 或 BW/4HANA
@@ -75,7 +75,7 @@ ms.locfileid: "77616214"
 
    ![Internet Explorer 雲端服務確認](./media/cal-s4h/s4h-pic5a.png)
 
-1. 按一下"**接受**"。 如果授權成功，SAP CAL 帳戶定義便會再次顯示。 片刻之後便會出現訊息來確認授權程序已成功。
+1. 按一下 [接受]  。 如果授權成功，SAP CAL 帳戶定義便會再次顯示。 片刻之後便會出現訊息來確認授權程序已成功。
 
 1. 若要將新建立的 SAP CAL 帳戶指派給您的使用者，請在右邊的文字方塊中輸入您的 [使用者識別碼]****，然後按一下 [新增]****。
 
@@ -115,7 +115,7 @@ ms.locfileid: "77616214"
 
     b. 輸入執行個體**名稱**。
 
-    c. 選擇 Azure**區域**。 SAP CAL 會建議一個區域。 如果您需要其他 Azure 區域，而且您沒有 SAP CAL 訂用帳戶，您必須向 SAP 訂購 CAL 訂用帳戶。
+    c. 選取 Azure**區域**。 SAP CAL 會建議一個區域。 如果您需要其他 Azure 區域，而且您沒有 SAP CAL 訂用帳戶，您必須向 SAP 訂購 CAL 訂用帳戶。
 
     d. 為解決方案輸入主要**密碼**，此密碼要有 8 或 9 個字元。 此密碼會用於不同元件的系統管理員。
 

@@ -1,7 +1,7 @@
 ---
 title: 建立 Azure 檔案共用
 titleSuffix: Azure Files
-description: 如何使用 Azure 門戶、PowerShell 或 Azure CLI 創建 Azure 檔共用。
+description: 如何使用 Azure 入口網站、PowerShell 或 Azure CLI 建立 Azure 檔案共用。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -9,87 +9,87 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: ed6abbac7c5953eaec4fa4584248d0d98b49ba63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77596866"
 ---
 # <a name="create-an-azure-file-share"></a>建立 Azure 檔案共用
-要創建 Azure 檔共用，您需要回答有關如何使用它三個問題：
+若要建立 Azure 檔案共用，您需要回答下列三個關於如何使用的問題：
 
-- **Azure 檔共用的性能要求是什麼？**  
-    Azure 檔提供標準檔共用，這些共用託管在基於硬碟（基於 HDD 的）硬體上，高級檔共用託管在基於固態磁片（基於 SSD）的硬體上。
+- **您的 Azure 檔案共用有哪些效能需求？**  
+    Azure 檔案儲存體提供標準檔案共用，其裝載于以硬碟為基礎（HDD 型）的硬體上，以及高階檔案共用，其裝載于以固態磁片為基礎（SSD 型）的硬體上。
 
-- **您需要大小檔共用？**  
-    標準檔共用可以跨越多達 100 TiB，但預設情況下未啟用此功能;但是，預設情況下，此功能不會啟用。如果需要大於 5 TiB 的檔共用，則需要為存儲帳戶啟用大型檔共用功能。 高級檔共用可以跨越多達 100 TiB 沒有任何特殊設置，但是高級檔共用是預配的，而不是像標準檔共用一樣付費。 這意味著預配檔共用比所需共用大得多，這將增加存儲總成本。
+- **您需要何種大小的檔案共用？**  
+    標準檔案共用最多可達 100 TiB，但預設不會啟用此功能;如果您需要大於 5 TiB 的檔案共用，您必須為儲存體帳戶啟用「大型檔案共用」功能。 Premium 檔案共用最多可以跨越 100 TiB，而不需要任何特殊設定，不過會布建 premium 檔案共用，而不是隨用隨付，如同標準檔案共用。 這表示布建檔案共用的速度遠超過您所需的空間，將會增加儲存體的總成本。
 
-- **Azure 檔共用的冗余要求是什麼？**  
-    標準檔共用提供本地冗余 （LRS）、區域冗余 （ZRS）、地理冗余 （GRS） 或地理區域冗余 （GZRS） 存儲，但大型檔共用功能僅支援本地冗余和區域冗余檔共用。 高級檔共用不支援任何形式的異地冗余。
+- **您的 Azure 檔案共用有哪些多餘的需求？**  
+    標準檔案共用提供本機的冗余（LRS）、區域冗余（ZRS）、異地冗余（GRS）或異地區域冗余（切換）儲存體，不過，只有在本機的多餘和區域的多餘檔案共用才支援大型檔案共用功能。 Premium 檔案共用不支援任何形式的異地冗余。
 
-    在大多數提供存儲帳戶的區域提供本地冗余，在較小的區域子集中提供區域冗余，可以使用高級檔共用。 要瞭解您所在地區當前是否提供高級檔共用，請參閱 Azure 按[區域可用的產品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)頁面。 有關支援 ZRS 的區域的資訊，請參閱[Azure 存儲冗余](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+    在大部分區域中，提供儲存體帳戶和區域冗余的高階檔案共用可在較小的區域子集中使用。 若要找出您的區域目前是否有 premium 檔案共用，請參閱 Azure 的[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)頁面。 如需有關支援 ZRS 之區域的詳細資訊，請參閱[Azure 儲存體冗余](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
-有關這三個選項的詳細資訊，請參閱規劃[Azure 檔部署](storage-files-planning.md)。
+如需這三個選項的詳細資訊，請參閱[規劃 Azure 檔案儲存體部署](storage-files-planning.md)。
 
-## <a name="prerequisites"></a>Prerequisites
-- 本文假定您已經創建了 Azure 訂閱。 如果您還沒有訂用帳戶，則先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
-- 如果要使用 Azure PowerShell，[請安裝最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps)。
-- 如果要使用 Azure CLI，[請安裝最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+## <a name="prerequisites"></a>先決條件
+- 本文假設您已建立 Azure 訂用帳戶。 如果您還沒有訂用帳戶，則先建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)，再開始操作。
+- 如果您想要使用 Azure PowerShell，請[安裝最新版本](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+- 如果您想要使用 Azure CLI，請[安裝最新版本](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="create-a-storage-account"></a>建立儲存體帳戶
-Azure 檔共用部署到*存儲帳戶*中，這些帳戶是表示共用存儲池的頂級物件。 此存儲池可用於部署多個檔共用。 
+Azure 檔案共用會部署到*儲存體帳戶*，這是代表共用儲存體集區的最上層物件。 此儲存體集區可以用來部署多個檔案共用。 
 
-Azure 支援客戶可能具有的不同存儲方案的多種類型的存儲帳戶，但 Azure 檔的存儲帳戶有兩種主要類型。 您需要創建哪種存儲帳戶類型取決於是要創建標準檔共用還是高級檔共用： 
+Azure 針對客戶可能擁有的不同儲存體案例支援多種類型的儲存體帳戶，但 Azure 檔案儲存體的儲存體帳戶有兩種主要類型。 您需要建立哪個儲存體帳戶類型，取決於您要建立標準檔案共用還是 premium 檔案共用： 
 
-- **通用版本 2 （GPv2） 存儲帳戶**：GPv2 存儲帳戶允許您在基於標準/基於硬碟（基於 HDD）的硬體上部署 Azure 檔共用。 除了存儲 Azure 檔共用外，GPv2 存儲帳戶還可以存儲其他存儲資源，如 Blob 容器、佇列或表。 
+- **一般目的版本2（GPv2）儲存體帳戶**： GPv2 儲存體帳戶可讓您在以標準/硬碟為基礎（HDD）的硬體上部署 Azure 檔案共用。 除了儲存 Azure 檔案共用，GPv2 儲存體帳戶還可以儲存其他儲存體資源，例如 blob 容器、佇列或資料表。 
 
-- **檔存儲存儲帳戶**：檔存儲存儲帳戶允許您在基於高級/固態磁片（基於 SSD）的硬體上部署 Azure 檔共用。 檔存儲帳戶只能用於存儲 Azure 檔共用;因此，檔存儲帳戶只能用於存儲 Azure 檔共用。無法在 FileStorage 帳戶中部署其他存儲資源（blob 容器、佇列、表等）。
+- **FileStorage 儲存體帳戶**： FileStorage 儲存體帳戶可讓您在 premium/固態磁片型（SSD 型）硬體上部署 Azure 檔案共用。 FileStorage 帳戶只能用來儲存 Azure 檔案共用;不能在 FileStorage 帳戶中部署其他儲存體資源（blob 容器、佇列、資料表等等）。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-要通過 Azure 門戶創建存儲帳戶，請選擇 **" 從儀表板創建資源**"。 在生成的 Azure 應用商店搜索視窗中，搜索**存儲帳戶**並選擇生成的搜尋結果。 這將導致存儲帳戶的概覽頁;選擇 **"創建**"以繼續存儲帳戶創建嚮導。
+若要透過 Azure 入口網站建立儲存體帳戶，請從儀表板選取 [ **+ 建立資源**]。 在產生的 Azure Marketplace 搜尋] 視窗中，搜尋 [**儲存體帳戶**]，然後選取產生的搜尋結果。 這會導致儲存體帳戶的總覽頁面;選取 [**建立**] 以繼續進行儲存體帳戶建立嚮導。
 
-![存儲帳戶快速建立選項的螢幕截圖](media/storage-how-to-create-file-share/create-storage-account-0.png)
+![瀏覽器中 [儲存體帳戶] 快速建立選項的螢幕擷取畫面](media/storage-how-to-create-file-share/create-storage-account-0.png)
 
-#### <a name="the-basics-section"></a>基礎知識部分
-創建存儲帳戶要完成的第一部分標記為 **"基礎知識**"。 它包含創建存儲帳戶所需的所有欄位。 要創建 GPv2 存儲帳戶，請確保**性能**選項按鈕設置為*標準*，並且 **"帳戶"類**下拉清單選擇存儲*V2（通用 v2）。*
+#### <a name="the-basics-section"></a>基本區段
+建立儲存體帳戶的第一個完成區段標示為 [**基本**]。 這包含建立儲存體帳戶的所有必要欄位。 若要建立 GPv2 儲存體帳戶，請確定 [**效能**] 選項按鈕已設定為 [*標準*]，而且已選取 [**帳戶類型**] 下拉式清單至 [ *StorageV2] （一般用途 v2）*。
 
-!["性能單選"按鈕的螢幕截圖，其中選擇了"標準"螢幕，選擇了"已選擇存儲V2的帳戶類型"](media/storage-how-to-create-file-share/create-storage-account-1.png)
+![[效能] 選項按鈕的螢幕擷取畫面，其中已選取 [標準] 和 [已選取 StorageV2 的帳戶類型]](media/storage-how-to-create-file-share/create-storage-account-1.png)
 
-要創建檔存儲存儲帳戶，請確保**性能**選項按鈕設置為*高級*，並且 **"帳戶"類**下拉清單選擇到*檔存儲*。
+若要建立 FileStorage 儲存體帳戶，請確定 [**效能**] 選項按鈕已設定為 [ *Premium* ]，而且已選取 [**帳戶類型**] 下拉式清單來*FileStorage*。
 
-![選擇"高級"和"選擇檔存儲的帳戶類型"性能選項按鈕的螢幕截圖](media/storage-how-to-create-file-share/create-storage-account-2.png)
+![[效能] 選項按鈕的螢幕擷取畫面，其中已選取 [Premium] 和 [已選取 FileStorage 的帳戶種類]](media/storage-how-to-create-file-share/create-storage-account-2.png)
 
-其他基礎知識欄位獨立于存儲帳戶的選擇：
-- **訂閱**：要部署到的存儲帳戶的訂閱。 
-- **資源組**：要部署到的存儲帳戶的資源組。 您可以創建新資源組或使用現有資源組。 資源群組是用來群組 Azure 服務的邏輯容器。 當您建立儲存體帳戶時，可以選擇建立新的資源群組，或使用現有的資源群組。
-- **存儲帳戶名稱**：要創建的存儲帳戶資源的名稱。 此名稱必須是全域唯一的，但除此之外，任何您想要的名稱都可以。 當您通過 SMB 裝載 Azure 檔共用時，存儲帳戶名稱將用作伺服器名稱。
-- **位置**：要部署到的存儲帳戶的區域。 這可以是與資源組或任何其他可用區域關聯的區域。
-- **複製**：雖然這被標記為複製，但此欄位實際上意味著**冗余**;這是所需的冗余級別：本地冗余 （LRS）、區域冗余 （ZRS）、地理冗余 （GRS） 和地理區域冗余。 此下拉清單還包含讀取存取地理冗余 （RA-GRS） 和讀取存取地理區域冗余 （RA-GZRS），它們不適用於 Azure 檔共用;在具有這些選擇的存儲帳戶中創建的任何檔共用實際上將分別為異地冗余或地理區域冗余。 根據您所在的區域或選定的存儲帳戶類型，可能不允許使用某些冗余選項。
-- **訪問層**：此欄位不適用於 Azure 檔，因此您可以選擇其中一個選項按鈕。
+其他基本欄位與儲存體帳戶的選擇無關：
+- **訂**用帳戶：要部署到其中的儲存體帳戶的訂用帳戶。 
+- **資源群組**：要部署到其中的儲存體帳戶的資源群組。 您可以建立新的資源群組，或使用現有的資源群組。 資源群組是用來群組 Azure 服務的邏輯容器。 當您建立儲存體帳戶時，可以選擇建立新的資源群組，或使用現有的資源群組。
+- **儲存體帳戶名稱**：要建立的儲存體帳戶資源的名稱。 此名稱必須是全域唯一的，否則可以是您想要的任何名稱。 當您透過 SMB 掛接 Azure 檔案共用時，將會使用儲存體帳戶名稱做為伺服器名稱。
+- **位置**：要在其中部署儲存體帳戶的區域。 這可以是與資源群組或任何其他可用區域相關聯的區域。
+- 複寫：雖然這會標示為複寫，但此欄位實際上表示有**重複****的複本;** 這是所需的冗余層級： [本機冗余] （LRS）、[區域冗余] （ZRS）、[異地冗余] （GRS）和 [異地區域冗余]。 此下拉式清單也包含讀取權限異地冗余（RA-GRS）和讀取權限異地區域冗余（RA-切換），其不適用於 Azure 檔案共用;在儲存體帳戶中，使用這些選取的檔案共用，會分別是異地多餘或異地區域冗余。 視您的區域或選取的儲存體帳戶類型而定，可能不允許某些多餘的選項。
+- **存取層**：此欄位不適用於 Azure 檔案儲存體，因此您可以選擇其中一個選項按鈕。
 
-#### <a name="the-networking-blade"></a>網路邊欄選項卡
-網路部分允許您配置網路選項。 這些設置是創建存儲帳戶的可選設置，如果需要，可以稍後進行配置。 有關這些選項的詳細資訊，請參閱[Azure 檔網路注意事項](storage-files-networking-overview.md)。
+#### <a name="the-networking-blade"></a>網路功能分頁
+[網路] 區段可讓您設定網路功能選項。 這些設定在建立儲存體帳戶時是選擇性的，而且可以在稍後視需要進行設定。 如需這些選項的詳細資訊，請參閱[Azure 檔案儲存體的網路功能考慮](storage-files-networking-overview.md)。
 
-#### <a name="the-advanced-blade"></a>高級刀片
-高級部分包含 Azure 檔共用的幾個重要設置：
+#### <a name="the-advanced-blade"></a>Advanced 分頁
+Advanced 區段包含 Azure 檔案共用的幾項重要設定：
 
-- **需要安全轉移**：此欄位指示存儲帳戶是否需要加密才能與存儲帳戶通信。 我們建議保持啟用狀態，但是，如果您需要 SMB 2.1 支援，則必須禁用此功能。 我們建議您禁用加密，以便將存儲帳戶訪問限制到具有服務終結點和/或專用終結點的虛擬網路。
-- **大型檔共用**：此欄位啟用最多 100 TiB 的檔共用的存儲帳戶。 啟用此功能將限制存儲帳戶僅本地冗余和區域冗余存儲選項。 為大型檔共用啟用 GPv2 存儲帳戶後，無法禁用大型檔共用功能。 檔存儲存儲帳戶（高級檔共用的存儲帳戶）沒有此選項，因為所有高級檔共用可以擴展到 100 TiB。 
+- **需要安全傳輸**：此欄位指出儲存體帳戶在傳輸時是否需要加密以進行儲存體帳戶的通訊。 我們建議您保留此功能，但如果您需要 SMB 2.1 支援，則必須停用此功能。 我們建議您停用加密，將您的儲存體帳戶存取許可權制為具有服務端點和/或私人端點的虛擬網路。
+- **大型檔案共用**：此欄位會啟用最多 100 TiB 的檔案共用儲存體帳戶。 啟用這項功能會將您的儲存體帳戶限制為僅在本機多餘和區域多餘的儲存體選項。 當 GPv2 儲存體帳戶已啟用大型檔案共用之後，您就無法停用大型檔案共用功能。 FileStorage 儲存體帳戶（premium 檔案共用的儲存體帳戶）沒有此選項，因為所有 premium 檔案共用都可以相應增加至 100 TiB。 
 
-![應用於 Azure 檔的重要高級設置的螢幕截圖](media/storage-how-to-create-file-share/create-storage-account-3.png)
+![適用于的重要高級設定的螢幕擷取畫面 Azure 檔案儲存體](media/storage-how-to-create-file-share/create-storage-account-3.png)
 
-高級選項卡中提供的其他設置（Blob 虛刪除、Azure 資料湖存儲第 2 代的階層命名空間和 Blob 存儲的 NFSv3）不適用於 Azure 檔。
+[高級] 索引標籤中可用的其他設定（blob 虛刪除、Azure Data Lake 儲存體 gen 2 的階層式命名空間，以及 blob 儲存體的 NFSv3）不適用於 Azure 檔案儲存體。
 
 #### <a name="tags"></a>Tags
-標記是名稱/值對，使您能夠通過將同一標記應用於多個資源和資源組來對資源進行分類並查看合併計費。 這些是可選的，可以在創建存儲帳戶後應用。
+標籤是成對的名稱/值，可讓您將相同的標籤套用至多個資源和資源群組，藉此將資源分類及查看合併計費。 這些是選擇性的，而且可以在建立儲存體帳戶之後套用。
 
 #### <a name="review--create"></a>檢閱 + 建立
-創建存儲帳戶的最後一步是選擇 **"審閱 + 創建**"選項卡上的 **"創建**"按鈕。如果未填充存儲帳戶的所有必需欄位，則此按鈕將不可用。
+建立儲存體帳戶的最後一個步驟是選取 [**審核 + 建立**] 索引標籤上的 [**建立**] 按鈕。如果未填入儲存體帳戶的所有必要欄位，此按鈕將無法使用。
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
-要使用 PowerShell 創建存儲帳戶，我們將使用`New-AzStorageAccount`Cmdlet。 這個 Cmdlet 有很多選項;僅顯示所需的選項。 要瞭解有關高級選項的詳細資訊，[`New-AzStorageAccount`請參閱 Cmdlet 文檔](/powershell/module/az.storage/new-azstorageaccount)。
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+若要使用 PowerShell 建立儲存體帳戶，我們將使用`New-AzStorageAccount` Cmdlet。 此 Cmdlet 有許多選項;只會顯示必要的選項。 若要深入瞭解 advanced 選項，請參閱[ `New-AzStorageAccount` Cmdlet 檔](/powershell/module/az.storage/new-azstorageaccount)。
 
-為了簡化存儲帳戶和後續檔的創建，我們將在變數中存儲多個參數。 您可以將變數內容替換為所需的任何值，但請注意，存儲帳戶名稱必須全域唯一。
+為了簡化儲存體帳戶和後續檔案共用的建立，我們會將數個參數儲存在變數中。 您可以使用您想要的任何值來取代變數內容，但請注意，儲存體帳戶名稱必須是全域唯一的。
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"
@@ -97,7 +97,7 @@ $storageAccountName = "mystorageacct$(Get-Random)"
 $region = "westus2"
 ```
 
-要創建能夠存儲標準 Azure 檔共用的存儲帳戶，我們將使用以下命令。 該`-SkuName`參數與所需的冗余類型相關;如果需要異地冗余或地理區域冗余存儲帳戶，還必須刪除該`-EnableLargeFileShare`參數。
+若要建立能夠儲存標準 Azure 檔案共用的儲存體帳戶，我們將使用下列命令。 `-SkuName`參數與所需的冗余類型相關。如果您想要異地多餘或異地區域的儲存體帳戶，您也必須移除`-EnableLargeFileShare`參數。
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -109,7 +109,7 @@ $storAcct = New-AzStorageAccount `
     -EnableLargeFileShare
 ```
 
-要創建能夠存儲高級 Azure 檔共用的存儲帳戶，我們將使用以下命令。 請注意，`-SkuName`參數已更改，以包括本地冗`Premium`余 （）`LRS`的兩個冗余級別和所需的冗余級別。 參數`-Kind`不是`FileStorage``StorageV2`因為必須在檔存儲存儲帳戶而不是 GPv2 存儲帳戶中創建高級檔共用。
+若要建立能夠儲存高階 Azure 檔案共用的儲存體帳戶，我們將使用下列命令。 請注意， `-SkuName`參數已變更為同時`Premium`包含和所需的冗余層級，也`LRS`就是本機多餘的（）。 `-Kind`參數是， `FileStorage`而不`StorageV2`是，因為必須在 FileStorage 儲存體帳戶（而不是 GPv2 儲存體帳戶）中建立 premium 檔案共用。
 
 ```azurepowershell-interactive
 $storAcct = New-AzStorageAccount `
@@ -121,9 +121,9 @@ $storAcct = New-AzStorageAccount `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-要使用 Azure CLI 創建存儲帳戶，我們將使用 az 存儲帳戶創建命令。 此命令有許多選項;但是，此命令具有許多選項。僅顯示所需的選項。 要瞭解有關高級選項的詳細資訊，請參閱[`az storage account create`命令文檔](/cli/azure/storage/account)。
+若要使用 Azure CLI 建立儲存體帳戶，我們將使用 az storage account create 命令。 此命令有許多選項;只會顯示必要的選項。 若要深入瞭解 advanced 選項，請參閱[ `az storage account create`命令檔](/cli/azure/storage/account)。
 
-為了簡化存儲帳戶和後續檔的創建，我們將在變數中存儲多個參數。 您可以將變數內容替換為所需的任何值，但請注意，存儲帳戶名稱必須全域唯一。
+為了簡化儲存體帳戶和後續檔案共用的建立，我們會將數個參數儲存在變數中。 您可以使用您想要的任何值來取代變數內容，但請注意，儲存體帳戶名稱必須是全域唯一的。
 
 ```azurecli-interactive
 resourceGroupName="myResourceGroup"
@@ -131,7 +131,7 @@ storageAccountName="mystorageacct$RANDOM"
 region="westus2"
 ```
 
-要創建能夠存儲標準 Azure 檔共用的存儲帳戶，我們將使用以下命令。 該`--sku`參數與所需的冗余類型相關;如果需要異地冗余或地理區域冗余存儲帳戶，還必須刪除該`--enable-large-file-share`參數。
+若要建立能夠儲存標準 Azure 檔案共用的儲存體帳戶，我們將使用下列命令。 `--sku`參數與所需的冗余類型相關。如果您想要異地多餘或異地區域的儲存體帳戶，您也必須移除`--enable-large-file-share`參數。
 
 ```azurecli-interactive
 az storage account create \
@@ -143,7 +143,7 @@ az storage account create \
     --output none
 ```
 
-要創建能夠存儲高級 Azure 檔共用的存儲帳戶，我們將使用以下命令。 請注意，`--sku`參數已更改，以包括本地冗`Premium`余 （）`LRS`的兩個冗余級別和所需的冗余級別。 參數`--kind`不是`FileStorage``StorageV2`因為必須在檔存儲存儲帳戶而不是 GPv2 存儲帳戶中創建高級檔共用。
+若要建立能夠儲存高階 Azure 檔案共用的儲存體帳戶，我們將使用下列命令。 請注意， `--sku`參數已變更為同時`Premium`包含和所需的冗余層級，也`LRS`就是本機多餘的（）。 `--kind`參數是， `FileStorage`而不`StorageV2`是，因為必須在 FileStorage 儲存體帳戶（而不是 GPv2 儲存體帳戶）中建立 premium 檔案共用。
 
 ```azurecli-interactive
 az storage account create \
@@ -157,31 +157,31 @@ az storage account create \
 ---
 
 ## <a name="create-file-share"></a>建立檔案共用
-創建存儲帳戶後，剩下的就是創建檔共用。 無論您使用的是高級檔共用還是標準檔共用，此過程都大致相同。 主要區別是**配額**及其表示的內容。
+建立儲存體帳戶之後，剩下的就是建立您的檔案共用。 無論您是使用 premium 檔案共用還是標準檔案共用，此程式基本上都相同。 主要差異在於**配額**和其代表的內容。
 
-對於標準檔共用，它是 Azure 檔共用的上限，最終使用者無法超越該邊界。 標準檔共用配額的主要目的是預算："我不希望此檔共用超過此點"。 如果未指定配額，則標準檔共用可以跨越多達 100 TiB（如果未為存儲帳戶設置大型檔共用屬性，則為 5 TiB）。
+針對標準檔案共用，它是 Azure 檔案共用的上限，使用者之後就無法繼續進行。 標準檔案共用配額的主要用途是預算：「我不希望此檔案共用成長超過此時間點」。 如果沒有指定配額，標準檔案共用最多可以跨越 100 TiB （如果未針對儲存體帳戶設定 [大型檔案共用] 屬性，則為5個 TiB）。
 
-對於高級檔共用，配額重載為平均**預配大小**。 預配大小是您要計費的金額，而不考慮實際使用方式。 預配高級檔共用時，需要考慮兩個因素：1） 從空間利用率的角度來看，共用的未來增長和 2） 工作負載所需的 IOPS。 每個預配的 GiB 都允許您進行額外的預留和突發 IOPS。 有關如何規劃高級檔共用的詳細資訊，請參閱[預配高級檔共用](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)。
+針對 premium 檔案共用，配額會多載為平均布**建大小**。 [已布建大小] 是您要支付的費用，不論實際使用量為何。 當您布建 premium 檔案共用時，您會想要考慮兩個因素：1）從空間使用量觀點來看，未來的共用成長，以及2）您的工作負載所需的 IOPS。 每個布建的 GiB 都可享有額外的保留和高載 IOPS。 如需如何規劃 premium 檔案共用的詳細資訊，請參閱布建[premium](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)檔案共用。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-如果剛剛創建了存儲帳戶，則可以通過選擇 **"轉到資源"** 從部署螢幕導航到它。 如果以前已創建存儲帳戶，則可以通過包含該帳戶的資源組導航到該帳戶。 進入存儲帳戶後，選擇標記為 **"檔共用"的**磁貼（您還可以通過存儲帳戶的目錄導航到**檔共用**）。
+如果您剛建立儲存體帳戶，可以選取 [**移至資源**]，從 [部署] 畫面流覽至它。 如果您先前已建立儲存體帳戶，您可以透過包含它的資源群組來流覽。 在儲存體帳戶中，選取標示為 [檔案**共用**] 的磚（您也可以透過儲存體帳戶的目錄來流覽至檔案**共用**）。
 
-![檔共用磁貼的螢幕截圖](media/storage-how-to-create-file-share/create-file-share-1.png)
+![[檔案共用] 磚的螢幕擷取畫面](media/storage-how-to-create-file-share/create-file-share-1.png)
 
-在檔共用清單中，您應該看到以前在此存儲帳戶中創建的任何檔共用;因此，應看到以前在此存儲帳戶中創建的任何檔共用。尚未創建檔共用的空表。 選擇 **= 檔共用**以創建新的檔共用。
+在檔案共用清單中，您應該會看到先前在此儲存體帳戶中建立的任何檔案共用;如果尚未建立任何檔案共用，則為空的資料表。 選取 [ **+ 檔案共用**] 以建立新的檔案共用。
 
-新的檔共用邊欄選項卡應顯示在螢幕上。 完成新檔共用邊欄選項卡中的欄位以創建檔共用：
+[新增檔案共用] 分頁應該會出現在畫面上。 完成 [新增檔案共用] 分頁中的欄位，以建立檔案共用：
 
-- **名稱**：要創建的檔共用的名稱。
-- **配額**：標準檔共用的檔共用配額;高級檔共用的檔共用的預配大小。
+- **名稱**：要建立的檔案共用名稱。
+- **配額**：標準檔案共用的檔案共用配額;premium 檔案共用的檔案共用的布建大小。
 
-選擇 **"創建**"以完成創建新共用。 請注意，如果存儲帳戶位於虛擬網路中，則除非用戶端也在虛擬網路中，否則將無法成功創建 Azure 檔共用。 您還可以使用 Azure PowerShell `New-AzRmStorageShare` Cmdlet 解決此時間點限制。
+選取 [**建立**] 以完成建立新的共用。 請注意，如果您的儲存體帳戶位於虛擬網路中，除非您的用戶端也在虛擬網路中，否則您將無法成功建立 Azure 檔案共用。 您也可以使用 Azure PowerShell `New-AzRmStorageShare` Cmdlet 來解決這個時間點限制。
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
-您可以使用[`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare)Cmdlet 創建 Azure 檔共用。 以下 PowerShell 命令假定您已設置變數`$resourceGroupName`，並且`$storageAccountName`如上述使用 Azure PowerShell 部分創建存儲帳戶中定義的變數。 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+您可以使用[`New-AzRmStorageShare`](/powershell/module/az.storage/New-AzRmStorageShare) Cmdlet 來建立 Azure 檔案共用。 下列 PowerShell 命令假設您已設定變數`$resourceGroupName` ， `$storageAccountName`如上面的使用 Azure PowerShell 建立儲存體帳戶一節中所定義。 
 
 > [!Important]  
-> 對於高級檔共用，參數`-QuotaGiB`引用檔共用的預配大小。 檔共用的預配大小是您要計費的金額，無論使用方式如何。 標準檔共用根據使用方式而不是預配大小計費。
+> 針對 premium 檔案共用， `-QuotaGiB`參數會參考檔案共用的布建大小。 檔案共用的布建大小就是您要支付的金額，而不論使用方式為何。 標準檔案共用是根據使用量來計費，而不是布建大小。
 
 ```azurepowershell-interactive
 $shareName = "myshare"
@@ -194,10 +194,10 @@ New-AzRmStorageShare `
 ```
 
 > [!Note]  
-> 您的檔案共用名稱必須是全部小寫。 有關命名檔共用和檔的完整詳細資訊，請參閱 [命名和引用共用、目錄、檔和中繼資料](https://msdn.microsoft.com/library/azure/dn167011.aspx)。
+> 您的檔案共用名稱必須是全部小寫。 如需有關為檔案共用和檔案命名的完整詳細資料，請參閱 [命名和參考共用、目錄、檔案和中繼資料](https://msdn.microsoft.com/library/azure/dn167011.aspx)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-必須先獲取存儲帳戶金鑰以授權使用 Azure CLI 創建檔共用。 這可以通過命令[`az storage account keys list`](/cli/azure/storage/account/keys)完成：
+在我們可以使用 Azure CLI 建立 Azure 檔案共用之前，您必須取得儲存體帳戶金鑰，以授權檔案共用建立作業。 這可以使用[`az storage account keys list`](/cli/azure/storage/account/keys)命令來完成：
 
 ```azurecli-interactive
 storageAccountKey=$(az storage account keys list \
@@ -206,10 +206,10 @@ storageAccountKey=$(az storage account keys list \
     --query "[0].value" | tr -d '"')
 ```
 
-獲得存儲帳戶金鑰後，可以使用[`az storage share create`](/cli/azure/storage/share)命令創建 Azure 檔共用。 
+一旦有了儲存體帳戶金鑰，您就可以使用[`az storage share create`](/cli/azure/storage/share)命令來建立 Azure 檔案共用。 
 
 > [!Important]  
-> 對於高級檔共用，參數`--quota`引用檔共用的預配大小。 檔共用的預配大小是您要計費的金額，無論使用方式如何。 標準檔共用根據使用方式而不是預配大小計費。
+> 針對 premium 檔案共用， `--quota`參數會參考檔案共用的布建大小。 檔案共用的布建大小就是您要支付的金額，而不論使用方式為何。 標準檔案共用是根據使用量來計費，而不是布建大小。
 
 ```azurecli-interactive
 shareName="myshare"
@@ -222,14 +222,14 @@ az storage share create \
     --output none
 ```
 
-如果存儲帳戶包含在虛擬網路中，並且您從中調用此命令的電腦不是虛擬網路的一部分，則此命令將失敗。 您可以通過使用上述 Azure PowerShell `New-AzRmStorageShare` Cmdlet 或從屬於虛擬網路的電腦（包括通過 VPN 連接）執行 Azure CLI 來解決此時間點限制。
+如果儲存體帳戶包含在虛擬網路中，而且您叫用此命令的電腦不是虛擬網路的一部分，此命令將會失敗。 您可以使用上述的 Azure PowerShell `New-AzRmStorageShare` Cmdlet，或從屬於虛擬網路一部分的電腦（包括透過 VPN 連線）執行 Azure CLI，來解決這個時間點的限制。
 
 ---
 
 > [!Note]  
-> 您的檔案共用名稱必須是全部小寫。 有關命名檔共用和檔的完整詳細資訊，請參閱 [命名和引用共用、目錄、檔和中繼資料](https://msdn.microsoft.com/library/azure/dn167011.aspx)。
+> 您的檔案共用名稱必須是全部小寫。 如需有關為檔案共用和檔案命名的完整詳細資料，請參閱 [命名和參考共用、目錄、檔案和中繼資料](https://msdn.microsoft.com/library/azure/dn167011.aspx)。
 
 ## <a name="next-steps"></a>後續步驟
-- [計畫部署 Azure 檔](storage-files-planning.md)或[計畫部署 Azure 檔同步](storage-sync-files-planning.md)。 
-- [網路概述](storage-files-networking-overview.md)。
-- 在[Windows、macOS](storage-how-to-use-files-windows.md)和[macOS](storage-how-to-use-files-mac.md)[Linux](storage-how-to-use-files-linux.md)上連接並裝載檔共用。
+- [規劃 Azure 檔案儲存體的部署](storage-files-planning.md)，或[規劃 Azure 檔案同步部署](storage-sync-files-planning.md)。 
+- [網路功能總覽](storage-files-networking-overview.md)。
+- 在[Windows](storage-how-to-use-files-windows.md)、 [macOS](storage-how-to-use-files-mac.md)和[Linux](storage-how-to-use-files-linux.md)上連接並掛接檔案共用。

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體內容仲裁來偵測潛在的成人和猥褻內容 | Microsoft Docs
-description: Azure 媒體內容檢閱者媒體處理器可説明檢測視頻中潛在的成人和淫穢內容。
+description: Azure 媒體內容仲裁媒體處理器可協助偵測影片中潛在的成人和猥褻內容。
 services: media-services
 documentationcenter: ''
 author: sanjeev3
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: sajagtap
 ms.openlocfilehash: 83fe7867a3128ac82597c028452863a1ad681ace
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77914308"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>使用 Azure 媒體內容仲裁來偵測潛在的成人和猥褻內容 
 
 > [!NOTE]
-> **Azure 媒體內容檢閱者**媒體處理器將停用。 有關停用日期，請參閱[舊元件](legacy-components.md)主題。
+> **Azure 媒體內容仲裁**媒體處理器將會淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
 
-## <a name="overview"></a>總覽
-**Azure 媒體內容檢閱者**媒體處理器 （MP） 使您能夠對視頻使用電腦輔助的審核。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。
+## <a name="overview"></a>概觀
+**Azure 媒體內容仲裁**媒體處理器（MP）可讓您針對影片使用機器輔助仲裁。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。
 
 **Azure 媒體內容仲裁** MP 目前為預覽功能。
 
@@ -49,14 +49,14 @@ JSON 格式的仲裁輸出包含自動偵測的擷取畫面和主要畫面格。
 
 | 元素 | 描述 |
 | --- | --- |
-| version |內容仲裁的版本。 |
+| 版本 |內容仲裁的版本。 |
 | timescale |影片每秒的「刻度」數目。 |
 | Offset |時間戳記的時間位移。 在 1.0 版的影片 API 中，此值永遠是 0。 此值未來可能會變更。 |
 | framerate |影片的每秒畫面格數。 |
 | width |輸出影片畫面格的寬度 (以像素為單位)。|
 | height |輸出影片畫面格的高度 (以像素為單位)。|
 | totalDuration |輸入影片的持續時間 (以刻度為單位)。 |
-| [碎片](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段都是一個自動偵測的擷取畫面，包含開始、持續時間、間隔數字及事件。 |
+| [分段](#fragments-json-elements) |中繼資料會被分成稱為「片段」的不同區段。 每個片段都是一個自動偵測的擷取畫面，包含開始、持續時間、間隔數字及事件。 |
 
 ### <a name="fragments-json-elements"></a>Fragments JSON 元素
 

@@ -14,17 +14,17 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2a02f0e1b05b9de8105126d1c9e4e3f79057285f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77617235"
 ---
 # <a name="certification"></a>認證
 
 除了 NetWeaver 認證之外，SAP 還需要特殊的 SAP HANA 認證，才能在特定的基礎結構 (例如 Azure IaaS) 上支援 SAP HANA。
 
-NetWeaver 上的核心 SAP 注釋，以及在某種程度上 SAP HANA 認證，是[SAP 注釋#1928533 = Azure 上的 SAP 應用程式：支援的產品和 Azure VM 類型](https://launchpad.support.sap.com/#/notes/1928533)。
+NetWeaver 上的核心 SAP 附注以及 SAP Hana 認證的程度，都是[Sap Note #1928533 – Azure 上的 sap 應用程式：支援的產品和 AZURE VM 類型](https://launchpad.support.sap.com/#/notes/1928533)。
 
 SAP Hana on Azure (大型執行個體) 單位的憑證記錄位於 [SAP HANA 認證 IaaS 平台](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)網站中。 
 

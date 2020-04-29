@@ -1,101 +1,101 @@
 ---
-title: 領事概述
-description: 獲得領事概述
+title: Consul 的總覽
+description: 取得 Consul 的總覽
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: c518985b360fa3264bd5ac1e3fe76d61b2810b9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594204"
 ---
-# <a name="consul"></a>領事
+# <a name="consul"></a>Consul
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
-[Consul][consul]是一種多資料中心感知服務網路解決方案，用於跨運行時平臺連接和保護服務。 [連接][consul-features]是提供服務網格功能的元件。
+[Consul][consul]是多個資料中心感知服務網路解決方案，可在執行時間平臺之間連接及保護服務。 [Connect][consul-features]是提供服務網格功能的元件。
 
 ## <a name="architecture"></a>架構
 
-預設情況下，領事提供由[基於特使][envoy-proxy]的[側車][consul-sidecar]組成的資料平面。 領事具有可插拔的代理體系結構。 這些智慧代理控制網格化應用和工作負載中進出的所有網路流量。
+根據預設，Consul 會提供由[Envoy][envoy-proxy]型[sidecar][consul-sidecar]所組成的資料平面。 Consul 具有可插入的 proxy 架構。 這些智慧型 proxy 會控制進出網狀應用程式和工作負載的所有網路流量。
 
-控制平面通過以下[元件][consul-architecture]管理配置和策略：
+控制平面會透過下列[元件][consul-architecture]來管理設定和原則：
 
-- **伺服器**- 在伺服器模式下運行的領事代理，維護領事群集狀態。
+- **伺服器**-在伺服器模式下執行且會維護 Consul 叢集狀態的 Consul 代理程式。
 
-- **用戶端**- 在羽量級用戶端模式下運行的領事代理。 每個計算節點都必須運行一個用戶端代理。 此用戶端在工作負載和領事配置之間代理配置和策略。 
+- **用戶端**-在輕量用戶端模式中執行的 Consul 代理程式。 每個計算節點都必須執行用戶端代理程式。 此用戶端會代理程式在工作負載與 Consul 設定之間的設定和原則。 
 
-下面的體系結構圖演示了資料平面和控制平面中的各個元件如何交互。
+下列架構圖表示范資料平面和控制平面內的各種元件如何互動。
 
-![領事元件和架構概述。](media/servicemesh/consul/about-architecture.png)
+![Consul 元件和架構的總覽。](media/servicemesh/consul/about-architecture.png)
 
 
-## <a name="selection-criteria"></a>選擇標準
+## <a name="selection-criteria"></a>選取準則
 
-在評估領事的工作量時，瞭解並考慮以下方面非常重要：
+針對您的工作負載評估 Consul 時，請務必瞭解並考慮下列各方面：
 
-- [領事原則](#consul-principles)
+- [Consul 原則](#consul-principles)
 - [功能](#capabilities)
 - [案例](#scenarios)
 
 
-### <a name="consul-principles"></a>領事原則
+### <a name="consul-principles"></a>Consul 原則
 
-以下原則[指導][consul-principles]領事專案：
+下列原則會[引導][consul-principles]Consul 專案：
 
-- **API 驅動**- 編纂所有配置和策略。
+- **API 驅動**-編寫所有設定和原則。
 
-- **隨時隨地運行和連接**- 跨運行時平臺（庫伯內特、VM、無伺服器）連接工作負載。
+- **執行並聯機到任何位置**-跨執行時間平臺（Kubernetes、Vm、無伺服器）連接工作負載。
 
-- **擴展和集成**- 跨基礎架構安全地連接工作負載。
+- **擴充和整合**-安全地連接基礎結構之間的工作負載。
 
 
 ### <a name="capabilities"></a>功能
 
-領事提供以下功能集：
+Consul 提供下列功能集：
 
-- **網格**+ 閘道（多資料中心）、虛擬機器（叢集節點外）、服務同步、內置調試選項
+- **網格**–閘道（多個資料中心）、虛擬機器（叢集節點不足）、服務同步處理、內建調試選項
 
-- **代理**= 特使、內置代理、可插拔的 l4 代理，適用于 Windows 工作負載
+- Proxy **– Envoy** 、內建 proxy、插即用、適用于 Windows 工作負載的 l4 proxy
 
-- **流量管理**– 路由、拆分、解析
+- **流量管理**–路由、分割、解析
 
-- **政策**= 意圖，ACL
+- **原則**-意圖、acl
 
-- **安全性**– 授權、身份驗證、加密、基於 SPIFFE 的身份、外部 CA （Vault）、證書管理和輪換
+- **安全性**– authorisation、驗證、加密、SPIFFE 為基礎的身分識別、外部 CA （保存庫）、憑證管理和輪替
 
-- **可觀測性**– 指標、ui 儀表板、普羅米圖斯、格拉法納
+- **可檢視性**–計量、ui 儀表板、prometheus、grafana
 
 
 ### <a name="scenarios"></a>案例
 
-領事非常適合並針對以下情況提出建議：
+Consul 非常適合和建議用於下列案例：
 
-- 擴展現有領事連接工作負載
+- 擴充現有的 Consul 連線工作負載
 
-- 有關證書管理的合規性要求
+- 憑證管理方面的合規性需求
 
-- 多叢集服務網格
+- 多重叢集服務網格
 
-- 要包含在服務網格中的基於 VM 的工作負載
+- 以 VM 為基礎的工作負載要包含在服務網格中
 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-以下文檔介紹如何在 Azure 庫伯奈斯服務 （AKS） 上安裝駐外領事：
+下列檔會說明如何在 Azure Kubernetes Service （AKS）上安裝 Consul：
 
 > [!div class="nextstepaction"]
-> [在 Azure 庫伯奈斯服務 （AKS） 中安裝領事][consul-install]
+> [在 Azure Kubernetes Service 中安裝 Consul （AKS）][consul-install]
 
-您還可以進一步探索領事功能和建築：
+您也可以進一步探索 Consul 功能和架構：
 
-- [領事特寫][consul-features]
-- [領事架構][consul-architecture]
-- [領事 - 連接的工作原理][consul-how-connect-works]
+- [Consul 功能][consul-features]
+- [Consul 架構][consul-architecture]
+- [Consul-Connect 的運作方式][consul-how-connect-works]
 
 <!-- LINKS - external -->
 [consul]: https://www.consul.io/mesh.html

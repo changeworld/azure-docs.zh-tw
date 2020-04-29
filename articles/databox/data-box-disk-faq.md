@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: alkohli
 ms.openlocfilehash: 7ba6ea8606fc354527ff4114bc45a0904941ba93
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918932"
 ---
-# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure 資料框磁片：常見問題
+# <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure 資料箱磁碟：常見問題
 
 Microsoft Azure 資料箱磁碟雲端解決方案可讓您以快速、實惠和可靠的方式，將數 TB 的資料傳送至 Azure。 此常見問題集包含您在 Azure 入口網站中使用資料箱磁碟時可能遇到的問題及其解答。 
 
@@ -145,16 +145,16 @@ A.  否。 目前僅支援對資料箱磁碟使用一個儲存體帳戶 (一般�
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Q. 可供我的資料使用的工具箱磁碟工具組是什麼？
 A. 資料箱磁碟隨附的工具組包含三項工具：
- - **資料盒磁片解鎖工具**：使用此工具解鎖從微軟發貨的加密磁片。 使用此工具將磁碟解除鎖定時，您必須提供可從 Azure 入口網站中的資料箱磁碟訂單取得的通行金鑰。 
- - **資料框磁片驗證工具**：使用此工具根據 Azure 命名約定驗證大小、格式和 blob 名稱。 它也會為複製的資料產生總和檢查碼，後續可用來驗證上傳至 Azure 的資料。
- - **資料盒磁片拆分複製工具**：當您使用多個磁片並且具有需要拆分和複製到所有磁片的大型資料集時，請使用此工具。 此工具目前適用於 Windows。 受控磁碟不支援此工具。 這項工具在複製資料時，也會進行驗證，因此您使用此工具時可以略過驗證步驟。
+ - **資料箱磁碟解除鎖定工具**：使用此工具可將 Microsoft 所附的加密磁片解除鎖定。 使用此工具將磁碟解除鎖定時，您必須提供可從 Azure 入口網站中的資料箱磁碟訂單取得的通行金鑰。 
+ - **資料箱磁碟驗證工具**：根據 Azure 命名慣例，使用此工具來驗證大小、格式和 blob 名稱。 它也會為複製的資料產生總和檢查碼，後續可用來驗證上傳至 Azure 的資料。
+ - **資料箱磁碟分割複製工具**：當您使用多個磁片時，請使用此工具，並擁有需要分割並複製到所有磁片上的大型資料集。 此工具目前適用於 Windows。 受控磁碟不支援此工具。 這項工具在複製資料時，也會進行驗證，因此您使用此工具時可以略過驗證步驟。
 
 工具組則同時適用於 Windows 和 Linux。 您可以從下列位置下載工具組：
 - [下載適用於 Windows 的資料箱磁碟工具組](https://aka.ms/databoxdisktoolswin) 
 - [下載適用於 Linux 的資料箱磁碟工具組](https://aka.ms/databoxdisktoolslinux)
  
 ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>Q. 是否可以使用資料箱磁碟將資料傳輸至 Azure 檔案儲存體，然後再搭配 Azure 檔案同步來使用資料？ 
-A. 資料框磁片支援 Azure 檔，但不適用於 Azure 檔同步。如果檔資料與 Azure 檔同步一起使用，則不保留中繼資料。
+A. Azure 檔案儲存體支援資料箱磁碟，但無法與 Azure 檔案同步搭配運作。如果檔案資料與 Azure 檔案同步搭配使用，則不會保留中繼資料。
 
 
 ## <a name="verify-and-upload"></a>確認和上傳

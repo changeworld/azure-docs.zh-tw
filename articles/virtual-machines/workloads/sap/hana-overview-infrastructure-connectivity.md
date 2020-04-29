@@ -14,10 +14,10 @@ ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cea89087742f1987f693b8bfb627bd71038a0c14
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77616929"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>SAP HANA (大型執行個體) 部署 
@@ -36,7 +36,7 @@ Microsoft 必須有下列資訊，才能部署 HANA 大型執行客體單位：
 - 針對每個 Azure 部署區域：
     - 將 Azure 虛擬網路連線到 HANA 大型執行個體的 ER-P2P 連線 /29 IP 位址範圍。
     - 用於 HANA 大型執行個體伺服器 IP 集區的 /24 CIDR 區塊。
-    - 使用[ExpressRoute 全域覆蓋](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)線啟用從本地到 HANA 大型實例單元的直接路由或不同 Azure 區域中的 HANA 大型實例單元之間的路由時可選，您需要另預留一個 /29 IP 位址範圍。 此特定範圍可能不會與您之前定義的任何其他 IP 位址範圍重疊。
+    - 選擇性使用[ExpressRoute Global](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach)觸達以啟用從內部部署到 Hana 大型實例單位的直接路由，或在不同 Azure 區域中的 Hana 大型實例單位之間進行路由傳送時，您必須保留另一個/29 個 IP 位址範圍。 此特定範圍不能與您之前定義的任何其他 IP 位址範圍重迭。
 - 每個連線到 HANA 大型執行個體之 Azure 虛擬網路的虛擬網路位址空間屬性中所使用的 IP 位址範圍值。
 - 每個 HANA 大型執行個體系統的資料：
   - 所需的主機名稱 - 最好是完整的網域名稱。
@@ -50,7 +50,7 @@ Microsoft 必須有下列資訊，才能部署 HANA 大型執行客體單位：
 
 在 Microsoft 部署好 HANA 大型執行個體之後，請依下列順序連線到這些執行個體：
 
-1. [將 Azure VM 連接到 HANA 大型實例](hana-connect-azure-vm-large-instances.md)
+1. [將 Azure Vm 連接到 HANA 大型實例](hana-connect-azure-vm-large-instances.md)
 2. [將 VNet 連接到 HANA 大型實例 ExpressRoute](hana-connect-vnet-express-route.md)
 3. [其他網路需求 (選擇性)](hana-additional-network-requirements.md)
 

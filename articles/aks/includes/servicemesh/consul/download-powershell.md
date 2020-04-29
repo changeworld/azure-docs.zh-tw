@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 8931ba97cf72891c78e20389be10178dd2c0317a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77594233"
 ---
-在 Windows 上基於 PowerShell 的`Invoke-WebRequest`shell 中，使用 下載領事 Helm`Expand-Archive`圖表版本，然後提取如下：
+在 Windows 上以 PowerShell 為基礎的 shell 中`Invoke-WebRequest` ，使用下載 Consul Helm 圖表版本，然後以解壓縮`Expand-Archive` ，如下所示：
 
 ```powershell
 # Specify the Consul Helm chart version that will be leveraged throughout these instructions

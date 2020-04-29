@@ -1,6 +1,6 @@
 ---
-title: 將 CEF 資料連線到 Azure 哨兵預覽*微軟文檔
-description: 瞭解如何將 CEF 資料連線到 Azure 哨兵。
+title: 將 CEF 資料連線至 Azure Sentinel 預覽 |Microsoft Docs
+description: 瞭解如何將 CEF 資料連線到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,42 +15,42 @@ ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
 ms.openlocfilehash: 8314614616c6b8969832d52fc684d47ba1bf0fe3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77588343"
 ---
-# <a name="connect-your-external-solution-using-common-event-format"></a>使用通用事件格式連接外部解決方案
+# <a name="connect-your-external-solution-using-common-event-format"></a>使用一般事件格式來連接您的外部解決方案
 
 
-連接發送 CEF 消息的外部解決方案時，有三個步驟用於連接 Azure Sentinel：
+當您連接會傳送 CEF 訊息的外部解決方案時，有三個步驟可連接 Azure Sentinel：
 
-第 1 步：通過部署代理步驟 2[連接 CEF：](connect-cef-agent.md)[執行特定于解決方案的步驟](connect-cef-solution-config.md)步驟 3：[驗證連線性](connect-cef-verify.md)
+步驟1：藉[由部署代理程式來連接 CEF](connect-cef-agent.md)步驟2：[執行解決方案特定步驟](connect-cef-solution-config.md)步驟3：[驗證連線能力](connect-cef-verify.md)
 
-本文介紹了連接的工作原理，提供了先決條件，並為您提供了在 Syslog 上發送公共事件格式 （CEF） 消息的安全解決方案上部署代理的步驟。 
+本文說明連線的運作方式、提供必要條件，並提供在安全性解決方案上部署代理程式的步驟，以在 Syslog 上傳送通用事件格式（CEF）訊息。 
 
 > [!NOTE] 
-> 資料存儲在運行 Azure Sentinel 的工作區的地理位置中。
+> 資料會儲存在您執行 Azure Sentinel 之工作區的地理位置中。
 
-為了建立此連接，您需要在專用 Linux 電腦（VM 或本地）上部署代理，以支援設備與 Azure Sentinel 之間的通信。 下圖描述了在 Azure 中發生 Linux VM 時設置。
+若要進行此連線，您必須在專用的 Linux 機器（VM 或內部部署）上部署代理程式，以支援設備與 Azure Sentinel 之間的通訊。 下圖說明 Azure 中 Linux VM 的事件設定。
 
  ![Azure 中的 CEF](./media/connect-cef/cef-syslog-azure.png)
 
-或者，如果您在另一個雲或本地電腦中使用 VM，則此設置將存在。 
+或者，如果您在另一個雲端或內部部署機器中使用 VM，則會有此設定。 
 
  ![內部部署的 CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 
 ## <a name="security-considerations"></a>安全性考量
 
-確保根據組織的安全性原則配置電腦的安全性。 例如，您可以將網路設定為與公司網路安全性原則保持一致，並更改守護進程中的埠和協定以符合您的要求。 您可以使用以下說明來改進電腦安全性配置  [：Azure 中的安全 VM，](../virtual-machines/linux/security-policy.md)[網路安全的最佳做法](../security/fundamentals/network-best-practices.md)。
+請務必根據貴組織的安全性原則來設定電腦的安全性。 例如，您可以設定您的網路以配合公司網路安全性原則，並變更背景程式中的埠和通訊協定，以符合您的需求。 您可以使用下列指示來改善您的電腦安全性性設定：  [Azure 中的安全 VM](../virtual-machines/linux/security-policy.md)、[網路安全性的最佳作法](../security/fundamentals/network-best-practices.md)。
 
-要使用安全解決方案和 Syslog 電腦之間的 TLS 通信，您需要配置 Syslog 守護進程（rsyslog 或 syslog-ng）以 TLS 進行通信：[使用 TLS-rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，[使用 TLS _syslog-ng 加密日誌消息](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
+若要在安全性解決方案和 Syslog 電腦之間使用 TLS 通訊，您必須將 Syslog daemon （rsyslog 或 Syslog）設定為在 TLS 中進行通訊：[使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，[並使用 tls-Syslog-ng 加密記錄檔訊息](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
 
  
-## <a name="prerequisites"></a>Prerequisites
-確保用作代理的 Linux 電腦運行以下作業系統之一：
+## <a name="prerequisites"></a>先決條件
+請確定您用來做為 proxy 的 Linux 機器正在執行下列其中一個作業系統：
 
 - 64 位元
   - CentOS 6 和 7
@@ -67,24 +67,24 @@ ms.locfileid: "77588343"
    - Debian GNU/Linux 8 和 9
    - Ubuntu Linux 14.04 LTS 和 16.04 LTS
  
- - 守護進程版本
-   - Syslog-ng： 2.1 - 3.22.1
+ - Daemon 版本
+   - Syslog-ng： 2.1-3.22。1
    - Rsyslog： v8
   
- - 支援系統 RFC
-   - 系統 RFC 3164
-   - 系統 RFC 5424
+ - 支援的 Syslog Rfc
+   - Syslog RFC 3164
+   - Syslog RFC 5424
  
-確保機器也滿足以下要求： 
+請確定您的電腦也符合下列需求： 
 - 權限
-    - 您的電腦上必須具有較高的權限 （sudo）。 
+    - 您的電腦上必須具有更高的許可權（sudo）。 
 - 軟體需求
-    - 確保 Python 在電腦上運行
+    - 確定您的電腦上正在執行 Python
 
 
 
 ## <a name="next-steps"></a>後續步驟
-在本文檔中，您學習了如何將 CEF 設備連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+在本檔中，您已瞭解如何將 CEF 設備連線到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
 - 開始[使用 Azure Sentinel 偵測威脅](tutorial-detect-threats.md)。
 

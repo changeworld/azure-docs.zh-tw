@@ -1,5 +1,5 @@
 ---
-title: 在 VM 上安裝趨勢微型深度安全性
+title: 在 VM 上安裝 Trend 微深度安全性
 description: 本文說明如何在 Azure 中，在以傳統部署模型建立的 VM 上安裝和設定 Trend Micro 安全性。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/20/2018
 ms.author: akjosh
 ms.openlocfilehash: cffd2eab3a616b4d16d847d0f2e1a26655f40459
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919918"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>如何在 Windows VM 上安裝和設定 Trend Micro Deep Security as a Service
@@ -57,7 +57,7 @@ ms.locfileid: "77919918"
 ## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>在現有 VM 上安裝 Deep Security 代理程式
 若要在現有的 VM 上安裝代理程式，您需要下列項目：
 
-* 在本機電腦上安裝 Azure PowerShell 模組 0.8.2 版或更新版本。 您可以使用 **Get-Module azure | format-table version** 命令來檢查已安裝的 Azure PowerShell 版本。 有關說明和指向最新版本的連結，請參閱[如何安裝和配置 Azure PowerShell](/powershell/azure/overview)。 使用 `Add-AzureAccount`登入您的 Azure 訂用帳戶。
+* 在本機電腦上安裝 Azure PowerShell 模組 0.8.2 版或更新版本。 您可以使用 **Get-Module azure | format-table version** 命令來檢查已安裝的 Azure PowerShell 版本。 如需最新版本的指示與連結，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。 使用 `Add-AzureAccount`登入您的 Azure 訂用帳戶。
 * 在目標虛擬機器上安裝 VM 代理程式。
 
 首先，確認已安裝 VM 代理程式。 填寫雲端服務名稱和虛擬機器名稱，然後在系統管理員層級 Azure PowerShell 命令提示字元上執行下列命令。 取代括弧內 (包括 < 和 > 字元) 的所有項目。
@@ -85,9 +85,9 @@ ms.locfileid: "77919918"
 * [指示](https://go.microsoft.com/fwlink/?LinkId=404099)
 
 ## <a name="additional-resources"></a>其他資源
-[如何登錄到運行 Windows 伺服器的虛擬機器]
+[如何登入執行 Windows Server 的虛擬機器]
 
-[Azure VM 擴展和功能]
+[Azure VM 延伸模組和功能]
 
 <!-- Image references -->
 [1]: ./media/trend/new_vm_Blade3.png
@@ -95,5 +95,5 @@ ms.locfileid: "77919918"
 [3]: ./media/trend/SecurityAgentDetails.png
 
 <!-- Link references -->
-[如何登錄到運行 Windows 伺服器的虛擬機器]:../windows/classic/connect-logon.md
-[Azure VM 擴展和功能]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[如何登入執行 Windows Server 的虛擬機器]:../windows/classic/connect-logon.md
+[Azure VM 延伸模組和功能]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

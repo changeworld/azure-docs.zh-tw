@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
 ms.openlocfilehash: 6c877690cf27edd73f1d828b8a1dda6f4f34e780
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918167"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>因 NSG 中未啟用 RDP 連接埠而無法從遠端連線到 VM
@@ -33,18 +33,18 @@ ms.locfileid: "77918167"
 當您建立新 VM 時，根據預設，系統會封鎖所有來自網際網路的流量。 
 
 若要啟用 NSG 中的 RDP 連接埠，請遵循下列步驟：
-1. 登錄到[Azure 門戶](https://portal.azure.com)。
+1. 登入[Azure 入口網站](https://portal.azure.com)。
 2. 在 [虛擬機器] **** 中，選取有此問題的 VM。 
 3. 在 [設定]**** 中，選取 [網路]****。 
 4. 在 [輸入連接埠規則]**** 中，檢查是否已正確設定 RDP 的連接埠。 以下是設定範例： 
 
     **優先順序**：300 </br>
     **名稱**：Port_3389 </br>
-    **港口（目的地）**： 3389 </br>
-    **協定**： TCP </br>
-    **來源**： 任何 </br>
+    **埠（目的地）**：3389 </br>
+    **通訊協定**： TCP </br>
+    **來源**：任何 </br>
     **目的地**：任何 </br>
-    **操作**： 允許 </br>
+    **動作**：允許 </br>
 
 如果您指定來源 IP 位址，此設定會只允許來自特定 IP 位址或 IP 位址範圍的流量連線至 VM。 請確定您用來啟動 RDP 工作階段的電腦在該範圍內。
 

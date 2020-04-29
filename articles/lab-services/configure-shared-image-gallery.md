@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 開發人員測試實驗室中配置共用映射庫 |微軟文檔
-description: 瞭解如何在 Azure 開發人員測試實驗室中配置共用映射庫
+title: 在 Azure DevTest Labs 中設定共用映射資源庫 |Microsoft Docs
+description: 瞭解如何在 Azure DevTest Labs 中設定共用映射資源庫
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -15,58 +15,58 @@ ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
 ms.openlocfilehash: 9593d60f76802cd515ca85616bce028cf3aa0d49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77589312"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中設定共用映像庫
-DevTest 實驗室現在支援[共用圖像庫](../virtual-machines/windows/shared-image-galleries.md)功能。 它使實驗室使用者能夠在創建實驗室資源的同時從共用位置訪問圖像。 它還可以説明您圍繞自訂管理的 VM 映射構建結構和組織。 共用圖像庫功能支援：
+DevTest Labs 現在支援[共用映射庫](../virtual-machines/windows/shared-image-galleries.md)功能。 它可讓實驗室使用者在建立實驗室資源時，從共用位置存取影像。 它也可協助您根據自訂管理的 VM 映射來建立結構和組織。 共用映射庫功能支援：
 
-- 映射的託管全域複製
-- 圖像的版本和分組，便於管理
-- 在支援可用性區域的區域區域中，通過區域冗余存儲 （ZRS） 帳戶使映射高度可用。 ZRS 具有更好的抵禦區域故障的彈性。
-- 使用基於角色的存取控制 （RBAC） 在訂閱之間，甚至租戶之間共用。
+- 受管理的映射全域複寫
+- 版本控制和群組映射以方便管理
+- 在支援可用性區域的區域中，使用區域冗余儲存體（ZRS）帳戶，讓您的映射具有高度可用性。 ZRS 針對區域性失敗提供更佳的復原能力。
+- 使用角色型存取控制（RBAC），跨訂用帳戶，甚至是在租使用者之間共用。
 
-有關詳細資訊，請參閱[共用圖像庫文檔](../virtual-machines/windows/shared-image-galleries.md)。 
+如需詳細資訊，請參閱[共用映射庫檔](../virtual-machines/windows/shared-image-galleries.md)。 
  
-如果您有大量需要維護的受控映像，而且想要提供給全公司使用時，便可使用共用映像庫作為存放庫，以便輕鬆地更新及共用映像。 作為實驗室擁有者，您可以將現有的共用圖像庫附加到實驗室。 連接此庫後，實驗室使用者可以從這些最新圖像創建電腦。 此功能的一個主要好處是，DevTest Labs 現在可以利用跨實驗室、跨訂閱和區域共用圖像的優勢。 
+如果您有大量需要維護的受控映像，而且想要提供給全公司使用時，便可使用共用映像庫作為存放庫，以便輕鬆地更新及共用映像。 身為實驗室擁有者，您可以將現有的共用映射資源庫連結至您的實驗室。 附加此元件庫之後，實驗室使用者可以從這些最新的映射建立電腦。 這項功能的主要優點是，DevTest Labs 現在可以利用跨實驗室、跨訂用帳戶和跨區域共用映射的優勢。 
 
 > [!NOTE]
-> 要瞭解與共享圖像庫服務關聯的成本，請參閱[共用圖像庫的計費](../virtual-machines/windows/shared-image-galleries.md#billing)。
+> 若要瞭解與共享映射資源庫服務相關聯的成本，請參閱[共用映射資源庫的計費](../virtual-machines/windows/shared-image-galleries.md#billing)。
 
 ## <a name="considerations"></a>考量
-- 一次只能將一個共用圖像庫附加到實驗室。 如果要附加另一個庫，則需要分離現有庫並附加另一個庫。 
-- DevTest Labs 目前僅支援共用圖像庫通用圖像。
-- DevTest 實驗室目前不支援通過實驗室將圖像上載到庫。 
-- 使用共用映射庫映射創建虛擬機器時，DevTest Labs 始終使用此映射的最新發佈版本。 但是，如果映射有多個版本，使用者可以選擇在虛擬機器創建期間使用"高級設置"選項卡從早期版本創建電腦。  
-- 儘管 DevTest Labs 會自動做出最佳嘗試，以確保共用圖像庫將圖像複製到實驗室存在的區域，但並不總是可能的。 為了避免使用者在這些映射中創建 VM 時出現問題，請確保圖像已複製到實驗室的區域。
+- 您一次只能將一個共用映射資源庫附加至實驗室。 如果您想要附加另一個圖庫，您必須卸離現有的資源庫並附加另一個。 
+- DevTest Labs 目前僅支援共用映射資源庫一般化映射。
+- DevTest Labs 目前不支援透過實驗室將映射上傳至圖庫。 
+- 使用共用映射資源庫映射建立虛擬機器時，DevTest Labs 一律會使用此映射的最新發佈版本。 不過，如果映射具有多個版本，使用者可以在建立虛擬機器期間前往 [Advanced settings] 索引標籤，選擇從舊版建立電腦。  
+- 雖然 DevTest Labs 會自動嘗試確保共用映射資源庫將映射複寫到實驗室所在的區域，但不一定都是可行的做法。 若要避免使用者在從這些映射建立 Vm 時遇到問題，請確定映射已複寫至實驗室的區域。」
 
 ## <a name="use-azure-portal"></a>使用 Azure 入口網站
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
-1. 選擇左側導航功能表上**的所有服務**。
-1. 從清單中選擇**開發人員測試實驗室**。
-1. 從實驗室清單中，選擇您的**實驗室**。
-1. 在左側功能表的 **"設置"** 部分中選擇 **"配置"和"策略**"。
-1. 在左側功能表的 **"虛擬機器"底座**下選擇**共用圖像庫**。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+1. 選取左側導覽功能表上的 [**所有服務**]。
+1. 從清單中選取 [ **DevTest Labs** ]。
+1. 從實驗室清單中，選取您的**實驗室**。
+1. 在左側功能表的 [設定] 區段中，選取 [**設定****和原則**]。
+1. 在左側功能表上，選取 [**虛擬機器基底**] 底下的 [**共用映射資源庫**]。
 
-    ![共用圖像庫功能表](./media/configure-shared-image-gallery/shared-image-galleries-menu.png)
-1. 按一下"**附加"** 按鈕並在下拉清單中選擇庫，將現有共用圖像庫附加到實驗室。
+    ![共用映射資源庫功能表](./media/configure-shared-image-gallery/shared-image-galleries-menu.png)
+1. 按一下 [**附加**] 按鈕，然後在下拉式清單中選取您的資源庫，以將現有的共用映射資源庫連結至您的實驗室。
 
-    ![連結](./media/configure-shared-image-gallery/attach-options.png)
-1. 轉到附加的庫並配置庫以**啟用或禁用**共用映射以進行 VM 創建。 從清單中選擇一個映射庫來配置它。 
+    ![附加](./media/configure-shared-image-gallery/attach-options.png)
+1. 移至連結的資源庫，並設定您的資源庫，以**啟用或停**用建立 VM 的共用映射。 從清單中選取映射庫來加以設定。 
 
-    預設情況下，**允許將所有映射用作虛擬機器庫**設置為 **"是**"。 這意味著在創建新的實驗室 VM 時，實驗室使用者可以使用附加的共用映射庫中的所有映射。 如果需要限制對某些映射的訪問，請更改 **"允許將所有映射用作虛擬機器庫**"更改為 **"否**"，然後選擇創建 VM 時要允許的圖像，然後選擇"**保存**"按鈕。
+    根據預設，[**允許所有映射使用] 作為 [虛擬機器基底**] 設定為 **[是]**。 這表示在建立新的實驗室 VM 時，實驗室使用者可以使用附加的共用映射資源庫中的所有可用映射。 如果必須限制對特定映射的存取，請將 [**允許所有映射作為虛擬機器基底**] 變更為 [**否**]，然後選取您想要在建立 vm 時允許的映射，然後選取 [**儲存**] 按鈕。
 
-    ![啟用或禁用](./media/configure-shared-image-gallery/enable-disable.png)
-1. 然後，實驗室使用者可以通過按一下 **+Add**並在**選擇基**頁上查找圖像來使用啟用的圖像創建虛擬機器。
+    ![啟用或停用](./media/configure-shared-image-gallery/enable-disable.png)
+1. 然後，實驗室使用者可以按一下 [ **+ 新增**]，然後在 [**選擇您的基礎**] 頁面中尋找影像，以使用已啟用的映射建立虛擬機器。
 
     ![實驗室使用者](./media/configure-shared-image-gallery/lab-users.png)
 ## <a name="use-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本
 
-### <a name="attach-a-shared-image-gallery-to-your-lab"></a>將共用圖像庫附加到實驗室
-如果使用 Azure 資源管理器範本將共用映射庫附加到實驗室，則需要將其添加到資源管理器範本的資源部分下，如以下示例所示：
+### <a name="attach-a-shared-image-gallery-to-your-lab"></a>將共用映射資源庫連結至您的實驗室
+如果您使用 Azure Resource Manager 範本將共用映射資源庫連結至您的實驗室，您需要將它新增至 Resource Manager 範本的 resources 區段底下，如下列範例所示：
 
 ```json
 "resources": [
@@ -89,11 +89,11 @@ DevTest 實驗室現在支援[共用圖像庫](../virtual-machines/windows/share
 }
 ```
 
-有關完整的資源管理器範本示例，請參閱我們的公共 GitHub 存儲庫中的這些資源管理器範本示例：[在創建實驗室時配置共用映射庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured)。
+如需完整的 Resource Manager 範本範例，請參閱我們的公用 GitHub 存放庫中的下列 Resource Manager 範本範例：[建立實驗室時設定共用映射資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured)。
 
 ## <a name="use-api"></a>使用 API
 
-### <a name="shared-image-galleries---create-or-update"></a>共用圖像庫 - 創建或更新
+### <a name="shared-image-galleries---create-or-update"></a>共用映射資源庫-建立或更新
 
 ```rest
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}?api-version= 2018-10-15-preview
@@ -107,7 +107,7 @@ Body:
 
 ```
 
-### <a name="shared-image-galleries-images---list"></a>共用圖像庫圖像 - 清單 
+### <a name="shared-image-galleries-images---list"></a>共用映射庫影像-清單 
 
 ```rest
 GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}/sharedimages?api-version= 2018-10-15-preview
@@ -117,4 +117,4 @@ GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 
 ## <a name="next-steps"></a>後續步驟
-請參閱以下有關使用附加的共用映射庫中的映射創建 VM的文章：[使用庫中的共用映射創建 VM](add-vm-use-shared-image.md)
+請參閱下列文章：使用連結的共用映射資源庫中的映射建立 VM ..[使用資源庫中的共用映射建立 vm](add-vm-use-shared-image.md)

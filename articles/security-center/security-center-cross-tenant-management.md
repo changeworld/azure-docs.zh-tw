@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心的跨租戶管理 |微軟文檔
-description: 瞭解如何設置跨租戶管理，以便使用 Azure 委派的資源管理管理安全中心中多個租戶的安全狀況。
+title: Azure 資訊安全中心中的跨租使用者管理 |Microsoft Docs
+description: 瞭解如何使用 Azure 委派的資源管理，在資訊安全中心中設定跨租使用者管理來管理多個租使用者的安全性狀態。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,47 +14,47 @@ ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
 ms.openlocfilehash: 2aeb2ab4cfb4ed5e8652638aaced320cc7119d3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77919476"
 ---
-# <a name="cross-tenant-management-in-security-center"></a>安全中心的跨租戶管理
+# <a name="cross-tenant-management-in-security-center"></a>資訊安全中心中的跨租使用者管理
 
-跨租戶管理使您能夠通過利用[Azure 委派的資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)來查看和管理安全中心中多個租戶的安全狀態。 從單個視圖高效地管理多個租戶，而無需登錄到每個租戶的目錄。
+跨租使用者管理可讓您利用[Azure 委派的資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)，來查看及管理資訊安全中心中多個租使用者的安全性狀態。 從單一視圖有效率地管理多個租使用者，而不需要登入每個租使用者的目錄。
 
-- 服務提供者可以從自己的租戶管理資源的安全狀態，適用于多個客戶。
+- 服務提供者可以從自己的租使用者中管理資源的安全性狀態（適用于多個客戶）。
 
-- 具有多個租戶的組織的安全團隊可以從單個位置查看和管理其安全狀態。
+- 具有多個租使用者之組織的安全性小組可以從單一位置查看和管理其安全性狀態。
 
-## <a name="set-up-cross-tenant-management"></a>設置跨租戶管理
+## <a name="set-up-cross-tenant-management"></a>設定跨租使用者管理
 
-通過使用[Azure 委派的資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)，通過將對託管租戶資源的訪問委派給您自己的租戶來設置跨租戶管理。
+使用[Azure 委派的資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)，將受管理租使用者資源的存取權委派給您自己的租使用者，以設定跨租使用者管理。
 
 > [!NOTE]
 > Azure 委派的資源管理是 Azure Lighthouse 的重要元件之一。
 
-## <a name="how-does-cross-tenant-management-work-in-security-center"></a>跨租戶管理如何在安全中心工作
+## <a name="how-does-cross-tenant-management-work-in-security-center"></a>跨租使用者管理在資訊安全中心中的運作方式
 
-您可以查看和管理多個租戶中的訂閱，就像管理單個租戶中的多個訂閱一樣。
+您可以透過在單一租使用者中管理多個訂用帳戶的相同方式，在多個租使用者中檢查及管理訂用帳戶。
 
-從頂部功能表列中，按一下篩選器圖示，並從每個租戶的目錄中選擇要查看的訂閱。
+從頂端功能表列中，按一下篩選圖示，然後從每個租使用者的目錄中選取您想要查看的訂用帳戶。
 
-  ![篩選租戶](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
+  ![篩選租使用者](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-觀點和操作基本相同。 以下是一些範例：
+Views 和動作基本上相同。 以下是一些範例：
 
-- **管理安全性原則**：從一個角度，使用[策略](tutorial-security-policy.md)管理許多資源的安全狀態，使用安全建議執行操作，並收集和管理與安全相關的資料。
-- **改善安全分數和合規性狀態**：跨租戶可見度使您能夠查看所有租戶的整體安全狀況，以及最佳改進每個租戶[的安全得分](security-center-secure-score.md)和[合規性狀況](security-center-compliance-dashboard.md)的位置和方式。
-- **修正建議**：一次監視和修正來自各個租戶的許多資源[的建議](security-center-recommendations.md)。 然後，您可以立即解決在所有租戶中呈現最高風險的漏洞。
-- **管理警報**：檢測不同租戶的[警報](security-center-alerts-overview.md)。 對不符合可操作[補救步驟](security-center-managing-and-responding-alerts.md)的資源採取行動。
+- **管理安全性原則**：從一個觀點來看，使用[原則](tutorial-security-policy.md)來管理許多資源的安全性狀態、對安全性建議採取動作，以及收集和管理安全性相關資料。
+- **改善安全分數和合規性**狀態：跨租使用者可見度可讓您查看所有租使用者的整體安全性狀態，以及在何處和如何最佳地改善每個租使用者的[安全分數](security-center-secure-score.md)和[合規性](security-center-compliance-dashboard.md)狀態。
+- **補救建議**：一次從各種租使用者監視和修復許多資源的[建議](security-center-recommendations.md)。 接著，您可以立即解決所有租使用者都有最高風險的弱點。
+- **管理警示**：在不同的租使用者中偵測到[警示](security-center-alerts-overview.md)。 針對不符合可採取動作之[補救步驟](security-center-managing-and-responding-alerts.md)的資源採取行動。
 
-- **管理高級雲防禦功能等**：管理各種威脅防護服務，如[及時 （JIT） VM 訪問](security-center-just-in-time.md)、[自我調整網路強化](security-center-adaptive-network-hardening.md)、[自我調整應用程式控制](security-center-adaptive-application.md)等。
+- **管理先進的雲端防禦功能及更多**：管理各種威脅防護服務，例如[即時（JIT） VM 存取](security-center-just-in-time.md)、彈性[網路強化](security-center-adaptive-network-hardening.md)、彈性[應用](security-center-adaptive-application.md)程式控制等等。
  
 ## <a name="next-steps"></a>後續步驟
-本文介紹了跨租戶管理在安全中心的工作原理。 如要深入了解資訊安全中心，請參閱下列主題：
+本文說明跨租使用者管理在資訊安全中心中的運作方式。 如要深入了解資訊安全中心，請參閱下列主題：
 
-* [使用 Azure 安全中心增強安全狀態](security-center-monitoring.md)- 瞭解如何監視 Azure 資源的運行狀況。
+* [使用 Azure 資訊安全中心強化您的安全性](security-center-monitoring.md)狀態-瞭解如何監視 Azure 資源的健康情況。
 * [Azure 資訊安全中心常見問題集](faq-general.md) - 尋找有關使用服務的常見問題。
-* [瞭解企業方案中的 Azure 燈塔](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise)- 瞭解 Azure 燈塔如何在使用多個 Azure AD 租戶的企業中簡化跨租戶管理。
+* [瞭解企業案例中的 Azure 燈塔](https://docs.microsoft.com/azure/lighthouse/concepts/enterprise)-探索 azure 燈塔可以如何在使用多個 Azure AD 租使用者的企業內簡化跨租使用者管理。

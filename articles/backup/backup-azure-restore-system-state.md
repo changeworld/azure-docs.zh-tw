@@ -5,15 +5,15 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77602461"
 ---
 # <a name="restore-system-state-to-windows-server"></a>將系統狀態還原到 Windows Server
 
-本文說明如何從 Azure 復原服務保存庫來還原 Windows Server 系統狀態備份。 要還原系統狀態，必須具有系統狀態備份（使用[備份系統狀態](backup-azure-system-state.md#back-up-windows-server-system-state)中的說明創建），並確保已安裝[最新版本的 Microsoft Azure 恢復服務 （MARS） 代理](https://aka.ms/azurebackup_agent)。 從 Azure 復原服務保存庫來復原 Windows Server 系統狀態資料的程序需要兩個步驟：
+本文說明如何從 Azure 復原服務保存庫來還原 Windows Server 系統狀態備份。 若要還原系統狀態，您必須有系統狀態備份（使用[備份系統狀態](backup-azure-system-state.md#back-up-windows-server-system-state)中的指示建立），並確定您已安裝[最新版本的 Microsoft Azure 復原服務（MARS）代理程式](https://aka.ms/azurebackup_agent)。 從 Azure 復原服務保存庫來復原 Windows Server 系統狀態資料的程序需要兩個步驟：
 
 1. 從 Azure 備份來還原檔案形式的系統狀態。 在從 Azure 備份來還原檔案形式的系統狀態時，您可以：
    * 將系統狀態還原到進行備份時所在的相同伺服器，或
@@ -35,7 +35,7 @@ ms.locfileid: "77602461"
 
 3. 在 [開始使用]**** 窗格中，若要將資料還原至同一台伺服器或電腦，請選取 [這台伺服器 (`<server name>`)]**** 並按一下 [下一步]****。
 
-    ![選擇此伺服器選項將資料還原到同一台電腦](./media/backup-azure-restore-system-state/samemachine.png)
+    ![選擇此伺服器選項可將資料還原至同一部電腦](./media/backup-azure-restore-system-state/samemachine.png)
 
 4. 在 [選取復原模式]**** 窗格上，選擇 [系統狀態]****，然後按 [下一步]****。
 
@@ -71,7 +71,7 @@ ms.locfileid: "77602461"
 
 * ** – 用來進行備份且目前無法使用的的原始電腦。
 * ** – 復原資料時的目標電腦。
-* *示例保存庫*–*源電腦*和目標*電腦*註冊到的恢復服務保存庫。 <br/>
+* *範例*保存庫–*來源電腦*和*目的電腦*註冊所在的復原服務保存庫。 <br/>
 
 > [!NOTE]
 > 從某個電腦擷取的備份無法還原到執行舊版作業系統的電腦上。 例如，從 Windows Server 2016 電腦擷取的備份便無法還原到 Windows Server 2012 R2。 不過，反過來則可行。 您可以使用 Windows Server 2012 R2 的備份來還原 Windows Server 2016。
@@ -91,7 +91,7 @@ ms.locfileid: "77602461"
 
     ![搜尋](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-8. 在 [選取磁碟區和日期]**** 窗格的行事曆上，選取復原點。 您可以從任何時間的復原點還原。 **粗體**的日期表示至少有一個復原點可用。 選擇日期後，如果有多個復原點可用，請從 **"時間**"下拉式功能表中選擇特定的復原點。
+8. 在 [選取磁碟區和日期]**** 窗格的行事曆上，選取復原點。 您可以從任何時間的復原點還原。 **粗體**的日期表示至少有一個復原點可用。 選取日期之後，如果有多個復原點可用，請從 [**時間**] 下拉式功能表選擇特定的復原點。
 
     ![搜尋項目](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "77602461"
 
     [建立複本，以擁有兩個版本]**** 選項會在現有系統狀態檔案封存中建立個別檔案的複本，而不是建立整個系統狀態封存的複本。
 
-11. 在"確認"窗格中驗證恢復的詳細資訊，然後按一下"**恢復**"。
+11. 確認 [確認] 窗格上的復原詳細資料，然後按一下 [**復原**]。
 
     ![按一下 [復原] 按鈕以確認復原程序](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
@@ -159,11 +159,11 @@ ms.locfileid: "77602461"
 系統狀態備份中包含了 Active Directory 資料。 請使用下列步驟將 Active Directory Domain Services (AD DS) 從目前的狀態還原到先前的狀態。
 
 1. 將網域控制站重新啟動為目錄服務還原模式 (DSRM)。
-2. 按照[此處](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore)的步驟使用 Windows 伺服器備份 Cmdlet 恢復 AD DS。
+2. 請遵循[這裡](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-nonauthoritative-restore)的步驟，使用 Windows Server Backup Cmdlet 來復原 AD DS。
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>針對失敗的系統狀態還原進行疑難排解
 
-如果先前用來套用系統狀態的程序未順利完成，請使用 Windows 修復環境 (Win RE) 來復原您的 Windows Server。 下列步驟說明如何使用 Win RE 來進行復原。 僅當 Windows 伺服器在系統狀態恢復後未正常啟動時，才使用此選項。 下列程序會清除非系統資料，請小心使用。
+如果先前用來套用系統狀態的程序未順利完成，請使用 Windows 修復環境 (Win RE) 來復原您的 Windows Server。 下列步驟說明如何使用 Win RE 來進行復原。 只有當 Windows Server 在系統狀態還原之後無法正常開機時，才使用此選項。 下列程序會清除非系統資料，請小心使用。
 
 1. 將您的 Windows Server 開機到 Windows 修復環境 (Win RE)。
 

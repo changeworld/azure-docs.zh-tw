@@ -1,15 +1,15 @@
 ---
-title: 升級獨立群集的版本
+title: 升級獨立叢集的版本
 description: 升級執行獨立 Service Fabric 叢集的 Azure Service Fabric 程式碼。
 author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
 ms.openlocfilehash: 489a90180454e2b4a9dad34730fbd3c4f235a2ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77598097"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>升級在您叢集上執行之 Service Fabric 的版本 
@@ -29,7 +29,7 @@ ms.locfileid: "77598097"
 若要設定叢集，讓其在 Microsoft 發行新版本時下載 Service Fabric 更新，請將 `fabricClusterAutoupgradeEnabled` 叢集組態設定為 *true*。 若要手動選取要讓叢集執行的受支援 Service Fabric 版本，請將 `fabricClusterAutoupgradeEnabled` 叢集組態設定為 *false*。
 
 ## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>升級具有連線能力而可下載最新程式碼和組態的叢集
-如果您的叢集節點與[Microsoft 下載中心](https://download.microsoft.com)具有互聯網連接，請使用以下步驟將群集升級到受支援的版本。
+如果您的叢集節點具有與[Microsoft 下載中心](https://download.microsoft.com)的網際網路連線，請使用下列步驟將您的叢集升級至支援的版本。
 
 對於可以連線至 [Microsoft 下載中心](https://download.microsoft.com)的叢集，Microsoft 會定期檢查新版本 Service Fabric 的可用性。
 
@@ -98,7 +98,7 @@ ms.locfileid: "77598097"
 
 如需進行手動程序，請遵循以下指示。
 
-在開始配置升級之前，修改群集配置以將以下屬性設置為*false：*
+在啟動設定升級之前，請修改您的叢集設定，將下列屬性設為*false* ：
 
 ```json
 "fabricClusterAutoupgradeEnabled": false,
@@ -112,7 +112,7 @@ ms.locfileid: "77598097"
 
 ### <a name="cluster-upgrade-workflow"></a>叢集升級工作流程
 
-1. 從群集中的一個節點運行[獲取服務FabricCluster升級](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade)，並注意*TargetCodeVersion*。
+1. 從叢集中的其中一個節點執行[start-servicefabricclusterupgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade) ，並記下*下 targetcodeversion*。
 
 2. 從與網際網路連線的電腦執行下列程式碼，以根據目前版本列出所有升級相容版本 ，並從相關聯的下載連結下載對應封裝：
 

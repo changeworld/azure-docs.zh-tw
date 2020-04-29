@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
 ms.openlocfilehash: 95c85309058911d6767eb44efd7b37ddac7a9119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77915024"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>針對傳統儲存體資源刪除錯誤進行疑難排解
@@ -65,7 +65,7 @@ ms.locfileid: "77915024"
 
 > <span style="color:cyan">**Remove-AzureStorageAccount -StorageAccountName myclassicaccount**</span>
 > 
-> <span style="color:red">刪除 Azure 存儲帳戶 ： 錯誤請求： 存儲帳戶我的經典帳戶有一些活動映射和/或磁片，例如。  
+> <span style="color:red">AzureStorageAccount： BadRequest：儲存體帳戶 myclassicaccount 有一些作用中的映射及/或磁片，例如  
 > myclassicaccount. 確認這些映像及/或磁碟已移除之後再刪除此儲存體帳戶。</span>
 
 ## <a name="unable-to-delete-storage-container"></a>無法刪除儲存體容器
@@ -83,7 +83,7 @@ ms.locfileid: "77915024"
 
 > <span style="color:cyan">**Remove-AzureStorageContainer -Context $context -Name vhds**</span>
 > 
-> <span style="color:red">刪除 Azure 存儲容器：遠端伺服器返回了一個錯誤：（412） 當前容器上有租約，並且請求中未指定租約 ID。HTTP 狀態碼：412 - HTTP 錯誤訊息：當前容器上有租約，請求中未指定租約 ID。</span>
+> <span style="color:red">New-azurestoragecontainer：遠端伺服器傳回錯誤：（412）容器上目前有租用，而且要求中沒有指定任何租用識別碼。。HTTP 狀態碼： 412-HTTP 錯誤訊息：目前容器上有租用，而且要求中未指定租用識別碼。</span>
 
 ## <a name="unable-to-delete-a-vhd"></a>無法刪除 vhd 
 
@@ -105,16 +105,16 @@ ms.locfileid: "77915024"
 
 > <span style="color:cyan">**Remove-AzureStorageBlob -Context $context -Container vhds -Blob "classicvm-os-8698.vhd"**</span>
 > 
-> <span style="color:red">刪除 Azure 存儲 Blob ：遠端伺服器返回了一個錯誤：（412） 當前 Blob 上有租約，並且請求中未指定租約 ID。HTTP 狀態碼：412 - HTTP 錯誤訊息：當前 Blob 上有租約，請求中未指定租約 ID。</span>
+> <span style="color:red">Get-azurestorageblob：遠端伺服器傳回錯誤：（412） blob 目前有租用，而且要求中沒有指定任何租用識別碼。。HTTP 狀態碼： 412-HTTP 錯誤訊息：目前 blob 上有租用，而且要求中未指定租用識別碼。</span>
 
 
 ## <a name="resolution-steps"></a>解決步驟
 
 ### <a name="to-remove-classic-disks"></a>若要移除傳統磁碟
 在 Azure 入口網站中遵循下列步驟：
-1.  導航到[Azure 門戶](https://portal.azure.com)。
+1.  流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
 2.  瀏覽至磁碟 (傳統)。 
-3.  按一下"磁片"選項卡.![門戶的螢幕截圖，打開容器 blob"清單"窗格](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
+3.  按一下 [磁片] 索引![標籤。入口網站的螢幕擷取畫面，其中已開啟容器 blob [清單] 窗格](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_disks_tab.jpg)
  
 4.  選取資料磁碟，然後按一下 [刪除磁碟]。
  ![開啟容器 Blob「清單」窗格的入口網站螢幕擷取畫面](./media/storage-classic-cannot-delete-storage-account-container-vhd/resolution_click_delete_disk.jpg)
@@ -124,7 +124,7 @@ ms.locfileid: "77915024"
 
 ### <a name="to-remove-classic-images"></a>若要移除傳統磁碟   
 在 Azure 入口網站中遵循下列步驟：
-1.  導航到[Azure 門戶](https://portal.azure.com)。
+1.  流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
 2.  瀏覽至作業系統映像 (傳統)。
 3.  刪除映像。
 4.  重試先前失敗的刪除作業。

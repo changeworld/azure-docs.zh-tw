@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
 ms.openlocfilehash: 7bc2c0f472a03c3f069a889c360bea9017a780f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918201"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>因為 VM 開機到安全模式而無法連線到 VM
@@ -24,7 +24,7 @@ ms.locfileid: "77918201"
 此文章說明如何解決因為 VM 設定為開機到安全模式而無法連線到 Azure Windows 虛擬機器 (VM) 的問題進行疑難排解。
 
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
 您因為 VM 設定為開機到安全模式而無法透過 RDP 連線或其他連線 (例如 HTTP) 連線到 Azure 中的 VM。 當您檢查 Azure 入口網站中[開機診斷](../troubleshooting/boot-diagnostics.md)的螢幕擷取畫面時，您可能會看到該 VM 正常開機，但網路介面無法使用：
 
@@ -73,9 +73,9 @@ ms.locfileid: "77918201"
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>將 OS 磁碟連結至復原 VM
 
-1. [將作業系統磁片附加到恢復 VM。](../windows/troubleshoot-recovery-disks-portal.md)
+1. [將 OS 磁片連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 啟動復原 VM 的遠端桌面連線。
-3. 確保磁片在磁片管理主控台中標記為**連線**。 記下指派給已連結 OS 磁碟的磁碟機代號。
+3. 請確定磁片在 [磁片管理] 主控台中標示為 [**線上**]。 記下指派給已連結 OS 磁碟的磁碟機代號。
 
 #### <a name="enable-dump-log-and-serial-console-optional"></a>啟用傾印記錄檔和序列主控台 (選擇性)
 
@@ -83,7 +83,7 @@ ms.locfileid: "77918201"
 
 若要啟用傾印記錄檔與序列主控台，請執行下列指令碼。
 
-1. 打開提升的命令提示會話 （**以管理員身份運行**）。
+1. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。
 2. 執行下列指令碼：
 
     在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
@@ -112,7 +112,7 @@ ms.locfileid: "77918201"
 
 #### <a name="configure-the-windows-to-boot-into-normal-mode"></a>設定 Windows 開機到標準模式
 
-1. 打開提升的命令提示會話 （**以管理員身份運行**）。
+1. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。
 2. 檢查開機設定資料。 在下列命令中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
 
         bcdedit /store F:\boot\bcd /enum

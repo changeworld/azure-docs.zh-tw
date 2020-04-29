@@ -1,5 +1,5 @@
 ---
-title: Azure 監視器中的 VMware 監視解決方案 |微軟文檔
+title: Azure 監視器中的 VMware 監控解決方案 |Microsoft Docs
 description: 了解 VMware 監視解決方案如何協助您管理記錄和監視 ESXi 主機。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,22 +7,22 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2018
 ms.openlocfilehash: c1622ef16155206d779c6d703fc7da568d233e7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77664774"
 ---
-# <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure 監視器中的 VMware 監視（已棄用）解決方案
+# <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure 監視器中的 VMware 監控（已淘汰）解決方案
 
 ![VMware 符號](./media/vmware/vmware-symbol.png)
 
 > [!NOTE]
 > VMware 監控解決方案已被取代。  已安裝此解決方案的客戶可以繼續使用，但無法將 VMware 監控加入至任何新的工作區。
 
-Azure 監視器中的 VMware 監視解決方案是一種解決方案，可説明您為大型 VMware 日誌創建集中日誌記錄和監視方法。 本文說明如何使用此解決方案在單一位置進行疑難排解、擷取和管理 ESXi 主機。 有了這個解決方案，您可以在單一位置查看所有 ESXi 主機的詳細資料。 您可以看到 VM 和 ESXi 主機上前幾名的事件計數、狀態和趨勢，透過 ESXi 主機記錄提供。 您可以檢視及搜尋 ESXi 主機集中記錄，來進行疑難排解。 而且，您可以根據記錄檔搜尋查詢來建立警示。
+Azure 監視器中的 VMware 監控解決方案是一種解決方案，可協助您建立大型 VMware 記錄的集中式記錄和監視方法。 本文說明如何使用此解決方案在單一位置進行疑難排解、擷取和管理 ESXi 主機。 有了這個解決方案，您可以在單一位置查看所有 ESXi 主機的詳細資料。 您可以看到 VM 和 ESXi 主機上前幾名的事件計數、狀態和趨勢，透過 ESXi 主機記錄提供。 您可以檢視及搜尋 ESXi 主機集中記錄，來進行疑難排解。 而且，您可以根據記錄檔搜尋查詢來建立警示。
 
-解決方案會使用 ESXi 主機的原生 syslog 功能來將資料推播至具有 Log Analytics 代理程式的目標 VM。 但是，解決方案不會將檔案寫入目標 VM 內部的 syslog。 Log Analytics 代理程式會開啟連接埠 1514 並接聽該連接埠。 收到資料後，日誌分析代理將資料推送到 Azure 監視器中。
+解決方案會使用 ESXi 主機的原生 syslog 功能來將資料推播至具有 Log Analytics 代理程式的目標 VM。 但是，解決方案不會將檔案寫入目標 VM 內部的 syslog。 Log Analytics 代理程式會開啟連接埠 1514 並接聽該連接埠。 一旦接收到資料，Log Analytics 代理程式就會將資料推送到 Azure 監視器。
 
 ## <a name="install-and-configure-the-solution"></a>安裝和設定解決方案
 請使用下列資訊來安裝和設定方案。
@@ -40,10 +40,10 @@ vSphere ESXi 主機 5.5、6.0 和 6.5
    ![syslog 流程](./media/vmware/diagram.png)
 
 ### <a name="configure-syslog-collection"></a>設定 syslog 收集
-1. 設定 VSphere 的 syslog 轉送。 如需協助設定 syslog 轉送的詳細資訊，請參閱[設定 ESXi 5.0 和更新版本上的 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 轉到**ESXi 主機配置** > **軟體** > **高級設置** > **系統**。
+1. 設定 VSphere 的 syslog 轉送。 如需協助設定 syslog 轉送的詳細資訊，請參閱[設定 ESXi 5.0 和更新版本上的 syslog (2003322)](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2003322)。 移至 [ **ESXi 主機** > 設定] [**軟體** > ] [**Advanced Settings** > ]**Syslog**。
    ![vsphereconfig](./media/vmware/vsphere1.png)  
 1. 在 [Syslog.global.logHost]** 欄位中，新增您的 Linux 伺服器和連接埠號碼 1514**。 例如，`tcp://hostname:1514` 或 `tcp://123.456.789.101:1514`。
-1. 為 syslog 開啟 ESXi 主機防火牆。 **ESXi 主機配置** > **軟體** > **安全設定檔** > **防火牆**和打開**屬性**。  
+1. 為 syslog 開啟 ESXi 主機防火牆。 **ESXi 主機** > 設定] [**軟體** > ] [**安全性設定檔** > ]**防火牆****並開啟 [** 內容]。  
 
     ![vspherefw](./media/vmware/vsphere2.png)  
 
@@ -64,7 +64,7 @@ vSphere ESXi 主機 5.5、6.0 和 6.5
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. 在 Azure 門戶中，對`VMware_CL`執行 的日誌查詢。 當 Azure 監視器收集系統日誌資料時，它將保留 syslog 格式。 在入口網站中，會擷取某些特定欄位，例如 Hostname** 和 ProcessName**。  
+1. 在 Azure 入口網站中，執行的記錄查詢`VMware_CL`。 當 Azure 監視器收集 syslog 資料時，它會保留 syslog 格式。 在入口網站中，會擷取某些特定欄位，例如 Hostname** 和 ProcessName**。  
 
     ![type](./media/vmware/type.png)  
 
@@ -122,7 +122,7 @@ VMware 監視解決方案會使用您已啟用的 Log Analytics Linux 代理程�
 
 按一下任何刀鋒視窗以開啟 Log Analytics 搜尋窗格，窗格中會顯示該刀鋒視窗的詳細資訊。
 
-在此處，您可以編輯日誌查詢以修改特定內容。 有關創建日誌查詢的詳細資訊，請參閱使用[Azure 監視器 中的日誌查詢查找資料](../log-query/log-query-overview.md)。
+在這裡，您可以編輯記錄查詢，針對特定專案進行修改。 如需有關建立記錄查詢的詳細資訊，請參閱[在 Azure 監視器中使用記錄查詢尋找資料](../log-query/log-query-overview.md)。
 
 #### <a name="find-esxi-host-events"></a>尋找 ESXi 主機事件
 單一 ESXi 主機會產生多個記錄，取決於其程序。 VMware 監控解決方案會將它們集中在一起，並總結事件計數。 這個集中式的檢視可幫助您了解哪些 ESXi 主機有大量的事件，以及在您的環境中最常發生哪些事件。
@@ -144,14 +144,14 @@ VMware 監視解決方案會使用您已啟用的 Log Analytics Linux 代理程�
 
 ![深入探詢](./media/vmware/createvm.png)
 
-#### <a name="common-log-queries"></a>常見日誌查詢
+#### <a name="common-log-queries"></a>一般記錄檔查詢
 這個解決方案包含其他實用的查詢，可協助您管理您的 ESXi 主機，例如高儲存量空間、儲存體延遲、路徑失敗。
 
 ![查詢](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>儲存查詢
-保存日誌查詢是 Azure 監視器中的標準功能，可説明您保留發現有用的任何查詢。 建立您覺得有用的查詢之後，按一下 [我的最愛]**** 儲存它。 儲存的查詢讓您之後可從 [我的儀表板](../learn/tutorial-logs-dashboards.md) 頁面輕鬆地重複使用它們，您也可以在此建立您自己自訂的儀表板。
+儲存記錄查詢是 Azure 監視器中的標準功能，可協助您保留任何您認為有用的查詢。 建立您覺得有用的查詢之後，按一下 [我的最愛]**** 儲存它。 儲存的查詢讓您之後可從 [我的儀表板](../learn/tutorial-logs-dashboards.md) 頁面輕鬆地重複使用它們，您也可以在此建立您自己自訂的儀表板。
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 

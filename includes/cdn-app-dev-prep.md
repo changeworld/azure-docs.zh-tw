@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 41f2d4540f665137d34d262546cdc1a2edfbae3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77608751"
 ---
 ## <a name="prerequisites"></a>Prerequisites
@@ -20,7 +20,7 @@ ms.locfileid: "77608751"
 
 ### <a name="creating-the-resource-group"></a>建立資源群組
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-2. 按一下 **"創建資源**"。
+2. 按一下 [**建立資源**]。
 3. 搜尋 [資源群組]****，然後在 [資源群組] 窗格中，按一下 [建立]****。
 
     ![建立新的資源群組](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
@@ -62,6 +62,6 @@ ms.locfileid: "77608751"
     ![原生應用程式](./media/cdn-app-dev-prep/cdn-native-application-include.png)
 2. 在下一個頁面上，系統將提示您輸入**重新導向 URI**。  URI 不會進行驗證，但請記住您的輸入。 您稍後將會用到此資訊。
 3. 不需要 **用戶端驗證金鑰**。
-4. 我們不會將服務主體指派給 **CDN 設定檔參與者** 角色，而是會指派個別使用者或群組。  在此示例中，您可以看到我已將*CDN 演示使用者*分配給**CDN 設定檔參與者**角色。  
+4. 我們不會將服務主體指派給 **CDN 設定檔參與者** 角色，而是會指派個別使用者或群組。  在此範例中，您可以看到我已將「cdn*示範使用者*」指派給「 **Cdn 設定檔參與者**」角色。  
 
     ![個別使用者存取](./media/cdn-app-dev-prep/cdn-aad-user-include.png)

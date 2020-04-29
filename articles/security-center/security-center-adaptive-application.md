@@ -1,6 +1,6 @@
 ---
 title: Azure 資訊安全中心的自適性應用程式控制
-description: 本文檔可説明您在 Azure 安全中心中使用自我調整應用程式控制項，以對在 Azure 電腦中運行的應用程式進行白名單。
+description: 本檔可協助您使用 Azure 資訊安全中心中的適應性應用程式控制，將在 Azure 機器中執行的應用程式列入允許清單。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,17 +14,17 @@ ms.workload: na
 ms.date: 12/23/2019
 ms.author: memildin
 ms.openlocfilehash: 1dc94c5ec08cc27fb1819ccc16fd766c62aad796
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77604667"
 ---
 # <a name="adaptive-application-controls"></a>自適性應用程式控制
 了解如何利用此逐步解說，在 Azure 資訊安全中心設定應用程式控制。
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>什麼是 Azure 資訊安全中心的自適性應用程式控制？
-自我調整應用程式控制是 Azure 安全中心的智慧、自動化端到端解決方案，可説明您控制哪些應用程式可以在 Azure 和非 Azure 電腦（Windows 和 Linux）上運行。 除其他好處外，這有助於增強電腦抵禦惡意軟體的能力。 安全中心使用機器學習來分析電腦上運行的應用程式，並以此智慧創建允許清單。 此功能大大簡化了配置和維護應用程式允許清單策略的過程，使您能夠：
+彈性應用程式控制是來自 Azure 資訊安全中心的智慧型、自動化、端對端解決方案，可協助您控制哪些應用程式可在您的 Azure 和非 Azure 機器（Windows 和 Linux）上執行。 除了其他優點，這有助於強化電腦免于惡意程式碼的攻擊。 資訊安全中心使用機器學習服務來分析在您電腦上執行的應用程式，並從這個智慧建立允許清單。 這項功能可大幅簡化設定和維護應用程式允許清單原則的流程，讓您能夠：
 
 - 封鎖執行惡意應用程式的嘗試或提出警示，包括反惡意程式碼解決方案可能遺漏的嘗試。
 - 符合您組織規定只能使用授權軟體的安全性原則。
@@ -34,11 +34,11 @@ ms.locfileid: "77604667"
 - 讓 IT 能夠透過應用程式使用量來控制敏感性資料的存取。
 
 > [!NOTE]
-> 對於非 Azure 和 Linux 電腦，僅在稽核模式下支援自我調整應用程式控制項。
+> 針對非 Azure 和 Linux 機器，只有 audit 模式支援彈性應用程式控制。
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>如何啟用自適性應用程式控制？
 
-自我調整應用程式控制項可説明您定義一組允許在配置的電腦群組中運行的應用程式。 此功能可用於 Azure 和非 Azure Windows（所有版本、經典或 Azure 資源管理器）和 Linux 電腦。 使用以下步驟配置應用程式允許清單：
+彈性應用程式控制可協助您定義一組允許在已設定的電腦群組上執行的應用程式。 這項功能適用于 Azure 和非 Azure Windows （所有版本、傳統或 Azure Resource Manager）和 Linux 電腦。 使用下列步驟來設定您的應用程式允許清單：
 
 1. 開啟 [資訊安全中心]**** 儀表板。
 
@@ -63,16 +63,16 @@ ms.locfileid: "77604667"
 
 ### <a name="configure-a-new-application-control-policy"></a>設定新的應用程式控制原則
 
-1. 為具有應用程式控制建議的組清單選擇 **"推薦**"選項卡：
+1. 針對具有應用程式控制建議的群組清單選取 [**建議**] 索引標籤：
 
    ![建議](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
    此清單包括：
 
-   - **組名稱**：訂閱和組的名稱
-   - **VM 和電腦**：組中的虛擬機器數
-   - **狀態**： 建議的狀態
-   - **嚴重性**：建議的嚴重性級別
+   - **組名**：訂用帳戶和群組的名稱
+   - **Vm 和電腦**：群組中的虛擬機器數目
+   - **狀態**：建議的狀態
+   - **嚴重性**：建議的嚴重性層級
 
 2. 按一下群組以開啟 [建立應用程式控制規則]**** 選項。
 
@@ -87,11 +87,11 @@ ms.locfileid: "77604667"
 
    - **名稱**：應用程式的憑證資訊或完整路徑
    - **檔案類型**：應用程式檔案類型。 這可以是 EXE、指令碼、MSI 或這些類型的任何排列。
-   - **漏洞 ：** 警告圖示指示攻擊者是否可以使用特定應用程式繞過應用程式允許清單。 建議您在核准之前檢閱這些應用程式。
+   - **易受利用**：警告圖示會指出攻擊者是否可以使用特定應用程式來略過應用程式允許清單。 建議您在核准之前檢閱這些應用程式。
    - **使用者**：允許執行應用程式的建議使用者
 
-5. 一旦完成您的選擇，請選取 [建立]****。 <br>
-   選擇"創建"後，Azure 安全中心會在 Windows 伺服器 （AppLocker） 上可用的內置應用程式允許清單解決方案之上自動創建相應的規則。
+5. 一旦完成您的選擇，請選取 [建立]  。 <br>
+   選取 [建立] 之後，Azure 資訊安全中心會自動在 Windows 伺服器（AppLocker）上可用的內建應用程式允許清單解決方案之上建立適當的規則。
 
 > [!NOTE]
 > - 資訊安全中心會依賴至少兩週的資料，以建立基準，並且在每個虛擬機器群組填入唯一建議。 資訊安全中心標準層的新客戶預期會有標準行為，也就是他們的虛擬機器群組一開始會出現在 [不推薦]** 索引標籤底下。
@@ -101,15 +101,15 @@ ms.locfileid: "77604667"
 
 ### <a name="editing-and-monitoring-a-group-configured-with-application-control"></a>編輯和監視已設定應用程式控制的群組
 
-1. 要編輯和監視配置的應用程式允許清單策略的組，請返回到**自我調整應用程式控制項**頁面，並在**VM 組**下選擇 **"配置**"：
+1. 若要編輯和監視以應用程式允許清單原則設定的群組，請回到 [彈性**應用**程式控制] 頁面，然後選取 [在**Vm 群組**底下**設定**]：
 
    ![群組](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
 
    此清單包括：
 
-   - **組名稱**：訂閱和組的名稱
-   - **VM 和電腦**：組中的虛擬機器數
-   - **模式**：稽核模式將記錄運行不在允許清單中的應用程式的嘗試;強制將不允許應用程式運行，除非它們位於允許清單中
+   - **組名**：訂用帳戶和群組的名稱
+   - **Vm 和電腦**：群組中的虛擬機器數目
+   - **模式**： Audit 模式會記錄嘗試執行不在允許清單上的應用程式;[強制] 不允許應用程式執行，除非它們位於允許清單上
    - **警示**：目前所有的違規情形
 
 2. 按一下群組以在 [編輯應用程式控制原則]**** 頁面中進行變更。
@@ -126,7 +126,7 @@ ms.locfileid: "77604667"
    > - 如先前所述，根據預設，新的應用程式控制原則一律設定為「稽核」** 模式。 
    >
 
-4. 在 [原則擴充功能]**** 底下，新增想允許的任何應用程式路徑。 添加這些路徑後，安全中心將更新應用程式允許在所選 VMS 組中的 VM 上的 VM 上的 VM 上的清單策略，並針對這些應用程式創建適當的規則，以及已有的規則。
+4. 在 [原則擴充功能]**** 底下，新增想允許的任何應用程式路徑。 新增這些路徑之後，資訊安全中心會在所選 VM 群組內的 Vm 上更新應用程式允許清單原則，並為這些應用程式建立適當的規則，以及已準備好的規則。
 
 5. 檢閱 [最近的警示] **** 區段中列出的目前違規情形。 按下每一行以重新導向到 Azure 資訊安全中心內的 [警示] **** 頁面，並檢視 Azure 資訊安全中心在相關聯 VM 上偵測到的所有警示。
    - **警示**：已記錄的任何違規情形。
@@ -151,33 +151,33 @@ ms.locfileid: "77604667"
 ![建議](./media/security-center-adaptive-application/security-center-adaptive-application-fig11.png)
 
 此清單包含：
-- **組名稱**：訂閱和組的名稱
-- **VM 和電腦**：組中的虛擬機器數
+- **組名**：訂用帳戶和群組的名稱
+- **Vm 和電腦**：群組中的虛擬機器數目
 
 Azure 資訊安全中心也可讓您對非建議的 VM 群組定義應用程式允許清單原則。 遵循先前所述的相同準則，同樣對這些群組設定應用程式允許清單原則。
 
-## <a name="move-a-vm-from-one-group-to-another"></a>將 VM 從一個組移動到另一個組
+## <a name="move-a-vm-from-one-group-to-another"></a>將 VM 從一個群組移至另一個
 
- 將 VM 從一個組移動到另一個組時，應用於它的應用程式控制策略將更改為您移動到的組的設置。 您還可以將 VM 從配置的組移動到未配置的組，這將導致刪除以前應用於 VM 的任何應用程式控制策略。
+ 當您將 VM 從一個群組移至另一個時，套用至它的應用程式控制原則會變更為您將它移到的群組設定。 您也可以將 VM 從已設定的群組移至未設定的群組，這會導致移除先前套用至 VM 的任何應用程式控制原則。
 
- 1. 在 **"自我調整應用程式控制項"** 頁（從 **"配置"** 選項卡中），按一下當前要移動的 VM 所屬的組。
-1. 按一下 **"配置的 VM 和電腦**"。
-1. 按一下 VM 行中的三個點以移動，然後按一下"**移動**"。 **將打開"將電腦移動到不同的組**"視窗。
+ 1. 從 [彈性**應用**程式控制] 頁面的 [**已設定**] 索引標籤中，按一下要移動的 VM 目前所屬的群組。
+1. 按一下 [**已設定的 vm 和電腦**]。
+1. 按一下要移動的 VM 行中的三個點，然後按一下 [**移動**]。 [**將電腦移至不同的群組**] 視窗隨即開啟。
 
     ![保護](./media/security-center-adaptive-application/adaptive-application-move-group.png)
 
- 1. 選擇要將 VM 移動到的組，然後按一下 **"移動電腦**"，然後按一下"**保存**"。
+ 1. 選取要將 VM 移至其中的群組，然後按一下 [**移動電腦**]，再按一下 [**儲存**]。
 
     ![保護](./media/security-center-adaptive-application/adaptive-application-move-group2.png)
 
  > [!NOTE]
-> 按一下"**移動電腦"** 後，請務必按一下"**保存**"。 如果不按一下 **"保存**"，則不會移動電腦。
+> 按一下 [**移動電腦**] 之後，請務必按一下 [**儲存**]。 如果您未按一下 [**儲存**]，則不會移動電腦。
 
 ## <a name="next-steps"></a>後續步驟
-在本文中，您學習了如何使用 Azure 安全中心中的自我調整應用程式控制項對在 Azure 和非 Azure VM 中運行的應用程式進行白名單。 若要深入了解「Azure 資訊安全中心」，請參閱下列主題：
+在本檔中，您已瞭解如何使用 Azure 資訊安全中心中的適應性應用程式控制，將在 Azure 和非 Azure Vm 中執行的應用程式列入允許清單。 若要深入了解「Azure 資訊安全中心」，請參閱下列主題：
 
-* [管理和回應 Azure 安全中心中的安全警報](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 了解如何在資訊安全中心管理警示，以及回應安全性事件。
+* [管理和回應 Azure 資訊安全中心中的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 了解如何在資訊安全中心管理警示，以及回應安全性事件。
 * [Azure 資訊安全中心的安全性健全狀況監視](security-center-monitoring.md)。 了解如何監視 Azure 資源的健全狀況。
 * [了解 Azure 資訊安全中心的安全性警示](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 了解不同類型的安全性警示。
-* [Azure 安全中心故障排除指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何針對資訊安全中心的常見問題進行疑難排解。
-* [Azure 安全博客](https://blogs.msdn.com/b/azuresecurity/)。 尋找有關 Azure 安全性與相容性的部落格文章。
+* [Azure 資訊安全中心疑難排解指南](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide)。 了解如何針對資訊安全中心的常見問題進行疑難排解。
+* [Azure 安全性的 Blog](https://blogs.msdn.com/b/azuresecurity/)。 尋找有關 Azure 安全性與相容性的部落格文章。

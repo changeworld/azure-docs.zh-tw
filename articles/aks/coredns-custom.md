@@ -1,28 +1,28 @@
 ---
-title: 為 Azure 庫伯奈斯服務 （AKS） 自訂核心 DNS
-description: 瞭解如何自訂 CoreDNS 以使用 Azure 庫伯奈斯服務 （AKS） 添加子域或擴展自訂 DNS 終結點
+title: 針對 Azure Kubernetes Service 自訂 CoreDNS （AKS）
+description: 瞭解如何使用 Azure Kubernetes Service （AKS）自訂 CoreDNS 以新增子域或擴充自訂 DNS 端點
 services: container-service
 author: jnoller
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
 ms.openlocfilehash: 78132a53313f4a8ee5c10af340c8dab08c3e42c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77595819"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>使用 Azure Kubernetes Service 自訂 CoreDNS
 
-Azure 庫伯奈斯服務 （AKS） 使用[CoreDNS][coredns]專案對所有*1.12.x*和更高的群集進行群集 DNS 管理和解析。 以前，使用 kube-dns 專案。 此 kube-dns 專案現已棄用。 有關 CoreDNS 自訂和庫伯奈斯的詳細資訊，請參閱[官方上游文檔][corednsk8s]。
+Azure Kubernetes Service （AKS）會使用[CoreDNS][coredns]專案來進行叢集 DNS 管理，並使用所有的*1.12. x*和更高的叢集進行解析。 先前已使用 kube dns 專案。 此 kube 的 dns 專案現在已被取代。 如需 CoreDNS 自訂和 Kubernetes 的詳細資訊，請參閱[官方上游檔][corednsk8s]。
 
-由於 AKS 是託管服務，因此無法修改*CoreDNS（CoreFile）* 的主配置。 相反，您可以使用庫伯內斯*配置映射*來覆蓋預設設置。 要查看預設 AKS CoreDNS 配置映射，請使用`kubectl get configmaps --namespace=kube-system coredns -o yaml`命令。
+由於 AKS 是受控服務，因此您無法修改 CoreDNS （ *CoreFile*）的主要設定。 相反地，您會使用 Kubernetes *ConfigMap*來覆寫預設設定。 若要查看預設的 AKS CoreDNS ConfigMaps，請`kubectl get configmaps --namespace=kube-system coredns -o yaml`使用命令。
 
-本文介紹如何在 AKS 中使用 ConfigMap 進行 CoreDNS 的基本自訂選項。 此方法不同于在其他上下文中（如使用 CoreFile）配置 CoreDNS。 驗證正在運行的 CoreDNS 版本，因為配置值可能會在版本之間更改。
+本文說明如何將 ConfigMaps 用於 AKS 中 CoreDNS 的基本自訂選項。 這種方式不同于在其他內容中設定 CoreDNS，例如使用 CoreFile。 請確認您正在執行的 CoreDNS 版本，因為設定值可能會在版本之間變更。
 
 > [!NOTE]
-> `kube-dns`通過庫伯內斯配置圖提供了不同的[自訂選項][kubednsblog]。 CoreDNS**不**向後相容 kube-dns。 必須更新以前使用的任何自訂項，以便與 CoreDNS 一起使用。
+> `kube-dns`透過 Kubernetes config map 提供不同的[自訂選項][kubednsblog]。 CoreDNS 與 kube 的回溯**不**相容。 您先前使用的任何自訂都必須更新，才能與 CoreDNS 搭配使用。
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -30,11 +30,11 @@ Azure 庫伯奈斯服務 （AKS） 使用[CoreDNS][coredns]專案對所有*1.12.
 
 ## <a name="what-is-supportedunsupported"></a>支援/不支援的內容
 
-支援所有內置的 CoreDNS 外掛程式。 不支援附加元件/協力廠商外掛程式。
+支援所有內建的 CoreDNS 外掛程式。 不支援附加元件/協力廠商外掛程式。
 
 ## <a name="rewrite-dns"></a>重寫 DNS
 
-您有的一個方案是執行動態 DNS 名稱重寫。 在下面的示例中，替換為`<domain to be written>`您自己的完全限定的功能變數名稱。 創建名為`corednsms.yaml`的檔並粘貼以下示例配置：
+其中一個案例是執行即時 DNS 名稱重寫。 在下列範例中，請`<domain to be written>`將取代為您自己的完整功能變數名稱。 建立名為`corednsms.yaml`的檔案，並貼上下列範例設定：
 
 ```yaml
 apiVersion: v1
@@ -52,30 +52,30 @@ data:
     }
 ```
 
-使用[kubectl 應用配置映射][kubectl-apply]命令創建 ConfigMap 並指定 YAML 清單的名稱：
+使用[kubectl apply ConfigMap][kubectl-apply]命令來建立 ConfigMap，並指定 YAML 資訊清單的名稱：
 
 ```console
 kubectl apply -f corednsms.yaml
 ```
 
-要驗證已應用的自訂項，請使用[kubectl 獲取配置圖][kubectl-get]並指定*核心dns自訂*配置映射：
+若要確認已套用自訂，請使用[kubectl get configmaps][kubectl-get]並指定您的*coredns 自訂*ConfigMap：
 
 ```
 kubectl get configmaps --namespace=kube-system coredns-custom -o yaml
 ```
 
-現在強制 CoreDNS 重新載入配置映射。 [庫布ectl刪除 pod][kubectl delete]命令不會具有破壞性，也不會導致停機時間。 這些`kube-dns`窗格將被刪除，庫伯內斯計畫程式然後重新創建它們。 這些新窗格包含 TTL 值中的更改。
+現在強制 CoreDNS 重載 ConfigMap。 [Kubectl delete pod][kubectl delete]命令不具破壞性，也不會造成停機時間。 `kube-dns` Pod 會遭到刪除，然後 Kubernetes 排程器會重新建立它們。 這些新的 pod 包含 TTL 值的變更。
 
 ```console
 kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 ```
 
 > [!Note]
-> 上面的命令是正確的。 更改時`coredns`，部署位於**kube-dns**名稱下。
+> 上述命令是正確的。 當我們在變更`coredns`時，部署會在**kube dns**名稱底下。
 
-## <a name="custom-forward-server"></a>自訂轉發伺服器
+## <a name="custom-forward-server"></a>自訂轉寄伺服器
 
-如果需要為網路流量指定轉發伺服器，可以創建 ConfigMap 來自訂 DNS。 在下面的示例中，`forward`使用您自己的環境的值更新名稱和位址。 創建名為`corednsms.yaml`的檔並粘貼以下示例配置：
+如果您需要為您的網路流量指定轉寄伺服器，您可以建立 ConfigMap 來自訂 DNS。 在下列範例中，使用您`forward`自己環境的值來更新名稱和位址。 建立名為`corednsms.yaml`的檔案，並貼上下列範例設定：
 
 ```yaml
 apiVersion: v1
@@ -90,18 +90,18 @@ data:
     }
 ```
 
-與前面的示例一樣，使用[kubectl 應用配置map][kubectl-apply]命令創建 ConfigMap 並指定 YAML 清單的名稱。 然後，強制 CoreDNS 使用庫[布ectl 刪除窗格][kubectl delete]重新載入庫貝內特斯計畫程式的 ConfigMap 以重新創建它們：
+如先前範例所示，使用[kubectl apply ConfigMap][kubectl-apply]命令來建立 ConfigMap，並指定 YAML 資訊清單的名稱。 然後，強制 CoreDNS 使用[kubectl delete pod][kubectl delete]重載 ConfigMap，讓 Kubernetes 排程器重新建立它們：
 
 ```console
 kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
-## <a name="use-custom-domains"></a>使用自訂域
+## <a name="use-custom-domains"></a>使用自訂網域
 
-您可能希望配置只能在內部解析的自訂域。 例如，您可能希望解析自訂域*puglife.local*，這不是有效的頂層網域。 如果沒有自訂域 ConfigMap，AKS 群集無法解決該位址。
+您可能想要設定只能在內部解析的自訂網域。 例如，您可能會想要解析自訂網域*puglife*，這不是有效的最上層網域。 如果沒有自訂網域 ConfigMap，AKS 叢集就無法解析位址。
 
-在下面的示例中，更新自訂域和 IP 位址，以使用您自己的環境的值將流量定向到。 創建名為`corednsms.yaml`的檔並粘貼以下示例配置：
+在下列範例中，請使用您自己環境的值，將自訂網域和 IP 位址更新為將流量導向至。 建立名為`corednsms.yaml`的檔案，並貼上下列範例設定：
 
 ```yaml
 apiVersion: v1
@@ -118,16 +118,16 @@ data:
     }
 ```
 
-與前面的示例一樣，使用[kubectl 應用配置map][kubectl-apply]命令創建 ConfigMap 並指定 YAML 清單的名稱。 然後，強制 CoreDNS 使用庫[布ectl 刪除窗格][kubectl delete]重新載入庫貝內特斯計畫程式的 ConfigMap 以重新創建它們：
+如先前範例所示，使用[kubectl apply ConfigMap][kubectl-apply]命令來建立 ConfigMap，並指定 YAML 資訊清單的名稱。 然後，強制 CoreDNS 使用[kubectl delete pod][kubectl delete]重載 ConfigMap，讓 Kubernetes 排程器重新建立它們：
 
 ```console
 kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
-## <a name="stub-domains"></a>存根域
+## <a name="stub-domains"></a>存根網域
 
-CoreDNS 還可用於配置存根域。 在下面的示例中，使用您自己的環境的值更新自訂域和 IP 位址。 創建名為`corednsms.yaml`的檔並粘貼以下示例配置：
+CoreDNS 也可以用來設定存根網域。 在下列範例中，請使用您自己環境的值來更新自訂網域和 IP 位址。 建立名為`corednsms.yaml`的檔案，並貼上下列範例設定：
 
 ```yaml
 apiVersion: v1
@@ -150,16 +150,16 @@ data:
 
 ```
 
-與前面的示例一樣，使用[kubectl 應用配置map][kubectl-apply]命令創建 ConfigMap 並指定 YAML 清單的名稱。 然後，強制 CoreDNS 使用庫[布ectl 刪除窗格][kubectl delete]重新載入庫貝內特斯計畫程式的 ConfigMap 以重新創建它們：
+如先前範例所示，使用[kubectl apply ConfigMap][kubectl-apply]命令來建立 ConfigMap，並指定 YAML 資訊清單的名稱。 然後，強制 CoreDNS 使用[kubectl delete pod][kubectl delete]重載 ConfigMap，讓 Kubernetes 排程器重新建立它們：
 
 ```console
 kubectl apply -f corednsms.yaml
 kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 ```
 
-## <a name="hosts-plugin"></a>主機外掛程式
+## <a name="hosts-plugin"></a>Hosts 外掛程式
 
-由於支援所有內置外掛程式，這意味著 CoreDNS[主機][coredns hosts]外掛程式也可用於自訂：
+所有的內建外掛程式都受到支援，這表示 CoreDNS [Hosts][coredns hosts]外掛程式也可以自訂：
 
 ```yaml
 apiVersion: v1
@@ -175,9 +175,9 @@ data:
           }
 ```
 
-## <a name="enable-logging-for-dns-query-debugging"></a>為 DNS 查詢調試啟用日誌記錄 
+## <a name="enable-logging-for-dns-query-debugging"></a>啟用記錄以進行 DNS 查詢的偵錯工具 
 
-要啟用 DNS 查詢日誌記錄，請在核心 dns 自訂配置映射中應用以下配置：
+若要啟用 DNS 查詢記錄，請在您的 coredns 中套用下列設定-自訂 ConfigMap：
 
 ```yaml
 apiVersion: v1
@@ -192,9 +192,9 @@ data:
 
 ## <a name="next-steps"></a>後續步驟
 
-本文展示了一些針對 CoreDNS 自訂的示例方案。 有關 CoreDNS 專案的資訊，請參閱[CoreDNS 上游專案頁面][coredns]。
+本文說明了一些 CoreDNS 自訂的範例案例。 如需 CoreDNS 專案的詳細資訊，請參閱[CoreDNS 上游專案頁面][coredns]。
 
-要瞭解有關核心網路概念的更多資訊，請參閱[AKS 中應用程式的網路概念][concepts-network]。
+若要深入瞭解核心網路概念，請參閱[AKS 中應用程式的網路概念][concepts-network]。
 
 <!-- LINKS - external -->
 [kubednsblog]: https://www.danielstechblog.io/using-custom-dns-server-for-domain-specific-name-resolution-with-azure-kubernetes-service/

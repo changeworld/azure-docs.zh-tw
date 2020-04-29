@@ -1,6 +1,6 @@
 ---
-title: 將資料外泄限制為 Azure 存儲 - Azure PowerShell
-description: 在本文中，您將瞭解如何使用 Azure PowerShell 使用虛擬網路服務終結點策略限制和限制虛擬網路資料向 Azure 存儲資源滲透。
+title: 將資料外泄限制為 Azure 儲存體 Azure PowerShell
+description: 在本文中，您將瞭解如何限制和限制虛擬網路資料外泄，以使用 Azure PowerShell 的虛擬網路服務端點原則來 Azure 儲存體資源。
 services: virtual-network
 documentationcenter: virtual-network
 author: RDhillon
@@ -18,26 +18,26 @@ ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
 ms.openlocfilehash: 673431e2ddfc9a641bb1c640891daac79350cb3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78253022"
 ---
-# <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>使用 Azure PowerShell 使用虛擬網路服務終結點策略管理資料滲出到 Azure 存儲帳戶
+# <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>使用 Azure PowerShell 管理資料外泄，以 Azure 儲存體具有虛擬網路服務端點原則的帳戶
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-虛擬網路服務終結點策略使您能夠通過服務終結點從虛擬網路內對 Azure 存儲帳戶應用存取控制。 這是保護工作負載、管理允許哪些存儲帳戶以及允許資料滲漏的位置的關鍵。
+虛擬網路服務端點原則可讓您透過服務端點，從虛擬網路內的 Azure 儲存體帳戶套用存取控制。 這是保護您的工作負載、管理允許的儲存體帳戶，以及允許資料外泄的關鍵。
 在本文中，您將學會如何：
 
 * 建立虛擬網路。
-* 添加子網並為 Azure 存儲啟用服務終結點。
-* 創建兩個 Azure 存儲帳戶，並允許從上面創建的子網進行網路訪問。
-* 創建服務終結點策略，僅允許訪問其中一個存儲帳戶。
-* 將虛擬機器 （VM） 部署到子網。
-* 確認從子網對允許的存儲帳戶的訪問。
-* 確認從子網對不允許的存儲帳戶的訪問被拒絕。
+* 新增子網，並啟用 Azure 儲存體的服務端點。
+* 建立兩個 Azure 儲存體帳戶，並允許從上面建立的子網對其進行網路存取。
+* 建立服務端點原則，只允許其中一個儲存體帳戶的存取權。
+* 將虛擬機器（VM）部署到子網。
+* 確認從子網存取允許的儲存體帳戶。
+* 確認拒絕存取子網中的非允許儲存體帳戶。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -67,7 +67,7 @@ $virtualNetwork = New-AzVirtualNetwork `
 
 ## <a name="enable-a-service-endpoint"></a>啟用服務端點
 
-在虛擬網路中創建子網。 在此範例中，系統會建立名為「Private (私人)」** 的子網路，當中包含適用於 Microsoft.Storage 的服務端點**： 
+在虛擬網路中建立子網。 在此範例中，系統會建立名為「Private (私人)」** 的子網路，當中包含適用於 Microsoft.Storage 的服務端點**： 
 
 ```azurepowershell-interactive
 $subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
@@ -79,9 +79,9 @@ $subnetConfigPrivate = Add-AzVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="restrict-network-access-for-the-subnet"></a>限制子網的網路訪問
+## <a name="restrict-network-access-for-the-subnet"></a>限制子網的網路存取
 
-使用[New-AzNetwork 安全規則配置創建](/powershell/module/az.network/new-aznetworksecurityruleconfig)網路安全性群組安全規則。 下列規則允許對指派給 Azure 儲存體服務之公用 IP 位址的輸出存取： 
+使用[new-aznetworksecurityruleconfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)建立網路安全性群組安全性規則。 下列規則允許對指派給 Azure 儲存體服務之公用 IP 位址的輸出存取： 
 
 ```azurepowershell-interactive
 $rule1 = New-AzNetworkSecurityRuleConfig `
@@ -134,7 +134,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $rule1,$rule2,$rule3
 ```
 
-將網路安全性群組與*專用*子[網與集-Az虛擬網路子系統配置關聯](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)，然後將子網配置寫入虛擬網路。 下列範例會將 myNsgPrivate** 網路安全性群組與「私人」** 子網路建立關聯：
+將網路安全性群組與 New-azvirtualnetworksubnetconfig 的*私人*子網建立關聯，然後將子網[設定](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)寫入至虛擬網路。 下列範例會將 myNsgPrivate** 網路安全性群組與「私人」** 子網路建立關聯：
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig `
@@ -147,13 +147,13 @@ Set-AzVirtualNetworkSubnetConfig `
 $virtualNetwork | Set-AzVirtualNetwork
 ```
 
-## <a name="restrict-network-access-to-azure-storage-accounts"></a>限制對 Azure 存儲帳戶的網路訪問
+## <a name="restrict-network-access-to-azure-storage-accounts"></a>限制 Azure 儲存體帳戶的網路存取
 
 如果資源是透過已針對服務端點啟用的 Azure 服務建立，則限制其網路存取的必要步驟會因為服務不同而有所差異。 請參閱個別服務的文件，以了解每個服務的特定步驟。 本文的其餘部分包含限制 Azure 儲存體帳戶網路存取的步驟 (以範例形式說明)。
 
-### <a name="create-two-storage-accounts"></a>創建兩個存儲帳戶
+### <a name="create-two-storage-accounts"></a>建立兩個儲存體帳戶
 
-使用[新 Az 存儲帳戶](/powershell/module/az.storage/new-azstorageaccount)創建 Azure 存儲帳戶。
+使用[new-azstorageaccount](/powershell/module/az.storage/new-azstorageaccount)建立 Azure 儲存體帳戶。
 
 ```azurepowershell-interactive
 $storageAcctName1 = 'allowedaccount'
@@ -166,7 +166,7 @@ New-AzStorageAccount `
   -Kind StorageV2
 ```
 
-創建存儲帳戶後，將存儲帳戶的金鑰檢索到具有[Get-AzStorageAccountKey 的](/powershell/module/az.storage/get-azstorageaccountkey)變數中：
+建立儲存體帳戶之後，請使用[AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey)將儲存體帳戶的金鑰取出至變數：
 
 ```azurepowershell-interactive
 $storageAcctKey1 = (Get-AzStorageAccountKey -ResourceGroupName myResourceGroup -AccountName $storageAcctName1).Value[0]
@@ -174,7 +174,7 @@ $storageAcctKey1 = (Get-AzStorageAccountKey -ResourceGroupName myResourceGroup -
 
 在稍後步驟中，會使用金鑰來建立檔案共用。 輸入 `$storageAcctKey` 並將值記下，因為當您在稍後步驟中將檔案共用對應至 VM 中的磁碟機時，也需要以手動方式將它輸入。
 
-現在重複上述步驟以創建第二個存儲帳戶。
+現在重複上述步驟，以建立第二個儲存體帳戶。
 
 ```azurepowershell-interactive
 $storageAcctName2 = 'notallowedaccount'
@@ -187,15 +187,15 @@ New-AzStorageAccount `
   -Kind StorageV2
 ```
 
-此外，還可以從此帳戶中檢索存儲帳戶金鑰，以便以後使用來創建檔共用。
+也請從這個帳戶取出儲存體帳戶金鑰，以供稍後用來建立檔案共用。
 
 ```azurepowershell-interactive
 $storageAcctKey2 = (Get-AzStorageAccountKey -ResourceGroupName myResourceGroup -AccountName $storageAcctName2).Value[0]
 ```
 
-### <a name="create-a-file-share-in-each-of-the-storage-account"></a>在每個存儲帳戶中創建檔共用
+### <a name="create-a-file-share-in-each-of-the-storage-account"></a>在每個儲存體帳戶中建立檔案共用
 
-使用[New-AzStorageCoNtext](/powershell/module/az.storage/new-AzStoragecontext)為存儲帳戶創建上下文和金鑰。 內容包含儲存體帳戶名稱和帳戶金鑰：
+使用[AzStorageCoNtext](/powershell/module/az.storage/new-AzStoragecontext)建立儲存體帳戶和金鑰的內容。 內容包含儲存體帳戶名稱和帳戶金鑰：
 
 ```azurepowershell-interactive
 $storageContext1 = New-AzStorageContext $storageAcctName1 $storageAcctKey1
@@ -203,7 +203,7 @@ $storageContext1 = New-AzStorageContext $storageAcctName1 $storageAcctKey1
 $storageContext2 = New-AzStorageContext $storageAcctName2 $storageAcctKey2
 ```
 
-使用[New-AzStorageShare](/powershell/module/az.storage/new-azstorageshare)創建檔共用 ：
+使用[AzStorageShare](/powershell/module/az.storage/new-azstorageshare)建立檔案共用：
 
 ```azurepowershell-interactive
 $share1 = New-AzStorageShare my-file-share -Context $storageContext1
@@ -211,9 +211,9 @@ $share1 = New-AzStorageShare my-file-share -Context $storageContext1
 $share2 = New-AzStorageShare my-file-share -Context $storageContext2
 ```
 
-### <a name="deny-all-network-access-to-a-storage-accounts"></a>拒絕對存儲帳戶的所有網路訪問
+### <a name="deny-all-network-access-to-a-storage-accounts"></a>拒絕所有對儲存體帳戶的網路存取
 
-根據預設，儲存體帳戶會接受來自任何網路用戶端的網路連線。 要限制對所選網路的訪問，請將預設操作更改為 *"* 使用[更新-AzStorageAccount網路規則集](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)拒絕"。 一旦網路存取遭到拒絕後，就無法從任何網路存取儲存體帳戶。
+根據預設，儲存體帳戶會接受來自任何網路用戶端的網路連線。 若要限制對所選網路的存取，請使用[AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)將預設動作變更為 [*拒絕*]。 一旦網路存取遭到拒絕後，就無法從任何網路存取儲存體帳戶。
 
 ```azurepowershell-interactive
 Update-AzStorageAccountNetworkRuleSet `
@@ -227,9 +227,9 @@ Update-AzStorageAccountNetworkRuleSet  `
   -DefaultAction Deny
 ```
 
-### <a name="enable-network-access-only-from-the-vnet-subnet"></a>僅從 VNet 子網啟用網路訪問
+### <a name="enable-network-access-only-from-the-vnet-subnet"></a>僅從 VNet 子網啟用網路存取
 
-使用[Get-Az虛擬網路](/powershell/module/az.network/get-azvirtualnetwork)檢索創建的虛擬網路，然後將專用子網物件檢索到具有[Get-AzVirtualNetwork SubnetConfig 的變數中](/powershell/module/az.network/get-azvirtualnetworksubnetconfig)：
+使用[new-azvirtualnetwork](/powershell/module/az.network/get-azvirtualnetwork)取出已建立的虛擬網路，然後使用[new-azvirtualnetworksubnetconfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig)將私用子網物件取出至變數：
 
 ```azurepowershell-interactive
 $privateSubnet = Get-AzVirtualNetwork `
@@ -238,7 +238,7 @@ $privateSubnet = Get-AzVirtualNetwork `
   | Get-AzVirtualNetworkSubnetConfig -Name Private
 ```
 
-允許使用[Add-AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig)從*專用*子網訪問存儲帳戶。
+允許透過[AzStorageAccountNetworkRule](/powershell/module/az.network/add-aznetworksecurityruleconfig)從*私人*子網對儲存體帳戶進行網路存取。
 
 ```azurepowershell-interactive
 Add-AzStorageAccountNetworkRule `
@@ -252,21 +252,21 @@ Add-AzStorageAccountNetworkRule `
   -VirtualNetworkResourceId $privateSubnet.Id
 ```
 
-## <a name="apply-policy-to-allow-access-to-valid-storage-account"></a>應用策略以允許訪問有效的存儲帳戶
+## <a name="apply-policy-to-allow-access-to-valid-storage-account"></a>套用原則以允許存取有效的儲存體帳戶
 
-為了確保虛擬網路中的使用者只能訪問安全且允許的 Azure 存儲帳戶，可以在定義中創建包含允許存儲帳戶清單的服務終結點策略。 然後，此策略將應用於通過服務終結點連接到存儲的虛擬網路子網。
+若要確保虛擬網路中的使用者只能存取安全且允許的 Azure 儲存體帳戶，您可以在定義中使用允許的儲存體帳戶清單來建立服務端點原則。 然後，此原則會套用至透過服務端點連線至儲存體的虛擬網路子網。
 
 ### <a name="create-a-service-endpoint-policy"></a>建立服務端點原則
 
-本節創建策略定義，其中列出了允許的資源，以便通過服務終結點進行訪問
+本節會建立原則定義，其中包含可透過服務端點存取的允許資源清單
 
-檢索第一個（允許的）存儲帳戶的資源識別碼 
+取得第一個（允許）儲存體帳戶的資源識別碼 
 
 ```azurepowershell-interactive
 $resourceId = (Get-AzStorageAccount -ResourceGroupName myresourcegroup -Name $storageAcctName1).id
 ```
 
-創建策略定義以允許上述資源
+建立原則定義以允許上述資源
 
 ```azurepowershell-interactive
 $policyDefinition = New-AzServiceEndpointPolicyDefinition -Name mypolicydefinition `
@@ -275,7 +275,7 @@ $policyDefinition = New-AzServiceEndpointPolicyDefinition -Name mypolicydefiniti
   -ServiceResource $resourceId
 ```
 
-使用上面創建的策略定義創建服務終結點策略
+使用上面建立的原則定義來建立服務端點原則
 
 ```azurepowershell-interactive
 $sepolicy = New-AzServiceEndpointPolicy -ResourceGroupName myresourcegroup `
@@ -283,9 +283,9 @@ $sepolicy = New-AzServiceEndpointPolicy -ResourceGroupName myresourcegroup `
   -ServiceEndpointPolicyDefinition $policyDefinition
 ```
 
-### <a name="associate-the-service-endpoint-policy-to-the-virtual-network-subnet"></a>將服務終結點策略關聯到虛擬網路子網
+### <a name="associate-the-service-endpoint-policy-to-the-virtual-network-subnet"></a>將服務端點原則關聯至虛擬網路子網
 
-創建服務終結點策略後，您將將其與目標子網與 Azure 存儲的服務終結點配置相關聯。
+建立服務端點原則之後，您會將它與目標子網建立關聯，以及 Azure 儲存體的服務端點設定。
 
 ```azurepowershell-interactive
 Set-AzVirtualNetworkSubnetConfig -VirtualNetwork $VirtualNetwork `
@@ -297,13 +297,13 @@ Set-AzVirtualNetworkSubnetConfig -VirtualNetwork $VirtualNetwork `
 
 $virtualNetwork | Set-AzVirtualNetwork
 ```
-## <a name="validate-access-restriction-to-azure-storage-accounts"></a>驗證對 Azure 存儲帳戶的訪問限制
+## <a name="validate-access-restriction-to-azure-storage-accounts"></a>驗證 Azure 儲存體帳戶的存取限制
 
 ### <a name="deploy-the-virtual-machine"></a>部署虛擬機器
 
-要測試對存儲帳戶的網路訪問，請將 VM 部署在子網中。
+若要測試對儲存體帳戶的網路存取，請在子網中部署 VM。
 
-使用[New-AzVM](/powershell/module/az.compute/new-azvm)在*專用*子網中創建虛擬機器。 執行接下來的命令時，系統會提示您輸入認證。 您輸入的值會設定為 VM 的使用者名稱和密碼。 `-AsJob` 選項會在背景建立 VM，以便您繼續進行下一步。
+使用[update-azvm](/powershell/module/az.compute/new-azvm)在*私人*子網中建立虛擬機器。 執行接下來的命令時，系統會提示您輸入認證。 您輸入的值會設定為 VM 的使用者名稱和密碼。 `-AsJob` 選項會在背景建立 VM，以便您繼續進行下一步。
 
 ```azurepowershell-interactive
 New-AzVm -ResourceGroupName myresourcegroup `
@@ -321,7 +321,7 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzVM
 ```
 
-### <a name="confirm-access-to-the-allowed-storage-account"></a>確認對*允許*的存儲帳戶的訪問
+### <a name="confirm-access-to-the-allowed-storage-account"></a>確認對*允許*的儲存體帳戶的存取權
 
 請使用 [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) 來傳回 VM 的公用 IP 位址。 以下範例會傳回 myVmPrivate** 虛擬機器的公用 IP 位址：
 
@@ -338,9 +338,9 @@ Get-AzPublicIpAddress `
 mstsc /v:<publicIpAddress>
 ```
 
-將會建立一個「遠端桌面通訊協定」(.rdp) 檔案，並下載至您的電腦。 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]****。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]****，然後選取 [使用不同的帳戶]****，以指定您在建立 VM 時輸入的認證。 選取 [確定]****。 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]**** 或 [繼續]**** 以繼續進行連線。
+將會建立一個「遠端桌面通訊協定」(.rdp) 檔案，並下載至您的電腦。 開啟所下載的 rdp 檔案。 如果出現提示，請選取 [連接]  。 輸入您在建立 VM 時指定的使用者名稱和密碼。 您可能需要選取 [其他選擇]****，然後選取 [使用不同的帳戶]****，以指定您在建立 VM 時輸入的認證。 選取 [確定]  。 您可能會在登入過程中收到憑證警告。 如果您收到警告，請選取 [是]**** 或 [繼續]**** 以繼續進行連線。
 
-在*myVmPrivate* VM 上，從允許的存儲帳戶映射 Azure 檔共用，使用 PowerShell 驅動 Z。 
+在*myVmPrivate* VM 上，使用 PowerShell 將 Azure 檔案共用從允許的儲存體帳戶對應到磁片磁碟機 Z。 
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String $storageAcctKey1 -AsPlainText -Force
@@ -358,11 +358,11 @@ Z                                      FileSystem    \\allowedaccount.file.core.
 
 Azure 檔案共用已成功對應至 Z 磁碟機。
 
-關閉 myVmPrivate** 虛擬機器的遠端桌面工作階段。
+關閉 myVmPrivate  虛擬機器的遠端桌面工作階段。
 
-### <a name="confirm-access-is-denied-to-non-allowed-storage-account"></a>確認對*不允許的*存儲帳戶的訪問被拒絕
+### <a name="confirm-access-is-denied-to-non-allowed-storage-account"></a>確認拒絕存取不*允許*的儲存體帳戶
 
-在同一*myVmPrivate* VM 上，嘗試將 Azure 檔共用映射到磁碟機 X。 
+在相同的*myVmPrivate* VM 上，嘗試將 Azure 檔案共用對應至磁片磁碟機 X。 
 
 ```powershell
 $acctKey = ConvertTo-SecureString -String $storageAcctKey1 -AsPlainText -Force
@@ -370,7 +370,7 @@ $credential = New-Object System.Management.Automation.PSCredential -ArgumentList
 New-PSDrive -Name X -PSProvider FileSystem -Root "\\notallowedaccount.file.core.windows.net\my-file-share" -Credential $credential
 ```
 
-存取共用遭到拒絕，且您收到 `New-PSDrive : Access is denied` 錯誤。 訪問被拒絕，因為不允許的存儲*帳戶不在*服務終結點策略中的允許資源清單中。 
+存取共用遭到拒絕，且您收到 `New-PSDrive : Access is denied` 錯誤。 因為儲存體帳戶*notallowedaccount*不在服務端點原則的允許資源清單中，所以拒絕存取。 
 
 關閉 myVmPublic** VM 的遠端桌面工作階段。
 
@@ -384,4 +384,4 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您將服務終結點策略應用於 Azure 存儲。" 您創建了 Azure 存儲帳戶，並且僅從虛擬網路子網對某些存儲帳戶（因此拒絕其他存儲帳戶）進行網路訪問。 要瞭解有關服務終結點策略的詳細資訊，請參閱[服務終結點策略概述](virtual-network-service-endpoint-policies-overview.md)。
+在本文中，您已透過 Azure 虛擬網路服務端點將服務端點原則套用至 Azure 儲存體。 您已建立 Azure 儲存體帳戶，並限制只能從虛擬網路子網對特定儲存體帳戶（因而拒絕其他人）進行網路存取。 若要深入瞭解服務端點原則，請參閱[服務端點原則總覽](virtual-network-service-endpoint-policies-overview.md)。
