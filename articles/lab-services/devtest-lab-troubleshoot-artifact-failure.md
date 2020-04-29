@@ -1,6 +1,6 @@
 ---
-title: 診斷 Azure 開發人員測試實驗室虛擬機器中的專案故障
-description: DevTest Labs 提供的資訊可用於診斷專案故障。 本文介紹如何排除專案故障。
+title: 診斷 Azure DevTest Labs 虛擬機器中的構件失敗
+description: DevTest Labs 提供的資訊可讓您用來診斷構件失敗。 本文說明如何針對成品失敗進行疑難排解。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 7229f1ee4061eb38b7c6da09df21102ab302ab42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76760312"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>針對實驗室中的構件失敗進行診斷 
@@ -52,7 +52,7 @@ ms.locfileid: "76760312"
 
 3. 開啟**狀態**檔案。
 
-有關在**Linux** VM 上查找日誌檔的說明，請參閱以下文章：將[Azure 自訂腳本擴展版本 2 與 Linux 虛擬機器一起使用](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
+如需有關在**linux** VM 上尋找記錄檔的指示，請參閱下列文章：搭配[Linux 虛擬機器使用 Azure 自訂腳本擴充功能第2版](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
 
 
 ## <a name="related-blog-posts"></a>相關部落格文章

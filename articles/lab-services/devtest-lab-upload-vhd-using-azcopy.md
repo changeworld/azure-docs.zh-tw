@@ -1,6 +1,6 @@
 ---
 title: 使用 AzCopy 將 VHD 檔案上傳到 Azure DevTest Labs | Microsoft Docs
-description: 本文提供了一個演練，用於使用 AzCopy 命令列實用程式將 VHD 檔上載到 Azure DevTest 實驗室中的實驗室存儲帳戶。
+description: 本文提供逐步解說，說明如何使用 AzCopy 命令列公用程式，將 VHD 檔案上傳至 Azure DevTest Labs 中的實驗室儲存體帳戶。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 49dc70788bf2a44b6925c5f3f8226fdadab8768c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76757417"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>使用 AzCopy 將 VHD 檔案上傳到實驗室的儲存體帳戶
@@ -37,9 +37,9 @@ ms.locfileid: "76757417"
 
 1. 使用 Azure 入口網站來取得實驗室的儲存體帳戶名稱：
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 
-1. 選擇**所有服務**，然後從清單中選擇**DevTest 實驗室**。
+1. 選取 [**所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
 
 1. 從實驗室清單中，選取所需的實驗室。  
 
@@ -47,7 +47,7 @@ ms.locfileid: "76757417"
 
 1. 在實驗室的 [組態]**** 刀鋒視窗上，選取 [自訂映像 (VHD)]****。
 
-1. 在 **"自訂圖像**"邊欄選項卡上，選擇 **"添加**"。 
+1. 在 [**自訂映射**] 分頁上，選取 [ **+ 新增**]。 
 
 1. 在 [自訂映像]**** 刀鋒視窗上，選取 [VHD]****。
 

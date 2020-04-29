@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: glenga
 ms.openlocfilehash: 82d122ed236dc72ced7ebafe2301ef5f1143897f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76963645"
 ---
-要最大限度地提高性能，請使用每個函數應用的單獨存儲帳戶。 當您具有持久函數或事件中心觸發函數時，這一點尤其重要，這些函數都會生成大量存儲事務。 當應用程式邏輯直接（使用存儲 SDK）或通過其中一個存儲綁定與 Azure 存儲交互時，應使用專用存儲帳戶。 例如，如果您有事件中心觸發的函數將一些資料寫入 Blob 存儲，請使用兩個存儲帳戶&mdash;，一個用於函數應用，另一個用於函數存儲的 Blob。
+若要將效能最大化，請針對每個函式應用程式使用個別的儲存體帳戶。 當您有 Durable Functions 或事件中樞觸發的函式時，這一點特別重要，這兩個函數都會產生大量的儲存體交易。 當您的應用程式邏輯與 Azure 儲存體（不論是直接（使用儲存體 SDK）或其中一個儲存體系結）互動時，您應該使用專用的儲存體帳戶。 例如，如果您有事件中樞觸發的函式將一些資料寫入 blob 儲存體，請使用兩個儲存體&mdash;帳戶，一個用於函式應用程式，另一個用於函數所儲存的 blob。

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure DevTest Labs 進行訓練 | Microsoft Docs
-description: 本文提供了為在 Azure DevTest 實驗室中設置培訓實驗室可以遵循的詳細步驟。
+description: 本文提供詳細的步驟，可讓您在 Azure DevTest Labs 中設定實驗室以進行定型。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
 ms.openlocfilehash: 8f0a930d6e3c04548ade71f6d4e3294114eb60a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759972"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>使用 Azure DevTest Labs 進行訓練
@@ -43,7 +43,7 @@ Azure DevTest Labs 符合下列在任何虛擬環境進行訓練所必須具備�
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [在 Azure 研測實驗室中建立實驗室](devtest-lab-create-lab.md) |了解如何在 Azure 入口網站的 Azure DevTest Labs 中建立實驗室。 |
 2. **使用現成的 Marketplace 映像和自訂映像在幾分鐘內建立訓練 VM** 
@@ -52,7 +52,7 @@ Azure DevTest Labs 符合下列在任何虛擬環境進行訓練所必須具備�
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [設定 Azure Marketplace 映像](devtest-lab-configure-marketplace-images.md) |了解如何將 Azure Marketplace 映像加入允許清單；只讓想要用於進行訓練的映像可供選取。 |
    | [建立自訂映像](devtest-lab-create-template.md) |預先安裝訓練所需軟體以建立自訂映像，讓受訓者可以使用自訂映像快速建立 VM。 |
@@ -62,7 +62,7 @@ Azure DevTest Labs 符合下列在任何虛擬環境進行訓練所必須具備�
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [管理研發/測試實驗室公式來建立 VM](devtest-lab-manage-formulas.md) |了解如何挑選映像、VM 大小 (CPU 和 RAM 的組合) 和虛擬網路以建立公式。 |
 4. **控制成本**
@@ -75,7 +75,7 @@ Azure DevTest Labs 符合下列在任何虛擬環境進行訓練所必須具備�
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [定義實驗室原則](devtest-lab-set-lab-policy.md) |在實驗室中設定原則來控制成本。 |
    | [使用 PowerShell 指令碼刪除所有實驗室 VM](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |當訓練完成時，在一次作業中刪除所有實驗室。 |
@@ -85,7 +85,7 @@ Azure DevTest Labs 符合下列在任何虛擬環境進行訓練所必須具備�
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [在 Azure DevTest Labs 中新增受訓者到實驗室](devtest-lab-add-devtest-user.md) |使用 Azure 入口網站將受訓者新增到訓練實驗室。 |
    | [使用 PowerShell 指令碼新增受訓者到實驗室](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |使用 PowerShell 自動將受訓者新增到訓練實驗室。 |
@@ -96,7 +96,7 @@ Azure DevTest Labs 符合下列在任何虛擬環境進行訓練所必須具備�
    
     按一下下表中的連結以便深入了解︰
    
-   | Task | 您學到什麼 |
+   | 工作 | 您學到什麼 |
    | --- | --- |
    | [使用 Resource Manager 範本建立實驗室](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |在 Azure DevTest Labs 中使用 Resource Manager 範本建立實驗室。 |
 

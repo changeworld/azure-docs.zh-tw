@@ -1,58 +1,58 @@
 ---
-title: 來自 ACR 任務的跨註冊表身份驗證
-description: 配置 Azure 容器註冊表任務 （ACR 任務）以使用 Azure 資源的託管標識訪問另一個專用 Azure 容器註冊表
+title: 來自 ACR 工作的跨登錄驗證
+description: 使用 Azure 資源的受控識別來設定 Azure Container Registry 工作（ACR 工作）以存取另一個私人 Azure Container Registry
 ms.topic: article
 ms.date: 01/14/2020
 ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842483"
 ---
-# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 託管標識的 ACR 任務中的跨註冊表身份驗證 
+# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>使用 Azure 管理的身分識別在 ACR 工作中進行跨登錄驗證 
 
-在[ACR 任務中](container-registry-tasks-overview.md)，可以為[Azure 資源啟用託管標識](container-registry-tasks-authentication-managed-identity.md)。 任務可以使用標識訪問其他 Azure 資源，而無需提供或管理認證。 
+在[ACR](container-registry-tasks-overview.md)工作中，您可以[啟用 Azure 資源的受控識別](container-registry-tasks-authentication-managed-identity.md)。 此工作可以使用身分識別來存取其他 Azure 資源，而不需要提供或管理認證。 
 
-在本文中，您將瞭解如何在任務中啟用託管標識，以便從不同于用於運行該任務的註冊表中提取映射。
+在本文中，您將瞭解如何在工作中啟用受控識別，從不同于用來執行工作的登錄中提取映射。
 
-要創建 Azure 資源，本文要求運行 Azure CLI 版本 2.0.68 或更高版本。 執行 `az --version` 以尋找版本。 如果需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
+若要建立 Azure 資源，本文會要求您執行 Azure CLI 版2.0.68 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli]。
 
 ## <a name="scenario-overview"></a>案例概觀
 
-示例任務從另一個 Azure 容器註冊表中拉出基本映射以生成和推送應用程式映射。 要提取基本映射，請使用託管標識配置任務，並為其分配適當的許可權。 
+範例工作會從另一個 Azure container registry 提取基底映射，以建立及推送應用程式映射。 若要提取基底映射，您可以使用受控識別來設定工作，並為其指派適當的許可權。 
 
-此示例顯示使用使用者分配或系統分配的託管標識的步驟。 您選擇的身份取決於組織的需求。
+這個範例會顯示使用使用者指派或系統指派的受控識別的步驟。 您所選擇的身分識別取決於您組織的需求。
 
-在實際方案中，組織可能會維護所有開發團隊用於構建其應用程式的基本映射集。 這些基本映射存儲在公司註冊表中，每個開發團隊僅具有拉取許可權。 
+在真實世界的案例中，組織可能會維護一組可供所有開發小組用來建立其應用程式的基底映射。 這些基底映射會儲存在公司登錄中，每個開發小組僅具有「提取」許可權。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-對於本文，您需要兩個 Azure 容器註冊表：
+在本文中，您需要兩個 Azure container registry：
 
-* 您可以使用第一個註冊表創建和執行 ACR 任務。 在本文中，此註冊表名為*myregistry*。 
-* 第二個註冊表承載用於生成映射的任務的基本映射。 在本文中，第二個註冊表命名為*mybase 註冊表*。 
+* 您可以使用第一個登錄來建立和執行 ACR 工作。 在本文中，此登錄名為*myregistry*。 
+* 第二個登錄會裝載用來建立映射的基底映射。 在本文中，第二個登錄名為*mybaseregistry*。 
 
-在後面的步驟中，用您自己的登錄機碼替換。
+在稍後的步驟中，將取代為您自己的登錄名稱。
 
-如果還沒有所需的 Azure 容器註冊表，請參閱[快速入門：使用 Azure CLI 創建專用容器註冊表](container-registry-get-started-azure-cli.md)。 您還不需要將映射推送到註冊表。
+如果您還沒有所需的 Azure 容器登錄，請參閱[快速入門：使用 Azure CLI 建立私人容器](container-registry-get-started-azure-cli.md)登錄。 您還不需要將映射推送至登錄。
 
-## <a name="prepare-base-registry"></a>準備基本註冊表
+## <a name="prepare-base-registry"></a>準備基底登錄
 
-首先，創建一個工作目錄，然後創建一個名為 Dockerfile 的檔，包含以下內容。 此簡單示例從 Docker Hub 中的公共映射生成 Node.js 基本映射。
+首先，建立工作目錄，然後使用下列內容建立名為 Dockerfile 的檔案。 這個簡單的範例會從 Docker Hub 中的公用映射建立 node.js 基底映射。
     
 ```bash
 echo FROM node:9-alpine > Dockerfile
 ```
-在目前的目錄中，運行 az [acr 生成][az-acr-build]命令以生成基映射並將基礎映射推送到基本註冊表。 實際上，組織中的另一個團隊或進程可能會維護基本註冊表。
+在目前的目錄中，執行[az acr build][az-acr-build]命令，以建立基底映射並將其推送至基底登錄。 實際上，組織中的另一個小組或進程可能會維護基底登錄。
     
 ```azurecli
 az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file Dockerfile .
 ```
 
-## <a name="define-task-steps-in-yaml-file"></a>在 YAML 檔中定義任務步驟
+## <a name="define-task-steps-in-yaml-file"></a>在 YAML 檔案中定義工作步驟
 
-此示例[多步驟任務](container-registry-tasks-multi-step.md)的步驟在[YAML 檔中](container-registry-tasks-reference-yaml.md)定義。 在本地工作目錄中`helloworldtask.yaml`創建名為的檔並粘貼以下內容。 使用基本註冊表的`REGISTRY_NAME`伺服器名稱更新生成步驟中的值。
+這個範例[多步驟](container-registry-tasks-multi-step.md)工作的步驟定義于[YAML](container-registry-tasks-reference-yaml.md)檔案中。 在您的本機`helloworldtask.yaml`工作目錄中建立名為的檔案，並貼上下列內容。 將組建步驟`REGISTRY_NAME`中的值更新為基底登錄的伺服器名稱。
 
 ```yml
 version: v1.1.0
@@ -62,17 +62,17 @@ steps:
   - push: ["$Registry/hello-world:$ID"]
 ```
 
-生成步驟使用`Dockerfile-app`[Azure-示例/acr 生成-helloworld 節點](https://github.com/Azure-Samples/acr-build-helloworld-node.git)回購中的檔來生成映射。 引用`--build-arg`基本註冊表來拉取基本映射。 成功生成後，映射將推送到用於運行任務的註冊表。
+Build 步驟會使用`Dockerfile-app` [Azure 範例/acr-helloworld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git)存放庫中的檔案來建立映射。 會`--build-arg`參考基底登錄以提取基底映射。 成功建立時，會將映射推送至用來執行工作的登錄。
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>選項 1：使用使用者分配的標識創建任務
+## <a name="option-1-create-task-with-user-assigned-identity"></a>選項1：使用使用者指派的身分識別來建立工作
 
-本節中的步驟創建任務並啟用使用者分配的標識。 如果要改為啟用系統分配的標識，請參閱[選項 2：使用系統分配的標識創建任務](#option-2-create-task-with-system-assigned-identity)。 
+本節中的步驟會建立工作，並啟用使用者指派的身分識別。 如果您想要改為啟用系統指派的身分識別，請參閱[選項2：使用系統指派](#option-2-create-task-with-system-assigned-identity)的身分識別來建立工作。 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>建立工作
 
-通過執行以下[az acr 任務創建命令創建][az-acr-task-create]任務*helloworld 任務*。 任務在沒有原始程式碼上下文的情況下運行，命令引用工作目錄中的檔`helloworldtask.yaml`。 參數`--assign-identity`傳遞使用者分配的標識的資源識別碼。 
+藉由執行下列[az acr task create][az-acr-task-create]命令來建立工作*helloworldtask* 。 此工作會在沒有原始程式碼內容的情況下執行，而命令會`helloworldtask.yaml`參考工作目錄中的檔案。 `--assign-identity`參數會傳遞使用者指派之身分識別的資源識別碼。 
 
 ```azurecli
 az acr task create \
@@ -85,13 +85,13 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>選項 2：使用系統分配的標識創建任務
+## <a name="option-2-create-task-with-system-assigned-identity"></a>選項2：使用系統指派的身分識別來建立工作
 
-本節中的步驟創建任務並啟用系統分配的標識。 如果要改為啟用使用者分配的標識，請參閱[選項 1：使用使用者分配的身份創建任務](#option-1-create-task-with-user-assigned-identity)。 
+本節中的步驟會建立工作，並啟用系統指派的身分識別。 如果您想要改為啟用使用者指派的身分識別，請參閱[選項1：使用使用者指派](#option-1-create-task-with-user-assigned-identity)的身分識別來建立工作。 
 
 ### <a name="create-task"></a>建立工作
 
-通過執行以下[az acr 任務創建命令創建][az-acr-task-create]任務*helloworld 任務*。 任務在沒有原始程式碼上下文的情況下運行，命令引用工作目錄中的檔`helloworldtask.yaml`。 沒有`--assign-identity`值的參數支援任務上的系統分配的標識。 
+藉由執行下列[az acr task create][az-acr-task-create]命令來建立工作*helloworldtask* 。 此工作會在沒有原始程式碼內容的情況下執行，而命令會`helloworldtask.yaml`參考工作目錄中的檔案。 沒有`--assign-identity`值的參數會在工作上啟用系統指派的身分識別。 
 
 ```azurecli
 az acr task create \
@@ -103,17 +103,17 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-## <a name="give-identity-pull-permissions-to-the-base-registry"></a>向基本註冊表授予標識拉取許可權
+## <a name="give-identity-pull-permissions-to-the-base-registry"></a>將身分識別提取許可權授與基底登錄
 
-在本節中，授予從基本註冊表 *"mybase註冊表*"中提取的託管標識許可權。
+在本節中，授與從基底登錄（ *mybaseregistry*）提取的「受控識別」許可權。
 
-使用[az acr show][az-acr-show]命令獲取基本註冊表的資源識別碼 並將其存儲在變數中：
+使用[az acr show][az-acr-show]命令來取得基底登錄的資源識別碼，並將它儲存在變數中：
 
 ```azurecli
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-使用[az 角色指派創建][az-role-assignment-create]命令將`acrpull`角色標識分配給基本註冊表。 此角色僅具有從註冊表中提取圖像的許可權。
+使用[az role 指派 create][az-role-assignment-create]命令，將`acrpull`角色指派給基底登錄的身分識別。 此角色只有從登錄提取映射的許可權。
 
 ```azurecli
 az role assignment create \
@@ -122,9 +122,9 @@ az role assignment create \
   --role acrpull
 ```
 
-## <a name="add-target-registry-credentials-to-task"></a>將目標注冊表憑據添加到任務
+## <a name="add-target-registry-credentials-to-task"></a>將目標登錄認證新增至工作
 
-現在使用[az acr 任務憑據添加][az-acr-task-credential-add]命令使任務能夠使用標識的憑據對基本註冊表進行身份驗證。 運行與任務中啟用的託管標識類型對應的命令。 如果啟用了使用者分配的標識，則使用標識`--use-identity`的用戶端 ID 傳遞。 如果啟用了系統分配的標識，則傳遞`--use-identity [system]`。
+現在，請使用[az acr task credential add][az-acr-task-credential-add]命令，讓工作能夠使用身分識別的認證，向基底登錄進行驗證。 執行命令，其對應于您在工作中啟用的受控識別類型。 如果您已啟用使用者指派的身分識別， `--use-identity`請傳遞身分識別的用戶端識別碼。 如果您已啟用系統指派的身分識別， `--use-identity [system]`請傳遞。
 
 ```azurecli
 # Add credentials for user-assigned identity to the task
@@ -142,9 +142,9 @@ az acr task credential add \
   --use-identity [system]
 ```
 
-## <a name="manually-run-the-task"></a>手動運行任務
+## <a name="manually-run-the-task"></a>手動執行工作
 
-要驗證啟用託管標識的任務是否成功運行，請使用[az acr 任務運行][az-acr-task-run]命令手動觸發該任務。 
+若要確認您啟用受控識別的工作成功執行，請使用[az acr task run][az-acr-task-run]命令手動觸發工作。 
 
 ```azurecli
 az acr task run \
@@ -152,7 +152,7 @@ az acr task run \
   --registry myregistry
 ```
 
-如果任務成功運行，則輸出類似于：
+如果工作執行成功，輸出會類似于：
 
 ```
 Queued a run with ID: cf10
@@ -201,7 +201,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-運行[az acr 存儲庫顯示標記][az-acr-repository-show-tags]命令，以驗證映射是否生成並已成功推送到*我的註冊表*：
+執行[az acr repository show-tags][az-acr-repository-show-tags]命令，確認映射已建立且已成功推送至*myregistry*：
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv
@@ -215,8 +215,8 @@ cf10
 
 ## <a name="next-steps"></a>後續步驟
 
-* 詳細瞭解在[ACR 任務中啟用託管標識](container-registry-tasks-authentication-managed-identity.md)。
-* 請參閱[ACR 任務 YAML 參考](container-registry-tasks-reference-yaml.md)
+* 深入瞭解如何[在 ACR 工作中啟用受控識別](container-registry-tasks-authentication-managed-identity.md)。
+* 請參閱[ACR 工作 YAML 參考](container-registry-tasks-reference-yaml.md)
 
 <!-- LINKS - Internal -->
 [az-login]: /cli/azure/reference-index#az-login

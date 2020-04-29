@@ -1,52 +1,52 @@
 ---
-title: 使用 Azure 監視器監視容器庫伯內斯群集運行狀況 |微軟文檔
-description: 本文介紹如何使用容器的 Azure 監視器查看和分析 AKS 和非 AKS 群集的運行狀況。
+title: 使用容器的 Azure 監視器監視 Kubernetes 叢集健全狀況 |Microsoft Docs
+description: 本文說明如何使用適用于容器的 Azure 監視器，來查看和分析 AKS 和非 AKS 叢集的健康情況。
 ms.topic: conceptual
 ms.date: 12/01/2019
 ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76843985"
 ---
-# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>使用容器的 Azure 監視器瞭解庫伯內斯群集運行狀況
+# <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>瞭解適用于容器 Azure 監視器的 Kubernetes 叢集健康情況
 
-使用容器的 Azure 監視器，它監視和報告託管基礎結構元件和在 Azure 監視器支援的任何 Kubernetes 群集上運行的所有節點的運行狀況狀態。 此體驗超出了在[多群集視圖](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)上計算和報告的群集運行狀況狀態，現在您可以瞭解群集中的一個或多個節點是否受資源約束，或者節點或 pod 不可用，可能會影響基於精心策劃的指標的群集中的正在運行的應用程式。
-
->[!NOTE]
->此時，"運行狀況"功能處於公共預覽版中。
->
-
-有關如何為容器啟用 Azure 監視器的資訊，請參閱[容器的板載 Azure 監視器](container-insights-onboard.md)。
+使用容器的 Azure 監視器，它會監視並報告受管理基礎結構元件的健全狀況狀態，以及針對容器 Azure 監視器所支援的任何 Kubernetes 叢集上執行的所有節點。 此體驗延伸超過叢集健全狀況狀態，並會在[多叢集視圖](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)上進行計算並回報，現在您可以瞭解叢集中的一或多個節點是否受資源限制，或節點或 pod 是否無法使用，而可能會影響叢集中的執行中應用程式（以策劃的計量為基礎）。
 
 >[!NOTE]
->要支援 AKS 引擎群集，請驗證它滿足以下內容：
->- 它使用最新版本的[HELM用戶端](https://helm.sh/docs/using_helm/)。
->- 容器化代理版本是*微軟/oms：ciprod11012019*。 要升級代理，請參閱[庫伯內斯群集上的升級代理](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster)。
+>此健全狀況功能目前為公開預覽階段。
 >
 
-## <a name="overview"></a>總覽
+如需如何啟用容器 Azure 監視器的詳細資訊，請參閱將[容器上架 Azure 監視器](container-insights-onboard.md)。
 
-在容器的 Azure 監視器中，"運行狀況（預覽）"功能提供 Kubernetes 群集的主動運行狀況監視，以説明您識別和診斷問題。 它使您能夠查看檢測到的重要問題。 監視器評估群集中容器化代理上運行的群集運行狀況，並將運行狀況資料寫入日誌分析工作區中的**KubeHealth**表。 
+>[!NOTE]
+>若要支援 AKS Engine 叢集，請確認它符合下列內容：
+>- 它使用最新版的[HELM 用戶端](https://helm.sh/docs/using_helm/)。
+>- 容器化代理程式版本為*microsoft/oms： ciprod11012019*。 若要升級代理程式，請參閱[升級 Kubernetes 叢集上的代理程式](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster)。
+>
 
-庫伯內斯群集運行狀況基於以下 Kubernetes 物件和抽象組織的多個監視方案：
+## <a name="overview"></a>概觀
 
-- Kubernetes 基礎結構 - 通過評估 CPU 和記憶體利用率以及 Pods 可用性，提供在群集中部署的節點上運行的 Kubernetes API 伺服器、複本集和守護程式集的匯總
+在容器的 Azure 監視器中，[健康情況（預覽）] 功能會提供 Kubernetes 叢集的主動式健全狀況監視，以協助您識別和診斷問題。 它讓您能夠看到所偵測到的重大問題。 監視叢集上容器化代理程式上執行的叢集健全狀況，並將健康情況資料寫入 Log Analytics 工作區中的**KubeHealth**資料表。 
 
-    ![庫伯內斯基礎設施運行狀況匯總視圖](./media/container-insights-health/health-view-kube-infra-01.png)
+Kubernetes 叢集健康情況是根據下列 Kubernetes 物件和抽象概念所組織的許多監視案例：
 
-- 節點 - 通過評估 CPU 和記憶體利用率以及 Kubernetes 報告節點的狀態，提供每個池中節點池和單個節點狀態的匯總。
+- Kubernetes 基礎結構-藉由評估 CPU 和記憶體使用率，以及 pod 可用性，提供 Kubernetes API 伺服器、ReplicaSets 和 Daemonset 的匯總套件，在部署于叢集的節點上執行
 
-    ![節點運行狀況匯總視圖](./media/container-insights-health/health-view-nodes-01.png)
+    ![Kubernetes 基礎結構健全狀況匯總套件視圖](./media/container-insights-health/health-view-kube-infra-01.png)
 
-目前，僅支援虛擬庫貝萊特的狀態。 虛擬庫布節點的 CPU 和記憶體利用率的運行狀況狀態報表為 **"未知"，** 因為未從它們接收信號。
+- 節點-藉由評估 CPU 和記憶體使用率，以及 Kubernetes 所報告的節點狀態，提供節點集區的匯總以及每個集區中個別節點的狀態。
 
-所有監視器都顯示在"運行狀況層次結構"窗格中的分層佈局中，其中表示庫伯奈斯物件或抽象（即 Kubernetes 基礎結構或節點）的聚合監視器是反映所有運行狀況組合的監視器。依賴子監視器。 用於派生運行狀況的關鍵監視方案包括：
+    ![節點健全狀況匯總視圖](./media/container-insights-health/health-view-nodes-01.png)
 
-* 評估節點和容器的 CPU 利用率。
-* 評估節點和容器的記憶體利用率。
-* 基於 Kubernets 報告的就緒狀態的計算的 Pod 和節點的狀態。
+目前只支援虛擬 kubelet 的狀態。 虛擬 kublet 節點的 CPU 和記憶體使用量健全狀況狀態會回報為 [**未知**]，因為不會收到信號。
+
+所有監視器都會在 [健全狀況階層] 窗格中顯示為階層式配置，其中代表 Kubernetes 物件或抽象的匯總監視（也就是 Kubernetes 基礎結構或節點）是最上層的監視，反映所有相依子監視的結合健全狀況。 用來衍生健全狀況的主要監視案例如下：
+
+* 評估節點和容器的 CPU 使用率。
+* 評估節點和容器的記憶體使用率。
+* Pod 和節點的狀態，取決於 Kubernetes 回報的就緒狀態計算。
 
 用來指示狀態的圖示如下：
 
@@ -55,51 +55,51 @@ ms.locfileid: "76843985"
 |![綠色核取圖示表示狀況良好](./media/container-insights-health/healthyicon.png)|成功，健全狀況正常 (綠色)|  
 |![黃色三角形和驚嘆號表示警告](./media/container-insights-health/warningicon.png)|警告 (黃色)|  
 |![具有白色 X 的紅色按鈕表示重大狀態](./media/container-insights-health/criticalicon.png)|重大 (紅色)|  
-|![灰顯圖示](./media/container-insights-health/grayicon.png)|未知（灰色）|  
+|![呈現灰色圖示](./media/container-insights-health/grayicon.png)|未知（灰色）|  
 
-## <a name="monitor-configuration"></a>監視器配置
+## <a name="monitor-configuration"></a>監視設定
 
-要瞭解支援容器運行狀況功能的每個監視器的行為和配置，請參閱[運行狀況監視器配置指南](container-insights-health-monitors-config.md)。
+若要瞭解每個支援容器健全狀況功能 Azure 監視器的監視行為和設定，請參閱[健康情況監視器設定指南](container-insights-health-monitors-config.md)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-登錄到 Azure[門戶](https://portal.azure.com)。 
+登入 [Azure 入口網站](https://portal.azure.com)。 
 
-## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>查看 AKS 或非 AKS 群集的運行狀況
+## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>查看 AKS 或非 AKS 叢集的健全狀況
 
-通過從 Azure 門戶中的左側窗格中選擇 **"見解"，** 可以直接從 AKS 群集訪問容器運行狀況（預覽）功能。 在 [Insights]**** 區段下方，選取 [容器]****。 
+從 Azure 入口網站的左窗格中選取 [**深入**解析]，即可直接從 AKS 叢集存取適用于容器的 Azure 監視器健康情況（預覽）功能。 在 [Insights]**** 區段下方，選取 [容器]****。 
 
-要查看非 AKS 群集（即本地或 Azure 堆疊上託管的 AKS 引擎群集）的運行狀況，請從 Azure 門戶中的左窗格中選擇**Azure 監視器**。 在 [Insights]**** 區段下方，選取 [容器]****。  在多群集頁上，從清單中選擇非 AKS 群集。
+若要從非 AKS 叢集（也就是裝載于內部部署或 Azure Stack 的 AKS 引擎叢集）中查看健全狀況，請從 Azure 入口網站的左窗格中選取 [ **Azure 監視器**]。 在 [Insights]**** 區段下方，選取 [容器]****。  在 [多叢集] 頁面上，從清單中選取非 AKS 叢集。
 
-在容器的 Azure 監視器中，從 **"群集"** 頁中選擇 **"運行狀況**"。
+在 **[適用于容器的 Azure 監視器**中，從 [叢集] 頁面選取 [**健康**情況]。
 
-![群集運行狀況儀表板示例](./media/container-insights-health/container-insights-health-page.png)
+![群集健全狀況儀表板範例](./media/container-insights-health/container-insights-health-page.png)
 
-## <a name="review-cluster-health"></a>查看群集運行狀況
+## <a name="review-cluster-health"></a>檢查叢集健全狀況
 
-打開"運行狀況"頁時，預設情況下在 **"運行狀況"網格**中選擇**庫伯內特基礎結構**。  網格總結了庫貝內斯基礎結構和叢集節點的當前運行狀況匯總狀態。 選擇任一運行狀況方面會更新"運行狀況層次結構"窗格（即中間窗格）中的結果，並在分層佈局中顯示所有子監視器，顯示其當前運行狀況狀態。 要查看有關任何從屬監視器的詳細資訊，可以選擇一個屬性窗格，並自動顯示在頁面右側。 
+當 [健康情況] 頁面開啟時，預設會在 [**健全狀況**] 方格中選取 [ **Kubernetes 基礎結構**]。  方格會摘要說明 Kubernetes 基礎結構和叢集節點的目前健全狀況匯總狀態。 選取任一健全狀況會更新 [健全狀況階層] 窗格中的結果（也就是中間窗格），並顯示階層式配置中的所有子監視器，顯示其目前的健全狀況狀態。 若要查看任何相依監視的詳細資訊，您可以選取其中一個，而 [屬性] 窗格會自動顯示在頁面的右側。 
 
-![群集運行狀況屬性窗格](./media/container-insights-health/health-view-property-pane.png)
+![群集健全狀況屬性窗格](./media/container-insights-health/health-view-property-pane.png)
 
-在屬性窗格中，您將瞭解以下內容：
+在 [屬性] 窗格中，您會瞭解下列各項：
 
-- 在 **"概述"** 選項卡上，它顯示所選監視器的目前狀態、上次計算監視器的時以及上次狀態更改的次。 根據層次結構中選擇的監視器類型顯示其他資訊。
+- 在 [**總覽**] 索引標籤上，它會顯示所選取之監視器的目前狀態、上次計算監視的時間，以及上次發生狀態變更的時間。 視階層中選取的監視器類型而定，會顯示其他資訊。
 
-    如果在"運行狀況層次結構"窗格中選擇聚合監視器，則在屬性窗格的 **"概述"** 選項卡下，將顯示層次結構中子監視器總數以及處於嚴重、警告和狀態的聚合監視器數的匯總。 
+    如果您在 [健全狀況階層] 窗格中選取匯總監視，在 [屬性] 窗格的 [**總覽**] 索引標籤底下，它會顯示階層中子監視總數的匯總，以及有多少部匯總監視器處於 [重大]、[警告] 和 [狀況良好] 狀態。 
 
-    ![用於聚合監視器的運行狀況屬性窗格"概述"選項卡](./media/container-insights-health/health-overview-aggregate-monitor.png)
+    ![匯總監視的健全狀況屬性窗格 [總覽] 索引標籤](./media/container-insights-health/health-overview-aggregate-monitor.png)
 
-    如果在"運行狀況層次結構"窗格中選擇單位監視器，它還在 **"上次狀態"** 下顯示容器化代理在過去四小時內計算和報告以前的示例。 這基於用於比較多個連續值以確定其狀態的單位監視器計算。 例如，如果選擇了 Pod*就緒狀態*單元監視器，它將顯示由參數 *"連續採樣ForState轉換*"控制的最後兩個樣本。 有關詳細資訊，請參閱[單元監視器](container-insights-health-monitors-config.md#unit-monitors)的詳細說明。
+    如果您在 [健康情況階層] 窗格中選取單位監視，它也會顯示在 [**上次狀態**] 下，[變更容器化代理程式在過去四小時內所計算和報告的先前範例]。 這是以單位監視計算為基礎，用來比較數個連續值來判斷其狀態。 例如，如果您選取 [ *Pod 就緒狀態*單位] 監視器，它會顯示由參數*ConsecutiveSamplesForStateTransition*所控制的最後兩個範例。 如需詳細資訊，請參閱[單位監視](container-insights-health-monitors-config.md#unit-monitors)的詳細描述。
     
-    ![運行狀況屬性窗格"概述"選項卡](./media/container-insights-health/health-overview-unit-monitor.png)
+    ![健全狀況屬性窗格 [總覽] 索引標籤](./media/container-insights-health/health-overview-unit-monitor.png)
 
-    如果**Last 狀態更改**報告的時間為一天或更久，則它是監視器狀態沒有變化的結果。 但是，如果為單元監視器接收的最後一個樣本超過 4 小時，這可能表示容器化代理未發送資料。 如果代理知道存在特定資源（例如 Node），但它尚未從節點的 CPU 或記憶體利用率監視器接收資料（例如），則監視器的運行狀況狀態設置為 **"未知**"。  
+    如果 [**上次狀態**] 所回報的時間變更為一天或更久，表示監視的狀態沒有任何變更。 不過，如果針對單位監視收到的最後一個樣本超過四小時，這可能表示容器化代理程式尚未傳送資料。 如果代理程式知道特定資源存在（例如節點），但尚未從節點的 CPU 或記憶體使用率監視器接收資料（例如），則監視的健全狀況狀態會設定為 [**未知**]。  
 
-- 在**Config**選項卡上，它顯示預設配置參數設置（僅適用于單元監視器，而不是聚合監視器）及其值。
-- 在 **"知識"** 選項卡上，它包含解釋監視器行為及其評估不正常情況的方式的資訊。
+- **在 [設定**] 索引標籤上，它會顯示預設的設定參數設定（僅適用于單位監視，而不是匯總監視）及其值。
+- 在 [**知識**] 索引標籤中，它包含說明監視行為的資訊，以及它如何評估狀況不良的狀況。
 
-監視此頁面上的資料不會自動刷新，您需要選擇頁面頂部的 **"刷新"** 以查看從群集接收的最新運行狀況狀態。
+此頁面上的監視資料不會自動重新整理，您必須**選取頁面**頂端的 [重新整理]，以查看從叢集收到的最新健全狀況狀態。
 
 ## <a name="next-steps"></a>後續步驟
 
-查看[日誌查詢示例](container-insights-log-search.md#search-logs-to-analyze-data)以查看預定義的查詢和示例，以評估或自訂以提醒、視覺化或分析群集。
+查看[記錄查詢範例](container-insights-log-search.md#search-logs-to-analyze-data)，以查看預先定義的查詢和評估或自訂的範例，以警示、視覺化或分析您的叢集。

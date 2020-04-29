@@ -9,11 +9,11 @@ ms.date: 01/16/2020
 ms.author: babanisa
 ms.custom: include file
 ms.openlocfilehash: cca628a54d9ac84fbb8a798168f72adbaa24aa48
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844530"
 ---
 >[!NOTE]
-> 始終檢查圖像的版本，以確保它具有您需要的假像。 如果電腦上已拔下容器映射的早期版本，則需要指定所需的版本戳記，或者刪除現有映射，然後再使用`:latest`標記再次拉取。 有關圖像版本和標記的更多，請參閱[版本資訊](../articles/event-grid/edge/release-notes.md)。
+> 請務必檢查您的映射版本，以確保它具有您所需的 feautures。 如果您的電腦上已經提取了先前的容器映射版本，您必須指定所需的版本標籤，或先刪除現有的映射，然後再使用`:latest`標記再次提取。 如需映射版本和標記的詳細資訊，請參閱[版本](../articles/event-grid/edge/release-notes.md)資訊。
