@@ -8,17 +8,17 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 1f3f70c30ab397bd549a2f3305a738274ee4f64f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371166"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-datadog"></a>(已淘汰) 使用 DataDog 監視 Azure Container Service 叢集
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 本逐步解說假設您已[使用 Azure Container Service 建立 Kubernetes 叢集](container-service-kubernetes-walkthrough.md)。
 
 同時也假設您已經安裝 `az` Azure cli 和 `kubectl` 工具。
@@ -52,7 +52,7 @@ Datadog 是一項監視服務，會從 Azure 容器服務叢集內的容器收�
 DaemonSet 是 Kubernetes 用來在叢集中每個主機上執行容器的單一執行個體。
 它們非常適合用來執行監視代理程式。
 
-登錄到 Datadog 後，可以按照[Datadog 說明](https://app.datadoghq.com/account/settings#agent/kubernetes)使用守護進程集在群集上安裝 Datadog 代理。
+登入 Datadog 之後，您可以遵循[Datadog 指示](https://app.datadoghq.com/account/settings#agent/kubernetes)，使用 DaemonSet 在您的叢集上安裝 Datadog 代理程式。
 
 ## <a name="conclusion"></a>結論
-就這麼簡單！ 當代理程式啟動並執行之後，幾分鐘之內您應該會在主控台中看到資料。 您可以造訪這些整合式 [kubernetes 儀表板 (英文)](https://app.datadoghq.com/screen/integration/kubernetes) 以查看您的叢集摘要。
+這樣就完成了！ 當代理程式啟動並執行之後，幾分鐘之內您應該會在主控台中看到資料。 您可以造訪這些整合式 [kubernetes 儀表板 (英文)](https://app.datadoghq.com/screen/integration/kubernetes) 以查看您的叢集摘要。

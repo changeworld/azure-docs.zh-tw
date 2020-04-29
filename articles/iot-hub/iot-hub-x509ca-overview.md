@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/18/2017
 ms.author: eustacea
 ms.openlocfilehash: 3d02d3573902964a8549fa0eeb1f4f1471de1752
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284508"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>使用 X.509 CA 憑證進行裝置驗證
@@ -40,7 +40,7 @@ X.509 CA 憑證位於您每個裝置的憑證鏈結頂端。  您可以購買或
 
 您也可以建立自我簽署的 X.509 CA 來進行測試，或在封閉式 IoT 網路中使用。
 
-無論您如何獲得 X.509 CA 憑證，請確保隨時保留其相應的私密金鑰金鑰金鑰金鑰金鑰金鑰並受到保護。  這對於在 X.509 CA 驗證中建立信任來說是必要的。
+無論您取得 x.509 CA 憑證的方式為何，都請務必保留其對應的私密金鑰密碼，並隨時受到保護。  這對於在 X.509 CA 驗證中建立信任來說是必要的。
 
 了解如何[建立自我簽署的 CA 憑證](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)，您可以使用此憑證在這整個功能描述中進行測試。
 
@@ -50,7 +50,7 @@ X.509 CA 憑證的擁有者可以透過密碼編譯方式簽署中繼 CA，此 C
 
 ![img-generic-cert-chain-of-trust](./media/generic-cert-chain-of-trust.png)
 
-設備證書（也稱為葉證書）必須將*主題名稱*設置為在 Azure IoT 中心註冊 IoT 設備時使用**的裝置識別碼。** 此設置是身份驗證所必需的。
+裝置憑證（也稱為分葉憑證）必須將 [*主體名稱*] 設為在 Azure IoT 中樞中註冊 IoT 裝置時所使用的**裝置識別碼**。 這是驗證所需的設定。
 
 了解如何[建立憑證鏈結](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) (會在簽署裝置時完成)。
 
@@ -62,7 +62,7 @@ X.509 CA 憑證的擁有者可以透過密碼編譯方式簽署中繼 CA，此 C
 
 證明所有權步驟涉及一個您與「IoT 中樞」之間的密碼編譯查問和回應程序。  由於數位憑證內容是公用的，因而容易遭到竊聽，因此「IoT 中樞」會想要確定您是否真的擁有 CA 憑證。  其做法應該是產生一個您必須以 CA 憑證的對應私密金鑰簽署的隨機查問。  如果您如先前建議的，將私密金鑰妥善保密及保護，則只有您會知道如何完成此步驟。 在此方法中，私密金鑰的保密性就是信任的來源。  簽署查問之後，請上傳包含結果的檔案來完成此步驟。
 
-在此處瞭解如何註冊[CA 憑證](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
+瞭解如何[註冊您的 CA 憑證](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>如何在 IoT 中樞上建立裝置
 

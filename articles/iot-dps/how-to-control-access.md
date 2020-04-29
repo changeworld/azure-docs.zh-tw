@@ -1,6 +1,6 @@
 ---
 title: IoT 裝置佈建服務中的安全性端點 | Microsoft Docs
-description: 概念 - 如何控制對後端應用的 IoT 設備佈建服務 （DPS） 的訪問。 包含安全性權杖的相關資訊。
+description: 概念-如何控制後端應用程式對 IoT 裝置布建服務（DPS）的存取權。 包含安全性權杖的相關資訊。
 author: wesmc7777
 manager: philmea
 ms.service: iot-dps
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79285145"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制 Azure IoT 中樞裝置佈建服務的存取權
@@ -32,7 +32,7 @@ ms.locfileid: "79285145"
 
 您可以透過下列方式授與[權限](#device-provisioning-service-permissions)：
 
-* **共用訪問授權策略**。 共用存取原則可以授與上面所列[權限](#device-provisioning-service-permissions)的任意組合。 您可以在 [Azure 入口網站][lnk-management-portal]中定義原則，或使用 [裝置佈建服務 REST API][lnk-resource-provider-apis] 以程式設計方式定義原則。 新建立的佈建服務有下列預設原則︰
+* **共用存取授權原則**。 共用存取原則可以授與上面所列[權限](#device-provisioning-service-permissions)的任意組合。 您可以在 [Azure 入口網站][lnk-management-portal]中定義原則，或使用 [裝置佈建服務 REST API][lnk-resource-provider-apis] 以程式設計方式定義原則。 新建立的佈建服務有下列預設原則︰
 
 * **provisioningserviceowner**︰具備所有權限的原則。
 
@@ -75,7 +75,7 @@ SharedAccessSignature sr =
 
 以下是預期的值：
 
-| 值 | 描述 |
+| 值 | 說明 |
 | --- | --- |
 | {signature} |HMAC-SHA256 簽章字串，格式為： `{URL-encoded-resourceURI} + "\n" + expiry`。 **重要事項**：金鑰是從 base64 解碼而來，並且會做為用來執行 HMAC-SHA256 計算的金鑰。|
 | {expiry} |從新紀元時間 (Epoch) 1970 年 1 月 1日 00:00:00 UTC 時間至今秒數的 UTF8 字串。 |
@@ -177,7 +177,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 下表列出可用來控制您的 IoT 裝置佈建服務存取權的權限。
 
-| 權限 | 注意 |
+| 權限 | 備忘錄 |
 | --- | --- |
 | **ServiceConfig** |授與變更服務設定的存取權。 <br/>後端雲端服務會使用此權限。 |
 | **EnrollmentRead** |授與對裝置註冊和註冊群組進行讀取的權限。 <br/>後端雲端服務會使用此權限。 |

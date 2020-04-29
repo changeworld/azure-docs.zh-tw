@@ -8,10 +8,10 @@ ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 40d4dc898efe6b719ec5e1f1ec0471a9677d3c95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371115"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(已被取代) 在 Container Service 中設定 Kubernetes 叢集的 Azure AD 服務主體
@@ -33,9 +33,9 @@ ms.locfileid: "79371115"
 
 * **範圍**：資源群組
 
-* **角色**： 貢獻者
+* **角色**：參與者
 
-* **用戶端機密**：必須是密碼。 目前，您無法使用針對憑證驗證設定的服務主體。
+* **用戶端密碼**：必須是密碼。 目前，您無法使用針對憑證驗證設定的服務主體。
 
 > [!IMPORTANT]
 > 若要建立服務主體，您必須有足夠權限向 Azure AD 租用戶註冊應用程式，並將應用程式指派給您訂用帳戶中的角色。 若要查看您是否有必要的權限，請[在入口網站中檢查](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
@@ -61,7 +61,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 
 ![建立服務主體](./media/container-service-kubernetes-service-principal/service-principal-creds.png)
 
-突出顯示的是用戶端**ID** `appId`（ ） 和**用戶端機密**（`password`），用作群集部署的服務主體參數。
+反白顯示的是**用戶端識別碼**（`appId`）和**用戶端密碼**（`password`），您可以使用它做為叢集部署的服務主體參數。
 
 
 ### <a name="specify-service-principal-when-creating-the-kubernetes-cluster"></a>在建立 Kubernetes 叢集時指定服務主體
@@ -78,7 +78,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 
 1. 從 GitHub [下載](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json)範本參數檔案 `azuredeploy.parameters.json`。
 
-2. 若要指定服務主體，在檔案中輸入 `servicePrincipalClientId` 和 `servicePrincipalClientSecret` 的值。 (您也必須提供自己的 `dnsNamePrefix` 和 `sshRSAPublicKey` 值。 後者是訪問群集的 SSH 公開金鑰。保存檔。
+2. 若要指定服務主體，在檔案中輸入 `servicePrincipalClientId` 和 `servicePrincipalClientSecret` 的值。 (您也必須提供自己的 `dnsNamePrefix` 和 `sshRSAPublicKey` 值。 後者是用來存取叢集的 SSH 公開金鑰）。儲存檔案。
 
     ![傳遞服務主體參數](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 
@@ -97,7 +97,7 @@ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscrip
 
 ## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>選項 2︰在使用 `az acs create` 建立叢集時產生服務主體
 
-如果運行[`az acs create`](/cli/azure/acs#az-acs-create)命令以創建 Kubernetes 群集，則可以選擇自動生成服務主體。
+如果您執行[`az acs create`](/cli/azure/acs#az-acs-create)命令來建立 Kubernetes 叢集，您可以選擇自動產生服務主體。
 
 至於其他 Kubernetes 叢集建立選項，您可以在執行 `az acs create` 時指定現有服務主體的參數。 不過，當您省略這些參數時，Azure CLI 會自動建立一個參數以搭配 Container Service 使用。 這會在部署期間以透明方式發生。
 

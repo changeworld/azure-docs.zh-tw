@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: a76ae803b1283ce50d2f4e259943ce5ffcf0274c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282012"
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>使用系統健康狀態報告進行疑難排解
@@ -20,7 +20,7 @@ Azure Service Fabric 元件會針對現成叢集中的所有實體，提供系�
 > 
 > 
 
-系統健康情況報告可顯示叢集和應用程式功能，並標記問題。 系統健康狀態報告會針對應用程式和服務來確認實體是否已實作，以及從 Service Fabric 的角度來確認其是行為是否正確。 這些報告不提供對服務的業務邏輯的任何運行狀況監視或未回應的進程的檢測。 使用者服務可使用其邏輯的特定資訊讓健康情況資料更豐富。
+系統健康情況報告可顯示叢集和應用程式功能，並標記問題。 系統健康狀態報告會針對應用程式和服務來確認實體是否已實作，以及從 Service Fabric 的角度來確認其是行為是否正確。 這些報告不會提供任何服務商務邏輯的健康情況監視，或偵測沒有回應的進程。 使用者服務可使用其邏輯的特定資訊讓健康情況資料更豐富。
 
 > [!NOTE]
 > 使用者監視程式所傳送的健康情況報告只有在系統元件建立實體*之後*才會顯示。 刪除實體時，健康狀態資料存放區會自動刪除所有與其相關聯的健康情況報告。 建立實體的新執行個體時也是如此。 例如，在建立新的具狀態持續性服務複本執行個體時。 所有與舊執行個體相關聯的報告都會從存放區刪除及清除。
@@ -45,7 +45,7 @@ Azure Service Fabric 元件會針對現成叢集中的所有實體，提供系�
 報告會將全域租用逾時指定為存留時間 (TTL)。 只要條件仍在作用中，就會在每半個 TTL 期間重新傳送一次報告。 事件到期時會自動移除。 到期時移除的行為可確保正確地從健康狀態資料存放區清除報告，即使報告節點已關閉也不例外。
 
 * **SourceId**：System.Federation
-* **屬性**：從**鄰域**開始，包括節點資訊。
+* **Property**：以**鄰近地區**開頭，並包含節點資訊。
 * **後續步驟**：調查網路上的芳鄰遺失的原因。 例如，檢查叢集節點之間的通訊。
 
 ### <a name="rebuild"></a>重建
@@ -53,32 +53,32 @@ Azure Service Fabric 元件會針對現成叢集中的所有實體，提供系�
 容錯移轉管理員 (FM) 服務管理叢集節點的相關資訊。 當 FM 失去其資料，然後進入資料遺失狀態時，它無法保證能擁有叢集節點的最新相關資訊。 在此情況下，系統會執行重建程序，而 System.FM 會從叢集中所有節點收集資料以重建其狀態。 有時候，由於網路或節點問題，重建可能會當機或停止。 容錯移轉管理員主節點 (FMM) 服務也可能發生同樣的情況。 FMM 是無狀態的系統服務，用於追蹤所有 FM 在叢集中的位置。 FMM 主節點一律為識別碼最接近 0 的節點。 如果卸除該節點，會觸發重建。
 當先前的某個情況發生時，**System.FM** 或 **System.FMM** 會透過錯誤報告為它加上旗標。 重建可能會卡在兩個階段其中之一：
 
-* **正在等待廣播**：FM/FMM 正在等待來自其他節點的廣播訊息回復。
+* **等候廣播**： FM/FMM 會等候來自其他節點的廣播訊息回復。
 
-  * **後續步驟**：調查節點之間是否存在網路連接問題。
-* **等待節點**：FM/FMM 已收到來自其他節點的廣播回復，正在等待來自特定節點的回復。 健康情況報告列出 FM/FMM 正在等候回應的節點。
-   * **後續步驟**：調查 FM/FMM 和列出的節點之間的網路連接。 調查每個列出的節點以尋找其他可能的問題。
+  * **後續步驟**：調查節點之間是否有網路連接問題。
+* **正在等候節點**： FM/FMM 已經收到來自其他節點的廣播回復，而且正在等候特定節點的回復。 健康情況報告列出 FM/FMM 正在等候回應的節點。
+   * **後續步驟**：調查 FM/FMM 與所列節點之間的網路連線。 調查每個列出的節點以尋找其他可能的問題。
 
 * **SourceID**：System.FM 或 System.FMM
 * **屬性**：重建。
 * **後續步驟**：調查節點之間的網路連線，以及健康情況報告描述中列出之任何特定節點的狀態。
 
 ### <a name="seed-node-status"></a>種子節點狀態
-如果某些種子節點不正常 **，System.FM**報告群集級別警告。 種子節點是維護基礎群集可用性的節點。 這些節點有助於藉由建立與其他節點的租用，並在某些類型的網路故障期間擔任仲裁者，來確保叢集保持正常運作。 如果群集中的大部分種子節點處於關閉位置，並且它們未恢復，群集將自動關閉。 
+如果某些種子節點狀況不良， **System.FM**會報告叢集層級警告。 種子節點是維護基礎叢集可用性的節點。 這些節點有助於藉由建立與其他節點的租用，並在某些類型的網路故障期間擔任仲裁者，來確保叢集保持正常運作。 如果叢集中大部分的種子節點都已關閉，而未傳回，叢集就會自動關閉。 
 
-如果種子節點的節點狀態為"已關閉、刪除"或"未知"，則種子節點不正常。
-種子節點狀態的警告報告將列出所有包含詳細資訊的不正常種子節點。
+如果種子節點的節點狀態為 [關閉]、[已移除] 或 [未知]，則其狀況不良。
+種子節點狀態的警告報告將會列出所有狀況不良的種子節點，以及詳細資訊。
 
-* **來源 ID**： System.FM
-* **屬性**： 種子節點狀態
-* **後續步驟**：如果此警告在群集中顯示，請按照以下說明進行修復：對於運行 Service Fabric 版本 6.5 或更高版本的群集：對於 Azure 上的 Service Fabric 群集，在種子節點關閉後，Service Fabric 將嘗試將其自動更改為非種子節點。 為此，請確保主節點類型中的非種子節點數大於或等於向下種子節點數。 如有必要，向主節點類型添加更多節點以實現此目的。
-根據群集狀態，修復問題可能需要一些時間。 完成此操作後，將自動清除警告報告。
+* **SourceID**： System.FM
+* **屬性**： SeedNodeStatus
+* **後續步驟**：如果此警告顯示在叢集中，請遵循下列指示來修正此問題：針對執行 Service Fabric 6.5 版或更高版本的叢集：針對 Azure 上的 Service Fabric 叢集，在種子節點關閉後，Service Fabric 會嘗試自動將其變更為非種子節點。 若要進行這項操作，請確定主要節點類型中的非種子節點數目大於或等於向下種子節點的數目。 如有必要，請將更多節點新增至主要節點類型，以達成此目的。
+視叢集狀態而定，可能需要一些時間來修正問題。 完成後，就會自動清除警告報告。
 
-對於 Service Fabric 獨立群集，要清除警告報告，所有種子節點都需要變得正常。 根據種子節點不正常的原因，需要採取不同的操作：如果種子節點為"已關閉"，則使用者需要啟動該種子節點;如果種子節點被刪除或未知，[則需要從群集中刪除](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes)此種子節點。
-當所有種子節點都變得正常時，警告報告將自動清除。
+針對 Service Fabric 獨立叢集，若要清除警告報告，所有種子節點都必須變成狀況良好。 視種子節點狀況不良的原因而定，需要採取不同的動作：如果種子節點已關閉，使用者必須將該種子節點啟動;如果已移除或不明種子節點，則必須從叢集[移除](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes)此種子節點。
+當所有種子節點變成狀況良好時，會自動清除警告報告。
 
-對於運行服務結構版本早于 6.5 的群集：在這種情況下，需要手動清除警告報告。 **使用者應在清除報表之前確保所有種子節點都變得正常**：如果種子節點處於"已關閉"狀態，則使用者需要啟動該種子節點;如果種子節點已刪除或未知，則需要從群集中刪除該種子節點。
-所有種子節點變為正常後，使用 Powershell 的以下命令[清除警告報告](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)：
+針對執行 Service Fabric 版本早于6.5 的叢集：在此情況下，必須手動清除警告報告。 **使用者應該先確定所有種子節點都變成狀況良好，然後再清除報告**：如果種子節點已關閉，使用者必須將該種子節點啟動; 如果已移除或不明種子節點，則必須從叢集移除該種子節點。
+當所有種子節點都變成狀況良好之後，請從 Powershell 使用下列命令來[清除警告報告](https://docs.microsoft.com/powershell/module/servicefabric/send-servicefabricclusterhealthreport)：
 
 ```powershell
 PS C:\> Send-ServiceFabricClusterHealthReport -SourceId "System.FM" -HealthProperty "SeedNodeStatus" -HealthState OK
@@ -119,14 +119,14 @@ HealthEvents          :
 **System.FabricNode** 會回報警告。 每個節點有三個憑證：**Certificate_cluster**、**Certificate_server** 及 **Certificate_default_client**。 如果過期時間至少超過兩週，報告健康狀態就是 OK。 如果過期時間是在兩週內，則報告類型會是 Warning。 這些事件的 TTL 是無限制的，只有節點離開叢集時才會被移除。
 
 * **SourceId**：System.FabricNode
-* **屬性**：從**證書**開始，包含有關證書類型的詳細資訊。
+* **Property**：以**certificate**開頭，並包含有關憑證類型的詳細資訊。
 * **後續步驟**：如果憑證即將到期，請更新憑證。
 
 ### <a name="load-capacity-violation"></a>負載容量違規
 當 Service Fabric Load Balancer 偵測到節點容量違規時，就會回報警告。
 
 * **SourceId**：System.PLB
-* **屬性**： 從**容量**開始。
+* **Property**：以**容量**作為開頭。
 * **後續步驟**：檢查提供的計量，並檢視節點上的目前容量。
 
 ### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>節點容量與資源控管計量不符
@@ -143,7 +143,7 @@ System.CM(代表叢集管理員服務) 是管理應用程式相關資訊的授�
 已建立或更新應用程式時，System.CM 會回報為 OK。 刪除應用程式時，它會通知健康狀態資料存放區，以便從存放區將它移除。
 
 * **SourceId**：System.CM
-* **屬性**：狀態。
+* **Property**： State。
 * **後續步驟**：如果已建立或更新應用程式，它就應該包含叢集管理員健康情況報告。 否則，請藉由發出查詢來檢查應用程式的狀態。 例如，使用 PowerShell Cmdlet **Get-ServiceFabricApplication -ApplicationName applicationName** **。
 
 以下範例說明 **fabric:/WordCount** 應用程式上的狀態事件：
@@ -176,7 +176,7 @@ System.FM(代表容錯移轉管理員服務) 是管理服務相關資訊的授�
 已建立服務時，System.FM 會回報為 OK。 已刪除服務時，它會從健康狀態資料存放區刪除實體。
 
 * **SourceId**：System.FM
-* **屬性**：狀態。
+* **Property**： State。
 
 以下範例說明 **fabric:/WordCount/WordCountWebService** 服務上的狀態事件：
 
@@ -222,7 +222,7 @@ System.FM(代表容錯移轉管理員服務) 是管理服務分割區相關資�
 其他值得注意的事件包括：當重新設定花費的時間比預期長，或者建置的時間比預期長，則會回報警告。 建置和重新設定的預計時間可根據服務案例來設定。 例如，如果服務擁有 1 TB 的狀態 (例如 Azure SQL Database)，則建置的時間會比只有少量狀態的服務更長。
 
 * **SourceId**：System.FM
-* **屬性**：狀態。
+* **Property**： State。
 * **後續步驟**：如果健康狀態不是 OK，有可能是因為部分複本並沒有正確建立、開啟、提升為主要或次要的複本。 
 
 如果描述說明仲裁遺失，則檢查已關閉之複本的詳細健康情況報告，並讓它們重新運作，有助於讓分割區重新上線。
@@ -386,7 +386,7 @@ HealthEvents          :
 **System.PLB** 偵測到複本條件約束違規，且無法安置所有磁碟分割複本時，就會回報警告。 報告詳細資料會顯示哪些條件約束和屬性導致無法安置複本。
 
 * **SourceId**：System.PLB
-* **屬性**： 從**副本約束衝突**開始 。
+* **Property**：以**replicaconstraintviolation 為開頭**開頭。
 
 ## <a name="replica-system-health-reports"></a>複本系統健康狀態報告
 **System.RA**(代表重新設定代理程式元件) 是複本狀態的授權單位。
@@ -395,7 +395,7 @@ HealthEvents          :
 System.RA 會在複本建立後回報 OK。
 
 * **SourceId**：System.RA
-* **屬性**：狀態。
+* **Property**： State。
 
 以下範例顯示狀況良好的複本：
 
@@ -637,32 +637,32 @@ HealthEvents          :
                         
 ```
 
-屬性和文字會指出已停滯的 API。 針對不同已停滯 API 所採取的後續步驟皆不相同。 *IStateserviceService 副本*或*無狀態服務實例*上的任何 API 通常是服務代碼中的一個錯誤。 以下部分介紹這些如何轉換為[可靠服務模型](service-fabric-reliable-services-lifecycle.md)：
+屬性和文字會指出已停滯的 API。 針對不同已停滯 API 所採取的後續步驟皆不相同。 *IStatefulServiceReplica*或*IStatelessServiceInstance*上的任何 API 通常都是服務程式代碼中的錯誤。 下一節將說明這些如何轉譯為[Reliable Services 模型](service-fabric-reliable-services-lifecycle.md)：
 
-- **IStateservice 服務複製.打開**：此警告指示對`CreateServiceInstanceListeners`的`ICommunicationListener.OpenAsync`調用或重寫的`OnOpenAsync`呼叫已卡住。
+- **IStatefulServiceReplica**：此警告表示呼叫`CreateServiceInstanceListeners`、 `ICommunicationListener.OpenAsync`或時，如果遭到覆寫， `OnOpenAsync`則會停滯。
 
 - **IStatefulServiceReplica.Close** 和 **IStatefulServiceReplica.Abort**：最常見的案例是服務不接受傳遞至 `RunAsync` 的取消權杖。 也可能是那個 `ICommunicationListener.CloseAsync`，或者覆寫的 `OnCloseAsync` 是否已停滯。
 
-- **IStatefulServiceReplica.ChangeRole(S)** 和 **IStatefulServiceReplica.ChangeRole(N)**：最常見的案例是服務不接受傳遞至 `RunAsync` 的取消權杖。 在這種情況下，最佳解決方案是重新開機副本。
+- **IStatefulServiceReplica.ChangeRole(S)** 和 **IStatefulServiceReplica.ChangeRole(N)**：最常見的案例是服務不接受傳遞至 `RunAsync` 的取消權杖。 在此案例中，最佳解決方案是重新開機複本。
 
-- **IStatestateService 複製.更改角色（P）：** 最常見的情況是服務尚未從`RunAsync`返回任務。
+- **IStatefulServiceReplica. ChangeRole （P）**：最常見的情況是服務尚未從`RunAsync`傳回工作。
 
-其他可能卡住的 API 呼叫位於**IReplicator**介面上。 例如：
+可能會停滯的其他 API 呼叫會在**位於 ireplicator**介面上。 例如：
 
 - **IReplicator.CatchupReplicaSet**：此警告表示下列其中一種情況。 啟動的複本數不足。 若要了解是否為這種情況，請查看分割區中複本的複本狀態或 System.FM 健康情況報告，以進行停滯重新設定。 或者複本未認可作業。 PowerShell Cmdlet `Get-ServiceFabricDeployedReplicaDetail` 可用來判斷所有複本的進度。 問題出在其 `LastAppliedReplicationSequenceNumber` 值位於主要複本之 `CommittedSequenceNumber` 值後面的複本。
 
-- **IReplicator.Buildreplica（\<遠端複製id>）：** 此警告表示生成過程中存在問題。 如需詳細資訊，請參閱[複本生命週期](service-fabric-concepts-replica-lifecycle.md)。 可能是因為複寫器位址的設定不正確而造成。 如需詳細資訊，請參閱[設定具狀態可靠服務](service-fabric-reliable-services-configuration.md)和[在服務資訊清單中指定資源](service-fabric-service-manifest-resources.md)。 也可能是遠端節點上的問題。
+- **位於 ireplicator. ireplicator.buildreplica （\<遠端 ReplicaId>）**：此警告表示組建程式發生問題。 如需詳細資訊，請參閱[複本生命週期](service-fabric-concepts-replica-lifecycle.md)。 可能是因為複寫器位址的設定不正確而造成。 如需詳細資訊，請參閱[設定具狀態可靠服務](service-fabric-reliable-services-configuration.md)和[在服務資訊清單中指定資源](service-fabric-service-manifest-resources.md)。 也可能是遠端節點上的問題。
 
 ### <a name="replicator-system-health-reports"></a>複寫器系統健康情況報告
-**複製佇列已滿：**
-**系統.複製器**在複製佇列已滿時報告警告。 在主要資料庫上，複寫佇列通常會因為一或多個次要複本太慢認可作業而排滿。 在次要複本上，這通常是因為服務緩慢而無法套用作業所造成。 當佇列有空間時，警告就會被清除。
+**複寫佇列已滿：**
+當複寫佇列已滿時，**系統**會報告警告。 在主要資料庫上，複寫佇列通常會因為一或多個次要複本太慢認可作業而排滿。 在次要複本上，這通常是因為服務緩慢而無法套用作業所造成。 當佇列有空間時，警告就會被清除。
 
 * **SourceId**：System.Replicator
-* **屬性**：**主複製佇列狀態**或**輔助複製佇列狀態**，具體取決於副本角色。
+* **屬性**： **PrimaryReplicationQueueStatus**或**SecondaryReplicationQueueStatus**，視複本角色而定。
 * **後續步驟**：如果報表是在主要複本上，檢查叢集中節點之間的連線。 如果所有連線狀況良好，可能是至少一個具有高磁碟延遲時間的緩慢次要複本要套用作業。 如果報表是在次要複本上，請先檢查節點上的磁碟使用量和效能。 然後檢查從緩慢節點到主要複本的傳出連線。
 
-**遠端複製器連接狀態：**
-**系統.主副本上的複製器**在連接到輔助（遠端）複製器的連接不正常時報告警告。 遠端複寫器的位址會顯示在報表的訊息中，讓您更方便地偵測是否有錯誤組態傳入或者複寫器之間是否有網路問題。
+**RemoteReplicatorConnectionStatus：**
+主要複本上的**system.web**會在與次要（遠端）複寫器的連接狀況不良時回報警告。 遠端複寫器的位址會顯示在報表的訊息中，讓您更方便地偵測是否有錯誤組態傳入或者複寫器之間是否有網路問題。
 
 * **SourceId**：System.Replicator
 * **Property**：**RemoteReplicatorConnectionStatus**。
@@ -672,7 +672,7 @@ HealthEvents          :
 **System.Replicator** 會在複寫佇列已滿時回報警告。 在主要資料庫上，複寫佇列通常會因為一或多個次要複本太慢認可作業而排滿。 在次要複本上，這通常是因為服務緩慢而無法套用作業所造成。 當佇列有空間時，警告就會被清除。
 
 * **SourceId**：System.Replicator
-* **屬性**：**主複製佇列狀態**或**輔助複製佇列狀態**，具體取決於副本角色。
+* **屬性**： **PrimaryReplicationQueueStatus**或**SecondaryReplicationQueueStatus**，視複本角色而定。
 
 ### <a name="slow-naming-operations"></a>緩慢的命名作業
 **System.NamingService** 會在命名作業執行時間太長而無法接受時，報告其主要複本的健康情況。 命名作業的範例為 [CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) 或 [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync)。 您可以在 FabricClient 下找到更多方法。 例如，可以在[服務管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)或[屬性管理方法](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)底下找到這些方法。
@@ -742,7 +742,7 @@ HealthEvents          :
 當應用程式在節點上成功啟用時，System.Hosting 會回報為 OK。 否則，它會報告錯誤。
 
 * **SourceId**：System.Hosting
-* **屬性**：**啟動**，包括推出版本。
+* **Property**：**啟動**，包括首度發行版本。
 * **後續步驟**：如果應用程式的狀況不佳，請調查啟用失敗的原因。
 
 以下範例顯示成功啟用的情況：
@@ -787,7 +787,7 @@ HealthEvents                       :
 如果節點上的服務封裝成功啟用，System.Hosting 會回報為 OK。 否則，它會報告錯誤。
 
 * **SourceId**：System.Hosting
-* **屬性**： 啟動。
+* **屬性**：啟用。
 * **後續步驟**：調查啟用失敗的原因。
 
 ### <a name="code-package-activation"></a>程式碼封裝啟用
@@ -797,7 +797,7 @@ HealthEvents                       :
 * **Property**：使用前置詞 **CodePackageActivation**，並以 CodePackageActivation:CodePackageName:SetupEntryPoint/EntryPoint** 的形式包含程式碼套件的名稱和進入點。 例如，**CodePackageActivation:Code:SetupEntryPoint**。
 
 ### <a name="service-type-registration"></a>服務類型註冊
-如果已經成功註冊服務類型，則 System.Hosting 會回報為 OK。 如果註冊沒有及時完成，則報告錯誤，使用**ServiceType 註冊超時**進行配置。 如果執行階段已關閉，則會從節點取消註冊服務類型，且主機會回報警告。
+如果已經成功註冊服務類型，則 System.Hosting 會回報為 OK。 如果註冊未及時完成（如使用**servicetyperegistrationtimeout 來設定**所設定），則會回報錯誤。 如果執行階段已關閉，則會從節點取消註冊服務類型，且主機會回報警告。
 
 * **SourceId**：System.Hosting
 * **Property**：使用前置詞 **ServiceTypeRegistration**，並包含服務類型名稱。 例如，**ServiceTypeRegistration:FileStoreServiceType**。
@@ -862,8 +862,8 @@ HealthEvents               :
 如果在升級期間驗證失敗，或是節點的升級失敗，System.Hosting 會回報錯誤。
 
 * **SourceId**：System.Hosting
-* **屬性**： 使用首碼**Fabric 升級驗證**並包含升級版本。
-* **說明**：指向遇到的錯誤。
+* **Property**：使用前置詞**fabricupgradevalidation,** ，並包含升級版本。
+* **描述**：指向發生的錯誤。
 
 ### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>未針對資源控管計量定義的節點容量
 如果叢集資訊清單中未定義節點容量且已關閉自動偵測的組態，則 System.Hosting 會回報警告。 每當使用[資源控管](service-fabric-resource-governance.md)的服務套件在指定的節點上註冊時，Service Fabric 將會引發健康情況警告。

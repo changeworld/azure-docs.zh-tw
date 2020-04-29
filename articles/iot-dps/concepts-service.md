@@ -1,6 +1,6 @@
 ---
 title: Azure IoT 中樞裝置佈建服務的概念 | Microsoft Docs
-description: 描述設備佈建服務 （DPS） 和 IoT 中心特定于設備的服務調配概念
+description: 說明具有裝置布建服務（DPS）和 IoT 中樞的裝置專用的服務布建概念
 author: nberdy
 ms.author: nberdy
 ms.date: 09/18/2019
@@ -9,17 +9,17 @@ ms.service: iot-dps
 services: iot-dps
 manager: briz
 ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79285210"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>IoT 中樞裝置佈建服務服務概念
 
 IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於設定在指定 IoT 中樞上的全自動佈建裝置作業。 這項裝置佈建服務可以讓您以安全且可調整的方式[自動佈建](concepts-auto-provisioning.md)數百萬個裝置。
 
-裝置佈建程序分為兩個部分。 第一部分是通過*註冊*設備建立設備和 IoT 解決方案之間的初始連接。 第二個部分是根據解決方案的特定需求套用正確的*設定*。 這兩個步驟都完成之後，就已完整「佈建」** 該裝置。 裝置佈建服務會自動進行這兩個步驟，以提供順暢的裝置佈建體驗。
+裝置佈建程序分為兩個部分。 第一個部分是*註冊*裝置，以建立裝置與 IoT 解決方案之間的初始連線。 第二個部分是根據解決方案的特定需求套用正確的*設定*。 這兩個步驟都完成之後，就已完整「佈建」** 該裝置。 裝置佈建服務會自動進行這兩個步驟，以提供順暢的裝置佈建體驗。
 
 本文說明最適用於管理*服務*的佈建概念概觀。 本文與為裝置進行[雲端設定步驟](about-iot-dps.md#cloud-setup-step)，也就是部署準備工作的角色相關。
 
@@ -45,7 +45,7 @@ IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於�
 
 * **透過申請清單進行靜態設定**：您在申請清單中指定的所需 IoT 中樞，其優先順序高於服務等級的配置原則。
 
-## <a name="enrollment"></a>申請
+## <a name="enrollment"></a>註冊
 
 註冊是可透過自動佈建所註冊的裝置或裝置群組的記錄。 註冊記錄包含關於裝置或裝置群組的資訊，包括：
 - 裝置所使用的[證明機制](concepts-security.md#attestation-mechanism)
@@ -57,7 +57,7 @@ IoT 中樞裝置佈建服務是 IoT 中樞適用的協助程式服務，用於�
 
 ### <a name="enrollment-group"></a>申請群組
 
-申請群組為一組共用特定證明機制的裝置。 註冊組同時支援 X.509 和對稱性。 X.509 註冊組中的所有設備都提供 X.509 憑證，這些證書已由同一根憑證或中間憑證授權單位 （CA） 簽名。 對稱金鑰註冊組中的每個設備都顯示從組對稱金鑰派生的 SAS 權杖。 註冊群組名稱和憑證名稱必須是英數字元、小寫字母且可包含連字號。
+申請群組為一組共用特定證明機制的裝置。 註冊群組同時支援 x.509 和對稱。 X.509 註冊群組中的所有裝置都有相同根或中繼憑證授權單位單位（CA）所簽署的 x.509 憑證。 對稱金鑰註冊群組中的每個裝置都有衍生自群組對稱金鑰的 SAS 權杖。 註冊群組名稱和憑證名稱必須是英數字元、小寫字母且可包含連字號。
 
 > [!TIP]
 > 對於一大批共用所需初始設定的裝置，或是全都設定為相同租用戶的裝置，我們建議使用申請群組。

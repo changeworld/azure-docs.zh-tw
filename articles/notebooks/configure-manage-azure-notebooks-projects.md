@@ -1,18 +1,18 @@
 ---
-title: 配置和管理 Azure 筆記本預覽
-description: 瞭解如何通過 Azure 筆記本 UI 和直接終端訪問管理專案中繼資料、專案檔案、專案環境和設置步驟。
+title: 設定和管理 Azure Notebooks 預覽
+description: 瞭解如何透過 Azure Notebooks UI 和直接終端機存取來管理專案中繼資料、專案檔案、專案的環境和設定步驟。
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280595"
 ---
-# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />在 Azure 筆記本預覽中管理和設定項目
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />在 Azure Notebooks Preview 中管理和設定專案
 
-Azure 筆記本預覽中的專案實質上是運行 Jupyter 筆記本的基礎 Linux 虛擬機器以及資料夾和描述性中繼資料的配置。 
+在 Azure Notebooks Preview 中的專案基本上是 Jupyter 筆記本執行所在的基礎 Linux 虛擬機器的設定，以及檔案資料夾和描述性中繼資料。 
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -31,7 +31,7 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 ## <a name="compute-tier"></a>計算層
 
-預設情況下，專案在**免費計算**層上運行，該層限制為 4GB 記憶體和 1GB 資料，以防止濫用。 您可以使用在 Azure 訂閱中預配的不同虛擬機器來繞過這些限制並提高計算能力。 有關詳細資訊，請參閱[如何使用資料科學虛擬機器](use-data-science-virtual-machine.md)。
+根據預設，專案會在**免費計算**層上執行，其限制為 4 gb 的記憶體和1gb 的資料，以防止濫用。 您可以略過這些限制，並使用您在 Azure 訂用帳戶中布建的不同虛擬機器來增加計算能力。 如需詳細資訊，請參閱[如何使用資料科學虛擬機器](use-data-science-virtual-machine.md)。
 
 ## <a name="edit-project-metadata"></a>編輯專案中繼資料
 
@@ -40,7 +40,7 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 | 設定 | 描述 |
 | --- | --- |
 | 專案名稱 | Azure Notebooks 用於顯示用途的專案易記名稱。 例如，"Hello World in Python"。 |
-| 專案識別碼 | 自訂識別碼會成為您用來共用專案 URL 的一部分。 此 ID 只能使用字母、數位和連字號，限制為 30 個字元，不能是[保留的專案 ID](create-clone-jupyter-notebooks.md#reserved-project-ids)。 如果您不確定要使用的項目，常見的慣例是使用專案名稱的小寫版本，讓空格轉變成連字號，例如 「 my-notebook-project 」 (必要時，可截斷以符合長度限制)。 |
+| 專案識別碼 | 自訂識別碼會成為您用來共用專案 URL 的一部分。 此識別碼只能使用字母、數位和連字號、限制為30個字元，而且不能是[保留的專案識別碼](create-clone-jupyter-notebooks.md#reserved-project-ids)。 如果您不確定要使用的項目，常見的慣例是使用專案名稱的小寫版本，讓空格轉變成連字號，例如 「 my-notebook-project 」 (必要時，可截斷以符合長度限制)。 |
 | 公用專案 | 如果設定，可讓任何人存取的專案連結。 建立私人專案時，請清除此選項。 |
 | 隱藏複製 | 如果設定，其他使用者無法看到為此專案所做的複製清單。 隱藏複製對於與並非屬於相同組織的許多人員共用的專案相當有用，例如在使用 Notebook 來教授課程時。 |
 
@@ -56,16 +56,16 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 [+ 新增]**** 命令 (鍵盤快速鍵：n) 會建立新的檔案或資料夾。 使用命令時，請先選取要建立的項目類型：
 
-| 項目類型 | 描述 | 命令行為 |
+| 項目類型 | 說明 | 命令行為 |
 | --- | --- | --- |
-| **筆記本** | Jupyter Notebook | 顯示快顯，您可以在其中指定 Notebook 的檔案名稱和語言。 |
+| **Notebook** | Jupyter Notebook | 顯示快顯，您可以在其中指定 Notebook 的檔案名稱和語言。 |
 | **資料夾** | 子資料夾 | 在專案的檔案清單中建立及編輯欄位，在該欄位中輸入資料夾名稱。 |
 | **空白檔案** | 您可以在空白檔案中儲存任何內容，例如文字、資料等等。 | 在專案的檔案清單中建立及編輯欄位，在該欄位中輸入檔案名稱。 |
 | **Markdown** | Markdown 檔案。 | 在專案的檔案清單中建立及編輯欄位，在該欄位中輸入檔案名稱。 |
 
 ### <a name="upload-files"></a>上傳檔案
 
-**"上載"** 命令提供了兩個選項，用於從其他位置導入資料：**從 URL**和**從電腦**導入 。 如需詳細資訊，請參閱[使用 Azure Notebook 專案中的資料檔案](work-with-project-data-files.md)。
+[**上傳**] 命令提供兩個選項，可從其他位置匯入資料：**從 [URL** ] 和 [**從電腦**]。 如需詳細資訊，請參閱[使用 Azure Notebook 專案中的資料檔案](work-with-project-data-files.md)。
 
 ### <a name="select-file-specific-commands"></a>選取特定檔案的命令
 
@@ -110,7 +110,7 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 ### <a name="one-time-initialization-script"></a>單次初始化指令碼
 
-首次使用 Azure 筆記本為專案創建伺服器，它會在名為*aznbsetup.sh*的專案中查找檔。如果存在此檔，則 Azure 筆記本將運行它。 指令碼的輸出會在您的專案資料夾中儲存為 .aznbsetup.log**。
+第一次 Azure Notebooks 會建立專案的伺服器，它會在名為*aznbsetup.sh*的專案中尋找檔案。如果此檔案存在，Azure Notebooks 會執行它。 指令碼的輸出會在您的專案資料夾中儲存為 .aznbsetup.log**。
 
 ### <a name="environment-setup-steps"></a>環境設定步驟
 
@@ -126,14 +126,14 @@ Azure Notebooks 的專案儀表板可讓您管理檔案，或者設定專案的�
 
 專案的資訊取決於您選擇的作業類型：
 
-- **要求.txt**：在第二個下拉清單中，選擇專案中已有*的要求.txt*檔。 然後從出現的第三個下拉式清單中選取 Python 版本。 藉由使用 requirements.txt** 檔案，Azure Notebooks 會在啟動 Notebook 伺服器時執行 `pip install -r` 與 requirements.txt** 檔案。 您不需要明確安裝 Notebook 本身內的套件。
+- **需求 .txt**：在第二個下拉式清單中，選取已在專案中的 [*需求 .txt* ] 檔案。 然後從出現的第三個下拉式清單中選取 Python 版本。 藉由使用 requirements.txt** 檔案，Azure Notebooks 會在啟動 Notebook 伺服器時執行 `pip install -r` 與 requirements.txt** 檔案。 您不需要明確安裝 Notebook 本身內的套件。
 
-- **Shell 腳本**：在第二個下拉清單中，在專案中選擇 bash shell 腳本（通常是具有 *.sh*副檔名的檔），其中包含要運行以初始化環境的任何命令。
+- **Shell 腳本**：在第二個下拉式清單中，選取專案中的 bash Shell 腳本（通常是副檔名為*sh*的檔案），其中包含您想要執行以初始化環境的任何命令。
 
-- **環境.yml**：在第二個下拉清單中，使用 conda 環境為 Python 專案選擇*一個環境.yml*檔。
+- **Yml**：在第二個下拉式清單中，為使用 conda 環境的 Python 專案選取*yml*檔案。
 
    > [!WARNING]
-   > 由於這是正在開發中的預覽服務，因此當前存在一個已知問題，`Environment.yml`其中設置未按預期應用到專案中。 專案和中的 Jupyter 筆記本當前不載入指定的環境檔。
+   > 因為這是開發中的預覽服務，所以目前有一個已知問題，亦`Environment.yml`即此設定不會如預期般套用至您的專案。 中的專案和 Jupyter 筆記本目前不會載入指定的環境檔案。
 
 當您完成新增步驟時，選取 [儲存]****。
 
@@ -188,5 +188,5 @@ cat .nb.log
 
 ## <a name="next-steps"></a>後續步驟
 
-- [操作方式：使用專案資料檔案](work-with-project-data-files.md)
+- [如何：使用專案資料檔案](work-with-project-data-files.md)
 - [在 Notebook 中存取雲端資料](access-data-resources-jupyter-notebooks.md)

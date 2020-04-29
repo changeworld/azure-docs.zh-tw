@@ -17,13 +17,13 @@ ms.author: mimart
 ms.reviewer: paulgarn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0082d841faf22745e609d38444f4a97553b3c867
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79365861"
 ---
-# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>如何：配置 Azure AD SAML 權杖加密
+# <a name="how-to-configure-azure-ad-saml-token-encryption"></a>如何：設定 SAML 權杖加密 Azure AD
 
 > [!NOTE]
 > 權杖加密是 Azure Active Directory (Azure AD) 的高級功能。 若要深入了解 Azure AD 版本、功能及定價，請參閱 [Azure AD 定價](https://azure.microsoft.com/pricing/details/active-directory/)。
@@ -56,7 +56,7 @@ Azure AD 會使用 AES-256 加密 SAML 判斷提示的資料。
 
 您可以將公開憑證新增到 Azure 入口網站中的應用程式設定。
 
-1. 轉到[Azure 門戶](https://portal.azure.com)。
+1. 移至 [Azure 入口網站](https://portal.azure.com)。
 
 1. 移至 [Azure Active Directory] > [企業應用程式]**** 刀鋒視窗，然後選取要為其設定權杖加密的應用程式。
 
@@ -67,7 +67,7 @@ Azure AD 會使用 AES-256 加密 SAML 判斷提示的資料。
     > [!NOTE]
     > [權杖加密]**** 選項僅適用於從 Azure 入口網站中的 [企業應用程式]**** 刀鋒視窗設定的 SAML 應用程式，可以是應用程式庫或非資源庫應用程式。 對於其他應用程式，此功能表選項已停用。 對於透過 Azure 入口網站中的 [應用程式註冊]**** 體驗註冊的應用程式，您可以使用應用程式資訊清單、Microsoft Graph 或 PowerShell 為 SAML 權杖設定加密。
 
-1. 在**權杖加密**頁上，選擇 **"導入證書"** 以導入包含公共 X.509 憑證的 .cer 檔。
+1. 在 [**權杖加密**] 頁面上，選取 [匯**入憑證**] 以匯入包含公用 x.509 憑證的 .cer 檔案。
 
     ![匯入包含 X.509 憑證的 .cer 檔案](./media/howto-saml-token-encryption/import-certificate-small.png)
 
@@ -123,15 +123,15 @@ Azure AD 會使用 AES-256 加密 SAML 判斷提示的資料。
 
 ### <a name="to-configure-token-encryption-using-powershell"></a>使用 PowerShell 設定權杖加密
 
-1. 使用最新的 Azure AD PowerShell 模組連接到租戶。
+1. 使用最新的 Azure AD PowerShell 模組連接到您的租使用者。
 
-1. 使用**["設置 Azure 應用程式"](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** 命令設置權杖加密設定。
+1. 使用**[AzureApplication](https://docs.microsoft.com/powershell/module/azuread/set-azureadapplication?view=azureadps-2.0-preview)** 命令設定權杖加密設定。
 
     ```
     Set-AzureADApplication -ObjectId <ApplicationObjectId> -KeyCredentials "<KeyCredentialsObject>"  -TokenEncryptionKeyId <keyID>
     ```
 
-1. 使用以下命令讀取權杖加密設定。
+1. 使用下列命令讀取權杖加密設定。
 
     ```powershell
     $app=Get-AzureADApplication -ObjectId <ApplicationObjectId>

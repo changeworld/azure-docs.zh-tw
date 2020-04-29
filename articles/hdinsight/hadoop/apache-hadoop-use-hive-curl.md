@@ -1,6 +1,6 @@
 ---
 title: 在 HDInsight 中搭配使用 Apache Hadoop Hive 與 Curl - Azure
-description: 瞭解如何使用 Curl 遠端將 Apache Pig 作業提交到 Azure HDInsight。
+description: 瞭解如何使用捲曲從遠端提交 Apache Pig 作業到 Azure HDInsight。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/06/2020
 ms.openlocfilehash: 10a2f413142124db7547e68280a0d5e9abac9b98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79298745"
 ---
 # <a name="run-apache-hive-queries-with-apache-hadoop-in-hdinsight-using-rest"></a>搭配 HDInsight 中的 Apache Hadoop 使用 REST 來執行 Apache Hive 查詢
@@ -21,44 +21,44 @@ ms.locfileid: "79298745"
 
 了解如何搭配「Azure HDInsight 上的 Apache Hadoop」叢集使用 WebHCat REST API 來執行 Hive 查詢。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* HDInsight 上的 Apache Hadoop 叢集。 請參閱[在 Linux 上開始使用 HDInsight。](./apache-hadoop-linux-tutorial-get-started.md)
+* HDInsight 上的 Apache Hadoop 叢集。 請參閱[開始在 Linux 上使用 HDInsight](./apache-hadoop-linux-tutorial-get-started.md)。
 
-* REST 用戶端。 本文檔在 Windows PowerShell 上使用[調用 Web 請求](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest)，在[Bash](https://docs.microsoft.com/windows/wsl/install-win10)上[使用捲曲](https://curl.haxx.se/)。
+* REST 用戶端。 本檔使用 Windows PowerShell 上[的 WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) ，並在[Bash](https://docs.microsoft.com/windows/wsl/install-win10)上[捲曲](https://curl.haxx.se/)。
 
-* 如果使用 Bash，您還需要 jq，一個命令列 JSON 處理器。  請參閱[https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
+* 如果您使用 Bash，則也需要 jq 的命令列 JSON 處理器。  請參閱 [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/)。
 
-## <a name="base-uri-for-rest-api"></a>用於休息 API 的基礎 URI
+## <a name="base-uri-for-rest-api"></a>Rest API 的基底 URI
 
-HDInsight 上 REST API 的基本統一資源識別項 （URI） 是`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`，群集的名稱在哪裡`CLUSTERNAME`。  URI 中的群集名稱區分**大小寫**。  雖然 URI （ ）`CLUSTERNAME.azurehdinsight.net`完全限定的功能變數名稱 （FQDN） 部分中的群集名稱不區分大小寫，但 URI 中的其他事件則區分大小寫。
+HDInsight 上 REST API 的基底統一資源識別元（URI）是`https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME`，其中`CLUSTERNAME`是您的叢集名稱。  Uri 中的叢集名稱會區分**大小寫**。  雖然 URI （`CLUSTERNAME.azurehdinsight.net`）的完整功能變數名稱（FQDN）部分中的叢集名稱不區分大小寫，但 uri 中的其他專案會區分大小寫。
 
 ## <a name="authentication"></a>驗證
 
 在使用 cURL 或與 WebHCat 進行任何其他 REST 通訊時，您必須提供 HDInsight 叢集系統管理員的使用者名稱和密碼來驗證要求。 透過 [基本驗證](https://en.wikipedia.org/wiki/Basic_access_authentication)來保護 REST API 的安全。 為確保認證安全地傳送至伺服器，請一律使用安全 HTTP (HTTPS) 提出要求。
 
-### <a name="setup-preserve-credentials"></a>設置（保留憑據）
+### <a name="setup-preserve-credentials"></a>安裝程式（保留認證）
 
-保留憑據以避免為每個示例重新輸入憑據。  群集名稱將保留在單獨的步驟中。
+保留您的認證，以避免在每個範例中重新輸入。  叢集名稱將會在個別的步驟中保留。
 
-**A. 巴什**  
-使用實際密碼替換`PASSWORD`編輯下面的腳本。  然後輸入命令。
+**A Bash**  
+以您的實際密碼取代`PASSWORD` ，以編輯下面的腳本。  然後輸入命令。
 
 ```bash
 export password='PASSWORD'
 ```  
 
-**B. PowerShell**執行以下代碼，並在快顯視窗中輸入憑據：
+**B. PowerShell**執行下列程式碼，並在快顯視窗中輸入您的認證：
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
 ```
 
-### <a name="identify-correctly-cased-cluster-name"></a>識別正確案例的群集名稱
+### <a name="identify-correctly-cased-cluster-name"></a>識別正確大小寫的叢集名稱
 
-視叢集的建立方式而定，叢集名稱的實際大小寫可能與您預期的不同。  此處的步驟將顯示實際大小寫，然後將其存儲在變數中，以便以後的所有示例。
+視叢集的建立方式而定，叢集名稱的實際大小寫可能與您預期的不同。  此處的步驟會顯示實際的大小寫，然後將它儲存在所有後續範例的變數中。
 
-編輯下面的腳本以替換為`CLUSTERNAME`群集名稱。 然後輸入命令。 （FQDN 的群集名稱不區分大小寫。
+編輯下列腳本，將取代`CLUSTERNAME`為您的叢集名稱。 然後輸入命令。 （FQDN 的叢集名稱不區分大小寫）。
 
 ```bash
 export clusterName=$(curl -u admin:$password -sS -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters" | jq -r '.items[].Clusters.cluster_name')
@@ -146,7 +146,7 @@ $clusterName
 
    這些陳述式會執行下列動作：
 
-   * `DROP TABLE`- 如果表已存在，則將其刪除。
+   * `DROP TABLE`-如果資料表已存在，則會予以刪除。
    * `CREATE EXTERNAL TABLE` - 在 Hive 中建立新的「外部」資料表。 外部資料表只會將資料表定義儲存在 Hive 中。 資料會留在原來的位置。
 
      > [!NOTE]  
@@ -155,8 +155,8 @@ $clusterName
      > 捨棄外部資料表並 **不會** 刪除資料，只會刪除資料表定義。
 
    * `ROW FORMAT` - 設定資料格式的方式。 每個記錄中的欄位會以空格分隔。
-   * `STORED AS TEXTFILE LOCATION`- 資料存儲的位置（示例/資料目錄）並將其存儲為文本。
-   * `SELECT`- 選擇**列 t4**包含值 **[ERROR]** 的所有行的計數。 這個陳述式會傳回值 **3**，因為有三個資料列包含此值。
+   * `STORED AS TEXTFILE LOCATION`-資料的儲存位置（example/data 目錄），而且會儲存為文字。
+   * `SELECT`-選取資料行**t4**包含 **[ERROR]** 值的所有資料列計數。 這個陳述式會傳回值 **3**，因為有三個資料列包含此值。
 
      > [!NOTE]  
      > 請注意，在搭配 Curl 使用時，會以 `+` 字元取代 HiveQL 陳述式之間的空格。 加上引號的值若包含空格，例如分隔符號，則不應以 `+`取代。

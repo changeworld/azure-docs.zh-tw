@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 管理 Azure 資料湖分析
+title: 使用 Azure CLI 管理 Azure Data Lake Analytics
 description: 本文說明如何使用 Azure CLI 入口網站來管理 Data Lake Analytics 作業、資料來源和使用者。
 services: data-lake-analytics
 author: jasonwhowell
@@ -9,10 +9,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.openlocfilehash: 69a48952ef273acb8cf7eb0ec5968e12b962b622
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79454358"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-command-line-interface-cli"></a>使用 Azure 命令列介面 (CLI) 管理 Azure Data Lake Analytics
@@ -22,7 +22,7 @@ ms.locfileid: "79454358"
 了解如何使用 Azure CLI 管理 Azure Data Lake Analytics 帳戶、資料來源、使用者和工作。 若要使用其他工具查看管理主題，請按一下上方的索引標籤選取器。
 
 
-**必要條件**
+**先決條件**
 
 開始進行本教學課程之前，您必須具備下列資源：
 
@@ -90,8 +90,8 @@ ms.locfileid: "79454358"
 
 Data Lake Analytics 目前支援以下兩個資料來源：
 
-* [Azure 資料湖存儲](../data-lake-store/data-lake-store-overview.md)
-* [Azure 存儲](../storage/common/storage-introduction.md)
+* [Azure Data Lake 存放區](../data-lake-store/data-lake-store-overview.md)
+* [Azure 儲存體](../storage/common/storage-introduction.md)
 
 當您建立分析帳戶時，必須指定 Azure Data Lake 儲存體帳戶作為預設的儲存體帳戶。 預設的 Data Lake 儲存體帳戶是用來儲存作業中繼資料與作業稽核記錄。 建立分析帳戶後，就可以新增其他 Azure Data Lake 儲存體帳戶和/或 Azure 儲存體帳戶。 
 
@@ -211,9 +211,9 @@ az dla job recurrence list --account "<Data Lake Analytics Account Name>"
 az dla job recurrence show --account "<Data Lake Analytics Account Name>" --recurrence-identity "<Recurrence ID>"
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [Microsoft Azure Data Lake Analytics 概觀](data-lake-analytics-overview.md)
-* [使用 Azure 門戶開始使用資料湖分析](data-lake-analytics-get-started-portal.md)
-* [使用 Azure 門戶管理 Azure 資料湖分析](data-lake-analytics-manage-use-portal.md)
-* [使用 Azure 門戶監視 Azure 資料湖分析作業並疑難排解](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+* [使用 Azure 入口網站開始使用 Data Lake Analytics](data-lake-analytics-get-started-portal.md)
+* [使用 Azure 入口網站管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
+* [使用 Azure 入口網站監視 Azure Data Lake Analytics 作業並進行疑難排解](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 

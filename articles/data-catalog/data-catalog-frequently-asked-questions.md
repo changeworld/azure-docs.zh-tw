@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: 7dbb1b4a8b85350b8bf8a6df0c9035a19055444c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79409014"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 資料目錄的常見問題集
@@ -53,13 +53,13 @@ ms.locfileid: "79409014"
 ## <a name="how-do-i-request-support-for-another-data-source"></a>如何要求另一個資料來源的支援？
 若要提交功能要求與其他意見，請前往 [Azure 意見論壇 - 資料目錄](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources)。
 
-## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>為什麼在嘗試創建新目錄時，我收到錯誤*目錄已存在*？
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>當我嘗試建立新的類別目錄時，為什麼會收到錯誤*目錄*？
 
-當您使用 Power BI Pro 許可證購買 Office 365 E5 時，Microsoft 會在訂閱區域中自動創建預設目錄。 此目錄使用免費 SKU。 Office 365 / Power BI 使用授權在 Office 365 管理頁中管理。 
+當您購買具有 Power BI Pro 授權的 Office 365 E5 時，Microsoft 會自動在訂用帳戶的區域中建立預設目錄。 此目錄使用免費的 SKU。 Office 365/Power BI 使用者授權是在 Office 365 管理頁面中進行管理。 
 
-但是，這種類型的資料目錄沒有**管理員選項**，並且在**Azure 門戶**中不可見。 您不能刪除這種類型的資料目錄。 同樣，不允許重命名資料目錄，也不能將其移動到其他區域。 
+不過，這種類型的資料目錄並沒有**系統管理員選項**，而且在**Azure 入口網站**中看不到。 您無法刪除這種類型的資料目錄。 同樣地，您不能重新命名資料目錄，也無法將它移至另一個區域。 
 
-分配 Power BI Pro 許可證的使用者帳戶在使用 Power BI Pro 許可證註冊 Office 365 E5 時，根據授權合約可以訪問資料目錄。 這種類型的使用者可以完全訪問資料目錄資產，而無需管理許可權。 此類使用者*不是*Azure 資料目錄中**目錄使用者**角色的一部分。
+指派 Power BI Pro 授權的使用者帳戶，會在使用 Power BI Pro 授權註冊 Office 365 E5 時，自動擁有資料目錄的存取權。 這種類型的使用者在沒有系統管理許可權的情況下，具有資料目錄資產的完整存取權。 這種類型的使用者*不*是 Azure 資料目錄中**目錄使用者**角色的一部分。
 
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>如何開始使用資料目錄？
@@ -87,7 +87,7 @@ ms.locfileid: "79409014"
 >
 
 > [!NOTE]
-> 若資料來源 (例如 SQL Server Analysis Services) 具有第一級的 **Description** 屬性，資料目錄的資料來源註冊工具就會擷取該屬性值。 對於缺少一流**描述**屬性*的本地*SQL Server 關係資料庫，資料目錄資料源註冊工具從物件和列**的ms_description**擴充屬性中提取該值。 SQL Azure 不支援此屬性。 如需詳細資訊，請參閱[使用資料庫物件的擴充屬性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
+> 若資料來源 (例如 SQL Server Analysis Services) 具有第一級的 **Description** 屬性，資料目錄的資料來源註冊工具就會擷取該屬性值。 若為*內部部署*SQL Server 缺少第一類**Description**屬性的關係資料庫，資料目錄資料來源註冊工具會從物件和資料行的**ms_description**擴充屬性中，解壓縮值。 SQL Azure 不支援這個屬性。 如需詳細資訊，請參閱[使用資料庫物件的擴充屬性](https://technet.microsoft.com/library/ms190243%28v=sql.105%29.aspx)。
 >
 >
 

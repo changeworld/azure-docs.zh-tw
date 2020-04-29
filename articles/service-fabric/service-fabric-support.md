@@ -1,15 +1,15 @@
 ---
-title: 瞭解 Azure 服務交換矩陣支援選項
+title: 瞭解 Azure Service Fabric 支援選項
 description: 支援的 Azure Service Fabric 叢集版本和檔案支援票證連結
 author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282090"
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric 支援選項
@@ -26,9 +26,9 @@ ms.locfileid: "79282090"
 - [Microsoft 頂級支援](https://support.microsoft.com/en-us/premier)。
 
 > [!Note]
-> 在青銅可靠性層或單節點群集上運行的群集將僅允許您運行測試工作負載。 如果您在青銅可靠性或單節點群集上運行群集時遇到問題，Microsoft 支援小組將協助您緩解此問題，但不會執行根本原因分析。 有關詳細資訊，請參閱[群集的可靠性特徵](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)。
+> 在銅級可靠性層或單一節點叢集上執行的叢集將可讓您僅執行測試工作負載。 如果您遇到在銅可靠性或單一節點叢集上執行之叢集的問題，Microsoft 支援小組會協助您減輕問題，但不會執行根本原因分析。 如需詳細資訊，請參閱叢集[的可靠性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)。
 >
-> 有關生產就緒群集需要什麼的詳細資訊，請參閱[生產就緒清單](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
+> 如需適用于生產環境就緒叢集的詳細資訊，請參閱[生產環境就緒檢查清單](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)。
 
 <a id="getlivesitesupportonprem"></a>
 

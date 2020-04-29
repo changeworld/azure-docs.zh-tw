@@ -1,55 +1,55 @@
 ---
-title: 將資源部署到租戶
-description: 介紹如何在 Azure 資源管理器範本中的租戶作用域中部署資源。
+title: 將資源部署到租使用者
+description: 說明如何在 Azure Resource Manager 範本的租使用者範圍中部署資源。
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: fcdfc5b1c4333a0d7eeec80a09ad85579a1f8b77
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460257"
 ---
-# <a name="create-resources-at-the-tenant-level"></a>在租戶級別創建資源
+# <a name="create-resources-at-the-tenant-level"></a>在租使用者層級建立資源
 
-隨著組織的成熟，您可能需要跨 Azure AD 租戶定義和分配[策略](../../governance/policy/overview.md)或[基於角色的訪問控制項](../../role-based-access-control/overview.md)。 使用租戶級別範本，您可以聲明性地應用策略並在全域級別分配角色。
+當您的組織成熟時，您可能需要在 Azure AD 租使用者之間定義和指派[原則](../../governance/policy/overview.md)或[角色型存取控制](../../role-based-access-control/overview.md)。 您可以使用租使用者層級範本，以宣告方式套用原則，並在全域層級指派角色。
 
 ## <a name="supported-resources"></a>支援的資源
 
-您可以在租戶級別部署以下資源類型：
+您可以在租使用者層級部署下列資源類型：
 
-* [部署](/azure/templates/microsoft.resources/deployments)- 用於部署到管理組或訂閱的嵌套範本。
-* [策略分配](/azure/templates/microsoft.authorization/policyassignments)
+* [部署](/azure/templates/microsoft.resources/deployments)-適用于部署至管理群組或訂用帳戶的嵌套範本。
+* [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
-* [角色指派](/azure/templates/microsoft.authorization/roleassignments)
+* [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
 * [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
 ### <a name="schema"></a>結構描述
 
-用於租戶部署的架構與資源組部署的架構不同。
+您用於租使用者部署的架構與資源群組部署的架構不同。
 
-對於範本，請使用：
+針對範本，請使用：
 
 ```json
 https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#
 ```
 
-對於所有部署作用域，參數檔的架構都相同。 對於參數檔，請使用：
+所有部署範圍的參數檔案架構都相同。 針對參數檔案，請使用：
 
 ```json
 https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#
 ```
 
-## <a name="required-access"></a>必需的訪問
+## <a name="required-access"></a>必要的存取權
 
-部署範本的主體必須具有在租戶作用域中創建資源的許可權。 主體必須具有執行部署操作 （`Microsoft.Resources/deployments/*`） 和創建範本中定義的資源的許可權。 例如，要創建管理組，主體必須在租戶作用域中具有"參與者"許可權。 要創建角色指派，主體必須具有擁有者許可權。
+部署範本的主體必須具有在租使用者範圍建立資源的許可權。 主體必須擁有執行部署動作的許可權（`Microsoft.Resources/deployments/*`），並建立在範本中定義的資源。 例如，若要建立管理群組，主體必須具有租使用者範圍的「參與者」許可權。 若要建立角色指派，主體必須具有 [擁有者] 許可權。
 
-Azure 活動目錄的全域管理員不自動具有分配角色的許可權。 要在租戶範圍內啟用範本部署，全域管理員必須執行以下步驟：
+Azure Active Directory 的全域管理員不會自動擁有指派角色的許可權。 若要在租使用者範圍啟用範本部署，全域管理員必須執行下列步驟：
 
-1. 提升帳戶存取權限，以便全域管理員可以分配角色。 有關詳細資訊，請參閱[提升管理所有 Azure 訂閱和管理組的訪問](../../role-based-access-control/elevate-access-global-admin.md)。
+1. 提升帳戶存取權，讓全域管理員可以指派角色。 如需詳細資訊，請參閱提高[存取權以管理所有 Azure 訂用帳戶和管理群組](../../role-based-access-control/elevate-access-global-admin.md)。
 
-1. 將擁有者或參與者分配給需要部署範本的主體。
+1. 將擁有者或參與者指派給需要部署範本的主體。
 
    ```azurepowershell-interactive
    New-AzRoleAssignment -SignInName "[userId]" -Scope "/" -RoleDefinitionName "Owner"
@@ -59,13 +59,13 @@ Azure 活動目錄的全域管理員不自動具有分配角色的許可權。 �
    az role assignment create --assignee "[userId]" --scope "/" --role "Owner"
    ```
 
-主體現在具有部署範本所需的許可權。
+主體現在具有部署範本的必要許可權。
 
 ## <a name="deployment-commands"></a>部署命令
 
-租戶部署的命令與資源組部署的命令不同。
+租使用者部署的命令與資源群組部署的命令不同。
 
-對於 Azure CLI，使用[az 部署租戶創建](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create)：
+針對 Azure CLI，請使用[az deployment tenant create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create)：
 
 ```azurecli-interactive
 az deployment tenant create \
@@ -74,7 +74,7 @@ az deployment tenant create \
   --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
 ```
 
-對於 Azure 電源外殼，請使用[新租戶部署](/powershell/module/az.resources/new-aztenantdeployment)。
+針對 Azure PowerShell，請使用[AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment)。
 
 ```azurepowershell-interactive
 New-AzTenantDeployment `
@@ -83,32 +83,32 @@ New-AzTenantDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
 ```
 
-對於 REST API，請使用[部署 - 在租戶作用域創建或更新](/rest/api/resources/deployments/createorupdateattenantscope)。
+針對 REST API，請使用 [[部署-在租使用者範圍建立或更新](/rest/api/resources/deployments/createorupdateattenantscope)]。
 
 ## <a name="deployment-location-and-name"></a>部署位置和名稱
 
-對於租戶級別部署，必須為部署提供位置。 部署的位置與部署的資源的位置是分開的。 部署位置指定存儲部署資料的位置。
+針對租使用者層級部署，您必須提供部署的位置。 部署的位置與您部署的資源位置不同。 部署位置會指定部署資料的儲存位置。
 
-您可以為部署提供名稱，或使用預設部署名稱。 預設名稱是範本檔的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
+您可以提供部署的名稱，或使用預設的部署名稱。 預設名稱是範本檔案的名稱。 例如，部署名為 **azuredeploy.json** 的範本會建立預設的部署名稱 **azuredeploy**。
 
-對於每個部署名稱，位置是不可變的。 當其他位置存在同名的現有部署時，無法在一個位置創建部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
+針對每個部署名稱，此位置是不可變的。 當不同位置有相同名稱的現有部署時，您無法在一個位置建立部署。 如果您收到錯誤代碼 `InvalidDeploymentLocation`，請使用不同的名稱或與先前該名稱部署相同的位置。
 
 ## <a name="use-template-functions"></a>使用範本函式
 
-對於租戶部署，使用範本函數時需要考慮一些重要事項：
+針對租使用者部署，使用範本函式時有一些重要的考慮：
 
 * **不**支援 [resourceGroup()](template-functions-resource.md#resourcegroup) 函式。
-* 不支援[訂閱（）](template-functions-resource.md#subscription)功能。 **not**
+* **不**支援[訂閱（）](template-functions-resource.md#subscription)函數。
 * 支援 [reference()](template-functions-resource.md#reference) 和 [list()](template-functions-resource.md#list) 函式。
-* 使用[租戶 ResourceId（）](template-functions-resource.md#tenantresourceid)函數獲取在租戶級別部署的資源的資源識別碼。
+* 使用[tenantResourceId （）](template-functions-resource.md#tenantresourceid)函式來取得在租使用者層級部署之資源的資源識別碼。
 
-  例如，要獲取策略定義的資源識別碼，請使用：
+  例如，若要取得原則定義的資源識別碼，請使用：
   
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
   ```
   
-  返回的資源識別碼 具有以下格式：
+  傳回的資源識別碼具有下列格式：
   
   ```json
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -116,7 +116,7 @@ New-AzTenantDeployment `
 
 ## <a name="create-management-group"></a>建立管理群組
 
-[以下範本](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/new-mg)創建管理組。
+[下列範本](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/new-mg)會建立管理群組。
 
 ```json
 {
@@ -142,7 +142,7 @@ New-AzTenantDeployment `
 
 ## <a name="assign-role"></a>指派角色
 
-[以下範本](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment)在租戶作用域中分配角色。
+[下列範本](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment)會在租使用者範圍指派角色。
 
 ```json
 {
@@ -184,5 +184,5 @@ New-AzTenantDeployment `
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要瞭解如何分配角色，請參閱使用[RBAC 和 Azure 資源管理器範本管理對 Azure 資源的訪問](../../role-based-access-control/role-assignments-template.md)。
-* 您還可以在[訂閱級別](deploy-to-subscription.md)或[管理組級別](deploy-to-management-group.md)部署範本。
+* 若要瞭解如何指派角色，請參閱[使用 RBAC 和 Azure Resource Manager 範本來管理 Azure 資源的存取權](../../role-based-access-control/role-assignments-template.md)。
+* 您也可以在訂用帳戶[層](deploy-to-subscription.md)級或[管理群組層級](deploy-to-management-group.md)部署範本。

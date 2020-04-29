@@ -1,16 +1,16 @@
 ---
 title: 如何調整 Azure Redis 快取的規模
-description: 瞭解如何使用 Azure 門戶和 Azure PowerShell 和 Azure CLI 等工具為 Redis 實例縮放 Azure 緩存。
+description: 瞭解如何使用 Azure 入口網站以及 Azure PowerShell 和 Azure CLI 等工具，來調整您的 Azure Cache for Redis 實例。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
 ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277995"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>如何調整 Azure Redis 快取的規模
@@ -64,7 +64,7 @@ ms.locfileid: "79277995"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-在修改`Sku`或`ShardCount`屬性時，可以使用[Set-AzRedisCache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) Cmdlet 來縮放 Redis 實例`Size`的 Azure 緩存。 下列範例示範如何將名為 `myCache` 的快取調整為 2.5 GB 快取。 
+修改`Size`、或`Sku` `ShardCount`屬性時，您可以使用[new-azrediscache](https://docs.microsoft.com/powershell/module/az.rediscache/set-azrediscache) Cmdlet 來調整 Azure Cache for Redis 實例與 PowerShell。 下列範例示範如何將名為 `myCache` 的快取調整為 2.5 GB 快取。 
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
@@ -126,7 +126,7 @@ ms.locfileid: "79277995"
 ### <a name="how-does-scaling-work"></a>調整運作方式如何？
 * **基本** 快取在調整為不同的大小時會關閉，並會使用新的大小佈建新的快取。 在此期間，快取無法使用，而且快取中的所有資料都會遺失。
 * **基本**快取在調整為**標準**快取時，會佈建複本快取，且會從主要快取將資料複製到複本快取。 調整程序期間仍可使用快取。
-* 當**標準**緩存縮放到不同大小或**高級**緩存時，其中一個副本將關閉並重新預配到新大小和傳輸的資料，然後另一個副本在重新預配之前執行容錯移轉，類似于其中一個緩存節點發生故障期間發生的過程。
+* 當**標準**快取調整為**不同的大小**或高階快取時，會關閉其中一個複本，並將其重新布建至新的大小並傳輸資料，然後另一個複本會先執行容錯移轉，再進行重新布建，類似于其中一個快取節點失敗期間發生的進程。
 
 ### <a name="will-i-lose-data-from-my-cache-during-scaling"></a>我是否會在調整期間遺失快取中的資料？
 * **基本** 快取調整為新的大小時，會遺失所有資料，且無法在調整作業期間使用快取。
@@ -166,7 +166,7 @@ ms.locfileid: "79277995"
 
 
 ### <a name="how-long-does-scaling-take"></a>調整需要多長的時間？
-縮放時間取決於緩存中的資料量，而大量資料需要更長的時間才能完成。 縮放大約需要 20 分鐘。 對於群集緩存，縮放每個分片大約需要 20 分鐘。
+調整時間取決於快取中的資料量，以及需要較長時間來完成的資料量。 調整大約需要20分鐘的時間。 針對叢集快取，調整每個分區大約需要20分鐘的時間。
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>如何分辨調整何時完成？
 在 Azure 入口網站中，您可以看到調整作業進行中。 調整完成時，快取的狀態會變更為 [執行中] ****。

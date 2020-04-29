@@ -1,6 +1,6 @@
 ---
-title: 使用新的工作階段主機擴展現有主機池 - Azure
-description: 如何在 Windows 虛擬桌面中使用新工作階段主機擴展現有主機池。
+title: 使用新的工作階段主機擴充現有的主機集區-Azure
+description: 如何在 Windows 虛擬桌面中使用新的工作階段主機擴充現有的主機集區。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -9,123 +9,123 @@ ms.date: 02/21/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: aee5195fe86fed3e631908a38d3bdb7d5e4883b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79365214"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新工作階段主機擴展現有主機池
+# <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的工作階段主機擴充現有的主機集區
 
-在主機池內增加使用量時，可能需要使用新工作階段主機擴展現有主機池以處理新負載。
+當您在主機集區中增加使用量時，您可能需要使用新的工作階段主機擴充現有的主機集區，以處理新的負載。
 
-本文將介紹如何使用新的工作階段主機擴展現有主機池。
+本文將告訴您如何使用新的工作階段主機來擴充現有的主機集區。
 
-## <a name="what-you-need-to-expand-the-host-pool"></a>擴展主機池所需的內容
+## <a name="what-you-need-to-expand-the-host-pool"></a>擴充主機集區所需的內容
 
-在開始之前，請確保使用以下方法之一創建了主機池和工作階段主機虛擬機器 （VM）：
+開始之前，請確定您已使用下列其中一種方法建立主機集區和工作階段主機虛擬機器（Vm）：
 
-- [Azure 應用商店產品/服務](./create-host-pools-azure-marketplace.md)
-- [GitHub Azure 資源管理器範本](./create-host-pools-arm-template.md)
+- [Azure Marketplace 供應專案](./create-host-pools-azure-marketplace.md)
+- [GitHub Azure Resource Manager 範本](./create-host-pools-arm-template.md)
 - [使用 PowerShell 建立主機集區](./create-host-pools-powershell.md)
 
-首次創建主機池和工作階段主機 VM 時，還需要以下資訊：
+當您第一次建立主機集區和工作階段主機 Vm 時，您也需要下列資訊：
 
-- VM 大小、映射和名稱首碼
-- 域聯接和 Windows 虛擬桌面租戶管理員憑據
+- VM 大小、映射和名稱前置詞
+- 加入網域和 Windows 虛擬桌面租使用者系統管理員認證
 - 虛擬網路名稱及子網路名稱
 
-接下來的三節是可用於擴展主機池的三種方法。 您可以使用您喜歡的任意部署工具執行任一操作。
+接下來的三個區段是您可以用來擴充主機集區的三種方法。 您可以使用您所熟悉的任何部署工具來執行這項操作。
 
 >[!NOTE]
->在部署階段，如果上一工作階段主機 VM 資源當前已關閉，您將看到錯誤訊息。 出現這些錯誤是因為 Azure 無法運行 PowerShell DSC 擴展，以驗證工作階段主機 VM 是否已正確註冊到現有主機池。 您可以安全地忽略這些錯誤，也可以通過在啟動部署過程之前啟動現有主機池中的所有工作階段主機 VM 來避免錯誤。
+>在部署階段，您會看到先前工作階段主機 VM 資源（如果目前已關閉）的錯誤訊息。 因為 Azure 無法執行 PowerShell DSC 延伸模組來驗證工作階段主機 Vm 已正確登錄至現有的主機集區，所以會發生這些錯誤。 您可以放心地忽略這些錯誤，也可以在開始部署程式之前，先啟動現有主機集區中的所有工作階段主機 Vm 來避免錯誤。
 
 ## <a name="redeploy-from-azure"></a>從 Azure 重新部署
 
-如果已使用[Azure 應用商店產品或](./create-host-pools-azure-marketplace.md) [GitHub Azure 資源管理器範本](./create-host-pools-arm-template.md)創建了主機池和工作階段主機 VM，則可以從 Azure 門戶重新部署相同的範本。 重新部署範本會自動重新輸入您輸入到原始範本中的所有資訊，但密碼除外。
+如果您已使用[Azure Marketplace](./create-host-pools-azure-marketplace.md)供應專案或[GitHub Azure Resource Manager 範本](./create-host-pools-arm-template.md)建立主機集區和工作階段主機 vm，您可以從 Azure 入口網站重新部署相同的範本。 重新部署範本時，會自動重新進入您在原始範本中輸入的所有資訊，但密碼除外。
 
-下面瞭解如何重新部署 Azure 資源管理器範本以展開主機池：
+以下是如何重新部署 Azure Resource Manager 範本以擴充主機集區的方法：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
-2. 從 Azure 門戶頂部的搜索欄中，搜索**資源組**並選擇**服務**下的項。
-3. 查找並選擇創建主機池時創建的資源組。
-4. 在瀏覽器左側的面板中，選擇 **"部署**"。
-5. 為主機池創建過程選擇適當的部署：
-     - 如果使用 Azure 應用商店產品創建原始主機池，請選擇從**rds.wvd 預配-主機池**開始的部署。
-     - 如果使用 GitHub Azure 資源管理器範本創建原始主機池，請選擇名為**Microsoft.template**的部署。
-6. 選擇**重新部署**。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+2. 從 Azure 入口網站頂端的搜尋列中，搜尋 [**資源群組**]，然後選取 [**服務**] 底下的專案。
+3. 尋找並選取您在建立主機集區時所建立的資源群組。
+4. 在瀏覽器左側的面板中，選取 [**部署**]。
+5. 為您的主機集區建立程式選取適當的部署：
+     - 如果您已建立具有 Azure Marketplace 供應專案的原始主機集區，請選取 [以**wvd**開頭的部署]。
+     - 如果您已建立具有 GitHub Azure Resource Manager 範本的原始主機集區，請選取名為 [ **Microsoft 範本**] 的部署。
+6. 選取 [重新**部署**]。
      
      >[!NOTE]
-     >如果在選擇 **"重新部署"** 時範本未自動重新部署，請在瀏覽器左側的面板中選擇 **"範本"，** 然後選擇 **"部署**"。
+     >如果您在選取 [重新**部署**] 時不會自動重新部署範本，請在瀏覽器左側的面板中選取 [**範本**]，然後選取 [**部署**]。
 
-7. 選擇包含現有主機池中的當前工作階段主機 VM 的資源組。
+7. 選取包含現有主機集區中目前工作階段主機 Vm 的資源群組。
      
      >[!NOTE]
-     >如果看到一個錯誤，指示您選擇其他資源組，即使您輸入的資源組正確，請選擇另一個資源組，然後選擇原始資源組。
+     >如果您看到錯誤訊息，指出您所輸入的資源群組是正確的，則請選取其他資源群組，然後選取原始的資源群組。
 
-8. 輸入以下_artifactsLocation *URL*：`https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
-9. 在*Rdsh 實例數*中輸入所需的新工作階段主機總數。 例如，如果要將主機池從 5 個工作階段主機擴展到 8 個，請輸入**8**。
-10. 輸入用於現有域 UPN 的相同現有域密碼。 不要更改使用者名，因為當您運行範本時，這將導致錯誤。
-11. 輸入您為*租戶管理員 Upn 或應用程式 ID*輸入的使用者或應用程式 ID 所使用的相同租戶管理員密碼。再次，不要更改使用者名。
-12. 完成提交以展開主機池。
+8. 針對 [ *_artifactsLocation*輸入下列 URL：`https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
+9. 輸入您想要的*實例數目為 Rdsh 的*新工作階段主機總數。 例如，如果您要將主機集區從五個工作階段主機擴充到八個，請輸入**8**。
+10. 輸入您用於現有網域 UPN 的現有網域密碼。 請勿變更使用者名稱，因為這會在您執行範本時造成錯誤。
+11. 輸入您針對 [租使用者系統*管理員 Upn] 或 [應用程式識別碼*] 輸入的使用者或應用程式識別碼所使用的相同租使用者系統管理員密碼。同樣地，請勿變更使用者名稱。
+12. 完成提交以擴充您的主機集區。
 
-## <a name="run-the-azure-marketplace-offering"></a>運行 Azure 應用商店產品/服務
+## <a name="run-the-azure-marketplace-offering"></a>執行 Azure Marketplace 供應專案
 
-[使用 Azure 應用商店按照創建主機池](./create-host-pools-azure-marketplace.md)中的說明進行操作，直到到達["運行 Azure 應用商店"產品以預配新的主機池](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)。 達到該點時，需要為每個選項卡輸入以下資訊：
+遵循[使用 Azure Marketplace 建立主機集](./create-host-pools-azure-marketplace.md)區中的指示，直到[執行 Azure Marketplace 供應專案以布建新的主機集](./create-host-pools-azure-marketplace.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)區為止。 當您進入該點時，您必須在每個索引標籤上輸入下列資訊：
 
 ### <a name="basics"></a>基本概念
 
-除*預設桌面使用者*外，本節中的所有值都應與首次創建主機池和工作階段主機 VM 時提供的內容匹配：
+此區段中的所有值都應該符合您第一次建立主機集區和工作階段主機 Vm 時所提供的內容（*預設的桌面使用者*除外）：
 
-1.    對於*訂閱*，選擇首次創建主機池的訂閱。
-2.    對於*資源組*，選擇現有主機池工作階段主機 VM 所在的同一資源組。
-3.    對於*區域*，選擇現有主機池工作階段主機 VM 所在的同一區域。
-4.    對於*主機池名稱*，輸入現有主機池的名稱。
-5.    對於*桌面類型*，選擇與現有主機池匹配的桌面類型。
-6.    對於*預設桌面使用者*，輸入要登錄到 Windows 虛擬桌面用戶端並在 Azure 應用商店產品完成後訪問桌面的任何其他使用者的逗號分隔清單。 例如，如果要user3@contoso.com分配和user4@contoso.com訪問，請輸入user3@contoso.com。user4@contoso.com
-7.    選擇**下一個 ：配置虛擬機器**。
+1.    針對 [*訂*用帳戶]，選取您第一次建立主機集區的訂用帳戶。
+2.    針對 [*資源群組*]，選取現有主機集區工作階段主機 vm 所在的相同資源群組。
+3.    針對 [*地區*]，選取現有主機集區工作階段主機 vm 所在的相同區域。
+4.    在 [ *Hostpool 名稱*] 中，輸入現有主機集區的名稱。
+5.    針對 [*桌上型電腦類型*]，選取符合現有主機集區的桌面類型。
+6.    針對 [*預設桌面使用者*]，請輸入以逗號分隔的清單，其中列出您想要登入 Windows 虛擬桌面用戶端的任何其他使用者，並在 Azure Marketplace 供應專案完成後存取桌面。 例如，如果您想要user3@contoso.com指派和user4@contoso.com存取，請輸入user3@contoso.com、user4@contoso.com。
+7.    選取 **[下一步：設定虛擬機器]**。
 
 >[!NOTE]
->除*預設桌面使用者*外，所有欄位必須與現有主機池中配置的內容完全符合。 如果存在導致新主機池的不匹配。
+>除了*預設的桌面使用者*以外，所有欄位都必須完全符合現有主機集區中已設定的內容。 如果出現不相符的情況，將會產生新的主機集區。
 
 ### <a name="configure-virtual-machines"></a>設定虛擬機器
 
-除 VM 總數外，本節中的所有參數值都應與首次創建主機池和工作階段主機 VM 時提供的內容相匹配。 您輸入的 VM 數將是擴展主機池中的 VM 數：
+此區段中的所有參數值都應該符合您第一次建立主機集區和工作階段主機 Vm 時所提供的內容，但 Vm 總數除外。 您輸入的 Vm 數目會是擴充主機集區中的 Vm 數目：
 
-1. 選擇與現有工作階段主機 VM 匹配的 VM 大小。
+1. 選取符合現有工作階段主機 Vm 的 VM 大小。
     
     >[!NOTE]
     >如果您要尋找的特定 VM 大小未出現在 VM 大小選取器中，原因是我們尚未將其上架到 Azure Marketplace 工具中。 若要要求某個 VM 大小，請在 [Windows 虛擬桌面 UserVoice 論壇](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)中建立要求或附議現有要求。
 
-2. 自訂*使用方式設定檔*、*使用者總數*和*虛擬機器參數數*，以選擇要在主機池中具有的工作階段主機總數。 例如，如果要將主機池從 5 個工作階段主機擴展到 8 個，請將這些選項配置為訪問 8 個虛擬機器。
+2. 自訂 [*使用設定檔*]、[*使用者總數*] 和 [*虛擬機器數目*] 參數，以選取您想要在主機集區中擁有的工作階段主機總數。 例如，如果您要將主機集區從五個工作階段主機擴充為八個，請將這些選項設定為可取得8部虛擬機器。
 3. 輸入虛擬機器的名稱前置詞。 比方說，如果您輸入名稱「前置詞」，則虛擬機器會稱為 "prefix-0"、"prefix-1"，依此類推。
-4. 選擇 **"下一步 ：虛擬機器設置**"。
+4. 選取 **[下一步：虛擬機器設定]**。
 
 ### <a name="virtual-machine-settings"></a>虛擬機器設定
 
-本節中的所有參數值都應與首次創建主機池和工作階段主機 VM 時提供的內容相匹配：
+此區段中的所有參數值都應該符合您第一次建立主機集區和工作階段主機 Vm 時所提供的內容：
 
-1. 對於*映射源*和*圖像作業系統版本*，輸入首次創建主機池時提供的資訊。
-2. 對於*AD 域加入 UPN*和相關密碼，請輸入您首次創建主機池以將 VM 加入活動目錄域時提供的資訊。 這些憑據將用於在虛擬機器上創建本地帳戶。 您可以重置這些本地帳戶，以便以後更改其憑據。
-3. 對於虛擬網路資訊，為現有主機池工作階段主機 VM 所在的位置選擇相同的虛擬網路和子網。
-4. 選擇**下一個 ：配置 Windows 虛擬桌面資訊**。
+1. 針對 [*映射來源*] 和 [*映射作業系統版本*]，輸入您第一次建立主機集區時所提供的相同資訊。
+2. 針對 [ *AD 網域加入 UPN* ] 和 [相關聯的密碼]，輸入您第一次建立主機集區以將 vm 加入 Active Directory 網域時所提供的相同資訊。 這些認證將用來在您的虛擬機器上建立本機帳戶。 您可以重設這些本機帳戶，稍後再變更其認證。
+3. 針對 [虛擬網路] 資訊，選取現有主機集區工作階段主機 Vm 所在的相同虛擬網路和子網。
+4. 選取 **[下一步]：設定 Windows 虛擬桌面資訊**。
 
 ### <a name="windows-virtual-desktop-information"></a>Windows 虛擬桌面資訊
 
-本節中的所有參數值都應與首次創建主機池和工作階段主機 VM 時提供的內容相匹配：
+此區段中的所有參數值都應該符合您第一次建立主機集區和工作階段主機 Vm 時所提供的內容：
 
 1. 針對 [Windows 虛擬桌面租用戶群組名稱]**，輸入包含您租用戶的租用戶群組。 除非系統將特定租用戶群組名稱提供給您，否則將它保留為預設值。
 2. 針對 [Windows 虛擬桌面租用戶名稱]**，輸入您將在其中建立此主機集區的租用戶名稱。
-3. 指定首次創建主機池和工作階段主機 VM 時使用的相同憑據。 如果使用服務主體，請輸入服務主體所在的 Azure 活動目錄實例的 ID。
-4. 選擇**下一個 ： 查看 + 創建**。
+3. 指定您第一次建立主機集區和工作階段主機 Vm 時所使用的相同認證。 如果您使用服務主體，請輸入您的服務主體所在之 Azure Active Directory 實例的識別碼。
+4. 選取 **[下一步]： [檢查 + 建立]**。
 
-## <a name="run-the-github-azure-resource-manager-template"></a>運行 GitHub Azure 資源管理器範本
+## <a name="run-the-github-azure-resource-manager-template"></a>執行 GitHub Azure Resource Manager 範本
 
-按照運行 Azure[資源管理器範本中的說明來預配新的主機池](./create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool)，並提供除*Rdsh 實例數*之外的所有相同的參數值。 在運行範本後，輸入主機池中所需的工作階段主機 VM 數。 例如，如果要將主機池從 5 個工作階段主機擴展到 8 個，請輸入**8**。
+依照執行 Azure Resource Manager 範本中的指示來布建[新的主機集](./create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool)區，並提供所有相同的參數值，但不含*Rdsh 實例數目*。 在執行範本之後，請輸入您想要在主機集區中的工作階段主機 Vm 數目。 例如，如果您要將主機集區從五個工作階段主機擴充到八個，請輸入**8**。
 
 ## <a name="next-steps"></a>後續步驟
 
-現在，您已經擴展了現有的主機池，您可以登錄到 Windows 虛擬桌面用戶端以作為使用者會話的一部分對其進行測試。 您可以使用以下任一用戶端連接到會話：
+現在您已擴充現有的主機集區，您可以登入 Windows 虛擬桌面用戶端，在使用者會話中進行測試。 您可以使用下列任何一種用戶端連接到會話：
 
 - [與 Windows 桌面用戶端連線](./connect-windows-7-and-10.md)
 - [與 Web 用戶端連線](./connect-web.md)

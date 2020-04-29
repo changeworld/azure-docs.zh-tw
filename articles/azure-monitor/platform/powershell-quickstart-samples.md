@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 2/14/2018
 ms.openlocfilehash: 9f039f71954998ef561d1efd1e559318740c86ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274316"
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure 監視器 PowerShell 快速入門範例
@@ -20,7 +20,7 @@ ms.locfileid: "79274316"
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="set-up-powershell"></a>設定 PowerShell
-設定要在電腦上執行的 PowerShell (如果您還未設定)。 有關詳細資訊，請參閱[如何安裝和配置 PowerShell](/powershell/azure/overview)。
+設定要在電腦上執行的 PowerShell (如果您還未設定)。 如需詳細資訊，請參閱[如何安裝和設定 PowerShell](/powershell/azure/overview)。
 
 ## <a name="examples-in-this-article"></a>本文中的範例
 本文中的範例將說明如何使用Azure 監視器 Cmdlet。 您也可以在 [Azure 監視器 Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 檢閱整個 Azure 監視器 PowerShell Cmdlet 清單。
@@ -38,7 +38,7 @@ Connect-AzAccount
 Get-AzSubscription
 ```
 
-要查看工作上下文（命令針對哪個訂閱運行），請使用以下命令：
+若要查看您的工作內容（您的命令執行所在的訂用帳戶），請使用下列命令：
 
 ```powershell
 Get-AzContext
@@ -51,9 +51,9 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log-for-a-subscription"></a>擷取訂用帳戶的活動記錄檔
-使用[獲取-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) Cmdlet。  以下是一些常見的範例。 活動日誌保存最後 90 天的操作。 在此時間之前使用日期會導致錯誤訊息。  
+使用[AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) Cmdlet。  以下是一些常見的範例。 活動記錄檔會保存過去90天的作業。 在這段時間之前使用日期會產生錯誤訊息。  
 
-查看當前日期/時間以驗證以下命令中使用的時間：
+請查看目前的日期/時間，以確認要在下列命令中使用的時間：
 ```powershell
 Get-Date
 ```
@@ -97,7 +97,7 @@ Get-AzLog -MaxRecord 10
 `Get-AzLog` 支援其他許多參數。 如需詳細資訊，請參閱 `Get-AzLog` 參考。
 
 > [!NOTE]
-> `Get-AzLog` 只提供 15 天的歷程記錄。 使用 **-MaxRecords**參數可以查詢最後一個 N 事件，超過 15 天。 若要存取 15 天前的事件，請使用 REST API 或 SDK (使用 SDK 的 C# 範例)。 如果您未包含 **StartTime**，則預設值是 **EndTime** 減去一小時。 如果您未包含 **EndTime**，則預設值是目前的時間。 所有時間都是採用 UTC 格式。
+> `Get-AzLog` 只提供 15 天的歷程記錄。 使用 **-MaxRecords**參數可讓您查詢超過15天的最後 N 個事件。 若要存取 15 天前的事件，請使用 REST API 或 SDK (使用 SDK 的 C# 範例)。 如果您未包含 **StartTime**，則預設值是 **EndTime** 減去一小時。 如果您未包含 **EndTime**，則預設值是目前的時間。 所有時間都是採用 UTC 格式。
 > 
 > 
 
@@ -148,7 +148,7 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 
 | 參數 (parameter) | value |
 | --- | --- |
-| 名稱 |simpletestdiskwrite |
+| Name |simpletestdiskwrite |
 | 此警示規則的位置 |美國東部 |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |

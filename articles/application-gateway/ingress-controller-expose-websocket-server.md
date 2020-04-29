@@ -1,6 +1,6 @@
 ---
-title: 將 WebSocket 伺服器公開給應用程式閘道
-description: 本文提供有關如何將 WebSocket 伺服器公開到具有 AKS 群集入口控制器的應用程式閘道的資訊。
+title: 公開 WebSocket 伺服器以應用程式閘道
+description: 本文提供有關如何使用 AKS 叢集的輸入控制器，向應用程式閘道公開 WebSocket 伺服器的資訊。
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 1f068c9d98a827afd16da01bdc40cbb6ca5dc465
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79297827"
 ---
-# <a name="expose-a-websocket-server-to-application-gateway"></a>將 WebSocket 伺服器公開給應用程式閘道
+# <a name="expose-a-websocket-server-to-application-gateway"></a>公開 WebSocket 伺服器以應用程式閘道
 
-如應用程式閘道 v2 文檔中所述 -[它為 WebSocket 和 HTTP/2 協定提供本機支援](features.md#websocket-and-http2-traffic)。 請注意，對於應用程式閘道和 Kubernetes 入口 ， 沒有使用者可配置的設置可選擇性地啟用或禁用 WebSocket 支援。
+如應用程式閘道 v2 檔中所述，它會[提供 WebSocket 和 HTTP/2 通訊協定的原生支援](features.md#websocket-and-http2-traffic)。 請注意，這兩個應用程式閘道和 Kubernetes 輸入都沒有使用者可設定的設定，可選擇性地啟用或停用 WebSocket 支援。
 
-下面的 Kubernetes 部署 YAML 顯示了用於部署 WebSocket 伺服器的最小配置，這與部署常規 Web 服務器相同：
+以下的 < Kubernetes 部署 YAML 顯示用來部署 WebSocket 伺服器的最低設定，這與部署一般 web 伺服器相同：
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -75,9 +75,9 @@ spec:
               servicePort: 80
 ```
 
-鑒於所有先決條件都已滿足，並且您的 AKS 中由 Kubernetes 入口控制應用程式閘道，上述部署將導致 WebSocket 伺服器在應用程式閘道的公共 IP 和`ws.contoso.com`域的埠 80 上公開。
+假設所有必要條件都已完成，且您的 AKS 中有 Kubernetes 輸入所控制的應用程式閘道，上述部署會導致 Websocket 伺服器公開在應用程式閘道公用 IP 和`ws.contoso.com`網域的埠80上。
 
-以下 cURL 命令將測試 WebSocket 伺服器部署：
+下列捲曲的命令會測試 WebSocket 伺服器部署：
 ```sh
 curl -i -N -H "Connection: Upgrade" \
         -H "Upgrade: websocket" \
@@ -88,10 +88,10 @@ curl -i -N -H "Connection: Upgrade" \
         http://1.2.3.4:80/ws
 ```
 
-## <a name="websocket-health-probes"></a>WebSocket 運行狀況探測器
+## <a name="websocket-health-probes"></a>WebSocket 健全狀況探查
 
-如果部署未顯式定義運行狀況探測，應用程式閘道將嘗試 WebSocket 伺服器終結點上的 HTTP GET。
-取決於伺服器實現（[這裡是我們愛的](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)）WebSocket特定的標頭可能需要（`Sec-Websocket-Version`例如）。
-由於應用程式閘道不添加 WebSocket 標頭，因此來自 WebSocket 伺服器的應用程式閘道的運行狀況探測回應很可能是`400 Bad Request`。
-因此，應用程式閘道會將您的 pod 標記為不正常，這最終將`502 Bad Gateway`導致 WebSocket 伺服器的消費者。
-為了避免這種情況，您可能需要向伺服器添加用於運行狀況檢查的 HTTP GET 處理常式（`/health`例如，返回`200 OK`）。
+如果您的部署並未明確定義健康情況探查，應用程式閘道會嘗試在您的 WebSocket 伺服器端點上進行 HTTP GET。
+視伺服器的執行而定（[這裡是一個我們愛](https://github.com/gorilla/websocket/blob/master/examples/chat/main.go)用的），可能需要 WebSocket`Sec-Websocket-Version`特定的標頭（例如）。
+因為應用程式閘道不會新增 WebSocket 標頭，所以來自 WebSocket 伺服器的應用程式閘道健康情況探查回應很可能是`400 Bad Request`。
+因此應用程式閘道會將您的 pod 標示為狀況不良，最後會導致`502 Bad Gateway` WebSocket 伺服器取用者的。
+若要避免這種情況，您可能需要將健康狀態檢查的 HTTP GET 處理常式新增`/health`至您的伺服器（ `200 OK`例如，這會傳回）。

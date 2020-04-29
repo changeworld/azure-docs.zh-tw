@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79283273"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure 網路監看員中連線疑難排解的簡介
@@ -46,7 +46,7 @@ ms.locfileid: "79283273"
 |Hops[].Issues | 在該躍點檢查期間遇到之問題的集合。 如果沒有任何問題，則值會是空白。|
 |Hops[].Issues[].Origin | 在目前躍點，發生問題之處。 可能的值包括：<br/> **Inbound** - 問題是在從上一個躍點到目前躍點的連結上<br/>**Outbound** - 問題是在從目前躍點到下一個躍點的連結上<br/>**Local** - 問題位於目前的躍點。|
 |Hops[].Issues[].Severity | 偵測到之問題的嚴重性。 可能的值為 **Error** 和 **Warning**。 |
-|Hops[].Issues[].Type |找到的問題類型。 可能的值包括： <br/>**Cpu**<br/>**記憶體**<br/>**GuestFirewall**<br/>**Dns 解析**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Hops[].Issues[].Type |找到的問題類型。 可能的值包括： <br/>**使用率**<br/>**記憶體**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Hops[].Issues[].Context |找到之問題的相關詳細資料。|
 |Hops[].Issues[].Context[].key |傳回之索引鍵值組的索引鍵。|
 |Hops[].Issues[].Context[].value |傳回之索引鍵值組的值。|

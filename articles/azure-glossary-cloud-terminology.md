@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276474"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 詞彙︰Azure 平台上的雲端術語字典
@@ -34,7 +34,7 @@ Microsoft Azure 詞彙是 Azure 平台上簡短的雲端術語字典。 另請�
 請參閱[ Office 365 帳戶註冊 Azure 訂用帳戶](cost-management-billing/manage/office-365-account-for-azure-subscription.md)和[您可以用來登入的帳戶](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)。
 
 ## <a name="api-app"></a>API 應用程式
-[應用服務應用](#app-service-app)的另一個名稱。
+[App Service 應用程式](#app-service-app)的另一個名稱。
 
 ## <a name="app-service-app"></a>App Service 應用程式
 [Azure App Service](app-service/overview.md) 提供的計算資源，可供裝載網站或 Web 應用程式、Web API或[行動裝置應用程式後端](app-service-mobile/app-service-mobile-value-prop.md)。 App Service 應用程式也稱為「應用程式服務」**、「Web 應用程式」**、「API 應用程式」** 和「行動裝置應用程式」**。
@@ -46,12 +46,12 @@ Microsoft Azure 詞彙是 Azure 平台上簡短的雲端術語字典。 另請�
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Azure 傳統部署模型
 您可以使用兩個 [部署模型](resource-manager-deployment-model.md) 之一來部署 Azure 中的資源 (新模型是 Azure Resource Manager)。 有些 Azure 服務僅支援 Resource Manager 部署模型、有些僅支援傳統部署模型，而有些則可支援兩個模型。 每個 Azure 服務的文件指定其支援的模型。
 
-## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure 命令列介面 （CLI）
+## <a name="azure-command-line-interface-cli"></a><a name="cli"></a>Azure 命令列介面（CLI）
 命令列介面，可用來從 Windows、macOS 和 Linux 電腦管理 Azure 服務。  某些服務或服務功能可以只透過 PowerShell 或 CLI 進行管理。 請參閱 [Azure CLI](/cli/azure)
 
-## <a name="azure-powershell"></a><a name="powershell"></a>Azure 電源外殼
+## <a name="azure-powershell"></a><a name="powershell"></a>Azure PowerShell
 命令列介面，可透過命令列從 Windows 電腦管理 Azure 服務。 某些服務或服務功能可以只透過 PowerShell 或 CLI 進行管理。
-[請參閱如何安裝和配置 Azure PowerShell](/powershell/azure/overview)
+請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="azure-resource-manager-deployment-model"></a><a name="arm-model"></a>Azure Resource Manager 部署模型
 您可以使用兩個 [部署模型](resource-manager-deployment-model.md) 之一來部署 Microsoft Azure 中的資源 (另一個是傳統部署模型)。 有些 Azure 服務僅支援 Resource Manager 部署模型、有些僅支援傳統部署模型，而有些則可支援兩個模型。 每個 Azure 服務的文件指定其支援的模型。
@@ -75,7 +75,7 @@ Microsoft Azure 詞彙是 Azure 平台上簡短的雲端術語字典。 另請�
 
 ## <a name="limits"></a>限制
 您可以建立的資源數目或可達到的效能評定。 限制通常會與訂用帳戶、服務和供應項目相關聯。  
-請參閱[Azure 訂閱和服務限制、配額和約束](azure-resource-manager/management/azure-subscription-service-limits.md)
+請參閱[Azure 訂用帳戶和服務限制、配額和條件約束](azure-resource-manager/management/azure-subscription-service-limits.md)
 
 ## <a name="load-balancer"></a>負載平衡器
 網路上電腦之間分散連入流量的資源。 在 Azure 中，負載平衡器會將流量分散到定義於內部負載平衡器集中的虛擬機器。 [負載平衡器](load-balancer/load-balancer-overview.md) 可以是面向網際網路的，也可以是內部的。  
@@ -94,7 +94,7 @@ Microsoft Azure 詞彙是 Azure 平台上簡短的雲端術語字典。 另請�
 地理區域內不會跨越國界且包含一或多個資料中心的地區。 定價、區域性服務和供應項目類型是在區域層級公開。 區域通常會與另一個區域配對，兩者可多達數百英哩遠。 區域配對可用來做為災害復原及高可用性案例的機制。 也稱為「位置」**。  
 請參閱 [Azure 區域](best-practices-availability-paired-regions.md)
 
-## <a name="resource"></a>resource
+## <a name="resource"></a>資源
 Azure 方案一部分的項目。 每個 Azure 服務可讓您部署不同類型的資源，例如資料庫或虛擬機器。   
 請參閱 [Azure Resource Manager 概觀](azure-resource-manager/management/overview.md)
 
@@ -114,7 +114,7 @@ Azure 方案一部分的項目。 每個 Azure 服務可讓您部署不同類型
 用於控制可指派給使用者、群組和服務的存取權的方式。 角色能夠在 Azure 資源上執行建立、管理及讀取之類的動作。  
 請參閱 [RBAC：內建角色](role-based-access-control/built-in-roles.md)
 
-## <a name="service-level-agreement-sla"></a><a name="sla"></a>服務等級協定 （SLA）
+## <a name="service-level-agreement-sla"></a><a name="sla"></a>服務等級協定（SLA）
 此協定會描述 Microsoft 對執行時間與連線能力的承諾。 每個 Azure 服務都有特定的 SLA。  
 請參閱[服務等級協定](https://azure.microsoft.com/support/legal/sla/)
 
@@ -147,13 +147,13 @@ Azure 方案一部分的項目。 每個 Azure 服務可讓您部署不同類型
 請參閱[關於虛擬機器擴充功能和功能 (Windows)](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 或[關於虛擬機器擴充功能和功能 (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="virtual-network"></a><a name="vnet"></a>虛擬網路
-一種網路，可提供與所有其他 Azure 租用戶隔離之 Azure 資源間的連線能力。 [Azure VPN 閘道](vpn-gateway/vpn-gateway-about-vpngateways.md)允許您在虛擬網路之間以及虛擬網路和本地網路之間建立連接。 您可以完全控制虛擬網路內的 IP 位址區塊、DNS 設定、安全性原則和路由表。  
+一種網路，可提供與所有其他 Azure 租用戶隔離之 Azure 資源間的連線能力。 [Azure VPN 閘道](vpn-gateway/vpn-gateway-about-vpngateways.md)可讓您建立虛擬網路與虛擬網路與內部部署網路之間的連線。 您可以完全控制虛擬網路內的 IP 位址區塊、DNS 設定、安全性原則和路由表。  
 請參閱[虛擬網路概觀](virtual-network/virtual-networks-overview.md)  
 
 ## <a name="web-app"></a>Web 應用程式
 [App Service 應用程式](#app-service-app)的另一個名稱。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [開始使用 Azure](https://azure.microsoft.com/get-started/)
 * [雲端資源中心](https://azure.microsoft.com/resources/)  

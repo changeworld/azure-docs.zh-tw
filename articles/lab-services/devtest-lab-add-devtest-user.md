@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
 ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284274"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中新增擁有者和使用者
@@ -37,7 +37,7 @@ Azure DevTest Labs 的存取權是由 [Azure 角色型存取控制 (RBAC)](../ro
 
 下表說明使用者可在每個角色中執行的動作︰
 
-| **此角色中的使用者可以執行的動作** | **開發人員測試實驗室使用者** | **擁有者** | **參與者** |
+| **此角色中的使用者可以執行的動作** | **DevTest Labs 使用者** | **擁有者** | **參與者** |
 | --- | --- | --- | --- |
 | **實驗室工作** | | | |
 | 將使用者新增至實驗室 |否 |是 |否 |
@@ -64,16 +64,16 @@ Azure DevTest Labs 的存取權是由 [Azure 角色型存取控制 (RBAC)](../ro
 可透過 Azure 入口網站在實驗室層級新增擁有者和使用者。 使用者可以是具備有效 [Microsoft 帳戶 (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account) 的外部使用者。
 下列步驟會引導您進行在 Azure DevTest Labs 新增擁有者或使用者至實驗室的程序︰
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-2. 選擇**所有服務**，然後從清單中選擇**DevTest 實驗室**。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+2. 選取 [**所有服務**]，然後從清單中選取 [ **DevTest Labs** ]。
 3. 從實驗室清單中，選取所需的實驗室。
-4. 在實驗室的邊欄選項卡上，選擇 **"配置"和"策略**"。 
+4. 在實驗室的分頁上，選取 [設定**和原則**]。 
 5. 請在 [組態和原則]**** 頁面上，從左側功能表中選取 [存取控制 (IAM)]****。 
 6. 在工具列上選取 [新增角色指派]**** 以將使用者新增至角色。
 1. 在 [新增權限]**** 視窗中，執行下列動作： 
     1. 選取角色 (例如：DevTest Labs 使用者)。 [可在每個角色執行的動作](#actions-that-can-be-performed-in-each-role) 一節列出使用者可在擁有者、DevTest 使用者和參與者角色中執行的各種動作。
     2. 選取要新增至角色的使用者。 
-    3. 選取 [儲存]****。 
+    3. 選取 [儲存]  。 
 11. 當您返回 [使用者] **** 刀鋒視窗時，該使用者已新增。  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>使用 PowerShell 將外部使用者新增至實驗室
@@ -119,13 +119,13 @@ Azure DevTest Labs 的存取權是由 [Azure 角色型存取控制 (RBAC)](../ro
 
 若要對 Azure 訂用帳戶新增擁有者，請遵循下列步驟︰
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 2. 選取 [所有服務]****，然後從清單中選取 [訂用帳戶]****。
 3. 選取所需的訂用帳戶。
 4. 選取 [存取] **** 圖示。 
    
     ![存取使用者](./media/devtest-lab-add-devtest-user/access-users.png)
-5. 在 **"使用者"** 邊欄選項卡上，選擇 **"添加**"。
+5. 在 [**使用者**] 分頁上，選取 [**新增**]。
    
     ![新增使用者](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
 6. 在 [選取角色]**** 刀鋒視窗中，選取 [擁有者]****。

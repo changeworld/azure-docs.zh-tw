@@ -1,37 +1,37 @@
 ---
-title: 在 Azure 函數中管理連接
+title: 管理 Azure Functions 中的連接
 description: 了解如何使用靜態連線用戶端來避免 Azure Functions 中的效能問題。
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: 872ad9a1b8f0a7da6fe410e68f08469ac11045a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276448"
 ---
-# <a name="manage-connections-in-azure-functions"></a>在 Azure 函數中管理連接
+# <a name="manage-connections-in-azure-functions"></a>管理 Azure Functions 中的連接
 
-函數應用中的函數共用資源。 這些共用資源包括連接：HTTP 連接、資料庫連接和與 Azure 存儲等服務的連接。 同時執行許多函式時，可能會將可用的連線用完。 本文介紹如何對函數進行編碼，以避免使用比所需更多的連接。
+函數應用程式中的函式會共用資源。 這些共用的資源包括連線： HTTP 連線、資料庫連接，以及與服務（例如 Azure 儲存體）的連接。 同時執行許多函式時，可能會將可用的連線用完。 本文說明如何撰寫函式的程式碼，以避免使用超過所需的連接。
 
 ## <a name="connection-limit"></a>連接限制
 
-可用連接的數量是有限的，部分原因是函數應用在[沙箱環境中](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)運行。 沙箱對代碼施加的限制之一是限制出站連接數，當前每個實例有 600 個活動連接（共 1，200 個）。 達到此限制時，函數運行時將以下消息寫入日誌： `Host thresholds exceeded: Connections`。 有關詳細資訊，請參閱[函數服務限制](functions-scale.md#service-limits)。
+可用的連線數目有限，部分原因是函式應用程式會在[沙箱環境](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox)中執行。 沙箱對您程式碼施加的其中一項限制是輸出連線數目的限制，這是目前每個實例600個作用中（1200 total）個連線。 當您達到此限制時，函數執行時間會將下列訊息寫入至記錄`Host thresholds exceeded: Connections`檔：。 如需詳細資訊，請參閱[函數服務限制](functions-scale.md#service-limits)。
 
-此限制是每個實例。 當[縮放控制器添加函數應用實例](functions-scale.md#how-the-consumption-and-premium-plans-work)以處理更多請求時，每個實例都有獨立的連接限制。 這意味著沒有全域連接限制，並且所有活動實例之間可以有超過 600 個活動連接。
+這是每個實例的限制。 當[調整控制器新增函式應用程式實例](functions-scale.md#how-the-consumption-and-premium-plans-work)來處理更多要求時，每個實例都有獨立的連接限制。 這表示沒有全域連線限制，而且在所有作用中的實例上，您可以擁有超過600個作用中的連接。
 
-進行故障排除時，請確保已為函數應用啟用了應用程式見解。 應用程式見解允許您查看函數應用的指標，如執行。 有關詳細資訊，請參閱[在應用程式見解中查看遙測](functions-monitoring.md#view-telemetry-in-application-insights)。  
+進行疑難排解時，請確定您已啟用函數應用程式的 Application Insights。 Application Insights 可讓您查看函數應用程式的計量，例如執行。 如需詳細資訊，請參閱[View 遙測 in Application Insights](functions-monitoring.md#view-telemetry-in-application-insights)。  
 
 ## <a name="static-clients"></a>靜態用戶端
 
-若要避免保有超過所需的連線，請重複使用用戶端執行個體，而不是在每次函式引動過程建立新的執行個體。 我們建議將用戶端連接重新用於可能編寫函數的任何語言。 例如，如果使用單個靜態用戶端，則 .NET 用戶端（如[HttpClient、DocumentClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)） 和 Azure 存儲用戶端可以管理連接。 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-)
+若要避免保有超過所需的連線，請重複使用用戶端執行個體，而不是在每次函式引動過程建立新的執行個體。 我們建議您針對可能會在其中撰寫函式的任何語言重複使用用戶端連接。 例如，如果您使用單一靜態用戶端，則[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)、 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+)和 Azure 儲存體的 .net 用戶端可以管理連接。
 
-在 Azure 函數應用程式中使用特定于服務的用戶端時，應遵循以下一些準則：
+以下是當您在 Azure Functions 應用程式中使用服務特定的用戶端時，應遵循的一些指導方針：
 
-- *不要*創建具有每個函式呼叫的新用戶端。
-- *創建*單個靜態用戶端，每個函式呼叫都可以使用該用戶端。
-- 如果不同的函數使用相同的服務，*請考慮*在共用説明器類中創建單個靜態用戶端。
+- *請勿*使用每個函式呼叫來建立新的用戶端。
+- *請*建立單一靜態用戶端，每個函式呼叫都可以使用。
+- 如果不同的函式使用相同的服務，*請考慮*在共用的 helper 類別中建立單一靜態用戶端。
 
 ## <a name="client-code-examples"></a>用戶端程式碼範例
 
@@ -39,7 +39,7 @@ ms.locfileid: "79276448"
 
 ### <a name="httpclient-example-c"></a>HttpClient 範例 (C#)
 
-下面是創建靜態[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)實例的 C# 函數代碼的示例：
+以下是建立靜態[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)實例的 c # 函式程式碼範例：
 
 ```cs
 // Create a single, static HttpClient
@@ -52,19 +52,19 @@ public static async Task Run(string input)
 }
 ```
 
-關於 .NET 中的[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)的常見問題是"我應該處置我的用戶端嗎？ 通常，在使用完物件後，可以`IDisposable`釋放實現的物件。 但是，您不會釋放靜態用戶端，因為函數結束時尚未使用它。 您希望靜態用戶端在您應用程式的使用期間存留。
+在 .NET 中[HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx)的常見問題是「我應該處置我的用戶端嗎？」 一般來說，您會處置完成使用時所`IDisposable`執行的物件。 但是您不會處置靜態用戶端，因為在函式結束時不會使用它。 您希望靜態用戶端在您應用程式的使用期間存留。
 
-### <a name="http-agent-examples-javascript"></a>HTTP 代理示例（JavaScript）
+### <a name="http-agent-examples-javascript"></a>HTTP 代理程式範例（JavaScript）
 
-因為它提供更好的連接管理選項，所以應該使用本機[`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent)類而不是非本機方法，如`node-fetch`模組。 連接參數通過類上`http.agent`的選項進行配置。 有關 HTTP 代理提供的詳細選項，請參閱[新的代理（\[選項\]）。](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)
+因為它提供更好的連接管理選項，所以您應該[`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent)使用原生類別，而不是原生方法`node-fetch` （例如模組）。 連接參數是透過類別上的`http.agent`選項進行設定。 如需 HTTP 代理程式可用的詳細選項，請參閱[新\[的\]代理程式（選項）](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options)。
 
-使用的`http.request()`全域`http.globalAgent`類將所有這些值設置為其各自的預設值。 在 Functions 中設定連線限制的建議方式是全域設定最大數目。 下列範例會針對函式應用程式設定通訊端數目上限：
+使用`http.request()`的`http.globalAgent`全域類別，會將這些值全都設定為各自的預設值。 在 Functions 中設定連線限制的建議方式是全域設定最大數目。 下列範例會針對函式應用程式設定通訊端數目上限：
 
 ```js
 http.globalAgent.maxSockets = 200;
 ```
 
- 以下示例僅針對該請求創建具有自訂 HTTP 代理的新 HTTP 要求：
+ 下列範例只會針對該要求，使用自訂 HTTP 代理程式建立新的 HTTP 要求：
 
 ```js
 var http = require('http');
@@ -105,8 +105,8 @@ public static async Task Run(string input)
 }
 ```
 
-### <a name="cosmosclient-code-example-javascript"></a>宇宙用戶端代碼示例（JavaScript）
-[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient)連接到 Azure 宇宙資料庫實例。 Azure Cosmos DB 文件建議您[在應用程式存留期內使用單一 Azure Cosmos DB 用戶端](../cosmos-db/performance-tips.md#sdk-usage)。 下列範例顯示在函式中執行該作業的一種模式：
+### <a name="cosmosclient-code-example-javascript"></a>CosmosClient 程式碼範例（JavaScript）
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient)會連接到 Azure Cosmos DB 實例。 Azure Cosmos DB 文件建議您[在應用程式存留期內使用單一 Azure Cosmos DB 用戶端](../cosmos-db/performance-tips.md#sdk-usage)。 下列範例顯示在函式中執行該作業的一種模式：
 
 ```javascript
 const cosmos = require('@azure/cosmos');
@@ -126,14 +126,14 @@ module.exports = async function (context) {
 
 ## <a name="sqlclient-connections"></a>SqlClient 連線
 
-函數代碼可以使用 SQL Server 的 .NET 框架資料提供程式[（SqlClient）](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)與 SQL 關係資料庫建立連接。 這也是依賴于ADO.NET的資料框架（如[實體框架](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)）的基礎提供程式。 不同於 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) \(英文\) 和 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
-) \(英文\) 連線，ADO.NET 預設會實作連線共用。 但是，由於您仍然可能耗盡連接，因此應優化到資料庫的連接。 如需詳細資訊，請參閱 [SQL Server 連線共用 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling) \(機器翻譯\)。
+您的函式程式碼可以使用 .NET Framework Data Provider SQL Server （[SqlClient](https://msdn.microsoft.com/library/system.data.sqlclient(v=vs.110).aspx)）來連接到 SQL 關係資料庫。 這也是依賴 ADO.NET 之資料架構的基礎提供者，例如[Entity Framework](https://msdn.microsoft.com/library/aa937723(v=vs.113).aspx)。 不同於 [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) \(英文\) 和 [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+) \(英文\) 連線，ADO.NET 預設會實作連線共用。 但是，因為您仍然可以用完連接，所以您應該將資料庫的連接優化。 如需詳細資訊，請參閱 [SQL Server 連線共用 (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling) \(機器翻譯\)。
 
 > [!TIP]
-> 某些資料框架（如實體框架）通常從設定檔的**ConnectStrings**部分獲取連接字串。 在此情況下，您必須明確地將 SQL 資料庫連接字串新增至函數應用程式設定的**連接字串**集合，以及您本機專案的 [local.settings.json 檔案](functions-run-local.md#local-settings-file)中。 如果要在函數代碼中創建[SqlConnect](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)實例，則應將連接字串值與其他連接一起存儲在**應用程式設定**中。
+> 某些資料架構（例如 Entity Framework）通常會從設定檔的**ConnectionStrings**區段取得連接字串。 在此情況下，您必須明確地將 SQL 資料庫連接字串新增至函數應用程式設定的**連接字串**集合，以及您本機專案的 [local.settings.json 檔案](functions-run-local.md#local-settings-file)中。 如果您要在函式程式碼中建立[SqlConnection](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnection(v=vs.110).aspx)的實例，您應該將連接字串值儲存在**應用程式設定**中，與其他連接。
 
 ## <a name="next-steps"></a>後續步驟
 
-有關我們推薦靜態用戶端的原因的詳細資訊，請參閱[不當具現化反模式](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)。
+如需為何建議靜態用戶端的詳細資訊，請參閱不適當的具現[化反模式](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/)。
 
 如需更多 Azure Functions 效能祕訣，請參閱[將 Azure Functions 效能和可靠性最佳化](functions-best-practices.md)。

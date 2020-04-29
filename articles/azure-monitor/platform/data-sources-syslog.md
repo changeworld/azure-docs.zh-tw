@@ -7,25 +7,25 @@ author: bwren
 ms.author: bwren
 ms.date: 03/22/2019
 ms.openlocfilehash: 8d68a8d6d28d79c50a92cd2d18df2abab26c30ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79274719"
 ---
 # <a name="syslog-data-sources-in-azure-monitor"></a>Azure 監視器中的 Syslog 資料來源
 Syslog 是通用於 Linux 的事件記錄通訊協定。 應用程式將傳送的訊息可能會儲存在本機電腦上，或傳遞到 Syslog 收集器。 安裝 Log Analytics Linux 代理程式時，它會設定本機 Syslog 精靈來將訊息轉送到代理程式。 然後，代理程式會將訊息傳送至 Azure 監視器 (建立相對應記錄的位置)。  
 
 > [!NOTE]
-> Azure 監視器支援收集由 rsyslog 或 syslog-ng 所傳送的訊息，其中 rsyslog 是預設精靈。 Red Hat Enterprise Linux 第 5 版、CentOS 和 Oracle Linux 版本 (sysklog) 不支援預設 syslog 精靈，進行 syslog 事件收集。 要從這些版本的分發中收集 syslog 資料，應安裝[rsyslog 守護進程](http://rsyslog.com)並將其配置為替換 sysklog。
+> Azure 監視器支援收集由 rsyslog 或 syslog-ng 所傳送的訊息，其中 rsyslog 是預設精靈。 Red Hat Enterprise Linux 第 5 版、CentOS 和 Oracle Linux 版本 (sysklog) 不支援預設 syslog 精靈，進行 syslog 事件收集。 若要從這些散發套件的這個版本收集 syslog 資料，應該安裝並設定[rsyslog daemon](http://rsyslog.com)來取代 sysklog。
 >
 >
 
 ![Syslog 收集](media/data-sources-syslog/overview.png)
 
-Syslog 收集器支援以下設施：
+Syslog 收集器支援下列功能：
 
-* 科恩
+* 微調
 * user
 * mail
 * daemon
@@ -34,12 +34,12 @@ Syslog 收集器支援以下設施：
 * lpr
 * news
 * uucp
-* Cron
-* 奧特普裡夫
+* cron
+* authpriv
 * ftp
-* 本地0-本地7
+* local0-local7
 
-對於任何其他設施，在 Azure 監視器中[配置自訂日誌資料來源](data-sources-custom-logs.md)。
+針對其他任何設備，請在 Azure 監視器中[設定自訂記錄檔資料來源](data-sources-custom-logs.md)。
  
 ## <a name="configuring-syslog"></a>設定 Syslog
 Log Analytics Linux 代理程式只會收集具有其設定中指定之設備和嚴重性的事件。 您可以透過 Azure 入口網站，或藉由管理您 Linux 代理程式上的組態檔來設定 Syslog。
@@ -47,11 +47,11 @@ Log Analytics Linux 代理程式只會收集具有其設定中指定之設備和
 ### <a name="configure-syslog-in-the-azure-portal"></a>在 Azure 入口網站中設定 Syslog
 從 [[進階設定] 中的 [資料] 功能表](agent-data-sources.md#configuring-data-sources)設定 Syslog。 這個組態會傳遞到每個 Linux 代理程式上的組態檔。
 
-您可以通過首先選擇"**將下面的配置應用於我的電腦**，然後鍵入其名稱並按一下**+**"來添加新工具。 針對每個設備，僅會收集包含所選嚴重性的訊息。  請檢查您想要收集之特定設備的嚴重性。 您無法提供任何其他準則來篩選訊息。
+您可以先選取 [**將下列設定套用到我的電腦**] 選項，然後輸入其名稱並按一下**+**，以新增新的設施。 針對每個設備，僅會收集包含所選嚴重性的訊息。  請檢查您想要收集之特定設備的嚴重性。 您無法提供任何其他準則來篩選訊息。
 
 ![設定 Syslog](media/data-sources-syslog/configure.png)
 
-根據預設，所有組態變更都會自動發送給所有代理程式。 如果要在每個 Linux 代理上手動設定 Syslog，請取消選中"*將下面的配置應用於我的電腦*"核取方塊。
+根據預設，所有組態變更都會自動發送給所有代理程式。 如果您想要在每個 Linux 代理程式上手動設定 Syslog，請取消核取 [*將下列設定套用到我的電腦*] 方塊。
 
 ### <a name="configure-syslog-on-linux-agent"></a>在 Linux 代理程式上設定 Syslog
 當 [Log Analytics 代理程式安裝於 Linux 用戶端](../../azure-monitor/learn/quick-collect-linux-computer.md)時，它會安裝預設的 syslog 組態檔，其中定義所收集資訊的設備和嚴重性。 您可以修改此檔案來變更組態。 組態檔會根據用戶端已安裝的 Syslog 精靈而有所不同。

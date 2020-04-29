@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 211f8c8a203b81a4df6a8e9515b403f99cec572a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277280"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions 的通知中樞輸出繫結
@@ -21,7 +21,7 @@ ms.locfileid: "79277280"
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!IMPORTANT]
-> 谷歌已經[棄用谷歌雲消息（GCM），轉而支援火基雲消息（FCM）。](https://developers.google.com/cloud-messaging/faq) 此輸出綁定不支援 FCM。 要使用 FCM 發送通知，請直接在函數中使用[Firebase API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option)或使用[範本通知](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。
+> Google 已[淘汰 Google 雲端通訊（GCM），取而代之的是 Firebase 雲端通訊（FCM）](https://developers.google.com/cloud-messaging/faq)。 此輸出系結不支援 FCM。 若要使用 FCM 傳送通知，請直接在您的函式中使用[FIREBASE API](https://firebase.google.com/docs/cloud-messaging/server#choosing-a-server-option) ，或使用[範本通知](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。
 
 ## <a name="packages---functions-1x"></a>套件 - Functions 1.x
 
@@ -29,9 +29,9 @@ ms.locfileid: "79277280"
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x-and-higher"></a>封裝 - 功能 2.x 及以上
+## <a name="packages---functions-2x-and-higher"></a>封裝-函數2.x 和更新版本
 
-此綁定在函數 2.x 和更高版本中不可用。
+函數2.x 和更新版本無法使用這個系結。
 
 ## <a name="example---template"></a>範例 - 範本
 
@@ -44,7 +44,7 @@ ms.locfileid: "79277280"
 * [C# 指令碼 - JSON](#c-script-template-example---json)
 * [C# 指令碼 - 程式庫類型](#c-script-template-example---library-types)
 * [F#](#f-template-example)
-* [JAVAscript](#javascript-template-example)
+* [JavaScript](#javascript-template-example)
 
 ### <a name="c-script-template-example---out-parameter"></a>C# 指令碼範本範例 - out 參數
 
@@ -243,19 +243,19 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 屬性的建構函式參數和屬性會在[組態](#configuration)一節中加以敘述。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 下表說明您在 function.json** 檔案中設定的繫結設定屬性內容和 `NotificationHub` 屬性：
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-|**型別** |n/a| 必須設為 `notificationHub`。 |
-|**direction** |n/a| 必須設為 `out`。 | 
-|**名稱** |n/a| 函式程式碼中用於通知中樞訊息的變數名稱。 |
-|**標記運算式** |**TagExpression** | 標籤運算式可讓您指定將通知傳遞到一組裝置，這些裝置已註冊要接收與標籤運算式相符的通知。  如需詳細資訊，請參閱 [路由與標籤運算式](../notification-hubs/notification-hubs-tags-segment-push-message.md)。 |
-|**中心名稱** | **中心名稱** | Azure 入口網站中通知中樞資源的名稱。 |
-|**連接** | **ConnectionStringSetting** | 包含「通知中樞」連接字串的應用程式設定名稱。  必須針對通知中樞將連接字串設為 DefaultFullSharedAccessSignature** 值。 請參閱本文稍後的[連線字串設定](#connection-string-setup)。|
-|**平臺** | **平台** | 此平台屬性指出作為您通知目標的用戶端平台。 依照預設，如果輸出繫結中省略平台屬性，範本通知可用來以「Azure 通知中樞」上所設定的任何平台為目標。 如需有關一般使用範本搭配「Azure 通知中樞」來傳送跨平台通知的詳細資訊，請參閱[範本](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。 platform**** 在設定時必須是以下其中一個值： <ul><li><code>apns</code>&mdash;Apple Push Notification Service。 有關配置 APNS 的通知中心並在用戶端應用中接收通知的詳細資訊，請參閱[使用 Azure 通知中心向 iOS 發送推送通知](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)。</li><li><code>adm</code>&mdash;[Amazon 裝置通訊](https://developer.amazon.com/device-messaging)。 如果有關設定適用於 ADM 的通知中樞及在 Kindle App 中接收通知的詳細資訊，請參閱[開始使用適用於 Kindle 應用程式的通知中樞](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)。</li><li><code>wns</code>&mdash;以 Windows 平台為目標的 [Windows 推播通知服務](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview)。 WNS 也支援 Windows Phone 8.1 和更新版本。 如需詳細資訊，請參閱[開始使用適用於 Windows 通用平台應用程式的通知中樞](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。</li><li><code>mpns</code>&mdash;[Microsoft 推播通知服務](/previous-versions/windows/apps/ff402558(v=vs.105))。 此平台支援 Windows Phone 8 和舊版 Windows Phone 平台。 如需詳細資訊，請參閱[在 Windows Phone 上使用 Azure 通知中樞傳送推播通知](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)。</li></ul> |
+|**type** |n/a| 必須設為 `notificationHub`。 |
+|**方向** |n/a| 必須設為 `out`。 | 
+|**name** |n/a| 函式程式碼中用於通知中樞訊息的變數名稱。 |
+|**tagExpression** |**TagExpression** | 標籤運算式可讓您指定將通知傳遞到一組裝置，這些裝置已註冊要接收與標籤運算式相符的通知。  如需詳細資訊，請參閱 [路由與標籤運算式](../notification-hubs/notification-hubs-tags-segment-push-message.md)。 |
+|**hubName** | **HubName** | Azure 入口網站中通知中樞資源的名稱。 |
+|**connection** | **ConnectionStringSetting** | 包含「通知中樞」連接字串的應用程式設定名稱。  必須針對通知中樞將連接字串設為 DefaultFullSharedAccessSignature** 值。 請參閱本文稍後的[連線字串設定](#connection-string-setup)。|
+|**平台** | **平台** | 此平台屬性指出作為您通知目標的用戶端平台。 依照預設，如果輸出繫結中省略平台屬性，範本通知可用來以「Azure 通知中樞」上所設定的任何平台為目標。 如需有關一般使用範本搭配「Azure 通知中樞」來傳送跨平台通知的詳細資訊，請參閱[範本](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。 platform**** 在設定時必須是以下其中一個值： <ul><li><code>apns</code>&mdash;Apple Push Notification Service。 如需有關設定 APNS 的通知中樞及在用戶端應用程式中接收通知的詳細資訊，請參閱[使用 Azure 通知中樞將推播通知傳送至 iOS](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)。</li><li><code>adm</code>&mdash;[Amazon 裝置通訊](https://developer.amazon.com/device-messaging)。 如果有關設定適用於 ADM 的通知中樞及在 Kindle App 中接收通知的詳細資訊，請參閱[開始使用適用於 Kindle 應用程式的通知中樞](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)。</li><li><code>wns</code>&mdash;以 Windows 平台為目標的 [Windows 推播通知服務](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview)。 WNS 也支援 Windows Phone 8.1 和更新版本。 如需詳細資訊，請參閱[開始使用適用於 Windows 通用平台應用程式的通知中樞](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。</li><li><code>mpns</code>&mdash;[Microsoft 推播通知服務](/previous-versions/windows/apps/ff402558(v=vs.105))。 此平台支援 Windows Phone 8 和舊版 Windows Phone 平台。 如需詳細資訊，請參閱[在 Windows Phone 上使用 Azure 通知中樞傳送推播通知](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)。</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -296,7 +296,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 ## <a name="exceptions-and-return-codes"></a>例外狀況和傳回碼
 
-| 繫結 | 參考資料 |
+| 繫結 | 參考 |
 |---|---|
 | 通知中樞 | [操作指南](https://docs.microsoft.com/rest/api/notificationhubs/) \(英文\) |
 

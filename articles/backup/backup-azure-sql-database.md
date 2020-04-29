@@ -4,22 +4,22 @@ description: 本文說明如何將 SQL Server 備份至 Azure。 本文也將說
 ms.topic: conceptual
 ms.date: 06/18/2019
 ms.openlocfilehash: 537257733d7693598fd8007da6ce12c28fbeb02a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79408755"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>關於 Azure VM 中的 SQL Server 備份
 
-[Azure 備份](backup-overview.md)提供了一個基於流的專用解決方案，用於備份在 Azure VM 中運行的 SQL Server。 此解決方案與 Azure 備份的零基礎架構備份、長期保留和集中管理的優勢一致。 它還特別為 SQL Server 提供了以下優勢：
+[Azure 備份](backup-overview.md)提供以資料流程為基礎的特製化解決方案，以備份在 Azure vm 中執行的 SQL Server。 此解決方案與 Azure 備份的零基礎結構備份、長期保留和集中管理的優點一致。 此外，它還提供下列優點，專門用於 SQL Server：
 
-1. 支援所有備份類型的工作負載感知備份 - 完整備份、差異備份和日誌
-2. 15 分鐘 RPO（復原點目標），具有頻繁的記錄備份
-3. 時間點恢復至秒
-4. 單個資料庫級別的備份和還原
+1. 支援所有備份類型的工作負載感知備份-完整、差異和記錄
+2. 使用經常記錄備份的 15-最低 RPO （復原點目標）
+3. 時間點恢復最多一秒
+4. 個別資料庫層級的備份與還原
 
-要查看我們今天支援的備份和還原方案，請參閱[支援矩陣](sql-support-matrix.md#scenario-support)。
+若要查看目前支援的備份和還原案例，請參閱[支援矩陣](sql-support-matrix.md#scenario-support)。
 
 ## <a name="backup-process"></a>備份程序
 
@@ -35,7 +35,7 @@ ms.locfileid: "79408755"
 
   ![SQL 備份架構](./media/backup-azure-sql-database/backup-sql-overview.png)
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 開始之前，請確認以下事項：
 
@@ -58,19 +58,19 @@ ms.locfileid: "79408755"
 針對所有其他版本，請依照下列步驟修正權限：
 
   1. 使用具有 SQL Server 系統管理員權限的帳戶登入 SQL Server Management Studio (SSMS)。 除非您需要特殊權限，否則 Windows 驗證應該能運作。
-  2. 在 SQL 伺服器上，打開**安全/登錄**資料夾。
+  2. 在 [SQL Server 上，開啟 [**安全性/** 登入] 資料夾。
 
       ![開啟 [安全性]/[登入] 資料夾來查看帳戶](./media/backup-azure-sql-database/security-login-list.png)
 
-  3. 按右鍵**登錄資料夾**並選擇 **"新建登錄**"。 在 [登入 - 新增]**** 中，選取 [搜尋]****。
+  3. 以滑鼠右鍵按一下 [登入]**資料夾，然後**選取 [**新增登**入]。 在 [登入 - 新增]**** 中，選取 [搜尋]****。
 
       ![在 [登入 - 新增] 對話方塊中，選取 [搜尋]](./media/backup-azure-sql-database/new-login-search.png)
 
-  4. Windows 虛擬服務帳戶 **NT SERVICE\AzureWLBackupPluginSvc** 已於虛擬機器註冊期間和 SQL 探索階段建立。 請輸入 [輸入要選取的物件名稱]**** 中顯示的帳戶名稱。 選取 [檢查名稱]**** 以解析名稱。 按一下 [確定]****。
+  4. Windows 虛擬服務帳戶 **NT SERVICE\AzureWLBackupPluginSvc** 已於虛擬機器註冊期間和 SQL 探索階段建立。 請輸入 [輸入要選取的物件名稱]**** 中顯示的帳戶名稱。 選取 [檢查名稱]**** 以解析名稱。 按一下 [確定]  。
 
       ![選取 [檢查名稱] 以解析未知的服務名稱](./media/backup-azure-sql-database/check-name.png)
 
-  5. 在 [伺服器角色]**** 中，確定已選取**系統管理員**角色。 按一下 [確定]****。 現在應該存在必要權限。
+  5. 在 [伺服器角色]**** 中，確定已選取**系統管理員**角色。 按一下 [確定]  。 現在應該存在必要權限。
 
       ![確定已選取系統管理員伺服器角色](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
@@ -109,7 +109,7 @@ ms.locfileid: "79408755"
 
 7. 按一下 [確定]。
 8. 重複相同的步驟順序 (上述 1-7)，將 NT Service\AzureWLBackupPluginSvc 登入新增到 SQL Server 執行個體。 如果登入已存在，請確定其具有 sysadmin 伺服器角色，且在 [狀態] 下具有「授與權限連線到資料庫引擎，且 [登入] 為 [已啟用]」。
-9. 授予許可權後，在門戶中**重新發現 DB：Azure** **->** VM**->** 中的保存庫備份基礎結構工作負荷：
+9. 授與許可權之後**Rediscover DBs** ，會重新探索入口網站中**->** 的 db **->** ： Azure VM 中的保存庫備份基礎結構工作負載：
 
     ![在 Azure 入口網站中重新探索 DB](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 

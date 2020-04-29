@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
 ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280049"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 針對 Azure App Service 中的應用程式進行疑難排解
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本教學課程示範如何使用 Visual Studio 工具，協助針對 [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中的應用程式進行偵錯，方法是以[偵錯模式](https://docs.microsoft.com/visualstudio/debugger/)從遠端執行，或者檢視應用程式記錄與 Web 伺服器記錄。
 
 您將了解：
@@ -28,17 +28,17 @@ ms.locfileid: "79280049"
 
 如果您有 Visual Studio Ultimate，您也可以使用 [IntelliTrace](/visualstudio/debugger/intellitrace) 進行偵錯。 本教學課程未涵蓋 IntelliTrace。
 
-## <a name="prerequisites"></a><a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a><a name="prerequisites"></a>必要條件
 本教學課程可運用於開發環境、Web 專案與您在[在 Azure App Service 中建立 ASP.NET 應用程式](app-service-web-get-started-dotnet-framework.md)中所設定的 App Service 應用程式。 針對 WebJobs 區段，您將會用到您在[開始使用 Azure WebJobs SDK][GetStartedWJ] 中建立的應用程式。
 
 本教學課程中所提供的程式碼範例適用於 C# MVC Web 應用程式，但是疑難排解程序則是與 Visual Basic 和 Web Form 應用程式一樣。
 
-本教程假定您使用的是 Visual Studio 2019。 
+本教學課程假設您使用 Visual Studio 2019。 
 
 串流記錄功能僅適用於鎖定 .NET Framework 4 或更新版本的應用程式。
 
 ## <a name="app-configuration-and-management"></a><a name="sitemanagement"></a>應用程式組態與管理
-Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwlink/?LinkId=529715)中可用的應用程式管理功能與組態設定的子集。 在本節中，您將看到使用**伺服器資源管理器**可用的內容。 若要查看最新的 Azure 整合功能，也請試試 **雲端總管** 。 您可以同時從 [檢視] **** 功能表開啟這兩個視窗。
+Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwlink/?LinkId=529715)中可用的應用程式管理功能與組態設定的子集。 在本節中，您會看到使用**伺服器總管**可用的內容。 若要查看最新的 Azure 整合功能，也請試試 **雲端總管** 。 您可以同時從 [檢視] **** 功能表開啟這兩個視窗。
 
 1. 如果您尚未在 Visual Studio 中登入 Azure，請在 [伺服器總管]**** 中以滑鼠右鍵按一下 [Azure]****，然後選取 [連接到 Microsoft Azure 訂用帳戶]****。
 
@@ -61,14 +61,14 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
     在本教學課程中，您將使用記錄與追蹤下拉式清單。 您也會使用遠端偵錯功能，但是將以不同的方式來加以啟用。
 
-    有關此視窗中的應用設置和連接字串框的資訊，請參閱 Azure[應用服務：應用程式字串和連接字串的工作原理](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)。
+    如需此視窗中 [應用程式設定] 和 [連接字串] 方塊的詳細資訊，請參閱[Azure App Service：應用程式字串和連接字串的工作方式](https://azure.microsoft.com/blog/windows-azure-web-sites-how-application-strings-and-connection-strings-work/)。
 
     若您想要執行無法在此視窗中完成的應用程式管理工作，請按一下 [在管理入口網站中開啟]****，以開啟 Azure 入口網站的瀏覽器視窗。
 
 ## <a name="access-app-files-in-server-explorer"></a><a name="remoteview"></a>在伺服器總管中存取應用程式檔案
 部署 Web 專案時，通常會將 Web.config 檔案中的 `customErrors` 旗標設為 `On` 或 `RemoteOnly`，這表示出現問題時，您將不會收到有用的錯誤訊息。 對許多錯誤而言，您只會看到如下列之一的頁面：
 
-**"/" 應用程式中的伺服器錯誤：**
+**'/' 應用程式中的伺服器錯誤：**
 
 ![Unhelpful error page](./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png)
 
@@ -127,7 +127,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
 1. [在 `ViewBag.Message`這行設定中斷點](https://docs.microsoft.com/visualstudio/debugger/)。
 
-1. 在**解決方案資源管理器**中，按右鍵專案，然後按一下 **"發佈**"。
+1. 在**方案總管**中，以滑鼠右鍵按一下專案，然後按一下 [**發佈**]。
 
 1. 在 [設定檔]**** 下拉式清單中，選取您在[在 Azure App Service 中建立 ASP.NET 應用程式](app-service-web-get-started-dotnet-framework.md)中所使用的同一設定檔。 然後，按一下 [設定]。
 
@@ -250,7 +250,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 
 * **應用程式追蹤記錄**<br/>
   此應用程式會呼叫 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) 類別的方法來建立這些記錄。
-* **Web 服務器日誌**<br/>
+* **Web 服務器記錄檔**<br/>
   Web 伺服器會為每個通往應用程式的 HTTP 要求建立記錄項目。
 * **詳細的錯誤訊息記錄**<br/>
   Web 伺服器會針對失敗的 HTTP 要求 (產生狀態碼 400 或以上的要求) 建立含有一些額外資訊的 HTML 頁面。
@@ -271,7 +271,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
 如需如何在 WebJobs 中建立應用程式記錄的詳細資訊，請參閱 [如何運用 WebJobs SDK 來使用 Azure 佇列儲存體 - 如何寫入記錄](https://github.com/Azure/azure-webjobs-sdk/wiki)。 下列有關在 Azure 中檢視記錄和控制記錄儲存方式的指示也同樣適用於 WebJobs 所建立的應用程式記錄。
 
 ### <a name="add-tracing-statements-to-the-application"></a>將追蹤陳述式新增至應用程式
-1. 打開*控制器\HomeController.cs*，並將`Index`和`About`替換`Contact`， 和 方法替換為以下代碼`Trace`，以便添加`using`語句`System.Diagnostics`和 語句：
+1. 開啟*Controllers\HomeController.cs*，並以下列`Index`程式`About` `System.Diagnostics`代碼取代`Contact` 、和方法，以便加入`Trace`語句和的`using`語句：
 
     ```csharp
     public ActionResult Index()
@@ -337,7 +337,7 @@ Visual Studio 可讓您存取 [Azure 入口網站](https://go.microsoft.com/fwli
     ```
 
 1. 按 CTRL+F5 執行應用程式。
-1. 在瀏覽器視窗的網址列中，向 URL 添加*trace.axd，* 然後按 Enter（URL 類似于`http://localhost:53370/trace.axd`）。
+1. 在瀏覽器視窗的網址列中，將*trace.axd*新增至 URL，然後按 ENTER （url 類似`http://localhost:53370/trace.axd`）。
 1. 在 [應用程式追蹤]**** 頁面上，按一下第一行 (不是 BrowserLink 行) 上的 [檢視詳細資料]****。
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
@@ -577,7 +577,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 
 5. 在新的瀏覽器視窗中，前往您應用程式之 [概觀]**** 頁面的 [FTP 主機名稱]**** 或 [FTPS 主機名稱]**** 下方所示的 URL。
 
-6. 使用您之前創建的 FTP 憑據登錄（包括使用者名的應用名稱首碼）。
+6. 使用您稍早建立的 FTP 認證登入（包括使用者名稱的應用程式名稱前置詞）。
 
     瀏覽器會顯示應用程式的根資料夾。
 
@@ -620,7 +620,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 如需特定疑難排解問題的說明，請在下列任一個論壇中開啟一段討論串：
 
 * [ASP.NET 網站上的 Azure 論壇](https://forums.asp.net/1247.aspx/1?Azure+and+ASP+NET)。
-* [微軟 Q 上的 Azure 論壇&A](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
+* [Microsoft Q 上的 Azure 論壇&A](https://docs.microsoft.com/answers/topics/azure-webapps.html)。
 * [StackOverflow.com](https://www.stackoverflow.com)。
 
 ### <a name="debugging-in-visual-studio"></a>Visual Studio 偵錯
@@ -676,13 +676,13 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   用於檢視 Web 伺服器記錄 (*.log* 檔案) 中資料的工具。
-* [使用 LogParser 解決 IIS 性能問題或應用程式錯誤](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+* [針對 IIS 效能問題或使用 LogParser 的應用程式錯誤進行疑難排解](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
    此篇介紹可以用來分析 Web 伺服器記錄的 Log Parser 工具。
 * [Robert McMurray 關於使用 LogParser 的部落格文章](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [IIS 7.0、IIS 7.5 與 IIS 8.0 中的 HTTP 狀態碼](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>分析失敗要求追蹤記錄
-Microsoft TechNet 網站包含["使用失敗的請求跟蹤](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing)"部分，該部分可能有助於瞭解如何使用這些日誌。 不過，本文主要著重在 IIS 內設定失敗要求追蹤功能，這是您無法在 Azure App Service 中執行的功能。
+Microsoft TechNet 網站包含「[使用失敗要求追蹤](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing)」一節，這可能有助於瞭解如何使用這些記錄。 不過，本文主要著重在 IIS 內設定失敗要求追蹤功能，這是您無法在 Azure App Service 中執行的功能。
 
 [GetStarted]: app-service-web-get-started-dotnet.md
 [GetStartedWJ]: https://github.com/Azure/azure-webjobs-sdk/wiki

@@ -1,6 +1,6 @@
 ---
-title: Azure 快速路由：連接模型
-description: 本文介紹了客戶網路和 Microsoft Azure 和 Office 365 服務之間的不同連接模式。 客戶可以使用 MPLS 提供者、雲端 Exchange 和乙太網路提供者。
+title: Azure ExpressRoute：連線能力模型
+description: 本文說明客戶網路與 Microsoft Azure 與 Office 365 服務之間不同的連線模式。 客戶可以使用 MPLS 提供者、雲端 Exchange 和乙太網路提供者。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
 ms.openlocfilehash: 375d2f9d3b455c0495c69f2b23d62b1ab6522710
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280881"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute 連線模型
@@ -34,8 +34,8 @@ ms.locfileid: "79280881"
 * 了解 ExpressRoute 功能。 請參閱 [ExpressRoute 技術概觀](expressroute-introduction.md)
 * 尋找服務提供者。 請參閱 [ExpressRoute 合作夥伴和對等位置](expressroute-locations.md)。
 * 請確定符合所有必要條件。 請參閱 [ExpressRoute 必要條件](expressroute-prerequisites.md)。
-* 請參閱[路由](expressroute-routing.md)[、NAT](expressroute-nat.md)和[QoS 的要求](expressroute-qos.md)。
+* 請參閱[路由](expressroute-routing.md)、 [NAT](expressroute-nat.md)和[QoS](expressroute-qos.md)的需求。
 * 設定 ExpressRoute 連線。
-  * [創建快速路由電路](expressroute-howto-circuit-portal-resource-manager.md)
+  * [建立 ExpressRoute 線路](expressroute-howto-circuit-portal-resource-manager.md)
   * [設定路由](expressroute-howto-routing-portal-resource-manager.md)
   * [將 VNet 連結到 ExpressRoute 線路](expressroute-howto-linkvnet-portal-resource-manager.md)
