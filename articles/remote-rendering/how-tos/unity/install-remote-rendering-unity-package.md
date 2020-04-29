@@ -1,28 +1,28 @@
 ---
-title: 安裝遠端呈現套件以進行統一
-description: 說明如何安裝遠端的 DLL 以進行統一
+title: 安裝適用於 Unity 的遠端轉譯套件
+description: 說明如何安裝 Unity 的遠端呈現用戶端 Dll
 author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
 ms.openlocfilehash: 86ffe47c009f9e0ae121ffc6ab57bff8fb73210f
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681177"
 ---
-# <a name="install-the-remote-rendering-package-for-unity"></a>安裝遠端呈現套件以進行統一
+# <a name="install-the-remote-rendering-package-for-unity"></a>安裝適用於 Unity 的遠端轉譯套件
 
-Azure 遠端呈現使用 Unity 包封裝到 Unity 中。
+Azure 遠端轉譯會使用 Unity 封裝將整合封裝到 Unity。
 
-## <a name="manage-the-remote-rendering-packages-in-unity"></a>在 Unity 中管理遠端呈現套件
+## <a name="manage-the-remote-rendering-packages-in-unity"></a>管理 Unity 中的遠端轉譯套件
 
-統一包是可以通過 Unity 的[包管理員](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html)進行管理的容器。
-此包包含整個 C# API 以及使用 Azure 遠端呈現與統一所需的所有外掛程式二進位檔案。
-在 Unity 的套件命名方案之後,該包稱為**com.microsoft.azure.遠端呈現**。
+Unity 封裝是可以透過 Unity 的[封裝管理員](https://docs.unity3d.com/Packages/com.unity.package-manager-ui@1.8/manual/index.html)來管理的容器。
+此套件包含整個 c # API，以及搭配使用 Azure 遠端轉譯和 Unity 所需的所有外掛程式二進位檔。
+遵循適用于封裝的 Unity 命名配置，此封裝稱為「 **com. azure 遠端呈現**」。
 
-該包不是[ARR 示例儲存庫](https://github.com/Azure/azure-remote-rendering)的一部分,並且從 Unity 的內部包註冊表中不可用。 要將新增到項目中,必須手動編輯項目`manifest.md`的檔案以新增以下內容:
+此封裝不是[ARR 範例存放庫](https://github.com/Azure/azure-remote-rendering)的一部分，而且無法從 Unity 的內部封裝登錄中使用。 若要將它加入至專案，您必須手動編輯專案的`manifest.md`檔案，以加入下列內容：
 ```json
 {
   "scopedRegistries": [
@@ -38,16 +38,16 @@ Azure 遠端呈現使用 Unity 包封裝到 Unity 中。
   }
 }
 ```
-添加此項後,可以使用 Unity 包管理器來確保擁有最新版本。
-教學中給出了更全面的說明[:從頭開始設定統一專案](../../tutorials/unity/project-setup.md)。
+新增之後，您就可以使用 Unity 封裝管理員來確保您擁有最新版本。
+[教學課程：從頭開始設定 Unity 專案](../../tutorials/unity/project-setup.md)中提供更完整的指示。
 
-## <a name="unity-render-pipelines"></a>整合圖管
+## <a name="unity-render-pipelines"></a>Unity 呈現管線
 
-遠端成成**一般的成一般的圖示與一般的****圖示**。 出於性能原因,建議使用通用渲染管道。
+遠端轉譯同時適用于**通用呈現管線**和標準轉譯**管線**。 基於效能考慮，建議使用通用呈現管線。
 
-要使用**通用渲染管道**,其包必須安裝在 Unity 中。 這可以在 Unity 的**包管理員**UI(包名稱通用**RP、** 版本 7.2.1 或更新)中完成`Packages/manifest.json`,也可以通過檔案完成,如[Unity 專案設置教程](../../tutorials/unity/project-setup.md#configure-the-projects-manifest)中所述。
+若要使用**通用呈現管線**，其套件必須安裝在 Unity 中。 這可以在 Unity 的**套件管理員**UI （套件名稱**通用 RP**、7.2.1 或更新版本）中完成，或透過`Packages/manifest.json`檔案進行，如[Unity 專案設定教學](../../tutorials/unity/project-setup.md#configure-the-projects-manifest)課程中所述。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [整合一個元件與元件](objects-components.md)
-* [教學:從頭開始設定 Unity 專案](../../tutorials/unity/project-setup.md)
+* [Unity 遊戲物件和元件](objects-components.md)
+* [教學課程：從頭開始設定 Unity 專案](../../tutorials/unity/project-setup.md)

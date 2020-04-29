@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 630304bec17dd34befab4e5bd9f1cfdfb6505645
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811421"
 ---
 # <a name="azure-customer-data-protection"></a>Azure 客戶資料保護   
@@ -45,12 +45,12 @@ Azure 以預設和設為客戶選項的方式為客戶提供強大的資料安�
 - 客戶與雲端。
 - Azure 系統與資料中心之間的內部通訊。
 
-**加密**：客戶可以部署儲存體資料和傳輸中資料的加密，作為確保資料機密性與完整性的最佳做法。 客戶將 Azure 雲端服務配置為使用 TLS 來保護 Internet 通訊,甚至 Azure 託管的 VM 之間的通訊,這非常簡單。
+**加密**：客戶可以部署儲存體資料和傳輸中資料的加密，作為確保資料機密性與完整性的最佳做法。 客戶可以直接設定其 Azure 雲端服務，以使用 TLS 來保護來自網際網路的通訊，甚至是在其 Azure 託管的 Vm 之間。
 
 **資料備援**：如果資料中心發生網路攻擊或實體損毀，Microsoft 可協助確保資料受到保護。 客戶可以選擇：
 
-- 國內/區域內存儲,考慮合規性或延遲。
-- 用於安全或災難恢復目的的國外/區域外存儲。
+- 符合性或延遲考慮的國家/地區內儲存體。
+- 基於安全性或嚴重損壞修復目的，國家/地區/區域外的儲存體。
 
 資料可以在所選地理區域內複寫以提供備援性，但不會傳輸到其外部。 客戶有多個選項可複寫資料，包括複本數目以及複寫資料中心的的數目和數目。
 
@@ -81,7 +81,7 @@ Azure 客戶在使用 Azure 服務時，有責任遵守電子探索需求。 如
 - [Azure 資訊系統元件與界限](infrastructure-components.md)
 - [Azure 網路架構](infrastructure-network.md)
 - [Azure 生產網路](production-network.md)
-- [Azure SQL 資料庫安全功能](infrastructure-sql.md)
+- [Azure SQL Database 安全性功能](infrastructure-sql.md)
 - [Azure 生產環境運作與管理](infrastructure-operations.md)
 - [Azure 基礎結構監視](infrastructure-monitoring.md)
 - [Azure 基礎結構完整性](infrastructure-integrity.md)

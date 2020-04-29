@@ -1,6 +1,6 @@
 ---
-title: 使用 IDENTITY 建立代理項
-description: 使用 IDENTITY 屬性在 Synapse SQL 池中的表上創建代理項的建議和示例。
+title: 使用身分識別建立代理金鑰
+description: 在 Synapse SQL 集區的資料表上使用 IDENTITY 屬性建立代理鍵的建議和範例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,23 +12,23 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: e681e8ad655c31d5078b56b8f1a49cfd7c664533
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80742647"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用 IDENTITY 在 Synapse SQL 池中建立代理項
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用身分識別在 Synapse SQL 集區中建立代理金鑰
 
-使用 IDENTITY 屬性在 Synapse SQL 池中的表上創建代理項的建議和示例。
+在 Synapse SQL 集區的資料表上使用 IDENTITY 屬性建立代理鍵的建議和範例。
 
-## <a name="what-is-a-surrogate-key"></a>什麼是代理金鑰
+## <a name="what-is-a-surrogate-key"></a>什麼是代理鍵
 
 資料表上的 Surrogate 索引鍵是每個資料列都有唯一識別碼的資料行。 索引鍵並非從資料表資料產生。 資料製造模型者在設計資料倉儲模型時，都喜歡在其資料表上建立 Surrogate 索引鍵。 您可以使用 IDENTITY 屬性，在不影響載入效能的情況下，以簡單又有效的方式達成此目標。  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>建立具有 IDENTITY 資料行的資料表
 
-IDENTITY 屬性旨在橫向擴展到 Synapse SQL 池中的所有分佈,而不會影響負載性能。 因此，IDENTITY 的實作便是為了達成這些目標。
+IDENTITY 屬性是設計用來在 Synapse SQL 集區中的所有散發中相應放大，而不會影響載入效能。 因此，IDENTITY 的實作便是為了達成這些目標。
 
 您在初次建立資料表時，可以使用類似下列陳述式的語法，將資料表定義為具有 IDENTITY 屬性：
 
@@ -50,7 +50,7 @@ WITH
 
 ### <a name="allocation-of-values"></a>值的配置
 
-IDENTITY 屬性並不會保證 Surrogate 值的配置順序，這會反映出 SQL Server 和 Azure SQL Database 行為。 但是,在 Synapse SQL 池中,缺少保證更為明顯。
+IDENTITY 屬性並不會保證 Surrogate 值的配置順序，這會反映出 SQL Server 和 Azure SQL Database 行為。 不過，在 Synapse SQL 集區中，缺少保證會比較明顯。
 
 下列範例將做出說明：
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) 會遵循針對 SELECT..INTO 記錄的相同 SQL S
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>明確地將值插入 IDENTITY 資料行
 
-突觸 SQL`SET IDENTITY_INSERT <your table> ON|OFF`池支援 語法。 您可以使用此語法來明確地將值插入 IDENTITY 資料行。
+Synapse SQL 集區`SET IDENTITY_INSERT <your table> ON|OFF`支援語法。 您可以使用此語法來明確地將值插入 IDENTITY 資料行。
 
 許多資料製造模型者喜歡在其維度的特定資料列中使用預先定義的負數值。 其中一個範例為 -1 或「未知的成員」資料列。
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > 目前在使用 IDENTITY 資料行將資料載入資料表時，並無法使用 `CREATE TABLE AS SELECT`。
 >
 
-有關載入資料的詳細資訊,請參閱為[Synapse SQL 池設計擷取、載入和轉換 (ELT)](design-elt-data-loading.md)與[載入最佳做法](guidance-for-loading-data.md)。
+如需載入資料的詳細資訊，請參閱[設計 SYNAPSE SQL 集區的解壓縮、載入和轉換（ELT）](design-elt-data-loading.md)和[載入最佳做法](guidance-for-loading-data.md)。
 
 ## <a name="system-views"></a>系統檢視表
 
@@ -195,9 +195,9 @@ AND     tb.name = 'T1'
 - 資料行也是散發索引鍵時
 - 資料表為外部資料表時
 
-Synapse SQL 池不支援以下相關功能:
+Synapse SQL 集區中不支援下列相關功能：
 
-- [身份()](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [身分識別（）](/sql/t-sql/functions/identity-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [SCOPE_IDENTITY](/sql/t-sql/functions/scope-identity-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 - [IDENT_CURRENT](/sql/t-sql/functions/ident-current-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
@@ -241,6 +241,6 @@ AND     tb.name = 'T1'
 
 ## <a name="next-steps"></a>後續步驟
 
-- [表概述](sql-data-warehouse-tables-overview.md)
+- [資料表總覽](sql-data-warehouse-tables-overview.md)
 - [CREATE TABLE (Transact-SQL) IDENTITY (屬性)](/sql/t-sql/statements/create-table-transact-sql-identity-property?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-- [DBCC 檢查縮排](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [DBCC CHECKINDENT](/sql/t-sql/database-console-commands/dbcc-checkident-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)

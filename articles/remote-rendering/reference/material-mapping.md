@@ -1,130 +1,130 @@
 ---
-title: 模型格式的材料對應
-description: 描述從模型來源格式到 PBR 材質的預設轉換
+title: 模型格式的材質對應
+description: 描述從模型來源格式到 .PBR 材質的預設轉換
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: ce287ed94066aac4b900d2ddb02579a54b8550f6
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680384"
 ---
-# <a name="material-mapping-for-model-formats"></a>模型格式的材料對應
+# <a name="material-mapping-for-model-formats"></a>模型格式的材質對應
 
-當源資產[轉換為模型時](../how-tos/conversion/model-conversion.md),轉換器為每個[網格](../concepts/meshes.md)建立[材質](../concepts/materials.md)。 材料的建立方式可以[被覆寫](../how-tos/conversion/override-materials.md)。 但是,預設情況下,轉換將創建[PBR 材料](../overview/features/pbr-materials.md)。 由於每個源檔格式(如FBX)都使用自己的約定來定義材質,因此這些約定必須映射到 Azure 遠端呈現的 PBR 材質參數。 
+當來源資產轉換成[模型](../how-tos/conversion/model-conversion.md)時，轉換器會建立每個[網格](../concepts/meshes.md)的[材質](../concepts/materials.md)。 可以覆[寫](../how-tos/conversion/override-materials.md)材料的建立方式。 不過，轉換預設會建立[.pbr](../overview/features/pbr-materials.md)資料。 由於每個來源檔案格式（例如 FBX）都會使用自己的慣例來定義材質，因此這些慣例必須對應至 Azure 遠端轉譯的 .PBR 材質參數。 
 
-本文列出了用於將材質從源資產轉換為運行時材質的精確映射。
+本文列出用來將資料從來源資產轉換成執行時間材質的確切對應。
 
 ## <a name="gltf"></a>glTF
 
-Azure 遠端渲染中幾乎支援 glTF 2.0 規範的所有內容,但*EeeeFactor*和*Eeee 紋理*除外。
+除了*EmissiveFactor*和*EmissiveTexture*，Azure 遠端轉譯中幾乎支援來自 glTF 2.0 規格的所有專案。
 
 下表顯示對應：
 
 | glTF | Azure 遠端轉譯 |
 |:-------------------|:--------------------------|
-|   基本顏色因數   |   阿貝多色              |
-|   基色紋理  |   阿爾貝多地圖                |
-|   金屬因數    |   金屬性                |
-|   金屬紋理   |   金屬度圖             |
-|   粗糙度因數   |   粗糙度                |
-|   粗糙紋理  |   粗糙度地圖             |
-|   遮擋因數   |   閉塞                |
-|   遮擋紋理  |   遮擋對應             |
-|   正常紋理     |   正常地圖                |
-|   阿爾法庫夫       |   阿爾法剪輯閾值       |
-|   阿爾法模式.OPAQUE  |   AlphaClip 啟用 = false,透明 = 假 |
-|   阿爾法模式.MASK    |   AlphaClip 啟用 = true,透明 = 假  |
-|   阿爾法模式.BLEND   |   透明 = 真實     |
-|   雙面       |   是雙面            |
-|   發光因數    |   -                        |
-|   電子紋理   |   -                        |
+|   baseColorFactor   |   albedoColor              |
+|   baseColorTexture  |   albedoMap                |
+|   metallicFactor    |   metalness                |
+|   metallicTexture   |   metalnessMap             |
+|   roughnessFactor   |   粗糙度                |
+|   roughnessTexture  |   roughnessMap             |
+|   occlusionFactor   |   遮蔽                |
+|   occlusionTexture  |   occlusionMap             |
+|   normalTexture     |   normalMap                |
+|   AlphaCutoff       |   AlphaClipThreshold       |
+|   AlphaMode 不透明  |   AlphaClipEnabled = false，isTransparent = false |
+|   AlphaMode. MASK    |   AlphaClipEnabled = true，isTransparent = false  |
+|   AlphaMode BLEND   |   isTransparent = true     |
+|   doubleSided       |   isDoubleSided            |
+|   emissiveFactor    |   -                        |
+|   emissiveTexture   |   -                        |
 
-glTF 中的每個紋理都可以有`texCoord`一 個值,Azure 遠端呈現材質中也支援該值。
+GlTF 中的每個材質都`texCoord`可以有一個值，這在 Azure 遠端轉譯材料中也受到支援。
 
-### <a name="embedded-textures"></a>內嵌式紋理
+### <a name="embedded-textures"></a>內嵌紋理
 
-支援嵌入*\*在 .bin*或*\*.glb*檔中的紋理。
+支援內嵌在* \*bin*或* \*. glb*檔案中的紋理。
 
-### <a name="supported-gltf-extension"></a>支援的 glTF 延伸
+### <a name="supported-gltf-extension"></a>支援的 glTF 擴充功能
 
-除了基本功能集外,Azure 遠端呈現還支援以下 glTF 擴展:
+除了基本功能集之外，Azure 遠端轉譯還支援下列 glTF 延伸模組：
 
 * [MSFT_packing_occlusionRoughnessMetallic](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_packing_occlusionRoughnessMetallic/README.md)
 * [MSFT_texture_dds](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Vendor/MSFT_texture_dds/README.md)
-* [KHR_materials_unlit:](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md)對應於[顏色材料](../overview/features/color-materials.md)。 對於*放流*材料,建議使用此擴展。
-* [KHR_materials_pbrSpecularGlossiness:](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md)而不是金屬粗糙紋理,你可以提供漫反射鏡光澤紋理。 Azure 遠端呈現實現直接遵循擴展中的轉換公式。
+* [KHR_materials_unlit](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_unlit/README.md)：對應至 [[色彩材質](../overview/features/color-materials.md)]。 針對*放射*材質，建議使用此延伸模組。
+* [KHR_materials_pbrSpecularGlossiness](https://github.com/KhronosGroup/glTF/blob/master/extensions/2.0/Khronos/KHR_materials_pbrSpecularGlossiness/README.md)：您可以提供漫射反射材質紋理，而不是金屬粗糙材質。 Azure 遠端轉譯的執行直接遵循延伸模組的轉換公式。
 
-## <a name="fbx"></a>Fbx
+## <a name="fbx"></a>FBX
 
-FBX 格式是閉源的,FBX 材料通常與 PBR 材料不相容。 FBX 使用有許多唯一參數與屬性的曲面的複雜描述,**並非所有曲面都由 Azure 遠端呈現導管使用**。
+FBX 格式是已關閉的來源，而 FBX 的材料一般不會與 .PBR 資料相容。 FBX 會使用具有許多唯一參數和屬性之介面的複雜描述，而**不是由 Azure 遠端呈現管線使用**。
 
 > [!IMPORTANT]
-> Azure 遠端呈現模型轉換管道僅支援**FBX 2011 及更高**版本。
+> Azure 遠端轉譯模型轉換管線僅支援**FBX 2011 和更高版本**。
 
-FBX 格式定義了材料的保守方法,官方 FBX 規範中只有兩種類型:
+FBX 格式定義了保守的材料方法，官方 FBX 規格中只有兩種類型：
 
-* *蘭伯特*- 不是常用相當一段時間已經,但它仍然支援轉換為Phong在轉換時間。
-* *Phong* - 幾乎所有的材料和大多數內容工具都使用這種類型。
+* *Lambert* -不常用於過去一段時間，但仍支援在轉換時轉換為 Phong。
+* *Phong* -幾乎所有的素材和大部分的內容工具都使用這種類型。
 
-Phong 模型更加精確,用作 FBX 材料*的唯*一模型。 下面將稱為*FBX 材料*。
+Phong 模型更為精確，而且是用來作為 FBX 材質的*唯一*模型。 其底下會稱為*FBX 材質*。
 
-> Maya 通過定義材質的 PBR 和 Stingray 類型的自定義屬性,為 FBX 使用兩個自定義擴展。 這些詳細資訊不包括在 FBX 規範中,因此 Azure 遠端呈現當前不支援它。
+> Maya 使用兩個自訂延伸模組來進行 FBX，方法是定義資料的 .PBR 和 Stingray 類型的自訂屬性。 這些詳細資料不包含在 FBX 規格中，因此 Azure 遠端轉譯目前不支援。
 
-FBX 材料使用漫反射-鏡面-鏡面水準概念,因此,要從漫反射紋理轉換為反光度貼圖,我們需要計算其他參數以從漫反射中減去它們。
+FBX 材質使用擴散-反射 SpecularLevel 概念，因此若要從擴散材質轉換為 albedo 對應，我們需要計算其他參數，以將它們從擴散中減去。
 
-> FBX 中的所有顏色和紋理都位於 sRGB 空間(也稱為 Gamma 空間),但 Azure 遠端渲染在可視化期間使用線性空間,在幀末尾將所有內容轉換回 sRGB 空間。 Azure 遠端呈現資產管道將所有內容轉換為線性空間,將其作為準備的數據發送到呈現器。
+> FBX 中的所有色彩和材質都是在 sRGB 空間（也稱為 Gamma 空間）中，但在視覺效果期間，Azure 遠端轉譯會使用線性空間，而在框架結尾會將所有專案轉換回 sRGB 空間。 Azure 遠端轉譯資產管線會將所有專案轉換成線性空間，以將它當做備妥的資料傳送至轉譯器。
 
-下表顯示了如何將紋理從FBX材質映射到Azure遠端渲染材質。 其中一些不是直接使用,而是與參與公式的其他紋理(例如漫反射紋理)結合使用:
+下表顯示材質如何從 FBX 材質對應至 Azure 遠端轉譯材料。 其中有些不會直接使用，而是與參與公式的其他材質結合（例如，擴散材質）：
 
-| Fbx | Azure 遠端轉譯 |
+| FBX | Azure 遠端轉譯 |
 |:-----|:----|
-| 環境色 | 遮擋貼圖   |
-| 漫反射顏色 | *用來阿爾貝多, 金屬度* |
-| 透明色 | *用來阿爾貝多的阿爾法通道* |
-| 透明度因素 | *用來阿爾貝多的阿爾法通道* |
-| 不透明度 | *用來阿爾貝多的阿爾法通道* |
-| 鏡面顏色 | *用來阿爾貝多, 金屬性, 粗糙度* |
-| 鏡面因數| *用來阿爾貝多, 金屬性, 粗糙度* |
-| 光澤指數 | *用來阿爾貝多, 金屬性, 粗糙度* |
-| 法線圖 | 法線圖 |
-| 撞 | *轉換為普通地圖* |
-| 色色顏色 | - |
-| 發射因數 | - |
-| 反射顏色 | - |
-| 置換顏色 | - |
+| AmbientColor | 遮蔽地圖   |
+| DiffuseColor | *用於 Albedo、Metalness* |
+| TransparentColor | *用於 Albedo 的 Alpha 色板* |
+| TransparencyFactor | *用於 Albedo 的 Alpha 色板* |
+| 不透明度 | *用於 Albedo 的 Alpha 色板* |
+| SpecularColor | *用於 Albedo、Metalness、粗糙度* |
+| SpecularFactor| *用於 Albedo、Metalness、粗糙度* |
+| ShininessExponent | *用於 Albedo、Metalness、粗糙度* |
+| NormalMap | NormalMap |
+| 貼圖 | *轉換成 NormalMap* |
+| EmissiveColor | - |
+| EmissiveFactor | - |
+| ReflectionColor | - |
+| DisplacementColor | - |
 
-由於必須做出許多假設,上述映射是材料轉換中最複雜的部分。 我們將在下面討論這些假設。
+上述對應是材質轉換中最複雜的部分，因為必須進行許多假設。 我們將在下面討論這些假設。
 
-下面使用一些定義:
+以下使用的定義如下：
 
 * `Specular` =  `SpecularColor` * `SpecularFactor`
-* `SpecularIntensity` = `Specular`.紅色 = 0.2125 = `Specular`.綠色 = 0.7154 * `Specular`藍色 0.0721
-* `DiffuseBrightness`[ 0.299 `Diffuse`] 。紅色<sup>2</sup> = 0.587 * `Diffuse`。綠色<sup>2</sup> = 0.114 * `Diffuse`。藍色<sup>2</sup>
-* `SpecularBrightness`[ 0.299 `Specular`] 。紅色<sup>2</sup> = 0.587 * `Specular`。綠色<sup>2</sup> = 0.114 * `Specular`。藍色<sup>2</sup>
-* `SpecularStrength`=`Specular`最大 (。紅色`Specular`, .綠色, `Specular`.藍色)
+* `SpecularIntensity` = `Specular`.Red ∗ 0.2125 + `Specular`。綠色∗ 0.7154 + `Specular`。Blue ∗0.0721
+* `DiffuseBrightness`= 0.299 * `Diffuse`。紅色<sup>2</sup> + 0.587 * `Diffuse`。綠色<sup>2</sup> + 0.114 * `Diffuse`。藍色<sup>2</sup>
+* `SpecularBrightness`= 0.299 * `Specular`。紅色<sup>2</sup> + 0.587 * `Specular`。綠色<sup>2</sup> + 0.114 * `Specular`。藍色<sup>2</sup>
+* `SpecularStrength`= 最大`Specular`值（。紅色， `Specular`。綠色， `Specular`。藍天
 
-鏡面強度公式[從這裏](https://en.wikipedia.org/wiki/Luma_(video))獲得。
-亮度公式在此[規範](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)中描述。
+SpecularIntensity 公式是從[這裡](https://en.wikipedia.org/wiki/Luma_(video))取得。
+此[規格](http://www.itu.int/dms_pubrec/itu-r/rec/bt/R-REC-BT.601-7-201103-I!!PDF-E.pdf)中會描述亮度公式。
 
 ### <a name="roughness"></a>粗糙度
 
-`Roughness`計算與使用`Specular``ShininessExponent`[此公式](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)。 該公式是 Phong 鏡面指數的粗糙度近似值:
+`Roughness`是從`Specular`計算， `ShininessExponent`並使用[此公式](https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf)。 此公式是 Phong 反射指數中的粗糙度近似值：
 
 ```Cpp
 Roughness = sqrt(2 / (ShininessExponent * SpecularIntensity + 2))
 ```
 
-### <a name="metalness"></a>金屬性
+### <a name="metalness"></a>Metalness
 
-`Metalness`從[glTF](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)`Diffuse`規範 中`Specular`計算並使用 此公式。
+`Metalness`是從`Diffuse` `Specular` [glTF 規格](https://github.com/bghgary/glTF/blob/gh-pages/convert-between-workflows-bjs/js/babylon.pbrUtilities.js)計算並使用此公式。
 
-這裡的想法是,我們求解方程:Ax<sup>2</sup> + Bx + C = 0。
-基本上,電介質表面以鏡面方式反射大約4%的光,其餘是漫反射的。 金屬表面以漫反射方式反射沒有光線,但全部以鏡面方式反射。
-此配方有幾個缺點,因為無法區分光澤塑膠和光澤金屬表面。 我們假設大多數時候表面具有金屬特性,因此光滑的塑膠/橡膠表面可能看起來不按預期。
+這裡的想法是，我們要解決方程式： Ax<sup>2</sup> + Bx + C = 0。
+基本上，dielectric 表面會以反射方式反映大約4% 的燈，而其餘的則是擴散。 金屬表面不會以擴散方式反映任何光線，但全都以反射的方式呈現。
+此公式有一些缺點，因為沒有任何方法可以區別光澤塑膠和光澤金屬表面。 我們假設大部分的情況下，表面都具有金屬屬性，因此光澤塑膠/橡膠表面看起來可能不如預期。
 ```cpp
 dielectricSpecularReflectance = 0.04
 oneMinusSpecularStrength = 1 - SpecularStrength
@@ -137,12 +137,12 @@ value = (-B + squareRoot) / (2 * A)
 Metalness = clamp(value, 0.0, 1.0);
 ```
 
-### <a name="albedo"></a>反照 率
+### <a name="albedo"></a>Albedo
 
-`Albedo`從`Diffuse``Specular`和計算。 `Metalness`
+`Albedo`是從`Diffuse`、 `Specular`和計算而`Metalness`來。
 
-如"金屬度"部分所述,電介質表面反射大約 4% 的光。  
-這裡的想法是使用`Dielectric``Metal``Metalness`值作為因數在顏色之間線性插值。 如果金屬性為`0.0`,則根據鏡面的不同,它將是深色(如果鏡面高)或漫反射不會更改(如果沒有鏡面)。 如果金屬度值較大,則漫反射顏色將消失,轉而採用鏡面顏色。
+如 Metalness 一節所述，dielectric 表面會反映大約4% 的光線。  
+這裡的概念是使用`Dielectric` `Metal` `Metalness`值做為因素，以線性插補和色彩。 如果 metalness 為`0.0`，則視反射而定，它會是暗色（如果反射很高）或擴散不會變更（如果沒有反射）。 如果 metalness 是較大的值，則擴散色彩將會消失，而改用反射色彩。
 
 ```Cpp
 dielectricSpecularReflectance = 0.04
@@ -154,26 +154,26 @@ albedoRawColor = lerpColors(dielectricColor, metalColor, metalness * metalness)
 AlbedoRGB = clamp(albedoRawColor, 0.0, 1.0);
 ```
 
-`AlbedoRGB`已按上述公式計算,但 Alpha 通道需要額外的計算。 FBX 格式對透明度含糊不清,並且有許多方法可以定義它。 不同的內容工具使用不同的方法。 這裡的想法是將它們統一到一個公式中。 但是,如果某些資產不是以通用方式創建的,則會使某些資產錯誤地顯示為透明。
+`AlbedoRGB`已由上述公式計算，但 Alpha 色板需要額外的計算。 FBX 格式與透明度無關，有許多方式可以定義它。 不同的內容工具會使用不同的方法。 這裡的想法是將它們整合成一個公式。 不過，如果某些資產不是以常見的方式建立，則會使其不正確地顯示為透明。
 
-這是從計算的`TransparentColor``TransparencyFactor` `Opacity` :
+這是從`TransparentColor`、 `TransparencyFactor`、： `Opacity`
 
-如果`Opacity`被定義,然後直接使用它`AlbedoAlpha` = `Opacity`:  
-如果`TransparencyColor`已定義,`AlbedoAlpha`則 =`TransparentColor`1.0 - (()。紅色`TransparentColor`= 。綠色`TransparentColor`= .藍色 / 3.0) 其他  
-如果`TransparencyFactor``AlbedoAlpha`= 1.0 -`TransparencyFactor`
+如果`Opacity`已定義，則直接使用： `AlbedoAlpha`  =  `Opacity` else  
+如果`TransparencyColor`已定義，則`AlbedoAlpha` = 1.0-（`TransparentColor`。紅色 + `TransparentColor`。綠色 + `TransparentColor`。藍色）/3.0）其他  
+若`TransparencyFactor`為， `AlbedoAlpha`則 = 1.0-`TransparencyFactor`
 
-最終`Albedo`顏色有四個通道,`AlbedoRGB`與`AlbedoAlpha`結合 。
+最終`Albedo`色彩有四個通道， `AlbedoRGB`並將與結合`AlbedoAlpha`。
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>[摘要]
 
-在這裏總結`Albedo`, 將非常接近`Diffuse`原來的`Specular`,如果 接近零。 否則,表面將看起來像金屬表面,並失去漫反射的顏色。 如果`ShininessExponent`足夠大且明亮,表面看起來更拋光`Specular`和反射。 否則,表面看起來粗糙,幾乎不能反映環境。
+總而言之， `Albedo`如果`Diffuse` `Specular`接近零，會非常接近原始。 否則，表面看起來會像是金屬表面，而失去擴散色彩。 如果`ShininessExponent`夠大而且`Specular`很明亮，表面看起來會更精美，而且也更具反射。 否則，表面看起來會很粗糙，而且幾乎不會反映環境。
 
 ### <a name="known-issues"></a>已知問題
 
-* 當前公式不適用於簡單的彩色幾何體。 如果`Specular`足夠明亮,則所有幾何體都變為無顏色的反射金屬表面。 這裡的解決方法是從原來的下降到`Specular`30%,或使用轉換設定[fbx 假設金屬](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)。
-* PBR 材料最近`Maya`被 添加`3DS Max`到和 內容創建工具中。 他們使用自定義使用者定義的黑盒屬性將其傳遞給FBX。 Azure 遠端呈現不會讀取這些其他屬性,因為它們沒有記錄,並且格式是閉源的。
+* 目前的公式不適用於簡單的彩色幾何。 如果`Specular`夠亮，則所有幾何都會變成反射金屬表面，而不會有任何色彩。 此處的因應措施是`Specular`從原始或使用轉換設定[fbxAssumeMetallic](../how-tos/conversion/configure-model-conversion.md#converting-from-older-fbx-formats-with-a-phong-material-model)，以降低至30%。
+* .PBR 材料最近已新增至`Maya`和`3DS Max`內容建立工具。 他們會使用自訂的使用者定義的黑盒屬性，將它傳遞給 FBX。 Azure 遠端轉譯不會讀取這些額外的屬性，因為它們並未記載，且格式為已關閉的來源。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [模型轉換](../how-tos/conversion/model-conversion.md)
-* [模型轉換期間的覆寫材料](../how-tos/conversion/override-materials.md)
+* [在模型轉換期間覆寫材質](../how-tos/conversion/override-materials.md)

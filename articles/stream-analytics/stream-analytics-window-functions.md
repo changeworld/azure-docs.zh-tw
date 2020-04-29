@@ -8,17 +8,17 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.openlocfilehash: 872eec62e7a629d76533aa6c9906cbdb64c32236
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745551"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>串流分析時間範圍函式簡介
 
 在即時串流案例中，針對時間範圍中內含的資料執行作業是常見的模式。 串流分析具備對時間範圍函式的原生支援，可讓開發人員輕鬆地撰寫複雜的串流處理工作。
 
-您可以選擇四種時間範圍：[**輪轉**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)、[**跳動**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics)、[**滑動**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)以及[**工作階段**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)時間範圍。  您要在串流分析工作的查詢語法子句 [**GROUP BY**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 中使用時間範圍函式。 您還可以使用[**Windows()** 函數](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)在多個視窗中聚合事件。
+您可以選擇四種時間範圍：[**輪轉**](https://docs.microsoft.com/stream-analytics-query/tumbling-window-azure-stream-analytics)、[**跳動**](https://docs.microsoft.com/stream-analytics-query/hopping-window-azure-stream-analytics)、[**滑動**](https://docs.microsoft.com/stream-analytics-query/sliding-window-azure-stream-analytics)以及[**工作階段**](https://docs.microsoft.com/stream-analytics-query/session-window-azure-stream-analytics)時間範圍。  您要在串流分析工作的查詢語法子句 [**GROUP BY**](https://docs.microsoft.com/stream-analytics-query/group-by-azure-stream-analytics) 中使用時間範圍函式。 您也可以使用[ **windows （）** 函數](https://docs.microsoft.com/stream-analytics-query/windows-azure-stream-analytics)來匯總多個視窗的事件。
 
 所有[時間範圍](https://docs.microsoft.com/stream-analytics-query/windowing-azure-stream-analytics)作業都會在時間範圍**結束**時輸出結果。 時間範圍的輸出會是以使用的彙總函式為基礎的單一事件。 此輸出事件會有時間範圍結束的時間戳記，所有時間範圍函式都是以固定長度定義。 
 
@@ -35,7 +35,7 @@ ms.locfileid: "80745551"
 ![Stream Analytics 跳動時間範圍](media/stream-analytics-window-functions/stream-analytics-window-functions-hopping-intro.png)
 
 ## <a name="sliding-window"></a>滑動時間範圍
-滑動視窗功能與「翻轉」或「跳躍」視窗不同,**僅在**事件發生時生成輸出。 每個視窗將至少有一個事件,視窗通過 +(epsilon) 連續向前移動。 如同跳動時間範圍，事件可以屬於一個以上的滑動時間範圍。
+不同于輪轉或跳動視窗，滑動時間範圍函式**只**會在事件發生時產生輸出。 每個視窗都至少會有一個事件，而視窗會持續以ε（epsilon）向前移動。 如同跳動時間範圍，事件可以屬於一個以上的滑動時間範圍。
 
 ![Stream Analytics 滑動時間範圍](media/stream-analytics-window-functions/stream-analytics-window-functions-sliding-intro.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "80745551"
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure Stream Analytics 介紹](stream-analytics-introduction.md)
-* [使用 Azure 串流分析開始](stream-analytics-real-time-fraud-detection.md)
+* [開始使用 Azure 串流分析](stream-analytics-real-time-fraud-detection.md)
 * [調整 Azure Stream Analytics 工作](stream-analytics-scale-jobs.md)
 * [Azure 串流分析查詢語言參考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 串流分析管理 REST API 參考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

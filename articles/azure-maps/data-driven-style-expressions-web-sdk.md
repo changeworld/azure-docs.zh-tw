@@ -1,6 +1,6 @@
 ---
-title: Azure 地圖 Web SDK 中的數據驅動樣式運算式 |微軟 Azure 地圖
-description: 在本文中,您將瞭解如何在 Microsoft Azure 地圖 Web SDK 中使用數據驅動的樣式運算式。
+title: Azure 地圖服務 Web SDK 中的資料驅動樣式表達式 |Microsoft Azure 對應
+description: 在本文中，您將瞭解如何在 Microsoft Azure Maps Web SDK 中使用資料驅動樣式表達式。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -10,25 +10,25 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: d6009a655adcc26ebef31588eff2332a05f3a001
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804719"
 ---
-# <a name="data-driven-style-expressions-web-sdk"></a>資料驅動的樣式表示式(Web SDK)
+# <a name="data-driven-style-expressions-web-sdk"></a>資料驅動樣式表達式（Web SDK）
 
-表達式使您能夠將業務邏輯應用於樣式選項,這些選項觀察數據源中每個形狀中定義的屬性。 表達式可以篩選數據源或圖層中的數據。 表達式可能由條件邏輯組成,如if語句。 並且,它們可用於使用字串運算元、邏輯運算元和數學運算符來操作數據。
+運算式可讓您將商務邏輯套用至樣式選項，以觀察資料來源中每個圖形中所定義的屬性。 運算式可以篩選資料來源或圖層中的資料。 運算式可能包含條件式邏輯，例如 if 語句。 而且，它們可以用來使用：字串運算子、邏輯運算子和數學運算子來運算元據。
 
-數據驅動的樣式減少了圍繞樣式實現業務邏輯所需的代碼量。 當與圖層一起使用時,表達式將在單獨的線程的渲染時計算。 與在 UI 線程上評估業務邏輯相比,此功能提供了更高的性能。
+資料驅動的樣式可減少在設定樣式前後實行商務邏輯所需的程式碼數量。 與圖層搭配使用時，會在轉譯時期的個別執行緒上評估運算式。 相較于在 UI 執行緒上評估商務邏輯，此功能可提供更高的效能。
 
-此視頻概述了 Azure 地圖 Web SDK 中的數據驅動的樣式。
+這段影片提供 Azure 地圖服務 Web SDK 中資料驅動樣式的總覽。
 
 <br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-表達式表示為 JSON 陣組。 陣列中表示式的第一個元素是指定運算式運算名稱的字串。 例如,"+"或"案例"。 下一個元素(如果有)是表達式的參數。 每個參數都是文本值(字串、數位、布爾或 )或其他`null`運算式陣列。 以下偽代碼定義表達式的基本結構。 
+運算式會以 JSON 陣列表示。 陣列中運算式的第一個元素是指定運算式運算子名稱的字串。 例如，"+" 或 "case"。 下一個元素（如果有的話）是運算式的引數。 每個引數都是常值（字串、數位、布林值或`null`）或另一個運算式陣列。 下列虛擬程式碼會定義運算式的基本結構。 
 
 ```javascript
 [ 
@@ -39,24 +39,24 @@ ms.locfileid: "80804719"
 ] 
 ```
 
-Azure 映射 Web SDK 支援多種類型的運算式。 表達式可以自行使用,也可以與其他表達式結合使用。
+Azure 地圖服務 Web SDK 支援許多類型的運算式。 運算式可以單獨使用，或與其他運算式搭配使用。
 
-| 運算式類型 | 描述 |
+| 運算式的類型 | 描述 |
 |---------------------|-------------|
-| [彙總運算式](#aggregate-expression) | 定義透過一組資料處理的運算的運算式,`clusterProperties`可以與`DataSource`選項一起使用。 |
-| [布林運算式](#boolean-expressions) | 布爾運算式提供了一組用於評估布爾比較的布爾運算符表達式。 |
-| [顏色運算式](#color-expressions) | 顏色運算式使創建和操作顏色值變得更加容易。 |
-| [條件運算式](#conditional-expressions) | 條件運算式提供的邏輯操作類似於if語句。 |
-| [資料運算式](#data-expressions) | 提供對要素中屬性數據的訪問。 |
-| [插值和步進表示式](#interpolate-and-step-expressions) | 插值和步進表達式可用於計算沿插值曲線或步進函數的值。 |
-| [特定於層次的運算式](#layer-specific-expressions) | 僅適用於單個圖層的特殊運算式。 |
-| [數學運算式](#math-expressions) | 提供數學運算符,用於在運算式框架中執行數據驅動的計算。 |
-| [字串運算子表示式](#string-operator-expressions) | 字串運算符表示式對字串執行轉換操作,例如串聯和轉換大小寫。 |
-| [類型運算式](#type-expressions) | 類型運算式提供用於測試和轉換不同資料類型(如字串、數位和布林值)的工具。 |
-| [變數繫結表示式](#variable-binding-expressions) | 變數綁定表示式將計算結果儲存在變數中,並在表達式的其他位置多次引用,而無需重新計算存儲的值。 |
-| [調整式運算式](#zoom-expression) | 在渲染時檢索地圖的當前縮放級別。 |
+| [匯總運算式](#aggregate-expression) | 運算式，定義在一組資料上處理的計算，並可與的`clusterProperties`選項搭配使用。 `DataSource` |
+| [布林運算式](#boolean-expressions) | 布林運算式提供一組布林運算子運算式來評估布林值比較。 |
+| [色彩運算式](#color-expressions) | 色彩運算式可讓您更輕鬆地建立和操作色彩值。 |
+| [條件運算式](#conditional-expressions) | 條件運算式會提供類似 if 語句的邏輯作業。 |
+| [日期運算式](#data-expressions) | 提供功能中屬性資料的存取權。 |
+| [插補和步驟運算式](#interpolate-and-step-expressions) | 插補和步驟運算式可以用來透過插入曲線或步驟函式來計算值。 |
+| [圖層特定運算式](#layer-specific-expressions) | 僅適用于單一層的特殊運算式。 |
+| [數學運算式](#math-expressions) | 提供數學運算子來執行運算式架構內的資料驅動計算。 |
+| [字串運算子運算式](#string-operator-expressions) | 字串運算子運算式會對字串執行轉換作業，例如串連和轉換案例。 |
+| [類型運算式](#type-expressions) | 型別運算式提供的工具可用來測試和轉換不同的資料類型，例如字串、數位和布林值。 |
+| [變數系結運算式](#variable-binding-expressions) | 變數系結運算式會將計算的結果儲存在變數中，並多次在運算式中參考，而不需要重新計算儲存的值。 |
+| [Zoom 運算式](#zoom-expression) | 在轉譯時期，抓取地圖的目前縮放層級。 |
 
-本文檔中的所有範例都使用以下功能來演示使用不同類型的表達式的不同方式。 
+本檔中的所有範例都會使用下列功能來示範不同類型運算式的使用方式。 
 
 ```javascript
 {
@@ -77,26 +77,26 @@ Azure 映射 Web SDK 支援多種類型的運算式。 表達式可以自行使�
 }
 ```
 
-## <a name="data-expressions"></a>資料運算式
+## <a name="data-expressions"></a>日期運算式
 
-數據表達式提供對要素中屬性數據的訪問。 
+日期運算式可讓您存取功能中的屬性資料。 
 
 | 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
-| `['at', number, array]` | 物件 (object) | 從陣列中檢索項。 |
-| `['geometry-type']` | 字串 | 獲取要素的幾何類型:點、多點、線串、多行串、多邊形、多面形。 |
-| `['get', string]` | value | 從當前要素的屬性獲取屬性值。 如果請求的屬性丟失,則傳回 null。 |
-| `['get', string, object]` | value | 從提供的物件的屬性獲取屬性值。 如果請求的屬性丟失,則傳回 null。 |
-| `['has', string]` | boolean | 確定要素的屬性是否具有指定的屬性。 |
-| `['has', string, object]` | boolean | 確定物件的屬性是否具有指定的屬性。 |
-| `['id']` | value | 如果要素有該功能的 ID,則獲取該功能的 ID。 |
-| `['length', string | array]` | number | 獲取字串或陣列的長度。 |
-| `['in', boolean | string | number, array]` | boolean | 確定陣列中是否存在項 |
-| `['in', substring, string]` | boolean | 確定子字串是否存在於字串中 |
+| `['at', number, array]` | 物件 | 從陣列中抓取專案。 |
+| `['geometry-type']` | 字串 | 取得功能的 geometry 類型： Point、MultiPoint、LineString、MultiLineString、多邊形、MultiPolygon。 |
+| `['get', string]` | value | 從目前功能的屬性取得屬性值。 如果要求的屬性遺失，則傳回 null。 |
+| `['get', string, object]` | value | 從提供之物件的屬性取得屬性值。 如果要求的屬性遺失，則傳回 null。 |
+| `['has', string]` | boolean | 判斷功能的屬性是否具有指定的屬性。 |
+| `['has', string, object]` | boolean | 判斷物件的屬性是否具有指定的屬性。 |
+| `['id']` | value | 取得功能的識別碼（如果有的話）。 |
+| `['length', string | array]` | number | 取得字串或陣列的長度。 |
+| `['in', boolean | string | number, array]` | boolean | 判斷專案是否存在於陣列中 |
+| `['in', substring, string]` | boolean | 判斷字串中是否有子字串 |
 
 **範例**
 
-可以使用`get`運算式直接在表達式中訪問要素的屬性。 此示例使用要素的"區域顏色"值指定氣泡圖層的顏色屬性。 
+您可以使用`get`運算式，直接在運算式中存取功能的屬性。 這個範例會使用功能的 "zoneColor" 值來指定反升圖層的 color 屬性。 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -104,7 +104,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-如果所有點要素都具有該`zoneColor`屬性,則上述示例將工作正常。 如果他們不這樣做,顏色可能會回落到"黑色"。 要修改回退顏色,請使用`case`表達式與`has`運算式結合使用,以檢查該屬性是否存在。 如果屬性不存在,則返回回退顏色。
+如果所有點功能都有`zoneColor`屬性，則上述範例會正常執行。 如果不是，則色彩可能會回復為「黑色」。 若要修改回退色彩，請搭配`case`使用運算式與`has`運算式，以檢查屬性是否存在。 如果屬性不存在，則傳回回複色彩。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -119,7 +119,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-預設情況下,氣泡和符號圖層將呈現數據源中所有形狀的座標。 此行為可以突出顯示多邊形或線的頂點。 圖層`filter`的選項可用於通過使用布爾運算式中的`['geometry-type']`運算式來限制其呈現的要素的幾何類型。 下面的示例限制氣泡圖層,以便僅`Point`呈現要素。
+反升和符號圖層預設會轉譯資料來源中所有圖形的座標。 這個行為可以反白顯示多邊形或線條的頂點。 使用`filter`布林運算式內的`['geometry-type']`運算式，可以使用圖層的選項來限制它所呈現之功能的幾何類型。 下列範例會限制反升圖層，以便`Point`只呈現特徵。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -127,7 +127,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-以下示例允許呈現和`Point``MultiPoint`特徵。 
+下列範例可讓`Point`和`MultiPoint`功能呈現。 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -135,90 +135,90 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-同樣,多邊形的輪廓將在線圖層中呈現。 要在行圖層中禁用此行為,請添加只允許`LineString`和`MultiLineString`功能的篩選器。  
+同樣地，多邊形的外框也會以線條圖層呈現。 若要線上條圖層中停用此行為，請加入僅`LineString`允許`MultiLineString`和功能的篩選。  
 
 ## <a name="math-expressions"></a>數學運算式
 
-數學運算式提供數學運算符,用於在運算式框架中執行數據驅動的計算。
+數學運算式提供數學運算子，以在 expression framework 中執行資料驅動計算。
 
 | 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | number | 計算指定數位的總和。 |
-| `['-', number]` | number | 按指定數位減去 0。 |
-| `['-', number, number]` | number | 將第一個數字減去第二個數位。 |
-| `['*', number, number, …]` | number | 將指定的數位相乘在一起。 |
-| `['/', number, number]` | number | 將第一個數位除以第二個數位。 |
-| `['%', number, number]` | number | 將第一個數位除以第二個數位時計算餘數。 |
-| `['^', number, number]` | number | 計算第一個值的值,以第二個數位的功率提升。 |
+| `['-', number]` | number | 以指定的數位減去0。 |
+| `['-', number, number]` | number | 將第一個數位減去第二個數字。 |
+| `['*', number, number, …]` | number | 將指定的數位相乘。 |
+| `['/', number, number]` | number | 將第一個數位除以第二個數字。 |
+| `['%', number, number]` | number | 計算將第一個數位除以第二個數字時的餘數。 |
+| `['^', number, number]` | number | 計算第一個值的值，該值為第二個數字的乘冪。 |
 | `['abs', number]` | number | 計算指定之數字的絕對值。 |
-| `['acos', number]` | number | 計算指定數位的弧形。 |
-| `['asin', number]` | number | 計算指定數位的弧線。 |
-| `['atan', number]` | number | 計算指定數位的弧形。 |
-| `['ceil', number]` | number | 將數位向上舍入到下一個整數。 |
-| `['cos', number]` | number | 計算指定數位的cos。 |
-| `['e']` | number | 傳回數學常`e`數 。 |
-| `['floor', number]` | number | 將數位向下舍入到以前的整數。 |
+| `['acos', number]` | number | 計算指定數位的反余弦值。 |
+| `['asin', number]` | number | 計算指定數位的反正弦值。 |
+| `['atan', number]` | number | 計算指定數位的反正切值。 |
+| `['ceil', number]` | number | 將數位四捨五入到下一個整數。 |
+| `['cos', number]` | number | 計算指定數位的 cos。 |
+| `['e']` | number | 傳回數學常數`e`。 |
+| `['floor', number]` | number | 將數位向下舍入到前一個整數。 |
 | `['ln', number]` | number | 計算指定數位的自然對數。 |
-| `['ln2']` | number | 傳回數學常`ln(2)`數 。 |
-| `['log10', number]` | number | 計算指定數位的基數 10 對數。 |
-| `['log2', number]` | number | 計算指定數位的基數-二對數。 |
-| `['max', number, number, …]` | number | 計算指定數位集中的最大數位。 |
-| `['min', number, number, …]` | number | 計算指定數位集中的最小數位。 |
-| `['pi']` | number | 傳回數學常`PI`數 。 |
-| `['round', number]` | number | 將數位舍入到最接近的整數。 中間值從零四捨五入。 例如,`['round', -1.5]`計算為 -2。 |
-| `['sin', number]` | number | 計算指定數位的子值。 |
+| `['ln2']` | number | 傳回數學常數`ln(2)`。 |
+| `['log10', number]` | number | 計算指定數位的底數為10的對數。 |
+| `['log2', number]` | number | 計算指定數位的底數為2的對數。 |
+| `['max', number, number, …]` | number | 計算指定數位集合中的最大數目。 |
+| `['min', number, number, …]` | number | 計算指定數位集合中的最小數目。 |
+| `['pi']` | number | 傳回數學常數`PI`。 |
+| `['round', number]` | number | 將數位四捨五入至最接近的整數。 中間值會從零進位出來。 例如， `['round', -1.5]`會評估為-2。 |
+| `['sin', number]` | number | 計算指定數位的正弦值。 |
 | `['sqrt', number]` | number | 計算指定之數字的平方根。 |
-| `['tan', number]` | number | 計算指定數位的切線。 |
+| `['tan', number]` | number | 計算指定數位的正切函數。 |
 
-## <a name="aggregate-expression"></a>彙總運算式
+## <a name="aggregate-expression"></a>匯總運算式
 
-聚合表示式定義透過一組資料處理的計算,`clusterProperties`並可與`DataSource`選項一起使用。 這些表達式的輸出必須是數位或布林。 
+匯總運算式會定義在一組資料上處理的計算，並可與的`clusterProperties`選項搭配使用。 `DataSource` 這些運算式的輸出必須是數位或布林值。 
 
-聚合表示式採用三個值:運算元值和初始值,以及用於從數據中的每個要素檢索屬性以應用聚合操作的運算式。 此表示式具有以下格式:
+匯總運算式採用三個值：運算子值和初始值，以及從資料中的每個功能抓取屬性以套用匯總運算的運算式。 此運算式具有下列格式：
 
 ```javascript
 [operator: string, initialValue: boolean | number, mapExpression: Expression]
 ```
 
-- 運算符:運算式函數,然後應用於針對群集`mapExpression`中每個點計算的所有值。 支援的運算子: 
-    - 對於數位: `+` `*` `max`, , ,`min`
-    - 對於布爾斯: `all`,`any`
-- 初始值:聚合第一個計算值的初始值。
-- mapExpression:應用於數據集中每個點的運算式。
+- operator：接著會針對叢集中每個點所計算的`mapExpression`所有值套用至運算式函數。 支援的運算子： 
+    - 若為數字`+`： `*`、 `max`、、`min`
+    - 針對布林值`all`：、`any`
+- initialValue：初始值，其中的第一個計算值會針對進行匯總。
+- mapExpression：針對資料集內的每個點套用的運算式。
 
 **範例**
 
-如果數據集中的所有要素都有一個`revenue`屬性,這是一個數位。 然後,可以計算從數據集創建的群集中所有點的總收入。 此計算使用以下整合式運算時完成:`['+', 0, ['get', 'revenue']]`
+如果資料集內的所有功能都有`revenue`屬性，即為數字。 然後，可以計算從資料集建立的叢集中所有點的總收益。 這項計算是使用下列匯總運算式來完成：`['+', 0, ['get', 'revenue']]`
 
 ## <a name="boolean-expressions"></a>布林運算式
 
-布爾運算式提供了一組用於評估布爾比較的布爾運算符表達式。
+布林運算式提供一組布林運算子運算式來評估布林值比較。
 
-比較值時,將嚴格鍵入比較。 不同類型的值始終被視為不相等。 已知類型在分析時不同的情況被視為無效,並將生成分析錯誤。 
+比較值時，會以嚴格的類型進行比較。 不同類型的值一律視為不相等。 在剖析階段已知類型不同的情況會被視為無效，而且會產生剖析錯誤。 
 
 | 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
-| `['! ', boolean]` | boolean | 邏輯否定。 如果`true`輸入為`false`,則`false`傳回 ,`true`如果輸入為 。 |
-| `['!= ', value, value]` | boolean | 如果`true`輸入值不相等,則返回,`false`否則。 |
-| `['<', value, value]` | boolean | 如果`true`第一個輸入嚴格小於第二個輸入`false`, 則返回,否則。 參數必須是字串或兩個數位。 |
-| `['<=', value, value]` | boolean | 如果`true`第一個輸入小於或等於第二個輸入,`false`則返回,否則。 參數必須是字串或兩個數位。 |
-| `['==', value, value]` | boolean | 如果`true`輸入值相等,則返回,`false`否則。 參數必須是字串或兩個數位。 |
-| `['>', value, value]` | boolean | 如果`true`第一個輸入嚴格大於第二個輸入`false`, 則返回,否則。 參數必須是字串或兩個數位。 |
-| `['>=' value, value]` | boolean | 如果`true`第一個輸入大於或等於第二個輸入,`false`則返回,否則。 參數必須是字串或兩個數位。 |
-| `['all', boolean, boolean, …]` | boolean | 如果`true`所有輸入`true`都是`false`,則返回,否則。 |
-| `['any', boolean, boolean, …]` | boolean | 如果`true`任何輸入`true`為 ,`false`則返回 ,否則。 |
+| `['! ', boolean]` | boolean | 邏輯否定。 `true`如果輸入為`false`，則傳回， `false`如果輸入為`true`，則傳回。 |
+| `['!= ', value, value]` | boolean | `true`如果輸入值不相等，則傳回， `false`否則傳回。 |
+| `['<', value, value]` | boolean | `true`如果第一個輸入嚴格小於第二個輸入，則`false`傳回，否則傳回。 引數必須是字串或兩個數字。 |
+| `['<=', value, value]` | boolean | `true`如果第一個輸入小於或等於第二個，則傳回， `false`否則傳回。 引數必須是字串或兩個數字。 |
+| `['==', value, value]` | boolean | `true`如果輸入值相等，則傳回， `false`否則傳回。 引數必須是字串或兩個數字。 |
+| `['>', value, value]` | boolean | `true`如果第一個輸入嚴格大於第二個輸入，則`false`傳回，否則傳回。 引數必須是字串或兩個數字。 |
+| `['>=' value, value]` | boolean | `true`如果第一個輸入大於或等於第二個，則傳回， `false`否則傳回。 引數必須是字串或兩個數字。 |
+| `['all', boolean, boolean, …]` | boolean | `true`如果所有輸入都是`true`，則`false`傳回，否則傳回。 |
+| `['any', boolean, boolean, …]` | boolean | `true`如果任何輸入為`true`，則傳回， `false`否則傳回。 |
 
 ## <a name="conditional-expressions"></a>條件運算式
 
-條件運算式提供的邏輯操作類似於if語句。
+條件運算式會提供類似 if 語句的邏輯作業。
 
-以下運算式對輸入數據執行條件邏輯操作。 例如,`case`運算式提供「if/then/else」邏輯`match`, 而表達式類似於「開關語句」。 
+下列運算式會針對輸入資料執行條件式邏輯作業。 例如， `case`運算式會提供 "if/then/else" 邏輯，而`match`運算式就像「switch 語句」。 
 
-### <a name="case-expression"></a>案例運算式
+### <a name="case-expression"></a>Case 運算式
 
-運算`case`式 是提供「if/然後/else」邏輯的條件表達式的類型。 這種類型的運算式步步通過布林條件清單。 它將第一個布爾條件的輸出值返回以進行 true。
+「 `case`運算式」（expression）是提供 "if/then/else" 邏輯的條件運算式類型。 這種類型的運算式會逐步執行布林條件清單。 它會傳回第一個布林條件的輸出值，評估結果為 true。
 
-以下偽程式定義表示式的結構`case`。 
+下列虛擬代碼會定義`case`運算式的結構。 
 
 ```javascript
 [
@@ -234,7 +234,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **範例**
 
-下面的示例步步遍了不同的布爾條件,直到它找到一個計算到`true`的布爾條件,然後返回該關聯值。 如果沒有布爾條件計算到`true`,將返回回退值。 
+下列範例會逐步執行不同的布林值條件，直到找到評估為`true`的運算式，然後傳回該關聯的值為止。 如果沒有布林條件評估為`true`，則會傳回 fallback 值。 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -255,11 +255,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-### <a name="match-expression"></a>符合運算式
+### <a name="match-expression"></a>Match 運算式
 
-運算`match`式 是提供開關語句(如邏輯)的條件表達式的類型。 輸入可以是任何表達式,例如`['get', 'entityType']`返回字串或數位的運算式。 每個標籤必須是單個文本值或文本值陣列,其值必須是所有字串或所有數位。 如果陣列中的任何值匹配,則輸入匹配。 每個標籤必須是唯一的。 如果輸入類型與標籤的類型不匹配,則結果將是回退值。
+`match`運算式是提供 switch 語句（例如邏輯）的條件運算式類型。 輸入可以是任何傳回字串或數位`['get', 'entityType']`的運算式，例如。 每個標籤都必須是單一常值或常值陣列，其值必須是所有字串或所有數位。 如果陣列中有任何值相符，則輸入會符合。 每個標籤都必須是唯一的。 如果輸入類型不符合標籤的類型，則結果會是 fallback 值。
 
-以下偽程式定義表示式的結構`match`。 
+下列虛擬代碼會定義`match`運算式的結構。 
 
 ```javascript
 [
@@ -276,7 +276,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **範例**
 
-下面的範例查看氣泡圖層中`entityType`搜索匹配項的 Point 要素的屬性。 如果找到匹配項,則返回該指定值或返回回退值。
+下列範例會查看反升`entityType`圖層中點特徵的屬性，以搜尋相符項。 如果找到相符的值，則會傳回指定的值，否則會傳回 fallback 值。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -296,7 +296,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下面的示例使用陣列出一組標籤,這些標籤應全部返回相同的值。 此方法比單獨列出每個標籤更有效。 在這種情況下,`entityType`如果屬性是「餐廳」或「grocery_store」,則返回顏色「紅色」。。
+下列範例會使用陣列來列出一組應全部傳回相同值的標籤。 這種方法比個別列出每個標籤更有效率。 在此情況下，如果`entityType`屬性是「餐廳」或「grocery_store」，則會傳回「紅色」的色彩。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -317,7 +317,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下面的範例使用匹配表達式執行"在陣列"或"數位包含"類型篩選器。 在這種情況下,表達式篩選具有允許 ID 清單中的 ID 值的數據。 將運算式與篩選器一起使用時,結果需要為布爾值。
+下列範例會使用 match 運算式來執行「in 陣列」或「array contains」類型篩選準則。 在此情況下，運算式會篩選識別碼值在允許的識別碼清單中的資料。 當搭配使用運算式與篩選準則時，結果必須是布林值。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -339,11 +339,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-### <a name="coalesce-expression"></a>凝聚運算式
+### <a name="coalesce-expression"></a>聯合運算式
 
-表達式`coalesce`步步遍一組表達式,直到獲得第一個非空值並返回該值。 
+`coalesce`運算式會逐步執行一組運算式，直到取得第一個非 null 值，並傳回該值。 
 
-以下偽程式定義表示式的結構`coalesce`。 
+下列虛擬代碼會定義`coalesce`運算式的結構。 
 
 ```javascript
 [
@@ -356,7 +356,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 **範例**
 
-下面的範例使用`coalesce`運算式設定符號圖`textField`層 的選項。 如果`title`屬性從要素中丟失或`null`設置為 ,則運算式將`subtitle`嘗試查找 該屬性(如果`null`缺少該屬性或 ,則該屬性將回退回空字串)。 
+下列範例會使用`coalesce`運算式來設定符號圖`textField`層的選項。 如果功能`title`中遺漏了屬性或將設定為`null`，則運算式會接著嘗試尋找`subtitle`屬性（如果遺漏或`null`，則會切換回空字串）。 
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -377,7 +377,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-下面的範例使用`coalesce`運算式從指定影像名稱清單中檢索地圖子畫面中可用的第一個可用圖像圖示。
+下列範例會使用`coalesce`運算式，從指定的影像名稱清單中取出地圖 sprite 中可用的第一個可用影像圖示。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -397,20 +397,20 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 ## <a name="type-expressions"></a>類型運算式
 
-類型運算式提供用於測試和轉換不同資料類型(如字串、數位和布林值)的工具。
+型別運算式提供的工具可用來測試和轉換不同的資料類型，例如字串、數位和布林值。
 
 | 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
-| `['literal', array]`<br/><br/>`['literal', object]` | 陣列\|物件 | 返回文本陣列或物件值。 使用此運算式可防止將陣列或物件計算為運算式。 當陣列或物件需要由表達式返回時,這是必需的。 |
-| `['image', string]` | 字串 | 檢查是否將指定的圖像 ID 載入到地圖影像精靈中。 如果是,則返回 ID,否則返回 null。 |
-| `['to-boolean', value]` | boolean | 將輸入值轉換為布林。 `false`結果是當輸入為`0`空字串 時, `false`、 `null` `NaN` 、 、否則其`true`。 |
-| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 將輸入值轉換為顏色。 如果提供了多個值,則按順序計算每個值,直到獲得第一個成功轉換。 如果無法轉換任何輸入,則表達式是錯誤。 |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | 如果可能,將輸入值轉換為數位。 如果輸入為`null``false`或 ,則結果為 0。 如果輸入為`true`,則結果為 1。 如果輸入是字串,則使用 ECMAScript 語言規範的[ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)字串函數將其轉換為數位。 如果提供了多個值,則按順序計算每個值,直到獲得第一個成功轉換。 如果無法轉換任何輸入,則表達式是錯誤。 |
-| `['to-string', value]` | 字串 | 將輸入值轉換為字串。 如果輸入為`null`,則結果`""`為 。 如果輸入是布林,則結果`"true"`是`"false"`或 。 如果輸入是數位,則使用 ECMAScript 語言規範的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type)編號函數將其轉換為字串。 如果輸入是一種顏色,則將其轉換為 CSS RGBA 顏色`"rgba(r,g,b,a)"`字串 。 否則,使用 ECMAScript 語言規範的[JSON.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函數將輸入轉換為字串。 |
-| `['typeof', value]` | 字串 | 傳回描述給定值類型的字串。 |
+| `['literal', array]`<br/><br/>`['literal', object]` | array \|物件 | 傳回常值陣列或物件值。 使用此運算式來防止陣列或物件被評估為運算式。 當運算式必須傳回陣列或物件時，這是必要的。 |
+| `['image', string]` | 字串 | 檢查是否已將指定的映射識別碼載入地圖影像 sprite。 如果是，則會傳回識別碼，否則會傳回 null。 |
+| `['to-boolean', value]` | boolean | 將輸入值轉換為布林值。 當輸入是`false`空字串、 `0` `false` `null`、、或`NaN`時，就會產生結果。否則為`true`。 |
+| `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | 將輸入值轉換成色彩。 如果提供多個值，則會依序評估每一個值，直到取得第一個成功的轉換為止。 如果無法轉換任何輸入，則運算式會是錯誤。 |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | 盡可能將輸入值轉換成數位。 如果輸入為`null`或`false`，則結果為0。 如果輸入為`true`，則結果為1。 如果輸入為字串，則會使用 ECMAScript 語言規格的[ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type)字串函數轉換成數位。 如果提供多個值，則會依序評估每一個值，直到取得第一個成功的轉換為止。 如果無法轉換任何輸入，則運算式會是錯誤。 |
+| `['to-string', value]` | 字串 | 將輸入值轉換成字串。 如果輸入為`null`，則結果為`""`。 如果輸入是布林值，則結果會是`"true"`或`"false"`。 如果輸入是數位，則會使用 ECMAScript 語言規格的[ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) number 函數將它轉換成字串。 如果輸入是色彩，則會轉換成 CSS RGBA 色彩字串`"rgba(r,g,b,a)"`。 否則，會使用 ECMAScript 語言規格的[json.stringify](https://tc39.github.io/ecma262/#sec-json.stringify)函數，將輸入轉換成字串。 |
+| `['typeof', value]` | 字串 | 傳回描述指定值之類型的字串。 |
 
 > [!TIP]
-> 如果瀏覽器控制台中出現類似於`Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].`的錯誤消息,則意味著代碼中有一個表達式,該表達式具有第一個值沒有字串的陣列。 如果希望表達式返回陣列,則用`literal`表達式換行陣組。 下面的示例設置符號圖層的`offset`圖示選項,該圖示必須是包含兩個數位的陣列,通過使用表達式根據點`match``entityType`要素的屬性的值在兩個偏移值之間進行選擇。
+> 如果類似于的錯誤訊息`Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].`出現在瀏覽器主控台中，則表示您的程式碼中有一個運算式，其中有一個陣列沒有第一個值的字串。 如果您想要運算式傳回陣列，請使用`literal`運算式包裝陣列。 下列範例會設定符號圖`offset`層的圖示選項，其必須是包含兩個數字的陣列，方法是使用`match`運算式，根據 point 功能的`entityType`屬性值，在兩個位移值之間做選擇。
 >
 > ```javascript
 > var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -431,19 +431,19 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 > });
 > ```
 
-## <a name="color-expressions"></a>顏色運算式
+## <a name="color-expressions"></a>色彩運算式
 
-顏色運算式使創建和操作顏色值變得更加容易。
+色彩運算式可讓您更輕鬆地建立和操作色彩值。
 
 | 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | 從*紅色*、*綠色*和*藍色*分量創建顏色值,這些分量必須`0``255`在和之間範圍`1`,以及的Alpha分量。 如果任何元件的範圍不大,則表達式是錯誤。 |
-| `['rgba', number, number, number, number]` | color | 從*紅色*、*綠色*、*藍色*分量創建顏色值,這些`0`分量`255`必須在和之間`0`範圍`1`,並在和的範圍內創建 Alpha 分量。 如果任何元件的範圍不大,則表達式是錯誤。 |
-| `['to-rgba']` | \[數位、數位、數位、數位\] | 按該順序返回包含輸入顏色*的紅色*、*綠色*、*藍色*和*Alpha*分量的四元素陣列。 |
+| `['rgb', number, number, number]` | color | 從*紅色*、*綠色*和*藍色*元件建立色彩值，其範圍必須介於和`0` `255`之間，以及的 Alpha 元件`1`。 如果有任何元件超出範圍，運算式就會是錯誤。 |
+| `['rgba', number, number, number, number]` | color | 從*紅色*、*綠色*、*藍色*元件建立色彩值，其範圍必須介於`0`和`255`之間，以及在`0`和`1`範圍內的 Alpha 元件。 如果有任何元件超出範圍，運算式就會是錯誤。 |
+| `['to-rgba']` | \[數位、數位、數位、數位\] | 傳回四個元素的陣列，其中包含輸入色彩的*紅色*、*綠色*、*藍色*和*Alpha*元件（依該順序）。 |
 
 **範例**
 
-下面的範例建立 RGB 顏色值,*red*該值的`255`紅色 值為,*綠色*和`2.5``temperature`*藍色*值透過乘以 屬性的值來計算。 隨著溫度的變化,顏色將變為不同的*紅色*色調。
+下列範例會建立 RGB 色彩`255`值，其值為*紅色*，而*綠色*和*藍色*值則乘以`2.5` `temperature`屬性的值來計算。 當溫度變更時，色彩會變更為不同的*紅色*陰影。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -459,19 +459,19 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-## <a name="string-operator-expressions"></a>字串運算子表示式
+## <a name="string-operator-expressions"></a>字串運算子運算式
 
-字串運算符表示式對字串執行轉換操作,例如串聯和轉換大小寫。 
+字串運算子運算式會對字串執行轉換作業，例如串連和轉換案例。 
 
 | 運算是 | 傳回類型 | 描述 |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | 字串 | 將多個字串串聯在一起。 每個值都必須是一個字串。 如果需要,`to-string`請使用類型表示式將其他值類型轉換為字串。 |
+| `['concat', string, string, …]` | 字串 | 將多個字串串連在一起。 每個值都必須是字串。 如有`to-string`需要，請使用類型運算式將其他實數值型別轉換成字串。 |
 | `['downcase', string]` | 字串 | 將指定字串轉換為小寫。 |
 | `['upcase', string]` | 字串 | 將指定字串轉換為大寫。 |
 
 **範例**
 
-下面的示例將`temperature`點要素的屬性轉換為字串,然後將"+F"串聯到它的末尾。
+下列範例會將 point `temperature`功能的屬性轉換成字串，然後將 "° f" 串連到它的結尾。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -486,33 +486,33 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-上面的運算式在地圖上渲染一個圖釘,上面覆蓋著文本"64°F",如下圖所示。
+上述運算式會在地圖上轉譯一個釘選，其中的文字 "64 ° F" 會重迭在其上方，如下圖所示。
 
 <center>
 
-![字串運算子表示式範例](media/how-to-expressions/string-operator-expression.png)</center>
+![字串運算子運算式範例](media/how-to-expressions/string-operator-expression.png)</center>
 
-## <a name="interpolate-and-step-expressions"></a>插值和步進表示式
+## <a name="interpolate-and-step-expressions"></a>插補和步驟運算式
 
-插值和步進表達式可用於計算沿插值曲線或步進函數的值。 這些表示式採用傳回數值作為輸入的運算式,`['get',  'temperature']`例如 。 根據輸入和輸出值對計算輸入值,以確定最適合插值曲線或步進函數的值。 輸出值稱為"停止」。。 每個停靠站的輸入值必須為數位,並且按升冪排列。 輸出值必須是數位、數位陣元或顏色。
+插補和步驟運算式可以用來透過插入曲線或步驟函式來計算值。 這些運算式會採用傳回數值做為其輸入的運算式，例如`['get',  'temperature']`。 輸入值會針對輸入和輸出值的配對進行評估，以判斷最適合插入曲線或步驟函數的值。 輸出值稱為「停止」。 每個停止的輸入值都必須是數位，並以遞增順序排列。 輸出值必須是數位、數位陣列或色彩。
 
-### <a name="interpolate-expression"></a>插值運算式
+### <a name="interpolate-expression"></a>插補運算式
 
-運算式`interpolate`可用於透過在停止值之間插值來計算連續、平滑的值集。 返回`interpolate`顏色值的運算式將生成顏色漸變,其中從中選擇結果值。
+`interpolate`運算式可以透過在停止值之間插入，來計算連續、平滑的值集合。 傳回`interpolate`色彩值的運算式會產生色彩漸層，其中會選取結果值。
 
-有三種型態的插值方法可`interpolate`用於 運算式:
+有三種類型的插補方法可以在`interpolate`運算式中使用：
  
-* `['linear']`- 插值在兩個停止之間線性進行。
-* `['exponential', base]`- 插值在停靠點之間呈指數級。 該`base`值控制輸出增加的速率。 值越高,輸出會更多地向範圍的高端增長。 接近`base`1 的值會產生線性增長較多的輸出。
-* `['cubic-bezier', x1, y1, x2, y2]`- 使用由給定控制點定義的[立方貝氏曲線](https://developer.mozilla.org/docs/Web/CSS/timing-function)進行插值。
+* `['linear']`-在一組停止之間呈線性插補。
+* `['exponential', base]`-在停止之間以指數方式插補。 `base`值控制輸出增加的速率。 較高的值會使輸出增加至範圍的高階。 接近`base` 1 的值會產生更線性增加的輸出。
+* `['cubic-bezier', x1, y1, x2, y2]`-使用指定控制點所定義的[三次方貝茲曲線](https://developer.mozilla.org/docs/Web/CSS/timing-function)來進行內插。
 
-下面是這些不同類型的插值示例。 
+以下是這些不同插補類型外觀的範例。 
 
 | 線性  | 指數 | 三次方貝茲 |
 |---------|-------------|--------------|
-| ![線性插值圖](media/how-to-expressions/linear-interpolation.png) | ![指數插值圖](media/how-to-expressions/exponential-interpolation.png) | ![立方貝氏斯圖](media/how-to-expressions/bezier-curve-interpolation.png) |
+| ![線性插補圖形](media/how-to-expressions/linear-interpolation.png) | ![指數插補圖形](media/how-to-expressions/exponential-interpolation.png) | ![三次方貝塞爾插值圖形](media/how-to-expressions/bezier-curve-interpolation.png) |
 
-以下偽程式定義表示式的結構`interpolate`。 
+下列虛擬代碼會定義`interpolate`運算式的結構。 
 
 ```javascript
 [
@@ -529,7 +529,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 **範例**
 
-下面的範例使用`linear interpolate`運算式根據點`color``temperature`要素的屬性設置氣泡圖層的屬性。 如果`temperature`值小於 60,則返回"藍色"。 如果介於 60 和小於 70 之間,則黃色將返回。 如果介於 70 和小於 80 之間,則返回"橙色"。 如果為 80 或更高,則返回"紅色"。
+下列範例會根據 point `linear interpolate`功能的`temperature`屬性， `color`使用運算式來設定氣泡圖層的屬性。 如果`temperature`值小於60，則會傳回 "blue"。 如果介於60到低於70，則會傳回黃色。 如果介於70到低於80，則會傳回 "橙色"。 如果是80或更新版本，則會傳回「紅色」。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -549,17 +549,17 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下圖演示了如何為上述表達式選擇顏色。
+下圖將示範如何為上述運算式選擇色彩。
  
 <center>
 
-![插值運算式範例](media/how-to-expressions/interpolate-expression-example.png)</center>
+![插補運算式](media/how-to-expressions/interpolate-expression-example.png)範例</center>
 
 ### <a name="step-expression"></a>步驟運算式
 
-運算式`step`可用於透過計算由停靠點定義的[分段常數函數](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)來計算離散的階梯式結果值。 
+`step`運算式可以藉由評估停止所定義的[分段常數](http://mathworld.wolfram.com/PiecewiseConstantFunction.html)函式，來計算離散的階數結果值。 
 
-以下偽程式定義表示式的結構`step`。 
+下列虛擬代碼會定義`step`運算式的結構。 
 
 ```javascript
 [
@@ -574,11 +574,11 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 ]
 ```
 
-步長運算式返回在輸入值之前的止損的輸出值,或者如果輸入小於第一個停止,則返回第一個輸入值。 
+步驟運算式會在輸入值之前傳回 stop 的輸出值，如果輸入小於第一個停止，則傳回第一個輸入值。 
 
 **範例**
 
-下面的範例使用`step`運算式根據點`color``temperature`要素的屬性設置氣泡圖層的屬性。 如果`temperature`值小於 60,則返回"藍色"。 如果介於 60 和小於 70 之間,則返回"黃色」。。 如果介於 70 和小於 80 之間,則返回"橙色"。 如果為 80 或更高,則返回"紅色"。
+下列範例會根據 point `step`功能的`temperature`屬性， `color`使用運算式來設定氣泡圖層的屬性。 如果`temperature`值小於60，則會傳回 "blue"。 如果介於60到低於70，則會傳回「黃色」。 如果介於70到低於80，則會傳回 "橙色"。 如果是80或更新版本，則會傳回「紅色」。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -596,27 +596,27 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-下圖演示了如何為上述表達式選擇顏色。
+下圖將示範如何為上述運算式選擇色彩。
  
 <center>
 
-![步驟表示式範例](media/how-to-expressions/step-expression-example.png)
+![步驟運算式範例](media/how-to-expressions/step-expression-example.png)
 </center>
 
-## <a name="layer-specific-expressions"></a>特定於層次的運算式
+## <a name="layer-specific-expressions"></a>圖層特定的運算式
 
-僅適用於特定圖層的特殊運算式。
+僅適用于特定層級的特殊運算式。
 
-### <a name="heat-map-density-expression"></a>熱圖密度運算式
+### <a name="heat-map-density-expression"></a>熱度圖密度運算式
 
-熱圖密度表示式檢索熱圖層次中每個像素的熱圖密度值,並定義為`['heatmap-density']`。 此值是和`0``1`之間的數位。 它與`interpolation``step`或運算式結合使用,用於定義用於著色熱圖的顏色漸變。 此表達式只能在熱圖圖層[的顏色選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color)中使用。
+熱度圖密度運算式會抓取熱度圖圖層中每個圖元的熱度圖密度值，並將其`['heatmap-density']`定義為。 這個值是介於和`0` `1`之間的數位。 它會與`interpolation`或`step`運算式搭配使用，以定義用來為熱度圖著色的色彩漸層。 這個運算式只能用在熱度圖圖層的[色彩選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color)中。
 
 > [!TIP]
-> 索引 0 處的顏色(插值運算式中)或單步顏色的預設顏色定義沒有資料的區域的顏色。 索引 0 處的顏色可用於定義背景顏色。 許多人偏好將此值設定為透明或半透明的黑色。
+> 位於索引0、插補運算式中的色彩，或步驟色彩的預設色彩，會定義沒有資料之區域的色彩。 位於索引0的色彩可以用來定義背景色彩。 許多人偏好將此值設定為透明或半透明的黑色。
 
 **範例**
 
-本示例使用襯線插值表達式創建平滑的顏色漸變以渲染熱圖。 
+這個範例會使用「程式插值」運算式來建立平滑的色彩漸層，以呈現熱度圖。 
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -632,7 +632,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-除了使用平滑漸變對熱圖著色外,還可以使用`step`表達式在一組範圍內指定顏色。 使用`step`表達式對熱圖進行著色,直觀地將密度分解為類似於輪廓或雷達樣式圖的範圍。  
+除了使用平滑漸層來為熱度圖著色之外，也可以使用`step`運算式在一組範圍內指定色彩。 使用`step`運算式來上色熱度圖，會以視覺方式將密度分解成類似等高線或雷達圖樣式地圖的範圍。  
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -649,18 +649,18 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 });
 ```
 
-有關詳細資訊,請參閱[添加熱圖圖層](map-add-heat-map-layer.md)文檔。
+如需詳細資訊，請參閱[新增熱度圖層](map-add-heat-map-layer.md)檔。
 
 ### <a name="line-progress-expression"></a>行進度運算式
 
-行進度運算式檢索沿線層次中的漸變線的進度,並定義為`['line-progress']`。 此值是介於 0 和 1 之間的數位。 它與`interpolation``step`或表達式結合使用。 此運算式只能與線圖層的[描邊漸變選項]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient)一起使用。 
+線條進度運算式會沿著線條圖層中的梯度線抓取進度，並將定義為`['line-progress']`。 這個值是介於0和1之間的數位。 它會與`interpolation`或`step`運算式搭配使用。 這個運算式只能與線條圖層的[strokeGradient 選項]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient)搭配使用。 
 
 > [!NOTE]
-> 線`strokeGradient`圖層的選項需要將數據`lineMetrics`來源設定`true`為的選項。
+> 線條`strokeGradient`圖層的選項需要將資料`lineMetrics`源的選項設定為`true`。
 
 **範例**
 
-此示例使用`['line-progress']`運算式將顏色漸變應用於線條的描邊。
+這個範例會使用`['line-progress']`運算式，將色彩漸層套用至線條的筆劃。
 
 ```javascript
 var layer = new atlas.layer.LineLayer(datasource, null, {
@@ -678,17 +678,17 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 });
 ```
 
-[檢視即時範例](map-add-line-layer.md#line-stroke-gradient)
+[查看即時範例](map-add-line-layer.md#line-stroke-gradient)
 
-### <a name="text-field-format-expression"></a>文字欄位格式表示式
+### <a name="text-field-format-expression"></a>文字欄位格式運算式
 
-文字欄位格式表示式可與符號圖層`textField``textOptions`屬性的選項一起使用,以提供混合文本格式。 此表示式允許指定一組輸入字串和格式選項。 可以為此運算式中的每個輸入字串指定以下選項。
+文字欄位格式運算式可搭配 [符號圖層`textField` `textOptions` ] 屬性的選項使用，以提供混合文字格式。 這個運算式允許指定一組輸入字串和格式化選項。 您可以在此運算式中指定每個輸入字串的下列選項。
 
- * `'font-scale'`- 指定字型大小的縮放因數。 如果指定,此值將覆蓋`size`各個字串的屬性。 `textOptions`
- * `'text-font'`- 指定應用於此字串的一個或多個字體系列。 如果指定,此值將覆蓋`font`各個字串的屬性。 `textOptions`
- * `'text-color'`- 指定在渲染時要應用於文字的顏色。 
+ * `'font-scale'`-指定字型大小的縮放比例。 如果指定，這個值將會覆`size`寫個別字串`textOptions`的的屬性。
+ * `'text-font'`-指定此字串應使用的一或多個字型系列。 如果指定，這個值將會覆`font`寫個別字串`textOptions`的的屬性。
+ * `'text-color'`-指定呈現時要套用至文字的色彩。 
 
-以下偽代碼定義文本欄位格式表達式的結構。 
+下列虛擬代碼會定義文字欄位格式運算式的結構。 
 
 ```javascript
 [
@@ -711,7 +711,7 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 **範例**
 
-下面的範例透過添加粗體字型並縮小該功能`title`屬性的字體大小來設置文本欄位的格式。 此示例還會在`subtitle`newline 上添加該功能的屬性,其字體大小縮小為紅色。
+下列範例會藉由新增粗體字型並相應增加功能`title`屬性的字型大小，來格式化文字欄位。 這個範例也會在`subtitle`新行上新增功能的屬性，並相應縮小字型大小和彩色紅色。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -739,22 +739,22 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-此圖層將呈現點特徵,如下圖所示:
+此圖層會轉譯點功能，如下圖所示：
  
 <center>
 
-![具有格式化文字欄位](media/how-to-expressions/text-field-format-expression.png)的點要素影像</center>
+![具有格式化文字欄位](media/how-to-expressions/text-field-format-expression.png)的點特徵影像</center>
 
 ### <a name="number-format-expression"></a>數位格式運算式
 
-表達式`number-format`只能與符號圖`textField`層 的選項一起使用。 此表示式將提供的號碼轉換為格式化字串。 此表示式包裝 JavaScript 的[編號.toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)函數,並支援以下選項集。
+`number-format`運算式只能與符號圖層的`textField`選項搭配使用。 這個運算式會將提供的數位轉換成格式化字串。 這個運算式會包裝 JavaScript 的[toLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString)函數，並支援下列選項組。
 
- * `locale`- 指定這個選項,用於以與指定語言對齊的方式將數位轉換為字串。 將[BCP 47 語言標記](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)傳遞到此選項。
- * `currency`- 將數位轉換為表示貨幣的字串。 可能的值是[ISO 4217 貨幣代碼](https://en.wikipedia.org/wiki/ISO_4217),如美元的"美元"、歐元的"歐元"或人民幣的"CNY"。
- * `'min-fraction-digits'`- 指定要包含在數位字串版本中的小數位數的最小數。
- * `'max-fraction-digits'`- 指定要包含在數位字串版本中的十進位的最大數。
+ * `locale`-指定此選項可將數位轉換成字串，使其與指定的語言對齊。 將[BCP 47 語言標記](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation)傳遞到此選項。
+ * `currency`-將數位轉換成代表貨幣的字串。 可能的值為[ISO 4217 貨幣代碼](https://en.wikipedia.org/wiki/ISO_4217)，例如美國元的「美元」、歐元的「歐元」或中文 RMB 的「CNY」。
+ * `'min-fraction-digits'`-指定數位的字串版本中要包含的最小小數位數。
+ * `'max-fraction-digits'`-指定數位的字串版本中要包含的最大小數位數。
 
-以下偽代碼定義文本欄位格式表達式的結構。 
+下列虛擬代碼會定義文字欄位格式運算式的結構。 
 
 ```javascript
 [
@@ -771,7 +771,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 **範例**
 
-下面的範例使用`number-format`運算式修改點要素的屬性在符`revenue`號`textField`圖層 選項中呈現的方式,使其顯示為美元值。
+下列範例會使用`number-format`運算式來修改點特徵的`revenue`屬性在符號圖層的`textField`選項中轉譯的方式，使其顯示 US 美元的值。
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -787,19 +787,19 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
-此圖層將呈現點特徵,如下圖所示:
+此圖層會轉譯點功能，如下圖所示：
 
 <center>
 
-![數位格式表示式範例](media/how-to-expressions/number-format-expression.png)</center>
+![數位格式運算式範例](media/how-to-expressions/number-format-expression.png)</center>
 
 ### <a name="image-expression"></a>影像運算式
 
-圖像運算式可與符號圖層`image`和多`textField`邊 形`fillPattern`圖層 的選項一起使用。 此表示式檢查請求的圖像是否存在樣式,並將返回已解析的圖像名稱或`null`,具體取決於影像當前是否位於樣式中。 此驗證過程是同步的,要求在映射參數中請求映射之前將映射添加到樣式中。
+影像運算式可用於符號圖層的`image`和`textField`選項，以及多邊形圖層的`fillPattern`選項。 這個運算式會檢查要求的影像是否存在於樣式中，並且會傳回已解析的影像`null`名稱或，視影像目前是否為樣式而定。 此驗證程式是同步的，而且需要先將影像新增至樣式，然後才在 image 引數中要求。
 
 **範例**
 
-下面的範例使用`image`運算式添加與符號圖層中文本的內聯圖示。 
+下列範例會使用`image`運算式，在符號圖層中新增以文字內嵌的圖示。 
 
 ```javascript
  //Load the custom image icon into the map resources.
@@ -825,19 +825,19 @@ map.imageSprite.add('wifi-icon', 'wifi.png').then(function () {
 });
 ```
 
-此層次將在符號圖層中渲染文字欄位,如下圖所示:
+此圖層會轉譯符號圖層中的文字欄位，如下圖所示：
 
 <center>
 
-![影像運算式範例](media/how-to-expressions/image-expression.png)</center>
+![映射運算式範例](media/how-to-expressions/image-expression.png)</center>
 
-## <a name="zoom-expression"></a>調整式運算式
+## <a name="zoom-expression"></a>Zoom 運算式
 
-表示式`zoom`用於在成像時檢索地圖的目前縮放等級,並`['zoom']`定義為 。 此運算式在地圖的最小縮放級別和最大縮放級別範圍之間返回一個數位。 Azure 地圖 Web 和 Android 的互動式地圖控制項支援 25 個縮放等級,編號為 0 到 24。 使用表達式`zoom`允許在更改地圖的縮放級別時動態修改樣式。 表達式`zoom`只能與`interpolate``step`和表達式一起使用。
+`zoom`運算式會在轉譯時用來抓取地圖的目前縮放層級，且定義為`['zoom']`。 這個運算式會傳回地圖的最小和最大縮放層級範圍之間的數位。 Web 和 Android 的 Azure 地圖服務互動式地圖控制項支援25個縮放層級，編號為0到24。 使用`zoom`運算式可讓您以動態方式修改樣式，因為地圖的縮放層級已變更。 `zoom`運算式只能與`interpolate`和`step`運算式搭配使用。
 
 **範例**
 
-默認情況下,熱貼圖圖層中呈現的數據點的半徑為所有縮放級別的固定圖元半徑。 放大地圖時,數據聚合在一起,熱圖圖層看起來不同。 運算式`zoom`可用於縮放每個縮放級別的半徑,以便每個數據點覆蓋地圖的相同物理區域。 這將使熱圖圖層看起來更靜態且一致。 地圖的每個縮放級別垂直和水平的圖元數是上一個縮放級別的兩倍。 縮放半徑(使其與每個縮放級別加倍)將創建在所有縮放級別上看起來一致的熱圖。 可以使用具有`zoom``base 2 exponential interpolation`表達式的運算式完成,為最小縮放級別設置圖元半徑,並針對最大縮放級別的縮放半徑(如下所`2 * Math.pow(2, minZoom - maxZoom)`示) 計算。
+根據預設，熱度圖圖層中轉譯之資料點的半徑對於所有縮放層級都有固定圖元半徑。 當地圖已縮放時，資料匯總在一起，且熱度圖層看起來會不同。 `zoom`運算式可以用來調整每個縮放層級的半徑，讓每個資料點都涵蓋對應的相同實體區域。 它會使熱度圖層看起來更加靜態且一致。 地圖的每個縮放層級都會以垂直和水準方式，與上一個縮放層級相同的圖元數倍。 調整半徑，讓它與每個縮放層級加倍，會建立在所有縮放層級上看起來一致的熱度圖。 您可以使用`zoom`運算式搭配`base 2 exponential interpolation`運算式來完成此作業，並針對最小縮放層級設定圖元半徑，並針對計算`2 * Math.pow(2, minZoom - maxZoom)`的最大縮放層級調整半徑，如下所示。
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -855,20 +855,20 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 };
 ```
 
-[檢視即時範例](map-add-heat-map-layer.md#consistent-zoomable-heat-map)
+[查看即時範例](map-add-heat-map-layer.md#consistent-zoomable-heat-map)
 
-## <a name="variable-binding-expressions"></a>變數繫結表示式
+## <a name="variable-binding-expressions"></a>變數系結運算式
 
-變數綁定表示式將計算結果存儲在變數中。 因此,計算結果可以在表達式的其他地方多次引用。 對於涉及許多計算的表達式,它是一種有用的優化。
+變數系結運算式會將計算的結果儲存在變數中。 因此，可以多次在運算式中的其他地方參考計算結果。 對於牽涉到許多計算的運算式而言，這是很有用的優化。
 
 | 運算是 | 傳回類型 | 描述 |
 |--------------|---------------|--------------|
-| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;"讓我們",<br/>&nbsp;&nbsp;&nbsp;&nbsp;名稱1:字串,<br/>&nbsp;&nbsp;&nbsp;&nbsp;值1:任何,<br/>&nbsp;&nbsp;&nbsp;&nbsp;名稱2:字串,<br/>&nbsp;&nbsp;&nbsp;&nbsp;值2:任何,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;子運算式<br/>\] | | 將一個或多個值儲存為變數,`var`供傳回結果的子運算式中的運算式使用。 |
-| `['var', name: string]` | 任意 | 引用使用`let`運算式創建的變數。 |
+| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;「let」，<br/>&nbsp;&nbsp;&nbsp;&nbsp;name1： string、<br/>&nbsp;&nbsp;&nbsp;&nbsp;value1： any、<br/>&nbsp;&nbsp;&nbsp;&nbsp;name2：字串、<br/>&nbsp;&nbsp;&nbsp;&nbsp;value2： any、<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | 儲存一或多個值做為變數，以`var`供傳回結果的子運算式中的運算式使用。 |
+| `['var', name: string]` | 任意 | 參考使用`let`運算式建立的變數。 |
 
 **範例**
 
-此示例使用一個表達式,該表達式計算收入相對於溫度比,然後使用`case`表達式計算此值上的不同布爾操作。 該`let`表達式用於存儲相對於溫度比的收入,因此只需計算一次。 表達式`var`根據需要經常引用此變數,而無需重新計算它。
+這個範例會使用運算式來計算相對於溫度比率的收益，然後使用`case`運算式來評估此值的不同布耳運算。 `let`運算式用來儲存相對於溫度比率的收益，因此只需要計算一次。 `var`運算式會在必要時經常參考此變數，而不必重新計算。
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -896,10 +896,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ## <a name="next-steps"></a>後續步驟
 
-有關實現表達式的更多代碼範例,請參閱以下文章:
+如需更多執行運算式的程式碼範例，請參閱下列文章：
 
 > [!div class="nextstepaction"] 
-> [新增符號層次](map-add-pin.md)
+> [新增符號圖層](map-add-pin.md)
 
 > [!div class="nextstepaction"] 
 > [新增氣泡圖層](map-add-bubble-layer.md)
@@ -913,7 +913,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 > [!div class="nextstepaction"] 
 > [新增熱度圖圖層](map-add-heat-map-layer.md)
 
-詳細瞭解支援表示式的圖層選項:
+深入瞭解支援運算式的圖層選項：
 
 > [!div class="nextstepaction"] 
 > [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
@@ -922,10 +922,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 > [HeatMapLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
-> [線圖層選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
+> [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
-> [多邊形圖層選項](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
+> [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
 > [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest) 

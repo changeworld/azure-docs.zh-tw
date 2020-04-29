@@ -6,36 +6,36 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: 9a28dee2d1e6d1355b729a56e8eeb8447e4ed8c8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80682022"
 ---
 # <a name="server-side-performance-queries"></a>伺服器端效能查詢
 
-良好的伺服器上的渲染性能對於穩定的幀速率和良好的用戶體驗至關重要。 仔細監視伺服器上的性能特徵並在必要時進行優化非常重要。 性能數據可以通過專用 API 功能進行查詢。
+伺服器上的良好轉譯效能對於穩定的畫面播放速率和良好的使用者體驗很重要。 請務必小心監視伺服器上的效能特性，並在必要時進行優化。 您可以透過專用的 API 函數來查詢效能資料。
 
-對渲染性能影響最大的是模型輸入數據。 您可以調整輸入資料,例如[配置模型轉換中](../../how-tos/conversion/configure-model-conversion.md)的描述。
+呈現效能的大部分影響力是模型輸入資料。 您可以調整輸入資料，如設定[模型轉換](../../how-tos/conversion/configure-model-conversion.md)中所述。
 
-用戶端應用程式性能也可能成為瓶頸。 要深入分析用戶端效能,建議採用[效能追蹤](../../how-tos/performance-tracing.md)。
+用戶端應用程式效能也可能是瓶頸。 若要深入分析用戶端效能，建議採取[效能追蹤](../../how-tos/performance-tracing.md)。
 
-## <a name="clientserver-timeline"></a>用戶端/伺服器時間線
+## <a name="clientserver-timeline"></a>用戶端/伺服器時間軸
 
-在詳細介紹各種延遲值之前,有必要查看時間線上的用戶端和伺服器之間的同步點:
+在深入瞭解各種延遲值之前，請先查看時間軸上用戶端與伺服器之間的同步處理點：
 
-![導管時間線](./media/server-client-timeline.png)
+![管線時間軸](./media/server-client-timeline.png)
 
-下圖顯示了如何:
+下圖顯示如何：
 
-* *a Pose 估計*由用戶端以恆定的 60 Hz 幀速率(每 16.6 毫秒)開始
-* 然後,伺服器根據姿勢開始渲染
-* 伺服器傳送回編碼的影像影像
-* 用戶端解碼影像,在映像之上執行一些 CPU 和 GPU 工作,然後顯示影像
+* 用戶端會以常數 60-Hz 畫面播放速率（每16.6 毫秒）啟動*姿勢估計*
+* 接著，伺服器會根據姿勢開始呈現
+* 伺服器傳回編碼的影片影像
+* 用戶端會將映射解碼、在其上執行一些 CPU 和 GPU 工作，然後顯示映射
 
-## <a name="frame-statistics-queries"></a>格格統計資訊查詢
+## <a name="frame-statistics-queries"></a>框架統計資料查詢
 
-幀統計資訊為最後一幀提供了一些高級資訊,例如延遲。 結構中`FrameStatistics`提供的資料在客戶端進行測量,因此 API 是同步呼叫:
+畫面格統計資料會針對最後一個畫面格提供一些高階資訊，例如延遲。 `FrameStatistics`結構中提供的資料是在用戶端測量，因此 API 是同步呼叫：
 
 ````c#
 void QueryFrameData(AzureSession session)
@@ -48,32 +48,32 @@ void QueryFrameData(AzureSession session)
 }
 ````
 
-檢索`FrameStatistics`的物件包含以下成員:
+抓取的`FrameStatistics`物件會保存下列成員：
 
 | member | 說明 |
 |:-|:-|
-| 延遲接收 | 來自攝像機的延遲在用戶端設備上進行估計,直到此姿勢的伺服器幀完全可供用戶端應用程式使用。 此值包括網路往返、伺服器渲染時間、視頻解碼和抖動補償。 請參閱**上圖中的間隔 1。**|
-| 延遲接收到存在 | 從接收的遠端幀的可用性到用戶端應用在 CPU 上調用呈現幀的延遲。 |
-| 延遲顯示  | 從在 CPU 上顯示幀到顯示亮起的延遲。 此值包括用戶端 GPU 時間、作業系統執行的任何幀緩衝、硬體重新投影和與設備相關的顯示掃描時間。 請參閱**上圖中的間隔 2。**|
-| 時間 自上次存在 | 後續調用 CPU 上的「當前幀」之間的時間。 大於顯示持續時間的值(例如 60 Hz 用戶端設備上的 16.6 ms)表示用戶端應用程式未能及時完成 CPU 工作負載所造成的問題。 請參閱**上圖中的間隔 3。**|
-| 視頻幀接收 | 在最後一秒從伺服器接收的幀數。 |
-| 視訊幀重新使用計數 | 設備上多次使用的接收幀數。 非零值表示由於網路抖動或伺服器渲染時間過長,必須重複使用和重新投影幀。 |
-| 跳過的影片 | 已解碼的最後一秒接收的幀數,但由於較新的幀已到達,因此未顯示。 非零值表示網路抖動導致多個幀延遲,然後一起到達用戶端設備。 |
-| 視頻幀已丟棄 | 非常類似於**視頻FrameS跳過**,但被丟棄的原因是,一個幀來得太晚,它甚至不能與任何掛起的姿勢關聯了。 如果發生這種情況,則存在一些嚴重的網路爭用。|
-| 視訊框架明三角洲 | 在最後一秒到達的兩個連續幀之間的最短時間量。 與視頻FrameMaxDelta一起,此範圍可指示由網路或視頻編解碼器引起的抖動。 |
-| 視訊FrameMaxDelta | 在最後一秒到達的兩個連續幀之間的最大時間量。 與視頻FrameMinDelta一起,此範圍可指示由網路或視頻編解碼器引起的抖動。 |
+| latencyPoseToReceive | 相機的延遲會導致用戶端裝置上的預估，直到此姿勢的伺服器框架完全可供用戶端應用程式使用為止。 此值包括網路往返、伺服器轉譯時間、影片解碼和抖動補償。 請參閱**上圖中的間隔1。**|
+| latencyReceiveToPresent | 在用戶端應用程式對 CPU 呼叫 PresentFrame 之前，從已接收的遠端框架的可用性開始延遲。 |
+| latencyPresentToDisplay  | 在 CPU 上呈現畫面格的延遲，直到顯示燈為止。 此值包括用戶端 GPU 時間、作業系統所執行的任何框架緩衝、硬體 reprojection，以及與裝置相關的顯示掃描時間。 請參閱**上圖中的間隔2。**|
+| timeSinceLastPresent | 對 CPU 上的 PresentFrame 進行後續呼叫之間的時間。 大於顯示持續時間的值（例如 60-Hz 用戶端裝置上的16.6 毫秒）表示用戶端應用程式未及時完成其 CPU 工作負載所造成的問題。 請參閱**上圖中的間隔3。**|
+| videoFramesReceived | 上一秒從伺服器接收的框架數目。 |
+| videoFrameReusedCount | 過去一秒在裝置上使用的已接收框架數超過一次。 非零值表示必須重複使用框架，並因網路抖動或伺服器轉譯時間過多而 reprojected。 |
+| videoFramesSkipped | 最後一秒已解碼，但因為較新的框架已到達而未顯示在顯示上的已接收框架數目。 非零值表示網路 jittering 造成多個框架延遲，然後在高載中同時抵達用戶端裝置。 |
+| videoFramesDiscarded | 非常類似于**videoFramesSkipped**，但被捨棄的原因是畫面上出現了一段延遲，甚至無法再與任何暫止的姿勢相互關聯。 如果發生這種情況，就會發生一些嚴重的網路爭用。|
+| videoFrameMinDelta | 在最後一秒抵達的兩個連續框架之間的最小時間量。 與 videoFrameMaxDelta 搭配使用時，此範圍會指出由網路或視頻編碼器所造成的抖動。 |
+| videoFrameMaxDelta | 在最後一秒抵達的兩個連續框架之間的最大時間量。 與 videoFrameMinDelta 搭配使用時，此範圍會指出由網路或視頻編碼器所造成的抖動。 |
 
-所有延遲值的總和通常比 60 Hz 的可用幀時間大得多。 這沒關係,因為多個幀並行飛行,並且新的幀請求以所需的幀速率啟動,如圖所示。 但是,如果延遲變得太大,它會影響[後期重新投影](../../overview/features/late-stage-reprojection.md)的品質,並可能危及整體體驗。
+所有延遲值的總和通常會比 60 Hz 的可用框架時間大得多。 這是正常的，因為多個畫面會平行進行，而新的框架要求會以所需的畫面播放速率開始，如圖所示。 不過，如果延遲變得太大，它會影響[延遲階段 reprojection](../../overview/features/late-stage-reprojection.md)的品質，而且可能會危害整體體驗。
 
-`videoFramesReceived``videoFrameReusedCount`,`videoFramesDiscarded`並可用於測量網路和伺服器性能。 如果`videoFramesReceived`低且`videoFrameReusedCount`高,則表示網路擁塞或伺服器性能不佳。 高`videoFramesDiscarded`值還表示網路擁塞。
+`videoFramesReceived`、 `videoFrameReusedCount`和`videoFramesDiscarded`可以用來測量網路和伺服器效能。 如果`videoFramesReceived`很低且`videoFrameReusedCount`非常高，這可能表示網路擁塞或伺服器效能不佳。 較高`videoFramesDiscarded`的值也表示網路擁塞。
 
-最後,`timeSinceLastPresent` `videoFrameMinDelta``videoFrameMaxDelta`, 並給出傳入視頻幀和本地當前調用的方差。 高方差意味著幀速率不穩定。
+最後，`timeSinceLastPresent` `videoFrameMinDelta`、和`videoFrameMaxDelta`會瞭解傳入的影片畫面和本機的目前電話的變異數。 高差異表示 instable 畫面播放速率。
 
-上述值均未明確指示純網路延遲(圖中的紅色箭頭),因為需要從往返值`latencyPoseToReceive`中減去伺服器正忙於渲染的確切時間。 總體延遲的伺服器端部分是用戶端不可用的資訊。 但是,下一段將解釋如何通過來自伺服器的其他輸入並通過`networkLatency`該值公開來估計此值。
+上述任何值都不會清楚指出單純的網路延遲（圖例中的紅色箭號），因為必須從往返值`latencyPoseToReceive`中減去伺服器忙碌轉譯的確切時間。 整體延遲的伺服器端部分是用戶端無法使用的資訊。 不過，下一段將說明此值如何透過伺服器的其他輸入來逼近，並透過`networkLatency`值公開。
 
-## <a name="performance-assessment-queries"></a>績效評估查詢
+## <a name="performance-assessment-queries"></a>效能評定查詢
 
-*性能評估查詢*提供有關伺服器上的 CPU 和 GPU 工作負載的更深入資訊。 由於從伺服器請求數據,因此查詢性能快照遵循通常的非同步模式:
+*效能評定查詢*可提供有關伺服器上 CPU 和 GPU 工作負載的更深入資訊。 因為資料是從伺服器要求，所以查詢效能快照集會遵循一般非同步模式：
 
 ``` cs
 PerformanceAssessmentAsync _assessmentQuery = null;
@@ -92,25 +92,25 @@ void QueryPerformanceAssessment(AzureSession session)
 }
 ```
 
-與`FrameStatistics`物件相反,`PerformanceAssessment`此物件包含伺服器端資訊:
+與`FrameStatistics`物件相反， `PerformanceAssessment`物件包含伺服器端資訊：
 
 | member | 說明 |
 |:-|:-|
-| 時間CPU | 每幀平均伺服器 CPU 時間(以毫秒為單位) |
-| 時間GPU | 每幀平均伺服器 GPU 時間(以毫秒為單位) |
-| 利用率CPU | 伺服器 CPU 總利用率(百分比) |
-| 利用 | 伺服器 GPU 總利用率(百分比) |
-| 記憶體CPU | 伺服器主記憶體總利用率(百分比) |
-| 記憶體GPU | 以伺服器 GPU 百分比表示的專用影片記憶體利用率 |
-| 網路延遲 | 近似平均往返網路延遲(以毫秒為單位)。 在上面的插圖中,這對應於紅色箭頭的總和。 這個值是從的值中減去實際伺服器呈現時間來計算`latencyPoseToReceive`。`FrameStatistics` 雖然此近似值不準確,但它提供了一些網路延遲的指示,與用戶端上計算的延遲值隔離。 |
-| 多邊形成像 | 在一個幀中呈現的三角形數。 此數位還包括稍後在渲染過程中剔除的三角形。 這意味著,此數位在不同的攝像機位置變化並不大,但性能可能會有很大差異,具體取決於三角形剔除率。|
+| timeCPU | 每個畫面格的平均伺服器 CPU 時間（毫秒） |
+| timeGPU | 每個畫面的平均伺服器 GPU 時間（毫秒） |
+| utilizationCPU | 伺服器 CPU 使用率總計（百分比） |
+| utilizationGPU | 伺服器 GPU 總使用率（以百分比為單位） |
+| memoryCPU | 伺服器主要記憶體使用率總計（百分比） |
+| memoryGPU | 伺服器 GPU 的專用視頻記憶體使用率總計（以百分比表示） |
+| networkLatency | 大約的平均往返網路延遲（以毫秒為單位）。 在上圖中，這會對應到紅色箭號的總和。 值的計算方式是將實際伺服器轉譯時間減去的`latencyPoseToReceive`值`FrameStatistics`。 雖然此近似值不精確，但它會提供網路延遲的一些指示，與用戶端上計算的延遲值隔離。 |
+| polygonsRendered | 在一個畫面格中呈現的三角形數目。 此數目也包括在轉譯期間稍後挑選的三角形。 這表示，這個數位不會在不同的相機位置上有很大的差異，但效能可能會有大幅差異，視三角形的挑選率而定。|
 
-為了説明你評估值,每個部分都帶有質量分類,如 **「偉大**、**良好**、**平庸**」或 **「壞**」。。
-此評估指標提供伺服器運行狀況的粗略指示,但不應將其視為絕對指標。 例如,假設您看到 GPU 時間的"平庸" 分數。 它被認為是平庸的,因為它接近整個幀時間預算的極限。 但是,在您的情況下,它可能是一個不錯的值,因為您正在呈現一個複雜的模型。
+為了協助您評估這些值，每個部分都有品質分類，例如**絕佳**、**良好**、**中等**或**不良**。
+此評量度量可提供伺服器健全狀況的粗略指示，但不應視為絕對。 例如，假設您在 GPU 時間看到 ' 中等 ' 分數。 它會被視為中等，因為它會接近整體框架時間預算的限制。 不過，在您的案例中，它可能是很好的值，因為您正在轉譯複雜的模型。
 
-## <a name="statistics-debug-output"></a>統計除錯輸出
+## <a name="statistics-debug-output"></a>統計資料的調試輸出
 
-該類`ARRServiceStats`環繞幀統計資訊和性能評估查詢,並提供方便的功能,將統計資訊返回為聚合值或預構建字串。 以下代碼是在用戶端應用程式中顯示伺服器端統計資訊的最簡單方法。
+類別`ARRServiceStats`會包裝框架統計資料和效能評估查詢，並提供便利的功能來將統計資料當做匯總值或預先建立的字串傳回。 下列程式碼是在用戶端應用程式中顯示伺服器端統計資料的最簡單方式。
 
 ``` cs
 ARRServiceStats _stats = null;
@@ -138,13 +138,13 @@ void Update()
 }
 ```
 
-上面的代碼用以下文字填充文字標籤:
+上述程式碼會將文字標籤填入下列文字：
 
 ![ArrServiceStats 字串輸出](./media/arr-service-stats.png)
 
-`GetStatsString` API 設置所有值的字串,但也可以從`ARRServiceStats`實例以程式設計方式查詢每個值。
+`GetStatsString` API 會將所有值的字串格式化，但每個單一值也可以透過程式設計方式從`ARRServiceStats`實例進行查詢。
 
-成員也有變體,這些變體會隨時間聚合值。 請參考後置字`*Avg`的成員`*Max`,`*Total`或 。 該成員`FramesUsedForAverage`指示此聚合已使用多少幀。
+也有成員的變異數，其會在一段時間後匯總值。 請參閱具有尾碼`*Avg`、 `*Max`或`*Total`的成員。 成員`FramesUsedForAverage`表示此匯總所使用的框架數目。
 
 ## <a name="next-steps"></a>後續步驟
 

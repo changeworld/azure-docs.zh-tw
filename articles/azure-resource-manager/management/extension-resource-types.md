@@ -1,159 +1,159 @@
 ---
 title: 延伸模組資源類型
-description: 列出 Azure 資源類型用於擴展其他資源類型的功能。
+description: 列出 Azure 資源類型是用來擴充其他資源類型的功能。
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 3a3fbc531750bec4b16e38f1fe79f613c1b94f5e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80754863"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>擴充其他資源功能的資源類型
 
-擴展資源是添加到其他資源功能的資源。 例如,資源鎖是擴展資源。 將資源鎖定應用於其他資源,以防止其被刪除或修改。 創建資源鎖本身沒有意義。 擴展資源始終應用於其他資源。
+延伸模組資源是新增至另一個資源功能的資源。 例如，資源鎖定是擴充功能資源。 您會將資源鎖定套用至另一個資源，以防止其遭到刪除或修改。 建立資源鎖定本身並不合理。 延伸模組資源一律會套用至另一個資源。
 
 ## <a name="extension-resource-types"></a>延伸模組資源類型
 
-- 微軟.顧問/配置
-- 微軟.顧問/建議
-- 微軟.顧問/壓制
-- 微軟.警報管理/警報
-- 微軟.警報管理/警報摘要
-- 微軟.授權/檢查存取
-- 微軟.授權/拒絕分配
-- 微軟.授權/查找孤兒角色分配
+- Microsoft Advisor/設定
+- Microsoft Advisor/建議
+- Microsoft Advisor/隱藏
+- Microsoft.alertsmanagement/警示
+- Microsoft.alertsmanagement/alertsSummary
+- Microsoft 授權/checkAccess
+- Microsoft 授權/denyAssignments
+- Microsoft 授權/findOrphanRoleAssignments
 - Microsoft.Authorization/locks
-- 微軟.授權/權限
-- 微軟.授權/策略配置
-- 微軟.授權/策略定義
-- 微軟.授權/策略集定義
+- Microsoft。授權/許可權
+- Microsoft 授權/policyAssignments
+- Microsoft 授權/policyDefinitions
+- Microsoft 授權/policySetDefinitions
 - Microsoft.Authorization/roleAssignments
-- 微軟.授權/角色配置使用指標
-- 微軟.授權/角色定義
-- 微軟.計費/計費週期
-- 微軟.計費/計費許可權
-- 微軟.計費/計費角色分配
-- 微軟.計費/計費角色定義
-- 微軟.計費/創建計費角色分配
-- 微軟.藍圖/藍圖分配
-- 微軟.藍圖/藍圖
-- 微軟.消費/聚合成本
-- 微軟.消費/平衡
-- 微軟.消費/預算
-- 微軟.消費/費用
-- 微軟.消費/成本標籤
-- 微軟.消費/預測
-- 微軟.消費/市場
-- 微軟.消費/操作結果
-- 微軟.消費/操作狀態
-- 微軟.消費/價格表
-- 微軟.消費/預訂詳情
-- 微軟.消費/預訂建議
-- 微軟.消費/預訂摘要
-- 微軟.消費/預訂交易
-- 微軟.消費/標籤
-- 微軟.消費/條款
-- 微軟.消費/使用詳情
-- 微軟.消費/信用
-- 微軟.消費/事件
-- 微軟.消費/手
-- 微軟.消費/產品
-- 微軟.消費/租戶
-- 微軟.容器實例/服務關聯連結
-- 微軟.成本管理/警報
-- 微軟.成本管理/預算
-- 微軟.成本管理/維度
-- 微軟.成本管理/出口
-- 微軟.成本管理/外部訂閱
-- 微軟.成本管理/預測
-- 微軟.成本管理/查詢
-- 微軟.成本管理/報告配置
-- 微軟.成本管理/報告
-- 微軟.成本管理/檢視
-- 微軟.成本管理/顯示後規則
+- Microsoft 授權/roleAssignmentsUsageMetrics
+- Microsoft 授權/roleDefinitions
+- Microsoft 帳單/billingPeriods
+- Microsoft 帳單/billingPermissions
+- Microsoft 帳單/billingRoleAssignments
+- Microsoft 帳單/billingRoleDefinitions
+- Microsoft 帳單/createBillingRoleAssignment
+- Microsoft 藍圖/blueprintAssignments
+- Microsoft 藍圖/藍圖
+- Microsoft. 耗用量/AggregatedCost
+- Microsoft. 耗用量/餘額
+- Microsoft. 耗用量/預算
+- Microsoft。耗用量/費用
+- Microsoft. 耗用量/CostTags
+- Microsoft。耗用量/預測
+- Microsoft。耗用量/市場
+- Microsoft. 耗用量/OperationResults
+- Microsoft. 耗用量/OperationStatus
+- Microsoft. 耗用量/Pricesheets
+- Microsoft. 耗用量/ReservationDetails
+- Microsoft. 耗用量/ReservationRecommendations
+- Microsoft. 耗用量/ReservationSummaries
+- Microsoft. 耗用量/ReservationTransactions
+- Microsoft. 耗用量/標記
+- Microsoft。耗用量/條款
+- Microsoft. 耗用量/UsageDetails
+- Microsoft. 耗用量/點數
+- Microsoft. 耗用量/事件
+- Microsoft. 耗用量/大量
+- Microsoft. 耗用量/產品
+- Microsoft。耗用量/租使用者
+- Microsoft.containerinstance/serviceAssociationLinks
+- CostManagement/警示
+- CostManagement/預算
+- CostManagement/維度
+- CostManagement/匯出
+- CostManagement/ExternalSubscriptions
+- CostManagement/預測
+- CostManagement/Query
+- CostManagement/Reportconfigs
+- CostManagement/Reports
+- CostManagement/Views
+- CostManagement/showbackRules
 - Microsoft.CustomProviders/associations
 - Microsoft.EventGrid/eventSubscriptions
 - Microsoft.EventGrid/extensionTopics
-- 微軟.來賓配置/配置配置檔分配
-- 微軟.來賓配置/來賓配置分配
-- 微軟.來賓配置/軟體
-- 微軟.來賓配置/軟體更新配置檔
-- 微軟.來賓配置/軟體更新
-- 微軟.insights/基線
-- 微軟.見解/計算基線
-- 微軟.insights/數據收集規則協會
-- 微軟.見解/診斷設置
-- 微軟.見解/診斷設置類別
-- 微軟.insights/事件類型
-- 微軟.insights/擴展診斷設定
-- 微軟.insights/來賓診斷設置協會
-- 微軟.insights/日誌定義
-- 微軟.insights/日誌
-- 微軟.見解/指標定義
-- 微軟.insights/指標命名空間
-- microsoft.insights/指標基線
-- 微軟.見解/指標
-- 微軟.insights/我的工作簿
-- 微軟.見解/拓撲
-- 微軟.見解/交易
-- 微軟.insights/vminsights 上牌狀態
-- 微軟.庫伯內茨配置/源控制配置
-- 微軟.維護/應用更新
-- 微軟.維護/配置配置
-- 微軟.維護/更新
-- 微軟.託管身份/身份
-- 微軟.託管服務/註冊分配
-- 微軟.託管服務/註冊定義
-- 微軟.動作洞察/儲存洞察配置
-- 微軟.運營管理/管理協會
-- 微軟.政策見解/政策事件
-- 微軟.政策見解/政策國家
-- 微軟.政策見解/政策跟蹤資源
-- 微軟.政策見解/補救
-- 微軟.恢復服務/備份保護專案
-- 微軟.恢復服務/複製資格結果    
-- 微軟.資源運行狀況/可用性 狀態
-- 微軟.資源健康/子可用性狀態
-- 微軟.資源健康/兒童資源
-- 微軟.資源運行狀況/事件
-- 微軟.資源運行狀況/受影響的資源
-- 微軟.資源運行狀況/通知
-- 微軟.資源/連結
-- 微軟.資源/標籤
-- 微軟.安全/合規性
-- 微軟安全/資訊保護政策
-- 微軟.安全/自適應網路強化
-- 微軟.安全/進階威脅保護設定
-- 微軟.安全/評估元數據
-- 微軟.安全/評估
-- 微軟.安全/合規性結果
-- 微軟.安全/數據收集代理
-- 微軟安全/裝置安全組
-- 微軟.安全/網路資料
-- 微軟.安全/伺服器漏洞評估
-- 微軟.安全見解/聚合
-- 微軟安全見解/警報規則範本
-- 微軟安全見解/警報規則
-- 微軟.安全見解/書籤
-- 微軟.安全見解/案例
-- 微軟.安全洞察/資料連接器
-- 微軟.安全洞察/數據連接器檢查要求
-- 微軟.安全見解/實體
-- 微軟.安全見解/實體查詢
-- 微軟.安全見解/事件
-- 微軟.安全見解/辦公室同意
-- 微軟.安全見解/設置
-- 微軟.軟體計劃/混合使用優勢
-- 微軟訂閱/建立訂閱
-- 微軟支援/支援票
-- 微軟.工作負載監視器/元件
-- 微軟.工作負載監視器/監視器實例
-- 微軟.工作負載監視器/監視器
-- 微軟.工作負載監視器/通知設置
+- GuestConfiguration/configurationProfileAssignments
+- GuestConfiguration/guestConfigurationAssignments
+- GuestConfiguration/軟體
+- GuestConfiguration/softwareUpdateProfile
+- GuestConfiguration/softwareUpdates
+- microsoft insights/基準
+- microsoft insights/calculatebaseline
+- microsoft insights/dataCollectionRuleAssociations
+- microsoft insights/diagnosticSettings
+- microsoft insights/diagnosticSettingsCategories
+- microsoft insights/eventtypes
+- microsoft insights/extendedDiagnosticSettings
+- microsoft insights/不 guestdiagnosticsettingsassociation
+- microsoft insights/logDefinitions
+- microsoft insights/記錄
+- microsoft insights/Metricdefinitions.listasync
+- microsoft insights/metricNamespaces
+- microsoft insights/metricbaselines
+- microsoft insights/計量
+- microsoft insights/myWorkbooks
+- microsoft insights/拓撲
+- microsoft 深入解析/交易
+- microsoft insights/vmInsightsOnboardingStatuses
+- KubernetesConfiguration/sourceControlConfigurations
+- Microsoft. 維護/applyUpdates
+- Microsoft. 維護/configurationAssignments
+- Microsoft. 維護/更新
+- Microsoft.managedidentity/身分識別
+- ManagedServices/registrationAssignments
+- ManagedServices/registrationDefinitions
+- Microsoft.operationalinsights/storageInsightConfigs
+- Microsoft.operationsmanagement/managementassociations
+- Microsoft.policyinsights/policyEvents
+- Microsoft.policyinsights/policyStates
+- Microsoft.policyinsights/policyTrackedResources
+- Microsoft.policyinsights/補救
+- Azurerm.recoveryservices/backupProtectedItems
+- Azurerm.recoveryservices/replicationEligibilityResults    
+- ResourceHealth/availabilityStatuses
+- ResourceHealth/childAvailabilityStatuses
+- ResourceHealth/childResources
+- ResourceHealth/events
+- ResourceHealth/impactedResources
+- ResourceHealth/通知
+- Microsoft .Resources/links
+- Microsoft .Resources/tags
+- Microsoft. Security/規範
+- Microsoft. Security/InformationProtectionPolicies
+- Microsoft. Security/adaptiveNetworkHardenings
+- Microsoft. Security/advancedThreatProtectionSettings
+- Microsoft. Security/assessmentMetadata
+- Microsoft. 安全性/評量
+- Microsoft. Security/complianceResults
+- Microsoft. Security/dataCollectionAgents
+- Microsoft. Security/deviceSecurityGroups
+- Microsoft. Security/Networkdata.xml
+- Microsoft. Security/serverVulnerabilityAssessments
+- SecurityInsights/匯總
+- SecurityInsights/alertRuleTemplates
+- SecurityInsights/alertRules
+- SecurityInsights/書簽
+- SecurityInsights/案例
+- SecurityInsights/dataConnectors
+- SecurityInsights/dataConnectorsCheckRequirements
+- SecurityInsights/實體
+- SecurityInsights/entityQueries
+- SecurityInsights/事件
+- SecurityInsights/officeConsents
+- SecurityInsights/settings
+- SoftwarePlan/hybridUseBenefits
+- Microsoft 訂用帳戶/CreateSubscription
+- microsoft 支援/supporttickets
+- WorkloadMonitor/components
+- WorkloadMonitor/monitorInstances
+- WorkloadMonitor/監視器
+- WorkloadMonitor/notificationSettings
 
 ## <a name="next-steps"></a>後續步驟
 
-- 要取得 Azure 資源管理員樣本中的延伸資源的資源代碼,請使用[延伸 ResourceId](../templates/template-functions-resource.md#extensionresourceid)。
-- 有關在樣本建立延伸資源的範例,請參閱[事件網格事件訂閱](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions)。
+- 若要取得 Azure Resource Manager 範本中擴充功能資源的資源識別碼，請使用[extensionResourceId](../templates/template-functions-resource.md#extensionresourceid)。
+- 如需在範本中建立擴充功能資源的範例，請參閱[Event Grid 事件訂閱](/azure/templates/microsoft.eventgrid/2019-06-01/eventsubscriptions)。

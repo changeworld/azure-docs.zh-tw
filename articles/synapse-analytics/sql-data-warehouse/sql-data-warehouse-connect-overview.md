@@ -1,6 +1,6 @@
 ---
-title: 連接到 Synapse SQL 池
-description: 連接到 SQL 池。
+title: 連接到 Synapse SQL 集區
+description: 取得連接到 SQL 集區。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,32 +12,32 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e5c015751e8b0aeed7bd84086cc4f65c234fdb41
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745324"
 ---
-# <a name="connect-to-synapse-sql-pool"></a>連接到 Synapse SQL 池
+# <a name="connect-to-synapse-sql-pool"></a>連接到 Synapse SQL 集區
 
-連接到 SQL 池。
+取得連接到 SQL 集區。
 
 ## <a name="find-your-server-name"></a>尋找您的伺服器名稱
 
-以下範例中的伺服器名稱sqlpoolservername.database.windows.net。 若要尋找完整的伺服器名稱：
+下列範例中的伺服器名稱為 sqlpoolservername.database.windows.net。 若要尋找完整的伺服器名稱：
 
 1. 移至 [Azure 入口網站](https://portal.azure.com)。
-2. 點選**Azure 同步分析**。
-3. 按下要連接到的 SQL 池。
+2. 按一下 [ **Azure Synapse 分析**]。
+3. 按一下您要連接的 SQL 集區。
 4. 找出完整的伺服器名稱。
 
    ![完整伺服器名稱](media/sql-data-warehouse-connect-overview/server-connect.PNG)
 
 ## <a name="supported-drivers-and-connection-strings"></a>支援的驅動程式和連接字串
 
-SQL[ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)池 支援[ADO.NET、ODBC、PHP](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[JDBC。](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) [PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) 若要尋找最新版本和文件，請按一下前述的其中一個驅動程式。
+SQL 集區支援[ADO.NET](/dotnet/framework/data/adonet?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)、 [ODBC](/sql/connect/odbc/windows/microsoft-odbc-driver-for-sql-server-on-windows?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)、 [PHP](/sql/connect/php/overview-of-the-php-sql-driver?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[JDBC](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。 若要尋找最新版本和文件，請按一下前述的其中一個驅動程式。
 
-若要從 Azure 入口網站自動為您使用的驅動程式產生連接字串，按一下前述範例中的 [顯示資料庫連接字串]****。 下列一些範例顯示每個驅動程式的連接字串。
+若要從 Azure 入口網站自動為您使用的驅動程式產生連接字串，按一下前述範例中的 [顯示資料庫連接字串]  。 下列一些範例顯示每個驅動程式的連接字串。
 
 > [!NOTE]
 > 請考慮將連線逾時設定為 300 秒，以便在短時間無法使用時能夠維持連線。
@@ -68,7 +68,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="connection-settings"></a>連線設定
 
-SQL 池在連接和物件創建期間標準化某些設置。 這些設定不能覆寫，其中包括︰
+SQL 集區會在連接和物件建立期間標準化某些設定。 這些設定不能覆寫，其中包括︰
 
 | 資料庫設定 | 值 |
 |:--- |:--- |
@@ -79,4 +79,4 @@ SQL 池在連接和物件創建期間標準化某些設置。 這些設定不能
 
 ## <a name="next-steps"></a>後續步驟
 
-若要使用 Visual Studio 連接及查詢，請參閱 [使用 Visual Studio 查詢](sql-data-warehouse-query-visual-studio.md)。 要瞭解有關身份驗證選項的詳細資訊,請參閱[Azure 同步分析的身份驗證](sql-data-warehouse-authentication.md)。
+若要使用 Visual Studio 連接及查詢，請參閱 [使用 Visual Studio 查詢](sql-data-warehouse-query-visual-studio.md)。 若要深入瞭解驗證選項，請參閱[Azure Synapse 分析的驗證](sql-data-warehouse-authentication.md)。

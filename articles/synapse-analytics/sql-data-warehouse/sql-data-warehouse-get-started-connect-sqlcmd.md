@@ -1,6 +1,6 @@
 ---
-title: 使用 sqlcmd 連線
-description: 使用 sqlcmd 命令列實用程式連接到和查詢 Synapse SQL 池。
+title: 使用 sqlcmd 連接
+description: 使用 sqlcmd 命令列公用程式來連接及查詢 Synapse SQL 集區。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,36 +12,36 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 02157ca0d32d2347e50cc84a5c52e9c47b0f33b5
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80745193"
 ---
-# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>使用 sqlcmd 連線到 Synapse SQL 池
+# <a name="connect-to-synapse-sql-pool-with-sqlcmd"></a>使用 sqlcmd 連接到 Synapse SQL 集區
 
 > [!div class="op_single_selector"]
 >
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure 機器學習](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
+> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 > * [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 
-使用 [sqlcmd][sqlcmd] 命令行實用程式連接到和查詢 SQL 池。  
+使用 [sqlcmd] [sqlcmd] 命令列公用程式來連接及查詢 SQL 集區。  
 
-## <a name="1-connect"></a>1. 連線
+## <a name="1-connect"></a>1.連線
 
-要開始使用 [sqlcmd][sqlcmd],請打開命令提示符並輸入**sqlcmd,** 然後輸入 SQL 池資料庫的連接字串串。 連接字串需要下列參數：
+若要開始使用 [sqlcmd] [sqlcmd]，請開啟命令提示字元，然後輸入**sqlcmd** ，後面接著您的 SQL 集區資料庫的連接字串。 連接字串需要下列參數：
 
 * **伺服器 (-S)：** 採用 `<`Server Name`>`.database.windows.net 格式的伺服器
-* **資料庫 (-d):** 資料庫名稱。
-* **開啟報價識別碼 (-I):** 必須啟用已引用的標識符才能連接到 SQL 池實例。
+* **資料庫（-d）：** 資料庫名稱。
+* **啟用引號識別碼（-I）：** 必須啟用引號識別碼，才能連接到 SQL 集區實例。
 
 若要使用 SQL Server 驗證，您需要新增使用者名稱/密碼參數︰
 
-* **使用者 (-U)：**`<`使用者`>`表單中的伺服器使用者
-* **密碼 (-P)：** 與使用者相關聯的密碼。
+* **使用者 (-U)：** `<`使用者`>`表單中的伺服器使用者
+* **密碼（-P）：** 與使用者相關聯的密碼。
 
 例如，您的連接字串看起來可能如下所示︰
 
@@ -62,7 +62,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 > [!NOTE]
 > 您需要使用 Active Directory [啟用 Azure Active Directory 驗證](sql-data-warehouse-authentication.md) 以進行驗證。
 
-## <a name="2-query"></a>2. 查詢
+## <a name="2-query"></a>2.查詢
 
 連線之後，您可以對執行個體發出任何支援的 Transact-SQL 陳述式。  此範例會在互動模式中提交查詢。
 
@@ -85,4 +85,4 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 
 ## <a name="next-steps"></a>後續步驟
 
-關於 sqlcmd 中可用選項的詳細資訊,請參閱[sqlcmd 文件](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+如需 sqlcmd 中可用選項的詳細資訊，請參閱[sqlcmd 檔](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。

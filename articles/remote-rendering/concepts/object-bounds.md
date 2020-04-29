@@ -1,28 +1,28 @@
 ---
-title: 物件邊界
-description: 解釋如何查詢空間物件邊界
+title: 物件界限
+description: 說明如何查詢空間物件界限
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
 ms.openlocfilehash: 1d2dfdb203b05f2f6b7de740718d7407bd88066c
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681710"
 ---
-# <a name="object-bounds"></a>物件邊界
+# <a name="object-bounds"></a>物件界限
 
-物件邊界表示[實體](entities.md)及其子級佔用的卷。 在 Azure 遠端渲染中,物件邊界始終作為*軸對齊的邊界框*(AABB) 給出。 物件邊界可以是*本地空間*,也可以位於*世界空間*。 無論哪種方式,它們始終與軸對齊,這意味著局部世界空間表示的範圍和體積可能不同。
+物件界限代表[實體](entities.md)及其子系所佔用的磁片區。 在 Azure 遠端呈現中，物件界限一律會指定為*軸對齊的周框方塊*（AABB）。 物件界限可以是在*本機空間*或*世界空間*中。 不論是哪種方式，它們一律會對齊軸，這表示區域和磁片區可能會在本機和世界空間標記法之間有所不同。
 
-## <a name="querying-object-bounds"></a>查詢物件邊界
+## <a name="querying-object-bounds"></a>查詢物件界限
 
-可以直接從網格資源查詢[網格](meshes.md)的局部 AABB。 這些邊界可以使用實體的轉換轉換為實體的本地空間或世界空間。
+您可以直接從網格資源查詢[網格](meshes.md)的本機 AABB。 您可以使用實體的轉換，將這些界限轉換成實體的本機空間或世界空間。
 
-可以以這種方式計算整個物件層次結構的邊界,但這需要遍歷層次結構、查詢每個網格的邊界並手動組合它們。 此操作既繁瑣又低效。
+有可能以這種方式計算整個物件階層的界限，但這需要遍歷階層、查詢每個網格的界限，並以手動方式加以結合。 這項作業既繁瑣又沒有效率。
 
-更好的方法是調用`QueryLocalBoundsAsync`實體`QueryWorldBoundsAsync`或調用實體。 然後,計算將卸載到伺服器,以最小的延遲返回。
+更好的方式是在`QueryLocalBoundsAsync`實體`QueryWorldBoundsAsync`上呼叫或。 然後，計算會卸載至伺服器，並以最少的延遲傳回。
 
 ``` cs
 private BoundsQueryAsync _boundsQuery = null;

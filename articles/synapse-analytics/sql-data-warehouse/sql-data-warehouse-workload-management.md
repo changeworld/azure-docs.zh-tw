@@ -1,6 +1,6 @@
 ---
 title: 工作負載管理
-description: 在 Azure 同步分析中實現工作負載管理的指導。
+description: 在 Azure Synapse 分析中執行工作負載管理的指導方針。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,47 +12,47 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80744230"
 ---
 # <a name="what-is-workload-management"></a>什麼是工作負載管理？
 
-運行混合工作負載可能會給繁忙的系統帶來資源挑戰。  解決方案架構師尋求分離經典數據倉庫活動(如載入、轉換和查詢資料)的方法,以確保有足夠的資源來處理 SL。  
+執行混合工作負載可能會造成忙碌系統上的資源挑戰。  解決方案架構設計人員會尋求各種方式來分隔傳統資料倉儲活動（例如載入、轉換和查詢資料），以確保有足夠的資源存在，以達到 Sla。  
 
-物理伺服器隔離可能導致部分基礎設施未充分利用、過度預訂或緩存始終在硬體啟動和停止的情況下進行準備。  成功的工作負載管理方案可有效管理資源,確保高效的資源利用率,並最大限度地提高投資回報 (ROI)。
+實體伺服器隔離可能會導致隨身使用量過低、overbooked 的基礎結構，或處於使用硬體啟動和停止的快取持續可能遭受的狀態。  成功的工作負載管理配置可有效地管理資源、確保高效率的資源使用率，以及最大化的投資報酬率（ROI）。
 
-數據倉庫工作負載是指與數據倉庫相關的所有操作。 這些元件的深度和廣度取決於數據倉庫的成熟度級別。  資料倉儲工作負載包括:
+資料倉儲工作負載指的是與資料倉儲相關的所有作業。 這些元件的深度和廣度取決於資料倉儲的成熟度層級。  資料倉儲工作負載包含：
 
-- 將資料載入到主目錄的整個過程
-- 執行資料倉儲分析及報告
+- 將資料載入倉儲的整個程式
+- 執行資料倉儲分析和報告
 - 管理資料倉儲中的資料
 - 從資料倉儲匯出資料
 
 資料倉儲的效能處理能力取決於[資料倉儲單位](what-is-a-data-warehouse-unit-dwu-cdwu.md)。
 
-- 要檢視為所有效能設定檔配置的資源,請參閱[記憶體和併發限制](memory-concurrency-limits.md)。
-- 要調整容量,可以[向上或向下延伸](quickstart-scale-compute-portal.md)。
+- 若要查看配置給所有效能設定檔的資源，請參閱[記憶體和平行存取限制](memory-concurrency-limits.md)。
+- 若要調整容量，您可以相應[增加或相應減少規模](quickstart-scale-compute-portal.md)。
 
 ## <a name="workload-management-concepts"></a>工作負載管理概念
 
-過去,對於 Azure Synaps 中的 SQL 分析,您可以通過[資源類](resource-classes-for-workload-management.md)管理查詢性能。  允許根據角色成員身份將記憶體分配給查詢的資源類。  資源類面臨的主要挑戰是,一旦配置,就不存在控制工作負載的治理或能力。  
+在過去，針對 Azure Synapse 中的 SQL 分析，您可以透過[資源類別](resource-classes-for-workload-management.md)來管理查詢效能。  允許根據角色成員資格將記憶體指派給查詢的資源類別。  資源類別的主要挑戰在於，一旦設定之後，就不會有控制工作負載的治理或能力。  
 
-例如,向 Smallrc 授予臨時使用者角色成員身份允許該使用者消耗系統上 100% 的記憶體。  使用資源類時,無法保留並確保資源可用於關鍵工作負載。
+例如，將臨機操作使用者角色成員資格授與 smallrc，可讓該使用者耗用系統上100% 的記憶體。  使用資源類別時，沒有任何方法可以保留並確保資源可用於重要的工作負載。
 
-Azure Synapse 中的突觸 SQL 池工作負載管理由三個進階概念組成:[工作負載分類](sql-data-warehouse-workload-classification.md),[工作負載重要性](sql-data-warehouse-workload-importance.md)和[工作負載隔離](sql-data-warehouse-workload-isolation.md)。  這些功能使您能夠更控制系統工作負載如何利用系統資源。
+Azure Synapse 中的 Synapse SQL 集區工作負載管理包含三個高階概念：[工作負載分類](sql-data-warehouse-workload-classification.md)、[工作負載重要性](sql-data-warehouse-workload-importance.md)和[工作負載隔離](sql-data-warehouse-workload-isolation.md)。  這些功能可讓您更充分掌控您的工作負載如何利用系統資源。
 
-工作負載分類是將請求分配給工作負載組並設置重要性級別的概念。  從歷史上看,此任務是通過使用[sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)的角色成員身份來完成的。  這現在可以通過[創造任務程式](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)來完成。  分類功能提供了一組更豐富的選項,如標籤、會話和對請求進行分類的時間。
+工作負載分類是將要求指派給工作負載群組和設定重要性層級的概念。  在過去，此指派是透過使用[sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)的角色成員資格來完成。  這現在可以透過 [[建立工作負載] 分類](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)來完成。  分類功能提供一組更豐富的選項，例如標籤、會話和時間來分類要求。
 
-工作負載重要性會影響請求訪問資源的順序。  在繁忙的系統上,具有更高重要性的請求可以首先訪問資源。  重要性還可以確保對鎖的有序訪問。
+工作負載重要性會影響要求取得資源存取權的順序。  在忙碌的系統上，具有較高重要性的要求會先存取資源。  重要性也可以確保已排序的鎖定存取。
 
-工作負載隔離為工作負載組保留資源。  工作負載組中保留的資源僅保留該工作負載組,以確保執行。  工作負載組還允許您定義每個請求分配的資源量,就像資源類一樣。  工作負載組使您能夠保留或限制一組請求可以使用的資源量。  最後,工作負載組是一種將規則(如查詢超時)應用於請求的機制。  
+工作負載隔離會保留工作負載群組的資源。  工作負載群組中保留的資源會專門為該工作負載群組保留，以確保執行。  工作負載群組也可讓您定義每個要求指派的資源量，與資源類別非常類似。  工作負載群組可讓您保留或限制一組要求所能使用的資源量。  最後，工作負載群組是將規則（例如查詢超時）套用至要求的機制。  
 
 ## <a name="next-steps"></a>後續步驟
 
-- 有關工作負載分類的詳細資訊,請參閱[工作負載分類](sql-data-warehouse-workload-classification.md)。  
-- 有關工作負載隔離的詳細資訊,請參閱[工作負載隔離](sql-data-warehouse-workload-isolation.md)。  
-- 有關工作負載重要性的詳細資訊,請參閱[工作負載重要性](sql-data-warehouse-workload-importance.md)。  
-- 有關工作負載管理監視的詳細資訊,請參閱[工作負載管理門戶監視](sql-data-warehouse-workload-management-portal-monitor.md)。  
+- 如需工作負載分類的詳細資訊，請參閱[工作負載分類](sql-data-warehouse-workload-classification.md)。  
+- 如需工作負載隔離的詳細資訊，請參閱[工作負載隔離](sql-data-warehouse-workload-isolation.md)。  
+- 如需工作負載重要性的詳細資訊，請參閱[工作負載重要性](sql-data-warehouse-workload-importance.md)。  
+- 如需工作負載管理監視的詳細資訊，請參閱[工作負載管理入口網站監視](sql-data-warehouse-workload-management-portal-monitor.md)。  

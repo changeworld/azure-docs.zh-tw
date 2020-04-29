@@ -1,5 +1,5 @@
 ---
-title: Azure IoT 中心模組識別和模組孿生 (Python)
+title: Azure IoT 中樞模組身分識別和模組對應項（Python）
 description: 了解如何使用適用於 Python 的 IoT SDK，建立模組身分識別及更新模組對應項。
 author: chrissie926
 ms.service: iot-hub
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: menchi
 ms.openlocfilehash: f846af548913e0cb3e872560e4b8438da306a255
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80757014"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>開始使用 IoT 中心模組識別和模組孿生 (Python)
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>開始使用 IoT 中樞模組身分識別和模組對應項（Python）
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [模組標識和模組孿生](iot-hub-devguide-module-twins.md)類似於 Azure IoT 中心設備標識和設備孿生,但提供更精細的粒度。 當 Azure IoT 中心設備識別和設備孿生使後端應用程式能夠配置設備並提供設備條件的可見性時,模組標識和模組孿生為設備的單個元件提供了這些功能。 在具有多個元件(如基於作業系統的設備或韌體設備)的功能設備上,它們允許為每個元件提供隔離的配置和條件。
+> [模組身分識別和模組 twins](iot-hub-devguide-module-twins.md)類似于 Azure IoT 中樞裝置身分識別和裝置 twins，但提供更精細的細微性。 雖然 Azure IoT 中樞裝置身分識別和裝置 twins 可讓後端應用程式設定裝置，並提供裝置狀況的可見度，模組身分識別和模組 twins 會為裝置的個別元件提供這些功能。 在具有多個元件的可用裝置（例如以作業系統為基礎的裝置或固件裝置）上，它們會允許每個元件的隔離設定和條件。
 >
 
-在本教學結束時,您有三個 Python 應用:
+在本教學課程結束時，您會有三個 Python 應用程式：
 
-* **CreateModule**,它創建設備標識、模塊標識和相關安全密鑰來連接設備和模組用戶端。
+* **CreateModule**，它會建立裝置身分識別、模組身分識別和相關聯的安全性金鑰，以連接您的裝置和模組用戶端。
 
-* **更新模組Twin希望屬性**,它向IoT中心發送更新的模組孿生所需屬性。
+* **UpdateModuleTwinDesiredProperties**，它會將更新的模組對應項所需屬性傳送至您的 IoT 中樞。
 
-* **接收模組Twin希望屬性補丁**,它接收您設備上的模組孿生所需屬性修補程式。
+* **ReceiveModuleTwinDesiredPropertiesPatch**，它會在您的裝置上接收模組對應項所需屬性修補程式。
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
@@ -41,31 +41,31 @@ ms.locfileid: "80757014"
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中心連接字串
+## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
 
-在本文中,您將創建一個後端服務,該服務在標識註冊表中添加設備,然後將模組添加到該設備。 此服務需要**註冊表寫入**許可權(還包括**註冊表讀取**)。 您還可以創建一個服務,將所需屬性添加到新創建的模組的模組孿生。 此服務需要**服務連接**許可權。 儘管存在單獨授予這些許可權的默認共享訪問策略,但在本節中,您可以創建包含這兩種許可權的自定義共用訪問策略。
+在本文中，您會建立後端服務，以在身分識別登錄中新增裝置，然後將模組新增至該裝置。 此服務需要登錄**寫入**許可權（也包括**讀取**登錄）。 您也會建立服務，將所需的屬性新增至新建立之模組的模組對應項。 此服務需要**服務連接**許可權。 雖然有預設的共用存取原則會個別授與這些許可權，但在本節中，您會建立自訂的共用存取原則，其中同時包含這兩個許可權。
 
 [!INCLUDE [iot-hub-include-find-service-regrw-connection-string](../../includes/iot-hub-include-find-service-regrw-connection-string.md)]
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>在 IoT 中樞中建立裝置身分識別與模組身分識別
 
-在本節中,您將創建一個 Python 服務應用,在 IoT 中心中的標識註冊表中創建設備標識和模組標識。 設備或模組無法連接到 IoT 中心,除非它在標識註冊表中具有條目。 有關詳細資訊,請參閱瞭解[IoT 中心中的識別註冊表](iot-hub-devguide-identity-registry.md)。 當您執行此主控台應用程式時，它會針對裝置和模組產生唯一的識別碼和金鑰。 當裝置和模組將裝置到雲端的訊息傳送給 IoT 中樞時，裝置和模組會使用這些值來識別自己。 識別碼會區分大小寫。
+在本節中，您會建立 Python 服務應用程式，以在 IoT 中樞的身分識別登錄中建立裝置身分識別和模組身分識別。 裝置或模組無法連線到 IoT 中樞，除非它在身分識別登錄中具有專案。 如需詳細資訊，請參閱[瞭解 IoT 中樞的身分識別登錄](iot-hub-devguide-identity-registry.md)。 當您執行此主控台應用程式時，它會針對裝置和模組產生唯一的識別碼和金鑰。 當裝置和模組將裝置到雲端的訊息傳送給 IoT 中樞時，裝置和模組會使用這些值來識別自己。 識別碼會區分大小寫。
 
-1. 在指令提示符下,執行以下指令以安裝**azure-iot 集線器**套件:
+1. 在命令提示字元中，執行下列命令來安裝**azure iot 中樞**套件：
 
     ```cmd/sh
     pip install azure-iot-hub
     ```
 
-1. 在命令提示符下,執行以下命令以安裝**msrest**套件。 您需要此包來捕獲**HTTP 操作錯誤**異常。
+1. 在命令提示字元中，執行下列命令以安裝**msrest**套件。 您需要此封裝來攔截**HTTPOperationError**例外狀況。
 
     ```cmd/sh
     pip install msrest
     ```
 
-1. 使用文字編輯器,在工作目錄中創建名為**CreateModule.py**的檔案。
+1. 使用文字編輯器，在工作目錄中建立名為**CreateModule.py**的檔案。
 
-1. 將以下代碼添加到 Python 檔案。 將*IoTHubConnectString*替換為在[獲取 IoT 中心連接字串](#get-the-iot-hub-connection-string)中複製的連接字串。
+1. 將下列程式碼新增至 Python 檔案。 將*YourIoTHubConnectionString*取代為您在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中複製的連接字串。
 
     ```python
     import sys
@@ -122,31 +122,31 @@ ms.locfileid: "80757014"
         print("IoTHubRegistryManager sample stopped")
     ```
 
-1. 在命令提示符下,執行以下指令:
+1. 在命令提示字元中，執行下列命令：
 
     ```cmd/sh
     python CreateModule.py
     ```
 
-此應用程式會在 **myFirstDevice** 裝置下方建立識別碼為 **myFirstDevice** 的裝置身分識別，以及識別碼為 **myFirstModule** 的模組身分識別。 (如果標識註冊表中已存在設備或模組 ID,則代碼只需檢索現有設備或模塊資訊。應用顯示每個標識的 ID 和主鍵。
+此應用程式會在 **myFirstDevice** 裝置下方建立識別碼為 **myFirstDevice** 的裝置身分識別，以及識別碼為 **myFirstModule** 的模組身分識別。 （如果裝置或模組識別碼已存在身分識別登錄中，程式碼就會直接抓取現有的裝置或模組資訊）。應用程式會顯示每個身分識別的識別碼和主要金鑰。
 
 > [!NOTE]
-> IoT 中樞身分識別登錄只會儲存裝置和模組身分識別，以啟用對 IoT 中樞的安全存取。 身分識別登錄會儲存裝置識別碼和金鑰，以作為安全性認證使用。 身分識別登錄也會儲存每個裝置的已啟用/已停用旗標，以便您用來停用該裝置的存取權。 如果您的應用程式需要儲存其他裝置特定的中繼資料，它應該使用應用程式專用的存放區。 模組身分識別沒有啟用/停用旗標。 有關詳細資訊,請參閱瞭解[IoT 中心中的識別註冊表](iot-hub-devguide-identity-registry.md)。
+> IoT 中樞身分識別登錄只會儲存裝置和模組身分識別，以啟用對 IoT 中樞的安全存取。 身分識別登錄會儲存裝置識別碼和金鑰，以作為安全性認證使用。 身分識別登錄也會儲存每個裝置的已啟用/已停用旗標，以便您用來停用該裝置的存取權。 如果您的應用程式需要儲存其他裝置特定的中繼資料，它應該使用應用程式專用的存放區。 模組身分識別沒有啟用/停用旗標。 如需詳細資訊，請參閱[瞭解 IoT 中樞的身分識別登錄](iot-hub-devguide-identity-registry.md)。
 >
 
-## <a name="update-the-module-twin-using-python-service-sdk"></a>使用 Python 服務 SDK 更新模組孿生
+## <a name="update-the-module-twin-using-python-service-sdk"></a>使用 Python 服務 SDK 更新模組對應項
 
-在本節中,您將創建一個 Python 服務應用,用於更新模組孿生所需屬性。
+在本節中，您會建立 Python 服務應用程式，以更新模組對應項所需的屬性。
 
-1. 在命令提示符下,執行以下命令以安裝**azure-iot 集線器**包。 如果在上一節中安裝了**azure-iot 集線器**包,則可以跳過此步驟。
+1. 在命令提示字元中，執行下列命令以安裝**azure iot 中樞**套件。 如果您已在上一節中安裝了**azure iot 中樞**套件，則可以略過此步驟。
 
     ```cmd/sh
     pip install azure-iot-hub
     ```
 
-1. 使用文字編輯器,在工作目錄中創建名為**UpdateModuleTwinDesiredProperties.py**的檔。
+1. 使用文字編輯器，在工作目錄中建立名為**UpdateModuleTwinDesiredProperties.py**的檔案。
 
-1. 將以下代碼添加到 Python 檔案。 將*IoTHubConnectString*替換為在[獲取 IoT 中心連接字串](#get-the-iot-hub-connection-string)中複製的連接字串。
+1. 將下列程式碼新增至 Python 檔案。 將*YourIoTHubConnectionString*取代為您在[取得 IoT 中樞連接字串](#get-the-iot-hub-connection-string)中複製的連接字串。
 
     ```python
     import sys
@@ -184,21 +184,21 @@ ms.locfileid: "80757014"
 
 ## <a name="get-updates-on-the-device-side"></a>取得裝置端的更新
 
-在本節中,您將創建一個 Python 應用,以獲得設備上的模組孿生所需屬性更新。
+在本節中，您會建立 Python 應用程式，以在您的裝置上取得模組對應項的所需屬性更新。
 
-1. 取得模組連接字串。 在[Azure 門戶](https://portal.azure.com/)中,導覽到 IoT 中心,並在左邊窗格中選擇**IoT 裝置**。 從設備清單中選擇**myFirstDevice**並打開它。 在**模組識別**下,選擇**我的第一個模組**。 複製模組連接字串。 您需要在下面的步驟。
+1. 取得您的模組連接字串。 在[Azure 入口網站](https://portal.azure.com/)中，流覽至您的 IoT 中樞，然後選取左窗格中的 [ **IoT 裝置**]。 從裝置清單中選取 [ **myFirstDevice** ]，然後將它開啟。 在 [**模組**身分識別] 底下，選取 [ **myFirstModule**]。 複製模組連接字串。 您在下列步驟中需要它。
 
    ![Azure 入口網站模組詳細資料](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 
-1. 在指令提示符下,執行以下指令以安裝**azure-iot 裝置**套件:
+1. 在命令提示字元中，執行下列命令來安裝**azure iot 裝置**套件：
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-1. 使用文字編輯器,在工作目錄中創建名為**ReceiveModuleTwinDesiredPropertiesPatch.py**的檔。
+1. 使用文字編輯器，在工作目錄中建立名為**ReceiveModuleTwinDesiredPropertiesPatch.py**的檔案。
 
-1. 將以下代碼添加到 Python 檔案。 將*ModuleConnectString*替換為步驟 1 中複製的模組連接字串。
+1. 將下列程式碼新增至 Python 檔案。 將*YourModuleConnectionString*取代為您在步驟1中複製的模組連接字串。
 
     ```python
     import time
@@ -239,29 +239,29 @@ ms.locfileid: "80757014"
 
 ## <a name="run-the-apps"></a>執行應用程式
 
-在本節中,您將運行 **「接收模組Twin希望屬性」** 設備應用,然後運行**UpdateModuleTwin 希望屬性**服務應用以更新模組所需的屬性。
+在本節中，您會執行**ReceiveModuleTwinDesiredPropertiesPatch**裝置應用程式，然後執行**UpdateModuleTwinDesiredProperties**服務應用程式，以更新您的模組所需屬性。
 
-1. 開啟指令提示並執行裝置應用:
+1. 開啟命令提示字元並執行裝置應用程式：
 
     ```cmd/sh
     python ReceiveModuleTwinDesiredPropertiesPatch.py
     ```
 
-   ![裝置應用初始輸出](./media/iot-hub-python-python-module-twin-getstarted/device-1.png)
+   ![裝置應用程式初始輸出](./media/iot-hub-python-python-module-twin-getstarted/device-1.png)
 
-1. 開啟單獨的指令提示符並執行服務應用程式:
+1. 開啟另一個命令提示字元，並執行服務應用程式：
 
     ```cmd/sh
     python UpdateModuleTwinDesiredProperties.py
     ```
 
-    請注意,服務應用輸出中更新的模組孿生中將顯示 **「遙測間隔**」所需屬性:
+    請注意， **TelemetryInterval** desired 屬性會出現在服務應用程式輸出的已更新模組對應項中：
 
-   ![服務應用輸出](./media/iot-hub-python-python-module-twin-getstarted/service.png)
+   ![服務應用程式輸出](./media/iot-hub-python-python-module-twin-getstarted/service.png)
 
-    相同的屬性顯示在裝置應用輸出中接收的所需屬性修補程式中:
+    相同的屬性會出現在裝置應用程式輸出中所收到的所需屬性修補程式中：
 
-   ![裝置應用輸出顯示所需的屬性修補程式](./media/iot-hub-python-python-module-twin-getstarted/device-2.png)
+   ![裝置應用程式輸出顯示所需的屬性修補程式](./media/iot-hub-python-python-module-twin-getstarted/device-2.png)
 
 ## <a name="next-steps"></a>後續步驟
 

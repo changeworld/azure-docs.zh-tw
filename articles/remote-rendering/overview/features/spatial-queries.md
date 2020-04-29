@@ -6,31 +6,31 @@ ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
 ms.openlocfilehash: 9a981aeb08ec46900994fd599b592b9f16034f34
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680527"
 ---
 # <a name="spatial-queries"></a>空間查詢
 
-空間查詢是可以詢問遠端呈現服務位於區域中的物件的操作。 空間查詢通常用於實現交互,例如確定使用者指向哪個物件。
+空間查詢是一種作業，可讓您向遠端轉譯服務詢問哪些物件位於區域中。 空間查詢經常用來執行互動，例如找出使用者所指向的物件。
 
-所有空間查詢都在伺服器上計算。 因此,它們是異步操作,結果將延遲到達,具體取決於您的網路延遲。 由於每個空間查詢都會生成網路流量,因此請注意不要一次執行太多操作。
+所有空間查詢都會在伺服器上進行評估。 因此，它們是非同步作業，而且結果會隨著您的網路延遲而延遲。 由於每個空間查詢都會產生網路流量，請小心不要一次執行太多動作。
 
-## <a name="collision-meshes"></a>碰撞模因
+## <a name="collision-meshes"></a>衝突網格
 
-空間查詢由[Havok 物理](https://www.havok.com/products/havok-physics)引擎提供動力,需要存在專用的碰撞網格。 默認情況下,[模型轉換](../../how-tos/conversion/model-conversion.md)生成衝突模樣。 如果不需要對複雜模型進行空間查詢,請考慮在[轉換選項](../../how-tos/conversion/configure-model-conversion.md)中禁用衝突網格生成,因為它具有多種方式的影響:
+空間查詢是由[Havok 物理](https://www.havok.com/products/havok-physics)引擎提供技術支援，而且需要有專用的衝突網格。 根據預設，[模型轉換](../../how-tos/conversion/model-conversion.md)會產生衝突網格。 如果您不需要在複雜模型上進行空間查詢，請考慮在[轉換選項](../../how-tos/conversion/configure-model-conversion.md)中停用衝突網格產生，因為它有多種方式的影響：
 
-* [模型轉換](../../how-tos/conversion/model-conversion.md)將需要更長的時間。
-* 轉換后的模型檔大小明顯較大,影響下載速度。
-* 運行時載入時間較長。
-* 運行時 CPU 記憶體消耗較高。
-* 每個模型實例都有輕微的運行時性能開銷。
+* [模型轉換](../../how-tos/conversion/model-conversion.md)需要更長的時間。
+* 轉換的模型檔案大小明顯較大，因而影響下載速度。
+* 執行時間載入時間較長。
+* 執行時間 CPU 記憶體耗用量較高。
+* 每個模型實例的執行時間效能會有些許負擔。
 
-## <a name="ray-casts"></a>雷鑄
+## <a name="ray-casts"></a>光線轉換
 
-*光線強制轉換*是一種空間查詢,運行時檢查哪些物件由光線相交,從給定位置開始並指向特定方向。 作為優化,還給出了最大光線距離,以便不搜索太遠的物件。
+「*光線轉換*」是一種空間查詢，執行時間會檢查哪些物件與光線相交，從指定的位置開始，指向特定的方向。 做為優化，也會指定最大光線距離，而不會搜尋太遠的物件。
 
 ````c#
 async void CastRay(AzureSession session)
@@ -54,13 +54,13 @@ async void CastRay(AzureSession session)
 }
 ````
 
-有三種命中收集模式:
+有三種點擊收集模式：
 
-* **最近:** 在此模式下,僅報告最接近的命中。
-* **任何:** 首選這種模式,當你想知道的是,*光線是否會*擊中任何東西,但不在乎什麼擊中究竟。 此查詢可以大大便宜評估,但也只有很少的應用程式。
-* **所有:** 在此模式下,沿光線的所有命中都報告,按距離排序。 不要使用此模式,除非您確實需要超過第一次命中。 使用`MaxHits`選項限制報告命中數。
+* **最接近：** 在此模式中，只會報告最接近的叫用。
+* **任何：** 當您只想知道光線是否會碰到任何東西，但不在意到底*達到的情況*時，偏好使用此模式。 此查詢的評估成本會大幅降低，但也只有少數應用程式。
+* **全部：** 在此模式中，會報告光線中的所有點擊次數，並以距離進行排序。 除非您真的需要比第一次叫用更多的資訊，否則請勿使用此模式。 使用`MaxHits`選項限制回報的點擊次數。
 
-為了有選擇地排除物件考慮光線強制轉換,可以使用[分層狀態覆蓋元件元件](override-hierarchical-state.md)。
+若要選擇性地排除物件而不考慮光線轉換，可以使用[HierarchicalStateOverrideComponent](override-hierarchical-state.md)元件。
 
 <!--
 The CollisionMask allows the quey to consider or ignore some objects based on their collision layer. If an object has layer L, it will be hit only if the mask has  bit L set.
@@ -68,19 +68,19 @@ It is useful in case you want to ignore objects, for instance when setting an ob
 TODO : Add an API to make that possible.
 -->
 
-### <a name="hit-result"></a>命中結果
+### <a name="hit-result"></a>點擊結果
 
-光線轉換查詢的結果是命中陣組。 如果未命中任何物件,則陣列為空。
+「光線轉換」查詢的結果是一種叫用陣列。 如果未叫用任何物件，陣列就是空的。
 
-命中具有以下屬性:
+點擊具有下列屬性：
 
-* **命中實體:** 哪個[實體](../../concepts/entities.md)被擊中。
-* **子部份Id:** 哪個*子網格*在[網格元件](../../concepts/meshes.md)中被擊中。 可用於索引`MeshComponent.UsedMaterials`與尋找[材料](../../concepts/materials.md)。
-* **命中位置:** 光線與物體相交的世界空間位置。
-* **命中正常值:** 網格在交點位置的世界空間表面正常。
-* **距離命中:** 從光線起始位置到命中的距離。
+* **HitEntity：** 已叫用的[實體](../../concepts/entities.md)。
+* **SubPartId：**[MeshComponent](../../concepts/meshes.md)中遇到了哪個*submesh* 。 可以用來編制索引， `MeshComponent.UsedMaterials`並在該點查詢[材質](../../concepts/materials.md)。
+* **HitPosition：** 與物件相交之光線的世界空間位置。
+* **HitNormal：** 網格在交集位置的世界空間表面法線。
+* **DistanceToHit：** 從光線開始位置到點擊的距離。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [物件邊界](../../concepts/object-bounds.md)
-* [重寫分層狀態](override-hierarchical-state.md)
+* [物件界限](../../concepts/object-bounds.md)
+* [覆寫階層式狀態](override-hierarchical-state.md)

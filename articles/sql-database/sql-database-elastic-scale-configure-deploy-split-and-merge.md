@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
 ms.openlocfilehash: b6f61de23ab4b637cfb5b8ee365ddea9764bf515
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80810197"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署分割合併服務以在分區化資料庫之間移動資料
@@ -34,9 +34,9 @@ ms.locfileid: "80810197"
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-檔案會放在名為 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目錄中，其中 *x.x.xxx.x* 反映版本號碼。 在**內容_分割合併_服務**子目錄中尋找分割合併服務檔,在**內容_分割合併\powershell**子目錄中尋找分割合併PowerShell腳本(和必需的用戶端 dlls)。
+檔案會放在名為 **Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** 的目錄中，其中 *x.x.xxx.x* 反映版本號碼。 在**content\splitmerge\powershell 子目錄**子目錄中尋找分割合併服務檔案，並在**content\splitmerge\powershell**子目錄中找到分割合併 PowerShell 腳本（和必要的用戶端 dll）。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 1. 建立用來作為分割合併狀態資料庫的 Azure SQL DB 資料庫。 移至 [Azure 入口網站](https://portal.azure.com)。 建立新的 **SQL Database**。 提供資料庫名稱，並建立新的系統管理員和密碼。 請務必記錄名稱和密碼，以供稍後使用。
 
@@ -63,7 +63,7 @@ ms.locfileid: "80810197"
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
-1. 在 ElasticScaleMetadata 設定中的**SplitMergeWeb**和**SplitMergeWorker 角色**部分的 *.cscfg*檔中輸入此連接字串。
+1. 在 [ElasticScaleMetadata] 設定的 [ **SplitMergeWeb** ] 和 [ **SplitMergeWorker**角色] 區段中，于 *.cscfg*檔案中輸入此連接字串。
 
 1. 針對 **SplitMergeWorker** 角色，在 **WorkerRoleSynchronizationStorageAccountConnectionString** 設定中輸入有效的連接字串以連接至 Azure 儲存體。
 
@@ -140,9 +140,9 @@ Web 角色：
 
 ## <a name="deploy-your-service"></a>部署您的服務
 
-1. 跳到[Azure 門戶](https://portal.azure.com)
+1. 移至 [Azure 入口網站](https://portal.azure.com)
 2. 選取您稍早建立的雲端服務。
-3. 按一下 [概觀]****。
+3. 按一下 [概觀]  。
 4. 選擇預備環境，然後按一下 [上傳]****。
 5. 在對話方塊中，輸入部署的標籤。 在 [封裝] 和 [設定] 中，按一下 [從本機] 並選擇 *SplitMergeService.cspkg* 檔案和您稍早設定的 cscfg 檔案。
 6. 確定已核取 [即使一或多個角色包含單一執行個體也請部署] **** 核取方塊。
@@ -150,7 +150,7 @@ Web 角色：
 
 ## <a name="troubleshoot-the-deployment"></a>疑難排解部署
 
-如果 Web 角色無法上線，安全性設定可能有問題。 檢查 TLS/SSL 是否按照上述配置。
+如果 Web 角色無法上線，安全性設定可能有問題。 檢查是否已設定 TLS/SSL，如上所述。
 
 如果背景工作角色無法上線，但 Web 角色成功上線，很可能是無法連接至您稍早建立的狀態資料庫。
 
@@ -230,13 +230,13 @@ Web 角色：
 2. 建立 Azure SQL Database 伺服器 (或選擇現有的伺服器)，其中將會建立分區對應管理員和分區。
 
    > [!NOTE]
-   > 預設情況下,*安裝程式SampleSplitMergeEe環境.ps1*腳本在同一伺服器上創建所有這些資料庫,以保持腳本簡單。 這不是分割合併服務本身的限制。
+   > 根據預設， *setupsamplesplitmergeenvironment.ps1*腳本會在相同的伺服器上建立所有這些資料庫，讓腳本保持簡單。 這不是分割合併服務本身的限制。
 
    需要有具備 DB 讀取/寫入存取權的 SQL 驗證登入，分割合併服務才能移動資料和更新分區對應。 因為分割合併服務是在雲端執行，目前不支援整合式驗證。
 
    請確定 Azure SQL server 設定為允許從執行這些指令碼的電腦 IP 位址存取。 您可以在 [Azure SQL server / 設定 / 允許的 IP 位址] 下找到這項設定。
 
-3. 執行*安裝程式範例拆分合併環境.ps1*腳本以建立範例環境。
+3. 執行*setupsamplesplitmergeenvironment.ps1*腳本來建立範例環境。
 
    執行這個指令碼將會從分區對應管理員資料庫和分區上，清除任何現有的分區對應管理資料結構。 如果您想要重新初始化分區對應或分區，最好重新執行此指令碼。
 
@@ -254,7 +254,7 @@ Web 角色：
     -UserName 'mysqluser' -Password 'MySqlPassw0rd' -ShardMapManagerServerName 'abcdefghij.database.windows.net'
    ```
 
-5. 執行*ExecuteSampleSplitMerge.ps1*文本以執行分割操作(將第一個分片上一半的數據移動到第二個分片),然後執行合併操作(將數據移回第一個分片)。 如果配置 TLS 並禁用 HTTP 終結點,請確保改用HTTPs://終結點。
+5. 執行*executesamplesplitmerge.ps1*腳本來執行分割作業（將第一個分區上的一半資料移至第二個分區），然後執行合併作業（將資料移回第一個分區）。 如果您已設定 TLS 並將 HTTP 端點停用，請確定您使用的是 HTTPs://端點。
 
    範例命令列：
 
@@ -333,7 +333,7 @@ Web 角色：
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 
-此錯誤表示未正確配置 TLS/SSL 憑證。 請遵循＜使用網頁瀏覽器連接＞一節的指示。
+此錯誤表示您的 TLS/SSL 憑證未正確設定。 請遵循＜使用網頁瀏覽器連接＞一節的指示。
 
 若無法提交要求，您可能會看到：
 

@@ -1,6 +1,6 @@
 ---
 title: 適用於工作負載管理的資源類別
-description: 有關使用資源類管理 Azure 突觸分析中查詢的併發和計算資源的指導。
+description: 在 Azure Synapse 分析中使用資源類別來管理並行和計算資源以進行查詢的指導方針。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,27 +12,27 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: c2ac05cb2a6b3bd185d5e3a84df4f3d9a01c5bef
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80743259"
 ---
-# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure 突觸分析資源類的工作負載管理
+# <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>使用 Azure Synapse 分析中的資源類別進行工作負載管理
 
-有關使用資源類管理 Azure Synapse 中 Synapse SQL 池查詢的記憶體和併發的指導。  
+在 Azure Synapse 中使用資源類別來管理 Synapse SQL 集區查詢之記憶體和並行的指引。  
 
-## <a name="what-are-resource-classes"></a>什麼是資源類
+## <a name="what-are-resource-classes"></a>什麼是資源類別
 
-查詢的效能處理能力取決於使用者的資源類別。  資源類是 Synapse SQL 池中預先確定的資源限制,用於管理計算資源和查詢執行的併發性。 資源類可以通過對同時運行的查詢數和分配給每個查詢的計算資源設置限制,説明您配置查詢的資源。  記憶體和併發之間存在權衡。
+查詢的效能處理能力取決於使用者的資源類別。  資源類別是 Synapse SQL 集區中預先決定的資源限制，可控制查詢執行的計算資源和平行存取。 資源類別可設定同時執行的查詢數目限制，以及指派給每個查詢的計算資源，以協助您設定查詢的資源。  記憶體和平行存取之間有取捨。
 
 - 較小型的資源類別會減少每個查詢的記憶體上限，但會增加並行存取數。
-- 較大的資源類會增加每個查詢的最大記憶體,但會減少併發性。
+- 較大的資源類別會增加每個查詢的記憶體上限，但會減少並行。
 
 有兩種類型的資源類別：
 
 - 靜態資源類別：適合在大小固定的資料集上增加並行存取作業數目。
-- 動態資源類非常適合在擴展服務級別時大小越來越大且需要提高性能的數據集。
+- 動態資源類別，非常適合大小不斷增長的資料集，而且需要在服務等級相應增加時提高效能。
 
 資源類別會使用並行位置來測量資源耗用量。  [並行位置](#concurrency-slots)稍後會在本文中加以說明。
 
@@ -65,7 +65,7 @@ ms.locfileid: "80743259"
 - largerc
 - xlargerc
 
-每個資源類的記憶體分配如下所示。
+每個資源類別的記憶體配置如下所示。
 
 | 服務等級  | smallrc           | mediumrc               | largerc                | xlargerc               |
 |:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
@@ -74,13 +74,13 @@ ms.locfileid: "80743259"
 | DW300c         | 8%                | 10%                    | 22%                    | 70%                    |
 | DW400c         | 6.25%             | 10%                    | 22%                    | 70%                    |
 | DW500c         | 5%                | 10%                    | 22%                    | 70%                    |
-| DW1000c 到<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
+| DW1000c 至<br> DW30000c | 3%       | 10%                    | 22%                    | 70%                    |
 
 ### <a name="default-resource-class"></a>預設的資源類別
 
 根據預設，每位使用者都是動態資源類別 **smallrc** 的成員。
 
-服務管理員的資源類別固定為 smallrc 且無法變更。  服務管理員是在佈建程序期間建立的使用者。  此上下文中的服務管理員是使用新伺服器創建新 Synapse SQL 池時為「伺服器管理員登錄」指定的登錄名。
+服務管理員的資源類別固定為 smallrc 且無法變更。  服務管理員是在佈建程序期間建立的使用者。  此內容中的服務系統管理員是使用新的伺服器建立新的 Synapse SQL 集區時，為「伺服器管理員登入」指定的登入。
 
 > [!NOTE]
 > 定義為 Active Directory 管理員的使用者或群組，也會是服務管理員。
@@ -141,12 +141,12 @@ Removed as these two are not confirmed / supported under SQL DW
 
 ## <a name="concurrency-slots"></a>並行位置
 
-並行位置是追蹤查詢執行可用之資源的便利方式。 它們就像是您因為音樂會的座位有限，而購買來保留座位的門票。 每個資料倉儲的並行位置總數取決於服務等級。 在查詢開始執行之前，它必須能夠保留足夠的並行位置。 查詢完成後,它會釋放其併發槽。  
+並行位置是追蹤查詢執行可用之資源的便利方式。 它們就像是您因為音樂會的座位有限，而購買來保留座位的門票。 每個資料倉儲的並行位置總數取決於服務等級。 在查詢開始執行之前，它必須能夠保留足夠的並行位置。 當查詢完成時，它會釋放其並行位置。  
 
 - 比起以 2 個並行位置執行的查詢，以 10 個並行位置執行的查詢可以存取 5 倍以上的計算資源。
 - 如果每個查詢需要 10 個並行位置且有 40 個並行位置，則只能同時執行 4 個查詢。
 
-只有資源控管的查詢可取用並行位置。 系統查詢和一些瑣碎的查詢不會佔用任何插槽。 取用的並行位置確切數目取決於查詢的資源類別。
+只有資源控管的查詢可取用並行位置。 系統查詢和一些簡單的查詢不會耗用任何位置。 取用的並行位置確切數目取決於查詢的資源類別。
 
 ## <a name="view-the-resource-classes"></a>檢視資源類別
 
@@ -160,15 +160,15 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 ## <a name="change-a-users-resource-class"></a>變更使用者的資源類別
 
-資源類別會藉由將使用者指派給資料庫角色來實作。 當使用者執行查詢時，查詢會利用使用者的資源類別來執行。 例如,如果使用者是 staticrc10 資料庫角色的成員,則其查詢會以少量記憶體運行。 如果資料庫使用者是 xlargec 或 staticrc80 資料庫角色的成員,則其查詢會大量記憶體運行。
+資源類別會藉由將使用者指派給資料庫角色來實作。 當使用者執行查詢時，查詢會利用使用者的資源類別來執行。 例如，如果使用者是 staticrc10 資料庫角色的成員，其查詢就會以少量的記憶體執行。 如果資料庫使用者是 xlargerc 或 staticrc80 資料庫角色的成員，其查詢就會以海量儲存體執行。
 
-要增加使用者的資源類,請使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)將使用者添加到大型資源類的資料庫角色。  以下代碼將使用者添加到較大的 c 資料庫角色。  每個請求獲取 22% 的系統記憶體。
+若要增加使用者的資源類別，請使用[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)將使用者新增至大型資源類別的資料庫角色。  下列程式碼會將使用者新增至 largerc 資料庫角色。  每個要求都會取得系統記憶體的22%。
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-若要減少資源類別，使用 [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) \(英文\)。  如果「載入使用者」不是成員或任何其他資源類,則它們將進入預設的 Smallrc 資源類,並給予 3% 記憶體。  
+若要減少資源類別，使用 [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) \(英文\)。  如果 ' loaduser ' 不是成員或任何其他資源類別，它們會進入預設的 smallrc 資源類別，並提供3% 的記憶體授與。  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
@@ -184,51 +184,51 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 ## <a name="recommendations"></a>建議
 
 >[!NOTE]
->考慮利用工作負載管理功能([工作負載隔離](sql-data-warehouse-workload-isolation.md)、[分類](sql-data-warehouse-workload-classification.md)和[重要性](sql-data-warehouse-workload-importance.md)),以更好地利用您的工作負載和可預測的性能。  
+>請考慮利用工作負載管理功能（[工作負載隔離](sql-data-warehouse-workload-isolation.md)、[分類](sql-data-warehouse-workload-classification.md)和[重要性](sql-data-warehouse-workload-importance.md)），以更充分掌控您的工作負載和可預測的效能。  
 >
 >
 
-我們建議創建專用於運行特定類型的查詢或載入操作的使用者。 為該使用者提供一個永久資源類,而不是頻繁更改資源類。 靜態資源類可以更好地控制工作負載,因此我們建議在考慮動態資源類之前使用靜態資源類。
+我們建議您建立專用於執行特定類型查詢或載入作業的使用者。 為該使用者提供永久的資源類別，而不是經常變更資源類別。 靜態資源類別會對工作負載提供更高的整體控制權，因此建議在考慮動態資源類別之前，先使用靜態資源類別。
 
 ### <a name="resource-classes-for-load-users"></a>載入使用者適用的資源類別
 
-`CREATE TABLE` 預設會使用叢集的資料行存放區索引。 將資料壓縮到資料行存放區索引是記憶體密集型作業，而記憶體壓力會降低索引品質。 載入數據時,記憶體壓力可能導致需要更高的資源類。 若要確保載入具有足夠的記憶體，您可以建立要指定來執行載入的使用者，並將該使用者指派給較高的資源類別。
+`CREATE TABLE` 預設會使用叢集的資料行存放區索引。 將資料壓縮到資料行存放區索引是記憶體密集型作業，而記憶體壓力會降低索引品質。 記憶體壓力可能會導致在載入資料時需要較高的資源類別。 若要確保載入具有足夠的記憶體，您可以建立要指定來執行載入的使用者，並將該使用者指派給較高的資源類別。
 
 若要有效率地處理載入，所需的記憶體取決於所載入之資料表的性質和資料大小。 如需有關記憶體需求的詳細資訊，請參閱[將資料列群組品質最大化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 一旦您決定記憶體需求之後，請選擇是否要將載入使用者指派給靜態或動態資源類別。
 
 - 當資料表記憶體需求落在特定範圍內時，請使用靜態資源類別。 載入會使用適當的記憶體來執行。 當您調整資料倉儲時，載入不需要更多記憶體。 記憶體配置藉由使用靜態資源類別來維持一致。 這種一致性可節省記憶體，並允許同時執行多個查詢。 我們建議新的解決方案先使用靜態資源類別，因為這些提供更好的控制。
-- 當資料表記憶體需求相當廣泛時，請使用動態資源類別。 載入所需的記憶體可能比目前的 DWU 或 cDWU 層級提供的更多。 擴展數據倉庫會為載入操作添加更多記憶體,從而使負載執行得更快。
+- 當資料表記憶體需求相當廣泛時，請使用動態資源類別。 載入所需的記憶體可能比目前的 DWU 或 cDWU 層級提供的更多。 調整資料倉儲會增加更多記憶體給載入作業，讓負載的執行速度更快。
 
 ### <a name="resource-classes-for-queries"></a>查詢適用的資源類別
 
-有些查詢是計算密集型的,有些不是。  
+有些查詢需要大量計算，有些則沒有。  
 
-- 當查詢複雜,但不需要高併發時,請選擇動態資源類。  例如，產生每日或每週報表，偶爾需要使用資源。 如果報表正在處理大量資料，則調整資料倉儲會為使用者現有的資源類別提供更多記憶體。
-- 若對資源的預期一整天都不一樣，請選擇靜態資源類別。 例如，當許多人查詢資料倉儲時，靜態資源類別會運作得很好。 縮放數據倉庫時,分配給使用者的記憶體量不會更改。 因此，可以在系統上平行執行更多查詢。
+- 當查詢很複雜，但不需要高平行存取時，請選擇動態資源類別。  例如，產生每日或每週報表，偶爾需要使用資源。 如果報表正在處理大量資料，則調整資料倉儲會為使用者現有的資源類別提供更多記憶體。
+- 若對資源的預期一整天都不一樣，請選擇靜態資源類別。 例如，當許多人查詢資料倉儲時，靜態資源類別會運作得很好。 調整資料倉儲時，配置給使用者的記憶體數量不會變更。 因此，可以在系統上平行執行更多查詢。
 
-適當的記憶體授予取決於許多因素,例如查詢的數據量、表架構的性質以及各種聯接、選擇和分組謂詞。 一般來說，配置更多的記憶體讓查詢能夠更快完成，但會減少整體並行能力。 如果您不在意並行能力，則超額配置記憶體不會損害輸送量。
+適當的記憶體授權取決於許多因素，例如查詢的資料量、資料表架構的性質，以及各種聯結、選取和群組述詞。 一般來說，配置更多的記憶體讓查詢能夠更快完成，但會減少整體並行能力。 如果您不在意並行能力，則超額配置記憶體不會損害輸送量。
 
 若要調整效能，請使用不同的資源類別。 下一節提供可協助您找出最佳資源類別的預存程序。
 
 ## <a name="example-code-for-finding-the-best-resource-class"></a>尋找最佳資源類別的範例程式碼
 
-可以使用以下指定的儲存過程來計算給定 SLO 上每個資源類的併發和記憶體授予,以及給定資源類中非分區 CCI 表上記憶體密集型 CCI 操作的最佳資源類:
+您可以使用下列指定的預存程式，找出指定 SLO 的每個資源類別的並行和記憶體授與，以及在指定資源類別的非分割 CCI 資料表上，記憶體密集型 CCI 作業的最佳資源類別：
 
 以下是此預存程序的用途：
 
 1. 在指定的 SLO，查看對每個資源類別授與的並行和記憶體。 使用者必須同時為結構描述和 tablename 提供 NULL，如此範例所示。  
-2. 查看給定資源類非分區 CCI 表上記憶體密集型 CCI 操作(載入、複製表、重建索引等)的最佳資源類。 此預存程序會使用資料表結構描述來找出所需授與的記憶體。
+2. 在指定資源類別的非分割 CCI 資料表上，查看記憶體密集型 CCI 作業（載入、複製資料表、重建索引等）的最佳資源類別。 此預存程序會使用資料表結構描述來找出所需授與的記憶體。
 
-### <a name="dependencies--restrictions"></a>相依&限制
+### <a name="dependencies--restrictions"></a>相依性 & 限制
 
-- 此存儲過程不是用於計算分區 cci 表的記憶體要求。
-- 此儲存過程不考慮 CTAS/INSERT-SELECT 的 SELECT 部分的記憶體要求,並假定它是 SELECT。
+- 這個預存程式並非設計來計算分割的 cci 資料表的記憶體需求。
+- 這個預存程式不會將記憶體需求納入選取部分的 CTAS/插入-SELECT，並假設它是 SELECT。
 - 此預存程序會使用暫存資料表，可在此預存程序建立所在的工作階段中使用。
-- 此儲存過程取決於當前產品(例如硬體配置、DMS 配置),如果其中任何更改,則此存儲的 proc 將無法正常工作。  
-- 此存儲過程取決於現有的併發限制產品,如果這些更改,則此存儲過程將無法正常工作。  
-- 此存儲過程取決於現有的資源類產品,如果這些更改,則此存儲過程將無法正常工作。  
+- 這個預存程式取決於目前的供應專案（例如，硬體設定、DMS config），如果有任何變更，則此預存程式將無法正常運作。  
+- 這個預存程式取決於現有的平行存取限制供應專案，如果這些變更，則此預存程式將無法正確運作。  
+- 這個預存程式取決於現有的資源類別供應專案，如果這些變更，則此預存程式將無法正確運作。  
 
 >[!NOTE]  
 >如果您在使用所提供的參數來執行預存程序後沒有獲得輸出，則可能有兩種情況。
@@ -236,14 +236,14 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 >1. DW 參數包含無效的 SLO 值
 >2. 或者，對於資料表上的 CCI 作業，沒有任何相符的資源類別。
 >
->例如,在 DW100c 時,可用的最高記憶體授予為 1 GB,如果表架構足夠寬,足以滿足 1 GB 的要求。
+>例如，在 DW100c 時，可用的最高記憶體授與是 1 GB，而如果資料表架構的寬度足以跨越 1 GB 的需求。
 
 ### <a name="usage-example"></a>使用範例
 
 語法：  
 `EXEC dbo.prc_workload_management_by_DWU @DWU VARCHAR(7), @SCHEMA_NAME VARCHAR(128), @TABLE_NAME VARCHAR(128)`
   
-1. @DWU:提供 NULL 參數從 DW DB 中提取目前 DWU,或者以「DW100c」的形式提供任何受支援的 DWU
+1. @DWU:請提供 Null 參數，以從 DW DB 解壓縮目前的 DWU，或以 ' DW100c ' 的形式提供任何支援的 DWU
 2. @SCHEMA_NAME: 提供資料表的結構描述名稱
 3. @TABLE_NAME: 提供相關的資料表名稱
 
@@ -592,4 +592,4 @@ GO
 
 ## <a name="next-steps"></a>後續步驟
 
-有關管理資料庫使用者和安全的詳細資訊,請參閱 SQL [Analytics 中保護資料庫](sql-data-warehouse-overview-manage-security.md)。 如需較大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱[資料行存放區壓縮的記憶體最佳化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
+如需管理資料庫使用者和安全性的詳細資訊，請參閱[在 SQL 分析中保護資料庫](sql-data-warehouse-overview-manage-security.md)。 如需較大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱[資料行存放區壓縮的記憶體最佳化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。

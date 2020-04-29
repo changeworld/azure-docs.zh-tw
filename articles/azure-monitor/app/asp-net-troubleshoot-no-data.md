@@ -4,13 +4,13 @@ description: 在 Azure Application Insights 中看不到資料？ 試試這裡�
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.openlocfilehash: 34fc51f8f656ec0f630bd984ac1b28fbaa5e4dae
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80802581"
 ---
-# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>排除任何資料的故障排除 - .NET/.NET 核心的應用程式見解
+# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>針對 .NET/.NET Core 沒有任何資料 Application Insights 疑難排解
 
 ## <a name="some-of-my-telemetry-is-missing"></a>我遺失了部分遙測
 *在 Application Insights 中，我只會看到我的應用程式所產生的一小部分事件。*
@@ -18,23 +18,23 @@ ms.locfileid: "80802581"
 * 如果您持續看到同一個部分，可能是因為調適性 [取樣](../../azure-monitor/app/sampling.md)所導致。 若要確認這一點，開啟 [搜尋] \(從 [概觀] 刀鋒視窗)，並查看要求或其他事件的執行個體。 按一下 [屬性] 區段底部的 [...]，以取得完整的屬性詳細資料。 如果要求計數 > 1，則表示取樣正在運作中。
 * 否則，有可能是您已達到定價方案的 [資料速率限制](../../azure-monitor/app/pricing.md#limits-summary) 。 每分鐘都會套用這些限制。
 
-*我隨機經歷數據丟失。*
+*我會隨機遇到資料遺失的情況。*
 
-* 檢查遙測[頻道](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)是否遇到資料遺失
+* 檢查[遙測通道](telemetry-channels.md#does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost)是否遇到資料遺失
 
-* 檢查遙測通道[GitHub 儲存庫](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)中是否有任何已知問題
+* 檢查遙測通道[GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet/issues)存放庫中的任何已知問題
 
-*當應用即將停止時,我在控制台應用或 Web 應用中遇到數據丟失。*
+*當應用程式即將停止時，我在主控台應用程式或 Web 應用程式上遇到資料遺失的情況。*
 
-* SDK 通道將遙測保存在緩衝區中,並分批發送。 如果應用程式正在關閉,您可能需要顯式呼叫[Flush()](api-custom-events-metrics.md#flushing-data)。 的行為`Flush()`取決於實際使用的[頻道](telemetry-channels.md#built-in-telemetry-channels)。
+* SDK 通道會將遙測資料保留在緩衝區中，並以批次方式傳送。 如果應用程式正在關閉，您可能需要明確地呼叫[Flush （）](api-custom-events-metrics.md#flushing-data)。 的`Flush()`行為取決於實際使用的[通道](telemetry-channels.md#built-in-telemetry-channels)。
 
 ## <a name="no-data-from-my-server"></a>沒有來自我的伺服器的資料
-*我在 Web 伺服器上安裝了應用,現在看不到它的任何遙測數據。它在我的開發電腦上工作正常。*
+*我已在 web 伺服器上安裝我的應用程式，但現在看不到它的任何遙測。它在我的開發電腦上運作正常。*
 
 * 可能是防火牆問題。 [設定 Application Insights 的防火牆例外狀況以傳送資料](../../azure-monitor/app/ip-addresses.md)。
 * IIS 伺服器可能會遺漏某些先決條件：.NET 擴充性 4.5 和 ASP.NET 4.5。
 
-*我在 Web 伺服器上[安裝了狀態監視器](../../azure-monitor/app/monitor-performance-live-website-now.md),以監視現有應用。我看不出有任何結果。*
+*我已在 web 伺服器上[安裝狀態監視器](../../azure-monitor/app/monitor-performance-live-website-now.md)來監視現有的應用程式。我看不到任何結果。*
 
 * 請參閱 [疑難排解狀態監視器](../../azure-monitor/app/monitor-performance-live-website-now.md#troubleshoot)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "80802581"
 * 工具並非支援所有類型的 .NET 專案。 支援 Web 和 WCF 專案。 對於其他像是傳統型或服務應用程式的專案類型，您仍然可以 [手動將 Application Insights SDK 新增至您的專案](../../azure-monitor/app/windows-desktop.md)。
 * 請確定您有 [Visual Studio 2013 Update 3 或更新版本](https://docs.microsoft.com/visualstudio/releasenotes/vs2013-update3-rtm-vs)。 它會預先安裝開發人員分析工具，這些工具提供 Application Insights SDK。
 * 選取 [工具]****、[擴充功能和更新]****，檢查 [開發人員分析工具]**** 是否已安裝並啟用。 如果是，按一下 [更新] **** 以查看是否有可用的更新。
-* 開啟 [新增專案] 對話方塊，並且選擇 [ASP.NET Web 應用程式]。 如果您在那裡看到 Application Insights 選項，則工具已安裝。 如果沒有,請嘗試卸載,然後重新安裝開發人員分析工具。
+* 開啟 [新增專案] 對話方塊，並且選擇 [ASP.NET Web 應用程式]。 如果您在那裡看到 Application Insights 選項，則工具已安裝。 如果沒有，請嘗試卸載，然後再重新安裝 Developer Analytics Tools。
 
 ## <a name="adding-application-insights-failed"></a><a name="q02"></a>新增 Application Insights 失敗
 當我嘗試將 Application Insights 新增至現有的專案時，看到錯誤訊息。**
@@ -83,10 +83,10 @@ ms.locfileid: "80802581"
 修正：
 
 * 請確定您的 Visual Studio 版本是 2013 Update 3 或更新版本。
-* 選擇**工具**、**擴充與更新**,並檢查是否安裝並啟用**開發人員分析工具**。 如果是，按一下 [更新] **** 以查看是否有可用的更新。
+* 選取 [**工具**]、[**擴充功能和更新**]，並檢查是否已安裝並啟用**開發人員分析工具**。 如果是，按一下 [更新] **** 以查看是否有可用的更新。
 * 以滑鼠右鍵按一下 [方案總管] 中的專案。 如果您看到命令 [Application Insights] > [設定 Application Insights]****，使用它將專案連線至 Application Insights 服務中的資源。
 
-否則,開發人員分析工具不會直接支援您的項目類型。 若要查看您的遙測，請登入 [Azure 入口網站](https://portal.azure.com)，在左側的導覽列中，選擇 [Application Insights]，然後選取您的應用程式。
+否則，開發人員分析工具不會直接支援您的專案類型。 若要查看您的遙測，請登入 [Azure 入口網站](https://portal.azure.com)，在左側的導覽列中，選擇 [Application Insights]，然後選取您的應用程式。
 
 ## <a name="access-denied-on-opening-application-insights-from-visual-studio"></a>從 Visual Studio 開啟 Application Insights 時「拒絕存取」
 *[開啟 Application Insights] 功能表命令帶我前往 Azure 入口網站，但是我收到「拒絕存取」錯誤。*
@@ -94,7 +94,7 @@ ms.locfileid: "80802581"
 您上一次在預設瀏覽器中使用的 Microsoft 登入，沒有 [將 Application Insights 新增至這個應用程式時所建立的資源](../../azure-monitor/app/asp-net.md)的存取權。 有兩個可能的原因：
 
 * 您有一個以上的 Microsoft 帳戶 - 可能是工作和個人 Microsoft 帳戶？ 您上一次在預設瀏覽器上使用的登入，是與具有 [將 Application Insights 新增至專案](../../azure-monitor/app/asp-net.md)的存取權的帳戶不同的帳戶。
-  * 修復:單擊瀏覽器視窗右上角的名稱,然後註銷。然後使用具有訪問許可權的帳戶登錄。 然後在左側的導覽列中，按一下 [Application Insights]，並選取您的應用程式。
+  * 修正：在瀏覽器視窗的右上方按一下您的名稱，然後登出。然後以具有存取權的帳戶登入。 然後在左側的導覽列中，按一下 [Application Insights]，並選取您的應用程式。
 * 其他人將 Application Insights 新增至專案，且他們忘記為您提供所建立的 [資源群組的存取權](../../azure-monitor/app/resources-roles-access-control.md) 。
   * 修正：如果他們使用組織帳戶，他們可以將您加入小組；或者，他們可以授與您資源群組的個別存取權。
 
@@ -114,7 +114,7 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
 * 直接開啟資源。 登入 [Azure 入口網站](https://portal.azure.com)，在左側的導覽列中，按一下 [Application Insights]，然後選取您的應用程式。
 
 ## <a name="where-do-i-find-my-telemetry"></a>哪裡可以找到我的遙測？
-*我登錄到 Microsoft [Azure 門戶](https://portal.azure.com),並且正在查看 Azure 主儀錶板。那麼,在哪裡可以找到我的應用程序見解數據?*
+*我已登入[Microsoft Azure 入口網站](https://portal.azure.com)，而我正在查看 Azure 主儀表板。那麼我可以在哪裡找到我的 Application Insights 資料？*
 
 * 在左側的導覽列中，按一下 [Application Insights]，然後選取您的應用程式名稱。 如果您在其中沒有任何專案，則需要 [在您的 Web 專案中新增或設定 Application Insights](../../azure-monitor/app/asp-net.md)。  
   您可以從中看到一些摘要圖表。 您可以逐一點選以查看更詳細的資料。
@@ -149,7 +149,7 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
 請參閱[相依性遙測](../../azure-monitor/app/asp-net-dependencies.md)和[例外狀況遙測](asp-net-exceptions.md)。
 
 ## <a name="no-performance-data"></a>沒有效能資料
-效能資料(CPU、IO 速率等)可用於[Java Web 服務](../../azure-monitor/app/java-collectd.md)[、Windows 桌面應用](../../azure-monitor/app/windows-desktop.md)[、IIS Web 應用和服務(如果安裝狀態監視器)](../../azure-monitor/app/monitor-performance-live-website-now.md)和[Azure 雲端服務](../../azure-monitor/app/app-insights-overview.md)。 您將會在 [設定]、[伺服器] 之下看到該資料。
+如果您安裝狀態監視器和[Azure 雲端服務](../../azure-monitor/app/app-insights-overview.md)，效能資料（CPU、IO 速率等等）適用于[JAVA web 服務](../../azure-monitor/app/java-collectd.md)、 [Windows 桌面應用程式](../../azure-monitor/app/windows-desktop.md)、 [IIS web 應用程式和服務](../../azure-monitor/app/monitor-performance-live-website-now.md)。 您將會在 [設定]、[伺服器] 之下看到該資料。
 
 ## <a name="no-server-data-since-i-published-the-app-to-my-server"></a>我發佈應用程式到我的伺服器之後卻沒有 (伺服器) 資料
 * 請確認您實際上已複製所有 Microsoft. ApplicationInsights DLL 到伺服器，並且連帶 Microsoft.Diagnostics.Instrumentation.Extensions.Intercept.dll ApplicationInsights Dll 一併複製。
@@ -159,7 +159,7 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>我曾經看到資料，但是已停止
 * 檢查 [狀態部落格](https://blogs.msdn.com/b/applicationinsights-status/)。
-* 您有達到資料點的每月配額嗎？ 打開設置/配額和定價以找出答案。如果是這樣,您可以升級計劃,或支付額外的容量。 請參閱 [定價配置](https://azure.microsoft.com/pricing/details/application-insights/)。
+* 您有達到資料點的每月配額嗎？ 開啟 [設定/配額和定價] 以找出。若是如此，您可以升級您的方案，或支付額外的容量。 請參閱 [定價配置](https://azure.microsoft.com/pricing/details/application-insights/)。
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>我並沒有看到預期的所有資料
 如果您的應用程式傳送大量資料，且您是使用 Application Insights SDK for ASP.NET 版本 2.0.0-beta3 或更新版本，則 [調適性取樣](../../azure-monitor/app/sampling.md) 功能可能會運作，並只傳送一部分的遙測資料。
@@ -209,7 +209,7 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
 
 1. 從 NuGet 安裝 [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) 套件。 您安裝的版本必須符合目前安裝的 `Microsoft.ApplicationInsights` 版本
 
-最新版本的微軟.應用程式見解.AspNetCore是2.8.2,它指的是微軟.應用程式洞察版本2.11.2。 因此,要安裝的 Microsoft.AspNet.應用程式見解.託管啟動版本應為 2.11.2
+AspNetCore 的最新版本是2.8.2，而它是指 ApplicationInsights 版本2.11.2。 因此，應2.11.2 要安裝的 ApplicationInsights 版本 HostingStartup。
 
 2. 修改 `Startup.cs` 類別中的 `ConfigureServices` 方法：
 
@@ -228,29 +228,29 @@ ApplicationInsights.config 中的檢測金鑰會控制遙測傳送的位置。 �
 4. 完成作業後，請還原這些變更。
 
 
-## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a>使用 PerfView 收集紀錄
-[PerfView](https://github.com/Microsoft/perfview)是一種免費的診斷和性能分析工具,通過從多個來源收集和可視化診斷資訊來幫助隔離 CPU、記憶體和其他問題。
+## <a name="collect-logs-with-perfview"></a><a name="PerfView"></a>使用 PerfView 收集記錄
+[PerfView](https://github.com/Microsoft/perfview)是免費的診斷和效能分析工具，可從許多來源收集診斷資訊並加以視覺化，以協助找出 CPU、記憶體和其他問題。
 
-應用程式見解 SDK 日誌事件源由 PerfView 捕獲的自故障排除日誌。
+Application Insights SDK 記錄 EventSource 自我疑難排解記錄檔，可由 PerfView 加以捕捉。
 
-要收集紀錄,請下載 PerfView 並執行以下指令:
+若要收集記錄檔，請下載 PerfView，然後執行此命令：
 ```cmd
 PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-ApplicationInsights-Core,*Microsoft-ApplicationInsights-Data,*Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,*Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,*Microsoft-ApplicationInsights-Extensibility-DependencyCollector,*Microsoft-ApplicationInsights-Extensibility-HostingStartup,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,*Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,*Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,*Microsoft-ApplicationInsights-Extensibility-Web,*Microsoft-ApplicationInsights-Extensibility-WindowsServer,*Microsoft-ApplicationInsights-WindowsServer-Core,*Microsoft-ApplicationInsights-Extensibility-EventSourceListener,*Microsoft-ApplicationInsights-AspNetCore
 ```
 
-您可以根據需要修改這些參數:
-- **馬克斯收集Sec**。 設置此參數以防止 PerfView 無限期運行並影響伺服器的性能。
-- **只有供應商**。 將此參數設置為僅從 SDK 收集日誌。 您可以根據您的特定調查自訂此清單。 
-- **諾吉**. 設置此參數以收集沒有 GUI 的日誌。
+您可以視需要修改這些參數：
+- **MaxCollectSec**。 設定此參數，以防止 PerfView 無限期執行，並影響伺服器的效能。
+- **OnlyProviders**。 將此參數設定為只從 SDK 收集記錄。 您可以根據您的特定調查來自訂此清單。 
+- **NoGui**。 設定此參數可收集沒有 GUI 的記錄檔。
 
 
 如需詳細資訊，
-- [使用 PerfView 錄製效能追蹤](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
-- [應用程式見解事件來源](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
+- [使用 PerfView 記錄效能追蹤](https://github.com/dotnet/roslyn/wiki/Recording-performance-traces-with-PerfView)。
+- [Application Insights 事件來源](https://github.com/microsoft/ApplicationInsights-Home/tree/master/Samples/ETW)
 
-## <a name="how-to-remove-application-insights"></a>如何移除應用程式見解
+## <a name="how-to-remove-application-insights"></a>如何移除 Application Insights
 
-瞭解如何按照刪除[文章中](../../azure-monitor/app/remove-application-insights.md)提供的步驟刪除 Visual Studio 中的應用程式見解。
+瞭解如何遵循移除[文章](../../azure-monitor/app/remove-application-insights.md)中提供的步驟，移除 Visual Studio 中的 Application Insights。
 
 ## <a name="still-not-working"></a>仍然無法運作...
 * [Application Insights 論壇](https://social.msdn.microsoft.com/Forums/vstudio/en-US/home?forum=ApplicationInsights)
