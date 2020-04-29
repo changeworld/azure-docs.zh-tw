@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 門戶使用本地編碼器的即時流 |微軟文檔
+title: 使用 Azure 入口網站的內部部署編碼器進行即時串流 |Microsoft Docs
 description: 本教學課程將逐步引導您建立針對即時通行傳遞設定的通道。
 services: media-services
 documentationcenter: ''
@@ -15,29 +15,29 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: a83d6ae2e3ed13f0d03e0fdc87a3b45a4119ba88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162747"
 ---
-# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>使用 Azure 門戶使用本地編碼器執行即時流式處理
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>使用 Azure 入口網站以內部部署編碼器執行即時串流
 > [!div class="op_single_selector"]
 > * [入口網站](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-> * [休息](https://docs.microsoft.com/rest/api/media/operations/channel)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
 本教學課程將逐步引導您使用 Azure 入口網站建立針對即時通行傳遞設定的 **通道** 。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 需要有下列項目，才能完成教學課程：
 
-* 一個 Azure 帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
+* 一個 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。 
 * 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱[如何建立媒體服務帳戶](media-services-portal-create-account.md)。
 * 網路攝影機。 例如， [Telestream Wirecast 編碼器](media-services-configure-wirecast-live-encoder.md)。 
 
@@ -47,7 +47,7 @@ ms.locfileid: "77162747"
 * [使用 Azure 媒體服務之即時串流的概觀](media-services-manage-channels-overview.md)
 * [使用會建立多位元速率串流的內部部署編碼器執行即時串流](media-services-live-streaming-with-onprem-encoders.md)
 
-## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>常見的即時流式處理方案
+## <a name="common-live-streaming-scenario"></a><a id="scenario"></a>常見的即時串流案例
 
 下列步驟描述當我們建立一般即時串流應用程式 (其使用針對即時通行傳遞設定的通道) 時，會涉及到的各種工作。 本教學課程示範如何建立及管理即時通行通道和即時事件。
 
@@ -55,7 +55,7 @@ ms.locfileid: "77162747"
 > 確定您想要串流內容的串流端點已處於 [執行中]**** 狀態。 
     
 1. 將攝影機連接到電腦。 <br/>如需了解裝備，請參閱[簡單的可攜式活動視訊器材裝備]( https://link.medium.com/KNTtiN6IeT) \(英文\)。
-1. 啟動並設定內部部署即時編碼器，讓它輸出多位元速率 RTMP 或 Fragmented MP4 串流。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。<br/>此外，看看這個博客：[使用OBS進行即時流式處理](https://link.medium.com/ttuwHpaJeT)。
+1. 啟動並設定內部部署即時編碼器，讓它輸出多位元速率 RTMP 或 Fragmented MP4 串流。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。<br/>此外，請參閱此 blog：[使用 OBS 的即時串流生產](https://link.medium.com/ttuwHpaJeT)。
    
     此步驟也可以在您建立通道之後執行。
 1. 建立並啟動即時通行通道。
@@ -150,7 +150,7 @@ ms.locfileid: "77162747"
 
 若要管理您的資產，請選取 [設定]****，然後按一下 [資產]****。
 
-![Assets](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
+![資產](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
 ## <a name="next-step"></a>後續步驟
 檢閱媒體服務學習路徑。

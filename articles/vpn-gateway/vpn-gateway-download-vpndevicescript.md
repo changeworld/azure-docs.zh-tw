@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
 ms.openlocfilehash: f905e27f48a0bf9181625bbba07549a13d9420cb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162131"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>下載可供進行 S2S VPN 連線的 VPN 裝置設定指令碼
@@ -50,7 +50,7 @@ ms.locfileid: "77162131"
 
 建立 Azure VPN 閘道、區域網路閘道以及讓兩者相連的連線資源。 下列網頁會指導您逐步執行步驟：
 
-* [在 Azure 門戶中創建網站到網站的連接](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [在 Azure 入口網站中建立站對站連線](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
 在建立連線資源後，請遵循下列指示以下載 VPN 裝置設定指令碼：
 

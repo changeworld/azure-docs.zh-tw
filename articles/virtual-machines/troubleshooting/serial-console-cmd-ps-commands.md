@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 493340764f507c4fa364a5000f65cc232630b243
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77167035"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows 命令 - CMD 和 PowerShell
@@ -117,7 +117,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 ### <a name="disable-windows-firewall"></a>停用 Windows 防火牆
 `netsh advfirewall set allprofiles state off`
 
-您可以在進行疑難排解時使用此命令，以暫時排除 Windows 防火牆。 它將在下次重新開機時啟用，或者當您使用下面的命令啟用它時。 請勿以停止 Windows 防火牆服務 (MPSSVC) 或基礎篩選引擎 (BFE) 服務的方式來排除 Windows 防火牆。 停止 MPSSVC 或 BFE 將會導致所有連線遭到封鎖。
+您可以在進行疑難排解時使用此命令，以暫時排除 Windows 防火牆。 下次重新開機時，或當您使用下列命令啟用它時，它就會啟用。 請勿以停止 Windows 防火牆服務 (MPSSVC) 或基礎篩選引擎 (BFE) 服務的方式來排除 Windows 防火牆。 停止 MPSSVC 或 BFE 將會導致所有連線遭到封鎖。
 ### <a name="enable-windows-firewall"></a>啟用 Windows 防火牆
 `netsh advfirewall set allprofiles state on`
 ## <a name="manage-users-and-groups"></a>管理使用者和群組
@@ -320,7 +320,7 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 `test-netconnection`
 
 > [!NOTE]
-> 寫入進度 Cmdlet 可能無法使用此命令。 作為緩解措施，您可以在 PowerShell 中運行`$ProgressPreference = "SilentlyContinue"`以禁用進度列。
+> 寫入進度 Cmdlet 可能無法與此命令搭配使用。 作為緩和措施，您可以在`$ProgressPreference = "SilentlyContinue"` PowerShell 中執行來停用進度列。
 
 或
 
@@ -479,5 +479,5 @@ Azure VM 在客體作業系統中應一律設定為使用 DHCP 來取得 IP 位�
 
 ## <a name="next-steps"></a>後續步驟
 * 主要序列主控台 Windows 文件頁面位於[這裡](serial-console-windows.md)。
-* 串列主控台也可用於[Linux](serial-console-linux.md) VM。
-* 瞭解有關[引導診斷](boot-diagnostics.md)的更多資訊。
+* 序列主控台也適用于[Linux](serial-console-linux.md) vm。
+* 深入瞭解[開機診斷](boot-diagnostics.md)。

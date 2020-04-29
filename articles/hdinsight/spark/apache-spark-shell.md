@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/10/2020
 ms.openlocfilehash: f8737f645df2aefbf9ce544199f0cc45ce6a3d60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162798"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>從 Spark Shell 執行 Apache Spark
@@ -21,13 +21,13 @@ ms.locfileid: "77162798"
 
 ## <a name="run-an-apache-spark-shell"></a>執行 Apache Spark Shell
 
-1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到群集。 通過將 CLUSTERNAME 替換為群集的名稱來編輯下面的命令，然後輸入以下命令：
+1. 使用[ssh 命令](../hdinsight-hadoop-linux-use-ssh-unix.md)連接到您的叢集。 以您叢集的名稱取代 CLUSTERNAME，然後輸入命令，以編輯下面的命令：
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. 火花為 Scala（火花殼）和 Python（火花）提供外殼。 在 SSH 會話中，輸入以下命令*之一*：
+1. Spark 提供 Scala （spark shell）和 Python （pyspark）的 shell。 在您的 SSH 會話中，輸入下列*其中一個*命令：
 
     ```bash
     spark-shell
@@ -43,9 +43,9 @@ ms.locfileid: "77162798"
     # pyspark --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
     ```
 
-    如果您打算使用任何可選配置，請確保首先查看 Apache [Spark 的"記憶體不足錯誤"異常](./apache-spark-troubleshoot-outofmemory.md)。
+    如果您想要使用任何選用的設定，請務必先參閱[Apache Spark 的 OutOfMemoryError 例外](./apache-spark-troubleshoot-outofmemory.md)狀況。
 
-1. 幾個基本示例命令。 選擇相關語言：
+1. 幾個基本的範例命令。 選擇相關的語言：
 
     ```spark-shell
     val textFile = spark.read.textFile("/example/data/fruits.txt")
@@ -59,13 +59,13 @@ ms.locfileid: "77162798"
     textFile.filter(textFile.value.contains("apple")).show()
     ```
 
-1. 查詢 CSV 檔。 請注意，以下語言適用于`spark-shell`和`pyspark`。
+1. 查詢 CSV 檔案。 請注意，下列語言適用`spark-shell`于`pyspark`和。
 
     ```scala
     spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
     ```
 
-1. 查詢 CSV 檔並將結果存儲為變數：
+1. 查詢 CSV 檔案並將結果儲存在變數中：
 
     ```spark-shell
     var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
@@ -105,7 +105,7 @@ ms.locfileid: "77162798"
 
 ## <a name="important-shell-parameters"></a>重要的殼層參數
 
-Spark Shell 命令`spark-shell`（`pyspark`或 ） 支援許多命令列參數。 若要查看完整的參數清單，請使用參數 `--help` 啟動 Spark Shell。 其中一些參數可能僅適用于 Spark`spark-submit`外殼包裝 的 。
+Spark Shell 命令（`spark-shell`或`pyspark`）支援許多命令列參數。 若要查看完整的參數清單，請使用參數 `--help` 啟動 Spark Shell。 其中某些參數可能只適用`spark-submit`于 Spark Shell 所包裝的。
 
 | switch | description | 範例 |
 | --- | --- | --- |

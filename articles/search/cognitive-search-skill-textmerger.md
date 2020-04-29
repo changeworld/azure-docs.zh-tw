@@ -1,7 +1,7 @@
 ---
 title: 文字合併認知技能
 titleSuffix: Azure Cognitive Search
-description: 將一組欄位中的文字合併成一個合併欄位。 在 Azure 認知搜索中的 AI 豐富管道中使用此認知技能。
+description: 將一組欄位中的文字合併成一個合併欄位。 在 Azure 認知搜尋中的 AI 擴充管線中使用這項認知技能。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 98ea416305f080850d85498f74693eb2d45b0944
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162339"
 ---
 #   <a name="text-merge-cognitive-skill"></a>文字合併認知技能
@@ -29,7 +29,7 @@ Microsoft.Skills.Text.MergeSkill
 
 這些參數會區分大小寫。
 
-| 參數名稱     | 描述 |
+| 參數名稱     | 說明 |
 |--------------------|-------------|
 | insertPreTag  | 要在每次插入之前包含的字串。 預設值是 `" "`。 若要省略空間，請將值設定為 `""`。  |
 | insertPostTag | 要在每次插入之後包含的字串。 預設值是 `" "`。 若要省略空間，請將值設定為 `""`。  |
@@ -140,7 +140,7 @@ Microsoft.Skills.Text.MergeSkill
 }
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)

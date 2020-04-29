@@ -9,10 +9,10 @@ ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: aa7ddb75017a532b436b9a5cfc71d1a7c2832cb6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77179101"
 ---
 本文說明如何在 Azure 中規劃 IaaS 虛擬機器 (VM) 和磁碟的備份和災害復原 (DR)。 本文件涵蓋受控磁碟和非受控磁碟。
@@ -96,7 +96,7 @@ IaaS 應用程式資料問題是另一種可能性。 請考慮一個可計算�
 
 ## <a name="disaster-recovery-solution-azure-backup"></a>災害復原解決方案：Azure 備份 
 
-[Azure 備份](https://azure.microsoft.com/services/backup/)用於備份和 DR，它適用于[託管磁片](../articles/virtual-machines/windows/managed-disks-overview.md)和非託管磁片。 您可以建立具有以時間為基礎的備份、簡易 VM 還原，以及備份保留原則的備份工作。
+[Azure 備份](https://azure.microsoft.com/services/backup/)用於備份和 DR，而且適用于[受控磁片](../articles/virtual-machines/windows/managed-disks-overview.md)和非受控磁片。 您可以建立具有以時間為基礎的備份、簡易 VM 還原，以及備份保留原則的備份工作。
 
 如果您使用[進階 SSD](../articles/virtual-machines/windows/disks-types.md)、[受控磁碟](../articles/virtual-machines/windows/managed-disks-overview.md)或啟用[本地備援儲存體](../articles/storage/common/storage-redundancy-lrs.md)選項的其他磁碟類型，定期 DR 備份尤其重要。 Azure 備份會將資料儲存在復原服務保存庫中，以長期保留。 針對備份復原服務保存庫，選擇[異地備援儲存體](../articles/storage/common/storage-redundancy-grs.md)選項。 該選項可確保備份會複寫至不同的 Azure 區域，以防範區域性災害。
 
@@ -107,7 +107,7 @@ IaaS 應用程式資料問題是另一種可能性。 請考慮一個可計算�
 
  下表是 DR 可用解決方案的摘要。
 
-| 狀況 | 自動複寫 | DR 解決方案 |
+| 案例 | 自動複寫 | DR 解決方案 |
 | --- | --- | --- |
 | 進階 SSD 磁碟 | 本機 ([本地備援儲存體](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure 備份](https://azure.microsoft.com/services/backup/) |
 | 受控磁碟 | 本機 ([本地備援儲存體](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure 備份](https://azure.microsoft.com/services/backup/) |
@@ -128,7 +128,7 @@ IaaS 應用程式資料問題是另一種可能性。 請考慮一個可計算�
 
 [Azure 備份](../articles/backup/backup-azure-vms-introduction.md)可將執行 Windows 或 Linux 的 VM 備份至 Azure 復原服務保存庫。 備份與還原業務重要資料之所以複雜，原因在於資料必須在產生資料的應用程式執行時進行備份。 
 
-為了解決此問題，Azure 備份會對 Microsoft 工作負載提供應用程式一致備份。 它會使用磁碟區陰影服務來確保資料正確地寫入至儲存體。 對於 Linux VM，預設的備份一致性模式是檔一致性備份，因為 Linux 的功能與卷卷映射服務不相等，就像 Windows 一樣。 對於 Linux 電腦，請參閱[Azure Linux VM 的應用程式一致性備份](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)。
+為了解決此問題，Azure 備份會對 Microsoft 工作負載提供應用程式一致備份。 它會使用磁碟區陰影服務來確保資料正確地寫入至儲存體。 針對 Linux Vm，預設的備份一致性模式是檔案一致備份，因為 Linux 沒有相當於磁片區陰影服務的功能，如同 Windows 的情況。 針對 Linux 電腦，請參閱[Azure Linux vm 的應用程式一致備份](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)。
 
 ![Azure 備份流程][1]
 
@@ -146,7 +146,7 @@ Azure 備份在排定的時間起始備份工作時，會觸發 VM 中所安裝�
 
     b. 在 [復原服務保存庫]**** 功能表上，按一下 [新增]****，然後遵循步驟以在與 VM 相同的區域中建立新的保存庫。 例如，如果您的 VM 位於美國西部地區，請選取美國西部作為保存庫。
 
-1.  確認新建立保存庫的儲存體複寫。 訪問**恢復服務保存庫**下的保存庫，然後轉到**屬性** > **備份配置** > **更新**。 確定預設已選取 [異地備援儲存體]**** 選項。 此選項可確保您的保存庫會自動複寫至次要資料中心。 例如，您在美國西部的保存庫會自動複寫至美國東部。
+1.  確認新建立保存庫的儲存體複寫。 存取復原服務保存**庫**底下的保存**庫，然後移至** > [內容] [**備份** > 設定**更新**]。 確定預設已選取 [異地備援儲存體]**** 選項。 此選項可確保您的保存庫會自動複寫至次要資料中心。 例如，您在美國西部的保存庫會自動複寫至美國東部。
 
 1.  設定備份原則，然後從相同的 UI 中選取 VM。
 
@@ -188,7 +188,7 @@ Azure 備份在排定的時間起始備份工作時，會觸發 VM 中所安裝�
 
 1.  為所有磁碟[建立 Blob 快照集](../articles/storage/blobs/storage-blob-snapshots.md)。
 
-某些 Windows 應用程式 (例如 SQL Server) 會透過磁碟區陰影服務提供一致備份機制，以建立應用程式一致備份。 在 Linux 上，您可以使用*fsfreeze*這樣的工具來協調磁片。 此工具會提供檔案一致備份，但不提供應用程式一致性快照集。 此程序很複雜，因此您應該考慮使用 [Azure 備份](../articles/backup/backup-azure-vms-introduction.md)，或是已實作此程序的第三方備份解決方案。
+某些 Windows 應用程式 (例如 SQL Server) 會透過磁碟區陰影服務提供一致備份機制，以建立應用程式一致備份。 在 Linux 上，您可以使用*fsfreeze*之類的工具來協調磁片。 此工具會提供檔案一致備份，但不提供應用程式一致性快照集。 此程序很複雜，因此您應該考慮使用 [Azure 備份](../articles/backup/backup-azure-vms-introduction.md)，或是已實作此程序的第三方備份解決方案。
 
 上述程序會產生所有 VM 磁碟的一致性快照集合，代表 VM 的特定時間點檢視。 這是 VM 的備份還原點。 您可以在排程的間隔重複此程序，以建立定期備份。 請參閱[將備份複製到另一個區域](#copy-the-snapshots-to-another-region)中將快照集複製到另一個區域以進行 DR 的步驟。
 
