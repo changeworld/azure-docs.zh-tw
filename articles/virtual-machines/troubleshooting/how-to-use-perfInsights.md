@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 783b479dd3e5f429516799d7d3ea82f363cac2ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250123"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
@@ -79,7 +79,7 @@ PerfInsights 可以收集並分析多種資訊。 下列幾節會說明常見案
 | Latency      | 平均秒/資料要求         |
 |              | 平均秒/讀取                 |
 |              | 平均秒/寫入                |
-| IO 大小      | 平均位元組/資料請求       |
+| IO 大小      | 平均位元組/資料要求       |
 |              | 平均位元組/讀取               |
 |              | 平均位元組/寫入              |
 | Throughput   | 資料位元組/秒                |
@@ -266,7 +266,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 [DiskMap]**** 和 [VolumeMap]**** 區段說明邏輯磁碟區和實體磁碟如何彼此相關。
 
-在實體磁碟檢視方塊 (磁碟對應) 中，資料表會顯示在磁碟上執行的所有邏輯磁碟區。 在下面的示例中，**物理磁碟機2**運行在多個分區（J 和 H）上創建的兩個邏輯卷：
+在實體磁碟檢視方塊 (磁碟對應) 中，資料表會顯示在磁碟上執行的所有邏輯磁碟區。 在下列範例中， **PhysicalDrive2**會執行在多個磁碟分割（J 和 H）上建立的兩個邏輯磁片區：
 
 ![磁碟索引標籤的螢幕擷取畫面](media/how-to-use-perfInsights/pi-disk-tab.png)
 
@@ -282,7 +282,7 @@ Diskspd I/O 工作負載測試 (OS 磁碟 [寫入] 和集區磁碟 [讀取/寫�
 
 本區段包含 [結果]**** 索引標籤，以及裝載在虛擬機器上的每個 SQL Server 執行個體的其他索引標籤。
 
-"**調查結果"** 選項卡包含找到的所有 SQL 相關性能問題的清單以及建議。
+[**結果**] 索引標籤包含所有發現的 SQL 相關效能問題清單，以及建議。
 
 下列範例中會顯示 **PhysicalDrive0** (執行 C 磁碟機)。 這是因為 **modeldev** 和 **modellog** 檔案都位於 C 磁碟機上，且為不同的類型 (例如它們分別為資料檔和交易記錄)。
 

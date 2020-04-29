@@ -1,76 +1,76 @@
 ---
-title: 車燈
-description: 光源描述與屬性
+title: 光線
+description: Light 來源描述和屬性
 author: florianborn71
 ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.openlocfilehash: 0a4a226af1347b5302b0c3964889fc072f89e7f8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680943"
 ---
-# <a name="lights"></a>車燈
+# <a name="lights"></a>光線
 
-默認情況下,遠端渲染的物件使用[天光](sky.md)點亮。 對於大多數應用程式,這已經足夠了,但您可以向場景添加更多光源。
+根據預設，遠端呈現的物件會使用[天空光源](sky.md)來發亮。 對於大部分的應用程式而言，這已經足夠，但您可以將更多光源新增到場景中。
 
 > [!IMPORTANT]
-> 只有[PBR 材料](pbr-materials.md)受光源影響。 [顏色材料](color-materials.md)總是顯得完全明亮。
+> 只有[.pbr](pbr-materials.md)的資料會受到光源的影響。 [色彩材質](color-materials.md)的外觀一律會完全明亮。
 
 > [!NOTE]
-> 當前不支援投射陰影。 Azure 遠端呈現經過優化,可根據需要使用多個 GPU 來呈現大量幾何體。 在這種情形下,傳統的陰影投射方法效果不好。
+> 目前不支援轉換陰影。 Azure 遠端轉譯已優化，可在需要時使用多個 Gpu，以轉譯大量的幾何。 在這種情況下，陰影轉換的傳統方法並不適用。
 
-## <a name="common-light-component-properties"></a>常見的光元件屬性
+## <a name="common-light-component-properties"></a>一般光源元件屬性
 
-所有光類型都派生自抽象基類`LightComponent`並共用這些屬性:
+所有光源類型都衍生自抽象基類`LightComponent`並共用這些屬性：
 
-* **顏色:**[伽瑪空間](https://en.wikipedia.org/wiki/SRGB)中光的顏色。 阿爾法將被忽略。
+* **色彩：**[Gamma 空間](https://en.wikipedia.org/wiki/SRGB)中光源的色彩。 忽略 Alpha。
 
-* **強度:** 光的亮度。 對於點燈和聚光燈,強度也定義光線的照射程度。
+* **濃度：** 光線的亮度。 對於點和點燈，濃度也會定義光線的效果。
 
-## <a name="point-light"></a>點燈
+## <a name="point-light"></a>點光源
 
-在 Azure`PointLightComponent`遠端 渲染中,不僅可以從單個點發出光,還可以從小球體或小管中發出光,以類比較柔和的光源。
+在 Azure 遠端轉譯中`PointLightComponent` ，不能只從單一點發出光線，也不能從小球體或小型管來模擬較柔和的光源。
 
-### <a name="pointlightcomponent-properties"></a>點光元件屬性
+### <a name="pointlightcomponent-properties"></a>PointLightComponent 屬性
 
-* **半徑:** 默認半徑為零,在這種情況下,燈光充當點光。 如果半徑大於零,則充當球形光源,從而更改鏡面高光的外觀。
+* **Radius：** 預設半徑為零，在此情況下，光源會當做點光線。 如果半徑大於零，它會作為球面光源，這會變更反射醒目提示的外觀。
 
-* **長度:** 如果兩`Length``Radius`者 均為非零,則光充當管燈。 這可用於類比霓虹燈管。
+* **長度：** 如果`Length`和`Radius`都不是零，則光源會作為電子管光線。 這可以用來模擬霓虹燈型電子管。
 
-* **衰減截止:** 如果留給 (0,0) 則光的衰減僅`Intensity`取決於其 。 但是,您可以提供自定義的最小/最大距離,光的強度會線性縮小到 0。 此功能可用於強制特定光的影響範圍較小。
+* **AttenuationCutoff：** 如果從左到（0，0）光源的衰減只取決於其`Intensity`。 不過，您可以提供自訂的最小/最大距離，光源的濃度會以線性方式調整為0。 這項功能可以用來強制執行較小範圍的特定光線影響。
 
-* **投影立方體圖:** 如果設置為有效的[立方體貼圖](../../concepts/textures.md),則紋理將投影到燈光的周圍幾何體上。 立方體貼圖的顏色使用燈光的顏色進行調製。
+* **ProjectedCubemap：** 如果設定為有效的[立方體貼圖](../../concepts/textures.md)，則會將材質投射到光源周圍的幾何。 立方體貼圖的色彩是以光源的色彩來進行調製。
 
-## <a name="spot-light"></a>聚光燈
+## <a name="spot-light"></a>點光源
 
-`SpotLightComponent`與類似,`PointLightComponent`但光線被約束到圓錐體的形狀。 圓錐的方向由*所有者實體的負 z 軸*定義。
+`SpotLightComponent`類似于， `PointLightComponent`但光線受限於錐形的形狀。 錐形的方向是由*擁有者實體的負 Z 軸*所定義。
 
-### <a name="spotlightcomponent-properties"></a>聚光燈元件屬性
+### <a name="spotlightcomponent-properties"></a>SpotLightComponent 屬性
 
-* **半徑:** 與相同`PointLightComponent`。
+* **Radius：** 與相同`PointLightComponent`。
 
-* **點角:** 此間隔定義錐體的內角和外角,以度為單位進行測量。 內角內的所有內容都以全亮度亮起。 衰落應用於產生五邊形效果的外角。
+* **SpotAngleDeg：** 這個間隔會定義圓錐的內部和外部角度，以度為單位。 內部角度的所有內容都會以完整亮度亮起。 衰減會套用到外部角度，以產生類似 penumbra 的效果。
 
-* **衰降指數:** 定義內錐角和外錐角之間的衰落過渡的劇烈程度。 值越高,轉換越清晰。 默認值 1.0 會導致線性轉換。
+* **FalloffExponent：** 定義在內部和外部錐形角度之間的衰減轉換程度。 較高的值會產生更銳利的轉換。 1.0 的預設值會產生線性轉換。
 
-* **衰減截止:** 與相同`PointLightComponent`。
+* **AttenuationCutoff：** 與相同`PointLightComponent`。
 
-* **投影2d紋理:** 如果設置為有效的[2D 紋理](../../concepts/textures.md),則圖像將投影到光線照射的幾何體上。 紋理的顏色使用燈光的顏色進行調製。
+* **Projected2dTexture：** 如果設定為有效的[2d 材質](../../concepts/textures.md)，影像就會投射到光線的幾何上。 材質的色彩會以光源的色彩來進行調製。
 
-## <a name="directional-light"></a>定向光
+## <a name="directional-light"></a>方向淺色
 
-類`DirectionalLightComponent`比 無限遠的光源。 光線照射到*所有者實體的負 z 軸*的方向。 實體的位置將被忽略。
+會`DirectionalLightComponent`模擬無限遠的光源。 光是*擁有者實體的負 Z 軸*方向。 會忽略實體的位置。
 
 沒有其他屬性。
 
 ## <a name="performance-considerations"></a>效能考量
 
-光源對渲染性能有顯著影響。 僅在應用程式需要時才謹慎使用它們。 任何靜態全域照明條件(包括靜態方向元件)都可以通過[自定義天空紋理](sky.md)來實現,無需額外的渲染成本。
+光源對轉譯效能有顯著的影響。 只有在應用程式需要時，才謹慎使用。 任何靜態全域光源條件（包括靜態方向元件）都可以透過[自訂的天空材質](sky.md)達成，而無需額外的轉譯成本。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [物料](../../concepts/materials.md)
-* [天空](sky.md)
+* [材質](../../concepts/materials.md)
+* [Sky](sky.md)

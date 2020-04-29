@@ -1,5 +1,5 @@
 ---
-title: 資料處理和使用者定義的功能 - Azure 數位雙子星*微軟文檔
+title: 資料處理和使用者定義函數-Azure 數位 Twins |Microsoft Docs
 description: Azure Digital Twins 的資料處理、比對器和使用者定義函式的概觀。
 ms.author: alinast
 author: alinamstanciu
@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265177"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>資料處理與各項使用者定義功能
@@ -21,7 +21,7 @@ Azure Digital Twins 提供進階計算功能。 開發人員可定義自訂函�
 
 ## <a name="data-processing-flow"></a>資料處理流程
 
-在設備向 Azure 數位孿生髮送遙測資料後，開發人員可以分四個階段處理資料：*驗證*、*匹配*、*計算*和*調度*。
+裝置將遙測資料傳送至 Azure 數位 Twins 之後，開發人員可以在四個階段處理資料：*驗證* *、比對、**計算*和*分派*。
 
 [![Azure Digital Twins 資料處理流程](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
@@ -32,7 +32,7 @@ Azure Digital Twins 提供進階計算功能。 開發人員可定義自訂函�
 
 ## <a name="data-processing-objects"></a>資料處理物件
 
-Azure 數位孿生中的資料處理包括定義三個物件：*匹配器*、*使用者定義的函數*和*角色指派*。
+Azure 數位 Twins 中的資料處理包含定義三個物件：*比對器*、*使用者定義的函數*和*角色指派*。
 
 [![Azure Digital Twins 資料處理物件](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
@@ -93,7 +93,7 @@ Azure 數位孿生中的資料處理包括定義三個物件：*匹配器*、*�
 >   - 感應器父空間的 `/spaces/{id}?includes=properties,types,location,timezone`。
 > - 比較不會區分大小寫。
 
-### <a name="user-defined-functions"></a>使用者自訂函數
+### <a name="user-defined-functions"></a>使用者定義的函式
 
 使用者定義函式是可在隔離之 Azure Digital Twins 環境內執行的自訂函式。 使用者定義函式可存取所接收到的原始感應器遙測訊息。 使用者定義函式也可存取空間圖形和發送器服務。 在圖形內註冊使用者定義函式之後，就必須建立比對器 (詳細說明請見[上方](#matchers))，以指定何時要執行 UDF。 例如，當 Azure Digital Twins 從指定的感應器接收新的遙測資料時，相符的使用者定義函式可計算過去數個感應器讀數的移動平均值。
 
@@ -104,7 +104,7 @@ Azure 數位孿生中的資料處理包括定義三個物件：*匹配器*、*�
 - 建立傳入的感應器讀數符合特定條件時所發出的通知。
 - 在傳送通知之前將圖形中繼資料附加至感應器讀數。
 
-有關詳細資訊，請閱讀[如何使用使用者定義的函數](./how-to-user-defined-functions.md)。
+如需詳細資訊，請參閱[如何使用使用者定義的函數](./how-to-user-defined-functions.md)。
 
 #### <a name="examples"></a>範例
 
@@ -114,7 +114,7 @@ Azure 數位孿生中的資料處理包括定義三個物件：*匹配器*、*�
 
 ### <a name="role-assignment"></a>角色指派
 
-使用者定義函式的動作會受限於 Azure Digital Twins 的[角色型存取控制](./security-role-based-access-control.md)，以保護服務內的資料。 角色指派定義哪些使用者定義函式具有與空間圖及其實體互動的適當權限。 例如，使用者定義函式可能具有在給定空間下*建立*、*讀取*、*更新*或*刪除*圖形資料的能力與權限。 當使用者定義函式要求資料的圖形或嘗試執行動作時，系統會檢查使用者定義函式的存取層級。 有關詳細資訊，請閱讀[基於角色的存取控制](./security-create-manage-role-assignments.md)。
+使用者定義函式的動作會受限於 Azure Digital Twins 的[角色型存取控制](./security-role-based-access-control.md)，以保護服務內的資料。 角色指派定義哪些使用者定義函式具有與空間圖及其實體互動的適當權限。 例如，使用者定義函式可能具有在給定空間下*建立*、*讀取*、*更新*或*刪除*圖形資料的能力與權限。 當使用者定義函式要求資料的圖形或嘗試執行動作時，系統會檢查使用者定義函式的存取層級。 如需詳細資訊，請參閱[角色型存取控制](./security-create-manage-role-assignments.md)。
 
 比對器有可能觸發沒有任何角色指派的使用者定義函式。 在此情況下，使用者定義函式無法讀取圖形中的任何資料。
 

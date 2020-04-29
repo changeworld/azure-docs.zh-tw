@@ -1,5 +1,5 @@
 ---
-title: SQL Server 資料庫移轉到單個/池資料庫
+title: SQL Server 資料庫移轉至單一/集區資料庫
 description: 了解將 SQL Server 資料庫移轉至 Azure SQL Database 中單一資料庫或彈性集區的相關做法。
 keywords: database migration,sql server database migration,database migration tools,migrate database,migrate sql database,資料庫移轉,sql server 資料庫移轉,資料庫移轉工具,移轉資料庫,移轉 sql database
 services: sql-database
@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
 ms.openlocfilehash: 9cec91ccc80b9072b1a3da756f26f47eb88b951c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268609"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>將 SQL Server 資料庫移轉至 Azure SQL Database
@@ -84,14 +84,14 @@ ms.locfileid: "79268609"
 
 1. 設定散發套件
    - [使用 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_1)
-   - [使用交易-SQL](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_2)
+   - [使用 Transact-sql](https://msdn.microsoft.com/library/ms151192.aspx#Anchor_2)
 
 2. 建立發佈
    - [使用 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_1)
-   - [使用交易-SQL](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
+   - [使用 Transact-sql](https://msdn.microsoft.com/library/ms151160.aspx#Anchor_2)
 3. 建立訂閱
    - [使用 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_0)
-   - [使用交易-SQL](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
+   - [使用 Transact-sql](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
 
 一些秘訣和移轉至 SQL Database 的差異
 
@@ -108,8 +108,8 @@ ms.locfileid: "79268609"
 
 - [Azure SQL Database 中不支援的 SQL Server 資料庫功能](sql-database-transact-sql-information.md)
 - [SQL Server 2016 中已停止的 Database Engine 功能](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
-- [SQL Server 2014 中已停用的資料庫引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
-- [SQL Server 2012 中已停用的資料庫引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
+- [SQL Server 2014 中已停止的 Database Engine 功能](https://msdn.microsoft.com/library/ms144262%28v=sql.120%29)
+- [SQL Server 2012 中已停止的資料庫引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.110%29)
 - [SQL Server 2008 R2 中已終止的資料庫引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
 - [SQL Server 2005 中已終止的資料庫引擎功能](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
 

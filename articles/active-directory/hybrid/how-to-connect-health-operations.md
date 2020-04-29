@@ -16,10 +16,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ef908429d359020282920d73480a472bfde0aa60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261511"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health 作業
@@ -43,11 +43,11 @@ ms.locfileid: "79261511"
 6. 若要完成變更，請按一下 [儲存]****。 只有在您儲存之後，變更才會生效。
 
 >[!NOTE] 
-> 當我們的後端服務中出現處理同步請求的問題時，此服務會向租戶的管理連絡人電子郵件地址發送包含錯誤詳細資訊的通知電子郵件。 我們聽到客戶的回饋，在某些情況下，這些消息的量是令人望而卻步的，所以我們正在改變發送這些消息的方式。 
+> 當在後端服務中處理同步要求時發生問題時，此服務會將錯誤詳細資料的通知電子郵件傳送至您租使用者的系統管理連絡人電子郵件地址。 我們聽到客戶的意見反應，在某些情況下，這些訊息的數量很大，所以我們會改變傳送這些訊息的方式。 
 >
-> 而不是發送消息，每次發生每個同步錯誤，我們將發送後端服務已返回的所有錯誤的每日摘要。 這使客戶能夠更有效地處理這些錯誤，並減少重複錯誤訊息的數量。
+> 每次發生同步處理錯誤時，我們會傳送後端服務傳回的所有錯誤摘要 這可讓客戶以更有效率的方式處理這些錯誤，並減少重複的錯誤訊息數目。
 >
-> 我們計畫在 2020 年 1 月 15 日實施此更改。
+> 我們計畫在2020年1月15日執行此變更。
 
 ## <a name="delete-a-server-or-service-instance"></a>刪除伺服器或服務執行個體
 
@@ -74,7 +74,7 @@ ms.locfileid: "79261511"
 2. 在 [伺服器]**** 刀鋒視窗中，從動作列中按一下 [刪除]****。
 ![Azure AD Connect Health 刪除伺服器的螢幕擷取畫面](./media/how-to-connect-health-operations/DeleteServer2.png)
 3. 在確認方塊中輸入伺服器名稱以確認。
-4. 按一下 [刪除]****。
+4. 按一下 **[刪除]** 。
 
 Azure AD Connect Health for Azure Active Directory Domain Services：
 
@@ -82,7 +82,7 @@ Azure AD Connect Health for Azure Active Directory Domain Services：
 2. 選取要移除的網域控制站。
 3. 從動作列中，按一下 [刪除已選取項目]****。
 4. 確認刪除伺服器的動作。
-5. 按一下 [刪除]****。
+5. 按一下 **[刪除]** 。
 
 ### <a name="delete-a-service-instance-from-azure-ad-connect-health-service"></a>從 Azure AD Connect Health 服務刪除服務執行個體
 在某些情況下，您可能需要移除服務執行個體。 以下是從 Azure AD Connect Health 服務移除服務執行個體時所需要知道的事項。
@@ -99,7 +99,7 @@ Azure AD Connect Health for Azure Active Directory Domain Services：
 2. 在 [服務]**** 刀鋒視窗上，從動作列中按一下 [刪除]****。 
 ![Azure AD Connect Health 刪除服務的螢幕擷取畫面](./media/how-to-connect-health-operations/DeleteServer.png)
 3. 在確認方塊中輸入服務名稱以確認 (例如：sts.contoso.com)。
-4. 按一下 [刪除]****。
+4. 按一下 **[刪除]** 。
    <br><br>
 
 [//]: # (Start of RBAC section)
@@ -109,7 +109,7 @@ Azure AD Connect Health 的[角色型存取控制 (RBAC)](../../role-based-acces
 ### <a name="roles"></a>角色
 Azure AD Connect Health 支援下列內建角色：
 
-| 角色 | 權限 |
+| [角色] | 權限 |
 | --- | --- |
 | 擁有者 |擁有者可以在 Azure AD Connect Health 內「管理存取」**(例如將角色指派給使用者或群組)、「檢視入口網站中的所有資訊」**(例如檢視警示)，以及「變更設定」**(例如電子郵件通知)。 <br>預設會指派此角色給 Azure AD 全域管理員，而且無法變更。 |
 | 參與者 |參與者可以在 Azure AD Connect Health 內「檢視入口網站中的所有資訊」**(例如檢視警示)，以及「變更設定」**(例如電子郵件通知)。 |
@@ -133,12 +133,12 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>步驟 2：新增使用者和群組及指派角色
 1. 從 [設定]**** 區段中，按一下 [使用者]****。<br>
    ![Azure AD Connect Health 資源提要欄位的螢幕擷取畫面](./media/how-to-connect-health-operations/startRBAC.png)
-2. 選取 [加入]****。
+2. 選取 [新增]  。
 3. 在 [選取角色]**** 窗格中，選取角色 (例如，**擁有者**)。<br>
    ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_add.png)
-4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 **"選擇**"。
+4. 輸入目標使用者或群組的名稱或識別碼。 您可以同時選取一或多個使用者或群組。 按一下 [選取]  。
    ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面](./media/how-to-connect-health-operations/RBAC_select_users.png)
-5. 選取 [確定]****。<br>
+5. 選取 [確定]  。<br>
 6. 完成角色指派之後，使用者和群組就會出現在清單中。<br>
    ![Azure AD Connect Health RBAC [使用者] 視窗的螢幕擷取畫面，其中已醒目提示新使用者](./media/how-to-connect-health-operations/RBAC_user_list.png)
 
@@ -168,9 +168,9 @@ Azure AD Connect Health 支援在兩個層級上管理存取：
 
 ## <a name="next-steps"></a>後續步驟
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
-* [Azure AD 連接運行狀況代理安裝](how-to-connect-health-agent-install.md)
+* [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)
 * [使用 Azure AD Connect Health 搭配 AD FS](how-to-connect-health-adfs.md)
-* [使用 Azure AD 連接運行狀況進行同步](how-to-connect-health-sync.md)
+* [使用 Azure AD Connect Health 進行同步處理](how-to-connect-health-sync.md)
 * [在 AD DS 使用 Azure AD Connect Health](how-to-connect-health-adds.md)
 * [Azure AD Connect Health 常見問題集](reference-connect-health-faq.md)
 * [Azure AD Connect Health 版本記錄](reference-connect-health-version-history.md)

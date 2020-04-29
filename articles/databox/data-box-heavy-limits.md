@@ -1,6 +1,6 @@
 ---
-title: Azure 資料框 重限制 |微軟文檔
-description: 描述 Microsoft Azure 資料盒繁重的元件和連接的系統限制和建議的大小。
+title: Azure Data Box Heavy 限制 |Microsoft Docs
+description: 描述 Microsoft Azure Data Box Heavy 元件和連接的系統限制和建議大小。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 76e543a5bec749db55eb77649d2f6e0526f2cb1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260094"
 ---
-# <a name="azure-data-box-heavy-limits"></a>Azure 資料框 重限制
+# <a name="azure-data-box-heavy-limits"></a>Azure Data Box Heavy 限制
 
-在部署和操作 Azure 資料盒重設備時，請考慮這些限制。 下表描述資料箱的這些限制。
+當您部署和操作 Azure Data Box Heavy 裝置時，請考慮這些限制。 下表描述資料箱的這些限制。
 
 
-## <a name="data-box-heavy-service-limits"></a>資料箱 重服務限制
+## <a name="data-box-heavy-service-limits"></a>Data Box Heavy 服務限制
 
 [!INCLUDE [data-box-service-limits](../../includes/data-box-service-limits.md)]
 
-## <a name="data-box-heavy-limits"></a>資料框 重限制
+## <a name="data-box-heavy-limits"></a>Data Box Heavy 限制
 
-- 資料盒重可以存儲每個節點最多 10 億個檔。
-- 資料盒重支援雲中每個節點最多 512 個容器或共用。 使用者共用中的頂級目錄將成為雲中的容器或 Azure 檔共用。
+- Data Box Heavy 可以儲存每個節點最多1000000000個檔案。
+- Data Box Heavy 在雲端中支援的每個節點最多512個容器或共用。 使用者共用中的最上層目錄會成為雲端中的容器或 Azure 檔案共用。
 
-## <a name="azure-storage-limits"></a>Azure 存儲限制
+## <a name="azure-storage-limits"></a>Azure 儲存體限制
 
 [!INCLUDE [data-box-storage-limits](../../includes/data-box-storage-limits.md)]
 

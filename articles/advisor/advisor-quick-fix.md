@@ -1,44 +1,44 @@
 ---
-title: 顧問建議的快速修復修復
-description: 使用顧問中的快速修復執行批量修復
+title: Advisor 建議的快速修正補救
+description: 在 Advisor 中使用快速修正來執行大量補救
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
 ms.openlocfilehash: 3c3ac27f04aa516fbef1bfff30e3392659b58919
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502486"
 ---
-# <a name="quick-fix-remediation-for-advisor"></a>顧問的快速修復修復
-**快速修復**功能支援對多個資源的建議進行更快、更簡單的補救方法。 它提供資源批量修復的功能，並説明您通過大規模資源修復更快地優化訂閱。
-此功能僅可用於某些建議，可通過 Azure 門戶。
+# <a name="quick-fix-remediation-for-advisor"></a>Advisor 的快速修正補救
+**快速修正**可讓您更快速且更輕鬆地進行補救，以取得多項資源的建議。 它提供了大量補救資源的功能，並可協助您透過大規模的補救措施，更快地將訂閱優化。
+此功能僅適用于透過 Azure 入口網站的特定建議。
 
 
-## <a name="steps-to-use-quick-fix"></a>使用"快速修復"的步驟
+## <a name="steps-to-use-quick-fix"></a>使用「快速修正」的步驟
 
-1. 從具有 **"快速修復"** 標籤的建議清單中，按一下建議。
+1. 從具有 [**快速修正**] 標籤的建議清單中，按一下 [建議]。
 
-   ![顧問快速修復](./media/quick-fix-1.png)
+   ![Advisor 快速修正](./media/quick-fix-1.png)
    
-   *圖像中的價格僅供參考*
+   *映射中的價格僅供範例之用*
 
-2. 在"建議詳細資訊"頁上，您將看到具有此建議的資源清單。 選擇要為建議進行補救的所有資源。
+2. 在 [建議詳細資料] 頁面上，您會看到您有這項建議的資源清單。 選取您想要補救的所有資源以取得建議。
 
-   ![顧問快速修復](./media/quick-fix-2.png)
+   ![Advisor 快速修正](./media/quick-fix-2.png)
    
-   *圖像中的價格僅供參考*
+   *映射中的價格僅供範例之用*
 
-3. 選擇資源後，按一下 **"快速修復"** 按鈕進行批量修復。
+3. 選取資源之後，請按一下 [**快速修正**] 按鈕以進行大量補救。
 
    > [!NOTE]
-   > 某些列出的資源可能會被禁用，因為您沒有修改它們的適當許可權。
+   > 部分列出的資源可能已停用，因為您沒有適當的許可權可修改它們。
    
    > [!NOTE]
-   > 如果存在其他影響，除了 Advisor 中提到的好處外，還將在體驗中通知您，以説明您做出明智的補救決策。
+   > 如果有其他含意，除了 Advisor 中所述的權益以外，您也會在經驗中傳達，以協助您採取明智的補救決策。
    
-4. 您將收到有關修復完成的通知。 如果資源清單視圖中存在未修復的資源和資源處於所選模式，則會看到錯誤。  
+4. 您會收到補救完成的通知。 如果有資源未補救，而且資源清單視圖中的資源處於選取模式，您將會看到錯誤。  
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -49,5 +49,5 @@ ms.locfileid: "79502486"
 * [Advisor 成本建議](advisor-cost-recommendations.md)
 * [建議程式效能建議](advisor-performance-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)
-* [顧問卓越運營建議](advisor-operational-excellence-recommendations.md)
-* [顧問 REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)
+* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)

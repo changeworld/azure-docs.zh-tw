@@ -15,14 +15,14 @@ ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: twooley
 ms.openlocfilehash: f09d4dd46a50f1794e51342a939b8919c5c523ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254647"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>使用 StorSimple Snapshot Manager 來檢視和管理磁碟區
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您可以使用 StorSimple Snapshot Manager 的 [磁碟區]**** 節點 (在 [範圍]**** 窗格上)，選取磁碟區並檢視其相關資訊。 磁碟區會呈現為對應至主機所掛接磁碟區的磁碟機。 [磁碟區] **** 節點會顯示 StorSimple 所支援的本機磁碟區和磁碟區類型，包括透過使用 iSCSI 及裝置探索到的磁碟區。 
 
 如需支援之磁碟區的詳細資訊，請移至《 [支援多個磁碟區類型](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types)》。
@@ -87,7 +87,7 @@ ms.locfileid: "79254647"
 
 #### <a name="to-view-volume-information"></a>若要檢視磁碟區資訊
 1. 按一下桌面圖示，以啟動 StorSimple Snapshot Manager。 
-2. 在 [領域]**** 窗格中，按一下 [磁碟區]**** 節點。 本機與掛接的磁碟區 (包括所有的 Azure StorSimple 磁碟區) 的清單會出現在 [結果]**** 窗格中。 **"結果"** 窗格中的列是可配置的。 （按右鍵 **"卷"** 節點，選擇 **"查看**"，然後選擇 **"添加/刪除列**"。
+2. 在 [領域]**** 窗格中，按一下 [磁碟區]**** 節點。 本機與掛接的磁碟區 (包括所有的 Azure StorSimple 磁碟區) 的清單會出現在 [結果]**** 窗格中。 [**結果**] 窗格中的資料行是可設定的。 （以滑鼠右鍵按一下 [**磁片**區] 節點，選取 [ **View**]，然後選取 [**新增/移除資料行**]。）
    
     ![設定資料行](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
@@ -102,7 +102,7 @@ ms.locfileid: "79254647"
 請使用下列程序，從 StorSimple Snapshot Manager 中刪除磁碟區。
 
 > [!NOTE]
-> 如果磁碟區是任何磁碟區群組的一部分，則無法刪除。 （刪除選項不適用於卷組成員的卷。必須刪除整個卷組才能刪除該卷。
+> 如果磁碟區是任何磁碟區群組的一部分，則無法刪除。 （如果磁片區是磁片區群組的成員，則無法使用 [刪除] 選項）。您必須刪除整個磁片區群組，才能刪除磁片區。
 
 #### <a name="to-delete-a-volume"></a>若要刪除磁碟區
 1. 按一下桌面圖示，以啟動 StorSimple Snapshot Manager。
@@ -130,11 +130,11 @@ ms.locfileid: "79254647"
 ## <a name="configure-and-back-up-a-basic-volume"></a>設定和備份基本磁碟區
 請使用下列程序，來設定基本磁碟區的備份，然後立即啟動備份，或建立一個原則進行排程的備份。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 開始之前：
 
 * 確定已正確設定 StorSimple 裝置和主機電腦。 如需詳細資訊，請移至 [部署內部部署 StorSimple 裝置](storsimple-deployment-walkthrough-u2.md)。
-* 安裝和設定 StorSimple Snapshot Manager。 有關詳細資訊，請訪問[部署 StorSimple 快照管理器](storsimple-snapshot-manager-deployment.md)。
+* 安裝和設定 StorSimple Snapshot Manager。 如需詳細資訊，請移至[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
 
 #### <a name="to-configure-backup-of-a-basic-volume"></a>若要設定基本磁碟區的備份
 1. 在 StorSimple 裝置上建立基本磁碟區。
@@ -149,7 +149,7 @@ ms.locfileid: "79254647"
 8. 以滑鼠右鍵按一下磁碟區群組名稱。
    
    * 若要啟動互動式 (隨選) 備份工作，請按一下 [取得備份]****。 
-   * 若要排定自動備份，請按一下 [建立備份原則]****。 在 [一般]**** 頁面上，從清單中選取磁碟區群組。 在 [排程]**** 頁面上，輸入排程詳細資料。 完成後，按一下 [確定]****。 
+   * 若要排定自動備份，請按一下 [建立備份原則]****。 在 [一般]**** 頁面上，從清單中選取磁碟區群組。 在 [排程]**** 頁面上，輸入排程詳細資料。 完成時，請按一下 [確定]  。 
 9. 若要確認備份工作已開始，請展開 [領域]**** 窗格中的 [工作]**** 節點，然後按一下 [執行中]**** 節點。 目前執行中工作的清單會出現在 [結果]**** 窗格中。 
 
 ## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>設定和備份動態鏡像磁碟區
@@ -158,11 +158,11 @@ ms.locfileid: "79254647"
 * 步驟 1：使用 [磁碟管理] 來建立動態鏡像磁碟區。 
 * 步驟 2：使用 StorSimple Snapshot Manager 來設定備份。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 開始之前：
 
 * 確定已正確設定 StorSimple 裝置和主機電腦。 如需詳細資訊，請移至 [部署內部部署 StorSimple 裝置](storsimple-8000-deployment-walkthrough-u2.md)。
-* 安裝和設定 StorSimple Snapshot Manager。 有關詳細資訊，請訪問[部署 StorSimple 快照管理器](storsimple-snapshot-manager-deployment.md)。
+* 安裝和設定 StorSimple Snapshot Manager。 如需詳細資訊，請移至[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
 * 在 StorSimple 裝置上設定兩個磁碟區。 (在範例中，可用磁碟區為 [磁碟 1]**** 及 [磁碟 2]****)。 
 
 ### <a name="step-1-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>步驟 1：使用 [磁碟管理] 來建立動態鏡像磁碟區
@@ -183,7 +183,7 @@ ms.locfileid: "79254647"
 6. 在 [指派磁碟機代號或路徑]**** 頁面上，接受預設值，然後按一下 [下一步]****。 
 7. 在 [格式化磁碟區]**** 頁面的 [配置單位大小]**** 方塊中，選取 [64K]****。 選取 [執行快速格式化]**** 核取方塊，然後按 [下一步]****。 
 8. 在 [完成新增鏡像磁碟區]**** 頁面上，檢閱您的設定，然後按一下 [完成]****。 
-9. 訊息會出現，以指出基本磁碟將會轉換成動態磁碟。 按一下 [是]****。
+9. 訊息會出現，以指出基本磁碟將會轉換成動態磁碟。 按一下 [是]  。
    
     ![動態磁碟轉換訊息](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
 10. 在磁碟管理中，確認磁碟區 1 與磁碟區 2 顯示為動態鏡像磁碟區。 (狀態欄中應該會顯示 [動態]****，容量條顏色應變為紅色表示鏡像磁碟區。) 
@@ -198,11 +198,11 @@ ms.locfileid: "79254647"
 2. 在 [領域]**** 窗格中，於 [磁碟區]**** 節點上按一下滑鼠右鍵，然後選取 [重新掃描磁碟區]****。 當掃描完成時，磁碟區清單應該出現在 [結果]**** 窗格中。 動態鏡像磁碟區會列為單一磁碟區。 
 3. 在 [結果]**** 窗格中，於動態鏡像磁碟區上按一下滑鼠右鍵，然後按一下 [建立磁碟區群組]****。 
 4. 在 [建立磁碟區群組]**** 對話方塊中，輸入磁碟區群組的名稱、將動態鏡像磁碟區指派給這個群組，然後按一下 [確定]****。 
-5. 在 [領域]**** 窗格中，展開 [磁碟區群組]**** 節點。 新的卷組應出現在 **"卷組**"節點下。 
+5. 在 [領域]**** 窗格中，展開 [磁碟區群組]**** 節點。 新的磁片區群組應該會出現在 [**磁片區群組**] 節點底下。 
 6. 以滑鼠右鍵按一下磁碟區群組名稱。 
    
    * 若要啟動互動式 (隨選) 備份工作，請按一下 [取得備份]****。 
-   * 若要排定自動備份，請按一下 [建立備份原則]****。 在 [一般]**** 頁面上，從清單中選取磁碟區群組。 在 [排程]**** 頁面上，輸入排程詳細資料。 完成後，按一下 [確定]****。 
+   * 若要排定自動備份，請按一下 [建立備份原則]****。 在 [一般]**** 頁面上，從清單中選取磁碟區群組。 在 [排程]**** 頁面上，輸入排程詳細資料。 完成時，請按一下 [確定]  。 
 7. 您可以在備份作業執行時加以監視。 在 [領域]**** 窗格中，展開 [工作]**** 節點，然後按一下 [執行中]****。工作詳細資料會出現在 [結果]**** 窗格中。 備份作業完成時，詳細資料會傳輸至 [過去 24 小時]**** 作業清單。 
 
 ## <a name="next-steps"></a>後續步驟

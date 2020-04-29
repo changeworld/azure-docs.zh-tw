@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268297"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>使用 Azure 匯入/匯出服務將資料匯入 Azure 檔案服務
@@ -21,7 +21,7 @@ ms.locfileid: "79268297"
 
 匯入/匯出服務僅支援將 Azure 檔案服務匯入到 Azure 儲存體。 不支援將 Azure 檔案服務匯出。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在建立匯入作業來將資料傳入 Azure 檔案服務之前，請仔細檢閱並完成下列必要條件清單。 您必須：
 
@@ -30,7 +30,7 @@ ms.locfileid: "79268297"
 - 具有屬於[支援類型](storage-import-export-requirements.md#supported-disks)的磁碟，且數量足夠。
 - 具有執行[受支援 OS 版本](storage-import-export-requirements.md#supported-operating-systems) 的 Windows 系統。
 - 請在 Windows 系統上[下載 WAImportExport 第 2 版](https://aka.ms/waiev2)。 將檔案解壓縮至預設資料夾 `waimportexport`。 例如： `C:\WaImportExport` 。
-- 擁有 FedEx/DHL 帳戶。 如果要使用 FedEx/DHL 以外的運營商，請在 上`adbops@microsoft.com`與 Azure 資料框操作團隊聯繫。  
+- 擁有 FedEx/DHL 帳戶。 如果您想要使用 FedEx/DHL 以外的貨運公司，請聯絡 Azure 資料箱營運小組`adbops@microsoft.com`，網址為。  
     - 帳戶必須是有效的、需要有餘額，且必須有退貨運送功能。
     - 產生匯出作業的追蹤號碼。
     - 每個作業都應該具有個別的追蹤號碼。 不支援多個作業使用相同的追蹤號碼。
@@ -50,7 +50,7 @@ ms.locfileid: "79268297"
 2. 在每個磁碟機上建立單一 NTFS 磁碟區。 指派磁碟機代號給磁碟區。 請勿使用掛接點。
 3. 在工具所在的根資料夾中，修改 dataset.csv** 檔案。 根據您要匯入的是檔案、資料夾或兩者，將項目加入 dataset.csv** 檔案，類似下列範例。  
 
-   - **要導入檔**：在下面的示例中，要複製的資料駐留在 F： 磁碟機中。 您的檔案 MyFile1.txt** 會複製到 MyAzureFileshare1** 的根目錄。 如果 MyAzureFileshare1** 不存在，則會建立在 Azure 儲存體帳戶中。 資料夾結構會保留。
+   - **若要匯入**檔案：在下列範例中，要複製的資料位於 F：磁片磁碟機中。 您的檔案 MyFile1.txt** 會複製到 MyAzureFileshare1** 的根目錄。 如果 MyAzureFileshare1** 不存在，則會建立在 Azure 儲存體帳戶中。 資料夾結構會保留。
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
@@ -120,7 +120,7 @@ ms.locfileid: "79268297"
 
     ![移至匯入/匯出](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. 按一下"**創建導入/匯出作業**"。
+3. 按一下 [**建立匯入/匯出作業**]。
 
     ![按一下 [匯入/匯出作業]](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
@@ -145,7 +145,7 @@ ms.locfileid: "79268297"
 
 4. 在 [寄返資訊]**** 中：
 
-    - 從下拉式清單中選取貨運公司。 如果要使用聯邦快遞/DHL 以外的運營商，請從下拉清單中選擇現有選項。 請與 Azure 資料框`adbops@microsoft.com`操作團隊聯繫，瞭解有關計畫使用的運營商的資訊。
+    - 從下拉式清單中選取貨運公司。 如果您想要使用 FedEx/DHL 以外的貨運公司，請從下拉式清單中選擇現有的選項。 請聯絡 Azure 資料箱營運小組`adbops@microsoft.com` ，其中包含您打算使用之電訊廠商的相關資訊。
     - 輸入您在該貨運公司中建立的有效貨運帳戶號碼。 當匯入作業完成時，Microsoft 會透過此帳戶將磁碟機寄還給您。
     - 提供完整且有效的連絡人名稱、電話、電子郵件、街道地址、城市、郵遞區號、州/省和國家/地區。
 

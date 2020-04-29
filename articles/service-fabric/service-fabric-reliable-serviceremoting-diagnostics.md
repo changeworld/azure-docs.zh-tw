@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282272"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting 的診斷和效能監視
@@ -19,7 +19,7 @@ Reliable ServiceRemoting 執行階段會發出[效能計數器](https://msdn.mic
 ## <a name="performance-counters"></a>效能計數器
 Reliable ServiceRemoting 執行階段定義下列效能計數器類別：
 
-| 類別 | 描述 |
+| 類別 | 說明 |
 | --- | --- |
 | Service Fabric Service |Azure Service Fabric Service Remoting 的特定計數器，例如處理要求所花費的平均時間 |
 | Service Fabric Service Method |Service Fabric Remoting Service 所實作方法特定的計數器，例如叫用服務方法的頻率 |
@@ -36,7 +36,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabric分區 ID*是效能計數器實例關聯的服務結構分區 ID 的字串表示形式。 分區 ID 是 GUID，其字串表示形式通過格式指定[`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx)器"D"的方法生成。
+*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過具有格式規範[`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" 的方法所產生。
 
 *ServiceReplicaOrInstanceId* 是與效能計數器執行個體相關聯之 Service Fabric 複本/執行個體識別碼的字串表示法。
 
@@ -57,7 +57,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 
 *ServiceRuntimeMethodId* 是 Fabric Service 執行階段所產生 32 位元整數的字串表示法，供內部使用。 這包含在效能計數器執行個體名稱中，以確保其唯一性，並避免與其他效能計數器執行個體名稱衝突。 使用者不應該嘗試解譯效能計數器執行個體名稱的這個部分。
 
-*ServiceFabric分區 ID*是效能計數器實例關聯的服務結構分區 ID 的字串表示形式。 分區 ID 是 GUID，其字串表示形式通過格式指定[`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx)器"D"的方法生成。
+*ServiceFabricPartitionID*是與效能計數器實例相關聯之 Service Fabric 分割區識別碼的字串表示。 資料分割識別碼是 GUID，其字串標記法是透過具有格式規範[`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) "D" 的方法所產生。
 
 *ServiceReplicaOrInstanceId* 是與效能計數器執行個體相關聯之 Service Fabric 複本/執行個體識別碼的字串表示法。
 
@@ -74,7 +74,7 @@ Windows 作業系統中預設可用的 [Windows 效能監視器](https://technet
 
 Reliable Service 執行階段會發佈與執行服務方法相關的下列效能計數器。
 
-| 類別目錄名稱 | 計數器名稱 | 描述 |
+| 類別目錄名稱 | 計數器名稱 | 說明 |
 | --- | --- | --- |
 | Service Fabric Service Method |叫用數目/秒 |每秒叫用服務方法的次數 |
 | Service Fabric Service Method |每個叫用的平均毫秒數 |執行服務方法花費的時間 (單位為毫秒) |
@@ -83,7 +83,7 @@ Reliable Service 執行階段會發佈與執行服務方法相關的下列效能
 ### <a name="service-request-processing-performance-counters"></a>服務要求處理效能計數器
 當用戶端透過服務 Proxy 物件叫用方法時，會造成要求訊息透過網路傳送至遠端服務。 服務會處理要求訊息，並傳送回應給用戶端。 Reliable ServiceRemoting 執行階段會發佈下列與服務要求處理相關的效能計數器。
 
-| 類別目錄名稱 | 計數器名稱 | 描述 |
+| 類別目錄名稱 | 計數器名稱 | 說明 |
 | --- | --- | --- |
 | Service Fabric Service |# of outstanding requests |服務中正在處理的要求數目 |
 | Service Fabric Service |每個要求的平均毫秒數 |服務處理要求所花費的時間 (單位為毫秒) |
@@ -91,5 +91,5 @@ Reliable Service 執行階段會發佈與執行服務方法相關的下列效能
 | Service Fabric Service |要求序列化的平均毫秒數 |在回應傳送至用戶端之前，序列化服務回應訊息所花費的時間 (單位為毫秒) |
 
 ## <a name="next-steps"></a>後續步驟
-* [示例代碼](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
+* [範例程式碼](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [PerfView 中的 EventSource 提供者](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

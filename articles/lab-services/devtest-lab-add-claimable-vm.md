@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 開發人員測試實驗室中創建和管理可索賠 VM |微軟文檔
+title: 在 Azure DevTest Labs 中建立和管理可宣告 Vm |Microsoft Docs
 description: 了解如何在 Azure DevTest Labs 中對實驗室新增可宣告的虛擬機器
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270793"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中建立和管理可認領 VM
 您可以從[自訂映像](devtest-lab-create-template.md)、[公式](devtest-lab-manage-formulas.md)或 [Marketplace 映像](devtest-lab-configure-marketplace-images.md)等「基底」**，使用和[新增標準 VM](devtest-lab-add-vm.md) 相似的方法將可宣告 VM 新增至實驗室。 本教學課程會逐步引導您使用 Azure 入口網站，新增可認領 VM 至 DevTest Labs 中的實驗室，並為使用者示範認領與取消認領 VM 的流程。
 
 ## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>將可宣告 VM 新增至 Azure DevTest Labs 中實驗室的步驟
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 選取 [所有服務]****，然後選取 [DEVOPS]**** 區段中的 [DevTest Labs]****。 如果您選取 [DEVOPS]**** 區段中 [DevTest Labs]**** 旁邊的 * (星號)， 此動作會將 [DevTest Labs]**** 新增到左側導覽功能表，以便您下次輕鬆存取。 然後，您便可以選取左側導覽功能表上的 [DevTest Labs]****。
 
     ![所有服務 - 選取 DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
@@ -72,7 +72,7 @@ ms.locfileid: "79270793"
   ![要求任何可宣告 VM。](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
-使用者聲明 VM 後，DevTest Labs 將啟動電腦並將其移動到實驗室使用者的"我的虛擬機器"清單中。 這意味著實驗室使用者現在將在此電腦上具有擁有者許可權。 此步驟所需的時間可能因啟動時間以及索賠事件期間執行的任何其他自訂操作而異。 一旦索賠，機器不再在可索賠池中可用。  
+在使用者宣告 VM 之後，DevTest Labs 會啟動電腦，並將其移至實驗室使用者的「我的虛擬機器」清單。 這表示實驗室使用者現在會擁有這部電腦的擁有者許可權。 此步驟所需的時間可能會根據啟動時間以及在宣告事件期間執行的任何其他自訂動作而有所不同。 一旦宣告後，電腦就無法再于可宣告集區中使用。  
 
 ## <a name="unclaim-a-vm"></a>取消認領 VM
 
@@ -86,7 +86,7 @@ ms.locfileid: "79270793"
 
   ![在 VM 的管理窗格上取消認領 VM。](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
 
-當使用者取消聲明 VM 時，他們不再擁有該特定實驗室 VM 的擁有者許可權，並且可在將 VM 重新保留到池的狀態下的任何其他實驗室使用者聲明該 VM。 
+當使用者 unclaims VM 時，他們不再具有該特定實驗室 VM 的擁有者許可權，且可供任何其他實驗室使用者在其 retured 至集區的狀態下宣告。 
 
 ### <a name="transferring-the-data-disk"></a>傳送資料磁碟
 若可認領 VM 有附加資料磁碟，而使用者取消認領該 VM，資料磁碟會與該 VM 一同保留。 若有另一位使用者認領該 VM，則該名新使用者會連同 VM 一併認領資料磁碟。
@@ -99,4 +99,4 @@ ms.locfileid: "79270793"
 
 ## <a name="next-steps"></a>後續步驟
 * 建立完成後，您可選取其管理窗格上的 [連線]**** 來重新連線至 VM。
-* 流覽[開發人員測試實驗室 Azure 資源管理器快速入門範本庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 探索[DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dech
 ms.openlocfilehash: 57ba647ade45928f03cd7fb2b037642d5e4d52cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79096810"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>使用 Azure Cosmos 總管處理資料 
@@ -25,7 +25,7 @@ Azure Cosmos DB 總管是一個獨立的 Web 介面，可讓您檢視和管理 A
 
 ## <a name="access-azure-cosmos-db-explorer"></a>存取 Azure Cosmos DB 總管
 
-1. 登錄到[Azure 門戶](https://portal.azure.com/)。 
+1. 登入[Azure 入口網站](https://portal.azure.com/)。 
 
 2. 從 [所有資源]**** 中，尋找並瀏覽至您的 Azure Cosmos DB 帳戶、選取 [金鑰]，然後複製 [主要連接字串]****。  
 
@@ -47,7 +47,7 @@ Azure Cosmos DB 總管是一個獨立的 Web 介面，可讓您檢視和管理 A
 
 Azure Cosmos DB Gremlin 和資料表 API 帳戶目前尚未支援可讓您暫時共用讀寫或讀取存取權的**開啟全螢幕**體驗。 您仍然可以藉由將連接字串傳遞至 Azure Cosmos DB 總管，來檢視您的 Gremlin 和資料表 API 帳戶。 
 
-目前，資料資源管理器中不支援查看包含 UUID 的文檔。 這不會影響載入集合，僅查看包含這些文檔的各個文檔或查詢。 要查看和管理這些文檔，使用者應繼續使用最初用於創建這些文檔的工具。
+目前不支援在資料總管中，建立包含 UUID 的檔。 這不會影響載入集合，只會查看包含這些檔的個別檔或查詢。 若要查看和管理這些檔，使用者應該繼續使用原先用來建立這些檔的工具。
 
 ## <a name="next-steps"></a>後續步驟
 既然您已了解如何開始使用 Azure Cosmos DB 總管來管理資料，接著您可以：

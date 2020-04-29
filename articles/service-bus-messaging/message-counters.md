@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排 - 訊息計數
-description: 使用 Azure 資源管理器和 Azure 服務總線命名空間管理器 API 檢索佇列和訂閱中持有的郵件計數。
+title: Azure 服務匯流排訊息計數
+description: 使用 Azure Resource Manager 和 Azure 服務匯流排 NamespaceManager Api，抓取佇列和訂用帳戶中保留的訊息計數。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/08/2020
 ms.author: aschhab
 ms.openlocfilehash: 8020b12ca892fbf7dec6fed6259526d958fb110f
-ms.sourcegitcommit: df8b2c04ae4fc466b9875c7a2520da14beace222
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80891759"
 ---
 # <a name="message-counters"></a>訊息計數器
@@ -45,9 +45,9 @@ ms.locfileid: "80891759"
 如果應用程式想要依據佇列長度調整資源，它應該採用循序漸進的方式來進行。 取得訊息計數是在訊息代理程式中是項昂貴的作業，頻繁執行會直接對實體效能造成不良影響。
 
 > [!NOTE]
-> 發送到服務總線主題的消息將轉發到該主題的訂閱。 因此,主題本身的活動消息計數為 0,因為這些消息已成功轉發到訂閱。 獲取訂閱中的消息計數,並驗證其大於 0。 即使您在訂閱中看到消息,它們實際上也存儲在主題擁有的存儲中。 
+> 傳送至服務匯流排主題的訊息會轉送至該主題的訂用帳戶。 因此，主題本身的作用中訊息計數為0，因為這些訊息已成功轉送到訂用帳戶。 取得訂用帳戶的訊息計數，並確認其大於0。 雖然您會在訂用帳戶中看到訊息，但它們實際上是儲存在主題所擁有的儲存體中。 
 
-如果查看訂閱,則它們將具有非零消息計數(這整個實體的存儲空間加起來為 323MB)。
+如果您查看訂用帳戶，則會有非零的訊息計數（這會為整個實體新增最多323MB 的空間）。
 
 ## <a name="next-steps"></a>後續步驟
 

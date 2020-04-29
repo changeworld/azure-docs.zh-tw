@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267959"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>為 StorSimple 裝置設定 CHAP
@@ -59,7 +59,7 @@ CHAP 代表 Challenge Handshake 驗證通訊協定。 它是伺服器用來驗�
    3. 確認密碼。
 
        ![CHAP 啟動器](./media/storsimple-8000-configure-chap/configure-chap6.png)
-3. 按一下 [儲存]****。 隨即顯示確認訊息。 按一下 [確定]**** 儲存變更。
+3. 按一下 **[儲存]** 。 隨即顯示確認訊息。 按一下 [確定]**** 儲存變更。
 
 #### <a name="to-configure-one-way-authentication-on-the-windows-host-server"></a>在 Windows 主機伺服器上設定單向驗證
 1. 在 Windows 主機伺服器上啟動 iSCSI 啟動器。
@@ -80,7 +80,7 @@ CHAP 代表 Challenge Handshake 驗證通訊協定。 它是伺服器用來驗�
    1. 選取 [啟用 CHAP 登入]**** 核取方塊。
    2. 在 [名稱]**** 欄位中，提供您在 Azure 入口網站中指定給 CHAP 啟動器的使用者名稱。
    3. 在 [目標密碼]**** 欄位中，提供您在 Azure 入口網站中指定給 CHAP 啟動器的密碼。
-   4. 按一下 [確定]****。
+   4. 按一下 [確定]  。
       
        ![進階設定 - 一般](./media/storsimple-configure-chap/IC740946.png)
 5. 在 [iSCSI 啟動器屬性]**** 視窗的 [目標]**** 索引標籤上，裝置狀態應該會顯示為 [已連線]****。 如果您使用 StorSimple 1200 裝置，則每個磁碟區會掛接為 iSCSI 目標。 因此，需要對每個磁碟區重複執行步驟 3-4。
@@ -113,7 +113,7 @@ CHAP 代表 Challenge Handshake 驗證通訊協定。 它是伺服器用來驗�
    3. 確認密碼。
 
        ![CHAP 啟動器](./media/storsimple-8000-configure-chap/configure-chap11.png)
-4. 按一下 [儲存]****。 隨即顯示確認訊息。 按一下 [確定]**** 儲存變更。
+4. 按一下 **[儲存]** 。 隨即顯示確認訊息。 按一下 [確定]**** 儲存變更。
 
 #### <a name="to-configure-bidirectional-authentication-on-the-windows-host-server"></a>在 Windows 主機伺服器上設定雙向驗證
 
@@ -123,11 +123,11 @@ CHAP 代表 Challenge Handshake 驗證通訊協定。 它是伺服器用來驗�
 4. 在 [iSCSI 啟動器相互 CHAP 密碼]**** 對話方塊中：
    
    1. 輸入您在 Azure 入口網站中設定的 [反向 CHAP 密碼]****。
-   2. 按一下 [確定]****。
+   2. 按一下 [確定]  。
       
        ![iSCSI 啟動器相互 CHAP 密碼](./media/storsimple-configure-chap/IC740949.png)
 5. 按一下 [目標]**** 索引標籤。
-6. 按一下 [連接]**** 按鈕。 
+6. 按一下 [連線]  按鈕。 
 7. 在 [連接到目標]**** 對話方塊中，按一下 [進階]****。
 8. 在 [進階屬性]**** 對話方塊中：
    

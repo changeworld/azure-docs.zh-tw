@@ -1,6 +1,6 @@
 ---
 title: 網路架構 v1
-description: 應用服務環境網路拓撲的體系結構概述。 此文檔僅提供給使用舊版 v1 ASE 的客戶。
+description: App Service 環境網路拓撲的架構總覽。 本檔僅為使用舊版 v1 ASE 的客戶提供。
 author: stefsch
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243844"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>App Service 環境的網路架構概觀

@@ -1,6 +1,6 @@
 ---
-title: 管理 Azure 資料框，通過 Azure 門戶重的 Azure 資料框 |微軟文檔
-description: 介紹如何使用 Azure 門戶管理 Azure 資料框和 Azure 資料框重。
+title: 透過 Azure 入口網站來管理 Azure 資料箱、Azure Data Box Heavy |Microsoft Docs
+description: 描述如何使用 Azure 入口網站來管理您的 Azure 資料箱和 Azure Data Box Heavy。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 08/07/2019
 ms.author: alkohli
 ms.openlocfilehash: 581f95bd813445d2cc9bd83d91917ea83f0bf04f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259990"
 ---
-# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>使用 Azure 門戶管理 Azure 資料框和 Azure 資料框重
+# <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>使用 Azure 入口網站來管理您的 Azure 資料箱和 Azure Data Box Heavy
 
-本文適用于 Azure 資料框和 Azure 資料框重。 本文介紹了可在 Azure 資料盒設備上執行的一些複雜的工作流和管理工作。 您可以通過 Azure 門戶或通過本地 Web UI 管理資料框設備。
+本文適用于 Azure 資料箱和 Azure Data Box Heavy。 本文說明一些可在 Azure 資料箱裝置上執行的複雜工作流程和管理工作。 您可以透過 Azure 入口網站或透過本機 web UI 來管理資料箱裝置。
 
-本文著重於可使用 Azure 入口網站執行的工作。 使用 Azure 門戶管理訂單、管理資料框設備，並在訂單繼續完成時跟蹤訂單的狀態。
+本文著重於可使用 Azure 入口網站執行的工作。 使用 Azure 入口網站來管理訂單、管理資料箱裝置，並在訂單完成時追蹤其狀態。
 
 
 ## <a name="cancel-an-order"></a>取消訂單
 
-在下過訂單之後，您可能基於各種原因需要取消訂單。 您只能在系統處理訂單之前取消訂單。 處理訂單並準備好資料盒設備後，無法取消訂單。
+在下過訂單之後，您可能基於各種原因需要取消訂單。 您只能在系統處理訂單之前取消訂單。 處理訂單並備妥資料箱裝置之後，就無法取消訂單。
 
 執行下列步驟以取消訂單。
 
@@ -40,7 +40,7 @@ ms.locfileid: "79259990"
 
 ## <a name="clone-an-order"></a>複製訂單
 
-在某些情況下，複製會很有用。 例如，某個使用者已使用資料箱來傳送一些資料。 隨著生成更多資料，需要另一個資料盒設備將資料傳輸到 Azure 中。 在此情況下，只需複製相同的訂單即可。
+在某些情況下，複製會很有用。 例如，某個使用者已使用資料箱來傳送一些資料。 當產生更多資料時，需要另一個資料箱裝置將該資料傳送至 Azure。 在此情況下，只需複製相同的訂單即可。
 
 請執行下列步驟來複製訂單。
 
@@ -48,7 +48,7 @@ ms.locfileid: "79259990"
 
     ![複製訂單 1](media/data-box-portal-admin/clone-order1.png)
 
-2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」**。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 **[建立]**。
+2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」**。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 [建立]  。
 
 會在幾分鐘內建立複製，且入口網站更新會顯示新的訂單。
 
@@ -59,17 +59,17 @@ ms.locfileid: "79259990"
 
 您只能將已完成或已取消的訂單刪除。 執行下列步驟來刪除訂單。
 
-1. 轉到**所有資源**。 搜尋您的訂單。
+1. 移至 [**所有資源**]。 搜尋您的訂單。
 
 2. 按一下您想要刪除的訂單，並移至 [概觀]****。 從命令列按一下 [刪除]****。
 
     ![刪除資料箱訂單 1](media/data-box-portal-admin/delete-order1.png)
 
-3. 當系統提示時，請輸入訂單的名稱來確認訂單刪除。 按一下 [刪除]****。
+3. 當系統提示時，請輸入訂單的名稱來確認訂單刪除。 按一下 **[刪除]** 。
 
 ## <a name="download-shipping-label"></a>下載出貨標籤
 
-如果您資料箱的電子墨水顯示器無法正常運作且無法顯示寄回出貨標籤，您可能需要下載出貨標籤。 資料盒"重"上沒有電子墨水顯示，因此此工作流不適用於資料盒重。
+如果您資料箱的電子墨水顯示器無法正常運作且無法顯示寄回出貨標籤，您可能需要下載出貨標籤。 Data Box Heavy 上不會顯示電子筆跡，因此此工作流程不適用於 Data Box Heavy。
 
 執行下列步驟，以下載出貨標籤。
 
@@ -77,7 +77,7 @@ ms.locfileid: "79259990"
 
     ![下載出貨標籤](media/data-box-portal-admin/download-shipping-label.png)
 
-2.  這會下載下列退貨標籤。 保存標籤並列印出來。折疊標籤並將其插入設備上的透明套筒中。 請確保標籤清楚可見。 將裝置上來自先前運送的貼紙全數移除。
+2.  這會下載下列退貨標籤。 儲存標籤並將它列印出來。將標籤折迭並插入裝置上的 clear 封套。 請確保標籤清楚可見。 將裝置上來自先前運送的貼紙全數移除。
 
     ![範例出貨標籤](media/data-box-portal-admin/example-shipping-label.png)
 
@@ -120,10 +120,10 @@ ms.locfileid: "79259990"
 
     ![下載訂單記錄](media/data-box-portal-admin/download-order-history-1.png)
 
-2. 按一下 [下載訂單記錄]****。 在下載的記錄中，您會看到貨運公司追蹤記錄的記錄。 資料框重上的兩個節點將有兩組日誌。 如果您捲動到此記錄的底部，將可看到下列項目的連結：
+2. 按一下 [下載訂單記錄]****。 在下載的記錄中，您會看到貨運公司追蹤記錄的記錄。 Data Box Heavy 上會有兩組對應到兩個節點的記錄。 如果您捲動到此記錄的底部，將可看到下列項目的連結：
     
    - **複製記錄** - 包含將資料從資料箱複製到您的 Azure 儲存體帳戶時，因錯誤而遭排除的檔案清單。
-   - **稽核記錄**- 包含有關如何在資料框位於 Azure 資料中心之外時打開和訪問資料框中的共用的資訊。
+   - **Audit logs** -包含有關如何在 Azure 資料中心外開啟和存取資料箱上之共用的資訊。
    - **BOM 檔案** - 包含您在**準備寄送**期間可下載的檔案清單 (也稱為檔案資訊清單)，以及檔案名稱、檔案大小與檔案總和檢查碼。
 
        ```
@@ -207,8 +207,8 @@ ms.locfileid: "79259990"
 |已收到     | 您的裝置已由 Azure 資料中心收到並掃描。 <br> 確認裝置之後，裝置上傳便會開始。      |
 |資料複製     | 資料複製進行中。 在 Azure 入口網站中追蹤您訂單的複製進度。 <br> 等候資料複製完成。 |
 |Completed       |已順利完成訂單。<br> 從伺服器刪除內部部署資料之前，請確認資料已位於 Azure 中。         |
-|已完成，但發生錯誤| 資料複製已完成，但在複製期間發生錯誤。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 在[上載完成錯誤時，請參閱複製日誌的示例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)。   |
-|已完成，但出現警告| 資料複製已完成，但資料已修改。 資料具有通過更改檔或 blob 名稱修復的非關鍵 Blob 或檔案名錯誤。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 記下資料中的修改。 在[上載完成警告時，請參閱複製日誌的示例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)。   |
+|已完成，但發生錯誤| 資料複製已完成，但在複製期間發生錯誤。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 請參閱[上傳完成但發生錯誤的複製記錄範例](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-errors)。   |
+|已完成，但出現警告| 資料複製已完成，但您的資料已修改。 資料有非關鍵性的 blob 或檔案名錯誤，已藉由變更檔案或 blob 名稱來修正。 <br> 使用 Azure 入口網站中提供的路徑來檢閱複製記錄。 請記下您資料中的修改。 請參閱[上傳完成時複製記錄檔的範例，但出現警告](https://docs.microsoft.com/azure/databox/data-box-logs#upload-completed-with-warnings)。   |
 |已取消            |訂單便會取消。 <br> 可能是您取消訂單或發現錯誤，而服務將訂單取消。 如果無法在 90 天內完成訂單，系統也將會取消該訂單並通知您。     |
 |清除 | 裝置上的資料已清除。 當訂單記錄在 Azure 入口網站中可供下載時，即視為已完成裝置清除。|
 
@@ -216,4 +216,4 @@ ms.locfileid: "79259990"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解如何[解決資料框和資料盒問題。](data-box-troubleshoot.md)
+- 瞭解如何針對[資料箱和 Data Box Heavy 問題進行疑難排解](data-box-troubleshoot.md)。

@@ -1,18 +1,18 @@
 ---
 title: 了解藍圖生命週期
-description: 瞭解藍圖定義的生命週期以及每個階段的詳細資訊,包括更新和刪除藍圖分配。
+description: 瞭解藍圖定義所經歷的生命週期，以及每個階段的詳細資料，包括更新和移除藍圖指派。
 ms.date: 07/30/2019
 ms.topic: conceptual
 ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80677375"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 藍圖生命週期
 
-如同 Azure 中的許多資源，Azure 藍圖中的藍圖也具有典型的自然生命週期。 它們會建立、部署，最後當它們不再需要或相關時即會刪除。 Azure 藍圖支持標準生命週期操作。 藍圖會接著以這些作業為基礎來提供其他層級的狀態，以對管理其基礎結構即程式碼 (DevOps 中的重要元素) 的組織，支援常見的持續整合和持續部署管線。
+如同 Azure 中的許多資源，Azure 藍圖中的藍圖也具有典型的自然生命週期。 它們會建立、部署，最後當它們不再需要或相關時即會刪除。 Azure 藍圖支援標準生命週期作業。 藍圖會接著以這些作業為基礎來提供其他層級的狀態，以對管理其基礎結構即程式碼 (DevOps 中的重要元素) 的組織，支援常見的持續整合和持續部署管線。
 
 以下會討論藍圖的標準生命週期，以完整了解藍圖與各個階段：
 
@@ -28,7 +28,7 @@ ms.locfileid: "80677375"
 
 建立藍圖時，將成品新增至其中、儲存至管理群組或訂用帳戶，並提供唯一名稱與唯一版本。 藍圖現在處於**草稿**模式，尚無法指派。 然而在**草稿**模式中，它可以繼續更新及變更。
 
-處於**草稿**模式且未曾發佈的藍圖會在 [藍圖定義]**** 頁面上，顯示與**已發佈**藍圖不同的圖示。 **最新版本**顯示為這些從未發布的藍圖的**草稿**。
+處於**草稿**模式且未曾發佈的藍圖會在 [藍圖定義]**** 頁面上，顯示與**已發佈**藍圖不同的圖示。 **最新版本**會針對這些從未發佈的藍圖顯示為**草稿**。
 
 使用 [Azure 入口網站](../create-blueprint-portal.md#create-a-blueprint)或 [REST API](../create-blueprint-rest-api.md#create-a-blueprint) 來建立及編輯藍圖。
 
@@ -62,11 +62,11 @@ ms.locfileid: "80677375"
 
 1. 在左側窗格中選取 [所有服務]  。 搜尋並選取 [藍圖]  。
 
-1. 從左側的頁面中選擇**藍圖定義**,並使用篩選器選項查找要刪除的藍圖。 選擇它以打開編輯頁面。
+1. 從左邊的頁面選取 [**藍圖定義**]，然後使用篩選選項來找出您想要刪除其版本的藍圖。 選取它以開啟 [編輯] 頁面。
 
-1. 選擇 **「已發布版本**」選項卡,然後找到要刪除的版本。
+1. 選取 [**已發佈的版本**] 索引標籤，然後找出您想要刪除的版本。
 
-1. 右鍵按一下要刪除的版本,然後選擇 **「刪除此版本**」。
+1. 以滑鼠右鍵按一下要刪除的版本，然後選取 [**刪除此版本**]。
 
 ## <a name="deleting-the-blueprint"></a>刪除藍圖
 
@@ -93,21 +93,21 @@ ms.locfileid: "80677375"
 
 若要了解作法，請參閱[更新現有的指派](../how-to/update-existing-assignments.md)。
 
-### <a name="unassigning-assignments"></a>取消配置配置
+### <a name="unassigning-assignments"></a>取消指派指派
 
-如果不再需要藍圖,則可以從管理組或訂閱中取消分配它。 在取消分配藍圖期間,將發生以下情況:
+如果不再需要藍圖，則可以從管理群組或訂用帳戶取消指派。 在藍圖解除期間，會發生下列情況：
 
-- 刪除[藍圖資源鎖定](resource-locking.md)
-- 刪除藍圖分配物件
-- (有條件)如果使用**系統分配的託管標識**,也會刪除
+- 移除[藍圖資源鎖定](resource-locking.md)
+- 刪除藍圖指派物件
+- 條件如果使用**系統指派的受控識別**，它也會一併刪除
 
 > [!NOTE]
-> 藍圖分配部署的所有資源都保留原位,但不再受 Azure 藍圖的保護。
+> 藍圖指派所部署的所有資源都會保留在原處，但不再受 Azure 藍圖保護。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 了解如何使用[靜態與動態參數](parameters.md)。
 - 了解如何自訂[藍圖排序順序](sequencing-order.md)。
 - 了解如何使用[藍圖資源鎖定](resource-locking.md)。
-- 瞭解如何[更新現有工作](../how-to/update-existing-assignments.md)。
-- 在分配藍圖期間使用[常規故障排除時](../troubleshoot/general.md)解決問題。
+- 了解如何[更新現有的指派](../how-to/update-existing-assignments.md)。
+- 使用[一般疑難排解](../troubleshoot/general.md)來解決藍圖指派期間發生的問題。

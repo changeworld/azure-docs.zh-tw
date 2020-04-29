@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
 ms.openlocfilehash: fc328c34c1543a75fdc885087d44b28e24c0850a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268674"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>業務關鍵層 - Azure SQL Database
@@ -46,20 +46,20 @@ SQL 資料庫引擎程序和基礎 mdf/ldf 檔案都放在具有本機連接 SSD
 
 業務關鍵服務層級專門用於有下列需求的應用程式：基礎 SSD 儲存體要有低延遲的回應 (平均 1 至 2 毫秒)、能夠在基礎結構失敗時快速復原，或需要將報告、分析和唯讀查詢卸載至主要資料庫的免費可讀次要複本。
 
-選擇業務關鍵型服務層而不是通用層的主要原因有：
--   低 IO 延遲要求 – 需要存儲層快速回應的工作負載（平均 1-2 毫秒）應使用業務關鍵層。 
--   應用程式和資料庫之間頻繁通信。 不能利用應用程式層緩存或[請求批次處理](sql-database-use-batching-to-improve-performance.md)，並且需要發送許多必須快速處理的 SQL 查詢的應用程式是業務關鍵層的良好候選項。
--   大量更新 – 插入、更新和刪除操作會修改記憶體中的資料頁（髒頁），這些資料頁必須保存到具有`CHECKPOINT`操作的資料檔案中。 潛在的資料庫引擎進程崩潰或資料庫容錯移轉與大量髒頁可能會增加恢復時間在通用層。 如果您的工作負載導致許多記憶體中更改，請使用"業務關鍵"層。 
--   修改資料的長時間運行的事務。 長時間打開的事務可防止日誌檔的截斷，這可能會增加日誌大小和[虛擬日誌檔 （VLF）](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)的數量。 大量 VLF 會降低容錯移轉後資料庫的恢復速度。
--   具有可重定向到免費輔助唯讀副本的報告和分析查詢的工作負載。
-- 更高的彈性和更快的故障恢復速度。 在系統發生故障的情況下，主實例上的資料庫將被禁用，其中一個輔助副本將立即成為新的讀寫主資料庫，可用於處理查詢。 資料庫引擎不需要從日誌檔中分析和重做事務，並將所有資料載入到記憶體緩衝區中。
-- 高級資料損壞保護 - 業務關鍵層利用資料庫副本進行後臺業務連續性，因此該服務還利用自動頁面修復，這是用於 SQL Server 資料庫[鏡像和可用性組](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)的相同技術。 如果副本由於資料完整性問題而無法讀取頁面，將從另一個副本檢索該頁的新副本，替換不可讀的頁面，而不會遺失資料或客戶停機。 如果資料庫具有異地輔助副本，此功能在通用層中適用。
-- 更高的可用性 - 多 AZ 配置中的業務關鍵層保證 99.995% 的可用性，而通用層為 99.99%。
-- 快速異地恢復 - 使用異地複製配置的業務關鍵型層具有 5 秒的保證復原點目標 （RPO），恢復時間目標 （RTO） 為 30 秒，部署時數為 100%。
+您應該選擇「商務關鍵服務層級」而非「一般用途層」的主要原因如下：
+-   低 IO 延遲需求–需要儲存層快速回應的工作負載（平均1-2 毫秒）應使用業務關鍵層。 
+-   應用程式與資料庫之間的頻繁通訊。 無法利用應用層快取或[要求批次處理](sql-database-use-batching-to-improve-performance.md)，而且需要傳送許多必須快速處理之 SQL 查詢的應用程式，都是適用于業務關鍵層的絕佳候選項目。
+-   大量更新–插入、更新和刪除作業會修改記憶體中的資料頁（中途分頁），必須使用`CHECKPOINT`作業儲存到資料檔案中。 可能是資料庫引擎進程損毀，或具有大量中途分頁的資料庫容錯移轉，可能會增加一般用途層的復原時間。 如果您的工作負載會導致許多記憶體中的變更，請使用「業務關鍵層」。 
+-   修改資料的長時間執行交易。 開啟較長時間的交易，可防止截斷記錄檔大小和[虛擬記錄檔（VLF）](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch)的數目。 在容錯移轉之後，大量的 VLF 可能會減緩資料庫復原的速度。
+-   具有報表和分析查詢的工作負載，可重新導向至免費的次要唯讀複本。
+- 更高的復原能力和更快速的損毀修復。 在系統失敗的情況下，將會停用主要實例上的資料庫，而且其中一個次要複本會立即成為新的讀寫主資料庫，準備好處理查詢。 資料庫引擎不需要分析和重做記錄檔中的交易，而且會載入記憶體緩衝區中的所有資料。
+- 先進的資料損毀保護-業務關鍵層會針對商務持續性目的，利用幕後的資料庫複本，因此服務也會利用自動修復頁面，這是用於 SQL Server 資料庫[鏡像和可用性群組](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)的相同技術。 當複本因為資料完整性問題而無法讀取頁面時，將會從另一個複本抓取頁面的全新複本，取代無法讀取的頁面，而不會遺失資料或客戶停機時間。 如果資料庫具有異地次要複本，這項功能適用于一般用途層。
+- 相較于一般用途層的99.99%，多重 AZ 設定中的高可用性-商務關鍵層保證99.995% 的可用性。
+- 以異地複寫設定的快速異地復原-商務關鍵層，其保證的復原點目標（RPO）為5秒，而30秒的復原時間目標（RTO）為100% 的已部署時數。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 在[託管實例](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)中查找業務關鍵型層的資源特徵（內核數、IO、記憶體數），[在 vCore 模型](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4)或[DTU 模型中](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)查找單個資料庫，或在[vCore 模型](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4)和[DTU 模型中](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits)查找彈性池。
+- 尋找[受控執行個體](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)中業務關鍵層的資源特性（核心數目、IO、記憶體）、 [vCore 模型](sql-database-vcore-resource-limits-single-databases.md#business-critical---provisioned-compute---gen4)中的單一資料庫或[dtu 模型](sql-database-dtu-resource-limits-single-databases.md#premium-service-tier)，或[VCore 模型](sql-database-vcore-resource-limits-elastic-pools.md#business-critical---provisioned-compute---gen4)和[dtu 模型](sql-database-dtu-resource-limits-elastic-pools.md#premium-elastic-pool-limits)中的彈性集區。
 - 了解[一般目的](sql-database-service-tier-general-purpose.md)和[超大規模資料庫](sql-database-service-tier-hyperscale.md)層。
-- 瞭解[服務結構](../service-fabric/service-fabric-overview.md)。
-- 有關高可用性和災害復原的更多選項，請參閱[業務連續性](sql-database-business-continuity.md)。
+- 深入瞭解[Service Fabric](../service-fabric/service-fabric-overview.md)。
+- 如需高可用性和嚴重損壞修復的更多選項，請參閱[商務持續性](sql-database-business-continuity.md)。

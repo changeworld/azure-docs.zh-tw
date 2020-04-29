@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260328"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的存取控制
@@ -55,7 +55,7 @@ Azure Data Lake Storage Gen1 實作的存取控制模型衍生自 HDFS，而 HDF
 
 **RWX** 用來表示 [讀取 + 寫入 + 執行]****。 有更壓縮的數字形式存在，其中 [讀取 = 4]****、[寫入 = 2]**** 和 [執行 = 1]****，其總和代表各種權限。 以下有一些範例。
 
-| 數值形式 | 簡短形式 |      意義     |
+| 數值形式 | 簡短形式 |      代表的意義     |
 |--------------|------------|------------------------|
 | 7            | `RWX`        | 讀取 + 寫入 + 執行 |
 | 5            | `R-X`        | 讀取 + 執行         |
@@ -216,9 +216,9 @@ def access_check( user, desired_perms, path ) :
 
 ### <a name="umask"></a>umask
 
-建立檔案或資料夾時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父資料夾上的 9 位值，其中包含用於**擁有使用者**、**擁有組****和其他**的 RWX 值。
+建立檔案或資料夾時，可使用 umask 來修改子項目上的預設 ACL 設定方式。 umask 是父資料夾上的9位值，其中包含**擁有使用者**、**擁有群組**及**其他**的 RWX 值。
 
-Azure 資料存儲第 1 代的 umask 是設置為 007 的常量值。 此值會轉譯成
+Azure Data Lake Storage Gen1 的 umask 是設定為007的常數值。 此值會轉譯成
 
 | umask 元件     | 數值形式 | 簡短形式 | 意義 |
 |---------------------|--------------|------------|---------|
@@ -295,8 +295,8 @@ ACL 中的項目會儲存為對應於 Azure AD 中使用者的 GUID。 API 會�
 * [POSIX 1003.1 2013](https://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
 * [POSIX 1003.1 2016](https://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
 * [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
-* [使用 Linux 上的存取控制清單的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
+* [Linux 上使用存取控制清單的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)

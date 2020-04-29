@@ -1,16 +1,16 @@
 ---
 title: 常見問題集：Azure 中的網路效能監控解決方案 | Microsoft Docs
-description: 本文捕獲了有關 Azure 中網路效能監視器的常見問題。 網路效能監視器 （NPM） 可説明您近乎即時地監控網路的性能，並檢測和定位網路性能瓶頸。
+description: 本文會針對 Azure 中的網路效能監控，提供常見問題。 網路效能監控（NPM）可協助您近乎即時地監視網路的效能，並偵測並找出網路效能瓶頸。
 ms.subservice: logs
 ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
 ms.openlocfilehash: 443e4b44633e949dd9bd55df1ec7d18ca93d6e04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79096219"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>網路效能監控解決方案常見問題集
@@ -19,7 +19,7 @@ ms.locfileid: "79096219"
 
 本文集結了一些 Azure 內網路效能監控 (NPM) 相關的常見問題 (常見問題集)。
 
-[網路效能監視器](/azure/networking/network-monitoring-overview)是一種基於雲的[混合網路監視](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)解決方案，可説明您監控網路基礎結構中不同點之間的網路性能。 也可協助您監視[服務和應用程式端點](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md)的網路連線能力，以及[監視 Azure ExpressRoute 的效能](../../azure-monitor/insights/network-performance-monitor-expressroute.md)。 
+[網路效能監控](/azure/networking/network-monitoring-overview)是以雲端為基礎的[混合式網路監視](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)解決方案，可協助您監視網路基礎結構中各點之間的網路效能。 也可協助您監視[服務和應用程式端點](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md)的網路連線能力，以及[監視 Azure ExpressRoute 的效能](../../azure-monitor/insights/network-performance-monitor-expressroute.md)。 
 
 網路效能監視器會偵測網路問題，例如流量黑洞、路由錯誤，以及傳統網路監視方法無法偵測的問題。 此解決方案會在違反網路連結的臨界值時產生警示並通知您。 它可確實而及時地偵測網路效能問題，並將問題的來源限縮於特定網路區段或裝置。 
 
@@ -30,24 +30,24 @@ ms.locfileid: "79096219"
 ### <a name="what-are-the-platform-requirements-for-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM 做為監控之用的節點有哪些平台需求？
 下面列出了 NPM 各種功能的平台需求：
 
-- NPM 的效能監視器和服務連接監視器功能支援 Windows 伺服器和 Windows 桌面/用戶端作業系統。 支援的 Windows 伺服器作業系統版本是 2008 SP1 或更高版本。 支援的 Windows 桌面/用戶端版本包括 Windows 10、Windows 8.1、Windows 8 和 Windows 7。 
+- NPM 的效能監控和服務連線能力監視功能同時支援 Windows server 和 Windows 桌上型電腦/用戶端作業系統。 支援的 Windows server 作業系統版本為 2008 SP1 或更新版本。 支援的 windows 桌面/用戶端版本包括 Windows 10、Windows 8.1、Windows 8 和 Windows 7。 
 - NPM 的 ExpressRoute 監控功能僅支援 Windows 伺服器 (2008 SP1 或更高版本) 作業系統。
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>我可以在 NPM 中使用 Linux 機器作為監視節點嗎？
-使用基於 Linux 的節點監視網路的功能當前處於預覽階段。 若要深入了解，請連絡您的帳戶管理員。 Linux 代理程式的監控能力僅限於 NPM 的效能監控功能，不適用於「服務連線能力監視」和「ExpressRoute 監視」功能
+使用以 Linux 為基礎的節點來監視網路的功能目前為預覽狀態。 若要深入了解，請連絡您的帳戶管理員。 Linux 代理程式的監控能力僅限於 NPM 的效能監控功能，不適用於「服務連線能力監視」和「ExpressRoute 監視」功能
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM 做為監控之用的節點的大小需求如何？
-若要在節點虛擬機器上執行 NPM 解決方案以監控網路，節點至少需要具有 500 MB 記憶體和一個核心。 您無需使用單獨的節點來運行 NPM。 執行該解決方案的節點同時也可以執行其他工作負載。 如果該解決方案使用 CPU 超過 5%， 則能夠停止監視過程。
+若要在節點虛擬機器上執行 NPM 解決方案以監控網路，節點至少需要具有 500 MB 記憶體和一個核心。 您不需要使用個別節點來執行 NPM。 執行該解決方案的節點同時也可以執行其他工作負載。 如果此解決方案使用超過5% 的 CPU，則其功能可以停止監視進程。
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>若要使用 NPM，我是否應該以直接代理程式連線節點，還是透過 System Center Operations Manager 連線節點？
-效能監視器和服務連接監視器功能都支援[作為直接代理連接](../../azure-monitor/platform/agent-windows.md)並通過[操作管理器連接的](../../azure-monitor/platform/om-agents.md)節點。
+「效能監視器」和「服務連線能力監視」功能都支援[以直接代理程式連接](../../azure-monitor/platform/agent-windows.md)並[透過 Operations Manager 連線](../../azure-monitor/platform/om-agents.md)的節點。
 
-至於 ExpressRoute 監視的功能，請僅以直接代理程式連線 Azure 節點。 不支援透過 Operations Manager 連線的 Azure 節點。 對於本地節點，支援作為直接代理和通過操作管理器連接的節點來監視 ExpressRoute 電路。
+至於 ExpressRoute 監視的功能，請僅以直接代理程式連線 Azure 節點。 不支援透過 Operations Manager 連線的 Azure 節點。 針對內部部署節點，可支援連線為直接代理程式和透過 Operations Manager 的節點，以監視 ExpressRoute 線路。
 
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>應該選擇監視 TCP 還是 ICMP 通訊協定？
-如果使用基於 Windows 伺服器的節點監視網路，我們建議您使用 TCP 作為監視協定，因為它提供了更好的準確性。 
+如果您使用以 Windows server 為基礎的節點監視網路，建議您使用 TCP 作為監視通訊協定，因為它提供更好的精確度。 
 
-建議將 ICMP 用於以 Windows 桌面/用戶端作業系統為基礎的節點。 此平臺不允許通過 NPM 用於發現網路拓撲的原始通訊端發送 TCP 資料。
+建議將 ICMP 用於以 Windows 桌面/用戶端作業系統為基礎的節點。 此平臺不允許透過原始通訊端傳送 TCP 資料，NPM 會使用它來探索網路拓撲。
 
 您可以在[此處](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md#choose-the-protocol)取得有關各種通訊協定彼此優勢所在的詳細資料。
 
@@ -65,8 +65,8 @@ ms.locfileid: "79096219"
 ### <a name="how-many-agents-should-i-use"></a>應該使用多少代理程式？
 要監視的每個子網路應使用至少一個代理程式。
 
-### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>我可以使用或看到錯誤的最大代理數是多少"...您已達到配置限制？
-NPM 將 IP 數目限制為每個工作區 5000 個 IP。 如果節點同時有 IPv4 和 IPv6 位址，這會當作該節點有 2 個 IP 來計算。 因此，5000 IP 的這項限制會決定代理程式數目上限。 您可以從 NPM 中的 [節點] 索引標籤 >> [設定] 刪除非使用中的代理程式。 NPM 還維護分配給託管代理的 VM 的所有 IP 的歷史記錄，每個 IP 都計為單獨的 IP，有助於 5000 個 IP 的上限。 要釋放工作區的 IP，可以使用"節點"頁刪除未使用的 IP。
+### <a name="what-is-the-maximum-number-of-agents-i-can-use-or-i-see-error--youve-reached-your-configuration-limit"></a>我可以使用的代理程式數目上限，或我看到錯誤」。您已達到設定限制」？
+NPM 將 IP 數目限制為每個工作區 5000 個 IP。 如果節點同時有 IPv4 和 IPv6 位址，這會當作該節點有 2 個 IP 來計算。 因此，5000 IP 的這項限制會決定代理程式數目上限。 您可以從 NPM 中的 [節點] 索引標籤 >> [設定] 刪除非使用中的代理程式。 NPM 也會維護所有已指派給裝載代理程式之 VM 的 Ip 歷程記錄，而且每個 ip 會計算為對該上限（5000個 ip）貢獻的個別 IP。 若要釋出工作區的 Ip，您可以使用 [節點] 頁面來刪除未使用的 Ip。
 
 ## <a name="monitoring"></a>監視
 
@@ -97,20 +97,20 @@ NPM 會根據其所屬之狀況不良的路徑數量，運用機率機制將故�
 ### <a name="how-can-i-create-alerts-in-npm"></a>如何在 NPM 中建立警示？
 如需逐步說明，請參閱[說明文件中的警示章節](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts)。
 
-### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>警報的預設日誌分析查詢是什麼
+### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>警示的預設 Log Analytics 查詢為何
 效能監視器查詢
 
     NetworkMonitoring 
      | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
      | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
     
-服務連接監視器查詢
+服務連線能力監視查詢
 
     NetworkMonitoring                 
      | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
      | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
     
-ExpressRoute 監視器查詢：電路查詢
+ExpressRoute 監視查詢：線路查詢
 
     NetworkMonitoring
     | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
@@ -127,7 +127,7 @@ Microsoft 對等互連
      | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
 
-常見查詢   
+一般查詢   
 
     NetworkMonitoring
     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
@@ -145,19 +145,19 @@ NPM 只會識別來源 IP 和目的地 IP 之間的基礎網路躍點 (交換器
 ### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>是否可以取得 ExpressRoute 的傳入和傳出的頻寬資訊？
 可以擷取主要和次要頻寬的傳入和傳出值。
 
-有關 MS 對等級別資訊，請使用日誌搜索中的以下查詢
+如需 MS 對等互連層級資訊，請在記錄搜尋中使用下列所述的查詢
 
     NetworkMonitoring 
      | where SubType == "ERMSPeeringUtilization"
      | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
     
-有關私有對等層資訊，請使用日誌搜索中的以下查詢
+如需私用對等互連層級資訊，請在記錄搜尋中使用下列所述的查詢
 
     NetworkMonitoring 
      | where SubType == "ERVNetConnectionUtilization"
      | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
   
-有關電路級別資訊，請使用日誌搜索中的以下查詢
+如需線路層級資訊，請在記錄搜尋中使用下列所述的查詢
 
     NetworkMonitoring 
         | where SubType == "ERCircuitTotalUtilization"
@@ -175,7 +175,7 @@ NPM 可以監控位於任何 Azure 區域的 ExpressRoute 線路。 若要開始
 ## <a name="troubleshoot"></a>疑難排解
 
 ### <a name="why-are-some-of-the-hops-marked-as-unidentified-in-the-network-topology-view"></a>為什麼網路拓撲檢視中的某些躍點標示為無法辨識？
-NPM 使用追蹤路由的修改版本，來探索從來源代理程式到目的地的拓撲。 無法辨識的躍點代表網路躍點未回應來源代理程式的追蹤路由要求。 如果連續三個網路躍點未回應代理的跟蹤路由，則解決方案會將無回應躍點標記為未識別，並且不會嘗試發現更多躍點。
+NPM 使用追蹤路由的修改版本，來探索從來源代理程式到目的地的拓撲。 無法辨識的躍點代表網路躍點未回應來源代理程式的追蹤路由要求。 如果有三個連續的網路躍點未回應代理程式的追蹤路由，解決方案會將沒有回應的躍點標示為無法辨識，而且不會嘗試探索更多躍點。
 
 在以下一或多個案例中，躍點可能無法回應追蹤路由：
 
@@ -183,27 +183,27 @@ NPM 使用追蹤路由的修改版本，來探索從來源代理程式到目的�
 * 網路裝置不允許 ICMP_TTL_EXCEEDED 流量。
 * 防火牆阻止來自網路裝置的 ICMP_TTL_EXCEEDED 回應。
 
-當任一終結點位於 Azure 中時，跟蹤路由將顯示未識別的躍點，因為 Azure 基礎結構不會顯示到跟蹤路由的標識。 
+當其中一個端點位於 Azure 中時，追蹤路由會顯示無法辨識的躍點，因為 Azure 基礎結構不會向追蹤路由顯示身分識別。 
 
-### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>我收到不正常測試的警報，但看不到 NPM 丟失和延遲圖中的高值。 如何檢查什麼是不健康的？
-如果源和目標之間的端到端延遲跨越它們之間的任何路徑的閾值，NPM 將發出警報。 某些網路具有連接同一源和目標的多個路徑。 NPM 引發警報是任何路徑不正常。 圖形中看到的損耗和延遲是所有路徑的平均值，因此可能無法顯示單個路徑的確切值。 要瞭解閾值被突破的位置，請查看警報中的"子類型"列。 如果問題是由路徑引起的，則子類型值將是 NetworkPath（用於效能監視器測試）、終結點路徑（用於服務連接監視器測試）和 ExpressRoutePath（用於 ExpressRotue 監視器測試）。 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>我收到狀況不良測試的警示，但我在 NPM 的遺失和延遲圖表中看不到高的值。 如何? 檢查什麼狀況不良？
+如果來源與目的地之間的端對端延遲超出其之間任何路徑的臨界值，NPM 就會引發警示。 有些網路有多個路徑連接相同的來源和目的地。 NPM 引發警示是任何路徑狀況不良。 圖表中顯示的遺失和延遲是所有路徑的平均值，因此它可能不會顯示單一路徑的確切值。 若要瞭解臨界值被違反的位置，請尋找警示中的「子類型」資料行。 如果問題是由路徑所造成，則會 NetworkPath 子類型值（適用于效能監控測試）、EndpointPath （適用于服務連線能力監視測試）和 ExpressRoutePath （適用于 ExpressRotue 監視器測試）。 
 
-要查找的是路徑是不正常的依例查詢：
+尋找的範例查詢是 path 狀況不良：
 
     NetworkMonitoring 
     | where ( SubType == "ExpressRoutePath")
     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and          CircuitResourceID =="<your ER circuit ID>" and ConnectionResourceId == "<your ER connection resource id>"
     | project SubType, LossHealthState, LatencyHealthState, MedianLatency 
 
-### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>為什麼我的測試顯示不正常，但拓撲不 
-NPM 以不同的間隔監控端到端損耗、延遲和拓撲。 損失和延遲每 5 秒測量一次，每 3 分鐘聚合一次（對於效能監視器和快速路由監視器），而拓撲則每 10 分鐘使用跟蹤路由計算一次。 例如，在 3：44 和 4：04 之間，拓撲可以更新三次（3：44、3：54、4：04），但損失和延遲大約更新 7 次（3：44、3：47、3：50、3：53、3：56、3：59、4：02）。 3：54 生成的拓撲將呈現在 3：56、3：59 和 4：02 計算的損失和延遲。 假設您在 3：59 時收到 ER 電路不正常的警報。 登錄到 NPM 並嘗試將拓撲時間設置為 3：59。 NPM 將呈現 3：54 生成的拓撲。 要瞭解網路的最後一個已知拓撲，請比較時間處理欄位（計算損失和延遲的時間）和跟蹤路由完成時間（計算拓撲的時間）。 
+### <a name="why-does-my-test-show-unhealthy-but-the-topology-does-not"></a>為什麼我的測試顯示狀況不良，但拓撲不會 
+NPM 會以不同的間隔監視端對端遺失、延遲和拓撲。 系統會每隔5秒測量一次遺失和延遲，並每隔三分鐘匯總一次（針對「效能監視器」和「Express Route 監視器」），同時使用追蹤路由每隔10分鐘計算一次。 例如，在3:44 與4:04 之間，拓撲可能會更新三次（3:44、3:54、4:04），但遺失和延遲會更新大約七次（3:44、3:47、3:50、3:53、3:56、3:59、4:02）。 3:54 產生的拓撲會針對在3:56、3:59 和4:02 計算的遺失和延遲呈現。 假設您收到一則警示，指出您的 ER 線路在3:59 狀況不良。 您登入 NPM，並嘗試將拓撲時間設定為3:59。 NPM 會轉譯在3:54 產生的拓撲。 若要瞭解網路的最後已知拓撲，請比較 TimeProcessed （計算遺失和延遲的時間）和 TracerouteCompletedTime （計算拓撲的時間）的欄位。 
 
-### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>網路監視表中的欄位 E2EMedian 延遲和 AvgHop 延遲清單之間的區別是什麼
-E2EMedian延遲是在聚合 tcp ping 測試結果後每三分鐘更新一次延遲，而 AvgHop 延遲清單則根據跟蹤路由每 10 分鐘更新一次。 要瞭解計算 E2EMedian 延遲的確切時間，請使用"時間處理"欄位。 要瞭解跟蹤路由完成並更新 AvgHop 延遲清單的確切時間，請使用欄位跟蹤路由完成時間
+### <a name="what-is-the-difference-between-the-fields-e2emedianlatency-and-avghoplatencylist-in-the-networkmonitoring-table"></a>NetworkMonitoring 資料表中 E2EMedianLatency 和 AvgHopLatencyList 欄位之間的差異為何
+E2EMedianLatency 是在匯總 tcp ping 測試的結果之後每三分鐘更新一次的延遲，而 AvgHopLatencyList 會根據追蹤路由每隔10分鐘更新一次。 若要瞭解計算 E2EMedianLatency 的確切時間，請使用欄位 TimeProcessed。 若要瞭解追蹤路由完成和更新 AvgHopLatencyList 的確切時間，請使用欄位 TracerouteCompletedTime
 
-### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>為什麼跳跳延遲數與躍點延遲值不同 
-躍點延遲值是終結點的源。
-例如：躍點 - A，B，C. 平均霍普延遲 - 10，15，20。 這意味著源到 A 延遲 = 10，源到 B 延遲 = 15，源到 C 延遲為 20。 UI 將在拓撲中將 A-B 躍點延遲計算為 5
+### <a name="why-does-hop-by-hop-latency-numbers-differ-from-hoplatencyvalues"></a>為什麼逐躍點的延遲數與 HopLatencyValues 不同 
+HopLatencyValues 是來源到端點。
+例如：躍點-A、B、C。 AvgHopLatency-10、15、20。 這表示來源到延遲 = 10，來源至 B 延遲 = 15，而來源到 C 的延遲為20。 UI 會將-B 躍點延遲計算為拓撲中的5
 
 ### <a name="the-solution-shows-100-loss-but-there-is-connectivity-between-the-source-and-destination"></a>解決方案會顯示 100% 遺失，但來源和目的地之間仍存在連線
 如果主機防火牆或中繼防火牆 (網路防火牆或 Azure NSG) 透過 NPM 監視的連接埠封鎖來源代理程式與目的地之間的通訊 (除非客戶改變連接埠，否則預設情況下，連接埠為 8084)，則會發生此情況。

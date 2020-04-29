@@ -1,5 +1,5 @@
 ---
-title: 打開或關閉 StorSimple 8000 系列設備
+title: 開啟或關閉您的 StorSimple 8000 系列裝置
 description: 說明如何開啟新的 StorSimple 裝置、開啟曾關閉或失去電源的裝置，以及關閉執行中的裝置。
 author: alkohli
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
@@ -9,15 +9,15 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254621"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>開啟或關閉 StorSimple 8000 系列裝置
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 正常系統作業並不需要關閉 Microsoft Azure StorSimple 裝置。 不過，您可能需要開啟新的裝置，或有裝置必須關閉。 一般而言，在您需要更換故障的硬體、實際移動單元，或將裝置報廢的情況下才需要關機。 本教學課程將說明在不同案例中開啟和關閉 StorSimple 裝置的必要程序。
 
 ## <a name="turn-on-a-new-device"></a>開啟新的裝置
@@ -146,7 +146,7 @@ StorSimple 8600 型同時具有主要機箱和 EBOD 機箱。 這需要使用纜
 > [!IMPORTANT]
 > 請勿使用裝置背面的電源按鈕關閉執行中的裝置。
 > 
-> 關閉裝置之前，請確定所有的裝置元件狀態良好。 在 Azure 門戶中，導航到**設備** > **監視器** > **硬體運行狀況**，並驗證所有元件的狀態為綠色。 這只適用於狀態良好的系統。 如果正在關閉系統以更換故障的元件，您會在 [硬體狀態]**** 中看見個別元件出現故障 (紅色) 或降級 (黃色) 狀態。
+> 關閉裝置之前，請確定所有的裝置元件狀態良好。 在 Azure 入口網站中，流覽至 [**裝置** > ] [**監視** > ] [**硬體健康**情況]，並確認所有元件的狀態為綠色。 這只適用於狀態良好的系統。 如果正在關閉系統以更換故障的元件，您會在 [硬體狀態]**** 中看見個別元件出現故障 (紅色) 或降級 (黃色) 狀態。
 > 
 > 
 
@@ -154,7 +154,7 @@ StorSimple 8600 型同時具有主要機箱和 EBOD 機箱。 這需要使用纜
 
 ### <a name="device-with-ebod-enclosure-a-name8600a"></a>具有 EBOD 機箱的裝置 <a name="8600a">
 > [!IMPORTANT]
-> 關閉主要機箱和 EBOD 機箱之前，請確定所有裝置元件狀態良好。 在 Azure 門戶中，導航到**設備** > **監視器** > **硬體運行狀況**，並驗證所有元件是否正常。
+> 關閉主要機箱和 EBOD 機箱之前，請確定所有裝置元件狀態良好。 在 Azure 入口網站中，流覽至 [**裝置** > ] [**監視** > ] [**硬體健康**情況]，並確認所有元件的狀況良好。
 
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>若要關閉具有 EBOD 機箱的執行中裝置

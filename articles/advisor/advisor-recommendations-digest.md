@@ -1,55 +1,55 @@
 ---
-title: Azure 顧問的建議摘要
-description: 獲取活動建議的定期摘要
+title: Azure Advisor 的建議摘要
+description: 取得作用中建議的定期摘要
 ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
 ms.openlocfilehash: 98f1bfd42a486e005cd1e777a83f5b615a7c8304
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502460"
 ---
-# <a name="configure-periodic-summary-for-recommendations"></a>為建議配置定期摘要
+# <a name="configure-periodic-summary-for-recommendations"></a>設定建議的定期摘要
 
-顧問**建議摘要**提供了一種簡單而主動的方式，可以跨不同類別查看您的主動建議。 此功能提供了為跨不同類別的所有活動建議摘要配置定期通知的功能。 您可以使用操作組為電子郵件、短信或其他通知選擇所需的頻道。 本文介紹如何為顧問建議設置**建議摘要**。
+Advisor**建議摘要**提供一個簡單又主動的方法，讓您在不同的類別之間保持作用中的建議。 此功能可讓您在不同的類別中，針對所有作用中建議的摘要設定定期通知。 您可以使用動作群組，為電子郵件、sms 或其他人等通知選擇您想要的通道。 本文說明如何為您的 Advisor 建議設定**建議摘要**。
 
 
-## <a name="setting-up-your-recommendation-digest"></a>設置您的推薦摘要 
+## <a name="setting-up-your-recommendation-digest"></a>設定建議摘要 
 
-**建議摘要**創建體驗可説明您配置摘要。 您可以為配置選擇以下參數：
-1. 類別：我們有推薦類別，如成本、高可用性、性能和卓越運營。 此功能尚不適用於安全建議。
-2. 摘要頻率：摘要通知的頻率可以是每週、每兩周和每月。
-3. 操作組：您可以選擇現有操作組或創建新操作組。 要瞭解有關操作組的更多詳細資訊，請參閱[創建和管理操作組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。
-4. 摘要語言
-5. 建議摘要名稱：您可以使用方便使用的字串更好地跟蹤和監視摘要。
+**建議摘要**建立體驗可協助您設定摘要。 您可以選取下列設定的參數：
+1. 類別：我們的建議類別如成本、高可用性、效能和營運卓越。 此功能尚不適用於安全性建議。
+2. 摘要的頻率：摘要通知的頻率可以是每週、每週和每月。
+3. 動作群組：您可以選取現有的動作群組，或建立新的動作群組。 若要深入瞭解動作群組，請參閱[建立和管理動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)。
+4. 摘要的語言
+5. 建議摘要名稱：您可以使用使用者易記的字串，以更好的追蹤和監視摘要。
 
-## <a name="steps-to-create-recommendation-digest-in-azure-portal"></a>在 Azure 門戶中創建建議摘要的步驟
+## <a name="steps-to-create-recommendation-digest-in-azure-portal"></a>在 Azure 入口網站中建立建議摘要的步驟
 
-以下是創建**建議摘要的步驟：**
-* **第 1 步：** 在 Azure 門戶中，轉到 **"顧問"，** 在 **"監視"** 部分下，選擇 **"建議摘要"** 
+以下是建立**建議摘要**的步驟：
+* **步驟1：** 在 Azure 入口網站中，移至 [ **Advisor** ]，然後在 [**監視**] 區段下，選取 [**建議摘要**] 
 
    ![建議摘要進入點](./media/digest-0.png)
 
-* **第 2 步：** 從頂部欄中選擇 **"新建建議摘要**"，如下所示：
+* **步驟2：** 從頂端列選取 [**新增建議摘要**]，如下所示：
 
-   ![創建建議摘要](./media/digest-5.png)
+   ![建立建議摘要](./media/digest-5.png)
 
-* **第 3 步：** 在 **"範圍"** 部分中，選擇摘要的**訂閱**
+* **步驟3：** 在 [**範圍**] 區段中，選取您的摘要**訂**用帳戶
 
    ![提供建議摘要輸入](./media/digest-1.png)
 
-* **第 4 步：** 在**條件**部分中，選擇**類別**、**頻率**和**語言**等配置
+* **步驟4：** 在 [**條件**] 區段中，選取 [**類別**]、[**頻率**] 和 [**語言**] 等設定。
 
    ![提供建議摘要輸入條件](./media/digest-2.png)
 
-* **第 5 步：** 在**操作組**部分中，選擇摘要**的操作組**。 您可以在此處瞭解更多資訊 -[創建和管理操作組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
+* **步驟5：** 在 [**動作群組**] 區段中，選取摘要的 [**動作群組**]。 您可以在這裡深入瞭解-[建立和管理動作群組](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 
-   ![提供建議摘要輸入操作組](./media/digest-3.png)
+   ![提供建議摘要輸入動作群組](./media/digest-3.png)
 
-* **第 6 步：** 在摘要**詳細資訊**的最後一節中，您可以將名稱和狀態分配給建議摘要。 按**創建建議摘要**以完成設置。
-   ![完整的建議摘要創建](./media/digest-4.png)
+* **步驟6：** 在這份**摘要詳細資料**的最後一節中，您可以將名稱和狀態指派給建議摘要。 按 [**建立建議摘要**] 以完成設定。
+   ![建立完整的建議摘要](./media/digest-4.png)
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -59,5 +59,5 @@ ms.locfileid: "79502460"
 * [Advisor 成本建議](advisor-cost-recommendations.md)
 * [建議程式效能建議](advisor-performance-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)
-* [顧問卓越運營建議](advisor-operational-excellence-recommendations.md)
-* [顧問 REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)
+* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)
