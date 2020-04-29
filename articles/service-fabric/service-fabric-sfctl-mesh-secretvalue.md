@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構 CLI-sfctl 網格機密值
-description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括用於獲取和刪除服務結構網格機密值資源的命令清單。
+title: Azure Service Fabric CLI-sfctl 網狀 secretvalue
+description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來取得和刪除 Service Fabric 網格 secretvalue 資源的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: b2fe3a7995cdd88a8f63d0d865e72e9f161cf9d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905956"
 ---
 # <a name="sfctl-mesh-secretvalue"></a>sfctl mesh secretvalue
@@ -19,9 +19,9 @@ ms.locfileid: "76905956"
 
 |Command|描述|
 | --- | --- |
-| delete | 刪除選定祕密資源的指定值。 |
+| [刪除] | 刪除選定祕密資源的指定值。 |
 | list | 列出指定祕密資源所有值的名稱。 |
-| 顯示 | 列出機密資源的指定值。 |
+| 顯示 | 列出秘密資源的指定值。 |
 
 ## <a name="sfctl-mesh-secretvalue-delete"></a>sfctl mesh secretvalue delete
 刪除選定祕密資源的指定值。
@@ -67,7 +67,7 @@ ms.locfileid: "76905956"
 | --verbose | 增加記錄詳細資訊。 使用 --debug 來取得完整偵錯記錄。 |
 
 ## <a name="sfctl-mesh-secretvalue-show"></a>sfctl mesh secretvalue show
-列出機密資源的指定值。
+列出秘密資源的指定值。
 
 ### <a name="arguments"></a>引數
 
@@ -89,5 +89,5 @@ ms.locfileid: "76905956"
 
 
 ## <a name="next-steps"></a>後續步驟
-- [設置](service-fabric-cli.md)服務結構 CLI。
+- [設定](service-fabric-cli.md)Service Fabric CLI。
 - 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。

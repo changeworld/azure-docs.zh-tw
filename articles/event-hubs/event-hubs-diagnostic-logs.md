@@ -17,10 +17,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 68aa62ad34f8db531d439a581ef024862da0f90c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162305"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>為 Azure 事件中樞設定診斷記錄
@@ -48,7 +48,7 @@ ms.locfileid: "77162305"
 
     ![變更診斷記錄的狀態](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  設置所需的存檔目標;例如，存儲帳戶、事件中心或 Azure 監視器日誌。
+5.  設定您想要的封存目標;例如，儲存體帳戶、事件中樞或 Azure 監視器記錄。
 
 6.  儲存新的診斷設定。
 
@@ -71,7 +71,7 @@ ms.locfileid: "77162305"
 
 封存記錄檔 JSON 字串包括下表所列的元素：
 
-名稱 | 描述
+Name | 說明
 ------- | -------
 TaskName | 失敗工作的描述。
 ActivityId | 用於追蹤的內部識別碼。
@@ -83,7 +83,7 @@ archiveStep | ArchiveFlushWriter
 startTime | 失敗開始時間。
 failures | 發生失敗的次數。
 durationInSeconds | 失敗持續時間。
-message | 錯誤訊息。
+訊息 | 錯誤訊息。
 category | ArchiveLogs
 
 下列程式碼是封存記錄 JSON 字串的範例：
@@ -109,7 +109,7 @@ category | ArchiveLogs
 
 作業記錄 JSON 字串包括下表所列的元素：
 
-名稱 | 描述
+Name | 說明
 ------- | -------
 ActivityId | 用於追蹤目的的內部識別碼。
 EventName | 作業名稱。  
@@ -140,9 +140,9 @@ Example:
 
 ## <a name="next-steps"></a>後續步驟
 - [事件中樞簡介](event-hubs-what-is-event-hubs.md)
-- [事件中心 API 概述](event-hubs-api-overview.md)
+- [事件中樞 API 總覽](event-hubs-api-overview.md)
 - 開始使用事件中心
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
-    - [JAVA](get-started-java-send-v2.md)
+    - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JAVAscript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-java-send-v2.md)

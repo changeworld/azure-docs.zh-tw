@@ -1,6 +1,6 @@
 ---
-title: 使用預構建的範本更快地創建邏輯應用工作流
-description: 使用 Azure 邏輯應用提供的預構建範本快速構建邏輯應用工作流
+title: 使用預先建立的範本更快速地建立邏輯應用程式工作流程
+description: 使用 Azure Logic Apps 提供的預建範本，快速建立邏輯應用程式工作流程
 services: logic-apps
 ms.suite: integration
 author: kevinlam1
@@ -9,10 +9,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/15/2017
 ms.openlocfilehash: aac0060527af7b7d880f971e7608be3fa44a2d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905106"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>從預先建置的範本建立邏輯應用程式工作流程
@@ -34,9 +34,9 @@ Logic Apps 提供範本來協助您更快速開始建立工作流程，這些範
 
 ## <a name="create-logic-apps-from-templates"></a>從範本建立邏輯應用程式
 
-1. 如果尚未登錄，請登錄到[Azure 門戶](https://portal.azure.com "Azure 入口網站")。
+1. 如果您還沒有這麼做，請登入[Azure 入口網站](https://portal.azure.com "Azure 入口網站")。
 
-2. 從主 Azure 功能表中，選擇 **"創建資源** > **企業集成** > **邏輯應用**"。
+2. 從主要 Azure 功能表中，選擇 [**建立資源** > ] [**企業整合** > ] [**邏輯應用程式**]。
 
    ![Azure 入口網站, 新增, 企業整合, 邏輯應用程式](./media/logic-apps-create-logic-apps-from-templates/azure-portal-create-logic-app.png)
 
@@ -46,14 +46,14 @@ Logic Apps 提供範本來協助您更快速開始建立工作流程，這些範
 
    | 設定 | 值 | 描述 | 
    | ------- | ----- | ----------- | 
-   | **名稱** | *邏輯應用名稱* | 提供唯一的邏輯應用程式名稱。 | 
-   | **訂閱** | your-Azure-subscription-name** | 選取您要使用的 Azure 訂用帳戶。 | 
-   | **資源組** | 您的 Azure 資源群組名稱** | 為此邏輯應用程式建立或選取一個 [Azure 資源群組](../azure-resource-manager/management/overview.md)，並用以組織與此應用程式關聯的所有資源。 | 
+   | **名稱** | *您的邏輯-應用程式名稱* | 提供唯一的邏輯應用程式名稱。 | 
+   | **訂用帳戶** | your-Azure-subscription-name** | 選取您要使用的 Azure 訂用帳戶。 | 
+   | **資源群組** | 您的 Azure 資源群組名稱** | 為此邏輯應用程式建立或選取一個 [Azure 資源群組](../azure-resource-manager/management/overview.md)，並用以組織與此應用程式關聯的所有資源。 | 
    | **位置** | 您的 Azure 資料中心區域** | 選取用於部署邏輯應用程式的資料中心區域，例如，美國西部。 | 
-   | **日誌分析** | **Off** (預設值) 或 **On** | 使用[Azure 監視器日誌](../log-analytics/log-analytics-overview.md)為邏輯應用設置[診斷日誌記錄](../logic-apps/monitor-logic-apps-log-analytics.md)。 您必須已經有 Log Analytics 工作區。 | 
+   | **Log Analytics** | **Off** (預設值) 或 **On** | 使用[Azure 監視器記錄](../log-analytics/log-analytics-overview.md)來設定邏輯應用程式的[診斷記錄](../logic-apps/monitor-logic-apps-log-analytics.md)。 您必須已經有 Log Analytics 工作區。 | 
    |||| 
 
-4. 當您準備就緒時，請選取 [釘選到儀表板]****。 這樣一來，邏輯應用程式就會在部署之後自動出現在 Azure 儀表板上並開啟。 選擇 **[建立]**。
+4. 當您準備就緒時，請選取 [釘選到儀表板]****。 這樣一來，邏輯應用程式就會在部署之後自動出現在 Azure 儀表板上並開啟。 選擇 **[建立]** 。
 
    > [!NOTE]
    > 如果您不想要釘選邏輯應用程式，就必須在部署之後以手動方式尋找並開啟邏輯應用程式，才能繼續操作。
@@ -99,7 +99,7 @@ Logic Apps 提供範本來協助您更快速開始建立工作流程，這些範
 
 ## <a name="update-logic-apps-with-templates"></a>使用範本來更新邏輯應用程式
 
-1. 在[Azure 門戶](https://portal.azure.com "Azure 入口網站")中，在邏輯應用設計器中查找並打開邏輯應用。
+1. 在[Azure 入口網站](https://portal.azure.com "Azure 入口網站")中，在第一個邏輯應用程式設計工具中尋找並開啟您的邏輯應用程式。
 
 2. 在設計工具的工具列上，選擇 [範本]****。 此動作會捨棄所有未儲存的變更，因此會出現警告訊息，供您確認是否要繼續。 若要確認，請選擇 [確定]****。 例如：
 

@@ -1,6 +1,6 @@
 ---
 title: 將區塊 Blob 儲存在裝置上 - Azure IoT Edge | Microsoft Docs
-description: 瞭解分層和即時功能，查看支援的 Blob 存儲操作，並連接到 Blob 存儲帳戶。
+description: 瞭解分層和存留時間功能，請參閱支援的 blob 儲存體作業，並聯機至您的 blob 儲存體帳戶。
 author: kgremban
 ms.author: kgremban
 ms.reviewer: arduppal
@@ -9,101 +9,101 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76509813"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>在 IoT Edge 使用 Azure Blob 儲存體，以便在邊緣儲存資料
 
-IoT Edge 上的 Azure Blob 存儲在邊緣提供[塊 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)和[追加 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)存儲解決方案。 IoT Edge 設備上的 Blob 存儲模組與 Azure Blob 服務類似，但 blob 存儲在 IoT Edge 設備上本地。 您可以使用已習慣的相同 Azure 存儲 SDK 方法或 Blob API 呼叫訪問 Blob。 本文介紹了與在 IoT Edge 設備上運行 Blob 服務的 IoT Edge 容器上的 Azure Blob 存儲相關的概念。
+IoT Edge 上的 Azure Blob 儲存體會在邊緣提供[區塊 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs)和[附加 Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)儲存體解決方案。 IoT Edge 裝置上的 blob 儲存體模組的運作方式類似 Azure blob 服務，但 blob 會儲存在您的 IoT Edge 裝置本機上。 您可以使用您已使用的相同 Azure 儲存體 SDK 方法或 blob API 呼叫來存取 blob。 本文說明在 IoT Edge 裝置上執行 Blob 服務 IoT Edge 容器 Azure Blob 儲存體相關概念。
 
-此模組在以下情況下非常有用：
+此模組在案例中很有用：
 
-* 需要本機存放區資料，直到可以處理或傳輸到雲。 此資料可以是視頻、圖像、財務資料、醫院資料或任何其他非結構化資料。
-* 當設備位於連接受限的地方時。
-* 當您希望有效地在本地處理資料以獲得對資料的低延遲訪問時，您可以儘快回應緊急情況。
-* 當您希望降低頻寬成本並避免將 TB 的資料傳輸到雲時。 您可以在本地處理資料，並且僅將處理過的資料發送到雲。
+* 資料必須儲存在本機，直到可以處理或傳輸到雲端為止。 此資料可以是影片、影像、財務資料、醫院資料，或任何其他非結構化資料。
+* 當裝置位於連線能力有限的位置時。
+* 當您想要有效率地在本機處理資料，以取得資料的低延遲存取時，您可以儘快回應緊急情況。
+* 當您想要降低頻寬成本，並避免將數 tb 的資料傳輸到雲端時。 您可以在本機處理資料，並只將已處理的資料傳送至雲端。
 
-觀看視頻，快速介紹
+觀賞快速簡介影片
 > [!VIDEO https://www.youtube.com/embed/xbwgMNGB_3Y]
 
-此模組附帶**設備到雲上傳****和設備自動刪除**功能。
+此課程模組隨附**deviceToCloudUpload**和**deviceAutoDelete**功能。
 
-**設備ToCloudUpload**是一種可配置的功能。 此功能通過間歇性互聯網連接支援，自動將資料從本地 Blob 存儲上載到 Azure。 它允許您：
+**deviceToCloudUpload**是可設定的功能。 此函式會自動將資料從您的本機 blob 儲存體上傳至 Azure，並提供間歇性的網際網路連線支援。 它可讓您：
 
-* 打開/關閉設備到雲上傳功能。
-* 選擇將資料複製到 Azure 的順序，如"最新優先"或"最舊優先"。
-* 指定要將資料上載到的 Azure 存儲帳戶。
-* 指定要上載到 Azure 的容器。 此模組允許您指定源容器和目標容器名稱。
-* 選擇在上載到雲存儲完成後立即刪除 Blob 的能力
-* 執行完全 blob 上載`Put Blob`（使用操作）和塊級上載`Put Block`（`Put Block List`使用`Append Block`和 操作）。
+* 開啟/關閉 deviceToCloudUpload 功能。
+* 選擇資料複製到 Azure 的順序，例如 NewestFirst 或 OldestFirst。
+* 指定您要上傳資料的 Azure 儲存體帳戶。
+* 指定您想要上傳至 Azure 的容器。 此模組可讓您指定來源和目標容器名稱。
+* 選擇在上傳至雲端儲存體完成後，立即刪除 blob 的功能
+* 執行完整 blob 上傳（ `Put Blob`使用操作）和區塊層級上`Put Block`傳`Put Block List` （ `Append Block`使用、和作業）。
 
-當 blob 由塊組成時，此模組使用塊級上載。 下面是一些常見方案：
+當您的 blob 包含區塊時，此模組會使用區塊層級上傳。 以下是一些常見案例：
 
-* 應用程式更新以前上載的塊 Blob 的某些塊，或將新塊追加到追加 Blob，此模組僅上載更新的塊，而不是整個 Blob。
-* 模組正在上載 Blob，互聯網連接消失，當連接再次恢復時，它只上載剩餘的塊，而不是整個 Blob。
+* 您的應用程式會更新先前上傳之區塊 blob 的某些區塊，或將新區塊附加至附加 blob，此模組只會上傳更新的區塊，而不是整個 blob。
+* 模組正在上傳 blob，而網際網路連線已中斷，當連線重新時，它只會上傳其餘區塊，而不是整個 blob。
 
-如果在 Blob 上載期間發生意外的進程終止（如電源故障），則一旦模組重新連線，將重新上載應上載上載之前的所有塊。
+如果在 blob 上傳期間發生非預期的進程終止（例如電源中斷），則在模組重新上線之後，將會再次上傳所有已到期的區塊。
 
-**設備自動刪除**是一個可配置的功能。 當指定的持續時間（以分鐘為單位衡量）過期時，此功能會自動從本機存放區中刪除 blob。 它允許您：
+**deviceAutoDelete**是可設定的功能。 此函式會在指定的持續時間（以分鐘為單位）到期時，自動從本機儲存體中刪除您的 blob。 它可讓您：
 
-* 打開/關閉設備自動刪除功能。
-* 指定自動刪除 blob 的時間（以分鐘（刪除後分鐘）。
-* 如果 DeleteAfterThe分鐘值過期，請選擇在上載 Blob 時保留 Blob 的能力。
+* 開啟/關閉 deviceAutoDelete 功能。
+* 指定將自動刪除 blob 的時間（以分鐘為單位）（deleteAfterMinutes）。
+* 如果 deleteAfterMinutes 值過期，請選擇在其上傳時保留 blob 的功能。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 Azure IoT Edge 裝置：
 
-* 您可以按照[Linux](quickstart-linux.md)或[Windows 設備](quickstart.md)快速入門中的步驟，將開發電腦或虛擬機器用作 IoT 邊緣設備。
+* 您可以遵循[Linux](quickstart-linux.md)或[Windows 裝置](quickstart.md)快速入門中的步驟，使用您的開發電腦或虛擬機器作為 IoT Edge 裝置。
 
-* 有關支援的作業系統和體系結構的清單，請參閱[Azure IoT Edge 支援的系統](support.md#operating-systems)。 IoT Edge 上的 Azure Blob 存儲模組支援以下體系結構：
+* 如需支援的作業系統和架構清單，請參閱[Azure IoT Edge 支援的系統](support.md#operating-systems)。 IoT Edge 模組上的 Azure Blob 儲存體支援下列架構：
   * Windows AMD64
   * Linux AMD64
   * Linux ARM32
-  * Linux ARM64（預覽版）
+  * Linux ARM64 （預覽）
 
 雲端資源：
 
 Azure 中的標準層 [IoT 中樞](../iot-hub/iot-hub-create-through-portal.md)。
 
-## <a name="devicetocloudupload-and-deviceautodelete-properties"></a>設備到雲上傳和設備自動刪除屬性
+## <a name="devicetocloudupload-and-deviceautodelete-properties"></a>deviceToCloudUpload 和 deviceAutoDelete 屬性
 
-使用模組所需的屬性將**設備設置為"雲上傳屬性****"和設備自動刪除屬性**。 可以在部署期間設置所需的屬性，或者稍後通過編輯模組孿生來更改所需的屬性，而無需重新部署。 我們建議檢查"模組孿生"，`reported configuration`並確保`configurationValidation`值正確傳播。
+使用模組所需的屬性來設定**deviceToCloudUploadProperties**和**deviceAutoDeleteProperties**。 您可以在部署期間設定所需的屬性，或在稍後藉由編輯模組對應項而不需要重新部署來進行變更。 我們建議您檢查和`reported configuration` `configurationValidation`的「模組對應項」，以確保值已正確傳播。
 
-### <a name="devicetoclouduploadproperties"></a>設備到雲上傳屬性
+### <a name="devicetoclouduploadproperties"></a>deviceToCloudUploadProperties
 
-此設置的名稱為`deviceToCloudUploadProperties`。 如果使用 IoT Edge 模擬器，則將這些屬性的值設置為相關環境變數，您可以在說明部分中找到這些變數。
-
-| 屬性 | 可能的值 | 說明 |
-| ----- | ----- | ---- |
-| 上傳上 | true、false | 設置為`false`預設。 如果要打開該功能，請將此欄位設置為`true`。 <br><br> 環境變數：`deviceToCloudUploadProperties__uploadOn={false,true}` |
-| 上傳訂單 | 最新第一，最老的第一 | 允許您選擇將資料複製到 Azure 的順序。 設置為`OldestFirst`預設。 順序由 Blob 的最後修改時間確定。 <br><br> 環境變數：`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| 雲存儲連接字串 |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`是一個連接字串，允許您指定要將資料上載到的存儲帳戶。 指定`Azure Storage Account Name` `Azure Storage Account Key`， `End point suffix`， . 在其中將上載資料的位置添加 Azure 的相應終結點Suffix，它因全域 Azure、政府 Azure 和 Microsoft Azure 堆疊而異。 <br><br> 您可以在此處選擇指定 Azure 存儲 SAS 連接字串。 但是，在此屬性過期時，必須更新此屬性。 <br><br> 環境變數：`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
-| 存儲容器用於上傳 | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 允許您指定要上載到 Azure 的容器名稱。 此模組允許您指定源容器和目標容器名稱。 如果不指定目標容器名稱，它將自動將容器名稱指定為`<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`。 可以為目標容器名稱創建範本字串，簽出可能的值列。 <br>• %h -> IoT 中心名稱（3-50 個字元）。 <br>• %d -> IoT 邊緣裝置識別碼（1 到 129 個字元）。 <br>• %m -> 模組名稱（1 到 64 個字元）。 <br>• %c ->源容器名稱（3 到 63 個字元）。 <br><br>容器名稱的最大大小為 63 個字元，而如果容器大小超過 63 個字元，將自動分配目標容器名稱，它將將每個部分（IoTHubName、IotDeviceID、模組名稱、源容器名稱）修剪為 15 個字元字元。 <br><br> 環境變數：`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
-| 刪除上傳後 | true、false | 設置為`false`預設。 當它設置為`true`時，它將在上載到雲存儲時自動刪除資料。 <br><br> **注意**：如果使用追加 Blob，此設置將在成功上載後從本機存放區中刪除追加 Blob，並且將來對這些 blob 的任何追加塊操作都將失敗。 請謹慎使用此設置，如果應用程式執行不頻繁的追加操作或不支援連續追加操作，請不要啟用此設置<br><br> 環境變數： `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`. |
-
-### <a name="deviceautodeleteproperties"></a>設備自動刪除屬性
-
-此設置的名稱為`deviceAutoDeleteProperties`。 如果使用 IoT Edge 模擬器，則將這些屬性的值設置為相關環境變數，您可以在說明部分中找到這些變數。
+此設定的名稱為`deviceToCloudUploadProperties`。 如果您使用 IoT Edge 模擬器，請將這些屬性的值設定為相關的環境變數，您可以在 [說明] 區段中找到這些屬性。
 
 | 屬性 | 可能的值 | 說明 |
 | ----- | ----- | ---- |
-| 刪除On | true、false | 設置為`false`預設。 如果要打開該功能，請將此欄位設置為`true`。 <br><br> 環境變數：`deviceAutoDeleteProperties__deleteOn={false,true}` |
-| 刪除後分鐘 | `<minutes>` | 指定以分鐘表示的時間。 當此值過期時，模組將自動從本機存放區中刪除您的 Blob。 <br><br> 環境變數：`deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
-| 載入時保留 | true、false | 預設情況下，它設置為`true`，如果 Delete 後分鐘過期，它將在上載到雲存儲時保留 Blob。 您可以將其設置為，`false`並且在刪除後分鐘過期時，它將刪除資料。 注意：對於此屬性的工作上傳應設置為 true。  <br><br> **注意**：如果使用追加 Blob，此設置將在值過期時從本機存放區中刪除追加 Blob，並且這些 blob 的任何將來追加塊操作都將失敗。 您可能希望確保到期值足夠大，以滿足應用程式執行的追加操作的預期頻率。<br><br> 環境變數：`deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
+| uploadOn | true、false | 預設設定`false`為。 如果您想要開啟此功能，請將此欄位設定`true`為。 <br><br> 環境變數：`deviceToCloudUploadProperties__uploadOn={false,true}` |
+| uploadOrder | NewestFirst、OldestFirst | 可讓您選擇將資料複製到 Azure 的順序。 預設設定`OldestFirst`為。 順序取決於 Blob 的上次修改時間。 <br><br> 環境變數：`deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"`這是一個連接字串，可讓您指定要上傳資料的目標儲存體帳戶。 指定`Azure Storage Account Name`、 `Azure Storage Account Key`、 `End point suffix`。 新增適當的 Azure EndpointSuffix，以將資料上傳到其中，全域 Azure、政府 Azure 和 Microsoft Azure Stack 會有所不同。 <br><br> 您可以選擇在這裡指定 Azure 儲存體 SAS 連接字串。 但當此屬性過期時，您就必須更新它。 <br><br> 環境變數：`deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | 可讓您指定您想要上傳至 Azure 的容器名稱。 此模組可讓您指定來源和目標容器名稱。 如果您未指定目標容器名稱，它會自動將容器名稱指派為`<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`。 您可以建立目標容器名稱的範本字串，請查看可能的值資料行。 <br>*% h-> IoT 中樞名稱（3-50 個字元）。 <br>*% d-> IoT Edge 裝置識別碼（1到129個字元）。 <br>*% m-> 模組名稱（1到64個字元）。 <br>*% c-> 來源容器名稱（3到63個字元）。 <br><br>容器名稱的大小上限為63個字元，而如果容器的大小超過63個字元，則會自動指派目標容器名稱，它會將每個區段（IoTHubName、IotEdgeDeviceID、ModuleName、SourceContainerName）修剪為15個字元。 <br><br> 環境變數：`deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
+| deleteAfterUpload | true、false | 預設設定`false`為。 當其設定為`true`時，會在上傳至雲端儲存體完成時自動刪除資料。 <br><br> **注意**：如果您使用附加 blob，此設定將會在成功上傳之後，從本機儲存體刪除附加 blob，而這些 blob 的任何未來附加區塊作業將會失敗。 使用此設定時請小心，如果您的應用程式不常附加作業或不支援連續附加作業，請勿啟用此功能<br><br> 環境變數： `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`。 |
 
-## <a name="using-smb-share-as-your-local-storage"></a>使用 SMB 共用作為本機存放區
+### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
-在 Windows 主機上部署此模組的 Windows 容器時，可以將 SMB 共用作為本機存放區路徑提供。
+此設定的名稱為`deviceAutoDeleteProperties`。 如果您使用 IoT Edge 模擬器，請將這些屬性的值設定為相關的環境變數，您可以在 [說明] 區段中找到這些屬性。
 
-確保 SMB 共用和 IoT 設備位於相互信任的域中。
+| 屬性 | 可能的值 | 說明 |
+| ----- | ----- | ---- |
+| deleteOn | true、false | 預設設定`false`為。 如果您想要開啟此功能，請將此欄位設定`true`為。 <br><br> 環境變數：`deviceAutoDeleteProperties__deleteOn={false,true}` |
+| deleteAfterMinutes | `<minutes>` | 指定以分鐘為單位的時間。 此模組會在此值到期時，自動從本機儲存體中刪除您的 blob。 <br><br> 環境變數：`deviceAutoDeleteProperties__ deleteAfterMinutes=<minutes>` |
+| retainWhileUploading | true、false | 根據預設，它會設定`true`為，而且如果 deleteAfterMinutes 過期，它會在將 blob 上傳至雲端儲存體時保留。 您可以將它設定`false`為，它會在 deleteAfterMinutes 到期時立即刪除資料。 注意：若要讓這個屬性能夠正常執行，uploadOn 應該設定為 true。  <br><br> **注意**：如果您使用附加 blob，則此設定會在值過期時，從本機儲存體刪除附加 blob，而這些 blob 的任何未來附加區塊作業將會失敗。 您可能想要確定到期值夠大，足以應付應用程式所執行之附加作業的預期頻率。<br><br> 環境變數：`deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
-您可以運行`New-SmbGlobalMapping`PowerShell 命令，在運行 Windows 的 IoT 設備上本機對應 SMB 共用。
+## <a name="using-smb-share-as-your-local-storage"></a>使用 SMB 共用作為本機儲存體
 
-以下是配置步驟：
+當您在 Windows 主機上部署此模組的 Windows 容器時，您可以提供 SMB 共用作為本機儲存體路徑。
+
+請確定 SMB 共用和 IoT 裝置位於互相信任的網域中。
+
+您可以執行`New-SmbGlobalMapping` PowerShell 命令，在執行 Windows 的 IoT 裝置上本機對應 SMB 共用。
+
+以下是設定步驟：
 
 ```PowerShell
 $creds = Get-Credential
@@ -117,19 +117,19 @@ $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
 ```
 
-此命令將使用憑據與遠端 SMB 伺服器進行身份驗證。 然後，將遠端共用路徑對應至 G: 磁碟機代號 (可以是任何其他可用的磁碟機代號)。 IoT 設備現在將資料卷映射到 G： 磁碟機上的路徑。
+此命令將使用認證來向遠端 SMB 伺服器進行驗證。 然後，將遠端共用路徑對應至 G: 磁碟機代號 (可以是任何其他可用的磁碟機代號)。 IoT 裝置現在已將資料磁片區對應到 G：磁片磁碟機上的路徑。
 
-確保 IoT 設備中的使用者可以讀取/寫入遠端 SMB 共用。
+請確定 IoT 裝置中的使用者可以讀取/寫入遠端 SMB 共用。
 
-對於您的部署，的值`<storage mount>`可以是**G：/容器資料：C：/BlobRoot**。
+針對您的部署，的`<storage mount>`值可以是**G：/ContainerData： C：/BlobRoot**。
 
-## <a name="granting-directory-access-to-container-user-on-linux"></a>向 Linux 上的容器使用者授予目錄存取權限
+## <a name="granting-directory-access-to-container-user-on-linux"></a>將目錄存取權授與 Linux 上的容器使用者
 
-如果在 Linux 容器的創建選項中使用[卷裝載](https://docs.docker.com/storage/volumes/)存儲，則無需執行任何額外的步驟，但如果使用[綁定裝載](https://docs.docker.com/storage/bind-mounts/)，則需要執行這些步驟才能正確運行服務。
+如果您已在 Linux 容器的建立選項中使用[磁片區掛接](https://docs.docker.com/storage/volumes/)來儲存，則不需要執行任何額外的步驟，但如果您使用了[bind 掛接](https://docs.docker.com/storage/bind-mounts/)，則需要這些步驟，才能正確執行服務。
 
-遵循將使用者存取權限限制為執行其工作所需的最低許可權的最低許可權的原則，此模組包括使用者（名稱：absie，ID：11000）和使用者組（名稱：absie，ID：11000）。 如果容器以**root**身份啟動（預設使用者是**root），** 我們的服務將作為低特權**absie**使用者啟動。
+遵循最低許可權原則，將使用者的存取權限限制為執行工作所需的最低許可權，此模組包含使用者（名稱： absie，識別碼：11000）和使用者群組（名稱： absie，識別碼：11000）。 如果容器是以**root** （預設使用者為**root**）啟動，我們的服務就會以低許可權**absie**使用者的身分啟動。
 
-此行為使主機路徑上的許可權配置綁定對服務正常工作至關重要，否則服務將崩潰，導致訪問被拒絕錯誤。 容器使用者需要訪問目錄綁定中使用的路徑（例如：absie 11000）。 您可以通過在主機上執行以下命令來授予容器使用者對目錄的存取權限：
+這種行為會讓主機路徑的許可權設定系結至服務正常運作的關鍵，否則服務將會因為拒絕存取錯誤而損毀。 目錄系結中使用的路徑必須可供容器使用者存取（範例： absie 11000）。 您可以在主機上執行下列命令，以授與容器使用者對目錄的存取權：
 
 ```terminal
 sudo chown -R 11000:11000 <blob-dir>
@@ -143,7 +143,7 @@ sudo chown -R 11000:11000 /srv/containerdata
 sudo chmod -R 700 /srv/containerdata
 ```
 
-如果需要以**absie**以外的使用者身份運行服務，則可以在部署清單中的"使用者"屬性下在 createOptions 中指定自訂使用者 ID。 在這種情況下，您需要使用預設組 ID 或根組`0`ID 。
+如果您需要以非**absie**的使用者身分執行服務，您可以在部署資訊清單中的 "user" 屬性下，于 createOptions 中指定您的自訂使用者識別碼。 在這種情況下，您必須使用預設或根`0`群組識別碼。
 
 ```json
 "createOptions": {
@@ -151,16 +151,16 @@ sudo chmod -R 700 /srv/containerdata
 }
 ```
 
-現在，授予容器使用者對目錄的存取權限
+現在，授與容器使用者對目錄的存取權
 
 ```terminal
 sudo chown -R <user ID>:<group ID> <blob-dir>
 sudo chmod -R 700 <blob-dir>
 ```
 
-## <a name="configure-log-files"></a>配置日誌檔
+## <a name="configure-log-files"></a>設定記錄檔
 
-有關為模組配置日誌檔的資訊，請參閱這些[生產最佳實踐](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics)。
+如需為模組設定記錄檔的詳細資訊，請參閱這些[生產環境最佳做法](https://docs.microsoft.com/azure/iot-edge/production-checklist#set-up-logs-and-diagnostics)。
 
 ## <a name="connect-to-your-blob-storage-module"></a>連接到您的 Blob 儲存體模組
 
@@ -168,53 +168,53 @@ sudo chmod -R 700 <blob-dir>
 
 指定 IoT Edge 裝置作為您提出的任何儲存體要求所用的 Blob 端點。 您可以使用 IoT Edge 裝置資訊和您設定的帳戶名稱，[建立明確儲存體端點的連接字串](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint)。
 
-* 對於部署在同一設備上部署的模組，與 IoT Edge 模組上的 Azure Blob 存儲運行位置相同，Blob 終結點為： `http://<module name>:11002/<account name>`。
-* 對於在不同的設備上運行的模組或應用程式，您必須為網路選擇正確的終結點。 根據網路設置，選擇終結點格式，以便來自外部模組或應用程式的資料流量可以到達在 IoT Edge 模組上運行 Azure Blob 存儲的設備。 此方案的 blob 終結點是：
+* 對於部署在 IoT Edge 模組上之 Azure Blob 儲存體所在的相同裝置上的模組，Blob 端點為： `http://<module name>:11002/<account name>`。
+* 對於在不同裝置上執行的模組或應用程式，您必須為您的網路選擇正確的端點。 根據您的網路設定，選擇端點格式，讓來自外部模組或應用程式的資料流量可以連接到在 IoT Edge 模組上執行 Azure Blob 儲存體的裝置。 此案例的 blob 端點為下列其中一項：
   * `http://<device IP >:11002/<account name>`
   * `http://<IoT Edge device hostname>:11002/<account name>`
   * `http://<fully qualified domain name>:11002/<account name>`
 
-## <a name="azure-blob-storage-quickstart-samples"></a>Azure Blob 存儲快速啟動示例
+## <a name="azure-blob-storage-quickstart-samples"></a>Azure Blob 儲存體快速入門範例
 
-Azure Blob 存儲文檔包括多種語言的快速入門示例代碼。 可以通過更改 Blob 終結點連接到本地 Blob 存儲模組，運行這些示例以測試 IoT Edge 上的 Azure Blob 存儲。
+Azure Blob 儲存體檔包含幾種語言的快速入門範例程式碼。 您可以藉由變更 Blob 端點以連接到本機 Blob 儲存體模組，來執行這些範例以測試 IoT Edge 上的 Azure Blob 儲存體。
 
-以下快速入門示例使用 IoT Edge 也支援的語言，因此您可以將它們部署為 IT Edge 模組以及 blob 存儲模組：
+下列快速入門範例會使用 IoT Edge 也支援的語言，因此您可以將它們部署為與 blob 儲存體模組相同的 IoT Edge 模組：
 
 * [.NET](../storage/blobs/storage-quickstart-blobs-dotnet.md)
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
-  * Python SDK 的 V2.1 之前的版本存在已知問題，即模組不返回 Blob 創建時間。 由於此問題，某些方法（如清單 blob）不起作用。 作為解決方法，顯式將 blob 用戶端上的 API 版本設置為"2017-04-17"。 範例：`block_blob_service._X_MS_VERSION = '2017-04-17'`
-  * [追加 Blob 示例](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
+  * 在 Python SDK 2.1 之前的版本有已知的問題，此模組不會傳回 blob 建立時間。 基於這個問題，某些方法（例如清單 blob）無法運作。 因應措施是將 blob 用戶端上的 API 版本明確設定為 ' 2017-04-17 '。 範例：`block_blob_service._X_MS_VERSION = '2017-04-17'`
+  * [附加 Blob 範例](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md)
 * [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy.md)
-* [紅寶石](../storage/blobs/storage-quickstart-blobs-ruby.md)
-* [移至](../storage/blobs/storage-quickstart-blobs-go.md)
-* [Php](../storage/blobs/storage-quickstart-blobs-php.md)
+* [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
+* [Go](../storage/blobs/storage-quickstart-blobs-go.md)
+* [PHP](../storage/blobs/storage-quickstart-blobs-php.md)
 
-## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>使用 Azure 存儲資源管理器連接到本機存放區
+## <a name="connect-to-your-local-storage-with-azure-storage-explorer"></a>使用 Azure 儲存體總管連接到您的本機儲存體
 
-您可以使用[Azure 存儲資源管理器](https://azure.microsoft.com/features/storage-explorer/)連接到本機存放區帳戶。
+您可以使用[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)來連接到本機儲存體帳戶。
 
 1. 下載並安裝 Azure 儲存體總管
 
-1. 使用連接字串連接到 Azure 存儲
+1. 使用連接字串連接到 Azure 儲存體
 
 1. 提供連接字串：`DefaultEndpointsProtocol=http;BlobEndpoint=http://<host device name>:11002/<your local account name>;AccountName=<your local account name>;AccountKey=<your local account key>;`
 
-1. 完成連接步驟。
+1. 完成連線的步驟。
 
-1. 在本機存放區帳戶內創建容器
+1. 在您的本機儲存體帳戶內建立容器
 
-1. 啟動將檔上載為塊 Blob 或追加 Blob。
+1. 開始將檔案上傳為區塊 blob 或附加 Blob。
    > [!NOTE]
-   > 此模組不支援頁面 blob。
+   > 此模組不支援分頁 blob。
 
-1. 您也可以選擇在存儲資源管理器中連接 Azure 存儲帳戶。 此配置為本機存放區帳戶和 Azure 存儲帳戶提供單個視圖
+1. 您也可以選擇在儲存體總管中連接您的 Azure 儲存體帳戶。 此設定可為您提供本機儲存體帳戶和 Azure 儲存體帳戶的單一視圖
 
 ## <a name="supported-storage-operations"></a>支援的儲存體作業
 
-IoT Edge 上的 Blob 存儲模組使用 Azure 存儲 SDK，並且與塊 Blob 終結點的 Azure 存儲 API 的 2017-04-17 版本一致。
+IoT Edge 上的 Blob 儲存體模組會使用 Azure 儲存體 Sdk，且與適用于區塊 blob 端點的2017-04-17 版 Azure 儲存體 API 一致。
 
-由於並非所有 Azure Blob 存儲操作都由 IoT Edge 上的 Azure Blob 存儲支援，因此本節列出了每個操作的狀態。
+因為 IoT Edge 上的 Azure Blob 儲存體不支援所有的 Azure Blob 儲存體作業，所以此區段會列出每一個的狀態。
 
 ### <a name="account"></a>帳戶
 
@@ -274,31 +274,31 @@ IoT Edge 上的 Blob 存儲模組使用 Azure 存儲 SDK，並且與塊 Blob 終
 
 支援：
 
-* 追加塊
+* 附加區塊
 
 不支援：
 
-* URL 中的追加塊
+* 從 URL 附加區塊
 
-## <a name="event-grid-on-iot-edge-integration"></a>IoT 邊緣集成上的事件網格
+## <a name="event-grid-on-iot-edge-integration"></a>IoT Edge 整合的事件方格
 
 > [!CAUTION]
-> 與 IoT 邊緣上的事件網格的集成處於預覽狀態
+> IoT Edge 的事件格線整合目前為預覽狀態
 
-此 IoT 邊緣模組上的 Azure Blob 存儲現在提供與 IoT 邊緣上的事件網格的集成。 有關此集成的詳細資訊，請參閱[部署模組、發佈事件和驗證事件傳遞的教程](../event-grid/edge/react-blob-storage-events-locally.md)。
+IoT Edge 模組上的這個 Azure Blob 儲存體現在提供與 IoT Edge 上事件方格的整合。 如需這種整合的詳細資訊，請參閱[部署模組、發佈事件和驗證事件傳遞教學](../event-grid/edge/react-blob-storage-events-locally.md)課程。
 
 ## <a name="release-notes"></a>版本資訊
 
-以下是此模組[的 Docker 集線器中的版本資訊](https://hub.docker.com/_/microsoft-azure-blob-storage)
+以下是此課程模組的[docker hub 版本](https://hub.docker.com/_/microsoft-azure-blob-storage)資訊
 
 ## <a name="feedback"></a>意見反應
 
-您的回饋對我們非常重要，使本模組及其功能有用且便於使用。 請分享您的回饋，並告訴我們如何改進。
+您的意見反應對我們來說非常重要，因為它的功能很實用且容易使用。 請分享您的意見反應，並讓我們知道如何改進。
 
-您可以聯繫我們：absiotfeedback@microsoft.com
+您可以在這裡找到absiotfeedback@microsoft.com
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何在[IoT 邊緣部署 Azure Blob 存儲](how-to-deploy-blob.md)
+瞭解如何[在 IoT Edge 上部署 Azure Blob 儲存體](how-to-deploy-blob.md)
 
-在[IoT Edge 博客上](https://aka.ms/abs-iot-blogpost)的 Azure Blob 存儲中隨時瞭解最新更新和公告
+在[IoT Edge blog 的 Azure Blob 儲存體](https://aka.ms/abs-iot-blogpost)中隨時掌握最新的更新和公告

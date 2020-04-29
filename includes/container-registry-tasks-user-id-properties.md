@@ -9,13 +9,13 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 1240b4b7e2c84e798c6d7e5257e459628da1420f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "68642081"
 ---
-在命令輸出中，`identity`該節顯示在任務中設置的類型`UserAssigned`標識：
+在命令輸出中， `identity`區段會顯示在工作中設定`UserAssigned`類型的身分識別：
 
 ```console
 [...]

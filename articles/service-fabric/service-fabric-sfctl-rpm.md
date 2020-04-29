@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構 CLI-sfctl rpm
-description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括維修管理器服務的命令清單。
+title: Azure Service Fabric CLI-sfctl rpm
+description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含修復管理員服務的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76904936"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
@@ -20,7 +20,7 @@ ms.locfileid: "76904936"
 |Command|描述|
 | --- | --- |
 | approve-force | 強制核准指定的修復工作。 |
-| delete | 刪除已完成的修復工作。 |
+| [刪除] | 刪除已完成的修復工作。 |
 | list | 取得符合所指定篩選條件的修復工作清單。 |
 
 ## <a name="sfctl-rpm-approve-force"></a>sfctl rpm approve-force
@@ -77,7 +77,7 @@ ms.locfileid: "76904936"
 |引數|描述|
 | --- | --- |
 | --executor-filter | 其宣告的工作應該包含在清單中的修復執行程式名稱。 |
-| --state-filter | 下列值的位元 OR，指定結果清單中應該包含哪些工作狀態。 <ul><li>1 - 已建立</li><li>2 - 索賠</li><li>4 - 準備</li><li>8 - 已批准</li><li>16 - 執行</li><li>32 - 恢復</li><li>64 - 已完成</li></ul>
+| --state-filter | 下列值的位元 OR，指定結果清單中應該包含哪些工作狀態。 <ul><li>1 - 已建立</li><li>2-宣告</li><li>4-準備</li><li>8-已核准</li><li>16-執行中</li><li>32-正在還原</li><li>64 - 已完成</li></ul>
 | --task-id-filter | 要比對的修復工作識別碼前置詞。 |
 
 ### <a name="global-arguments"></a>全域引數

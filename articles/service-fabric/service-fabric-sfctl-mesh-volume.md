@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構 CLI-sfctl 網格卷
-description: 瞭解 sfctl，Azure 服務結構命令列介面。 包括用於獲取和刪除卷資源的命令清單。
+title: Azure Service Fabric CLI-sfctl 網格量
+description: 深入瞭解 sfctl，這是 Azure Service Fabric 命令列介面。 包含用來取得和刪除磁片區資源的命令清單。
 author: jeffj6123
 ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 0e5ba1a311bd0480c56ee40edf01fc13ec01664a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905920"
 ---
 # <a name="sfctl-mesh-volume"></a>sfctl mesh volume
@@ -19,7 +19,7 @@ ms.locfileid: "76905920"
 
 |Command|描述|
 | --- | --- |
-| delete | 可刪除磁碟區資源。 |
+| [刪除] | 可刪除磁碟區資源。 |
 | list | 可列出所有磁碟區資源。 |
 | 顯示 | 可取得指定名稱的磁碟區資源。 |
 
@@ -82,5 +82,5 @@ ms.locfileid: "76905920"
 
 
 ## <a name="next-steps"></a>後續步驟
-- [設置](service-fabric-cli.md)服務結構 CLI。
+- [設定](service-fabric-cli.md)Service Fabric CLI。
 - 了解如何使用[範例指令碼](/azure/service-fabric/scripts/sfctl-upgrade-application)來使用 Service Fabric CLI。

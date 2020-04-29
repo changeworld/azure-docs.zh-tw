@@ -1,5 +1,5 @@
 ---
-title: 處理影響 Azure 雲服務的 Azure 服務中斷
+title: 處理影響 Azure 雲端服務的 Azure 服務中斷
 titleSuffix: Azure Cloud Services
 description: 了解發生影響 Azure 雲端服務的 Azure 服務中斷事件時該怎麼辦。
 services: cloud-services
@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: memccror
 ms.openlocfilehash: e3f0fd88eb302dac208f43d0622ae28b31dcddc2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77157501"
 ---
 # <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>發生影響 Azure 雲端服務的 Azure 服務中斷事件時該怎麼辦
@@ -46,7 +46,7 @@ Azure 已經有許多支援高可用性應用程式的內建平台功能。 如�
 
 根據您的應用程式資料來源，您可能需要檢查應用程式資料來源的復原程序。
 
-* 有關 Azure 存儲資料來源，請參閱[Azure 存儲冗余](../storage/common/storage-redundancy.md)，以根據為應用程式選擇的冗余模型檢查可用的選項。
+* 如需 Azure 儲存體資料來源，請參閱[Azure 儲存體冗余](../storage/common/storage-redundancy.md)]，以根據您的應用程式所選的冗余模型來檢查可用的選項。
 * 如需 SQL 資料庫來源，請閱讀 [概觀：雲端商務持續性和 SQL Database 的資料庫災害復原](../sql-database/sql-database-business-continuity.md) ，以根據您針對應用程式所選擇的複寫模型來查看可用的選項。
 
 

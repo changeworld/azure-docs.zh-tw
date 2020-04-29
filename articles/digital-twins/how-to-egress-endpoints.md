@@ -1,6 +1,6 @@
 ---
-title: 出口和終點 - Azure 數位孿生 |微軟文檔
-description: 瞭解如何在 Azure 數位孿生中創建和出口事件終結點。
+title: 輸出和端點-Azure 數位 Twins |Microsoft Docs
+description: 瞭解如何在 Azure 數位 Twins 中建立及輸出事件端點。
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -9,13 +9,13 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76511564"
 ---
-# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure 數位孿生中的出口和終結點
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Azure 數位 Twins 中的輸出和端點
 
 Azure Digital Twins 的「端點」** 代表使用者 Azure 訂用帳戶內的訊息或事件代理程式。 事件和訊息可以傳送至 Azure 事件中樞、Azure 事件方格和 Azure 服務匯流排主題。
 
@@ -51,7 +51,7 @@ IoT 物件 (例如裝置與感應器) 會傳送事件，以便 Azure 訊息和�
 | --- | --- | --- |
 | id | 字串 | 事件的唯一識別碼。 |
 | subject | 字串 | 發行者定義事件主體的路徑。 |
-| data | 物件 (object) | 資源提供者特有的事件資料。 |
+| data | 物件 | 資源提供者特有的事件資料。 |
 | eventType | 字串 | 此事件來源已註冊的事件類型之一。 |
 | eventTime | 字串 | 事件產生的時間，以提供者之 UTC 時間為準。 |
 | dataVersion | 字串 | 資料物件的結構描述版本。 發行者會定義結構描述版本。 |
@@ -85,7 +85,7 @@ IoT 物件 (例如裝置與感應器) 會傳送事件，以便 Azure 訊息和�
 - ExtendedPropertyKey
 - ExtendedType
 - KeyStore
-- Report
+- 報表
 - RoleDefinition
 - 感應器
 - SensorBlobMetadata
@@ -95,7 +95,7 @@ IoT 物件 (例如裝置與感應器) 會傳送事件，以便 Azure 訊息和�
 - SpaceExtendedProperty
 - SpaceResource
 - SpaceRoleAssignment
-- 系統
+- System (系統)
 - User
 - UserBlobMetadata
 - UserExtendedProperty
@@ -246,7 +246,7 @@ IoT 物件 (例如裝置與感應器) 會傳送事件，以便 Azure 訊息和�
 >[!IMPORTANT]
 > 請特別注意 **eventTypes** 屬性。 此屬性會定義端點處理的事件類型，並以此決定其路由方式。
 
-針對的經過身份驗證的 HTTP POST 請求：
+已驗證的 HTTP POST 要求：
 
 ```URL
 YOUR_MANAGEMENT_API_URL/endpoints
@@ -320,7 +320,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
     | YOUR_SECONDARY_KEY | 用於驗證的次要連接字串 |
     | YOUR_EVENT_HUB_NAME | 事件中樞的名稱 |
 
-- 路由傳送至事件中樞事件類型 **DeviceMessage**。 在連接中`EntityPath`包含**String**是強制性的：
+- 路由傳送至事件中樞事件類型 **DeviceMessage**。 `EntityPath`在**connectionString**中包含會是強制的：
 
   ```JSON
   {

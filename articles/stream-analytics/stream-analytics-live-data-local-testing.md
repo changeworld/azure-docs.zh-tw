@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840480"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>使用適用於 Visual Studio 的 Azure 串流分析工具 (預覽) 在本機測試即時資料
@@ -26,8 +26,8 @@ ms.locfileid: "76840480"
 |**輸入**  |**輸出**  |**作業類型**  |
 |---------|---------|---------|
 |本機靜態資料   |  本機靜態資料   |   雲端/Edge |
-|即時輸入資料   |  本機靜態資料   |   Cloud |
-|即時輸入資料   |  即時輸出資料   |   Cloud |
+|即時輸入資料   |  本機靜態資料   |   雲端 |
+|即時輸入資料   |  即時輸出資料   |   雲端 |
 
 ## <a name="local-testing-with-live-data"></a>使用即時資料進行本機測試
 
@@ -63,6 +63,6 @@ ms.locfileid: "76840480"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用視覺化工作室的 Azure 流分析工具創建流分析作業](stream-analytics-quick-create-vs.md)
+* [使用適用于 Visual Studio 的 Azure 串流分析工具來建立串流分析作業](stream-analytics-quick-create-vs.md)
 * [使用 Visual Studio 在本機測試串流分析查詢](stream-analytics-vs-tools-local-run.md)
 * [使用 Visual Studio 檢視 Azure 串流分析工作](stream-analytics-vs-tools.md)

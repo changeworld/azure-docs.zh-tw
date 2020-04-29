@@ -1,6 +1,6 @@
 ---
-title: 將應用從 BizTalk 服務遷移到 Azure 邏輯應用
-description: 如何將應用和解決方案從 Microsoft Azure BizTalk 服務 （MABS） 移動到 Azure 邏輯應用
+title: 將應用程式從 BizTalk 服務遷移至 Azure Logic Apps
+description: 如何將您的應用程式和解決方案從 Microsoft Azure BizTalk 服務（MABS）移至 Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -9,13 +9,13 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
 ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76905430"
 ---
-# <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>將應用和解決方案從 BizTalk 服務遷移到 Azure 邏輯應用
+# <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>將您的應用程式和解決方案從 BizTalk 服務遷移至 Azure Logic Apps
 
 Microsoft Azure BizTalk 服務 (MABS) 即將停用。 若要將 MABS 整合解決方案移至 [Azure Logic Apps](../logic-apps/logic-apps-overview.md)，請遵循本文中的指引。 
 
@@ -34,7 +34,7 @@ BizTalk 服務包含兩個子服務：
 
 | BizTalk 服務   | Logic Apps            | 目的                      |
 | ------------------ | --------------------- | ---------------------------- |
-| 連接器          | 連接器             | 傳送及接收資料   |
+| 連接子          | 連接子             | 傳送及接收資料   |
 | 橋接器             | 邏輯應用程式             | 管線處理器           |
 | 驗證階段     | XML 驗證動作 | 驗證 XML 文件的結構描述 | 
 | 擴充階段       | 資料權杖           | 將屬性升級為訊息或針對路由決策升級屬性 |
@@ -51,7 +51,7 @@ BizTalk 服務有數種構件。
 
 ## <a name="connectors"></a>連接器
 
-BizTalk 服務連接器可協助橋接器傳送及接收資料，包括啟用 HTTP 要求/回應互動的雙向橋接器。 邏輯應用使用相同的術語，並且具有數百個連接器，通過連接到各種技術和服務，這些連接器具有相同的目的。 舉例來說，連接器可用於雲端 SaaS 和 PaaS 服務 (例如 OneDrive、Office365、Dynamics CRM 等等)，並可透過內部部署資料閘道 (其取代了 BizTalk 服務的 BizTalk 配接器服務) 在內部部署系統中使用。 BizTalk 服務中的來源限制在 FTP、SFTP 和服務匯流排佇列或主題訂閱。
+BizTalk 服務連接器可協助橋接器傳送及接收資料，包括啟用 HTTP 要求/回應互動的雙向橋接器。 Logic Apps 使用相同的術語，而且有數百個連接器可透過連接到各種不同的技術和服務來提供相同的用途。 舉例來說，連接器可用於雲端 SaaS 和 PaaS 服務 (例如 OneDrive、Office365、Dynamics CRM 等等)，並可透過內部部署資料閘道 (其取代了 BizTalk 服務的 BizTalk 配接器服務) 在內部部署系統中使用。 BizTalk 服務中的來源限制在 FTP、SFTP 和服務匯流排佇列或主題訂閱。
 
 ![](media/logic-apps-move-from-mabs/sources.png)
 
@@ -125,7 +125,7 @@ BizTalk 服務和 Logic Apps 包含 EDI 和 B2B 處理，並支援 AS2 (Applicab
 
 ## <a name="manage-and-monitor"></a>管理和監視
 
-在 BizTalk 服務中，專用入口網站提供了追蹤功能供您監視問題並進行疑難排解。 邏輯應用提供了更豐富的跟蹤和監視功能，用於[監視 Azure 門戶中的邏輯應用](../logic-apps/monitor-logic-apps.md)，並包括一個移動應用程式，用於在移動時密切關注事物。
+在 BizTalk 服務中，專用入口網站提供了追蹤功能供您監視問題並進行疑難排解。 Logic Apps 提供更豐富的追蹤和監視功能來[監視 Azure 入口網站中的邏輯應用程式](../logic-apps/monitor-logic-apps.md)，並包含行動應用程式，可讓您在移動時留意事物。
 
 ## <a name="high-availability"></a>高可用性
 

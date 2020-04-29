@@ -8,14 +8,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.openlocfilehash: ce58aae3b1db1f0f338d353025d4f277aeb6944f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77137488"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>整合多個 Azure 監視器 Application Insights 資源 
-本文介紹如何在一個位置查詢和查看所有應用程式見解日誌資料，即使這些資料位於不同的 Azure 訂閱中，也作為應用程式見解連接器的棄用的替換。 可在單個查詢中包含的應用程式見解資源數限制為 100。
+本文說明如何在同一個位置查詢和查看所有 Application Insights 記錄資料，即使它們位於不同的 Azure 訂用帳戶中，也可以取代 Application Insights Connector。 您可以包含在單一查詢中的 Application Insights 資源數目限制為100。
 
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>查詢多個 Application Insights 資源的建議方法 
 在查詢中列出多個 Application Insights 資源可能很麻煩且難以維護。 相反地，您可以利用函數將查詢邏輯與應用程序範圍分開。  
@@ -27,9 +27,9 @@ ms.locfileid: "77137488"
 您可以隨時修改所列出的應用程式，方法是在入口網站中瀏覽至您工作區中的 [查詢總管] 並選取函式來進行編輯後再儲存，或是使用 `SavedSearch` PowerShell Cmdlet。 
 
 >[!NOTE]
->此方法不能與日誌警報一起使用，因為警報規則資源（包括工作區和應用程式）的訪問驗證是在警報創建時執行的。 不支援在創建警報後向函數添加新資源。 如果希望使用函數在日誌警報中定義資源，則需要在門戶中編輯警報規則，或者使用資源管理器範本來更新作用域資源。 或者，您可以在日誌警報查詢中包含資源清單。
+>這個方法無法搭配記錄警示使用，因為警示規則資源（包括工作區和應用程式）的存取驗證是在警示建立期間執行。 不支援在建立警示之後，將新資源新增至函式。 如果您想要針對記錄警示中的資源範圍使用函式，您必須在入口網站中編輯警示規則，或使用 Resource Manager 範本來更新已設定範圍的資源。 或者，您可以在記錄警示查詢中包含資源的清單。
 
-`withsource= SourceApp` 命令在結果中新增一個資料行，可指定傳送記錄的應用程式。 在本示例中，解析運算子是可選的，用於從 SourceApp 屬性中提取應用程式名稱。 
+`withsource= SourceApp` 命令在結果中新增一個資料行，可指定傳送記錄的應用程式。 在此範例中，parse 運算子是選擇性的，並使用從 SourceApp 屬性中解壓縮應用程式名稱。 
 
 ```
 union withsource=SourceApp 
@@ -70,10 +70,10 @@ applicationsScoping
 | ApplicationTypeVersion | application_Version |
 | AvailabilityCount | itemCount |
 | AvailabilityDuration | duration |
-| AvailabilityMessage | message |
+| AvailabilityMessage | 訊息 |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | NAME |
+| AvailabilityTestName | 名稱 |
 | AvailabilityTimestamp | timestamp |
 | 瀏覽器 | client_browser |
 | City | client_city |
@@ -82,27 +82,27 @@ applicationsScoping
 | Country | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | NAME | 
+| CustomEventName | 名稱 | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
 | ExceptionHandledAt | handledAt |
-| ExceptionMessage | message | 
+| ExceptionMessage | 訊息 | 
 | ExceptionType | type |
 | OperationID | operation_id |
 | OperationName | operation_Name | 
 | OS | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
-| PageViewName | NAME | 
+| PageViewName | 名稱 | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
 | RequestID | id | 
-| RequestName | NAME | 
+| RequestName | 名稱 | 
 | RequestSuccess | 成功 | 
 | ResponseCode | ResultCode | 
-| 角色 | cloud_RoleName |
+| [角色] | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
 | SessionId | session_Id | 
 | SourceSystem | operation_SyntheticSource |

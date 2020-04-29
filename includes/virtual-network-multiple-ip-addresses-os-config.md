@@ -9,10 +9,10 @@ ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: a9473f69d600a86ff71da69c7efe0dea3f2b0a08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76158940"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>將 IP 位址新增至 VM 作業系統
@@ -53,7 +53,7 @@ ping -S 10.0.0.5 hotmail.com
 
 ### <a name="linux-ubuntu-1416"></a>Linux （Ubuntu 14/16）
 
-我們建議您查看 Linux 發行版本的最新文檔。 
+我們建議您查看 Linux 散發套件的最新檔。 
 
 1. 開啟終端機視窗。
 2. 請確定您是 root 使用者。 如果不是，請輸入下列命令：
@@ -112,9 +112,9 @@ ping -S 10.0.0.5 hotmail.com
 
    您應該會在清單中看到您加入的 IP 位址。
 
-### <a name="linux-ubuntu-1804"></a>Linux （Ubuntu 18.04+）
+### <a name="linux-ubuntu-1804"></a>Linux （Ubuntu 18.04 +）
 
-Ubuntu 18.04 及以上更改為`netplan`作業系統網路管理。 我們建議您查看 Linux 發行版本的最新文檔。 
+Ubuntu 18.04 和更新版本已針對`netplan` OS 網路管理變更為。 我們建議您查看 Linux 散發套件的最新檔。 
 
 1. 開啟終端機視窗。
 2. 請確定您是 root 使用者。 如果不是，請輸入下列命令：
@@ -123,13 +123,13 @@ Ubuntu 18.04 及以上更改為`netplan`作業系統網路管理。 我們建議
     sudo -i
     ```
 
-3. 為第二個介面創建檔，並在文字編輯器中打開該檔：
+3. 建立第二個介面的檔案，並在文字編輯器中開啟它：
 
     ```bash
     vi /etc/netplan/60-static.yaml
     ```
 
-4. 將以下行添加到檔中，`10.0.0.6/24`替換為 IP/netmask：
+4. 將下列幾行新增至檔案，並`10.0.0.6/24`將取代為您的 IP/網路遮罩：
 
     ```bash
     network:
@@ -146,16 +146,16 @@ Ubuntu 18.04 及以上更改為`netplan`作業系統網路管理。 我們建議
     :wq
     ```
 
-6. 使用[netplan 嘗試](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html)驗證語法測試更改：
+6. 使用[netplan 嘗試](http://manpages.ubuntu.com/manpages/cosmic/man8/netplan-try.8.html)確認語法來測試變更：
 
     ```bash
     netplan try
     ```
 
 > [!NOTE]
-> `netplan try`將暫時應用更改，並在 120 秒後回滾更改。 如果失去連接，請等待 120 秒，然後重新連接。 此時，更改將回滾。
+> `netplan try`會暫時套用變更，並于120秒後回復變更。 如果連線中斷，請等候120秒，然後重新連線。 在這段時間，變更將會復原。
 
-7. 假設 沒有`netplan try`問題，請應用配置更改：
+7. 假設沒有發生任何`netplan try`問題，請套用設定變更：
 
     ```bash
     netplan apply
