@@ -9,15 +9,15 @@ ms.date: 12/21/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 3f9b86dd3716a25ab95265cf46b616144f57163b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "71168613"
 ---
 ## <a name="overview-of-ssh-and-keys"></a>SSH 和金鑰的概觀
 
-[SSH](https://www.ssh.com/ssh/)是一種加密的連線協定，允許在不安全的連接上安全登錄。 SSH 是 Azure 中裝載 Linux VM 的預設連線通訊協定。 雖然 SSH 本身提供加密的連線，但使用密碼搭配 SSH 連線仍會讓 VM 容易遭受暴力密碼破解攻擊或密碼猜測。 使用公開/私密金鑰組 (也就是 *SSH 金鑰*) 連線至 VM 是更安全且慣用的方法。 
+[SSH](https://www.ssh.com/ssh/)是一種加密的連線通訊協定，允許透過不安全的連接進行安全登入。 SSH 是 Azure 中裝載 Linux VM 的預設連線通訊協定。 雖然 SSH 本身提供加密的連線，但使用密碼搭配 SSH 連線仍會讓 VM 容易遭受暴力密碼破解攻擊或密碼猜測。 使用公開/私密金鑰組 (也就是 *SSH 金鑰*) 連線至 VM 是更安全且慣用的方法。 
 
 * *公開金鑰*會置於您的 Linux VM 或任何您要搭配公開金鑰加密使用的其他服務上。
 

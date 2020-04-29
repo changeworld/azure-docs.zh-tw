@@ -9,10 +9,10 @@ ms.date: 08/09/2018
 ms.author: vashan, cynthn, rajsqr
 ms.custom: include file
 ms.openlocfilehash: 57f557a812ec5e4eea75b76ca1394ca360a85d30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67173918"
 ---
 Azure 虛擬機器 (VM) 會經歷不同狀態，這些狀態可以分成「佈建」** 和「電源」** 狀態。 本文的目的是要說明這些狀態，並具體指出何時會向客戶收取執行個體使用量費用。 
@@ -40,7 +40,7 @@ State
 </tr>
 <tr>
 <td>
-<p><b>開始</b></p>
+<p><b>啟動中</b></p>
 </td>
 <td>
 <p>VM 正在啟動。</p>
@@ -71,7 +71,7 @@ State
  ]</code><br>
 </td>
 <td>
-<p><b>嘴</b></p>
+<p><b>支付</b></p>
 </td>
 </tr>
 <tr>
@@ -89,12 +89,12 @@ State
  ]</code><br>
 </td>
 <td>
-<p><b>嘴</b></p>
+<p><b>支付</b></p>
 </td>
 </tr>
 <tr>
 <td>
-<p><b>停止</b></p>
+<p><b>已停止</b></p>
 </td>
 <td>
 <p>已從客體 OS 內或藉由使用 PowerOff API 關閉 VM。</p>
@@ -131,7 +131,7 @@ State
 </tr>
 <tr>
 <td>
-<p><b>交易</b></p>
+<p><b>已解除配置</b></p>
 </td>
 <td>
 <p>VM 已成功停止，並從主機中移除。 </p>
@@ -178,7 +178,7 @@ State
 <p><b>狀態</b></p>
 </td>
 <td width="366">
-<p>描述</p>
+<p>說明</p>
 </td>
 </tr>
 <tr>
@@ -196,7 +196,7 @@ State
 </tr>
 <tr>
 <td width="162">
-<p><b>更新中</b></p>
+<p><b>更新</b></p>
 </td>
 <td width="366">
 <code>"statuses": [<br>

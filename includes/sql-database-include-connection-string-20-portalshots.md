@@ -11,16 +11,16 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 6ead2e0ea326b5c3f2e76e7aa9cc4ab3c50d4154
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174059"
 ---
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>從 Azure 入口網站取得連接字串
 使用 [Azure 入口網站](https://portal.azure.com/)來取得用戶端程式與 Azure SQL Database 進行互動所需的連接字串。
 
-1. 選擇**所有服務** > **SQL 資料庫**。
+1. 選取 [**所有服務** > ]**[SQL 資料庫**]。
 
 2. 在 [SQL 資料庫]**** 刀鋒視窗左上角附近的篩選文字方塊中輸入您的資料庫名稱。
 

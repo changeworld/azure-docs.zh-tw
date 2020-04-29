@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6d0737a7300b2a6025f776c1ed65a05cacf2141a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67173845"
 ---
 建立遠端桌面連線來連線至部署至 VNet 的 VM。 確認您可以連線至 VM 的最佳方法是使用其私人 IP 位址 (而不是電腦名稱) 進行連線。 這樣一來，您會測試以查看您是否可以連線，而不是否已正確設定名稱解析。 
@@ -20,7 +20,7 @@ ms.locfileid: "67173845"
 1. 找出 VM 的私人 IP 位址。 若要找出 VM 的私人 IP 位址，請在 Azure 入口網站中查看 VM 的屬性或使用 PowerShell。
 2. 確認您已使用點對站 VPN 連線來連線至 VNet。 
 3. 若要開啟遠端桌面連線，請在工作列上的搜尋方塊中輸入「RDP」** 或「遠端桌面連線」**，然後選取 [遠端桌面連線]****。 您也可以使用 PowerShell 中的 **mstsc** 命令來開啟遠端桌面連線。 
-3. 在**遠端桌面連線**中，輸入 VM 的私人 IP 位址。 如有必要，您可以選取 [顯示選項]**** 來調整其他設定，然後進行連線。
+3. 在 [**遠端桌面連線**中，輸入 VM 的私人 IP 位址。 如有必要，您可以選取 [顯示選項]**** 來調整其他設定，然後進行連線。
 
 ### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>針對 VM 的 RDP 連線進行疑難排解
 

@@ -9,10 +9,10 @@ ms.date: 03/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: be71b269e618d13a126e4005754b307e9c6517d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67173973"
 ---
 ## <a name="azure-backup"></a>Azure 備份
@@ -39,7 +39,7 @@ ms.locfileid: "67173973"
 如需有關如何建立快照集的詳細資訊，請參閱：
 
 * [在 Windows 中建立 VHD 複本並儲存為受控磁碟](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [使用 Linux 中的快照創建存儲為託管磁片的 VHD 副本](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [在 Linux 中使用快照集建立 VHD 的複本並儲存為受控磁片](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 
 

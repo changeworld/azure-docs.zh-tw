@@ -11,13 +11,13 @@ ms.topic: include
 ms.date: 07/13/2018
 ms.author: ninarn
 ms.openlocfilehash: 8d0f9899dbb7599340b8d15ca010a0157011fb9e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174058"
 ---
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 2. 在左側的清單中，選取 [所有服務]****。
 
@@ -39,7 +39,7 @@ ms.locfileid: "67174058"
 
     * 將低值結尾設為 **.0**、高值結尾設為 **.255** 會比較方便。
 
-11. 選取 [儲存]****。
+11. 選取 [儲存]  。
 
 <!-- Image references. -->
 

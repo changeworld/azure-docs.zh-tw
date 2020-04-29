@@ -9,10 +9,10 @@ ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 24fbab2bb637edf6c7e31215cdc7ac82bdb0ebab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67173974"
 ---
 部分資料庫工作負載 (例如 SQL Server 或 Oracle) 需要大量記憶體、儲存體和 I/O 頻寬，而不需要大量核心計數。 許多資料庫工作負載不需要大量 CPU。 Azure 提供特定的 VM 大小，您可以在其中限制 VM vCPU 計數以降低軟體授權的成本，同時維持相同的記憶體、儲存體和 I/O 頻寬。
@@ -21,10 +21,10 @@ vCPU 計數可以限制為原始 VM 大小的一半或四分之一。 這些新�
 
 例如，目前 VM 大小 Standard_GS5 隨附 32 個 vCPU、448 GB RAM、64 個磁碟 (高達 256 TB)，以及 80000 IOP 或 2 GB/s 的 I/O 頻寬。 新的 VM 大小 Standard_GS5-16 和 Standard_GS5-8 分別隨附 16 個和 8 個使用中 vCPU，同時維持著與 Standard_GS5 的記憶體、儲存體和 I/O 頻寬相同的規格。
 
-針對 SQL Server 或 Oracle 計費的授權費用限制為新的 vCPU 計數，其他產品應該根據新的 vCPU 計數計費。 這樣會讓使用中 (可計費) vCPU 的 VM 規格增加 50% 到 75%。 這些新的 VM 大小允許客戶工作負載使用相同的記憶體、存儲和 I/O 頻寬，同時優化其軟體許可成本。 目前，計算成本 (包含 OS 授權) 維持與原始大小相同。 如需詳細資訊，請參閱[針對更多符合成本效益的資料庫工作負載推出新的 Azure VM 大小](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)。
+針對 SQL Server 或 Oracle 計費的授權費用限制為新的 vCPU 計數，其他產品應該根據新的 vCPU 計數計費。 這樣會讓使用中 (可計費) vCPU 的 VM 規格增加 50% 到 75%。 這些新的 VM 大小可讓客戶工作負載使用相同的記憶體、儲存體和 i/o 頻寬，同時將其軟體授權成本優化。 目前，計算成本 (包含 OS 授權) 維持與原始大小相同。 如需詳細資訊，請參閱[針對更多符合成本效益的資料庫工作負載推出新的 Azure VM 大小](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)。
 
 
-| 名稱                | vCPU | 規格           |
+| Name                | vCPU | 規格           |
 |---------------------|------|-----------------|
 | Standard_M8-2ms     | 2    | 與 M8ms 相同    |
 | Standard_M8-4ms     | 4    | 與 M8ms 相同    |

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60547331"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Bing 自動建議 API 支援的語言和區域
 
 以下列出 Bing 自動建議 API 支援的語言。
 
-| 語言    | 語言代碼 |
+| Language    | 語言代碼 |
 |:----------- |:-------------:|
 | 阿拉伯文      | `ar`          |
 | 中文 (中國)     | `zh-CN`          |
@@ -64,7 +64,7 @@ ms.locfileid: "60547331"
 | 瑞典文     | `sv`          |
 | 土耳其文     | `tr`          |
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [Azure 認知服務文件頁面](https://docs.microsoft.com/azure/cognitive-services/)
 - [Azure 認知服務產品頁面](https://azure.microsoft.com/services/cognitive-services/)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174013"
 ---
 #### <a name="to-attach-the-sas-cables"></a>連接 SAS 纜線
@@ -18,7 +18,7 @@ ms.locfileid: "67174013"
    
     **主要機箱與 EBOD 機箱的背面檢視**
    
-   | 標籤 | 描述 |
+   | 標籤 | 說明 |
    |:--- |:--- |
    | 1 |主要機箱 |
    | 2 |EBOD 機箱 |
@@ -28,7 +28,7 @@ ms.locfileid: "67174013"
    
     **序號貼紙的位置**
    
-   | 標籤 | 描述 |
+   | 標籤 | 說明 |
    |:--- |:--- |
    | 1 |機箱耳 |
 3. 接下來，使用提供的 SAS 纜線以連接主要機箱與 EBOD 機箱，如下所示：
@@ -41,7 +41,7 @@ ms.locfileid: "67174013"
       
       **SAS 佈線**
       
-      | 標籤 | 描述 |
+      | 標籤 | 說明 |
       |:--- |:--- |
       | A |主要機箱 |
       | B |EBOD 機箱 |

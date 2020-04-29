@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "60499880"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing 搜尋 API 使用和顯示需求
@@ -134,7 +134,7 @@ ms.locfileid: "60499880"
 - 讓使用者存取先前在該裝置上傳回給該使用者的結果 (例如，發生服務中斷時)。
 - 根據該使用者的訊號，在預期到使用者需求而個人化的情況下，儲存主動式查詢所傳回的結果 (例如，發生預期的服務中斷時)。
 
-#### <a name="server"></a>伺服器
+#### <a name="server"></a>Server (伺服器)
 
 只有在下列情況，才可以在您控制的伺服器上，安全地保留單一使用者特定的結果，且只能顯示保留的結果︰
 

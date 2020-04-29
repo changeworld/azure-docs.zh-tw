@@ -5,40 +5,40 @@ ms.topic: include
 ms.date: 03/06/2019
 ms.author: alkohli
 ms.openlocfilehash: 348f7bdd333da4f4a6cb41a438b7aee08d6a6bbb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67174441"
 ---
-根據用戶端的作業系統，遠端連線到設備的過程是不同的。
+視用戶端的作業系統而定，遠端連線至裝置的程式會不同。
 
 ### <a name="remotely-connect-from-a-windows-client"></a>從 Windows 用戶端遠端連線
 
-開始之前，請確保 Windows 用戶端正在運行 Windows PowerShell 5.0 或更高版本。
+開始之前，請確定您的 Windows 用戶端正在執行 Windows PowerShell 5.0 或更新版本。
 
-按照以下步驟從 Windows 用戶端遠端連線。
+請遵循下列步驟，從 Windows 用戶端進行遠端連線。
 
-1. 以管理員身份運行 Windows PowerShell 會話。
-2. 確保 Windows 遠端系統管理服務在用戶端上運行。 在命令提示字元中，輸入：
+1. 以系統管理員身分執行 Windows PowerShell 會話。
+2. 請確定 Windows 遠端管理服務正在您的用戶端上執行。 在命令提示字元中，輸入：
 
     `winrm quickconfig`
 
-3. 將變數分配給設備 IP 位址。
+3. 將變數指派給裝置 IP 位址。
 
     $ip = "<device_ip>"
 
-    替換為`<device_ip>`設備的 IP 位址。
+    將`<device_ip>`取代為您裝置的 IP 位址。
 
-4. 要將設備的 IP 位址添加到用戶端的受信任主機清單中，請鍵入以下命令：
+4. 若要將裝置的 IP 位址新增至用戶端的信任主機清單，請輸入下列命令：
 
     `Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force`
 
-5. 在設備上啟動 Windows PowerShell 會話：
+5. 在裝置上啟動 Windows PowerShell 會話：
 
     `Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell`
 
-6. 在出現提示時提供密碼。 使用用於登錄到本地 Web UI 的相同密碼。 預設的本地 Web UI 密碼為*密碼 1*。 使用遠端 PowerShell 成功連接到設備時，您將看到以下示例輸出：  
+6. 出現提示時提供密碼。 使用與用來登入本機 web UI 相同的密碼。 預設的本機 web UI 密碼是*Password1*。 當您使用遠端 PowerShell 成功連接到裝置時，您會看到下列範例輸出：  
 
     ```
     Windows PowerShell
@@ -56,25 +56,25 @@ ms.locfileid: "67174441"
 
 ### <a name="remotely-connect-from-a-linux-client"></a>從 Linux 用戶端遠端連線
 
-在用於連接的 Linux 用戶端上：
+在您要用來連接的 Linux 用戶端上：
 
-- 從 GitHub[安裝最新的 Linux PowerShell 內核](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6)，以獲得 SSH 遠端處理功能。 
-- [僅從`gss-ntlmssp`NTLM 模組安裝包](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 對於 Ubuntu 用戶端，請使用以下命令：
+- 從 GitHub[安裝最新的 PowerShell Core For Linux](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6) ，以取得 SSH 遠端功能。 
+- [只安裝來自`gss-ntlmssp` NTLM 模組的套件](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md)。 若是 Ubuntu 用戶端，請使用下列命令：
     - `sudo apt-get install gss-ntlmssp`
 
-有關詳細資訊，請訪問[PowerShell 在 SSH 上進行遠端處理](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)。
+如需詳細資訊，請移至透過[SSH 的 PowerShell 遠端](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6)。
 
-按照以下步驟從 NFS 用戶端遠端連線。
+請遵循下列步驟，從 NFS 用戶端進行遠端連線。
 
-1. 要打開 PowerShell 會話，鍵入：
+1. 若要開啟 PowerShell 會話，請輸入：
 
     `sudo pwsh`
  
-2. 對於使用遠端用戶端進行連接，鍵入：
+2. 若要使用遠端用戶端進行連線，請輸入：
 
     `Enter-PSSession -ComputerName $ip -Authentication Negotiate -ConfigurationName Minishell -Credential ~\EdgeUser`
 
-    出現提示時，提供用於登錄到設備的密碼。
+    出現提示時，請提供用來登入裝置的密碼。
  
 > [!NOTE]
-> 此過程在 Mac 作業系統上不起作用。
+> 此程式不適用於 Mac OS。
