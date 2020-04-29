@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 009aff2703829e6d30f93b3c8e3696724594f29b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260289"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>使用 Python 向 Azure Data Lake Storage Gen1 進行服務對服務驗證
@@ -30,11 +30,11 @@ ms.locfileid: "79260289"
 在本文中，您會了解如何使用 Python 向 Azure Data Lake Storage Gen1 進行服務對服務驗證。 如須使用 Python 向 Data Lake Storage Gen1 進行使用者驗證，請參閱[使用 Python 向 Data Lake Storage Gen1 進行使用者驗證](data-lake-store-end-user-authenticate-python.md)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* **Python**. 您可以從[這裡](https://www.python.org/downloads/)下載 Python。 本文使用 Python 3.6.2。
+* **Python**。 您可以從[這裡](https://www.python.org/downloads/)下載 Python。 本文使用 Python 3.6.2。
 
-* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
 * **建立 Azure Active Directory "Web" 應用程式**。 您必須已經完成[使用 Azure Active Directory 向 Data Lake Storage Gen1 進行服務對服務驗證](data-lake-store-service-to-service-authenticate-using-active-directory.md)中的步驟。
 
@@ -44,7 +44,7 @@ ms.locfileid: "79260289"
 
 * `azure-mgmt-resource` 模組，這包括適用於 Active Directory 等等的 Azure 模組。
 * `azure-mgmt-datalake-store` 模組包括 Data Lake Storage Gen1 帳戶管理作業。 如需關於此模組的詳細資訊，請參閱 [Azure Data Lake Storage Gen1 Management module reference (Azure Data Lake Storage Gen1 管理模組參考)](/python/api/azure-mgmt-datalake-store/)。
-* `azure-datalake-store` 模組包括 Data Lake Storage Gen1 檔案系統作業。 有關此模組的詳細資訊，請參閱[azure 資料湖存儲檔案系統模組引用](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)。
+* `azure-datalake-store` 模組包括 Data Lake Storage Gen1 檔案系統作業。 如需此模組的詳細資訊，請參閱[datalake-Store Filesystem 模組參考](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/)。
 
 使用下列命令來安裝新模組。
 
@@ -56,7 +56,7 @@ pip install azure-datalake-store
 
 ## <a name="create-a-new-python-application"></a>建立新的 Python 應用程式
 
-1. 在您選擇的 IDE 中，創建一個新的 Python 應用程式，例如 **，mysample.py**。
+1. 在您選擇的 IDE 中，建立新的 Python 應用程式，例如**mysample.py**。
 
 2. 新增以下程式碼片段以匯入必要模組
 
@@ -84,7 +84,7 @@ pip install azure-datalake-store
 
 ## <a name="service-to-service-authentication-with-client-secret-for-account-management"></a>適用於帳戶管理的用戶端密碼服務對服務驗證
 
-使用此程式碼片段對資料存儲第 1 代的帳戶管理操作進行 Azure AD 身份驗證，例如創建資料存儲庫第 1 代帳戶、刪除資料存儲庫第 1 代帳戶等。以下程式碼片段可用於以非對話模式對應用程式進行身份驗證，使用現有 Azure AD"Web 應用"應用程式的應用程式/服務主體的應用程式/服務主體的用戶端金鑰。
+使用此程式碼片段向 Azure AD 進行驗證，以在 Data Lake Storage Gen1 上進行帳戶管理作業，例如建立 Data Lake Storage Gen1 帳戶、刪除 Data Lake Storage Gen1 帳戶等。下列程式碼片段可用於以非互動方式驗證您的應用程式，使用現有 Azure AD 「Web 應用程式」應用程式之應用程式/服務主體的用戶端密碼。
 
     authority_host_uri = 'https://login.microsoftonline.com'
     tenant = '<TENANT>'
@@ -99,7 +99,7 @@ pip install azure-datalake-store
 
 ## <a name="service-to-service-authentication-with-client-secret-for-filesystem-operations"></a>適用於檔案系統作業的用戶端密碼服務對服務驗證
 
-使用以下程式碼片段對資料存儲第 1 代的檔案系統操作（如創建資料夾、上載檔等）進行身份驗證。以下程式碼片段可用於非互動式地對應用程式進行身份驗證，使用應用程式/服務主體的用戶端金鑰。 請將此方法用於現有的 Azure AD「Web 應用程式」應用程式。
+使用下列程式碼片段向 Azure AD 驗證 Data Lake Storage Gen1 上的檔案系統作業，例如建立資料夾、上傳檔案等。下列程式碼片段可以使用應用程式/服務主體的用戶端密碼，以非互動方式驗證您的應用程式。 請將此方法用於現有的 Azure AD「Web 應用程式」應用程式。
 
     tenant = '<TENANT>'
     RESOURCE = 'https://datalake.azure.net/'

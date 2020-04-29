@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
 ms.openlocfilehash: 8046e4f42db50db15c840a13b95ae1f3620a8c7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266919"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>嘗試透過遠端桌面連線至 Azure VM 時發生內部錯誤
@@ -24,7 +24,7 @@ ms.locfileid: "79266919"
 本文說明當您嘗試連線至 Microsoft Azure 中的虛擬機器 (VM) 時所可能遇到的錯誤。
 
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
 您無法使用遠端桌面通訊協定 (RDP) 來連線至 Azure VM。 連線會停滯在「正在設定遠端」區段，或者您會收到下列錯誤訊息：
 
@@ -158,7 +158,7 @@ RDP 用戶端會使用 TLS 1.0 作為預設通訊協定。 不過，您也可以
 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>將 OS 磁碟連結至復原 VM
 
-1. [將作業系統磁片附加到恢復 VM。](../windows/troubleshoot-recovery-disks-portal.md)
+1. [將 OS 磁片連結至復原 VM](../windows/troubleshoot-recovery-disks-portal.md)。
 2. 在 OS 磁碟連結至復原 VM 後，請確定該磁碟在磁碟管理主控台中標示為 [線上]****。 記下指派給已連結 OS 磁碟的磁碟機代號。
 3. 啟動復原 VM 的遠端桌面連線。
 
@@ -166,7 +166,7 @@ RDP 用戶端會使用 TLS 1.0 作為預設通訊協定。 不過，您也可以
 
 若要啟用傾印記錄檔與序列主控台，請執行下列指令碼。
 
-1. 打開提升的命令提示會話 （**以管理員身份運行**）。
+1. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。
 2. 執行下列指令碼：
 
     在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
@@ -195,7 +195,7 @@ RDP 用戶端會使用 TLS 1.0 作為預設通訊協定。 不過，您也可以
 
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>重設 MachineKeys 資料夾的權限
 
-1. 打開提升的命令提示會話 （**以管理員身份運行**）。
+1. 開啟提升許可權的命令提示字元會話（**以系統管理員身分執行**）。
 2. 執行下列指令碼。 在此指令碼中，我們假設指派給已連結 OS 磁碟的磁碟機代號是 F。請將此磁碟機代號取代為 VM 的適當值。
 
         Md F:\temp

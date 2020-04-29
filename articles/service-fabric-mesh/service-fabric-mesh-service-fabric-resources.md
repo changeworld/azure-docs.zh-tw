@@ -1,5 +1,5 @@
 ---
-title: Azure 服務結構資源模型簡介
+title: Azure Service Fabric 資源模型簡介
 description: 了解 Service Fabric 資源模型，一種定義 Service Fabric Mesh 應用程式的簡化方法。
 author: vturecek
 ms.topic: conceptual
@@ -7,10 +7,10 @@ ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 0ae2ed163560aee4c0c3525ab31910e37afaa5b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259132"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Azure Service Fabric 資源模型簡介
@@ -75,7 +75,7 @@ Service Fabric 資源模型描述一種簡單的方法，可定義組成 Service
 
 ## <a name="packaging-and-deployment"></a>封裝和部署
 
-以資源模型為基礎的 Service Fabric Mesh 應用程式會封裝為 Docker 容器。  Service Fabric Mesh 是共用的多租用戶環境，容器則可提供高層級的隔離機制。  這些應用程式會使用 JSON 格式或 YAML 格式 (這會接著轉換為 JSON) 來描述。 將網格應用程式部署到 Azure 服務結構網格時，用於描述應用程式的 JSON 是 Azure 資源管理器範本。 資源會對應至 Azure 資源。  將 Mesh 應用程式部署到服務結構群集（獨立或 Azure 託管）時，用於描述應用程式的 JSON 格式類似于 Azure 資源管理器範本。  Mesh 應用程式在部署後可透過 HTTP 介面或 Azure CLI 來管理。 
+以資源模型為基礎的 Service Fabric Mesh 應用程式會封裝為 Docker 容器。  Service Fabric Mesh 是共用的多租用戶環境，容器則可提供高層級的隔離機制。  這些應用程式會使用 JSON 格式或 YAML 格式 (這會接著轉換為 JSON) 來描述。 將網狀應用程式部署至 Azure Service Fabric 網格時，用來描述應用程式的 JSON 是 Azure Resource Manager 範本。 資源會對應至 Azure 資源。  將網狀應用程式部署至 Service Fabric 叢集（獨立或 Azure 託管）時，用來描述應用程式的 JSON 格式類似于 Azure Resource Manager 範本。  Mesh 應用程式在部署後可透過 HTTP 介面或 Azure CLI 來管理。 
 
 
 ## <a name="next-steps"></a>後續步驟 

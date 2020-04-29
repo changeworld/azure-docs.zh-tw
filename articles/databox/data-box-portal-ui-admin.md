@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/09/2019
 ms.author: alkohli
 ms.openlocfilehash: 01e3ed9f94b575aae4ce0ed12eb63e3cf40d99ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259964"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 入口網站來管理資料箱磁碟
@@ -51,11 +51,11 @@ ms.locfileid: "79259964"
 
     ![複製訂單 1](media/data-box-portal-ui-admin/clone-order1.png)
 
-2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」**。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 **[建立]**。    
+2.  所有的訂單詳細資料保持不變。 訂單名稱是原始訂單名稱附加上「-複製」**。 請選取核取方塊，以確認您已檢閱隱私權資訊。 按一下 [建立]  。    
 
 會在幾分鐘內建立複製，且入口網站更新會顯示新的訂單。
 
-[![克隆順序 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![複製順序3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
 
 ## <a name="delete-order"></a>刪除訂單
 
@@ -63,7 +63,7 @@ ms.locfileid: "79259964"
 
 您只能將已完成或已取消的訂單刪除。 執行下列步驟來刪除訂單。
 
-1. 轉到**所有資源**。 搜尋您的訂單。
+1. 移至 [**所有資源**]。 搜尋您的訂單。
 
     ![搜尋資料箱磁碟訂單](media/data-box-portal-ui-admin/search-data-box-disk-orders.png)
 
@@ -71,7 +71,7 @@ ms.locfileid: "79259964"
 
     ![刪除資料箱磁碟訂單 1](media/data-box-portal-ui-admin/delete-order1.png)
 
-3. 當系統提示時，請輸入訂單的名稱來確認訂單刪除。 按一下 [刪除]****。
+3. 當系統提示時，請輸入訂單的名稱來確認訂單刪除。 按一下 **[刪除]** 。
 
      ![刪除資料箱磁碟訂單 2](media/data-box-portal-ui-admin/delete-order2.png)
 

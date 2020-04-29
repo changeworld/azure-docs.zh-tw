@@ -1,6 +1,6 @@
 ---
-title: Azure 快速路由：向 VNet：門戶添加閘道
-description: 本文將引導您將虛擬網路閘道添加到已創建的 ExpressRoute 資源管理器 VNet 中，使用 Azure 門戶。
+title: Azure ExpressRoute：將閘道新增至 VNet：入口網站
+description: 本文會逐步引導您使用 Azure 入口網站，將虛擬網路閘道新增至已建立的 ExpressRoute Resource Manager VNet。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 87b656f0ef999b3b15a89476f5cba4c4fcfc2b1e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79264826"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>使用 Azure 入口網站為 ExpressRoute 設定虛擬網路閘道
@@ -20,7 +20,7 @@ ms.locfileid: "79264826"
 > * [Resource Manager - Azure 入口網站](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 > * [傳統 - PowerShell](expressroute-howto-add-gateway-classic.md)
-> * [視頻 - Azure 門戶](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
+> * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network)
 > 
 > 
 
@@ -31,7 +31,7 @@ ms.locfileid: "79264826"
 
 此工作的步驟會根據下列組態參考清單中的值來使用 VNet。 我們會在範例步驟中使用此清單。 您可以複製清單以供參考，並使用您自己的值來取代其中的值。
 
-**配置參考清單**
+**設定參考清單**
 
 * 虛擬網路名稱 = "TestVNet"
 * 虛擬網路位址空間 = 192.168.0.0/16
@@ -49,7 +49,7 @@ ms.locfileid: "79264826"
 
 ## <a name="create-the-gateway-subnet"></a>建立閘道子網路
 
-1. 在[門戶](https://portal.azure.com)中，導航到要為其創建虛擬網路閘道的資源管理器虛擬網路。
+1. 在[入口網站](https://portal.azure.com)中，流覽至您想要建立虛擬網路閘道的 Resource Manager 虛擬網路。
 2. 在 VNet 刀鋒視窗的 [設定]**** 中，按一下 [子網路]**** 以展開 [子網路] 刀鋒視窗。
 3. 在 [子網路]**** 刀鋒視窗中，按一下 [+閘道子網路]**** 以開啟 [新增子網路]**** 刀鋒視窗。 
    
@@ -62,7 +62,7 @@ ms.locfileid: "79264826"
 
 ## <a name="create-the-virtual-network-gateway"></a>建立虛擬網路閘道
 
-1. 在門戶中，在左側，按一下**+** 並鍵入"虛擬網路閘道"進行搜索。 在搜尋傳回的結果中找出**虛擬網路閘道**，然後按一下該項目。 在 [虛擬網路閘道]**** 刀鋒視窗上，按一下刀鋒視窗底部的 [建立]****。 這會開啟 [建立虛擬網路閘道]**** 刀鋒視窗。
+1. 在入口網站中，按一下**+** 左側的，然後在 [搜尋] 中輸入「虛擬網路閘道」。 在搜尋傳回的結果中找出**虛擬網路閘道**，然後按一下該項目。 在 [虛擬網路閘道]**** 刀鋒視窗上，按一下刀鋒視窗底部的 [建立]****。 這會開啟 [建立虛擬網路閘道]**** 刀鋒視窗。
 2. 在 [建立虛擬網路閘道]**** 刀鋒視窗上，填入您虛擬網路閘道的值。
 
     ![建立虛擬網路閘道刀鋒視窗欄位](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "建立虛擬網路閘道刀鋒視窗欄位")
@@ -70,7 +70,7 @@ ms.locfileid: "79264826"
 4. **閘道類型**︰選取 [ExpressRoute]****。
 5. **SKU**︰從下拉式清單中選取閘道 SKU。
 6. **位置**：調整 [位置]**** 欄位以指向您的虛擬網路所在的位置。 如果位置並未指向您的虛擬網路所在的區域，則此虛擬網路不會出現在 [選擇虛擬網路] 下拉式清單中。
-7. 選擇您要新增此閘道的虛擬網路。 按一下 **"虛擬網路**"以打開 **"選擇虛擬網路**邊欄選項卡"。 選取 VNet。 如果看不到 VNet，請確保 **"位置"** 欄位指向虛擬網路所在的區域。
+7. 選擇您要新增此閘道的虛擬網路。 按一下 [**虛擬網路**] 以開啟 [**選擇虛擬網路**] 分頁。 選取 VNet。 如果您沒有看到您的 VNet，請確定 [**位置**] 欄位是指向您的虛擬網路所在的區域。
 9. 選擇公用 IP 位址。 按一下 [公用 IP 位址]**** 以開啟 [選擇公用 IP 位址]**** 刀鋒視窗。 按一下 [+新建]**** 以開啟 [建立公用 IP 位址]**** 刀鋒視窗。 輸入公用 IP 位址的名稱。 此刀鋒視窗會建立將動態獲派公用 IP 位址的公用 IP 位址物件。 按一下 [確定]**** 將變更儲存至此刀鋒視窗。
 10. **訂用帳戶**：請確認已選取正確的訂用帳戶。
 11. **資源群組**：此設定取決於您選取的虛擬網路。

@@ -1,6 +1,6 @@
 ---
-title: 託管實例 - 時間點還原 （PITR）
-description: 將託管實例中的 SQL 資料庫還原到以前的時間點。
+title: 受控實例-時間點還原（PITR）
+description: 將受控實例中的 SQL database 還原至先前的時間點。
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,62 +12,62 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
 ms.openlocfilehash: 27f465e6864d0ff639e825c8a816d86648bd8853
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268804"
 ---
-# <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>將託管實例中的 SQL 資料庫還原到上一個時間點
+# <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>將受控實例中的 SQL database 還原至先前的時間點
 
-使用時間點還原 （PITR） 創建資料庫，作為過去某個時候另一個資料庫的副本。 本文介紹如何在 Azure SQL 資料庫託管實例中對資料庫進行時間點還原。
+使用時間點還原（PITR），從過去的某個時間，將資料庫建立為另一個資料庫的複本。 本文說明如何在 Azure SQL Database 受控實例中執行資料庫的時間點還原。
 
-時間點還原在恢復方案中非常有用，例如由錯誤引起的事件、不正確的載入資料或刪除關鍵資料。 您也可以將其用於測試或審核。 備份檔案將保留 7 到 35 天，具體取決於資料庫設置。
+時間點還原在復原案例中很有用，例如錯誤造成的事件、不正確地載入資料，或刪除重要的資料。 您也可以將它用於測試或審核。 備份檔案會保留7到35天，視您的資料庫設定而定。
 
-時間點還原可以還原資料庫：
+還原時間點可以還原資料庫：
 
-- 從現有資料庫。
+- 從現有的資料庫。
 - 從已刪除的資料庫。
-- 到同一託管實例，或另一個託管實例。 
+- 指向相同的受控實例或另一個受控實例。 
 
 ## <a name="limitations"></a>限制
 
-還原到託管實例的時間點具有以下限制：
+將時間點還原至受控實例有下列限制：
 
-- 當您從一個託管實例還原到另一個實例時，兩個實例必須位於同一訂閱和區域中。 當前不支援跨區域和跨訂閱還原。
-- 無法對整個託管實例進行時間點還原。 本文僅說明可能實現的內容：託管實例上託管的資料庫的時間點還原。
+- 當您從某個受控實例還原到另一個時，這兩個實例必須位於相同的訂用帳戶和區域中。 目前不支援跨區域和跨訂用帳戶還原。
+- 不可能進行整個受控實例的時間點還原。 本文僅說明可能的情況：裝載在受控實例上之資料庫的時間點還原。
 
 > [!WARNING]
-> 請注意託管實例的存儲大小。 根據要還原的資料的大小，實例存儲可能耗盡。 如果還原的資料沒有足夠的空間，請使用其他方法。
+> 請留意受控實例的儲存體大小。 視要還原的資料大小而定，您可能會用盡實例儲存體。 如果沒有足夠的空間可用於還原的資料，請使用不同的方法。
 
-下表顯示了託管實例的時間點還原方案：
+下表顯示受控實例的時間點還原案例：
 
-|           |將現有資料庫還原到同一託管實例| 將現有資料庫還原到另一個託管實例|將丟棄的資料庫還原到同一託管實例|將丟棄的資料庫還原到另一個託管實例|
+|           |將現有的資料庫還原到相同的受控實例| 將現有的資料庫還原到另一個受控實例|將已卸載的資料庫還原到相同的受控實例|將已卸載的資料庫還原到另一個受控實例|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure 門戶**| 是|否 |是|否|
+|**Azure 入口網站**| 是|否 |是|否|
 |**Azure CLI**|是 |是 |否|否|
-|**電源外殼**| 是|是 |是|是|
+|**PowerShell**| 是|是 |是|是|
 
-## <a name="restore-an-existing-database"></a>還原現有資料庫
+## <a name="restore-an-existing-database"></a>還原現有的資料庫
 
-使用 Azure 門戶、PowerShell 或 Azure CLI 將現有資料庫還原到同一實例。 要將資料庫還原到另一個實例，請使用 PowerShell 或 Azure CLI，以便指定目標託管實例和資源組的屬性。 如果不指定這些參數，預設情況下資料庫將還原到現有實例。 Azure 門戶當前不支援還原到另一個實例。
+使用 Azure 入口網站、PowerShell 或 Azure CLI，將現有的資料庫還原至相同的實例。 若要將資料庫還原到另一個實例，請使用 PowerShell 或 Azure CLI，讓您可以指定目標受控實例和資源群組的屬性。 如果您未指定這些參數，則預設會將資料庫還原至現有的實例。 Azure 入口網站目前不支援還原至另一個實例。
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。 
-2. 轉到託管實例並選擇要還原的資料庫。
-3. 在資料庫頁面上選擇 **"還原**"：
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 
+2. 移至您的受控實例，然後選取您想要還原的資料庫。
+3. 在 [資料庫] 頁面上選取 [**還原**]：
 
-    ![使用 Azure 門戶還原資料庫](media/sql-database-managed-instance-point-in-time-restore/restore-database-to-mi.png)
+    ![使用 Azure 入口網站還原資料庫](media/sql-database-managed-instance-point-in-time-restore/restore-database-to-mi.png)
 
-4. 在 **"還原"** 頁上，選擇要還原資料庫的日期和時間的點。
-5. 選擇 **"確認**"以還原資料庫。 此操作啟動還原過程，該進程創建新資料庫，並在指定的時間點使用原始資料庫的資料填充它。 有關恢復過程的詳細資訊，請參閱[恢復時間](sql-database-recovery-using-backups.md#recovery-time)。
+4. 在 [**還原**] 頁面上，選取您想要還原資料庫的日期和時間點。
+5. 選取 [**確認**] 以還原您的資料庫。 此動作會啟動還原程式，此程式會建立新的資料庫，並在指定的時間點，將原始資料庫的資料填入其中。 如需復原程式的詳細資訊，請參閱復原[時間](sql-database-recovery-using-backups.md#recovery-time)。
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-如果尚未安裝 Azure PowerShell，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
+如果您尚未安裝 Azure PowerShell，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps)。
 
-要使用 PowerShell 還原資料庫，請在以下命令中指定參數的值。 然後，運行命令：
+若要使用 PowerShell 來還原資料庫，請在下列命令中指定參數的值。 然後，執行命令：
 
 ```powershell-interactive
 $subscriptionId = "<Subscription ID>"
@@ -88,7 +88,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceDatabaseName $targetDatabase `
 ```
 
-要將資料庫還原到另一個託管實例，請指定目標資源組和目標託管實例的名稱：  
+若要將資料庫還原到另一個受控實例，請同時指定目標資源群組和目標受控實例的名稱：  
 
 ```powershell-interactive
 $targetResourceGroupName = "<Resource group of target managed instance>"
@@ -104,20 +104,20 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
                               -TargetInstanceName $targetInstanceName 
 ```
 
-有關詳細資訊，請參閱[還原-AzSqlinstance 資料庫](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)。
+如需詳細資訊，請參閱[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-如果尚未安裝 Azure CLI，請參閱安裝 Azure [CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果您尚未安裝 Azure CLI，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-要使用 Azure CLI 還原資料庫，請在以下命令中指定參數的值。 然後，運行命令：
+若要使用 Azure CLI 來還原資料庫，請在下列命令中指定參數的值。 然後，執行命令：
 
 ```azurecli-interactive
 az sql midb restore -g mygroupname --mi myinstancename |
 -n mymanageddbname --dest-name targetmidbname --time "2018-05-20T05:34:22"
 ```
 
-要將資料庫還原到另一個託管實例，請指定目標資源組和託管實例的名稱：  
+若要將資料庫還原到另一個受控實例，請同時指定目標資源群組和受控實例的名稱：  
 
 ```azurecli-interactive
 az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
@@ -126,24 +126,24 @@ az sql midb restore -g mygroupname --mi myinstancename -n mymanageddbname |
        --dest-mi mytargetinstancename
 ```
 
-有關可用參數的詳細說明，請參閱[用於在託管實例中還原資料庫的 CLI 文檔](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore)。
+如需可用參數的詳細說明，請參閱[CLI 檔，以瞭解如何在受控實例中還原資料庫](https://docs.microsoft.com/cli/azure/sql/midb?view=azure-cli-latest#az-sql-midb-restore)。
 
 ---
 
 ## <a name="restore-a-deleted-database"></a>還原已刪除的資料庫
 
-還原已刪除的資料庫可以通過使用 PowerShell 或 Azure 門戶來完成。 要將已刪除的資料庫還原到同一實例，請使用 Azure 門戶或 PowerShell。 要將已刪除的資料庫還原到另一個實例，請使用 PowerShell。 
+您可以使用 PowerShell 或 Azure 入口網站來還原已刪除的資料庫。 若要將已刪除的資料庫還原到相同的實例，請使用 Azure 入口網站或 PowerShell。 若要將已刪除的資料庫還原到另一個實例，請使用 PowerShell。 
 
 ### <a name="portal"></a>入口網站 
 
 
-要使用 Azure 門戶恢復託管資料庫，請打開託管實例概覽頁，然後選擇 **"已刪除的資料庫**"。 選擇要還原的已刪除資料庫，然後鍵入將使用從備份還原的資料創建的新資料庫的名稱。
+若要使用 Azure 入口網站復原受管理的資料庫，請開啟 [受控實例總覽] 頁面，然後選取 [**已刪除的資料庫**]。 選擇您想要還原的已刪除資料庫，然後輸入將使用從備份還原之資料所建立的新資料庫名稱。
 
-  ![已還原已刪除的 Azure SQL 實例資料庫的螢幕截圖](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
+  ![還原已刪除的 Azure SQL 實例資料庫的螢幕擷取畫面](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
 ### <a name="powershell"></a>PowerShell
 
-要將資料庫還原到同一實例，請更新參數值，然後運行以下 PowerShell 命令： 
+若要將資料庫還原到相同的實例，請更新參數值，然後執行下列 PowerShell 命令： 
 
 ```powershell-interactive
 $subscriptionId = "<Subscription ID>"
@@ -166,7 +166,7 @@ Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
    -TargetInstanceDatabaseName $targetDatabaseName
 ```
 
-要將資料庫還原到另一個託管實例，請指定目標資源組和目標託管實例的名稱：
+若要將資料庫還原到另一個受控實例，請同時指定目標資源群組和目標受控實例的名稱：
 
 ```powershell-interactive
 $targetResourceGroupName = "<Resource group of target managed instance>"
@@ -182,38 +182,38 @@ Restore-AzSqlinstanceDatabase -Name $deletedDatabase.Name `
    -TargetInstanceName $targetInstanceName 
 ```
 
-## <a name="overwrite-an-existing-database"></a>覆蓋現有資料庫
+## <a name="overwrite-an-existing-database"></a>覆寫現有的資料庫
 
-要覆蓋現有資料庫，必須：
+若要覆寫現有的資料庫，您必須：
 
-1. 刪除要覆蓋的現有資料庫。
-2. 將時間點還原的資料庫重命名為丟棄的資料庫的名稱。
+1. 卸載您想要覆寫的現有資料庫。
+2. 將還原時間點的資料庫重新命名為您卸載之資料庫的名稱。
 
-### <a name="drop-the-original-database"></a>刪除原始資料庫
+### <a name="drop-the-original-database"></a>卸載原始資料庫
 
-可以使用 Azure 門戶、PowerShell 或 Azure CLI 刪除資料庫。
+您可以使用 Azure 入口網站、PowerShell 或 Azure CLI 來卸載資料庫。
 
-還可以通過直接連接到託管實例、啟動 SQL 伺服器管理工作室 （SSMS）以及運行以下 Transact-SQL （T-SQL） 命令來刪除資料庫：
+您也可以直接連接到受控實例來卸載資料庫，從 SQL Server Management Studio （SSMS）開始，然後執行下列 Transact-sql （T-sql）命令：
 
 ```sql
 DROP DATABASE WorldWideImporters;
 ```
 
-使用以下方法之一連接到託管實例中的資料庫：
+使用下列其中一種方法來連線到受控實例中的資料庫：
 
-- [通過 Azure 虛擬機器的 SSMS/Azure 資料工作室](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [點對點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
+- [透過 Azure 虛擬機器的 SSMS/Azure Data Studio](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
+- [點對站](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-在 Azure 門戶中，從託管實例中選擇資料庫，然後選擇 **"刪除**"。
+在 [Azure 入口網站中，選取受控實例中的資料庫，然後選取 [**刪除**]。
 
-   ![使用 Azure 門戶刪除資料庫](media/sql-database-managed-instance-point-in-time-restore/delete-database-from-mi.png)
+   ![使用 Azure 入口網站刪除資料庫](media/sql-database-managed-instance-point-in-time-restore/delete-database-from-mi.png)
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用以下 PowerShell 命令從託管實例中刪除現有資料庫：
+使用下列 PowerShell 命令，從受控實例中卸載現有的資料庫：
 
 ```powershell
 $resourceGroupName = "<Resource group name>"
@@ -225,7 +225,7 @@ Remove-AzSqlInstanceDatabase -Name $databaseName -InstanceName $managedInstanceN
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用以下 Azure CLI 命令從託管實例中刪除現有資料庫：
+使用下列 Azure CLI 命令，從受控實例中卸載現有的資料庫：
 
 ```azurecli-interactive
 az sql midb delete -g mygroupname --mi myinstancename -n mymanageddbname
@@ -233,18 +233,18 @@ az sql midb delete -g mygroupname --mi myinstancename -n mymanageddbname
 
 ---
 
-### <a name="alter-the-new-database-name-to-match-the-original-database-name"></a>更改新資料庫名稱以匹配原始資料庫名稱
+### <a name="alter-the-new-database-name-to-match-the-original-database-name"></a>改變新的資料庫名稱，使其符合原始資料庫名稱
 
-直接連接到託管實例並啟動 SQL 伺服器管理工作室。 然後，運行以下 Transact SQL （T-SQL） 查詢。 查詢將還原的資料庫的名稱更改為要覆蓋的已刪除資料庫的名稱。
+直接連接到受控實例並啟動 SQL Server Management Studio。 然後，執行下列 Transact-sql （T-sql）查詢。 查詢會將還原的資料庫名稱變更為您想要覆寫之已卸載資料庫的名稱。
 
 ```sql
 ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 ```
 
-使用以下方法之一連接到託管實例中的資料庫：
+使用下列其中一種方法來連線到受控實例中的資料庫：
 
 - [Azure 虛擬機器](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
-- [點對點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
+- [點對站](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [公用端點](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
 ## <a name="next-steps"></a>後續步驟

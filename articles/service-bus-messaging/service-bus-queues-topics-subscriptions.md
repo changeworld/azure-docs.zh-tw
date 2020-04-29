@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排消息傳遞 - 佇列、主題和訂閱
-description: 本文概述了 Azure 服務匯流排消息傳遞實體（佇列、主題和訂閱）。
+title: Azure 服務匯流排訊息-佇列、主題和訂用帳戶
+description: 本文提供 Azure 服務匯流排訊息實體（佇列、主題和訂閱）的總覽。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: aschhab
 ms.openlocfilehash: 3dc78a22e0e596d812d90fec63475a0b21e9164f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259509"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>服務匯流排佇列、主題和訂用帳戶
@@ -41,7 +41,7 @@ Microsoft Azure 服務匯流排支援一組以雲端為基礎、訊息導向的�
 
 ### <a name="receive-modes"></a>接收模式
 
-您可以指定兩種不同的服務匯流排訊息接收模式：*ReceiveAndDelete* 或 *PeekLock*。 在接收和刪除模式下，接收操作為單次;在[接收和刪除](/dotnet/api/microsoft.azure.servicebus.receivemode)模式下，接收操作為單次操作。也就是說，當服務匯流排收到來自消費者的請求時，它會將消息標記為已使用，並將其返回到消費者應用程式。 **ReceiveAndDelete** 模式是最簡單的模型，且最適合可容許在發生失敗時不處理訊息的應用程式案例。 若要了解此案例，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
+您可以指定兩種不同的服務匯流排訊息接收模式：*ReceiveAndDelete* 或 *PeekLock*。 在[ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode)模式中，接收作業是一次性的;也就是說，當服務匯流排從取用者收到要求時，它會將訊息標示為已取用，並將它傳回到取用者應用程式。 **ReceiveAndDelete** 模式是最簡單的模型，且最適合可容許在發生失敗時不處理訊息的應用程式案例。 若要了解此案例，請考慮取用者發出接收要求，接著系統在處理此要求之前當機的案例。 因為服務匯流排會將訊息標示為已取用，當應用程式重新啟動並開始重新取用訊息時，它將會遺漏當機前已取用的訊息。
 
 在 [PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode) 模式中，接收作業會變成兩階段作業，因此可以支援無法容許遺漏訊息的應用程式。 當服務匯流排收到要求時，它會尋找要取用的下一個訊息、將其鎖定以防止其他取用者接收此訊息，然後將它傳回應用程式。 在應用程式完成處理訊息 (或可靠地儲存此訊息以供未來處理) 之後，它可透過呼叫已接收訊息上的 [CompleteAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) 來完成接收程序的第二個階段。 當服務匯流排看到 **CompleteAsync** 呼叫時，它會將訊息標示為已取用。
 
@@ -59,11 +59,11 @@ Microsoft Azure 服務匯流排支援一組以雲端為基礎、訊息導向的�
 
 按照上一節所述，建立主題類似於建立佇列。 然後使用 [TopicClient](/dotnet/api/microsoft.azure.servicebus.topicclient) 類別來傳送訊息。 若要接收訊息，您可以建立主題的一或多個訂用帳戶。 與佇列類似，從訂用帳戶接收訊息是使用 [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) 物件，而非 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) 物件。 建立訂用帳戶用戶端，並將主題名稱、訂用帳戶名稱及 (選擇性) 接收模式當作參數傳遞。
 
-有關完整工作示例，請參閱 GitHub 上的["基本接收接收使用主題訂閱用戶端"示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient)。
+如需完整的實用範例，請參閱 GitHub 上的[BasicSendReceiveUsingTopicSubscriptionClient 範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingTopicSubscriptionClient)。
 
 ### <a name="rules-and-actions"></a>執行和動作
 
-在許多情況下，必須以不同的方式處理具有特定特性的訊息。 若要啟用這項處理，您可以設定訂用帳戶以尋找具有所需屬性的訊息，然後對這些屬性進行一些修改。 雖然服務匯流排訂用帳戶可看見所有傳送至主題的訊息，但您只可以將部分的訊息複製到虛擬訂用帳戶佇列。 使用訂用帳戶篩選器即可完成這個篩選。 這類修改稱之為「篩選器動作」**。 創建訂閱時，可以提供對消息的屬性（例如 **，Label）** 和自訂應用程式屬性（例如 **，StoreName**）運行的篩選器運算式。在這種情況下，SQL 篩選器運算式是可選的;因此，SQL 篩選器運算式是可選的。如果沒有 SQL 篩選器運算式，則對訂閱定義的任何篩選器操作都將對該訂閱的所有消息執行。
+在許多情況下，必須以不同的方式處理具有特定特性的訊息。 若要啟用這項處理，您可以設定訂用帳戶以尋找具有所需屬性的訊息，然後對這些屬性進行一些修改。 雖然服務匯流排訂用帳戶可看見所有傳送至主題的訊息，但您只可以將部分的訊息複製到虛擬訂用帳戶佇列。 使用訂用帳戶篩選器即可完成這個篩選。 這類修改稱之為「篩選器動作」**。 建立訂用帳戶時，您可以提供在訊息屬性上運作的篩選運算式，包括系統屬性（例如**標籤**）和自訂應用程式屬性（例如**StoreName**）。在此情況下，SQL 篩選運算式是選擇性的：如果沒有 SQL 篩選條件運算式，就會在訂用帳戶的所有訊息上執行任何定義于訂閱上的篩選器動作。
 
 如需完整的實用範例，請參閱 GitHub 上的 [TopicSubscriptionWithRuleOperationsSample 範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/TopicSubscriptionWithRuleOperationsSample)。
 

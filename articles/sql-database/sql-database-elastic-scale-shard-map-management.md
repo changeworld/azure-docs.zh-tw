@@ -1,5 +1,5 @@
 ---
-title: 橫向擴展資料庫
+title: 相應放大資料庫
 description: 如何使用彈性資料庫用戶端程式庫 ShardMapManager
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 8175563d8c1c2ec59b4195b2ede06f6e1dbf8556
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79256259"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分區對應管理員相應放大資料庫
@@ -220,7 +220,7 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
 
 ### <a name="only-metadata-affected"></a>只影響中繼資料
 
-用來填入或變更 **ShardMapManager** 資料的方法不會改變分區本身中儲存的使用者資料。 比方說，**CreateShard**、**DeleteShard**、**UpdateMapping** 等方法只會影響分區對應中繼資料。 它們不會移除、新增或改變分區中所包含的使用者資料。 相反地，這些方法是設計來搭配其他作業一起使用，例如，您可能執行這些作業來建立或移除實際的資料庫，或將資料列從一個分區移至另一個分區，以重新平衡分區化環境。  （彈性資料庫工具附帶的**拆分合併**工具利用這些 API 以及協調分片之間的實際資料移動。請參閱[使用彈性資料庫拆分合併工具進行縮放](sql-database-elastic-scale-overview-split-and-merge.md)。
+用來填入或變更 **ShardMapManager** 資料的方法不會改變分區本身中儲存的使用者資料。 比方說，**CreateShard**、**DeleteShard**、**UpdateMapping** 等方法只會影響分區對應中繼資料。 它們不會移除、新增或改變分區中所包含的使用者資料。 相反地，這些方法是設計來搭配其他作業一起使用，例如，您可能執行這些作業來建立或移除實際的資料庫，或將資料列從一個分區移至另一個分區，以重新平衡分區化環境。  （彈性資料庫工具隨附的**分割合併**工具會使用這些 api，以及協調分區之間實際的資料移動。）請參閱[使用彈性資料庫分割合併工具進行調整](sql-database-elastic-scale-overview-split-and-merge.md)。
 
 ## <a name="data-dependent-routing"></a>資料相依路由
 

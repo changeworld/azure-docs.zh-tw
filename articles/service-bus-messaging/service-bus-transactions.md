@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排中的交易處理概述
-description: 本文概述了 Azure 服務匯流排中的交易處理和通過功能發送。
+title: Azure 服務匯流排中的交易處理總覽
+description: 本文提供交易處理的總覽，以及 Azure 服務匯流排中的 [透過傳送] 功能。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,19 +14,19 @@ ms.workload: na
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.openlocfilehash: 22744ecbced40b3195f4d047227b1e2a37228102
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260900"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>服務匯流排交易處理概觀
 
-本文討論 Microsoft Azure 服務匯流排的交易功能。 [AMQP 與服務匯流排的事務示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)說明了大部分討論。 本文只包含交易處理概觀以及服務匯流排中的「傳送方式」** 功能，而「不可部分完成交易」範例的範圍更廣且更複雜。
+本文討論 Microsoft Azure 服務匯流排的交易功能。 大部分的討論都會[以服務匯流排範例的 AMQP 交易](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)來說明。 本文只包含交易處理概觀以及服務匯流排中的「傳送方式」** 功能，而「不可部分完成交易」範例的範圍更廣且更複雜。
 
 ## <a name="transactions-in-service-bus"></a>服務匯流排中的交易
 
-*事務*將兩個或多個操作組合到*執行作用域中*。 本質上，這類交易必須確定屬於指定作業群組的所有作業都一起成功或失敗。 在這部分，所有交易都會當成一個單位，通常稱為「不可部分完成性」**。
+*交易*會將兩個以上的作業一起分組到*執行範圍*。 本質上，這類交易必須確定屬於指定作業群組的所有作業都一起成功或失敗。 在這部分，所有交易都會當成一個單位，通常稱為「不可部分完成性」**。
 
 服務匯流排是交易訊息代理人，並確保其訊息存放區之所有內部作業的交易完整性。 服務匯流排內的所有訊息傳輸 (例如，將訊息移至[寄不出的信件佇列](service-bus-dead-letter-queues.md)，或[自動轉寄](service-bus-auto-forwarding.md)實體之間的訊息) 為交易式。 這麼一來，如果服務匯流排接受訊息，表示訊息已經儲存並標上序號。 從那時開始，服務匯流排內的任何訊息傳輸都是跨實體的協調作業，並且不會導致訊息遺失 (來源成功，但目標失敗) 或重複 (來源失敗，但目標成功)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "79260900"
 
 ## <a name="transfers-and-send-via"></a>傳輸和「傳送方式」
 
-若要啟用從佇列到處理器再到另一個佇列的交易式資料送交，服務匯流排支援「傳輸」**。 在傳輸操作中，發送方首先將消息發送到*傳輸佇列*，傳輸佇列使用自動轉發功能所依賴的相同健壯的傳輸實現將消息立即移動到預期目標佇列。 訊息絕不會認可到傳輸佇列的記錄檔，因此，傳輸佇列的取用者可以看到它。
+若要啟用從佇列到處理器再到另一個佇列的交易式資料送交，服務匯流排支援「傳輸」**。 在傳輸作業中，寄件者會先將訊息*傳送至傳輸佇列*，而傳輸佇列會使用自動轉寄功能所依賴的相同健全轉移執行，立即將訊息移至預定的目的地佇列。 訊息絕不會認可到傳輸佇列的記錄檔，因此，傳輸佇列的取用者可以看到它。
 
 傳輸佇列本身是寄件者輸入訊息的來源時，就能知道這個交易式功能的能力。 換句話說，服務匯流排可以「透過」傳輸佇列將訊息傳輸到目的地佇列，同時對輸入訊息執行完整 (或延遲，或寄不出信件) 作業 (全部都在一個不可部分完成作業中)。 
 
@@ -60,7 +60,7 @@ var sender = new MessageSender(connection, QueueName);
 var receiver = new MessageReceiver(connection, QueueName);
 ```
 
-然後，一個簡單的事務使用這些元素，如下面的示例所示。 要引用完整示例，請參閱[GitHub 上的原始程式碼](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)：
+然後，簡單的交易會使用這些元素，如下列範例所示。 若要參考完整的範例，請參閱[GitHub 上的原始程式碼](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia)：
 
 ```csharp
 var receivedMessage = await receiver.ReceiveAsync();
@@ -102,7 +102,7 @@ using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 如需服務匯流排佇列的詳細資訊，請參閱下列文章。
 
 * [如何使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)
-* [使用自動轉發連結服務匯流排實體](service-bus-auto-forwarding.md)
+* [使用自動轉送連結服務匯流排實體](service-bus-auto-forwarding.md)
 * [自動轉寄範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
 * [使用服務匯流排的不可部分完成交易範例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions)
 * [比較 Azure 佇列和服務匯流排佇列](service-bus-azure-and-service-bus-queues-compared-contrasted.md)

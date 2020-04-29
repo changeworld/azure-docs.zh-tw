@@ -1,15 +1,15 @@
 ---
-title: Azure 服務結構中的副本和實例
-description: 瞭解 Service Fabric 中的副本和實例，包括其生命週期和功能概述。
+title: Azure Service Fabric 中的複本和實例
+description: 深入瞭解 Service Fabric 中的複本和實例，包括其生命週期和功能的總覽。
 author: appi101
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258560"
 ---
 # <a name="replicas-and-instances"></a>複本和執行個體 

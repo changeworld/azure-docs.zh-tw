@@ -16,15 +16,15 @@ ms.date: 02/27/2017
 ms.author: twooley
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e58e2d929dd1e4db16ce495ad54045e9dc3a6fb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267413"
 ---
 # <a name="an-introduction-to-storsimple-snapshot-manager"></a>StorSimple Snapshot Manager 簡介
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 StorSimple Snapshot Manager 是 Microsoft Management Console (MMC) 嵌入式管理單元，可簡化資料保護和備份管理 Microsoft Azure StorSimple 環境中。 使用 StorSimple Snapshot Manager 時，您可以將資料中心和雲端中的 Microsoft Azure StorSimple 資料當作單一整合式儲存體解決方案來管理，因而簡化備份程序並降低成本。
 
 本概觀簡介 StorSimple Snapshot Manager、描述其功能，並說明其在 Microsoft Azure StorSimple 中的角色。 
@@ -47,7 +47,7 @@ StorSimple Snapshot Manager 提供中央管理主控台，可用來建立本機�
 
 StorSimple Snapshot Manager 會擷取使用主機 VSS 提供者註冊的應用程式清單。 然後，為建立應用程式一致的備份，它會檢查應用程式使用的磁碟區，並建議要設定的磁碟區群組。 StorSimple Snapshot Manager 會使用這些磁碟區群組，來產生應用程式一致的備份副本。 (當所有相關的檔案和資料庫已同步處理，並代表應用程式在特定時間點的真實狀態時，即存在應用程式一致性。) 
 
-StorSimple Snapshot Manager 備份採用增量快照的形式，即僅擷取自從上次備份之後的變更。 因此，備份所需的儲存體更少並可以快速建立和還原。 StorSimple Snapshot Manager 會使用 Windows 磁碟區陰影複製服務 (VSS)，來確保快照擷取應用程式一致的資料。 （有關詳細資訊，請轉到"與 Windows 卷卷卷卷複製服務集成"部分。使用 StorSimple 快照管理器，您可以創建備份計畫或根據需要立即進行備份。 如果您需要從備份還原資料，StorSimple Snapshot Manager 可讓您從本機或雲端快照的目錄中進行選取。 Azure StorSimple 只會在需要時還原所需資料，這可防止在還原作業期間延遲資料可用性。)
+StorSimple Snapshot Manager 備份採用增量快照的形式，即僅擷取自從上次備份之後的變更。 因此，備份所需的儲存體更少並可以快速建立和還原。 StorSimple Snapshot Manager 會使用 Windows 磁碟區陰影複製服務 (VSS)，來確保快照擷取應用程式一致的資料。 （如需詳細資訊，請移至與 Windows 磁碟區陰影複製服務整合一節）。使用 StorSimple Snapshot Manager，您可以建立備份排程，或視需要進行立即備份。 如果您需要從備份還原資料，StorSimple Snapshot Manager 可讓您從本機或雲端快照的目錄中進行選取。 Azure StorSimple 只會在需要時還原所需資料，這可防止在還原作業期間延遲資料可用性。)
 
 ![StorSimple Snapshot Manager 架構](./media/storsimple-what-is-snapshot-manager/HCS_SSM_Overview.png)
 
@@ -57,7 +57,7 @@ StorSimple Snapshot Manager 備份採用增量快照的形式，即僅擷取自�
 您可以使用 StorSimple Snapshot Manager，來設定和備份下列類型的磁碟區： 
 
 * **基本磁碟區** – 基本磁碟區是基本磁碟上的單一資料分割。 
-* **簡單磁碟區** – 簡單磁碟區是一種動態磁碟區，含有單一動態磁碟的磁碟空間。 簡單磁碟區由磁碟上的單一區域或同一個磁碟上連結在一起的多個區域所組成。 （只能在動態磁碟上創建簡單卷。簡單卷不容錯。
+* **簡單磁碟區** – 簡單磁碟區是一種動態磁碟區，含有單一動態磁碟的磁碟空間。 簡單磁碟區由磁碟上的單一區域或同一個磁碟上連結在一起的多個區域所組成。 （您只能在動態磁碟上建立簡單磁片區）。簡單磁片區不具有容錯功能。
 * **動態磁碟區** – 動態磁碟區是在動態磁碟上建立的磁碟區。 動態磁碟會使用資料庫，來追蹤在電腦中動態磁碟的磁碟區相關資訊。 
 * **含鏡像的動態磁碟區** – 含鏡像的動態磁碟區是以 RAID 1 架構為基礎。 使用 RAID 1 時，相同的資料會寫入兩個或多個磁碟，因而產生鏡像集。 然後，任何包含所要求資料的磁碟都可以處理讀取要求。
 * **叢集共用磁碟區** – 使用叢集共用磁碟區 (CSV) 時，容錯移轉叢集中的多個節點可以同時讀取或寫入相同的磁碟。 可以快速地從一個節點容錯移轉到另一個節點，而不需要變更磁碟機擁有權，或掛接、卸載和移除磁碟區。 
@@ -139,5 +139,5 @@ VSS 的 StorSimple Snapshot Manager 實作會使用 SQL Server 和一般 NTFS �
 
 ## <a name="next-steps"></a>後續步驟
 * 深入了解如何 [使用 StorSimple Snapshot Manager 來管理您的 StorSimple 解決方案](storsimple-snapshot-manager-admin.md)。
-* 下載[StorSimple 快照管理器](https://www.microsoft.com/download/details.aspx?id=44220)。
+* 下載[StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220)。
 

@@ -1,5 +1,5 @@
 ---
-title: 在單租戶應用中管理架構
+title: 在單一租使用者應用程式中管理架構
 description: 在使用 Azure SQL Database 的單一租用戶應用程式中管理多個租用戶的結構描述
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/19/2018
 ms.openlocfilehash: b6802d97b964b8863f6c2fce0cebfe16782b46fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269207"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>使用每一租用戶一個資料庫的模式，透過 Azure SQL Database 管理 SaaS 應用程式中的結構描述
@@ -77,7 +77,7 @@ Demo-SchemaManagement.ps1** 指令碼會呼叫 Deploy-SchemaManagement.ps1** 指
 首先，檢閱每個租用戶資料庫中的場地類型。 連線至 SQL Server Management Studio (SSMS) 中的其中一個租用戶資料庫，並檢查 VenueTypes 資料表。  您也可以在 Azure 入口網站的查詢編輯器中查詢此資料表 (從資料庫頁面進行存取)。 
 
 1. 開啟 SSMS 並連線到租用戶伺服器：tenants1-dpt-&lt;user&gt;.database.windows.net**
-1. 要確認*摩托車賽車*和*游泳俱樂部*目前**未**包括在內，請流覽租戶*1-dpt-&lt;使用者&gt;* 伺服器上的_contosoconconhall_資料庫，並查詢*VenueType*表。
+1. 若要確認目前**未**包含*Motorcycle 比賽*和*Swimming 俱樂部*，請流覽至*tenants1-tenants1-dpt user-&lt;使用者&gt; *伺服器上的_contosoconcerthall_資料庫，並查詢*VenueTypes*資料表。
 
 現在讓我們建立作業以更新所有租用戶資料庫中的 *VenueTypes* 資料表，以新增場地類型。
 
@@ -95,7 +95,7 @@ Demo-SchemaManagement.ps1** 指令碼會呼叫 Deploy-SchemaManagement.ps1** 指
 * **sp\_add\_jobstep** 會建立作業步驟，包含更新參考 VenueTypes 資料表的 T-SQL 命令文字。
 * 指令碼中的其餘檢視會顯示物件是否存在，以及監視作業執行。 使用這些查詢來檢閱 **lifecycle** 資料行中的狀態值，以判斷作業在所有目標資料庫上完成的時間。
 
-當指令碼完成之後，您可以驗證參考資料是否已更新。  在 SSMS 中，瀏覽至 tenants1-dpt-&lt;user&gt;** 伺服器上的 contosoconcerthall** 資料庫，並查詢 VenueTypes** 資料表。  檢查*摩托車賽車*和*游泳俱樂部*現在**是否存在**。
+當指令碼完成之後，您可以驗證參考資料是否已更新。  在 SSMS 中，瀏覽至 tenants1-dpt-&lt;user&gt;** 伺服器上的 contosoconcerthall** 資料庫，並查詢 VenueTypes** 資料表。  請檢查*Motorcycle 的比賽*和*Swimming 俱樂部*現在**是否**存在。
 
 
 ## <a name="create-a-job-to-manage-the-reference-table-index"></a>建立作業以管理參考資料表索引
@@ -104,13 +104,13 @@ Demo-SchemaManagement.ps1** 指令碼會呼叫 Deploy-SchemaManagement.ps1** 指
 
 使用相同的作業「系統」預存程序建立作業。
 
-1. 打開 SSMS 並連接到_目錄使用者&lt;&gt;.database.windows.net_伺服器
-1. 打開檔 _...學習模組\\架構管理\\線上重新索引\\.sql_
-1. 按右鍵，選擇連接，並連接到_目錄 dpt-&lt;使用者&gt;.database.windows.net_伺服器（如果尚未連接）
+1. 開啟 SSMS 並聯機至_目錄-tenants1-dpt user-&lt;&gt;user. database.windows.net_伺服器
+1. 開啟檔案 _.。。學習模組\\架構管理\\ \\ _
+1. 按一下滑鼠右鍵，選取 [連線]，然後連接到_tenants1-dpt user-&lt;user&gt;. database.windows.net_伺服器（如果尚未連線）
 1. 確定您已連線到 jobagent__ 資料庫，然後按 **F5** 以執行指令碼
 
 請觀察 OnlineReindex.sql__ 指令碼中的下列元素：
-* **sp\_\_添加作業**創建名為"線上重新索引 PK\_\_場地類型\_\_265E44FD7FD4C885" 的新作業
+* **sp\_add\_job**會建立名為「線上重新編制 PK\_\_索引重建 venuetyp\_\_265E44FD7FD4C885 的新作業」
 * **sp\_add\_jobstep** 會建立作業步驟，其中包含要更新索引的 T-SQL 命令文字
 * 指令碼中的其餘檢視會監視作業執行。 使用這些查詢來檢閱 **lifecycle** 資料行中的狀態值，以判斷作業在所有目標群組成員上成功完成的時間。
 
@@ -126,10 +126,10 @@ Demo-SchemaManagement.ps1** 指令碼會呼叫 Deploy-SchemaManagement.ps1** 指
 > * 更新所有租用戶資料庫中的參考資料
 > * 針對所有租用戶資料庫中的資料表建立索引
 
-接下來，請嘗試[臨時報告教程](saas-tenancy-cross-tenant-reporting.md)，以探索跨租戶資料庫運行分散式查詢。
+接下來，請嘗試[特定報表教學](saas-tenancy-cross-tenant-reporting.md)課程，以探索跨租使用者資料庫執行分散式查詢。
 
 
 ## <a name="additional-resources"></a>其他資源
 
-* [基於每個租戶應用程式部署的翼尖票證 SaaS 資料庫構建的其他教程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [以 Wingtip 票證 SaaS Database Per Tenant 應用程式部署為基礎的其他教學課程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [管理相應放大的雲端資料庫](elastic-jobs-overview.md)

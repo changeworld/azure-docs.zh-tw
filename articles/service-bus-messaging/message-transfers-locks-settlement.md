@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排消息傳輸、鎖定和結算
-description: 本文概述了 Azure 服務匯流排消息傳輸、鎖和結算操作。
+title: Azure 服務匯流排訊息傳輸、鎖定和結算
+description: 本文提供 Azure 服務匯流排訊息傳輸、鎖定和結算作業的總覽。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: aschhab
 ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260991"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>訊息傳輸、鎖定和安置
@@ -127,12 +127,12 @@ for (int i = 0; i < 100; i++)
 用來識別重複訊息傳遞的一般機制是檢查訊息識別碼，這可以且應該由傳送者設定為唯一值，可能會以來自原始處理序的識別碼為基準。 作業排程器可能會將訊息識別碼設為作業的識別碼，該作業是其嘗試使用指定的背景工作指派給某個背景工作的作業，而且，如果該作業已經完成，則該背景工作會忽略第二次的作業指派。
 
 > [!IMPORTANT]
-> 請務必注意，PeekLock 在消息上獲得的鎖是不穩定的，可能在以下情況下丟失
+> 請務必注意，PeekLock 在訊息上取得的鎖定是暫時性的，而且可能會在下列情況中遺失
 >   * 服務更新
->   * 作業系統更新
->   * 在持有鎖時更改實體上的屬性（佇列、主題、訂閱）。
+>   * OS 更新
+>   * 在持有鎖定的情況下變更實體（佇列、主題、訂用帳戶）的屬性。
 >
-> 當鎖丟失時，Azure 服務匯流排將生成一個 LockLostException，該異常將出現在用戶端應用程式代碼上。 在這種情況下，用戶端的預設重試邏輯應自動啟動並重試該操作。
+> 當鎖定遺失時，Azure 服務匯流排將會產生 LockLostException，這會顯示在用戶端應用程式的程式碼上。 在此情況下，用戶端的預設重試邏輯應該會自動開始，然後再次嘗試操作。
 
 ## <a name="next-steps"></a>後續步驟
 

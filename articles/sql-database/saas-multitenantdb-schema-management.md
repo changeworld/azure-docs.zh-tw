@@ -1,5 +1,5 @@
 ---
-title: 在多租戶應用中管理架構
+title: 管理多租使用者應用程式中的架構
 description: 在使用 Azure SQL Database 的多租用戶應用程式中，管理多租用戶的結構描述
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 6f660426c41b37dd27438c28cbf603bdbf1e58b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79269194"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>在使用分區化多租用戶 SQL 資料庫的 SaaS 應用程式中管理結構描述
@@ -40,7 +40,7 @@ Azure SQL Database 的[彈性作業](elastic-jobs-overview.md) 功能可用來�
 > * 更新所有租用戶資料庫中的參考資料。
 > * 針對所有租用戶資料庫中的資料表建立索引。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 必須已部署 Wingtip Tickets 多租用戶資料庫應用程式：
     - 如需相關指示，請參閱第一個教學課程，其中會介紹 Wingtip Tickets SaaS 多租戶資料庫應用程式：<br />[部署及探索使用 Azure SQL Database 的分區化多租用戶應用程式](saas-multitenantdb-get-started-deploy.md)。
@@ -49,10 +49,10 @@ Azure SQL Database 的[彈性作業](elastic-jobs-overview.md) 功能可用來�
 
 - 必須已安裝最新版的 SQL Server Management Studio (SSMS)。 [下載並安裝 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
-- 必須已安裝 Azure PowerShell。 有關詳細資訊，請參閱[使用 Azure PowerShell 入門](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+- 必須已安裝 Azure PowerShell。 如需詳細資訊，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
 > [!NOTE]
-> 本教學課程使用的 Azure SQL Database 服務功能處於有限預覽版狀態 ([彈性資料庫作業](sql-database-elastic-database-client-library.md))。 如果要執行本教程，請通過主題_彈性作業預覽向*SaaSFeedbackmicrosoft.com\@* 提供訂閱 ID。 在您收到訂用帳戶已啟用的確認之後，請[下載並安裝最新的發行前版本作業 Cmdlet (英文)](https://github.com/jaredmoo/azure-powershell/releases)。 此預覽版有限，因此請聯繫*SaaSFeedbackmicrosoft.com\@* 有關問題或支援。
+> 本教學課程使用的 Azure SQL Database 服務功能處於有限預覽版狀態 ([彈性資料庫作業](sql-database-elastic-database-client-library.md))。 如果您想要進行本教學課程，請將您的訂用帳戶 ID 提供給*SaaSFeedback\@microsoft.com* ，主旨 = 彈性作業預覽。 在您收到訂用帳戶已啟用的確認之後，請[下載並安裝最新的發行前版本作業 Cmdlet (英文)](https://github.com/jaredmoo/azure-powershell/releases)。 此預覽版受到限制，請與*SaaSFeedback\@microsoft.com* ，以取得相關問題或支援。
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS 結構描述管理模式的簡介
 
@@ -74,7 +74,7 @@ Azure SQL Database 的[彈性作業](elastic-jobs-overview.md) 功能可用來�
 
 本教學課程要求您必須使用 PowerShell 建立作業代理程式資料庫和作業代理程式。 如同 SQL Agent 使用的 MSDB 資料庫，作業代理程式會使用 Azure SQL 資料庫來儲存作業定義、作業狀態和記錄。 一旦建立作業代理程式後，您就可以立即建立及監視作業。
 
-1. 在**電源殼 ISE**中，打開 *...學習模組\\架構管理\\演示-架構管理.ps1 \\ *。
+1. 在**POWERSHELL ISE**中，開啟 *.。。學習模組\\架構管理\\demo-schemamanagement.ps1. \\ps1*。
 2. 按 **F5** 以執行指令碼。
 
 Demo-SchemaManagement.ps1** 指令碼會呼叫 Deploy-SchemaManagement.ps1** 指令碼，以在類別目錄伺服器上建立名為 jobagent__ 的資料庫。 指令碼接著會建立作業代理程式，將 jobagent__ 資料庫作為參數來傳遞。
@@ -88,7 +88,7 @@ Demo-SchemaManagement.ps1** 指令碼會呼叫 Deploy-SchemaManagement.ps1** 指
 首先，檢閱每個租用戶資料庫中的場地類型。 連線至 SQL Server Management Studio (SSMS) 中的其中一個租用戶資料庫，並檢查 VenueTypes 資料表。  您也可以在 Azure 入口網站的查詢編輯器中查詢此資料表 (從資料庫頁面進行存取)。
 
 1. 開啟 SSMS 並連線到租用戶伺服器：tenants1-dpt-&lt;user&gt;.database.windows.net**
-1. 要確認*摩托車賽車*和*游泳俱樂部*目前**未**包括在內，請流覽租戶*1-dpt-&lt;使用者&gt;* 伺服器上的*contosoconconhall*資料庫，並查詢*VenueType*表。
+1. 若要確認目前**未**包含*Motorcycle 比賽*和*Swimming 俱樂部*，請流覽至*tenants1-tenants1-dpt user-&lt;使用者&gt; *伺服器上的*contosoconcerthall*資料庫，並查詢*VenueTypes*資料表。
 
 
 
@@ -108,7 +108,7 @@ Demo-SchemaManagement.ps1** 指令碼會呼叫 Deploy-SchemaManagement.ps1** 指
 
 5. 連線至目錄伺服器中的 jobagent__ 資料庫。
 
-6. 在 SSMS 中，打開檔 *...學習模組\\架構管理\\部署參考資料.sql \\ *.
+6. 在 SSMS 中，開啟檔案 *.。。學習模組\\架構管理\\ \\ *
 
 7. 修改陳述式：set @User = &lt;user&gt; ，並使用您在部署 Wingtip Tickets SaaS 多租用戶資料庫應用程式時使用的 User 值來取代。
 
@@ -127,7 +127,7 @@ Demo-SchemaManagement.ps1** 指令碼會呼叫 Deploy-SchemaManagement.ps1** 指
     - 範本資料庫 (*basetenantdb*) 的 database** 目標成員類型，範本資料庫位於 *catalog-mt-&lt;user&gt;* 伺服器。
     - 包含 adhocreporting** 資料庫以用於之後教學課程的 database** 目標成員類型。
 
-- **sp\_\_添加作業**創建名為*參考資料部署*的作業。
+- **sp\_add\_job**會建立稱為「*參考資料部署*」的作業。
 
 - **sp\_add\_jobstep** 會建立作業步驟，包含更新參考 VenueTypes 資料表的 T-SQL 命令文字。
 
@@ -141,7 +141,7 @@ Demo-SchemaManagement.ps1** 指令碼會呼叫 Deploy-SchemaManagement.ps1** 指
 
 1. 在 SSMS 中，連線到 catalog-mt-&lt;User&gt;.database.windows.net** 伺服器中的 jobagent__ 資料庫。
 
-2. 在 SSMS 中，打開 *...學習模組\\架構管理\\線上重新索引.sql \\ *.
+2. 在 SSMS 中，開啟 *.。。學習模組\\架構管理\\ \\ *
 
 3. 按 **F5** 以執行指令碼。
 
@@ -149,9 +149,9 @@ Demo-SchemaManagement.ps1** 指令碼會呼叫 Deploy-SchemaManagement.ps1** 指
 
 請觀察 OnlineReindex.sql** 指令碼中的下列項目：
 
-* **sp\_\_添加作業**創建一個新作業，稱為*線上重新\_\_索引\_\_PK 場地Typ 265E44FD7FD4FD4C885*。
+* **sp\_add\_job**會建立稱為線上重新*編制\_\_\_\_PK 索引重建 venuetyp 265E44FD7FD4C885*的新作業。
 
-* **sp\_\_添加作業步驟**將創建包含 T-SQL 命令文本的作業步驟以更新索引。
+* **sp\_add\_jobstep**會建立作業步驟，其中包含用來更新索引的 t-sql 命令文字。
 
 * 指令碼中的其餘檢視會監視作業執行。 使用這些查詢來檢閱 **lifecycle** 資料行中的狀態值，以判斷作業在所有目標群組成員上成功完成的時間。
 
@@ -171,5 +171,5 @@ Demo-SchemaManagement.ps1** 指令碼會呼叫 Deploy-SchemaManagement.ps1** 指
 > * 更新所有租用戶資料庫中的參考資料
 > * 針對所有租用戶資料庫中的資料表建立索引
 
-接下來，請嘗試[臨時報告教程](saas-multitenantdb-adhoc-reporting.md)，以探索跨租戶資料庫運行分散式查詢。
+接下來，請嘗試[特定報表教學](saas-multitenantdb-adhoc-reporting.md)課程，以探索跨租使用者資料庫執行分散式查詢。
 

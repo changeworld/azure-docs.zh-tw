@@ -1,5 +1,5 @@
 ---
-title: 安裝微軟 Azure StorSimple 8100 設備
+title: 安裝 Microsoft Azure StorSimple 8100 裝置
 description: 描述如何打開包裝、掛接機架和佈線 StorSimple 8100 裝置，再部署和設定軟體。
 author: alkohli
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267582"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>打開包裝、掛接機架和佈線 StorSimple 8100 裝置
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您的 Microsoft Azure StorSimple 8100 是單一機箱、機架掛接裝置。 本教學課程說明如何在您設定與部署 StorSimple 裝置之前，打開包裝、利用機架掛接和配接 StorSimple 8100 裝置硬體纜線。
 
 ## <a name="unpack-your-storsimple-8100-device"></a>打開您的 StorSimple 8100 裝置包裝
@@ -153,7 +153,7 @@ ms.locfileid: "79267582"
 ## <a name="cable-your-storsimple-8100-device"></a>佈線您的 StorSimple 8100 裝置
 下列程序說明如何針對 StorSimple 8100 裝置的電源、網路和序列連線進行佈線。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 開始您的裝置佈線之前，您需要：
 
 * 完全打開儲存體裝置的包裝並掛接機架。
@@ -236,7 +236,7 @@ ms.locfileid: "79267582"
 6. 藉由在主控台上按下 Enter 鍵，驗證連線是否正在運作。 序列主控台功能表應該會出現。
 
 > [!NOTE]
-> **熄燈管理**：當設備安裝在遠端資料中心或訪問受限的電腦室中時，請確保與兩個控制器的串列連接始終連接到串列主控台交換器或類似設備。 如此可以在網路中斷或非預期失敗時允許頻外遠端控制和支援作業。
+> **燈外管理**：當裝置安裝在遠端資料中心或在具有限制存取的電腦室時，請確定兩個控制器的序列連線一律連接至序列主控台交換器或類似的設備。 如此可以在網路中斷或非預期失敗時允許頻外遠端控制和支援作業。
 > 
 > 
 

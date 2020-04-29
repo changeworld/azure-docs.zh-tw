@@ -1,5 +1,5 @@
 ---
-title: 瞭解物件模型和空間智慧圖 - Azure 數位雙星 |微軟文檔
+title: 瞭解物件模型和空間智慧圖形-Azure 數位 Twins |Microsoft Docs
 description: 使用 Azure Digital Twins 建立人員、地點與裝置間的關聯性模型
 ms.author: alinast
 author: alinamstanciu
@@ -9,10 +9,10 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/30/2019
 ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265203"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>了解 Digital Twins 物件模型和空間智慧圖形
@@ -31,7 +31,7 @@ Digital Twins 物件模型和本體皆準備就緒後，即可填入「空間圖
 
 Digital Twins 物件模型支援下列主要物件類別：
 
-- **空格**是虛擬位置或物理位置，例如`Tenant`， `Customer` `Region`和`Venue`。
+- **空間**是虛擬或`Tenant`實體位置， `Customer` `Region`例如、、和。 `Venue`
 - **裝置**是虛擬或實體的裝置部件，例如 `AwesomeCompany Device` 和 `Raspberry Pi 3`。
 - **感應器**是可偵測事件的物件，例如 `AwesomeCompany Temperature Sensor` 和 `AwesomeCompany Presence Sensor`。
 - **使用者**會識別現用者及其特性。
@@ -41,9 +41,9 @@ Digital Twins 物件模型支援下列主要物件類別：
 - **資源**會連結至空間，並通常代表空間圖形中的物件所要使用的 Azure 資源，例如 `IoTHub`。
 - **Blob**會連結至物件 (例如空間、裝置、感應器及使用者)。 它們會以具 mime 類型和中繼資料之檔案的形式被使用，例如 `maps`、`pictures` 及 `manuals`。
 - **擴充類型**是可為實體增補某些特性的可擴充列舉，例如 `SpaceType` 和 `SpaceSubtype`。
-- **本體**表示一組擴展類型，例如`Default`，`Building`和`BACnet`。 `EnergyGrid`
+- **本體**代表一組擴充`Default`類型，例如`Building` `BACnet`、、和。 `EnergyGrid`
 - **屬性索引鍵和值**是空間、裝置、感應器和使用者的自訂特性。 它們可搭配內建特性使用，例如，以 `DeltaProcessingRefreshTime` 作為索引鍵，並以 `10` 作為值。
-- **角色**是在空間圖中分配給使用者和設備的許可權集，例如 ，`Space Administrator``User Administrator`和`Device Administrator`。
+- **角色**是在空間圖形中指派給使用者和裝置的許可權集， `Space Administrator` `User Administrator`例如、、和。 `Device Administrator`
 - **角色指派**是空間圖形中角色和物件之間的關聯。 例如，使用者或服務主體可以被授與權限，以管理空間圖形中的特定空間。
 - **安全性金鑰存放區**可為指定空間物件下之階層內所包含的所有裝置提供安全性金鑰，使裝置能夠安全地與 Digital Twins 進行通訊。
 - **使用者定義函式** (UDF) 可允許在空間圖形內進行可自訂感應器遙測的處理。 例如，UDF 可以：
@@ -52,13 +52,13 @@ Digital Twins 物件模型支援下列主要物件類別：
   - 將中繼資料附加至空間。
   - 在符合預先定義的條件時傳送通知。 目前可以用 JavaScript 撰寫 UDF。
 - **比對器**是可決定針對指定遙測訊息應執行哪些 UDF 的物件。
-- **終結點**是可以路由遙測消息和數位孿生事件的位置，例如 ，`Event Hub``Service Bus`和`Event Grid`。
+- **端點**是可路由遙測訊息和數位 Twins 事件的位置，例如`Event Hub` `Service Bus`、和。 `Event Grid`
 
 ## <a name="spatial-intelligence-graph"></a>空間智慧圖形
 
 空間圖形是定義於 Digital Twins 物件模型中的空間、裝置和人員的階層式圖形。 空間圖形支援繼承、篩選、周遊、延展性和擴充性。 您可透過 REST API 集合來管理空間圖形並與其互動。
 
-如果您在自己的訂用帳戶中部署 Digital Twins 服務，便會成為根節點的全域系統管理員。 接著，系統會自動授與您整個結構的完整存取權。 使用空間 API 在圖形中佈建空間。 使用感應器 API 來利用裝置 API 及感應器佈建服務。 [開源工具](https://github.com/Azure-Samples/digital-twins-samples-csharp)也可用於批量預配圖形。
+如果您在自己的訂用帳戶中部署 Digital Twins 服務，便會成為根節點的全域系統管理員。 接著，系統會自動授與您整個結構的完整存取權。 使用空間 API 在圖形中佈建空間。 使用感應器 API 來利用裝置 API 及感應器佈建服務。 [開放原始碼工具](https://github.com/Azure-Samples/digital-twins-samples-csharp)也可以用來大量布建圖表。
 
 **圖形繼承**。 繼承會套用至源自父節點及其下所有節點的權限和屬性。 例如，如果為使用者指派指定節點上的角色，該使用者就會有該角色針對指定節點的權限，以及其下每個節點的權限。 針對指定節點所定義的每個屬性索引鍵和擴充類型，也會會由該節點下所有的節點繼承。
 
@@ -78,7 +78,7 @@ Digital Twins 物件模型支援下列主要物件類別：
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| 名稱 | 更換為 |
+| Name | 更換為 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | Digital Twins 執行個體的名稱 |
 | YOUR_LOCATION | 裝載您執行個體的伺服器區域 |

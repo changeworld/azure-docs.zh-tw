@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 1e75acc03209fdd7e613801c9152f24aaecfa6de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267777"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>為 StorSimple 8000 系列裝置部署 StorSimple 裝置管理員服務
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多個 StorSimple 裝置。 建立服務之後，可使用該服務，從單一集中位置來管理所有連接至 StorSimple 裝置管理員服務的裝置，因而將管理負擔降到最低。
 
@@ -57,7 +57,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 
 各項 StorSimple 裝置管理員服務具有以下屬性：
 
-* **名稱** – 在建立時指派給您的 StorSimple 裝置管理員服務的名稱。 **創建服務後，無法更改服務名稱。對於無法在 Azure 門戶中重命名的其他實體（如設備、卷、卷容器和備份策略）也是如此。**
+* **名稱** – 在建立時指派給您的 StorSimple 裝置管理員服務的名稱。 **服務建立之後，即無法變更服務名稱。這也適用于其他實體，例如裝置、磁片區、磁片區容器，以及無法在 Azure 入口網站中重新命名的備份原則。**
 * **狀態** – 服務狀態，包括 [使用中]****、[建立中]**** 或 [線上]****。
 * **位置** – 部署 StorSimple 裝置所在的地理位置。
 * **訂用帳戶** – 與您的服務相關聯的計費訂用帳戶。
@@ -77,7 +77,7 @@ StorSimple 裝置管理員服務在 Microsoft Azure 中執行，並連接至多�
 
     ![搜尋要刪除的服務](./media/storsimple-8000-manage-service/deletessdevman1.png)
 
-2. 這會帶您前往 StorSimple 裝置管理員服務刀鋒視窗。 按一下 [刪除]****。
+2. 這會帶您前往 StorSimple 裝置管理員服務刀鋒視窗。 按一下 **[刪除]** 。
 
     ![刪除服務](./media/storsimple-8000-manage-service/deletessdevman2.png)
 

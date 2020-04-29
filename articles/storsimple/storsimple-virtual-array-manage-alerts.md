@@ -1,5 +1,5 @@
 ---
-title: 查看和管理 StorSimple 虛擬陣列的警報
+title: 查看和管理 StorSimple Virtual Array 的警示
 description: 描述 StorSimple Virtual Array 警示條件和嚴重性，以及如何使用 StorSimple Manager 服務管理警示。
 services: storsimple
 documentationcenter: NA
@@ -16,15 +16,15 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a7c469be4a1d8aba23857b1ba52ee829c126a431
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267426"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>使用 StorSimple 裝置管理員來管理 StorSimple Virtual Array 的警示
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 裝置管理員服務中的警示功能可讓您即時檢閱並清除 StorSimple Virtual Array 的相關警示。 您可以使用 [服務摘要]**** 刀鋒視窗上的警示，集中監視您的 StorSimple Virtual Array 和整個 Microsoft Azure StorSimple 解決方案的健康狀態。
 
@@ -39,7 +39,7 @@ StorSimple 裝置管理員服務中的警示功能可讓您即時檢閱並清除
 > [!NOTE]
 > 您可以對每一個虛擬陣列輸入最多 20 個電子郵件地址。
 
-啟用虛擬陣列的電子郵件通知之後，每當發生重大警示時，通知清單的成員將會收到電子郵件訊息。 消息將從 *"簡單警報-無答覆\@mail.windowsazure.com*發送，並將描述警示準則。 收件者可以按一下 [取消訂閱]**** 從電子郵件通知清單將自己移除。
+啟用虛擬陣列的電子郵件通知之後，每當發生重大警示時，通知清單的成員將會收到電子郵件訊息。 訊息將會從*storsimple-alerts-\@noreply mail.windowsazure.com*傳送，並將描述警示條件。 收件者可以按一下 [取消訂閱]**** 從電子郵件通知清單將自己移除。
 
 #### <a name="to-enable-email-notification-for-alerts"></a>若要啟用警示的電子郵件通知
 
@@ -53,7 +53,7 @@ StorSimple 裝置管理員服務中的警示功能可讓您即時檢閱並清除
    
    1. 在 [啟用電子郵件通知]**** 欄位中，選取 [是]****。
    2. 如果您想要讓服務管理員和所有共同管理員收到警示通知，請在 [電子郵件服務管理員]**** 欄位中選取 [是]****。
-   3. 在 [其他電子郵件收件者]**** 欄位中，輸入應該收到警示通知的其他所有收件者的電子郵件地址。 輸入*某人\@somewhere.com*格式的名稱。 使用分號來分隔電子郵件地址。 您可以對每一個虛擬裝置設定最多 20 個電子郵件地址。
+   3. 在 [其他電子郵件收件者]**** 欄位中，輸入應該收到警示通知的其他所有收件者的電子郵件地址。 以 [*其他人\@] somewhere.com*的格式輸入名稱。 使用分號來分隔電子郵件地址。 您可以對每一個虛擬裝置設定最多 20 個電子郵件地址。
       
        ![警示通知組態](./media/storsimple-virtual-array-manage-alerts/alerts6.png)
    4. 若要傳送測試電子郵件通知，請按一下 [傳送測試電子郵件]****。 StorSimple 裝置管理員服務在轉寄測試通知時會顯示狀態訊息。
@@ -124,7 +124,7 @@ StorSimple 裝置管理員服務的摘要刀鋒視窗中，可讓您快速概覽
 * [組態警示](#configuration-alerts)
 * [作業失敗警示](#job-failure-alerts)
 * [效能警示](#performance-alerts)
-* [安全警報](#security-alerts)
+* [安全性警示](#security-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>雲端連線能力警示
 
@@ -137,14 +137,14 @@ StorSimple 裝置管理員服務的摘要刀鋒視窗中，可讓您快速概覽
 | 警示文字 | 事件 | 詳細資訊 / 建議的動作 |
 |:--- |:--- |:--- |
 | 不支援的內部部署虛擬裝置組態。 |效能變慢。 |目前的組態可能會導致效能降低。 請確定您的伺服器符合最低組態需求。 如需詳細資訊，請參閱 [StorSimple Virtual Array 需求](storsimple-ova-system-requirements.md)。 |
-| 您正在耗盡<*設備名稱*\>上的預配磁碟空間。 |磁碟空間警告。 |佈建磁碟空間偏低。 若要釋放空間，請考慮將工作負載移到另一個磁碟區或共用或刪除資料。 |
+| 您的 <*裝置名稱*\>上已布建的磁碟空間不足。 |磁碟空間警告。 |佈建磁碟空間偏低。 若要釋放空間，請考慮將工作負載移到另一個磁碟區或共用或刪除資料。 |
 
 ### <a name="job-failure-alerts"></a>作業失敗警示
 
 | 警示文字 | 事件 | 詳細資訊 / 建議的動作 |
 |:--- |:--- |:--- |
-| 無法完成<*設備名稱*\>的備份。 |備份作業失敗。 |無法建立備份。 請考慮採用下列其中一項︰<ul><li>連線問題可能導致備份作業無法順利完成。 確定沒有連線問題。 如需有關針對連線問題進行疑難排解的詳細資訊，請移至您的虛擬裝置的[本機 Web UI](storsimple-ova-web-ui-admin.md)。</li><li>您已達到可用的儲存體限制。 若要釋放空間，請考慮刪除任何不再需要的備份。</li></ul> 解決問題、清除警示，然後重試作業。 |
-| 無法完成<*設備名稱*\>的克隆。 |複製作業失敗。 |無法建立複製。 請考慮採用下列其中一項︰<ul><li>您的備份清單可能無效。 重新整理清單，以便確認它仍然有效。</li><li>連線問題可能導致複製作業無法順利完成。 確定沒有連線問題。</li><li>您已達到可用的儲存體限制。 若要釋放空間，請考慮刪除任何不再需要的備份。</li></ul>解決問題、清除警示，然後重試作業。 |
+| 無法完成 <*裝置名稱*\>的備份。 |備份作業失敗。 |無法建立備份。 請考慮採用下列其中一項︰<ul><li>連線問題可能導致備份作業無法順利完成。 確定沒有連線問題。 如需有關針對連線問題進行疑難排解的詳細資訊，請移至您的虛擬裝置的[本機 Web UI](storsimple-ova-web-ui-admin.md)。</li><li>您已達到可用的儲存體限制。 若要釋放空間，請考慮刪除任何不再需要的備份。</li></ul> 解決問題、清除警示，然後重試作業。 |
+| 無法完成 <*裝置名稱*\>的複製。 |複製作業失敗。 |無法建立複製。 請考慮採用下列其中一項︰<ul><li>您的備份清單可能無效。 重新整理清單，以便確認它仍然有效。</li><li>連線問題可能導致複製作業無法順利完成。 確定沒有連線問題。</li><li>您已達到可用的儲存體限制。 若要釋放空間，請考慮刪除任何不再需要的備份。</li></ul>解決問題、清除警示，然後重試作業。 |
 
 ### <a name="networking-alerts"></a>網路警示
 
@@ -157,13 +157,13 @@ StorSimple 裝置管理員服務的摘要刀鋒視窗中，可讓您快速概覽
 | 警示文字 | 事件 | 詳細資訊 / 建議的動作 |
 |:--- |:--- |:--- |
 | 您遇到資料傳輸的非預期延遲 |慢速資料傳輸。 |當超出儲存體服務的延展性目標時，會出現節流錯誤。 儲存體服務這麼做是為了確保沒有任何用戶端或是租用戶可犧牲其他服務來使用這項服務。 如需疑難排解 Azure 儲存體帳戶問題的詳細資訊，請參閱[監視、診斷及疑難排解 Microsoft Azure 儲存體的問題](../storage/common/storage-monitoring-diagnosing-troubleshooting.md)。 |
-| 您<*設備名稱*\>上的本地預留磁碟空間不足。 |回應時間變慢。 |<*設備名稱*\>的總預配大小的 10% 保留在本地設備上，而您現在在預留空間上運行不足。 <*設備名稱*\>上的工作負載正在生成更高的改動率，或者您可能最近遷移了大量資料。 這可能會導致效能降低。 請考慮使用下列其中一個方法來解決這個問題：<ul><li>增加此裝置的雲端頻寬。</li><li>降低工作負載或將工作負載移到另一個磁碟區或共用。</li></ul> |
+| <*裝置名稱*\>上的本機保留磁碟空間不足。 |回應時間變慢。 |在本機裝置上，已保留 <*裝置名稱*\>的總布建大小的10%，而且您目前的保留空間不足。 <*裝置名稱*\>上的工作負載產生較高的變換率，或您最近可能已遷移大量資料。 這可能會導致效能降低。 請考慮使用下列其中一個方法來解決這個問題：<ul><li>增加此裝置的雲端頻寬。</li><li>降低工作負載或將工作負載移到另一個磁碟區或共用。</li></ul> |
 
 ### <a name="security-alerts"></a>安全性警示
 
 | 警示文字 | 事件 | 詳細資訊 / 建議的動作 |
 |:--- |:--- |:--- |
-| <*設備名稱*\>的密碼將在<*天內*\>過期。 |密碼警告。 |您的密碼將在<*天內*\>過期。 請考慮變更您的密碼。 如需詳細資訊，請參閱[變更 StorSimple Virtual Array 裝置系統管理員密碼](storsimple-virtual-array-change-device-admin-password.md)。 |
+| <*裝置名稱*\>的密碼將*于 <* \>天后到期。 |密碼警告。 |您的密碼將會\>在 *<的天數內過期*。 請考慮變更您的密碼。 如需詳細資訊，請參閱[變更 StorSimple Virtual Array 裝置系統管理員密碼](storsimple-virtual-array-change-device-admin-password.md)。 |
 
 ## <a name="next-steps"></a>後續步驟
 

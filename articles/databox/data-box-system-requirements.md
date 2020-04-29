@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
 ms.openlocfilehash: e232ad131b1c0930afcf5e7e78b386aba2c9490b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259951"
 ---
 # <a name="azure-data-box-system-requirements"></a>Azure 資料箱的系統需求
@@ -55,7 +55,7 @@ ms.locfileid: "79259951"
 
 ### <a name="port-requirements"></a>連接埠需求
 
-下表列出了需要在防火牆中打開以允許 SMB 或 NFS 流量的埠。 在這個資料表中，in** 或 inbound** 指的是輸入用戶端要求存取裝置的方向。 *出**或出站*是指 Data Box 設備在部署之外向外部發送資料的方向：例如，出站到 Internet。
+下表列出需要在防火牆中開啟以允許 SMB 或 NFS 流量的埠。 在這個資料表中，in** 或 inbound** 指的是輸入用戶端要求存取裝置的方向。 [ *Out* ] 或 [*輸出*] 是指您的資料箱裝置在外部將資料傳送到部署之外的方向：例如，輸出到網際網路。
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

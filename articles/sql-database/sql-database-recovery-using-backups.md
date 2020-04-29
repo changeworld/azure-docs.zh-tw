@@ -1,6 +1,6 @@
 ---
 title: 從備份還原資料庫
-description: 瞭解時間點還原，這使您能夠回滾 Azure SQL 資料庫長達 35 天。
+description: 瞭解時間點還原，其可讓您復原最多35天的 Azure SQL 資料庫。
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -12,42 +12,42 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
 ms.openlocfilehash: b98331a9cdb359aeefac5db1546f3a15b54010ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79268739"
 ---
-# <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>使用自動資料庫備份恢復 Azure SQL 資料庫
+# <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>使用自動資料庫備份來復原 Azure SQL 資料庫
 
-預設情況下，Azure SQL 資料庫備份存儲在異地複製的 Blob 存儲（RA-GRS 存儲類型） 中。 以下選項可用於使用[自動資料庫備份](sql-database-automated-backups.md)進行資料庫恢復。 您可以：
+根據預設，Azure SQL Database 備份會儲存在異地複寫的 blob 儲存體（GRS 儲存體類型）中。 下列選項適用于使用[自動資料庫備份](sql-database-automated-backups.md)進行資料庫復原。 您可以：
 
-- 在同一 SQL 資料庫伺服器上創建新資料庫，在保留期內恢復到指定的時間點。
-- 在同一 SQL 資料庫伺服器上創建資料庫，恢復到已刪除資料庫的刪除時間。
-- 在同一區域中的任何 SQL 資料庫伺服器上創建新資料庫，恢復到最新備份的點。
-- 在任何其他區域的任何 SQL 資料庫伺服器上創建新資料庫，恢復到最近複製的備份點。
+- 在相同的 SQL Database 伺服器上建立新的資料庫，並復原到保留期限內的指定時間點。
+- 在相同的 SQL Database 伺服器上建立資料庫，並復原到已刪除資料庫的刪除時間。
+- 在相同區域中的任何 SQL Database 伺服器上建立新的資料庫，並復原到最新的備份點。
+- 在任何其他區域中的任何 SQL Database 伺服器上建立新的資料庫，並復原到最新複寫的備份點。
 
-如果配置[了備份長期保留](sql-database-long-term-retention.md)，還可以從任何 SQL 資料庫伺服器上的任何長期保留備份創建新資料庫。
+如果您已設定[備份長期保留](sql-database-long-term-retention.md)，您也可以從任何 SQL Database 伺服器上的任何長期保留備份來建立新的資料庫。
 
 > [!IMPORTANT]
-> 在還原期間無法覆蓋現有資料庫。
+> 在還原期間，您無法覆寫現有的資料庫。
 
-當您使用標準或高級服務層時，資料庫還原可能會產生額外的存儲成本。 當還原資料庫的最大大小大於目標資料庫的服務層和性能級別中包含的存儲量時，會產生額外的成本。 如需有關額外儲存體的價格詳細資訊，請參閱 [SQL Database 價格頁面](https://azure.microsoft.com/pricing/details/sql-database/)。 如果實際使用空間量小於包括的存儲量，則可以通過將最大資料庫大小設置為包含的量來避免此額外費用。
+當您使用「標準」或「高階」服務層級時，您的資料庫還原可能會產生額外的儲存成本。 當還原資料庫的大小上限大於目標資料庫的服務層級和效能等級所包含的儲存量時，就會產生額外的成本。 如需有關額外儲存體的價格詳細資訊，請參閱 [SQL Database 價格頁面](https://azure.microsoft.com/pricing/details/sql-database/)。 如果實際的已使用空間量小於內含的儲存體數量，您可以將資料庫大小上限設定為包含的數量，以避免此額外成本。
 
 ## <a name="recovery-time"></a>復原時間
 
-使用自動資料庫備份還原資料庫的恢復時間受以下幾個因素影響：
+使用自動資料庫備份來還原資料庫的復原時間會受到幾個因素的影響：
 
 - 資料庫的大小。
 - 資料庫的計算大小。
-- 所涉及的事務日誌數。
-- 需要重播以恢復到還原點的活動量。
-- 如果還原是到其他區域，則網路頻寬。
+- 涉及的交易記錄數目。
+- 需要重新執行才能復原到還原點的活動量。
+- 還原至不同區域時的網路頻寬。
 - 要在目標區域中處理的並行還原要求數目。
 
-對於大型或非常活躍的資料庫，還原可能需要幾個小時。 如果區域長時間中斷，則可能會啟動大量異地恢復請求以進行災害復原。 當有許多請求時，各個資料庫的恢復時間可能會增加。 大多數資料庫還原都會在 12 小時內完成。
+對於大型或非常活躍的資料庫，還原可能需要數小時的時間。 如果區域發生長時間中斷，可能會起始大量的異地還原要求以進行嚴重損壞修復。 當有多個要求時，個別資料庫的復原時間也會增加。 大多數資料庫還原都會在 12 小時內完成。
 
-對於單個訂閱，併發還原請求的數量有限制。 這些限制適用于時間點還原、異地還原和長期保留備份還原的任意組合。
+對於單一訂用帳戶，並行還原要求數目有一些限制。 這些限制適用于時間點還原、異地還原和從長期保留備份還原的任何組合。
 
 | | **正在處理的並行要求的最大數目** | **正在提交的並行要求的最大數目** |
 | :--- | --: | --: |
@@ -55,152 +55,152 @@ ms.locfileid: "79268739"
 |彈性集區 (每個集區)|4|200|
 ||||
 
-沒有用於還原整個伺服器的內置方法。 有關如何完成此任務的示例，請參閱[Azure SQL 資料庫：完整伺服器恢復](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)。
+沒有內建方法可還原整部伺服器。 如需如何完成這項工作的範例，請參閱[Azure SQL Database：完整伺服器](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666)復原。
 
 > [!IMPORTANT]
-> 要使用自動備份進行恢復，您必須是訂閱中的 SQL Server 參與者角色的成員，或者是訂閱擁有者。 有關詳細資訊，請參閱[RBAC：內置角色](../role-based-access-control/built-in-roles.md)。 可以使用 Azure 門戶、PowerShell 或 REST API 進行恢復。 不能使用 Transact-SQL。
+> 若要使用自動備份進行復原，您必須是訂用帳戶中 SQL Server 參與者角色的成員，或者是訂用帳戶擁有者。 如需詳細資訊，請參閱[RBAC：內建角色](../role-based-access-control/built-in-roles.md)。 您可以使用 Azure 入口網站、PowerShell 或 REST API 來進行復原。 您無法使用 Transact-sql。
 
 ## <a name="point-in-time-restore"></a>時間點還原
 
-可以使用 Azure 門戶[PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)或[REST API](https://docs.microsoft.com/rest/api/sql/databases)將獨立、池或實例資料庫還原到較早的時間點。 請求可以為還原的資料庫指定任何服務層或計算大小。 確保還原資料庫的伺服器上有足夠的資源。 完成後，還原將創建與原始資料庫相同的伺服器上的新資料庫。 還原的資料庫根據其服務層和計算大小按正常費率收費。 在資料庫還原完成之前，不會產生費用。
+您可以使用 Azure 入口網站、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)或[REST API](https://docs.microsoft.com/rest/api/sql/databases)，將獨立、集區或實例資料庫還原到較早的時間點。 要求可以針對還原的資料庫指定任何服務層級或計算大小。 確定您要還原資料庫的伺服器上有足夠的資源。 完成時，還原會在與原始資料庫相同的伺服器上建立新的資料庫。 還原的資料庫會根據其服務層級和計算大小，以標準費率計費。 在資料庫還原完成之前，您不會產生任何費用。
 
-基於復原目的，您通常會將資料庫還原到較早的時間點。 您可以將還原的資料庫視為原始資料庫的替換，也可以將其用作資料來源來更新原始資料庫。
+基於復原目的，您通常會將資料庫還原到較早的時間點。 您可以將還原的資料庫視為原始資料庫的取代，或使用它做為資料來源來更新原始資料庫。
 
 - **資料庫取代**
 
-  如果希望還原的資料庫作為原始資料庫的替換，則應指定原始資料庫的計算大小和服務層。 然後，您可以重命名原始資料庫，並使用 T-SQL 中的[ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database)命令為還原的資料庫提供原始名稱。
+  如果您想要將還原的資料庫取代為原始資料庫，您應該指定原始資料庫的計算大小和服務層級。 接著，您可以重新命名原始資料庫，並使用 T-sql 中的[ALTER database](/sql/t-sql/statements/alter-database-azure-sql-database)命令，為還原的資料庫提供原始名稱。
 
-- **資料恢復**
+- **資料復原**
 
-  如果計畫從還原的資料庫檢索資料以從使用者或應用程式錯誤中恢復，則需要編寫並執行資料恢復腳本，該腳本從還原的資料庫中提取資料並應用於原始資料庫。 雖然還原作業可能要花很長的時間才能完成，但還原中的資料庫在整個還原過程中都會顯示在資料庫清單上。 如果在還原期間刪除資料庫，還原操作將被取消，並且不會為未完成還原的資料庫向您收費。
+  如果您打算從還原的資料庫抓取資料，以從使用者或應用程式錯誤中復原，您必須撰寫並執行資料復原腳本，以從還原的資料庫中解壓縮資料，並將其套用至原始資料庫。 雖然還原作業可能要花很長的時間才能完成，但還原中的資料庫在整個還原過程中都會顯示在資料庫清單上。 如果您在還原期間刪除資料庫，還原作業將會取消，且不會向您收取未完成還原的資料庫費用。
   
-### <a name="point-in-time-restore-by-using-azure-portal"></a>使用 Azure 門戶進行時間點還原
+### <a name="point-in-time-restore-by-using-azure-portal"></a>使用 Azure 入口網站的時間點還原
 
-可以從要在 Azure 門戶中還原的資料庫的概述邊欄選項卡將單個 SQL 資料庫或實例資料庫恢復到某個時間點。
+您可以從 [Azure 入口網站中要還原之資料庫的 [總覽] 分頁，將單一 SQL database 或實例資料庫復原至某個時間點。
 
-#### <a name="single-azure-sql-database"></a>單個 Azure SQL 資料庫
+#### <a name="single-azure-sql-database"></a>單一 Azure SQL 資料庫
 
-要使用 Azure 門戶將單個或池資料庫恢復到時間點，請打開資料庫概覽頁，然後選擇工具列上的 **"還原**"。 選擇備份源，然後選擇從中創建新資料庫的時間點備份點。 
+若要使用 Azure 入口網站將單一或集區資料庫復原到某個時間點，請開啟 [資料庫總覽] 頁面，然後選取工具列上的 [**還原**]。 選擇 [備份來源]，然後選取將建立新資料庫的時間點備份點。 
 
-  ![資料庫還原選項的螢幕截圖](./media/sql-database-recovery-using-backups/pitr-backup-sql-database-annotated.png)
+  ![資料庫還原選項的螢幕擷取畫面](./media/sql-database-recovery-using-backups/pitr-backup-sql-database-annotated.png)
 
-#### <a name="managed-instance-database"></a>託管實例資料庫
+#### <a name="managed-instance-database"></a>受控實例資料庫
 
-要使用 Azure 門戶將託管實例資料庫恢復到某個時間點，請打開資料庫概覽頁，然後選擇工具列上的 **"還原**"。 選擇從中創建新資料庫的時間點備份點。 
+若要使用 Azure 入口網站將受控實例資料庫復原到某個時間點，請開啟 [資料庫總覽] 頁面，然後選取工具列上的 [**還原**]。 選擇將建立新資料庫的時間點備份點。 
 
-  ![資料庫還原選項的螢幕截圖](./media/sql-database-recovery-using-backups/pitr-backup-managed-instance-annotated.png)
+  ![資料庫還原選項的螢幕擷取畫面](./media/sql-database-recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
-> 要從備份以程式設計方式還原資料庫，請參閱[使用自動備份以程式設計方式執行恢復](sql-database-recovery-using-backups.md)。
+> 若要以程式設計方式從備份還原資料庫，請參閱[使用自動備份以程式設計方式執行](sql-database-recovery-using-backups.md)復原。
 
 ## <a name="deleted-database-restore"></a>還原已刪除的資料庫
 
-您可以將已刪除的資料庫還原到同一 SQL 資料庫伺服器或同一託管實例上的刪除時間或較早的時間點。 您可以通過 Azure 門戶[、PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)或[REST（建立模式+還原）](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)來實現此目的。 通過從備份創建新資料庫來還原已刪除的資料庫。
+您可以將已刪除的資料庫還原到相同 SQL Database 伺服器或相同受控實例上的刪除時間或較早的時間點。 您可以透過 Azure 入口網站、 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)或[REST （createMode = Restore）](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)來完成此動作。 您可以從備份建立新的資料庫，以還原已刪除的資料庫。
 
 > [!IMPORTANT]
-> 如果刪除 Azure SQL 資料庫伺服器或託管實例，則其所有資料庫也將被刪除，並且無法恢復。 無法還原已刪除的伺服器或託管實例。
+> 如果您刪除 Azure SQL Database 的伺服器或受控實例，其所有資料庫也會一併刪除，而且無法復原。 您無法還原已刪除的伺服器或受控實例。
 
-### <a name="deleted-database-restore-by-using-the-azure-portal"></a>使用 Azure 門戶刪除的資料庫還原
+### <a name="deleted-database-restore-by-using-the-azure-portal"></a>使用 Azure 入口網站刪除的資料庫還原
 
-從伺服器和實例資源從 Azure 門戶還原已刪除的資料庫。
+您可以從伺服器和實例資源的 Azure 入口網站還原已刪除的資料庫。
 
-#### <a name="single-azure-sql-database"></a>單個 Azure SQL 資料庫
+#### <a name="single-azure-sql-database"></a>單一 Azure SQL 資料庫
 
-要使用 Azure 門戶將單個或池化刪除資料庫恢復到刪除時間，請打開伺服器概覽頁，然後選擇 **"已刪除的資料庫**"。 選擇要還原的已刪除資料庫，然後鍵入將使用從備份還原的資料創建的新資料庫的名稱。
+若要使用 Azure 入口網站將單一或集區刪除的資料庫復原到刪除時間，請開啟 [伺服器總覽] 頁面，然後選取 [**已刪除的資料庫**]。 選取您想要還原的已刪除資料庫，然後輸入將使用從備份還原之資料所建立的新資料庫名稱。
 
-  ![已還原已刪除的 Azure SQL 資料庫的螢幕截圖](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
+  ![還原已刪除 Azure SQL database 的螢幕擷取畫面](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
-#### <a name="managed-instance-database"></a>託管實例資料庫
+#### <a name="managed-instance-database"></a>受控實例資料庫
 
-要使用 Azure 門戶恢復託管資料庫，請打開託管實例概覽頁，然後選擇 **"已刪除的資料庫**"。 選擇要還原的已刪除資料庫，然後鍵入將使用從備份還原的資料創建的新資料庫的名稱。
+若要使用 Azure 入口網站復原受控資料庫，請開啟 [受控實例總覽] 頁面，然後選取 [**已刪除的資料庫**]。 選取您想要還原的已刪除資料庫，然後輸入將使用從備份還原之資料所建立的新資料庫名稱。
 
-  ![已還原已刪除的 Azure SQL 實例資料庫的螢幕截圖](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
+  ![還原已刪除的 Azure SQL 實例資料庫的螢幕擷取畫面](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
-### <a name="deleted-database-restore-by-using-powershell"></a>使用 PowerShell 刪除的資料庫還原
+### <a name="deleted-database-restore-by-using-powershell"></a>使用 PowerShell 刪除資料庫還原
 
-使用以下示例腳本使用 PowerShell 還原 Azure SQL 資料庫和託管實例的已刪除資料庫。
+使用下列範例腳本，使用 PowerShell 還原 Azure SQL Database 和受控實例的已刪除資料庫。
 
-#### <a name="single-azure-sql-database"></a>單個 Azure SQL 資料庫
+#### <a name="single-azure-sql-database"></a>單一 Azure SQL 資料庫
 
-有關演示如何還原已刪除的 Azure SQL 資料庫的示例 PowerShell 腳本，請參閱[使用 PowerShell 還原 SQL 資料庫](scripts/sql-database-restore-database-powershell.md)。
+如需示範如何還原已刪除的 Azure SQL 資料庫的 PowerShell 腳本範例，請參閱[使用 PowerShell 還原 SQL 資料庫](scripts/sql-database-restore-database-powershell.md)。
 
-#### <a name="managed-instance-database"></a>託管實例資料庫
+#### <a name="managed-instance-database"></a>受控實例資料庫
 
-有關演示如何還原已刪除實例資料庫的示例 PowerShell 腳本，請參閱使用[PowerShell 在託管實例上還原已刪除的資料庫](sql-database-managed-instance-point-in-time-restore.md#restore-a-deleted-database)
+如需示範如何還原已刪除實例資料庫的 PowerShell 腳本範例，請參閱[使用 PowerShell 在受控實例上還原已刪除的資料庫](sql-database-managed-instance-point-in-time-restore.md#restore-a-deleted-database)
 
 > [!TIP]
-> 要以程式設計方式還原已刪除的資料庫，請參閱[使用自動備份以程式設計方式執行恢復](sql-database-recovery-using-backups.md)。
+> 若要以程式設計方式還原已刪除的資料庫，請參閱[使用自動備份以程式設計方式執行](sql-database-recovery-using-backups.md)復原
 
 ## <a name="geo-restore"></a>異地還原
 
-您可以從最新的異地複寫備份，在任何 Azure 區域中的任何伺服器上還原 SQL Database。 地理還原使用異地複本備份作為其源。 即使資料庫或資料中心由於中斷而無法訪問，您也可以請求異地還原。
+您可以從最新的異地複寫備份，在任何 Azure 區域中的任何伺服器上還原 SQL Database。 異地還原使用異地複寫備份作為其來源。 即使因為中斷而無法存取資料庫或資料中心，也可以要求異地還原。
 
-當資料庫由於託管區域中的事件而無法接通，地理還原是預設恢復選項。 您可以將資料庫還原至任何其他區域中的伺服器。 在建立備份時以及對它進行異地複寫到不同區域中的 Azure Blob 之間會有延遲。 因此，還原的資料庫最多比原始資料庫晚一小時。 下圖顯示了從另一個區域中的最後一個可用備份還原的資料庫。
+當您的資料庫因為裝載區域中的事件而無法使用時，異地還原就是預設的復原選項。 您可以將資料庫還原至任何其他區域中的伺服器。 在建立備份時以及對它進行異地複寫到不同區域中的 Azure Blob 之間會有延遲。 因此，還原後的資料庫最多可達一小時的原始資料庫。 下圖顯示從另一個區域中的最後一個可用備份來還原資料庫。
 
-![地理恢復圖形](./media/sql-database-geo-restore/geo-restore-2.png)
+![異地還原的圖形](./media/sql-database-geo-restore/geo-restore-2.png)
 
-### <a name="geo-restore-by-using-the-azure-portal"></a>使用 Azure 門戶進行地理還原
+### <a name="geo-restore-by-using-the-azure-portal"></a>使用 Azure 入口網站進行異地還原
 
-從 Azure 門戶創建新的單個或託管實例資料庫，並選擇可用的地理還原備份。 新創建的資料庫包含異地還原的備份資料。
+在 Azure 入口網站中，您可以建立新的單一或受控實例資料庫，然後選取可用的異地還原備份。 新建立的資料庫包含異地還原的備份資料。
 
-#### <a name="single-azure-sql-database"></a>單個 Azure SQL 資料庫
+#### <a name="single-azure-sql-database"></a>單一 Azure SQL 資料庫
 
-要從您選擇的區域和伺服器中的 Azure 門戶進行地理還原單個 SQL 資料庫，請按照以下步驟操作：
+若要從您選擇的區域和伺服器中的 Azure 入口網站異地還原單一 SQL 資料庫，請遵循下列步驟：
 
-1. 從**儀表板**中，選擇 **"添加** > **創建 SQL 資料庫**"。 在"**基礎知識"** 選項卡上，輸入所需的資訊。
+1. 從 [**儀表板**] 選取 [**新增** > ] [**建立 SQL Database**]。 在 [**基本**] 索引標籤上，輸入所需的資訊。
 2. 選取 [其他設定]****。
-3. 要**使用現有資料**，請選擇 **"備份**"。
-4. 對於**備份**，從可用異地還原備份清單中選擇備份。
+3. 針對 [**使用現有的資料**]，選取 [**備份**]。
+4. 針對 [**備份**]，從可用的異地還原備份清單中選取備份。
 
-    ![創建 SQL 資料庫選項的螢幕截圖](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
+    ![建立 SQL Database 選項的螢幕擷取畫面](./media/sql-database-recovery-using-backups/geo-restore-azure-sql-database-list-annotated.png)
 
-完成從備份創建新資料庫的過程。 創建單個 Azure SQL 資料庫時，它包含還原的異地還原備份。
+完成從備份建立新資料庫的程式。 當您建立單一 Azure SQL 資料庫時，它會包含還原的異地還原備份。
 
-#### <a name="managed-instance-database"></a>託管實例資料庫
+#### <a name="managed-instance-database"></a>受控實例資料庫
 
-要將託管實例資料庫從 Azure 門戶地理還原到您選擇的區域中的現有託管實例，請選擇要還原資料庫的託管實例。 請遵循下列步驟：
+若要從 Azure 入口網站將受控實例資料庫異地還原至您所選區域中的現有受控實例，請選取您要在其上還原資料庫的受控實例。 請遵循下列步驟：
 
-1. 選擇 **"新建資料庫**"。
-2. 鍵入所需的資料庫名稱。
-3. 在 **"使用現有資料**"下，選擇 **"備份**"。
-4. 從可用異地還原備份清單中選擇備份。
+1. 選取 [**新增資料庫**]。
+2. 輸入想要的資料庫名稱。
+3. 在 [**使用現有資料**] 底下，選取 [**備份**]。
+4. 從可用的異地還原備份清單中選取備份。
 
-    ![新資料庫選項的螢幕截圖](./media/sql-database-recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
+    ![新資料庫選項的螢幕擷取畫面](./media/sql-database-recovery-using-backups/geo-restore-sql-managed-instance-list-annotated.png)
 
-完成創建新資料庫的過程。 創建實例資料庫時，它包含還原的異地還原備份。
+完成建立新資料庫的程式。 當您建立實例資料庫時，它會包含還原的異地還原備份。
 
-### <a name="geo-restore-by-using-powershell"></a>使用 PowerShell 進行地理恢復
+### <a name="geo-restore-by-using-powershell"></a>使用 PowerShell 進行異地還原
 
-#### <a name="single-azure-sql-database"></a>單個 Azure SQL 資料庫
+#### <a name="single-azure-sql-database"></a>單一 Azure SQL 資料庫
 
-對於演示如何對單個 SQL 資料庫執行地理還原的 PowerShell 腳本，請參閱[使用 PowerShell 將 Azure SQL 單個資料庫還原到較早的時間點](scripts/sql-database-restore-database-powershell.md)。
+如需說明如何針對單一 SQL 資料庫執行異地還原的 PowerShell 腳本，請參閱[使用 powershell 將 AZURE SQL 單一資料庫還原至較早的時間點](scripts/sql-database-restore-database-powershell.md)。
 
-#### <a name="managed-instance-database"></a>託管實例資料庫
+#### <a name="managed-instance-database"></a>受控實例資料庫
 
-對於演示如何對託管實例資料庫執行地理還原的 PowerShell 腳本，請參閱[使用 PowerShell 將託管實例資料庫還原到另一個地理區域](scripts/sql-managed-instance-restore-geo-backup.md)。
+如需示範如何針對受控實例資料庫執行異地還原的 PowerShell 腳本，請參閱[使用 powershell 將受控實例資料庫還原到另一個地理區域](scripts/sql-managed-instance-restore-geo-backup.md)。
 
-### <a name="geo-restore-considerations"></a>地理還原注意事項
+### <a name="geo-restore-considerations"></a>異地還原考慮
 
-不能在地理次要資料庫上執行時間點還原。 只能在主資料庫上執行此操作。 有關使用異地還原從中斷中恢復的詳細資訊，請參閱[從中斷中恢復](sql-database-disaster-recovery.md)。
+您無法在異地次要資料庫上執行還原時間點。 您只能在主資料庫上執行此動作。 如需使用異地還原從中斷復原的詳細資訊，請參閱[從中斷復原](sql-database-disaster-recovery.md)。
 
 > [!IMPORTANT]
-> 地理恢復是 SQL 資料庫中提供的最基本的災害復原解決方案。 它依賴于自動創建的異地複本備份，復原點目標 （RPO） 等於 1 小時，估計恢復時間長達 12 小時。 它不能保證目的地區域在區域中斷後能夠還原資料庫，因為需求可能會急劇增加。 如果應用程式使用相對較小的資料庫，並且對業務不重要，則異地還原是適當的災害復原解決方案。 對於需要大型資料庫且必須確保業務連續性的業務關鍵型應用程式，請使用[自動容錯移轉組](sql-database-auto-failover-group.md)。 它提供了更低的 RPO 和恢復時間目標，並且始終保證容量。 如需商務持續性選項的詳細資訊，請參閱[商務持續性概觀](sql-database-business-continuity.md)。
+> 異地還原是 SQL Database 中最基本的嚴重損壞修復解決方案。 它依賴自動建立的異地複寫備份，且復原點目標（RPO）等於1小時，以及最多12小時的預估復原時間。 它不保證在區域中斷之後，目的地區域將會擁有還原資料庫的容量，因為需求可能會明顯增加。 如果您的應用程式使用相對較小的資料庫，而且對企業而言並不重要，則異地還原是適當的嚴重損壞修復解決方案。 對於需要大型資料庫且必須確保商務持續性的商務關鍵應用程式，請使用[自動容錯移轉群組](sql-database-auto-failover-group.md)。 它提供較低的 RPO 和復原時間目標，而且一律保證容量。 如需商務持續性選項的詳細資訊，請參閱[商務持續性概觀](sql-database-business-continuity.md)。
 
-## <a name="programmatically-performing-recovery-by-using-automated-backups"></a>使用自動備份以程式設計方式執行恢復
+## <a name="programmatically-performing-recovery-by-using-automated-backups"></a>使用自動備份以程式設計方式執行復原
 
-您還可以使用 Azure PowerShell 或 REST API 進行恢復。 下表描述可用的命令集。
+您也可以使用 Azure PowerShell 或 REST API 進行復原。 下表描述可用的命令集。
 
 ### <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Azure SQL 資料庫仍然支援 PowerShell Azure 資源管理器模組，但所有後續開發都針對 Az.Sql 模組。 有關這些 Cmdlet，請參閱[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的參數在很大程度上是相同的。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數相當於相同的範圍。
 
-#### <a name="single-azure-sql-database"></a>單個 Azure SQL 資料庫
+#### <a name="single-azure-sql-database"></a>單一 Azure SQL 資料庫
 
-要還原獨立資料庫或池資料庫，請參閱[還原-AzSql資料庫](/powershell/module/az.sql/restore-azsqldatabase)。
+若要還原獨立或集區資料庫，請參閱[restore-set-azsqldatabase 搭配](/powershell/module/az.sql/restore-azsqldatabase)。
 
-  | Cmdlet | 描述 |
+  | Cmdlet | 說明 |
   | --- | --- |
   | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) |取得一或多個資料庫。 |
   | [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | 取得可還原的已刪除資料庫。 |
@@ -208,38 +208,38 @@ ms.locfileid: "79268739"
   | [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) |還原 SQL Database。 |
 
   > [!TIP]
-  > 有關演示如何執行資料庫的時間點還原的示例 PowerShell 腳本，請參閱[使用 PowerShell 還原 SQL 資料庫](scripts/sql-database-restore-database-powershell.md)。
+  > 如需示範如何執行資料庫還原時間點的範例 PowerShell 腳本，請參閱[使用 PowerShell 還原 SQL 資料庫](scripts/sql-database-restore-database-powershell.md)。
 
-#### <a name="managed-instance-database"></a>託管實例資料庫
+#### <a name="managed-instance-database"></a>受控實例資料庫
 
-要還原託管實例資料庫，請參閱[還原-AzSqlInstance 資料庫](/powershell/module/az.sql/restore-azsqlinstancedatabase)。
+若要還原受控實例資料庫，請參閱[AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase)。
 
-  | Cmdlet | 描述 |
+  | Cmdlet | 說明 |
   | --- | --- |
-  | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |獲取一個或多個託管實例。 |
-  | [獲取-AzSql實例資料庫](/powershell/module/az.sql/get-azsqlinstancedatabase) | 獲取實例資料庫。 |
+  | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |取得一或多個受控實例。 |
+  | [AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | 取得實例資料庫。 |
   | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |還原實例資料庫。 |
 
 ### <a name="rest-api"></a>REST API
 
-要使用 REST API 還原單個或池資料庫，請：
+若要使用 REST API 來還原單一或集區資料庫：
 
-| API | 描述 |
+| API | 說明 |
 | --- | --- |
 | [REST (createMode=Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |還原資料庫。 |
-| [取得建立或更新資料庫狀態](https://docs.microsoft.com/rest/api/sql/operations) |在還原操作期間返回狀態。 |
+| [取得建立或更新資料庫狀態](https://docs.microsoft.com/rest/api/sql/operations) |傳回還原作業期間的狀態。 |
 
 ### <a name="azure-cli"></a>Azure CLI
 
-#### <a name="single-azure-sql-database"></a>單個 Azure SQL 資料庫
+#### <a name="single-azure-sql-database"></a>單一 Azure SQL 資料庫
 
-要使用 Azure CLI 還原單個或池資料庫，請參閱[az sql db 還原](/cli/azure/sql/db#az-sql-db-restore)。
+若要使用 Azure CLI 來還原單一或集區資料庫，請參閱[az sql db restore](/cli/azure/sql/db#az-sql-db-restore)。
 
-#### <a name="managed-instance-database"></a>託管實例資料庫
+#### <a name="managed-instance-database"></a>受控實例資料庫
 
-要使用 Azure CLI 還原託管實例資料庫，請參閱[az sql midb 還原](/cli/azure/sql/midb#az-sql-midb-restore)。
+若要使用 Azure CLI 來還原受控實例資料庫，請參閱[az sql midb restore](/cli/azure/sql/midb#az-sql-midb-restore)。
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>[摘要]
 
 自動備份可在發生使用者和應用程式錯誤、意外刪除資料庫和長時間中斷時保護您的資料庫。 所有服務層級和計算大小都可以取得此內建功能。
 

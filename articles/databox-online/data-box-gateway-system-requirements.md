@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260185"
 ---
-# <a name="azure-data-box-gateway-system-requirements"></a>Azure 資料盒閘道系統要求
+# <a name="azure-data-box-gateway-system-requirements"></a>Azure 資料箱閘道系統需求
 
 本文會針對 Microsoft Azure 資料箱閘道解決方案以及連線至 Azure 資料箱閘道的用戶端，說明其各自的重要系統需求。 建議您先仔細檢閱此資訊再部署資料箱閘道，之後在進行部署和後續作業期間若有必要，也請回頭查閱。
 
@@ -48,7 +48,7 @@ ms.locfileid: "79260185"
 
 ## <a name="supported-virtualization-platforms-for-device"></a>裝置的受支援虛擬化平台
 
-| **作業系統/平台**  |**版本**   |**注意**  |
+| **作業系統/平台**  |**版本**   |**附註**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
 |VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |不支援 VMware 工具。         |
@@ -85,7 +85,7 @@ ms.locfileid: "79260185"
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-azure-government"></a>Azure 政府的 URL 模式
+### <a name="url-patterns-for-azure-government"></a>Azure Government 的 URL 模式
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 

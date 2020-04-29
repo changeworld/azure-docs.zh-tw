@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 01ce952ea774ba852c83d0d6aa3fe38d5dfd677e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267985"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>部署和管理 Azure 中的 StorSimple 雲端設備 (Update 3 和更新版本)
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 8000 系列雲端設備是 Microsoft Azure StorSimple 解決方案提供的另一項功能。 StorSimple 雲端設備會在 Microsoft Azure 虛擬網路中的虛擬機器上執行，您可以使用它將主機上的資料進行備份和複製。
 
@@ -47,7 +47,7 @@ StorSimple 雲端設備可以在兩種模型中使用，標準 8010 (前身為 1
 | **最大容量** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 核心、7 GB 記憶體)| Standard_DS3 (4 核心、14 GB 記憶體)|
 | **區域可用性** |所有 Azure 區域 |支援進階儲存體和 DS3 Azure VM 的 Azure 區域<br></br>使用[這份清單](https://azure.microsoft.com/regions/services/)，查看您的區域是否提供「虛擬機器 > DS 系列」**** 和「儲存體 > 磁碟儲存體」****。 |
-| **儲存體類型** |將 Azure 標準儲存體使用於本機磁碟<br></br> 了解如何 [建立標準儲存體帳戶](../storage/common/storage-create-storage-account.md) |將 Azure 進階儲存體使用於本機磁碟<sup>2</sup> <br></br> |
+| **儲存類型** |將 Azure 標準儲存體使用於本機磁碟<br></br> 了解如何 [建立標準儲存體帳戶](../storage/common/storage-create-storage-account.md) |將 Azure 進階儲存體使用於本機磁碟<sup>2</sup> <br></br> |
 | **工作負載指引** |從備份的檔案的項目層級擷取 |雲端開發和測試案例 <br></br>低延遲和更高的效能工作負載<br></br>災害復原的次要裝置 |
 
 <sup>1</sup> *前身為 1100*。
@@ -267,7 +267,7 @@ DR 的必要條件如下︰
 ## <a name="troubleshoot-internet-connectivity-errors"></a>針對網際網路連線錯誤進行疑難排解
 在雲端設備建立期間，如果無法連線到網際網路，建立步驟就會失敗。 若要針對網際網路連線失敗進行疑難排解，請在 Azure 入口網站中執行下列步驟︰
 
-1. [在 Azure 門戶中創建 Windows 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)。 此虛擬機器應該與雲端設備使用相同的儲存體帳戶、VNet 和子網路。 如果 Azure 中已經有使用相同儲存體帳戶、VNet 和子網路的現有 Windows Server 主機，您也可以使用它來針對網際網路連線進行疑難排解。
+1. [在 Azure 入口網站中建立 Windows 虛擬機器](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)。 此虛擬機器應該與雲端設備使用相同的儲存體帳戶、VNet 和子網路。 如果 Azure 中已經有使用相同儲存體帳戶、VNet 和子網路的現有 Windows Server 主機，您也可以使用它來針對網際網路連線進行疑難排解。
 2. 遠端登入在先前步驟中建立的虛擬機器。
 3. 在虛擬機器內開啟命令視窗 (Win + R，然後輸入 `cmd`)。
 4. 在命令提示字元執行下列命令。

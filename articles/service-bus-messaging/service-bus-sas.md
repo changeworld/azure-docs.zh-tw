@@ -1,5 +1,5 @@
 ---
-title: 具有共用訪問簽名的 Azure 服務匯流排存取控制
+title: 使用共用存取簽章 Azure 服務匯流排存取控制
 description: 使用共用存取簽章的服務匯流排存取控制概觀，詳細說明 Azure 服務匯流排之 SAS 授權的相關資訊。
 services: service-bus-messaging
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
 ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259470"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>使用共用存取簽章的服務匯流排存取控制
@@ -27,11 +27,11 @@ ms.locfileid: "79259470"
 SAS 會根據授權規則保護對服務匯流排的存取。 這些規則會設定於命名空間或訊息實體 (轉送、佇列或主題)。 授權規則具有名稱、與特定權限相關聯，並且承載了密碼編譯金鑰組。 您可以透過服務匯流排 SDK 使用規則的名稱和金鑰，或用於您自己的程式碼中以產生 SAS 權杖。 接著，用戶端可將權杖傳至服務匯流排，以證明要求之作業的授權。
 
 > [!NOTE]
-> Azure 服務匯流排支援使用 Azure 活動目錄 （Azure AD） 授權訪問服務匯流排命名空間及其實體。 使用 Azure AD 返回的 OAuth 2.0 權杖授權使用者或應用程式比共用訪問簽名 （SAS） 更安全且便於使用。 使用 Azure AD，無需將權杖存儲在代碼中，並存在潛在的安全性漏洞風險。
+> Azure 服務匯流排支援使用 Azure Active Directory （Azure AD）來授權服務匯流排命名空間及其實體的存取權。 使用 Azure AD 所傳回的 OAuth 2.0 權杖來授權使用者或應用程式，可透過共用存取簽章（SAS）提供優異的安全性和易用性。 有了 Azure AD，就不需要在程式碼中儲存權杖，也可能會有潛在的安全性弱點。
 >
-> Microsoft 建議盡可能將 Azure AD 與 Azure 服務匯流排應用程式一起使用。 如需詳細資訊，請參閱下列文章：
-> - [使用 Azure 活動目錄對應用程式進行身份驗證和授權以訪問 Azure 服務匯流排實體](authenticate-application.md)。
-> - [使用 Azure 活動目錄對託管標識進行身份驗證以訪問 Azure 服務匯流排資源](service-bus-managed-service-identity.md)
+> Microsoft 建議您盡可能使用 Azure AD 與您的 Azure 服務匯流排應用程式。 如需詳細資訊，請參閱下列文章：
+> - [使用 Azure Active Directory 存取 Azure 服務匯流排實體，驗證和授權應用程式](authenticate-application.md)。
+> - [使用 Azure Active Directory 來驗證受控識別，以存取 Azure 服務匯流排資源](service-bus-managed-service-identity.md)
 
 ## <a name="overview-of-sas"></a>SAS 的概觀
 
@@ -77,12 +77,12 @@ SAS 會根據授權規則保護對服務匯流排的存取。 這些規則會設
 SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-encoded-resourceURI>
 ```
 
-* **`se`**- 權杖到期瞬間。 此整數反映自 1970 年 1 月 1 日的 Epoch `00:00:00 UTC` (UNIX Epoch) 起到權杖到期時所經過的秒數。
-* **`skn`**- 授權規則的名稱。
-* **`sr`**- 正在訪問的資源的 URI。
-* **`sig`**-簽名
+* **`se`**-權杖過期瞬間。 此整數反映自 1970 年 1 月 1 日的 Epoch `00:00:00 UTC` (UNIX Epoch) 起到權杖到期時所經過的秒數。
+* **`skn`**-授權規則的名稱。
+* **`sr`**-要存取之資源的 URI。
+* **`sig`** 簽章.
 
-是`signature-string`通過資源 URI 計算的 SHA-256 雜湊（如上一節所述**的範圍**）和權杖過期即時的字串表示形式，由 LF 分隔。
+`signature-string`是根據資源 URI 計算的 SHA-256 雜湊（如上一節所述的**範圍**），以及權杖到期時刻的字串表示（以 LF 分隔）。
 
 雜湊計算看起來類似下列虛擬程式碼，會傳回 256 位元/32 位元組的雜湊值。
 
@@ -191,7 +191,7 @@ ContentType: application/atom+xml;type=entry;charset=utf-8
 
 開始將資料傳送到服務匯流排之前，發行者必須在 AMQP 訊息內部將 SAS 權杖傳送至正確定義且名為 **$cbs** 的 AMQP 節點 (您可以將它視為一個由服務所使用的「特別」佇列，用來取得並驗證所有的 SAS 權杖)。 發行者必須在 AMQP 訊息中指定 **ReplyTo** 欄位；這是服務將以權杖驗證結果 (發行者與服務之間的簡單要求/回覆模式) 回覆發行者的節點所在。 此回覆節點是「動態」建立，如 AMQP 1.0 規格中所述的「動態建立遠端節點」。 檢查 SAS 權杖有效之後，發行者可以繼續並開始將資料傳送至服務。
 
-以下步驟演示如何使用[AMQP.NET Lite](https://github.com/Azure/amqpnetlite)庫使用 AMQP 協定發送 SAS 權杖。 如果您無法使用 C 中開發的官方服務匯流排 SDK（例如在 WinRT、.NET 緊湊框架、.NET 微框架和單聲道）中\#開發，則此功能非常有用。 當然，此程式庫對於了解宣告型安全性如何在 AMQP 層級運作非常有用，如同您了解其如何在 HTTP 層級運作一樣 (使用 HTTP POST 要求以及在標頭 "Authorization" 內部傳送的 SAS 權杖)。 如果您不需要對 AMQP 的深入瞭解，則可以使用與 .NET 框架應用程式一起使用官方服務匯流排 SDK，這將為您服務。
+下列步驟示範如何使用[AMQP.NET Lite](https://github.com/Azure/amqpnetlite)程式庫，傳送具有 AMQP 通訊協定的 SAS 權杖。 如果您無法使用官方服務匯流排 SDK （例如在 WinRT、.NET Compact Framework、.NET 微架構和 Mono 上）以 C\#進行開發，這會很有用。 當然，此程式庫對於了解宣告型安全性如何在 AMQP 層級運作非常有用，如同您了解其如何在 HTTP 層級運作一樣 (使用 HTTP POST 要求以及在標頭 "Authorization" 內部傳送的 SAS 權杖)。 如果您不需要 AMQP 的這類深入知識，可以將官方服務匯流排 SDK 與 .NET Framework 應用程式搭配使用，這會為您提供。
 
 ### <a name="c35"></a>C&#35;
 
@@ -290,7 +290,7 @@ AMQP 訊息包含眾多屬性，以及比簡單訊息更多的資訊。 SAS 權�
 | 取得主題描述 |管理 |任何有效的主題位址 |
 | 設定主題的授權規則 |管理 |任何有效的主題位址 |
 | 傳送至主題 |Send |任何有效的主題位址 |
-| **訂閱** | | |
+| **訂用帳戶** | | |
 | 建立訂用帳戶 |管理 |任何命名空間位址 |
 | 刪除訂用帳戶 |管理 |../myTopic/Subscriptions/mySubscription |
 | 列舉訂用帳戶 |管理 |../myTopic/Subscriptions |

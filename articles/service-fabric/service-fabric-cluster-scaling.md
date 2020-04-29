@@ -1,14 +1,14 @@
 ---
-title: Azure 服務結構群集縮放
-description: 了解 Azure Service Fabric 叢集的相應縮小、相應放大、相應增加或相應減少。 隨著應用程式需求的變化，服務結構群集也會發生變化。
+title: Azure Service Fabric 叢集調整
+description: 了解 Azure Service Fabric 叢集的相應縮小、相應放大、相應增加或相應減少。 當應用程式需求變更時，就可以 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
 ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258690"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>調整 Azure Service Fabric 叢集
@@ -37,7 +37,7 @@ Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用�
 ### <a name="programmatic-scaling"></a>以程式設計方式調整
 在許多案例中，[以手動方式或透過自動調整規則調整叢集](service-fabric-cluster-scale-up-down.md)都是不錯的解決方案。 但在更為進階的案例中，可能就不適用。 這些方法的可能缺點包括︰
 
-- 手動縮放要求您登錄並顯式請求縮放操作。 如果調整作業需要經常進行或難以預料會在何時進行，這個方法可能就不是合適的解決方案。
+- 手動調整會要求您登入並明確要求調整規模作業。 如果調整作業需要經常進行或難以預料會在何時進行，這個方法可能就不是合適的解決方案。
 - 自動調整規則在從虛擬機器擴展集內移除執行個體時，並不會自動從相關聯的 Service Fabric 叢集移除對於該節點的認識，除非該節點類型的持久性等級為銀級或金級。 自動調整規則會作用在擴展集層級 (而非 Service Fabric 層級)，所以自動調整規則會直接移除 Service Fabric 節點，而未將其正常關閉。 以這種方式粗糙地移除節點，會在相應縮小作業完成後留下「準刪除」的 Service Fabric 節點狀態。 個人 (或服務) 必須定期清除 Service Fabric 叢集中的已移除節點狀態。
 - 持久性等級為金級或銀級的節點類型會自動清除已移除的節點，因此不需要額外的清除動作。
 - 雖然自動調整規則支援[許多計量](../azure-monitor/platform/autoscale-common-metrics.md)，但這組計量的數量仍然有限。 如果您的案例所需要的調整是以該組計量所未涵蓋的一些計量為基礎，則自動調整規則可能不是很好的選擇。
@@ -46,9 +46,9 @@ Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用�
 
 Azure API 的存在可讓應用程式以程式設計方式使用虛擬機器擴展集和 Service Fabric 叢集。 如果現有自動調整選項不適用於您的案例，這些 API 可讓您實作自訂調整邏輯。 
 
-若要實作此「自製」自動調整功能，有一個方法是將新的無狀態服務新增至 Service Fabric 應用程式以管理調整作業。 建立自己的調整服務就能對應用程式的調整行為握有最高程度的控制力與自訂能力。 這對於需要精確控制應用程式何時或如何擴展的方案非常有用。但是，此控制項附帶代碼複雜性的權衡。 使用這種方式就表示您必須擁有調整程式碼 (此程式碼很複雜)。 在服務的 `RunAsync` 方法內，有一組觸發程序可以判斷是否需要調整 (包括檢查最大叢集大小和調整冷卻等參數)。   
+若要實作此「自製」自動調整功能，有一個方法是將新的無狀態服務新增至 Service Fabric 應用程式以管理調整作業。 建立自己的調整服務就能對應用程式的調整行為握有最高程度的控制力與自訂能力。 這對於需要精確控制應用程式何時或如何相應縮小或相應放大的案例很有用。不過，此控制項的缺點在於程式碼複雜度。 使用這種方式就表示您必須擁有調整程式碼 (此程式碼很複雜)。 在服務的 `RunAsync` 方法內，有一組觸發程序可以判斷是否需要調整 (包括檢查最大叢集大小和調整冷卻等參數)。   
 
-用於虛擬機器縮放集交互（用於檢查當前虛擬機器實例數並對其進行修改）的 API 是[流暢的 Azure 管理計算庫](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/)。 Fluent 計算程式庫可提供方便使用的 API 來與虛擬機器擴展集互動。  若要與 Service Fabric 叢集本身互動，請使用 [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient)。
+用於虛擬機器擴展集互動的 API （兩者都是用來檢查目前的虛擬機器實例數目並加以修改）是[流暢的 Azure 管理計算程式庫](https://www.nuget.org/packages/Microsoft.Azure.Management.Compute.Fluent/)。 Fluent 計算程式庫可提供方便使用的 API 來與虛擬機器擴展集互動。  若要與 Service Fabric 叢集本身互動，請使用 [System.Fabric.FabricClient](/dotnet/api/system.fabric.fabricclient)。
 
 不過，調整程式碼不需要以服務的形式在想要調整的叢集中執行。 `IAzure` 和 `FabricClient` 都能遠端連線到其相關聯的 Azure 資源，因此，調整服務可以輕鬆地成為主控台應用程式或從 Service Fabric 應用程式外部執行的 Windows 服務。
 
@@ -71,7 +71,7 @@ Azure API 的存在可讓應用程式以程式設計方式使用虛擬機器擴�
 將節點類型相應增加或相應減少的程序，會根據它是非主要還是主要節點類型而有所不同。
 
 ### <a name="scaling-non-primary-node-types"></a>調整非主要節點類型
-以您所需的資源建立新的節點類型。  更新執行中服務的放置條件約束，以包含新的節點類型。  請漸次 (一次一個) 將舊節點類型執行個體的執行個體計數縮減為零，使叢集的可靠性不受影響。  隨著舊節點類型的停用，服務將逐漸遷移到新的節點類型。
+以您所需的資源建立新的節點類型。  更新執行中服務的放置條件約束，以包含新的節點類型。  請漸次 (一次一個) 將舊節點類型執行個體的執行個體計數縮減為零，使叢集的可靠性不受影響。  服務會逐漸遷移至新的節點類型，因為舊節點類型已解除委任。
 
 ### <a name="scaling-the-primary-node-type"></a>調整主要節點類型
 建議您不要變更主要節點類型的 VM SKU。 如果您需要更多叢集容量，建議您新增更多執行個體。 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79265957"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 範本
@@ -27,16 +27,16 @@ ms.locfileid: "79265957"
 本節的範本可讓您自訂開發人員入口網站中 API 頁面的內容。  
   
 -   [API 清單](#APIList)  
--   [操作](#Product)  
+-   [運算](#Product)  
 -   [程式碼範例](#CodeSamples)  
-    -   [捲曲](#Curl)  
+    -   [彎曲](#Curl)  
     -   [C#](#CSharp)  
-    -   [JAVA](#Stub)  
-    -   [JAVAscript](#JavaScript)  
-    -   [目標C](#ObjectiveC)  
-    -   [Php](#PHP)  
+    -   [Java](#Stub)  
+    -   [JavaScript](#JavaScript)  
+    -   [目標 C](#ObjectiveC)  
+    -   [PHP](#PHP)  
     -   [Python](#Python)  
-    -   [紅寶石](#Ruby)  
+    -   [Ruby](#Ruby)  
 
 > [!NOTE]
 >  下列文件中包含範例預設範本，但範本可能會因持續進行的改善而有變更。 您可以瀏覽至想要的個別範本，來檢視開發人員入口網站中的即時預設範本。 如需有關使用範本的詳細資訊，請參閱[如何使用範本自訂 API 管理開發人員入口網站](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/)。  
@@ -48,7 +48,7 @@ ms.locfileid: "79265957"
 ## <a name="api-list"></a><a name="APIList"></a>API 清單  
  **API 清單**範本可讓您自訂開發人員入口網站中 API 清單頁面的主體。  
   
- ![開發人員門戶 API 清單](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM 開發人員門戶範本 API 清單")  
+ ![開發人員入口網站 API 清單](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM 開發人員入口網站範本 API 清單")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -85,7 +85,7 @@ ms.locfileid: "79265957"
   
 -   [分頁控制](api-management-page-controls.md#paging-control)  
   
--   [搜索控制](api-management-page-controls.md#search-control)  
+-   [搜尋-控制項](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>資料模型  
   
@@ -113,10 +113,10 @@ ms.locfileid: "79265957"
 }  
 ```  
   
-## <a name="operation"></a><a name="Product"></a>操作  
+## <a name="operation"></a><a name="Product"></a>運營  
  **作業**範本可讓您自訂開發人員入口網站中作業頁面的主體。  
   
- ![開發人員門戶動作頁面](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 開發人員門戶範本 動作頁")  
+ ![開發人員入口網站動作頁面](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "APIM 開發人員入口網站範本動作頁面")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -346,11 +346,11 @@ ms.locfileid: "79265957"
   
 |屬性|類型|描述|  
 |--------------|----------|-----------------|  
-|`apiId`|字串|當前 API 的 ID。|  
+|`apiId`|字串|目前 API 的識別碼。|  
 |`apiName`|字串|API 的名稱。|  
 |`apiDescription`|字串|API 的描述。|  
 |`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)實體。|目前的 API。|  
-|`operation`|[操作](api-management-template-data-model-reference.md#Operation)|目前顯示的作業。|  
+|`operation`|[運算](api-management-template-data-model-reference.md#Operation)|目前顯示的作業。|  
 |`sampleUrl`|字串|目前作業的 URL。|  
 |`operationMenu`|[作業功能表](api-management-template-data-model-reference.md#Menu)|此 API 的作業功能表。|  
 |`consoleUrl`|URI|[試用]**** 按鈕的 URI。|  
@@ -643,28 +643,28 @@ ms.locfileid: "79265957"
 }  
 ```  
   
-## <a name="code-samples"></a><a name="CodeSamples"></a> 程式碼範例  
+## <a name="code-samples"></a><a name="CodeSamples"></a>程式碼範例  
  下列範本可讓您自訂作業頁面上個別程式碼範例的主體。  
   
- ![開發人員門戶範本代碼示例](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM 開發人員門戶範本代碼示例")  
+ ![開發人員入口網站範本程式碼範例](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "APIM 開發人員入口網站範本程式碼範例")  
   
--   [捲曲](#Curl)  
+-   [彎曲](#Curl)  
   
 -   [C#](#CSharp)  
   
--   [JAVA](#Stub)  
+-   [Java](#Stub)  
   
--   [JAVAscript](#JavaScript)  
+-   [JavaScript](#JavaScript)  
   
--   [目標C](#ObjectiveC)  
+-   [目標 C](#ObjectiveC)  
   
--   [Php](#PHP)  
+-   [PHP](#PHP)  
   
 -   [Python](#Python)  
   
--   [紅寶石](#Ruby)  
+-   [Ruby](#Ruby)  
   
-### <a name="curl"></a><a name="Curl"></a>Curl  
+### <a name="curl"></a><a name="Curl"></a>彎曲  
  **DocumentationSamplesCurl** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  
@@ -992,7 +992,7 @@ public class JavaSample
 }  
 ```  
   
-### <a name="javascript"></a><a name="JavaScript"></a>JAVAscript  
+### <a name="javascript"></a><a name="JavaScript"></a>JavaScript  
  **DocumentationSamplesJs** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  
@@ -1401,7 +1401,7 @@ except Exception as e:
 }  
 ```  
   
-### <a name="ruby"></a><a name="Ruby"></a>Ruby  
+### <a name="ruby"></a><a name="Ruby"></a>加注  
  **DocumentationSamplesRuby** 範本可讓您在作業頁面的程式碼範例區段中自訂該程式碼範例。  
   
 #### <a name="default-template"></a>預設範本  

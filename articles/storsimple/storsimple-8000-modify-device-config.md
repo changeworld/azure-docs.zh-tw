@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267686"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>使用 StorSimple 裝置管理員服務來修改 StorSimple 裝置組態
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 Azure 入口網站之 [設定]**** 刀鋒視窗中的 [裝置設定]**** 區段包含所有裝置參數，可讓您重新設定 StorSimple 裝置管理員服務所管理的 StorSimple 裝置。 本教學課程說明如何使用 [設定]**** 刀鋒視窗來執行下列裝置層級的工作：
 
@@ -44,7 +44,7 @@ Azure 入口網站之 [設定]**** 刀鋒視窗中的 [裝置設定]**** 區段�
 
 系統會為連線到 StorSimple 裝置管理員服務的 StorSimple 裝置指派預設名稱。 預設名稱通常會反映裝置的序號。 例如，長度為 15 個字元的預設裝置名稱，如 8600-SHX0991003G44HT，將表示以下項目：
 
-* **8600** = 指示設備型號。
+* **8600** –表示裝置型號。
 * **SHX** – 表示製造地點。
 * **0991003** - 表示特定產品。
 * **G44HT**- 最後 5 位數會遞增，以產生唯一序號。 這可能不是連續的組合。

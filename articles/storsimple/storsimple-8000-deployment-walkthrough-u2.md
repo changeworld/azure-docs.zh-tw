@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 門戶中部署 StorSimple 8000 系列設備
+title: 在 Azure 入口網站中部署 StorSimple 8000 系列裝置
 description: 描述部署執行 Update 3 和更新版本之 StorSimple 8000 系列裝置和 StorSimple 裝置管理員服務的步驟與最佳做法。
 author: alkohli
 ms.service: storsimple
@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: alkohli
 ms.openlocfilehash: a56610dd81d6e50da11bbd65bcf0682e399b1783
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267946"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>部署您的內部部署 StorSimple 裝置 (Update 3 和更新版本)
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 歡迎使用 Microsoft Azure StorSimple 裝置部署。 這些部署教學課程適用於 StorSimple 8000 Series Update 3 或更新版本。 這一系列的教學課程包含 StorSimple 裝置的設定檢查清單、設定必要條件，以及詳細的設定步驟。
 
 這些教學課程中的資訊均假設您已經檢閱安全性預防措施，並已打開 StorSimple 裝置包裝、裝上機架並接好纜線。 如果您仍然需要執行這些工作，請從檢閱 [安全性預防措施](storsimple-8000-safety.md)開始。 請遵循裝置特定的指示打開包裝、掛接機架和佈線您的裝置。
@@ -28,7 +28,7 @@ ms.locfileid: "79267946"
 您需要有系統管理員權限，才能完成安裝和設定程序。 建議您在開始之前，檢閱設定檢查清單。 部署與設定程序可能需要一些時間才能完成。
 
 > [!NOTE]
-> 發佈於 Microsoft Azure 網站上的 StorSimple 部署資訊僅適用於 StorSimple 8000 系列裝置。 有關 7000 系列設備的完整資訊，請訪問： [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)。 如需 7000 系列部署資訊，請參閱 [StorSimple 系統快速入門指南](http://onlinehelp.storsimple.com/111_Appliance/)。 
+> 發佈於 Microsoft Azure 網站上的 StorSimple 部署資訊僅適用於 StorSimple 8000 系列裝置。 如需7000系列裝置的完整資訊，請移至[http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com)：。 如需 7000 系列部署資訊，請參閱 [StorSimple 系統快速入門指南](http://onlinehelp.storsimple.com/111_Appliance/)。 
 
 
 ## <a name="deployment-steps"></a>部署步驟
@@ -36,24 +36,24 @@ ms.locfileid: "79267946"
 
 | 步驟 | 描述 |
 | --- | --- |
-| **先決條件** |這些是針對將要進行的部署所必須完成的準備工作。 |
+| **要求** |這些是針對將要進行的部署所必須完成的準備工作。 |
 | [部署設定檢查清單](#deployment-configuration-checklist) |使用此檢查清單，將部署之前和部署期間的資訊加以收集並記錄。 |
 | [部署必要條件](#deployment-prerequisites) |這些會驗證環境是否準備就緒以供部署。 |
 |  | |
-| **分步部署** |需要執行這些步驟，才能在生產環境中部署您的 StorSimple 裝置。 |
-| [第 1 步：創建新服務](#step-1-create-a-new-service) |設定雲端管理和 StorSimple 裝置的儲存體。 *如果您現在已經有針對其他 StorSimple 裝置的服務，請略過此步驟*。 |
-| [第 2 步：獲取服務註冊金鑰](#step-2-get-the-service-registration-key) |使用此金鑰註冊並將 StorSimple 裝置與管理服務連接。 |
-| [第 3 步：通過 Windows PowerShell 配置和註冊設備，用於 StorSimple](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |使用管理服務將裝置連線到您的網路，並使用 Azure 註冊以完成設定。 |
+| **逐步部署** |需要執行這些步驟，才能在生產環境中部署您的 StorSimple 裝置。 |
+| [步驟1：建立新的服務](#step-1-create-a-new-service) |設定雲端管理和 StorSimple 裝置的儲存體。 *如果您現在已經有針對其他 StorSimple 裝置的服務，請略過此步驟*。 |
+| [步驟2：取得服務註冊金鑰](#step-2-get-the-service-registration-key) |使用此金鑰註冊並將 StorSimple 裝置與管理服務連接。 |
+| [步驟3：透過適用於 StorSimple 的 Windows PowerShell 設定和註冊裝置](#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |使用管理服務將裝置連線到您的網路，並使用 Azure 註冊以完成設定。 |
 | [步驟 4：完成最小量裝置設定](#step-4-complete-minimum-device-setup)</br>[最佳做法：更新您的 StorSimple 裝置](#scan-for-and-apply-updates) |使用管理服務來完成裝置設定並啟用裝置以提供儲存體。 |
 | [步驟 5：建立磁碟區容器](#step-5-create-a-volume-container) |建立容器以佈建磁碟區。 磁碟區容器具有其中所含之所有磁碟區的儲存體帳戶、頻寬及加密設定。 |
-| [步驟 6：創建卷](#step-6-create-a-volume) |在您伺服器的 StorSimple 裝置上，佈建儲存體磁碟區。 |
+| [步驟6：建立磁片區](#step-6-create-a-volume) |在您伺服器的 StorSimple 裝置上，佈建儲存體磁碟區。 |
 | [步驟 7：掛接、初始化及格式化磁碟區](#step-7-mount-initialize-and-format-a-volume)</br>[選用：設定 MPIO。](storsimple-8000-configure-mpio-windows-server.md) |將您的伺服器連接至裝置提供的 iSCSI 儲存體。 選擇性地設定 MPIO 確保您的伺服器可以容許連結、網路和介面失敗。 |
 | [步驟 8：進行備份](#step-8-take-a-backup) |設定備份原則以保護您的資料 |
 |  | |
 | **其他程序** |在您部署解決方案時可能需要參考這些程序。 |
-| [為服務配置新的存儲帳戶](#configure-a-new-storage-account-for-the-service) | |
-| [使用 PuTTY 連接到設備串列主控台](#use-putty-to-connect-to-the-device-serial-console) | |
-| [獲取 Windows 伺服器主機的 IQN](#get-the-iqn-of-a-windows-server-host) | |
+| [為服務設定新的儲存體帳戶](#configure-a-new-storage-account-for-the-service) | |
+| [使用 PuTTY 連接到裝置序列主控台](#use-putty-to-connect-to-the-device-serial-console) | |
+| [取得 Windows Server 主機的 IQN](#get-the-iqn-of-a-windows-server-host) | |
 | [建立手動備份](#create-a-manual-backup) | |
 
 
