@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 22060cc6dd5eb15e81a0c397a7b0255f16780d74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284248"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中對實驗室新增 VM
@@ -27,7 +27,7 @@ ms.locfileid: "79284248"
 本文同時說明如何在實驗室中管理 VM 的構件。
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中對實驗室新增 VM 的步驟
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 選取 [所有服務]****，然後選取 [DEVOPS]**** 區段中的 [DevTest Labs]****。 如果您選取 [DEVOPS]**** 區段中 [DevTest Labs]**** 旁邊的 * (星號)， 此動作會將 [DevTest Labs]**** 新增到左側導覽功能表，以便您下次輕鬆存取。 然後，您便可以選取左側導覽功能表上的 [DevTest Labs]****。
 
     ![所有服務 - 選取 DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
@@ -66,11 +66,11 @@ ms.locfileid: "79284248"
 建立 VM 時，您可以加入現有的構件。 每個實驗室都會包括來自公用研發/測試實驗室構件儲存機制的構件，以及您已建立並加入至您自己之構件儲存機制的構件。
 
 * Azure DevTest Labs「構件」** 可讓您指定會在 VM 佈建時執行的「動作」**，例如執行 Windows PowerShell 指令碼、執行 Bash 命令，以及安裝軟體。
-* 專案*參數*允許您為特定方案自訂專案
+* 成品*參數*可讓您自訂特定案例的構件
 
 若要了解如何建立構件，請參閱 [了解如何撰寫您自己的構件以用於研發/測試實驗室](devtest-lab-artifact-author.md)文章。
 
-1. 登錄到 Azure[門戶](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+1. 登入 [Azure 入口網站](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 選取 [所有服務]****，然後從清單中選取 [DevTest Labs]****。
 1. 從實驗室清單中，選取您想要使用之 VM 所在的實驗室。
 1. 選取 [我的虛擬機器]****。
@@ -122,4 +122,4 @@ Azure Resource Manager 範本提供宣告式方法來定義可重複的部署。
 ## <a name="next-steps"></a>後續步驟
 * 一旦建立 VM 之後，您可以選取 VM 窗格上的 [連線]**** 來連線至 VM。
 * 了解如何 [為您的 DevTest Labs VM 建立自訂構件](devtest-lab-artifact-author.md)。
-* 流覽[開發人員測試實驗室 Azure 資源管理器快速入門範本庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 探索[DevTest Labs Azure Resource Manager 快速入門範本資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260302"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>保護儲存在 Azure Data Lake Storage Gen1 中的資料
@@ -29,11 +29,11 @@ ms.locfileid: "79260302"
 
 本文提供有關如何使用 Azure 入口網站執行上述工作的詳細指示。 如需 Data Lake Storage Gen1 如何在帳戶和資料層級實作安全性的深入資訊，請參閱 [Azure Data Lake Storage Gen1 安全性](data-lake-store-security-overview.md)。 如需如何在 Data Lake Storage Gen1 中實作 ACL 的深入資訊，請參閱 [Data Lake Storage Gen1 中的存取控制概觀](data-lake-store-access-control.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 開始進行本教學課程之前，您必須具備下列條件：
 
-* **Azure 訂閱**。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **資料存儲湖存儲第 1 代帳戶**。 有關如何創建一個說明的說明，請參閱[開始使用 Azure 資料存儲第 1 代](data-lake-store-get-started-portal.md)
+* **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Data Lake Storage Gen1 帳戶**。 如需如何建立帳戶的指示，請參閱[開始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>在 Azure Active Directory 中建立安全性群組
 如需有關如何建立 AAD 安全性群組及如何新增使用者至群組的詳細指示，請參閱 [管理 Azure Active Directory 中的安全性群組](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
@@ -57,7 +57,7 @@ ms.locfileid: "79260302"
 
 2. 在 Data Lake Storage Gen1 帳戶刀鋒視窗中，按一下 [存取控制 (IAM)]****。 根據預設，此刀鋒視窗會將訂用帳戶擁有者列為擁有者。
    
-    ![將安全性群組分配給 Azure 資料湖存儲第 1 代帳戶](./media/data-lake-store-secure-data/adl.select.user.icon1.png "將安全性群組分配給 Azure 資料湖存儲第 1 代帳戶")
+    ![將安全性群組指派給 Azure Data Lake Storage Gen1 帳戶](./media/data-lake-store-secure-data/adl.select.user.icon1.png "將安全性群組指派給 Azure Data Lake Storage Gen1 帳戶")
 
 3. 在 [存取控制 (IAM)]**** 刀鋒視窗中，按一下 [新增]**** 以開啟 [新增權限]**** 刀鋒視窗。 在 [新增權限]**** 刀鋒視窗中，針對使用者/群組選取 [角色]****。 搜尋您稍早在 Azure Active Directory 中建立的安全性群組，並加以選取。 如果您需要搜尋大量的使用者和群組，請使用 [選取]**** 文字方塊來篩選群組名稱。 
    
@@ -74,7 +74,7 @@ ms.locfileid: "79260302"
    
     ![新增安全性群組](./media/data-lake-store-secure-data/adl.add.user.2.png "新增安全性群組")
    
-5. 按一下 [儲存]****。 您會看見新增的安全性群組，如下所示。
+5. 按一下 **[儲存]** 。 您會看見新增的安全性群組，如下所示。
    
     ![已新增的安全性群組](./media/data-lake-store-secure-data/adl.add.user.3.png "已新增的安全性群組")
 
@@ -85,10 +85,10 @@ ms.locfileid: "79260302"
 
 1. 在您的 [Data Lake Storage Gen1 帳戶] 刀鋒視窗中，按一下 [資料總管]****。
    
-    ![通過資料資源管理器查看資料](./media/data-lake-store-secure-data/adl.start.data.explorer.png "通過資料資源管理器查看資料")
+    ![透過資料總管查看資料](./media/data-lake-store-secure-data/adl.start.data.explorer.png "透過資料總管查看資料")
 2. 在 [資料總管]**** 刀鋒視窗中，按一下您想要設定 ACL 的資料夾，然後按一下 [存取]****。 若要將 ACL 指派至檔案，您必須先按一下檔案進行預覽，然後從 [檔案預覽]**** 刀鋒視窗按一下 [存取]****。
    
-    ![在資料存儲湖存儲第 1 代檔案系統上設置 ACL](./media/data-lake-store-secure-data/adl.acl.1.png "在資料存儲湖存儲第 1 代檔案系統上設置 ACL")
+    ![設定 Data Lake Storage Gen1 檔案系統上的 Acl](./media/data-lake-store-secure-data/adl.acl.1.png "設定 Data Lake Storage Gen1 檔案系統上的 Acl")
 3. [存取]**** 刀鋒視窗會列出擁有者，且指派的權限已經指派給根。 按一下 [新增]**** 圖示以新增其他存取 ACL。
     > [!IMPORTANT]
     > 設定單一檔案的存取權限不一定會將使用者/群組存取權授與該檔案。 檔案的路徑必須是已指派的使用者/群組可以存取的。 如需詳細資訊和相關範例，請參閱[權限相關的常見案例](data-lake-store-access-control.md#common-scenarios-related-to-permissions)。
@@ -101,8 +101,8 @@ ms.locfileid: "79260302"
      如需詳細資訊，請參閱 [HDFS ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)。 如需如何在 Data Lake Storage Gen1 中實作 ACL 的詳細資訊，請參閱 [Data Lake Storage Gen1 中的存取控制](data-lake-store-access-control.md)。
 4. 按一下 [新增]**** 圖示，以開啟 [指派權限]**** 刀鋒視窗。 在此刀鋒視窗中，按一下 [選取使用者或群組]****，然後在 [選取使用者或群組]**** 刀鋒視窗中，搜尋您稍早在 Azure Active Directory 中建立的安全性群組。 若您需要搜尋大量的群組，請使用頂端的文字方塊來篩選群組名稱。 按一下您要新增的群組，然後按一下 [選取] ****。
    
-    ![添加組](./media/data-lake-store-secure-data/adl.acl.3.png "新增群組")
-5. 按一下 [選取權限]****，選取權限、權限是否應該以遞迴方式套用，以及您想要將權限指派為存取 ACL、預設 ACL 或兩者並用。 按一下 [確定]****。
+    ![新增群組](./media/data-lake-store-secure-data/adl.acl.3.png "新增群組")
+5. 按一下 [選取權限]****，選取權限、權限是否應該以遞迴方式套用，以及您想要將權限指派為存取 ACL、預設 ACL 或兩者並用。 按一下 [確定]  。
    
     ![將權限指派至群組](./media/data-lake-store-secure-data/adl.acl.4.png "將權限指派至群組")
    
@@ -120,7 +120,7 @@ ms.locfileid: "79260302"
 ## <a name="set-ip-address-range-for-data-access"></a>設定資料存取的 IP 位址範圍
 Data Lake Storage Gen1 可讓您進一步在網路層級鎖定資料存放區的存取。 您可以啟用防火牆、指定 IP 位址或為受信任的用戶端定義 IP 位址範圍。 一旦啟用，只有具有定義範圍內 IP 位址的用戶端可以連線到存放區。
 
-![防火牆設定和 IP 存取](./media/data-lake-store-secure-data/firewall-ip-access.png "防火牆設置和 IP 位址")
+![防火牆設定和 IP 存取](./media/data-lake-store-secure-data/firewall-ip-access.png "防火牆設定和 IP 位址")
 
 ## <a name="remove-security-groups-for-a-data-lake-storage-gen1-account"></a>移除 Data Lake Storage Gen1 帳戶的安全性群組
 移除 Data Lake Storage Gen1 帳戶的安全性群組時，僅會變更使用 Azure 入口網站和 Azure Resource Manager API 的帳戶之管理作業存取權。  
@@ -129,7 +129,7 @@ Data Lake Storage Gen1 可讓您進一步在網路層級鎖定資料存放區的
 
 1. 在 Data Lake Storage Gen1 帳戶刀鋒視窗中，按一下 [存取控制 (IAM)]****。 
    
-    ![將安全性群組分配給資料存儲第 1 代帳戶](./media/data-lake-store-secure-data/adl.select.user.icon.png "將安全性群組分配給資料存儲第 1 代帳戶")
+    ![將安全性群組指派給 Data Lake Storage Gen1 帳戶](./media/data-lake-store-secure-data/adl.select.user.icon.png "將安全性群組指派給 Data Lake Storage Gen1 帳戶")
 2. 在 [存取控制 (IAM)] **** 刀鋒視窗中，按一下您想要移除的安全性群組。 按一下 [移除]****。
    
     ![已移除的安全性群組](./media/data-lake-store-secure-data/adl.remove.group.png "已移除的安全性群組")
@@ -139,15 +139,15 @@ Data Lake Storage Gen1 可讓您進一步在網路層級鎖定資料存放區的
 
 1. 在您的 [Data Lake Storage Gen1 帳戶] 刀鋒視窗中，按一下 [資料總管]****。
    
-    ![在資料存儲湖存儲第 1 代帳戶中創建目錄](./media/data-lake-store-secure-data/adl.start.data.explorer.png "在資料存儲湖存儲第 1 代帳戶中創建目錄")
+    ![在 Data Lake Storage Gen1 帳戶中建立目錄](./media/data-lake-store-secure-data/adl.start.data.explorer.png "在 Data Lake Storage Gen1 帳戶中建立目錄")
 2. 在 [資料總管]**** 刀鋒視窗中，按一下您想要移除 ACL 的資料夾，然後按一下 [存取]****。 若要移除檔案的 ACL，您必須先按一下檔案進行預覽，然後從 [檔案預覽]**** 刀鋒視窗按一下 [存取]****。 
    
-    ![在資料存儲湖存儲第 1 代檔案系統上設置 ACL](./media/data-lake-store-secure-data/adl.acl.1.png "在資料存儲湖存儲第 1 代檔案系統上設置 ACL")
+    ![設定 Data Lake Storage Gen1 檔案系統上的 Acl](./media/data-lake-store-secure-data/adl.acl.1.png "設定 Data Lake Storage Gen1 檔案系統上的 Acl")
 3. 在 [存取]**** 刀鋒視窗中，按一下您要移除的安全性群組。 在 [存取詳細資料]**** 刀鋒視窗中，按一下 [移除]****。
    
     ![將權限指派至群組](./media/data-lake-store-secure-data/adl.remove.acl.png "將權限指派至群組")
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [Azure Data Lake Storage Gen1 概觀](data-lake-store-overview.md)
 * [將資料從 Azure 儲存體 Blob 複製到 Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [搭配 Data Lake Storage Gen1 使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

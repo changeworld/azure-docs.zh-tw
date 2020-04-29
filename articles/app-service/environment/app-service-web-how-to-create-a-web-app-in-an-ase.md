@@ -1,6 +1,6 @@
 ---
-title: 在 ASE v1 中創建 Web 應用
-description: 瞭解如何在應用服務環境 v1 中創建 Web 應用。 此文檔僅提供給使用舊版 v1 ASE 的客戶。
+title: 在 ASE v1 中建立 web 應用程式
+description: 瞭解如何在 App Service 環境 v1 中建立 web 應用程式。 本檔僅為使用舊版 v1 ASE 的客戶提供。
 author: ccompy
 ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.topic: article
@@ -8,19 +8,19 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c947617f0c27708e72f9bff92e2b0041473cd92
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266191"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在 App Service 環境 v1 中建立 Web 應用程式
 
 > [!NOTE]
-> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 要瞭解有關新版本的更多，從[應用服務環境簡介](intro.md)開始。
+> 這篇文章是關於 App Service 環境 v1。  有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入瞭解新版本，請從[App Service 環境簡介](intro.md)開始。
 > 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 本教學課程說明如何在 [App Service 環境 v1](app-service-app-service-environment-intro.md) (ASE) 中建立 Web 應用程式和 App Service 方案。 
 
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "79266191"
 > 
 > 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 本教學課程假設您已建立 App Service 環境。 如果尚未建立，請參閱 [建立 App Service 環境](app-service-web-how-to-create-an-app-service-environment.md)。 
 
 ## <a name="create-a-web-app"></a>建立 Web 應用程式
@@ -40,10 +40,10 @@ ms.locfileid: "79266191"
     如果您有多個訂用帳戶，請注意，若要在您的 App Service 環境中建立應用程式，必須使用您在建立環境時所使用訂用帳戶來建立。 
 3. 選取或建立資源群組。
    
-    *資源組*使您能夠將相關的 Azure 資源作為一個單元進行管理，並且在為應用建立*基於角色的存取控制*（RBAC） 規則時非常有用。 有關詳細資訊，請參閱[Azure 資源管理器概述][ResourceGroups]。 
+    *資源群組*可讓您以一個單位來管理相關的 Azure 資源，並在為您的應用程式建立*角色型存取控制*（RBAC）規則時非常有用。 如需詳細資訊，請參閱[Azure Resource Manager 總覽][ResourceGroups]。 
 4. 選取或建立 App Service 方案。
    
-    *App Service 規劃*是一組受控的 Web 應用程式。  當您選取價格時，支付的價格通常會套用到 App Service 方案，而非個別的應用程式。 在 ASE 中，您需對配置給 ASE 的計算執行個體付費，而不需對與您的 ASP 一起列出的項目付費。  若要相應增加 Web 應用程式的執行個體數目，您可相應增加 App Service 方案的執行個體，這會影響該方案中的所有 Web 應用程式。  方案中的某些功能 (例如網站位置或 VNET 整合) 也有數量限制。  如需詳細資訊，請參閱 [Azure App Service 方案概觀](../overview-hosting-plans.md)
+    *App Service 規劃*是一組受控的 Web 應用程式。  當您選取價格時，支付的價格通常會套用到 App Service 方案，而非個別的應用程式。 在 ASE 中，您需對配置給 ASE 的計算執行個體付費，而不需對與您的 ASP 一起列出的項目付費。  若要相應增加 Web 應用程式的執行個體數目，您可相應增加 App Service 方案的執行個體，這會影響該方案中的所有 Web 應用程式。  方案中的某些功能 (例如網站位置或 VNET 整合) 也有數量限制。  如需詳細資訊，請參閱[Azure App Service 計畫總覽](../overview-hosting-plans.md)
    
     您可以藉由查看方案名稱下加註的位置，來識別 ASE 中的 App Service 方案。  
    
@@ -57,8 +57,8 @@ ms.locfileid: "79266191"
     如果 ASE 使用內部 VIP，則該 ASE 中應用程式的 URL 為：[*網站名稱*].[*在 ASE 建立期間指定的子網域*]   
     在 ASE 建立期間選取您的 ASP 後，您會在 [名稱]**** 之下看到子網域更新
 
-## <a name="create-an-app-service-plan"></a><a name="createplan"></a>創建應用服務方案
-當您在 App Service 環境中建立 App Service 方案時，您的背景工作角色選擇會因為在 ASE 中沒有共用的背景工作角色而有所不同。  您必須使用的工作人員是管理員已分配給 ASE 的工作人員。 這意味著，要創建新計畫，您需要為 ASE 工作池分配比該輔助角色池中已包含的所有計劃的實例總數更多的工作人員。  如果您的 ASE 背景工作集區中沒有足夠的背景工作角色來建立方案，則您需要與 ASE 系統管理員合作來新增背景工作角色。
+## <a name="create-an-app-service-plan"></a><a name="createplan"></a>建立 App Service 方案
+當您在 App Service 環境中建立 App Service 方案時，您的背景工作角色選擇會因為在 ASE 中沒有共用的背景工作角色而有所不同。  您必須使用的背景工作角色，是由系統管理員配置給 ASE 的工作者。 這表示若要建立新的方案，您需要將更多背景工作配置到 ASE 背景工作角色集區，而不是該背景工作集區中所有計劃的實例總數。  如果您的 ASE 背景工作集區中沒有足夠的背景工作角色來建立方案，則您需要與 ASE 系統管理員合作來新增背景工作角色。
 
 而 App Service 環境所裝載的 App Service 方案還有另一項差異，那就是缺少價格選取項目。  當您有 App Service 環境時，您會支付系統所使用的計算資源費用，但該環境中的方案不會有附加的費用。  當您建立 App Service 方案時，您通常會選取決定費率的價格方案。  App Service 環境基本上是您可以在其中建立內容的私人位置。  您可支付環境費用，而非裝載您的內容。
 

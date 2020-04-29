@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/27/2019
 ms.author: alkohli
 ms.openlocfilehash: 13d5bce46883ea4ddca91d7222f68a19ba65c21c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260042"
 ---
 # <a name="azure-data-box-limits"></a>Azure 資料箱限制
@@ -26,7 +26,7 @@ ms.locfileid: "79260042"
 ## <a name="data-box-limits"></a>資料箱限制
 
 - 資料箱最多可以儲存 5 億個檔案。
-- 資料盒最多支援雲中的 512 個容器或共用。 使用者共用中的頂級目錄將成為雲中的容器或 Azure 檔共用。 
+- 資料箱支援最多512個容器或雲端中的共用。 使用者共用中的最上層目錄會成為雲端中的容器或 Azure 檔案共用。 
 
 ## <a name="azure-storage-limits"></a>Azure 儲存體限制
 

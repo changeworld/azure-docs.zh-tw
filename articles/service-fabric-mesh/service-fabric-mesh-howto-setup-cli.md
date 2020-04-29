@@ -1,19 +1,19 @@
 ---
-title: 設置 Azure 服務結構網格 CLI
-description: 必須使用 Service Fabric Mesh 命令列介面 (CLI)，才能在本機和 Azure Service Fabric Mesh 中部署及管理資源。 下面是如何設置它。
+title: 設定 Azure Service Fabric 網格 CLI
+description: 必須使用 Service Fabric Mesh 命令列介面 (CLI)，才能在本機和 Azure Service Fabric Mesh 中部署及管理資源。 設定方式如下。
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 0fb65ceeabca9331130083f8ec5b3fe8acce13b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79259184"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>設定 Service Fabric Mesh CLI
-必須使用 Service Fabric Mesh 命令列介面 (CLI)，才能在本機和 Azure Service Fabric Mesh 中部署及管理資源。 下面是如何設置它。
+必須使用 Service Fabric Mesh 命令列介面 (CLI)，才能在本機和 Azure Service Fabric Mesh 中部署及管理資源。 設定方式如下。
 
 有三種類型的 CLI 可供使用，其摘要說明請見下表。
 
@@ -21,14 +21,14 @@ ms.locfileid: "79259184"
 |---|---|---|
 | az mesh | Azure Service Fabric Mesh | 可讓您在 Azure Service Fabric Mesh 環境中部署應用程式和管理資源的主要 CLI。 
 | sfctl | 本機叢集 | 可讓您對本機叢集部署及測試 Service Fabric 資源的 Service Fabric CLI。  
-| Maven CLI | 本機叢集和 Azure Service Fabric Mesh | 一個包裝器`az mesh`，`sfctl`它允許 JAVA 開發人員使用熟悉的命令列體驗來進行本地和 Azure 開發體驗。  
+| Maven CLI | 本機叢集和 Azure Service Fabric Mesh | `az mesh`和`sfctl`的包裝函式，可讓 JAVA 開發人員使用熟悉的命令列體驗來進行本機和 Azure 開發體驗。  
 
 針對預覽版本，Azure Service Fabric Mesh CLI 是以 Azure CLI 擴充功能的形式撰寫。 您可以將其安裝在 Azure Cloud Shell 或 Azure CLI 的本機安裝上。 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
 ## <a name="install-the-azure-service-fabric-mesh-cli"></a>安裝 Azure Service Fabric Mesh CLI
-1. 您必須安裝 Azure CLI 版本 2.0.67 或更高版本。 執行 `az --version` 以尋找版本。 若要安裝或升級至最新版本的 CLI，請參閱[安裝 Azure CLI][azure-cli-install]。
+1. 您必須安裝 Azure CLI 版2.0.67 或更新版本。 執行 `az --version` 以尋找版本。 若要安裝或升級至最新版本的 CLI，請參閱[安裝 Azure CLI][azure-cli-install]。
 
 2. 使用下列命令安裝 Azure Service Fabric Mesh CLI 擴充功能模組。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "79259184"
 
 若要使用 Maven CLI，必須在您的電腦上安裝下列項目： 
 
-* [JAVA](https://www.azul.com/downloads/zulu/)
+* [Java](https://www.azul.com/downloads/zulu/)
 * [Maven](https://maven.apache.org/download.cgi)
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * Azure Mesh CLI (az mesh) - 以 Azure Service Fabric Mesh 為目標 

@@ -1,5 +1,5 @@
 ---
-title: 將工作設備加入組織的網路 - AD
+title: 將您的工作裝置加入組織的網路-AD
 description: 了解如何將您的工作裝置加入組織的網路。
 services: active-directory
 author: curtand
@@ -13,10 +13,10 @@ ms.date: 08/03/2018
 ms.author: curtand
 ms.reviewer: jairoc
 ms.openlocfilehash: 0ff8b85a15d94ded2d702e0df247f9ebc4d3f923
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79266308"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>將您的工作裝置加入組織的網路
@@ -25,7 +25,7 @@ ms.locfileid: "79266308"
 ## <a name="what-happens-when-you-join-your-device"></a>當您加入裝置時會發生什麼事
 當您將 Windows 10 裝置加入組織的網路時，將會發生下列動作：
 
-- Windows 會將您的設備註冊到組織的網路，允許您使用個人帳戶訪問資源。 註冊裝置之後，Windows 接著會將您的裝置加入網路，讓您能夠使用貴組織的使用者名稱和密碼來登入並存取受限的資源。
+- Windows 會將您的裝置註冊到組織的網路，讓您使用個人帳戶來存取您的資源。 註冊裝置之後，Windows 接著會將您的裝置加入網路，讓您能夠使用貴組織的使用者名稱和密碼來登入並存取受限的資源。
 
 - (選擇性) 根據組織的選擇，可能會要求您透過 [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) 或[安全性資訊](user-help-security-info-overview.md)設定雙步驟驗證。
 
@@ -61,7 +61,7 @@ ms.locfileid: "79266308"
 
     ![[設定] 畫面上的帳戶](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. 選擇 **"訪問工作或學校**"，並確保看到顯示類似"**連接到*\<your_organization>* Azure AD**"之類的文本。
+2. 選取 [**存取公司或學校**]，並確定您看到的文字顯示類似的內容，並**已連線至* \<your_organization>* Azure AD**。
 
     ![具有已連線之 contoso 帳戶的 [存取公司或學校資源] 畫面](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "79266308"
 
     ![[設定] 畫面上的帳戶](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. 選擇 **"訪問工作或學校**"，並確保看到顯示類似"**連接到*\<your_organization>* Azure AD**"之類的文本。
+2. 選取 [**存取公司或學校**]，並確定您看到的文字顯示類似的內容，並**已連線至* \<your_organization>* Azure AD**。
 
     ![具有已連線之 contoso 帳戶的 [存取公司或學校資源] 畫面](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 
@@ -115,4 +115,4 @@ ms.locfileid: "79266308"
 
 - 如果您的組織想要您註冊個人裝置 (例如您的手機)，請參閱[在組織的網路上註冊個人裝置](user-help-register-device-on-network.md)。
 
-- 如果您的組織使用 Microsoft Intune 進行管理，並且您對註冊、登錄或任何其他與 Intune 相關的問題有疑問，請參閱[Intune 使用者説明內容](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done)。
+- 如果您的組織是使用 Microsoft Intune 進行管理，而且您有關于註冊、登入或任何其他 Intune 相關問題的問題，請參閱[Intune 使用者說明內容](https://docs.microsoft.com/intune-user-help/use-managed-devices-to-get-work-done)。

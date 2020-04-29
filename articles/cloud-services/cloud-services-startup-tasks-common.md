@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273055"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常見的雲端服務啟動工作
@@ -300,7 +300,7 @@ string fileContent = System.IO.File.ReadAllText(System.IO.Path.Combine(localStor
 
 在 [ServiceDefinition.csdef] 檔案中建立環境變數，即可在計算模擬器和雲端上完成執行不同動作的作業。 然後，您會在啟動工作中測試該環境變數的值。
 
-要創建環境變數，請添加[可變]/[角色實例值]元素，並創建 的`/RoleEnvironment/Deployment/@emulated`XPath 值。 在計算模擬器上執行時，**%ComputeEmulatorRunning%** 環境變數的值會是 `true`；在雲端上執行時則為 `false`。
+若要建立環境變數，請新增[變數]/[RoleInstanceValue]元素，並建立的`/RoleEnvironment/Deployment/@emulated`XPath 值。 在計算模擬器上執行時，**%ComputeEmulatorRunning%** 環境變數的值會是 `true`；在雲端上執行時則為 `false`。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -500,18 +500,18 @@ EXIT %ERRORLEVEL%
 
 [建立和部署](cloud-services-how-to-create-deploy-portal.md) 雲端服務封裝。
 
-[服務定義.csdef]: cloud-services-model-and-package.md#csdef
-[任務]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[ServiceDefinition]: cloud-services-model-and-package.md#csdef
+[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [環境]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [變數]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
-[角色實例值]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
 [端點]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
-[本機存放區]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
+[LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
-[角色實例值]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+[RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 
 
 

@@ -19,14 +19,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bbd1ad6178e0120bf8414fc424b79254e306d2c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79261563"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視 AD FS
-下列文件適用於使用 Azure AD Connect Health 來監視 AD FS 基礎結構。 有關監視 Azure AD 連接（同步）與 Azure AD 連接運行狀況的資訊，請參閱[使用 Azure AD 連接運行狀況進行同步](how-to-connect-health-sync.md)。此外，有關使用 Azure AD 連接運行狀況監視活動目錄域服務的資訊，請參閱[使用 Azure AD 將運行狀況與 AD DS 連接](how-to-connect-health-adds.md)。
+下列文件適用於使用 Azure AD Connect Health 來監視 AD FS 基礎結構。 如需使用 Azure AD Connect Health 監視 Azure AD Connect （同步）的相關資訊，請參閱[使用 Azure AD Connect Health 進行同步](how-to-connect-health-sync.md)處理。此外，如需使用 Azure AD Connect Health 監視 Active Directory Domain Services 的詳細資訊，請參閱搭配[使用 Azure AD Connect Health 與 AD DS](how-to-connect-health-adds.md)。
 
 ## <a name="alerts-for-ad-fs"></a>AD FS 的警示
 [Azure AD Connect Health 警示] 區段將為您提供作用中警示的清單。 每個警示都包含相關資訊、解決步驟，以及相關文件的連結。
@@ -53,7 +53,7 @@ Azure AD Connect Health 使用情況分析會分析您的同盟伺服器的驗�
 | --- | --- |
 | 全部 | 顯示所有 AD FS 伺服器所處理要求總數的計數。|
 | Application | 根據目標信賴憑證者，為要求總數分組。 這個分組對於了解哪個應用程式收到多少百分比的總流量非常有幫助。 |
-|  伺服器 |根據處理要求的伺服器，為要求總數分組。 這個分組對於了解總流量的負載分佈非常有幫助。
+|  Server (伺服器) |根據處理要求的伺服器，為要求總數分組。 這個分組對於了解總流量的負載分佈非常有幫助。
 | 加入工作場所 |根據要求是否來自已加入工作場所的裝置 (已知)，為要求總數分組。 這個分組對於了解是否使用識別基礎結構未知的裝置存取您的資源非常有幫助。 |
 |  驗證方法 | 根據用於驗證的驗證方法，為要求總數分組。 這個分組對於了解用於驗證的常見驗證方法非常有幫助。 以下是可能的驗證方法 <ol> <li>Windows 整合式驗證 (Windows)</li> <li>表單型驗證 (表單)</li> <li>SSO (單一登入)</li> <li>X509 憑證驗證 (憑證)</li> <br>如果同盟伺服器收到的要求含有 SSO Cookie，該要求就視為 SSO (單一登入)。 在這種情況下，如果 Cookie 有效，則不會要求使用者提供認證，並不間斷地存取應用程式。 如果您有多個同盟伺服器所保護的信賴憑證者，此行為非常常見。 |
 | 網路位置 | 根據使用者的網路位置，為要求總數分組。 它可以是內部網路或外部網路。 這個分組對於了解流量百分比是來自內部網路還是外部網路非常有幫助。 |
@@ -64,7 +64,7 @@ Azure AD Connect Health 使用情況分析會分析您的同盟伺服器的驗�
 |群組依據 | 分組是什麼意思，為什麼分組很有用？ |
 | --- | --- |
 | 錯誤類型 | 根據預先定義的錯誤類型，顯示錯誤數目。 這個分組對於了解常見的錯誤類型非常有幫助。 <ul><li>不正確的使用者名稱或密碼：由於不正確的使用者名稱或密碼而導致錯誤。</li> <li>「外部網路鎖定」：由於從外部網路收到已鎖定的使用者送來的要求而導致失敗 </li><li> 「已過期的密碼」：由於使用者以過期密碼登入而導致失敗。</li><li>「已停用的帳戶」：由於使用者以停用的帳戶登入而導致失敗。</li><li>「裝置驗證」：由於使用者無法使用裝置驗證來驗證而導致失敗。</li><li>「使用者憑證驗證」：由於憑證無效，使用者無法通過驗證而導致失敗。</li><li>"MFA"：由於使用者無法使用 Multi-Factor Authentication 通過驗證而導致失敗。</li><li>「其他認證」：「發行授權」：由於授權失敗而導致失敗。</li><li>「發行委派」：由於發行委派錯誤而導致失敗。</li><li>「權杖接受」：由於 ADFS 拒絕來自協力廠商識別提供者的權杖而導致失敗。</li><li>「通訊協定」：由於通訊協定錯誤而導致失敗。</li><li>「未知」：全部攔截。 無法歸入已定義的類別內的其他任何失敗。</li> |
-| 伺服器 | 依伺服器為錯誤分組。 此分組對於了解跨伺服器的錯誤分佈非常有幫助。 分佈不平均可能是伺服器處於錯誤狀態的指標。 |
+| Server (伺服器) | 依伺服器為錯誤分組。 此分組對於了解跨伺服器的錯誤分佈非常有幫助。 分佈不平均可能是伺服器處於錯誤狀態的指標。 |
 | 網路位置 | 根據要求的網路位置 (內部網路與外部網路)，為錯誤分組。 此分組對於了解失敗的要求類型非常有幫助。 |
 |  Application | 根據目標應用程式 (信賴憑證者)，為失敗分組。 此分組對於了解哪個目標應用程式將看到最多錯誤數目非常有幫助。 |
 
@@ -106,7 +106,7 @@ Azure AD Connect Health for ADFS 會提供一份報告，內容有關因為使�
 
 ![Azure AD Connect Health 入口網站](./media/how-to-connect-health-adfs/report3a.png)
 
-此報告可提供以下資訊：
+此報表會提供下列資訊：
 
 | 報告項目 | 描述 |
 | --- | --- |
@@ -121,5 +121,5 @@ Azure AD Connect Health for ADFS 會提供一份報告，內容有關因為使�
 ## <a name="related-links"></a>相關連結
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)
-* [風險 IP 報告](how-to-connect-health-adfs-risky-ip.md)
+* [有風險的 IP 報告](how-to-connect-health-adfs-risky-ip.md)
 

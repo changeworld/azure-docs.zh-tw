@@ -1,6 +1,6 @@
 ---
-title: 將 Azure 自動化運行簿添加到網站恢復恢復計畫
-description: 瞭解如何使用 Azure 自動化擴展恢復計畫以使用 Azure 網站恢復進行災害復原。
+title: 將 runbook Azure 自動化新增至 Site Recovery 復原方案
+description: 瞭解如何使用 Azure Site Recovery Azure 自動化的嚴重損壞修復擴充復原計畫。
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
@@ -8,54 +8,54 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
 ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257481"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>將 Azure 自動化 Runbook 新增至復原方案
 
-本文介紹如何集成 Azure 自動化運行簿，以擴展[Azure 網站恢復](site-recovery-overview.md)計畫。 我們向您展示如何自動執行本來需要手動干預的基本任務，以及如何將多步驟恢復轉換為一鍵式操作。
+本文說明如何整合 Azure 自動化 runbook，以擴充[Azure Site Recovery](site-recovery-overview.md)復原方案。 我們會向您示範如何將需要手動介入的基本工作自動化，以及如何將多步驟復原轉換成單鍵動作。
 
 ## <a name="recovery-plans"></a>復原方案 
 
-在容錯移轉本地電腦或 Azure VM 時，可以使用恢復計畫。 恢復計畫可説明您定義系統復原過程，該流程定義電腦容錯移轉的方式，以及它們在容錯移轉後如何啟動和恢復。 
+當您損毀修復內部部署機器或 Azure Vm 時，可以使用復原方案。 復原方案可協助您定義系統化復原程式，以定義機器如何容錯移轉，以及如何在容錯移轉之後啟動和復原。 
 
-恢復大型應用可能很複雜。 恢復計畫有助於強制實施順序，以便恢復始終準確、可重複和自動化。 您可以使用腳本和 Azure 自動化運行簿自動執行恢復計畫中的任務。 典型的示例可能是在容錯移轉後在 Azure VM 上配置設置，或者重新配置在 VM 上運行的應用。
+復原大型應用程式可能會很複雜。 復原方案可協助進行順序，以便讓復原一致、可重複且自動化。 您可以使用腳本和 Azure 自動化 runbook，將復原方案內的工作自動化。 典型範例可能是在容錯移轉後於 Azure VM 上進行設定，或重新設定在 VM 上執行的應用程式。
 
 - [深入了解](recovery-plan-overview.md) 復原計劃。
-- [詳細瞭解](../automation/automation-runbook-types.md)Azure 自動化運行手冊。
+- [深入瞭解](../automation/automation-runbook-types.md)Azure 自動化 runbook。
 
 
 
-## <a name="runbooks-in-recovery-plans"></a>恢復計畫中的運行簿
+## <a name="runbooks-in-recovery-plans"></a>復原方案中的 runbook
 
-將 Azure 自動化帳戶和運行簿添加到恢復計畫。 運行恢復計畫時將調用 Runbook。
+您可以將 Azure 自動化帳戶和 runbook 新增至復原方案。 當復原方案執行時，會叫用 runbook。
 
-- 自動化帳戶可以位於任何 Azure 區域中，並且必須與網站恢復保存庫處於同一訂閱中。 
-- 在容錯移轉期間，從主位置到輔助位置或在從輔助位置故障回退到主位置期間，Runbook 可以在恢復計畫中運行。
-- 恢復計畫中的 Runbook 按設置的順序連續運行。
-- 如果恢復計畫中的 Runbook 將 VM 配置為在不同的組中啟動，則僅當 Azure 報告所有 VM 為正在運行時，恢復計畫才會繼續。
-- 恢復計畫將繼續運行，即使腳本失敗也是如此。
+- 自動化帳戶可以在任何 Azure 區域中，而且必須與 Site Recovery 保存庫位於相同的訂用帳戶中。 
+- 從主要位置容錯移轉到次要位置，或從次要位置容錯回復到主要位置時，runbook 可以在復原方案中執行。
+- 復原方案中的 runbook 會依照設定的順序，依序逐一執行。
+- 如果復原方案中的 runbook 將 Vm 設定為在不同的群組中啟動，則只有在 Azure 將所有 Vm 報告為執行中時，復原方案才會繼續。
+- 復原方案會繼續執行，即使腳本失敗也是一樣。
 
-### <a name="recovery-plan-context"></a>恢復計畫上下文
+### <a name="recovery-plan-context"></a>復原方案內容
 
-當腳本運行時，它將恢復計畫上下文注入 Runbook。 上下文包含表中匯總的變數。
+當腳本執行時，它會將復原方案內容插入至 runbook。 內容包含資料表中摘要說明的變數。
 
-| **變數名稱** | **描述** |
+| **變數名稱** | **說明** |
 | --- | --- |
-| RecoveryPlanName |恢復計畫名稱。 用於基於名稱的操作。 |
-| FailoverType |指定它是測試容錯移轉還是生產容錯移轉。 
-| FailoverDirection | 指定恢復是到主位置還是輔助位置。 |
+| RecoveryPlanName |復原方案名稱。 用在以名稱為基礎的動作中。 |
+| FailoverType |指定是測試或生產容錯移轉。 
+| FailoverDirection | 指定復原是否為主要或次要位置。 |
 | GroupID |識別復原方案執行時方案內的群組編號。 |
 | VmMap |群組中所有 VM 的陣列。 |
 | VMMap 索引鍵 |每個 VM 的唯一索引鍵 (GUID)。 |
 | SubscriptionId |建立 VM 的 Azure 訂用帳戶識別碼。 |
-| resourceGroupName | VM 所在的資源組的名稱。
+| resourceGroupName | VM 所在的資源組名。
 | CloudServiceName |在其下建立 VM 的 Azure 雲端服務名稱。 |
 | RoleName |Azure VM 的名稱。 |
-| RecoveryPointId|VM 恢復的時間戳記。 |
+| RecoveryPointId|VM 復原的時間戳記。 |
 
 下列範例顯示內容變數：
 
@@ -74,7 +74,7 @@ ms.locfileid: "79257481"
 }
 ```
 
-如果要在迴圈中訪問 VMMap 中的所有 VM，可以使用以下代碼：
+如果您想要以迴圈存取存取 vmmap 中的所有 Vm，您可以使用下列程式碼：
 
 ```
 $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -91,13 +91,13 @@ $vmMap = $RecoveryPlanContext.VmMap
 ```
 
 
-Aman Sharma 在[收穫雲](http://harvestingclouds.com)的博客有一個有用的例子，[一個恢復計畫上下文腳本](http://harvestingclouds.com/post/script-sample-azure-automation-runbook-for-asr-recovery-plan/)。
+透過[收集](http://harvestingclouds.com)雲端的 Aman Sharma 的 blog，有一個實用的復原[方案內容腳本](http://harvestingclouds.com/post/script-sample-azure-automation-runbook-for-asr-recovery-plan/)範例。
 
 
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
-- 如果您是 Azure 自動化的新功能，可以[註冊](https://azure.microsoft.com/services/automation/)並[下載示例腳本](https://azure.microsoft.com/documentation/scripts/)。
+- 如果您不熟悉 Azure 自動化，可以[註冊](https://azure.microsoft.com/services/automation/)並[下載範例腳本](https://azure.microsoft.com/documentation/scripts/)。
 - 確定自動化帳戶具有下列模組：
     - AzureRM.profile
     - AzureRM.Resources
@@ -105,36 +105,36 @@ Aman Sharma 在[收穫雲](http://harvestingclouds.com)的博客有一個有用�
     - AzureRM.Network
     - AzureRM.Compute
 
-    所有模組都必須是相容版本。 最簡單的方法是始終使用所有模組的最新版本。
+    所有模組都必須是相容版本。 最簡單的方式是一律使用所有模組的最新版本。
 
 
 
 ## <a name="customize-the-recovery-plan"></a>自訂復原方案
 
-1. 在保存庫中，選擇**恢復計畫（網站恢復）**
-2. 要創建恢復計畫，請按一下 **"恢復計畫**"。 [深入了解](site-recovery-create-recovery-plans.md)。 如果您已經有一個恢復計畫，然後選擇打開它。
-3. 在恢復計畫頁中，按一下 **"自訂**"。
+1. 在保存庫中，選取 [復原**方案（Site Recovery）** ]
+2. 若要建立復原方案，請按一下 [ **+ 復原方案**]。 [深入了解](site-recovery-create-recovery-plans.md)。 如果您已經有復原方案，請選取以將它開啟。
+3. 在 [復原方案] 頁面中，按一下 [**自訂**]。
 
     ![按一下 [自訂] 按鈕](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. 按一下組 1 旁邊的橢圓 （...）：**開始** > **添加帖子操作**。
-3. 在 **"插入"操作**中，驗證**腳本**是否被選中，並指定腳本的名稱 **（Hello World）。**
-4. 指定自動化帳戶並選擇 Runbook。 若要儲存指令碼，請按一下 [確定]****。 指令碼會新增至 [群組 1: 後續步驟]****。
+2. 按一下 [**群組1：開始** > **新增 post 動作**] 旁的省略號（...）。
+3. 在 [**插入動作**] 中，確認已選取 [**腳本**]，然後指定腳本的名稱（**Hello World**）。
+4. 指定自動化帳戶，然後選取 runbook。 若要儲存指令碼，請按一下 [確定]****。 指令碼會新增至 [群組 1: 後續步驟]****。
 
 
-## <a name="reuse-a-runbook-script"></a>重用 Runbook 腳本
+## <a name="reuse-a-runbook-script"></a>重複使用 runbook 腳本
 
-您可以使用外部變數在多個恢復計畫中使用單個 Runbook 腳本。 
+您可以在多個復原方案中使用單一 runbook 腳本，方法是使用外部變數。 
 
-- 使用[Azure 自動化變數](../automation/automation-variables.md)存儲用於運行恢復計畫的參數。
+- 您可以使用[Azure 自動化變數](../automation/automation-variables.md)來儲存用於執行復原計畫的參數。
 - 您可以在變數前面加上復原方案名稱，為每個復原方案建立個別變數。 然後，使用這些變數作為參數。
 - 您可以變更參數而不需要變更指令碼，但仍變更指令碼的運作方式。
 
 ### <a name="use-a-simple-string-variable-in-a-runbook-script"></a>在 Runbook 指令碼中使用簡單的字串變數
 
-在此示例中，腳本獲取網路安全性群組 （NSG） 的輸入，並將其應用於恢復計畫中的 VM。 
+在此範例中，腳本會使用網路安全性群組（NSG）的輸入，並將其套用至復原方案中的 Vm。 
 
-1. 以便腳本可以檢測正在運行的恢復計畫，請使用此恢復計畫上下文：
+1. 為了讓腳本可以偵測正在執行哪個復原計畫，請使用此復原方案內容：
 
     ```
     workflow AddPublicIPAndNSG {
@@ -146,17 +146,17 @@ Aman Sharma 在[收穫雲](http://harvestingclouds.com)的博客有一個有用�
         $RPName = $RecoveryPlanContext.RecoveryPlanName
     ```
 
-2. 請注意 NSG 名稱和資源組。 使用這些變數作為恢復計畫腳本的輸入。 
-1. 在自動化帳戶資產中。 創建變數以存儲 NSG 名稱。 向具有恢復計畫名稱的變數名稱添加首碼。
+2. 請記下 NSG 名稱和資源群組。 您可以使用這些變數做為復原方案腳本的輸入。 
+1. 在自動化帳戶資產中。 建立變數來儲存 NSG 名稱。 使用復原方案的名稱，新增變數名稱的前置詞。
 
     ![建立 NSG 名稱變數](media/site-recovery-runbook-automation-new/var1.png)
 
-2. 創建變數以存儲 NSG 資源的資源組名稱。 向具有恢復計畫名稱的變數名稱添加首碼。
+2. 建立變數來儲存 NSG 資源的資源組名。 使用復原方案的名稱，新增變數名稱的前置詞。
 
     ![建立 NSG 資源群組名稱](media/site-recovery-runbook-automation-new/var2.png)
 
 
-3.  在腳本中，使用此引用代碼獲取變數值：
+3.  在腳本中，使用下列參考程式碼來取得變數值：
 
     ```
     $NSGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSG"
@@ -184,21 +184,21 @@ Aman Sharma 在[收穫雲](http://harvestingclouds.com)的博客有一個有用�
 
 針對每個復原方案，建立獨立變數讓您可以重複使用指令碼。 在開頭加上復原方案名稱。 
 
-有關此方案的完整端到端腳本，請查看[此腳本](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee)。
+如需此案例的完整端對端腳本，請參閱[此腳本](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee)。
 
 
 ### <a name="use-a-complex-variable-to-store-more-information"></a>使用複雜變數來儲存詳細資訊
 
-在某些情況下，可能無法為每個恢復計畫創建單獨的變數。 請考慮一種方案，即您希望單個腳本在特定 VM 上分配公共 IP 位址。 在另一個案例中，您可能想要將不同的 NSG 套用至不同的 VM (並非所有 VM)。 請注意：
+在某些情況下，您可能無法為每個復原方案建立個別變數。 假設您想要讓單一腳本指派特定 Vm 上的公用 IP 位址。 在另一個案例中，您可能想要將不同的 NSG 套用至不同的 VM (並非所有 VM)。 請注意：
 
-- 您可以製作可用於任何恢復計畫的腳本。
+- 您可以針對任何復原方案，製作可重複使用的腳本。
 - 每個復原方案可以有任意數目的 VM。
 - 例如，SharePoint 復原有兩個前端。 基本企業營運 (LOB) 應用程式只有一個前端。
-- 在這種情況下，不能為每個恢復計畫創建單獨的變數。
+- 在此案例中，您無法為每個復原方案建立個別變數。
 
-在下面的示例中，我們在 Azure 自動化帳戶中創建一[個複雜的變數](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable)。
+在下列範例中，我們會在 Azure 自動化帳戶中建立[複雜變數](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureautomationvariable)。
 
-為此，我們使用 Azure PowerShell 指定多個值。
+我們會使用 Azure PowerShell 來指定多個值來執行此動作。
 
 1. 在 PowerShell 中，登入您的 Azure 訂用帳戶：
 
@@ -208,7 +208,7 @@ Aman Sharma 在[收穫雲](http://harvestingclouds.com)的博客有一個有用�
     $sub | Select-AzureRmSubscription
     ```
 
-2. 要存儲參數，請使用恢復計畫的名稱創建複雜變數：
+2. 若要儲存參數，請使用復原方案的名稱來建立複雜變數：
 
     ```
     $VMDetails = @{"VMGUID"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"};"VMGUID2"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"}}
@@ -251,9 +251,9 @@ Aman Sharma 在[收穫雲](http://harvestingclouds.com)的博客有一個有用�
 
 若要將範例指令碼部署至您的自動化帳戶，請按一下 [部署至 Azure]**** 按鈕。
 
-[![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![部署至 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-此視頻提供了另一個示例。 該影片示範如何將兩層式 WordPress 應用程式復原至 Azure：
+這段影片提供另一個範例。 該影片示範如何將兩層式 WordPress 應用程式復原至 Azure：
 
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
@@ -261,9 +261,9 @@ Aman Sharma 在[收穫雲](http://harvestingclouds.com)的博客有一個有用�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[Azure 自動化作為帳戶運行](../automation/automation-create-runas-account.md)
-- 查看[Azure 自動化示例腳本](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team)。
-- [瞭解有關](site-recovery-failover.md)運行容錯移轉的更多詳細資訊。
+- 瞭解[Azure 自動化執行身分帳戶](../automation/automation-create-runas-account.md)
+- 請參閱[Azure 自動化範例腳本](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=User&f%5B0%5D.Value=SC%20Automation%20Product%20Team&f%5B0%5D.Text=SC%20Automation%20Product%20Team)。
+- [深入瞭解](site-recovery-failover.md)如何執行容錯移轉。
 
 
 

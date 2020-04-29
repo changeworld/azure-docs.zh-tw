@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284729"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 入口網站建立 IoT 中樞
@@ -50,15 +50,15 @@ ms.locfileid: "79284729"
 
 ![顯示新增共用存取原則的螢幕擷取畫面](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
 
-* [登錄讀取]**** 和 [登錄寫入]**** 原則會授與讀取和寫入存取權給身分識別登錄。 後端雲服務使用這些許可權來管理設備標識。 選擇寫入選項就會自動選擇讀取選項。
+* [登錄讀取]**** 和 [登錄寫入]**** 原則會授與讀取和寫入存取權給身分識別登錄。 後端雲端服務會使用這些許可權來管理裝置身分識別。 選擇寫入選項就會自動選擇讀取選項。
 
-* **服務連接**策略授予訪問服務終結點的許可權。 後端雲服務使用此許可權從設備發送和接收消息，以及更新和讀取設備孿生資料和模組孿生資料。
+* **服務連接**原則會授與存取服務端點的許可權。 後端雲端服務會使用此許可權來傳送和接收裝置的訊息，以及更新和讀取裝置對應項和模組對應項資料。
 
-* [裝置連線]**** 原則會授與使用 IoT 中樞裝置端端點傳送和接收訊息的權限。 設備使用此許可權從 IoT 中心發送和接收消息、更新和讀取設備孿生資料和模組孿生資料，以及執行檔上載。
+* [裝置連線]**** 原則會授與使用 IoT 中樞裝置端端點傳送和接收訊息的權限。 裝置會使用此許可權來傳送和接收來自 IoT 中樞的訊息、更新和讀取裝置對應項和模組對應項資料，以及執行檔案上傳。
 
 按一下 [建立] **** 將此新建立的原則新增至現有的清單。
 
-有關特定許可權授予的訪問的詳細資訊，請參閱[IoT 中心許可權](./iot-hub-devguide-security.md#iot-hub-permissions)。
+如需特定許可權所授與之存取權的詳細資訊，請參閱[IoT 中樞許可權](./iot-hub-devguide-security.md#iot-hub-permissions)。
 
 ## <a name="register-a-new-device-in-the-iot-hub"></a>在 IoT 中樞註冊新的裝置
 
@@ -94,7 +94,7 @@ ms.locfileid: "79284729"
 
 ### <a name="custom-endpoints"></a>自訂端點
 
-按一下 **"自訂終結點"** 選項卡。您將看到已創建的任何自訂終結點。 從這裡，您可以新增新端點，或刪除現有的端點。 
+按一下 [**自訂端點**] 索引標籤。您會看到已建立的任何自訂端點。 從這裡，您可以新增新端點，或刪除現有的端點。 
 
 > [!NOTE]
 > 如果您刪除路由，不會刪除指派給該路由的端點。 若要刪除端點，請按一下 [自訂端點] 索引標籤，選取您要刪除的端點，然後按一下 [刪除]。

@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267452"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>部署 StorSimple Virtual Array 的 StorSimple 裝置管理員服務
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 [!INCLUDE [storsimple-virtual-array-eol-banner](../../includes/storsimple-virtual-array-eol-banner.md)]
 
@@ -70,10 +70,10 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
 
 #### <a name="to-delete-a-service"></a>刪除服務
 
-1. 轉到**所有資源**。 搜尋您的 StorSimple 裝置管理員服務。 選取您想要刪除的服務。
+1. 移至 [**所有資源**]。 搜尋您的 StorSimple 裝置管理員服務。 選取您想要刪除的服務。
    
     ![選取要刪除的服務](./media/storsimple-virtual-array-manage-service/deleteservice2.png)
-2. 移至服務儀表板，確保沒有裝置連接至此服務。 如果沒有裝置向此服務註冊，您也會看到相關的橫幅訊息。 按一下 [刪除]****。
+2. 移至服務儀表板，確保沒有裝置連接至此服務。 如果沒有裝置向此服務註冊，您也會看到相關的橫幅訊息。 按一下 **[刪除]** 。
    
     ![刪除服務](./media/storsimple-virtual-array-manage-service/deleteservice3.png)
 
@@ -123,6 +123,6 @@ StorSimple 裝置管理員服務相關的一般工作包括︰
    複製這個金鑰並儲存，以對任何新的裝置註冊此服務。
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解如何[開始](storsimple-virtual-array-deploy1-portal-prep.md)使用 StorSimple 虛擬陣列。
+* 瞭解如何[開始](storsimple-virtual-array-deploy1-portal-prep.md)使用 StorSimple Virtual Array。
 * 深入了解 [管理 StorSimple Virtual Array](storsimple-ova-web-ui-admin.md)。
 

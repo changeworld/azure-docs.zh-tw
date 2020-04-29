@@ -1,16 +1,16 @@
 ---
-title: 管理 Azure 宇宙資料庫中區域之間的衝突
-description: 瞭解如何通過創建最後寫入者獲勝策略或自訂衝突解決策略來管理 Azure Cosmos DB 中的衝突
+title: 管理 Azure Cosmos DB 中的區域之間的衝突
+description: 瞭解如何藉由建立最後寫入者為准或自訂衝突解決原則，管理 Azure Cosmos DB 中的衝突
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: mjbrown
 ms.openlocfilehash: 6d364f1a9974d6d638bb0f824e88ed3866644c15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247406"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中管理衝突解決原則
@@ -107,10 +107,10 @@ udp_collection = self.try_create_document_collection(
 
 您必須使用如下所示的函式簽章來實作自訂衝突解決預存程序。 函式名稱不需要符合向容器註冊預存程序時所使用的名稱，但符合的話可簡化命名程序。 下面會說明必須為此預存程序實作的參數。
 
-- **傳入項**：在提交中插入或更新的生成衝突的項。 若為刪除作業，此參數為 null。
-- **現有專案**：當前提交的項。 在更新中，此值為非 Null，若為插入或刪除作業，則為 Null。
-- **是墓碑**：布林指示傳入專案是否與以前刪除的專案衝突。 若為 true，則 existingItem 也是 null。
-- **衝突項**：容器中所有與 ID 上的傳入專案或任何其他唯一索引屬性衝突的容器中所有項的提交版本的陣列。
+- **incomingItem**：要在產生衝突的認可中插入或更新的專案。 若為刪除作業，此參數為 null。
+- **existingItem**：目前已認可的專案。 在更新中，此值為非 Null，若為插入或刪除作業，則為 Null。
+- **isTombstone**：布林值，指出 incomingItem 是否與先前刪除的專案衝突。 若為 true，則 existingItem 也是 null。
+- **conflictingItems**：容器中所有專案的認可版本陣列，與識別碼或任何其他唯一索引屬性上的 incomingItem 衝突。
 
 > [!IMPORTANT]
 > 和任何預存程序一樣，自訂衝突解決程序可以存取任何具有相同分割索引鍵的資料，並可執行任何插入、更新或刪除作業來解決衝突。
@@ -427,7 +427,7 @@ while conflict:
 深入了解下列 Azure Cosmos DB 概念：
 
 - [全域散發 - 運作原理](global-dist-under-the-hood.md)
-- [如何在應用程式中配置多主機](how-to-multi-master.md)
+- [如何在您的應用程式中設定多宿主](how-to-multi-master.md)
 - [設定多路連接的用戶端](how-to-manage-database-account.md#configure-multiple-write-regions)
 - [從您的 Azure Cosmos 帳戶新增或移除區域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 - [如何在應用程式中設定多重主機](how-to-multi-master.md)。

@@ -8,20 +8,20 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79255102"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>新增/移除 Azure 檔案同步伺服器端點
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 它會將您的 Windows Server 轉換成 Azure 檔案共用的快速快取來達到這個目的。 您可以使用 Windows Server 上可用的任何通訊協定來存取本機資料 (包括 SMB、NFS 和 FTPS)，並且可以在世界各地擁有任何所需數量的快取。
 
-*伺服器終結點*表示*已註冊伺服器上*的特定位置，例如伺服器卷上的資料夾或卷的根。 相同磁碟區中可以有多個伺服器端點，但前提是其命名空間未重疊 (例如 F:\sync1 和 F:\sync2)。 您可以為每個伺服器端點個別設定雲端階層原則。 如果您將內含一組現有檔案的伺服器位置當作伺服器端點新增至同步群組，那些檔案會與同步群組中其他端點上已存在的任何其他檔案合併。
+*伺服器端點*代表*已註冊伺服器*上的特定位置，例如伺服器磁片區上的資料夾或磁片區的根目錄。 相同磁碟區中可以有多個伺服器端點，但前提是其命名空間未重疊 (例如 F:\sync1 和 F:\sync2)。 您可以為每個伺服器端點個別設定雲端階層原則。 如果您將內含一組現有檔案的伺服器位置當作伺服器端點新增至同步群組，那些檔案會與同步群組中其他端點上已存在的任何其他檔案合併。
 
 如需如何從頭到尾部署 Azure 檔案同步的資訊，請參閱[如何部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 若要建立伺服器端點，您必須先確定已符合下列準則： 
 - 伺服器已安裝 Azure 檔案同步代理程式且已註冊。 如需安裝 Azure 檔案同步代理程式的指示，請參閱[向 Azure 檔案同步註冊/取消註冊伺服器](storage-sync-files-server-registration.md)文章。 
 - 確定已部署儲存體同步服務。 如需如何部署儲存體同步服務的詳細資訊，請參閱[如何部署 Azure 檔案同步](storage-sync-files-deployment-guide.md)。 
@@ -54,11 +54,11 @@ Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服�
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
-指定`-Order CloudTieringPolicy`將首先調用最近修改的檔。
-需要考慮的其他可選但有用的參數包括：
-* `-ThreadCount`確定可以並行調用的檔數。
-* `-PerFileRetryCount`確定當前被阻止的檔的調用嘗試頻率。
-* `-PerFileRetryDelaySeconds`確定重試調用嘗試之間的時間（以秒為單位），應始終與前面的參數結合使用。
+指定`-Order CloudTieringPolicy`將會先重新叫用最近修改過的檔案。
+其他選擇性但要考慮的實用參數包括：
+* `-ThreadCount`決定可平行重新叫用的檔案數目。
+* `-PerFileRetryCount`決定嘗試重新叫用目前已封鎖之檔案的頻率。
+* `-PerFileRetryDelaySeconds`決定重試重新叫用嘗試之間的時間（以秒為單位），且應一律與先前的參數搭配使用。
 
 > [!Note]  
 > 如果裝載伺服器的本機磁碟區沒有足以重新叫用所有已分層資料的可用空間，`Invoke-StorageSyncFileRecall` Cmdlet 將會失敗。  
@@ -73,5 +73,5 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order Clou
 
 ## <a name="next-steps"></a>後續步驟
 - [向 Azure 檔案同步註冊/取消註冊伺服器](storage-sync-files-server-registration.md)
-- [規劃 Azure 檔同步部署](storage-sync-files-planning.md)
+- [規劃 Azure 檔案同步部署](storage-sync-files-planning.md)
 - [監視 Azure 檔案同步](storage-sync-files-monitoring.md)

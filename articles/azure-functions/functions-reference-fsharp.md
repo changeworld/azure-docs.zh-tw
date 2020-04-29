@@ -1,5 +1,5 @@
 ---
-title: Azure 函數 F# 開發人員參考
+title: 'Azure Functions F # 開發人員參考'
 description: 了解如何使用 F# 指令碼來開發 Azure Functions。
 author: sylvanc
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276760"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開發人員參考
@@ -18,7 +18,7 @@ ms.locfileid: "79276760"
 Azure Functions 的 F# 是可在雲端輕鬆執行程式碼片段或「函式」的解決方案。 資料會透過函式引數流入您的 F# 函式。 引數名稱會指定於 `function.json`中，而且有預先定義的名稱可用來存取函式記錄器和取消權杖等項目。 
 
 >[!IMPORTANT]
->只有 [1.x 版](functions-versions.md#creating-1x-apps) Azure Functions 執行階段才支援 F# 指令碼 (.fsx)。 如果要將 F# 與版本 2.x 和更高版本的運行時一起使用，則必須使用預編譯的 F# 類庫專案 （.fs）。 您需使用 Visual Studio 來建立、管理及發佈 F# 類別庫專案，就像對 [C# 類別庫專案](functions-dotnet-class-library.md)一樣。 如需有關 Functions 版本的詳細資訊，請參閱 [Azure Functions 執行階段版本概觀](functions-versions.md)。
+>只有 [1.x 版](functions-versions.md#creating-1x-apps) Azure Functions 執行階段才支援 F# 指令碼 (.fsx)。 如果您想要使用 F # 搭配2.x 版和更新版本的執行時間，則必須使用先行編譯的 F # 類別庫專案（. fs）。 您需使用 Visual Studio 來建立、管理及發佈 F# 類別庫專案，就像對 [C# 類別庫專案](functions-dotnet-class-library.md)一樣。 如需有關 Functions 版本的詳細資訊，請參閱 [Azure Functions 執行階段版本概觀](functions-versions.md)。
 
 本文假設您已經讀過 [Azure Functions 開發人員參考](functions-reference.md)。
 
@@ -48,7 +48,7 @@ FunctionsProject
 
 其中有一個可用來設定函數應用程式的共用 [host.json](functions-host-json.md) 檔案。 每個函式都具有本身的程式碼檔案 (.fsx) 和繫結設定檔 (function.json)。
 
-[版本 2.x 和函數運行時的更高版本](functions-versions.md)所需的綁定副檔名在`extensions.csproj`檔中定義，`bin`資料夾中的實際庫檔。 在本機開發時，您必須[註冊繫結擴充功能](./functions-bindings-register.md#extension-bundles)。 開發 Azure 入口網站中的函式時，就會為您完成這項註冊。
+在[版本2.x 和更新版本](functions-versions.md)的函式執行時間中所需的系結延伸模組， `extensions.csproj`是在檔案中定義，實際的連結`bin`庫檔案位於資料夾中。 在本機開發時，您必須[註冊繫結擴充功能](./functions-bindings-register.md#extension-bundles)。 開發 Azure 入口網站中的函式時，就會為您完成這項註冊。
 
 ## <a name="binding-to-arguments"></a>繫結至引數
 如 [Azure Functions 觸發程序和繫結開發人員參考](functions-triggers-bindings.md)所述，每個繫結都支援某幾組引數。 例如，Blob 觸發程序支援的其中一個引數繫結是可使用 F# 記錄來表示的 POCO。 例如：
@@ -98,7 +98,7 @@ let Run(blob: string, output: byref<string>, log: ILogger) =
     output <- input
 ```
 
-## <a name="async"></a>非同步處理
+## <a name="async"></a>Async
 可以使用 `async` 工作流程，但結果需要傳回 `Task`。 這可以透過 `Async.StartAsTask`來完成，例如︰
 
 ```fsharp
@@ -109,7 +109,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>取消權杖
-如果函數需要正常處理關機，則可以給它一個[`CancellationToken`](/dotnet/api/system.threading.cancellationtoken)參數。 這可與 `async`結合，例如︰
+如果您的[`CancellationToken`](/dotnet/api/system.threading.cancellationtoken)函式需要正常地處理關閉，您可以為其指定引數。 這可與 `async`結合，例如︰
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -287,10 +287,10 @@ let mylog(log: ILogger, text: string) =
 ## <a name="next-steps"></a>後續步驟
 如需詳細資訊，請參閱下列資源：
 
-* [F# 指南](/dotnet/articles/fsharp/index)
-* [Azure 函數的最佳做法](functions-best-practices.md)
+* [F # 指南](/dotnet/articles/fsharp/index)
+* [Azure Functions 的最佳做法](functions-best-practices.md)
 * [Azure Functions 開發人員參考](functions-reference.md)
-* [Azure 函數觸發器和綁定](functions-triggers-bindings.md)
+* [Azure Functions 觸發程序和繫結](functions-triggers-bindings.md)
 * [Azure Functions 測試](functions-test-a-function.md)
 * [Azure Functions 調整](functions-scale.md)
 

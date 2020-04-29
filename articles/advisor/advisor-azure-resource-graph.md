@@ -1,35 +1,35 @@
 ---
-title: Azure 資源圖中的顧問資料
-description: 在 Azure 資源圖中查詢顧問資料
+title: Azure Resource Graph 中的 Advisor 資料
+description: 在 Azure Resource Graph 中進行 Advisor 資料的查詢
 ms.topic: article
 ms.date: 03/12/2020
 ms.author: sagupt
 ms.openlocfilehash: f8ad8fd450bc004d9caa2699922717f38d38b482
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502447"
 ---
-# <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>查詢資源圖資源管理器中的顧問資料（Azure 資源圖）
+# <a name="query-for-advisor-data-in-resource-graph-explorer-azure-resource-graph"></a>在 Resource Graph Explorer 中查詢 Advisor 資料（Azure Resource Graph）
 
-顧問資源現在已連接到 Azure[資源圖](https://azure.microsoft.com/features/resource-graph/)。 這為顧問建議的許多大規模客戶方案奠定了基礎。 以前無法大規模執行且現在可以使用資源圖實現的方案很少是：
-* 提供對 Azure 門戶中的所有訂閱執行複雜查詢的功能
-* 按類別類型（如高可用性、性能）和影響類型（高、中、低）匯總的建議
-* 特定建議類型的所有建議
-* 按建議類別影響的資源計數
+Advisor 資源現在已上架到[Azure Resource Graph](https://azure.microsoft.com/features/resource-graph/)。 這會為許多適用于 Advisor 建議的大規模客戶案例奠定基礎。 幾種情況下不可能進行規模調整，而且現在可以使用 Resource Graph 來達成：
+* 提供在 Azure 入口網站中，為您的所有訂閱執行複雜查詢的功能
+* 依類別目錄類型（例如高可用性、效能）和影響類型（高、中、低）摘要的建議
+* 針對特定建議類型的所有建議
+* 依建議分類的受影響資源計數
 
-![Azure 資源圖資源管理器中的顧問](./media/azure-resource-graph-1.png)  
+![Azure 資源圖表 explorer 中的 Advisor](./media/azure-resource-graph-1.png)  
 
 
-## <a name="advisor-resource-types-in-azure-graph"></a>Azure 圖形中的顧問資源類型
+## <a name="advisor-resource-types-in-azure-graph"></a>Azure Graph 中的 Advisor 資源類型
 
-[資源圖](https://docs.microsoft.com/azure/governance/resource-graph/)中的可用顧問資源類型：有 3 種資源類型可用於在顧問資源下查詢。 下面是資源圖中現在可用於查詢的資源的清單。
-* 微軟.顧問/配置
-* 微軟.顧問/建議
-* 微軟.顧問/壓制
+[Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/)中可用的 Advisor 資源類型：有3個資源類型可供在 Advisor 資源下查詢。 以下是現在可在 Resource Graph 中查詢的資源清單。
+* Microsoft Advisor/設定
+* Microsoft Advisor/建議
+* Microsoft Advisor/隱藏
 
-這些資源類型列在名為 AdvisorResources 的新表下，您還可以在 Azure 門戶中的資源圖資源管理器中查詢該表。
+這些資源類型會列在名為 AdvisorResources 的新資料表底下，您也可以在 Azure 入口網站的 [Resource Graph Explorer] 中查詢。
 
 
 ## <a name="next-steps"></a>後續步驟
@@ -40,5 +40,5 @@ ms.locfileid: "79502447"
 * [Advisor 成本建議](advisor-cost-recommendations.md)
 * [建議程式效能建議](advisor-performance-recommendations.md)
 * [Advisor 安全性建議](advisor-security-recommendations.md)
-* [顧問卓越運營建議](advisor-operational-excellence-recommendations.md)
-* [顧問 REST API](https://docs.microsoft.com/rest/api/advisor/)
+* [Advisor 操作卓越建議](advisor-operational-excellence-recommendations.md)
+* [Advisor REST API](https://docs.microsoft.com/rest/api/advisor/)

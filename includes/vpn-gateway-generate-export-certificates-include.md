@@ -9,10 +9,10 @@ ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: e85dc8c079205484db9b7b7c43a0086f69feb3be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80059953"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>建立自我簽署根憑證
@@ -28,7 +28,7 @@ ms.locfileid: "80059953"
    -HashAlgorithm sha256 -KeyLength 2048 `
    -CertStoreLocation "Cert:\CurrentUser\My" -KeyUsageProperty Sign -KeyUsage CertSign
    ```
- 3. 如果要在創建此根憑證後立即創建用戶端憑證，請保持 PowerShell 主控台打開狀態。
+ 3. 如果您想要在建立此根憑證之後建立用戶端憑證，請讓 PowerShell 主控台保持開啟。
 
 ## <a name="generate-a-client-certificate"></a><a name="clientcert"></a>產生用戶端憑證 
 
@@ -38,9 +38,9 @@ ms.locfileid: "80059953"
 
 此範例會使用 New-SelfSignedCertificate Cmdlet 來產生有效期為一年的用戶端憑證。 如需其他的參數資訊 (例如針對用戶端憑證設定不同的到期值)，請參閱 [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate)。
 
-### <a name="example-1---powershell-console-session-still-open"></a>示例 1 - PowerShell 主控台會話仍處於打開狀態
+### <a name="example-1---powershell-console-session-still-open"></a>範例 1-PowerShell 主控台會話仍然開啟
 
-如果您在建立自我簽署根憑證後沒有關閉 PowerShell 主控台，請使用此範例。 此範例會從上一節的內容繼續，並使用宣告的 '$cert' 變數。 如果在創建自簽名根憑證後關閉了 PowerShell 主控台，或者正在新的 PowerShell 主控台會話中創建其他用戶端憑證，請使用[示例 2](#ex2)中的步驟。
+如果您在建立自我簽署根憑證後沒有關閉 PowerShell 主控台，請使用此範例。 此範例會從上一節的內容繼續，並使用宣告的 '$cert' 變數。 如果您在建立自我簽署根憑證之後關閉 PowerShell 主控台，或是在新的 PowerShell 主控台會話中建立其他用戶端憑證，請使用[範例 2](#ex2)中的步驟。
 
 修改並執行範例以產生用戶端憑證。 如果您執行下列範例，但未加以修改，結果會是名為 'P2SChildCert' 的用戶端憑證。  如果您要將子憑證命名為其他名稱，請修改 CN 值。 執行這個範例時，請勿變更 TextExtension。 您產生的用戶端憑證會自動安裝在您電腦的 'Certificates - Current User\Personal\Certificates' 中。
 
@@ -52,7 +52,7 @@ New-SelfSignedCertificate -Type Custom -DnsName P2SChildCert -KeySpec Signature 
 -Signer $cert -TextExtension @("2.5.29.37={text}1.3.6.1.5.5.7.3.2")
 ```
 
-### <a name="example-2---new-powershell-console-session"></a><a name="ex2"></a>示例 2 - 新的 PowerShell 主控台會話
+### <a name="example-2---new-powershell-console-session"></a><a name="ex2"></a>範例 2-新的 PowerShell 主控台會話
 
 如果您要建立其他用戶端憑證，或者不是使用您用來建立自我簽署根憑證的相同 PowerShell 工作階段，請使用下列步驟︰
 
