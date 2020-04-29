@@ -1,6 +1,6 @@
 ---
-title: Lsv2 系列 - Azure 虛擬機器
-description: Lsv2 系列 VM 的規格。
+title: Lsv2 系列-Azure 虛擬機器
+description: Lsv2 系列 Vm 的規格。
 services: virtual-machines
 author: sasha-melamed
 ms.service: virtual-machines
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164027"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
@@ -19,30 +19,30 @@ ms.locfileid: "78164027"
 Lsv2 系列以在全核心加速為 2.55GHz 且最大加速為 3.0GHz 之 [AMD EPYC<sup>TM</sup> 7551 處理器](https://www.amd.com/en/products/epyc-7000-series)上執行的高輸送量、低延遲、直接對應的本機 NVMe 儲存體為特色。 Lsv2 系列 VM 提供採用同時多執行緒設定且具有 8 到 80 個 vCPU 的大小。  每一 vCPU 有 8 GiB 記憶體，每 8 個 vCPU 有一個 1.92 TB NVMe SSD M.2 裝置，在 L80s v2 上最高可達 19.2 TB (10 x 1.92 TB)。
 
 > [!NOTE]
-> Lsv2 系列 VM 經過優化，可使用直接連接到 VM 的節點上的本地磁片，而不是使用持久資料磁片。 這可提升您工作負載的 IOPS/輸送量。 Lsv2 和 Ls 系列不支援創建本機快取以增加持久資料磁片可實現的 IAP。
+> Lsv2 系列 Vm 已優化，可在直接連接到 VM 的節點上使用本機磁片，而不是使用持久的資料磁片。 這可提升您工作負載的 IOPS/輸送量。 Lsv2 和 Ls 系列不支援建立本機快取，以增加耐用資料磁片所能達到的 IOPs。
 >
-> 本地磁片的高輸送量和 IAP 使 Lsv2 系列 VM 成為 NoSQL 存儲（如 Apache Cassandra 和 MongoDB）的理想選擇，這些存儲跨多個 VM 複製資料，以便在單個 VM 發生故障時實現持久性。
+> 本機磁片的高輸送量和 IOPs 讓 Lsv2 系列 Vm 適用于 NoSQL 存放區（例如 Apache Cassandra 和 MongoDB），其會將資料複寫到多個 Vm，以在單一 VM 失敗時達到持續性。
 >
-> 要瞭解更多資訊，請參閱優化[適用于 Windows](../virtual-machines/windows/storage-performance.md)或[Linux](../virtual-machines/linux/storage-performance.md)的 Lsv2 系列虛擬機器的性能。  
+> 若要深入瞭解，請參閱在適用于[Windows](../virtual-machines/windows/storage-performance.md)或[Linux](../virtual-machines/linux/storage-performance.md)的 Lsv2 系列虛擬機器上優化效能。  
 
-ACU： 150-175
+ACU：150-175
 
 進階儲存體：支援
 
-高級存儲緩存：不支援
+進階儲存體快取：不支援
 
 即時移轉：不支援
 
 記憶體保留更新：不支援
 
-| 大小 | vCPU | 記憶體 (GiB) | 暫存磁碟<sup>1</sup> (GiB) | NVMe 磁碟<sup>2</sup> | NVMe 磁片輸送量<sup>3（</sup>讀取 IOPS/MBps） | 最大未緩存資料磁片輸送量（IIP/MBps）<sup>4</sup> | 資料磁碟數上限 | 最大 NIC/預期的網路頻寬 (Mbps) |
+| Size | vCPU | 記憶體 (GiB) | 暫存磁碟<sup>1</sup> (GiB) | NVMe 磁碟<sup>2</sup> | NVMe 磁片輸送量<sup>3</sup> （讀取 IOPS/MBps） | 最大未快取的資料磁片輸送量（IOPs/MBps）<sup>4</sup> | 資料磁碟數上限 | 最大 NIC/預期的網路頻寬 (Mbps) |
 |---|---|---|---|---|---|---|---|---|
 | Standard_L8s_v2   |  8 |  64 |  80 |  1 x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200   |
 | Standard_L16s_v2  | 16 | 128 | 160 |  2 x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4 x 1.92 TB  | 1.5M/8000    | 32000/640  | 32 | 8 / 12800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x1.92 TB  | 2.2M/14000   | 48000/960  | 32 | 8 / 16000* |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8 x 1.92 TB  | 2.9M/16000   | 64000/1280 | 32 | 8 / 16000* |
-| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8M/20000 | 80000/1400 | 32 | 8 / 16000* |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4 x 1.92 TB  | 1.5 m/8000    | 32000/640  | 32 | 8 / 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x x 1.92 TB  | 2.2 m/14000   | 48000/960  | 32 | 8/16000 + |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8 x 1.92 TB  | 2.9 m/16000   | 64000/1280 | 32 | 8/16000 + |
+| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10 x 1.92 TB | 3.8 m/20000 | 80000/1400 | 32 | 8/16000 + |
 
 <sup>1</sup> Lsv2 系列 VM 具有一個適用於 OS 分頁檔使用的標準 SCSI 型暫存資源磁碟 (在 Windows 上為 D:，在 Linux 上為 /dev/sdb)。 此磁碟針對每 8 個 vCPU 提供 80 GiB 的儲存體、4,000 IOPS 及 80 MBps 傳輸率 (例如 Standard_L80s_v2 提供 40,000 IOPS 和 800 MBPS 的 800 GiB)。 這可確保 NVMe 磁碟機可完全專供應用程式使用。 此磁碟為暫時磁碟，所有資料在停止/解除配置時都會遺失。
 
@@ -52,17 +52,17 @@ ACU： 150-175
 
 <sup>4</sup> Lsv2 系列 VM 並未針對資料磁碟提供主機快取，因為這對 Lsv2 工作負載沒有幫助。  不過，Lsv2 VM 可通融 Azure 的「暫時性 VM」OS 磁碟選項 (最多 30 GiB)。
 
-<sup>具有</sup>64 個 vCPU 的 5 個 VM 需要以下支援的客體作業系統之一：
+<sup>5</sup>個超過64個 vcpu 的 vm 需要下列其中一種支援的客體作業系統：
 
-- Windows 伺服器 2016 或更高版本
-- Ubuntu 16.04 LTS 或更高版本，使用 Azure 調諧內核（4.15 內核或更高版本）
-- SLES 12 SP2 或更高版本
-- RHEL 或 CentOS 版本 6.7 到 6.10，安裝了 Microsoft 提供的 LIS 套裝軟體 4.3.1（或更高版本）
-- RHEL 或 CentOS 版本 7.3，安裝了 Microsoft 提供的 LIS 套裝軟體 4.2.1（或更高版本）
-- RHEL 或 CentOS 版本 7.6 或更高版本
-- 帶有 UEK4 或更高版本的 Oracle Linux
-- Debian 9 與後埠內核， Debian 10 或更高版本
-- 具有 4.14 個或更高版本的 CoreOS
+- Windows Server 2016 或更新版本
+- Ubuntu 16.04 LTS 或更新版本，並搭配 Azure 微調核心（4.15 核心或更新版本）
+- SLES 12 SP2 或更新版本
+- RHEL 或 CentOS 版本6.7 至6.10，並已安裝 Microsoft 提供的 .LIS 封裝4.3.1 （或更新版本）
+- RHEL 或 CentOS 7.3 版，並已安裝 Microsoft 提供的 .LIS 封裝4.2.1 （或更新版本）
+- RHEL 或 CentOS 7.6 版或更新版本
+- 使用 UEK4 或更新版本的 Oracle Linux
+- 具有反向移植核心 Debian 10 或更新版本的 Debian 9
+- 使用4.14 核心或更新版本的 CoreOS
 
 ## <a name="size-table-definitions"></a>資料表大小定義
 

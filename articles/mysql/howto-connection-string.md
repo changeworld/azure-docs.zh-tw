@@ -1,5 +1,5 @@
 ---
-title: 連接字串 - MySQL 的 Azure 資料庫
+title: 連接字串-適用於 MySQL 的 Azure 資料庫
 description: 本文件列出目前支援讓應用程式與「適用於 MySQL 的 Azure 資料庫」連線的所有連接字串，包括 ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python 和 Ruby。
 author: ajlam
 ms.author: andrela
@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: ff257e101ca925a554f2343d357e2042d2930b45
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062401"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>如何將應用程式連線至適用於 MySQL 的 Azure 資料庫
 本主題列出適用於 MySQL 的 Azure 資料庫所支援的連接字串類型，以及範本和範例。 您可以在連接字串中使用不同的參數和設定。
 
 - 若要取得憑證，請參閱[如何設定 SSL](./howto-configure-ssl.md)。
-- [your_host] \<= 伺服器名稱>.mysql.資料庫.azure.com
+- {your_host} = \<servername>. mysql.database.azure.com
 - {your_user}@{servername} = 正確驗證的 userID 格式。  如果您只使用 userID，驗證將會失敗。
 
 ## <a name="adonet"></a>ADO.NET

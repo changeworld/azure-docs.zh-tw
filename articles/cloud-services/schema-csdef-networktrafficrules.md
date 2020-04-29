@@ -1,6 +1,6 @@
 ---
-title: Azure 雲服務定義網路流量規則架構 |微軟文檔
-description: 瞭解網路流量規則，它限制可以訪問角色內部終結點的角色。 它與服務定義檔中的角色結合。
+title: Azure 雲端服務 Def NetworkTrafficRules 架構 |Microsoft Docs
+description: 深入瞭解 NetworkTrafficRules，這會限制可存取角色內部端點的角色。 它會與服務定義檔中的角色結合。
 ms.custom: ''
 ms.date: 04/14/2015
 services: cloud-services
@@ -14,10 +14,10 @@ caps.latest.revision: 17
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: e53c10395ec3168e656633cc43fb2d01902209fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534723"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Azure 雲端服務定義 NetworkTrafficRules 結構描述
@@ -54,7 +54,7 @@ ms.locfileid: "79534723"
 
 [OnlyAllowTrafficTo 元素](#OnlyAllowTrafficTo)
 
-[目標元素](#Destinations)
+[目的地元素](#Destinations)
 
 [RoleEndpoint 元素](#RoleEndpoint)
 
@@ -64,16 +64,16 @@ AllowAllTraffic 元素
 
 [FromRole 元素](#FromRole)
 
-##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a>網路流量規則元素
+##  <a name="networktrafficrules-element"></a><a name="NetworkTrafficRules"></a>NetworkTrafficRules 元素
 `NetworkTrafficRules` 元素會指定哪些角色可以與另一個角色上的哪個端點進行通訊。 服務可以包含一個 `NetworkTrafficRules` 定義。
 
-##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a>僅允許流量到元素
+##  <a name="onlyallowtrafficto-element"></a><a name="OnlyAllowTrafficTo"></a>OnlyAllowTrafficTo 元素
 `OnlyAllowTrafficTo` 元素描述目的地端點和可與其通訊之角色的集合。 您可以指定多個 `OnlyAllowTrafficTo` 節點。
 
 ##  <a name="destinations-element"></a><a name="Destinations"></a> Destinations 元素
 `Destinations` 元素描述可與之通訊的 RoleEndpoints 集合。
 
-##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>角色端點元素
+##  <a name="roleendpoint-element"></a><a name="RoleEndpoint"></a>RoleEndpoint 元素
 `RoleEndpoint` 元素描述允許與其通訊之角色上的端點。 如果角色上有多個端點，您可以指定多個 `RoleEndpoint` 元素。
 
 | 屬性      | 類型     | 描述 |
@@ -84,14 +84,14 @@ AllowAllTraffic 元素
 ## <a name="allowalltraffic-element"></a>AllowAllTraffic 元素
 `AllowAllTraffic` 元素是一個規則，允許所有角色與 `Destinations` 節點中定義的端點通訊。
 
-##  <a name="whensource-element"></a><a name="WhenSource"></a>當源元素
+##  <a name="whensource-element"></a><a name="WhenSource"></a>WhenSource 元素
 `WhenSource` 元素描述可以與 `Destinations` 節點中定義的端點通訊之角色集合。
 
 | 屬性 | 類型     | 描述 |
 | --------- | -------- | ----------- |
 | `matches` | `string` | 必要。 指定允許通訊時要套用的規則。 唯一支援的值為 `AnyRule`。|
   
-##  <a name="fromrole-element"></a><a name="FromRole"></a>從角色元素
+##  <a name="fromrole-element"></a><a name="FromRole"></a>FromRole 元素
 `FromRole` 元素指定可以與 `Destinations` 節點中定義的端點通訊之角色。 如果有多個角色可以與端點通訊，您可以指定多個 `FromRole` 元素。
 
 | 屬性  | 類型     | 描述 |

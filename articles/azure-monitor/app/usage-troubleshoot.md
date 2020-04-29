@@ -1,5 +1,5 @@
 ---
-title: 排除使用者分析工具故障 - Azure 應用程式見解
+title: 針對使用者分析工具進行疑難排解-Azure 應用程式 Insights
 description: 疑難排解指南 - 使用 Application Insights 分析網站和應用程式使用情況。
 ms.topic: conceptual
 author: NumberByColors
@@ -7,17 +7,17 @@ ms.author: daviste
 ms.date: 07/11/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 8d2e573f34895207a455838b5fc64f95560943d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670911"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>針對 Application Insights 中的使用者行為分析工具進行疑難排解
 您有關於 [Application Insights 中的使用者行為分析工具](usage-overview.md)：[使用者、工作階段、事件](usage-segmentation.md)、[漏斗圖](usage-funnels.md)、[使用者流程](usage-flows.md)[保留期](usage-retention.md)或同群使用者的問題嗎？ 以下是一些解答。
 
 ## <a name="counting-users"></a>計算使用者
-**使用者行為分析工具顯示我的應用有一個使用者/會話，但我知道我的應用有許多使用者/會話。如何修復這些不正確的計數？**
+**使用者行為分析工具顯示我的應用程式有一個使用者/會話，但我知道我的應用程式有許多使用者/會話。如何修正這些不正確的計數？**
 
 Application Insights 中的所有遙測事件都有[匿名使用者識別碼](../../azure-monitor/app/data-model-context.md)和[工作階段識別碼](../../azure-monitor/app/data-model-context.md)，這兩者是其標準屬性的一部分。 根據預設，所有使用情況分析工具都是以這些識別碼為基礎來計算使用者和工作階段。 如果這些標準屬性中未填入應用程式之各個使用者和工作階段的唯一識別碼，您就會在使用情況分析工具中看到不正確的使用者及工作階段計數。
 
@@ -30,15 +30,15 @@ Application Insights 中的所有遙測事件都有[匿名使用者識別碼](..
 使用者行為分析工具目前不支援以匿名使用者識別碼、已驗證的使用者識別碼或工作階段識別碼之外的屬性作為基礎，來計算使用者或工作階段。
 
 ## <a name="naming-events"></a>命名事件
-**我的應用具有數千個不同的網頁檢視和自訂事件名稱。很難區分它們，使用者行為分析工具通常會變得無回應。如何修復這些命名問題？**
+**我的應用程式有數千種不同的網頁檢視和自訂事件名稱。難以區別它們，而使用者行為分析工具通常會沒有回應。如何修正這些命名問題？**
 
-整個使用者行為分析工具都會使用網頁檢視和自訂事件名稱。 若要獲得這些工具的價值，就必須適當地為這些事件命名。 目標是在名稱太少、過於通用（"點擊按鈕"）和名稱太多（"編輯按鈕點擊 HTTP：/www.contoso.com/index"）\/之間取得平衡。
+整個使用者行為分析工具都會使用網頁檢視和自訂事件名稱。 若要獲得這些工具的價值，就必須適當地為這些事件命名。 目標是在太少的一般名稱（「按下按鈕」）和太多太特定的名稱（[在 HTTP：\//www.contoso.com/index] 上按一下 [編輯] 按鈕）之間的平衡。
 
 若要對應用程式所傳送的網頁檢視和自訂事件名稱進行任何變更，您必須變更應用程式的原始程式碼，然後重新部署。 **Application Insights 中的所有遙測資料都會儲存 90 天，且無法加以刪除**，因此您對事件名稱所進行的變更需要 90 天才會完整顯示。 進行名稱變更之後的 90 天內，遙測中的事件名稱會新舊並陳，因此請據以調整查詢，並告知您的小組。
 
 如果應用程式傳送太多網頁檢視名稱，請確認是您在程式碼中手動指定了這些網頁檢視名稱，還是 Application Insights JavaScript SDK 自動傳送了這些網頁檢視名稱：
 
-* 如果使用[`trackPageView`API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)在代碼中手動指定網頁檢視名稱，則將名稱更改為不太具體。 請避免常見錯誤，例如將 URL 放入網頁檢視名稱中。 相反地，請使用 `trackPageView` API 的 URL 參數。 將網頁檢視名稱中的其他詳細資料移至自訂屬性中。
+* 如果使用[ `trackPageView` API](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)在程式碼中手動指定網頁檢視名稱，請將名稱變更為較不明確。 請避免常見錯誤，例如將 URL 放入網頁檢視名稱中。 相反地，請使用 `trackPageView` API 的 URL 參數。 將網頁檢視名稱中的其他詳細資料移至自訂屬性中。
 
 * 如果是 Application Insights JavaScript SDK 自動傳送了網頁檢視名稱，您可以變更網頁標題，也可以改為手動傳送網頁檢視名稱。 依預設，SDK 會以網頁檢視名稱的形式，傳送每一個網頁的[標題](https://developer.mozilla.org/docs/Web/HTML/Element/title)。 您可以將標題改得較為普通，但請留意 SEO 和這項變更可能會造成的其他影響。 使用 `trackPageView` API 手動指定網頁檢視名稱會覆寫自動收集到的名稱，因此您不必變更網頁標題就能在遙測中傳送較為普通的名稱。   
 

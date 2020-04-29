@@ -1,6 +1,6 @@
 ---
-title: Azure 雲服務定義輔助角色架構 |微軟文檔
-description: Azure 輔助角色用於通用開發，並可能對 Web 角色執行幕後處理。 瞭解 Azure 輔助角色架構。
+title: Azure 雲端服務 Def WorkerRole 架構 |Microsoft Docs
+description: Azure 背景工作角色用於一般化開發，並可執行 web 角色的背景處理。 瞭解 Azure 背景工作角色架構。
 services: cloud-services
 ms.custom: ''
 ms.date: 04/14/2015
@@ -14,10 +14,10 @@ caps.latest.revision: 55
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: 26225442c72fb209bb1ac4cd2bf4777fb39542fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534366"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Azure 雲端服務定義 WorkerRole 結構描述
@@ -88,7 +88,7 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 ## <a name="schema-elements"></a>結構描述元素
 服務定義檔包含下列元素，本主題的後續幾節會有這些元素的詳細說明：
 
-[工人角色](#WorkerRole)
+[WorkerRole](#WorkerRole)
 
 [ConfigurationSettings](#ConfigurationSettings)
 
@@ -96,27 +96,27 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 
 [LocalResources](#LocalResources)
 
-[本機存放區](#LocalStorage)
+[LocalStorage](#LocalStorage)
 
 [端點](#Endpoints)
 
-[輸入端點](#InputEndpoint)
+[InputEndpoint](#InputEndpoint)
 
 [InternalEndpoint](#InternalEndpoint)
 
-[實例輸入終結點](#InstanceInputEndpoint)
+[InstanceInputEndpoint](#InstanceInputEndpoint)
 
 [AllocatePublicPortFrom](#AllocatePublicPortFrom)
 
 [FixedPort](#FixedPort)
 
-[固定埠範圍](#FixedPortRange)
+[FixedPortRange](#FixedPortRange)
 
-[證書](#Certificates)
+[憑證](#Certificates)
 
 [憑證](#Certificate)
 
-[Imports](#Imports)
+[進口](#Imports)
 
 [匯入][](#Import)
 
@@ -124,19 +124,19 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 
 [環境](#Environment)
 
-[進入點](#EntryPoint)
+[入口](#EntryPoint)
 
-[淨外匯點](#NetFxEntryPoint)
+[NetFxEntryPoint](#NetFxEntryPoint)
 
 [ProgramEntryPoint](#ProgramEntryPoint)
 
 [變數](#Variable)
 
-[角色實例值](#RoleInstanceValue)
+[RoleInstanceValue](#RoleInstanceValue)
 
-[Startup](#Startup)
+[啟動](#Startup)
 
-[任務](#Task)
+[Task](#Task)
 
 [內容](#Contents)
 
@@ -155,7 +155,7 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 |enableNativeCodeExecution|boolean|選擇性。 預設值是 `true`；預設會啟用機器碼執行和完全信任。 將此屬性設為 `false` 會停用背景工作角色的機器碼執行，並改用 Azure 部分信任。|
 |vmsize|字串|選擇性。 設定此值可變更對這個角色所配置的虛擬機器大小。 預設值是 `Small`。 如需可能的虛擬機器大小和其屬性清單，請參閱[雲端服務的虛擬機器大小](cloud-services-sizes-specs.md)。|
 
-##  <a name="configurationsettings"></a><a name="ConfigurationSettings"></a>配置設置
+##  <a name="configurationsettings"></a><a name="ConfigurationSettings"></a>ConfigurationSettings
 `ConfigurationSettings` 元素會說明背景工作角色之組態設定的集合。 此元素是 `Setting` 元素的父代。
 
 ##  <a name="setting"></a><a name="Setting"></a> 設定
@@ -169,7 +169,7 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 
 角色的組態設定是名稱/值組，此組合會於服務定義檔中宣告並於服務組態檔中設定。
 
-##  <a name="localresources"></a><a name="LocalResources"></a>本地資源
+##  <a name="localresources"></a><a name="LocalResources"></a>LocalResources
 `LocalResources` 元素會說明背景工作角色之本機儲存資源的集合。 此元素是 `LocalStorage` 元素的父代。
 
 ##  <a name="localstorage"></a><a name="LocalStorage"></a> LocalStorage
@@ -188,7 +188,7 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 
 配置給本機儲存資源之目錄的名稱會對應至提供給名稱屬性的值。
 
-##  <a name="endpoints"></a><a name="Endpoints"></a>端點
+##  <a name="endpoints"></a><a name="Endpoints"></a>終點
 `Endpoints` 元素會說明角色之輸入 (外部)、內部和執行個體輸入端點的集合。 此元素是 `InputEndpoint`、`InternalEndpoint` 和 `InstanceInputEndpoint` 元素的父代。
 
 輸入和內部端點會分開配置。 服務總共可以有 25 個輸入、內部和執行個體輸入端點，而這些端點則可配置給服務所允許的 25 個角色。 例如，如果您有 5 個角色，則可為每個角色配置 5 個輸入端點，或者，您也可以將 25 個輸入端點全都配置給單一角色，又或者，您也可以對這 25 個角色各配置 1 個輸入端點。
@@ -213,7 +213,7 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 |ignoreRoleInstanceStatus|boolean|選擇性。 當這個屬性的值設定為 `true` 時，就會忽略服務的狀態，且負載平衡器不會移除端點。 將此值設定為 `true` 適用於服務的偵錯忙碌執行個體。 預設值是 `false`。 **注意：** 即使角色不是處於就緒狀態，端點仍可以接收流量。|
 |loadBalancerProbe|字串|選擇性。 與輸入端點相關聯之負載平衡器探查的名稱。 如需詳細資訊，請參閱 [LoadBalancerProbe 結構描述](schema-csdef-loadbalancerprobe.md)。|
 
-##  <a name="internalendpoint"></a><a name="InternalEndpoint"></a>內部端點
+##  <a name="internalendpoint"></a><a name="InternalEndpoint"></a>InternalEndpoint
 `InternalEndpoint` 元素描述背景工作角色的內部端點。 內部端點僅適用於服務內執行的其他角色執行個體，它不適用於服務外部的用戶端。 背景工作角色可能會有最多五個 HTTP、UDP 或 TCP 內部端點。
 
 下表說明 `InternalEndpoint` 元素的屬性。
@@ -237,12 +237,12 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 |localPort|int|必要。 指定所有角色執行個體都會接聽的內部連接埠，可接收從負載平衡器轉送的連入流量。 可能的值範圍介於 1 到 65535 (含) 之間。|
 |protocol|字串|必要。 內部端點的傳輸通訊協定。 可能的值為 `udp` 或 `tcp`。 將 `tcp` 用於以 http/https 作為基礎的流量。|
 
-##  <a name="allocatepublicportfrom"></a><a name="AllocatePublicPortFrom"></a>從分配公共埠
+##  <a name="allocatepublicportfrom"></a><a name="AllocatePublicPortFrom"></a>AllocatePublicPortFrom
 `AllocatePublicPortFrom` 元素會描述可供外部客戶存取每個執行個體輸入端點的公用連接埠範圍。 在租用戶部署和更新期間，會從此範圍配置公用 (VIP) 連接埠號碼，並加以指派給每個個別的角色執行個體端點。 此元素是 `FixedPortRange` 元素的父代。
 
 在使用 Azure SDK 1.7 版或更新版本時，才能使用 `AllocatePublicPortFrom` 元素。
 
-##  <a name="fixedport"></a><a name="FixedPort"></a>固定埠
+##  <a name="fixedport"></a><a name="FixedPort"></a>FixedPort
 `FixedPort` 元素會指定內部端點的連接埠，從而啟用點上的負載平衡端連線。
 
 在使用 Azure SDK 1.3 版或更新版本時，才能使用 `FixedPort` 元素。
@@ -268,7 +268,7 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 |Min|int|必要。 範圍內的最小連接埠。 可能的值範圍介於 1 到 65535 (含) (Azure SDK 1.7 版或更高版本)。|
 |max|字串|必要。 範圍內的最大連接埠。 可能的值範圍介於 1 到 65535 (含) (Azure SDK 1.7 版或更高版本)。|
 
-##  <a name="certificates"></a><a name="Certificates"></a> Certificates
+##  <a name="certificates"></a><a name="Certificates"></a>數位憑證
 `Certificates` 元素會說明背景工作角色之憑證的集合。 此元素是 `Certificate` 元素的父代。 一個角色可以有任意數目的相關聯憑證。 如需使用 certificates 元素的詳細資訊，請參閱[使用憑證修改服務定義檔](cloud-services-configure-ssl-certificate-portal.md#step-2-modify-the-service-definition-and-configuration-files)。
 
 ##  <a name="certificate"></a><a name="Certificate"></a>證書
@@ -288,7 +288,7 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 
 在使用 Azure SDK 1.3 版或更新版本時，才能使用 `Imports` 元素。
 
-##  <a name="import"></a><a name="Import"></a>進口
+##  <a name="import"></a><a name="Import"></a>導
 `Import` 元素會指定要新增到客體作業系統的模組。
 
 在使用 Azure SDK 1.3 版或更新版本時，才能使用 `Import` 元素。
@@ -310,10 +310,10 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 | --------- | ---- | ----------- |
 |executionContext|字串|選擇性。 指定要在其中啟動角色處理序的內容。 預設內容為 `limited`。<br /><br /> -   `limited` – 處理序會啟動，且不具有系統管理員權限。<br />-   `elevated` – 處理序會啟動，且具有系統管理員權限。|
 
-##  <a name="environment"></a><a name="Environment"></a> Environment
+##  <a name="environment"></a><a name="Environment"></a>環境
 `Environment` 元素會說明背景工作角色之環境變數設定的集合。 此元素是 `Variable` 元素的父代。 一個角色可以有任意數目的環境變數集。
 
-##  <a name="variable"></a><a name="Variable"></a>變數
+##  <a name="variable"></a><a name="Variable"></a>變
 `Variable` 元素會指定要在客體作業中設定的環境變數。
 
 在使用 Azure SDK 1.3 版或更新版本時，才能使用 `Variable` 元素。
@@ -334,7 +334,7 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 | --------- | ---- | ----------- |
 |xpath|字串|選擇性。 執行個體之部署設定的位置路徑。 如需詳細資訊，請參閱[組態變數與 XPath](cloud-services-role-config-xpath.md)。<br /><br /> 您必須包含值屬性或 `RoleInstanceValue` 元素。|
 
-##  <a name="entrypoint"></a><a name="EntryPoint"></a>進入點
+##  <a name="entrypoint"></a><a name="EntryPoint"></a>入口
 `EntryPoint` 元素會指定角色的進入點。 此元素是 `NetFxEntryPoint` 元素的父代。 這些元素可讓您指定預設 WaWorkerHost.exe 以外的應用程式來作為角色進入點。
 
 在使用 Azure SDK 1.5 版或更新版本時，才能使用 `EntryPoint` 元素。
@@ -349,10 +349,10 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 
 | 屬性 | 類型 | 描述 |
 | --------- | ---- | ----------- |
-|assemblyName|字串|必要。 包含進入點之組件的路徑和檔案名稱。 路徑相對於資料夾**\\%ROLEROOT %_Approot（** 不在 中`commandLine`指定**\\%ROLEROOT %_Approot，** 假定它）。 **%ROLEROOT%** 是由 Azure 維護的環境變數，而它代表的是您角色的根資料夾位置。 %ROLEROOT%\Approot 資料夾表示角色的應用程式資料夾。 ** \\ **|
+|assemblyName|字串|必要。 包含進入點之組件的路徑和檔案名稱。 路徑相對於資料夾** \\%ROLEROOT%\Approot** （請勿在中`commandLine`指定** \\%ROLEROOT%\Approot** ，它是假設的）。 **%ROLEROOT%** 是由 Azure 維護的環境變數，而它代表的是您角色的根資料夾位置。 %ROLEROOT%\Approot 資料夾代表角色的應用程式資料夾。 ** \\ **|
 |targetFrameworkVersion|字串|必要。 用以建置組件的 .NET Framework 版本。 例如： `targetFrameworkVersion="v4.0"` 。|
 
-##  <a name="programentrypoint"></a><a name="ProgramEntryPoint"></a>程式進入點
+##  <a name="programentrypoint"></a><a name="ProgramEntryPoint"></a>ProgramEntryPoint
 `ProgramEntryPoint` 元素會指定要為角色執行的程式。 `ProgramEntryPoint` 元素可讓您指定不是以 .NET 組件作為基礎的程式進入點。
 
 > [!NOTE]
@@ -365,7 +365,7 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 |commandLine|字串|必要。 要執行之程式的路徑、檔案名稱及任何命令列引數。 此路徑相對於 **%ROLEROOT%\Approot** 資料夾 (請勿在 commandLine 中指定 **%ROLEROOT%\Approot**，此為預設的值)。 **%ROLEROOT%** 是由 Azure 維護的環境變數，而它代表的是您角色的根資料夾位置。 **%ROLEROOT%\Approot** 資料夾代表角色的應用程式資料夾。<br /><br /> 如果程式結束，就會回收角色，因此通常會將程式設定為繼續執行，而不是只會啟動並執行有限工作的程式。|
 |setReadyOnProcessStart|boolean|必要。 指定角色執行個體是否等待命令列程式表示它已啟動。 目前此值必須設為 `true`。 將值設定為 `false` 會保留供未來使用。|
 
-##  <a name="startup"></a><a name="Startup"></a>啟動
+##  <a name="startup"></a><a name="Startup"></a>Startup
 `Startup` 元素會說明角色啟動時所執行之工作的集合。 此元素可以是 `Variable` 元素的父代。 如需如何使用角色啟動工作的詳細資訊，請參閱[如何設定啟動工作](cloud-services-startup-tasks.md)。 這是選用元素，一個角色只能有一個啟動區塊。
 
 下表說明 `Startup` 元素的屬性。
@@ -387,12 +387,12 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 |executionContext|字串|指定指令碼執行所在的內容。<br /><br /> -   `limited` [預設值] – 使用和裝載處理序之角色相同的權限來執行。<br />-   `elevated` – 使用系統管理員權限來執行。|
 |taskType|字串|指定命令的執行行為。<br /><br /> -   `simple` [預設值] – 系統會等到工作結束後，才啟動任何其他工作。<br />-   `background` – 系統不會等到工作結束。<br />-   `foreground` – 與背景類似，但角色不會等到所有前景工作都結束後才重新啟動。|
 
-##  <a name="contents"></a><a name="Contents"></a>內容
+##  <a name="contents"></a><a name="Contents"></a>編制
 `Contents` 元素會說明背景工作角色之內容的集合。 此元素是 `Content` 元素的父代。
 
 在使用 Azure SDK 1.5 版或更新版本時，才能使用 `Contents` 元素。
 
-##  <a name="content"></a><a name="Content"></a>內容
+##  <a name="content"></a><a name="Content"></a>Content
 `Content` 元素會定義要複製到 Azure 虛擬機器之內容的來源位置，以及此內容的複製目的地路徑。
 
 在使用 Azure SDK 1.5 版或更新版本時，才能使用 `Content` 元素。
@@ -405,7 +405,7 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 
 此元素是 `SourceDirectory` 元素的父代元素。
 
-##  <a name="sourcedirectory"></a><a name="SourceDirectory"></a>原始目錄
+##  <a name="sourcedirectory"></a><a name="SourceDirectory"></a>SourceDirectory
 `SourceDirectory` 元素會定義要從中複製內容的本機目錄。 您可以使用此元素來指定要複製到 Azure 虛擬機器的本機內容。
 
 在使用 Azure SDK 1.5 版或更新版本時，才能使用 `SourceDirectory` 元素。
@@ -414,7 +414,7 @@ Azure 背景工作角色是適用於一般開發的角色，並可為 Web 角色
 
 | 屬性 | 類型 | 描述 |
 | --------- | ---- | ----------- |
-|path|字串|必要。 其內容將會複製到 Azure 虛擬機器之本機目錄的相對或絕對路徑。 支援在目錄路徑中展開環境變數。|
+|路徑|字串|必要。 其內容將會複製到 Azure 虛擬機器之本機目錄的相對或絕對路徑。 支援在目錄路徑中展開環境變數。|
 
 ## <a name="see-also"></a>另請參閱
 [雲端服務 (傳統) 定義結構描述](schema-csdef-file.md)

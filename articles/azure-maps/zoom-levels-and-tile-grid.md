@@ -1,6 +1,6 @@
 ---
-title: 縮放級別和磁貼網格 |微軟 Azure 地圖
-description: 在本文中，您將瞭解 Microsoft Azure 地圖中的縮放級別和切片網格。
+title: 縮放層級和磚方格 |Microsoft Azure 對應
+description: 在本文中，您將瞭解 Microsoft Azure 地圖中的縮放層級和圖格格線。
 author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 01/22/2020
@@ -9,36 +9,36 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: d58c9f6940dceefdc25211f4540b34522aec935d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79530286"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>縮放層級和圖格格線
 
-Azure 地圖服務使用麥卡托圓球投影座標系統 (EPSG：3857)。 投影是用於將球形球體轉換為平面貼圖的數學模型。 球面墨卡托投影將地圖拉伸到兩極處以創建方形地圖。 此投影顯著扭曲了地圖的比例和麵積，但有兩個重要屬性超過了此失真：
+Azure 地圖服務使用麥卡托圓球投影座標系統 (EPSG：3857)。 投射是用來將球形地球轉換成平面地圖的數學模型。 球形 Mercator 投射會在兩極上將地圖伸展，以建立正方形圖。 這項投影會大幅扭曲地圖的尺規和區域，但有兩個重要的屬性會超過此扭曲：
 
-- 它是一個順從投影，這意味著它保留了相對較小的物件的形狀。 在顯示航空圖像時，保留小物體的形狀尤為重要。 例如，我們希望避免扭曲建築物的形狀。 方形建築應顯示為方形，而不是矩形。
-- 這是圓柱形投影。 南北總是上下顛倒，西邊和東總是左右。 
+- 這是一個 conformal 投射，這表示它會保留相對較小物件的形狀。 在顯示空出影像時，保留小型物件的圖形特別重要。 例如，我們想要避免將大樓的形狀扭曲。 建築物應該會顯示方形，而不是矩形。
+- 這是一種圓柱投射。 北和南部一律會向上和向下，而 west 和東則一律為 left 和 right。 
 
-為了優化地圖檢索和顯示的性能，地圖分為方形切片。 Azure 地圖 SDK 使用的大小為 512 x 512 圖元的切片進行道路地圖，而用於影像的圖元大小為 256 x 256 圖元。 Azure 貼圖為 23 個縮放級別（編號為 0 到 22）提供柵格和向量切片。 在縮放層級 0，整個世界剛好放進單一圖格裡：
+為了優化對應抓取和顯示的效能，地圖會分割成正方形磚。 Azure 地圖服務 SDK 的使用磚，其大小為 512 x 512 圖元的道路地圖，而較小的 256 x 256 圖元用於衛星影像。 Azure 地圖服務提供23個縮放層級的點陣和向量圖格，編號為0到22。 在縮放層級 0，整個世界剛好放進單一圖格裡：
 
 <center>
 
-![世界地圖磁貼](./media/zoom-levels-and-tile-grid/world0.png)</center>
+![全球地圖底圖](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
 縮放層級 1 使用四個圖格來呈現世界：2 x 2 個正方形
 
 <center>
 
-![2x2 地圖磁貼佈局](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+![2x2 地圖底圖版面配置](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
 
-每個附加縮放級別四重除前一個的切片，創建 2<sup>縮放</sup>x 2<sup>變焦</sup>的網格。 縮放層級 22 是 格線 2<sup>22</sup> x 2<sup>22</sup>，或 4,194,304 x 4,194,304 個圖格 (總計 17,592,186,044,416 個圖格)。
+每個額外的縮放層級四除前一個的磚，並建立 2<sup>縮放比例</sup>x 2<sup>縮放</sup>的格線。 縮放層級 22 是 格線 2<sup>22</sup> x 2<sup>22</sup>，或 4,194,304 x 4,194,304 個圖格 (總計 17,592,186,044,416 個圖格)。
 
-Azure 地圖 Web 和 Android 的互動式地圖控制項支援 25 個縮放級別，編號為 0 到 24。 儘管道路資料僅在磁貼可用時在放大級別可用。
+Web 和 Android 的 Azure 地圖服務互動式地圖控制項支援25個縮放層級，編號為0到24。 雖然只有當磚可供使用時，道路資料才會出現在的縮放層級。
 
-下表提供了切片大小為 512 圖元平方的縮放級別的值的完整清單：
+下表提供縮放層級的完整值清單，其中的磚大小為512圖元正方形：
 
 |縮放層級|公尺/像素|公尺/圖格邊|
 |--- |--- |--- |
@@ -70,7 +70,7 @@ Azure 地圖 Web 和 Android 的互動式地圖控制項支援 25 個縮放級�
 
 ## <a name="pixel-coordinates"></a>圖元座標
 
-在選擇投影和縮放以在每個縮放級別使用後，我們可以將地理座標轉換為圖元座標。 特定縮放級別的世界地圖圖像的完整圖元寬度和高度計算為：
+選擇要在每個縮放層級使用的投射和縮放比例時，我們可以將地理座標轉換成圖元座標。 特定縮放層級之全球地圖影像的完整圖元寬度和高度，計算方式如下：
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -78,15 +78,15 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-由於地圖寬度和高度在每個縮放級別不同，因此圖元座標也不同。 地圖左上角的圖元始終具有圖元座標 （0， 0）。 地圖右下角的圖元具有圖元座標 *（寬度-1，高度-1），* 或引用上一節中的方程 *（tileSize 2 \* <sup>縮放</sup>+1，平鋪\*大小 2<sup>縮放</sup>+1）。* 例如，在級別 2 中使用 512 方形切片時，圖元座標的範圍範圍為 （0，0） 到 （2047， 2047），如下所示：
+因為地圖寬度和高度在每個縮放層級都不同，所以是圖元座標。 地圖左上角的圖元一律有圖元座標（0，0）。 地圖右下角的圖元具有圖元座標 *（寬度-1，高度-1）*，或參考上一節中的方程式 *（tileSize \* 2<sup>zoom</sup>–1，tileSize \* 2<sup>zoom</sup>–1）*。 例如，在層級2使用512正方形磚時，圖元座標的範圍從（0，0）到（2047，2047），如下所示：
 
 <center>
 
-![顯示圖元尺寸的地圖](media/zoom-levels-and-tile-grid/map-width-height.png)
+![顯示圖元維度的地圖](media/zoom-levels-and-tile-grid/map-width-height.png)
 
 </center>
 
-給定緯度和經度（以度為單位）以及詳細程度，圖元 XY 座標的計算方式如下：
+指定緯度和經度的角度，以及詳細程度，圖元 XY 座標的計算方式如下：
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -96,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-假定緯度和經度值位於 WGS 84 基準線上。 即使 Azure 地圖使用球形投影，但將所有地理座標轉換為公共基準線也非常重要。 WGS 84 是所選基準。 假定經度值的範圍為 -180 度到 +180 度，緯度值必須剪切到 -85.05112878 到 85.05112878。 遵循這些值可避免極點處的奇點，並確保投影的地圖是方形。
+緯度和經度值會假設在 WGS 84 datum 上。 雖然 Azure 地圖服務使用球形投影，但請務必將所有地理座標轉換成常用的基準。 WGS 84 是選取的基準。 會假設經度值的範圍是從-180 角度到 + 180 度，而緯度值則必須裁剪成從-85.05112878 到85.05112878 的範圍。 遵循這些值可避免兩極的 singularity，並確保投影圖為方形圖形。
 
-## <a name="tile-coordinates"></a>平鋪座標
+## <a name="tile-coordinates"></a>磚座標
 
-為了優化地圖檢索和顯示的性能，渲染的地圖被剪切成切片。 圖元數和切片數在每個縮放級別上有所不同：
+為了優化對應抓取和顯示的效能，轉譯的地圖會剪下到磚中。 每個縮放層級的圖元數和磚數各有不同：
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -108,13 +108,13 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-每個切片的 XY 座標範圍從左上角的 （0， 0） 到右下角*的 （2<sup>縮放</sup>+1， 2<sup>縮放</sup>+1）。* 例如，在縮放級別 2 時，切片座標範圍從 （0， 0） 到 （7， 7）， 如下所示：
+每個磚都有從左上角到（0，0）的 XY 座標，範圍介於右下方 *（2<sup>縮放</sup>–1，2<sup>縮放</sup>–1）* 。 例如，在縮放層級2，磚座標的範圍從（0，0）到（7，7），如下所示：
 
 <center>
 
-![瓷磚座標地圖](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+![磚座標的地圖](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
 
-給定一對圖元 XY 座標，您可以輕鬆地確定包含該圖元的切片的切片 XY 座標：
+假設有一對圖元的 XY 座標，您可以輕鬆地判斷包含該圖元之磚的 XY 座標磚：
 
 ```javascript
 var tileX = Math.floor(pixelX / tileSize);
@@ -122,15 +122,15 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-切片由縮放級別調用。 x 和 y 座標組應于該縮放級別的網格上的磁貼位置。
+圖格是由縮放層級所呼叫。 X 和 y 座標會對應磚在格線上的位置，以顯示該縮放層級。
 
-確定要使用的縮放級別時，請記住每個位置在其磁貼上的固定位置。 因此，顯示給定區域所需的切片數取決於世界地圖上縮放網格的具體位置。 例如，如果兩個點相距 900 公尺，「可能」** 只需要在縮放層級 17 用三個圖格來顯示這兩點之間的路線。 不過，如果西邊的點是在其圖格中的右邊，而東邊的點是在其圖格中的左邊，則可能需要四個圖格：
+在決定要使用哪一個縮放層級時，請記住每個位置在其磚上的固定位置。 因此，顯示特定地區 expanse 所需的磚數，取決於全球地圖上的縮放方格特定位置。 例如，如果兩個點相距 900 公尺，「可能」** 只需要在縮放層級 17 用三個圖格來顯示這兩點之間的路線。 不過，如果西邊的點是在其圖格中的右邊，而東邊的點是在其圖格中的左邊，則可能需要四個圖格：
 
 <center>
 
 ![縮放比例示範](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
 
-一旦決定縮放層級，就可以計算 x 和 y 值。 每個縮放網格中的左上角磁貼為 x=0，y=0;右下角的磁貼位於 x=2<sup>縮放-1</sup>，y=2<sup>縮放-1</sup>。
+一旦決定縮放層級，就可以計算 x 和 y 值。 每個縮放方格中左上方的磚是 x = 0、y = 0、右下方的磚是在 x = 2<sup>zoom-1</sup>，y = 2<sup>zoom-1</sup>。
 
 以下是縮放層級 1 的縮放格線：
 
@@ -138,14 +138,14 @@ var tileY = Math.floor(pixelY / tileSize);
 
 ![縮放層級 1 的縮放格線](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
 
-## <a name="quadkey-indices"></a>四鍵索引
+## <a name="quadkey-indices"></a>Quadkey 索引
 
-某些映射平臺使用`quadkey`索引命名約定，將切片 ZY 座標合併到稱為`quadtree`鍵的單維字串中，或者`quadkeys`簡稱為單維字串。 每個`quadkey`磁貼都在特定的詳細級別上標識單個磁貼，它可以用作常見資料庫 B 樹索引中的鍵。 Azure 地圖 SDK 支援疊加使用`quadkey`命名約定的切片圖層，以及[添加切片圖層](map-add-tile-layer.md)文檔中記錄的其他命名約定。
+某些對應平臺會使用`quadkey`索引命名慣例，將磚 ZY 座標結合成一個名`quadtree`為 keys 或`quadkeys` short 的一維字串。 每`quadkey`個會唯一識別特定詳細層級的單一磚，而且可以當做通用資料庫 B 型樹狀目錄索引中的索引鍵使用。 除了[新增磚圖層](map-add-tile-layer.md)檔中所述，Azure 地圖服務`quadkey` sdk 還支援使用命名慣例的並排顯示圖層，以及其他命名慣例。
 
 > [!NOTE]
-> 命名`quadkeys`約定僅適用于一個或多個縮放級別的縮放級別。 Azure 地圖 SDK 支援縮放級別 0，它是適用于全世界的單個地圖磁貼。 
+> `quadkeys`命名慣例僅適用于一或多個縮放層級。 Azure 地圖服務 SDK 的支援縮放層級0，這是整個世界的單一地圖磚。 
 
-要將切片座標轉換為`quadkey`，Y 和 X 座標的位是交錯的，結果被解釋為基-4 數（維護前置字元為零）並轉換為字串。 例如，在級別 3 處給定的切片 XY 座標 （3， 5），`quadkey`確定如下：
+若要將磚座標轉換`quadkey`成，Y 和 X 座標的位是交錯的，而且結果會被轉譯為以4為基底的數位（保留前置零）並轉換成字串。 比方說，在層級3指定（3，5）的磚 XY 座標時`quadkey` ，會依照下列方式決定：
 
 ```
 tileX = 3 = 011 (base 2)
@@ -155,17 +155,17 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys`有幾個有趣的屬性。 首先，（`quadkey`數位數） 的長度等於相應磁貼的縮放級別。 其次，`quadkey`任何磁貼的從其父磁貼`quadkey`（上一級別的包含磁貼）開始。 如下例所示，磁貼 2 是磁貼 20 到 23 的父項：
+`Qquadkeys`有幾個有趣的屬性。 首先，的長度`quadkey` （數位數目）等於對應磚的縮放層級。 第二， `quadkey`任何磚的會以其`quadkey`父磚的（在上一個層級的包含磚）開頭。 如下列範例所示，磚2是磚20到23的父系：
 
 <center>
 
-![四鍵磁貼金字塔](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+![Quadkey 磚金字塔圖](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-最後，`quadkeys`提供一維索引鍵，該鍵通常保留 XY 空間中切片的鄰近度。 換句話說，具有附近 XY 座標的兩個切片`quadkeys`通常具有相對接近的。 這對優化資料庫性能非常重要，因為連續的磁貼通常以組形式請求，因此最好將這些切片保留在同一磁片塊上，以便最大限度地減少磁片讀取的數量。
+最後， `quadkeys`提供一維索引鍵，通常會在 XY 空間中保留磚的近條。 換句話說，附近具有鄰近 XY 座標的兩個磚，通常`quadkeys`會有相對較緊密的。 這對於優化資料庫效能非常重要，因為連續的磚通常會在群組中要求，而且最好將這些磚保留在相同的磁片區上，以便將磁片讀取的次數減至最少。
 
-## <a name="tile-math-source-code"></a>切片數學原始程式碼
+## <a name="tile-math-source-code"></a>磚數學原始程式碼
 
-以下示例代碼說明了如何實現本文檔中描述的函數。 這些函數可以根據需要輕鬆轉換為其他程式設計語言。
+下列範例程式碼說明如何執行本檔中所述的函式。 這些函數可以視需要輕鬆地轉譯成其他程式設計語言。
 
 #### <a name="c"></a>[C#](#tab/csharp)
 
@@ -948,23 +948,23 @@ module AzureMaps {
 * * *
 
 > [!NOTE]
-> Azure 地圖 SDK 中的互動式地圖控制項具有用於在地理空間位置和視口圖元之間轉換的説明器函數。 
-> - [Web SDK：映射圖元和位置計算](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> Azure 地圖服務 SDK 中的互動式地圖控制項有協助程式函式，可在地理空間位置和視口圖元之間進行轉換。 
+> - [Web SDK：地圖圖元和位置計算](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>後續步驟
 
-直接從 Azure 地圖 REST 服務訪問地圖切片：
+直接從 Azure 地圖服務 REST 服務存取地圖底圖：
 
 > [!div class="nextstepaction"]
-> [獲取地圖磁貼](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+> [取得地圖底圖](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 
 > [!div class="nextstepaction"]
-> [獲取流量磁貼](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
+> [取得交通流量磚](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
 
 > [!div class="nextstepaction"]
-> [獲取交通事件磁貼](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
+> [取得流量事件磚](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
 
-瞭解有關地理空間概念的更多內容：
+深入瞭解地理空間概念：
 
 > [!div class="nextstepaction"]
-> [Azure 地圖詞彙表](glossary.md)
+> [Azure 地圖服務詞彙](glossary.md)

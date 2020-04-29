@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 79c24eb078cc3de764ecc1c814e5b8772777eab6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78199490"
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>使用 PlayReady 和/或 Widevine 動態一般加密
 
 > [!NOTE]
-> 若要完成此教學課程，您需要 Azure 帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 媒體服務 v2 中未添加任何新功能或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 若要完成此教學課程，您需要 Azure 帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。   > 不會在媒體服務 v2 中新增任何新功能或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 >   
 
 ## <a name="overview"></a>總覽
@@ -41,9 +41,9 @@ ms.locfileid: "78199490"
 
 如需詳細資訊，請參閱整合 [Axinom](media-services-axinom-integration.md) 和 [castLabs](media-services-castlabs-integration.md)。
 
-媒體服務支援多種方式來授權提出金鑰要求的使用者。 內容金鑰授權原則可能有一個或多個授權限制，可能是 Open 或權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 Web[權杖](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)（SWT） 和[JSON Web 權杖](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)（JWT） 格式的權杖。 
+媒體服務支援多種方式來授權提出金鑰要求的使用者。 內容金鑰授權原則可能有一個或多個授權限制，可能是 Open 或權杖限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援[簡單 web 權杖](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)（SWT）和[JSON web 權杖](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)（JWT）格式的權杖。 
 
-有關詳細資訊，請參閱[配置內容金鑰的授權策略](media-services-protect-with-aes128.md#configure_key_auth_policy)。
+如需詳細資訊，請參閱[設定內容金鑰的授權原則](media-services-protect-with-aes128.md#configure_key_auth_policy)。
 
 若要利用動態加密，您需有一個資產，其中包含一組多位元速率 MP4 檔案或多位元速率 Smooth Streaming 來源檔案。 您也需要設定資產的傳遞原則 (本主題稍後會加以描述)。 然後，根據串流 URL 中指定的格式，隨選資料流處理伺服器確保會以您選取的通訊協定傳遞串流。 如此一來，您就能只以單一儲存格式儲存及支付檔案。 媒體服務會根據用戶端的每個要求，建置及傳遞適當的 HTTP 回應。
 
@@ -98,12 +98,12 @@ ms.locfileid: "78199490"
 
 如需編碼方式的指示，請參閱[使用媒體編碼器標準將資產編碼](media-services-dotnet-encode-with-media-encoder-standard.md)。
 
-## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>創建內容金鑰並將其與編碼資產關聯
+## <a name="create-a-content-key-and-associate-it-with-the-encoded-asset"></a><a id="create_contentkey"></a>建立內容金鑰並將它與編碼的資產產生關聯
 在媒體服務中，內容金鑰包含您要加密資產時使用的金鑰。
 
 如需詳細資訊，請參閱[建立內容金鑰](media-services-dotnet-create-contentkey.md)。
 
-## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>配置內容金鑰的授權策略
+## <a name="configure-the-content-keys-authorization-policy"></a><a id="configure_key_auth_policy"></a>設定內容金鑰的授權原則
 媒體服務支援多種方式來驗證提出金鑰要求的使用者。 您必須設定內容金鑰授權原則。 用戶端 (播放器) 必須先符合原則，系統才會將金鑰傳遞給用戶端。 內容金鑰授權原則可能有一個或多個授權限制，可能是 Open 或權杖限制。
 
 如需詳細資訊，請參閱[設定內容金鑰授權原則](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption)。
@@ -616,7 +616,7 @@ namespace DynamicEncryptionWithDRM
 ## <a name="provide-feedback"></a>提供意見反應
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [使用具有多重 DRM 及存取控制的 CENC](media-services-cenc-with-multidrm-access-control.md)
 * [使用媒體服務設定 Widevine 套件](https://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)

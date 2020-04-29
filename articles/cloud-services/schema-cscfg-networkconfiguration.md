@@ -1,6 +1,6 @@
 ---
 title: Azure 雲端服務 NetworkConfiguration 結構描述 | Microsoft Docs
-description: 瞭解服務設定檔的 Network 配置元素的子項目，該元素指定虛擬網路和 DNS 值。
+description: 瞭解服務設定檔之 NetworkConfiguration 元素的子項目，其指定虛擬網路和 DNS 值。
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
@@ -10,10 +10,10 @@ caps.latest.revision: 28
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: 695ba3acfd5af8797de6e6f7454e493d7863627c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529283"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure 雲端服務組態 NetworkConfiguration 結構描述

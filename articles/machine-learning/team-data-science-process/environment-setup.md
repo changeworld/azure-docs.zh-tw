@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6d1185e13397b3e466bd1e8d609a46f2f68bf390
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063946"
 ---
 # <a name="set-up-data-science-environments-for-use-in-the-team-data-science-process"></a>設定用於 Team Data Science Process 中的資料科學環境
@@ -28,7 +28,7 @@ Team Data Science Process 使用各種資料科學環境來儲存、處理和分
 
 * [Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
 * [HDInsight (Hadoop) 叢集](customize-hadoop-cluster.md)
-* [Azure 機器學習工作室（經典）工作區](../studio/create-workspace.md)
+* [Azure Machine Learning Studio （傳統）工作區](../studio/create-workspace.md)
 
 **Microsoft 資料科學虛擬機器 (DSVM)** 也以 Azure 虛擬機器 (VM) 映像形式提供。 此 VM 會預先安裝並且以數個常用於資料分析和機器學習服務的熱門工具進行設定。 DSVM 可用於 Windows 和 Linux。 如需詳細資訊，請參閱[適用於 Linux 和 Windows 的雲端型資料科學虛擬機器簡介](../data-science-virtual-machine/overview.md)。
 

@@ -1,5 +1,5 @@
 ---
-title: 查詢分片資料庫
+title: 查詢分區化資料庫
 description: 使用彈性資料庫用戶端程式跨分區執行查詢。
 services: sql-database
 ms.service: sql-database
@@ -9,10 +9,10 @@ author: stevestein
 ms.author: sstein
 ms.date: 01/25/2019
 ms.openlocfilehash: ae14a9fd8fc8479eac596fb694e12e3e0a9027f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067304"
 ---
 # <a name="multi-shard-querying-using-elastic-database-tools"></a>使用彈性資料庫工具進行多分區查詢
@@ -63,6 +63,6 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 
 ## <a name="multi-shard-queries-and-split-merge-operations"></a>多分區查詢與分割合併作業
 
-多分區查詢不會驗證所查詢資料庫上的 Shardlet 是否參與進行中的分割/合併作業。 （請參閱[使用彈性資料庫拆分合併工具進行縮放](sql-database-elastic-scale-overview-split-and-merge.md)。這可能導致不一致，其中同一分片中的行顯示同一多分片查詢中的多個資料庫。 請注意這些限制，在執行多分區查詢時，請考慮清空進行中的分割/合併作業和分區對應的變更。
+多分區查詢不會驗證所查詢資料庫上的 Shardlet 是否參與進行中的分割/合併作業。 （請參閱[使用彈性資料庫分割合併工具進行調整](sql-database-elastic-scale-overview-split-and-merge.md)）。這可能會導致不一致的情況，也就是同一個 shardlet 中的資料列，在相同的多分區查詢中顯示多個資料庫。 請注意這些限制，在執行多分區查詢時，請考慮清空進行中的分割/合併作業和分區對應的變更。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

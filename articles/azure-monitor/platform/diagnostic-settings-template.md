@@ -1,6 +1,6 @@
 ---
 title: 使用 Resource Manager 範本在 Azure 中建立診斷設定
-description: 使用資源管理器範本創建診斷設置，將 Azure 平臺日誌轉發到 Azure 監視器日誌、Azure 存儲或 Azure 事件中心。
+description: 使用 Resource Manager 範本來建立診斷設定，以將 Azure 平臺記錄轉送至 Azure 監視器記錄、Azure 儲存體或 Azure 事件中樞。
 author: bwren
 services: azure-monitor
 ms.topic: conceptual
@@ -8,31 +8,31 @@ ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
 ms.openlocfilehash: a2569ca3f998030680bd7dbd872d71ccd372a25d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672424"
 ---
-# <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>使用資源管理器範本在 Azure 中創建診斷設置
-Azure 監視器中的[診斷設置](diagnostic-settings.md)指定將 Azure 資源和它們所依賴的 Azure[平臺收集的平臺日誌](platform-logs-overview.md)發送到何處。 本文提供了使用[Azure 資源管理器範本](../../azure-resource-manager/templates/template-syntax.md)創建和配置診斷設置以將平臺日誌收集到不同目標的詳細資訊和示例。
+# <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>使用 Resource Manager 範本在 Azure 中建立診斷設定
+Azure 監視器中的[診斷設定](diagnostic-settings.md)會指定 azure 資源所收集的[平臺記錄](platform-logs-overview.md)檔，以及它們所依賴的 azure 平臺。 本文提供詳細資料和範例，說明如何使用[Azure Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)來建立和設定診斷設定，以將平臺記錄檔收集到不同的目的地。
 
 > [!NOTE]
-> 由於無法使用 PowerShell 或 CLI 為 Azure 活動日誌[創建診斷設置](diagnostic-settings.md)，例如其他 Azure 資源的診斷設置，因此請使用本文中的資訊為活動日誌創建資源管理器範本，並使用 PowerShell 或 CLI 部署範本。
+> 因為您無法使用 PowerShell 或 CLI （例如其他 Azure 資源的診斷設定）來建立 Azure 活動記錄的[診斷設定](diagnostic-settings.md)，請使用本文中的資訊建立活動記錄的 Resource Manager 範本，並使用 POWERSHELL 或 CLI 來部署範本。
 
 ## <a name="deployment-methods"></a>部署方法
-您可以使用任何有效方法（包括 PowerShell 和 CLI）部署資源管理器範本。 活動日誌的診斷設置必須部署到用於`az deployment create`CLI 或`New-AzDeployment`PowerShell 的訂閱。 資源日誌的診斷設置必須部署到用於`az group deployment create`CLI 或`New-AzResourceGroupDeployment`PowerShell 的資源組。
+您可以使用任何有效的方法（包括 PowerShell 和 CLI）來部署 Resource Manager 範本。 活動記錄檔的診斷設定必須部署到使用`az deployment create` for CLI 或`New-AzDeployment` PowerShell 的訂用帳戶。 資源記錄的診斷設定必須使用`az group deployment create` for CLI 或`New-AzResourceGroupDeployment` PowerShell 部署到資源群組。
 
-有關詳細資訊，請參閱[使用資源管理器範本和 Azure PowerShell 部署資源](../../azure-resource-manager/templates/deploy-powershell.md)，以及[使用資源管理器範本和 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)。 
+如需詳細資訊，請參閱[使用 Resource Manager 範本部署資源和 Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)和[使用 Resource Manager 範本部署資源和 Azure CLI](../../azure-resource-manager/templates/deploy-cli.md) 。 
 
 
 
 
 
 ## <a name="resource-logs"></a>資源記錄
-對於資源日誌，向範本添加類型的`<resource namespace>/providers/diagnosticSettings`資源。 屬性部分遵循[診斷設置 - 創建或更新](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)中描述的格式。 在`logs`節中`category`為對要收集的資源有效的每個類別提供 一個。 如果`metrics`[資源支援指標](metrics-supported.md)，則添加屬性以將資源指標收集到相同的目標。
+針對資源記錄，請將類型`<resource namespace>/providers/diagnosticSettings`的資源新增至範本。 [屬性] 區段會遵循 [[診斷設定-建立或更新](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)] 中所述的格式。 針對您`category`想要`logs`收集的資源，在區段中為每個適用的類別提供。 新增`metrics`屬性，以在[資源支援計量](metrics-supported.md)時，將資源計量收集到相同的目的地。
 
-下面是一個範本，該範本將特定資源的資源日誌類別收集到日誌分析工作區、存儲帳戶和事件中心。
+以下範本會將特定資源的資源記錄類別收集到 Log Analytics 工作區、儲存體帳戶和事件中樞。
 
 ```json
 "resources": [
@@ -69,7 +69,7 @@ Azure 監視器中的[診斷設置](diagnostic-settings.md)指定將 Azure 資�
 
 
 ### <a name="example"></a>範例
-下面是為自動縮放設置創建診斷設置的示例，該設置允許將資源日誌資料流到事件中心、存儲帳戶和日誌分析工作區。
+以下範例會建立自動調整設定的診斷設定，以啟用將資源記錄串流至事件中樞、儲存體帳戶和 Log Analytics 工作區。
 
 ```json
 {
@@ -144,7 +144,7 @@ Azure 監視器中的[診斷設置](diagnostic-settings.md)指定將 Azure 資�
 ```
 
 ## <a name="activity-log"></a>活動記錄檔
-對於 Azure 活動日誌，添加類型 的資源`Microsoft.Insights/diagnosticSettings`。 可用類別列在[活動日誌中的類別中](activity-log-view.md#categories-in-the-activity-log)。 下面是一個範本，該範本將所有活動日誌類別收集到日誌分析工作區、存儲帳戶和事件中心。
+針對 [Azure 活動記錄檔]，新增類型`Microsoft.Insights/diagnosticSettings`為的資源。 可用的類別會列在[[活動記錄](activity-log-view.md#categories-in-the-activity-log)] 的 [類別] 中。 以下範本會將所有活動記錄類別收集到 Log Analytics 工作區、儲存體帳戶和事件中樞。
 
 
 ```json
@@ -237,5 +237,5 @@ Azure 監視器中的[診斷設置](diagnostic-settings.md)指定將 Azure 資�
 
 
 ## <a name="next-steps"></a>後續步驟
-* 閱讀有關[Azure 中平臺日誌](platform-logs-overview.md)的更多內容。
-* 瞭解[診斷設置](diagnostic-settings.md)。
+* 深入瞭解[Azure 中的平臺記錄](platform-logs-overview.md)。
+* 深入瞭解[診斷設定](diagnostic-settings.md)。

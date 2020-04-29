@@ -1,5 +1,5 @@
 ---
-title: 使用 REST API 獲取 Azure 虛擬機器使用方式資料
+title: 使用 REST API 取得 Azure 虛擬機器使用量資料
 description: 使用 Azure REST API 來收集虛擬機器的使用量計量。
 author: rloutlaw
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
 ms.openlocfilehash: 07e91f3d9fd32f01db91415bfd90746cd1aef403
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78944744"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>使用 REST API 來取得虛擬機器的使用量計量
@@ -35,14 +35,14 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 |要求標頭|描述|  
 |--------------------|-----------------|  
-|*內容類型：*|必要。 設定為 `application/json`。|  
-|*授權：*|必要。 設定為有效的 `Bearer` [存取權杖](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|*Content-Type:*|必要。 設定為 `application/json`。|  
+|*Authorization:*|必要。 設定為有效的 `Bearer` [存取權杖](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 參數
 
-| 名稱 | 描述 |
+| Name | 說明 |
 | :--- | :---------- |
-| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂閱，請參閱[使用多個訂閱](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
+| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂用帳戶，請參閱使用[多個訂閱](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | resourceGroupName | 與資源相關聯的 Azure資源群組名稱。 您可以從 Azure Resource Manager API、CLI 或入口網站取得這個值。 |
 | vmname | Azure 虛擬機器的名稱。 |
 | metricnames | 以逗號分隔的有效 [Load Balancer 計量](/azure/load-balancer/load-balancer-standard-diagnostics)清單。 |
@@ -50,7 +50,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 | 時間範圍 | 具有 `startDateTime_ISO/endDateTime_ISO` 格式的字串，可定義所傳回計量的時間範圍。 此選用參數會設定為傳回此範例中一天份的資料。 |
 | &nbsp; | &nbsp; |
 
-### <a name="request-body"></a>Request body
+### <a name="request-body"></a>要求本文
 
 這項作業不需要要求本文。
 

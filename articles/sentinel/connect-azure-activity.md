@@ -1,6 +1,6 @@
 ---
-title: 將 Azure 活動資料連接到 Azure 哨兵 |微軟文檔
-description: 瞭解如何將 Azure 活動資料連接到 Azure 哨兵。
+title: 將 Azure 活動資料連線至 Azure Sentinel |Microsoft Docs
+description: 瞭解如何將 Azure 活動資料連線至 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,34 +16,34 @@ ms.workload: na
 ms.date: 03/22/2020
 ms.author: yelevin
 ms.openlocfilehash: 82dfcaf3394703aae531c828a1b96ad290bab798
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80124994"
 ---
-# <a name="connect-data-from-azure-activity-log"></a>從 Azure 活動日誌連接資料
+# <a name="connect-data-from-azure-activity-log"></a>從 Azure 活動記錄連接資料
 
-只需按一下一下，即可將[Azure 活動日誌](../azure-monitor/platform/platform-logs-overview.md)資料流到 Azure Sentinel 中。 活動日誌是一個訂閱日誌，用於記錄和顯示 Azure 中的訂閱級事件，從 Azure 資源管理器運算元據到服務運行狀況事件更新。 使用"活動"日誌，您可以確定對訂閱中的資源執行的任何寫入操作（PUT、POST、DELETE）的"什麼、誰和時間"。 您還可以瞭解操作和其他相關屬性的狀態。 活動日誌不包括使用經典/"RDFE"模型的資源的讀取 （GET） 操作或操作。 
+只要按一下，您就可以將記錄從[Azure 活動記錄](../azure-monitor/platform/platform-logs-overview.md)串流至 Azure Sentinel。 「活動記錄」是一種訂用客戶紀錄，可在 Azure 上記錄和顯示訂用帳戶層級的事件，從 Azure Resource Manager 運算元據到服務健康狀態事件的更新。 使用活動記錄，您可以判斷訂用帳戶中資源上執行的任何寫入作業（PUT、POST、DELETE）的「內容、物件和時間」。 您也可以瞭解作業的狀態和其他相關屬性。 活動記錄不包含讀取（GET）作業，或是使用傳統/"RDFE" 模型之資源的作業。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-- 您的使用者必須具有日誌分析工作區的"參與者"許可權。
-- 使用者必須具有要資料流到 Azure Sentinel 的任何訂閱的讀取器許可權。
+- 您的使用者必須具有 Log Analytics 工作區的參與者許可權。
+- 您的使用者必須擁有您想要串流至 Azure Sentinel 之記錄的任何訂用帳戶的「讀者」許可權。
 
-## <a name="set-up-the-azure-activity-connector"></a>設置 Azure 活動連接器
+## <a name="set-up-the-azure-activity-connector"></a>設定 Azure 活動連接器
 
-1. 在 Azure Sentinel 導航功能表中，選擇 **"資料連線器**"。 從連接器清單中，按一下 Azure**活動**，然後在右下角的 **"打開連接器"頁面**按鈕上按一下。
+1. 從 Azure Sentinel 導覽功能表中，選取 [**資料連線器**]。 從連接器清單中，按一下 [ **Azure 活動**]，然後在右下方的 [**開啟連接器頁面**] 按鈕上。
 
-2. 在 **"說明"** 選項卡下，按一下"**配置 Azure 活動日誌>** 連結。
+2. 在 [**指示**] 索引標籤下，按一下 [**設定 Azure 活動記錄 >** ] 連結。
 
-3. 在**Azure 活動日誌**窗格中，選擇要資料流到 Azure Sentinel 的日誌的訂閱。 
+3. 在 [ **Azure 活動記錄**檔] 窗格中，選取您想要將其記錄串流至 Azure Sentinel 的訂用帳戶。 
 
-4. 在向右打開的訂閱窗格中，按一下"**連接**"。
+4. 在開啟右側的 [訂用帳戶] 窗格中，按一下 **[連接]**。
 
-5. 要在日誌分析中使用 Azure 活動警報的相關架構，`AzureActivity`請鍵入查詢視窗。
+5. 若要在 Log Analytics 中使用適用于 Azure 活動警示的相關`AzureActivity`架構，請在查詢視窗中輸入。
 
 ## <a name="next-steps"></a>後續步驟
-在本文檔中，您學習了如何將 Azure 活動日誌連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+在本檔中，您已瞭解如何將 Azure 活動記錄連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
-- 使用[內置](tutorial-detect-threats-built-in.md)或[自訂](tutorial-detect-threats-custom.md)規則開始使用 Azure Sentinel 檢測威脅。
+- 使用[內建](tutorial-detect-threats-built-in.md)或[自訂](tutorial-detect-threats-custom.md)規則，開始偵測 Azure Sentinel 的威脅。

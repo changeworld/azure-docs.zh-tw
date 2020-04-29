@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 11889bd6df0bcc9564c17fdaacc333df1d418660
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77918303"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>使用 Azure 媒體分析以將視訊檔案中的文字內容轉換為數位文字  
 
 > [!NOTE]
-> **Azure 媒體 OCR**媒體處理器將停用。 有關停用日期，請參閱[舊元件](legacy-components.md)主題。
+> **Azure 媒體 OCR**媒體處理器將會淘汰。 如需淘汰日期，請參閱[舊版元件](legacy-components.md)主題。
 
 ## <a name="overview"></a>總覽
 如果您需要擷取視訊檔案的文字內容，並產生可編輯、可搜尋的數位文字，您應該使用 Azure 媒體分析 OCR (光學字元辨識)。 此 Azure 媒體處理器會偵測視訊檔案的文字內容並產生文字檔案，以供您使用。 OCR 可讓您從媒體的視訊訊號自動擷取有意義的中繼資料。
@@ -39,7 +39,7 @@ ms.locfileid: "77918303"
 影片檔案。 目前支援下列格式：MP4、MOV 及 WMV。
 
 ## <a name="task-configuration"></a>工作組態
-工作組態 (預設)。 使用**Azure 媒體 OCR**創建任務時，必須使用 JSON 或 XML 指定配置預設。 
+工作組態 (預設)。 使用**Azure 媒體 OCR**建立工作時，您必須使用 JSON 或 XML 來指定設定預設值。 
 
 >[!NOTE]
 >OCR 引擎只會接受高度/寬度兩者在最小 40 像素到最大 32000 像素的影像區域為有效的輸入。
@@ -48,8 +48,8 @@ ms.locfileid: "77918303"
 ### <a name="attribute-descriptions"></a>屬性描述
 | 屬性名稱 | 描述 |
 | --- | --- |
-|AdvancedOutput| 如果您將 AdvancedOutput 設為 true，JSON 輸出就會包含每一個文字的位置資料 (除了片語和區域)。 如果您不想要查看這些詳細資料，請將旗標設定為 false。 預設值為 false。 有關詳細資訊，請參閱[此博客](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)。|
-| 語言 |(選擇性) 說明要尋找的文字語言。 下列其中一種︰AutoDetect (預設值)、Arabic、ChineseSimplified、ChineseTraditional、Czech Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。 |
+|AdvancedOutput| 如果您將 AdvancedOutput 設為 true，JSON 輸出就會包含每一個文字的位置資料 (除了片語和區域)。 如果您不想要查看這些詳細資料，請將旗標設定為 false。 預設值為 false。 如需詳細資訊，請參閱[此 blog](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)。|
+| Language |(選擇性) 說明要尋找的文字語言。 下列其中一種︰AutoDetect (預設值)、Arabic、ChineseSimplified、ChineseTraditional、Czech Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。 |
 | TextOrientation |(選擇性) 說明要尋找的文字方向。  "Left" 表示所有字母頂端都會指向左邊。  預設文字 (像是可在書本中找到的文字) 的方向為 "Up"。  下列其中一種︰AutoDetect (預設值)、Up、Right、Down、Left。 |
 | TimeInterval |(選擇性) 說明取樣率。  預設值為每 1/2 秒。<br/>JSON 格式 – HH:mm:ss.SSS (預設值 00:00:00.500)<br/>XML 格式 – W3C XSD 持續時間基本型別 (預設值 PT0.5) |
 | DetectRegions |(選擇性) DetectRegion 物件的陣列，指定在其中偵測文字的視訊畫面格內的區域。<br/>DetectRegion 物件是由下列四個整數值組成︰<br/>左 – 像素的左邊界<br/>上 – 像素的上邊界<br/>寬度 – 以像素為單位的區域寬度<br/>高度 – 以像素為單位的區域高度 |
@@ -193,7 +193,7 @@ OCR 媒體處理器的輸出是 JSON 檔案。
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>建立和設定 Visual Studio 專案
 
-設置開發環境，使用 連接資訊填充 app.config 檔，如使用[.NET 的媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
+設定您的開發環境，並在 app.config 檔案中填入連接資訊，如[使用 .net 進行媒體服務開發](media-services-dotnet-how-to-use.md)中所述。 
 
 #### <a name="example"></a>範例
 

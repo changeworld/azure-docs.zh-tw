@@ -7,15 +7,15 @@ ms.author: daviste
 ms.date: 07/17/2017
 ms.reviewer: mbullwin
 ms.openlocfilehash: 89440a6385bab5b917a866b686e8d2ba828c92e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671047"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>使用 Application Insights 漏斗圖來探索客戶如何使用您的應用程式
 
-了解客戶體驗對於您的企業非常重要。 如果您的應用程式牽涉到多個階段，您需要了解大部分的客戶會處理整個程序，或者他們會在某個時間點結束處理程序。 在 Web 應用程式中通過一系列步驟的進展稱為*漏斗*。 您可以使用 Azure Application Insights 漏斗圖來深入了解使用者，並監視各步驟的轉換率。 
+了解客戶體驗對於您的企業非常重要。 如果您的應用程式牽涉到多個階段，您需要了解大部分的客戶會處理整個程序，或者他們會在某個時間點結束處理程序。 在 web 應用程式中逐步執行一系列的步驟，稱為「*漏斗*圖」。 您可以使用 Azure Application Insights 漏斗圖來深入了解使用者，並監視各步驟的轉換率。 
 
 ## <a name="create-your-funnel"></a>建立您的漏斗圖
 建立您的漏斗圖之前，請決定要獲得回答的問題。 例如，您可能想要知道有多少使用者檢視首頁、檢視客戶設定檔和建立票證。 在此範例中，Fabrikam Fiber 公司的擁有者想要知道已成功建立客戶票證的客戶百分比。

@@ -1,6 +1,6 @@
 ---
-title: 用於 VNet 終結點的 PowerShell 和單個和池資料庫的規則
-description: 提供 PowerShell 腳本，用於為 Azure SQL 資料庫和 Azure 突觸創建和管理虛擬服務終結點。
+title: 適用于單一和集區資料庫之 VNet 端點和規則的 PowerShell
+description: 提供 PowerShell 腳本，以建立和管理 Azure SQL Database 和 Azure Synapse 的虛擬服務端點。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,18 +12,18 @@ ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
 tags: azure-synapse
 ms.openlocfilehash: 1e8ec394eab1df0aebe394b8acebc74c7ed49e9c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80124694"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell：為 SQL 建立虛擬服務端點與 VNet 規則
 
-*虛擬網路規則*是一個防火牆安全功能，它控制 Azure [SQL 資料庫中](sql-database-technical-overview.md)的單個資料庫和彈性池的資料庫伺服器或[Azure Synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中的資料庫是否接受從虛擬網路中的特定子網發送的通信。
+*虛擬網路規則*是一項防火牆安全性功能，可控制 azure 中單一資料庫和彈性集區的資料庫伺服器[SQL Database](sql-database-technical-overview.md)或[azure Synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中的資料庫，是否接受從虛擬網路中的特定子網傳送的通訊。
 
 > [!IMPORTANT]
-> 本文適用于 Azure SQL 伺服器，以及 Azure 同步器中在 Azure SQL 伺服器上創建的 SQL 資料庫和資料倉儲。 為簡單起見，SQL 資料庫在引用 SQL 資料庫和 Azure 突觸時使用。 本文「不」** 適用 Azure SQL Database 中的**受控執行個體**部署，因為它沒有相關聯的服務端點。
+> 本文適用于 azure SQL server，以及 azure Synapse 中建立于 Azure SQL server 的 SQL Database 和資料倉儲。 為了簡單起見，在同時參考 SQL Database 和 Azure Synapse 時，會使用 SQL Database。 本文「不」** 適用 Azure SQL Database 中的**受控執行個體**部署，因為它沒有相關聯的服務端點。
 
 本文提供並說明可執行下列動作的 PowerShell 指令碼：
 
@@ -38,19 +38,19 @@ ms.locfileid: "80124694"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL 資料庫仍然支援 PowerShell Azure 資源管理器模組，但所有後續開發都針對 Az.Sql 模組。 有關這些 Cmdlet，請參閱[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的參數基本相同。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 ## <a name="major-cmdlets"></a>主要 Cmdlet
 
-本文強調將子網終結點添加到 Azure SQL 資料庫伺服器的存取控制清單 （ACL） 的新 **-AzSqlServerVirtualNetworkRule** Cmdlet，從而創建規則。
+本文強調**AzSqlServerVirtualNetworkRule**指令程式，此 Cmdlet 會將子網端點新增至 Azure SQL Database 伺服器的存取控制清單（ACL），藉此建立規則。
 
-下面的清單顯示了其他*主要*Cmdlet 的順序，您必須運行，以準備調用**New-AzSqlServer虛擬網路規則**。 在本文中，這些呼叫發生於[指令碼 3「虛擬網路規則」](#a-script-30)中：
+下列清單顯示您必須執行以準備呼叫**新 AzSqlServerVirtualNetworkRule**的其他*主要*Cmdlet 順序。 在本文中，這些呼叫發生於[指令碼 3「虛擬網路規則」](#a-script-30)中：
 
-1. [新建-Az虛擬網路子網配置](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig)：創建子網物件。
-2. [新-Az虛擬網路](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)：創建虛擬網路，為它提供子網。
-3. [設置-Az虛擬網路子網配置](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig)：將虛擬服務終結點分配給子網。
-4. [設置-Az虛擬網路](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork)：保留對虛擬網路所做的更新。
-5. [New-AzSqlServer虛擬網路規則](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule)：在子網成為終結點後，將子網作為虛擬網路規則添加到 Azure SQL 資料庫伺服器的 ACL 中。
+1. [New-azvirtualnetworksubnetconfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig)：建立子網物件。
+2. [New-azvirtualnetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork)：建立您的虛擬網路，並為其提供子網。
+3. [New-azvirtualnetworksubnetconfig：將](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig)虛擬服務端點指派給您的子網。
+4. [New-azvirtualnetwork：將](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork)對您的虛擬網路進行的更新保存。
+5. [AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule)：當您的子網是端點之後，會將您的子網新增為虛擬網路規則，並加入至 Azure SQL Database 伺服器的 ACL 中。
    - 從 Azure RM PowerShell 模組 5.1.1 版開始，此 Cmdlet 就提供參數 **-IgnoreMissingVnetServiceEndpoint**。
 
 ## <a name="prerequisites-for-running-powershell"></a>執行 PowerShell 的必要條件

@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 15543f7f761c707e8eff8e0cc0a0e4532475ddf8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670996"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>使用 Azure 監視器活頁簿建立互動式報表
@@ -19,7 +19,7 @@ ms.locfileid: "77670996"
 
 活頁簿對於下列案例很有用：
 
-* 當您事先不知道感興趣的指標時，探索應用的使用方式：使用者數量、保留率、轉化率等。與其他使用方式分析工具不同，活頁簿允許您組合多種視覺化和分析，使其成為這種自由形式的探索的絕佳去。
+* 當您事先不知道感興趣的度量時，探索應用程式的使用方式：使用者數目、保留率、轉換率等等。不同于其他流量分析工具，活頁簿可讓您結合多種視覺效果和分析，使其更適合這種自由形式探索。
 * 向小組說明新發行的功能如何執行，方法是顯示關鍵互動和其他計量的使用者計數。
 * 與小組的其他成員分享應用程式中 A/B 實驗的結果。 您可以使用文字說明實驗的目標，然後顯示用來評估實驗的每個使用方式計量和分析查詢，以及每個計量是高於或低於目標的清楚圖說文字。
 * 報告應用程式使用方式中斷的影響，合併資料、文字說明和下一步的討論，以防止未來的中斷。
@@ -155,7 +155,7 @@ union customEvents, pageViews
    | **Text**    | 使用者會編輯文字方塊，您可以選擇提供詢問來填寫預設值。 |
    | **下拉式清單** | 使用者會從一組值之中選擇。 |
    | **時間範圍選擇器**| 使用者會從預先定義之一組時間範圍值中選擇，或是從自訂之時間範圍中選擇。|
-   | **資源選取器** | 使用者會從選取供活頁簿使用之資源中選擇。|
+   | **資源選擇器** | 使用者會從選取供活頁簿使用之資源中選擇。|
 
 ### <a name="using-a-text-parameter"></a>使用文字參數
 
@@ -199,7 +199,7 @@ datatable( column1:string, column2:string )
 
 ![Application Insights 活頁簿區段編輯控制項](./media/usage-workbooks/011-data-table.png)
 
-更適用的示例是使用下拉清單按名稱從一組國家/地區中選取：
+更適用的範例是使用下拉式清單，依名稱從一組國家/地區中挑選：
 
 ```
 customEvents

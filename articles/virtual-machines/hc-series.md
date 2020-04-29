@@ -1,6 +1,6 @@
 ---
-title: HC 系列 - Azure 虛擬機器
-description: HC 系列 VM 的規格。
+title: HC 系列-Azure 虛擬機器
+description: HC 系列 Vm 的規格。
 services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
 ms.openlocfilehash: cc25fb9b21d535ef07bcfae673be48216427b370
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78164775"
 ---
 # <a name="hc-series"></a>HC 系列
 
-HC 系列 VM 針對密集計算驅動的應用進行了優化，例如隱式有限元分析、分子動力學和計算化學。 HC VM 具有 44 個英特爾至強白金 8168 處理器內核、每個 CPU 內核 8 GB 的 RAM，並且沒有超執行緒。 英特爾到強白金平臺支援英特爾豐富的軟體工具生態系統，如英特爾數學內核庫。
+HC 系列 Vm 已針對密集計算所驅動的應用程式優化，例如隱含有限元素分析、分子 dynamics 和計算化學。 HC Vm 功能 44 Intel 更強白金8168處理器核心，每個 CPU 核心 8 GB RAM，無超執行緒。 Intel 的「最強」白金平臺支援 Intel 豐富的軟體工具生態系統，例如 Intel 數學核心程式庫。
 
-ACU： 297-315
+ACU：297-315
 
 進階儲存體：支援
 
@@ -28,16 +28,16 @@ ACU： 297-315
 
 記憶體保留更新：不支援
 
-| 大小 | vCPU | 處理器 | 記憶體 (GB) | 記憶體頻寬 GB/s | 基本 CPU 頻率 （GHz） | 全核頻率（GHz，峰值） | 單核頻率（GHz，峰值） | RDMA 性能（Gb/s） | MPI 支援 | 臨時存儲 （GB） | 最大資料磁碟 | 最大乙太網 NIC |
+| Size | vCPU | 處理器 | 記憶體 (GB) | 記憶體頻寬 GB/秒 | 基本 CPU 頻率（GHz） | 所有核心頻率（GHz、尖峰） | 單核心頻率（GHz、尖峰） | RDMA 效能（Gb/s） | MPI 支援 | 暫存儲存體（GB） | 最大資料磁碟 | 最大乙太網路 Nic |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_HC44rs | 44 | 英特爾新恩鉑金 8168 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | 全部 | 700 | 4 | 1 |
+| Standard_HC44rs | 44 | Intel 8168 技術白金 | 352 | 191 | 2.7 | 3.4 | 3.7 | 100 | 全部 | 700 | 4 | 1 |
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
 ## <a name="other-sizes"></a>其他大小
 
 - [一般用途](sizes-general.md)
-- [記憶體優化](sizes-memory.md)
+- [記憶體最佳化](sizes-memory.md)
 - [儲存體最佳化](sizes-storage.md)
 - [GPU 最佳化](sizes-gpu.md)
 - [高效能計算](sizes-hpc.md)

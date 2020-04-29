@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: af0611e121228a587e159bd4e6529c807132d16d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79204438"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>適用於初學者的資料科學影片 1：資料科學可以回答的 5 個問題
@@ -78,12 +78,12 @@ ms.locfileid: "79204438"
 
 ![異常偵測演算法：這很奇怪嗎？](./media/data-science-for-beginners-the-5-questions-data-science-answers/anomaly-detection-algorithms.png)
 
-如果您有信用卡，您已經受益于異常檢測。 信用卡公司會分析您的購買模式，以便他們可以警告您可能發生詐騙事件。 「奇怪」的費用可能是在您通常不會去購物的商店中所產生的購物，或是購買異常昂貴的商品。
+如果您有一張信用卡，就已經從異常偵測中受益。 信用卡公司會分析您的購買模式，以便他們可以警告您可能發生詐騙事件。 「奇怪」的費用可能是在您通常不會去購物的商店中所產生的購物，或是購買異常昂貴的商品。
 
 這個問題適用於很多方面。 例如：
 
 * 如果您的車輛上配有壓力計，您可能就想知道：這個壓力計的讀數正常嗎？
-* 如果你正在監視互聯網，你會想知道：這條來自互聯網的消息是典型的嗎？
+* 如果您正在監視網際網路，您會想要知道：這是來自網際網路的訊息一般嗎？
 
 異常偵測會標記未預期或異常的事件或行為。 它提供在何處尋找問題的線索。
 
@@ -102,7 +102,7 @@ ms.locfileid: "79204438"
 ## <a name="question-4-how-is-this-organized-uses-clustering-algorithms"></a>「問題 4︰這是如何組織的？」使用叢集演算法
 現在，最後這兩個問題屬於更進階的問題。
 
-有時您會想要了解資料集的結構 - 這是如何組織的？ 對於這個問題，您沒有已經知道結果的示例。
+有時您會想要了解資料集的結構 - 這是如何組織的？ 針對此問題，您沒有已經知道結果的範例。
 
 有很多方法可以梳理出資料結構。 其中一個方法就是叢集。 它會將資料正常分割為「團塊」，以便更容易進行解譯。 透過叢集，就不會有正確的答案。
 
@@ -135,5 +135,5 @@ ms.locfileid: "79204438"
 這就是「資料科學可以回答的 5 個問題」。
 
 ## <a name="next-steps"></a>後續步驟
-* [嘗試機器學習工作室（經典）的第一個資料科學實驗](create-experiment.md)
+* [嘗試使用 Machine Learning Studio 的第一個資料科學實驗（傳統）](create-experiment.md)
 * [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/preview/overview-what-is-azure-ml)

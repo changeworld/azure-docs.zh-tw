@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CLI 打開 VM 的埠
-description: 瞭解如何使用 Azure CLI 打開端口/創建 VM 終結點。
+title: 使用 Azure CLI 開啟 VM 的埠
+description: 瞭解如何使用 Azure CLI 開啟埠/建立 VM 的端點。
 author: cynthn
 manager: gwallace
 ms.service: virtual-machines
@@ -10,13 +10,13 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.openlocfilehash: c29fb075fc2d8b512070d7a6cf3fef949def5894
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80066622"
 ---
-# <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>使用 Azure CLI 打開 VM 的埠和終結點
+# <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>針對具有 Azure CLI 的 VM 開啟埠和端點
 
 您可以透過在子網路或 VM 網路介面上建立網路篩選，對 Azure 中的虛擬機器 (VM) 開啟連接埠或建立端點。 您可將控制輸入和輸出流量的這些篩選器放在可接收流量的資源所附加的網路安全性群組上。 讓我們使用連接埠 80 上的 Web 流量的常見範例。 這篇文章說明如何使用 Azure CLI 來開啟連接埠至 VM。 
 
@@ -37,7 +37,7 @@ az vm open-port --resource-group myResourceGroup --name myVM --port 80
 
 
 ## <a name="create-a-network-security-group-and-rules"></a>建立網路安全性群組和規則
-使用 [az network nsg create](/cli/azure/network/nsg) 建立網路安全性群組。 下面的示例在*東部*位置創建名為*myNetworkSecurityGroup*的網路安全性群組：
+使用 [az network nsg create](/cli/azure/network/nsg) 建立網路安全性群組。 下列範例會在*eastus*位置中建立名為*myNetworkSecurityGroup*的網路安全性群組：
 
 ```azurecli
 az network nsg create \
@@ -87,5 +87,5 @@ az network vnet subnet update \
 ## <a name="next-steps"></a>後續步驟
 在此範例中，您建立了簡單的規則來允許 HTTP 流量。 您可以從下列文章中，找到有關建立更詳細環境的資訊︰
 
-* [Azure 資源管理器概述](../../azure-resource-manager/management/overview.md)
+* [Azure Resource Manager 總覽](../../azure-resource-manager/management/overview.md)
 * [什麼是網路安全性群組 (NSG)？](../../virtual-network/security-overview.md)

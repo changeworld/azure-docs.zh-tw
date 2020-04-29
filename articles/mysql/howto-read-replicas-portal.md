@@ -1,23 +1,23 @@
 ---
-title: 管理讀取副本 - Azure 門戶 - MySQL 的 Azure 資料庫
-description: 瞭解如何使用 Azure 門戶在 MySQL 的 Azure 資料庫中設置和管理讀取副本。
+title: 管理讀取複本-Azure 入口網站適用於 MySQL 的 Azure 資料庫
+description: 瞭解如何使用 Azure 入口網站在適用於 MySQL 的 Azure 資料庫中設定和管理讀取複本。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: b7226e5ae8c468339e02dbe87e279266e4609da8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063482"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>如何使用 Azure 入口網站在適用於 MySQL 的 Azure 資料庫中建立與管理讀取複本
 
-在本文中，您將瞭解如何使用 Azure 門戶在 MySQL 服務的 Azure 資料庫中創建和管理讀取副本。
+在本文中，您將瞭解如何使用 Azure 入口網站，在適用於 MySQL 的 Azure 資料庫服務中建立及管理讀取複本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md)，將作為主要伺服器。
 
@@ -28,7 +28,7 @@ ms.locfileid: "80063482"
 
 您可以使用下列步驟建立讀取複本伺服器︰
 
-1. 登錄到[Azure 門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 2. 選取您要作為主要伺服器的現有「適用於 MySQL 的 Azure 資料庫」伺服器。 這個動作會開啟 [概觀]**** 頁面。
 
@@ -38,18 +38,18 @@ ms.locfileid: "80063482"
 
    ![適用於 MySQL 的 Azure 資料庫 -複寫](./media/howto-read-replica-portal/add-replica.png)
 
-5. 輸入副本伺服器的名稱。
+5. 輸入複本伺服器的名稱。
 
-    ![MySQL 的 Azure 資料庫 - 副本名稱](./media/howto-read-replica-portal/replica-name.png)
+    ![適用於 MySQL 的 Azure 資料庫-複本名稱](./media/howto-read-replica-portal/replica-name.png)
 
-6. 選擇副本伺服器的位置。 預設位置與主伺服器的位置相同。
+6. 選取複本伺服器的位置。 預設位置與主伺服器的相同。
 
-    ![MySQL 的 Azure 資料庫 - 副本位置](./media/howto-read-replica-portal/replica-location.png)
+    ![適用於 MySQL 的 Azure 資料庫-複本位置](./media/howto-read-replica-portal/replica-location.png)
 
    > [!NOTE]
-   > 要詳細瞭解可以在哪些區域棄置站台，請訪問[讀取副本概念一文](concepts-read-replicas.md)。 
+   > 若要深入瞭解您可以在哪些區域中建立複本，請造訪[讀取複本概念一文](concepts-read-replicas.md)。 
 
-7. 選擇 **"確定"** 以確認棄置站台。
+7. 選取 **[確定]** 以確認複本的建立。
 
 > [!NOTE]
 > 系統會以與主要伺服器相同的伺服器設定建立讀取複本。 複本伺服器設定在建立後可以變更。 建議複本伺服器設定的值應保持等於或大於主要伺服器，以確保複本伺服器能保持與主要伺服器一致。
@@ -73,7 +73,7 @@ ms.locfileid: "80063482"
 
    ![適用於 MySQL 的 Azure 資料庫 - 停止複寫選取伺服器](./media/howto-read-replica-portal/stop-replication-select.png)
 
-4. 選擇**停止複製**。
+4. 選取 [**停止**複寫]。
 
    ![適用於 MySQL 的 Azure 資料庫 - 停止複寫](./media/howto-read-replica-portal/stop-replication.png)
 
@@ -93,7 +93,7 @@ ms.locfileid: "80063482"
 
    ![適用於 MySQL 的 Azure 資料庫 - 刪除複寫選取伺服器](./media/howto-read-replica-portal/delete-replica-select.png)
 
-4. 選擇 **"刪除副本"**
+4. 選取 [**刪除複本**]
 
    ![適用於 MySQL 的 Azure 資料庫 - 刪除複本](./media/howto-read-replica-portal/delete-replica.png)
 

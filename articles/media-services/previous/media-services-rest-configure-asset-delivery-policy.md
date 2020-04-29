@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 09f0371bc189fcf7b25ec3261e2e1f5eaf1892ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78194470"
 ---
 # <a name="configuring-asset-delivery-policies"></a>設定資產傳遞原則
@@ -29,13 +29,13 @@ ms.locfileid: "78194470"
 本主題討論建立和設定資產傳遞原則的原因與方法。
 
 > [!NOTE]
-> 創建 AMS 帳戶時，**預設**流式處理終結點將添加到處于 **"已停止"** 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中]**** 狀態。 
+> 建立 AMS 帳戶時，**預設**串流端點會新增至您的帳戶處於 [**已停止**] 狀態。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中]**** 狀態。 
 >
 > 此外，為了能夠使用動態封裝和動態加密功能，您的資產必須包含一組調適性位元速率 MP4 或調適性位元速率 Smooth Streaming 檔案。
 
 您可以將不同的原則套用至相同的資產。 例如，您可以將 PlayReady 加密套用到 Smooth Streaming，將 AES 信封加密套用到 MPEG DASH 和 HLS。 傳遞原則中未定義的任何通訊協定 (例如，您加入單一原則，它只有指定 HLS 做為通訊協定) 將會遭到封鎖無法串流。 這個狀況的例外情形是您完全沒有定義資產傳遞原則之時。 那麼，將允許所有通訊協定，不受阻礙。
 
-如果您想要傳遞儲存體加密資產，就必須設定資產的傳遞原則。 資產可以串流處理之前，串流伺服器會移除儲存體加密，並使用指定的傳遞原則來串流您的內容。 例如，若要傳遞使用進階加密標準 (AES) 信封加密金鑰加密的資產，請將原則類型設定為 **DynamicEnvelopeEncryption**。 要刪除存儲加密並在清除中資料流資產，請將策略類型設置為**NoDynamic 加密**。 下列範例示範如何設定這些原則類型。
+如果您想要傳遞儲存體加密資產，就必須設定資產的傳遞原則。 資產可以串流處理之前，串流伺服器會移除儲存體加密，並使用指定的傳遞原則來串流您的內容。 例如，若要傳遞使用進階加密標準 (AES) 信封加密金鑰加密的資產，請將原則類型設定為 **DynamicEnvelopeEncryption**。 若要移除儲存體加密，並以純文字串流資產，請將原則類型設定為**NoDynamicEncryption**。 下列範例示範如何設定這些原則類型。
 
 視您如何設定資產傳遞原則而定，您可以動態封裝、動態加密，以及串流下列串流通訊協定：Smooth Streaming、HLS、MPEG DASH 資料流。
 
@@ -147,7 +147,7 @@ MPEG DASH
 ### <a name="create-content-key-of-the-envelopeencryption-type-and-link-it-to-the-asset"></a>建立 EnvelopeEncryption 類型的內容金鑰，並將它連結到資產
 當指定 DynamicEnvelopeEncryption 傳遞原則時，您必須將資產連結到 EnvelopeEncryption 類型的內容金鑰。 如需詳細資訊，請參閱 [建立內容金鑰](media-services-rest-create-contentkey.md)。
 
-### <a name="get-delivery-url"></a><a id="get_delivery_url"></a>獲取傳遞 URL
+### <a name="get-delivery-url"></a><a id="get_delivery_url"></a>取得傳遞 URL
 針對前一個步驟中建立的內容金鑰的指定傳遞方法，取得傳遞 URL。 用戶端會使用傳回的 URL 要求 AES 金鑰或 PlayReady 授權，以便播放受保護的內容。
 
 指定要在 HTTP 要求主體中取得的 URL 類型。 如果您要使用 PlayReady 保護您的內容，請要求媒體服務 PlayReady 授權取得 URL，並針對 keyDeliveryType 使用 1：{"keyDeliveryType":1}。 如果您要使用信封加密保護您的內容，請針對 keyDeliveryType 指定 2，來要求金鑰取得 URL：{"keyDeliveryType":2}。

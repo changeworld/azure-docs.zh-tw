@@ -1,5 +1,5 @@
 ---
-title: 導入和匯出 - MySQL 的 Azure 資料庫
+title: 匯入和匯出-適用於 MySQL 的 Azure 資料庫
 description: 本文說明在適用於 MySQL 的 Azure 資料庫中，使用 MySQL Workbench 之類的工具匯入與匯出資料庫的常見方式。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: 83b0a69e063e9427c726216ef873f5a1c97f9582
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78163721"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>使用匯入和匯出移轉您的 MySQL 資料庫
@@ -19,10 +19,10 @@ ms.locfileid: "78163721"
 ## <a name="before-you-begin"></a>開始之前
 若要逐步執行本作法指南，您需要︰
 - 適用於 MySQL 伺服器的 Azure 資料庫，[使用 Azure 入口網站建立適用於 MySQL 伺服器的 Azure 資料庫](quickstart-create-mysql-server-database-using-azure-portal.md)。
-- MySQL 工作臺[MySQL 工作臺 下載](https://dev.mysql.com/downloads/workbench/)或其他協力廠商 MySQL 工具執行導入/匯出。
+- MySQL 工作臺[Mysql 工作臺下載](https://dev.mysql.com/downloads/workbench/)或其他協力廠商 mysql 工具，以執行匯入/匯出。
 
 ## <a name="use-common-tools"></a>使用一般工具
-使用常見實用程式和工具（如 MySQL 工作臺或 mysqldump）將資料遠端連線到或匯出到 MySQL 的 Azure 資料庫中。 
+使用常見的公用程式和工具（例如 MySQL 工作臺或 mysqldump）來遠端連線，並將資料匯入或匯出至適用於 MySQL 的 Azure 資料庫。 
 
 在具有網際網路連線的用戶端電腦上使用這類工具，來連線到適用於 MySQL 的 Azure 資料庫。 使用 SSL 加密連線以獲得最佳安全性做法，如[在適用於 MySQL 的 Azure 資料庫中設定 SSL 連線能力](concepts-ssl-connection-security.md)中所述。
 
@@ -83,7 +83,7 @@ ms.locfileid: "78163721"
 下列範例會從 CSV 檔案匯入資料表：
 1. 以滑鼠右鍵按一下要匯入之資料庫的資料表。 
 2. 瀏覽並選取要匯入的 CSV 檔案，然後按 [下一步]****。 
-3. 選取目的地資料表 (新的或現有的)、選取或取消選取 [匯入前截斷資料表]**** 核取方塊。 按 [下一步]****。
+3. 選取目的地資料表 (新的或現有的)、選取或取消選取 [匯入前截斷資料表]**** 核取方塊。 按 [下一步]  。
 4. 選取編碼方式和要匯入的資料行，然後按 [下一步]****。 
 5. 在 [匯入資料]**** 分頁上，按 [下一步]****。 精靈會據以匯入資料。
 

@@ -1,5 +1,5 @@
 ---
-title: 使用應用程式見解設定檔器在 Azure 中設定檔生產應用
+title: 使用 Application Insights Profiler 分析 Azure 中的生產應用程式
 description: 使用低資源使用量的分析工具來找出 Web 伺服器程式碼中的最忙碌路徑。
 ms.topic: conceptual
 author: cweining
@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: ce952bd248640d03fcff43284707614577df8469
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671642"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>使用 Application Insights 來分析 Azure 中的生產應用程式
@@ -21,10 +21,10 @@ Azure Application Insights Profiler 可為在 Azure 生產環境中執行的應�
 Profiler 可與部署於下列 Azure 服務的 .NET 應用程式搭配運作。 以下連結提供為每個服務類型啟用 Profiler 的特定指示。
 
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
-* [Azure 雲服務](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure 服務結構](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
+* [Azure 雲端服務](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虛擬機器和虛擬機器擴展集](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
-* [**預覽版**ASP.NET核心 Azure Linux Web 應用](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
+* [**預覽**ASP.NET Core Azure Linux Web Apps](profiler-aspnetcore-linux.md?toc=/azure/azure-monitor/toc.json) 
 
 如果您已啟用 Profiler 卻未看到追蹤，請參閱[疑難排解指南](profiler-troubleshooting.md?toc=/azure/azure-monitor/toc.json)。
 
@@ -65,7 +65,7 @@ Microsoft 服務分析工具會合併使用取樣方法和檢測功能，來分�
 
 ### <a name="lock-contention-clrjitutil_moncontention-or-clrjitutil_monenterworker"></a><a id="lockcontention"></a>鎖定爭用 (clr!JITutil\_MonContention 或 clr!JITutil\_MonEnterWorker)
 
-**clr!JITutil\_MonContention** 或 **clr!JITutil\_MonEnterWorker** 表示目前的執行緒正在等候鎖定被釋放。 通常在執行 C# **LOCK** 陳述式、叫用 **Monitor.Enter** 方法，或叫用含有 **MethodImplOptions.Synchronized** 屬性的方法時，都會顯示此文字。 當執行緒_A_獲取鎖，並且執行緒_B_嘗試線上程_A_釋放鎖之前獲取同一鎖時，通常會發生鎖爭用。
+**clr!JITutil\_MonContention** 或 **clr!JITutil\_MonEnterWorker** 表示目前的執行緒正在等候鎖定被釋放。 通常在執行 C# **LOCK** 陳述式、叫用 **Monitor.Enter** 方法，或叫用含有 **MethodImplOptions.Synchronized** 屬性的方法時，都會顯示此文字。 鎖定爭用通常發生于執行緒_a_取得鎖定，且執行緒_B_線上程_a_釋放該鎖定之前嘗試取得相同的鎖定。
 
 ### <a name="loading-code-cold"></a><a id="ngencold"></a>載入程式碼 ([COLD])
 
@@ -89,9 +89,9 @@ Microsoft 服務分析工具會合併使用取樣方法和檢測功能，來分�
 
 **BLOCKED_TIME** 表示程式碼正在等候另一個資源可供使用。 例如，它可能正在等候同步處理物件、等候執行緒可供使用，或等候要求完成。
 
-### <a name="unmanaged-async"></a>非託管非同步
+### <a name="unmanaged-async"></a>非受控非同步
 
-.NET 框架發出 ETW 事件並線上程之間傳遞活動 ID，以便跨執行緒跟蹤非同步調用。 非託管代碼（本機代碼）和一些較舊的非同步代碼樣式缺少這些事件和活動 ID，因此探測器無法判斷線程上運行的執行緒和函數。 這在呼叫堆疊中標記為"非託管 Async"。 如果您下載 ETW 檔，您可以使用[PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md)來深入瞭解正在發生的事情。
+.NET framework 會發出 ETW 事件並線上程之間傳遞活動識別碼，以便線上程間追蹤非同步呼叫。 非受控碼（機器碼）和一些較舊的非同步程式碼樣式遺漏了這些事件和活動識別碼，因此分析工具無法判斷線程上正在執行的是哪個執行緒和哪些函式。 這在呼叫堆疊中標示為「非受控非同步」。 如果您下載 ETW 檔案，您可以使用[PerfView](https://github.com/Microsoft/perfview/blob/master/documentation/Downloading.md)來深入瞭解發生的狀況。
 
 ### <a name="cpu-time"></a><a id="cpu"></a>CPU 時間
 
@@ -122,8 +122,8 @@ Profiler 會在裝載已啟用 Profiler 之應用程式的每部虛擬機器上�
 ## <a name="next-steps"></a>後續步驟
 為您的 Azure 應用程式啟用 Application Insights Profiler。 另請參閱：
 * [應用程式服務](profiler.md?toc=/azure/azure-monitor/toc.json)
-* [Azure 雲服務](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure 服務結構](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
+* [Azure 雲端服務](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
 * [Azure 虛擬機器和虛擬機器擴展集](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 

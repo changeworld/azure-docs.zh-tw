@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 資源運行狀況監視資料庫運行狀況
+title: 使用 Azure 資源健康狀態來監視資料庫健全狀況
 description: 使用 Azure 資源健康情況監視 SQL Database 的健康情況，可協助您進行診斷，並在 Azure 問題影響您的 SQL 資源時取得支援。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 02/26/2019
 ms.openlocfilehash: 9e19e904b47d69444b491dd88ffe49ff812aafc3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79208878"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>使用資源健康情況對 Azure SQL Database 的連線問題進行疑難排解
@@ -26,7 +26,7 @@ SQL Database 的[資源健康情況](../service-health/resource-health-overview.
 
 ![總覽](./media/sql-database-resource-health/sql-resource-health-overview.jpg)
 
-## <a name="health-checks"></a>健康情況檢查
+## <a name="health-checks"></a>健康狀態檢查
 
 資源健康情況會藉由檢查是否成功登入資源，來判斷 SQL 資源的健康情況。 目前，SQL DB 資源的資源健康情況只會檢查因系統錯誤而導致的登入失敗，而不會檢查使用者錯誤。 Azure 資源健康狀態每 1-2 分鐘會更新一次。
 
@@ -40,7 +40,7 @@ SQL Database 的[資源健康情況](../service-health/resource-health-overview.
 
 ### <a name="degraded"></a>已降級
 
-**降級**狀態意味著資源運行狀況檢測到大多數成功登錄，但也檢測到一些失敗。 這些很可能是暫時性的登入錯誤。 若要減少暫時性登入錯誤所導致的連線問題影響，請在程式碼中實作[重試邏輯](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)。
+若狀態為 [已**降級**]，表示資源健康狀態偵測到大部分的成功登入，但也有一些失敗。 這些很可能是暫時性的登入錯誤。 若要減少暫時性登入錯誤所導致的連線問題影響，請在程式碼中實作[重試邏輯](./sql-database-connectivity-issues.md#retry-logic-for-transient-errors)。
 
 ![已降級](./media/sql-database-resource-health/sql-resource-health-degraded.jpg)
 

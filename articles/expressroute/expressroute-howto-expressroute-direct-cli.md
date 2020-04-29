@@ -1,6 +1,6 @@
 ---
-title: Azure 快速路由：直接配置快速路由：CLI
-description: 本文使用 Azure CLI 説明您配置快速路由直接
+title: Azure ExpressRoute：設定 ExpressRoute Direct： CLI
+description: 本文可協助您使用 Azure CLI 來設定 ExpressRoute Direct
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.openlocfilehash: dcca1417aec52fb4bf99d5c480d81995154a68b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481971"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 直接配置快速路由
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 設定 ExpressRoute Direct
 
 您可以使用 Azure ExpressRoute Direct 在策略性分散於世界各地的對等互連位置，直接連線至 Microsoft 全球網路。 如需詳細資訊，請參閱[關於 ExpressRoute Direct Connect](expressroute-erdirect-about.md)。
 
@@ -38,7 +38,7 @@ ms.locfileid: "79481971"
    az account set --subscription "<subscription ID>"
    ```
 
-2. 重新註冊您的訂閱到 Microsoft.Network 以訪問快速路由埠定位和快速路由埠 API
+2. 將您的訂用帳戶重新註冊至 Microsoft，以存取 expressrouteportslocation 和 expressrouteport Api
 
    ```azurecli
    az provider register --namespace Microsoft.Network
@@ -49,7 +49,7 @@ ms.locfileid: "79481971"
    az network express-route port location list
    ```
 
-   **示例輸出**
+   **範例輸出**
   
    ```output
    [
@@ -116,7 +116,7 @@ ms.locfileid: "79481971"
    az network express-route port location show -l "Equinix-Ashburn-DC2"
    ```
 
-   **示例輸出**
+   **範例輸出**
 
    ```output
    {
@@ -154,7 +154,7 @@ ms.locfileid: "79481971"
    > 您也可以將 [封裝]**** 屬性設定為 **Dot1Q**。 
    >
 
-   **示例輸出**
+   **範例輸出**
 
    ```output
    {
@@ -222,7 +222,7 @@ ms.locfileid: "79481971"
    ```azurecli
    az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
    ```
-   **示例輸出**
+   **範例輸出**
 
    ```output
    {
@@ -284,9 +284,9 @@ ms.locfileid: "79481971"
 
 您只可以在 ExpressRoute Direct 上使用額外線路頻寬來支援以上所述的案例。 頻寬是 40 Gbps 和 100 Gbps。
 
-**SkuTier**可以是本地、標準版或高級版。
+**SkuTier**可以是 Local、Standard 或 Premium。
 
-**SkuFamily**必須僅按流量計費資料，因為 ExpressRoute Direct 不支援無限制的資料。
+只有在 ExpressRoute Direct 不支援**SkuFamily**時，才必須 MeteredData 為無限制。
 在 ExpressRoute Direct 資源上建立線路：
 
   ```azurecli
@@ -295,7 +295,7 @@ ms.locfileid: "79481971"
 
   其他頻寬包含：5 Gbps、10 Gbps 及 40 Gbps。
 
-  **示例輸出**
+  **範例輸出**
 
   ```output
   {

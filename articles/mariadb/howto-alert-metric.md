@@ -1,5 +1,5 @@
 ---
-title: 配置指標警報 - Azure 門戶 - MariaDB 的 Azure 資料庫
+title: 設定度量警示-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
 description: 本文描述如何從 Azure 入口網站，設定和存取「適用於 MariaDB 的 Azure 資料庫」的計量警示。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 683b89b29265159b0316d427a7ae616bf3766f7c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529012"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>使用 Azure 入口網站來設定適用於 MariaDB 之 Azure 資料庫的計量警示
@@ -25,7 +25,7 @@ ms.locfileid: "79529012"
 * 呼叫 Webhook
 
 您可以透過下列方式，來設定及取得警示規則的相關資訊：
-* [Azure 門戶](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure 入口網站](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure 監視器 REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
@@ -48,7 +48,7 @@ ms.locfileid: "79529012"
    
    ![選取計量](./media/howto-alert-metric/6-configure-signal-logic.png)
 
-7. 設定警示邏輯，包括**條件** (例如， "Greater than")、**閾值** (例如， 85 percent)、**時間彙總**，觸發警示之前，必須滿足計量規則的**期間** (例如， "在過去30分鐘"）和**頻率**。
+7. 設定警示邏輯，包括**條件** (例如， "Greater than")、**閾值** (例如， 85 percent)、**時間彙總**，觸發警示之前，必須滿足計量規則的**期間** (例如， 「過去30分鐘內」）和**頻率**。
    
    完成時選取 [完成]****。
 

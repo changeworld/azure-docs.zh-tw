@@ -15,10 +15,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 06/19/2019
 ms.openlocfilehash: b9ca241b5deebc4d23e0ff648eddee0782617e0a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79536984"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>透過百度開始使用通知中樞
@@ -29,7 +29,7 @@ ms.locfileid: "79536984"
 
 由於中國無法使用 Google Play 和 FCM (Firebase Cloud Messaging)，因此必須使用不同的應用程式市集和推送服務。 百度是其中一種方法，且目前由通知中樞所使用。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 本教學課程需要：
 
@@ -37,12 +37,12 @@ ms.locfileid: "79536984"
 * [百度推播 Android SDK]
 
 > [!NOTE]
-> 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)。
+> 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)。
 
 若要開始，請執行下列動作：
 
-1. 創建百度帳戶。
-2. 創建百度雲推送專案，並記下 API 金鑰和金鑰。
+1. 建立百度帳戶。
+2. 建立百度雲推送專案，並記下 API 金鑰和秘密金鑰。
 
 ## <a name="configure-a-new-notification-hub"></a>設定新的通知中樞
 
@@ -68,7 +68,7 @@ ms.locfileid: "79536984"
 
 2. 輸入 [應用程式名稱]，並確定 [最低必要 SDK] 版本已設定為 [API 16: Android 4.1]。 **此外，請確定您的套件名稱 (应用包名) 與百度雲推送入口網站中的名稱相同**
 
-    ![Azure 通知中心 - 百](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png)![度最小 SDK1 Azure 通知中心 - 百度最小 SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
+    ![Azure 通知中樞-百度 min SDK1](./media/notification-hubs-baidu-get-started/AndroidMinSDK.png) ![azure 通知中樞-百度 min SDK2](./media/notification-hubs-baidu-get-started/AndroidMinSDK2.png)
 
 3. 按 [下一步] 並繼續遵循精靈的指示進行，直到出現 [建立活動] 視窗為止。 請確定已選取 [空的活動]，最後選取 [完成] 以建立新的 Android 應用程式。
 
@@ -424,8 +424,8 @@ ms.locfileid: "79536984"
 
 以下是不同的傳送通知方法：
 
-* **REST 介面**：您可以使用[REST 介面](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx)支援任何後端平臺上的通知。
-* **微軟 Azure 通知中心 .NET SDK**： 在視覺化工作室的 Nuget 包管理器中，運行[安裝包 Microsoft.Azure.通知中心](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
+* **Rest 介面**：您可以在使用[rest 介面](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx)的任何後端平臺上支援通知。
+* **Microsoft Azure 通知中樞 .NET SDK**：在適用于 Visual Studio 的 Nuget 套件管理員中，執行[Install-Package NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)。
 * **Node.js**：[如何從 Node.js 使用通知中樞](notification-hubs-nodejs-push-notification-tutorial.md)。
 * **Mobile Apps**：如需如何從已與通知中樞整合的 Azure App Service Mobile Apps 傳送通知的範例，請參閱[將推播通知新增至行動應用程式](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md)。
 * **Java/PHP**︰如需使用 REST API 傳送通知的範例，請參閱＜如何從 Java/PHP 使用通知中樞＞([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md))。
@@ -485,5 +485,5 @@ ms.locfileid: "79536984"
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [百度推播 Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
-[Azure 門戶]: https://portal.azure.com/
+[Azure 入口網站]: https://portal.azure.com/
 [Baidu portal]: https://www.baidu.com/

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
 ms.openlocfilehash: d7a37d51c411488231205fd036f9a287f5206ce5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77672441"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>剖析 Azure 監視器記錄中的文字資料
@@ -136,12 +136,12 @@ MyCustomCSVLog_CL
 ## <a name="parse-predefined-structures-in-a-query"></a>剖析查詢中預先定義的結構
 如果您的資料採用已知的結構設定格式，您可以使用 [Kusto 查詢語言](/azure/kusto/query/)中的其中一種函式，剖析預先定義的結構：
 
-- [Json](/azure/kusto/query/parsejsonfunction)
+- [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)
 - [IPv4](/azure/kusto/query/parse-ipv4function)
-- [Url](/azure/kusto/query/parseurlfunction)
+- [URL](/azure/kusto/query/parseurlfunction)
 - [URL 查詢](/azure/kusto/query/parseurlqueryfunction)
-- [檔路徑](/azure/kusto/query/parsepathfunction)
+- [檔案路徑](/azure/kusto/query/parsepathfunction)
 - [使用者代理程式](/azure/kusto/query/parse-useragentfunction)
 - [版本字串](/azure/kusto/query/parse-versionfunction)
 

@@ -1,19 +1,19 @@
 ---
-title: 排除 Azure 應用程式見解快照調試器
-description: 本文介紹故障排除步驟和資訊，以説明難以啟用或使用應用程式見解快照調試器的開發人員。
+title: 針對 Azure 應用程式 Insights 快照偵錯工具進行疑難排解
+description: 本文提供疑難排解步驟和資訊，以協助無法啟用或使用 Application Insights 快照偵錯工具的開發人員。
 ms.topic: conceptual
 author: brahmnes
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 485f35ed249ab7f6bbb987d8c79afe20287cd25a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671404"
 ---
-# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>使應用程式見解快照調試器或查看快照時遇到疑難排解
-如果為應用程式啟用了應用程式見解快照調試器，但看不到異常快照，則可以使用這些說明進行故障排除。 不生成快照的原因可能有很多不同。 您可以運行快照運行狀況檢查，以確定一些可能的常見原因。
+# <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a>針對啟用 Application Insights 快照偵錯工具或查看快照集的問題進行疑難排解
+如果您已為應用程式啟用 Application Insights 快照偵錯工具，但看不到例外狀況的快照集，您可以使用這些指示來進行疑難排解。 不會產生快照集有許多不同的原因。 您可以執行快照集健康情況檢查，以找出一些可能的常見原因。
 
 ## <a name="use-the-snapshot-health-check"></a>使用快照集健康情況檢查
 一些常見的問題會導致不會顯示開啟偵錯快照集。 例如，使用過期的快照集收集器；達到每日上傳限制；或者快照集可能會花很長的時間來上傳。 請使用快照集健康情況檢查，針對常見的問題進行疑難排解。
@@ -32,13 +32,13 @@ ms.locfileid: "77671404"
 
 請確定您在已發佈的應用程式中使用正確的檢測金鑰。 通常，會從 ApplicationInsights.config 檔案中讀取檢測金鑰。 請確認此值與您在入口網站中看到之 Application Insights 資源的檢測金鑰相同。
 
-## <a name="preview-versions-of-net-core"></a>.NET 核心的預覽版本
-如果應用程式使用 .NET Core 的預覽版本，並且快照調試器是通過門戶中的["應用程式見解"窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)啟用的，則快照調試器可能無法啟動。 按照[啟用快照調試器中的其他環境](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)的說明首先包括[Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包 ***，此外還通過***[應用程式見解窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)啟用 。
+## <a name="preview-versions-of-net-core"></a>.NET Core 的預覽版本
+如果應用程式使用 .NET Core 的預覽版本，並透過入口網站中的 [ [Application Insights] 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)啟用快照偵錯工具，則快照偵錯工具可能無法啟動。 請依照[啟用其他環境的快照偵錯工具](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)一節中的指示，先將[microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 套件加入應用程式，***以及***透過 [ [Application Insights] 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)啟用。
 
 
 ## <a name="upgrade-to-the-latest-version-of-the-nuget-package"></a>升級至最新版本的 NuGet 套件
 
-如果快照調試器通過[門戶中的"應用程式見解"窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)啟用，則應用程式應該已經運行最新的 NuGet 包。 如果通過包括[Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet 包啟用了快照調試器，請使用 Visual Studio 的 NuGet 包管理器來確保您使用的是最新版本的 Microsoft.ApplicationInsights.SnapshotCollector。 如需版本資訊，請參閱 https://github.com/Microsoft/ApplicationInsights-Home/issues/167
+如果快照偵錯工具是透過[入口網站中的 [Application Insights] 窗格](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)啟用，則您的應用程式應該已經在執行最新的 NuGet 套件。 如果已藉由包含[Microsoft.applicationinsights.snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) nuget 套件來啟用快照偵錯工具，請使用 Visual Studio 的 Nuget 套件管理員，以確定您使用的是最新版本的 ApplicationInsights microsoft.applicationinsights.snapshotcollector。 如需版本資訊，請參閱 https://github.com/Microsoft/ApplicationInsights-Home/issues/167
 
 ## <a name="check-the-uploader-logs"></a>請檢查上傳程式記錄
 
@@ -84,7 +84,7 @@ SnapshotUploader.exe Information: 0 : Deleted D:\local\Temp\Dumps\c12a605e73c443
 在上述範例中，檢測金鑰為 `c12a605e73c44346a984e00000000000`。 這個值應該符合您應用程式的檢測金鑰。
 小型傾印會與識別碼為 `139e411a23934dc0b9ea08a626db16c5` 的快照集相關聯。 您稍後可以使用這個識別碼，在 Application Insights Analytics 中找出相關聯的例外狀況遙測。
 
-上載程式約每隔 15 分鐘掃描一次新的 PDB。 以下是範例：
+上載程式約每隔 15 分鐘掃描一次新的 PDB。 範例如下：
 
 ```
 SnapshotUploader.exe Information: 0 : PDB rescan requested.
@@ -216,4 +216,4 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>編輯網路 Proxy 或防火牆規則
 
-如果應用程式透過 Proxy 或防火牆連線至網際網路，您可能需要編輯規則以允許應用程式與快照集偵錯工具服務進行通訊。 快照調試器使用的 IP 包含在 Azure 監視器服務標記中。
+如果應用程式透過 Proxy 或防火牆連線至網際網路，您可能需要編輯規則以允許應用程式與快照集偵錯工具服務進行通訊。 快照偵錯工具所使用的 Ip 會包含在 Azure 監視器服務標記中。

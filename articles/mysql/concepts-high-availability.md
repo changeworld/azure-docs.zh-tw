@@ -1,5 +1,5 @@
 ---
-title: 高可用性 - MySQL 的 Azure 資料庫
+title: 高可用性-適用於 MySQL 的 Azure 資料庫
 description: 本主題提供使用「適用於 MySQL 的 Azure 資料庫」時的高可用性資訊
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a793de35ffff84009d362f005e599b4419f0763f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79532768"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>適用於 MySQL 之 Azure 資料庫中的高可用性概念

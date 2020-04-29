@@ -1,5 +1,5 @@
 ---
-title: Saas 應用程式：監視許多資料庫的性能
+title: Saas 應用程式：監視許多資料庫的效能
 description: 監視及管理多租用戶 SaaS 應用程式中 Azure SQL 資料庫和集區的效能
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 34c50795567615637e31446ad3dc51a5e1b355f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79214455"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>監視及管理多租用戶 SaaS 應用程式中 Azure SQL 資料庫和集區的效能
@@ -36,7 +36,7 @@ Wingtip Tickets SaaS Database Per Tenant 應用程式使用單一租用戶資料
 
 若要完成本教學課程，請確定已完成下列必要條件：
 
-* 已部署 Wingtip Tickets SaaS Database Per Tenant 應用程式。 要在五分鐘內部署，請參閱[部署和流覽每個租戶應用程式的翼尖票證 SaaS 資料庫](saas-dbpertenant-get-started-deploy.md)
+* 已部署 Wingtip Tickets SaaS Database Per Tenant 應用程式。 若要在五分鐘內完成部署，請參閱[部署及探索 Wingtip 票證 SaaS 資料庫每一租使用者應用程式](saas-dbpertenant-get-started-deploy.md)
 * 已安裝 Azure PowerShell。 如需詳細資料，請參閱[開始使用 Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps)
 
 ## <a name="introduction-to-saas-performance-management-patterns"></a>SaaS 效能管理模式簡介
@@ -52,15 +52,15 @@ Wingtip Tickets SaaS Database Per Tenant 應用程式使用單一租用戶資料
 * 若要避免手動監視效能，最有效的方式是**設定在資料庫或集區偏離正常範圍時觸發的警示**。
 * 若要回應集區彙總計算大小中的短期波動，**可以相應增加或減少集區 eDTU 層級**。 如果這樣的波動是以定期或可預測的基礎發生，則**可排定自動調整集區**。 例如，當您知道夜間或者週末期間工作負載較輕時，就可以相應減少。
 * 若要回應長期波動或多個資料庫中的變更，**個別資料庫可以移至其他集區**。
-* 若要回應「個別」** 資料庫負載中的短期增加，**可由集區中取出個別資料庫並指派個別計算大小**。 一旦負載降低後，就可以讓資料庫返回到集區。 當事先知道這一點時，可以先發制人地移動資料庫，以確保資料庫始終具有所需的資源，並避免對池中的其他資料庫產生影響。 如果可預測此需求，例如場地因熱門活動而發生票券銷售熱潮，則此管理行為可以與應用程式整合。
+* 若要回應「個別」** 資料庫負載中的短期增加，**可由集區中取出個別資料庫並指派個別計算大小**。 一旦負載降低後，就可以讓資料庫返回到集區。 事先知道這一點時，可以事先移動資料庫以確保資料庫一律擁有它所需的資源，並避免影響集區中的其他資料庫。 如果可預測此需求，例如場地因熱門活動而發生票券銷售熱潮，則此管理行為可以與應用程式整合。
 
 [Azure 入口網站](https://portal.azure.com)提供大部分資源的內建監視與警示功能。 針對 SQL Database，可使用資料庫和集區監視與警示功能。 這個內建的監視與警示功能是資源特定，因此針對少數資源使用很方便，但是搭配許多資源使用時則不是很方便。
 
-對於使用許多資源的高容量方案，可以使用[Azure 監視器日誌](saas-dbpertenant-log-analytics.md)。 這是一個單獨的 Azure 服務，該服務對日誌分析工作區中收集的已發出日誌進行分析。 Azure 監視器日誌可以從許多服務收集遙測資料，並用於查詢和設置警報。
+在您處理許多資源的大量案例中，可以使用[Azure 監視器記錄](saas-dbpertenant-log-analytics.md)。 這是個別的 Azure 服務，可針對在 Log Analytics 工作區中收集的已發出記錄提供分析。 Azure 監視器記錄檔可以從許多服務收集遙測，並用來查詢和設定警示。
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>取得 Wingtip Tickets SaaS Database Per Tenant 應用程式指令碼
 
-翼尖門票 SaaS 多租戶資料庫腳本和應用程式原始程式碼可在[翼尖門票SaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub存儲庫中提供。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
+Wingtip 票證 SaaS 多租使用者資料庫腳本和應用程式原始程式碼可在[.. wingtipticketssaas-multitenantdb-master-Wingtipticketssaas-dbpertenant-master](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub 存放庫中取得。 關於下載和解除封鎖 Wingtip Tickets SaaS 指令碼的步驟，請參閱[一般指引](saas-tenancy-wingtip-app-guidance-tips.md)。
 
 ## <a name="provision-additional-tenants"></a>佈建其他租用戶
 
@@ -69,7 +69,7 @@ Wingtip Tickets SaaS Database Per Tenant 應用程式使用單一租用戶資料
 如果您已在先前的教學課程中佈建批次的租用戶，請跳至[模擬所有租用戶資料庫上的使用量](#simulate-usage-on-all-tenant-databases)一節。
 
 1. 在 **PowerShell ISE** 中開啟 …\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1**。 保持此指令碼開啟，因為您將在本教學課程期間執行數個案例。
-1. 設置 **$DemoScenario** = **1**，**預配一批租戶**
+1. 設定 **$DemoScenario** = **1**，布建**一批**租使用者
 1. 按 **F5** 以執行指令碼。
 
 指令碼將在五分鐘內部署 17 個租用戶。
@@ -80,18 +80,18 @@ Wingtip Tickets SaaS Database Per Tenant 應用程式使用單一租用戶資料
 
 提供的 Demo-PerformanceMonitoringAndManagement.ps1** 指令碼會模擬對所有租用戶資料庫執行的工作負載。 使用其中一個可用的負載案例產生負載：
 
-| 示範 | 狀況 |
+| 示範 | 案例 |
 |:--|:--|
-| 2 | 生成正常強度負載（約 40 DTU） |
+| 2 | 產生一般強度負載（大約 40 DTU） |
 | 3 | 每個資料庫產生時間更長、更頻繁高載的負載|
-| 4 | 生成負載，每個資料庫的 DTU 突發數較高（大約 80 DTU）|
-| 5 | 生成正常負載，在單個租戶上生成高負載（大約 95 DTU）|
+| 4 | 為每個資料庫產生具有更高 DTU 高載的負載（大約 80 DTU）|
+| 5 | 在單一租使用者上產生一般負載加上高負載（大約 95 DTU）|
 | 6 | 產生跨多個集區的不對稱負載|
 
 負載產生器會將僅限「綜合」** CPU 的負載套用到每一個租用戶資料庫。 產生器會針對每個租用戶資料庫啟動作業，這會定期呼叫產生負載的預存程序。 負載層級 (單位為 eDTU)、持續時間和間隔會跨所有的資料庫而變動，以模擬無法預測的租用戶活動。
 
 1. 在 **PowerShell ISE** 中開啟 …\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1**。 保持此指令碼開啟，因為您將在本教學課程期間執行數個案例。
-1. 設置 **$DemoScenario** = **2**，*生成正常強度負載*。
+1. 設定 **$DemoScenario** = **2**，*產生一般強度負載*。
 1. 按下 **F5** 將負載套用到您的所有租用戶資料庫。
 
 Wingtip Tickets SaaS Database Per Tenant 是 SaaS 應用程式，而實際 SaaS 應用程式上的負載通常是偶爾發生且無法預測的。 為了模擬此情況，負載產生器會產生跨所有租用戶散發的隨機負載。 需要數分鐘才會出現負載模式，所以在嘗試監視以下各節中的負載時，請執行負載產生器 3-5 分鐘。
@@ -147,7 +147,7 @@ Wingtip Tickets SaaS Database Per Tenant 是 SaaS 應用程式，而實際 SaaS 
 
 您可以藉由增加產生器所產生的負載，模擬忙碌的集區。 讓資料庫高載時間更頻繁且更長，增加集區的彙總負載而不變更個別資料庫的需求。 在入口網站或從 PowerShell 可以輕鬆地相應增加集區。 此練習使用入口網站。
 
-1. 設置 *$DemoScenario* = **3**，_生成每個資料庫更長、更頻繁的突發的負載_，以提高池上的聚合負載強度，而無需更改每個資料庫所需的峰值負載。
+1. 設定 *$DemoScenario* = **3**，_針對每個資料庫產生較長且更頻繁的高載負載_，以增加集區的匯總負載強度，而不變更每個資料庫所需的尖峰負載。
 1. 按下 **F5** 將負載套用到您的所有租用戶資料庫。
 
 1. 在 Azure 入口網站中，移至 [Pool1]****。
@@ -158,7 +158,7 @@ Wingtip Tickets SaaS Database Per Tenant 是 SaaS 應用程式，而實際 SaaS 
 1. 將 [集區 eDTU]**** 設定調整至 **100**。 變更集區 eDTU 不會變更每個資料庫設定 (仍然是每個資料庫最高 50 eDTU)。 您可以在 [設定集區]**** 頁面右側看到每個資料庫的設定。
 1. 按一下 [儲存]**** 以提交調整集區的要求。
 
-返回池**1** > **概述**以查看監視圖表。 監視為集區提供更多資源的影響 (雖然有一些資料庫和隨機負載，但是在您執行一段時間前，也不容易明確地看出)。 當您查看圖表時，請記住上方圖表上的 100% 現在代表 100 個 eDTU，而下方圖表上的 100% 仍是 50 個 eDTU，因為每個資料庫最大值仍是 50 個 eDTU。
+回到**Pool1** > **總覽**以觀看監視圖表。 監視為集區提供更多資源的影響 (雖然有一些資料庫和隨機負載，但是在您執行一段時間前，也不容易明確地看出)。 當您查看圖表時，請記住上方圖表上的 100% 現在代表 100 個 eDTU，而下方圖表上的 100% 仍是 50 個 eDTU，因為每個資料庫最大值仍是 50 個 eDTU。
 
 整個過程中，資料庫會維持連線且完全可供使用。 最後每個資料庫都準備好以新的集區 eDTU 啟用時，任何使用中的連線都會中斷。 應用程式程式碼應該一律撰寫為重試中斷的連線，且因此重新連線至相應增加集區中的資料庫。
 
@@ -195,7 +195,7 @@ Wingtip Tickets SaaS Database Per Tenant 是 SaaS 應用程式，而實際 SaaS 
 本練習會模擬在銷售熱門音樂會的票券時，Contoso 演藝廳發生高負載的效果。
 
 1. 在 **PowerShell ISE** 中，開啟 …\\*Demo-PerformanceMonitoringAndManagement.ps1* 指令碼。
-1. 設置 **$DemoScenario = 5，生成正常負載加上單個租戶（大約 95 DTU）上的高負載。**
+1. 設定 **$DemoScenario = 5，在單一租使用者上產生一般負載加上高負載（大約 95 DTU）。**
 1. 設定 **$SingleTenantDatabaseName = contosoconcerthall**
 1. 使用 **F5** 執行指令碼。
 
@@ -218,7 +218,7 @@ Wingtip Tickets SaaS Database Per Tenant 是 SaaS 應用程式，而實際 SaaS 
 
 ## <a name="other-performance-management-patterns"></a>其他效能管理模式
 
-**預先調整** 在您探索如何調整隔離資料庫的上述練習中，您知道要尋找的資料庫。 如果康托索音樂廳的管理層通知Wingtips即將出售門票，那麼資料庫本可以先發制人地搬出池子。 否則，它可能會需要集區或資料庫上的警示來了解發生的事件。 您不會想要從集區中其他抱怨效能降低的租用戶得知這件事。 而且如果租用戶可以預測需要其他資源多久的時間，您可以設定 Azure 自動化 Runbook 將資料庫移出集區，然後依定義的排程將它重新移回到集區中。
+**預先調整** 在您探索如何調整隔離資料庫的上述練習中，您知道要尋找的資料庫。 如果 Contoso 協同廳的管理已通知 Wingtips 即將推出的票證銷售，則資料庫可能已移出集區事先。 否則，它可能會需要集區或資料庫上的警示來了解發生的事件。 您不會想要從集區中其他抱怨效能降低的租用戶得知這件事。 而且如果租用戶可以預測需要其他資源多久的時間，您可以設定 Azure 自動化 Runbook 將資料庫移出集區，然後依定義的排程將它重新移回到集區中。
 
 **租用戶自助調整** 因為調整是可以透過管理 API 輕鬆呼叫的工作，您可以輕易地在您的租用戶面向應用程式中建立調整租用戶資料庫的能力，並以 SaaS 服務的功能形式提供。 例如，讓租用戶自行管理相應增加和減少，或許會直接影響其計費！
 
@@ -246,4 +246,4 @@ Wingtip Tickets SaaS Database Per Tenant 是 SaaS 應用程式，而實際 SaaS 
 * [在 Tickets SaaS Database Per Tenant 應用程式部署上建置的其他教學課程](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [SQL 彈性集區](sql-database-elastic-pool.md)
 * [Azure 自動化](../automation/automation-intro.md)
-* [Azure 監視器日誌](saas-dbpertenant-log-analytics.md)- 設置和使用 Azure 監視器日誌教程
+* [Azure 監視器記錄](saas-dbpertenant-log-analytics.md)-設定和使用 Azure 監視器記錄教學課程

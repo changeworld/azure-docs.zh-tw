@@ -1,5 +1,5 @@
 ---
-title: B2B 協作常見問題解答 - Azure 活動目錄 |微軟文檔
+title: B2B 共同作業常見問題-Azure Active Directory |Microsoft Docs
 description: 取得 Azure Active Directory B2B 共同作業常見問題集的解答
 services: active-directory
 ms.service: active-directory
@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 92c3e0d77a26db406e24d6d2fa07e96349613634
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80050810"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 共同作業常見問題集
@@ -24,7 +24,7 @@ ms.locfileid: "80050810"
 這些有關 Azure Active Directory (Azure AD) 企業對企業 (B2B) 共同作業的常見問題集 (FAQ) 會定期更新來包含新的主題。
 
    > [!IMPORTANT]
-   > **從 2021 年 3 月 31 日起**，Microsoft 將不再支援為 B2B 協作方案創建非託管 Azure AD 帳戶和租戶來兌換邀請。 在準備中，我們鼓勵客戶選擇[電子郵件一次性密碼身份驗證](one-time-passcode.md)。 我們歡迎您對此公共預覽功能的回饋，並興奮地創建更多協作方式。
+   > 自**2021 年3月31日起**，Microsoft 將不再支援兌換邀請，方法是建立適用于 B2B 共同作業案例的非受控 Azure AD 帳戶和租使用者。 在準備過程中，我們鼓勵客戶選擇[電子郵件一次性密碼驗證](one-time-passcode.md)。 我們歡迎您提供此公開預覽功能的意見反應，而且很高興能建立更多共同作業的方式。
 
 ### <a name="can-we-customize-our-sign-in-page-so-its-more-intuitive-for-our-b2b-collaboration-guest-users"></a>是否可以自訂登入頁面，讓我們的 B2B 共同作業來賓使用者感到更直覺式？
 當然！ 請參閱我們[有關這項功能的部落格文章](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)。 如需有關如何自訂組織登入頁面的詳細資訊，請參閱[將公司商標新增至登入和存取面板頁面](../fundamentals/customize-branding.md)。
@@ -45,36 +45,36 @@ ms.locfileid: "80050810"
 邀請方組織執行多重要素驗證。 邀請方組織必須確定組織有足夠的授權給使用多重要素驗證的 B2B 使用者。
 
 ### <a name="what-if-a-partner-organization-already-has-multi-factor-authentication-set-up-can-we-trust-their-multi-factor-authentication-and-not-use-our-own-multi-factor-authentication"></a>如果夥伴組織已設定多重要素驗證呢？ 我們可以信任其多重要素驗證，而不要使用我們自己的多重要素驗證嗎？
-此功能當前不受支援。 如果對組織資源的訪問需要多重要素驗證，則合作夥伴組織將需要在（邀請）組織中註冊多重要素驗證。
+目前不支援這項功能。 如果您組織資源的存取權需要多重要素驗證，合作夥伴組織就必須在您的（邀請）組織中註冊多重要素驗證。
 
 ### <a name="how-can-i-use-delayed-invitations"></a>我如何使用延遲的邀請？
 組織可能想要新增 B2B 共同作業使用者，依需要將他們佈建至應用程式，然後送出邀請。 您可以使用 B2B 共同作業邀請 API 自訂登入工作流程。
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全域通訊清單中顯示來賓使用者？
-是。 預設情況下，來賓物件在組織的全域通訊清單 （GAL） 中不可見，但您可以使用 Azure 活動目錄 PowerShell 使其可見。 請參閱[是否可以使來賓物件在全域通訊清單中可見？](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
+是。 根據預設，來賓物件不會顯示在貴組織的全域通訊清單（GAL）中，但您可以使用 Azure Active Directory PowerShell 讓它們顯示。 請參閱[我可以讓來賓物件在全域通訊清單中顯示嗎？](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>我是否可以將來賓使用者設為受限的管理員？
 當然。 如需詳細資訊，請參閱[將來賓使用者新增至角色](add-guest-to-role.md)。
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Azure AD B2B 共同作業是否允許 B2B 使用者存取 Azure 入口網站？
-除非為使用者分配了有限管理員的角色，否則 B2B 協作使用者將不需要訪問 Azure 門戶。 但是，被分配為有限管理員角色的 B2B 協作使用者可以訪問門戶。 此外，如果未獲指派其中一個管理員角色的來賓使用者存取入口網站，使用者可能可以存取特定部份的體驗。 來賓使用者角色在目錄中具有某些權限。
+除非使用者被指派受限制的系統管理員角色，B2B 共同作業使用者就不需要存取 Azure 入口網站。 不過，獲派受限系統管理員角色的 B2B 共同作業使用者可以存取入口網站。 此外，如果未獲指派其中一個管理員角色的來賓使用者存取入口網站，使用者可能可以存取特定部份的體驗。 來賓使用者角色在目錄中具有某些權限。
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>我可以封鎖來賓使用者存取 Azure 入口網站嗎？
 
-可以！ 您可以創建條件訪問策略，該策略阻止所有來賓和外部使用者訪問 Azure 門戶。 當您設定此原則時，請小心避免不慎封鎖成員和管理員的存取權。
+可以！ 您可以建立條件式存取原則，以封鎖所有來賓和外部使用者存取 Azure 入口網站。 當您設定此原則時，請小心避免不慎封鎖成員和管理員的存取權。
 
 1. 以安全性系統管理員或條件式存取系統管理員的身分，登入 [Azure 入口網站](https://portal.azure.com/)。
-2. 在 Azure 門戶中，選擇**Azure 活動目錄**。 
-3. 在 **"管理"** 下，選擇 **"安全**"。
-4. 在 **"保護"** 下，選擇 **"條件訪問**"。 選取 [新增原則]****。
-5. 在 **"新建**"頁上，在 **"名稱**"文字方塊中，輸入策略的名稱（例如"阻止來賓存取門戶"）。
-6. 在 [指派]**** 底下選取 [使用者和群組]****。
-7. 在"**包括"** 選項卡上，**選擇"選擇使用者和組**"，然後選擇 **"所有來賓和外部使用者（預覽）"。**
-9. 選擇 **"完成**"。
-10. 在 **"新建**"頁上，在"**分配"** 部分中，選擇 **"雲應用"或"操作**"。
-11. 在 **"雲應用"或"操作"** 頁上，選擇 **"選擇應用**"，然後選擇"**選擇**"。
+2. 在 [Azure 入口網站中，選取 [ **Azure Active Directory**]。 
+3. 在 [**管理**] 下，選取 [**安全性**]。
+4. 在 [**保護**] 底下，選取 [**條件式存取**]。 選取 [新增原則]****。
+5. 在 [**新增**] 頁面的 [**名稱**] 文字方塊中，輸入原則的名稱（例如「封鎖來賓存取入口網站」）。
+6. 在 [指派]  底下，選取 [使用者和群組]  。
+7. 在 [**包含**] 索引標籤上，選擇 [**選取使用者和群組**]，然後選取 [**所有來賓和外部使用者（預覽）**]。
+9. 選取 [完成]  。
+10. 在 [**新增**] 頁面的 [**指派**] 區段中，選取 [**雲端應用程式] 或 [動作**]。
+11. 在 [**雲端應用程式] 或 [動作**] 頁面上，選擇 [**選取應用程式**]，然後選擇 [**選取**]。
 12. 在 [選取]**** 頁面上，選擇 [Microsoft Azure 管理]****，然後選擇 [選取]****。
-13. 在 **"雲應用或操作"** 頁上，選擇 **"完成**"。
+13. 在 [**雲端應用程式] 或 [動作**] 頁面上，選取 [**完成**]。
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Azure AD B2B 共同作業是否支援多重要素驗證和取用者電子郵件帳戶？
 是。 Azure AD B2B 共同作業支援多重要素驗證和取用者電子郵件帳戶。
@@ -101,7 +101,7 @@ Azure AD 有一組固定的字元、密碼強度，以及帳戶鎖定需求，�
 針對同盟帳戶，密碼原則取決於內部部署租用中套用的原則，以及使用者的 Microsoft 帳戶設定。
 
 ### <a name="an-organization-might-want-to-have-different-experiences-in-their-applications-for-tenant-users-and-guest-users-is-there-standard-guidance-for-this-is-the-presence-of-the-identity-provider-claim-the-correct-model-to-use"></a>組織可能想要在其應用程式中讓租用戶使用者和來賓使用者有不同的體驗。 有適用於此案例的標準指引嗎？ 識別提供者宣告的存在是否為應使用的正確模型？
-來賓使用者可以使用任何識別提供者進行驗證。 如需詳細資訊，請參閱 [B2B 共同作業使用者的屬性](user-properties.md)。 使用 **UserType** 屬性來決定使用者體驗。 權杖中目前不包含 **UserType** 宣告。 應用程式應使用 Microsoft 圖形 API 查詢使用者的目錄，並獲取使用者類型。
+來賓使用者可以使用任何識別提供者進行驗證。 如需詳細資訊，請參閱 [B2B 共同作業使用者的屬性](user-properties.md)。 使用 **UserType** 屬性來決定使用者體驗。 權杖中目前不包含 **UserType** 宣告。 應用程式應該使用 Microsoft Graph API 來查詢使用者的目錄，並取得 UserType。
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>哪裡可以找到 B2B 共同作業社群，以分享解決方案和提交構想？
 我們會時常聆聽您對改進 B2B 共同作業的意見反應。 請分享您的使用者案例、最佳做法，以及您喜歡 Azure AD B2B 共同作業的什麼功能。 請前往 [Microsoft 技術社群](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b)參與討論。
@@ -118,10 +118,10 @@ Azure AD 有一組固定的字元、密碼強度，以及帳戶鎖定需求，�
 在支援哪些身分識別這方面，我們將會消除 B2B 與企業對消費者 (B2C) 共同作業之間的差異。 使用的身分識別並不是用來選擇要使用 B2B 或 B2C 的好理由。 如需有關選擇協同作業選項的資訊，請參閱[比較 Azure Active Directory 的 B2B 共同作業和 B2C](compare-with-b2c.md)。
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>哪些應用程式和服務支援 Azure B2B 來賓使用者？
-所有 Azure AD 集成的應用程式都支援 Azure B2B 來賓使用者，但它們必須使用設置為租戶的終結點來對來賓使用者進行身份驗證。 您可能也需要在使用者向應用程式驗證時所發出的 SAML 權杖中[自訂宣告](claims-mapping.md)。 
+所有 Azure AD 整合的應用程式都可以支援 Azure B2B 來賓使用者，但他們必須使用設定為租使用者的端點來驗證來賓使用者。 您可能也需要在使用者向應用程式驗證時所發出的 SAML 權杖中[自訂宣告](claims-mapping.md)。 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>如果我們的合作夥伴沒有多重要素驗證，我們是否可以對 B2B 來賓使用者強制使用多重要素驗證？
-是。 有關詳細資訊，請參閱[B2B 協作使用者的條件訪問](conditional-access.md)。
+是。 如需詳細資訊，請參閱 B2B 共同作業[使用者的條件式存取](conditional-access.md)。
 
 ### <a name="in-sharepoint-you-can-define-an-allow-or-deny-list-for-external-users-can-we-do-this-in-azure"></a>在 SharePoint 中，您可以針對外部使用者定義「允許」或「拒絕」清單。 這在 Azure 中辦得到嗎？
 是。 Azure AD B2B 共同作業支援允許清單和拒絕清單。 

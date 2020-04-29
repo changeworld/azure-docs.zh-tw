@@ -1,6 +1,6 @@
 ---
-title: Azure AD 連接預配代理：版本發佈歷史記錄 |微軟文檔
-description: 本文列出了 Azure AD 連接配置代理的所有版本，並介紹了新功能和修復問題
+title: Azure AD Connect 布建代理程式：版本發行歷程記錄 |Microsoft Docs
+description: 本文列出 Azure AD Connect 布建代理程式的所有版本，並說明新功能和已修正的問題
 services: active-directory
 documentationcenter: ''
 author: cmmdesai
@@ -17,54 +17,54 @@ ms.subservice: app-provisioning
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 559bca4f5020cebe06be7f24f7af5ec2e94bec0e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78183239"
 ---
-# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD 連接預配代理：版本發佈歷史記錄
-本文列出了已發佈的 Azure 活動目錄連接預配代理的版本和功能。 Azure AD 團隊定期更新具有新功能和功能的預配代理。 預配代理在發佈新版本時會自動更新。 
+# <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect 布建代理程式：版本發行歷程記錄
+本文列出已發行 Azure Active Directory Connect 布建代理程式的版本和功能。 Azure AD 小組會定期以新的特性和功能更新布建代理程式。 發行新版本時，會自動更新布建代理程式。 
 
-微軟提供最新的代理版本和之前的一個版本的直接支援。
+Microsoft 提供最新代理程式版本的直接支援，還有一個版本。
 
 ## <a name="11960"></a>1.1.96.0
 
 ### <a name="release-status"></a>發行狀態
 
-2019 年 12 月 4 日：發佈供下載
+2019年12月4日：已發行以供下載
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
 
-* 包括支援[Azure AD 連接雲配置](../cloud-provisioning/what-is-cloud-provisioning.md)，以同步使用者、連絡人和組資料（從本地活動目錄到 Azure AD）
+* 包含[Azure AD Connect 雲端](../cloud-provisioning/what-is-cloud-provisioning.md)布建的支援，可將使用者、連絡人和群組資料從內部部署 Active Directory 同步處理至 Azure AD
 
 
 ## <a name="11670"></a>1.1.67.0
 
 ### <a name="release-status"></a>發行狀態
 
-2019 年 9 月 9 日：發佈用於自動更新
+2019年9月9日：已發行以進行自動更新
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
 
-* 能夠配置其他跟蹤和日誌記錄以調試預配代理問題
-* 能夠僅獲取映射中配置的 Azure AD 屬性，以提高同步性能
+* 能夠設定其他追蹤和記錄以進行偵錯工具布建代理程式問題
+* 能夠只提取對應中設定的 Azure AD 屬性，以改善同步處理的效能
 
 ### <a name="fixed-issues"></a>已修正的問題
 
-* 修復了代理在 Azure AD 連接故障出現問題時進入無回應狀態的 Bug
-* 修復了從 Azure 活動目錄中讀取二進位資料時導致問題的錯誤
-* 修復了代理未能與雲混合標識服務續訂信任的錯誤
+* 已修正當 Azure AD 連線失敗時發生問題時，代理程式進入無回應狀態的錯誤（bug）
+* 修正從 Azure Active Directory 讀取二進位資料時，造成問題的錯誤（bug）
+* 已修正代理程式無法與雲端混合式身分識別服務更新信任的錯誤
 
 ## <a name="11300"></a>1.1.30.0
 
 ### <a name="release-status"></a>發行狀態
 
-2019 年 1 月 23 日：發佈供下載
+2019年1月23日：已發行以供下載
 
 ### <a name="new-features-and-improvements"></a>新功能和改進
 
-* 改進了配置代理和連接器架構，以更好的性能、穩定性和可靠性 
-* 使用 UI 驅動的安裝精靈簡化預配代理配置 
-* 添加了對自動代理更新的支援
+* 改頭換面布建代理程式和連接器架構，以獲得更好的效能、穩定性和可靠性 
+* 使用 UI 驅動的安裝精靈來簡化布建代理程式設定 
+* 已新增自動代理程式更新的支援
 

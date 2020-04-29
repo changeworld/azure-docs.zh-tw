@@ -1,5 +1,5 @@
 ---
-title: 在視覺化工作室中本地測試 Azure 流分析查詢
+title: 在本機測試 Azure 串流分析查詢 Visual Studio
 description: 本文說明如何使用適用於 Visual Studio 的 Azure 串流分析工具在本機測試查詢。
 author: su-jie
 ms.author: sujie
@@ -8,15 +8,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
 ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76834900"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>使用 Visual Studio 在本機測試串流分析查詢
 
-您可以使用 Visual Studio 的 Azure 流分析工具在本地使用示例資料或[即時資料](stream-analytics-live-data-local-testing.md)測試流分析作業。 
+您可以使用適用于 Visual Studio 的 Azure 串流分析工具，透過範例資料或[即時資料](stream-analytics-live-data-local-testing.md)，在本機測試您的串流分析作業。 
 
 使用此[快速入門](stream-analytics-quick-create-vs.md)了解如何使用 Visual Studio 建立串流分析工作。
 
@@ -66,7 +66,7 @@ ms.locfileid: "76834900"
 
 ![範例資料設定](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
  
-您可以在 **"輸出"** 視窗中看到進度。 
+您可以在 [**輸出**] 視窗中查看進度。 
 
 ![範例資料輸出](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 

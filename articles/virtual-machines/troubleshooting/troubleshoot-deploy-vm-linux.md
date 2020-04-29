@@ -1,6 +1,6 @@
 ---
 title: 針對 Azure 中的 Linux 虛擬機器部署問題進行疑難排解 | Microsoft Docs
-description: 在 Azure 資源管理器部署模型中對部署 Linux 虛擬機器問題進行故障排除。
+description: 針對 Azure Resource Manager 部署模型中的 Linux 虛擬機器部署問題進行疑難排解。
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,23 +15,23 @@ ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: 5a8a58a3935b7cd5efb8565f7e3278ccaae4f4de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77921431"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>針對 Azure 中的 Linux 虛擬機器部署問題進行疑難排解
 
 若要針對 Azure 中的虛擬機器 (VM) 部署問題進行疑難排解，請檢閱[常見問題](#top-issues)以了解常見的失敗和解決方式。
 
-如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **"獲取支援**"。
+如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。
 
 ## <a name="top-issues"></a>常見問題
 [!INCLUDE [virtual-machines-linux-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-linux-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>叢集無法支援要求的 VM 大小
-\<屬性支援TopicIds="123456789"資源標籤="視窗"產品PesIds="1234，5678"/>
+\<properties supportTopicIds = "123456789" resourceTags = "windows" productPesIds = "1234，5678"/>
 - 以較小的 VM 大小重試要求。
 - 如果無法變更要求的 VM 的大小︰
     - 停止可用性設定組中的所有 VM。 按一下 [資源群組]**** > 您的資源群組 > [資源]**** > 您的可用性設定組 > [虛擬機器]**** > 您的虛擬機器 > [停止]****。
@@ -40,7 +40,7 @@ ms.locfileid: "77921431"
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>叢集沒有可用的資源
-\<屬性支援TopicIds="123456789"資源標籤="視窗"產品PesIds="1234，5678"/>
+\<properties supportTopicIds = "123456789" resourceTags = "windows" productPesIds = "1234，5678"/>
 - 稍後再重試要求。
 - 如果新的 VM 可以屬於不同的可用性設定組
     - 在不同的可用性設定組 (位於相同區域) 中建立 VM。
@@ -91,4 +91,4 @@ Linux 型 VM 的驅動程式位於[這裡](../linux/n-series-driver-setup.md)。
 ## <a name="next-steps"></a>後續步驟
 如果您在本文中有任何需要協助的地方，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。
 
-或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **"獲取支援**"。
+或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。

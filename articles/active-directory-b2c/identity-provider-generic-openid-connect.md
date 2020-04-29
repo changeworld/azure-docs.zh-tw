@@ -1,7 +1,7 @@
 ---
-title: 使用 OpenID 連接設置註冊和登錄
+title: 使用 OpenID Connect 設定註冊和登入
 titleSuffix: Azure AD B2C
-description: 使用 Azure 活動目錄 B2C 中的任何 OpenID 連接標識提供程式 （IdP） 設置註冊和登錄。
+description: 在 Azure Active Directory B2C 中設定註冊，並以任何 OpenID Connect 識別提供者（IdP）登入。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,33 +12,33 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c72abf79f0a420309ebe229673be9439fd99b74c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188251"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 透過 OpenID Connect 設定註冊和登入
 
-[OpenID 連接](openid-connect.md)是構建在 OAuth 2.0 之上的身份驗證協定，可用於安全使用者登錄。 Azure AD B2C 中支援大多數使用此協定的標識提供程式。 本文說明如何將自訂 OpenID Connect 識別提供者新增至使用者流程中。
+[OpenID connect](openid-connect.md)是以 OAuth 2.0 為基礎的驗證通訊協定，可用於安全的使用者登入。 Azure AD B2C 中支援使用此通訊協定的大部分識別提供者。 本文說明如何將自訂 OpenID Connect 識別提供者新增至使用者流程中。
 
 ## <a name="add-the-identity-provider"></a>新增識別提供者
 
-1. 以 Azure AD B2C 租戶的全域管理員身份登錄到[Azure 門戶](https://portal.azure.com/)。
-1. 通過按一下頂部功能表中的 **"目錄 + 訂閱**"篩選器並選擇包含租戶的目錄，請確保使用的目錄包含 Azure AD B2C 租戶。
+1. 以 Azure AD B2C 租使用者的全域管理員身分登入[Azure 入口網站](https://portal.azure.com/)。
+1. 按一下頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您租使用者的目錄，以確定您使用的是包含 Azure AD B2C 租使用者的目錄。
 1. 選擇 Azure 入口網站左上角的 [所有服務]****，搜尋並選取 [Azure AD B2C]****。
-1. 選擇**標識提供程式**，然後選擇 **"新建 OpenID 連接提供程式**"。
+1. 選取 [**識別提供者**]，然後選取 **[新增 OpenID Connect 提供者]**。
 
 ## <a name="configure-the-identity-provider"></a>設定識別提供者
 
-每個 OpenID Connect 標識提供程式都描述了一個中繼資料文檔，其中包含執行登錄所需的所有資訊。 這包括要使用的 URL、服務的公開簽署金鑰位置等資訊。 OpenID Connect 中繼資料文件一律位於以 `.well-known\openid-configuration` 結尾的端點上。 針對您想要新增的 OpenID Connect 識別提供者，請輸入其中繼資料 URL。
+每個 OpenID Connect 識別提供者都會描述元資料檔案，其中包含執行登入所需的大部分資訊。 這包括要使用的 URL、服務的公開簽署金鑰位置等資訊。 OpenID Connect 中繼資料文件一律位於以 `.well-known\openid-configuration` 結尾的端點上。 針對您想要新增的 OpenID Connect 識別提供者，請輸入其中繼資料 URL。
 
 ## <a name="client-id-and-secret"></a>用戶端識別碼和祕密
 
 為允許使用者登入，識別提供者會要求開發人員在其服務中註冊應用程式。 此應用程式具有稱為**用戶端識別碼**的識別碼與**用戶端祕密**。 從識別提供者複製這些值，然後在對應的欄位中輸入這些值。
 
 > [!NOTE]
-> 用戶端祕密為選擇性項目。 但是，如果要使用授權代碼流，則必須輸入用戶端金鑰，該[授權代碼流](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)使用該金鑰來交換權杖的代碼。
+> 用戶端祕密為選擇性項目。 不過，如果您想要使用[授權碼流程](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)（使用密碼來交換權杖的程式碼），則必須輸入用戶端密碼。
 
 ## <a name="scope"></a>影響範圍
 
@@ -66,8 +66,8 @@ ms.locfileid: "78188251"
 
 在自訂識別提供者將識別碼權杖傳送回 Azure AD B2C 之後，Azure AD B2C 必須能夠將來自所接收權杖的宣告對應至 Azure AD B2C 可辨識及使用的宣告。 針對下列每個對應，請參閱自訂識別提供者的文件，以了解在識別提供者的權杖中傳回的宣告：
 
-* **使用者 ID**：輸入為登錄使用者提供*唯一識別碼*的聲明。
-* **顯示名稱**：輸入為使用者提供*顯示名稱*或*全名*的聲明。
-* **給定名稱**：輸入提供使用者*名字*的聲明。
-* **姓氏**：輸入提供使用者*姓氏*的聲明。
-* **電子郵件**：輸入提供使用者*電子郵件地址*的聲明。
+* **使用者識別碼**：輸入可為登入使用者提供*唯一識別碼*的宣告。
+* **顯示名稱**：輸入可為使用者提供*顯示名稱*或*完整名稱*的宣告。
+* **指定的名稱**：輸入可提供使用者*名字*的宣告。
+* **姓氏**：輸入可提供使用者*姓氏*的宣告。
+* **電子郵件**：輸入提供使用者*電子郵件地址*的宣告。

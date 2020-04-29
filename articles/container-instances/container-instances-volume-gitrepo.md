@@ -1,13 +1,13 @@
 ---
-title: 將 gitRepo 卷安裝到容器組
+title: 將 gitRepo 磁片區掛接至容器群組
 description: 了解如何掛接 gitRepo 磁碟區，以將 Git 存放庫複製到您的容器執行個體中
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 405cacd7a1649f95640a8dabf476729e101d03f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78252093"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>在 Azure 容器執行個體中掛接 gitRepo 磁碟區
@@ -15,7 +15,7 @@ ms.locfileid: "78252093"
 了解如何掛接 *gitRepo* 磁碟區，以將 Git 存放庫複製到您的容器執行個體中。
 
 > [!NOTE]
-> 目前只有 Linux 容器才能掛接 *gitRepo* 磁碟區。 當我們正在努力將所有功能帶到 Windows 容器時，您可以在[概述](container-instances-overview.md#linux-and-windows-containers)中找到當前平臺差異。
+> 目前只有 Linux 容器才能掛接 *gitRepo* 磁碟區。 雖然我們正致力於將所有功能帶入 Windows 容器，但是您可以在[總覽](container-instances-overview.md#linux-and-windows-containers)中找到目前的平臺差異。
 
 ## <a name="gitrepo-volume"></a>gitRepo 磁碟區
 
@@ -33,7 +33,7 @@ ms.locfileid: "78252093"
 
 當您使用 [Azure CLI](/cli/azure) 部署容器執行個體時，若要掛接 gitRepo 磁碟區，請將 `--gitrepo-url` 和 `--gitrepo-mount-path` 參數提供給 [az container create][az-container-create] 命令。 您可以選擇性地指定磁碟區內要複製存放庫到其中的目錄 (`--gitrepo-dir`)，以及要複製的修訂認可雜湊 (`--gitrepo-revision`)。
 
-此示例命令將 Microsoft [aci-helloworld][aci-helloworld]應用程式範例克隆`/mnt/aci-helloworld`到容器實例中：
+此範例命令會將 Microsoft [aci-helloworld][aci-helloworld]範例應用程式`/mnt/aci-helloworld`複製到容器實例中的：
 
 ```azurecli-interactive
 az container create \

@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 787221c4df3f06029d19ee779a28bb763723f27d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671030"
 ---
 # <a name="impact-analysis-with-application-insights"></a>使用 Application Insights 進行影響分析
@@ -56,7 +56,7 @@ ms.locfileid: "77671030"
 2. 在 [分析其]**** 下拉式清單中，選擇 [國家或地區]
 3. 針對 [影響下列項目的使用量]**** 下拉式清單，請選取和您在步驟 1 中於頁面檢視上所選 UI 元素相對應的自訂事件。
 
-在此案例中，結果已不再適用於它們在第一個範例中的連續 X 軸模型。 相反地，會顯示與區段漏斗圖類似的視覺效果。 按**使用方式**排序，查看根據國家/地區轉換為自訂事件的變化。
+在此案例中，結果已不再適用於它們在第一個範例中的連續 X 軸模型。 相反地，會顯示與區段漏斗圖類似的視覺效果。 依**使用量**排序，以根據國家/地區來查看您的自訂事件轉換變化。
 
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>「影響」工具如何計算這些轉換率？

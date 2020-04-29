@@ -1,5 +1,5 @@
 ---
-title: 用於跟蹤活動的使用者上下文標識 - Azure 應用程式見解
+title: 用來追蹤活動 Azure 應用程式深入解析的使用者內容識別碼
 description: 追蹤使用者如何在您的服務移動，方法是為每個使用者指派 Application Insights 中唯一的持續性識別碼字串。
 ms.topic: conceptual
 author: NumberByColors
@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 01/03/2019
 ms.reviewer: abgreg;mbullwin
 ms.openlocfilehash: beb5a0f7ad3733aaf12b0880af4fba23a705a7e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670928"
 ---
 # <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>傳送使用者內容識別碼以啟用 Azure Application Insights 中的使用體驗

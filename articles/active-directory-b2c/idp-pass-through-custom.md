@@ -1,7 +1,7 @@
 ---
-title: 通過自訂策略將訪問權杖傳遞給應用
+title: 透過自訂原則將存取權杖傳遞至您的應用程式
 titleSuffix: Azure AD B2C
-description: 瞭解如何通過自訂策略將 OAuth 2.0 標識提供程式的訪問權杖作為聲明傳遞給 Azure 活動目錄 B2C 中的應用程式。
+description: 瞭解如何在 Azure Active Directory B2C 中透過自訂原則，將 OAuth 2.0 身分識別提供者的存取權杖作為宣告傳遞給您的應用程式。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,19 +12,19 @@ ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ff5ef8f742914129d868152814d84d2112267c09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78187778"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>透過自訂原則將存取權杖傳遞到 Azure Active Directory B2C 中的應用程式
 
-Azure 活動目錄 B2C（Azure AD B2C）中的[自訂策略](custom-policy-get-started.md)為應用程式使用者提供了註冊或登錄標識提供程式的機會。 當發生這種情況時，Azure AD B2C 會從識別提供者處收到[存取權杖](tokens-overview.md)。 Azure AD B2C 會使用該權杖來擷取使用者的相關資訊。 您將宣告類型和輸出宣告新增到自訂原則，以將權杖傳遞至您在 Azure AD B2C 中註冊的應用程式。
+Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-get-started.md)可讓您的應用程式使用者有機會使用身分識別提供者註冊或登入。 當發生這種情況時，Azure AD B2C 會從識別提供者處收到[存取權杖](tokens-overview.md)。 Azure AD B2C 會使用該權杖來擷取使用者的相關資訊。 您將宣告類型和輸出宣告新增到自訂原則，以將權杖傳遞至您在 Azure AD B2C 中註冊的應用程式。
 
 Azure AD B2C 支援傳遞 [OAuth 2.0](authorization-code-flow.md) 的存取金鑰和 [OpenID Connect](openid-connect.md) 識別提供者。 對於所有其他識別提供者，宣告會傳回空白。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 您的自訂原則是使用 OAuth 2.0 或 OpenID Connect 識別提供者設定。
 
@@ -84,8 +84,8 @@ Azure AD B2C 支援傳遞 [OAuth 2.0](authorization-code-flow.md) 的存取金�
 
 ### <a name="upload-the-files"></a>上傳檔案
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
-2. 通過按一下頂部功能表中的 **"目錄 + 訂閱**"篩選器並選擇包含租戶的目錄，請確保使用的目錄包含 Azure AD B2C 租戶。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+2. 按一下頂端功能表中的 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您租使用者的目錄，以確定您使用的是包含 Azure AD B2C 租使用者的目錄。
 3. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
 4. 選取 [識別體驗架構]****。
 5. 在 [自訂原則] 頁面上，按一下 [上傳原則]****。
@@ -101,8 +101,8 @@ Azure AD B2C 支援傳遞 [OAuth 2.0](authorization-code-flow.md) 的存取金�
 
     您應該會看到類似下列範例的內容：
 
-    ![jwt.ms解碼的權杖，並突出顯示idp_access_token塊](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
+    ![已反白顯示 idp_access_token 區塊的 jwt.ms 中已解碼的 token](./media/idp-pass-through-custom/idp-pass-through-custom-token.PNG)
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解有關[Azure 活動目錄 B2C 權杖引用](tokens-overview.md)中的權杖的更多內容。
+深入瞭解[Azure Active Directory B2C token 參考](tokens-overview.md)中的權杖。

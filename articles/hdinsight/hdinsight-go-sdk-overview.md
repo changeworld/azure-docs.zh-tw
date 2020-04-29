@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight SDK for Go
-description: 用於使用 Azure HDInsight SDK 的 Go 和 Apache Hadoop 群集的參考資料
+title: 適用于 Go 的 Azure HDInsight SDK
+description: 使用適用于 Go 的 Azure HDInsight SDK 和 Apache Hadoop 叢集的參考資料
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,26 +9,26 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 01/03/2020
 ms.openlocfilehash: 292496c4d458621213fe62105149ac845d78891e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79479581"
 ---
-# <a name="hdinsight-sdk-for-go-preview"></a>用於 Go 的 HDInsight SDK（預覽版）
+# <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for Go （預覽）
 
 ## <a name="overview"></a>總覽
-適用于 Go 的 HDInsight SDK 提供類和功能，允許您管理 HDInsight 群集。 它包含用來建立、刪除、更新、列出、調整大小、執行指令碼動作、監視、取得 HDInsight 叢集屬性的作業，和其他多種作業。
+HDInsight SDK for Go 提供可讓您管理 HDInsight 叢集的類別和功能。 它包含用來建立、刪除、更新、列出、調整大小、執行指令碼動作、監視、取得 HDInsight 叢集屬性的作業，和其他多種作業。
 
 > [!NOTE]  
 >此 SDK 的 GoDoc 參考資料也可以在[這裡取得](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)。
 
-如果沒有 Azure 訂閱，請先創建[一個免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * [ `go get`工具](https://github.com/golang/go/wiki/GoGetTools)。
-* [去](https://golang.org/dl/)。
+* [Go](https://golang.org/dl/)。
 
 ## <a name="sdk-installation"></a>SDK 安裝
 
@@ -36,14 +36,14 @@ ms.locfileid: "79479581"
 
 ## <a name="authentication"></a>驗證
 
-SDK 必須先使用您的 Azure 訂用帳戶進行驗證。  請依照下列範例建立服務主體，並使用它來驗證。 完成此操作後，您將具有 一個`ClustersClient`實例，其中包含許多可用於執行管理操作的函數（概述如下部分）。
+SDK 必須先使用您的 Azure 訂用帳戶進行驗證。  請依照下列範例建立服務主體，並使用它來驗證。 完成這項作業之後，您將會有一個`ClustersClient`的實例，其中包含許多可用於執行管理作業的函式（如下節所述）。
 
 > [!NOTE]  
 > 除了下列範例以外，還有其他方式可進行驗證，可能更符合您的需求。 此處概述所有函式：[Azure SDK for Go 中的驗證函式](https://docs.microsoft.com/azure/go/azure-sdk-go-authorization)
 
 ### <a name="authentication-example-using-a-service-principal"></a>使用服務主體的驗證範例
 
-首先，請登入 [Azure Cloud Shell](https://shell.azure.com/bash)。 驗證您當前使用的訂閱，您希望在其中創建服務主體。
+首先，請登入 [Azure Cloud Shell](https://shell.azure.com/bash)。 確認您目前正在使用您想要建立服務主體的訂用帳戶。
 
 ```azurecli-interactive
 az account show
@@ -73,7 +73,7 @@ az account set -s <name or ID of subscription>
 ```
 
 > [!IMPORTANT]  
-> 如果尚未通過其他函數註冊 HDInsight 資來源提供者（例如通過 Azure 門戶創建 HDInsight 群集），則需要執行此操作一次，然後才能進行身份驗證。 此動作也可以從 [Azure Cloud Shell](https://shell.azure.com/bash) 完成，只要執行下列命令即可：
+> 如果您尚未以另一個函式註冊 HDInsight 資源提供者（例如透過 Azure 入口網站建立 HDInsight 叢集），您必須執行這項操作一次，才可進行驗證。 此動作也可以從 [Azure Cloud Shell](https://shell.azure.com/bash) 完成，只要執行下列命令即可：
 >```azurecli-interactive
 >az provider register --namespace Microsoft.HDInsight
 >```
@@ -144,7 +144,7 @@ func main() {
 
 #### <a name="example"></a>範例
 
-此示例演示如何創建具有兩個頭節點和一個輔助節點的[Apache Spark](https://spark.apache.org/)群集。
+這個範例示範如何建立具有兩個前端節點和一個背景工作節點的[Apache Spark](https://spark.apache.org/)叢集。
 
 > [!NOTE]  
 > 您必須先建立資源群組和儲存體帳戶，說明如下。 如果您已建立這些項目，則可以略過這些步驟。
@@ -165,14 +165,14 @@ az group create -l <Region Name (i.e. eastus)> --n <Resource Group Name>
 az storage account create -n <Storage Account Name> -g <Existing Resource Group Name> -l <Region Name (i.e. eastus)> --sku <SKU i.e. Standard_LRS>
 ```
 
-現在運行以下命令來獲取存儲帳戶的金鑰（您需要這樣做才能創建群集）：
+現在執行下列命令，以取得儲存體帳戶的金鑰（您將需要用它來建立叢集）：
 
 ```azurecli-interactive
 az storage account keys list -n <Storage Account Name>
 ```
 
 ---
-下面的 Go 程式碼片段創建一個 Spark 群集，該群集包含兩個頭節點和一個輔助節點。 請依照註解中的說明填入空白變數，並依據您的特定需求變更其他參數。
+下列 Go 程式碼片段會建立具有兩個前端節點和一個背景工作節點的 Spark 叢集。 請依照註解中的說明填入空白變數，並依據您的特定需求變更其他參數。
 
 ```golang
 // The name for the cluster you are creating
@@ -263,7 +263,7 @@ client.Get(context.Background(), "<Resource Group Name>", "<Cluster Name>")
 
 #### <a name="example"></a>範例
 
-可以使用`get`來確認已成功創建群集。
+您可以使用`get`來確認您已成功建立叢集。
 
 ```golang
 cluster, err := client.Get(context.Background(), resourceGroupName, clusterName)
@@ -352,7 +352,7 @@ client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 
 HDInsight 管理 SDK 也可用來透過 Operations Management Suite (OMS) 管理您對叢集的監視。
 
-與您建立 `ClusterClient` 以用於管理作業的方式相似，針對監視作業您需要建立 `ExtensionClient`。 完成上述身份驗證部分後，可以創建`ExtensionClient`類似內容：
+與您建立 `ClusterClient` 以用於管理作業的方式相似，針對監視作業您需要建立 `ExtensionClient`。 當您完成上述驗證一節之後，您可以建立`ExtensionClient`如下所示的：
 
 ```golang
 extClient := hdi.NewExtensionsClient(SUBSCRIPTION_ID)
@@ -405,7 +405,7 @@ var scriptAction1 = hdi.RuntimeScriptAction{Name: to.StringPtr("<Script Name>"),
 client.ExecuteScriptActions(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ExecuteScriptActionParameters{PersistOnSuccess: to.BoolPtr(true), ScriptActions: &[]hdi.RuntimeScriptAction{scriptAction1}}) //add more RuntimeScriptActions to the list to execute multiple scripts
 ```
 
-針對「刪除指令碼動作」和「列出保存的指令碼動作」作業，您需要建立 `ScriptActionsClient`，其方式與您建立 `ClusterClient` 以用於管理作業的方式相似。 完成上述身份驗證部分後，可以創建`ScriptActionsClient`類似內容：
+針對「刪除指令碼動作」和「列出保存的指令碼動作」作業，您需要建立 `ScriptActionsClient`，其方式與您建立 `ClusterClient` 以用於管理作業的方式相似。 當您完成上述驗證一節之後，您可以建立如下`ScriptActionsClient`所示的：
 
 ```golang
 scriptActionsClient := hdi.NewScriptActionsClient(SUBSCRIPTION_ID)
@@ -453,7 +453,7 @@ for (page.NotDone()) {
 
 ### <a name="list-all-scripts-execution-history"></a>列出所有指令碼的執行記錄
 
-針對此作業，您需要建立 `ScriptExecutionHistoryClient`，與您建立用於管理作業的 `ClusterClient` 方式相似。 完成上述身份驗證部分後，可以創建`ScriptActionsClient`類似內容：
+針對此作業，您需要建立 `ScriptExecutionHistoryClient`，與您建立用於管理作業的 `ClusterClient` 方式相似。 當您完成上述驗證一節之後，您可以建立如下`ScriptActionsClient`所示的：
 
 ```golang
 scriptExecutionHistoryClient := hdi.NewScriptExecutionHistoryClient(SUBSCRIPTION_ID)

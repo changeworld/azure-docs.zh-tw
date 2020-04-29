@@ -1,5 +1,5 @@
 ---
-title: XEvent 事件檔代碼
+title: XEvent 事件檔案程式碼
 description: 提供 PowerShell 和 Transact-SQL 的兩階段程式碼範例，示範 Azure SQL Database 上擴充事件中的事件檔案目標。 此案例必須要有 Azure 儲存體。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 03/12/2019
 ms.openlocfilehash: a9bf28fb1b3c5278d25b417fc646d2ad3d6f1abc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79213983"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL Database 中擴充事件的事件檔案目標程式碼
@@ -34,14 +34,14 @@ ms.locfileid: "79213983"
   - 將 Azure 儲存體容器指定為事件檔案目標。
   - 建立和啟動事件工作階段等等。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Azure SQL 資料庫仍然支援 PowerShell Azure 資源管理器模組，但所有後續開發都針對 Az.Sql 模組。 有關這些 Cmdlet，請參閱[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的參數基本相同。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
-- Azure 帳戶和訂用帳戶。 您可以註冊免費[試用](https://azure.microsoft.com/pricing/free-trial/)。
+- Azure 帳戶和訂用帳戶。 您可以註冊[免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 - 您可以在當中建立資料表的任何資料庫。
   
   - 您可以選擇性快速[建立 **AdventureWorksLT** 示範資料庫](sql-database-get-started.md)。
@@ -54,7 +54,7 @@ ms.locfileid: "79213983"
 
 - 您必須安裝 [Azure PowerShell 模組](https://go.microsoft.com/?linkid=9811175) 。
 
-  - 這些模組提供命令，如 -**新-AzStorage帳戶**。
+  - 模組會提供如- **New-new-azstorageaccount**的命令。
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>第 1 階段：Azure 儲存體容器的 PowerShell 程式碼
 
@@ -74,7 +74,7 @@ ms.locfileid: "79213983"
 
 ### <a name="powershell-code"></a>PowerShell 程式碼
 
-此 PowerShell 腳本假定您已安裝 Az 模組。 有關詳細資訊，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
+此 PowerShell 腳本假設您已安裝 Az 模組。 如需相關資訊，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。
 
 ```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!
@@ -442,9 +442,9 @@ GO
 
 ## <a name="output"></a>輸出
 
-Transact-SQL 指令碼完成時，按一下 **event_data_XML** 資料欄標題下的儲存格。 將顯示一**\<個事件>** 元素，顯示一個 UPDATE 語句。
+Transact-SQL 指令碼完成時，按一下 **event_data_XML** 資料欄標題下的儲存格。 隨即顯示一個** \<事件>** 元素，其中會顯示一個 UPDATE 語句。
 
-下面是測試期間生成的>元素的一**\<個事件**：
+以下是測試期間所產生的一個** \<事件>** 元素：
 
 ```xml
 <event name="sql_statement_starting" package="sqlserver" timestamp="2015-09-22T19:18:45.420Z">
@@ -503,7 +503,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
   
   - 不需要牽涉到任何 Azure 儲存體帳戶。
 
-## <a name="more-information"></a>詳細資訊
+## <a name="more-information"></a>更多資訊
 
 如需 Azure 儲存體服務中帳戶和容器的詳細資訊，請參閱：
 

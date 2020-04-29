@@ -1,5 +1,5 @@
 ---
-title: 使用自訂策略使用 Twitter 帳戶設置登錄
+title: 使用自訂原則來設定以 Twitter 帳戶進行登入
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用自訂原則來設定以 Twitter 帳戶進行登入。
 services: active-directory-b2c
@@ -12,19 +12,19 @@ ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5804ded875ef03d7ade4414eb8f08885634748dd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80051603"
 ---
 # <a name="set-up-sign-in-with-a-twitter-account-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Twitter 帳戶進行登入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介紹如何使用 Azure 活動目錄 B2C （Azure AD B2C） 中的[自訂策略](custom-policy-overview.md)為 Twitter 帳戶的使用者啟用登錄。
+本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，讓 Twitter 帳戶的使用者登入。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 如果您還沒有 Twitter 帳戶，請在 [Twitter 註冊頁面](https://twitter.com/signup)建立一個帳戶。
@@ -34,7 +34,7 @@ ms.locfileid: "80051603"
 若要使用 Twitter 作為 Azure AD B2C 中的識別提供者，您需要建立 Twitter 應用程式。
 
 1. 使用您的 Twitter 帳戶認證登入 [Twitter 開發人員](https://developer.twitter.com/en/apps) \(英文\) 網站。
-2. 選擇 **"創建應用**"。
+2. 選取 [**建立應用程式**]。
 3. 輸入**應用程式名稱**和**應用程式說明**。
 4. 在 [Website URL]**** \(網站 URL\) 中，輸入 `https://your-tenant.b2clogin.com`。 以您的租用戶名稱取代 `your-tenant`。 例如： `https://contosob2c.b2clogin.com` 。
 5. 在 [回呼 URL]**** 中輸入 `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`。 將 `your-tenant` 取代為您的租用戶名稱，並將 `your-policy-Id` 取代為您的原則識別碼。 例如： `b2c_1A_signup_signin_twitter` 。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。
@@ -46,8 +46,8 @@ ms.locfileid: "80051603"
 
 您必須將先前記錄的祕密金鑰儲存在 Azure AD B2C 租用戶中。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
-2. 請確保使用的是包含 Azure AD B2C 租戶的目錄。 選擇頂部功能表中的**目錄 + 訂閱**篩選器，然後選擇包含租戶的目錄。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+2. 請確定您使用的是包含您 Azure AD B2C 租使用者的目錄。 在頂端功能表中選取 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您租使用者的目錄。
 3. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
 4. 在 [概觀] 頁面上，選取 [識別體驗架構]****。
 5. 選取 [原則金鑰]****，然後選取 [新增]****。
@@ -55,7 +55,7 @@ ms.locfileid: "80051603"
 7. 輸入原則金鑰的 [名稱]****。 例如： `TwitterSecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 在 [祕密]**** 中，輸入您先前記錄的用戶端密碼。
 9. 針對 [金鑰使用方法]****，選取 `Encryption`。
-10. 按一下 **[建立]**。
+10. 按一下 [建立]  。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -111,11 +111,11 @@ ms.locfileid: "80051603"
 
 ### <a name="upload-the-extension-file-for-verification"></a>上傳擴充檔案準備驗證
 
-到目前為止，您已經配置了策略，以便 Azure AD B2C 知道如何與 Twitter 帳戶進行通信。 嘗試上傳原則的擴充檔案，這只是為了確認它到目前為止沒有任何問題。
+現在，您已設定原則，讓 Azure AD B2C 知道如何與您的 Twitter 帳戶進行通訊。 嘗試上傳原則的擴充檔案，這只是為了確認它到目前為止沒有任何問題。
 
 1. 在 Azure AD B2C 租用戶的 [自訂原則]**** 頁面上，選取 [上傳原則]****。
 2. 啟用 [覆寫現有的原則]****，然後瀏覽並選取 *TrustFrameworkExtensions.xml* 檔案。
-3. 按一下 [上傳]****。
+3. 按一下 [上傳]  。
 
 ## <a name="register-the-claims-provider"></a>註冊宣告提供者
 
@@ -155,7 +155,7 @@ ms.locfileid: "80051603"
 
 ## <a name="create-an-azure-ad-b2c-application"></a>建立 Azure AD B2C 應用程式
 
-通過您在 B2C 租戶中註冊的應用程式與 Azure AD B2C 的通信。 此節會列出您可以視需要完成以建立測試應用程式的步驟 (如果您尚未這麼做)。
+與 Azure AD B2C 的通訊會透過您在 B2C 租使用者中註冊的應用程式進行。 此節會列出您可以視需要完成以建立測試應用程式的步驟 (如果您尚未這麼做)。
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

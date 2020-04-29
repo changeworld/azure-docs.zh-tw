@@ -1,6 +1,6 @@
 ---
-title: 由不支援 TLS 1.2 的應用程式引起的故障排除問題 |微軟文檔
-description: 由不支援 TLS 1.2 的應用程式引起的故障排除問題
+title: 針對不支援 TLS 1.2 的應用程式所造成的問題進行疑難排解 |Microsoft Docs
+description: 針對不支援 TLS 1.2 的應用程式所造成的問題進行疑難排解
 services: cloud-services
 documentationcenter: ''
 author: mimckitt
@@ -15,30 +15,30 @@ ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
 ms.openlocfilehash: 6153b9d5e8ef11412b0dd53a15c565becfa1c8a8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80053762"
 ---
-# <a name="troubleshooting-applications-that-dont-support-tls-12"></a>對不支援 TLS 1.2 的應用程式進行故障排除
-本文介紹如何啟用較舊的 TLS 協定（TLS 1.0 和 1.1），以及應用舊密碼套件來支援 Windows Server 2019 雲服務 Web 和輔助角色上的其他協定。 
+# <a name="troubleshooting-applications-that-dont-support-tls-12"></a>針對不支援 TLS 1.2 的應用程式進行疑難排解
+本文說明如何啟用舊版的 TLS 通訊協定（TLS 1.0 和1.1），以及套用舊版的加密套件，以支援 Windows Server 2019 雲端服務 web 和背景工作角色上的其他通訊協定。 
 
-我們理解，雖然我們正在採取措施棄用 TLS 1.0 和 TLS 1.1，但我們的客戶可能需要支援較舊的協定和密碼套件，直到他們能夠計畫棄用。  雖然我們不建議重新啟用這些舊值，但我們提供指導來説明客戶。 我們鼓勵客戶在實施本文中概述的更改之前評估回歸風險。 
+我們瞭解，雖然我們正在採取步驟來取代 TLS 1.0 和 TLS 1.1，但我們的客戶可能需要支援較舊的通訊協定和加密套件，直到他們可以規劃其淘汰為止。  雖然我們不建議您重新啟用這些舊版值，但我們會提供指引來協助客戶。 我們鼓勵客戶在執行本文所述的變更之前，先評估回歸的風險。 
 
 > [!NOTE]
-> 來賓 OS 系列 6 版本通過顯式禁用 TLS 1.0 和 1.1 並定義一組特定的密碼套件來強制執行 TLS 1.2。有關客體作業系統系列的詳細資訊，請參閱[客體作業系統發佈新聞](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
+> 客體作業系統系列6版本藉由明確停用 TLS 1.0 和1.1，並定義一組特定的加密套件，來強制執行 TLS 1.2。如需有關客體作業系統系列的詳細資訊，請參閱[來賓 os 發行新聞](https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases)
 
 
-## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>放棄對 TLS 1.0、TLS 1.1 和舊密碼套件的支援 
-為了支援我們使用同類最佳加密的承諾，Microsoft 于 2017 年 6 月宣佈計畫從 TLS 1.0 和 1.1 開始遷移。   自最初宣佈以來，Microsoft 宣佈我們打算在 2020 年上半年在支援的 Microsoft Edge 和 IEE 11 支援版本中禁用傳輸層安全性 （TLS） 1.0 和 1.1。  蘋果、谷歌和Mozilla的類似公告表明了該行業的發展方向。   
+## <a name="dropping-support-for-tls-10-tls-11-and-older-cipher-suites"></a>捨棄 TLS 1.0、TLS 1.1 和較舊的加密套件的支援 
+為了支援我們對使用最高等級加密的承諾，Microsoft 宣佈了在6月的2017中從 TLS 1.0 和1.1 開始遷移的計畫。   自從最初的公告之後，Microsoft 宣佈我們的意圖，在第一半2020的 Microsoft Edge 和 Internet Explorer 11 版本中，預設會停用傳輸層安全性（TLS）1.0 和1.1。  來自 Apple、Google 和 Mozilla 的類似公告表示產業的方向。   
 
-有關詳細資訊，請參閱在[Microsoft Azure 中準備 TLS 1.2](https://azure.microsoft.com/updates/azuretls12/)
+如需詳細資訊，請參閱[在 Microsoft Azure 中準備 TLS 1.2](https://azure.microsoft.com/updates/azuretls12/)
 
-## <a name="tls-configuration"></a>TLS 配置  
-Windows Server 2019 雲伺服器映射配置了 TLS 1.0 和 TLS 1.1，在註冊表級別禁用。 這意味著部署到此版本的 Windows 並使用 Windows 堆疊進行 TLS 協商的應用程式將不允許 TLS 1.0 和 TLS 1.1 通信。   
+## <a name="tls-configuration"></a>TLS 設定  
+Windows Server 2019 雲端伺服器映射設定了 TLS 1.0，而 TLS 1.1 已在登錄層級停用。 這表示部署到這個 Windows 版本的應用程式，以及使用 Windows stack 進行 TLS 協商，將不會允許 TLS 1.0 和 TLS 1.1 通訊。   
 
-伺服器還附帶一組有限的密碼套件： 
+伺服器也隨附一組有限的加密套件： 
 
 ```
     TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 
@@ -51,9 +51,9 @@ Windows Server 2019 雲伺服器映射配置了 TLS 1.0 和 TLS 1.1，在註冊�
     TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
 ```
 
-## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>第 1 步：創建 PowerShell 腳本以啟用 TLS 1.0 和 TLS 1.1 
+## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>步驟1：建立 PowerShell 腳本以啟用 TLS 1.0 和 TLS 1。1 
 
-使用以下代碼作為示例創建啟用舊協定和密碼套件的腳本。 對於本文檔的目的，此腳本將命名為 **：TLSsettings.ps1**。 將此腳本存儲在本地桌面上，以便稍後步驟輕鬆訪問。 
+使用下列程式碼作為範例，以建立可啟用舊版通訊協定和加密套件的腳本。 基於本檔的目的，此腳本將會命名為： **TLSsettings. ps1**。 在您的本機桌面上儲存此腳本，以便在稍後的步驟中輕鬆存取。 
 
 
 ```Powershell
@@ -273,9 +273,9 @@ If ($reboot) {
 }
 ```
 
-## <a name="step-2-create-a-command-file"></a>第 2 步：創建命令檔 
+## <a name="step-2-create-a-command-file"></a>步驟2：建立命令檔 
 
-使用以下創建名為**RunTLSSettings.cmd**的 CMD 檔。 將此腳本存儲在本地桌面上，以便稍後步驟輕鬆訪問。 
+使用下列命令建立名為**RunTLSSettings**的 cmd 檔案。 在您的本機桌面上儲存此腳本，以便在稍後的步驟中輕鬆存取。 
 
 ```cmd
 SET LOG_FILE="%TEMP%\StartupLog.txt"
@@ -300,9 +300,9 @@ EXIT /B %ERRORLEVEL%
 
 ```
 
-## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>步驟 3：將啟動任務添加到角色的服務定義 （csdef） 
+## <a name="step-3-add-the-startup-task-to-the-roles-service-definition-csdef"></a>步驟3：將啟動工作新增至角色的服務定義（已通過） 
 
-將以下程式碼片段添加到現有服務定義檔中。 
+將下列程式碼片段新增至您現有的服務定義檔。 
 
 ```
     <Startup> 
@@ -311,7 +311,7 @@ EXIT /B %ERRORLEVEL%
     </Startup> 
 ```
 
-下面是一個同時顯示輔助角色和 Web 角色的示例。 
+以下範例顯示背景工作角色和 web 角色。 
 
 ```
 <?xmlversion="1.0"encoding="utf-8"?> 
@@ -341,27 +341,27 @@ EXIT /B %ERRORLEVEL%
 </ServiceDefinition> 
 ```
 
-## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>第 4 步：將腳本添加到雲服務 
+## <a name="step-4-add-the-scripts-to-your-cloud-service"></a>步驟4：將腳本新增至您的雲端服務 
 
-1) 在視覺化工作室中，按右鍵 WebRole 或輔助角色
-2) 選擇 **"添加"**
-3) 選擇**現有專案**
-4) 在檔資源管理器中，導航到存儲**TLSsettings.ps1**和**RunTLSSettings.cmd**檔的桌面 
-5) 選擇要將其添加到雲服務專案的兩個檔
+1) 在 Visual Studio 中，以滑鼠右鍵按一下您的 WebRole 或 WorkerRole
+2) 選取 [**新增**]
+3) 選取**現有的專案**
+4) 在 [檔案瀏覽器] 中，流覽至您儲存**TLSsettings**和**RunTLSSettings**檔案的桌上型電腦。 
+5) 選取兩個檔案，將它們新增至您的雲端服務專案
 
-## <a name="step-5-enable-copy-to-output-directory"></a>步驟 5：啟用複製到輸出目錄
+## <a name="step-5-enable-copy-to-output-directory"></a>步驟5：啟用複製到輸出目錄
 
-為確保腳本在從 Visual Studio 推送的每個更新時上載，需要將"*複製到輸出目錄*"設置為 *"始終複製*"
+若要確保腳本會隨著從 Visual Studio 推送的每個更新上傳，必須將 [*複製到輸出目錄*] 設定設為 [*永遠複製*]
 
-1) 在 WebRole 或輔助角色下，按右鍵 RunTLSSettings.cmd
-2) 選擇**屬性**
-3) 在屬性選項卡中，將 *"複製到輸出目錄"* 更改為 *"始終複製"*
-4) 重複**TLS 設置的步驟。**
+1) 在您的 WebRole 或 WorkerRole 底下，以滑鼠右鍵按一下 [RunTLSSettings]。
+2) 選取**屬性**
+3) 在 [屬性] 索引標籤中，將 [*複製到輸出目錄*] 變更為 *[永遠複製]*
+4) 重複**TLSsettings**的步驟
 
-## <a name="step-6-publish--validate"></a>第 6 步：發佈&驗證
+## <a name="step-6-publish--validate"></a>步驟6：發佈 & 驗證
 
-完成上述步驟後，將更新發佈到現有雲服務。 
+現在已完成上述步驟，請將更新發佈至現有的雲端服務。 
 
-您可以使用[SSLLabs](https://www.ssllabs.com/)驗證終結點的 TLS 狀態 
+您可以使用[SSLLabs](https://www.ssllabs.com/)來驗證端點的 TLS 狀態 
 
  

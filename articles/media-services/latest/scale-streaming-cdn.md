@@ -1,7 +1,7 @@
 ---
-title: 通過 CDN 集成資料流內容
+title: 使用 CDN 整合來串流內容
 titleSuffix: Azure Media Services
-description: 瞭解使用 CDN 集成資料流內容，以及預取和源輔助 CDN 預取。
+description: 瞭解如何使用 CDN 整合來串流內容，以及預先提取和原始協助 CDN 預先提取。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,140 +13,140 @@ ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
 ms.openlocfilehash: 4ed8ada306720b7a8b44ddd59cefe399238c906a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80128060"
 ---
-# <a name="stream-content-with-cdn-integration"></a>通過 CDN 集成資料流內容
+# <a name="stream-content-with-cdn-integration"></a>使用 CDN 整合來串流內容
 
 Azure 內容傳遞網路 (CDN) 為開發人員提供一套全域解決方案，讓他們可藉由在策略性分布於全球的實體節點上快取內容，將高頻寬內容迅速傳遞給使用者。  
 
-CDN 緩存從媒體服務[流終結點（源）](streaming-endpoint-concept.md)資料流的內容，每個編解碼器、每個流式處理協定、每個位元速率、每個容器格式和每個加密/DRM。 對於編解碼器流協定-容器格式-位元速率加密的每個組合，將有一個單獨的 CDN 緩存。
+CDN 會針對每個編解碼器、每個串流處理通訊協定、每一位容器格式，以及每個加密/DRM，快取從媒體服務[串流端點（原點）串流](streaming-endpoint-concept.md)的內容。 針對每個編解碼器串流通訊協定-容器格式-位元速率-加密的組合，將會有個別的 CDN 快取。
 
-只要緩存視頻片段，熱門內容就會直接從 CDN 緩存中提供。 快取實況內容的機率很高，因為通常會有許多人觀看一模一樣的內容。 點播內容可能有點棘手，因為您可能有一些受歡迎的內容，有些內容不是。 如果你有數以百萬計的視頻資產，其中沒有一個是受歡迎的（只有一個或兩個觀眾一個星期），但你有數千人觀看所有不同的視頻，CDN變得不那麼有效。
+只要快取影片片段，受歡迎的內容就會直接從 CDN 快取中提供。 快取實況內容的機率很高，因為通常會有許多人觀看一模一樣的內容。 視需要內容可能有點棘手，因為您可能會有一些熱門的內容，有些則不會。 如果您有數百萬個不受歡迎的影片資產（一周只能有一或兩個檢視器），但您有數千名人員監看所有不同的影片，CDN 就會變得更不有效率。
 
-您也需要考量彈性資料流的運作方式。 每個單獨的視頻片段都緩存為自己的實體。 例如，想像一下第一次觀看特定視頻。 如果觀看者跳過只在這裡和那裡觀看幾秒鐘，則只有與觀看者關聯的視頻片段才會在 CDN 中緩存。 因為有彈性資料流，您通常會有 5 到 7 個位元速率不同的視訊。 如果一個人正在觀察一個位元速率，而另一個人正在觀察不同的位元速率，則他們每人都在 CDN 中單獨緩存。 即使兩個人正在觀看相同的位元速率，他們也可能通過不同的協定進行資料流。 每個通訊協定 (HLS、MPEG DASH、Smooth Streaming) 會分別進行快取。 因此，每一個位元速率和通訊協定都會分別進行快取，而且只會快取已要求的那些視訊片段。
+您也需要考量彈性資料流的運作方式。 每個個別的影片片段都會快取為自己的實體。 例如，想像一下第一次監看特定的影片。 如果檢視器只會在此略過幾秒鐘的時間，而且只有與監看的人員相關的影片片段會在 CDN 中快取。 因為有彈性資料流，您通常會有 5 到 7 個位元速率不同的視訊。 如果其中一個人正在監看一個位元速率，而另一個人正在監看不同的位元速率，則它們會分別在 CDN 中快取。 即使兩個人監看相同的位元速率，它們也可以透過不同的通訊協定進行串流處理。 每個通訊協定 (HLS、MPEG DASH、Smooth Streaming) 會分別進行快取。 因此，每一個位元速率和通訊協定都會分別進行快取，而且只會快取已要求的那些視訊片段。
 
-在決定是否在媒體服務[流終結點](streaming-endpoint-concept.md)上啟用 CDN 時，請考慮預期的觀看者數量。 CDN 僅在您期待許多內容的觀看者時才有所説明。 如果檢視器的最大併發小於 500，建議禁用 CDN，因為 CDN 與併發性一起最大比例。
+在決定是否要在媒體服務[串流端點](streaming-endpoint-concept.md)上啟用 CDN 時，請考慮預期的檢視器數目。 只有當您希望內容有許多檢視器時，CDN 才有説明。 如果檢視器的最大並行程度低於500，建議您停用 CDN，因為 CDN 會以並行的最佳方式調整。
 
-本主題討論啟用[CDN 集成](#enable-azure-cdn-integration)。 它還解釋了預取（活動緩存）和[源輔助 CDN 預取](#origin-assist-cdn-prefetch)概念。
+本主題討論如何啟用[CDN 整合](#enable-azure-cdn-integration)。 它也會說明預先提取（主動快取）和[原始輔助 CDN 預先提取](#origin-assist-cdn-prefetch)概念。
 
 ## <a name="considerations"></a>考量
 
-* 無論是否啟用 CDN，[流式處理終結點](streaming-endpoint-concept.md)`hostname`和流式處理 URL 都保持不變。
-* 如果需要使用 CDN 或不使用 CDN 測試內容的能力，請創建另一個未啟用 CDN 的流式處理終結點。
+* 無論您是否啟用 CDN，[串流端點](streaming-endpoint-concept.md) `hostname`和串流 URL 都保持不變。
+* 如果您需要能夠在不使用 CDN 的情況下測試內容，請建立另一個未啟用 CDN 的串流端點。
 
 ## <a name="enable-azure-cdn-integration"></a>啟用 Azure CDN 整合
 
 > [!IMPORTANT]
-> 不能為試用版或學生 Azure 帳戶啟用 CDN。
+> 您無法為試用版或學生版 Azure 帳戶啟用 CDN。
 >
-> 除聯邦政府和中國區域外，所有 Azure 資料中心都啟用 CDN 集成。
+> 除了美國聯邦政府和中國地區以外，所有 Azure 資料中心都會啟用 CDN 整合。
 
-在啟用了 CDN 後預配流式處理終結點後，在進行 DNS 更新將流式處理終結點映射到 CDN 終結點之前，媒體服務上有定義的等待時間。
+在布建啟用 CDN 的串流端點之後，在完成 DNS 更新以將串流端點對應至 CDN 端點之前，媒體服務已定義等待時間。
 
-如果您稍後想要停用/啟用 CDN，串流端點必須處於**已停止**狀態。 可能需要將近 2 小時，Azure CDN 整合才會啟用，變更也才會遍及所有 CDN POP。 但是，您可以啟動流式處理終結點和流，而不會中斷流式處理終結點。 集成完成後，流將從 CDN 傳遞。 在預配期間，流式處理終結點將處於**啟動**狀態，您可能會觀察到性能下降。
+如果您稍後想要停用/啟用 CDN，串流端點必須處於**已停止**狀態。 可能需要將近 2 小時，Azure CDN 整合才會啟用，變更也才會遍及所有 CDN POP。 不過，您可以啟動串流端點和串流，而不會中斷串流端點。 整合完成後，就會從 CDN 傳遞串流。 在布建期間，您的串流端點會處於 [**啟動**中] 狀態，而您可能會發現效能降低。
 
-創建標準流式處理終結點時，預設情況下使用標準 Verizon 配置它。 您可以使用 REST API 配置高級 Verizon 或標準 Akamai 供應商。
+建立標準串流端點時，預設會使用標準 Verizon 來設定它。 您可以使用 REST Api 來設定 Premium Verizon 或 Standard Akamai 提供者。
 
 如果是標準串流端點，Azure 媒體服務與 Azure CDN 的整合是在**來自 Verizon 的 Azure CDN** 上實作。 您可以使用所有 **Azure CDN 定價層和提供者**來設定進階串流端點。
 
 > [!NOTE]
-> 有關 Azure CDN 的詳細資訊，請參閱[CDN 概述](../../cdn/cdn-overview.md)。
+> 如需 Azure CDN 的詳細資訊，請參閱[CDN 總覽](../../cdn/cdn-overview.md)。
 
-## <a name="determine-if-a-dns-change-was-made"></a>確定是否進行了 DNS 更改
+## <a name="determine-if-a-dns-change-was-made"></a>判斷是否已進行 DNS 變更
 
-通過使用，可以確定 DNS 更改是否在流式處理終結點上（流量正定向到 Azure CDN）。 <https://www.digwebinterface.com> 如果在結果中看到azureedge.net個功能變數名稱，則流量現在指向 CDN。
+您可以使用<https://www.digwebinterface.com>，判斷是否已在串流端點上進行 DNS 變更（流量會導向至 Azure CDN）。 如果您在結果中看到 azureedge.net 的功能變數名稱，則流量現在會指向 CDN。
 
-## <a name="origin-assist-cdn-prefetch"></a>原點輔助 CDN 預取
+## <a name="origin-assist-cdn-prefetch"></a>原始-協助 CDN-預先提取
 
-CDN 緩存是一個反應性過程。 如果 CDN 可以預測將請求哪些物件，CDN 可以主動請求和緩存下一個物件。 通過此過程，您可以對所有（或大多數）物件實現緩存命中，從而提高性能。
+CDN 快取是一種被動的程式。 如果 CDN 可以預測下一個物件的要求，CDN 可以主動要求並快取下一個物件。 在此程式中，您可以針對物件的所有（或大部分）達到快取叫用，以改善效能。
 
-預取的概念力求將物件定位在"互聯網的邊緣"，以預期玩家會立即要求這些物件，從而減少將物件交付給玩家的時間。
+預先提取的概念致力於將物件放在「網際網路的邊緣」，以預期這些會由播放程式即將要求，因而減少將該物件傳遞給播放程式的時間。
 
-為了實現這一目標，流式處理終結點（原點）和 CDN 需要以多種方式攜手工作：
+若要達成此目標，串流端點（原點）和 CDN 必須以數種方式在手中工作：
 
-- 媒體服務源需要具有"智慧"（原始輔助）來通知 CDN 下一個要預取的物件。
-- CDN 執行預提取和緩存（CDN 預取部分）。 CDN 還需要有"智慧"來通知來源，無論是預取還是常規提取，處理 404 回應，以及避免無休止的預取迴圈的方法。
+- 媒體服務原點必須要有「智慧」（來源協助），才能向 CDN 通知要預先提取的下一個物件。
+- CDN 會進行預先提取和快取（CDN 預先提取部分）。 CDN 也必須有「智慧」，才能通知來源它是預先提取或一般的提取、處理404回應，以及避免無限的預先提取迴圈的方法。
 
 ### <a name="benefits"></a>優點
 
-*原點輔助 CDN 預取*功能的優點包括：
+*原始協助 CDN 預先提取*功能的優點包括：
 
-- Prefetch 通過在播放期間預先將預期視頻段放置在邊緣，減少觀看者延遲，並縮短視頻段下載時間，從而提高視頻播放品質。 這樣可以縮短視頻啟動時間並減少重新緩衝事件。
-- 此概念適用于常規 CDN 源方案，並不限於介質。
-- Akamai 已將此功能添加到[Akamai 雲嵌入 （ACE）](https://learn.akamai.com/en-us/products/media_delivery/cloud_embed.html)中。
+- 預先提取會在播放期間將預期的影片區段放在邊緣，以縮短檢視器的延遲，並改善影片區段下載時間，藉此改善影片播放品質。 這會導致影片啟動時間更快，而且 rebuffering 出現的次數較低。
+- 這個概念適用于一般 CDN 來源案例，並不限於媒體。
+- Akamai 已將這項功能新增至[Akamai Cloud Embed （ACE）](https://learn.akamai.com/en-us/products/media_delivery/cloud_embed.html)。
 
 > [!NOTE]
-> 此功能還不適用於與媒體服務流終結點集成的 Akamai CDN。 但是，它適用于具有預先存在的 Akamai 合同且需要在 Akamai CDN 和媒體服務來源之間進行自訂集成的媒體服務客戶。
+> 這項功能尚未適用于與媒體服務串流端點整合的 Akamai CDN。 不過，它適用于具有既有 Akamai 合約，而且需要 Akamai CDN 與媒體服務來源之間自訂整合的媒體服務客戶。
 
 ### <a name="how-it-works"></a>運作方式
 
-CDN 對`Origin-Assist CDN-Prefetch`標頭的支援（用於即時和視頻點播流）可供與 Akamai CDN 有直接合同的客戶使用。 此功能涉及 Akamai CDN 和媒體服務源之間的以下 HTTP 標頭交換：
+具有 Akamai CDN 直接`Origin-Assist CDN-Prefetch`合約的客戶可以使用對標頭的 CDN 支援（適用于即時和影片隨選串流）。 此功能牽涉到 Akamai CDN 與媒體服務來源之間的下列 HTTP 標頭交換：
 
 |HTTP 標頭|值|傳送者|接收者|目的|
 | ---- | ---- | ---- | ---- | ----- |
-|`CDN-Origin-Assist-Prefetch-Enabled` | 1（預設）或 0 |CDN|來源|指示 CDN 已啟用預取。|
-|`CDN-Origin-Assist-Prefetch-Path`| 範例： <br/>片段（視頻=1400000000，格式=mpd-time-cmaf）|來源|CDN|為 CDN 提供預取路徑。|
-|`CDN-Origin-Assist-Prefetch-Request`|1（預取請求）或 0（常規請求）|CDN|來源|指示來自 CDN 的請求是預取。|
+|`CDN-Origin-Assist-Prefetch-Enabled` | 1（預設值）或0 |CDN|來源|表示 CDN 已啟用預先提取。|
+|`CDN-Origin-Assist-Prefetch-Path`| 範例： <br/>片段（影片 = 1400000000，格式 = mpd-時間-cmaf）|來源|CDN|提供 CDN 的預先提取路徑。|
+|`CDN-Origin-Assist-Prefetch-Request`|1（預先提取要求）或0（一般要求）|CDN|來源|若要指出來自 CDN 的要求是預先提取。|
 
-要查看標頭交換的一部分，可以嘗試以下步驟：
+若要查看作用中的部分標頭交換，您可以嘗試下列步驟：
 
-1. 使用 Postman 或 cURL 向媒體服務源發出音訊或視頻段或片段的請求。 請確保在請求中添加標頭`CDN-Origin-Assist-Prefetch-Enabled: 1`。
-2. 在回應中，應看到具有相對路徑`CDN-Origin-Assist-Prefetch-Path`的標頭的值。
+1. 使用 Postman 或捲曲對音訊或影片區段或片段的媒體服務原點發出要求。 請務必在要求中新增`CDN-Origin-Assist-Prefetch-Enabled: 1`標頭。
+2. 在回應中，您應該會看到具有`CDN-Origin-Assist-Prefetch-Path`相對路徑的標頭作為其值。
 
-### <a name="supported-streaming-protocols"></a>支援的流式處理協定
+### <a name="supported-streaming-protocols"></a>支援的串流通訊協定
 
-該`Origin-Assist CDN-Prefetch`功能支援以下即時和按需流式處理的流協定：
+此`Origin-Assist CDN-Prefetch`功能支援下列串流通訊協定來進行即時和隨選串流處理：
 
 * HLS v3
 * HLS v4
 * HLS CMAF
-* DASH （CSF）
-* 破折號 （CMAF）
+* 破折號（CSF）
+* 破折號（CMAF）
 * Smooth Streaming
 
 ### <a name="faqs"></a>常見問題集
 
-* 如果預取路徑 URL 無效，使 CDN 預取獲取 404，該怎麼辦？
+* 如果預先提取路徑 URL 無效，讓 CDN 預先提取取得404，該怎麼辦？
 
-    CDN 將僅緩存 404 回應 10 秒（或其他已配置的值）。
+    CDN 只會快取404回應10秒（或其他已設定的值）。
 
-* 假設您有一個點播視頻。 如果啟用了 CDN 預取，此功能是否意味著一旦用戶端請求第一個視頻段，預取將啟動迴圈以相同的位元速率預取所有後續視頻段？
+* 假設您有隨選影片。 如果已啟用 CDN 預先提取，這項功能是否表示一旦用戶端要求第一個影片區段，預先提取將會啟動迴圈，以相同的位元速率預先提取所有後續的影片區段？
 
-    否，CDN 預獲取僅在用戶端啟動的請求/回應後完成。 CDN 預取永遠不會由預取觸發，以避免預取迴圈。
+    否，CDN 預先提取只會在用戶端起始的要求/回應後完成。 預先提取不會觸發 CDN 預先提取，以避免預先提取迴圈。
 
-* 原點輔助 CDN 預提取功能是否始終處於打開狀態？ 如何打開/關閉它？
+* 是原點輔助 CDN 預先提取功能 always on？ 如何開啟/關閉該功能？
 
-    這項功能預設為關閉。 客戶需要通過 Akamai API 將其打開。
+    這項功能預設為關閉。 客戶必須透過 Akamai API 將其開啟。
 
-* 對於即時流式處理，如果下一個分段或片段不可用，源輔助系統會發生什麼情況？
+* 針對即時串流，如果下一個區段或片段尚未提供，原點會有何説明？
 
-    在這種情況下，媒體服務源不會提供`CDN-Origin-Assist-Prefetch-Path`標頭，並且不會發生 CDN 預獲取。
+    在此情況下，媒體服務原始來源不`CDN-Origin-Assist-Prefetch-Path`會提供標頭，且不會進行 CDN 預先提取。
 
-* `Origin-Assist CDN-Prefetch`如何使用動態清單篩選器？
+* `Origin-Assist CDN-Prefetch`如何使用動態資訊清單篩選？
 
-    此功能獨立于清單篩選器工作。 當下一個片段從篩選器視窗退出時，其 URL 仍將通過查看原始用戶端清單而找到，然後作為 CDN 預取回應標頭返回。 因此，CDN 將獲得從 DASH/HLS/平滑清單中篩選出的片段的 URL。 但是，玩家永遠不會向 CDN 發出 GET 請求以獲取該片段，因為該片段不包括在玩家持有的 DASH/HLS/平滑清單中（玩家不知道該片段的存在）。
+    這項功能的運作方式與資訊清單篩選器無關。 當下一個片段超出篩選視窗時，其 URL 仍然會藉由查看原始用戶端資訊清單，然後以 CDN 預先提取回應標頭的形式傳回。 因此，CDN 會取得從破折號/HLS/平滑資訊清單篩選出之片段的 URL。 不過，播放程式永遠不會向 CDN 提出 GET 要求來提取該片段，因為該片段不會包含在播放程式所持有的虛線/HLS/平滑資訊清單中（播放程式不知道片段是否存在）。
 
-* DASH MPD/HLS 播放清單/平滑清單是否可以預接？
+* 是否可以將 MPD/HLS 播放清單/平滑資訊清單自動提取？
 
-    否，DASH MPD、HLS 主播放清單、HLS 變體播放清單或平滑清單 URL 不會添加到預取標頭。
+    否、虛線 MPD、HLS 主要播放清單、HLS 變體播放清單，或流暢的資訊清單 URL 不會新增至預先提取標頭。
 
-* 預取 URL 是相對的還是絕對的？
+* 預先提取 Url 是相對或絕對的嗎？
 
-    雖然 Akamai CDN 允許這兩種 URL，但媒體服務源僅為預取路徑提供相對 URL，因為使用絕對 URL 沒有明顯的好處。
+    雖然 Akamai CDN 允許兩者，但媒體服務來源只會提供預先提取路徑的相對 Url，因為使用絕對 Url 並沒有明顯的好處。
 
-* 此功能是否與受 DRM 保護的內容配合使用？
+* 這項功能是否可與受 DRM 保護的內容搭配使用？
 
-    是的，由於此功能在 HTTP 級別工作，因此它不會解碼或解析任何段/片段。 它不關心內容是否加密。
+    是，因為這項功能是在 HTTP 層級運作，所以不會解碼或剖析任何區段/片段。 這並不在意內容是否已加密。
 
-* 此功能是否與伺服器端廣告插入 （SSAI） 配合使用？
+* 這項功能是否適用伺服器端廣告插入（SSAI）？
     
-    它適用于原始/主要內容（在廣告插入前的原始視頻內容）有效，因為 SSAI 不會更改媒體服務來源源內容的時間戳記。 此功能是否與廣告內容有效，取決於廣告來源是否支援"來源-輔助"。 例如，如果廣告內容也託管在 Azure 媒體服務（相同或單獨的來源），廣告內容也將預占。
+    其適用于原始/主要內容（廣告插入前的原始影片內容）運作，因為 SSAI 不會變更來源內容從媒體服務來源的時間戳記。 此功能是否可與 ad 內容搭配使用，取決於 ad 源是否支援原始協助。 例如，如果 ad 內容也裝載在 Azure 媒體服務（相同或不同的來源），則 ad 內容也會被預先提取。
 
-* 此功能是否與 UHD/HEVC 內容配合使用？
+* 這項功能是否可與 UHD/HEVC 內容搭配使用？
 
     是。
 
@@ -156,5 +156,5 @@ CDN 對`Origin-Assist CDN-Prefetch`標頭的支援（用於即時和視頻點播
 
 ## <a name="next-steps"></a>後續步驟
 
-* 請確保查看[流式處理終結點（源）](streaming-endpoint-concept.md)文檔。
+* 請務必查看[串流端點（原始）](streaming-endpoint-concept.md)檔。
 * [此存放庫中](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs)的範例會示範如何使用 .NET 啟動預設的串流端點。

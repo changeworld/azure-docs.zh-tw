@@ -1,16 +1,16 @@
 ---
-title: 重新開機伺服器 - Azure 門戶 - MySQL 的 Azure 資料庫
-description: 本文介紹如何使用 Azure 門戶重新開機 MySQL 伺服器的 Azure 資料庫。
+title: 重新開機伺服器-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
+description: 本文說明如何使用 Azure 入口網站來重新開機適用於 MySQL 的 Azure 資料庫伺服器。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: d7e158124347b302492364df46ccf5b5e78e75c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80063292"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-azure-portal"></a>使用 Azure 入口網站重新啟動適用於 MySQL 的 Azure 資料庫伺服器
@@ -20,9 +20,9 @@ ms.locfileid: "80063292"
 
 完成重新啟動所需的時間取決於 MySQL 復原程序。 若要減少重新啟動時間，建議您先盡量減少伺服器上發生的活動數量，再進行重新啟動。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 若要完成本操作說明指南，您需要：
-- [MySQL 伺服器的 Azure 資料庫](quickstart-create-mysql-server-database-using-azure-portal.md)
+- [適用於 MySQL 的 Azure 資料庫伺服器](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="perform-server-restart"></a>執行伺服器重新啟動
 

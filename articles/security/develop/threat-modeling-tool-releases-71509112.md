@@ -1,5 +1,5 @@
 ---
-title: 微軟威脅建模工具版本 9/12/2018
+title: Microsoft Threat Modeling Tool 版本9/12/2018
 titleSuffix: Azure
 description: 記載 Threat Modeling Tool 的版本資訊
 author: jegeib
@@ -9,15 +9,15 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
 ms.openlocfilehash: a921310f14f0d48922165a46d750366e170ee374
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78269905"
 ---
 # <a name="threat-modeling-tool-ga-release-71509112---9122018"></a>Threat Modeling Tool GA 版本 7.1.50911.2 - 9/12/2018
 
-我們很興奮地宣布，Microsoft Threat Modeling Tool 現在已是支援的正式上市 (GA) 版本，並且可供下載。 此版本包含重要的隱私權和安全性更新，以及 Bug 修正、功能更新，和穩定性方面的改進。 在開啟用戶端時，系統將提示 2017 預覽版本的現有使用者透過 ClickOnce 技術更新至最新版本。 對於該工具的新使用者，您可以[下載用戶端](https://aka.ms/threatmodelingtool)。
+我們很興奮地宣布，Microsoft Threat Modeling Tool 現在已是支援的正式上市 (GA) 版本，並且可供下載。 此版本包含重要的隱私權和安全性更新，以及 Bug 修正、功能更新，和穩定性方面的改進。 在開啟用戶端時，系統將提示 2017 預覽版本的現有使用者透過 ClickOnce 技術更新至最新版本。 對於工具的新使用者，您可以[下載用戶端](https://aka.ms/threatmodelingtool)。
 
 此版本推出後，我們將結束對 2017 預覽版的支援，並建議所有預覽版使用者更新至 GA 版本。 我們將在 2018 年 10 月 15 日或之後，為 Threat Modeling Tool 設定符合最低需求的 ClickOnce 版本，且所有預覽版用戶端都必須升級。
 
@@ -75,7 +75,7 @@ ms.locfileid: "78269905"
 
 ### <a name="my-organization-uses-the-2016-version-of-the-tool-can-i-use-the-azure-stencil-set"></a>組織使用 2016 版的工具，我可以使用 Azure 樣板集嗎？
 
-是，您可以！ [Azure 模具集在 GitHub 上可用](https://github.com/Microsoft/threat-modeling-templates/)，可以在該工具的 2016 版本中載入。 若要使用 Azure 樣板集建立新模型，請使用主功能表畫面上的 [新模型的範本] 對話方塊。 TMT 2016 無法轉譯 Azure 樣板集的 [可能的緩和措施] 欄位中包含的連結，因此您可能會看到顯示為 HTML 標記的連結。
+是，您可以！ [Azure 樣板集可在 GitHub 上](https://github.com/Microsoft/threat-modeling-templates/)取得，並可在2016版的工具中載入。 若要使用 Azure 樣板集建立新模型，請使用主功能表畫面上的 [新模型的範本] 對話方塊。 TMT 2016 無法轉譯 Azure 樣板集的 [可能的緩和措施] 欄位中包含的連結，因此您可能會看到顯示為 HTML 標記的連結。
 
 ![2016 用戶端中的 Azure 樣板更新](./media/threat-modeling-tool-releases-71509112/tmt_azure_stencils-300x212.png)
 
@@ -84,7 +84,7 @@ ms.locfileid: "78269905"
 - 支援的作業系統
   - Microsoft Windows 10
 - 必要的 .NET 版本
-  - .NET 3.5.2
+  - .NET 3.5。2
 - 其他需求
   - 必須有網際網路連線可接收工具和範本的更新。
 

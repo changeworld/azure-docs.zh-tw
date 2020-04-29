@@ -1,6 +1,6 @@
 ---
 title: 大規模擷取、轉換和載入 (ETL) - Azure HDInsight
-description: 瞭解如何在 HDInsight 中使用 Apache Hadoop 的提取、轉換和負載。
+description: 瞭解如何在 HDInsight 中搭配 Apache Hadoop 使用解壓縮、轉換和載入。
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
 ms.openlocfilehash: f4be3343f090c4d31ccb85eba8e99f22a3b1fcae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79529470"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模擷取、轉換和載入 (ETL)
@@ -21,7 +21,7 @@ ms.locfileid: "79529470"
 
 ETL 程序中的 HDInsight 使用可以由以下管線來摘要說明：
 
-![HDInsight ETL，規模概覽](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+![HDInsight ETL 大規模總覽](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
 
 下列各節會探索每一個 ETL 階段及其相關元件。
 
@@ -39,7 +39,7 @@ Apache Oozie 是一個可管理 Hadoop 作業的工作流程協調系統。 Oozi
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory 以平台即服務的形式提供協調流程功能。 它是一種基於雲的資料整合服務，允許您在雲中創建資料驅動的工作流，以便協調和自動化資料移動和資料轉換。
+Azure Data Factory 以平台即服務的形式提供協調流程功能。 它是一項雲端式資料整合服務，可讓您在雲端中建立資料驅動的工作流程，以協調和自動化資料移動和資料轉換。
 
 使用 Azure Data Factory 時，您可以：
 
@@ -51,11 +51,11 @@ Azure Data Factory 以平台即服務的形式提供協調流程功能。 它是
 
 ## <a name="ingest-file-storage-and-result-storage"></a>擷取檔案儲存體和結果儲存體
 
-來源資料檔通常會載入至 Azure 儲存體或 Azure Data Lake Storage 中的位置。 檔可以是任何格式的，但通常是像 CSV 這樣的一般檔案。
+來源資料檔通常會載入至 Azure 儲存體或 Azure Data Lake Storage 中的位置。 檔案可以是任何格式，但通常是一般檔案，例如 Csv。
 
 ### <a name="azure-storage"></a>Azure 儲存體
 
-[Azure 存儲](https://azure.microsoft.com/services/storage/blobs/)具有特定的可伸縮性目標。 如需詳細資訊，請參閱 [Blob 儲存體的延展性和效能目標](../../storage/blobs/scalability-targets.md)。 對大多數分析節點來說，當處理許多較小的檔案時，Azure 儲存體的延展性最佳。  Azure 儲存體可保證不論有多少檔案或檔案有多大 (只要是在您的限制範圍內) 都能提供相同的效能。  這意味著無論您是使用資料的子集還是所有資料，您都可以存儲 TB 的資料，並且仍然獲得一致的性能。
+[Azure 儲存體](https://azure.microsoft.com/services/storage/blobs/)具有特定的擴充性目標。 如需詳細資訊，請參閱 [Blob 儲存體的延展性和效能目標](../../storage/blobs/scalability-targets.md)。 對大多數分析節點來說，當處理許多較小的檔案時，Azure 儲存體的延展性最佳。  Azure 儲存體可保證不論有多少檔案或檔案有多大 (只要是在您的限制範圍內) 都能提供相同的效能。  這表示您可以儲存數 tb 的資料，而不論您是使用資料的子集或所有資料，都能獲得一致的效能。
 
 Azure 儲存體有數種不同類型的 Blob。  「附加 Blob」** 是儲存 Web 記錄或感應器資料的絕佳選項。  
 
@@ -85,7 +85,7 @@ ADLS 還針對使用「Azure 事件中樞」或 Apache Storm 來執行的事件�
 
 Azure SQL DW 是一個儲存已清理且備妥之資料以供日後分析的絕佳選擇。  Azure HDInsight 可用來為 Azure SQL DW 執行這些服務。
 
-「Azure SQL 資料倉儲」(SQL DW) 是一個已針對分析工作負載最佳化的關聯式資料庫。  Azure SQL DW 會根據分割資料表調整規模。  資料表可以跨多個節點進行分割。  在建立 Azure SQL DW 節點時便會選取節點。  您可以在事後調整節點規模，但這是一個可能需要移動資料的作用中程序。 有關詳細資訊，請參閱[SQL 資料倉儲 - 管理計算](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
+「Azure SQL 資料倉儲」(SQL DW) 是一個已針對分析工作負載最佳化的關聯式資料庫。  Azure SQL DW 會根據分割資料表調整規模。  資料表可以跨多個節點進行分割。  在建立 Azure SQL DW 節點時便會選取節點。  您可以在事後調整節點規模，但這是一個可能需要移動資料的作用中程序。 如需詳細資訊，請參閱[SQL 資料倉儲-管理計算](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)。
 
 ### <a name="apache-hbase"></a>Apache HBase (英文)
 
@@ -105,7 +105,7 @@ Azure 以平台即服務 (PAAS) 的形式提供三種不同的關聯式資料庫
 * [適用於 MySQL 的 Azure 資料庫](../../mysql/overview.md) 是 Oracle MySQL 的實作。
 * [適用於 PostgreSQL 的 Azure 資料庫](../../postgresql/quickstart-create-server-database-portal.md) 是 PostgreSQL 的實作。
 
-這些產品會放大，這意味著它們通過添加更多的 CPU 和記憶體進行擴展。  您也可以選擇使用進階磁碟搭配這些產品來獲得較佳的 I/O 效能。
+這些產品會相應增加，這表示它們是藉由新增更多 CPU 和記憶體來進行調整。  您也可以選擇使用進階磁碟搭配這些產品來獲得較佳的 I/O 效能。
 
 ## <a name="azure-analysis-services"></a>Azure Analysis Services
 
@@ -127,14 +127,14 @@ Sqoop 使用 MapReduce 來匯入和匯出資料，可提供平行作業和容錯
 
 Apache Flume 是一個分散式、可靠且可用的服務，可有效率地收集、彙總及移動大量的記錄資料。 Flume 具有以串流資料流程為基礎的簡單彈性架構。 Flume 提供可微調的可靠性機制及許多容錯移轉與復原機制，既健全又能容錯。 Flume 使用已將線上分析應用程式納入考量的簡單可延伸資料模型。
 
-Apache Flume 不能與 Azure HDInsight 一起使用。  內部部署 Hadoop 安裝可以使用 Flume，將資料傳送至 Azure 儲存體 Blob 或 Azure Data Lake Storage。  如需詳細資訊，請參閱[搭配 HDInsight 使用 Apache Flume](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/) \(英文\)。
+Apache Flume 不能與 Azure HDInsight 搭配使用。  內部部署 Hadoop 安裝可以使用 Flume，將資料傳送至 Azure 儲存體 Blob 或 Azure Data Lake Storage。  如需詳細資訊，請參閱[搭配 HDInsight 使用 Apache Flume](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/) \(英文\)。
 
 ## <a name="transform"></a>轉換
 
-在資料存在於所選擇的位置中之後，您必須加以清理、結合或準備，才能用於特定使用模式。  Hive、Pig 及 Spark SQL 都是適用於該類工作的絕佳選擇。  HDInsight 都支援它們。
+在資料存在於所選擇的位置中之後，您必須加以清理、結合或準備，才能用於特定使用模式。  Hive、Pig 及 Spark SQL 都是適用於該類工作的絕佳選擇。  這些都是 HDInsight 支援的。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [使用 Apache Hive 作為 ETL 工具](apache-hadoop-using-apache-hive-as-an-etl-tool.md)
 * [搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
-* [將資料從 Azure SQL 資料庫移動到 Apache Hive 表](./apache-hadoop-use-sqoop-mac-linux.md)
+* [將資料從 Azure SQL Database 移至 Apache Hive 資料表](./apache-hadoop-use-sqoop-mac-linux.md)

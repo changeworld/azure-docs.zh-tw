@@ -1,5 +1,5 @@
 ---
-title: 設置警報和通知（Azure 門戶）
+title: 設定警示和通知（Azure 入口網站）
 description: 使用 Azure 入口網站建立 SQL Database 的警示，在符合指定條件時觸發通知或自動化。
 services: sql-database
 ms.service: sql-database
@@ -12,25 +12,25 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
 ms.openlocfilehash: 67c47b35e84a93d7d9032ad55b425ae2bb6971fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79209533"
 ---
-# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>使用 Azure 門戶為 Azure SQL 資料庫和 Azure 同步分析資料庫創建警報
+# <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>使用 Azure 入口網站建立 Azure SQL Database 和 Azure Synapse 分析資料庫的警示
 
 ## <a name="overview"></a>總覽
 
-本文介紹如何使用 Azure 門戶在 Azure SQL 資料庫和 Azure 突觸分析（以前的 Azure SQL 資料倉儲）中為單個、池和資料倉儲資料庫設置警報。 當某些計量 (例如，資料庫大小或 CPU 使用量) 閾值時，警示可傳送電子郵件給您或呼叫 Webhook。 本文也提供設定警示期間的最佳做法。
+本文說明如何使用 Azure 入口網站，在 Azure SQL Database 和 Azure Synapse Analytics （先前稱為 Azure SQL 資料倉儲）中設定單一、集區和資料倉儲資料庫的警示。 當某些計量 (例如，資料庫大小或 CPU 使用量) 閾值時，警示可傳送電子郵件給您或呼叫 Webhook。 本文也提供設定警示期間的最佳做法。
 
 > [!IMPORTANT]
 > 此功能還無法在受控執行個體中取得。 或者，您可以根據[動態管理檢視](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) \(機器翻譯\)，針對某些計量使用 SQL 代理程式傳送電子郵件警示。
 
 您可以收到以您 Azure 服務的監視計量或事件為基礎的警示。
 
-* **指標值**- 當指定指標的值跨越您按任一方向分配的閾值時，警報將觸發。 也就是說，當先符合條件而之後該條件不再符合時，兩方面皆會觸發。
-* **活動日誌事件**- 警報可以*觸發每個*事件，或者，僅當發生一定數量的事件時。
+* 計量**值**-當指定的度量值超出您在任一方向指派的閾值時，就會觸發警示。 也就是說，當先符合條件而之後該條件不再符合時，兩方面皆會觸發。
+* **活動記錄檔事件**-警示可在*每*一個事件上觸發，或僅在發生特定事件數目時觸發。
 
 您可以在警示觸發時，設定警示執行下列動作︰
 
@@ -40,34 +40,34 @@ ms.locfileid: "79209533"
 
 您可以透過下列方式設定和取得有關警示規則的資訊
 
-* [Azure 門戶](../monitoring-and-diagnostics/insights-alerts-portal.md)
-* [電源外殼](../azure-monitor/platform/alerts-classic-portal.md)
-* [命令列介面 （CLI）](../azure-monitor/platform/alerts-classic-portal.md)
+* [Azure 入口網站](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [PowerShell](../azure-monitor/platform/alerts-classic-portal.md)
+* [命令列介面（CLI）](../azure-monitor/platform/alerts-classic-portal.md)
 * [Azure 監視器 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
 ## <a name="create-an-alert-rule-on-a-metric-with-the-azure-portal"></a>使用 Azure 入口網站建立計量的警示規則
 
 1. 在 [入口網站](https://portal.azure.com/)中，找到您要監視的資源並選取。
-2. 在"監視"部分中選擇 **"警報**"。 不同資源的文字和圖示會有些許不同。  
+2. 在 [監視] 區段中選取 [**警示**]。 不同資源的文字和圖示會有些許不同。  
 
    ![監視](media/sql-database-insights-alerts-portal/Alerts.png)
   
-3. 選擇 **"新建警報規則"** 按鈕以打開 **"創建規則**"頁。
+3. 選取 [**新增警示規則**] 按鈕，以開啟 [**建立規則**] 頁面。
   ![建立規則](media/sql-database-insights-alerts-portal/create-rule.png)
 
-4. 在 **"條件"** 部分中，按一下"**添加**"。
+4. 在 [**條件**] 區段中，按一下 [**新增**]。
   ![定義條件](media/sql-database-insights-alerts-portal/create-rule.png)
-5. 在 **"配置信號邏輯**"頁中，選擇信號。
-  ![選擇信號](media/sql-database-insights-alerts-portal/select-signal.png)。
-6. 選擇信號（如 CPU**百分比**）後，將顯示 **"配置信號邏輯**頁"。
+5. 在 [**設定信號邏輯**] 頁面中，選取信號。
+  ![選取 [](media/sql-database-insights-alerts-portal/select-signal.png)信號]。
+6. 選取信號（例如**CPU 百分比**）之後，[**設定信號邏輯**] 頁面隨即出現。
   ![設定訊號邏輯](media/sql-database-insights-alerts-portal/configure-signal-logic.png)
-7. 在此頁上，配置該閾數值型別、運算子、聚合類型、閾值、聚合細微性和評估頻率。 然後按一下 [完成]****。
-8. 在 **"創建"規則**上，選擇現有**操作組**或創建新組。 操作組使您能夠定義發生警示準則時要執行的操作。
-  ![定義操作組](media/sql-database-insights-alerts-portal/action-group.png)
+7. 在此頁面上，設定該閾數值型別、運算子、匯總類型、臨界值、匯總資料細微性和評估頻率。 然後按一下 [完成]****。
+8. 在 [**建立規則**] 中，選取現有的**動作群組**或建立新的群組。 動作群組可讓您定義要在警示條件發生時採取的動作。
+  ![定義動作群組](media/sql-database-insights-alerts-portal/action-group.png)
 
-9. 定義規則的名稱，提供可選說明，為規則選擇嚴重性級別，選擇是否在創建規則時啟用規則，然後按一下"**創建規則警報**"以創建指標規則警報。
+9. 定義規則的 [名稱]、提供選擇性的 [描述]、選擇規則的嚴重性層級、選擇是否要在建立規則時啟用規則，然後按一下 [**建立規則警示**] 以建立度量規則警示。
 
-在 10 分鐘內，警報處於活動狀態，並如前面所述觸發。
+在10分鐘內，警示會處於作用中狀態，如先前所述的觸發程式。
 
 ## <a name="next-steps"></a>後續步驟
 

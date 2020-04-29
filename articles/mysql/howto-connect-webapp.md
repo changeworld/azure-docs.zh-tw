@@ -1,5 +1,5 @@
 ---
-title: 連接到 Azure 應用服務 - MySQL 的 Azure 資料庫
+title: 連接到 Azure App Service-適用於 MySQL 的 Azure 資料庫
 description: 說明如何將現有的 Azure App Service 正確地連線到適用於 MySQL 的 Azure 資料庫
 author: ajlam
 ms.author: andrela
@@ -7,17 +7,17 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: ba75daa47ca1f77cd5828d13877238a64deeeb41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80062468"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>將現有的 Azure App Service 連線到適用於 MySQL 伺服器的 Azure 資料庫
 本主題說明如何將現有的 Azure App Service 連線到適用於 MySQL 伺服器的 Azure 資料庫。
 
 ## <a name="before-you-begin"></a>開始之前
-登錄到 Azure[門戶](https://portal.azure.com)。 建立適用於 MySQL 伺服器的 Azure 資料庫。 如需詳細資訊，請參閱[如何從入口網站建立適用於 MySQL 伺服器的 Azure 資料庫](quickstart-create-mysql-server-database-using-azure-portal.md)或[如何使用 CLI 建立適用於 MySQL 伺服器的 Azure 資料庫](quickstart-create-mysql-server-database-using-azure-cli.md)。
+登入 [Azure 入口網站](https://portal.azure.com)。 建立適用於 MySQL 伺服器的 Azure 資料庫。 如需詳細資訊，請參閱[如何從入口網站建立適用於 MySQL 伺服器的 Azure 資料庫](quickstart-create-mysql-server-database-using-azure-portal.md)或[如何使用 CLI 建立適用於 MySQL 伺服器的 Azure 資料庫](quickstart-create-mysql-server-database-using-azure-cli.md)。
 
 目前有兩種解決方案可讓您從 Azure App Service 存取適用於 MySQL 的 Azure 資料庫。 這兩種解決方案都需要設定伺服器層級防火牆規則。
 

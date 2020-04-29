@@ -1,7 +1,7 @@
 ---
-title: 網路* 自訂神經網路
+title: 'Net # 自訂類神經網路'
 titleSuffix: ML Studio (classic) - Azure
-description: 適用於 Net# 類神經網路規格語言的語法指南。 瞭解如何在 Azure 機器學習工作室（經典）中創建自訂神經網路模型。
+description: 適用於 Net# 類神經網路規格語言的語法指南。 瞭解如何在 Azure Machine Learning Studio （傳統）中建立自訂類神經網路模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,13 +11,13 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
 ms.openlocfilehash: c1912e670a9cf1c178b58cefbd33171f15be2483
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79218257"
 ---
-# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure 機器學習工作室的 Net# 神經網路規範語言指南（經典）
+# <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio 的 Net # 類神經網路規格語言指南（傳統）
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -25,8 +25,8 @@ Net # 是由 Microsoft 開發的語言，用來定義複雜的類神經網路架
 
 您可以在這些內容中使用 Net# 架構規格：
 
-+ 微軟 Azure 機器學習工作室中的所有神經網路模組（經典）：[多類神經網路](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[雙類神經網路](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和[神經網路回歸](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ 神經網路在 Microsoft ML 伺服器中功能：R 語言[的神經網](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet)和[rxNeuralNet，](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)以及 Python [rx_neural_network。](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network)
++ Microsoft Azure Machine Learning Studio （傳統）中的所有類神經網路模組：[多元類神經網路](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network)、[雙類別類神經網路](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network)和類[神經網路回歸](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Microsoft ML Server 中的類神經網路功能：適用于 R 語言的[NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet)和[rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet)，以及適用于 Python 的[rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) 。
 
 
 本文說明使用 Net# 開發自訂類神經網路所需的基本概念和語法：
@@ -51,14 +51,14 @@ Net# 支援多種不同的連線套組，可讓您自訂輸入對應至隱藏層
 
 + **篩選套組**。 您可以使用來源層節點和目的地層節點的位置來定義述詞。 只要述詞為 True，即會連接節點。
 
-+ **卷積包**。 您可以在來源層中定義小型的節點臨近地區。 目的地層中的每個節點都會連接到來源層中的一個節點鄰區。
++ **迴旋**套件組合。 您可以在來源層中定義小型的節點臨近地區。 目的地層中的每個節點都會連接到來源層中的一個節點鄰區。
 
 + **集區套組**和**回應正規化套組**。 這些套組類似於可供使用者在來源層中定義小型節點臨近地區的迴旋套組。 差別在於這些套組中的邊緣加權無法訓練。 因此會將預先定義的函數套用至來源節點值來判斷目的地節點值。
 
 
 ## <a name="supported-customizations"></a>支援的自訂
 
-可以使用 Net+ 廣泛自訂在 Azure 機器學習工作室（經典）中創建的神經網路模型的體系結構。 您可以：
+您在 Azure Machine Learning Studio （傳統）中建立的類神經網路模型架構，可以使用 Net # 廣泛地進行自訂。 您可以：
 
 + 建立隱藏層及控制每一層中的節點數目。
 + 指定各層彼此連接的方式。
@@ -253,7 +253,7 @@ hidden P1 [5, 12, 12]
 
 如需集區層的詳細資訊，請參閱下列文章：
 
-+ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第3.4節）
++ [https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf)（第3.4 節）
 + [https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf](https://cs.nyu.edu/~koray/publis/lecun-iscas-10.pdf)
 + [https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf](https://cs.nyu.edu/~koray/publis/jarrett-iccv-09.pdf)
 
@@ -452,7 +452,7 @@ output Digit [10] from Hid3 all;
 + 關鍵字 `convolve` 指出名為 `Conv1` 和 `Conv2` 的層為迴旋層。 這些層宣告的後面分別會加上一份迴旋屬性清單。
 + 網路具有第三個隱藏層 `Hid3`，與第二個隱藏層 `Conv2` 完全相連。
 + 輸出層 `Digit` 僅連線到第三個隱藏層 `Hid3`。 關鍵字 `all` 指出輸出層與 `Hid3` 完全相連。
-+ 卷積的共性是三：元包`InputShape`的長度，`KernelShape`和`Stride`。 `Sharing`
++ 卷放的 arity 為3：元`InputShape`組、 `KernelShape` `Stride`、和`Sharing`的長度。
 + 每個核心的加權數目是 `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`。 或 `26 * 50 = 1300`。
 + 您可以用下列方式計算每個隱藏層中的節點數：
 

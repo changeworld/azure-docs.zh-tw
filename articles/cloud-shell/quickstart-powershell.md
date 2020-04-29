@@ -1,6 +1,6 @@
 ---
-title: Azure 雲外殼快速啟動 - 電源外殼
-description: 瞭解如何在瀏覽器中使用適用于 Azure 雲外殼的 PowerShell。
+title: Azure Cloud Shell 快速入門-PowerShell
+description: 瞭解如何在您的瀏覽器中使用 Azure Cloud Shell 的 PowerShell。
 author: maertendmsft
 ms.author: damaerte
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/18/2018
 ms.openlocfilehash: 72261989b7cee9d2251eb18b36431ec807b0e874
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273003"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中 PowerShell 的快速入門
@@ -261,7 +261,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ### <a name="using-ssh"></a>使用 SSH
 
-請[按照此處](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)的說明使用 Azure PowerShell Cmdlet 創建新的 VM 配置。
+依照[這裡](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)的指示，使用 Azure PowerShell Cmdlet 來建立新的 VM 設定。
 在呼叫至 `New-AzVM` 以開始部署之前，請將 SSH 公開金鑰新增至 VM 組態。
 新建立的 VM 將會在 `~\.ssh\authorized_keys` 位置包含公開金鑰，因而對 VM 啟用免認證 SH 工作階段。
 
@@ -332,7 +332,7 @@ Hello World!
 
 ## <a name="use-git"></a>使用 Git
 
-要在雲外殼中克隆 Git 存儲庫，您需要創建[個人訪問權杖][githubtoken]並將其用作使用者名。 有了權杖之後，請複製存放庫，如下所示：
+若要在 Cloud Shell 中複製 Git 存放庫，您需要建立[個人存取權杖][githubtoken]，並使用它做為使用者名稱。 有了權杖之後，請複製存放庫，如下所示：
 
 ```azurepowershell-interactive
   git clone https://<your-access-token>@github.com/username/repo.git

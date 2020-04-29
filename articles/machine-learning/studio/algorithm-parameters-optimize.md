@@ -1,7 +1,7 @@
 ---
 title: 將演算法最佳化
 titleSuffix: ML Studio (classic) - Azure
-description: 說明如何在 Azure 機器學習工作室（經典）中選擇演算法的最佳參數集。
+description: 說明如何為 Azure Machine Learning Studio （傳統）中的演算法選擇最佳的參數集。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,21 +11,21 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
 ms.openlocfilehash: 04148b482cb07665f43df5bd86a77175cbbaf08b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79218276"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio-classic"></a>選擇參數來最佳化 Azure Machine Learning Studio (傳統) 中的演算法
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-本主題介紹如何在 Azure 機器學習工作室（經典）中為演算法選擇正確的超參數集。 大部分的機器學習服務演算法都會有需要設定的參數。 當您訓練一個模型時，必須提供這些參數的值。 訓練過的模型效率會依據所選擇的模型參數而定。 找出最佳參數集的過程稱為*模型選擇*。
+本主題描述如何為 Azure Machine Learning Studio （傳統）中的演算法選擇正確的超參數集。 大部分的機器學習服務演算法都會有需要設定的參數。 當您訓練一個模型時，必須提供這些參數的值。 訓練過的模型效率會依據所選擇的模型參數而定。 找出最佳參數集的過程稱為*模型選擇*。
 
 
 
-有各種方法可用來進行模型選擇。 在機器學習中，交叉驗證是模型選擇應用最廣泛的方法之一，是 Azure 機器學習工作室（經典）中的預設模型選擇機制。 由於 Azure 機器學習工作室（經典版）同時支援 R 和 Python，因此始終可以使用 R 或 Python 實現自己的模型選擇機制。
+有各種方法可用來進行模型選擇。 在機器學習中，交叉驗證是其中一種最廣泛使用的模型選擇方法，而且是 Azure Machine Learning Studio （傳統）中的預設模型選擇機制。 因為 Azure Machine Learning Studio （傳統）支援 R 和 Python，所以您一律可以使用 R 或 Python 來執行自己的模型選擇機制。
 
 找出最佳參數集的過程有四個步驟：
 
@@ -34,7 +34,7 @@ ms.locfileid: "79218276"
 3. **定義計量**：決定要使用哪一種計量來判斷最佳的參數集，例如正確度、均方根誤差、精確度、召回率或 f 分數。
 4. **訓練、評估和比較**：對於每個唯一的參數值組合，執行交叉驗證並根據您定義的錯誤計量。 評估和比較之後，您可以選擇最佳的模型。
 
-下圖說明瞭如何在 Azure 機器學習工作室（經典）中實現此目的。
+下圖說明如何以 Azure Machine Learning Studio （傳統）來達成此目的。
 
 ![尋找最佳的參數集](./media/algorithm-parameters-optimize/fig1.png)
 
@@ -43,7 +43,7 @@ ms.locfileid: "79218276"
 
 ![二元促進式決策樹，單一參數](./media/algorithm-parameters-optimize/fig2.png)
 
- 或者，您可以使用**使用範圍產生器**來定義網格的最大點數與最小點數，以及要產生的總點數。 參數值預設會以線性刻度產生。 但如果核取了 [對數刻度]****，值會以對數刻度產生 (也就是相鄰兩點的比率而不是其差異為常數)。 對於整數參數，您可以使用連字號來定義範圍。 例如，"1-10"表示 1 到 10 之間的所有整數（均包含）都構成參數集。 也支援使用混合的模式。 例如，參數集"1-10、20、50"將包括整數 1-10、20 和 50。
+ 或者，您可以使用**使用範圍產生器**來定義網格的最大點數與最小點數，以及要產生的總點數。 參數值預設會以線性刻度產生。 但如果核取了 [對數刻度]****，值會以對數刻度產生 (也就是相鄰兩點的比率而不是其差異為常數)。 對於整數參數，您可以使用連字號來定義範圍。 例如，"1-10" 表示介於1到10（兩者皆含）之間的所有整數都會形成參數集。 也支援使用混合的模式。 例如，參數 set "1-10，20，50" 會包含整數1-10、20和50。
 
 ![二元促進式決策樹，參數範圍](./media/algorithm-parameters-optimize/fig3.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 高級威脅防護 - Azure 門戶 - MariaDB 的 Azure 資料庫
+title: 先進的威脅防護-Azure 入口網站-適用於 MariaDB 的 Azure 資料庫
 description: 「威脅保護」會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
 author: ajlam
 ms.author: andrela
@@ -7,27 +7,27 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: de056f61337311642589ba937c6d9842d8354d36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79530133"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>MariaDB Azure 資料庫的高級威脅保護
+# <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>適用於 MariaDB 的 Azure 資料庫的先進威脅防護
 
-MariaDB Azure 資料庫的高級威脅保護可檢測異常活動，指示訪問或利用資料庫的異常和潛在有害嘗試。
+適用於 MariaDB 的 Azure 資料庫的先進威脅防護會偵測異常活動，指出不尋常且可能有害的嘗試存取或惡意探索資料庫。
 
-「進階威脅防護」是進階資料安全性供應項目的一部分，該供應項目是進階安全性功能的整合套件。 高級威脅防護可以通過[Azure 門戶](https://portal.azure.com)進行訪問和管理。
+「進階威脅防護」是進階資料安全性供應項目的一部分，該供應項目是進階安全性功能的整合套件。 您可以透過[Azure 入口網站](https://portal.azure.com)來存取和管理先進的威脅防護。
 
 > [!IMPORTANT]
-> 高級威脅防護處於公共預覽版。 如果適用於 MariaDB 的 Azure 資料庫是針對「一般用途」和「記憶體最佳化」伺服器來部署的，則此功能可在所有 Azure 區域中使用。
+> 先進的威脅防護處於公開預覽狀態。 如果適用於 MariaDB 的 Azure 資料庫是針對「一般用途」和「記憶體最佳化」伺服器來部署的，則此功能可在所有 Azure 區域中使用。
 
 > [!NOTE]
 > 下列 Azure Government 和主權雲端區域**無法**使用進階威脅防護功能：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 維吉尼亞州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
 
 ## <a name="set-up-threat-detection"></a>設定威脅偵測
-1. 在 啟動 Azure[https://portal.azure.com](https://portal.azure.com)門戶。
-2. 導航到要保護的 MariaDB 伺服器 Azure 資料庫的配置頁。 在 [安全性] 設定中，選取 [進階威脅防護 (預覽)]****。
+1. 啟動 Azure 入口網站，網址[https://portal.azure.com](https://portal.azure.com)為。
+2. 流覽至您想要保護之適用於 MariaDB 的 Azure 資料庫伺服器的 [設定] 頁面。 在 [安全性] 設定中，選取 [進階威脅防護 (預覽)]****。
 3. 在 [進階威脅防護 (預覽)]**** 設定頁面上：
 
    - 在伺服器上啟用進階威脅防護。
@@ -62,5 +62,5 @@ SQL Database 威脅偵測將自有的警示與 [Azure 資訊安全中心](https:
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解有關[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
-* 有關定價的詳細資訊，請參閱[MariaDB 定價的 Azure 資料庫頁面](https://azure.microsoft.com/pricing/details/mariadb/)  
+* 深入瞭解[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* 如需價格的詳細資訊，請參閱[適用於 MariaDB 的 Azure 資料庫定價頁面](https://azure.microsoft.com/pricing/details/mariadb/)  

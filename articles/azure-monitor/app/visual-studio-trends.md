@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: bb94d3596fde541f16edd1b7012f57b89ebf52eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670860"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>在 Visual Studio 中分析趨勢 | Microsoft Azure
@@ -56,7 +56,7 @@ Application Insights 趨勢會從您的應用程式的遙測建立時間序列�
 * **時間範圍** - 從過去 30 分鐘到過去 3 天的任何時間
 * **分組依據** - 例外狀況類型、問題識別碼、國家/區域等等。
 
-然後，按一下 **"分析遙測"** 以執行查詢。
+然後，按一下 [**分析遙測**] 來執行查詢。
 
 若要在視覺效果中的泡泡之間巡覽︰
 
@@ -70,7 +70,7 @@ Application Insights 趨勢會從您的應用程式的遙測建立時間序列�
 > 
 
 ## <a name="filter"></a>Filter
-使用視窗底部的篩選控制項，探索更明確的趨勢。 若要套用篩選器，請按一下其名稱。 您可以快速切換不同的篩選器，以探索可能隱藏在遙測的特定維度中的趨勢。 如果在一個維度（如異常類型）中應用篩選器，則其他維度中的篩選器即使顯示為灰出，也能保持可按一下狀態。要取消應用篩選器，請再次按一下它。 按住 CTRL 鍵並按一下滑鼠，以選取相同維度中的多個篩選器。
+使用視窗底部的篩選控制項，探索更明確的趨勢。 若要套用篩選器，請按一下其名稱。 您可以快速切換不同的篩選器，以探索可能隱藏在遙測的特定維度中的趨勢。 如果您在一個維度（如例外狀況類型）中套用篩選，則其他維度中的篩選仍可按點按，即使它們呈現為灰色。若要取消套用篩選準則，請再按一下一次。 按住 CTRL 鍵並按一下滑鼠，以選取相同維度中的多個篩選器。
 
 ![趨勢篩選器](./media/visual-studio-trends/TrendsFiltering-750.png)
 

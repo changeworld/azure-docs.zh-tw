@@ -1,5 +1,5 @@
 ---
-title: 準備 Azure VM 映射以與雲 init 一起使用
+title: 準備要與雲端 init 搭配使用的 Azure VM 映射
 description: 如何準備現有的 Azure 虛擬機器映像，以便使用 cloud-init 進行部署
 author: danis
 ms.service: virtual-machines-linux
@@ -7,19 +7,19 @@ ms.topic: article
 ms.date: 06/24/2019
 ms.author: danis
 ms.openlocfilehash: fef41f4dc90c03e3efbe4c8a75e495c26eec64b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80066808"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>準備現有的 Linux Azure 虛擬機器映像以搭配 cloud-init 使用
 本文會示範如何讓現有的 Azure 虛擬機器準備好進行重新部署，並且可使用 cloud-init。 所產生的映像可用來部署新的虛擬機器或虛擬機器擴展集 - 之後這兩者都可進一步使用 cloud-init 在部署期間進行自訂。  一旦 Azure 佈建資源，這些 cloud-init 指令碼就會在初次開機時執行。 如需深入了解 cloud-init 如何以原生方式在 Azure 和支援的 Linux 散發版本中運作，請參閱 [cloud-init 概觀](using-cloud-init.md)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 本文件會假設您已經有正在執行的 Azure 虛擬機器，且執行著支援版本的 Linux 作業系統。 您已設定符合您需求的電腦、已安裝所有必要模組、已處理所有所需更新並且已經過測試，確定其符合您的需求。 
 
-## <a name="preparing-rhel-76--centos-76"></a>準備 RHEL 7.6 / CentOS 7.6
+## <a name="preparing-rhel-76--centos-76"></a>準備 RHEL 7.6/CentOS 7。6
 您需要使用 SSH 連線至 Linux VM 並執行下列命令，才能安裝 cloud-init。
 
 ```bash
@@ -64,7 +64,7 @@ sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.co
 cloud-init clean
 ```
 
-使用您選擇的編輯器使用以下行創建新檔`/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg`，僅允許 Azure 作為 Azure Linux 代理的資料來源：
+`/etc/cloud/cloud.cfg.d/91-azure_datasource.cfg`使用您選擇的編輯器建立新檔案，只允許 azure 做為 Azure Linux 代理程式的資料來源，如下所示：
 
 ```bash
 # Azure Data Source config

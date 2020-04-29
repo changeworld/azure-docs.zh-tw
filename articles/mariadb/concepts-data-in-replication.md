@@ -1,16 +1,16 @@
 ---
-title: 資料內複製 - MariaDB 的 Azure 資料庫
-description: 瞭解如何使用資料輸入複製從外部伺服器同步到 MariaDB 服務的 Azure 資料庫。
+title: 資料複寫-適用於 MariaDB 的 Azure 資料庫
+description: 瞭解如何使用資料輸入複寫，從外部伺服器同步處理到適用於 MariaDB 的 Azure 資料庫服務。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 1fbcc1fb27d5e6df4641f79c0d634580f74000b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79532055"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>將資料複寫到適用於 MariaDB 的 Azure Database
@@ -34,10 +34,10 @@ ms.locfileid: "79532055"
 - 每個資料表都必須有主索引鍵。
 - 主要伺服器應該使用 InnoDB 引擎。
 - 使用者必須有權設定二進位記錄，以及在主要伺服器上建立新的使用者。
-- 如果主伺服器啟用了 SSL，請確保為域提供的 SSL CA 憑證已包含在`mariadb.az_replication_change_master`預存程序中。 請參閱以下[示例](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication)和`master_ssl_ca`參數。
+- 如果主伺服器已啟用 SSL，請確定已在`mariadb.az_replication_change_master`預存程式中包含為該網域提供的 ssl CA 憑證。 請參閱下列[範例](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication)和`master_ssl_ca`參數。
 - 請確定主要伺服器的 IP 位址已新增至「適用於 MariaDB 的 Azure 資料庫」複本伺服器的防火牆規則。 使用 [Azure 入口網站](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal)或 [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) 更新防火牆規則。
 - 確定裝載主要伺服器的機器允許連接埠 3306 上的輸入和輸出流量。
-- 確保主伺服器具有**公共 IP 位址**、可公開訪問 DNS 或具有完全限定的功能變數名稱 （FQDN）。
+- 確定主伺服器具有**公用 IP 位址**、DNS 可公開存取，或具有完整功能變數名稱（FQDN）。
 
 ### <a name="other"></a>其他
 - 資料輸入複寫只適用於一般用途和記憶體最佳化定價層。

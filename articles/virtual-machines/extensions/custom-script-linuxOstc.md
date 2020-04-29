@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 中的 Linux VM 上運行自訂腳本
+title: 在 Azure 中的 Linux Vm 上執行自訂腳本
 description: 使用自訂指令碼擴充功能 v1，將 Linux VM 設定工作自動化
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: a3eae08510e57227b91deeeb7a7a608a6652cb4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535403"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>搭配 Linux 虛擬機器使用 Azure 自訂指令碼擴充功能第 1 版
@@ -69,11 +69,11 @@ Linux 自訂指令碼擴充功能有兩個：
 * 請確定在指令碼執行時，不需要使用者輸入。
 * 指令碼可執行的時間為 90 分鐘。若超過這個時間，將會導致擴充功能佈建失敗。
 * 請不要在指令碼內放置重新開機指令，這會造成正在安裝的其他擴充功能發生問題。也不要放置後續重新開機指令，因為擴充功能在重新啟動後不會繼續執行。 
-* 如果您有一個腳本會導致重新開機，則安裝應用程式並運行腳本等。您應該使用 Cron 作業或使用 DSC 或 Chef、Puppet 擴展等工具計畫重新開機。
+* 如果您的腳本將會造成重新開機，則請安裝應用程式並執行腳本等。您應該使用 Cron 作業，或使用 DSC、Chef、Puppet 擴充功能之類的工具來排程重新開機。
 * 擴充功能只會執行指令碼一次。如果您想要在每次開機時執行指令碼，則可以使用 [cloud-init image](../linux/using-cloud-init.md)，並使用 [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) 模組。 或者，您可以使用指令碼來建立 Systemd 服務單位。
 * 如果您想要排程指令碼的執行時間，則應該使用擴充功能來建立 Cron 作業。
 * 當指令碼正在執行時，只能從 Azure 入口網站或 CLI 看到「正在轉換」擴充功能狀態。 如果您需要執行中指令碼更頻繁的狀態更新，便必須建立自己的解決方案。
-* 自訂腳本副檔名不支援代理伺服器，但您可以使用支援腳本中的代理伺服器的檔案傳輸工具，如*Curl*。
+* 自訂腳本擴充功能原本就不支援 proxy 伺服器，不過您可以使用檔案傳輸工具，在您的腳本中支援 proxy 伺服器，例如*捲曲*。
 * 請留意指令碼或命令所依賴的非預設目錄位置是否具備處理此情形的邏輯。
 
 ## <a name="extension-schema"></a>擴充功能結構描述
@@ -118,7 +118,7 @@ Linux 自訂指令碼擴充功能有兩個：
 
 ### <a name="property-values"></a>屬性值
 
-| 名稱 | 值 / 範例 | 資料類型 |
+| Name | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.OSTCExtensions | 字串 |
@@ -295,7 +295,7 @@ az vm extension set
 
 1. 命令開始執行時啟用。
 1. 下載與從 Azure 下載 CustomScript 擴充功能套件有關，與在 fileUris 中指定的指令碼檔案無關。
-1. 您還可以查看它寫入的日誌檔`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. 您也可以查看其寫出的記錄檔`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 下一步是要檢查記錄檔，以下是格式：
 
@@ -303,7 +303,7 @@ az vm extension set
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-您應該查找單個執行，它將如下所示：
+您應該尋找個別執行，它看起來會像這樣：
 
 ```output
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...

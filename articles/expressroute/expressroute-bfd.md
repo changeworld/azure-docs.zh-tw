@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：配置 BFD
+title: Azure ExpressRoute：設定 BFD
 description: 本文提供如何透過 ExpressRoute 線路的私人對等互連設定 BFD (雙向轉送偵測) 的相關指示。
 services: expressroute
 author: rambk
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 11/1/2018
 ms.author: rambala
 ms.openlocfilehash: 378b639e89ffd46f6b32d7004f934104dd4b5407
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80064847"
 ---
 # <a name="configure-bfd-over-expressroute"></a>透過 ExpressRoute 設定 BFD
 
-ExpressRoute 支援通過私有和微軟對等互連進行雙向轉發檢測 （BFD）。 通過 ExpressRoute 啟用 BFD，您可以加快 Microsoft 企業邊緣 （MSEE） 設備和終止 ExpressRoute 電路 （CE/PE） 的路由器之間的鏈路故障檢測。 您可以透過客戶 Edge 路由裝置或協力廠商 Edge 路由裝置來終止 ExpressRoute (前提是您已使用受控的第 3 層連線服務)。 本文件將逐步引導您了解 BFD 的需求，以及如何透過 ExpressRoute 啟用 BFD。
+ExpressRoute 支援私用和 Microsoft 對等互連的雙向轉送偵測（BFD）。 藉由在 ExpressRoute 上啟用 BFD，您可以加速 Microsoft Enterprise edge （MSEE）裝置與您終止 ExpressRoute 線路（CE/PE）之路由器之間的連結失敗偵測。 您可以透過客戶 Edge 路由裝置或協力廠商 Edge 路由裝置來終止 ExpressRoute (前提是您已使用受控的第 3 層連線服務)。 本文件將逐步引導您了解 BFD 的需求，以及如何透過 ExpressRoute 啟用 BFD。
 
 ## <a name="need-for-bfd"></a>需要 BFD
 
@@ -26,16 +26,16 @@ ExpressRoute 支援通過私有和微軟對等互連進行雙向轉發檢測 （
 
 在 MSEE 裝置上，BGP 存留期和保留時間通常會分別設定為 60 和 180 秒。 因此，在發生連結失敗之後，最多需要三分鐘的時間才能偵測到任何連結失敗，並將流量切換至其他連線。
 
-您可以藉由在客戶 Edge 對等互連裝置上設定較低的 BGP 存留期和保留時間來控制 BGP 計時器。 如果這兩個對等互連裝置之間的 BGP 計時器不相符，則對等之間的 BGP 工作階段會使用較低的計時器值。 BGP 存留期最低可設為 3 秒，而保留時間可設為數十秒鐘。 但是，主動設置 BGP 計時器不太可取，因為協定是過程密集型的。
+您可以藉由在客戶 Edge 對等互連裝置上設定較低的 BGP 存留期和保留時間來控制 BGP 計時器。 如果這兩個對等互連裝置之間的 BGP 計時器不相符，則對等之間的 BGP 工作階段會使用較低的計時器值。 BGP 存留期最低可設為 3 秒，而保留時間可設為數十秒鐘。 不過，積極地設定 BGP 計時器較不理想，因為通訊協定需要大量處理。
 
 在此案例中，BFD 可以提供協助。 BFD 會以次秒時間間隔提供低額外負荷的連結失敗偵測。 
 
 
 ## <a name="enabling-bfd"></a>啟用 BFD
 
-BFD 預設會設定於 MSEE 上所有新建立的 ExpressRoute 私用對等互連介面上。 因此，要啟用 BFD，只需在 CEs/P 上（主設備和輔助設備上）配置 BFD。 配置 BFD 是兩步過程：您需要在介面上配置 BFD，然後將其連結到 BGP 會話。
+BFD 預設會設定於 MSEE 上所有新建立的 ExpressRoute 私用對等互連介面上。 因此，若要啟用 BFD，您只需要在您的主要和次要裝置上設定 BFD。 設定 BFD 是兩個步驟的程式：您必須在介面上設定 BFD，然後將它連結至 BGP 會話。
 
-如下圖所示的 CE/PE（使用 Cisco IOS XE）配置。 
+範例 CE/PE （使用 Cisco IOS XE）設定如下所示。 
 
     interface TenGigabitEthernet2/0/0.150
        description private peering to Azure
@@ -63,14 +63,14 @@ BFD 預設會設定於 MSEE 上所有新建立的 ExpressRoute 私用對等互�
 在 BFD 對等之間，這兩個對等中速度較慢者會決定傳輸速率。 MSEE BFD 傳輸/接收間隔會設定為 300 毫秒。 在某些情況下，間隔可能會設定為高於 750 毫秒的值。 您可以藉由設定較高的值，強制讓這些間隔變得更長；但不要太短。
 
 >[!NOTE]
->如果您已配置異地冗余快速路由電路或使用網站到網站 IPSec VPN 連接作為備份;啟用 BFD 將有助於在快速路由連接故障後更快地進行容錯移轉。 
+>如果您已設定異地多餘的 ExpressRoute 線路，或使用站對站 IPSec VPN 連線能力做為備份;啟用 BFD 有助於在 ExpressRoute 連線失敗之後更快速地進行容錯移轉。 
 >
 
 ## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊或協助，請看看下列連結：
 
-- [創建和修改快速路由電路][CreateCircuit]
+- [建立和修改 ExpressRoute 線路][CreateCircuit]
 - [建立和修改 ExpressRoute 路線的路由][CreatePeering]
 
 <!--Image References-->

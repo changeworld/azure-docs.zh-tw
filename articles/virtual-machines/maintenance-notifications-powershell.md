@@ -1,6 +1,6 @@
 ---
-title: 使用 PowerShell 獲取 Azure VM 的維護通知
-description: 查看在 Azure 中運行的虛擬機器的維護通知，並使用 PowerShell 啟動自助服務維護。
+title: 使用 PowerShell 取得 Azure Vm 的維護通知
+description: 查看在 Azure 中執行之虛擬機器的維護通知，並使用 PowerShell 啟動自助維護。
 author: shants123
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
 ms.openlocfilehash: b23c210d7c8a9f1d42e6e1b46e0f7f81bda857b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77916077"
 ---
-# <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 處理計畫維護
+# <a name="handling-planned-maintenance-using-powershell"></a>使用 PowerShell 處理預定的維護
 
-**本文適用于同時運行 Linux 和 Windows 的虛擬機器。**
+**本文適用于同時執行 Linux 和 Windows 的虛擬機器。**
 
-您可以使用 Azure PowerShell 查看 VM 何時計畫[進行維護](maintenance-notifications.md)。 使用 `-status` 參數時，可從 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) Cmdlet 取得預定進行的維修作業的相關資訊。
+您可以使用 Azure PowerShell 來查看 Vm 何時排程進行[維護](maintenance-notifications.md)。 使用 `-status` 參數時，可從 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) Cmdlet 取得預定進行的維修作業的相關資訊。
   
 只在有預定進行的維修作業時，才會傳回維修資訊。 如果沒有排定會影響 VM 的維護，則 Cmdlet 不會傳回任何維護資訊。 
 
@@ -46,7 +46,7 @@ Get-AzVM -ResourceGroupName myResourceGroup -Name myVM -Status
 Get-AzVM -ResourceGroupName myResourceGroup -Status
 ```
 
-下面的 PowerShell 示例採用訂閱 ID 並返回計畫維護的 VM 清單。
+下列 PowerShell 範例會採用您的訂用帳戶識別碼，並傳回已排程進行維護的 Vm 清單。
 
 ```powershell
 
@@ -102,4 +102,4 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 
 ## <a name="next-steps"></a>後續步驟
 
-您還可以使用[Azure CLI](maintenance-notifications-cli.md)或[門戶](maintenance-notifications-portal.md)處理計畫維護。
+您也可以使用[Azure CLI](maintenance-notifications-cli.md)或[入口網站](maintenance-notifications-portal.md)來處理預定的維護。

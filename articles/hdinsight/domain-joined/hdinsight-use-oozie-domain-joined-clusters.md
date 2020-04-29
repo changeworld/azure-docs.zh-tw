@@ -1,5 +1,5 @@
 ---
-title: 阿帕奇 Oozie 工作流&企業安全 - Azure HDInsight
+title: '& 企業安全性 Azure HDInsight 的 Apache Oozie 工作流程'
 description: 使用「Azure HDInsight 企業安全性套件」來保護 Apache Oozie 工作流程。 了解如何定義 Oozie 工作流程，以及提交 Oozie 作業。
 author: omidm1
 ms.author: omidm
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18
 ms.date: 12/09/2019
 ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78194898"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>在具有企業安全性套件的 HDInsight Hadoop 叢集中執行 Apache Oozie
@@ -31,7 +31,7 @@ Apache Oozie 是可管理 Apache Hadoop 作業的工作流程和協調系統。 
 具有企業安全性套件 (ESP) 的 Azure HDInsight Hadoop 叢集。 請參閱[設定具有 ESP 的 HDInsight 叢集](./apache-domain-joined-configure-using-azure-adds.md)。
 
 > [!NOTE]  
-> 有關如何在非 ESP 群集上使用 Oozie 的詳細說明，請參閱[在基於 Linux 的 Azure HDInsight 中使用 Apache Oozie 工作流](../hdinsight-use-oozie-linux-mac.md)。
+> 如需如何在非 ESP 叢集上使用 Oozie 的詳細指示，請參閱[在以 Linux 為基礎的 Azure HDInsight 中使用 Apache Oozie 工作流程](../hdinsight-use-oozie-linux-mac.md)。
 
 ## <a name="connect-to-an-esp-cluster"></a>連線到 ESP 叢集
 
@@ -69,7 +69,7 @@ Oozie 工作流程定義是以 Apache Hadoop 流程定義語言 (hPDL) 撰寫的
 
    將 `DomainUser` 取代為網域使用者名稱。
    將 `DomainUserPath` 取代為網域使用者的主目錄路徑。
-   替換為`ClusterVersion`群集資料平臺版本。
+   將`ClusterVersion`取代為您的叢集資料平臺版本。
 
 2. 使用以下陳述式建立和編輯新的檔案：
 
@@ -178,17 +178,17 @@ Oozie 工作流程定義是以 Apache Hadoop 流程定義語言 (hPDL) 撰寫的
 
 4. 將 `clustername` 取代為叢集的名稱。
 
-5. 要保存檔，請選擇**Ctrl_X**。 輸入**Y**。然後選擇 **"輸入**"。
+5. 若要儲存檔案，請選取**Ctrl + X**。 輸入**Y**。然後選取**Enter**。
 
     工作流程分成兩個部分：
 
-   - **憑據。** 此區段會採用將用來驗證 Oozie 動作的認證：
+   - **證書.** 此區段會採用將用來驗證 Oozie 動作的認證：
 
      此範例使用的是 Hive 動作的驗證。 若要深入了解，請參閱[動作驗證](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html)。
 
      認證服務允許 Oozie 動作模擬使用者存取 Hadoop 服務。
 
-   - **行動。** 此區段會有三個動作：map-reduce、Hive server 2 和 Hive server 1：
+   - **即席.** 此區段會有三個動作：map-reduce、Hive server 2 和 Hive server 1：
 
      - map-reduce 動作會從 Oozie 套件為輸出彙總字數的 map-reduce 執行範例。
 
@@ -230,7 +230,7 @@ Oozie 工作流程定義是以 Apache Hadoop 流程定義語言 (hPDL) 撰寫的
    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   - 若您使用 Azure Data Lake Storage Gen1 做為您的主要叢集儲存體，請為 `nameNode` 屬性使用 `adl://home` URI。 如果使用 Azure Blob 存儲，則將此更改為`wasb://home`。 如果您使用的是 Azure 資料存儲第 2 代，則將此`abfs://home`更改為 。
+   - 若您使用 Azure Data Lake Storage Gen1 做為您的主要叢集儲存體，請為 `nameNode` 屬性使用 `adl://home` URI。 如果您使用的是 Azure Blob 儲存體，請將此`wasb://home`變更為。 如果您使用的是 Azure Data Lake Storage Gen2，請將此`abfs://home`變更為。
    - 將 `domainuser` 取代為您網域的使用者名稱。  
    - 將 `ClusterShortName` 取代為叢集的簡短名稱。 例如，如果叢集名稱為 https:// *[範例連結]* sechadoopcontoso.azurehdisnight.net，則 `clustershortname` 為叢集的前六個字元：**sechad**。  
    - 將 `jdbcurlvalue` 取代為 Hive 組態中的 JDBC URL。 範例為 jdbc:hive2://headnodehost:10001/;transportMode=http。
@@ -347,5 +347,5 @@ Oozie Web UI 可讓您用網頁檢視叢集上 Oozie 作業的狀態。 若要�
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用Apache Oozie與阿帕奇哈多普定義和運行一個工作流基於Linux的AzureHDInsight。](../hdinsight-use-oozie-linux-mac.md)
+- [使用 Apache Oozie 搭配 Apache Hadoop，在以 Linux 為基礎的 Azure HDInsight 上定義和執行工作流程](../hdinsight-use-oozie-linux-mac.md)。
 - [使用 SSH 連線到 HDInsight (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md#authentication-domain-joined-hdinsight)。

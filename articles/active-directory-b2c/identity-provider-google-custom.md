@@ -1,5 +1,5 @@
 ---
-title: 使用自訂策略使用 Google 帳戶設置登錄
+title: 使用自訂原則來設定以 Google 帳戶登入
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用自訂原則來設定以 Google 帳戶進行登入。
 services: active-directory-b2c
@@ -12,19 +12,19 @@ ms.date: 09/20/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 8d02c86a1ff330aa4003299e1494a164089d8470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78188217"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Google 帳戶進行登入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介紹如何使用 Azure 活動目錄 B2C （Azure AD B2C） 中的[自訂策略](custom-policy-overview.md)為使用 Google 帳戶的使用者啟用登錄。
+本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，讓具有 Google 帳戶的使用者能夠登入。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 完成[在 Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 如果您還沒有 Google 帳戶，可以在[建立您的 Google 帳戶](https://accounts.google.com/SignUp)中建立一個。
@@ -39,17 +39,17 @@ ms.locfileid: "78188217"
 4. 選取 [設定同意畫面]****。
 5. 選取或指定有效的**電子郵件地址**、提供向使用者顯示的**產品名稱**、在**授權的網域**中輸入 `b2clogin.com`，然後按一下 [儲存]****。
 6. 在 [應用程式類型]**** 下方，選取 [Web 應用程式]****。
-7. 輸入應用程式**的名稱**。
+7. 輸入應用程式的 [**名稱**]。
 8. 在 [授權 JavaScript 來源]**** 中輸入 `https://your-tenant-name.b2clogin.com`，接著在 [授權重新導向 URI]**** 中輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 your-tenant-name。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，您還是需要在輸入租用戶名稱時，全部使用小寫字母。
-8. 按一下 **[建立]**。
-9. 複製**用戶端 ID**和**用戶端機密**的值。 您必須使用這兩個值，將 Google 設為租用戶中的身分識別提供者。 用戶端密碼是重要的安全性認證。
+8. 按一下 [建立]  。
+9. 複製 [**用戶端識別碼**] 和 [**用戶端密碼**] 的值。 您必須使用這兩個值，將 Google 設為租用戶中的身分識別提供者。 用戶端密碼是重要的安全性認證。
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 
 您必須將先前記錄的用戶端密碼儲存在 Azure AD B2C 租用戶中。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
-2. 請確保使用的是包含 Azure AD B2C 租戶的目錄。 選擇頂部功能表中的**目錄 + 訂閱**篩選器，然後選擇包含租戶的目錄。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+2. 請確定您使用的是包含您 Azure AD B2C 租使用者的目錄。 在頂端功能表中選取 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您租使用者的目錄。
 3. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
 4. 在 [概觀] 頁面上，選取 [識別體驗架構]****。
 5. 選取 [原則金鑰]****，然後選取 [新增]****。
@@ -57,7 +57,7 @@ ms.locfileid: "78188217"
 7. 輸入原則金鑰的 [名稱]****。 例如： `GoogleSecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 在 [祕密]**** 中，輸入您先前記錄的用戶端密碼。
 9. 針對 [金鑰使用方法]****，選取 `Signature`。
-10. 按一下 **[建立]**。
+10. 按一下 [建立]  。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
@@ -120,7 +120,7 @@ ms.locfileid: "78188217"
 
 1. 在 Azure AD B2C 租用戶的 [自訂原則]**** 頁面上，選取 [上傳原則]****。
 2. 啟用 [覆寫現有的原則]****，然後瀏覽並選取 *TrustFrameworkExtensions.xml* 檔案。
-3. 按一下 [上傳]****。
+3. 按一下 [上傳]  。
 
 ## <a name="register-the-claims-provider"></a>註冊宣告提供者
 
@@ -148,7 +148,7 @@ ms.locfileid: "78188217"
 現在已備妥按鈕，您需要將它連結至動作。 在此案例中，動作是讓 Azure AD B2C 與 Google 帳戶通訊以接收權杖。
 
 1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
-2. 添加以下**聲明交換**元素，確保您對**用於 TargetClaimsExchangeId**的 ID 使用相同的值 ：
+2. 新增下列**ClaimsExchange**元素，確保您針對用於**TargetClaimsExchangeId**的識別碼使用相同的值：
 
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
@@ -160,7 +160,7 @@ ms.locfileid: "78188217"
 
 ## <a name="create-an-azure-ad-b2c-application"></a>建立 Azure AD B2C 應用程式
 
-通過您在 B2C 租戶中註冊的應用程式與 Azure AD B2C 的通信。 此節會列出您可以視需要完成以建立測試應用程式的步驟 (如果您尚未這麼做)。
+與 Azure AD B2C 的通訊會透過您在 B2C 租使用者中註冊的應用程式進行。 此節會列出您可以視需要完成以建立測試應用程式的步驟 (如果您尚未這麼做)。
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 使用轉儲和還原進行遷移 - MySQL 的 Azure 資料庫
+title: 使用傾印和還原進行遷移-適用於 MySQL 的 Azure 資料庫
 description: 本文將說明兩個常見方法，讓您可在適用於 MySQL 的 Azure 資料庫中用來備份和還原資料庫，使用如 mysqldump、MySQL Workbench 和 PHPMyAdmin 的工具。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
 ms.openlocfilehash: b15da2aa83231bfdc8732995888349b06ab56d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78163772"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>使用傾印和還原來將 MySQL 資料庫移轉至適用於 MySQL 的 Azure 資料庫
@@ -21,11 +21,11 @@ ms.locfileid: "78163772"
 ## <a name="before-you-begin"></a>開始之前
 若要逐步執行本作法指南，您需要具備：
 - [建立適用於 MySQL 的 Azure 資料庫伺服器 - Azure 入口網站](quickstart-create-mysql-server-database-using-azure-portal.md)
-- [安裝在電腦上的 mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)命令列實用程式。
-- MySQL 工作臺[MySQL 工作臺 下載](https://dev.mysql.com/downloads/workbench/)或其他協力廠商 MySQL 工具執行轉儲和還原命令。
+- [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)安裝在電腦上的命令列公用程式。
+- MySQL 工作臺[Mysql 工作臺下載](https://dev.mysql.com/downloads/workbench/)或其他協力廠商 mysql 工具，以執行傾印和還原命令。
 
 ## <a name="use-common-tools"></a>使用一般工具
-使用常見實用程式和工具（如 MySQL 工作臺或 mysqldump）將資料遠端連線到 MySQL 的 Azure 資料庫中。 在具有網際網路連接的用戶端電腦上使用這類工具，來連接到適用於 MySQL 的 Azure 資料庫。 如需使用 SSL 加密連接的最佳安全性作法，請參閱[在適用於 MySQL 的 Azure 資料庫中設定 SSL 連線能力](concepts-ssl-connection-security.md)。 在移轉到適用於 MySQL 的 Azure 資料庫時，您不需要將傾印檔案移至任何特定的雲端位置。 
+使用常見的公用程式和工具（例如 MySQL 工作臺或 mysqldump），從遠端連線並將資料還原到適用於 MySQL 的 Azure 資料庫。 在具有網際網路連接的用戶端電腦上使用這類工具，來連接到適用於 MySQL 的 Azure 資料庫。 如需使用 SSL 加密連接的最佳安全性作法，請參閱[在適用於 MySQL 的 Azure 資料庫中設定 SSL 連線能力](concepts-ssl-connection-security.md)。 在移轉到適用於 MySQL 的 Azure 資料庫時，您不需要將傾印檔案移至任何特定的雲端位置。 
 
 ## <a name="common-uses-for-dump-and-restore"></a>傾印和還原的常見用途
 您可以在數個常見案例中使用 MySQL 公用程式 (例如 mysqldump 和 mysqlpump)，將資料庫傾印和載入至 Azure MySQL Database。 在其他案例中，您可以改為使用[匯入和匯出](concepts-migrate-import-export.md)方法。
@@ -49,7 +49,7 @@ ms.locfileid: "78163772"
 -   適當時使用資料分割資料表。
 -   平行載入資料。 避免會導致您達到資源限制的太多平行處理原則，以及使用 Azure 入口網站中可用的計量監視資源。 
 -   傾印資料庫時在 mysqlpump 中使用 `defer-table-indexes` 選項，以便在載入資料表資料之後建立索引。
--   使用`skip-definer`mysqlpump 中的選項從為視圖和預存程序創建語句省略定義器和 SQL SECURITY 子句。  重新載入轉儲檔時，它會創建使用預設 DEFINER 和 SQL SECURITY 值的物件。
+-   在 mysqlpump) `skip-definer`中使用選項，即可從 create 語句中省略 views 和預存程式的 DEFINER 和 SQL 安全性子句。  當您重載傾印檔案時，它會建立使用預設 DEFINER 和 SQL 安全性值的物件。
 -   請將備份檔案複製到 Azure blob/存放區，並從該處執行還原，這樣應該會比在網際網路上執行還原更快。
 
 ## <a name="create-a-backup-file-from-the-command-line-using-mysqldump"></a>使用 mysqldump 從命令列建立備份檔案
@@ -80,7 +80,7 @@ $ mysqldump -u root -p --databases testdb1 testdb3 testdb5 > testdb135_backup.sq
 ```
 
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>在目標適用於 MySQL 伺服器的 Azure 資料庫上建立資料庫
-在您要移轉資料的目標適用於 MySQL 伺服器的 Azure 資料庫上建立空白資料庫。 使用 MySQL 工作臺等工具創建資料庫。 資料庫名稱可以與包含傾印資料的資料庫名稱相同，或者您可以建立名稱不同的資料庫。
+在您要移轉資料的目標適用於 MySQL 伺服器的 Azure 資料庫上建立空白資料庫。 使用 MySQL 工作臺之類的工具來建立資料庫。 資料庫名稱可以與包含傾印資料的資料庫名稱相同，或者您可以建立名稱不同的資料庫。
 
 若要連線，在適用於 MySQL 之 Azure 資料庫的 [概觀]**** 中找到連線資訊。
 
@@ -105,7 +105,7 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p test
 若要匯出，您可以使用一般工具 phpMyAdmin，而您可能已在環境中本機安裝此工具。 使用 PHPMyAdmin 匯出 MySQL 資料庫：
 1. 開啟 phpMyAdmin。
 2. 選取您的資料庫。 按一下左邊清單中的資料庫名稱。 
-3. 按一下 **"匯出"** 連結。 新的分頁隨即出現，以供檢視資料庫的傾印。
+3. 按一下 [**匯出**] 連結。 新的分頁隨即出現，以供檢視資料庫的傾印。
 4. 在 [匯出] 區域中，按一下 [全選]**** 連結來選擇資料庫中的資料表。 
 5. 在 [SQL 選項] 區域中，按一下適當的選項。 
 6. 依序按一下 [另存新檔]**** 和對應的壓縮選項，然後按一下 [執行]**** 按鈕。 接著應該會出現一個對話方塊，提示您在本機儲存檔案。
@@ -116,7 +116,7 @@ $ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p test
 2. 在 [phpMyAdmin 安裝] 分頁中，按一下 [新增]**** 以新增適用於 MySQL 伺服器的 Azure 資料庫。 提供連線詳細資料和登入資訊。
 3. 建立已適當命名的資料庫，然後在畫面左邊選取它。 若要重寫現有的資料庫，按一下資料庫名稱、選取資料表名稱旁的所有核取方塊，然後選取 [捨棄]**** 以刪除現有的資料表。 
 4. 按一下 **SQL** 連結，以顯示您可以在其中輸入 SQL 命令或上傳 SQL 檔案的分頁。 
-5. 使用**流覽**按鈕查找資料庫檔案。 
+5. 使用 [**流覽]** 按鈕來尋找資料庫檔案。 
 6. 按一下 [執行]**** 按鈕以匯出備份、執行 SQL 命令，並重新建立您的資料庫。
 
 ## <a name="next-steps"></a>後續步驟

@@ -1,6 +1,6 @@
 ---
-title: 使用媒體服務 v3 .NET - Azure 編碼自訂轉換 |微軟文檔
-description: 本主題演示如何使用 Azure 媒體服務 v3 使用 .NET 對自訂轉換進行編碼。
+title: 使用媒體服務 v3 .NET 來編碼自訂轉換-Azure |Microsoft Docs
+description: 本主題說明如何使用 Azure 媒體服務 v3 來編碼使用 .NET 的自訂轉換。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,24 +13,24 @@ ms.date: 05/03/2019
 ms.author: juliako
 ms.custom: seodec18
 ms.openlocfilehash: ebe701032e6416b3e007a28db62f5a8235bb1bb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80068036"
 ---
-# <a name="how-to-encode-with-a-custom-transform---net"></a>如何使用自訂轉換進行編碼 - .NET
+# <a name="how-to-encode-with-a-custom-transform---net"></a>如何使用自訂轉換進行編碼-.NET
 
-使用 Azure 媒體服務進行編碼時，可以根據行業最佳實踐快速啟動推薦的內置預設之一，如[流式處理檔](stream-files-tutorial-with-api.md)教程中所示。 您還可以構建自訂預設，以定位特定方案或設備要求。
+當使用 Azure 媒體服務進行編碼時，您可以根據如[串流](stream-files-tutorial-with-api.md)檔案教學課程中所示範的業界最佳作法，快速開始使用其中一個建議的內建預設值。 您也可以建立自訂預設值，以特定案例或裝置需求為目標。
 
 ## <a name="considerations"></a>考量
 
-創建自訂預設時，需要考慮以下因素：
+建立自訂預設時，適用下列考慮事項：
 
-* AVC 內容上的高度和寬度的所有值必須為 4 的倍數。
-* 在 Azure 媒體服務 v3 中，所有編碼位元速率均以每秒位表示。 這與 v2 API 的預設不同，後者使用千位/秒作為單元。 例如，如果 v2 中的位元速率指定為 128 （千位/秒），則 v3 中它將設置為 128000（位/秒）。
+* AVC 內容的所有高度和寬度值都必須是4的倍數。
+* 在 Azure 媒體服務 v3 中，所有編碼位元速率都是以每秒位數為單位。 這不同于預設值和我們的 v2 Api，其使用千位/秒作為單位。 例如，如果 v2 中的位元速率指定為128（千位/秒），則在 v3 中，它會設定為128000（位/秒）。
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>先決條件 
 
 [建立媒體服務帳戶](create-account-cli-how-to.md)
 
@@ -46,13 +46,13 @@ ms.locfileid: "80068036"
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>使用自訂預設建立轉換 
 
-建立新的[轉換](https://docs.microsoft.com/rest/api/media/transforms)時，您需要指定想要其產生的輸出是什麼。 必要的參數是 [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) 物件，如下列程式碼所示。 每個 **TransformOutput** 都會包含 **Preset (預設)**。 **預設**描述了用於生成所需**轉換輸出**的視頻和/或音訊處理操作的分步說明。 下列 **TransformOutput** 會建立自訂轉碼器和圖層輸出設定。
+建立新的[轉換](https://docs.microsoft.com/rest/api/media/transforms)時，您需要指定想要其產生的輸出是什麼。 必要的參數是 [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) 物件，如下列程式碼所示。 每個 **TransformOutput** 都會包含 **Preset (預設)** 。 預設**會描述影片**和/或音訊處理作業的逐步指示，用來產生所需的**TransformOutput**。 下列 **TransformOutput** 會建立自訂轉碼器和圖層輸出設定。
 
-建立[轉換](https://docs.microsoft.com/rest/api/media/transforms)時，您應該先使用 **Get** 方法檢查是否已有轉換存在，如下列程式碼所示。 在媒體服務 v3 中，如果實體不存在，**則實體**上的 Get 方法將返回**null（** 對名稱進行不區分大小寫的檢查）。
+建立[轉換](https://docs.microsoft.com/rest/api/media/transforms)時，您應該先使用 **Get** 方法檢查是否已有轉換存在，如下列程式碼所示。 在媒體服務 v3 中，如果實體不存在，實體的**Get**方法會傳回**null** （不區分大小寫的名稱檢查）。
 
 ### <a name="example"></a>範例
 
-下面的示例定義了一組使用此轉換時要生成的輸出。 我們首先為音訊編碼添加 AacAudio 圖層，為視頻編碼添加兩個 H264 視頻圖層。 在視頻圖層中，我們分配標籤，以便在輸出檔案名中使用。 接下來，我們希望輸出還包括縮略圖。 在下面的示例中，我們指定以 PNG 格式生成的圖像，以輸入視頻的 50% 解析度生成，並在輸入視頻長度的三個時間戳記中生成圖像 - [25%、50%、75]。 最後，我們指定輸出檔案的格式 - 一個用於視頻 + 音訊，另一個用於縮略圖。 由於我們擁有多個 H264Layers，因此我們必須使用每個圖層生成唯一名稱的宏。 我們可以使用 或`{Label}``{Bitrate}`宏，示例顯示前者。
+下列範例會定義當使用此轉換時，我們想要產生的一組輸出。 我們會先新增音訊編碼的 Aacaudio 屬性圖層，以及用於影片編碼的兩個 H264Video 圖層。 在影片圖層中，我們會指派標籤，以便在輸出檔案名中使用。 接下來，我們希望輸出也包含縮圖。 在下列範例中，我們會以 PNG 格式來指定影像，在輸入影片的解析度50% 產生，並以三個時間戳記（{25%，50%，75}）輸入影片的長度。 最後，我們會指定輸出檔案的格式：一個用於 video + 音訊，另一個用於縮圖。 因為我們有多個 H264Layers，所以我們必須使用每個圖層產生唯一名稱的宏。 我們可以使用`{Label}`或`{Bitrate}`宏，此範例會顯示前者。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/EncodeCustomTransform/MediaV3ConsoleApp/Program.cs#EnsureTransformExists)]
 

@@ -9,16 +9,16 @@ ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
 ms.openlocfilehash: a0a03df59bc6ecffcb4f0a701616297f2da78fdb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80061418"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 將 Blob 儲存體掛接為檔案系統
 
 ## <a name="overview"></a>總覽
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是 Azure Blob 儲存體的虛擬檔案系統驅動程式。 Blobfuse 可讓您透過 Linux 檔案系統存取您儲存體帳戶中現有的區塊 Blob 資料。 Blobfuse 使用具有前斜杠"/" 的虛擬目錄方案作為分隔符號。  
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) 是 Azure Blob 儲存體的虛擬檔案系統驅動程式。 Blobfuse 可讓您透過 Linux 檔案系統存取您儲存體帳戶中現有的區塊 Blob 資料。 Blobfuse 會使用以正斜線 '/' 做為分隔符號的虛擬目錄配置。  
 
 本指南示範如何使用 Blobfuse，以及如何在 Linux 上掛接 Blob 儲存體容器並存取資料。 若要深入了解 Blobfuse，請閱讀 [Blobfuse 存放庫](https://github.com/Azure/azure-storage-fuse)中的詳細資料。
 
@@ -30,7 +30,7 @@ ms.locfileid: "80061418"
 ## <a name="install-blobfuse-on-linux"></a>在 Linux 上安裝 Blobfuse
 在 [Microsoft 的 Linux 軟體存放庫](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)可取得適用於 Ubuntu 和 RHEL 散發套件的 Blobfuse 二進位檔案。 若要在這些發行版本上安裝 Blobfuse，請設定清單中的任一個存放庫。 如果您的發行版本沒有可用的二進位檔，您也可以遵循 [Azure 儲存體安裝步驟](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source) \(英文\)，從原始程式碼建置二進位檔。
 
-Blobfuse 支援在 Ubuntu 14.04、16.04 和 18.04 上安裝。 執行此命令以確定您已部署其中一個版本：
+Blobfuse 支援在 Ubuntu 14.04、16.04 和18.04 上安裝。 執行此命令以確定您已部署其中一個版本：
 ```
 lsb_release -a
 ```
@@ -52,11 +52,11 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-同樣，將 URL`.../ubuntu/16.04/...`更改為`.../ubuntu/18.04/...`或引用其他 Ubuntu 版本。
+同樣地，將 URL 變更`.../ubuntu/16.04/...`為`.../ubuntu/18.04/...`或，以參考另一個 Ubuntu 版本。
 
 ### <a name="install-blobfuse"></a>安裝 Blobfuse
 
-在 Ubuntu/Debian 分佈上：
+在 Ubuntu/Debian 發佈上：
 ```bash
 sudo apt-get install blobfuse
 ```
@@ -98,15 +98,15 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
-是`accountName`存儲帳戶的首碼 ， 而不是完整 URL。
+`accountName`是您儲存體帳戶的前置詞，而不是完整的 URL。
 
-使用：
+使用下列內容建立此檔案：
 
 ```
 touch ~/fuse_connection.cfg
 ```
 
-創建和編輯此檔後，請確保限制訪問，以便其他使用者無法讀取它。
+建立並編輯此檔案之後，請務必限制存取，讓其他使用者都無法讀取它。
 ```bash
 chmod 600 fuse_connection.cfg
 ```

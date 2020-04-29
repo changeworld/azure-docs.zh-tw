@@ -1,5 +1,5 @@
 ---
-title: HB 系列 VM 大小性能 - Azure 虛擬機器 |微軟文檔
+title: HB 系列 VM 大小效能-Azure 虛擬機器 |Microsoft Docs
 description: 瞭解 Azure 中 HB 系列 VM 大小的效能測試結果。
 services: virtual-machines
 documentationcenter: ''
@@ -13,36 +13,36 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: e064db5f67e6f8a7e82093bdae9fac7eaa4b6a55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79534196"
 ---
-# <a name="hb-series-virtual-machine-sizes"></a>HB 系列虛擬機器尺寸
+# <a name="hb-series-virtual-machine-sizes"></a>HB 系列虛擬機器大小
 
-已對 HB 系列尺寸運行了多個效能測試。 以下是此效能測試的一些結果。
+已針對 HB 系列大小執行數個效能測試。 以下是此效能測試的部分結果。
 
 
 | 工作負載                                        | HB                    |
 |-------------------------------------------------|-----------------------|
-| STREAM 三合會                                    | ±260 GB/s （每 CCX 32-33 GB/s）  |
-| 高性能林包 （HPL）                  | ±1，000 千兆克（Rpeak），+860 千兆（Rmax） |
-| RDMA 延遲&頻寬                        | 2.35usec， 96.5 Gb/s   |
-| 本地 NVMe SSD 上的 FIO                           | ±1.7 GB/s 讀取，±1.0 GB/s 寫入      |  
-| IOR 上 4 = Azure 高級 SSD（P30 託管磁片，RAID0）*  | ±725 MB/s 讀取，+780 MB/寫入   |
+| 資料流程三角理論                                    | ~ 260 GB/秒（每個 CCX 32-33 GB/秒）  |
+| 高效能 Linpack （HPL）                  | ~ 1000 GigaFLOPS （Rpeak）、~ 860 GigaFLOPS （Rmax） |
+| RDMA 延遲 & 頻寬                        | 2.35 版 usec，96.5 Gb/秒   |
+| 本機 NVMe SSD 上的 FIO                           | ~ 1.7 GB/s 讀取，~ 1.0 GB/s 寫入      |  
+| IOR on 4 * Azure 進階 SSD （P30 受控磁碟，RAID0） * *  | ~ 725 MB/s 讀取，~ 780 MB/寫入   |
 
 
 
-## <a name="infiniband-send-latency"></a>英菲尼班發送延遲
-梅拉諾克斯·佩弗斯特
+## <a name="infiniband-send-latency"></a>不會傳送延遲
+Mellanox Perftest。
 
 ```console
 numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 ```
 
 
-|  #bytes         | #iterations     | t_min[微秒]     | t_max[微秒]     | t_typical [微秒] | t_avg[微秒]     | t_stdev[微秒]   |
+|  #bytes         | #iterations     | t_min [微秒]     | t_max [微秒]     | t_typical [微秒] | t_avg [微秒]     | t_stdev [微秒]   |
 |-----------------|-----------------|-----------------|-----------------|-----------------|-----------------|
 | 2               | 1000            | 2.35            | 12.63           | 2.38            | 2.42            | 0.33            |
 | 4               | 1000            | 2.35            | 18.53           | 2.38            | 2.4             | 0.21            |
@@ -60,14 +60,14 @@ numactl --physcpubind=[INSERT CORE #]  ib_send_lat -a
 
 ## <a name="osu-mpi-latency-test"></a>OSU MPI 延遲測試
 
-OSU MPI 延遲測試 v5.4.3。
+OSU MPI 延遲測試 v 5.4.3。
 
 ```azure-cli
 ./bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./osu_latency 
 ```
 
 
-| #bytes  | 延遲 [微秒] （MPICH 3.3 + CH4） | 延遲 [微秒] （OpenMPI 4.0.0） | 延遲 [微秒] （MVAPICH2 2.3） | 延遲 [微秒] （英特爾 MPI 2019） |
+| #bytes  | 延遲 [微秒] （MPICH 3.3 + CH4） | 延遲 [微秒] （OpenMPI 4.0.0） | 延遲 [微秒] （MVAPICH2 2.3） | 延遲 [微秒] （Intel MPI 2019） |
 |------|----------|----------|----------|----------|
 | 2    | 2.44     | 2.52     | 2.84     | 2.76     |
 | 4    | 2.44     | 2.53     | 2.84     | 2.76     |
@@ -85,13 +85,13 @@ OSU MPI 延遲測試 v5.4.3。
 
 ## <a name="mpi-bandwidth"></a>MPI 頻寬
 
-OSU MPI 頻寬測試 v5.4.3。
+OSU MPI 頻寬測試 v 5.4.3。
 
 ```azure-cli
 ./mvapich2-2.3.install/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=[INSERT CORE #] ./mvapich2-2.3/osu_benchmarks/mpi/pt2pt/osu_bw
 ```
 
-| #Size            | 頻寬（MB/s） | 頻寬（Gb/s） |
+| #Size            | 頻寬（MB/秒） | 頻寬（Gb/s） |
 |------------------|------------------|------------------|
 | 2                | 4.03             | 0.03             |
 | 4                | 8.2              | 0.07             |
@@ -119,7 +119,7 @@ OSU MPI 頻寬測試 v5.4.3。
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解有關 Azure[中高性能計算](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)的更多詳細資訊。
+深入瞭解 Azure 中的[高效](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)能運算。
 
 
 

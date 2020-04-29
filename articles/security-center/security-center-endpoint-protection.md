@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心的端點保護建議
-description: 如何發現端點保護解決方案並將其標識為正常解決方案。
+title: Azure 安全性中心的端點保護建議
+description: 如何探索端點保護解決方案，並將其識別為狀況良好。
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,52 +14,52 @@ ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
 ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78208537"
 ---
-# <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 安全中心的端點保護評估和建議
+# <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure 資訊安全中心中的 Endpoint protection 評估和建議
 
-Azure 安全中心提供[受支援的](security-center-services.md#endpoint-supported)終結點保護解決方案版本的運行狀況評估。 本文介紹了導致安全中心生成以下兩項建議的方案：
+Azure 資訊安全中心提供 Endpoint protection 解決方案[支援](security-center-services.md#endpoint-supported)版本的健全狀況評估。 本文說明導致資訊安全中心產生下列兩個建議的案例：
 
-* **在虛擬機器上安裝端點保護解決方案**
+* **在您的虛擬機器上安裝端點保護解決方案**
 * **請解決機器上的 Endpoint Protection 健康情況問題**
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* 安全中心建議您在[運行獲取 MpComputer狀態](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps)時 **"在虛擬機器上安裝端點保護解決方案"，** 結果為 **"啟用 AMService：False"**
+* 資訊安全中心建議您在[MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps)執行時，「**在虛擬機器上安裝端點保護解決方案**」，結果為**AMServiceEnabled： False**
 
-* 安全中心建議您在[運行 Get-MpComputerStatus 時](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps)**"解決電腦上的端點保護運行狀況問題"，** 併發生以下任一情況：
+* 資訊安全中心在[MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps)執行時，建議您「**解決電腦上的 endpoint protection 健康情況問題**」，併發生下列任何一種情況：
 
-  * 以下任一屬性都是錯誤的：
+  * 下列任何屬性都是 false：
 
-    **已啟用 AM 服務**
+    **AMServiceEnabled**
 
-    **啟用反間諜軟體**
+    **AntispywareEnabled**
 
-    **支援即時保護**
+    **RealTimeProtectionEnabled**
 
-    **行為監視器啟用**
+    **BehaviorMonitorEnabled**
 
-    **Ioav 保護啟用**
+    **IoavProtectionEnabled**
 
-    **啟用訪問保護**
+    **OnAccessProtectionEnabled**
 
-  * 如果以下一個或兩個屬性為 7 或更多。
+  * 如果下列其中一個或兩個屬性為7或以上。
 
-    **反間諜軟體簽名**
+    **AntispywareSignatureAge**
 
-    **防病毒簽名**
+    **AntivirusSignatureAge**
 
-## <a name="microsoft-system-center-endpoint-protection"></a>微軟系統中心端點保護
+## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center endpoint protection
 
-* 安全中心建議您在導入**SCEPMpModule（"$env：程式檔_微軟安全用戶端_MpProvider_mpProvider.psd1"）** 和運行具有**AMService 啟用的** **Get-MProt 電腦狀態**結果時 **"在虛擬機器上安裝端點保護解決方案"**
+* 資訊安全中心建議您在匯入**SCEPMpModule （"$env:P Rogramfiles\microsoft Security Client\MpProvider\MpProvider.psd1"）** 並執行具有**AMServiceEnabled = false**的**MProtComputerStatus**結果時，「**在虛擬機器上安裝端點保護解決方案**」
 
-* 當**Get-Mprot 電腦狀態**運行且發生以下任一情況時，安全中心建議您 **"解決電腦上的端點保護運行狀況問題"：**
+* 資訊安全中心在**MprotComputerStatus**執行時，建議您「**解決電腦上的 endpoint protection 健康情況問題**」，併發生下列任何一種情況：
 
-    * 以下屬性中至少有一個為 false：
+    * 下列其中一個屬性至少為 false：
 
             **AMServiceEnabled**
 
@@ -73,7 +73,7 @@ Azure 安全中心提供[受支援的](security-center-services.md#endpoint-supp
     
             **OnAccessProtectionEnabled**
           
-    * 如果以下簽名更新中的一個或兩個大於或等於 7。 
+    * 如果下列其中一個或兩個簽章更新大於或等於7，則為。 
 
             **AntispywareSignatureAge**
     
@@ -81,104 +81,104 @@ Azure 安全中心提供[受支援的](security-center-services.md#endpoint-supp
 
 ## <a name="trend-micro"></a>趨勢科技
 
-* 當未滿足以下任何檢查時，安全中心建議您 **"在虛擬機器上安裝端點保護解決方案"：**
-    * **HKLM：_軟體\趨勢微\深度安全代理**存在
-    * **HKLM：_軟體\趨勢微\深度安全代理\安裝資料夾**存在
-    * **dsa_query.cmd**檔位於安裝資料夾中
-    * 使用元件.AM.模式運行**dsa_query.cmd**結果 **：打開 - 檢測到趨勢微深度安全代理**
+* 資訊安全中心建議您在不符合下列任何一項檢查時，「**在虛擬機器上安裝端點保護解決方案**」：
+    * **HKLM： \ SOFTWARE\TrendMicro\Deep 安全性代理程式**已存在
+    * **HKLM： \ SOFTWARE\TrendMicro\Deep 安全性 Agent\InstallationFolder**存在
+    * 在安裝資料夾中可找到**dsa_query .cmd**檔案
+    * 以 Component. mode 執行**dsa_query .cmd**結果 **：偵測到趨勢微深度安全性代理程式**
 
-## <a name="symantec-endpoint-protection"></a>賽門鐵克端點保護
-當未滿足以下任何檢查時，安全中心建議您 **"在虛擬機器上安裝端點保護解決方案"：**
+## <a name="symantec-endpoint-protection"></a>Symantec endpoint protection
+資訊安全中心建議您在不符合下列任何一項檢查時，「**在虛擬機器上安裝端點保護解決方案**」：
 
-* **HKLM：[軟體]賽門鐵克_賽門鐵克端點保護\當前版本_PRODUCTNAME = "賽門鐵克端點保護"**
+* **HKLM： \ Software\Symantec\Symantec 端點 Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM：[軟體]賽門鐵克_賽門鐵克端點保護\當前版本\公共-opstate_AS運行狀態 = 1**
+* **HKLM： \ Software\Symantec\Symantec 端點 Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-Or
+或者
 
-* **HKLM：[軟體]哇6432Node_賽門鐵克_賽門鐵克端點保護\當前版本_PRODUCTNAME = "賽門鐵克端點保護"**
+* **HKLM： \ Software\Wow6432Node\Symantec\Symantec 端點 Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM：[軟體]哇6432Node_賽門鐵克_賽門鐵克端點保護\當前版本\公共-opstate_AS運行狀態 = 1**
+* **HKLM： \ Software\Wow6432Node\Symantec\Symantec 端點 Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-當未滿足以下任何檢查時，安全中心建議您 **"解決機器上的端點保護運行狀況問題"：**
+當不符合下列任何一項檢查時，資訊安全中心建議您「**解決電腦上的 endpoint protection 健康情況問題**」：
 
-* 檢查賽門鐵克版本>= 12：註冊表位置 **：HKLM：\軟體\賽門鐵克_賽門鐵克端點保護\當前版本" -值"PRODUCTVERSION"**
+* 檢查 Symantec 版本 >= 12：登錄位置： **HKLM： \ Software\Symantec\Symantec 端點 Protection\CurrentVersion "-Value" PRODUCTVERSION "**
 
-* 檢查即時保護狀態 **：HKLM：\軟體\哇6432Node_賽門鐵克_賽門鐵克端點保護_AV_存儲_檔案系統_即時掃描\OnOff = 1**
+* 檢查即時保護狀態： **HKLM： \ Software\Wow6432Node\Symantec\Symantec 端點 Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
 
-* 檢查簽名更新狀態 **：HKLM_軟體\賽門鐵克_賽門鐵克端點保護\當前版本\公共-opstate_最新病毒Defsdate<= 7 天**
+* 檢查簽章更新狀態： **HKLM\Software\Symantec\Symantec 端點 Protection\CurrentVersion\public-opstate\LatestVirusDefsDate <= 7 天**
 
-* 檢查完全掃描狀態 **：HKLM：[軟體]賽門鐵克_賽門鐵克端點保護\當前版本\公共-opstate_上次成功掃描日期時間<= 7 天**
+* 檢查完整掃描狀態： **HKLM： \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime <= 7 天**
 
-* 查找賽門鐵克 12 的簽名版本簽名版本路徑：**註冊表路徑* "當前版本_共用 Defs" -值"SRTSP"** 
+* 尋找 Symantec 12： **Registry 路徑 + "CurrentVersion\SharedDefs"-Value "SRTSP"** 的簽章版本號碼路徑 
 
-* 賽門鐵克 14 的簽名版本的路徑：**註冊表路徑* "當前版本_共用 Defs_SDSDefs" - 值"SRTSP"**
+* Symantec 14 的簽章版本路徑：登錄**路徑 + "CurrentVersion\SharedDefs\SDSDefs"-值 "SRTSP"**
 
-註冊表路徑：
+登錄路徑：
 
-* **"HKLM：[軟體]賽門鐵克\賽門鐵克端點保護" = $Path;**
-* **"HKLM：\軟體_哇6432Node_賽門鐵克_賽門鐵克端點保護" = $Path**
+* **"HKLM： \ Software\Symantec\Symantec Endpoint Protection" + $Path;**
+* **"HKLM： \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
 
-## <a name="mcafee-endpoint-protection-for-windows"></a>針對 Windows 的邁克菲端點保護
+## <a name="mcafee-endpoint-protection-for-windows"></a>適用于 Windows 的 McAfee endpoint protection
 
-當未滿足以下任何檢查時，安全中心建議您 **"在虛擬機器上安裝端點保護解決方案"：**
+資訊安全中心建議您在不符合下列任何一項檢查時，「**在虛擬機器上安裝端點保護解決方案**」：
 
-* **HKLM：_軟體\McAfee\端點\AV_產品版本**存在
+* **HKLM： \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion**已存在
 
-* **HKLM：[軟體]MCAfee_AV解決方案\MCSHIELDGLOBAL_全球_全球啟用 = 1**
+* **HKLM： \ SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
 
-當未滿足以下任何檢查時，安全中心建議您 **"解決機器上的端點保護運行狀況問題"：**
+當不符合下列任何一項檢查時，資訊安全中心建議您「**解決電腦上的 endpoint protection 健康情況問題**」：
 
-* 邁克菲版本 **：HKLM：_軟體_McAfee_endpoint_AV_產品版本>= 10**
+* McAfee 版本： **HKLM： \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
 
-* 查找簽名版本 **：HKLM：\軟體\McAfee_AVSolution_DS_DS -值"dwContent主要版本"**
+* 尋找簽章版本： **HKLM： \ Software\McAfee\AVSolution\DS\DS-值 "dwContentMajorVersion"**
 
-* 查找簽名日期 **：HKLM：\軟體\McAfee_AVSolution_DS_值"scontent創建日期">= 7 天**
+* 尋找簽章日期： **HKLM： \ Software\McAfee\AVSolution\DS\DS-值 "szContentCreationDate" >= 7 天**
 
-* 查找掃描日期 **：HKLM：\軟體\McAfee_Endpoint_AV_ODS - 值"最後全掃描執行時間">= 7 天**
+* 尋找掃描日期： **HKLM： \ Software\McAfee\Endpoint\AV\ODS-值 "LastFullScanOdsRunTime" >= 7 天**
 
-## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>用於 Linux 威脅防禦的邁克菲端點安全性 
+## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>適用于 Linux 的 McAfee Endpoint Security 威脅防護 
 
-當未滿足以下任何檢查時，安全中心建議您 **"在虛擬機器上安裝端點保護解決方案"：**
+資訊安全中心建議您在不符合下列任何一項檢查時，「**在虛擬機器上安裝端點保護解決方案**」：
 
-- 檔 **/選擇/isec/ens/威脅預防/箱/isecav**出口 
+- 檔案 **/opt/isec/ens/threatprevention/bin/isecav**結束 
 
-- **"/選擇/isec/ens/威脅預防/bin/isecav -版本"** 輸出是：**邁克菲名稱 = 用於 Linux 威脅防禦的邁克菲端點安全，以及 >的 McAfee 版本 = 10**
+- **"/opt/isec/ens/threatprevention/bin/isecav--version"** 輸出為： **mcafee name = 適用于 Linux 的 Mcafee Endpoint Security 威脅防護和 mcafee 版本 >= 10**
 
-當未滿足以下任何檢查時，安全中心建議您 **"解決機器上的端點保護運行狀況問題"：**
+當不符合下列任何一項檢查時，資訊安全中心建議您「**解決電腦上的 endpoint protection 健康情況問題**」：
 
-- **"/選擇/isec/ens/威脅預防/bin/isecav --清單任務"** 返回**快速掃描、完整掃描**和兩個掃描<= 7 天
+- **"/opt/isec/ens/threatprevention/bin/isecav--listtask"** 會傳回**快速掃描、完整掃描**和兩個掃描 <= 7 天
 
-- **"/選擇/isec/ens/威脅預防/賓/isecav --清單任務"** 返回**DAT 和引擎更新時間**，它們<= 7 天
+- **"/opt/isec/ens/threatprevention/bin/isecav--listtask"** 會傳回**DAT 和引擎更新時間**，而且兩者 <= 7 天
 
-- **"/選擇/isec/ens/威脅預防/賓/伊塞卡夫 -getoasconfig - 摘要"** 返回**訪問掃描**狀態
+- 「 **/opt/isec/ens/threatprevention/bin/isecav--getoasconfig--summary** 」會**在存取掃描狀態時**傳回
 
-## <a name="sophos-antivirus-for-linux"></a>Linux 的 Sophos 防病毒 
+## <a name="sophos-antivirus-for-linux"></a>Sophos 適用于 Linux 的防毒軟體 
 
-當未滿足以下任何檢查時，安全中心建議您 **"在虛擬機器上安裝端點保護解決方案"：**
+資訊安全中心建議您在不符合下列任何一項檢查時，「**在虛擬機器上安裝端點保護解決方案**」：
 
-- 檔 **/選擇/sophos-av/bin/savdstatus**退出或搜索自訂位置 **"讀取連結 $（即 savscan）"**
+- 檔案 **/opt/sophos-av/bin/savdstatus**會結束或搜尋自訂位置 **"readlink $ （其 savscan）"**
 
-- **"/選擇/sophos-av/bin/savdstatus -版本"** 返回 Sophos 名稱 = **Sophos 防病毒和 Sophos 版本>= 9**
+- **"/opt/sophos-av/bin/savdstatus--version"** 會傳回 sophos Name = **Sophos 防毒軟體和 sophos 版本 >= 9**
 
-當未滿足以下任何檢查時，安全中心建議您 **"解決機器上的端點保護運行狀況問題"：**
+當不符合下列任何一項檢查時，資訊安全中心建議您「**解決電腦上的 endpoint protection 健康情況問題**」：
 
-- **"/選擇/索福斯-av/bin/slog --maxage_7 |grep-i"預定掃描"。\*已完成" |尾部 -1"**，傳回值
+- **"/opt/sophos-av/bin/savlog--maxage = 7 |grep-i "已排程掃描。\* completed "|tail-1 "**，傳回值
 
-- **"/選擇/索福斯-av/bin/slog --maxage_7 |grep "掃描完成"** |尾部 -1"，傳回值
+- **"/opt/sophos-av/bin/savlog--maxage = 7 |grep 「掃描已完成**」 |tail-1 "，傳回值
 
-- **"/選擇/sophos-av/bin/savdstatus -- 上次更新"** 返回上次更新，應<= 7 天 
+- **"/opt/sophos-av/bin/savdstatus--lastupdate"** 會傳回 lastupdate，應 <= 7 天 
 
-- **"/選擇/索福斯-av/bin/savdstatus -v"** 等於 **"正在運行訪問掃描"** 
+- 「 **/opt/sophos-av/bin/savdstatus-v** 」等於「**正在執行存取掃描**」 
 
-- **"/選擇/sophos-av/bin/savconfig 獲取即時保護"** 返回啟用
+- **"/opt/sophos-av/bin/savconfig Get LiveProtection"** 傳回已啟用
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援
 
 ### <a name="troubleshoot"></a>疑難排解
 
-微軟反惡意軟體擴展日誌可在： **%系統磁碟機%\WindowsAzure_Logs_Plugins_Microsoft.Azure.Security.IaaSAnti惡意軟體（或 PaaSAnti惡意軟體）\1.5.5.x（版本*）\命令執行.log**
+Microsoft Antimalware 擴充功能記錄檔位於： **%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware （或 PaaSAntimalware） \1.5.5.x （version #） \CommandExecution.log**
 
 ### <a name="support"></a>支援
 
-如需更多説明，請與[MSDN Azure 和堆疊溢位論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家聯繫。 或提交 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇"獲取支援"。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。
+如需更多協助，請洽詢[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 azure 專家。 或提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的資訊，請參閱 [Microsoft Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)。

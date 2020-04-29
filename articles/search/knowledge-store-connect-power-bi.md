@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.openlocfilehash: 4fd71a7f322cb2672eb485f17e4de2619a7c2d2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78270037"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>使用 Power BI 連線到知識存放區
@@ -24,7 +24,7 @@ ms.locfileid: "78270037"
 
 + 遵循[在 Azure 入口網站中建立知識存放區](knowledge-store-create-portal.md)或[使用 REST 建立 Azure 認知搜尋知識存放區](knowledge-store-create-rest.md)中的步驟，建立本逐步解說中所使用的知識存放區範例。 您也需要用來建立知識存放區的 Azure 儲存體帳戶名稱，以及其來自 Azure 入口網站的存取金鑰。
 
-+ [安裝電源 BI 桌面](https://powerbi.microsoft.com/downloads/)
++ [安裝 Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>範例 Power BI 範本 - 僅限 Azure 入口網站
 
@@ -43,7 +43,7 @@ ms.locfileid: "78270037"
 
 1. 在 [取得資料]**** 中，依序選取 [Azure]**** 和 [Azure 資料表儲存體]****。
 
-1. 按一下 [連線]****。
+1. 按一下 [ **連接**]。
 
 1. 針對 [帳戶名稱或 URL]****，輸入您的 Azure 儲存體帳戶名稱 (系統會為您建立完整的 URL)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "78270037"
    
    + REST 逐步解說的資料表名稱為 *hotelReviewsDocument*、*hotelReviewsPages*、*hotelReviewsKeyPhrases* 和 *hotelReviewsSentiment*。
 
-1. 按一下 **"載入**"。
+1. 按一下 [**載入**]。
 
 1. 在頂端的功能區中，按一下 [編輯查詢]**** 以開啟 [Power Query 編輯器]****。
 
@@ -110,7 +110,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 使用您自己的訂用帳戶時，在專案結束後確認您是否還需要您建立的資源，是很好的做法。 讓資源繼續執行可能會產生費用。 您可以個別刪除資源，或刪除資源群組以刪除整組資源。
 
-您可以使用左導覽窗格中的 [所有資源]**** 或 [資源群組]**** 連結，在入口網站中尋找和管理資源。
+您可以使用左導覽窗格中的 [所有資源]  或 [資源群組]  連結，在入口網站中尋找和管理資源。
 
 如果您使用免費服務，請記住您會有三個索引、索引子和資料來源的限制。 您可以在入口網站中刪除個別項目，以避免超出限制。
 
@@ -119,4 +119,4 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 若要了解如何使用儲存體總管來探索此知識存放區，請參閱下列文章。
 
 > [!div class="nextstepaction"]
-> [使用儲存體總管檢視](knowledge-store-view-storage-explorer.md)
+> [以儲存體總管檢視](knowledge-store-view-storage-explorer.md)

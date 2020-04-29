@@ -1,5 +1,5 @@
 ---
-title: 智慧洞察性能診斷日誌
+title: Intelligent Insights 效能診斷記錄
 description: Intelligent Insights 會提供 Azure SQL Database 效能問題的診斷記錄
 services: sql-database
 ms.service: sql-database
@@ -12,15 +12,15 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
 ms.openlocfilehash: bb62b087451140261aee7aaa2fab0de14ea36283
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79209452"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>使用 Intelligent Insights Azure SQL Database 效能診斷記錄
 
-此頁面提供有關如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 所產生 Azure SQL Database 效能診斷記錄的使用方式、其格式及其所含資料的資訊，來因應您的自訂開發需求。 您可以將此診斷日誌發送到[Azure 監視器日誌](../azure-monitor/insights/azure-sql.md)[、Azure 事件中心](../azure-monitor/platform/resource-logs-stream-event-hubs.md)[、Azure 存儲](sql-database-metrics-diag-logging.md#stream-into-azure-storage)或用於自訂 DevOps 警報和報告功能的協力廠商解決方案。
+此頁面提供有關如何使用 [Intelligent Insights](sql-database-intelligent-insights.md) 所產生 Azure SQL Database 效能診斷記錄的使用方式、其格式及其所含資料的資訊，來因應您的自訂開發需求。 您可以將此診斷記錄傳送至[Azure 監視器記錄](../azure-monitor/insights/azure-sql.md)、 [Azure 事件中樞](../azure-monitor/platform/resource-logs-stream-event-hubs.md)、 [Azure 儲存體](sql-database-metrics-diag-logging.md#stream-into-azure-storage)或協力廠商解決方案，以取得自訂的 DevOps 警示和報告功能。
 
 ## <a name="log-header"></a>記錄標頭
 
@@ -134,7 +134,7 @@ Intelligent Insights 效能記錄的最後部分是關於所識別之效能降�
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-您可以將智慧見解性能日誌與 Azure[監視器日誌]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)或協力廠商解決方案一起用於自訂 DevOps 警報和報告功能。
+您可以使用 Intelligent Insights 效能記錄檔搭配[Azure 監視器記錄]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)或協力廠商解決方案，以取得自訂的 DevOps 警示和報告功能。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
 ms.openlocfilehash: d9283a36d5f7ccb82b2cc211485487d5a3dcce7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79201020"
 ---
 # <a name="azure-database-security-checklist"></a>Azure 資料庫安全性檢查清單
 
 為了協助改善安全性，Azure 資料庫包含數個內建安全性控制項，您可用來限制和控制存取。
 
-其中包括：
+它們包括：
 
 -    防火牆，可讓您建立依 IP 位址限制連線能力的[防火牆規則](../../sql-database/sql-database-firewall-configure.md)
 -    可從 Azure 入口網站存取的伺服器層級防火牆
@@ -41,7 +41,7 @@ ms.locfileid: "79201020"
 雲端運算需要許多應用程式使用者、資料庫管理員和程式設計人員所不熟悉的新安全性典範。 因此，有些組織會因為意識到安全性風險而對實作資料管理的雲端基礎結構顯得遲疑不決。 不過，透過進一步了解 Microsoft Azure 和 Microsoft Azure SQL Database 內建的安全性功能，可以大幅減輕這層疑慮。
 
 ## <a name="checklist"></a>檢查清單
-我們建議您先閱讀 [Azure 資料庫安全性最佳做法](database-best-practices.md)一文，再檢閱這份檢查清單。 在您了解最佳做法之後，您就能夠充分利用這份檢查清單。 然後，可以使用此檢查表來確保已解決 Azure 資料庫安全性中的重要問題。
+我們建議您先閱讀 [Azure 資料庫安全性最佳做法](database-best-practices.md)一文，再檢閱這份檢查清單。 在您了解最佳做法之後，您就能夠充分利用這份檢查清單。 接著，您可以使用此檢查清單，確定您已解決 Azure 資料庫安全性中的重要問題。
 
 
 |檢查清單類別| 描述|
@@ -63,6 +63,6 @@ Azure 資料庫是強固的資料庫平台，具有完整的安全性功能，�
 只需要幾個簡單步驟，您就可以讓資料庫預防惡意使用者或未經授權的存取。 您會在本教學課程中學到：
 
 - 設定伺服器和 (或) 資料庫的[防火牆規則](../../sql-database/sql-database-firewall-configure.md)。
-- 使用[加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption)保護您的資料。
-- 啟用[SQL 資料庫審核](../../sql-database/sql-database-auditing.md)。
+- 使用[加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/sql-server-encryption)來保護您的資料。
+- 啟用[SQL Database 的審核](../../sql-database/sql-database-auditing.md)。
 

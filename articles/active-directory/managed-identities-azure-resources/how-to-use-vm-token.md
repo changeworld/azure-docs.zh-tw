@@ -1,5 +1,5 @@
 ---
-title: 在虛擬機器上使用託管標識獲取訪問權杖 - Azure AD
+title: 使用虛擬機器上的受控識別來取得存取權杖-Azure AD
 description: 在虛擬機器上使用 Azure 資源受控識別來取得 OAuth 存取權杖的逐步指示和範例。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a58103bad3914bd0c0c6e70f8e3d2882271e1070
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80049201"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>了解如何在 Azure VM 上使用 Azure 資源受控識別來取得存取權杖 
@@ -30,7 +30,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 本文提供各種取得權杖的程式碼和指令碼，以及處理權杖到期和 HTTP 錯誤等重要主題的指引。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
@@ -79,7 +79,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `Metadata` | HTTP 要求標頭欄位，Azure 資源受控識別需要此元素以減輕伺服器端偽造要求 (SSRF) 攻擊。 此值必須設定為 "true" (全部小寫)。 |
 | `object_id` | (選擇性) 查詢字串參數，指出要使用權杖的受控識別 object_id。 如果您的 VM 有多個使用者指派的受控識別，這會是必要項目。|
 | `client_id` | (選擇性) 查詢字串參數，指出要使用權杖的受控識別 client_id。 如果您的 VM 有多個使用者指派的受控識別，這會是必要項目。|
-| `mi_res_id` | （可選）查詢字串參數，指示所需的權杖的託管標識的mi_res_id（Azure 資源識別碼）。 如果您的 VM 有多個使用者指派的受控識別，這會是必要項目。 |
+| `mi_res_id` | 選擇性查詢字串參數，指出您想要權杖的受控識別 mi_res_id （Azure 資源識別碼）。 如果您的 VM 有多個使用者指派的受控識別，這會是必要項目。 |
 
 使用 Azure 資源受控識別 VM 擴充功能端點的範例要求 (已計劃在 2019 年 1 月淘汰)**：
 
@@ -115,7 +115,7 @@ Content-Type: application/json
 
 | 元素 | 描述 |
 | ------- | ----------- |
-| `access_token` | 所要求的存取權杖。 呼叫受保護的 REST API 時，權杖會內嵌在 `Authorization` 要求標頭欄位中成為「持有人」權杖，以允許 API 驗證呼叫端。 | 
+| `access_token` | 要求的存取權杖。 呼叫受保護的 REST API 時，權杖會內嵌在 `Authorization` 要求標頭欄位中成為「持有人」權杖，以允許 API 驗證呼叫端。 | 
 | `refresh_token` | 並未由 Azure 資源受控識別使用。 |
 | `expires_in` | 存取權杖從發行到過期之前持續有效的秒數。 在權杖的 `iat` 宣告中可找到發行時間。 |
 | `expires_on` | 存取權杖到期的時間範圍。 日期以 "1970-01-01T0:0:0Z UTC" 起算的秒數表示 (對應至權杖的 `exp` 宣告)。 |
@@ -365,7 +365,7 @@ Azure 資源受控識別端點會透過 HTTP 回應訊息標頭的狀態碼欄�
 | 元素 | 描述 |
 | ------- | ----------- |
 | error   | 錯誤識別碼。 |
-| error_description | 錯誤的詳細資訊描述。 **錯誤描述可以隨時更改。不要根據錯誤描述中的值編寫分支的代碼。**|
+| error_description | 錯誤的詳細資訊描述。 **錯誤描述可以隨時變更。請勿根據錯誤描述中的值來撰寫分支的程式碼。**|
 
 ### <a name="http-response-reference"></a>HTTP 回應參考
 
@@ -373,15 +373,15 @@ Azure 資源受控識別端點會透過 HTTP 回應訊息標頭的狀態碼欄�
 
 | 狀態碼 | 錯誤 | 錯誤說明 | 解決方法 |
 | ----------- | ----- | ----------------- | -------- |
-| 400 不正確的要求 | invalid_resource | AADSTS50001：在名為*\<\>TENANT-ID 的*租戶中找不到名為*\<URI\>* 的應用程式。 如果租用戶的系統管理員尚未安裝此應用程式或租用戶中的任何使用者尚未同意使用此應用程式，也可能會發生此錯誤。 您可能會將驗證要求傳送至錯誤的租用戶。\ | (僅限 Linux) |
+| 400 不正確的要求 | invalid_resource | AADSTS50001：在名為* \<租使用者識別碼\>* 的租使用者中找不到名為* \<URI\> *的應用程式。 如果租用戶的系統管理員尚未安裝此應用程式或租用戶中的任何使用者尚未同意使用此應用程式，也可能會發生此錯誤。 您可能會將驗證要求傳送至錯誤的租用戶。\ | (僅限 Linux) |
 | 400 不正確的要求 | bad_request_102 | 未指定必要的中繼資料標頭 | 要求中遺漏 `Metadata` 要求標頭欄位，或欄位的格式不正確。 值必須指定為 `true` (全部小寫)。 相關範例請參閱前一節 REST 中的「範例要求」。|
-| 401 未經授權 | unknown_source | 未知源*\<URI\>* | 請確認 HTTP GET 要求 URI 的格式正確。 `scheme:host/resource-path` 部分必須指定為 `http://localhost:50342/oauth2/token`。 相關範例請參閱前一節 REST 中的「範例要求」。|
+| 401 未經授權 | unknown_source | 不明的來源* \<URI\>* | 請確認 HTTP GET 要求 URI 的格式正確。 `scheme:host/resource-path` 部分必須指定為 `http://localhost:50342/oauth2/token`。 相關範例請參閱前一節 REST 中的「範例要求」。|
 |           | invalid_request | 要求遺漏必要參數、包含無效參數值、多次包含某個參數或格式不正確。 |  |
-|           | unauthorized_client | 用戶端無權使用此方法要求存取權杖。 | 由不使用本地回迴圈來調用擴展的請求或未正確配置 Azure 資源的託管標識的 VM 引起的。 如果您需要設定虛擬機器的協助，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)。 |
+|           | unauthorized_client | 用戶端無權使用此方法要求存取權杖。 | 由未使用本機回送來呼叫擴充功能的要求，或在未正確設定 Azure 資源受控識別的 VM 上所造成。 如果您需要設定虛擬機器的協助，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)。 |
 |           | access_denied | 資源擁有者或授權伺服器已拒絕要求。 |  |
 |           | unsupported_response_type | 授權伺服器不支援使用此方法取得存取權杖。 |  |
 |           | invalid_scope | 要求的範圍無效、未知或格式不正確。 |  |
-| 500 內部伺服器錯誤 | 未知 | 無法從 Active 目錄擷取權杖。 有關詳細資訊，請參閱*\<檔路徑中的日誌\>* | 確認已在虛擬機器上啟用 Azure 資源受控識別。 如果您需要設定虛擬機器的協助，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)。<br><br>也請確認 HTTP GET 要求 URI 的格式正確，尤其是查詢字串中指定的資源 URI。 相關範例請參閱前一節 REST 中的「範例要求」，或請參閱[支援 Azure AD 驗證的 Azure 服務](services-support-msi.md)，以取得服務及其各自資源識別碼的清單。
+| 500 內部伺服器錯誤 | 未知 | 無法從 Active 目錄擷取權杖。 如需詳細資訊，請參閱檔案* \<路徑中的記錄檔\>* | 確認已在虛擬機器上啟用 Azure 資源受控識別。 如果您需要設定虛擬機器的協助，請參閱[使用 Azure 入口網站在虛擬機器上設定 Azure 資源受控識別](qs-configure-portal-windows-vm.md)。<br><br>也請確認 HTTP GET 要求 URI 的格式正確，尤其是查詢字串中指定的資源 URI。 相關範例請參閱前一節 REST 中的「範例要求」，或請參閱[支援 Azure AD 驗證的 Azure 服務](services-support-msi.md)，以取得服務及其各自資源識別碼的清單。
 
 ## <a name="retry-guidance"></a>重試指引 
 
@@ -391,7 +391,7 @@ Azure 資源受控識別端點會透過 HTTP 回應訊息標頭的狀態碼欄�
 
 對於重試，我們建議下列策略： 
 
-| **重試策略** | **設定** | **值** | **工作原理** |
+| **重試策略** | **設定** | **值** | **運作方式** |
 | --- | --- | --- | --- |
 |ExponentialBackoff |重試計數<br />最小輪詢<br />最大輪詢<br />差異輪詢<br />第一個快速重試 |5<br />0 秒<br />60 秒<br />2 秒<br />false |嘗試 1 - 延遲 0 秒<br />嘗試 2 - 延遲 ~2 秒<br />嘗試 3 - 延遲 ~6 秒<br />嘗試 4 - 延遲 ~14 秒<br />嘗試 5 - 延遲 ~30 秒 |
 

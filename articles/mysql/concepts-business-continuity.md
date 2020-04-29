@@ -1,21 +1,21 @@
 ---
-title: 業務連續性 - MySQL 的 Azure 資料庫
-description: 在使用 Azure 資料庫進行 MySQL 服務時，瞭解業務連續性（時間點還原、資料中心中斷、異地還原）。
+title: 商務持續性-適用於 MySQL 的 Azure 資料庫
+description: 瞭解使用適用於 MySQL 的 Azure 資料庫服務時的商務持續性（時間點還原、資料中心中斷、異地還原）。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: af0069adc741cfc802c37c90c0c7ec3c3ba74bb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79537222"
 ---
-# <a name="understand-business-continuity-in-azure-database-for-mysql"></a>瞭解 MySQL Azure 資料庫中的業務連續性
+# <a name="understand-business-continuity-in-azure-database-for-mysql"></a>瞭解適用於 MySQL 的 Azure 資料庫中的商務持續性
 
-本文介紹 MySQL Azure 資料庫為業務連續性和災害復原提供的功能。 了解有哪些選項可讓您從可能導致資料遺失或造成資料庫和應用程式無法使用的干擾性事件中復原。 了解當使用者或應用程式錯誤影響資料完整性、Azure 區域中斷，或您的應用程式需要維護時該如何處理。
+本文說明適用於 MySQL 的 Azure 資料庫針對商務持續性和嚴重損壞修復所提供的功能。 了解有哪些選項可讓您從可能導致資料遺失或造成資料庫和應用程式無法使用的干擾性事件中復原。 了解當使用者或應用程式錯誤影響資料完整性、Azure 區域中斷，或您的應用程式需要維護時該如何處理。
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>可用來提供商務持續性的功能
 
@@ -23,7 +23,7 @@ ms.locfileid: "79537222"
 
 下表將比較各項可用功能的 ERT 與 RPO：
 
-| **功能** | **基本** | **通用用途** | **記憶體優化** |
+| **功能** | **基本** | **一般用途** | **記憶體最佳化** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | 從備份進行時間點還原 | 保留期間內的任何還原點 | 保留期間內的任何還原點 | 保留期間內的任何還原點 |
 | 從異地複寫備份進行異地還原 | 不支援 | ERT < 12 小時<br/>RPO < 1 小時 | ERT < 12 小時<br/>RPO < 1 小時 |
@@ -33,7 +33,7 @@ ms.locfileid: "79537222"
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>在使用者或應用程式錯誤之後復原伺服器
 
-您可以使用服務的備份從各種破壞性事件中恢復伺服器。 使用者可能會不小心刪除某些資料、不小心卸除重要的資料表，或甚至是卸除整個資料庫。 應用程式可能會因為應用程式缺陷或其他原因，而不慎以不正確的資料覆寫正確的資料。
+您可以使用服務的備份，從各種干擾性事件復原伺服器。 使用者可能會不小心刪除某些資料、不小心卸除重要的資料表，或甚至是卸除整個資料庫。 應用程式可能會因為應用程式缺陷或其他原因，而不慎以不正確的資料覆寫正確的資料。
 
 您可以執行時間點還原，為伺服器建立已知良好時間點的複本。 此時間點必須在您為伺服器設定的備份保留期間內。 資料還原至新的伺服器之後，您可以將原始伺服器取代為還原的新伺服器，或從還原的伺服器將所需的資料複製到原始伺服器。
 

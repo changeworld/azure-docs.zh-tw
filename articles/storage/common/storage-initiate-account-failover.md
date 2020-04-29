@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 0c619224201d6225d5e5c127b342f71f2f7fced9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535347"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>起始儲存體帳戶容錯移轉 (預覽)
@@ -27,11 +27,11 @@ ms.locfileid: "79535347"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-在存儲帳戶上執行帳戶容錯移轉之前，請確保已執行以下步驟：
+在您的儲存體帳戶上執行帳戶容錯移轉之前，請確定您已執行下列步驟：
 
-- 確定您的儲存體帳戶已設定為使用異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS)。 有關異地冗余存儲的詳細資訊，請參閱[Azure 存儲冗余](storage-redundancy.md)。
+- 確定您的儲存體帳戶已設定為使用異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS)。 如需有關異地多餘儲存體的詳細資訊，請參閱[Azure 儲存體冗余](storage-redundancy.md)。
 
 ## <a name="important-implications-of-account-failover"></a>帳戶容錯移轉的重要影響
 
@@ -59,14 +59,14 @@ ms.locfileid: "79535347"
 
     ![顯示帳戶容錯移轉的確認對話方塊的螢幕擷取畫面](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
-## <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 若要使用 PowerShell 起始帳戶容錯移轉，您必須先安裝 6.0.1 預覽模組。 請依照下列步驟安裝此模組：
 
 1. 解除安裝任何先前安裝的 Azure PowerShell：
 
     - 使用 [設定]**** 底下的 [應用程式與功能]****，從 Windows 移除任何先前安裝的 Azure PowerShell。
-    - 從`%Program Files%\WindowsPowerShell\Modules`中刪除所有**Azure**模組。
+    - 從`%Program Files%\WindowsPowerShell\Modules`移除所有**Azure**模組。
 
 1. 確定您已安裝最新版的 PowerShellGet。 開啟 Windows PowerShell 視窗，然後執行下列命令來安裝最新版本：
 
@@ -82,7 +82,7 @@ ms.locfileid: "79535347"
     Install-Module Az –Repository PSGallery –AllowClobber
     ```
 
-1. 安裝支援帳戶容錯移轉的 Azure 存儲預覽模組：
+1. 安裝支援帳戶容錯移轉的 Azure 儲存體預覽模組：
 
     ```powershell
     Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
@@ -110,5 +110,5 @@ az storage account failover \ --name accountName
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure 儲存體中的災害復原和帳戶容錯移轉 (預覽)](storage-disaster-recovery-guidance.md)
-- [使用 RA-GRS 設計高可用應用程式](storage-designing-ha-apps-with-ragrs.md)
-- [教程：使用 Blob 存儲構建高可用應用程式](../blobs/storage-create-geo-redundant-storage.md) 
+- [使用 RA 設計高可用性應用程式-GRS](storage-designing-ha-apps-with-ragrs.md)
+- [教學課程：建立具有 Blob 儲存體的高可用性應用程式](../blobs/storage-create-geo-redundant-storage.md) 

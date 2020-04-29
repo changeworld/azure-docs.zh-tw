@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 通知中心向特定 iOS 設備發送推送通知 |微軟文檔
+title: 使用 Azure 通知中樞將推播通知傳送至特定的 iOS 裝置 |Microsoft Docs
 description: 在本教學課程中，您將了解如何使用 Azure 通知中樞將推播通知傳送至特定的 iOS 裝置。
 services: notification-hubs
 documentationcenter: ios
@@ -17,13 +17,13 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
 ms.openlocfilehash: a775963f1b0fa19cd687c839f527f4a078c76864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80126999"
 ---
-# <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定 iOS 設備發送推送通知
+# <a name="tutorial-send-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>教學課程：使用 Azure 通知中樞將推播通知傳送至特定 iOS 裝置
 
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "80126999"
 > * 從裝置傳送通知
 > * 執行應用程式並產生通知
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 這個主題會以您在[教學課程：使用 Azure 通知中樞將通知推播至 iOS 應用程式][get-started]中所建立的應用程式為基礎。 在開始進行本教學課程之前，您必須先完成[教學課程：使用 Azure 通知中樞將通知推播至 iOS 應用程式][get-started]。
 
@@ -159,7 +159,7 @@ ms.locfileid: "80126999"
 9. 在 `AppDelegate.m` 的 `didRegisterForRemoteNotificationsWithDeviceToken` 方法中，使用下列程式碼來取代方法中的程式碼，以將裝置權杖傳遞給 `notifications` 類別。 `notifications` 類別會為通知執行與類別之間的註冊。 如果使用者變更類別選取項目，則可以呼叫 `subscribeWithCategories` 方法以回應 [subscribe]**** \(訂閱\) 按鈕來更新它們。
 
     > [!NOTE]
-    > 由於 Apple 推送通知服務 （APNS） 分配的設備權杖可以隨時更改，因此應經常註冊通知以避免通知失敗。 此範例會在應用程式每次啟動時註冊通知。 若是經常執行 (一天多次) 的應用程式，如果距離上次註冊的時間不到一天，則您可能可以略過註冊以保留頻寬。
+    > 因為 Apple Push Notification Service （APNS）所指派的裝置權杖可以隨時變更，您應經常註冊通知以避免通知失敗。 此範例會在應用程式每次啟動時註冊通知。 若是經常執行 (一天多次) 的應用程式，如果距離上次註冊的時間不到一天，則您可能可以略過註冊以保留頻寬。
 
     ```objc
     self.notifications.deviceToken = deviceToken;
@@ -371,4 +371,4 @@ ms.locfileid: "80126999"
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: https://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: notification-hubs-ios-apple-push-notification-apns-get-started.md
-[Azure 門戶]: https://portal.azure.com
+[Azure 入口網站]: https://portal.azure.com

@@ -1,25 +1,25 @@
 ---
-title: Azure 監視器應用程式見解依賴項資料模型
+title: Azure 監視器 Application Insights 相依性資料模型
 description: 相依性遙測的 Application Insights 資料模型
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671914"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>相依性遙測：Application Insights 資料模型
 
 相依性遙測 (在 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中) 代表受監視元件與遠端元件 (例如 SQL 或 HTTP 端點) 的互動。
 
-## <a name="name"></a>名稱
+## <a name="name"></a>Name
 
 使用此相依性呼叫所起始之命令的名稱。 基數值低。 範例為預存程序名稱和 URL 路徑範本。
 
-## <a name="id"></a>ID
+## <a name="id"></a>識別碼
 
 相依性呼叫執行個體的識別碼。 用來與此相依性呼叫的對應要求遙測項目相互關聯。 如需詳細資訊，請參閱[相互關聯](../../azure-monitor/app/correlation.md)頁面。
 
@@ -43,7 +43,7 @@ ms.locfileid: "77671914"
 
 相依性呼叫的結果碼。 範例為 SQL 錯誤碼與 HTTP 狀態碼。
 
-## <a name="success"></a>Success
+## <a name="success"></a>成功
 
 表示成功或失敗的呼叫。
 

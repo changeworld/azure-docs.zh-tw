@@ -4,39 +4,39 @@ description: 了解如何設定 Azure Active Directory (Azure AD) 以驗證 Serv
 ms.topic: conceptual
 ms.date: 6/28/2019
 ms.openlocfilehash: 28c4c65cfcc77607dfe9a463a09ecd10389a6eca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78193370"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>設定用戶端驗用的 Azure Active Directory
 
-針對在 Azure 上執行的叢集，建議您使用 Azure Active Directory (Azure AD) 來保護對管理端點的存取。 本文介紹如何設置 Azure AD 以驗證服務結構群集的用戶端。
+針對在 Azure 上執行的叢集，建議您使用 Azure Active Directory (Azure AD) 來保護對管理端點的存取。 本文說明如何設定 Azure AD 來驗證 Service Fabric 叢集的用戶端。
 
-在本文中，"應用程式"一詞將用於引用[Azure 活動目錄應用程式](../active-directory/develop/developer-glossary.md#client-application)，而不是服務結構應用程式;必要時將作出區分。 Azure AD 可讓組織 (稱為租用戶) 管理使用者對應用程式的存取。
+在本文中，「應用程式」一詞將用來參考[Azure Active Directory 應用程式](../active-directory/develop/developer-glossary.md#client-application)，而不是 Service Fabric 應用程式;會在必要時進行區別。 Azure AD 可讓組織 (稱為租用戶) 管理使用者對應用程式的存取。
 
-Service Fabric 叢集提供其管理功能的各種進入點 (包括 Web 型 [Service Fabric Explorer][service-fabric-visualizing-your-cluster] 和 [Visual Studio][service-fabric-manage-application-in-visual-studio])。 因此，您將創建兩個 Azure AD 應用程式來控制對群集的訪問：一個 Web 應用程式和一個本機應用程式。 創建應用程式後，您將將使用者分配給唯讀和管理員角色。
-
-> [!NOTE]
-> 在 Linux 上，在創建群集之前，必須完成以下步驟。 在 Windows 上，您還可以選擇[為現有群集配置 Azure AD 身份驗證](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md)。
+Service Fabric 叢集提供其管理功能的各種進入點 (包括 Web 型 [Service Fabric Explorer][service-fabric-visualizing-your-cluster] 和 [Visual Studio][service-fabric-manage-application-in-visual-studio])。 因此，您將建立兩個 Azure AD 應用程式來控制對叢集的存取：一個 web 應用程式和一個原生應用程式。 建立應用程式之後，您會將使用者指派給唯讀和系統管理員角色。
 
 > [!NOTE]
-> 在 Azure 門戶中看不到啟用 Linux AAD 群集上的應用程式和節點是一[個已知問題](https://github.com/microsoft/service-fabric/issues/399)。
+> 在 Linux 上，您必須在建立叢集之前完成下列步驟。 在 Windows 上，您也可以選擇[設定現有叢集的 Azure AD 驗證](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md)。
+
+> [!NOTE]
+> 在 Azure 入口網站中無法查看啟用 Linux AAD 的叢集上的應用程式和節點，這是[已知的問題](https://github.com/microsoft/service-fabric/issues/399)。
 
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 在本文中，我們假設您已經建立租用戶。 如果您尚未建立租用戶，請從閱讀[如何取得 Azure Active Directory 租用戶][active-directory-howto-tenant]開始進行。
 
 為了簡化與設定 Azure AD 搭配 Service Fabric 叢集相關的一些步驟，我們建立了一組 Windows PowerShell 指令碼。
 
-1. [將回購](https://github.com/Azure-Samples/service-fabric-aad-helpers)克隆到電腦。
-2. [確保您已安裝腳本的所有先決條件](https://github.com/Azure-Samples/service-fabric-aad-helpers#getting-started)。
+1. 將存放庫複製到您[的](https://github.com/Azure-Samples/service-fabric-aad-helpers)電腦。
+2. [請確定您已](https://github.com/Azure-Samples/service-fabric-aad-helpers#getting-started)安裝腳本的所有必要條件。
 
 ## <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>建立 Azure AD 應用程式，並將使用者指派給角色
 
-我們將使用腳本創建兩個 Azure AD 應用程式來控制對群集的訪問：一個 Web 應用程式和一個本機應用程式。 創建表示群集的應用程式後，您將為[Service Fabric](service-fabric-cluster-security-roles.md)支援的角色：唯讀和管理員創建使用者。
+我們會使用腳本來建立兩個 Azure AD 應用程式來控制對叢集的存取：一個 web 應用程式和一個原生應用程式。 建立應用程式來代表您的叢集之後，您將會為[Service Fabric 所支援的角色](service-fabric-cluster-security-roles.md)建立使用者：唯讀和系統管理員。
 
 執行 `SetupApplications.ps1`，並提供租用戶識別碼、叢集名稱和 Web 應用程式回覆 URL 作為參數。  同時也應指定使用者的使用者名稱和密碼。 例如：
 
@@ -49,20 +49,20 @@ $Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9
 > [!NOTE]
 > 對於國家雲 (例如 Azure Government、Azure 中國、Azure 德國)，您也應指定 `-Location` 參數。
 
-您可以通過執行 PowerShell 命令`Get-AzureSubscription`來查找租戶*Id。* 執行此命令會顯示每個訂用帳戶的 TenantId。
+您可以藉由*TenantId*執行 PowerShell 命令`Get-AzureSubscription`來找出您的 TenantId。 執行此命令會顯示每個訂用帳戶的 TenantId。
 
-*群集名稱*用於對腳本創建的 Azure AD 應用程式進行首碼。 它不需要與實際叢集名稱完全相符。 其用意只是要讓您更容易將 Azure AD 構件對應到與之搭配使用的 Service Fabric 叢集。
+*ClusterName* 會用來為指令碼所建立的 Azure AD 應用程式加上前置詞。 它不需要與實際叢集名稱完全相符。 其用意只是要讓您更容易將 Azure AD 構件對應到與之搭配使用的 Service Fabric 叢集。
 
-*WebApplicationReplyUrl*是 Azure AD 在完成登錄後返回給使用者的預設終結點。 將此終結點設置為群集的服務結構資源管理器終結點。 如果要創建 Azure AD 應用程式以表示現有群集，請確保此 URL 與現有群集的終結點匹配。 如果要為新群集創建應用程式，請規劃群集將具有的終結點，並確保不使用現有群集的終結點。 預設情況下，服務結構資源管理器終結點是：
+*WebApplicationReplyUrl* 是在您的使用者完成登入之後，Azure AD 傳回給他們的預設端點。 將此端點設定為叢集的 Service Fabric Explorer 端點。 如果您要建立 Azure AD 應用程式來代表現有的叢集，請確定此 URL 符合您現有叢集的端點。 如果您要建立新叢集的應用程式，請規劃您的叢集將會擁有的端點，並確定不會使用現有叢集的端點。 根據預設，Service Fabric Explorer 端點為：
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
 系統會提示您登入具有 Azure AD 租用戶系統管理權限的帳戶。 在您登入之後，指令碼會建立 Web 和原生應用程式來代表 Service Fabric 叢集。 如果您在 [Azure 入口網站][azure-portal]中查看租用戶的應用程式，應該會看到兩個新項目︰
 
-   * *群集名稱*\_群集
-   * *群集名稱*\_用戶端
+   * *ClusterName*\_叢集
+   * *ClusterName*\_用戶端
 
-該腳本在[創建啟用 AAD 的群集](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access)時列印 Azure 資源管理器範本所需的 JSON，因此最好保持 PowerShell 視窗打開。
+當您[建立已啟用 AAD](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access)的叢集時，腳本會列印 Azure Resource Manager 範本所需的 JSON，因此建議讓 PowerShell 視窗保持開啟。
 
 ```json
 "azureActiveDirectory": {
@@ -104,19 +104,19 @@ https://&lt;cluster_domain&gt;:19080/Explorer
 代表 Service Fabric Explorer 的叢集 (Web) 應用程式嘗試對照 Azure AD 來進行驗證，而它在要求中提供重新導向傳回 URL。 但該 URL 並未列在 Azure AD 應用程式 [回覆 URL]**** 清單中。
 
 #### <a name="solution"></a>解決方法
-在群集的 Azure AD 應用註冊頁上，選擇 **"身份驗證**"，並在 **"重定向 URI"** 部分下，將服務結構資源管理器 URL 添加到清單中。 儲存變更。
+在您叢集的 [Azure AD 應用程式註冊] 頁面上，選取 [**驗證**]，然後在 [重新**導向 uri** ] 區段下，將 Service Fabric Explorer URL 新增至清單。 儲存變更。
 
 ![Web 應用程式回復 URL][web-application-reply-url]
 
-### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>通過 PowerShell 使用 Azure AD 身份驗證連接到群集，在登錄時出現錯誤："AADSTS50011"
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>使用 Azure AD 驗證透過 PowerShell 連線到叢集時，會在您登入時發生錯誤： "AADSTS50011"
 #### <a name="problem"></a>問題
-當您嘗試通過 PowerShell 使用 Azure AD 連接到服務結構群集時，登錄頁將返回故障："AADSTS50011：請求中指定的回復 URL 與為應用程式佈建的回復 URL不匹配：guid &lt; &gt;。
+當您嘗試使用 Azure AD 透過 PowerShell 連線到 Service Fabric 叢集時，登入頁面會傳回失敗：「AADSTS50011：要求中指定的回復 url 不符合為應用程式設定的回復 url： &lt;guid&gt;」。
 
 #### <a name="reason"></a>原因
-與上述問題類似，PowerShell 嘗試針對 Azure AD 進行身份驗證，Azure AD 提供未在 Azure AD 應用程式**回復 URL**清單中列出的重定向 URL。  
+與前述問題類似，PowerShell 會嘗試對 Azure AD 進行驗證，以提供未列在 [Azure AD 應用程式**回復 url** ] 清單中的重新導向 URL。  
 
 #### <a name="solution"></a>解決方法
-使用與上述問題相同的過程，但 URL 必須設置為`urn:ietf:wg:oauth:2.0:oob`，命令列身份驗證的特殊重定向。
+使用與上述問題相同的程式，但 URL 必須設定為`urn:ietf:wg:oauth:2.0:oob`，這是命令列驗證的特殊重新導向。
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>透過 PowerShell 使用 Azure AD 驗證來連接叢集
 若要連接 Service Fabric 叢集，請使用下列 PowerShell 命令範例︰
@@ -131,7 +131,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalIn
 是。 但是請務必將 Service Fabric Explorer 的 URL 新增到叢集 (Web) 應用程式。 否則 Service Fabric Explorer 無法運作。
 
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>為什麼在已啟用 Azure AD 的情況下仍然需要伺服器憑證？
-FabricClient 和 FabricGateway 會執行相互驗證。 在 Azure AD 身份驗證期間，Azure AD 集成向伺服器提供用戶端標識，並且用戶端使用伺服器憑證來驗證服務器的標識。 如需有關 Service Fabric 憑證的詳細資訊，請參閱 [X.509 憑證和 Service Fabric][x509-certificates-and-service-fabric]。
+FabricClient 和 FabricGateway 會執行相互驗證。 在 Azure AD 驗證期間，Azure AD 整合會提供用戶端身分識別給伺服器，而用戶端會使用伺服器憑證來驗證服務器的身分識別。 如需有關 Service Fabric 憑證的詳細資訊，請參閱 [X.509 憑證和 Service Fabric][x509-certificates-and-service-fabric]。
 
 ## <a name="next-steps"></a>後續步驟
 設定 Azure Active Directory 應用程式並為使用者設定角色之後，請[設定和部署叢集](service-fabric-cluster-creation-via-arm.md)。

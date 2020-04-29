@@ -1,16 +1,16 @@
 ---
-title: 資料內複製 - MySQL 的 Azure 資料庫
-description: 瞭解如何使用資料輸入複製從外部伺服器同步到 MySQL 服務的 Azure 資料庫。
+title: 資料複寫-適用於 MySQL 的 Azure 資料庫
+description: 瞭解如何使用資料輸入複寫，從外部伺服器同步處理到適用於 MySQL 的 Azure 資料庫服務。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 20be34191355e6ade40e0f3b218818bfa5345a28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79533227"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>將資料複寫至適用於 MySQL 的 Azure 資料庫
@@ -23,7 +23,7 @@ ms.locfileid: "79533227"
 - **混合式資料同步：** 您可使用資料帶入複寫，讓內部部署伺服器與適用於 MySQL 的 Azure 資料庫之間的資料保持同步。 此同步適用於建立混合式應用程式。 當您目前擁有本機資料庫伺服器，但想要將資料移到更接近使用者的區域時，這個方法很吸引人。
 - **多重雲端同步處理：** 針對複雜的雲端解決方案，使用資料帶入複寫來同步處理適用於 MySQL 的 Azure 資料庫與不同雲端提供者 (包括這些雲端中所裝載的虛擬機器和資料庫服務) 之間的資料。
  
-對於遷移方案，請使用[Azure 資料庫移轉服務](https://azure.microsoft.com/services/database-migration/)（DMS）。
+針對遷移案例，請使用[Azure 資料庫移轉服務](https://azure.microsoft.com/services/database-migration/)（DMS）。
 
 ## <a name="limitations-and-considerations"></a>限制與注意事項
 
@@ -36,16 +36,16 @@ ms.locfileid: "79533227"
 - 每個資料表都必須有主索引鍵。
 - 主要伺服器應該使用 MySQL InnoDB 引擎。
 - 使用者必須有權設定二進位記錄，以及在主要伺服器上建立新的使用者。
-- 如果主伺服器啟用了 SSL，請確保為域提供的 SSL CA 憑證已包含在`mysql.az_replication_change_master`預存程序中。 請參閱以下[示例](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication)和`master_ssl_ca`參數。
+- 如果主伺服器已啟用 SSL，請確定已在`mysql.az_replication_change_master`預存程式中包含為該網域提供的 ssl CA 憑證。 請參閱下列[範例](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication)和`master_ssl_ca`參數。
 - 請確定主要伺服器的 IP 位址已新增至「適用於 MySQL 的 Azure 資料庫」複本伺服器的防火牆規則。 使用 [Azure 入口網站](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal)或 [Azure CLI](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli) 更新防火牆規則。
 - 確定裝載主要伺服器的機器允許連接埠 3306 上的輸入和輸出流量。
-- 確保主伺服器具有**公共 IP 位址**、可公開訪問 DNS 或具有完全限定的功能變數名稱 （FQDN）。
+- 確定主伺服器具有**公用 IP 位址**、DNS 可公開存取，或具有完整功能變數名稱（FQDN）。
 
 ### <a name="other"></a>其他
 - 資料輸入複寫只適用於一般用途和記憶體最佳化定價層。
 - 不支援全域交易識別碼 (GTID)。
 
 ## <a name="next-steps"></a>後續步驟
-- 瞭解如何[設置資料內複製](howto-data-in-replication.md)
+- 瞭解如何[設定複寫中的資料](howto-data-in-replication.md)
 - 了解如何[在 Azure 中使用讀取複本進行複寫](concepts-read-replicas.md)
-- 瞭解如何[使用 DMS 以最少的停機時間遷移資料](howto-migrate-online.md)
+- 深入瞭解如何[使用 DMS 以最短的停機時間遷移資料](howto-migrate-online.md)

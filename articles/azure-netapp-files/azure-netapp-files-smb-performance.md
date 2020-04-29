@@ -1,6 +1,6 @@
 ---
-title: 有關 Azure NetApp 檔 SMB 性能的常見問題解答*微軟文檔
-description: 回答有關 Azure NetApp 檔的 SMB 性能的常見問題。
+title: 適用于 Azure NetApp Files 的 SMB 效能常見問題 |Microsoft Docs
+description: 針對 Azure NetApp Files 的 SMB 效能解答常見問題。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,110 +15,110 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: b-juche
 ms.openlocfilehash: 24b3710861f0ee158619ae9103584dcdb181f3d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79460444"
 ---
-# <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>有關 Azure NetApp 檔的 SMB 性能的常見問題解答
+# <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>適用于 Azure NetApp Files 的 SMB 效能常見問題
 
-本文回答了有關 Azure NetApp 檔的 SMB 性能最佳實踐的常見問題 （FAQ）。
+本文會針對 Azure NetApp Files 的 SMB 效能最佳做法，回答相關的常見問題（Faq）。
 
-## <a name="is-smb-multichannel-enabled-in-smb-shares"></a>SMB 多通道是否在 SMB 股票中啟用？ 
+## <a name="is-smb-multichannel-enabled-in-smb-shares"></a>Smb 共用中是否已啟用 SMB 多重通道？ 
 
-是，預設情況下啟用 SMB 多管道，這是 2020 年 1 月初進行的更改。 所有早于現有 SMB 卷的 SMB 共用都啟用了該功能，所有新創建的卷在創建時也將啟用該功能。 
+是，預設會啟用 SMB 多重通道，這是在2020年1月的初期進行的變更。 所有 SMB 共用預先可追溯的現有 SMB 磁片區已啟用此功能，而且所有新建立的磁片區也會在建立時啟用此功能。 
 
-在功能啟用之前建立的任何 SMB 連接都需要重置才能利用 SMB 多通道功能。 要重置，可以斷開連接並重新連接 SMB 共用。
+在功能啟用之前建立的任何 SMB 連線都必須重設，才能利用 SMB 多重通道功能。 若要重設，您可以中斷連線，然後重新連線到 SMB 共用。
 
-## <a name="is-rss-supported"></a>是否支援 RSS？
+## <a name="is-rss-supported"></a>支援 RSS 嗎？
 
-是的，Azure NetApp 檔支援接收側縮放 （RSS）。
+是，Azure NetApp Files 支援接收端調整（RSS）。
 
-啟用 SMB 多通道後，SMB3 用戶端通過支援單個 RSS 的網路介面卡 （NIC） 建立到 Azure NetApp 檔 SMB 伺服器的多個 TCP 連接。 
+啟用 SMB 多重通道後，SMB3 用戶端會透過可支援單一 RSS 的網路介面卡（NIC），建立多個與 Azure NetApp Files SMB 伺服器的 TCP 連線。 
 
-## <a name="which-windows-versions-support-smb-multichannel"></a>哪些 Windows 版本支援 SMB 多管道？
+## <a name="which-windows-versions-support-smb-multichannel"></a>哪些 Windows 版本支援 SMB 多重通道？
 
-自 Windows 2012 年以來，Windows 一直支援 SMB 多管道，以實現最佳性能。  有關詳細資訊，請參閱[部署 SMB 多通道](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11))和[SMB 多通道的基礎知識](https://blogs.technet.microsoft.com/josebda/2012/06/28/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0/)。 
+Windows 自 Windows 2012 開始支援 SMB 多重通道，以實現最佳效能。  如需詳細資訊，請參閱[部署 Smb 多重](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/dn610980(v%3Dws.11))通道和[smb 多重通道的基本概念](https://blogs.technet.microsoft.com/josebda/2012/06/28/the-basics-of-smb-multichannel-a-feature-of-windows-server-2012-and-smb-3-0/)。 
 
 
 ## <a name="does-my-azure-virtual-machine-support-rss"></a>我的 Azure 虛擬機器是否支援 RSS？
 
-要查看 Azure 虛擬機器 NIC 是否支援 RSS，請按照`Get-SmbClientNetworkInterface`如下方式運行該命令並`RSS Capable`檢查欄位： 
+若要查看您的 Azure 虛擬機器 Nic 是否支援 RSS，請`Get-SmbClientNetworkInterface`如下所示執行命令， `RSS Capable`並檢查欄位： 
 
-![對 Azure 虛擬機器的 RSS 支援](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
+![Azure 虛擬機器的 RSS 支援](../media/azure-netapp-files/azure-netapp-files-formance-rss-support.png)
 
-## <a name="does-azure-netapp-files-support-smb-direct"></a>Azure NetApp 檔是否支援 SMB 直接檔？
+## <a name="does-azure-netapp-files-support-smb-direct"></a>Azure NetApp Files 是否支援 SMB Direct？
 
-否，Azure NetApp 檔不支援 SMB Direct。 
+否，Azure NetApp Files 不支援 SMB 直接傳輸。 
 
-## <a name="what-is-the-benefit-of-smb-multichannel"></a>SMB 多管道有什麼好處？ 
+## <a name="what-is-the-benefit-of-smb-multichannel"></a>SMB 多重通道的優點為何？ 
 
-SMB 多通道功能使 SMB3 用戶端能夠通過單個網路介面卡 （NIC） 或多個 NIC 建立連接池，並使用它們發送單個 SMB 會話的請求。 相反，根據設計，SMB1 和 SMB2 要求用戶端建立一個連接，並通過該連接發送給定會話的所有 SMB 流量。 此單個連接限制可以從單個用戶端實現的總體協定性能。
+「SMB 多重通道」功能可讓 SMB3 用戶端透過單一網路介面卡（NIC）或多個 Nic 建立連線集區，並使用它們來傳送單一 SMB 會話的要求。 相反地，根據設計，SMB1 和 SMB2 會要求用戶端建立一個連線，並透過該連線傳送指定會話的所有 SMB 流量。 這個單一連接會限制可以從單一用戶端達成的整體通訊協定效能。
 
-## <a name="should-i-configure-multiple-nics-on-my-client-for-smb"></a>我應該為 SMB 配置用戶端上的多個 NIC 嗎？
+## <a name="should-i-configure-multiple-nics-on-my-client-for-smb"></a>我是否應該在用戶端上設定 SMB 的多個 Nic？
 
-否。 SMB 用戶端將與 SMB 伺服器返回的 NIC 計數匹配。  每個存儲卷可從一個存儲終結點訪問。  這意味著對於任何給定的 SMB 關係，將只使用一個 NIC。  
+否。 SMB 用戶端會符合 SMB 伺服器傳回的 NIC 計數。  每個存放磁片區都只能從一個儲存體端點存取。  這表示任何指定的 SMB 關聯性都只會使用一個 NIC。  
 
-如下文的`Get-SmbClientNetworkInterace`輸出所示，虛擬機器有兩個網路介面 - 15 和 12。  如下圖所示`Get-SmbMultichannelConnection`，即使有兩個支援 RSS 的 NICS，也僅使用介面 12 與 SMB 共用連接;介面 15 未使用。
+如`Get-SmbClientNetworkInterace`以下的輸出所示，虛擬機器有兩個網路介面：-15 和12。  如下列命令`Get-SmbMultichannelConnection`底下所示，即使有兩個支援 RSS 的 nic，但只有介面12會用於與 SMB 共用的連線;介面15不在使用中。
 
-![支援 RSS 的 NICS](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
+![支援 RSS 的 NIC](../media/azure-netapp-files/azure-netapp-files-rss-capable-nics.png)
 
-## <a name="is-nic-teaming-supported-in-azure"></a>Azure 中是否支援 NIC 團隊？
+## <a name="is-nic-teaming-supported-in-azure"></a>Azure 中支援 NIC 小組嗎？
 
-Azure 中不支援 NIC 團隊。 儘管 Azure 虛擬機器支援多個網路介面，但它們表示邏輯而不是物理構造。 因此，它們不提供容錯。  此外，Azure 虛擬機器可用的頻寬是為電腦本身計算的，而不是為任何單獨的網路介面計算的。
+Azure 不支援 NIC 小組。 雖然 Azure 虛擬機器支援多個網路介面，但它們代表邏輯，而不是實體結構。 因此，它們不提供容錯功能。  此外，Azure 虛擬機器可用的頻寬是針對機器本身計算，而不是任何個別的網路介面。
 
-## <a name="whats-the-performance-like-for-smb-multichannel"></a>SMB 多管道的性能如何？
+## <a name="whats-the-performance-like-for-smb-multichannel"></a>SMB 多重通道的效能為何？
 
-以下測試和圖表演示了 SMB 多通道對單實例工作負載的強大功能。
+下列測試和圖形示範單一實例工作負載上 SMB 多重通道的強大功能。
 
-### <a name="random-io"></a>隨機 I/O  
+### <a name="random-io"></a>隨機 i/o  
 
-在用戶端上禁用 SMB 多通道後，使用 FIO 和 40-GiB 工作集執行純 8-KiB 讀寫測試。  SMB 共用在每個測試之間分離，SMB 用戶端連接計數的增量為每個 RSS 網路`1`介面設置`4`，`8``16`、 `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>`、 。 測試顯示，的`4`預設設置足以滿足 I/O 密集型工作負載;遞增至`8`無`16`效果。 
+在用戶端上停用 SMB 多重通道時，純粹的 8-KiB 讀取和寫入測試是使用 FIO 和 40-GiB 工作集來執行。  SMB 共用已在每個測試之間卸離，而每個 RSS 網路介面`1`設定的 smb 用戶端連線計數`4`增量`8`為`16`、 `set-SmbClientConfiguration -ConnectionCountPerRSSNetworkInterface <count>`、、、。 測試顯示的預設設定`4`足以應付需要大量 i/o 的工作負載;遞增至`8`且`16`不會有任何作用。 
 
-該命令`netstat -na | findstr 445``1`證明，建立其他連接時，從 到`4``8`和 以`16`遞增為增量。  在每次測試期間，SMB 都充分利用了四個 CPU 內核，這一點`Per Processor Network Activity Cycles`由 perfmon 統計資訊（不包括在本文中）所證實。
+此命令`netstat -na | findstr 445`證明已建立額外的連接，其遞增`1`從`4`到`8`到以及`16`到。  在每個測試期間，已將四個 CPU 核心完全使用於 SMB， `Per Processor Network Activity Cycles`如 perfmon 統計資料所確認（不包含在本文中）。
 
-![隨機 I/O 測試](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
+![隨機 i/o 測試](../media/azure-netapp-files/azure-netapp-files-random-io-tests.png)
 
-Azure 虛擬機器不會影響 SMB（或 NFS） 存儲 I/O 限制。  如下所示，D16 實例類型的緩存存儲 IOPS 的受限速率為 32，000，未緩存存儲 IOPS 的速率為 25，600。  但是，上圖顯示的 I/O 比 SMB 明顯多。
+Azure 虛擬機器不會影響 SMB （或 NFS）儲存體 i/o 限制。  如下所示，針對快取的儲存體 IOPS，D16 實例類型的比率為32000，而針對未快取的儲存體 IOPS 則為25600。  不過，上圖顯示 SMB 的 i/o 明顯較多。
 
-![隨機 I/O 比較](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
+![隨機 i/o 比較](../media/azure-netapp-files/azure-netapp-files-random-io-tests-list.png)
 
-### <a name="sequential-io"></a>順序 IO 
+### <a name="sequential-io"></a>連續 IO 
 
-與上述隨機 I/O 測試類似的測試使用 64-KiB 順序 I/O 執行。 儘管每個 RSS 網路介面的用戶端連接計數增加超過 4' 對隨機 I/O 沒有明顯影響，但順序 I/O 也不適用。 如下圖所示，每次增加都與讀取輸送量的相應增加相關。 由於 Azure 對每個實例類型/大小施加的網路頻寬限制，寫入輸送量保持不變。 
+類似上述隨機 i/o 測試的測試是以 64-KiB 順序 i/o 來執行。 雖然每個 RSS 網路介面的用戶端連接計數增加超過4個不會對隨機 i/o 造成明顯的影響，但這同樣不適用於順序 i/o。 如下圖所示，每個增加都會與相對應的讀取輸送量增加相關聯。 因為 Azure 針對每個實例類型/大小所放置的網路頻寬限制，所以寫入輸送量會保持不變。 
 
-![順序 I/O 測試](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
+![順序 i/o 測試](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests.png)
 
-Azure 對每個虛擬機器類型/大小進行網路速率限制。 速率限制僅對出站流量施加限制。 虛擬機器上存在的 NIC 數與電腦可用的頻寬總量無關。  例如，D16 實例類型施加的網路限制為 8000 Mbps（1，000 MiB/s）。  如上圖所示，限制會影響出站流量（寫入），但不會影響多通道讀取。
+Azure 會在每個虛擬機器類型/大小上放置網路速率限制。 速率限制只會強加于輸出流量。 虛擬機器上的 Nic 數目與電腦可用的總頻寬量無關。  例如，D16 實例類型的網路限制為 8000 Mbps （1000 MiB/s）。  如上圖所示，此限制會影響輸出流量（寫入），但不會影響多重通道讀取。
 
-![順序 I/O 比較](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
+![順序 i/o 比較](../media/azure-netapp-files/azure-netapp-files-sequential-io-tests-list.png)
 
-## <a name="is-accelerated-networking-recommended"></a>是否建議加速聯網？
+## <a name="is-accelerated-networking-recommended"></a>建議使用加速網路嗎？
 
-為了達到最佳性能，建議盡可能配置[加速網路](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)。 請記住以下注意事項：  
+為了達到最大效能，建議您盡可能設定[加速網路](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)。 請記住下列考慮：  
 
-* 預設情況下，Azure 門戶為支援此功能的虛擬機器啟用加速網路。  但是，其他部署方法（如 Ansible 和類似的組態工具）可能不會。  如果啟用加速網路可能會妨礙機器的性能。  
-* 如果由於虛擬機器缺少實例類型或大小的支援，因此未在虛擬機器的網路介面上啟用加速網路，則該介面將保持禁用狀態，實例類型較大。 在這種情況下，您將需要手動干預。
+* 根據預設，Azure 入口網站會針對支援此功能的虛擬機器啟用加速網路。  不過，其他部署方法（例如 Ansible 和類似的設定工具）可能不會。  若無法啟用加速網路，可能會妨礙電腦的效能。  
+* 如果虛擬機器的網路介面上未啟用加速網路，因為它不支援實例類型或大小，它會維持以較大的實例類型來停用。 在這些情況下，您將需要手動介入。
 
-## <a name="are-jumbo-frames-supported"></a>支援巨型幀嗎？
+## <a name="are-jumbo-frames-supported"></a>是否支援巨型框架？
 
-Azure 虛擬機器不支援巨型幀。
+Azure 虛擬機器不支援巨型框架。
 
-## <a name="is-smb-signing-supported"></a>是否支援 SMB 簽名？ 
+## <a name="is-smb-signing-supported"></a>是否支援 SMB 簽署？ 
 
-SMB 協定為檔和列印共用以及其他網路操作（如遠端 Windows 管理）提供了基礎。 為防止會修改傳輸中 SMB 封包的中間人攻擊，SMB 通訊協定支援 SMB 封包的數位簽章。 
+SMB 通訊協定提供檔案和列印共用以及其他網路作業（例如遠端 Windows 系統管理）的基礎。 為防止會修改傳輸中 SMB 封包的中間人攻擊，SMB 通訊協定支援 SMB 封包的數位簽章。 
 
-對於 Azure NetApp 檔支援的所有 SMB 協定版本，都支援 SMB 簽名。 
+Azure NetApp Files 支援的所有 SMB 通訊協定版本都支援 SMB 簽章。 
 
-## <a name="what-is-the-performance-impact-of-smb-signing"></a>SMB 簽名對性能有何影響？  
+## <a name="what-is-the-performance-impact-of-smb-signing"></a>SMB 簽章的效能影響為何？  
 
-SMB 簽名對 SMB 性能有有害影響。 在性能下降的其他潛在原因中，每個資料包的數位簽章會消耗額外的用戶端 CPU，如下所述 perfmon 輸出所示。 在這種情況下，核心 0 似乎負責 SMB，包括 SMB 簽名。  與上一節中的非多通道順序讀取輸送量數位的比較顯示，SMB 簽名可將總體輸送量從 875MiB/s 降至大約 250MiB/s。 
+SMB 簽署在 SMB 效能上具有不利的效果。 在效能降低的其他潛在原因中，每個封包的數位簽章會耗用額外的用戶端 CPU，如以下的 perfmon 輸出所示。 在此情況下，核心0會出現負責 SMB 的，包括 SMB 簽署。  與上一節中非多重通道連續讀取輸送量數位的比較顯示，SMB 簽署會將整體輸送量從 875MiB/s 降至大約 250MiB/秒。 
 
-![SMB 簽名性能影響](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
+![SMB 簽章效能影響](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
 
 
 ## <a name="next-steps"></a>後續步驟  
 
-- [關於 Azure NetApp 檔的常見問題解答](azure-netapp-files-faqs.md)
-- 請參閱 Azure NetApp 檔：有關使用 SMB 檔共用的[SMB 工作負載的託管企業檔共用](https://cloud.netapp.com/hubfs/Resources/ANF%20SMB%20Quickstart%20doc%20-%2027-Aug-2019.pdf?__hstc=177456119.bb186880ac5cfbb6108d962fcef99615.1550595766408.1573471687088.1573477411104.328&__hssc=177456119.1.1573486285424&__hsfp=1115680788&hsCtaTracking=cd03aeb4-7f3a-4458-8680-1ddeae3f045e%7C5d5c041f-29b4-44c3-9096-b46a0a15b9b1)。
+- [關於 Azure NetApp Files 的常見問題](azure-netapp-files-faqs.md)
+- 如需有關使用 SMB 檔案共用搭配 Azure NetApp Files 的[Smb 工作負載，請參閱 Azure Netapp files：受控企業檔案共用](https://cloud.netapp.com/hubfs/Resources/ANF%20SMB%20Quickstart%20doc%20-%2027-Aug-2019.pdf?__hstc=177456119.bb186880ac5cfbb6108d962fcef99615.1550595766408.1573471687088.1573477411104.328&__hssc=177456119.1.1573486285424&__hsfp=1115680788&hsCtaTracking=cd03aeb4-7f3a-4458-8680-1ddeae3f045e%7C5d5c041f-29b4-44c3-9096-b46a0a15b9b1)。

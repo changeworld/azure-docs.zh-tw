@@ -1,14 +1,14 @@
 ---
-title: Azure 應用程式洞察資料模型 - 跟蹤遙測
+title: Azure 應用程式 Insights 資料模型-追蹤遙測
 description: 追蹤遙測的 Application Insights 資料模型
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 31958b26cdb8a7897cf0051af6600014c07949fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77671948"
 ---
 # <a name="trace-telemetry-application-insights-data-model"></a>追蹤遙測：Application Insights 資料模型
@@ -32,7 +32,7 @@ ms.locfileid: "77671948"
 ## <a name="next-steps"></a>後續步驟
 
 - [在 Application Insights 中探索 .NET 追蹤記錄](../../azure-monitor/app/asp-net-trace-logs.md)。
-- [在應用程式見解中流覽 JAVA 跟蹤日誌](../../azure-monitor/app/java-trace-logs.md)。
+- [探索 Application Insights 中的 JAVA 追蹤記錄](../../azure-monitor/app/java-trace-logs.md)。
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](data-model.md)。
 - [撰寫自訂追蹤遙測](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace)
 - 查看 Application Insights 支援的[平台](../../azure-monitor/app/platforms.md)。

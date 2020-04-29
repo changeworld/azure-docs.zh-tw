@@ -1,5 +1,5 @@
 ---
-title: 在運行 Linux 的虛擬機器上配置 LVM
+title: 在執行 Linux 的虛擬機器上設定 LVM
 description: 了解如何在 Azure 中的 Linux 上設定 LVM
 author: gbowerman
 ms.service: virtual-machines-linux
@@ -8,10 +8,10 @@ ms.date: 09/27/2018
 ms.author: guybo
 ms.subservice: disks
 ms.openlocfilehash: 7f560a1e6266b5f2452bf9442d2d4c983de1236e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80066803"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>設定 Azure 中 Linux VM 的 LVM

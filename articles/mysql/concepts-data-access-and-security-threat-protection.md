@@ -1,16 +1,16 @@
 ---
-title: 高級威脅防護 - 適用于 MySQL 的 Azure 資料庫
-description: 瞭解有關高級威脅防護的概念，該保護檢測指示資料庫潛在安全威脅的異常資料庫活動。
+title: 先進的威脅防護-適用於 MySQL 的 Azure 資料庫
+description: 瞭解「先進的威脅防護」的概念，它會偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 01ac6ccbc2789d2052bab07e2da51630b6dbf581
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79537154"
 ---
 # <a name="azure-database-for-mysql-advanced-threat-protection"></a>適用於 MySQL 的 Azure 資料庫進階威脅防護
@@ -18,9 +18,9 @@ ms.locfileid: "79537154"
 適用於 MySQL 的 Azure 資料庫進階威脅防護偵測到了異常活動，這表示有不尋常及可能有害的活動試圖存取或惡意探索資料庫。
 
 > [!NOTE]
-> 高級威脅防護處於公共預覽版。
+> 先進的威脅防護處於公開預覽狀態。
 
-「進階威脅防護」是進階資料安全性供應項目的一部分，該供應項目是進階安全性功能的整合套件。 高級威脅防護可以通過[Azure 門戶](https://portal.azure.com)或使用[REST API](/rest/api/mysql/serversecurityalertpolicies)進行訪問和管理。 此功能可用於通用和記憶體優化伺服器。
+「進階威脅防護」是進階資料安全性供應項目的一部分，該供應項目是進階安全性功能的整合套件。 您可以透過[Azure 入口網站](https://portal.azure.com)或使用[REST API](/rest/api/mysql/serversecurityalertpolicies)來存取和管理「先進的威脅防護」。 這項功能適用于一般用途和記憶體優化的伺服器。
 
 > [!NOTE]
 > 下列 Azure Government 和主權雲端區域**無法**使用進階威脅防護功能：US Gov 德克薩斯州、US Gov 亞利桑那州、US Gov 愛荷華州、US Gov 維吉尼亞州、US DoD 東部、US DoD 中部、德國中部、德國北部、中國東部、中國東部 2。 如需一般產品可用性，請瀏覽[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/)。
@@ -42,6 +42,6 @@ ms.locfileid: "79537154"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解有關[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
+* 深入瞭解[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * 如需定價的詳細資訊，請參閱[適用於 MySQL 的 Azure 資料庫價格頁面](https://azure.microsoft.com/pricing/details/mysql/) 
 * 使用 Azure 入口網站來設定[適用於 MySQL 的 Azure 資料庫進階威脅防護](howto-database-threat-protection-portal.md)  
