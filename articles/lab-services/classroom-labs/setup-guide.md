@@ -1,6 +1,6 @@
 ---
-title: Azure 實驗室服務的加速課堂實驗室設置指南
-description: 本指南可幫助實驗室建立者快速設置實驗室帳戶,供其學校內使用。
+title: Azure 實驗室服務的加速教室實驗室設定指南
+description: 本指南可協助實驗室建立者快速地設定實驗室帳戶，以便在其學校內使用。
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,125 +14,125 @@ ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
 ms.openlocfilehash: e00b6dd5af1cb489aee9e8b4c9f3337eb02e4b14
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878097"
 ---
-# <a name="classroom-lab-setup-guide"></a>課堂實驗室設置指南
+# <a name="classroom-lab-setup-guide"></a>教室實驗室設定指南
 
-向學生發佈實驗室的過程最多可能需要幾個小時,具體取決於將在實驗室中創建的虛擬機 (VM) 數量。 至少留出一天時間設置實驗室,確保實驗室正常工作,並留出足夠的時間發佈學生的 VM。
+將實驗室發佈至您的學生的程式，最多可能需要數小時的時間，視您在實驗室中建立的虛擬機器（Vm）數目而定。 至少允許一天設定實驗室，以確保其運作正常，並允許足夠的時間發佈學生的 Vm。
 
-## <a name="understand-the-lab-requirements-of-your-class"></a>瞭解您班級的實驗室要求
+## <a name="understand-the-lab-requirements-of-your-class"></a>瞭解您類別的實驗室需求
 
-在設置新實驗室之前,應考慮以下問題。
+設定新的實驗室之前，您應該考慮下列問題。
 
-### <a name="what-software-requirements-does-the-class-have"></a>該類有哪些軟體要求?
+### <a name="what-software-requirements-does-the-class-have"></a>類別有哪些軟體需求？
 
-根據課堂的學習目標,決定需要在實驗室的 VM 上安裝哪些作業系統、應用程式和工具。 要設定實驗室 VM,有三個選項:
+根據您類別的學習目標，決定需要在實驗室的 Vm 上安裝哪些作業系統、應用程式和工具。 若要設定實驗室 Vm，您有三個選項：
 
-- **使用 Azure 應用商店映射**:Azure 應用商店提供了數百個映射,您可以在創建實驗室時使用這些映射。 對於某些類,這些映射之一可能已包含類所需的一切。
+- **使用 Azure Marketplace 映射**： Azure Marketplace 提供數以百計的映射，可供您在建立實驗室時使用。 針對某些類別，這些映射中的其中一個可能已經包含您的類別所需的所有專案。
 
-- **創建新的自定義映射**:可以使用 Azure 應用商店映像作為起點,並通過安裝其他軟體和進行配置更改來自定義映射。
+- **建立新的自訂映射**：您可以建立自己的自訂映射，方法是使用 Azure Marketplace 映射作為起點，並藉由安裝額外的軟體並進行設定變更來加以自訂。
 
-- **使用現有的自定義映射**:您可以重用以前創建或由學校其他管理員或教職員工創建的現有自定義映射。 這要求管理員配置共用映射庫,這是用於保存自定義映射的存儲庫。
-
-> [!NOTE]
-> 管理員負責啟用 Azure 應用商店映射和自定義映射,以便可以使用它們。 與 IT 部門協調,確保啟用所需的映射。 您建立的自定義映射將自動啟用,以便在您擁有的實驗室中使用。
-
-### <a name="what-hardware-requirements-does-the-class-have"></a>該類有哪些硬體要求?
-
-有多種計算大小可供選擇:
-
-- 嵌套虛擬化大小,以便您可以允許學生訪問能夠承載多個嵌套 VM 的 VM。 例如,對於網路課程,可以使用此計算大小。
-
-- GPU 大小,以便學生可以使用電腦密集型類型的應用程式。 例如,此選擇可能適用於人工智慧和機器學習。
-
-請參閱有關 VM[大小調整](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#vm-sizing)的指南,查看可用計算大小的完整清單。
+- **使用現有的自訂映射**：您可以重複使用先前建立的現有自訂映射，或是由您學校的其他系統管理員或教職員所建立的。 這需要您的系統管理員設定共用映射庫，這是用來儲存自訂映射的存放庫。
 
 > [!NOTE]
-> 根據實驗室的區域,您可能會看到可用的計算大小更少,因為區域而異。 通常,應選擇最接近您需求的最小計算大小。 使用 Azure 實驗室服務,可以在需要時稍後設置具有不同計算容量的新實驗室。
+> 您的系統管理員負責啟用 Azure Marketplace 映射和自訂映射，讓您可以使用它們。 與您的 IT 部門協調，以確保您所需的映射已啟用。 您所建立的自訂映射會自動啟用，以便在您擁有的實驗室中使用。
 
-### <a name="what-dependencies-does-the-class-have-on-external-azure-or-network-resources"></a>類對外部 Azure 或網路資源具有哪些依賴關係?
+### <a name="what-hardware-requirements-does-the-class-have"></a>類別有哪些硬體需求？
 
-如果實驗室 VM 需要使用外部資源(如資料庫、檔共享或許可伺服器),請與管理員協調以確保實驗室有權訪問這些資源。
+有各種計算大小可供您選擇：
 
-要造訪*不受*虛擬網路保護的 Azure 資源,不需要管理員尋求其他配置。 您可以通過公共網路訪問這些資源。
+- 嵌套虛擬化大小，讓您可以將學生存取權提供給能夠裝載多個嵌套 Vm 的 VM。 例如，您可以使用此計算大小來進行網路課程。
+
+- GPU 大小，讓您的學生可以使用電腦密集型類型的應用程式。 例如，這種選擇適用于人工智慧和機器學習。
+
+請參閱 VM 重設[大小](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#vm-sizing)指南，以查看可用計算大小的完整清單。
 
 > [!NOTE]
-> 應考慮是否可以通過在 VM 上直接提供資源來減少實驗室對外部資源的依賴關係。 例如,為了消除從外部資料庫讀取數據的需要,可以直接在 VM 上安裝資料庫。  
+> 視您實驗室的區域而定，您可能會看到較少的可用計算大小，因為這會因區域而異。 一般來說，您應該選取最接近您需求的最小計算大小。 使用 Azure 實驗室服務時，您可以在稍後視需要使用不同的計算容量來設定新的實驗室。
 
-### <a name="how-will-costs-be-controlled"></a>如何控製成本?
+### <a name="what-dependencies-does-the-class-have-on-external-azure-or-network-resources"></a>類別對外部 Azure 或網路資源的相依性為何？
 
-實驗室服務使用即用即付定價模型,這意味著您只為實驗室 VM 運行時付費。 為了控制成本,您有三個選項通常同時使用:
+如果您的實驗室 Vm 需要使用外部資源，例如資料庫、檔案共用或授權伺服器，請與您的系統管理員協調，以確保您的實驗室能夠存取這些資源。
 
-- **計劃**:一個時程表允許您自動控制實驗室的 VM 何時啟動和關閉。
-- **配額**:配額控制學生將在計劃時數之外訪問 VM 的小時數。 如果在學生使用配額時達到配額,則 VM 將自動關閉。 除非增加了配額,否則學生無法重新啟動 VM。
-- **自動關閉**:啟用后,自動關閉設置會導致 Windows VM 在學生與遠端桌面協定 (RDP) 會話斷開連接後,在一定時間長度後自動關閉。 此設定預設為停用狀態。  
+若要存取*不*受虛擬網路保護的 Azure 資源，您不需要由系統管理員尋求其他設定。 您可以透過公用網際網路存取這些資源。
+
+> [!NOTE]
+> 您應該考慮是否可以藉由直接在 VM 上提供資源，來減少實驗室對外部資源的相依性。 例如，若要避免從外部資料庫讀取資料的需求，您可以直接在 VM 上安裝資料庫。  
+
+### <a name="how-will-costs-be-controlled"></a>如何控制成本？
+
+實驗室服務會使用隨用隨付定價模型，這表示您只需針對實驗室 VM 執行的時間付費。 若要控制成本，您有三個通常會搭配使用的選項：
+
+- **排程**：排程可讓您自動控制實驗室的 vm 啟動和關閉的時間。
+- **配額**：配額會控制學生在排程的時數以外可存取 VM 的時數。 如果在學生使用配額時達到配額，則會自動關閉 VM。 除非增加配額，否則學生無法重新開機 VM。
+- **自動關閉**：啟用時，自動關閉設定會使 Windows vm 在一段特定時間後自動關閉，在學生從遠端桌面通訊協定（RDP）會話中斷連線後。 此設定預設為停用狀態。  
 
     > [!NOTE]
-    > 此設置當前僅存在於 Windows 中。
+    > 此設定目前僅存在於 Windows。
 
-### <a name="how-will-students-save-their-work"></a>學生將如何保存他們的工作?
+### <a name="how-will-students-save-their-work"></a>學生會如何儲存其工作？
 
-每個學生都分配自己的 VM,在實驗室的生存期內分配給他們。 他們可以選擇:
+每個學生都會獲指派自己的 VM，在實驗室的存留期間指派給他們。 他們可以選擇：
 
-- 直接保存到 VM。
-- 保存到外部位置,如 OneDrive 或 GitHub。
+- 直接儲存到 VM。
+- 儲存至外部位置，例如 OneDrive 或 GitHub。
 
-可以自動為實驗室 VM 上的學生配置 OneDrive。
+您可以在實驗室 Vm 上自動設定學生專用的 OneDrive。
 
 > [!NOTE]
-> 為了確保學生能夠繼續訪問實驗室外保存的工作,並在課程結束后,我們建議學生將工作保存到外部存儲庫。
+> 為確保您的學生可以繼續存取實驗室以外的已儲存工作，並在類別結束後，建議學生將其工作儲存至外部存放庫。
 
-### <a name="how-will-students-connect-to-their-vm"></a>學生如何連接到他們的 VM?
+### <a name="how-will-students-connect-to-their-vm"></a>學生如何連接到其 VM？
 
-對於 Windows VM 的 RDP,我們建議學生使用[Microsoft 遠端桌面用戶端](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)。 遠端桌面用戶端支援 Mac、Chromebook 和 Windows。
+針對 RDP 到 Windows Vm，我們建議學生使用[Microsoft 遠端桌面用戶端](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)。 遠端桌面用戶端支援 Mac、Chromebook 和 Windows。
 
-對於 Linux VM,學生可以使用 SSH 或 RDP。 要讓學生使用 RDP 進行連接,必須安裝和配置必要的 RDP 和 GUI 包。
+針對 Linux Vm，學生可以使用 SSH 或 RDP。 若要讓學生使用 RDP 連線，您必須安裝並設定必要的 RDP 和 GUI 套件。
 
 ## <a name="set-up-your-lab"></a>設定實驗室
 
-了解課堂實驗室的要求后,即可設置它。 請按照本節中的連結瞭解如何設置實驗室。
+瞭解類別實驗室的需求之後，您就可以開始設定。 請遵循本節中的連結，以瞭解如何設定您的實驗室。
 
-1. **創建實驗室。** 有關[創建教室實驗室](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#create-a-classroom-lab)的說明,請參閱教程。
+1. **建立實驗室。** 如需相關指示，請參閱[建立教室實驗室](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#create-a-classroom-lab)的教學課程。
 
     > [!NOTE]
-    > 如果類需要嵌套虛擬化,請參閱[啟用嵌套虛擬化](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-nested-virtualization-template-vm)的步驟。
+    > 如果您的類別需要嵌套虛擬化，請參閱[啟用嵌套虛擬化](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-nested-virtualization-template-vm)中的步驟。
 
-1. **自定義映射併發佈實驗室 VM。** 連接到稱為範本 VM 的特殊 VM。 請參閱以下指南中的步驟:
-    - [建立及管理範本 VM](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#publish-the-template-vm)
+1. **自訂映射併發布實驗室 Vm。** 連接至名為範本 VM 的特殊 VM。 請參閱下列指南中的步驟：
+    - [建立和管理範本 VM](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#publish-the-template-vm)
     - [使用共用映像資源庫](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-use-shared-image-gallery)
 
     > [!NOTE]
-    > 如果使用 Windows,還應看到[準備 Windows 範本 VM](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-prepare-windows-template)的說明。 這些說明包括設置 OneDrive 和 Office 供學生使用的步驟。
+    > 如果您使用的是 Windows，您也應該參閱[準備 windows 範本 VM](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-prepare-windows-template)中的指示。 這些指示包括設定 OneDrive 和 Office 的步驟，讓您的學生使用。
 
-1. **管理 VM 池和容量。** 您可以根據需要輕鬆擴展或減少 VM 容量。 請記住,增加 VM 容量可能需要幾個小時,因為這涉及到設置新的 VM。 請參閱[設置和管理 VM 池](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-set-virtual-machine-passwords)的步驟。
+1. **管理 VM 集區和容量。** 您可以視您的類別需求輕鬆地相應增加或減少 VM 容量。 請記住，增加 VM 容量可能需要數小時的時間，因為這牽涉到設定新的 Vm。 請參閱[設定和管理 VM 集](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-set-virtual-machine-passwords)區中的步驟。
 
-1. **添加和管理實驗室使用者。** 要將使用者添加到實驗室,請參閱以下教程中的步驟:
+1. **新增和管理實驗室使用者。** 若要將使用者新增至您的實驗室，請參閱下列教學課程中的步驟：
    - [將使用者新增至實驗室](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#add-users-to-the-lab)
-   - [傳送邀請](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#send-invitation-emails-to-users)
+   - [傳送邀請給使用者](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#send-invitation-emails-to-users)
 
-    有關學生可以使用的帳戶類型的資訊,請參閱[學生帳戶](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#student-accounts)。
+    如需學生可以使用之帳戶類型的相關資訊，請參閱[學生帳戶](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#student-accounts)。
   
-1. **設置成本控制。** 要控制實驗室的成本,請設置計劃、配額和自動關閉。 請參閱下列教學課程：
+1. **設定成本控制項。** 若要控制實驗室的成本，請設定排程、配額和自動關閉。 請參閱下列教學課程：
 
-   - [設定計劃](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
+   - [設定排程](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
         > [!NOTE]
-        > 根據已安裝的操作系統類型,VM 可能需要幾分鐘才能啟動。 為確保實驗室 VM 在預定時間內準備就緒,我們建議您提前 30 分鐘啟動 VM。
+        > 根據您已安裝的作業系統類型而定，VM 可能需要幾分鐘的時間才能啟動。 若要確保實驗室 VM 已準備好在您的排程時間內使用，建議您事先啟動30分鐘的 Vm。
 
-   - [為使用者設定配額](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)並為[特定使用者設定其他配額](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
+   - [設定使用者的配額](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users)，並[為特定使用者設定額外的配額](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
   
    - [在中斷連線時啟用自動關機](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 
         > [!NOTE]
-        > 計劃、配額和自動關機不適用於範本 VM。 因此,必須確保在不使用範本 VM 時關閉該範本 VM。 否則,它將繼續產生成本。 此外,默認情況下,當您創建實驗室時,範本 VM 將自動啟動。 請確保立即完成實驗室的設置,並關閉範本 VM。
+        > 「排程」、「配額」和「自動關機」不適用於範本 VM。 因此，您必須確保在未使用範本 VM 時將它關閉。 否則，它會繼續產生成本。 此外，根據預設，當您建立實驗室時，範本 VM 會自動啟動。 請確定您立即完成實驗室的設定，並關閉範本 VM。
 
-1. **使用儀錶板。** 有關說明,請參閱[使用實驗室的儀表板](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard)。
+1. **使用 [儀表板]。** 如需指示，請參閱[使用實驗室的儀表板](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard)。
 
     > [!NOTE]
-    > 儀表板中顯示的估計成本是學生使用實驗室時可以期望的最大成本。 例如,您的學生*不會*向您收取未使用的配額小時費。 估計成本*不*反映使用範本 VM 或共用映射庫的任何費用。
+    > 儀表板中顯示的預估成本是您可預期學生使用實驗室的最大成本。 例如，您的學生*不*會向您收取未使用配額時數的費用。 估計的成本*不會*反映使用範本 VM 或共用映射資源庫的任何費用。
 
 ## <a name="next-steps"></a>後續步驟
 

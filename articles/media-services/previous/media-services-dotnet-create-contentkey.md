@@ -1,6 +1,6 @@
 ---
 title: 使用 .NET 建立 ContentKeys
-description: 本文演示如何創建提供對資產的安全訪問的內容金鑰。
+description: 本文示範如何建立內容金鑰，以提供資產的安全存取。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: aebd6dee9314d6e5641988767c024790b6b721f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251150"
 ---
 # <a name="create-contentkeys-with-net"></a>使用 .NET 建立 ContentKeys 
 > [!div class="op_single_selector"]
-> * [休息](media-services-rest-create-contentkey.md)
+> * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 

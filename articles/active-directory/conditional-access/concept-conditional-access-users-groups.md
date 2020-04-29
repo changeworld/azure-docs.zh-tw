@@ -1,6 +1,6 @@
 ---
-title: 條件存取原則中的使用者與群組 - Azure 的動作目錄
-description: Azure AD 條件存取原則的使用者和群組是誰
+title: 條件式存取原則中的使用者和群組-Azure Active Directory
+description: Azure AD 條件式存取原則中的使用者和群組
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -12,64 +12,64 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 17312e44714c8bdb20e22ad9aeb950e46eb71e3e
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80755278"
 ---
-# <a name="conditional-access-users-and-groups"></a>條件存取:使用者和群組
+# <a name="conditional-access-users-and-groups"></a>條件式存取：使用者和群組
 
-條件訪問策略必須將使用者分配作為決策過程中的信號之一。 用戶可以包含在條件訪問策略中或排除。 
+條件式存取原則必須包含使用者指派，做為決策程式中的其中一個信號。 可以在條件式存取原則中包含或排除使用者。 
 
-![條件存取決策中使用者作為訊號](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
+![條件式存取所做出的決策中的使用者做為信號](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 
-## <a name="include-users"></a>包括使用者
+## <a name="include-users"></a>包含使用者
 
-此使用者清單通常包括組織在條件訪問策略中定位的所有使用者。 
+此使用者清單通常包含組織在條件式存取原則中的目標所有使用者。 
 
-創建條件訪問策略時,可以使用以下選項進行包括。
+建立條件式存取原則時，可以包含下列選項。
 
-- None
-   - 沒有選擇任何使用者
+- 無
+   - 未選取任何使用者
 - 所有使用者
-   - 目錄中存在的所有使用者,包括 B2B 來賓。
+   - 存在於目錄中的所有使用者，包括 B2B 來賓。
 - 選取使用者和群組
    - 所有來賓和外部使用者
-      - 此選項包括任何 B2B 來賓和外部使用者`user type`,包括`guest`屬性設置為的任何使用者。 此選項也適用於來自其他組織(如雲端解決方案供應商 (CSP) 的任何外部使用者登錄。 
+      - 此選項包括任何 B2B 來賓和外部使用者，包括將屬性設定`user type`為`guest`的任何使用者。 此選項也適用于從不同組織（例如雲端解決方案提供者（CSP））登入的任何外部使用者。 
    - 目錄角色
-      - 允許管理員選擇用於確定分配的特定 Azure AD 目錄角色。 例如,組織可能會對分配全域管理員角色的用戶創建更嚴格的策略。
+      - 可讓系統管理員選取用來判斷指派的特定 Azure AD 目錄角色。 例如，組織可能會在指派全域管理員角色的使用者上建立限制更嚴格的原則。
    - 使用者和群組
-      - 允許定位特定使用者集。 例如,當將HR應用選擇為雲應用時,組織可以選擇包含人力資源部門所有成員的組。 群組可以是 Azure AD 中任何類型的群組，包括動態或已指派的安全性與通訊群組。
+      - 允許特定使用者集合的目標。 例如，組織可以選取一個群組，其中包含 hr 部門的所有成員（在選取 HR 應用程式作為雲端應用程式時）。 群組可以是 Azure AD 中任何類型的群組，包括動態或已指派的安全性與通訊群組。
 
 ## <a name="exclude-users"></a>排除使用者
 
-當組織同時包括和排除使用者或組時,使用者或組將從策略中排除,因為排除操作將覆蓋策略中的包含。 排除通常用於緊急訪問或碎玻璃帳戶。 有關緊急訪問帳戶及其重要性的詳細資訊,請參閱以下文章: 
+當組織包含和排除使用者或群組時，會從原則中排除使用者或群組，因為排除動作會覆寫原則中的 include。 排除專案通常用於緊急存取或中斷玻璃帳戶。 如需緊急存取帳戶和其重要性的詳細資訊，請參閱下列文章： 
 
 * [在 Azure AD 中管理緊急存取帳戶](../users-groups-roles/directory-emergency-access.md)
 * [使用 Azure Active Directory 來建立具彈性的存取控制管理策略](../authentication/concept-resilient-controls.md)
 
-創建條件訪問策略時,可以使用以下選項進行排除。
+建立條件式存取原則時，有下列選項可供排除。
 
 - 所有來賓和外部使用者
-   - 此選項包括任何 B2B 來賓和外部使用者`user type`,包括`guest`屬性設置為的任何使用者。 此選項也適用於來自其他組織(如雲端解決方案供應商 (CSP) 的任何外部使用者登錄。 
+   - 此選項包括任何 B2B 來賓和外部使用者，包括將屬性設定`user type`為`guest`的任何使用者。 此選項也適用于從不同組織（例如雲端解決方案提供者（CSP））登入的任何外部使用者。 
 - 目錄角色
-   - 允許管理員選擇用於確定分配的特定 Azure AD 目錄角色。 例如,組織可能會對分配全域管理員角色的用戶創建更嚴格的策略。
+   - 可讓系統管理員選取用來判斷指派的特定 Azure AD 目錄角色。 例如，組織可能會在指派全域管理員角色的使用者上建立限制更嚴格的原則。
 - 使用者和群組
-   - 允許定位特定使用者集。 例如,當將HR應用選擇為雲應用時,組織可以選擇包含人力資源部門所有成員的組。 群組可以是 Azure AD 中任何類型的群組，包括動態或已指派的安全性與通訊群組。
+   - 允許特定使用者集合的目標。 例如，組織可以選取一個群組，其中包含 hr 部門的所有成員（在選取 HR 應用程式作為雲端應用程式時）。 群組可以是 Azure AD 中任何類型的群組，包括動態或已指派的安全性與通訊群組。
 
-### <a name="preventing-administrator-lockout"></a>防止管理員鎖定
+### <a name="preventing-administrator-lockout"></a>防止系統管理員鎖定
 
-為了防止管理員在創建應用於**所有使用者****和所有應用**的策略時將自己鎖定在目錄中,他們將看到以下警告。
+若要防止系統管理員在建立套用至**所有使用者**和**所有應用程式**的原則時，自行鎖定其目錄，他們會看到下列警告。
 
-> 別把自己鎖起來! 我們建議首先將策略應用於一小群使用者,以驗證其按預期執行。 我們還建議將至少一個管理員排除在此策略之外。 這可確保您仍然具有訪問許可權,並且如果需要更改,可以更新策略。 請查看受影響的用戶和應用。
+> 不要將自己鎖在外！ 我們建議您先將原則套用至一小組使用者，以確認其行為如預期般運作。 我們也建議您至少排除此原則中的一位系統管理員。 這可確保您仍然擁有存取權，並可在需要變更時更新原則。 請檢查受影響的使用者和應用程式。
 
-預設情況下,策略將提供一個選項,將當前使用者從策略中排除,但管理員可以覆蓋此預設值,如下圖所示。 
+根據預設，原則會提供一個選項，從原則中排除目前的使用者，但系統管理員可以覆寫此預設值，如下圖所示。 
 
-![警告,不要把自己鎖起來!](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
+![警告，請勿將自己鎖在外！](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups-lockout-warning.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [條件存取:雲應用或操作](concept-conditional-access-cloud-apps.md)
+- [條件式存取：雲端應用程式或動作](concept-conditional-access-cloud-apps.md)
 
-- [條件存取一般原則](concept-conditional-access-policy-common.md)
+- [條件式存取的一般原則](concept-conditional-access-policy-common.md)

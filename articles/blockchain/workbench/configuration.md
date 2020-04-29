@@ -1,14 +1,14 @@
 ---
-title: Azure 區塊鏈工作臺配置中繼資料參考
-description: Azure 區塊鏈工作臺預覽應用程式佈建中繼資料概述。
+title: Azure Blockchain Workbench 設定中繼資料參考
+description: Azure Blockchain Workbench 預覽應用程式設定中繼資料總覽。
 ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: 661e795f0e85f872b1072a8f641b8938115c5d7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79252190"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 組態參考
@@ -49,7 +49,7 @@ Azure Blockchain Workbench 應用程式是以組態中繼資料和智慧合約�
 
 | 欄位 | 描述 | 必要 | 最大長度 |
 |-------|-------------|:--------:|-----------:|
-| 名稱 | 唯一的工作流程名稱。 對應的智慧合約必須針對適用的合約類別使用相同的**名稱**。 | 是 | 50 |
+| Name | 唯一的工作流程名稱。 對應的智慧合約必須針對適用的合約類別使用相同的**名稱**。 | 是 | 50 |
 | DisplayName | 工作流程的易記顯示名稱。 | 是 | 255 |
 | 描述 | 工作流程的說明。 | 否 | 255 |
 | Initiators | [ApplicationRoles](#application-roles) 的集合。 對已獲授權可在工作流程中建立合約的使用者所指派的角色。 | 是 | |
@@ -65,7 +65,7 @@ Azure Blockchain Workbench 應用程式是以組態中繼資料和智慧合約�
 
 支援的資料類型。
 
-| 類型 | 描述 |
+| 類型 | 說明 |
 |-------|-------------|
 | address  | 區塊鏈位址類型，例如「合約」** 或「使用者」**。 |
 | array    | 類型為整數、布林、金額、或時間的單一層級陣列。 陣列可以是靜態或動態。 使用 **ElementType** 指定陣列中元素的資料類型。 請參閱[組態範例](#example-configuration-of-type-array)。 |
@@ -74,7 +74,7 @@ Azure Blockchain Workbench 應用程式是以組態中繼資料和智慧合約�
 | 列舉     | 列舉的具名值組。 使用列舉類型時，您也可以指定一份 EnumValues 清單。 每個值的上限為 255 個字元。 有效值的字元包括大小寫字母 (A-Z、a-z) 和數字 (0-9)。 請參閱 [Solidity 中的組態範例和用法](#example-configuration-of-type-enum)。 |
 | int      | 整數資料類型。 |
 | money    | 金額資料類型。 |
-| state    | 工作流程狀態。 |
+| State    | 工作流程狀態。 |
 | 字串  | 字串資料類型。 最多 4000 個字元。 請參閱[組態範例](#example-configuration-of-type-string)。 |
 | user     | 使用者類型的位址。 |
 | time     | 時間資料類型。 |
@@ -203,7 +203,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | 欄位 | 描述 | 必要 | 最大長度 |
 |-------|-------------|:--------:|-----------:|
-| 名稱 | 函式的唯一名稱。 對應的智慧合約必須針對適用的函式使用相同的**名稱**。 | 是 | 50 |
+| Name | 函式的唯一名稱。 對應的智慧合約必須針對適用的函式使用相同的**名稱**。 | 是 | 50 |
 | DisplayName | 函式的易記顯示名稱。 | 是 | 255 |
 | 描述 | 函式的說明 | 否 | 255 |
 | 參數 | 對應至函式參數的[識別碼](#identifiers)集合。 | 是 | |
@@ -251,7 +251,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | 欄位 | 描述 | 必要 | 最大長度 |
 |-------|-------------|:--------:|-----------:|
-| 名稱 | 狀態的唯一名稱。 對應的智慧合約必須針對適用的狀態使用相同的**名稱**。 | 是 | 50 |
+| Name | 狀態的唯一名稱。 對應的智慧合約必須針對適用的狀態使用相同的**名稱**。 | 是 | 50 |
 | DisplayName | 狀態的易記顯示名稱。 | 是 | 255 |
 | 描述 | 狀態的說明。 | 否 | 255 |
 | PercentComplete | Blockchain Workbench 使用者介面中所顯示的整數值，用來顯示商務邏輯控制流程內的進度。 | 是 | |
@@ -321,7 +321,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 | 欄位 | 描述 | 必要 |
 |-------|-------------|:--------:|
 | AllowedRoles | 允許起始轉換的應用程式角色清單。 屬於指定角色的所有使用者都可執行該動作。 | 否 |
-| AllowedInstanceRoles | 參與或指定於智慧合約中、允許起始轉換的使用者角色清單。 實例角色在工作流中的 **"屬性"** 中定義。 AllowedInstanceRoles 代表參與智慧合約執行個體的使用者。 AllowedInstanceRoles 可讓您對合約執行個體中的使用者角色限制採取動作。  例如，如果您只想讓建立合約的使用者 (InstanceOwner) 可以執行終止作業，而不是讓角色類型 (Owner) 中的所有使用者可這麼做，您可以在 AllowedRoles 中指定該角色。 | 否 |
+| AllowedInstanceRoles | 參與或指定於智慧合約中、允許起始轉換的使用者角色清單。 實例角色是在工作流程內的**屬性**中定義。 AllowedInstanceRoles 代表參與智慧合約執行個體的使用者。 AllowedInstanceRoles 可讓您對合約執行個體中的使用者角色限制採取動作。  例如，如果您只想讓建立合約的使用者 (InstanceOwner) 可以執行終止作業，而不是讓角色類型 (Owner) 中的所有使用者可這麼做，您可以在 AllowedRoles 中指定該角色。 | 否 |
 | DisplayName | 轉換的易記顯示名稱。 | 是 |
 | 描述 | 轉換的說明。 | 否 |
 | 函式 | 要起始轉換的函式名稱。 | 是 |
@@ -365,7 +365,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | 欄位 | 描述 | 必要 | 最大長度 |
 |-------|-------------|:--------:|-----------:|
-| 名稱 | 應用程式角色的唯一名稱。 對應的智慧合約必須針對適用的角色使用相同的**名稱**。 系統會保留基底類型名稱。 您不能使用和[類型](#type)相同的名稱來為應用程式角色命名| 是 | 50 |
+| Name | 應用程式角色的唯一名稱。 對應的智慧合約必須針對適用的角色使用相同的**名稱**。 系統會保留基底類型名稱。 您不能使用和[類型](#type)相同的名稱來為應用程式角色命名| 是 | 50 |
 | 描述 | 應用程式角色的說明。 | 否 | 255 |
 
 ### <a name="application-roles-example"></a>應用程式角色範例
@@ -388,7 +388,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | 欄位 | 描述 | 必要 | 最大長度 |
 |-------|-------------|:--------:|-----------:|
-| 名稱 | 屬性或參數的唯一名稱。 對應的智慧合約必須針對適用的屬性或參數使用相同的**名稱**。 | 是 | 50 |
+| Name | 屬性或參數的唯一名稱。 對應的智慧合約必須針對適用的屬性或參數使用相同的**名稱**。 | 是 | 50 |
 | DisplayName | 屬性或參數的易記顯示名稱。 | 是 | 255 |
 | 描述 | 屬性或參數的說明。 | 否 | 255 |
 | 類型 | 屬性[資料類型](#type)。 | 是 |

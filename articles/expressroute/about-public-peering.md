@@ -1,6 +1,6 @@
 ---
-title: 創建和管理 Azure 快速路由公共對等互連
-description: 瞭解和管理 Azure 公共對等互連
+title: 建立和管理 Azure ExpressRoute 公用對等互連
+description: 瞭解和管理 Azure 公用對等互連
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,73 +8,73 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: 8c1afac834fb9abb2cbf82f16f046a1624b251f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79481128"
 ---
-# <a name="create-and-manage-expressroute-public-peering"></a>創建和管理 ExpressRoute 公共對等互連
+# <a name="create-and-manage-expressroute-public-peering"></a>建立和管理 ExpressRoute 公用對等互連
 
 > [!div class="op_single_selector"]
-> * [文章 - 公共對等互連](about-public-peering.md)
+> * [文章-公用對等互連](about-public-peering.md)
 > * [視訊 - 公用對等互連](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [文章 - 微軟對等互連](expressroute-circuit-peerings.md#microsoftpeering)
+> * [文章-Microsoft 對等互連](expressroute-circuit-peerings.md#microsoftpeering)
 >
 
-本文可説明您創建和管理 ExpressRoute 電路的公共對等路由配置。 您還可以檢查狀態、更新或刪除和取消預配對等互連。 本文適用于在棄用公共對等互連之前創建的資源管理器電路。 如果以前存在的電路（在棄用公共對等互連之前創建），則可以使用[Azure PowerShell、Azure](#powershell) [CLI](#cli)和[Azure 門戶](#portal)管理/配置公共對等互連。
+本文可協助您建立和管理 ExpressRoute 線路的公用對等路由設定。 您也可以檢查狀態、更新或刪除和取消布建對等互連。 本文適用于已淘汰公用對等互連之前所建立 Resource Manager 線路。 如果您有先前現有的線路（在公用對等互連淘汰之前建立），您可以使用[Azure PowerShell](#powershell)、 [Azure CLI](#cli)和[Azure 入口網站](#portal)來管理/設定公用對等互連。
 
 >[!NOTE]
->公共對等互連被棄用。 您不能在新的 ExpressRoute 電路上創建公共對等互連。 如果您有新的 ExpressRoute 電路，請對 Azure 服務使用[Microsoft 對等互連](expressroute-circuit-peerings.md#microsoftpeering)。
+>公用對等互連已被取代。 您無法在新的 ExpressRoute 線路上建立公用對等互連。 如果您有新的 ExpressRoute 線路，請改為針對您的 Azure 服務使用[Microsoft 對等互連](expressroute-circuit-peerings.md#microsoftpeering)。
 >
 
 ## <a name="connectivity"></a>連線能力
 
-一律會從您的 WAN 啟動連線到 Microsoft Azure 服務。 Microsoft Azure 服務將無法透過這個路由網域啟動連線到您的網路。 如果為 Azure 公共對等互連啟用了 ExpressRoute 電路，則可以通過電路訪問[Azure 中使用的公共 IP 範圍](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
+一律會從您的 WAN 啟動連線到 Microsoft Azure 服務。 Microsoft Azure 服務將無法透過這個路由網域啟動連線到您的網路。 如果您的 ExpressRoute 線路已啟用 Azure 公用對等互連，您可以透過線路存取[azure 中使用的公用 IP 範圍](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)。
 
-啟用公共對等互連後，可以連接到大多數 Azure 服務。 我們不允許您選擇性地選取已通告路由的服務。
+一旦啟用公用對等互連，您就可以連接到大部分的 Azure 服務。 我們不允許您選擇性地選取已通告路由的服務。
 
-* 在公共 IP 位址上提供了 Azure 存儲、SQL 資料庫和網站等服務。
-* 通過公共對等路由域，您可以私下連接到在公共 IP 位址託管的服務，包括雲服務的 VIP。
+* 公用 IP 位址上提供如 Azure 儲存體、SQL 資料庫和網站等服務。
+* 透過公用對等互連路由網域，您可以私下連線到裝載于公用 IP 位址上的服務，包括雲端服務的 Vip。
 * 您可以將公用對等網域連線到 DMZ，並從您的 WAN 連線到所有 Azure 服務的公用 IP 位址，而無需透過網際網路進行連線。
 
 ## <a name="services"></a><a name="services"></a>服務
 
-本節顯示公共對等互連可用的服務。 由於公共對等互連被棄用，因此沒有計劃向公共對等互連添加新服務或附加服務。 如果使用公共對等互連，並且您要使用的服務僅支援 Microsoft 對等互連，則必須切換到 Microsoft 對等互連。 有關受支援服務的清單，請參閱[Microsoft 對等互連](expressroute-faqs.md#microsoft-peering)。
+本節說明可透過公用對等互連使用的服務。 因為公用對等互連已被取代，所以沒有計劃將新的或額外的服務新增至公用對等互連。 如果您使用公用對等互連，而且只有 Microsoft 對等互連才支援您想要使用的服務，您必須切換至 Microsoft 對等互連。 如需支援的服務清單，請參閱[Microsoft 對等互連](expressroute-faqs.md#microsoft-peering)。
 
-**支援：**
+**支援**
 
 * Power BI
-* 支援大部分 Azure 服務。 直接檢查要用於驗證支援的服務。
+* 支援大部分 Azure 服務。 直接檢查您要用來驗證支援的服務。
 
 **不支援：**
   * CDN
   * Azure Front Door
-  * 多重要素驗證伺服器（舊版）
+  * 多重要素驗證服務器（舊版）
   * 流量管理員
 
-要驗證特定服務的可用性，可以檢查該服務的文檔，以查看是否有為該服務發佈的保留範圍。 然後，您可以查找目標服務的 IP 範圍，並與[Azure IP 範圍和服務標記 - 公共雲 XML 檔中](https://www.microsoft.com/download/details.aspx?id=56519)列出的範圍進行比較。 或者，您可以為相關服務打開支援票證以進行澄清。
+若要驗證特定服務的可用性，您可以查看該服務的檔，以查看是否有針對該服務發行的保留範圍。 然後，您可以查閱目標服務的 IP 範圍，並與[AZURE IP 範圍和服務標籤-公用雲端 XML](https://www.microsoft.com/download/details.aspx?id=56519)檔案中列出的範圍進行比較。 或者，您也可以開啟服務的支援票證以瞭解相關說明。
 
 ## <a name="peering-comparison"></a><a name="compare"></a>對等互連比較
 
 [!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
 > [!NOTE]
-> Azure 公共對等互連具有與每個 BGP 會話關聯的 1 個 NAT IP 位址。 對於大於 2 個 NAT IP 位址，請轉到 Microsoft 對等互連。 Microsoft 對等互連允許您配置自己的 NAT 分配，以及使用路由篩選器進行選擇性首碼播發。 有關詳細資訊，請參閱移動到[Microsoft 對等互連](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)。
+> Azure 公用對等互連具有1個與每個 BGP 會話相關聯的 NAT IP 位址。 若為大於2個 NAT IP 位址，請移至 Microsoft 對等互連。 Microsoft 對等互連可讓您設定自己的 NAT 配置，以及使用選擇性前置詞通告的路由篩選。 如需詳細資訊，請參閱[移至 Microsoft 對等互連](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)。
 >
 
-## <a name="custom-route-filters"></a>自訂路由篩選器
+## <a name="custom-route-filters"></a>自訂路由篩選
 
 您可以在您的網路內定義自訂路由篩選條件，以便僅取用所需的路由。 如需路由組態的詳細資訊，請參閱 [路由](expressroute-routing.md) 頁面。
 
-## <a name="azure-powershell-steps"></a><a name="powershell"></a>Azure 電源外殼步驟
+## <a name="azure-powershell-steps"></a><a name="powershell"></a>Azure PowerShell 步驟
 
 
 [!INCLUDE [CloudShell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
-由於公共對等互連已棄用，因此無法在新的 ExpressRoute 電路上配置公共對等互連。
+因為公用對等互連已被取代，所以您無法在新的 ExpressRoute 線路上設定公用對等互連。
 
-1. 驗證您有已預配且也啟用的 ExpressRoute 電路。 請使用下列範例：
+1. 確認您擁有已布建且已啟用的 ExpressRoute 線路。 請使用下列範例：
 
    ```azurepowershell-interactive
    Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -282,23 +282,23 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
 
 ## <a name="azure-portal-steps"></a><a name="portal"></a>Azure 入口網站步驟
 
-要配置對等互連，請使用本文中包含的 PowerShell 或 CLI 步驟。 要管理對等互連，可以使用以下部分。 作為參考，這些步驟類似于[在門戶中管理 Microsoft 對等互連](expressroute-howto-routing-portal-resource-manager.md#msft)。
+若要設定對等互連，請使用本文中所包含的 PowerShell 或 CLI 步驟。 若要管理對等互連，您可以使用下列各節。 如需參考，這些步驟看起來類似于在[入口網站中管理 Microsoft 對等互連](expressroute-howto-routing-portal-resource-manager.md#msft)。
 
 ### <a name="to-view-azure-public-peering-details"></a><a name="get"></a>檢視 Azure 公用對等詳細資訊
 
-通過在門戶中選擇對等互連來查看 Azure 公共對等互連的屬性。
+選取入口網站中的對等互連，以查看 Azure 公用對等互連的屬性。
 
 ### <a name="to-update-azure-public-peering-configuration"></a><a name="update"></a>更新 Azure 公用對等組態
 
-選擇要對等的行，然後修改對等屬性。
+選取對等互連的資料列，然後修改對等互連屬性。
 
 ### <a name="to-delete-azure-public-peering"></a><a name="delete"></a>刪除 Azure 公用對等
 
-通過選擇刪除圖示刪除對等配置。
+選取 [刪除] 圖示來移除對等互連設定。
 
 ## <a name="next-steps"></a>後續步驟
 
-下一步，[將虛擬網路連結到 ExpressRoute 電路](expressroute-howto-linkvnet-arm.md)。
+下一步，將[虛擬網路連結至 ExpressRoute 線路](expressroute-howto-linkvnet-arm.md)。
 
 * 如需 ExpressRoute 工作流程的詳細資訊，請參閱 [ExpressRoute 工作流程](expressroute-workflows.md)。
 * 如需線路對等的詳細資訊，請參閱 [ExpressRoute 線路和路由網域](expressroute-circuit-peerings.md)。

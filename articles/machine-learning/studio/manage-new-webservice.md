@@ -1,7 +1,7 @@
 ---
 title: 管理 Web 服務
 titleSuffix: ML Studio (classic) - Azure
-description: 使用 Microsoft Azure 機器學習 Web 服務門戶管理機器學習新 Web 和經典 Web 服務。 因為傳統 Web 服務和新式 Web 服務是根據不同的基礎技術，所以各有稍微不同的管理功能。
+description: 使用 Microsoft Azure Machine Learning Web 服務入口網站來管理您的 Machine Learning 新的和傳統 Web 服務。 因為傳統 Web 服務和新式 Web 服務是根據不同的基礎技術，所以各有稍微不同的管理功能。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,13 +11,13 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
 ms.openlocfilehash: 2277aa3de5955efe5a3e4cb938fa557352f89006
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79217967"
 ---
-# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>使用 Azure 機器學習工作室（經典）Web 服務門戶管理 Web 服務
+# <a name="manage-a-web-service-using-the-azure-machine-learning-studio-classic-web-services-portal"></a>使用 Azure Machine Learning Studio （傳統） Web 服務入口網站管理 web 服務
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "79217967"
 * 新增和刪除端點 (僅限傳統)
 
 >[!NOTE]
->您還可以在**Web 服務**選項卡上的[機器學習工作室（經典）](https://studio.azureml.net)中管理經典 Web 服務。
+>您也可以在 [ **web 服務**] 索引標籤上，以[Machine Learning Studio （傳統）](https://studio.azureml.net)來管理傳統 web 服務。
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>管理以資源管理員為基礎的新 Web 服務的權限
 
@@ -40,9 +40,9 @@ ms.locfileid: "79217967"
 
 如果使用者沒有正確權限來存取 Azure Machine Learning Web 服務入口網站中的資源，他們將會在嘗試部署 Web 服務時，收到下列錯誤：
 
-*Web 服務部署失敗。此帳戶對包含工作區的 Azure 訂閱沒有足夠的存取權限。為了將 Web 服務部署到 Azure，必須邀請同一帳戶到工作區，並授予對包含工作區的 Azure 訂閱的存取權限。*
+*Web 服務部署失敗。此帳戶沒有足夠的許可權可存取包含工作區的 Azure 訂用帳戶。若要將 Web 服務部署至 Azure，必須將相同的帳戶邀請到工作區，並取得包含該工作區之 Azure 訂用帳戶的存取權。*
 
-有關創建工作區的詳細資訊，請參閱[創建和共用 Azure 機器學習工作室（經典）工作區](create-workspace.md)。
+如需建立工作區的詳細資訊，請參閱[建立和共用 Azure Machine Learning Studio （傳統）工作區](create-workspace.md)。
 
 如需如何設定存取權限的詳細資訊，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](../../role-based-access-control/role-assignments-portal.md)。
 
@@ -86,10 +86,10 @@ ms.locfileid: "79217967"
 您可以更新下列屬性：
 
 * [描述]**** 可讓您輸入 Web 服務的描述。
-* **標題**允許您輸入 Web 服務的標題
+* **標題**可讓您輸入 Web 服務的標題
 * **金鑰** 可讓您交換您的主要和次要 API 金鑰。
 * **儲存體帳戶金鑰**可讓您為與 Web 服務變更相關聯的儲存體帳戶更新金鑰。 
-* [啟用範例資料]**** 可讓您提供範例資料，用來測試要求-回應服務。 如果在機器學習工作室（經典版）中創建了 Web 服務，則示例資料將從用於訓練模型的資料中獲取。 如果您是以程式設計方式建立服務，資料會取自您提供做為 JSON 套件一部分的範例資料。
+* [啟用範例資料]**** 可讓您提供範例資料，用來測試要求-回應服務。 如果您在 Machine Learning Studio （傳統）中建立 web 服務，範例資料會取自您用來定型模型的資料。 如果您是以程式設計方式建立服務，資料會取自您提供做為 JSON 套件一部分的範例資料。
 
 ### <a name="managing-billing-plans"></a>管理計費方案
 從 Web 服務 [快速入門] 頁面按一下 [方案] **** 功能表選項。 您也可以按一下與特定 Web 服務相關聯的方案來管理該方案。
@@ -105,13 +105,13 @@ ms.locfileid: "79217967"
 
 * **方案描述** 顯示成本相關資訊和與方案相關聯的容量。
 * **方案使用量** 顯示交易數目和已依方案計費的計算時數。
-* **Web 服務**顯示使用此計畫的 Web 服務的數量。
+* **Web 服務**顯示使用此方案的 web 服務數目。
 * **依呼叫數的前幾名 Web 服務**顯示依方案計費進行呼叫的前四個 Web 服務。
 * **依計算時數的前幾名 Web 服務**顯示依方案計費使用計算資源的前四個 Web 服務。
 
 ## <a name="manage-classic-web-services"></a>管理傳統 Web 服務
 > [!NOTE]
-> 本節的程序是關於透過 Azure Machine Learning Web 服務入口網站來管理傳統 Web 服務。 有關通過機器學習工作室（經典）和 Azure 門戶管理經典 Web 服務的資訊，請參閱[管理 Azure 機器學習工作室（經典）工作區](manage-workspace.md)。
+> 本節的程序是關於透過 Azure Machine Learning Web 服務入口網站來管理傳統 Web 服務。 如需透過 Machine Learning Studio （傳統）和 Azure 入口網站管理傳統 Web 服務的相關資訊，請參閱[管理 Azure Machine Learning Studio （傳統）工作區](manage-workspace.md)。
 > 
 > 
 
@@ -153,7 +153,7 @@ ms.locfileid: "79217967"
 您可以更新下列屬性：
 
 * [描述]**** 可讓您輸入 Web 服務的描述。 [描述] 必要欄位。
-* [記錄]**** 可讓您啟用或停用端點上的錯誤記錄。 有關日誌記錄的詳細資訊，請參閱[為機器學習 Web 服務啟用日誌記錄](web-services-logging.md)。
-* [啟用範例資料]**** 可讓您提供範例資料，用來測試要求-回應服務。 如果在機器學習工作室（經典版）中創建了 Web 服務，則示例資料將從用於訓練模型的資料中獲取。 如果您是以程式設計方式建立服務，資料會取自您提供做為 JSON 套件一部分的範例資料。
+* [記錄]**** 可讓您啟用或停用端點上的錯誤記錄。 如需記錄的詳細資訊，請參閱啟用[Machine Learning web 服務的記錄](web-services-logging.md)。
+* [啟用範例資料]**** 可讓您提供範例資料，用來測試要求-回應服務。 如果您在 Machine Learning Studio （傳統）中建立 web 服務，範例資料會取自您用來定型模型的資料。 如果您是以程式設計方式建立服務，資料會取自您提供做為 JSON 套件一部分的範例資料。
 
 

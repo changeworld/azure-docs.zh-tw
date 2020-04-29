@@ -1,6 +1,6 @@
 ---
-title: Azure 地圖 Web SDK 中的影像樣本 ( A) ( Azure )微軟 Azure 地圖
-description: 在本文中,您將學習如何在 Microsoft Azure 地圖 Web SDK 中使用帶有 HTML 標記和各種圖層的圖像樣本。
+title: Azure 地圖服務 Web SDK 中的影像範本 |Microsoft Azure 對應
+description: 在本文中，您將瞭解如何在 Microsoft Azure Maps Web SDK 中，使用 HTML 標籤和各種層級的影像範本。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 8/6/2019
@@ -10,33 +10,33 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: ee8e8ee4ca64de0390b6fa34e36fb4d06348a8ac
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80804804"
 ---
 # <a name="how-to-use-image-templates"></a>如何使用映像範本
 
-影像可用於 Azure 地圖 Web SDK 中的 HTML 標籤和各種圖層:
+影像可以搭配 HTML 標籤和 Azure 地圖服務 web SDK 內的各種層級使用：
 
- - 符號圖層可以使用圖像圖示渲染地圖上的點。 符號也可以沿線路徑呈現。
- - 可以使用填充圖案圖像渲染多邊形圖層。 
- - HTML 標籤可以使用影像和其他 HTML 元素呈現點。
+ - 符號圖層可以使用影像圖示呈現地圖上的點。 符號也可以沿著行路徑呈現。
+ - 您可以使用填滿模式影像來轉譯多邊形圖層。 
+ - HTML 標籤可以使用影像和其他 HTML 專案來呈現點。
 
-為了確保圖層性能良好,在渲染之前,將圖像載入到地圖圖像精靈資源中。 默認情況下,SymbolLayer 的[IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)會以少量顏色預載入幾個標記影像到地圖圖像精靈中。 這些標記圖像等可作為 SVG 範本提供。 它們可用於創建具有自定義比例的圖像,或用作客戶主色和次要顏色。 總共提供了 42 個圖像範本:27 個符號圖示和 15 個多邊形填充圖案。
+為了確保層級有良好的效能，請先將影像載入地圖影像 sprite 資源，再進行轉譯。 SymbolLayer 的[IconOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.iconoptions)預設會將幾個色彩中的數個標記影像預先載入地圖影像 sprite。 這些標記影像和更多功能可作為 SVG 範本。 它們可用來建立具有自訂縮放比例的影像，或當做客戶主要和次要色彩使用。 總共提供42個影像範本：27個符號圖示和15個多邊形填滿模式。
 
-可以使用`map.imageSprite.createFromTemplate`函數將圖像範本添加到地圖圖像精靈資源中。 此功能允許最多傳入五個參數;
+您可以使用`map.imageSprite.createFromTemplate`函式，將影像範本新增至地圖影像 sprite 資源。 此函式最多允許傳入五個參數;
 
 ```javascript
 createFromTemplate(id: string, templateName: string, color?: string, secondaryColor?: string, scale?: number): Promise<void>
 ```
 
-您`id`建立的唯一識別碼。 當`id`圖像添加到地圖圖像精靈時,將分配給該圖像。 在圖層中使用此標識符來指定要呈現的圖像資源。 指定`templateName`要使用的圖像範本。 該`color`選項設定影像的主顏色`secondaryColor`, 選項設置圖像的次色。 在`scale`將圖像範本應用於圖像子畫面之前,該選項將縮放圖像範本。 當圖像應用於圖像精靈時,它將轉換為 PNG。 為了確保清晰的渲染,最好在將圖像範本添加到子畫面之前將其放大,而不是將其放大到圖層中。
+`id`是您所建立的唯一識別碼。 新增`id`至地圖影像 sprite 時，會指派給影像。 在圖層中使用此識別碼來指定要呈現的影像資源。 會`templateName`指定要使用的映射範本。 `color`選項會設定影像的主要色彩，而`secondaryColor`選項會設定影像的次要色彩。 `scale`選項會先調整影像範本，再將它套用至映射 sprite。 當影像套用至影像 sprite 時，它會轉換成 PNG。 為了確保呈現清晰，最好先相應增加影像範本，再將它加入至 sprite，而不是在圖層中相應增加。
 
-此功能非同步地將圖像載入到圖像子畫面中。 因此,它返回一個承諾,您可以等待此函數完成。
+此函式會以非同步方式將影像載入影像 sprite。 因此，它會傳回您可以等候此函數完成的承諾。
 
-以下代碼演示如何從其中一個內置範本創建圖像,並將其與符號圖層一起使用。
+下列程式碼示範如何從其中一個內建範本建立影像，並將其與符號層搭配使用。
 
 ```javascript
 map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#fff').then(function () {
@@ -50,140 +50,140 @@ map.imageSprite.createFromTemplate('myTemplatedIcon', 'marker-flat', 'teal', '#f
 });
 ```
 
-## <a name="use-an-image-template-with-a-symbol-layer"></a>將影像樣本與符號圖層一起使用
+## <a name="use-an-image-template-with-a-symbol-layer"></a>使用影像範本搭配符號圖層
 
-將圖像範本載入地圖影像雪碧中後,可以通過引用選項中的圖像資源`image`ID 將其呈現為符號圖層中的符`iconOptions`號。
+將影像範本載入至地圖影像 sprite 之後，您可以在的`image`選項中參考影像資源識別碼，以將其轉譯為符號圖層中的符號。 `iconOptions`
 
-以下範例使用具有青色原色和白色次`marker-flat`色的圖像範本渲染符號圖層。 
+下列範例會使用具有青色主要色彩和`marker-flat`白色次要色彩的影像範本來呈現符號圖層。 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="帶有內建圖示範本的符號圖層" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在<a href='https://codepen.io'>CodePen</a>上,透過 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>地圖 () 檢視<a href='https://codepen.io/azuremaps/pen/VoQMPp/'>具有內建圖示樣本的筆符號圖層</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="具有內建圖示範本的符號圖層" src="//codepen.io/azuremaps/embed/VoQMPp/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+在<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>），查看<a href='https://codepen.io/azuremaps/pen/VoQMPp/'>具有內建圖示範本的畫筆符號圖層</a>。
 </iframe>
 
-## <a name="use-an-image-template-along-a-lines-path"></a>沿線路徑使用影像樣本
+## <a name="use-an-image-template-along-a-lines-path"></a>沿著行路徑使用影像範本
 
-將圖像範本載入地圖影像 sprite 中後,可以透過資料來源加入 LineString 並`lineSpacing`使用帶有 選項的符號圖`image``iconOptions`層以及引用 th 選項中圖像資源 ID 來沿線路徑呈現。 
+將影像範本載入地圖影像 sprite 後，就可以將 LineString 加入至資料來源，並搭配使用符號圖層與`lineSpacing`選項，並在 th `image` `iconOptions`的選項中參考影像資源的識別碼，藉此在行的路徑中轉譯。 
 
-以下示例在地圖上渲染一條粉紅色線,並使用具有道奇藍色原色和白色`car`次要顏色的圖像範本使用符號圖層。 
-
-<br/>
-
-<iframe height="500" style="width: 100%;" scrolling="no" title="圖示範本的線圖層" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在<a href='https://codepen.io'>CodePen</a>上,透過 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>地圖 () 查看<a href='https://codepen.io/azuremaps/pen/KOQvJe/'>具有內建圖示樣本的筆線圖層</a>。
-</iframe>
-
-> [!TIP]
-> 如果圖像範本指向該點,如果希望`rotation`符號圖層指向與線相同的方向,則將符號圖層的圖示選項設置為 90。
-
-## <a name="use-an-image-template-with-a-polygon-layer"></a>將影像樣本與多邊形圖層一起使用
-
-將圖像範本載入地圖影像子畫面中後,可以通過引用圖層`fillPattern`選項中的圖像資源 ID 將其呈現為多邊形圖層中的填充圖案。
-
-以下範例使用紅色原色和透明次色`dot`的圖像範本渲染多邊形圖層。  
+下列範例會在地圖上呈現粉紅色線條，並使用具有寶藍藍色主要色彩`car`和白色次要色彩之影像範本的符號圖層。 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="使用內建圖示樣本填充多邊形" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在<a href='https://codepen.io'>CodePen</a>上,透過 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 () 使用<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>內建圖示樣本檢視筆填充多邊形</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="具有內建圖示範本的線條圖層" src="//codepen.io/azuremaps/embed/KOQvJe/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+在<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>），查看<a href='https://codepen.io/azuremaps/pen/KOQvJe/'>具有內建圖示範本的畫筆線條圖層</a>。
 </iframe>
 
 > [!TIP]
-> 設置填充圖案的輔助顏色可以更輕鬆地查看基礎地圖仍將提供主圖案。 
+> 如果影像範本指向，請將符號圖`rotation`層的圖示選項設定為90，如果您想要讓它指向與線條相同的方向。
 
-## <a name="use-an-image-template-with-an-html-marker"></a>使用含有 HTML 標籤的影像樣本
+## <a name="use-an-image-template-with-a-polygon-layer"></a>使用影像範本與多邊形圖層
 
-可以使用`altas.getImageTemplate`函數檢索圖像範本,並將其用作 HTML 標記的內容。 樣本可以`htmlContent`傳遞到 標記的選項,然後使用`color`和`secondaryColor``text`選項進行自定義。
+將影像範本載入地圖影像 sprite 之後，您可以在圖層的`fillPattern`選項中參考影像資源識別碼，以將其轉譯為多邊形圖層中的填滿模式。
 
-以下示例使用紅色原`marker-arrow`色、粉紅色輔助色和文本值"00"的範本。
+下列範例會使用具有紅色主要色彩和`dot`透明次要色彩的影像範本來呈現多邊形圖層。  
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="含有內建圖示樣本的 HTML 標籤" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在<a href='https://codepen.io'>CodePen</a>上,透過 Azure<a href='https://codepen.io/azuremaps'>@azuremaps</a>映射 () 查看<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>具有內建圖示範本的</a>筆 HTML 標記。
+<iframe height="500" style="width: 100%;" scrolling="no" title="使用內建圖示範本填滿多邊形" src="//codepen.io/azuremaps/embed/WVMEmz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+在<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>），查看<a href='https://codepen.io/azuremaps/pen/WVMEmz/'>使用內建圖示範本的畫筆填滿多邊形</a>。
 </iframe>
 
-## <a name="create-custom-reusable-templates"></a>建立自訂可重用樣本
+> [!TIP]
+> 設定填滿模式的次要色彩，可讓您更輕鬆地看到基礎地圖仍會提供主要模式。 
 
-如果應用程式使用不同的圖示使用同一圖示,或者正在創建添加其他圖像範本的模組,則可以輕鬆地從 Azure 地圖 Web SDK 添加和檢索這些圖示。 在`atlas`命名空間上使用以下靜態函數。
+## <a name="use-an-image-template-with-an-html-marker"></a>使用影像範本搭配 HTML 標籤
 
-| 名稱 | 傳回類型 | 描述 | 
+您可以使用`altas.getImageTemplate`函式來抓取影像範本，並將其當做 HTML 標籤的內容使用。 範本可以傳遞至標記`htmlContent`的選項，然後使用`color`、 `secondaryColor`和`text`選項進行自訂。
+
+下列範例會使用具有`marker-arrow`紅色主要色彩的範本、粉紅色的次要色彩，以及 "00" 的文字值。
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="具有內建圖示範本的 HTML 標籤" src="//codepen.io/azuremaps/embed/EqQvzq/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+在<a href='https://codepen.io'>CodePen</a>上 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>），查看<a href='https://codepen.io/azuremaps/pen/EqQvzq/'>具有內建圖示範本</a>的手寫筆 HTML 標籤。
+</iframe>
+
+## <a name="create-custom-reusable-templates"></a>建立自訂可重複使用的範本
+
+如果您的應用程式使用不同圖示的相同圖示，或如果您要建立可新增其他影像範本的模組，您可以從 Azure 地圖服務 web SDK 輕鬆地新增和取出這些圖示。 在`atlas`命名空間上使用下列靜態函式。
+
+| Name | 傳回類型 | 描述 | 
 |-|-|-|
-| `addImageTemplate(templateName: string, template: string, override: boolean)` | | 將自訂 SVG 影像樣本添加到地圖集命名空間。 |
-|  `getImageTemplate(templateName: string, scale?: number)`| 字串 | 按名稱檢索 SVG 範本。 |
-| `getAllImageTemplateNames()` | string[] |  按名稱檢索 SVG 範本。 |
+| `addImageTemplate(templateName: string, template: string, override: boolean)` | | 將自訂 SVG 影像範本新增至 [阿特拉斯] 命名空間。 |
+|  `getImageTemplate(templateName: string, scale?: number)`| 字串 | 依名稱捕獲 SVG 範本。 |
+| `getAllImageTemplateNames()` | string[] |  依名稱捕獲 SVG 範本。 |
 
-SVG 影像樣本支援以下占位符值:
+SVG 影像範本支援下列預留位置值：
 
 | 預留位置 | 描述 |
 |-|-|
-| `{color}` | 主顏色。 | 
-| `{secondaryColor}` | 輔助顏色。 | 
-| `{scale}` | SVG 圖像在添加到地圖圖像精靈時轉換為 png 圖像。 此占位符可用於在轉換範本之前縮放範本,以確保範本呈現清晰。 | 
-| `{text}` | 與 HTML 標記一起使用時要呈現文本的位置。 |
+| `{color}` | 主要色彩。 | 
+| `{secondaryColor}` | 次要色彩。 | 
+| `{scale}` | SVG 影像在新增至地圖影像 sprite 時，會轉換成 png 影像。 此預留位置可用來在轉換範本之前進行調整，以確保能清楚呈現。 | 
+| `{text}` | 與 HTML 標籤搭配使用時，要呈現文字的位置。 |
 
-下面的範例展示如何採用 SVG 樣本,並將其作為可重用圖示樣本添加到 Azure 地圖 Web SDK 中。 
+下列範例示範如何採用 SVG 範本，並將其新增至 Azure 地圖服務 web SDK 作為可重複使用的圖示範本。 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="將自訂圖示樣本加入到地圖集命名空間" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-請參考 CodePen 上按 Azure 地圖<a href='https://codepen.io/azuremaps'>@azuremaps</a>()<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>向地圖集新增自訂圖示樣本</a><a href='https://codepen.io'>的筆</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="將自訂圖示範本新增至塔命名空間" src="//codepen.io/azuremaps/embed/NQyvEX/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
+請參閱<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（），<a href='https://codepen.io/azuremaps/pen/NQyvEX/'>以將自訂圖示範本新增至</a>[<a href='https://codepen.io/azuremaps'>@azuremaps</a>塔命名空間]。
 </iframe>
 
-## <a name="list-of-image-templates"></a>影像樣本清單
+## <a name="list-of-image-templates"></a>影像範本清單
 
-此表列出了 Azure 地圖 Web SDK 中當前提供的所有映像範本。 範本名稱在每個圖像上方。 默認情況下,主色為藍色,輔助顏色為白色。 為了使次要顏色更容易在白色背景上看到,以下圖像將次色設置為黑色。
+下表列出 Azure 地圖服務 web SDK 中目前可用的所有映射範本。 範本名稱位於每個影像的上方。 根據預設，主要色彩是藍色，而次要色彩是白色。 為了讓次要色彩在白色背景上更容易看到，下列影像的次要色彩會設定為黑色。
 
-**符號圖示樣本**
-
-|||||
-|:-:|:-:|:-:|:-:|
-| marker | 標記厚 | 標記圓 | 標記平面 |
-|![標籤圖示](./media/image-templates/marker.png)|![標籤厚圖示](./media/image-templates/marker-thick.png)|![標籤圖示](./media/image-templates/marker-circle.png)|![標記平面圖示](./media/image-templates/marker-flat.png)|
-||||
-| 標記方 | 標記-方形群集 | 標記箭號 | 標記-球針 | 
-|![標記方形圖示](./media/image-templates/marker-square.png)|![標記方形叢集圖示](./media/image-templates/marker-square-cluster.png)|![標記箭號圖示](./media/image-templates/marker-arrow.png)|![標記-球針圖示](./media/image-templates/marker-ball-pin.png)|
-||||
-| 標記-平方圓舍五入 | 標記-平方圓-聚類 | 旗標 | 標誌三角形 |
-| ![標記方形圓角圖示](./media/image-templates/marker-square-rounded.png) | ![標記-方形圓角-群集圖示](./media/image-templates/marker-square-rounded-cluster.png) | ![標誌圖示](./media/image-templates/flag.png) | ![標誌三角形圖示](./media/image-templates/flag-triangle.png) |
-||||
-| 三角形 | 三角形厚 | 三角形箭頭向上 | 三角形箭頭-左側 |
-| ![三角圖示](./media/image-templates/triangle.png) | ![三角形厚的圖示](./media/image-templates/triangle-thick.png) | ![三角箭頭圖示](./media/image-templates/triangle-arrow-up.png) | ![三角箭頭左方圖示](./media/image-templates/triangle-arrow-left.png) |
-||||
-| 六 角 | 六邊形厚 | 六邊形圓潤 | 六邊形-圓形厚 |
-| ![六邊形圖示](./media/image-templates/hexagon.png) | ![六邊形厚圖示](./media/image-templates/hexagon-thick.png) | ![六邊形圓角圖示](./media/image-templates/hexagon-rounded.png) | ![六邊形四捨五入厚圖示](./media/image-templates/hexagon-rounded-thick.png) |
-||||
-| 固定 | 針圓 | 圓方形 | 圓方形厚 |
-| ![釘選圖示](./media/image-templates/pin.png) | ![針圓圖示](./media/image-templates/pin-round.png) | ![圓形方形圖示](./media/image-templates/rounded-square.png) | ![圓形方形厚圖示](./media/image-templates/rounded-square-thick.png) |
-||||
-| 箭號 | 箭頭向上薄 | 汽車 ||
-| ![箭號圖示](./media/image-templates/arrow-up.png) | ![箭頭向上精簡圖示](./media/image-templates/arrow-up-thin.png) | ![汽車圖示](./media/image-templates/car.png) | |
-
-**多邊形填充圖案範本**
+**符號圖示範本**
 
 |||||
 |:-:|:-:|:-:|:-:|
-| 檢查 | 跳棋旋轉 | 圓形 | 圓間距 |
-| ![檢查器圖示](./media/image-templates/checker.png) | ![跳棋旋轉圖示](./media/image-templates/checker-rotated.png) | ![圓圈圖示](./media/image-templates/circles.png) | ![圓間距圖示](./media/image-templates/circles-spaced.png) |
+| marker | 標記-粗 | 標記-圓形 | 標記-一般 |
+|![標記圖示](./media/image-templates/marker.png)|![標記-粗圖示](./media/image-templates/marker-thick.png)|![標記-圓形圖示](./media/image-templates/marker-circle.png)|![標記-平面圖標](./media/image-templates/marker-flat.png)|
+||||
+| 標記-正方形 | 標記-方形-叢集 | 標記-箭號 | 標記-球-圖釘 | 
+|![標記-正方形圖示](./media/image-templates/marker-square.png)|![標記-方形-叢集圖示](./media/image-templates/marker-square-cluster.png)|![標記-箭號圖示](./media/image-templates/marker-arrow.png)|![標記-球形釘選圖示](./media/image-templates/marker-ball-pin.png)|
+||||
+| 標記-方形圓角 | 標記-方形-進位-叢集 | 旗標 | 旗標-三角形 |
+| ![標記-方形圓角圖示](./media/image-templates/marker-square-rounded.png) | ![標記-方形-進位-叢集圖示](./media/image-templates/marker-square-rounded-cluster.png) | ![旗標圖示](./media/image-templates/flag.png) | ![旗標-三角形圖示](./media/image-templates/flag-triangle.png) |
+||||
+| 三角形 | 三角形-粗 | 三角形-向上箭號 | 三角形-箭號-左 |
+| ![三角形圖示](./media/image-templates/triangle.png) | ![三角形-粗圖示](./media/image-templates/triangle-thick.png) | ![三角形-向上箭號圖示](./media/image-templates/triangle-arrow-up.png) | ![三角形-箭號左圖示](./media/image-templates/triangle-arrow-left.png) |
+||||
+| 六邊形 | 六邊形-粗 | 六邊形-圓角 | 六邊形-進位-粗 |
+| ![六邊形圖示](./media/image-templates/hexagon.png) | ![六邊形-粗圖示](./media/image-templates/hexagon-thick.png) | ![六邊形-圓角圖示](./media/image-templates/hexagon-rounded.png) | ![六邊形-進位-粗圖示](./media/image-templates/hexagon-rounded-thick.png) |
+||||
+| 釘選 | 圖釘-round | 圓角-正方形 | 進位-正方形-粗 |
+| ![釘選圖示](./media/image-templates/pin.png) | ![圖釘-round 圖示](./media/image-templates/pin-round.png) | ![圓角-正方形圖示](./media/image-templates/rounded-square.png) | ![圓角-方形-粗圖示](./media/image-templates/rounded-square-thick.png) |
+||||
+| 向上箭號 | 向上箭號-細 | 汽車 ||
+| ![向上箭號圖示](./media/image-templates/arrow-up.png) | ![向上箭號-精簡型圖示](./media/image-templates/arrow-up-thin.png) | ![汽車圖示](./media/image-templates/car.png) | |
+
+**多邊形填滿模式範本**
+
 |||||
-| 對角線 | 對角線向下 | 對角條紋向上 | 對角條紋向下 |
-| ![對角線排列圖示](./media/image-templates/diagonal-lines-up.png) | ![對角線向下圖示](./media/image-templates/diagonal-lines-down.png) | ![對角條紋向上圖示](./media/image-templates/diagonal-stripes-up.png) | ![對角條紋向下圖示](./media/image-templates/diagonal-stripes-down.png) |
+|:-:|:-:|:-:|:-:|
+| 棋盤 | 檢查程式-旋轉 | 圓形 | 圓圈-間距 |
+| ![檢查工具圖示](./media/image-templates/checker.png) | ![檢查器-旋轉圖示](./media/image-templates/checker-rotated.png) | ![圓形圖示](./media/image-templates/circles.png) | ![圓圈-間距圖示](./media/image-templates/circles-spaced.png) |
 |||||
-| 網線線 | 旋轉格線線 | 旋轉格線條紋 | x 填滿 |
-| ![格線圖示](./media/image-templates/grid-lines.png) | ![旋轉格線圖示](./media/image-templates/rotated-grid-lines.png) | ![旋轉格線條紋圖示](./media/image-templates/rotated-grid-stripes.png) | ![x 填滿圖示](./media/image-templates/x-fill.png) |
+| 對角線-向上 | 對角線-行-向下 | 對角線-向上 | 對角線-向下 |
+| ![對角線-線條-向上圖示](./media/image-templates/diagonal-lines-up.png) | ![對角線-行向下圖示](./media/image-templates/diagonal-lines-down.png) | ![對角線-向上圖示](./media/image-templates/diagonal-stripes-up.png) | ![對角線-向下鍵](./media/image-templates/diagonal-stripes-down.png) |
 |||||
-| 鋸齒形 | 鋸齒形垂直 | 點 |  |
-| ![鋸齒圖示](./media/image-templates/zig-zag.png) | ![鋸齒形垂直圖示](./media/image-templates/zig-zag-vertical.png) | ![點圖示](./media/image-templates/dots.png) | |
+| 格線 | 旋轉格線 | 旋轉格線-條紋 | x-填滿 |
+| ![格線圖示](./media/image-templates/grid-lines.png) | ![旋轉格線圖示](./media/image-templates/rotated-grid-lines.png) | ![旋轉格線-條紋圖示](./media/image-templates/rotated-grid-stripes.png) | ![x-填滿圖示](./media/image-templates/x-fill.png) |
+|||||
+| 鋸齒-紋 | 鋸齒-紋-垂直 | 句點 |  |
+| ![鋸齒-紋圖示](./media/image-templates/zig-zag.png) | ![鋸齒-紋-垂直圖示](./media/image-templates/zig-zag-vertical.png) | ![點圖示](./media/image-templates/dots.png) | |
 
 ## <a name="try-it-now-tool"></a>立即試用工具
 
-使用以下工具,您可以通過多種方式呈現不同的內置圖像範本,並自定義主顏色和次要顏色和比例。
+使用下列工具，您可以透過各種方式轉譯不同的內建影像範本，並自訂主要和次要色彩和縮放比例。
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="圖示樣本選項" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-在<a href='https://codepen.io'>CodePen</a>上按<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure 映射 () 檢視筆<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>圖示樣本選項</a>。
+<iframe height="500" style="width: 100%;" scrolling="no" title="圖示範本選項" src="//codepen.io/azuremaps/embed/NQyaaO/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+請參閱<a href='https://codepen.io'>CodePen</a>上的 Azure 地圖服務（<a href='https://codepen.io/azuremaps'>@azuremaps</a>），以查看畫筆<a href='https://codepen.io/azuremaps/pen/NQyaaO/'>圖示範本選項</a>。
 </iframe>
 
 ## <a name="next-steps"></a>後續步驟
@@ -191,16 +191,16 @@ SVG 影像樣本支援以下占位符值:
 深入了解本文使用的類別和方法：
 
 > [!div class="nextstepaction"]
-> [影像 Sprite 管理員](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagespritemanager)
+> [ImageSpriteManager](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagespritemanager)
 
 > [!div class="nextstepaction"]
-> [地圖集命名空間](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-maps-typescript-latest#functions
+> [塔命名空間](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-maps-typescript-latest#functions
 )
 
-有關可以使用影像範本的更多代碼範例,請參閱以下文章:
+如需可使用影像範本的更多程式碼範例，請參閱下列文章：
 
 > [!div class="nextstepaction"]
-> [新增符號層次](map-add-pin.md)
+> [新增符號圖層](map-add-pin.md)
 
 > [!div class="nextstepaction"]
 > [新增線條圖層](map-add-line-layer.md)

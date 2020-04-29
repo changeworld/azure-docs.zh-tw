@@ -4,10 +4,10 @@ description: 您的組織詳細資料的擁有者、參與者及讀者。
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.openlocfilehash: 1e57af269c4052d0dcd4a8f7970ca23017024299
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79473127"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的資源、角色及存取控制
@@ -26,7 +26,7 @@ ms.locfileid: "79473127"
 
 * **資源** - Microsoft Azure 服務的執行個體。 您的 Application Insights 資源會收集、分析及顯示從您的應用程式傳送的遙測資料。  其他類型的 Azure 資源包括 Web 應用程式、資料庫和 VM。
   
-    要查看資源，請打開[Azure 門戶][portal]，登錄並按一下"所有資源"。 若要尋找的資源，請在篩選欄位中輸入名稱的一部分。
+    若要查看您的資源，請開啟 [ [Azure 入口網站][portal]]、[登入]，然後按一下 [所有資源]。 若要尋找的資源，請在篩選欄位中輸入名稱的一部分。
   
     ![Azure 資源清單](./media/resources-roles-access-control/10-browse.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "79473127"
 
 ## <a name="control-access-in-the-resource-group"></a><a name="access"></a> 控制資源群組中的存取
 
-請務必了解除了您為應用程式建立的資源之外，還有警示和 Web 測試的個別隱藏資源。 它們與應用程式見解資源附加到同一[資源組](#resource-group)。 您也可以在那裡放置其他 Azure 服務，例如網站或儲存體。
+請務必了解除了您為應用程式建立的資源之外，還有警示和 Web 測試的個別隱藏資源。 它們會附加到與您 Application Insights 資源相同的[資源群組](#resource-group)。 您也可以在那裡放置其他 Azure 服務，例如網站或儲存體。
 
 為了控制這些資源的存取，因此建議您：
 
@@ -72,12 +72,12 @@ ms.locfileid: "79473127"
 
 我們可連結至相關聯的官方參考文件 (如果有的話)。
 
-| 角色 | 在資源群組中 |
+| [角色] | 在資源群組中 |
 | --- | --- |
 | [擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |可以變更任何項目，包括使用者存取。 |
 | [參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |可以編輯任何項目，包括所有資源。 |
-| [應用程式見解元件參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |可以編輯應用程式見解資源。 |
-| [閱讀程式](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |可以檢視 (但無法變更) 任何項目。 |
+| [Application Insights 元件參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |可以編輯 Application Insights 資源。 |
+| [讀取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |可以檢視 (但無法變更) 任何項目。 |
 | [Application Insights 快照集偵錯工具](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | 賦予使用者使用「Application Insights 快照集偵錯工具」功能的權限。 請注意，擁有者或參與者角色均不包含這個角色。 |
 | Azure 服務部署發行管理參與者 | 透過「Azure 服務部署」進行部署的服務參與者角色。 |
 | [資料清除者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | 可清除個人資料的特殊角色。 如需詳細資訊，請參閱我們的[個人資料指引](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data)。   |

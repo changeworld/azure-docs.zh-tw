@@ -1,5 +1,5 @@
 ---
-title: Azure 資料盒閘道設備訪問、電源和連接模式
+title: Azure 資料箱閘道裝置存取、電源和連線模式
 description: 說明如何針對有助於將資料傳輸至 Azure 的 Azure 資料箱閘道裝置管理存取、電源和連線模式
 services: databox
 author: alkohli
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: alkohli
 ms.openlocfilehash: e4d85bd460c39964c9f42ac946e3522f5f129c1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79474436"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>管理 Azure 資料盒閘道的訪問、電源和連接模式
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>管理 Azure 資料箱閘道的存取、電源和連線模式
 
 本文說明如何管理 Azure 資料箱閘道的存取、電源和連線模式。 這些作業都是透過本機 Web UI 或 Azure 入口網站執行。
 
@@ -28,11 +28,11 @@ ms.locfileid: "79474436"
 
 ## <a name="manage-device-access"></a>管理裝置存取
 
-對資料盒閘道設備的訪問由使用裝置密碼控制。 您可以通過本地 Web UI 更改密碼。 您還可以在 Azure 門戶中重置裝置密碼。
+您的資料箱閘道裝置的存取權是由裝置密碼的使用所控制。 您可以透過本機 web UI 變更密碼。 您也可以在 Azure 入口網站中重設裝置密碼。
 
 ### <a name="change-device-password"></a>變更裝置密碼
 
-按照本地 UI 中的這些步驟更改裝置密碼。
+請在本機 UI 中執行下列步驟，以變更裝置密碼。
 
 1. 在本機 Web UI 中，移至 [維護] > [密碼變更]****。
 2. 輸入目前的密碼，然後輸入新密碼。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 確認新的密碼。
@@ -41,7 +41,7 @@ ms.locfileid: "79474436"
 
 3. 按一下 [變更密碼]****。
  
-### <a name="reset-device-password"></a>重置裝置密碼
+### <a name="reset-device-password"></a>重設裝置密碼
 
 重設工作流程不需要使用者重新叫用舊密碼，在密碼遺失時很好用。 此工作流程會在 Azure 入口網站中執行。
 
@@ -56,45 +56,45 @@ ms.locfileid: "79474436"
 
 ## <a name="manage-resource-access"></a>管理資源存取
 
-要創建資料框邊緣/資料框閘道、IoT 中心和 Azure 存儲資源，需要在資源組級別作為參與者或更高版本的許可權。 您還需要註冊相應的資來源提供者。 對於涉及啟用金鑰和憑據的任何操作，還需要對 Azure 活動目錄圖形 API 的許可權。 這些在以下各節仲介紹。
+若要建立您的 Data Box Edge/Data Box Gateway、IoT 中樞和 Azure 儲存體資源，您需要在資源群組層級以參與者或更高的許可權來進行。 您也需要註冊對應的資源提供者。 對於涉及啟用金鑰和認證的任何作業，也需要 Azure Active Directory 圖形 API 的許可權。 下列各節將說明這些情況。
 
-### <a name="manage-microsoft-graph-api-permissions"></a>管理 Microsoft 圖形 API 許可權
+### <a name="manage-microsoft-graph-api-permissions"></a>管理 Microsoft Graph API 許可權
 
-為數據框邊緣設備生成啟用金鑰或執行任何需要憑據的操作時，您需要對 Microsoft 圖形 API 的許可權。 需要憑據的操作可以是：
+產生 Data Box Edge 裝置的啟用金鑰，或執行任何需要認證的作業時，您需要 Microsoft Graph API 的許可權。 需要認證的作業可以是：
 
--  使用關聯的存儲帳戶創建共用。
--  創建可以訪問設備上共用的使用者。
+-  使用相關聯的儲存體帳戶建立共用。
+-  建立可存取裝置上共用的使用者。
 
-您應該具有對活動`User`目錄租戶的存取權限，因為您需要能夠`Read all directory objects`。 不能是來賓使用者，因為他們沒有 許可權`Read all directory objects`。 如果您是來賓，則產生啟用金鑰、在 Data Box Edge 裝置上建立共用或建立使用者等作業都將會失敗。
+您應該擁有 Active Directory `User`租使用者的存取權，如您所需`Read all directory objects`。 您不能是來賓使用者，因為他們沒有的許可權`Read all directory objects`。 如果您是來賓，則產生啟用金鑰、在 Data Box Edge 裝置上建立共用或建立使用者等作業都將會失敗。
 
-有關如何向使用者提供對 Microsoft 圖形 API 的訪問的詳細資訊，請參閱[Microsoft 圖形許可權引用](https://docs.microsoft.com/graph/permissions-reference)。
+如需有關如何提供使用者存取權給 Microsoft Graph API 的詳細資訊，請參閱[Microsoft Graph 許可權參考](https://docs.microsoft.com/graph/permissions-reference)。
 
 ### <a name="register-resource-providers"></a>註冊資源提供者
 
-要在 Azure 中預配資源（在 Azure 資源管理器模型中），需要支援創建該資源的資來源提供者。 例如，要預配虛擬機器，應在訂閱中提供"Microsoft.Compute"資來源提供者。
+若要在 Azure 中布建資源（在 Azure Resource Manager 模型中），您需要可支援建立該資源的資源提供者。 例如，若要布建虛擬機器，您應該在訂用帳戶中有一個可用的「Microsoft 計算」資源提供者。
  
-資源提供者會在訂用帳戶層級上註冊。 根據預設，任何新的 Azure 訂用帳戶都會預先註冊到常用的一組資源提供者。 此清單中不包括"Microsoft.DataBoxEdge"的資來源提供者。
+資源提供者會在訂用帳戶層級上註冊。 根據預設，任何新的 Azure 訂用帳戶都會預先註冊到常用的一組資源提供者。 ' DataBoxEdge ' 的資源提供者並未包含在此清單中。
 
-只要這些資源的資源供應商已經擁有擁有者許可權，使用者就無需向訂閱級別授予存取權限，即可在其資源組中創建"Microsoft.DataBoxEdge"等資源。註冊。
+您不需要將存取權限授與訂用帳戶層級，讓使用者能夠在其擁有擁有權的資源群組中建立像是 ' DataBoxEdge ' 的資源，只要這些資源的資源提供者已註冊即可。
 
-在嘗試創建任何資源之前，請確保資來源提供者已註冊到訂閱中。 如果未註冊資來源提供者，則需要確保創建新資源的使用者有足夠的許可權在訂閱級別上註冊所需的資來源提供者。 如果您尚未這樣做，您將看到以下錯誤：
+在您嘗試建立任何資源之前，請確定已在訂用帳戶中註冊資源提供者。 如果資源提供者未註冊，您必須確定建立新資源的使用者有足夠的許可權可在訂用帳戶層級上註冊所需的資源提供者。 如果您還沒有這麼做，則會看到下列錯誤：
 
-*訂閱\<訂閱名稱>無權註冊資來源提供者：Microsoft.DataBoxEdge。*
+*訂\<用帳戶訂用帳戶名稱> 沒有註冊資源提供者的許可權： DataBoxEdge。*
 
 
-要獲取當前訂閱中已註冊資來源提供者的清單，運行以下命令：
+若要取得目前訂用帳戶中已註冊的資源提供者清單，請執行下列命令：
 
 ```PowerShell
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-對於資料框邊緣設備，`Microsoft.DataBoxEdge`應註冊。 要註冊`Microsoft.DataBoxEdge`，訂閱管理員應運行以下命令：
+針對 Data Box Edge 裝置， `Microsoft.DataBoxEdge`應該註冊。 若要`Microsoft.DataBoxEdge`註冊，訂用帳戶管理員應該執行下列命令：
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-有關如何註冊資來源提供者的詳細資訊，請參閱[解決資來源提供者註冊的錯誤](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)。
+如需如何註冊資源提供者的詳細資訊，請參閱[解決資源提供者註冊的錯誤](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors)。
 
 ## <a name="manage-connectivity-mode"></a>管理連線模式
 

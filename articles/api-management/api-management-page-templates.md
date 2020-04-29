@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: ce56c406c884471c445b25343d5c42f9edcbe4c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249538"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的頁面範本
@@ -41,7 +41,7 @@ ms.locfileid: "79249538"
 ##  <a name="sign-in"></a><a name="SignIn"></a>登錄  
  「登入」**** 範本可讓您自訂開發人員入口網站中的登入頁面。  
   
- ![登錄頁面](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登錄頁面開發人員門戶範本")  
+ ![登入頁面](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登入頁面開發人員入口網站範本")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -104,7 +104,7 @@ ms.locfileid: "79249538"
   
 -   [basic-signin](api-management-page-controls.md#basic-signin)  
   
--   [供應商](api-management-page-controls.md#providers)  
+-   [都會](api-management-page-controls.md#providers)  
   
 ### <a name="data-model"></a>資料模型  
  [使用者登入](api-management-template-data-model-reference.md#UseSignIn)實體。  
@@ -140,7 +140,7 @@ ms.locfileid: "79249538"
 ##  <a name="sign-up"></a><a name="SignUp"></a>登記  
  「註冊」**** 範本可讓您自訂開發人員入口網站中的註冊頁面。  
   
- ![註冊頁面](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 註冊頁面開發人員門戶範本")  
+ ![註冊頁面](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 註冊頁面開發人員入口網站範本")  
   
 ### <a name="default-template"></a>預設範本  
   
@@ -188,7 +188,7 @@ ms.locfileid: "79249538"
 ##  <a name="page-not-found"></a><a name="PageNotFound"></a> 找不到頁面  
  「找不到頁面」**** 範本可讓您自訂開發人員入口網站中的「找不到頁面」頁面。  
   
- ![未找到頁面](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "未找到頁面開發人員門戶範本的 APIM")  
+ ![找不到頁面](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM 找不到頁面開發人員入口網站範本")  
   
 ### <a name="default-template"></a>預設範本  
   

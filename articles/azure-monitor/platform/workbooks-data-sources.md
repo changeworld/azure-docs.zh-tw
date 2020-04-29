@@ -1,6 +1,6 @@
 ---
-title: Azure 監視器活頁簿資料來源 |微軟文檔
-description: 使用從多個資料來源構建的預構建和自訂參數化 Azure 監視器活頁簿簡化複雜報告
+title: Azure 監視器活頁簿資料來源 |Microsoft 檔
+description: 使用從多個資料來源建立的預建和自訂參數化 Azure 監視器活頁簿，簡化複雜的報表
 services: azure-monitor
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,77 +11,77 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d57910ae31d4db9be17b3dc46b5920a925ab4fcf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79248576"
 ---
-# <a name="azure-monitor-workbooks-data-sources"></a>Azure 監視活頁簿資料來源
+# <a name="azure-monitor-workbooks-data-sources"></a>Azure 監視器活頁簿資料來源
 
-活頁簿與大量資料來源相容。 本文將引導您流覽當前可用於 Azure 監視器活頁簿的資料來源。
+活頁簿與大量資料來源相容。 本文將逐步引導您瞭解目前可用於 Azure 監視器活頁簿的資料來源。
 
 ## <a name="logs"></a>記錄
 
-活頁簿允許查詢來自以下來源的日誌：
+活頁簿允許從下列來源查詢記錄：
 
-* Azure 監視器日誌（應用程式見解資源和日誌分析工作區）。
-* 以資源為中心的資料（活動日誌）
+* Azure 監視器記錄（Application Insights 資源和 Log Analytics 工作區）。
+* 以資源為中心的資料（活動記錄）
 
-活頁簿作者可以使用轉換基礎資源資料的 KQL 查詢來選擇可以視覺化為文本、圖表或網格的結果集。
+活頁簿作者可以使用轉換基礎資源資料的 KQL 查詢，以選取可哥視化為文字、圖表或格線的結果集。
 
-![活頁簿日誌報告介面的螢幕截圖](./media/workbooks-overview/logs.png)
+![活頁簿記錄報表介面的螢幕擷取畫面](./media/workbooks-overview/logs.png)
 
-活頁簿作者可以輕鬆地跨多個資源查詢，從而創建真正統一的豐富報告體驗。
+活頁簿作者可以輕鬆地跨多個資源查詢，建立真正統一的豐富報告體驗。
 
 ## <a name="metrics"></a>計量
 
-Azure 資源發出可通過活頁簿訪問的[指標](data-platform-metrics.md)。 指標可以通過專用控制項在活頁簿中訪問，該控制項允許您指定目標資源、所需指標及其聚合。 然後，可以在圖表或網格中繪製此資料。
+Azure 資源會發出可透過活頁簿存取的[計量](data-platform-metrics.md)。 您可以透過特殊控制項存取活頁簿中的計量，讓您指定目標資源、所需的計量和匯總。 然後，您可以在圖表或方格中繪製這項資料。
 
-![活頁簿 cpu 利用率指標圖表的螢幕截圖](./media/workbooks-overview/metrics-graph.png)
+![Cpu 使用率之活頁簿計量圖表的螢幕擷取畫面](./media/workbooks-overview/metrics-graph.png)
 
-![活頁簿指標介面的螢幕截圖](./media/workbooks-overview/metrics.png)
+![活頁簿計量介面的螢幕擷取畫面](./media/workbooks-overview/metrics.png)
 
 ## <a name="azure-resource-graph"></a>Azure Resource Graph 
 
-活頁簿支援使用 Azure 資源圖 （ARG） 查詢資源及其中繼資料。 此功能主要用於為報表生成自訂查詢作用域。 資源範圍通過 ARG 支援的 KQL 子集表示 - 通常對於常見用例來說，該子集就足夠了。
+活頁簿支援使用 Azure Resource Graph （ARG）來查詢資源及其中繼資料。 此功能主要是用來建立報表的自訂查詢範圍。 資源範圍是透過 ARG 支援的 KQL 子集來表示–這通常足以應付一般使用案例。
 
-要使查詢控制項使用此資料來源，請使用"查詢類型下拉清單"選擇 Azure 資源圖並選擇要目標的訂閱。 使用查詢控制項添加選擇有趣資源子集的 ARG KQL 子集。
+若要讓查詢控制項使用此資料來源，請使用 [查詢類型] 下拉式選來選擇 Azure Resource Graph 並選取要設為目標的訂閱。 使用查詢控制項，加入可選取有趣資源子集的 ARG KQL 子集。
 
 
-![Azure 資源圖 KQL 查詢的螢幕截圖](./media/workbooks-overview/azure-resource-graph.png)
+![Azure Resource Graph KQL 查詢的螢幕擷取畫面](./media/workbooks-overview/azure-resource-graph.png)
 
-## <a name="alerts-preview"></a>警報（預覽）
+## <a name="alerts-preview"></a>警示（預覽）
 
-活頁簿允許使用者視覺化與其資源相關的活動警報。 此功能允許創建將通知資料（警報）和診斷資訊（指標、日誌）合併到一個報表中的報表。 還可以將此資訊合併在一起，以創建豐富的報告，這些報表將見解合併到這些資料來源中。
+活頁簿可讓使用者以視覺化方式呈現與其資源相關的作用中警示。 這項功能可讓您建立將通知資料（警示）和診斷資訊（計量、記錄）結合在一份報表中的報表。 這項資訊也可以聯結在一起，以建立豐富的報表，將深入解析結合到這些資料來源。
 
-要使查詢控制項使用此資料來源，請使用"查詢類型下拉清單"選擇"警報"並選擇要定位的訂閱、資源組或資源。 使用警報篩選器下拉清單可根據您的分析需求選擇一個有趣的警報子集。
+若要讓查詢控制項使用此資料來源，請使用 [查詢類型] 下拉式選來選擇 [警示]，然後選取要做為目標的訂用帳戶、資源群組或資源。 使用 [警示篩選器] 下拉式清單，為您的分析需求選取一個有趣的警示子集。
 
-![警報查詢的螢幕截圖](./media/workbooks-overview/alerts.png)
+![警示查詢的螢幕擷取畫面](./media/workbooks-overview/alerts.png)
 
-## <a name="workload-health-preview"></a>工作負載運行狀況（預覽）
+## <a name="workload-health-preview"></a>工作負載健全狀況（預覽）
 
-Azure 監視器具有主動監視 Windows 或 Linux 客體作業系統的可用性和性能的功能。 Azure 監視器可建模關鍵元件及其關係、如何測量這些元件運行狀況的條件，以及檢測到不正常情況時提醒您哪些元件。 活頁簿允許使用者使用此資訊創建豐富的互動式報表。
+Azure 監視器具有可主動監視 Windows 或 Linux 客體作業系統之可用性和效能的功能。 Azure 監視器會建立主要元件及其關聯性的模型、如何測量這些元件之健康情況的準則，以及在偵測到狀況不良的狀況時，哪些元件會對您發出警示。 活頁簿可讓使用者使用此資訊來建立豐富的互動式報表。
 
-要使查詢控制項使用此資料來源，請使用 **"查詢類型**下拉清單"選擇工作負載運行狀況，並選擇要定位的訂閱、資源組或 VM 資源。 使用運行狀況篩選器下拉清單可根據您的分析需求選擇一個有趣的運行狀況事件子集。
+若要讓查詢控制項使用此資料來源，請使用 [**查詢類型**] 下拉式選選擇 [工作負載健全狀況]，然後選取訂用帳戶、資源群組或要設為目標的 VM 資源。 使用 [健全狀況篩選器] 下拉式清單，為您的分析需求選取一個有趣的健全狀況事件子集。
 
-![警報查詢的螢幕截圖](./media/workbooks-overview/workload-health.png)
+![警示查詢的螢幕擷取畫面](./media/workbooks-overview/workload-health.png)
 
-## <a name="azure-resource-health"></a>Azure 資源運行狀況 
+## <a name="azure-resource-health"></a>Azure 資源健康狀態 
 
-活頁簿支援獲取 Azure 資源運行狀況並將其與其他資料來源結合，以創建豐富的互動式運行狀況報告
+活頁簿支援取得 Azure 資源健康狀態，並將其與其他資料來源結合，以建立豐富的互動式健全狀況報告
 
-要使查詢控制項使用此資料來源，請使用 **"查詢類型**下拉清單"選擇 Azure 運行狀況並選擇要定位的資源。 使用運行狀況篩選器下拉清單為分析需求選擇有趣的資源問題子集。
+若要讓查詢控制項使用此資料來源，請使用 [**查詢類型**] 下拉式選來選擇 [Azure 健康情況]，然後選取要設為目標的資源。 使用 [健全狀況篩選器] 下拉式清單，為您的分析需求選取有趣的資源問題子集。
 
-![警報查詢的螢幕截圖](./media/workbooks-overview/resource-health.png)
+![警示查詢的螢幕擷取畫面](./media/workbooks-overview/resource-health.png)
 
-## <a name="azure-data-explorer-preview"></a>Azure 資料資源管理器（預覽）
+## <a name="azure-data-explorer-preview"></a>Azure 資料總管（預覽）
 
-活頁簿現在支援使用強大的[Kusto](https://docs.microsoft.com/azure/kusto/query/index)查詢語言從[Azure 資料資源管理器](https://docs.microsoft.com/azure/data-explorer/)群集進行查詢。   
+活頁簿現在支援使用強大的[Kusto](https://docs.microsoft.com/azure/kusto/query/index)查詢語言，從[Azure 資料總管](https://docs.microsoft.com/azure/data-explorer/)叢集進行查詢。   
 
-![庫斯托查詢視窗的螢幕截圖](./media/workbooks-overview/data-explorer.png)
+![Kusto 查詢視窗的螢幕擷取畫面](./media/workbooks-overview/data-explorer.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [開始](workbooks-visualizations.md)瞭解有關活頁簿的許多豐富視覺化選項的詳細資訊。
-* [控制和](workbooks-access-control.md)共用對活頁簿資源的存取權限。
+* [開始深入](workbooks-visualizations.md)瞭解活頁簿許多豐富的視覺效果選項。
+* [控制](workbooks-access-control.md)和共用您的活頁簿資源的存取權。

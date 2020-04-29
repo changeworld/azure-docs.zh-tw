@@ -1,21 +1,21 @@
 ---
-title: 規劃服務結構群集容量
+title: 規劃 Service Fabric 叢集容量
 description: Service Fabric 叢集容量規劃考量。 Nodetypes、Operations、持久性和可靠性層級
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
 ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258911"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 叢集容量規劃考量
 對於任何生產部署而言，容量規劃都是一個很重要的步驟。 以下是一些您在該程序中必須考量的項目。
 
 * 您的叢集一開始所需的節點類型的數目
-* 每個節點類型的屬性（大小、主節點、面向互聯網、VM 數量等）
+* 每個節點類型的屬性（大小、主要、網際網路面向、Vm 數目等）
 * 叢集的可靠性和持久性的特性
 
 > [!NOTE]
@@ -49,7 +49,7 @@ Service Fabric 系統服務 (例如，叢集管理員服務或映像存放區服
 
 ![有兩個節點類型的叢集螢幕擷取畫面][SystemServices]
 
-* 主節點類型的**VM 最小大小**由您選擇的**持久性層**決定。 預設持久性層級為 Bronze。 如需詳細資訊，請參閱[叢集的持久性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)。  
+* 主要節點類型的**vm 大小下限**取決於您選擇的**持久性層級**。 預設持久性層級為 Bronze。 如需詳細資訊，請參閱[叢集的持久性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)。  
 * 主要節點類型的 **VM 數目下限**取決於您選擇的**可靠性層級**。 預設可靠性層級為 Silver。 如需詳細資訊，請參閱[叢集的可靠性特性](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)。  
 
 在 Azure Resource Manager 範本中，主要節點類型會以 `isPrimary` 屬性設定於[節點類型定義](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object)之下。
@@ -67,11 +67,11 @@ Service Fabric 系統服務 (例如，叢集管理員服務或映像存放區服
 | 耐久性層級  | 所需的 VM 數目下限 | 支援的 VM SKU                                                                  | 您對虛擬機器擴展集所做的更新                               | Azure 所起始的更新和維護                                                              | 
 | ---------------- |  ----------------------------  | ---------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | 金卡             | 5                              | 單一客戶專用的完整節點 SKU (例如 L32s、GS5、G5、DS15_v2、D15_v2) | 可以延遲到 Service Fabric 叢集核准為止 | 每一 UD 可以暫停 2 小時，讓複本有額外時間從先前的失敗中復原 |
-| 銀卡           | 5                              | 單核或以上單核的 VM，具有至少 50 GB 的本地 SSD                      | 可以延遲到 Service Fabric 叢集核准為止 | 無法延遲很長的期間                                                    |
-| 青銅卡           | 1                              | 具有至少 50 GB 本地 SSD 的 VM                                              | Service Fabric 叢集不會延遲           | 無法延遲很長的期間                                                    |
+| 銀卡           | 5                              | 單一核心或更高版本的 Vm，具有至少 50 GB 的本機 SSD                      | 可以延遲到 Service Fabric 叢集核准為止 | 無法延遲很長的期間                                                    |
+| 青銅卡           | 1                              | 至少具有 50 GB 本機 SSD 的 Vm                                              | Service Fabric 叢集不會延遲           | 無法延遲很長的期間                                                    |
 
 > [!WARNING]
-> 執行 Bronze 持久性的節點類型「沒有權限」__。 這意味著影響有狀態工作負載的基礎結構作業不會停止或延遲，這可能會影響您的工作負載。 針對僅執行無狀態工作負載的節點類型，只能使用 Bronze。 對於生產工作負載，建議執行 Silver 或以上的層級。 
+> 執行 Bronze 持久性的節點類型「沒有權限」__。 這表示影響您具狀態工作負載的基礎結構工作將不會停止或延遲，這可能會影響您的工作負載。 針對僅執行無狀態工作負載的節點類型，只能使用 Bronze。 對於生產工作負載，建議執行 Silver 或以上的層級。 
 > 
 > 無論是任何持久性層級，虛擬機器擴展集上的[解除配置](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/deallocate)作業都會終結叢集
 
@@ -98,9 +98,9 @@ Service Fabric 系統服務 (例如，叢集管理員服務或映像存放區服
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>針對您已設定為 Silver 或 Gold 耐久性層級之節點類型的作業建議。
 
 - 使叢集和應用程式持續保持良好的狀況，並確保應用程式會及時回應所有[服務複本生命週期事件](service-fabric-reliable-services-lifecycle.md) (例如當組建中的複本陷入停滯)。
-- 採用更安全的方式進行 VM SKU 更改（向上/向下擴展）：更改虛擬機器規模集的 VM SKU 需要許多步驟和注意事項。 以下為您可以遵循以避免發生常見問題的程序。
+- 採用更安全的方式來進行 VM SKU 變更（相應增加/減少）：變更虛擬機器擴展集的 VM SKU 需要一些步驟和考慮。 以下為您可以遵循以避免發生常見問題的程序。
     - **針對非主要節點類型：** 建議您建立新的虛擬機器擴展集、修改服務放置條件約束以包含新的虛擬機器擴展集/節點類型，然後以一次一個節點的方式，將舊的虛擬機器擴展集執行個體計數減少至零 (這是為了確保移除節點不會影響到叢集的可靠性)。
-    - **對於主節點類型：** 如果您選擇的 VM SKU 處於容量狀態，並且希望更改為更大的 VM SKU，請按照我們關於[主節點類型的垂直縮放的指導](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type)進行。 
+    - **針對主要節點類型：** 如果您選取的 VM SKU 已達到容量，而您想要變更為較大的 VM SKU，請遵循我們[針對主要節點類型的垂直調整](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-node-type)指引。 
 
 - 針對所有啟用 Gold 或 Silver 持久性的虛擬機器擴展集維持至少五個節點。
 - 持久性層級為 Silver 或 Gold 的每個虛擬機器擴展集，都必須對應到它自己在 Service Fabric 叢集中的節點類型。 將多個虛擬機器擴展集對應到單一節點類型，將會使 Service Fabric 叢集與 Azure 基礎結構之間的協調無法正常運作。
@@ -142,7 +142,7 @@ Service Fabric 系統服務 (例如，叢集管理員服務或映像存放區服
 以下是規劃主要節點類型容量的指引：
 
 - **要在 Azure 中執行任何生產工作負載的 VM 執行個體數目︰** 您必須指定最小的主要節點類型大小為 5 以及可靠性層級為 Silver。  
-- **要在 Azure 中運行測試工作負載的 VM 實例數**您可以指定最小主節點類型大小為 1 或 3。 以特殊組態執行的一個節點叢集，因此不支援該叢集的相應放大。 一個節點叢集有沒有可靠性且在您的 Resource Manager 範本中，您必須移除/不指定該組態 (不設定組態值並不足夠)。 如果您透過入口網站設定一個節點叢集，則會自動處理組態。 一和三個節點叢集不支援執行生產工作負載。 
+- **要在 Azure 中執行測試工作負載的 VM 實例數目**您可以指定最小的主要節點類型大小1或3。 以特殊組態執行的一個節點叢集，因此不支援該叢集的相應放大。 一個節點叢集有沒有可靠性且在您的 Resource Manager 範本中，您必須移除/不指定該組態 (不設定組態值並不足夠)。 如果您透過入口網站設定一個節點叢集，則會自動處理組態。 一和三個節點叢集不支援執行生產工作負載。 
 - **VM SKU：** 主要節點類型是執行系統服務的地方，因此，您為此而選擇的 VM SKU，必須考量您打算投入叢集的整體尖峰負載。 我用比喻來闡明我的意思 - 將主要節點類型想像成您的「肺」，它供應氧氣給您的腦，如果腦沒有足夠的氧氣，您的身體就會出問題。 
 
 由於叢集的容量需求取決於您打算在叢集中執行的工作負載，因此我們無法為您特定的工作負載提供確切的指引，但以下是概括性的指引，可協助您開始進行
@@ -150,11 +150,11 @@ Service Fabric 系統服務 (例如，叢集管理員服務或映像存放區服
 生產工作負載： 
 
 - 建議將叢集主要 NodeType 專用於系統服務，並使用放置限制式，將應用程式部署到次要 NodeTypes。
-- 推薦的 VM SKU 是標準D2_V2或等效的，具有至少 50 GB 的本地 SSD。
-- 受支援的最少使用 VM SKU 是Standard_D2_V3或標準D1_V2或等效的，至少為 50 GB 的本地 SSD。 
+- 建議的 VM SKU 是標準 D2_V2 或同等的，最少為 50 GB 的本機 SSD。
+- 支援的最小使用 VM SKU 為 Standard_D2_V3 或標準 D1_V2 或等同于最少 50 GB 的本機 SSD。 
 - 我們建議的最小值為 50 GB。 針對您的工作負載，特別是在執行 Windows 容器時，則需要較大的磁碟。 
 - 局部核心 VM SKU 不支援生產工作負載，例如標準 A0。
-- 出於性能原因，生產工作負載不支援一系列 VMKu。
+- 基於效能考慮，不支援針對生產環境工作負載使用系列的 VM Sku。
 - 不支援低優先順序的 VM。
 
 > [!WARNING]
@@ -172,10 +172,10 @@ Service Fabric 系統服務 (例如，叢集管理員服務或映像存放區服
 
 生產工作負載 
 
-- 推薦的 VM SKU 是標準D2_V2或等效的，具有至少 50 GB 的本地 SSD。
-- 受支援的最少使用 VM SKU 是Standard_D2_V3或標準D1_V2或等效的，至少為 50 GB 的本地 SSD。 
+- 建議的 VM SKU 是標準 D2_V2 或同等的，最少為 50 GB 的本機 SSD。
+- 支援的最小使用 VM SKU 為 Standard_D2_V3 或標準 D1_V2 或等同于最少 50 GB 的本機 SSD。 
 - 局部核心 VM SKU 不支援生產工作負載，例如標準 A0。
-- 出於性能原因，生產工作負載不支援一系列 VMKu。
+- 基於效能考慮，不支援針對生產環境工作負載使用系列的 VM Sku。
 
 ## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>非主要節點類型 - 無狀態工作負載的容量指引
 
@@ -187,10 +187,10 @@ Service Fabric 系統服務 (例如，叢集管理員服務或映像存放區服
 
 生產工作負載 
 
-- 推薦的 VM SKU 是標準D2_V2或等效的。 
+- 建議的 VM SKU 是標準 D2_V2 或對等用法。 
 - 支援使用的最小 VM SKU 是標準 D1 或標準 D1_V2 或對等項目。 
 - 局部核心 VM SKU 不支援生產工作負載，例如標準 A0。
-- 出於性能原因，生產工作負載不支援一系列 VMKu。
+- 基於效能考慮，不支援針對生產環境工作負載使用系列的 VM Sku。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 

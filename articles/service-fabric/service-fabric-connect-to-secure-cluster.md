@@ -1,13 +1,13 @@
 ---
-title: 安全地連接到 Azure 服務結構群集
+title: 安全地連接到 Azure Service Fabric 叢集
 description: 說明如何驗證用戶端對 Service Fabric 叢集的存取，以及如何保護用戶端與叢集之間的通訊。
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: a1f4abbabe428a09492efefca4a8da9801b9f68d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258573"
 ---
 # <a name="connect-to-a-secure-cluster"></a>連線到安全的叢集
@@ -344,7 +344,7 @@ Azure 入口網站的叢集基本資訊窗格中也會提供完整 URL。
 
 `https://<your-cluster-endpoint>:19080/Explorer`
 
-系統會自動提示您使用 AAD 登錄。
+系統會自動提示您使用 AAD 登入。
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>使用用戶端憑證連線到安全的叢集
 
@@ -381,7 +381,7 @@ Azure 入口網站的叢集基本資訊窗格中也會提供完整 URL。
 ## <a name="next-steps"></a>後續步驟
 
 * [Service Fabric 叢集升級程序與您的期望](service-fabric-cluster-upgrade.md)
-* [在視覺化工作室管理服務交換矩陣應用程式](service-fabric-manage-application-in-visual-studio.md)
+* [在 Visual Studio 中管理您的 Service Fabric 應用程式](service-fabric-manage-application-in-visual-studio.md)
 * [Service Fabric 健康情況模型簡介](service-fabric-health-introduction.md)
 * [應用程式安全性及 RunAs](service-fabric-application-runas-security.md)
 * [開始使用 Service Fabric CLI](service-fabric-cli.md)
