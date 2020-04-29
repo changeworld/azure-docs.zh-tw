@@ -1,6 +1,6 @@
 ---
-title: Azure 資料工廠連接器概述
-description: 瞭解數據工廠中支援的連接器。
+title: Azure Data Factory 連接器總覽
+description: 瞭解 Data Factory 中支援的連接器。
 services: data-factory
 author: linda33wj
 ms.service: data-factory
@@ -10,16 +10,16 @@ ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
 ms.openlocfilehash: 623ee15c5071fdc7a36677481e98872b8c2bd562
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410421"
 ---
-# <a name="azure-data-factory-connector-overview"></a>Azure 資料工廠連接器概述
+# <a name="azure-data-factory-connector-overview"></a>Azure Data Factory 連接器總覽
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Azure 資料工廠透過複製、資料串流、尋找、獲取中繼資料和刪除活動支援以下資料儲存和格式。 單擊每個數據存儲,詳細瞭解支援的功能和相應的配置。
+Azure Data Factory 透過複製、資料流程、查閱、取得中繼資料和刪除活動來支援下列資料存放區和格式。 按一下每個資料存放區，以深入瞭解支援的功能和對應的設定。
 
 ## <a name="supported-data-stores"></a>支援的資料存放區
 
@@ -32,7 +32,7 @@ Azure 資料工廠透過複製、資料串流、尋找、獲取中繼資料和�
 ## <a name="next-steps"></a>後續步驟
 
 - [複製活動](copy-activity-overview.md)
-- [對應資料串流](concepts-data-flow-overview.md)
+- [對應資料流](concepts-data-flow-overview.md)
 - [查閱活動](control-flow-lookup-activity.md)
 - [取得中繼資料活動](control-flow-get-metadata-activity.md)
 - [刪除活動](delete-activity.md)

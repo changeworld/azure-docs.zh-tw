@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 資料工廠建立 Azure 整合執行時
+title: 在 Azure Data Factory 中建立 Azure 整合執行時間
 description: 了解如何在 Azure Data Factory 中建立 Azure 整合執行階段，它可用來複製資料和分派轉換活動。
 services: data-factory
 documentationcenter: ''
@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414070"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何建立和設定 Azure 整合執行階段
@@ -33,38 +33,38 @@ Azure IR 提供完全受控的計算，以原生方式執行資料移動並將�
 
 ## <a name="create-azure-ir"></a>建立 Azure IR
 
-要創建和設置 Azure IR,可以使用以下過程。
+若要建立和設定 Azure IR，您可以使用下列程式。
 
-### <a name="create-an-azure-ir-via-azure-powershell"></a>透過 Azure 電源外殼建立 Azure IR
-可以使用**集-AzDataFactoryV2整合式執行時**PowerShell cmdlet創建整合執行時。 要建立 Azure IR,請為指令指定名稱、位置和類型。 以下是使用位置設定為 "West Europe" (歐洲西部) 來建立 Azure IR 的範例命令：
+### <a name="create-an-azure-ir-via-azure-powershell"></a>透過 Azure PowerShell 建立 Azure IR
+您可以使用**AzDataFactoryV2IntegrationRuntime** PowerShell Cmdlet 建立 Integration Runtime。 若要建立 Azure IR，您可以在命令中指定名稱、位置和類型。 以下是使用位置設定為 "West Europe" (歐洲西部) 來建立 Azure IR 的範例命令：
 
 ```powershell
 Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
 針對 Azure IR，類型必須設定為**受控**。 您不需要指定計算詳細資料，因為它在雲端中以彈性的方式受到完整管理。 當您要建立 Azure-SSIS IR 時，才需要指定例如節點大小和節點計數的計算詳細資料。 如需詳細資訊，請參閱[建立和設定 Azure-SSIS IR](create-azure-ssis-integration-runtime.md)。
 
-您可以使用 Set-AzDataFactoryV2 整合執行時 PowerShell cmdlet 設定現有 Azure IR 以更改其位置。 如需 Azure IR 位置的詳細資訊，請參閱[整合執行階段簡介](concepts-integration-runtime.md)。
+您可以使用 AzDataFactoryV2IntegrationRuntime PowerShell Cmdlet 來設定現有的 Azure IR 來變更其位置。 如需 Azure IR 位置的詳細資訊，請參閱[整合執行階段簡介](concepts-integration-runtime.md)。
 
-### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>透過 Azure 資料工廠 UI 建立 Azure IR
-使用以下步驟使用 Azure 資料工廠 UI 創建 Azure IR。
+### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>透過 Azure Data Factory UI 建立 Azure IR
+使用下列步驟，使用 Azure Data Factory UI 來建立 Azure IR。
 
-1. 在 Azure 資料工廠 UI 的 **「讓我們開始」** 頁上,選擇左側窗格上的 **「作者」** 選項卡。
+1. 在 Azure Data Factory UI 的 **[開始使用] 頁面上**，選取左窗格中的 [**作者**] 索引標籤。
 
-   ![首頁 作者按鈕](media/doc-common-process/get-started-page-author-button.png)
+   ![首頁作者按鈕](media/doc-common-process/get-started-page-author-button.png)
 
-1. 選擇左邊窗格底部的**連線,** 並在 **「連線」** 視窗中選擇 **「整合」執行時**。 選擇 **"新建**"。
+1. 選取左窗格底部**的 [** **連接**]，然後選取 [連線] 視窗中的 [**整合運行**時間]。 選取 [ **+ 新增**]。
 
    ![建立整合執行階段](media/create-azure-integration-runtime/new-integration-runtime.png)
 
-1. 在 **「整合時設定」** 頁上,選擇**Azure、自託管**,然後選擇「**繼續**」。 
+1. 在 [**整合執行時間設定**] 頁面上，選取 [ **Azure]、[自我**裝載]，然後選取 [**繼續**]。 
 
-1. 在以下頁上,選擇**Azure**以建立 Azure IR,然後選擇「**繼續**」。
+1. 在下列頁面上，選取 [ **Azure** ] 以建立 Azure IR，然後選取 [**繼續**]。
    ![建立整合執行階段](media/create-azure-integration-runtime/new-azure-ir.png)
 
-1. 輸入 Azure IR 的名稱,然後選擇 **"創建**"。
+1. 輸入 Azure IR 的名稱，然後選取 [**建立**]。
    ![建立 Azure IR](media/create-azure-integration-runtime/create-azure-ir.png)
 
-1. 建立完成後,您將看到一個彈出通知。 在 **「整合時」** 頁上,請確保在清單中看到新創建的 IR。
+1. 建立完成時，您會看到快顯通知。 在 [**整合運行**時間] 頁面上，確認您在清單中看到新建立的 IR。
 
 ## <a name="use-azure-ir"></a>使用 Azure IR
 
@@ -90,6 +90,6 @@ Azure IR 建立之後，您可以在「已連結的服務」定義中參考它�
 ## <a name="next-steps"></a>後續步驟
 若要了解如何建立其他類型的整合執行階段，請參閱下列文章：
 
-- [建立自託管整合時](create-self-hosted-integration-runtime.md)
+- [建立自我裝載整合執行時間](create-self-hosted-integration-runtime.md)
 - [建立 Azure-SSIS 整合執行階段](create-azure-ssis-integration-runtime.md)
  

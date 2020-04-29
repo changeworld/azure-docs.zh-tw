@@ -1,7 +1,7 @@
 ---
-title: 設定 Azure 專用連結
+title: 設定 Azure 私用連結
 titleSuffix: Azure Machine Learning
-description: 使用 Azure 專用連結從虛擬網路安全地訪問 Azure 機器學習工作區。
+description: 使用 Azure 私人連結，從虛擬網路安全地存取您的 Azure Machine Learning 工作區。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,67 +11,67 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
 ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81411190"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>為 Azure 機器學習工作區設定 Azure 專用連結(預覽)
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>設定 Azure Machine Learning 工作區的 Azure 私人連結（預覽）
 
-在本文件中,您將瞭解如何將 Azure 私有連結與 Azure 機器學習工作區一起使用。 此功能目前處於預覽狀態,在美國東部、美國西部 2、美國中南部區域提供。 
+在本檔中，您將瞭解如何搭配使用 Azure 私用連結與您的 Azure Machine Learning 工作區。 這項功能目前為預覽狀態，適用于美國東部、美國西部2、美國中南部區域。 
 
-Azure 專用連結使您能夠使用專用終結點連接到工作區。 專用終結點是虛擬網路中的一組專用 IP 位址。 然後,您可以將對工作區的訪問限制為僅通過專用 IP 位址進行。 專用鏈路有助於減少數據滲漏的風險。 要瞭解有關私有終結點的更多詳細資訊,請參閱[Azure 專用連結](/azure/private-link/private-link-overview)一文。
+Azure 私人連結可讓您使用私人端點連接到您的工作區。 私人端點是您的虛擬網路內的一組私人 IP 位址。 接著，您可以將工作區的存取限制為只在私人 IP 位址上進行。 私用連結有助於降低資料外泄的風險。 若要深入瞭解私人端點，請參閱[Azure 私用連結](/azure/private-link/private-link-overview)一文。
 
 > [!IMPORTANT]
-> Azure 專用連結不會影響 Azure 控制平面(管理操作),例如刪除工作區或管理計算資源。 例如,創建、更新或刪除計算目標。 這些操作正常地通過公共互聯網執行。
+> Azure 私用連結不會影響 Azure 控制平面（管理作業），例如刪除工作區或管理計算資源。 例如，建立、更新或刪除計算目標。 這些作業會在公用網際網路上正常執行。
 >
-> 啟用專用連結的工作區不支援 Azure 機器學習計算實例預覽。
+> 啟用私用連結的工作區中不支援 Azure Machine Learning 計算實例預覽。
 
-## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>建立使用專用的終結點的工作區
+## <a name="create-a-workspace-that-uses-a-private-endpoint"></a>建立使用私用端點的工作區
 
-目前,我們僅在創建新的 Azure 機器學習工作區時支援啟用專用終結點。 以下樣本適用於幾種常用配置:
+目前，我們只支援在建立新的 Azure Machine Learning 工作區時啟用私用端點。 下列範本是針對數個熱門設定所提供：
 
 > [!TIP]
-> 自動審批控制對啟用專用連結資源的自動訪問。 有關詳細資訊,請參閱什麼是[Azure 專用連結服務](../private-link/private-link-service-overview.md)。
+> 自動核准可控制啟用私人連結的資源的自動存取。 如需詳細資訊，請參閱[什麼是 Azure 私人連結服務](../private-link/private-link-service-overview.md)。
 
-* [具有客戶管理的金鑰和專用連結的自動核准工作區](#cmkaapl)
-* [具有客戶管理的金鑰和手動批准專用連結的工作區](#cmkmapl)
-* [具有 Microsoft 管理的金鑰的工作區和私有連結的自動核准](#mmkaapl)
-* [具有 Microsoft 管理的金鑰和手動批准專用連結的工作區](#mmkmapl)
+* [具有客戶管理金鑰的工作區和私人連結的自動核准](#cmkaapl)
+* [具有客戶管理金鑰和手動核准私人連結的工作區](#cmkmapl)
+* [具有 Microsoft 管理的金鑰和私人連結的自動核准的工作區](#mmkaapl)
+* [具有 Microsoft 管理的金鑰和手動核准私人連結的工作區](#mmkmapl)
 
-部署樣本時,必須提供以下資訊:
+部署範本時，您必須提供下列資訊：
 
 * 工作區名稱
-* Azure 區域以在
-* 工作區版本(基本版或企業版)
-* 開啟工作區的高機密性設定
-* 如果啟用具有客戶託管金鑰的工作區的加密,並且應啟用金鑰的關聯值
-* 虛擬網路和子網名稱,樣本將建立新的虛擬網路和子網路
+* 要在其中建立資源的 Azure 區域
+* 工作區版本（基本或企業）
+* 如果應該啟用工作區的高機密性設定
+* 如果應啟用具有客戶管理金鑰之工作區的加密，以及該金鑰的相關聯值
+* 虛擬網路和子網名稱，範本會建立新的虛擬網路和子網
 
-提交樣本並完成預配後,包含工作區的資源組將包含與專用連結相關的三個新項目類型:
+提交範本並完成布建之後，包含您工作區的資源群組將會包含三個與私人連結相關的新成品類型：
 
-* 專用終結點
+* 私用端點
 * Linux
 * 私人 DNS 區域
 
-工作區還包含一個 Azure 虛擬網路,該網路可以通過專用終結點與工作區通信。
+工作區也包含可以透過私人端點與工作區通訊的 Azure 虛擬網路。
 
-### <a name="deploy-the-template-using-the-azure-portal"></a>使用 Azure 門戶部署樣本
+### <a name="deploy-the-template-using-the-azure-portal"></a>使用 Azure 入口網站部署範本
 
-1. 遵循[從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)的步驟。 到達 __「編輯」樣本__螢幕時,請貼上到本文件末尾的範本之一。
+1. 遵循[從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)的步驟。 當您抵達 [__編輯範本__] 畫面時，請貼上這份檔結尾的其中一個範本。
 1. 選取 [儲存]____ 以使用範本。 提供下列資訊，並同意列出的條款及條件：
 
-   * 訂閱:選擇要用於這些資源的 Azure 訂閱。
-   * 資源組:選擇或創建資源組以包含服務。
-   * 工作區名稱:要用於要創建的 Azure 機器學習工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
-   * 位置:選擇將建立資源的位置。
+   * 訂用帳戶：選取要用於這些資源的 Azure 訂用帳戶。
+   * 資源群組：選取或建立包含服務的資源群組。
+   * 工作區名稱：要用於將建立之 Azure Machine Learning 工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
+   * 位置：選取將建立資源的位置。
 
 如需詳細資訊，請參閱[從自訂範本部署資源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
-### <a name="deploy-the-template-using-azure-powershell"></a>使用 Azure PowerShell 部署樣本
+### <a name="deploy-the-template-using-azure-powershell"></a>使用 Azure PowerShell 部署範本
 
-此範例的假設您已將樣本從文件的末尾儲存到目前的目錄中指定的`azuredeploy.json`檔案中:
+這個範例假設您已將本檔結尾的其中一個範本儲存到目前目錄中名為`azuredeploy.json`的檔案：
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -82,9 +82,9 @@ new-azresourcegroupdeployment -name exampledeployment `
 
 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure PowerShell 來部署資源](../azure-resource-manager/templates/deploy-powershell.md)和[使用 SAS 權杖和 Azure PowerShell 部署私用 Resource Manager 範本](../azure-resource-manager/templates/secure-template-with-sas-token.md)。
 
-### <a name="deploy-the-template-using-the-azure-cli"></a>使用 Azure CLI 部署樣本
+### <a name="deploy-the-template-using-the-azure-cli"></a>使用 Azure CLI 部署範本
 
-此範例的假設您已將樣本從文件的末尾儲存到目前的目錄中指定的`azuredeploy.json`檔案中:
+這個範例假設您已將本檔結尾的其中一個範本儲存到目前目錄中名為`azuredeploy.json`的檔案：
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -97,44 +97,44 @@ az group deployment create \
 
 如需詳細資訊，請參閱[使用 Resource Manager 範本與 Azure CLI 來部署資源](../azure-resource-manager/templates/deploy-cli.md)和[使用 SAS 權杖和 Azure CLI 部署私用 Resource Manager 範本](../azure-resource-manager/templates/secure-template-with-sas-token.md)。
 
-## <a name="using-a-workspace-over-a-private-endpoint"></a>在專用終結點上使用工作區
+## <a name="using-a-workspace-over-a-private-endpoint"></a>在私用端點上使用工作區
 
-由於僅允許從虛擬網路與工作區通信,因此使用工作區的任何開發環境都必須是虛擬網路的成員。 例如,虛擬網路中的虛擬機器或使用 VPN 閘道連接到虛擬網路的電腦。
+由於只允許從虛擬網路對工作區進行通訊，因此使用工作區的任何開發環境都必須是虛擬網路的成員。 例如，虛擬網路中的虛擬機器，或使用 VPN 閘道連線到虛擬網路的電腦。
 
 > [!IMPORTANT]
-> 為了避免連接暫時中斷,Microsoft 建議在啟用專用連結後在連接到工作區的電腦上刷新 DNS 緩存。 
+> 為了避免暫時中斷連線，Microsoft 建議在啟用私用連結之後，清除連線至工作區之電腦上的 DNS 快取。 
 
-有關 Azure 虛擬機器的資訊,請參閱[虛擬機器文件](/azure/virtual-machines/)。
+如需 Azure 虛擬機器的詳細資訊，請參閱[虛擬機器檔](/azure/virtual-machines/)。
 
-有關 VPN 閘道資訊,請參閱[什麼是 VPN 閘道](/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
+如需 VPN 閘道的相關資訊，請參閱[什麼是 vpn 閘道](/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
 
 ## <a name="using-azure-storage"></a>使用 Azure 儲存體
 
-要保護工作區使用的 Azure 儲存帳戶,請將其放入虛擬網路中。
+若要保護您的工作區所使用的 Azure 儲存體帳戶，請將它放在虛擬網路中。
 
-有關將儲存帳戶放入虛擬網路的資訊,請參閱[為工作區使用儲存帳戶](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)。
+如需將儲存體帳戶放在虛擬網路中的相關資訊，請參閱針對[您的工作區使用儲存體帳戶](how-to-enable-virtual-network.md#use-a-storage-account-for-your-workspace)。
 
 ## <a name="using-azure-key-vault"></a>使用 Azure Key Vault
 
-要保護工作區使用的 Azure 密鑰保管庫,可以將其放入虛擬網路或為其啟用專用連結。
+若要保護您的工作區所使用的 Azure Key Vault，您可以將它放在虛擬網路內，或為其啟用私用連結。
 
-有關將金鑰保管庫放入虛擬網路的資訊,請參閱[將金鑰保管庫實例與工作區一起使用](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace)。
+如需將金鑰保存庫放在虛擬網路中的詳細資訊，請參閱搭配[使用金鑰保存庫實例與您的工作區](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace)。
 
-有關為金鑰保管庫啟用專用連結的資訊,請參閱[將金鑰保管庫與 Azure 專用連結整合](/azure/key-vault/private-link-service)。
+如需啟用金鑰保存庫私人連結的詳細資訊，請參閱[整合 Key Vault 與 Azure 私人連結](/azure/key-vault/private-link-service)。
 
-## <a name="using-azure-kubernetes-services"></a>使用 Azure 庫伯奈斯服務
+## <a name="using-azure-kubernetes-services"></a>使用 Azure Kubernetes Services
 
-要保護工作區使用的 Azure Kubernetes 服務,請將其放入虛擬網路中。 有關詳細資訊,請參閱將[Azure 庫伯內斯服務與工作區一起使用](how-to-enable-virtual-network.md#aksvnet)。
+若要保護您的工作區所使用的 Azure Kubernetes services，請將它放在虛擬網路中。 如需詳細資訊，請參閱搭配[使用 Azure Kubernetes Services 與您的工作區](how-to-enable-virtual-network.md#aksvnet)。
 
 > [!WARNING]
-> Azure 機器學習不支援使用啟用專用連結的 Azure 庫伯奈斯服務。
+> Azure Machine Learning 不支援使用已啟用私用連結的 Azure Kubernetes Service。
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 
-有關在虛擬網路內保護 Azure 容器註冊表的資訊,請參閱[使用 Azure 容器註冊表](how-to-enable-virtual-network.md#use-azure-container-registry)。
+如需在虛擬網路內保護 Azure Container Registry 的詳細資訊，請參閱[使用 Azure Container Registry](how-to-enable-virtual-network.md#use-azure-container-registry)。
 
 > [!IMPORTANT]
-> 如果對 Azure 機器學習工作區使用專用連結,並將工作區的 Azure 容器註冊表放在虛擬網路中,則還必須應用以下 Azure 資源管理器範本。 此範本使工作區能夠通過專用鏈路與 ACR 通信。
+> 如果您使用 Azure Machine Learning 工作區的私人連結，並將工作區的 Azure Container Registry 放在虛擬網路中，您也必須套用下列 Azure Resource Manager 範本。 此範本可讓您的工作區透過私用連結與 ACR 進行通訊。
 
 ```json
 {
@@ -189,7 +189,7 @@ az group deployment create \
 ## <a name="azure-resource-manager-templates"></a>Azure 資源管理員範本
 
 <a id="cmkaapl"></a>
-### <a name="workspace-with-customer-managed-keys-and-auto-approval-for-private-link"></a>具有客戶管理的金鑰和專用連結的自動核准工作區
+### <a name="workspace-with-customer-managed-keys-and-auto-approval-for-private-link"></a>具有客戶管理金鑰的工作區和私人連結的自動核准
 
 ```json
 {
@@ -492,7 +492,7 @@ az group deployment create \
 ```
 
 <a id="cmkmapl"></a>
-### <a name="workspace-with-customer-managed-keys-and-manual-approval-for-private-link"></a>具有客戶管理的金鑰和手動批准專用連結的工作區
+### <a name="workspace-with-customer-managed-keys-and-manual-approval-for-private-link"></a>具有客戶管理金鑰和手動核准私人連結的工作區
 
 ```json
 {
@@ -718,7 +718,7 @@ az group deployment create \
 ```
 
 <a id="mmkaapl"></a>
-### <a name="workspace-with-microsoft-managed-keys-and-auto-approval-for-private-link"></a>具有 Microsoft 管理的金鑰的工作區和私有連結的自動核准
+### <a name="workspace-with-microsoft-managed-keys-and-auto-approval-for-private-link"></a>具有 Microsoft 管理的金鑰和私人連結的自動核准的工作區
 
 ```json
 {
@@ -979,7 +979,7 @@ az group deployment create \
 ```
 
 <a id="mmkmapl"></a>
-### <a name="workspace-with-microsoft-managed-keys-and-manual-approval-for-private-link"></a>具有 Microsoft 管理的金鑰和手動批准專用連結的工作區
+### <a name="workspace-with-microsoft-managed-keys-and-manual-approval-for-private-link"></a>具有 Microsoft 管理的金鑰和手動核准私人連結的工作區
 
 ```json
 {
@@ -1164,4 +1164,4 @@ az group deployment create \
 
 ## <a name="next-steps"></a>後續步驟
 
-有關保護 Azure 機器學習工作區的詳細資訊,請參閱[企業安全](concept-enterprise-security.md)一文。
+如需保護 Azure Machine Learning 工作區的詳細資訊，請參閱[企業安全性](concept-enterprise-security.md)一文。

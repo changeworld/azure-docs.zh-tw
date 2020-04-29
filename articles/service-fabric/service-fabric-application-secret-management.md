@@ -1,15 +1,15 @@
 ---
-title: 管理 Azure 服務結構應用程式機密
+title: 管理 Azure Service Fabric 應用程式秘密
 description: 了解如何保護 Service Fabric 應用程式中的祕密值 (無平台限制)。
 author: vturecek
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: vturecek
 ms.openlocfilehash: 4d2138935122b9e08b21963519fce3f72466ab1f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414521"
 ---
 # <a name="manage-encrypted-secrets-in-service-fabric-applications"></a>在 Service Fabric 應用程式中管理已加密的祕密
@@ -23,7 +23,7 @@ ms.locfileid: "81414521"
 ## <a name="set-up-an-encryption-certificate-and-encrypt-secrets"></a>設定加密憑證並將祕密加密
 設定加密憑證，並使用該憑證來對 Windows 和 Linux 之間不同的祕密進行加密。
 * [設定加密憑證，並在 Windows 叢集上將祕密加密。][secret-management-windows-specific-link]
-* [設置加密證書並在 Linux 群集上加密機密。][secret-management-linux-specific-link]
+* [設定加密憑證，並在 Linux 叢集上將秘密加密。][secret-management-linux-specific-link]
 
 ## <a name="specify-encrypted-secrets-in-an-application"></a>指定應用程式中已加密的祕密
 上一個步驟說明了如何以憑證對祕密進行加密，並產生要在應用程式中使用的 base-64 編碼字串。 此 base-64 編碼字串可以在服務的 Settings.xml 中指定為已加密的[參數][parameters-link]，或在服務的 ServiceManifest.xml 中指定為已加密的[環境變數][environment-variables-link]。
@@ -47,7 +47,7 @@ ms.locfileid: "81414521"
 </CodePackage>
 ```
 
-通過在應用程式清單中指定證書,還應將機密包含在 Service Fabric 應用程式中。 向**應用程式清單.xml**添加**機密證書**元素,並包含所需的證書的指紋。
+您也應該在應用程式資訊清單中指定憑證，以將秘密包含在 Service Fabric 應用程式中。 將**SecretsCertificate**元素新增至**ApplicationManifest** ，並包含所需的憑證指紋。
 
 ```xml
 <ApplicationManifest … >
@@ -58,9 +58,9 @@ ms.locfileid: "81414521"
 </ApplicationManifest>
 ```
 > [!NOTE]
-> 啟動指定機密證書的應用程式後,Service Fabric 將查找匹配的證書,並將應用程式在證書私鑰完全許可權下運行的標識授予。 Service Fabric 還將監視證書的更改,並相應地重新應用許可權。 要檢測由通用名稱聲明的證書的更改,Service Fabric 會運行一個定期任務,該任務查找所有匹配的證書,並將其與緩存的指紋清單進行比較。 檢測到新的指紋時,這意味著該主題的證書已續訂。 任務每分鐘在群集的每個節點上運行一次。
+> 啟用指定 SecretsCertificate 的應用程式時，Service Fabric 會尋找相符的憑證，並將應用程式在憑證私密金鑰的完整許可權下執行的身分識別授與。 Service Fabric 也會監視憑證的變更，並據以重新套用許可權。 若要偵測一般名稱所宣告之憑證的變更，Service Fabric 會執行定期工作，以尋找所有相符的憑證，並將它與快取的指紋清單進行比較。 當偵測到新的指紋時，表示該主體的憑證已更新。 此工作會在叢集的每個節點上每分鐘執行一次。
 >
-> 雖然機密證書確實允許基於主題的聲明,但請注意,加密的設置綁定到用於加密用戶端上的設置的密鑰對。 必須確保原始加密證書(或等效證書)與基於主題的聲明匹配,並確保在可以承載應用程式的群集的每個節點上安裝該證書(包括相應的私鑰)。 與基於主題的聲明匹配且從與原始加密證書相同的密鑰對構建的所有時間有效證書都被視為等效證書。
+> 雖然 SecretsCertificate 允許以主體為基礎的宣告，但請注意，加密的設定會系結至用來加密用戶端上設定的金鑰組。 您必須確定原始加密憑證（或對等專案）符合以主體為基礎的宣告，並已在可能裝載應用程式之叢集的每個節點上安裝，包括其對應的私密金鑰。 所有符合以主旨為基礎的宣告，並使用與原始加密憑證相同的金鑰組建立的有效憑證，都會被視為對等。
 >
 
 ### <a name="inject-application-secrets-into-application-instances"></a>將應用程式密碼插入應用程式執行個體內
@@ -143,7 +143,7 @@ string MyEnvVariable = Environment.GetEnvironmentVariable("MyEnvVariable");
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* 服務結構[機密儲存](service-fabric-application-secret-store.md) 
+* Service Fabric[秘密存放區](service-fabric-application-secret-store.md) 
 * 深入了解[應用程式及服務安全性](service-fabric-application-and-service-security.md)
 
 <!-- Links -->

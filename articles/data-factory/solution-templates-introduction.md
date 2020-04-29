@@ -12,10 +12,10 @@ manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 01/04/2019
 ms.openlocfilehash: 14f1d3b58996d438279bfa2a234c754a6d840c79
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414741"
 ---
 # <a name="templates"></a>範本
@@ -31,7 +31,7 @@ ms.locfileid: "81414741"
 
     ![從 [概觀] 頁面開啟 [範本資源庫]](media/solution-templates-introduction/templates-intro-image1.png)
 
-1.  在「資源資源管理器」中的「作者」**+** 選項卡上,選擇「**從範本中獲取管道**以打開範本庫」。
+1.  在資源總管的 [作者] 索引卷**+** 標上，依序選取 [] 和 [**來自範本的管線**] 以開啟範本庫。
 
     ![從 [撰寫] 索引標籤開啟 [範本資源庫]](media/solution-templates-introduction/templates-intro-image2.png)
 
@@ -41,11 +41,11 @@ ms.locfileid: "81414741"
 
 ### <a name="out-of-the-box-data-factory-templates"></a>立即可用的 Data Factory 範本
 
-Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線範本。 您可以在正式的[Azure 資料工廠 GitHub 儲存庫](https://github.com/Azure/Azure-DataFactory/tree/master/templates)中查看所有資源管理器範本以及用於開箱即用數據工廠範本的清單檔。 由 Microsoft 所提供的預先定義範本包含 (但不限於) 下列項目：
+Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線範本。 在[官方的 Azure Data Factory GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/templates)存放庫中，您可以看到所有 Resource Manager 範本，以及用於現成可用 Data Factory 範本的資訊清單檔案。 由 Microsoft 所提供的預先定義範本包含 (但不限於) 下列項目：
 
 -   複製範本：
 
-    -   [從資料庫批次複製](solution-template-bulk-copy-with-control-table.md)
+    -   [從資料庫進行大量複製](solution-template-bulk-copy-with-control-table.md)
     
     -   [依 LastModifiedDate 複製新檔案](solution-template-copy-new-files-lastmodifieddate.md)
 
@@ -53,7 +53,7 @@ Data Factory 使用 Azure Resource Manager 範本來儲存 Data Factory 管線�
 
     -   [移動檔案](solution-template-move-files.md)
 
-    -   [資料庫的增量複本](solution-template-delta-copy-with-control-table.md)
+    -   [資料庫中的差異複本](solution-template-delta-copy-with-control-table.md)
 
     -   從 \<來源\> 複製到 \<目的地\>
 

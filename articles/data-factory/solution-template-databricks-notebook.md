@@ -12,52 +12,52 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/03/2020
 ms.openlocfilehash: 65b89a13637f5a4e1712995a6ac58d88b4421806
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414856"
 ---
 # <a name="transformation-with-azure-databricks"></a>使用 Azure Databricks 進行轉換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-在本教學中,您將創建一個端到端管道,其中包含 Azure 資料工廠中的**驗證**、**複製數據和****筆記**型活動。
+在本教學課程中，您會建立端對端管線，其中包含 Azure Data Factory 中的**驗證**、**複製資料**和**筆記本**活動。
 
-- **在**觸發複製和分析作業之前,驗證可確保源數據集已準備好用於下游使用。
+- **驗證**可確保您的源資料集已準備好下游耗用量，然後才觸發複製和分析作業。
 
-- **複製資料**將源資料集複製到接收體記憶體儲存,該儲存作為 DBFS 載入在 Azure 資料塊筆記本中。 這樣,Spark可以直接使用數據集。
+- **複製資料**會將源資料集複製到接收儲存體，並在 Azure Databricks 筆記本中掛接為 DBFS。 如此一來，Spark 就可以直接使用資料集。
 
-- **筆記本**將觸發轉換數據集的數據磚筆記本。 它還將數據集添加到已處理的資料夾或 Azure SQL 資料倉庫。
+- **筆記本**會觸發轉換資料集的 Databricks 筆記本。 它也會將資料集加入至已處理的資料夾或 Azure SQL 資料倉儲。
 
-為簡單起見,本教程中的範本不會創建計劃觸發器。 如有必要,可以添加一個。
+為了簡單起見，本教學課程中的範本不會建立排程的觸發程式。 您可以視需要新增一個。
 
-![管線圖](media/solution-template-Databricks-notebook/pipeline-example.png)
+![管線的圖表](media/solution-template-Databricks-notebook/pipeline-example.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-- 具有用作`sinkdata`接收器的容器的 Azure Blob 儲存帳戶。
+- 具有名`sinkdata`為之容器的 Azure Blob 儲存體帳戶，可做為接收器使用。
 
-  儲存儲存帳戶名稱、容器名稱和存取金鑰。 稍後將需要在範本中使用這些值。
+  請記下 [儲存體帳戶名稱]、[容器名稱] 和 [存取金鑰]。 您稍後會在範本中需要這些值。
 
-- Azure 資料塊工作區。
+- Azure Databricks 工作區。
 
 ## <a name="import-a-notebook-for-transformation"></a>匯入用於轉換的筆記本
 
-要將**轉換**筆記本匯入資料磚塊工作區,請:
+若要將**轉換**筆記本匯入到您的 Databricks 工作區：
 
-1. 登錄到 Azure 資料塊工作區,然後選擇 **「導入**」。
-       ![用於導入工作區](media/solution-template-Databricks-notebook/import-notebook.png)的功能表命令您的工作區路徑可能不同於顯示的路徑,但請稍後記住它。
-1. 選擇**從:URL**匯入。 在文字框中,`https://adflabstaging1.blob.core.windows.net/share/Transformations.html`輸入 。
+1. 登入您的 Azure Databricks 工作區，然後選取 [匯**入**]。
+       ![匯入工作區](media/solution-template-Databricks-notebook/import-notebook.png)的功能表命令您的工作區路徑可能與所顯示的不同，但請記住它以供稍後使用。
+1. 選取 [匯**入來源： URL**]。 在 [] 文字方塊中， `https://adflabstaging1.blob.core.windows.net/share/Transformations.html`輸入。
 
-   ![匯入筆記本的選擇](media/solution-template-Databricks-notebook/import-from-url.png)
+   ![匯入筆記本的選取專案](media/solution-template-Databricks-notebook/import-from-url.png)
 
-1. 現在,讓我們使用存儲連接資訊更新**轉換**筆記本。
+1. 現在，讓我們使用您的儲存體連接資訊來更新**轉換**筆記本。
 
-   在導入的筆記本中,轉到**命令5,** 如以下代碼段所示。
+   在匯入的筆記本中，移至 [**命令 5** ]，如下列程式碼片段所示。
 
-   - 替換`<storage name>`並`<access key>`使用您自己的儲存連接資訊。
-   - 將存儲帳戶與容器一`sinkdata`起使用。
+   - 將`<storage name>`和`<access key>`取代為您自己的儲存體連接資訊。
+   - 使用儲存體帳戶搭配`sinkdata`容器。
 
     ```python
     # Supply storageName and accessKey values  
@@ -82,103 +82,103 @@ ms.locfileid: "81414856"
     ```
 
 1. 產生供 Data Factory 用來存取 Databricks 的 **Databricks 存取權杖**。
-   1. 在 DataBRICKS 工作區中,選擇右上角的使用者配置檔圖示。
-   1. 選擇**使用者設定**。
-    ![使用者設定的選單指令](media/solution-template-Databricks-notebook/user-setting.png)
-   1. 在 **「訪問權杖」** 選項卡下選擇 **「生成新權杖**」。
+   1. 在您的 Databricks 工作區中，選取右上方的 [使用者設定檔] 圖示。
+   1. 選取 [**使用者設定**]。
+    ![使用者設定的功能表命令](media/solution-template-Databricks-notebook/user-setting.png)
+   1. 選取 [**存取權杖**] 索引標籤底下的 [**產生新的權杖**]。
    1. 選取 [產生]****。
 
-    !['產生"按鈕](media/solution-template-Databricks-notebook/generate-new-token.png)
+    ![[產生] 按鈕](media/solution-template-Databricks-notebook/generate-new-token.png)
 
-   *保存存取權杖*以供以後用於創建資料磚塊連結服務。 存取權杖`dapi32db32cbb4w6eee18b7d87e45exxxxxx`。
+   *儲存存取權杖*以供稍後用來建立 Databricks 連結服務。 存取權杖的外觀類似`dapi32db32cbb4w6eee18b7d87e45exxxxxx`。
 
-## <a name="how-to-use-this-template"></a>如何使用此樣本
+## <a name="how-to-use-this-template"></a>如何使用此範本
 
-1. 跳到使用**Azure 資料磚塊範本的轉換**,並創建用於以下連接的新連結服務。
+1. 移至 [**使用 Azure Databricks 的轉換**] 範本，並針對下列連接建立新的連結服務。
 
-   ![連線設定](media/solution-template-Databricks-notebook/connections-preview.png)
+   ![連接設定](media/solution-template-Databricks-notebook/connections-preview.png)
 
-    - **源 Blob 連接**-存取源資料。
+    - **來源 Blob 連接**-用來存取來源資料。
 
-       在本練習中,可以使用包含源檔的公共 Blob 存儲。 參考以下配置螢幕截圖。 使用以下**SAS 網址**連線到來源儲存(唯讀存取):
+       在此練習中，您可以使用包含原始程式檔的公用 blob 儲存體。 請參考下列螢幕擷取畫面進行設定。 使用下列**SAS URL**來連線至來源儲存體（唯讀存取權）：
 
        `https://storagewithdata.blob.core.windows.net/data?sv=2018-03-28&si=read%20and%20list&sr=c&sig=PuyyS6%2FKdB2JxcZN0kPlmHSBlD8uIKyzhBWmWzznkBw%3D`
 
-        ![認證與 SAS 網址的選擇](media/solution-template-Databricks-notebook/source-blob-connection.png)
+        ![驗證方法和 SAS URL 的選取專案](media/solution-template-Databricks-notebook/source-blob-connection.png)
 
-    - **目標 Blob 連線**-儲存複製的資料。
+    - **目的地 Blob 連接**-用來儲存複製的資料。
 
-       在 **「新建連結服務」** 視窗中,選擇接收器儲存 Blob。
+       在 [**新增連結服務**] 視窗中，選取您的接收儲存體 blob。
 
-       ![將儲存 Blob 作為新的連結服務](media/solution-template-Databricks-notebook/destination-blob-connection.png)
+       ![以新連結服務的形式接收儲存體 blob](media/solution-template-Databricks-notebook/destination-blob-connection.png)
 
-    - **Azure 資料塊**- 連接到資料磚群集。
+    - **Azure Databricks** -連接到 Databricks 叢集。
 
-        使用以前生成的存取金鑰創建與Databricks連結的服務。 如果您有*互動式群集*,可以選擇選擇互動式群集。 此示例使用 **「新建作業群集」** 選項。
+        使用您先前產生的存取金鑰來建立 Databricks 連結服務。 您可以選擇選取*互動式*叢集（如果有的話）。 這個範例會使用 [**新增作業**叢集] 選項。
 
-        ![連接到叢集的選擇](media/solution-template-Databricks-notebook/databricks-connection.png)
+        ![連接到叢集的選取專案](media/solution-template-Databricks-notebook/databricks-connection.png)
 
-1. 選擇**此樣本**。 您將看到已建立的管道。
+1. 選取 [**使用此範本**]。 您會看到已建立的管線。
 
     ![建立管線](media/solution-template-Databricks-notebook/new-pipeline.png)
 
-## <a name="pipeline-introduction-and-configuration"></a>管管介紹和設定
+## <a name="pipeline-introduction-and-configuration"></a>管線簡介和設定
 
-在新管道中,大多數設置都自動配置預設值。 查看管道的配置並進行任何必要的更改。
+在新的管線中，大部分的設定會自動以預設值設定。 檢查您的管線設定，並進行任何必要的變更。
 
-1. 在**驗證**活動**可用性標誌**中,驗證來源**資料集**值`SourceAvailabilityDataset`是否設定為 您之前創建的。
+1. 在 [**驗證**活動**可用性] 旗**標中，確認 [源**資料集**] `SourceAvailabilityDataset`值已設為您稍早建立的。
 
-   ![來源資料集值](media/solution-template-Databricks-notebook/validation-settings.png)
+   ![源資料集值](media/solution-template-Databricks-notebook/validation-settings.png)
 
-1. 在 **「將資料**活動**檔案複製到 blob」** 中,檢查 **「源**」和「**接收器」** 選項卡。 如有必要,更改設置。
+1. 在 [**複製資料**活動檔案**至 blob**] 中，檢查 [**來源**] 和 [**接收**] 索引標籤。 必要時變更設定。
 
-   - **來源**選項![卡 「源」選項卡](media/solution-template-Databricks-notebook/copy-source-settings.png)
+   - **來源**索引![標籤來源索引標籤](media/solution-template-Databricks-notebook/copy-source-settings.png)
 
-   - **接收器**選項![卡「接收器」選項卡](media/solution-template-Databricks-notebook/copy-sink-settings.png)
+   - **接收**索引![標籤接收索引標籤](media/solution-template-Databricks-notebook/copy-sink-settings.png)
 
-1. 在**筆記本**活動**轉換中**,根據需要查看和更新路徑和設置。
+1. 在 [**筆記本**活動**轉換**] 中，視需要檢查並更新路徑和設定。
 
-   **數據磚連結服務**應預填充上一步的值,如圖所示![: 數據磚塊鏈接服務的填充值](media/solution-template-Databricks-notebook/notebook-activity.png)
+   **Databricks 連結服務**應預先填入上一個步驟中的值，如下所示： ![已填入 Databricks 連結服務的值](media/solution-template-Databricks-notebook/notebook-activity.png)
 
-   要檢查**筆記本**設定:
+   若要檢查**筆記本**設定：
   
-    1. 選擇**設定設定選項**卡。對於**筆記本路徑**,驗證默認路徑是否正確。 您可能需要瀏覽並選擇正確的筆記本路徑。
+    1. 選取 [**設定**] 索引標籤。針對 [**筆記本路徑**]，確認預設路徑是正確的。 您可能需要流覽並選擇正確的筆記本路徑。
 
        ![筆記本路徑](media/solution-template-Databricks-notebook/notebook-settings.png)
 
-    1. 展開**基本參數**選擇器並驗證參數是否與以下螢幕截圖中顯示的參數匹配。 這些參數從數據工廠傳遞到數據磚塊筆記本。
+    1. 展開 [**基底參數**] 選取器，並確認參數符合下列螢幕擷取畫面中顯示的內容。 這些參數會從 Data Factory 傳遞至 Databricks 筆記本。
 
-       ![基本參數](media/solution-template-Databricks-notebook/base-parameters.png)
+       ![基底參數](media/solution-template-Databricks-notebook/base-parameters.png)
 
-1. 驗證**導管參數**與以下螢幕截圖中顯示![的內容符合: 導管參數](media/solution-template-Databricks-notebook/pipeline-parameters.png)
+1. 確認**管線參數**符合下列螢幕擷取畫面中顯示的內容： ![管線參數](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
-1. 連接到數據集。
+1. 連接到您的資料集。
 
-   - **來源可用的資料集**- 檢查來源資料是否可用。
+   - **SourceAvailabilityDataset** -檢查來源資料是否可用。
 
-     ![來源可用的資料集的連結服務與檔案路徑的選擇](media/solution-template-Databricks-notebook/source-availability-dataset.png)
+     ![SourceAvailabilityDataset 的連結服務和檔案路徑的選取專案](media/solution-template-Databricks-notebook/source-availability-dataset.png)
 
-   - **源檔案資料集**- 存取來源資料。
+   - **SourceFilesDataset** -存取來源資料。
 
-       ![來源資料集連結服務與檔案路徑的選擇](media/solution-template-Databricks-notebook/source-file-dataset.png)
+       ![SourceFilesDataset 的連結服務和檔案路徑的選取專案](media/solution-template-Databricks-notebook/source-file-dataset.png)
 
-   - **目標檔案資料集**-將資料複製到接收器目標位置。 輸入下列值：
+   - **DestinationFilesDataset** -將資料複製到接收目的地位置。 輸入下列值：
 
-     - **連結服務** - `sinkBlob_LS`,在上一步中創建。
+     - **Linked service**  -  `sinkBlob_LS`在上一個步驟中建立的連結服務。
 
      - **檔案路徑** - `sinkdata/staged_sink`。
 
-       ![目的檔案資料集的連結服務和檔案路徑的選擇](media/solution-template-Databricks-notebook/destination-dataset.png)
+       ![DestinationFilesDataset 的連結服務和檔案路徑的選取專案](media/solution-template-Databricks-notebook/destination-dataset.png)
 
-1. 選擇**調試**以運行管道。 您可以找到指向 Databricks 日誌的連結,以獲取更詳細的 Spark 日誌。
+1. 選取 [ **Debug** ] 來執行管線。 您可以找到 Databricks 記錄的連結，以取得更詳細的 Spark 記錄。
 
-    ![從輸出連結到資料磚區誌](media/solution-template-Databricks-notebook/pipeline-run-output.png)
+    ![從輸出 Databricks 記錄的連結](media/solution-template-Databricks-notebook/pipeline-run-output.png)
 
-    您還可以使用 Azure 儲存資源管理員驗證資料檔。
+    您也可以使用 Azure 儲存體總管來確認資料檔案。
 
     > [!NOTE]
-    > 對於與資料工廠管道運行相關的操作,此示例將管道運行 ID 從資料工廠追加到輸出資料夾。 這有助於跟蹤每次運行生成的檔。
-    > ![附加導管執行識別碼](media/solution-template-Databricks-notebook/verify-data-files.png)
+    > 為了與 Data Factory 管線執行相互關聯，此範例會將管線執行識別碼從 Data Factory 附加至輸出檔案夾。 這有助於追蹤每次執行所產生的檔案。
+    > ![附加的管線執行識別碼](media/solution-template-Databricks-notebook/verify-data-files.png)
 
 ## <a name="next-steps"></a>後續步驟
 

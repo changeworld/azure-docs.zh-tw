@@ -1,27 +1,27 @@
 ---
-title: 使用系統配置的 MI 部署服務結構應用
-description: 本文介紹如何將系統分配的託管識別分配給 Azure 服務結構應用程式
+title: 使用系統指派的 MI 來部署 Service Fabric 應用程式
+description: 本文說明如何將系統指派的受控識別指派給 Azure Service Fabric 應用程式
 ms.topic: article
 ms.date: 07/25/2019
 ms.openlocfilehash: c5c7a17c51eee18d9b7276f2c57289a5de5c8181
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415645"
 ---
-# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>使用系統配置的託管識別部署服務結構應用程式
+# <a name="deploy-service-fabric-application-with-system-assigned-managed-identity"></a>使用系統指派的受控識別來部署 Service Fabric 應用程式
 
-為了訪問 Azure 服務結構應用程式的託管標識功能,必須首先在群集上啟用託管標識權杖服務。 此服務負責使用其託管標識對 Service Fabric 應用程式進行身份驗證,並代表它們獲取訪問權杖。 啟用服務後,您可以在左側窗格中的 **「系統**」部分下的「服務結構資源管理器」中看到它,該功能在其他系統服務旁邊的名稱**結構:/系統/託管身份令牌服務**下運行。
+為了存取 Azure Service Fabric 應用程式的受控識別功能，您必須先在叢集上啟用受控識別權杖服務。 此服務負責使用其受控識別來驗證 Service Fabric 應用程式，並代表其取得存取權杖。 啟用服務之後，您可以 Service Fabric Explorer 在左窗格的 [**系統**] 區段底下的 [ManagedIdentityTokenService] 中看到它，並在 [其他系統服務] 旁的 [ **Fabric：/system/** ] 底下執行。
 
 > [!NOTE] 
-> 支援從 API`"2019-06-01-preview"`版本 開始部署具有託管標識的服務結構應用程式。 您還可以對應用程式類型、應用程式類型版本和服務資源使用相同的 API 版本。 受支援的最小服務交換矩陣運行時為6.5 CU2。 在附加項目中,產生/包環境還應具有 CU2 或更高版本中的 SF .Net SDK
+> 從 API 版本`"2019-06-01-preview"`開始，支援部署具有受控識別的 Service Fabric 應用程式。 您也可以針對應用程式類型、應用程式類型版本和服務資源使用相同的 API 版本。 支援的最小 Service Fabric 執行時間為 6.5 CU2。 在 additoin 中，組建/封裝環境也應該具有 CU2 或更高版本的 SF .Net SDK
 
 ## <a name="system-assigned-managed-identity"></a>系統指派的受控識別
 
 ### <a name="application-template"></a>應用程式範本
 
-要啟用具有系統分配的託管標識的應用程式,請將**識別**屬性添加到應用程式資源,其中類型**系統分配**如下示例所示:
+若要使用系統指派的受控識別來啟用應用程式，請將**identity**屬性新增至應用程式資源，其類型為**systemAssigned** ，如下列範例所示：
 
 ```json
     {
@@ -43,11 +43,11 @@ ms.locfileid: "81415645"
       }
     }
 ```
-此屬性聲明(對 Azure 資源管理員以及託管標識和服務結構資源提供程式分別聲明此資源應具有隱式`system assigned`( ) 託管標識。
+這個屬性會分別宣告（以 Azure Resource Manager，以及受控識別和 Service Fabric 資源提供者，此資源應具有隱含（`system assigned`）受控識別。
 
 ### <a name="application-and-service-package"></a>應用程式和服務套件
 
-1. 更新應用程式清單以在 **「主體」** 部分中添加**託管標識**元素,其中包含單個條目,如下所示:
+1. 更新應用程式資訊清單，以在**主體**區段中新增**microsoft.managedidentity**元素，其中包含單一專案，如下所示：
 
     **ApplicationManifest.xml**
 
@@ -58,9 +58,9 @@ ms.locfileid: "81415645"
       </ManagedIdentities>
     </Principals>
     ```
-    這將作為資源分配給應用程式的標識映射到友好名稱,以便進一步分配給包含應用程式的服務。 
+    這會將指派給應用程式的身分識別對應至易記名稱，以進一步指派給組成應用程式的服務。 
 
-2. 在與正在分配託管標識的服務對應**的服務清單導入**部分中,添加**標識綁定策略**元素,如下所示:
+2. 在對應至要指派受控識別之服務的**ServiceManifestImport**區段中，新增**IdentityBindingPolicy**元素，如下所示：
 
     **ApplicationManifest.xml**
 
@@ -72,9 +72,9 @@ ms.locfileid: "81415645"
         </ServiceManifestImport>
       ```
 
-    此元素將應用程式的標識分配給服務;如果沒有此分配,服務將無法訪問應用程式的標識。 在上面的代碼段中,`SystemAssigned`標識(這是一個保留關鍵字)在友好`WebAdmin`名稱 下映射到服務的定義。
+    這個元素會將應用程式的身分識別指派給服務;若沒有此指派，服務將無法存取應用程式的身分識別。 在上述程式碼片段中， `SystemAssigned`身分識別（也就是保留關鍵字）會對應至易記名稱`WebAdmin`下的服務定義。
 
-3. 更新服務清單以在 **「資源」** 部分中加入**託管識別**元素,其名稱與`IdentityBindingPolicy`應用程式`ServiceIdentityRef`清單中 定義中的設定值匹配:
+3. 更新服務資訊清單，以在**Resources**區段內新增**microsoft.managedidentity**元素，其名稱符合應用程式資訊清單`ServiceIdentityRef`中`IdentityBindingPolicy`定義的設定值：
 
     **ServiceManifest.xml**
 
@@ -86,12 +86,12 @@ ms.locfileid: "81415645"
         </ManagedIdentities>
       </Resources>
     ```
-    這是標識與服務的等效映射,但從服務定義的角度來看。 此處引用標識的友好名稱`WebAdmin`( , 如應用程式清單中聲明的那樣。
+    這是與上述服務的身分識別對應，但從服務定義的觀點來看。 這裡會依應用程式資訊清單中宣告的`WebAdmin`易記名稱（）來參考此身分識別。
 
 ## <a name="next-steps"></a>後續步驟
-* 檢視 Azure 服務結構中的[託管識別支援](./concepts-managed-identity.md)
-* [部署新](./configure-new-azure-service-fabric-enable-managed-identity.md)具有託管識別支援的 Azure 服務結構叢集 
-* 在現有 Azure 服務結構群集中[啟用託管識別](./configure-existing-cluster-enable-managed-identity-token-service.md)
-* 利用服務結構應用程式的[管理員(來自原始碼代碼](./how-to-managed-identity-service-fabric-app-code.md))
-* [使用使用者配置的託管識別部署 Azure 服務結構應用程式](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [授予 Azure 服務結構應用程式對其他 Azure 資源的存取](./how-to-grant-access-other-resources.md)
+* 審查 Azure Service Fabric 中的[受控識別支援](./concepts-managed-identity.md)
+* [部署新的](./configure-new-azure-service-fabric-enable-managed-identity.md)具有受控識別支援的 Azure Service Fabric 叢集 
+* 在現有的 Azure Service Fabric 叢集中[啟用受控識別](./configure-existing-cluster-enable-managed-identity-token-service.md)
+* 從原始程式碼運用 Service Fabric 應用程式的[受控識別](./how-to-managed-identity-service-fabric-app-code.md)
+* [使用使用者指派的受控識別來部署 Azure Service Fabric 應用程式](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [將其他 Azure 資源的存取權授與 Azure Service Fabric 應用程式](./how-to-grant-access-other-resources.md)

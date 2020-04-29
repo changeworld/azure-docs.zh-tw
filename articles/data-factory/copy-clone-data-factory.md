@@ -12,10 +12,10 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.openlocfilehash: 5e44bda8648fbf26487b04cf36a8fd0ec085c411
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414097"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>如何複製或重製 Azure Data Factory 中的資料處理站
@@ -38,7 +38,7 @@ ms.locfileid: "81414097"
 
 1. 前提是您必須從 Azure 入口網站建立您的目標資料處理站。
 
-1. 如果在源工廠中具有自託管集成運行時,則需要在目標工廠中以相同名稱預創建它。 如果要在不同的工廠之間共用自託管的 I,則可以使用[此處](source-control.md#best-practices-for-git-integration)發佈的模式。
+1. 如果您的來源 factory 中有 SelfHosted IntegrationRuntime，您必須在目標處理站中使用相同的名稱來 precreate 它。 如果您想要在不同的工廠之間共用 SelfHosted 的 IRs，可以使用[這裡](source-control.md#best-practices-for-git-integration)發佈的模式。
 
 1. 若您處於 GIT 模式，每次您從入口網站發行時，處理站的 Resource Manager 範本都會儲存到 GIT 中 (存放庫的 adf_publish 分支)。
 

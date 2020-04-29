@@ -1,5 +1,5 @@
 ---
-title: 複製資料工具 Azure 資料工廠
+title: 資料複製工具 Azure Data Factory
 description: 提供有關 Azure Data Factory UI 中複製資料工具的資訊
 services: data-factory
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
 ms.openlocfilehash: df078673aed60086a88961ff64f9bfa596d96346
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414091"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory 中的複製資料工具

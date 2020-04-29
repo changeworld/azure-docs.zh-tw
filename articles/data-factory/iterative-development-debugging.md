@@ -1,5 +1,5 @@
 ---
-title: Azure 資料工廠的反覆發開發並除錯
+title: Azure Data Factory 中的反復式開發和調試
 description: 了解如何在 Azure 入口網站中反覆地開發和偵錯 Data Factory 管線。
 ms.date: 09/26/2018
 ms.topic: conceptual
@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 49e406f0730189439bb1c2529b23d8ad6d760a2f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81411519"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>透過 Azure Data Factory 的反覆式開發與偵錯
@@ -52,13 +52,13 @@ Azure Data Factory 可讓您反覆地開發和偵錯 Data Factory 管線。
 
 ![作用中偵錯回合的範例清單](media/iterative-development-debugging/view-debug-runs-image2.png)
 
-如果您有活動的數據流調試會話,這些會話將顯示在活動調試視窗的底部。 您可以選擇活動資料流程作業並停止相應的群集。
+如果您有作用中的資料流程 debug 會話，這些會話將會出現在 [作用中的調試] 視窗的下半部。 您可以選取作用中的資料流程會話，並停止個別的叢集。
 
-![活動資料流程除錯執行的範例清單](media/data-flow/dfsessions.png)
+![作用中資料流程調試執行的範例清單](media/data-flow/dfsessions.png)
 
 ## <a name="monitoring-debug-runs"></a>監視偵錯回合
 
-使用**除錯**功能啟動的測試執行在 **「監視器」** 選項卡的清單中不可用。您只能在 **「監視器」** 選項卡中看到使用 **「立即觸發**」、**計畫**或**翻滾視窗**觸發器觸發的運行。您可以在管線圖布的 **「輸出」** 視窗中看到使用**除錯**功能啟動的最後一次測試執行。
+在 [**監視**] 索引標籤上的清單中，無法使用以**Debug**功能起始的測試回合。在 [**監視器**] 索引標籤中，您只能看到 [觸發**Now**]、[**排程**] 或 [**輪轉] 視窗**觸發程式。您可以在管線畫布的 [**輸出**] 視窗中，看到以 [**調試**] 功能起始的最後一個測試回合。
 
 ## <a name="setting-breakpoints-for-debugging"></a>設定偵錯的中斷點
 

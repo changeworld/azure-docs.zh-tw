@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 資料工廠中排除自託管整合時故障
-description: 瞭解如何在 Azure 數據工廠中解決自託管的整合時問題。
+title: 針對 Azure Data Factory 中的自我裝載整合執行時間進行疑難排解
+description: 瞭解如何針對 Azure Data Factory 中的自我裝載整合執行時間問題進行疑難排解。
 services: data-factory
 author: nabhishek
 ms.service: data-factory
@@ -8,56 +8,56 @@ ms.topic: troubleshooting
 ms.date: 11/07/2019
 ms.author: abnarain
 ms.openlocfilehash: f298b331d53eb8bab67a6f99194065dc5f889236
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414883"
 ---
-# <a name="troubleshoot-self-hosted-integration-runtime"></a>排除自託管整合時故障
+# <a name="troubleshoot-self-hosted-integration-runtime"></a>針對自我裝載整合執行時間進行疑難排解
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文探討了 Azure 數據工廠中自託管整合時的常見故障排除方法。
+本文探討 Azure Data Factory 中自我裝載整合執行時間的常見疑難排解方法。
 
 ## <a name="common-errors-and-resolutions"></a>常見錯誤和解決方案
 
-### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>錯誤訊息:自託管整合執行時無法連接到雲端服務
+### <a name="error-message-self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>錯誤訊息：自我裝載整合執行時間無法連接到雲端服務
 
-![託管 IR 連線問題](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
+![自我裝載 IR 連接問題](media/self-hosted-integration-runtime-troubleshoot-guide/unable-to-connect-to-cloud-service.png)
 
 #### <a name="cause"></a>原因 
 
-自託管的整合式執行時無法連接到資料工廠服務(後端)。 此問題通常是由防火牆中的網路設置引起的。
+自我裝載整合執行時間無法連接到 Data Factory 服務（後端）。 此問題通常是因為防火牆中的網路設定所造成。
 
 #### <a name="resolution"></a>解決方案
 
-1. 檢查整合式執行時服務是否正在運行。
+1. 檢查 integration runtime 服務是否正在執行。
     
-   ![託管 IR 服務執行狀態](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
+   ![自我裝載 IR 服務執行狀態](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-running-status.png)
     
-1. 如果服務正在運行,則繼續執行步驟 3。
+1. 如果服務正在執行，請移至步驟3。
 
-1. 如果在自託管整合時(預設設定)上未設定代理,則在安裝自託管整合時的電腦上執行以下 PowerShell 命令:
+1. 如果未在自我裝載整合執行時間（這是預設設定）上設定 proxy，請在安裝自我裝載整合執行時間的電腦上執行下列 PowerShell 命令：
 
     ```powershell
     (New-Object System.Net.WebClient).DownloadString("https://wu2.frontend.clouddatahub.net/")
     ```
         
    > [!NOTE]     
-   > 服務URL可能因資料工廠位置而異。 您可以在**ADF UI** > **連線** > **整合時** > 下找到服務網址**編輯自託管的 IR** > **節點** > **檢視服務網址**。
+   > 服務 URL 可能有所不同，視您的 Data Factory 位置而定。 您可以在**ADF UI** > **Connections** > **連線整合運行** > 時間下，找到服務 url**編輯自我裝載 IR** > **節點** > **View service url**。
             
-    以下是預期的回應:
+    以下是預期的回應：
             
     ![PowerShell 命令回應](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
             
-1. 如果您沒有收到預期的回應,請使用以下方法之一,以適合您的情況:
+1. 如果您未收到預期的回應，請視情況使用下列其中一種方法：
             
-    * 如果您收到「遠端名稱無法解決」消息,則存在功能變數名稱系統 (DNS) 問題。 請與您的網路團隊聯繫以解決此問題。
-    * 如果收到"ssl/tls 證書不受信任"消息,請檢查https://wu2.frontend.clouddatahub.net/其證書在電腦上是否受信任,然後使用證書管理器安裝公共證書。 此操作應緩解此問題。
-    * 跳到**Windows** > **事件檢視器(日誌)** > **應用程式和服務日誌** > **整合執行時**,並檢查由 DNS、防火牆規則或公司網路設置引起的任何故障。 (如果您發現此類故障,則強制關閉連接。由於每個公司都有自定義的網路設置,請與網路團隊聯繫以解決這些問題。
+    * 如果您收到「無法解析遠端名稱」訊息，則會有一個網域名稱系統（DNS）問題。 請洽詢您的網路小組以修正此問題。
+    * 如果您收到「ssl/tls 憑證不受信任」訊息，請檢查電腦上的憑證https://wu2.frontend.clouddatahub.net/是否受信任，然後使用憑證管理員安裝公開憑證。 此動作應可減輕此問題。
+    * 移至 **[Windows** > **事件檢視器（記錄）** > ] [**應用程式及服務記錄** > 檔]**Integration Runtime** ，並檢查是否有任何因 DNS、防火牆規則或公司網路設定而造成的失敗。 （如果您發現這類失敗，請強制關閉連接）。因為每一家公司都有自訂的網路設定，請洽詢您的網路小組來疑難排解這些問題。
 
-1. 如果在自託管整合時配置了"代理",請驗證代理伺服器是否可以存取服務終結點。 有關範例指令,請參閱[PowerShell、Web 請求與代理](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)。    
+1. 如果已在自我裝載整合執行時間上設定 "proxy"，請確認您的 proxy 伺服器可以存取服務端點。 如需範例命令，請參閱[PowerShell、web 要求和](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies)proxy。    
                 
     ```powershell
     $user = $env:username
@@ -76,31 +76,31 @@ ms.locfileid: "81414883"
     $string
     ```
 
-以下是預期的回應:
+以下是預期的回應：
             
-![電源殼命令回應 2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
+![Powershell 命令回應2](media/self-hosted-integration-runtime-troubleshoot-guide/powershell-command-response.png)
 
 > [!NOTE] 
-> 代理注意事項:
-> *    檢查是否需要將代理伺服器放在安全收件者清單中。 如果是這樣,請確保[這些域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)位於安全收件者清單中。
-> *    檢查 TLS/SSL 憑證"wu2.frontend.clouddatahub.net/"是否受代理伺服器上信任。
-> *    如果您在代理上使用 Active Directory 身份驗證,請將服務帳戶更改為可以存取代理的使用者帳戶,作為"整合執行時服務」。
+> Proxy 考慮：
+> *    檢查是否需要將 proxy 伺服器放在安全的收件者清單中。 若是如此，請確定[這些網域](https://docs.microsoft.com/azure/data-factory/data-movement-security-considerations#firewall-requirements-for-on-premisesprivate-network)位於安全的收件者清單中。
+> *    檢查 proxy 伺服器上的 TLS/SSL 憑證 "wu2.frontend.clouddatahub.net/" 是否受信任。
+> *    如果您在 proxy 上使用 Active Directory 驗證，請將服務帳戶變更為可存取 proxy 的使用者帳戶（「Integration Runtime 服務」）。
 
-### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>錯誤訊息:自託管整合執行時節點/邏輯 SHIR 處於非活動/「正在運行(受限)」狀態
+### <a name="error-message-self-hosted-integration-runtime-node-logical-shir-is-in-inactive-running-limited-state"></a>錯誤訊息：自我裝載整合執行時間節點/邏輯 SHIR 處於非作用中/「執行中（有限制）」狀態
 
 #### <a name="cause"></a>原因 
 
-自託管的整合式執行時節點可能具有**非活動**狀態,如下圖所示:
+自我裝載整合執行時間節點可能會有**非**作用中狀態，如下列螢幕擷取畫面所示：
 
-![非活動自託管紅外線節點](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
+![非使用中的自我裝載 IR 節點](media/self-hosted-integration-runtime-troubleshoot-guide/inactive-self-hosted-ir-node.png)
 
-當節點無法相互通信時,將發生此行為。
+當節點無法彼此通訊時，就會發生這種行為。
 
 #### <a name="resolution"></a>解決方案
 
-1. 登錄到節點託管的 VM。 在**應用程式和服務日誌** > **整合執行時**、打開事件檢視器和篩選所有錯誤日誌下。
+1. 登入節點主控的 VM。 在 [**應用程式及服務記錄** > 檔] 底下**Integration Runtime**，開啟事件檢視器，然後篩選所有錯誤記錄檔。
 
-1. 檢查錯誤紀錄是否包含以下錯誤: 
+1. 檢查錯誤記錄檔是否包含下列錯誤： 
     
     ```System.ServiceModel.EndpointNotFoundException: Could not connect to net.tcp://xxxxxxx.bwld.com:8060/ExternalService.svc/WorkerManager. The connection attempt lasted for a time span of 00:00:00.9940994. TCP error code 10061: No connection could be made because the target machine actively refused it 10.2.4.10:8060. 
     System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it. 

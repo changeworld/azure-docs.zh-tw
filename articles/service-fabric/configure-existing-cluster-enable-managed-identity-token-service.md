@@ -1,30 +1,30 @@
 ---
-title: 在現有服務結構叢集配置託管識別支援
-description: 下面瞭解如何在現有 Azure 服務結構群集中啟用託管標識支援
+title: 在現有的 Service Fabric 叢集中設定受控識別支援
+description: 以下說明如何在現有的 Azure Service Fabric 叢集中啟用受控識別支援
 ms.topic: article
 ms.date: 03/11/2019
 ms.custom: sfrev
 ms.openlocfilehash: 73c890e960f26b8e0e3fa924d9ff6b7a4cd4a4dc
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415678"
 ---
-# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在現有服務結構叢集配置託管識別支援
+# <a name="configure-managed-identity-support-in-an-existing-service-fabric-cluster"></a>在現有的 Service Fabric 叢集中設定受控識別支援
 
-要在 Service Fabric 應用程式中[對 Azure 資源使用託管識別](../active-directory/managed-identities-azure-resources/overview.md),請首先在群集上啟用*託管標識權杖服務*。 此服務負責使用其託管標識對 Service Fabric 應用程式進行身份驗證,並代表它們獲取訪問權杖。 啟用服務後,您可以在左側窗格中的 **「系統**」部分下的「服務結構資源管理器」中看到它,該功能在名稱**結構:/系統/託管身份權杖服務**下運行。
+若要在您的 Service Fabric 應用程式中使用[適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別，請先在叢集上啟用*受控識別權杖服務*。 此服務負責使用其受控識別來驗證 Service Fabric 應用程式，並代表其取得存取權杖。 啟用服務之後，您可以在左窗格中的 [**系統**] 區段底下的 [ManagedIdentityTokenService] Service Fabric Explorer 中看到它，並在 [ **Fabric：/system/**] 名稱底下執行。
 
 > [!NOTE]
-> 啟用**託管標識權杖服務**需要服務結構運行時版本 6.5.658.9590 或更高版本。  
+> 若要啟用**受控識別權杖服務**，需要 Service Fabric 執行階段版本6.5.658.9590 或更高版本。  
 >
-> 通過打開群集資源並檢查 **「基本」** 部分中的**服務結構版本**屬性,可以從 Azure 門戶找到群集的服務結構版本。
+> 您可以在 [**基本**功能] 區段中開啟叢集資源，並檢查 [ **Service Fabric 版本**] 屬性，以從 Azure 入口網站尋找叢集的 Service Fabric 版本。
 >
-> 如果群集處於**手動**升級模式,則需要首先將其升級到 6.5.658.9590 或更高版本。
+> 如果叢集處於**手動**升級模式，您必須先將它升級為6.5.658.9590 或更新版本。
 
-## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>在現有群組集中啟用*託管識別碼服務*
+## <a name="enable-managed-identity-token-service-in-an-existing-cluster"></a>在現有的叢集中啟用*受控識別權杖服務*
 
-在現有群集中啟用託管標識權杖服務,您需要啟動群集升級,指定兩個更改:(1) 啟用託管標識權杖服務,以及 (2) 請求重新啟動每個節點。 首先,添加叢集 Azure 資源管理員樣本的以下代碼段:
+若要在現有的叢集中啟用受控識別權杖服務，您將需要起始叢集升級，並指定兩個變更：（1）啟用受控識別權杖服務，以及（2）要求重新開機每個節點。 首先，在您的叢集 Azure Resource Manager 範本中新增下列程式碼片段：
 
 ```json
 "fabricSettings": [
@@ -40,7 +40,7 @@ ms.locfileid: "81415678"
 ]
 ```
 
-為了使更改生效,您還需要更改升級策略,以便在升級通過群集時為每個節點上強制重新啟動 Service Fabric 運行時。 此重新啟動可確保在每個節點上啟動新啟用的系統服務並運行。 在下面的代碼段中`forceRestart`,是啟用重新啟動的基本設置。 對於其餘參數,請使用下面描述的值或使用為群集資源指定的現有自定義值。 通過在服務交換矩陣資源或resources.azure.com上選擇「交換矩陣升級」選項,可以從 Azure 門戶查看結構升級策略的自定義設置("升級說明")。 升級策略("升級描述")的預設選項無法從電源殼或resources.azure.com查看。 有關詳細資訊,請參閱[群集升級策略](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet)。  
+為了讓變更生效，您也需要變更升級原則，以便在升級完成叢集時，在每個節點上指定強制重新開機 Service Fabric 執行時間。 此重新開機可確保新啟用的系統服務已在每個節點上啟動並執行。 在下列程式碼片段中`forceRestart` ，是啟用重新開機的基本設定。 針對其餘的參數，請使用以下所述的值，或使用已為叢集資源指定的現有自訂值。 您可以從 Azure 入口網站中選取 [Service Fabric 資源] 或 [resources.azure.com] 上的 [網狀架構升級] 選項，以查看網狀架構升級原則的自訂設定（' upgradeDescription '）。 升級原則（' upgradeDescription '）的預設選項無法從 powershell 或 resources.azure.com 查看。 如需其他資訊，請參閱[ClusterUpgradePolicy](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.servicefabric.models.clusterupgradepolicy?view=azure-dotnet) 。  
 
 ```json
 "upgradeDescription": {
@@ -55,11 +55,11 @@ ms.locfileid: "81415678"
 ```
 
 > [!NOTE]
-> 成功完成升級后,不要忘記回滾`forceRestart`設置,以盡量減少後續升級的影響。 
+> 升級成功完成時，請記得復原`forceRestart`設定，以將後續升級的影響降至最低。 
 
 ## <a name="errors-and-troubleshooting"></a>錯誤和疑難排解
 
-如果部署失敗,以下消息,這意味著群集未在足夠高的服務結構版本上運行:
+如果部署失敗並出現下列訊息，表示叢集未在足夠的 Service Fabric 版本上執行：
 
 ```json
 {
@@ -69,7 +69,7 @@ ms.locfileid: "81415678"
 ```
 
 ## <a name="next-steps"></a>後續步驟
-* [使用系統配置的託管識別部署 Azure 服務結構應用程式](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
-* [使用使用者配置的託管識別部署 Azure 服務結構應用程式](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-* [利用服務結構應用程式的託管識別(從服務代碼中使用)](./how-to-managed-identity-service-fabric-app-code.md)
-* [授予 Azure 服務結構應用程式對其他 Azure 資源的存取](./how-to-grant-access-other-resources.md)
+* [使用系統指派的受控識別來部署 Azure Service Fabric 應用程式](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
+* [使用使用者指派的受控識別來部署 Azure Service Fabric 應用程式](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
+* [從服務程式代碼運用 Service Fabric 應用程式的受控識別](./how-to-managed-identity-service-fabric-app-code.md)
+* [將其他 Azure 資源的存取權授與 Azure Service Fabric 應用程式](./how-to-grant-access-other-resources.md)

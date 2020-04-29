@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 的網路安全群組 (NSG) 服務標記
-description: 使用 HDInsight 服務標記允許從運行狀況和管理服務節點向叢集的入站流量,而無需向 NSG 添加 IP 位址。
+title: Azure HDInsight 的網路安全性群組（NSG）服務標記
+description: 使用 HDInsight 服務標籤，允許從健康狀態和管理服務節點對您的叢集進行輸入流量，而不需將 IP 位址新增到您的 Nsg。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
@@ -8,120 +8,120 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
 ms.openlocfilehash: 5608d0cd83e506bc6b30337db5148f344f59f80e
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410860"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight 的 NSG 服務標記
 
-用於網路安全組 (NSG) 的 Azure HDInsight 服務標記是運行狀況和管理服務的 IP 位址組。 這些組有助於將安全規則創建的複雜性降至最低。 [服務標記](../virtual-network/security-overview.md#service-tags)允許來自特定 IP 的入站流量,而無需輸入 NSG 中的每個[管理 IP 位址](hdinsight-management-ip-addresses.md)。
+網路安全性群組（Nsg）的 Azure HDInsight 服務標籤是健全狀況和管理服務的 IP 位址群組。 這些群組有助於降低建立安全性規則的複雜性。 [服務](../virtual-network/security-overview.md#service-tags)標籤允許來自特定 ip 的輸入流量，而不需在您的 nsg 中輸入每個[管理 IP 位址](hdinsight-management-ip-addresses.md)。
 
-HDInsight 服務管理這些服務標記。 不能創建自己的服務標記或修改現有標記。 Microsoft 管理與服務標記匹配的位址首碼,並在位址更改時自動更新服務標記。
+HDInsight 服務會管理這些服務標記。 您無法建立自己的服務標籤或修改現有的標記。 Microsoft 會管理符合服務標籤的位址首碼，並在位址變更時自動更新服務標籤。
 
 ## <a name="get-started-with-service-tags"></a>開始使用服務標記
 
-在網路安全群組中使用服務標記有兩個選項:
+您有兩個選項可在您的網路安全性群組中使用服務標籤：
 
-- **使用單一個全域 HDInsight 服務標記**:此選項將虛擬網路開啟到 HDInsight 服務用於監視所有區域群集的所有 IP 位址。 此選項是最簡單的方法,但如果有限制性的安全要求,則可能不合適。
+- **使用單一全域 HDInsight 服務**標籤：此選項會將您的虛擬網路開啟至所有 HDInsight 服務用來監視所有區域之叢集的 IP 位址。 此選項是最簡單的方法，但如果您有嚴格的安全性需求，則可能不適合。
 
-- **使用多個區域服務標記**:此選項將虛擬網路僅打開 HDInsight 在特定區域使用的 IP 位址。 但是,如果您使用的是多個區域,則需要向虛擬網路添加多個服務標記。
+- **使用多個區域服務**標籤：此選項會將您的虛擬網路開啟為只有 HDInsight 在該特定區域中使用的 IP 位址。 不過，如果您使用多個區域，您必須將多個服務標籤新增至您的虛擬網路。
 
-## <a name="use-a-single-global-hdinsight-service-tag"></a>使用單一個全域 HDInsight 服務標籤
+## <a name="use-a-single-global-hdinsight-service-tag"></a>使用單一全域 HDInsight 服務標記
 
-開始將服務標記與 HDInsight 群集一起使用的最簡單方法是將全域標`HDInsight`記 添加到 NSG 規則。
+開始搭配 HDInsight 叢集使用服務標籤的最簡單方式，就是將全域標記`HDInsight`新增至 NSG 規則。
 
-1. 從[Azure 門戶](https://portal.azure.com/)中選擇網路安全組。
+1. 從 [ [Azure 入口網站](https://portal.azure.com/)] 中，選取您的網路安全性群組。
 
-1. 在 **「設定」** 下,選擇 **「入站安全規則**」,然後選擇 **「添加**」 。。
+1. 在 [**設定**] 底下，選取 [**輸入安全性規則**]，然後選取 [ **+ 新增**]。
 
-1. 從 **「來源**」 下拉清單中, 選擇**服務標記**。
+1. 從 [**來源**] 下拉式清單中，選取 [**服務標記**]。
 
-1. 從 **「源服務標籤**」 下拉清單中,選擇**HDInsight**。
+1. 從 [**來源服務標記**] 下拉式清單中，選取 [ **HDInsight**]。
 
-    ![從 Azure 門戶新增服務標記](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    ![從 Azure 入口網站新增服務標記](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
-此標記包含所有可用 HDInsight 的區域的運行狀況和管理服務的 IP 位址。 該標記將確保群集可以與必要的運行狀況和管理服務通信,無論在何處創建。
+此標記包含適用于 HDInsight 的所有區域之健全狀況和管理服務的 IP 位址。 此標籤可確保您的叢集可以與所需的健全狀況和管理服務進行通訊，而不論其建立位置為何。
 
 ## <a name="use-regional-hdinsight-service-tags"></a>使用區域 HDInsight 服務標籤
 
-如果全域標記選項由於需要更嚴格的許可權而不起作用,則只能允許適用於您所在地區的服務標記。 可能有多個服務標記,具體取決於創建群集的區域。
+如果 [全域標記] 選項無法使用，因為您需要更嚴格的許可權，您可以只允許適用于您的區域的服務標記。 根據您的叢集建立所在的區域，可能會有多個服務標記。
 
-要瞭解要為區域添加的服務標記,請閱讀本文的以下部分。
+若要找出要為您的區域新增哪些服務標籤，請閱讀本文的下列各節。
 
 ### <a name="use-a-single-regional-service-tag"></a>使用單一區域服務標記
 
-如果您的群集位於此表中列出的區域中,則只需向 NSG 添加單個區域服務標記。
+如果您的叢集位於本表所列的區域中，您只需要將單一地區服務標籤新增至您的 NSG。
 
-| Country | 區域 | 服務標籤 |
+| Country | 區域 | 服務標記 |
 | ---- | ---- | ---- |
-| 澳大利亞 | 澳大利亞東部 | HDInsight.澳大利亞東部 |
-| &nbsp; | 澳大利亞東南部 | HDInsight.澳大利亞東南 |
-| &nbsp; | 澳大利亞中部 | HDInsight.澳大利亞中部 |
-| 中國 | 中國東部 2 | HDInsight.中國東方2 |
-| &nbsp; | 中國北部 2 | HDInsight.中國北2 |
-| 美國 | 美國中北部 | HDInsight.北中 |
-| &nbsp; | 美國西部 2 | HDInsight.WestUS2 |
-| &nbsp; | 美國中西部 | HDInsight.西中環 |
-| Canada | 加拿大東部 | HDInsight.加拿大東部 |
-| 巴西 | 巴西南部 | HDInsight.巴西南方 |
-| 南韓 | 南韓中部 | HDInsight.韓國中央 |
-| &nbsp; | 南韓南部 | HDInsight.韓國 |
-| 印度 | 印度中部 | HDInsight.印度中部 |
-| &nbsp; | 印度南部 | HDInsight.南印度 |
-| 日本 | 日本西部 | HDInsight.日本西部 |
-| 法國 | 法國中部| HDInsight.法國中央 |
-| 英國 | 英國南部 | HDInsight.UKSouth |
-| Azure Government | USDoD 中心 | HDInsight.USDoDCentral |
-| &nbsp; | 美國政府德克薩斯州 | HDInsight.USGov德克薩斯 |
-| &nbsp; | 烏斯多德東 | HDInsight.USDoDEast |
-| &nbsp; | 美國政府亞利桑那州 | HDInsight.USGov亞利桑那 |
+| 澳大利亞 | 澳大利亞東部 | AustraliaEast |
+| &nbsp; | 澳大利亞東南部 | AustraliaSoutheast |
+| &nbsp; | 澳大利亞中部 | AustraliaCentral |
+| 中國 | 中國東部 2 | ChinaEast2 |
+| &nbsp; | 中國北部 2 | ChinaNorth2 |
+| 美國 | 美國中北部 | NorthCentralUS |
+| &nbsp; | 美國西部 2 | WestUS2 |
+| &nbsp; | 美國中西部 | WestCentralUS |
+| Canada | 加拿大東部 | CanadaEast |
+| 巴西 | 巴西南部 | BrazilSouth |
+| 南韓 | 南韓中部 | KoreaCentral |
+| &nbsp; | 南韓南部 | KoreaSouth |
+| 印度 | 印度中部 | CentralIndia |
+| &nbsp; | 印度南部 | SouthIndia |
+| 日本 | 日本西部 | JapanWest |
+| 法國 | 法國中部| FranceCentral |
+| 英國 | 英國南部 | UKSouth |
+| Azure Government | USDoD 中部 | USDoDCentral |
+| &nbsp; | 美國政府德克薩斯州 | USGovTexas |
+| &nbsp; | UsDoD 東部 | USDoDEast |
+| &nbsp; | 美國政府亞利桑那州 | USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>使用多個區域服務標記
 
-如果創建群集的區域未列在上表中,則需要允許多個區域服務標記。 需要使用多個,是因為各區域的資源提供者的安排不同。
+如果您的叢集建立所在的區域未列在上表中，您需要允許多個區域服務標記。 使用一個以上的需求，是因為不同區域的資源提供者的相片順序有所差異。
 
-其餘區域根據其使用的區域服務標記分為多個組。
+其餘的區域會根據其使用的區域服務標籤分成群組。
 
 #### <a name="group-1"></a>群組 1
 
-如果群集是在下表中的一個區域中建立的,請允許服務標記`HDInsight.WestUS``HDInsight.EastUS`和 。 此外,還列出了區域服務標記。 本節中的區域需要三個服務標記。
+如果您的叢集是在下表的其中一個區域中建立，請允許服務標記`HDInsight.WestUS`和`HDInsight.EastUS`。 此外，也列出了區域服務標記。 本節中的區域需要三個服務標記。
 
-例如,如果群集是在`East US 2`該區域中創建的,則需要向網路安全組添加以下服務標記:
+例如，如果您的`East US 2`叢集是在區域中建立，您必須將下列服務標籤新增至您的網路安全性群組：
 
 - `HDInsight.EastUS2`
 - `HDInsight.WestUS`
 - `HDInsight.EastUS`
 
-| Country | 區域 | 服務標籤 |
+| Country | 區域 | 服務標記 |
 | ---- | ---- | ---- |
-| 美國 | 美國東部 2 | HDInsight.EastUS2 |
-| &nbsp; | 美國中部 | HDInsight.中央 |
-| &nbsp; | 美國中北部 | HDInsight。 北中 |
-| &nbsp; | 美國中南部 | HDInsight.南中烏斯 |
-| &nbsp; | 美國東部 | HDInsight.EastUS |
-| &nbsp; | 美國西部 | HDInsight.WestUS |
-| 日本 | 日本東部 | HDInsight.日本東方 |
-| 歐洲 | 北歐 | HDInsight.北歐 |
-| &nbsp; | 西歐| HDInsight.西歐 |
-| Asia | 東亞 | HDInsight.東亞 |
-| &nbsp; | 東南亞 | HDInsight.東南亞 |
-| 澳大利亞 | 澳大利亞東部 | HDInsight.澳大利亞東部 |
+| 美國 | 美國東部 2 | EastUS2 |
+| &nbsp; | 美國中部 | CentralUS |
+| &nbsp; | NorthCentral 我們 | HDInsight. NorthCentralUS |
+| &nbsp; | 美國中南部 | SouthCentralUS |
+| &nbsp; | 美國東部 | EastUS |
+| &nbsp; | 美國西部 | WestUS |
+| 日本 | 日本東部 | JapanEast |
+| 歐洲 | 北歐 | NorthEurope |
+| &nbsp; | 西歐| WestEurope |
+| Asia | 東亞 | EastAsia |
+| &nbsp; | 東南亞 | SoutheastAsia |
+| 澳大利亞 | 澳大利亞東部 | AustraliaEast |
 
 #### <a name="group-2"></a>群組 2
 
-*華北*與*華東*地區的群集需要允許兩個服務標籤`HDInsight.ChinaNorth`:`HDInsight.ChinaEast`和 。
+*中國北部*和*中國東部*區域中的叢集需要允許兩個服務標記： `HDInsight.ChinaNorth`和`HDInsight.ChinaEast`。
 
 #### <a name="group-3"></a>群組 3
 
-*美國愛荷華州州長*和*弗吉尼亞州州長*地區的集群需要允許兩個`HDInsight.USGovIowa`服務`HDInsight.USGovVirginia`標籤: 和 。
+*US Gov 愛荷華州*和*US Gov 維吉尼亞州*區域中的叢集需要允許兩個服務標記： `HDInsight.USGovIowa`和`HDInsight.USGovVirginia`。
 
 #### <a name="group-4"></a>群組 4
 
-*在德國中部*和*德國東北部*地區的群集需要允許兩個服務`HDInsight.GermanyCentral`標`HDInsight.GermanyNortheast`記: 和 。
+*德國中部*和*德國東北部*區域中的叢集需要允許兩個服務標記： `HDInsight.GermanyCentral`和。 `HDInsight.GermanyNortheast`
 
 ## <a name="next-steps"></a>後續步驟
 
-- [網路安全組:服務標記](../virtual-network/security-overview.md#security-rules)
-- [為 Azure HDInsight 叢集建立虛擬網路](hdinsight-create-virtual-network.md)
+- [網路安全性群組：服務標記](../virtual-network/security-overview.md#security-rules)
+- [建立 Azure HDInsight 叢集的虛擬網路](hdinsight-create-virtual-network.md)

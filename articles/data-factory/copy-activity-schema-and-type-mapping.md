@@ -12,28 +12,28 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: jingwang
 ms.openlocfilehash: 9f04955fb910a6159dc09ac40a87a398e67d59d6
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81414120"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>複製活動中的結構描述對應
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-本文介紹 Azure 數據工廠複製活動在執行數據副本時如何執行架構映射和從源數據到接收器數據的數據類型映射。
+本文說明在執行資料複製時，Azure Data Factory 複製活動如何從來源資料與接收資料進行架構對應和資料類型對應。
 
 ## <a name="schema-mapping"></a>結構描述對應
 
-將數據從源複製到接收器時,將應用列映射。 預設情況下,將活動**映射源資料複製到按欄位名稱進行接收器**。 您可以指定[顯式對應](#explicit-mapping),以便根據需要自訂列對應。 更具體來說，複製活動會：
+將資料從來源複製到接收時，會套用資料行對應。 根據預設，複製活動會將**來源資料對應至依資料行名稱的接收**。 您可以指定[明確對應](#explicit-mapping)，依據您的需求自訂資料行對應。 更具體來說，複製活動會：
 
 1. 從來源讀取資料，並判斷來源結構描述
-2. 使用預設列映射按名稱映射列,或者如果指定,則應用顯式列映射。
+2. 使用預設資料行對應依名稱對應資料行，或在指定的情況下套用明確的資料行對應。
 3. 撰寫要接收的資料
 
 ### <a name="explicit-mapping"></a>明確對應
 
-您可以在複製活動 ->`translator` -> `mappings`屬性中指定要映射的欄位。 下面的範例定義管道中的副本活動,將資料從分隔的文本複製到 Azure SQL 資料庫。
+您可以在 [複製活動-> `translator`  ->  `mappings` ] 屬性中指定要對應的資料行。 下列範例會在管線中定義複製活動，以將資料從分隔的文字複製到 Azure SQL Database。
 
 ```json
 {
@@ -86,33 +86,33 @@ ms.locfileid: "81414120"
 }
 ```
 
-`translator``source`以下屬性受支援的 -> 物件與`sink` -> `mappings`
+下列屬性在 > 的物件`translator`  ->  `mappings`下支援`source`和`sink`：
 
 | 屬性 | 描述                                                  | 必要 |
 | -------- | ------------------------------------------------------------ | -------- |
-| NAME     | 源列或接收器列的名稱。                           | 是      |
-| 序數  | 列索引。 從 1 開始。 <br>使用沒有標題行的分隔文本時應用和需要。 | 否       |
-| path     | 要提取或映射的每個欄位的 JSON 路徑表達式。 應用分層資料,例如 MongoDB/REST。<br>對於根物件下的欄位,JSON 路徑以根 $開頭;對於`collectionReference`屬性選擇的陣列內的欄位,JSON 路徑從陣列元素開始。 | 否       |
-| type     | 源或接收器列的數據工廠臨時數據類型。 | 否       |
-| culture  | 源或接收器列的區域性。 <br>當類型為`Datetime``Datetimeoffset`或 時應用。 預設值為 `en-us`。 | 否       |
-| format   | 格式字串,當類型為`Datetime`或`Datetimeoffset`時使用。 有關如何格式化日期時間的資訊，請參閱[自訂日期和時間格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 | 否       |
+| 名稱     | 來源或接收資料行的名稱。                           | 是      |
+| 序數  | 資料行索引。 從1開始。 <br>使用不含標頭行的分隔文字時，請套用和必要。 | 否       |
+| 路徑     | 要解壓縮或對應之每個欄位的 JSON 路徑運算式。 適用于階層式資料，例如 MongoDB/REST。<br>對於根物件下的欄位，JSON 路徑的開頭為 root $;對於`collectionReference`屬性所選陣列內的欄位，JSON 路徑會從陣列元素開始。 | 否       |
+| type     | 來源或接收資料行的 Data Factory 過渡資料類型。 | 否       |
+| culture  | 來源或接收資料行的文化特性。 <br>當類型為`Datetime`或`Datetimeoffset`時套用。 預設值為 `en-us`。 | 否       |
+| format   | 當類型為`Datetime`或`Datetimeoffset`時，所要使用的格式字串。 有關如何格式化日期時間的資訊，請參閱[自訂日期和時間格式字串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 | 否       |
 
-`translator` -> 除了`mappings``source`物件與外,下面支援以下`sink`屬性 。
+除了`translator`  ->  `mappings`具有`source`和`sink`的物件之外，還支援下列屬性：
 
 | 屬性            | 描述                                                  | 必要 |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| collectionReference | 僅當分層數據(例如 MongoDB/REST)是源時,才受支援。<br>如果您想要逐一查看**陣列欄位內**相同模式的物件並擷取資料，然後轉換為每個物件一個資料列，則請指定該陣列的 JSON 路徑，以執行交叉套用。 | 否       |
+| collectionReference | 只有在階層式資料（例如 MongoDB/REST）為來源時才支援。<br>如果您想要逐一查看**陣列欄位內**相同模式的物件並擷取資料，然後轉換為每個物件一個資料列，則請指定該陣列的 JSON 路徑，以執行交叉套用。 | 否       |
 
-### <a name="alternative-column-mapping"></a>替代列對應
+### <a name="alternative-column-mapping"></a>替代資料行對應
 
-您可以指定複製活動 ->`translator` -> `columnMappings`以在表格形狀資料之間對應。 在這種情況下,輸入數據集和輸出數據集都需要"結構"部分。 資料行對應支援將來源資料集「結構」中的所有或一部分資料行，對應至接收資料集「結構」中的所有資料行****。 以下是會導致發生例外狀況的錯誤狀況：
+您可以指定 [複製活動- `translator`  ->  `columnMappings` >]，以在表格式資料之間進行對應。 在此情況下，輸入和輸出資料集都必須要有 "structure" 區段。 資料行對應支援將來源資料集「結構」中的所有或一部分資料行，對應至接收資料集「結構」中的所有資料行****。 以下是會導致發生例外狀況的錯誤狀況：
 
 * 來源資料存放區查詢結果在輸入資料集的「結構」區段中並未指定資料行名稱。
 * 接收資料存放區 (如果含有預先定義的結構描述) 在輸出資料集的「結構」區段中並未指定資料行名稱。
 * 接收資料集「結構」中的資料行數量多於或少於對應中所指定的數量。
 * 重複的對應。
 
-在下面的示例中,輸入數據集具有一個結構,它指向本地 Oracle 資料庫中的表。
+在下列範例中，輸入資料集具有結構，且指向內部部署 Oracle 資料庫中的資料表。
 
 ```json
 {
@@ -136,7 +136,7 @@ ms.locfileid: "81414120"
 }
 ```
 
-在此範例中,輸出資料集具有一個結構,它指向 Salesfoce 中的表。
+在此範例中，輸出資料集具有結構，並指向 Salesfoce 中的資料表。
 
 ```json
 {
@@ -160,7 +160,7 @@ ms.locfileid: "81414120"
 }
 ```
 
-下列 JSON 定義了管線中的複製活動。 使用 **「翻譯器** -> **」列映射**屬性將源映射到接收器中的欄位。
+下列 JSON 定義了管線中的複製活動。 來源中的資料行會使用**translator** -> **columnMappings**屬性，對應至接收器中的資料行。
 
 ```json
 {
@@ -199,15 +199,15 @@ ms.locfileid: "81414120"
 
 ### <a name="alternative-schema-mapping"></a>替代架構對應
 
-您可以指定複製活動`translator` -> `schemaMapping`─ >在分层形状数据和表格形状数据之间进行映射,例如從 MongoDB/REST 複製到文字檔案,然後從 Oracle 複製到 Azure Cosmos DB 的 MongoDB API。 複製活動的 `translator` 區段支援下列屬性：
+您可以指定複製活動-> `translator`  ->  `schemaMapping`在階層式資料和表格式資料之間進行對應，例如從 MongoDB/REST 複製到文字檔，然後從 Oracle 複製到 Azure Cosmos DB 適用于 MongoDB 的 API。 複製活動的 `translator` 區段支援下列屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
-| type | 必須複製活動轉換器的類型屬性設定為:**表格翻譯器** | 是 |
-| schemaMapping | 鍵值對的集合,表示**從源端到接收器端**的映射關係。<br/>- **鍵:** 表示源。 對於**表格源**,指定數據集結構中定義的列名稱;對於**分層源**,指定要提取和映射的每個欄位的 JSON 路徑運算式。<br>- **值:** 表示接收器。 對於**表格接收器**,指定數據集結構中定義的列名稱;對於**分層接收器**,為要提取和映射的每個欄位指定 JSON 路徑運算式。 <br>對於分層數據,對於根物件下的欄位,JSON 路徑以根 $開頭;對於`collectionReference`屬性選擇的陣列內的欄位,JSON 路徑從陣列元素開始。  | 是 |
+| type | 複製活動 translator 的 type 屬性必須設定為： **TabularTranslator** | 是 |
+| schemaMapping | 索引鍵/值組的集合，表示**從來源端到接收端**的對應關聯性。<br/>- 索引**鍵：** 代表來源。 針對 [**表格式來源**]，指定資料集結構中所定義的資料行名稱;針對 [**階層式來源**]，為每個要解壓縮和對應的欄位指定 JSON 路徑運算式。<br>- **值：** 表示接收。 若為**表格式接收**，請指定資料集結構中所定義的資料行名稱;針對**階層式接收**，為每個要解壓縮和對應的欄位指定 JSON 路徑運算式。 <br>在階層式資料的情況下，針對根物件下的欄位，JSON 路徑會以根 $ 開頭;對於`collectionReference`屬性所選陣列內的欄位，JSON 路徑會從陣列元素開始。  | 是 |
 | collectionReference | 如果您想要逐一查看**陣列欄位內**相同模式的物件並擷取資料，然後轉換為每個物件一個資料列，則請指定該陣列的 JSON 路徑，以執行交叉套用。 只有在階層式資料是來源時，才支援這個屬性。 | 否 |
 
-**範例:從蒙戈DB複製到 Oracle:**
+**範例：從 MongoDB 複製到 Oracle：**
 
 例如，如果您有具備下列內容的 MongoDB 文件：
 
@@ -279,10 +279,10 @@ ms.locfileid: "81414120"
 1. 從原生來源類型轉換成 Azure Data Factory 過渡資料類型
 2. 從 Azure Data Factory 過渡資料類型轉換成原生接收類型
 
-複製活動支援以下暫存資料型態: 
+複製活動支援下列過渡資料類型： 
 
 * Byte[]
-* Boolean
+* 布林值
 * Datetime
 * Datetimeoffset
 * Decimal
@@ -292,10 +292,10 @@ ms.locfileid: "81414120"
 * Int32
 * Int64
 * Single
-* String
+* 字串
 * Timespan
 
 ## <a name="next-steps"></a>後續步驟
 請參閱其他複製活動文章：
 
-- [複製活動概述](copy-activity-overview.md)
+- [複製活動總覽](copy-activity-overview.md)

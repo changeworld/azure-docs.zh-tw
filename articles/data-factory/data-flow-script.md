@@ -1,6 +1,6 @@
 ---
-title: 對應資料串流文稿
-description: 資料工廠資料串流文稿程式支援語言概述
+title: 對應資料流程腳本
+description: Data Factory 的資料流程腳本程式碼後置語言總覽
 author: kromerm
 ms.author: nimoolen
 ms.service: data-factory
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/13/2020
 ms.openlocfilehash: e0042960c25d58b72bc0ab884de5a2db62e566d9
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81413435"
 ---
-# <a name="data-flow-script-dfs"></a>資料串流文稿 (DFS)
+# <a name="data-flow-script-dfs"></a>資料流程腳本（DFS）
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-數據流文本 (DFS) 是基礎元數據,類似於編碼語言,用於執行映射資料流中包含的轉換。 每個轉換都由一系列屬性表示,這些屬性提供了正確運行作業的必要資訊。 通過按一下瀏覽器 UI 頂部功能區上的「文稿」按鈕,該文本可以從 ADF 可見和編輯。
+資料流程腳本（DFS）是基礎中繼資料，類似于編碼語言，用來執行對應資料流程中包含的轉換。 每個轉換都會以一系列的屬性來表示，以提供必要的資訊來正確執行工作。 您可以透過按一下瀏覽器 UI 頂端功能區上的 [腳本] 按鈕，從 ADF 看到腳本並加以編輯。
 
-![文稿按鈕](media/data-flow/scriptbutton.png "文稿按鈕")
+![腳本按鈕](media/data-flow/scriptbutton.png "腳本按鈕")
 
-例如,`allowSchemaDrift: true,`在源轉換中,告訴服務將來自源數據集的所有列包括在資料流中,即使它們未包含在架構投影中也是如此。
+例如，在`allowSchemaDrift: true,`來源轉換中，會告知服務在資料流程中包含來自源資料集的所有資料行，即使它們並未包含在架構投影中也一樣。
 
 ## <a name="use-cases"></a>使用案例
-DFS 由用戶介面自動生成。 您可以按下「腳稿」按鈕來查看和自訂文稿。 您還可以在 ADF UI 之外生成腳本,然後將文本傳遞到 PowerShell cmdlet 中。 除錯複雜資料流時,您可能會發現掃描腳本程式碼後面而不是掃描流的 UI 圖形表示形式更容易。
+DFS 會由使用者介面自動產生。 您可以按一下 [腳本] 按鈕來查看和自訂腳本。 您也可以在 ADF UI 外產生腳本，然後將其傳遞至 PowerShell Cmdlet。 在進行複雜資料流程的調試時，您可能會發現，掃描腳本的程式碼後置會比較容易，而不是掃描您流程的 UI 圖形標記法。
 
-下面是幾個範例用例:
-- 以程式設計方式生成許多相當相似的數據流,即"衝壓"數據流。
-- 在 UI 中難以管理或導致驗證問題的複雜表達式。
-- 調試並更好地瞭解執行期間返回的各種錯誤。
+以下是幾個範例使用案例：
+- 以程式設計方式產生許多非常類似的資料流程，也就是「戳記」的資料流程。
+- 難以在 UI 中管理或導致驗證問題的複雜運算式。
+- 對執行期間傳回的各種錯誤進行調試和更進一步的瞭解。
 
-構建要與 PowerShell 或 API 一起使用的數據流腳本時,必須將格式化的文本摺疊成一行。 您可以將選項卡和換行符保留為轉義字元。 但是,文本的格式必須適合 JSON 屬性。 文稿編輯器 UI 底部有一個按鈕,該按鈕將文本格式化為單行。
+當您建立要搭配 PowerShell 或 API 使用的資料流程腳本時，您必須將格式化的文字折迭成一行。 您可以將定位字元和分行符號保留為 escape 字元。 但必須將文字格式化以符合 JSON 屬性。 底部的 [腳本編輯器] UI 上有一個按鈕，可讓您將腳本格式化為單一行。
 
 ![[複製] 按鈕](media/data-flow/copybutton.png "[複製] 按鈕")
 
 ## <a name="how-to-add-transforms"></a>如何新增轉換
-添加轉換需要三個基本步驟:添加核心轉換數據、重新路由輸入流,然後重新路由輸出流。 這在示例中是最容易的。
-假設我們從一個簡單的源開始,以像以下內容一樣來存儲數據流:
+加入轉換需要三個基本步驟：新增核心轉換資料、將輸入資料流程重新路由，然後將輸出資料流程重設路徑。 在範例中，這會很容易看到。
+假設我們從一個簡單的來源接收資料流程程，如下所示：
 
 ```
 source(output(
@@ -52,12 +52,12 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-如果我們決定添加派生變換,首先我們需要建立核心轉換文本,該文字具有一個簡單的表示式來添加新大寫列,稱為`upperCaseTitle`:
+如果我們決定新增「衍生」轉換，首先我們需要建立「核心」轉換文字，它有一個簡單的運算式可新增名`upperCaseTitle`為的新大寫資料行：
 ```
 derive(upperCaseTitle = upper(title)) ~> deriveTransformationName
 ```
 
-然後,我們採用現有的 DFS 並新增轉換:
+然後，我們會採用現有的 DFS 並新增轉換：
 ```
 source(output(
         movieId as string,
@@ -71,7 +71,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-現在,我們通過確定我們希望新轉換之後的轉換(在本例中`source1`)並將流的名稱複製到新轉換來重新路由傳入流:
+現在我們會藉由識別要讓新轉換在之後（在此案例中為`source1`）的轉換，並將資料流程的名稱複製到新的轉換，來重新路由傳入資料流程：
 ```
 source(output(
         movieId as string,
@@ -85,7 +85,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-最後,我們確定要在此新轉換之後進行轉換,並將其輸入流(本例中`sink1`)替換為新轉換的輸出流名稱:
+最後，我們會識別我們想要在這個新轉換之後的轉換，並將其輸入資料流程（在此`sink1`案例中為）取代為新轉換的輸出資料流程名稱：
 ```
 source(output(
         movieId as string,
@@ -99,17 +99,17 @@ deriveTransformationName sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-## <a name="dfs-fundamentals"></a>DFS 基礎知識
-DFS 由一系列連接的轉換組成,包括源、接收器和其他各種轉換,這些轉換可以添加新列、篩選數據、聯接數據等。 通常,腳本以一個或多個源開頭,然後是許多轉換,最後以一個或多個接收器結束。
+## <a name="dfs-fundamentals"></a>DFS 基本概念
+DFS 是由一系列的已連線轉換組成，包括來源、接收和各種其他專案，可以加入新的資料行、篩選資料、聯結資料，還有更多功能。 腳本通常會以一或多個來源開頭，後面接著多個轉換，並以一或多個接收結束。
 
-源都具有相同的基本構造:
+來源全都具有相同的基本結構：
 ```
 source(
   source properties
 ) ~> source_name
 ```
 
-例如,包含三列(電影 Id、標題、流派)的簡單來源是:
+例如，具有三個數據行（movieId、title、內容內容）的簡單來源會是：
 ```
 source(output(
         movieId as string,
@@ -120,42 +120,42 @@ source(output(
     validateSchema: false) ~> source1
 ```
 
-來源以外的所有轉換都具有相同的基本建構:
+來源以外的所有轉換都具有相同的基本結構：
 ```
 name_of_incoming_stream transformation_type(
   properties
 ) ~> new_stream_name
 ```
 
-例如,採用列(標題)並用大寫版本覆蓋它的簡單派生轉換如下所示:
+例如，採用資料行（標題）並以大寫版本覆寫它的簡單衍生轉換會如下所示：
 ```
 source1 derive(
   title = upper(title)
 ) ~> derive1
 ```
 
-沒有架構的接收器只是:
+而沒有架構的接收則是：
 ```
 derive1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-## <a name="script-snippets"></a>文稿程式段
+## <a name="script-snippets"></a>腳本程式碼片段
 
-腳本代碼段是數據流腳本的可共用代碼,可用於跨數據流共用。 以下視訊介紹如何使用文稿程式碼段和利用資料串流腳稿複製和貼上資料串流圖後面的文稿部分:
+腳本程式碼片段是可共用的資料流程腳本程式碼，您可以用來在整個資料流程之間共用。 下面這段影片將討論如何使用腳本片段，並利用資料流程腳本來複製和貼上資料流程圖形背後的部分腳本：
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tA9b]
 
 
-### <a name="aggregated-summary-stats"></a>匯總匯總統計資訊
-向資料流添加名為"SummaryStats"的聚合轉換,然後貼上到下面的代碼中,用於腳本中的聚合函數,替換現有的SummaryStats。 這將為數據配置檔摘要統計資訊提供通用模式。
+### <a name="aggregated-summary-stats"></a>匯總的摘要統計資料
+將匯總轉換新增至名為 "SummaryStats" 的資料流程，然後將下列程式碼貼到腳本中的彙總函式，取代現有的 SummaryStats。 這將提供資料設定檔摘要統計資料的一般模式。
 
 ```
 aggregate(each(match(true()), $$+'_NotNull' = countIf(!isNull($$)), $$ + '_Null' = countIf(isNull($$))),
         each(match(type=='double'||type=='integer'||type=='short'||type=='decimal'), $$+'_stddev' = round(stddev($$),2), $$ + '_min' = min ($$), $$ + '_max' = max($$), $$ + '_average' = round(avg($$),2), $$ + '_variance' = round(variance($$),2)),
         each(match(type=='string'), $$+'_maxLength' = max(length($$)))) ~> SummaryStats
 ```
-您還可以使用以下範例來計算數據中唯一行數和不同行數。 下面的示例可以粘貼到具有稱為 ValueDistAgg 的聚合轉換的數據流中。 此示例使用名為"標題"的列。 請確保將「標題」 取代為要用於獲取值計數的資料中的字串列。
+您也可以使用下列範例來計算您的資料中，唯一的數目和相異資料列的數目。 下列範例可以貼入具有「匯總」轉換的資料流程，稱為 ValueDistAgg。 這個範例會使用名為 "title" 的資料行。 請務必以您想要用來取得數值計數的資料中的 string 資料行來取代 "title"。
 
 ```
 aggregate(groupBy(title),
@@ -164,16 +164,16 @@ ValueDistAgg aggregate(numofunique = countIf(countunique==1),
         numofdistinct = countDistinct(title)) ~> UniqDist
 ```
 
-### <a name="include-all-columns-in-an-aggregate"></a>將所有欄包含在聚合中
-這是一種通用聚合模式,演示如何在生成聚合時將剩餘列保留在輸出元數據中。 在這種情況下,我們使用 函```first()```數 選擇名稱不是"movie"的每個列中的第一個值。 要使用此,請創建名為"明顯行"的聚合轉換,然後將該轉換粘貼到現有"明顯行"聚合腳本的頂部。
+### <a name="include-all-columns-in-an-aggregate"></a>將所有資料行包含在匯總中
+這是一般匯總模式，示範如何在建立匯總時，保留輸出中繼資料中其餘的資料行。 在此情況下，我們會```first()```使用函數來選擇名稱不是 "movie" 的每個資料行中的第一個值。 若要使用此功能，請建立名為 DistinctRows 的匯總轉換，然後在您的腳本中，將其貼到現有 DistinctRows 匯總腳本的頂端。
 
 ```
 aggregate(groupBy(movie),
     each(match(name!='movie'), $$ = first($$))) ~> DistinctRows
 ```
 
-### <a name="create-row-hash-fingerprint"></a>建立列哈希指紋 
-在數據流腳本中使用此代碼創建一個稱為生成```DWhash```三```sha1```列 哈希的新派生列。
+### <a name="create-row-hash-fingerprint"></a>建立資料列雜湊指紋 
+在資料流程腳本中使用此程式碼來建立名```DWhash```為的新衍生資料行， ```sha1```以產生三個數據行的雜湊。
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
@@ -181,4 +181,4 @@ derive(DWhash = sha1(Name,ProductNumber,Color))
 
 ## <a name="next-steps"></a>後續步驟
 
-從[資料串流概述文章](concepts-data-flow-overview.md)開始探索資料串流
+開始使用資料流程[總覽文章](concepts-data-flow-overview.md)來探索資料流程

@@ -1,5 +1,5 @@
 ---
-title: 將資料載入 Azure 資料儲存第 1 代
+title: 將資料載入 Azure Data Lake Storage Gen1
 description: 使用 Azure Data Factory 將資料複製到 Azure Data Lake Storage Gen1
 services: data-factory
 ms.author: jingwang
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/17/2018
 ms.openlocfilehash: 1b1b19814709451bdbbea97462c459149484e71f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81415854"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>使用 Azure Data Factory 將資料載入 Azure Data Lake Storage Gen1
@@ -29,7 +29,7 @@ Azure Data Factory 是完全受控的雲端式資料整合服務。 您可以使
 Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業提供下列優勢：
 
 * **容易設定**：不需要編寫指令碼的直覺式 5 步驟精靈。
-* **豐富的資料儲存支援**:對豐富的本地資料存儲和基於雲端資料儲存的內置支援。 如需詳細清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)的資料表。
+* **豐富的資料存放區支援**：一組豐富的內部部署和雲端式資料存放區的內建支援。 如需詳細清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)的資料表。
 * **安全且符合規範**：資料會透過 HTTPS 或 ExpressRoute 來傳送。 具有全域服務，可確保資料絕不會離開地理界限。
 * **高效能**：將資料載入到 Data Lake Storage Gen1 的速度高達 1 GB/s。 如需詳細資料，請參閱[複製活動效能](copy-activity-performance.md)。
 
@@ -38,15 +38,15 @@ Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業�
 > [!NOTE]
 > 如需詳細資訊，請參閱[使用 Azure Data Factory 將資料複製到 Data Lake Storage Gen1 或從該處複製資料](connector-azure-data-lake-store.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* Azure 訂閱:如果沒有 Azure 訂閱,請先建立一個[免費帳戶](https://azure.microsoft.com/free/)。
+* Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 * Data Lake Storage Gen1 帳戶：如果您沒有 Data Lake Storage Gen1 帳戶，請參閱[建立 Data Lake Storage Gen1 帳戶](../data-lake-store/data-lake-store-get-started-portal.md#create-a-data-lake-storage-gen1-account)中的指示。
 * Amazon S3：本文示範如何從 Amazon S3 複製資料。 您可以依照類似的步驟來使用其他資料存放區。
 
 ## <a name="create-a-data-factory"></a>建立 Data Factory
 
-1. 在左邊選單上,選擇 **「建立資源** > **分析** > **資料工廠**」:
+1. 在左側功能表上，選取 [**建立資源** > **分析** > ]**Data Factory**：
    
    ![在 [新增] 窗格中選取資料處理站](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -98,7 +98,7 @@ Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業�
 
     ![選擇輸入檔案或資料夾](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. 選取 [以遞迴方式複製檔案]**** 和 [二進位複製]**** (依原樣複製檔案) 選項來選擇複製行為。 選擇**下一步**:
+6. 選取 [以遞迴方式複製檔案]**** 和 [二進位複製]**** (依原樣複製檔案) 選項來選擇複製行為。 選取 **[下一步]**：
 
     ![指定輸出資料夾](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
     
@@ -129,7 +129,7 @@ Azure Data Factory 可針對將資料載入到 Data Lake Storage Gen1 的作業�
 12. 在**部署頁面**上選取 [監視]**** 來監視管線 (工作)：
 
     ![部署頁面](./media/load-data-into-azure-data-lake-store/deployment-page.png)
-13. 請注意，系統會自動選取左側的 [監視]**** 索引標籤。 **' 操作'** 列包含用於檢視活動執行詳細資訊與重新執行導管的連結:
+13. 請注意，系統會自動選取左側的 [監視]**** 索引標籤。 [**動作**] 資料行包含可查看活動執行詳細資料，以及重新執行管線的連結：
 
     ![監視管線回合](./media/load-data-into-azure-data-lake-store/monitor-pipeline-runs.png)
 14. 若要檢視與此管線執行相關聯的活動執行，請選取 [動作]**** 資料行中的 [檢視活動執行]**** 連結。 管線中只有一個活動 (複製活動)，所以您只會看到一個項目。 若要切換回 [管線執行] 檢視，請選取頂端的 [管線]**** 連結。 選取 [重新整理]**** 可重新整理清單。 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 資料工廠從 Web 表複製資料
+title: 使用 Azure Data Factory 從 Web 資料表複製資料
 description: 了解 Azure Data Factory 服務的「Web 資料表連接器」，此連接器可讓您將資料從 Web 資料表複製到 Data Factory 所支援作為接收器的資料存放區。
 services: data-factory
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81410206"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 Web 資料表複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
-> * [版本 1](v1/data-factory-web-table-connector.md)
-> * [目前版本](connector-web-table.md)
+> * [第 1 版](v1/data-factory-web-table-connector.md)
+> * [目前的版本](connector-web-table.md)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文概述如何使用 Azure Data Factory 中的「複製活動」，從 Web 資料表資料庫複製資料。 本文是根據[複製活動概觀](copy-activity-overview.md)一文，該文提供複製活動的一般概觀。
@@ -29,23 +29,23 @@ ms.locfileid: "81410206"
 此 Web 資料表連接器、[REST 連接器](connector-rest.md)和 [HTTP 連接器](connector-http.md)之間的差異如下：
 
 - **Web 資料表連接器**會從 HTML 網頁擷取資料表內容。
-- **REST 連接器**特別支援從 RESTful API 複製資料。
+- **REST 連接器**專門支援從 RESTful api 複製資料。
 - **HTTP 連接器**一般用來從任何 HTTP 端點擷取資料，例如下載檔案。 
 
 ## <a name="supported-capabilities"></a>支援的功能
 
-以下活動支援此 Web 表連接器:
+下列活動支援此 Web 資料表連接器：
 
-- 使用[支援的來源/接收器矩陣](copy-activity-overview.md)[複製活動](copy-activity-overview.md)
-- [尋找活動](control-flow-lookup-activity.md)
+- [複製活動](copy-activity-overview.md)與[支援的來源/接收矩陣](copy-activity-overview.md)
+- [查閱活動](control-flow-lookup-activity.md)
 
 您可以將資料從 Web 資料表資料庫複製到任何支援的接收資料存放區。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
 具體而言，這個 Web 資料表連接器支援**從 HTML 頁面擷取資料表內容**。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-若要使用此 Web 資料表連接器，您需要設定「自我裝載 Integration Runtime」。 有關詳細資訊[,請參閱自託管集成運行時](create-self-hosted-integration-runtime.md)文章。
+若要使用此 Web 資料表連接器，您需要設定「自我裝載 Integration Runtime」。 如需詳細資訊，請參閱[自我裝載 Integration Runtime](create-self-hosted-integration-runtime.md)一文。
 
 ## <a name="getting-started"></a>開始使用
 
@@ -64,7 +64,7 @@ ms.locfileid: "81410206"
 | authenticationType | 允許的值為：**Anonymous** (匿名)。 |是 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 如[必要條件](#prerequisites)所述，必須要有一個「自我裝載 Integration Runtime」。 |是 |
 
-**範例:**
+**範例：**
 
 ```json
 {
@@ -85,17 +85,17 @@ ms.locfileid: "81410206"
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-有關可用於定義數據集的節和屬性的完整清單,請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Web 資料表資料集所支援的屬性清單。
+如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 Web 資料表資料集所支援的屬性清單。
 
 若要從 Web 資料表複製資料，請將資料集的類型屬性設定為 **WebTable**。 以下是支援的屬性：
 
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 資料集的類型屬性必須設定為：**WebTable** | 是 |
-| path |包含資料表之資源的相對 URL。 |否。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
-| 索引 |資源中資料表的索引。 關於 HTML 頁中取得表索引的步驟,請參考[到 HTML 頁部份中的表索引](#get-index-of-a-table-in-an-html-page)。 |是 |
+| 路徑 |包含資料表之資源的相對 URL。 |否。 當路徑未指定時，則只會使用在連結服務定義中指定的 URL。 |
+| 索引 |資源中資料表的索引。 如需取得 HTML 網頁中資料表索引的步驟，請參閱[取得 html 網頁中資料表的索引](#get-index-of-a-table-in-an-html-page)一節。 |是 |
 
-**範例:**
+**範例：**
 
 ```json
 {
@@ -123,7 +123,7 @@ ms.locfileid: "81410206"
 
 若要從 Web 資料表複製資料，請將複製活動中的來源類型設定為 **WebSource**，不支援任何其他屬性。
 
-**範例:**
+**範例：**
 
 ```json
 "activities":[
@@ -183,9 +183,9 @@ ms.locfileid: "81410206"
 如果您使用的是 Excel 2013，請使用 [Microsoft Power Query for Excel](https://www.microsoft.com/download/details.aspx?id=39379) 來取得索引。 如需詳細資訊，請參閱 [連線至網頁](https://support.office.com/article/Connect-to-a-web-page-Power-Query-b2725d67-c9e8-43e6-a590-c0a175bd64d8) 一文。 如果您使用 [Microsoft Power BI for Desktop](https://powerbi.microsoft.com/desktop/)，步驟就很類似。
 
 
-## <a name="lookup-activity-properties"></a>尋找活動屬性
+## <a name="lookup-activity-properties"></a>查閱活動屬性
 
-要瞭解有關屬性的詳細資訊,請檢查[。](control-flow-lookup-activity.md)
+若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
 
 ## <a name="next-steps"></a>後續步驟
 如需 Azure Data Factory 中的複製活動所支援作為來源和接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)。
