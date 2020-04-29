@@ -1,14 +1,14 @@
 ---
-title: 準備 SSL IP 位址變更
+title: 為 SSL IP 位址變更做準備
 description: 如果您的 SSL IP 位址即將變更，請了解該怎麼做，以讓您的應用程式可在變更後繼續運作。
 ms.topic: article
 ms.date: 06/28/2018
 ms.custom: seodec18
 ms.openlocfilehash: dcfe11bcab25f6267a557de5faf7befab467bc29
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535718"
 ---
 # <a name="how-to-prepare-for-an-ssl-ip-address-change"></a>如何為 SSL IP 位址變更進行準備
@@ -25,7 +25,7 @@ ms.locfileid: "81535718"
 
 4.  在 [設定]**** 標題底下，按一下左側導覽中的 [SSL 設定]****。
 
-1. 在 TLS/SSL 綁定部分中,選擇主機名記錄。 在開啟的編輯器中，從 [SSL 類型]**** 下拉式功能表中選擇 [SNI SSL]****，然後按一下 [新增繫結]****。 當您看到作業成功訊息時，現有的 IP 位址已發佈。
+1. 在 [TLS/SSL 系結] 區段中，選取主機名稱記錄。 在開啟的編輯器中，從 [SSL 類型]**** 下拉式功能表中選擇 [SNI SSL]****，然後按一下 [新增繫結]****。 當您看到作業成功訊息時，現有的 IP 位址已發佈。
 
 6.  在 [SSL 繫結]**** 區段中，再次選取具有憑證的同一主機名稱列。 在開啟的編輯器中，這次從 [SSL 類型]**** 下拉式功能表中選擇 [以 IP 為主的 SSL]****，然後按一下 [新增繫結]****。 當您看到作業成功訊息時，您已取得新的 IP 位址。
 

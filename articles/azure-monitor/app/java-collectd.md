@@ -4,10 +4,10 @@ description: 使用 Application Insights 的 CollectD 外掛程式擴充您的 J
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537520"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd：Application Insights 中的 Linux 效能計量
@@ -82,7 +82,7 @@ ms.locfileid: "81537520"
 根據其 [手冊](https://collectd.org/wiki/index.php/First_steps)重新啟動 collectd。
 
 ## <a name="view-the-data-in-application-insights"></a>在 Application Insights 中檢視資料
-在應用程式見解資源中,打開[指標並添加圖表][metrics],從"自定義"類別中選擇要查看的指標。
+在您的 Application Insights 資源中，開啟 [[計量] 和 [新增圖表][metrics]]，從 [自訂] 類別選取您想要查看的度量。
 
 根據預設，會對收集度量來源的所有主機電腦彙總度量。 若要檢視每一主機的度量，在圖表的 [詳細資料] 刀鋒視窗中，開啟 [群組]，然後選擇依 CollectD-Host 群組。
 
@@ -115,7 +115,7 @@ ms.locfileid: "81537520"
 
 Application Insights 的「寫入」外掛程式與某些「讀取」外掛程式不相容。 有些外掛程式有時會在 Application Insights 外掛程式預期要有浮點數的位置傳送 "NaN"。
 
-症狀:收集的日誌顯示的錯誤,包括「AI:...語法錯誤:意外令牌 N"。
+徵兆： collectd 記錄檔會顯示錯誤，其中包括「AI： .。。SyntaxError：未預期的 token N」。
 
 因應措施：排除有問題的「寫入」外掛程式所收集的資料。 
 

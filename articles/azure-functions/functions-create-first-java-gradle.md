@@ -1,48 +1,48 @@
 ---
-title: 使用 Java 與 Gradle 將函數發布到 Azure
-description: 使用 Java 和 Gradle 創建 HTTP 觸發的函數並將其發表到 Azure。
+title: 使用 JAVA 和 Gradle 將函式發佈至 Azure
+description: 使用 JAVA 和 Gradle 建立 HTTP 觸發的函式，並將其發佈至 Azure。
 author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: 34aab24bf39e387715cfa5783b801d45ed488750
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732716"
 ---
-# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 Java 與 Gradle 建立函數並將其發表到 Azure
+# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>使用 JAVA 和 Gradle 建立函式並將其發佈至 Azure
 
-本文介紹如何使用 Gradle 命令列工具將 Java 函數專案構建併發佈到 Azure 函數。 完成時，您的函式程式碼會在 Azure 的[無伺服器主控方案](functions-scale.md#consumption-plan)中執行，並由 HTTP 要求所觸發。 
+本文說明如何使用 Gradle 命令列工具，建立 JAVA 函式專案，並將其發行至 Azure Functions。 完成時，您的函式程式碼會在 Azure 的[無伺服器主控方案](functions-scale.md#consumption-plan)中執行，並由 HTTP 要求所觸發。 
 
 > [!NOTE]
-> 如果Gradle不是您喜歡的開發工具,請查看我們類似的教程,為Java開發人員使用[Maven,IntelliJIDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions)和[Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)[VS代碼](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)。
+> 如果 Gradle 不是您慣用的開發工具，請參閱我們的類似教學課程，適用于使用[Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)、 [IntelliJ 概念](/azure/developer/java/toolkit-for-intellij/quickstart-functions)和[VS Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)的 JAVA 開發人員。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要使用 Java 開發函式，您必須安裝下列項目：
 
 - [Java Developer Kit](https://aka.ms/azure-jdks) 第 8 版
 - [Azure CLI]
 - [Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.666 版或更新版本
-- [格拉德爾](https://gradle.org/), 版本 4.10 及以上
+- [Gradle](https://gradle.org/)，4.10 版及更新版本
 
 您也需要作用中的 Azure 訂用帳戶。 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
 > JAVA_HOME 環境變數必須設定為 JDK 的安裝位置，才能完成本快速入門。
 
-## <a name="prepare-a-functions-project"></a>準備功能項目
+## <a name="prepare-a-functions-project"></a>準備函數專案
 
-使用以下指令複製例項目:
+使用下列命令來複製範例專案：
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
 cd azure-functions-samples-java/
 ```
 
-打開`build.gradle`下一節`appName`中 的將更改為唯一名稱,以避免在部署到 Azure 時出現域名衝突。 
+開啟`build.gradle` ，並將`appName`下一節中的變更為唯一名稱，以避免在部署至 Azure 時發生功能變數名稱衝突。 
 
 ```gradle
 azurefunctions {
@@ -64,7 +64,7 @@ azurefunctions {
 
 ## <a name="run-the-function-locally"></a>在本機執行函式
 
-執行以下指令以產生後執行函數專案:
+執行下列命令，以建立然後執行函式專案：
 
 ```bash
 gradle jar --info
@@ -84,13 +84,13 @@ Http Functions:
 ...
 </pre>
 
-使用新終端視窗中的以下 cURL 命令從命令列觸發函數:
+在新的終端機視窗中使用下列捲曲命令，從命令列觸發函式：
 
 ```bash
 curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
 ```
 
-預期輸出如下:
+預期的輸出如下所示：
 
 <pre>
 Hello AzureFunctions!
@@ -119,11 +119,11 @@ az login
 gradle azureFunctionsDeploy
 ```
 
-這會根據 build.gradle 檔中的值在 Azure 中建立以下資源:
+這會根據 gradle 檔案中的值，在 Azure 中建立下列資源：
 
 + 資源群組。 以您提供的 _resourceGroup_ 命名。
 + 儲存體帳戶。 Functions 所需。 此名稱會根據儲存體帳戶名稱需求隨機產生。
-+ App Service 方案。 在指定的_應用區域_中託管函數應用的無伺服器消耗計劃。 此名稱是隨機產生的。
++ App Service 方案。 在指定的_appRegion_中，為您的函數應用程式裝載無伺服器耗用量方案。 此名稱是隨機產生的。
 + 函式應用程式。 函式應用程式是您函式的部署和執行單位。 此名稱是您的 _appName _，其附加隨機產生的數字。 
 
 部署也會封裝專案檔案，並使用 [zip deployment](functions-deployment-technologies.md#zip-deploy) 將其部署至新的函式應用程式，並已啟用從套件執行模式。

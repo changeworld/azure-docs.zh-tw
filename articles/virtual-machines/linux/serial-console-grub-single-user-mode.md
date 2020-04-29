@@ -1,5 +1,5 @@
 ---
-title: 以 GRUB 和單使用者模式的 Azure 串列主控台
+title: 適用于 GRUB 和單一使用者模式的 Azure 序列主控台
 description: 針對 Azure 虛擬機器中的 grub 使用序列主控台。
 services: virtual-machines-linux
 author: asinn826
@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
 ms.openlocfilehash: 2aa7110ab4e52fdc5c3804bd27be5f41081fb435
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758502"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>使用序列主控台來存取 GRUB 與單一使用者模式
@@ -178,7 +178,7 @@ Oracle Linux 預設會啟用 GRUB。 若要進入 GRUB，請使用 `sudo reboot`
 依照上述適用於 RHEL 的指示來在 Oracle Linux 中啟用單一使用者模式。
 
 ## <a name="next-steps"></a>後續步驟
-* 主序列主控主控台Linux文件頁面[位於此處](serial-console.md)。
+* 主要序列主控台 Linux 檔頁面位於[這裡](serial-console.md)。
 * 使用「序列主控台」來進行[NMI 和 SysRq 呼叫](serial-console-nmi-sysrq.md)
 * 「序列主控台」也適用於 [Windows](../windows/serial-console.md) VM
 * 深入了解[開機診斷](boot-diagnostics.md)

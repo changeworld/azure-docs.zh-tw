@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: b984ee7ed662bf089e7bcb6fc7e948fb61ed1209
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733220"
 ---
 # <a name="device-to-cloud-communications-guidance"></a>Device-to-cloud communications guidance
@@ -34,9 +34,9 @@ ms.locfileid: "81733220"
 
 |  | 裝置到雲端的訊息 | 裝置對應項的回報屬性 | 檔案上傳 |
 | ---- | ------- | ---------- | ---- |
-| 狀況 | 遙測時間序列和警示。 例如，每隔 5 分鐘傳送一次的 256 KB 感應器資料批次。 | 可用的功能與條件。 例如，目前裝置連線能力模式，例如行動電話或 WiFi。 同步處理長時間執行的工作流程，例如組態與軟體更新。 | 媒體檔案。 大型 (通常已壓縮的) 遙測批次。 |
+| 案例 | 遙測時間序列和警示。 例如，每隔 5 分鐘傳送一次的 256 KB 感應器資料批次。 | 可用的功能與條件。 例如，目前裝置連線能力模式，例如行動電話或 WiFi。 同步處理長時間執行的工作流程，例如組態與軟體更新。 | 媒體檔案。 大型 (通常已壓縮的) 遙測批次。 |
 | 儲存和擷取 | 由 IoT 中樞暫時儲存 (最多 7 天)。 僅限循序讀取。 | 由裝置對應項中的 IoT 中樞儲存。 使用 [IoT 中樞查詢語言](iot-hub-devguide-query-language.md)擷取。 | 儲存在使用者提供的 Azure 儲存體帳戶中。 |
-| 大小 | 最多 256 KB 的訊息。 | 最大報告的屬性大小為 32 KB。 | Azure Blob 儲存體所支援的檔案大小上限。 |
+| Size | 最多 256 KB 的訊息。 | 報告屬性大小上限為 32 KB。 | Azure Blob 儲存體所支援的檔案大小上限。 |
 | 頻率 | 高。 如需詳細資訊，請參閱 [IoT 中樞限制](iot-hub-devguide-quotas-throttling.md)。 | 中。 如需詳細資訊，請參閱 [IoT 中樞限制](iot-hub-devguide-quotas-throttling.md)。 | 低。 如需詳細資訊，請參閱 [IoT 中樞限制](iot-hub-devguide-quotas-throttling.md)。 |
 | 通訊協定 | 適用於所有通訊協定。 | 可使用 MQTT 或 AMQP。 | 使用任何通訊協定時都可用，但裝置上必須是 HTTPS。 |
 

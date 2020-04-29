@@ -1,6 +1,6 @@
 ---
-title: 對應資料串流的代理金鑰轉換
-description: 如何使用 Azure 資料工廠的映射資料串流代理金鑰轉換產生順序鍵值
+title: 對應資料流程中的代理鍵轉換
+description: 如何使用 Azure Data Factory 的對應資料流程代理金鑰轉換來產生連續索引鍵值
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606302"
 ---
-# <a name="surrogate-key-transformation-in-mapping-data-flow"></a>對應資料串流的代理金鑰轉換 
+# <a name="surrogate-key-transformation-in-mapping-data-flow"></a>對應資料流程中的代理鍵轉換 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-使用代理項金鑰轉換向每行資料添加遞增鍵值。 這在星形架構分析數據模型中設計維度表時非常有用。 在星形架構中,維度表中的每個成員都需要一個非業務密鑰的唯一密鑰。
+使用 [代理鍵] 轉換，將遞增的索引鍵值加入至每個資料列。 在星狀架構分析資料模型中設計維度資料表時，這會很有用。 在星狀架構中，維度資料表中的每個成員都需要非業務索引鍵的唯一索引鍵。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
-![代理金鑰轉換](media/data-flow/surrogate.png "代理金鑰轉換")
+![代理鍵轉換](media/data-flow/surrogate.png "代理鍵轉換")
 
-**鍵列:** 生成的代理項鍵列的名稱。
+索引**鍵資料行：** 所產生之代理鍵資料行的名稱。
 
-**開始值:** 將生成的最低鍵值。
+**起始值：** 將產生的最低索引鍵值。
 
-## <a name="increment-keys-from-existing-sources"></a>從現有來源的增量鍵
+## <a name="increment-keys-from-existing-sources"></a>從現有來源遞增索引鍵
 
-要從來源中存在的值啟動序列,請使用代理金鑰轉換之後的衍生的轉換將兩個值一起新增:
+若要從存在於來源的值啟動您的順序，請在您的代理鍵轉換後使用「衍生的資料行」轉換，將兩個值相加：
 
-![SK 新增最大值](media/data-flow/sk006.png "代理金鑰轉換新增最大值")
+![SK 新增上限](media/data-flow/sk006.png "代理鍵轉換新增最大值")
 
-### <a name="increment-from-existing-maximum-value"></a>從現有最大值遞增
+### <a name="increment-from-existing-maximum-value"></a>從現有的最大值遞增
 
-要用前面的最大值設置鍵值的種子,可以使用兩種技術,具體取決於源數據的位置。
+若要使用先前的 max 來植入索引鍵值，有兩種技術可供您根據來源資料所在的位置來使用。
 
 #### <a name="database-sources"></a>資料庫來源
 
-使用 SQL 查詢選項從源中選擇 MAX()。 例如,`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+使用 [SQL 查詢] 選項，從來源中選取 MAX （）。 例如，`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
-![代理金鑰查詢](media/data-flow/sk002.png "代理金鑰轉換查詢")
+![代理鍵查詢](media/data-flow/sk002.png "代理金鑰轉換查詢")
 
 #### <a name="file-sources"></a>檔案來源
 
-如果以前的最大值位於檔案中,請使用集合的音數`max()`來取得以前的最大值:
+如果您先前的最大值是在檔案中， `max()`請使用「匯總」轉換中的函數來取得先前的最大值：
 
 ![代理金鑰檔案](media/data-flow/sk008.png "代理金鑰檔案")
 
-在這兩種情況下,都必須將傳入的新數據與包含前一個最大值的源聯接在一起。
+在這兩種情況下，您都必須將傳入的新資料與包含先前最大值的來源聯結在一起。
 
-![代理金鑰聯結](media/data-flow/sk004.png "代理金鑰聯結")
+![代理鍵聯結](media/data-flow/sk004.png "代理鍵聯結")
 
 ## <a name="data-flow-script"></a>資料流程指令碼
 
@@ -69,9 +69,9 @@ ms.locfileid: "81606302"
 
 ### <a name="example"></a>範例
 
-![代理金鑰轉換](media/data-flow/surrogate.png "代理金鑰轉換")
+![代理鍵轉換](media/data-flow/surrogate.png "代理鍵轉換")
 
-上述代理項金鑰配置的數據流腳本位於下面的代碼段中。
+上述代理金鑰設定的資料流程腳本位於下列程式碼片段中。
 
 ```
 AggregateDayStats
@@ -83,4 +83,4 @@ AggregateDayStats
 
 ## <a name="next-steps"></a>後續步驟
 
-這些示例使用[聯接](data-flow-join.md)和[派生列](data-flow-derived-column.md)轉換。
+這些範例使用[聯結](data-flow-join.md)和衍生的資料[行](data-flow-derived-column.md)轉換。

@@ -3,12 +3,12 @@ title: 監視在任何環境中執行的 JAVA 應用程式-Azure 監視器 Appli
 description: 應用程式效能監視，適用于使用 JAVA 獨立代理程式在任何環境上執行的 JAVA 應用程式，不需檢測應用程式。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 08a83fbc05276808b62a0391a5c4217cc09f6d00
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82508032"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81641871"
 ---
 # <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>設定適用于 Azure 監視器 Application Insights 的 JVM args JAVA 獨立代理程式
 
@@ -20,25 +20,15 @@ ms.locfileid: "82508032"
 
 ## <a name="spring-boot"></a>Spring Boot
 
-在之前`-jar`的某個`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`位置新增 JVM 參數，例如：
+在之前`-jar <myapp.jar>`的某個`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`位置新增 JVM 參數，例如：
 
 ```
 java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
 ```
 
-## <a name="spring-boot-via-docker-entry-point"></a>透過 Docker 進入點的彈簧開機
+> [!NOTE]
+> 放在之後`-jar <myapp.jar>`的引數會當做程式引數傳遞至應用程式。
 
-如果您使用*exec*格式，請將參數`"-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"`加入參數的參數清單`"-jar"`中，例如：
-
-```
-ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar", "-jar", "<myapp.jar>"]
-```
-
-如果您使用*shell*表單，請在之前`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar`的某個位置新增 JVM 參數，例如：
-
-```
-ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
-```
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 （Linux）
 

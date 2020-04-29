@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: mqtt
 ms.openlocfilehash: a7814970d4ffb051ab54c965d27394f925d79e59
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732336"
 ---
-# <a name="get-started-with-device-management-nodejs"></a>開始使用裝置管理(Node.js)
+# <a name="get-started-with-device-management-nodejs"></a>開始使用裝置管理（node.js）
 
 [!INCLUDE [iot-hub-selector-dm-getstarted](../../includes/iot-hub-selector-dm-getstarted.md)]
 
 本教學課程說明如何：
 
-* 使用[Azure 門戶](https://portal.azure.com)創建 IoT 中心並在 IoT 中心中創建設備識別。
+* 使用[Azure 入口網站](https://portal.azure.com)建立 IoT 中樞，並在您的 IoT 中樞中建立裝置身分識別。
 
 * 建立模擬裝置應用程式，其包含可將該裝置重新開機的直接方法。 直接方法是從雲端叫用。
 
@@ -34,13 +34,13 @@ ms.locfileid: "81732336"
 
 * **dmpatterns_getstarted_service.js**，它會在模擬裝置應用程式上呼叫直接方法，顯示回應，並顯示更新的報告屬性。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* Node.js 版本 10.0.x 或更高版本。 [準備您的開發環境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)說明如何在 Windows 或 Linux 上安裝本教學課程的 Node.js。
+* Node.js 10.0. x 版或更新版本。 [準備您的開發環境](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)說明如何在 Windows 或 Linux 上安裝本教學課程的 Node.js。
 
 * 使用中的 Azure 帳戶。 (如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。)
 
-* 請確定您的防火牆已開啟連接埠 8883。 本文中的設備示例使用 MQTT 協定,該協定通過埠 8883 進行通信。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
 
@@ -83,7 +83,7 @@ ms.locfileid: "81732336"
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. 新增 **connectionString** 變數，並用它來建立**用戶端**執行個體。  將`{yourdeviceconnectionstring}`占位符值替換為以前在[IoT 中心中註冊新設備](#register-a-new-device-in-the-iot-hub)中複製的設備連接字串。  
+5. 新增 **connectionString** 變數，並用它來建立**用戶端**執行個體。  將`{yourdeviceconnectionstring}`預留位置值取代為您先前在[IoT 中樞註冊新裝置](#register-a-new-device-in-the-iot-hub)中所複製的裝置連接字串。  
 
     ```javascript
     var connectionString = '{yourdeviceconnectionstring}';
@@ -150,7 +150,7 @@ ms.locfileid: "81732336"
 > [!NOTE]
 > 為了簡單起見，本教學課程不會實作任何重試原則。 在生產環境程式碼中，您應該如[暫時性錯誤處理](/azure/architecture/best-practices/transient-faults)一文中所建議，實作重試原則 (例如指數型輪詢)。
 
-## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中心連接字串
+## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
 
 [!INCLUDE [iot-hub-howto-device-management-shared-access-policy-text](../../includes/iot-hub-howto-device-management-shared-access-policy-text.md)]
 
@@ -183,7 +183,7 @@ ms.locfileid: "81732336"
     var Client = require('azure-iothub').Client;
     ```
 
-5. 新增以下變數聲明,並將`{iothubconnectionstring}`占位符值取代為以前在 Get [IoT 中心連接字串](#get-the-iot-hub-connection-string)複製的 IoT 中心連接字串:
+5. 新增下列變數宣告，並將`{iothubconnectionstring}`預留位置值取代為您先前在[取得 iot 中樞連接字串](#get-the-iot-hub-connection-string)中所複製的 iot 中樞連接字串：
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -247,7 +247,7 @@ ms.locfileid: "81732336"
 
 ## <a name="run-the-apps"></a>執行應用程式
 
-現在,您可以運行這些應用。
+您現在已經準備好執行應用程式。
 
 1. 在 **manageddevice** 資料夾中，於命令提示字元中執行下列命令以開始接聽重新啟動直接方法。
 
@@ -261,14 +261,14 @@ ms.locfileid: "81732336"
     node dmpatterns_getstarted_service.js
     ```
 
-3. 在控制台中可以看到設備對重新啟動直接方法的回應和重新啟動狀態。
+3. 您會在主控台中看到重新開機直接方法和重新開機狀態的裝置回應。
 
-   下面顯示了對服務傳送的重新啟動直接方法的裝置回應:
+   以下顯示服務所傳送之重新開機直接方法的裝置回應：
 
-   ![管理裝置應用輸出](./media/iot-hub-node-node-device-management-get-started/device.png)
+   ![manageddevice 應用程式輸出](./media/iot-hub-node-node-device-management-get-started/device.png)
 
-   下面顯示了服務觸發重新啟動並輪詢設備孿生的時間:
+   以下顯示的服務會觸發重新開機，並輪詢裝置對應項的上次重新開機時間：
 
-   ![觸發重新啟動裝置應用輸出](./media/iot-hub-node-node-device-management-get-started/service.png)
+   ![triggerrebootondevice 應用程式輸出](./media/iot-hub-node-node-device-management-get-started/service.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

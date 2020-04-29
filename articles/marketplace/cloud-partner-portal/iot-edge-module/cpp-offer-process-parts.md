@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: e9116e5cdb3bd9ed61205ceabd4d51c96c6aadc2
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82144659"
 ---
 # <a name="iot-edge-module-offer-publishing-overview"></a>IoT Edge 模組供應項目發佈概觀
@@ -37,7 +37,7 @@ ms.locfileid: "82144659"
 
 以下文章概括了 IoT Edge 模組供應項目的各主要部分細項。
 
-- [必要條件](./cpp-prerequisites.md) <br>本文列出建立或發行的 IoT Edge 模組前需符合的技術和商業需求。
+- [先決條件](./cpp-prerequisites.md) <br>本文列出建立或發行的 IoT Edge 模組前需符合的技術和商業需求。
 - [預備 IoT Edge 模組技術資產](./cpp-create-technical-assets.md) <br>本文說明如何準備 IoT Edge 模組之技術資產。 這些資產必須符合所有技術準則，才能將 IoT Edge 模組發佈至 Microsoft Azure Marketplace。
 - [建立 IoT Edge 模組供應項目](./cpp-create-offer.md) <br>本文列出使用 [Cloud Partner 入口網站](https://cloudpartner.azure.com) 建立新 IoT Edge 供應項目所需步驟。
 - [發佈 IoT Edge 模組供應項目](./cpp-publish-offer.md)<br> 本文說明如何將供應項目提交至 Microsoft Azure Marketplace 並發佈。

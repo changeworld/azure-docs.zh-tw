@@ -9,23 +9,23 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: b2609a069872ec55ac9068fadcbb3f312d68a630
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680827"
 ---
-本節介紹如何為 Direct 對等互連執行以下修改操作:
+本節說明如何針對直接對等互連執行下列修改作業：
 
-* 添加直接對等互連連接。
-* 刪除直接對等互連連接。
-* 升級或降級活動連接上的頻寬。
-* 在活動連接上添加 IPv4 或 IPv6 會話。
-* 在活動連接上刪除 IPv4 或 IPv6 會話。
+* 新增直接對等互連連線。
+* 移除直接對等互連連線。
+* 升級或降級作用中連接的頻寬。
+* 在使用中連接上新增 IPv4 或 IPv6 會話。
+* 移除作用中連接上的 IPv4 或 IPv6 會話。
 
 ### <a name="add-direct-peering-connections"></a>新增直接對等互連連線
 
-此示例介紹如何向現有 Direct 對等互連添加連接。
+此範例說明如何將連接新增至現有的直接對等互連。
 
 ```powershell
 
@@ -44,9 +44,9 @@ $directPeering.Connections.Add($connection)
 $directPeering | Update-AzPeering
 ```
 
-### <a name="remove-direct-peering-connections"></a>刪除直接對等連結
+### <a name="remove-direct-peering-connections"></a>移除直接對等互連連線
 
-PowerShell 目前不支援刪除連接。 有關詳細資訊,請與[微軟對等互連](mailto:peeringexperience@microsoft.com)。
+目前 PowerShell 不支援移除連接。 如需詳細資訊，請聯絡[Microsoft 對等互連](mailto:peeringexperience@microsoft.com)。
 
 <!--
 ```powershell
@@ -56,9 +56,9 @@ $directPeering | Update-AzPeering
 ```
 -->
 
-### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>在活動連線上升級或降級頻寬
+### <a name="upgrade-or-downgrade-bandwidth-on-active-connections"></a>升級或降級作用中連接的頻寬
 
-此示例介紹如何向現有 Direct 連接添加 10 Gbps。
+此範例說明如何將 10 Gbps 新增至現有的直接連接。
 
 ```powershell
 
@@ -68,9 +68,9 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>新增 IPv4 或 IPv6 工作階段
+### <a name="add-ipv4-or-ipv6-sessions-on-active-connections"></a>在使用中連接上新增 IPv4 或 IPv6 會話
 
-此示例介紹如何在僅具有 IPv4 會話的現有 Direct 連接上添加 IPv6 會話。 
+此範例說明如何在只有 IPv4 會話的現有直接連線上新增 IPv6 會話。 
 
 ```powershell
 
@@ -80,6 +80,6 @@ $directPeering | Update-AzPeering
 
 ```
 
-### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>在作用中移除 IPv4 或 IPv6 工作階段
+### <a name="remove-ipv4-or-ipv6-sessions-on-active-connections"></a>移除作用中連接的 IPv4 或 IPv6 會話
 
-PowerShell 目前不支援從現有連接中刪除 IPv4 或 IPv6 工作階段。 有關詳細資訊,請與[微軟對等互連](mailto:peeringexperience@microsoft.com)。
+目前 PowerShell 不支援從現有的連線移除 IPv4 或 IPv6 會話。 如需詳細資訊，請聯絡[Microsoft 對等互連](mailto:peeringexperience@microsoft.com)。

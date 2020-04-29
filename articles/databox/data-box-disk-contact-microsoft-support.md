@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: alkohli
 ms.openlocfilehash: a3d533080af373ca209a9b393d02d1606d7cb22d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461730"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>開啟 Azure 資料箱的支援票證
 
-本文適用於 Azure 資料框、Azure 數據框重和 Azure 數據框磁碟,所有這些磁碟都由 Azure 數據框服務管理。 如果您在 Azure 資料箱服務上遇到任何問題，便可以建立技術支援服務要求。 本文將引導您：
+本文適用于 Azure 資料箱、Azure Data Box Heavy 和 Azure 資料箱磁碟，這些都是由 Azure 資料箱服務所管理。 如果您在 Azure 資料箱服務上遇到任何問題，便可以建立技術支援服務要求。 本文將引導您：
 
 * 如何建立支援要求。
 * 如何在入口網站上管理支援要求的生命週期。
@@ -33,8 +33,8 @@ ms.locfileid: "81461730"
 2. 在 [新增支援要求]**** 中，選取 [基本]****。 在 [基本]**** 中，執行下列步驟：
 
     1. 從 [問題類型]**** 下拉式清單中，選取 [技術]****。
-    2. 選擇您的**訂閱**。
-    3. 在 [服務]**** 底下，勾選 [所有服務]****。 從下拉清單中,選擇 **「資料框**」。 
+    2. 選擇您的**訂**用帳戶。
+    3. 在 [服務]**** 底下，勾選 [所有服務]****。 從下拉式清單中，選取 [**資料箱**]。 
     4. 指定您的**支援方案**。
     5. 按 [下一步]  。
 
@@ -56,8 +56,8 @@ ms.locfileid: "81461730"
 4. 在 [新增支援要求]**** 中，按一下 [步驟 3 連絡人資訊]****。 在 [連絡人資訊]**** 中，執行下列步驟：
 
    1. 在 [連絡人選項]**** 中，提供您偏好的連絡方法 (電話或電子郵件) 以及語言。 會根據您的訂用帳戶方案自動選擇回應時間。
-   2. 在**聯繫資訊**中,提供您的姓名、電子郵件、可選連絡人、國家/地區。 選取 [儲存連絡人變更，以供後續支援要求使用]****。
-   3. 按一下頁面底部的 [新增]  。
+   2. 在 [**連絡人資訊**] 中，提供您的姓名、電子郵件、選用連絡人、國家/地區。 選取 [儲存連絡人變更，以供後續支援要求使用]****。
+   3. 按一下 [建立]  。
 
        ![連絡人資訊](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
@@ -83,5 +83,5 @@ ms.locfileid: "81461730"
 ## <a name="next-steps"></a>後續步驟
 
 了解如何[針對資料箱磁碟的相關問題進行疑難排解](data-box-disk-troubleshoot.md)。
-瞭解如何[排除與資料框相關的問題](data-box-troubleshoot.md)。
-瞭解如何[解決與資料盒 Blob 儲存相關的問題](data-box-troubleshoot-rest.md)。
+瞭解如何針對[與資料箱相關的問題進行疑難排解](data-box-troubleshoot.md)。
+瞭解如何針對[與資料箱 Blob 儲存體相關的問題進行疑難排解](data-box-troubleshoot-rest.md)。

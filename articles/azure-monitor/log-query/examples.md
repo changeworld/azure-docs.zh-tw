@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 18cd74ac9298b7dd058de2b224f677ec0d8f2d64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480278"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Azure 監視器記錄查詢範例
@@ -229,7 +229,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>使用活動識別碼計算安全性事件的數目
 
 
-此示例依賴于**活動**列的固定結構\<：ID\>-\<名稱\>。
+這個範例依賴**活動**資料行的固定結構： \<識別碼\>-\<名稱\>。
 它會將**活動**的值剖析為兩個新的資料行，並計算每個**活動識別碼**的發生次數。
 
 ```Kusto
@@ -270,7 +270,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>剖析活動名稱和識別碼
-以下兩個示例依賴于**活動**列的固定結構\<：ID\>-\<名稱\>。 第一個範例使用**剖析**運算子來將值指派給兩個新的資料行：**activityID** 和 **activityDesc**。
+下列兩個範例依賴**活動**資料行的固定結構： \<識別碼\>-\<名稱\>。 第一個範例使用**剖析**運算子來將值指派給兩個新的資料行：**activityID** 和 **activityDesc**。
 
 ```Kusto
 SecurityEvent
@@ -373,13 +373,13 @@ let suspicious_users_that_later_logged_in =
 suspicious_users_that_later_logged_in
 ```
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
-資料類型`Usage`可用於按解決方案或資料類型跟蹤引入的資料量。 還有其他技術可以按[電腦](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer)或[Azure 訂閱、資源組或資源](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)來研究引入的資料卷。
+`Usage`資料類型可以用來依解決方案或資料類型追蹤內嵌資料量。 還有其他技術可依[電腦](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-computer)或[Azure 訂用帳戶、資源群組或資源](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#data-volume-by-azure-resource-resource-group-or-subscription)來研究內嵌資料量。
 
 #### <a name="data-volume-by-solution"></a>依方案分類的資料量
 
-用於查看上個月（不包括最後一個部分）的計費資料量的查詢是：
+過去一個月（不包括最後一天），用來依解決方案來查看計費資料量的查詢如下：
 
 ```kusto
 Usage 
@@ -389,11 +389,11 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-請注意，子句`where IsBillable = true`從某些沒有引入費用的解決方案中篩選出資料類型。  此外，使用`TimeGenerated`的 子句還只是為了確保 Azure 門戶中的查詢體驗將回顧到預設 24 小時之外。 使用"使用方式"資料類型時，`StartTime`並`EndTime`表示顯示結果的時間桶。 
+請注意，子句`where IsBillable = true`會從沒有任何內嵌費用的特定解決方案中篩選出資料類型。  和`TimeGenerated`的子句，只是為了確保 Azure 入口網站中的查詢體驗會看起來超過預設的24小時。 使用 Usage 資料類型時， `StartTime`和`EndTime`代表顯示結果的時間值區。 
 
-#### <a name="data-volume-by-type"></a>按類型進行的資料量
+#### <a name="data-volume-by-type"></a>資料量（依類型）
 
-您可以進一步鑽取以查看資料類型的資料趨勢：
+您可以進一步向下切入，以查看依資料類型的資料趨勢：
 
 ```kusto
 Usage 
@@ -403,7 +403,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
 ```
 
-或者查看按解決方案和上個月類型的表，
+或者，若要依解決方案查看資料表，並輸入上個月的類型，
 
 ```kusto
 Usage 

@@ -9,47 +9,47 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 00c24212706555667ad4680c086ece24f15ca59a
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678542"
 ---
-1. 選擇 **「建立資源** > **檢視所有**」。
+1. 選取 [**建立資源** > ] [**全部查看**]。
 
     > [!div class="mx-imgBorder"]
-    > ![搜尋對等互連](../media/setup-seeall.png)
+    > ![搜尋對等](../media/setup-seeall.png)
 
-1. 在搜尋框中搜尋**對等,** 然後選擇鍵盤上的 **「輸入**」 。 從結果中選擇**對等資源**。
+1. 搜尋 [搜尋] 方塊中的 [對**等互連**]，然後選取鍵盤上的**Enter 鍵**。 從結果中，選取 [對**等互連**] 資源。
 
     > [!div class="mx-imgBorder"]
     > ![啟動對等互連](../media/setup-launch.png)
 
-1. **對等互連**開始后,請查看頁面以瞭解詳細資訊。 準備就緒后,選擇 **"創建**"。
+1. 對**等互連**啟動之後，請參閱頁面以瞭解詳細資料。 當您準備好時，請選取 [**建立**]。
 
     > [!div class="mx-imgBorder"]
     > ![建立對等互連](../media/setup-create.png)
 
-1. 在「**創建對等」** 頁上,「**基本」** 選項卡上填寫此處所示的框。
+1. 在 [**建立對等互連**] 頁面的 [**基本**] 索引標籤上，填寫方塊，如下所示。
 
     > [!div class="mx-imgBorder"]
-    > ![對等基礎知識選項卡](../media/setup-basics-tab.png)
+    > ![對等互連基本索引標籤](../media/setup-basics-tab.png)
 
-    * 選擇 Azure**訂閱**。
-    * 對於**資源組**,可以從下拉清單中選擇現有資源組,也可以通過選擇 **"創建新**"來創建新組。 我們將為此示例創建新的資源組。
-    * **名稱**對應於資源名稱,可以是您選擇的任何名稱。
-    * 如果選擇現有資源群組,則自動選擇**區域**。 如果選擇創建新資源組,還需要選擇要資源駐留的 Azure 區域。
+    * 選取您的 Azure**訂**用帳戶。
+    * 針對 [**資源群組**]，您可以從下拉式清單中選擇現有的資源群組，或選取 **[新建]** 來建立新的群組。 我們會為此範例建立新的資源群組。
+    * **名稱**會對應至資源名稱，而且可以是您選擇的任何專案。
+    * 如果您選擇現有的資源群組，則會句子**區域**。 如果您選擇建立新的資源群組，您也必須選擇您想要資源所在的 Azure 區域。
 
         > [!NOTE]
-        > 資源組所在的區域與要與 Microsoft 創建對等互連的位置無關。 但是,最佳做法是在駐留在最近的 Azure 區域的資源組中組織對等資源。 例如,對於 Ashburn 中的對等互連,可以在美國東部或 US2 東部創建資源組。
+        > 資源群組所在的區域與您要建立與 Microsoft 的對等互連的位置無關。 但最佳做法是在位於最接近 Azure 區域的資源群組內，組織您的對等互連資源。 例如，針對阿什本中的對等互連，您可以在「美國東部」或「東部美國2」中建立資源群組。
 
-    * 在 **『ASN』框中選擇 ASN。**
+    * 在 [**對等 ASN** ] 方塊中選取您的 ASN。
 
         > [!IMPORTANT]
-        > * 在提交對等請求之前,您只能選擇具有"已批准狀態"的 ASN。 如果您剛剛提交了 PeerAsn 請求,請等待 12 小時左右,等待 ASN 關聯獲得批准。 如果您選擇的 ASN 正在等待驗證,您將看到一條錯誤消息。 
-        > * 如果您沒有看到需要選擇的 ASN,請檢查是否選擇了正確的訂閱。 如果是這樣,請檢查是否已通過使用[對等方 ASN 創建](../howto-subscription-association-portal.md)對等 Asn 到 Azure 訂閱。
+        > * 在提交對等互連要求之前，您只能選擇 ValidationState 為已核准的 ASN。 如果您剛提交 PeerAsn 要求，請等待12小時，或讓 ASN 關聯獲得核准。 如果您選取的 ASN 正在等待驗證，您會看到一則錯誤訊息。 
+        > * 如果您沒有看到您需要選擇的 ASN，請確認您選取的是正確的訂用帳戶。 若是如此，請使用[將對等 ASN 與 Azure 訂](../howto-subscription-association-portal.md)用帳戶建立關聯，檢查您是否已建立 PeerAsn。
 
         > [!div class="mx-imgBorder"]
-        > ![填寫的對等基礎知識](../media/setup-direct-basics-filled-tab.png)
+        > ![對等互連基本知識已填入](../media/setup-direct-basics-filled-tab.png)
 
-    * 選擇 **「下一步 :配置>** 以繼續。
+    * 選取 **[下一步]： [設定] >** 以繼續。

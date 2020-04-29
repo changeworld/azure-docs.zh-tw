@@ -1,6 +1,6 @@
 ---
-title: Azure 突觸的列級安全性是什麼?
-description: 列級安全性允許客戶根據使用者的執行上下文或組成員身份控制對資料庫表列的訪問,簡化應用程式中安全設計和編碼,並允許您對列存取實施限制。
+title: 什麼是適用于 Azure Synapse 的資料行層級安全性？
+description: 資料行層級安全性可讓客戶根據使用者的執行內容或群組成員資格來控制資料庫資料表資料行的存取權，簡化應用程式中安全性的設計和編碼，並讓您能夠在資料行存取上執行限制。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -13,22 +13,22 @@ ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
 tags: azure-synapse
 ms.openlocfilehash: b0a783ad5db86ca783ff1cebceec8d77ab528047
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687929"
 ---
 # <a name="column-level-security"></a>資料行層級安全性
 
-列級安全性允許客戶根據使用者的執行上下文或組成員身份控制對表列的訪問。
+資料行層級安全性可讓客戶根據使用者的執行內容或群組成員資格來控制資料表資料行的存取權。
 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
-自發佈此視頻以來[,行級別安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)已可用於 Azure 同步。
+由於這段影片已張貼到 Azure Synapse 的資料[列層級安全性](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
-列級安全性簡化了應用程式中安全性的設計和編碼,允許您限制列訪問以保護敏感數據。 例如，確保特定使用者只能存取其部門相關資料表的特定資料行。 存取限制邏輯是位於資料庫層，而不是離開這些資料，到另一個應用程式層。 每次嘗試從任何層訪問數據時,資料庫都會應用訪問限制。 通過減少整體安全系統的表面積,此限制使您的安全性更加可靠和可靠。 此外,列級安全性還消除了引入視圖以篩選出列以對使用者施加訪問限制的需要。
+資料行層級安全性可簡化應用程式中安全性的設計和編碼，讓您可以限制資料行存取來保護機密資料。 例如，確保特定使用者只能存取其部門相關資料表的特定資料行。 存取限制邏輯是位於資料庫層，而不是離開這些資料，到另一個應用程式層。 資料庫會在每次嘗試從任何層存取資料時套用存取限制。 這項限制藉由減少整體安全性系統的介面區，讓您的安全性變得更可靠且更穩固。 此外，資料行層級安全性也不需要引入視圖來篩選出資料行，以限制使用者的存取權。
 
-您可以使用[GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) T-SQL 語句實現列級安全性。 透過這個機制，即可支援 SQL 和 Azure Active Directory (AAD) 驗證。
+您可以使用[GRANT](/sql/t-sql/statements/grant-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) t-sql 語句來執行資料行層級安全性。 透過這個機制，即可支援 SQL 和 Azure Active Directory (AAD) 驗證。
 
 ![cls](./media/column-level-security/cls.png)
 
@@ -52,9 +52,9 @@ GRANT <permission> [ ,...n ] ON
 
 ## <a name="example"></a>範例
 
-下面的範例簡用如何`TestUser`限制`SSN``Membership`存取 表的欄:
+下列範例顯示如何限制`TestUser`存取`SSN` `Membership`資料表的資料行：
 
-使用`Membership`儲存式社會保險號的 SSN 欄建立表:
+建立`Membership`含有用來儲存社會安全號碼之 SSN 資料行的資料表：
 
 ```sql
 CREATE TABLE Membership
@@ -66,13 +66,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-允許`TestUser`存取除 SSN 列之外的所有欄,該列具有敏感資料:
+除了`TestUser` [SSN] 資料行以外，[允許] 可以存取所有的資料行，其中包含敏感性資料：
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-如果查詢包含`TestUser`SSN 欄,則執行的查詢將失敗:
+以為執行`TestUser`的查詢若包含 SSN 資料行，將會失敗：
 
 ```sql
 SELECT * FROM Membership;
@@ -83,7 +83,7 @@ SELECT * FROM Membership;
 
 ## <a name="use-cases"></a>使用案例
 
-目前如何使用列級安全性的一些範例:
+目前如何使用資料行層級安全性的一些範例：
 
 - 某家金融服務公司只允許帳戶管理員能夠存取客戶社會安全號碼 (SSN)、電話號碼和其他個人識別資訊 (PII)。
-- 醫療保健提供者只允許醫生和護士訪問敏感的醫療記錄,同時阻止計費部門的成員查看此數據。
+- 醫療保健提供者只允許醫生和護士存取機密醫療記錄，同時防止帳單部門的成員看到此資料。

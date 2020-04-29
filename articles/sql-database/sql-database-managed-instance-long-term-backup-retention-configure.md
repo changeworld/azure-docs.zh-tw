@@ -1,6 +1,6 @@
 ---
-title: 託管實例:長期備份保留(PowerShell)
-description: 瞭解如何使用 PowerShell 在單獨的 Azure Blob 儲存容器上儲存和還原自動備份。
+title: 受控實例：長期備份保留（PowerShell）
+description: 瞭解如何使用 PowerShell 在 Azure SQL Database 受控實例的個別 Azure Blob 儲存體容器上儲存和還原自動備份。
 services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
@@ -13,43 +13,43 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/19/2020
 ms.openlocfilehash: 24eacb555704593fe44bc2d949de44de163345bc
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81677110"
 ---
-# <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL 資料庫託管實例長期備份保留 (PowerShell)
+# <a name="manage-azure-sql-database-managed-instance-long-term-backup-retention-powershell"></a>管理 Azure SQL Database 受控實例長期備份保留（PowerShell）
 
-在 Azure SQL 資料庫託管實例中,可以將[長期備份保留](sql-database-long-term-retention.md#managed-instance-support)策略 (LTR) 配置為有限的公共預覽功能。 這允許您自動將資料庫備份保留在單獨的 Azure Blob 儲存容器中長達 10 年。 然後,您可以使用這些備份與 PowerShell 一起恢復資料庫。
+在 Azure SQL Database 受控實例中，您可以設定[長期備份保留](sql-database-long-term-retention.md#managed-instance-support)原則（LTR）做為有限的公開預覽功能。 這可讓您自動將資料庫備份保留在不同的 Azure Blob 儲存體容器中，最多可達10年。 然後，您可以使用這些備份搭配 PowerShell 來復原資料庫。
 
    > [!IMPORTANT]
-   > 託管實例的 LTR 當前處於有限的預覽狀態,可按案例針對 EA 和 CSP 訂閱使用。 要請求註冊,請在支援主題 **「備份、還原和業務連續性/長期備份保留**」下創建[Azure 支援票證](https://azure.microsoft.com/support/create-ticket/)。 
+   > 針對受控實例，LTR 目前處於有限預覽狀態，並以案例為依據，適用于 EA 和 CSP 訂用帳戶。 若要要求註冊，請在支援主題 [**備份]、[還原] 和 [商務持續性/長期備份保留**] 底下建立[Azure 支援票證](https://azure.microsoft.com/support/create-ticket/)。 
 
 
 下列各節說明如何使用 PowerShell 來設定長期備份保留、檢視 Azure SQL 儲存體中的備份，以及從 Azure SQL 儲存體中的備份還原。
 
 ## <a name="rbac-roles-to-manage-long-term-retention"></a>管理長期保留的 RBAC 角色
 
-對於**取得 AzSqlInstance 資料庫長期保留備份**和**還原-AzSqlInstance 資料庫**,您需要具有以下角色之一:
+針對**AzSqlInstanceDatabaseLongTermRetentionBackup**和**還原 AzSqlInstanceDatabase**，您必須具有下列其中一個角色：
 
-- 訂閱擁有者角色或
-- 託管實例參與者角色或
-- 具有以下權限的自訂角色:
+- 訂用帳戶擁有者角色或
+- 受控執行個體參與者角色或
+- 具有下列許可權的自訂角色：
   - `Microsoft.Sql/locations/longTermRetentionManagedInstanceBackups/read`
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionManagedInstanceBackups/read`
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/read`
 
-對於**刪除 AzSqlInstance 資料庫長期保留備份**,您需要具有以下角色之一:
+針對**AzSqlInstanceDatabaseLongTermRetentionBackup**，您必須具有下列其中一個角色：
 
-- 訂閱擁有者角色或
-- 具有以下權限的自訂角色:
+- 訂用帳戶擁有者角色或
+- 具有下列許可權的自訂角色：
   - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
 > [!NOTE]
-> 託管實例參與者角色無權刪除 LTR 備份。
+> 受控執行個體參與者角色沒有刪除 LTR 備份的許可權。
 
-可以在*訂閱*或*資源組*作用域中授予 RBAC 許可權。 但是,要造訪屬於丟棄實例的 LTR 備份,必須在該實例的*訂閱*範圍內授予許可權。
+可以在*訂*用帳戶或*資源群組*範圍中授與 RBAC 許可權。 不過，若要存取屬於已卸載實例的 LTR 備份，則必須在該實例的*訂*用帳戶範圍中授與許可權。
 
 - `Microsoft.Sql/locations/longTermRetentionManagedInstances/longTermRetentionDatabases/longTermRetentionManagedInstanceBackups/delete`
 
@@ -78,7 +78,7 @@ Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceNa
 
 ## <a name="view-ltr-policies"></a>檢視 LTR 原則
 
-此範例展示如何在實體中列出 LTR 政策
+這個範例示範如何列出實例內的 LTR 原則
 
 ```powershell
 # gets the current version of LTR policy for the database
@@ -97,7 +97,7 @@ Set-AzSqlInstanceDatabaseBackupLongTermRetentionPolicy -InstanceName $instanceNa
 
 ## <a name="view-ltr-backups"></a>檢視 LTR 備份
 
-此示例演示如何在實例中列出 LTR 備份。
+這個範例會示範如何列出實例內的 LTR 備份。
 
 ```powershell
 # get the list of all LTR backups in a specific Azure region
@@ -128,7 +128,7 @@ Remove-AzSqlInstanceDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.Resou
 ```
 
 > [!IMPORTANT]
-> 刪除 LTR 備份，便無法回復。 要在實體被刪除後刪除 LTR 備份,您必須具有訂閱範圍許可權。 您可以通過篩選操作「刪除長期保留備份」來設置有關 Azure 監視器中每個刪除的通知。 活動記錄包含提出要求的人員和時間資訊。 如需詳細指示，請參閱[建立活動記錄警示](../azure-monitor/platform/alerts-activity-log.md)。
+> 刪除 LTR 備份，便無法回復。 若要在刪除實例之後刪除 LTR 備份，您必須擁有「訂用帳戶範圍」許可權。 您可以藉由篩選「刪除長期保留備份」作業，設定 Azure 監視器中每個刪除的通知。 活動記錄包含提出要求的人員和時間資訊。 如需詳細指示，請參閱[建立活動記錄警示](../azure-monitor/platform/alerts-activity-log.md)。
 
 ## <a name="restore-from-ltr-backups"></a>從 LTR 備份還原
 
@@ -141,7 +141,7 @@ Restore-AzSqlInstanceDatabase -FromLongTermRetentionBackup -ResourceId $ltrBacku
 ```
 
 > [!IMPORTANT]
-> 要在刪除實例後從 LTR 備份進行還原,您必須具有實例訂閱的許可權範圍,並且該訂閱必須處於活動狀態。 您還必須省略可選的 -資源組名稱參數。
+> 若要在刪除實例之後從 LTR 備份還原，您必須擁有該實例之訂閱的許可權，而且該訂閱必須是作用中。 您也必須省略選擇性的-ResourceGroupName 參數。
 
 > [!NOTE]
 > 從這裡開始，您可以使用 SQL Server Management Studio 連線到已還原的資料庫來執行所需的工作，例如從還原的資料庫擷取一堆資料來複製到現有的資料庫，或刪除現有的資料庫，並將還原的資料庫重新命名為現有的資料庫名稱。 請參閱[還原時間點](sql-database-recovery-using-backups.md#point-in-time-restore)。

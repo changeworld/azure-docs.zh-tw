@@ -8,10 +8,10 @@ ms.date: 03/13/2020
 ms.service: service-bus-messaging
 ms.topic: article
 ms.openlocfilehash: 33e6ce1d5feb50080b00fcbecdeb9e512980eab6
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82141939"
 ---
 # <a name="integrate-azure-service-bus-with-azure-private-link-preview"></a>整合 Azure 服務匯流排與 Azure 私人連結（預覽）

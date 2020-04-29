@@ -8,10 +8,10 @@ ms.date: 10/31/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 71a81c4a3a57c206540e20f7c7e58949c552e582
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128921"
 ---
 # <a name="setup-diagnostic-logging"></a>設定診斷記錄
@@ -78,10 +78,10 @@ ms.locfileid: "82128921"
 
 2. 在 [診斷設定]**** 中，指定下列選項： 
 
-    * [名稱]  。 輸入要建立之記錄的名稱。
+    * **名稱**。 輸入要建立之記錄的名稱。
 
-    * **封存至儲存體帳戶**。 若要使用此選項，您需要可以連接的現有儲存體帳戶。 請參閱[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。 請依照指示建立資源管理員、一般用途的帳戶，然後在返回入口網站上的此頁面時，選取您的儲存體帳戶。 新建立的儲存體帳戶可能在數分鐘後才會出現在下拉式功能表中。
-    * **串流處理至事件中樞**。 若要使用此選項，您需要可以連接的現有事件中樞命名空間和事件中樞。 若想深入了解，請參閱[使用 Azure 入口網站來建立事件中樞命名空間和事件中樞](../event-hubs/event-hubs-create.md)。 然後返回入口網站的此頁面選取事件中樞命名空間和原則名稱。
+    * 封存**至儲存體帳戶**。 若要使用此選項，您需要可以連接的現有儲存體帳戶。 請參閱[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。 請依照指示建立資源管理員、一般用途的帳戶，然後在返回入口網站上的此頁面時，選取您的儲存體帳戶。 新建立的儲存體帳戶可能在數分鐘後才會出現在下拉式功能表中。
+    * **串流至事件中樞**。 若要使用此選項，您需要可以連接的現有事件中樞命名空間和事件中樞。 若想深入了解，請參閱[使用 Azure 入口網站來建立事件中樞命名空間和事件中樞](../event-hubs/event-hubs-create.md)。 然後返回入口網站的此頁面選取事件中樞命名空間和原則名稱。
     * **傳送至 Azure 監視器 (Log Analytics 工作區)**。 若要使用此選項，請使用現有的工作區，或是在入口網站中[建立新的工作區](../azure-monitor/learn/quick-create-workspace.md)資源。 如需有關如何檢視記錄的詳細資訊，請參閱本文中的[檢視 Log Analytics 工作區中的記錄](#view-logs-in-log-analytics-workspace)。
 
     * **引擎**。 選取此選項可記錄 xEvents。 如果您要封存至儲存體帳戶，您可以選取資源記錄檔的保留週期。 保留期限過後，就會自動刪除記錄。
@@ -215,7 +215,7 @@ window
 
 在本快速教學課程中，您可以在與 Analysis Service 伺服器相同的訂用帳戶和資源群組中，建立儲存體帳戶。 接著，您可以使用 Set-azdiagnosticsetting 來開啟診斷記錄，並將輸出傳送至新的儲存體帳戶。
 
-### <a name="prerequisites"></a>必要條件
+### <a name="prerequisites"></a>先決條件
 若要完成本教學課程，您必須具備下列資源：
 
 * 現有的 Azure Analysis Services 伺服器。 如需建立伺服器資源的指示，請參閱 [在 Azure 入口網站中建立伺服器](analysis-services-create-server.md)，或[使用 PowerShell 建立 Azure Analysis Services 伺服器](analysis-services-create-powershell.md)。

@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: bceea53e6b177940305a2dc77f2a6ecfa37f277a
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617904"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客戶資料功能
@@ -40,7 +40,7 @@ Azure Key Vault 會在建立或更新保存庫、金鑰、祕密、憑證及受�
 
 用來建立保存庫、金鑰、祕密、憑證及受控儲存體帳戶的相同 REST API、入口網站體驗和 SDK，也可以用來更新和刪除這些物件。
 
-軟刪除允許您在刪除後 90 天內恢復已刪除的資料。 使用軟刪除時,通過執行清除操作,在 90 天保留期到期之前,可能會永久刪除數據。 如果已將保存庫或訂用帳戶設定為封鎖清除作業，那麼在已排程的保留期間結束之前，無法永久刪除資料。
+虛刪除可讓您在刪除後的90天復原已刪除的資料。 使用虛刪除時，可以藉由執行清除作業，在90天的保留期限到期之前永久刪除資料。 如果已將保存庫或訂用帳戶設定為封鎖清除作業，那麼在已排程的保留期間結束之前，無法永久刪除資料。
 
 ## <a name="exporting-customer-data"></a>匯出客戶資料
 
@@ -52,7 +52,7 @@ Azure Key Vault 存取記錄是選擇性的功能，您可以針對每個 REST A
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 金鑰保存庫紀錄紀錄](logging.md)
+- [Azure Key Vault 記錄](logging.md)）
 
 - [Azure Key Vault 虛刪除概觀](soft-delete-cli.md)
 

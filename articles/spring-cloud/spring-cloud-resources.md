@@ -7,15 +7,15 @@ ms.topic: reference
 ms.date: 11/1/2019
 ms.author: brendm
 ms.openlocfilehash: 36e9b272bb4648853829364b22881ab8bec1ff70
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733047"
 ---
-# <a name="azure-spring-cloud-developer-resources"></a>Azure 春雲開發人員資源
+# <a name="azure-spring-cloud-developer-resources"></a>Azure 春季雲端開發人員資源
 
-作為開發人員,您可能會發現以下 Azure 春雲資源很有用:
+身為開發人員，您可能會發現下列 Azure 春季雲端資源很有用：
 
 * [Azure 藍圖](https://azure.microsoft.com/updates)
 * [常見問題集](spring-cloud-faq.md)

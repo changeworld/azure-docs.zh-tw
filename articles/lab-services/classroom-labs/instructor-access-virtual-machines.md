@@ -1,6 +1,6 @@
 ---
-title: 存取 Azure 實驗室服務中的 VM 的講師
-description: 本文演示如何教師從講師視圖中訪問其學生 VM。 例如,助教可以是一個班級的講師,也可以是其他班級的學生。
+title: 在 Azure 實驗室服務中存取 Vm 的講師
+description: 本文說明講師如何從講師的觀點來存取其學生 Vm。 例如，「教學小幫手」可以是一個類別的講師，另一個則是其他類別的學生。
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,27 +14,27 @@ ms.topic: article
 ms.date: 04/17/2020
 ms.author: spelluru
 ms.openlocfilehash: c048a2f159784a5bd38f185af29cec314b31824f
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641936"
 ---
-# <a name="access-virtual-machines-as-a-student-from-the-instructor-view"></a>從講師檢視中以學生身份訪問虛擬機器
-本文介紹教師如何訪問他們的 VM 參加他們作為學生參加的課程。 
+# <a name="access-virtual-machines-as-a-student-from-the-instructor-view"></a>從講師 view 以學生身分存取虛擬機器
+本文說明講師可以如何存取其作為學生出席之類別的 Vm。 
 
-下面是一個此功能將提供説明的方案。 助教是一個班級的教師,但其他班的學生。 而且,教師希望從顯示自己擁有的實驗室的講師視圖中查看和訪問學生 VM。 
+以下是這項功能可提供協助的案例。 「教學小幫手」是一個類別的講師，另一個則是其他類別中的學生。 而且，講師想要從顯示他們所擁有之實驗室的講師觀點，觀看並存取學生 Vm。 
 
-## <a name="access-vms-from-instructor-view"></a>從講師檢視存取 VM
+## <a name="access-vms-from-instructor-view"></a>從講師 view 存取 Vm
 
-1. 登入 Azure[實驗室服務網站](https://labs.azure.com)。 你看到你擁有的實驗室 這些實驗室可能是您自己創建的實驗室,也可以是管理員指派為您分配的實驗室的擁有者。 有關詳細資訊,請參閱[如何向現有實驗室添加其他擁有者](how-to-add-user-lab-owner.md)
-2. 要訪問您作為學生參加的班級的 VM,請選擇右上角的計算機圖示。 確認您看到可作為學生訪問的 VM。 在下面的示例中,使用者是 Python 實驗室的助教,但也是 JAVA 實驗室的學生。 因此,使用者在下拉清單中看到來自 Java 實驗室的 VM。 用戶可以啟動 VM 並連接到它。 
+1. 登入[Azure 實驗室服務網站](https://labs.azure.com)。 您會看到您擁有的實驗室。 這些實驗室可能是您自行建立的實驗室，或是系統管理員指派給您做為擁有者的實驗室。 如需詳細資訊，請參閱[如何將其他擁有者新增至現有的實驗室](how-to-add-user-lab-owner.md)
+2. 若要存取您以學生身分參加之類別的 Vm，請選取右上角的 [電腦] 圖示。 確認您看到可作為學生存取的 Vm。 在下列範例中，使用者是 Python 實驗室的「教學助理」，但是 JAVA 實驗室的學生。 因此，使用者會在下拉式清單中從 JAVA 實驗室看到 VM。 使用者可以啟動 VM 並與其連線。 
     
-    ![存取學生 VM](../media/instructors-access-virtual-machines/access-student-virtual-machines.png)
+    ![存取學生 Vm](../media/instructors-access-virtual-machines/access-student-virtual-machines.png)
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：
 
 - [連接到 VM](how-to-use-classroom-lab.md#connect-to-the-vm)
 - [在 Mac 上使用 RDP 連線至 VM](connect-virtual-machine-mac-rdp.md)
-- [將遠端桌面用於 Linux 虛擬機器](how-to-use-remote-desktop-linux-student.md)
+- [使用 Linux 虛擬機器的遠端桌面](how-to-use-remote-desktop-linux-student.md)

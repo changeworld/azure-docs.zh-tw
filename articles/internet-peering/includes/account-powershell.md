@@ -9,25 +9,25 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: beffb2babefd86c2807e21e9337cba66f42fcfc2
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678460"
 ---
-在開始配置之前,請安裝並導入所需的模組。 您需要管理員許可權才能在 PowerShell 中安裝模組。
+開始設定之前，請安裝並匯入必要的模組。 您需要系統管理員許可權，才能在 PowerShell 中安裝模組。
 
-1. 安裝並導入 Az 模組。
+1. 安裝並匯入 Az 模組。
     ```powershell
     Install-Module Az -AllowClobber
     Import-Module Az
     ```
-1. 安裝並導入 Az.對等模組。
+1. 安裝並匯入 Az. 對等模組。
     ```powershell
     Install-Module -Name Az.Peering -AllowClobber
     Import-Module Az.Peering
     ```
-1. 使用此指令檢查模組是否正確匯入:
+1. 使用下列命令，確認已正確匯入模組：
     ```powershell
     Get-Module
     ```
@@ -35,19 +35,19 @@ ms.locfileid: "81678460"
     ```powershell
     Connect-AzAccount
     ```
-1. 檢查帳戶的訂閱,並選擇要在其中創建對等互連的訂閱。
+1. 檢查帳戶的訂用帳戶，然後選取您要在其中建立對等互連的訂閱。
     ```powershell
     Get-AzSubscription
     Select-AzSubscription -SubscriptionId "subscription-id"
     ```
-1. 如果還沒有資源組,則必須在創建對等互連之前創建一個資源組。 您可以執行下列命令來這麼做：
+1. 如果您還沒有資源群組，您必須在建立對等互連之前建立一個。 您可以執行下列命令來這麼做：
 
     ```powershell
     New-AzResourceGroup -Name "PeeringResourceGroup" -Location "Central US"
     ```
 > [!IMPORTANT]
-> 如果您尚未關聯 ASN 和訂閱,請按照[關聯對等 ASN](../howto-subscription-association-powershell.md)中的步驟操作。 請求對等互連需要此操作。
+> 如果您尚未與您的 ASN 和訂用帳戶相關聯，請遵循[關聯對等 asn](../howto-subscription-association-powershell.md)中的步驟。 需要此動作才能要求對等互連。
 
 > [!NOTE]
-> 資源組的位置與選擇設置對等互連的位置無關。
+> 資源群組的位置與您選擇設定對等互連的位置無關。
 &nbsp;

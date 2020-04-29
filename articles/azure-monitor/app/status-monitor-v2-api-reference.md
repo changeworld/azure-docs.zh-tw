@@ -1,42 +1,42 @@
 ---
-title: Azure 應用程式見解 .Net 代理 API 引用
-description: 應用程式見解代理 API 引用。 在不重新部署網站的情況下監控網站性能。 與本地、VM 或 Azure 上託管的ASP.NET Web 應用配合使用。
+title: Azure 應用程式 Insights .Net 代理程式 API 參考
+description: Application Insights 代理程式 API 參考。 在不重新部署網站的情況下監視網站效能。 適用于內部部署、Vm 或 Azure 上裝載的 ASP.NET web 應用程式。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733670"
 ---
-# <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure 監視器應用程式見解代理 API 參考
+# <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure 監視器 Application Insights 代理程式 API 參考
 
-本文介紹了一個 cmdlet,它是[Az.應用程式監視器 PowerShell 模組](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成員。
+本文說明的 Cmdlet 是[ApplicationMonitor PowerShell 模組](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)的成員。
 
 > [!NOTE] 
-> - 要開始,您需要一個檢測密鑰。 有關詳細資訊,請參閱[建立資源](create-new-resource.md#copy-the-instrumentation-key)。
-> - 此 cmdlet 要求您查看並接受我們的許可證和隱私聲明。
+> - 若要開始使用，您需要有檢測金鑰。 如需詳細資訊，請參閱[建立資源](create-new-resource.md#copy-the-instrumentation-key)。
+> - 此 Cmdlet 會要求您審查並接受我們的授權及隱私權聲明。
 
 > [!IMPORTANT] 
-> 此 cmdlet 需要具有管理員許可權的 PowerShell 作業階段和提升的執行策略。 有關詳細資訊,請參閱[使用提升執行策略執行 PowerShell 作為管理員](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy)。
-> - 此 cmdlet 要求您查看並接受我們的許可證和隱私聲明。
-> - 默認情況下,檢測引擎會增加額外的開銷並關閉。
+> 此 Cmdlet 需要具有系統管理員許可權的 PowerShell 會話，以及更高的執行原則。 如需詳細資訊，請參閱[使用提高許可權的執行原則以系統管理員身分執行 PowerShell](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy)。
+> - 此 Cmdlet 會要求您審查並接受我們的授權及隱私權聲明。
+> - 檢測引擎會增加額外的負荷，並預設為關閉。
 
 
-## <a name="enable-instrumentationengine"></a>開啟偵測引擎
+## <a name="enable-instrumentationengine"></a>啟用-InstrumentationEngine
 
-通過設置某些註冊表項啟用檢測引擎。
-重新啟動 IIS 使更改生效。
+藉由設定一些登錄機碼來啟用檢測引擎。
+重新開機 IIS，變更才會生效。
 
-儀錶引擎可以補充 .NET SDK 收集的數據。
-它收集描述託管進程的執行的事件和消息。 這些事件與訊息包括相依項結果碼、HTTP 謂詞與[SQL 命令文字](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)。
+檢測引擎可以補充 .NET Sdk 所收集的資料。
+它會收集描述 managed 進程執行的事件和訊息。 這些事件和訊息包括相依性結果碼、HTTP 指令動詞和[SQL 命令文字](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)。
 
-在以下情況時啟用偵測引擎:
-- 您已經啟用了啟用 cmdlet 的監視,但未啟用檢測引擎。
-- 您已使用 .NET SDK 手動檢測應用,並希望收集其他遙測數據。
+啟用檢測引擎：
+- 您已經使用 Enable Cmdlet 啟用監視功能，但未啟用檢測引擎。
+- 您已使用 .NET Sdk 手動檢測應用程式，並想要收集其他遙測。
 
 ### <a name="examples"></a>範例
 
@@ -46,50 +46,50 @@ PS C:\> Enable-InstrumentationEngine
 
 ### <a name="parameters"></a>參數
 
-#### <a name="-acceptlicense"></a>-接受許可
-**選。** 使用此開關可以接受無頭安裝中的許可證和隱私聲明。
+#### <a name="-acceptlicense"></a>-AcceptLicense
+**選擇性。** 使用此參數可接受無周邊安裝中的授權和隱私權聲明。
 
 #### <a name="-verbose"></a>-Verbose
-**通用參數。** 使用此開關可以輸出詳細日誌。
+**一般參數。** 使用此參數來輸出詳細記錄。
 
 ### <a name="output"></a>輸出
 
 
-##### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>成功啟用偵測引擎的範例輸出
+##### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>成功啟用檢測引擎的範例輸出
 
 ```
 Configuring IIS Environment for instrumentation engine...
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="enable-applicationinsightsmonitoring"></a>開啟應用程式洞察監控
+## <a name="enable-applicationinsightsmonitoring"></a>啟用-ApplicationInsightsMonitoring
 
-啟用對目標電腦上的 IIS 應用的無程式碼附加監視。
+在目的電腦上啟用 IIS 應用程式的無程式碼附加監視。
 
-此 cmdlet 將修改 IIS 應用程式Host.config 並設置一些註冊表項。
-它還將創建一個應用程式 insights.ikey.config 檔案,該檔定義每個應用使用的檢測密鑰。
-IIS 將在啟動時載入 RedfieldModule,這將在應用程式啟動時將應用程式見解 SDK 注入應用程式。
-重新啟動 IIS,使更改生效。
+此 Cmdlet 會修改 IIS Applicationhost.config 並設定一些登錄機碼。
+它也會建立 applicationinsights ikey .config 檔案，以定義每個應用程式所使用的檢測金鑰。
+IIS 會在啟動時載入 RedfieldModule，這會在應用程式啟動時將 Application Insights SDK 插入應用程式中。
+重新開機 IIS，讓您的變更生效。
 
-啟用監視後,我們建議您使用[即時指標](live-stream.md)快速檢查應用是否向我們發送遙測數據。
+啟用監視之後，建議您使用[即時計量](live-stream.md)來快速檢查您的應用程式是否正在傳送遙測。
 
 ### <a name="examples"></a>範例
 
-#### <a name="example-with-a-single-instrumentation-key"></a>使用單一個偵測金鑰的範例
-在此示例中,當前計算機上的所有應用都分配了單個檢測密鑰。
+#### <a name="example-with-a-single-instrumentation-key"></a>具有單一檢測金鑰的範例
+在此範例中，會將單一檢測金鑰指派給目前電腦上的所有應用程式。
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-#### <a name="example-with-an-instrumentation-key-map"></a>使用偵測鍵對應的範例
+#### <a name="example-with-an-instrumentation-key-map"></a>含檢測金鑰組應的範例
 在此範例中：
-- `MachineFilter`使用通配符匹配`'.*'`當前計算機。
-- `AppFilter='WebAppExclude'`提供`null`檢測金鑰。 無法檢測指定的應用。
-- `AppFilter='WebAppOne'`為指定的應用分配唯一的檢測密鑰。
-- `AppFilter='WebAppTwo'`為指定的應用分配唯一的檢測密鑰。
-- 最後,`AppFilter``'.*'`還使用通配符匹配與早期規則不匹配的所有 Web 應用,並分配默認檢測密鑰。
-- 添加空間以進行可讀性。
+- `MachineFilter`使用`'.*'`萬用字元來符合目前的電腦。
+- `AppFilter='WebAppExclude'`提供`null`檢測金鑰。 將不會檢測指定的應用程式。
+- `AppFilter='WebAppOne'`為指定的應用程式指派唯一的檢測金鑰。
+- `AppFilter='WebAppTwo'`為指定的應用程式指派唯一的檢測金鑰。
+- 最後， `AppFilter`也會使用`'.*'`萬用字元來比對先前規則不符合的所有 web 應用程式，並指派預設的檢測金鑰。
+- 為了方便閱讀，會加入空格。
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
@@ -103,52 +103,52 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="parameters"></a>參數
 
-#### <a name="-instrumentationkey"></a>-儀器金鑰
-**必填。** 使用此參數提供單個檢測密鑰,供目標計算機上的所有應用使用。
+#### <a name="-instrumentationkey"></a>-InstrumentationKey
+**必填。** 使用此參數來提供單一檢測金鑰，供目的電腦上的所有應用程式使用。
 
-#### <a name="-instrumentationkeymap"></a>-儀器鍵映射
-**必填。** 使用此參數可提供多個檢測鍵和每個應用使用的檢測鍵的映射。
-您可以通過`MachineFilter`設定 為多台電腦創建單個安裝文稿。
+#### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
+**必填。** 使用此參數可提供多個檢測金鑰，以及每個應用程式所使用之檢測金鑰的對應。
+您可以藉由設定`MachineFilter`，針對數部電腦建立單一安裝腳本。
 
 > [!IMPORTANT]
-> 應用將按規則提供的順序與規則匹配。 因此,應首先指定最具體的規則,最後指定最通用的規則。
+> 應用程式會依照規則的提供順序來比對規則。 因此，您應該先指定最特定的規則，最後是最常見的規則。
 
 ##### <a name="schema"></a>結構描述
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
-- **機器篩選器**是計算機或 VM 名稱的必填項。
-    - '.*' 將符合所有
-    - 電腦名稱"將僅匹配指定的確切名稱的電腦。
-- **AppFilter**是 IIS 網站名稱的必填項。 您可以通過執行命令[get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite)來取得伺服器上的網站清單。
-    - '.*' 將符合所有
-    - "站點名稱"將僅與指定的確切名稱的 IIS 網站匹配。
-- **需要檢測密鑰**來啟用對與前兩個篩選器匹配的應用的監視。
-    - 如果要定義規則以排除監視,請保留此值為空。
+- **MachineFilter**是電腦或 VM 名稱的必要 c # RegEx。
+    - '. * ' 會符合所有
+    - ' ComputerName ' 只會比對具有指定之確切名稱的電腦。
+- **AppFilter**是 IIS 網站名稱的必要 c # RegEx。 您可以執行[iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite)命令，以取得伺服器上的網站清單。
+    - '. * ' 會符合所有
+    - ' SiteName ' 只會比對具有指定之確切名稱的 IIS 網站。
+- 若要啟用符合上述兩個篩選器的應用程式監視，則需要**InstrumentationKey** 。
+    - 如果您想要定義規則以排除監視，請將此值保留為 null。
 
 
-#### <a name="-enableinstrumentationengine"></a>-啟用偵測引擎
-**選。** 使用此開關可使檢測引擎能夠收集有關執行託管進程期間發生的情況的事件和消息。 這些事件和消息包括依賴項結果代碼、HTTP 謂詞和 SQL 命令文本。
+#### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
+**選擇性。** 使用此參數可讓檢測引擎收集有關執行 managed 進程期間所發生之事件和訊息的資訊。 這些事件和訊息包括相依性結果碼、HTTP 指令動詞和 SQL 命令文字。
 
-默認情況下,檢測引擎會增加開銷並關閉。
+檢測引擎會增加額外負荷，並預設為關閉。
 
-#### <a name="-acceptlicense"></a>-接受許可
-**選。** 使用此開關可以接受無頭安裝中的許可證和隱私聲明。
+#### <a name="-acceptlicense"></a>-AcceptLicense
+**選擇性。** 使用此參數可接受無周邊安裝中的授權和隱私權聲明。
 
-#### <a name="-ignoresharedconfig"></a>-忽略共享設定
-當您有一組 Web 伺服器時, 您可能正在使用[分享設定](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)。
-無法將 HttpModule 注入此共享配置。
-此腳本將失敗,因為消息顯示需要額外的安裝步驟。
-使用此開關忽略此檢查並繼續安裝先決條件。 有關詳細資訊,請參閱[已知的"與 iis 衝突共用配置"](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
+#### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
+當您有一部 web 伺服器的叢集時，您可能會使用[共用](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)設定。
+無法將 HttpModule 插入此共用設定。
+此腳本將會失敗，並出現需要額外安裝步驟的訊息。
+使用此參數來忽略這項檢查，並繼續安裝必要條件。 如需詳細資訊，請參閱[已知衝突-使用-iis 共用-](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)設定
 
 #### <a name="-verbose"></a>-Verbose
-**通用參數。** 使用此開關可顯示詳細日誌。
+**一般參數。** 使用此參數來顯示詳細記錄。
 
 #### <a name="-whatif"></a>-WhatIf 
-**通用參數。** 使用此開關可以測試和驗證輸入參數,而無需實際啟用監視。
+**一般參數。** 使用此參數來測試及驗證您的輸入參數，而不實際啟用監視。
 
 ### <a name="output"></a>輸出
 
-#### <a name="example-output-from-a-successful-enablement"></a>成功啟用的範例輸出
+#### <a name="example-output-from-a-successful-enablement"></a>成功啟用的輸出範例
 
 ```powershell
 Initiating Disable Process
@@ -181,10 +181,10 @@ Updating app pool permissions...
 Successfully enabled Application Insights Status Monitor
 ```
 
-## <a name="disable-instrumentationengine"></a>關閉偵測引擎
+## <a name="disable-instrumentationengine"></a>停用-InstrumentationEngine
 
-通過刪除某些註冊表項來禁用檢測引擎。
-重新啟動 IIS 使更改生效。
+藉由移除一些登錄機碼來停用檢測引擎。
+重新開機 IIS，變更才會生效。
 
 ### <a name="examples"></a>範例
 
@@ -195,12 +195,12 @@ PS C:\> Disable-InstrumentationEngine
 ### <a name="parameters"></a>參數 
 
 #### <a name="-verbose"></a>-Verbose
-**通用參數。** 使用此開關可以輸出詳細日誌。
+**一般參數。** 使用此參數來輸出詳細記錄。
 
 ### <a name="output"></a>輸出
 
 
-##### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>成功關閉偵測引擎的範例輸出
+##### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>成功停用檢測引擎的範例輸出
 
 ```powershell
 Configuring IIS Environment for instrumentation engine...
@@ -210,10 +210,10 @@ Registry: removing 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WAS[Env
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="disable-applicationinsightsmonitoring"></a>關閉應用程式的程式見解監控
+## <a name="disable-applicationinsightsmonitoring"></a>停用-ApplicationInsightsMonitoring
 
-禁用目標計算機上的監視。
-此 cmdlet 將刪除對 IIS 應用程式Host.config 的編輯,並刪除註冊表項。
+停用目的電腦上的監視。
+此 Cmdlet 會移除對 IIS Applicationhost.config 的編輯，並移除登錄機碼。
 
 ### <a name="examples"></a>範例
 
@@ -224,12 +224,12 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 ### <a name="parameters"></a>參數 
 
 #### <a name="-verbose"></a>-Verbose
-**通用參數。** 使用此開關可顯示詳細日誌。
+**一般參數。** 使用此參數來顯示詳細記錄。
 
 ### <a name="output"></a>輸出
 
 
-##### <a name="example-output-from-successfully-disabling-monitoring"></a>成功關閉監視的範例輸出
+##### <a name="example-output-from-successfully-disabling-monitoring"></a>成功停用監視的輸出範例
 
 ```powershell
 Initiating Disable Process
@@ -253,9 +253,9 @@ Successfully disabled Application Insights Status Monitor
 ```
 
 
-## <a name="get-applicationinsightsmonitoringconfig"></a>取得應用程式洞察監控組態
+## <a name="get-applicationinsightsmonitoringconfig"></a>ApplicationInsightsMonitoringConfig
 
-獲取配置檔並將值列印到主控台。
+取得設定檔，並將值列印到主控台。
 
 ### <a name="examples"></a>範例
 
@@ -265,12 +265,12 @@ PS C:\> Get-ApplicationInsightsMonitoringConfig
 
 ### <a name="parameters"></a>參數
 
-無需任何參數。
+不需要任何參數。
 
 ### <a name="output"></a>輸出
 
 
-##### <a name="example-output-from-reading-the-config-file"></a>讀取設定檔的範例輸出
+##### <a name="example-output-from-reading-the-config-file"></a>讀取設定檔案的輸出範例
 
 ```
 RedfieldConfiguration:
@@ -280,17 +280,17 @@ Filters:
 2)InstrumentationKey: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxdefault AppFilter: .* MachineFilter: .*
 ```
 
-## <a name="get-applicationinsightsmonitoringstatus"></a>取得應用程式的監控狀態
+## <a name="get-applicationinsightsmonitoringstatus"></a>ApplicationInsightsMonitoringStatus
 
-此 cmdlet 提供有關狀態監視器的故障排除資訊。
-使用此 cmdlet 可調查 PowerShell 模組的監視狀態和版本,並檢查正在運行的進程。
-此 cmdlet 將報告版本資訊和有關監視所需的關鍵檔案的資訊。
+此 Cmdlet 提供有關狀態監視器的疑難排解資訊。
+使用此 Cmdlet 來調查監視狀態、PowerShell 模組的版本，以及檢查執行中的進程。
+此 Cmdlet 會報告版本資訊，以及監視所需之金鑰檔的相關資訊。
 
 ### <a name="examples"></a>範例
 
-#### <a name="example-application-status"></a>範例:應用程式狀態
+#### <a name="example-application-status"></a>範例：應用程式狀態
 
-運行該命令`Get-ApplicationInsightsMonitoringStatus`以顯示網站的監視狀態。
+執行命令`Get-ApplicationInsightsMonitoringStatus`以顯示 [網站] 的監視狀態。
 
 ```powershell
 
@@ -325,17 +325,17 @@ ProcessId              : 5184
 AppAlreadyInstrumented : true
 ```
 
-在此示例中;在此示例中,
-- **計算機識別碼**是用於唯一識別伺服器的匿名 ID。 如果您建立支援請求,我們需要此 ID 才能查找伺服器的日誌。
-- **預設網站**在 IIS 中停止
-- **DemoWebApp111**已在 IIS 中啟動,但尚未收到任何請求。 此報告顯示沒有正在運行的進程(ProcessId:未找到)。
-- **DemoWebApp222**正在運行並正在監視(儀器:true)。 根據使用者配置,為此網站匹配了檢測密鑰 xxxxxxxxx-xxxxxx-xxxxxx-xxxxxxxxx123。
-- 使用應用程式見解 SDK 手動檢測**DemoWebApp333。** 狀態監視器檢測到 SDK,不會監視此網站。
+在此範例中為;
+- [**機器識別碼**] 是用來唯一識別您的伺服器的匿名識別碼。 如果您建立支援要求，我們將需要此識別碼來尋找伺服器的記錄。
+- IIS 中的**預設網站**已停止
+- **DemoWebApp111**已在 IIS 中啟動，但未收到任何要求。 此報表顯示沒有執行中的進程（ProcessId：找不到）。
+- **DemoWebApp222**正在執行，且正在進行監視（已檢測： true）。 根據使用者設定，檢測金鑰 xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxx-xxxx-xxxxxxxxx123 與此網站相符。
+- **DemoWebApp333**已使用 Application Insights SDK 手動進行檢測。 狀態監視器偵測到 SDK，且不會監視此網站。
 
 
-#### <a name="example-powershell-module-information"></a>範例:PowerShell 模組資訊
+#### <a name="example-powershell-module-information"></a>範例： PowerShell 模組資訊
 
-執行指令`Get-ApplicationInsightsMonitoringStatus -PowerShellModule`以顯示有關目前的模組的資訊:
+執行命令`Get-ApplicationInsightsMonitoringStatus -PowerShellModule`以顯示目前模組的相關資訊：
 
 ```powershell
 
@@ -388,11 +388,11 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-#### <a name="example-runtime-status"></a>範例:執行時狀態
+#### <a name="example-runtime-status"></a>範例：執行時間狀態
 
-您可以在檢測的電腦上檢查該過程,以查看是否載入了所有 DLL。 如果監視工作,應至少載入 12 個 DLL。
+您可以檢查檢測電腦上的處理常式，以查看是否已載入所有 Dll。 如果監視運作正常，則至少應載入12個 Dll。
 
-執行指令`Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
+執行命令`Get-ApplicationInsightsMonitoringStatus -InspectProcess`：
 
 
 ```
@@ -428,60 +428,60 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="parameters"></a>參數
 
-#### <a name="no-parameters"></a>( 無參數 )
+#### <a name="no-parameters"></a>（無參數）
 
-預設情況下,此 cmdlet 將報告 Web 應用程式的監視狀態。
-使用此選項可檢查應用程式是否已成功檢測。
-您還可以查看與網站匹配的檢測密鑰。
-
-
-#### <a name="-powershellmodule"></a>-電源外殼模組
-**選擇項**。 使用此開關可以報告監視所需的 DLL 的版本號和路徑。
-如果需要識別任何 DLL 的版本(包括應用程式見解 SDK),請使用此選項。
-
-#### <a name="-inspectprocess"></a>-檢測過程
-
-**選擇項**。 使用此開關可以報告 IIS 是否正在運行。
-它還將下載外部工具,以確定是否將必要的 DLL 載入到 IIS 執行時。
+根據預設，此 Cmdlet 會報告 web 應用程式的監視狀態。
+使用此選項來檢查您的應用程式是否已成功檢測。
+您也可以檢查哪一個檢測金鑰符合您的網站。
 
 
-如果此過程由於任何原因失敗,您可以手動執行這些命令:
-- iisreset.exe /狀態
-- [手柄64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp |發現/I"儀器引擎AI。 應用洞察"
-- [清單dlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp |發現/I "儀器引擎 AI 應用程式見解"
+#### <a name="-powershellmodule"></a>-PowerShellModule
+**選擇項**。 使用此參數來報告監視所需的 Dll 版本號碼和路徑。
+如果您需要識別任何 DLL 的版本，包括 Application Insights SDK，請使用此選項。
+
+#### <a name="-inspectprocess"></a>-InspectProcess
+
+**選擇項**。 使用此參數來報告 IIS 是否正在執行。
+它也會下載外部工具，以判斷必要的 Dll 是否已載入 IIS 執行時間。
+
+
+如果此程式因任何原因而失敗，您可以手動執行下列命令：
+- iisreset/status
+- [handle64 .exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp.exe |findstr/I "InstrumentationEngine AI。 ApplicationInsights
+- [listdlls64 .exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp.exe |findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
 
-**選擇項**。 僅與檢查過程一起使用。 使用此開關可跳過下載其他工具之前顯示的使用者提示。
+**選擇項**。 只能搭配 InspectProcess 使用。 使用此參數來略過在下載其他工具之前出現的使用者提示。
 
 
-## <a name="set-applicationinsightsmonitoringconfig"></a>設定應用程式洞察監控設定
+## <a name="set-applicationinsightsmonitoringconfig"></a>設定-ApplicationInsightsMonitoringConfig
 
-設定設定檔,而不執行完全重新安裝。
-重新啟動 IIS,使更改生效。
+設定設定檔，而不進行完整重新安裝。
+重新開機 IIS，讓您的變更生效。
 
 > [!IMPORTANT] 
-> 此 cmdlet 需要具有管理員權限的 PowerShell 作業階段。
+> 此 Cmdlet 需要具有系統管理員許可權的 PowerShell 會話。
 
 
 ### <a name="examples"></a>範例
 
-#### <a name="example-with-a-single-instrumentation-key"></a>使用單一個偵測金鑰的範例
-在此範例中,將為其當前電腦上的所有應用分配一個檢測密鑰。
+#### <a name="example-with-a-single-instrumentation-key"></a>具有單一檢測金鑰的範例
+在此範例中，會將單一檢測金鑰指派給目前電腦上的所有應用程式。
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-#### <a name="example-with-an-instrumentation-key-map"></a>使用偵測鍵對應的範例
+#### <a name="example-with-an-instrumentation-key-map"></a>含檢測金鑰組應的範例
 在此範例中：
-- `MachineFilter`使用通配符匹配`'.*'`當前計算機。
-- `AppFilter='WebAppExclude'`提供`null`檢測金鑰。 無法檢測指定的應用。
-- `AppFilter='WebAppOne'`為指定的應用分配唯一的檢測密鑰。
-- `AppFilter='WebAppTwo'`為指定的應用分配唯一的檢測密鑰。
-- 最後,`AppFilter``'.*'`還使用通配符匹配與早期規則不匹配的所有 Web 應用,並分配默認檢測密鑰。
-- 添加空間以進行可讀性。
+- `MachineFilter`使用`'.*'`萬用字元來符合目前的電腦。
+- `AppFilter='WebAppExclude'`提供`null`檢測金鑰。 將不會檢測指定的應用程式。
+- `AppFilter='WebAppOne'`為指定的應用程式指派唯一的檢測金鑰。
+- `AppFilter='WebAppTwo'`為指定的應用程式指派唯一的檢測金鑰。
+- 最後， `AppFilter`也會使用`'.*'`萬用字元來比對先前規則不符合的所有 web 應用程式，並指派預設的檢測金鑰。
+- 為了方便閱讀，會加入空格。
 
 ```powershell
 Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
@@ -493,38 +493,38 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 
 ### <a name="parameters"></a>參數
 
-#### <a name="-instrumentationkey"></a>-儀器金鑰
-**必填。** 使用此參數提供單個檢測密鑰,供目標計算機上的所有應用使用。
+#### <a name="-instrumentationkey"></a>-InstrumentationKey
+**必填。** 使用此參數來提供單一檢測金鑰，供目的電腦上的所有應用程式使用。
 
-#### <a name="-instrumentationkeymap"></a>-儀器鍵映射
-**必填。** 使用此參數可提供多個檢測鍵和每個應用使用的檢測鍵的映射。
-您可以通過`MachineFilter`設定 為多台電腦創建單個安裝文稿。
+#### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
+**必填。** 使用此參數可提供多個檢測金鑰，以及每個應用程式所使用之檢測金鑰的對應。
+您可以藉由設定`MachineFilter`，針對數部電腦建立單一安裝腳本。
 
 > [!IMPORTANT]
-> 應用將按規則提供的順序與規則匹配。 因此,應首先指定最具體的規則,最後指定最通用的規則。
+> 應用程式會依照規則的提供順序來比對規則。 因此，您應該先指定最特定的規則，最後是最常見的規則。
 
 ##### <a name="schema"></a>結構描述
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
-- **機器篩選器**是計算機或 VM 名稱的必填項。
-    - '.*' 將符合所有
-    - 電腦名稱將僅符合具有指定名稱的電腦。
-- **AppFilter**是計算機或 VM 名稱的必填項。
-    - '.*' 將符合所有
-    - "應用程式名稱"將僅匹配具有指定名稱的 IIS 應用。
-- **需要檢測密鑰**來啟用對與前兩個篩選器匹配的應用的監視。
-    - 如果要定義規則以排除監視,請保留此值為空。
+- **MachineFilter**是電腦或 VM 名稱的必要 c # RegEx。
+    - '. * ' 會符合所有
+    - ' ComputerName ' 只會符合指定名稱的電腦。
+- **AppFilter**是電腦或 VM 名稱的必要 c # RegEx。
+    - '. * ' 會符合所有
+    - ' ApplicationName ' 只會符合具有指定名稱的 IIS 應用程式。
+- 若要啟用符合上述兩個篩選器的應用程式監視，則需要**InstrumentationKey** 。
+    - 如果您想要定義規則以排除監視，請將此值保留為 null。
 
 
 #### <a name="-verbose"></a>-Verbose
-**通用參數。** 使用此開關可顯示詳細日誌。
+**一般參數。** 使用此參數來顯示詳細記錄。
 
 
 ### <a name="output"></a>輸出
 
-默認情況下,沒有輸出。
+根據預設，沒有任何輸出。
 
-##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>使用 -儀器金鑰設定檔的詳細輸出範例
+##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>透過-InstrumentationKey 設定設定檔的範例詳細資訊輸出
 
 ```
 VERBOSE: Operation: InstallWithIkey
@@ -536,7 +536,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>以 -儀器鍵映射設定設定檔的詳細輸出範例
+##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>透過-InstrumentationKeyMap 設定設定檔的範例詳細資訊輸出
 
 ```
 VERBOSE: Operation: InstallWithIkeyMap
@@ -550,62 +550,62 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-## <a name="start-applicationinsightsmonitoringtrace"></a>啟動-應用程式洞察監控追蹤
+## <a name="start-applicationinsightsmonitoringtrace"></a>開始-ApplicationInsightsMonitoringTrace
 
-從無程式碼附加執行時收集[ETW 事件](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal)。 這個cmdlet是運行[PerfView](https://github.com/microsoft/perfview)的替代方案。
+從無程式碼附加執行時間收集[ETW 事件](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal)。 此 Cmdlet 是執行[PerfView](https://github.com/microsoft/perfview)的替代方法。
 
-收集的事件將即時列印到主控台並儲存到 ETL 檔中。 [PerfView](https://github.com/microsoft/perfview)可以打開輸出 ETL 檔以進行進一步調查。
+收集的事件會即時列印到主控台，並儲存至 ETL 檔案。 [PerfView](https://github.com/microsoft/perfview)可以開啟輸出 ETL 檔案以供進一步調查。
 
-此 cmdlet 將運行,直到它達到超時持續時間(預設 5 分鐘)`Ctrl + C`或手動停止 ()。
+此 Cmdlet 將會執行，直到達到超時持續時間（預設為5分鐘），或以`Ctrl + C`手動方式停止（）。
 
 ### <a name="examples"></a>範例
 
 #### <a name="how-to-collect-events"></a>如何收集事件
 
-通常,我們會要求您收集事件,以調查為什麼您的應用程式未被檢測。
+一般來說，我們會要求您收集事件，以調查您的應用程式未被檢測的原因。
 
-無程式碼附加執行時將在IIS啟動和應用程式啟動時發出ETW事件。
+無程式碼附加執行時間會在 IIS 啟動時以及應用程式啟動時發出 ETW 事件。
 
-要收集這些事件,
-1. 在具有管理許可權的cmd控制台中`iisreset /stop`,執行"關閉IIS"和所有Web應用。
-2. 執行此 cmdlet
-3. 在具有管理許可權的cmd控制台中`iisreset /start`,執行"啟動IIS"。
-4. 嘗試流覽到你的應用。
-5. 應用完成載入後,可以手動停止它`Ctrl + C`() 或等待超時。
+若要收集這些事件：
+1. 在具有系統管理員許可權的 cmd 主控台中`iisreset /stop` ，執行以關閉 IIS 和所有 web 應用程式。
+2. 執行此 Cmdlet
+3. 在具有系統管理員許可權的 cmd 主控台中`iisreset /start` ，執行以啟動 IIS。
+4. 嘗試流覽至您的應用程式。
+5. 在您的應用程式完成載入之後，您可以手動`Ctrl + C`停止它（），或等候超時。
 
-#### <a name="what-events-to-collect"></a>要收集哪些事件
+#### <a name="what-events-to-collect"></a>要收集的事件
 
-收集事件時有三個選項:
-1. 使用該開關`-CollectSdkEvents`收集從應用程式見解 SDK 發出的事件。
-2. 使用該開關`-CollectRedfieldEvents`收集狀態監視器和紅場運行時發出的事件。 這些日誌在診斷 IIS 和應用程式啟動時非常有用。
-3. 使用這兩個開關收集這兩種事件類型。
-4. 默認情況下,如果未指定任何開關,將收集兩種事件類型。
+收集事件時，您有三個選項：
+1. 使用參數`-CollectSdkEvents`來收集從 Application Insights SDK 發出的事件。
+2. 使用參數`-CollectRedfieldEvents`來收集狀態監視器和 Redfield 執行時間發出的事件。 當診斷 IIS 和應用程式啟動時，這些記錄會很有説明。
+3. 同時使用這兩個參數來收集這兩個事件種類。
+4. 根據預設，如果未指定任何參數，則會收集這兩個事件種類。
 
 
 ### <a name="parameters"></a>參數
 
-#### <a name="-maxdurationinminutes"></a>-最大持續時間
-**選。** 使用此參數可以設置此腳本應收集事件的時間。 預設值為 5 分鐘。
+#### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
+**選擇性。** 使用此參數來設定此腳本應該收集事件的時間長度。 預設值為 5 分鐘。
 
-#### <a name="-logdirectory"></a>-日誌目錄
-**選。** 使用此開關可以設置 ETL 檔的輸出目錄。 預設情況下,此檔將在 PowerShell 模組目錄中創建。 完整路徑將在腳本執行期間顯示。
+#### <a name="-logdirectory"></a>-LogDirectory
+**選擇性。** 使用此參數來設定 ETL 檔案的輸出目錄。 根據預設，會在 PowerShell 模組目錄中建立此檔案。 腳本執行期間會顯示完整路徑。
 
 
-#### <a name="-collectsdkevents"></a>-收集Sdk事件
-**選。** 使用此開關收集應用程式見解 SDK 事件。
+#### <a name="-collectsdkevents"></a>-CollectSdkEvents
+**選擇性。** 使用此參數來收集 Application Insights SDK 事件。
 
-#### <a name="-collectredfieldevents"></a>-收集雷德菲爾德活動
-**選。** 使用此開關可以從狀態監視器和雷德菲爾德運行時收集事件。
+#### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
+**選擇性。** 使用此參數來收集來自狀態監視器和 Redfield 執行時間的事件。
 
 #### <a name="-verbose"></a>-Verbose
-**通用參數。** 使用此開關可以輸出詳細日誌。
+**一般參數。** 使用此參數來輸出詳細記錄。
 
 
 
 ### <a name="output"></a>輸出
 
 
-#### <a name="example-of-application-startup-logs"></a>應用程式啟動紀錄範例
+#### <a name="example-of-application-startup-logs"></a>應用程式開機記錄的範例
 ```powershell
 PS C:\Windows\system32> Start-ApplicationInsightsMonitoringTrace -ColectRedfieldEvents
 Starting...
@@ -637,18 +637,18 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>後續步驟
 
   檢視遙測：
- - [流覽指標](../../azure-monitor/app/metrics-explorer.md)以監視性能和使用方式。
-- [搜索事件和日誌](../../azure-monitor/app/diagnostic-search.md)以診斷問題。
-- 對更進階查詢使用[分析](../../azure-monitor/app/analytics.md)。
+ - [探索計量](../../azure-monitor/app/metrics-explorer.md)以監視效能和使用量。
+- [搜尋事件和記錄](../../azure-monitor/app/diagnostic-search.md)以診斷問題。
+- 使用[分析](../../azure-monitor/app/analytics.md)進行更先進的查詢。
 - [建立儀表板](../../azure-monitor/app/overview-dashboard.md)。
  
  新增更多遙測：
  - [建立 Web 測試](monitor-web-app-availability.md)，確定您的網站保持即時狀態。
-- [添加 Web 客戶端遙測](../../azure-monitor/app/javascript.md)以查看網頁代碼中的異常並啟用追蹤呼叫。
-- [將應用程式見解 SDK 添加到代碼中](../../azure-monitor/app/asp-net.md),以便插入追蹤和紀錄調用。
+- [新增 web 用戶端遙測](../../azure-monitor/app/javascript.md)，以查看來自網頁程式碼的例外狀況，並啟用追蹤呼叫。
+- [將 APPLICATION INSIGHTS SDK 新增至您的程式碼](../../azure-monitor/app/asp-net.md)，讓您可以插入追蹤和記錄呼叫。
  
- 使用應用程式見解代理執行更多操作:
- - 使用我們的指南對應用程式見解代理[程式進行故障排除](status-monitor-v2-troubleshoot.md)。
+ 使用 Application Insights 代理程式執行更多工具：
+ - 使用我們的指南來[疑難排解](status-monitor-v2-troubleshoot.md)Application Insights 代理程式。
 
 
 

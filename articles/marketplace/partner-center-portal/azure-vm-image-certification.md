@@ -1,6 +1,6 @@
 ---
-title: Azure 虛擬機器認證 - Azure 應用商店
-description: 瞭解如何在商業市場中測試和提交虛擬機產品/服務。
+title: Azure 虛擬機器認證-Azure Marketplace
+description: 瞭解如何在商業市場中測試及提交虛擬機器供應專案。
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
@@ -8,50 +8,50 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.openlocfilehash: 9bd7e40855f30612b90cf28365c0b1410cd3e3d8
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731133"
 ---
-# <a name="azure-virtual-machine-vm-image-certification"></a>Azure 虛擬機器 (VM) 映像認證
+# <a name="azure-virtual-machine-vm-image-certification"></a>Azure 虛擬機器（VM）映射認證
 
 > [!NOTE]
-> 我們將 Azure VM 產品的管理從雲端合作夥伴門戶遷移到合作夥伴中心。 在遷移產品/服務之前,請繼續按照雲合作夥伴門戶中[為 Azure 密鑰保管庫創建證書](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert)的說明進行管理產品/服務。
+> 我們正在將您 Azure VM 供應專案的管理從 Cloud Partner 入口網站移至合作夥伴中心。 在您的供應專案遷移之前，請繼續遵循在 Cloud Partner 入口網站中[建立 Azure Key Vault 的憑證](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert)中的指示，以管理您的供應專案。
 
-本文介紹如何在商業市場中測試和提交虛擬機 (VM) 映射,以確保它滿足最新的 Azure 應用商店發佈要求。
+本文說明如何在商用 marketplace 中測試並提交虛擬機器（VM）映射，以確保它符合最新的 Azure Marketplace 發佈需求。
 
-在提交 VM 產品/服務之前完成以下步驟:
+提交您的 VM 供應專案之前，請先完成下列步驟：
 
-1. 創建和部署證書。
-2. 使用通用映射部署 Azure VM。
-3. 運行驗證。
+1. 建立及部署憑證。
+2. 使用一般化映射部署 Azure VM。
+3. 執行驗證。
 
-## <a name="create-and-deploy-certificates-for-azure-key-vault"></a>為 Azure 金鑰保存與部署憑證
+## <a name="create-and-deploy-certificates-for-azure-key-vault"></a>建立及部署 Azure Key Vault 的憑證
 
-本節介紹如何創建和部署將 Windows 遠端管理 (WinRM) 連接設置為 Azure 託管虛擬機器所需的自簽名證書。
+本節說明如何建立及部署設定 Windows 遠端管理（WinRM）連線至 Azure 託管虛擬機器所需的自我簽署憑證。
 
 ### <a name="create-certificates-for-azure-key-vault"></a>建立 Azure Key Vault 的憑證
 
 此程序由三個步驟組成：
 
 1. 建立安全性憑證。
-2. 創建 Azure 金鑰保存庫以儲存憑證。
-3. 將證書儲存到金鑰保管庫。
+2. 建立用來儲存憑證的 Azure Key Vault。
+3. 將憑證儲存至金鑰保存庫。
 
 您可以針對這項工作使用新的或現有的 Azure 資源群組。
 
-#### <a name="create-the-security-certificate"></a>建立安全憑證
+#### <a name="create-the-security-certificate"></a>建立安全性憑證
 
-編輯並運行以下 Azure PowerShell 文稿,以在本地資料夾中創建證書檔 (.pfx)。 取代下表中顯示的參數的值。
+編輯並執行下列 Azure PowerShell 腳本，以在本機資料夾中建立憑證檔案（.pfx）。 取代下表所示的參數值。
 
 | **參數** | **說明** |
 | --- | --- |
-| $certroopath | 將 .pfx 檔保存到的本地資料夾。 |
-| $location | Azure 標準地理位置之一。 |
-| $vmName | 計畫 Azure 虛擬機器的名稱。 |
-| $certname | 證書的名稱;必須匹配計畫 VM 的完全限定功能變數名稱。 |
-| $certpassword | 證書的密碼必須與計劃 VM 使用的密碼匹配。 |
+| $certroopath | 儲存 .pfx 檔案的本機資料夾。 |
+| $location | 其中一個 Azure 標準地理位置。 |
+| $vmName | 已規劃之 Azure 虛擬機器的名稱。 |
+| $certname | 憑證的名稱;必須符合已規劃 VM 的完整功能變數名稱。 |
+| $certpassword | 憑證的密碼必須符合所規劃 VM 所使用的密碼。 |
 | | |
 
 ```PowerShell
@@ -82,14 +82,14 @@ ms.locfileid: "81731133"
 ```
 
 > [!TIP]
-> 在這些步驟期間保持相同的 Azure PowerShell 控制台會話打開並運行,以保留各種參數的值。
+> 在這些步驟中，保持相同的 Azure PowerShell 主控台會話開啟並執行，以保留各種參數的值。
 
 > [!WARNING]
-> 如果保存此腳本,則僅將其保存在安全位置,因為它包含安全資訊(密碼)。
+> 如果您儲存此腳本，請只將它儲存在安全的位置，因為它包含安全性資訊（密碼）。
 
-#### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>建立 Azure 金鑰保存的憑證
+#### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>建立 Azure key vault 來儲存憑證
 
-將下面的樣本內容複製到本地電腦上的檔案。 在下面的範例文稿中, 此資源`C:\certLocation\keyvault.json`為 。
+將下列範本的內容複寫到本機電腦上的檔案。 在下面的範例腳本中，此資源`C:\certLocation\keyvault.json`是）。
 
 ```json
 {
@@ -184,15 +184,15 @@ ms.locfileid: "81731133"
 
 ```
 
-編輯並運行以下 Azure PowerShell 文稿以建立 Azure 密鑰保管庫和相關資源群組。 取代下表中顯示的參數值
+編輯並執行下列 Azure PowerShell 腳本，以建立 Azure Key Vault 和相關聯的資源群組。 取代下表中顯示的參數值
 
 | **參數** | **說明** |
 | --- | --- |
-| $postfix | 附加到部署識別碼的隨機數位字串。 |
-| $rgName | 要建立的 Azure 資源群組 (RG) 名稱。 |
-| $location | Azure 標準地理位置之一。 |
-| $kvTemplateJson | 包含金鑰保管庫的資源管理器範本的檔路徑 (keyvault.json)。 |
-| $kvname | 新密鑰保管庫的名稱。|
+| $postfix | 附加至部署識別碼的亂數值字串。 |
+| $rgName | 要建立的 Azure 資源群組（RG）名稱。 |
+| $location | 其中一個 Azure 標準地理位置。 |
+| $kvTemplateJson | 包含金鑰保存庫 Resource Manager 範本的檔案路徑（keyvault. json）。 |
+| $kvname | 新金鑰保存庫的名稱。|
 |   |   |
 
 ```PowerShell
@@ -291,9 +291,9 @@ ms.locfileid: "81731133"
 
 ```
 
-#### <a name="store-the-certificates-to-the-key-vault"></a>儲存憑證儲存到金鑰保存庫
+#### <a name="store-the-certificates-to-the-key-vault"></a>將憑證儲存至金鑰保存庫
 
-使用此文稿將 .pfx 檔案中的憑證儲存到新的密鑰保管庫:
+使用下列腳本，將包含在 .pfx 檔案中的憑證儲存到新的金鑰保存庫：
 
 ```PowerShell
      $fileName =$certroopath+"\$certname"+".pfx"
@@ -317,13 +317,13 @@ ms.locfileid: "81731133"
 
 ```
 
-## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>使用通用映像部署 Azure VM
+## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>使用一般化映射部署 Azure VM
 
-本節介紹如何部署通用 VHD 映射以創建新的 Azure VM 資源。 對於此過程,我們將使用提供的 Azure 資源管理器範本和 Azure PowerShell 腳本。
+本節說明如何部署一般化 VHD 映射，以建立新的 Azure VM 資源。 在此程式中，我們將使用提供的 Azure Resource Manager 範本和 Azure PowerShell 腳本。
 
-### <a name="prepare-an-azure-resource-manager-template"></a>準備 Azure 資源管理員樣本
+### <a name="prepare-an-azure-resource-manager-template"></a>準備 Azure Resource Manager 範本
 
-將以下 Azure 資源管理器範本進行 VHD 部署複製到名為 VHDtoImage.json 的本地檔。 下一個腳本將請求本地電腦上的位置使用此 JSON。
+將下列適用于 VHD 部署的 Azure Resource Manager 範本複製到名為 VHDtoImage 的本機檔案。 下一個腳本會要求本機電腦上的位置使用此 JSON。
 
 ```JSON
 {
@@ -558,32 +558,32 @@ ms.locfileid: "81731133"
 
 ```
 
-編輯此檔案以提供這些參數的值:
+編輯此檔案以提供這些參數的值：
 
 | **參數** | **說明** |
 | --- | --- |
-| resourceGroupName | 現有的 Azure 資源群組名稱。 通常,使用與密鑰保管庫相同的 RG。 |
-| TemplateFile | 檔 VHDtoImage.json 的完整路徑名稱。 |
+| resourceGroupName | 現有的 Azure 資源群組名稱。 通常，使用與金鑰保存庫相同的 RG。 |
+| TemplateFile | VHDtoImage 檔案的完整路徑名稱。 |
 | userStorageAccountName | 儲存體帳戶的名稱。 |
-| sNameForPublicIP | 公共 IP 的 DNS 名稱;必須小寫。 |
-| subscriptionId | Azure 訂閱標識碼。 |
-| Location | 資源組的標準 Azure 地理位置。 |
+| sNameForPublicIP | 公用 IP 的 DNS 名稱;必須是小寫。 |
+| subscriptionId | Azure 訂用帳戶識別碼。 |
+| 位置 | 資源群組的標準 Azure 地理位置。 |
 | vmName | 虛擬機器的名稱。 |
-| vaultName | 密鑰保管庫的名稱。 |
+| vaultName | 金鑰保存庫的名稱。 |
 | vaultResourceGroup | 金鑰保存庫的資源群組。 |
-| certificateUrl | 憑證的 Web 位址 (URL),包括儲存在金鑰保存的庫中,`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`例如: 。 |
-| vhdUrl | 虛擬硬碟的 Web 位址。 |
-| vmSize | 虛擬機器實體的大小。 |
-| publicIPAddressName | 公共 IP 位址的名稱。 |
+| certificateUrl | 憑證的網址（URL），包括儲存在金鑰保存庫中的版本，例如： `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`。 |
+| vhdUrl | 虛擬硬碟的網址。 |
+| vmSize | 虛擬機器實例的大小。 |
+| publicIPAddressName | 公用 IP 位址的名稱。 |
 | virtualNetworkName | 虛擬網路的名稱。 |
-| nicName | 虛擬網路的網路介面卡的名稱。 |
-| adminUserName | 管理員帳戶的使用者名。 |
-| adminPassword | 管理員密碼。 |
+| nicName | 虛擬網路的網路介面卡名稱。 |
+| adminUserName | 系統管理員帳戶的使用者名稱。 |
+| adminPassword | 系統管理員密碼。 |
 |   |   |
 
 ### <a name="deploy-an-azure-vm"></a>部署 Azure VM
 
-複製和編輯以下文稿以提供和`$storageaccount``$vhdUrl`變數的值。 執行它，從您現有的通用 VHD 建立 Azure VM 資源。
+複製並編輯下列腳本，以提供`$storageaccount`和`$vhdUrl`變數的值。 執行它，從您現有的通用 VHD 建立 Azure VM 資源。
 
 ```PowerShell
 
@@ -605,51 +605,51 @@ New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName
 
 ## <a name="run-validations"></a>執行驗證
 
-有兩種方法可以在已部署的映像上執行驗證:
+有兩種方式可以在已部署的映射上執行驗證：
 
-- 使用認證測試工具進行 Azure 認證
-- 使用自檢 API
+- 使用適用于 Azure 認證的認證測試控管
+- 使用自我測試 API
 
 ### <a name="download-and-run-the-certification-test-tool"></a>下載並執行認證測試工具
 
-Azure 認證測試工具在本地 Windows 計算機上運行,但測試基於 Azure 的 Windows 或 Linux VM。 它證明使用者 VM 映射可以與 Microsoft Azure 一起使用,並且滿足有關準備 VHD 的指南和要求。 該工具的輸出是相容性報告,您將上傳到合作夥伴中心門戶以請求 VM 認證。
+適用于 Azure 認證的認證測試控管會在本機 Windows 電腦上執行，但會測試以 Azure 為基礎的 Windows 或 Linux VM。 它會證明您的使用者 VM 映射可以與 Microsoft Azure 搭配使用，而且已符合準備 VHD 的指引和需求。 此工具的輸出是您將上傳至合作夥伴中心入口網站以要求 VM 認證的相容性報告。
 
 1. 下載並安裝最新版本的 [Azure 認證的認證測試工具](https://www.microsoft.com/download/details.aspx?id=44299)。
-2. 打開認證工具,然後選擇 **「開始新測試**」。。
+2. 開啟認證工具，然後選取 [**啟動新測試**]。
 3. 從 [測試資訊] **** 畫面，輸入測試回合的**測試名稱**。
-4. 選擇 VM**的平臺**,Windows 伺服器或 Linux。 所選的平台會影響其餘的選項。
-5. 如果 VM 正在使用此資料庫服務,請選擇 **「Azure SQL 資料庫測試」** 複選框。
+4. 選取 VM 的**平臺**，即 Windows Server 或 Linux。 所選的平台會影響其餘的選項。
+5. 如果您的 VM 使用此資料庫服務，請選取 [ **Azure SQL Database 的測試**] 核取方塊。
 
 ### <a name="connect-the-certification-tool-to-a-vm-image"></a>將認證工具連線至 VM 映像
 
-該工具使用[Azure PowerShell](https://docs.microsoft.com/powershell/)連接到基於 Windows 的 VM,並透過[SSH.Net](https://www.ssh.com/ssh/protocol/)連接到 Linux VM。
+此工具會使用[Azure PowerShell](https://docs.microsoft.com/powershell/)連線到 Windows vm，並透過[SSH.Net](https://www.ssh.com/ssh/protocol/)連線至 Linux vm。
 
 ### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>將認證工具連線至 Linux VM 映像
 
-1. 選擇**SSH 身份驗證**模式:密碼身份驗證或密鑰檔身份驗證。
-2. 如果使用基於密碼的身份驗證,請輸入 VM **DNS 名稱**、**使用者名稱**和**密碼**的值。 您還可以更改預設**的 SSH 連接埠**號。
+1. 選取 [ **SSH 驗證**模式：密碼驗證] 或 [金鑰檔案驗證]。
+2. 如果使用以密碼為基礎的驗證，請輸入**VM DNS 名稱**、**使用者名稱**和**密碼**的值。 您也可以變更預設的**SSH 埠**號碼。
 
-    ![Azure 認證測試工具,Linux VM 映像的密碼身份驗證](media/avm-cert2.png)
+    ![Azure 認證測試控管，Linux VM 映射的密碼驗證](media/avm-cert2.png)
 
-3. 如果使用以金鑰檔案為基礎的驗證，請輸入**虛擬機器 DNS 名稱**、**使用者名稱**和**私密金鑰**位置等值。 您還可以包含**密碼**或更改預設**SSH 連接埠**號。
+3. 如果使用以金鑰檔案為基礎的驗證，請輸入**虛擬機器 DNS 名稱**、**使用者名稱**和**私密金鑰**位置等值。 您也可以包含複雜**密碼**或變更預設的**SSH 埠**號碼。
 
 ### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**將認證工具連接到 Windows 型 VM 映像**
 
-1. 輸入完全限定的**VM DNS 名稱**(例如,MyVMName.Cloudapp.net)。
+1. 輸入完整的**VM DNS 名稱**（例如，MyVMName.Cloudapp.net）。
 2. 輸入 [使用者名稱]**** 和 [密碼]**** 的值。
 
-    ![Azure 認證測試工具,基於 Windows 的 VM 映像的密碼身分驗證](media/avm-cert4.png)
+    ![Azure 認證測試控管，以 Windows 為基礎的 VM 映射的密碼驗證](media/avm-cert4.png)
 
 ### <a name="run-a-certification-test"></a>執行認證測試
 
-在認證工具中為 VM 映像指定參數值後,選擇 **「測試連接**」以創建與 VM 的有效連接。 驗證連線後，選取 [下一步] **** 啟動測試。 測試完成後,測試結果將顯示在表中。 "狀態"列顯示每個測試的(通過/失敗/警告)。 如果任何一項測試失敗，您的映像即_未_通過認證。 在這種情況下,請查看要求和失敗消息,進行建議的更改,然後再次運行測試。
+在認證工具中提供 VM 映射的參數值之後，請選取 [**測試**連線] 來建立與您 vm 的有效連線。 驗證連線後，選取 [下一步] **** 啟動測試。 測試完成時，測試結果會顯示在資料表中。 [狀態] 欄會顯示每個測試的（通過/失敗/警告）。 如果任何一項測試失敗，您的映像即_未_通過認證。 在此情況下，請檢查需求和失敗訊息、進行建議的變更，然後再次執行測試。
 
-自動測試完成後,在 **「常規****評估和****內核自訂**」螢幕的兩個選項卡上提供有關 VM 映射的其他資訊,然後選擇 **「下一步**」 。
+自動化測試完成之後，在 [**問卷**] 畫面的兩個索引標籤上，提供 VM 映射的其他相關資訊、 **[一般評估**] 和 [**核心自訂**]，然後選取 **[下一步]**。
 
-最後一個螢幕允許您提供更多資訊,例如 Linux VM 映射的 SSH 訪問資訊,以及查找異常時任何失敗評估的說明。
+最後一個畫面可讓您提供詳細資訊（例如 Linux VM 映射的 SSH 存取訊號），並說明任何失敗的評估（如果您要尋找例外狀況）。
 
-最後,選擇 **「生成報告」** 以下載已執行測試用例的測試結果和日誌檔以及對調查表的回答。 將結果儲存在與您的 VHD 相同的容器中。
+最後，選取 [**產生報表**]，以下載已執行之測試案例的測試結果和記錄檔，以及您對問卷調查的答案。 將結果儲存在與您的 VHD 相同的容器中。
 
 ## <a name="next-step"></a>後續步驟
 
-- [為每個 VHD 產生統一的資源識別碼 (URI)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)
+- [為每個 VHD 產生統一資源識別項（URI）](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)

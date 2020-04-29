@@ -1,6 +1,6 @@
 ---
-title: 使用內部 DNS 解決與 Azure CLI 的 VM 名稱解析
-description: 如何創建虛擬網路介面卡,並使用內部 DNS 在 Azure 上使用 Azure CLI 進行 VM 名稱解析。
+title: 使用內部 DNS 進行 VM 名稱解析與 Azure CLI
+description: 如何在 Azure 上建立虛擬網路介面卡，並使用內部 DNS 進行 VM 名稱解析，並搭配 Azure CLI。
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: networking
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: cynthn
 ms.openlocfilehash: 07a78e4987a844627824ac5034046cf6a393ad8d
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81757837"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>在 Azure 上建立虛擬網路介面卡並使用內部 DNS 進行 VM 名稱解析
@@ -158,4 +158,4 @@ az vm create \
 
 ## <a name="next-steps"></a>後續步驟
 * [直接使用 Azure CLI 命令，建立自訂的 Linux VM 環境](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [使用樣本在 Azure 建立 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [使用範本在 Azure 上建立 Linux VM](create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

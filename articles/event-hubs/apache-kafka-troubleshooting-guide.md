@@ -1,6 +1,6 @@
 ---
-title: 阿帕契卡夫卡 Azure 事件中心的問題排除問題
-description: 本文展示如何解決 Apache Kafka 的 Azure 事件中心的問題
+title: 針對 Apache Kafka 的 Azure 事件中樞問題進行疑難排解
+description: 本文說明如何針對 Apache Kafka 的 Azure 事件中樞問題進行疑難排解
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,68 +13,68 @@ ms.workload: na
 ms.date: 04/01/2020
 ms.author: shvija
 ms.openlocfilehash: 12ddc5fa74b7a1b42bbd64fde9ec3410b1c1e425
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606726"
 ---
-# <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>事件中心的阿帕奇卡夫卡故障排除指南
-本文提供有關在使用 Apache Kafka 事件中心時可能會遇到的問題的疑難解答提示。 
+# <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>適用于事件中樞的 Apache Kafka 疑難排解指南
+本文提供在使用 Apache Kafka 的事件中樞時，您可能遇到之問題的疑難排解秘訣。 
 
-## <a name="server-busy-exception"></a>伺服器忙碌
-由於 Kafka 限制,您可能會收到伺服器忙異常。 對於 AMQP 用戶端,事件中心在服務限制時立即返回**伺服器忙**異常。 它等效於「稍後再試」 消息。 在卡夫卡,消息在完成之前會延遲。 延遲長度返回以毫秒為單位,如`throttle_time_ms`在生產/提取回應中。 在大多數情況下,這些延遲請求不會記錄為事件中心儀錶板上的 ServerBusy 異常。 相反,回應`throttle_time_ms`的值應用作輸送量超過預配配額的指示器。
+## <a name="server-busy-exception"></a>伺服器忙碌例外狀況
+由於 Kafka 節流，您可能會收到伺服器忙碌例外狀況。 使用 AMQP 用戶端時，事件中樞會在服務節流時立即傳回**伺服器忙碌**例外狀況。 這相當於「稍後再試一次」訊息。 在 Kafka 中，訊息會在完成之前延遲。 延遲長度會以毫秒為單位傳回`throttle_time_ms` ，如產生/提取回應中所示。 在大多數情況下，這些延遲的要求不會記錄為事件中樞儀表板上的 ServerBusy 例外狀況。 相反地，回應的`throttle_time_ms`值應該用來做為輸送量已超過布建配額的指標。
 
-如果流量過大,則服務具有以下行為:
+如果流量過高，服務就會具有下列行為：
 
-- 如果生成請求的延遲超過請求超時,事件中心將返回**策略衝突**錯誤代碼。
-- 如果提取請求的延遲超過請求超時,事件中心將請求記錄為受限,並回應空記錄集和無錯誤代碼。
+- 如果產生要求的延遲超過要求超時，事件中樞會傳回**原則違規**的錯誤碼。
+- 如果提取要求的延遲超過要求超時，事件中樞會將要求記錄為已節流，並以一組空的記錄回應，而不會有任何錯誤代碼。
 
-[專用群集](event-hubs-dedicated-overview.md)沒有限制機制。 您可以自由使用所有群集資源。
+[專用](event-hubs-dedicated-overview.md)叢集沒有節流機制。 您可以免費取用所有的叢集資源。
 
-## <a name="no-records-received"></a>未收到任何紀錄
-您可能會看到消費者沒有得到任何記錄,並不斷重新平衡。 在這種情況下,消費者不會獲得任何記錄並不斷重新平衡。 發生異常或錯誤時,沒有異常或錯誤,但 Kafka 日誌將顯示消費者在嘗試重新加入組並分配分區時遇到卡住。 有幾個可能的原因:
+## <a name="no-records-received"></a>未收到任何記錄
+您可能會看到取用者未取得任何記錄並不斷重新平衡。 在此案例中，取用者不會取得任何記錄，也不會持續重新平衡。 發生例外狀況或錯誤時，Kafka 記錄會顯示取用者正嘗試重新加入群組並指派磁碟分割。 有幾個可能的原因：
 
-- 請確保您的推薦值`request.timeout.ms`至少為 60000,`session.timeout.ms`並且您的 建議值至少為 30000。 這些設置過低可能會導致消費者超時,進而導致重新平衡(進而導致更多超時,從而導致更多重新平衡,等等) 
-- 如果您的設定與這些建議值匹配,並且您仍然看到不斷的重新平衡,請隨時打開問題(請確保在問題中包括您的整個配置,以便我們可以幫助調試)!
+- 請確定您`request.timeout.ms`的至少是建議的值60000，而且至少`session.timeout.ms`是建議的值30000。 這些設定過低可能會導致取用者超時，因而導致重新平衡（因而導致更多的超時，因而導致重新平衡等） 
+- 如果您的設定符合這些建議的值，而您仍看到持續重新平衡，請放心開啟問題（請務必在問題中包含整個設定，讓我們可以協助進行調試）！
 
 ## <a name="compressionmessage-format-version-issue"></a>壓縮/訊息格式版本問題
-卡夫卡支援壓縮,卡夫卡的活動中心目前不支援壓縮。 當用戶端嘗試向我們的經紀人發送壓縮 Kafka`The message format version on the broker does not support the request.`消息時,將會導致提及消息格式版本(例如),錯誤。
+Kafka 支援壓縮，而適用于 Kafka 的事件中樞目前沒有。 當用戶端嘗試將壓縮的 Kafka 訊息傳送到我們`The message format version on the broker does not support the request.`的訊息代理程式時，會造成錯誤（例如）。
 
-如果需要壓縮數據,在將數據發送到代理之前壓縮數據並在接收後進行解壓縮是一種有效的解決方法。 消息正文只是服務的位元組,因此用戶端壓縮/解壓縮不會導致任何問題。
+如果需要壓縮的資料，請在將資料傳送到訊息代理程式之前先將其壓縮，並在接收之後解壓縮，這是有效的解決方法。 訊息主體只是服務的位元組陣列，因此用戶端壓縮/解壓縮不會造成任何問題。
 
-## <a name="unknownserverexception"></a>未知伺服器例外
-您可能會收到來自 Kafka 用戶端函式庫的未知伺服器例外,類似於以下範例: 
+## <a name="unknownserverexception"></a>UnknownServerException
+您可能會收到來自 Kafka 用戶端程式庫的 UnknownServerException，類似于下列範例： 
 
 ```
 org.apache.kafka.common.errors.UnknownServerException: The server experienced an unexpected error when processing the request
 ```
 
-在 Microsoft 支援下打開票證。  UTC 中的調試級日誌記錄和異常時間戳有助於調試問題。 
+向 Microsoft 支援服務開啟票證。  Debug 層級的記錄和 UTC 的例外狀況時間戳記有助於對問題進行調試。 
 
 ## <a name="other-issues"></a>其他問題
-如果您在事件中心上使用 Kafka 時看到問題,請檢查以下專案。
+如果您在事件中樞上使用 Kafka 時看到問題，請檢查下列專案。
 
-- **防火牆阻止流量**- 確保埠**9093**未被防火牆阻止。
-- **主題授權例外**- 此例外的最常見原因是:
-    - 設定檔中連接字串中的拼字串, 或
-    - 嘗試在基本層命名空間上使用 Kafka 的事件中心。 Kafka 的事件中心[只支援標準和專用層命名空間](https://azure.microsoft.com/pricing/details/event-hubs/)。
-- **卡夫卡版本不匹配**- 卡夫卡生態系統的事件中心支援卡夫卡版本 1.0 及更高版本。 由於 Kafka 協定的向後相容性,某些使用 Kafka 版本 0.10 和更高版本的應用程式有時可能工作,但我們強烈建議不要使用舊的 API 版本。 Kafka 版本 0.9 和更早版本不支援所需的 SASL 協定,並且無法連接到事件中心。
-- **使用 Kafka 時,AMQP 標頭上的奇怪編碼**- 透過 AMQP 將事件發送到事件中心時,任何 AMQP 有效負載標頭都將在 AMQP 編碼中序列化。 卡夫卡消費者不會從 AMQP 中解序列化標頭。 要讀取標頭值,請手動解碼 AMQP 標頭。 或者,如果您知道將通過 Kafka 協定使用 AMQP 標頭,則可以避免使用 AMQP 標頭。 如需詳細資訊，請參閱[這個 GitHub 問題](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56) \(英文\)。
-- **SASL 身份驗證**- 讓架構與事件中心所需的 SASL 身份驗證協定協作可能比滿足眼睛更難。 查看是否可以使用 SASL 身份驗證上的框架資源對配置進行故障排除。 
+- **防火牆封鎖流量**-請確定您的防火牆未封鎖埠**9093** 。
+- **TopicAuthorizationException** -此例外狀況最常見的原因包括：
+    - 您的設定檔中的連接字串中有錯誤的錯誤，或
+    - 嘗試在基本層命名空間上使用事件中樞 Kafka。 [只有標準和專用層命名空間支援](https://azure.microsoft.com/pricing/details/event-hubs/)Kafka 的事件中樞。
+- **Kafka 版本不符**-適用于 Kafka 生態系統的事件中樞支援 Kafka 1.0 和更新版本。 某些使用 Kafka 0.10 和更新版本的應用程式有時可能會因為 Kafka 通訊協定的回溯相容性而無法使用，但我們強烈建議您不要使用舊的 API 版本。 Kafka 0.9 版和更早版本不支援所需的 SASL 通訊協定，也無法連接到事件中樞。
+- **使用 Kafka 時，AMQP 標頭上的奇怪編碼**-當透過 AMQP 將事件傳送至事件中樞時，任何 AMQP 承載標頭都會以 AMQP 編碼方式序列化。 Kafka 取用者不會還原序列化 AMQP 的標頭。 若要讀取標頭值，請手動將 AMQP 標頭解碼。 或者，如果您知道您會透過 Kafka 通訊協定來使用，您可以避免使用 AMQP 標頭。 如需詳細資訊，請參閱[這個 GitHub 問題](https://github.com/Azure/azure-event-hubs-for-kafka/issues/56) \(英文\)。
+- **SASL 驗證**-讓您的架構與事件中樞所需的 sasl 驗證通訊協定進行合作，可能會比達到眼睛來得容易。 查看您是否可以在 SASL 驗證上使用架構的資源對設定進行疑難排解。 
 
 ## <a name="limits"></a>限制
-阿帕契卡夫卡 vs. 事件中心卡夫卡。 在大多數情況下,卡夫卡生態系統的事件中心與 Apache Kafka 具有相同的預設值、屬性、錯誤代碼和常規行為。 下面列出了這兩個顯式不同的實例(或事件中心施加 Kafka 未施加的限制的情況):
+Apache Kafka 與事件中樞 Kafka。 在大部分的情況下，Kafka 生態系統的事件中樞具有與 Apache Kafka 相同的預設值、屬性、錯誤碼和一般行為。 下面列出這兩個明確不同的實例（或事件中樞強加 Kafka 不是的限制）：
 
-- `group.id`屬性的最大長度為 256 個字元
-- 最大大小`offset.metadata.max.bytes`為 1024 位元組
-- 偏移提交在每次分區 4 次調用/秒時受到限制,最大內部日誌大小為 1 MB
+- `group.id`屬性的最大長度為256個字元
+- 的大小上限`offset.metadata.max.bytes`為1024個位元組
+- 位移認可會針對每個分割區以每秒4個呼叫進行節流，最大的內部記錄大小為 1 MB
 
 
 ## <a name="next-steps"></a>後續步驟
 若要深入了解事件中樞和適用於 Kafka 的事件中樞，請參閱下列文章：  
 
-- [阿帕奇卡夫卡活動中心開發人員指南](apache-kafka-developer-guide.md)
-- [事件中心的阿帕奇卡夫卡遷移指南](apache-kafka-migration-guide.md)
-- [常見問題 - 阿帕奇卡夫卡事件中心](apache-kafka-frequently-asked-questions.md)
+- [適用于事件中樞的 Apache Kafka 開發人員指南](apache-kafka-developer-guide.md)
+- [適用于事件中樞的 Apache Kafka 遷移指南](apache-kafka-migration-guide.md)
+- [常見問題-適用于 Apache Kafka 的事件中樞](apache-kafka-frequently-asked-questions.md)
 - [建議的設定](https://github.com/Azure/azure-event-hubs-for-kafka/blob/master/CONFIGURATION.md)

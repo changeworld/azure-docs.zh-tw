@@ -1,7 +1,7 @@
 ---
-title: 執行 Python 文稿:模組參照
+title: 執行 Python 腳本：模組參考
 titleSuffix: Azure Machine Learning
-description: 瞭解如何在 Azure 機器學習中使用執行 Python 文本模組來運行 Python 代碼。
+description: 瞭解如何使用 Azure Machine Learning 中的 [執行 Python 腳本] 模組來執行 Python 程式碼。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,141 +10,141 @@ author: likebupt
 ms.author: keli19
 ms.date: 03/10/2020
 ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684737"
 ---
-# <a name="execute-python-script-module"></a>執行 Python 文稿模組
+# <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
-本文介紹 Azure 機器學習設計器(預覽)中的模組。
+本文說明 Azure Machine Learning 設計工具（預覽）中的模組。
 
-使用此模組執行 Python 代碼。 有關 Python 的架構結構和設計原則的詳細資訊,請參閱[以下文章](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)。
+使用此模組來執行 Python 程式碼。 如需有關 Python 架構和設計原則的詳細資訊，請參閱[下列文章](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)。
 
-使用 Python,您可以執行現有模組目前不支援的任務,例如:
+使用 Python，您可以執行現有模組目前不支援的工作，例如：
 
 + 使用視覺化資料`matplotlib`
-+ 使用 Python 函式庫列舉工作區中的資料集和模型
-+ 從[匯入資料](./import-data.md)模組不支援的來源讀取、載入和操作資料
-+ 執行您自己的深度學習碼 
++ 使用 Python 程式庫來列舉工作區中的資料集和模型
++ 讀取、載入及操作匯[入資料](./import-data.md)模組不支援之來源的資料
++ 執行您自己的深入學習程式碼 
 
 
-Azure 機器學習使用 Python 的 Anaconda 分佈,其中包括許多用於數據處理的常用實用程式。 我們將自動更新 Anaconda 版本。 目前版本是:
- -  適用於 Python 3.6 的 Anaconda 4.5+ 發行版 
+Azure Machine Learning 使用 Python 的 Anaconda 散發，其中包含許多常用的資料處理公用程式。 我們會自動更新 Anaconda 版本。 目前的版本為：
+ -  適用于 Python 3.6 的 Anaconda 4.5 + 散發 
 
-預先安裝的套件包括:
--    adal=1.2.2
--    應用程式見解=0.11.9
--    attrs=19.3.0
--    azure 公共 =1.1.25
--    azure 核心 =1.3.0
--    azure-圖形桿菌=0.61.1
--    azure 標識=1.3.0
--    azure-mgmt 授權=0.60.0
--    azure-mgmt-容器註冊=2.8.0
--    azure-mgmt-鍵保管=2.2.0
--    azure-mgmt 資源=8.0.1
--    azure-mgmt 存儲=8.0.0
--    azure 儲存 blob=1.5.0
--    azure 儲存 -公共=1.4.2
--    azureml-core=1.1.5.5
--    azureml 資料準備-本機 =14.1.0
--    azureml 資料準備=1.3.5
--    azureml 預設值=1.1.5.1
--    azureml-設計器-經典模組=0.0.118
--    azureml-designer-core=0.0.31
--    azureml-設計器內部=0.0.18
--    azureml 模型管理-sdk=1.0.1b6.post1
--    azureml-管道-核心=1.1.5
--    azureml 遙測=1.1.5.3
--    後埠.tempfile=1.0
--    後埠.weakref=1.0.post1
--    博托3=1.12.29
--    博托科=1.15.29
--    快取工具=4.0.0
--    證書=2019.11.28
--    cffi=1.12.3
--    字元 =3.0.4
--    按下=7.1.1
--    雲片=1.3.0
--    設定器=3.7.4
--    上下文lib2=0.6.0.後1
--    密碼學=2.8
--    循環器=0.10.0
--    迪爾=0.3.1.1
--    分約=1.4.0
--    docker=4.2.0
--    多庫蒂爾=0.15.2
--    點網芯2=2.1.13
--    燒瓶=1.0.3
--    保險絲=3.0.1
--    gensim=3.8.1
--    谷歌-api-core=1.16.0
--    google-auth=1.12.0
--    谷歌雲核心=1.3.0
--    google 雲存儲 =1.26.0
--    谷歌可恢復媒體=0.5.0
--    googleapis-公共原型=1.51.0
--    古尼科恩=19.9.0
--    伊德納=2.9
--    不平衡學習=0.4.3
--    等日期=0.6.0
--    其危險=1.1.0
--    吉普尼=0.4.3
--    jinja2=2.11.1
--    jmespath=0.9.5
--    joblib=0.14.0
--    json-日誌記錄-py=0.2
--    jsonpickle=1.3
--    jsonschema=3.0.1
--    奇異器=1.1.0
--    利亞克-阿爾夫=2.4.0
--    光gbm=2.2.3
--    標記安全 =1.1.1
--    墊子利布=3.1.3
--    更多 itertools=6.0.0
--    msal 延伸=0.1.3
--    msal=1.1.0
--    msrest=0.6.11
--    msrestazure=0.6.3
--    ndg-Htttttt
--    尼姆布姆=1.6.1
--    數位=1.18.2
--    奧思利布=3.1.0
--    熊貓=0.25.3
--    路徑規格=0.7.0
--    點 =20.0.2
--    波特洛克=1.6.0
--    普羅托布夫=3.11.3
--    pyarrow=0.16.0
--    pyasn1-模組=0.2.8
--    pyasn1=0.4.8
--    除蟲器=2.20
--    皮西多姆克斯=3.7.3
--    pyjwt=1.7.1
--    pyopenssl=19.1.0
--    除位 =2.4.6
--    熱西滕=0.16.0
--    python-dateutil=2.8.1
--    pytz_2019.3
--    請求-奧阿特利布=1.3.0
--    請求=2.23.0
--    rsa=4.0
--    魯阿梅爾.亞姆爾=0.15.89
--    s3傳輸=0.3.3
--    學學習=0.22.2
--    奇皮=1.4.1
--    秘密存儲=3.1.2
--    設定工具=46.1.1.後20200323
--    六=1.14.0
--    智慧打開=1.10.0
--    urllib3=1.25.8
--    websocket 用戶端=0.57.0
--    韋克澤古=0.16.1
--    車輪=0.34.2
+預先安裝的套件包括：
+-    adal = = 1.2。2
+-    applicationinsights = = 0.11。9
+-    attrs = = 19.3。0
+-    azure-common = = 1.1.25
+-    azure-核心 = = 1.3。0
+-    azure-graphrbac = = 0.61。1
+-    azure-identity = = 1.3。0
+-    azure-管理-authorization = = 0.60。0
+-    azure-管理-containerregistry = = 2.8。0
+-    azure-管理-keyvault = = 2.2。0
+-    azure-管理-資源 = = 8.0。1
+-    azure-管理-儲存體 = = 8.0。0
+-    azure-儲存體-blob = = 1.5。0
+-    azure-儲存體-通用 = = 1.4。2
+-    azureml-核心 = = 1.1.5。5
+-    azureml-dataprep-native = = 14.1。0
+-    azureml-dataprep = = 1.3。5
+-    azureml-預設值 = = 1.1.5。1
+-    azureml-設計工具-傳統模組 = = 0.0.118
+-    azureml-設計工具-核心 = = 0.0.31
+-    azureml-設計工具-內部 = = 0.0.18
+-    azureml-模型管理-sdk = = 1.0.1 b6. post1
+-    azureml-管線-核心 = = 1.1。5
+-    azureml-遙測 = = 1.1.5。3
+-    反向移植. tempfile = = 1。0
+-    反向移植. weakref = = 1.0 post1
+-    boto3 = = 1.12.29
+-    botocore = = 1.15.29
+-    cachetools = = 4.0。0
+-    certifi = = 2019.11.28
+-    cffi = = 1.12。3
+-    chardet = = 3.0。4
+-    按一下 = = 7.1。1
+-    clouDPIckle = = 1.3。0
+-    configparser = = 3.7。4
+-    coNtextlib2 = = 0.6.0. post1
+-    密碼編譯 = = 2。8
+-    cycler = = 0.10。0
+-    深入鑽研 = = 0.3.1。1
+-    散發版本 = = 1.4。0
+-    docker = = 4.2。0
+-    docutils = = 0.15。2
+-    dotnetcore2 = = 2.1.13
+-    flask = = 1.0。3
+-    fusepy = = 3.0。1
+-    gensim = = 3.8.1:
+-    google-api-核心 = = 1.16。0
+-    google-auth = = 1.12。0
+-    google-雲端核心 = = 1.3。0
+-    google-雲端-儲存體 = = 1.26。0
+-    google 可繼續-media = = 0.5。0
+-    googleapis-common-protos = = 1.51。0
+-    gunicorn = = 19.9。0
+-    idna = = 2。9
+-    不平衡-學習 = = 0.4。3
+-    isodate = = 0.6。0
+-    itsdangerous = = 1.1。0
+-    jeepney = = 0.4。3
+-    jinja2 = = 2.11。1
+-    jmespath = = 0.9。5
+-    joblib = = 0.14。0
+-    json-記錄-.py = = 0。2
+-    jsonpickle = = 1。3
+-    jsonschema = = 3.0。1
+-    kiwisolver = = 1.1。0
+-    liac-arff = = 2.4。0
+-    lightgbm = = 2.2。3
+-    markupsafe = = 1.1。1
+-    matplotlib = = 3.1。3
+-    itertools = = 6.0。0
+-    msal-extensions = = 0.1。3
+-    msal = = 1.1。0
+-    msrest = = 0.6.11
+-    msrestazure = = 0.6。3
+-    ndg-HTTPsclient = = 0.5。1
+-    nimbusml = = 1.6。1
+-    numpy = = 1.18。2
+-    oauthlib = = 3.1。0
+-    pandas = = 0.25。3
+-    pathspec = = 0.7。0
+-    pip = = 20.0。2
+-    portalocker = = 1.6。0
+-    protobuf = = 3.11。3
+-    pyarrow = = 0.16。0
+-    pyasn1-模組 = = 0.2。8
+-    pyasn1 = = 0.4。8
+-    pycparser = = 2.20
+-    pycryptodomex = = 3.7。3
+-    pyjwt = = 1.7。1
+-    pyopenssl = = 19.1。0
+-    pyparsing = = 2.4。6
+-    pyrsistent = = 0.16。0
+-    python-dateutil = = 2.8。1
+-    pytz = = 2019。3
+-    要求-oauthlib = = 1.3。0
+-    要求 = = 2.23。0
+-    rsa = = 4。0
+-    ruamel. yaml = = 0.15.89
+-    s3transfer = = 0.3。3
+-    scikit-learn-學習 = = 0.22。2
+-    scipy = = 1.4。1
+-    secretstorage = = 3.1。2
+-    setuptools = = 46.1.1. post20200323
+-    六 = = 1.14。0
+-    智慧型-開啟 = = 1.10。0
+-    urllib3 = = 1.25。8
+-    websocket-client = = 0.57。0
+-    werkzeug = = 0.16。1
+-    滾輪 = = 0.34。2
 
- 要安裝未在預安裝清單中的其他套件(例如*scikit-misc),* 請加入文稿加入以下代碼: 
+ 若要安裝不在預先安裝清單中的其他套件（例如*scikit-learn*），請將下列程式碼新增至您的腳本： 
 
  ```python
 import os
@@ -152,9 +152,9 @@ os.system(f"pip install scikit-misc")
 ```
 
 ## <a name="upload-files"></a>上傳檔案
-**執行 Python 文稿**支援使用 Azure 機器學習 Python [SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)上傳檔。
+**執行 Python 腳本**支援使用[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)上傳檔案。
 
-下面的範例展示如何在**執行 Python 文稿**模組中上傳影像檔:
+下列範例顯示如何在**執行 Python 腳本**模組中上傳影像檔案：
 
 ```Python
 
@@ -190,65 +190,65 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 }
 ```
 
-導管執行完成後,您可以在模組的右邊面板中預覽影像
+管線執行完成之後，您可以在模組的右面板中預覽影像
 
 > [!div class="mx-imgBorder"]
-> ![上傳影像](media/module/upload-image-in-python-script.png)
+> ![已上傳-影像](media/module/upload-image-in-python-script.png)
 
-## <a name="how-to-configure-execute-python-script"></a>如何設定執行 Python 文稿
+## <a name="how-to-configure-execute-python-script"></a>如何設定執行 Python 腳本
 
-**執行 Python 文稿**模組包含可用於起點的範例 Python 代碼。 要設定**執行 Python 文稿**模組,請提供一組輸入和 Python 代碼,用於在 Python**文本**文字框中執行。
+**執行 Python 腳本**模組包含範例 Python 程式碼，可供您做為起點。 若要設定**執行 Python 腳本**模組，請在 [ **Python 腳本**] 文字方塊中提供一組要執行的輸入和 Python 程式碼。
 
-1. 將**執行 Python 文本**模組添加到管道中。
+1. 將**執行 Python 腳本**模組新增至您的管線。
 
-2. 在**Dataset1**上添加和連接要用於輸入的設計器的任何數據集。 在 Python 文稿中參考此資料集為**資料的幀1**。
+2. 從您想要用於輸入的設計工具，在**Dataset1**的任何資料集上加入及連接。 在您的 Python 腳本中，以**DataFrame1**的形式參考此資料集。
 
-    如果要使用 Python 生成數據,或者使用 Python 代碼將數據直接導入模組,則使用數據集是可選的。
+    如果您想要使用 Python 產生資料，或使用 Python 程式碼將資料直接匯入模組，則可以選擇使用資料集。
 
-    此模組支援在**數據集 2**上添加第二個數據集。 將 Python 文稿中的第二個資料集引用為 DataFrame2。
+    此模組支援在**Dataset2**上新增第二個資料集。 以 DataFrame2 的形式參考 Python 腳本中的第二個資料集。
 
-    Azure 機器學習中存儲的數據集在載入此模組時會自動轉換為**熊貓**資料。"幀"。
+    儲存在 Azure Machine Learning 中的資料集會自動轉換成**pandas**的資料。當此模組載入時，畫面格。
 
     ![執行 Python 輸入對應](media/module/python-module.png)
 
-4. 要包括新的 Python 包或代碼,請在**文本捆綁包**上添加包含這些自定義資源的壓縮檔。 **文本捆綁包**的輸入必須是作為檔案類型數據集上載到工作區的壓縮檔。 您可以在 **「資料集」** 資產頁中上傳資料集,還可以從設計器創作頁中左側模組樹中的 **「我的數據集」** 清單中拖放資料集模組。 
+4. 若要包含新的 Python 套件或程式碼，請在**腳本**組合上新增包含這些自訂資源的 zip 壓縮檔案。 **腳本**組合的輸入必須是以檔案類型資料集的形式上傳到您工作區的 zip 壓縮檔案。 您可以在 [**資料集**資產] 頁面中上傳資料集，也可以從 [設計師撰寫] 頁面左側模組樹狀目錄中的 [**我的資料集**] 清單拖放資料集模組。 
 
-    上載的壓縮存檔中包含的任何檔都可以在管道執行期間使用。 如果存檔包含目錄結構,則保留該結構,但必須預置名為**src**的目錄到路徑。
+    在管線執行期間，您可以使用上傳的壓縮封存中包含的任何檔案。 如果封存包含目錄結構，則會保留結構，但是您必須在路徑前面加上名為**src**的目錄。
 
-5. 在**Python 文稿**文字框中,鍵入或貼上有效的 Python 文稿。
+5. 在 [ **Python 腳本**] 文字方塊中，輸入或貼上有效的 Python 腳本。
 
     > [!NOTE]
-    > 編寫文本時請非常小心,並確保沒有語法錯誤,例如使用未聲明的物件或未導入的模組。 還要特別注意預安裝的模組清單。 要匯入未列出的模組,請在文本中安裝相應的包,例如
+    > 撰寫腳本時請務必小心，並確定沒有任何語法錯誤，例如使用未宣告的物件或未匯入的模組。 此外，也需支付預先安裝模組清單的額外注意事項。 若要匯入未列出的模組，請在您的腳本中安裝對應的套件，例如
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")
     > ```
     
-    **Python 文本**文字框預先填充了註解中的一些說明,以及用於數據訪問和輸出的範例代碼。 您必須編輯或替換此代碼。 請務必遵循有關縮進和套管的 Python 約定。
+    [ **Python 腳本**] 文字方塊會預先填入批註中的一些指示，以及用於資料存取和輸出的範例程式碼。 您必須編輯或取代此程式碼。 請務必遵循適用于縮排和大小寫的 Python 慣例。
 
-    + 文本必須包含一個稱為`azureml_main`此模組的入口點的函數。
-    + 入口點函數必須具有兩個輸入參數:`Param<dataframe1>``Param<dataframe2>`和 ,即使腳本中不使用這些參數也是如此。
-    + 連接到第三個輸入連接埠的壓縮檔案將解壓縮並儲存在目錄中,`.\Script Bundle`該目錄也將添加到 Python`sys.path`中。 
+    + 腳本必須包含名`azureml_main`為的函式，做為此模組的進入點。
+    + 進入點函式必須有兩個輸入自`Param<dataframe1>`變數`Param<dataframe2>`：和，即使您的腳本中未使用這些引數也一樣。
+    + 連線到第三個輸入埠的壓縮檔案會解壓縮並儲存在`.\Script Bundle`目錄中，這也會新增至`sys.path`Python。 
 
-    因此,如果 zip`mymodule.py`檔包含`import mymodule`,請使用 匯入它。
+    因此，如果您的 zip 檔案`mymodule.py`包含，請使用`import mymodule`將它匯入。
 
-    + 兩個數據集可以返回到設計器,它必須是類型`pandas.DataFrame`序列。 您可以在 Python 代碼中創建其他輸出,並將它們直接寫入 Azure 儲存。
+    + 您可以將兩個資料集傳回至設計工具，這必須是類型`pandas.DataFrame`的序列。 您可以在 Python 程式碼中建立其他輸出，並直接將其寫入 Azure 儲存體。
 
-6. 提交導管,或選擇模組,然後按下 **「執行」** 僅運行 Python 文稿。
+6. 提交管線，或選取模組，然後按一下 [**執行選取**]，只執行 Python 腳本。
 
-    所有數據和代碼都載入到虛擬機器中,並使用指定的 Python 環境執行。
+    所有的資料和程式碼都會載入至虛擬機器，並使用指定的 Python 環境執行。
 
 ## <a name="results"></a>結果
 
-嵌入的 Python 代碼執行的任何計算的結果必須作為熊貓提供。DataFrame,它會自動轉換為 Azure 機器學習數據集格式,以便您可以將結果與管道中的其他模組一起使用。
+內嵌 Python 程式碼所執行的任何計算結果，都必須以 pandas 的形式提供。資料框架，它會自動轉換成 Azure Machine Learning 資料集格式，讓您可以將結果與管線中的其他模組搭配使用。
 
-該模組傳回兩個資料集:  
+此模組會傳回兩個資料集：  
   
-+ **結果資料集 1,** 由 Python 文稿中第一個傳回的熊貓資料框定義
++ **結果資料集 1**，由 Python 腳本中第一個傳回的 pandas 資料框架所定義
 
-+ **結果資料集 2,** 由 Python 文稿中第二個傳回的熊貓資料幀定義
++ 在 Python 腳本中，由第二個傳回的 pandas 資料框架所定義的**結果資料集 2**
 
 
 ## <a name="next-steps"></a>後續步驟
 
-請參考 Azure 機器學習[可用的模組集](module-reference.md)。 
+請參閱可用來 Azure Machine Learning 的[模組集合](module-reference.md)。 

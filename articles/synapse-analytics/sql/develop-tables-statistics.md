@@ -1,6 +1,6 @@
 ---
-title: 建立、更新統計資訊
-description: 在 SynapsE SQL 建立和更新查詢最佳化統計資訊的建議和範例。
+title: 建立、更新統計資料
+description: 在 Synapse SQL 中建立和更新查詢優化統計資料的建議和範例。
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -12,99 +12,99 @@ ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
 ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676944"
 ---
-# <a name="statistics-in-synapse-sql"></a>SynapsE SQL 中的統計資訊
+# <a name="statistics-in-synapse-sql"></a>Synapse SQL 中的統計資料
 
-本文中提供了使用 Synapse SQL 資源建立和更新查詢優化統計資訊的建議和範例:SQL 池和 SQL 按需(預覽)。
+本文提供的建議和範例，會說明如何使用 Synapse SQL 資源來建立和更新查詢優化統計資料： SQL 集區和 SQL 隨選（預覽）。
 
-## <a name="statistics-in-sql-pool"></a>SQL 池中的統計資訊
+## <a name="statistics-in-sql-pool"></a>SQL 集區中的統計資料
 
-### <a name="why-use-statistics"></a>為什麼使用統計資訊
+### <a name="why-use-statistics"></a>為何要使用統計資料
 
-SQL 池資源對數據瞭解得越多,執行查詢的速度就越快。 將數據載入 SQL 池後,收集數據的統計資訊是可用於查詢優化的最重要操作之一。  
+SQL 集區資源對資料的瞭解越多，執行查詢的速度就會愈快。 將資料載入 SQL 集區之後，收集資料的統計資料是最重要的查詢優化事項之一。  
 
-SQL 池查詢優化器是基於成本的優化器。 它比較各種查詢計劃的成本,然後選擇成本最低的計劃。 在大多數情況下,它選擇執行速度最快的計劃。
+SQL 集區查詢最佳化工具是以成本為基礎的優化工具。 它會比較各種查詢計劃的成本，然後選擇成本最低的方案。 在大部分的情況下，它會選擇最快執行的計畫。
 
-例如,如果優化器估計查詢篩選的日期將返回一行,它將選擇一個計劃。 如果估計所選日期將返回 100 萬行,它將返回不同的計劃。
+例如，如果優化工具估計您的查詢篩選的日期會傳回一個資料列，則會選擇一個計畫。 如果它估計選取的日期會傳回1000000個數據列，則會傳回不同的計畫。
 
 ### <a name="automatic-creation-of-statistics"></a>自動建立統計資料
 
-當資料庫AUTO_CREATE_STATISTICS選項設置為 時,SQL 池將分析傳入用戶查詢中`ON`缺少的統計資訊。  如果缺少統計資訊,查詢優化器將創建查詢謂詞或聯接條件中各個列的統計資訊。 此功能用於改進查詢計劃的基數估計。
+當資料庫 AUTO_CREATE_STATISTICS 選項設定為`ON`時，SQL 集區會分析傳入的使用者查詢是否遺漏統計資料。  如果遺漏統計資料，查詢最佳化工具會針對查詢述詞或聯結條件中的個別資料行建立統計資料。 這個函數是用來改善查詢計劃的基數估計值。
 
 > [!IMPORTANT]
 > 自動建立統計資料目前依預設開啟。
 
-您可以透過執行以下指令檢查資料套件庫是否設定了AUTO_CREATE_STATISTICS:
+您可以執行下列命令來檢查您的資料倉儲是否已 AUTO_CREATE_STATISTICS 設定：
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-如果資料倉儲未啟用AUTO_CREATE_STATISTICS,我們建議您透過執行以下命令開啟此屬性:
+如果您的資料倉儲未啟用 AUTO_CREATE_STATISTICS，建議您執行下列命令來啟用此屬性：
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
 SET AUTO_CREATE_STATISTICS ON
 ```
 
-這些文句將觸發統計資訊的自動建立:
+這些語句會觸發自動建立統計資料：
 
 - SELECT
 - INSERT-SELECT
 - CTAS
 - UPDATE
 - 刪除
-- 偵測到聯接或存在謂詞時出現
+- 說明何時會包含聯結，或偵測到述詞是否存在
 
 > [!NOTE]
-> 不自動創建統計資訊,不會在臨時表或外部表上生成統計資訊。
+> 在暫存或外部資料表上不會產生自動建立統計資料。
 
-自動創建統計資訊是同步完成的。 因此,如果列缺少統計資訊,則查詢性能可能會略有下降。 為單個列創建統計資訊的時間取決於表的大小。
+自動建立統計資料是以同步方式完成。 因此，如果您的資料行遺失統計資料，您可能會產生稍微降低的查詢效能。 建立單一資料行統計資料的時間取決於資料表的大小。
 
-為了避免可衡量的性能下降,您應該首先通過在分析系統之前執行基準工作負載來創建統計資訊。
+為避免效能降低，您應該先執行基準測試工作負載，再分析系統，以確定已建立統計資料。
 
 > [!NOTE]
-> 統計資訊的創建記錄在不同的使用者上下文中的[sys.dm_pdw_exec_requests。](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)
+> 建立統計資料時，會以不同的使用者內容[dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)記錄。
 
-創建自動統計資訊時,它們將採用以下形式 _:WA_Sys_十六進位元>_的 8 位列 id<<十六进制> 中的 8 位錶 ID。 您可以透過執行[DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)指令來檢視已建立的統計資訊:
+當自動統計資料建立時，它們會採用下列格式： _WA_Sys_在十六進位中<8 位數的資料行識別碼>_<十六進位> 中的8位數資料表識別碼。 您可以藉由執行[DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)命令來查看已建立的統計資料：
 
 ```sql
 DBCC SHOW_STATISTICS (<table_name>, <target>)
 ```
 
-table_name是包含要顯示的統計資訊的表的名稱,該統計資訊不能是外部表。 目標是要顯示統計資訊的目標索引、統計資訊或列的名稱。
+Table_name 是包含要顯示之統計資料的資料表名稱，這不能是外部資料表。 目標是要顯示統計資料資訊的目標索引、統計資料或資料行的名稱。
 
 ### <a name="update-statistics"></a>更新統計資料
 
-其中一個最佳做法，是隨著新增新的日期，每天在日期資料行上更新統計資料。 每次有新資料列載入資料倉儲時，就會加入新的載入日期或交易日期。 這些添加將更改數據分佈並使統計資訊過時。
+其中一個最佳做法，是隨著新增新的日期，每天在日期資料行上更新統計資料。 每次有新資料列載入資料倉儲時，就會加入新的載入日期或交易日期。 這些新增專案會變更資料散發，並使統計資料過期。
 
-客戶表中國家或地區列的統計資訊可能永遠不需要更新,因為值分佈通常不會更改。 假設客戶間的散發固定不變，將新資料列加入至資料表變化並不會改變資料散發情況。
+客戶資料表中的國家或地區資料行上的統計資料可能永遠不需要更新，因為值的散發通常不會變更。 假設客戶間的散發固定不變，將新資料列加入至資料表變化並不會改變資料散發情況。
 
-但是,當數據倉庫僅包含一個國家或地區,並且您帶來了來自新國家或地區的資料時,您需要更新國家或地區列的統計資訊。
+不過，當您的資料倉儲僅包含一個國家或地區，而且您從新的國家或地區匯入資料時，您需要更新 [國家/地區] 或 [區域] 欄位的統計資料。
 
 以下為更新統計資料的相關建議：
 
 |||
 |-|-|
 | **統計資料更新的頻率**  | 保守：每日 </br> 載入或轉換資料之後 |
-| **取樣** |  少於 10 億行,使用預設採樣(20%)。 </br> 擁有超過10億行,使用採樣的2%。 |
+| **取樣** |  小於1000000000的資料列，使用預設取樣（20%）。 </br> 有超過1000000000個數據列時，請使用兩個百分比的取樣。 |
 
-### <a name="determine-last-statistics-update"></a>確定上次統計資訊更新
+### <a name="determine-last-statistics-update"></a>判斷上次更新統計資料
 
 為查詢疑難排解時，首先要詢問的問題之一就是「統計資料是最新的嗎？」****
 
-這個問題不是按數據年齡可以回答的問題。 如果基礎資料並沒有任何實質變更，最新的統計資料物件可能會是舊的。 當行數發生實質性更改,或者列的值分佈發生重大更改*時,是時候*更新統計資訊了。
+這個問題並不是可以由資料的存留期回答。 如果基礎資料並沒有任何實質變更，最新的統計資料物件可能會是舊的。 當資料列數目大幅變更，或資料行的值分佈發生變更*時，就*可以更新統計資料。
 
-沒有動態管理檢視可用於確定自上次更新統計信息以來表中的數據是否已更改。 了解統計數據的年齡可以為您提供部分圖片。 您可以使用下列查詢來判斷每份資料表上次更新了哪些統計資料。
+沒有動態管理檢視可用來判斷自從上次更新統計資料之後，資料表中的資料是否已變更。 知道統計資料的存留期，可以為您提供部分圖片。 您可以使用下列查詢來判斷每份資料表上次更新了哪些統計資料。
 
 > [!NOTE]
-> 如果列的值分佈存在重大更改,則應更新統計資訊,而不管它們上次更新時如何。
+> 如果資料行的值分佈有實質性變更，您應該更新統計資料，而不論上次更新的時間為何。
 
 ```sql
 SELECT
@@ -133,21 +133,21 @@ WHERE
     st.[user_created] = 1;
 ```
 
-例如,數據倉庫中**的日期列**通常需要頻繁的統計資訊更新。 每次有新資料列載入資料倉儲時，就會加入新的載入日期或交易日期。 這些添加將更改數據分佈並使統計資訊過時。
+例如，資料倉儲中的**日期資料行**通常需要頻繁的統計資料更新。 每次有新資料列載入資料倉儲時，就會加入新的載入日期或交易日期。 這些新增專案會變更資料散發，並使統計資料過期。
 
-客戶表中的性別列統計資訊可能永遠不需要更新。 假設客戶間的散發固定不變，將新資料列加入至資料表變化並不會改變資料散發情況。
+客戶資料表中性別資料行的統計資料可能永遠不需要更新。 假設客戶間的散發固定不變，將新資料列加入至資料表變化並不會改變資料散發情況。
 
-但是,如果數據倉庫僅包含一個性別,並且新的需求導致多個性別,則需要更新性別列的統計資訊。 有關詳細資訊,請查看[「統計資訊」](/sql/relational-databases/statistics/statistics)一文。
+但是，如果您的資料倉儲僅包含一個性別，而新的需求導致多個性別，則您需要更新 [性別] 資料行上的統計資料。 如需詳細資訊，請參閱[統計資料](/sql/relational-databases/statistics/statistics)一文。
 
 ### <a name="implementing-statistics-management"></a>實作統計資料管理
 
-通常最好擴展數據載入過程,以確保在載入結束時更新統計資訊。 數據載入是表最常更改其大小、值分佈或兩者時。 因此,載入過程是實現某些管理過程的邏輯位置。
+最好的做法是擴充您的資料載入程式，以確保在負載結束時更新統計資料。 資料載入是指資料表最常變更其大小、值散發或兩者。 因此，載入程式是實作為執行一些管理進程的邏輯位置。
 
 以下提供指導原則，以便在載入過程中更新您的統計資料：
 
-- 確保每個載入的資料表至少都更新一個統計資料物件。 此過程將更新表大小(行計數和頁數)資訊作為統計資訊更新的一部分。
+- 確保每個載入的資料表至少都更新一個統計資料物件。 此程式會在統計資料更新過程中更新資料表大小（資料列計數和頁面計數）資訊。
 - 將焦點放在參與 JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的資料行。
-- 請考慮更頻繁地更新"提升鍵"列(如事務日期),因為這些值不會包含在統計直方圖中。
+- 請考慮更頻繁地更新「遞增索引鍵」資料行（例如交易日期），因為這些值不會包含在統計資料長條圖中。
 - 考慮較不常更新靜態散發資料行。
 - 請記得，每個統計資料物件會依序更新。 僅只實作 `UPDATE STATISTICS <TABLE_NAME>` 不一定理想，尤其是對具有許多統計資料物件的寬型資料表而言。
 
@@ -159,8 +159,8 @@ WHERE
 
 #### <a name="create-single-column-statistics-with-default-options"></a>使用預設選項建立單一資料行統計資料
 
-要對列創建統計資訊,請為統計資訊物件提供名稱和列的名稱。
-此語法會使用所有預設選項。 默認情況下,SQL 池在創建統計資訊時對表的**20% 進行**採樣。
+若要在資料行上建立統計資料，請提供 statistics 物件的名稱和資料行的名稱。
+此語法會使用所有預設選項。 根據預設，SQL 集區在建立統計資料時會取樣**20%** 的資料表。
 
 ```sql
 CREATE STATISTICS [statistics_name]
@@ -194,7 +194,7 @@ CREATE STATISTICS col1_stats
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>指定取樣大小以建立單一資料行統計資料
 
-另一個選項是指定樣本大小為百分比:
+另一個選項是將樣本大小指定為百分比：
 
 ```sql
 CREATE STATISTICS col1_stats
@@ -204,9 +204,9 @@ CREATE STATISTICS col1_stats
 
 #### <a name="create-single-column-statistics-on-only-some-of-the-rows"></a>只對某些資料列建立單一資料行統計資料
 
-您還可以在表中的行的一部分創建統計資訊,這稱為篩選統計資訊。
+您也可以在資料表中的部分資料列上建立統計資料，這稱為篩選的統計資料。
 
-例如，當您計劃查詢大型分割資料表的特定分割時，可以使用篩選的統計資料。 通過僅創建分區值的統計資訊,統計信息的準確性將提高。 您還將體驗到查詢性能的提高。
+例如，當您計劃查詢大型分割資料表的特定分割時，可以使用篩選的統計資料。 藉由只針對分割區值建立統計資料，統計資料的精確度就會改善。 您也會遇到查詢效能的改善。
 
 這個範例會建立某個值範圍的統計資料。 您可以輕鬆地定義這些值以符合分割中的值範圍。
 
@@ -234,12 +234,12 @@ CREATE STATISTICS stats_col1
 
 #### <a name="create-multi-column-statistics"></a>建立多重資料行統計資料
 
-要創建多列統計資訊物件,請使用前面的示例,但指定更多列。
+若要建立多重資料行統計資料物件，請使用先前的範例，但指定更多資料行。
 
 > [!NOTE]
 > 用來估計查詢結果中資料列數目的長條圖，只適用於統計資料物件定義中所列的第一個資料行。
 
-在此範例中，長條圖位於 *product\_category*。 跨欄統計資訊根據*\_產品類別*和*產品\_sub_category*計算:
+在此範例中，長條圖位於 *product\_category*。 針對*產品\_類別目錄*和*產品\_sub_category*計算交叉資料行統計資料：
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -248,7 +248,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-由於*產品\_類別*和*\_產品子\_類別*之間存在關聯,因此,如果同時訪問這些列,則多列統計資訊物件可能很有用。
+因為*產品\_類別*目錄和*\_產品子\_類別*之間存在相互關聯，所以當同時存取這些資料行時，多欄統計資料物件會很有用。
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>對資料表中的所有資料行建立統計資料
 
@@ -274,7 +274,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 
 #### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>使用預存程序對資料庫中的所有資料行建立統計資料
 
-SQL 池沒有等效於 SQL Server 中sp_create_stats的系統存儲過程。 此預存程序會對資料庫中還沒有統計資料的每個資料行建立單一資料行統計資料物件。
+SQL 集區沒有相當於 SQL Server 中 sp_create_stats 的系統預存程式。 此預存程序會對資料庫中還沒有統計資料的每個資料行建立單一資料行統計資料物件。
 以下範例會協助您開始進行資料庫設計。 請放心地依照您的需求進行調整：
 
 ```sql
@@ -363,7 +363,7 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-要使用預設值對表中的所有列創建統計資訊,請執行存儲過程。
+若要使用預設值來建立資料表中所有資料行的統計資料，請執行預存程式。
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
@@ -375,7 +375,7 @@ EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
 EXEC [dbo].[prc_sqldw_create_stats] 2, NULL;
 ```
 
-若要為資料表中的所有資料行建立取樣的統計資料，請輸入 3 和取樣百分比。 以下步驟使用 20% 的採樣率。
+若要為資料表中的所有資料行建立取樣的統計資料，請輸入 3 和取樣百分比。 以下程式使用百分之20的取樣率。
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
@@ -402,11 +402,11 @@ UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ```
 
-藉由更新特定統計資料物件，即可減少管理統計資料所需的時間和資源。 此操作需要一些考慮才能選擇要更新的最佳統計信息物件。
+藉由更新特定統計資料物件，即可減少管理統計資料所需的時間和資源。 此動作需要考慮選取要更新的最佳統計資料物件。
 
 #### <a name="update-all-statistics-on-a-table"></a>更新資料表的所有統計資料
 
-更新表上所有統計資訊物件的一種簡單方法是:
+更新資料表上所有統計資料物件的簡單方法如下：
 
 ```sql
 UPDATE STATISTICS [schema_name].[table_name];
@@ -418,17 +418,17 @@ UPDATE STATISTICS [schema_name].[table_name];
 UPDATE STATISTICS dbo.table1;
 ```
 
-更新統計資訊語句易於使用。 請記住,它更新了表上*的所有*統計資訊,從而引發了比所需的更多工作。 如果性能不是問題,則此方法是保證統計資訊是最新的最簡單、最完整的方法。
+UPDATE STATISTICS 語句很容易使用。 請記住，它會更新資料表上的*所有*統計資料，並提示比所需更多的工作。 如果效能不成問題，這個方法是保證統計資料是最新狀態的最簡單且最完整的方式。
 
 > [!NOTE]
-> 更新表上的所有統計資訊時,SQL 池執行掃描,以採樣每個統計資訊物件的表。 如果資料表很大，而且有許多資料行以及許多統計資料，則根據需求來更新個別統計資料可能比較有效率。
+> 更新資料表上的所有統計資料時，SQL 集區會進行掃描，以針對每個統計資料物件進行資料表取樣。 如果資料表很大，而且有許多資料行以及許多統計資料，則根據需求來更新個別統計資料可能比較有效率。
 
-有關`UPDATE STATISTICS`過程的實現,請參閱[臨時表](develop-tables-temporary.md)。 實作方法與上述的 `CREATE STATISTICS` 程序有點不同，但結果相同。
-有關完整語法,請參閱[更新統計資訊](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
+如需程式的執行`UPDATE STATISTICS`方式，請參閱[臨時表](develop-tables-temporary.md)。 實作方法與上述的 `CREATE STATISTICS` 程序有點不同，但結果相同。
+如需完整語法，請參閱[更新統計資料](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ### <a name="statistics-metadata"></a>統計資料中繼資料
 
-您可利用數個系統檢視和函式來尋找統計資料相關資訊。 例如,可以使用STATS_DATE() 函數查看統計資訊物件是否可能已過期。 STATS_DATE() 允許您查看上次創建或更新統計信息的時間。
+您可利用數個系統檢視和函式來尋找統計資料相關資訊。 例如，您可以使用 STATS_DATE （）函數來查看統計資料物件是否可能過期。 STATS_DATE （）可讓您查看上次建立或更新統計資料的時間。
 
 #### <a name="catalog-views-for-statistics"></a>統計資料的目錄檢視
 
@@ -501,7 +501,7 @@ DBCC SHOW_STATISTICS() 顯示統計資料物件中保存的資料。 此資料�
 - 密度向量
 - 長條圖
 
-標頭是關於統計資訊的元數據。 此長條圖會顯示統計資料物件的第一個索引鍵資料行中的值散發。 密度向量可測量跨資料行關聯性。 SQL 池使用統計資訊物件中的任何數據計算基數估計值。
+標頭是有關統計資料的中繼資料。 此長條圖會顯示統計資料物件的第一個索引鍵資料行中的值散發。 密度向量可測量跨資料行關聯性。 SQL 集區會使用 statistics 物件中的任何資料來計算基數估計值。
 
 #### <a name="show-header-density-and-histogram"></a>顯示標頭、密度和長條圖
 
@@ -535,105 +535,105 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 
 ### <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() 差異
 
-`DBCC SHOW_STATISTICS()`與 SQL Server 相比,在 SQL 池中更嚴格地實現:
+`DBCC SHOW_STATISTICS()`相較于 SQL Server，更嚴格地在 SQL 集區中執行：
 
-- 不支援未記錄的功能。
-- 不能使用Stats_stream。
-- 無法聯接統計資訊特定子集的結果。 例如,STAT_HEADER加入DENSITY_VECTOR。
-- 無法為消息抑制設置NO_INFOMSGS。
-- 不能使用統計資訊名稱周圍的方括弧。
-- 不能使用列名稱來標識統計信息物件。
-- 不支援自定義錯誤 2767。
+- 不支援未記載的功能。
+- 無法使用 Stats_stream。
+- 無法聯結特定統計資料子集的結果。 例如，STAT_HEADER 聯結 DENSITY_VECTOR。
+- 無法針對訊息隱藏專案設定 NO_INFOMSGS。
+- 無法使用統計資料名稱前後的方括弧。
+- 無法使用資料行名稱來識別統計資料物件。
+- 不支援自訂錯誤2767。
 
 ### <a name="next-steps"></a>後續步驟
 
 如需進一步改善查詢效能，請參閱[監視工作負載](../sql-data-warehouse/sql-data-warehouse-manage-monitor.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
-## <a name="statistics-in-sql-on-demand-preview"></a>SQL 依需統計(預覽)
+## <a name="statistics-in-sql-on-demand-preview"></a>SQL 隨選（預覽）中的統計資料
 
-根據特定數據集(儲存路徑)的特定列創建統計資訊。
+系統會針對特定資料集（儲存體路徑），為每個特定的資料行建立統計資料。
 
-### <a name="why-use-statistics"></a>為什麼使用統計資訊
+### <a name="why-use-statistics"></a>為何要使用統計資料
 
-SQL 按需(預覽)對數據瞭解得越多,對數據的查詢執行速度就越快。 收集有關數據的統計資訊是優化查詢的最重要操作之一。 SQL 按需查詢優化器是基於成本的優化器。 它比較各種查詢計劃的成本,然後選擇成本最低的計劃。 在大多數情況下,它選擇執行速度最快的計劃。 例如,如果優化器估計查詢篩選的日期將返回一行,它將選擇一個計劃。 如果估計所選日期將返回 100 萬行,它將返回不同的計劃。
+較多的 SQL 隨選（預覽）知道您的資料，它對它執行查詢的速度會更快。 收集資料的統計資料是優化查詢最重要的一件事。 SQL 隨選查詢最佳化工具是以成本為基礎的優化工具。 它會比較各種查詢計劃的成本，然後選擇成本最低的方案。 在大部分的情況下，它會選擇最快執行的計畫。 例如，如果優化工具估計您的查詢篩選的日期會傳回一個資料列，則會選擇一個計畫。 如果它估計選取的日期會傳回1000000個數據列，則會傳回不同的計畫。
 
 ### <a name="automatic-creation-of-statistics"></a>自動建立統計資料
 
-SQL 按需分析傳入用戶查詢,以求缺少統計資訊。 如果缺少統計資訊,查詢優化器將創建查詢謂詞或聯接條件中各個列的統計資訊,以改善查詢計劃的基數估計。
+SQL 隨選會分析傳入的使用者查詢是否有遺漏統計資料。 如果遺漏統計資料，查詢最佳化工具會針對查詢述詞或聯結條件中的個別資料行建立統計資料，以改善查詢計劃的基數估計值。
 
-SELECT 語句將觸發自動創建統計資訊。
+SELECT 語句將會觸發自動建立統計資料。
 
 > [!NOTE]
-> 自動建立 Parquet 檔案的統計資訊。 對於 CSV 檔,您需要手動創建統計資訊,直到支援自動創建 CSV 檔統計資訊。
+> 已針對 Parquet 檔案開啟自動建立統計資料。 對於 CSV 檔案，您必須手動建立統計資料，直到支援自動建立 CSV 檔案統計資料為止。
 
-自動創建統計資訊是同步完成的,因此,如果列缺少統計資訊,則查詢性能可能會略有下降。 為單個列創建統計資訊的時間取決於目標檔的大小。
+自動建立統計資料是以同步方式進行，因此，如果您的資料行遺漏統計資料，可能會產生稍微降低的查詢效能。 建立單一資料行統計資料的時間視目標檔案的大小而定。
 
 ### <a name="manual-creation-of-statistics"></a>手動建立統計資料
 
-SQL 按需允許您手動創建統計資訊。 對於 CSV 檔,您必須手動創建統計資訊,因為 CSV 檔的自動建立統計資訊不會打開。 有關如何手動創建統計資訊的說明,請參閱以下示例。
+SQL 隨選的可讓您手動建立統計資料。 對於 CSV 檔案，您必須手動建立統計資料，因為 CSV 檔案未開啟自動建立統計資料。 如需如何手動建立統計資料的指示，請參閱下列範例。
 
 ### <a name="updating-statistics"></a>更新統計資料
 
-對文件中的數據的更改、刪除和添加檔會導致資料分發更改,並使統計資訊過時。 在這種情況下,需要更新統計資訊。
+變更檔案、刪除和新增檔案中的資料會導致資料散發變更，並使統計資料過期。 在此情況下，需要更新統計資料。
 
-如果數據發生顯著變化,SQL 按需自動重新創建統計資訊。 每次自動創建統計資訊時,也會保存數據集的當前狀態:檔案路徑、大小、上次修改日期。
+如果資料已大幅變更，SQL 隨選自動重建統計資料。 每次自動建立統計資料時，也會儲存資料集的目前狀態：檔案路徑、大小、上次修改日期。
 
-當統計資訊過時時,將創建新統計資訊。 演演算法遍遍數據,並將其與數據集的當前狀態進行比較。 如果更改的大小大於特定閾值,則刪除舊統計資訊,並將在新數據集上重新創建。
+當統計資料過時時，將會建立新的。 此演算法會流覽資料，並將其與目前資料集的狀態進行比較。 如果變更的大小大於特定閾值，則會刪除舊的統計資料，並在新的資料集上重新建立。
 
-手動統計信息永遠不會聲明過時。
+手動統計資料永遠不會宣告為過時。
 
 > [!NOTE]
-> 為 Parquet 檔開啟統計資訊的自動重新使用。 對於 CSV 檔,您需要手動刪除和創建統計資訊,直到支援自動創建 CSV 檔案統計資訊。 請查看以下有關如何刪除和創建統計資訊的範例。
+> 已針對 Parquet 檔案開啟自動重新開機統計資料。 對於 CSV 檔案，您必須先手動卸載並建立統計資料，直到支援自動建立 CSV 檔案統計資料為止。 請查看下列如何卸載和建立統計資料的範例。
 
 為查詢疑難排解時，首先要詢問的問題之一就是「統計資料是最新的嗎？」****
 
-當行數發生顯著變化,或者列的值分佈發生重大變化*時,是時候*更新統計資訊了。
+當資料列數目大幅變更，或資料行的值分佈有實質性變更*時，就*可以更新統計資料。
 
 > [!NOTE]
-> 如果列的值分佈存在重大更改,則應更新統計資訊,而不管它們上次更新時如何。
+> 如果資料行的值分佈有實質性變更，您應該更新統計資料，而不論上次更新的時間為何。
 
 ### <a name="implementing-statistics-management"></a>實作統計資料管理
 
-您可能希望擴展資料管道,以確保在透過添加、刪除或更改檔顯著更改資料時更新統計資訊。
+您可能想要擴充您的資料管線，以確保當資料因新增、刪除或變更而大幅改變時，就會更新統計資料。
 
-更新統計資訊提供以下指導原則:
+以下是針對更新您的統計資料所提供的指導原則：
 
-- 確保數據集至少更新了一個統計信息物件。 這將更新大小(行計數和頁數)資訊作為統計資訊更新的一部分。
+- 請確定資料集至少已更新一個統計資料物件。 這會在統計資料更新過程中更新大小（資料列計數和頁面計數）資訊。
 - 將焦點放在參與 JOIN、GROUP BY、ORDER BY 和 DISTINCT 子句的資料行。
-- 更頻繁地更新"提升鍵"列(如事務日期),因為這些值不會包含在統計直方圖中。
-- 更新靜態分佈列的頻率較低。
+- 較頻繁地更新「遞增索引鍵」資料行（例如交易日期），因為這些值不會包含在統計資料長條圖中。
+- 較不頻繁地更新靜態散發資料行。
 
 如需詳細資訊，請參閱[基數估計](/sql/relational-databases/performance/cardinality-estimation-sql-server)。
 
-### <a name="examples-create-statistics-for-column-in-openrowset-path"></a>範例:為 OPENROWSET 路徑中的欄建立統計資訊
+### <a name="examples-create-statistics-for-column-in-openrowset-path"></a>範例：在 OPENROWSET 路徑中建立資料行的統計資料
 
-以下範例示範如何使用各種選項創建統計資訊。 您用於每個資料行的選項取決於您的資料特定以及在查詢中使用資料行的方式。
+下列範例示範如何使用各種選項來建立統計資料。 您用於每個資料行的選項取決於您的資料特定以及在查詢中使用資料行的方式。
 
 > [!NOTE]
-> 此時只能創建單列統計資訊。
+> 您目前只能建立單一資料行的統計資料。
 
-儲存儲存程序用於建立統計資訊:
+下列預存程式可用來建立統計資料：
 
 ```sql
 sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 ```
 
-參數: @stmt [ ] n'statement_text' - 指定一個 Transact-SQL 語句,該語句將返回用於統計的列值。 您可以使用 TABLESAMPLE 指定要使用的資料樣本。 如果未指定 TABLESAMPLE,將使用 FULLSCAN。
+引數： @stmt [=] N ' statement_text '-指定 transact-sql 語句，其會傳回要用於統計資料的資料行值。 您可以使用 TABLESAMPLE 來指定要使用的資料範例。 如果未指定 TABLESAMPLE，則會使用 FULLSCAN。
 
 ```syntaxsql
 <tablesample_clause> ::= TABLESAMPLE ( sample_number PERCENT )
 ```
 
 > [!NOTE]
-> CSV 採樣目前不起作用,CSV 僅支援 FULLSCAN。
+> CSV 取樣目前無法運作，CSV 僅支援 FULLSCAN。
 
 #### <a name="create-single-column-statistics-by-examining-every-row"></a>檢查每個資料列以建立單一資料行統計資料
 
-要對列創建統計資訊,請提供返回需要統計資訊的列的查詢。
+若要建立資料行的統計資料，請提供查詢來傳回您需要統計資料的資料行。
 
-預設情況下,如果不另行指定,SQL 按需在創建統計資訊時會使用數據集中 100% 的數據。
+根據預設，如果您未另行指定，SQL 隨選會在建立統計資料時，使用資料集內所提供的100% 資料。
 
-例如,要根據總體.csv 檔案為資料集的一年列建立具有預設選項 (FULLSCAN) 的統計資訊:
+例如，針對以擴展 .csv 檔案為基礎的資料集，使用預設選項（FULLSCAN）來建立統計資料：
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -665,7 +665,7 @@ WITH (
 
 #### <a name="create-single-column-statistics-by-specifying-the-sample-size"></a>指定取樣大小以建立單一資料行統計資料
 
-您可以將樣本大小指定為百分比:
+您可以將樣本大小指定為百分比：
 
 ```sql
 /* make sure you have credentials for storage account access created
@@ -690,15 +690,15 @@ FROM OPENROWSET(
 
 ### <a name="examples-update-statistics"></a>範例：更新統計資料
 
-要更新統計資訊,您需要刪除並創建統計資訊。 以下儲存程序用於刪除統計資訊:
+若要更新統計資料，您必須卸載並建立統計資料。 下列預存程式可用來卸載統計資料：
 
 ```sql
 sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
 ```
 
-參數: @stmt [ ] N'statement_text' - 指定建立統計資訊時使用的相同 Transact-SQL 語句。
+引數： @stmt [=] N ' statement_text '-指定建立統計資料時所使用的相同 transact-sql 語句。
 
-要更新基於 sands.csv 檔案的資料集中的年份列的統計資訊,您需要刪除並建立統計資訊:
+若要更新資料集（以人口 .csv 檔案為基礎）中 year 資料行的統計資料，您必須卸載並建立統計資料：
 
 ```sql
 EXEC sys.sp_drop_file_statistics N'SELECT payment_type
@@ -730,14 +730,14 @@ FROM OPENROWSET(
 '
 ```
 
-### <a name="examples-create-statistics-for-external-table-column"></a>範例:為外部表列建立統計資訊
+### <a name="examples-create-statistics-for-external-table-column"></a>範例：建立外部資料表資料行的統計資料
 
-以下範例示範如何使用各種選項創建統計資訊。 您用於每個資料行的選項取決於您的資料特定以及在查詢中使用資料行的方式。
+下列範例示範如何使用各種選項來建立統計資料。 您用於每個資料行的選項取決於您的資料特定以及在查詢中使用資料行的方式。
 
 > [!NOTE]
-> 此時只能創建單列統計資訊。
+> 您目前只能建立單一資料行的統計資料。
 
-要對列創建統計資訊,請為統計資訊物件提供名稱和列的名稱。
+若要在資料行上建立統計資料，請提供 statistics 物件的名稱和資料行的名稱。
 
 ```sql
 CREATE STATISTICS statistics_name
@@ -748,16 +748,16 @@ ON { external_table } ( column )
         , { NORECOMPUTE }
 ```
 
-參數:external_table指定應創建統計資訊的外部表。
+引數： external_table 指定應建立統計資料的外部資料表。
 
-通過掃描所有行來計算統計資訊。 FULLSCAN 和 SAMPLE 100 PERCENT 的結果相同。 FULLSCAN 不能搭配 SAMPLE 選項一起使用。
+藉由掃描所有資料列來 FULLSCAN 計算統計資料。 FULLSCAN 和 SAMPLE 100 PERCENT 的結果相同。 FULLSCAN 不能搭配 SAMPLE 選項一起使用。
 
-SAMPLE 編號%指定查詢優化器創建統計資訊時使用的表或索引檢視中的大致百分比或行數。 數位可以從 0 到 100。
+[取樣數目百分比] 指定在資料表或索引視圖中，查詢最佳化工具在建立統計資料時所要使用的大約百分比或資料列數目。 數位可以是從0到100。
 
 SAMPLE 不能和 FULLSCAN 選項一起使用。
 
 > [!NOTE]
-> CSV 採樣目前不起作用,CSV 僅支援 FULLSCAN。
+> CSV 取樣目前無法運作，CSV 僅支援 FULLSCAN。
 
 #### <a name="create-single-column-statistics-by-examining-every-row"></a>檢查每個資料列以建立單一資料行統計資料
 
@@ -778,13 +778,13 @@ CREATE STATISTICS sState
 
 ### <a name="examples-update-statistics"></a>範例：更新統計資料
 
-要更新統計資訊,您需要刪除並創建統計資訊。 首先刪除統計資訊:
+若要更新統計資料，您必須卸載並建立統計資料。 先捨棄統計資料：
 
 ```sql
 DROP STATISTICS census_external_table.sState
 ```
 
-並建立統計資訊:
+並建立統計資料：
 
 ```sql
 CREATE STATISTICS sState
@@ -794,4 +794,4 @@ CREATE STATISTICS sState
 
 ## <a name="next-steps"></a>後續步驟
 
-有關進一步的查詢性能改進,請參閱[SQL 池的最佳做法](best-practices-sql-pool.md#maintain-statistics)。
+如需進一步的查詢效能改進，請參閱[SQL 集區的最佳做法](best-practices-sql-pool.md#maintain-statistics)。

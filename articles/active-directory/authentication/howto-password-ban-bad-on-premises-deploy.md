@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7870b62dea01f680126f5b4aac3dc2328407cd61
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82143213"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>規劃和部署內部部署 Azure Active Directory 密碼保護
@@ -88,7 +88,7 @@ Azure AD 密碼保護 DC 代理程式軟體的設計可減少與高可用性相�
     * 根據預設，RPC 伺服器埠是動態 RPC 埠，但可以設定為[使用靜態埠](#static)。
 * 將安裝 Azure AD 密碼保護 Proxy 服務的所有電腦都必須具備下列端點的網路存取權：
 
-    |**端點**|**進行**|
+    |**端點**|**目的**|
     | --- | --- |
     |`https://login.microsoftonline.com`|驗證要求|
     |`https://enterpriseregistration.windows.net`|Azure AD 密碼保護功能|

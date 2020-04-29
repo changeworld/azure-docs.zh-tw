@@ -1,6 +1,6 @@
 ---
-title: 將 Azure 快速路由與 Oracle 雲端基礎架構連接 |微軟文件
-description: 將 Azure 快速路由與 Oracle 雲端基礎架構 (OCI) 快速連線連線,實現跨雲端 Oracle 應用程式解決方案
+title: 將 Azure ExpressRoute 與 Oracle 雲端基礎結構連線 |Microsoft Docs
+description: 將 Azure ExpressRoute 與 Oracle 雲端基礎結構（OCI） FastConnect 連線，以啟用跨雲端 Oracle 應用程式解決方案
 documentationcenter: virtual-machines
 author: BorisB2015
 manager: gwallace
@@ -14,95 +14,95 @@ ms.workload: infrastructure
 ms.date: 03/16/2020
 ms.author: borisb
 ms.openlocfilehash: 70556cbbfefd6ad22ef96ee16065209031ea456c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683763"
 ---
-# <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>設定 Azure 和 Oracle 雲端基礎結構之間的直接互連  
+# <a name="set-up-a-direct-interconnection-between-azure-and-oracle-cloud-infrastructure"></a>設定 Azure 與 Oracle 雲端基礎結構之間的直接互連  
 
-為了創造[集成的多雲體驗](oracle-oci-overview.md),微軟和甲骨文通過[ExpressRoute](../../../expressroute/expressroute-introduction.md)和[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)在 Azure 和甲骨文雲端基礎設施(OCI)之間提供直接互連。 通過 ExpressRoute 和 FastConnect 互連,客戶可以體驗低延遲、高吞吐量、兩個雲之間的私人直接連接。
+為了建立[整合式多雲端體驗](oracle-oci-overview.md)，Microsoft 和 Oracle 透過[ExpressRoute](../../../expressroute/expressroute-introduction.md)和[FastConnect](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/fastconnectoverview.htm)提供 Azure 與 oracle 雲端基礎結構（OCI）之間的直接互連。 透過 ExpressRoute 與 FastConnect 互連，客戶可以在這兩個雲端之間體驗低延遲、高輸送量、私人直接連線能力。
 
 > [!IMPORTANT]
-> 在 2020 年 5 月之前,Oracle 將在 Azure/Oracle 雲端互連解決方案中驗證這些應用程式在 Azure 中運行。
+> 使用 Azure/Oracle 雲端互連解決方案時，Oracle 將會認證這些應用程式在 Azure 中執行（5月2020）。
 > * 電子商務套件
 > * JD Edwards EnterpriseOne
 > * PeopleSoft
-> * 甲骨文零售應用程式
-> * 甲骨文海龍財務管理
+> * Oracle 零售應用程式
+> * Oracle Hyperion 財務管理
 
-下圖顯示了互連的高級概述:
+下圖顯示互連的高階總覽：
 
 ![跨雲端網路連線](media/configure-azure-oci-networking/azure-oci-connect.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* 要在 Azure 和 OCI 之間建立連接,必須具有活動 Azure 訂閱和活動 OCI 租約。
+* 若要建立 Azure 與 OCI 之間的連線，您必須擁有有效的 Azure 訂用帳戶和作用中的 OCI 租用。
 
-* 僅當 Azure ExpressRoute 對等互連位置靠近或與 OCI FastConnect 位於同一對等位置時,才可能連接。 請參考[區域可用性](oracle-oci-overview.md#region-availability)。
+* 只有在 Azure ExpressRoute 對等互連位置與 OCI FastConnect 位於相同的對等互連位置時，才可以進行連線。 請參閱[區域可用性](oracle-oci-overview.md#region-availability)。
 
-## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>設定快速路由並快速連線之間的直接連線
+## <a name="configure-direct-connectivity-between-expressroute-and-fastconnect"></a>設定 ExpressRoute 與 FastConnect 之間的直接連線
 
-1. 在資源群組下的 Azure 訂閱上創建標準 ExpressRoute 電路。 
-    * 創建 ExpressRoute 時,請選擇**Oracle 雲端快速連線**作為服務提供者。 要建立 ExpressRoute 電路,請參閱分[步指南](../../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
-    * Azure ExpressRoute 電路提供粒度頻寬選項,而FastConnect支援1、2、5或10 Gbps。 因此,建議在 ExpressRoute 下選擇這些匹配的頻寬選項之一。
+1. 在資源群組下的 Azure 訂用帳戶上建立標準 ExpressRoute 線路。 
+    * 建立 ExpressRoute 時，請選擇 [ **Oracle Cloud FastConnect** ] 作為服務提供者。 若要建立 ExpressRoute 線路，請參閱[逐步指南](../../../expressroute/expressroute-howto-circuit-portal-resource-manager.md)。
+    * Azure ExpressRoute 線路提供更細微的頻寬選項，而 FastConnect 支援1、2、5或 10 Gbps。 因此，建議您在 ExpressRoute 底下選擇其中一個符合的頻寬選項。
 
-    ![建立快速路由電路](media/configure-azure-oci-networking/exr-create-new.png)
-1. 將快速路由**服務金鑰**。 在設定 FastConnect 電路時,您需要提供密鑰。
+    ![建立 ExpressRoute 線路](media/configure-azure-oci-networking/exr-create-new.png)
+1. 記下您的 ExpressRoute**服務金鑰**。 設定 FastConnect 線路時，您必須提供金鑰。
 
-    ![快速路由服務金鑰](media/configure-azure-oci-networking/exr-service-key.png)
+    ![ExpressRoute 服務金鑰](media/configure-azure-oci-networking/exr-service-key.png)
 
     > [!IMPORTANT]
-    > 一旦預配了 ExpressRoute 電路(即使未**預配****提供商狀態**),您也會收取快遞線路費用。
+    > 一旦布建 ExpressRoute 線路（即使**未布建****提供者狀態**），您才需要支付 expressroute 費用。
 
-1. 雕刻出兩個私有 IP 位址空間 /30,每個空間不與 Azure 虛擬網路或 OCI 虛擬雲端網路 IP 位址空間重疊。 我們將第一個 IP 位址空間稱為主位址空間,第二個 IP 位址空間稱為輔助位址空間。 記下配置 FastConnect 電路時所需的位址。
-1. 創建動態路由閘道 (DRG)。 創建 FastConnect 電路時,您需要這樣做。 有關詳細資訊,請參閱[動態路由閘道](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm)文文文文文檔。
-1. 在 Oracle 租戶下創建 FastConnect 電路。 有關詳細資訊,請參閱 Oracle[文件](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)。
+1. 切割每個/30 的私人 IP 位址空間，而不會與您的 Azure 虛擬網路或 OCI 虛擬雲端網路 IP 位址空間重迭。 我們會將第一個 IP 位址空間稱為「主要位址空間」，並將第二個 IP 位址空間稱為「次要位址空間」。 記下位址，您在設定 FastConnect 線路時需要用到。
+1. 建立動態路由閘道（DRG.4）。 建立 FastConnect 線路時，您將需要此程式。 如需詳細資訊，請參閱[動態路由閘道](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm)檔。
+1. 在您的 Oracle 租使用者底下建立 FastConnect 電路。 如需詳細資訊，請參閱[Oracle 檔](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)集。
   
-    * 在 FastConnect 配置下,選擇**Microsoft Azure:快速路由**作為提供程式。
-    * 選擇上一步中預配的動態路由閘道。
-    * 選擇要預配的頻寬。 為了獲得最佳性能,頻寬必須與創建 ExpressRoute 電路時選擇的頻寬相匹配。
-    * 在**提供程式服務金鑰**中,貼上 ExpressRoute 服務密鑰。
-    * 使用上一步中劃分的第一個 /30 專用 IP 位址空間,用於**主 BGP IP 位址**,使用輔助**BGP IP**位址的第二 /30 專用 IP 位址空間。
-        * 將 Oracle BGP IP 位址(主和輔助)的兩個範圍的第一個可使用位址和第二個位址分配給客戶 BGP IP 位址(從快速連接的角度來看)。 第一個可使用的 IP 位址是 /30 位址空間中的第二個 IP 位址(第一個 IP 位址由 Microsoft 保留)。
-    * 按一下頁面底部的 [新增]  。
-1. 使用路由表,透過動態路由閘道完成將 FastConnect 連接到 Oracle 租戶下的虛擬雲端網路。
-1. 導航到 Azure,並確保已預配 ExpressRoute 電路的**提供程式狀態**更改為**預配**,並且已預配**Azure 私有**類型的對等互連。 這是以下步驟的先決條件。
+    * 在 [FastConnect 設定] 下，選取 [ **Microsoft Azure： ExpressRoute** ] 做為提供者。
+    * 選取您在上一個步驟中布建的動態路由閘道。
+    * 選取要布建的頻寬。 為了達到最佳效能，頻寬必須符合建立 ExpressRoute 線路時選取的頻寬。
+    * 在 [**提供者服務金鑰**] 中，貼上 ExpressRoute 服務金鑰。
+    * 在上一個步驟中使用第一個/30 私人 IP 位址空間劃分，以取得**主要 BGP Ip 位址**和**次要 bgp ip**位址的第二個/30 私人 ip 位址空間。
+        * 將 Oracle BGP IP 位址（主要和次要）的第一個可用位址和第二個位址指派給客戶 BGP IP 位址（從 FastConnect 的觀點來看）。 第一個可用的 IP 位址是/30 位址空間中的第二個 IP 位址（Microsoft 會保留第一個 IP 位址）。
+    * 按一下 [建立]  。
+1. 使用路由表，完成透過動態路由閘道，將 FastConnect 連結至 Oracle 租使用者下的虛擬雲端網路。
+1. 流覽至 Azure，並確定 ExpressRoute 線路的**提供者狀態**已變更為 [已布**建**]，而且已布建 [ **Azure 私**用] 類型的對等互連。 這是下列步驟的必要條件。
 
-    ![快速路由提供者狀態](media/configure-azure-oci-networking/exr-provider-status.png)
-1. 單擊**Azure 專用**對等互連。 您將看到已根據您在設置 FastConnect 電路時輸入的資訊自動配置對等互連詳細資訊。
+    ![ExpressRoute 提供者狀態](media/configure-azure-oci-networking/exr-provider-status.png)
+1. 按一下 [ **Azure 私**用對等]。 您會看到已根據您在設定 FastConnect 線路時所輸入的資訊，自動設定對等互連詳細資料。
 
-    ![專用對等互連設定](media/configure-azure-oci-networking/exr-private-peering.png)
+    ![私用對等設定](media/configure-azure-oci-networking/exr-private-peering.png)
 
-## <a name="connect-virtual-network-to-expressroute"></a>將虛擬網路連線到快速路由
+## <a name="connect-virtual-network-to-expressroute"></a>將虛擬網路連線到 ExpressRoute
 
-1. 創建虛擬網路和虛擬網路閘道(如果尚未創建)。 有關詳細資訊,請參閱分[步指南](../../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)。
-1. 通過執行[Terraform 文稿](https://github.com/microsoft/azure-oracle/tree/master/InterConnect-2)或執行 PowerShell 命令來[配置 ExpressRoute 快速路徑](../../../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath),設定虛擬網路閘道和 ExpressRoute 電路之間的連接。
+1. 建立虛擬網路和虛擬網路閘道（如果尚未這麼做）。 如需詳細資訊，請參閱[逐步指南](../../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md)。
+1. 藉由執行[Terraform 腳本](https://github.com/microsoft/azure-oracle/tree/master/InterConnect-2)或執行 PowerShell 命令來設定[expressroute FastPath](../../../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath)，來設定虛擬網路閘道與 ExpressRoute 線路之間的連線。
 
-完成網路配置後,可以通過單擊 Azure 門戶中的 ExpressRoute 專用對等邊欄選項卡下的 **「獲取 ARP 記錄**」和 **「獲取路由」** 表來驗證配置的有效性。
+完成網路設定之後，您可以按一下 [**取得 ARP 記錄**]，然後在 [ExpressRoute 私人對等互連] 分頁的 [Azure 入口網站]**底下，確認**您的設定是否有效。
 
 ## <a name="automation"></a>自動化
 
-Microsoft 已創建 Terraform 文稿,以實現網路互連的自動部署。 Terraform 文稿在執行之前需要使用 Azure 進行身份驗證,因為它們需要對 Azure 訂閱授予足夠的許可權。 可以使用[Azure 活動目錄服務主體](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)或使用 Azure CLI 執行身份驗證。 有關詳細資訊,請參閱[Terraform 文件](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html)。
+Microsoft 已建立 Terraform 腳本，以啟用網路互連的自動化部署。 Terraform 腳本必須在執行之前向 Azure 進行驗證，因為它們需要 Azure 訂用帳戶的適當許可權。 您可以使用[Azure Active Directory 服務主體](../../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)或使用 Azure CLI 來執行驗證。 如需詳細資訊，請參閱[Terraform 檔](https://www.terraform.io/docs/providers/azurerm/auth/azure_cli.html)。
 
-部署互連的 Terraform 文稿和相關文件可以在此[GitHub 儲存庫](https://aka.ms/azureociinterconnecttf)中找到。
+您可以在此[GitHub 存放庫](https://aka.ms/azureociinterconnecttf)中找到 Terraform 腳本和用來部署連線的相關檔。
 
 ## <a name="monitoring"></a>監視
 
-在這兩個雲端安裝代理,可以利用 Azure[網路效能監視器 (NPM)](../../../expressroute/how-to-npm.md)來監視端到端網路的性能。 NPM 可説明您輕鬆識別網路問題,並説明消除這些問題。
+在這兩個雲端上安裝代理程式，您可以利用 Azure[網路效能監控（NPM）](../../../expressroute/how-to-npm.md)來監視端對端網路的效能。 NPM 可協助您立即找出網路問題，並協助消除它們。
 
-## <a name="delete-the-interconnect-link"></a>刪除互連結
+## <a name="delete-the-interconnect-link"></a>刪除互連連結
 
-要刪除互連,必須按照給定的特定順序執行以下步驟。 否則將導致故障狀態「ExpressRoute 電路」。
+若要刪除互連，必須依照指定的順序，遵循下列步驟。 若未這麼做，將會導致「失敗狀態」 ExpressRoute 線路。
 
-1. 刪除快速路由連接。 按下連接頁面上的 **「刪除**」圖示,刪除連接。 有關詳細資訊,請參閱[ExpressRoute 文件](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet)。
-1. 從 Oracle 雲端控制台中刪除 Oracle 快速連接。
-1. 刪除 Oracle 快速連接電路後,可以刪除 Azure ExpressRoute 電路。
+1. 刪除 ExpressRoute 連接。 按一下連接頁面上的 [**刪除**] 圖示，以刪除連接。 如需詳細資訊，請參閱[ExpressRoute 檔](../../../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md#delete-a-connection-to-unlink-a-vnet)。
+1. 從 Oracle 雲端主控台刪除 Oracle FastConnect。
+1. 一旦刪除 Oracle FastConnect 線路之後，您就可以刪除 Azure ExpressRoute 線路。
 
-此時,刪除和取消預配過程已完成。
+此時，刪除和解除布建程式已完成。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關 OCI 與 Azure 之間的跨雲端連線的詳細資訊,請參閱[Oracle 文件](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)。
-* 使用[Terraform 文稿](https://aka.ms/azureociinterconnecttf)透過 Azure 部署針對目標的 Oracle 應用程式的基礎結構,並配置網路互連。 
+* 如需 OCI 與 Azure 之間跨雲端連線的詳細資訊，請參閱[Oracle 檔](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)集。
+* 使用[Terraform 腳本](https://aka.ms/azureociinterconnecttf)，透過 Azure 部署目標 Oracle 應用程式的基礎結構，並設定網路互連。 

@@ -7,35 +7,35 @@ author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
 ms.openlocfilehash: f2f3e84462307f43ffe432fe878476d979f489f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79480907"
 ---
 # <a name="using-service-map-solution-in-azure"></a>在 Azure 中使用服務對應解決方案
 
 服務對應會自動在 Windows 及 Linux 系統上探索應用程式元件，並對應服務之間的通訊。 您可以藉由服務對應，將伺服器視為提供重要服務的互連系統，藉此來檢視伺服器。 不需要進行任何設定，只要安裝了代理程式，服務對應就會顯示橫跨任何 TCP 連線架構的伺服器、處理序、輸入和輸出連線的延遲，和連接埠之間的連線。
 
-本文說明上線和使用服務對應的詳細資訊。 有關配置此解決方案的先決條件的資訊，請參閱[為 VM 啟用 Azure 監視器概述](vminsights-enable-overview.md#prerequisites)。 總之，您需要以下事項：
+本文說明上線和使用服務對應的詳細資訊。 如需設定此解決方案之必要條件的詳細資訊，請參閱[啟用適用於 VM 的 Azure 監視器總覽](vminsights-enable-overview.md#prerequisites)。 總而言之，您需要下列各項：
 
-* 啟用此解決方案的日誌分析工作區。
+* 啟用此解決方案的 Log Analytics 工作區。
 
-* Windows 電腦或 Linux 伺服器上安裝的日誌分析代理配置為報告啟用解決方案的相同工作區。
+* 已將 Log Analytics 代理程式安裝在 Windows 電腦或 Linux 伺服器上，並將其設定為報告您啟用解決方案的相同工作區。
 
-* 安裝在 Windows 電腦或 Linux 伺服器上的依賴項代理。
+* 相依性代理程式已安裝在 Windows 電腦或 Linux 伺服器上。
 
 >[!NOTE]
->如果您已部署服務對應，則現在還可以在適用於 VM 的 Azure 監視器中檢視您的對應，其中包括用於監視 VM 健康情況和效能的其他功能。 若要深入了解，請參閱[適用於 VM 的 Azure 監視器概觀](../../azure-monitor/insights/vminsights-overview.md)。 要瞭解服務映射解決方案和 VM 映射 Azure 監視器功能之間的差異，請參閱以下[常見問題解答](../faq.md#azure-monitor-for-vms)。
+>如果您已部署服務對應，則現在還可以在適用於 VM 的 Azure 監視器中檢視您的對應，其中包括用於監視 VM 健康情況和效能的其他功能。 若要深入了解，請參閱[適用於 VM 的 Azure 監視器概觀](../../azure-monitor/insights/vminsights-overview.md)。 若要瞭解服務對應解決方案和適用於 VM 的 Azure 監視器對應] 功能之間的差異，請參閱下列[常見問題](../faq.md#azure-monitor-for-vms)。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-登錄到 中的[https://portal.azure.com](https://portal.azure.com)Azure 門戶。
+登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 
 ## <a name="enable-service-map"></a>啟用服務對應
 
-1. 從[Azure 市場](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)啟用服務映射解決方案，或使用[解決方案庫中的添加監視解決方案](solutions.md)中描述的過程。
-1. [在 Windows 上安裝依賴項代理](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows)，或在要獲取資料的每台電腦[上安裝 Linux 上的依賴項代理](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)。 相依性代理程式可以監視緊接鄰近點的連線，因此您可能不需要在每部電腦上都有代理程式。
+1. 從[Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)或使用[從方案庫新增監視解決方案](solutions.md)中所述的程式，啟用服務對應解決方案。
+1. 在[Windows 上安裝 dependency agent，](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows)或在您要取得資料的每部電腦上安裝相依性[代理程式](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)。 相依性代理程式可以監視緊接鄰近點的連線，因此您可能不需要在每部電腦上都有代理程式。
 
 您可以在 Azure 入口網站中從 Log Analytics 工作區存取服務對應，然後從左窗格選取 [解決方案]**** 選項。<br><br> ![在工作區中選取 [解決方案] 選項](./media/service-map/select-solution-from-workspace.png)。<br> 從解決方案清單中，選取 [ServiceMap(workspaceName)]****，然後在 [服務對應解決方案概觀] 頁面中，按一下 [服務對應摘要] 圖格。<br><br> ![[服務對應摘要] 圖格](./media/service-map/service-map-summary-tile.png)。
 
@@ -55,7 +55,7 @@ ms.locfileid: "79480907"
 
 ### <a name="business-continuity"></a>業務持續性
 
-如果您使用 Azure Site Recovery，且需要協助以定義應用程式環境的復原順序，服務對應可以自動向您顯示系統彼此間的相依情形，以確保復原計畫可靠。 藉由選擇重要伺服器或群組並檢視其用戶端，可以識別在伺服器還原並可用之後要復原的前端系統。 相反，通過查看關鍵伺服器的後端依賴關係，您可以確定在恢復焦點系統之前要恢復哪些系統。
+如果您使用 Azure Site Recovery，且需要協助以定義應用程式環境的復原順序，服務對應可以自動向您顯示系統彼此間的相依情形，以確保復原計畫可靠。 藉由選擇重要伺服器或群組並檢視其用戶端，可以識別在伺服器還原並可用之後要復原的前端系統。 相反地，藉由查看重要伺服器的後端相依性，您可以識別要在還原焦點系統之前復原的系統。
 
 ### <a name="patch-management"></a>修補程式管理
 
@@ -63,7 +63,7 @@ ms.locfileid: "79480907"
 
 ## <a name="mapping-overview"></a>對應概觀
 
-服務映射代理收集有關安裝這些進程所在的伺服器上的所有 TCP 連接進程的資訊，以及有關每個進程的入站和出站連接的詳細資訊。
+服務對應代理程式會收集其安裝所在之伺服器上所有 TCP 連線進程的相關資訊，以及每個處理常式之輸入和輸出連接的詳細資料。
 
 在左窗格的清單中，可以選取具有服務對應代理程式的機器或群組，將它們在指定時間範圍內的相依性視覺化。 機器相依性對應的焦點會集中在特定機器，並顯示屬於該機器的所有直接 TCP 用戶端或伺服器機器。  機器群組對應會顯示多組伺服器及其相依性。
 
@@ -108,7 +108,7 @@ ms.locfileid: "79480907"
 
 ### <a name="viewing-a-group"></a>檢視群組
 
-創建某些組後，可以通過選擇"組"選項卡來查看它們。
+建立一些群組之後，您可以選擇 [群組] 索引標籤來查看它們。
 
 ![[群組] 索引標籤](media/service-map/machine-groups-tab.png)
 
@@ -219,7 +219,7 @@ ms.locfileid: "79480907"
 
 ![[處理序屬性] 窗格](media/service-map/process-properties.png)
 
-**"進程摘要"** 窗格提供有關進程連接的其他資訊，包括其綁定埠、入站和出站連接以及失敗連接。
+[**進程摘要**] 窗格會提供進程連線的其他資訊，包括其系結埠、輸入和輸出連線，以及失敗的連接。
 
 ![[處理序摘要] 窗格](media/service-map/process-summary.png)
 
@@ -320,7 +320,7 @@ Linux：
 
 ### <a name="connections"></a>連接
 
-連線計量會寫入到 Log Analytics 中的新資料表：VMConnection。 這個資料表會提供機器連線 (輸入和輸出) 的相關資訊。 連線計量也會透過 API 來公開，這類 API 會提供方法來取得某個時間範圍內的特定計量。  偵聽通訊端上接受產生的 TCP 連接是入站連接，而通過連接到給定 IP 和埠創建的 TCP 連接是出站連接。 連線的方向會透過 Direction 屬性來表示，此屬性可設為 **inbound** 或 **outbound**。 
+連線計量會寫入到 Log Analytics 中的新資料表：VMConnection。 這個資料表會提供機器連線 (輸入和輸出) 的相關資訊。 連線計量也會透過 API 來公開，這類 API 會提供方法來取得某個時間範圍內的特定計量。  在接聽通訊端上接受的 TCP 連線是輸入的，而透過連線到指定 IP 和埠所建立的連接則是輸出。 連線的方向會透過 Direction 屬性來表示，此屬性可設為 **inbound** 或 **outbound**。 
 
 這些資料表中的記錄都是從 Dependency Agent 所報告的資料產生的。 每筆記錄均代表在一分鐘時間間隔內的觀測。 TimeGenerated 屬性表示時間間隔的開始時間。 每筆記錄均包含資訊來識別個別的實體 (也就是連線或連接埠)，以及與該實體相關聯的計量。 目前只會報告透過 IPv4 使用 TCP 而發生的網路活動。
 
@@ -379,7 +379,7 @@ Linux：
 
 | 屬性 | 描述 |
 |:--|:--|
-| `RemoteCountry` |託管 RemoteIp 的國家/地區的名稱。  例如，*美國* |
+| `RemoteCountry` |主控 RemoteIp 的國家/地區名稱。  例如，*美國* |
 | `RemoteLatitude` |地理位置緯度。  例如，*47.68* |
 | `RemoteLongitude` |地理位置經度。  例如：*-122.12* |
 
@@ -559,46 +559,46 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ### <a name="dependency-agent-installation-problems"></a>Dependency Agent 安裝問題
 
 #### <a name="installer-prompts-for-a-reboot"></a>安裝程式提示重新開機
-依賴項代理*通常*不需要在安裝或刪除時重新開機。 不過，在某些罕見情況下，Windows Server 需要重新開機，才能繼續進行安裝。 當依賴項（通常是 Microsoft VisualC++可轉散布庫因檔鎖定而需要重新開機時，就會發生這種情況。
+相依性代理程式*通常*不需要在安裝或移除時重新開機。 不過，在某些罕見情況下，Windows Server 需要重新開機，才能繼續進行安裝。 這種情況發生于相依性時，通常 Microsoft Visual C++ 可轉散發程式庫因為鎖定的檔案而需要重新開機。
 
 #### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>顯示「無法安裝 Dependency Agent︰無法安裝 Visual Studio 執行階段程式庫 (程式碼 = [code_number])」訊息
 
 Microsoft Dependency Agent 建置於 Microsoft Visual Studio 執行階段程式庫之上。 如果程式庫安裝期間發生問題，就會出現訊息。 
 
-執行階段程式庫安裝程式會在 %LOCALAPPDATA%\temp 資料夾中建立記錄。 該檔`dd_vcredist_arch_yyyymmddhhmmss.log`是 ，*其中拱門*是`x86``amd64`或*yyymmdhmss*是創建日誌的日期和時間（24 小時時鐘）。 記錄會提供導致無法安裝之問題的詳細資料。
+執行階段程式庫安裝程式會在 %LOCALAPPDATA%\temp 資料夾中建立記錄。 `dd_vcredist_arch_yyyymmddhhmmss.log`檔案是，其中的架構是`x86`或`amd64` *，而* *yyyymmddhhmmss.ffffff*是建立記錄時的日期和時間（24小時制）。 記錄會提供導致無法安裝之問題的詳細資料。
 
-首先安裝[最新的運行時庫](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)可能很有用。
+先安裝[最新的運行](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)時間程式庫可能會很有用。
 
 下表列出代碼和建議的解決方式。
 
 | 程式碼 | 描述 | 解決方案 |
 |:--|:--|:--|
-| 0x17 | 程式庫安裝程式會要求尚未安裝的 Windows 更新。 | 查看最新的程式庫安裝程式記錄。<br><br>如果引用`Windows8.1-KB2999226-x64.msu`後跟一行`Error 0x80240017: Failed to execute MSU package,`，則沒有安裝 KB2999226 的先決條件。 按照 Windows 文章中[通用 C 運行時](https://support.microsoft.com/kb/2999226)中的先決條件部分中的說明進行操作。 您可能需要執行 Windows Update 並重新開機多次，才能安裝必要條件。<br><br>再次執行 Microsoft Dependency Agent 安裝程式。 |
+| 0x17 | 程式庫安裝程式會要求尚未安裝的 Windows 更新。 | 查看最新的程式庫安裝程式記錄。<br><br>如果的參考後面`Windows8.1-KB2999226-x64.msu`接著一行`Error 0x80240017: Failed to execute MSU package,` ，表示您沒有安裝 KB2999226 的必要條件。 遵循[Windows 中通用 C 運行](https://support.microsoft.com/kb/2999226)時間的必要條件一節中的指示。 您可能需要執行 Windows Update 並重新開機多次，才能安裝必要條件。<br><br>再次執行 Microsoft Dependency Agent 安裝程式。 |
 
 ### <a name="post-installation-issues"></a>安裝後問題
 
 #### <a name="server-doesnt-appear-in-service-map"></a>伺服器未出現在服務對應中
 
-如果依賴項代理安裝成功，但在服務映射解決方案中看不到電腦：
+如果您的相依性代理程式安裝成功，但您在服務對應解決方案中看不到您的電腦：
 * Dependency Agent 是否安裝成功？ 您可以查看是否已安裝服務並且執行，以便驗證。<br><br>
-**視窗**：查找名為**微軟依賴項代理**的服務。
-**Linux**：尋找運行過程**微軟依賴代理**。
+**Windows**：尋找名為**Microsoft Dependency agent**的服務。
+**Linux**：尋找執行中的進程**microsoft 相依性代理程式**。
 
-* 您是否在[日誌分析免費層](https://azure.microsoft.com/pricing/details/monitor/)？ 免費計畫允許最多五台唯一的服務地圖電腦。 任何後續電腦將不會顯示在服務映射中，即使前五台電腦不再發送資料。
+* 您在[Log Analytics 免費層](https://azure.microsoft.com/pricing/details/monitor/)嗎？ 免費方案最多允許五部唯一的服務對應機。 任何後續的機器都不會出現在服務對應中，即使先前的五個已不再傳送資料也一樣。
 
-* 您的伺服器是否向 Azure 監視器日誌發送日誌和 perf 資料？ 轉到 Azure 監視器\日誌並運行電腦的以下查詢： 
+* 您的伺服器是否將記錄和效能資料傳送至 Azure 監視器記錄？ 移至 Azure Monitor\Logs，並針對您的電腦執行下列查詢： 
 
     ```kusto
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-您是否在結果中取得各種事件？ 是否為最新的資料？ 如果是這樣，日誌分析代理操作正常並與工作區通信。 如果沒有，請檢查電腦上的代理：[日誌分析代理的 Windows 故障排除](../platform/agent-windows-troubleshoot.md)或[日誌分析代理的 Linux 故障排除](../platform/agent-linux-troubleshoot.md)。
+您是否在結果中取得各種事件？ 是否為最新的資料？ 若是如此，您的 Log Analytics 代理程式會正常運作，並與工作區進行通訊。 如果不是，請檢查您電腦上的代理程式：[適用于 Windows 的 Log analytics 代理程式疑難排解](../platform/agent-windows-troubleshoot.md)或[適用于 Linux 的 log analytics 代理程式疑難排解](../platform/agent-linux-troubleshoot.md)。
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>伺服器顯示在服務對應中，但是沒有任何處理序
 
-如果在 Service Map 中看到電腦，但它沒有進程或連接資料，則表示已安裝並運行依賴項代理，但內核驅動程式未載入。 
+如果您在服務對應中看到電腦，但它沒有進程或連接資料，表示相依性代理程式已安裝且正在執行，但未載入核心驅動程式。 
 
-檢查`C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file`（Windows）或`/var/opt/microsoft/dependency-agent/log/service.log file`（Linux）。 檔案的最後幾行應該會指出未載入核心的原因。 例如，若您更新過核心，在 Linux 上可能會不受支援。
+檢查`C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或`/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 檔案的最後幾行應該會指出未載入核心的原因。 例如，若您更新過核心，在 Linux 上可能會不受支援。
 
 ## <a name="feedback"></a>意見反應
 

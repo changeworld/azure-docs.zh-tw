@@ -1,7 +1,7 @@
 ---
-title: 將 MSAL 與 Azure 活動目錄 B2C 學習一起使用 |蔚藍
+title: 搭配 Azure Active Directory B2CLearn 使用 MSAL |Azure
 titleSuffix: Microsoft identity platform
-description: 適用於 JavaScript 的 Microsoft 驗證函式庫 (MSAL.js) 使應用程式能夠使用 Azure AD B2C 並取得權碼來呼叫安全的 Web API。 這些 Web API 可以是 Microsoft Graph、其他 Microsoft API、來自其他發行者的 Web API，或是您自己的 Web API。
+description: 適用于 JavaScript 的 Microsoft 驗證程式庫（MSAL）可讓應用程式使用 Azure AD B2C 並取得權杖來呼叫受保護的 web Api。 這些 Web API 可以是 Microsoft Graph、其他 Microsoft API、來自其他發行者的 Web API，或是您自己的 Web API。
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -14,41 +14,41 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 8e076dfd6670265d458eb35d8e1b3e4500009a12
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81534477"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-active-directory-b2c"></a>使用 JavaScript 的 Microsoft 驗證函式庫使用 Azure 活動目錄 B2C
+# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-active-directory-b2c"></a>使用適用于 JavaScript 的 Microsoft 驗證程式庫來處理 Azure Active Directory B2C
 
-[適用於 JavaScript (MSAL.js) 的 Microsoft 身份驗證庫](https://github.com/AzureAD/microsoft-authentication-library-for-js)使 JavaScript 開發人員能夠使用[Azure 活動目錄 B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)對具有社交和本地識別的使用者進行身份驗證。 通過使用 Azure AD B2C 作為身份管理服務,您可以自訂和控制客戶在使用應用程式時註冊、登錄和管理其配置檔的方式。
+[適用于 javascript 的 Microsoft 驗證程式庫（MSAL）](https://github.com/AzureAD/microsoft-authentication-library-for-js)可讓 javascript 開發人員使用[Azure Active Directory B2C （Azure AD B2C）](https://docs.microsoft.com/azure/active-directory-b2c/)來驗證具有社交和本機身分識別的使用者。 藉由使用 Azure AD B2C 做為身分識別管理服務，您可以自訂和控制客戶在使用您的應用程式時，如何註冊、登入及管理其設定檔。
 
-Azure AD B2C 還使您能夠在身份驗證過程中對應用程式的 UI 進行品牌認證和自定義,以便為客戶提供無縫體驗。
+Azure AD B2C 也可讓您在驗證過程中，為您的應用程式提供品牌和自訂 UI，以便為客戶提供順暢的體驗。
 
-本文演示如何使用 MSAL.js 使用 Azure AD B2C,並總結了您應該注意的要點。 有關完整的討論和教程,請參閱[Azure AD B2C 文件](https://docs.microsoft.com/azure/active-directory-b2c/overview)。
+本文示範如何使用 MSAL 來處理 Azure AD B2C，並摘要說明您應該留意的重點。 如需完整的討論和教學課程，請參閱[Azure AD B2C 檔](https://docs.microsoft.com/azure/active-directory-b2c/overview)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-如果尚未創建自己的[Azure AD B2C 租戶](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant),請從現在創建租戶開始(如果已有 Azure AD B2C 租戶,也可以使用現有的 Azure AD B2C 租戶)。
+如果您尚未建立自己的[Azure AD B2C 租](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)使用者，請從立即建立一個來開始（您也可以使用現有的 Azure AD B2C 租使用者，如果您已經有的話）。
 
-此展示包含兩個部分:
+本示範包含兩個部分：
 
 - 如何保護 Web API。
-- 如何註冊單頁應用程式以驗證和調用*該*Web API。
+- 如何註冊單一頁面應用程式來進行驗證，並呼叫*該*Web API。
 
 ## <a name="nodejs-web-api"></a>Node.js Web API
 
 > [!NOTE]
-> 此時,Node 的 MSAL.js 仍處於開發階段(請參閱[路線圖](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap))。 同時,我們建議使用由 Microsoft 開發和支援的 Node.js 的[身份驗證庫「護照 azure-ad」。。](https://github.com/AzureAD/passport-azure-ad)
+> 目前，MSAL 的節點仍在開發中（請參閱[藍圖](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)）。 在此同時，我們建議您使用[passport-azure-ad](https://github.com/AzureAD/passport-azure-ad)，這是由 Microsoft 開發及支援的 node.js 驗證程式庫。
 
-以下步驟演示了 Web **API**如何使用 Azure AD B2C 來保護自己並將選定的作用域公開給用戶端應用程式。
+下列步驟會示範**Web API**如何使用 Azure AD B2C 來保護自己，並將選取的範圍公開給用戶端應用程式。
 
 ### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 
-要使用 Azure AD B2C 保護 Web API,首先需要註冊它。 請參閱[註冊您的應用程式](https://docs.microsoft.com/azure/active-directory-b2c/add-web-application?tabs=applications) \(英文\) 以取得詳細步驟。
+若要使用 Azure AD B2C 保護您的 Web API，您必須先註冊它。 請參閱[註冊您的應用程式](https://docs.microsoft.com/azure/active-directory-b2c/add-web-application?tabs=applications) \(英文\) 以取得詳細步驟。
 
-### <a name="step-2-download-the-sample-application"></a>第二步:下載範例應用程式
+### <a name="step-2-download-the-sample-application"></a>步驟2：下載範例應用程式
 
 將範例下載為 ZIP 檔案，或是從 GitHub 複製它：
 
@@ -56,11 +56,11 @@ Azure AD B2C 還使您能夠在身份驗證過程中對應用程式的 UI 進行
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
 
-### <a name="step-3-configure-authentication"></a>第三步:設定認證
+### <a name="step-3-configure-authentication"></a>步驟3：設定驗證
 
 1. 開啟範例中的 `config.js` 檔案。
 
-2. 使用之前註冊應用程式時獲得的應用程式憑據配置範例。 通過將值替換為客戶端 ID、主機、租戶 Id 和策略名稱的名稱來更改以下代碼行。
+2. 使用您稍早在註冊應用程式時取得的應用程式認證來設定範例。 將值取代為您的 clientID、主機、tenantId 和原則名稱的名稱，以變更下列幾行程式碼。
 
 ```JavaScript
 const clientID = "<Application ID for your Node.js web API - found on Properties page in Azure portal e.g. 93733604-cc77-4a3c-a604-87084dd55348>";
@@ -69,19 +69,19 @@ const tenantId = "<your-tenant-ID>.onmicrosoft.com"; // Alternatively, you can u
 const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsignin1>";
 ```
 
-有關詳細資訊,請查看此[Node.js B2C Web API 範例](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)。
+如需詳細資訊，請參閱此[NODE.JS B2C Web API 範例](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)。
 
 ---
 
 ## <a name="javascript-spa"></a>JavaScript SPA
 
-以下步驟演示**了單頁應用程式**如何使用 Azure AD B2C 註冊、登錄和調用受保護的 Web API。
+下列步驟會示範**單頁應用程式**如何使用 Azure AD B2C 來註冊、登入及呼叫受保護的 Web API。
 
 ### <a name="step-1-register-your-application"></a>步驟 1:註冊您的應用程式
 
 若要實作驗證，您必須先註冊您的應用程式。 請參閱[註冊您的應用程式](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) \(英文\) 以取得詳細步驟。
 
-### <a name="step-2-download-the-sample-application"></a>第二步:下載範例應用程式
+### <a name="step-2-download-the-sample-application"></a>步驟2：下載範例應用程式
 
 將範例下載為 ZIP 檔案，或是從 GitHub 複製它：
 
@@ -89,16 +89,16 @@ const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsig
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
-### <a name="step-3-configure-authentication"></a>第三步:設定認證
+### <a name="step-3-configure-authentication"></a>步驟3：設定驗證
 
-設定應用程式有兩點興趣:
+設定應用程式時有兩個重點：
 
-- 設定 API 終結點與公開作用區
-- 設定驗證參數與權杖範圍
+- 設定 API 端點和公開的範圍
+- 設定驗證參數和權杖範圍
 
 1. 開啟範例中的 `apiConfig.js` 檔案。
 
-2. 使用註冊 Web API 時之前獲得的參數配置範例。 通過將值替換為 Web API 位址和公開作用域,更改以下代碼行。
+2. 使用您稍早在註冊 Web API 時取得的參數來設定範例。 將值取代為您的 Web API 和公開範圍的位址，以變更下列幾行程式碼。
 
    ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
@@ -110,7 +110,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
 3. 開啟範例中的 `authConfig.js` 檔案。
 
-4. 使用之前在註冊單頁應用程式時獲得的參數配置範例。 通過將值替換為 ClientId、許可權中繼資料和權杖請求作用域來更改以下代碼行。
+4. 使用您稍早在註冊單一頁面應用程式時取得的參數來設定範例。 藉由將值取代為您的 ClientId、授權中繼資料和權杖要求範圍，來變更下列幾行程式碼。
 
    ```javascript
     // Config object to be passed to Msal on creation.
@@ -132,13 +132,13 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
     };
    ```
 
-關於詳細資訊,請檢視此[JavaScript B2C 單頁應用程式範例](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)。
+如需詳細資訊，請參閱此[JAVASCRIPT B2C 單一頁面應用程式範例](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)。
 
 ---
 
 ## <a name="next-steps"></a>後續步驟
 
 深入了解：
-- [使用者流](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)
+- [使用者流程](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)
 - [自訂原則](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
 - [UX 自訂](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-configure-user-input)

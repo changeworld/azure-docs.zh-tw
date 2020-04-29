@@ -1,6 +1,6 @@
 ---
-title: 概述 - Azure 檔案基於識別的授權
-description: Azure 檔案透過 Azure 活動目錄網域服務 (AD DS) 和活動目錄支援透過 SMB(伺服器訊息區塊)進行基於身份的身份驗證。 然後，您加入網域的 Windows 虛擬機器 (VM) 可以使用 Azure AD 認證存取 Azure 檔案共用。
+title: 總覽-以身分識別為基礎的授權 Azure 檔案儲存體
+description: Azure 檔案儲存體可透過 Azure Active Directory Domain Services （AD DS）和 Active Directory，在 SMB （伺服器訊息區）上支援以身分識別為基礎的驗證。 然後，您加入網域的 Windows 虛擬機器 (VM) 可以使用 Azure AD 認證存取 Azure 檔案共用。
 author: roygara
 ms.service: storage
 ms.subservice: files
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: rogarana
 ms.openlocfilehash: 7d9f8ccb4273d1378c4826dea420c4edca2f8ac3
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536570"
 ---
-# <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>基於 Azure 檔案的基礎的 SMB 存取的身分驗證支援的概述
+# <a name="overview-of-azure-files-identity-based-authentication-support-for-smb-access"></a>瞭解 SMB 存取的 Azure 檔案儲存體身分識別型驗證支援
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
-要瞭解如何為 Azure 檔案分享(預覽)啟用本地活動目錄網域服務身份驗證,請參閱[透過 SMB 為 Azure 檔案分享啟用本地活動目錄域服務身份驗證](storage-files-identity-auth-active-directory-enable.md)。
+若要瞭解如何啟用 Azure 檔案共用的內部部署 Active Directory Domain Services 驗證（預覽），請參閱針對[azure 檔案共用啟用透過 SMB 的內部部署 Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-enable.md)。
 
-要瞭解如何為 Azure 檔案分享啟用 Azure AD DS 身份驗證,請參閱[在 Azure 檔上啟用 Azure 活動目錄網域服務身份驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)。
+若要瞭解如何為 Azure 檔案共用啟用 Azure AD DS 驗證，請參閱[在 Azure 檔案儲存體上啟用 Azure Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)。
 
 ## <a name="glossary"></a>詞彙 
-瞭解與 Azure 檔案分享的 SMB 上透過 SMB 進行 Azure AD 網域服務身份驗證的一些關鍵術語很有説明:
+瞭解 Azure 檔案共用的透過 SMB Azure AD 網域服務驗證的一些重要詞彙，會很有説明：
 
 -   **Kerberos 驗證**
 
@@ -32,102 +32,102 @@ ms.locfileid: "81536570"
 
     SMB 是業界標準網路檔案共用通訊協定。 SMB 亦稱為 Common Internet File System 或 CIFS。 如需有關 SMB 的詳細資訊，請參閱 [Microsoft SMB 通訊協定和 CIFS 通訊協定概觀](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)。
 
--   **Azure 動作目錄(Azure AD)**
+-   **Azure Active Directory (Azure AD)**
 
-    Azure 活動目錄 (Azure AD) 是 Microsoft 的多租戶基於雲端的目錄和識別管理服務。 Azure AD 將核心目錄服務、應用程式存取管理及身分識別保護結合到單個解決方案。 Azure AD 加入的 Windows 虛擬機器 (VM) 可以使用 Azure AD 認證存取 Azure 檔案分享。 有關詳細資訊,請參閱什麼是[Azure 活動目錄?](../../active-directory/fundamentals/active-directory-whatis.md)
+    Azure Active Directory （Azure AD）是 Microsoft 的多租使用者雲端式目錄和身分識別管理服務。 Azure AD 將核心目錄服務、應用程式存取管理及身分識別保護結合到單個解決方案。 已加入 Azure AD 的 Windows 虛擬機器（Vm）可以使用您的 Azure AD 認證來存取 Azure 檔案共用。 如需詳細資訊，請參閱[什麼是 Azure Active Directory？](../../active-directory/fundamentals/active-directory-whatis.md)
 
 -   **Azure Active Directory Domain Services (Azure AD DS)**
 
-    Azure AD DS 提供託管域服務,如域聯接、組策略、LDAP 和 Kerberos/NTLM 身份驗證。 這些服務與活動目錄域服務完全相容。 有關詳細資訊,請參閱[Azure 活動目錄網域服務](../../active-directory-domain-services/overview.md)。
+    Azure AD DS 提供受控網域服務，例如加入網域、群組原則、LDAP 和 Kerberos/NTLM 驗證。 這些服務與 Active Directory Domain Services 完全相容。 如需詳細資訊，請參閱[Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md)。
 
-- **本地活動目錄網域服務 (AD DS)**
+- **內部部署 Active Directory Domain Services （AD DS）**
 
-    與 Azure 檔(預覽)的本地活動目錄域服務 (AD DS) 整合提供儲存目錄資料,同時使其可供網路使用者和管理員使用的方法。 通過登錄身份驗證和對目錄中對象的存取控制,安全性與 AD DS 整合。 通過單個網路登錄,管理員可以管理整個網路中的目錄數據和組織,並且經過授權的網路使用者可以訪問網路上的任意位置的資源。 AD DS 通常被企業在本地環境中採用,AD DS 認證控制的身份。 有關詳細資訊,請參閱[活動目錄網域服務概述](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
+    內部部署 Active Directory Domain Services （AD DS）與 Azure 檔案儲存體（預覽）整合提供儲存目錄資料的方法，同時讓網路使用者和系統管理員使用。 安全性透過登入驗證和對目錄中物件的存取控制，與 AD DS 整合。 透過單一網路登入，系統管理員可以管理整個網路的目錄資料和組織，而已授權的網路使用者可以存取網路上任何位置的資源。 內部部署環境中的企業通常會採用 AD DS，而 AD DS 認證則是用來做為存取控制的身分識別。 如需詳細資訊，請參閱[Active Directory Domain Services 總覽](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
 
 -   **Azure 角色型存取控制 (RBAC)**
 
-    Azure 角色型存取控制 (RBAC) 可以對 Azure 進行更細緻的存取權管理。 使用 RBAC，您可以對使用者授權執行其執行工作所需的最少權限，以便管理對資源的存取權。 有關 RBAC 的詳細資訊,請參閱[Azure 中什麼是基於角色的訪問控制 (RBAC)?](../../role-based-access-control/overview.md)
+    Azure 角色型存取控制 (RBAC) 可以對 Azure 進行更細緻的存取權管理。 使用 RBAC，您可以對使用者授權執行其執行工作所需的最少權限，以便管理對資源的存取權。 如需 RBAC 的詳細資訊，請參閱[什麼是 Azure 中的角色型存取控制（RBAC）？](../../role-based-access-control/overview.md)。
 
 ## <a name="common-use-cases"></a>一般使用案例
 
-Azure 檔案上的識別碼識別碼識別和支援最適合使用以下用例:
+在 Azure 檔案儲存體上，以身分識別為基礎的驗證和支援對 Windows Acl 最適用于下列使用案例：
 
-### <a name="replace-on-premises-file-servers"></a>取代本地端檔案伺服器
+### <a name="replace-on-premises-file-servers"></a>取代內部部署檔案伺服器
 
-棄用和替換分散的本地文件伺服器是每個企業在 IT 現代化旅程中遇到的常見問題。 當您可以將資料遷移到 Azure 檔時,使用本地 AD DS(預覽)身份驗證的 Azure 檔共享是最適合的。 完全遷移將允許您利用高可用性和可擴充性優勢,同時最大限度地減少用戶端更改。 它為最終使用者提供了無縫的遷移體驗,因此他們可以繼續使用其現有的域聯接電腦使用相同的憑據訪問其數據。
+淘汰和取代散佈的內部部署檔案伺服器，是每個企業在其 IT 現代化旅程中遇到的常見問題。 當您可以將資料移轉至 Azure 檔案儲存體時，使用內部部署 AD DS （預覽）驗證的 Azure 檔案共用最適合於此處。 完整的遷移可讓您利用高可用性和擴充性的優勢，同時將用戶端的變更降至最低。 它可為使用者提供順暢的遷移體驗，讓他們可以使用現有已加入網域的電腦，以相同的認證繼續存取其資料。
 
-### <a name="lift-and-shift-applications-to-azure"></a>提升應用程式並將其移至 Azure
+### <a name="lift-and-shift-applications-to-azure"></a>將應用程式隨即轉移至 Azure
 
-提升應用程式並將其移至雲時,需要為數據保留相同的身份驗證模型。 隨著我們將基於身份的存取控制體驗擴展到 Azure 檔共用,無需將應用程式更改為現代身份驗證方法並加快雲端採用。 Azure 檔案共用提供了與 Azure AD DS 或本地 AD DS(預覽)整合式驗證的選項。 如果計劃是 100% 雲原生,並最大限度地減少管理雲基礎架構的努力,Azure AD DS 將更適合作為完全託管的域服務。 如果您需要與 AD DS 功能完全相容,您可能需要考慮透過 VM 上自託管域控制器將 AD DS 環境擴展到雲端。 無論哪種方式,我們都提供靈活性,選擇適合您業務需求的域服務。
+當您將應用程式隨即轉移至雲端時，您會想要為您的資料保留相同的驗證模型。 當我們將身分識別型存取控制體驗延伸到 Azure 檔案共用時，就不需要將應用程式變更為新式驗證方法，並加快雲端採用的速度。 Azure 檔案共用可讓您選擇整合 Azure AD DS 或內部部署 AD DS （預覽）以進行驗證。 如果您的計畫是100% 雲端原生，並將管理雲端基礎結構的工作降到最低，Azure AD DS 會更適合做為完全受控的網域服務。 如果您需要與 AD DS 功能的完全相容性，您可以考慮在 Vm 上以自我裝載網域控制站的方式，將您的 AD DS 環境延伸到雲端。 不論是哪一種方式，我們都提供彈性來選擇符合您商務需求的網域服務。
 
-### <a name="backup-and-disaster-recovery-dr"></a>備份與災難復原 (DR)
+### <a name="backup-and-disaster-recovery-dr"></a>備份與嚴重損壞修復（DR）
 
-如果要將主檔案存儲保留在本地,Azure 檔案共用可用作備份或 DR 的理想存儲,以提高業務連續性。 您可以使用 Azure 檔案共享從現有檔案伺服器備份數據,同時保留 Windows DACL。 對於 DR 方案,您可以配置身份驗證選項,以支援故障轉移時的正確存取控制實施。
+如果您要將主要檔案存放在內部部署環境，Azure 檔案共用可以做為備份或 DR 的理想儲存體，以改善商務持續性。 您可以使用 Azure 檔案共用，從現有的檔案伺服器備份資料，同時保留 Windows Dacl。 針對 DR 案例，您可以設定驗證選項，以在容錯移轉時支援適當的存取控制強制執行。
 
 ## <a name="supported-scenarios"></a>支援的案例
 
-下表總結了支援的 Azure 檔共用 Azure AD DS 和本地 AD DS(預覽)的身份驗證方案。 我們建議選擇為客戶端環境採用的域服務,以便與 Azure 檔整合。 如果已在本地或 Azure 中設置 AD DS(預覽),設備已加入到 AD 的域,則應選擇利用 AD DS(預覽)進行 Azure 檔共享身份驗證。 同樣,如果您已經採用 Azure AD DS (GA),則應將它用於 Azure 檔共享身份驗證。
+下表摘要說明 Azure AD DS 和內部部署 AD DS （預覽）支援的 Azure 檔案共用驗證案例。 我們建議您選取用戶端環境所採用的網域服務，以便與 Azure 檔案儲存體整合。 如果您已在內部部署或 Azure 中設定您的裝置已加入 AD 網域的 AD DS （預覽），您應該選擇利用 Azure 檔案共用驗證的 AD DS （預覽）。 同樣地，如果您已經採用 Azure AD DS （GA），您應該將其用於 Azure 檔案共用驗證。
 
 
-|Azure AD DS 認證  | 本地 AD DS(預覽)身份驗證  |
+|Azure AD DS 驗證  | 內部部署 AD DS （預覽）驗證  |
 |---------|---------|
-|Azure AD DS 聯接的 Windows 電腦可以透過 SMB 存取具有 Azure AD 認證的 Azure 檔案共用。     |本地 AD DS 聯接的 Windows 計算機可以使用透過 SMB 同步到 Azure AD 的本地活動目錄認證 Azure 檔案分享。         |
+|Azure AD 已加入 DS 的 Windows 機器可以透過 SMB 使用 Azure AD 認證來存取 Azure 檔案共用。     |已加入內部部署 AD DS 的 Windows 機器可以使用內部部署 Active Directory 認證來存取 Azure 檔案共用，並透過 SMB 同步處理 Azure AD。         |
 
 ### <a name="unsupported-scenarios"></a>不支援的情節
 
-- Azure AD DS 和本地 ADDS 身份驗證不支援針對計算機帳戶的身份驗證。 您可以考慮改用服務登錄帳戶。
-- Azure AD DS 身份驗證不支援針對 Azure AD 加入的設備進行身份驗證。
+- Azure AD DS 和內部部署 AD DS 驗證不支援對電腦帳戶進行驗證。 您可以考慮改為使用服務登入帳戶。
+- Azure AD DS 驗證不支援針對已加入 Azure AD 的裝置進行驗證。
 
-## <a name="advantages-of-identity-based-authentication"></a>基於身份的身份驗證的優勢
-與使用分享金鑰身份驗證不同,基於識別的 Azure 檔身份驗證提供幾個好處:
+## <a name="advantages-of-identity-based-authentication"></a>以身分識別為基礎之驗證的優點
+Azure 檔案儲存體以身分識別為基礎的驗證提供了數個使用共用金鑰驗證的優點：
 
--   **使用本地 AD DS 和 Azure AD DS 將傳統的識別碼的檔案分享存取體驗延伸到雲端**  
-    如果計劃提升應用程式並將其移至雲,用 Azure 檔共享替換傳統檔伺服器,則可能需要應用程式使用本地 AD DS 或 Azure AD DS 認證進行身份驗證以存取檔案資料。 Azure 檔案支援使用本地 AD DS 或 Azure AD DS 認證從本地 AD DS 或 Azure AD DS 網域聯接的 VM 透過 SMB 存取 Azure 檔案分享。
+-   **使用內部部署 AD DS 和 Azure AD DS，將傳統身分識別型檔案共用存取體驗延伸到雲端**  
+    如果您打算將應用程式隨即轉移至雲端，以 Azure 檔案共用取代傳統的檔案伺服器，您可能會想要讓應用程式使用內部部署 AD DS 或 Azure AD DS 認證進行驗證，以存取檔案資料。 Azure 檔案儲存體支援使用內部部署 AD DS 或 Azure AD DS 認證，從內部部署 AD DS 或 Azure AD DS 加入網域的 Vm 存取 SMB 的 Azure 檔案共用。
 
 -   **在 Azure 檔案共用上強制執行細微存取控制**  
-    您可以在共用、目錄或檔級別向特定標識授予許可權。 例如，假設您有多個小組使用同一個 Azure 檔案共用來共同作業某個專案。 您可以授權所有小組存取非敏感目錄，同時將包含敏感財務資料之目錄的存取權僅授與財務小組。 
+    您可以在共用、目錄或檔案層級，將許可權授與特定的身分識別。 例如，假設您有多個小組使用同一個 Azure 檔案共用來共同作業某個專案。 您可以授權所有小組存取非敏感目錄，同時將包含敏感財務資料之目錄的存取權僅授與財務小組。 
 
--   **備份 Windows ACL(也稱為 NTFS)以及您的資料**  
-    可以使用 Azure 檔案共享備份現有的本地檔案共用。 當您透過 SMB 將檔案共享備份到 Azure 檔案共享時,Azure 檔案會保留 ACL 和資料。
+-   **備份 Windows Acl （也稱為 NTFS）和您的資料**  
+    您可以使用 Azure 檔案共用來備份現有的內部部署檔案共用。 當您透過 SMB 將檔案共用備份至 Azure 檔案共用時，Azure 檔案儲存體會保留您的 Acl 以及您的資料。
 
 ## <a name="how-it-works"></a>運作方式
 
-Azure 檔案共用支援 Kerberos 身份驗證,以便與 Azure AD DS 或本地 AD DS(預覽)整合。 在 Azure 檔共享上啟用身份驗證之前,必須先設置域環境。 對於 Azure AD DS 身份驗證,應啟用 Azure AD 域服務和域加入計畫從中存取檔資料的 VM。 加入網域的 VM 必須與 Azure AD DS 駐留在同一虛擬網路 (VNET) 中。 同樣,對於本地 AD DS(預覽)身份驗證,您需要設置域控制器和域加入電腦或 VM。
+Azure 檔案共用支援 Kerberos 驗證，以便與 Azure AD DS 或內部部署 AD DS （預覽）整合。 您必須先設定網域環境，才可以在 Azure 檔案共用上啟用驗證。 針對 Azure AD DS 驗證，您應該啟用 Azure AD Domain Services，並加入您打算用來存取檔案資料之 Vm 的網域。 已加入網域的 VM 必須位於與您的 Azure AD DS 相同的虛擬網路（VNET）中。 同樣地，針對內部部署 AD DS （預覽）驗證，您必須設定您的網域控制站，並將您的電腦或 Vm 加入網域。
 
-當與在 VM 上運行的應用程式關聯的標識嘗試訪問 Azure 檔共享中的數據時,請求將發送到 Azure AD DS 以驗證該標識。 如果身份驗證成功,Azure AD DS 將返回 Kerberos 令牌。 應用程式發送包含 Kerberos 權杖的請求,Azure 檔案共用使用該權杖授權請求。 Azure 檔案共用僅接收權杖,不保留 Azure AD DS 認證。 本地 ADDS 身份驗證的工作方式類似,AD DS 提供 Kerberos 令牌。
+當與在 VM 上執行之應用程式相關聯的身分識別嘗試存取 Azure 檔案共用中的資料時，會將要求傳送至 Azure AD DS 來驗證身分識別。 如果驗證成功，Azure AD DS 會傳回 Kerberos 權杖。 應用程式會傳送包含 Kerberos 權杖的要求，而 Azure 檔案共用會使用該權杖來授權要求。 Azure 檔案共用只會接收權杖，而且不會保存 Azure AD DS 認證。 內部部署 AD DS 驗證會以類似的方式運作，您的 AD DS 會在其中提供 Kerberos 權杖。
 
 ![顯示「透過 SMB 的 Azure AD 驗證」圖的螢幕擷取畫面](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
 
-### <a name="enable-identity-based-authentication"></a>開啟基礎的身份驗證
+### <a name="enable-identity-based-authentication"></a>啟用以身分識別為基礎的驗證
 
-您可以使用 Azure AD DS 或本地 AD DS(預覽)為新儲存帳戶和現有儲存帳戶上的 Azure 檔案共享啟用基於身份的身份驗證。 存儲帳戶上只能使用一個域服務來進行文件訪問身份驗證,該身份驗證適用於帳戶中的所有文件共用。 在本文[「 在 Azure 檔案」 開啟 Azure 的目錄網域服務身份驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)「一文中, 有關使用 Azure AD DS 設定檔案分享以進行身份驗證的詳細指南,以及另一篇文章中的本地 AD DS(預覽)指南,[即為 Azure 檔案分享啟用本地活動目錄域服務身份驗證](storage-files-identity-auth-active-directory-enable.md)。
+您可以在新的和現有的儲存體帳戶上，使用適用于 Azure 檔案共用的 Azure AD DS 或內部部署 AD DS （預覽）來啟用身分識別型驗證。 只有一個網域服務可用於儲存體帳戶上的檔案存取驗證，這適用于帳戶中的所有檔案共用。 在我們的文章中，使用 Azure AD DS 設定檔案共用以進行驗證的詳細指導方針，請參閱針對[Azure 檔案共用啟用透過 SMB 進行內部部署 Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-enable.md)的 Azure 檔案儲存體和 AD DS 指導方針[Azure Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)。
 
 ### <a name="configure-share-level-permissions-for-azure-files"></a>設定 Azure 檔案共用層級權限
 
-啟用 Azure AD DS 或本地 AD DS(預覽)身份驗證後,可以使用內建 RBAC 角色或為 Azure AD 標識配置自定義角色,並將訪問許可權分配給儲存帳戶中的任何文件共用。 分配的許可權允許授予的標識僅訪問共用,沒有其他內容,甚至無法訪問根目錄。 您仍然需要單獨設定 Azure 檔共享的目錄或檔級許可權。
+一旦啟用 Azure AD DS 或內部部署 AD DS （預覽）驗證，您就可以使用內建的 RBAC 角色或設定 Azure AD 身分識別的自訂角色，並將存取權限指派給儲存體帳戶中的任何檔案共用。 指派的許可權可讓授與的身分識別僅取得共用的存取權，而不是任何其他內容，甚至是根目錄。 您仍然需要分別設定目錄或 Azure 檔案共用的檔案層級許可權。
 
-### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>為 Azure 檔設定目錄或檔案層限
+### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>設定 Azure 檔案儲存體的目錄或檔案層級許可權
 
-Azure 檔案共享在目錄和檔案等級(包括根目錄)強制實施標準 Windows 檔案許可權。 SMB 和 REST 都支援目錄或檔級許可權的配置。 從 VM 載入目標檔案共用,並使用 Windows 檔案資源管理器、Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或[Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6)命令設定許可權。
+Azure 檔案共用會在目錄和檔案層級強制執行標準 Windows 檔案許可權，包括根目錄。 SMB 和 REST 都支援目錄或檔案層級許可權的設定。 從您的 VM 掛接目標檔案共用，並使用 Windows File Explorer、Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或[Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6)命令來設定許可權。
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>為超級使用者權限使用儲存體帳戶金鑰
 
-具有儲存帳戶金鑰的使用者可以存取具有超級用戶許可權的 Azure 檔案共用。 超級用戶許可權繞過所有訪問控制限制。
+具有儲存體帳戶金鑰的使用者可以使用超級使用者權限來存取 Azure 檔案共用。 超級使用者權限會略過所有存取控制限制。
 
 > [!IMPORTANT]
-> 我們推薦的安全最佳實踐是避免共用存儲帳戶密鑰,並盡可能利用基於身份的身份驗證。
+> 我們建議的安全性最佳作法是避免共用儲存體帳戶金鑰，並盡可能運用以身分識別為基礎的驗證。
 
-### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>將資料匯入 Azure 檔案分享時保留目錄和檔案 ACL
+### <a name="preserve-directory-and-file-acls-when-importing-data-to-azure-file-shares"></a>將資料匯入至 Azure 檔案共用時保留目錄和檔案 Acl
 
-Azure 檔案支援將資料複製到 Azure 檔案共用時保留目錄或檔等級 ACL。 您可以使用 Azure 檔案同步或公共檔案行動工具集將目錄或檔中的 ACL 複製到 Azure 檔案共用。 例如,可以將[robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy)與`/copy:s`標誌一起複製數據以及 ACL 複製到 Azure 檔案共用。 預設情況下,ACL 將保留,您不需要在存儲帳戶上啟用基於身份的身份驗證來保留 ACL。
+Azure 檔案儲存體在將資料複製到 Azure 檔案共用時，支援保留目錄或檔案層級的 Acl。 您可以使用 Azure 檔案同步或一般檔案移動工具組，將目錄或檔案上的 Acl 複製到 Azure 檔案共用。 例如，您可以搭配使用[robocopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy)與`/copy:s`旗標，將資料和 acl 複製到 Azure 檔案共用。 預設會保留 Acl，您不需要在儲存體帳戶上啟用以身分識別為基礎的驗證來保留 Acl。
 
 ## <a name="pricing"></a>定價
-存儲帳戶上通過 SMB 啟用基於身份的身份驗證不會收取額外的服務費。 有關定價的詳細資訊,請參閱[Azure 檔案定價](https://azure.microsoft.com/pricing/details/storage/files/)和[Azure AD 網域服務定價](https://azure.microsoft.com/pricing/details/active-directory-ds/)。
+不需要額外的服務費用，即可在您的儲存體帳戶上啟用透過 SMB 的身分識別型驗證。 如需價格的詳細資訊，請參閱[Azure 檔案儲存體定價](https://azure.microsoft.com/pricing/details/storage/files/)和[Azure AD Domain Services 定價](https://azure.microsoft.com/pricing/details/active-directory-ds/)。
 
 ## <a name="next-steps"></a>後續步驟
-有關透過 SMB 進行 Azure 檔和基於識別身分驗證的詳細資訊,請參閱以下資源:
+如需有關透過 SMB 進行 Azure 檔案儲存體和以身分識別為基礎之驗證的詳細資訊，請參閱下列資源：
 
 - [規劃 Azure 檔案服務部署](storage-files-planning.md)
-- [以 SMB 為 Azure 檔案分享啟用本地端目錄網域服務身份驗證](storage-files-identity-auth-active-directory-enable.md)
-- [在 Azure 檔案開啟 Azure 的目錄網域服務認證](storage-files-identity-auth-active-directory-domain-service-enable.md)
+- [針對 Azure 檔案共用啟用透過 SMB 的內部部署 Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-enable.md)
+- [啟用 Azure 檔案儲存體上的 Azure Active Directory Domain Services 驗證](storage-files-identity-auth-active-directory-domain-service-enable.md)
 - [常見問題集](storage-files-faq.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: dsindona
 ms.openlocfilehash: b02fda545ac135735186885d7db597885bf6cc21
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82147956"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>從您的 VHD 部署 VM
@@ -58,7 +58,7 @@ VM 部署完成後，您就準備好來[認證您的 VM 映像](./cpp-certify-vm
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **參數**              |   **描述**                                                            |
+   |  **參數**              |   **說明**                                                            |
    |  -------------              |   ---------------                                                            |
    | 儲存體帳戶名稱   | 一般化 VHD 所在的儲存體帳戶名稱                    |
    | 輸入儲存體容器名稱 | 一般化 VHD 所在的容器名稱                          |

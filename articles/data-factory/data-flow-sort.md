@@ -1,6 +1,6 @@
 ---
-title: 對應資料串序轉換
-description: Azure 資料工廠映射資料排序轉換
+title: 對應資料流程中的排序轉換
+description: Azure Data Factory 對應資料排序轉換
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,34 +9,34 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
 ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606329"
 ---
-# <a name="sort-transformation-in-mapping-data-flow"></a>對應資料串序轉換
+# <a name="sort-transformation-in-mapping-data-flow"></a>對應資料流程中的排序轉換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-排序轉換允許您對當前資料流上的傳入行進行排序。 您可以選擇單列,然後按升序或降序排序。
+「排序」轉換可讓您排序目前資料流程上的傳入資料列。 您可以選擇個別的資料行，並以遞增或遞減順序排序。
 
 > [!NOTE]
-> 映射資料流在跨多個節點和分區分佈數據的Spark群集上執行。 如果選擇在後續轉換中重新分區數據,則可能會由於重新洗牌而丟失排序。
+> 對應資料流程會在 spark 叢集上執行，而這些叢集會將資料分散到多個節點和分割區。 如果您選擇在後續的轉換中重新分割資料，您可能會因為資料重新輪換而失去排序。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ![排序設定](media/data-flow/sort.png "Sort")
 
-**不區分大小寫:** 在排序字串或文字欄位時是否希望忽略大小寫
+不**區分大小寫：** 排序字串或文字欄位時，是否要忽略大小寫
 
-**只在分割區內排序:** 當數據流在火花上運行時,每個數據流被劃分為分區。 此設置僅對傳入分區中的數據進行排序,而不是對整個數據流進行排序。 
+**只在資料分割內排序：** 當資料流程在 spark 上執行時，每個資料流程都會分割成多個磁碟分割。 此設定只會在傳入分割區內排序資料，而不會排序整個資料流程。 
 
-**排序條件:** 選擇要按排序的列以及排序順序。 順序確定排序優先順序。 選擇空值是否出現在數據流的開頭或結尾。
+**排序條件：** 選擇排序依據的資料行，以及排序發生的順序。 順序會決定排序優先順序。 選擇是否要在資料流程的開頭或結尾出現 null。
 
 ### <a name="computed-columns"></a>計算資料行
 
-要在應用排序之前修改或提取列值,請將滑鼠懸停在列上並選擇"計算列"。 這將打開表達式生成器以創建排序操作的運算式,而不是使用列值。
+若要在套用排序之前修改或解壓縮資料行值，請將滑鼠停留在資料行上，然後選取 [計算資料行]。 這會開啟 [運算式產生器] 來建立排序作業的運算式，而不是使用資料行值。
 
 ## <a name="data-flow-script"></a>資料流程指令碼
 
@@ -55,7 +55,7 @@ ms.locfileid: "81606329"
 
 ![排序設定](media/data-flow/sort.png "Sort")
 
-上述排序配置的數據流腳本位於下面的代碼段中。
+上述排序設定的資料流程腳本位於下列程式碼片段中。
 
 ```
 BasketballStats sort(desc(PTS, true),
@@ -64,4 +64,4 @@ BasketballStats sort(desc(PTS, true),
 
 ## <a name="next-steps"></a>後續步驟
 
-排序後,您可能需要使用[聚合轉換](data-flow-aggregate.md)
+排序之後，您可能會想要使用「[匯總」轉換](data-flow-aggregate.md)

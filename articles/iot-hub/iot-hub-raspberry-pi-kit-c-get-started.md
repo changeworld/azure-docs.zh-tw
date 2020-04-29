@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
 ms.openlocfilehash: 03f9d58cab725335b0f4090ac1a7289c32c0af7f
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640553"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>將 Raspberry Pi 連接至 Azure IoT Hub (C)
@@ -51,7 +51,7 @@ ms.locfileid: "81640553"
 
 * Raspberry Pi 2 或 Raspberry Pi 3 電路板。
 
-* 有效的 Azure 訂用帳戶。 如果沒有 Azure 帳戶,只需幾分鐘即可[創建免費的 Azure 試用帳戶](https://azure.microsoft.com/free/)。
+* 有效的 Azure 訂用帳戶。 如果您沒有 Azure 帳戶，請在短短幾分鐘內[建立免費的 azure 試用帳戶](https://azure.microsoft.com/free/)。
 
 * 連接至 Pi 的監視器、 USB 鍵盤和滑鼠。
 
@@ -76,7 +76,7 @@ ms.locfileid: "81640553"
 * 1 顆漫射型 10 mm LED。
 
 > [!NOTE]
-> 這些專案是可選的,因為代碼示例支援模擬感測器數據。
+> 這些專案是選擇性的，因為程式碼範例支援模擬的感應器資料。
 >
 
 ## <a name="create-an-iot-hub"></a>建立 IoT 中樞
@@ -89,7 +89,7 @@ ms.locfileid: "81640553"
 
 ## <a name="set-up-raspberry-pi"></a>設定 Raspberry Pi
 
-現在成立了樹莓派。
+現在設定 Raspberry Pi。
 
 ### <a name="install-the-raspbian-operating-system-for-pi"></a>安裝 Pi 的 Raspbian 作業系統
 
@@ -97,13 +97,13 @@ ms.locfileid: "81640553"
 
 1. 下載 Raspbian。
 
-   1. [下載使用桌面](https://www.raspberrypi.org/downloads/raspbian/)(.zip 檔案)的 Raspbian 拉伸。
+   1. [下載 Raspbian Stretch With Desktop](https://www.raspberrypi.org/downloads/raspbian/) （.zip 檔案）。
 
    2. 將 Raspbian 映像解壓縮到您電腦上的資料夾。
 
 2. 將 Raspbian 安裝到 microSD 記憶卡。
 
-   1. [下載並安裝蝕刻SD卡燒錄機實用程式](https://etcher.io/)。
+   1. [下載並安裝 ETCHER SD 記憶卡燒錄器公用程式](https://etcher.io/)。
 
    2. 執行 Etcher 並選取您在步驟 1 中解壓縮的 Raspbian 映像。
 
@@ -117,9 +117,9 @@ ms.locfileid: "81640553"
 
 ### <a name="enable-ssh-and-spi"></a>啟用 SSH 和 SPI
 
-1. 將 Pi 連接到監視器、鍵盤和滑鼠,啟動 Pi,然後`pi`使用`raspberry`使用者名和 密碼登錄到 Raspbian。
+1. 將 Pi 連接至監視器、鍵盤和滑鼠、啟動 Pi，然後使用`pi`做為使用者名稱和`raspberry`密碼來登入 Raspbian。
  
-2. 點擊樹莓圖示>**偏好** > **樹莓派設定**。
+2. 按一下 [Raspberry] 圖示 >**偏好** > 設定] [**Raspberry Pi**設定]。
 
    ![[Raspbian 偏好設定] 功能表](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "81640553"
 
 ### <a name="connect-the-sensor-to-pi"></a>將感應器連接至 Pi
 
-使用麵包板和跳線將 LED 和 BME280 連接至 Pi，如下所示。 如果沒有感應器,[請跳過此部份](#connect-pi-to-the-network)。
+使用麵包板和跳線將 LED 和 BME280 連接至 Pi，如下所示。 如果您沒有感應器，請[略過本節](#connect-pi-to-the-network)。
 
 ![Raspberry Pi 和感應器連接](./media/iot-hub-raspberry-pi-kit-c-get-started/3-raspberry-pi-sensor-connection.png)
 
@@ -166,7 +166,7 @@ BME280 感應器可以收集溫度和溼度資料。 而如果裝置與雲端之
 
 ## <a name="run-a-sample-application-on-pi"></a>在 Pi 上執行範例應用程式
 
-### <a name="sign-into-your-raspberry-pi"></a>登入您的樹莓派
+### <a name="sign-into-your-raspberry-pi"></a>登入您的 Raspberry Pi
 
 1. 使用下列其中一個 SSH 用戶端，從主機電腦連接到 Raspberry Pi。
    
@@ -228,11 +228,11 @@ BME280 感應器可以收集溫度和溼度資料。 而如果裝置與雲端之
 
 ![輸出 - 從 Raspberry Pi 傳送至 IoT 中樞的感應器資料](./media/iot-hub-raspberry-pi-kit-c-get-started/8-run-output.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>閱讀中心收到的消息
+## <a name="read-the-messages-received-by-your-hub"></a>讀取您的中樞所接收的訊息
 
-監視 IoT 中心從設備接收的消息的一種方法是使用 Azure IoT 工具進行可視化工作室代碼。 要瞭解更多資訊,請參閱[使用 Azure IoT 工具進行視覺化工作室碼,在裝置和 IoT 中心之間傳送和接收訊息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+若要監視您的 IoT 中樞從裝置接收的訊息，其中一種方式是使用 Visual Studio Code 的 Azure IoT Tools。 若要深入瞭解，請參閱[使用 Visual Studio Code 的 Azure IoT Tools，在您的裝置與 IoT 中樞之間傳送和接收訊息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
-有關處理設備發送數據的更多方法,請繼續執行下一節。
+如需更多方式來處理您的裝置所傳送的資料，請繼續進行下一節。
 
 ## <a name="next-steps"></a>後續步驟
 

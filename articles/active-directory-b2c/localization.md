@@ -1,5 +1,5 @@
 ---
-title: 本地化 - Azure 活動目錄 B2C
+title: 當地語系化-Azure Active Directory B2C
 description: 指定 Azure Active Directory B2C 中自訂原則的 Localization 元素。
 services: active-directory-b2c
 author: msmimart
@@ -11,10 +11,10 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 94ff7ddda41f2df2634d927a7dbf8a5a0d4fc1d8
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681406"
 ---
 # <a name="localization"></a>當地語系化
@@ -104,7 +104,7 @@ ms.locfileid: "81681406"
 
 | 元素 | 發生次數 | 描述 |
 | ------- | ----------- | ----------- |
-| Item | 0:n | 定義在使用者介面中可供使用者選取的某個宣告選項，例如下拉式清單中的值。 |
+| 項目 | 0:n | 定義在使用者介面中可供使用者選取的某個宣告選項，例如下拉式清單中的值。 |
 
 **Item** 元素包含下列屬性：
 
@@ -146,29 +146,29 @@ ms.locfileid: "81681406"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| ElementType | 是 | 可能的值:[請表示您](#claimsprovider)[所使用的](#claimtype)字串,[錯誤訊息](#errormessage),[取得本地化字串轉換的聲明型態](#getlocalizedstringstransformationclaimtype),[並請輸入](#predicate)[此問題](#inputvalidation), 或[UxElement](#uxelement).   | 
-| ElementId | 是 | 如果**ElementType**`ClaimType``Predicate`設定為`InputValidation`,或, 此元素包含對聲明架構部分中已定義的聲明類型的引用。 |
+| ElementType | 是 | 可能的值[： ClaimsProvider](#claimsprovider)、 [ClaimType](#claimtype)、 [ErrorMessage](#errormessage)、GetLocalizedStringsTransformationClaimType [、述](#predicate)詞、 [InputValidation](#inputvalidation)或[UxElement](#uxelement)。 [GetLocalizedStringsTransformationClaimType](#getlocalizedstringstransformationclaimtype)   | 
+| ElementId | 是 | 如果**ElementType**設為`ClaimType`、 `Predicate`或`InputValidation`，則這個元素會包含已在 ClaimsSchema 區段中定義之宣告類型的參考。 |
 | StringId | 是 | 如果 **ElementType** 設為 `ClaimType`，則此元素會包含對宣告類型之屬性的參考。 可能的值：`DisplayName`、`AdminHelpText` 或 `PatternHelpText`。 `DisplayName` 值用於設定宣告顯示名稱。 `AdminHelpText` 值用於設定宣告使用者的說明文字名稱。 `PatternHelpText` 值用於設定宣告模式說明文字。 如果 **ElementType** 設為 `UxElement`，則此元素會包含使用者介面元素之屬性的參考。 如果 **ElementType** 設為 `ErrorMessage`，則此元素會指定錯誤訊息的識別碼。 如需 `UxElement` 識別碼的完整清單，請參閱[當地語系化字串識別碼](localization-string-ids.md)。|
 
 ## <a name="elementtype"></a>ElementType
 
-元素類型引用要當地語系化的策略中的聲明類型、聲明轉換或使用者介面元素。
+要當地語系化之原則中的宣告類型、宣告轉換或使用者介面元素的 ElementType 參考。
 
-| 要本地端的元素 | ElementType | ElementId |StringId |
+| 要當地語系化的元素 | ElementType | ElementId |StringId |
 | --------- | -------- | ----------- |----------- |
-| 識別提供者名稱 |`ClaimsProvider`| | 宣告交換元素的識別碼|
-| 宣告類型屬性|`ClaimType`|宣告類型的名稱| 要當地語系化的聲明的屬性。 可能的值: `AdminHelpText` `DisplayName``PatternHelpText`、`UserHelpText`與 。|
+| 識別提供者名稱 |`ClaimsProvider`| | ClaimsExchange 元素的識別碼|
+| 宣告類型屬性|`ClaimType`|宣告類型的名稱| 要當地語系化之宣告的屬性。 可能的值`AdminHelpText`： `DisplayName`、 `PatternHelpText`、和`UserHelpText`。|
 |錯誤訊息|`ErrorMessage`||錯誤訊息的識別碼 |
-|將本地化字串複製到宣告|`GetLocalizedStringsTra nsformationClaimType`||輸出宣告的名稱|
-|謂詞使用者訊息|`Predicate`|謂詞的名稱| 要當地語系化的謂詞的屬性。 可能的值: `HelpText`.|
-|謂片語使用者訊息|`InputValidation`|謂詞驗證元素的 ID。|謂片語元素的 ID。 謂片語必須是元素 Id 中定義的謂詞驗證元素的子級。|
-|使用者介面元素 |`UxElement` | | 要當地語系化的使用者介面元素的 ID。|
+|將當地語系化的字串複製到宣告中|`GetLocalizedStringsTra nsformationClaimType`||輸出宣告的名稱|
+|述詞使用者訊息|`Predicate`|述詞的名稱| 要當地語系化之述詞的屬性。 可能的值`HelpText`：。|
+|述詞群組使用者訊息|`InputValidation`|PredicateValidation 元素的識別碼。|PredicateGroup 元素的識別碼。 述詞群組必須是述詞驗證元素的子系，如 ElementId 中所定義。|
+|使用者介面元素 |`UxElement` | | 要當地語系化之使用者介面元素的識別碼。|
 
 ## <a name="examples"></a>範例
 
 ### <a name="claimsprovider"></a>ClaimsProvider
 
-聲明提供程式值用於當地語系化其中一個聲明提供程式顯示名稱。 
+ClaimsProvider 值是用來將其中一個宣告提供者顯示名稱當地語系化。 
 
 ```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -182,7 +182,7 @@ ms.locfileid: "81681406"
 
 ```
 
-下面的範例展示如何當地語系化聲明提供程式的顯示名稱。
+下列範例顯示如何將宣告提供者的顯示名稱當地語系化。
 
 ```xml
 <LocalizedString ElementType="ClaimsProvider" StringId="FacebookExchange">Facebook</LocalizedString>
@@ -192,7 +192,7 @@ ms.locfileid: "81681406"
 
 ### <a name="claimtype"></a>ClaimType
 
-聲明類型值用於本地化聲明屬性之一。 
+ClaimType 值是用來將其中一個宣告屬性當地語系化。 
 
 ```xml
 <ClaimType Id="email">
@@ -203,7 +203,7 @@ ms.locfileid: "81681406"
 </ClaimType>
 ```
 
-下面的範例展示如何本地化電子郵件聲明類型的顯示名稱、使用者幫助文本和 PatternHelpText 屬性。
+下列範例顯示如何將電子郵件宣告類型的 DisplayName、UserHelpText 和 PatternHelpText 屬性當地語系化。
 
 ```XML
 <LocalizedString ElementType="ClaimType" ElementId="email" StringId="DisplayName">Email</LocalizedString>
@@ -213,7 +213,7 @@ ms.locfileid: "81681406"
 
 ### <a name="errormessage"></a>ErrorMessage
 
-ErrorMessage 值用於當地語系化其中一個系統錯誤消息。 
+ErrorMessage 值是用來將其中一個系統錯誤訊息當地語系化。 
 
 ```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
@@ -225,16 +225,16 @@ ErrorMessage 值用於當地語系化其中一個系統錯誤消息。
 </TechnicalProfile>
 ```
 
-下面的範例展示如何當地語系化使用者Messageif,如果聲稱存在已存在錯誤消息。
+下列範例顯示如何將 UserMessageIfClaimsPrincipalAlreadyExists 錯誤訊息當地語系化。
 
 
 ```XML
 <LocalizedString ElementType="ErrorMessage" StringId="UserMessageIfClaimsPrincipalAlreadyExists">The account you are trying to create already exists, please sign-in.</LocalizedString>
 ```
 
-### <a name="getlocalizedstringstransformationclaimtype"></a>取得本地化字串轉換索賠類型
+### <a name="getlocalizedstringstransformationclaimtype"></a>GetLocalizedStringsTransformationClaimType
 
-"獲取本地化字串轉換聲明類型"值用於將本地化字串複製到聲明中。 有關詳細資訊,請參閱[獲取本地化字串轉換聲明轉換](string-transformations.md#getlocalizedstringstransformation)
+GetLocalizedStringsTransformationClaimType 值是用來將當地語系化的字串複製到宣告中。 如需詳細資訊，請參閱[GetLocalizedStringsTransformation 宣告轉換](string-transformations.md#getlocalizedstringstransformation)
 
 
 ```xml
@@ -248,7 +248,7 @@ ErrorMessage 值用於當地語系化其中一個系統錯誤消息。
 </ClaimsTransformation>
 ```
 
-下面的範例展示如何當地語系化「獲取本地化字串轉換」聲明轉換的輸出聲明。
+下列範例顯示如何將 GetLocalizedStringsTransformation 宣告轉換的輸出宣告當地語系化。
 
 ```xml
 <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
@@ -259,7 +259,7 @@ ErrorMessage 值用於當地語系化其中一個系統錯誤消息。
 
 ### <a name="predicate"></a>Predicate
 
-謂詞值用於當地語系化其中一個[謂詞](predicates.md)錯誤消息。 
+述詞值是用來將其中一個述[詞錯誤訊息](predicates.md)當地語系化。 
 
 ```xml
 <Predicates>
@@ -282,7 +282,7 @@ ErrorMessage 值用於當地語系化其中一個系統錯誤消息。
 </Predicates>
 ```
 
-下面的範例展示如何當地語系化謂詞説明文本。
+下列範例示範如何將述詞解說文字當地語系化。
 
 ```xml
 <LocalizedString ElementType="Predicate" ElementId="LengthRange" StringId="HelpText">The password must be between 6 and 64 characters.</LocalizedString>
@@ -290,9 +290,9 @@ ErrorMessage 值用於當地語系化其中一個系統錯誤消息。
 <LocalizedString ElementType="Predicate" ElementId="Uppercase" StringId="HelpText">an uppercase letter</LocalizedString>
 ```
 
-### <a name="inputvalidation"></a>輸入驗證
+### <a name="inputvalidation"></a>InputValidation
 
-輸入驗證值用於當地語系化[一個謂詞驗證](predicates.md)組錯誤消息。 
+InputValidation 值是用來將其中一個[PredicateValidation](predicates.md)群組錯誤訊息當地語系化。 
 
 ```xml
 <PredicateValidations>
@@ -317,7 +317,7 @@ ErrorMessage 值用於當地語系化其中一個系統錯誤消息。
 </PredicateValidations>
 ```
 
-下面的範例展示如何當地語系化謂詞驗證組幫助文本。
+下列範例示範如何將述詞驗證群組的解說文字當地語系化。
 
 ```XML
 <LocalizedString ElementType="InputValidation" ElementId="CustomPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
@@ -325,7 +325,7 @@ ErrorMessage 值用於當地語系化其中一個系統錯誤消息。
 
 ### <a name="uxelement"></a>UxElement
 
-UxElement 值用於當地語系化其中一個用戶介面元素。 下面的範例展示如何當地語系化"繼續"和"取消"按鈕。
+UxElement 值是用來將其中一個使用者介面專案當地語系化。 下列範例顯示如何將 [繼續] 和 [取消] 按鈕當地語系化。
 
 ```XML
 <LocalizedString ElementType="UxElement" StringId="button_continue">Create new account</LocalizedString>
@@ -334,7 +334,7 @@ UxElement 值用於當地語系化其中一個用戶介面元素。 下面的範
 
 ## <a name="next-steps"></a>後續步驟
 
-有關當地語系化範例,請參閱以下文章:
+如需當地語系化範例，請參閱下列文章：
 
-- [使用 Azure 的目錄 B2C 中的自訂策略進行語言自訂](custom-policy-localization.md)
-- [使用 Azure 的目錄 B2C 的使用者串流進行語言自訂](user-flow-language-customization.md)
+- [在 Azure Active Directory B2C 中使用自訂原則進行語言自訂](custom-policy-localization.md)
+- [在 Azure Active Directory B2C 中使用使用者流程進行語言自訂](user-flow-language-customization.md)

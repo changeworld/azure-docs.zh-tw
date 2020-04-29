@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
 ms.openlocfilehash: 09122581a3ade4e741a29996b7202ce0f96d074b
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82145536"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure 自動化中的 Runbook 執行
@@ -31,7 +31,7 @@ Azure 自動化指派背景工作角色，以在 runbook 執行期間執行每�
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 >[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需混合式 Runbook 背景工作角色上的 Az module 安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="where-to-run-your-runbooks"></a>在何處執行您的 Runbook
 
@@ -44,7 +44,7 @@ Azure 自動化中的 runbook 可以在 Azure 沙箱或[混合式 Runbook 背景
 
 下表列出一些 runbook 執行工作，其中列出每個的建議執行環境。
 
-|工作|建議|注意|
+|工作|建議|備忘錄|
 |---|---|---|
 |與 Azure 資源整合|Azure 沙箱|在 Azure 中託管，驗證會比較簡單。 如果您在 Azure VM 上使用混合式 Runbook 背景工作角色，您可以使用[azure 資源的受控](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)識別。|
 |取得最佳效能來管理 Azure 資源|Azure 沙箱|腳本會在相同的環境中執行，但延遲較少。|
@@ -357,6 +357,6 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 * 若要瞭解如何使用 runbook，請參閱[管理 Azure 自動化中的 runbook](manage-runbooks.md)。
 * 若要深入瞭解可在 Azure 自動化中用來啟動 runbook 的方法，請參閱[在 Azure 自動化中啟動 runbook](automation-starting-a-runbook.md)。
-* 如需 PowerShell 的詳細資訊，包括語言參考和學習模組，請參閱[powershell](https://docs.microsoft.com/powershell/scripting/overview)檔。
-* 如需 PowerShell Cmdlet 參考，請參閱[Az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
+* 如需 PowerShell 的詳細資訊 (包括語言參考和學習模組)，請參閱 [PowerShell 文件](https://docs.microsoft.com/powershell/scripting/overview)。
+* 如需 PowerShell Cmdlet 參考，請參閱 [Az.Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 )。

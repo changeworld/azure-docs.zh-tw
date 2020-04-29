@@ -3,12 +3,12 @@ title: 隨時隨地監視 JAVA 應用程式-Azure 監視器 Application Insights
 description: 無程式碼應用程式效能監視，適用于在任何環境中執行的 JAVA 應用程式，而不需要檢測應用程式。 使用分散式追蹤和應用程式對應，找出問題 d 的根本原因。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 478e42669339ac015076c89da103d91080090685
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 5d930d349a2ab1efbd7a61904874bf6bdb411889
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509205"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81641884"
 ---
 # <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>設定選項-適用于 Azure 監視器的 JAVA 獨立代理程式 Application Insights
 
@@ -33,14 +33,14 @@ ms.locfileid: "82509205"
 
 ## <a name="configuration-file-path"></a>設定檔案路徑
 
-根據預設，Application Insights JAVA 3.0 Preview 會預期要將設定檔命名`ApplicationInsights.json`為，而且必須與位於相同的目錄中`applicationinsights-agent-3.0.0-PREVIEW.4.jar`。
+根據預設，Application Insights JAVA 3.0 Preview 會預期要將設定檔命名`ApplicationInsights.json`為，而且必須與位於相同的目錄中`applicationinsights-agent-3.0.0-PREVIEW.jar`。
 
 您可以使用下列其中一種方式來指定您自己的設定檔路徑
 
 * `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境變數，或
 * `applicationinsights.configurationFile`JAVA 系統屬性
 
-如果您指定相對路徑，它會相對於所在的目錄`applicationinsights-agent-3.0.0-PREVIEW.4.jar`來解析。
+如果您指定相對路徑，它會相對於所在的目錄`applicationinsights-agent-3.0.0-PREVIEW.jar`來解析。
 
 ## <a name="connection-string"></a>連接字串
 
@@ -150,13 +150,11 @@ Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util �
 }
 ```
 
-## <a name="micrometer-including-metrics-from-spring-boot-actuator"></a>Micrometer （包括來自春季開機傳動的計量）
+## <a name="micrometer"></a>Micrometer
 
-如果您的應用程式使用[Micrometer](https://micrometer.io)，Application Insights 3.0 （從 Preview 開始），現在會捕獲傳送至 Micrometer 全域登錄的計量。
+根據預設，如果您的應用程式使用[Micrometer](https://micrometer.io)，Application Insights 3.0 （從 Preview 開始），現在會將其本身新增至 Micrometer 全域登錄並捕捉 Micrometer 計量。
 
-如果您的應用程式使用[春季開機傳動](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html)器，Application Insights 3.0 （從預覽開始），現在會捕獲春季開機傳動器所設定的計量（使用 Micrometer，但不使用 Micrometer 全域登錄）。
-
-如果您想要停用這些功能：
+如果您想要停用這項功能：
 
 ```json
 {

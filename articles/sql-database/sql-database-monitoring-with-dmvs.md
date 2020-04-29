@@ -1,5 +1,5 @@
 ---
-title: 使用 DMV 監控效能
+title: 使用 Dmv 監視效能
 description: 了解如何使用動態管理檢視監視 Microsoft Azure SQL Database 來偵測和診斷常見的效能問題。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 04/19/2020
 ms.openlocfilehash: 6f33f49be74419a8f0cd31d973d64798f5d76a2c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683009"
 ---
 # <a name="monitoring-performance-azure-sql-database-using-dynamic-management-views"></a>使用動態管理檢視監視 Azure SQL Database 的效能
@@ -41,16 +41,16 @@ GRANT VIEW DATABASE STATE TO database_user;
 
 在內部部署 SQL Server 的執行個體中，動態管理檢視會傳回伺服器狀態資訊。 在 SQL Database 中，僅會傳回與您目前的邏輯資料庫相關的資訊。
 
-本文包含 DMV 查詢的集合,您可以使用 SQL 伺服器管理工作室或 Azure 資料工作室執行這些查詢以偵測以下類型的查詢效能問題:
+本文包含 DMV 查詢的集合，您可以使用 SQL Server Management Studio 或 Azure Data Studio 來執行，以偵測下列類型的查詢效能問題：
 
-- [識別與 CPU 消耗過高相關的查詢](#identify-cpu-performance-issues)
-- [與 IO 瓶頸相關的PAGELATCH_* 和WRITE_LOG等待](#identify-io-performance-issues)
-- [PAGELATCH_* 由TTempDB爭用引起的等待](#identify-tempdb-performance-issues)
-- [RESOURCE_SEMAHPORE由記憶體授予等待問題引起的等待](#identify-memory-grant-wait-performance-issues)
-- [識別資料庫與物件大小](#calculating-database-and-objects-sizes)
-- [檢索有關活動工作階段的資訊](#monitoring-connections)
-- [檢索系統範圍與資料庫資源使用方式資訊](#monitor-resource-use)
-- [檢索查詢效能資訊](#monitoring-query-performance)
+- [識別與過多 CPU 耗用量相關的查詢](#identify-cpu-performance-issues)
+- [PAGELATCH_ * 和 WRITE_LOG 與 IO 瓶頸相關的等候](#identify-io-performance-issues)
+- [PAGELATCH_ * 等候導致 bytTempDB 爭用](#identify-tempdb-performance-issues)
+- [記憶體授與等候問題所造成的 RESOURCE_SEMAHPORE 等候](#identify-memory-grant-wait-performance-issues)
+- [識別資料庫和物件大小](#calculating-database-and-objects-sizes)
+- [正在抓取作用中會話的相關資訊](#monitoring-connections)
+- [取得全系統和資料庫資源使用量資訊](#monitor-resource-use)
+- [正在抓取查詢效能資訊](#monitoring-query-performance)
 
 ## <a name="identify-cpu-performance-issues"></a>識別 CPU 效能問題
 
@@ -248,7 +248,7 @@ GO
 
 ## <a name="identify-tempdb-performance-issues"></a>識別 `tempdb` 效能問題
 
-識別 IO 效能問題時，與 `tempdb` 問題相關聯的常見等候類型為 `PAGELATCH_*` (而非 `PAGEIOLATCH_*`)。 不過，`PAGELATCH_*` 等候不一定表示您有 `tempdb` 爭用。  這個等候也表示您有使用者物件資料頁面爭用，因為針對相同的資料頁面進行並行要求。 要進一步`tempdb`確認爭用,請使用[sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)確認`2:x:y`wait_resource`tempdb`值從 2`x`是資料庫`y`ID、 檔 ID 和 頁面 ID 開始。  
+識別 IO 效能問題時，與 `tempdb` 問題相關聯的常見等候類型為 `PAGELATCH_*` (而非 `PAGEIOLATCH_*`)。 不過，`PAGELATCH_*` 等候不一定表示您有 `tempdb` 爭用。  這個等候也表示您有使用者物件資料頁面爭用，因為針對相同的資料頁面進行並行要求。 若要進一步`tempdb`確認爭用，請使用[dm_exec_requests sys.databases](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql)來確認 wait_resource 值的開頭是`2:x:y` ，其中 2 `tempdb`是資料庫識別碼， `x`是檔案識別碼，而`y`是頁面識別碼。  
 
 對於 tempdb 爭用，常見的方法是減少或重新撰寫依賴 `tempdb` 的應用程式程式碼。  常見的 `tempdb` 使用區域包括：
 
@@ -552,7 +552,7 @@ FROM sys.dm_db_resource_stats;
 
 ![SQL Database 的資源使用量](./media/sql-database-performance-guidance/sql_db_resource_utilization.png)
 
-從資料中，這個資料庫目前相對於 P2 計算大小的尖峰 CPU 負載剛好超過 50% 的 CPU 使用量 (星期二中午)。 如果 CPU 是應用程式資源配置檔中的主導因素,則可以確定 P2 是正確的計算大小,以確保工作負載始終適合。 如果您預期應用程式會隨著時間成長，最好預留額外的資源緩衝，讓應用程式永遠不會達到效能等級限制。 如果您提升計算大小，則可協助避免資料庫沒有足夠能力來有效處理要求時可能發生的客戶可見錯誤，尤其是在延遲敏感的環境中。 其中一例便是支援可根據資料庫呼叫結果繪製網頁之應用程式的資料庫。
+從資料中，這個資料庫目前相對於 P2 計算大小的尖峰 CPU 負載剛好超過 50% 的 CPU 使用量 (星期二中午)。 如果 CPU 是應用程式資源設定檔中的主要因素，您可能會決定 P2 是正確的計算大小，以確保工作負載永遠符合。 如果您預期應用程式會隨著時間成長，最好預留額外的資源緩衝，讓應用程式永遠不會達到效能等級限制。 如果您提升計算大小，則可協助避免資料庫沒有足夠能力來有效處理要求時可能發生的客戶可見錯誤，尤其是在延遲敏感的環境中。 其中一例便是支援可根據資料庫呼叫結果繪製網頁之應用程式的資料庫。
 
 其他應用程式類型可能會以不同方式解譯相同的圖形。 例如，如果應用程式嘗試每天處理薪資資料而且具有同一張圖表，這種「批次作業」模型可能會在 P1 計算大小中正常執行。 P1 計算大小有 100 個 DTU，相較之下，P2 計算大小則有 200 個 DTU。 P1 計算大小提供的效能是 P2 計算大小的一半。 因此，P2 中 50% 的 CPU 使用量等於 P1 中 100% 的 CPU 使用量。 如果應用程式沒有逾時，就算作業花了 2 個小時或 2.5 個小時才能完成也沒關係，只要它在今天內完成即可。 這個類別中的應用程式或許可以使用 P1 計算大小。 一天中有好幾個時段的資源使用量較低，您可以善用這個事實，讓任何「巨量尖峰」可以溢出到當天稍後的一個低谷。 只要作業可以每天及時完成，P1 計算大小可能就很適合這類應用程式 (並節省經費)。
 
@@ -574,7 +574,7 @@ ORDER BY start_time DESC
 
 下列範例示範不同方式，以供您用來使用 **sys.resource_stats** 目錄檢視取得有關 SQL Database 如何使用資源的相關資訊：
 
-1. 要檢視資料庫 userdb1 的過去一週的資源使用方式,可以執行此查詢:
+1. 若要查看過去一周針對資料庫 userdb1 所使用的資源，您可以執行此查詢：
 
     ```sql
     SELECT *
@@ -664,7 +664,7 @@ AND D.name = 'MyDatabase';
 
 ### <a name="maximum-concurrent-logins"></a>並行登入數上限
 
-您可以分析您的使用者和應用程式模式以了解登入頻率。 您也可以在測試環境中執行真實世界的負載，藉此確定您不會達到我們在本文中討論的這項限制或其他限制。 沒有一個查詢或動態管理檢視 (DMV) 可以顯示併發登錄計數或歷史記錄。
+您可以分析您的使用者和應用程式模式以了解登入頻率。 您也可以在測試環境中執行真實世界的負載，藉此確定您不會達到我們在本文中討論的這項限制或其他限制。 沒有單一查詢或動態管理檢視（DMV）可顯示並行登入計數或歷程記錄。
 
 如果這些用戶端使用相同的連接字串，服務仍會驗證每一個登入。 如果有 10 位使用者同時以相同的使用者名稱和密碼連接到資料庫，將會有 10 個並行登入。 這項限制只適用於登入和驗證期間。 如果相同的 10 位使用者依序連接到資料庫，並行登入數目絕對不會大於 1。
 
@@ -690,7 +690,7 @@ INNER JOIN sys.databases D ON (D.database_id = S.database_id)
 WHERE D.name = 'MyDatabase'
 ```
 
-同樣地，這些查詢傳回的是某一時間點的計數。 如果隨著時間的推移收集多個樣本,您將對會話使用方式有最好的瞭解。
+同樣地，這些查詢傳回的是某一時間點的計數。 如果您在一段時間後收集多個範例，您將會充分瞭解會話的使用。
 
 若要進行 SQL Database 分析，您可以查詢 [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx)檢視，並檢閱 **active_session_count** 資料行，以取得工作階段的歷史統計資料。
 
@@ -747,6 +747,6 @@ CROSS APPLY sys.dm_exec_sql_text(plan_handle) AS q
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 [SQL Database 簡介](sql-database-technical-overview.md)

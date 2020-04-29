@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: c82c3e0b6e6d11ccc33bf8556b06aeb04a6d37b5
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82147916"
 ---
 # <a name="create-a-new-managed-service-offer"></a>建立新的受控服務供應專案
@@ -86,7 +86,7 @@ ms.locfileid: "82147916"
 
 提供供應專案的較長描述（最多256個字元）。 這段完整摘要也可以用於 marketplace 搜尋結果。
 
-### <a name="description"></a>說明
+### <a name="description"></a>描述
 
 提供供應專案的較長描述（最多3000個字元）。 在 marketplace 清單總覽中，客戶會看到這項描述。 包含您供應專案的價值主張、主要優點、類別及/或產業關聯、應用程式內購買機會，以及任何必要的公開。
 
@@ -237,7 +237,7 @@ ms.locfileid: "82147916"
 
 完成計畫的所有章節之後，您可以選取 [ **+ 建立新方案**]，視需要建立額外的計畫。 完成時，選取 [儲存]****。
 
-## <a name="publish"></a>發佈
+## <a name="publish"></a>發行
 
 ### <a name="submit-offer-to-preview"></a>提交供應專案以供預覽
 

@@ -4,10 +4,10 @@ description: 使用 Application Insights 分析 Windows 傳統型應用程式的
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.openlocfilehash: eb9e0fc480098478a3a68265ac85e0d5450e27fe
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537384"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>監視傳統型 Windows 桌面應用程式的使用情況和效能
@@ -24,13 +24,13 @@ ms.locfileid: "81537384"
    
     或在 ApplicationInsights.config 中設定檢測金鑰 (如果您已安裝其中一個標準遙測封裝)︰
    
-    `<InstrumentationKey>`*您的鑰匙*`</InstrumentationKey>` 
+    `<InstrumentationKey>`*您的金鑰*`</InstrumentationKey>` 
    
     如果使用 ApplicationInsights.config，請確定其在方案總管中的屬性已設定為 [建置動作] = [內容]、[複製到輸出目錄] = [複製] ****。
 5. [使用 API](../../azure-monitor/app/api-custom-events-metrics.md) 傳送遙測。
-6. 運行應用,並在 Azure 門戶中創建的資源中查看遙測數據。
+6. 執行您的應用程式，並查看您在 Azure 入口網站中建立之資源的遙測。
 
-## <a name="example-code"></a><a name="telemetry"></a>範例代碼
+## <a name="example-code"></a><a name="telemetry"></a>範例程式碼
 ```csharp
 using Microsoft.ApplicationInsights;
 
@@ -68,11 +68,11 @@ using Microsoft.ApplicationInsights;
 
 ```
 
-## <a name="override-storage-of-computer-name"></a>覆寫電腦名稱的儲存
+## <a name="override-storage-of-computer-name"></a>覆寫電腦名稱稱的儲存空間
 
-默認情況下,此 SDK 將收集和儲存發出遙測的系統的計算機名稱。 要覆寫集合,您需要使用遙測初始化器:
+根據預設，此 SDK 會收集並儲存發出遙測之系統的電腦名稱稱。 若要覆寫集合，您必須使用遙測初始化運算式：
 
-**編寫如下自定義遙測初始化程式。**
+**撰寫自訂 TelemetryInitializer，如下所示。**
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,7 +93,7 @@ namespace CustomInitializer.Telemetry
     }
 }
 ```
-在下面設定偵測`Program.cs``Main()`鍵 的方法中實體化初始化器:
+在下列`Program.cs` `Main()`方法中，將初始化運算式具現化，並設定檢測金鑰：
 
 ```csharp
  using Microsoft.ApplicationInsights.Extensibility;

@@ -1,6 +1,6 @@
 ---
 title: Azure Event Grid 安全性與驗證
-description: 本文介紹對事件網格資源(WebHook、訂閱、自訂主題)的身份驗證存取的不同方法
+description: 本文說明驗證事件方格資源存取權的不同方式（WebHook、訂閱、自訂主題）
 services: event-grid
 author: banisadr
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: babanisa
 ms.openlocfilehash: 4b2d65c9523f32eed01baa8d63c3d0119d00de1b
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81532388"
 ---
-# <a name="authenticating-access-to-event-grid-resources"></a>驗證對事件網格資源的存取權限
+# <a name="authenticating-access-to-event-grid-resources"></a>驗證對事件方格資源的存取
 
 Azure Event Grid 有三種驗證方法：
 
@@ -35,18 +35,18 @@ Webhook 是從 Azure 事件方格接收事件的眾多方法之一。 當新事�
 
 如果您使用任何其他類型的端點 (例如以 HTTP 觸發程序為基礎的 Azure 函式)，則您的端點程式碼必須參與和「事件方格」的驗證交握。 「事件方格」支援兩種驗證訂用帳戶的方式。
 
-1. **同步握手**:在創建事件訂閱時,事件網格會向終結點發送訂閱驗證事件。 此事件的結構描述類似於任何其他「事件方格」事件。 此事件的資料部分包含 `validationCode` 屬性。 應用程序驗證驗證驗證請求是否用於預期事件訂閱,並同步返回回應中的驗證代碼。 所有「事件方格」版本都支援此交握機制。
+1. **同步交握**：在建立事件訂閱時，事件方格會將訂閱驗證事件傳送至您的端點。 此事件的結構描述類似於任何其他「事件方格」事件。 此事件的資料部分包含 `validationCode` 屬性。 您的應用程式會確認驗證要求是否為預期的事件訂用帳戶，並以同步方式傳迴響應中的驗證碼。 所有「事件方格」版本都支援此交握機制。
 
-2. **非同步握手**:在某些情況下,無法同步返回驗證代碼。 例如,如果您使用第三方服務(如[`Zapier`](https://zapier.com) [IFTTT),](https://ifttt.com/)則無法使用驗證代碼以程式設計方式回應。
+2. **非同步信號交換**：在某些情況下，您無法以同步方式傳迴響應中的 ValidationCode。 例如，如果您使用協力廠商服務（例如[`Zapier`](https://zapier.com)或[IFTTT](https://ifttt.com/)），則無法以程式設計方式回應驗證程式代碼。
 
-   從 2018-05-01-preview 版開始，「事件方格」支援手動驗證交握。 如果您是以採用 API 2018-05-01-preview 版或更新版本的 SDK 或工具來建立事件訂閱，「事件方格」就會在訂閱驗證事件的資料部分中一併傳送 `validationUrl` 屬性。 要完成握手,請在事件數據中找到該 URL,然後對它執行 GET 請求。 您可以使用 REST 用戶端或您的網頁瀏覽器。
+   從 2018-05-01-preview 版開始，「事件方格」支援手動驗證交握。 如果您是以採用 API 2018-05-01-preview 版或更新版本的 SDK 或工具來建立事件訂閱，「事件方格」就會在訂閱驗證事件的資料部分中一併傳送 `validationUrl` 屬性。 若要完成交握，請在事件資料中尋找該 URL，並對其執行 GET 要求。 您可以使用 REST 用戶端或您的網頁瀏覽器。
 
-   提供的網址的合法為**5 分鐘**。 在那段時間，事件訂閱的佈建狀態為 `AwaitingManualAction`。 如果在 5 分鐘內未完成手動驗證,則預先設定`Failed`為 。 您必須再次建立事件訂閱，才能開始進行手動驗證。
+   提供的 URL 有效期限為**5 分鐘**。 在那段時間，事件訂閱的佈建狀態為 `AwaitingManualAction`。 如果您未在5分鐘內完成手動驗證，則布建狀態會設定`Failed`為。 您必須再次建立事件訂閱，才能開始進行手動驗證。
 
-   此身份驗證機制還要求 Webhook 終結點返回 HTTP 狀態代碼 200,以便知道驗證事件的 POST 已接受,然後才能將其置於手動驗證模式。 換句話說,如果終結點返回 200 但不同步返回驗證回應,則模式將轉換為手動驗證模式。 如果在 5 分鐘內驗證 URL 上有 GET,則驗證握手將被視為成功。
+   此驗證機制也需要 webhook 端點傳回 HTTP 狀態碼200，讓它知道驗證事件的 POST 已接受，然後才可以進入手動驗證模式。 換句話說，如果端點傳回200，但未同步傳回驗證回應，則模式會轉換成手動驗證模式。 如果在5分鐘內取得驗證 URL，驗證交握會被視為成功。
 
 > [!NOTE]
-> 不支援使用自簽名證書進行驗證。 改用證書頒發機構 (CA) 的已簽署證書。
+> 不支援使用自我簽署憑證進行驗證。 請改用憑證授權單位單位（CA）所簽署的憑證。
 
 ### <a name="validation-details"></a>驗證詳細資料
 
@@ -87,36 +87,36 @@ Webhook 是從 Azure 事件方格接收事件的眾多方法之一。 當新事�
 }
 ```
 
-您必須傳回「HTTP 200 正常」回應狀態碼。 「HTTP 202 已接受」無法辨識為有效的「事件方格」訂閱驗證回應。 HTTP 請求必須在 30 秒內完成。 如果操作未在 30 秒內完成,則該操作將被取消,並且可能在 5 秒後重新嘗試。 如果所有嘗試都失敗,則它將被視為驗證握手錯誤。
+您必須傳回「HTTP 200 正常」回應狀態碼。 「HTTP 202 已接受」無法辨識為有效的「事件方格」訂閱驗證回應。 Http 要求必須在30秒內完成。 如果作業未在30秒內完成，則會取消作業，而且它可能會在5秒後 rerun。 如果所有嘗試都失敗，則會將它視為驗證交握錯誤。
 
-或者，您可以藉由將 GET 要求傳送至驗證 URL，以手動方式驗證訂用帳戶。 事件訂用帳戶會保持擱置狀態，直到通過驗證為止。 驗證網址使用埠 553。 如果您的防火牆規則阻止埠 553,則可能需要更新規則才能成功手動握手。
+或者，您可以藉由將 GET 要求傳送至驗證 URL，以手動方式驗證訂用帳戶。 事件訂用帳戶會保持擱置狀態，直到通過驗證為止。 驗證 Url 會使用埠553。 如果您的防火牆規則封鎖埠553，則可能需要更新規則，才能成功進行手動交握。
 
 如需有關處理訂閱驗證交握的範例，請參閱 [C# 範例](https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs) \(英文\)。
 
-## <a name="troubleshooting-eventsubsciption-validation"></a>容錯排除事件子掃描驗證
+## <a name="troubleshooting-eventsubsciption-validation"></a>針對 EventSubsciption 驗證進行疑難排解
 
-在建立事件訂閱期間,如果您看到一條錯誤消息,如"嘗試驗證提供的終結點 H:/\/您的終結點-此處失敗。 有關詳細資訊,請造訪HTt:https:\//aka.ms/esvalidation",它指示驗證握手失敗。 若要解決此錯誤，請執行以下幾方面的驗證：
+在事件訂閱建立期間，如果您看到錯誤訊息，例如「嘗試驗證提供的端點 HTTPs：\//your-endpoint-here 失敗。 如需更多詳細資料，\/請造訪 HTTPs：/aka.ms/esvalidation」，這表示驗證交握失敗。 若要解決此錯誤，請執行以下幾方面的驗證：
 
-- 使用郵遞員或捲曲或類似工具,使用[範例訂閱驗證事件](#validation-details)請求正文對 Webhook URL 執行 HTTP POST。
-- 如果您的 Webhook 正在實現同步驗證握手機制,請驗證驗證代碼是否作為回應的一部分返回。
-- 如果您的 Webhook 正在實現非同步驗證握手機制,請驗證您是 HTTP POST 正在返回 200 OK。
-- 如果 Webhook 在回應中傳回 403(禁止),請檢查 Webhook 是否位於 Azure 應用程式閘道或 Web 應用程式防火牆後面。 如果是,則需要禁用這些防火牆規則,並再次執行 HTTP POST:
+- 透過使用 Postman 或捲曲或類似工具的[範例 SubscriptionValidationEvent](#validation-details)要求本文，對您的 webhook URL 執行 HTTP POST。
+- 如果您的 webhook 正在執行同步驗證交握機制，請確認 ValidationCode 會當做回應的一部分傳回。
+- 如果您的 webhook 正在執行非同步驗證交握機制，請確認您是 HTTP POST 傳回200正常。
+- 如果您的 webhook 在回應中傳回403（禁止），請檢查您的 webhook 是否位於 Azure 應用程式閘道或 Web 應用程式防火牆後方。 如果是，則您需要停用這些防火牆規則，然後再次執行 HTTP POST：
 
-  920300 (請求缺少接受標頭,我們可以修復此)
+  920300（要求遺失 Accept 標頭，我們可以修正此問題）
 
-  942430 (受限 SQL 字元異常偵測 (args): * 超過特殊字元 (12))
+  942430（受限制的 SQL 字元異常偵測（args）：已超過的特殊字元數（12））
 
-  920230 (偵測到多個網址)
+  920230（偵測到多個 URL 編碼）
 
-  942130 (SQL 注入攻擊:檢測到 SQL Taulogy。
+  942130（SQL 插入式攻擊：偵測到 SQL Tautology）。
 
-  931130(可能的遠端檔包含 (RFI) 攻擊 = 網域外引用/連結)
+  931130（可能是遠端檔案包含（RFI）攻擊 = Off-網域參考/連結）
 
 ### <a name="event-delivery-security"></a>事件傳遞安全性
 
 #### <a name="azure-ad"></a>Azure AD
 
-可以使用 Azure 活動目錄對 Webhook 終結點進行身份驗證並授權事件網格將事件發布到終結點,從而保護您的 Webhook 終結點。 您需要創建 Azure 活動目錄應用程式,在授權事件網格的應用程式中創建角色和服務原則,並將事件訂閱配置為使用 Azure AD 應用程式。 [瞭解如何使用事件網格配置 AAD。](secure-webhook-delivery.md)
+您可以使用 Azure Active Directory 來驗證並授權事件方格，將事件發佈到您的端點，藉此保護您的 webhook 端點。 您必須建立 Azure Active Directory 應用程式、在應用程式授權事件方格中建立角色和服務主體，並設定事件訂用帳戶以使用 Azure AD 應用程式。 [瞭解如何使用事件方格設定 AAD](secure-webhook-delivery.md)。
 
 #### <a name="query-parameters"></a>查詢參數
 
@@ -164,7 +164,7 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 Event Grid 的 SAS 權杖包含資源、過期時間及簽章。 SAS 權杖的格式為：`r={resource}&e={expiration}&s={signature}`。
 
-這裡的資源是您傳送事件之目標 Event Grid 主題的路徑。 例如,有效的資源路徑是: `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01`。 要檢視所有受支援的 API 版本,請參閱[Microsoft.EventGrid 資源類型](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)。 
+這裡的資源是您傳送事件之目標 Event Grid 主題的路徑。 例如，有效的資源路徑為： `https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events?api-version=2019-06-01`。 若要查看所有支援的 API 版本，請參閱[EventGrid 資源類型](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)。 
 
 簽章由您從金鑰產生。
 
@@ -201,10 +201,10 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ### <a name="encryption-at-rest"></a>待用加密
 
-事件網格服務寫入磁碟的所有事件或數據都由 Microsoft 管理的密鑰加密,確保它在靜態時加密。 此外,事件或資料保留的最長時間段為 24 小時,符合[事件網格重試策略](delivery-and-retry.md)。 事件格格將在 24 小時後自動刪除所有事件或數據,或者事件存留時間(以較少者為準)。
+由「事件方格」服務寫入磁片的所有事件或資料都會由 Microsoft 管理的金鑰加密，以確保它會在待用時加密。 此外，事件或資料保留的最長時間為24小時，遵循[事件方格重試原則](delivery-and-retry.md)。 事件方格會在24小時或事件存留時間之後自動刪除所有事件或資料，以較少者為准。
 
-## <a name="endpoint-validation-with-cloudevents-v10"></a>使用雲事件 v1.0 的終結點驗證
-如果您已經熟悉事件網格,您可能知道事件網格的終結點驗證握手,以防止濫用。 CloudEvents v1.0 使用 HTTP OPTIONS 方法實現自己的[濫用保護語義](security-authentication.md#webhook-event-delivery)。 你可以[在這裡](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)閱讀更多關於它。 使用 CloudEvents 架構進行輸出時,事件網格使用 CloudEvents v1.0 濫用保護代替事件網格驗證事件機制。
+## <a name="endpoint-validation-with-cloudevents-v10"></a>使用 CloudEvents v1.0 的端點驗證
+如果您已經熟悉事件方格，您可能會注意到事件方格的端點驗證交握以防止濫用。 CloudEvents v1.0 會使用 HTTP OPTIONS 方法來執行自己的[濫用保護語義](security-authentication.md#webhook-event-delivery)。 您可以在[這裡](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection)閱讀更多相關資訊。 使用 CloudEvents 架構進行輸出時，事件方格會使用搭配 CloudEvents v1.0 的濫用保護來取代事件方格驗證事件機制。
 
 ## <a name="next-steps"></a>後續步驟
 

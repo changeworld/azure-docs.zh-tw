@@ -1,6 +1,6 @@
 ---
 title: 搭配服務匯流排之 Azure 資源的受控識別
-description: 本文介紹如何使用託管標識訪問 Azure 服務總線實體(佇列、主題和訂閱)。
+description: 本文說明如何使用受控識別來存取 Azure 服務匯流排實體（佇列、主題和訂用帳戶）。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -14,48 +14,48 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 46a1db94d576174b837a40c646fcf9e082e339c8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461611"
 ---
-# <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure 活動目錄對託管識別進行身分驗證以存取 Azure 服務匯流排資源
+# <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 來驗證受控識別，以存取 Azure 服務匯流排資源
 [Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)是一個跨 Azure 功能，可讓您建立與應用程式程式碼執行所在之部署相關聯的安全識別。 然後您可以將該識別與存取控制角色產生關連，該角色會授與用來存取應用程式所需之特定 Azure 資源的自訂權限。
 
 使用受控識別，Azure 平台就能管理此執行階段識別。 您不需要為了識別本身或您需要存取的資源，在應用程式程式碼或設定中儲存及保護存取金鑰。 若服務匯流排用戶端應用程式在 Azure App Service 應用程式中執行，或在已啟用 Azure 資源的受控識別支援的虛擬機器中執行，則不需處理 SAS 規則和金鑰，或任何其他存取權杖。 用戶端應用程式只需要服務匯流排傳訊命名空間的端點位址。 當應用程式連線時，服務匯流排會將受控實體的內容繫結至作業 (在此文章稍後的範例顯示) 中的用戶端。 一旦它與受控識別相關聯，您的服務匯流排用戶端就能執行所有授權的作業。 授權是藉由將受控實體與服務匯流排角色相關聯來授與。 
 
 ## <a name="overview"></a>概觀
-當安全主體(使用者、組或應用程式)嘗試訪問服務總線實體時,必須授權該請求。 使用 Azure AD,訪問資源是一個兩步過程。 
+當安全性主體（使用者、群組或應用程式）嘗試存取服務匯流排實體時，要求必須獲得授權。 有了 Azure AD，對資源的存取是兩個步驟的程式。 
 
- 1. 首先,安全主體的標識經過身份驗證,並返回 OAuth 2.0 令牌。 要求權杖的資源名稱稱為`https://servicebus.azure.net`。
- 1. 接下來,令牌作為請求的一部分傳遞給服務總線服務,以授權對指定資源的訪問。
+ 1. 首先，安全性主體的身分識別已通過驗證，並傳回 OAuth 2.0 權杖。 要求權杖的資源名稱是`https://servicebus.azure.net`。
+ 1. 接下來，權杖會當做要求的一部分傳遞給服務匯流排服務，以授權存取指定的資源。
 
-身份驗證步驟要求應用程式請求在運行時包含 OAuth 2.0 訪問權杖。 如果應用程式在 Azure 實體(如 Azure VM、虛擬機縮放集或 Azure 函數應用)內運行,則可以使用託管標識訪問資源。 
+驗證步驟要求應用程式要求在執行時間包含 OAuth 2.0 存取權杖。 如果應用程式是在 azure 實體（例如 Azure VM、虛擬機器擴展集或 Azure 函式應用程式）內執行，它可以使用受控識別來存取資源。 
 
-授權步驟要求將一個或多個 RBAC 角色分配給安全主體。 Azure 服務總線提供 RBAC 角色,這些角色包含服務總線資源的許可權集。 分配給安全主體的角色確定主體將具有的許可權。 要瞭解有關將 RBAC 角色分配給 Azure 服務總線的更多詳細資訊,請參閱[Azure 服務匯流排的內建 RBAC 角色](#built-in-rbac-roles-for-azure-service-bus)。 
+授權步驟需要將一個或多個 RBAC 角色指派給安全性主體。 Azure 服務匯流排提供 RBAC 角色，其中包含服務匯流排資源的許可權集。 指派給安全性主體的角色會決定主體將擁有的許可權。 若要深入瞭解如何將 RBAC 角色指派給 Azure 服務匯流排，請參閱[Azure 服務匯流排的內建 rbac 角色](#built-in-rbac-roles-for-azure-service-bus)。 
 
-向服務總線發出請求的本機應用程式和 Web 應用程式也可以使用 Azure AD 進行授權。 本文介紹如何請求訪問令牌,並用它來授權服務總線資源的請求。 
+向服務匯流排提出要求的原生應用程式和 web 應用程式也可以使用 Azure AD 進行授權。 本文說明如何要求存取權杖，並使用它來授權服務匯流排資源的要求。 
 
 
-## <a name="assigning-rbac-roles-for-access-rights"></a>為存取權限配置 RBAC 角色
-Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../role-based-access-control/overview.md)，來授與存取受保護資源的權限。 Azure 服務總線定義了一組內建 RBAC 角色,這些角色包含用於存取服務總線實體的通用許可權集,還可以定義用於存取資料的自定義角色。
+## <a name="assigning-rbac-roles-for-access-rights"></a>指派存取權限的 RBAC 角色
+Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../role-based-access-control/overview.md)，來授與存取受保護資源的權限。 Azure 服務匯流排定義一組內建的 RBAC 角色，其中包含用來存取服務匯流排實體的常用許可權集，而且您也可以定義自訂角色來存取資料。
 
-將 RBAC 角色分配給 Azure AD 安全主體時,Azure 會授予對該安全主體的這些資源的訪問許可權。 訪問範圍可限定為訂閱級別、資源組或服務總線命名空間。 Azure AD 安全主體可以是 Azure 資源的使用者、組、應用程式服務主體或託管標識。
+當 RBAC 角色指派給 Azure AD 安全性主體時，Azure 會為該安全性主體授與這些資源的存取權。 存取權的範圍可以是訂用帳戶、資源群組或服務匯流排命名空間的層級。 Azure AD 的安全性主體可以是使用者、群組、應用程式服務主體，或適用于 Azure 資源的受控識別。
 
 ## <a name="built-in-rbac-roles-for-azure-service-bus"></a>Azure 服務匯流排的內建 RBAC 角色
-對於 Azure 服務匯流排來說，透過 Azure 入口網站和 Azure 資源管理 API 來的管理命名空間和所有相關資源的作業，已使用「角色型存取控制** (RBAC)」模型來加以保護。 Azure 提供以下內建 RBAC 角色,用於授權存取服務總線命名空間:
+對於 Azure 服務匯流排來說，透過 Azure 入口網站和 Azure 資源管理 API 來的管理命名空間和所有相關資源的作業，已使用「角色型存取控制** (RBAC)」模型來加以保護。 Azure 提供下列內建的 RBAC 角色，以授權存取服務匯流排命名空間：
 
-- [Azure 服務匯流排資料擁有者](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner):啟用對服務總線命名空間及其實體(佇列、主題、訂閱和篩選器)的資料存取
-- [Azure 服務總線數據發送方](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender):使用此角色授予對服務總線命名空間及其實體的發送訪問許可權。
-- [Azure 服務總線數據接收器](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver):使用此角色授予對服務總線命名空間及其實體的接收訪問許可權。 
+- [Azure 服務匯流排資料擁有](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner)者：啟用服務匯流排命名空間及其實體（佇列、主題、訂用帳戶和篩選器）的資料存取
+- [Azure 服務匯流排資料](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender)傳送者：使用此角色可授與服務匯流排命名空間及其實體的傳送存取權。
+- [Azure 服務匯流排資料接收器](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver)：使用此角色可授與服務匯流排命名空間及其實體的接收存取權。 
 
 ## <a name="resource-scope"></a>資源範圍 
-在將 RBAC 角色分配給安全主體之前,請確定安全主體應具有的訪問範圍。 最佳做法規定,最好只授予盡可能窄的範圍。
+將 RBAC 角色指派給安全性主體之前，請先決定安全性主體應該具備的存取範圍。 最佳做法規定，最好只授與最少的可能範圍。
 
-下面的清單描述了您可以從最窄的範圍開始對服務總線資源的存取的範圍的級別:
+下列清單說明您可以將存取範圍限定為服務匯流排資源的層級，從最窄的範圍開始：
 
-- **佇列**、**主題**或**訂閱**:角色分配適用於特定的服務總線實體。 目前,Azure 門戶不支援在訂閱級別將使用者/組/託管標識分配給服務總線 RBAC 角色。 下面是使用 Azure CLI 指令的範例[:az 角色配置建立](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)來將識別分配給服務總線 RBAC 角色: 
+- **佇列**、**主題**或**訂**用帳戶：角色指派會套用至特定的服務匯流排實體。 目前，Azure 入口網站不支援在訂用帳戶層級將使用者/群組/受控識別指派給服務匯流排 RBAC 角色。 以下是使用 Azure CLI 命令的範例： [az-role-指派-create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)將身分識別指派給服務匯流排 RBAC 角色： 
 
     ```azurecli
     az role assignment create \
@@ -63,66 +63,66 @@ Azure Active Directory (Azure AD) 會透過[角色型存取控制 (RBAC)](../rol
         --assignee $assignee_id \
         --scope /subscriptions/$subscription_id/resourceGroups/$resource_group/providers/Microsoft.ServiceBus/namespaces/$service_bus_namespace/topics/$service_bus_topic/subscriptions/$service_bus_subscription
     ```
-- **服務總線命名空間**:角色分配跨越命名空間下服務總線的整個拓撲以及與其關聯的消費者組。
-- **資源組**:角色分配應用於資源組下的所有服務總線資源。
-- **訂閱**:角色分配應用於訂閱中的所有資源組中的所有服務總線資源。
+- **服務匯流排命名空間**：角色指派會跨越命名空間下服務匯流排的整個拓撲，以及與其相關聯的取用者群組。
+- **資源群組**：角色指派會套用至資源群組下的所有服務匯流排資源。
+- **訂**用帳戶：角色指派會套用至訂用帳戶中所有資源群組內的所有服務匯流排資源。
 
 > [!NOTE]
-> 請記住,RBAC 角色分配可能需要長達五分鐘才能傳播。 
+> 請記住，RBAC 角色指派最多可能需要五分鐘的時間來傳播。 
 
-有關如何定義內建角色的詳細資訊,請參閱[瞭解角色定義](../role-based-access-control/role-definitions.md#management-and-data-operations)。 有關建立自訂 RBAC 角色的資訊,請參考[Azure 的控制程式產生 Azure 的控制程式產生自訂角色](../role-based-access-control/custom-roles.md)。
+如需如何定義內建角色的詳細資訊，請參閱[瞭解角色定義](../role-based-access-control/role-definitions.md#management-and-data-operations)。 如需建立自訂 RBAC 角色的詳細資訊，請參閱[建立 Azure 角色型存取控制的自訂角色](../role-based-access-control/custom-roles.md)。
 
 ## <a name="enable-managed-identities-on-a-vm"></a>在 VM 上啟用受控識別
-在可以使用 Azure Resources 的託管標識從 VM 授權服務總線資源之前,必須首先在 VM 上為 Azure 資源啟用託管標識。 若要了解如何啟用 Azure 資源的受控識別，請參閱下列其中一篇文章：
+您必須先在 VM 上啟用 Azure 資源的受控識別，才可以使用 Azure 資源的受控識別來授權 VM 的服務匯流排資源。 若要了解如何啟用 Azure 資源的受控識別，請參閱下列其中一篇文章：
 
 - [Azure 入口網站](../active-directory/managed-service-identity/qs-configure-portal-windows-vm.md)
 - [Azure PowerShell](../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager 範本](../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Azure 資源管理員用戶端庫](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Azure Resource Manager 用戶端程式庫](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>向 Azure AD 中的管理識別權碼識別權限
-要授權從應用程式中的託管標識請求服務總線服務,請先為該託管標識配置基於角色的訪問控制 (RBAC) 設置。 Azure 服務總線定義 RBAC 角色,這些角色包括從服務總線發送和讀取的許可權。 將 RBAC 角色分配給託管標識時,將授予託管標識對相應作用域的服務總線實體的訪問許可權。
+## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>在 Azure AD 中將許可權授與受控識別
+若要在您的應用程式中授權來自受控識別的服務匯流排服務要求，請先為該受控識別設定角色型存取控制（RBAC）設定。 Azure 服務匯流排定義的 RBAC 角色包含從服務匯流排傳送和讀取的許可權。 當 RBAC 角色指派給受控識別時，受控識別會被授與適當範圍內服務匯流排實體的存取權。
 
-有關配置 RBAC 角色的詳細資訊,請參考[Azure 的活動目錄進行身份驗證與授權來存取服務總線資源](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)。
+如需指派 RBAC 角色的詳細資訊，請參閱[使用 Azure Active Directory 進行驗證和授權以存取服務匯流排資源](authenticate-application.md#built-in-rbac-roles-for-azure-service-bus)。
 
 ## <a name="use-service-bus-with-managed-identities-for-azure-resources"></a>搭配使用服務匯流排和 Azure 資源的受控識別
-要使用具有託管標識的服務總線,您需要為標識分配角色和適當的作用域。 本節中的過程使用在託管標識下運行並訪問服務總線資源的簡單應用程式。
+若要搭配使用服務匯流排與受控識別，您必須為身分指派角色和適當的範圍。 本節中的程式會使用以受控識別執行的簡單應用程式，並存取服務匯流排資源。
 
-在這裏,我們使用在[Azure 應用服務](https://azure.microsoft.com/services/app-service/)中託管的範例 Web 應用程式。 有關建立 Web 應用程式的分步說明,請參閱在 Azure[中建立 ASP.NET 核心 Web 應用](../app-service/app-service-web-get-started-dotnet.md)
+在這裡，我們會使用[Azure App Service](https://azure.microsoft.com/services/app-service/)所裝載的範例 web 應用程式。 如需建立 web 應用程式的逐步指示，請參閱[在 Azure 中建立 ASP.NET Core web 應用程式](../app-service/app-service-web-get-started-dotnet.md)
 
-建立應用程式後,按照以下步驟操作: 
+建立應用程式之後，請遵循下列步驟： 
 
-1. 轉到 **"設定"** 並選擇 **"標識**"。 
-1. 選擇「**狀態**為**打開**」。 
+1. 移至 [**設定**]，然後選取 [身分**識別**]。 
+1. 選取要**開啟**的**狀態**。 
 1. 選取 [儲存]**** 以儲存設定。 
 
-    ![Web 應用的託管識別](./media/service-bus-managed-service-identity/identity-web-app.png)
+    ![Web 應用程式的受控識別](./media/service-bus-managed-service-identity/identity-web-app.png)
 
-啟用此設定後,將在 Azure 活動目錄 (Azure AD) 中創建新的服務標識,並將其配置到應用服務主機中。
+一旦您啟用此設定，就會在您的 Azure Active Directory （Azure AD）中建立新的服務識別，並將其設定為 App Service 主機。
 
-現在,將此服務標識分配給服務總線資源中所需作用域中的角色。
+現在，將此服務識別指派給服務匯流排資源中所需範圍內的角色。
 
-### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>使用 Azure 門戶配置 RBAC 角色
-要將角色分配給服務總線命名空間,請導航到 Azure 門戶中的命名空間。 顯示資源的存取控制 (IAM) 設定,並按照以下說明管理角色分配:
+### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>使用 Azure 入口網站指派 RBAC 角色
+若要將角色指派給服務匯流排命名空間，請流覽至 Azure 入口網站中的命名空間。 顯示資源的 [存取控制（IAM）] 設定，並遵循下列指示來管理角色指派：
 
 > [!NOTE]
-> 以下步驟將服務標識角色分配給服務總線命名空間。 您可以按照相同的步驟在其他受支援的範圍(資源組和訂閱)中分配角色。 
+> 下列步驟會將服務識別角色指派給您的服務匯流排命名空間。 您可以遵循相同的步驟，在其他支援的範圍（資源群組和訂用帳戶）上指派角色。 
 > 
-> 如果沒有[服務總線消息命名空間](service-bus-create-namespace-portal.md),則創建命名空間。 
+> [建立服務匯流排訊息命名空間](service-bus-create-namespace-portal.md)（如果您沒有的話）。 
 
-1. 在 Azure 門戶中,導覽到服務匯流排的空間並顯示命名空間的**概述**。 
-1. 選擇左側功能表上**的存取控制 (IAM)** 以顯示服務總線命名空間的存取控制設定。
-1.  選取 [角色指派]**** 索引標籤，以查看角色指派的清單。
-3.  選擇 **「新增」** 以新增新角色。
-4.  在「**新增角色分配」** 頁上,選擇要分配的 Azure 服務總線角色。 然後搜索以查找已註冊的服務標識以分配角色。
+1. 在 [Azure 入口網站中，流覽至您的服務匯流排命名空間，並顯示命名空間的**總覽**。 
+1. 選取左側功能表上的 **[存取控制（IAM）** ]，以顯示服務匯流排命名空間的存取控制設定。
+1.  選取 [角色指派]  索引標籤，以查看角色指派的清單。
+3.  選取 **[新增]** 以新增角色。
+4.  在 [**新增角色指派**] 頁面上，選取您要指派的 Azure 服務匯流排角色。 然後搜尋以找出您已註冊來指派角色的服務身分識別。
     
-    ![新增角色分配頁](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  選取 [儲存]  。 您對其指派角色的身分識別會出現在該角色下方。 例如,下圖顯示服務標識具有 Azure 服務總線數據擁有者。
+    ![[新增角色指派] 頁面](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
+5.  選取 [儲存]  。 您對其指派角色的身分識別會出現在該角色下方。 例如，下圖顯示服務識別具有 Azure 服務匯流排資料擁有者。
     
-    ![配置給角色的識別](./media/service-bus-managed-service-identity/role-assigned.png)
+    ![指派給角色的身分識別](./media/service-bus-managed-service-identity/role-assigned.png)
 
-分配角色後,Web 應用程式將有權訪問定義範圍內的服務總線實體。 
+指派角色之後，web 應用程式就可以存取已定義範圍下的服務匯流排實體。 
 
 ### <a name="run-the-app"></a>執行應用程式
 
@@ -134,7 +134,7 @@ Default.aspx 頁面是您的登陸頁面。 您可以在 Default.aspx.cs 檔案�
 
 當您進行這些變更之後，請發行並執行應用程式。 您只要下載發行設定檔然後在 Visual Studio 中匯入，就能取得正確的發行資料：
 
-![取得設定檔](./media/service-bus-managed-service-identity/msi3.png)
+![取得發行設定檔](./media/service-bus-managed-service-identity/msi3.png)
  
 若要傳送或接收訊息，請輸入命名空間名稱和您所建立之實體的名稱。 然後，按一下 [傳送]**** 或 [接收]****。
 

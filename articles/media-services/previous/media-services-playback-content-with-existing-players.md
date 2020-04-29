@@ -1,6 +1,6 @@
 ---
 title: 使用現有的撥放器來撥放內容 - Azure | Microsoft Docs
-description: 本文列出了可用於播放內容的現有播放機。
+description: 本文列出您可以用來播放內容的現有播放程式。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 2d3c22e17c37bc46c16a9cc80eb3cf4b9ec93ecf
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686915"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用現有播放器來播放您的內容
 Azure 媒體服務支援許多熱門的串流格式，例如 Smooth Streaming、HTTP 即時資料流和 MPEG-Dash。 本主題會指引您可用來測試串流的現有播放程式。
 
 ### <a name="the-azure-portal-media-services-content-player"></a>Azure 入口網站媒體服務內容播放程式
-**Azure**門戶提供可用於測試視頻的內容播放機。
+**Azure**入口網站會提供內容播放機，供您用來測試您的影片。
 
 按一下想用的視訊 (請確定它 [已發行](media-services-portal-publish.md))，按一下入口網站底部的 [ **播放** ] 按鈕。
 

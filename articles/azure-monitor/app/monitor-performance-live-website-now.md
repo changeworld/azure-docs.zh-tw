@@ -4,25 +4,25 @@ description: 監視網站的效能而不重新部署網站。 使用裝載於內
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: ba17ee275a744b88f2c76e7e3f99a1ac9cc8e758
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536823"
 ---
-# <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>使用應用程式見解無程式附加在執行時偵測 Web 應用
+# <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>在執行時間使用 Application Insights 無程式碼 Attach 檢測 web 應用程式
 
 > [!IMPORTANT]
-> 不再建議使用狀態監視器。 它已被 Azure 監視器應用程式見解代理(以前稱為狀態監視器 v2)替換。 有關[本地伺服器部署](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)或[Azure 虛擬機器和虛擬機器縮放集部署](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps),請參閱我們的文檔。
+> 不再建議使用狀態監視器。 它已由 Azure 監視器 Application Insights 代理程式（先前名為狀態監視器 v2）取代。 請參閱我們的檔，以瞭解[內部部署伺服器部署](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-overview)或[Azure 虛擬機器和虛擬機器擴展集部署](https://docs.microsoft.com/azure/azure-monitor/app/azure-vm-vmss-apps)。
 
 您可以使用 Azure Application Insights 檢測即時 Web 應用程式，而不需修改或重新部署您的程式碼。 您需要 [Microsoft Azure](https://azure.com) 訂用帳戶。
 
 狀態監視器用於檢測 IIS 內部或 VM 中裝載的 .NET 應用程式。
 
-- 如果應用已部署到 Azure VM 或 Azure 虛擬機縮放集中,請按照[這些說明](azure-vm-vmss-apps.md)操作。
+- 如果您的應用程式已部署至 Azure VM 或 Azure 虛擬機器擴展集，請遵循[這些指示](azure-vm-vmss-apps.md)。
 - 如果您的應用程式已部署到 Azure 應用程式服務中，請遵循[這些指示](azure-web-apps.md)。
 - 如果您的應用程式部署在 Azure VM 中，您可以從 Azure 控制台切換為 Application Insights 監視。
-- (也有關於檢測[Azure 雲服務](../../azure-monitor/app/cloudservices.md)的單獨文章。
+- （另外還有關于檢測[Azure 雲端服務](../../azure-monitor/app/cloudservices.md)的個別文章）。
 
 
 ![App Insights 概觀圖表的螢幕擷取畫面，包含失敗的要求、伺服器回應時間和伺服器要求的相關資訊](./media/monitor-performance-live-website-now/overview-graphs.png)
@@ -33,7 +33,7 @@ ms.locfileid: "81536823"
 * **執行階段︰** 如下所述，檢測伺服器上的 Web 應用程式，而不需重建並重新部署程式碼。
 
 > [!NOTE]
-> 如果使用生成時間檢測,即使啟用運行時檢測也不會工作。
+> 如果您使用組建時間檢測，則即使執行時間檢測已開啟，也無法運作。
 
 以下是您可在每種途徑中取得的優勢摘要︰
 
@@ -144,7 +144,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * 若要輸出詳細資訊記錄，請修改組態檔 `C:\Program Files\Microsoft Application Insights\Status Monitor\Microsoft.Diagnostics.Agent.StatusMonitor.exe.config` 並將 `<add key="TraceLevel" value="All" />` 新增至 `appsettings`。
 然後重新啟動狀態監視器。
 
-* 由於狀態監視器是 .NET 應用程式,您還可以[透過適當的診斷添加到設定檔](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)來啟用 .net 追蹤。 例如,在某些情況下,透過[配置網路追蹤](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)來查看網路等級發生的情況可能很有用
+* 當狀態監視器是 .NET 應用程式時，您也可以藉[由將適當的診斷新增至設定檔來啟用 .net 追蹤](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/trace-debug/system-diagnostics-element)。 例如，在某些情況下，藉由設定[網路追蹤](https://docs.microsoft.com/dotnet/framework/network-programming/how-to-configure-network-tracing)來查看網路層級發生的狀況，會很有説明
 
 ### <a name="insufficient-permissions"></a>權限不足
   
@@ -181,7 +181,7 @@ Start-ApplicationInsightsMonitoring -Name appName -InstrumentationKey 00000000-0
 * Windows Server 2012 R2
 * Windows Server 2016
 
-使用最新的 SP 與 .NET 架構 4.5(狀態監視器以此版本的框架建構)
+使用最新的 SP 和 .NET Framework 4.5 （狀態監視器是以這個版本的架構為基礎）
 
 在用戶端 Windows 7、8、8.1 和 10 上，一樣需含有 .NET Framework 4.5
 
@@ -238,7 +238,7 @@ IIS 支援：IIS 7、7.5、8、8.5 (需要有 IIS)
 `Update-ApplicationInsightsMonitoring -Name appName [-InstrumentationKey "0000000-0000-000-000-0000"`]
 
 * `-Name`：Web 應用程式在 IIS 中的名稱。
-* `-InstrumentationKey`(可選。使用此選項可更改應用遙測發送到的資源。
+* `-InstrumentationKey`（選擇性）。使用此來變更要傳送應用程式遙測的資源。
 * 此 Cmdlet：
   * 將具名應用程式升級至最近下載到這台電腦之 SDK 的版本。 (僅適用於 `SdkState==EnabledAfterDeployment`時)
   * 如果您提供檢測金鑰，具名應用程式會重新設定為將遙測傳送至具有該索引鍵的資源。 (適用於 `SdkState != Disabled`時)
@@ -275,7 +275,7 @@ IIS 支援：IIS 7、7.5、8、8.5 (需要有 IIS)
 
 目前，狀態監視器只能安裝 Application Insights SDK 版本 2.3 或 2.4。 
 
-應用程式洞察 SDK 版本 2.4 是[支援 .NET 4.0 的最後一個版本](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1),它是[EOL 2016 年 1 月](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/)版本。 因此,到目前為止,狀態監視器可用於檢測 .NET 4.0 應用程式。 
+Application Insights SDK 2.4 版是[支援 .net 4.0 的最後一個版本](https://github.com/microsoft/ApplicationInsights-dotnet/releases/tag/v2.5.0-beta1)，也就是第[1 月的 2016](https://devblogs.microsoft.com/dotnet/support-ending-for-the-net-framework-4-4-5-and-4-5-1/)。 因此，從現在開始狀態監視器可以用來檢測 .NET 4.0 應用程式。 
 
 ### <a name="do-i-need-to-run-status-monitor-whenever-i-update-the-app"></a>每次更新應用程式時，是否需要執行狀態監視器？
 

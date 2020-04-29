@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 15cdd4c53105998488d2ae1f544e34c1e07a157a
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82147135"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>使用 azure NetApp Files on SUSE Linux Enterprise Server 在 Azure Vm 上部署具有待命節點的 SAP Hana 相應放大系統 
@@ -85,7 +85,7 @@ ms.locfileid: "82147135"
 * [使用 Azure NetApp Files 在 Microsoft Azure 的 NetApp SAP 應用程式][anf-sap-applications-azure]
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 達到 HANA 高可用性的其中一個方法是設定主機自動容錯移轉。 若要設定主機自動容錯移轉，您可以將一或多個虛擬機器新增至 HANA 系統，並將它們設定為待命節點。 當作用中節點失敗時，待命節點會自動接管。 在 Azure 虛擬機器的呈現設定中，您可以使用[Azure NetApp Files 上的 NFS](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)來達成自動容錯移轉。  
 

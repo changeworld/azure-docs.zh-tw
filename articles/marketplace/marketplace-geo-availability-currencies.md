@@ -1,6 +1,6 @@
 ---
-title: 商業市場的地理可用性和貨幣支援 |Azure 應用商店
-description: 商業市場的地理可用性
+title: 商用 marketplace 的地理可用性和貨幣支援 |Azure Marketplace
+description: 商用 marketplace 中的地理可用性
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
 ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687593"
 ---
-# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商業市場的地理可用性和貨幣支援
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商用 marketplace 的地理可用性和貨幣支援
 
-商業市場產品可以在 141 個地理位置購買,由客戶的帳單位址定義,交易可以以 17 種貨幣完成。 下表列出了每個支援的地理位置[、ISO 3166 兩位數位 Alpha 代碼](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的貨幣。
+商業 marketplace 供應專案可以在141個地理位置中購買，如客戶的帳單位址所定義，而交易可以用17種貨幣來完成。 下表列出每個支援的地理位置、其[ISO 3166 2 位數的 Alpha 代碼](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)，以及指派的貨幣。
 
 |   國家/地區名稱               |   ISO-2   |   貨幣   |
 |-------------------------------------|-----------|--------------|
@@ -48,12 +48,12 @@ ms.locfileid: "81687593"
 | 維德角                          | CV        | 美元          |
 | 開曼群島                      | KY        | 美元          |
 | 智利                               | CL        | 美元          |
-| 中國\**                            | CN        | N/A          |
+| 華北\**                            | CN        | N/A          |
 | 哥倫比亞                            | CO        | 美元          |
 | 哥斯大黎加                          | CR        | 美元          |
 | 象牙海岸                       | CI        | 美元          |
 | 克羅埃西亞                             | HR        | 歐元          |
-| 古拉果                             | 連續        | 美元          |
+| 古拉果                             | 順        | 美元          |
 | 賽浦路斯                              | CY        | 歐元          |
 | 捷克共和國                      | CZ        | 歐元          |
 | 丹麥                             | DK        | 丹麥幣          |
@@ -77,7 +77,7 @@ ms.locfileid: "81687593"
 | 匈牙利                             | HU        | 歐元          |
 | 冰島                             | IS        | 歐元          |
 | 印度                               | IN        | 印度幣          |
-| 印尼                           | ID        | 美元          |
+| 印尼                           | 識別碼        | 美元          |
 | 伊拉克                                | IQ        | 美元          |
 | 愛爾蘭                             | IE        | 歐元          |
 | 以色列                              | IL        | 美元          |
@@ -87,7 +87,7 @@ ms.locfileid: "81687593"
 | 約旦                              | JO        | 美元          |
 | 哈薩克                          | KZ        | 美元          |
 | 肯亞                               | KE        | 美元          |
-| 韓國(韓國)                       | KR        | 韓元          |
+| 韓國（南部）                       | KR        | 韓元          |
 | 科威特                              | KW        | 美元          |
 | 吉爾吉斯                          | KG        | 美元          |
 | 拉脫維亞                              | LV        | 歐元          |
@@ -148,8 +148,8 @@ ms.locfileid: "81687593"
 | 突尼西亞                             | TN        | 美元          |
 | 土耳其                              | TR        | 美元          |
 | 土庫曼                        | TM        | 美元          |
-| 梵蒂岡城(羅馬教廷)             | VA        | 歐元          |
-| 美屬維爾京群島 | VI        | 美元          |
+| 梵蒂岡城（聖見）             | VA        | 歐元          |
+| 美國維爾京群島 | VI        | 美元          |
 | 烏干達                              | UG        | 美元          |
 | 烏克蘭                             | UA        | 美元          |
 | 阿拉伯聯合大公國                | AE        | 美元          |
@@ -164,6 +164,6 @@ ms.locfileid: "81687593"
 | 辛巴威                            | ZW        | 美元          |
 |   |   |   |
 
-\*對於巴西的客戶,通過雲端解決方案供應商 (CSP) 的應用商店使用 USD。
+\*對於巴西的客戶，透過雲端解決方案提供者（CSP）的 Marketplace 會使用美元。
 
 \** 僅限免費和 BYOL VM 映射。

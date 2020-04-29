@@ -1,37 +1,37 @@
 ---
-title: Azure 應用程式見解代理故障排除和已知問題 |微軟文件
-description: 已知問題的應用程式見解代理和故障排除示例。 在不重新部署網站的情況下監控網站性能。 與本地、VM 或 Azure 上託管的ASP.NET Web 應用配合使用。
+title: Azure 應用程式 Insights 代理程式疑難排解和已知問題 |Microsoft Docs
+description: Application Insights 代理程式和疑難排解範例的已知問題。 在不重新部署網站的情況下監視網站效能。 適用于內部部署、Vm 或 Azure 上裝載的 ASP.NET web 應用程式。
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732942"
 ---
-# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>容錯排除應用程式見解代理伺服器(以前稱為狀態監視器 v2)
+# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>疑難排解 Application Insights 代理程式（先前稱為狀態監視器 v2）
 
-啟用監視時,可能會遇到阻止數據收集的問題。
-本文列出了所有已知問題,並提供了故障排除示例。
-如果您遇到此處未列出的問題,您可以在[GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues)上與我們聯繫。
+當您啟用監視時，可能會遇到阻礙資料收集的問題。
+本文列出所有已知問題，並提供疑難排解範例。
+如果您遇到此處未列出的問題，可以在[GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues)上與我們聯繫。
 
 ## <a name="known-issues"></a>已知問題
 
-### <a name="conflicting-dlls-in-an-apps-bin-directory"></a>套用的 bin 目錄中的衝突 DLL
+### <a name="conflicting-dlls-in-an-apps-bin-directory"></a>應用程式的 bin 目錄中有衝突的 Dll
 
-如果 bin 目錄中存在這些 DLL 中的任何一個,則監視可能會失敗:
+如果其中有任何 Dll 出現在 bin 目錄中，監視可能會失敗：
 
-- 微軟.應用程式洞察.dll
-- 微軟.AspNet.遙測相關.dll
-- 系統.診斷.診斷來源.dll
+- ApplicationInsights .dll
+- Microsoft.aspnet.telemetrycorrelation .dll
+- DiagnosticSource .dll
 
-其中一些 DLL 包含在 Visual Studio 預設應用範本中,即使您的應用不使用它們也是如此。
-您可以使用故障排除工具檢視症狀行為:
+其中一些 Dll 會包含在 Visual Studio 預設應用程式範本中，即使您的應用程式未使用它們也是一樣。
+您可以使用疑難排解工具來查看徵兆行為：
 
-- PerfView:
+- PerfView
     ```
     ThreadID="7,500" 
     ProcessorNumber="0" 
@@ -42,7 +42,7 @@ ms.locfileid: "81732942"
     FormattedMessage="Found 'System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' assembly, skipping attaching redfield binaries" 
     ```
 
-- IISReset 和應用載入(無遙測)。 使用系統內部調查(Handle.exe 和 ListDlL.exe):
+- IISReset 和應用程式負載（不含遙測）。 使用 Sysinternals （Handle 和 ListDLLs）進行調查：
     ```
     .\handle64.exe -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
     E54: File  (R-D)   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.RedfieldIISModule.dll
@@ -53,15 +53,15 @@ ms.locfileid: "81732942"
     0x0000000004d20000  0xb2000   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Instrumentation64\Microsoft.ApplicationInsights.Extensions.Base_x64.dll
     ```
 
-### <a name="conflict-with-iis-shared-configuration"></a>與 IIS 分享設定衝突
+### <a name="conflict-with-iis-shared-configuration"></a>與 IIS 共用設定衝突
 
-如果您有一組 Web 伺服器,則可能是在使用[共享設定](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)。
-無法將 HttpModule 注入此共享配置。
-在每個 Web 伺服器上執行啟用命令,以便將 DLL 安裝到每個伺服器的 GAC 中。
+如果您有一部 web 伺服器的叢集，您可能會使用[共用](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)設定。
+無法將 HttpModule 插入此共用設定。
+在每部 web 伺服器上執行 Enable 命令，將 DLL 安裝到每部伺服器的 GAC 中。
 
-執行啟用命令後,完成以下步驟:
-1. 跳到共享設定目錄並找到應用程式Host.config 檔案。
-2. 將此行新增到設定的模組部份:
+執行 [啟用] 命令之後，請完成下列步驟：
+1. 移至共用設定目錄，並尋找 Applicationhost.config 檔案。
+2. 將下面這一行新增至設定的 [模組] 區段：
     ```
     <modules>
         <!-- Registered global managed http module handler. The 'Microsoft.AppInsights.IIS.ManagedHttpModuleHelper.dll' must be installed in the GAC before this config is applied. -->
@@ -69,33 +69,33 @@ ms.locfileid: "81732942"
     </modules>
     ```
 
-### <a name="iis-nested-applications"></a>IIS 嵌入應用程式
+### <a name="iis-nested-applications"></a>IIS 嵌套應用程式
 
-我們不會在版本 1.0 中檢測 IIS 中的嵌套應用程式。
-我們正在[這裏](https://github.com/microsoft/ApplicationInsights-Home/issues/369)跟蹤這個問題。
+我們不會在1.0 版的 IIS 中檢測嵌套應用程式。
+我們會在此追蹤[此問題。](https://github.com/microsoft/ApplicationInsights-Home/issues/369)
 
-### <a name="advanced-sdk-configuration-isnt-available"></a>高級 SDK 設定不可用。
+### <a name="advanced-sdk-configuration-isnt-available"></a>無法使用 Advanced SDK 設定。
 
-SDK 配置不會向版本 1.0 中的最終用戶公開。
-我們正在[這裏](https://github.com/microsoft/ApplicationInsights-Home/issues/375)跟蹤這個問題。
+SDK 設定不會公開給版本1.0 中的使用者。
+我們會在此追蹤[此問題。](https://github.com/microsoft/ApplicationInsights-Home/issues/375)
 
     
     
 ## <a name="troubleshooting"></a>疑難排解
     
-### <a name="troubleshooting-powershell"></a>容毀電源外殼
+### <a name="troubleshooting-powershell"></a>疑難排解 PowerShell
 
-#### <a name="determine-which-modules-are-available"></a>確定哪些模組可用
-可以使用`Get-Module -ListAvailable`命令確定安裝了哪些模組。
+#### <a name="determine-which-modules-are-available"></a>判斷哪些模組可供使用
+您可以使用`Get-Module -ListAvailable`命令來判斷已安裝的模組。
 
-#### <a name="import-a-module-into-the-current-session"></a>將模組匯入目前工作階段
-如果模組尚未載入 PowerShell 工作階段中,則可以使用`Import-Module <path to psd1>`命令 手動載入該模組。
+#### <a name="import-a-module-into-the-current-session"></a>將模組匯入目前的會話
+如果模組尚未載入 PowerShell 會話中，您可以使用`Import-Module <path to psd1>`命令手動載入。
 
 
-### <a name="troubleshooting-the-application-insights-agent-module"></a>對應用程式見解代理模組進行故障排除
+### <a name="troubleshooting-the-application-insights-agent-module"></a>針對 Application Insights 代理程式模組進行疑難排解
 
-#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>列出應用程式來解代理模組中可用的指令
-執行指令`Get-Command -Module Az.ApplicationMonitor`以取得可用指令:
+#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>列出 Application Insights 代理程式模組中可用的命令
+執行命令`Get-Command -Module Az.ApplicationMonitor`以取得可用的命令：
 
 ```
 CommandType     Name                                               Version    Source
@@ -110,50 +110,50 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.4.0      Az
 Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az.ApplicationMonitor
 ```
 
-#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>決定應用程式見解代理模組的目前版本
-執行此`Get-ApplicationInsightsMonitoringStatus -PowerShellModule`指令以顯示有關模組的以下資訊:
+#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>判斷 Application Insights 代理程式模組的目前版本
+執行`Get-ApplicationInsightsMonitoringStatus -PowerShellModule`命令以顯示模組的下列相關資訊：
    - PowerShell 模組版本
-   - 應用程式洞察 SDK 版本
+   - Application Insights SDK 版本
    - PowerShell 模組的檔案路徑
     
-有關如何使用此 cmdlet 的詳細資訊,請查看[API 參考](status-monitor-v2-api-reference.md)。
+如需如何使用此 Cmdlet 的詳細說明，請參閱[API 參考](status-monitor-v2-api-reference.md)。
 
 
-### <a name="troubleshooting-running-processes"></a>容錯排除正在執行的程序
+### <a name="troubleshooting-running-processes"></a>執行中進程的疑難排解
 
-您可以檢查已檢測電腦上的進程,以確定是否載入了所有 DLL。
-如果監視工作,應至少載入 12 個 DLL。
+您可以檢查檢測電腦上的處理常式，以判斷是否已載入所有 Dll。
+如果監視運作正常，則至少應載入12個 Dll。
 
-使用`Get-ApplicationInsightsMonitoringStatus -InspectProcess`命令檢查 DLL。
+使用`Get-ApplicationInsightsMonitoringStatus -InspectProcess`命令來檢查 dll。
 
-有關如何使用此 cmdlet 的詳細資訊,請查看[API 參考](status-monitor-v2-api-reference.md)。
+如需如何使用此 Cmdlet 的詳細說明，請參閱[API 參考](status-monitor-v2-api-reference.md)。
 
 
-### <a name="collect-etw-logs-by-using-perfview"></a>使用 PerfView 收集 ETW 紀錄
+### <a name="collect-etw-logs-by-using-perfview"></a>使用 PerfView 收集 ETW 記錄檔
 
 #### <a name="setup"></a>安裝程式
 
-1. 從[GitHub](https://github.com/Microsoft/perfview/releases)下載 PerfView.exe 和 PerfView64.exe 。
-2. 啟動 PerfView64.exe。
+1. 從[GitHub](https://github.com/Microsoft/perfview/releases)下載 PerfView 和 PerfView64。
+2. 啟動 PerfView64。
 3. 展開 [進階選項]  。
-4. 清除這些選擇的盒:
-    - **Zip**
-    - **合併**
+4. 清除這些核取方塊：
+    - **位址**
+    - **Merge**
     - **.NET 符號集合**
-5. 設定這些**額外提供者**:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+5. 設定這些**額外的提供者**：`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
-#### <a name="collecting-logs"></a>收集記錄
+#### <a name="collecting-logs"></a>收集記錄檔
 
-1. 在具有管理權限的命令控制台中`iisreset /stop`, 執行此指令以關閉 IIS 和所有 Web 應用。
-2. 在 PerfView 中,選擇 **「開始集合**」。。
-3. 在具有管理權限的命令控制台中`iisreset /start`, 執行此指令以啟動 IIS。
-4. 嘗試流覽到你的應用。
-5. 載入應用後,傳回到 PerfView 並選擇 **「停止收集**」。
+1. 在具有系統管理員許可權的命令主控台中， `iisreset /stop`執行命令以關閉 IIS 和所有 web 應用程式。
+2. 在 PerfView 中，選取 [**開始收集**]。
+3. 在具有系統管理員許可權的命令主控台中， `iisreset /start`執行命令以啟動 IIS。
+4. 嘗試流覽至您的應用程式。
+5. 載入應用程式之後，請返回 PerfView，然後選取 [**停止收集**]。
 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-- 檢視[API 引用](status-monitor-v2-overview.md#powershell-api-reference)以瞭解您可能錯過的參數。
-- 如果您遇到此處未列出的問題,您可以在[GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues)上與我們聯繫。
+- 請參閱[API 參考](status-monitor-v2-overview.md#powershell-api-reference)，以瞭解您可能遺漏的參數。
+- 如果您遇到此處未列出的問題，可以在[GitHub](https://github.com/Microsoft/ApplicationInsights-Home/issues)上與我們聯繫。

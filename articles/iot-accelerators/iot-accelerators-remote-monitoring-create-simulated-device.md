@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt
 ms.openlocfilehash: d31e520dac1c7e2a13fbd9e24a0cd3167f69e904
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81681998"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>建立及測試新模擬裝置
@@ -54,7 +54,7 @@ ms.locfileid: "81681998"
 
 下表會顯示新裝置所支援的動作：
 
-| 名稱        |
+| Name        |
 | ----------- |
 | 開啟   |
 | 關閉  |
@@ -81,10 +81,10 @@ ms.locfileid: "81681998"
 
 若要遵循本操作說明指南，您需要：
 
-* Visual Studio Code。 您可以[下載 Mac、Linux 與 Windows 的視覺化工作室代碼](https://code.visualstudio.com/download)。
+* Visual Studio Code。 您可以[下載適用于 Mac、Linux 和 Windows 的 Visual Studio Code](https://code.visualstudio.com/download)。
 * .NET Core。 您可以下載[適用於 Mac、Linux 和 Windows 的 .NET Code](https://www.microsoft.com/net/download)。
 * [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* Postman。 您可以下載[Mac、Windows 或 Linux 的郵遞員](https://www.getpostman.com/apps)。
+* Postman。 您可以下載[適用于 Mac、Windows 或 Linux 的 Postman](https://www.getpostman.com/apps)。
 * [部署至 Azure 訂用帳戶的 IoT 中樞](../../articles/iot-hub/iot-hub-create-through-portal.md)。 您需要 IoT 中樞的連接字串才能完成本指南中的步驟。 您可以從 Azure 入口網站取得連接字串。
 * Cosmos DB 資料庫，其必須使用 SQL API，並已針對[強式一致性](../../articles/cosmos-db/how-to-manage-database-account.md)進行設定。 您需要 Cosmos DB 資料庫的連接字串才能完成本指南中的步驟。 您可以從 Azure 入口網站取得連接字串。
 
@@ -100,7 +100,7 @@ ms.locfileid: "81681998"
 
 ### <a name="download-the-microservices"></a>下載微服務
 
-將[遠端監視微服務](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip)從 GitHub 下載並解壓縮到本地電腦上的適當位置。 本文假設這個資料夾的名稱是 **remote-monitoring-services-dotnet-master**。
+從 GitHub 將[遠端監視微服務](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip)下載並解壓縮到本機電腦上的適當位置。 本文假設這個資料夾的名稱是 **remote-monitoring-services-dotnet-master**。
 
 從 GitHub 將[裝置模擬微服務](https://github.com/Azure/device-simulation-dotnet/archive/master.zip)下載並解壓縮到本機電腦上的適當位置。 本文假設這個資料夾的名稱是 **device-simulation-dotnet-master**。
 
@@ -108,11 +108,11 @@ ms.locfileid: "81681998"
 
 在 Visual Studio Code 中開啟 **remote-monitoring-services-dotnet-master\storage-adapter** 資料夾。 按一下任何 [還原]**** 按鈕，以修正任何無法解決的相依性。
 
-打開**儲存卡裝置/WebService/appsettings.ini**檔案,並將Cosmos DB 連接字串配置給**文件 DBConnectionString**變數。
+開啟**storage-adapter/WebService/appsettings**檔案，並將您的 Cosmos DB 連接字串指派給**documentDBConnectionString**變數。
 
 若要在本機執行微服務，請按一下 [偵錯] > [開始偵錯]****。
 
-Visual Studio 程式**碼中的「終端**機」視窗顯示正在執行的微服務的輸出,包括用於[http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)Web 服務執行狀況檢查的網址: 。 當您瀏覽至此位址時，狀態應該是「正確: 運作良好」。
+Visual Studio Code 中的 [**終端**機] 視窗會顯示執行微服務的輸出，包括 web 服務健康情況檢查[http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)的 URL：。 當您瀏覽至此位址時，狀態應該是「正確: 運作良好」。
 
 在完成後續步驟時，請讓儲存體配接器微服務繼續在 Visual Studio Code 的這個執行個體中執行。
 
@@ -425,7 +425,7 @@ Visual Studio 程式**碼中的「終端**機」視窗顯示正在執行的微�
 
 在 Visual Studio Code 的新執行個體中，開啟您從 GitHub 下載的 **device-simulation-dotnet-master** 資料夾。 按一下任何 [還原]**** 按鈕，以修正任何無法解決的相依性。
 
-開啟**WebService/appsettings.ini**檔案,並將 Cosmos DB 連接字串分配給**documentdb_connstring**變數,並修改設定,如下所示:
+開啟**WebService/appsettings**檔案，並將您的 Cosmos DB 連接字串指派給**documentdb_connstring**變數，同時修改設定，如下所示：
 
 ```ini
 device_models_folder = C:\temp\devicemodels\
@@ -465,11 +465,11 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 1. 按一下 [檔案] > [匯入]****。 然後按一下 [選擇檔案]****。
 
-1. 瀏覽至 **device-simulation-dotnet-master/docs/postman** 資料夾。 選擇**Azure IoT 裝置模擬解決方案加速器.postman_collection**和**Azure IoT 裝置模擬解決方案加速器。postman_environment,** 然後單擊 **"打開**" 。
+1. 瀏覽至 **device-simulation-dotnet-master/docs/postman** 資料夾。 選取 [ **Azure Iot 裝置模擬解決方案加速器**]，Postman_collection 和**Azure iot 裝置模擬解決方案加速器。 postman_environment**然後按一下 [**開啟**]。
 
 1. 將 **Azure IoT Device Simulation solution accelerator** 展開至您可以傳送的要求。
 
-1. 點選 **「無環境」** 並選擇**Azure IoT 裝置模擬解決方案加速器**。
+1. 按一下 [**無環境**]，然後選取 [ **Azure IoT 裝置模擬解決方案加速器**]。
 
 現在，您已在 Postman 工作區中載入集合和環境，以供用來與裝置模擬微服務互動。
 

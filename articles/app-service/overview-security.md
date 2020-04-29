@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
 ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81535650"
 ---
 # <a name="security-in-azure-app-service"></a>Azure App Service 中的安全性
@@ -31,14 +31,14 @@ App Service 的平台元件 (包括 Azure VM、儲存體、網路連線、Web �
 
 ## <a name="https-and-certificates"></a>HTTPS 和憑證
 
-App Service 可讓您利用 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保護您的應用程式。 建立您的應用程式後，已可使用 HTTPS 存取其預設網域名稱 (\<app_name>.azurewebsites.net)。 如果[為應用設定自定義域](app-service-web-tutorial-custom-domain.md),還應[使用 TLS/SSL 證書對其進行保護](configure-ssl-bindings.md),以便用戶端瀏覽器可以對自訂域建立安全的 HTTPS 連接。 套用服務支援幾種型態的憑證:
+App Service 可讓您利用 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保護您的應用程式。 建立您的應用程式後，已可使用 HTTPS 存取其預設網域名稱 (\<app_name>.azurewebsites.net)。 如果您[為應用程式設定自訂網域](app-service-web-tutorial-custom-domain.md)，您也應該[使用 TLS/SSL 憑證來保護它](configure-ssl-bindings.md)，讓用戶端瀏覽器可以對您的自訂網域進行安全的 HTTPS 連線。 App Service 支援數種類型的憑證：
 
-- 免費應用服務託管憑證
-- 套用服務憑證
-- 第三方憑證
-- 從 Azure 金鑰保存庫匯入的憑證
+- 免費 App Service 受控憑證
+- App Service 憑證
+- 協力廠商憑證
+- 從 Azure Key Vault 匯入的憑證
 
-有關詳細資訊,請參閱在[Azure 應用服務中新增 TLS/SSL 憑證](configure-ssl-certificate.md)。
+如需詳細資訊，請參閱[在 Azure App Service 中新增 TLS/SSL 憑證](configure-ssl-certificate.md)。
 
 ## <a name="insecure-protocols-http-tls-10-ftp"></a>不安全的通訊協定 (HTTP、TLS 1.0、FTP)
 
@@ -52,7 +52,7 @@ App Service 同時支援使用 FTP 和 FTPS 來部署您的檔案。 不過，�
 
 根據預設，App Service 應用程式會接受來自網際網路所有 IP 位址的要求，但是您可以限制存取一小部分的 IP 位址。 Windows 上的 App Service 可讓您定義允許存取應用程式的 IP 位址清單。 允許清單可以包含個別 IP 位址，或以子網路遮罩所定義的 IP 位址範圍。 如需詳細資訊，請參閱 [Azure App Service 靜態 IP 限制](app-service-ip-restrictions.md)。
 
-對於 Windows 上的應用服務,還可以透過配置_Web.config_來動態限制 IP 位址。有關詳細資訊,請參閱動態[IP\<安全動態 ip 安全>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
+對於 Windows 上的 App Service，您也可以藉由設定_web.config_來動態限制 IP 位址。如需詳細資訊，請參閱[動態\<IP 安全性 dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/)。
 
 ## <a name="client-authentication-and-authorization"></a>用戶端驗證與授權
 
@@ -65,7 +65,7 @@ App Service 驗證和授權支援多個驗證提供者，包括 Azure Active Dir
 針對後端服務進行驗證時，App Service 會視您的需求而定，提供兩個不同的機制：
 
 - **服務識別** - 使用應用程式本身的身分識別來登入遠端資源。 App Service 可讓您輕鬆建立[受控識別](overview-managed-identity.md)，以供您用來向其他服務 (例如 [Azure SQL Database](/azure/sql-database/) 或 [Azure Key Vault](/azure/key-vault/)) 進行驗證。 如需這個方法的端對端教學課程，請參閱[使用受控識別保護來自 App Service 的 Azure SQL Database 連線](app-service-web-tutorial-connect-msi.md)。
-- **代表 (OBO)** - 代表使用者進行遠端資源的委派存取。 使用 Azure 活動目錄作為身份驗證提供者,應用服務應用可以執行委派登入遠端服務,例如[Microsoft 圖形 API](../active-directory/develop/microsoft-graph-intro.md)或應用服務中的遠端 API 應用。 如需這個方法的端對端教學課程，請參閱[在 Azure App Service 中端對端驗證和授權使用者](app-service-web-tutorial-auth-aad.md)。
+- **代表 (OBO)** - 代表使用者進行遠端資源的委派存取。 透過 Azure Active Directory 做為驗證提供者，您的 App Service 應用程式可以在 App Service 中執行遠端服務的委派登入，例如[MICROSOFT GRAPH API](../active-directory/develop/microsoft-graph-intro.md)或遠端 api 應用程式。 如需這個方法的端對端教學課程，請參閱[在 Azure App Service 中端對端驗證和授權使用者](app-service-web-tutorial-auth-aad.md)。
 
 ## <a name="connectivity-to-remote-resources"></a>連線到遠端資源
 

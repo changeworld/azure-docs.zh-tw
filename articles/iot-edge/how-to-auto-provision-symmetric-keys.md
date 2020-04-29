@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: c6c2067526850ba972f002dc40bbd5d4cb24c9ba
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82131018"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>使用對稱金鑰證明建立和布建 IoT Edge 裝置
@@ -28,7 +28,7 @@ Azure IoT Edge 裝置可以使用裝置布建[服務](../iot-dps/index.yml)來�
 
 對稱金鑰證明是驗證裝置與裝置佈建服務執行個體的簡單方法。 對於不熟悉裝置佈建或沒有嚴格安全性需求的開發人員，這個證明方法代表 "Hello world" 經驗。 使用[TPM](../iot-dps/concepts-tpm-attestation.md)或[x.509 憑證](../iot-dps/concepts-security.md#x509-certificates)的裝置證明較安全，而且應該用於更嚴格的安全性需求。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Active IoT 中樞
 * 實體或虛擬裝置

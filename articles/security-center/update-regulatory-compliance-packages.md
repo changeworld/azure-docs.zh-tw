@@ -1,6 +1,6 @@
 ---
-title: 如何在 Azure 安全中心法規合規性儀錶板中更新到動態法規遵從性監視 |微軟文件
-description: 更新法規遵從性套件
+title: 如何在您的 Azure 資訊安全中心法規合規性儀表板中更新為動態法規合規性監視 |Microsoft Docs
+description: 更新您的法規合規性套件
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,69 +14,69 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: fa5027ed285456247891c84e559b74a14237f553
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537775"
 ---
-# <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard"></a>更新到法規遵從性儀錶板中的動態合規性包
+# <a name="update-to-dynamic-compliance-packages-in-your-regulatory-compliance-dashboard"></a>在您的法規合規性儀表板中更新為動態合規性套件
 
-Azure 安全中心不斷將資源的配置與行業標準、法規和基準方面的要求進行比較。 **法規遵從性儀錶板**基於您滿足特定合規性控制和要求的實現方式,提供對合規性狀況的見解。
+Azure 資訊安全中心持續比較您的資源設定與業界標準、法規和基準測試的需求。 [**法規合規性] 儀表板**可讓您根據符合特定合規性控制和需求的方式，深入瞭解您的合規性狀況。
 
-可以跟蹤合規性狀態的一個標準是[Azure CIS 1.1.0(](https://www.cisecurity.org/benchmark/azure/)更正式地說,"CIS 微軟 Azure 基礎基準版本 1.1.0")。 
+您可以追蹤合規性狀態的一個標準是[AZURE CIS 1.1.0](https://www.cisecurity.org/benchmark/azure/) （更正式地說，也就是「CIS Microsoft Azure 基礎基準測試版本1.1.0」）。 
 
-最初出現在合規性儀錶板中的 Azure CIS 表示依賴於安全中心隨附的靜態規則集。
+一開始出現在合規性儀表板中的 Azure CI，會依賴一組包含在資訊安全中心中的靜態規則。
 
-借助**動態合規性包**功能,Security Center 會隨著時間的推移自動提高行業標準的覆蓋範圍。 合規性包本質上是 Azure 策略中定義的計劃。 它們可以分配給您選擇的作用域(訂閱、管理組等)。 要查看儀錶板中映射為評估的合規性數據,請從安全策略中向管理組或訂閱添加合規性包。 添加合規性包可有效地將法規遵從性計劃分配給您選擇的範圍。 通過這種方式,您可以在儀錶板中跟蹤新發佈的法規計劃作為合規性標準。 當 Microsoft 發表計畫的新內容(映射到標準中更多控制件的新策略)時,其他內容會自動顯示在儀表板中。
+有了**動態的相容性套件**功能，資訊安全中心會在一段時間後自動改善其產業標準的涵蓋範圍。 合規性套件基本上是 Azure 原則中定義的計畫。 您可以將它們指派給您選取的範圍（訂用帳戶、管理群組等等）。 若要查看在儀表板中對應為評量的相容性資料，請從安全性原則中，將合規性套件新增至您的管理群組或訂用帳戶。 新增合規性套件可有效地將法規合規性方案指派給您選取的範圍。 如此一來，您可以在儀表板中追蹤新發佈的法規計畫，做為合規性標準。 當 Microsoft 發行計畫的新內容時（對應至標準中更多控制項的新原則），其他內容會自動顯示在您的儀表板中。
 
-Azure CIS 基準的動態合規性包**Azure CIS 1.1.0(新)** 在原始*靜態*版本上改進::
+Azure CIS 基準測試的動態合規性套件（ **AZURE cis 1.1.0 （新的））** 透過下列方式改善原始*靜態*版本：
 
-* 包括更多政策
-* 新增新覆寫範圍時自動更新 
+* 包含更多原則
+* 新增新涵蓋範圍時自動更新 
 
-更新到新的動態包,如下所述。
+更新至新的動態封裝，如下所述。
 
-## <a name="adding-a-dynamic-compliance-package"></a>新增動態合規性包
+## <a name="adding-a-dynamic-compliance-package"></a>新增動態合規性套件
 
-以下步驟說明如何添加動態包,以監視是否符合 Azure CIS 基準 v1.1.0。   
+下列步驟說明如何使用 Azure CIS 基準1.1.0 來新增動態封裝，以監視您的合規性。   
 
-### <a name="update-to-the-azure-cis-110-new-dynamic-compliance-package"></a>更新到 Azure CIS 1.1.0(新)動態合規性包 
+### <a name="update-to-the-azure-cis-110-new-dynamic-compliance-package"></a>Azure CIS 1.1.0 （新）動態合規性套件的更新 
 
-1. 打開**安全策略**頁面。 此頁顯示管理組、訂閱、工作區和管理組結構的數量。
+1. 開啟 [**安全性原則**] 頁面。 此頁面會顯示管理群組、訂用帳戶、工作區和您的管理群組結構的數目。
 
-1. 選擇要為其管理法規遵從性狀態的訂閱或管理組。 我們建議選擇標準適用的最高範圍,以便聚合和跟蹤所有嵌套資源的合規性數據。 
+1. 選取您要管理其合規性狀態的訂用帳戶或管理群組。 我們建議您選取適用標準的最高範圍，以便為所有的嵌套資源匯總和追蹤合規性資料。 
 
-1. 在「行業&法規標準部分中,您將看到 Azure CIS 1.1.0 可以針對新內容進行更新。 按下 **「立即更新**」。 
+1. 在業界 & 的法規標準一節中，您會看到 Azure CIS 1.1.0 可以針對新的內容進行更新。 按一下 [**立即更新**]。 
 
-1. 可選,按下「**添加更多標準**」以打開「**添加法規遵從性標準」** 頁。 在那裡,您可以手動搜索 Azure **CIS 1.1.0 (新)** 和動態包,查找其他合規性標準,如**NIST SP 800-53 R4、SWIFT** **CSP CSCF-v2020、UKO****和英國 NHS**以及**加拿大 PBMM**。
+1. （選擇性）按一下 [**新增更多標準**] 以開啟 [**新增法規合規性標準**] 頁面。 在這裡，您可以針對其他合規性標準（例如**NIST SP 800-53 R4**、 **SWIFT CSP CSCF-v2020**、 **UKO 和 UK NHS**和**加拿大 PBMM**）手動搜尋**Azure CIS 1.1.0 （新的）** 和動態封裝。
     
     > [!TIP]
-    > 只有擁有者或策略參與者的使用者才具有添加合規性標準的必要許可權。 
+    > 只有身為擁有者或原則參與者的使用者具有新增合規性標準的必要許可權。 
 
-    ![將法規包添加到 Azure 安全中心的法規遵從性儀表板](./media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-additional-standards.png)
+    ![將法規套件新增至 Azure 資訊安全中心的法規合規性儀表板](./media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-additional-standards.png)
 
 
-1. 從安全中心的側邊欄中,選擇**法規遵從性**以打開法規遵從性儀錶板。 
-    * Azure CIS 1.1.0 (New) 現在顯示在行業&監管標準清單中。 
-    * Azure CIS 1.1.0 合規性的原始*靜態*視圖也將保留在它旁邊。 將來可能會自動刪除它。
+1. 從資訊安全中心的提要欄位中，選取 [**法規遵循**] 以開啟 [法規合規性儀表板]。 
+    * Azure CIS 1.1.0 （新的）現在會出現在您的業界 & 法規標準清單中。 
+    * Azure CI 1.1.0 合規性的原始*靜態*視圖也會隨之保留。 未來可能會自動移除。
 
     > [!NOTE]
-    > 新添加的標準可能需要幾個小時才能顯示在合規性儀錶板中。
+    > 可能需要幾個小時的時間，新加入的標準才會出現在合規性儀表板中。
 
 
-    [![顯示新舊 Azure CIS 的法規遵從性儀表板](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png)](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png#lightbox)
+    [![顯示舊版和新 Azure CI 的法規合規性儀表板](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png)](media/update-regulatory-compliance-packages/security-center-dynamic-regulatory-compliance-cis-old-and-new.png#lightbox)
 
 
 ## <a name="next-steps"></a>後續步驟
 
 在本文中，您已了解：
 
-* 如何將法規遵從儀表板中顯示的**標準升級到**新的*動態*套件
-* 如何**添加合規性包**來監視您對其他標準的遵守情況。 
+* 如何將您的法規合規性儀表板中顯示**的標準升級**至新的*動態*套件
+* 如何**新增合規性套件**，以使用其他標準來監視合規性。 
 
-有關其他相關材料,請參閱以下文章: 
+如需其他相關內容，請參閱下列文章： 
 
-- [安全中心法規合規性儀錶板](security-center-compliance-dashboard.md)
+- [安全性中心法規合規性儀表板](security-center-compliance-dashboard.md)
 - [使用安全性原則](tutorial-security-policy.md)
 - [管理 Azure 資訊安全中心的安全性建議](security-center-recommendations.md)了解如何使用 Azure 資訊安全中心的建議來協助您保護 Azure 資源。

@@ -11,25 +11,25 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
 ms.openlocfilehash: fdb10894ab9d1c6b805b8b43c90e54126d67b8dd
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606618"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory 中的資料轉換
 
 > [!div class="op_single_selector"]
-> * [對應資料串流](data-flow-create.md)
+> * [對應資料流程](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
-> * [Mapreduce](transform-data-using-hadoop-map-reduce.md)  
+> * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
 > * [HDInsight 串流](transform-data-using-hadoop-streaming.md)
 > * [HDInsight Spark](transform-data-using-spark.md)
-> * [機器學習](transform-data-using-machine-learning.md) 
-> * [預存程序](transform-data-using-stored-procedure.md)
+> * [Machine Learning](transform-data-using-machine-learning.md) 
+> * [預存程式](transform-data-using-stored-procedure.md)
 > * [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md)
-> * [資料磚筆記本](transform-data-databricks-notebook.md)
+> * [Databricks 筆記本](transform-data-databricks-notebook.md)
 > * [Databricks Jar](transform-data-databricks-jar.md)
 > * [Databricks Python](transform-data-databricks-python.md)
 > * [.NET 自訂](transform-data-using-dotnet-custom-activity.md)
@@ -37,23 +37,23 @@ ms.locfileid: "81606618"
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="overview"></a>概觀
-本文介紹 Azure 數據工廠中的數據轉換活動,可用於大規模將原始數據轉換為預測和見解。 轉換活動在計算環境中執行,如 Azure 資料塊或 Azure HDInsight。 它會提供每個轉換活動的詳細資訊文章連結。
+本文說明 Azure Data Factory 中的資料轉換活動，可讓您用來將原始資料轉換和處理成大規模的預測和深入解析。 轉換活動會在計算環境中執行，例如 Azure Databricks 或 Azure HDInsight。 它會提供每個轉換活動的詳細資訊文章連結。
 
 Data Factory 支援下列可個別或與其他活動鏈結而加入至 [管線](concepts-pipelines-activities.md) 的資料轉換活動。
 
-## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>使用資料串流在 Azure 資料工廠進行本機轉換
+## <a name="transform-natively-in-azure-data-factory-with-data-flows"></a>使用資料流程在 Azure Data Factory 中以原生方式轉換
 
 ### <a name="mapping-data-flows"></a>對應資料流程
 
-映射資料流是在 Azure 數據工廠中直觀地設計的數據轉換。 數據流允許數據工程師無需編寫代碼即可開發圖形數據轉換邏輯。 生成的數據流在 Azure 數據工廠管道中執行,這些活動使用橫向擴展的 Spark 群集。 數據流活動可以通過現有的數據工廠調度、控制、流和監視功能進行操作。 有關詳細資訊,請參閱[映射資料串](concepts-data-flow-overview.md)流 。
+對應資料流程會以視覺化方式設計 Azure Data Factory 中的資料轉換。 資料流程可讓資料工程師開發圖形化資料轉換邏輯，而不需要撰寫程式碼。 產生的資料流程會當做使用相應放大 Spark 叢集 Azure Data Factory 管線內的活動來執行。 資料流程活動可以透過現有的 Data Factory 排程、控制、流程和監視功能來運作。 如需詳細資訊，請參閱[對應資料流程](concepts-data-flow-overview.md)。
 
-### <a name="wrangling-data-flows"></a>旋轉資料流程
+### <a name="wrangling-data-flows"></a>整頓資料流程
 
-通過 Azure 數據工廠中旋轉數據流,您可以反覆運算雲端規模進行無代碼數據準備。 旋轉資料流與[線上電源查詢](https://docs.microsoft.com/power-query/)整合,並透過火花執行使 Power Query M 函數可用於雲端資料爭鳴。 有關詳細資訊,請參閱[爭論數據流](wrangling-data-flow-overview.md)。
+Azure Data Factory 中的整頓資料流程可讓您以雲端規模反復執行無程式碼資料的準備工作。 整頓資料流程會與[Power Query Online](https://docs.microsoft.com/power-query/)整合，並讓 Power Query M 函數可供雲端規模的資料整頓透過 spark 執行。 如需詳細資訊，請參閱[整頓資料流程](wrangling-data-flow-overview.md)。
 
 ## <a name="external-transformations"></a>外部轉換
 
-或者,您可以自行編寫轉換和管理外部計算環境。
+（選擇性）您可以自行撰寫程式碼轉換和管理外部計算環境。
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight Hive 活動
 Data Factory 管線中的 HDInsight Hive 活動會在您自己或隨選的 Windows/Linux 架構 HDInsight 叢集上執行 Hive 查詢。 如需此活動的詳細資料，請參閱 [Hive 活動](transform-data-using-hadoop-hive.md)一文。 
@@ -85,7 +85,7 @@ Data Lake Analytics U-SQL 活動會在 Azure Data Lake Analytics 叢集上執行
 
 ### <a name="databricks-notebook-activity"></a>Databricks Notebook 活動
 
-數據工廠管道中的 Azure 資料磚區列活動在 Azure 資料磚塊工作區中執行數據磚塊筆記本。 Azure Databricks 是用於執行 Apache Spark 的受控平台。 請參閱[執行 Databricks Notebook 來轉換資料](transform-data-databricks-notebook.md)。
+Data Factory 管線中的 Azure Databricks 筆記本活動會在您的 Azure Databricks 工作區中執行 Databricks 筆記本。 Azure Databricks 是用於執行 Apache Spark 的受控平台。 請參閱[執行 Databricks Notebook 來轉換資料](transform-data-databricks-notebook.md)。
 
 ### <a name="databricks-jar-activity"></a>Databricks Jar 活動
 
