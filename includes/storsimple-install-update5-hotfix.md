@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 19d2dedc2ccf7015696504a94f5ef7c43a90d3be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67174176"
 ---
 #### <a name="to-download-hotfixes"></a>下載 Hofix
 
 請執行下列步驟，從 Microsoft Update Catalog 下載軟體更新。
 
-1. 啟動 Internet 資源管理器並[http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)導航到 。
+1. 啟動 Internet Explorer 並流覽至[http://catalog.update.microsoft.com](https://catalog.update.microsoft.com)。
 2. 如果這是您第一次在此電腦上使用 Microsoft Update Catalog，請在系統提示您安裝 Microsoft Update Catalog 附加元件時，按一下 [安裝] **** 。
 
     ![安裝目錄](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -26,7 +26,7 @@ ms.locfileid: "67174176"
    
     ![搜尋目錄](./media/storsimple-install-update5-hotfix/update-catalog-search.png)
 
-4. 按一下 [下載]**** 指定或「瀏覽」 **** 至您想要儲存下載項目的本機位置。 按一下要下載到指定位置和資料夾的檔案。 資料夾也可以複製到裝置可連線的網路共用位置。
+4. 按一下 [下載]  。 指定或「瀏覽」 **** 至您想要儲存下載項目的本機位置。 按一下要下載到指定位置和資料夾的檔案。 資料夾也可以複製到裝置可連線的網路共用位置。
 5. 搜尋上表所列的任何其他 Hotfix (**4037266**)，並將對應檔案下載到上表所列的特定資料夾。
 
 > [!NOTE]

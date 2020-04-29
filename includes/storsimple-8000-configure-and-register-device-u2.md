@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 56514f5dcf4bfe205ef46ee64dcf4dcf638d4f62
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67174184"
 ---
 #### <a name="to-configure-and-register-the-device"></a>設定和註冊裝置
 
 1. 存取 StorSimple 裝置序列主控台上的 Windows PowerShell 介面。 如需相關指示，請參閱 [使用 PuTTY 來連接至裝置序列主控台](#use-putty-to-connect-to-the-device-serial-console) 。 **請務必確實依照此程序，否則將無法存取主控台。**
 
-2. 在打開的會話中，按 **"輸入**一次"獲取命令提示。
+2. 在開啟的會話中，按**enter**鍵一次以取得命令提示字元。
 
-3. 系統將提示您選擇想要為裝置設定的語言。 指定語言，然後按**Enter**。
+3. 系統將提示您選擇想要為裝置設定的語言。 指定語言，然後按**enter**。
 
 4. 在顯示的序列主控台功能表中，選擇選項 1 [以完整存取權登入]****。
      完成步驟 5-12，為裝置設定最小的必要網路設定。 **這些設定步驟必須在裝置的主動控制器上執行。**  序列主控台功能表會在橫幅訊息中指出控制站狀態。 如果您未連接到主動控制器，請中斷連線，然後連接到主動控制器。

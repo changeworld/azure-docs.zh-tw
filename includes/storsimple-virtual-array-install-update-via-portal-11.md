@@ -9,10 +9,10 @@ ms.date: 07/18/2018
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 65d5a88f7b5d059deb633f062639e455c64ef2f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174503"
 ---
 #### <a name="to-install-updates-via-the-azure-portal"></a>透過 Azure 入口網站安裝更新
@@ -27,7 +27,7 @@ ms.locfileid: "67174503"
 
     當掃瞄啟動且成功完成時，系統會通知您。
  
-4. 在掃描更新之後，按一下 [下載更新]****。 在 [新的更新]**** 下，檢閱版本資訊。 另請注意，下載更新後，您必須確認安裝。 按一下 [確定]****。
+4. 在掃描更新之後，按一下 [下載更新]****。 在 [新的更新]**** 下，檢閱版本資訊。 另請注意，下載更新後，您必須確認安裝。 按一下 [確定]  。
 
     ![更新裝置](../includes/media/storsimple-virtual-array-install-update-via-portal-11/azupdate6m.png)
 

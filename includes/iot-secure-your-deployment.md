@@ -9,10 +9,10 @@ ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 08cca67455df4b2d28bba0a7410fccc11446fcdc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76748830"
 ---
 本文針對以 Azure IoT 為主的物聯網 (IoT) 基礎結構提供更進一層的詳細資料。 它會連結到設定及部署每個元件的實作層級詳細資料。 另外也會提供各種競爭方法之間的比較和選擇。
@@ -77,15 +77,15 @@ IoT 中樞身分識別登錄可用來設定每一裝置的安全性認證和存�
 
 ## <a name="securing-the-connection"></a>保護連線安全
 
-IoT 裝置與 IoT 中樞之間的網際網路連線，是使用傳輸層安全性 (TLS) 標準進行保護。 Azure IoT 支援[TLS 1.2](https://tools.ietf.org/html/rfc5246)、TLS 1.1 和 TLS 1.0，按此順序排列。 針對 TLS 1.0 的支援僅為提供回溯相容性。 檢查[IoT 中心中的 TLS 支援](../articles/iot-hub/iot-hub-tls-support.md)，瞭解如何將集線器配置為使用 TLS 1.2，因為它提供了最大的安全性。
+IoT 裝置與 IoT 中樞之間的網際網路連線，是使用傳輸層安全性 (TLS) 標準進行保護。 Azure IoT 支援[tls 1.2](https://tools.ietf.org/html/rfc5246)、tls 1.1 和 tls 1.0 （依此順序）。 針對 TLS 1.0 的支援僅為提供回溯相容性。 請檢查[IoT 中樞中的 tls 支援](../articles/iot-hub/iot-hub-tls-support.md)，以瞭解如何將中樞設定為使用 tls 1.2，因為它提供最高的安全性。
 
 ## <a name="securing-the-cloud"></a>保護雲端
 
 Azure IoT 中樞允許針對每個安全性金鑰定義[存取控制原則](../articles/iot-hub/iot-hub-devguide-security.md)。 它使用下列權限組，授與每個 IoT 中樞端點的存取權。 權限可根據功能限制 IoT 中樞的存取權。
 
-* **註冊表讀取**。 為身分識別登錄授與讀取權限。 如需詳細資訊，請參閱[身分識別登錄](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
+* **RegistryRead**。 為身分識別登錄授與讀取權限。 如需詳細資訊，請參閱[身分識別登錄](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
 
-* **註冊表讀取寫入**。 為身分識別登錄授與讀取和寫入權限。 如需詳細資訊，請參閱[身分識別登錄](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
+* **RegistryReadWrite**。 為身分識別登錄授與讀取和寫入權限。 如需詳細資訊，請參閱[身分識別登錄](../articles/iot-hub/iot-hub-devguide-identity-registry.md)。
 
 * **ServiceConnect**。 授與雲端服務面向通訊和監視端點的存取權。 例如，它授權後端雲端服務接收裝置到雲端的訊息、傳送雲端到裝置的訊息，以及擷取相對應的傳遞通知。
 
@@ -107,7 +107,7 @@ Azure IoT 中樞和可能屬於解決方案的其他服務，能允許使用 Azu
 
 * [Logic Apps](https://azure.microsoft.com/services/app-service/logic/)：Azure App Service 的 Logic Apps 功能可協助您將 IoT 解決方案整合到現有的企業營運系統並自動化工作流程處理。 Logic Apps 可讓開發人員設計從觸發程序開始，然後執行一系列步驟的工作流程 — 使用功能強大的連接器來與您的商務程序整合的規則和動作。 Logic Apps 提供與 SaaS、雲端架構及內部部署應用程式的廣大生態系統的即時連接。
 
-* [Azure Blob 存儲](https://azure.microsoft.com/services/storage/)：設備發送到雲的資料的可靠、經濟的雲存儲。
+* [Azure Blob 儲存體](https://azure.microsoft.com/services/storage/)：可靠且經濟實惠的雲端儲存體，適用于您的裝置傳送至雲端的資料。
 
 ## <a name="conclusion"></a>結論
 

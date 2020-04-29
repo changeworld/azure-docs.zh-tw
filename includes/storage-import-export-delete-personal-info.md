@@ -9,10 +9,10 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/27/2020
 ms.locfileid: "67174192"
 ---
 ## <a name="deleting-personal-information"></a>刪除個人資訊
@@ -40,9 +40,9 @@ ms.locfileid: "67174192"
 - 與作業一起儲存的資料會與作業一起刪除。 使用者可以手動刪除作業，且已完成的作業會在 90 天後自動刪除。 您可以透過 REST API 或 Azure 入口網站手動刪除作業。 若要刪除 Azure 入口網站中的作業，請移至您的匯入/匯出作業，並從命令列中按一下 [刪除]**。 如需有關如何透過 REST API 將匯入/匯出作業刪除的詳細資料，請參閱[刪除匯入/匯出作業](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md)。
 
 - 您可以刪除入口網站設定，將儲存在入口網站設定中的連絡人資訊移除。 您可以依照下列步驟來刪除入口網站設定：
-  - 登錄到 Azure[門戶](https://portal.azure.com)。
+  - 登入 [Azure 入口網站](https://portal.azure.com)。
   - 按一下 [設定]** 圖示 ![Azure 設定圖示](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
   - 按一下 [匯出所有設定]** (將您目前的設定儲存至 `.json` 檔案)。
   - 按一下 [刪除所有設定和私人儀表板]** 以刪除所有設定，包括已儲存的連絡人資訊。
 
-有關詳細資訊，請查看[信任中心的](https://www.microsoft.com/trustcenter)Microsoft 隱私政策
+如需詳細資訊，請參閱[信任中心](https://www.microsoft.com/trustcenter)的 Microsoft 隱私權原則

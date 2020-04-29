@@ -9,13 +9,13 @@ ms.date: 09/15/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: f30518c3bfc9876cbddaf8295ff9e8b667a70200
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "74014534"
 ---
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 Azure 儲存體提供拍攝 Blob 快照的功能。 快照會擷取該時間點的 Blob 狀態。 在本文中，我們會說明使用快照集維護虛擬機器磁碟備份的案例。 當您選擇不使用 Azure 的備份和復原服務，但是想要為虛擬機器磁碟建立自訂的備份策略時，您可以使用這個方法。
 
 Azure 虛擬機器磁碟在 Azure 儲存體中會儲存為分頁 Blob。 本文中我們所描述的是虛擬機器磁碟的備份策略，因此，我們指的是分頁 Blob 內容中的快照集。 若要深入了解快照，請參閱 [建立 Blob 的快照](https://docs.microsoft.com/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob)。
@@ -73,7 +73,7 @@ Blob 快照是在某個時間點擷取的 Blob 唯讀版本。 一旦建立快�
 
 在下一節中，我們將詳細說明如何使用增量快照複製維護磁碟的備份
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 在本節中，我們會使用快照說明涉及虛擬機器磁碟的自訂備份策略的案例。
 
 請考慮使用連接進階儲存體 P30 磁碟的 DS 系列 Azure VM。 稱為 *mypremiumdisk* 的 P30 磁碟會儲存在稱為 *mypremiumaccount* 的進階儲存體帳戶中。 稱為 *mybackupstdaccount* 的標準儲存體帳戶用於儲存 *mypremiumdisk* 的備份。 我們想要每 12 小時保留一個 *mypremiumdisk* 的快照集。

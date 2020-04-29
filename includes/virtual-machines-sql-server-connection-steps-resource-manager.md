@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
 ms.openlocfilehash: 4e79fef08af8ff73ce63ab4732c9efd77e3a5d3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/26/2020
 ms.locfileid: "67173934"
 ---
 ### <a name="configure-a-dns-label-for-the-public-ip-address"></a>設定公用 IP 位址的 DNS 標籤
@@ -28,7 +28,7 @@ ms.locfileid: "67173934"
 
 1. 輸入 DNS 標籤名稱。 此名稱是「A 紀錄」，可用來透過名稱 (而非直接透過 IP 位址) 連線到 SQL Server VM。
 
-1. 按一下 [儲存]**** 按鈕。
+1. 按一下 [儲存]  按鈕。
 
     ![DNS 標籤](./media/virtual-machines-sql-server-connection-steps/rm-dns-label.png)
 
@@ -44,6 +44,6 @@ ms.locfileid: "67173934"
 
 1. 在 [密碼] **** 方塊中，輸入登入的密碼。
 
-1. 按一下 [連線]****。
+1. 按一下 [連線]  。
 
     ![SSMS 連線](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)

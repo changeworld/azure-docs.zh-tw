@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 1cf5bbdad555c50c418851904f36a578522843b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "67174041"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>在雲端設備上建立公用端點
@@ -31,7 +31,7 @@ ms.locfileid: "67174041"
 
         在 [新增輸入安全性規則] 刀鋒視窗中：
 
-        1. 對於**名稱**，鍵入終結點的以下名稱：WinRMHttps。
+        1. 針對 [**名稱**]，為端點輸入下列名稱： WinRMHttps。
         
         2. 針對 [優先順序]****，選取小於 1000 的數字 (這是預設規則的優先順序)。 值越高，優先順序就越低。
 
@@ -39,7 +39,7 @@ ms.locfileid: "67174041"
 
         4. 針對 [服務]****，選取 [WinRM]****。 **通訊協定**會自動設為 **TCP**，且**連接埠範圍**會設為 **5986**。
 
-        5. 按一下 **"確定"** 以創建規則。
+        5. 按一下 **[確定]** 以建立規則。
 
             ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt5.png)
 
@@ -49,7 +49,7 @@ ms.locfileid: "67174041"
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt7.png)
 
     3. 選取您的虛擬網路，然後選取適當的子網路。
-    4. 按一下 **"確定"** 以創建規則。
+    4. 按一下 **[確定]** 以建立規則。
 
         ![](./media/storsimple-8000-create-public-endpoints-cloud-appliance/sca-create-public-endpt11.png)
 

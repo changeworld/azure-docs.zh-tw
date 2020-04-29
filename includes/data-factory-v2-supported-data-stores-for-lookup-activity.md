@@ -9,43 +9,43 @@ ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: fb44f217b7a940bc07a164e482b67ddb53835715
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75440496"
 ---
 | 類別 | 資料存放區 |
 |:--- |:--- |
 | **Azure** |[Azure Blob 儲存體](../articles/data-factory/connector-azure-blob-storage.md) |
-| &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
+| &nbsp; |[Azure Cosmos DB （SQL API）](../articles/data-factory/connector-azure-cosmos-db.md) |
 | &nbsp; |[Azure 資料總管](../articles/data-factory/connector-azure-data-explorer.md) |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |
-| &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |
-| &nbsp; |[瑪麗亞DB的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-mariadb.md) |
-| &nbsp; |[MySQL 的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-mysql.md) |
+| &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) \(部分機器翻譯\) |
+| &nbsp; |[適用於 MariaDB 的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-mariadb.md) |
+| &nbsp; |[適用於 MySQL 的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-mysql.md) |
 | &nbsp; |[適用於 PostgreSQL 的 Azure 資料庫](../articles/data-factory/connector-azure-database-for-postgresql.md) |
 | &nbsp; |[Azure 檔案](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
-| &nbsp; |[Azure SQL 資料庫託管實例](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
-| &nbsp; |[Azure 突觸分析（以前的 SQL 資料倉儲）](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
-| &nbsp; |[Azure 資料表儲存體](../articles/data-factory/connector-azure-table-storage.md) |
-| **資料庫** |[亞馬遜紅移](../articles/data-factory/connector-amazon-redshift.md) |
+| &nbsp; |[Azure SQL Database 受控執行個體](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
+| &nbsp; |[Azure Synapse Analytics (先前稱為 SQL 資料倉儲)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
+| &nbsp; |[Azure 表格儲存體](../articles/data-factory/connector-azure-table-storage.md) |
+| **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
-| &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |
+| &nbsp; |[深入探詢](../articles/data-factory/connector-drill.md) |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |
 | &nbsp; |[Greenplum](../articles/data-factory/connector-greenplum.md) |
-| &nbsp; |[HBase](../articles/data-factory/connector-hbase.md) |
-| &nbsp; |[蜂巢](../articles/data-factory/connector-hive.md) |
+| &nbsp; |[hbase](../articles/data-factory/connector-hbase.md) |
+| &nbsp; |[Hive](../articles/data-factory/connector-hive.md) |
 | &nbsp; |[Apache Impala](../articles/data-factory/connector-impala.md) |
 | &nbsp; |[Informix](../articles/data-factory/connector-informix.md) 
 | &nbsp; |[MariaDB](../articles/data-factory/connector-mariadb.md) |
 | &nbsp; |[Microsoft Access](../articles/data-factory/connector-microsoft-access.md) |
-| &nbsp; |[Mysql](../articles/data-factory/connector-mysql.md) |
+| &nbsp; |[MySQL](../articles/data-factory/connector-mysql.md) |
 | &nbsp; |[Netezza](../articles/data-factory/connector-netezza.md) |
-| &nbsp; |[甲骨文](../articles/data-factory/connector-oracle.md) |
+| &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |
-| &nbsp; |[後格雷SQL](../articles/data-factory/connector-postgresql.md) 
+| &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) 
 | &nbsp; |[Presto (預覽)](../articles/data-factory/connector-presto.md) |
 | &nbsp; |[SAP Business Warehouse Open Hub](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |
 | &nbsp; |[SAP Business Warehouse via MDX](../articles/data-factory/connector-sap-business-warehouse.md) |
@@ -54,13 +54,13 @@ ms.locfileid: "75440496"
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |
-| &nbsp; |[泰拉達](../articles/data-factory/connector-teradata.md) |
+| &nbsp; |[Teradata](../articles/data-factory/connector-teradata.md) |
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |
-| **Nosql** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
+| **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase (預覽)](../articles/data-factory/connector-couchbase.md) |
 | **檔案** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[檔案系統](../articles/data-factory/connector-file-system.md) |
-| &nbsp; |[Ftp](../articles/data-factory/connector-ftp.md) |
+| &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
 | &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |
 | &nbsp; |[HDFS](../articles/data-factory/connector-hdfs.md) |
 | &nbsp; |[SFTP](../articles/data-factory/connector-sftp.md) |
@@ -81,7 +81,7 @@ ms.locfileid: "75440496"
 | &nbsp; |[Oracle Eloqua (預覽)](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (預覽)](../articles/data-factory/connector-oracle-responsys.md) |
 | &nbsp; |[Oracle Service Cloud (預覽)](../articles/data-factory/connector-oracle-service-cloud.md) |
-| &nbsp; |[貝寶（預覽）](../articles/data-factory/connector-paypal.md) |
+| &nbsp; |[PayPal （預覽）](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (預覽)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |
 | &nbsp; |[Salesforce 服務雲端](../articles/data-factory/connector-salesforce-service-cloud.md) |
