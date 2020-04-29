@@ -1,23 +1,23 @@
 ---
-title: Azure 函數的 Azure 佇列存儲輸出綁定
-description: 瞭解如何在 Azure 函數中創建 Azure 佇列存儲消息。
+title: Azure Functions 的 Azure 佇列儲存體輸出系結
+description: 瞭解如何在 Azure Functions 中建立 Azure 佇列儲存體訊息。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 76af5f398edd736874fa79095f2e80c02298eac0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277332"
 ---
-# <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure 函數的 Azure 佇列存儲輸出綁定
+# <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Functions 的 Azure 佇列儲存體輸出系結
 
-Azure 函數可以通過設置輸出綁定創建新的 Azure 佇列存儲消息。
+Azure Functions 可以藉由設定輸出系結來建立新的 Azure 佇列儲存體訊息。
 
-有關設置和配置詳細資訊的資訊，請參閱[概述](./functions-bindings-storage-queue.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[總覽](./functions-bindings-storage-queue.md)。
 
 ## <a name="example"></a>範例
 
@@ -39,7 +39,7 @@ public static class QueueFunctions
 }
 ```
 
-# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
 下列範例示範的是 *function.json* 檔案中的 HTTP 觸發程序繫結，以及使用該繫結的 [C# 指令碼 (.csx)](functions-reference-csharp.md) 程式碼。 此函式會針對每個收到的 HTTP 要求，使用 **CustomQueueMessage** 物件承載來建立佇列項目。
 
@@ -100,7 +100,7 @@ public static void Run(
 }
 ```
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例示範的是 *function.json* 檔案中的 HTTP 觸發程序繫結，以及使用該繫結的 [JavaScript 函式](functions-reference-node.md)。 此函式會針對每個收到的 HTTP 要求建立佇列項目。
 
@@ -152,9 +152,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示如何將單個值和多個值輸出到存儲佇列。 *函數.json*所需的配置無論哪種方式都是相同的。
+下列範例示範如何將單一和多個值輸出到儲存體佇列。 *函數. json*所需的設定也是相同的方式。
 
-存儲佇列綁定在*函數.json*中定義，其中*類型*設置為`queue`。
+儲存體佇列系結定義于*function. json*中，其中*type*設為`queue`。
 
 ```json
 {
@@ -186,7 +186,7 @@ module.exports = function(context) {
 }
 ```
 
-要在佇列中設置單個消息，可以將單個值傳遞給`set`方法。
+若要在佇列上設定個別訊息，請將單一值傳遞給`set`方法。
 
 ```python
 import azure.functions as func
@@ -200,7 +200,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-要在佇列中創建多條消息，請將參數聲明為適當的清單類型，並將值陣列（與清單類型匹配）傳遞給`set`方法。
+若要在佇列上建立多個訊息，請將參數宣告為適當的清單類型，並將值陣列（符合清單類型）傳遞給`set`方法。
 
 ```python
 import azure.functions as func
@@ -213,9 +213,9 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
- 下面的示例顯示了一個 JAVA 函數，該函數在由 HTTP 要求觸發時為其創建佇列消息。
+ 下列範例顯示的 JAVA 函式會建立由 HTTP 要求觸發時的佇列訊息。
 
 ```java
 @FunctionName("httpToQueue")
@@ -229,7 +229,7 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
  }
 ```
 
-在 [Java 函式執行階段程式庫](/java/api/overview/azure/functions/runtime)中，對其值要寫入至佇列儲存體的參數使用 `@QueueOutput` 註釋。  參數類型應為`OutputBinding<T>`，其中`T`是 POJO 的任何本機 JAVA 類型。
+在 [Java 函式執行階段程式庫](/java/api/overview/azure/functions/runtime)中，對其值要寫入至佇列儲存體的參數使用 `@QueueOutput` 註釋。  參數類型應該是`OutputBinding<T>`，其中`T`是任何原生 JAVA 類型的 POJO。
 
 ---
 
@@ -261,15 +261,15 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-有關完整示例，請參閱[輸出示例](#example)。
+如需完整範例，請參閱[輸出範例](#example)。
 
 您可以使用 `StorageAccount` 屬性來指定類別、方法或參數層級的儲存體帳戶。 如需詳細資訊，請參閱「觸發程序 - 屬性」。
 
-# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-C# 腳本不支援屬性。
+C # 腳本不支援屬性。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
@@ -277,9 +277,9 @@ JavaScript 不支援屬性。
 
 Python 不支援屬性。
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-注釋`QueueOutput`允許您將消息寫入函數的輸出。 下面的示例顯示了創建佇列消息的 HTTP 觸發函數。
+`QueueOutput`批註可讓您將訊息寫入為函式的輸出。 下列範例顯示的是 HTTP 觸發的函式，它會建立佇列訊息。
 
 ```java
 package com.function;
@@ -302,33 +302,33 @@ public class HttpTriggerQueueOutput {
 
 | 屬性    | 描述 |
 |-------------|-----------------------------|
-|`name`       | 在函數簽名中聲明參數名稱。 觸發函數時，此參數的值具有佇列消息的內容。 |
-|`queueName`  | 聲明存儲帳戶中的佇列名稱。 |
-|`connection` | 指向存儲帳戶連接字串。 |
+|`name`       | 宣告函式簽章中的參數名稱。 觸發函式時，這個參數的值會有佇列訊息的內容。 |
+|`queueName`  | 宣告儲存體帳戶中的佇列名稱。 |
+|`connection` | 指向儲存體帳戶連接字串。 |
 
-與`QueueOutput`注釋關聯的參數類型為[輸出綁定\<T\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java)實例。
+與`QueueOutput`注釋相關聯的參數會輸入為[OutputBinding\<T\> ](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java)實例。
 
 ---
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
-下表介紹了您在*函數.json*檔和`Queue`屬性中設置的綁定配置屬性。
+下表說明您在*函數 json*檔案和`Queue`屬性中設定的系結設定屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-|**型別** | n/a | 必須設為 `queue`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
-|**direction** | n/a | 必須設為 `out`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
-|**名稱** | n/a | 代表函式程式碼中佇列的變數名稱。 設為 `$return` 以參考函式傳回值。|
-|**佇列名稱** |**佇列名稱** | 佇列的名稱。 |
-|**連接** | **連接** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果設置為`connection`"我的存儲"，函數運行時將查找名為"我的存儲"的應用設置。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
+|**type** | n/a | 必須設為 `queue`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
+|**方向** | n/a | 必須設為 `out`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
+|**name** | n/a | 代表函式程式碼中佇列的變數名稱。 設為 `$return` 以參考函式傳回值。|
+|**queueName** |**QueueName** | 佇列的名稱。 |
+|**connection** | **建立** |應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定`connection`為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-使用 方法參數（如`out T paramName`）編寫單個佇列消息。 您可以使用方法傳回類型，而不是 `out` 參數，而且 `T` 可以是下列類型之一：
+使用方法參數（例如） `out T paramName`寫入單一佇列訊息。 您可以使用方法傳回類型，而不是 `out` 參數，而且 `T` 可以是下列類型之一：
 
 * 可序列化為 JSON 的物件
 * `string`
@@ -342,9 +342,9 @@ public class HttpTriggerQueueOutput {
 * `ICollector<T>` 或 `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-使用 方法參數（如`out T paramName`）編寫單個佇列消息。 是`paramName`函數 的屬性中`name`指定的值 *。* 您可以使用方法傳回類型，而不是 `out` 參數，而且 `T` 可以是下列類型之一：
+使用方法參數（例如） `out T paramName`寫入單一佇列訊息。 `paramName`是在`name` *函數*的屬性中指定的值。 您可以使用方法傳回類型，而不是 `out` 參數，而且 `T` 可以是下列類型之一：
 
 * 可序列化為 JSON 的物件
 * `string`
@@ -358,31 +358,31 @@ public class HttpTriggerQueueOutput {
 * `ICollector<T>` 或 `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-輸出佇列項可通過`context.bindings.<NAME>`與`<NAME>`*函數.json*中定義的名稱匹配的位置可用。 對於佇列項目承載，可使用字串或 JSON 可序列化物件。
+輸出佇列專案可透過`context.bindings.<NAME>` ，其中`<NAME>`符合在函式中定義的名稱。 *function.json* 對於佇列項目承載，可使用字串或 JSON 可序列化物件。
 
 # <a name="python"></a>[Python](#tab/python)
 
-從函數中提供事件中心消息有兩個選項：
+有兩個選項可從函式輸出事件中樞訊息：
 
-- **傳回值**：將`name`*函數.json*中的`$return`屬性設置為 。 使用此配置，函數的傳回值將保留為佇列存儲消息。
+- 傳回**值**：將*函數. json*中的`$return` `name`屬性設定為。 使用此設定時，函數的傳回值會保存為佇列儲存體訊息。
 
-- **命令 ：** 將值傳遞給聲明為[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)類型的參數的[集](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞給`set`的值將保留為佇列存儲消息。
+- **命令式**：將值傳遞給宣告為[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)類型之參數的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞給`set`的值會保存為佇列儲存體訊息。
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-使用[佇列輸出](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput)注釋從函數中輸出事件中心消息有兩個選項：
+有兩個選項可從函式使用[QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput)批註輸出事件中樞訊息：
 
-- **傳回值**：通過將注釋應用於函數本身，函數的傳回值將保留為事件中心消息。
+- 傳回**值**：藉由將注釋套用至函式本身，函式的傳回值會保存為事件中樞訊息。
 
-- **命令：** 要顯式設置消息值，請將注釋應用於類型[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)的特定參數，其中`T`POJO 或任何本機 JAVA 類型。 使用此配置，將值傳遞給`setValue`該方法會將該值保留為事件中心消息。
+- **命令式**：若要明確設定訊息值，請將注釋套用至類型[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)的特定參數，其中`T`是 POJO 或任何原生 JAVA 類型。 使用此設定時，將值傳遞至`setValue`方法會將值保存為事件中樞訊息。
 
 ---
 
 ## <a name="exceptions-and-return-codes"></a>例外狀況和傳回碼
 
-| 繫結 |  參考資料 |
+| 繫結 |  參考 |
 |---|---|
 | 佇列 | [佇列錯誤碼](https://docs.microsoft.com/rest/api/storageservices/queue-service-error-codes) |
 | Bob、資料表、佇列 | [儲存體錯誤碼](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
@@ -392,7 +392,7 @@ public class HttpTriggerQueueOutput {
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-本節介紹 2.x 和更高版本中可用於此綁定的全域配置設置。 下面的示例 host.json 檔僅包含此綁定的版本 2.x+ 設置。 有關版本 2.x 及以後的全域配置設置的詳細資訊，請參閱[Azure 函數的 host.json 引用](functions-host-json.md)。
+本節說明2.x 版和更高版本中可供此系結使用的全域設定。 下面的範例 host. json 檔案僅包含此系結的2.x 版和設定。 如需有關2.x 版和更早版本中的全域設定的詳細資訊，請參閱[Azure Functions 的 host. json 參考](functions-host-json.md)。
 
 > [!NOTE]
 > 有關 Functions 1.x 中 host.json 的參考，請參閱[適用於 Azure Functions 1.x 的 host.json 參考](functions-host-json-v1.md)。
@@ -414,7 +414,7 @@ public class HttpTriggerQueueOutput {
 
 |屬性  |預設 | 描述 |
 |---------|---------|---------|
-|maxPollingInterval|00:00:01|佇列輪詢之間的間隔上限。 最小為 00：00：00.100（100 毫秒），增量為 00：01：00（1 分鐘）。  在 1.x 中，資料類型為毫秒，在 2.x 和更高版本中，資料類型為 TimeSpan。|
+|maxPollingInterval|00:00:01|佇列輪詢之間的間隔上限。 最小值為00：00：00.100 （100毫秒），而遞增至00:01:00 （1分鐘）。  在1.x 中，資料類型是毫秒，而在2.x 和更高的版本中，它是 TimeSpan。|
 |visibilityTimeout|00:00:00|處理訊息失敗時，重試之間的時間間隔。 |
 |batchSize|16|Functions 執行階段會同時擷取，並以平行方式處理的佇列訊息數目。 當要處理的數目減少到 `newBatchThreshold` 時，執行階段就會取得另一個批次，並開始處理那些訊息。 因此，每個函式並行處理之訊息的上限為 `batchSize` 加上 `newBatchThreshold`。 這項限制個別套用至每個佇列觸發的函式。 <br><br>如果您需要避免平行執行在單一佇列上收到的訊息，可以將 `batchSize` 設定為 1。 不過，只要您的函式應用程式在單一虛擬機器 (VM) 上執行，這項設定就只會將並行排除。 如果函式應用程式相應放大為多個 VM，則每個 VM 可以執行每個佇列觸發之函式的一個執行個體。<br><br>最大值 `batchSize` 為 32。 |
 |maxDequeueCount|5|將訊息移至有害佇列之前，嘗試處理訊息的次數。|
@@ -422,7 +422,7 @@ public class HttpTriggerQueueOutput {
 
 ## <a name="next-steps"></a>後續步驟
 
-- [在佇列存儲資料更改時運行函數（觸發器）](./functions-bindings-storage-queue-trigger.md)
+- [以佇列儲存體資料變更的形式執行函式（觸發程式）](./functions-bindings-storage-queue-trigger.md)
 
 <!-- LINKS -->
 

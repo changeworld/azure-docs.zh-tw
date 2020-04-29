@@ -4,10 +4,10 @@ description: 本文說明如何停止使用容器的 Azure 監視器來監視 Az
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.openlocfilehash: 618a4d7e10212dd2b042724b1ea11c97920dad57
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275252"
 ---
 # <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>如何停止使用容器的 Azure 監視器來監視 Azure Kubernetes Service (AKS)
@@ -17,7 +17,7 @@ ms.locfileid: "79275252"
 
 ## <a name="azure-cli"></a>Azure CLI
 
-使用 [az aks disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) 命令可停用容器的 Azure 監視。 該命令從叢集節點中刪除代理，它不會刪除解決方案或已收集和存儲在 Azure 監視器資源中的資料。  
+使用 [az aks disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) 命令可停用容器的 Azure 監視。 此命令會從叢集節點移除代理程式，但不會移除解決方案或已收集並儲存在您的 Azure 監視器資源中的資料。  
 
 ```azurecli
 az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
@@ -34,7 +34,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 * [使用 Resource Manager 範本與 Azure CLI 部署資源](../../azure-resource-manager/templates/deploy-cli.md)
 
 >[!NOTE]
->範本需要部署在群集的同一資源組中。 使用此範本時，如果您省略其他任何屬性或附加元件，可能會導致從叢集移除這些屬性或附加元件。 例如，為群集中實現的 RBAC 策略*啟用 RBAC，* 或者如果為 AKS 群集指定了標記，則啟用*AsResourceTagValue。*  
+>範本必須部署在叢集的相同資源群組中。 使用此範本時，如果您省略其他任何屬性或附加元件，可能會導致從叢集移除這些屬性或附加元件。 例如， *enableRBAC*用於在您的叢集中執行的 RBAC 原則，或如果已針對 AKS 叢集指定標記，則為*aksResourceTagValues* 。  
 >
 
 如果您選擇使用 Azure CLI，必須先在本機安裝並使用 CLI。 您必須執行 Azure CLI 2.0.27 版或更新版本。 若要知道您使用的版本，請執行 `az --version`。 如果您需要安裝或升級 Azure CLI，請參閱[安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
@@ -121,7 +121,7 @@ az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMan
 
     當您在 [屬性]**** 頁面上時，亦請複製 [工作區資源識別碼]****。 如果您稍後決定要刪除 Log Analytics 工作區，必須要有這個值。 這部分的程序並不會刪除 Log Analytics 工作區。
 
-    編輯**aksResourceTagvalue 的值**以匹配為 AKS 群集指定的現有標記值。
+    編輯**aksResourceTagValues**的值，以符合針對 AKS 叢集指定的現有標記值。
 
 5. 將此檔案儲存為本機資料夾的 **OptOutParam.json**。
 
@@ -164,4 +164,4 @@ ProvisioningState       : Succeeded
 
 ## <a name="next-steps"></a>後續步驟
 
-如果建立工作區只為了支援監視叢集，當您不再需要時，可以手動予以刪除。 如果您不熟悉如何刪除工作區，請參閱[使用 Azure 入口網站來刪除 Azure Log Analytics 工作區](../../log-analytics/log-analytics-manage-del-workspace.md)。 不要忘記步驟 4 前面複製的**工作區資源識別碼，** 您需要它。
+如果建立工作區只為了支援監視叢集，當您不再需要時，可以手動予以刪除。 如果您不熟悉如何刪除工作區，請參閱[使用 Azure 入口網站來刪除 Azure Log Analytics 工作區](../../log-analytics/log-analytics-manage-del-workspace.md)。 別忘了稍早在步驟4中複製的**工作區資源識別碼**，您就需要這麼做。

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 建立 IoT 中樞 | Microsoft Docs
-description: 瞭解如何使用 Azure CLI 命令創建資源組，然後在資源組中創建 IoT 中心。 還瞭解如何刪除集線器。
+description: 瞭解如何使用 Azure CLI 命令來建立資源群組，然後在資源群組中建立 IoT 中樞。 另請瞭解如何移除中樞。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/23/2018
 ms.author: robinsh
 ms.openlocfilehash: e7253747d95917e34725cc7c6c034b1306f65e50
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79284716"
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>使用 Azure CLI 建立 IoT 中樞
@@ -20,7 +20,7 @@ ms.locfileid: "79284716"
 
 本文將說明如何使用 Azure CLI 建立 IoT 中樞。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要完成此操作說明，您需要 Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -66,7 +66,7 @@ ms.locfileid: "79284716"
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 
-上一個命令會在您付費使用的 S1 定價層中建立 IoT 中樞。 有關詳細資訊，請參閱[Azure IoT 中心定價](https://azure.microsoft.com/pricing/details/iot-hub/)。
+上一個命令會在您付費使用的 S1 定價層中建立 IoT 中樞。 如需詳細資訊，請參閱 [Azure IoT 中樞價格](https://azure.microsoft.com/pricing/details/iot-hub/)。
 
 ## <a name="remove-an-iot-hub"></a>移除 IoT 中樞
 
@@ -89,5 +89,5 @@ az group delete --name {your resource group name}
 
 若要深入了解如何使用 IoT 中樞，請參閱以下文章︰
 
-* [IoT 中心開發人員指南](iot-hub-devguide.md)
+* [IoT 中樞開發人員指南](iot-hub-devguide.md)
 * [使用 Azure 入口網站管理 IoT 中樞](iot-hub-create-through-portal.md)

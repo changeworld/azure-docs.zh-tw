@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
 ms.openlocfilehash: 76af1f51c83e9554a51e6c17266fac739e6bd6b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276812"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 指令碼 (.csx) 開發人員參考
@@ -24,7 +24,7 @@ Azure Functions 支援 C# 和 C# 指令碼程式設計語言。 如果您要尋�
 
 ## <a name="how-csx-works"></a>.csx 的運作方式
 
-Azure 函數的 C# 腳本體驗基於[Azure Web 作業 SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction)。 資料會透過方法引數流入您的 C# 函式。 引數名稱指定於 `function.json` 檔案中，而且有預先定義的名稱可用來存取函式記錄器和取消權杖等項目。
+Azure Functions 的 c # 腳本體驗是以[AZURE WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki/Introduction)為基礎。 資料會透過方法引數流入您的 C# 函式。 引數名稱指定於 `function.json` 檔案中，而且有預先定義的名稱可用來存取函式記錄器和取消權杖等項目。
 
 .csx** 格式可讓您撰寫較少「重複使用」文字，只專注於撰寫 C# 函式。 只需定義 `Run` 方法，而不用在命名空間和類別中包裝所有項目。 像往常一樣，在檔案開頭包含任何組件參考和命名空間。
 
@@ -51,7 +51,7 @@ FunctionsProject
 
 其中有一個可用來設定函數應用程式的共用 [host.json](functions-host-json.md) 檔案。 每個函數都具有本身的程式碼檔案 (.csx) 和繫結設定檔 (function.json)。
 
-[版本 2.x 和函數運行時的更高版本](functions-versions.md)所需的綁定副檔名在`extensions.csproj`檔中定義，`bin`資料夾中的實際庫檔。 在本機開發時，您必須[註冊繫結擴充功能](./functions-bindings-register.md#extension-bundles)。 開發 Azure 入口網站中的函式時，就會為您完成這項註冊。
+在[版本2.x 和更新版本](functions-versions.md)的函式執行時間中所需的系結延伸模組， `extensions.csproj`是在檔案中定義，實際的連結`bin`庫檔案位於資料夾中。 在本機開發時，您必須[註冊繫結擴充功能](./functions-bindings-register.md#extension-bundles)。 開發 Azure 入口網站中的函式時，就會為您完成這項註冊。
 
 ## <a name="binding-to-arguments"></a>繫結至引數
 
@@ -224,7 +224,7 @@ public class Order
 
 ## <a name="writing-multiple-output-values"></a>撰寫多個輸出值
 
-要將多個值寫入輸出綁定，或者如果成功的函式呼叫可能不會導致任何要傳遞給輸出綁定的東西，請使用 或[`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)[`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)類型。 這些類型是在方法完成時，寫入至輸出繫結的唯寫集合。
+若要將多個值寫入至輸出系結，或如果成功的函式調用可能不會導致任何專案傳遞至輸出系[`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)結[`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) ，請使用或類型。 這些類型是在方法完成時，寫入至輸出繫結的唯寫集合。
 
 這個範例會使用 `ICollector` 將多個佇列訊息寫入相同佇列：
 
@@ -250,9 +250,9 @@ public static void Run(string myBlob, ILogger log)
 > [!NOTE]
 > 如需您可使用之較新記錄架構 (而非 `TraceWriter`) 的資訊，請參閱**監視 Azure Functions** 一文中的[在 C# 函式中寫入記錄](functions-monitoring.md#write-logs-in-c-functions)。
 
-## <a name="async"></a>非同步處理
+## <a name="async"></a>Async
 
-要使函數[非同步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)，請使用 關鍵字`async`並返回物件。 `Task`
+若要讓函式變成[非同步](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)， `async`請使用關鍵字並`Task`傳回物件。
 
 ```csharp
 public async static Task ProcessQueueMessageAsync(
@@ -370,7 +370,7 @@ simple-name 可能會參考下列組件 (例如，`#r "AssemblyName"`)：
 系統會自動監看包含函式指令碼檔案之目錄中的組件變更。 若要監看其他目錄中的組件變更，請將它們新增至 [host.json](functions-host-json.md) 中的 `watchDirectories` 清單。
 
 ## <a name="using-nuget-packages"></a>使用 NuGet 套件
-要在 2.x 和更高版本的 C# 函數中使用 NuGet 包，請將*函數.proj*檔上載到函數應用檔案系統中的函數資料夾。 以下是範例 *function.proj* 檔案，該檔案會加入對 *Microsoft.ProjectOxford.Face**1.1.0* 版的參考：
+若要在2.x 和更新版本的 c # 函式中使用 NuGet 套件，請將*函數 proj*檔案上傳至函式應用程式檔案系統中的函式資料夾。 以下是範例 *function.proj* 檔案，該檔案會加入對 *Microsoft.ProjectOxford.Face**1.1.0* 版的參考：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -387,9 +387,9 @@ simple-name 可能會參考下列組件 (例如，`#r "AssemblyName"`)：
 若要使用自訂 NuGet 摘要，請在函式應用程式根目錄的 *Nuget.Config* 檔案中指定摘要。 如需詳細資訊，請參閱[設定 NuGet 行為](/nuget/consume-packages/configuring-nuget-behavior)。
 
 > [!NOTE]
-> 在 1.x C++ 函數中，NuGet 包引用專案 *.json*檔而不是*函數.proj*檔。
+> 在 1.x c # 函式中，NuGet 套件是以*專案 json*檔案來參考，而不是使用*function proj*檔案。
 
-對於 1.x 函數，請使用*project.json*檔。 下面是一個*示例專案.json*檔：
+針對1.x 函式，請改用*專案 json*檔案。 以下是範例*專案. json*檔案：
 
 ```json
 {
@@ -403,11 +403,11 @@ simple-name 可能會參考下列組件 (例如，`#r "AssemblyName"`)：
 }
 ```
 
-### <a name="using-a-functionproj-file"></a>使用函數.proj 檔
+### <a name="using-a-functionproj-file"></a>使用函數 proj 檔案
 
 1. 在 Azure 入口網站中開啟函式。 [記錄] 索引標籤會顯示套件安裝輸出。
-2. 要上載*函數.proj*檔，請使用 Azure 函數開發人員參考主題中的["如何更新函數應用檔](functions-reference.md#fileupdate)"中描述的方法之一。
-3. 上載*函數.proj*檔後，在函數的流式處理日誌中可以看到如下示例的輸出：
+2. 若要上傳*函數 proj*檔案，請使用 Azure Functions 開發人員參考主題中[如何更新函數應用程式檔](functions-reference.md#fileupdate)中所述的其中一種方法。
+3. 上傳*函數 proj*檔案之後，您會在函式的串流記錄中看到如下列範例所示的輸出：
 
 ```
 2018-12-14T22:00:48.658 [Information] Restoring packages.
@@ -449,7 +449,7 @@ public static string GetEnvironmentVariable(string name)
 定義命令式繫結，如下所示︰
 
 - **請勿**在 *function.json* 中為您所需的命令式繫結併入項目。
-- 傳遞輸入參數[`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs)或[`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
+- 傳入輸入參數[`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs)或[`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)。
 - 使用下列 C# 模式來執行資料繫結。
 
 ```cs
@@ -459,7 +459,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` 是可定義繫結的.NET 屬性，而 `T` 是該繫結類型所支援的輸入或輸出類型。 `T` 不能是 `out` 參數類型 (例如 `out JObject`)。 例如，移動應用表輸出綁定支援[六種輸出類型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但只能使用[ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)或[`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) `T`。
+`BindingTypeAttribute` 是可定義繫結的.NET 屬性，而 `T` 是該繫結類型所支援的輸入或輸出類型。 `T` 不能是 `out` 參數類型 (例如 `out JObject`)。 例如，Mobile Apps 資料表輸出系結支援[六種輸出類型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但您只能使用[ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs)或[`IAsyncCollector<T>`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)的`T`。
 
 ### <a name="single-attribute-example"></a>單一屬性範例
 

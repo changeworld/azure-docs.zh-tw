@@ -1,43 +1,43 @@
 ---
-title: 格
-description: Azure 遠端呈現範圍內的模因的定義
+title: 網狀
+description: Azure 遠端呈現範圍中的網格定義
 author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.openlocfilehash: b800272a538243d39a89e4eed64bc5cbc2d53ad8
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681762"
 ---
-# <a name="meshes"></a>格
+# <a name="meshes"></a>網狀
 
-## <a name="mesh-resource"></a>格線資源
+## <a name="mesh-resource"></a>網格資源
 
-meshes是一個不可變[的共用資源](../concepts/lifetime.md),只能通過[模型轉換](../how-tos/conversion/model-conversion.md)來創建。 meshes 包含一個或多個*子等。* 每個子網格引用預設情況下應呈現材質[的材料](materials.md)。 要將格線放置在 3D 空間中[Entity](entities.md),加入[網格元件](#meshcomponent)。
+網格是不可變的[共用資源](../concepts/lifetime.md)，只能透過[模型轉換](../how-tos/conversion/model-conversion.md)來建立。 網格包含一個或多個*submeshes*。 根據預設，每個 submesh 都會參考應該呈現的[材質](materials.md)。 若要在3D 空間中放置網格，請將[MeshComponent](#meshcomponent)新增至[實體](entities.md)。
 
 ### <a name="mesh-resource-properties"></a>網格資源屬性
 
-類別`Mesh`屬性包括:
+`Mesh`類別屬性包括：
 
-* **材料:** 一系列材料。 每種材料都由不同的子網格使用。 陣列中的多個項目可能參考相同的[材質](materials.md)。 此數據在運行時無法修改。
+* **材質：** 材質的陣列。 不同的 submesh 會使用每個材質。 陣列中的多個專案可能會參考[相同的](materials.md)資料。 此資料無法在執行時間修改。
 
-* **邊界:** 網格頂點的局部空間軸對齊邊界框 (AABB)。
+* **界限：** 網格頂點的本機空間軸對齊周框方塊（AABB）。
 
-## <a name="meshcomponent"></a>格線元件
+## <a name="meshcomponent"></a>MeshComponent
 
-類`MeshComponent`用於放置網格資源的實例。 每個網格元件引用單個網格。 它可以覆蓋用於渲染每個子網格的材料。
+`MeshComponent`類別是用來放置網格資源的實例。 每個 MeshComponent 都會參考單一網格。 它可能會覆寫用來呈現每個 submesh 的材質。
 
-### <a name="meshcomponent-properties"></a>格線元件屬性
+### <a name="meshcomponent-properties"></a>MeshComponent 屬性
 
-* **格線:** 此元件使用的網格資源。
+* **網格：** 此元件所使用的網格資源。
 
-* **材料:** 網格元件本身上指定的材質陣列。 陣列的長度始終與網格資源上的 *「材質」* 陣組相同。 不應從網格預設值中重寫的材料將在此陣列中設置為*null。*
+* **材質：** 網格元件本身所指定的材質陣列。 陣列的長度一律會與網格資源上的*材質*陣列相同。 不能從網格預設值覆寫的材質，會在此陣列中設為*null* 。
 
-* **已用材料:** 每個子網格的實際使用材質的陣列。 對於非空值,將和 *「材質」* 陣列中的數據相同。 否則,它包含網格實例中的 *「材質」* 陣列中的值。
+* **UsedMaterials：** 每個 submesh 實際使用的材質陣列。 對於非 null 值，將會與*材質*陣列中的資料完全相同。 否則，它會包含網格實例中*材質*陣列的值。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [物料](materials.md)
+* [材質](materials.md)

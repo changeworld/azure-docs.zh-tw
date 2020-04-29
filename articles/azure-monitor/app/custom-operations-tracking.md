@@ -1,14 +1,14 @@
 ---
-title: 使用 Azure 應用程式見解 .NET SDK 跟蹤自訂操作
+title: 使用 Azure 應用程式 Insights .NET SDK 追蹤自訂作業
 description: 使用 Azure Application Insights .NET SDK 追蹤自訂作業
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79276097"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 追蹤自訂作業
@@ -23,7 +23,7 @@ Azure Application Insights SDK 會自動追蹤相依服務的連入 HTTP 要求�
 - 適用於 Web 應用程式 (執行 ASP.NET) 的 Application Insights 版本 2.4+。
 - Application Insights for ASP.NET Core 版本 2.1+。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 作業是應用程式執行的邏輯部分。 它具有名稱、開始時間、持續時間、結果和執行的內容，例如使用者名稱、屬性和結果。 如果作業 A 是由作業 B 起始，則作業 B 設為 A 的父代。作業只能有一個父代，但是可以有多個子系作業。 如需有關作業和遙測相互關聯的詳細資訊，請參閱 [Azure Application Insights 遙測相互關聯](correlation.md)。
 
 在 Application Insights.NET SDK 中，作業是由抽象類別 [OperationTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) 及其子系 [RequestTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) 和 [DependencyTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs) 描述。
@@ -117,10 +117,10 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 相互關聯的 HTTP 通訊協定也會宣告 `Correlation-Context` 標題。 不過，為了簡單起見在這裡省略。
 
 ## <a name="queue-instrumentation"></a>佇列檢測
-雖然有[W3C 跟蹤上下文](https://www.w3.org/TR/trace-context/)和[HTTP 協定用於關聯](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)以傳遞相關詳細資訊與 HTTP 要求，但每個佇列協定都必須定義如何沿佇列消息傳遞相同的詳細資訊。 有些佇列通訊協定 (例如 AMQP) 允許傳遞其他中繼資料，其他 (例如 Azure 儲存體佇列) 則需要將內容編碼為 	訊息承載。
+雖然相互關聯的[W3C 追蹤內容](https://www.w3.org/TR/trace-context/)和[HTTP 通訊協定](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)會透過 HTTP 要求傳遞相互關聯詳細資料，但每個佇列通訊協定都必須定義如何沿著佇列訊息傳遞相同的詳細資料。 有些佇列通訊協定 (例如 AMQP) 允許傳遞其他中繼資料，其他 (例如 Azure 儲存體佇列) 則需要將內容編碼為 	訊息承載。
 
 > [!NOTE]
-> * **佇列不支援跨元件跟蹤**使用 HTTP，如果生產者和消費者向不同的應用程式見解資源發送遙測資料，則事務診斷體驗和應用程式映射將顯示事務並端到端映射。 在佇列的情況下，這還不受支援。 
+> * **佇列尚不支援跨元件追蹤**使用 HTTP 時，如果您的生產者和取用者將遙測傳送至不同的 Application Insights 資源，交易診斷體驗和應用程式對應會顯示交易和端對端對應。 若為佇列，則尚不支援這種情況。 
 
 ### <a name="service-bus-queue"></a>服務匯流排佇列
 Application Insights 會使用[適用於 .NET 的 Microsoft Azure 服務匯流排用戶端](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus/) 3.0.0 版本和更新版本來追蹤服務匯流排通訊呼叫。
@@ -206,7 +206,7 @@ public async Task Process(BrokeredMessage message)
 下列範例示範如何追蹤 [Azure 儲存體佇列](../../storage/queues/storage-dotnet-how-to-use-queues.md)作業，並且讓產生者、取用者與 Azure 儲存體之間的遙測相互關聯。 
 
 儲存體佇列有 HTTP API。 HTTP 要求的 Application Insights 相依性收集器會追蹤對佇列的所有呼叫。
-預設情況下，它在ASP.NET和ASP.NET核心應用程式上配置，對於其他類型的應用程式，您可以參考[主控台應用程式文檔](../../azure-monitor/app/console.md)
+根據預設，它是在 ASP.NET 和 ASP.NET Core 應用程式上設定，而在其他類型的應用程式中，您可以參考[主控台應用程式檔](../../azure-monitor/app/console.md)
 
 您可能也想要相互關聯 Application Insights 作業識別碼與儲存體要求識別碼。 如需如何設定及取得儲存體要求用戶端和伺服器要求識別碼的詳細資訊，請參閱[監視、診斷 Azure 儲存體及進行移難排解](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)。
 
@@ -270,7 +270,7 @@ public async Task Enqueue(CloudQueue queue, string message)
 #### <a name="dequeue"></a>清除佇列
 類似於 `Enqueue`，Application Insights 會自動追蹤儲存體佇列的實際 HTTP 要求。 不過 `Enqueue` 作業可能發生於父代內容，例如連入要求內容。 Application Insights SDK 會使這類作業 (及其 HTTP 部分) 與父代要求和相同範圍中報告的其他遙測自動相互關聯。
 
-`Dequeue` 作業有些麻煩。 Application Insights SDK 會自動追蹤 HTTP 要求。 不過，它在剖析訊息之前並不知道相互關聯內容。 無法將 HTTP 要求關聯以獲取消息與遙測的其餘部分，尤其是在收到多條消息時。
+`Dequeue` 作業有些麻煩。 Application Insights SDK 會自動追蹤 HTTP 要求。 不過，它在剖析訊息之前並不知道相互關聯內容。 您無法將 HTTP 要求相互關聯，以取得具有其餘遙測資料的訊息，特別是在收到多個訊息時。
 
 ```csharp
 public async Task<MessagePayload> Dequeue(CloudQueue queue)
@@ -344,15 +344,15 @@ public async Task Process(MessagePayload message)
 - 停止 `Activity`。
 - 使用 `Start/StopOperation` 或手動呼叫 `Track` 遙測。
 
-### <a name="dependency-types"></a>依賴項類型
+### <a name="dependency-types"></a>相依性類型
 
-應用程式見解使用依賴項類型來整理 UI 體驗。 對於佇列，它識別以下類型`DependencyTelemetry`，以改善[事務診斷體驗](/azure/azure-monitor/app/transaction-diagnostics)：
-- `Azure queue`用於 Azure 存儲佇列
-- `Azure Event Hubs`對於 Azure 事件中心
-- `Azure Service Bus`用於 Azure 服務匯流排
+Application Insights 使用相依性類型來 cusomize UI 體驗。 對於佇列，它會識別下列`DependencyTelemetry`可改善[交易診斷體驗](/azure/azure-monitor/app/transaction-diagnostics)的類型：
+- `Azure queue`針對 Azure 儲存體佇列
+- `Azure Event Hubs`針對 Azure 事件中樞
+- `Azure Service Bus`針對 Azure 服務匯流排
 
 ### <a name="batch-processing"></a>批次處理
-有些佇列中，您可以使用一個要求清除佇列多個訊息。 處理這類訊息可能是獨立的，並且屬於不同的邏輯作業。 無法將`Dequeue`操作與正在處理的特定消息相關聯。
+有些佇列中，您可以使用一個要求清除佇列多個訊息。 處理這類訊息可能是獨立的，並且屬於不同的邏輯作業。 不可能將作業與所處理`Dequeue`的特定訊息相互關聯。
 
 每個訊息應該在自己的非同步控制流程中處理。 如需詳細資訊，請參閱[連出相依性追蹤](#outgoing-dependencies-tracking)一節。
 
@@ -468,17 +468,17 @@ public async Task RunAllTasks()
 }
 ```
 
-## <a name="applicationinsights-operations-vs-systemdiagnosticsactivity"></a>應用程式洞察操作與系統.診斷.活動
-`System.Diagnostics.Activity`表示分散式跟蹤上下文，由框架和庫用於在進程內部和外部創建和傳播上下文，並關聯遙測項。 活動與`System.Diagnostics.DiagnosticSource`- 框架/庫之間的通知機制協同工作，以通知有關有趣的事件（傳入或傳出請求、異常等）。
+## <a name="applicationinsights-operations-vs-systemdiagnosticsactivity"></a>ApplicationInsights 作業與系統診斷。活動
+`System.Diagnostics.Activity`表示分散式追蹤內容，並由架構和程式庫用來建立和傳播進程內部和外部的內容，以及將遙測專案相互關聯。 活動搭配使用- `System.Diagnostics.DiagnosticSource`架構/程式庫之間的通知機制，用來通知相關事件（傳入或傳出要求、例外狀況等等）。
 
-活動是應用程式見解和自動依賴項中的一流公民，請求收集與`DiagnosticSource`事件一起嚴重依賴它們。 如果在應用程式中創建活動 - 不會創建應用程式見解遙測。 應用程式見解需要接收診斷源事件，並瞭解事件名稱和有效負載，以便將活動轉換為遙測。
+活動是 Application Insights 中的第一方公民，而自動相依性和要求集合會隨著`DiagnosticSource`事件而高度依賴它們。 如果您在應用程式中建立活動，則不會導致建立 Application Insights 的遙測。 Application Insights 需要接收 DiagnosticSource 事件，並知道要將活動轉譯成遙測的事件名稱和承載。
 
-每個應用程式見解操作（請求或依賴項）`Activity`都涉及`StartOperation`- 調用時，會在下面創建活動。 `StartOperation`是手動跟蹤請求或依賴項遙測並確保所有內容相關的建議方法。
+每個 Application Insights 作業（要求或相依性`Activity` ）都`StartOperation`牽涉到-呼叫時，它會在下方建立活動。 `StartOperation`是手動追蹤要求或相依性遙測，並確保所有專案都相互關聯的建議方式。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 了解 Application Insights 中[遙測相互關聯](correlation.md)的基本概念。
-- 瞭解相關資料如何為[事務診斷體驗](../../azure-monitor/app/transaction-diagnostics.md)和應用[映射](../../azure-monitor/app/app-map.md)提供動力。
+- 查看相互關聯的資料如何支援[交易診斷體驗](../../azure-monitor/app/transaction-diagnostics.md)和[應用程式對應](../../azure-monitor/app/app-map.md)。
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](../../azure-monitor/app/data-model.md)。
 - 向 Application Insights 報告自訂[事件和計量](../../azure-monitor/app/api-custom-events-metrics.md)。
 - 請查看內容屬性集合的標準[設定](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。

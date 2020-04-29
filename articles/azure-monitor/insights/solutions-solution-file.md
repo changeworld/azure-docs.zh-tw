@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275174"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中建立管理解決方案檔 (預覽)
@@ -76,7 +76,7 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
 >
 >
 
-| 參數 | 類型 | 描述 |
+| 參數 | 類型 | 說明 |
 |:--- |:--- |:--- |
 | accountName |字串 |Azure 自動化帳戶名稱。 |
 | pricingTier |字串 |Log Analytics 工作區和 Azure 自動化帳戶的定價層。 |
@@ -122,7 +122,7 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
     }
 
 
-參考解決方案的其他項目中使用 **parameters('parameter name')** 語法的參數值。  例如，要訪問工作區名稱，請使用**參數（"工作區名稱"）**
+參考解決方案的其他項目中使用 **parameters('parameter name')** 語法的參數值。  例如，若要存取工作區名稱，您會使用**參數（' workspaceName '）**
 
 ## <a name="variables"></a>變數
 [變數](../../azure-resource-manager/templates/template-syntax.md#variables)是您會在管理解決方案的其餘部分中使用的值。  這些值不會公開給安裝解決方案的使用者。  它們旨在為作者提供單一位置，讓他們可以管理在整個解決方案可能會重複使用的值。 您應該將解決方案特有的值放在變數中，而非將這些值硬式編碼在 **resources** 元素中。  這會讓程式碼更容易閱讀，並可讓您輕鬆地在後續的版本中變更這些值。
@@ -137,7 +137,7 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
         "AutomationApiVersion": "2015-10-31"
     },
 
-參考透過使用 **variables('variable name')** 語法的解決方案參數值。  例如，要訪問解決方案名稱變數，請使用**變數（"解決方案名稱"）。**
+參考透過使用 **variables('variable name')** 語法的解決方案參數值。  例如，若要存取「解決方案名稱」變數，您可以使用**變數（「解決方案名稱」）**。
 
 您也可以定義有多組值的複雜變數。  這在您會針對不同的資源類型定義多個屬性的管理解決方案中，這特別實用。  例如，您可以將上述的解決方案變數重建為下列所示的狀態。
 
@@ -204,9 +204,9 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
 ### <a name="properties"></a>屬性
 解決方案資源具有下表中的屬性。  這包括由定義解決方案安裝後如何管理資源的解決方案所參考及包含的資源。  解決方案中的每個資源應列在 **referencedResources** 或 **containedResources** 屬性中。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:--- |
-| workspaceResourceId |表單中的日誌分析工作區的 ID * \<>/提供程式/Microsoft.操作見解/工作區/\<工作區名稱\>*。 |
+| workspaceResourceId |Log Analytics 工作區的識別碼，其格式* \<為資源群組識別碼>\<:/providers/microsoft.operationalinsights/workspaces/工作\>區名稱*。 |
 | referencedResources |解決方案移除時不應移除的解決方案資源清單。 |
 | containedResources |解決方案移除時應移除的解決方案資源清單。 |
 
@@ -218,7 +218,7 @@ Azure 中的管理解決方案會實作為 [Resource Manager 範本](../../azure
 | 屬性 | 描述 |
 |:--- |:--- |
 | NAME |解決方案的名稱。 |
-| version |作者所決定的解決方案版本。 |
+| 版本 |作者所決定的解決方案版本。 |
 | product |識別解決方案的唯一字串。 |
 | publisher |解決方案的發佈者。 |
 

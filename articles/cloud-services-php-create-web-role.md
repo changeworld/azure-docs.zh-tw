@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.openlocfilehash: 54410e1e70a2ec0d3a9e2f853dc9556cd05996ad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79297249"
 ---
 # <a name="create-php-web-and-worker-roles"></a>建立 PHP Web 和背景工作角色
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 本指南將說明如何在 Windows 開發環境中建立 PHP Web 或背景工作角色、從「內建」的可用版本中選擇特定版本的 PHP、變更 PHP 組態、啟用擴充功能，最終部署至 Azure。 此外也會說明如何設定 Web 或背景工作角色，以使用您所提供的 PHP 執行階段 (具有自訂組態和擴充功能)。
 
@@ -32,7 +32,7 @@ Azure 提供三種運算模型來執行應用程式：Azure 應用程式服務�
 
 ## <a name="download-the-azure-sdk-for-php"></a>下載 Azure SDK for PHP
 
-[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 由數個元件組成。 本文將使用下列兩個元件：Azure PowerShell 和 Azure 模擬器。 這兩個元件可透過 Microsoft Web Platform Installer 來安裝。 有關詳細資訊，請參閱[如何安裝和配置 Azure PowerShell](/powershell/azure/overview)。
+[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) 由數個元件組成。 本文將使用下列兩個元件：Azure PowerShell 和 Azure 模擬器。 這兩個元件可透過 Microsoft Web Platform Installer 來安裝。 如需詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="create-a-cloud-services-project"></a>建立雲端服務專案
 
@@ -171,8 +171,8 @@ Azure 模擬器所提供的本機環境，可讓您在 Azure 應用程式部署�
 如需詳細資訊，請參閱 [PHP 開發人員中心](https://azure.microsoft.com/develop/php/)。
 
 [install ps and emulators]: https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[服務定義（.csdef）]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
-[服務配置 （.cscfg）]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
+[服務定義（..）]: https://msdn.microsoft.com/library/windowsazure/ee758711.aspx
+[服務設定（.cscfg）]: https://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [iis.net]: https://www.iis.net/
 [sql native client]: https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation
 [sqlsrv drivers]: https://php.net/sqlsrv

@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：路由要求
+title: Azure ExpressRoute：路由需求
 description: 此頁面提供用來設定和管理 ExpressRoute 循環路由的詳細需求。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
 ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79273042"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute 路由需求
@@ -83,7 +83,7 @@ ms.locfileid: "79273042"
 您可以選擇使用公用或私人 IPv4 位址進行私人對等互連。 我們會提供流量的端對端隔離，因此在私人對等互連的情況下不可能發生位址與其他客戶重疊。 這些位址不會向網際網路公告。 
 
 ### <a name="microsoft-peering"></a>Microsoft 對等互連
-Microsoft 對等路徑可讓您連線到 Microsoft 雲端服務。 服務清單包括 Office 365 服務，如線上交換、共用點線上、Skype 業務和 Microsoft 團隊。 Microsoft 支援在 Microsoft 對等上的雙向連線能力。 以 Microsoft 雲端服務為目的地的流量，必須使用有效的公用 IPv4 位址，才能進入 Microsoft 網路。
+Microsoft 對等路徑可讓您連線到 Microsoft 雲端服務。 服務清單包括 Office 365 服務，例如 Exchange Online、SharePoint Online、商務用 Skype 和 Microsoft 團隊。 Microsoft 支援在 Microsoft 對等上的雙向連線能力。 以 Microsoft 雲端服務為目的地的流量，必須使用有效的公用 IPv4 位址，才能進入 Microsoft 網路。
 
 確定已在下列其中一個登錄中註冊您的 IP 位址和 AS 號碼：
 
@@ -153,7 +153,7 @@ ExpressRoute 不能設定為傳輸路由器。 您必須依賴連線提供者的
 
 您可以針對每個地理政治區域購買多個 ExpressRoute 循環。 如果擁有多個連線，您即可因為異地備援而有明顯的高可用性優勢。 具有多個 ExpressRoute 循環的情況下，您會從 Microsoft 收到同一組有關 Microsoft 對等互連和公用對等互連路徑的前置詞。 這表示您將會有多個路徑可從您的網路連到 Microsoft。 這可能會導致在您的網路中做出次佳的路由決策。 因此，您可能會遇到次佳的不同服務連線體驗。 您可以依賴社群值來做出適當的路由決策，以提供[最佳路由給使用者](expressroute-optimize-routing.md)。
 
-| **Microsoft Azure 區域** | **區域 BGP 社區** | **存儲 BGP 社區** | **SQL BGP 社區** | **宇宙 DB BGP 社區** |
+| **Microsoft Azure 區域** | **區域 BGP 社區** | **儲存體 BGP 社區** | **SQL BGP 社區** | **Cosmos DB BGP 社區** |
 | --- | --- | --- | --- | --- |
 | **北美洲** | |
 | 美國東部 | 12076:51004 | 12076:52004 | 12076:53004 | 12076:54004 |
@@ -181,7 +181,7 @@ ExpressRoute 不能設定為傳輸路由器。 您必須依賴連線提供者的
 | 德國中西部 | 12076:51041 | 12076:52041 | 12076:53041 | 12076:54041 | 
 | 挪威東部 | 12076:51042 | 12076:52042 | 12076:53042 | 12076:54042 | 
 | 挪威西部 | 12076:51043 | 12076:52043 | 12076:53043 | 12076:54043 | 
-| **亞太** | |
+| **亞太地區** | |
 | 東亞 | 12076:51010 | 12076:52010 | 12076:53010 | 12076:54010 |
 | 東南亞 | 12076:51011 | 12076:52011 | 12076:53011 | 12076:54011 |
 | **日本** | |
@@ -215,22 +215,22 @@ ExpressRoute 不能設定為傳輸路由器。 您必須依賴連線提供者的
 > 
 > 
 
-### <a name="service-to-bgp-community-value"></a>為 BGP 社區價值提供服務
-除了上述各項，Microsoft 也將根據其所屬的服務加上標記及前置詞。 這只適用於 Microsoft 對等互連。 下表提供服務與 BGP 社群值的對應。 您可以運行"獲取-AzBgpService社區"Cmdlet，瞭解最新值的完整清單。
+### <a name="service-to-bgp-community-value"></a>服務對 BGP 社區值
+除了上述各項，Microsoft 也將根據其所屬的服務加上標記及前置詞。 這只適用於 Microsoft 對等互連。 下表提供服務與 BGP 社群值的對應。 如需最新值的完整清單，您可以執行 ' AzBgpServiceCommunity ' Cmdlet。
 
-| **服務** | **BGP 社群值** |
+| **Service** | **BGP 社群值** |
 | --- | --- |
-| 線上交換* | 12076:5010 |
-| 線上分享點* | 12076:5020 |
-| Skype 業務線上* | 12076:5030 |
-| CRM 線上* |12076:5040 |
+| Exchange Online * * | 12076:5010 |
+| SharePoint Online * * | 12076:5020 |
+| 商務用 Skype Online * * | 12076:5030 |
+| CRM Online * * * |12076:5040 |
 | Azure 全域服務* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
-| 其他 Office 365 線上服務* | 12076:5100 |
+| 其他 Office 365 線上服務 * * | 12076:5100 |
 
-{Azure 全域服務此時僅包含 Azure DevOps。
-• 需要 Microsoft 授權，請參閱[為 Microsoft 對等互連配置路由篩選器](how-to-routefilter-portal.md)\
-CRM 線上支援動態 v8.2 及以下。 對於更高版本，選擇 Dynamics 部署的區域社區。
+* Azure 全域服務目前僅包含 Azure DevOps。 \
+* * Microsoft 所需的授權，請參閱[設定 microsoft 對等互連的路由篩選](how-to-routefilter-portal.md)\
+CRM Online 支援 Dynamics 8.2 和以下的。 針對較高的版本，請選取 Dynamics 部署的地區群組。
 
 > [!NOTE]
 > Microsoft 不接受任何您在向 Microsoft 通告的路由上設定的 BGP 社群值。
@@ -241,7 +241,7 @@ CRM 線上支援動態 v8.2 及以下。 對於更高版本，選擇 Dynamics �
 
 | **國家雲端 Azure 區域**| **BGP 社群值** |
 | --- | --- |
-| **US Gov** |  |
+| **美國政府** |  |
 | US Gov 亞利桑那州 | 12076:51106 |
 | US Gov 愛荷華州 | 12076:51109 |
 | US Gov 維吉尼亞州 | 12076:51105 |
@@ -252,7 +252,7 @@ CRM 線上支援動態 v8.2 及以下。 對於更高版本，選擇 Dynamics �
 
 | **國家雲端中的服務** | **BGP 社群值** |
 | --- | --- |
-| **US Gov** |  |
+| **美國政府** |  |
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | 商務用 Skype Online |12076:5130 |

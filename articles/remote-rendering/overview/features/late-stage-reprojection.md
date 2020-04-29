@@ -1,56 +1,56 @@
 ---
-title: 後期重新投影
-description: 有關後期重新投影以及如何使用它的資訊。
+title: 延遲階段重新投影
+description: 有關延遲階段 Reprojection 和如何使用的資訊。
 author: sebastianpick
 ms.author: sepick
 ms.date: 02/04/2020
 ms.topic: article
 ms.openlocfilehash: 4aa1148e544ff3451aa1cb956bc4a5fb932b9611
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680982"
 ---
-# <a name="late-stage-reprojection"></a>後期重新投影
+# <a name="late-stage-reprojection"></a>延遲階段重新投影
 
-*後期重投影*(LSR) 是一種硬體功能,可説明在使用者移動時穩定全息圖。
+*延遲階段 Reprojection* （LSR）是一種硬體功能，可在使用者移動時協助穩定的全息影像。
 
-靜態模型在移動時應直觀地保持其位置。 如果它們看起來不穩定,則此行為可能會提示 LSR 問題。 請注意,其他動態轉換(如動畫或分解視圖)可能會掩蓋此行為。
+當您四處移動時，靜態模型應該會以視覺化方式維護其位置。 如果似乎不穩定，此行為可能會在 LSR 問題時提示。 請注意，其他動態轉換（例如動畫或激增視圖）可能會遮罩此行為。
 
-您可以在兩種不同的 LSR 模式之間進行選擇,即**平面 LSR**或**深度 LSR**。 哪個處於活動狀態取決於用戶端應用程式是否提交深度緩衝區。
+您可以在兩種不同的 LSR 模式（也就是**平面 LSR**或**深度 LSR**）之間做選擇。 哪一個是作用中的取決於用戶端應用程式是否提交深度緩衝區。
 
-這兩種LSR模式都提高了全息圖的穩定性,儘管它們有其明顯的局限性。 首先嘗試深度LSR,因為它可以說在大多數情況下會提供更好的結果。
+這兩種 LSR 模式都會改善全息影像的穩定性，雖然它們有不同的限制。 一開始請先嘗試深度 LSR，因為這在大部分情況下都能提供更好的結果。
 
-## <a name="choose-lsr-mode-in-unity"></a>在統一中選擇 LSR 模式
+## <a name="choose-lsr-mode-in-unity"></a>選擇 Unity 中的 LSR 模式
 
-在 Unity 編輯器中,轉到 *">生成设置的文件*"。 選擇左下角的*播放器設定*,然後在 *「播放機> XR 設定>虛擬實境 SDK > Windows 混合實境*中檢查是否選擇**深度緩衝區共用**:
+在 Unity 編輯器中，移至 [檔案] *> [組建設定*]。 選取左下方的 [*玩家設定*]，然後勾選 [ *PLAYER] > XR 設定] > [虛擬實境 sdk] > [Windows Mixed Reality* ]，不論是否已核取 [**啟用深度緩衝區共用**]：
 
-![深度緩衝區分享啟用標誌](./media/unity-depth-buffer-sharing-enabled.png)
+![深度緩衝區共用啟用旗標](./media/unity-depth-buffer-sharing-enabled.png)
 
-如果是,你的應用將使用深度 LSR,否則將使用平面 LSR。
+如果是，您的應用程式將會使用深度 LSR，否則會使用平面 LSR。
 
 ## <a name="depth-lsr"></a>深度 LSR
 
-要使深度 LSR 正常工作,用戶端應用程式必須提供有效的深度緩衝區,其中包含在 LSR 期間要考慮的所有相關幾何體。
+若要讓深度 LSR 能夠正常執行，用戶端應用程式必須提供有效的深度緩衝區，其中包含 LSR 期間所要考慮的所有相關幾何。
 
-深度LSR嘗試根據提供的深度緩衝區的內容穩定視頻幀。 因此,尚未呈現給它的內容(如透明物件)無法由 LSR 進行調整,並且可能會顯示不穩定和重新投影偽影。
+深度 LSR 會根據提供的深度緩衝區內容，嘗試將影片框架穩定。 因此，LSR 無法調整尚未呈現給它的內容（例如透明物件），而且可能會顯示不穩定和 reprojection 構件。
 
 ## <a name="planar-lsr"></a>平面 LSR
 
-平面LSR沒有每圖元深度資訊,深度LSR也是如此。 相反,它根據必須為每個幀提供的平面重新專案所有內容。
+平面 LSR 不會有每個圖元的深度資訊，如深度 LSR。 相反地，它會根據您必須提供每個畫面格的平面來 reprojects 所有內容。
 
-平面LSR會重新投射那些最靠近提供的平面的物件。 物體越遠,它看起來就越不穩定。 雖然深度LSR更善於在不同深度處重新投影物件,但平面LSR可能更適合與平面對齊的內容。
+平面 LSR 會 reprojects 那些位於所提供平面附近的物件。 物件越遠離，就越不穩定。 深度 LSR 在不同深度的 reprojecting 物件上較佳，但平面 LSR 可能適用于內容與平面的對齊效果。
 
-### <a name="configure-planar-lsr-in-unity"></a>整合配置平面 LSR
+### <a name="configure-planar-lsr-in-unity"></a>在 Unity 中設定平面 LSR
 
-平面參數派生自所謂的*焦點*,您`UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`必須通過 提供每個幀。 有關詳細資訊,請參閱[統一焦點 API。](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) 如果不設置焦點,將為您選擇回退。 但是,自動回退通常會導致結果不理想。
+平面參數是從所謂的*焦點*衍生而來，您必須提供每個畫面格`UnityEngine.XR.WSA.HolographicSettings.SetFocusPointForFrame`。 如需詳細資訊，請參閱[Unity 焦點點 API](https://docs.microsoft.com/windows/mixed-reality/focus-point-in-unity) 。 如果您未設定焦點點，則會為您選擇一個回溯。 不過，自動回退通常會導致較佳的結果。
 
-您可以自己計算焦點,儘管將其基於遠端渲染主機計算的焦點可能有意義。 調用`RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint`以獲取該。 系統要求您提供一個座標框架,用於表達焦點。 在大多數情況下,您只想在此處`UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr`提供結果。
+您可以自行計算焦點，但根據遠端轉譯主機所計算的工作點可能會有意義。 呼叫`RemoteManagerUnity.CurrentSession.GraphicsBinding.GetRemoteFocusPoint`以取得該。 系統會要求您提供用來表示焦點的座標框架。 在大部分的情況下，您只想要從`UnityEngine.XR.WSA.WorldManager.GetNativeISpatialCoordinateSystemPtr`這裡提供結果。
 
-通常,用戶端和主機都呈現對方不知道的內容,例如用戶端上的 UI 元素。 因此,將遠端焦點與本地計算的焦點組合起來可能有意義。
+通常用戶端和主機都會呈現另一端不知道的內容，例如用戶端上的 UI 元素。 因此，將遠端焦點點結合到本機計算的區域可能是合理的。
 
-在連續兩個幀中計算的焦點可能大不相同。 簡單地使用它們作為可以導致全息圖似乎跳躍。 為了防止此行為,建議在前一個焦點和當前焦點之間插值。
+在兩個連續的畫面格中計算的焦點點可能會有相當大的不同。 只要以自己的方式使用它們，就會導致顯示的全息影像出現。 為避免此行為，建議您在前一個和目前的焦點點之間進行插入。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,33 +1,33 @@
 ---
-title: 工作階段管理 REST API
-description: 描述如何管理工作階段
+title: 會話管理 REST API
+description: 描述如何管理會話
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80681242"
 ---
 # <a name="use-the-session-management-rest-api"></a>使用工作階段管理 REST API
 
-要使用 Azure 遠端呈現功能,需要建立*工作階段*。 每個會話對應於在 Azure 中分配的虛擬機器 (VM) 並等待用戶端設備連接。 當設備連接時,VM 呈現請求的數據,並將結果作為視頻流提供。 在建立工作階段期間,您選擇要運行的伺服器類型,這決定了定價。 一旦不再需要會話,就應該停止會話。 如果不手動停止,則在會話的*租約時間*到期時,它將自動關閉。
+若要使用 Azure 遠端呈現功能，您必須建立*會話*。 每個會話都會對應到在 Azure 中配置的虛擬機器（VM），並等待用戶端裝置連線。 當裝置連線時，VM 會呈現要求的資料，並將結果當做影片串流來提供。 在會話建立期間，您會選擇想要執行的伺服器類型，以決定定價。 當會話不再需要時，應該將它停止。 如果未手動停止，則會在會話的*租用時間*到期時自動關閉。
 
-我們在*腳本*資料夾中的[ARR 示例存儲庫](https://github.com/Azure/azure-remote-rendering)(稱為*呈現會話.ps1)* 中提供了 PowerShell 腳本,該腳本演示了我們服務的使用方式。 此處介紹了文本及其設定:[範例 PowerShell 文稿](../samples/powershell-example-scripts.md)
+我們在 [*腳本*] 資料夾的 [ [ARR 範例](https://github.com/Azure/azure-remote-rendering)] 存放庫中提供 PowerShell 腳本，稱為*RenderingSession*，其示範如何使用我們的服務。 這裡說明腳本及其設定：[範例 PowerShell 腳本](../samples/powershell-example-scripts.md)
 
 > [!TIP]
-> 此頁上列出的 PowerShell 命令旨在相互補充。 如果在同一 PowerShell 命令提示符中按順序運行所有腳本,它們將相互構建。
+> 此頁面上所列的 PowerShell 命令旨在彼此互補。 如果您在相同的 PowerShell 命令提示字元中依序執行所有腳本，它們會在彼此之上建立。
 
 ## <a name="regions"></a>區域
 
-請參考要將要求傳送到的基本網址[的區域清單](../reference/regions.md)。
+查看基底 Url 用來傳送要求的[可用區域清單](../reference/regions.md)。
 
-對於下面的示例腳本,我們選擇了*西烏斯2*區域。
+在下面的範例腳本中，我們選擇了 [區域] *westus2*。
 
-### <a name="example-script-choose-an-endpoint"></a>範例文稿:選擇終結點
+### <a name="example-script-choose-an-endpoint"></a>範例腳本：選擇端點
 
 ```PowerShell
 $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
@@ -35,20 +35,20 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 ## <a name="accounts"></a>帳戶
 
-如果沒有遠端呈現帳號,[請建立一個](create-an-account.md)。 每個資源都由*一個帳戶 Id*標識,該帳戶 Id 在整個會話 API 中使用。
+如果您沒有遠端呈現帳戶，請[建立一個](create-an-account.md)。 每個資源都是由*accountId*所識別，這會在整個會話 api 中使用。
 
-### <a name="example-script-set-accountid-and-accountkey"></a>範例文稿:設定帳戶 Id 和帳戶金鑰
+### <a name="example-script-set-accountid-and-accountkey"></a>範例腳本： Set accountId 和 accountKey
 
 ```PowerShell
 $accountId = "********-****-****-****-************"
 $accountKey = "*******************************************="
 ```
 
-## <a name="common-request-headers"></a>常見要求標頭
+## <a name="common-request-headers"></a>常見的要求標頭
 
-* *授權*標頭的值必須`Bearer TOKEN`為 ",`TOKEN`其中" 是[安全令牌服務返回的](tokens.md)身份驗證權杖。
+* *Authorization*標頭的值必須是 "`Bearer TOKEN`"，其中 "`TOKEN`" 是[安全權杖服務所傳回](tokens.md)的驗證權杖。
 
-### <a name="example-script-request-a-token"></a>範例文稿:要求權杖
+### <a name="example-script-request-a-token"></a>範例腳本：要求權杖
 
 ```PowerShell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
@@ -57,31 +57,31 @@ $response = ConvertFrom-Json -InputObject $webResponse.Content
 $token = $response.AccessToken;
 ```
 
-## <a name="common-response-headers"></a>常見回應標頭
+## <a name="common-response-headers"></a>常見的回應標頭
 
-* 產品團隊可以使用*MS-CV*標頭追蹤服務中的調用。
+* 產品小組可以使用*MS-CV*標頭來追蹤服務內的呼叫。
 
 ## <a name="create-a-session"></a>建立工作階段
 
-此命令創建工作階段。 它返回新會話的 ID。 所有其他命令都需要會話 ID。
+此命令會建立會話。 它會傳回新會話的識別碼。 您需要所有其他命令的會話識別碼。
 
 | URI | 方法 |
 |-----------|:-----------|
-| /v1/帳戶/*帳戶 Id*/工作階段/創建 | POST |
+| /v1/accounts/*accountId*/sessions/create | POST |
 
-**要求正文:**
+**要求本文：**
 
-* 最大租賃時間(時間跨度):自動停用 VM 時的超時值
-* 模型(陣列):要預載入的資產容器網址
-* 大小(字串):VM 大小 **("標準"** 或 **"進階")。** 請參考特定的[VM 大小限制](../reference/limits.md#overall-number-of-polygons)。
+* maxLeaseTime （timespan）：將自動解除委任 VM 時的超時值
+* 模型（陣列）：要預先載入的資產容器 Url
+* 大小（字串）： VM 大小（**"standard"** 或 **"premium"**）。 請參閱特定的[VM 大小限制](../reference/limits.md#overall-number-of-polygons)。
 
-**反應:**
+**答案**
 
-| 狀態碼 | JSON 承載 | 註解 |
+| 狀態碼 | JSON 承載 | 評價 |
 |-----------|:-----------|:-----------|
-| 202 | - 工作階段 Id: GUID | Success |
+| 202 | -sessionId： GUID | 成功 |
 
-### <a name="example-script-create-a-session"></a>範例文稿:建立工作階段
+### <a name="example-script-create-a-session"></a>範例腳本：建立會話
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/create" -Method Post -ContentType "application/json" -Body "{ 'maxLeaseTime': '4:0:0', 'models': [], 'size': 'standard' }" -Headers @{ Authorization = "Bearer $token" }
@@ -109,36 +109,36 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 52
 ```
 
-### <a name="example-script-store-sessionid"></a>範例文稿:儲存工作階段 Id
+### <a name="example-script-store-sessionid"></a>範例腳本：儲存 sessionId
 
-來自上述請求的回應包括會話**Id**,您需要用於所有後續請求。
+上述要求的回應包含**sessionId**，您需要所有後續追蹤要求。
 
 ```PowerShell
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 ```
 
-## <a name="update-a-session"></a>更新工作階段
+## <a name="update-a-session"></a>更新會話
 
-此命令更新工作階段的參數。 目前,您只能延長會話的租約時間。
+此命令會更新會話的參數。 目前，您只能延長會話的租用時間。
 
 > [!IMPORTANT]
-> 自會話開始以來,租賃時間始終作為總時間給出。 這意味著,如果您創建了一個租約時間為一小時的會話,並且希望將其租約時間再延長一小時,則必須將其最大租約時間更新為兩小時。
+> 租用時間一律會指定為自會話開始後的總時間。 這表示如果您建立的會話租用時間為一小時，而您想要延長租用時間一小時，則必須將其 maxLeaseTime 更新為兩小時。
 
 | URI | 方法 |
 |-----------|:-----------|
-| /v1/帳戶/*帳戶 ID*/工作階段/*工作階段 Id* | PATCH |
+| /v1/accounts/*accountID*/sessions/*sessionId* | PATCH |
 
-**要求正文:**
+**要求本文：**
 
-* 最大租賃時間(時間跨度):自動停用 VM 時的超時值
+* maxLeaseTime （timespan）：將自動解除委任 VM 時的超時值
 
-**反應:**
+**答案**
 
-| 狀態碼 | JSON 承載 | 註解 |
+| 狀態碼 | JSON 承載 | 評價 |
 |-----------|:-----------|:-----------|
-| 200 | | Success |
+| 200 | | 成功 |
 
-### <a name="example-script-update-a-session"></a>範例文稿:更新工作階段
+### <a name="example-script-update-a-session"></a>範例腳本：更新會話
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Patch -ContentType "application/json" -Body "{ 'maxLeaseTime': '5:0:0' }" -Headers @{ Authorization = "Bearer $token" }
@@ -160,21 +160,21 @@ Headers           : {[MS-CV, Fe+yXCJumky82wuoedzDTA.0], [Content-Length, 0], [Da
 RawContentLength  : 0
 ```
 
-## <a name="get-active-sessions"></a>取得活動工作階段
+## <a name="get-active-sessions"></a>取得使用中的會話
 
-此命令返回活動工作階段的清單。
+此命令會傳回作用中會話的清單。
 
 | URI | 方法 |
 |-----------|:-----------|
-| /v1/帳戶/*帳戶 Id*/工作階段 | GET |
+| /v1/accounts/*accountId*/sessions | GET |
 
-**反應:**
+**答案**
 
-| 狀態碼 | JSON 承載 | 註解 |
+| 狀態碼 | JSON 承載 | 評價 |
 |-----------|:-----------|:-----------|
-| 200 | - 工作階段:工作階段屬性陣列 | 有關工作階段屬性的說明,請參閱「獲取會話屬性」部分 |
+| 200 | -會話：會話屬性的陣列 | 如需會話屬性的說明，請參閱「取得會話屬性」一節。 |
 
-### <a name="example-script-query-active-sessions"></a>範例文稿:查詢活動工作階段
+### <a name="example-script-query-active-sessions"></a>範例腳本：查詢作用中會話
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -203,21 +203,21 @@ ParsedHtml        : mshtml.HTMLDocumentClass
 RawContentLength  : 2
 ```
 
-## <a name="get-sessions-properties"></a>取得工作階段屬性
+## <a name="get-sessions-properties"></a>取得會話屬性
 
-此命令返回有關會話的資訊,例如其 VM 主機名。
+此命令會傳回會話的相關資訊，例如其 VM 主機名稱。
 
 | URI | 方法 |
 |-----------|:-----------|
-| /v1/帳戶/*帳戶 Id*/工作階段/*工作階段 Id*/屬性 | GET |
+| /v1/accounts/*accountId*/sessions/*sessionId*/properties | GET |
 
-**反應:**
+**答案**
 
-| 狀態碼 | JSON 承載 | 註解 |
+| 狀態碼 | JSON 承載 | 評價 |
 |-----------|:-----------|:-----------|
-| 200 | - 訊息:字串<br/>- 工作階段經過時間:時間跨度<br/>- 工作階段主機名稱:字串<br/>- 工作階段 Id:字串<br/>- 會話最大租賃時間:時間跨度<br/>- 工作階段大小:Enle<br/>- 工作階段狀態:枚舉 | 關閉的工作階段狀態 ( 已執行, 就緒、 停止、 停止、 過期、 錯誤]<br/>如果狀態為「錯誤」或「過期」,則郵件將包含更多資訊 |
+| 200 | -message：字串<br/>-sessionElapsedTime： timespan<br/>-sessionHostname：字串<br/>-sessionId：字串<br/>-sessionMaxLeaseTime： timespan<br/>-sessionSize： enum<br/>-sessionStatus： enum | 列舉 sessionStatus {開始、準備、停止、停止、過期、錯誤}<br/>如果狀態為「錯誤」或「已過期」，則訊息會包含詳細資訊 |
 
-### <a name="example-script-get-session-properties"></a>範例文稿:取得工作階段屬性
+### <a name="example-script-get-session-properties"></a>範例腳本：取得會話屬性
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId/properties" -Method Get -Headers @{ Authorization = "Bearer $token" }
@@ -248,19 +248,19 @@ RawContentLength  : 60
 
 ## <a name="stop-a-session"></a>停止工作階段
 
-此命令停止作業階段。 分配的 VM 將在不久後回收。
+此命令會停止會話。 已配置的 VM 很快就會回收。
 
 | URI | 方法 |
 |-----------|:-----------|
-| /v1/帳戶/*帳戶 Id*/工作階段/*工作階段 Id* | 刪除 |
+| /v1/accounts/*accountId*/sessions/*sessionId* | 刪除 |
 
-**反應:**
+**答案**
 
-| 狀態碼 | JSON 承載 | 註解 |
+| 狀態碼 | JSON 承載 | 評價 |
 |-----------|:-----------|:-----------|
-| 204 | | Success |
+| 204 | | 成功 |
 
-### <a name="example-script-stop-a-session"></a>示例文本:停止會話
+### <a name="example-script-stop-a-session"></a>範例腳本：停止會話
 
 ```PowerShell
 Invoke-WebRequest -Uri "$endPoint/v1/accounts/$accountId/sessions/$sessionId" -Method Delete -Headers @{ Authorization = "Bearer $token" }
@@ -283,4 +283,4 @@ RawContentLength  : 0
 
 ## <a name="next-steps"></a>後續步驟
 
-* [電源外殼文稿範例](../samples/powershell-example-scripts.md)
+* [PowerShell 指令碼範例](../samples/powershell-example-scripts.md)

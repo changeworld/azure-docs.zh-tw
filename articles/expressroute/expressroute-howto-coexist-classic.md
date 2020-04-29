@@ -1,5 +1,5 @@
 ---
-title: 配置快速路由和 S2S VPN 共存連接：經典
+title: 設定 ExpressRoute 和 S2S VPN 並存連接：傳統
 description: 本文會引導您針對傳統部署模型設定可以並存的 ExpressRoute 和站對站 VPN 連線。
 documentationcenter: na
 services: expressroute
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2019
 ms.author: charwen
 ms.openlocfilehash: aba07e0a1dd8e7b1db8677907672d919ef034057
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272925"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-classic"></a>設定 ExpressRoute 和站對站並存連線 (傳統)
@@ -226,5 +226,5 @@ ms.locfileid: "79272925"
 6. 此時，您必須使用沒有閘道器的 VNet。 若要建立新的閘道器並完成連接，您可以繼續進行 [步驟 4 - 建立 ExpressRoute 閘道器](#gw)(您可以在先前的步驟組中找到)。
 
 ## <a name="next-steps"></a>後續步驟
-有關快速路由的詳細資訊，請參閱[快速路由常見問題解答](expressroute-faqs.md)
+如需 ExpressRoute 的詳細資訊，請參閱[EXPRESSROUTE 常見問題](expressroute-faqs.md)
 
