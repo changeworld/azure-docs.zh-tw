@@ -1,6 +1,6 @@
 ---
-title: Azure 監視器活頁簿視覺化效果
-description: 瞭解所有 Azure 監視器活頁簿視覺化元件，包括 - 文本、圖表、網格、樹和圖形。
+title: Azure 監視器活頁簿視覺效果
+description: 瞭解所有 Azure 監視器活頁簿視覺效果元件，包括文字、圖表、格線、樹狀結構和圖形。
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,157 +10,157 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: d05902f47dff3dd2f8a63ae240c0b8825a5c441f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658025"
 ---
-# <a name="azure-monitor-workbook-visualizations"></a>Azure 監視器活頁簿視覺化效果
+# <a name="azure-monitor-workbook-visualizations"></a>Azure 監視器活頁簿視覺效果
 
-Azure 監視器活頁簿支援多種不同樣式的視覺化，以滿足您的報告需求。 本文提供了每種視覺化類型的示例。
+Azure 監視器活頁簿支援多種不同的視覺效果樣式，以符合您的報告需求。 本文提供每種視覺效果類型的範例。
 
 ## <a name="text"></a>Text
 
-活頁簿允許作者在其活頁簿中包含文字區塊。 文本可以是遙測的人工分析、説明使用者解釋資料的資訊、節標題等。
+活頁簿可讓作者在其活頁簿中包含文字區塊。 此文字可以是遙測的人工分析，這項資訊可協助使用者解讀您的資料、章節標題等等。
 
-![Apdex 文本表的螢幕截圖](./media/workbooks-visualizations/apdex.png)
+![Apdex 文字資料表的螢幕擷取畫面](./media/workbooks-visualizations/apdex.png)
 
-文本通過標記控制項添加，該控制項提供完整的格式控制。
+文字是透過提供完整格式控制項的 Markdown 控制項來加入。
 
-![生成呈現表的原始標記的螢幕截圖](./media/workbooks-visualizations/markdown.png)
+![原始 markdown 的螢幕擷取畫面，其會建立呈現的資料表](./media/workbooks-visualizations/markdown.png)
 
-### <a name="add-a-text-control"></a>添加文本控制項
+### <a name="add-a-text-control"></a>加入文字控制項
 
-1. 通過按一下 **"編輯**"工具列項，將活頁簿切換到編輯模式。
-2. 使用 **"添加文本"** 連結將文本控制項添加到活頁簿。
-3. 將標記添加到控制項。
-4. 按一下"**完成編輯"** 按鈕以查看格式化的文本。
+1. 按一下 [**編輯**] 工具列專案，將活頁簿切換至編輯模式。
+2. 使用 [**加入文字**] 連結，將文字控制項加入至活頁簿。
+3. 將 Markdown 新增至控制項。
+4. 按一下 [**完成編輯**] 按鈕，以查看格式化的文字。
 
 > [!TIP]
-> 使用此[標記備忘單](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)瞭解不同的格式選項。
+> 使用這[份 Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)功能提要來瞭解不同的格式化選項。
 
 ## <a name="charts"></a>圖表
 
-活頁簿允許將監視資料作為圖表顯示。 支援的圖表類型包括線、橫條圖、條形線、區域、散佈圖、圓形圖和時間。 作者可以選擇自訂圖表的高度、寬度、調色板、圖例、標題、無資料消息等。
+活頁簿可讓監視資料呈現為圖表。 支援的圖表類型包括折線圖、橫條圖、橫條圖分類、區域、散佈圖、圓形圖和時間。 作者可以選擇自訂圖表的高度、寬度、色彩調色板、圖例、標題、無資料訊息等等。
 
-活頁簿支援日誌和指標資料來源的圖表。 
+活頁簿支援記錄和度量資料來源的圖表。 
 
-### <a name="adding-a-log-chart"></a>添加日誌圖表
+### <a name="adding-a-log-chart"></a>加入記錄圖表
 
-1. 通過按一下 **"編輯**"工具列項，將活頁簿切換到編輯模式。
-2. 使用 **"添加"查詢**連結將日誌查詢控制項添加到活頁簿。
-3. 選取查詢類型作為**日誌**、資源類型（例如，應用程式見解）和目標資源。
-4. 使用查詢編輯器輸入[KQL](https://docs.microsoft.com/azure/kusto/query/)進行分析（例如，請求趨勢）。
-5. 將視覺化設置為：**區域**、**條形**圖、**條形（分類）、****線**、**圓形圖**、**散點**或**時間**。
-6. 根據需要設置其他參數 - 如時間範圍、視覺化效果、大小、調色板和圖例。
+1. 按一下 [**編輯**] 工具列專案，將活頁簿切換至編輯模式。
+2. 使用 [**加入查詢**] 連結，將記錄查詢控制項加入至活頁簿。
+3. 選取 [**記錄**]、[資源類型] （例如 Application Insights）和 [目標資源] 做為 [查詢類型]。
+4. 使用 [查詢編輯器] 輸入分析的[KQL](https://docs.microsoft.com/azure/kusto/query/) （例如，要求的趨勢）。
+5. 將視覺效果設定為 [**區域**]、[**條形**圖]、 **[橫條圖（類別）**]、[**折線圖**]、[**圓形圖**]、[**散佈圖** **] 或**
+6. 如有需要，請設定其他參數，例如時間範圍、視覺效果、大小、色彩調色板和圖例。
 
-![編輯模式下日誌圖表的螢幕截圖](./media/workbooks-visualizations/log-chart.png)
+![編輯模式中的記錄圖表螢幕擷取畫面](./media/workbooks-visualizations/log-chart.png)
 
-#### <a name="log-chart-parameters"></a>日誌圖表參數
-
-| 參數 | 說明 | 範例 |
-| ------------- |:-------------|:-------------|
-| `Query Type` | 要使用的查詢類型 | 日誌、Azure 資源圖等 |
-| `Resource Type` | 要定位的資源類型 | 應用程式見解、日誌分析或 Azure 優先 |
-| `Resources` | 一組資源，用於從 | MyApp1 |
-| `Time Range` | 查看日誌圖表的時間視窗 | 最後一小時，最後24小時等 |
-| `Visualization` | 要使用的視覺化效果 | 區域， 條形， 線， 圓形圖， 散點， 時間， 條分類 |
-| `Size` | 控制項的垂直大小 | 小、中、大或滿 |
-| `Color palette` | 要在圖表中使用的調色板。 在多度量或分段模式下忽略。 | 藍色、綠色、紅色等 |
-| `Legend` | 用於圖例的彙總函式 | 值或最大值的總和或平均值，最小值，第一個值，最後值 |
-| `Query` | 以圖表視覺化預期格式返回資料的任何 KQL 查詢 | _請求\|使序列 請求 = 計數（） 預設值 = 從之前（1d）到現在（） 步驟 1h 的時間戳記上的 0_ |
-
-### <a name="adding-a-metric-chart"></a>添加指標圖表
-
-1. 通過按一下 **"編輯**"工具列項，將活頁簿切換到編輯模式。
-2. 使用 **"添加指標"** 連結將指標控制項添加到活頁簿。
-3. 選擇資源類型（例如，存儲帳戶）、要定位的資源、指標命名空間和名稱以及要使用的聚合。
-4. 根據需要設置其他參數 - 如時間範圍、拆分、視覺化、大小和調色板。
-
-![編輯模式下指標圖表的螢幕截圖](./media/workbooks-visualizations/metric-chart.png)
-
-#### <a name="metric-chart-parameters"></a>指標圖表參數
+#### <a name="log-chart-parameters"></a>記錄圖表參數
 
 | 參數 | 說明 | 範例 |
 | ------------- |:-------------|:-------------|
-| `Resource Type` | 要定位的資源類型 | 存儲或虛擬機器。 |
-| `Resources` | 一組資源，用於從 | 我的存儲1 |
-| `Namespace` | 帶有指標的命名空間 | 存儲> Blob |
-| `Metric` | 要視覺化的指標 | 存儲> blob >事務 |
-| `Aggregation` | 要應用於指標的彙總函式 | 總和、計數、平均值等 |
-| `Time Range` | 查看指標的時間視窗 | 最後一小時，最後24小時等 |
-| `Visualization` | 要使用的視覺化效果 | 面積， 條形， 線， 散點， 網格 |
-| `Split By` | 可以選擇拆分維度上的指標 | 按地理位置類型的交易記錄 |
-| `Size` | 控制項的垂直大小 | 小、中或大 |
-| `Color palette` | 要在圖表中使用的調色板。 如果使用參數，`Split by`則忽略 | 藍色、綠色、紅色等 |
+| `Query Type` | 要使用的查詢類型 | 記錄、Azure Resource Graph 等等。 |
+| `Resource Type` | 要設為目標的資源類型 | Application Insights、Log Analytics 或 Azure 優先 |
+| `Resources` | 要從中取得計量值的一組資源 | MyApp1 |
+| `Time Range` | 要查看記錄圖表的時間範圍 | 過去一小時、過去24小時等。 |
+| `Visualization` | 要使用的視覺效果 | 區域、橫條圖、折線圖、圓形圖、散佈圖、時間、橫條圖類別 |
+| `Size` | 控制項的垂直大小 | 小型、中型、大型或完整 |
+| `Color palette` | 要在圖表中使用的色彩色板。 在多重度量或分割模式中略過。 | 藍色、綠色、紅色等等。 |
+| `Legend` | 要用於圖例的彙總函式 | 值的總和或平均值，或最大、最小、第一個、最後一個值 |
+| `Query` | 以圖表視覺效果所預期的格式傳回資料的任何 KQL 查詢 | _要求\|從前（1d）到 now （）步驟1h 的時間戳記要求 = count （）預設 = 0_ |
+
+### <a name="adding-a-metric-chart"></a>新增度量圖表
+
+1. 按一下 [**編輯**] 工具列專案，將活頁簿切換至編輯模式。
+2. 使用 [**新增度量**] 連結，將計量控制項加入至活頁簿。
+3. 選取資源類型（例如，儲存體帳戶）、要設為目標的資源、度量命名空間和名稱，以及要使用的匯總。
+4. 如有需要，請設定其他參數，例如時間範圍、分割依據、視覺效果、大小和色彩色板。
+
+![編輯模式中度量圖表的螢幕擷取畫面](./media/workbooks-visualizations/metric-chart.png)
+
+#### <a name="metric-chart-parameters"></a>度量圖表參數
+
+| 參數 | 說明 | 範例 |
+| ------------- |:-------------|:-------------|
+| `Resource Type` | 要設為目標的資源類型 | 儲存體或虛擬機器。 |
+| `Resources` | 要從中取得計量值的一組資源 | MyStorage1 |
+| `Namespace` | 具有度量的命名空間 | 儲存體 > Blob |
+| `Metric` | 要視覺化的度量 | 儲存體 > Blob > 交易 |
+| `Aggregation` | 要套用至度量的彙總函式 | 加總、計數、平均等等。 |
+| `Time Range` | 要在其中查看度量的時間範圍 | 過去一小時、過去24小時等。 |
+| `Visualization` | 要使用的視覺效果 | 區域、橫條圖、折線圖、散佈圖、方格 |
+| `Split By` | 選擇性地分割維度上的度量 | 依地理類型的交易 |
+| `Size` | 控制項的垂直大小 | 小型、中型或大型 |
+| `Color palette` | 要在圖表中使用的色彩色板。 如果使用`Split by`參數，則忽略 | 藍色、綠色、紅色等等。 |
 
 ## <a name="grids"></a>方格
 
-網格或表是向使用者顯示資料的常見方法。 活頁簿允許使用者單獨設置網格列的樣式，為其報表提供豐富的 UI。
+格線或資料表是向使用者呈現資料的常見方式。 活頁簿可讓使用者個別將方格的資料行樣式，為其報表提供豐富的 UI。
 
-下面的示例顯示了一個網格，該網格結合了圖示、熱圖和火花柱來顯示覆雜的資訊。 活頁簿還提供排序、搜索框和轉到分析按鈕。
+下列範例顯示的方格結合了圖示、熱度圖和 spark 橫條來呈現複雜的資訊。 活頁簿也提供排序、搜尋方塊和 [移至分析] 按鈕。
 
-![基於日誌的網格螢幕截圖](./media/workbooks-visualizations/grid.png)
+![以記錄為基礎之方格的螢幕擷取畫面](./media/workbooks-visualizations/grid.png)
 
-### <a name="adding-a-log-based-grid"></a>添加基於日誌的網格
+### <a name="adding-a-log-based-grid"></a>加入以記錄為基礎的方格
 
-1. 通過按一下 **"編輯**"工具列項，將活頁簿切換到編輯模式。
-2. 使用 **"添加"查詢**連結將日誌查詢控制項添加到活頁簿。
-3. 選取查詢類型作為**日誌**、資源類型（例如，應用程式見解）和目標資源。
-4. 使用查詢編輯器輸入 KQL 進行分析（例如，記憶體低於閾值的 VM）
-5. 將視覺化設置為**網格**
-6. 如果需要，設置其他參數 - 如時間範圍、大小、調色板和圖例。
+1. 按一下 [**編輯**] 工具列專案，將活頁簿切換至編輯模式。
+2. 使用 [**加入查詢**] 連結，將記錄查詢控制項加入至活頁簿。
+3. 選取 [**記錄**]、[資源類型] （例如 Application Insights）和 [目標資源] 做為 [查詢類型]。
+4. 使用查詢編輯器來輸入分析的 KQL （例如，記憶體低於閾值的 Vm）
+5. 將視覺效果設定為**方格**
+6. 如有需要，請設定其他參數，例如時間範圍、大小、色彩調色板和圖例。
 
-![基於日誌的網格查詢螢幕截圖](./media/workbooks-visualizations/grid-query.png)
+![以記錄為基礎之方格查詢的螢幕擷取畫面](./media/workbooks-visualizations/grid-query.png)
 
 ## <a name="tiles"></a>圖格
 
-磁貼是在活頁簿中顯示摘要資料的非常有用的方法。 下圖顯示了磁貼的常見用例 - 詳細網格之上的應用級別摘要。
+磚是在活頁簿中呈現摘要資料非常有用的方式。 下圖顯示磚的常見使用案例-應用層級摘要位於詳細方格的頂端。
 
-![磁貼摘要視圖的螢幕截圖](./media/workbooks-visualizations/tiles-summary.png)
+![磚摘要視圖的螢幕擷取畫面](./media/workbooks-visualizations/tiles-summary.png)
 
-活頁簿磁貼支援顯示標題、字幕、大文本、圖示、基於指標的漸變、火花線/條形、頁腳等。
+活頁簿磚支援顯示標題、副標題、大型文字、圖示、以度量為基礎的漸層、spark 線條/橫條圖、頁尾等等。
 
-### <a name="adding-a-tile"></a>添加磁貼
+### <a name="adding-a-tile"></a>新增磚
 
-1. 通過按一下 _"編輯_"工具列項，將活頁簿切換到編輯模式。
-2. 使用 **"添加"查詢**連結將日誌查詢控制項添加到活頁簿。 
-3. 選取查詢類型作為**日誌**、資源類型（例如，應用程式見解）和目標資源。
-4. 使用查詢編輯器輸入 KQL 進行分析
+1. 按一下 [_編輯_] 工具列專案，將活頁簿切換至編輯模式。
+2. 使用 [**加入查詢**] 連結，將記錄查詢控制項加入至活頁簿。 
+3. 選取 [**記錄**]、[資源類型] （例如 Application Insights）和 [目標資源] 做為 [查詢類型]。
+4. 使用查詢編輯器來輸入分析的 KQL
     ```kusto
     requests
     | summarize Requests = count() by appName, name
     | top 7 by Requests desc
     ```
-5. 將大小設置為 **"完整"**
-6. 將視覺化設置為**磁貼**
-7. 按一下"**磁貼設置"** 按鈕以打開"設置"窗格
-8. 在**磁貼欄位**中 ，設置：
+5. 將大小設定為**Full**
+6. 將視覺效果設為**磚**
+7. 按一下 [**磚設定**] 按鈕以開啟 [設定] 窗格
+8. 在 [**磚欄位**] 中，設定：
     * 標題：`name`
-    * 左： `Requests`、 渲`Big Number`染器： `Green to Red`、 調色板： 、 最小值：`0`
-    * 底部：`appName`
-9. 按一下窗格底部的 **"保存和關閉**"按鈕。
+    * Left： `Requests`，轉譯器`Big Number`：，Color 調色板`Green to Red`：，最小值：`0`
+    * 靠`appName`
+9. 按一下窗格底部的 [**儲存並關閉**] 按鈕。
 
-![磁貼摘要視圖的螢幕截圖](./media/workbooks-visualizations/tile-settings.png)
+![磚摘要視圖的螢幕擷取畫面](./media/workbooks-visualizations/tile-settings.png)
 
-這是切片在讀取模式下的外觀：
+這是磚在讀取模式中的外觀：
 
-![磁貼摘要視圖的螢幕截圖](./media/workbooks-visualizations/tiles-read-mode.png)
+![磚摘要視圖的螢幕擷取畫面](./media/workbooks-visualizations/tiles-read-mode.png)
 
 ## <a name="trees"></a>樹木
 
-活頁簿通過樹網格支援分層視圖。 樹允許某些行可擴展到下一個級別，以便進行向下切入體驗。
+活頁簿支援透過樹狀格線的階層式視圖。 樹狀結構可讓一些資料列可擴充到下一個層級，以提供向下切入體驗。
 
-下面的示例顯示了視覺化為樹網格的容器運行狀況指標（工作集大小）。 此處的頂級節點是 Azure Kubernetes 服務 （AKS） 節點，下一級是 pod，最終級別是容器。 請注意，您仍然可以像網格一樣設置列的格式（熱圖、圖示、連結）。 在這種情況下，基礎資料來源是具有 AKS 日誌的日誌分析工作區。
+下列範例顯示以樹狀方格呈現的容器健康情況計量（工作集大小）。 這裡的最上層節點是 Azure Kubernetes Service （AKS）節點，下一個層級是 pod，而最後一個層級是容器。 請注意，您仍然可以在方格中格式化資料行（例如，熱度圖、圖示、連結）。 在此情況下，基礎資料來源是具有 AKS 記錄的 Log Analytics 工作區。
 
-![磁貼摘要視圖的螢幕截圖](./media/workbooks-visualizations/trees.png)
+![磚摘要視圖的螢幕擷取畫面](./media/workbooks-visualizations/trees.png)
 
-### <a name="adding-a-tree-grid"></a>添加樹網格
-1. 通過按一下 _"編輯_"工具列項，將活頁簿切換到編輯模式。
-2. 使用 **"添加"查詢**連結將日誌查詢控制項添加到活頁簿。 
-3. 選取查詢類型作為**日誌**、資源類型（例如，應用程式見解）和目標資源。
-4. 使用查詢編輯器輸入 KQL 進行分析
+### <a name="adding-a-tree-grid"></a>加入樹狀格線
+1. 按一下 [_編輯_] 工具列專案，將活頁簿切換至編輯模式。
+2. 使用 [**加入查詢**] 連結，將記錄查詢控制項加入至活頁簿。 
+3. 選取 [**記錄**]、[資源類型] （例如 Application Insights）和 [目標資源] 做為 [查詢類型]。
+4. 使用查詢編輯器來輸入分析的 KQL
     ```kusto
     requests
     | summarize Requests = count() by ParentId = appName, Id = name
@@ -171,44 +171,44 @@ Azure 監視器活頁簿支援多種不同樣式的視覺化，以滿足您的�
     | project Name, Kind, Requests, Id, ParentId
     | order by Requests desc
     ```
-5. 將視覺化設置為**網格**
-6. 按一下"**列設置"** 按鈕以打開設置窗格
-7. 在底部的 **"樹/分組按設置"** 部分中，設置：
-    * 樹類型：`Parent/Child`
-    * ID 欄位：`Id`
-    * 父 ID 欄位：`ParentId`
-    * 在以下方面顯示擴展器：`Name`
-    * 展開樹的頂層：`checked`
-8. 在頂部的 _"列"_ 部分中，設置：
-    * _Id_ - 列渲染器：`Hidden`
-    * _父 Id_ - 列呈現器：`Hidden`
-    * _請求_- 列渲`Bar`染器： `Blue`， 顏色： ， 最小值：`0`
-9. 按一下窗格底部的 _"保存和關閉_"按鈕。    
+5. 將視覺效果設定為**方格**
+6. 按一下 [資料**行設定**] 按鈕以開啟 [設定] 窗格
+7. 在底部的 [**樹狀結構/群組依據設定**] 區段中，設定：
+    * 樹狀結構類型：`Parent/Child`
+    * 識別碼欄位：`Id`
+    * 父識別碼欄位：`ParentId`
+    * 在上顯示擴充器：`Name`
+    * 展開樹狀結構的最上層：`checked`
+8. 在頂端的 [資料_行_] 區段中，設定：
+    * _識別碼_-資料行轉譯器：`Hidden`
+    * _父識別碼_-資料行轉譯器：`Hidden`
+    * _要求_-資料行轉譯`Bar`器：， `Blue`色彩：，最小值：`0`
+9. 按一下窗格底部的 [_儲存並關閉_] 按鈕。    
 
-![磁貼摘要視圖的螢幕截圖](./media/workbooks-visualizations/tree-settings.png)
+![磚摘要視圖的螢幕擷取畫面](./media/workbooks-visualizations/tree-settings.png)
 
-### <a name="tree-settings"></a>樹設置
+### <a name="tree-settings"></a>樹狀結構設定
 
 | 設定 | 說明 |
 |:------------- |:-------------|
-| `Id Field` | 網格中每行的唯一 ID |
-| `Parent Id Field` | 當前行的父項的 ID |
-| `Show the expander on` | 要顯示樹擴展器的列。 樹網格通常隱藏其 ID 和父 ID 欄位，因為它們不太可讀。 相反，擴展程式出現在具有更可讀值的欄位中 - 類似于實體的名稱 |
-| `Expand the top level of the tree` | 如果選中，樹網格將在頂層展開。 預設情況下，如果要顯示更多資訊，則非常有用 |
+| `Id Field` | 方格中每個資料列的唯一識別碼 |
+| `Parent Id Field` | 目前資料列的父系識別碼 |
+| `Show the expander on` | 要在其上顯示樹狀結構展開器的資料行。 樹狀結構方格通常會隱藏其 [識別碼] 和 [父系識別碼] 欄位，因為它們並不容易閱讀。 相反地，展開器會出現在具有更容易閱讀值的欄位上（例如實體的名稱） |
+| `Expand the top level of the tree` | 若選取此選項，樹狀目錄方格將會在最上層展開。 如果您想要依預設顯示詳細資訊，則很有用 |
 
 ## <a name="graphs"></a>圖表
 
-活頁簿支援基於日誌資料視覺化任意圖形，以顯示監視實體之間的關係。
+活頁簿支援根據記錄中的資料視覺化任意圖形，以顯示監視實體之間的關聯性。
 
-下圖顯示了通過各種埠進出外部電腦的電腦進出的電腦的資料。 它按類型著色（電腦與埠與外部 IP），邊緣大小對應于之間流動的資料量。 基礎資料來自針對 VM 連接的 KQL 查詢。
+下圖顯示透過各種埠進出外部電腦來流入/流出電腦的資料。 它會依類型（電腦與埠與外部 IP）來著色，而邊緣大小會對應到介於之間流動的資料量。 基礎資料來自 KQL 以 VM 連接為目標的查詢。
 
-![磁貼摘要視圖的螢幕截圖](./media/workbooks-visualizations/graph.png)
+![磚摘要視圖的螢幕擷取畫面](./media/workbooks-visualizations/graph.png)
 
-### <a name="adding-a-graph"></a>添加圖形
-1. 通過按一下 _"編輯_"工具列項，將活頁簿切換到編輯模式。
-2. 使用 **"添加"查詢**連結將日誌查詢控制項添加到活頁簿。 
-3. 選取查詢類型作為**日誌**、資源類型（例如，應用程式見解）和目標資源。
-4. 使用查詢編輯器輸入 KQL 進行分析
+### <a name="adding-a-graph"></a>加入圖形
+1. 按一下 [_編輯_] 工具列專案，將活頁簿切換至編輯模式。
+2. 使用 [**加入查詢**] 連結，將記錄查詢控制項加入至活頁簿。 
+3. 選取 [**記錄**]、[資源類型] （例如 Application Insights）和 [目標資源] 做為 [查詢類型]。
+4. 使用查詢編輯器來輸入分析的 KQL
     ```kusto
     let data = dependencies
     | summarize Calls = count() by App = appName, Request = operation_Name, Dependency = name
@@ -230,9 +230,9 @@ Azure 監視器活頁簿支援多種不同樣式的視覺化，以滿足您的�
     nodes
     | union (links)
     ```
-7. 將視覺化設置為**圖形**
-8. 按一下"**圖形設置"** 按鈕以打開設置窗格
-9. 在底部的_佈局欄位中_，設置：
+7. 將視覺效果設定為**圖形**
+8. 按一下 [**圖形設定**] 按鈕以開啟 [設定] 窗格
+9. 在底部的 [_版面配置欄位_] 中，設定：
     * `Node Id`: `Id`
     * `Source Id`: `SourceId`
     * `Target Id`: `TargetId`
@@ -242,15 +242,15 @@ Azure 監視器活頁簿支援多種不同樣式的視覺化，以滿足您的�
     * `Coloring Type`: `Categorical`
     * `Node Color Field`: `Kind`
     * `Color palette`: `Pastel`
-10. 在頂部的_節點格式設置_中，設置：
-    * _熱門內容_- 使用`Name`列： 、 列呈現器：`Text`
-    * _中心內容_- 使用`Calls`列： 、`Big Number`列渲染器： 、 調色板：`None`
-    * _底部內容_- 使用`Kind`列： ， 列呈現器：`Text`
-10. 按一下窗格底部的 _"保存和關閉_"按鈕。
+10. 在頂端的 [_節點格式_設定] 中，設定：
+    * _最上層內容_-使用資料`Name`行：，資料行轉譯器：`Text`
+    * _置中內容_-使用資料`Calls`行：，資料`Big Number`行轉譯器：，色彩色板：`None`
+    * _底端內容_-使用資料行`Kind`：，資料行轉譯器：`Text`
+10. 按一下窗格底部的 [_儲存並關閉_] 按鈕。
 
-![磁貼摘要視圖的螢幕截圖](./media/workbooks-visualizations/graph-settings.png)
+![磚摘要視圖的螢幕擷取畫面](./media/workbooks-visualizations/graph-settings.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用](workbooks-automate.md)Azure 資源管理器部署活頁簿。
-* [控制和](workbooks-access-control.md)共用對活頁簿資源的存取權限。
+* 使用 Azure Resource Manager[部署](workbooks-automate.md)活頁簿。
+* [控制](workbooks-access-control.md)和共用您的活頁簿資源的存取權。

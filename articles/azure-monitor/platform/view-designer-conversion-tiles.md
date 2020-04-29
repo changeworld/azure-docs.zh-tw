@@ -1,5 +1,5 @@
 ---
-title: Azure 監視器視圖設計器到活頁簿磁貼轉換
+title: Azure 監視器視圖設計工具到活頁簿磚的轉換
 description: ''
 author: austonli
 ms.author: aul
@@ -7,27 +7,27 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: f07d15521c787dfd588c285bff57616059caa2f3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658621"
 ---
-# <a name="azure-monitor-view-designer-tile-conversions"></a>Azure 監視器視圖設計器磁貼轉換
-[視圖設計器](view-designer.md)是 Azure 監視器的一項功能，允許您創建自訂視圖，以説明您在日誌分析工作區中視覺化資料，包括圖表、清單和時間表。 它們正在逐步淘汰，代之以提供額外功能的活頁簿。 本文提供了將不同磁貼轉換為活頁簿的詳細資訊。
+# <a name="azure-monitor-view-designer-tile-conversions"></a>Azure 監視器視圖設計工具磚轉換
+「[視圖設計](view-designer.md)工具」是 Azure 監視器的功能，可讓您建立自訂的視圖，以協助您將 Log Analytics 工作區中的資料視覺化，其中包含圖表、清單和時間軸。 它們會被淘汰，並取代為提供額外功能的活頁簿。 本文提供將不同磚轉換成活頁簿的詳細資訊。
 
-## <a name="donut--list-tile"></a>圓環&清單磁貼
+## <a name="donut--list-tile"></a>環圈 & 清單磚
 
-![甜甜圈清單](media/view-designer-conversion-tiles/donut-list.png)
+![環圈清單](media/view-designer-conversion-tiles/donut-list.png)
 
-在活頁簿中重新創建圓環&清單磁貼涉及兩個單獨的視覺化效果。 對於圓環部分，有兩個選項。
-對於這兩個開始選擇**添加查詢**，並將從視圖設計器中的原始查詢粘貼到儲存格中。
+在活頁簿中重新建立環圈 & 清單磚牽涉到兩個不同的視覺效果。 環圈圖部分有兩個選項。
+從 [開始] 選取 [**加入查詢**]，並將原始查詢從 view designer 貼入資料格中。
 
-**選項 1：** 從**視覺化下**拉功能表中選擇**圓形圖**：![圓形圖視覺化功能表](media/view-designer-conversion-tiles/pie-chart.png)
+**選項1：** 從**視覺效果**下拉式清單中選取![**圓形圖**：圓形圖視覺效果功能表](media/view-designer-conversion-tiles/pie-chart.png)
 
-**選項 2：** 從**視覺化**下拉清單中選擇**按查詢設置**並添加到`| render piechart`查詢：
+**選項2：** 從 [**視覺效果**] 下拉式清單中選取 [ `| render piechart` **設定依據查詢**]，並將新增至查詢：
 
- ![視覺化功能表](media/view-designer-conversion-tiles/set-by-query.png)
+ ![視覺效果功能表](media/view-designer-conversion-tiles/set-by-query.png)
 
 **範例**
 
@@ -38,7 +38,7 @@ search *
 | order by AggregatedValue desc
 ```
 
-更新查詢
+已更新查詢
 ```KQL
 search * 
 | summarize AggregatedValue = count() by Type 
@@ -46,16 +46,16 @@ search *
 | render piechart
 ```
 
-有關創建清單和啟用 Sparklines，請參閱有關[常見任務](view-designer-conversion-tasks.md)的文章。
+如需建立清單和啟用走勢圖，請參閱關於[一般](view-designer-conversion-tasks.md)工作的文章。
 
-下面是如何在活頁簿中重新解釋圓環&清單磁貼的示例：
+以下是如何在活頁簿中向量環圈圖 & 清單磚的範例：
 
-![甜甜圈清單活頁簿](media/view-designer-conversion-tiles/donut-workbooks.png)
+![環圈清單活頁簿](media/view-designer-conversion-tiles/donut-workbooks.png)
 
-## <a name="line-chart--list-tile"></a>折線圖&清單磁貼
+## <a name="line-chart--list-tile"></a>折線圖 & 清單磚
 ![折線圖清單](media/view-designer-conversion-tiles/line-list.png) 
 
-要重新創建折線圖部分，請按如下方式更新查詢：
+若要重新建立折線圖部分，請更新查詢，如下所示：
 
 原始查詢
 ```KQL
@@ -63,21 +63,21 @@ search *
 | summarize AggregatedValue = count() by Type
 ```
 
-更新查詢
+已更新查詢
 ```KQL
 search * 
 | make-series Count = count() default=0 on TimeGenerated from {TimeRange:start} to {TimeRange:end} step {TimeRange:grain} by Type
 ```
 
-有兩個選項用於視覺化折線圖
+有兩個選項可讓您將折線圖視覺化
 
-**選項 1：** 從**視覺化**下拉清單中選擇**折線圖**：
+**選項1：** 從 [**視覺效果**] 下拉式清單中選取 [**折線圖**]：
  
  ![折線圖功能表](media/view-designer-conversion-tiles/line-visualization.png)
 
-**選項 2：** 從**視覺化**下拉清單中選擇**按查詢設置**並添加到`| render linechart`查詢：
+**選項2：** 從 [**視覺效果**] 下拉式清單中選取 [ `| render linechart` **設定依據查詢**]，並將新增至查詢：
 
- ![視覺化功能表](media/view-designer-conversion-tiles/set-by-query.png)
+ ![視覺效果功能表](media/view-designer-conversion-tiles/set-by-query.png)
 
 **範例**
 
@@ -87,17 +87,17 @@ search *
 | render linechart_
 ```
 
-有關創建清單和啟用 Sparklines，請參閱有關[常見任務](view-designer-conversion-tasks.md)的文章。
+如需建立清單和啟用走勢圖，請參閱關於[一般](view-designer-conversion-tasks.md)工作的文章。
 
-以下是如何在活頁簿中重新解釋折線圖&清單磁貼的示例：
+以下是如何在活頁簿中向量折線圖 & 清單磚的範例：
 
 ![折線圖清單活頁簿](media/view-designer-conversion-tiles/line-workbooks.png)
 
-## <a name="number--list-tile"></a>編號&清單磁貼
+## <a name="number--list-tile"></a>數位 & 清單磚
 
- ![磁貼清單](media/view-designer-conversion-tiles/tile-list-example.png)
+ ![磚清單](media/view-designer-conversion-tiles/tile-list-example.png)
 
-對於數位磁貼，請按如下方式更新查詢：
+針對 [數位] 磚，更新查詢，如下所示：
 
 原始查詢
 ```KQL
@@ -105,32 +105,32 @@ search *
 | summarize AggregatedValue = count() by Computer | count
 ```
 
-更新查詢
+已更新查詢
 ```KQL
 search *
 | summarize AggregatedValue = count() by Computer 
 | summarize Count = count()
 ```
 
-將"視覺化"下拉式功能表更改為**磁貼**，然後選擇 **"磁貼設置**"。
- ![磁貼視覺化](media/view-designer-conversion-tiles/tile-visualization.png)
+將 [視覺效果] 下拉式清單變更為 [**磚**]，然後選取 [**磚設定**]。
+ ![磚視覺效果](media/view-designer-conversion-tiles/tile-visualization.png)
 
-將 **"標題"** 部分留空，然後選擇 **"左側**"。 將 **"使用"列的值更改為****計數**，將**列渲染器**更改為 **"大數**" ：
+將 [**標題**] 區段保留空白，然後選取 [**左方**]。 將 [使用資料**行：** **計數**] 和 [資料**行**轉譯器] 的值變更為 [**大數**]：
 
-![磁貼設置](media/view-designer-conversion-tiles/tile-settings.png)
+![磚設定](media/view-designer-conversion-tiles/tile-settings.png)
 
  
-有關創建清單和啟用 Sparklines，請參閱有關[常見任務](view-designer-conversion-tasks.md)的文章。
+如需建立清單和啟用走勢圖，請參閱關於[一般](view-designer-conversion-tasks.md)工作的文章。
 
-下面是如何在活頁簿中重新解釋數位&清單磁貼的示例：
+以下是如何在活頁簿中向量數位 & 清單磚的範例：
 
-![編號清單活頁簿](media/view-designer-conversion-tiles/number-workbooks.png)
+![數位清單活頁簿](media/view-designer-conversion-tiles/number-workbooks.png)
 
 ## <a name="timeline--list"></a>時間表和清單
 
- ![時間表清單](media/view-designer-conversion-tiles/time-list.png)
+ ![時程表清單](media/view-designer-conversion-tiles/time-list.png)
 
-對於時間表，請按如下方式更新查詢：
+針對時間軸，請更新您的查詢，如下所示：
 
 原始查詢
 ```KQL
@@ -138,27 +138,27 @@ search *
 | sort by TimeGenerated desc
 ```
 
-更新查詢
+已更新查詢
 ```KQL
 search * 
 | summarize Count = count() by Computer, bin(TimeGenerated,{TimeRange:grain})
 ```
 
-有兩個選項用於將查詢視覺化為橫條圖：
+有兩個選項可將查詢視覺化為橫條圖：
 
-**選項 1：** 從**視覺化下**拉清單中選擇![**橫條圖**：橫條圖視覺化](media/view-designer-conversion-tiles/bar-visualization.png)
+**選項1：** 從 [**視覺效果**] 下拉式清單中![選取 [**橫條圖**]： Barchart 視覺效果](media/view-designer-conversion-tiles/bar-visualization.png)
  
-**選項 2：** 從**視覺化**下拉清單中選擇**按查詢設置**並添加到`| render barchart`查詢：
+**選項2：** 從 [**視覺效果**] 下拉式清單中選取 [ `| render barchart` **設定依據查詢**]，並將新增至查詢：
 
- ![視覺化功能表](media/view-designer-conversion-tiles/set-by-query.png)
+ ![視覺效果功能表](media/view-designer-conversion-tiles/set-by-query.png)
 
  
-有關創建清單和啟用 Sparklines，請參閱有關[常見任務](view-designer-conversion-tasks.md)的文章。
+如需建立清單和啟用走勢圖，請參閱關於[一般](view-designer-conversion-tasks.md)工作的文章。
 
-以下是如何在活頁簿中重新解釋時間表&清單磁貼的示例：
+以下是如何在活頁簿中向量時間軸 & 清單磚的範例：
 
-![時間軸清單活頁簿](media/view-designer-conversion-tiles/time-workbooks.png)
+![時程表清單活頁簿](media/view-designer-conversion-tiles/time-workbooks.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-- [視圖設計器到活頁簿轉換的概述](view-designer-conversion-overview.md)
+- [瀏覽器與活頁簿轉換的總覽](view-designer-conversion-overview.md)

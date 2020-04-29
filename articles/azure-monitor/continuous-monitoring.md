@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
 ms.openlocfilehash: b9ca8a703ed8a84148abd23e90114402d8806bd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77667188"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>使用 Azure 監視器持續監視
@@ -50,7 +50,7 @@ ms.locfileid: "77667188"
 ##  <a name="combine-resources-in-azure-resource-groups"></a>在 Azure 資源群組中合併資源
 Azure 上的一般應用程式包含多個資源，例如 VM 和應用程式服務或裝載於雲端服務、AKS 叢集中或 Service Fabric 上的微服務。 這些應用程式經常會利用像是事件中樞、儲存體、SQL 和服務匯流排等相依性。
 
-- 合併 Azure 資源組中的資源，以便全面瞭解構成不同應用程式的所有資源。 [適用於資源群組的 Azure 監視器](../azure-monitor/insights/resource-group-insights.md)提供了一種簡單的方式，來追蹤整個完整堆疊應用程式的健全狀況和效能，並可以向下切入個別元件以進行任何調查或偵錯。
+- 結合 Azure 資源群組中的資源，可在構成不同應用程式的所有資源中取得完整的可見度。 [適用於資源群組的 Azure 監視器](../azure-monitor/insights/resource-group-insights.md)提供了一種簡單的方式，來追蹤整個完整堆疊應用程式的健全狀況和效能，並可以向下切入個別元件以進行任何調查或偵錯。
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>通過持續部署確保品質
 持續整合 / 持續部署允許您根據自動化測試的結果，將程式碼變更自動整合及部署到您的應用程式。 它可簡化部署程序，並在進入生產階段前確保任何變更的品質。
@@ -58,13 +58,13 @@ Azure 上的一般應用程式包含多個資源，例如 VM 和應用程式服�
 
 - 使用 [Azure 管線](/azure/devops/pipelines)來實作持續部署，並根據您的 CI/CD 測試，自動化從程式碼認可到生產環境的整個程序。
 - 使用[品質閘門](/azure/devops/pipelines/release/approvals/gates)將監視整合到部署前或部署後。 這可確保您在應用程式從開發階段移至生產環境時符合主要的健康情況/效能計量 (KPI)，並且基礎結構環境或規模中的任何差異都不會對您的 KPI 造成負面影響。
-- 在不同的部署環境（如開發人員、測試、金絲雀和 Prod）之間[保持單獨的監視實例](../azure-monitor/app/separate-resources.md)。這可確保收集的資料在整個關聯的應用程式和基礎結構中相關。 如果需要跨環境將資料相互關聯，可以[在計量瀏覽器中使用多資源圖表](../azure-monitor/platform/metrics-charts.md)，或[在 Azure 監視器中建立跨資源查詢](log-query/cross-workspace-query.md)。
+- 在不同的部署環境（例如開發、測試、上箱和生產）之間[維護個別的監視實例](../azure-monitor/app/separate-resources.md)。這可確保收集的資料在相關聯的應用程式和基礎結構之間是相關的。 如果需要跨環境將資料相互關聯，可以[在計量瀏覽器中使用多資源圖表](../azure-monitor/platform/metrics-charts.md)，或[在 Azure 監視器中建立跨資源查詢](log-query/cross-workspace-query.md)。
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>使用動作建立可採取動作的警示
 監視的一個重要層面是主動向系統管理員通知任何目前的問題和已預測的問題。 
 
-- 根據記錄和計量[在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-overview.md)，以識別可預測的失敗狀態。 您的目標應該是讓所有的警示可採取動作，這表示它們代表實際的重大情況，並設法減少誤判。 使用[動態閾值](platform/alerts-dynamic-thresholds.md)自動計算指標資料的基線，而不是定義自己的靜態閾值。 
+- 根據記錄和計量[在 Azure 監視器中建立警示](../azure-monitor/platform/alerts-overview.md)，以識別可預測的失敗狀態。 您的目標應該是讓所有的警示可採取動作，這表示它們代表實際的重大情況，並設法減少誤判。 使用[動態閾值](platform/alerts-dynamic-thresholds.md)自動計算計量資料的基準，而不是定義您自己的靜態臨界值。 
 - 定義警示的動作，以使用最有效的方式通知您的系統管理員。 [通知的可用動作](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal)包括 SMS、電子郵件、推播通知，或語音通話。
 - 使用更進階的動作透過 [webhook](platform/activity-log-alerts-webhook.md)[連接到您的 ITSM 工具](platform/itsmc-overview.md)或其他警示管理系統。
 - 修復警示中所識別的情況，以及可以使用 webhook 從警示啟動的 [Azure 自動化 runbook](../automation/automation-webhooks.md) 或 [Logic Apps](/connectors/custom-connectors/create-webhook-trigger)。 
@@ -86,4 +86,4 @@ Azure 上的一般應用程式包含多個資源，例如 VM 和應用程式服�
 ## <a name="next-steps"></a>後續步驟
 
 - 了解 [Azure 監視器](overview.md)的差異元件。
-- [向發佈管道添加連續監視](../azure-monitor/app/continuous-monitoring.md)。
+- [將連續監視新增](../azure-monitor/app/continuous-monitoring.md)至您的發行管線。

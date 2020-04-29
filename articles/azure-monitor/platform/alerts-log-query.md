@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.subservice: alerts
 ms.openlocfilehash: fdf492b8f103e725046b9b1cbbd079c4d249664a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77667783"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Azure 監視器中的記錄警示查詢
 [以 Azure 監視器記錄為基礎的警示規則](alerts-unified-log.md)會定期執行，因此您應該確定已撰寫規則將額外負荷和延遲降至最低。 這篇文章對於撰寫記錄警示的有效查詢以及轉換現有查詢的程序提供建議。 
 
 ## <a name="types-of-log-queries"></a>記錄查詢類型
-[Azure 監視器中的日誌查詢](../log-query/log-query-overview.md)從表或[搜索](/azure/kusto/query/searchoperator)或[聯合](/azure/kusto/query/unionoperator)運算子開始。
+[Azure 監視器中的記錄查詢](../log-query/log-query-overview.md)是以資料表或[搜尋](/azure/kusto/query/searchoperator)或聯[集](/azure/kusto/query/unionoperator)運算子為開頭。
 
 例如，下列查詢只限於 _SecurityEvent_ 資料表，而且搜尋特定事件識別碼。 這是查詢必須處理的唯一資料表。
 

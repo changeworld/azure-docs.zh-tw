@@ -1,20 +1,20 @@
 ---
-title: Azure 監視器中視圖設計器磁貼的參考指南 |微軟文檔
-description: 通過在 Azure 監視器中使用視圖設計器，可以創建顯示在 Azure 門戶中的自訂視圖，並在日誌分析工作區中包含各種資料視覺化效果。 本文章是自訂檢視中可用的圖格設定的參考指南。
+title: Azure 監視器中視圖設計工具磚的參考指南 |Microsoft Docs
+description: 藉由在 Azure 監視器中使用 View Designer，您可以建立顯示在 Azure 入口網站中的自訂視圖，並包含 Log Analytics 工作區中資料的各種視覺效果。 本文章是自訂檢視中可用的圖格設定的參考指南。
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
 ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658501"
 ---
-# <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>在 Azure 監視器中查看設計器磁貼的參考指南
-通過在 Azure 監視器中使用視圖設計器，可以在 Azure 門戶中創建各種自訂視圖，這些視圖可説明您在日誌分析工作區中視覺化資料。 本文章是自訂檢視中可用的圖格設定的參考指南。
+# <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>View Designer 磚在 Azure 監視器中的參考指南
+藉由在 Azure 監視器中使用 View Designer，您可以在 Azure 入口網站中建立各種自訂視圖，以協助您將 Log Analytics 工作區中的資料視覺化。 本文章是自訂檢視中可用的圖格設定的參考指南。
 
 如需檢視設計工具的詳細資訊，請參閱：
 
@@ -26,7 +26,7 @@ ms.locfileid: "77658501"
 
 | 圖格 | 描述 |
 |:--- |:--- |
-| [數量](#number-tile) |來自查詢的記錄計數。 |
+| [數字](#number-tile) |來自查詢的記錄計數。 |
 | [雙數字](#two-numbers-tile) |來自兩個不同查詢的記錄計數。 |
 | [環圈](#donut-tile) | 以查詢為依據的圖表，中央有彙總值。 |
 | 折線圖與圖說文字 | 以查詢為依據的折線圖，以及有彙總值的圖說文字。 |
@@ -36,7 +36,7 @@ ms.locfileid: "77658501"
 以下幾節詳細說明圖格類型和其屬性。
 
 > [!NOTE]
-> 視圖中的磁貼基於日誌分析工作區中的[日誌查詢](../log-query/log-query-overview.md)。 它們當前不支援[跨資源查詢](../log-query/cross-workspace-query.md)以從應用程式見解檢索資料。
+> Views 中的圖格是以 Log Analytics 工作區中的[記錄查詢](../log-query/log-query-overview.md)為基礎。 它們目前不支援[跨資源查詢](../log-query/cross-workspace-query.md)，以從 Application Insights 取出資料。
 
 ## <a name="number-tile"></a>數字圖格
 **數字**圖格會顯示記錄檔查詢傳回的記錄計數和標籤。
@@ -114,7 +114,7 @@ ms.locfileid: "77658501"
 | 查詢 |針對折線圖執行的查詢。 第一個屬性是文字值，而第二個屬性是數值。 此查詢通常是使用 *measure* 關鍵字來彙總結果。 如果查詢使用 *interval* 關鍵字，則 X 軸會使用此時間間隔。 如果查詢未包含 *interval* 關鍵字，則 X 軸會使用每小時的間隔。 |
 | **折線圖** |**> Y 軸** |
 | 使用對數刻度 |選取此連結可對 Y 軸使用對數刻度。 |
-| 單位 |指定查詢所傳回之值的單位。 這項資訊用來顯示圖上的標籤，指出值的類型，並選擇性用來將值轉換。 **單位類型**指定單位的類別，並定義可用的**當前單位類型**值。 如果在 **"轉換"** 中選擇值，則數值將從 **"當前單位"** 類型轉換為 **"轉換為**類型"。 |
+| 單位 |指定查詢所傳回之值的單位。 這項資訊用來顯示圖上的標籤，指出值的類型，並選擇性用來將值轉換。 **單位類型**指定單位的分類，並定義可用的**目前單位類型**值。 如果您選取 [**轉換為**] 中的值，則會將數值從**目前單位**類型轉換為**轉換成**類型。 |
 | 自訂標籤 |Y 軸的顯示文字，就在*單位*類型的標籤旁。 如未指定任何標籤，只會顯示*單位*類型。 |
 | **進階** |**> 資料流驗證** |
 | 啟用 |如果應該為圖格啟用資料流驗證，請選取此連結。 如果沒有可用的資料，此方法可提供替代訊息。 您通常會使用此方法在暫存期間 (當檢視已安裝，開始有資料進入) 提供訊息。 |
@@ -173,5 +173,5 @@ ms.locfileid: "77658501"
 
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解[日誌查詢](../log-query/log-query-overview.md)以支援磁貼中的查詢。
+* 瞭解[記錄查詢](../log-query/log-query-overview.md)以支援磚中的查詢。
 * 將[視覺效果組件](view-designer-parts.md)新增至您的自訂檢視。

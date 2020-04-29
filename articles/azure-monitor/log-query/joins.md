@@ -7,16 +7,16 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: 2dace6968fbbe69f806c27fb7a46e60c63f78b4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670197"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的聯結
 
 > [!NOTE]
-> 在完成本課程之前，應完成[Azure 監視器日誌分析和](get-started-portal.md) [Azure 監視器日誌查詢](get-started-queries.md)。
+> 您應該先完成[開始使用 Azure 監視器 Log Analytics](get-started-portal.md)並[Azure 監視器記錄查詢](get-started-queries.md)，再完成此課程。
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

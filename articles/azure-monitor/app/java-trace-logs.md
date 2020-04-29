@@ -1,26 +1,26 @@
 ---
-title: 在 Azure 應用程式見解中流覽 JAVA 跟蹤日誌
+title: 探索 Azure 應用程式 Insights 中的 JAVA 追蹤記錄
 description: 在 Application Insights 中搜尋 Log4J 或 Logback 追蹤
 ms.topic: conceptual
 ms.date: 05/18/2019
 ms.openlocfilehash: da1b76d52ab93f4d1be7196d6eb7286579481119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77657209"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中探索 Java 追蹤記錄
 如果您使用 Logback 或 Log4J (v1.2 或 v2.0) 進行追蹤，您可以將追蹤記錄自動傳送到 Application Insights，您可以在其中探索及搜尋記錄。
 
 > [!TIP]
-> 您只需為應用程式設定一次應用程式見解檢測金鑰。 如果您使用的是 JAVA Spring 這樣的框架，則您可能已經在應用配置的其他位置註冊了金鑰。
+> 您只需要為應用程式設定一次您的 Application Insights 檢測金鑰。 如果您使用的架構（例如 JAVA 春季），您可能已在應用程式設定中的其他位置註冊金鑰。
 
-## <a name="using-the-application-insights-java-agent"></a>使用應用程式見解 JAVA 代理
+## <a name="using-the-application-insights-java-agent"></a>使用 Application Insights JAVA 代理程式
 
-預設情況下，應用程式見解 JAVA 代理會自動捕獲在`WARN`級別及以上級別執行的日誌記錄。
+根據預設，Application Insights JAVA 代理程式會自動捕捉在層`WARN`級和更新版本上執行的記錄。
 
-您可以更改使用`AI-Agent.xml`該檔捕獲的日誌記錄閾值：
+您可以變更使用`AI-Agent.xml`檔案所捕捉到的記錄閾值：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -33,7 +33,7 @@ ms.locfileid: "77657209"
 </ApplicationInsightsAgent>
 ```
 
-您可以使用`AI-Agent.xml`該檔禁用 JAVA 代理的日誌記錄捕獲：
+您可以使用檔案來停用`AI-Agent.xml` JAVA 代理程式的記錄捕獲：
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -46,7 +46,7 @@ ms.locfileid: "77657209"
 </ApplicationInsightsAgent>
 ```
 
-## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>或者（與使用 JAVA 代理相反），您可以按照以下說明操作
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>或者（而不是使用 JAVA 代理程式），您可以依照下列指示進行操作
 
 ### <a name="install-the-java-sdk"></a>安裝 Java SDK
 
@@ -60,7 +60,7 @@ ms.locfileid: "77657209"
 
 然後重新整理專案相依性，以下載程式庫。
 
-*日誌*
+*Logback*
 
 ```XML
 
@@ -104,7 +104,7 @@ ms.locfileid: "77657209"
 
 然後重新整理專案相依性，以下載程式庫。
 
-**日誌**
+**Logback**
 
 ```
 
@@ -136,7 +136,7 @@ ms.locfileid: "77657209"
 ### <a name="add-the-appender-to-your-logging-framework"></a>將附加器加入至記錄架構
 若要開始進行追蹤，請將相關的程式碼片段合併到 Log4J 或 Logback 組態檔案： 
 
-*日誌*
+*Logback*
 
 ```XML
 

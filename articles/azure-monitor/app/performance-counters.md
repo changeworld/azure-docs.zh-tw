@@ -4,15 +4,15 @@ description: 監視 Application Insights 中的系統和自訂 .NET 效能計數
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.openlocfilehash: 94d2520c17867f6d70caffd002a76365a425986f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669874"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights 中的系統效能計數器
 
-Windows 提供多種[效能計數器](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) (例如 CPU 使用、記憶體、磁碟和網路使用量)。 您也可以定義自己的效能計數器。 只要應用程式在本地主機或具有管理存取權限的虛擬機器的 IIS 下運行，效能計數器集合即受支援。 儘管作為 Azure Web 應用運行的應用程式不能直接存取效能計數器，但應用程式見解會收集可用計數器的子集。
+Windows 提供多種[效能計數器](https://docs.microsoft.com/windows/desktop/PerfCtrs/about-performance-counters) (例如 CPU 使用、記憶體、磁碟和網路使用量)。 您也可以定義自己的效能計數器。 只要您的應用程式是在內部部署主機上的 IIS 下執行，或您具有系統管理存取權的虛擬機器，就會支援效能計數器集合。 雖然以 Azure Web Apps 執行的應用程式無法直接存取效能計數器，但 Application Insights 會收集可用計數器的子集。
 
 ## <a name="view-counters"></a>檢視計數器
 
@@ -20,17 +20,17 @@ Windows 提供多種[效能計數器](https://docs.microsoft.com/windows/desktop
 
 ![Application Insights 中所報告的效能計數器](./media/performance-counters/performance-counters.png)
 
-配置為為 ASP.NET/ASP.NET 核心 Web 應用程式收集的當前預設計數器是：
-- 處理\\處理器時間百分比
-- 進程\\處理器時間標準化百分比
-- 記憶體\\可用位元組
-- ASP.NET請求/秒
-- .NET CLR 異常引發/秒
-- ASP.NET應用程式請求執行時間
-- 處理\\專用位元組
-- 處理\\IO 資料位元組/秒
-- 應用程式佇列\\中的ASP.NET應用程式請求
-- 處理器（_Total）\\% 處理器時間
+針對 ASP.NET/ASP.NET 核心 web 應用程式所設定要收集的目前預設計數器為：
+- % 進程\\處理器時間
+- % 進程\\處理器時間正規化
+- 記憶體\\可用位元組數
+- ASP.NET 要求數/秒
+- 擲回的 .NET CLR 例外狀況/秒
+- ASP.NET ApplicationsRequest 執行時間
+- 進程\\私用位元組
+- 進程\\IO 資料位元組數/秒
+- ASP.NET 應用\\程式佇列中的應用程式要求
+- 處理器（_Total）\\處理器時間百分比
 
 ## <a name="add-counters"></a>新增計數器
 
@@ -40,7 +40,7 @@ Windows 提供多種[效能計數器](https://docs.microsoft.com/windows/desktop
 
     `Get-Counter -ListSet *`
 
-    （參見[`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx).）
+    （請[`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx)參閱）。
 2. 開啟 ApplicationInsights.config。
 
    * 如果您已在開發期間將 Application Insights 新增至應用程式，請編輯專案中的 ApplicationInsights.config，然後將它重新部署至伺服器。
@@ -57,7 +57,7 @@ Windows 提供多種[效能計數器](https://docs.microsoft.com/windows/desktop
     ```
 
 > [!NOTE]
-> ASP.NET核心應用程式沒有`ApplicationInsights.config`，因此上述方法對 ASP.NET 核心應用程式無效。
+> ASP.NET Core 的應用程式沒有`ApplicationInsights.config`，因此上述方法對 ASP.NET Core 的應用程式而言是不正確。
 
 您可以擷取標準計數器，也可以擷取您自己實作的計數器。 `\Objects\Processes` 是所有 Windows 系統上都提供的一個標準計數器範例。 `\Sales(photo)\# Items Sold` 是可能在 Web 服務中實作的自訂計數器範例。
 
@@ -67,7 +67,7 @@ Windows 提供多種[效能計數器](https://docs.microsoft.com/windows/desktop
 
 如果您指定執行個體，系統會收集它做為報告度量的 "CounterInstanceName" 維度。
 
-### <a name="collecting-performance-counters-in-code-for-aspnet-web-applications-or-netnet-core-console-applications"></a>在代碼中收集效能計數器，以用於ASP.NET Web 應用程式或 .NET/.NET 核心主控台應用程式
+### <a name="collecting-performance-counters-in-code-for-aspnet-web-applications-or-netnet-core-console-applications"></a>在程式碼中收集 ASP.NET Web 應用程式或 .NET/.NET Core 主控台應用程式的效能計數器
 若要收集系統效能計數器並將其傳送至 Application Insights，可以採用下列程式碼片段：
 
 
@@ -87,9 +87,9 @@ Windows 提供多種[效能計數器](https://docs.microsoft.com/windows/desktop
     perfCollectorModule.Initialize(TelemetryConfiguration.Active);
 ```
 
-### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>在代碼中收集效能計數器，以ASP.NET核心 Web 應用程式
+### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>在程式碼中收集 ASP.NET Core Web 應用程式的效能計數器
 
-修改`ConfigureServices``Startup.cs`類中的方法，如下所示。
+修改`ConfigureServices` `Startup.cs`類別中的方法，如下所示。
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
@@ -111,7 +111,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ## <a name="performance-counters-in-analytics"></a>Analytics 中的效能計數器
 您可以搜尋並顯示 [Analytics](../../azure-monitor/app/analytics.md) 中的效能計數器報告。
 
-**效能計數器**架構公開每個效能計數器的`category` `counter` 、 名稱`instance`和名稱。  在每個應用程式的遙測中，您將只會看到該應用程式的計數器。 例如，若要查看哪些計數器可用︰ 
+**PerformanceCounters**架構會公開每`category`個`counter`效能計數器的`instance` 、名稱和名稱。  在每個應用程式的遙測中，您將只會看到該應用程式的計數器。 例如，若要查看哪些計數器可用︰ 
 
 ![Application Insights 分析中的效能計數器](./media/performance-counters/analytics-performance-counters.png)
 
@@ -133,18 +133,18 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 
 * ** 是在圖表的取樣間隔中由入口網站接收之 TrackException 報告的計數。 它只包含您程式碼中撰寫 TrackException 呼叫所在位置的已處理例外狀況，並且不包含所有的 [未處理例外狀況](../../azure-monitor/app/asp-net-exceptions.md)。 
 
-## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>在 Azure Web 應用中運行的應用程式的效能計數器
+## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>在 Azure Web Apps 中執行之應用程式的效能計數器
 
-部署到 Azure Web 應用ASP.NET和ASP.NET核心應用程式都運行在特殊的沙箱環境中。 此環境不允許直接存取系統效能計數器。 但是，[此處所述，](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables)計數器的有限子集將作為環境變數公開。 用於ASP.NET和 ASP.NET核心的應用程式見解 SDK 從這些特殊的環境變數收集 Azure Web 應用的效能計數器。 此環境中只有計數器子集可用，因此可以在此處找到完整清單[。](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/WEB/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)
+部署至 Azure Web Apps 的 ASP.NET 和 ASP.NET Core 應用程式都是在特殊的沙箱環境中執行。 此環境不允許直接存取系統效能計數器。 不過，有限的計數器子集會公開為環境變數，如[這裡](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables)所述。 適用于 ASP.NET 和 ASP.NET Core 的 Application Insights SDK 會從這些特殊環境變數中的 Azure Web Apps 收集效能計數器。 只有計數器的子集可在此環境中使用，而且您可以在這裡找到完整清單[。](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/WEB/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs)
 
-## <a name="performance-counters-in-aspnet-core-applications"></a>ASP.NET核心應用程式中的效能計數器
+## <a name="performance-counters-in-aspnet-core-applications"></a>ASP.NET Core 應用程式中的效能計數器
 
-對ASP.NET核心中的效能計數器的支援是有限的：
+ASP.NET Core 中的效能計數器支援有限：
 
-* 如果應用程式在 Azure Web 應用 （Windows） 中運行[，SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本 2.4.1 和更高版本將收集效能計數器。
-* 如果應用程式在 Windows 和目標中運行`NETSTANDARD2.0`，SDK 版本 2.7.1 和更高版本將收集效能計數器。
-* 對於面向 .NET 框架的應用程式，SDK 的所有版本都支援效能計數器。
-* SDK 版本 2.8.0 和更高版本支援 Linux 中的 cpu/記憶體計數器。 Linux 中不支援其他計數器。 在 Linux（和其他非 Windows 環境）中獲取系統計數器的推薦方法是使用[事件計數器](eventcounters.md)
+* 如果應用程式是在 Azure Web Apps （Windows）中執行， [SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)版本2.4.1 和更新版本會收集效能計數器。
+* 如果應用程式是在 Windows 和目標`NETSTANDARD2.0`或更新版本中執行，SDK 版本2.7.1 和更新版本會收集效能計數器。
+* 針對以 .NET Framework 為目標的應用程式，所有版本的 SDK 都支援效能計數器。
+* SDK 2.8.0 和更新版本支援 Linux 中的 cpu/記憶體計數器。 Linux 不支援其他計數器。 在 Linux （和其他非 Windows 環境）中取得系統計數器的建議方式是使用[EventCounters](eventcounters.md)
 
 ## <a name="alerts"></a>警示
 與其他計量一樣，您可以[設定警示](../../azure-monitor/app/alerts.md)，在效能計數器超出您指定的界限時提出警告。 開啟 [警示] 窗格，然後按一下 [新增警示]。

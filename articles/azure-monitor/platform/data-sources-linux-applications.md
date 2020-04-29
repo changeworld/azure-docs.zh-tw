@@ -7,17 +7,17 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
 ms.openlocfilehash: 2fd148dbb85a4fd60fe63d4fb73128bf92dea1d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670554"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>在 Azure 監視器中收集 Linux 應用程式的效能計數器 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 本文詳細說明如何設定[適用於 Linux 的 Log Analytics 代理程式](https://github.com/Microsoft/OMS-Agent-for-Linux)，以將特定應用程式的效能計數器收集至「Azure 監視器」。  本文包含的應用程式如下︰  
 
-- [Mysql](#mysql)
+- [MySQL](#mysql)
 - [Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
@@ -41,7 +41,7 @@ MySQL 驗證檔案儲存在 `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysq
 
 下表說明驗證檔案中的項目。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--|:--|
 | 連接埠 | 代表 MySQL 執行個體目前正在接聽的連接埠。 連接埠 0 指定後面的屬性用於預設執行個體。 |
 | 繫結位址| 目前的 MySQL 繫結位址。 |

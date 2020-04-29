@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.subservice: alerts
 ms.openlocfilehash: b75bda626f887f1224c1b0f18a80887983a2367d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77665301"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>動作群組中的 SMS 警示行為
@@ -44,5 +44,5 @@ ms.locfileid: "77665301"
 ## <a name="next-steps"></a>後續步驟
 取得[活動記錄警示的概觀](alerts-overview.md)，並了解如何收到警示  
 深入了解 [SMS 速率限制](alerts-rate-limiting.md)  
-瞭解有關[操作組](../../azure-monitor/platform/action-groups.md)詳細資訊
+深入瞭解[動作群組](../../azure-monitor/platform/action-groups.md)
 

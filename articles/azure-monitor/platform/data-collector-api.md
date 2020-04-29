@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/01/2019
 ms.openlocfilehash: f12e9e90b99a055945c34398ff5351334c344253
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77666747"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 資料收集器 API 將記錄資料傳送給 Azure 監視器 (公開預覽)
@@ -52,9 +52,9 @@ Log Analytics 工作區中的所有資料都會以具有特定記錄類型的記
 | 頁首 | 描述 |
 |:--- |:--- |
 | 授權 |授權簽章。 本文稍後會說明如何建立 HMAC-SHA256 標頭。 |
-| Log-Type |指定正在提交的資料記錄類型。 只能包含字母、數位和底線 （*），並且不能超過 100 個字元。 |
+| Log-Type |指定正在提交的資料記錄類型。 只能包含字母、數位和底線（_），且不得超過100個字元。 |
 | x-ms-date |處理要求的日期 (採用 RFC 1123 格式)。 |
-| x-ms-Azure 資源 Id | 資料應與之關聯的 Azure 資源的資源識別碼。 這將填充[_ResourceId](log-standard-properties.md#_resourceid)屬性，並允許將資料包含在[資源上下文](design-logs-deployment.md#access-mode)查詢中。 如果未指定此欄位，則資料將不會包含在資源上下文查詢中。 |
+| x-ms-AzureResourceId | 與資料相關聯之 Azure 資源的資源識別碼。 這會填入[_ResourceId](log-standard-properties.md#_resourceid)屬性，並允許在[資源內容](design-logs-deployment.md#access-mode)查詢中包含資料。 如果未指定此欄位，資料將不會包含在資源內容查詢中。 |
 | time-generated-field | 資料中包含資料項目時間戳記的欄位名稱。 如果您指定欄位，則其內容會用於 **TimeGenerated**。 如果未指定此欄位，則 **TimeGenerated** 的預設值是所擷取訊息的時間。 訊息欄位的內容應遵循 ISO 8601 格式 YYYY-MM-DDThh:mm:ssZ。 |
 
 ## <a name="authorization"></a>授權
@@ -92,8 +92,8 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 後續各節中的範例有範例程式碼可協助您建立授權標頭。
 
-## <a name="request-body"></a>Request body
-訊息的主體必須採用 JSON。 它必須包含一個或多個具有屬性名稱和值對的以下格式的記錄。 屬性名稱只能包含字母、數位和底線 （*）。
+## <a name="request-body"></a>要求本文
+訊息的主體必須採用 JSON。 它必須包含具有下列格式之屬性名稱和值配對的一或多筆記錄。 屬性名稱只能包含字母、數位和底線（_）。
 
 ```json
 [
@@ -134,11 +134,11 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 | 屬性資料類型 | 後置詞 |
 |:--- |:--- |
-| String |_s |
-| Boolean |_b |
+| 字串 |_s |
+| 布林值 |_b |
 | Double |_d |
 | Date/time |_t |
-| GUID（存儲為字串） |_g |
+| GUID （儲存為字串） |_g |
 
 Azure 監視器用於每個屬性的資料類型取決於新記錄的記錄類型是否已經存在。
 
@@ -162,7 +162,7 @@ Azure 監視器用於每個屬性的資料類型取決於新記錄的記錄類�
 ![範例記錄 4](media/data-collector-api/record-04.png)
 
 ## <a name="reserved-properties"></a>保留的屬性
-保留以下屬性，不應在自訂記錄類型中使用。 如果有效負載包含這些屬性名稱中的任何一個，您將收到錯誤。
+下列屬性是保留的，不應該用於自訂記錄類型。 如果您的裝載包含其中任何屬性名稱，您將會收到錯誤。
 
 - tenant
 
@@ -464,14 +464,14 @@ def post_data(customer_id, shared_key, body, log_type):
 
 post_data(customer_id, shared_key, body, log_type)
 ```
-## <a name="alternatives-and-considerations"></a>備選方案和注意事項
-雖然資料收集器 API 應滿足將自由格式資料收集到 Azure 日誌的大部分需求，但在某些情況下，可能需要一種替代方法來克服 API 的某些限制。 您的所有選項如下，主要注意事項包括：
+## <a name="alternatives-and-considerations"></a>替代方案和考慮
+雖然資料收集器 API 應涵蓋將自由格式資料收集到 Azure 記錄的大部分需求，但有一些實例可能需要有替代方法，才能克服 API 的某些限制。 您所有的選項如下所示，主要考慮包括：
 
-| 替代函式 | 描述 | 最適合 |
+| 替代函式 | 描述 | 最適用于 |
 |---|---|---|
-| [自訂事件](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)： 應用程式見解中基於本機 SDK 的引入 | 應用程式見解通常通過應用程式中的 SDK 進行檢測，使您能夠通過自訂事件發送自訂資料。 | <ul><li> 在應用程式內生成但 SDK 不會通過預設資料類型之一（請求、依賴項、異常等）拾取的資料。</li><li> 應用程式見解中通常與其他應用程式資料相關的資料 </li></ul> |
-| Azure 監視器日誌中的資料收集器 API | Azure 監視器日誌中的資料收集器 API 是一種完全不限成員名額的引入資料方式。 可在 JSON 物件中格式化的任何資料都可以在此處發送。 發送後，它將被處理，並在日誌中可用，以便與日誌中的其他資料或其他應用程式見解資料關聯。 <br/><br/> 將資料作為檔上載到 Azure Blob Blob 是相當容易的，這些檔將從中處理並上載到日誌分析。 有關此類管道的示例實現，請參閱[本文](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)。 | <ul><li> 不一定在應用程式見解中檢測的應用程式中生成的資料。</li><li> 示例包括查找和事實表、參考資料、預聚合統計資訊等。 </li><li> 適用于將針對其他 Azure 監視器資料（應用程式見解、其他日誌資料類型、安全中心、容器/VM 的 Azure 監視器等）交叉引用的資料。 </li></ul> |
-| [Azure 資料總管](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Azure 資料資源管理器 （ADX） 是為應用程式見解分析和 Azure 監視器日誌提供支援的資料平臺。 現在"通用可用"（"GA"），使用原始形式的資料平臺可為您提供群集（RBAC、保留率、架構等）的完整靈活性（但需要管理開銷）。 ADX 提供了許多[引入選項](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods)，包括[CSV、TSV 和 JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master)檔。 | <ul><li> 與應用程式見解或日誌下的任何其他資料不相關的資料。 </li><li> 需要高級引入或處理功能的資料目前不在 Azure 監視器日誌中提供。 </li></ul> |
+| [自訂事件](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties)： Application Insights 中以原生 SDK 為基礎的內嵌 | Application Insights，通常會透過應用程式內的 SDK 進行檢測，讓您能夠透過自訂事件傳送自訂資料。 | <ul><li> 在您的應用程式中產生的資料，但 SDK 不會透過其中一個預設資料類型（要求、相依性、例外狀況等等）來拾取。</li><li> 最常與中的其他應用程式資料相互關聯的資料 Application Insights </li></ul> |
+| Azure 監視器記錄中的資料收集器 API | Azure 監視器記錄檔中的資料收集器 API 是完全開放式的資料內嵌方式。 您可以在這裡傳送 JSON 物件格式的任何資料。 一旦傳送之後，就會進行處理，並在記錄檔中使用，以與記錄檔中的其他資料或其他 Application Insights 資料相互關聯。 <br/><br/> 將資料以檔案形式上傳至 Azure Blob blob 相當容易，因為這些檔案會在其中進行處理，並上傳至 Log Analytics。 如需這類管線的範例執行，請參閱[這](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)篇文章。 | <ul><li> 不一定會在 Application Insights 內所檢測的應用程式中產生的資料。</li><li> 範例包括查閱和事實資料表、參考資料、預先匯總統計資料等等。 </li><li> 適用于將針對其他 Azure 監視器資料（Application Insights、其他記錄資料類型、資訊安全中心 Azure 監視器、容器/Vm 等）交叉參考的資料。 </li></ul> |
+| [Azure 資料總管](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Azure 資料總管（ADX）是可 Application Insights 分析和 Azure 監視器記錄的資料平臺。 現已正式推出（「GA」），使用其原始形式的資料平臺，可讓您在叢集上（RBAC、保留率、架構等）提供完整的彈性（但需要額外的管理負荷）。 ADX 提供許多內嵌[選項](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods)，包括[CSV、TSV 和 JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master)檔案。 | <ul><li> 不會與 Application Insights 或記錄下的任何其他資料相互關聯的資料。 </li><li> 需要先進的內嵌或處理功能的資料，目前無法在 Azure 監視器記錄中提供。 </li></ul> |
 
 
 ## <a name="next-steps"></a>後續步驟

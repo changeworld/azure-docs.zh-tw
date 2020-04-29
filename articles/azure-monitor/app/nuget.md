@@ -1,13 +1,13 @@
 ---
-title: Azure 監視器應用程式見解 NuGet 包
-description: Azure 監視器應用程式見解 NuGet 套裝程式清單，用於ASP.NET、ASP.NET核心、Python
+title: Azure 監視器 Application Insights NuGet 套件
+description: Azure 監視器 Application Insights ASP.NET、ASP.NET Core、Python 的 NuGet 套件清單
 ms.topic: reference
 ms.date: 10/16/2018
 ms.openlocfilehash: 5675c0fad61f1b75aa7e93db02246eed43967ec2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669993"
 ---
 # <a name="application-insights-nuget-packages"></a>Application Insights NuGet 套件
@@ -37,21 +37,21 @@ ms.locfileid: "77669993"
 | Microsoft.ApplicationInsights.WindowsServer | 2.12.0 | Application Insights Windows Server NuGet 套件可為 .NET 應用程式自動收集 Application Insights 遙測資料。 此套件可用來作為 Application Insights 平台特定套件的相依套件，或作為平台特定套件未涵蓋之 .NET 應用程式的獨立套件 (例如針對 .NET 背景工作角色)。 | [下載套件](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)  |
 | Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel | 2.12.0 | 提供遙測通道給將在離線情況下保留遙測資料的 Application Insights Windows Server SDK。 | [下載套件](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/) |
 
-## <a name="common-packages-for-python-using-opencensus"></a>使用 OpenCensus 的 Python 常用包
+## <a name="common-packages-for-python-using-opencensus"></a>使用 OpenCensus 的 Python 通用套件
 | 封裝名稱 | 穩定版 | 描述 | 下載 |
 |-------------------------------|-----------------------|------------|----|
-| 開放-ext-azure | 1.0.0 | 通過 OpenCensus 在 Azure 監視器下對 Python 應用程式的應用程式見解。 | [下載套件](https://pypi.org/project/opencensus-ext-azure/) |
-| 開放-ext-django | 0.7.2 | 此包提供與 Python [django](https://pypi.org/project/django/)庫的集成。 | [下載套件](https://pypi.org/project/opencensus-ext-django/) |
-| 開放-ext-燒瓶 | 0.7.3 | 此包提供與 Python[燒瓶](https://pypi.org/project/flask/)庫的集成。 | [下載套件](https://pypi.org/project/opencensus-ext-flask/) |
-| 開放-ext-HTTPlib | 0.7.2 | 此包提供與 Python3 的 Python [HTTP.用戶端](https://docs.python.org/3/library/http.client.html)庫和 Python2[的 HTTPlib](https://docs.python.org/2/library/httplib.html)的集成。 | [下載套件](https://pypi.org/project/opencensus-ext-httplib/) |
-| 開放-ext 日誌記錄 | 0.1.0 | 此包使用跟蹤資料豐富日誌記錄。 | [下載套件](https://pypi.org/project/opencensus-ext-logging/) |
-| 開放-ext-mysql | 0.1.2 | 此包提供與 Python [mysql 連接器](https://pypi.org/project/mysql-connector/)庫的集成。 | [下載套件](https://pypi.org/project/opencensus-ext-mysql/) |
-| 開放-ext-後格雷sql | 0.1.2 | 此包提供與 Python [psycopg2](https://pypi.org/project/psycopg2/)庫的集成。 | [下載套件](https://pypi.org/project/opencensus-ext-postgresql/) |
-| 開放-ext-pymongo | 0.7.1 | 此包提供與 Python [pymongo](https://pypi.org/project/pymongo/)庫的集成。 | [下載套件](https://pypi.org/project/opencensus-ext-pymongo/) |
-| 開放-ext-pymysql | 0.1.2 | 此包提供與 Python [PyMySQL](https://pypi.org/project/PyMySQL/)庫的集成。 | [下載套件](https://pypi.org/project/opencensus-ext-pymysql/) |
-| 開放-ext-金字塔 | 0.7.1 | 此包提供與 Python[金字塔](https://pypi.org/project/pyramid/)庫的集成。 | [下載套件](https://pypi.org/project/opencensus-ext-pyramid/) |
-| 開放-ext 請求 | 0.7.2 | 此包提供與 Python[請求](https://pypi.org/project/requests/)庫的集成。 | [下載套件](https://pypi.org/project/opencensus-ext-requests/) |
-| 開放-ext-sqlalchemy | 0.1.2 | 此包提供與 Python [SQLAlchemy 庫的集成](https://pypi.org/project/SQLAlchemy/)。 | [下載套件](https://pypi.org/project/opencensus-ext-sqlalchemy/) |
+| opencensus-ext-azure | 1.0.0 | 透過 OpenCensus 在 Azure 監視器下 Application Insights Python 應用程式。 | [下載套件](https://pypi.org/project/opencensus-ext-azure/) |
+| opencensus-ext-django | 0.7.2 | 此套件提供與 Python [django](https://pypi.org/project/django/)程式庫的整合。 | [下載套件](https://pypi.org/project/opencensus-ext-django/) |
+| opencensus-ext-flask | iisnode-inspector-0.7.3.dll | 此套件提供與 Python [flask](https://pypi.org/project/flask/)程式庫的整合。 | [下載套件](https://pypi.org/project/opencensus-ext-flask/) |
+| opencensus-ext-HTTPlib | 0.7.2 | 此套件會與適用于 Python2 的 Python3 和[HTTPlib](https://docs.python.org/2/library/httplib.html)的 Python [HTTP. 用戶端](https://docs.python.org/3/library/http.client.html)程式庫整合。 | [下載套件](https://pypi.org/project/opencensus-ext-httplib/) |
+| opencensus-ext-記錄 | 0.1.0 | 此封裝會來擴充具有追蹤資料的記錄檔記錄。 | [下載套件](https://pypi.org/project/opencensus-ext-logging/) |
+| opencensus-ext-mysql | 0.1.2 | 此套件提供與 Python [mysql-連接器](https://pypi.org/project/mysql-connector/)程式庫的整合。 | [下載套件](https://pypi.org/project/opencensus-ext-mysql/) |
+| opencensus-ext-于 postgresql | 0.1.2 | 此套件提供與 Python [psycopg2](https://pypi.org/project/psycopg2/)程式庫的整合。 | [下載套件](https://pypi.org/project/opencensus-ext-postgresql/) |
+| opencensus-ext-pymongo | 0.7.1 | 此套件提供與 Python [pymongo](https://pypi.org/project/pymongo/)程式庫的整合。 | [下載套件](https://pypi.org/project/opencensus-ext-pymongo/) |
+| opencensus-ext-pymysql | 0.1.2 | 此套件提供與 Python [PyMySQL](https://pypi.org/project/PyMySQL/)程式庫的整合。 | [下載套件](https://pypi.org/project/opencensus-ext-pymysql/) |
+| opencensus-ext-金字塔 | 0.7.1 | 此套件提供與 Python[金字塔](https://pypi.org/project/pyramid/)程式庫的整合。 | [下載套件](https://pypi.org/project/opencensus-ext-pyramid/) |
+| opencensus-ext-要求 | 0.7.2 | 此套件會提供與 Python[要求](https://pypi.org/project/requests/)程式庫的整合。 | [下載套件](https://pypi.org/project/opencensus-ext-requests/) |
+| opencensus-ext-sqlalchemy | 0.1.2 | 此套件提供與 Python [SQLAlchemy](https://pypi.org/project/SQLAlchemy/)程式庫的整合。 | [下載套件](https://pypi.org/project/opencensus-ext-sqlalchemy/) |
 
 ## <a name="listenerscollectorsappenders"></a>接聽程式/收集器/附加器
 

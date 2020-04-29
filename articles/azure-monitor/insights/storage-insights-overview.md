@@ -1,323 +1,323 @@
 ---
-title: 使用 Azure 監視器監視 Azure 存儲服務以進行存儲（預覽）*微軟文檔
-description: 本文介紹了 Azure 監視器存儲功能，該功能使存儲管理員能夠快速瞭解其 Azure 存儲帳戶的性能和利用率問題。
+title: 使用適用于儲存體的 Azure 監視器監視 Azure 儲存體服務（預覽） |Microsoft Docs
+description: 本文說明儲存體功能的 Azure 監視器，可讓儲存體管理員快速瞭解其 Azure 儲存體帳戶的效能和使用問題。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
 ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77662514"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>使用 Azure 監視器監視存儲服務（預覽）
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>使用適用于儲存體的 Azure 監視器監視儲存體服務（預覽）
 
-Azure 存儲監視器（預覽）通過提供 Azure 存儲服務性能、容量和可用性的統一視圖，提供 Azure 存儲帳戶的全面監視。 您可以通過兩種方式觀察存儲容量和性能，直接從存儲帳戶查看，或者從 Azure 監視器查看，以查看跨存儲帳戶組。 
+適用于儲存體的 Azure 監視器（預覽）藉由提供 Azure 儲存體服務效能、容量和可用性的統一觀點，全面監視您的 Azure 儲存體帳戶。 您可以透過兩種方式來觀察儲存體容量和效能、直接從儲存體帳戶或從 Azure 監視器查看，查看不同的儲存體帳戶群組。 
 
-本文將説明您瞭解 Azure 存儲監視器（預覽）提供的經驗，以便獲得有關存儲帳戶的運行狀況和性能的可操作知識，並能夠專注于熱點並診斷延遲、限制、和可用性問題。
+本文將協助您瞭解儲存體（預覽） Azure 監視器的體驗，以針對大規模的儲存體帳戶健全狀況和效能衍生可採取行動的知識，並提供著重于熱點和診斷延遲、節流和可用性問題的功能。
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>Azure 監視器存儲簡介（預覽版）
+## <a name="introduction-to-azure-monitor-for-storage-preview"></a>儲存體 Azure 監視器簡介（預覽）
 
-在深入瞭解體驗之前，您應該瞭解它如何呈現和視覺化資訊。 無論是直接從存儲帳戶還是從 Azure 監視器中選擇存儲功能，Azure 存儲監視器都提供了一致的體驗。 
+在深入探討經驗之前，您應該先瞭解它呈現和視覺化資訊的方式。 無論您是直接從儲存體帳戶或從 Azure 監視器選取儲存體功能，Azure 監視器的儲存體都會提供一致的體驗。 
 
-組合它提供：
+結合的 it 提供：
 
-* **在比例透視**顯示基於存儲服務或 API 操作的運行狀況的快照視圖，顯示存儲服務接收的請求總數的利用率，以及顯示存儲服務或 API 操作類型處理請求的平均時間的延遲。 您還可以按 Blob、檔、表和佇列查看容量。
+* 根據儲存體服務或 API 作業的健全狀況，**大規模**顯示其可用性的快照集視圖、顯示儲存體服務接收的要求總數，以及顯示儲存體服務或 API 作業類型處理要求所花費的平均時間的延遲。 您也可以依 blob、檔案、資料表和佇列來查看容量。
 
-* **向下切入**對特定存儲帳戶的分析，以説明診斷問題或按類別執行詳細分析 - 可用性、性能、故障和容量。 選擇其中任一選項可深入瞭解指標。  
+* 向下切入特定儲存體帳戶的**分析**，以協助診斷問題，或依類別（可用性、效能、失敗和容量）執行詳細的分析。 選取其中任何一個選項可提供計量的深入觀點。  
 
-* **可自訂**，您可以在其中更改要查看的指標，修改或設置與您的限制一致的閾值，並將其另存為您自己的活頁簿。 活頁簿中的圖表可以固定到 Azure 儀表板。  
+* 可**自訂**，您可以在其中變更您想要查看的計量、修改或設定符合限制的臨界值，以及另存為您自己的活頁簿。 活頁簿中的圖表可以釘選到 Azure 儀表板。  
 
-此功能不要求您啟用或配置任何內容，預設情況下會收集存儲帳戶中的存儲指標。 如果您不熟悉 Azure 存儲上可用的指標，請查看 Azure[存儲](../../storage/common/storage-metrics-in-azure-monitor.md)指標中的說明和定義。
-
->[!NOTE]
->訪問此功能不收取任何費用，並且只需為配置或啟用的 Azure 監視器基本功能付費，如[Azure 監視器定價詳細資訊](https://azure.microsoft.com/pricing/details/monitor/)頁上所述。
+這項功能不會要求您啟用或設定任何專案，預設會收集儲存體帳戶的儲存體計量。 如果您不熟悉 Azure 儲存體上可用的計量，請參閱[Azure 儲存體計量](../../storage/common/storage-metrics-in-azure-monitor.md)來查看 Azure 儲存體計量中的描述和定義。
 
 >[!NOTE]
->Azure 存儲監視器不支援通用[v1 帳戶](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts)。
+>存取這項功能不需要付費，您只需支付所設定或啟用的 Azure 監視器基本功能的費用，如[Azure 監視器定價詳細資料](https://azure.microsoft.com/pricing/details/monitor/)頁面所述。
+
+>[!NOTE]
+>儲存體的 Azure 監視器不支援[一般用途 v1 帳戶](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts)。
 >
 
 ## <a name="view-from-azure-monitor"></a>從 Azure 監視器查看
 
-在 Azure 監視器中，您可以查看訂閱中多個存儲帳戶的事務、延遲和容量詳細資訊，並説明識別性能、容量問題和故障。
+從 Azure 監視器，您可以從訂用帳戶中的多個儲存體帳戶查看交易、延遲和容量詳細資料，並協助識別效能、容量問題和失敗。
 
-要查看所有訂閱中存儲帳戶的利用率和可用性，請執行以下步驟。
+若要查看您所有訂用帳戶的儲存體帳戶使用率和可用性，請執行下列步驟。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-2. 從 Azure 門戶中的左側窗格中選擇 **"監視器"，** 在 **"見解"** 部分下選擇 **"存儲帳戶（預覽）"。**
+2. 從 Azure 入口網站的左側窗格中選取 [**監視**]，然後在 [**深入**解析] 區段下，選取 [**儲存體帳戶（預覽）**]。
 
-    ![多個存儲帳戶視圖](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
+    ![多個儲存體帳戶的觀點](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
-### <a name="overview-workbook"></a>概述活頁簿
+### <a name="overview-workbook"></a>總覽活頁簿
 
-在所選訂閱的 **"概述**"活頁簿上，該表顯示訂閱中最多 10 個存儲帳戶的互動式存儲指標和服務可用性狀態。 您可以根據從以下下拉清單中選擇的選項篩選結果：
+在所選訂用帳戶的**總覽**活頁簿中，資料表會顯示在訂用帳戶內分組的最多10個儲存體帳戶的互動式儲存體計量和服務可用性狀態。 您可以根據您從下列下拉式清單中選取的選項來篩選結果：
 
-* **訂閱**- 僅列出具有存儲帳戶的訂閱。  
+* 訂用帳戶-只會列出具有儲存體帳戶**的訂閱。**  
 
-* **存儲帳戶**- 預設情況下，預先選擇了 10 個存儲帳戶。 如果在範圍選取器中選擇所有或多個存儲帳戶，則最多將返回 200 個存儲帳戶。 例如，如果您在所選的三個訂閱中共有 573 個存儲帳戶，則只顯示 200 個帳戶。 
+* **儲存體帳戶**-預設會預先選取10個儲存體帳戶。 如果您在 [範圍] 選取器中選取 [所有或多個儲存體帳戶]，則會傳回最多200個儲存體帳戶。 例如，如果您所選取的三個訂用帳戶共有573個儲存體帳戶，則只會顯示200個帳戶。 
 
-* **時間範圍**- 預設情況下，根據所做的相應選擇顯示最後 4 小時的資訊。
+* **時間範圍**：根據預設，會依據對應的選取專案顯示最後4小時的資訊。
 
-下拉清單下的計數器磁貼將匯總訂閱中的存儲帳戶總數，並反映所選的存儲帳戶總數中有多少。 活頁簿中報告交易記錄指標或錯誤的列有條件顏色編碼或熱圖。 最深的顏色具有最高值，較淺的顏色基於最低值。 對於基於錯誤的列，該值為紅色，對於基於指標的列，該值為藍色。
+下拉式清單底下的 [計數器] 磚會匯總訂用帳戶中的儲存體帳戶總數，並反映選取的總計數。 活頁簿中的資料行有條件式色彩編碼或熱度圖，可報告交易計量或錯誤。 最深的色彩具有最高的值，而較淡的色彩則是根據最低值。 針對以錯誤為基礎的資料行，此值為紅色，而針對以度量為基礎的資料行，其值為藍色。
 
-在列中選擇"**可用性****"、"E2E 延遲**"、"**伺服器延遲**"和"**事務錯誤類型/錯誤**"中的值將引導您到根據為該存儲帳戶選擇的列定制的特定類型的存儲指標的報表。 有關每個類別的活頁簿的詳細資訊，請參閱下面的[詳細存儲活頁簿](#detailed-storage-workbooks)部分。 
+在 [資料行**可用性**]、[ **E2E 延遲**]、[**伺服器延遲**] 和 [**交易錯誤類型/錯誤**] 中選取值，會將您導向至符合針對該儲存體帳戶選取之資料行的特定儲存體度量類型的報表。 如需每個類別之活頁簿的詳細資訊，請參閱下面的[詳細儲存活頁簿](#detailed-storage-workbooks)一節。 
 
 >[!NOTE]
->有關哪些錯誤可以在報表中顯示的詳細資訊，請參閱[回應類型架構](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions)並查找回應類型，如**伺服器其他錯誤**、**用戶端其他錯誤**、**用戶端限制錯誤**等。 根據所選的存儲帳戶，如果報告的錯誤類型超過三種，則所有其他錯誤都表示為 **"其他**" 類別。
+>如需報告中可顯示哪些錯誤的詳細資訊，請參閱[回應類型架構](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions)和尋找回應類型，例如**ServerOtherError**、 **ClientOtherError**、 **ClientThrottlingError**。 視選取的儲存體帳戶而定，如果報告的錯誤類型超過三個，所有其他錯誤都會在 [**其他**] 類別下呈現。
 
 預設**可用性**閾值為：
 
-* 警告 - 99%
-* 嚴重 - 90%
+* 警告-99%
+* 重大-90%
 
-要根據觀察結果或要求設置可用性閾值，請查看[修改可用性閾值](#modify-the-availability-threshold)。 
+若要根據觀察或需求的結果來設定可用性閾值，請參閱[修改可用性閾值](#modify-the-availability-threshold)。 
 
 ### <a name="capacity-workbook"></a>容量活頁簿
 
-選擇頁面頂部的 **"容量**"，然後打開 **"容量**"活頁簿。 它顯示帳戶中使用的總存儲量和帳戶中每個資料服務用於説明識別已使用存儲的容量。
+選取頁面頂端的 [**容量**]，[**容量**] 活頁簿隨即開啟。 它會顯示帳戶中所使用的總儲存體數量，以及帳戶中每個資料服務所使用的容量，以協助識別使用中的儲存空間。
 
-![多個存儲帳戶 容量活頁簿](./media/storage-insights-overview/storage-account-capacity-02.png) 
+![多個儲存體帳戶容量活頁簿](./media/storage-insights-overview/storage-account-capacity-02.png) 
 
-活頁簿中用於報告具有藍色值的容量指標的列有條件顏色編碼或熱圖。 最深的顏色具有最高值，較淺的顏色基於最低值。
+活頁簿中的資料行有條件式色彩編碼或熱度圖，會以藍色值來報告容量計量。 最深的色彩具有最高的值，而較淡的色彩則是根據最低值。
 
-當您在活頁簿中的任何一列下選擇值時，將向下切入到存儲帳戶的 **"容量**"活頁簿。 有關向下切入報表的詳細資訊，請參閱下面的[詳細存儲活頁簿](#detailed-storage-workbooks)部分。 
+當您在活頁簿中的任何一個資料行底下選取一個值時，您會向下切入至儲存體帳戶的**容量**活頁簿。 有關向下切入報表的進一步詳細資料，請參閱下面的[詳細儲存體活頁簿](#detailed-storage-workbooks)一節。 
 
-## <a name="view-from-a-storage-account"></a>從存儲帳戶查看
+## <a name="view-from-a-storage-account"></a>從儲存體帳戶查看
 
-要直接從存儲帳戶訪問 VM 的 Azure 監視器，：
+若要直接從儲存體帳戶存取適用於 VM 的 Azure 監視器：
 
-1. 在 Azure 門戶中，選擇存儲帳戶。
+1. 在 [Azure 入口網站中，選取 [儲存體帳戶]。
 
-2. 從清單中選擇存儲帳戶。 在"監視"部分中，選擇"見解"（預覽）。
+2. 從清單中選擇儲存體帳戶。 在 [監視] 區段中，選擇 [Insights （預覽）]。
 
-    ![選定的存儲帳戶概述頁](./media/storage-insights-overview/storage-account-direct-overview-01.png)
+    ![選取的儲存體帳戶總覽頁面](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
-在存儲帳戶**的概述**活頁簿上，它顯示了幾個存儲性能指標，可説明您快速評估：
+在儲存體帳戶的**總覽**活頁簿中，它會顯示數個儲存體效能計量，可協助您快速評估：
 
-* 存儲服務的運行狀況，可立即查看超出您的控制範圍的問題是否影響所部署到的區域的存儲服務，該列位於 **"摘要"** 列下。
+* 儲存體服務的健康情況，以立即查看控制項外部的問題是否會影響其部署目的地區域中的儲存體服務，這會在 [**摘要**] 資料行底下指出。
 
-* 互動式性能圖表，顯示與存儲容量、可用性、事務和延遲相關的最基本詳細資訊。  
+* 互動式效能圖表，顯示與儲存體容量、可用性、交易和延遲相關的最基本詳細資料。  
 
-* 突出顯示服務可用性、存儲服務事務總數、E2E 延遲和伺服器延遲的指標和狀態磁貼。
+* 顯示服務可用性、儲存體服務的交易總數、E2E 延遲和伺服器延遲的計量和狀態磚。
 
-為**失敗**、**性能**、**可用性**和**容量**選擇任一按鈕將打開相應的活頁簿。 
+針對 [**失敗**]、[**效能**]、[**可用性**] 和 [**容量**] 選取任何一個按鈕，會開啟個別的活頁簿。 
 
-![選定的存儲帳戶概述頁](./media/storage-insights-overview/storage-account-capacity-01.png)
+![選取的儲存體帳戶總覽頁面](./media/storage-insights-overview/storage-account-capacity-01.png)
 
-## <a name="detailed-storage-workbooks"></a>詳細的存儲活頁簿
+## <a name="detailed-storage-workbooks"></a>詳細的儲存活頁簿
 
-無論您是在列**可用性****、E2E 延遲**、**伺服器延遲**和**事務錯誤類型/錯誤**從多個存儲帳戶**概述**活頁簿中選擇值，還是從特定存儲帳戶的概述活頁簿中選擇"**故障**"、"**性能**"、"**可用性**"和 **"容量****"** 中的任何一個按鈕，每個按鈕都會提供一組針對該類別定制的互動式存儲相關資訊。  
+無論您是從 [多個儲存體帳戶**總覽**] 活頁簿中選取 [資料行**可用性**]、[ **E2E 延遲**]、[**伺服器延遲**] 和 [**交易錯誤類型/錯誤**] 的值，或是從特定儲存體帳戶的 **[總覽**] 活頁簿中選取任何一個**失敗**、**效能**、**可用性**和**容量**的按鈕，每個都提供一組專為該類別量身打造的互動式  
 
-* **可用性**打開**可用性**活頁簿。 它顯示 Azure 存儲服務的當前運行狀況狀態、顯示每個物件的可用運行狀況狀態，該表由存儲帳戶中定義的資料服務分類，趨勢線表示所選時間範圍，以及可用性趨勢圖帳戶中的每個資料服務。  
+* **可用性**會開啟**可用性**活頁簿。 它會顯示目前的 Azure 儲存體服務健全狀況狀態，這是一個資料表，其中顯示由儲存體帳戶中定義的資料服務所分類之每個物件的可用健全狀況狀態，並具有代表所選時間範圍的趨勢線，以及帳戶中每個資料服務的可用性趨勢圖表。  
 
-    ![可用性報告示例](./media/storage-insights-overview/storage-account-availability-01.png)
+    ![可用性報告範例](./media/storage-insights-overview/storage-account-availability-01.png)
 
-* **E2E 延遲**和**伺服器延遲**將打開**性能**活頁簿。 它包括顯示 E2E 延遲和伺服器延遲的匯總狀態磁貼、E2E 與伺服器延遲的性能圖表，以及按存儲帳戶中定義的資料服務分類的 API 成功調用的表。
+* **E2E 延遲**和**伺服器延遲**會開啟 [**效能**] 活頁簿。 其中包含 [匯總狀態] 磚，其中顯示 E2E 延遲和伺服器延遲、E2E 與伺服器延遲的效能圖表，以及根據儲存體帳戶中定義的資料服務所分類的 API，細分成功呼叫的延遲的資料表。
 
-    ![績效報告示例](./media/storage-insights-overview/storage-account-performance-01.png)
+    ![效能報告範例](./media/storage-insights-overview/storage-account-performance-01.png)
 
-* 選擇網格中列出的任何錯誤類別將打開**失敗**活頁簿。 報表顯示除描述錯誤和成功請求之外的所有其他用戶端錯誤的指標磁貼、用戶端限制錯誤、特定于 ClientOtherError 屬性的事務**回應類型**維度指標的性能圖表以及兩個表 -**按 API 名稱的事務**和**按回應類型的事務**。
+* 選取方格中列出的任何錯誤類別，即會開啟 [**失敗**] 活頁簿。 此報表會顯示所有其他用戶端錯誤的計量磚，但描述了其中一個和一個成功的要求、用戶端節流錯誤、ClientOtherError 屬性特有的交易**回應類型**維度計量的效能圖表，以及兩個數據表-依**回應類型**的**API 名稱**和交易的交易。
 
-   ![失敗報告示例](./media/storage-insights-overview/storage-account-failures-01.png)
+   ![失敗報告範例](./media/storage-insights-overview/storage-account-failures-01.png)
 
-* **容量**打開**容量**活頁簿。 它顯示磁貼和圖表中帳戶中每個存儲資料物件的存儲總量，以及帳戶中存儲的資料物件數。  
+* **容量**會開啟**容量**活頁簿。 它會顯示磚和圖表中帳戶內每個儲存體資料物件所使用的儲存體總量，以及帳戶中儲存多少個數據物件。  
 
-    ![選定的存儲帳戶容量頁](./media/storage-insights-overview/storage-account-capacity-01.png) 
+    ![選取的儲存體帳戶容量頁面](./media/storage-insights-overview/storage-account-capacity-01.png) 
 
-## <a name="pin-and-export"></a>針和匯出
+## <a name="pin-and-export"></a>釘選和匯出
 
-您可以通過選擇分區右上角的圖釘圖示，將任一指標部分固定到 Azure 儀表板。
+您可以選取區段右上角的圖釘圖示，將任何一個度量區段釘選到 Azure 儀表板。
 
-![指標節針到儀表板示例](./media/storage-insights-overview/workbook-pin-example.png)
+![度量區段釘選至儀表板範例](./media/storage-insights-overview/workbook-pin-example.png)
 
-多訂閱和存儲帳戶**概述**或**容量**活頁簿支援通過選擇圖釘圖示右側的向下箭頭圖示來匯出 Excel 格式的結果。
+多訂用帳戶和儲存體帳戶的**總覽**或**容量**活頁簿支援以 Excel 格式匯出結果，方法是選取圖釘圖示右邊的向下箭號圖示。
 
-![匯出活頁簿網格結果示例](./media/storage-insights-overview/workbook-export-example.png)
+![匯出活頁簿方格結果範例](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>自訂 Azure 監視器以進行存儲（預覽）
+## <a name="customize-azure-monitor-for-storage-preview"></a>自訂儲存體的 Azure 監視器（預覽）
 
-本節重點介紹用於編輯活頁簿以支援資料分析需求進行自訂的常見方案：
+本節重點說明編輯活頁簿以自訂以支援資料分析需求的常見案例：
 
-* 將活頁簿的範圍範圍範圍，以便始終選擇特定的訂閱或存儲帳戶
-* 更改網格中的指標
-* 更改可用性閾值
-* 更改顏色渲染
+* 將活頁簿的範圍設為一律選取特定訂用帳戶或儲存體帳戶
+* 變更方格中的計量
+* 變更可用性閾值
+* 變更色彩呈現
 
-自訂項將保存到自訂活頁簿中，以防止覆蓋我們已發佈的活頁簿中的預設配置。 活頁簿保存在資源組中，無論是在您專用的"**我的報告"** 部分中，還是"**共用報表**"部分中，有權訪問資源組的每個人都可以訪問。 保存自訂活頁簿後，需要轉到活頁簿庫來啟動它。
+這些自訂專案會儲存至自訂活頁簿，以避免覆寫已發行之活頁簿中的預設設定。 活頁簿會儲存在資源群組中，不論是在您私人的**我的報表**區段中，或是在可存取資源群組的每個人都可存取的 [**共用報表**] 區段中。 儲存自訂活頁簿之後，您必須移至活頁簿庫來啟動它。
 
-![從命令列啟動活頁簿庫](./media/storage-insights-overview/workbook-command-bar-gallery.png)
+![從命令列啟動活頁簿圖庫](./media/storage-insights-overview/workbook-command-bar-gallery.png)
 
-### <a name="specifying-a-subscription-or-storage-account"></a>指定訂閱或存儲帳戶
+### <a name="specifying-a-subscription-or-storage-account"></a>指定訂用帳戶或儲存體帳戶
 
-您可以將多訂閱和存儲帳戶**概述**或**容量**活頁簿配置為每次運行時限定為特定訂閱或存儲帳戶，執行以下步驟。
+您可以在每次執行時，將多個訂用帳戶和儲存體帳戶**總覽**或**容量**活頁簿設定為特定訂用帳戶或儲存體帳戶的範圍，然後執行下列步驟。
 
-1. 從門戶中選擇 **"監視器**"，然後從左側窗格中選擇 **"存儲帳戶（預覽）。"**
+1. 從入口網站選取 [**監視**]，然後從左側窗格中選取 [**儲存體帳戶（預覽）** ]。
 
-2. 在 **"概述**"活頁簿上，從命令列中選擇 **"編輯**"。
+2. 在 [**總覽**] 活頁簿上，從命令列選取 [**編輯**]。
 
-3. 從 **"訂閱**"下拉清單中選擇一個或多個您希望預設訂閱的訂閱。 請記住，活頁簿支援選擇最多 10 個訂閱。  
+3. 從 [訂用帳戶] 下拉式**清單中選取**您想要它預設為的一個或多個訂用帳戶。 請記住，活頁簿最多支援選取10個訂用帳戶。  
 
-4. 從 **"存儲帳戶**"下拉清單中選擇您希望預設的一個或多個帳戶。 請記住，活頁簿支援選擇最多 200 個存儲帳戶。 
+4. 從 [**儲存體帳戶**] 下拉式清單中選取您想要其預設的一或多個帳戶。 請記住，活頁簿支援總共選取200個儲存體帳戶。 
 
-5. 選擇"從命令列**中保存為"** 以保存活頁簿的副本與自訂項，然後按一下 **"完成編輯**"以返回到讀取模式。  
+5. 從命令列選取 [**另存**新檔]，以使用您的自訂儲存活頁簿的複本，然後按一下 [**完成編輯**] 回到閱讀模式。  
 
-### <a name="modify-metrics-and-colors-in-the-workbook"></a>修改活頁簿中的指標和顏色
+### <a name="modify-metrics-and-colors-in-the-workbook"></a>修改活頁簿中的計量和色彩
 
-預構建的活頁簿包含指標資料，您可以修改或刪除任何一個視覺化效果，並根據您的團隊的特定需求進行自訂。
+預先建立的活頁簿包含計量資料，而且您可以修改或移除任何一個視覺效果，並自訂您小組的特定需求。
 
-在我們的示例中，我們使用多訂閱和存儲帳戶容量活頁簿，以演示如何：
+在我們的範例中，我們會使用多訂用帳戶和儲存體帳戶容量活頁簿，以示範如何：
 
-* 刪除指標
-* 更改顏色渲染
+* 移除度量
+* 變更色彩呈現
 
-您可以針對任何預構建**的失敗**、**性能**、**可用性**和**容量**活頁簿執行相同的更改。
+您可以對任何一個預先建立的**失敗**、**效能**、**可用性**和**容量**活頁簿執行相同的變更。
 
-1. 從門戶中選擇 **"監視器**"，然後從左側窗格中選擇 **"存儲帳戶（預覽）。"**
+1. 從入口網站選取 [**監視**]，然後從左側窗格中選取 [**儲存體帳戶（預覽）** ]。
 
-2. 選擇 **"容量**"以切換到容量活頁簿，然後從命令列中選擇"從命令列**進行編輯**"。
+2. 選取 [**容量**] 以切換至 [容量] 活頁簿，並從命令列中選取命令列中的 [**編輯**]。
 
-    ![選擇編輯以修改活頁簿](./media/storage-insights-overview/workbook-edit-workbook.png)
+    ![選取 [編輯] 以修改活頁簿](./media/storage-insights-overview/workbook-edit-workbook.png)
 
-3. 在指標部分旁邊，選擇 **"編輯**"。
+3. 在 [計量] 區段旁，選取 [**編輯**]。
 
-    ![選擇"編輯"以修改容量活頁簿指標](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
+    ![選取 [編輯] 以修改容量活頁簿計量](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
 
-4. 我們將刪除"**帳戶使用的容量時間表"** 列，因此在指標網格中選擇**列設置**。
+4. 我們即將移除 [使用的**帳戶容量時間軸**] 資料行，因此請選取 [計量] 方格中的 [資料**行設定**]。
 
-    ![編輯列設置](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
+    ![編輯資料行設定](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
-5. 在 **"編輯"列設置**窗格中，在 **"列**"部分**Microsoft.存儲/存儲帳戶 -容量-使用容量時間表$下選擇。帳戶使用的容量時間軸 $**， 下拉清單**下列呈現器**選擇**隱藏**.
+5. 在 [**編輯資料行設定**] 窗格中，選取 [microsoft] 資料**行**區段底下的 [ **Storageaccounts-容量-UsedCapacity 時間軸 $ |]。帳戶已使用容量時間軸 $**，並在下拉式清單資料**行**轉譯器底下選取 [**隱藏**]。
 
-6. 選擇 **"保存"並關閉**以提交更改。
+6. 選取 [**儲存並關閉**] 以認可變更。
 
-現在，讓我們更改報表中的容量指標的顏色主題，以使用綠色而不是藍色。
+現在，讓我們將報表中容量計量的色彩主題變更為使用綠色，而不是藍色。
 
-1. 在指標網格中選擇**列設置**。
+1. 選取 [計量] 方格中的 [資料**行設定**]。
 
-2. In the **Edit column settings** pane, select under the **Columns** section **microsoft.storage/storageaccounts-Capacity-UsedCapacity$|microsoft.storage/storageaccounts/blobservices-Capacity-BlobCapacity$|microsoft.storage/storageaccounts/fileservices-Capacity-FileCapacity$|microsoft.storage/storageaccounts/queueservices-Capacity-QueueCapacity$|microsoft.storage/storageaccounts/tableservices-Capacity-TableCapacity$**. 在下拉清單 **"調色板**"下，選擇 **"綠色**"。
+2. 在 [**編輯資料行設定**] 窗格中，**選取**[ **storageaccounts-容量-UsedCapacity $ | microsoft. storage/storageaccounts/blobservices-容量-BlobCapacity**$ | microsoft. storage/storageaccounts/fileservices-容量-FileCapacity $ | microsoft. storage/storageaccounts/queueservices-容量-QueueCapacity $]。 在下拉式清單的 [**色板**] 底下，選取 [**綠色**]。
 
-3. 選擇 **"保存"並關閉**以提交更改。
+3. 選取 [**儲存並關閉**] 以認可變更。
 
-4. 選擇"從命令列**中保存為"** 以保存活頁簿的副本與自訂項，然後按一下 **"完成編輯**"以返回到讀取模式。  
+4. 從命令列選取 [**另存**新檔]，以使用您的自訂儲存活頁簿的複本，然後按一下 [**完成編輯**] 回到閱讀模式。  
 
 ### <a name="modify-the-availability-threshold"></a>修改可用性閾值
 
-在此示例中，我們使用存儲帳戶容量活頁簿，並演示如何修改可用性閾值。 預設情況下，磁貼和網格報告百分比可用性配置為最小閾值為 90，最大閾值為 99。 我們將將 **"可用****點"網格中可用性% 的**最小閾值更改為 85%，這意味著如果閾值小於 85%，運行狀況狀態將更改為嚴重。 
+在此範例中，我們會使用儲存體帳戶容量活頁簿，並示範如何修改可用性閾值。 根據預設，磚和方格報告百分比的可用性設定為最低閾值為90，閾值上限為99。 我們將 [**可用性（依據 API 名稱**）] 方格的 [**可用性%** ] 的最小臨界值變更為85%，這表示當閾值低於85% 時，健全狀況狀態會變更為 [重大]。 
 
-1. 從門戶中選擇**存儲帳戶**，然後從清單中選擇存儲帳戶。
+1. 從入口網站中選取 [**儲存體帳戶**]，然後從清單中選取儲存體帳戶。
 
-2. 從左側窗格中選擇**見解（預覽）。**
+2. 從左側窗格中選取 [ **Insights （預覽）** ]。
 
-3. 在活頁簿中，選擇 **"可用性**"以切換到可用性活頁簿，然後從命令列中選擇 **"編輯**"。 
+3. 在活頁簿中，選取 [**可用性**] 以切換至可用性活頁簿，然後從命令列選取 [**編輯**]。 
 
-4. 向下滾動到頁面底部和左側的 API**網格可用性**旁邊，選擇 **"編輯**"。
+4. 向下流覽至頁面底部，然後在左側 [**可用性依據 API** ] 方格旁，選取 [**編輯**]。
 
-    ![按 API 名稱網格設置編輯可用性](./media/storage-insights-overview/availability-workbook-avail-by-apiname.png)
+    ![依 API 名稱方格設定編輯可用性](./media/storage-insights-overview/availability-workbook-avail-by-apiname.png)
 
-5. 選擇**列設置**，然後在 **"編輯列設置"** 窗格中，在 **"列"** 部分下選擇 **"可用性 （%） "（閾值 = 格式化）**.
+5. 選取 [資料**行設定**]，然後在 [**編輯資料行設定**] 窗格的 [資料**行**] 區段下選取 [**可用性（%）（閾值 + 已格式化）**。
 
-6. 將 **"嚴重**運行狀況狀態"的值從**90**更改為**85，** 然後按一下"**保存並關閉**"。
+6. 將 [**重大**健全狀況狀態] 的值從**90**變更為**85** ，然後按一下 [**儲存並關閉**]。
 
-    ![修改關鍵狀態的可用性閾值](./media/storage-insights-overview/edit-column-settings-capacity-workbook-01.png)
+    ![修改重大狀態的可用性臨界值](./media/storage-insights-overview/edit-column-settings-capacity-workbook-01.png)
 
-7. 選擇"從命令列**中保存為"** 以保存活頁簿的副本與自訂項，然後按一下 **"完成編輯**"以返回到讀取模式。
+7. 從命令列選取 [**另存**新檔]，以使用您的自訂儲存活頁簿的複本，然後按一下 [**完成編輯**] 回到閱讀模式。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-本節將説明您診斷和排除使用 Azure 監視器進行存儲（預覽）時可能遇到的一些常見問題。 請使用下列清單，找到與您的特定問題相關的資訊。
+本節將協助您進行診斷，並疑難排解使用 Azure 監視器儲存（預覽）時可能會遇到的一些常見問題。 請使用下列清單，找到與您的特定問題相關的資訊。
 
-### <a name="resolving-performance-capacity-or-availability-issues"></a>解決性能、容量或可用性問題
+### <a name="resolving-performance-capacity-or-availability-issues"></a>解決效能、容量或可用性問題
 
-為了説明解決使用 Azure 監視器進行存儲（預覽）確定的任何與存儲相關的問題，請參閱 Azure 存儲[故障排除指南](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)。  
+若要協助針對您使用 Azure 監視器 for Storage （預覽）識別的任何儲存體相關問題進行疑難排解，請參閱 Azure 儲存體[疑難排解指引](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance)。  
 
-### <a name="why-can-i-only-see-200-storage-accounts"></a>為什麼我只能看到 200 個存儲帳戶？
+### <a name="why-can-i-only-see-200-storage-accounts"></a>為什麼我只能看到200儲存體帳戶？
 
-所選存儲帳戶數的限制為 200，而不考慮所選的訂閱數。
+所選儲存體帳戶的數目限制為200，不論選取的訂閱數目為何。
 
-### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>按一下儀表板中最近固定的磁貼時會發生什麼情況？
+### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>當我按一下儀表板中最近釘選的磚時，會發生什麼事？
 
-* 如果按一下磁貼上的任意位置，它將將帶您到固定磁貼的選項卡。 例如，如果在"存儲帳戶概覽"選項卡中固定圖形，則當您按一下儀表板中的磁貼時，它將打開該預設視圖，但是，如果您從自己的已保存副本中固定圖形，則該圖形將打開已保存的副本的視圖。
-* 標題左上角的篩選器圖示將打開"配置磁貼設置"選項卡。
-* 右上角的橢圓圖示將為您提供"自訂標題資料"、"自訂"、"刷新"和"從儀表板中刪除"的選項。
+* 如果您按一下磚上的任何位置，則會帶您前往已釘選磚的索引標籤。 例如，如果您在 [儲存體帳戶總覽] 索引標籤中釘選圖形，那麼當您按一下儀表板中的磚時，就會開啟該預設視圖，不過，如果您從自己儲存的複本釘選圖形，則會開啟您儲存的複本。
+* 標題左上方的篩選圖示會開啟 [設定磚設定] 索引標籤。
+* 右上方的橢圓形圖示會提供您 [自訂標題資料]、[自訂]、[重新整理] 和 [從儀表板移除] 的選項。
 
-### <a name="what-happens-when-i-save-a-workbook"></a>保存活頁簿時會發生什麼情況？
+### <a name="what-happens-when-i-save-a-workbook"></a>當我儲存活頁簿時，會發生什麼事？
 
-* 保存活頁簿時，它允許您使用編輯創建活頁簿的新副本並更改標題。 保存不會覆蓋活頁簿，當前活頁簿將始終是預設視圖。
-* **未保存**的活頁簿只是預設視圖。
+* 當您儲存活頁簿時，它可讓您使用編輯和變更標題來建立活頁簿的新複本。 儲存不會覆寫活頁簿，目前的活頁簿一律會是預設的視圖。
+* **未**儲存的活頁簿只是預設的視圖。
 
 
-### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>為什麼我在門戶中看不到所有訂閱？
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>為什麼我在入口網站中看不到我的所有訂用帳戶？
 
-門戶將僅在門戶啟動時顯示所選訂閱的資料。 要更改所選訂閱的內容，請轉到右上角，然後按一下帶有篩選器圖示的筆記本。 這將顯示目錄 + 訂閱選項卡。
+入口網站只會在入口網站啟動時顯示所選訂用帳戶的資料。 若要變更選取的訂用帳戶，請移至右上方，然後按一下具有篩選圖示的筆記本。 這會顯示 [目錄 + 訂用帳戶] 索引標籤。
 
 ![目錄 + 訂閱](./media/storage-insights-overview/fqa3.png)
 
-### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>如何更改可用性的著色和閾值？
+### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>如何變更可用性的著色和閾值？
 
-有關如何更改顏色和閾值的可用性的詳細步驟，請參閱["修改可用性閾值"](storage-insights-overview.md#modify-the-availability-threshold)部分。
+請參閱[修改可用性閾值](storage-insights-overview.md#modify-the-availability-threshold)一節，以瞭解如何變更可用性的著色和閾值的詳細步驟。
 
-### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>如何分析和排除 Azure 監視器中顯示的資料以進行存儲？
+### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>如何分析儲存 Azure 監視器中顯示的資料並進行疑難排解？
 
- 有關如何分析和排除 Azure 監視器中存儲監視器中顯示的 Azure 存儲資料的詳細資訊，請參閱["監視、診斷和故障排除 Microsoft Azure 存儲](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting)"一文。
+ 請參閱[監視、診斷和疑難排解 Microsoft Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting)一文，以取得有關如何分析和疑難排解 Azure 監視器中顯示的 Azure 儲存體資料的詳細資訊。
 
-### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>為什麼我看不到指標中的所有類型的錯誤？
+### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>為什麼我在計量中看不到所有類型的錯誤？
 
-目前，最多顯示三種不同類型的錯誤，其餘錯誤在單個存儲桶中分組。 它使用拆分限制進行控制，可以修改。 要更改此屬性：
+目前，最多會顯示三種不同類型的錯誤，而其餘的錯誤會在單一值區中群組在一起。 它是使用 splitByLimit 來控制，而且可以修改。 若要變更此屬性：
 
-1. 按一下編輯活頁簿。
-2. 轉到指標，按一下編輯，然後選擇 **"交易記錄"、"總和**"或要編輯的任何指標。
+1. 按一下 [編輯活頁簿]。
+2. 移至 [計量]，按一下 [編輯]，然後選取 [**交易]、** [加總] 或您想要編輯的任何度量。
 
-    ![轉到指標，然後按一下編輯，然後點擊"交易，總和"](./media/storage-insights-overview/fqa7.png)
+    ![移至 [計量]，然後按一下 [交易、總和] 上的 [編輯]](./media/storage-insights-overview/fqa7.png)
 
-1. 然後更改拆分數。
+1. 然後變更分割數目。
 
-    ![選擇指標參數"](./media/storage-insights-overview/fqa7-2.png)
+    ![選取度量參數」](./media/storage-insights-overview/fqa7-2.png)
 
-如果要看到 n 種不同類型的錯誤，請將拆分比 Limit 指定為 n+1，則對於其餘錯誤，請額外看到 1 個錯誤。
+如果您想要查看與指定 splitByLimit 為 n + 1 不同的錯誤類型，則會針對其餘錯誤額外加上1。
 
-###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>我在某個存儲帳戶上保存了活頁簿。 為什麼我現在找不到它？
+###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>我在某個儲存體帳戶上儲存了活頁簿。 為什麼我無法立即找到它？
 
-每個活頁簿都保存在您將其保存在的存儲帳戶中。 嘗試查找使用者在其中保存活頁簿的特定存儲帳戶。 否則，在不知道資源（存儲帳戶）的情況下，無法查找特定的活頁簿。
+每個活頁簿都會儲存在您儲存它的儲存體帳戶中。 嘗試尋找使用者儲存活頁簿的特定儲存體帳戶。 否則，就無法尋找特定的活頁簿，而不需要知道資源（儲存體帳戶）。
 
 ### <a name="what-is-time-range"></a>什麼是時間範圍？
 
-時間範圍顯示來自特定時間範圍的資料。 例如，如果時間範圍為 24 小時，則顯示過去 24 小時的資料。
+時間範圍會顯示特定時間範圍內的資料。 例如，如果時間範圍是24小時，則會顯示過去24小時內的資料。
 
 ### <a name="what-is-time-granularity-time-grain"></a>什麼是時間細微性（時間細微性）？
 
-時間細微性是兩個資料點之間的時差。 例如，如果時間細微性設置為 1 秒，這意味著每秒收集指標。
+時間細微性是兩個資料點之間的時間差。 例如，如果 [時間細微性] 設定為1秒，表示每秒都會收集計量。
 
-### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>將活頁簿的任何部分固定到儀表板後，時間細微性是多少？
+### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>將活頁簿的任何部分釘選到儀表板後，會有什麼時間細微性？
 
-預設時間細微性設置為自動，當前無法更改。
+預設的時間細微性設定為 [自動]，目前無法變更。
 
-### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>如何更改儀表板上活頁簿步驟的時間範圍/時間範圍？
+### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>如何? 變更儀表板上活頁簿步驟的 timespan/time 範圍嗎？
 
-預設情況下，儀表板磁貼上的時間跨度/時間範圍設置為 24 小時，要更改右上角的橢圓的按一下，請選擇 **"自訂磁貼資料**"，選中"覆蓋標題級別的儀表板時間設置"框，然後使用下拉式功能表選擇時間跨度。  
+根據預設，儀表板磚上的 timespan/time 範圍設定為24小時，若要變更此值，請按一下右上方的省略號，選取 [**自訂磚資料**]，勾選 [覆寫標題層級的儀表板時間設定] 方塊，然後使用下拉式功能表挑選 timespan。  
 
-![選擇磁貼右角的橢圓，然後選擇"自訂此資料"](./media/storage-insights-overview/fqa-data-settings.png)
+![選取磚右上角的省略號，然後選擇 [自訂此資料]](./media/storage-insights-overview/fqa-data-settings.png)
 
-![在"配置磁貼設置"中選擇時間跨度下拉清單以更改時間跨度/時間範圍](./media/storage-insights-overview/fqa-timespan.png)
+![在 [設定磚設定] 中，選取 [timespan] 下拉式清單以變更 timespan/time 範圍](./media/storage-insights-overview/fqa-timespan.png)
 
-### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>如何更改活頁簿或固定到儀表板的活頁簿步驟的標題？
+### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>如何? 變更活頁簿或已釘選到儀表板之活頁簿步驟的標題？
 
-固定到儀表板的活頁簿或活頁簿步驟的標題將保留與活頁簿中相同的名稱。 要更改標題，必須保存自己的活頁簿副本。 然後，您可以在按保存之前命名活頁簿。
+釘選到儀表板之活頁簿或活頁簿步驟的標題，會保留其在活頁簿中的相同名稱。 若要變更標題，您必須儲存自己的活頁簿複本。 接著，您就能夠在按下 [儲存] 之前先命名活頁簿。
 
-![選擇"保存在頂部"以保存活頁簿的副本並更改其名稱](./media/storage-insights-overview/fqa-change-workbook-name.png)
+![選取頂端的 [儲存] 以儲存活頁簿的複本，並變更其名稱](./media/storage-insights-overview/fqa-change-workbook-name.png)
 
-要更改已保存活頁簿中步驟的名稱，請選擇在步驟下進行編輯，然後在設置的最底部選擇齒輪。
+若要變更已儲存活頁簿中步驟的名稱，請選取步驟底下的 [編輯]，然後選取 [設定] 最下方的齒輪。
 
-![選擇在活頁簿步驟底部進行編輯以打開設置](./media/storage-insights-overview/fqa-edit.png)
-![設置 在設置中選擇底部的齒輪，以便能夠更改步驟名稱](./media/storage-insights-overview/fqa-change-name.png)
+![選取活頁簿步驟底部的 [編輯]，以開啟 [設定](./media/storage-insights-overview/fqa-edit.png)
+![] 中的設定選取底部的齒輪，即可變更步驟名稱](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 配置[指標警報](../platform/alerts-metric.md)[和服務運行狀況通知](../../service-health/alerts-activity-log-service-notifications.md)以設置自動警報以説明檢測問題。
+* 設定計量[警示](../platform/alerts-metric.md)和[服務健康情況通知](../../service-health/alerts-activity-log-service-notifications.md)，以設定自動化警示以協助偵測問題。
 
-* 瞭解活頁簿旨在支援的方案、如何通過查看[使用 Azure 監視器活頁簿創建互動式報表](../app/usage-workbooks.md)來編寫新報表和自訂現有報表等。
+* 瞭解活頁簿設計來支援的案例、如何撰寫新的和自訂現有的報表，以及如何[使用 Azure 監視器活頁簿建立互動式報表](../app/usage-workbooks.md)。
 
 * 如需使用儲存體分析和其他工具來識別、診斷及疑難排解 Azure 儲存體相關問題的深入指南，請參閱 [監視、診斷及疑難排解 Microsoft Azure 儲存體](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)。

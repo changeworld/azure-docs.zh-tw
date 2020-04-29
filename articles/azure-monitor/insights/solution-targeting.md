@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
 ms.openlocfilehash: dd3279db67fb45aee43cf1b0ef1bebf49433eef4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77663227"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Azure 監視器中的目標監視解決方案 (預覽版)
@@ -22,13 +22,13 @@ ms.locfileid: "77663227"
 為解決方案設定目標有三個步驟，如下列各節中所述。 
 
 
-### <a name="1-create-a-computer-group"></a>1. 創建電腦群組
+### <a name="1-create-a-computer-group"></a>1. 建立電腦群組
 您可以透過在 Azure 監視器中建立[電腦群組](../platform/computer-groups.md)，來指定您想要包含在範圍內的電腦。  電腦群組可以是根據記錄查詢，或者從其他來源匯入 (例如 Active Directory 或 WSUS 群組)。 [如同下面所述](#solutions-and-agents-that-cant-be-targeted)，只有直接連線至 Azure 監視器的電腦才會包含在範圍內。
 
 一旦您在工作區中建立電腦群組，便可將它包含在可套用至一或多個解決方案的範圍設定中。
  
  
-### <a name="2-create-a-scope-configuration"></a>2. 創建範圍配置
+### <a name="2-create-a-scope-configuration"></a>2. 建立範圍設定
  「範圍設定」**** 包含一或多個電腦群組，可以套用至一或多個解決方案。 
  
  使用下列程序建立範圍設定。  
@@ -38,11 +38,11 @@ ms.locfileid: "77663227"
  3. 按一下 [新增]**** 以建立新的範圍設定。
  4. 輸入範圍設定的 [名稱]****。
  5. 按一下 [選取電腦群組]****。
- 6. 選取您所建立的電腦群組 (並選擇性地選取其他群組) 以新增至設定。  按一下 **"選擇**"。  
+ 6. 選取您所建立的電腦群組 (並選擇性地選取其他群組) 以新增至設定。  按一下 [選取]  。  
  6. 按一下 [確定]**** 以建立範圍設定。 
 
 
-### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. 將範圍配置應用於解決方案。
+### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. 將範圍設定套用至解決方案。
 一旦您有範圍設定，便可以將它套用至一或多個解決方案。  請注意，雖然單一範圍設定可以搭配多個解決方案使用，但每個解決方案僅可以使用一個範圍設定。
 
 使用下列程序套用範圍設定。  

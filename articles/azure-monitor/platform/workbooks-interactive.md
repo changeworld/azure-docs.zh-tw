@@ -1,5 +1,5 @@
 ---
-title: Azure 監視具有自訂參數的活頁簿
+title: 使用自訂參數 Azure 監視器活頁簿
 description: 使用預先建立及使用自訂參數之活頁簿來簡化複雜的報告
 services: azure-monitor
 author: mrbullwinkle
@@ -10,138 +10,138 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4d9f6e48722f01970a90a3a1d8d8b58b5d939774
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77658263"
 ---
 # <a name="interactive-workbooks"></a>互動式活頁簿
 
-活頁簿允許作者為其消費者創建互動式報告和體驗。 交互性在許多方面得到支援。
+活頁簿可讓作者為其取用者建立互動式報表和體驗。 有數種方式可支援互動性。
 
-## <a name="parameter-changes"></a>參數更改
-當活頁簿使用者更新參數時，使用 該參數的任何控制項都會自動刷新和重繪以反映新狀態。 這是大多數 Azure 門戶報告都支援交互性的方式。 活頁簿以非常直接的方式提供這一點，使用者工作量最小。
+## <a name="parameter-changes"></a>參數變更
+當活頁簿使用者更新參數時，任何使用參數的控制項都會自動重新整理和重新繪製，以反映新的狀態。 這是大部分的 Azure 入口網站報表支援互動的方式。 活頁簿以非常簡單的方式，以最少的使用者工作來提供這項功能。
 
-在[活頁簿中瞭解有關參數的更多詳細資訊](workbooks-parameters.md)
+深入瞭解活頁[簿中的參數](workbooks-parameters.md)
 
-## <a name="grid-row-clicks"></a>網格行按一下
-活頁簿允許作者構造方案，其中按一下網格中的行會根據行的內容更新後續圖表。 
+## <a name="grid-row-clicks"></a>方格資料列點擊
+活頁簿可讓作者建立案例，其中按一下方格中的資料列會根據資料列的內容來更新後續圖表。 
 
-例如，使用者可以有一個網格，顯示請求清單和某些統計資訊（如失敗計數）。 他們可以設置它，以便按一下與請求對應的行，將導致下面的詳細圖表更新以篩選到僅該請求。
+例如，使用者可以有一個方格，其中顯示要求清單和一些統計資料，例如失敗計數。 他們可以將其設定為按一下對應于要求的資料列，將會產生以下詳細的圖表，並將其更新為僅篩選出該要求。
 
-### <a name="setting-up-interactivity-on-grid-row-click"></a>設置網格行上的交互性按一下
-1. 通過按一下 _"編輯_"工具列項，將活頁簿切換到編輯模式。
-2. 使用 _"添加"查詢_連結將日誌查詢控制項添加到活頁簿。 
-3. 選取查詢類型作為_日誌_、資源類型（例如，應用程式見解）和目標資源。
-4. 使用查詢編輯器輸入 KQL 進行分析
+### <a name="setting-up-interactivity-on-grid-row-click"></a>設定方格資料列的互動
+1. 按一下 [_編輯_] 工具列專案，將活頁簿切換至編輯模式。
+2. 使用 [_加入查詢_] 連結，將記錄查詢控制項加入至活頁簿。 
+3. 選取 [_記錄_]、[資源類型] （例如 Application Insights）和 [目標資源] 做為 [查詢類型]。
+4. 使用查詢編輯器來輸入分析的 KQL
     ```kusto
     requests
     | summarize AllRequests = count(), FailedRequests = countif(success == false) by Request = name
     | order by AllRequests desc    
     ```
 5. `Run query`查看結果
-6. 按一下查詢頁腳上的 _"高級設置"_ 圖示（該圖示看起來像齒輪）。 這將打開高級設置窗格 
-7. 檢查設置：`When an item is selected, export a parameter`
+6. 按一下查詢頁尾上的 [_高級設定_] 圖示（圖示看起來就像齒輪）。 這會開啟 [高級設定] 窗格 
+7. 檢查設定：`When an item is selected, export a parameter`
     1. 要匯出的欄位：`Request`
     2. 參數名稱：`SelectedRequest`
     3. 預設值：`All requests`
     
-    ![顯示高級編輯器的圖像，其中設置將欄位匯出為參數](./media/workbooks-interactive/advanced-settings.png)
+    ![顯示 [高級編輯器] 的影像，其中包含將欄位匯出為參數的設定](./media/workbooks-interactive/advanced-settings.png)
 
 8. 按一下 [ `Done Editing`]。
-9. 使用步驟 2 和步驟 3 添加另一個查詢控制項。
-10. 使用查詢編輯器輸入 KQL 進行分析
+9. 使用步驟2和3加入另一個查詢控制項。
+10. 使用查詢編輯器來輸入分析的 KQL
     ```kusto
     requests
     | where name == '{SelectedRequest}' or 'All Requests' == '{SelectedRequest}'
     | summarize ['{SelectedRequest}'] = count() by bin(timestamp, 1h)
     ```
 11. `Run query`以查看結果。
-12. 將_視覺化更改為_`Area chart`
-12. 按一下第一個網格中的行。 請注意下面的區域圖如何篩選到所選請求。
+12. 將_視覺效果_變更為`Area chart`
+12. 按一下第一個方格中的資料列。 請注意下方的區域圖如何篩選為選取的要求。
 
-生成的報表在編輯模式下如下所示：
+產生的報表在編輯模式中看起來像這樣：
 
-![顯示使用網格行按一下創建互動式體驗的圖像](./media/workbooks-interactive//grid-click-create.png)
+![顯示建立互動式體驗的影像使用方格資料列點擊](./media/workbooks-interactive//grid-click-create.png)
 
-下圖顯示了基於相同原則的讀取模式下更精細的互動式報表。 報表使用網格按一下來匯出參數 - 這些參數又用於兩個圖表和一個文字區塊。
+下圖根據相同的原則，在閱讀模式中顯示更詳盡的互動式報表。 此報表會使用方格點按來匯出參數，然後在兩個圖表和文字區塊中使用。
 
-![顯示使用網格行按一下創建互動式體驗的圖像](./media/workbooks-interactive/grid-click-read-mode.png)
+![顯示建立互動式體驗的影像使用方格資料列點擊](./media/workbooks-interactive/grid-click-read-mode.png)
 
-### <a name="exporting-the-contents-of-an-entire-row"></a>匯出整行的內容
-有時需要匯出所選行的全部內容，而不僅僅是特定列。 在這種情況下，保留上述`Field to export`步驟 7.1 中未設置的屬性。 活頁簿將整個行內容作為 json 匯出到參數。 
+### <a name="exporting-the-contents-of-an-entire-row"></a>匯出整個資料列的內容
+有時候，您可能會想要匯出所選資料列的整個內容，而不只是特定資料行。 在這種情況下， `Field to export`請在上述步驟7.1 中將屬性保留為未設定。 活頁簿會將整個資料列內容以 json 格式匯出至參數。 
 
-在引用 KQL 控制項上，使用`todynamic`函數解析 json 並訪問各個列。
+在參考的 KQL 控制項上，使用`todynamic`函式來剖析 json 並存取個別的資料行。
 
- ## <a name="grid-cell-clicks"></a>網格儲存格按一下
-活頁簿允許作者通過稱為 的特殊類型的網格列呈現器添加交互性`link renderer`。 連結渲染器根據儲存格的內容將網格儲存格轉換為超連結。 活頁簿支援多種連結呈現器 - 包括允許打開資源概述刀片、屬性包檢視器、應用見解搜索、使用方式、事務跟蹤等的功能。
+ ## <a name="grid-cell-clicks"></a>方格資料格點擊
+活頁簿可讓作者透過特殊類型的格線資料行轉譯器（ `link renderer`稱為）來新增互動。 連結轉譯器會根據儲存格的內容，將方格資料格轉換成超連結。 活頁簿支援多種類型的連結轉譯器，包括可開啟資源總覽 blade、屬性包檢視器、App Insights 搜尋、使用量、交易追蹤等等的範本轉譯器。
 
-### <a name="setting-up-interactivity-using-grid-cell-clicks"></a>使用網格儲存格按一下設置交互性
-1. 通過按一下 _"編輯_"工具列項，將活頁簿切換到編輯模式。
-2. 使用 _"添加"查詢_連結將日誌查詢控制項添加到活頁簿。 
-3. 選取查詢類型作為_日誌_、資源類型（例如，應用程式見解）和目標資源。
-4. 使用查詢編輯器輸入 KQL 進行分析
+### <a name="setting-up-interactivity-using-grid-cell-clicks"></a>使用方格資料格點按滑鼠來設定互動性
+1. 按一下 [_編輯_] 工具列專案，將活頁簿切換至編輯模式。
+2. 使用 [_加入查詢_] 連結，將記錄查詢控制項加入至活頁簿。 
+3. 選取 [_記錄_]、[資源類型] （例如 Application Insights）和 [目標資源] 做為 [查詢類型]。
+4. 使用查詢編輯器來輸入分析的 KQL
     ```kusto
     requests
     | summarize Count = count(), Sample = any(pack_all()) by Request = name
     | order by Count desc
     ```
 5. `Run query`查看結果
-6. 按一下 _"列設置"_ 以打開設置窗格。
-7. 在 _"列"_ 部分中，設置：
-    1. _示例_- 列渲`Link`染器：、查看`Cell Details`打開： 、連結標籤：`Sample`
-    2. _計數_- 列渲`Bar`染器：、`Blue`調色板： 、最小值：`0`
-    3. _請求_- 列渲染器：`Automatic`
-    4. 按一下"_保存"和"關閉_"以應用更改
-8. 按一下網格中的`Sample`一個連結。 這將打開一個包含採樣請求詳細資訊的屬性窗格。
+6. 按一下 [資料_行設定_] 以開啟 [設定] 窗格。
+7. 在 [資料_行_] 區段中，設定：
+    1. _範例_-資料行轉譯`Link`器：，View 可`Cell Details`開啟：，連結標籤：`Sample`
+    2. _計數_-資料行轉譯`Bar`器：，色彩`Blue`色板：，最小值：`0`
+    3. _要求_-資料行轉譯器：`Automatic`
+    4. 按一下 [_儲存並關閉_] 以套用變更
+8. 按一下方格中的`Sample`其中一個連結。 這會開啟 [屬性] 窗格，其中包含取樣要求的詳細資料。
 
-    ![顯示使用網格儲存格按一下創建互動式體驗的圖像](./media/workbooks-interactive/grid-cell-click-create.png)
+    ![顯示如何使用方格資料格來建立互動式體驗的影像](./media/workbooks-interactive/grid-cell-click-create.png)
 
-### <a name="link-renderer-actions"></a>連結渲染器操作
-| 連結操作 | 按一下操作 |
+### <a name="link-renderer-actions"></a>連結轉譯器動作
+| 連結動作 | 按一下時的動作 |
 |:------------- |:-------------|
-| `Generic Details` | 在屬性網格上下文邊欄選項卡中顯示行值 |
-| `Cell Details` | 在屬性網格上下文邊欄選項卡中顯示儲存格值。 當儲存格包含包含包含資訊的動態類型（例如，具有請求屬性（如位置、角色實例等）的 json 時非常有用。 |
-| `Cell Details` | 在屬性網格上下文邊欄選項卡中顯示儲存格值。 當儲存格包含包含包含資訊的動態類型（例如，具有請求屬性（如位置、角色實例等）的 json 時非常有用。 |
-| `Custom Event Details` | 使用儲存格中的自訂事件 ID （itemId） 打開應用程式見解搜索詳細資訊 |
-| `* Details` | 與自訂事件詳細資訊類似，但依賴項、異常、網頁檢視、請求和跟蹤除外。 |
-| `Custom Event User Flows` | 打開在儲存格中的自訂事件名稱上旋轉的應用程式見解使用者流體驗 |
-| `* User Flows` | 與自訂事件使用者流類似，例外、網頁檢視和請求除外 |
-| `User Timeline` | 在儲存格中使用使用者 ID （user_Id） 打開使用者時間表 |
-| `Session Timeline` | 打開儲存格中值的應用程式見解搜索體驗（例如，搜索 abc 中的值的 abc 文本"abc" |
-| `Resource overview` | 根據儲存格中的資源識別碼 值在門戶中打開資源概覽 |
+| `Generic Details` | 顯示內容方格內容分頁中的資料列值 |
+| `Cell Details` | 顯示內容方格內容分頁中的資料格值。 當資料格包含具有資訊的動態型別（例如，具有位置、角色實例等要求屬性的 json）時，很有用。 |
+| `Cell Details` | 顯示內容方格內容分頁中的資料格值。 當資料格包含具有資訊的動態型別（例如，具有位置、角色實例等要求屬性的 json）時，很有用。 |
+| `Custom Event Details` | 使用資料格內的自訂事件識別碼（itemId），開啟 Application Insights 搜尋詳細資料 |
+| `* Details` | 類似于自訂事件詳細資料，但相依性、例外狀況、頁面流覽、要求和追蹤除外。 |
+| `Custom Event User Flows` | 開啟在資料格的自訂事件名稱上進行切換的 Application Insights 消費者流程體驗 |
+| `* User Flows` | 類似于自訂事件消費者流程例外狀況、頁面流覽和要求除外 |
+| `User Timeline` | 以使用者識別碼（user_Id）在資料格中開啟使用者時間軸 |
+| `Session Timeline` | 針對資料格中的值開啟 [Application Insights 搜尋體驗] （例如，搜尋文字 ' abc '，其中 abc 是資料格中的值） |
+| `Resource overview` | 根據資料格中的資源識別碼值，在入口網站中開啟資源的總覽 |
 
-## <a name="conditional-visibility"></a>可見度條件
-活頁簿允許使用者根據參數的值顯示或消失某些控制項。 這允許作者根據使用者輸入或遙測狀態使報表看起來不同。 例如，當情況良好時，向消費者顯示摘要，但當出現問題時顯示全部詳細資訊。
+## <a name="conditional-visibility"></a>條件式可見度
+活頁簿可讓使用者根據參數值來顯示或消失特定的控制項。 這可讓作者根據使用者輸入或遙測狀態，讓報表看起來不同。 例如，當事情良好時，取用者只會顯示摘要，但在發生錯誤時，會顯示完整的詳細資料。
 
-### <a name="setting-up-interactivity-using-conditional-visibility"></a>使用可見度條件設置交互性
-1. 按照本節中`Setting up interactivity on grid row click`的步驟設置兩個互動式控制項。
-2. 在頂部添加新參數：
+### <a name="setting-up-interactivity-using-conditional-visibility"></a>使用條件式可見度設定互動性
+1. 請依照`Setting up interactivity on grid row click`一節中的步驟來設定兩個互動式控制項。
+2. 在頂端加入新的參數：
     1. 名稱：`ShowDetails`
     2. 參數類型：`Drop down`
     3. 必填：`checked`
-    4. 從：`JSON`
+    4. 取得資料來源：`JSON`
     5. JSON 輸入：`["Yes", "No"]`
-    6. 保存以提交更改。
-3. 將參數值設置為`Yes`
-4. 在帶有面積圖的查詢控制項中，按一下 _"高級設置"_ 圖示（齒輪圖示）
-5. 檢查設置`Make this item conditionally visible`
-    1. 如果`ShowDetails`參數值`equals`可見此項`Yes`
-6. 按一下 _"完成編輯_"以提交更改。
-7. 按一下作業簿工具列上的 _"完成編輯_"以進入讀取模式。
-8. 將參數`ShowDetails`的值切換到`No`。 請注意，下面的圖表將消失。
+    6. 儲存以認可變更。
+3. 將參數值設定為`Yes`
+4. 在含有區域圖的查詢控制項中，按一下 [_高級設定_] 圖示（齒輪圖示）
+5. 檢查設定`Make this item conditionally visible`
+    1. 如果`ShowDetails`參數值`equals`為，則會顯示此專案`Yes`
+6. 按一下 [_完成編輯_] 以認可變更。
+7. 按一下活頁簿工具列上的 [_完成編輯_] 以進入 [讀取] 模式。
+8. 將參數`ShowDetails`的值切換為`No`。 請注意，下圖會消失。
 
-下圖顯示了可見大小寫`ShowDetails``Yes`
+下圖顯示的是可見的情況`ShowDetails` ，其中是`Yes`
 
-![顯示圖表可見可見度條件的圖像](./media/workbooks-interactive/conditional-visibility.png)
+![顯示可顯示圖表之條件式可見度的影像](./media/workbooks-interactive/conditional-visibility.png)
 
-下圖顯示了隱藏大小寫`ShowDetails``No`
+下圖顯示的是隱藏的案例`ShowDetails` ，其中是`No`
 
-![顯示圖表隱藏位置的可見度條件的圖像](./media/workbooks-interactive/conditional-invisible.png)
+![顯示隱藏圖表之條件式可見度的影像](./media/workbooks-interactive/conditional-invisible.png)
 
 ## <a name="next-steps"></a>後續步驟
 
 
-* [開始](workbooks-visualizations.md)瞭解有關活頁簿的許多豐富視覺化選項的詳細資訊。
-* [控制和](workbooks-access-control.md)共用對活頁簿資源的存取權限。
+* [開始深入](workbooks-visualizations.md)瞭解活頁簿許多豐富的視覺效果選項。
+* [控制](workbooks-access-control.md)和共用您的活頁簿資源的存取權。

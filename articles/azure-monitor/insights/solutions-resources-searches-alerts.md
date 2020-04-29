@@ -1,6 +1,6 @@
 ---
-title: 管理解決方案中保存的搜索 |微軟文檔
-description: 管理解決方案通常包括保存的日誌查詢，以分析解決方案收集的資料。 本文介紹如何在資源管理器範本中定義日誌分析保存的搜索。
+title: 管理解決方案中儲存的搜尋 |Microsoft Docs
+description: 管理解決方案通常包含已儲存的記錄查詢，以分析解決方案所收集的資料。 本文說明如何在 Resource Manager 範本中定義 Log Analytics 儲存的搜尋。
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
@@ -8,16 +8,16 @@ ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 61fc64e140af091b5ff3f631398daf901557791b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77663023"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>將 Log Analytics 儲存的搜尋和警示新增到管理解決方案 (預覽)
 
 > [!IMPORTANT]
-> 如[前所述](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)*，2019 年 6 月 1*日之後創建的日誌分析工作區將能夠**僅**使用 Azure 計畫查詢規則[REST API、Azure](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)[資源管理器範本](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)和[PowerShell Cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)來管理警報規則。 客戶可以輕鬆地為較舊的工作區[切換其首選的警報規則管理方法](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)，以利用 Azure 監視器計畫查詢規則作為預設值，並獲得許多[新優勢](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api)，如使用本機 PowerShell Cmdlet 的能力、增加規則中的回顧時間、在單獨的資源組或訂閱中創建規則等等。
+> 如[先前所宣佈](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/)，在*2019 年6月 1*日之後建立的 log analytics 工作區，將**只能使用 Azure** ScheduledQueryRules [REST API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)、 [Azure Resource Manager 範本](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template)和[PowerShell Cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell)來管理警示規則。 客戶可以輕鬆地切換較舊工作區的[警示規則管理慣用方式](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api)，利用 Azure 監視器 scheduledQueryRules 做為預設值，並取得許多[新的優點](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api)，例如使用原生 PowerShell Cmdlet、增加規則中的回顧時間週期、在個別資源群組或訂用帳戶中建立規則，以及更多其他功能。
 
 > [!NOTE]
 > 這是建立管理解決方案 (目前處於預覽狀態) 的預備文件。 以下所述的任何結構描述可能會有所變更。
@@ -25,16 +25,16 @@ ms.locfileid: "77663023"
 [管理解決方案](solutions.md)通常會包含 Log Analytics 中[儲存的搜尋](../../azure-monitor/log-query/log-query-overview.md)，來分析解決方案所收集的資料。 它們可能也會定義[警示](../../azure-monitor/platform/alerts-overview.md)來通知使用者，或自動採取動作以回應重大的問題。 本文說明如何在[資源範本範本](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)中定義 Log Analytics 儲存的搜尋與警示，讓它們能夠包含於[管理解決方案](solutions-creating.md)中。
 
 > [!NOTE]
-> 本文中的示例使用管理解決方案需要或通用的參數和變數，並在["設計"中描述並在 Azure 中構建管理解決方案](solutions-creating.md)
+> 本文中的範例使用管理解決方案所需或通用的參數和變數，如在[Azure 中設計和建立管理解決方案](solutions-creating.md)中所述。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 本文假設您已經熟悉如何[建立管理解決方案](solutions-creating.md)，以及 [Resource Manager 範本](../../azure-resource-manager/templates/template-syntax.md)和解決方案檔案的結構。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics 工作區
 Log Analytics 中的所有資源都包含於[工作區](../../azure-monitor/platform/manage-access.md)中。 如 [Log Analytics 工作區和自動化帳戶](solutions.md#log-analytics-workspace-and-automation-account)所述，工作區不會包含於管理解決方案中，但在安裝解決方案前就必須存在。 如果無法使用，則解決方案安裝會失敗。
 
-工作區的名稱位於每個 Log Analytics 資源的名稱中。 這在使用**工作區**參數的解決方案中完成，如以下"已保存搜索"資源示例。
+工作區的名稱位於每個 Log Analytics 資源的名稱中。 這會在解決方案中使用**工作區**參數來完成，如下列 SavedSearch 資源範例所示。
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
@@ -70,7 +70,7 @@ Resource Manager 範本中所定義的所有 Log Analytics 資源都會有 **api
 
 下表說明儲存的搜尋的每個屬性。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:--- |
 | category | 儲存的搜尋的類別。  同一個解決方案中所有儲存的搜尋通常都會共用單一類別，因此它們會在主控台中群組在一起。 |
 | displayname | 要在入口網站中顯示之儲存的搜尋名稱。 |
@@ -83,11 +83,11 @@ Resource Manager 範本中所定義的所有 Log Analytics 資源都會有 **api
 [Azure 記錄警示](../../azure-monitor/platform/alerts-unified-log.md)是由 Azure 警示規則所建立，以定期執行指定的記錄查詢。 如果查詢的結果符合指定的準則，就會建立警示記錄，並使用[動作群組](../../azure-monitor/platform/action-groups.md)執行一或多個動作。
 
 針對將警示延伸至 Azure 的使用者，現在便會以 Azure 動作群組來控制動作。 將工作區及其警示延伸至 Azure 之後，您便可使用[動作群組 - Azure Resource Manager 範本](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)來擷取或新增動作。
-舊管理解決方案中的警報規則由以下三種不同的資源組成。
+舊版管理解決方案中的警示規則是由下列三個不同的資源所組成。
 
-- **保存的搜索。** 定義所執行的記錄搜尋。 多個警示規則可以共用單一儲存的搜尋。
-- **附表。** 定義記錄搜尋的執行頻率。 每個警示規則都只能有一個排程。
-- **警報操作。** 每個警示規則都會有一個具有一種**警示**類型的動作群組資源或動作資源 (舊版)，該類型會定義警示的詳細資料，像是建立警示記錄的時機及警示的嚴重性等準則。 [動作群組](../../azure-monitor/platform/action-groups.md)資源可以有一份設定來要在引發警示時採取的動作清單，例如，語音電話、SMS、電子郵件、Webhook、ITSM 工具、自動化 Runbook、邏輯應用程式等等。
+- **已儲存的搜尋。** 定義所執行的記錄搜尋。 多個警示規則可以共用單一儲存的搜尋。
+- **任務.** 定義記錄搜尋的執行頻率。 每個警示規則都只能有一個排程。
+- **警示動作。** 每個警示規則都會有一個具有一種**警示**類型的動作群組資源或動作資源 (舊版)，該類型會定義警示的詳細資料，像是建立警示記錄的時機及警示的嚴重性等準則。 [動作群組](../../azure-monitor/platform/action-groups.md)資源可以有一份設定來要在引發警示時採取的動作清單，例如，語音電話、SMS、電子郵件、Webhook、ITSM 工具、自動化 Runbook、邏輯應用程式等等。
 
 儲存的搜尋資源如上所述。 其他資源將在後續內容中加以說明。
 
@@ -125,7 +125,7 @@ Resource Manager 範本中所定義的所有 Log Analytics 資源都會有 **api
 一個排程可以有多個動作。 一個動作可能定義一或多個處理序來執行，例如傳送郵件或啟動 Runbook，或也可能定義臨界值來判斷搜尋結果是否符合某些準則。 某些動作會同時定義這兩者，以便符合臨界值時執行處理序。
 動作可以使用 [動作群組] 資源或動作資源來定義。
 
-**Type** 屬性會指定兩種類型的動作資源。 計畫需要一個**警報**操作，該操作定義警報規則的詳細資訊以及創建警報時執行的操作。 動作資源具有 `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` 類型。
+**Type** 屬性會指定兩種類型的動作資源。 排程需要一個**警示**動作，其會定義警示規則的詳細資料，以及建立警示時所採取的動作。 動作資源具有 `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` 類型。
 
 警示動作具備下列結構。 這包括一般變數和參數，因此您可以將此程式碼片段複製並貼到您的解決方案檔，然後變更參數名稱。
 
@@ -168,7 +168,7 @@ Resource Manager 範本中所定義的所有 Log Analytics 資源都會有 **api
 | `type` | 是 | 動作的類型。  這是適用於警示動作的**警示**。 |
 | `name` | 是 | 警示的顯示名稱。  這是顯示於主控台中的警示規則名稱。 |
 | `description` | 否 | 警示的選擇性描述。 |
-| `severity` | 是 | 警示記錄的嚴重性有下列值：<br><br> **關鍵**<br>**warning**<br>**資訊**
+| `severity` | 是 | 警示記錄的嚴重性有下列值：<br><br> **成**<br>**warning**<br>**供**
 
 #### <a name="threshold"></a>閾值
 此為必要區段。 它會定義警示臨界值的屬性。

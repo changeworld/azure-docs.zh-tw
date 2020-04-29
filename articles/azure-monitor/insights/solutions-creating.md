@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f1605597c7716ba6a896c7ecdae968f07d66027b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77663210"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>在 Azure 中設計和建置管理解決方案 (預覽)
@@ -69,7 +69,7 @@ Log Analytics 中的檢視可以視覺方式呈現 Log Analytics 儲存機制中
 解決方案完成並通過測試後，您可以透過下列來源將它提供給客戶。
 
 - **Azure 快速入門範本**。  [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)是一組由社群成員透過 GitHub 所貢獻的 Resource Manager 範本。  您可以藉由遵循[參與指南](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE)中的資訊，來提供您的解決方案。
-- **Azure 應用商店**。  [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) 可讓您將解決方案散發和販售給其他開發人員、ISV 和 IT 專業人員。  您可以在[如何在 Azure Marketplace 中發佈和管理供應項目](../../marketplace/marketplace-publishers-guide.md)中，了解如何將解決方案發佈至 Azure Marketplace。
+- **Azure Marketplace**。  [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/) 可讓您將解決方案散發和販售給其他開發人員、ISV 和 IT 專業人員。  您可以在[如何在 Azure Marketplace 中發佈和管理供應項目](../../marketplace/marketplace-publishers-guide.md)中，了解如何將解決方案發佈至 Azure Marketplace。
 
 
 

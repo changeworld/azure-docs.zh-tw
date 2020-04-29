@@ -4,10 +4,10 @@ description: 自動化 Application Insights 的組態以取得有關度量變更
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669840"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>在 Application Insights 中使用 PowerShell 設定警示
@@ -126,7 +126,7 @@ GUID 是該訂用帳戶的 ID (而非應用程式的檢測金鑰)。
 ## <a name="webhooks"></a>Webhook
 您可以[自動回應至警示](../../azure-monitor/platform/alerts-webhooks.md)。 Azure 會在出現警示時呼叫您選擇的網址。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [用來設定 Application Insights 的指令碼](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
 * [從範本建立 Application Insights 和 Web 測試資源](powershell.md)
 * [自動化 Microsoft Azure 診斷與 Application Insights 的耦合](powershell-azure-diagnostics.md)

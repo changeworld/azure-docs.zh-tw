@@ -1,5 +1,5 @@
 ---
-title: 與 Azure VM 一起使用的安全功能
+title: 與 Azure Vm 搭配使用的安全性功能
 titleSuffix: Azure security
 description: 本文對可用於虛擬機器的 Azure 安全性功能提供核心的概觀。
 services: security
@@ -17,14 +17,14 @@ ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
 ms.openlocfilehash: a1726e18ea8c1ba86d77d7b9ca3d50c444620361
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77657158"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 虛擬機器安全性概觀
-本文概述了可與虛擬機器一起使用的核心 Azure 安全功能。
+本文提供可與虛擬機器搭配使用的核心 Azure 安全性功能的總覽。
 
 您可以使用 Azure 虛擬機器靈活地部署各種運算方案。 此服務支援 Microsoft Windows、Linux、Microsoft SQL Server、Oracle、IBM、SAP 和 Azure BizTalk 服務。 因此，您幾乎可以在所有作業系統上部署任何工作負載和任何語言。
 
@@ -46,12 +46,12 @@ Azure 虛擬機器讓您能夠有彈性地進行虛擬化，而不需購買並�
 
 適用於 Azure 的 Microsoft Antimalware 是針對應用程式和租用戶環境所提供的單一代理程式解決方案。 其設計可於無人為介入的情況下在背景中執行。 您可依據應用程式工作負載需求，選擇預設的基本安全性或進階的自訂組態 (包括反惡意程式碼監視) 來部署保護。
 
-詳細瞭解適用于[Azure 的 Microsoft 反惡意軟體](antimalware.md)以及可用的核心功能。
+深入瞭解適用[于 Azure 的 Microsoft Antimalware](antimalware.md)和可用的核心功能。
 
 深入了解反惡意程式碼軟體以協助保護虛擬機器︰
 
 * [在 Azure 虛擬機器上部署反惡意程式碼解決方案](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [如何在 Windows VM 上安裝和配置趨勢微型深層安全作為服務](/azure/virtual-machines/windows/classic/install-trend)
+* [如何在 Windows VM 上安裝和設定 Trend 微深度安全性即服務](/azure/virtual-machines/windows/classic/install-trend)
 * [如何在 Windows VM 上安裝和設定 Symantec Endpoint Protection](/azure/virtual-machines/windows/classic/install-symantec)
 * [Azure Marketplace 中的安全性解決方案](https://azure.microsoft.com/marketplace/?term=security)
 
@@ -84,7 +84,7 @@ Azure 虛擬機器讓您能夠有彈性地進行虛擬化，而不需購買並�
 
 ## <a name="virtual-machine-disk-encryption"></a>虛擬機器磁碟加密
 
-Azure 磁碟加密是用於加密 Windows 和 Linux 虛擬機器磁碟的新功能。 Azure 磁片加密使用 Windows 的行業標準[BitLocker](https://technet.microsoft.com/library/cc732774.aspx)功能和 Linux 的[dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能為作業系統和資料磁片提供卷加密。
+Azure 磁碟加密是用於加密 Windows 和 Linux 虛擬機器磁碟的新功能。 Azure 磁碟加密使用 Windows 的業界標準[BitLocker](https://technet.microsoft.com/library/cc732774.aspx)功能和 Linux 的[dm crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能，為 OS 和資料磁片提供磁片區加密。
 
 此解決方案與 Azure Key Vault 整合，協助您控制及管理金鑰保存庫訂用帳戶中的磁碟加密金鑰與祕密。 它可確保虛擬機器磁碟上的所有資料都會在 Azure 儲存體中進行待用加密。
 
@@ -99,8 +99,8 @@ Azure 備份是可調式解決方案，可以不需成本地協助保護您的�
 
 深入了解：
 
-* [什麼是 Azure 備份？](/azure/backup/backup-introduction-to-azure-backup)
-* [Azure 備份服務常見問題解答](/azure/backup/backup-azure-backup-faq)
+* [何謂 Azure 備份？](/azure/backup/backup-introduction-to-azure-backup)
+* [Azure 備份服務常見問題](/azure/backup/backup-azure-backup-faq)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
@@ -117,7 +117,7 @@ Azure 備份是可調式解決方案，可以不需成本地協助保護您的�
 深入了解：
 
 * [什麼是 Azure Site Recovery？](/azure/site-recovery/site-recovery-overview)
-* [Azure 網站恢復如何工作？](/azure/site-recovery/site-recovery-components)
+* [Azure Site Recovery 如何運作？](/azure/site-recovery/site-recovery-components)
 * [Azure Site Recovery 保護哪些工作負載？](/azure/site-recovery/site-recovery-workload)
 
 ## <a name="virtual-networking"></a>虛擬網路
@@ -129,8 +129,8 @@ Azure 虛擬網路是以實體 Azure 網路網狀架構為基礎所建置的邏�
 深入了解：
 
 * [Azure 網路安全性概觀](network-overview.md)
-* [虛擬網路概觀](/azure/virtual-network/virtual-networks-overview)
-* [企業方案的網路功能和夥伴關係](https://azure.microsoft.com/blog/networking-enterprise/)
+* [虛擬網路總覽](/azure/virtual-network/virtual-networks-overview)
+* [企業案例的網路功能與合作關係](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>安全性原則管理和報告
 
@@ -147,7 +147,7 @@ Azure 資訊安全中心可協助您保護、偵測威脅並採取相應的措�
 * [Azure 資訊安全中心常見問題集](/azure/security-center/security-center-faq)
 * [Azure 資訊安全中心規劃和操作](/azure/security-center/security-center-planning-and-operations-guide)
 
-## <a name="compliance"></a>法規遵循
+## <a name="compliance"></a>合規性
 
 Azure 虛擬機器經過 FISMA、FedRAMP、HIPAA、PCI DSS Level 1 及其他重要規範計劃認證。 此認證可讓您自己的 Azure 應用程式更容易符合規範要求，並讓您的企業解決廣泛的國內與國際法規要求。
 
@@ -167,8 +167,8 @@ TEE 能確保沒有任何方法可以從外部檢視資料或內部作業，就�
 深入了解：
 
 * [Azure 機密運算簡介](https://azure.microsoft.com/blog/introducing-azure-confidential-computing/) \(英文\)  
-* [Azure 機密運算](https://azure.microsoft.com/blog/azure-confidential-computing/) \(英文\)  
+* [Azure 機密運算](https://azure.microsoft.com/blog/azure-confidential-computing/)  
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解 VM 和作業系統[的安全最佳實踐](iaas.md)。
+瞭解 Vm 和作業系統的[安全性最佳作法](iaas.md)。

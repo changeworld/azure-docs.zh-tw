@@ -7,22 +7,22 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 49eb3fa22bc9afffb9e93f3152cdc00323b76d41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77662156"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>在 Azure 監視器中使用 Log Analytics Linux 代理程式收集自訂 JSON 資料來源
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-您可以使用 Log Analytics Linux 代理程式將自訂 JSON 資料來源收集到 [Azure 監視器](data-platform.md)中。  這些自訂資料來源可以是返回 JSON 的簡單腳本，如[捲曲](https://curl.haxx.se/)或[FluentD 的 300 多個外掛程式](https://www.fluentd.org/plugins/all)之一。 本文說明此資料收集所需的設定。
+您可以使用 Log Analytics Linux 代理程式將自訂 JSON 資料來源收集到 [Azure 監視器](data-platform.md)中。  這些自訂資料來源可以是傳回 JSON 的簡單腳本，例如[捲曲](https://curl.haxx.se/)或其中一個[FluentD 的 300 + 外掛程式](https://www.fluentd.org/plugins/all)。 本文說明此資料收集所需的設定。
 
 
 > [!NOTE]
 > 需要有 Log Analytics Linux 代理程式 v1.1.0-217+ 才能收集自訂 JSON 資料
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="configure-input-plugin"></a>設定輸入外掛程式
 

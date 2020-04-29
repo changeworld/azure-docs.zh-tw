@@ -1,5 +1,5 @@
 ---
-title: Azure 應用程式見解 - Azure 功能支援的功能
+title: Azure 應用程式 Insights-Azure Functions 支援的功能
 description: 支援 Azure Functions 的 Application Insights 功能
 ms.topic: reference
 author: TimothyMothra
@@ -7,19 +7,19 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: cf0c97fd65f9966bf42fa22e2c8f92263952cb7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77655645"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>適用於 Azure Functions 的 Application Insights 支援的功能
 
 Azure Functions 提供與 Application Insights 的[內建整合](../../azure-functions/functions-monitoring.md)，可透過 ILogger 介面來使用。 以下列出目前支援的功能。 請檢閱 Azure Functions 的[開始使用](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)指南。
 
-有關函數執行階段版本的詳細資訊，請參閱[此處](../../azure-functions/functions-versions.md)。
+如需函數執行時間版本的詳細資訊，請參閱[這裡](../../azure-functions/functions-versions.md)。
 
-有關相容版本的應用程式見解的詳細資訊，請參閱[依賴項](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)。
+如需 Application Insights 相容版本的詳細資訊，請[參閱相依](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)性。
 
 ## <a name="supported-features"></a>支援的功能
 
@@ -42,11 +42,11 @@ Azure Functions 提供與 Application Insights 的[內建整合](../../azure-fun
 | &bull; 取樣                     | 是             | 是               | 
 | &bull; 活動訊號                   |                 | 是               | 
 | | | | 
-| **相關**                       |                   |                   |               
+| **Correlation**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | 是               | 
 | &bull; EventHub                       |                   | 是               | 
 | | | | 
-| **配置**                      |                   |                   |           
+| **可設定**                      |                   |                   |           
 | &bull;可完整設定。<br/>如需相關指示，請參閱 [Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852)。<br/>請參閱 [Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) 以了解所有選項。               |                   | 是                   | 
 
 
@@ -63,9 +63,9 @@ Azure Functions 提供與 Application Insights 的[內建整合](../../azure-fun
 
 Azure Functions 依預設會在其設定中啟用取樣。 如需詳細資訊，請參閱[設定取樣](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)。
 
-如果專案依賴于應用程式見解 SDK 來執行手動遙測跟蹤，則如果採樣配置與函數的採樣配置不同，則可能會遇到奇怪的行為。 
+如果您的專案相依于 Application Insights SDK 以進行手動遙測追蹤，則如果您的取樣設定與函式的取樣設定不同，可能會遇到奇怪的行為。 
 
-我們建議使用與函數相同的配置。 使用**函數 v2**，您可以使用建構函式中的依賴項注入獲得相同的配置：
+我們建議使用與函式相同的設定。 使用**函數 v2**，您可以在您的函式中使用相依性插入來取得相同的設定：
 
 ```csharp
 using Microsoft.ApplicationInsights;

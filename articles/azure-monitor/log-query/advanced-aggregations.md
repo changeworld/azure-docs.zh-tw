@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: e5dc290a40342e0797001dde6cab90e12dd5cf39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77662173"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的進階彙總
@@ -113,7 +113,7 @@ Heartbeat
 | ... | ... |
 
 ## <a name="handling-missing-bins"></a>處理遺失的間隔
-一個有用的應用程式`mvexpand`是需要填充缺少的條柱的預設值。例如，假設您通過探索特定電腦的心跳來查找其停機時間。 您可能也想要查看活動訊號來源，這位於「類別」__ 欄。 一般而言，我們會使用簡單的 summarize 陳述式，如下所示：
+有一個有用的`mvexpand`應用程式，就是需要針對遺漏的 bin 填入中的預設值。例如，假設您想要尋找特定機器的執行時間，方法是探索其心跳。 您可能也想要查看活動訊號來源，這位於「類別」__ 欄。 一般而言，我們會使用簡單的 summarize 陳述式，如下所示：
 
 ```Kusto
 Heartbeat

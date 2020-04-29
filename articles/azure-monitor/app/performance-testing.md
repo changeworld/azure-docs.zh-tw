@@ -1,53 +1,53 @@
 ---
-title: 使用 Azure 應用程式見解進行性能和負載測試 |微軟文檔
-description: 使用 Azure 應用程式見解設置性能和負載測試
+title: 使用 Azure 應用程式 Insights 進行效能和負載測試 |Microsoft Docs
+description: 使用 Azure 應用程式 Insights 設定效能和負載測試
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.openlocfilehash: 0bfb60b876add70be6cbcd3d726fb3317a8dfcf9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669857"
 ---
 # <a name="performance-testing"></a>效能測試
 
 > [!NOTE]
-> 基於雲的負載測試服務已被棄用。 有關棄用、服務可用性和替代服務的詳細資訊，請參閱[此處](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops)。
+> 雲端負載測試服務已淘汰。 您可以在[這裡](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops)找到有關淘汰、服務可用性和替代服務的詳細資訊。
 
-應用程式見解允許您為網站生成負載測試。 與[可用性測試](monitor-web-app-availability.md)一樣，您可以發送來自全球 Azure 測試代理的基本請求或[多步驟請求](availability-multistep.md)。 效能測試允許您類比多達 20，000 個同時使用者長達 60 分鐘。
+Application Insights 可讓您產生網站的負載測試。 如同[可用性測試](monitor-web-app-availability.md)，您可以從世界各地的 Azure 測試代理程式傳送基本要求或[多步驟要求](availability-multistep.md)。 效能測試可讓您模擬最多20000個同時使用者，最多可達60分鐘。
 
 ## <a name="create-an-application-insights-resource"></a>建立 Application Insights 資源
 
-為了創建效能測試，您首先需要創建應用程式見解資源。 如果已創建資源，請轉到下一節。
+為了建立效能測試，您必須先建立 Application Insights 資源。 如果您已建立資源，請繼續進行下一節。
 
-從 Azure 門戶中選擇 **"創建資源** > **開發人員工具** > **應用程式見解**"並創建應用程式見解資源。
+從 [Azure 入口網站中，選取 [**建立資源** > ] [**開發人員工具** > ] [**Application Insights** ]，然後建立 Application Insights 資源。
 
-## <a name="configure-performance-testing"></a>配置效能測試
+## <a name="configure-performance-testing"></a>設定效能測試
 
-如果這是您第一次創建效能測試，請選擇 **"設置組織"，** 並選擇 Azure DevOps 組織作為效能測試的源。
+如果這是您第一次建立效能測試，請選取 [**設定組織**]，然後選擇要做為效能測試來源的 Azure DevOps 組織。
 
-在 **"配置**"下，轉到**效能測試**，然後按一下 **"新建"** 以創建測試。
+在 [**設定**] 下，移至 [**效能測試**]，然後按一下 [**新增**] 以建立測試。
 
 ![Fill at least the URL of your website](./media/performance-testing/new-performance-test.png)
 
-要創建基本效能測試，請選擇**手動測試**的測試類型並填寫測試所需的設置。
+若要建立基本效能測試，請選取**手動測試**的測試類型，並填寫您的測試所需的設定。
 
 |設定| 最大值
 |----------|------------|
 | 使用者負載 | 20,000 |
 | 持續時間（分鐘）  | 60 |  
 
-創建測試後，按一下"**運行測試**"。
+建立測試之後，請按一下 [**執行測試**]。
 
-測試完成後，您將看到與以下結果類似的結果：
+測試完成後，您會看到看起來類似下列結果的結果：
 
 ![測試結果](./media/performance-testing/test-results.png)
 
-## <a name="configure-visual-studio-web-test"></a>配置視覺化工作室 Web 測試
+## <a name="configure-visual-studio-web-test"></a>設定 Visual Studio web 測試
 
-應用程式見解高級效能測試功能建立在 Visual Studio 性能和負載測試專案之上。
+Application Insights 先進的效能測試功能是建置於 Visual Studio 效能和負載測試專案之上。
 
 ![Visual Studio ](./media/performance-testing/visual-studio-test.png)
 

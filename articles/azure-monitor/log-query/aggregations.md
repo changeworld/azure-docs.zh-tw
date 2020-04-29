@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670299"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Azure 監視器記錄查詢中的彙總
@@ -72,7 +72,7 @@ Heartbeat
 ```
 
 ### <a name="evaluating-subgroups"></a>評估子群組
-若要為您資料中的子群組執行計算或其他彙總，請使用 `by` 關鍵字。 例如，要計算在每個國家/地區發送活動訊號的不同 Linux 電腦的數量：
+若要為您資料中的子群組執行計算或其他彙總，請使用 `by` 關鍵字。 例如，若要計算在每個國家/地區傳送了心跳的相異 Linux 電腦數目：
 
 ```Kusto
 Heartbeat 
@@ -89,7 +89,7 @@ Heartbeat
 |荷蘭      | 2                   |
 
 
-若要分析更小的資料子群組，請將額外欄名加到 `by` 區段。 例如，您可能希望根據 OSType 對每個國家/地區的不同電腦進行計數：
+若要分析更小的資料子群組，請將額外欄名加到 `by` 區段。 例如，您可能會想要計算每個 OSType 每個國家/地區的相異電腦數：
 
 ```Kusto
 Heartbeat 

@@ -1,16 +1,16 @@
 ---
 title: 使用 PowerShell 在 Azure 中設定 Application Insights | Microsoft Docs
-description: 自動設定 Azure 診斷以將資料管道化到應用程式見解。
+description: 自動設定 Azure 診斷管線資料至 Application Insights。
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.openlocfilehash: da1796c8af5b9463d8223615f4b0629ba65eb3e8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669798"
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>使用 PowerShell 為 Azure 雲服務設置應用程式見解
+# <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>使用 PowerShell 設定 Azure 雲端服務的 Application Insights
 
 [Microsoft Azure](https://azure.com) 可以[設定為傳送 Azure 診斷](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)至 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md)。 診斷與 Azure 雲端服務和 Azure VM 相關。 可輔助您從應用程式使用 Application Insights SDK 傳送的遙測資料。 在 Azure 中自動建立新資源的程序中，您可以使用 PowerShell 設定診斷。
 
@@ -125,8 +125,8 @@ ms.locfileid: "77669798"
 ```
 
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [使用 Application Insights 監視 Azure 雲端服務應用程式](../../azure-monitor/app/cloudservices.md)
-* [將 Azure 診斷發送到應用程式見解](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
+* [將 Azure 診斷傳送至 Application Insights](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)
 * [自動化設定警示](powershell-alerts.md)
 

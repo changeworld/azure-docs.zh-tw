@@ -4,10 +4,10 @@ description: 使用 Azure Application Insights 和概觀儀表板的功能監控
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: e5188972d9058b85a9765c7d33f6209b37245d7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669891"
 ---
 # <a name="application-insights-overview-dashboard"></a>Azure Application Insights 概觀儀表板
@@ -20,7 +20,7 @@ Application Insights 一直以來都在提供摘要概覽窗格，以便一眼�
 
 ![概觀預覽窗格](./media/overview-dashboard/overview.png)
 
-## <a name="better-performance"></a>效能更佳
+## <a name="better-performance"></a>更好的效能
 
 已將時間範圍選取功能簡化為輕鬆的單鍵介面。
 
@@ -53,7 +53,7 @@ Application Insights 一直以來都在提供摘要概覽窗格，以便一眼�
 
 ## <a name="troubleshooting"></a>疑難排解
 
-如果選擇 **"配置磁貼設置**"並設置超過 31 天的自訂時間範圍，則儀表板將不會顯示超過 31 天的資料，即使預設資料保留 90 天也是如此。 此行為當前沒有解決方法。
+如果您選取 [設定**磚設定**]，並將自訂的時間範圍設為超過31天，則您的儀表板不會顯示超過31天的資料，即使預設資料保留期為90天。 這種行為目前沒有任何因應措施。
 
 ## <a name="next-steps"></a>後續步驟
 

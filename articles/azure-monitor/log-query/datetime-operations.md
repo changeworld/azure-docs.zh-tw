@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: ea7c98a1b5b4059c5fea0cf1e8ea2ff5ef08d9d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77655373"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中處理日期時間值
@@ -84,7 +84,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-該`timeAgo`列包含諸如"00：09：31.5118992"等值，這意味著它們被格式化為 hh：mm：ss.fff。 若您想要將這些值的格式設定為從開始時間算起的分鐘數 `numver`，將該值除以「1 分鐘」即可：
+資料`timeAgo`行包含如下的值： "00：09： 31.5118992"，這表示它們的格式為 hh： mm： ss. fffffff。 若您想要將這些值的格式設定為從開始時間算起的分鐘數 `numver`，將該值除以「1 分鐘」即可：
 
 ```Kusto
 Event
@@ -149,7 +149,7 @@ Event
 | 類別 | 函式 |
 |:---|:---|
 | 轉換資料類型 | [todatetime](/azure/kusto/query/todatetimefunction)  [totimespan](/azure/kusto/query/totimespanfunction)  |
-| 將值四捨五入為間隔大小 | [站](/azure/kusto/query/binfunction) |
+| 將值四捨五入為間隔大小 | [裝箱](/azure/kusto/query/binfunction) |
 | 取得特定日期或時間 | [ago](/azure/kusto/query/agofunction) [now](/azure/kusto/query/nowfunction)   |
 | 取得值的某部分 | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
 | 取得相對日期值  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |

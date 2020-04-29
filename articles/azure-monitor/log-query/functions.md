@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 7d94e53abbe8f4d2953729aa2363c3906ce94f74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77670214"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>在 Azure 監視器記錄查詢中使用函式
@@ -19,7 +19,7 @@ ms.locfileid: "77670214"
 
 ## <a name="create-a-function"></a>建立函式
 
-通過按一下 **"保存**"，然後在下表中提供資訊，在 Azure 門戶中創建具有日誌分析功能的函數。
+按一下 [**儲存**]，然後提供下表中的資訊，在 Azure 入口網站中建立具有 Log Analytics 的函式。
 
 | 設定 | 描述 |
 |:---|:---|

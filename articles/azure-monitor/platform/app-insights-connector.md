@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/13/2019
 ms.openlocfilehash: c143d8aa24d3479f4619ea2c220d4a0c593f9cb1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77665148"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights Connector 管理解決方案 (取代)
@@ -47,20 +47,20 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 | [Windows 代理程式](../../azure-monitor/platform/agent-windows.md) | 否 | 解決方案不會收集來自 Windows 代理程式的資訊。 |
 | [Linux 代理程式](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解決方案不會收集來自 Linux 代理程式的資訊。 |
 | [SCOM 管理群組](../../azure-monitor/platform/om-agents.md) | 否 | 解決方案不會收集來自連線 SCOM 管理群組的代理程式之中的資訊。 |
-| [Azure 存儲帳戶](collect-azure-metrics-logs.md) | 否 | 解決方案不會收集來自 Azure 儲存體的資訊。 |
+| [Azure 儲存體帳戶](collect-azure-metrics-logs.md) | 否 | 解決方案不會收集來自 Azure 儲存體的資訊。 |
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 若要存取 Application Insights Connector 資訊，您必須具有 Azure 訂用帳戶
 - 您必須至少有一個已設定的 Application Insights 資源。
 - 您必須是 Application Insights 資源的擁有者或參與者。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 1. 從 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AppInsights?tab=Overview) 或使用[從方案庫新增 Log Analytics 方案](../../azure-monitor/insights/solutions.md)中所述的程序，啟用 Azure Web Apps 分析解決方案。
 2. 瀏覽至 [Azure 入口網站](https://portal.azure.com)。 選取 [所有服務]**** 來開啟 Application Insights。 然後，搜尋 Application Insights。 
 3. 在 [訂用帳戶]**** 之下，選取擁有 Application Insights 資源的訂用帳戶，然後在 [名稱]**** 之下，選取一或多個應用程式。
-4. 按一下 [儲存]****。
+4. 按一下 **[儲存]** 。
 
 大約 30 分鐘內，資料就會變成可用，而且 Application Insights 圖格資料會更新，如下圖所示：
 
@@ -90,7 +90,7 @@ Applications Insights Connector 解決方案可協助您診斷效能問題，以
 此儀表板包含下表所示的刀鋒視窗。 每個刀鋒視窗最多會列出 10 個與該刀鋒視窗中指定範圍和時間範圍的準則相符的項目。 當您按一下刀鋒視窗底部的 [查看全部]****，或按一下刀鋒視窗標頭時，您可以執行記錄搜尋來傳回所有記錄。
 
 
-| **列** | **描述** |
+| **資料行** | **說明** |
 | --- | --- |
 | 應用程式 - 應用程式的數目 | 顯示 [應用程式] 資源中的應用程式數目。 也會列出應用程式名稱以及各自的應用程式記錄計數。 按一下此數字可執行記錄搜尋，以搜尋 <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  按一下應用程式名稱，可執行應用程式的記錄搜尋，以顯示每個主機的應用程式記錄、各遙測類型的記錄，以及各類型的所有資料 (以最後一天為基礎)。 |
 | 資料量 - 傳送資料的主機 | 顯示傳送資料的電腦主機數目。 也會列出電腦主機和每部主機的記錄計數。 按一下此數字可執行記錄搜尋，以搜尋 <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> 按一下電腦名稱，可執行主機的記錄搜尋，以顯示每個主機的應用程式記錄、各遙測類型的記錄，以及各類型的所有資料 (以最後一天為基礎)。 |
@@ -185,10 +185,10 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | DeviceType | 用戶端裝置 |
 | ScreenResolution |   |
 | Continent | 要求的起源洲 |
-| Country | 請求源自的國家/地區 |
+| Country | 要求的來源國家/地區 |
 | Province | 要求的起源省、州或地區設定 |
 | City | 要求的起源城市或鄉鎮 |
-| isSynthetic | 指出要求是由使用者或自動化方法建立。 真 = 自動方法或錯誤 = 使用者生成 |
+| isSynthetic | 指出要求是由使用者或自動化方法建立。 True = 自動化方法或 false = 使用者產生 |
 | SamplingRate | 由傳送至入口網站之 SDK 所產生的遙測百分比。 範圍 0.0-100.0。 |
 | SampledCount | 100/(SamplingRate)。 例如，4 =&gt; 25% |
 | IsAuthenticated | True 或 False |
@@ -252,7 +252,7 @@ ApplicationInsights | summarize AggregatedValue = sum(SampledCount) by Telemetry
 | RequestName | GET/POST + URL 基底 |
 | RequestDuration | 要求的持續時間 (秒) |
 | URL | 要求 URL (不包括主機) |
-| Host | Web 伺服器主機 |
+| 主機 | Web 伺服器主機 |
 | URLBase | 要求的完整 URL |
 | ApplicationProtocol | 應用程式所使用的通訊協定類型 |
 | RequestCount | 100/(Sampling Rate)。 例如，4 =&gt; 25% |

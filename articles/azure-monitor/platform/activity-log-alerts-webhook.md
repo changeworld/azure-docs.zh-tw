@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: c076b8dcea350f9ddd66977e89ce99b81f377b17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77669041"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure 活動記錄警示的 Webhook
@@ -19,7 +19,7 @@ ms.locfileid: "77669041"
 如需有關動作群組的資訊，請參閱如何[建立動作群組](../../azure-monitor/platform/action-groups.md)。
 
 > [!NOTE]
-> 您還可以使用[通用警報架構](https://aka.ms/commonAlertSchemaDocs)，它提供了在 Azure 監視器中的所有警報服務中具有單個可擴展和統一警報負載的優勢，以便進行 Webhook 集成。 [瞭解常見的警報架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
+> 您也可以使用[一般警示架構](https://aka.ms/commonAlertSchemaDocs)，讓您的 webhook 整合能夠在 Azure 監視器的所有警示服務中擁有單一可延伸和整合的警示承載。 [瞭解常見的警示架構定義。](https://aka.ms/commonAlertSchemaDefinitions)
 
 
 ## <a name="authenticate-the-webhook"></a>驗證 Webhook
@@ -260,7 +260,7 @@ POST 作業中所包含的 JSON 承載，會根據承載的 data.context.activit
 | 內容 |事件的內容。 |
 | resourceProviderName |受影響資源的資源提供者。 |
 | conditionType |一律為「事件」。 |
-| NAME |警示規則的名稱。 |
+| 名稱 |警示規則的名稱。 |
 | id |警示的資源識別碼。 |
 | description |建立警示時，會設定警示描述。 |
 | subscriptionId |Azure 訂用帳戶識別碼。 |
@@ -287,8 +287,8 @@ POST 作業中所包含的 JSON 承載，會根據承載的 data.context.activit
 如需了解所有其他活動記錄警示的特定結構詳細資料，請參閱 [Azure 活動記錄的概觀](../../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="next-steps"></a>後續步驟
-* [瞭解有關活動日誌 的更多內容](../../azure-monitor/platform/platform-logs-overview.md)。
-* [在 Azure 警報上執行 Azure 自動化腳本（Runbook）。](https://go.microsoft.com/fwlink/?LinkId=627081)
+* [深入瞭解活動記錄](../../azure-monitor/platform/platform-logs-overview.md)。
+* [對 azure 警示執行 azure 自動化腳本（runbook）](https://go.microsoft.com/fwlink/?LinkId=627081)。
 * [使用邏輯應用程式透過 Twilio 從 Azure 警示傳送 SMS](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 此範例適用於計量警示，但經過修改後即可用於活動記錄警示。
 * [使用邏輯應用程式從 Azure 警示傳送 Slack 訊息](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 此範例適用於計量警示，但經過修改後即可用於活動記錄警示。
 * [使用邏輯應用程式從 Azure 警示將訊息傳送到 Azure 佇列](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。 此範例適用於計量警示，但經過修改後即可用於活動記錄警示。

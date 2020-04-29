@@ -1,5 +1,5 @@
 ---
-title: Azure 監視器指標圖表示例
+title: Azure 監視器度量圖表範例
 description: 了解如何將您的 Azure 監視器資料視覺化。
 author: vgorbenko
 services: azure-monitor
@@ -8,13 +8,13 @@ ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 1aaeb853a67b36a21a09db57e015029d10cd0c36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77660865"
 ---
-# <a name="metric-chart-examples"></a>指標圖表示例 
+# <a name="metric-chart-examples"></a>度量圖表範例 
 
 Azure 平台提供[超過一千個計量](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)，且許多都有維度。 藉由使用[維度篩選](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)、套用[分割](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)、控制圖表類型，以及調整圖表設定，您將可建立功能強大的診斷檢視和儀表板，以提供基礎結構和應用程式健康情況的深入解析。 本文提供可使用[計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts)來建置的一些圖表範例，並說明設定各個圖表所需的步驟。
 

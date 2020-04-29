@@ -4,10 +4,10 @@ description: 使用 Azure REST API 取得 Azure 資源的健康狀態事件。
 ms.topic: conceptual
 ms.date: 06/06/2017
 ms.openlocfilehash: 6964a6c4e85c38d532b12e730a02c4df73be76e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77653996"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>使用 REST API 取得資源健康狀態 
@@ -30,19 +30,19 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/microsoft
 
 |要求標頭|描述|  
 |--------------------|-----------------|  
-|*內容類型：*|必要。 設定為 `application/json`。|  
-|*授權：*|必要。 設定為有效的 `Bearer` [存取權杖](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
+|*Content-Type:*|必要。 設定為 `application/json`。|  
+|*Authorization:*|必要。 設定為有效的 `Bearer` [存取權杖](/rest/api/azure/#authorization-code-grant-interactive-clients)。 |  
 
 ### <a name="uri-parameters"></a>URI 參數
 
-| 名稱 | 描述 |
+| Name | 說明 |
 | :--- | :---------- |
-| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂閱，請參閱[使用多個訂閱](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
+| subscriptionId | 可識別 Azure 訂用帳戶的訂用帳戶識別碼。 如果您有多個訂用帳戶，請參閱使用[多個訂閱](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)。 |
 | api-version | 要用於要求的 API 版本。<br /><br /> 本文件涵蓋 api-version `2015-04-01`，內含於上述 URL 中。  |
 | $filter | 可減少傳回之結果集的篩選選項。 此參數允許的模式可用於[活動記錄作業的參考](/rest/api/monitor/activitylogs/list#uri-parameters)。 顯示的範例將會擷取 2018 年 5 月 16 日到 2018 年 6 月 20 日之間的時間範圍內的所有事件 |
 | &nbsp; | &nbsp; |
 
-### <a name="request-body"></a>Request body
+### <a name="request-body"></a>要求本文
 
 這項作業不需要要求本文。
 

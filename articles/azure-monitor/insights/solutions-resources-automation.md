@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77663057"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>將 Azure 自動化資源新增至管理解決方案 (預覽)
@@ -25,7 +25,7 @@ ms.locfileid: "77663057"
 > 本文中的範例使用管理解決方案所需或通用的參數和變數，如[在 Azure 中設計和建置管理解決方案]( solutions-creating.md)所述。 
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 本文假設您已熟悉下列資訊。
 
 - 如何[建立管理解決方案]( solutions-creating.md)。
@@ -165,7 +165,7 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 | 屬性 | 描述 |
 |:--- |:--- |
 | userName |認證的使用者名稱。 |
-| 密碼 |認證的密碼。 |
+| password |認證的密碼。 |
 
 
 ## <a name="schedules"></a>排程
@@ -233,7 +233,7 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 
 下表會說明作業排程的屬性。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:--- |
 | 排程名稱 |包含排程名稱的單一**名稱**實體。 |
 | Runbook 名稱  |包含 Runbook 名稱的單一**名稱**實體。  |
@@ -260,7 +260,7 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 
 下表會說明變數資源的屬性。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:--- |
 | description | 變數的選擇性說明。 |
 | isEncrypted | 指定是否應加密變數。 |
@@ -300,7 +300,7 @@ Azure 自動化中的所有資源都會包含在[自動化帳戶](../../automati
 
 下表會說明模組資源的屬性。
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 |:--- |:--- |
 | contentLink |指定模組的內容。 <br><br>uri - 模組內容的 Uri。  這會是 PowerShell 和 Script Runbook 的 .ps1 檔案，以及 Graph Runbook 的已匯出圖形化 Runbook 檔案。  <br> 版本 - 自有追蹤的模組版本。 |
 
