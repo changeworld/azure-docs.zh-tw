@@ -1,6 +1,6 @@
 ---
-title: Azure 前門域上的地理篩選 |微軟文件
-description: 在本文中,您將瞭解 Azure 前門的地理篩選策略
+title: Azure Front 的網域上的地區篩選 |Microsoft Docs
+description: 在本文中，您會瞭解 Azure Front 的地區篩選原則
 services: frontdoor
 documentationcenter: ''
 author: KumudD
@@ -14,15 +14,15 @@ ms.date: 03/21/2019
 ms.author: kumud
 ms.reviewer: tyao
 ms.openlocfilehash: 2cdde705d0e9f0905d4c33648b5415758d838b06
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411173"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什麼是 Azure Front Door 的網域地區篩選？
 
-默認情況下,Azure 前門回應使用者請求,而不考慮發出請求的使用者的位置。 不過，在某些情況下，您可以依國家/地區來限制 Web 應用程式的存取。 Front Door 上的 Web 應用程式防火牆 (WAF) 服務可讓您定義原則，針對端點上的特定路徑使用自訂存取規則來允許或封鎖來自指定國家/地區的存取。 
+根據預設，Azure Front 門板會回應使用者要求，而不論提出要求的使用者位置為何。 不過，在某些情況下，您可以依國家/地區來限制 Web 應用程式的存取。 Front Door 上的 Web 應用程式防火牆 (WAF) 服務可讓您定義原則，針對端點上的特定路徑使用自訂存取規則來允許或封鎖來自指定國家/地區的存取。 
 
 WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及優先順序組成。 在比對條件中，您可以定義比對變數、運算子和比對值。  對地區篩選規則來說，比對變數是 REMOTE_ADDR、運算子是 GeoMatch，值則是相關的兩個字母國家/地區代碼。 您可以結合 GeoMatch 條件和 REQUEST_URI 字串比對條件，來建立以路徑為基礎的地區篩選規則。
 
@@ -94,16 +94,16 @@ WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及
 | GF | 法屬圭亞那|
 | GH | 迦納|
 | GN | 幾內亞|
-| GP | 哥德洛普|
+| GP | 哥德普洛|
 | GR | 希臘|
 | GT | 瓜地馬拉|
-| GY | 蓋亞那|
+| GY | 蓋亞納|
 | HK | 香港特別行政區|
 | HN | 宏都拉斯|
 | HR | 克羅埃西亞|
 | HT | 海地|
 | HU | 匈牙利|
-| ID | 印尼|
+| 識別碼 | 印尼|
 | IE | 愛爾蘭|
 | IL | 以色列|
 | IN | 印度|

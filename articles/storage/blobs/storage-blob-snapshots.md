@@ -1,6 +1,6 @@
 ---
-title: 在 .NET - Azure 儲存中建立及管理 Blob 快照
-description: 瞭解如何創建 Blob 的唯讀快照,以便在特定時刻備份 Blob 資料。
+title: 在 .NET 中建立和管理 blob 快照集-Azure 儲存體
+description: 瞭解如何建立 blob 的唯讀快照集，以便在指定的時間點備份 blob 資料。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,17 +9,17 @@ ms.date: 09/06/2019
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 9bf5eea55002814f461d375b3db43a37fe4f7aa9
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474092"
 ---
-# <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中建立及管理 Blob 快照
+# <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中建立和管理 blob 快照集
 
-快照集是在某個點時間取得的唯讀 Blob 版本。 快照集對於備份 Blob 非常有用。 本文展示如何使用 .NET 的[Azure 儲存用戶端庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)創建和管理 blob 快照。
+快照集是在某個點時間取得的唯讀 Blob 版本。 快照集對於備份 Blob 非常有用。 本文說明如何使用[適用于 .net 的 Azure 儲存體用戶端程式庫](/dotnet/api/overview/azure/storage?view=azure-dotnet)來建立和管理 blob 快照集。
 
-## <a name="about-blob-snapshots"></a>關於 Blob 快照
+## <a name="about-blob-snapshots"></a>關於 blob 快照集
 
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -29,7 +29,7 @@ Blob 的快照集與其基底 Blob 相同，除了 Blob URI 附加了 [日期時
 > 所有快照集會共用基底 blob 的 URI。 基底 blob 與快照集之間的唯一差別在於附加的 **DateTime** 值。
 >
 
-Blob 可包含任意數目的快照集。 快照一直持續到顯式刪除,這意味著快照無法比其基本 Blob 存活。 您可以列舉與基底 Blob 相關聯的快照集，以追蹤目前的快照集。
+Blob 可包含任意數目的快照集。 快照集會一直保存到明確刪除為止，這表示快照集無法 outlive 其基底 blob。 您可以列舉與基底 Blob 相關聯的快照集，以追蹤目前的快照集。
 
 當您建立 Blob 的快照集時，Blob 的系統屬性都會使用相同值複製到快照集中。 基底 blob 的中繼資料也會複製到快照集，除非您在建立快照集時為其指定個別的中繼資料。 建立快照集後，您便可加以讀取、複製或刪除，但無法加以修改。
 
@@ -39,12 +39,12 @@ VHD 檔案是用來儲存 VM 磁碟目前的資訊和狀態。 您可以從 VM �
 
 ## <a name="create-a-snapshot"></a>建立快照集
 
-要建立區塊 Blob 的快照,請使用以下方法之一:
+若要建立區塊 blob 的快照集，請使用下列其中一種方法：
 
-- [建立快照](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.createsnapshot)
-- [建立快照同步](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.createsnapshotasync)
+- [Icloudblob.createsnapshot](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.createsnapshot)
+- [CreateSnapshotAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob.createsnapshotasync)
 
-以下代碼示例演示如何創建快照。 此範例會在建立快照集時為其指定其他中繼資料。
+下列程式碼範例顯示如何建立快照集。 此範例會在建立快照集時為其指定其他中繼資料。
 
 ```csharp
 private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
@@ -81,14 +81,14 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 
 ## <a name="delete-snapshots"></a>刪除快照集
 
-要刪除 Blob,必須首先刪除該 Blob 的任何快照。 您可以個別刪除快照集，或指定在刪除來源 Blob 時刪除所有的快照集。 如果您嘗試刪除仍具有快照集的 Blob，則會發生錯誤。
+若要刪除 blob，您必須先刪除該 blob 的任何快照集。 您可以個別刪除快照集，或指定在刪除來源 Blob 時刪除所有的快照集。 如果您嘗試刪除仍具有快照集的 Blob，則會發生錯誤。
 
-要刪除 Blob 快照,請使用以下 blob 刪除方法之一,並包括[Delete Snapshotoption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption)枚舉。
+若要刪除 blob 快照集，請使用下列其中一個 blob 刪除方法，並包含[DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption)列舉。
 
 - [刪除](/dotnet/api/microsoft.azure.storage.blob.cloudblob.delete)
 - [DeleteAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteasync)
-- [移除存在](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexists)
-- [刪除"不存在同步"](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexistsasync)
+- [DeleteIfExists](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexists)
+- [Cloudblobcontainer.deleteifexistsasync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.deleteifexistsasync)
 
 下列程式碼範例示範如何在 .NET 中刪除 blob 及其快照集，其中 `blockBlob` 是 [CloudBlockBlob][dotnet_CloudBlockBlob]類型的物件：
 
@@ -98,7 +98,7 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 
 ## <a name="return-the-absolute-uri-to-a-snapshot"></a>傳回快照集的絕對 URI
 
-以下代碼示例創建快照並寫入主位置的絕對 URI。
+下列程式碼範例會建立快照集，並寫出主要位置的絕對 URI。
 
 ```csharp
 //Create the blob service client object.

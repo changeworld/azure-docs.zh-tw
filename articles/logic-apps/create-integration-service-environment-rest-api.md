@@ -1,62 +1,62 @@
 ---
-title: 使用邏輯應用 REST API 建立整合服務環境 (ISEs)
-description: 使用邏輯應用程式 REST API 建立整合服務環境 (ISE),以便可以從 Azure 邏輯應用存取 Azure 虛擬網路 (VNET)
+title: 使用 Logic Apps REST API 建立整合服務環境（Ise）
+description: 使用 Logic Apps REST API 建立整合服務環境（ISE），讓您可以從 Azure Logic Apps 存取 Azure 虛擬網路（Vnet）
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80478827"
 ---
-# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用邏輯應用 REST API 建立整合服務環境 (ISE)
+# <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>使用 Logic Apps 建立整合服務環境（ISE） REST API
 
-本文演示如何通過邏輯應用 REST API 創建[*整合服務環境*(ISE),](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)用於邏輯應用和整合帳戶需要存取[Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)的方案。 ISE 是一個隔離的環境,它使用專用存儲和其他資源,這些資源與"全域"多租戶邏輯應用服務分開。 這種區隔也可減少任何其他 Azure 租用戶可能對您應用程式效能造成的影響。 ISE 還為您提供自己的靜態 IP 位址。 這些 IP 位址與公共多租戶服務中的邏輯應用共用的靜態 IP 位址分開。
+本文說明如何在您的邏輯應用程式和整合帳戶需要存取[Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)的情況下，透過 Logic Apps REST API 建立[*整合服務環境*（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 。 ISE 是一種隔離的環境，會使用專用儲存體和其他與「全域」多租使用者 Logic Apps 服務分開的資源。 這種區隔也可減少任何其他 Azure 租用戶可能對您應用程式效能造成的影響。 ISE 也會為您提供自己的靜態 IP 位址。 這些 IP 位址與公用、多租使用者服務中的邏輯應用程式所共用的靜態 IP 位址不同。
 
-還可以透過使用[範例 Azure 資源管理器快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)或使用[Azure 門戶](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)創建 ISE。
+您也可以使用[範例 Azure Resource Manager 快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment)，或使用[AZURE 入口網站](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)來建立 ISE。
 
 > [!IMPORTANT]
-> 在 ISE 中運行的邏輯應用、內建觸發器、內建操作和連接器使用不同於基於消耗的定價計劃的定價計劃。 要瞭解 ISEs 的定價和計費的工作原理,請參閱[邏輯應用定價模型](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 有關定價率,請參閱[邏輯應用定價](../logic-apps/logic-apps-pricing.md)。
+> 邏輯應用程式、內建觸發程式、內建動作，以及在您 ISE 中執行的連接器會使用與以耗用量為基礎的定價方案不同的定價方案。 若要瞭解 Ise 的定價和計費方式，請參閱[Logic Apps 定價模式](../logic-apps/logic-apps-pricing.md#fixed-pricing)。 如需定價費率，請參閱[Logic Apps 定價](../logic-apps/logic-apps-pricing.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* [開啟 ISE 存取](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)[的先決條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和要求與在 Azure 門戶中建立 ISE 時相同
+* 相同的[必要條件](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#prerequisites)和需求，可讓您在 Azure 入口網站中建立 ise 時，[啟用 ise 的存取權。](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)
 
-* 一種工具,可用於使用 HTTPS PUT 請求呼叫邏輯應用 REST API 來建立 ISE。 例如,您可以使用[Postman](https://www.getpostman.com/downloads/),也可以生成執行此任務的邏輯應用。
+* 一種工具，可讓您使用 HTTPS PUT 要求呼叫 Logic Apps REST API 來建立 ISE。 例如，您可以使用[Postman](https://www.getpostman.com/downloads/)，也可以建立執行這項工作的邏輯應用程式。
 
 ## <a name="send-the-request"></a>傳送要求
 
-要透過呼叫邏輯應用程式 REST API 建立 ISE,請發出此 HTTPS PUT 請求:
+若要藉由呼叫 Logic Apps REST API 來建立您的 ISE，請提出此 HTTPS PUT 要求：
 
 `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
 
 > [!IMPORTANT]
-> 邏輯應用 REST API 2019-05-01 版本要求您對 ISE 連接器發出自己的 HTTP PUT 請求。
+> Logic Apps REST API 2019-05-01 版要求您自行建立 ISE 連接器的 HTTP PUT 要求。
 
-部署通常需要兩個小時才能完成。 有時,部署可能需要長達四個小時。 要檢查部署狀態,請在 Azure 工具列上的[Azure 門戶](https://portal.azure.com)中,選擇通知圖示,該圖示將打開通知窗格。
+部署通常會在兩個小時內完成。 有時候，部署可能需要多達四小時。 若要檢查部署狀態，請在 [ [Azure 入口網站](https://portal.azure.com)的 Azure 工具列上，選取 [通知] 圖示，這會開啟 [通知] 窗格。
 
 > [!NOTE]
-> 如果部署失敗或您刪除了 ISE，Azure「可能」需要最多一小時的時間來釋出您的子網路。 此延遲意味著您可能需要等待,然後再在另一個 ISE 中重用這些子網。
+> 如果部署失敗或您刪除了 ISE，Azure「可能」需要最多一小時的時間來釋出您的子網路。 這種延遲表示您可能必須等待，才能在另一個 ISE 中重複使用這些子網。
 >
-> 如果刪除虛擬網路,Azure 通常會在釋放子網之前最多需要兩個小時,但此操作可能需要更長時間。 
-> 刪除虛擬網路時,請確保沒有資源仍然連接。 
-> 請參考[虛擬網路](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
+> 如果您刪除虛擬網路，Azure 通常需要兩小時的時間，才能釋出您的子網，但此作業可能需要較長的時間。 
+> 刪除虛擬網路時，請確定沒有任何資源仍處於線上狀態。 
+> 請參閱[刪除虛擬網路](../virtual-network/manage-virtual-network.md#delete-a-virtual-network)。
 
 ## <a name="request-header"></a>要求標頭
 
-在請求標頭中,包括以下屬性:
+在要求標頭中，包含下列屬性：
 
-* `Content-type`:將此屬性值設定為`application/json`。
+* `Content-type`：將此屬性值設定`application/json`為。
 
-* `Authorization`:為有權訪問要使用的 Azure 訂閱或資源組的客戶設置此屬性值。
+* `Authorization`：將此屬性值設定為可存取您想要使用之 Azure 訂用帳戶或資源群組之客戶的持有人權杖。
 
 ### <a name="request-body-syntax"></a>要求本文語法
 
-下面是請求正文語法,它描述了創建 ISE 時要使用的屬性:
+以下是要求本文語法，其中描述建立 ISE 時要使用的屬性：
 
 ```json
 {
@@ -93,9 +93,9 @@ ms.locfileid: "80478827"
 }
 ```
 
-### <a name="request-body-example"></a>要求正文示例
+### <a name="request-body-example"></a>要求本文範例
 
-此範例要求正文顯示範例值:
+這個範例要求主體會顯示範例值：
 
 ```json
 {
@@ -134,6 +134,6 @@ ms.locfileid: "80478827"
 
 ## <a name="next-steps"></a>後續步驟
 
-* [新增資源服務環境](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+* [將資源新增到整合服務環境](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 * [管理整合服務環境](../logic-apps/ise-manage-integration-service-environment.md#check-network-health)
 

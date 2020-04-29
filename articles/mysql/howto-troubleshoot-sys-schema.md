@@ -1,21 +1,21 @@
 ---
-title: 利用sys_schema - MySQL 的 Azure 資料庫
-description: 瞭解如何使用sys_schema查找性能問題並維護 MySQL 的 Azure 資料庫中的資料庫。
+title: 利用 sys_schema 適用於 MySQL 的 Azure 資料庫
+description: 瞭解如何使用 sys_schema 找出效能問題，並在適用於 MySQL 的 Azure 資料庫中維護資料庫。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/30/2020
 ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411099"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>如何使用 sys_schema 在適用於 MySQL 的 Azure 資料庫中進行效能微調和資料庫維護
 
-MySQL performance_schema在 MySQL 5.5 中首次提供,它為許多重要的伺服器資源(如記憶體分配、存儲程式、元數據鎖定等)提供檢測。但是,performance_schema包含 80 多個表,獲取必要的資訊通常需要performance_schema聯接表以及information_schema表。 sys_schema 是以 performance_schema 與 information_schema 為基礎而建置的，它於唯讀資料庫中提供功能強大的[易用檢視](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) \(英文\) 集合，並已於適用於 MySQL 的 Azure 資料庫 5.7 版中完整啟用。
+MySQL performance_schema，第一次在 MySQL 5.5 中提供，可讓您檢測許多重要的伺服器資源，例如記憶體配置、預存程式、中繼資料鎖定等等。不過，performance_schema 包含超過80個數據表，而且取得必要的資訊通常需要在 performance_schema 中聯結資料表，以及來自 information_schema 的資料表。 sys_schema 是以 performance_schema 與 information_schema 為基礎而建置的，它於唯讀資料庫中提供功能強大的[易用檢視](https://dev.mysql.com/doc/refman/5.7/en/sys-schema-views.html) \(英文\) 集合，並已於適用於 MySQL 的 Azure 資料庫 5.7 版中完整啟用。
 
 ![sys_schema 的檢視](./media/howto-troubleshoot-sys-schema/sys-schema-views.png)
 
@@ -29,7 +29,7 @@ sys_schema 中有 52 個檢視，每個檢視分別具有下列其中一個前�
 - User：使用者所耗用並依使用者分類的資源。 範例包括檔案 I/O、連線和記憶體。
 - Wait：依主機或使用者分類的等候事件。
 
-現在,讓我們來看看sys_schema的一些常見使用模式。 首先,我們將使用模式分為兩類:**效能調整**和**資料庫維護**。
+現在讓我們來看一下 sys_schema 的常見使用模式。 一開始，我們會將使用模式分成兩個類別：**效能微調**和**資料庫維護**。
 
 ## <a name="performance-tuning"></a>效能微調
 
@@ -55,14 +55,14 @@ IO 是資料庫中成本最高的作業。 我們可以藉由查詢 *sys.user_su
 
 ![依陳述式分類的摘要](./media/howto-troubleshoot-sys-schema/summary-by-statement.png)
 
-在此範例中，適用於 MySQL 的 Azure 資料庫花費了 53 分鐘將 slog 查詢記錄排清 44579 次。 這是很長一段時間和許多I。 您可以藉由停用慢速查詢記錄，或降低慢速查詢記錄的頻率，在 Azure 入口網站中減少這項活動。
+在此範例中，適用於 MySQL 的 Azure 資料庫花費了 53 分鐘將 slog 查詢記錄排清 44579 次。 這是很長的時間和許多 Io。 您可以藉由停用慢速查詢記錄，或降低慢速查詢記錄的頻率，在 Azure 入口網站中減少這項活動。
 
 ## <a name="database-maintenance"></a>資料庫維護
 
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
 
 [!IMPORTANT]
-> 查詢此視圖可能會影響性能。 建議在非高峰工作時間執行此故障排除。
+> 查詢此視圖可能會影響效能。 建議在離峰上班時間執行此疑難排解。
 
 InnoDB 緩衝集區存在於記憶體中，是 DBMS 與儲存體之間的主要快取機制。 InnoDB 緩衝集區的大小會繫結至效能層，除非選擇不同的產品 SKU，否則無法變更。 如同作業系統中的記憶體，系統會移出舊的頁面以騰出空間給最新的資料。 若要了解哪些資料表耗用了大部分的 InnoDB 緩衝集區記憶體，您可以查詢 *sys.innodb_buffer_stats_by_table* 檢視。
 

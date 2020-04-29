@@ -1,6 +1,6 @@
 ---
 title: 建立 ASE v1
-description: 為應用服務環境 v1 創建流描述。 此文檔僅提供給使用舊版 v1 ASE 的客戶。
+description: App service 環境 v1 的建立流程描述。 本檔僅為使用舊版 v1 ASE 的客戶提供。
 author: ccompy
 ms.assetid: 81bd32cf-7ae5-454b-a0d2-23b57b51af47
 ms.topic: article
@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80477788"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>如何建立 App Service 環境 v1 
@@ -20,13 +20,13 @@ ms.locfileid: "80477788"
 > 這篇文章是關於 App Service 環境 v1。 有較新版本的 App Service 環境，更易於使用，並且可以在功能更強大的基礎結構上執行。 若要深入了解新版本，請從 [App Service 環境簡介](intro.md)開始。
 > 
 
-### <a name="overview"></a>概觀
+### <a name="overview"></a>總覽
 App Service 環境 (ASE) 是 Azure App Service 的進階服務選項，可提供多租用戶戳記中不提供的增強式設定功能。 ASE 功能基本上會將 Azure App Service 部署到客戶的虛擬網路中。 若要更深入了解 App Service Environment 所提供的功能，請閱讀[什麼是 App Service Environment][WhatisASE] 文件。
 
 ### <a name="before-you-create-your-ase"></a>建立 ASE 之前
 務必注意您無法變更的項目。 建立後，您無法變更 ASE 的相關層面是：
 
-* Location
+* 位置
 * 訂用帳戶
 * 資源群組
 * 使用的 VNet
@@ -45,7 +45,7 @@ App Service 環境 (ASE) 是 Azure App Service 的進階服務選項，可提供
 3. 選取或指定新的資源群組。 用於 ASE 的資源群組必須是與用於您的 VNet 的相同。 如果您選取既有的 VNet，您的 ASE 資源群組選取項目將會更新，以反映 VNet 的資源群組。
    
     ![][2]
-4. 請選取您的虛擬網路及位置選項。 您可以選擇建立新的 VNet，或選取既有的 VNet。 如果您選取新的 VNet，則可以指定名稱和位置。 新的 VNet 會有位址範圍 192.168.250.0/23，和定義為 192.168.250.0/24 名為 **default** 的子網路。 您也可以僅選取既有的傳統或 Resource Manager VNet。 [VIP 類型] 選項會決定您的 ASE 是否可以從網際網路 (外部) 直接存取，或者它使用內部負載平衡器 (ILB)。 若要深入了解，請參閱[在 App Service 環境中使用內部負載平衡器][ILBASE]。 如果選擇外部的 VIP 類型,則可以選擇為 IP SSL 目的創建系統的外部 IP 位址數。 如果您選取 [內部]，則需要指定 ASE 將使用的子網域。 ASE 可以部署到使用** 公用位址範圍*或* RFC1918 位址空間 (也就是私人位址) 的虛擬網路。 若要搭配使用虛擬網路與公用位址範圍，您必須事先建立 VNet。 選取既有的 VNet 時，您必須在 ASE 建立期間建立新的子網路。 **不能在門戶中使用預先創建的子網。如果使用資源管理器範本創建 ASE,則可以使用預先存在的子網創建 ASE。** 若要使用此處的資訊透過範本建立 ASE，[從範本建立 App Service 環境][ILBAseTemplate]，以及這裡[從範本建立 ILB App Service 環境][ASEfromTemplate]。
+4. 請選取您的虛擬網路及位置選項。 您可以選擇建立新的 VNet，或選取既有的 VNet。 如果您選取新的 VNet，則可以指定名稱和位置。 新的 VNet 會有位址範圍 192.168.250.0/23，和定義為 192.168.250.0/24 名為 **default** 的子網路。 您也可以僅選取既有的傳統或 Resource Manager VNet。 [VIP 類型] 選項會決定您的 ASE 是否可以從網際網路 (外部) 直接存取，或者它使用內部負載平衡器 (ILB)。 若要深入了解，請參閱[在 App Service 環境中使用內部負載平衡器][ILBASE]。 如果您選取 [外部] VIP 類型，則可以根據 IP SSL 用途選取要建立系統的外部 IP 位址數目。 如果您選取 [內部]，則需要指定 ASE 將使用的子網域。 ASE 可以部署到使用** 公用位址範圍*或* RFC1918 位址空間 (也就是私人位址) 的虛擬網路。 若要搭配使用虛擬網路與公用位址範圍，您必須事先建立 VNet。 選取既有的 VNet 時，您必須在 ASE 建立期間建立新的子網路。 **您無法在入口網站中使用預先建立的子網。如果您使用 resource manager 範本建立 ASE，則可以使用既有的子網建立 ASE。** 若要使用此處的資訊透過範本建立 ASE，[從範本建立 App Service 環境][ILBAseTemplate]，以及這裡[從範本建立 ILB App Service 環境][ASEfromTemplate]。
 
 ### <a name="details"></a>詳細資料
 一個 ASE 是使用 2 個前端和 2 個背景工作角色建立。 前端可做為 HTTP/HTTPS 端點，將流量傳送到背景工作角色 (也就是裝載您的應用程式的角色)。 建立 ASE 之後，您可以調整數量，且甚至可以在這些資源集區上設定自動調整規則。 如需更多關於手動調整、管理及監視 App Service 環境的詳細資料，請前往此處：[如何設定 App Service 環境][ASEConfig] 

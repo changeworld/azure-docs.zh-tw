@@ -14,18 +14,18 @@ ms.workload: na
 ms.date: 03/27/2020
 ms.author: shvija
 ms.openlocfilehash: 0546adb6131479a8f5d2e7e31819483200586839
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80397327"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>事件中樞的可用性和一致性
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 「Azure 事件中樞」會使用[資料分割模型](event-hubs-scalability.md#partitions)，來提升單一事件中樞內的可用性與平行處理。 例如，如果事件中樞有四個分割區，而其中一個分割區在負載平衡作業中從一部伺服器移到另一部伺服器，則您仍可從其他三個分割區進行傳送及接收。 此外，擁有更多分割區可讓您使用更多並行讀取器來處理資料，進而改善您的彙總輸送量。 了解分散式系統中分割和排序的含意是解決方案設計的重要層面。
 
-為了幫助解釋訂購和可用性之間的權衡,請參閱[CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem),也稱為布魯爾的定理。 這個理論討論一致性、可用性及分割區容錯之間的選擇。 它指出對於由網路分割的系統，一定會在一致性和可用性之間有所取捨。
+若要協助說明訂購和可用性之間的取捨，請參閱[CAP 定理](https://en.wikipedia.org/wiki/CAP_theorem)，也稱為 Brewer 的定理。 這個理論討論一致性、可用性及分割區容錯之間的選擇。 它指出對於由網路分割的系統，一定會在一致性和可用性之間有所取捨。
 
 Brewer 的理論會定義一致性和可用性，如下所示：
 * 分割區容錯：即使發生分割區失敗，資料處理系統還是能夠繼續處理資料。
@@ -38,10 +38,10 @@ Brewer 的理論會定義一致性和可用性，如下所示：
 ## <a name="availability"></a>可用性
 開始使用事件中樞的最簡單方式是使用預設行為。 
 
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.訊息傳遞.事件中心(5.0.0 或更高版本)](#tab/latest)
-如果創建新**[的 EventHub 建立者客戶端](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** 物件並使用**[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** 方法,則事件將自動分佈在事件中心的分區之間。 此行為可讓運作時間達到最長。
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[EventHubs （5.0.0 或更新版本）](#tab/latest)
+如果您建立新的**[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** 物件並使用**[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** 方法，您的事件就會自動分散到事件中樞的分割區。 此行為可讓運作時間達到最長。
 
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[微軟.Azure.事件中心(4.1.0 或更早)](#tab/old)
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[EventHubs （4.1.0 或更早版本）](#tab/old)
 如果您建立新的 **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** 物件並使用 **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** 方法，系統就會在事件中樞的分割區之間自動分配事件。 此行為可讓運作時間達到最長。
 
 ---
@@ -49,9 +49,9 @@ Brewer 的理論會定義一致性和可用性，如下所示：
 針對需要最長運作時間的使用案例，建議使用此模型。
 
 ## <a name="consistency"></a>一致性
-在某些案例中，事件的順序可能相當重要。 例如，您可能想要讓後端系統在刪除命令之前先處理更新命令。 在這種情況下,您可以設置事件的分區鍵,或者使用`PartitionSender`物件(如果您使用的是舊的 Microsoft.Azure.消息庫)僅將事件發送到特定分區。 這麼做可確保在從分割區讀取這些事件時，會依序讀取它們。 如果使用**Azure.訊息.事件集線庫**,有關詳細資訊,請參閱[將代碼從分區Sender移到事件Hub創建者,以便將事件發布到分區](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)。
+在某些案例中，事件的順序可能相當重要。 例如，您可能想要讓後端系統在刪除命令之前先處理更新命令。 在此情況下，您可以在事件上設定分割區索引鍵，或使用`PartitionSender`物件（如果您使用的是舊的 Microsoft. Azure 訊息程式庫），只將事件傳送到特定的分割區。 這麼做可確保在從分割區讀取這些事件時，會依序讀取它們。 如果您使用**EventHubs**程式庫並取得詳細資訊，請參閱將[程式碼從 PartitionSender 遷移至 EventHubProducerClient，以將事件發行至分割](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)區。
 
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.訊息傳遞.事件中心(5.0.0 或更高版本)](#tab/latest)
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[EventHubs （5.0.0 或更新版本）](#tab/latest)
 
 ```csharp
 var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
@@ -68,7 +68,7 @@ await using (var producerClient = new EventHubProducerClient(connectionString, e
 }
 ```
 
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[微軟.Azure.事件中心(4.1.0 或更早)](#tab/old)
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[EventHubs （4.1.0 或更早版本）](#tab/old)
 
 ```csharp
 var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
@@ -98,7 +98,7 @@ finally
 
 有一個既可確保排序又可讓運作時間達到最長的可能解決方案，就是在您的事件處理應用程式中彙總事件。 達到此目的的最簡單方式，就是為您的事件標上自訂序號屬性戳記。 下列程式碼顯示一個範例：
 
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.訊息傳遞.事件中心(5.0.0 或更高版本)](#tab/latest)
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[EventHubs （5.0.0 或更新版本）](#tab/latest)
 
 ```csharp
 // create a producer client that you can use to send events to an event hub
@@ -124,7 +124,7 @@ await using (var producerClient = new EventHubProducerClient(connectionString, e
 }
 ```
 
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[微軟.Azure.事件中心(4.1.0 或更早)](#tab/old)
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[EventHubs （4.1.0 或更早版本）](#tab/old)
 ```csharp
 // Create an Event Hubs client
 var client = new EventHubClient(connectionString, eventHubName);

@@ -1,23 +1,23 @@
 ---
-title: 創建使用者 - Azure 資料庫，用於 PostgreSQL - 單個伺服器
-description: 本文介紹如何創建新使用者帳戶，以便與 PostgreSQL - 單伺服器的 Azure 資料庫進行交互。
+title: 建立使用者-適用於 PostgreSQL 的 Azure 資料庫-單一伺服器
+description: 本文說明如何建立新的使用者帳戶，以便與適用於 PostgreSQL 的 Azure 資料庫單一伺服器互動。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.openlocfilehash: 127d484d6cfc35368803069f9c3d602e787baa56
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80384342"
 ---
-# <a name="create-users-in-azure-database-for-postgresql---single-server"></a>在 Azure 資料庫中為 PostgreSQL - 單伺服器創建使用者
+# <a name="create-users-in-azure-database-for-postgresql---single-server"></a>在適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中建立使用者
 
-本文介紹如何在 Azure 資料庫中為 PostgreSQL 伺服器創建使用者。
+本文說明如何在適用於 PostgreSQL 的 Azure 資料庫伺服器內建立使用者。
 
-如果想瞭解如何創建和管理 Azure 訂閱使用者及其許可權，可以訪問[基於 Azure 角色的存取控制 （RBAC） 一文](../role-based-access-control/built-in-roles.md)或查看[如何自訂角色](../role-based-access-control/custom-roles.md)。
+如果您想要瞭解如何建立和管理 Azure 訂用帳戶使用者及其許可權，您可以造訪[azure 角色型存取控制（RBAC）一文](../role-based-access-control/built-in-roles.md)，或參閱[如何自訂角色](../role-based-access-control/custom-roles.md)。
 
 ## <a name="the-server-admin-account"></a>伺服器系統管理員帳戶
 

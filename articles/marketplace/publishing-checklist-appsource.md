@@ -1,5 +1,5 @@
 ---
-title: 發佈應用程式來源清單 |Azure 應用商店
+title: 正在發行 AppSource 的檢查清單 |Azure Marketplace
 description: 發行適用於 AppSource 的檢查清單。
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dsindona
 ms.openlocfilehash: 7fcf23d1a599199adfc5a50f76a7b72b96ece7a8
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80387728"
 ---
 # <a name="publishing-checklist-for-appsource"></a>發行適用於 AppSource 的檢查清單  

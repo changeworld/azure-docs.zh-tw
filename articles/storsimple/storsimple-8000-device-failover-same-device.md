@@ -1,5 +1,5 @@
 ---
-title: 教學 - 將 StorSimple 實體裝置故障故障移轉至同一裝置
+title: 教學課程-將 StorSimple 實體裝置損毀修復至相同的裝置
 description: 了解如何將您的 StorSimple 裝置容錯移轉至相同的裝置。
 services: storsimple
 documentationcenter: ''
@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
 ms.openlocfilehash: dde01f9b91ff5a04ddb3fcc8d5f0c535278b0539
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398082"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>將您的 StorSimple 實體裝置容錯移轉至相同的裝置
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 本教學課程說明出現災害時，將 StorSimple 8000 系列實體裝置容錯移轉至本身裝置所需要的步驟。 StorSimple 會使用裝置容錯移轉功能，將資料從資料中心的實體裝置來源移轉至另一個實體裝置。 本教學課程中的指導方針適用於執行軟體版本 Update 3 和更新版本的 StorSimple 8000 系列實體裝置。
 
@@ -32,7 +32,7 @@ ms.locfileid: "80398082"
 若要將實體裝置容錯移轉至另一個實體裝置，請移至[容錯移轉至相同的 StorSimple 實體裝置](storsimple-8000-device-failover-physical-device.md)。 若要將 StorSimple 實體裝置容錯移轉至 StorSimple 雲端設備，請移至[容錯移轉至 StorSimple 雲端設備](storsimple-8000-device-failover-cloud-appliance.md)。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 請確定您已檢閱裝置容錯移轉的注意事項。 如需詳細資訊，請移至[裝置容錯移轉的一般注意事項](storsimple-8000-device-failover-disaster-recovery.md)。
 

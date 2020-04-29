@@ -1,5 +1,5 @@
 ---
-title: 使用 RLS 與彈性資料庫工具的多租戶應用程式
+title: 使用 RLS 與彈性資料庫工具的多租使用者應用程式
 description: 使用彈性資料庫工具搭配資料列層級安全性，建置具有可高度擴充性資料層的應用程式。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398334"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>使用彈性資料庫工具和資料列層級安全性的多租用戶應用程式
@@ -36,7 +36,7 @@ ms.locfileid: "80398334"
 
 ## <a name="download-the-sample-project"></a>下載範例專案
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 - 使用 Visual Studio (2012 或更新版本)
 - 建立三個 Azure SQL 資料庫
@@ -56,7 +56,7 @@ ms.locfileid: "80398334"
 1. **應用程式層**：將應用程式程式碼修改成一律會在連線開啟後，於 SESSION\_CONTEXT 中設定目前的 TenantId。 範例專案已透過此方式設定 TenantId。
 2. **資料層**：在每個分區資料庫中建立 RLS 安全性原則，以根據儲存在 SESSION\_CONTEXT 中的 TenantId 來篩選資料列。 為每個分區資料庫建立原則，否則不會篩選多租用戶分區中的資料列。
 
-## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. 應用程式層:在工作\_階段 上下文中設置租戶 Id
+## <a name="1-application-tier-set-tenantid-in-the-session_context"></a>1. 應用層：在會話\_內容中設定 TenantId
 
 首先，使用彈性資料庫用戶端程式庫的資料依存路由 API 來連線到分區資料庫。 應用程式仍必須告訴資料庫正在使用連線的 TenantId 為何。 TenantId 會告訴 RLS 安全性原則必須篩選掉哪些屬於其他租用戶的資料列。 將目前的 TenantId 儲存在連線的 [SESSION\_CONTEXT](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) 中。
 
@@ -212,7 +212,7 @@ All blogs for TenantId {0} (using ADO.NET SqlClient):", tenantId4);
 
 ```
 
-## <a name="2-data-tier-create-row-level-security-policy"></a>2. 資料層:建立行級安全原則
+## <a name="2-data-tier-create-row-level-security-policy"></a>2. 資料層：建立資料列層級安全性原則
 
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>建立安全性原則來篩選每個租用戶可以存取的資料列
 
@@ -343,7 +343,7 @@ GO
 - **新增分區**：執行 T-SQL 指令碼來啟用所有新分區上的 RLS，否則系統不會篩選這些分區的查詢。
 - **新增資料表**：在每次建立新資料表時，將 FILTER 和 BLOCK 述詞新增到所有分區上的安全性原則。 否則，系統不會篩選針對新資料表的查詢。 如[自動將資料列層級安全性套用至新建立的資料表 (部落格)](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx) \(英文\) 中所述，此新增動作可以使用 DDL 觸發程序來自動執行。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 您可以將彈性資料庫工具與資料列層級安全性搭配使用，以支援多租用戶和單一租用戶的分區，藉此向外延展應用程式的資料層。 多租用戶分區可以用來更有效率地儲存資料。 當大量租用戶只有少量資料列的資料時，此效率特別顯著。 單一租用戶分區可支援效能和隔離需求更嚴格的進階租用戶。 如需詳細資訊，請參閱[資料列層級安全性參考資料][rls]。
 

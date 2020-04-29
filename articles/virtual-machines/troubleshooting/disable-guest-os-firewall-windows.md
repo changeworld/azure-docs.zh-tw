@@ -1,6 +1,6 @@
 ---
 title: 停用 Azure VM 中的客體 OS 防火牆 | Microsoft Docs
-description: 瞭解一種解決方法,用於排除來賓操作系統防火牆篩選部分或全部 VM 流量的情況。
+description: 瞭解解決方法，以疑難排解客體作業系統防火牆篩選 VM 的部分或完整流量的情況。
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -15,10 +15,10 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422371"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>停用 Azure VM 中的客體 OS 防火牆
@@ -27,7 +27,7 @@ ms.locfileid: "80422371"
 
 ## <a name="solution"></a>解決方法
 
-本文所述程序是作為因應措施使用，讓您專注於修正真正的問題，也就是如何正確設定防火牆規則。 啟用 Windows 防火牆元件是 Microsoft 最佳實務。 如何配置防火牆規則取決於對 VM 所需的訪問級別。
+本文所述程序是作為因應措施使用，讓您專注於修正真正的問題，也就是如何正確設定防火牆規則。 Microsoft 的最佳作法是啟用 Windows 防火牆元件。 設定防火牆規則的方式取決於所需的 VM 存取層級。
 
 ### <a name="online-solutions"></a>線上解決方案 
 
@@ -90,9 +90,9 @@ ms.locfileid: "80422371"
 
 請遵循下列步驟使用[遠端登錄](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry)。
 
-1.  在故障排除 VM 上,啟動註冊表編輯器,然後轉到**檔案** > **連接網路註冊表**。
+1.  在疑難排解 VM 上，啟動 [登錄編輯程式]，然後移**至** > **[檔案] [連線] [網路登入]**。
 
-2.  開啟*目標機*_SYSTEM 分支,並指定以下值:
+2.  開啟*目的電腦*\SYSTEM 分支，然後指定下列值：
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -100,15 +100,15 @@ ms.locfileid: "80422371"
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\StandardProfile\EnableFirewall         -->        0
     ```
 
-3.  重新啟動服務。 由於無法使用遠端註冊表執行此操作,因此必須使用遠端服務控制台。
+3.  重新啟動服務。 因為您無法使用遠端登入來執行此動作，所以您必須使用遠端服務主控台。
 
-4.  打開**服務.msc**的實例。
+4.  開啟**services.msc**的實例。
 
 5.  按一下 [服務 (本機)]****。
 
 6.  選取 [連線到另一部電腦]****。
 
-7.  輸入問題 VM 的**專用 IP 位址 (DIP)。**
+7.  輸入問題 VM 的**私人 IP 位址（DIP）** 。
 
 8.  重新啟動本機防火牆原則。
 

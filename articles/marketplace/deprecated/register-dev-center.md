@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/05/2018
 ms.author: dsindona
 ms.openlocfilehash: 62e25a252d6a4981bddd50361d01110ec10a6e2c
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80387660"
 ---
 # <a name="register-in-dev-center"></a>在開發人員中心註冊  
@@ -62,7 +62,7 @@ ms.locfileid: "80387660"
 -->
 9.  在 `Registration - Review` 區段中，檢閱您的帳戶資訊，並確認所有項目都正確。  
 
-    閱讀 Microsoft Azure 應用商店[發佈商協定的](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)條款及條件。  
+    閱讀 Microsoft Azure Marketplace[發行者合約](https://cloudpartner.azure.com/Content/Unversioned/PublisherAgreement2.pdf)的條款及條件。  
 
     按一下勾選方塊，表示您已閱讀並接受這些條款。  
     
@@ -140,10 +140,10 @@ ms.locfileid: "80387660"
   > 以交易清單類型發佈的發行者：VM、Azure 應用程式、解決方案範本和受控應用程式。  
 
 * **為何需要開發人員中心帳戶？**
-  > 開發人員中心帳戶是使 Microsoft 能夠代表發佈商為 Transact 清單類型向客戶收費所必需的。 開發人員中心帳戶註冊可讓 Microsoft 驗證公司的法律、稅務和銀行相關資訊。 要瞭解更多資訊，[請按一下此處。](https://docs.microsoft.com/azure/marketplace/become-publisher)
+  > 必須要有開發人員中心帳戶，才能讓 Microsoft 代表發行者向客戶收取交易清單類型的費用。 開發人員中心帳戶註冊可讓 Microsoft 驗證公司的法律、稅務和銀行相關資訊。 若要深入瞭解，請按一下[這裡。](https://docs.microsoft.com/azure/marketplace/become-publisher)
 
 * **如何開始進行開發人員中心註冊？**
-  > 為防止重複註冊，請確認您的公司尚未註冊開發人員中心帳戶。 您必須使用要與開發人員帳戶相關聯的 Microsoft 帳戶進行登入。 如果您還沒有 Microsoft 帳戶，可以在此處創建新帳戶[。](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (範例：contoso_marketplace@live.com) 若要登入並註冊，請移至 https://dev.windows.com/registration?accountProgram=Azure
+  > 為防止重複註冊，請確認您的公司尚未註冊開發人員中心帳戶。 您必須使用要與開發人員帳戶相關聯的 Microsoft 帳戶進行登入。 如果您還沒有 Microsoft 帳戶，可以在這裡建立新的帳戶[。](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (範例：contoso_marketplace@live.com) 若要登入並註冊，請移至 https://dev.windows.com/registration?accountProgram=Azure
   > <br>若要深入了解註冊程序，請按一下[這裡](https://docs.microsoft.com/azure/marketplace/register-dev-center)。</br>
 
 * **我應該選擇「個人」還是「公司」帳戶類型？**
@@ -152,17 +152,17 @@ ms.locfileid: "80387660"
 * **在帳戶建立後，我是否可以將帳戶類型從「個人」變更為「公司」？**
   > 否，在帳戶建立後，即無法更新帳戶類型。
 
-* **為什麼我正確輸入城市時會收到"城市需要"錯誤訊息？**
+* **為什麼我會收到「城市是必要的」錯誤訊息，不過我已正確輸入城市？**
   > 請檢查並確認輸入的郵遞區號也是正確的。 系統會進行城市、郵遞區號的驗證。
 
 * **如何取得促銷代碼？**
-  > 請完成 [Marketplace 註冊](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)表單，以取得開發人員中心促銷代碼。 有關詳細資訊，請參閱如何[創建合作夥伴中心帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
+  > 請完成 [Marketplace 註冊](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)表單，以取得開發人員中心促銷代碼。 如需詳細資訊，請參閱如何[建立合作夥伴中心帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)。
  
 * **完成註冊後需要哪些後續動作？**
-  > 查找主題verify@microsoft.com行"需要的操作：驗證您的 Microsoft 電子郵件帳戶"的電子郵件。 按一下具時效性的驗證連結，以完成註冊。 *如果您未在 24 小時內收到電子郵件，請查看垃圾郵件資料夾。*
+  > 尋找來自verify@microsoft.com且主旨行「需要動作：請向 Microsoft 驗證您的電子郵件帳戶」的電子郵件。 按一下具時效性的驗證連結，以完成註冊。 *如果您未在 24 小時內收到電子郵件，請查看垃圾郵件資料夾。*
 
 * **開發人員中心驗證之後的後續步驟為何？**
-  > 轉到"您的程式"（https://developer.microsoft.com/dashboard/Account/Programs)並登錄到開發人員中心帳戶）。 如果未將 Azure 視為已註冊程式，請在"推薦程式"下查找，然後查找 Azure 以選擇"入門"。
+  > 移至 [您的程式]https://developer.microsoft.com/dashboard/Account/Programs) （並登入開發人員中心帳戶。 如果您看不到 Azure 做為已註冊的方案，請查看「建議的程式」，然後尋找 Azure 以選取 [開始使用]。
 
 * **如何將我的開發人員中心帳戶連結到我的 Cloud Partner 入口網站發行者設定檔？**
   > 發嫌之前的最後一個步驟，勢將您的開發人員中心帳戶連結到您的 Cloud Partner 入口網站[設定檔](https://cloudpartner.azure.com/#profile)。 如果您的開發人員中心帳戶與您在 [Cloud Partner 入口網站](https://cloudpartner.azure.com/#alloffers)的帳戶不同，請在 Cloud Partner 入口網站中將您的開發人員中心帳戶新增為新的[使用者](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users)。 使用您的開發人員中心帳戶登入 [Cloud Partner 入口網站](https://cloudpartner.azure.com/#alloffers)。 在 Web 瀏覽器右上方的功能表，選取 [發行者設定檔]。 選取 [連結開發人員中心帳戶]。

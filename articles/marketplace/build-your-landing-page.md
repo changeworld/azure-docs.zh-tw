@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: dsindona
 ms.openlocfilehash: 0952c1d4b6955ff20f06afc6eaded18fbd105708
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80387796"
 ---
 # <a name="build-your-landing-page"></a>建置登陸頁面
@@ -45,7 +45,7 @@ ms.locfileid: "80387796"
 | **將呼籲置於標題或明確劃分的區段** | 在文字段落中內嵌您在 Marketplace 中的清單連結。 |
 | **研究出最佳關鍵字並將頁面最佳化以供搜尋** | 假設您產品名稱產生的搜尋順位較高。 |
 | **善用廣告活動的關鍵字** | 在各個 Web 屬性間如果使用許多不同的關鍵字，將會降低廣告投資的成效。 |
-| **將相關產品名稱和關鍵字"放在折疊上方"** | 讓使用者必須捲動才能看到您所展示的產品或解決方案。 |
+| **將相關的產品名稱和關鍵字放在折迭之上** | 讓使用者必須捲動才能看到您所展示的產品或解決方案。 |
 | **依據 Microsoft 商標指導方針使用品牌圖像來驗證您的解決方案，例如「Azure 認證」** | 使用未經核准的 Microsoft 品牌圖像。 |
 
 ## <a name="next-steps"></a>後續步驟

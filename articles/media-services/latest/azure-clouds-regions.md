@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務 v3 可用的雲和區域
+title: 可使用 Azure 媒體服務 v3 的雲端和區域
 description: 本文會討論可使用 Azure 媒體服務 v3 的 Azure 雲端和區域。
 services: media-services
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: juliako
 ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/29/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80382965"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>存在 Azure 媒體服務 v3 的雲端和區域
@@ -35,7 +35,7 @@ Azure 媒體服務 v3 可透過 Azure Resource Manager 資訊清單在全域 Azu
 
 ## <a name="regionsgeographieslocations"></a>區域/地理位置/位置
 
-[部署 Azure 媒體服務的區域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
+[部署 Azure 媒體服務服務的區域](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
 ### <a name="region-code-name"></a>區域碼名稱
 
@@ -96,7 +96,7 @@ az account list-locations
 | 驗證 | `https://login.chinacloudapi.cn/` |
 | 權杖對象 |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [Azure 區域](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Azure 地理位置](https://azure.microsoft.com/global-infrastructure/geographies/)

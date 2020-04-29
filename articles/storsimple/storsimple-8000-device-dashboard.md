@@ -1,5 +1,5 @@
 ---
-title: 在 StorSimple 裝置管理員服務使用裝置摘要
+title: 使用 StorSimple Device Manager 服務中的裝置摘要
 description: 描述 StorSimple 裝置管理員服務裝置摘要，以及如何用它來檢視儲存體計量和連線的啟動器，並尋找序號和 IQN。
 services: storsimple
 documentationcenter: NA
@@ -15,15 +15,15 @@ ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 7801cdc6573799330e5173db82dead8d4f2cd83f
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80398256"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>使用 StorSimple 裝置管理員服務中的裝置摘要
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 StorSimple 裝置摘要刀鋒視窗可提供特定 StorSimple 裝置的資訊概觀；相對於服務摘要刀鋒視窗，其提供 Microsoft Azure StorSimple 解決方案中所有裝置的相關資訊。
 
 對於已向給定 StorSimple 裝置管理員註冊的 StorSimple 8000 系列裝置，裝置摘要刀鋒視窗提供摘要檢視，並醒目提示需要系統管理員注意的裝置問題。 本教學課程介紹裝置摘要刀鋒視窗、說明內容和功能，並描述您可以從這個刀鋒視窗執行的工作。
@@ -78,7 +78,7 @@ StorSimple 裝置摘要刀鋒視窗可提供特定 StorSimple 裝置的資訊概
 
      在此圖表中，您可以檢視主要儲存體總計 (主機寫入至您的裝置的資料數量) 和您的裝置一段時間內所使用的雲端儲存體總計的度量資訊。
   
-     在此情況下，「主要儲存體」** 是指由主機寫入的資料總量，並可依磁碟區類型細分︰「主要階層式存放區」** 包含在本機儲存的資料和分層至雲端的資料。 「主要本機釘選儲存體」** 只包含在本機儲存的資料。 另一方面，*雲端儲存體*是儲存在雲端中的資料總量的度量單位。 此儲存體包括分層式資料和備份。 儲存在雲端中的資料會進行重複資料刪除和壓縮，而主要儲存體會指出進行重複資料刪除和壓縮之前已使用的儲存體數量。 (您可以比較這兩個數位,以獲得壓縮速率的概念。對於主存儲和雲端儲存,顯示的金額取決於您配置的追蹤頻率。 例如，如果您選擇一週頻率，則此圖表會顯示上週每一天的資料。
+     在此情況下，「主要儲存體」** 是指由主機寫入的資料總量，並可依磁碟區類型細分︰「主要階層式存放區」** 包含在本機儲存的資料和分層至雲端的資料。 「主要本機釘選儲存體」** 只包含在本機儲存的資料。 另一方面，*雲端儲存體*是儲存在雲端中的資料總量的度量單位。 此儲存體包括分層式資料和備份。 儲存在雲端中的資料會進行重複資料刪除和壓縮，而主要儲存體會指出進行重複資料刪除和壓縮之前已使用的儲存體數量。 （您可以比較這兩個數字，以了解壓縮速率）。對於主要和雲端儲存體，所顯示的數量會以您設定的追蹤頻率為基礎。 例如，如果您選擇一週頻率，則此圖表會顯示上週每一天的資料。
 
      若要查看一段時間所耗用的雲端儲存體數量，請選取 [CLOUD STORAGE USED]**** 選項。 若要查看主機所寫入的儲存體總量，請選取 [使用的主要分層式儲存體]**** 和 [使用的本機釘選儲存體]**** 選項。 
      如需詳細資訊，請參閱[使用 StorSimple 裝置管理員服務監視 StorSimple 裝置](storsimple-monitor-device.md)。

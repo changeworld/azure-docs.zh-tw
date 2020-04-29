@@ -8,10 +8,10 @@ ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
 ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411661"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>使用 Azure 儲存體總管處理資料
@@ -19,7 +19,7 @@ ms.locfileid: "80411661"
 在 Azure 儲存體總管中使用 Azure Cosmos DB 可讓使用者管理 Azure Cosmos DB 實體、操縱資料、更新預存程序及觸發程序，以及其他 Azure 實體 (例如儲存體 Blob 及佇列)。 現在您可以使用同一個工具在同一處管理您不同的 Azure 實體。 目前，Azure 儲存體總管支援對 SQL、MongoDB、Graph 和資料表 API 設定 Cosmos 帳戶。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API。 若您還沒有帳戶，您可以根據[Azure Cosmos DB：使用 .NET 及 Azure 入口網站建置 SQL API Web 應用程式](create-sql-api-dotnet.md)中的說明，在 Azure 入口網站中建立帳戶。
 
@@ -29,7 +29,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 ## <a name="connect-to-an-azure-subscription"></a>連線到 Azure 訂用帳戶
 
-1. 安裝**Azure 儲存資源管理員**後,按一下左側的**外掛程式**圖示,如下所示:
+1. 安裝**Azure 儲存體總管**之後，請按一下左邊的**外掛程式**圖示，如下圖所示：
        
    ![外掛程式圖示](./media/storage-explorer/plug-in-icon.png)
  
@@ -37,7 +37,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
    ![連線到 Azure 訂用帳戶](./media/storage-explorer/connect-to-azure-subscription.png)
 
-2. 在 **"Azure 登錄"對話框中**,選擇 **"登錄**",然後輸入 Azure 認證。
+2. 在 [ **Azure 登入**] 對話方塊中，選取 [登**入**]，然後輸入您的 Azure 認證。
 
     ![登入](./media/storage-explorer/sign-in.png)
 
@@ -59,7 +59,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
     ![透過連接字串連線到 Cosmos DB](./media/storage-explorer/connect-to-db-by-connection-string.png)
 
-2. 目前僅支援 SQL 和資料表 API。 選擇 API、貼上**連接字串**、輸入**帳戶標籤**、按 [下一步]**** 以檢查摘要，然後按一下 [連線]**** 以連線到 Azure Cosmos DB 帳戶。 有關檢索主連接字串的資訊,請參閱[取連接字串](manage-with-powershell.md#list-keys)。
+2. 目前僅支援 SQL 和資料表 API。 選擇 API、貼上**連接字串**、輸入**帳戶標籤**、按 [下一步]**** 以檢查摘要，然後按一下 [連線]**** 以連線到 Azure Cosmos DB 帳戶。 如需有關如何抓取主要連接字串的詳細資訊，請參閱[取得連接字串](manage-with-powershell.md#list-keys)。
 
     ![連接字串](./media/storage-explorer/connection-string.png)
 
@@ -73,7 +73,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
     ![使用模擬器連線到 Cosmos DB](./media/storage-explorer/emulator-entry.png)
 
-3. 目前僅支援 SQL API。 貼上**連接字串**、輸入**帳戶標籤**、按 [下一步]**** 以檢查摘要，然後按一下 [連線]**** 以連線到 Azure Cosmos DB 帳戶。 有關檢索主連接字串的資訊,請參閱[取連接字串](manage-with-powershell.md#list-keys)。
+3. 目前僅支援 SQL API。 貼上**連接字串**、輸入**帳戶標籤**、按 [下一步]**** 以檢查摘要，然後按一下 [連線]**** 以連線到 Azure Cosmos DB 帳戶。 如需有關如何抓取主要連接字串的詳細資訊，請參閱[取得連接字串](manage-with-powershell.md#list-keys)。
 
     ![使用模擬器對話方塊連線到 Cosmos DB](./media/storage-explorer/emulator-dialog.png)
 
@@ -116,7 +116,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
     ![刪除 database2](./media/storage-explorer/delete-database2.png) 
 
 #### <a name="create-a-collection"></a>建立集合
-1. 右鍵單擊資料庫,選擇 **「創建集合**」,然後提供以下資訊,如**集合 ID、****儲存容量**等。按下 **「確定」** 以完成。 
+1. 以滑鼠右鍵按一下您的資料庫，選擇 [**建立集合**]，然後提供下列資訊（例如**集合識別碼**、**儲存體容量**等）。按一下 **[確定**] 以完成。 
 
     ![建立 collection1](./media/storage-explorer/create-collection.png)
 
@@ -213,22 +213,22 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 有幾個原因可能會導致此錯誤，最常見的兩個原因是：
 
-+ 您位於*透明代理*的後面,這意味著有人(如 IT 部門)正在攔截 HTTPS 流量,對其進行解密,然後使用自簽名證書對其進行加密。
++ 您是在*透明的 proxy*後方，這表示有人（例如您的 IT 部門）正在攔截 HTTPS 流量、解密，然後使用自我簽署憑證加密。
 
-+ 您正在運行軟體,如防病毒軟體,該軟體正在將自簽名的 TLS/SSL 證書注入您收到的 HTTPS 消息中。
++ 您正在執行軟體，例如防毒軟體，這會將自我簽署的 TLS/SSL 憑證插入您收到的 HTTPS 訊息。
 
 當儲存體總管遇到這些「自我簽署憑證」的其中一個時，它可能就無法知曉收到的 HTTPS 訊息是否已遭竄改。 如果您有一份自我簽署憑證，則可以告知儲存體總管信任該憑證。 如果您不確定插入憑證的是誰，可以嘗試執行下列步驟來自行尋找：
 
 1. 安裝 OpenSSL
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (任一輕裝版即可)
      - Mac 和 Linux：應該包含在作業系統中
-2. 執行開啟 SSL
+2. 執行 OpenSSL
     - Windows：移至安裝目錄並找到 **/bin/**，然後按兩下 **openssl.exe**。
     - Mac 和 Linux：從終端機執行 **openssl**
 3. 執行 `s_client -showcerts -connect microsoft.com:443`
 4. 尋找自我簽署憑證。 如果不確定哪些是自我簽署的憑證，請尋找主旨 ("s:") 和簽發者 ("i:") 相同的所有位置。
 5.  一旦發現任何自我簽署的憑證，請針對每個憑證，將從 **-----BEGIN CERTIFICATE-----** 到 **-----END CERTIFICATE-----** (含) 的所有內容，複製並貼到新的 .cer 檔案。
-6.  開啟儲存資源管理員,然後轉到**編輯** > **SSL 憑證** > **匯入憑證**。 使用檔案選擇器來尋找、選取及開啟您所建立的 .cer 檔案。
+6.  開啟儲存體總管，然後移至 [**編輯** > ] [**SSL 憑證** > ] [匯**入憑證**]。 使用檔案選擇器來尋找、選取及開啟您所建立的 .cer 檔案。
 
 如果使用上述步驟找不到任何自我簽署的憑證，請傳送意見反應給我們，以取得更多協助。
 
@@ -268,7 +268,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
   - Windows 是 %AppData%/StorageExplorer 資料夾
   - Mac 是 /Users/<您的名稱>/Library/Applicaiton SUpport/StorageExplorer
   - Linux 是 ~/.config/StorageExplorer
-  - 如果刪除這些檔案 **,您必須重新輸入所有認證**
+  - 如果您刪除這些檔案，就**必須重新輸入所有認證**
 
 
 ### <a name="httphttps-proxy-issue"></a>Http/Https Proxy 的問題
@@ -300,7 +300,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 ## <a name="contact-us"></a>與我們連絡
 
-如果沒有解決方案適合您,請寄送電子郵件至 Azure Cosmos DB 開發[cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)工具團隊 (), 瞭解有關此問題的詳細資訊,以解決此問題。
+如果您沒有任何解決方案可供您使用，請傳送電子郵件給 Azure Cosmos DB 開發[cosmosdbtooling@microsoft.com](mailto:cosmosdbtooling@microsoft.com)工具小組（），並提供問題的詳細資料以修正問題。
 
 ## <a name="next-steps"></a>後續步驟
 

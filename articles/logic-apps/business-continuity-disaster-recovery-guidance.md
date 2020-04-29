@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.openlocfilehash: 7bf71ce7c44229ccf19022e9cfb0162f9d77cd97
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437707"
 ---
 # <a name="business-continuity-and-disaster-recovery-for-azure-logic-apps"></a>Azure Logic Apps 的商務持續性和嚴重損壞修復
@@ -100,7 +100,7 @@ Azure Logic Apps 提供內建的觸發程式和動作，以及您的邏輯應用
 
 您可以設定您的主要和次要位置，讓這些位置中的邏輯應用程式實例可以扮演下列角色：
 
-| 主要-次要角色 | 說明 |
+| 主要-次要角色 | 描述 |
 |------------------------|-------------|
 | *主動-主動* | 這兩個位置中的主要和次要邏輯應用程式實例會遵循下列其中一種模式，主動處理要求： <p><p>- *負載平衡*：您可以讓兩個實例接聽端點，並視需要將流量負載平衡到每個實例。 <p>- *競爭取用者*：您可以讓兩個實例作為競爭取用者，讓實例競爭佇列中的訊息。 如果一個實例失敗，另一個實例會接管工作負載。 |
 | *主動-被動* | 主要邏輯應用程式實例會主動處理整個工作負載，而次要實例則為被動（已停用或非使用中）。 次要會等候主要無法使用或因為中斷或失敗而無法運作的信號，並將工作負載視為作用中的實例。 |
@@ -346,7 +346,7 @@ Azure Logic Apps 提供內建的觸發程式和動作，以及您的邏輯應用
   * [Azure Blob 儲存體嚴重損壞修復和帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md)
   * [Azure 事件中樞異地嚴重損壞修復](../event-hubs/event-hubs-geo-dr.md)
 
-## <a name="next-steps"></a>接下來的步驟
+## <a name="next-steps"></a>後續步驟
 
 * [Azure 的復原功能總覽](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview)
 * [特定 Azure 服務的復原檢查清單](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service)

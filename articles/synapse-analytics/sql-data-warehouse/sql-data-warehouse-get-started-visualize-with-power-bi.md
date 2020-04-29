@@ -1,5 +1,5 @@
 ---
-title: 使用 Power BI 微軟 Azure 視覺化資料
+title: 使用 Power BI Microsoft Azure 將資料視覺化
 description: 使用 Power BI 視覺化 SQL 資料倉儲資料
 services: synapse-analytics
 author: mlee3gsd
@@ -12,10 +12,10 @@ ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 7e764eeab6f681d90e1a602f02cdb03330d6fd3d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80350939"
 ---
 # <a name="visualize-data-with-power-bi"></a>使用 Power BI 視覺化資料
@@ -25,15 +25,15 @@ ms.locfileid: "80350939"
 > 
 > 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 若要逐步執行本教學課程，您需要：
 
 * 預先載入 AdventureWorksDW 資料庫的 SQL 資料倉儲。 若要佈建資料倉儲，請參閱[建立 SQL 資料倉儲](create-data-warehouse-portal.md)並選擇載入範例資料。 如果您已經有資料倉儲但沒有範例資料，您可以[載入 WideWorldImportersDW](load-data-wideworldimportersdw.md)。
 
-## <a name="1-connect-to-your-database"></a>1. 連接到資料庫
+## <a name="1-connect-to-your-database"></a>1. 連接到您的資料庫
 若要開啟 Power BI 並連接到您的 AdventureWorksDW 資料庫：
 
-1. 登錄到[Azure 門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 2. 按一下 [SQL 資料庫] **** ，並選擇您的 AdventureWorks SQL 資料倉儲資料庫。
    
     ![尋找您的資料庫](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png)
@@ -50,7 +50,7 @@ ms.locfileid: "80350939"
    
     ![Power BI 開啟 AdventureWorksDW](./media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-open-adventureworks.png)
 
-## <a name="2-create-a-report"></a>2. 創建報表
+## <a name="2-create-a-report"></a>2. 建立報表
 您現在已準備好使用 Power BI 來分析 AdventureWorksDW 範例資料。 為了執行分析，AdventureWorksDW 有一個稱為 AggregateSales 的檢視。 這個檢視包含用來分析公司銷售的一些重要指標。
 
 1. 若要根據郵遞區號建立銷售金額的對應圖，請在右手邊欄位窗格中按一下 AggregateSales 檢視以展開它。 按一下 [PostalCode] 和 [SalesAmount] 資料行來選取它們。
@@ -94,4 +94,4 @@ ms.locfileid: "80350939"
 隨著使用體驗改善，這些限制和助益事項可能會改變。
 
 ## <a name="next-steps"></a>後續步驟
-現在，我們已經給了您一些時間來預熱示例資料，看看如何[開發](sql-data-warehouse-overview-develop.md)或[載入](design-elt-data-loading.md)。 或者，看一下 [Power BI 網站](https://www.powerbi.com/)。
+既然我們已經提供您一些時間來準備您的範例資料，請參閱如何[開發](sql-data-warehouse-overview-develop.md)或[載入](design-elt-data-loading.md)。 或者，看一下 [Power BI 網站](https://www.powerbi.com/)。

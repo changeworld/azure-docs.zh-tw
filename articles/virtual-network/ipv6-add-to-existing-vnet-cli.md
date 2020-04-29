@@ -1,7 +1,7 @@
 ---
-title: 將 IPv6 新增到 Azure 虛擬網路中的 IPv4 應用程式 - Azure CLI
+title: 將 IPv6 新增至 Azure 虛擬網路中的 IPv4 應用程式-Azure CLI
 titlesuffix: Azure Virtual Network
-description: 本文演示如何使用 Azure CLI 將 IPv6 位址部署到 Azure 虛擬網路中的現有應用程式。
+description: 本文說明如何使用 Azure CLI，將 IPv6 位址部署到 Azure 虛擬網路中的現有應用程式。
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -14,28 +14,28 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: f3f9b32ea55f0ceebf08b22ccc7e2ceec0b6227e
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80420796"
 ---
-# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>將 IPv6 新增到 Azure 虛擬網路中的 IPv4 應用程式 - Azure CLI
+# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>將 IPv6 新增至 Azure 虛擬網路中的 IPv4 應用程式-Azure CLI
 
-本文介紹如何將 IPv6 位址添加到使用 Azure CLI 的標準負載均衡器的 Azure 虛擬網路中使用 IPv4 公共 IP 位址的應用程式。 就地升級包括虛擬網路和子網、具有 IPv4 + IPv6 前端配置的標準負載均衡器、具有 IPv4 + IPv6 配置的 NIC 的 VM、網路安全組和公共 IP。
+本文說明如何在 Azure 虛擬網路中使用 IPv4 公用 IP 位址的應用程式中，為使用 Azure CLI 的 Standard Load Balancer 新增 IPv6 位址。 就地升級包含一個虛擬網路和子網、一個 Standard Load Balancer，其中包含 IPv4 + IPV6 前端設定、具有 IPv4 + IPv6 設定的 Vm、網路安全性群組和公用 Ip。
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果您決定改為在本機安裝和使用 CLI，本快速入門會要求您使用 Azure CLI 2.0.28 版或更新版本。 若要尋找您安裝的版本，請執行 `az --version`。 如需安裝或升級的資訊，請參閱[安裝 Azure CLI](/cli/azure/install-azure-cli)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-本文假定部署了標準負載均衡器,如[快速入門:創建標準負載均衡器 - Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)。
+本文假設您已部署 Standard Load Balancer，如[快速入門：建立 Standard Load Balancer Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md)中所述。
 
 ## <a name="create-ipv6-addresses"></a>建立 IPv6 位址
 
-使用[az 網路公共 ip](/cli/azure/network/public-ip)為您的標準負載均衡器創建公共 IPv6 位址。 以下範例在*myResourceGroupSLB*資源群組中建立名為*PublicIP_v6*的 IPv6 公共 IP 位址:
+建立公用 IPv6 位址，並使用[az network public-ip create 來建立](/cli/azure/network/public-ip)您的 Standard Load Balancer。 下列範例會在*myResourceGroupSLB*資源群組中建立名為*PublicIP_v6*的 IPv6 公用 IP 位址：
 
 ```azurecli
   
@@ -48,9 +48,9 @@ az network public-ip create \
 --version IPv6
 ```
 
-## <a name="configure-ipv6-load-balancer-frontend"></a>設定 IPv6 負載均衡器前端
+## <a name="configure-ipv6-load-balancer-frontend"></a>設定 IPv6 負載平衡器前端
 
-使用[az 網路 lb 前端 ip](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create)建立新的 IPv6 IP 位址的負載平衡器,如下所示:
+使用[az network lb 前端-IP create](https://docs.microsoft.com/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create) ，以新的 IPv6 IP 位址設定負載平衡器，如下所示：
 
 ```azurecli
 az network lb frontend-ip create \
@@ -60,9 +60,9 @@ az network lb frontend-ip create \
 --public-ip-address PublicIP_v6
 ```
 
-## <a name="configure-ipv6-load-balancer-backend-pool"></a>設定 IPv6 負載均衡器後端池
+## <a name="configure-ipv6-load-balancer-backend-pool"></a>設定 IPv6 負載平衡器後端集區
 
-使用[az web lb 位址池建立](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)具有 IPv6 位址的 NIC 後端池,如下所示:
+使用[az network lb 位址集區建立](https://docs.microsoft.com/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create)，為具有 IPv6 位址的 nic 建立後端集區，如下所示：
 
 ```azurecli
 az network lb address-pool create \
@@ -71,9 +71,9 @@ az network lb address-pool create \
 --resource-group MyResourceGroupSLB
 ```
 
-## <a name="configure-ipv6-load-balancer-rules"></a>設定 IPv6 負載均衡器規則
+## <a name="configure-ipv6-load-balancer-rules"></a>設定 IPv6 負載平衡器規則
 
-使用[az 網路 lb 規則創建](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)IPv6 負載均衡器規則。
+使用[az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create)建立 IPv6 負載平衡器規則。
 
 ```azurecli
 az network lb rule create \
@@ -89,7 +89,7 @@ az network lb rule create \
 
 ## <a name="add-ipv6-address-ranges"></a>新增 IPv6 位址範圍
 
-將 IPv6 位址範圍新增到承載負載均衡器的虛擬網路和子網,如下所示:
+將 IPv6 位址範圍新增至裝載負載平衡器的虛擬網路和子網，如下所示：
 
 ```azurecli
 az network vnet update \
@@ -104,9 +104,9 @@ az network vnet subnet update \
 --address-prefixes  "10.0.0.0/24"  "ace:cab:deca:deed::/64"  
 ```
 
-## <a name="add-ipv6-configuration-to-nics"></a>新增 IPv6 設定加入 NIC
+## <a name="add-ipv6-configuration-to-nics"></a>將 IPv6 設定新增至 Nic
 
-使用[az 網路 nic ip 設定建立](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create)使用 IPv6 位址配置 VM NIC,如下所示:
+使用[az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create)設定具有 IPv6 位址的 VM nic，如下所示：
 
 ```azurecli
 az network nic ip-config create \
@@ -141,12 +141,12 @@ az network nic ip-config create \
 
 ```
 
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 門戶中查看 IPv6 雙堆疊虛擬網路
-您可以在 Azure 門戶中查看 IPv6 雙堆疊虛擬網路,如下所示:
-1. 在門戶的搜尋列中,輸入*myVnet*。
-2. 當**myVnet**顯示在搜尋結果中時,請選擇它。 這將啟動名為*myVNet*的雙堆疊虛擬網路**的概述**頁面。 雙堆疊虛擬網路顯示三個 NIC,其中 IPv4 和 IPv6 配置都位於名為*mySubnet*的雙堆疊子網中。
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>在 Azure 入口網站中查看 IPv6 雙重堆疊虛擬網路
+您可以在 Azure 入口網站中查看 IPv6 雙重堆疊虛擬網路，如下所示：
+1. 在入口網站的搜尋列中，輸入*myVnet*。
+2. 當**myVnet**出現在搜尋結果中時，請選取它。 這會啟動名為*myVNet*的雙重堆疊虛擬網路的 [**總覽**] 頁面。 雙重堆疊虛擬網路會顯示三個 Nic，其中 IPv4 和 IPv6 設定都位於名為*mySubnet*的雙重堆疊子網中。
 
-  ![Azure 的 IPv6 雙堆疊虛擬網路](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
+  ![Azure 中的 IPv6 雙重堆疊虛擬網路](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
 
 ## <a name="clean-up-resources"></a>清除資源
@@ -159,4 +159,4 @@ Remove-AzResourceGroup -Name MyAzureResourceGroupSLB
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中,您將具有 IPv4 前端 IP 配置的現有標準負載均衡器更新為雙堆疊(IPv4 和 IPv6) 配置。 您還可以將 IPv6 配置添加到後端池中 VM 的 NIC。 要瞭解有關 Azure 虛擬網路中 IPv6 支援的更多資訊,請參閱[什麼是 Azure 虛擬網路的 IPv6?](ipv6-overview.md)
+在本文中，您已將具有 IPv4 前端 IP 設定的現有 Standard Load Balancer 更新為雙重堆疊（IPv4 和 IPv6）設定。 您也會將 IPv6 設定新增至後端集區中 Vm 的 Nic。 若要深入瞭解 Azure 虛擬網路中的 IPv6 支援，請參閱[什麼是適用于 azure 虛擬網路的 ipv6？](ipv6-overview.md)

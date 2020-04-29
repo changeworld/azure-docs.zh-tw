@@ -4,10 +4,10 @@ description: 復原服務保存庫和 Azure 備份保存庫之間的概觀與比
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80436953"
 ---
 # <a name="recovery-services-vaults-overview"></a>復原服務保存庫概觀
@@ -18,7 +18,7 @@ ms.locfileid: "80436953"
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>比較復原服務保存庫與備份保存庫
 
-如果仍有備份保管庫,則它們正在自動升級到恢復服務保管庫。 到了 2017 年11 月，所有備份保存庫都會自動被升級為復原服務保存庫。
+如果您仍有備份保存庫，則會自動將其升級為復原服務保存庫。 到了 2017 年11 月，所有備份保存庫都會自動被升級為復原服務保存庫。
 
 復原服務保存庫是以 Azure 的 Azure Resource Manager 模型作為基礎，而備份保存庫則是以 Azure Service Manager 模型為作為基礎。 當您將備份保存庫升級至復原服務保存庫時，備份資料在升級程序期間及升級程序之後都會維持不變。 復原服務保存庫可提供備份保存庫無法使用的功能，例如︰
 
@@ -32,19 +32,19 @@ ms.locfileid: "80436953"
 
 - **IaaS VM 的立即還原**︰您可以使用復原服務保存庫，從 IaaS VM 還原檔案和資料夾，而非還原整個 VM，這樣可加速還原時間。 IaaS VM 的立即還原適用於 Windows 和 Linux VM。 [深入了解](backup-instant-restore-capability.md)
 
-## <a name="storage-settings-in-the-recovery-services-vault"></a>回復服務保存庫中的儲存設定
+## <a name="storage-settings-in-the-recovery-services-vault"></a>復原服務保存庫中的儲存體設定
 
 復原服務保存庫是一個實體，可儲存一段時間以來建立的備份和復原點。 復原服務保存庫也包含與受保護虛擬機器相關聯的備份原則。
 
-Azure 備份會自動處理保管庫的存儲。 瞭解如何[變更儲存設定](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)。
+Azure 備份會自動處理保存庫的儲存體。 瞭解如何[變更存放裝置設定](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)。
 
-要瞭解有關存儲冗餘的更多詳細資訊,請參閱有關[地理](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)和[本地](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)冗餘的這些文章。
+若要深入瞭解儲存體冗余，請參閱關於[異地](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)和[本機](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)冗余的文章。
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>在入口網站中管理復原服務保存庫
 
 建立和管理 Azure 入口網站中的復原服務保存庫很輕鬆，因為備份服務已整合至其他 Azure 服務。 這項整合代表您可以在目標服務的內容中，** 建立或管理復原服務保存庫。 例如，若要檢視 VM 的復原點，請選取您的 VM，然後按一下 [作業] 功能表中的 [備份]****。
 
-![修復服務保存庫詳細資訊 VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
+![復原服務保存庫詳細資料 VM](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
 如果 VM 沒有設定備份，則會出現要您設定備份的提示。 如果已設定備份，您會看到與 VM 相關的備份資訊，其中包括還原點清單。  
 

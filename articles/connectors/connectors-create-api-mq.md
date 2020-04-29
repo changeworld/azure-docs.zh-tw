@@ -1,6 +1,6 @@
 ---
-title: 連接到 IBM MQ 伺服器
-description: 使用 Azure 或本地 IBM MQ 伺服器和 Azure 邏輯應用程式傳送和檢索郵件
+title: 連接到 IBM MQ server
+description: 使用 Azure 或內部部署的 IBM MQ server 和 Azure Logic Apps 來傳送和取出訊息
 services: logic-apps
 ms.suite: integration
 author: ChristopherHouser
@@ -10,181 +10,181 @@ ms.topic: article
 ms.date: 03/31/2020
 tags: connectors
 ms.openlocfilehash: 737c5b90b216156ca08346f4a64fd0b421ad6c19
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410171"
 ---
-# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>從 Azure 邏輯套用連線到 IBM MQ 伺服器
+# <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>從 Azure Logic Apps 連接到 IBM MQ server
 
-IBM MQ 連接器發送和檢索存儲在本地或 Azure 中的 IBM MQ 伺服器中的郵件。 此連接器包含透過 TCP/IP 網路與遠端 IBM MQ Server 通訊的 Microsoft MQ 用戶端。 本文提供了使用 MQ 連接器的入門指南。 您可以首先瀏覽佇列上的單一訊息,然後嘗試其他操作。
+IBM MQ 連接器會傳送和抓取儲存在內部部署或 Azure 中的 IBM MQ server 的訊息。 此連接器包含透過 TCP/IP 網路與遠端 IBM MQ Server 通訊的 Microsoft MQ 用戶端。 本文提供使用 MQ 連接器的入門指南。 您可以從流覽佇列上的單一訊息開始，然後再嘗試其他動作。
 
-IBM MQ 連接器包括這些操作,但不提供觸發器:
+IBM MQ connector 包含這些動作，但不提供任何觸發程式：
 
-- 瀏覽單個郵件而不從IBM MQ伺服器中刪除郵件。
-- 瀏覽一批郵件,而不從 IBM MQ 伺服器中刪除郵件。
-- 接收單一訊息並從 IBM MQ 伺服器中刪除該郵件。
-- 接收一批消息並從IBM MQ伺服器中刪除郵件。
-- 向 IBM MQ 伺服器發送一條消息。
+- 流覽單一訊息，而不從 IBM MQ server 刪除訊息。
+- 流覽一批訊息，而不刪除 IBM MQ server 中的訊息。
+- 接收單一訊息，並從 IBM MQ server 刪除訊息。
+- 接收一批訊息，並從 IBM MQ server 刪除訊息。
+- 將單一訊息傳送至 IBM MQ server。
 
-以下是官方支援的 IBM WebSphere MQ 版本:
+以下是正式支援的 IBM WebSphere MQ 版本：
 
   * MQ 7.5
   * MQ 8.0
-  * MQ 9.0
+  * MQ 9。0
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* 如果您使用的是本地 MQ 伺服器,請在網路中的伺服器安裝[本地資料閘道](../logic-apps/logic-apps-gateway-install.md)。 安裝本地資料閘道的伺服器還必須安裝 .NET Framework 4.6,以便 MQ 連接器正常工作。
+* 如果您使用內部部署 MQ 伺服器，請將內部[部署資料閘道安裝](../logic-apps/logic-apps-gateway-install.md)在您網路內的伺服器上。 安裝內部部署資料閘道的伺服器也必須安裝 .NET Framework 4.6，MQ connector 才能正常操作。
 
-  安裝完閘道後,還必須在 Azure 中為本地數據閘道創建資源。 有關詳細資訊,請參考[設定資料閘道連線](../logic-apps/logic-apps-gateway-connection.md)。
+  在您完成安裝閘道之後，您也必須在 Azure 中為內部部署資料閘道建立資源。 如需詳細資訊，請參閱[設定資料閘道聯](../logic-apps/logic-apps-gateway-connection.md)機。
 
-  如果 MQ 伺服器在 Azure 中是公開的或可用的,則不必使用數據閘道。
+  如果您的 MQ 伺服器已公開可用或在 Azure 中提供，您就不需要使用資料閘道。
 
-* 要添加 MQ 操作的邏輯應用。 此邏輯應用必須使用與本地數據閘道連接相同的位置,並且必須已具有啟動工作流的觸發器。
+* 您想要在其中新增 MQ 動作的邏輯應用程式。 此邏輯應用程式必須使用與您的內部部署資料閘道連線相同的位置，而且必須已有啟動工作流程的觸發程式。
 
-  MQ 連接器沒有任何觸發器,因此必須首先向邏輯應用添加觸發器。 例如,可以使用"定期"觸發器。 如果您是邏輯應用的新增功能,請嘗試這個[快速入門建立第一個邏輯應用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+  MQ 連接器沒有任何觸發程式，因此您必須先將觸發程式新增至邏輯應用程式。 例如，您可以使用「週期」觸發程式。 如果您不熟悉邏輯應用程式，請嘗試此[快速入門來建立您的第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 <a name="create-connection"></a>
 
-## <a name="create-mq-connection"></a>建立 MQ 連線
+## <a name="create-mq-connection"></a>建立 MQ 連接
 
-如果在新增 MQ 操作時尚未建立 MQ 連線,系統將提示您建立連接,例如:
+當您新增 MQ 動作時，如果您還沒有 MQ 連接，系統會提示您建立連接，例如：
 
-![提供連線資訊](media/connectors-create-api-mq/connection-properties.png)
+![提供連接資訊](media/connectors-create-api-mq/connection-properties.png)
 
-1. 如果要連接到本地 MQ 伺服器,請選擇 **「透過本地資料閘道連線**」。
+1. 如果您要連線到內部部署 MQ 伺服器，請選取 [透過內部**部署資料網**關聯機]。
 
 1. 提供 MQ 伺服器的連接資訊。
 
    * 針對 [伺服器]****，您可以輸入 MQ Server 的名稱，或輸入 IP 位址，後面接著冒號和連接埠號碼。
 
-   * 要使用安全套接字層 (SSL),請選擇啟用**SSL?**
+   * 若要使用安全通訊端層（SSL），請選取 [**啟用 SSL？**]。
 
-     MQ 連接器目前僅支援伺服器身份驗證,不支援用戶端身份驗證。 有關詳細資訊,請參閱[連接和身份驗證問題](#connection-problems)。
+     MQ 連接器目前僅支援「伺服器驗證」，而非「用戶端驗證」。 如需詳細資訊，請參閱連線[和驗證問題](#connection-problems)。
 
-1. 在**閘道**部分,按照以下步驟操作:
+1. 在 [**閘道**] 區段中，依照下列步驟執行：
 
-   1. 在**訂閱**清單中,選擇與 Azure 閘道資源關聯的 Azure 訂閱。
+   1. 從 [**訂**用帳戶] 清單中，選取與您的 azure 閘道資源相關聯的 azure 訂用帳戶。
 
-   1. 連線**閘道**清單中,選擇要使用的 Azure 閘道資源。
+   1. 從 [連線**閘道**] 清單中，選取您想要使用的 Azure 閘道資源。
 
-1. 當您完成時，選取 [建立]****。
+1. 當您完成時，選取 [建立]  。
 
 <a name="connection-problems"></a>
 
-### <a name="connection-and-authentication-problems"></a>連線與身份驗證問題
+### <a name="connection-and-authentication-problems"></a>連接和驗證問題
 
-當您的邏輯應用嘗試連接到本地 MQ 伺服器時,您可能會收到此錯誤:
+當您的邏輯應用程式嘗試連線到您的內部部署 MQ 伺服器時，您可能會收到此錯誤：
 
 `"MQ: Could not Connect the Queue Manager '<queue-manager-name>': The Server was expecting an SSL connection."`
 
-* 如果您直接在 Azure 中使用 MQ 連接器,則 MQ 伺服器需要使用由受信任的[證書頒發機構](https://www.ssl.com/faqs/what-is-a-certificate-authority/)頒發的證書。
+* 如果您直接在 Azure 中使用 MQ 連接器，MQ 伺服器就必須使用由受信任的[憑證授權單位](https://www.ssl.com/faqs/what-is-a-certificate-authority/)單位所發行的憑證。
 
-* 如果您使用的是本地資料閘道,請試著盡可能使用信任的[憑證授權機構頒發的憑證](https://www.ssl.com/faqs/what-is-a-certificate-authority/)。 但是,如果無法使用此選項,則可以使用自簽名證書,該證書不是由受信任的[證書頒發機構](https://www.ssl.com/faqs/what-is-a-certificate-authority/)頒發的,並且被認為不太安全。
+* 如果您使用內部部署資料閘道，請嘗試使用受信任的[憑證授權單位](https://www.ssl.com/faqs/what-is-a-certificate-authority/)單位所發行的憑證（可能的話）。 不過，如果此選項不可行，您可以使用自我簽署的憑證，這不是由受信任的[憑證授權單位](https://www.ssl.com/faqs/what-is-a-certificate-authority/)單位所發出，而且被視為較不安全。
 
-  要安裝伺服器的自簽名證書,可以使用**Windows 認證管理員**(certmgr.msc) 工具。 對於此方案,在運行本地數據閘道服務的本地電腦上,需要在**受信任的根證書頒發機構**級別的**本地電腦**憑證儲存中安裝證書。
+  若要安裝伺服器的自我簽署憑證，您可以使用**Windows 認證管理員**（certmgr.msc）工具。 在此案例中，內部部署資料閘道服務執行所在的本機電腦上，您必須在 [**信任的根憑證授權**單位] 層級的 [**本機電腦**] 憑證存放區中安裝憑證。
 
-  1. 在運行本地資料閘道服務的電腦上,打開開始功能表,查找並選擇 **「管理使用者證書**」。。
+  1. 在內部部署資料閘道服務執行所在的電腦上，開啟 [開始] 功能表，尋找並選取 [**管理使用者憑證**]。
 
-  1. 開啟 Windows 認證管理員工具後,轉到 **「證書 - 本地電腦** >  **受信任的根憑證頒發機構」** 資料夾,然後安裝證書。
+  1. Windows 認證管理員工具開啟之後，請移至 [**憑證-本機電腦** >  **信任的根憑證授權**單位] 資料夾，並安裝憑證。
 
      > [!IMPORTANT]
-     > 請確保在**憑證 -本地電腦** > **受信任的根憑證頒發機構**儲存中安裝證書。
+     > 請確定您在 [**憑證-本機電腦** > **信任的根憑證授權**單位] 存放區中安裝憑證。
 
-* MQ 伺服器要求您定義要用於 SSL 連接的密碼規範。 但是,.NET 中的 SsLStream 不允許指定密碼規格的順序。 要解決此限制,可以更改 MQ 伺服器設定,以匹配連接器在 SSL 協商中發送的套件中的第一個密碼規範。
+* MQ server 會要求您定義要用於 SSL 連線的加密規格。 不過，.NET 中的 SsLStream 不允許您指定加密規格的順序。 若要解決這項限制，您可以變更 MQ 伺服器設定，使其符合連接器在 SSL 協商中傳送的第一個加密規格。
 
-  嘗試連接時,MQ 伺服器會記錄一個事件消息,指示連接失敗,因為另一端使用了不正確的密碼規範。 事件消息包含清單中首先出現的密碼規範。 更新通道配置中的密碼規範,以匹配事件消息中的密碼規範。
+  當您嘗試連接時，MQ server 會記錄指出連接失敗的事件訊息，因為另一端使用了不正確的加密規格。 事件訊息包含第一個出現在清單中的加密規格。 更新通道設定中的加密規格，以符合事件訊息中的加密規格。
 
-## <a name="browse-single-message"></a>瀏覽單條訊息
+## <a name="browse-single-message"></a>流覽單一訊息
 
-1. 在邏輯應用中,在觸發器或其他操作下,選擇 **「新建步驟**」。。
+1. 在邏輯應用程式的觸發程式或其他動作底下，選取 [**新增步驟**]。
 
-1. 在搜尋框中,輸入`mq`,然後選擇 **「瀏覽郵件**」操作。
+1. 在 [搜尋] 方塊中`mq`，輸入，然後選取 [**流覽訊息]** 動作。
 
-   ![選擇「瀏覽郵件」操作](media/connectors-create-api-mq/browse-message.png)
+   ![選取 [流覽訊息] 動作](media/connectors-create-api-mq/browse-message.png)
 
-1. 如果尚未建立 MQ 連線,系統會將提示您[建立此連線](#create-connection)。
+1. 如果您尚未建立 MQ 連線，系統會提示您[建立該連接](#create-connection)。
 
-1. 建立連線後,設定 **「瀏覽」訊息**操作的屬性:
+1. 建立連線之後，請設定 [**流覽訊息動作]** 的屬性：
 
    | 屬性 | 描述 |
    |----------|-------------|
-   | **佇列** | 如果與連接中指定的佇列不同,請指定該佇列。 |
-   | **訊息 Id,****關聯 Id**,**群組 Id**和其他屬性 | 瀏覽基於不同 MQ 訊息屬性的訊息 |
-   | **包括資訊** | 在輸出中包含其他訊息資訊,請選擇**true**。 要省略輸出中的其他訊息資訊,請選擇**false**。 |
-   | **超時** | 輸入一個值以確定等待消息以空佇列到達的時間。 如果未輸入任何內容，就會取出佇列中的第一個訊息，且不會花費時間等候要顯示的訊息。 |
+   | **佇列** | 如果與連接中指定的佇列不同，請指定該佇列。 |
+   | **MessageId**、 **CorrelationId**、 **GroupId**和其他屬性 | 流覽以不同 MQ message 屬性為基礎的訊息 |
+   | **IncludeInfo** | 若要在輸出中包含其他訊息資訊，請選取 [ **true**]。 若要省略輸出中的其他訊息資訊，請選取 [ **false**]。 |
+   | **逾時** | 輸入值，以決定等候訊息到達空白佇列的時間長度。 如果未輸入任何內容，就會取出佇列中的第一個訊息，且不會花費時間等候要顯示的訊息。 |
    |||
 
    例如：
 
-   !["瀏覽訊息'操作屬性](media/connectors-create-api-mq/browse-message-properties.png)
+   ![[流覽訊息] 動作的屬性](media/connectors-create-api-mq/browse-message-properties.png)
 
-1. 完成後,在設計器工具列上,選擇 **「保存**」。。 要測試應用,請選擇"**運行**"。
+1. 當您完成時，請在設計工具工具列上選取 [**儲存**]。 若要測試您的應用程式，請選取 [**執行**]。
 
-   執行完成後,設計器將顯示工作流步驟及其狀態,以便您可以查看輸出。
+   執行完成之後，設計工具會顯示工作流程步驟及其狀態，讓您可以查看輸出。
 
-1. 要查看有關每個步驟的詳細資訊,請單擊步驟的標題列。 要檢視有關步驟輸出的詳細資訊,請選擇「**顯示原始輸出**」 。
+1. 若要查看每個步驟的詳細資料，請按一下步驟的標題列。 若要查看有關步驟輸出的詳細資訊，請選取 [**顯示原始輸出**]。
 
    ![瀏覽訊息輸出](media/connectors-create-api-mq/browse-message-output.png)
 
-   下面是一些範例原始輸出:
+   以下是一些範例原始輸出：
 
    ![瀏覽訊息原始輸出](media/connectors-create-api-mq/browse-message-raw-output.png)
 
-1. 如果將 **「包含資訊」** 設定為**true,** 將顯示其他輸出:
+1. 如果您將**IncludeInfo**設定為**true**，則會顯示其他輸出：
 
    ![瀏覽訊息包含資訊](media/connectors-create-api-mq/browse-message-include-info.png)
 
 ## <a name="browse-multiple-messages"></a>瀏覽多個訊息
 
-**"流覽訊息**"操作包括**一個 BatchSize**選項,用於指示要從佇列返回的消息數。 如果**BatchSize**沒有值,則返回所有消息。 傳回的輸出是陣列訊息。
+[**流覽訊息]** 動作包含一個**BatchSize**選項，指出要從佇列傳回多少訊息。 如果**BatchSize**沒有值，則會傳回所有訊息。 傳回的輸出是陣列訊息。
 
-1. 按照前面的步驟操作,但請改為添加 **「瀏覽訊息」** 操作。
+1. 遵循先前的步驟，但改為新增 [**流覽訊息]** 動作。
 
-1. 如果尚未建立 MQ 連線,系統會將提示您[建立此連線](#create-connection)。 否則,默認情況下,將使用第一個以前配置的連接。 要建立新連接,請選擇 **「更改連接**」 。 或者,選擇其他連接。
+1. 如果您尚未建立 MQ 連線，系統會提示您[建立該連接](#create-connection)。 否則，預設會使用第一個先前設定的連接。 若要建立新的連接，請選取 [**變更連接**]。 或者，選取不同的連接。
 
-1. 提供操作的資訊。
+1. 提供動作的資訊。
 
-1. 保存並運行邏輯應用。
+1. 儲存並執行邏輯應用程式。
 
-   邏輯應用完成執行後,下面是 **「瀏覽訊息」** 操作中的一些範例輸出:
+   邏輯應用程式完成執行之後，以下是 [**流覽訊息]** 動作的一些範例輸出：
 
-   ![範例「瀏覽訊息」輸出](media/connectors-create-api-mq/browse-messages-output.png)
+   ![範例「流覽訊息」輸出](media/connectors-create-api-mq/browse-messages-output.png)
 
-## <a name="receive-single-message"></a>接收單條訊息
+## <a name="receive-single-message"></a>接收單一訊息
 
-[接收訊息]**** 動作具有與 [瀏覽訊息]**** 動作相同的輸入和輸出。 使用 **「接收」消息**時,將從佇列中刪除該消息。
+[接收訊息]**** 動作具有與 [瀏覽訊息]**** 動作相同的輸入和輸出。 當您使用 [**接收訊息**] 時，訊息會從佇列中刪除。
 
 ## <a name="receive-multiple-messages"></a>接收多個訊息
 
-[接收訊息]**** 動作具有與 [瀏覽訊息]**** 動作相同的輸入和輸出。 使用 **「接收消息」** 時,將從佇列中刪除消息。
+[接收訊息]**** 動作具有與 [瀏覽訊息]**** 動作相同的輸入和輸出。 當您使用**接收訊息**時，訊息會從佇列中刪除。
 
 > [!NOTE]
-> 在沒有任何消息的佇列上運行瀏覽或接收操作時,該操作將使用此輸出失敗:
+> 在沒有任何訊息的佇列上執行 [流覽] 或 [接收] 動作時，此動作會失敗並顯示下列輸出：
 >
-> ![MQ"無訊息"錯誤](media/connectors-create-api-mq/mq-no-message-error.png)
+> ![MQ 「沒有訊息」錯誤](media/connectors-create-api-mq/mq-no-message-error.png)
 
 ## <a name="send-message"></a>傳送訊息
 
-1. 按照前面的步驟操作,但請改為添加 **「發送消息**」操作。
+1. 遵循先前的步驟，但改為新增 [**傳送訊息**] 動作。
 
-1. 如果尚未建立 MQ 連線,系統會將提示您[建立此連線](#create-connection)。 否則,默認情況下,將使用第一個以前配置的連接。 要建立新連接,請選擇 **「更改連接**」 。 或者,選擇其他連接。
+1. 如果您尚未建立 MQ 連線，系統會提示您[建立該連接](#create-connection)。 否則，預設會使用第一個先前設定的連接。 若要建立新的連接，請選取 [**變更連接**]。 或者，選取不同的連接。
 
-1. 提供操作的資訊。 對於**訊息型**態 ,請選擇有效的訊息型態:**資料圖**,**請回覆**或**要求**
+1. 提供動作的資訊。 針對**MessageType**，請選取有效的訊息類型：**資料包**、**回復**或**要求**
 
-   ![寄件送出訊息操作的屬性](media/connectors-create-api-mq/send-message-properties.png)
+   ![[傳送訊息動作] 的屬性](media/connectors-create-api-mq/send-message-properties.png)
 
-1. 保存並運行邏輯應用。
+1. 儲存並執行邏輯應用程式。
 
-   邏輯應用完成執行後,下面是 **「發送訊息」** 操作中的一些範例輸出:
+   邏輯應用程式完成執行之後，以下是「**傳送訊息**」動作的一些範例輸出：
 
    ![範例「傳送訊息」輸出](media/connectors-create-api-mq/send-message-output.png)
 
 ## <a name="connector-reference"></a>連接器參考
 
-有關操作和限制的技術詳細資訊(由連接器的 Swagger 描述)描述,請檢視連接器的[參考頁](/connectors/mq/)。
+如需有關動作和限制的技術詳細資料（如連接器的 Swagger 描述所述），請參閱連接器的[參考頁面](/connectors/mq/)。
 
 ## <a name="next-steps"></a>後續步驟
 

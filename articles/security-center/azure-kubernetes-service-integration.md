@@ -1,6 +1,6 @@
 ---
-title: Azure 安全中心和 Azure 庫伯奈斯服務
-description: 瞭解 Azure 安全中心與 Azure 庫伯奈斯服務的集成
+title: Azure 資訊安全中心和 Azure Kubernetes Service
+description: 瞭解 Azure 資訊安全中心與 Azure Kubernetes Services 的整合
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,52 +13,52 @@ ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80436184"
 ---
-# <a name="azure-kubernetes-services-integration-with-security-center"></a>Azure 庫伯奈斯服務集成安全中心
+# <a name="azure-kubernetes-services-integration-with-security-center"></a>Azure Kubernetes Services 與資訊安全中心整合
 
-Azure 庫伯奈斯服務 (AKS) 是 Microsoft 用於開發、部署和管理容器化應用程式的託管服務。 
+Azure Kubernetes Service （AKS）是 Microsoft 的受控服務，可用於開發、部署和管理容器化應用程式。 
 
-將 AKS 與 Azure 安全中心的標準層(請參閱[定價](security-center-pricing.md))結合使用,以更深入地瞭解 AKS 節點、雲端流量和安全控制。
+使用 AKS 搭配 Azure 資訊安全中心的標準層（請參閱[定價](security-center-pricing.md)），以深入瞭解您的 AKS 節點、雲端流量和安全性控制。
 
-使用 AKS 主節點已收集的數據,安全中心為您的 AKS 群集帶來安全優勢。 
+資訊安全中心使用 AKS 主要節點已收集的資料，為您的 AKS 叢集帶來安全性優勢。 
 
-![Azure 安全中心和 Azure 庫伯奈斯服務 (AKS) 高級概述](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
+![Azure 資訊安全中心和 Azure Kubernetes Service （AKS）高階總覽](./media/azure-kubernetes-service-integration/aks-asc-integration-overview.png)
 
-這兩個工具共同構成了最佳的雲原生 Kubernetes 安全產品。 
+這兩種工具共同構成了最佳的雲端原生 Kubernetes 安全性供應專案。 
 
 ## <a name="benefits-of-integration"></a>整合的優點
 
-將兩種服務結合使用可提供:
+同時使用這兩個服務可提供：
 
-* **安全建議**- 安全中心識別您的 AKS 資源並對其進行分類:從群集到單個虛擬機。 然後,您可以查看每個資源的安全建議。 有關詳細資訊,請參考[清單中的容器建議](recommendations-reference.md#recs-containers)。 
+* **安全性建議**-資訊安全中心識別您的 AKS 資源，並將其分類：從叢集到個別的虛擬機器。 接著，您可以針對每個資源來查看安全性建議。 如需詳細資訊，請參閱[建議的參考清單](recommendations-reference.md#recs-containers)中的容器建議。 
 
-* **環境強化**- 安全中心不斷監控 Kubernetes 群集和 Docker 配置的配置。 然後,它生成反映行業標準的安全建議。
+* **環境強化**-資訊安全中心會持續監視 Kubernetes 叢集和 Docker 設定的設定。 然後，它會產生反映業界標準的安全性建議。
 
-* **執行時保護**─ 透過持續分析以下 AKS 源,安全中心會提醒您主機與 AKS 群集等級偵測到的威脅*與*惡意活動:
-    * 原始安全事件,如網路資料和行程建立
-    * 庫伯內斯審計日誌
+* **執行時間保護**-透過持續分析下列 AKS 來源，資訊安全中心在主機*和*AKS 叢集層級偵測到威脅和惡意活動的警示：
+    * 原始的安全性事件，例如網路資料和進程建立
+    * Kubernetes audit 記錄檔
 
-    有關詳細資訊,請參閱[Azure 容器的威脅保護](threat-protection.md#azure-containers)
+    如需詳細資訊，請參閱[Azure 容器的威脅防護](threat-protection.md#azure-containers)
 
-    有關可能警報的清單,請參閱警報參考表中的這些部分[:AKS 群集等級警報](alerts-reference.md#alerts-akscluster)和[容器主機級別警報](alerts-reference.md#alerts-containerhost)。  
+    如需可能的警示清單，請參閱警示參考資料表中的下列各節： [AKS 叢集層級警示](alerts-reference.md#alerts-akscluster)和[容器主機層級警示](alerts-reference.md#alerts-containerhost)。  
 
-![Azure 安全中心和 Azure 庫伯奈斯服務 (AKS) 詳解](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
+![更詳細的 Azure 資訊安全中心和 Azure Kubernetes Service （AKS）](./media/azure-kubernetes-service-integration/aks-asc-integration-detailed.png)
 
 > [!NOTE]
-> Azure 安全中心從庫伯奈斯環境掃描的某些數據可能包含敏感資訊。
+> Azure 資訊安全中心從您的 Kubernetes 環境掃描的部分資料可能包含機密資訊。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解有關安全中心的容器安全功能的更多,請參閱:
+若要深入瞭解資訊安全中心的容器安全性功能，請參閱：
 
-* [Azure 安全中心和容器安全性](container-security.md)
+* [Azure 資訊安全中心和容器安全性](container-security.md)
 
 * [與 Azure Container Registry 整合](azure-container-registry-integration.md)
 
-* [Microsoft 的資料管理](https://www.microsoft.com/trust-center/privacy/data-management)-描述 Microsoft 服務(包括 Azure、Intune 和 Office 365)的資料政策、Microsoft 資料管理的詳細資訊以及影響資料的保留策略
+* [Microsoft 的資料管理](https://www.microsoft.com/trust-center/privacy/data-management)-說明 microsoft 服務的資料原則（包括 Azure、Intune 和 Office 365）、microsoft 資料管理的詳細資料，以及影響您資料的保留原則

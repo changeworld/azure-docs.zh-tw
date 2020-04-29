@@ -1,186 +1,186 @@
 ---
 title: 設定連續部署
-description: 瞭解如何從 GitHub、Bit Bucket、Azure 儲存庫或其他儲存庫將 CI/CD 啟用 Azure 應用服務。 選擇適合您需求的生成管道。
+description: 瞭解如何啟用從 GitHub、BitBucket、Azure Repos 或其他存放庫 Azure App Service 的 CI/CD。 選取符合您需求的組建管線。
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 847de2c2c8916558d542473d9b7c80fd5552dbf7
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80437139"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>持續部署至 Azure App Service
 
-[Azure 應用服務](overview.md)通過提取最新更新,支援從 GitHub、Bit Bucket 和[Azure 存儲庫](https://azure.microsoft.com/services/devops/repos/)存儲庫進行連續部署。 本文介紹如何使用 Azure 門戶通過 Kudu 生成服務或[Azure 管道](https://azure.microsoft.com/services/devops/pipelines/)持續部署應用。 
+[Azure App Service](overview.md)可透過提取最新的更新，從 GitHub、BitBucket 和[Azure Repos](https://azure.microsoft.com/services/devops/repos/)存放庫進行持續部署。 本文說明如何使用 Azure 入口網站，透過 Kudu 組建服務或[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)持續部署您的應用程式。 
 
-有關原始碼管理服務的詳細資訊,請參閱[創建儲存庫 (GitHub)、][創建儲存庫(Bit Bucket)]或[創建新的 Git 儲存庫(Azure 儲存庫)。]
+如需原始檔控制服務的詳細資訊，請參閱建立存放庫[（GitHub）]、建立存放庫[（BitBucket）]或[建立新的 Git 存放庫（Azure Repos）]。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
-## <a name="authorize-azure-app-service"></a>授權 Azure 應用服務 
+## <a name="authorize-azure-app-service"></a>授權 Azure App Service 
 
-要使用 Azure 儲存庫,請確保 Azure DevOps 組織已連結到 Azure 訂閱。 有關詳細資訊,請參閱設定[Azure DevOps 服務帳戶,以便它可以部署到 Web 應用](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)。
+若要使用 Azure Repos，請確定您的 Azure DevOps 組織已連結至您的 Azure 訂用帳戶。 如需詳細資訊，請參閱[設定 Azure DevOps Services 帳戶，使其可以部署至 web 應用程式](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)。
 
-對於 Bitbucket 或 GitHub,授權 Azure 應用服務連接到儲存庫。 您只需使用原始程式碼管理服務授權一次。 
+針對 Bitbucket 或 GitHub，授權 Azure App Service 連接到您的存放庫。 您只需要對原始檔控制服務授權一次。 
 
-1. 在[Azure 門戶](https://portal.azure.com)中,搜索**應用服務**並選擇。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，搜尋**應用程式服務**並選取 []。
 
-   ![搜索應用服務。](media/app-service-continuous-deployment/search-for-app-services.png)
+   ![搜尋 [應用程式服務]。](media/app-service-continuous-deployment/search-for-app-services.png)
 
-1. 選擇要部署的應用服務。
+1. 選取您想要部署的 App Service。
 
-   ![選擇你的應用。](media/app-service-continuous-deployment/select-your-app.png)
+   ![選取您的應用程式。](media/app-service-continuous-deployment/select-your-app.png)
    
-1. 在應用頁面上,選擇左側功能表中的 **「部署中心**」。
+1. 在 [應用程式] 頁面上，選取左側功能表中的 [**部署中心**]。
    
-1. 在 **「部署中心**」頁上,選擇**GitHub**或**Bitbucket,** 然後選擇 **「授權**」 。。 
+1. 在 [**部署中心**] 頁面上，選取 [ **GitHub** ] 或 [ **Bitbucket**]，然後選取 [**授權**]。 
    
-   ![選擇原始程式碼管理服務,然後選擇"授權"](media/app-service-continuous-deployment/github-choose-source.png)
+   ![選取 [原始檔控制服務]，然後選取 [授權]。](media/app-service-continuous-deployment/github-choose-source.png)
    
-1. 如有必要,登錄到服務,然後按照授權提示進行操作。 
+1. 視需要登入服務，並遵循授權提示。 
 
 ## <a name="enable-continuous-deployment"></a>啟用持續部署 
 
-授權原始程式碼管理服務後,請配置應用,以便透過內建[Kudu 應用服務](#option-1-kudu-app-service)生成伺服器或透過[Azure 管道](#option-2-azure-pipelines)進行持續部署。 
+在您授權原始檔控制服務之後，請透過內建的[Kudu App Service](#option-1-kudu-app-service)組建伺服器，或透過[Azure Pipelines](#option-2-azure-pipelines)，設定您的應用程式以進行持續部署。 
 
-### <a name="option-1-kudu-app-service"></a>選項 1:函式庫杜應用服務
+### <a name="option-1-kudu-app-service"></a>選項1： Kudu App Service
 
-您可以使用內建庫杜應用服務生成伺服器從 GitHub、Bitbucket 或 Azure 儲存庫持續部署。 
+您可以使用內建的 Kudu App Service 組建伺服器，從 GitHub、Bitbucket 或 Azure Repos 持續部署。 
 
-1. 在[Azure 門戶](https://portal.azure.com)中,搜索**應用服務**,然後選擇要部署的應用服務。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，搜尋**應用程式服務**，然後選取您想要部署的 App Service。 
    
-1. 在應用頁面上,選擇左側功能表中的 **「部署中心**」。
+1. 在 [應用程式] 頁面上，選取左側功能表中的 [**部署中心**]。
    
-1. 在 **「部署中心**」頁上選擇您的授權原始程式碼管理提供程式,然後選擇「**繼續**」。 對於 GitHub 或 Bitbucket,您還可以選擇 **「更改帳戶」** 以更改授權帳戶。 
+1. 在 [**部署中心**] 頁面上選取您的授權原始檔控制提供者，然後選取 [**繼續**]。 針對 GitHub 或 Bitbucket，您也可以選取 [**變更帳戶**] 來變更授權的帳戶。 
    
    > [!NOTE]
-   > 要使用 Azure 儲存庫,請確保 Azure DevOps 服務組織已連結到 Azure 訂閱。 有關詳細資訊,請參閱設定[Azure DevOps 服務帳戶,以便它可以部署到 Web 應用](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)。
+   > 若要使用 Azure Repos，請確定您的 Azure DevOps Services 組織已連結至您的 Azure 訂用帳戶。 如需詳細資訊，請參閱[設定 Azure DevOps Services 帳戶，使其可以部署至 web 應用程式](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)。
    
-1. 對於 GitHub 或 Azure 儲存庫,在**生成提供程式**頁上,選擇**應用服務生成服務**,然後選擇"**繼續**"。 Bitbucket 始終使用應用服務生成服務。
+1. 若是 GitHub 或 Azure Repos，請在 [**組建提供者**] 頁面上，選取 [ **App Service 組建服務**]，然後選取 [**繼續**]。 Bitbucket 一律會使用 App Service 組建服務。
    
-   ![選擇應用服務生成服務,然後選擇"繼續"。](media/app-service-continuous-deployment/choose-kudu.png)
+   ![選取 [App Service 組建服務]，然後選取 [繼續]。](media/app-service-continuous-deployment/choose-kudu.png)
    
-1. 在 **「設定」** 頁上:
+1. 在 [**設定**] 頁面上：
    
-   - 對於 GitHub,下拉並選擇要連續部署**的組織**、**儲存庫**和**分支**。
+   - 針對 [GitHub]，下拉並選取您想要持續部署的**組織**、存放**庫**和**分支**。
      
      > [!NOTE]
-     > 如果看不到任何存儲庫,則可能需要在 GitHub 中授權 Azure 應用服務。 瀏覽到您的 GitHub 儲存函式庫,然後轉到**設定** > **應用程式** > **授權 OAuth 應用程式**。 選擇**Azure 應用服務**,然後選擇 **"授予**"。 對於組織存儲庫,您必須是組織的擁有者才能授予許可權。
+     > 如果您沒有看到任何存放庫，您可能需要在 GitHub 中授權 Azure App Service。 流覽至您的 GitHub 存放庫，並移至 [**設定** > ] [**應用程式** > ] [**授權 OAuth 應用** 選取 [ **Azure App Service**]，然後選取 **[授**與]。 針對組織存放庫，您必須是組織的擁有者，才能授與許可權。
      
-   - 對 Bitbucket,選擇要連續部署的 Bitbucket**團隊**,**儲存函式庫**與**分支**。
+   - 針對 [Bitbucket]，選取您想要持續部署的 Bitbucket**小組**、存放**庫**和**分支**。
      
-   - 對於 Azure 儲存函式庫,選擇要連續部署的**Azure DevOps 組織**,**專案**,**儲存函式庫**與**分支**。
+   - 針對 Azure Repos，請選取您想要持續部署的**Azure DevOps 組織**、**專案**、存放**庫**和**分支**。
      
      > [!NOTE]
-     > 如果未列出 Azure DevOps 組織,請確保它連結到 Azure 訂閱。 有關詳細資訊,請參閱設定[Azure DevOps 服務帳戶,以便它可以部署到 Web 應用](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)。
+     > 如果您的 Azure DevOps 組織未列出，請確定它已連結至您的 Azure 訂用帳戶。 如需詳細資訊，請參閱[設定 Azure DevOps Services 帳戶，使其可以部署至 web 應用程式](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps?view=azure-devops)。
      
-1. 選取 **[繼續]**。
+1. 選取 \[繼續\]。 
    
-   ![填寫存儲庫資訊,然後選擇"繼續"。](media/app-service-continuous-deployment/configure-kudu.png)
+   ![填入存放庫資訊，然後選取 [繼續]。](media/app-service-continuous-deployment/configure-kudu.png)
    
-1. 配置生成提供程式後,請查看 **「摘要」** 頁上的設置,然後選擇 **「完成**」 。
+1. 設定組建提供者之後，請檢查 [**摘要**] 頁面上的設定，然後選取 **[完成]**。
    
-1. 所選存儲庫和分支中的新提交現在連續部署到應用服務應用中。 您可以在 **「部署中心**」頁上追蹤提交和部署。
+1. 所選取存放庫和分支中的新認可，現在會持續部署到 App Service 應用程式。 您可以在 [部署中心]  頁面上追蹤認可和部署。
    
-   ![追蹤部署中心的提交並部署](media/app-service-continuous-deployment/github-finished.png)
+   ![在部署中心追蹤認可和部署](media/app-service-continuous-deployment/github-finished.png)
 
-### <a name="option-2-azure-pipelines"></a>選項 2:Azure 管道 
+### <a name="option-2-azure-pipelines"></a>選項2： Azure Pipelines 
 
-如果帳戶具有必要的許可權,則可以設置 Azure 管道以從 GitHub 或 Azure 存儲庫持續部署。 有關透過 Azure 管道進行部署的詳細資訊,請參閱[將 Web 應用部署到 Azure 應用服務](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)。
+如果您的帳戶具有必要的許可權，您可以設定從 GitHub 或 Azure Repos 持續部署 Azure Pipelines。 如需透過 Azure Pipelines 部署的詳細資訊，請參閱[將 web 應用程式部署至 Azure App 服務](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)。
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>先決條件
 
-對於使用 Azure 管道建立連續傳遞的 Azure 應用服務,Azure DevOps 組織應具有以下許可權: 
+如需使用 Azure Pipelines 建立持續傳遞的 Azure App Service，您的 Azure DevOps 組織應具有下列許可權： 
 
-- Azure 帳戶必須具有寫入 Azure 活動目錄和創建服務的許可權。 
+- 您的 Azure 帳戶必須具有寫入 Azure Active Directory 和建立服務的許可權。 
   
-- Azure 帳戶必須在 Azure 訂閱中具有**擁有者**角色。
+- 您的 Azure 帳戶必須具有 Azure 訂用帳戶中的**擁有**者角色。
 
-- 您必須是要使用的 Azure DevOps 專案中的管理員。
+- 您必須是您想要使用之 Azure DevOps 專案中的系統管理員。
 
-#### <a name="github--azure-pipelines"></a>GitHub + Azure 管道
+#### <a name="github--azure-pipelines"></a>GitHub + Azure Pipelines
 
-1. 在[Azure 門戶](https://portal.azure.com)中,搜索**應用服務**,然後選擇要部署的應用服務。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，搜尋**應用程式服務**，然後選取您想要部署的 App Service。 
    
-1. 在應用頁面上,選擇左側功能表中的 **「部署中心**」。
+1. 在 [應用程式] 頁面上，選取左側功能表中的 [**部署中心**]。
 
-1. 在**部署中心**頁面上選擇**GitHub**作為原始碼管理提供程式,然後選擇「**繼續**」。 對於**GitHub,** 您可以選擇 **「更改帳戶」** 來更改授權帳戶。
+1. 選取 [ **GitHub** ] 作為 [**部署中心**] 頁面上的原始檔控制提供者，然後選取 [**繼續**]。 針對**GitHub**，您可以選取 [**變更帳戶**] 來變更授權的帳戶。
 
     ![原始檔控制](media/app-service-continuous-deployment/deployment-center-src-control.png)
    
-1. 產生**提供程式**頁上,選擇**Azure 管道(預覽),** 然後選擇「**繼續**」。
+1. 在 [**組建提供者**] 頁面上，選取 [ **Azure Pipelines （預覽）**]，然後選取 [**繼續**]。
 
-    ![產生提供者](media/app-service-continuous-deployment/select-build-provider.png)
+    ![組建提供者](media/app-service-continuous-deployment/select-build-provider.png)
    
-1. 在 **「設定**」頁上,在 **「代碼」** 部分中,選擇要連續部署**的組織**、**儲存庫**和**分支**,然後選擇「**繼續**」。
+1. 在 [**設定**] 頁面的 [程式**代碼**] 區段中，選取您想要持續部署的**組織**、存放**庫**和**分支**，然後選取 [**繼續**]。
      
      > [!NOTE]
-     > 如果看不到任何存儲庫,則可能需要在 GitHub 中授權 Azure 應用服務。 瀏覽到您的 GitHub 儲存函式庫,然後轉到**設定** > **應用程式** > **授權 OAuth 應用程式**。 選擇**Azure 應用服務**,然後選擇 **"授予**"。 對於組織存儲庫,您必須是組織的擁有者才能授予許可權。
+     > 如果您沒有看到任何存放庫，您可能需要在 GitHub 中授權 Azure App Service。 流覽至您的 GitHub 存放庫，並移至 [**設定** > ] [**應用程式** > ] [**授權 OAuth 應用** 選取 [ **Azure App Service**]，然後選取 **[授**與]。 針對組織存放庫，您必須是組織的擁有者，才能授與許可權。
        
-    在 **"產生'** 部分中,指定 Azure 管道應用於執行產生任務的語言框架 Azure DevOps 組織、專案語言框架,然後選擇「**繼續**」。
+    在 [**組建**] 區段中，指定 Azure Pipelines 應該用來執行組建工作的 Azure DevOps 組織、專案、語言架構，然後選取 [**繼續**]。
 
-   ![產生提供者](media/app-service-continuous-deployment/build-configure.png)
+   ![組建提供者](media/app-service-continuous-deployment/build-configure.png)
 
-1. 配置生成提供程式後,請查看 **「摘要」** 頁上的設置,然後選擇 **「完成**」 。
+1. 設定組建提供者之後，請檢查 [**摘要**] 頁面上的設定，然後選取 **[完成]**。
 
-   ![產生提供者](media/app-service-continuous-deployment/summary.png)
+   ![組建提供者](media/app-service-continuous-deployment/summary.png)
    
-1. 所選存儲庫和分支中的新提交現在連續部署到應用服務中。 您可以在 **「部署中心**」頁上追蹤提交和部署。
+1. 所選存放庫和分支中的新認可現在會持續部署至您的 App Service。 您可以在 [部署中心]  頁面上追蹤認可和部署。
    
-   ![追蹤部署中心的提交並部署](media/app-service-continuous-deployment/github-finished.png)
+   ![在部署中心追蹤認可和部署](media/app-service-continuous-deployment/github-finished.png)
 
-#### <a name="azure-repos--azure-pipelines"></a>Azure 儲存函式庫 + Azure 管道
+#### <a name="azure-repos--azure-pipelines"></a>Azure Repos + Azure Pipelines
 
-1. 在[Azure 門戶](https://portal.azure.com)中,搜索**應用服務**,然後選擇要部署的應用服務。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，搜尋**應用程式服務**，然後選取您想要部署的 App Service。 
    
-1. 在應用頁面上,選擇左側功能表中的 **「部署中心**」。
+1. 在 [應用程式] 頁面上，選取左側功能表中的 [**部署中心**]。
 
-1. 選擇**Azure 儲存函式庫**作為**部署中心**頁上的原始程式碼管理提供程式,然後選擇「**繼續**」。
+1. 選取 [ **Azure Repos** ] 作為 [**部署中心**] 頁面上的原始檔控制提供者，然後選取 [**繼續**]。
 
     ![原始檔控制](media/app-service-continuous-deployment/deployment-center-src-control.png)
 
-1. 產生**提供程式**頁上,選擇**Azure 管道(預覽),** 然後選擇「**繼續**」。
+1. 在 [**組建提供者**] 頁面上，選取 [ **Azure Pipelines （預覽）**]，然後選取 [**繼續**]。
 
     ![原始檔控制](media/app-service-continuous-deployment/azure-pipelines.png)
 
-1. 在 **「設定**」頁上,在 **「代碼」** 部分中,選擇要連續部署**的組織**、**儲存庫**和**分支**,然後選擇「**繼續**」。
+1. 在 [**設定**] 頁面的 [程式**代碼**] 區段中，選取您想要持續部署的**組織**、存放**庫**和**分支**，然後選取 [**繼續**]。
 
    > [!NOTE]
-   > 如果未列出現有的 Azure DevOps 組織,則可能需要將其連結到 Azure 訂閱。 有關詳細資訊,請參閱訂[CD 發行管道](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)。
+   > 如果您現有的 Azure DevOps 組織未列出，您可能需要將它連結到您的 Azure 訂用帳戶。 如需詳細資訊，請參閱[定義您的 CD 發行管線](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)。
 
-   在 **"產生'** 部分中,指定 Azure 管道應用於執行產生任務的語言框架 Azure DevOps 組織、專案語言框架,然後選擇「**繼續**」。
+   在 [**組建**] 區段中，指定 Azure Pipelines 應該用來執行組建工作的 Azure DevOps 組織、專案、語言架構，然後選取 [**繼續**]。
 
-   ![產生提供者](media/app-service-continuous-deployment/build-configure.png)
+   ![組建提供者](media/app-service-continuous-deployment/build-configure.png)
 
-1. 配置生成提供程式後,請查看 **「摘要」** 頁上的設置,然後選擇 **「完成**」 。  
+1. 設定組建提供者之後，請檢查 [**摘要**] 頁面上的設定，然後選取 **[完成]**。  
      
-   ![產生提供者](media/app-service-continuous-deployment/summary-azure-pipelines.png)
+   ![組建提供者](media/app-service-continuous-deployment/summary-azure-pipelines.png)
 
-1. 所選存儲庫和分支中的新提交現在連續部署到應用服務中。 您可以在 **「部署中心**」頁上追蹤提交和部署。
+1. 所選存放庫和分支中的新認可現在會持續部署至您的 App Service。 您可以在 [部署中心]  頁面上追蹤認可和部署。
 
 ## <a name="disable-continuous-deployment"></a>停用連續部署
 
-要禁用連續部署,請在應用**的部署中心**頁面頂部選擇 **「斷開連接**」。
+若要停用持續部署，請在應用程式的 [**部署中心**] 頁面頂端選取 **[中斷連線]** 。
 
 ![停用連續部署](media/app-service-continuous-deployment/disable.png)
 
 [!INCLUDE [What happens to my app during deployment?](../../includes/app-service-deploy-atomicity.md)]
 
-## <a name="use-unsupported-repos"></a>使用不支援的儲存函式庫
+## <a name="use-unsupported-repos"></a>使用不支援的存放庫
 
-對於 Windows 應用,您可以手動設定來自門戶沒有直接支援的雲端 Git 或 Mercurial 儲存庫的連續部署,例如[GitLab](https://gitlab.com/)。 通過選擇 **「部署中心**」頁中的「外部」框來執行此操作。 有關詳細資訊,請參閱[使用手動步驟設定連續部署](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)。
+針對 Windows 應用程式，您可以從入口網站不直接支援的雲端 Git 或 Mercurial 存放庫手動設定持續部署，例如[GitLab](https://gitlab.com/)。 您可以選擇 [**部署中心**] 頁面中的 [外部] 方塊來執行此動作。 如需詳細資訊，請參閱[使用手動步驟設定連續部署](https://github.com/projectkudu/kudu/wiki/Continuous-deployment#setting-up-continuous-deployment-using-manual-steps)。
 
 ## <a name="additional-resources"></a>其他資源
 
-* [調查持續部署的常見問題](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
-* [使用 Azure 電源外殼](/powershell/azureps-cmdlets-docs)
+* [調查連續部署的常見問題](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment)
+* [使用 Azure PowerShell](/powershell/azureps-cmdlets-docs)
 * [Git 文件](https://git-scm.com/documentation)
 * [專案 Kudu](https://github.com/projectkudu/kudu/wiki)
 
 [建立儲存機制 (GitHub)]: https://help.github.com/articles/create-a-repo
 [建立儲存機制 (BitBucket)]: https://confluence.atlassian.com/get-started-with-bitbucket/create-a-repository-861178559.html
-[建立新的 Git 儲存函式庫(Azure 儲存函式庫)]: /azure/devops/repos/git/creatingrepo
+[建立新的 Git 存放庫（Azure Repos）]: /azure/devops/repos/git/creatingrepo

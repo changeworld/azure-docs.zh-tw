@@ -1,92 +1,92 @@
 ---
-title: 設定資料內複製 - MariaDB 的 Azure 資料庫
-description: 本文介紹如何在 Azure 資料庫中為 MariaDB 設置數據內複製。
+title: 設定資料傳入複寫-適用於 MariaDB 的 Azure 資料庫
+description: 本文說明如何在適用於 MariaDB 的 Azure 資料庫中設定資料入複寫。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/30/2020
 ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422462"
 ---
-# <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>在 Azure 資料庫中為 MariaDB 設定資料內複製
+# <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>在適用於 MariaDB 的 Azure 資料庫中設定資料入複寫
 
-本文介紹如何通過配置主伺服器和副本伺服器在 Azure 資料庫中為 MariaDB 設置數據內複製。 本文假定您以前對 MariaDB 伺服器和資料庫有一些經驗。
+本文說明如何藉由設定主要和複本伺服器，在適用於 MariaDB 的 Azure 資料庫中設定資料傳入複寫。 本文假設您先前已有適用于 mariadb 伺服器和資料庫的經驗。
 
-要在 MariaDB 服務的 Azure 資料庫中建立副本,資料內複製將同步來自本地主 MariaDB 伺服器、虛擬機器 (VM) 或雲端資料庫服務中的數據。
+若要在適用於 MariaDB 的 Azure 資料庫服務中建立複本，資料複製複寫會同步處理內部部署的主要適用于 mariadb 伺服器、虛擬機器（Vm）或雲端資料庫服務中的資料。
 
-在執行本文中的步驟之前,請檢視資料內複製[的限制和要求](concepts-data-in-replication.md#limitations-and-considerations)。
+執行本文中的步驟之前，請先參閱複寫資料的[限制和需求](concepts-data-in-replication.md#limitations-and-considerations)。
 
 > [!NOTE]
-> 如果主伺服器版本為 10.2 或較新版本,我們建議您使用[全域事務 ID](https://mariadb.com/kb/en/library/gtid/)設置「數據內複製」。
+> 如果您的主伺服器是10.2 版或更新版本，建議您使用[全域交易識別碼](https://mariadb.com/kb/en/library/gtid/)來設定複寫資料。
 
 
-## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>建立 MariaDB 伺服器以用作複本
+## <a name="create-a-mariadb-server-to-use-as-a-replica"></a>建立適用于 mariadb 伺服器做為複本使用
 
-1. 為 MariaDB 伺服器建立新的 Azure 資料庫(例如,replica.mariadb.database.azure.com)。 伺服器是數據內複製中的副本伺服器。
+1. 建立新的適用於 MariaDB 的 Azure 資料庫伺服器（例如，replica.mariadb.database.azure.com）。 伺服器是複寫資料的複本伺服器。
 
-    要瞭解伺服器建立,請參閱[使用 Azure 門戶為 MariaDB 伺服器建立 Azure 資料庫](quickstart-create-mariadb-server-database-using-azure-portal.md)。
+    若要瞭解伺服器建立的相關資訊，請參閱[使用 Azure 入口網站建立適用於 MariaDB 的 Azure 資料庫伺服器](quickstart-create-mariadb-server-database-using-azure-portal.md)。
 
    > [!IMPORTANT]
-   > 您必須在通用或記憶體優化定價層中為 MariaDB 伺服器創建 Azure 資料庫。
+   > 您必須在一般用途或記憶體優化定價層中建立適用於 MariaDB 的 Azure 資料庫伺服器。
 
-2. 創建相同的使用者帳戶和相應的許可權。
+2. 建立相同的使用者帳戶和對應的許可權。
     
-    使用者帳戶不會從主伺服器複製到副本伺服器。 要提供使用者對副本伺服器的訪問許可權,您必須在新創建的 MariaDB 伺服器上手動創建所有帳戶和相應的許可權。
+    使用者帳戶不會從主伺服器複寫到複本伺服器。 若要為使用者提供複本伺服器的存取權，您必須在新建立的適用於 MariaDB 的 Azure 資料庫伺服器上，手動建立所有帳戶和對應的許可權。
 
-3. 將主伺服器的 IP 位址添加到複本的防火牆規則中。 
+3. 將主伺服器的 IP 位址新增至複本的防火牆規則。 
 
    使用 [Azure 入口網站](howto-manage-firewall-portal.md)或 [Azure CLI](howto-manage-firewall-cli.md) 更新防火牆規則。
 
 ## <a name="configure-the-master-server"></a>設定主要伺服器
 
-以下步驟準備和配置託管在本地、VM 或用於資料內複製的雲端資料庫服務中的 MariaDB 伺服器。 MariaDB 伺服器是數據內複製的主伺服器。
+下列步驟會準備和設定裝載于內部部署、VM 或雲端資料庫服務中的適用于 mariadb 伺服器，以進行資料複製。 適用于 mariadb 伺服器是資料入複寫中的主要複本。
 
-1. 在繼續操作之前,請檢視[主伺服器要求](concepts-data-in-replication.md#requirements)。 
+1. 請先檢查[主伺服器需求](concepts-data-in-replication.md#requirements)，再繼續進行。 
 
-   例如,確保主伺服器允許埠 3306 上的入站和出站流量,並且主伺服器具有公共**IP 位址**、DNS 是可公開訪問的,或者具有完全限定的功能變數名稱 (FQDN)。 
+   例如，請確定主伺服器允許埠3306上的輸入和輸出流量，而且主伺服器具有**公用 IP 位址**、DNS 可公開存取，或具有完整功能變數名稱（FQDN）。 
    
-   通過嘗試從工具(如在另一台電腦上託管的 MySQL 命令行或 Azure 門戶中可用的[Azure 雲外殼](https://docs.microsoft.com/azure/cloud-shell/overview))進行連接,測試與主伺服器的連接。
+   嘗試從另一部電腦上裝載的 MySQL 命令列之類的工具連線，或從 Azure 入口網站中提供的[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ，來測試主伺服器的連線能力。
 
-2. 打開二進位紀錄記錄。
+2. 開啟二進位記錄。
     
-    要檢視在主伺服器上是否啟用了二進位紀錄記錄,請輸入以下命令:
+    若要查看是否已在主機上啟用二進位記錄，請輸入下列命令：
 
    ```sql
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   如果變數[`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin)返回值`ON`,則在伺服器上啟用二進位日誌記錄。
+   如果變數[`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin)傳回值`ON`，則會在您的伺服器上啟用二進位記錄。
 
-   如果`log_bin`返回該值`OFF`,請編輯**my.cnf**檔`log_bin=ON`,以便打開二進位紀錄記錄。 重新啟動伺服器以使更改生效。
+   如果`log_bin`傳回值`OFF`，請編輯**my.cnf**檔案，以便`log_bin=ON`開啟二進位記錄。 重新開機伺服器，讓變更生效。
 
-3. 配置主伺服器設置。
+3. 設定主伺服器設定。
 
-    數據輸入複製要求參數`lower_case_table_names`在主伺服器和副本伺服器之間保持一致。 `1`默認情況下,該`lower_case_table_names`參數在 MariaDB 的 Azure 資料庫中設置為。
+    資料複製複寫需要主要和複本`lower_case_table_names`伺服器之間的參數一致。 在`lower_case_table_names`適用於 MariaDB 的 Azure 資料庫中，參數`1`預設會設定為。
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
    ```
 
-4. 建立新的複製角色並設置許可權。
+4. 建立新的複寫角色並設定許可權。
 
-   在主伺服器上創建配置具有複製許可權的使用者帳戶。 您可以使用 SQL 命令或 MySQL 工作台創建帳戶。 如果計劃使用 SSL 進行複製,則必須在創建使用者帳戶時指定此項。
+   在使用複寫許可權設定的主伺服器上建立使用者帳戶。 您可以使用 SQL 命令或 MySQL 工作臺來建立帳戶。 如果您打算使用 SSL 進行複寫，則必須在建立使用者帳戶時指定此方式。
    
-   要瞭解如何在主伺服器上添加使用者帳戶,請參閱[MariaDB 文件](https://mariadb.com/kb/en/library/create-user/)。
+   若要瞭解如何在主伺服器上新增使用者帳戶，請參閱[適用于 mariadb 檔](https://mariadb.com/kb/en/library/create-user/)。
 
-   通過使用以下命令,新的複製角色可以從任何計算機(而不僅僅是承載主機本身的計算機)訪問主計算機。 此存取權限,請在指令中指定**同步\@使用者 「%」以**建立使用者。
+   藉由使用下列命令，新的複寫角色可以從任何機器存取主伺服器，而不只是裝載主機本身的電腦。 針對此存取權，請在命令中指定**syncuser\@'% '** 來建立使用者。
    
-   要瞭解有關 MariaDB 文件的詳細資訊,請參閱[指定帳號名稱](https://mariadb.com/kb/en/library/create-user/#account-names)。
+   若要深入瞭解適用于 mariadb 檔，請參閱[指定帳戶名稱](https://mariadb.com/kb/en/library/create-user/#account-names)。
 
-   **SQL (命令)**
+   **SQL 命令**
 
    - 使用 SSL 的複寫
 
-       要要求所有使用者連線使用 SSL,請輸入以下指令以建立使用者:
+       若要針對所有使用者連線要求 SSL，請輸入下列命令以建立使用者：
 
        ```sql
        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
@@ -95,7 +95,7 @@ ms.locfileid: "80422462"
 
    - 不使用 SSL 的複寫
 
-       如果並非所有連線都需要 SSL,請輸入以下指令以建立使用者:
+       如果所有連接都不需要 SSL，請輸入下列命令以建立使用者：
     
        ```sql
        CREATE USER 'syncuser'@'%' IDENTIFIED BY 'yourpassword';
@@ -104,80 +104,80 @@ ms.locfileid: "80422462"
 
    **MySQL Workbench**
 
-   要在 MySQL 工作台中創建複製角色,請在 **「管理」** 窗格中選擇 **「使用者和許可權**」。 然後選擇 **「添加帳戶**」。
+   若要在 MySQL 工作臺中建立複寫角色，請在 [**管理**] 窗格中，選取 [**使用者和許可權**]。 然後選取 [**新增帳戶**]。
  
    ![使用者和權限](./media/howto-data-in-replication/users_privileges.png)
 
-   在 **「登入名」** 欄位中輸入使用者名稱。
+   在 [**登入名稱**] 欄位中輸入 username。
 
    ![同步處理使用者](./media/howto-data-in-replication/syncuser.png)
  
-   選擇 **「管理角色**」面板,然後在**全域權限**列表中選擇 **「複製從屬**」 。 選擇 **「應用」** 以建立複製角色。
+   選取 [系統**管理角色**] 面板，然後在**全域許可權**清單中，選取 [複寫**從屬**]。 選取 **[** 套用] 以建立複寫角色。
 
    ![複寫從屬](./media/howto-data-in-replication/replicationslave.png)
 
 
-5. 將主伺服器設置為唯讀模式。
+5. 將主伺服器設為唯讀模式。
 
-   在轉儲資料庫之前,必須將伺服器置於唯讀模式。 在唯讀模式下,主控形狀無法處理任何寫入事務。 為避免業務影響,請安排非高峰期間的唯讀視窗。
+   在傾印資料庫之前，必須先將伺服器置於唯讀模式。 在唯讀模式中，主伺服器無法處理任何寫入交易。 為避免業務影響，請在離峰時段排程唯讀視窗。
 
    ```sql
    FLUSH TABLES WITH READ LOCK;
    SET GLOBAL read_only = ON;
    ```
 
-6. 獲取當前二進位紀錄檔名稱和偏移量。
+6. 取得目前的二進位記錄檔名稱和位移。
 
-   要確定目前的紀錄檔名稱和偏移,請執行[`show master status`](https://mariadb.com/kb/en/library/show-master-status/)指令 。
+   若要判斷目前的二進位記錄檔名稱和位移，請執行[`show master status`](https://mariadb.com/kb/en/library/show-master-status/)命令。
     
    ```sql
    show master status;
    ```
-   結果應類似於下表:
+   結果應該類似下表：
    
    ![主要狀態結果](./media/howto-data-in-replication/masterstatus.png)
 
-   請注意二進位檔名,因為它將在後續步驟中使用。
+   請記下二進位檔案名稱，因為稍後的步驟中將會用到它。
    
-7. 取得 GTID 位置(選擇可選,使用 GTID 進行複製所需的)。
+7. 取得 GTID 位置（選擇性，使用 GTID 進行複寫所需）。
 
-   執行該函數[`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/)以獲取相應 binlog 檔名和偏移的 GTID 位置。
+   執行函式[`BINLOG_GTID_POS`](https://mariadb.com/kb/en/library/binlog_gtid_pos/) ，以取得對應 binlog 檔案名和位移的 GTID 位置。
   
     ```sql
     select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);
     ```
  
 
-## <a name="dump-and-restore-the-master-server"></a>傾印和還原伺服器
+## <a name="dump-and-restore-the-master-server"></a>傾印並還原主伺服器
 
-1. 從主伺服器轉儲所有資料庫。
+1. 從主伺服器傾印所有資料庫。
 
-   使用 mysqldump 從主伺服器轉儲所有資料庫。 無需轉儲 MySQL 庫和測試庫。
+   使用 mysqldump 從主伺服器傾印所有資料庫。 不需要傾印 MySQL 程式庫和測試程式庫。
 
-    有關詳細資訊,請參閱[轉儲和還原](howto-migrate-dump-restore.md)。
+    如需詳細資訊，請參閱傾印[和還原](howto-migrate-dump-restore.md)。
 
-2. 將主伺服器設置為讀/寫模式。
+2. 將主伺服器設定為讀取/寫入模式。
 
-   轉印資料庫後,將主 MariaDB 伺服器更改回讀/寫模式。
+   傾印資料庫之後，請將主要適用于 mariadb 伺服器變更回讀取/寫入模式。
 
    ```sql
    SET GLOBAL read_only = OFF;
    UNLOCK TABLES;
    ```
 
-3. 將轉儲檔還原到新伺服器。
+3. 將傾印檔案還原到新的伺服器。
 
-   將傾印檔案還原至在適用於 MariaDB 的 Azure 資料庫服務中建立的伺服器。 有關如何將轉儲檔還原到 MariaDB 伺服器[,請參閱轉儲&還原](howto-migrate-dump-restore.md)。
+   將傾印檔案還原至在適用於 MariaDB 的 Azure 資料庫服務中建立的伺服器。 如需如何將傾印檔案還原至適用于 mariadb 伺服器的詳細說明，請參閱傾印[& 還原](howto-migrate-dump-restore.md)。
 
-   如果轉儲檔很大,請將其上傳到與副本伺服器位於同一區域中的 Azure 中的 VM。 將其從 VM 還原到 MariaDB 伺服器的 Azure 資料庫。
+   如果傾印檔案很大，請將它上傳至與複本伺服器位於相同區域的 Azure VM。 將其從 VM 還原至適用於 MariaDB 的 Azure 資料庫伺服器。
 
-## <a name="link-the-master-and-replica-servers-to-start-data-in-replication"></a>連結伺服器與複本伺服器以啟動資料內複製
+## <a name="link-the-master-and-replica-servers-to-start-data-in-replication"></a>連結主要和複本伺服器以啟動資料複製
 
-1. 設置主伺服器。
+1. 設定主伺服器。
 
-   所有「複寫中的資料」功能都可由已儲存的程序執行完成。 您可在[複寫中的資料已儲存的程序](reference-data-in-stored-procedures.md)中找到所有程序。 存儲過程可以在 MySQL 外殼或 MySQL 工作台中運行。
+   所有「複寫中的資料」功能都可由已儲存的程序執行完成。 您可在[複寫中的資料已儲存的程序](reference-data-in-stored-procedures.md)中找到所有程序。 預存程式可以在 MySQL shell 或 MySQL 工作臺中執行。
 
-   要連結兩台伺服器並開始複製,請登錄到 MariaDB 服務的 Azure DB 中的目標副本伺服器。 接下來,使用 MariaDB`mysql.az_replication_change_master`伺服器的 Azure DB`mysql.az_replication_change_master_with_gtid`上或儲存過程將外部實例設置為主伺服器。
+   若要連結兩部伺服器並啟動複寫，請在 Azure DB for 適用于 mariadb 服務中登入目標複本伺服器。 接下來，在適用于適用于 mariadb 的 Azure DB 伺服器上使用`mysql.az_replication_change_master`或`mysql.az_replication_change_master_with_gtid`預存程式，將外部實例設為主伺服器。
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
@@ -194,17 +194,17 @@ ms.locfileid: "80422462"
    - master_password：主要伺服器的密碼
    - master_log_file：執行 `show master status` 產生的二進位記錄檔的名稱
    - master_log_pos：執行 `show master status` 產生的二進位記錄檔的位置
-   - master_gtid_pos:從執行到 GTID 位置`select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
-   - master_ssl_ca:CA 證書的上下文。 如果您不使用 SSL,則傳遞一個空字串。
+   - master_gtid_pos：從執行中 GTID 位置`select BINLOG_GTID_POS('<binlog file name>', <binlog offset>);`
+   - master_ssl_ca： CA 憑證的內容。 如果您不是使用 SSL，請傳入空字串。 *
     
     
-    *我們建議將master_ssl_ca參數作為變數傳遞。 如需詳細資訊，請參閱下列範例。
+    * 建議以變數的形式傳入 master_ssl_ca 參數。 如需詳細資訊，請參閱下列範例。
 
    **範例**
 
    - 使用 SSL 的複寫
 
-       以執行以下`@cert`指令建立變數:
+       執行下列命令`@cert`來建立變數：
 
        ```sql
        SET @cert = '-----BEGIN CERTIFICATE-----
@@ -212,42 +212,42 @@ ms.locfileid: "80422462"
        -----END CERTIFICATE-----'
        ```
 
-       使用 SSL 進行複製是在網域 companya.com 託管的主伺服器和在 MariaDB Azure 資料庫中託管的副本伺服器之間設置的。 此已儲存的程序可在複本伺服器上執行。
+       使用 SSL 的複寫是在裝載于網域 companya.com 的主伺服器與適用於 MariaDB 的 Azure 資料庫中託管的複本伺服器之間設定。 此已儲存的程序可在複本伺服器上執行。
     
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, @cert);
        ```
    - 不使用 SSL 的複寫
 
-       在沒有 SSL 的複製在網域 companya.com 託管的主伺服器和託管在 MariaDB Azure 資料庫中的副本伺服器之間設置。 此已儲存的程序可在複本伺服器上執行。
+       不使用 SSL 的複寫會在 companya.com 網域的主伺服器和裝載于適用於 MariaDB 的 Azure 資料庫的複本伺服器之間進行設定。 此已儲存的程序可在複本伺服器上執行。
 
        ```sql
        CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mariadb-bin.000016', 475, '');
        ```
 
-2. 開始複製。
+2. 開始複寫。
 
-   調用`mysql.az_replication_start`儲存過程以開始複製。
+   呼叫`mysql.az_replication_start`預存程式以開始複寫。
 
    ```sql
    CALL mysql.az_replication_start;
    ```
 
-3. 檢查複製狀態。
+3. 檢查複寫狀態。
 
-   呼叫[`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/)副本伺服器上的命令以查看複製狀態。
+   呼叫複本[`show slave status`](https://mariadb.com/kb/en/library/show-slave-status/)伺服器上的命令，以查看複寫狀態。
     
    ```sql
    show slave status;
    ```
 
-   如果`Slave_IO_Running``Slave_SQL_Running`和`yes`處於 狀態,`Seconds_Behind_Master`並且`0`值 為 ,複製工作。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不是`0`,則副本正在處理更新。
+   如果`Slave_IO_Running`和`Slave_SQL_Running`處於狀態`yes`，且的值`Seconds_Behind_Master`為`0`，則複寫會正常運作。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不`0`是，則複本會處理更新。
 
-4. 更新相應的伺服器變數,使資料中的複製更安全(僅需要在沒有 GTID 的情況下進行複製)。
+4. 更新對應的伺服器變數，以更安全地進行資料輸入複寫（只有在沒有 GTID 的情況下才需要）。
     
-    由於 MariaDB 中的本機複製限制,因此必須[`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info)[`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info)在沒有 GTID 方案的情況下設置複製和變數。
+    由於適用于 mariadb 中的原生複寫限制，您必須在[`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info)複寫[`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info)上設定和變數，而不需要 GTID 案例。
 
-    檢查從伺服器和`sync_master_info``sync_relay_log_info`變數以確保資料簽入複製穩定,並將變數設定為`1`。
+    檢查從屬伺服器的`sync_master_info`和`sync_relay_log_info`變數，以確保資料入複寫穩定，並將變數設定為。 `1`
     
 ## <a name="other-stored-procedures"></a>其他已儲存的程序
 
@@ -259,17 +259,17 @@ ms.locfileid: "80422462"
 CALL mysql.az_replication_stop;
 ```
 
-### <a name="remove-the-replication-relationship"></a>移除複製關係
+### <a name="remove-the-replication-relationship"></a>移除複寫關聯性
 
-要刪除主伺服器與副本伺服器之間的關係,請使用以下儲存過程:
+若要移除主要和複本伺服器之間的關聯性，請使用下列預存程式：
 
 ```sql
 CALL mysql.az_replication_remove_master;
 ```
 
-### <a name="skip-the-replication-error"></a>跳過複製錯誤
+### <a name="skip-the-replication-error"></a>略過複寫錯誤
 
-要跳過複製錯誤並允許複製,請使用以下儲存過程:
+若要略過複寫錯誤並允許複寫，請使用下列預存程式：
     
 ```sql
 CALL mysql.az_replication_skip_counter;

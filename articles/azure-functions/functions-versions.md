@@ -4,33 +4,33 @@ description: Azure Functions 支援多個執行階段版本。 了解其間的�
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.openlocfilehash: e90752e89be7e381b06f8a87f76f123f0e4a8e3a
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422485"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions 執行階段版本概觀
 
-Azure 函數運行時的主要版本與運行時所基於的 .NET 版本相關。 下表指示運行時的當前版本、發佈級別和相關 .NET 版本。 
+Azure Functions 執行時間的主要版本與執行時間所依據的 .NET 版本相關。 下表指出執行時間的目前版本、發行層級，以及相關的 .NET 版本。 
 
-| 執行階段版本 | 發佈等級<sup>1</sup> | .NET 版本 | 
+| 執行階段版本 | 發行層級<sup>1</sup> | .NET 版本 | 
 | --------------- | ------------- | ------------ |
-| 3.x | GA | .NET Core 3.1 | 
+| 3.x | GA | .NET Core 3。1 | 
 | 2.x | GA | .NET Core 2.2 |
-| 1.x | GA<sup>2</sup> | .NET 框架 4.7.2<sup>3</sup> |
+| 1.x | GA<sup>2</sup> | .NET Framework 4.7.2<sup>3</sup> |
 
-生產方案支援<sup>1</sup>個 GA 版本。   
-<sup>2</sup>版本 1.x 處於維護模式。 增強功能僅在更高版本中提供。   
-<sup>3</sup>僅支援 Azure 門戶中的開發或在 Windows 電腦上本地進行開發。
+<sup>1</sup> GA 版本支援生產案例。   
+<sup>2</sup>版本1.x 處於維護模式。 只有在較新的版本中才會提供增強功能。   
+<sup>3</sup>僅支援在 Azure 入口網站或在 Windows 電腦本機上進行開發。
 
-本文詳細介紹了各種版本、如何創建每個版本以及如何更改版本之間的一些差異。
+本文會詳細說明各種版本之間的一些差異、如何建立每個版本，以及如何變更版本。
 
 ## <a name="languages"></a>Languages
 
-從版本 2.x 開始,運行時使用語言擴展模型,函數應用中的所有函數必須共用相同的語言。 創建應用時選擇函數應用中的函數語言,並在[「\_\_功能工作運行時間](functions-app-settings.md#functions_worker_runtime)」設置中維護。 
+從2.x 版開始，執行時間會使用語言擴充性模型，而且函數應用程式中的所有函式都必須共用相同的語言。 在建立應用程式時，會選擇函式應用程式中的函式語言，並在函式背景[\_工作\_運行](functions-app-settings.md#functions_worker_runtime)時間設定中維護。 
 
-Azure 函數 1.x 實驗語言無法使用新模型,因此 2.x 不支援它們。 下表指出每個執行階段版本目前支援的程式設計語言。
+Azure Functions 1.x 實驗語言無法使用新模型，因此在2.x 中不支援。 下表指出每個執行階段版本目前支援的程式設計語言。
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
@@ -38,88 +38,88 @@ Azure 函數 1.x 實驗語言無法使用新模型,因此 2.x 不支援它們。
 
 ## <a name="run-on-a-specific-version"></a><a name="creating-1x-apps"></a>在特定版本上執行
 
-默認情況下,在 Azure 門戶和 Azure CLI 中創建的函數應用設置為版本 3.x。 您可以根據需要修改此版本。 只能在創建函數應用後但在添加任何函數之前將運行時版本更改為 1.x。  即使在具有功能的應用時,允許在 2.x 和 3.x 之間移動,但仍建議先在新應用中進行測試。
+根據預設，在 Azure 入口網站和 Azure CLI 中建立的函數應用程式會設定為版本3.x。 您可以視需要修改此版本。 您只能在建立函數應用程式之後，但在新增任何函式之前，將執行階段版本變更為1.x。  即使應用程式具有函式，也允許在2.x 和3.x 之間移動，但仍建議您先在新應用程式中進行測試。
 
-## <a name="migrating-from-1x-to-later-versions"></a>從 1.x 移轉到更高版本
+## <a name="migrating-from-1x-to-later-versions"></a>從1.x 遷移至更新版本
 
-您可以選擇遷移編寫的現有應用,以使用版本 1.x 運行時,而不是使用較新版本。 您需要進行的大多數更改都與語言運行時的更改相關,例如 .NET 框架 4.7 和 .NET Core 之間的 C# API 更改。 您也必須確認您的程式碼和程式庫與所選語言執行階段相容。 最後，請務必記下下面所強調觸發程序、繫結及功能方面的所有變更。 為了獲得最佳遷移效果,應在新版本中創建新的函數應用,並將現有版本 1.x 函數代碼移植到新應用。  
+您可以選擇遷移已撰寫的現有應用程式，以使用1.x 版執行時間，改為使用較新的版本。 您需要進行的大部分變更都與語言執行時間中的變更有關，例如 .NET Framework 4.7 和 .NET Core 之間的 c # API 變更。 您也必須確認您的程式碼和程式庫與所選語言執行階段相容。 最後，請務必記下下面所強調觸發程序、繫結及功能方面的所有變更。 若要獲得最佳的遷移結果，您應該在新版本中建立新的函式應用程式，並將您現有的1.x 版函數代碼移植到新的應用程式。  
 
-雖然可以通過手動更新應用配置進行"就地"升級,但從1.x到更高版本包括一些重大更改。 例如,在 C# 中,除錯`TraceWriter`物件從`ILogger`變更為 。 通過建立新版本 3.x 專案,您可以開始基於最新版本 3.x 範本的更新函數。
+雖然您可以手動更新應用程式設定來執行「就地」升級，但從1.x 到較高的版本會包含一些重大變更。 例如，在 c # 中，偵錯工具物件已從`TraceWriter`變更`ILogger`為。 藉由建立新的3.x 版專案，您可以開始使用以最新版本3.x 範本為基礎的更新功能。
 
-### <a name="changes-in-triggers-and-bindings-after-version-1x"></a>版本 1.x 後觸發器與繫結中的變更
+### <a name="changes-in-triggers-and-bindings-after-version-1x"></a>版本1.x 之後的觸發程式和系結中的變更
 
-從版本 2.x 開始,必須安裝應用中函數使用的特定觸發器和綁定的擴展。 唯一的例外是 HTTP 和計時器觸發程序，這兩者不需要延伸模組。  如需詳細資訊，請參閱[註冊及安裝繫結延伸模組](./functions-bindings-register.md)。
+從2.x 版開始，您必須針對應用程式中的函式所使用的特定觸發程式和系結，安裝擴充功能。 唯一的例外是 HTTP 和計時器觸發程序，這兩者不需要延伸模組。  如需詳細資訊，請參閱[註冊及安裝繫結延伸模組](./functions-bindings-register.md)。
 
-*函數.json*或版本之間的函數屬性也有幾個更改。 例如，「事件中樞」的 `path` 屬性現在是 `eventHubName`。 如需每個繫結的文件連結，請參閱[現有的繫結表格](#bindings)。
+函式中也有一些變更，也就是版本之間的函數屬性 *。* 例如，「事件中樞」的 `path` 屬性現在是 `eventHubName`。 如需每個繫結的文件連結，請參閱[現有的繫結表格](#bindings)。
 
-### <a name="changes-in-features-and-functionality-after-version-1x"></a>版本 1.x 後功能與功能的變更
+### <a name="changes-in-features-and-functionality-after-version-1x"></a>版本1.x 之後功能的變更
 
-在版本 1.x 之後,刪除了、更新或替換了一些功能。 本節詳細介紹了在使用版本 1.x 后在更高版本中看到的更改。
+在版本1.x 之後，已移除、更新或取代一些功能。 本節詳細說明使用1.x 版之後，您在更新版本中看到的變更。
 
 2.x 版中做了下列變更：
 
-* 用於呼叫 HTTP 端點的金鑰一律會以加密形式儲存在 Azure Blob 儲存體中。 在版本 1.x 中,預設情況下密鑰存儲在 Azure 檔存儲中。 將應用程式從 1.x 版升級至 2.x 版時，會重設檔案儲存體中的現有秘密。
+* 用於呼叫 HTTP 端點的金鑰一律會以加密形式儲存在 Azure Blob 儲存體中。 在1.x 版中，金鑰預設會儲存在 Azure 檔案儲存體中。 將應用程式從 1.x 版升級至 2.x 版時，會重設檔案儲存體中的現有秘密。
 
 * 2.x 版執行階段並未內建對 Webhook 提供者的支援。 進行此變更是為了提升效能。 您仍然可以使用 HTTP 觸發程序作為 Webhook 的端點。
 
 * 主機設定檔 (host.json) 應該空白或含有 `"version": "2.0"` 字串。
 
-* 為了改進監視,門戶中的 Web 作業儀錶板([`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard)使用該 設定)替換為使用[`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey)該設置的 Azure 應用程式見解。 如需詳細資訊，請參閱[監視 Azure Functions](functions-monitoring.md)。
+* 為了改善監視功能，入口網站中使用[`AzureWebJobsDashboard`](functions-app-settings.md#azurewebjobsdashboard)設定的 [webjob] 儀表板會取代為使用[`APPINSIGHTS_INSTRUMENTATIONKEY`](functions-app-settings.md#appinsights_instrumentationkey)設定的 Azure 應用程式 Insights。 如需詳細資訊，請參閱[監視 Azure Functions](functions-monitoring.md)。
 
-* 函數應用程式中的所有函式都必須共用相同語言。 當您建立函數應用程式時，必須為應用程式選擇執行階段堆疊。 運行時堆疊由應用程式設置中[`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime)的值指定。 新增此需求是為了改善使用量和啟動時間。 在本機進行開發時，您必須在 [local.settings.json 檔案](functions-run-local.md#local-settings-file)中也包含此設定。
+* 函數應用程式中的所有函式都必須共用相同語言。 當您建立函數應用程式時，必須為應用程式選擇執行階段堆疊。 執行時間堆疊是由 [應用[`FUNCTIONS_WORKER_RUNTIME`](functions-app-settings.md#functions_worker_runtime)程式設定] 中的值所指定。 新增此需求是為了改善使用量和啟動時間。 在本機進行開發時，您必須在 [local.settings.json 檔案](functions-run-local.md#local-settings-file)中也包含此設定。
 
 * App Service 方案中函式的預設逾時已變更為 30 分鐘。 您可以藉由在 host.json 中使用 [functionTimeout](functions-host-json.md#functiontimeout) 設定，將逾時手動變更回無限制。
 
-* 默認情況下,使用計畫函數的 HTTP 併發限制實現,每個實例預設為 100 個併發請求。 您可以在 host.json[`maxConcurrentRequests`](functions-host-json.md#http)檔中的設定中更改此設定。
+* 預設會針對取用方案函式執行 HTTP 並行節流，預設值為每個實例100個並行要求。 您可以在 host. json [`maxConcurrentRequests`](functions-host-json.md#http)檔案的設定中變更此值。
 
-* 由於[.NET Core 的限制](https://github.com/Azure/azure-functions-host/issues/3414),已刪除對 F# 文稿 (.fsx) 函數的支援。 仍然支援已編譯的 F# 函式 (.fs)。
+* 由於[.Net Core 的限制](https://github.com/Azure/azure-functions-host/issues/3414)，已移除對 F # 腳本（. run.fsx）函數的支援。 仍然支援已編譯的 F# 函式 (.fs)。
 
 * 「事件方格」觸發程序 Webhook 的 URL 格式已變更為 `https://{app}/runtime/webhooks/{triggerName}`。
 
-## <a name="migrating-from-2x-to-3x"></a>從 2.x 移轉到 3.x
+## <a name="migrating-from-2x-to-3x"></a>從2.x 遷移至3。x
 
-Azure 函數版本 3.x 與版本 2.x 高度向後相容。  許多應用應該能夠安全地升級到 3.x,而無需進行任何代碼更改。  在鼓勵遷移到 3.x 時,請確保在更改生產應用中的主要版本之前運行大量測試。
+Azure Functions 版本3.x 與2.x 版具有高度回溯相容性。  許多應用程式應該能夠安全地升級至3.x，而不需要變更任何程式碼。  雖然建議改用3.x，但請務必先執行廣泛的測試，然後再變更生產應用程式中的主要版本。
 
-### <a name="breaking-changes-between-2x-and-3x"></a>在 2.x 與 3.x 之間分解變更
+### <a name="breaking-changes-between-2x-and-3x"></a>2.x 和3.x 之間的突破性變更
 
-以下是在將 2.x 應用升級到 3.x 之前需要注意的更改。
+以下是將2.x 應用程式升級至3.x 之前，要注意的變更。
 
 #### <a name="javascript"></a>JavaScript
 
-* 通過`context.done`或返回值分配的輸出綁定現在與`context.bindings`在中設置相同。
+* 透過`context.done`或傳回值指派的輸出系結現在的行為與中`context.bindings`的設定相同。
 
-* 計時器觸發器對象是駱駝事件,而不是 PascalCase
+* 計時器觸發程式物件是 camelCase，而不是 PascalCase
 
-* 事件中心觸發的函數`dataType`與二進位將收到`binary`一個陣列`string`, 而不是 。
+* 事件中樞使用`dataType`二進位觸發的函式會接收的`binary`陣列， `string`而不是。
 
-* 無法再通過`context.bindingData.req`訪問 HTTP 請求負載。  它還是可以作為輸入參數存取`context.req`,`context.bindings`並在 中 存取 。
+* 無法再透過存取 HTTP 要求承載`context.bindingData.req`。  它仍然可以做為輸入參數、 `context.req`和中`context.bindings`的來存取。
 
-* Node.js 8 不再受支援,不會在 3.x 函數中執行。
+* Node.js 8 已不再支援，而且不會在3.x 函式中執行。
 
 #### <a name="net"></a>.NET
 
-* [預設情況下,同步伺服器操作被關閉](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
+* [同步伺服器作業預設為停用](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)。
 
 ### <a name="changing-version-of-apps-in-azure"></a>在 Azure 中變更應用程式版本
 
-Azure 中已發佈應用使用的函數運行時版本[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version)由 應用程式設置決定。 支援以下主要執行時版本值:
+Azure 中已發佈應用程式所使用的函式執行時間版本，是[`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version)由應用程式設定所決定。 支援下列主要執行階段版本值：
 
-| 值 | 執行時目標 |
+| 值 | 執行時間目標 |
 | ------ | -------- |
 | `~3` | 3.x |
 | `~2` | 2.x |
 | `~1` | 1.x |
 
 >[!IMPORTANT]
-> 不要任意更改此設置,因為可能需要更改其他應用設置並更改函數代碼。
+> 請勿任意變更此設定，因為可能需要其他應用程式設定變更和對您的函數代碼所做的變更。
 
-### <a name="locally-developed-application-versions"></a>本地開發的應用程式版本
+### <a name="locally-developed-application-versions"></a>本機開發的應用程式版本
 
-您可以進行以下更新,以使應用在本地更改目標版本。
+您可以對函數應用程式進行下列更新，以在本機變更目標版本。
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio 執行階段版本
 
-在 Visual Studio 中，您會在建立專案時選取執行階段版本。 Visual Studio 的 Azure 函數工具支援三個主要運行時版本。 根據專案設定進行偵錯和發佈時，會使用正確的版本。 版本設定會在 `.csproj` 檔案中的下列屬性中定義：
+在 Visual Studio 中，您會在建立專案時選取執行階段版本。 適用于 Visual Studio 的 Azure Functions 工具支援三個主要的執行階段版本。 根據專案設定進行偵錯和發佈時，會使用正確的版本。 版本設定會在 `.csproj` 檔案中的下列屬性中定義：
 
 ##### <a name="version-1x"></a>1.x 版
 
@@ -143,26 +143,26 @@ Azure 中已發佈應用使用的函數運行時版本[`FUNCTIONS_EXTENSION_VERS
 ```
 
 > [!NOTE]
-> Azure 函數 3.x`Microsoft.NET.Sdk.Functions`和`3.0.0`.NET 要求 延伸至少為 。
+> Azure Functions 3.x 和 .NET 要求`Microsoft.NET.Sdk.Functions`副檔名至少`3.0.0`為。
 
-###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>將 2.x 應用程式更新為 Visual Studio 中的 3.x
+###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>將2.x 應用程式更新為 Visual Studio 中的3。x
 
-您可以通過`.csproj`編輯 檔案並更新上述值來打開面向 2.x 的現有函數並移動到 3.x。  Visual Studio 會根據專案中繼資料自動為您管理執行時版本。  但是,如果您從未在 Visual Studio 尚未在電腦上具有 3.x 的範本和運行時之前從未創建過 3.x 應用,則有可能。  這可能給自己帶來一個錯誤,如"沒有函數運行時可用,與專案中指定的版本匹配"。  要獲取最新的範本和運行時,請體驗以創建一個新的函數專案。  當您進入版本和範本選擇螢幕時,等待 Visual Studio 完成獲取最新範本。  一旦最新的 .NET Core 3 樣本可用並顯示,您應該能夠運行和除錯為版本 3.x 配置的任何專案。
+您可以開啟目標為2.x 的現有函式，然後藉由編輯`.csproj`檔案並更新上述值，移至3.x。  Visual Studio 會根據專案中繼資料自動為您管理執行階段版本。  不過，如果您從未建立過3.x 應用 Visual Studio 程式，但您的電腦上還沒有適用于3.x 的範本和執行時間，這是可行的。  這可能會出現錯誤，例如「沒有可用的函式執行時間符合專案中所指定的版本」。  若要提取最新的範本和執行時間，請完成建立新函數專案的體驗。  當您進入 [版本] 和 [範本] 選取畫面時，請等候 Visual Studio 完成提取最新的範本。  當最新的 .NET Core 3 範本可供使用並顯示時，您應該能夠執行並對版本3.x 所設定的任何專案進行偵錯工具。
 
 > [!IMPORTANT]
-> 只有在使用 Visual Studio 版本 16.4 或更高版本時,才能在 Visual Studio 中開發版本 3.x 功能。
+> 只有在使用 Visual Studio 16.4 版或更新版本時，才能在 Visual Studio 中開發版本3.x 函數。
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS Code 與 Azure Functions Core Tools
 
-[Azure Functions Core Tools](functions-run-local.md) 除了用於命令列開發之外，也會供適用於 Visual Studio Code 的 [Azure Functions 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)使用。 要針對版本 3.x 進行開發,請安裝核心工具的版本 3.x。 版本 2.x 開發需要核心工具的版本 2.x,等等。 如需詳細資訊，請參閱[安裝 Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)。
+[Azure Functions Core Tools](functions-run-local.md) 除了用於命令列開發之外，也會供適用於 Visual Studio Code 的 [Azure Functions 延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)使用。 若要針對1.x 版進行開發，請安裝2.x 版的 Core Tools。 2.x 版的開發需要2.x 版的 Core Tools，依此類推。 如需詳細資訊，請參閱[安裝 Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)。
 
-針對 Visual Studio Code 開發，您可能必須一併更新 `azureFunctions.projectRuntime` 的使用者設定，以符合所安裝工具的版本。  此設定也會更新函數應用程式建立期間所使用的範本和語言。  在建立`~3`應用程式,請`azureFunctions.projectRuntime`將使用者設定`~3`更新為 。
+針對 Visual Studio Code 開發，您可能必須一併更新 `azureFunctions.projectRuntime` 的使用者設定，以符合所安裝工具的版本。  此設定也會更新函數應用程式建立期間所使用的範本和語言。  若要在中`~3`建立應用程式， `azureFunctions.projectRuntime`請將使用者`~3`設定更新為。
 
-![Azure 函數延伸執行時設定](./media/functions-versions/vs-code-version-runtime.png)
+![Azure Functions 擴充功能執行時間設定](./media/functions-versions/vs-code-version-runtime.png)
 
-#### <a name="maven-and-java-apps"></a>Maven 與 Java 應用程式
+#### <a name="maven-and-java-apps"></a>Maven 和 JAVA 應用程式
 
-您可以透過安裝本地執行所需的[3.x 核心工具的 3.x 版本](functions-run-local.md#install-the-azure-functions-core-tools),將 Java 應用從版本 2.x 遷移到 3.x。  驗證應用在版本 3.x 上本地執行是否正確後,`POM.xml`將應用的檔案更新`FUNCTIONS_EXTENSION_VERSION`以將`~3`設定修改為 ,如以下範例所示:
+您可以安裝在本機執行所需的 2.x[版核心工具](functions-run-local.md#install-the-azure-functions-core-tools)，將 JAVA 應用程式從版本2.x 遷移至3.x。  在確認您的應用程式正確地在版本3.x 的本機上執行之後，請更新`POM.xml`應用程式的檔案`FUNCTIONS_EXTENSION_VERSION` ，將`~3`設定修改為，如下列範例所示：
 
 ```xml
 <configuration>
@@ -184,7 +184,7 @@ Azure 中已發佈應用使用的函數運行時版本[`FUNCTIONS_EXTENSION_VERS
 
 ## <a name="bindings"></a>繫結
 
-從版本 2.x 開始,運行時使用新的[綁定擴充性模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview),該模型具有以下優點:
+從2.x 版開始，執行時間會使用新的系結擴充性[模型](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview)，以提供下列優點：
 
 * 支援第三方繫結延伸模組。
 

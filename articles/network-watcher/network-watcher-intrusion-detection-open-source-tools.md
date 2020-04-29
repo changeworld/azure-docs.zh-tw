@@ -1,5 +1,5 @@
 ---
-title: 使用開源工具執行網路入侵偵測
+title: 使用開放原始碼工具執行網路入侵偵測
 titleSuffix: Azure Network Watcher
 description: 本文說明如何使用 Azure 網路監看員和開放原始碼工具來執行網路入侵偵測
 services: network-watcher
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474920"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>使用網路監看員和開放原始碼工具執行網路入侵偵測
@@ -26,7 +26,7 @@ ms.locfileid: "80474920"
 
 一種開放原始碼工具是 Suricata，這是使用規則集監視網路流量且在可疑事件發生時就會觸發警示的 IDS 引擎。 Suricata 提供多執行緒的引擎，這表示它可以更高的速度和效率執行網路流量分析。 如需關於 Suricata 和其功能的詳細資訊，請瀏覽其網站：https://suricata-ids.org/。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 本文說明如何使用網路監看員、Suricata 和彈性堆疊來設定您的環境，以執行網路入侵偵測。 網路監看員會提供用來執行網路入侵偵測的封包擷取。 Suricata 會根據比對指定的威脅規則集處理封包擷取和觸發警示。 這些警示會儲存在本機電腦上的記錄檔。 使用彈性堆疊的 Suricata 所產生之記錄可以編製索引及用來建立 Kibana 儀表板，提供您視覺表示法的記錄，以便快速獲得潛在網路弱點的見解。  
 
@@ -76,7 +76,7 @@ tail -f /var/log/suricata/fast.log
 
 ### <a name="set-up-the-elastic-stack"></a>設定彈性堆疊
 
-雖然 Suricata 生成的日誌包含有關我們網路上發生的情況的寶貴資訊,但這些日誌檔不是最容易閱讀和理解的。 藉由連線 Suricata 與彈性堆疊，我們可以建立 Kibana 儀表板，讓我們可從記錄搜尋、繪圖、分析和洞察。
+雖然 Suricata 所產生的記錄檔包含有關我們的網路上發生什麼問題的重要資訊，但這些記錄檔並不是最容易閱讀和瞭解的。 藉由連線 Suricata 與彈性堆疊，我們可以建立 Kibana 儀表板，讓我們可從記錄搜尋、繪圖、分析和洞察。
 
 #### <a name="install-elasticsearch"></a>安裝 Elasticsearch
 
@@ -254,7 +254,7 @@ tail -f /var/log/suricata/fast.log
 
 範例儀表板會提供 Suricata 警示記錄的數個視覺效果︰
 
-1. 依 GeoIP 類別的警示 - 顯示警示按其所在國家/地區(根據地理位置確定)分佈的地圖
+1. 依 GeoIP 的警示–顯示根據地理位置（由 IP 決定）之來源國家/地區的警示分佈的地圖
 
     ![地理 IP][3]
 
@@ -268,13 +268,13 @@ tail -f /var/log/suricata/fast.log
 
 1. 前 20 個來源/目的地 IP/連接埠 - 顯示前 20 個觸發警示的 IP 和連接埠的圓形圖。 您可以在特定的 IP/連接埠向下篩選，以查看所觸發警示的數目和類型。
 
-    ![映像 6][6]
+    ![影像 6][6]
 
 1. 警示摘要 – 彙總每一個個別警示的特定詳細資料的資料表。 您可以自訂這個資料表，以顯示每個警示的其他感興趣參數。
 
     ![映像 7][7]
 
-有關建立自訂視覺化效果和儀表板的更多文件,請參閱[Kibana 的官方文件](https://www.elastic.co/guide/en/kibana/current/introduction.html)。
+如需有關建立自訂視覺效果和儀表板的詳細檔，請參閱[Kibana 的官方檔](https://www.elastic.co/guide/en/kibana/current/introduction.html)。
 
 ## <a name="conclusion"></a>結論
 

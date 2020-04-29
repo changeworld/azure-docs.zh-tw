@@ -1,6 +1,6 @@
 ---
 title: Azure 計量瀏覽器的進階功能
-description: 瞭解 Azure 監視器指標資源管理器的高級功能
+description: 瞭解 Azure 監視器的 advanced 功能計量瀏覽器
 author: vgorbenko
 services: azure-monitor
 ms.topic: conceptual
@@ -8,45 +8,45 @@ ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
 ms.openlocfilehash: 2df1e0bb7d586edb13dc86e163f0e5728608d2a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80371592"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 計量瀏覽器的進階功能
 
 > [!NOTE]
-> 本文假定您熟悉指標資源管理器的基本功能。 如果您是新使用者，並且想要瞭解如何創建第一個指標圖表，請參閱使用 Azure[指標資源管理器入門](metrics-getting-started.md)。
+> 本文假設您已熟悉計量瀏覽器的基本功能。 如果您是新的使用者，而且想要瞭解如何建立您的第一個度量圖表，請參閱[開始使用 Azure 計量瀏覽器](metrics-getting-started.md)。
 
 ## <a name="metrics-in-azure"></a>Azure 中的計量
 
-[Azure 監視器](data-platform-metrics.md)中的計量是隨時間收集並儲存的一系列度量與計數值。 計量包括標準 (或稱為「平台」) 計量與自訂計量。 標準計量是由 Azure 平台本身提供給您使用。 標準計量反映您 Azure 資源的健康情況與使用情形統計資料。 而自訂指標由應用程式使用[自訂事件和指標的應用程式見解 API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)發送到 Azure，而 Windows [Azure 診斷 （WAD） 擴展](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)， 或由 Azure 監視器 REST [API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)。
+[Azure 監視器](data-platform-metrics.md)中的計量是隨時間收集並儲存的一系列度量與計數值。 計量包括標準 (或稱為「平台」) 計量與自訂計量。 標準計量是由 Azure 平台本身提供給您使用。 標準計量反映您 Azure 資源的健康情況與使用情形統計資料。 而自訂計量會由您的應用程式使用[適用于自訂事件和計量的 APPLICATION INSIGHTS API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)、 [WINDOWS Azure 診斷（WAD）擴充](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)功能，或[Azure 監視器 REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)傳送至 Azure。
 
-## <a name="create-views-with-multiple-metrics-and-charts"></a>使用多個指標和圖表創建視圖
+## <a name="create-views-with-multiple-metrics-and-charts"></a>建立具有多個計量和圖表的視圖
 
-您可以創建繪製多個指標線的圖表，或同時顯示多個指標圖表。 此功能允許您：
+您可以建立繪製多個計量線或一次顯示多個度量圖表的圖表。 此功能可讓您：
 
-- 關聯同一圖形上的相關指標，以查看一個值與另一個值的關係
-- 顯示具有不同度量單位的指標，近距離
-- 直觀地聚合和比較來自多個資源的指標
+- 將相同圖表上的相關度量相互關聯，以查看一個值與另一個關聯的方式
+- 以接近近的測量單位顯示計量
+- 以視覺化方式匯總和比較多個資源的計量
 
-例如，如果您有 5 個存儲帳戶，並且想知道它們之間的總空間消耗量，則可以創建一個（堆疊）區域圖表，顯示特定時間點的所有值的單個和總和。
+例如，如果您有5個儲存體帳戶，而您想要知道在兩者之間取用的總空間，您可以建立一個（堆疊）區域圖，以顯示特定時間點上所有值的個人和總和。
 
-### <a name="multiple-metrics-on-the-same-chart"></a>同一圖表上的多個指標
+### <a name="multiple-metrics-on-the-same-chart"></a>相同圖表上的多個計量
 
-首先，[創建一個新圖表](metrics-getting-started.md#create-your-first-metric-chart)。 按一下"**添加指標"** 並重複步驟，在同一圖表上添加另一個指標。
+首先，[建立新的圖表](metrics-getting-started.md#create-your-first-metric-chart)。 按一下 [**新增度量**] 並重複步驟，在相同的圖表上新增另一個度量。
 
    > [!NOTE]
    > 您一般不會想要有具有不同計量單位的計量 (例如「毫秒」與 “KB”) 或其刻度在單一圖表上會呈現大幅差異的計量。 如果是這樣，您應該考慮使用多個圖表。 按一下 [新增圖表] 按鈕以在計量瀏覽器中建立多個圖表。
 
 ### <a name="multiple-charts"></a>多個圖表
 
-按一下 **"添加"圖表**，創建另一個具有其他指標的圖表。
+按一下 [**新增圖表**]，並使用不同的度量建立另一個圖表。
 
-### <a name="order-or-delete-multiple-charts"></a>訂購或刪除多個圖表
+### <a name="order-or-delete-multiple-charts"></a>排序或刪除多個圖表
 
-要訂購或刪除多個圖表，請按一下橢圓 **（...）** 符號以打開圖表功能表，並選擇"**向上移動**"、"**向下移動**"或 **"刪除**"的相應功能表項目。
+若要排序或刪除多個圖表，請按一下省略號（ **...** ）符號來開啟 [圖表] 功能表，然後選擇 [**上移** **]、[下移]** 或 [**刪除**] 的適當功能表項目。
 
 ## <a name="apply-filters-to-charts"></a>將篩選條件套用至圖表
 
@@ -72,7 +72,7 @@ ms.locfileid: "80371592"
 
 
 
-## <a name="apply-splitting-to-a-chart"></a>將拆分應用於圖表
+## <a name="apply-splitting-to-a-chart"></a>將分割套用至圖表
 
 您可以依維度來分割計量，以視覺化方式顯示維度的各區段與彼此之間的差異，並識別維度中與其他區段差異較大的區段。
 
@@ -81,7 +81,7 @@ ms.locfileid: "80371592"
 1. 按一下圖表上方的 [套用分割]****。
  
    > [!NOTE]
-   > 拆分不能與具有多個指標的圖表一起使用。 此外，您可以有多個篩選器，但只能將一個拆分維度應用於任何單個圖表。
+   > 分割無法用於具有多個計量的圖表。 此外，您可以有多個篩選準則，但只能有一個分割維度套用至任何單一圖表。
 
 2. 選擇要據以將圖表分割為不同區段的維度：
 
@@ -111,16 +111,16 @@ ms.locfileid: "80371592"
 > [!WARNING]
 > 鎖定圖表的 y 軸界限可追蹤一段時間的各種計算或加總，因此 (使用計數、加總、最小或最大彙總) 通常需要指定固定時間細微性，而不依賴自動預設值。 因為使用者調整瀏覽器視窗的大小，或從一個螢幕解析度變換為另一個螢幕解析度時，時間細微性經過修改，會導致圖表上的值變更，因此這有其必要性。 時間細微性中產生的變更會影響圖表的外觀，導致目前選取的 y 軸範圍無效。
 
-## <a name="change-colors-of-chart-lines"></a>更改圖表線的顏色
+## <a name="change-colors-of-chart-lines"></a>變更圖表線條的色彩
 
-配置圖表後，圖表線將自動從預設調色板中分配顏色。 您可以更改這些顏色。
+設定圖表之後，會自動從預設的調色板中指派色彩給圖表線條。 您可以變更這些色彩。
 
-要更改圖表線的顏色，請按一下與圖表對應的圖例中的彩色條形。 色彩選擇器對話方塊將打開。 使用色彩選擇器配置線條的顏色。
+若要變更圖表線條的色彩，請在圖例中按一下對應于圖表的彩色橫條。 [色彩選擇器] 對話方塊隨即開啟。 使用色彩選擇器來設定線條的色彩。
 
-配置圖表顏色後，當您將圖表固定到儀表板時，它們將保持這種狀態。 以下部分介紹如何固定圖表。
+設定圖表色彩之後，當您將圖表釘選到儀表板時，它們會維持如此。 下一節將說明如何釘選圖表。
 
 > [!NOTE]
-> 由於發佈和發佈計畫的限制，更改圖表線的顏色暫時需要在啟動 Azure 門戶[https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true)時傳遞特殊參數 **"功能.色彩選擇器_true"。** 即將移除這項限制。 
+> 由於發行和發行排程的條件約束，在開始 Azure 入口網站[https://portal.azure.com/?feature.colorpicker=true](https://portal.azure.com/?feature.colorpicker=true)時，變更圖表線條的色彩會暫時需要傳遞特殊參數 **？ colorpicker = true** 。 即將移除這項限制。 
 
 ![計量影像](./media/metrics-charts/018.png)
 

@@ -1,6 +1,6 @@
 ---
-title: 將雲端應用安全資料連接到 Azure 哨兵*微軟文件
-description: 瞭解如何將雲端應用安全數據連接到 Azure 哨兵。
+title: 將 Cloud App Security 資料連線到 Azure Sentinel |Microsoft Docs
+description: 瞭解如何將 Cloud App Security 資料連線到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,49 +15,49 @@ ms.workload: na
 ms.date: 03/24/2020
 ms.author: yelevin
 ms.openlocfilehash: 266d97e834247088d40837cbec1436e00d0f4be2
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80422150"
 ---
-# <a name="connect-data-from-microsoft-cloud-app-security"></a>連線來自微軟雲應用安全的資料 
+# <a name="connect-data-from-microsoft-cloud-app-security"></a>從 Microsoft Cloud App Security 連接資料 
 
 
 
-[Microsoft 雲應用安全](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)(MCAS) 連接器允許您將警報和[雲發現日誌](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)從 MCAS 流式傳輸到 Azure Sentinel 中。 這將使您能夠深入瞭解雲應用,獲得複雜的分析,以識別和打擊網路威脅,並控制數據傳輸方式。
+[Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) （MCAS）連接器可讓您將警示和[CLOUD DISCOVERY 記錄](https://docs.microsoft.com/cloud-app-security/tutorial-shadow-it)從 MCAS 串流至 Azure Sentinel。 這可讓您深入瞭解您的雲端應用程式、取得精密的分析來識別和對抗網路威脅，以及控制資料的傳輸方式。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-- 您的用戶必須具有工作區的讀取和寫入許可權。
-- 您的用戶必須對工作區的租戶具有全域管理員或安全管理員許可權。
-- 要將雲發現日誌流式傳輸到 Azure Sentinel 中,[請啟用 Azure Sentinel 作為 Microsoft 雲端應用安全中的 SIEM。](https://aka.ms/AzureSentinelMCAS)
+- 您的使用者必須具有工作區的 [讀取] 和 [寫入] 許可權。
+- 您的使用者必須具有工作區租使用者的全域管理員或安全性系統管理員許可權。
+- 若要將 Cloud Discovery 記錄串流至 Azure Sentinel，請[在 Microsoft Cloud App Security 中啟用 Azure Sentinel 作為您的 SIEM](https://aka.ms/AzureSentinelMCAS)。
 
 > [!IMPORTANT]
-> 雲發現日誌的引入當前處於公共預覽版中。
-> 此功能在沒有服務級別協議的情況下提供,不建議用於生產工作負載。
+> 內嵌 Cloud Discovery 記錄目前處於公開預覽狀態。
+> 這項功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
  
 ## <a name="connect-to-cloud-app-security"></a>連線至 Cloud App Security
 
-如果您已經擁有雲端應用程式的安全性,請確保您的[網路上已啟用](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security)。
-如果部署雲應用安全性並引入數據,則警報數據可以輕鬆地流式傳輸到 Azure Sentinel 中。
+如果您已經有 Cloud App Security，請確定已[在您的網路上啟用該功能](https://docs.microsoft.com/cloud-app-security/getting-started-with-cloud-app-security)。
+如果 Cloud App Security 已部署並內嵌您的資料，則可以輕鬆地將警示資料串流至 Azure Sentinel。
 
 
-1. 在 Azure Sentinel 導航功能表中,選擇 **「資料連接器**」。 從連接器清單中,按一下 Microsoft**雲端應用安全**磁貼,然後單擊右下角的 **「打開連接器」頁面**按鈕。
+1. 從 Azure Sentinel 導覽功能表中，選取 [**資料連線器**]。 從連接器清單中，按一下 [ **Microsoft Cloud App Security** ] 磚，然後在右下方的 [**開啟連接器頁面**] 按鈕。
 
-1. 選擇要流式傳輸到 Azure Sentinel 的日誌;您可以選擇 **「警報**」和「**雲發現日誌**」(預覽)。 
+1. 選取您想要串流至 Azure Sentinel 的記錄檔;您可以選擇 [**警示**] 和 [ **Cloud Discovery 記錄**（預覽）]。 
 
 1. 按一下 [套用變更]****。
 
-1. 要在日誌分析中使用雲應用安全警報的日誌分析中的相關架構`SecurityAlert`,請鍵入查詢視窗。 對於雲發現日誌架構,鍵入`McasShadowItReporting`。
+1. 若要在 Log Analytics 中使用適用于 Cloud App Security 警示的相關`SecurityAlert`架構，請在查詢視窗中輸入。 針對 [Cloud Discovery 記錄] 架構， `McasShadowItReporting`輸入。
 
 > [!NOTE]
-> 雲發現通過聚合使用者與雲端應用連接的基礎數據,幫助檢測和識別趨勢。
+> Cloud Discovery 藉由匯總雲端應用程式的基礎使用者連線資料，協助偵測及識別趨勢。
 >
-> 由於雲發現數據是每天聚合的,因此請注意,Azure Sentinel 中不會反映最多 24 小時的最新數據。 如果低級調查需要更直接的數據,則應直接在原始數據所在的源設備或服務中進行。
+> 由於 Cloud Discovery 的資料會以每日為基礎進行匯總，請注意，最多24小時的最近資料將不會反映在 Azure Sentinel 中。 如果低層級的調查需要更即時的資料，應該直接在原始資料所在的來源應用裝置或服務中完成。
 
 ## <a name="next-steps"></a>後續步驟
-在本文件中,您學習了如何將 Microsoft 雲端應用安全性連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
+在本檔中，您已瞭解如何將 Microsoft Cloud App Security 連接到 Azure Sentinel。 若要深入了解 Azure Sentinel，請參閱下列文章：
 - 深入了解如何[取得資料的可見度以及潛在威脅](quickstart-get-visibility.md)。
-- 使用[內置](tutorial-detect-threats.md)或[自訂](tutorial-detect-threats-custom.md)規則開始使用 Azure Sentinel 檢測威脅。
+- 使用[內建](tutorial-detect-threats.md)或[自訂](tutorial-detect-threats-custom.md)規則，開始偵測 Azure Sentinel 的威脅。

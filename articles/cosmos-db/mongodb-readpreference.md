@@ -1,5 +1,5 @@
 ---
-title: 將讀取喜好選項與蒙戈DB的 Azure 宇宙 DB API 一起使用
+title: 搭配適用于 MongoDB 的 Azure Cosmos DB API 使用讀取喜好設定
 description: 了解如何搭配 Azure Cosmos DB 適用於 MongoDB 的 API 使用 MongoDB 讀取喜好設定
 author: sivethe
 ms.author: sivethe
@@ -9,10 +9,10 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80410010"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>如何使用 Azure Cosmos DB 適用於 MongoDB 的 API 來設定全域散發讀取
@@ -20,7 +20,7 @@ ms.locfileid: "80410010"
 本文說明如何搭配 Azure Cosmos DB 適用於 MongoDB 的 API 使用 [MongoDB 讀取喜好設定](https://docs.mongodb.com/manual/core/read-preference/)來全域散發讀取作業。
 
 ## <a name="prerequisites"></a>Prerequisites 
-如果沒有 Azure 訂閱,請先創建[一個免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。" 
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 如需使用 Azure 入口網站透過全域散發來設定 Cosmos 帳戶，然後與其連線的指示，請參閱此[快速入門](tutorial-global-distribution-mongodb.md)一文。
@@ -86,7 +86,7 @@ MongoDB 通訊協定會提供下列讀取喜好設定模式供用戶端使用：
 根據常見案例，建議您使用下列設定：
 
 1. 如果需要**低延遲讀取區域**，請使用 **NEAREST** 讀取喜好設定模式。 此設定會將讀取作業導向至最接近的可用區域。 請注意，如果最接近的區域是寫入區域，則會將這些作業導向至該區域。
-2. 如果需要**高可用性和讀取的地理分佈**(延遲不是約束),則使用**初順序優先**或**輔助優先**讀取首選項模式。 此設置分別將讀取操作定向到可用的 WRITE 或 READ 區域。 如果該區域不可用,則根據讀取首選項行為將請求定向到下一個可用區域。
+2. 如果需要**高可用性和異地散發的讀取**（延遲不是條件約束），則請使用**主要慣用**或**次要慣用**的讀取喜好設定模式。 此設定會將讀取作業分別導向至可用的寫入或讀取區域。 如果區域無法使用，則會根據讀取喜好設定行為，將要求導向至下一個可用的區域。
 
 下列來自範例應用程式的程式碼片段示範如何在 NodeJS 中設定 NEAREST 讀取喜好設定：
 
@@ -172,4 +172,4 @@ MongoClient.connect(url, function(err, client) {
 
 * [將 MongoDB 資料匯入到 Azure Cosmos DB](mongodb-migrate.md)
 * [使用 Azure Cosmos DB 適用於 MongoDB 的 API 來設定全域散發的資料庫](tutorial-global-distribution-mongodb.md)
-* [使用 Azure 宇宙 DB 模擬器在本地開發](local-emulator.md)
+* [使用 Azure Cosmos DB 模擬器在本機進行開發](local-emulator.md)

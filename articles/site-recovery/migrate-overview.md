@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 網站恢復將伺服器和 VM 遷移到 Azure
-description: 介紹如何使用 Azure 網站恢復服務將本地和 Azure IaaS VM 遷移到 Azure。
+title: 使用 Azure Site Recovery 將伺服器和 Vm 遷移至 Azure
+description: 說明如何使用 Azure Site Recovery 服務，將內部部署和 Azure IaaS Vm 遷移至 Azure。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: raynew
 ms.openlocfilehash: a7107eae5c798deb78d4d35eccdf4adcf5273335
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80388894"
 ---
 # <a name="about-migration"></a>關於移轉
@@ -20,7 +20,7 @@ ms.locfileid: "80388894"
 請閱讀本文，了解 [Azure Site Recovery](site-recovery-overview.md) 服務如何協助您移轉機器的快速概觀。 
 
 > [!TIP]
-> 現在，應使用 Azure 遷移服務將 VM 和伺服器遷移到 Azure，而不是 Azure 網站恢復服務。 [深入了解](../migrate/migrate-services-overview.md)。
+> 您現在應該使用 Azure Migrate 服務，將 Vm 和伺服器遷移至 Azure，而不是 Azure Site Recovery 服務。 [深入了解](../migrate/migrate-services-overview.md)。
 
 
 以下是您可以使用 Site Recovery 移轉的項目：
@@ -44,7 +44,7 @@ ms.locfileid: "80388894"
 
 **案例** | **詳細資料**
 --- | ---
-**從本地遷移到 Azure** | 您可以將內部部署 VMware VM、Hyper-V VM 和實體伺服器移轉至 Azure。 若要這樣做，就要完成與完整災害復原幾乎相同的步驟。 只是不要將機器從 Azure 容錯移轉回到內部部署站台。
+**從內部部署遷移至 Azure** | 您可以將內部部署 VMware VM、Hyper-V VM 和實體伺服器移轉至 Azure。 若要這樣做，就要完成與完整災害復原幾乎相同的步驟。 只是不要將機器從 Azure 容錯移轉回到內部部署站台。
 **在不同的 Azure 地區之間移轉** | 您可以將 Azure VM 從一個 Azure 區域移轉至另一個 Azure 區域。 完成移轉之後，現在您就可以在移轉前往的次要區域中，設定 Azure VM 的災害復原。
 **將 AWS 移轉至 Azure** | 您可以將 AWS 執行個體移轉至 Azure VM。 在進行移轉時，Site Recovery 會將 AWS 執行個體視為實體伺服器。 
 
