@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: bda817712faf1f54287e880dc62ef2b08273ff42
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253385"
 ---
-# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>從 Verizon 進階規則引擎引用的 Azure CDN
+# <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>來自 Verizon 的 Azure CDN Premium 規則引擎參考
 
 本文會針對 Azure 內容傳遞網路 (CDN) [規則引擎](cdn-verizon-premium-rules-engine.md)列出可用比對條件和功能的詳細描述。
 
@@ -37,7 +37,7 @@ ms.locfileid: "81253385"
 
 處理特殊字元的方式會根據比對條件或功能如何處理文字值而異。 比對條件或功能可能會以下列其中一種方式解譯文字︰
 
-1. [**文字值**](#literal-values)
+1. [**常值**](#literal-values)
 2. [**萬用字元值**](#wildcard-values)
 3. [**規則運算式**](#regular-expressions)
 
@@ -71,11 +71,11 @@ Space | 空白字元，表示比對條件可能藉由指定值或模式獲得滿
 Space | 空白字元通常會被視為常值字元。
 'value' | 單引號會被視為常值字元。 單引號組不具有特殊意義。
 
-匹配支援正則表達式的條件和功能接受 Perl 相容正則運算式 (PCRE) 定義的模式。
+支援正則運算式的比對條件和功能接受由 Perl 相容的正則運算式（PCRE）所定義的模式。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [規則引擎符合條件](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [規則引擎比對條件](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [規則引擎條件運算式](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [規則引擎功能](cdn-verizon-premium-rules-engine-reference-features.md)
 - [使用規則引擎覆寫 HTTP 行為](cdn-verizon-premium-rules-engine.md)

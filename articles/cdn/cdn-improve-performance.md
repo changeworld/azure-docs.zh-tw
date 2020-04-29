@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: allensu
 ms.openlocfilehash: 7124dd40d4510674014afe012a8f40dcb5bb6153
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253759"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>在 Azure CDN 中壓縮檔案以改善效能
@@ -27,7 +27,7 @@ ms.locfileid: "81253759"
 有兩種方式可啟用檔案壓縮︰
 
 - 在原始伺服器上啟用壓縮。 在此情況下，Azure CDN 會傳遞壓縮的檔案，遞交給提出要求的用戶端。
-- 直接在 CDN POP 伺服器上啟用*壓縮(動態壓縮*)。 在此情況下，CDN 會壓縮檔案並將其提供給終端使用者，即使原始伺服器未壓縮這些檔案也是如此。
+- 直接在 CDN POP 伺服器上啟用壓縮（*即時壓縮*）。 在此情況下，CDN 會壓縮檔案並將其提供給終端使用者，即使原始伺服器未壓縮這些檔案也是如此。
 
 > [!IMPORTANT]
 > Azure CDN 組態變更會需要一些時間才能傳播至整個網路： 
@@ -101,7 +101,7 @@ ms.locfileid: "81253759"
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>來自 Microsoft 的標準 Azure CDN
 
 如果是**來自 Microsoft 的標準 Azure CDN** 設定檔，只會壓縮符合資格的檔案。 若要符合壓縮，檔案必須︰
-- 為已[配置為壓縮的](#enabling-compression)MIME 類型。
+- 屬於已[設定壓縮](#enabling-compression)的 MIME 類型。
 - 大於 1 KB
 - 小於 8 MB
 
@@ -139,7 +139,7 @@ ms.locfileid: "81253759"
 下列資料表描述每個案例的 Azure CDN 壓縮行為：
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>已停用壓縮或檔案不適合進行壓縮
-| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | 備&nbsp;&nbsp;&nbsp;註&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | &nbsp; &nbsp;附注&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Compressed |Compressed |Compressed | |
 | Compressed |未壓縮 |未壓縮 | |
@@ -149,7 +149,7 @@ ms.locfileid: "81253759"
 | 未壓縮 |不快取 |未壓縮 | |
 
 ### <a name="compression-is-enabled-and-file-is-eligible-for-compression"></a>已啟用壓縮且檔案適合進行壓縮
-| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | 注意 |
+| 用戶端要求的格式 (透過 Accept-Encoding 標頭) | 快取的檔案格式 | CDN 對用戶端的回應 | 備忘錄 |
 | --- | --- | --- | --- |
 | Compressed |Compressed |Compressed |支援格式之間的 CDN 轉碼。 |
 | Compressed |未壓縮 |Compressed |CDN 執行壓縮。 |
@@ -165,6 +165,6 @@ ms.locfileid: "81253759"
 - application/vnd.apple.mpegurl
 - application/f4m+xml 
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [CDN 檔案壓縮疑難排解](cdn-troubleshoot-compression.md)    
 

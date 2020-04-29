@@ -1,5 +1,5 @@
 ---
-title: 檢索產品/服務狀態 |Azure 應用商店
+title: 取得供應專案狀態 |Azure Marketplace
 description: API 可擷取供應項目的目前狀態。
 author: dsindona
 ms.service: marketplace
@@ -8,16 +8,16 @@ ms.topic: reference
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 9cf6ca27101a08ff58f32dcd31413256762490a2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255904"
 ---
 # <a name="retrieve-offer-status"></a>擷取供應項目狀態
 
 > [!NOTE]
-> 雲合作夥伴門戶 API 與合作夥伴中心集成,在您的產品/服務遷移到合作夥伴中心後將繼續工作。 集成引入了小更改。 查看[雲合作夥伴門戶 API 參考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改,以確保代碼在遷移到合作夥伴中心後繼續工作。
+> Cloud Partner 入口網站 Api 會與合作夥伴中心整合，並會在您的供應專案遷移至合作夥伴中心後繼續工作。 整合引進了微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中所列的變更，以確保您的程式碼會在遷移至合作夥伴中心後繼續運作。
 
 擷取供應項目的目前狀態。
 
@@ -25,10 +25,10 @@ ms.locfileid: "81255904"
 
 ## <a name="uri-parameters"></a>URI 參數
 
-|  **名稱**       |   **說明**                            |  **資料類型** |
+|  **名稱**       |   **描述**                            |  **資料類型** |
 |  -------------  |  ------------------------------------------  |  ------------  |
-|  publisherId    | 發行者識別碼，例如 `Contoso`  |     String     |
-|  offerId        | 可唯一識別供應項目的 GUID      |     String     |
+|  publisherId    | 發行者識別碼，例如 `Contoso`  |     字串     |
+|  offerId        | 可唯一識別供應項目的 GUID      |     字串     |
 |  api-version    | API 的最新版本                        |     Date       |
 |  |  |
 
@@ -121,7 +121,7 @@ ms.locfileid: "81255904"
 
 ### <a name="response-body-properties"></a>回應主體屬性
 
-|  **名稱**             |    **說明**                                                                             |
+|  **名稱**             |    **描述**                                                                             |
 | --------------------  |   -------------------------------------------------------------------------------------------- |
 |  status               | 供應項目的狀態。 如需可能值清單，請參閱下面的[供應項目狀態](#offer-status)。 |
 |  messages             | 與供應項目相關聯的訊息陣列                                                    |
@@ -133,14 +133,14 @@ ms.locfileid: "81255904"
 |  status               | 步驟的狀態。 如需可能值清單，請參閱下面的[步驟狀態](#step-status)。    |
 |  messages             | 與步驟相關聯的訊息陣列                                                          |
 |  processPercentage    | 步驟的完成百分比                                                              |
-|  previewLinks         | *目前未實施*                                                                    |
-|  liveLinks            | *目前未實施*                                                                    |
-|  notificationEmails   | 已棄用的優惠遷移到合作夥伴中心。 遷移優惠的通知電子郵件將發送到「帳戶設置」中的「賣家聯繫資訊」下指定的電子郵件。<br><br>對於非遷移優惠,將通知操作進度的電子郵件地址的逗號分隔清單        |
+|  previewLinks         | *目前未執行*                                                                    |
+|  liveLinks            | *目前未執行*                                                                    |
+|  notificationEmails   | 已針對遷移至合作夥伴中心的供應專案淘汰。 遷移供應專案的通知電子郵件將會傳送至 [帳戶設定] 中的 [賣方連絡人資訊] 底下指定的電子郵件。<br><br>若為非遷移的供應專案，則為以逗號分隔的電子郵件地址清單，以取得作業進度的通知        |
 |  |  |
 
 ### <a name="response-status-codes"></a>回應狀態碼
 
-| **程式碼** |   **說明**                                                                                 |
+| **錯誤碼** |   **說明**                                                                                 |
 | -------  |   ----------------------------------------------------------------------------------------------- |
 |  200     |  `OK` - 已成功處理要求，並已傳回供應項目的最新狀態。 |
 |  400     | `Bad/Malformed request` - 錯誤回應本文可能包含更多資訊。                 |
@@ -149,7 +149,7 @@ ms.locfileid: "81255904"
 
 ### <a name="offer-status"></a>供應項目狀態
 
-|  **名稱**                    |    **說明**                                       |
+|  **名稱**                    |    **描述**                                       |
 |  --------------------------  |  ------------------------------------------------------  |
 |  NeverPublished              | 供應項目從未發行。                          |
 |  NotStarted                  | 供應項目是新的，且未啟動。                            |
@@ -157,12 +157,12 @@ ms.locfileid: "81255904"
 |  執行中                     | 正在處理供應項目提交。                     |
 |  成功                   | 已完成處理供應項目提交。               |
 |  已取消                    | 已取消供應項目提交。                           |
-|  失敗                      | 供應項目提交失敗。                                 |
+|  Failed                      | 供應項目提交失敗。                                 |
 |  |  |
 
 ### <a name="step-status"></a>步驟狀態
 
-|  **名稱**                    |    **說明**                           |
+|  **名稱**                    |    **描述**                           |
 |  -------------------------   |  ------------------------------------------  |
 |  NotStarted                  | 步驟尚未啟動。                        |
 |  InProgress                  | 步驟正在執行。                             |

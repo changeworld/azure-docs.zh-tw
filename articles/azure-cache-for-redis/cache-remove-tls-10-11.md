@@ -1,67 +1,67 @@
 ---
-title: 移除 TLS 1.0 與 1.1 與用於 Redis 的 Azure 快取
-description: 瞭解如何在與 Redis 的 Azure 快取通訊時從應用程式中刪除 TLS 1.0 和 1.1
+title: 移除與 Azure Cache for Redis 搭配使用的 TLS 1.0 和1。1
+description: 瞭解如何在與 Azure Cache for Redis 通訊時，從應用程式移除 TLS 1.0 和1。1
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
 ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261221"
 ---
-# <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>移除 TLS 1.0 與 1.1 與用於 Redis 的 Azure 快取
+# <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>移除與 Azure Cache for Redis 搭配使用的 TLS 1.0 和1。1
 
-業界普遍推動獨家使用傳輸層安全 (TLS) 版本 1.2 或更高版本。 TLS 版本 1.0 和 1.1 已知容易受到諸如 BEAST 和 POODLE 等攻擊,並且存在其他常見漏洞和暴露 (CVE) 弱點。 它們還不支援支付卡行業 (PCI) 合規性標準推薦的現代加密方法和密碼套件。 此[TLS 安全部落格](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/)更詳細地解釋了其中一些漏洞。
+針對傳輸層安全性（TLS）1.2 版或更新版本的專屬使用，有業界廣泛的推播。 TLS 版本1.0 和1.1 已知容易遭受攻擊，例如 BEAST 和貴賓，並具有其他常見的弱點和暴露（CVE）弱點。 它們也不支援支付卡產業（PCI）合規性標準所建議的新式加密方法和加密套件。 此[TLS 安全性 blog](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/)會更詳細地說明其中一些弱點。
 
-作為這項工作的一部分,我們將對 Redis 的 Azure 緩存進行以下更改:
+作為這項工作的一部分，我們將對 Azure Cache for Redis 進行下列變更：
 
-* **第一階段:** 我們將新創建的緩存實例的預設最小 TLS 版本配置為 1.2。 (這以前是 TLS 1.0。此時不會更新現有緩存實例。 如果需要,將允許您[將最小 TLS 版本更改](cache-configure.md#access-ports)回 1.0 或 1.1,以便向後相容。 此更改可以通過 Azure 門戶或其他管理 API 進行。
-* **第二階段:** 我們將停止支援 TLS 版本 1.0 和 1.1。 此更改後,應用程式將需要使用 TLS 1.2 或更高版本與緩存通訊。
+* **第1階段：** 我們會針對新建立的快取實例，將預設的最低 TLS 版本設定為1.2。 （這是用來做為 TLS 1.0）。此時不會更新現有的快取實例。 如有需要，您可以將[最小的 TLS 版本變更](cache-configure.md#access-ports)回1.0 或1.1 以提供回溯相容性。 這種變更可以透過 Azure 入口網站或其他管理 Api 來完成。
+* **第2階段：** 我們將停止支援 TLS 版本1.0 和1.1。 在這種變更之後，您的應用程式必須使用 TLS 1.2 或更新版本來與您的快取通訊。
 
-此外,作為此更改的一部分,我們將刪除對較舊的、不安全的迴圈套件的支援。  當緩存配置為最小 TLS 版本為 1.2 時,我們支援的 cypher 套件將限制為以下內容。
+此外，做為這項變更的一部分，我們將會移除對舊版、不安全的 cypher 套件的支援。  當快取設定為最低的 TLS 版本1.2 時，我們支援的 cypher 套件將受限於下列各項。
 
 * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
-本文提供有關如何檢測這些早期 TLS 版本的依賴項並從應用程式中刪除它們的一般指南。
+本文提供有關如何偵測這些舊版 TLS 版本的相依性，並將其從您的應用程式中移除的一般指引。
 
-這些變更生效的日期為:
+這些變更生效的日期如下：
 
-| 雲端               | 階段 1 開始日期 | 階段 2 開始日期      |
+| 雲端               | 第1階段開始日期 | 第2階段開始日期      |
 |---------------------|--------------------|-------------------------|
-| Azure (全域)      |  2020 年 1 月 13 日  | 2020年5月11日(擴展) |
-| Azure Government    |  2020年3月13日    | 2020年5月11日            |
-| Azure Germany       |  2020年3月13日    | 2020年5月11日            |
-| Azure 中國         |  2020年3月13日    | 2020年5月11日            |
+| Azure (全域)      |  2020 年 1 月 13 日  | 2020 5 月11日（擴充） |
+| Azure Government    |  2020年3月13日    | 2020 5 月11日            |
+| Azure Germany       |  2020年3月13日    | 2020 5 月11日            |
+| Azure 中國         |  2020年3月13日    | 2020 5 月11日            |
 
-## <a name="check-whether-your-application-is-already-compliant"></a>檢查應用程式是否已合規
+## <a name="check-whether-your-application-is-already-compliant"></a>檢查您的應用程式是否已經符合規範
 
-瞭解應用程式是否適用於 TLS 1.2 的最簡單方法是在其使用的測試或暫存緩存上將**最小 TLS 版本**值設定為 TLS 1.2。 **"最小 TLS"版本**設置位於 Azure 門戶中緩存實例[的高級設置](cache-configure.md#advanced-settings)中。 如果應用程式在此更改後繼續按預期運行,則可能符合要求。 您可能需要設定應用程式專門用於啟用 TLS 1.2 的某些 Redis 用戶端庫,以便它們可以通過該安全協定連接到 Redis 的 Azure 快取。
+找出您的應用程式是否能與 TLS 1.2 搭配使用的最簡單方式，就是在其所使用的測試或暫存快取上，將**最小的 tls 版本**值設定為 tls 1.2。 **最低的 TLS 版本**設定位於 Azure 入口網站中快取實例的[Advanced 設定](cache-configure.md#advanced-settings)中。 如果應用程式在這種變更之後仍繼續如預期般運作，可能是相容的。 您可能需要特別設定一些應用程式所使用的 Redis 用戶端程式庫，以啟用 TLS 1.2，讓他們可以透過該安全性通訊協定連接到 Azure Cache for Redis。
 
-## <a name="configure-your-application-to-use-tls-12"></a>將應用程式設定為使用 TLS 1.2
+## <a name="configure-your-application-to-use-tls-12"></a>將您的應用程式設定為使用 TLS 1。2
 
-大多數應用程式使用Redis用戶端庫來處理與其緩存的通信。 以下是用於在各種程式設計語言和框架中配置一些常用用戶端庫以使用 TLS 1.2 的說明。
+大部分的應用程式會使用 Redis 用戶端程式庫來處理與其快取的通訊。 以下指示說明如何在各種程式設計語言和架構中設定一些熱門的用戶端程式庫，以使用 TLS 1.2。
 
 ### <a name="net-framework"></a>.NET Framework
 
-Redis .NET 客戶端預設在 .NET 框架 4.5.2 或更早版本上使用最早的 TLS 版本,並在 .NET 框架 4.6 或更高版本上使用最新的 TLS 版本。 如果您使用的是舊版本的 .NET 框架,則可以手動啟用 TLS 1.2:
+Redis .NET 用戶端預設會在 .NET Framework 4.5.2 或更早版本上使用最舊的 TLS 版本，並使用 .NET Framework 4.6 或更新版本上的最新 TLS 版本。 如果您使用較舊版本的 .NET Framework，您可以手動啟用 TLS 1.2：
 
-* **堆疊交換.Redis:** 連接`ssl=true``sslprotocols=tls12`字串中設定和。
-* **服務堆疊.Redis:** 按照[服務堆疊.Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support)說明操作,至少需要服務堆疊.Redis v5.6。
+* **Stackexchange.redis. Redis：** 在`ssl=true`連接`sslprotocols=tls12`字串中設定和。
+* **Servicestack.redis 時. Redis：** 請遵循[servicestack.redis 時. Redis](https://github.com/ServiceStack/ServiceStack.Redis#servicestackredis-ssl-support)指示，並至少需要 Servicestack.redis 時. Redis v 5.6。
 
 ### <a name="net-core"></a>.NET Core
 
-默認情況下,Redis .NET核心用戶端使用最新的 TLS 版本。
+Redis .NET Core 用戶端預設會使用最新的 TLS 版本。
 
 ### <a name="java"></a>Java
 
-Redis Java 用戶端在 JAva 版本 6 或更早版本上使用 TLS 1.0。 如果緩存上禁用 TLS 1.0,絕地、萊圖斯和雷迪森無法連接到 Redis 的 Azure 緩存。 升級 Java 框架以使用新的 TLS 版本。
+Redis JAVA 用戶端在 JAVA 第6版或更早版本上使用 TLS 1.0。 如果快取上已停用 TLS 1.0，Jedis、萵苣和 Redisson 將無法連線至 Azure Cache for Redis。 升級您的 JAVA framework 以使用新的 TLS 版本。
 
-對於 Java 7,Redis 客戶端預設不使用 TLS 1.2,但可以為其配置。 Jedis 允許您使用以下代碼段指定基礎 TLS 設定:
+針對 JAVA 7，Redis 用戶端預設不會使用 TLS 1.2，但可以加以設定。 Jedis 可讓您使用下列程式碼片段來指定基礎 TLS 設定：
 
 ``` Java
 SSLSocketFactory sslSocketFactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
@@ -77,21 +77,21 @@ shardInfo.setPassword("cachePassword");
 Jedis jedis = new Jedis(shardInfo);
 ```
 
-Lettuce 和 Redisson 用戶端還不支援指定 TLS 版本,因此如果緩存僅接受 TLS 1.2 連接,它們就會中斷。 正在審核這些用戶端的修補程式,因此請使用此支援查看這些包的更新版本。
+萵苣和 Redisson 用戶端尚不支援指定 TLS 版本，因此如果快取只接受 TLS 1.2 連線，它們就會中斷。 這些用戶端的修正正在進行審核，因此請使用這項支援來檢查是否有更新版本的套件。
 
-在 Java 8 中,TLS 1.2 預設使用,在大多數情況下不需要更新用戶端配置。 為了安全起見,請測試您的應用程式。
+在 JAVA 8 中，預設會使用 TLS 1.2，而且在大部分情況下都不需要更新您的用戶端設定。 為安全起見，請測試您的應用程式。
 
 ### <a name="nodejs"></a>Node.js
 
-默認情況下,節點 Redis 和 IORedis 使用 TLS 1.2。
+Node Redis 和 IORedis 預設會使用 TLS 1.2。
 
 ### <a name="php"></a>PHP
 
-#### <a name="predis"></a>普雷迪斯
+#### <a name="predis"></a>Predis
  
-* 比 PHP 7 早的版本:Predis 僅支援 TLS 1.0。 這些版本不工作與 TLS 1.2;您必須升級才能使用 TLS 1.2。
+* PHP 7 之前的版本： Predis 僅支援 TLS 1.0。 這些版本無法與 TLS 1.2 搭配使用;您必須升級才能使用 TLS 1.2。
  
-* PHP 7.0 到 PHP 7.2.1:默認情況下,Predis 僅使用 TLS 1.0 或 1.1。 您可以使用以下解決方法使用 TLS 1.2。 建立客戶端實體時指定 TLS 1.2:
+* PHP 7.0 到 PHP 7.2.1： Predis 預設僅使用 TLS 1.0 或1.1。 您可以使用下列因應措施來使用 TLS 1.2。 當您建立用戶端實例時，請指定 TLS 1.2：
 
   ``` PHP
   $redis=newPredis\Client([
@@ -105,19 +105,19 @@ Lettuce 和 Redisson 用戶端還不支援指定 TLS 版本,因此如果緩存�
   ]);
   ```
 
-* PHP 7.3 及更高版本:Predis 使用最新的 TLS 版本。
+* PHP 7.3 和更新版本： Predis 會使用最新的 TLS 版本。
 
-#### <a name="phpredis"></a>PhpRedis
+#### <a name="phpredis"></a>對 phpredis
 
-PhpRedis 不支援任何 PHP 版本的 TLS。
+對 phpredis 不支援任何 PHP 版本上的 TLS。
 
 ### <a name="python"></a>Python
 
-默認情況下,Redis-py 使用 TLS 1.2。
+Redis-.py 預設會使用 TLS 1.2。
 
 ### <a name="go"></a>GO
 
-默認情況下,Redigo 使用 TLS 1.2。
+Redigo 預設會使用 TLS 1.2。
 
 ## <a name="additional-information"></a>其他資訊
 

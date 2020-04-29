@@ -1,6 +1,6 @@
 ---
-title: 驗證動態群組成員身份(預覽)的規則 - Azure AD |微軟文件
-description: 如何根據 Azure 活動目錄中的動態組的成員身份規則測試成員。
+title: 驗證動態群組成員資格的規則（預覽）-Azure AD |Microsoft Docs
+description: 如何在 Azure Active Directory 中，針對動態群組的成員資格規則測試成員。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,35 +15,35 @@ ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 84e081f62949f4cf3f7ae375b2c60ee5b032d974
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81115517"
 ---
-# <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>在 Azure 活動目錄中驗證動態群組成員身份規則(預覽)
+# <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>驗證 Azure Active Directory 中的動態群組成員資格規則（預覽）
 
-Azure 活動目錄 (Azure AD) 現在提供了驗證動態組規則的方法(在公共預覽中)。 在「**驗證規則」** 選項卡上,您可以針對範例組成員驗證動態規則,以確認規則按預期工作。 創建或更新動態組規則時,管理員希望知道使用者或設備是組的成員。 這有助於評估使用者或設備是否符合規則條件,並有助於在不需要成員資格時進行故障排除。
+Azure Active Directory （Azure AD）現在提供驗證動態群組規則的方法（在公開預覽中）。 在 [**驗證規則**] 索引標籤上，您可以針對範例群組成員驗證您的動態規則，以確認規則如預期般運作。 當建立或更新動態群組規則時，系統管理員想要知道使用者或裝置是否將成為該群組的成員。 這有助於評估使用者或裝置是否符合規則條件，並在不預期成員資格時協助進行疑難排解。
 
-## <a name="step-by-step-walk-through"></a>分步演練
+## <a name="step-by-step-walk-through"></a>逐步解說逐步解說
 
-要開始,請轉到**Azure 的目錄** > **群組**。 選擇現有動態組或創建新的動態組,然後單擊動態成員身份規則。 然後,您可以看到 **『驗證規則』** 選項卡。
+若要開始使用，請移至**Azure Active Directory** > **群組**。 選取現有的動態群組，或建立新的動態群組，然後按一下 [動態成員資格規則]。 接著，您可以看到 [**驗證規則**] 索引標籤。
 
-![尋找「驗證規則」選項卡,然後從現有規則開始](./media/groups-dynamic-rule-validation/validate-tab.png)
+![尋找 [驗證規則] 索引標籤，然後以現有規則開始](./media/groups-dynamic-rule-validation/validate-tab.png)
 
-在 **「驗證規則」** 選項卡上,您可以選擇使用者以驗證其成員資格。 一次可以選擇 20 個使用者或設備。
+在 [**驗證規則**] 索引標籤上，您可以選取使用者來驗證其成員資格。 一次只能選取20個使用者或裝置。
 
-![新增使用者以驗證現有規則](./media/groups-dynamic-rule-validation/validate-tab-add-users.png)
+![新增要對其驗證現有規則的使用者](./media/groups-dynamic-rule-validation/validate-tab-add-users.png)
 
-從選取器中選擇使用者或設備後,**選擇**,驗證將自動啟動,並顯示驗證結果。
+從選擇器選擇使用者或裝置並**選取**之後，驗證將會自動啟動，並會顯示驗證結果。
 
-![檢視規則驗證結果](./media/groups-dynamic-rule-validation/validate-tab-results.png)
+![查看規則驗證的結果](./media/groups-dynamic-rule-validation/validate-tab-results.png)
 
-結果將判斷使用者是否是組的成員。 如果規則無效或存在網路問題,則結果將顯示為 **「未知」**。 如果**未知**,詳細的錯誤消息將描述問題和所需的操作。
+結果會指出使用者是否為群組的成員。 如果規則無效或發生網路問題，則結果會顯示為 [**不明**]。 如果是**未知**的，詳細的錯誤訊息將會描述所需的問題和動作。
 
-![檢視規則驗證結果的詳細資訊](./media/groups-dynamic-rule-validation/validate-tab-view-details.png)
+![查看規則驗證結果的詳細資料](./media/groups-dynamic-rule-validation/validate-tab-view-details.png)
 
-您可以修改規則,並觸發成員資格的驗證。 要查看使用者為何不是組的成員,請單擊"查看詳細資訊",驗證詳細資訊將顯示組成規則的每個表達式的結果。 按下 **「確定」** 退出。
+您可以修改規則，並將會觸發成員資格的驗證。 若要查看使用者不是群組成員的原因，請按一下 [查看詳細資料]，[驗證詳細資料] 會顯示組成規則之每個運算式的結果。 按一下 **[確定]** 以結束。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,16 +1,16 @@
 ---
 title: 快取 ASP.NET 工作階段狀態提供者
-description: 瞭解如何使用 Redis 的 Azure 快取記憶體記憶體記憶體 ASP.NET 作業階段狀態。
+description: 瞭解如何使用 Azure Cache for Redis 將 ASP.NET 會話狀態儲存在記憶體中。
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 05/01/2017
 ms.openlocfilehash: 8083efe833ec80290713fc14d9cb89acd8263fa2
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010897"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>適用於 Azure Cache for Redis 的 ASP.NET 工作階段狀態提供者
@@ -82,10 +82,10 @@ NuGet 封裝會下載和加入必要的組件參考，並將下列區段加入�
 以來自 Microsoft Azure 入口網站之快取刀鋒視窗的值來設定屬性，並視需要設定其他值。 如需關於存取快取屬性的指示，請參閱[設定 Azure Cache for Redis 設定](cache-configure.md#configure-azure-cache-for-redis-settings)。
 
 * **主機** – 指定您的快取端點。
-* **埠**- 使用非 TLS/SSL 連接埠或 TLS/SSL 連接埠,具體取決於 TLS 設定。
+* **埠**–使用您的非 TLS/ssl 埠或 TLS/ssl 埠，視 tls 設定而定。
 * **accessKey** – 用於快取的主要或次要金鑰。
-* **ssl** = 如果要使用 TLS 保護緩存/用戶端通信,則為 true;否則是虛假的。 請務必指定正確的連接埠。
-  * 默認情況下,新緩存將禁用非 TLS 埠。 為此設定指定 true 以使用 TLS 連接埠。 有關啟用非 TLS 連接埠的詳細資訊,請參閱[「設定快取](cache-configure.md)」主題中的[「存取埠」](cache-configure.md#access-ports)部分。
+* **ssl** –如果您想要使用 TLS 來保護快取/用戶端通訊，則為 true;否則為 false。 請務必指定正確的連接埠。
+  * 針對新的快取，非 TLS 埠預設為停用。 指定 true 表示此設定會使用 TLS 埠。 如需啟用非 TLS 埠的詳細資訊，請參閱[設定](cache-configure.md)快取主題中的[存取埠](cache-configure.md#access-ports)一節。
 * **throwOnError** – true (如果您想在發生失敗時擲出例外狀況) 或 false (如果您想在作業失敗時為無訊息模式)。 您可以核取靜態 Microsoft.Web.Redis.RedisSessionStateProvider.LastException 屬性以檢查失敗。 預設值是 true。
 * **retryTimeoutInMilliseconds** – 會在此間隔期間 (以毫秒指定) 重試失敗的作業。 第一次重試會在 20 毫秒後發生，然後每秒進行重試，直到 retryTimeoutInMilliseconds 間隔到期為止。 緊接著此間隔之後，作業會進行最後一次重試。 如果作業仍失敗，會視 throwOnError 設定將例外狀況擲回給呼叫者。 預設值為 0，表示不會重試。
 * **databaseId** – 指定快取輸出資料所使用的資料庫。 若未指定，就會使用預設值 0。
@@ -126,10 +126,10 @@ NuGet 封裝會下載和加入必要的組件參考，並將下列區段加入�
 
 如需工作階段狀態和其他最佳作法的相關詳細資訊，請參閱 [Web 開發最佳作法 (使用 Azure 建置實際的雲端應用程式)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)(英文)。
 
-## <a name="third-party-session-state-providers"></a>第三方工作階段狀態提供者
+## <a name="third-party-session-state-providers"></a>協力廠商會話狀態提供者
 
 * [NCache](https://www.alachisoft.com/ncache/session-index.html)
-* [阿帕奇點燃](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
+* [Apache ignite](https://apacheignite-net.readme.io/docs/aspnet-session-state-caching)
 
 ## <a name="next-steps"></a>後續步驟
 

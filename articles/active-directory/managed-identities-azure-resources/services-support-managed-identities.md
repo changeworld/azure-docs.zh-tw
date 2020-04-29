@@ -1,5 +1,5 @@
 ---
-title: 支援託管識別的 Azure 服務 - Azure AD
+title: 支援受控識別的 Azure 服務-Azure AD
 description: 支援 Azure 資源和 Azure AD 驗證受控識別的服務清單
 services: active-directory
 author: MarkusVi
@@ -11,10 +11,10 @@ ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991274"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支援適用於 Azure 資源的受控識別服務
@@ -79,10 +79,10 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 | 系統指派 | ![可用][check] | ![可用][check] | 無法使用 | 無法使用 |
 | 使用者指派 | ![可用][check] | ![可用][check] | 無法使用 | 無法使用 |
 
-請參考以下清單,以便使用[Azure 藍圖的](../../governance/blueprints/overview.md)託管識別:
+請參閱下列清單以使用受控識別搭配[Azure 藍圖](../../governance/blueprints/overview.md)：
 
-- [Azure 門戶 - 藍圖分配](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
-- [REST API - 藍圖配置](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
+- [Azure 入口網站-藍圖指派](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
+- [REST API-藍圖指派](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
 
 ### <a name="azure-functions"></a>Azure Functions
 
@@ -156,19 +156,19 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 | 系統指派 | ![可用][check] | 無法使用 | 無法使用 | 無法使用 |
 | 使用者指派 | 預覽 | 無法使用 | 無法使用 | 無法使用 |
 
-請參考以下清單,為 Azure 容器註冊表工作設定託管識別(在可用區域中):
+請參閱下列清單以設定 Azure Container Registry 工作的受控識別（在可用區域中）：
 
 - [Azure CLI](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
 
 ### <a name="azure-service-fabric"></a>Azure Service Fabric
-[服務結構應用程式的託管標識](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)處於預覽狀態,在所有區域都可用。
+適用于[Service Fabric 應用程式的受控識別](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)處於預覽狀態，而且可在所有區域使用。
 
 受控識別類型 | 全部正式推出<br>全域 Azure 區域 | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | 系統指派 | ![可用][check] | 無法使用 | 無法使用 | 無法使用 |
 | 使用者指派 | ![可用][check] | 無法使用 | 無法使用 |無法使用 |
 
-請參考以下清單,以便為所有區域中的 Azure 服務結構應用程式設定託管識別:
+請參閱下列清單，以在所有區域中設定 Azure Service Fabric 應用程式的受控識別：
 - [Azure Resource Manager 範本](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>支援 Azure AD 驗證的 Azure 服務
@@ -177,12 +177,12 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-請參考以下清單以設定對 Azure 資源管理員的存取:
+請參閱下列清單，以設定 Azure Resource Manager 的存取權：
 
-- [透過 Azure 門戶配置存取權限](howto-assign-access-portal.md)
-- [透過 PowerShell 分配存取權限](howto-assign-access-powershell.md)
-- [透過 Azure CLI 分配存取權限](howto-assign-access-CLI.md)
-- [透過 Azure 資源管理員樣本配置存取權限](../../role-based-access-control/role-assignments-template.md)
+- [透過 Azure 入口網站指派存取權](howto-assign-access-portal.md)
+- [透過 PowerShell 指派存取權](howto-assign-access-powershell.md)
+- [透過 Azure CLI 指派存取權](howto-assign-access-CLI.md)
+- [透過 Azure Resource Manager 範本指派存取權](../../role-based-access-control/role-assignments-template.md)
 
 | 雲端 | 資源識別碼 | 狀態 |
 |--------|------------|:-:|
@@ -244,7 +244,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 
 
 
-### <a name="azure-storage-blobs-and-queues"></a>Azure 儲存 Blob 和佇列
+### <a name="azure-storage-blobs-and-queues"></a>Azure 儲存體 blob 和佇列
 
 | 雲端 | 資源識別碼 | 狀態 |
 |--------|------------|:-:|
@@ -272,7 +272,7 @@ Azure 資源受控識別會在 Azure Active Directory 中為 Azure 服務提供�
 | Azure China 21Vianet | `https://*.asazure.chinacloudapi.cn` | ![可用][check] |
 
 > [!Note]
-> 微軟 Power BI 還[支援託管識別](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)。
+> Microsoft Power BI 也[支援受控](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)識別。
 
 
-[check]: media/services-support-managed-identities/check.png "可用"
+[check]: media/services-support-managed-identities/check.png "只有"

@@ -1,5 +1,5 @@
 ---
-title: 建立使用者 - MySQL 的 Azure 資料庫
+title: 建立使用者-適用於 MySQL 的 Azure 資料庫
 description: 本文說明如何建立新的使用者帳戶，來與「適用於 MySQL 的 Azure 資料庫」伺服器互動。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/2/2020
 ms.openlocfilehash: f8c020da72e9cdf8777a3eefac266e97e4a312bd
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81263466"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>在適用於 MySQL 的 Azure 資料庫伺服器中建立使用者
@@ -24,7 +24,7 @@ ms.locfileid: "81263466"
 建立「適用於 MySQL 的 Azure 資料庫」伺服器之後，您可以使用第一個伺服器管理員使用者帳戶，建立其他使用者並授與系統管理員存取權。 此外，伺服器管理員帳戶可以用來建立較低權限的使用者，以存取個別資料庫結構描述。
 
 > [!NOTE]
-> 不支援 SUPER 特權和 DBA 角色。 查看限制文章中[的許可權](concepts-limits.md#privilege-support),瞭解服務中不支援的內容。
+> 不支援超級許可權和 DBA 角色。 請參閱限制一文中的[許可權](concepts-limits.md#privilege-support)，以瞭解服務中不支援的專案。
 
 ## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>如何在適用於 MySQL 的 Azure 資料庫中建立其他系統管理員使用者
 

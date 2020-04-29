@@ -1,91 +1,91 @@
 ---
-title: 備份檔案與資料夾 ─常見問題
-description: 解決有關使用 Azure 備份備份檔和資料夾的常見問題。
+title: 備份檔案和資料夾-常見的問題
+description: 解決有關使用 Azure 備份來備份檔案和資料夾的常見問題。
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.openlocfilehash: 6e9f265672ff15e40444a46a3e440e73a0051a5b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81254745"
 ---
-# <a name="common-questions-about-backing-up-files-and-folders"></a>有關備份檔案與資料夾的常見問題
+# <a name="common-questions-about-backing-up-files-and-folders"></a>備份檔案和資料夾的相關常見問題
 
-本文在[Azure 備份](backup-overview.md)服務中使用 Microsoft Azure 恢復服務 (MARS) 代理大量備份檔和資料夾的常見問題。
+本文會回答在[Azure 備份](backup-overview.md)服務中使用 MICROSOFT AZURE 復原服務（MARS）代理程式來備份檔案和資料夾的常見問題為數眾多。
 
 ## <a name="configure-backups"></a>設定備份
 
-### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>我在哪裡可以下載最新版本的 MARS 代理?
+### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>哪裡可以下載最新版的 MARS 代理程式？
 
-備份 Windows 伺服器電腦、系統中心 DPM 和 Microsoft Azure 備份伺服器時使用的最新 MARS 代理可供[下載](https://aka.ms/azurebackup_agent)。
+備份 Windows Server 電腦、System Center DPM 和 Microsoft Azure 備份 Server 時所使用的最新 MARS 代理程式已可供[下載](https://aka.ms/azurebackup_agent)。
 
-### <a name="how-long-are-vault-credentials-valid"></a>保管庫憑據的有效期是多少?
+### <a name="how-long-are-vault-credentials-valid"></a>保存庫認證有效多久？
 
-保管庫憑據將在 10 天后過期。 如果憑據檔過期,請再次從 Azure 門戶下載該檔。
+保存庫認證會在10天后過期。 如果認證檔案過期，請從 Azure 入口網站重新下載檔案。
 
-### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>可以從哪些驅動器備份檔和資料夾?
+### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>我可以從哪些磁片磁碟機備份檔案和資料夾？
 
-無法備份以下類型的磁碟機與卷:
+您無法備份下列類型的磁片磁碟機和磁片區：
 
-* 可移動介質:所有備份項源都必須報告為固定。
-* 唯讀卷:卷卷必須可寫,卷卷卷複製服務 (VSS) 才能正常工作。
-* 離線卷:卷必須連線才能 VSS 正常工作。
-* 網路共用:卷必須是伺服器的本地,才能使用連線備份進行備份。
-* BitLocker 保護的卷:必須先解鎖卷,然後才能進行備份。
+* 卸載式媒體：所有備份專案來源必須報告為固定。
+* 唯讀磁片區：磁片區必須為可寫入，磁片區陰影複製服務（VSS）才能正常運作。
+* 離線磁片區：磁片區必須在線上，VSS 才能運作。
+* 網路共用：磁片區必須是本機伺服器，才能使用線上備份進行備份。
+* 受 BitLocker 保護的磁片區：必須先解除鎖定磁片區，才能進行備份。
 * 檔案系統識別碼：NTFS 是唯一支援的檔案系統。
 
-### <a name="what-file-and-folder-types-are-supported"></a>支援哪些檔和資料夾類型?
+### <a name="what-file-and-folder-types-are-supported"></a>支援哪些檔案和資料夾類型？
 
-[詳細瞭解](backup-support-matrix-mars-agent.md#supported-file-types-for-backup)支援備份的檔案和資料夾類型。
+[深入瞭解](backup-support-matrix-mars-agent.md#supported-file-types-for-backup)支援備份的檔和資料夾類型。
 
-### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>我可以使用 MARS 代理備份 Azure VM 上的檔案和資料夾嗎?  
+### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-an-azure-vm"></a>我可以使用 MARS 代理程式來備份 Azure VM 上的檔案和資料夾嗎？  
 
-是。 Azure 備份使用 Azure VM 代理的 VM 擴展為 Azure VM 提供 VM 級備份。 如果要備份 VM 上的來賓 Windows 作業系統上的檔案和資料夾,可以安裝 MARS 代理來執行此操作。
+是。 Azure 備份使用適用于 Azure VM 代理程式的 VM 擴充功能，為 Azure Vm 提供 VM 層級備份。 如果您想要備份 VM 上的來賓 Windows 作業系統上的檔案和資料夾，您可以安裝 MARS 代理程式來執行該作業。
 
-### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>我可以使用 MARS 代理備份 Azure VM 暫存記憶體的檔案和資料夾嗎?
+### <a name="can-i-use-the-mars-agent-to-back-up-files-and-folders-on-temporary-storage-for-the-azure-vm"></a>我可以使用 MARS 代理程式來備份 Azure VM 暫存儲存體上的檔案和資料夾嗎？
 
-是。 安裝 MARS 代理,並將來賓 Windows 作業系統上的檔案和資料夾備份到臨時存儲。
+是。 安裝 MARS 代理程式，並將來賓 Windows 作業系統上的檔案和資料夾備份至暫存儲存體。
 
-* 清除暫存記憶體資料時,備份作業將失敗。
-* 如果刪除了臨時存儲數據,則只能還原到非易失性存儲。
+* 清除暫存儲存體資料時，備份作業會失敗。
+* 如果暫存的儲存體資料已刪除，您只能還原至非變動性儲存體。
 
-### <a name="how-do-i-register-a-server-to-another-region"></a>如何將伺服器註冊到其他區域?
+### <a name="how-do-i-register-a-server-to-another-region"></a>如何? 將伺服器註冊到另一個區域？
 
-備份數據將發送到註冊伺服器的保管庫的數據中心。 更改資料中心的最簡單方法是卸載並重新安裝代理,然後將計算機註冊到所需的區域中的新保管庫。
+備份資料會傳送至註冊伺服器之保存庫的資料中心。 變更資料中心最簡單的方式是卸載並重新安裝代理程式，然後在您所需的區域中，將電腦註冊至新的保存庫。
 
-### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>MARS 代理是否支援 Windows 伺服器 2012 重複資料消除?
+### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>MARS 代理程式是否支援 Windows Server 2012 重復資料刪除？
 
-是。 MARS 代理在準備備份操作時將重複資料轉換為正常資料。 然後優化備份數據,加密數據,然後將加密數據發送到保管庫。
+是。 MARS 代理程式在準備備份作業時，會將重復資料刪除的資料轉換成一般資料。 然後，它會將資料優化以進行備份、將資料加密，然後將加密的資料傳送至保存庫。
 
-### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>安裝和配置 MARS 代理是否需要管理員權限?
+### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>我是否需要系統管理員許可權才能安裝和設定 MARS 代理程式？
 
-是的,使用 MARS 主控台安裝 MARS 代理和配置備份需要用戶成為受保護伺服器上的本地管理員。
+是，使用 MARS 主控台安裝 MARS 代理程式和備份設定時，使用者必須是受保護伺服器上的本機系統管理員。
 
 ## <a name="manage-backups"></a>管理備份
 
-### <a name="what-happens-if-i-rename-a-windows-machine-configured-for-backup"></a>如果我重命名配置為備份的 Windows 計算機,會發生什麼情況?
+### <a name="what-happens-if-i-rename-a-windows-machine-configured-for-backup"></a>如果我重新命名已設定備份的 Windows 電腦，會發生什麼事？
 
-重新命名 Windows 電腦時,將停止所有當前配置的備份。
+當您重新命名 Windows 機器時，所有目前設定的備份都會停止。
 
-* 您需要在備份保管庫中註冊新計算機名稱。
-* 當您向保管庫註冊新名稱時,第一個操作是*完整*備份。
-* 如果需要使用舊伺服器名稱恢復備份到保管庫的數據,請使用 選項還原到"恢復數據嚮導"中的備用位置。 [深入了解](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+* 您必須向備份保存庫註冊新的電腦名稱稱。
+* 當您向保存庫註冊新名稱時，第一個作業是*完整*備份。
+* 如果您需要將備份的資料復原到具有舊伺服器名稱的保存庫，請使用 [復原資料] 嚮導中的 [還原至替代位置] 選項。 [深入了解](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)。
 
-### <a name="what-is-the-maximum-file-path-length-for-backup"></a>備份的最大文件路徑長度是多少?
+### <a name="what-is-the-maximum-file-path-length-for-backup"></a>備份的檔案路徑長度上限為何？
 
-MARS 代理依賴於 NTFS,並使用受[Windows API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths)限制的文件路徑長度規範。 如果要保護的檔長於允許的值,則備份父資料夾或磁碟驅動器。  
+MARS 代理程式依賴 NTFS，並使用[WINDOWS API](/windows/desktop/FileIO/naming-a-file#fully-qualified-vs-relative-paths)所限制的 filepath 長度規格。 如果您想要保護的檔案超過允許的值，請備份上層資料夾或磁片磁碟機。  
 
-### <a name="what-characters-are-allowed-in-file-paths"></a>檔案路徑中允許哪些字元?
+### <a name="what-characters-are-allowed-in-file-paths"></a>檔案路徑中允許哪些字元？
 
-MARS 代理依賴於 NTFS,並允許檔案名/路徑中[支援字元](/windows/desktop/FileIO/naming-a-file#naming-conventions)。
+MARS 代理程式依賴 NTFS，並允許檔案名/路徑中[支援的字元](/windows/desktop/FileIO/naming-a-file#naming-conventions)。
 
-### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>出現警告"尚未為此伺服器配置 Azure 備份"
+### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>出現警告「未設定這部伺服器的 Azure 備份」
 
-即使您配置了備份策略,當存儲在本地伺服器上的備份計劃設置與存儲在備份保管庫中的設置不同時,也會顯示此警告。
+雖然您已設定備份原則，但在本機伺服器上儲存的備份排程設定與備份保存庫中儲存的設定不相同，但仍會出現此警告。
 
-* 當伺服器或設置已恢復到已知良好狀態時,備份計劃可能會變得不同步。
-* 如果收到此警告,請再次[配置](backup-azure-manage-windows-server.md)備份策略,然後運行按需備份以將本地伺服器與 Azure 重新同步。
+* 當伺服器或設定已復原至已知的良好狀態時，備份排程可能會變成未同步處理。
+* 如果您收到此警告，請再次[設定](backup-azure-manage-windows-server.md)備份原則，然後執行隨選備份，以重新同步處理本機伺服器與 Azure。
 
 ## <a name="manage-the-backup-cache-folder"></a>管理備份快取資料夾
 
@@ -93,36 +93,36 @@ MARS 代理依賴於 NTFS,並允許檔案名/路徑中[支援字元](/windows/de
 
 快取資料夾的大小可決定您正在備份的資料量。
 
-* 快取資料夾卷應具有至少等於備份資料總大小的 5-10% 的可用空間。
-* 如果卷的可用空間小於 5%,請增加卷大小,或者按照[以下步驟](#how-do-i-change-the-cache-location-for-the-mars-agent)將緩存資料夾移動到具有足夠空間的卷。
-* 如果備份 Windows 系統狀態,則需要在包含緩存資料夾的卷中增加 30-35 GB 的可用空間。
+* 快取資料夾磁片區的可用空間應等於備份資料大小總計的5-10%。
+* 如果磁片區的可用空間少於5%，請增加磁片區大小，或依照下列[步驟](#how-do-i-change-the-cache-location-for-the-mars-agent)將快取資料夾移至具有足夠空間的磁片區。
+* 如果您備份 Windows 系統狀態，在包含快取資料夾的磁片區中，您將需要額外 30-35 GB 的可用空間。
 
-### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>如何檢查臨時資料夾是否有效且可訪問?
+### <a name="how-to-check-if-scratch-folder-is-valid-and-accessible"></a>如何檢查暫存檔案夾是否有效並可存取？
 
-1. 預設情況下,暫存資料夾位於`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
-2. 使用暫存資料夾位置的路徑與下面所示的註冊表鍵項目的值符合:
+1. 根據預設，暫存檔案夾位於`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+2. 請確定您的暫存檔案夾位置路徑符合如下所示的登錄機碼專案的值：
 
     | 登錄路徑 | 登錄金鑰 | 值 |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*「新的快取資料夾位置」* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*「新的快取資料夾位置」* |
 
-### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>如何更改 MARS 代理的緩存位置?
+### <a name="how-do-i-change-the-cache-location-for-the-mars-agent"></a>如何? 變更 MARS 代理程式的快取位置？
 
-1. 在提升的指令提示中執行此指令以停止備份引擎:
+1. 在提高許可權的命令提示字元中執行此命令，以停止備份引擎：
 
     ```Net stop obengine```
-2. 如果已配置系統狀態備份,則打開磁碟管理並卸載具有格式`"CBSSBVol_<ID>"`名稱的磁碟。
-3. 預設情況下,暫存資料夾位於`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
-4. 將整個`\Scratch`資料夾複製到具有足夠空間的不同驅動器。 確保複製內容,而不是移動內容。
-5. 使用新移動的暫存檔的路徑更新以下註冊表項。
+2. 如果您已設定系統狀態備份，請開啟 [磁片管理]，並將名稱為的磁片卸載， `"CBSSBVol_<ID>"`格式為。
+3. 根據預設，暫存檔案夾位於`\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+4. 將整個`\Scratch`資料夾複製到具有足夠空間的其他磁片磁碟機。 請確定已複製內容，而不是移動。
+5. 以新移動的暫存檔案夾路徑更新下列登錄專案。
 
     | 登錄路徑 | 登錄金鑰 | 值 |
     | --- | --- | --- |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新的暫存資料夾位置* |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新的暫存資料夾位置* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新的暫存檔案夾位置* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新的暫存檔案夾位置* |
 
-6. 在提升的指令提示符下重新啟動備份引擎:
+6. 在提高許可權的命令提示字元下，重新開機備份引擎：
 
     ```command
     Net stop obengine
@@ -130,16 +130,16 @@ MARS 代理依賴於 NTFS,並允許檔案名/路徑中[支援字元](/windows/de
     Net start obengine
     ```
 
-7. 執行隨選備份。 使用新位置成功完成備份後,可以刪除原始快取資料夾。
+7. 執行隨選備份。 使用新位置成功完成備份之後，您就可以移除原始的快取資料夾。
 
-### <a name="where-should-the-cache-folder-be-located"></a>快取資料夾應位於何處?
+### <a name="where-should-the-cache-folder-be-located"></a>快取資料夾的所在位置？
 
-不建議快取資料夾的以下位置:
+不建議將下列位置用於快取資料夾：
 
-* 網路共用/可移動媒體:快取資料夾必須是需要使用連線備份進行備份的伺服器的本地資料夾。 不支援網路位置或可移動媒體(如 USB 驅動器)。
-* 離線卷:快取資料夾必須連線才能使用 Azure 備份代理進行預期備份
+* 網路共用/卸載式媒體：快取資料夾必須在需要使用線上備份進行備份之伺服器的本機位置。 不支援網路位置或卸載式媒體（例如 USB 磁片磁碟機）。
+* 離線磁片區：快取資料夾必須在線上，才能使用 Azure 備份代理程式進行預期的備份
 
-### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>快取資料夾是否有任何不支援的屬性?
+### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>是否有任何不支援的快取資料夾屬性？
 
 快取資料夾不支援下列屬性或其組合︰
 
@@ -149,53 +149,53 @@ MARS 代理依賴於 NTFS,並允許檔案名/路徑中[支援字元](/windows/de
 * 疏鬆
 * 重新分析點
 
-快取資料夾和中繼資料 VHD 沒有 Azure 備份代理的必要屬性。
+快取資料夾和中繼資料 VHD 沒有 Azure 備份代理程式的必要屬性。
 
-### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>是否有方法可以調整用於備份的頻寬量?
+### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>是否有方法可以調整用於備份的頻寬量？
 
-可以,您可以使用 MARS 代理中的 **「更改屬性」** 選項來調整頻寬和計時。 [深入了解](backup-windows-with-mars-agent.md#enable-network-throttling)。
+是，您可以使用 MARS 代理程式中的 [**變更屬性**] 選項來調整頻寬和時間。 [深入了解](backup-windows-with-mars-agent.md#enable-network-throttling)。
 
 ## <a name="restore"></a>還原
 
 ### <a name="manage"></a>管理
 
-**如果我忘記了密碼,我可以恢復嗎?**
-Azure 備份代理需要密碼(您在註冊期間提供)才能在還原期間解密備份數據。 檢視以下專案以瞭解處理密碼的選項:
+**如果我忘記複雜密碼，可以復原嗎？**
+Azure 備份代理程式需要複雜密碼（在註冊期間提供）來解密還原期間的備份資料。 請參閱下列案例，以瞭解處理遺失複雜密碼的選項：
 
-| 原始機器 <br> *( 執行備份的來源電腦 )* | 複雜密碼 | 可用的選項 |
+| 原始電腦 <br> *（執行備份的來源機器）* | 複雜密碼 | 可用的選項 |
 | --- | --- | --- |
-| 可用 |未能拿下 |如果原始電腦(執行備份的位置)可用,並且仍註冊在同一恢復服務保管庫中,則可以按照[以下步驟](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)重新生成密碼。  |
-| 未能拿下 |未能拿下 |無法回復資料或資料無法使用 |
+| 可用 |未能拿下 |如果您的原始電腦（已建立備份的位置）可供使用，而且仍使用相同的復原服務保存庫註冊，則您可以遵循下列[步驟](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase)來重新產生複雜密碼。  |
+| 未能拿下 |未能拿下 |無法復原資料或資料無法使用 |
 
 請考慮下列情況：
 
-* 如果在同一原始電腦上卸載和重新註冊代理,
-  * *相同的密碼,* 然後您將能夠恢復備份的資料。
-  * *不同的密碼*,那麼你將無法恢復備份的數據。
-* 如果將代理安裝在*其他電腦上*,
-  * *相同的密碼(* 在原始電腦中使用),然後您將能夠還原備份的數據。
-  * *不同的密碼,* 您將無法回復備份的資料。
-* 如果原始電腦已損壞(阻止您透過 MARS 控制台重新生成密碼),但您可以還原或訪問 MARS 代理使用的原始暫存資料夾,則您可能能夠還原(如果您忘記了密碼)。 如需更多説明,請聯繫客戶支援。
+* 如果您在相同的原始電腦上卸載並重新註冊代理程式
+  * *相同*的複雜密碼之後，您就能夠還原已備份的資料。
+  * *不同*的複雜密碼，那麼您將無法還原已備份的資料。
+* 如果您使用將代理程式安裝在*不同的電腦*上
+  * *相同*的複雜密碼（用於原始機器），您將能夠還原已備份的資料。
+  * *不同*的複雜密碼，您將無法還原已備份的資料。
+* 如果您的原始電腦已損毀（導致無法透過 MARS 主控台重新產生複雜密碼），但您可以還原或存取 MARS 代理程式所使用的原始暫存檔案夾，則您可能可以還原（如果忘記密碼）。 如需更多協助，請聯絡客戶支援。
 
-**如果我丟失了原始計算機(備份所在的位置),如何恢復?**
+**如果我遺失原始電腦（備份的位置），如何? 復原？**
 
-如果原始電腦具有相同的密碼(註冊期間提供),則可以將備份的數據還原到備用計算機。 查看以下方案以瞭解還原選項。
+如果您的原始電腦具有相同的複雜密碼（在註冊期間提供），則可以將備份的資料還原至其他電腦。 請參閱下列案例，以瞭解您的還原選項。
 
-| 原始機器 | 複雜密碼 | 可用的選項 |
+| 原始電腦 | 複雜密碼 | 可用的選項 |
 | --- | --- | --- |
-| 未能拿下 |可用 |您可以在另一台電腦上安裝和註冊 MARS 代理,其密碼與註冊原始電腦時提供的相同密碼相同。 選擇 **「恢復選項** > **」「其他位置**」 以執行還原。 有關詳細資訊,請參閱[本文](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
-| 未能拿下 |未能拿下 |無法回復資料或資料無法使用 |
+| 未能拿下 |可用 |您可以在另一部電腦上安裝並註冊 MARS 代理程式，其具有在您註冊原始電腦時所提供的相同複雜密碼。 選擇 [復原**選項** > ] [**另一個位置**] 執行還原。 如需詳細資訊，請參閱這[篇文章](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine)。
+| 未能拿下 |未能拿下 |無法復原資料或資料無法使用 |
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>如果我取消進行中的還原作業，會發生什麼事？
 
-如果正在進行的還原作業被取消,還原過程將停止。 取消之前還原的所有檔都保留在配置的目標(原始或備用位置),沒有任何回滾。
+如果已取消進行中的還原作業，還原程式就會停止。 在取消之前還原的所有檔案都會保留在設定的目的地（原始或替代位置），而不會有任何復原。
 
-### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>MARS 代理是否備份和復原在檔案、資料夾和卷上設定的 ACL?
+### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>MARS 代理程式會備份和還原在檔案、資料夾和磁片區上設定的 Acl 嗎？
 
-* MARS 代理程式在檔案、資料夾與卷上設定的 ACL
-* 對於卷還原復原選項,MARS 代理提供了一個選項,用於跳過對正在復原的檔案或資料夾還原 ACL 權限
-* 對於單個檔和資料夾恢復選項,MARS 代理將使用 ACL 許可權進行還原(沒有跳過 ACL 還原的選項)。
+* MARS 代理程式會備份在檔案、資料夾和磁片區上設定的 Acl
+* 針對磁片區還原復原選項，MARS 代理程式會提供一個選項，以略過將 ACL 許可權還原至要復原的檔案或資料夾
+* 針對 [個別檔案及資料夾] 復原選項，MARS 代理程式會以 ACL 許可權進行還原（不會有略過 ACL 還原的選項）。
 
 ## <a name="next-steps"></a>後續步驟
 
-[瞭解如何](tutorial-backup-windows-server-to-azure.md)備份 Windows 計算機。
+[瞭解](tutorial-backup-windows-server-to-azure.md)如何備份 Windows 電腦。

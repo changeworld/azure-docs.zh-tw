@@ -1,5 +1,5 @@
 ---
-title: 將應用程式部署到 Azure 虛擬機器縮放集
+title: 將應用程式部署至 Azure 虛擬機器擴展集
 description: 了解如何將應用程式部署到擴展集中的 Linux 和 Windows 虛擬機器執行個體
 author: ju-shim
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: jushiman
 ms.openlocfilehash: e157db79f1835a8ca891dd360a99e3319565d1d4
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81011458"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>在虛擬機器擴展集上部署您的應用程式
@@ -30,7 +30,7 @@ ms.locfileid: "81011458"
 
 
 ## <a name="install-an-app-with-the-custom-script-extension"></a><a name="already-provisioned"></a>安裝包含自訂指令碼延伸模組的應用程式
-自訂指令碼擴充功能會在 Azure VM 上下載並執行指令碼。 此擴充功能適用於部署後組態、軟體安裝或其他任何組態/管理工作。 您可以從 Azure 儲存體或 GitHub 下載指令碼，或是在擴充功能執行階段將指令碼提供給 Azure 入口網站。 有關如何使用自定義腳本擴展安裝應用的詳細資訊,請參閱以下教程:
+自訂指令碼擴充功能會在 Azure VM 上下載並執行指令碼。 此擴充功能適用於部署後組態、軟體安裝或其他任何組態/管理工作。 您可以從 Azure 儲存體或 GitHub 下載指令碼，或是在擴充功能執行階段將指令碼提供給 Azure 入口網站。 如需有關如何使用自訂腳本擴充功能安裝應用程式的詳細資訊，請參閱下列教學課程：
 
 - [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
@@ -42,7 +42,7 @@ ms.locfileid: "81011458"
 
 PowerShell DSC 延伸模組可讓您在擴展集中使用 PowerShell 來自訂 VM 執行個體。 下列範例將：
 
-- 指示 VM 實體從 GitHub 下載 DSC 套件 -*https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
+- 指示 VM 實例從 GitHub 下載 DSC 套件-*https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - 設定延伸模組來執行安裝指令碼 - `configure-http.ps1`
 - 使用 [Get-AzVmss](/powershell/module/az.compute/get-azvmss) 取得擴展集的相關資訊
 - 使用 [Update-AzVmss](/powershell/module/az.compute/update-azvmss) 將延伸模組套用到 VM 執行個體
@@ -85,7 +85,7 @@ Update-AzVmss `
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>使用 cloud-init 將應用程式安裝到 Linux VM
-[雲init](https://cloudinit.readthedocs.io/en/latest/index.html)是一種廣泛使用的方法,用於自定義 Linux VM,因為它第一次啟動。 您可以使用 cloud-init 來安裝封裝和寫入檔案，或者設定使用者和安全性。 當 cloud-init 在初次開機程序期間執行時，不需要使用任何額外的步驟或必要的代理程式來套用您的組態。
+[Cloud-init (英文)](https://cloudinit.readthedocs.io/en/latest/index.html) 是在 Linux VM 初次開機時，廣泛用來自訂它們的方法。 您可以使用 cloud-init 來安裝封裝和寫入檔案，或者設定使用者和安全性。 當 cloud-init 在初次開機程序期間執行時，不需要使用任何額外的步驟或必要的代理程式來套用您的組態。
 
 Cloud-init 也適用於散發套件。 例如，您不使用 **apt-get install** 或 **yum install** 來安裝套件。 您可以改為定義要安裝的套件清單。 Cloud-init 會針對您選取的散發套件自動使用原生的套件管理工具。
 

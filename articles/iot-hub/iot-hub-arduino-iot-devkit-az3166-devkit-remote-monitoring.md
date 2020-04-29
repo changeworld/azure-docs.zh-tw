@@ -1,5 +1,5 @@
 ---
-title: 將 MXChip IoT 開發工具套件連接到 Azure IoT 中心遠端監視
+title: 將 MXChip IoT DevKit 連線到 Azure IoT 中樞遠端監視
 description: 在本教學課程中，了解如何將 IoT DevKit AZ3166 上的感應器狀態傳送至 Azure IoT 遠端監視解決方案加速器。
 author: liydu
 manager: jeffya
@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 02/02/2018
 ms.author: liydu
 ms.openlocfilehash: 598e361949b000724645c841910b1682a7bbb1a3
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81258451"
 ---
 # <a name="connect-mxchip-iot-devkit-to-azure-iot-remote-monitoring-solution-accelerator"></a>將 MXChip IoT DevKit 連線到 Azure IoT 遠端監視解決方案加速器
@@ -31,7 +31,7 @@ ms.locfileid: "81258451"
 
 有效的 Azure 訂用帳戶。 如果沒有，您可以透過下列兩種方法之一來註冊：
 
-* 啟用[免費試用 Microsoft Azure 帳戶](https://azure.microsoft.com/free/)
+* [Microsoft Azure 帳戶啟用30天免費試用版](https://azure.microsoft.com/free/)
 
 * 如果您是 MSDN 或 Visual Studio 訂閱者，請認領您的 [Azure 點數](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)
 

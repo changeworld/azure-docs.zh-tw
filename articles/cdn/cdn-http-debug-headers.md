@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 52aae3bdd2fe82eea6cbd500723192c88c293a1e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260491"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 X-EC-Debug HTTP 標頭
 偵錯快取要求標頭 `X-EC-Debug` 會提供與要求的資產所套用的快取原則有關的其他資訊。 這些標頭是**來自 Verizon 的 Azure CDN 進階**產品特有的標頭。
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 只有在符合下列條件時，從 POP 伺服器傳送給使用者的回應才會包含 `X-EC-Debug` 標頭：
 
 - 已在指定要求的規則引擎上啟用 [偵錯快取回應標頭](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers) 功能。
@@ -103,7 +103,7 @@ X-EC-Debug 標頭會以下列格式報告快取狀態碼資訊：
 
 前述回應標頭語法中使用的詞彙定義如下：
 
-值  | 描述
+值  | 說明
 -------| --------
 YES    | 指出要求的內容符合快取的資格。
 否     | 指出要求的內容不符合快取的資格。 此狀態可能是下列其中一個原因所造成： <br /> - 客戶特定組態：您的帳戶特有的組態可能防止 POP 伺服器快取某資產。 例如，規則引擎可能對符合資格的要求啟用了「略過快取」功能，而防止快取某項資產。<br /> - 快取回應標頭：要求的資產的 Cache-Control 和 Expires 標頭可能防止 POP 伺服器快取該資產。
@@ -151,7 +151,7 @@ UNKNOWN | 指出伺服器無法評估要求的資產是否可快取。 此狀態
 
 - MATimePeriod：將最大存留期值 (也就是 MASeconds) 轉換為採用較大單位 (例如天) 的近似對等值。 
 
-- UnixTime:指示在 Unix 時間(也稱為 POSIX 時間或 Unix 紀元)中請求內容的緩存時間戳。 快取時間戳記可指出資產的 TTL 開始進行計算的日期/時間。 
+- UnixTime：表示 Unix 時間（也稱為 POSIX 時間或 Unix epoch）中要求內容的快取時間戳記。 快取時間戳記可指出資產的 TTL 開始進行計算的日期/時間。 
 
     如果原始伺服器未使用第三方 HTTP 快取伺服器，或該伺服器未傳回 Age 回應標頭，則在擷取或重新驗證資產時，快取時間戳記將一律為日期/時間。 否則，POP 伺服器將使用 [存留期] 欄位來計算資產的 TTL，如下所示：Retrieval/RevalidateDateTime - Age。
 

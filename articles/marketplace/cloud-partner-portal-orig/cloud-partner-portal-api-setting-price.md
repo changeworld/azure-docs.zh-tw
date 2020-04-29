@@ -1,5 +1,5 @@
 ---
-title: 虛擬機產品/服務定價 |Azure 應用商店
+title: 虛擬機器供應專案的定價 |Azure Marketplace
 description: 說明指定虛擬機器供應項目定價的三種方法。
 author: dsindona
 ms.service: marketplace
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 04/08/2020
 ms.author: dsindona
 ms.openlocfilehash: 487e66b39bc63363497cb3497d32158efd0c6c8a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255884"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>虛擬機器供應項目定價
 ==================================
 
 > [!NOTE]
-> 雲合作夥伴門戶 API 與合作夥伴中心集成,在您的產品/服務遷移到合作夥伴中心後將繼續工作。 集成引入了小更改。 查看[雲合作夥伴門戶 API 參考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中列出的更改,以確保代碼在遷移到合作夥伴中心後繼續工作。
+> Cloud Partner 入口網站 Api 會與合作夥伴中心整合，並會在您的供應專案遷移至合作夥伴中心後繼續工作。 整合引進了微小的變更。 請參閱[CLOUD PARTNER 入口網站 API 參考](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)中所列的變更，以確保您的程式碼會在遷移至合作夥伴中心後繼續運作。
 
 指定虛擬機器供應項目定價的方法有三種：自訂核心定價、每一核心定價，以及試算表定價。
 
@@ -26,7 +26,7 @@ ms.locfileid: "81255884"
 <a name="customized-core-pricing"></a>自訂核心定價
 -----------------------
 
-定價專屬於各個地區和核心組合。 銷售清單中的每個區域都必須在定義的**虛擬機定價**/**區域價格**部分中指定。  在您的要求中為每個[區域](#regions)使用正確的貨幣代碼。  下列範例示範這些需求：
+定價專屬於各個地區和核心組合。 銷售清單中的每個區域都必須在定義的**virtualMachinePricing**/**regionPrices**區段中指定。  在您的要求中為每個[區域](#regions)使用正確的貨幣代碼。  下列範例示範這些需求：
 
 ``` json
     "virtualMachinePricing": 
@@ -103,10 +103,10 @@ ms.locfileid: "81255884"
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>2019 年 7 月 2 日新增的核心尺寸
+<a name="new-core-sizes-added-on-722019"></a>7/2/2019 新增的核心大小
 ---------------------------
 
-VM 發佈商於 2019 年 7 月 2 日收到新 Azure 虛擬機大小(基於內核數)新價格的通知。  新價格適用於核心尺寸 10、44、48、60、120、208 和 416。  對於現有 VM,這些內核的大小可根據當前價格自動計算新的價格。  出版商必須到 2019 年 8 月 1 日才能查看附加價格並進行任何所需的更改。  在此日期之後,如果發佈者尚未重新發佈,則這些新內核大小的自動計算價格將生效。
+針對新的 Azure 虛擬機器大小（根據核心數目），在2019年7月2日新增新價格的 VM 發行者已收到通知。  新的價格是針對核心大小10、44、48、60、120、208和416。  針對現有的 VM，會根據目前的價格自動計算這些核心大小的新價格。  發行者必須等到2019年8月1日，才能查看額外的價格，並進行任何想要的變更。  在此日期之後（如果發行者尚未重新發行），這些新核心大小自動計算的價格將會生效。
 
 
 <a name="regions"></a>區域
@@ -114,7 +114,7 @@ VM 發佈商於 2019 年 7 月 2 日收到新 Azure 虛擬機大小(基於內核
 
 下表顯示您可以為自訂核心定價指定的不同區域，以及其相對應的貨幣代碼。
 
-| **區域** | **名稱**             | **貨幣代碼** |
+| **區域** | **Name**             | **貨幣代碼** |
 |------------|----------------------|-------------------|
 | DZ         | 阿爾及利亞              | DZD               |
 | AR         | 阿根廷            | ARS 披索               |
@@ -147,7 +147,7 @@ VM 發佈商於 2019 年 7 月 2 日收到新 Azure 虛擬機大小(基於內核
 | HU         | 匈牙利              | HUF               |
 | IS         | 冰島              | ISK               |
 | IN         | 印度                | 印度幣               |
-| ID         | 印尼            | 印尼盾               |
+| 識別碼         | 印尼            | 印尼盾               |
 | IE         | 愛爾蘭              | 歐元               |
 | IL         | 以色列               | ILS               |
 | IT         | 義大利                | 歐元               |

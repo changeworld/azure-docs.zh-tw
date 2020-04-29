@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: allensu
 ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253827"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>透過 Azure CDN 進行動態網站加速
@@ -27,7 +27,7 @@ ms.locfileid: "81253827"
 
 標準內容傳遞網路 (CDN) 功能包含快取接近使用者的檔案，從而加速靜態檔案傳遞。 不過，使用動態 Web 應用程式，就無法在邊緣位置中快取該內容，因為伺服器所產生的內容是用以回應使用者的行為。 相較於傳統的邊緣快取，要加速傳遞這類內容更為複雜，並且需要端對端解決方案，在從開始到傳遞的整個資料路徑上微調每個元素。 使用 Azure CDN 動態網站加速 (DSA) 最佳化後，能顯著提升具有動態內容的網頁效能。
 
-**Akamai 中的 Azure CDN** 和 **Verizon 中的 Azure CDN** 都會在端點建立期間透過 [最佳化]**** 功能表來提供 DSA 最佳化。 微軟的動態網站加速是通過 Azure[前門服務](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供的。
+**Akamai 中的 Azure CDN** 和 **Verizon 中的 Azure CDN** 都會在端點建立期間透過 [最佳化]**** 功能表來提供 DSA 最佳化。 Microsoft 的動態網站加速是[透過 Azure Front 服務](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供。
 
 > [!Important]
 > 針對**來自 Akamai 的 Azure CDN**設定檔，您可以在 CDN 端點建立之後，變更其最佳化。
@@ -169,7 +169,7 @@ JPEG 壓縮 | .jpg、.jpeg、.jpe、.jig、.jgig、.jgi
 
 存取規則引擎：
     
-1. 在**CDN 設定檔**頁中,選擇 **"管理**"  
+1. 在 [ **CDN 設定檔**] 頁面中，選取 [**管理**]。  
     
     ![CDN 設定檔管理按鈕](./media/cdn-dynamic-site-acceleration/cdn-manage-btn.png)
 

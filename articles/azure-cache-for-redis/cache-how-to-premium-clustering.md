@@ -1,5 +1,5 @@
 ---
-title: 設定 Redis 群組- 用於 Redis 的進階 Azure 快取
+title: 設定 Redis 叢集-Premium Azure Cache for Redis
 description: 了解如何建立和管理「進階」層「Azure Redis 快取」執行個體的 Redis 叢集功能
 author: yegu-ms
 ms.author: yegu
@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
 ms.openlocfilehash: 4a0e5b0c18264e1f7a98e81bcdfd56a7159235da
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010914"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>如何設定進階 Azure Redis 快取的 Redis 叢集功能
@@ -58,7 +58,7 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>在執行中的進階快取上變更叢集大小
-要更改啟用群集的正在運行的高級緩存上的群集大小,請單擊 **「資源」功能表**中的 **「群集大小**」。
+若要在已啟用叢集的執行中 premium 快取上變更叢集大小，請按一下 [**資源] 功能表**中的 [叢集**大小**]。
 
 ![Redis 叢集大小][redis-cache-redis-cluster-size]
 
@@ -108,12 +108,12 @@ Azure Cache for Redis 有不同的快取供應項目，可讓您彈性選擇快�
 如需搭配 StackExchange.Redis 用戶端使用叢集，並尋找相同分區中之金鑰的範例程式碼，請參閱 [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) 範例的 [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分。
 
 ### <a name="what-is-the-largest-cache-size-i-can-create"></a>我可以建立的最大快取大小為何？
-最大的高級緩存大小為 120 GB。 您最多可以創建 10 個分片,最大大小為 1.2TB GB。 如果您需要較大的大小，可以 [要求更多](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)。 有關詳細資訊,請參閱用於[Redis 定價的 Azure 緩存](https://azure.microsoft.com/pricing/details/cache/)。
+最大的 premium 快取大小為 120 GB。 您最多可以建立10個分區，讓您的大小上限為 1.2 TB GB。 如果您需要較大的大小，可以 [要求更多](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)。 如需詳細資訊，請參閱[Azure Cache For Redis 定價](https://azure.microsoft.com/pricing/details/cache/)。
 
 ### <a name="do-all-redis-clients-support-clustering"></a>所有 Redis 用戶端都支援叢集嗎？ 
-並非所有用戶端都支援 Redis 群集! 請檢查您正在使用的函式庫的文件,以驗證您使用的是支援群集的庫和版本。 StackExchange.Redis 是一個庫,它在其較新版本中支援群集。 如需其他用戶端的詳細資訊，請參閱 [Redis 叢集教學課程](https://redis.io/topics/cluster-tutorial)的 [試用叢集](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)一節。 
+並非所有用戶端都支援 Redis 叢集！ 請查看您所使用之程式庫的檔，以確認您使用的是支援叢集的程式庫和版本。 Stackexchange.redis. Redis 是一個程式庫，在其較新版本中支援叢集。 如需其他用戶端的詳細資訊，請參閱 [Redis 叢集教學課程](https://redis.io/topics/cluster-tutorial)的 [試用叢集](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)一節。 
 
-Redis 聚類協定要求每個用戶端在聚類模式下直接連接到每個分片,並定義新的錯誤回應,如"移動"na"CROSSSLOTS"。 嘗試使用不支援群集模式緩存群集的用戶端可能會導致許多[移動重定向異常](https://redis.io/topics/cluster-spec#moved-redirection),或者如果執行跨插槽多鍵請求,則只會中斷應用程式。
+Redis 叢集通訊協定需要每個用戶端直接以群集模式連接到每個分區，同時定義新的錯誤回應，例如 ' 已移動 ' na ' CROSSSLOTS '。 嘗試使用不支援叢集模式快取叢集的用戶端，可能會導致許多移動的重新導向[例外](https://redis.io/topics/cluster-spec#moved-redirection)狀況，或只是中斷您的應用程式（如果您要進行跨位置的多金鑰要求）。
 
 > [!NOTE]
 > 如果您使用 StackExchange.Redis 做為您的用戶端，請確定您使用的是最新版的 [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) (1.0.481) 或更新版本，叢集才能正常運作。 如果您有任何關於 Move 例外狀況的問題，請參閱 [Move 例外狀況](#move-exceptions) ，以取得詳細資訊。
@@ -123,9 +123,9 @@ Redis 聚類協定要求每個用戶端在聚類模式下直接連接到每個�
 您可以使用與連接未啟用叢集的快取時所用的相同 [端點](cache-configure.md#properties)、[連接埠](cache-configure.md#properties)和[金鑰](cache-configure.md#access-keys)來連接快取。 Redis 會管理後端上的叢集，因此您不需從用戶端進行管理。
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>我可以直接連接到我的快取的個別分區嗎？
-叢集通訊協定需要用戶端進行正確的分區連線。 因此，用戶端應該正確地為您執行此操作。 如前所述，每個分區都包含一個主要/複本快取組，統稱為快取執行個體。 您可以使用 GitHub 中 Redis 存放庫[不穩定](https://redis.io/download)分支內的 redis-cli 公用程式，連線到這些快取執行個體。 使用 `-c` 參數啟用這個版本時，會實作基本支援。 有關詳細資訊,請參閱在[Redis 群集教程](https://redis.io/topics/cluster-tutorial)[https://redis.io](https://redis.io)中[播放群集](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)。
+叢集通訊協定需要用戶端進行正確的分區連線。 因此，用戶端應該正確地為您執行此操作。 如前所述，每個分區都包含一個主要/複本快取組，統稱為快取執行個體。 您可以使用 GitHub 中 Redis 存放庫[不穩定](https://redis.io/download)分支內的 redis-cli 公用程式，連線到這些快取執行個體。 使用 `-c` 參數啟用這個版本時，會實作基本支援。 如需詳細資訊，請參閱[Redis cluster 教學](https://redis.io/topics/cluster-tutorial)課程[https://redis.io](https://redis.io)中的[使用叢集播放](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster)。
 
-對於非 TLS,請使用以下命令。
+若是非 TLS，請使用下列命令。
 
     Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
     Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
@@ -133,20 +133,20 @@ Redis 聚類協定要求每個用戶端在聚類模式下直接連接到每個�
     ...
     Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-對 TLS,`1300N``1500N`取代為 。
+針對 TLS，請`1300N`將`1500N`取代為。
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>我可以為先前建立的快取設定叢集嗎？
-是。 首先,通過縮放(如果不是)來確保緩存是高級的。 接下來,您應該能夠看到群集配置選項,包括啟用群集的選項。 您可以在創建緩存後或首次啟用群集後更改群集大小。
+是。 如果不是，請先確定您的快取為 premium。 接下來，您應該能夠看到叢集設定選項，包括啟用叢集的選項。 您可以在建立快取之後，或在您第一次啟用叢集之後，變更叢集大小。
 
    >[!IMPORTANT]
-   >無法撤銷啟用群集。 開啟叢集且只有一個分片的快取的行為的使用大小相同且*沒有*叢集的快取*不同*。
+   >您無法復原啟用群集。 和已啟用叢集的快取，而且只有一個分區的行為*不同*于*不*含叢集的相同大小快取。
 
 ### <a name="can-i-configure-clustering-for-a-basic-or-standard-cache"></a>我可以設定基本或標準快取的叢集嗎？
 叢集僅適用於進階快取。
 
 ### <a name="can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers"></a>我可以將叢集使用於 Redis ASP.NET 工作階段狀態和輸出快取提供者嗎？
 * **Redis 輸出快取提供者** - 不需要變更。
-* **Redis 工作階段狀態供應器** - 若要使用叢集，您必須使用 [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 或更高版本，否則會擲回例外狀況。 這是一個破碎的變化;有關詳細資訊,請參閱[v2.0.0 中斷更改詳細資訊](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)。
+* **Redis 工作階段狀態供應器** - 若要使用叢集，您必須使用 [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 或更高版本，否則會擲回例外狀況。 這是一種重大變更;如需詳細資訊，請參閱[v 2.0.0 重大變更詳細資料](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)。
 
 <a name="move-exceptions"></a>
 

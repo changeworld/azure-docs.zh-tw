@@ -11,10 +11,10 @@ ms.date: 05/29/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8b3af40de107fd9273ec50425c58afc9772ea426
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010336"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>使用 Azure 虛擬機器擴展集自動調整的概觀
@@ -78,7 +78,7 @@ Azure 虛擬機器擴展集可以自動增加或減少執行您的應用程式�
 | 最大值          |
 | 總計            |
 | Last             |
-| Count            |
+| 計數            |
 
 使用下列其中一個運算子將計量與您定義的閾值相比較時，則會觸發自動調整規則：
 
@@ -136,7 +136,7 @@ Azure 診斷擴充功能是在 VM 執行個體內部執行的代理程式。 代
 - [Azure CLI](tutorial-autoscale-cli.md)
 - [Azure 範本](tutorial-autoscale-template.md)
 
-本概觀詳細說明如何使用自動調整規則進行水平縮放，以及增加或減少擴展集中 VM 執行個體的*數目*。 您也可以進行垂直調整以增加或減少 VM 執行個體的*大小*。 有關詳細資訊,請參閱[使用虛擬機縮放集的垂直自動縮放](virtual-machine-scale-sets-vertical-scale-reprovision.md)。
+本概觀詳細說明如何使用自動調整規則進行水平縮放，以及增加或減少擴展集中 VM 執行個體的*數目*。 您也可以進行垂直調整以增加或減少 VM 執行個體的*大小*。 如需詳細資訊，請參閱[使用虛擬機器擴展集垂直自動調整](virtual-machine-scale-sets-vertical-scale-reprovision.md)。
 
 如需有關如何管理 VM 執行個體的資訊，請參閱[使用 Azure PowerShell 管理虛擬機器擴展集](virtual-machine-scale-sets-windows-manage.md)。
 

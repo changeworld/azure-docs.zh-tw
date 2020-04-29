@@ -11,17 +11,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81256513"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>資料科學專案的平台和工具
 
-Microsoft 為雲或本地平臺提供了全方位的分析資源。 它們可以部署以有效率且可調整地執行資料科學專案。 [Team 資料科學程序](overview.md) (TDSP) 中提供小組以可追蹤、版本控制及共同作業的方式實作資料科學專案的指引。  如需人員角色的大綱，以及對此程序進行標準化之資料科學小組所處理相關聯工作的大綱，請參閱 [Team 資料科學程序角色和工作](roles-tasks.md)。
+Microsoft 為雲端或內部部署平臺提供了一系列完整的分析資源。 它們可以部署以有效率且可調整地執行資料科學專案。 [Team 資料科學程序](overview.md) (TDSP) 中提供小組以可追蹤、版本控制及共同作業的方式實作資料科學專案的指引。  如需人員角色的大綱，以及對此程序進行標準化之資料科學小組所處理相關聯工作的大綱，請參閱 [Team 資料科學程序角色和工作](roles-tasks.md)。
 
-使用 TDSP 的資料科學團隊可用的分析資源包括:
+使用 TDSP 的資料科學小組可用的分析資源包括：
 
 - 資料科學虛擬機器 (Windows 和 Linux CentOS)
 - HDInsight Spark 叢集
@@ -29,7 +29,7 @@ Microsoft 為雲或本地平臺提供了全方位的分析資源。 它們可以
 - Azure Data Lake
 - HDInsight Hive 叢集
 - Azure 檔案儲存體
-- SQL 伺服器 2019 R 和 Python 服務
+- SQL Server 2019 R 和 Python 服務
 - Azure Databricks
 
 在本文件中，我們簡短描述資源，並且提供 TDSP 小組已發佈之教學課程和逐步解說的連結。 它們可以協助您了解如何逐步使用它們，以及開始使用它們來建置智慧型應用程式。 這些資源的其他資訊可以在其產品分頁上取得。 
@@ -45,13 +45,13 @@ Microsoft 對於 Windows 和 Linux 所提供的資料科學虛擬機器，包含
 - 適用於 Windows 的 Power BI desktop
 - Windows / Postgres on Linux 上的 SQL Server 2016 Developer Edition
 
-它還包括**ML 和 AI 工具**,如 xgboost、mxnet 和 Vowpal Wabbit。
+它也包含**ML 和 AI 工具**，例如 xgboost、Mxnet 和 Vowpal Wabbit。
 
 目前 DSVM 可用於 **Windows** 和 **Linux CentOS** 作業系統。 根據您規劃在上面執行之資料科學專案的需要，選擇 DSVM 的大小(CPU 核心數目和記憶體數量)。 
 
-有關 DSVM 的 Windows 版本的詳細資訊,請參閱 Azure 應用商店上的[Microsoft 資料科學虛擬機器](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)。 對於 Linux 版本 DSVM，請參閱 [Linux 資料科學虛擬機器](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。
+如需 Windows 版本 DSVM 的詳細資訊，請參閱 Azure Marketplace 上的[Microsoft 資料科學虛擬機器](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019)。 對於 Linux 版本 DSVM，請參閱 [Linux 資料科學虛擬機器](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。
 
-要瞭解如何在 DSVM 上高效地執行一些常見數據科學任務,請參閱在[資料科學虛擬機器上可以執行的 10 件事](../data-science-virtual-machine/vm-do-ten-things.md)
+若要瞭解如何有效率地在 DSVM 上執行一些常見的資料科學工作，請參閱[您可以在資料科學虛擬機器上執行的10項](../data-science-virtual-machine/vm-do-ten-things.md)作業
 
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Azure HDInsight Spark 叢集
@@ -72,7 +72,7 @@ Azure SQL 資料倉儲可讓您輕鬆地在數秒鐘的時間內調整計算資�
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Azure 資料湖是企業範圍的存儲庫,用於在單個位置、任何正式要求或施加架構之前收集的所有類型的數據。 這種彈性可讓每種類型的資料都保存在 Data Lake，不論其大小或結構或者它內嵌的速度。 組織可以使用 Hadoop 或進階分析，在這些 Data Lake 中尋找模式。 Data Lake 也可以在策劃資料並且將其移至資料倉儲之前，作為較低成本資料準備的存放庫。
+Azure Data Lake 是一種全企業的存放庫，可在任何正式需求或強加的架構之前，于單一位置收集每種資料類型。 這種彈性可讓每種類型的資料都保存在 Data Lake，不論其大小或結構或者它內嵌的速度。 組織可以使用 Hadoop 或進階分析，在這些 Data Lake 中尋找模式。 Data Lake 也可以在策劃資料並且將其移至資料倉儲之前，作為較低成本資料準備的存放庫。
 
 如需有關 Azure Data Lake 的詳細資訊，請參閱[簡介 Azure Data Lake](https://azure.microsoft.com/blog/introducing-azure-data-lake/)。 若要了解如何使用 Azure Data Lake 建置可調整端對端資料科學解決方案，請參閱 [Azure Data Lake 中的可調整資料科學︰端對端逐步解說](data-lake-walkthrough.md)
 
@@ -95,11 +95,11 @@ Azure 檔案儲存體是使用標準伺服器訊息區塊 (SMB) 通訊協定，�
 對於資料科學專案特別有用的功能是建立 Azure 檔案存放區，作為與專案小組成員共用專案資料的位置。 然後每個成員會存取 Azure 檔案儲存體中資料的相同複本。 他們也可以使用此檔案儲存體，共用在執行專案期間產生的功能集。 如果專案是用戶端參與，您的用戶端可以在他們自己的 Azure 訂用帳戶底下建立 Azure 檔案存放體，與您共用專案資料和功能。 如此一來，用戶端會具有專案資料資產的完整控制權。 如需 Azure 檔案儲存體的詳細資訊，請參閱[在 Windows 上開始使用 Azure 檔案儲存體](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files)和[如何搭配 Linux 使用 Azure 檔案儲存體](../../storage/files/storage-how-to-use-files-linux.md)。
 
 
-## <a name="sql-server-2019-r-and-python-services"></a>SQL 伺服器 2019 R 和 Python 服務
+## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R 和 Python 服務
 
-R 服務(資料庫內)為開發和部署能夠發現新見解的智慧應用程式提供了一個平臺。 您可以使用豐富且功能強大的 R 語言 (包括 R 社群提供的許多套件) 來建立模型，並為 SQL Server 資料產生預測。 由於 R 服務(資料庫內)將 R 語言與 SQL Server 整合,因此分析會與數據保持近,從而消除了與行動資料相關的成本和安全風險。
+R Services （資料庫內）提供開發和部署智慧型應用程式的平臺，可發現新的深入資訊。 您可以使用豐富且功能強大的 R 語言 (包括 R 社群提供的許多套件) 來建立模型，並為 SQL Server 資料產生預測。 由於 R Services （資料庫內）會整合 R 語言與 SQL Server，因此分析會保持接近資料的狀態，以消除與移動資料相關聯的成本和安全性風險。
 
-R 服務(資料庫內)使用一組全面的 SQL Server 工具和技術支援開源 R 語言。 它們提供更優異的效能、安全性、可靠性及管理能力。 您可以使用方便且熟悉的工具來部署 R 解決方案。 生產應用程式可以使用 Transact-SQL 呼叫 R 執行階段，並且擷取預測和視覺效果。 您也可以使用 ScaleR 程式庫來改善 R 解決方案的規模和效能。 有關詳細資訊,請參閱[SQL 伺服器 R 服務](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services)。
+R Services （資料庫內）支援開放原始碼 R 語言與一組完整的 SQL Server 工具和技術。 它們提供更優異的效能、安全性、可靠性及管理能力。 您可以使用方便且熟悉的工具來部署 R 解決方案。 生產應用程式可以使用 Transact-SQL 呼叫 R 執行階段，並且擷取預測和視覺效果。 您也可以使用 ScaleR 程式庫來改善 R 解決方案的規模和效能。 如需詳細資訊，請參閱[SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services)。
 
 Microsoft 的 TDSP 小組已發佈兩個端對端逐步解說，示範如何在 SQL Server 2016 R Services 中建置資料科學解決方案：一個適用於 R 程式設計人員，另一個適用於 SQL 開發人員。 若是 **R 程式設計人員**，請參閱[資料科學端對端逐步解說](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)。 若是 **SQL 開發人員**，請參閱[適用於 SQL 開發人員的資料庫內進階分析 (教學課程)](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)。
 
@@ -136,7 +136,7 @@ Microsoft 的 TDSP 小組已發佈兩個端對端逐步解說，示範如何在 
 
 1. 複製整個 ssh 金鑰，包括 ssh-rsa**。 
 1. 登入您的 Azure DevOps Services。 
-1. 按下**頁面右上角\>的<您的姓名**,然後按下 **"安全**"。 
+1. 按一下頁面右上角的 [ **<您的名稱\> ** ，然後按一下 [**安全性**]。 
     
    ![按一下您的名稱，然後按一下 [安全性]](./media/platforms-and-tools/resources-2-user-setting.png)
 
@@ -144,11 +144,11 @@ Microsoft 的 TDSP 小組已發佈兩個端對端逐步解說，示範如何在 
 
    ![按一下 [SSH 公開金鑰]，然後按一下 [+新增]](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-1. 將複製的 ssh 鍵粘貼到文本框中並保存。
+1. 將複製的 ssh 金鑰貼到文字方塊中並儲存。
 
 
 ## <a name="next-steps"></a>後續步驟
 
 此外也會提供完整的端對端逐步解說，說明 **特定案例** 之程序中的所有步驟。 [範例逐步解說](walkthroughs.md)主題中會列出這些逐步解說以及簡短說明的連結。 這些逐步解說說明如何將雲端、內部部署工具及服務組合成工作流程或管線，以建立智慧型應用程式。 
 
-有關演示如何使用 Azure 機器學習工作室(經典)在團隊數據科學流程中執行步驟的示例,請參閱["與 Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)學習路徑」。。
+如需示範如何使用 Azure Machine Learning Studio （傳統）在 Team 資料科學程式中執行步驟的範例，請參閱[使用 AZURE ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)學習路徑。

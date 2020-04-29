@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: allensu
 ms.openlocfilehash: d0c438aee7f56e96feb7167fad718fd9519a9f76
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253708"
 ---
 # <a name="how-caching-works"></a>快取的運作方式
@@ -86,7 +86,7 @@ Azure CDN 支援下列 HTTP 快取指示詞標頭，這些標頭會定義快取�
 - 類似於 `Cache-Control: max-age`。
 - 使用時機是當 `Cache-Control` 不存在時。
 
-**普拉格馬:**
+**雜**
    - 根據預設，Azure CDN 不接受。
    - 在 HTTP 1.0 中導入舊版的標頭；支援回溯相容性。
    - 用來作為用戶端要求標頭，並具有下列指示詞：`no-cache`。 這個指示詞會指示伺服器傳送全新版本的資源。
@@ -96,14 +96,14 @@ Azure CDN 支援下列 HTTP 快取指示詞標頭，這些標頭會定義快取�
 
 當快取過期時，HTTP 快取驗證程式可用來比較檔案的快取版本與原始伺服器上的版本。 **來自 Verizon 的標準/進階 Azure CDN** 預設支援 `ETag` 和 `Last-Modified` 驗證器，而**來自 Microsoft 的標準 Azure CDN** 和**來自 Akamai 的標準 Azure CDN** 預設僅支援 `Last-Modified`。
 
-**Etag:**
+**ETag**
 - **來自 Verizon 的標準/進階 Azure CDN** 預設支援`ETag` ，而**來自 Microsoft 的標準 Azure CDN** 和來自 **Akamai 的標準 Azure CDN** 則不提供支援。
 - `ETag` 會定義對每個檔案和檔案版本是唯一的字串。 例如： `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"` 。
 - 在 HTTP 1.1 中導入，且較 `Last-Modified` 更新。 上次修改的日期難以判斷時會很有用。
 - 支援強式驗證和弱式驗證；不過，Azure CDN 僅支援強式驗證。 針對強式驗證，兩個資源表示法必須是位元組對位元組相同。 
 - 快取會驗證使用 `ETag` 的檔案，方法是傳送要求中具有一或多個 `ETag` 驗證程式的 `If-None-Match` 標頭。 例如： `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"` 。 如果伺服器的版本符合清單上的 `ETag` 驗證程式，它會在其回應中傳送狀態碼 304 (未修改)。 如果版本不同，伺服器會以狀態碼 200 (確定) 和更新的資源回應。
 
-**上次變更:**
+**上次修改日期：**
 - 僅針對**來自 Verizon 的標準/進階 Azure CDN** 而言，如果 HTTP 回應中未包含 `ETag`，就會使用 `Last-Modified`。 
 - 指定原始伺服器判斷上次修改資源的日期和時間。 例如： `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT` 。
 - 快取會使用 `Last-Modified` 來驗證檔案，方法是傳送要求中具有日期和時間 `If-Modified-Since` 的標頭。 原始伺服器會比較該日期與最新資源的 `Last-Modified` 標頭。 如果資源從指定時間起尚未修改，伺服器就會在其回應中傳回狀態碼 304 (未修改)。 如果資源已修改，伺服器會傳回狀態碼 200 (確定) 和更新的資源。
@@ -126,8 +126,8 @@ Azure CDN 支援下列 HTTP 快取指示詞標頭，這些標頭會定義快取�
 
 |    | Microsoft：一般 Web 傳遞 | Verizon：一般 Web 傳遞 | Verizon：DSA | Akamai：一般 Web 傳遞 | Akamai：DSA | Akamai：大型檔案下載 | Akamai：一般或 VOD 媒體串流處理 |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **榮譽起源**       | 是    | 是   | 否   | 是    | 否   | 是   | 是    |
-| **CDN 快取時間** | 2 天 |7 天 | None | 7 天 | None | 1 日 | 1 年 |
+| **接受來源**       | 是    | 是   | 否   | 是    | 否   | 是   | 是    |
+| **CDN 快取持續時間** | 2 天 |7 天 | 無 | 7 天 | 無 | 1 日 | 1 年 |
 
 **接受來源**：指定如果支援的快取指示詞標頭存在於原始伺服器的 HTTP 回應中，是否要加以接受。
 

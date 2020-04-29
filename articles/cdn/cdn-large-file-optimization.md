@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: 28b3c4faf62bcd9f9495810927ece03e2dadc1fc
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260525"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>使用 Azure CDN 的大型檔案下載最佳化
@@ -111,7 +111,7 @@ CDN 會在收到任何區塊時即予以快取。 不必快取 CDN 快取上的�
 |    | 一般 Web | 大型檔案最佳化 
 --- | --- | --- 
 快取：正向 <br> HTTP 200、203、300、 <br> 301、302 和 410 | 7 天 |1 日  
-快取：負向 <br> HTTP 204、305、404 <br> 和 405 | None | 1 秒 
+快取：負向 <br> HTTP 204、305、404 <br> 和 405 | 無 | 1 秒 
 
 ### <a name="deal-with-origin-failure"></a>處理原始伺服器失敗
 
@@ -123,7 +123,7 @@ CDN 會在收到任何區塊時即予以快取。 不必快取 CDN 快取上的�
 
 下表列出大型檔案最佳化所需滿足的準則集合：
 
-條件 | 值 
+狀況 | 值 
 --- | --- 
 支援的檔案類型 | 3g2、3gp、asf、avi、bz2、dmg、exe、f4v、flv、 <br> gz、hdp、iso、jxr、m4v、mkv、mov、mp4、 <br> mpeg、mpg、mts、pkg、qt、rm、swf、tar、 <br> tgz、wdp、webm、webp、wma、wmv、zip  
 檔案大小下限 | 10 MB 

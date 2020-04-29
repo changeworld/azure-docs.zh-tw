@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: ea4bfadd55935712a292355dc25fb778b1523c75
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261852"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure 事件中樞的功能與術語
@@ -33,7 +33,7 @@ ms.locfileid: "81261852"
 
 [這項功能](event-hubs-for-kafka-ecosystem-overview.md)提供可讓客戶使用 Kafka 通訊協定來與事件中樞通訊的端點。 此整合可為客戶提供 Kafka 端點。 這讓客戶能夠設定其現有的 Kafka 應用程式來與事件中樞通訊，提供替代方案來執行他們自己的 Kafka 叢集。 適用於 Apache Kafka 的事件中樞支援 Kafka 通訊協定 1.0 和更新版本。 
 
-通過此整合,您無需運行 Kafka 群集或使用 Zookeeper 管理它們。 這也可讓您搭配事件中樞內需求最高的部分功能來運作，例如擷取、自動擴充和異地災害復原。
+透過這種整合，您不需要執行 Kafka 叢集或使用 Zookeeper 來管理它們。 這也可讓您搭配事件中樞內需求最高的部分功能來運作，例如擷取、自動擴充和異地災害復原。
 
 此整合也可讓應用程式 (例如 Mirror Maker) 或架構 (例如 Kafka Connect) 只搭配設定變更以無叢集的方式運作。 
 
@@ -43,9 +43,9 @@ ms.locfileid: "81261852"
 
 ### <a name="publishing-an-event"></a>發佈事件
 
-您可以透過 AMQP 1.0、Kafka 1.0 (和更新版本) 或 HTTPS 來發佈事件。 事件中樞提供[用戶端程式庫和類別](event-hubs-dotnet-framework-api-overview.md)，以供您從 .NET 用戶端將事件發佈到事件中樞。 對於其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端 (如 [Apache Qpid](https://qpid.apache.org/))。 您可以單獨發佈事件，或以批次方式進行。 不論是單一事件或批次，單次發佈 (事件資料執行個體) 的上限為 1 MB。 發佈大於此臨界值的事件會導致錯誤。 發行者最好不知道事件中心內的分區,並且僅指定*分區鍵*(在下一節中介紹),或者通過 SAS 令牌指定其標識。
+您可以透過 AMQP 1.0、Kafka 1.0 (和更新版本) 或 HTTPS 來發佈事件。 事件中樞提供[用戶端程式庫和類別](event-hubs-dotnet-framework-api-overview.md)，以供您從 .NET 用戶端將事件發佈到事件中樞。 對於其他執行階段和平台，您可以使用任何 AMQP 1.0 用戶端 (如 [Apache Qpid](https://qpid.apache.org/))。 您可以單獨發佈事件，或以批次方式進行。 不論是單一事件或批次，單次發佈 (事件資料執行個體) 的上限為 1 MB。 發佈大於此臨界值的事件會導致錯誤。 發行者最好不要察覺事件中樞內的資料分割，而且只會指定分割區索引*鍵*（下一節會介紹），或透過其 SAS 權杖的身分識別。
 
-使用 AMQP 或 HTTPS 的選擇因使用案例而異。 除了傳輸層級安全性 (TLS) 或 SSL/TLS 之外，AMQP 還需要建立持續性的雙向通訊端。 AMQP 在初始化作業階段時具有更高的網路成本,但是 HTTPS 為每個請求需要額外的 TLS 開銷。 對於頻繁的發行者，AMQP 的效能較高。
+使用 AMQP 或 HTTPS 的選擇因使用案例而異。 除了傳輸層級安全性 (TLS) 或 SSL/TLS 之外，AMQP 還需要建立持續性的雙向通訊端。 在初始化會話時，AMQP 會有較高的網路成本，不過，HTTPS 在每個要求中都需要額外的 TLS 負荷。 對於頻繁的發行者，AMQP 的效能較高。
 
 ![事件中樞](./media/event-hubs-features/partition_keys.png)
 
@@ -71,11 +71,11 @@ ms.locfileid: "81261852"
 
 ## <a name="sas-tokens"></a>SAS 權杖
 
-事件中心使用*共用訪問簽名*,這些簽名在命名空間和事件中心級別可用。 SAS 權杖可自 SAS 金鑰產生，它是經過特定格式編碼的 URL SHA 雜湊。 事件中樞可以使用金鑰 (原則) 的名稱和權杖來重新產生雜湊，藉此驗證傳送者。 通常,創建事件發行者 SAS 令牌時,僅在特定事件中心上具有**發送**許可權。 此 SAS 權杖 URL 機制是導入發佈者原則之發佈者識別的基礎。 如需使用 SAS 的詳細資訊，請參閱[使用服務匯流排的共用存取簽章驗證](../service-bus-messaging/service-bus-sas.md)。
+事件中樞會使用可在命名空間和事件中樞層級取得的*共用存取*簽章。 SAS 權杖可自 SAS 金鑰產生，它是經過特定格式編碼的 URL SHA 雜湊。 事件中樞可以使用金鑰 (原則) 的名稱和權杖來重新產生雜湊，藉此驗證傳送者。 一般來說，會建立事件發行者的 SAS 權杖，而且只有特定事件中樞的**傳送**許可權。 此 SAS 權杖 URL 機制是導入發佈者原則之發佈者識別的基礎。 如需使用 SAS 的詳細資訊，請參閱[使用服務匯流排的共用存取簽章驗證](../service-bus-messaging/service-bus-sas.md)。
 
 ## <a name="event-consumers"></a>事件取用者
 
-從事件中心讀取事件資料的任何實體都是*事件消費者*。 所有事件中樞取用者都透過 AMQP 1.0 工作階段連接，而可供取用的事件都透過工作階段傳遞。 用戶端不需要輪詢資料可用性。
+從事件中樞讀取事件資料的任何實體都是*事件取用者*。 所有事件中樞取用者都透過 AMQP 1.0 工作階段連接，而可供取用的事件都透過工作階段傳遞。 用戶端不需要輪詢資料可用性。
 
 ### <a name="consumer-groups"></a>用戶群組
 
@@ -110,10 +110,10 @@ ms.locfileid: "81261852"
 如果讀取器與資料分割中斷連線，當它重新連線時，會從該取用者群組中該資料分割最後一個讀取器先前提交的檢查點開始讀取。 當讀取器連線時，它會將此位移傳遞給事件中樞，以指定要開始讀取的位置。 如此一來，檢查點能成為下游應用程式標記事件「完成」的方法，也能針對在不同機器上執行的讀取器提供容錯移轉發生時的恢復功能。 從這個檢查點處理程序中指定較低的位移，即可回到較舊的資料。 透過這項機制，檢查點可提供容錯移轉彈性，並支援事件串流重播。
 
 > [!NOTE]
-> 如果在支援與 Azure 上通常可用的版本的儲存 Blob SDK 不同的環境中使用 Azure Blob 儲存作為檢查點存儲,則需要使用代碼將儲存服務 API 版本更改為該環境支援的特定版本。 例如,如果您在[Azure 堆疊中心版本 2002 上運行事件中心](https://docs.microsoft.com/azure-stack/user/event-hubs-overview),則存儲服務的最高可用版本是版本 2017-11-09。 在這種情況下,您需要使用代碼將儲存服務 API 版本定位到 2017-11-09。 有關如何定位特定存儲 API 版本的範例,請參閱 GitHub 上的以下範例: 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> 如果您在支援儲存體 Blob SDK 不同版本的環境中使用 Azure Blob 儲存體做為檢查點存放區，而不是在 Azure 上提供，您必須使用程式碼，將儲存體服務 API 版本變更為該環境所支援的特定版本。 例如，如果您在[Azure Stack Hub 2002 版上執行事件中樞](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)，儲存體服務的最高可用版本是2017-11-09 版。 在此情況下，您必須使用程式碼，將儲存體服務 API 版本的目標設為2017-11-09。 如需如何以特定儲存體 API 版本為目標的範例，請參閱 GitHub 上的下列範例： 
+> - [.Net](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)。 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
-> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js)或[型態文稿](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js)或[TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
 
 ### <a name="common-consumer-tasks"></a>常見的取用者工作

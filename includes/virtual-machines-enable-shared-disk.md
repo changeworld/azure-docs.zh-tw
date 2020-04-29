@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 0df74b82c847c9738d97d2001573666714c17672
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81008320"
 ---
 ## <a name="limitations"></a>限制
@@ -23,16 +23,16 @@ ms.locfileid: "81008320"
 
 [!INCLUDE [virtual-machines-disks-shared-sizes](virtual-machines-disks-shared-sizes.md)]
 
-## <a name="deploy-shared-disks"></a>部署分享磁碟
+## <a name="deploy-shared-disks"></a>部署共用磁片
 
-### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>將進階 SSD 部署為分享磁碟
+### <a name="deploy-a-premium-ssd-as-a-shared-disk"></a>將 premium SSD 部署為共用磁片
 
-要部署啟用共用磁碟功能的託管磁碟,請使用新屬性`maxShares`並定義大於 1 的值。 這使得磁碟可跨多個 VM 共用。
+若要部署已啟用共用磁片功能的受控磁片，請使用新的`maxShares`屬性並定義大於1的值。 這可讓您跨多個 Vm 共用該磁片。
 
 > [!IMPORTANT]
-> 僅當從所有`maxShares`VM 卸載磁碟時,才能設置或更改的值。 有關 的允許值,請參閱[磁碟大小](#disk-sizes)`maxShares`。
+> 只有當磁片`maxShares`從所有 vm 卸載時，才可以設定或變更的值。 如需的允許值，請參閱[磁片大小](#disk-sizes) `maxShares`。
 
-在使用以下範本之前,請`[parameters('dataDiskName')]``[parameters('maxShares')]`用`[resourceGroup().location]`您自己的`[parameters('dataDiskSizeGB')]`值替換、和。
+使用下列範本之前，請將`[parameters('dataDiskName')]`、 `[resourceGroup().location]`、 `[parameters('dataDiskSizeGB')]`和`[parameters('maxShares')]`取代為您自己的值。
 
 ```json
 { 
@@ -73,14 +73,14 @@ ms.locfileid: "81008320"
 }
 ```
 
-### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>將超磁碟部署為共用磁碟
+### <a name="deploy-an-ultra-disk-as-a-shared-disk"></a>將 ultra 磁片部署為共用磁片
 
 #### <a name="cli"></a>CLI
 
-要部署啟用共用磁碟功能的託管磁碟,請將`maxShares`參數更改為大於 1 的值。 這使得磁碟可跨多個 VM 共用。
+若要部署已啟用共用磁片功能的受控磁片，請將`maxShares`參數變更為大於1的值。 這可讓您跨多個 Vm 共用該磁片。
 
 > [!IMPORTANT]
-> 僅當從所有`maxShares`VM 卸載磁碟時,才能設置或更改的值。 有關 的允許值,請參閱[磁碟大小](#disk-sizes)`maxShares`。
+> 只有當磁片`maxShares`從所有 vm 卸載時，才可以設定或變更的值。 如需的允許值，請參閱[磁片大小](#disk-sizes) `maxShares`。
 
 ```azurecli
 #Creating an Ultra shared Disk 
@@ -95,12 +95,12 @@ az disk show -g rg1 -n clidisk
 
 #### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-要部署啟用共用磁碟功能的託管磁碟,請使用 該屬性`maxShares`並定義大於 1 的值。 這使得磁碟可跨多個 VM 共用。
+若要部署已啟用共用磁片功能的受控磁片，請使用屬性`maxShares`並定義大於1的值。 這可讓您跨多個 Vm 共用該磁片。
 
 > [!IMPORTANT]
-> 僅當從所有`maxShares`VM 卸載磁碟時,才能設置或更改的值。 有關 的允許值,請參閱[磁碟大小](#disk-sizes)`maxShares`。
+> 只有當磁片`maxShares`從所有 vm 卸載時，才可以設定或變更的值。 如需的允許值，請參閱[磁片大小](#disk-sizes) `maxShares`。
 
-在使用以下`[parameters('dataDiskName')]`樣本之前,`[resourceGroup().location]``[parameters('dataDiskSizeGB')]``[parameters('maxShares')]``[parameters('diskIOPSReadWrite')]``[parameters('diskMBpsReadWrite')]``[parameters('diskIOPSReadOnly')]`請使用您自己的值取代、 、 、 、 `[parameters('diskMBpsReadOnly')]` 、 、 、 、 、
+使用下列範本之前，請將`[parameters('dataDiskName')]`、 `[resourceGroup().location]`、 `[parameters('dataDiskSizeGB')]` `[parameters('maxShares')]` `[parameters('diskIOPSReadWrite')]` `[parameters('diskMBpsReadWrite')]` `[parameters('diskIOPSReadOnly')]`、、、、和`[parameters('diskMBpsReadOnly')]`取代為您自己的值。
 
 ```json
 {
@@ -168,12 +168,12 @@ az disk show -g rg1 -n clidisk
 }
 ```
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>將 Azure 分享磁碟與 VM 一起使用
+### <a name="using-azure-shared-disks-with-your-vms"></a>將 Azure 共用磁片與您的 Vm 搭配使用
 
-使用`maxShares>1`中部署了共用磁碟后,可以將磁碟裝載到一個或多個 VM。
+當您使用`maxShares>1`部署共用磁片之後，就可以將該磁片掛接到一或多個 vm。
 
 > [!IMPORTANT]
-> 共用磁碟的所有 VM 都必須部署在同一[接近放置群組中](../articles/virtual-machines/windows/proximity-placement-groups.md)。
+> 所有共用磁片的 Vm 都必須部署在相同的[鄰近放置群組](../articles/virtual-machines/windows/proximity-placement-groups.md)中。
 
 ```azurepowershell-interactive
 
@@ -197,9 +197,9 @@ update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 
 ## <a name="supported-scsi-pr-commands"></a>支援的 SCSI PR 命令
 
-將共用磁碟安裝到群集中的 VM 後,可以使用 SCSI PR 建立仲裁並讀取/寫入磁碟。 使用 Azure 共用磁碟時,可以使用以下 PR 命令:
+將共用磁片掛接到叢集中的 Vm 之後，您可以使用 SCSI PR 來建立仲裁併讀取/寫入至磁片。 使用 Azure 共用磁片時，可使用下列 PR 命令：
 
-要與磁碟進行互動,從持久保留操作清單開始:
+若要與磁片互動，請從持續保留-動作清單開始：
 
 ```
 PR_REGISTER_KEY 
@@ -217,7 +217,7 @@ PR_CLEAR_RESERVATION
 PR_RELEASE_RESERVATION 
 ```
 
-使用PR_RESERVE、PR_PREEMPT_RESERVATION或PR_RELEASE_RESERVATION時,提供以下持久保留類型之一:
+使用 PR_RESERVE、PR_PREEMPT_RESER加值稅ION 或 PR_RELEASE_RESER加值稅ION 時，請提供下列其中一種持續性保留類型：
 
 ```
 PR_NONE 
@@ -235,9 +235,9 @@ PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS
 PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
 ```
 
-使用PR_RESERVE、PR_REGISTER_AND_IGNORE、PR_REGISTER_KEY、PR_PREEMPT_RESERVATION、PR_CLEAR_RESERVATION或PR_RELEASE-保留時,還需要提供持久保留密鑰。
+使用 PR_RESERVE、PR_REGISTER_AND_IGNORE、PR_REGISTER_KEY、PR_PREEMPT_RESER加值稅ION、PR_CLEAR_RESER加值稅ION 或 PR_RELEASE 保留時，您也需要提供持續保留金鑰。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您有興趣嘗試共用磁碟,[請註冊我們的預覽](https://aka.ms/AzureSharedDiskPreviewSignUp)版。
+如果您想要試用共用磁片，請[註冊我們的預覽版](https://aka.ms/AzureSharedDiskPreviewSignUp)。

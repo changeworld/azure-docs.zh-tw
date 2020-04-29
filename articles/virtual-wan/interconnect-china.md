@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 虛擬 WAN 和安全集線器與中國互連
+title: 使用 Azure 虛擬 WAN 和安全中樞與中國互連
 description: 了解虛擬 WAN 自動化可調整的分支對分支連線、可用的區域和夥伴。
 services: virtual-wan
 author: skishen525
@@ -8,147 +8,147 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: sukishen
 ms.openlocfilehash: d086484ece6faf95dccffb1e29da8a0e906b1da4
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80985621"
 ---
-# <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>使用 Azure 虛擬 WAN 和安全集線器與中國互連
+# <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>使用 Azure 虛擬 WAN 和安全中樞與中國互連
 
-當觀察常見的汽車、製造業、物流業或其他機構,如大使館時,經常有如何改善與中國的互聯的問題。 這些改進主要與使用雲服務(如 Office 365、Azure 全球服務)或將中國境內的分支機構與客戶骨幹網連接相關。
+在查看一般汽車、製造、物流產業或其他國家標準暨（例如 embassies）時，通常會有關于如何改善與中國的互連的問題。 這些改良功能大多適用于使用 Office 365、Azure 全球服務或中國內部的互連分支與客戶骨幹等雲端服務。
 
-在大多數情況下,客戶都在為連接中國境外的高延遲、低頻寬、不穩定的連接和高昂的成本而苦苦掙扎(例如,歐洲或美國)。
+在大部分的情況下，客戶會面臨高延遲、低頻寬、不穩定的連線，以及連接到中國外部（例如歐洲或美國）的高成本。
 
-這些鬥爭的一個原因是"中國長城防火牆",它保護了中國互聯網的一部分,並過濾到中國的流量。 除了香港和澳門等特別行政區外,幾乎所有從中國大陸到境外的交通都通過長城。 貫穿香港和澳門的流量沒有完全撞上長城防火牆,由長城防火牆的一部分處理。
+這些掙扎的原因是「中國的絕佳防火牆」，可保護網際網路的中文部分，並篩選到中國的流量。 幾乎所有從中國到中國以外執行的流量（如香港和澳門之類的特殊系統管理區域除外）都會通過絕佳的防火牆。 透過香港和澳門執行的流量不會在完全強制下達到絕佳的防火牆，而是由絕佳防火牆的子集來處理。
 
 ![提供者互連](./media/interconnect-china/provider.png)
 
-使用虛擬 WAN,客戶可以建立更性能、更穩定的連接到 Microsoft 雲端服務,並在不違反中國網路安全法的情況下建立與其企業網路的連接。
+客戶可以使用虛擬 WAN，建立更高效能且穩定的連線來連線到 Microsoft Cloud 服務和商業網路的連線，而不會中斷中文網路安全性法則。
 
-## <a name="requirements-and-workflow"></a><a name="requirements"></a>要求和工作流
+## <a name="requirements-and-workflow"></a><a name="requirements"></a>需求和工作流程
 
-如果您想遵守中國網路安全法,您需要滿足一系列特定條件。
+如果您想要保持與中文網路安全性法則相容，則必須符合一組特定條件。
 
-首先,您需要與擁有中國 ICP(互聯網內容供應商)許可證的網路和 ISP 合作。 在大多數情況下,您將最終擁有以下提供者之一:
+首先，您必須與擁有適用于中國之 ICP （網際網路內容提供者）授權的網路和 ISP 一起合作。 在大部分的情況下，您會得到下列其中一個提供者：
 
-* 中國電信全球有限公司
-* 中國移動有限公司
-* 中國聯通有限公司
-* 電訊盈科全球有限公司
-* 香港電訊有限公司
+* 中國電信全球有限公司。
+* 中國 Mobile 公司。
+* 中國 Unicom 有限公司。
+* PCCW GLOBAL LIMITED Global 有限公司。
+* 香港的電信公司。
 
-根據供應商和您的需求,您現在需要購買以下網路連接服務之一,以互連您在中國境內的分支機構。
+視提供者和您的需求而定，您現在必須購買下列其中一種網路聯機服務，才能在中國與您的分支互連。
 
-* MPLS/IPVPN網路 
-* 軟體定義的 WAN (SDWAN)
-* 專用互聯網接入
+* MPLS/IPVPN 網路 
+* 軟體定義的 WAN （SDWAN）
+* 專用的網際網路存取
 
-接下來,您需要與該供應商達成一致,以便突破微軟全球網路及其在香港的邊緣網路,而不是在北京或上海。 在這種情況下,香港非常重要,因為它與中國有物理聯繫和位置。
+接下來，您必須同意該提供者，讓 Microsoft 全球網路及其邊緣網路輸入香港，而不是北京或上海。 在此情況下，香港特別行政區非常重要，因為它的實體連接和中國的位置。
 
-雖然大多數客戶認為使用新加坡進行互連是最好的例子,因為它在地圖上看起來離中國更近,但事實並非如此。 當您按照網路光纖地圖操作時,幾乎所有的網路連接都經過北京、上海和香港。 這使得香港成為與中國互聯的更好位置選擇。
+雖然大部分的客戶都認為使用新加坡來進行互連是最佳情況，因為在查看地圖時，中國看起來很近，這不是真正的情況。 當您遵循網路光纖對應時，幾乎所有網路連線都會通過北京、上海和香港。 這讓香港的位置更適合與中國互連。
 
-根據供應商的不同,您可能會獲得不同的服務產品。 下表根據撰寫本文時的信息,顯示了提供者及其提供的服務的範例。
+視提供者而定，您可能會取得不同的服務供應專案。 下表根據撰寫本文時的資訊，顯示提供者的範例及其提供的服務。
 
-| 服務 | 提供者範例 |
+| Service | 提供者範例 |
 | --- | --- |
-| MPLS/IPVPN網路 |電訊盈科,中國電信全球 |
-|SDWAN| 電訊盈科,中國電信全球|
-| 專用互聯網接入 | 電訊盈科、香港電訊、中國美孚|
+| MPLS/IPVPN 網路 |PCCW GLOBAL LIMITED，中國電信全球 |
+|SDWAN| PCCW GLOBAL LIMITED，中國電信全球|
+| 專用的網際網路存取 | PCCW GLOBAL LIMITED，香港電信，中國 Mobile|
 
-透過您的供應商,您可以商定以下兩種解決方案中的哪一種可用於存取 Microsoft 全球主幹:
+有了您的提供者，您就可以同意下列哪一種解決方案用來觸及 Microsoft 全球骨幹：
 
-* 在香港終止 Microsoft Azure ExpressRoute。 使用MPLS/IPVPN就是這種情況。 目前,只有只有ICP牌照供應商的快遞路由香港是中國電信全球。 但是,如果他們利用雲端交換供應商(如兆埠或 InterCloud),他們也可以與其他供應商交談。 有關詳細資訊,請參閱[ExpressRoute 連線提供者](../expressroute/expressroute-locations-providers.md#partners)。
+* 取得 Microsoft Azure ExpressRoute 在香港特別行政區結束。 這就是使用 MPLS/IPVPN 的情況。 目前只有唯一具有「ExpressRoute」的 ICP 授權提供者，才是「中國電信全球」。 不過，如果使用者利用 Megaport 或 InterCloud 等雲端交換提供者，也可以與其他提供者溝通。 如需詳細資訊，請參閱[ExpressRoute 連線提供者](../expressroute/expressroute-locations-providers.md#partners)。
 
-* 直接在以下互聯網交換點之一使用專用 Internet 訪問,或使用專用網路互連。
+* 直接在下列其中一個網際網路交換點上使用專用的網際網路存取，或使用私人網路互連。
 
-以下清單顯示香港可能進行互聯網交易所:
+下列清單顯示香港中可能的網際網路交換：
 
-* AMS-IX 香港
-* BBIX 香港
-* Equinix 香港
-* 香港IX
+* AMS-IX 香港特別行政區
+* BBIX 香港特別行政區
+* Equinix 香港特別行政區
+* HKIX
 
-使用此連接時,Microsoft 服務的下一個 BGP 躍點必須是 Microsoft 自治系統編號 (AS#) 8075。 如果使用單個位置或 SDWAN 解決方案,則是連接的選擇。
+使用此連接時，您的下一個 Microsoft 服務 BGP 躍點必須是 Microsoft 自發系統編號（AS #）8075。 如果您使用單一位置或 SDWAN 解決方案，則會選擇連接。
 
-無論哪種方式,我們仍然建議你有第二個和定期的互聯網突破進入中國大陸。 這是為了將企業流量拆分為雲服務(如 Microsoft 365 和 Azure)以及受法律監管的 Internet 流量之間的流量。
+無論如何，我們還是建議您將第二個和一般的網際網路分類為中文大陸。 這是為了將企業流量之間的流量分割為 Microsoft 365 和 Azure 這類雲端服務，以及受法律管制的網際網路流量。
 
-中國境內合規的網路架構可能類似於以下示例:
+中國內符合規範的網路架構可能會如下列範例所示：
 
 ![多個分支](./media/interconnect-china/multi-branch.png)
 
-在此示例中,與香港的 Microsoft 全球網路進行互連,現在可以開始利用[Azure 虛擬廣域網全球傳輸體系結構](virtual-wan-global-transit-network-architecture.md)和其他服務(如 Azure 安全虛擬廣域網中心)來使用服務並互連中國境外的分支機構和數據中心。
+在此範例中，與 Microsoft Global 網路輸入香港）互連，您現在可以開始利用[Azure 虛擬 Wan 全域傳輸架構](virtual-wan-global-transit-network-architecture.md)和其他服務（例如 Azure 安全虛擬 wan 中樞），以在中國以外的分支和資料中心使用服務和互連。
 
-## <a name="hub-to-hub-communication"></a><a name="hub-to-hub"></a>樞紐到集線器通通
+## <a name="hub-to-hub-communication"></a><a name="hub-to-hub"></a>中樞對中樞通訊
 
-在本節中,我們使用虛擬 WAN 集線器到集線器通信進行互連。 在這種情況下,您將創建新的虛擬廣域網中心資源以連接到香港的虛擬廣域網中心、您喜歡的其他地區、已具有 Azure 資源的區域或要連接的區域。
+在本節中，我們會使用虛擬 WAN 中樞對中樞通訊來進行互連。 在此案例中，您會建立新的虛擬 WAN 中樞資源，以連線至香港中的虛擬 WAN 中樞、您偏好的其他區域、您已經有 Azure 資源的區域，或想要連接的位置。
 
-範例結構可能類似於以下範例:
+範例架構看起來如下列範例所示：
 
 ![範例 WAN](./media/interconnect-china/sample.png)
 
-在此示例中,中國分支通過使用 VPN 或 MPLS 連接連接到 Azure 雲中國並相互連接。 需要連接到全球服務的分支機搆使用直接連接到香港的MPLS或基於網際網路的服務。 如果要在香港和其他區域使用 ExpressRoute,則需要配置[ExpressRoute 全球覆蓋,](../expressroute/expressroute-global-reach.md)以互連兩個 ExpressRoute 電路。
+在此範例中，中國分支會使用 VPN 或 MPLS 連線，連接到 Azure 雲端中國和彼此。 需要連接到全域服務的分支，會使用直接連線到香港的 MPLS 或以網際網路為基礎的服務。 如果您想要在香港和另一個區域中使用 ExpressRoute，您必須設定[Expressroute Global 觸及](../expressroute/expressroute-global-reach.md)以同時互連這兩個 ExpressRoute 線路。
 
-某些地區不提供 ExpressRoute 全球覆蓋。 例如,如果您需要與巴西或印度進行互連,則需要利用[雲交換提供者](../expressroute/expressroute-locations.md#connectivity-through-exchange-providers)提供路由服務。
+在某些區域中無法使用 ExpressRoute 全球範圍。 例如，如果您需要與巴西或印度互連，您必須利用[雲端 Exchange 提供者](../expressroute/expressroute-locations.md#connectivity-through-exchange-providers)來提供路由服務。
 
-下圖顯示了此方案的兩個範例。
+下圖顯示此案例的兩個範例。
 
 ![Global Reach](./media/interconnect-china/global.png)
 
-## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Office 365 的安全互聯網突破
+## <a name="secure-internet-breakout-for-office-365"></a><a name="secure"></a>Office 365 的安全網際網路分類
 
-另一個考慮因素是網路安全以及登錄中國和虛擬廣域網建立骨幹元件與客戶骨幹網之間的入口點。 在大多數情況下,需要突破香港互聯網,直接到達微軟邊緣網路,並因此,Azure 前門伺服器用於微軟365服務。
+另一個考慮是網路安全性，以及記錄中國與虛擬 WAN 建立的骨幹元件之間的進入點，以及客戶骨幹。 在大部分情況下，需要以香港的方式對網際網路進行分類，以直接觸達 Microsoft Edge 網路，並將用於 Microsoft 365 服務的 Azure 前端伺服器。
 
-對於具有虛擬 WAN 的兩種方案,您將利用[Azure 虛擬 WAN 安全集線器](../firewall-manager/secured-virtual-hub.md)。 使用 Azure 防火牆管理器,可以將常規虛擬 WAN 中心更改為安全中心,然後在該中心內部署和管理 Azure 防火牆。
+針對這兩種使用虛擬 WAN 的案例，您會利用[Azure 虛擬 wan 保護的中樞](../firewall-manager/secured-virtual-hub.md)。 使用 Azure 防火牆管理員，您可以將一般虛擬 WAN 中樞變更為受保護的中樞，然後在該中樞內部署和管理 Azure 防火牆。
 
-下圖顯示此專案的範例:
+下圖顯示此案例的範例：
 
-![網路和微軟服務流量的互聯網突破](./media/interconnect-china/internet.png)
+![Web 和 Microsoft 服務流量的網際網路分類](./media/interconnect-china/internet.png)
 
-## <a name="architecture-and-traffic-flows"></a><a name="traffic"></a>體系結構和流量流
+## <a name="architecture-and-traffic-flows"></a><a name="traffic"></a>架構和流量流程
 
-根據您對與香港連接的選擇,整體架構可能會稍有改變。 本節顯示了三個可用的體系結構,與 VPN 或 SDWAN 和/或 ExpressRoute 不同組合。
+根據您對於香港連線的選擇而定，整體架構可能會稍微變更。 本節顯示三種適用于 VPN 或 SDWAN 和/或 ExpressRoute 之不同組合的可用架構。
 
-所有這些選項都利用 Azure 虛擬 WAN 安全集線器進行香港直接 M365 連接。 這些體系結構還支援[Office 365 多地理位置](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo)的合規性要求,並將流量保留在下一個 Office 365 前門位置附近。 因此,這也是微軟365在中國使用的改進。
+所有這些選項都是使用 Azure 虛擬 WAN 保護的中樞，以香港的方式進行直接 M365 連線。 這些架構也支援[Office 365 多地理](https://docs.microsoft.com/office365/enterprise/office-365-multi-geo)位置的合規性需求，並將該流量保留在下一個辦公室365的 Front 大門附近。 因此，這也是在中國使用 Microsoft 365 的改善。
 
-將 Azure 虛擬 WAN 與 Internet 連接結合使用時,每個連接都可以受益於其他服務,如[Microsoft Azure 對等服務 (MAPS)。](https://docs.microsoft.com/azure/peering-service/about) MAPS 旨在優化來自第三方互聯網服務提供者的Microsoft全球網路流量。
+將 Azure 虛擬 WAN 與網際網路連線搭配使用時，每個連接都可以受益于其他服務，例如[Microsoft Azure 對等互連服務（MAPS）](https://docs.microsoft.com/azure/peering-service/about)。 已建立對應，以將來自協力廠商網際網路服務提供者的流量優化至 Microsoft 全球網路。
 
-### <a name="option-1-sdwan-or-vpn"></a><a name="option-1"></a>選項 1:SDWAN 或 VPN
+### <a name="option-1-sdwan-or-vpn"></a><a name="option-1"></a>選項1： SDWAN 或 VPN
 
-本節討論一種設計,該設計使用 SDWAN 或 VPN 到香港和其他分支機構。 此選項顯示在虛擬 WAN 主幹的兩個網站上使用純 Internet 連接時的使用和流量流。 在這種情況下,連接透過專用網路接入或 ICP 供應商 SDWAN 解決方案帶到香港。 其他分支機構也使用純互聯網或SDWAN解決方案。
+本節討論使用 SDWAN 或 VPN 至香港和其他分支的設計。 此選項會顯示在虛擬 WAN 骨幹的兩個網站上使用純網際網路連線時的使用和流量。 在此情況下，會使用專用的網際網路存取或 ICP 提供者 SDWAN 解決方案，將連線帶入香港。 其他分支也會使用純網際網路或 SDWAN 解決方案。
 
-![中國到香港的交通](./media/interconnect-china/china-traffic.png)
+![中國到香港的流量](./media/interconnect-china/china-traffic.png)
 
-在此體系結構中,每個網站都使用 VPN 和 Azure 虛擬 WAN 連接到 Microsoft 全球網路。 網站與香港之間的流量在微軟網路傳輸,最後一英里只使用常規的互聯網連接。
+在此架構中，每個網站都會使用 VPN 和 Azure 虛擬 WAN 連線至 Microsoft 全球網路。 網站與香港特別行政區之間的流量會透過數目 Microsoft 網路傳輸，而且只會在最後一英里使用一般的網際網路連線。
 
-### <a name="option-2-expressroute-and-sdwan-or-vpn"></a><a name="option-2"></a>選項 2:快速路由與 SDWAN 或 VPN
+### <a name="option-2-expressroute-and-sdwan-or-vpn"></a><a name="option-2"></a>選項2： ExpressRoute 和 SDWAN 或 VPN
 
-本節討論在香港使用 ExpressRoute 和其他具有 VPN/SDWAN 分支機構的分支機構的設計。 此選項顯示在香港終止的和 ExpressRoute 的使用以及透過 SDWAN 或 VPN 連接的其他分支機構。 香港的 ExpressRoute 目前僅限於提供者的簡短清單,您可以在[快速路線合作夥伴](../expressroute/expressroute-locations-providers.md#global-commercial-azure)清單中找到該清單。
+本節討論使用香港和其他分支中的 ExpressRoute 搭配 VPN/SDWAN 分支的設計。 此選項會顯示在香港特別行政區終止和 ExpressRoute 的使用，以及透過 SDWAN 或 VPN 連線的其他分支。 在香港的 ExpressRoute 中，目前僅限於簡短的提供者清單，您可以在[Express Route 合作夥伴](../expressroute/expressroute-locations-providers.md#global-commercial-azure)清單中找到。
 
-![中國至香港交通快線](./media/interconnect-china/expressroute.png)
+![中國到香港特別行政區流量 ExpressRoute](./media/interconnect-china/expressroute.png)
 
-也有選擇終止從中國的ExpressRoute,例如在韓國或日本。 但是,鑒於合規、監管和延遲,香港目前是最佳選擇。
+也有一些選項可終止來自中國的 ExpressRoute，例如，在韓國或日本。 但是，由於合規性、法規和延遲，香港特別行政區是最佳選擇。
 
-### <a name="option-3-expressroute-only"></a><a name="option-3"></a>選項 3:僅限快速路由
+### <a name="option-3-expressroute-only"></a><a name="option-3"></a>選項3：僅限 ExpressRoute
 
-本節討論用於香港和其他分支機構的 ExpressRoute 的設計。 此選項在兩端使用 ExpressRoute 顯示互連。 在這裡,您有一個不同於其他流量的流量。 Microsoft 365 流量將流向 Azure 虛擬 WAN 安全集線器,並從那裡流向 Microsoft 邊緣網路和 Internet。
+本節討論將 ExpressRoute 用於香港和其他分支的設計。 此選項會顯示在兩端使用 ExpressRoute 的互連。 這裡有不同的流量流程。 Microsoft 365 流量會傳送至 Azure 虛擬 WAN 保護的中樞，並從該處流向 Microsoft Edge 網路和網際網路。
 
-到互聯分支機構或從它們到中國位置的流量將遵循該體系結構中的不同方法。 目前虛擬廣域網路不支援快速路由到快速路由傳輸。 流量將利用 ExpressRoute 全球覆蓋或第三方互連,而無需透過虛擬廣域網中心。 它將直接從一個 Microsoft 企業邊緣 (MSEE) 流向另一個。
+前往已互連分支或從其到中國位置的流量，會遵循該架構中的不同方法。 目前虛擬 WAN 不支援 ExpressRoute 傳輸。 流量會利用 ExpressRoute 全球範圍或協力廠商互連，而不會傳遞虛擬 WAN 中樞。 它會直接從一個 Microsoft 企業邊緣（MSEE）流向另一個。
 
 ![ExpressRoute Global Reach](./media/interconnect-china/expressroute-virtual.png)
 
-目前,ExpressRoute 全球覆蓋/地區並非在每個國家/地區都可用,但您可以使用 Azure 虛擬 WAN 配置解決方案。
+目前，每個國家/地區都無法使用 ExpressRoute 全球範圍，但您可以使用 Azure 虛擬 WAN 來設定解決方案。
 
-例如,您可以使用 Microsoft 對等互連配置 ExpressRoute,並透過該對等互連連接到 Azure 虛擬 WAN 的 VPN 隧道。 現在,您再次啟用了 VPN 和 ExpressRoute 之間的傳輸,沒有全球覆蓋和第三方供應商和服務(如兆埠雲)。
+例如，您可以使用 Microsoft 對等互連來設定 ExpressRoute，並透過該對等互連將 VPN 通道連線至 Azure 虛擬 WAN。 現在您已再次啟用 VPN 和 ExpressRoute 之間的傳輸，而不需要全球觸達和協力廠商提供者和服務，例如 Megaport Cloud。
 
 ## <a name="next-steps"></a>後續步驟
 
 如需詳細資訊，請參閱下列文章：
 
-* [使用 Azure 虛擬 WAN 的全球傳輸網路架構](virtual-wan-global-transit-network-architecture.md)
+* [Azure 虛擬 WAN 的全球傳輸網路架構](virtual-wan-global-transit-network-architecture.md)
 
-* [建立虛擬廣域網中心](virtual-wan-site-to-site-portal.md)
+* [建立虛擬 WAN 中樞](virtual-wan-site-to-site-portal.md)
 
-* [設定虛擬廣域網路安全集線器](../firewall-manager/secure-cloud-network.md)
+* [設定虛擬 WAN 保護的中樞](../firewall-manager/secure-cloud-network.md)
 
-* [Azure 對等服務預覽概述](https://docs.microsoft.com/azure/peering-service/about)
+* [Azure 對等服務預覽總覽](https://docs.microsoft.com/azure/peering-service/about)

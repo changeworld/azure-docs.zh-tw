@@ -1,5 +1,5 @@
 ---
-title: 垂直縮放 Azure 虛擬機器縮放集
+title: 垂直調整 Azure 虛擬機器擴展集
 description: 如何垂直調整虛擬機器大小以回應 Azure 自動化的監視警示
 author: mimckitt
 tags: azure-resource-manager
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mimckitt
 ms.openlocfilehash: c28c50ef78f67daa6adc4022d8feb559f5c1c1f0
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273353"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虛擬機器擴展集垂直自動調整
@@ -38,7 +38,7 @@ ms.locfileid: "81273353"
 4. 使用 Webhook 通知將警示加入至您的虛擬機器擴展集。
 
 > [!NOTE]
-> 因為這是第一部虛擬機器大小的緣故，所以它可以調整的大小，會受限於目前虛擬機器部署所在之叢集中是否可使用其他大小。 本文所用的已發佈自動化 Runbook 中，已考量了這個情況，只會於下列成對的 VM 大小內調整大小。 這表示 Standard_D1v2 虛擬機器不會突然相應增加為 Standard_G5 或相應減少為 Basic_A0。 此外,不支援限制虛擬機大小向上/向下擴展。 您可以在以下大小配對之間選擇調整︰
+> 因為這是第一部虛擬機器大小的緣故，所以它可以調整的大小，會受限於目前虛擬機器部署所在之叢集中是否可使用其他大小。 本文所用的已發佈自動化 Runbook 中，已考量了這個情況，只會於下列成對的 VM 大小內調整大小。 這表示 Standard_D1v2 虛擬機器不會突然相應增加為 Standard_G5 或相應減少為 Basic_A0。 也不支援限制的虛擬機器大小相應增加/減少。 您可以在以下大小配對之間選擇調整︰
 > 
 > | 成對的調整 VM 大小 |  |
 > | --- | --- |
@@ -88,7 +88,7 @@ ms.locfileid: "81273353"
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>使用執行身分功能來建立 Azure 自動化帳戶
-您需要做的第一件事是建立 Azure 自動化帳戶，以此帳戶裝載用來調整虛擬機器擴展集執行個體的 Runbook。 最近，[Azure 自動化](https://azure.microsoft.com/services/automation/)引進了「執行身分帳戶」功能，此功能可設定服務主體以便代表使用者自動執行 Runbook。 如需詳細資訊，請參閱
+您需要做的第一件事是建立 Azure 自動化帳戶，以此帳戶裝載用來調整虛擬機器擴展集執行個體的 Runbook。 最近，[Azure 自動化](https://azure.microsoft.com/services/automation/)引進了「執行身分帳戶」功能，此功能可設定服務主體以便代表使用者自動執行 Runbook。 如需詳細資訊，請參閱：
 
 * [使用 Azure 執行身分帳戶驗證 Runbook](../automation/automation-sec-configure-azure-runas-account.md)
 
@@ -157,7 +157,7 @@ Add-AzMetricAlertRule  -Name  $alertName `
 * [Azure 監視器 PowerShell 快速入門範例](../azure-monitor/platform/powershell-quickstart-samples.md)
 * [Azure 監視器跨平台 CLI 快速入門範例](../azure-monitor/platform/cli-samples.md)
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>[摘要]
 
 這篇文章示範簡單的垂直調整範例。 藉助這些建置組塊 (自動化帳戶、Runbook、Webhook、警示)，您可以連接各式各樣的事件與一組自訂的動作。
 

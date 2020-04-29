@@ -1,25 +1,25 @@
 ---
-title: Azure 宇宙 DB 的 SQL 關鍵字
-description: 瞭解 Azure 宇宙 DB 的 SQL 關鍵字。
+title: Azure Cosmos DB 的 SQL 關鍵字
+description: 瞭解 Azure Cosmos DB 的 SQL 關鍵字。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261562"
 ---
-# <a name="keywords-in-azure-cosmos-db"></a>Azure 宇宙 DB 中的關鍵字
+# <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的關鍵字
 
-本文詳細介紹了在 Azure Cosmos DB SQL 查詢中可以使用的關鍵字。
+本文詳細說明可用於 Azure Cosmos DB SQL 查詢中的關鍵字。
 
 ## <a name="between"></a>BETWEEN
 
-可以使用 關鍵`BETWEEN`字 對字串或數值的範圍表示查詢。 例如,以下查詢返回第一個子級為 1-5 的所有專案(包括)。
+您可以使用`BETWEEN`關鍵字，根據字串或數值的範圍來表示查詢。 例如，下列查詢會傳回第一個子系的成績為1-5 （含）的所有專案。
 
 ```sql
     SELECT *
@@ -27,23 +27,23 @@ ms.locfileid: "81261562"
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-您還可以在`BETWEEN``SELECT`子句中使用關鍵字,如以下示例所示。
+您也可以在`BETWEEN` `SELECT`子句中使用關鍵字，如下列範例所示。
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-在 SQL API 中,與 ANSI SQL 不同,您可以針對混合類型的屬性表示範圍查詢。 例如,`grade`可能是一個數字,類似`5`於某些項,另一個字串與其他`grade4`項類似。 在這些情況下,如 JAVAScript 中,兩種不同類型之間的`Undefined`比較會導致 在中,因此將跳過該專案。
+在 SQL API 中，與 ANSI SQL 不同的是，您可以針對混合類型的屬性工作表示範圍查詢。 例如， `grade`可能是像`5`在某些專案中的數位，以及如`grade4`其他的字串。 在這些情況下，如同在 JavaScript 中，兩個不同類型之間的比較`Undefined`會產生，因此會略過專案。
 
 > [!TIP]
-> 為了加快查詢執行時間,請創建索引策略,該策略對`BETWEEN`子句篩選的任何數值屬性或路徑使用範圍索引類型。
+> 如需更快速的查詢執行時間，請建立索引編制原則，針對`BETWEEN`子句所篩選的任何數值屬性或路徑，使用範圍索引類型。
 
 ## <a name="distinct"></a>DISTINCT
 
-關鍵字`DISTINCT`消除了查詢投影中的重複項。
+`DISTINCT`關鍵字會排除查詢投影中的重複專案。
 
-此樣本範例中,查詢對每個姓氏的值進行專案:
+在此範例中，查詢會針對每個姓氏執行下列專案的值：
 
 ```sql
 SELECT DISTINCT VALUE f.lastName
@@ -58,7 +58,7 @@ FROM Families f
 ]
 ```
 
-您還可以投影唯一物件。 在這種情況下,兩個文檔中的一個中不存在姓氏欄位,因此查詢返回一個空物件。
+您也可以投影唯一的物件。 在此情況下，lastName 欄位不存在於這兩份檔的其中一個，因此查詢會傳回空的物件。
 
 ```sql
 SELECT DISTINCT f.lastName
@@ -76,14 +76,14 @@ FROM Families f
 ]
 ```
 
-在子查詢中的投影中也可以使用 DISTINCT:
+DISTINCT 也可以用於子查詢內的投影：
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
 FROM f
 ```
 
-此查詢將生成包含每個子項給定名稱的陣列,並刪除重複項。 此陣列別名為子名稱,並投影到外部查詢中。
+此查詢會投射一個陣列，其中包含每個子系的 givenName，並移除重複的專案。 此陣列的別名為 ChildNames，並預計在外部查詢中。
 
 結果如下：
 
@@ -103,7 +103,7 @@ FROM f
 ]
 ```
 
-不支援具有聚合系統函數的查詢和具有子`DISTINCT`查詢的查詢。 例如,不支援以下查詢:
+不支援具有匯總系統函數和子查詢的`DISTINCT`查詢。 例如，不支援下列查詢：
 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
@@ -111,7 +111,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 
 ## <a name="in"></a>IN
 
-使用 IN 關鍵字檢查指定值是否與清單中的任何值匹配。 例如,以下查詢返回`id``WakefieldFamily`作為`AndersenFamily`或的所有族項。
+使用 IN 關鍵字來檢查指定的值是否符合清單中的任何值。 例如，下列查詢會傳回為`id` `WakefieldFamily`或`AndersenFamily`的所有家族專案。
 
 ```sql
     SELECT *
@@ -119,7 +119,7 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
     WHERE Families.id IN ('AndersenFamily', 'WakefieldFamily')
 ```
 
-以下範例傳回狀態為任何指定值的所有項:
+下列範例會傳回狀態為任何指定值的所有專案：
 
 ```sql
     SELECT *
@@ -127,15 +127,15 @@ SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
     WHERE Families.address.state IN ("NY", "WA", "CA", "PA", "OH", "OR", "MI", "WI", "MN", "FL")
 ```
 
-SQL API 支援[透過 JSON 數位進行反覆運算](sql-query-object-array.md#Iteration),並透過 FROM 源中的 in 關鍵字添加新構造。
+SQL API 支援[反覆運算 JSON 陣列](sql-query-object-array.md#Iteration)，並透過從來源的 in 關鍵字新增結構。
 
-如果在`IN`篩選器中包含分區鍵,則查詢將自動篩選為僅相關分區。
+如果您在篩選中包含分割區`IN`索引鍵，您的查詢將會自動篩選成隻有相關的資料分割。
 
 ## <a name="top"></a>頂端
 
-TOP 關鍵字按未`N`定義 的順序返回第一個查詢結果數。 最佳做法是,將 TOP`ORDER BY`與 子句一起`N`限制為第 一個排序值數。 組合這兩個子句是可預測地指示 TOP 影響的行的唯一方法。
+TOP 關鍵字會以未定義`N`的順序傳回第一個查詢結果數目。 最佳做法是使用 TOP 搭配`ORDER BY`子句，將結果限制為第一個`N`排序值的數目。 結合這兩個子句是可預測的唯一方式，指出最常影響的資料列。
 
-可以使用具有常量值的 TOP(如以下範例所示)或使用參數化查詢使用變數值。
+您可以使用 TOP 搭配常數值，如下列範例所示，或搭配使用參數化查詢的變數值。
 
 ```sql
     SELECT TOP 1 *

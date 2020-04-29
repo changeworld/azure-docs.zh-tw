@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
 ms.openlocfilehash: b9ced5d4a81effcd73e0243d09bb83ed0fe7667c
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253691"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 規則引擎的 HTTP 變數
@@ -27,14 +27,14 @@ HTTP 變數能提供擷取 HTTP 要求和回應中繼資料的方法。 此中�
 - [快取索引鍵重寫](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
 - [修改用戶端要求標頭](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
 - [修改用戶端回應標頭](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
-- [URL 重定向](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
+- [URL 重新導向](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
 - [URL 重寫](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
 
 ## <a name="definitions"></a>定義
 下表描述支援的 HTTP 變數。 在無法針對特定要求提供地理中繼資料 (例如郵遞區號) 時，系統將會傳回空白值。
 
 
-| 名稱 | 變數 | 描述 | 範例值 |
+| Name | 變數 | 描述 | 範例值 |
 | ---- | -------- | ----------- | ------------ |
 | ASN (要求者) | %{geo_asnum} | 表示要求者的 AS 號碼。 <br /><br />**已淘汰：**%{virt_dst_asnum}。 <br />此變數已由 %{geo_asnum} 取代。 雖然使用此已淘汰變數的規則仍然可以運作，您應該更新規則以使用新的變數。 | AS15133 |
 | 城市 (要求者) | %{geo_city} | 表示要求者的城市。 | Los Angeles |
@@ -54,7 +54,7 @@ HTTP 變數能提供擷取 HTTP 要求和回應中繼資料的方法。 此中�
 | 找到查詢字串參數 | %{is_amp} | 此變數的值會根據要求是否包含至少一個查詢字串參數而有所不同。<br /><br />- 找到參數：&<br />- 沒有參數：NULL | & |
 | 查詢字串參數值 | %{arg_&lt;parameter&gt;} | 傳回 &lt;parameter&gt; 字詞所識別查詢字串參數的對應值。 | 範例用法： <br />%{arg_language}<br /><br />範例查詢字串參數： <br />?language=en<br /><br />範例值：en |
 | 查詢字串值 | %{query_string} | 表示定義於要求 URL 中的完整查詢字串值。 |key1=val1&key2=val2&key3=val3 |
-| 推薦者網域 | %{referring_domain} | 指示引用器請求標頭中定義的域。 | <www.google.com> |
+| 推薦者網域 | %{referring_domain} | 表示在訪客要求標頭中定義的網域。 | <www.google.com> |
 | 地區 (要求者) | %{geo_region} | 透過英數字元縮寫表示要求者的地區 (例如州或省)。 | CA |
 | 要求標頭值 | %{http_RequestHeader} | 傳回 RequestHeader 字詞所識別要求標頭的對應值。 <br /><br />如果要求標頭包含破折號 (例如 User-Agent)，則會以底線來取代 (例如 User_Agent)。| 範例用法：%{http_Connection}<br /><br />範例值：Keep-Alive | 
 | 要求主機 | %{host} | 表示定義於要求 URL 中的主機。 | <www.mydomain.com> |
@@ -62,10 +62,10 @@ HTTP 變數能提供擷取 HTTP 要求和回應中繼資料的方法。 此中�
 | 要求配置 | %{scheme} | 表示要求配置。 |http |
 | 要求 URI (相對) | %{request_uri} | 表示定義於要求 URI 中的相對路徑 (包括查詢字串)。 | /marketing/foo.js?loggedin=true |
 | 要求 URI (相對，不含查詢字串) | %{uri} | 表示被要求內容的相對路徑。 <br /><br/>重要資訊：<br />- 此相對路徑不包含查詢字串。<br />- 此相對路徑會反映 URL 重寫。 URL 將會在下列情況下被重寫：<br />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- URL 重寫功能：此功能會對定義於要求 URI 中的相對路徑進行重寫。<br />    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- 邊緣 CNAME URL：此類型的要求會被重寫至相對應的 CDN URL。 |/800001/corigin/rewrittendir/foo.js |
-| 要求 URI | %{request} | 描述要求。 <br />語法:HTTP&lt;&gt;&lt;方法&gt;&lt;相對 路徑 HTTP 協定&gt; | GET /marketing/foo.js?loggedin=true HTTP/1.1 |
+| 要求 URI | %{request} | 描述要求。 <br />語法： &lt;HTTP 方法&gt; &lt;相對路徑&gt; &lt;HTTP 通訊協定&gt; | GET /marketing/foo.js?loggedin=true HTTP/1.1 |
 | 回應標頭值 | %{resp_&lt;ResponseHeader&gt;} | 傳回 &lt;ResponseHeader&gt; 字詞所識別回應標頭的對應值。 <br /><br />如果回應標頭包含破折號 (例如 User-Agent)，則會以底線來取代 (例如 User_Agent)。 | 範例用法：%{resp_Content_Length}<br /><br />範例值：100 |
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 下表說明指定 HTTP 變數的正確語法。
 
 
@@ -110,10 +110,10 @@ HTTP 變數名稱僅支援字母字元和底線。 系統會將不支援的字�
 ## <a name="exceptions"></a>例外狀況
 下表說明系統不會將指定文字視為 HTTP 變數的情況。
 
-| 條件 | 描述 | 範例 |
+| 狀況 | 說明 | 範例 |
 | --------- | ----------- | --------|
 | 逸出 % 符號 | 百分比符號可以使用反斜線來逸出。 <br />右側的範例值將會被系統視為常值而非 HTTP 變數。| \%{host} |
-| 未知的變數 | 系統針對未知的變數一律會傳回空字串。 | %[unknown_variable] |
+| 未知的變數 | 系統針對未知的變數一律會傳回空字串。 | % {unknown_variable} |
 | 無效的字元或語法 | 包含無效的字元或語法的變數會被系統視為常值。 <br /><br />範例 #1：指定的值包含無效的字元 (例如 -)。 <br /><br />範例 #2：指定的值包含兩組大括號。 <br /><br />範例 #3：指定的值遺漏右大括號。<br /> | 範例 #1：%{resp_user-agent} <br /><br />範例 #2：%{{host}} <br /><br />範例 #3：%{host |
 | 遺漏變數名稱 | 在沒有指定變數的情況下，一律會傳回 NULL 值。 | %{} |
 | 尾端字元 | 位於變數尾端的字元一律會被視為常值。 <br />右側的範例值包含尾端的大括號，系統將會把它視為常值。 | %{host}} |
@@ -125,11 +125,11 @@ HTTP 變數名稱僅支援字母字元和底線。 系統會將不支援的字�
 
 下表說明如何定義預設值。
 
-| 條件 | 語法 | 範例 | 描述 |
+| 狀況 | 語法 | 範例 | 描述 |
 | --------- | ------ | --------| ----------- |
-| 在標頭符合下列任一條件時，將標頭設定為預設值： <br /><br />- 遺漏標頭 <br /><br />- 標頭值已設為 NULL。| %{Variable:=Value} | %[http_referrer:[未指定] | 只選擇引言標頭遺失或設定為 NULL 時,才會將其設定為*未指定*。 在已設定的情況下，系統將不會採取任何動作。 |
-| 在遺漏標頭的情況下，將標頭設定為預設值。 | %{Variable=Value} | %[http_referrer[未指定] | 只有找不到引用器標頭時,才會設定為*未指定*。 在已設定的情況下，系統將不會採取任何動作。 |
-| 在標頭不符合下列任一條件時，將標頭設定為預設值： <br /><br />- 遺漏<br /><br /> - 設定為 NULL。 | %{Variable:+Value} | %[http_referrer:[未指定] | 只當指定指定值時,參考者標頭才會設定為*未指定*。 在遺漏或設定為 NULL 的情況下，系統將不會採取任何動作。 |
+| 在標頭符合下列任一條件時，將標頭設定為預設值： <br /><br />- 遺漏標頭 <br /><br />- 標頭值已設為 NULL。| %{Variable:=Value} | % {HTTP_referrer： = 未指定} | 當「訪客」標頭遺失或設定為 Null 時，將只會設定為*未指定*。 在已設定的情況下，系統將不會採取任何動作。 |
+| 在遺漏標頭的情況下，將標頭設定為預設值。 | %{Variable=Value} | % {HTTP_referrer = 未指定} | 只有在遺漏「訪客」標頭時，才會將其設定為*未指定*。 在已設定的情況下，系統將不會採取任何動作。 |
+| 在標頭不符合下列任一條件時，將標頭設定為預設值： <br /><br />- 遺漏<br /><br /> - 設定為 NULL。 | %{Variable:+Value} | % {HTTP_referrer： + 未指定} | 只有在指派值給訪客標頭時，才會將其設定為*未指定*。 在遺漏或設定為 NULL 的情況下，系統將不會採取任何動作。 |
 
 ## <a name="manipulating-variables"></a>操作變數
 變數可以透過下列方式進行操作：

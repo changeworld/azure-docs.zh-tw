@@ -1,6 +1,6 @@
 ---
-title: 按國家/地區限制 Azure CDN 內容 |微軟文件
-description: 瞭解如何透過使用地理篩選功能限制按國家/地區訪問 Azure CDN 內容。
+title: 依國家/地區限制 Azure CDN 內容 |Microsoft Docs
+description: 瞭解如何使用地區篩選功能，依國家/地區限制 Azure CDN 內容的存取。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 06/19/2018
 ms.author: allensu
 ms.openlocfilehash: 7ae7224efdaa281106dfbe2118ab0092c8284c6e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260151"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>依國家/地區限制 Azure CDN 內容
 
-## <a name="overview"></a>概觀
-當使用者要求內容時，不論使用者是在什麼位置提出這項要求，依預設系統都會提供內容。 但是,在某些情況下,您可能希望按國家/地區限制對內容的訪問。 使用*地理篩選*功能,您可以在 CDN 終結點上的特定路徑上創建規則,以允許或阻止選定國家 / 地區中的內容。
+## <a name="overview"></a>總覽
+當使用者要求內容時，不論使用者是在什麼位置提出這項要求，依預設系統都會提供內容。 不過，在某些情況下，您可能會想要依國家/地區限制對內容的存取。 使用*地區篩選*功能時，您可以在 CDN 端點上建立特定路徑的規則，以允許或封鎖所選國家/地區的內容。
 
 > [!IMPORTANT]
 > **來自 Microsoft 的標準 Azure CDN** 設定檔不支援以路徑為基礎的地區篩選。
@@ -46,26 +46,26 @@ ms.locfileid: "81260151"
 
 例如，下列目錄路徑篩選條件全都有效：   
 */*                                 
-*/照片/*     
-*/照片/斯特拉斯堡/*     
+*張*     
+*/Photos/Strasbourg/*     
 /Photos/Strasbourg/city.png**
 
 ### <a name="define-the-type-of-action"></a>定義動作的類型
 
 從 [動作]**** 清單中，選取 [允許]**** 或 [封鎖]****： 
 
-- **允許**:只允許來自指定國家/地區的用戶訪問從遞歸路徑請求的資產。
+- **允許**：只允許來自指定國家/地區的使用者存取從遞迴路徑要求的資產。
 
-- **塊**:來自指定國家/地區的用戶被拒絕訪問從遞歸路徑請求的資產。 如果未為該位置配置其他國家/地區篩選選項,則將允許所有其他用戶訪問。
+- **封鎖**：來自指定國家/地區的使用者會被拒絕存取從遞迴路徑要求的資產。 如果尚未針對該位置設定其他國家/地區篩選選項，則會允許所有其他使用者存取。
 
 例如，用於封鎖 /Photos/Strasbourg/** 路徑的地區篩選規則會篩選出下列檔案：     
-*http:\<端點>.azureedge.net/照片/斯特拉斯堡/1000.jpg http: 端點>.azureedge.net/照片/斯特拉斯堡/大教堂/1000.jpg \/ /*
-*\//\<*
+*HTTP\<：\//端點>。 azureedge.net/Photos/Strasbourg/1000.jpg*
+*HTTP：\//\<端點>. azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countriesregions"></a>定義國家/地區
-在**國家/地區代碼清單**中,選擇要阻止或允許路徑的國家/地區。 
+從 [**國家/地區代碼**] 清單中，選取您想要封鎖或允許路徑的國家/地區。 
 
-選擇完國家/地區後,選擇 **「保存」** 以啟動新的地理篩選規則。 
+在您完成選取國家/地區之後，請選取 [**儲存**] 以啟動新的地區篩選規則。 
 
 ![地區篩選規則](./media/cdn-filtering/cdn-geo-filtering-rules.png)
 
@@ -89,14 +89,14 @@ ms.locfileid: "81260151"
 
     [步驟 2：]**** 頁面隨即出現。 
 
-5. 從清單中選擇一個或多個國家/地區,然後選擇 **「完成」** 以啟動規則。 
+5. 從清單中選取一或多個國家/地區，然後選取 **[完成]** 以啟用規則。 
     
     新的規則便會出現在 [國家 (地區)篩選]**** 頁面的資料表中。
 
     ![地區篩選規則](./media/cdn-filtering/cdn-geo-filtering-premium-rules.png)
 
 ### <a name="clean-up-resources"></a>清除資源
-在國家/地區篩選規則表中,選擇規則旁邊的刪除圖示以將其刪除,或者選擇編輯圖示以對其進行修改。
+在 [國家/地區篩選規則] 資料表中，選取規則旁的 [刪除] 圖示加以刪除，或按一下 [編輯] 圖示加以修改。
 
 ## <a name="considerations"></a>考量
 * 地區篩選組態的變更不會立即生效：
@@ -108,7 +108,7 @@ ms.locfileid: "81260151"
 
 * 會將相對路徑相關聯的地區篩選組態，遞迴地套用到該路徑。
 
-* 只能對相同的相對路徑套用一個規則。 也就是說,您不能創建指向同一相對路徑的多個國家/區域篩選器。 但是,由於國家/地區篩選器是遞歸的,因此資料夾可以有多個國家/區域篩選器。 換句話說,可以為以前配置的資料夾的子資料夾分配不同的國家/地區篩選器。
+* 只能對相同的相對路徑套用一個規則。 也就是說，您無法建立多個指向相同相對路徑的國家/地區篩選。 不過，因為國家/地區篩選是遞迴的，所以資料夾可以有多個國家/地區篩選。 換句話說，先前設定之資料夾的子資料夾可以被指派不同的國家/地區篩選。
 
-* 地理篩選功能使用國家/地區代碼來定義允許或阻止安全目錄請求的國家/地區。 雖然 Akamai 和 Verizon 設定檔可支援大部分的相同國碼 (地區碼)，但兩者有一些差異。 有關詳細資訊,請參閱[Azure CDN 國家/ 地區代碼](/previous-versions/azure/mt761717(v=azure.100))。 
+* 地區篩選功能會使用國家/地區代碼來定義允許或封鎖受保護目錄之要求的國家/地區。 雖然 Akamai 和 Verizon 設定檔可支援大部分的相同國碼 (地區碼)，但兩者有一些差異。 如需詳細資訊，請參閱[AZURE CDN 國家/地區代碼](/previous-versions/azure/mt761717(v=azure.100))。 
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: allensu
 ms.openlocfilehash: a5f3f8dbb83b23fc16fd1225e5a9cbeab16b9576
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260236"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>依縮寫排列的 Azure CDN POP 位置
@@ -30,7 +30,7 @@ ms.locfileid: "81260236"
 
 本文會針對**來自 Verizon 的 Azure CDN** 列出 POP 位置，並依 POP 縮寫排序。
 
-縮寫 | Location | 區域
+縮寫 | 位置 | 區域
 | --- | --- | --- |
 AGA | 美國喬治亞州亞特蘭大 | 北美洲：美國東岸
 AGB | 美國喬治亞州亞特蘭大 | 北美洲：美國東岸
@@ -41,7 +41,7 @@ AMS | 阿姆斯特丹，荷蘭 | 歐洲
 ARN | 瑞典斯德哥爾摩 | 歐洲
 ATL | 美國喬治亞州亞特蘭大 | 北美洲：美國東岸
 BAQ | 巴蘭幾亞，哥倫比亞 | 拉丁美洲
-BLR | 班加羅爾 (班加羅爾), 印度 | Asia
+BLR | Bengaluru （班加羅爾），印度 | Asia
 BNJ | 美國紐澤西州紐華克 | 北美洲：美國東岸
 BOS | 美國麻塞諸塞州波士頓 | 北美洲：美國東岸
 BTH | 巴淡島，印尼 | Asia

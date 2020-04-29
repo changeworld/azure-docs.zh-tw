@@ -1,5 +1,5 @@
 ---
-title: 使用虛擬機縮放集進行自動縮放故障
+title: 使用虛擬機器擴展集進行自動調整疑難排解
 description: 針對使用虛擬機器擴展集的自動調整進行疑難排解。 了解所遇到的一般問題和解決方式。
 author: mimckitt
 tags: azure-resource-manager
@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: mimckitt
 ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
-ms.sourcegitcommit: 530e2d56fc3b91c520d3714a7fe4e8e0b75480c8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81273370"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>針對使用虛擬機器擴展集的自動調整進行疑難排解
@@ -64,7 +64,7 @@ ms.locfileid: "81273370"
     
     您也可以自行查看資料。 使用雲端總管查看 Azure 儲存體帳戶。 例如，使用 [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2)、登入，然後挑選您使用的 Azure 訂用帳戶。 然後，查看您的部署範本中診斷擴充功能定義中參考的診斷儲存體帳戶名稱。
     
-    ![雲端總管][explorer]
+    ![Cloud Explorer][explorer]
     
     您會看到許多資料表，在其中儲存每個 VM 的資料。 以 Linux 和 CPU 度量為例，查看最新的資料列。 Visual Studio Cloud Explorer 支援查詢語言，因此您可以執行查詢。 例如，您可以執行 “Timestamp gt datetime’2016-02-02T21:20:00Z’” 的查詢，以確保取得最新的事件。 時區會對應至 UTC。 您在那裡看到的資料是否對應您設定的調整規則？ 在下列範例中，機器 20 的 CPU 在過去五分鐘開始增加到 100%。
     

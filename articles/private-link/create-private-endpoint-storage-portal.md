@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 私人端點私下連線至儲存體帳戶
-description: 瞭解如何使用專用終結點將專用連接到 Azure 中的存儲帳戶。
+description: 瞭解如何在 Azure 中使用私人端點，私下連線到儲存體帳戶。
 services: private-link
 author: malopMSFT
 ms.service: private-link
@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
 ms.openlocfilehash: 111e6e2f80c3460f363c496b7b32befdca16250d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81115116"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>使用 Azure 私人端點私下連線至儲存體帳戶
-Azure 專用終結點是 Azure 中專用連結的基本構建基塊。 它使 Azure 資源(如虛擬機器 (VM))能夠與專用連結資源進行私下通信。
+Azure 私用端點是 Azure 中私人連結的基本建立區塊。 它可讓 Azure 資源（例如虛擬機器（Vm））私下與私人連結資源進行通訊。
 
-在此快速入門中,您將學習如何在 Azure 虛擬網路上創建 VM,該虛擬網路是使用 Azure 門戶使用專用終結點的儲存帳戶。 然後,您可以安全地從 VM 存取儲存帳戶。
+在本快速入門中，您將瞭解如何在 Azure 虛擬網路上建立 VM、使用 Azure 入口網站的儲存體帳戶與私人端點。 然後，您可以從 VM 安全地存取儲存體帳戶。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
 在 https://portal.azure.com 登入 Azure 入口網站。
 
 ## <a name="create-a-vm"></a>建立 VM
-在本節中,您將創建虛擬網路和子網來承載用於訪問專用連結資源的 VM(本示例中的存儲帳戶)。
+在本節中，您將建立虛擬網路和子網，以裝載用來存取私人連結資源的 VM （在此範例中為儲存體帳戶）。
 
 ## <a name="virtual-network-and-parameters"></a>虛擬網路和參數
 
-在本節中,您將創建虛擬網路和子網來承載用於訪問專用連結資源的 VM。
+在本節中，您將建立虛擬網路和子網，以裝載用來存取私人連結資源的 VM。
 
 在本節中，您需要使用下列資訊來取代步驟中的下列參數：
 
@@ -37,16 +37,16 @@ Azure 專用終結點是 Azure 中專用連結的基本構建基塊。 它使 Az
 | **\<resource-group-name>**  | myResourceGroup |
 | **\<virtual-network-name>** | myVirtualNetwork          |
 | **\<region-name>**          | 美國中西部      |
-| **\<IPv4-address-space>**   | 10.1.0.0\16          |
+| **\<IPv4-address-space>**   | 10.1.0.0 \ 16          |
 | **\<subnet-name>**          | mySubnet        |
-| **\<subnet-address-range>** | 10.1.0.0\24          |
+| **\<subnet-address-range>** | 10.1.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 
 ### <a name="create-virtual-machine"></a>建立虛擬機器
 
-1. 在 Azure 門戶中螢幕的左上角,選擇 **「創建資源** > **計算** > **虛擬機器**」。
+1. 在 [Azure 入口網站] 畫面的左上方，選取 [**建立資源** > ] [**計算** > ] [**虛擬機器**]。
 
 1. 在 [建立虛擬機器 - 基本]  中，輸入或選取這項資訊：
 
@@ -91,12 +91,12 @@ Azure 專用終結點是 Azure 中專用連結的基本構建基塊。 它使 Az
 
 1. 當您看到 [驗證成功]  訊息時，請選取 [建立]  。
 
-## <a name="create-your-private-endpoint"></a>建立專用終結點
-在本節中,您將使用專用終結點創建專用存儲帳戶。 
+## <a name="create-your-private-endpoint"></a>建立您的私用端點
+在本節中，您將使用私人端點來建立私人儲存體帳戶。 
 
-1. 在 Azure 門戶中螢幕的左上角,選擇 **「創建資源** > **存儲** > **存儲帳戶**」。
+1. 在 [Azure 入口網站] 畫面的左上方，選取 [**建立資源** > ] [儲存體] [**儲存體** > **帳戶**]。
 
-1. 在 **'建立儲存帳戶 - 基礎知識' 中**,輸入或選擇此資訊:
+1. 在 [**建立儲存體帳戶-基本**] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
@@ -104,39 +104,39 @@ Azure 專用終結點是 Azure 中專用連結的基本構建基塊。 它使 Az
     | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
     | **執行個體詳細資料** |  |
-    | 儲存體帳戶名稱  | 輸入*我的儲存帳戶*。 如果此名稱已被使用，請建立唯一名稱。 |
+    | 儲存體帳戶名稱  | 輸入*mystorageaccount*。 如果此名稱已被使用，請建立唯一名稱。 |
     | 區域 | 選取 [WestCentralUS]  。 |
     | 效能| 保留預設值 [標準]****。 |
-    | 帳戶類型 | 保留預設**儲存(通用 v2)。** |
-    | 複寫 | 選擇**讀取存取異地冗餘儲存 (RA-GRS)。** |
+    | 帳戶類型 | 保留預設**儲存體（一般用途 v2）**。 |
+    | 複寫 | 選取 **[讀取權限異地多餘儲存體（RA-GRS）**]。 |
     |||
   
-3. 選擇**下一個:網路**。
-4. 在**建立儲存帳號 - 網路**,連線方法中,選擇**專用終結點**。
-5. 在 **"創建儲存帳戶 - 網路**"中,選擇 **"添加專用終結點**"。 
-6. 在 **"建立專用終結點**"中,輸入或選擇此資訊:
+3. 選取 **[下一步：網路]**。
+4. 在 [**建立儲存體帳戶-網路功能**、連線方式] 中，選取 [**私人端點**]。
+5. 在 [**建立儲存體帳戶-網路**] 中，選取 [**新增私人端點**]。 
+6. 在 [**建立私人端點**] 中，輸入或選取這項資訊：
 
     | 設定 | 值 |
     | ------- | ----- |
     | **專案詳細資料** | |
     | 訂用帳戶 | 選取您的訂用帳戶。 |
     | 資源群組 | 選取 **myResourceGroup**。 您已在上一節中建立此項目。|
-    |Location|選取 [WestCentralUS]  。|
+    |位置|選取 [WestCentralUS]  。|
     |名稱|輸入 myPrivateEndpoint  。  |
-    |儲存子資源|保留預設**的 Blob**。 |
+    |儲存體子資源|保留預設**Blob**。 |
     | **網路** |  |
-    | 虛擬網路  | 從資源群組 *「我的資源群組」* 中選擇*我的虛擬網路*。 |
+    | 虛擬網路  | 從 [資源群組] *myResourceGroup*中選取 [ *MyVirtualNetwork* ]。 |
     | 子網路 | 選取 [mySubnet]  。 |
     | **私人 DNS 整合**|  |
-    | 與私人 DNS 區域整合  | 保留預設**的"是**"。 |
-    | 私人 DNS 區域  | 將預設 **(新增) privatelink.blob.core.windows.net**。 |
+    | 與私人 DNS 區域整合  | 保留預設值 [**是]**。 |
+    | 私人 DNS 區域  | 保留預設值 [ **（新增）] privatelink.blob.core.windows.net**。 |
     |||
 7. 選取 [確定]  。 
 8. 選取 [檢閱 + 建立]  。 您會移至 [檢閱 + 建立]  頁面，其中 Azure 會驗證您的設定。 
 9. 當您看到 [驗證成功]  訊息時，請選取 [建立]  。 
-10. 瀏覽到您剛剛建立的儲存帳戶資源。
-11. 從左側內容功能表中選擇 **「存取鍵**」。
-12. 選擇鍵1的連接字串上的 **「複製**」。
+10. 流覽至您剛才建立的儲存體帳戶資源。
+11. 從左側內容功能表中選取 [**存取金鑰**]。
+12. 選取 [key1] 連接字串上的 [**複製**]。
  
 ## <a name="connect-to-a-vm-from-the-internet"></a>從網際網路連線至 VM
 
@@ -163,12 +163,12 @@ Azure 專用終結點是 Azure 中專用連結的基本構建基塊。 它使 Az
 
 1. 當 VM 桌面出現之後，將它最小化以回到您的本機桌面。  
 
-## <a name="access-storage-account-privately-from-the-vm"></a>從 VM 私下存取儲存帳戶
+## <a name="access-storage-account-privately-from-the-vm"></a>從 VM 私下存取儲存體帳戶
 
-在本節中,您將使用專用終結點私下連接到存儲帳戶。
+在本節中，您會使用私用端點，私下連接到儲存體帳戶。
 
 1. 在 myVm  的遠端桌面中，開啟 PowerShell。
-2. 輸入`nslookup mystorageaccount.blob.core.windows.net`您將收到類似於此訊息的消息:
+2. 輸入`nslookup mystorageaccount.blob.core.windows.net`您將會收到類似下面的訊息：
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -178,28 +178,28 @@ Azure 專用終結點是 Azure 中專用連結的基本構建基塊。 它使 Az
     Aliases:  mystorageaccount.blob.core.windows.net
     ```
 3. 安裝 [Microsoft Azure 儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)。
-4. 選擇此鍵按下的**儲存帳號**。
-5. 選擇 **「連接到 Azure 儲存**」 。
-6. 選擇**使用連接字串**。
+4. 按一下滑鼠右鍵，選取 [**儲存體帳戶**]。
+5. 選取 **[連線到 azure 儲存體]**。
+6. 選取 [**使用連接字串**]。
 7. 選取 [下一步]  。
-8. 通過貼上以前複製的資訊來輸入連接字串。
+8. 貼入先前複製的資訊，以輸入連接字串。
 9. 選取 [下一步]  。
-10. 選取 [連接]  。
-11. 從我的儲存帳戶瀏覽 Blob 容器 
-12. ( 選擇性的 )建立資料夾與/或將檔案上傳到*我的儲存帳戶*。 
-13. 關閉遠端桌面連接到*myVM。* 
+10. 選取 [連線]  。
+11. 從 mystorageaccount 流覽 Blob 容器 
+12. 也建立資料夾及/或將檔案上傳至*mystorageaccount*。 
+13. 關閉對*myVM*的遠端桌面連線。 
 
-存取儲存帳戶的其他選項:
-- Microsoft Azure 儲存資源管理員是Microsoft的一個獨立免費應用,使您能夠在Windows、macOS和Linux上直覺式處理Azure儲存資料。 您可以安裝應用程式以私下瀏覽儲存帳戶內容。 
+存取儲存體帳戶的其他選項：
+- Microsoft Azure 儲存體總管是 Microsoft 提供的獨立免費應用程式，可讓您在 Windows、macOS 和 Linux 上以視覺化方式處理 Azure 儲存體資料。 您可以安裝應用程式，以私下流覽儲存體帳戶內容。 
  
-- AzCopy 實用程式是 Azure 儲存高性能可文本數據傳輸的另一個選項。 請使用 AzCopy 在 Blob、檔案和表格儲存體之間傳輸資料。 
+- AzCopy 公用程式是適用于 Azure 儲存體的高效能可編寫腳本資料傳輸的另一個選項。 請使用 AzCopy 在 Blob、檔案和表格儲存體之間傳輸資料。 
 
 
 ## <a name="clean-up-resources"></a>清除資源 
-使用專用終結點、儲存帳戶和 VM 完成後,請刪除資源群組及其包含的所有資源: 
+當您使用私人端點、儲存體帳戶和 VM 完成時，請刪除資源群組及其包含的所有資源： 
 1. 在入口網站頂端的 [搜尋]  方塊中輸入 *myResourceGroup*，然後從搜尋結果中選取 [myResourceGroup]  。 
 2. 選取 [刪除資源群組]  。 
-3. 輸入 *「資源群組***」 以鍵入資源群組名稱**,然後選擇 **「刪除**」 。 
+3. 針對 [輸入**資源組名**] 輸入*myResourceGroup* ，然後選取 [**刪除**]。 
 
 ## <a name="next-steps"></a>後續步驟
-在此快速入門中,您可以在虛擬網路和存儲帳戶和專用終結點上創建了 VM。 您從 Internet 連接到一個 VM,並使用專用鏈路安全地連接到存儲帳戶。 要瞭解有關私有終結點的更多內容,請參閱[什麼是 Azure 專用終結點?](private-endpoint-overview.md)
+在本快速入門中，您已在虛擬網路和儲存體帳戶和私人端點上建立 VM。 您已從網際網路連線至其中一個 VM，並使用私人連結安全地向儲存體帳戶通訊。 若要深入瞭解私用端點，請參閱[什麼是 Azure 私人端點？](private-endpoint-overview.md)。

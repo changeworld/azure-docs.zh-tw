@@ -1,16 +1,16 @@
 ---
 title: Azure Cache for Redis 常見問題集
-description: 瞭解 Redis Azure 緩存的常見問題、模式和最佳實務的解答
+description: 瞭解 Azure Cache for Redis 的常見問題、模式和最佳做法的解答
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.openlocfilehash: 6ba292850c057284fff265c8a77386d21374942a
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81010217"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Azure Cache for Redis 常見問題集
@@ -27,7 +27,7 @@ ms.locfileid: "81010217"
 ## <a name="azure-cache-for-redis-basics"></a>Azure Redis 快取基本知識
 本節中的常見問題集涵蓋「Azure Redis 快取」的一些基本知識。
 
-* [什麼是雷瑞斯 Azure 緩存?](#what-is-azure-cache-for-redis)
+* [什麼是 Azure Cache for Redis？](#what-is-azure-cache-for-redis)
 * [如何開始使用 Azure Redis 快取？](#how-can-i-get-started-with-azure-cache-for-redis)
 
 下列常見問題集涵蓋「Azure Redis 快取」的相關基本概念和問題，而解答則在其中一個其他常見問題集小節中。
@@ -54,7 +54,7 @@ ms.locfileid: "81010217"
 * [什麼是 Redis 資料庫？](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>安全性常見問題集
-* [何時應啟用用於連接到 Redis 的非 TLS/SSL 連接埠?](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
+* [何時應該啟用非 TLS/SSL 埠以連接到 Redis？](#when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis)
 
 ## <a name="production-faqs"></a>生產環境常見問題集
 * [生產環境的最佳作法有哪些？](#what-are-some-production-best-practices)
@@ -65,7 +65,7 @@ ms.locfileid: "81010217"
 * [連線相關的效能考量](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>監視與疑難排解常見問題集
-本節的常見問題集涵蓋常見的監視和疑難排解問題。 有關監視和排除 Redis 實例 Azure 緩存的詳細資訊,請參閱[如何監視 Redis 的 Azure 緩存](cache-how-to-monitor.md)以及各種疑難解答指南。
+本節的常見問題集涵蓋常見的監視和疑難排解問題。 如需有關監視和疑難排解 Azure Cache for Redis 實例的詳細資訊，請參閱[如何監視 Azure cache For Redis](cache-how-to-monitor.md)和各種疑難排解指南。
 
 * [如何監視快取的健全狀況和效能？](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 * [為什麼看到逾時？](#why-am-i-seeing-timeouts)
@@ -82,7 +82,7 @@ Azure Cache for Redis 會以廣受使用的開放原始碼軟體 [Redis](https:/
 
 * 您可以查看我們針對 [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)、[ASP.NET](cache-web-app-howto.md)、[Java](cache-java-get-started.md)、[Node.js](cache-nodejs-get-started.md) 和 [Python](cache-python-get-started.md) 提供的其中一套教學課程。
 * 您可以觀看[如何使用 Microsoft Azure Redis 快取來建立高效能應用程式](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/) \(英文\)。
-* 您可以取出符合您專案開發語言用戶端的用戶端文件，來查看如何使用 Redis。 有許多可與「Azure Redis 快取」搭配使用的 Redis 用戶端。 有關 Redis 客戶端的清單,[https://redis.io/clients](https://redis.io/clients)請參閱 。
+* 您可以取出符合您專案開發語言用戶端的用戶端文件，來查看如何使用 Redis。 有許多可與「Azure Redis 快取」搭配使用的 Redis 用戶端。 如需 Redis 用戶端的清單， [https://redis.io/clients](https://redis.io/clients)請參閱。
 
 如果您還沒有 Azure 帳戶，您可以：
 
@@ -96,23 +96,23 @@ Azure Cache for Redis 會以廣受使用的開放原始碼軟體 [Redis](https:/
 
 下列是選擇快取供應項目的考量。
 
-* **記憶體**：基本層和標準層提供 250 MB – 53 GB。 高級層提供高達 1.2 TB(作為群集)或 120 GB(非群集)。 有關詳細資訊,請參閱用於[Redis 定價的 Azure 緩存](https://azure.microsoft.com/pricing/details/cache/)。
-* **網路效能**：如果您的工作負載需要高輸送量，高階層提供的頻寬大於標準或基本層。 此外，因為每一層內有裝載快取的基礎 VM，較大型快取還有更大頻寬。 有關詳細資訊,請參閱[下表](#cache-performance)。
+* **記憶體**：基本層和標準層提供 250 MB – 53 GB。 進階層最多可提供 1.2 TB （作為叢集）或 120 GB （非叢集）。 如需詳細資訊，請參閱[Azure Cache For Redis 定價](https://azure.microsoft.com/pricing/details/cache/)。
+* **網路效能**：如果您的工作負載需要高輸送量，高階層提供的頻寬大於標準或基本層。 此外，因為每一層內有裝載快取的基礎 VM，較大型快取還有更大頻寬。 如需詳細資訊，請參閱[下表](#cache-performance)。
 * **輸送量**：進階層提供最大的可用輸送量。 如果快取伺服器或用戶端達到頻寬限制，您在用戶端可能會收到逾時。 如需詳細資訊，請參閱下列表格。
-* **高可用性/SLA**:用於 Redis 的 Azure 緩存可確保標準/進階快取至少 99.9% 的時間可用。 若要深入了解我們的 SLA，請參閱 [Azure Redis 快取價格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)。 SLA 的範圍僅涵蓋與快取端點的連線。 SLA 未涵蓋資料遺失防護。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。
-* **Redis 資料持續性**：進階層可讓您將快取資料保存在 Azure 儲存體帳戶。 在基本/標準快取中，所有資料都只儲存在記憶體中。 基礎基礎結構問題可能會導致潛在的數據丟失。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。 「Azure Redis 快取」在 Redis 持續性中提供 RDB 和 AOF (即將推出) 選項。 如需詳細資訊，請參閱[如何設定進階 Azure Redis 快取的持續性](cache-how-to-premium-persistence.md)。
-* **Redis 群集**:要創建大於 120 GB 的緩存,或跨多個 Redis 節點分片數據,可以使用 Redis 群集,這在高級層中可用。 每個節點均包含一個主要/複本快取組以提供高可用性。 如需詳細資訊，請參閱 [如何設定進階 Azure Redis 快取的叢集功能](cache-how-to-premium-clustering.md)。
-* **增強的安全性和網路隔離**:Azure 虛擬網路 (VNET) 部署為 Redis 的 Azure 緩存提供了增強的安全性和隔離性,以及子網、訪問控制策略和其他功能,以進一步限制訪問。 如需詳細資訊，請參閱[如何設定進階 Azure Cache for Redis 的虛擬網路支援](cache-how-to-premium-vnet.md)。
+* **高可用性/SLA**： Azure Cache for Redis 保證標準/高階快取至少有99.9% 的時間可供使用。 若要深入了解我們的 SLA，請參閱 [Azure Redis 快取價格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)。 SLA 的範圍僅涵蓋與快取端點的連線。 SLA 未涵蓋資料遺失防護。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。
+* **Redis 資料持續性**：進階層可讓您將快取資料保存在 Azure 儲存體帳戶。 在基本/標準快取中，所有資料都只儲存在記憶體中。 基礎結構問題可能會導致資料遺失。 建議您使用高階層中的 Redis 資料永續性功能，以增加資料遺失時的復原能力。 「Azure Redis 快取」在 Redis 持續性中提供 RDB 和 AOF (即將推出) 選項。 如需詳細資訊，請參閱[如何設定進階 Azure Redis 快取的持續性](cache-how-to-premium-persistence.md)。
+* **Redis**叢集：若要建立大於 120 GB 的快取，或跨多個 Redis 節點分區資料，您可以使用高階層中提供的 Redis 叢集。 每個節點均包含一個主要/複本快取組以提供高可用性。 如需詳細資訊，請參閱 [如何設定進階 Azure Redis 快取的叢集功能](cache-how-to-premium-clustering.md)。
+* **增強的安全性和網路隔離**： azure 虛擬網路（VNET）部署可為您的 azure Cache for Redis、子網、存取控制原則及其他功能提供增強的安全性和隔離，以進一步限制存取權。 如需詳細資訊，請參閱[如何設定進階 Azure Cache for Redis 的虛擬網路支援](cache-how-to-premium-vnet.md)。
 * **設定 Redis**：在標準層和進階層中，您可以設定 Redis 以接收 Keyspace 通知。
 * **用戶端連線的最大數目**：進階層提供可連線至 Redis 的最大用戶端數目，針對較大型的快取有更高的連線數目。 叢集化不會增加叢集快取的可用連線數目。 如需詳細資訊，請參閱 [Azure Cache for Redis 價格](https://azure.microsoft.com/pricing/details/cache/)。
-* **用於 Redis 伺服器的專用內核**:在高級層中,所有緩存大小都有用於 Redis 的專用內核。 在基本/標準層中，C1 以上的大小有 Redis 伺服器專用核心。
+* **Redis 伺服器的專用核心**：在進階層中，所有快取大小都具有 Redis 專用的核心。 在基本/標準層中，C1 以上的大小有 Redis 伺服器專用核心。
 * **Redis 為單一執行緒** ，因此兩個以上核心所提供的優點與只有兩個核心相同，但較大的 VM 大小通常會比較小的有更多頻寬。 如果快取伺服器或用戶端達到頻寬限制，您在用戶端會收到逾時。
 * **效能改良**：進階層中的快取是部署在處理器較快的硬體上，因此效能優於基本或標準層。 高階層快取的輸送量較高，延遲性較低。
 
 <a name="cache-performance"></a>
 
 ### <a name="azure-cache-for-redis-performance"></a>Azure Redis 快取效能
-下表顯示從 IaaS VM 使用 `redis-benchmark.exe` 對「Azure Redis 快取」端點測試各種大小的「標準」和「進階」快取時，觀察到的最大頻寬值。 對於 TLS 輸送量,Redis 基準測試與 stunnel 一起使用,以連接到 Redis 終結點的 Azure 緩存。
+下表顯示從 IaaS VM 使用 `redis-benchmark.exe` 對「Azure Redis 快取」端點測試各種大小的「標準」和「進階」快取時，觀察到的最大頻寬值。 針對 TLS 輸送量，會搭配使用 redis 與 stunnel 來連線到 Azure Cache for Redis 端點。
 
 >[!NOTE] 
 >這些值並非保證值，也沒有關於這些數字的 SLA，只代表一般情況。 您應該載入測試自己的應用程式，以判斷應用程式的正確快取大小。
@@ -121,14 +121,14 @@ Azure Cache for Redis 會以廣受使用的開放原始碼軟體 [Redis](https:/
 
 我們可以從這個表格中獲得下列結論：
 
-* 進階層中相同大小快取的輸送量，比標準層的還高。 例如,使用 6 GB 緩存時,P1 的輸送量為每秒 180,000 個請求 (RPS),而 C3 的輸送量為 100,000 RPS。
-* 使用 Redis 叢集，當您增加叢集中的分區 (節點) 數目時，輸送量會呈線性增加。 例如,如果創建包含 10 個分片的 P4 群集,則可用吞吐量為 400,000 * 10 = 400 萬 RPS。
+* 進階層中相同大小快取的輸送量，比標準層的還高。 例如，使用 6 GB 快取時，P1 的輸送量為每秒180000個要求（RPS），相較于 C3 的 100000 RPS。
+* 使用 Redis 叢集，當您增加叢集中的分區 (節點) 數目時，輸送量會呈線性增加。 例如，如果您建立10個分區的 P4 叢集，則可用的輸送量為 400000 * 10 = 4000000 RPS。
 * 相較於標準層，進階層中的金鑰大小越大，輸送量就越高。
 
-| 定價層 | 大小 | CPU 核心 | 可用的頻寬 | 1 KB 值大小 | 1 KB 值大小 |
+| 定價層 | Size | CPU 核心 | 可用的頻寬 | 1 KB 的值大小 | 1 KB 的值大小 |
 | --- | --- | --- | --- | --- | --- |
 | **標準快取大小** | | |**每秒 Mb (Mb/s) / 每秒 MB (MB/s)** |**每秒要求數目 (RPS) 非 SSL** |**每秒要求數目 (RPS) SSL** |
-| C0 | 250 MB | 共用 | 100 / 12.5  |  15,000 |   7,500 |
+| C0 | 250 MB | Shared | 100 / 12.5  |  15,000 |   7,500 |
 | C1 |   1 GB | 1      | 500 / 62.5  |  38,000 |  20,720 |
 | C2 | 2.5 GB | 2      | 500 / 62.5  |  41,000 |  37,000 |
 | C3 |   6 GB | 4      | 1000 / 125  | 100,000 |  90,000 |
@@ -155,11 +155,11 @@ Azure Cache for Redis 會以廣受使用的開放原始碼軟體 [Redis](https:/
 如需了解「Azure Redis 快取」定價，請參閱[這裡](https://azure.microsoft.com/pricing/details/cache/)。 定價頁面所列的價格為每小時的費率。 快取是根據從建立快取到刪除快取的時間，以分鐘為單位來收費。 沒有用於停止或暫停快取收費的選項。
 
 ### <a name="can-i-use-azure-cache-for-redis-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>是否可以搭配 Azure Government 雲端、Azure 中國雲端或 Microsoft Azure (德國) 使用 Azure Redis 快取？
-是的,Redis 的 Azure 緩存在 Azure 政府雲、Azure 中國 21Vianet 雲和 Microsoft Azure 德國中可用。 這些雲端中用來存取及管理「Azure Redis 快取」的 URL 與「Azure 公用雲端」不同。
+是，Azure Cache for Redis 適用于 Azure Government 雲端、Azure 中國世紀雲端和 Microsoft Azure 德國。 這些雲端中用來存取及管理「Azure Redis 快取」的 URL 與「Azure 公用雲端」不同。
 
 | 雲端   | Redis 的 DNS 尾碼            |
 |---------|---------------------------------|
-| 公開  | *.redis.cache.windows.net       |
+| 公用  | *.redis.cache.windows.net       |
 | US Gov  | *.redis.cache.usgovcloudapi.net |
 | 德國 | *.redis.cache.cloudapi.de       |
 | 中國   | *.redis.cache.chinacloudapi.cn  |
@@ -167,10 +167,10 @@ Azure Cache for Redis 會以廣受使用的開放原始碼軟體 [Redis](https:/
 如需深入了解搭配其他雲端使用「Azure Redis 快取」的考量，請參閱下列連結。
 
 - [Azure Government 資料庫 - Azure Redis 快取](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
-- [Azure 中國 21Vianet 雲 - 用於 Redis 的 Azure 緩存](https://www.azure.cn/home/features/redis-cache/)
+- [Azure 中國世紀雲端-Azure Cache for Redis](https://www.azure.cn/home/features/redis-cache/)
 - [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
-有關在 Azure 政府雲、Azure China 21Vianet 雲和 Microsoft Azure 德國中使用 Redis 的 Azure 緩存與 PowerShell 的資訊,請參閱[如何連接到其他雲 - Redis PowerShell 的 Azure 緩存](cache-how-to-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds)。
+如需在 Azure Government Cloud、Azure 中國世紀雲端和 Microsoft Azure 德國中搭配使用 Azure Cache for Redis 與 PowerShell 的相關資訊，請參閱[如何連線到其他雲端-Azure Cache For Redis PowerShell](cache-how-to-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds)。
 
 <a name="cache-configuration"></a>
 
@@ -244,14 +244,14 @@ Redis 最大的好處是，有許多用戶端支援許多不同的開發語言�
 * `redis-cli -h <Azure Cache for Redis name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Redis 指令列工具不適用於 TLS 連接埠,但您可以使用實用`stunnel`程式,例如,透過按照['如何使用 Redis 命令列工具與 Azure 快取用於 Redis"](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool)一文中的說明來安全地將工具連接到 TLS 連接埠。
+> Redis 命令列工具無法搭配 TLS 埠使用，但是您可以遵循`stunnel` [如何使用 Redis 命令列工具與 Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-redis-cli-tool)一文中的指示，使用公用程式（例如）將工具安全地連線到 tls 埠。
 >
 >
 
 <a name="cache-reference"></a>
 
 ### <a name="why-doesnt-azure-cache-for-redis-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>Azure Redis 快取為什麼沒有像一些其他 Azure 服務有 MSDN 類別庫參考？
-Microsoft Azure Cache for Redis 會以熱門的開放原始碼 Azure Cache for Redis 為根據。 它可以由各種各樣的[Redis 客戶端](https://redis.io/clients)訪問,用於許多程式設計語言。 每個用戶端都有自己的 API，可使用 [Redis 命令](https://redis.io/commands)對「Azure Redis 快取」執行個體發出呼叫。
+Microsoft Azure Cache for Redis 會以熱門的開放原始碼 Azure Cache for Redis 為根據。 許多程式設計語言都可以存取各種不同的[Redis 用戶端](https://redis.io/clients)。 每個用戶端都有自己的 API，可使用 [Redis 命令](https://redis.io/commands)對「Azure Redis 快取」執行個體發出呼叫。
 
 因為每個用戶端都不同，所以 MSDN 上沒有一個集中式類別參考，每個用戶端都會維護其專屬的參考文件。 除了參考文件之外，還有數個教學課程，示範如何使用不同的語言和快取用戶端來開始使用「Azure Redis 快取」。 若要存取這些教學課程，請參閱[如何使用 Azure Cache for Redis](cache-dotnet-how-to-use-azure-redis-cache.md) 以及目錄中的同層級文章。
 
@@ -271,7 +271,7 @@ Microsoft Azure Cache for Redis 會以熱門的開放原始碼 Azure Cache for R
 
 ### <a name="what-are-redis-databases"></a>什麼是 Redis 資料庫？
 
-Redis 資料庫就是相同 Redis 執行個體內的資料邏輯分隔。 所有資料庫之間會共用快取記憶體，給定資料庫的實際記憶體耗用量取決於該資料庫中儲存的索引鍵/值。 例如,C6 緩存具有 53 GB 的記憶體,P5 具有 120 GB。 您可以選擇將所有 53 GB / 120 GB 放入一個資料庫中,也可以將其拆分為多個資料庫。 
+Redis 資料庫就是相同 Redis 執行個體內的資料邏輯分隔。 所有資料庫之間會共用快取記憶體，給定資料庫的實際記憶體耗用量取決於該資料庫中儲存的索引鍵/值。 例如，C6 快取有 53 GB 的記憶體，而 P5 有 120 GB。 您可以選擇將所有 53 GB/120 GB 放在一個資料庫中，或在多個資料庫之間分割。 
 
 > [!NOTE]
 > 使用已啟用叢集功能的「進階 Azure Redis 快取」時，只有資料庫 0 可供使用。 這項限制是固有的 Redis 限制，並非特別針對「Azure Redis 快取」。 如需詳細資訊，請參閱 [我需要對用戶端應用程式進行任何變更才能使用叢集嗎？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
@@ -281,15 +281,15 @@ Redis 資料庫就是相同 Redis 執行個體內的資料邏輯分隔。 所有
 
 <a name="cache-ssl"></a>
 
-### <a name="when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis"></a>何時應啟用用於連接到 Redis 的非 TLS/SSL 連接埠?
-Redis 伺服器不支援 TLS,但 Redis 的 Azure 緩存支援 TLS。 如果要連接到 Redis 的 Azure 緩存,並且用戶端支援 TLS,如 StackExchange.Redis,則應使用 TLS。
+### <a name="when-should-i-enable-the-non-tlsssl-port-for-connecting-to-redis"></a>何時應該啟用非 TLS/SSL 埠以連接到 Redis？
+Redis 伺服器原本就不支援 TLS，但 Azure Cache for Redis 會執行。 如果您要連線到 Azure Cache for Redis，而您的用戶端支援 TLS （例如 Stackexchange.redis. Redis），則您應該使用 TLS。
 
 >[!NOTE]
->默認情況下,對於 Redis 實例的新 Azure 緩存,將禁用非 TLS 埠。 如果用戶端不支援 TLS,則必須按照[「為 Redis 的 Azure 快取設定快取](cache-configure.md)」的[「存取埠](cache-configure.md#access-ports)」部分中的指示啟用非 TLS 連接埠。
+>針對新的 Azure Cache for Redis 實例，非 TLS 埠預設為停用。 如果您的用戶端不支援 TLS，則您必須遵循在[Azure cache For Redis 中設定](cache-configure.md)快取一文的[存取埠](cache-configure.md#access-ports)一節中的指示，啟用非 tls 埠。
 >
 >
 
-Redis 工具`redis-cli`( 如不適用於 TLS 連接埠),但您可以使用實`stunnel`用程式,例如,透過按照[「宣佈ASP.NET工作階段狀態供應商的 Redis 預覽版本部落格文章](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)」中的說明,安全地將工具連接到 TLS 連接埠。
+Redis 工具（例如`redis-cli` ）無法使用 TLS 埠，但您可以遵循`stunnel` [宣佈 Redis Preview 版本的 ASP.NET 會話狀態供應器](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)文章中的指示，使用公用程式（例如）將工具安全地連接到 tls 埠。
 
 如需下載 Redis 工具的指示，請參閱 [如何執行 Redis 命令？](#cache-commands) 小節。
 
@@ -301,9 +301,9 @@ Redis 工具`redis-cli`( 如不適用於 TLS 連接埠),但您可以使用實`st
 #### <a name="stackexchangeredis-best-practices"></a>StackExchange.Redis 最佳作法
 * 將 `AbortConnect` 設定為 false，然後讓 ConnectionMultiplexer 自動重新連線。 [參閱此處了解詳細資訊](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md)。
 * 重複使用 ConnectionMultiplexer - 不要對每個要求建立一個新的。 建議使用[此處顯示](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)的 `Lazy<ConnectionMultiplexer>` 模式。
-* Redis 在值越小時運作得最好，因此請考慮將較大的資料切分成多個金鑰。 [在此 Redis 討論中](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ),100 kb 被認為是大。 閱讀 [這篇文章](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) 以了解較大值所造成的範例問題。
+* Redis 在值越小時運作得最好，因此請考慮將較大的資料切分成多個金鑰。 在[此 Redis 討論](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ)中，100 kb 會被視為龐大。 閱讀 [這篇文章](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) 以了解較大值所造成的範例問題。
 * 設定您的 [執行緒集區設定](#important-details-about-threadpool-growth) 以避免逾時。
-* 使用至少 5 秒的預設 connectTimeout。 此間隔為 StackExchange.Redis 提供了足夠的時間,在網路閃爍時重新建立連接。
+* 使用至少 5 秒的預設 connectTimeout。 此間隔可讓 Stackexchange.redis 在網路中斷的情況下，Redis 足夠的時間重新建立連接。
 * 請注意您執行不同作業的相關效能成本。 例如， `KEYS` 命令是一種 O(n) 作業，應該盡量避免。 [Redis.io 網站](https://redis.io/commands/) 有它支援的每項作業的時間複雜度詳細資訊。 按一下每個命令，可查看每項作業的複雜度。
 
 #### <a name="configuration-and-concepts"></a>組態和概念
@@ -312,7 +312,7 @@ Redis 工具`redis-cli`( 如不適用於 TLS 連接埠),但您可以使用實`st
 * 開發您的系統，讓系統可以處理因 [修補和容錯移轉](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md)所造成的連線短暫中斷。
 
 #### <a name="performance-testing"></a>效能測試
-* 先使用 `redis-benchmark.exe` ，在撰寫您自己的效能測試之前了解可能的輸送量。 由於`redis-benchmark`不支援 TLS,因此在執行測試之前,必須透過[Azure 門戶啟用非 TLS 連接埠](cache-configure.md#access-ports)。 例如，參閱 [如何效能評定和測試我快取的效能？](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* 先使用 `redis-benchmark.exe` ，在撰寫您自己的效能測試之前了解可能的輸送量。 因為`redis-benchmark`不支援 TLS，所以您必須在執行測試之前，[透過 AZURE 入口網站啟用非 TLS 埠](cache-configure.md#access-ports)。 例如，參閱 [如何效能評定和測試我快取的效能？](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * 用來進行測試的用戶端 VM 應該與您的「Azure Redis 快取」執行個體位於相同的區域。
 * 我們建議為您的用戶端使用 Dv2 VM 系列，因為此系列有更好的硬體，能提供最佳的結果。
 * 請確定您選擇的用戶端 VM 與您進行測試的快取至少有一樣多的運算和頻寬能力。
@@ -323,8 +323,8 @@ Redis 工具`redis-cli`( 如不適用於 TLS 連接埠),但您可以使用實`st
 
 ### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>使用常見 Redis 命令時的一些考量為何？
 
-* 避免使用需要很長時間才能完成的某些 Redis 命令,除非您完全瞭解這些命令的影響。 例如,請勿在生產中運行[KEYS](https://redis.io/commands/keys)命令。 根據鍵數,返回可能需要很長時間。 Redis 是單一執行緒伺服器，並且一次處理一個命令。 如果您在 KEYS 之後發出其他命令，則除非 Redis 處理 KEYS 命令，否則不會處理它們。 [Redis.io 網站](https://redis.io/commands/) 有它支援的每項作業的時間複雜度詳細資訊。 按一下每個命令，可查看每項作業的複雜度。
-* 索引鍵大小 - 應該使用較小的索引鍵/值還是較大的索引鍵/值？ 需視案例而定。 如果方案需要較大的鍵,則可以調整連接超時,然後重試值並調整重試邏輯。 從 Redis 伺服器的角度來看,較小的值提供更好的性能。
+* 除非您完全瞭解這些命令的影響，否則請避免使用需要較長時間才能完成的特定 Redis 命令。 例如，請勿在生產環境中執行 [[金鑰](https://redis.io/commands/keys)] 命令。 視索引鍵的數目而定，可能需要很長的時間才會傳回。 Redis 是單一執行緒伺服器，並且一次處理一個命令。 如果您在 KEYS 之後發出其他命令，則除非 Redis 處理 KEYS 命令，否則不會處理它們。 [Redis.io 網站](https://redis.io/commands/) 有它支援的每項作業的時間複雜度詳細資訊。 按一下每個命令，可查看每項作業的複雜度。
+* 索引鍵大小 - 應該使用較小的索引鍵/值還是較大的索引鍵/值？ 需視案例而定。 如果您的案例需要較大的金鑰，您可以調整 ConnectionTimeout，然後重試值並調整重試邏輯。 從 Redis 伺服器的觀點來看，較小的值會提供較佳的效能。
 * 這些考量不表示您無法在 Redis 中儲存較大的值；您必須注意下列考量。 延遲會比較高。 如果您有一個較大的資料集和一個較小的值，則可以使用多個 ConnectionMultiplexer 執行個體，而每個執行個體都會設定一組不同的逾時和重試值 (如先前的 [StackExchange.Redis 設定選項的作用為何](#cache-configuration) 小節所述)。
 
 <a name="cache-benchmarking"></a>
@@ -350,19 +350,19 @@ Redis 工具`redis-cli`( 如不適用於 TLS 連接埠),但您可以使用實`st
 <a name="threadpool"></a>
 
 ### <a name="important-details-about-threadpool-growth"></a>執行緒集區成長的重要詳細資料
-CLR 線程池有兩種類型的線程 - "輔助"和"I/O 完成埠"(IOCP) 線程。
+CLR ThreadPool 有兩種類型的執行緒-「背景工作」和「i/o 完成埠」（IOCP）執行緒。
 
 * 背景工作執行緒是用於處理 `Task.Run(…)` 或 `ThreadPool.QueueUserWorkItem(…)` 方法之類的作業。 需要在背景執行緒上開啟工作時，CLR 中的各種元件也會使用這些執行緒。
-* 當發生非同步 IO 時(例如從網路讀取時)時,將使用 IOCP 執行緒。
+* 當非同步 IO 發生時（例如從網路讀取時），會使用 IOCP 執行緒。
 
 執行緒集區可視需要提供新背景工作執行緒或 I/O 完成執行緒 (而不需要任何節流)，直到它到達每個類型執行緒的「最低」設定。 根據預設，執行緒的數目下限設為系統上的處理器數目。
 
-一旦現有 (忙碌) 執行緒的數量達到執行緒集區的「最低」執行緒數目，執行緒集區會以每 500 毫秒將一個新執行緒插入執行緒的速率節流。 通常,如果您的系統需要 IOCP 線程獲得突發工作,它將快速處理該工作。 不過，如果暴增的工作超過設定的「最低」設定，部份工作的處理會發生一些延遲，因為執行緒集區會等待一或兩個狀況發生。
+一旦現有 (忙碌) 執行緒的數量達到執行緒集區的「最低」執行緒數目，執行緒集區會以每 500 毫秒將一個新執行緒插入執行緒的速率節流。 一般來說，如果您的系統有需要 IOCP 執行緒的高載工作，它就會快速處理該工作。 不過，如果暴增的工作超過設定的「最低」設定，部份工作的處理會發生一些延遲，因為執行緒集區會等待一或兩個狀況發生。
 
 1. 現有的執行緒變得可用來處理工作。
-2. 沒有現有線程為 500 毫秒免費,因此創建了一個新線程。
+2. 沒有任何現有的執行緒可免費使用500毫秒，因此會建立新的執行緒。
 
-基本上,這意味著當 Busy 線程的數量大於 Min 線程時,在應用程式處理網路流量之前,您可能會支付 500 毫秒的延遲。 此外，務必注意，當現有的執行緒處於閒置的時間超過 15 秒 (根據我的記憶)，它將會被清除，而且這個循環的擴大和縮減可以重複。
+基本上，這表示當忙碌的執行緒數目大於最小線程時，您可能會在應用程式處理網路流量之前，先支付500毫秒的延遲。 此外，務必注意，當現有的執行緒處於閒置的時間超過 15 秒 (根據我的記憶)，它將會被清除，而且這個循環的擴大和縮減可以重複。
 
 如果我們查看來自 StackExchange.Redis (建置 1.0.450 或更新版本) 的範例錯誤訊息，您會看到它現在會列印執行緒集區統計資料 (請參閱以下的 IOCP 和背景工作詳細資料)。
 
@@ -371,17 +371,17 @@ CLR 線程池有兩種類型的線程 - "輔助"和"I/O 完成埠"(IOCP) 線程�
     IOCP: (Busy=6,Free=994,Min=4,Max=1000),
     WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 
-在前面的範例中,您可以看到,對於 IOCP 線程,有六個忙線程,並且系統配置為允許四個最小線程。 在這種情況下,用戶端可能會看到兩個 500 毫秒的延遲,因為 6 > 4。
+在上述範例中，您可以看到 IOCP 執行緒有6個忙碌執行緒，而系統設定為允許四個最小線程。 在此情況下，用戶端可能會看到 2 500 毫秒的延遲，因為 6 > 4。
 
 請注意，如果 IOCP 或背景工作執行緒的成長發生節流，StackExchange.Redis 可能達到逾時。
 
 ### <a name="recommendation"></a>建議
 
-經由這項資訊，我們強烈建議客戶將 IOCP 和背景工作執行緒的「最低」組態值設定成大於預設值的數值。 我們不能給出一刀切的指導,說明此值應該是什麼,因為對於另一個應用程序來說,一個應用程式的正確值可能過高或太低。 這項設定也會影響複雜應用程式其他部分的效能，因此每位客戶需要微調此設定來滿足其特定需求。 200 或 300 是好的起點，那麼請測試並視需要調整。
+經由這項資訊，我們強烈建議客戶將 IOCP 和背景工作執行緒的「最低」組態值設定成大於預設值的數值。 對於這個值應該是什麼，我們無法提供全形的指引，因為某個應用程式的正確值可能會對另一個應用程式而言太高或較低。 這項設定也會影響複雜應用程式其他部分的效能，因此每位客戶需要微調此設定來滿足其特定需求。 200 或 300 是好的起點，那麼請測試並視需要調整。
 
 如何設定這項設定：
 
-* 我們建議在中使用`global.asax.cs`[線程池.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_)方法以程式設計方式更改此設置。 例如：
+* 我們建議您在中使用[SetMinThreads （...）](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_)方法，以程式設計方式變更這項`global.asax.cs`設定。 例如：
 
 ```cs
 private readonly int minThreads = 200;
@@ -396,12 +396,12 @@ void Application_Start(object sender, EventArgs e)
 ```
 
   > [!NOTE]
-  > 此方法指定的值是全域設置,影響整個 AppDomain。 例如,如果您有一台 4 核電腦,並且希望在運行時將*minWorkerThreads*和*minIoThreads*設置為每個 CPU 50,則可以使用**ThreadPool.SetMinThreads(200,200)。**
+  > 這個方法所指定的值是全域設定，會影響整個 AppDomain。 例如，如果您有4核心的機器，而且想要在執行時間將*minWorkerThreads*和*minIoThreads*設定為每個 CPU 50，則您會使用**ThreadPool. SetMinThreads （200，200）**。
 
-* 還可以使用`<processModel>`設定元素下的[*minIoThreads*或*minWorkerThreads*設定設定](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx)來`Machine.config`指定最小線程設定`%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\`,該設定通常位於 。 **通常不建議以這種方式設置最小線程數,因為它是系統範圍的設置。**
+* 您也可以使用中`<processModel>` `Machine.config`Configuration 元素下的[ *minIoThreads*或*minWorkerThreads* configuration 設定](https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx)，指定最小線程設定，通常位於。 `%SystemRoot%\Microsoft.NET\Framework\[versionNumber]\CONFIG\` **通常不建議以這種方式設定最小線程數目，因為它是全系統的設定。**
 
   > [!NOTE]
-  > 這個組態元素中指定的值是「每一核心」** 設定。 例如,如果您有一台 4 核型電腦,並且希望*minIoThreads*設定在執行時為 200,則可以使用`<processModel minIoThreads="50"/>`。
+  > 這個組態元素中指定的值是「每一核心」** 設定。 例如，如果您有4核心的機器，而且想要在執行時間將*minIoThreads*設定為200，則您會`<processModel minIoThreads="50"/>`使用。
   >
 
 <a name="server-gc"></a>
@@ -411,7 +411,7 @@ void Application_Start(object sender, EventArgs e)
 
 * [啟用伺服器 GC](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
 * [Fundamentals of Garbage Collection (記憶體回收的基本概念)](/dotnet/standard/garbage-collection/fundamentals)
-* [垃圾資源與效能](/dotnet/standard/garbage-collection/performance)
+* [垃圾收集和效能](/dotnet/standard/garbage-collection/performance)
 
 
 ### <a name="performance-considerations-around-connections"></a>連線相關的效能考量
@@ -436,7 +436,7 @@ void Application_Start(object sender, EventArgs e)
 <a name="cache-timeouts"></a>
 
 ### <a name="why-am-i-seeing-timeouts"></a>為什麼看到逾時？
-用來與 Redis 溝通的用戶端發生逾時。 將命令傳送到 Redis 伺服器時，會將命令排入佇列，而且 Redis 伺服器最後會挑選並執行命令。 不過，用戶端可能會在此程序期間逾時，而且，如果是這樣，則會在呼叫端引發例外狀況。 有關故障排除超時問題的詳細資訊,請參閱[用戶端故障排除](cache-troubleshoot-client.md)和[StackExchange.Redis 超時異常](cache-troubleshoot-timeouts.md#stackexchangeredis-timeout-exceptions)。
+用來與 Redis 溝通的用戶端發生逾時。 將命令傳送到 Redis 伺服器時，會將命令排入佇列，而且 Redis 伺服器最後會挑選並執行命令。 不過，用戶端可能會在此程序期間逾時，而且，如果是這樣，則會在呼叫端引發例外狀況。 如需有關疑難排解超時問題的詳細資訊，請參閱[用戶端疑難排解](cache-troubleshoot-client.md)和[stackexchange.redis。 Redis 超時例外](cache-troubleshoot-timeouts.md#stackexchangeredis-timeout-exceptions)狀況。
 
 <a name="cache-disconnect"></a>
 
@@ -446,7 +446,7 @@ void Application_Start(object sender, EventArgs e)
 * 用戶端原因
   * 已重新部署用戶端應用程式。
   * 用戶端應用程式已執行調整作業。
-    * 在雲端服務或 Web 應用中,這可能是由於自動縮放。
+    * 在雲端服務或 Web Apps 的案例中，這可能是因為自動調整。
   * 用戶端上的網路層已變更。
   * 在用戶端或用戶端與伺服器之間的網路節點中，發生暫時性錯誤。
   * 已達頻寬閾值限制。
@@ -463,13 +463,13 @@ void Application_Start(object sender, EventArgs e)
 >
 
 ### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
-Redis 的 Azure 緩存通常可用大小高達 120 GB,可用性 SLA 為 99.9%。 新的[高級套餐](cache-premium-tier-intro.md)提供高達 1.2 TB 的尺寸,並支援群集、VNET 和持久性,SLA 為 99.9%。
+Azure Cache for Redis 已正式運作，大小上限為 120 GB，並具有99.9% 的可用性 SLA。 [新的](cache-premium-tier-intro.md)進階層提供的大小高達 1.2 TB，而且支援叢集、VNET 和持續性，並具有99.9% 的 SLA。
 
 「Azure Redis 快取」可讓您存取由 Microsoft 管理的安全、專用「Azure Redis 快取」。 使用這項供應項目，您可以利用 Redis 提供的豐富功能集和生態系統，並使用 Microsoft 提供的可靠託管及監控服務。
 
-與僅處理鍵值對的傳統緩存不同,Redis 因其性能高的數據類型而廣受歡迎。 Redis 也支援在這些類型上執行不可部分完成的作業，例如附加至字串、在雜湊中遞增值、推入至清單、計算集合交集、聯集和差異，或取得已排序集合中最高排名的成員。 其他功能包括支援交易、發行/訂用、Lua 指令碼撰寫、存活時間有限的索引鍵及組態設定，可讓 Redis 的行為更像傳統快取。
+不同于僅處理索引鍵/值組的傳統快取，Redis 對於其高效能的資料類型很熱門。 Redis 也支援在這些類型上執行不可部分完成的作業，例如附加至字串、在雜湊中遞增值、推入至清單、計算集合交集、聯集和差異，或取得已排序集合中最高排名的成員。 其他功能包括支援交易、發行/訂用、Lua 指令碼撰寫、存活時間有限的索引鍵及組態設定，可讓 Redis 的行為更像傳統快取。
 
-Redis 成功的另一個關鍵方面是圍繞它構建的健康、充滿活力的開源生態系統。 這會反映在跨多種語言可用的各式各樣 Redis 用戶端。 此生態系統和廣泛的一系列用戶端可讓「Azure Redis 快取」可供幾乎任何您會在 Azure 內建置的工作負載使用。
+Redis 成功的另一個重要層面是以其為基礎的良好、生動的開放原始碼生態系統。 這會反映在跨多種語言可用的各式各樣 Redis 用戶端。 此生態系統和廣泛的一系列用戶端可讓「Azure Redis 快取」可供幾乎任何您會在 Azure 內建置的工作負載使用。
 
 如需有關如何開始使用「Azure Redis 快取」的詳細資訊，請參閱[如何使用 Azure Redis 快取](cache-dotnet-how-to-use-azure-redis-cache.md)和 [Azure Redis 快取文件](index.yml)。
 

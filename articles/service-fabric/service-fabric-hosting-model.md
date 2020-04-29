@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: 82bc5068be651b05eb24efa3b05e46c1e7c1e24d
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81115045"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric 主控模型
@@ -122,7 +122,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ## <a name="guest-executable-and-container-applications"></a>客體可執行檔和容器應用程式
 Service Fabric 會將[客體可執行檔][a2]和[容器][a3]應用程式視為獨立的無狀態服務。 ServiceHost** (一個處理序或容器) 中沒有任何 Service Fabric 執行階段。 由於這些服務是獨立的，因此每一 ServiceHost** 的複本數並不適用於這些服務。 與這些服務搭配使用的最常見組態是 [InstanceCount][c2] 等於 -1 的單一分割區 (在叢集的每個節點上都會執行一份服務程式碼)。 
 
-這些服務的預設**服務包啟動模式**是**共用進程**,在這種情況下,服務結構僅在給定應用程式的節點上啟動一個*服務包*副本。  這意謂著一個節點上只會執行一份服務程式碼。 如果您想要在一個節點上執行多份服務程式碼，請在建立服務時將 **ServicePackageActivationMode** 指定為 **ExclusiveProcess**。 例如，您可以在建立 ServiceType** (指定於 ServiceManifest** 中) 的多個服務 (Service1** 至 ServiceN**) 時這麼做，也可以在您的服務是多重分割時這麼做。 
+這些服務的預設**ServicePackageActivationMode**是**SharedProcess**，在這種情況下，Service Fabric 只會在指定應用程式的節點上啟動一個*ServicePackage*複本。  這意謂著一個節點上只會執行一份服務程式碼。 如果您想要在一個節點上執行多份服務程式碼，請在建立服務時將 **ServicePackageActivationMode** 指定為 **ExclusiveProcess**。 例如，您可以在建立 ServiceType** (指定於 ServiceManifest** 中) 的多個服務 (Service1** 至 ServiceN**) 時這麼做，也可以在您的服務是多重分割時這麼做。 
 
 ## <a name="change-the-hosting-model-of-an-existing-service"></a>變更現有服務的主控模型
 現階段，您無法將現有服務的主控模型從共用處理序變更為專屬處理序 (反之亦然)。
@@ -138,15 +138,15 @@ Service Fabric 會將[客體可執行檔][a2]和[容器][a3]應用程式視為�
 在某些案例中，Service Fabric 也允許每個 ServicePackage** 具有多個 ServiceType** (而且一個 CodePackage** 可以註冊多個 ServiceType**)。 以下是一些適用這些設定的案例：
 
 - 您想要藉由減少產生處理序並提高每一處理序的複本密度，將資源使用率最佳化。
-- 來自不同*ServiceType*的複本需要共用一些具有高初始化或記憶體成本的常見數據。
+- 來自不同*servicetype*的複本需要共用一些具有高初始化或記憶體成本的通用資料。
 - 您有免費的服務供應項目，而您想要透過將服務的所有複本都放在同一個處理序中，為資源使用量設定限制。
 
-專屬處理序主控模型與每一 ServicePackage** 有多個 ServiceType** 的應用程式模型並不相同。 這是因為每個*ServicePackage*的多個*ServiceType*旨在實現副本之間的更高資源分享,並啟用每個進程更高的副本密度。 專屬處理序模型的設計目的是要實現不同結果。
+專屬處理序主控模型與每一 ServicePackage** 有多個 ServiceType** 的應用程式模型並不相同。 這是因為每個*ServicePackage*的多個*servicetype*是設計用來在複本之間達到較高的資源分享，並針對每個進程啟用更高的複本密度 專屬處理序模型的設計目的是要實現不同結果。
 
 思考一下每一 ServicePackage** 有多個 ServiceType** 的案例，其中是由不同的 CodePackage** 註冊每個 ServiceType**。 假設我們有一個 ServicePackage** 'MultiTypeServicePackage'，其中包含兩個 CodePackage**：
 
-- "我的代碼包",它註冊*服務類型*"我的服務類型A"。
-- "我的代碼包B",它註冊*服務類型*"我的服務類型B"。
+- ' MyCodePackageA '，它會註冊*ServiceType* ' MyServiceTypeA '。
+- ' MyCodePackageB '，它會註冊*ServiceType* ' MyServiceTypeB '。
 
 現在，假設我們建立一個「應用程式」**fabric:/SpecialApp**。 在 **fabric:/SpecialApp** 中，我們使用專屬處理序模型建立下列兩個服務：
 

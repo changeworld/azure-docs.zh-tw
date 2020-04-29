@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: allensu
 ms.openlocfilehash: c45d0a9195a719d830753a9614cfa7efb6f1c23d
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81260270"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>在 Azure CDN 端點上預先載入資產
@@ -66,8 +66,8 @@ ms.locfileid: "81260270"
 > 
 > 
 
-## <a name="see-also"></a>另請參閱
-* [清除 Azure CDN 終結點](cdn-purge-endpoint.md)
+## <a name="see-also"></a>請參閱
+* [清除 Azure CDN 端點](cdn-purge-endpoint.md)
 * [Azure CDN REST API 參考 - 預先載入端點上的內容](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
 * [Azure CDN REST API 參考 - 從端點清除內容](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
 

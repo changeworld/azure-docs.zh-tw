@@ -1,6 +1,6 @@
 ---
-title: 變更 Azure 宇宙 DB MongoDB 的 API 中的串流
-description: 瞭解如何在 Azure Cosmos DB 的蒙高 DB API 中使用更改流來獲取對數據所做的更改。
+title: 變更 Azure Cosmos DB 的 MongoDB API 中的資料流程
+description: 瞭解如何在 Azure Cosmos DB 適用于 MongoDB 的 API 中使用變更串流，以取得對您的資料所做的變更。
 author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,42 +8,42 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: tisande
 ms.openlocfilehash: 38e262abefe5444c1fe7586810f4b971cc7baf6c
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114156"
 ---
-# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>變更 Azure 宇宙 DB MongoDB 的 API 中的串流
+# <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>變更 Azure Cosmos DB 的 MongoDB API 中的資料流程
 
-使用更改流 API 可在 Azure Cosmos DB 的蒙戈 DB API 中[更改來源](change-feed.md)支援。 通過使用更改流 API,應用程式可以獲取對集合或單個分片中的項所做的更改。 稍後,您可以根據結果執行進一步操作。 對集合中的項的更改按其修改時間的順序捕捉,並且每個分片鍵都保證排序順序。
+您可以使用變更資料流程 API，取得 Azure Cosmos DB 的 MongoDB API 中的[變更](change-feed.md)摘要支援。 藉由使用變更資料流程 API，您的應用程式可以取得對集合或單一分區中的專案所做的變更。 稍後您可以根據結果採取進一步的動作。 集合中的專案變更會依照其修改時間順序來捕捉，而排序次序則是依據分區索引鍵來保證。
 
 > [!NOTE]
-> 要使用更改流,請使用 Azure Cosmos DB 的 MongoDB API 版本 3.6 或更高版本創建帳戶。 如果針對早期版本執行變更流範例,您可能會看到錯誤`Unrecognized pipeline stage name: $changeStream`。
+> 若要使用變更資料流程，請建立3.6 版 Azure Cosmos DB 適用于 MongoDB 的 API 或更新版本的帳戶。 如果您針對較舊的版本執行變更資料流程範例，可能會看到`Unrecognized pipeline stage name: $changeStream`錯誤。
 
 ## <a name="current-limitations"></a>目前的限制
 
-使用變更串流時,以下限制適用:
+使用變更資料流程時，適用下列限制：
 
-* 輸出`operationType`文件`updateDescription`中 尚不支援和 屬性。
-* 當前`insert`支援`update`和`replace`操作類型。 
-* 尚不支援刪除操作或其他事件。
+* 輸出`operationType`檔`updateDescription`中尚未支援和屬性。
+* 目前`insert`支援`update`、和`replace`作業類型。 
+* 尚未支援刪除作業或其他事件。
 
-由於這些限制,需要$match階段、$project階段和完整文檔選項,如前面的示例所示。
+由於這些限制，因此需要 $match 階段、$project 階段和 fullDocument 選項，如先前範例所示。
 
-與 Azure Cosmos DB 的 SQL API 中的更改來源不同,沒有單獨的[更改饋送處理器庫](change-feed-processor.md)來使用更改流或需要租約容器。 當前不支援[Azure 函數觸發器](change-feed-functions.md)來處理更改流。
+不同于 Azure Cosmos DB 的 SQL API 中的變更摘要，沒有個別的[變更摘要處理器程式庫](change-feed-processor.md)可取用變更串流或需要租用容器。 目前不支援[Azure Functions 觸發](change-feed-functions.md)程式來處理變更資料流程。
 
 ## <a name="error-handling"></a>錯誤處理
 
-使用變更串流時,支援以下錯誤碼和訊息:
+使用變更資料流程時，支援下列錯誤碼和訊息：
 
-* **HTTP 錯誤代碼 16500** - 當更改流被限制時,它將返回一個空頁。
+* **HTTP 錯誤碼 16500** -當變更資料流程受到節流處理時，它會傳回空白頁面。
 
-* **命名空間找不到(操作型態無效)** ─如果不存在的集合上執行變更流,或者如果刪除集合,則傳回`NamespaceNotFound`錯誤 。 由於無法`operationType`在輸出文檔中返回該屬性,`operationType Invalidate``NamespaceNotFound`因此傳回錯誤不是錯誤。
+* **NamespaceNotFound （OperationType 無效）** -如果您在不存在的集合上執行變更資料流程，或集合已卸載，則會傳回`NamespaceNotFound`錯誤。 因為無法`operationType`在輸出檔案中傳回屬性，而不是`operationType Invalidate`錯誤，所以會傳回`NamespaceNotFound`錯誤。
 
 ## <a name="examples"></a>範例
 
-下面的範例展示如何獲取集合中所有項的更改流。 本示例創建一個游標,用於在插入、更新或替換專案時監視它們。 需要`$match`階段、`$project`階段和`fullDocument`選項才能獲取更改流。 當前不支援使用更改流監視刪除操作。 作為解決方法,您可以在要刪除的項上添加軟標記。 例如,您可以在名為"已刪除"的項中添加屬性。 如果要刪除該專案,可以將「已刪除」設定為`true`, 並在該專案上設置 TTL。 由於將「刪除」更新為`true`更新,因此此更改將在更改流中可見。
+下列範例顯示如何取得集合中所有專案的變更資料流程。 這個範例會建立一個資料指標，以便在插入、更新或取代專案時加以監看。 若`$match`要取得`$project`變更資料流程， `fullDocument`必須要有階段、階段和選項。 目前不支援使用變更資料流程來監看刪除作業。 因應措施是，您可以在要刪除的專案上新增軟標記。 例如，您可以在名為「已刪除」的專案中新增屬性。 當您想要刪除專案時，可以將「已刪除」設定為`true` ，並在專案上設定 TTL。 因為將「已刪除」 `true`更新為更新，所以這項變更將會顯示在變更資料流程中。
 
 ### <a name="javascript"></a>JavaScript：
 
@@ -83,9 +83,9 @@ while (enumerator.MoveNext()){
 enumerator.Dispose();
 ```
 
-## <a name="changes-within-a-single-shard"></a>單個分片中的變更
+## <a name="changes-within-a-single-shard"></a>單一分區中的變更
 
-下面的範例展示如何在單個分片中獲取項的更改。 此示例獲取分片鍵等於"a"和分片鍵值等於"1"的項的更改。 可以讓不同的用戶端並行讀取不同分片的更改。
+下列範例顯示如何在單一分區中取得專案的變更。 這個範例會取得分區索引鍵等於 "a" 且分區索引鍵值等於 "1" 之專案的變更。 可以讓不同的用戶端以平行方式從不同的分區讀取變更。
 
 ```javascript
 var cursor = db.coll.watch(
@@ -106,5 +106,5 @@ var cursor = db.coll.watch(
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用時間即時使蒙高DB的 Azure Cosmos DB API 中的資料自動過期](mongodb-time-to-live.md)
+* [使用存留時間以在 Azure Cosmos DB 的 MongoDB API 中自動使資料過期](mongodb-time-to-live.md)
 * [Azure Cosmos DB 的 MongoDB 版 API 中的索引編製](mongodb-indexing.md)

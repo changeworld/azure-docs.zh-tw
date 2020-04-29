@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
 ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81259165"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>如何使用 Git 儲存和設定 API 管理服務組態
@@ -52,7 +52,7 @@ ms.locfileid: "81259165"
 ![啟用 GIT][api-management-enable-git]
 
 > [!IMPORTANT]
-> 任何未定義為命名值的機密都將儲存在儲存庫中,並將保留在其歷史記錄中,直到您禁用並重新啟用 Git 訪問許可權。 命名值提供了一個安全的位置,用於管理所有 API 配置和策略中的恆定字串值(包括機密),因此您不必直接將它們存儲在策略語句中。 如需詳細資訊，請參閱[如何使用 Azure API 管理原則中的具名值](api-management-howto-properties.md)。
+> 未定義為指名值的任何秘密都會儲存在存放庫中，並且會保留在其歷程記錄中，直到您停用再重新啟用 Git 存取為止。 「命名值」提供一個安全的地方來管理所有 API 設定和原則中的常數位串值（包括秘密），因此您不需要直接在原則語句中儲存它們。 如需詳細資訊，請參閱[如何使用 Azure API 管理原則中的具名值](api-management-howto-properties.md)。
 >
 >
 
@@ -148,7 +148,7 @@ git push
 
 本機 git 儲存機制中的檔案和資料夾包含服務執行個體的相關組態資訊。
 
-| Item | 描述 |
+| 項目 | 描述 |
 | --- | --- |
 | 根 api 管理資料夾 |包含服務執行個體的最上層組態 |
 | apis 資料夾 |包含服務執行個體中 apis 的組態 |

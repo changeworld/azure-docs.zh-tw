@@ -1,25 +1,25 @@
 ---
-title: Azure 宇宙 DB 中的群組 BY 子句
-description: 瞭解 Azure 宇宙 DB 的 GROUP BY 子句。
+title: Azure Cosmos DB 中的 GROUP BY 子句
+description: 瞭解 Azure Cosmos DB 的 GROUP BY 子句。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: tisande
 ms.openlocfilehash: 8a3cbbafc066747b62f79934f2cd12301aa1ba17
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261596"
 ---
-# <a name="group-by-clause-in-azure-cosmos-db"></a>Azure 宇宙 DB 中的群組 BY 子句
+# <a name="group-by-clause-in-azure-cosmos-db"></a>Azure Cosmos DB 中的 GROUP BY 子句
 
-GROUP BY 子句根據一個或多個指定屬性的值劃分查詢的結果。
+GROUP BY 子句會根據一個或多個指定屬性的值來分割查詢的結果。
 
 > [!NOTE]
-> Azure Cosmos DB 目前支援 .NET SDK 3.3 及以上中的 GROUP BY 以及 JavaScript SDK 3.4 及以上。
-> 對其他語言 SDK 的支援當前不可用,但已計劃提供。
+> Azure Cosmos DB 目前支援 .NET SDK 3.3 和更新版本，以及 JavaScript SDK 3.4 和更新版本中的 GROUP BY。
+> 目前無法使用其他語言 SDK 的支援，但已進行規劃。
 
 ## <a name="syntax"></a>語法
 
@@ -35,25 +35,25 @@ GROUP BY 子句根據一個或多個指定屬性的值劃分查詢的結果。
 
 - `<scalar_expression_list>`
 
-   指定將用於劃分查詢結果的運算式。
+   指定將用來分割查詢結果的運算式。
 
 - `<scalar_expression>`
   
-   除標量子查詢和標量聚合外,允許任何標量表達式。 每個標量表達式必須至少包含一個屬性引用。 單個表達式的數量或每個表達式的基數沒有限制。
+   除了純量子查詢和純量匯總以外，允許任何純量運算式。 每個純量運算式都必須包含至少一個屬性參考。 個別運算式的數目或每個運算式的基數沒有任何限制。
 
 ## <a name="remarks"></a>備註
   
-  當查詢使用 GROUP BY 子句時,SELECT 子句只能包含 GROUP BY 子句中包含的屬性和系統函數的子集。 一個例外是[聚合系統函數](sql-query-aggregates.md),它可以出現在 SELECT 子句中,而不包含在 GROUP BY 子句中。 您還可以始終在 SELECT 子句中包含文本值。
+  當查詢使用 GROUP BY 子句時，SELECT 子句只能包含 GROUP BY 子句中包含的屬性和系統函數子集。 其中一個例外狀況是[匯總系統函數](sql-query-aggregates.md)，它可以出現在 SELECT 子句中，而不會包含在 group BY 子句中。 您也可以在 SELECT 子句中一律包含常值。
 
-  GROUP BY 子句必須以 SELECT、FROM 和 WHERE 子句之後以及 OFFSET LIMIT 子句之前。 您目前無法使用帶有 ORDER BY 子句的 GROUP BY,但這是計劃進行的。
+  GROUP BY 子句必須在 SELECT、FROM 和 WHERE 子句之後以及 OFFSET LIMIT 子句之前。 您目前無法搭配 ORDER BY 子句使用 GROUP BY，但這是計畫的。
 
-  GROUP BY 子句不允許以下任何條款:
+  GROUP BY 子句不允許下列任何一項：
   
-- 別名屬性或別名系統功能(SELECT 子句中仍允許進行別名)
+- 別名屬性或別名系統函數（SELECT 子句中仍然允許別名）
 - 子查詢
-- 聚合系統函數(這些功能僅在 SELECT 子句中允許)
+- 匯總系統函數（這些只允許用於 SELECT 子句）
 
-不支援具有聚合系統函數的查詢和具有子`GROUP BY`查詢的查詢。 例如,不支援以下查詢:
+不支援具有匯總系統函數和子查詢的`GROUP BY`查詢。 例如，不支援下列查詢：
 
 ```sql
 SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName) AS UniqueLastNames
@@ -61,9 +61,9 @@ SELECT COUNT(UniqueLastNames) FROM (SELECT AVG(f.age) FROM f GROUP BY f.lastName
 
 ## <a name="examples"></a>範例
 
-這些示例使用通過[Azure Cosmos DB 查詢運動場](https://www.documentdb.com/sql/demo)提供的營養數據集。
+這些範例會使用[Azure Cosmos DB 查詢遊樂場](https://www.documentdb.com/sql/demo)所提供的營養資料集。
 
-例如,下面是一個查詢,它返回每個食品組中的項目總數:
+例如，下列查詢會傳回每個 foodGroup 中專案的總計數：
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup
@@ -71,7 +71,7 @@ FROM Food f
 GROUP BY f.foodGroup
 ```
 
-某些結果(TOP 關鍵字用於限制結果):
+有些結果是（TOP 關鍵字是用來限制結果）：
 
 ```json
 [{
@@ -92,7 +92,7 @@ GROUP BY f.foodGroup
 }]
 ```
 
-此查詢有兩個用於劃分結果的運算式:
+此查詢有兩個用來分割結果的運算式：
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, f.foodGroup, f.version
@@ -100,7 +100,7 @@ FROM Food f
 GROUP BY f.foodGroup, f.version
 ```
 
-一些結果是:
+結果如下：
 
 ```json
 [{
@@ -125,7 +125,7 @@ GROUP BY f.foodGroup, f.version
 }]
 ```
 
-此查詢在 GROUP BY 子句中具有系統功能:
+此查詢在 GROUP BY 子句中具有系統函數：
 
 ```sql
 SELECT TOP 4 COUNT(1) AS foodGroupCount, UPPER(f.foodGroup) AS upperFoodGroup
@@ -133,7 +133,7 @@ FROM Food f
 GROUP BY UPPER(f.foodGroup)
 ```
 
-一些結果是:
+結果如下：
 
 ```json
 [{
@@ -154,7 +154,7 @@ GROUP BY UPPER(f.foodGroup)
 }]
 ```
 
-此查詢在項目屬性表示式使用關鍵字與系統函數:
+此查詢會在 item 屬性運算式中使用關鍵字和系統函數：
 
 ```sql
 SELECT COUNT(1) AS foodGroupCount, ARRAY_CONTAINS(f.tags, {name: 'orange'}) AS containsOrangeTag,  f.version BETWEEN 0 AND 2 AS correctVersion
@@ -180,5 +180,5 @@ GROUP BY ARRAY_CONTAINS(f.tags, {name: 'orange'}), f.version BETWEEN 0 AND 2
 ## <a name="next-steps"></a>後續步驟
 
 - [開始使用](sql-query-getting-started.md)
-- [選擇子句](sql-query-select.md)
+- [SELECT 子句](sql-query-select.md)
 - [彙總函數](sql-query-aggregates.md)

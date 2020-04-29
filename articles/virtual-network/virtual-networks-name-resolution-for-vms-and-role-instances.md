@@ -14,53 +14,53 @@ ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81262191"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虛擬網路中的資源名稱解析
 
 根據您使用 Azure 來裝載 IaaS、PaaS 以及混合式解決方案的方式，您可能需要允許虛擬網路中所部署的虛擬機器 (VM) 與其他資源可以彼此通訊。 雖然可以使用 IP 位址來進行通訊，但是使用能輕鬆記住且不會變更的名稱會更加簡單。 
 
-當部署在虛擬網路中的資源需要將網域名稱解析為內部 IP 位址時,可以使用三種方法之一:
+當部署在虛擬網路中的資源需要將功能變數名稱解析為內部 IP 位址時，可以使用下列三種方法的其中一種：
 
-* [Azure DNS 專用區域](../dns/private-dns-overview.md)
+* [Azure DNS 私人區域](../dns/private-dns-overview.md)
 * [Azure 提供的名稱解析](#azure-provided-name-resolution)
 * [使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server) (可將查詢轉送到 Azure 提供的 DNS 伺服器)
 
 您使用的名稱解析類型取決於資源如何彼此通訊。 下表說明各種案例和對應的名稱解析解決方案：
 
 > [!NOTE]
-> Azure DNS 專用區域是首選解決方案,使您能夠靈活地管理 DNS 區域和記錄。 如需詳細資訊，請參閱[使用私人網域的 Azure DNS](../dns/private-dns-overview.md)。
+> Azure DNS 私人區域是慣用的解決方案，可讓您彈性地管理 DNS 區域和記錄。 如需詳細資訊，請參閱[使用私人網域的 Azure DNS](../dns/private-dns-overview.md)。
 
 > [!NOTE]
-> 如果使用 Azure 提供的 DNS,則相應的 DNS 後綴將自動應用於虛擬機器。 對於所有其他選項,您必須使用完全限定的功能變數名稱 (FQDN) 或手動將適當的 DNS 後綴應用於虛擬機器。
+> 如果您使用 Azure 提供的 DNS，則會自動將適當的 DNS 尾碼套用至您的虛擬機器。 針對所有其他選項，您必須使用完整功能變數名稱（FQDN），或手動將適當的 DNS 尾碼套用至您的虛擬機器。
 
 | **案例** | **解決方法** | **DNS 尾碼** |
 | --- | --- | --- |
-| 相同虛擬網路內的 VM 之間或相同雲端服務的 Azure 雲端服務角色執行個體之間所進行的名稱解析。 | [Azure DNS 專用區域](../dns/private-dns-overview.md)或[Azure 提供的名稱解析](#azure-provided-name-resolution) |主機名稱或 FQDN |
-| 不同虛擬網路的 VM 之間或不同雲端服務的角色執行個體之間所進行的名稱解析。 |[Azure DNS 專用區域](../dns/private-dns-overview.md)或客戶管理的 DNS 伺服器在虛擬網路之間轉發查詢,以便由 Azure(DNS 代理)解決。 請參考[您自己的 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
-| 從使用虛擬網路整合的 Azure App Service (Web App、Function 或 Bot) 將名稱解析相同虛擬網路中的角色執行個體或 VM。 |客戶管理的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參考[您自己的 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
-| 從 App Service Web Apps 將名稱解析到相同虛擬網路中的 VM。 |客戶管理的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參考[您自己的 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
-| 從某個虛擬網路的 App Service Web Apps 將名稱解析到不同虛擬網路中的 VM。 |客戶管理的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參考[您自己的 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
-| 由 Azure 中的 VM 或角色執行個體解析內部部署電腦及伺服器名稱。 |客戶管理的 DNS 伺服器 (例如，內部部署的網域控制站、本機唯讀網域控制站或使用區域傳輸同步的次要 DNS)。 請參考[您自己的 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
-| 從內部部署電腦解析 Azure 主機名稱。 |將查詢轉送到所對應虛擬網路中客戶管理的 DNS Proxy 伺服器，Proxy 伺服器將查詢轉送給 Azure 進行解析。 請參考[您自己的 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
-| 從內部 IP 還原 DNS。 |[使用自己的 DNS 伺服器,Azure](#name-resolution-that-uses-your-own-dns-server) [DNS 專用區域](../dns/private-dns-overview.md)或[Azure 提供的名稱解析](#azure-provided-name-resolution)或名稱解析。 |不適用 |
+| 相同虛擬網路內的 VM 之間或相同雲端服務的 Azure 雲端服務角色執行個體之間所進行的名稱解析。 | [Azure DNS 私人區域](../dns/private-dns-overview.md)或[Azure 提供的名稱解析](#azure-provided-name-resolution) |主機名稱或 FQDN |
+| 不同虛擬網路的 VM 之間或不同雲端服務的角色執行個體之間所進行的名稱解析。 |[Azure DNS 私人區域](../dns/private-dns-overview.md)或，客戶管理的 DNS 伺服器會在虛擬網路之間轉送查詢，以供 AZURE （DNS proxy）解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
+| 從使用虛擬網路整合的 Azure App Service (Web App、Function 或 Bot) 將名稱解析相同虛擬網路中的角色執行個體或 VM。 |客戶管理的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
+| 從 App Service Web Apps 將名稱解析到相同虛擬網路中的 VM。 |客戶管理的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
+| 從某個虛擬網路的 App Service Web Apps 將名稱解析到不同虛擬網路中的 VM。 |客戶管理的 DNS 伺服器將虛擬網路之間的查詢轉送供 Azure (DNS Proxy) 解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
+| 由 Azure 中的 VM 或角色執行個體解析內部部署電腦及伺服器名稱。 |客戶管理的 DNS 伺服器 (例如，內部部署的網域控制站、本機唯讀網域控制站或使用區域傳輸同步的次要 DNS)。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
+| 從內部部署電腦解析 Azure 主機名稱。 |將查詢轉送到所對應虛擬網路中客戶管理的 DNS Proxy 伺服器，Proxy 伺服器將查詢轉送給 Azure 進行解析。 請參閱[使用專屬 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |僅 FQDN |
+| 從內部 IP 還原 DNS。 |[Azure DNS 私人區域](../dns/private-dns-overview.md)或[Azure 提供的名稱解析](#azure-provided-name-resolution)，或[使用您自己的 DNS 伺服器的名稱解析](#name-resolution-that-uses-your-own-dns-server)。 |不適用 |
 | 在 VM 或角色執行個體之間解析名稱，其中的VM 或角色執行個體分屬不同的雲端服務 (而非虛擬網路)。 |不適用。 虛擬網路外部不支援不同雲端服務中 VM 和角色執行個體之間的連線。 |不適用|
 
 ## <a name="azure-provided-name-resolution"></a>Azure 提供的名稱解析
 
-Azure 提供的名稱解析僅提供基本的權威 DNS 功能。 如果使用此選項,DNS 區域名稱和記錄將自動由 Azure 管理,您將無法控制 DNS 區域名稱或 DNS 記錄的生命週期。 如果需要為虛擬網路提供功能齊全的 DNS 解決方案,則必須使用[Azure DNS 專用區域](../dns/private-dns-overview.md)或[客戶管理的 DNS 伺服器](#name-resolution-that-uses-your-own-dns-server)。
+Azure 提供的名稱解析只提供基本的授權 DNS 功能。 如果您使用此選項，DNS 區功能變數名稱稱和記錄將會由 Azure 自動管理，而您將無法控制 dns 區功能變數名稱稱或 DNS 記錄的生命週期。 如果您的虛擬網路需要功能完整的 DNS 解決方案，您必須使用[Azure DNS 私人區域](../dns/private-dns-overview.md)或[客戶管理的 dns 伺服器](#name-resolution-that-uses-your-own-dns-server)。
 
-除了公用 DNS 名稱的解析之外，Azure 也提供位於相同虛擬網路或雲端服務內的 VM 和角色執行個體的內部名稱解析。 雲端服務中的虛擬機器和執行個體會共用相同 DNS 尾碼，因此只要主機名稱就已足夠。 但是在使用傳統部署模型所部署的虛擬網路中，不同的雲端服務會有不同的 DNS 尾碼。 在此情況下，您需要 FQDN 才能解析不同雲端服務之間的名稱。 在使用 Azure 資源管理器部署模型部署的虛擬網路中,DNS 後綴在虛擬網路中的所有虛擬機器中是一致的,因此不需要 FQDN。 DNS 名稱可以同時指派給 VM 和網路介面。 雖然 Azure 提供的名稱解析不需要任何設定，但它不適用於所有部署案例，如上表所詳述。
+除了公用 DNS 名稱的解析之外，Azure 也提供位於相同虛擬網路或雲端服務內的 VM 和角色執行個體的內部名稱解析。 雲端服務中的虛擬機器和執行個體會共用相同 DNS 尾碼，因此只要主機名稱就已足夠。 但是在使用傳統部署模型所部署的虛擬網路中，不同的雲端服務會有不同的 DNS 尾碼。 在此情況下，您需要 FQDN 才能解析不同雲端服務之間的名稱。 在使用 Azure Resource Manager 部署模型部署的虛擬網路中，DNS 尾碼在虛擬網路內的所有虛擬機器之間都是一致的，因此不需要 FQDN。 DNS 名稱可以同時指派給 VM 和網路介面。 雖然 Azure 提供的名稱解析不需要任何設定，但它不適用於所有部署案例，如上表所詳述。
 
 > [!NOTE]
 > 使用雲端服務 Web 和背景工作角色時，您也可以使用 Azure 服務管理 REST API，存取角色執行個體的內部 IP 位址。 如需詳細資訊，請參閱[服務管理 REST API 參考](https://msdn.microsoft.com/library/azure/ee460799.aspx)。 此位址是以角色名稱和執行個體數目為基礎。 
 >
 
-### <a name="features"></a>特性
+### <a name="features"></a>功能
 
 Azure 提供的名稱解析包含下列功能：
 * 容易使用。 不需要組態。
@@ -74,24 +74,24 @@ Azure 提供的名稱解析包含下列功能：
 
 當您使用 Azure 提供的名稱解析時應考量的重點：
 * Azure 建立的 DNS 尾碼不能修改。
-* DNS 查找範圍為虛擬網路。 無法從其他虛擬網路解析為一個虛擬網路創建的 DNS 名稱。
+* DNS 查閱的範圍限於虛擬網路。 為一個虛擬網路建立的 DNS 名稱無法從其他虛擬網路解析。
 * 您無法手動註冊您自己的記錄。
 * 不支援 WINS 和 NetBIOS。 您無法在「Windows 檔案總管」中看到您的 VM。
 * 主機名稱必須與 DNS 相容。 名稱只能使用 0-9、a-z 和 '-'，無法以 '-' 開始或結束。
 * 每個 VM 的 DNS 查詢流量已經過節流。 節流應該不會影響大部分的應用程式。 如果觀察到要求節流，請確定用戶端快取已啟用。 如需詳細資訊，請參閱 [DNS 用戶端組態](#dns-client-configuration)。
 * 只有前 180 個雲端服務中的 VM 會在傳統部署模型中為每個虛擬網路註冊。 此限制並不適用於 Azure Resource Manager 中的虛擬網路。
-* Azure DNS IP 位址為 168.63.129.16。 這是一個靜態 IP 位址,不會更改。
+* Azure DNS 的 IP 位址是168.63.129.16。 這是靜態 IP 位址，不會變更。
 
-### <a name="reverse-dns-considerations"></a>反向 DNS 注意事項
-所有基於 ARM 的虛擬網路都支援反向 DNS。 您可以發出反向 DNS 查詢 (PTR 查詢),以將虛擬機器的 IP 位址映射到虛擬機器的 FQDN。
-* 虛擬機器 IP 位址的所有 PTR 查詢都\[傳回表\]單 vmname .internal.cloudapp.net 的 FQDN
-* 對表單\[\]vmname.internal.cloudapp.net的 FQDN 的向前查找將解析為分配給虛擬機器的 IP 位址。
-* 如果虛擬網路作為註冊虛擬網路連結到[Azure DNS 專用區域](../dns/private-dns-overview.md),則反向 DNS 查詢將返回兩條記錄。 一個紀錄將寫出\[檔 vmname\]。[priednszonename] 和其他將\[的形式 vmname\].internal.cloudapp.net
-* 反向 DNS 查找的範圍限定為給定的虛擬網路,即使它被對等到其他虛擬網路也是如此。 對位於對等虛擬網路中的虛擬機器的 IP 位址的反向 DNS 查詢 (PTR 查詢) 將傳回 NXDOMAIN。
-* 如果要關閉虛擬網路中的反向 DNS 功能,可以通過使用[Azure DNS 專用區域](../dns/private-dns-overview.md)創建反向查找區域並將此區域連結到虛擬網路來執行此操作。 例如,如果虛擬網路的 IP 位址空間為 10.20.0.0/16,則可以創建一個空專用 DNS 區域 20.10.in-addr.arpa 並將其連結到虛擬網路。 將區域連結到虛擬網路時,應禁用連結上的自動註冊。 此區域將覆蓋虛擬網路的預設反向查找區域,由於此區域為空,您將獲得用於反向 DNS 查詢的 NXDOMAIN。 有關如何創建專用 DNS 區域並將其連結到虛擬網路的詳細資訊,請參閱我們的[快速入門指南](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal)。
+### <a name="reverse-dns-considerations"></a>反向 DNS 考慮
+所有以 ARM 為基礎的虛擬網路都支援反向 DNS。 您可以發出反向 DNS 查詢（PTR 查詢），將虛擬機器的 IP 位址對應至虛擬機器的 Fqdn。
+* 虛擬機器的 IP 位址的所有 PTR 查詢都會傳回 vmname \[ \]格式的 fqdn。 internal.cloudapp.net
+* Vmname \[ \]格式之 fqdn 的正向查閱。 internal.cloudapp.net 會解析為指派給虛擬機器的 IP 位址。
+* 如果虛擬網路連結至[Azure DNS 私人區域](../dns/private-dns-overview.md)作為註冊虛擬網路，反向 DNS 查詢會傳回兩個記錄。 其中一筆記錄會是 vmname \[ \]表單的。[priatednszonename] 和其他的格式\[會是 vmname\]. internal.cloudapp.net
+* 反向 DNS 查閱的範圍是指定的虛擬網路，即使它是對等互連至其他虛擬網路也一樣。 對等互連虛擬網路中虛擬機器 IP 位址的反向 DNS 查詢（PTR 查詢）將會傳回 NXDOMAIN。
+* 如果您想要關閉虛擬網路中的反向 DNS 函式，您可以使用[Azure DNS 私人區域](../dns/private-dns-overview.md)建立反向對應區域，並將此區域連結至您的虛擬網路。 例如，如果您虛擬網路的 IP 位址空間是 10.20.0.0/16，則您可以建立空的私人 DNS 區域20.10.in，並將它連結至虛擬網路。 將區域連結至您的虛擬網路時，您應該停用連結上的自動註冊。 此區域將會覆寫虛擬網路的預設反向對應區域，因為此區域是空的，您將會取得反向 DNS 查詢的 NXDOMAIN。 如需如何建立私人 DNS 區域，並將其連結至虛擬網路的詳細資訊，請參閱我們的[快速入門手冊](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal)。
 
 > [!NOTE]
-> 如果希望反向 DNS 尋找跨越虛擬網路,則可以建立反向查找區域 (addr.arpa) Azure DNS[專用區域](../dns/private-dns-overview.md)並將其連結到多個虛擬網路。 但是,您必須手動管理虛擬機器的反向 DNS 記錄。
+> 如果您想要讓反向 DNS 查詢跨越虛擬網路，您可以建立反向對應區域（arpa） [Azure DNS 私人區域](../dns/private-dns-overview.md)，並將其連結至多個虛擬網路。 但是，您必須手動管理虛擬機器的反向 DNS 記錄。
 >
 
 
@@ -107,19 +107,19 @@ Azure 提供的名稱解析包含下列功能：
 
 有許多不同的 DNS 快取套件可用 (例如 dnsmasq)。 以下是在最常見的發行版本上安裝 dnsmasq 的方式：
 
-* **烏本圖(使用reslvconf):**
+* **Ubuntu （使用 resolvconf）**：
   * 使用 `sudo apt-get install dnsmasq` 安裝 dnsmasq 套件。
-* **SUSE (使用網路)**:
+* **SUSE （使用 netconf）**：
   * 使用 `sudo zypper install dnsmasq` 安裝 dnsmasq 套件。
   * 使用 `systemctl enable dnsmasq.service` 啟用 dnsmasq 服務。 
   * 使用 `systemctl start dnsmasq.service` 啟動 dnsmasq 服務。 
-  * 編輯 **/etc/sysconfig/網路/設定**,並將*NETCONFIG_DNS_FORWARDER="* 更改為*dnsmasq*。
+  * 編輯 **/etc/sysconfig/network/config**，並將*NETCONFIG_DNS_FORWARDER = ""* 變更為*dnsmasq*。
   * 使用 `netconfig update` 更新 resolv.conf 來設定快取作為本機 DNS 解析程式。
-* **CentOS (使用網路管理員):**
+* **CentOS （使用 NetworkManager）**：
   * 使用 `sudo yum install dnsmasq` 安裝 dnsmasq 套件。
   * 使用 `systemctl enable dnsmasq.service` 啟用 dnsmasq 服務。
   * 使用 `systemctl start dnsmasq.service` 啟動 dnsmasq 服務。
-  * 將*預端網域名稱伺服器 127.0.0.1;* 增加**到 /etc/dhclient-eth0.conf**。
+  * 在 **/etc/dhclient-eth0.conf**中新增*前面的功能變數名稱-伺服器 127.0.0.1* 。
   * 使用 `service network restart` 重新啟動網路服務來設定快取作為本機 DNS 解析程式。
 
 > [!NOTE]
@@ -141,14 +141,14 @@ options timeout:1 attempts:5
 
 resolv.conf 檔案通常是自動產生的，且不可編輯。 新增 [選項]** 行的特定步驟會因發行版本而有所不同：
 
-* **烏本圖**(使用 reslvconf):
+* **Ubuntu** （使用 resolvconf）：
   1. 將 options** 行新增至 **/etc/resolvconf/resolv.conf.d/tail**。
   2. 執行 `resolvconf -u` 以更新。
-* **SUSE(** 使用網聯):
-  1. 新增*逾時:1 嘗試:5*到 **/etc/sysconfig/網路/設定**中的**NETCONFIG_DNS_RESOLVER_OPTIONS="參數**。
+* **SUSE** （使用 netconf）：
+  1. 新增*timeout：1次嘗試： 5*到 **/etc/sysconfig/network/config**中的**NETCONFIG_DNS_RESOLVER_OPTIONS = ""** 參數。
   2. 執行 `netconfig update` 以更新。
-* **CentOS(** 使用網路管理員):
-  1. 將*回音「選項超時:1 嘗試:5」* 新增到 **/etc/網路管理器/調度程式.d/11-dhclient**。
+* **CentOS** （使用 NetworkManager）：
+  1. 將*echo "options timeout：1次嘗試： 5"* 新增至 **/etc/NetworkManager/dispatcher.d/11-dhclient**。
   2. 使用 `service network restart` 進行更新。
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>使用專屬 DNS 伺服器的名稱解析
@@ -176,7 +176,7 @@ DNS 轉送也會實現虛擬網路之間的 DNS 解析，並使內部部署電�
 
 如有需要，您可以使用 PowerShell 或 API 來判斷內部 DNS 尾碼︰
 
-* 對於 Azure 資源管理器部署模型中的虛擬網路,後綴可透過[網路介面 REST](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces)API、Get-AzNetwork[介面](/powershell/module/az.network/get-aznetworkinterface)PowerShell cmdlet 和[az 網路 nic 顯示](/cli/azure/network/nic#az-network-nic-show)Azure CLI 命令提供。
+* 針對 Azure Resource Manager 部署模型中的虛擬網路，可透過[網路介面 REST API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces)、 [new-aznetworkinterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell Cmdlet 和[az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI 命令取得尾碼。
 * 在傳統部署模型中，可以透過[取得部署 API](https://msdn.microsoft.com/library/azure/ee460804.aspx) 呼叫或 [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure/get-azurevm) Cmdlet 來取得尾碼。
 
 如果將查詢轉送到 Azure 不符合您的需求，您應提供專屬的 DNS 解決方案。 您的 DNS 解決方案需要：
@@ -200,7 +200,7 @@ DNS 轉送也會實現虛擬網路之間的 DNS 解析，並使內部部署電�
 
 * 在也可以將查詢轉送至 Azure 遞迴解析程式 (虛擬 IP 168.63.129.16) 之虛擬機器上的目標虛擬網路中設定 DNS 伺服器。 如需 DNS 轉寄站的範例，請參閱 [Azure 快速入門範本庫](https://azure.microsoft.com/documentation/templates/301-dns-forwarder)和 [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder)。 
 * 在 VM 上的來源虛擬網路中設定 DNS 轉送工具。 設定此 DNS 轉送工具以將查詢轉送至目標虛擬網路中的 DNS 伺服器。
-* 在源虛擬網路的設置中配置來源 DNS 伺服器。
+* 在來源虛擬網路的設定中設定來源 DNS 伺服器。
 * 遵循[將您的應用程式與虛擬網路整合](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)中的指示，針對您的 Web 應用程式啟用虛擬網路整合，以連結至來源虛擬網路。
 * 在 Azure 入口網站中，針對裝載 Web 應用程式的 AppService 方案，選取 [網路]****、[虛擬網路整合]**** 底下的 [同步網路]****。
 
@@ -208,7 +208,7 @@ DNS 轉送也會實現虛擬網路之間的 DNS 解析，並使內部部署電�
 當您使用自己的 DNS 伺服器時，Azure 會提供對每個虛擬網路指定多個 DNS 伺服器的能力。 您也可以對每個網路介面 (適用於 Azure Resource Manager) 或對每個雲端服務 (適用於傳統部署模型) 指定多個 DNS 伺服器。 針對網路介面或雲端服務所指定的 DNS 伺服器，優先順序高於針對虛擬網路所指定的 DNS 伺服器。
 
 > [!NOTE]
-> 網路連接屬性(如 DNS 伺服器 IP)不應直接在 VM 中編輯。 這是因為當替換虛擬網路介面卡時，它們可能會在服務修復期間遭到清除。 這同時適用於 Windows 和 Linux VM。
+> 網路連線屬性（例如 DNS 伺服器 Ip）不應直接在 Vm 內編輯。 這是因為當替換虛擬網路介面卡時，它們可能會在服務修復期間遭到清除。 這同時適用于 Windows 和 Linux Vm。
 
 當您使用 Azure Resource Manager 部署模型時，您可以針對虛擬網路和網路介面指定 DNS 伺服器。 如需詳細資訊，請參閱[管理虛擬網路](manage-virtual-network.md)和[管理網路介面](virtual-network-network-interface.md)。
 
@@ -218,7 +218,7 @@ DNS 轉送也會實現虛擬網路之間的 DNS 解析，並使內部部署電�
 當您使用傳統部署模型時，可以在 Azure 入口網站或[網路組態檔](https://msdn.microsoft.com/library/azure/jj157100)中指定虛擬網路的 DNS 伺服器。 針對雲端服務，您可以透過[服務組態檔](https://msdn.microsoft.com/library/azure/ee758710)或使用 PowerShell ([New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm)) 指定 DNS 伺服器。
 
 > [!NOTE]
-> 如果更改已部署的虛擬網路或虛擬機器的 DNS 設置,則新 DNS 設置要生效,則必須對虛擬網路中所有受影響的 VM 執行 DHCP 租約續訂。 對於運行 Windows 作業系統的 VM,可以通過`ipconfig /renew`直接在 VM 中鍵入來執行此操作。 步驟因操作系統而異。 請參閱作業系統類型的相關文檔。
+> 如果您變更已部署之虛擬網路或虛擬機器的 DNS 設定，則要讓新的 DNS 設定生效，您必須在虛擬網路中所有受影響的 Vm 上執行 DHCP 租用更新。 對於執行 Windows OS 的 Vm，您可以直接在 VM 中`ipconfig /renew`輸入來完成這項操作。 這些步驟會根據 OS 而有所不同。 請參閱您 OS 類型的相關檔。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -231,4 +231,4 @@ Azure Resource Manager 部署模型：
 
 * [Azure 服務組態結構描述](https://msdn.microsoft.com/library/azure/ee758710)
 * [虛擬網路組態結構描述](https://msdn.microsoft.com/library/azure/jj157100)
-* [使用網路設定檔設定虛擬網路](virtual-networks-using-network-configuration-file.md)
+* [使用網路設定檔來設定虛擬網路](virtual-networks-using-network-configuration-file.md)

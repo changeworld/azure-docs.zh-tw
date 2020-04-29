@@ -1,6 +1,6 @@
 ---
-title: 向 Azure 虛擬機器新增監視&診斷
-description: 使用 Azure 資源管理器樣本使用 Azure 診斷擴展創建新的 Windows 虛擬機器。
+title: 將監視 & 診斷新增至 Azure 虛擬機器
+description: 使用 Azure Resource Manager 範本來建立具有 Azure 診斷擴充功能的新 Windows 虛擬機器。
 services: virtual-machines-windows
 documentationcenter: ''
 author: mimckitt
@@ -16,10 +16,10 @@ ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d100f054da5f82bc4dea51e054a28cca07f5de7b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81258825"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>使用 Windows VM 和 Azure Resource Manager 範本的監視和診斷
@@ -167,7 +167,7 @@ PT1M** 及 PT1H** 的 MetricAggregation 值分別表示超過一分鐘的彙總�
 
 每個 WADMetrics 資料表都包含下列資料行：
 
-* **PartitionKey**︰分割區索引鍵是以 resourceID** 值作為基礎所建構，可唯一識別 VM 資源。 例如： `002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
+* **PartitionKey**︰分割區索引鍵是以 resourceID** 值作為基礎所建構，可唯一識別 VM 資源。 例如：`002Fsubscriptions:<subscriptionID>:002FresourceGroups:002F<ResourceGroupName>:002Fproviders:002FMicrosoft:002ECompute:002FvirtualMachines:002F<vmName>`  
 * **RowKey**：遵循下列格式：`<Descending time tick>:<Performance Counter Name>`。 遞減的時間刻度計算是最大時間刻度減去開始彙總期間時間。 例如，如果取樣期間是從 2015 年 11 月 10 日 00:00Hrs UTC 開始，則計算就是：`DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`。 對於記憶體可用位元組的效能計數器，資料列索引鍵看起來會像：`2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**：效能計數器的名稱。 這符合 xml 設定中定義的 *counterSpecifier* 。
 * **Maximum**：彙總期間效能計數器的最大值。
@@ -179,4 +179,4 @@ PT1M** 及 PT1H** 的 MetricAggregation 值分別表示超過一分鐘的彙總�
 ## <a name="next-steps"></a>後續步驟
 * 如需具有診斷擴充功能之 Windows 虛擬機器的完整範例範本，請參閱 [201-vm-monitoring-diagnostics-extension](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-monitoring-diagnostics-extension)   
 * 使用 [Azure PowerShell](../windows/ps-template.md) 或 [Azure 命令列](../linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)部署 Azure Resource Manager 範本
-* 瞭解有關創作[Azure 資源管理員樣本的更多資訊](../../resource-group-authoring-templates.md)
+* 深入瞭解[撰寫 Azure Resource Manager 範本](../../resource-group-authoring-templates.md)

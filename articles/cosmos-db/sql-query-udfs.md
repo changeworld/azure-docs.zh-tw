@@ -1,38 +1,38 @@
 ---
-title: Azure 宇宙 DB 的使用者定義的函數 (UdF)
-description: 瞭解 Azure Cosmos DB 中使用者定義的函數。
+title: Azure Cosmos DB 中的使用者定義函數（Udf）
+description: 瞭解 Azure Cosmos DB 中的使用者定義函數。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: tisande
 ms.openlocfilehash: 455f44fb365152b75a3811563b646c6243f686db
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81011118"
 ---
-# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure 宇宙 DB 的使用者定義的函數 (UdF)
+# <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB 中的使用者定義函數（Udf）
 
-SQL API 支援使用者定義的函數 (UF)。 使用標量 UDF,可以傳遞零個或多個參數,並返回單個參數結果。 API 檢查每個參數為合法的 JSON 值。  
+SQL API 提供使用者定義函數（Udf）的支援。 使用純量 Udf，您可以傳入零個或多個引數，並傳回單一引數結果。 API 會檢查每個引數是否為合法的 JSON 值。  
 
-## <a name="udf-use-cases"></a>UDF 使用常用
+## <a name="udf-use-cases"></a>UDF 使用案例
 
-API 擴展 SQL 語法以支援使用 UF 的自訂應用程式邏輯。 您可以將 UdF 註冊到 SQL API 中,並在 SQL 查詢中引用它們。 與存儲過程和觸發器不同,UDF 是唯讀的。
+此 API 會擴充 SQL 語法，以支援使用 Udf 的自訂應用程式邏輯。 您可以向 SQL API 註冊 Udf，並在 SQL 查詢中參考它們。 不同于預存程式和觸發程式，Udf 是唯讀的。
 
-使用 UF,可以擴展 Azure Cosmos DB 的查詢語言。 UF 是在查詢投影中表達複雜業務邏輯的好方法。
+使用 Udf，您可以擴充 Azure Cosmos DB 的查詢語言。 Udf 是在查詢投射中表達複雜商務邏輯的絕佳方式。
 
-但是,我們建議在:
+不過，我們建議您在下列情況下避免 Udf：
 
-- Azure Cosmos DB 中已存在等效[的系統函數](sql-query-system-functions.md)。 系統功能將始終使用比等效 UDF 更少的 RU。
-- UDF 是查詢子句`WHERE`中 的唯一篩選器。 UDF 不使用索引,因此評估 UDF 需要載入文檔。 將使用索引的其他篩選器謂詞與 UDF`WHERE`結合在子句中,將減少 UDF 處理的文檔數。
+- Azure Cosmos DB 中已經有對等的[系統函數](sql-query-system-functions.md)。 系統函數一律會使用比對等 UDF 少的 RU。
+- UDF 是查詢`WHERE`子句中唯一的篩選準則。 UDF 的不會利用索引，因此評估 UDF 需要載入檔。 在`WHERE`子句中結合使用索引的其他篩選述詞與 UDF，可以減少 udf 處理的檔數目。
 
-如果在查詢中必須多次使用相同的 UDF,則應在[子查詢](sql-query-subquery.md#evaluate-once-and-reference-many-times)中引用 UDF,從而允許您使用 JOIN 運算式計算 UDF 一次,但多次引用它。
+如果您必須在查詢中多次使用相同的 UDF，您應該參考[子查詢](sql-query-subquery.md#evaluate-once-and-reference-many-times)中的 udf，讓您可以使用聯結運算式來評估 udf 一次，但參考多次。
 
 ## <a name="examples"></a>範例
 
-以下範例在Cosmos資料庫中的專案容器下註冊 UDF。 這個樣本的名稱建立 UDF,`REGEX_MATCH`其名稱稱為 。 它接受兩個 JSON`input`字`pattern`串值,並檢查第一個值是否與使用 JAvaScript`string.match()`函數在第二個字串中指定的模式匹配。
+下列範例會在 Cosmos 資料庫中的專案容器下註冊 UDF。 此範例會建立一個 UDF，其`REGEX_MATCH`名稱為。 它接受兩個 JSON 字串值`input`和`pattern`，並使用 JavaScript 的`string.match()`函式來檢查第一個是否符合第二個中所指定的模式。
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -48,7 +48,7 @@ API 擴展 SQL 語法以支援使用 UF 的自訂應用程式邏輯。 您可以
            regexMatchUdf).Result;  
 ```
 
-現在,在查詢投影中使用此 UDF。 在從查詢中調用 UDF 時`udf.`,必須 限定具有區分大小寫的前置碼。
+現在，請在查詢投影中使用此 UDF。 從查詢內呼叫 Udf 時，必須以區分`udf.`大小寫的前置詞來限定它們。
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
@@ -68,7 +68,7 @@ API 擴展 SQL 語法以支援使用 UF 的自訂應用程式邏輯。 您可以
     ]
 ```
 
-可以使用限定在篩選器內`udf.`的前置字串的 UDF,如以下範例的名稱 :
+您可以在篩選準則中使用以`udf.`前置詞限定的 UDF，如下列範例所示：
 
 ```sql
     SELECT Families.id, Families.address.city
@@ -85,9 +85,9 @@ API 擴展 SQL 語法以支援使用 UF 的自訂應用程式邏輯。 您可以
     }]
 ```
 
-從本質上講,UDF 是有效的標量運算式,可用於投影和篩選器。
+基本上，Udf 是可以在投影和篩選中使用的有效純量運算式。
 
-要延伸 UdF 的電源,請檢視另一個具有條件邏輯的範例:
+若要展開 Udf 的強大功能，請查看具有條件式邏輯的另一個範例：
 
 ```javascript
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
@@ -111,7 +111,7 @@ API 擴展 SQL 語法以支援使用 UF 的自訂應用程式邏輯。 您可以
                 seaLevelUdf);
 ```
 
-下面的範例練習 UDF:
+下列範例會練習 UDF：
 
 ```sql
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
@@ -133,12 +133,12 @@ API 擴展 SQL 語法以支援使用 UF 的自訂應用程式邏輯。 您可以
     ]
 ```
 
-如果 UDF 參數引用的屬性在 JSON 值中不可用,則該參數將被視為未定義,並跳過 UDF 調用。 同樣,如果 UDF 的結果未定義,則結果中不包括它。
+如果在 JSON 值中無法使用 UDF 參數所參考的屬性，則會將參數視為未定義，並略過 UDF 調用。 同樣地，如果 UDF 的結果未定義，則不會包含在結果中。
 
-如前面的示例所示,UDF 將 JavaScript 語言的強大功能與 SQL API 整合。 UF 提供了豐富的可程式設計介面,藉助內置的 JavaScript 運行時功能,可以執行複雜的程式性條件邏輯。 SQL API 在當前 WHERE 或 SELECT 子句階段處理時,為每個源項向 UdF 提供參數。 結果無縫地包含在整個執行管道中。 總之,UF 是作為查詢的一部分執行複雜業務邏輯的絕佳工具。
+如上述範例所示，Udf 會將 JavaScript 語言的強大功能與 SQL API 整合在一起。 Udf 提供了豐富的程式設計介面，可在內建 JavaScript 執行時間功能的協助下，執行複雜的程式性、條件式邏輯。 SQL API 會在處理的目前 WHERE 或 SELECT 子句階段，為每個來源專案提供 Udf 的引數。 結果會順暢地合併在整體執行管線中。 總而言之，Udf 是很棒的工具，可在查詢過程中執行複雜的商務邏輯。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 宇宙 DB 簡介](introduction.md)
+- [Azure Cosmos DB 簡介](introduction.md)
 - [系統函式](sql-query-system-functions.md)
 - [彙總](sql-query-aggregates.md)

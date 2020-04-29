@@ -1,6 +1,6 @@
 ---
-title: Azure 活動目錄活動日誌在 Azure 監視器 |微軟文件
-description: Azure 監視器中的 Azure 活動目錄活動紀錄簡介
+title: Azure Active Directory Azure 監視器中的活動記錄 |Microsoft Docs
+description: Azure 監視器中的 Azure Active Directory 活動記錄簡介
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,15 +18,15 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0822bdd886a9a29f2cdb6843d3dc4404d7360f32
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81261018"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure 監視中的 Azure AD 活動紀錄
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD Azure 監視器中的活動記錄
 
-您可以將 Azure 活動目錄 (Azure AD) 活動日誌路由到多個終結點,以便進行長期保留和資料洞察。 此功能可讓您：
+您可以將 Azure Active Directory （Azure AD）活動記錄路由至數個端點，以進行長期保留和資料深入解析。 此功能可讓您：
 
 * 將 Azure AD 活動記錄封存到 Azure 儲存體帳戶，以長時間保存資料。
 * 將 Azure AD 活動記錄串流至 Azure 事件中樞，以便使用 Splunk 和 QRadar 等常用的安全性資訊與事件管理 (SIEM) 工具進行分析。
@@ -48,7 +48,7 @@ ms.locfileid: "81261018"
 > 目前不支援與 B2C 相關的稽核和登入活動記錄。
 >
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要使用此功能，您必須要有：
 
@@ -70,7 +70,7 @@ ms.locfileid: "81261018"
 
 ### <a name="storage-size-for-activity-logs"></a>活動記錄的儲存體大小
 
-每個稽核記錄事件會使用約 2KB 的資料儲存體。 登錄事件日誌約為 4 KB 的數據存儲。 對具有 100,000 名使用者的租用戶而言，每天大約會產生 150 萬個事件，因此您每天需要約 3 GB 的資料儲存體。 由於寫入會以約 5 分鐘的批次執行，因此您可以預期每個月大概會有 9000 個寫入作業。 
+每個稽核記錄事件會使用約 2KB 的資料儲存體。 登入事件記錄檔約為 4 KB 的資料儲存體。 對具有 100,000 名使用者的租用戶而言，每天大約會產生 150 萬個事件，因此您每天需要約 3 GB 的資料儲存體。 由於寫入會以約 5 分鐘的批次執行，因此您可以預期每個月大概會有 9000 個寫入作業。 
 
 
 下表包含以租用戶大小為準的估計成本，儲存體帳戶是位於美國西部的一般用途 v2 帳戶，保留期間至少一年。 若要針對您預期應用程式將使用的資料量建立更精確的估計值，請使用 [Azure 儲存體定價計算機](https://azure.microsoft.com/pricing/details/storage/blobs/)。
@@ -98,24 +98,24 @@ ms.locfileid: "81261018"
 
 例如，使用者人數超過 100,000 名的大型租用戶每秒通常會有約 18 個事件，相當於每 5 分鐘有 5,400 個事件。 稽核記錄是每個事件約 2 KB，因為這相當於 10.8 MB 的資料。 因此，有 43 則訊息會在該五分鐘間隔內傳送至事件中樞。 
 
-下表包含美國西部基本事件中心每月的估計成本,具體取決於事件數據的數量,根據使用者登錄行為等許多因素,事件數據可能因租戶而異。要準確估計應用程式的預期資料量,請使用[事件中心定價計算機](https://azure.microsoft.com/pricing/details/event-hubs/)。
+下表包含美國西部基本事件中樞的每月預估成本，視事件資料量而定，這可能會因各種因素（例如使用者登入行為等等）而異。若要針對您預期應用程式的資料量計算精確的估計值，請使用[事件中樞定價計算機](https://azure.microsoft.com/pricing/details/event-hubs/)。
 
 | 記錄分類 | 使用者人數 | 每秒事件數 | 每 5 分鐘間隔的事件數 | 每一間隔的數量 | 每一間隔的訊息數 | 每月訊息數 | 每月成本 (估計值) |
 |--------------|-----------------|-------------------------|----------------------------------------|---------------------|---------------------------------|------------------------------|----------------------------|
 | 稽核 | 100,000 | 18 | 5,400 | 10.8 MB | 43 | 371,520 | $10.83 |
 | 稽核 | 1,000 | 0.1 | 52 | 104 KB | 1 | 8,640 | $10.80 |
-| 登入 | 100,000 | 18000 | 5,400,000 | 10.8 GB | 42188 | 364,504,320 | $23.9 |  
+| 登入 | 100,000 | 18000 | 5400000 | 10.8 GB | 42188 | 364504320 | $23.9 |  
 | 登入 | 1,000 | 178 | 53,400 | 106.8&nbsp;MB | 418 | 3,611,520 | $11.06 |  
 
 ### <a name="azure-monitor-logs-cost-considerations"></a>Azure 監視器記錄成本考量
 
 
 
-| 記錄分類       | 使用者人數 | 每日事件數 | 每月活動(30天) | 每月成本(美元)(最) |
+| 記錄分類       | 使用者人數 | 每日事件數 | 每月事件數（30天） | 每月成本（美元）（est） |
 | :--                | ---             | ---            | ---                        | --:                          |
-| 稽核和登入 | 100,000         | 16,500,000     | 495,000,000                |  $1093.00                       |
-| 稽核              | 100,000         | 1,500,000      | 45,000,000                 |  $246.66                     |
-| 登入           | 100,000         | 15,000,000     | 450,000,000                |  $847.28                     |
+| 審核和登入 | 100,000         | 16500000     | 495000000                |  $1093.00                       |
+| 稽核              | 100,000         | 1500000      | 45,000,000                 |  $246.66                     |
+| 登入           | 100,000         | 15,000,000     | 450000000                |  $847.28                     |
 
 
 
@@ -150,9 +150,9 @@ ms.locfileid: "81261018"
 
 ---
 
-**問:如果管理員更改診斷設置的保留期,會發生什麼情況?**
+**問：如果系統管理員變更診斷設定的保留期間，會發生什麼事？**
 
-**A**: 新的保留策略將應用於更改後收集的紀錄。 原則變更前所收集的記錄不受影響。
+**答**：新的保留原則將會套用到變更後所收集的記錄。 原則變更前所收集的記錄不受影響。
 
 ---
 
@@ -180,7 +180,7 @@ ms.locfileid: "81261018"
 
 **問: 目前支援哪些 SIEM 工具？** 
 
-**A** ** **: 目前,Azure 監視器由[Splunk、IBM](tutorial-integrate-activity-logs-with-splunk.md)QRadar、[相撲邏輯](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)[、ArcSight、LogRhythm](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight)和 Logz.io 支援。 如需連接器運作方式的詳細資訊，請參閱[將 Azure 監視資料串流至事件中樞以供外部工具取用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
+**答**：**答**：目前， [Splunk](tutorial-integrate-activity-logs-with-splunk.md)、IBM QRadar、 [Sumo 邏輯](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory)、 [ArcSight](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-arcsight)、LogRhythm 和 Logz.io 都支援 Azure 監視器。 如需連接器運作方式的詳細資訊，請參閱[將 Azure 監視資料串流至事件中樞以供外部工具取用](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 
 ---
 
@@ -198,7 +198,7 @@ ms.locfileid: "81261018"
 
 **問: 是否可在不使用外部 SIEM 工具的情況下從事件中樞存取資料？** 
 
-**答**:是的。 若要從自訂應用程式存取記錄，您可以使用[事件中樞 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
+**答**：是。 若要從自訂應用程式存取記錄，您可以使用[事件中樞 API](../../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)。 
 
 ---
 

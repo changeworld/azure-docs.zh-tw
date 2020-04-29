@@ -1,14 +1,14 @@
 ---
-title: 停用 Azure 監視器指標與自動縮放的部署 API
+title: 淘汰 Azure 監視器計量和自動調整的部署 Api
 description: 計量與自動調整傳統 API 即將停用，此 API 亦稱為「Azure 服務管理」(ASM) 或 RDFE 部署模型
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: d9b6118bc165a9b0a78ae9c4da895719249b22b7
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81114220"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>Azure 監視器停用計量與自動調整的傳統部署模型 API
@@ -58,7 +58,7 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 - 支援維度
 - 所有服務之間有一致的 1 分鐘計量細微性 
 - 更好的查詢功能
-- 更高的資料保留率(93 天的指標與 30 天) 
+- 較高的資料保留期（93天的計量與30天） 
 
 整體而言，Resource Manager 型的 Azure 監視器 API 與 Azure 中所有其他的服務一樣，效能、延展性及可靠性都更好。 
 
@@ -72,9 +72,9 @@ Azure 監視器 (首次發行時名為 Azure Insights) 目前的工可建立與�
 
 任何對先前所列傳統 API 的呼叫將會失敗，並傳回如下的錯誤訊息：
 
-對於自動縮放:*此 API 已被棄用。使用 Azure 門戶、Azure 監視器 SDK、PowerShell、CLI 或資源管理員樣本來管理自動縮放設定*。  
+針對自動調整：*此 API 已被取代。使用 [Azure 入口網站]、[Azure 監視器 SDK]、[PowerShell]、[CLI] 或 Resource Manager 範本來管理自動調整設定*。  
 
-對於指標:*此 API 已被棄用。使用 Azure 門戶、Azure 監視器 SDK、PowerShell、CLI 查詢指標*。
+針對計量：*這個 API 已被取代。使用 Azure 入口網站、Azure 監視器 SDK、PowerShell、CLI 來查詢計量*。
 
 ## <a name="email-notifications"></a>電子郵件通知
 

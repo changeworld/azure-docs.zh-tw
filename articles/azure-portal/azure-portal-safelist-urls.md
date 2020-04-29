@@ -1,6 +1,6 @@
 ---
-title: 在防火牆或代理伺服器上安全列出 Azure 門戶網址
-description: 將這些 URL 新增到代理伺服器旁路,以便與 Azure 門戶及其服務進行通訊
+title: 將防火牆或 proxy 伺服器上的 Azure 入口網站 Url
+description: 將這些 Url 新增至 proxy 伺服器略過，以與 Azure 入口網站及其服務進行通訊
 services: azure-portal
 keywords: ''
 author: mgblythe
@@ -10,23 +10,23 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: 399c64c88e78079432fcf7c09dafd199da83358b
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81255042"
 ---
-# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>在防火牆或代理伺服器上安全列出 Azure 門戶網址
+# <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>將防火牆或 proxy 伺服器上的 Azure 入口網站 Url
 
-可以配置本地安全設備以繞過 Azure 門戶 URL 的安全限制。 此配置可以提高本地或廣域網路與 Azure 雲端之間的性能和連接性。
+您可以設定內部部署安全性裝置，略過 Azure 入口網站 Url 的安全性限制。 此設定可改善您的本機或廣域網路與 Azure 雲端之間的效能和連線能力。
 
-網路管理員通常部署代理伺服器、防火牆或其他設備。 這些設備有助於保護並控制使用者存取網路的方式。 旨在保護使用者的規則有時會阻止或減緩合法的與業務相關的互聯網流量。 此流量包括您和 Azure 之間的通訊。 要優化網路與 Azure 門戶及其服務之間的連接,我們建議您將 Azure 門戶 URL 添加到安全清單中。
+網路系統管理員通常會部署 proxy 伺服器、防火牆或其他裝置。 這些裝置有助於保護安全，並控制使用者存取網際網路的方式。 為了保護使用者而設計的規則，有時會封鎖或減緩合法的商務相關網際網路流量。 此流量包括您與 Azure 之間的通訊。 若要優化您的網路與 Azure 入口網站及其服務之間的連線，建議您將 Azure 入口網站的 Url 新增至您的安全。
 
-## <a name="azure-portal-urls-for-proxy-bypass"></a>代理繞過的 Azure 門戶網址
+## <a name="azure-portal-urls-for-proxy-bypass"></a>Azure 入口網站 proxy 略過的 Url
 
-Azure 門戶的安全列表的 URL 終結點特定於部署組織的 Azure 雲。 要允許網路流量繞過限制,請選擇雲。 然後,將 URL 清單添加到代理伺服器或防火牆。
+Azure 入口網站的安全的 URL 端點是您組織部署所在的 Azure 雲端特有的。 若要允許這些端點的網路流量略過限制，請選取您的雲端。 然後，將 Url 清單新增至您的 proxy 伺服器或防火牆。
 
-#### <a name="public-cloud"></a>[公共雲](#tab/public-cloud)
+#### <a name="public-cloud"></a>[公用雲端](#tab/public-cloud)
 
 ```
 *.aadcdn.microsoftonline-p.com
@@ -50,7 +50,7 @@ Azure 門戶的安全列表的 URL 終結點特定於部署組織的 Azure 雲�
 *.windows-int.net
 ```
 
-#### <a name="us-government-cloud"></a>[美國政府雲](#tab/us-government-cloud)
+#### <a name="us-government-cloud"></a>[美國政府雲端](#tab/us-government-cloud)
 
 ```
 *.azure.us
@@ -63,7 +63,7 @@ Azure 門戶的安全列表的 URL 終結點特定於部署組織的 Azure 雲�
 *.windowsazure.us
 ```
 
-#### <a name="china-government-cloud"></a>[中國政府雲](#tab/china-government-cloud)
+#### <a name="china-government-cloud"></a>[中國政府雲端](#tab/china-government-cloud)
 
 ```
 *.azure.cn
@@ -77,6 +77,6 @@ Azure 門戶的安全列表的 URL 終結點特定於部署組織的 Azure 雲�
 ---
 
 > [!NOTE]
-> 這些終結點的流量使用標準 TCP 埠進行 HTTP (80) 和 HTTPS (443)。
+> 這些端點的流量會使用適用于 HTTP （80）和 HTTPS （443）的標準 TCP 埠。
 >
 >

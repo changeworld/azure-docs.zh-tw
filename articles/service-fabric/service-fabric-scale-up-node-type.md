@@ -1,13 +1,13 @@
 ---
-title: 向上延伸 Azure 服務結構節點類型
+title: 相應增加 Azure Service Fabric 節點類型
 description: 了解如何透過新增虛擬機器擴展集來調整 Service Fabric 叢集的規模。
 ms.topic: article
 ms.date: 02/13/2019
 ms.openlocfilehash: 4dbb9e4fbfeb27c5b8b13f70207888cf37bbb0e0
-ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80998932"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>相應增加 Service Fabric 叢集主要節點類型
@@ -34,7 +34,7 @@ ms.locfileid: "80998932"
     若要在範本中尋找新的擴展集，請搜尋以 vmNodeType2Name** 參數命名的 "Microsoft.Compute/virtualMachineScaleSets" 資源。  若要在主要節點類型中新增擴展集，請使用 [屬性] -> [virtualMachineProfile] -> [extensionProfile] -> [擴充功能] -> [屬性] -> [設定] -> [nodeTypeRef 設定]。
 4. 檢查叢集健康情況，並確認所有節點均狀況良好。
 5. 停用主要節點類型舊有擴展集內的節點，以便之後移除節點。 您可以將所有節點一併停用，這些作業便會排入佇列中。 請靜候所有節點停用，這可能需要一些時間。  隨著節點類型中的較舊節點停用，系統服務和種子節點會遷移到主要節點類型中的新擴展集 VM。
-6. 從主要節點類型移除較舊的擴展集。 (在禁用節點后,如步驟 5 中那樣,在 Azure 門戶中的虛擬機縮放集邊欄選項卡中,逐個從舊節點類型中分配節點。
+6. 從主要節點類型移除較舊的擴展集。 （如步驟5所示停用節點之後，請在 Azure 入口網站的虛擬機器擴展集分頁中，逐一解除配置舊節點類型的節點。）
 7. 移除與舊擴展集相關聯的負載平衡器。 在為新的擴展集設定新的公用 IP 位址和負載平衡器時，叢集會無法使用。  
 8. 在變數中儲存與舊的主要節點類型擴展集相關聯的公用 IP 位址 DNS 設定，然後移除該公用 IP 位址。
 9. 使用所刪除公用 IP 位址的 DNS 設定，來取代與新的主要節點類型擴展集相關聯的公用 IP 位址 DNS 設定。  叢集現在可再次連線了。

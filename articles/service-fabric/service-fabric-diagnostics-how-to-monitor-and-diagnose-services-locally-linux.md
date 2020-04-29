@@ -1,16 +1,16 @@
 ---
-title: Linux 中除錯 Azure 服務結構應用
+title: 在 Linux 中進行 Azure Service Fabric 應用程式的 Debug
 description: 了解如何在本機 Linux 開發電腦上監視和診斷 Service Fabric 服務。
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: fa8c4053a348c539c2e9e7a87d002d0fcf4a4d52
-ms.sourcegitcommit: a53fe6e9e4a4c153e9ac1a93e9335f8cf762c604
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80991325"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>監視並診斷本地 Linux 機器開發設定中的服務
+# <a name="monitor-and-diagnose-services-in-a-local-linux-machine-development-setup"></a>監視和診斷本機 Linux 機器開發設定中的服務
 
 
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "80991325"
 
 ## <a name="debugging-service-fabric-java-applications"></a>針對 Service Fabric Java 應用程式進行偵錯
 
-對於 Java 應用程式，有 [多個記錄架構](https://en.wikipedia.org/wiki/Java_logging_framework) 可用。 由於`java.util.logging`JRE 是預設選項,因此它也用於[GitHub 中的程式碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。 下列討論說明如何設定 `java.util.logging` 架構。
+對於 Java 應用程式，有 [多個記錄架構](https://en.wikipedia.org/wiki/Java_logging_framework) 可用。 由於`java.util.logging`是 JRE 的預設選項，它也會用於 GitHub 中的程式[代碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。 下列討論說明如何設定 `java.util.logging` 架構。
 
 您可以使用 java.util.logging 將應用程式記錄重新導向至記憶體、輸出串流、主控台檔案或通訊端。 對於其中每個選項，架構中已經提供預設處理常式。 您可以建立 `app.properties` 檔案來設定應用程式的檔案處理常式，將所有記錄重新導向至本機檔案。
 
@@ -53,13 +53,13 @@ java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path 
 
 依預設，如果未明確設定任何處理常式，則會註冊主控台處理常式。 使用者可以在 /var/log/syslog 下檢視 syslog 中的記錄。
 
-有關詳細資訊,請參閱[GitHub 中的程式碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。
+如需詳細資訊，請參閱[GitHub 中的程式碼範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>針對 Service Fabric C# 應用程式進行偵錯
 
 
-有多個架構適用於追蹤 Linux 上的 CoreCLR 應用程式。 有關詳細資訊,請參閱[.NET 紀錄記錄延伸](https://github.com/dotnet/extensions/tree/master/src/Logging)。  因為 C# 開發人員熟悉 EventSource，本文使用 EventSource 來追蹤 Linux 上的 CoreCLR 範例。
+有多個架構適用於追蹤 Linux 上的 CoreCLR 應用程式。 如需詳細資訊，請參閱[適用于記錄的 .Net 延伸](https://github.com/dotnet/extensions/tree/master/src/Logging)模組。  因為 C# 開發人員熟悉 EventSource，本文使用 EventSource 來追蹤 Linux 上的 CoreCLR 範例。
 
 第一個步驟是加入 System.Diagnostics.Tracing，使您可以將您的記錄寫入記憶體中、輸出串流或主控台檔案。  針對使用 EventSource 進行記錄，請將下列專案加入您的 project.json︰
 

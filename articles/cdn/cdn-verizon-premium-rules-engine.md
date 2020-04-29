@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure CDN 覆寫 HTTP 行為 - Verizon 進階規則引擎
-description: 規則引擎允許您自訂 Azure CDN 從 Verizon 進階版處理 HTTP 請求的方式,例如阻止某些類型的內容的傳遞、定義緩存策略和修改 HTTP 標頭。
+title: 使用 Azure CDN Verizon Premium 規則引擎覆寫 HTTP 行為
+description: 規則引擎可讓您自訂 Azure CDN 從 Verizon Premium 處理 HTTP 要求的方式，例如封鎖傳遞特定類型的內容、定義快取原則，以及修改 HTTP 標頭。
 services: cdn
 author: asudbring
 ms.service: azure-cdn
@@ -8,21 +8,21 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: 2e5e4265f30631f8e68d8f9e7156ea578ae85e7a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81253470"
 ---
-# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>使用 Verizon 進階規則引擎中的 Azure CDN 覆寫 HTTP 行為
+# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>使用來自 Verizon 的 Azure CDN Premium 規則引擎覆寫 HTTP 行為
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 Azure CDN 規則引擎可讓您自訂 HTTP 要求的處理方式。 例如，封鎖特定內容類型的傳遞、定義快取原則，或修改 HTTP 標頭。 本教學課程會示範如何建立用以變更 CDN 資產之快取行為的規則。 如需規則引擎語法的詳細資訊，請參閱 [Azure CDN 規則引擎參考](cdn-verizon-premium-rules-engine-reference.md)。
 
-## <a name="access"></a>存取
+## <a name="access"></a>存取權
 
 若要存取規則引擎，您必須先從 [CDN 設定檔]**** 頁面頂端選取 [管理]****，以存取 Azure CDN 管理頁面。 視您的端點是否已針對動態網站加速 (DSA) 最佳化，然後存取具有您的端點類型適用之規則集的規則引擎：
 
@@ -42,7 +42,7 @@ Azure CDN 規則引擎可讓您自訂 HTTP 要求的處理方式。 例如，封
 
 ## <a name="tutorial"></a>教學課程
 
-1. 在**CDN 設定檔**頁中,選擇 **"管理**"
+1. 在 [ **CDN 設定檔**] 頁面中，選取 [**管理**]。
    
     ![CDN 設定檔 [管理] 按鈕](./media/cdn-rules-engine/cdn-manage-btn.png)
    
@@ -73,7 +73,7 @@ Azure CDN 規則引擎可讓您自訂 HTTP 要求的處理方式。 例如，封
    >
    >
 
-5. 要添加新功能,請選擇 **"要素**"**+** 旁邊的按鈕。  在左側下拉式清單中，選取 [強制執行內部最大壽命]****。  在出現的文字方塊中，輸入 **300**。 請勿變更其餘的預設值。
+5. 若要新增功能，請選取 [ **+** **功能**] 旁的按鈕。  在左側下拉式清單中，選取 [強制執行內部最大壽命]****。  在出現的文字方塊中，輸入 **300**。 請勿變更其餘的預設值。
    
    ![CDN 規則功能](./media/cdn-rules-engine/cdn-new-feature.png)
    
@@ -93,11 +93,11 @@ Azure CDN 規則引擎可讓您自訂 HTTP 要求的處理方式。 例如，封
    >
    >
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [Azure CDN 概觀](cdn-overview.md)
 - [規則引擎參考](cdn-verizon-premium-rules-engine-reference.md)
-- [規則引擎符合條件](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [規則引擎比對條件](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [規則引擎條件運算式](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [規則引擎功能](cdn-verizon-premium-rules-engine-reference-features.md)
 - [Azure Fridays: Azure CDN's powerful new Premium Features (影片：Azure 星期五：Azure CDN 強大的新高階功能)](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/)
