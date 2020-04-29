@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 金鑰保存庫憑證終止 TLS
-description: 瞭解如何將 Azure 應用程式閘道與連接到啟用 HTTPS 的偵聽器的伺服器證書的密鑰保管庫整合。
+title: Azure Key Vault 憑證的 TLS 終止
+description: 瞭解如何將 Azure 應用程式閘道與連結到啟用 HTTPS 的接聽程式之伺服器憑證的 Key Vault 整合。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,56 +8,56 @@ ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
 ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
-ms.sourcegitcommit: eefb0f30426a138366a9d405dacdb61330df65e7
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81617501"
 ---
-# <a name="tls-termination-with-key-vault-certificates"></a>使用金鑰保存憑證的 TLS 終止
+# <a name="tls-termination-with-key-vault-certificates"></a>Key Vault 憑證的 TLS 終止
 
-[Azure 密鑰保管庫](../key-vault/general/overview.md)是一個平臺管理的秘密存儲,可用於保護機密、密鑰和 TLS/SSL 證書。 Azure 應用程式閘道支援與連接到啟用 HTTPS 的偵聽器的伺服器證書的密鑰保管庫整合。 此支援僅限於應用程式閘道的 v2 SKU。
+[Azure Key Vault](../key-vault/general/overview.md)是平臺管理的秘密存放區，可讓您用來保護秘密、金鑰和 TLS/SSL 憑證。 Azure 應用程式閘道支援與 Key Vault 整合連接到已啟用 HTTPS 之接聽程式的伺服器憑證。 這項支援僅限於應用程式閘道的 v2 SKU。
 
-金鑰保管庫集成為 TLS 端接提供了兩種模型:
+Key Vault 整合為 TLS 終止提供兩種模型：
 
-- 您可以顯示式提供附加到偵聽器的 TLS/SSL 憑證。 此模型是將 TLS/SSL 憑證傳遞到應用程式閘道以進行 TLS 終止的傳統方法。
-- 在創建啟用 HHHS 的偵聽器時,可以選擇提供對現有密鑰保管庫證書或機密的引用。
+- 您可以明確地提供附加至接聽程式的 TLS/SSL 憑證。 此模型是將 TLS/SSL 憑證傳遞給應用程式閘道以進行 TLS 終止的傳統方式。
+- 當您建立具備 HTTPS 功能的接聽程式時，您可以選擇性地提供現有 Key Vault 憑證或密碼的參考。
 
-與金鑰保管庫的應用程式閘道整合提供許多好處,包括:
+與 Key Vault 的應用程式閘道整合提供許多優點，包括：
 
-- 更強的安全性,因為 TLS/SSL 證書不是由應用程式開發團隊直接處理的。 整合讓單獨的安全團隊:
-  * 設置應用程式閘道。
-  * 控制應用程式閘道生命週期。
-  * 向選定的應用程序閘道授予存取存儲在金鑰保管庫中的證書的許可權。
-- 支援將現有證書導入金鑰保管庫。 或者使用密鑰保管庫 API 與任何受信任的密鑰保管庫合作夥伴創建和管理新證書。
-- 支援自動續訂存儲在密鑰保管庫中的證書。
+- 較強的安全性，因為 TLS/SSL 憑證不是由應用程式開發小組直接處理。 整合可讓不同的安全性小組：
+  * 設定應用程式閘道。
+  * 控制應用程式閘道的生命週期。
+  * 授與許可權給選取的應用程式閘道，以存取儲存在金鑰保存庫中的憑證。
+- 支援將現有憑證匯入到您的金鑰保存庫。 或者，使用 Key Vault Api 來建立及管理任何受信任 Key Vault 夥伴的新憑證。
+- 支援儲存在金鑰保存庫中的憑證自動更新。
 
-應用程式閘道目前僅支援軟體驗證的證書。 不支援硬體安全模組 (HSM) 驗證的證書。 將應用程式閘道配置為使用金鑰保管庫證書後,其實例將從密鑰保管庫檢索證書,並在本地安裝以進行 TLS 終止。 實例還每隔 24 小時輪詢 Key Vault,以檢索證書的更新版本(如果存在)。 如果找到更新的證書,則當前與 HTTPS 偵聽器關聯的 TLS/SSL 證書將自動旋轉。
+應用程式閘道目前僅支援軟體驗證的憑證。 硬體安全模組（HSM）驗證的憑證不受支援。 在應用程式閘道設定為使用 Key Vault 憑證之後，其實例會從 Key Vault 抓取憑證，並將其安裝到本機以進行 TLS 終止。 實例也會依24小時間隔輪詢 Key Vault，以取得憑證的更新版本（如果有的話）。 如果找到更新的憑證，則會自動旋轉目前與 HTTPS 接聽程式相關聯的 TLS/SSL 憑證。
 
 > [!NOTE]
-> Azure 門戶僅支援密鑰庫證書,不支援機密。 應用程式閘道仍然支援引用 KeyVault 的機密,但只能透過非門戶資源(如 PowerShell、CLI、API、ARM 樣本等)來引用機密。 
+> Azure 入口網站只支援 KeyVault 憑證，而非密碼。 應用程式閘道仍然支援從 KeyVault 參考秘密，但只能透過非入口網站資源（例如 PowerShell、CLI、API、ARM 範本等等）。 
 
 ## <a name="how-integration-works"></a>整合的運作方式
 
-與金鑰保存庫的應用程式閘道整合需要三步設定程序:
+與 Key Vault 的應用程式閘道整合需要三個步驟的設定程式：
 
-1. **建立使用者配置的託管識別**
+1. **建立使用者指派的受控識別**
 
-   創建或重用現有使用者分配的託管標識,應用程式閘道使用該標識代表您從密鑰保管庫檢索證書。 有關詳細資訊,請參閱[Azure 資源的託管標識是什麼?](../active-directory/managed-identities-azure-resources/overview.md) 此步驟在 Azure 活動目錄租戶中創建新標識。 標識受用於創建標識的訂閱的信任。
+   您建立或重複使用現有使用者指派的受控識別，應用程式閘道用來代表您取出 Key Vault 的憑證。 如需詳細資訊，請參閱[什麼是適用于 Azure 資源的受控識別？](../active-directory/managed-identities-azure-resources/overview.md)。 此步驟會在 Azure Active Directory 租使用者中建立新的身分識別。 身分識別受到用來建立身分識別的訂用帳戶所信任。
 
-1. **設定金鑰保存庫**
+1. **設定您的金鑰保存庫**
 
-   然後,導入現有證書或在密鑰保管庫中創建新證書。 證書將由通過應用程式閘道運行的應用程式使用。 在此步驟中,您還可以使用密鑰保管庫密鑰庫密鑰,該密鑰保管庫密鑰作為無密碼、base-64 編碼的 PFX 檔案存儲。 我們建議使用證書類型,因為密鑰保管庫中的證書類型物件可以使用自動續訂功能。 創建證書或機密後,在密鑰保管庫中定義訪問策略,以允許授予標識*以訪問*該機密。
+   然後，您可以匯入現有的憑證，或在您的金鑰保存庫中建立一個新的。 透過應用程式閘道執行的應用程式將會使用此憑證。 在此步驟中，您也可以使用儲存為無密碼、以64編碼的 PFX 檔案的金鑰保存庫密碼。 基於金鑰保存庫中的憑證類型物件所提供的自動更新功能，我們建議使用憑證類型。 建立憑證或秘密之後，您必須在金鑰保存庫中定義存取原則，以*允許授與*身分識別存取秘密。
    
    > [!NOTE]
-   > 如果透過 ARM 樣本(透過使用 Azure CLI 或 PowerShell)或透過從 Azure 門戶部署的 Azure 應用程式部署應用程式閘道,則作為基 64 編碼 PFX 檔案儲存在金鑰保管庫中的 SSL 憑證**必須無密碼**。 此外,還必須完成使用 Azure[金鑰保管庫中的步驟,以在部署期間傳遞安全參數值](../azure-resource-manager/templates/key-vault-parameter.md)。 設定`enabledForTemplateDeployment`這一點尤為`true`重要 。
+   > 如果您透過 ARM 範本部署應用程式閘道（使用 Azure CLI 或 PowerShell），或透過從 Azure 入口網站部署的 Azure 應用程式，則**必須無密碼**儲存在金鑰保存庫中的 SSL 憑證作為以 base-64 編碼的 PFX 檔案。 此外，您必須完成使用 Azure Key Vault 中的步驟，[以在部署期間傳遞安全的參數值](../azure-resource-manager/templates/key-vault-parameter.md)。 特別重要的是將設定`enabledForTemplateDeployment`為`true`。
 
 1. **設定應用程式閘道**
 
-   完成上述兩個步驟后,可以設置或修改現有應用程序閘道以使用使用者分配的託管標識。 您還可以設定 HTTP 偵聽器的 TLS/SSL 憑證,以指向金鑰保管庫證書或密鑰 ID 的完整 URI。
+   完成上述兩個步驟之後，您可以設定或修改現有的應用程式閘道，以使用使用者指派的受控識別。 您也可以設定 HTTP 接聽程式的 TLS/SSL 憑證，以指向 Key Vault 憑證或秘密識別碼的完整 URI。
 
    ![金鑰保存庫憑證](media/key-vault-certs/ag-kv.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-[使用 Azure PowerShell 使用金鑰保管庫憑證設定 TLS 終止](configure-keyvault-ps.md)
+[使用 Azure PowerShell 設定 Key Vault 憑證的 TLS 終止](configure-keyvault-ps.md)

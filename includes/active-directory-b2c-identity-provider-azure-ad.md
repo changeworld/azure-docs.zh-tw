@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
 ms.openlocfilehash: 31a6d116ae1afce9afdd3786747490980963d823
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678056"
 ---
 ## <a name="register-an-azure-ad-app"></a>註冊 Azure AD 應用程式
@@ -17,12 +17,12 @@ ms.locfileid: "81678056"
 若要讓特定 Azure AD 組織的使用者登入，您需要在組織 Azure AD 租用戶內註冊應用程式。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
-1. 確保使用的目錄包含組織 Azure AD 租戶(例如,contoso.com)。 選擇頂部功能表中的**目錄 + 訂閱篩選器**,然後選擇包含 Azure AD 租戶的目錄。
+1. 請確定您使用的是包含組織 Azure AD 租使用者的目錄（例如 contoso.com）。 在頂端功能表中選取 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您 Azure AD 租使用者的目錄。
 1. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [應用程式註冊]****。
 1. 選取 [新增註冊]  。
-1. 輸入應用程式**的名稱**。 例如： `Azure AD B2C App` 。
-1. **僅接受此組織目錄中此組織目錄中**的默認選擇帳戶。
-1. 對於**重定向 URI**,接受**Web**的值,並在所有小寫字母中輸入`your-B2C-tenant-name`以下 URL,其中 替換為 Azure AD B2C 租戶的名稱。
+1. 輸入應用程式的 [**名稱**]。 例如： `Azure AD B2C App` 。
+1. 僅針對此應用程式，接受**此組織目錄中帳戶**的預設選項。
+1. 針對 [重新**導向 URI**]，接受 [ **Web**] 的值，並以小寫字母輸入下列 URL， `your-B2C-tenant-name`其中會以您的 Azure AD B2C 租使用者名稱取代。
 
     ```
     https://your-B2C-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
@@ -31,18 +31,18 @@ ms.locfileid: "81678056"
     例如： `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp` 。
 
 1. 選取 [註冊]  。 記錄 [應用程式 (用戶端) 識別碼]****，以便在稍後的步驟中使用。
-1. 選擇**憑證&機密**,然後選擇 **「新用戶端機密**」。
-1. 輸入機密**的描述**,選擇過期,然後選擇 **"添加**"。 記錄機密**的值**,以便在後面的步驟中使用。
+1. 選取 [**憑證 & 密碼**]，然後選取 [**新增用戶端密碼**]。
+1. 輸入密碼的**描述**，選取到期日，然後選取 [**新增**]。 記錄密碼的**值**，以便在稍後的步驟中使用。
 
 ### <a name="configuring-optional-claims"></a>設定選擇性宣告
 
-如果要從 Azure `family_name` `given_name`AD 獲取和聲明,可以在 Azure 門戶 UI 或應用程式清單中為應用程式配置可選聲明。 有關詳細資訊,請參閱[如何向 Azure AD 應用程式提供可選聲明](/active-directory/develop/active-directory-optional-claims.md)。
+如果您想要從 Azure AD `family_name`取得`given_name`和宣告，您可以在 Azure 入口網站 UI 或應用程式資訊清單中設定應用程式的選擇性宣告。 如需詳細資訊，請參閱[如何提供選擇性宣告給您的 Azure AD 應用程式](/active-directory/develop/active-directory-optional-claims.md)。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 搜尋並選取 [Azure Active Directory]  。
-1. 在 **"管理'** 部分中,選擇**套用註冊**。
-1. 選擇要在清單中為其配置可選聲明的應用程式。
-1. 在 **'管理**' 部份中, 選擇**權杖設定**。
-1. 選擇 **「新增可選聲明**」。
-1. 此**類型**, 請選擇**ID**。
-1. 選擇要新增的選擇的聲明,`family_name``given_name`與 。
-1. 按一下 [新增]  。
+1. 從 [**管理**] 區段中，選取 [**應用程式註冊**]。
+1. 在清單中選取您想要為其設定選擇性宣告的應用程式。
+1. 從 [**管理**] 區段中，選取 [**權杖**設定]。
+1. 選取 [**新增選擇性**宣告]。
+1. 針對 [**權杖類型**]，選取 [ **ID**]。
+1. 選取要加入的選擇性宣告， `family_name`以及`given_name`。
+1. 按一下 [加入]  。

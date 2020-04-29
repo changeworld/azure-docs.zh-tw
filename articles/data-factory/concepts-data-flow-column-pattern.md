@@ -1,6 +1,6 @@
 ---
-title: Azure 資料工廠映射資料串流的欄模式
-description: 使用 Azure 資料工廠映射資料串流的欄模式建立通用資料轉換模式
+title: Azure Data Factory 對應資料流程中的資料行模式
+description: 使用 Azure Data Factory 對應資料流程中的資料行模式來建立一般化資料轉換模式
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,81 +8,81 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.openlocfilehash: aacec8830948e08f66d71da88897670f7ef43788
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606125"
 ---
-# <a name="using-column-patterns-in-mapping-data-flow"></a>在映射資料串態使用欄模式
+# <a name="using-column-patterns-in-mapping-data-flow"></a>在對應資料流程中使用資料行模式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-多個映射資料流轉換允許您基於模式引用範本列,而不是硬編碼的列名稱。 此符合稱為*欄模式*。 您可以根據名稱、資料類型、流或位置定義模式以匹配列,而不是要求確切的欄位名稱。 有兩種情況的列模式很有用:
+數個對應資料流程轉換可讓您根據模式（而非硬式編碼的資料行名稱）來參考範本資料行。 這種比對稱為「資料*行模式*」。 您可以根據名稱、資料類型、資料流程或位置定義模式來比對資料行，而不需要精確的功能變數名稱。 在兩種情況下，資料行模式很有用：
 
-* 如果傳入源欄位經常更改,例如更改文本檔或 NoSQL 資料庫中的列。 這個專案稱為[架構漂移](concepts-data-flow-schema-drift.md)。
-* 如果要對一組較大的列執行常見操作。 例如,想要將列名稱中"總計"的每個列轉換為雙列。
+* 如果傳入來源欄位經常變更（例如變更文字檔或 NoSQL 資料庫中的資料行的案例）。 此案例稱為[架構漂移](concepts-data-flow-schema-drift.md)。
+* 如果您想要在大型資料行群組上執行一般作業。 例如，想要將其資料行名稱中具有「總計」的每個資料行轉換成 double。
 
-列模式當前在派生列、聚合、選擇和接收器轉換中可用。
+資料行模式目前可用於 [衍生的資料行]、[匯總]、[選取] 和 [接收] 轉換。
 
-## <a name="column-patterns-in-derived-column-and-aggregate"></a>衍生欄位與集合模式
+## <a name="column-patterns-in-derived-column-and-aggregate"></a>衍生的資料行和匯總中的資料行模式
 
-要在派生列或聚合變換的聚合選項卡中添加列模式,請單擊現有列右側的加號圖示。 選擇 **「新增欄」模式**。 
+若要在匯總轉換的 [衍生的資料行] 或 [匯總] 索引標籤中加入資料行模式，請按一下現有資料行右邊的加號圖示。 選取 [**新增資料行模式**]。 
 
-![欄模式](media/data-flow/columnpattern.png "資料行模式")
+![資料行模式](media/data-flow/columnpattern.png "資料行模式")
 
-使用[運算式產生器](concepts-data-flow-expression-builder.md)輸入匹配條件。 建立一個布爾運算式,該表示式根據`name`列`type`的`stream``position`列匹配列。 模式將影響條件返回 true 的任何列、漂移或定義。
+使用[運算式](concepts-data-flow-expression-builder.md)產生器來輸入比對條件。 根據資料`name`行的、、 `type` `stream`和`position` ，建立符合資料行的布林運算式。 此模式會影響任何漂移或已定義的資料行，其中條件會傳回 true。
 
-匹配條件下方的兩個表達式框指定受影響列的新名稱和值。 用於`$$`引用匹配欄位的現有值。 左側運算式框定義名稱,右側表達式框定義值。
+比對條件底下的兩個運算式方塊會指定受影響資料行的新名稱和值。 使用`$$`來參考符合欄位的現有值。 左側運算式方塊會定義名稱，右運算式方塊則會定義值。
 
-![欄模式](media/data-flow/columnpattern2.png "資料行模式")
+![資料行模式](media/data-flow/columnpattern2.png "資料行模式")
 
-上述列模式匹配雙精度類型的每一列,併為每個匹配創建一個聚合列。 新列的名稱是匹配列的名稱,與"_total"串聯。 新列的值是現有雙精度值的舍入聚合總和。
+上述資料行模式會比對 double 類型的每個資料行，並針對每個相符專案建立一個匯總資料行。 新資料行的名稱是與 ' _total ' 串連的相符資料行名稱。 新資料行的值是現有 double 值的已進位匯總總和。
 
-要驗證匹配條件是否正確,可以在 **「檢查」** 選項卡中驗證已定義列的輸出架構,或在 **「數據預覽」** 選項卡中獲取數據的快照。 
+若要確認符合條件是否正確，您可以在 [**檢查**] 索引標籤中驗證已定義資料行的輸出架構，或在 [**資料預覽**] 索引標籤中取得資料的快照集。 
 
-![欄模式](media/data-flow/columnpattern3.png "資料行模式")
+![資料行模式](media/data-flow/columnpattern3.png "資料行模式")
 
-## <a name="rule-based-mapping-in-select-and-sink"></a>選擇與接收器中的對應規則的映射
+## <a name="rule-based-mapping-in-select-and-sink"></a>Select 和 sink 中以規則為基礎的對應
 
-映射來源中的列並選擇轉換時,可以添加固定對應或基於規則的映射。 根據`name`、、`type``stream`列`position`匹配。 可以具有固定映射和基於規則的映射的任意組合。 默認情況下,所有大於 50 列的預測將預設為基於規則的映射,該映射與每列匹配並輸出輸入的名稱。 
+對應來源中的資料行並選取轉換時，您可以新增固定對應或以規則為基礎的對應。 根據`name`、 `type`、 `stream`和資料行進行`position`比對。 您可以有固定和以規則為基礎之對應的任意組合。 根據預設，具有大於50資料行的所有投影都會預設為以規則為基礎的對應，這會在每個資料行上符合，並輸出輸入的名稱。 
 
-要新增基於規則的映射,請按**下 「新增映射」** 並選擇 **「 標準」**。
+若要新增以規則為基礎的對應，請按一下 [**新增對應**]，然後選取 [以**規則為主的對應**]。
 
-![基於規則的對應](media/data-flow/rule2.png "規則型對應")
+![以規則為基礎的對應](media/data-flow/rule2.png "規則型對應")
 
-每個基於規則的映射都需要兩個輸入:要匹配的條件以及每個映射列的名稱。 這兩個值都是通過[表達式生成器](concepts-data-flow-expression-builder.md)輸入的。 在左側運算式框中,輸入布爾匹配條件。 在正確的運算式框中,指定匹配列將映射到的內容。
+每個以規則為基礎的對應都需要兩個輸入：要比對的條件和每個對應資料行的名稱。 這兩個值都是透過[運算式](concepts-data-flow-expression-builder.md)產生器來輸入。 在 [左側運算式] 方塊中，輸入您的布林值比對條件。 在 [右運算式] 方塊中，指定符合的資料行將對應的目標。
 
-![基於規則的對應](media/data-flow/rule-based-mapping.png "規則型對應")
+![以規則為基礎的對應](media/data-flow/rule-based-mapping.png "規則型對應")
 
-使用`$$`語法引用匹配列的輸入名稱。 以上面的圖像為例,假設使用者希望匹配名稱短於六個字的所有字串列。 如果命名`test`了一個傳入欄,則`$$ + '_short'`表示式將重新命名 。`test_short` 如果這是唯一存在的映射,則不符合條件的所有列都將從輸出的數據中刪除。
+使用`$$`語法來參考相符資料行的輸入名稱。 使用上述影像做為範例，假設使用者想要比對名稱少於六個字元的所有字串資料行。 如果其中一個傳入資料行`test`名為， `$$ + '_short'`則運算式會重新`test_short`命名資料行。 如果這是唯一存在的對應，則不符合條件的所有資料行都會從輸出資料中卸載。
 
-模式匹配漂移列和定義的欄。 要查看規則映射的已定義的列,請單擊規則旁邊的眼鏡圖示。 使用數據預覽驗證輸出。
+模式同時符合漂移和已定義的資料行。 若要查看哪些定義的資料行是由規則所對應，請按一下規則旁的眼鏡圖示。 使用資料預覽來驗證您的輸出。
 
-### <a name="regex-mapping"></a>雷格克斯對應
+### <a name="regex-mapping"></a>Regex 對應
 
-如果按一下向下的 V 形圖示,則可以指定正則表達式映射條件。 正規表示式對應條件與匹配指定正規表示式條件的所有列名稱匹配。 這可以與基於規則的標準映射結合使用。
+如果您按一下向下的 v 形圖示，就可以指定 RegEx 對應條件。 Regex 對應條件符合所有符合指定 RegEx 條件的資料行名稱。 這可與以標準規則為基礎的對應搭配使用。
 
-![基於規則的對應](media/data-flow/regex-matching.png "規則型對應")
+![以規則為基礎的對應](media/data-flow/regex-matching.png "規則型對應")
 
-上述範例與 regex`(r)`模式 或包含小寫 r 的任何列名稱匹配。 與基於標準規則的映射類似,使用`$$`語法使用右側的條件會更改所有匹配列。
+上述範例符合 RegEx 模式`(r)`或任何包含小寫 r 的資料行名稱。 與標準規則型對應類似，所有相符的資料行都是由右邊的條件使用`$$`語法來改變。
 
-### <a name="rule-based-hierarchies"></a>基於規則的層次結構
+### <a name="rule-based-hierarchies"></a>以規則為基礎的階層
 
-如果定義的投影具有層次結構,則可以使用基於規則的映射來映射層次結構子列。 指定要映射的匹配條件和要映射的子列的複雜列。 每個匹配的子列都將使用右側指定的"名稱為"規則進行輸出。
+如果您定義的投射具有階層，您可以使用以規則為基礎的對應來對應階層個子。 指定要對應其個子的比對條件和複雜資料行。 每個相符的 subcolumn 都會使用右側指定的 [名稱 as] 規則來輸出。
 
-![基於規則的對應](media/data-flow/rule-based-hierarchy.png "規則型對應")
+![以規則為基礎的對應](media/data-flow/rule-based-hierarchy.png "規則型對應")
 
-上述示例與複雜列的所有子列`a`匹配。 `a`包含兩個子列`b``c`與 。 輸出架構將包括兩欄`b`,`c`並且 「名稱為」`$$`條件為 。
+上述範例符合所有個子的複雜資料行`a`。 `a`包含兩個`b`個子`c`和。 輸出架構會包含兩個數據`b`行`c` ，而 [名稱為] 條件為`$$`。
 
-## <a name="pattern-matching-expression-values"></a>模式匹配表達式值。
+## <a name="pattern-matching-expression-values"></a>模式比對運算式值。
 
-* `$$`轉換為執行時每個符合項目的名稱或值
-* `name`顯示每個傳入欄的名稱
-* `type`顯示每個傳入欄的資料型態
-* `stream`表示與每個流關聯的名稱或流中的轉換
-* `position`是資料串列的位級位置
+* `$$`在執行時間轉譯為每個相符項的名稱或值
+* `name`代表每個傳入資料行的名稱
+* `type`代表每個傳入資料行的資料類型
+* `stream`表示與每個資料流程相關聯的名稱，或您流程中的轉換
+* `position`這是資料流程中資料行的序數位置
 
 ## <a name="next-steps"></a>後續步驟
-* 瞭解有關資料轉換的映射資料串[流 表示式語言](data-flow-expression-functions.md)的更多資訊
-* 在[接收器轉換](data-flow-sink.md)中使用列模式,並使用基於規則的對應[選擇轉換](data-flow-select.md)
+* 深入瞭解資料轉換的對應資料流程[運算式語言](data-flow-expression-functions.md)
+* 使用[接收轉換](data-flow-sink.md)中的資料行模式，並選取 [使用以規則為基礎的對應進行[轉換](data-flow-select.md)]

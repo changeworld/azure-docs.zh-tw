@@ -4,10 +4,10 @@ description: 串流分析可以持續轉換、篩選和路由傳送您從 Applic
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: 15d1efa3a632024429d41f27fc23c569cd85bec2
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536874"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>使用串流分析來處理從 Application Insights 匯出的資料
@@ -89,7 +89,7 @@ ms.locfileid: "81536874"
 
 ### <a name="set-path-prefix-pattern"></a>設定路徑前置詞模式
 
-**請務必將日期格式設置為 YYYY-MM-DD(帶破折號)。**
+**請務必將日期格式設定為 YYYY-MM-DD （含破折號）。**
 
 路徑前置詞模式會指定串流分析在存放區中尋找輸入檔案的位置。 您需要將它設定為與連續匯出儲存資料的方式相對應。 請設定如下：
 
@@ -107,7 +107,7 @@ ms.locfileid: "81536874"
 > 
 
 ## <a name="add-new-output"></a>新增輸出
-現在選擇工作>**輸出** > **新增**。
+現在選取您的工作 >**輸出** > ] [**新增**]。
 
 ![](./media/export-stream-analytics/SA006.png)
 

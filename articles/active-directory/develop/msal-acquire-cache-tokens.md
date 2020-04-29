@@ -1,5 +1,5 @@
 ---
-title: 使用 MSAL 取得&緩存碼 |蔚藍
+title: 使用 MSAL 取得 & 快取權杖 |Azure
 titleSuffix: Microsoft identity platform
 description: 了解如何使用 Microsoft 驗證程式庫 (MSAL) 取得和快取權杖。
 services: active-directory
@@ -14,15 +14,15 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 647dff9e6401322371ef795a25ca5ced2b517e9c
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81534579"
 ---
-# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 認證函式庫 (MSAL) 取得與快取權碼
+# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>使用 Microsoft 驗證程式庫取得和快取權杖（MSAL）
 
-[存取權杖](access-tokens.md)可讓用戶端安全地呼叫受 Azure 保護的 Web API。 使用 Microsoft 驗證程式庫 (MSAL) 取得權杖的方法很多。 有些方法需要使用者透過網頁瀏覽器進行互動。 有些方法則不需要使用者互動。 通常,獲取權杖的方式取決於應用程式是公共用戶端應用程式(桌面或行動應用程式)還是機密用戶端應用程式(Web 應用、Web API 或 Windows 服務等守護程序應用程式)。
+[存取權杖](access-tokens.md)可讓用戶端安全地呼叫受 Azure 保護的 Web API。 使用 Microsoft 驗證程式庫 (MSAL) 取得權杖的方法很多。 有些方法需要使用者透過網頁瀏覽器進行互動。 有些方法則不需要使用者互動。 一般來說，取得權杖的方式取決於應用程式是公用用戶端應用程式（桌面或行動應用程式）或機密用戶端應用程式（web 應用程式、Web API，或像 Windows 服務之類的背景工作應用程式）。
 
 MSAL 會在取得權杖之後建立其快取。  應用程式程式碼應該會先試著以無訊息方式從快取中取得權杖，然後才使用其他方法取得權杖。
 
@@ -38,7 +38,7 @@ MSAL 會在取得權杖之後建立其快取。  應用程式程式碼應該會�
 
 ### <a name="request-specific-scopes-for-a-web-api"></a>對 Web API 要求特定範圍
 
-當應用程式需要要求有資源 API 特定權限的權杖時,您需要以以下格式傳遞包含 API 應用程式的 URI 的範圍:*&lt;應用 ID URI&gt;/&lt;範圍&gt;*
+當您的應用程式需要要求具有資源 api 之特定許可權的權杖時，您必須以下列格式傳遞包含 API 之應用程式識別碼 uri 的範圍： * &lt;應用程式識別碼&gt;/&lt;uri 範圍&gt;*
 
 例如，Microsoft Graph API 的範圍：`https://graph.microsoft.com/User.Read`
 
@@ -68,9 +68,9 @@ MSAL 會保有一個權杖快取 (若為機密用戶端應用程式，則有兩�
 不過，**請勿**在下列兩個流程之前嘗試以無訊息方式取得權杖：
 
 - [用戶端認證流程](msal-authentication-flows.md#client-credentials)，這不會使用使用者的權杖快取，而會使用應用程式的權杖快取。 這個方法會先負責確認此應用程式的權杖快取，再對 STS 傳送要求。
-- [授權代碼流](msal-authentication-flows.md#authorization-code)在 Web 應用中,因為它贖回應用程式通過登錄用戶獲得的代碼,並讓他們同意更多的作用域。 因為授權碼會以參數 (而非帳戶) 形式傳遞，該方法無法在兌換授權碼之前先查看快取，因為這麼做無論如何都需要對服務發出呼叫。
+- web apps 中的[授權碼流程](msal-authentication-flows.md#authorization-code)，因為它會贖回應用程式透過登入使用者所取得的程式碼，並讓他們同意更多的範圍。 因為授權碼會以參數 (而非帳戶) 形式傳遞，該方法無法在兌換授權碼之前先查看快取，因為這麼做無論如何都需要對服務發出呼叫。
 
-### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>使用授權代碼串流在 Web 應用程式中建議的通話模式
+### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>使用授權碼流程的 web 應用程式中的建議呼叫模式
 
 對於使用 [OpenID Connect 授權碼流程](v2-protocols-oidc.md)的 Web 應用程式，控制器中的建議模式是：
 
@@ -91,7 +91,7 @@ MSAL 會保有一個權杖快取 (若為機密用戶端應用程式，則有兩�
 
 ### <a name="confidential-client-applications"></a>機密用戶端應用程式
 
-對機密客戶端應用程式(Web 應用程式、Web API 或 Windows 服務等守護程式應用程式),您可以:
+若為機密用戶端應用程式（web app、Web API 或 daemon 應用程式，例如 Windows 服務），您可以：
 - 可以使用[用戶端認證流程](msal-authentication-flows.md#client-credentials)取得**應用程式本身**而非使用者的權杖。 這可以用於同步工具，或用於會處理整體使用者而非特定使用者的工具。
 - 可以使用[代理者流程](msal-authentication-flows.md#on-behalf-of)讓 Web API 代表使用者呼叫 API。 應用程式會使用用戶端認證來識別，以根據使用者判斷提示來取得權杖 (例如 SAML，或 JWT 權杖)。 需要在服務對服務的呼叫中存取特定使用者資源的應用程式會使用此流程。
 - 可以在使用者透過授權要求 URL 來登入後，於 Web 應用程式中使用[授權碼流程](msal-authentication-flows.md#authorization-code)來取得權杖。 OpenID Connect 應用程式一般會使用這個機制，這可以讓使用者使用 Open ID Connect 登入，然後代表使用者存取 Web API。
@@ -109,6 +109,6 @@ MSAL 會保有一個權杖快取 (若為機密用戶端應用程式，則有兩�
 
 ## <a name="next-steps"></a>後續步驟
 
-如果使用 MSAL 進行 Java,則瞭解[Java 的 MSAL 中的自訂權限的記憶體 。](msal-java-token-cache-serialization.md)
+如果您使用 MSAL for JAVA，請瞭解[MSAL For java 中的自訂權杖](msal-java-token-cache-serialization.md)快取序列化。
 
 了解如何[處理錯誤和例外狀況](msal-handling-exceptions.md)。

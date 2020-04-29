@@ -1,6 +1,6 @@
 ---
-title: 將 Azure 活動目錄記錄流式傳輸到 Azure 監視器日誌 |微軟文件
-description: 瞭解如何將 Azure 活動目錄紀錄與 Azure 監視器紀錄整合
+title: 將 Azure Active Directory 記錄串流至 Azure 監視器記錄 |Microsoft Docs
+description: 瞭解如何將 Azure Active Directory 記錄與 Azure 監視器記錄整合
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,13 +18,13 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d0ef55f6f5117ffa77052118155afea716125a4
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639733"
 ---
-# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>將 Azure AD 紀錄與 Azure 監視器紀錄整合
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs"></a>將 Azure AD 記錄與 Azure 監視器記錄整合
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -51,7 +51,7 @@ Ignite 工作階段中的下列影片，會示範在特定使用者案例中針�
 > 目前不支援與 B2C 相關的稽核和登入活動記錄。
 >
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>先決條件 
 
 若要使用此功能，您必須要有：
 
@@ -62,13 +62,13 @@ Ignite 工作階段中的下列影片，會示範在特定使用者案例中針�
 
 ## <a name="licensing-requirements"></a>授權需求
 
-使用此功能需要 Azure AD 進階 P1 或 P2 許可證。 若要尋找適用於您需求的正確授權，請參閱[比較 Free、Basic 及 Premium 版本的正式運作功能](https://azure.microsoft.com/pricing/details/active-directory/)。
+使用這項功能需要 Azure AD Premium P1 或 P2 授權。 若要尋找適用於您需求的正確授權，請參閱[比較 Free、Basic 及 Premium 版本的正式運作功能](https://azure.microsoft.com/pricing/details/active-directory/)。
 
-## <a name="send-logs-to-azure-monitor"></a>將日誌傳送 Azure 監視器
+## <a name="send-logs-to-azure-monitor"></a>將記錄傳送至 Azure 監視器
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
-2. 選擇**Azure 的項目診斷** > **設定** -> **。** 您也可以在 [稽核記錄]**** 或 [登入]**** 頁面中選取 [匯出設定]****，以移至診斷設定組態頁面。  
+2. 選取 [ **Azure Active Directory** > **診斷設定** -> ] [**新增診斷設定**]。 您也可以在 [稽核記錄]**** 或 [登入]**** 頁面中選取 [匯出設定]****，以移至診斷設定組態頁面。  
     
 3. 在 [診斷設定]**** 功能表中選取 [傳送至 Log Analytics 工作區]**** 核取方塊，然後選取 [設定]****。
 
