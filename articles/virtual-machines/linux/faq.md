@@ -1,5 +1,5 @@
 ---
-title: Azure 中 Linux VM 的常見問題
+title: Azure 中 Linux Vm 的常見問題
 description: 針對以 Resource Manager 模型建立的 Linux 虛擬機器，提供一些相關常見問題的解答。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: cynthn
 ms.openlocfilehash: 3c6a5e011a536cc9c34565d4f72a9bee6c6a5254
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945174"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux 虛擬機器的常見問題
@@ -21,14 +21,14 @@ ms.locfileid: "78945174"
 所有的訂閱者都可以在 Azure 虛擬機器上執行伺服器軟體。 如需詳細資訊，請參閱 [經 Azure 背書之配送映像上的 Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>我可以使用多少的儲存體搭配虛擬機器？
-每個資料磁片最多可達 32，767 GiB。 可使用的資料磁碟數量取決於虛擬機器的大小。 有關詳細資訊，請參閱[虛擬機器的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+每個資料磁片最多可達 32767 GiB。 可使用的資料磁碟數量取決於虛擬機器的大小。 如需詳細資訊，請參閱[虛擬機器的大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 Azure 受控磁碟是受歡迎磁碟儲存體供應項目，可用在 Azure 虛擬機器當作資料的用續性儲存體。 每部虛擬機器可使用多部受控磁碟。 受控磁碟提供兩種耐久的儲存體選項：進階與標準受控磁碟。 如需定價資訊，請參閱[受控磁碟定價](https://azure.microsoft.com/pricing/details/managed-disks)。
 
 Azure 儲存體帳戶也提供作業系統磁碟和任何資料磁碟的儲存空間。 每個磁碟是以分頁 Blob 方式儲存的 .vhd 檔案。 如需定價的詳細資料，請參閱 [儲存體定價詳細資料](https://azure.microsoft.com/pricing/details/storage/)。
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>如何存取我的虛擬機器？
-使用安全外殼 （SSH） 建立遠端連線以登錄到虛擬機器。 請參閱如何[從 Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或[從 Linux 及 Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 連線的指示。 根據預設，SSH 允許最多 10 個並行連線。 您可以編輯組態檔以增加這個數字。
+使用安全殼層（SSH）建立遠端連線以登入虛擬機器。 請參閱如何[從 Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或[從 Linux 及 Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 連線的指示。 根據預設，SSH 允許最多 10 個並行連線。 您可以編輯組態檔以增加這個數字。
 
 如果您遇到問題，請參閱 [疑難排解以 Linux 為基礎之 Azure 虛擬機器的安全殼層 (SSH) 連線](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
@@ -70,13 +70,13 @@ Azure 儲存體帳戶也提供作業系統磁碟和任何資料磁碟的儲存�
 
 ## <a name="what-are-the-password-requirements-when-creating-a-vm"></a>建立 VM 時的密碼需求為何？
 
-根據您使用的工具，有不同的密碼長度要求：
- - 門戶 - 12 - 72 個字元之間
- - 電源外殼 - 8 - 123 個字元之間
- - CLI - 12 - 123 之間
+視您使用的工具而定，有不同的密碼長度需求：
+ - 入口網站-介於 12-72 個字元之間
+ - PowerShell-介於 8-123 個字元之間
+ - CLI-介於 12-123 之間
  
 
-密碼還必須滿足以下 4 個複雜性要求的 3 項：
+密碼也必須符合下列4個複雜性需求的其中3個：
 
 * 包含小寫字元
 * 包含大小字元

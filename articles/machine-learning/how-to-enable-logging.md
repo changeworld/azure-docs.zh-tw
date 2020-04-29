@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 機器學習中啟用日誌記錄
-description: 瞭解如何使用預設 Python 日誌記錄包以及使用特定于 SDK 的功能在 Azure 機器學習中啟用日誌記錄。
+title: 啟用 Azure Machine Learning 中的記錄
+description: 瞭解如何使用預設的 Python 記錄封裝，以及使用 SDK 特有的功能，在 Azure Machine Learning 中啟用記錄。
 ms.author: trbye
 author: trevorbye
 services: machine-learning
@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 03/05/2020
 ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78396144"
 ---
-# <a name="enable-logging-in-azure-machine-learning"></a>在 Azure 機器學習中啟用日誌記錄
+# <a name="enable-logging-in-azure-machine-learning"></a>啟用 Azure Machine Learning 中的記錄
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 Azure Machine Learning Python SDK 可讓您使用預設 Python 記錄套件以及使用 SDK 特有的功能啟用記錄，兩者皆可用於本機記錄和記錄至您在入口網站中的工作區。 記錄可提供開發人員應用程式狀態的即時資訊，並可協助診斷錯誤或警告。 在本文中，您會了解在下列領域啟用記錄的不同方式：
@@ -27,7 +27,7 @@ Azure Machine Learning Python SDK 可讓您使用預設 Python 記錄套件以�
 > * 已部署的模型
 > * Python `logging` 設定
 
-[創建 Azure 機器學習工作區](how-to-manage-workspace.md)。 有關詳細資訊，請使用[本指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)瞭解 SDK。
+[建立 Azure Machine Learning 工作區](how-to-manage-workspace.md)。 如需 SDK 的詳細資訊，請使用[指南](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
 
 ## <a name="training-models-and-compute-target-logging"></a>定型模型和計算目標記錄
 
@@ -41,7 +41,7 @@ run = exp.start_logging()
 run.log("test-val", 10)
 ```
 
-有關其他日誌記錄功能，請參閱[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)類的參考文檔。
+如需其他記錄功能，請參閱[Run](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)類別的參考檔。
 
 若要在定型過程中啟用應用程式狀態的本機記錄，請使用 `show_output` 參數。 啟用詳細記錄可讓您查看定型過程的詳細資料，以及任何遠端資源或計算目標的相關資訊。 使用下列程式碼來啟用記錄實驗提交。
 
@@ -101,7 +101,7 @@ logs = service.get_logs()
 service.update(enable_app_insights=True)
 ```
 
-有關詳細資訊，請參閱[監視和從 ML Web 服務終結點收集資料](how-to-enable-app-insights.md)。
+如需詳細資訊，請參閱[從 ML web 服務端點監視和收集資料](how-to-enable-app-insights.md)。
 
 ## <a name="python-native-logging-settings"></a>Python 原生記錄設定
 
@@ -114,4 +114,4 @@ logging.basicConfig(level=logging.DEBUG)
 
 ## <a name="next-steps"></a>後續步驟
 
-* [監視和從 ML Web 服務終結點收集資料](how-to-enable-app-insights.md)
+* [從 ML Web 服務端點監視及收集資料](how-to-enable-app-insights.md)

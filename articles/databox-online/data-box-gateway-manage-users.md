@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 60fd5476d687d9f44aec885cdf888572e8e523a4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78946126"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>使用 Azure 入口網站來管理 Azure 資料箱閘道上的使用者。
@@ -33,7 +33,7 @@ ms.locfileid: "78946126"
  - **完整權限的使用者** - 具有完整存取權的本機使用者。
  - **唯讀使用者** - 具有唯讀存取權的本機使用者。 這些使用者會與允許唯讀作業的共用相關聯。
 
-在共用建立期間建立使用者時，首先會定義使用者權限。 當前不支援修改共用級別許可權。
+在共用建立期間建立使用者時，首先會定義使用者權限。 目前不支援修改共用層級許可權。
 
 ## <a name="add-a-user"></a>新增使用者
 

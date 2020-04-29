@@ -1,14 +1,14 @@
 ---
-title: 作業系統和運行時修補節奏
-description: 瞭解 Azure 應用服務如何更新作業系統和運行時、應用具有的運行時和修補程式級別以及如何獲取更新公告。
+title: OS 和執行時間修補步調
+description: 瞭解 Azure App Service 如何更新 OS 和執行時間、應用程式的執行時間和修補程式等級，以及您可以如何取得更新宣告。
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
 ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273629"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service 中的 OS 和執行階段修補
@@ -51,7 +51,7 @@ Azure 會在兩個層級管理 OS 修補，分別是實體伺服器和執行 App
 
 ### <a name="new-patch-updates"></a>新的修補程式更新
 
-.NET、PHP、Java SDK 或 Tomcat/Jetty 版本的修補程式更新，會透過以新版本覆寫現有安裝的方式自動套用。 Node.js 修補程式更新則會與現有版本並存安裝 (類似於下一節的主要和次要版本)。 新的 Python 修補程式版本可以通過[網站擴展](https://azure.microsoft.com/blog/azure-web-sites-extensions/)手動安裝，與內置的 Python 安裝並排安裝。
+.NET、PHP、Java SDK 或 Tomcat/Jetty 版本的修補程式更新，會透過以新版本覆寫現有安裝的方式自動套用。 Node.js 修補程式更新則會與現有版本並存安裝 (類似於下一節的主要和次要版本)。 新的 Python 修補程式版本可以透過與內建 Python 安裝並存的[網站延伸](https://azure.microsoft.com/blog/azure-web-sites-extensions/)模組來手動安裝。
 
 ### <a name="new-major-and-minor-versions"></a>新的主要和次要版本
 

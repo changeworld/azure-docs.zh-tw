@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 宇宙 DB 查詢語言中的正確
-description: 在 Azure 宇宙 DB 中瞭解 SQL 系統函數 RIGHT。
+title: Azure Cosmos DB 查詢語言的右方
+description: 請直接在 Azure Cosmos DB 中瞭解 SQL 系統函數。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 247616d2ac4f2a5799a5896d679f6e6d5917d5a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302146"
 ---
-# <a name="right-azure-cosmos-db"></a>右（Azure 宇宙資料庫）
+# <a name="right-azure-cosmos-db"></a>RIGHT （Azure Cosmos DB）
  傳回具有指定字元數目的字串右側部分。  
   
 ## <a name="syntax"></a>語法
@@ -26,10 +26,10 @@ RIGHT(<str_expr>, <num_expr>)
 ## <a name="arguments"></a>引數
   
 *str_expr*  
-   是從中提取字元的字串運算式。  
+   這是要從中解壓縮字元的字串運算式。  
   
 *num_expr*  
-   是指定字元數的數位運算式。  
+   這是指定字元數的數值運算式。  
   
 ## <a name="return-types"></a>傳回類型
   
@@ -51,10 +51,10 @@ SELECT RIGHT("abc", 1) AS r1, RIGHT("abc", 2) AS r2
 
 ## <a name="remarks"></a>備註
 
-此系統功能不會利用索引。
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [字串函數 Azure 宇宙 DB](sql-query-string-functions.md)
-- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 簡介](introduction.md)
+- [字串函數 Azure Cosmos DB](sql-query-string-functions.md)
+- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 簡介](introduction.md)

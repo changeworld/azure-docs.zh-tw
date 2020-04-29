@@ -1,13 +1,13 @@
 ---
-title: 要構建、測試&修補程式映射的多步驟任務
-description: 多步驟任務的簡介，Azure 容器註冊表中的 ACR 任務功能，提供基於任務的工作流，用於在雲中構建、測試和修補容器映射。
+title: 建立、測試 & 修補程式映射的多步驟工作
+description: 多步驟工作簡介，這是 Azure Container Registry 中 ACR 工作的一項功能，可提供在雲端中建立、測試及修補容器映射的工作型工作流程。
 ms.topic: article
 ms.date: 03/28/2019
 ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78399691"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>執行 ACR 工作中的多步驟建置、測試及修補工作
@@ -43,9 +43,9 @@ ms.locfileid: "78399691"
 
 「ACR 工作」中的多步驟工作會在 YAML 檔案內定義為一系列的步驟。 每個步驟皆可指定是否要依據一或多個先前步驟成功完成才執行。 以下是可用的工作步驟類型：
 
-* [`build`](container-registry-tasks-reference-yaml.md#build)：使用熟悉的`docker build`語法、串聯或並行構建一個或多個容器映射。
-* [`push`](container-registry-tasks-reference-yaml.md#push)：將生成的映射推送到容器註冊表。 支援 Azure Container Registry 之類的私人登錄，也支援公用 Docker Hub。
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd)：運行容器，以便它可以在正在運行的任務的上下文中作為函數運行。 您可以將參數傳遞給容器的 `[ENTRYPOINT]`，並指定 env、detach 等屬性及其他熟悉的 `docker run` 參數。 `cmd` 步驟類型可讓您搭配並行容器執行來進行單元和功能測試。
+* [`build`](container-registry-tasks-reference-yaml.md#build)：使用熟悉`docker build`的語法，以序列或平行方式建立一或多個容器映射。
+* [`push`](container-registry-tasks-reference-yaml.md#push)：將建立的映射推送至容器登錄。 支援 Azure Container Registry 之類的私人登錄，也支援公用 Docker Hub。
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd)：執行容器，讓它可以在執行中工作的內容中以函式的形式運作。 您可以將參數傳遞給容器的 `[ENTRYPOINT]`，並指定 env、detach 等屬性及其他熟悉的 `docker run` 參數。 `cmd` 步驟類型可讓您搭配並行容器執行來進行單元和功能測試。
 
 下列程式碼片段說明如何結合這些工作步驟類型。 多步驟的工作有可能很簡單，像是使用如下的 YAML 檔案，從 Dockerfile 建置單一映像並推送至登錄：
 
@@ -79,7 +79,7 @@ steps:
   - cmd: $Registry/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image=$Registry/helloworld:$ID
 ```
 
-有關多個方案，請參閱多步驟任務 YAML 檔和 Dockerfile[的任務示例](container-registry-tasks-samples.md)。
+如需數個案例，請參閱多步驟工作 YAML 檔案和 Dockerfile 的工作[範例](container-registry-tasks-samples.md)。
 
 ## <a name="run-a-sample-task"></a>執行範例工作
 
@@ -153,7 +153,7 @@ Run ID: yd14 was successful after 19s
 您可以在下列位置找到多步驟工作參考和範例：
 
 * [工作參考](container-registry-tasks-reference-yaml.md) - 工作步驟類型、其屬性及使用方式。
-* [任務示例](container-registry-tasks-samples.md)-`task.yaml`多個方案的示例和 Docker 檔，簡單到複雜。
+* 工作[範例](container-registry-tasks-samples.md)-適用`task.yaml`于數種案例的範例和 Docker 檔案，簡單到複雜。
 * [Cmd 存放庫](https://github.com/AzureCR/cmd) - 作為 ACR 工作命令的容器集合。
 
 <!-- IMAGES -->

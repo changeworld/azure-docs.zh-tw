@@ -1,15 +1,15 @@
 ---
-title: 在 Linux 群集上設置加密證書
+title: 在 Linux 叢集上設定加密憑證
 description: 了解如何設定加密憑證，並在 Linux 叢集上將祕密加密。
 author: shsha
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: b8e0a19e3f654fc561e7c7e26c6a2da463e24d5f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78969024"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>設定加密憑證，並在 Linux 叢集上將祕密加密

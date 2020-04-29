@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: b-juche
 ms.openlocfilehash: 48055a774808aea86452e8410b7e717f5019d172
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78267909"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp Files 管理快照集
 
-可以使用 Azure NetApp 檔手動為卷創建按需快照或從快照還原到新卷。 Azure NetApp 檔服務不會自動創建卷快照。  
+您可以使用 Azure NetApp Files 手動建立磁片區的隨選快照集，或從快照集還原至新的磁片區。 Azure NetApp Files 服務不會自動建立磁片區快照集。  
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>建立磁碟區的隨選快照集
 
@@ -41,7 +41,7 @@ ms.locfileid: "78267909"
 
     ![新增快照集](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. 按一下 [確定]****。 
+4. 按一下 [確定]  。 
 
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>將快照集還原至新磁碟區
 
@@ -53,12 +53,12 @@ ms.locfileid: "78267909"
     ![將快照集還原至新磁碟區](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
 4. 在 [新增磁碟區] 視窗中，提供新磁碟區的資訊：  
-    * **名字**   
+    * **檔案名**   
         為您要建立的磁碟區指定名稱。  
         
         名稱在資源群組內必須是唯一的。 長度至少必須有三個字元。  可以使用任何英數字元。
 
-    * **檔路徑**     
+    * **檔案路徑**     
         指定要用來建立新磁碟區匯出路徑的檔案路徑。 匯出路徑會用來掛接和存取磁碟區。   
         
         掛接目標是 NFS 服務 IP 位址的端點。 這是自動產生的。   
@@ -72,16 +72,16 @@ ms.locfileid: "78267909"
 
     *   **虛擬網路**  
         指定您要從中存取磁碟區的 Azure 虛擬網路 (Vnet)。  
-        您指定的 Vnet 必須有委派給 Azure NetApp Files 的子網路。 Azure NetApp Files 服務只能從相同的 Vnet 存取，或透過 Vnet 對等互連從與磁碟區位於相同區域的 Vnet 存取。 您可以通過快速路由從本地網路訪問卷。 
+        您指定的 Vnet 必須有委派給 Azure NetApp Files 的子網路。 Azure NetApp Files 服務只能從相同的 Vnet 存取，或透過 Vnet 對等互連從與磁碟區位於相同區域的 Vnet 存取。 您可以透過 Express Route 從內部部署網路存取磁片區。 
 
-    * **子**  
+    * **子網路**  
         指定要用於磁碟區的子網路。  
         您指定的子網路必須委派給 Azure NetApp Files 服務。 您可以透過選取子網路欄位下的 [新建]**** 來建立新的子網路。  
    <!--
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
    -->
 
-5. 按一下 [確定]****。   
+5. 按一下 [確定]  。   
     快照集還原到的新磁碟區會出現在 [磁碟區] 刀鋒視窗中。
 
 ## <a name="next-steps"></a>後續步驟

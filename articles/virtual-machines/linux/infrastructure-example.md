@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: 6040bf8862131f5a8a5564cd2f5d845fa0490a95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78944893"
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>適用於 Linux VM 的範例 Azure 基礎結構逐步解說
@@ -52,7 +52,7 @@ Adventure Works Cycles 想要在 Azure 中建置一個線上商店，該商店�
 ## <a name="azure-subscriptions-and-accounts"></a>Azure 訂用帳戶與帳戶
 Adventure Works Cycles 正在使用名稱為 Adventure Works Enterprise Subscription 的企業訂用帳戶，來提供這個 IT 工作負載的計費。
 
-## <a name="storage"></a>存放裝置
+## <a name="storage"></a>儲存體
 Adventure Works Cycles 決定他們應該使用 Azure 受控磁碟。 建立 VM 時，會使用這兩個可用儲存體的儲存層：
 
 * **標準儲存體**，適用於 Web 伺服器、應用程式伺服器，以及網域控制站及其資料磁碟。

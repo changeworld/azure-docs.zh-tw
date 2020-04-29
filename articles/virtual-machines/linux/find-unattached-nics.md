@@ -1,5 +1,5 @@
 ---
-title: 查找和刪除未連接的 Azure NIC
+title: 尋找及刪除未連結的 Azure Nic
 description: 如何使用 Azure CLI 尋找並刪除未連結至 VM 的 Azure NIC
 author: cynthn
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/10/2018
 ms.author: cynthn
 ms.openlocfilehash: 8142b95ee666e205a8328eafd5930f1f386e49af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78945129"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>如何尋找並刪除 Azure VM 未連結的網路介面卡 (NIC)

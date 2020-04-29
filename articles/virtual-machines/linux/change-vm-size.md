@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.openlocfilehash: 20e7db80b55347c4a4a76b7c95d4d8bec368abda
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78969268"
 ---
 # <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>使用 Azure CLI 調整 Linux 虛擬機器大小 
@@ -46,7 +46,7 @@ ms.locfileid: "78969268"
    > 將 VM 解除配置也會釋出指派給該 VM 的任何動態 IP 位址。 不會影響作業系統和資料磁碟。
 
 ## <a name="next-steps"></a>後續步驟
-對於其他可伸縮性，運行多個 VM 實例並橫向擴展。有關詳細資訊，請參閱[虛擬機器縮放集中自動縮放 Linux 電腦][scale-set]。 
+如需更多的擴充性，請執行多個 VM 實例並向外延展。如需詳細資訊，請參閱[在虛擬機器擴展集中自動調整 Linux 機器][scale-set]。 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/

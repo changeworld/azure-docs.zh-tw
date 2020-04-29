@@ -1,6 +1,6 @@
 ---
-title: 解決特權標識管理問題 - Azure 活動目錄 |微軟文檔
-description: 瞭解如何使用 Azure AD 特權標識管理 （PIM） 中的角色解決系統錯誤。
+title: 針對 Privileged Identity Management Azure Active Directory 問題進行疑難排解 |Microsoft Docs
+description: 瞭解如何使用 Azure AD Privileged Identity Management （PIM）中的角色對系統錯誤進行疑難排解。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,29 +14,29 @@ ms.date: 10/18/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 474f2634e6f7ddc1840548c39ae86cb54c3bf08e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78299664"
 ---
-# <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>解決特權標識管理問題
+# <a name="troubleshoot-a-problem-with-privileged-identity-management"></a>疑難排解 Privileged Identity Management 的問題
 
-Azure 活動目錄 （Azure AD） 中的特權標識管理 （PIM） 有問題嗎？ 後續資訊可協助您重新運作項目。
+您在 Azure Active Directory （Azure AD）中的 Privileged Identity Management （PIM）有問題嗎？ 後續資訊可協助您重新運作項目。
 
-## <a name="access-to-azure-resources-denied"></a>訪問 Azure 資源被拒絕
+## <a name="access-to-azure-resources-denied"></a>拒絕存取 Azure 資源
 
 ### <a name="problem"></a>問題
 
-作為 Azure 資源的活動擁有者或使用者訪問管理員，您可以在特權標識管理中查看資源，但不能執行任何操作，例如進行符合條件的分配或查看資源中的角色指派清單概述頁。 這些操作中的任何一個都會導致授權錯誤。
+身為 Azure 資源的「作用中擁有者」或「使用者存取系統管理員」，您可以在 Privileged Identity Management 中看到您的資源，但無法執行任何動作，例如在資源的 [總覽] 頁面中進行合格指派或查看角色指派清單。 其中任何一項動作都會導致授權錯誤。
 
 ### <a name="cause"></a>原因
 
-當 PIM 服務主體的使用者訪問管理員角色意外從訂閱中刪除時，可能會發生此問題。 為了使特權標識管理服務能夠訪問 Azure 資源，應始終在 Azure 訂閱上為 MS-PIM 服務主體分配[使用者訪問管理員角色](../../role-based-access-control/built-in-roles.md#user-access-administrator)。
+當 PIM 服務主體的使用者存取系統管理員角色不小心從訂用帳戶中移除時，就會發生此問題。 若要讓 Privileged Identity Management 服務能夠存取 Azure 資源，應一律透過 Azure 訂用帳戶將「[使用者存取系統管理員」角色](../../role-based-access-control/built-in-roles.md#user-access-administrator)指派給「MS-PIM 服務主體」。
 
 ### <a name="resolution"></a>解決方案
 
-在訂閱級別將使用者訪問管理員角色分配給特權標識管理服務主體名稱 （MS_PIM）。 此分配應允許特權標識管理服務訪問 Azure 資源。 角色可以在管理組級別或訂閱級別分配，具體取決於您的要求。 有關詳細資訊，請參閱[將應用程式分配給角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)。
+將使用者存取系統管理員角色指派給訂用帳戶層級的特殊許可權身分識別管理服務主體名稱（MS-PIM）。 此指派應允許特殊許可權身分識別管理服務存取 Azure 資源。 角色可以在管理群組層級或訂用帳戶層級上指派，視您的需求而定。 如需服務主體的詳細資訊，請參閱[將應用程式指派給角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)。
 
 ## <a name="next-steps"></a>後續步驟
 

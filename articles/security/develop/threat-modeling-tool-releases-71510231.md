@@ -1,5 +1,5 @@
 ---
-title: 微軟威脅建模工具版本 11/1/2018
+title: Microsoft Threat Modeling Tool 版本11/1/2018
 titleSuffix: Azure
 description: 記載 Threat Modeling Tool 的版本資訊
 author: jegeib
@@ -9,10 +9,10 @@ ms.subservice: security-develop
 ms.topic: article
 ms.date: 01/15/2019
 ms.openlocfilehash: 3d6057c729b2f3f9d7157e91656db1912422f168
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78269759"
 ---
 # <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool 更新版本 7.1.51023.1 - 11/1/2018
@@ -25,14 +25,14 @@ ms.locfileid: "78269759"
 
 ## <a name="feature-changes"></a>功能變更
 
-- None
+- 無
 
 ## <a name="system-requirements"></a>系統需求
 
 - 支援的作業系統
   - Microsoft Windows 10
 - 必要的 .NET 版本
-  - .NET 3.5.2
+  - .NET 3.5。2
 - 其他需求
   - 必須有網際網路連線可接收工具和範本的更新。
 

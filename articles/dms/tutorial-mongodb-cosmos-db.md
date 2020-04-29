@@ -1,7 +1,7 @@
 ---
-title: 教程：將蒙戈DB離線遷移到蒙戈DB的 Azure 宇宙 DB API
+title: 教學課程：將 MongoDB 離線遷移至適用于 MongoDB 的 Azure Cosmos DB API
 titleSuffix: Azure Database Migration Service
-description: 瞭解如何使用 Azure 資料庫移轉服務從本地蒙戈DB遷移到蒙戈DB的 Azure Cosmos DB API 離線。
+description: 瞭解如何使用 Azure 資料庫移轉服務，從內部部署的 MongoDB 遷移至適用于 MongoDB 的 Azure Cosmos DB API。
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -13,13 +13,13 @@ ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
 ms.openlocfilehash: 08fa94dbe71299a6653df0b40aa5083375526172
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78255583"
 ---
-# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教程：使用 DMS 將蒙戈DB遷移到 Azure Cosmos DB 的 API，使蒙戈DB離線
+# <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>教學課程：使用 DMS 在離線狀態下將 MongoDB 遷移至 Azure Cosmos DB 的 MongoDB API
 
 您可以使用 Azure 資料庫移轉服務，在離線狀態下將資料庫從內部部署或雲端的 MongoDB 執行個體 (單次) 移轉至 Azure Cosmos DB 的 Mongo 版 API。
 
@@ -33,16 +33,16 @@ ms.locfileid: "78255583"
 
 在本教學課程中，您會使用 Azure 資料庫移轉服務，從裝載在 Azure 虛擬機器中的 MongoDB，將其中的某個資料集遷移至 Azure Cosmos DB 的 Mongo 版 API。 如果您尚未設定 MongoDB 來源，請參閱[在 Azure 中的 Windows VM 上安裝及設定 MongoDB](https://docs.microsoft.com/azure/virtual-machines/windows/install-mongodb) 一文。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要完成本教學課程，您需要：
 
 * [完成移轉前](../cosmos-db/mongodb-pre-migration.md)步驟，例如估計輸送量、選擇分割索引鍵和索引編製原則。
 * [建立 Azure Cosmos DB 的 Mongo 版 API 帳戶](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)。
-* 通過使用 Azure 資源管理器部署模型為 Azure 資料庫移轉服務創建 Microsoft Azure 虛擬網路，該模型通過使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)提供與本地源伺服器的網站到網站的連接。 有關創建虛擬網路的詳細資訊，請參閱[虛擬網路文檔](https://docs.microsoft.com/azure/virtual-network/)，尤其是包含分步詳細資訊的快速入門文章。
+* 使用 Azure Resource Manager 部署模型建立 Azure 資料庫移轉服務的 Microsoft Azure 虛擬網路，以使用[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)或[VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)為您的內部部署來源伺服器提供站對站連線能力。 如需有關建立虛擬網路的詳細資訊，請參閱[虛擬網路檔](https://docs.microsoft.com/azure/virtual-network/)，特別是快速入門文章，其中包含逐步解說的詳細資料。
 
     > [!NOTE]
-    > 在虛擬網路設置期間，如果將 ExpressRoute 與網路對等互連到 Microsoft，則向將服務預配的子網添加以下服務[終結點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)：
+    > 在虛擬網路設定期間，如果您搭配與 Microsoft 對等互連的網路使用 ExpressRoute，請將下列服務[端點](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)新增至將布建服務的子網：
     >
     > * 目標資料庫端點 (例如，SQL 端點、Cosmos DB 端點等)
     > * 儲存體端點
@@ -50,7 +50,7 @@ ms.locfileid: "78255583"
     >
     > 此為必要設定，因為 Azure 資料庫移轉服務沒有網際網路連線。
 
-* 確保您的虛擬網路網路安全性群組 （NSG） 規則不會阻止以下通訊連接埠：53、443、445、9354 和 10000-20000。 有關虛擬網路 NSG 流量篩選的更多詳細資訊，請參閱文章["使用網路安全性群組篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)"。
+* 請確定您的虛擬網路網路安全性群組（NSG）規則不會封鎖下列通訊埠：53、443、445、9354和10000-20000。 如需虛擬網路 NSG 流量篩選的詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)一文。
 * 開啟您的 Windows 防火牆以允許 Azure 資料庫移轉服務存取來源 MongoDB 伺服器 (依預設會使用 TCP 連接埠 27017)。
 * 使用來源資料庫前面的防火牆應用裝置時，您可能必須新增防火牆規則，才能讓 Azure 資料庫移轉服務存取來源資料庫，以進行移轉。
 
@@ -64,7 +64,7 @@ ms.locfileid: "78255583"
 
     ![顯示資源提供者](media/tutorial-mongodb-to-cosmosdb/portal-select-resource-provider.png)
 
-3. 搜索遷移，然後搜索 Microsoft 的右側 **。** **Register**
+3. 搜尋 [遷移]，然後在 [ **microsoft.datamigration**] 的右邊，選取 [**註冊**]。
 
     ![註冊資源提供者](media/tutorial-mongodb-to-cosmosdb/portal-register-resource-provider.png)    
 
@@ -82,15 +82,15 @@ ms.locfileid: "78255583"
 
 4. 選取您要在其中建立 Azure 資料庫移轉服務執行個體的位置。 
 
-5. 選擇現有虛擬網路或創建新虛擬網路。
+5. 選取現有的虛擬網路，或建立一個新的。
 
-    虛擬網路為 Azure 資料庫移轉服務提供對源 MongoDB 實例和目標 Azure Cosmos 資料庫帳戶的存取權限。
+    虛擬網路會為 Azure 資料庫移轉服務提供來源 MongoDB 實例和目標 Azure Cosmos DB 帳戶的存取權。
 
-    有關如何在 Azure 門戶中創建虛擬網路的詳細資訊，請參閱[使用 Azure 門戶創建虛擬網路](https://aka.ms/DMSVnet)的文章。
+    如需有關如何在 Azure 入口網站中建立虛擬網路的詳細資訊，請參閱[使用 Azure 入口網站建立虛擬網路](https://aka.ms/DMSVnet)一文。
 
 6. 選取定價層。
 
-    有關成本和定價層的詳細資訊，請參閱[定價頁](https://aka.ms/dms-pricing)。
+    如需成本和定價層的詳細資訊，請參閱[定價頁面](https://aka.ms/dms-pricing)。
 
     ![設定 Azure 資料庫移轉服務執行個體設定](media/tutorial-mongodb-to-cosmosdb/dms-settings2.png)
 
@@ -134,7 +134,7 @@ ms.locfileid: "78255583"
 
      在 Azure 儲存體總管中可以找到此 Blob 容器 SAS 連接字串。 建立相關容器的 SAS 將為您提供上述要求格式的 URL。
      
-     此外，根據 Azure 存儲中的轉儲類型資訊，請記住以下詳細資訊。
+     此外，根據 Azure 儲存體中的類型傾印資訊，請記住下列詳細資料。
 
      * 就 BSON 傾印而言，Blob 容器內的資料必須採用 bsondump 格式，使資料檔案以 collection.bson 的格式放入依所屬資料庫命名的資料夾中。 中繼資料檔案 (如果有的話) 則應使用 *collection*.metadata.json 的格式命名。
 
@@ -151,7 +151,7 @@ ms.locfileid: "78255583"
 
    ![指定來源詳細資料](media/tutorial-mongodb-to-cosmosdb/dms-specify-source.png)
 
-2. 選取 [儲存]****。
+2. 選取 [儲存]  。
 
 ## <a name="specify-target-details"></a>指定目標詳細資料
 
@@ -159,7 +159,7 @@ ms.locfileid: "78255583"
 
     ![指定目標詳細資料](media/tutorial-mongodb-to-cosmosdb/dms-specify-target.png)
 
-2. 選取 [儲存]****。
+2. 選取 [儲存]  。
 
 ## <a name="map-to-target-databases"></a>對應到目標資料庫
 
@@ -173,7 +173,7 @@ ms.locfileid: "78255583"
 
     ![對應到目標資料庫](media/tutorial-mongodb-to-cosmosdb/dms-map-target-databases.png)
 
-2. 選取 [儲存]****。
+2. 選取 [儲存]  。
 3. 在 [集合設定]**** 畫面上，展開集合清單，然後檢閱要遷移的集合清單。
 
     Azure 資料庫移轉服務會自動選取所有存在於來源 MongoDB 執行個體上，卻不存在於目標 Azure Cosmos DB 帳戶上的集合。 如果您想要重新移轉已包含資料的集合，就必須在此刀鋒視窗上明確地選取集合。
@@ -187,7 +187,7 @@ ms.locfileid: "78255583"
 
     ![選取集合資料表](media/tutorial-mongodb-to-cosmosdb/dms-collection-setting.png)
 
-4. 選取 [儲存]****。
+4. 選取 [儲存]  。
 
 5. 在 [移轉摘要]**** 畫面上的 [活動名稱]**** 文字方塊中，指定移轉活動的名稱。
 

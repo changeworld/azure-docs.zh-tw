@@ -1,5 +1,5 @@
 ---
-title: 使用 Docker 機器創建 Linux 主機
+title: 使用 Docker 電腦建立 Linux 主機
 description: 說明如何使用 Docker 電腦在 Azure 中建立 Docker 主機。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: c3165410809d98fd0ac4eeb515fbf30578633ef3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78968809"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>如何使用 Docker 電腦在 Azure 中建立主機

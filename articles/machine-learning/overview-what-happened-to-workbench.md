@@ -11,10 +11,10 @@ author: j-martens
 ms.author: jmartens
 ms.date: 03/05/2020
 ms.openlocfilehash: 9b49eb6237346a76903202a118331383c5a8f623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78944247"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 發生什麼事？
@@ -34,7 +34,7 @@ Azure Machine Learning Workbench 應用程式和一些其他早期的功能已�
 ## <a name="what-changed"></a>變更的項目為何？
 
 最新版的 Azure Machine Learning 包括下列功能：
-+ 簡化的[Azure 資源模型](concept-azure-machine-learning-architecture.md)。
++ [簡化的 Azure 資源模型](concept-azure-machine-learning-architecture.md)。
 + [新的入口網站 UI](how-to-track-experiments.md)，可管理您的實驗和計算目標。
 + 全新且更全面的 Python <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>。
 + 全新且經過擴充的適用於機器學習的 [Azure CLI 擴充功能](reference-azure-machine-learning-cli.md)。
@@ -47,7 +47,7 @@ Azure Machine Learning Workbench 應用程式和一些其他早期的功能已�
 
 ## <a name="support-timeline"></a>支援時間表
 
-2019 年 1 月 9 日，機器學習工作臺、Azure 機器學習實驗和模型管理帳戶及其關聯的 SDK 和 CLI 的支援結束。
+2019年1月9日支援 Machine Learning 工作臺、Azure Machine Learning 測試和模型管理帳戶，以及其相關聯的 SDK 和 CLI 已結束。
 
 使用新的 <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md) 和[入口網站](how-to-manage-workspace.md)即可使用所有最新功能。
 
@@ -59,13 +59,13 @@ Azure Machine Learning Workbench 應用程式和一些其他早期的功能已�
 
 只有在 Microsoft Edge、Chrome 和 Firefox 上才支援入口網站的工作區儀表板：
 
-[![線上門戶](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
+[![線上入口網站](./media/overview-what-happened-to-workbench/image001.png)](./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
 開始使用新的 CLI 和 SDK 來訓練模型以及追蹤執行歷程記錄。 您可以了解如何使用[教學課程：使用 Azure Machine Learning 訓練模型](tutorial-train-models-with-aml.md)。
 
 ## <a name="will-projects-persist"></a>專案是否會保存？
 
-您不會遺失任何程式碼或作品。 在舊版中，專案是具有本機目錄的雲端實體。 在最新版中，您將使用本機設定檔將本機目錄連結到 Azure Machine Learning 工作區。 查看[最新體系結構的圖表](concept-azure-machine-learning-architecture.md)。
+您不會遺失任何程式碼或作品。 在舊版中，專案是具有本機目錄的雲端實體。 在最新版中，您將使用本機設定檔將本機目錄連結到 Azure Machine Learning 工作區。 請參閱[最新架構的圖表](concept-azure-machine-learning-architecture.md)。
 
 大部分專案內容都已經在您的本機電腦上。 因此，您只需要在該目錄中建立設定檔，並在您的程式碼中參照它，就能連線到您的工作區。 若要繼續使用包含您檔案和指令碼的本機目錄，請在 ['experiment.submit'](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python 命令中或使用 `az ml project attach` CLI 命令指定目錄的名稱。  例如：
 ```python
@@ -89,7 +89,7 @@ run = exp.submit(source_directory=script_folder,
 
 請在下列文章中深入了解：
 + [部署模型的位置和方式](how-to-deploy-and-where.md)
-+ [教程：使用 Azure 機器學習部署模型](tutorial-deploy-models-with-aml.md)
++ [教學課程：使用 Azure Machine Learning 部署模型](tutorial-deploy-models-with-aml.md)
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: robinsh
 ms.openlocfilehash: df3c8d2abf59de6c9f685ad8d93e6689738df8e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78302520"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>使用 Azure CLI 來設定 IoT 中樞檔案上傳
@@ -23,13 +23,13 @@ ms.locfileid: "78302520"
 
 若要完成此教學課程，您需要下列項目：
 
-* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需幾分鐘即可創建[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-* Azure IoT 中樞。 如果沒有 IoT 中心，則可以使用[`az iot hub create`命令](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create)創建一個或[使用門戶創建 IoT 中心](iot-hub-create-through-portal.md)。
+* Azure IoT 中樞。 如果您沒有 IoT 中樞，則可以使用[ `az iot hub create`命令](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create)來建立一個，或[使用入口網站建立 iot 中樞](iot-hub-create-through-portal.md)。
 
-* Azure 儲存體帳戶。 如果沒有 Azure 存儲帳戶，則可以使用 Azure CLI 創建一個帳戶。 如需詳細資訊，請參閱[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。
+* Azure 儲存體帳戶。 如果您沒有 Azure 儲存體帳戶，可以使用 Azure CLI 來建立一個。 如需詳細資訊，請參閱[建立儲存體帳戶](../storage/common/storage-create-storage-account.md)。
 
 ## <a name="sign-in-and-set-your-azure-account"></a>登入並設定 Azure 帳戶
 
@@ -143,6 +143,6 @@ az iot hub show --name {your iot hub name}
 
 若要進一步探索 IoT 中樞的功能，請參閱︰
 
-* [IoT 中心開發人員指南](iot-hub-devguide.md)
+* [IoT 中樞開發人員指南](iot-hub-devguide.md)
 * [使用 Azure IoT Edge 將 AI 部署到 Edge 裝置](../iot-edge/tutorial-simulate-device-linux.md)
 * [徹底保護您的 IoT 解決方案](../iot-fundamentals/iot-security-ground-up.md)

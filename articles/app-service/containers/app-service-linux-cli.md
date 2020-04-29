@@ -1,15 +1,15 @@
 ---
-title: 使用 CLI 管理自訂 Linux 容器
-description: 瞭解如何從命令列管理 Azure 應用服務中的自訂 Linux 容器。 自動執行應用預配或維護。
+title: 使用 CLI 管理自訂的 Linux 容器
+description: 瞭解如何從命令列管理 Azure App Service 中的自訂 Linux 容器。 自動化應用程式布建或維護。
 keywords: azure app service, web 應用程式, cli, linux, oss
 ms.topic: article
 ms.date: 08/22/2017
 ms.custom: seodec18
 ms.openlocfilehash: 5ca5322467402af710df68c82d747f8f8d65e142
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78255932"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>使用 Azure CLI 管理 Web App for Containers
@@ -98,4 +98,4 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 * [安裝 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [Azure Cloud Shell (預覽)](../../cloud-shell/overview.md)
 * [在 Azure App Service 中設定預備環境](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [使用容器的 Web 應用進行持續部署](app-service-linux-ci-cd.md)
+* [使用用於容器的 Web App 進行持續部署](app-service-linux-ci-cd.md)

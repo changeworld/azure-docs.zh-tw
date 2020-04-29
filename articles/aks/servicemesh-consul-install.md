@@ -1,47 +1,47 @@
 ---
-title: 在 Azure 庫伯奈斯服務 （AKS） 中安裝領事
-description: 瞭解如何在 Azure 庫伯奈斯服務 （AKS） 群集中安裝和使用 Consul 創建服務網格
+title: 在 Azure Kubernetes Service 中安裝 Consul （AKS）
+description: 瞭解如何安裝和使用 Consul，以在 Azure Kubernetes Service （AKS）叢集中建立服務網格
 author: dstrebel
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: dastrebe
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 1601ab6d81b888fd2247e95f22c58e1fc91df698
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273728"
 ---
-# <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>安裝和使用駐 Azure 庫伯奈斯服務 （AKS）
+# <a name="install-and-use-consul-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service 中安裝和使用 Consul （AKS）
 
-[Consul][consul-github]是一個開源服務網格，在 Kubernetes 群集中提供一組關鍵功能。 這些功能包括服務發現、運行狀況檢查、服務細分和可觀察性。 有關領事的更多資訊，請參閱官方["什麼是領事"][consul-docs-concepts]文檔。
+[Consul][consul-github]是一種開放原始碼服務網格，可在 Kubernetes 叢集中跨微服務提供一組重要的功能。 這些功能包括服務探索、健康情況檢查、服務分割和可檢視性。 如需有關 Consul 的詳細資訊，請參閱官方[什麼是 Consul？][consul-docs-concepts]檔。
 
-本文介紹如何安裝領事。 領事元件安裝在 AKS 上的 Kubernetes 群集中。
+本文說明如何安裝 Consul。 Consul 元件會安裝在 AKS 上的 Kubernetes 叢集中。
 
 > [!NOTE]
-> 這些說明參考領事版本`1.6.0`，並使用至少赫爾姆版本。 `2.14.2`
+> 這些指示會參考 Consul `1.6.0`版本，並使用至少 Helm 版本`2.14.2`。
 >
-> 領事`1.6.x`版本可以運行對庫伯內斯版本`1.13+`。 您可以在[GitHub - 領事版本][consul-github-releases]找到其他領事版本，以及[有關領事版本資訊][consul-release-notes]中每個版本的資訊。
+> Consul `1.6.x`版本可以針對 Kubernetes 版本`1.13+`執行。 您可以在[GitHub Consul 版本][consul-github-releases]中找到其他 Consul 版本，並在[Consul 版本][consul-release-notes]資訊中找到每個版本的相關資訊。
 
 在本文中，您將學會如何：
 
 > [!div class="checklist"]
-> * 在 AKS 上安裝駐外應器元件
-> * 驗證領事安裝
-> * AKS 卸載領事
+> * 在 AKS 上安裝 Consul 元件
+> * 驗證 Consul 安裝
+> * 從 AKS 卸載 Consul
 
 ## <a name="before-you-begin"></a>開始之前
 
-本文中詳述的步驟假定您已經創建了 AKS 群集（啟用了 RBAC 的`1.13`Kubernetes 及以上群集），並建立了與`kubectl`群集的連接。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。 確保群集在 Linux 節點池中至少有 3 個節點。
+本文中詳述的步驟假設您已建立 AKS 叢集（已啟用 RBAC 的`1.13` Kubernetes 和更新版本），並已建立`kubectl`與叢集的連線。 如果您需要前述任何方面的協助，請參閱 [AKS 快速入門][aks-quickstart]。 請確定您的叢集在 Linux 節點集區中至少有3個節點。
 
-您需要[Helm][helm]遵循這些說明並安裝領事。 建議您在群集中正確安裝和配置最新的穩定版本。 如果您需要安裝頭盔的説明，請參閱[AKS 頭盔安裝指南][helm-install]。 還必須安排所有領事窗格在 Linux 節點上運行。
+您將需要[Helm][helm] ，才能遵循這些指示並安裝 Consul。 建議您在叢集中正確安裝和設定最新的穩定版本。 如果您需要安裝 Helm 的協助，請參閱[AKS Helm 安裝指引][helm-install]。 所有 Consul pod 也必須排程在 Linux 節點上執行。
 
-本文將領事安裝指南分成幾個離散步驟。 最終結果與官方領事安裝[指南][consul-install-k8]的結構相同。
+本文將 Consul 安裝指引分成幾個不同的步驟。 最終結果在結構上與官方 Consul 安裝[指導][consul-install-k8]方針相同。
 
-### <a name="install-the-consul-components-on-aks"></a>在 AKS 上安裝駐外應器元件
+### <a name="install-the-consul-components-on-aks"></a>在 AKS 上安裝 Consul 元件
 
-我們將首先下載領事赫爾姆圖的版本`v0.10.0`。 此版本的圖表包括領事版本`1.6.0`。
+我們會從下載 Consul Helm `v0.10.0`圖表版本開始。 這一版的圖表包含 Consul 版本`1.6.0`。
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -61,20 +61,20 @@ ms.locfileid: "78273728"
 
 ::: zone-end
 
-使用 Helm 和下載`consul-helm`的圖表將駐線器元件安裝`consul`到 AKS 群集中的命名空間中。 
+使用 Helm 和下載`consul-helm`的圖表，將 Consul 元件安裝到 AKS `consul`叢集中的命名空間。 
 
 > [!NOTE]
 > **安裝選項**
 > 
-> 我們正在使用以下選項作為安裝的一部分：
-> - `connectInject.enabled=true`- 使代理被注入到吊艙中
-> - `client.enabled=true`- 使領事用戶端能夠在每個節點上運行
-> - `client.grpc=true`- 啟用 gRPC 攔截器進行連接注入
-> - `syncCatalog.enabled=true`- 同步庫伯內特斯和領事服務
+> 我們會在安裝過程中使用下列選項：
+> - `connectInject.enabled=true`-啟用要插入 pod 中的 proxy
+> - `client.enabled=true`-讓 Consul 用戶端在每個節點上執行
+> - `client.grpc=true`-啟用 connectInject 的 gRPC 接聽程式
+> - `syncCatalog.enabled=true`-同步 Kubernetes 和 Consul 服務
 >
-> **節點選擇器**
+> **節點選取器**
 >
-> 當前必須安排在 Linux 節點上運行領事。 如果群集中具有 Windows Server 節點，則必須確保"領事"窗格僅計畫在 Linux 節點上運行。 我們將使用[節點選擇器][kubernetes-node-selectors]確保將 pod 安排到正確的節點。
+> Consul 目前必須排程在 Linux 節點上執行。 如果您的叢集中有 Windows Server 節點，您必須確定 Consul pod 只排程在 Linux 節點上執行。 我們將使用[節點選取器][kubernetes-node-selectors]來確定 pod 已排程至正確的節點。
 
 ::: zone pivot="client-operating-system-linux"
 
@@ -94,20 +94,20 @@ ms.locfileid: "78273728"
 
 ::: zone-end
 
-Helm`Consul`圖表部署多個物件。 從上面`helm install`的命令的輸出中可以看到清單。 根據群集環境，使用"領事"元件大約需要 3 分鐘才能完成。
+`Consul` Helm 圖會部署一些物件。 您可以從上述`helm install`命令的輸出查看清單。 根據您的叢集環境，Consul 元件的部署可能需要約3分鐘的時間才能完成。
 
-此時，您已將"領事"部署到 AKS 群集。 為確保我們成功部署領事，讓我們繼續下一節以驗證領事的安裝。
+此時，您已將 Consul 部署至 AKS 叢集。 為了確保我們已成功部署 Consul，讓我們繼續進行下一節，以驗證 Consul 安裝。
 
-## <a name="validate-the-consul-installation"></a>驗證領事安裝
+## <a name="validate-the-consul-installation"></a>驗證 Consul 安裝
 
-確認已成功創建資源。 使用[kubectl get svc][kubectl-get]和[kubectl][kubectl-get] get `consul` pod 命令來查詢名稱空間，`helm install`該名稱空間由命令安裝領事元件的位置：
+確認已成功建立資源。 使用[kubectl get svc][kubectl-get]和[kubectl get pod][kubectl-get]命令來查詢`consul`命名空間，其中`helm install`命令會安裝 Consul 元件：
 
 ```console
 kubectl get svc --namespace consul --output wide
 kubectl get pod --namespace consul --output wide
 ```
 
-以下示例輸出顯示了現在應該運行的服務和 pod（在 Linux 節點上安排）：
+下列範例輸出顯示現在應該正在執行的服務和 pod （已排程在 Linux 節點上）：
 
 ```output
 NAME                                 TYPE           CLUSTER-IP    EXTERNAL-IP             PORT(S)                                                                   AGE     SELECTOR
@@ -128,28 +128,28 @@ consul-consul-sync-catalog-d846b79c-8ssr8                         1/1     Runnin
 consul-consul-tz2t5                                               1/1     Running   0          3m9s   10.240.0.12   aks-linux-92468653-vmss000000   <none>           <none>
 ```
 
-所有窗格都應顯示 的狀態`Running`。 如果您的 Pod 沒有這些狀態，請等候一兩分鐘直到其成為該狀態。 如果有任何 Pod 回報發生問題，請使用 [kubectl describe pod][kubectl-describe] 命令檢閱其輸出和狀態。
+所有 pod 都應該顯示狀態`Running`。 如果您的 Pod 沒有這些狀態，請等候一兩分鐘直到其成為該狀態。 如果有任何 Pod 回報發生問題，請使用 [kubectl describe pod][kubectl-describe] 命令檢閱其輸出和狀態。
 
-## <a name="accessing-the-consul-ui"></a>訪問領事 UI
+## <a name="accessing-the-consul-ui"></a>存取 Consul UI
 
-領事 UI 安裝在我們的設置中，並為領事提供了基於 UI 的配置。 領事的 UI 不會通過外部 ip 位址公開公開。 要訪問領事使用者介面，請使用[庫布克特爾埠轉發][kubectl-port-forward]命令。 此命令在用戶端電腦和 AKS 群集中的相關 pod 之間創建安全連線。
+Consul UI 已安裝在上述的安裝程式中，並提供以 UI 為基礎的 Consul 設定。 Consul 的 UI 不會透過外部 ip 位址公開公開。 若要存取 Consul 使用者介面，請使用[kubectl 埠轉送][kubectl-port-forward]命令。 此命令會在您的用戶端電腦與 AKS 叢集中的相關 pod 之間建立安全連線。
 
 ```console
 kubectl port-forward -n consul svc/consul-consul-ui 8080:80
 ```
 
-您現在可以打開瀏覽器並將其`http://localhost:8080/ui`指向打開領事 UI。 打開 UI 時，應看到以下內容：
+您現在可以開啟瀏覽器並將它指向`http://localhost:8080/ui` ，以開啟 Consul UI。 當您開啟 UI 時，應該會看到下列內容：
 
-![領事 UI](./media/servicemesh/consul/consul-ui.png)
+![Consul UI](./media/servicemesh/consul/consul-ui.png)
 
-## <a name="uninstall-consul-from-aks"></a>AKS 卸載領事
+## <a name="uninstall-consul-from-aks"></a>從 AKS 卸載 Consul
 
 > [!WARNING]
-> 從正在運行的系統中刪除"領事"可能會導致服務之間的流量相關問題。 確保您已為系統在繼續操作之前仍正常運行做出規定。
+> 從執行中的系統刪除 Consul 可能會導致您的服務之間發生流量相關的問題。 請確定您已在不 Consul 的情況下，將您的系統布建為正常運作，再繼續進行。
 
-### <a name="remove-consul-components-and-namespace"></a>刪除駐港伺服器元件和命名空間
+### <a name="remove-consul-components-and-namespace"></a>移除 Consul 元件和命名空間
 
-要從 AKS 群集中刪除"領事"，請使用以下命令。 命令`helm delete`將刪除`consul`圖表，`kubectl delete namespace`該命令將刪除`consul`命名空間。
+若要從您的 AKS 叢集中移除 Consul，請使用下列命令。 這些`helm delete`命令將會移除`consul`圖表，而`kubectl delete namespace`命令會移除`consul`命名空間。
 
 ```console
 helm delete --purge consul
@@ -158,14 +158,14 @@ kubectl delete namespace consul
 
 ## <a name="next-steps"></a>後續步驟
 
-要探索領事的更多安裝和配置選項，請參閱以下正式領事文章：
+若要探索 Consul 的更多安裝和設定選項，請參閱下列官方 Consul 文章：
 
-- [領事 - 頭盔安裝指南][consul-install-k8]
-- [領事 - 頭盔安裝選項][consul-install-helm-options]
+- [Consul-Helm 安裝指南][consul-install-k8]
+- [Consul-Helm 安裝選項][consul-install-helm-options]
 
-您還可以使用以下其他方案：
+您也可以使用來遵循其他案例：
 
-- [領事應用程式範例][consul-app-example]
+- [Consul 範例應用程式][consul-app-example]
 
 <!-- LINKS - external -->
 [Hashicorp]: https://hashicorp.com

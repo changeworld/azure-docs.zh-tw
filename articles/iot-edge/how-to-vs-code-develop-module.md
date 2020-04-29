@@ -9,68 +9,68 @@ ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 10c8008d73390174c44ec503f708c1e2c0011e09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78944304"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>使用 Visual Studio Code 來開發適用於 Azure IoT Edge 的模組，並對其進行偵錯
 
 您可以將商務邏輯轉換成 Azure IoT Edge 的模組。 本文說明如何使用 Visual Studio Code 作為開發和偵錯模組的主要工具。
 
-在 Visual Studio 代碼中調試用 C#、Node.js 或 JAVA 編寫的模組有兩種方法：可以在模組容器中附加進程，也可以在偵錯模式下啟動模組代碼。 要調試用 Python 或 C 編寫的模組，您只能附加到 Linux amd64 容器中的進程。
+有兩種方式可在 Visual Studio Code 中使用 c #、node.js 或 JAVA 來進行偵錯工具的程式碼：您可以在模組容器中附加進程，或在 [偵錯工具] 模式中啟動模組程式碼。 若要對以 Python 或 C 撰寫的模組進行偵錯工具，您只能附加至 Linux amd64 容器中的進程。
 
 如果您不熟悉 Visual Studio Code 的偵錯功能，請參閱[偵錯](https://code.visualstudio.com/Docs/editor/debugging)。
 
-本文提供了用於為多個體系結構使用多種語言開發和調試模組的說明。 目前，視覺化工作室代碼支援用 C#、C、Python、Node.js 和 JAVA 編寫的模組。 支援的設備體系結構是 X64 和 ARM32。 有關支援的作業系統、語言和體系結構的詳細資訊，請參閱[語言和體系結構支援](module-development.md#language-and-architecture-support)。
+本文提供以多種語言針對多個架構來開發和偵測模組的指示。 目前，Visual Studio Code 提供以 c #、C、Python、node.js 和 JAVA 撰寫之模組的支援。 支援的裝置架構為 X64 和 ARM32。 如需有關支援的作業系統、語言和架構的詳細資訊，請參閱[語言和架構支援](module-development.md#language-and-architecture-support)。
 
 >[!NOTE]
->開發和調試支援Linux ARM64設備是在[公共預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 如需詳細資訊，請參閱[在 Visual Studio Code (預覽)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview) 中開發和偵錯 ARM64 IoT Edge 模組。
+>Linux ARM64 裝置的開發和偵錯工具支援現供[公開預覽](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 如需詳細資訊，請參閱[在 Visual Studio Code (預覽)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview) 中開發和偵錯 ARM64 IoT Edge 模組。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-您可以使用執行 Windows、macOS 或 Linux 的電腦或虛擬機器作為開發電腦。 在 Windows 電腦上，您可以開發 Windows 或 Linux 模組。 要開發 Windows 模組，請使用運行版本 1809/生成 17763 或更新版本的 Windows 電腦。 要開發 Linux 模組，請使用滿足 Docker[桌面要求的](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)Windows 電腦。
+您可以使用執行 Windows、macOS 或 Linux 的電腦或虛擬機器作為開發電腦。 在 Windows 電腦上，您可以開發 Windows 或 Linux 模組。 若要開發 Windows 模組，請使用執行 1809/組建17763或更新版本的 Windows 電腦。 若要開發 Linux 模組，請使用符合[Docker Desktop 需求](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install)的 Windows 電腦。
 
 請先安裝 [Visual Studio Code](https://code.visualstudio.com/)，然後新增下列延伸模組：
 
 - [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
-- [Docker 擴展](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
+- [Docker 擴充功能](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 - 開發所用語言的專屬 Visual Studio 延伸模組：
-  - C#，包括 Azure 函數[：C# 擴展](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-  - [Python：Python 擴展](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
-  - JAVA：[用於視覺化工作室代碼的 JAVA 擴展包](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
-  - [C： C/C++擴展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)
+  - C #，包括 Azure Functions： [c # 擴充](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)功能
+  - Python： [python 擴充](https://marketplace.visualstudio.com/items?itemName=ms-python.python)功能
+  - JAVA： [Visual Studio Code 的 JAVA 擴充功能套件](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)
+  - C： [c/c + + 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)功能
 
-您還需要安裝一些額外的特定于語言的工具來開發模組：
+您也需要安裝一些額外的語言特定工具來開發您的模組：
 
 - C# (包括 Azure Functions)：[.NET Core 2.1 SDK](https://www.microsoft.com/net/download)
 
-- Python：[用於](https://www.python.org/downloads/)安裝 Python 包的 Python 和[Pip（](https://pip.pypa.io/en/stable/installing/#installation)通常包含在 Python 安裝中）。
+- Python： [python](https://www.python.org/downloads/)和[Pip](https://pip.pypa.io/en/stable/installing/#installation) ，用於安裝 python 套件（通常包含在您的 python 安裝中）。
 
-- Node.js： [Node.js](https://nodejs.org). 您也要安裝 [Yeoman](https://www.npmjs.com/package/yo) 和 [Azure IoT Edge Node.js Module Generator](https://www.npmjs.com/package/generator-azure-iot-edge-module)。
+- [Node.js： node.js](https://nodejs.org)。 您也要安裝 [Yeoman](https://www.npmjs.com/package/yo) 和 [Azure IoT Edge Node.js Module Generator](https://www.npmjs.com/package/generator-azure-iot-edge-module)。
 
-- [JAVA：JAVA SE開發工具組10](https://aka.ms/azure-jdks)和[Maven。](https://maven.apache.org/) 您必須[設定 `JAVA_HOME` 環境變數](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)指向 JDK 安裝。
+- JAVA： [JAVA SE 開發套件 10](https://aka.ms/azure-jdks)和[Maven](https://maven.apache.org/)。 您必須[設定 `JAVA_HOME` 環境變數](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)指向 JDK 安裝。
 
-要生成和部署模組映射，需要 Docker 構建模組映射和容器註冊表來保存模組映射：
+若要建立及部署您的模組映射，您需要 Docker 來建立模組映射和容器登錄來保存模組映射：
 
-- [開發電腦上的 Docker 社區版](https://docs.docker.com/install/)。
+- 開發電腦上的[Docker 社區版本](https://docs.docker.com/install/)。
 
-- [Azure 容器註冊表](https://docs.microsoft.com/azure/container-registry/)或[Docker 集線器](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/)或[Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
     > 您可以使用本機 Docker 登錄作為原型並用於測試，而非使用雲端登錄。
 
-除非使用 C 開發模組，否則您也需要以 Python 為基礎的 [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/)，才能設定本機開發環境以偵錯、執行和測試您的 IoT Edge 解決方案。 如果尚未安裝 Python [（2.7/3.6/3.7） 和 Pip，](https://www.python.org/)然後在終端中運行此命令來安裝**iotedgehubdev。**
+除非使用 C 開發模組，否則您也需要以 Python 為基礎的 [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/)，才能設定本機開發環境以偵錯、執行和測試您的 IoT Edge 解決方案。 如果您尚未這麼做，請先安裝[Python （2.7/3.6/3.7）和 Pip](https://www.python.org/) ，然後在您的終端機中執行此命令來安裝**iotedgehubdev** 。
 
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
    
 > [!NOTE]
-> 目前，iotedgehubdev 使用與 Python 3.8 不相容的 docker-py 庫。
+> 目前，iotedgehubdev 使用與 Python 3.8 不相容的 docker .py 程式庫。
 >
-> 如果您有多個 Python，包括預先安裝的 python 2.7（例如，在 Ubuntu 或 macOS 上），請確保`pip`使用`pip3`正確或安裝**iotedgehubdev**
+> 如果您有多個 Python，包括預先安裝的 python 2.7 （例如，在 Ubuntu 或 macOS 上），請確定您使用正確`pip`的`pip3`或安裝**iotedgehubdev**
 
 若要在裝置上測試模組，您需要一個有效的 IoT 中樞，而且該中樞中至少必須有一個 IoT Edge 裝置。 若要使用您的電腦作為 IoT Edge 裝置，請遵循 [Linux](quickstart-linux.md) 或 [Windows](quickstart.md) 快速入門中的步驟。 如果您在開發電腦上執行 IoT Edge 精靈，您可能必須先停止 EdgeHub 與 EdgeAgent 後，再移至下一個步驟。
 
@@ -78,9 +78,9 @@ ms.locfileid: "78944304"
 
 下列步驟示範如何使用 Visual Studio Code 和 Azure IoT 工具組，以您慣用的開發語言 (包括以 C# 撰寫的 Azure Functions) 來建立 IoT Edge 模組。 您開始建立解決方案，然後在該解決方案中產生第一個模組。 每個解決方案都可以包含多個模組。
 
-1. 選擇 **"查看** > **命令調色板**"。
+1. 選取 [檢視]   > [命令調色盤]  。
 
-1. 在命令調色板中，輸入並運行命令**Azure IoT 邊緣：新的 IoT 邊緣解決方案**。
+1. 在 [命令選擇區] 中，輸入並執行命令**Azure IoT Edge： [新增 IoT Edge 方案**]。
 
    ![執行新的 IoT Edge 解決方案](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -92,7 +92,7 @@ ms.locfileid: "78944304"
 
 1. 輸入模組的名稱。 選擇容器登錄內唯一的名稱。
 
-1. 提供模組映像存放庫的名稱。 Visual Studio Code 會自動以 **localhost:5000/<您的模組名稱\>** 填入模組名稱。 請使用您自己的登錄資訊加以取代。 如果使用本地 Docker 註冊表進行測試，則**本地主機**正常。 如果您使用 Azure Container Registry，則請使用登錄設定中的登入伺服器。 登錄伺服器看起來像**_\<註冊表名稱\>_.azurecr.io**。 僅替換字串的**localhost：5000**部分，以便最終結果看起來像**\<*註冊表名稱*\>.azurecr.io/_\<您的模組名稱\>_**。
+1. 提供模組映像存放庫的名稱。 Visual Studio Code 會自動以 **localhost:5000/<您的模組名稱\>** 填入模組名稱。 請使用您自己的登錄資訊加以取代。 如果您使用本機 Docker 登錄進行測試，則**localhost**是正常的。 如果您使用 Azure Container Registry，則請使用登錄設定中的登入伺服器。 登入伺服器看起來像** _ \<登錄\>名稱_. azurecr.io**。 僅取代字串的**localhost： 5000**部分，讓最終結果看起來像** \<登錄*名稱*\>。 azurecr.io/_\<您的模組名稱\>_**。
 
    ![提供 Docker 映像存放庫](./media/how-to-develop-csharp-module/repository.png)
 
@@ -102,33 +102,33 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
 
 - 一個包含偵錯組態的 **.vscode** 資料夾。
 
-- 一個 **modules** 資料夾，其中包含每個模組的子資料夾。  在每個模組的資料夾中有一個檔 **，module.json**，它控制如何構建和部署模組。  需要修改此檔才能將模組部署容器註冊表從本地主機更改為遠端註冊表。 此時，您只有一個模組。  但是您可以在命令選擇區中使用 **Azure IoT Edge: Add IoT Edge Module** 命令來新增更多項目。
+- 一個 **modules** 資料夾，其中包含每個模組的子資料夾。  在每個模組的資料夾中，都有一個檔案（**模組. json**），可控制模組的建立和部署方式。  您必須修改此檔案，才能將模組部署容器登錄從 localhost 變更為遠端登入。 此時，您只有一個模組。  但是您可以在命令選擇區中使用 **Azure IoT Edge: Add IoT Edge Module** 命令來新增更多項目。
 
 - 一個 **.env** 檔案，會列出您的環境變數。 如果您的登錄是 Azure Container Registry，您會有 Azure Container Registry 使用者名稱和密碼。
 
   > [!NOTE]
   > 環境檔案只會在您為模組提供了映像存放庫時才會建立。 如果您接受 localhost 預設值，並且在本機進行測試和偵錯，則不需要宣告環境變數。
 
-- **部署.template.json**檔列出了您的新模組以及類比可用於測試的資料的示例**類比溫度感應器**模組。 如需部署資訊清單運作方式的詳細資訊，請參閱[了解如何使用部署資訊清單以部署模組和建立路由](module-composition.md)。
+- **部署範本. json**檔案會列出新的模組，以及模擬可用於測試之資料的範例**SimulatedTemperatureSensor**模組。 如需部署資訊清單運作方式的詳細資訊，請參閱[了解如何使用部署資訊清單以部署模組和建立路由](module-composition.md)。
 
-要查看類比溫度模組的工作原理，請查看[類比溫度感應器.csproj 原始程式碼](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor)。
+若要查看模擬的溫度模組如何運作，請參閱[SimulatedTemperatureSensor 的原始碼](https://github.com/Azure/iotedge/tree/master/edge-modules/SimulatedTemperatureSensor)。
 
 ## <a name="add-additional-modules"></a>新增其他模組
 
-要向解決方案添加其他模組，請運行命令**Azure IoT 邊緣：從命令調色板中添加 IoT 邊緣模組**。 您也可以在 Visual Studio Code 總管檢視中，以滑鼠右鍵按一下 **modules** 資料夾或 `deployment.template.json` 檔案，然後選取 [新增 IoT Edge 模組]****。
+若要將其他模組新增至您的解決方案，請從命令選擇區執行命令**Azure IoT Edge：新增 IoT Edge 模組**。 您也可以在 Visual Studio Code 總管檢視中，以滑鼠右鍵按一下 **modules** 資料夾或 `deployment.template.json` 檔案，然後選取 [新增 IoT Edge 模組]****。
 
 ## <a name="develop-your-module"></a>開發您的模組
 
 解決方案隨附的預設模組程式碼位於下列位置：
 
-- Azure 函數 （C#）：***&lt;模組>模組&gt;名稱* > *&lt;為&gt;模組名稱*.cs**
+- Azure Function （c #）：模組 **> * &lt;您的&gt;模組名稱* > *&lt;您&gt;的模組名稱*.cs**
 - C#：**modules > *&lt;您的模組名稱&gt;* > Program.cs**
 - Python：**modules > *&lt;您的模組名稱&gt;* > main.py**
 - Node.js：**modules > *&lt;您的模組名稱&gt;* > app.js**
 - Java：**modules > *&lt;您的模組名稱&gt;* > src > main > java > com > edgemodulemodules > App.java**
 - C：**modules > *&lt;您的模組名稱&gt;* > main.c**
 
-系統會設定模組和 deployment.template.json 檔案，讓您可以建置解決方案、將其推送至容器登錄，然後部署到裝置以開始測試，而不需要觸碰到任何程式碼。 該模組構建只是為了簡單地從源（在本例中為類比資料的類比溫度感應器模組）獲取輸入，並將其管道輸送到 IoT 中心。
+系統會設定模組和 deployment.template.json 檔案，讓您可以建置解決方案、將其推送至容器登錄，然後部署到裝置以開始測試，而不需要觸碰到任何程式碼。 此模組的建立是為了只接受來源的輸入（在此案例中為模擬資料的 SimulatedTemperatureSensor 模組），並使用管線將它傳送至 IoT 中樞。
 
 當您準備要使用自己的程式碼自訂範本時，請使用 [Azure IoT 中樞 SDK](../iot-hub/iot-hub-devguide-sdks.md) 以建置模組，該模組會滿足 IoT 解決方案的主要需求，例如安全性、裝置管理和可靠性。
 
@@ -145,7 +145,7 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
 
 ### <a name="set-up-iot-edge-simulator-for-single-module-app"></a>設定單一模組應用程式的 IoT Edge 模擬器
 
-要設置和啟動模擬器，請運行命令 Azure IoT 邊緣：從視覺化工作室代碼命令調色板**啟動單個模組的 IoT 邊緣中心模擬器**。 出現提示時，使用預設模組程式碼中的值 **input1** (或您程式碼中的對等值)，作為您應用程式的輸入名稱。 此命令會觸發 **iotedgehubdev** CLI，然後啟動 IoT Edge 模擬器並測試公用程式模組容器。 如果模擬器已在單一模組模式中順利啟動，您就會在整合式終端機中看到下列輸出。 您也可以查看 `curl` 命令，以利傳送訊息。 稍後您將會用到此資訊。
+若要設定並啟動模擬器，請從 Visual Studio Code 命令選擇區執行命令**Azure IoT Edge：啟動 IoT Edge Hub 模擬器 For 單一模組**。 出現提示時，使用預設模組程式碼中的值 **input1** (或您程式碼中的對等值)，作為您應用程式的輸入名稱。 此命令會觸發 **iotedgehubdev** CLI，然後啟動 IoT Edge 模擬器並測試公用程式模組容器。 如果模擬器已在單一模組模式中順利啟動，您就會在整合式終端機中看到下列輸出。 您也可以查看 `curl` 命令，以利傳送訊息。 稍後您將會用到此資訊。
 
    ![設定單一模組應用程式的 IoT Edge 模擬器](media/how-to-develop-csharp-module/start-simulator-for-single-module.png)
 
@@ -159,7 +159,7 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
 
 1. 準備環境以便根據您的開發語言需求進行偵錯、在您的模組中設定中斷點，然後選取要使用的偵錯設定：
    - **C#**
-     - 在 Visual Studio 代碼集成終端中，將目錄更改為***&lt;模組名稱&gt;*** 資料夾，然後運行以下命令以生成 .NET Core 應用程式。
+     - 在 Visual Studio Code 整合式終端機中，將目錄變更為*** &lt;您的&gt;模組名稱***資料夾，然後執行下列命令以建立 .net Core 應用程式。
 
        ```cmd
        dotnet build
@@ -167,13 +167,13 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
 
      - 開啟檔案 `Program.cs` 並新增中斷點。
 
-     - 選取 [檢視] > [偵錯]**** 以巡覽至 Visual Studio Code 偵錯檢視。 從下拉清單中選擇***&lt;模組名稱&gt;* 本地調試 （.NET Core）** 的調試配置。
+     - 選取 [檢視] > [偵錯]**** 以巡覽至 Visual Studio Code 偵錯檢視。 從下拉式清單中選取 [ ** * &lt;您&gt;的模組名稱*本機 debug （.net Core）** ] 的 [偵測設定]。
 
         > [!NOTE]
-        > 如果您的 .NET `TargetFramework` Core 與 中的`launch.json`程式路徑不一致，則需要手動更新 程式中`launch.json`的程式路徑以匹配 .csproj 檔中的`TargetFramework`，以便 Visual Studio Code 可以成功啟動此程式。
+        > 如果您的 .NET `TargetFramework` Core 與中`launch.json`的程式路徑不一致，您必須手動更新中`launch.json`的程式路徑，以符合 .csproj 檔案`TargetFramework`中的，讓 Visual Studio Code 可以順利啟動此程式。
 
    - **Node.js**
-     - 在 Visual Studio 代碼集成終端中，將目錄更改為***&lt;模組名稱&gt;*** 資料夾，然後運行以下命令以安裝節點包
+     - 在 Visual Studio Code 整合式終端機中，將目錄變更為*** &lt;您的&gt;模組名稱***資料夾，然後執行下列命令以安裝節點套件
 
        ```cmd
        npm install
@@ -181,11 +181,11 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
 
      - 開啟檔案 `app.js` 並新增中斷點。
 
-     - 選取 [檢視] > [偵錯]**** 以巡覽至 Visual Studio Code 偵錯檢視。 從下拉清單中選擇***&lt;模組名稱&gt;* 本地調試 （Node.js）** 的調試配置。
-   - **JAVA**
+     - 選取 [檢視] > [偵錯]**** 以巡覽至 Visual Studio Code 偵錯檢視。 從下拉式清單中選取 [ ** * &lt;您&gt;的模組名稱*本機 debug （node.js）** ] 的 [偵錯工具設定]。
+   - **Java**
      - 開啟檔案 `App.java` 並新增中斷點。
 
-     - 選取 [檢視] > [偵錯]**** 以巡覽至 Visual Studio Code 偵錯檢視。 從下拉清單中選擇***&lt;模組名稱&gt;* 本地調試 （JAVA）** 的調試配置。
+     - 選取 [檢視] > [偵錯]**** 以巡覽至 Visual Studio Code 偵錯檢視。 從下拉式清單中選取 [ ** * &lt;您&gt;的模組名稱*本機 debug （JAVA）** ] 的 [偵測設定]。
 
 1. 按一下 [開始偵錯]****，或按 **F5** 啟動偵錯工作階段。
 
@@ -202,7 +202,7 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
 
 1. 在 Visual Studio Code 偵錯檢視中，您可以在左面板中看到變數。
 
-1. 要停止調試會話，請選擇"停止"按鈕或按**Shift + F5**，然後在命令調色板中運行**Azure IoT 邊緣：停止 IoT 邊緣模擬器**以停止模擬器並清理。
+1. 若要停止您的偵錯工具，請選取 [停止] 按鈕，或按**Shift + F5**，然後在命令選擇區中執行**Azure IoT Edge： stop IoT Edge**模擬器，以停止模擬器並進行清除。
 
 ## <a name="debug-in-attach-mode-with-iot-edge-simulator-c-nodejs-java-azure-functions"></a>使用 IoT Edge 模擬器在附加模式中進行偵錯 (C#、Node.js、Java、Azure Functions)
 
@@ -233,13 +233,13 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
 
    ![觀察變數](media/how-to-vs-code-develop-module/view-log.png)
 
-1. 巡覽至 Visual Studio Code 偵錯檢視並選取模組的偵錯設定檔。 調試選項名稱應類似于***&lt;模組名稱&gt;* 遠端偵錯**
+1. 巡覽至 Visual Studio Code 偵錯檢視並選取模組的偵錯設定檔。 Debug 選項名稱應類似于** * &lt;您的模組名稱&gt; *遠端 debug**
 
 1. 選取 [開始偵錯]****，或按 **F5**。 選取所要連結的流程。
 
 1. 在 Visual Studio Code 偵錯檢視中，您可以在左面板中看到變數。
 
-1. 要停止調試會話，請先選擇"停止"按鈕或按**Shift + F5**，然後從命令調色板中選擇**Azure IoT 邊緣：停止 IoT 邊緣模擬器**。
+1. 若要停止「調試」會話，請先選取 [停止] 按鈕，或按**Shift + F5**，然後從命令選擇區選取 [ **Azure IoT Edge：停止 IoT Edge**模擬器]。
 
 > [!NOTE]
 > 上述範例說明如何針對容器上的 IoT Edge 模組進行偵錯。 它會將公開連接埠新增至您模組的容器 `createOptions` 設定。 完成模組偵錯之後，建議您針對已準備好投入生產環境的 IoT Edge 模組，移除這些公開連接埠。
@@ -274,7 +274,7 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
       ptvsd.break_into_debugger()
       ```
 
-     例如，如果要調試函數，`receive_message_listener`可以插入程式碼，如下所示：
+     例如，如果您想要對`receive_message_listener`函式進行程式碼處理，您可以插入該行，如下所示：
 
       ```python
       def receive_message_listener(client):
@@ -293,12 +293,12 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
       ```
 
 1. 在 Visual Studio Code 命令選擇區中：
-   1. 運行命令**Azure IoT 邊緣：生成和推送 IoT 邊緣解決方案**。
+   1. 執行命令**Azure IoT Edge： Build 和 Push IoT Edge 解決方案**。
 
    1. 為您的解決方案選取 `deployment.debug.template.json` 檔案。
 
 1. 在 Visual Studio Code 總管檢視的 [Azure IoT 中樞裝置]**** 區段中：
-   1. 按右鍵 IoT 邊緣裝置識別碼，然後選擇"**為單個設備創建部署**"。
+   1. 在 IoT Edge 裝置識別碼上按一下滑鼠右鍵，然後選取 [**建立單一裝置的部署**]。
 
       > [!TIP]
       > 若要確認您所選擇的裝置是 IoT Edge 裝置，請選取該裝置以展開模組清單，並確認 **$edgeHub** 和 **$edgeAgent** 是否存在。 每個 IoT Edge 都裝置包含這兩個模組。
@@ -321,13 +321,13 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
 
   - 確定要偵錯的電腦上的模組正在執行並可供偵錯工具連結，而且可在外部存取連接埠 9229。 您可以在偵錯工具機器上開啟 `http://<target-machine-IP>:9229/json`，以驗證此操作。 此 URL 應顯示所要偵錯 Node.js 模組的相關資訊。
   
-  - 在開發電腦上，打開 Visual Studio 代碼，`launch.json`然後進行編輯，以便在模組作為 Windows 容器運行時，***&lt;模組&gt;名稱*遠端偵錯 （Node.js）** 設定檔（或***&lt;模組&gt;名稱*遠端偵錯（Windows 容器中的 Node.js）設定檔的位址**值是正在調試的電腦的 IP。
+  - 在您的開發電腦上，開啟 Visual Studio Code 然後`launch.json`編輯，讓** * &lt;您的模組名稱&gt; *遠端 debug （node.js）** 設定檔（或** * &lt;您的模組名稱&gt; *遠端 debug （Windows 容器中的 node.js）** 設定檔（如果模組是以 windows 容器執行）是要進行調試的機器 IP。
 
-- **JAVA**
+- **Java**
 
   - 執行 `ssh -f <username>@<target-machine> -L 5005:127.0.0.1:5005 -N`，對要偵錯的電腦建置 SSH 通道。
   
-  - 在開發電腦上，打開 Visual Studio 代碼並編輯***&lt;模組名稱&gt;* 遠端偵錯 （JAVA）** `launch.json`設定檔，以便您可以附加到目的電腦。 若要深入了解如何使用 Visual Studio Code 來編輯 `launch.json` 及偵錯 Java，請參閱[設定偵錯工具](https://code.visualstudio.com/docs/java/java-debugging#_configuration)。
+  - 在您的開發電腦上，開啟 Visual Studio Code，並在中`launch.json`編輯** * &lt;您的模組名稱&gt; *遠端 Debug （JAVA）** 設定檔，讓您可以附加至目的電腦。 若要深入了解如何使用 Visual Studio Code 來編輯 `launch.json` 及偵錯 Java，請參閱[設定偵錯工具](https://code.visualstudio.com/docs/java/java-debugging#_configuration)。
 
 - **Python**
 
@@ -335,20 +335,20 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
 
   - 在您先前插入 `main.py` 的程式碼 `ptvsd.enable_attach(('0.0.0.0', 5678))` 中，將 **0.0.0.0** 變更為要偵錯的電腦 IP 位址。 再次建置、推送及部署您的 IoT Edge 模組。
 
-  - 在開發電腦上，打開 Visual Studio 代碼然後`launch.json`進行編輯，`host`以便***&lt;模組名稱&gt;* 遠端偵錯 （Python）** 設定檔的值使用目的電腦的 IP 位址而不是`localhost`。
+  - 在您的開發電腦上，開啟 Visual Studio Code 然後`launch.json`編輯，讓`host` ** * &lt;您的模組名稱&gt; *遠端 Debug （Python）** 設定檔的值使用目的電腦的 IP 位址，而不`localhost`是。
 
 ### <a name="debug-your-module"></a>對模組進行偵錯
 
-1. 在 Visual Studio Code 偵錯檢視中，選取模組的偵錯設定檔。 調試選項名稱應類似于***&lt;模組名稱&gt;* 遠端偵錯**
+1. 在 Visual Studio Code 偵錯檢視中，選取模組的偵錯設定檔。 Debug 選項名稱應類似于** * &lt;您的模組名稱&gt; *遠端 debug**
 
 1. 開啟適用於您開發語言的模組檔並新增中斷點：
 
-   - **Azure 函數 （C#）**： 將中斷點`<your module name>.cs`添加到檔中。
-   - **C#**： 將中斷點添加到檔中`Program.cs`。
-   - **Node.js**： 將中斷點添加到檔中`app.js`。
-   - **JAVA**：將中斷點添加到檔中`App.java`。
-   - **Python**：在添加`main.py``ptvsd.break_into_debugger()`行的回檔方法中將中斷點添加到檔中。
-   - **C**： 將中斷點添加到檔中`main.c`。
+   - **Azure Function （c #）**：將您的中斷點新增`<your module name>.cs`至檔案。
+   - **C #**：將您的中斷點新增`Program.cs`至檔案。
+   - **Node.js**：將您的中斷點新增至檔案`app.js`。
+   - **JAVA**：將您的中斷點新增至`App.java`檔案。
+   - **Python**： `main.py`在您新增`ptvsd.break_into_debugger()`行的回呼方法中，將您的中斷點新增至檔案。
+   - **C**：將您的中斷點新增至`main.c`檔案。
 
 1. 選取 [開始偵錯]**** 或選取 **F5**。 選取所要連結的流程。
 
@@ -365,6 +365,6 @@ Visual Studio Code 會採用您提供的資訊、建立 IoT Edge 解決方案，
 
 ## <a name="next-steps"></a>後續步驟
 
-構建模組後，瞭解如何[從視覺化工作室代碼部署 Azure IoT 邊緣模組](how-to-deploy-modules-vscode.md)。
+建立模組之後，請瞭解如何[從 Visual Studio Code 部署 Azure IoT Edge 模組](how-to-deploy-modules-vscode.md)。
 
 若要為您的 IoT Edge 裝置開發模組，請[了解及使用 Azure IoT 中樞 SDK](../iot-hub/iot-hub-devguide-sdks.md)。

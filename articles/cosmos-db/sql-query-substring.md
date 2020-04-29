@@ -1,6 +1,6 @@
 ---
-title: Azure 宇宙 DB 查詢語言中的 SUBSTRING
-description: 瞭解 Azure 宇宙 DB 中的 SQL 系統函數 SUBSTRING。
+title: Azure Cosmos DB 查詢語言中的子字串
+description: 瞭解 Azure Cosmos DB 中的 SQL 系統函數子字串。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: d4462fc407093b23510bddfae4d9f55d68f8c0fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303693"
 ---
-# <a name="substring-azure-cosmos-db"></a>SUBSTRING（Azure 宇宙資料庫）
+# <a name="substring-azure-cosmos-db"></a>SUBSTRING （Azure Cosmos DB）
  傳回字串運算式的部分，從指定字元以零為起始的位置開始，直到指定的長度，或直到字串的結尾。  
   
 ## <a name="syntax"></a>語法
@@ -26,13 +26,13 @@ SUBSTRING(<str_expr>, <num_expr1>, <num_expr2>)
 ## <a name="arguments"></a>引數
   
 *str_expr*  
-   是字串運算式。
+   這是字串運算式。
   
 *num_expr1*  
-   是表示起始字元的數位運算式。 值 0 是*str_expr*的第一個字元。
+   這是用來表示起始字元的數值運算式。 值為0是*str_expr*的第一個字元。
   
 *num_expr2*  
-   是表示要返回*的最大str_expr*字元數的數位運算式。 值 0 或更少會導致空字串。
+   這是一個數值運算式，用來表示要傳回*str_expr*的最大字元數。 0或更小的值會導致空字串。
 
 ## <a name="return-types"></a>傳回類型
   
@@ -54,10 +54,10 @@ SELECT SUBSTRING("abc", 1, 1) AS substring
 
 ## <a name="remarks"></a>備註
 
-如果起始位置為`0`，則此系統功能將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
+如果開始位置是`0`，則這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [字串函數 Azure 宇宙 DB](sql-query-string-functions.md)
-- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 簡介](introduction.md)
+- [字串函數 Azure Cosmos DB](sql-query-string-functions.md)
+- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 簡介](introduction.md)

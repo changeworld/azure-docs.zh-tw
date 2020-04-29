@@ -1,7 +1,7 @@
 ---
-title: 培訓學習機器學習模型
+title: 訓練 scikit-learn-瞭解機器學習模型
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure 機器學習 SK 學習估算器類在企業規模上運行學習課程培訓腳本。 示例腳本對光圈花圖像進行分類，以構建基於 scikit-learn 的虹膜資料集的機器學習模型。
+description: 瞭解如何使用 Azure Machine Learning SKlearn 估計工具類別，以企業規模執行您的 scikit-learn-學習訓練腳本。 範例腳本會將鳶尾花花卉影像分類，以根據 scikit-learn 學習的鳶尾花資料集來建立機器學習模型。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,45 +11,45 @@ author: maxluk
 ms.date: 03/09/2020
 ms.custom: seodec18
 ms.openlocfilehash: bdd2cc400c3df75742689258caea8cb87ee8ccc6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942253"
 ---
-# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>使用 Azure 機器學習大規模構建學習模型
+# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>組建 scikit-learn-以 Azure Machine Learning 大規模學習模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中，瞭解如何使用 Azure 機器學習[SK 學習估計器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)類在企業規模上運行 scikit 學習培訓腳本。 
+在本文中，您將瞭解如何使用 Azure Machine Learning [SKlearn 估計工具](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)類別，以企業規模執行 scikit-learn 學習訓練腳本。 
 
-本文中的示例腳本用於對虹膜花圖像進行分類，以構建基於 scikit-learn 的[虹膜資料集](https://archive.ics.uci.edu/ml/datasets/iris)的機器學習模型。
+本文中的範例腳本是用來分類鳶尾花的花卉影像，以根據 scikit-learn 學習的[鳶尾花資料集](https://archive.ics.uci.edu/ml/datasets/iris)來建立機器學習模型。
 
-無論您是從零開始訓練機器學習學習模型，還是將現有模型引入雲中，都可以使用 Azure 機器學習來擴展開源培訓作業，使用彈性雲計算資源。 您可以使用 Azure 機器學習構建、部署、版本和監視生產級模型。
+無論您是從基礎開始訓練機器學習服務 scikit-learn-學習模型，或將現有的模型帶入雲端，您都可以使用 Azure Machine Learning，使用彈性雲端計算資源來相應放大開放原始碼訓練作業。 您可以使用 Azure Machine Learning 來建立、部署、版本及監視生產層級模型。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-在以下任一環境中運行此代碼：
- - Azure 機器學習計算實例 - 無需下載或安裝
+在下列任一環境中執行此程式碼：
+ - Azure Machine Learning 計算實例-不需要下載或安裝
 
-    - 完成[教程：設置環境和工作區](tutorial-1st-experiment-sdk-setup.md)，以創建預載入 SDK 和示例存儲庫的專用筆記本伺服器。
-    - 在筆記本伺服器上的示例訓練資料夾中，通過導航到此目錄查找已完成和展開的筆記本：**如何使用-azureml > ml 框架>學>訓練>訓練-超參數-調諧-部署-sk-learn**資料夾。
+    - 完成[教學課程：設定環境和工作區](tutorial-1st-experiment-sdk-setup.md)，以建立預先載入 SDK 和範例存放庫的專用筆記本伺服器。
+    - 在筆記本伺服器的 [範例訓練] 資料夾中，流覽至此目錄以尋找已完成和已展開的筆記本：**使用方法 > ml 架構 > scikit-learn-瞭解 > 訓練 > 訓練-超參數-sklearn**資料夾。
 
  - 您自己的 Jupyter Notebook 伺服器
 
-    - [安裝 Azure 機器學習 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
-    - [創建工作區設定檔](how-to-configure-environment.md#workspace)。
-    - 下載資料集和示例指令檔 
-        - [虹膜資料集](https://archive.ics.uci.edu/ml/datasets/iris)
-        - [train_iris.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
-    - 您還可以在 GitHub 示例頁面上找到本指南的已完成[的 Jupyter 筆記本版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)。 該筆記本包括一個擴展部分，涵蓋智慧超參數調優和按主要指標檢索最佳模型。
+    - [安裝 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
+    - [建立工作區設定檔](how-to-configure-environment.md#workspace)。
+    - 下載資料集和範例腳本檔案 
+        - [鳶尾花資料集](https://archive.ics.uci.edu/ml/datasets/iris)
+        - [train_iris。 .py](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn)
+    - 您也可以在 GitHub 範例頁面上找到本指南的完整[Jupyter Notebook 版本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)。 此筆記本包含擴充的章節，涵蓋智慧型超參數調整，並透過主要度量來抓取最佳模型。
 
-## <a name="set-up-the-experiment"></a>設置實驗
+## <a name="set-up-the-experiment"></a>設定實驗
 
-本節通過載入所需的 python 包、初始化工作區、創建實驗以及上載訓練資料和培訓腳本來設置訓練實驗。
+本節會藉由載入所需的 python 套件、將工作區初始化、建立實驗，以及上傳定型資料和定型腳本，來設定定型實驗。
 
 ### <a name="import-packages"></a>匯入套件
 
-首先，導入必要的 Python 庫。
+首先，匯入必要的 Python 程式庫。
 
 ```Python
 import os
@@ -66,9 +66,9 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>初始化工作區
 
-[Azure 機器學習工作區](concept-workspace.md)是服務的頂級資源。 它為您提供了一個集中的位置，用於處理您創建的所有專案。 在 Python SDK 中，您可以通過創建[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)物件來訪問工作區專案。
+[Azure Machine Learning 工作區](concept-workspace.md)是服務的最上層資源。 它可為您提供一個集中的位置，以處理您建立的所有成品。 在 Python SDK 中，您可以藉由建立[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)物件來存取工作區構件。
 
-從`config.json`[先決條件部分](#prerequisites)中創建的檔創建工作區物件。
+從[必要條件一節](#prerequisites)中建立`config.json`的檔案建立工作區物件。
 
 ```Python
 ws = Workspace.from_config()
@@ -76,7 +76,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-machine-learning-experiment"></a>建立機器學習實驗
 
-創建一個實驗和一個資料夾來保存你的訓練腳本。 在此示例中，創建一個名為"學習-虹膜"的實驗。
+建立實驗和資料夾，以保存您的訓練腳本。 在此範例中，建立名為 "sklearn-鳶尾花" 的實驗。
 
 ```Python
 project_folder = './sklearn-iris'
@@ -85,26 +85,26 @@ os.makedirs(project_folder, exist_ok=True)
 exp = Experiment(workspace=ws, name='sklearn-iris')
 ```
 
-### <a name="prepare-training-script"></a>準備培訓腳本
+### <a name="prepare-training-script"></a>準備訓練腳本
 
-在本教程中，培訓腳本**train_iris.py**已經為您提供。 實際上，您應該能夠像現在一樣獲取任何自訂訓練腳本，並在 Azure ML 上運行它，而無需修改代碼。
+在本教學課程中，已為您提供訓練腳本**train_iris .py** 。 在實務上，您應該能夠採用任何自訂訓練腳本，並使用 Azure ML 加以執行，而不需要修改您的程式碼。
 
-要使用 Azure ML 跟蹤和指標功能，請在訓練腳本中添加少量 Azure ML 代碼。  訓練腳本**train_iris.py**演示如何使用腳本中`Run`的物件將某些指標記錄到 Azure ML 運行。
+若要使用「Azure ML 追蹤」和「計量」功能，請在您的訓練腳本內新增少量的 Azure ML 程式碼。  定型腳本**train_iris。 .py**示範如何使用腳本中的`Run`物件，將一些計量記錄到您的 Azure ML 執行。
 
-提供的培訓腳本使用函數的示例`iris = datasets.load_iris()`資料。  對於您自己的資料，您可能需要使用["上載資料集"和"腳本](how-to-train-keras.md#data-upload)"等步驟在培訓期間提供資料。
+提供的定型腳本會使用來自函數的`iris = datasets.load_iris()`範例資料。  針對您自己的資料，您可能需要使用[上傳資料集和腳本](how-to-train-keras.md#data-upload)等步驟，讓資料可在定型期間使用。
 
-將訓練腳本**train_iris.py**複製到專案目錄中。
+將訓練腳本**train_iris .py**複製到您的專案目錄。
 
 ```
 import shutil
 shutil.copy('./train_iris.py', project_folder)
 ```
 
-## <a name="create-or-get-a-compute-target"></a>創建或獲取計算目標
+## <a name="create-or-get-a-compute-target"></a>建立或取得計算目標
 
-為 scikit 學習作業創建要運行的計算目標。 Scikit 學習僅支援單個節點、CPU 計算。
+建立要在其上執行之 scikit-learn 學習作業的計算目標。 Scikit-learn-瞭解僅支援單一節點，CPU 運算。
 
-以下代碼為遠端訓練計算資源創建 Azure 機器學習託管計算 （AmlCompute）。 創建 Aml 計算大約需要 5 分鐘。 如果具有該名稱的 AmlCompute 已在工作區中，則此代碼將跳過創建過程。
+下列程式碼會為您的遠端訓練計算資源建立 Azure Machine Learning 受控計算（AmlCompute）。 建立 AmlCompute 大約需要5分鐘的時間。 如果具有該名稱的 AmlCompute 已經在您的工作區中，此程式碼將會略過建立進程。
 
 ```Python
 cluster_name = "cpu-cluster"
@@ -122,13 +122,13 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-有關計算目標的詳細資訊，請參閱[什麼是計算目標](concept-compute-target.md)文章。
+如需計算目標的詳細資訊，請參閱[什麼是計算目標一](concept-compute-target.md)文。
 
-## <a name="create-a-scikit-learn-estimator"></a>創建一個學習的估算器
+## <a name="create-a-scikit-learn-estimator"></a>建立 scikit-learn-學習估計工具
 
-[學習器](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py)提供了一種在計算目標上啟動學習技術訓練作業的簡單方法。 它通過類實現，[`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)可用於支援單節點 CPU 訓練。
+[Scikit-learn-學習估計工具](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn?view=azure-ml-py)提供簡單的方法，讓您在計算目標上啟動 scikit-learn 學習訓練作業。 它是透過[`SKLearn`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)類別來執行，它可以用來支援單一節點的 CPU 定型。
 
-如果訓練腳本需要額外的 pip 或 conda 包來運行，則可以通過 和`pip_packages``conda_packages`參數傳遞它們的名稱，從而在生成的 docker 映射上安裝包。
+如果您的訓練腳本需要額外的 pip 或 conda 封裝來執行，您可以藉由透過`pip_packages`和`conda_packages`引數傳遞它們的名稱，將套件安裝在產生的 docker 映射上。
 
 ```Python
 from azureml.train.sklearn import SKLearn
@@ -147,32 +147,32 @@ estimator = SKLearn(source_directory=project_folder,
 ```
 
 
-有關自訂 Python 環境的詳細資訊，請參閱[創建和管理用於培訓和部署的環境](how-to-use-environments.md)。 
+如需自訂 Python 環境的詳細資訊，請參閱[建立和管理用於定型和部署的環境](how-to-use-environments.md)。 
 
-## <a name="submit-a-run"></a>提交運行
+## <a name="submit-a-run"></a>提交執行
 
-[Run 物件](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)在作業運行時和完成作業後提供執行歷程記錄的介面。
+[執行物件](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)會在作業執行時和完成後，提供介面給執行歷程記錄。
 
 ```Python
 run = experiment.submit(estimator)
 run.wait_for_completion(show_output=True)
 ```
 
-在執行運行時，它將經歷以下階段：
+執行時，它會經歷下列階段：
 
-- **準備**： 根據 TensorFlow 估計器創建 docker 映射。 圖像將上載到工作區的容器註冊表，並緩存以以後運行。 日誌也會資料流到執行歷程記錄，並可以查看以監視進度。
+- **準備**： docker 映射是根據 TensorFlow 估計工具建立的。 映射會上傳至工作區的容器登錄，並快取以供稍後執行。 記錄也會串流處理至執行歷程記錄，並可加以查看以監視進度。
 
-- **縮放**：如果 Batch AI 群集需要比當前可用的節點更多的節點來執行運行，群集將嘗試向上擴展。
+- **調整**：如果 Batch AI 叢集需要執行比目前可用的節點更多的節點，叢集會嘗試相應增加。
 
-- **正在運行**：腳本資料夾中的所有腳本都將上載到計算目標，將裝載或複製資料存儲，並執行entry_script。 來自 stdout 和 ./logs 資料夾的輸出將資料流到執行歷程記錄，並可用於監視運行。
+- **執行：腳本**資料夾中的所有腳本都會上傳至計算目標、裝載或複製資料存放區，以及執行 entry_script。 Stdout 和./logs 資料夾的輸出會串流處理至執行歷程記錄，並可用來監視執行。
 
-- **後處理**：運行的 ./輸出檔案夾將複製到執行歷程記錄。
+- **後置處理**：執行的./outputs 資料夾會複製到執行歷程記錄。
 
-## <a name="save-and-register-the-model"></a>保存並註冊模型
+## <a name="save-and-register-the-model"></a>儲存並註冊模型
 
-訓練模型後，可以將其保存並註冊到工作區。 模型註冊允許您在工作區中存儲和版本模型，以簡化[模型管理和部署](concept-model-management-and-deployment.md)。
+定型模型之後，您可以將它儲存並註冊到您的工作區。 模型註冊可讓您在工作區中儲存模型並為其建立版本，以簡化[模型管理和部署](concept-model-management-and-deployment.md)。
 
-將以下代碼添加到訓練腳本 train_iris.py 以保存模型。 
+將下列程式碼加入您的定型腳本中，train_iris .py，以儲存模型。 
 
 ``` Python
 import joblib
@@ -180,7 +180,7 @@ import joblib
 joblib.dump(svm_model_linear, 'model.joblib')
 ```
 
-使用以下代碼將模型註冊到工作區。 通過指定參數`model_framework`、`model_framework_version`和`resource_configuration`， 無代碼模型部署將變為可用。 這允許您直接從已註冊的模型將模型部署為 Web 服務，[`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py)並且物件定義 Web 服務的計算資源。
+使用下列程式碼，將模型註冊到您的工作區。 藉由指定、 `model_framework` `model_framework_version`和`resource_configuration`參數，就可以使用無程式碼模型部署。 這可讓您直接從已註冊的模型將您的模型部署為 web 服務， [`ResourceConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.resource_configuration.resourceconfiguration?view=azure-ml-py)而物件則會定義 web 服務的計算資源。
 
 ```Python
 from azureml.core import Model
@@ -195,17 +195,17 @@ model = run.register_model(model_name='sklearn-iris',
 
 ## <a name="deployment"></a>部署
 
-無論使用哪個估計器用於培訓，您剛剛註冊的模型都可以以與 Azure 機器學習中的任何其他註冊模型完全相同的方式進行部署。 部署方式包含有關註冊模型的部分，但您可以直接跳到創建用於部署[的計算目標](how-to-deploy-and-where.md#choose-a-compute-target)，因為您已經具有已註冊的模型。
+您剛註冊的模型可以使用與 Azure Machine Learning 中任何其他已註冊的模型完全相同的方式來部署，不論您用於定型的估計工具為何。 部署如何包含註冊模型的區段，但您可以直接跳到建立部署的[計算目標](how-to-deploy-and-where.md#choose-a-compute-target)，因為您已經有已註冊的模型。
 
-### <a name="preview-no-code-model-deployment"></a>（預覽版）無代碼模型部署
+### <a name="preview-no-code-model-deployment"></a>預覽無程式碼模型部署
 
-您還可以使用無代碼部署功能（預覽）學習，而不是傳統的部署路由。 所有內置的 scikit 學習模型類型都支援無代碼模型部署。 通過將模型與`model_framework`、`model_framework_version`和`resource_configuration`參數註冊，只需使用[`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)靜態函數來部署模型即可。
+除了傳統部署路由以外，您也可以使用無程式碼部署功能（預覽）進行 scikit-learn-學習。 所有內建的 scikit-learn-學習模型類型都不支援任何程式碼模型部署。 `model_framework`藉由使用`model_framework_version`、和`resource_configuration`參數來註冊您的模型（如上所示），您可以[`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)直接使用靜態函式來部署您的模型。
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])
 ```
 
-注： 這些依賴項包含在預構建的 scikit 學習推理容器中。
+注意：這些相依性包含在預先建立的 scikit-learn 學習推斷容器中。
 
 ```yaml
     - azureml-defaults
@@ -214,13 +214,13 @@ web_service = Model.deploy(ws, "scikit-learn-service", [model])
     - numpy
 ```
 
-完整的["手"功能涵蓋](how-to-deploy-and-where.md)Azure 機器學習中更深入的部署。
+[完整的](how-to-deploy-and-where.md)作法涵蓋 Azure Machine Learning 中的部署更深入。
 
 
 ## <a name="next-steps"></a>後續步驟
 
-在本文中，您訓練和註冊了一個 scikit 學習模型，並瞭解了部署選項。 請參閱這些其他文章，瞭解有關 Azure 機器學習的更多詳細資訊。
+在本文中，您已訓練並註冊 scikit-learn 學習模型，並瞭解部署選項。 若要深入瞭解 Azure Machine Learning，請參閱這些其他文章。
 
 * [追蹤定型期間的執行計量](how-to-track-experiments.md)
-* [調整超參數](how-to-tune-hyperparameters.md)
-* [Azure 中分散式深度學習培訓的參考體系結構](/azure/architecture/reference-architectures/ai/training-deep-learning)
+* [微調超參數](how-to-tune-hyperparameters.md)
+* [Azure 中分散式深度學習訓練的參考架構](/azure/architecture/reference-architectures/ai/training-deep-learning)

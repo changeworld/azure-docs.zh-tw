@@ -1,34 +1,34 @@
 ---
-title: 刪除圖像資源
-description: 有關如何使用 Azure CLI 命令刪除容器映射資料來有效管理註冊表大小的詳細資訊。
+title: 刪除影像資源
+description: 有關如何使用 Azure CLI 命令來刪除容器映射資料，以有效管理登錄大小的詳細資訊。
 ms.topic: article
 ms.date: 07/31/2019
 ms.openlocfilehash: 449a1c09bf88e3e0e0aeca4d3b687371d2a6b91a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78403351"
 ---
-# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>使用 Azure CLI 刪除 Azure 容器註冊表中的容器映射
+# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>使用 Azure CLI 刪除 Azure Container Registry 中的容器映射
 
 若要維護 Azure Container Registry 的大小，您應該定期刪除過時的映像資料。 雖然有些部署至生產環境的容器映像可能需要較長時間的儲存，但其他容器映像通常可以更快速地刪除。 例如，在自動化建置和測試案例中，您的登錄可以快速地填入可能永遠不會部署的映像，並可在完成建置和測試行程後立刻清除。
 
-您可以用數種不同的方式刪除映像資料，因此務必了解每項刪除作業對於儲存體使用量有何影響。 本文介紹了刪除圖像資料的幾種方法：
+您可以用數種不同的方式刪除映像資料，因此務必了解每項刪除作業對於儲存體使用量有何影響。 本文涵蓋數個刪除影像資料的方法：
 
 * 刪除[存放庫](#delete-repository)：刪除存放庫內的所有映像和所有唯一層次。
 * 依[標記](#delete-by-tag)刪除：刪除映像、標記、映像參考的所有唯一層次，以及與映像相關聯的所有其他標記。
 * 刪除[資訊清單摘要](#delete-by-manifest-digest)：刪除映像、映像參考的所有唯一層次，以及與映像相關聯的所有標記。
 
-提供了示例腳本來説明自動執行刪除操作。
+提供範例腳本以協助自動執行刪除作業。
 
-有關這些概念的介紹，請參閱[關於註冊表、存儲庫和圖像](container-registry-concepts.md)。
+如需這些概念的簡介，請參閱[關於登錄、存放庫和映射](container-registry-concepts.md)。
 
 ## <a name="delete-repository"></a>刪除存放庫
 
-刪除存放庫即可刪除存放庫中的所有映像，包括所有標籤、唯一層次及資訊清單。 刪除存儲庫時，將恢復引用該存儲庫中唯一圖層的圖像使用的存儲空間。
+刪除存放庫即可刪除存放庫中的所有映像，包括所有標籤、唯一層次及資訊清單。 當您刪除儲存機制時，會復原參照該存放庫中唯一層之映射所使用的儲存空間。
 
-下列 Azure CLI 命令可刪除 "acr-helloworld" 存放庫以及該存放庫內的所有標記和資訊清單。 如果已刪除清單引用的圖層未被註冊表中的任何其他圖像引用，則其圖層資料也會被刪除，從而恢復存儲空間。
+下列 Azure CLI 命令可刪除 "acr-helloworld" 存放庫以及該存放庫內的所有標記和資訊清單。 如果登錄中的任何其他映射未參考已刪除之資訊清單所參考的圖層，其層級資料也會一併刪除，並復原儲存空間。
 
 ```azurecli
  az acr repository delete --name myregistry --repository acr-helloworld
@@ -52,7 +52,7 @@ Are you sure you want to continue? (y/n):
 ```
 
 > [!TIP]
-> 「依標記」** 刪除不應該與刪除標記 (取消標記) 混淆。 您可以使用 Azure CLI 命令 [az acr repository untag][az-acr-repository-untag] 來刪除標記。 解除標記圖像時不會釋放任何空間，因為圖像[的清單](container-registry-concepts.md#manifest)和圖層資料將保留在註冊表中。 只有標記參考本身會被刪除。
+> 「依標記」** 刪除不應該與刪除標記 (取消標記) 混淆。 您可以使用 Azure CLI 命令 [az acr repository untag][az-acr-repository-untag] 來刪除標記。 當您 untag 映射時，不會釋放任何空間，因為它的[資訊清單](container-registry-concepts.md#manifest)和圖層資料會保留在登錄中。 只有標記參考本身會被刪除。
 
 ## <a name="delete-by-manifest-digest"></a>依資訊清單摘要刪除
 
@@ -101,23 +101,23 @@ This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d73528
 Are you sure you want to continue? (y/n): 
 ```
 
-圖像`acr-helloworld:v2`將從註冊表中刪除，該映射唯一的任何圖層資料也是一樣。 如果資訊清單與多個標記相關聯，也會一併刪除所有相關聯的標記。
+`acr-helloworld:v2`映射會從登錄中刪除，如同該映射獨有的任何圖層資料。 如果資訊清單與多個標記相關聯，也會一併刪除所有相關聯的標記。
 
-## <a name="delete-digests-by-timestamp"></a>按時間戳記刪除摘要
+## <a name="delete-digests-by-timestamp"></a>依時間戳記刪除摘要
 
-要維護存儲庫或註冊表的大小，您可能需要定期刪除早于特定日期的清單摘要。
+若要維護存放庫或登錄的大小，您可能需要定期刪除早于特定日期的資訊清單摘要。
 
-以下 Azure CLI 命令按昇冪列出早于指定時間戳記的存儲庫中的所有清單摘要。 以適合您環境的值取代 `<acrName>` 和 `<repositoryName>`。 時間戳記可以是完整的日期時程表達式或日期，如本示例所示。
+下列 Azure CLI 命令會以遞增的順序，列出存放庫中比指定時間戳記更早的所有資訊清單摘要。 以適合您環境的值取代 `<acrName>` 和 `<repositoryName>`。 時間戳記可以是完整的日期時程表達式或日期，如下列範例所示。
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> \
 --orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
 ```
 
-識別陳舊的清單摘要後，可以運行以下 Bash 腳本來刪除早于指定時間戳記的清單摘要。 它需要 Azure CLI 和 **xargs**。 根據預設，此指令碼不會執行任何刪除。 將 `ENABLE_DELETE` 值變更為 `true`，以啟用映像刪除。
+識別過時的資訊清單摘要之後，您可以執行下列 Bash 腳本，以刪除比指定時間戳記更舊的資訊清單摘要。 它需要 Azure CLI 和 **xargs**。 根據預設，此指令碼不會執行任何刪除。 將 `ENABLE_DELETE` 值變更為 `true`，以啟用映像刪除。
 
 > [!WARNING]
-> 請謹慎使用以下示例腳本 -已刪除的圖像資料無法恢復。 如果系統通過清單摘要（而不是圖像名稱）提取圖像，則不應運行這些腳本。 刪除清單摘要將阻止這些系統從註冊表中拉出圖像。 請考慮採用「唯一標記」** 配置(這是[建議的最佳做法](container-registry-image-tag-version.md))，而不是依照資訊清單提取。 
+> 請小心使用下列範例腳本--已刪除的映射資料無法復原。 如果您有依資訊清單摘要提取映射的系統（相對於映射名稱），則不應該執行這些腳本。 刪除資訊清單摘要將會導致這些系統無法從您的登錄中提取映射。 請考慮採用「唯一標記」** 配置(這是[建議的最佳做法](container-registry-image-tag-version.md))，而不是依照資訊清單提取。 
 
 ```bash
 #!/bin/bash
@@ -199,7 +199,7 @@ fi
    ]
    ```
 
-正如您在序列中最後一步的輸出中看到的，現在有一個孤立清單，其`"tags"`屬性為空清單。 此資訊清單以及它所參考的任何唯一層次資料，仍存在於登錄中。 **若要刪除這類孤立映像及其層次資料，您必須依資訊清單摘要刪除**。
+如您在序列中最後一個步驟的輸出中所見，現在有一個孤立的資訊清單， `"tags"`其屬性為空白清單。 此資訊清單以及它所參考的任何唯一層次資料，仍存在於登錄中。 **若要刪除這類孤立映像及其層次資料，您必須依資訊清單摘要刪除**。
 
 ## <a name="delete-all-untagged-images"></a>刪除所有已取消標記的映像
 
@@ -209,10 +209,10 @@ fi
 az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
 ```
 
-在腳本中使用此命令，可以刪除存儲庫中的所有未標記圖像。
+在腳本中使用此命令，您可以刪除存放庫中的所有未標記映射。
 
 > [!WARNING]
-> 請小心使用下列範例指令碼--無法復原已刪除的映像資料。 如果系統通過清單摘要（而不是圖像名稱）提取圖像，則不應運行這些腳本。 刪除已取消標記的映像，會導致這些系統無法從登錄中提取映像。 請考慮採用「唯一標記」** 配置(這是[建議的最佳做法](container-registry-image-tag-version.md))，而不是依照資訊清單提取。
+> 請小心使用下列範例指令碼--無法復原已刪除的映像資料。 如果您有依資訊清單摘要提取映射的系統（相對於映射名稱），則不應該執行這些腳本。 刪除已取消標記的映像，會導致這些系統無法從登錄中提取映像。 請考慮採用「唯一標記」** 配置(這是[建議的最佳做法](container-registry-image-tag-version.md))，而不是依照資訊清單提取。
 
 **Bash 中的 Azure CLI**
 
@@ -273,9 +273,9 @@ if ($enableDelete) {
 
 ## <a name="automatically-purge-tags-and-manifests-preview"></a>自動清除標記和資訊清單 (預覽)
 
-作為編寫 Azure CLI 命令腳本的替代方法，請運行按需或計畫的 ACR 任務，以刪除早于特定持續時間或匹配指定名稱篩選器的所有標記。 有關詳細資訊，請參閱從[Azure 容器註冊表中自動清除圖像](container-registry-auto-purge.md)。
+做為腳本 Azure CLI 命令的替代方案，請執行隨選或排程的 ACR 工作，以刪除比特定期間還舊的所有標記，或符合指定的名稱篩選器。 如需詳細資訊，請參閱[從 Azure container Registry 自動清除映射](container-registry-auto-purge.md)。
 
-可以選擇為每個註冊表設置[保留原則](container-registry-retention-policy.md)，以管理未標記的清單。 啟用保留原則時，註冊表中沒有任何關聯標記的圖像清單和基礎圖層資料會在設定的時間段後自動刪除。
+選擇性地為每個登錄設定[保留原則](container-registry-retention-policy.md)，以管理未標記的資訊清單。 當您啟用保留原則時，登錄中沒有任何相關聯的標記和基礎層資料的映射資訊清單，會在設定的期間之後自動刪除。
 
 ## <a name="next-steps"></a>後續步驟
 

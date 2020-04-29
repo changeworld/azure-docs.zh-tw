@@ -1,7 +1,7 @@
 ---
 title: 知識存放區簡介 (預覽)
 titleSuffix: Azure Cognitive Search
-description: 將富集文檔發送到 Azure 存儲，您可以在 Azure 認知搜索和其他應用程式中查看、重塑和使用富集文檔。 這項功能處於公開預覽狀態。
+description: 將擴充的檔傳送至 Azure 儲存體，您可以在 Azure 認知搜尋和其他應用程式中查看、重新塑造及取用擴充的檔。 這項功能處於公開預覽狀態。
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78942988"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 認知搜尋中的知識存放區簡介
@@ -20,9 +20,9 @@ ms.locfileid: "78942988"
 > [!IMPORTANT] 
 > 知識存放區目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2019-05-06-Preview](search-api-preview.md) 提供預覽功能。 目前的入口網站支援有限，而且沒有 .NET SDK 支援。
 
-知識存儲是 Azure 認知搜索的一項功能，它保留來自[AI 擴充管道](cognitive-search-concept-intro.md)的輸出，以便獨立分析或下游處理。 *擴充的文件*是管線的輸出，從使用 AI 程序進行擷取、結構化及分析的內容建立而來。 在標準 AI 管線中，擴充的文件是暫時性的，只會在編製索引期間使用，其後即捨棄。 透過知識存放區，擴充的文件得以保留。 
+知識存放區是 Azure 認知搜尋的一項功能，可保存來自[AI 擴充管線](cognitive-search-concept-intro.md)的輸出以進行獨立分析或下游處理。 *擴充的文件*是管線的輸出，從使用 AI 程序進行擷取、結構化及分析的內容建立而來。 在標準 AI 管線中，擴充的文件是暫時性的，只會在編製索引期間使用，其後即捨棄。 透過知識存放區，擴充的文件得以保留。 
 
-如果你過去使用過認知技能，你已經知道*技能集*通過一系列充實來移動文檔。 其結果可能會產生搜尋索引，或 (此預覽版中的新功能) 知識存放區中的投射。 搜索索引和知識存儲這兩個輸出是同一管道的產品;派生自相同的輸入，但產生以非常不同的方式結構化、存儲和使用輸出。
+如果您過去曾使用過認知技能，您已經知道*技能集*透過一連串的擴充來移動檔。 其結果可能會產生搜尋索引，或 (此預覽版中的新功能) 知識存放區中的投射。 這兩個輸出（搜尋索引和知識存放區）是相同管線的產品;衍生自相同的輸入，但會產生結構化、儲存的輸出，並以非常不同的方式使用。
 
 實際上，知識存放區是 [Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-account-overview)，可能會以 Azure 資料表儲存體和 (或) Azure Blob 儲存體的形式存在。 任何可連線至 Azure 儲存體的工具或程序都可以取用知識存放區的內容。
 
@@ -30,26 +30,26 @@ ms.locfileid: "78942988"
 
 ## <a name="benefits-of-knowledge-store"></a>知識存放區的優點
 
-知識存儲為您提供結構、上下文和實際內容 - 從非結構化和半結構化資料檔案（如 Blob、已進行分析的影像檔，甚至結構化資料）中收集，重新塑造為新表單。 在[分步演練](knowledge-store-create-rest.md)中，您可以親眼看到密集的 JSON 文檔如何被劃分為子結構，重新構建為新結構，並以其他方式提供給下游流程（如機器學習和資料科學工作負載）。
+知識存放區提供您結構、內容和實際的以往累積所有，從非結構化和半結構化資料檔案（例如 blob、經過分析的影像檔，甚至是結構化資料），再改變為新的表單。 在[逐步](knowledge-store-create-rest.md)解說中，您可以看到密集 JSON 檔如何分割成子結構、重組為新的結構，並以其他方式提供給下游進程，例如機器學習服務和資料科學工作負載。
 
-儘管瞭解 AI 擴充管道可以產生什麼非常有用，但知識存儲的真正潛力是重塑資料的能力。 您可以從基本的技能集開始，然後逐一查看以便逐漸新增結構層級，然後再結合到新的結構中，就可在 Azure 認知搜尋以外的其他應用程式中取用。
+雖然查看 AI 擴充管線可以產生的功能很有用，但知識存放區的實際潛能是能夠改變數據的能力。 您可以從基本的技能集開始，然後逐一查看以便逐漸新增結構層級，然後再結合到新的結構中，就可在 Azure 認知搜尋以外的其他應用程式中取用。
 
 列舉的知識存放區優點包括：
 
-+ 使用搜尋以外的[分析和報告工具](#tools-and-apps)取用擴充文件。 使用 Power 查詢 Power BI 是一個引人注目的選擇，但任何可以連接到 Azure 存儲的工具或應用都可以從您創建的知識存儲中提取。
++ 使用搜尋以外的[分析和報告工具](#tools-and-apps)取用擴充文件。 Power Query 的 Power BI 是一種很好的選擇，但是可以連接到 Azure 儲存體的任何工具或應用程式都可以從您建立的知識存放區提取。
 
-+ 為步驟和技能集定義偵錯的同時，精簡 AI 索引管線。 知識存放區會在 AI 索引管線中為您顯示技能集定義的產品。 您可以使用這些結果來設計更好的技能集，因為您可以看到擴充實際的樣子。 您可以使用 Azure[存儲中的存儲資源管理器](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)來查看知識存儲的內容。
++ 為步驟和技能集定義偵錯的同時，精簡 AI 索引管線。 知識存放區會在 AI 索引管線中為您顯示技能集定義的產品。 您可以使用這些結果來設計更好的技能集，因為您可以看到擴充實際的樣子。 您可以使用 Azure 儲存體中的[儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)來查看知識存放區的內容。
 
 + 將資料塑造成新的形式。 重整是在技能集中編寫的，但重點是技能集現在可以提供這項功能。 Azure 認知搜尋中的[塑形器技能](cognitive-search-skill-shaper.md)已經擴充，可因應這項工作。 重整可讓您定義與資料預定用途相符的投影，同時保留關聯性。
 
 > [!Note]
-> AI 豐富和認知技能的新增功能？ Azure 認知搜尋可與認知服務視覺和語言功能整合，以使用光學字元辨識 (OCR)，透過影像檔、實體辨識以及文字檔中的關鍵片語擷取等等，來擷取並擴充來源資料。 如需詳細資訊，請參閱 [Azure 認知搜尋中的 AI 擴充](cognitive-search-concept-intro.md)。
+> AI 擴充和認知技能的新手嗎？ Azure 認知搜尋可與認知服務視覺和語言功能整合，以使用光學字元辨識 (OCR)，透過影像檔、實體辨識以及文字檔中的關鍵片語擷取等等，來擷取並擴充來源資料。 如需詳細資訊，請參閱 [Azure 認知搜尋中的 AI 擴充](cognitive-search-concept-intro.md)。
 
-## <a name="physical-storage"></a>物理存儲
+## <a name="physical-storage"></a>實體儲存體
 
-知識存儲的物理運算式通過技能集中`projections``knowledgeStore`定義的元素進行闡明。 投影定義輸出的結構，使其與預期用途相匹配。
+知識存放區的實體運算式是透過技能集中`projections` `knowledgeStore`定義的元素來表達。 投射會定義輸出的結構，使其符合您的預期用途。
 
-投影可以表述為表、物件或檔。
+投影可以表達成資料表、物件或檔案。
 
 ```json
 "knowledgeStore": { 
@@ -67,65 +67,65 @@ ms.locfileid: "78942988"
         }
 ```
 
-在此結構中指定的投影類型決定了知識存儲使用的存儲類型。
+您在此結構中指定的投射類型會決定知識存放區所使用的儲存類型。
 
-+ 在定義`tables`時使用表存儲。 當您需要用於分析工具輸入的表格式報告結構或作為資料幀匯出到其他資料存儲時，定義表投影。 您可以指定多個以`tables`獲取富集文檔的子集或橫截面。 在同一投影組中，將保留表關係，以便可以使用所有這些關係。
++ 當您定義`tables`時，會使用資料表儲存體。 當您需要對分析工具輸入的表格式報表結構，或將資料框架匯出至其他資料存放區時，請定義資料表投射。 您可以指定多`tables`個來取得豐富檔的子集或跨區段。 在相同的投射群組中，會保留資料表關聯性，讓您可以使用它們。
 
-+ 在定義`objects`或`files`時使用 Blob 存儲。 的物理表示`object`形式是表示富集文檔的分層 JSON 結構。 A`file`是從文檔中提取的圖像，完整地傳輸到 Blob 存儲。
++ 當您定義`objects`或`files`時，會使用 Blob 儲存體。 的實體表示`object`是一種階層式 JSON 結構，代表擴充的檔。 `file`是從檔解壓縮的影像，並完整傳輸至 Blob 儲存體。
 
-單個投影物件包含一組`tables`，`objects``files`對於許多方案，創建一個投影可能就足夠了。 
+單一投射物件在許多情況下都`tables`包含`objects`一`files`組、、和，而建立一個投影可能就已足夠。 
 
-`table` - `object` - `file`但是，可以創建多組投影，如果需要不同的資料關係，則可以這樣做。 在集內，如果存在這些關係並可以檢測到這些關係，資料是相關的。 如果創建其他集，則每個組中的文檔永遠不會相關。 使用多個投影組的一個示例可能是，如果您希望將相同的資料投影用於連線系統，並且需要以特定方式表示，則還需要相同的投影資料，以便用於表示的資料科學管道不同。
+不過，您可以建立多組`table` - `object` - `file`預測，如果您想要不同的資料關聯性，也可以這麼做。 在集合中，資料是相關的，假設這些關聯性存在而且可以偵測。 如果您建立其他集合，則每個群組中的檔絕對不會相關。 使用多個投射群組的範例可能是，如果您想要將相同的資料投射到與您的線上系統搭配使用，而且需要以特定方式表示，您也會想要在以不同方式表示的資料科學管線中，使用相同的資料來進行預測。
 
 ## <a name="requirements"></a>需求 
 
-[Azure 存儲](https://docs.microsoft.com/azure/storage/)是必需的。 它提供物理存儲。 您可以使用 Blob 存儲、表存儲或兩者。 Blob 存儲用於完整豐富的文檔，通常在輸出進入下游進程時。 表存儲用於富集文檔切片，通常用於分析和報告。
+需要[Azure 儲存體](https://docs.microsoft.com/azure/storage/)。 它提供實體存放裝置。 您可以使用 Blob 儲存體、資料表儲存體或兩者。 Blob 儲存體用於完整擴充的檔，通常是在輸出到下游進程時。 資料表儲存體適用于擴充檔的配量，通常用於分析和報告。
 
-[技能集](cognitive-search-working-with-skillsets.md)是必需的。 它包含定義`knowledgeStore`，並確定豐富文檔的結構和組成。 不能使用空技能集創建知識存儲。 技能集中必須至少有一項技能。
+[技能集](cognitive-search-working-with-skillsets.md)是必要的。 其中包含`knowledgeStore`定義，而且它會決定擴充檔的結構和組合。 您無法使用空的技能集來建立知識存放區。 您在技能集中至少必須有一項技能。
 
-索引[器](search-indexer-overview.md)是必需的。 技能集由索引子調用，從而驅動執行。 索引子附帶自己的一組要求和屬性。 其中幾個屬性與知識存儲有直接關係：
+[索引子](search-indexer-overview.md)是必要的。 技能集是由索引子叫用，它會驅動執行。 索引子會隨附自己的一組需求和屬性。 其中幾個屬性對知識存放區具有直接的關係：
 
-+ 索引子需要[受支援的 Azure 資料來源](search-indexer-overview.md#supported-data-sources)（最終創建知識存儲的管道首先從 Azure 上受支援的源提取資料）。 
++ 索引子需要[支援的 azure 資料來源](search-indexer-overview.md#supported-data-sources)（最後建立知識存放區的管線會從 Azure 上支援的來源提取資料開始）。 
 
-+ 索引子需要搜索索引。 索引子要求您提供索引架構，即使您從未計畫使用它。 最小索引具有一個字串欄位，指定為鍵。
++ 索引子需要搜尋索引。 索引子會要求您提供索引架構，即使您不打算使用它也一樣。 最小索引有一個字串欄位，指定為金鑰。
 
-+ 索引子提供可選的欄位映射，用於將源欄位別名到目標欄位。 如果預設欄位映射需要修改（以使用其他名稱或類型），則可以在索引子中創建[欄位映射](search-indexer-field-mappings.md)。 對於知識存儲輸出，目標可以是 blob 物件或表中的欄位。
++ 索引子會提供選擇性的欄位對應，用來將來源欄位別名為目的地欄位。 如果預設欄位對應需要修改（使用不同的名稱或類型），您可以在索引子內建立[欄位對應](search-indexer-field-mappings.md)。 對於知識存放區輸出，目的地可以是 blob 物件或資料表中的欄位。
 
-+ 索引子具有計劃，其他屬性（如由各種資料來源提供的更改檢測機制）也可以應用於知識存儲。 例如，您可以定期[計畫](search-howto-schedule-indexers.md)充實以刷新內容。 
++ 索引子具有排程和其他屬性，例如各種資料來源所提供的變更偵測機制，也可以套用至知識存放區。 例如，您可以定期[排程](search-howto-schedule-indexers.md)擴充以重新整理內容。 
 
-## <a name="how-to-create-a-knowledge-store"></a>如何創建知識存儲
+## <a name="how-to-create-a-knowledge-store"></a>如何建立知識存放區
 
-要創建知識存儲，請使用門戶或預覽 REST API`api-version=2019-05-06-Preview`（ 。
+若要建立知識存放區，請使用入口網站或預覽`api-version=2019-05-06-Preview`REST API （）。
 
 ### <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
-**"導入資料**"嚮導包括用於創建知識存儲的選項。 對於初始探索，[請分四個步驟創建第一個知識存儲](knowledge-store-connect-power-bi.md)。
+[匯**入資料**] wizard 包含用來建立知識存放區的選項。 針對初始探索，請[以四個步驟建立您的第一個知識存放區](knowledge-store-connect-power-bi.md)。
 
-1. 選擇受支援的資料來源。
+1. 選取支援的資料來源。
 
-1. 指定擴充：附加資源、選擇技能並指定知識存儲。 
+1. 指定擴充：附加資源、選取技能，然後指定知識存放區。 
 
-1. 創建索引架構。 嚮導需要它，可以為您推斷出一個。
+1. 建立索引架構。 嚮導會要求它，而且可以為您推斷一個。
 
-1. 運行嚮導。 提取、濃縮和存儲發生在最後一步中。
+1. 執行嚮導。 在最後一個步驟中，會進行解壓縮、擴充和儲存。
 
-### <a name="use-create-skillset-and-the-preview-rest-api"></a>使用創建技能集和預覽 REST API
+### <a name="use-create-skillset-and-the-preview-rest-api"></a>使用 Create 技能集和 preview REST API
 
-在`knowledgeStore`[技能集中](cognitive-search-working-with-skillsets.md)定義 a，而索引[器](search-indexer-overview.md)又調用它。 在充實期間，Azure 認知搜索會在 Azure 存儲帳戶中創建一個空間，並根據配置將富集文檔作為 blob 或專案專案到表中。
+`knowledgeStore`會在[技能集](cognitive-search-working-with-skillsets.md)內定義，而[索引子](search-indexer-overview.md)會接著叫用它。 在擴充期間，Azure 認知搜尋會在您的 Azure 儲存體帳戶中建立空間，並根據您的設定，將擴充的檔投射為 blob 或資料表。
 
-目前，預覽 REST API 是您可以以程式設計方式創建知識存儲的唯一機制。 一個簡單的探索方法是[創建你的第一個知識存儲使用郵遞員和REST API。](knowledge-store-create-rest.md)
+目前，預覽 REST API 是用來以程式設計方式建立知識存放區的唯一機制。 探索簡單的方式是[使用 Postman 和 REST API 建立您的第一個知識存放區](knowledge-store-create-rest.md)。
 
-此預覽功能的參考內容位於本文的[API 參考](#kstore-rest-api)部分。 
+此預覽功能的參考內容位於本文的[API 參考](#kstore-rest-api)一節中。 
 
 <a name="tools-and-apps"></a>
 
-## <a name="how-to-connect-with-tools-and-apps"></a>如何與工具和應用程式連接
+## <a name="how-to-connect-with-tools-and-apps"></a>如何使用工具和應用程式進行連接
 
 一旦擴充存在於儲存體之後，連線到 Azure Blob 或資料表儲存體的任何工具或技術都可以用來探索、分析或取用內容。 下列清單是一個起點：
 
 + [儲存體總管](knowledge-store-view-storage-explorer.md)，可檢視擴充的文件結構及內容。 您可以將此視為基準工具來檢視知識存放區內容。
 
-+ [用於報告和分析的 POWER BI。](knowledge-store-connect-power-bi.md) 
++ 用於報告和分析的[Power BI](knowledge-store-connect-power-bi.md) 。 
 
 + [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/)，用於進一步操作。
 
@@ -133,27 +133,27 @@ ms.locfileid: "78942988"
 
 ## <a name="api-reference"></a>應用程式開發介面參考
 
-REST API`2019-05-06-Preview`版本通過技能集的其他定義提供知識存儲。 除了參考之外，請參閱使用[Postman 創建知識存儲](knowledge-store-create-rest.md)，瞭解有關如何調用 API 的詳細資訊。
+REST API 版本`2019-05-06-Preview`會透過技能集上的其他定義來提供知識存放區。 除了參考以外，請參閱[使用 Postman 建立知識存放區](knowledge-store-create-rest.md)，以取得如何呼叫 api 的詳細資料。
 
 + [建立技能集 (api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/create-skillset) 
-+ [更新技能集（api 版本=2019-05-06-預覽版）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
++ [Update 技能集（api 版本 = 2019-05 06-01.5.1-Preview）](https://docs.microsoft.com/rest/api/searchservice/2019-05-06-preview/update-skillset) 
 
 
 ## <a name="next-steps"></a>後續步驟
 
 知識存放區可提供擴充文件的持續性，在設計技能集時，或是在建立新結構和內容供任何能夠存取 Azure 儲存體帳戶的用戶端應用程式使用時，將可發揮作用。
 
-創建富集文檔的最簡單方法是[通過門戶](knowledge-store-create-portal.md)，但您也可以使用 Postman 和 REST API，如果您希望深入瞭解如何創建和引用物件，則這種方法更有用。
+建立擴充檔的最簡單方法是[透過入口網站](knowledge-store-create-portal.md)，但您也可以使用 Postman 和 REST API，如果您想要深入瞭解如何建立和參考物件，這會更有用。
 
 > [!div class="nextstepaction"]
-> [使用郵遞員和 REST 創建知識存儲](knowledge-store-create-rest.md)
+> [使用 Postman 和 REST 建立知識存放區](knowledge-store-create-rest.md)
 
-要瞭解有關預測、功能以及如何[在技能集中定義它們](knowledge-store-projection-overview.md)
-
-> [!div class="nextstepaction"]
-> [知識商店中的投影](knowledge-store-projection-overview.md)
-
-有關高級投影概念（如切片、內聯整形和關係）的教程，請從[知識存儲中定義投影](knowledge-store-projections-examples.md)開始
+若要深入瞭解預測，以及如何[在技能集中定義這些](knowledge-store-projection-overview.md)功能
 
 > [!div class="nextstepaction"]
-> [定義知識存儲中的投影](knowledge-store-projections-examples.md)
+> [知識存放區中的投影](knowledge-store-projection-overview.md)
+
+如需涵蓋切割、內嵌成形和關聯性等先進預測概念的教學課程，請從[在知識存放區中定義投影](knowledge-store-projections-examples.md)開始
+
+> [!div class="nextstepaction"]
+> [定義知識存放區中的投影](knowledge-store-projections-examples.md)

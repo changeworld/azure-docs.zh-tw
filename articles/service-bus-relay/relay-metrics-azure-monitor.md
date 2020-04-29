@@ -1,6 +1,6 @@
 ---
-title: Azure 監視器中的 Azure 中繼指標 |微軟文檔
-description: 本文提供有關如何使用 Azure 監視器監視到 Azure 中繼狀態的資訊。
+title: Azure 轉送 Azure 監視器中的計量 |Microsoft Docs
+description: 本文提供有關如何使用 Azure 監視器來監視 Azure 轉送狀態的資訊。
 services: service-bus-relay
 documentationcenter: .NET
 author: spelluru
@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 159249e2c997e4c414127992b08a83b488281e46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78273124"
 ---
-# <a name="azure-relay-metrics-in-azure-monitor"></a>Azure 監視器中的 Azure 中繼指標 
+# <a name="azure-relay-metrics-in-azure-monitor"></a>Azure 轉送 Azure 監視器中的計量 
 Azure 轉送計量會提供您 Azure 訂用帳戶中的資源狀態。 您可以使用豐富的計量資料集，評估轉送資源的整體健康狀態，不只在命名空間層級，還有實體層級。 這些統計資料相當重要，因為它們可協助您監視 Azure 轉送的狀態。 計量也可協助針對問題的根本原因進行疑難排解，而不需要連絡 Azure 支援。
 
 「Azure 監視器」提供統一的使用者介面，可供您監視各個不同的 Azure 服務。 如需詳細資訊，請參閱 [Microsoft Azure 中的監視](../monitoring-and-diagnostics/monitoring-overview.md)和 GitHub 上的 [Retrieve Azure Monitor metrics with .NET](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) (使用 .NET 擷取 Azure 監視計量) 範例。
@@ -47,7 +47,7 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 
 ## <a name="billing"></a>計費
 
-在預覽版「Azure 監視器」中使用計量目前是免費的。 不過，如果您使用內嵌計量資料的額外解決方案，可能就需支付這些解決方案的使用費。 例如，如果您將計量資料封存到 Azure 儲存體帳戶，就要支付 Azure 儲存體的使用費。 如果將指標資料流程式傳輸到 Azure 監視器日誌以進行高級分析，則 Azure 監視器日誌也會向您收費。
+在預覽版「Azure 監視器」中使用計量目前是免費的。 不過，如果您使用內嵌計量資料的額外解決方案，可能就需支付這些解決方案的使用費。 例如，如果您將計量資料封存到 Azure 儲存體帳戶，就要支付 Azure 儲存體的使用費。 如果您將計量資料串流至 Azure 監視器記錄以進行先進的分析，則也會以 Azure 監視器記錄來計費。
 
 下列計量會提供您服務健康狀態的概觀。 
 
@@ -68,8 +68,8 @@ Azure 監視器提供了多種方法供您存取計量。 您可以透過 [Azure
 |SenderConnections-ServerError |指定時段內，寄件者連線發生的伺服器錯誤數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |ListenerConnections-TotalRequests |指定時段內，接聽程式連線的總數目。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |SenderConnections-TotalRequests |指定時段內，寄件者發出的連線要求。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|ActiveConnections |活動連接數。 此值是時間點值。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
-|ActiveListeners |活動攔截器的數量。 此值是時間點值。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|ActiveConnections |使用中的連接數目。 這個值是時間點值。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
+|ActiveListeners |使用中的接聽程式數目。 這個值是時間點值。<br/><br/> 單位：計數 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |ListenerDisconnects |指定時段內，中斷連線的接聽程式數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 |SenderDisconnects |指定時段內，中斷連線的寄件者數目。<br/><br/> 單位：位元組 <br/> 彙總類型：總計 <br/> 維度：EntityName|
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 網站恢復將 Linux VM 遷移到 Azure 高級存儲
+title: 使用 Azure Site Recovery 將您的 Linux Vm 遷移至 Azure 進階儲存體
 description: 使用 Site Recovery 將您現有的虛擬機器移轉到 Azure 進階儲存體。 「進階儲存體」可針對在「Azure 虛擬機器」上執行且需要大量 I/O 的工作負載，提供高效能、低延遲的磁碟支援。
 author: luywang
 ms.service: virtual-machines-linux
@@ -8,10 +8,10 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: 0d03c2df720a4e3ccf57fe0be00c2af4fcf72eb0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78944837"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 移轉到進階儲存體
@@ -42,7 +42,7 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 
   它還會處理對來源 VM 進行的行動服務推送安裝作業，並執行來源 VM 的自動探索。 組態伺服器上會安裝預設的處理序伺服器。 您可以部署額外的獨立處理序伺服器來調整您的部署。 請參閱[處理序伺服器部署的最佳作法](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/)和[部署額外的處理序伺服器](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers)。 您只需設定處理序伺服器一次，即可用於所有移轉到相同區域的作業。
 
-* **行動服務**是部署在每個您想要複寫之標準 VM 上的元件。 它會擷取在標準 VM 上寫入的資料，並將它們轉送到處理序伺服器。 閱讀有關[複製的電腦先決條件](../../site-recovery/vmware-walkthrough-overview.md)。
+* **行動服務**是部署在每個您想要複寫之標準 VM 上的元件。 它會擷取在標準 VM 上寫入的資料，並將它們轉送到處理序伺服器。 閱讀複寫的[機器必要條件](../../site-recovery/vmware-walkthrough-overview.md)。
 
 此圖顯示這些元件如何互動：
 
@@ -62,7 +62,7 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 * 在容錯移轉時建立 VM 時，VM 將連接的 Azure 虛擬網路。 Azure 虛擬網路所在的區域必須與 Site Recovery 執行的區域相同。
 * 用來儲存複寫記錄的 Azure 標準儲存體帳戶。 這可以是和所要移轉之 VM 磁碟相同的儲存體帳戶。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 了解上一節的相關移轉案例元件。
 * 了解 [Site Recovery 中的容錯移轉](../../site-recovery/site-recovery-failover.md)中的容錯移轉，以規劃停機時間。
@@ -73,14 +73,14 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 
 ### <a name="step-1-create-a-recovery-services-vault"></a>步驟 1：建立復原服務保存庫
 
-1. 打開[Azure 門戶](https://portal.azure.com)。
-2. 選擇 **"創建資源** > **管理** > **備份**和**網站恢復 （OMS）"。** 或者，您可以選擇**流覽** > **恢復服務保存庫** > **添加**。 
+1. 開啟 [Azure 入口網站](https://portal.azure.com)。
+2. 選取 [**建立資源** > **管理** > **備份**] 和 **[Site Recovery （OMS）**]。 或者，您可以選取 **[流覽] [** > **服務保存庫** > ] [**新增**]。 
 3. 指定 VM 將複寫到的地區。 若要在相同區域中移轉，請選取來源 VM 和來源儲存體帳戶所在的區域。 
 
 ### <a name="step-2-choose-your-protection-goals"></a>步驟 2︰選擇您的保護目標 
 
 1. 在您要安裝組態伺服器的 VM 上，開啟 [Azure 入口網站](https://portal.azure.com)。
-2. 轉到**恢復服務保存庫** > **設置** > **網站恢復** > **步驟 1：準備基礎結構** > **保護目標**。
+2. 移至 [復原**服務保存庫** > ] [**設定** > **] Site Recovery** > **步驟1：準備基礎結構** > **保護目標**。
 
    ![瀏覽至 [保護目標] 窗格][2]
 
@@ -123,7 +123,7 @@ Site Recovery 支援數種類型的容錯移轉，且停機時間最短或甚至
 
 ### <a name="step-4-set-up-the-target-environment"></a>步驟 4︰設定目標環境
 
-選擇 **"準備基礎結構** > **目標**"，並指定容錯移轉後要用於 VM 的部署模型。 視您的案例而定，您可以選擇 [傳統]**** 或 [Resource Manager]****。
+選取 [**準備基礎結構** > ] [**目標**]，並指定您想要在容錯移轉後用於 vm 的部署模型。 視您的案例而定，您可以選擇 [傳統]**** 或 [Resource Manager]****。
 
 ![[目標] 窗格][10]
 
@@ -152,20 +152,20 @@ Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶�
    容錯移轉的 VM 會有兩個暫存磁碟︰一個來自主要 VM，另一個則是在 VM 於復原區域中佈建期間所建立。 若要在複寫前排除暫存磁碟，請先安裝行動服務再啟用複寫。 若要深入了解如何排除暫存磁碟，請參閱[從複寫排除磁碟](../../site-recovery/vmware-walkthrough-overview.md)。
 
 2. 啟用複寫，如下所示︰
-   1. 選擇**複製應用程式** > **源**。 第一次啟用複寫之後，請選取保存庫中的 [+複寫]****，以對其他機器啟用複寫。
-   2. 在步驟 1 中，將**Source**設置為進程伺服器。
+   1. 選取 [複寫**應用程式** > **來源**]。 第一次啟用複寫之後，請選取保存庫中的 [+複寫]****，以對其他機器啟用複寫。
+   2. 在步驟1中，將 [**來源**] 設定為您的進程伺服器。
    3. 在步驟 2 中，指定容錯移轉後部署模型、要移轉到的進階儲存體帳戶、要用來儲存記錄的標準儲存體帳戶，以及要容錯移轉到的虛擬網路。
    4. 在步驟 3 中，依 IP 位址新增受保護的 VM。 (您可能需要內部 IP 位址才能找到這些 VM。)
    5. 在步驟 4 中，選取您先前在處理序伺服器上設定的帳戶來設定屬性。
    6. 在步驟 5 中，選擇您先前在「步驟 5：設定複寫設定」中建立的複寫原則。
-   7. 選取 [確定]****。
+   7. 選取 [確定]  。
 
    > [!NOTE]
    > Azure VM 在取消配置後再重新啟動時，不一定會取得相同的 IP 位址。 如果組態伺服器/處理序伺服器或受保護 Azure VM 的 IP 位址變更，此案例中的複寫作業可能不會正確運作。
 
    ![啟用已選取來源的複寫窗格][13]
 
-在設計 Azure 儲存體環境時，建議您為可用性設定組中的每個 VM 使用不同的儲存體帳戶。 我們建議您遵循存儲層中的最佳做法，[為每個可用性集使用多個存儲帳戶](../linux/manage-availability.md)。 將 VM 磁碟分散到多個儲存體帳戶有助於增進儲存體可用性，並將 I/O 分散到整 Azure 儲存體基礎結構。
+在設計 Azure 儲存體環境時，建議您為可用性設定組中的每個 VM 使用不同的儲存體帳戶。 我們建議您遵循儲存體層中的最佳做法，[針對每個可用性設定組使用多個儲存體帳戶](../linux/manage-availability.md)。 將 VM 磁碟分散到多個儲存體帳戶有助於增進儲存體可用性，並將 I/O 分散到整 Azure 儲存體基礎結構。
 
 如果您的 VM 位於可用性設定組，而非將所有 VM 的磁碟複寫到單一儲存體帳戶，強烈建議您將多個 VM 分數次移轉。 如此一來，相同可用性設定組中的 VM 便不會共用單一儲存體帳戶。 使用 [啟用複寫]**** 窗格，設定每個 VM 的目的地儲存體帳戶，一次一個。
  
@@ -173,14 +173,14 @@ Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶�
 
 ### <a name="step-8-run-a-test-failover"></a>步驟 8：執行測試容錯移轉
 
-要檢查複製是否完成，請選擇"網站恢復"實例，然後選擇 **"設置** > **複製專案**"。 您將會看到複寫程序的狀態和百分比。 
+若要檢查您的複寫是否已完成，請選取您的 Site Recovery 實例，然後選取 [**設定** > ] [複寫的**專案**]。 您將會看到複寫程序的狀態和百分比。 
 
 在初始複寫完成之後，請執行測試容錯移轉來驗證複寫策略。 如需測試容錯移轉的詳細步驟，請參閱[在 Site Recovery 中執行測試容錯移轉](../../site-recovery/vmware-walkthrough-overview.md)。 
 
 > [!NOTE]
 > 執行任何容錯移轉前，請確定 VM 和複寫策略符合需求。 如需執行測試容錯移轉的詳細資訊，請參閱[在 Site Recovery 中測試容錯移轉到 Azure](../../site-recovery/site-recovery-test-failover-to-azure.md)。
 
-您可以在 **"設置** > **作業** > *YOUR_FAILOVER_PLAN_NAME"* 中查看測試容錯移轉的狀態。 在窗格中，您會看到分解步驟和成功/失敗的結果。 如果測試容錯移轉在任一步驟失敗，請選取該步驟來檢查錯誤訊息。 
+您可以在 [**設定** > ] [**工作** > ] [*YOUR_FAILOVER_PLAN_NAME*] 中查看測試容錯移轉的狀態。 在窗格中，您會看到分解步驟和成功/失敗的結果。 如果測試容錯移轉在任一步驟失敗，請選取該步驟來檢查錯誤訊息。 
 
 ### <a name="step-9-run-a-failover"></a>步驟 9：執行容錯移轉
 
@@ -215,7 +215,7 @@ Site Recovery 會建立類型與可支援進階儲存體之 VM 相同或類似�
 
 若要深入了解 Azure 儲存體和 Azure 虛擬機器，也請參閱下列資源：
 
-* [Azure 存儲](https://azure.microsoft.com/documentation/services/storage/)
+* [Azure 儲存體](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure 虛擬機器](https://azure.microsoft.com/documentation/services/virtual-machines/)
 * [選取適用於 IaaS VM 的磁碟類型](disks-types.md)
 

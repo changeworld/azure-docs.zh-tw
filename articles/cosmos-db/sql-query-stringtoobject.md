@@ -1,6 +1,6 @@
 ---
-title: Azure 宇宙 DB 查詢語言中的 StringToObject
-description: 瞭解 Azure 宇宙 DB 中的 SQL 系統函數 StringtoObject。
+title: Azure Cosmos DB 查詢語言中的 StringToObject
+description: 深入瞭解 Azure Cosmos DB 中的 SQL 系統函數 StringToObject。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: c3e61d1efe20910d84ef4ff583d74982b3ea9f3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78296376"
 ---
-# <a name="stringtoobject-azure-cosmos-db"></a>字串物件（Azure 宇宙資料庫）
- 返回轉換為物件的運算式。 如果無法轉換運算式，則返回未定義。  
+# <a name="stringtoobject-azure-cosmos-db"></a>StringToObject （Azure Cosmos DB）
+ 傳回轉譯成物件的運算式。 如果無法轉譯運算式，則會傳回 undefined。  
   
 ## <a name="syntax"></a>語法
   
@@ -26,17 +26,17 @@ StringToObject(<str_expr>)
 ## <a name="arguments"></a>引數
   
 *str_expr*  
-   是要作為 JSON 物件運算式解析的字串運算式。 請注意，嵌套字串值必須用雙引號寫入才能有效。 有關 JSON 格式的詳細資訊，請參閱[json.org](https://json.org/)  
+   這是要剖析為 JSON 物件運算式的字串運算式。 請注意，嵌套字串值必須以雙引號寫成有效的。 如需 JSON 格式的詳細資訊，請參閱[json.org](https://json.org/)  
   
 ## <a name="return-types"></a>傳回類型
   
-  返回物件運算式或未定義。  
+  傳回物件運算式或未定義。  
   
 ## <a name="examples"></a>範例
   
-  下面的示例顯示了不同類型`StringToObject`之間的表現。 
+  下列範例顯示不同類型`StringToObject`的行為。 
   
- 以下是具有有效輸入的示例。
+ 以下是具有有效輸入的範例。
 
 ```sql
 SELECT 
@@ -55,10 +55,10 @@ SELECT
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
 
- 以下是輸入不正確示例。
-即使它們在查詢中有效，它們也不會解析為有效物件。 物件字串中的字串\\必須轉義\\"\""："str""""""""""""""""""""""str"，\\\\或者周圍的引號必須為單個"\"a"："str"*。
+ 以下是具有無效輸入的範例。
+雖然它們在查詢中是有效的，但它們不會剖析成有效的物件。 物件字串\\內的字串必須是 "{" a\\"：\\" str\\"}"，或周圍的引號必須是單一 ' {"a"： "str"} '。
 
-圍繞屬性名稱的單個引號無效。JSON。
+括住屬性名稱的單引號不是有效的 JSON。
 
 ```sql
 SELECT 
@@ -71,7 +71,7 @@ SELECT
 [{}]
 ```  
 
-沒有周圍引號的屬性名稱無效。
+沒有周圍引號的屬性名稱不是有效的 JSON。
 
 ```sql
 SELECT 
@@ -84,9 +84,9 @@ SELECT
 [{}]
 ``` 
 
-以下是輸入不正確示例。
+以下是具有無效輸入的範例。
 
- 傳遞的運算式將作為 JSON 物件解析;因此，將解析為 JSON 物件。這些輸入不計算以鍵入物件，因此返回未定義。
+ 傳遞的運算式會剖析為 JSON 物件;這些輸入不會評估為 object 類型，因此會傳回 undefined。
 
 ```sql
 SELECT 
@@ -106,10 +106,10 @@ SELECT
 
 ## <a name="remarks"></a>備註
 
-此系統功能不會利用索引。
+這個系統函數不會使用索引。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [字串函數 Azure 宇宙 DB](sql-query-string-functions.md)
-- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 簡介](introduction.md)
+- [字串函數 Azure Cosmos DB](sql-query-string-functions.md)
+- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 簡介](introduction.md)

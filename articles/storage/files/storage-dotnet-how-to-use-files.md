@@ -9,82 +9,82 @@ ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 4d8be13a75e276d5be6ec71141a13f95601869f0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78301432"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 開發 Azure 檔案服務
 
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
-本教學課程將示範基本概念，說明如何利用 .NET 開發使用 [Azure 檔案服務](storage-files-introduction.md)來儲存檔案資料的應用程式。 本教程創建一個簡單的主控台應用程式，以便對 .NET 和 Azure 檔執行基本操作：
+本教學課程將示範基本概念，說明如何利用 .NET 開發使用 [Azure 檔案服務](storage-files-introduction.md)來儲存檔案資料的應用程式。 本教學課程會建立簡單的主控台應用程式，以使用 .NET 和 Azure 檔案儲存體執行基本動作：
 
-* 獲取檔的內容。
-* 設置檔共用的最大大小或*配額*。
-* 為使用在共用上定義的存儲訪問策略的檔創建共用訪問簽名 （SAS 金鑰）。
+* 取得檔案的內容。
+* 設定檔案共用的大小上限或*配額*。
+* 為使用共用上所定義之預存存取原則的檔案建立共用存取簽章（SAS 金鑰）。
 * 將檔案複製到相同儲存體帳戶中的另一個檔案。
 * 將檔案複製到相同儲存體帳戶中的 Blob。
-* 使用 Azure 存儲指標進行故障排除。
+* 使用 Azure 儲存體計量進行疑難排解。
 
-要瞭解有關 Azure 檔的更多內容，請參閱[什麼是 Azure 檔？](storage-files-introduction.md)
+若要深入瞭解 Azure 檔案儲存體，請參閱[什麼是 Azure 檔案儲存體？](storage-files-introduction.md)
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="understanding-the-net-apis"></a>了解 .NET API
 
-Azure 檔案服務會提供兩種廣泛的方法給用戶端應用程式：伺服器訊息區 (SMB) 和 REST。 在 .NET`System.IO`中`WindowsAzure.Storage`，和 API 抽象了這些方法。
+Azure 檔案服務會提供兩種廣泛的方法給用戶端應用程式：伺服器訊息區 (SMB) 和 REST。 在 .NET 中， `System.IO`和`WindowsAzure.Storage` api 會將這些方法抽象化。
 
 API | 使用時機 | 注意
 ----|-------------|------
-[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | 您的應用程式： <ul><li>需要使用 SMB 讀取/寫入檔</li><li>正在可透過連接埠 445 存取您 Azure 檔案服務帳戶的裝置上執行</li><li>不需要管理檔案共用的任何系統管理設定</li></ul> | 通過 SMB 使用 Azure 檔實現的檔 I/O 通常與任何網路檔共用或本地存放裝置的 I/O 相同。 有關 .NET 中許多功能（包括檔 I/O）的介紹，請參閱[主控台應用程式](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)教程。
-[微軟.Azure.存儲.檔](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | 您的應用程式： <ul><li>由於防火牆或 ISP 約束，無法在埠 445 上使用 SMB 訪問 Azure 檔</li><li>需要系統管理功能，例如設定檔案共用的配額，或建立共用存取簽章的能力</li></ul> | 本文演示了`Microsoft.Azure.Storage.File`使用 REST 而不是 SMB 的檔 I/O 以及檔共用的管理。
+[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | 您的應用程式： <ul><li>需要使用 SMB 來讀取/寫入檔案</li><li>正在可透過連接埠 445 存取您 Azure 檔案服務帳戶的裝置上執行</li><li>不需要管理檔案共用的任何系統管理設定</li></ul> | 透過 SMB Azure 檔案儲存體執行的檔案 i/o，通常與任何網路檔案共用或本機儲存裝置的 i/o 相同。 如需 .NET 中一些功能的簡介（包括檔案 i/o），請參閱[主控台應用程式](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)教學課程。
+[Microsoft. Azure 儲存檔案](/dotnet/api/overview/azure/storage?view=azure-dotnet#version-11x) | 您的應用程式： <ul><li>因為防火牆或 ISP 的條件約束，所以無法使用埠445上的 SMB 存取 Azure 檔案儲存體</li><li>需要系統管理功能，例如設定檔案共用的配額，或建立共用存取簽章的能力</li></ul> | 本文示範如何使用 REST （ `Microsoft.Azure.Storage.File`而非 SMB）和檔案共用的管理來進行檔案 i/o。
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>建立主控台應用程式並取得組件
 
 在 Visual Studio 中，建立新的 Windows 主控台應用程式。 下列步驟說明如何在 Visual Studio 2019 中建立主控台應用程式。 這些步驟類似其他 Visual Studio 版本中的步驟。
 
 1. 啟動 Visual Studio，然後選取 [建立新專案]****。
-1. 在**創建新專案中**，為 C# 選擇**主控台應用 （.NET 框架），** 然後選擇 **"下一步**"。
-1. 在 **"配置新專案"** 中，輸入應用的名稱，然後選擇"**創建**"。
+1. 在 [**建立新專案**] 中，選擇 c # 的 [**主控台應用程式（.NET Framework）** ]，然後選取 **[下一步]**。
+1. 在 [**設定您的新專案**] 中，輸入應用程式的名稱，然後選取 [**建立**]。
 
-您可以將本教程中的所有代碼示例添加到主控台應用程式`Main()``Program.cs`檔的方法。
+您可以將本教學課程中的所有程式碼範例`Main()`新增至主控台應用程式`Program.cs`檔案的方法。
 
-可以在任何類型的 .NET 應用程式中使用 Azure 存儲用戶端庫。 這些類型包括 Azure 雲服務或 Web 應用以及桌面和移動應用程式。 在本指南中，為求簡化，我們會使用主控台應用程式。
+您可以在任何類型的 .NET 應用程式中使用 Azure 儲存體用戶端程式庫。 這些類型包括 Azure 雲端服務或 web 應用程式，以及桌面和行動應用程式。 在本指南中，為求簡化，我們會使用主控台應用程式。
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>使用 NuGet 來安裝必要的封裝
 
-請參閱專案中的這些包以完成本教程：
+請參閱您專案中的這些套件，以完成本教學課程：
 
-* [微軟 Azure 存儲通用庫 .NET](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+* [適用于 .NET 的 Microsoft Azure 儲存體通用程式庫](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
   
-  此包提供對存儲帳戶中公共資源的程式設計訪問。
-* [用於 .NET 的 Microsoft Azure 存儲 Blob 庫](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+  此套件可讓您以程式設計方式存取儲存體帳戶中的一般資源。
+* [適用于 .NET 的 Microsoft Azure 儲存體 Blob 程式庫](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 
-  此包提供對存儲帳戶中的 blob 資源的程式設計訪問。
-* [.NET 的 Microsoft Azure 存儲檔庫](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)
+  此套件可讓您以程式設計方式存取儲存體帳戶中的 blob 資源。
+* [適用于 .NET 的 Microsoft Azure 儲存體檔案程式庫](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)
 
-  此包提供對存儲帳戶中檔資源的程式設計訪問。
-* [.NET 的 Microsoft Azure 組態管理員庫](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
+  此套件可讓您以程式設計方式存取儲存體帳戶中的檔案資源。
+* [適用于 .NET 的 Microsoft Azure Configuration Manager 程式庫](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
 
-  此包提供了一個類，用於在應用程式運行的任何位置分析設定檔中的連接字串。
+  此套件提供一個類別，用於剖析設定檔中的連接字串，無論您的應用程式在何處執行。
 
 您可以使用 NuGet 來取得這兩個封裝。 請遵循下列步驟：
 
-1. 在**解決方案資源管理器**中，按右鍵您的專案並選擇 **"管理 NuGet 包**"。
-1. 在**NuGet 包管理器中**，選擇 **"流覽**"。 然後搜索並選擇**Microsoft.Azure.存儲.Blob，** 然後選擇 **"安裝**"。
+1. 在**方案總管**中，以滑鼠右鍵按一下您的專案，然後選擇 [**管理 NuGet 封裝**]。
+1. 在**NuGet 套件管理員**中，選取 **[流覽]**。 然後，搜尋並選擇 [ **Microsoft. Azure**]，然後選取 [**安裝**]。
 
-   此步驟安裝包及其依賴項。
+   此步驟會安裝封裝及其相依性。
 1. 搜尋並安裝這些封裝：
 
-   * **微軟.Azure.存儲.公共**
-   * **微軟.Azure.存儲.檔**
-   * **微軟.Azure.組態管理員**
+   * **Microsoft. Azure 儲存體。通用**
+   * **Microsoft. Azure 儲存檔案**
+   * **ConfigurationManager**
 
-## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>將存儲帳戶憑據保存到 App.config 檔
+## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>將您的儲存體帳號憑證儲存到 App.config 檔案
 
-接下來，將憑據保存在專案的`App.config`檔中。 在**解決方案資源管理器**中，按兩下`App.config`並編輯檔，使其類似于以下示例。 替換為`myaccount`存儲帳戶名稱和`mykey`存儲帳戶金鑰。
+接下來，將您的認證儲存在`App.config`專案的檔案中。 在**方案總管**中，按兩下`App.config`並編輯檔案，使其與下列範例類似。 請`myaccount`以您的儲存體帳戶名稱`mykey`取代，並以您的儲存體帳戶金鑰取代。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -103,7 +103,7 @@ API | 使用時機 | 注意
 
 ## <a name="add-using-directives"></a>新增 using 指示詞
 
-在**解決方案資源管理器**中`Program.cs`，打開該檔，並將以下使用指令添加到檔頂部。
+在**方案總管**中，開啟`Program.cs`檔案，然後將下列 using 指示詞新增至檔案頂端。
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -116,7 +116,7 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 ## <a name="access-the-file-share-programmatically"></a>以程式設計方式存取檔案共用
 
-接下來，在上述代碼之後，`Main()`將以下內容添加到方法中，以檢索連接字串。 此代碼獲取對之前創建的檔的引用，並輸出其內容。
+接下來，將下列內容新增至`Main()`方法（在上方顯示的程式碼之後），以取得連接字串。 這段程式碼會取得我們稍早建立之檔案的參考，並輸出其內容。
 
 ```csharp
 // Create a CloudFileClient object for credentialed access to Azure Files.
@@ -154,9 +154,9 @@ if (share.Exists())
 
 ## <a name="set-the-maximum-size-for-a-file-share"></a>設定檔案共用的大小上限
 
-從 Azure 存儲用戶端庫的版本 5.x 開始，可以設置檔共用的配額（最大大小）。 您也可以檢查有多少資料目前儲存在共用上。
+從 Azure 儲存體用戶端程式庫的5.x 版開始，您可以設定檔案共用的配額（大小上限）。 您也可以檢查有多少資料目前儲存在共用上。
 
-設置共用的配額會限制存儲在共用上的檔的總大小。 如果共用上的檔總大小超過共用上設置的配額，則用戶端無法增加現有檔的大小。 用戶端無法創建新檔，除非這些檔為空。
+設定共用的配額會限制儲存在共用上的檔案大小總計。 如果共用上的檔案大小總計超過共用上設定的配額，則用戶端無法增加現有檔案的大小。 除非這些檔案是空的，否則用戶端無法建立新檔案。
 
 下列範例示範如何檢查共用的目前使用狀況，以及如何設定共用的配額。
 
@@ -192,9 +192,9 @@ if (share.Exists())
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>產生檔案或檔案共用的共用存取簽章
 
-從 Azure 儲存體用戶端程式庫 5.x 版開始，您可以產生檔案共用或個別檔案的共用存取簽章 (SAS)。 您還可以在檔共用上創建存儲的訪問策略，以管理共用訪問簽名。 我們建議創建存儲的訪問策略，因為它允許您在 SAS 受到攻擊時撤銷它。
+從 Azure 儲存體用戶端程式庫 5.x 版開始，您可以產生檔案共用或個別檔案的共用存取簽章 (SAS)。 您也可以在檔案共用上建立預存存取原則，以管理共用存取簽章。 我們建議您建立預存存取原則，因為它可讓您在 SAS 遭到入侵時撤銷它。
 
-下面的示例在共用上創建存儲的訪問策略。 該示例使用該策略為共用中的檔上的 SAS 提供約束。
+下列範例會在共用上建立預存存取原則。 此範例會使用該原則，為共用中的檔案提供 SAS 的條件約束。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -240,13 +240,13 @@ if (share.Exists())
 }
 ```
 
-有關創建和使用共用訪問簽名的詳細資訊，請參閱[共用訪問簽名的工作原理](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#how-a-shared-access-signature-works)。
+如需建立和使用共用存取簽章的詳細資訊，請參閱[共用存取簽章的運作方式](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#how-a-shared-access-signature-works)。
 
 ## <a name="copy-files"></a>複製檔案
 
-從 Azure 儲存體用戶端程式庫 5.x 版開始，您可以將檔案複製到另一個檔案、將檔案複製到 Blob 或將 Blob 複製到檔案。 在下一節中，我們將演示如何以程式設計方式執行這些複製操作。
+從 Azure 儲存體用戶端程式庫 5.x 版開始，您可以將檔案複製到另一個檔案、將檔案複製到 Blob 或將 Blob 複製到檔案。 在接下來的章節中，我們會示範如何以程式設計方式執行這些複製作業。
 
-您還可以使用 AzCopy 將一個檔案複製到另一個檔，或者將 Blob 複製到檔或相反的方式。 請參閱[開始使用 AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+您也可以使用 AzCopy 將一個檔案複製到另一個檔案，或將 blob 複製到檔案或另一種方式。 請參閱[開始使用 AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 > [!NOTE]
 > 如果要將 Blob 複製到檔案，或將檔案複製到 Blob，您必須使用共用存取簽章 (SAS) 來授權來源物件的存取全，即使是在相同的儲存體帳戶內進行複製也一樣。
@@ -254,7 +254,7 @@ if (share.Exists())
 
 ### <a name="copy-a-file-to-another-file"></a>將檔案複製到另一個檔案
 
-下列範例會將檔案複製到相同共用中的另一個檔案。 由於此複製操作在同一存儲帳戶中的檔之間複製，因此可以使用共用金鑰身份驗證執行複製。
+下列範例會將檔案複製到相同共用中的另一個檔案。 因為這項複製作業會在相同儲存體帳戶中的檔案之間複製，所以您可以使用共用金鑰驗證來進行複製。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -387,7 +387,7 @@ var items = rootDirectory.ListFilesAndDirectories();
 
 擷取檔案共用的快照集可讓您在未來將個別檔案或整個檔案共用復原。
 
-您可以從檔案共用快照集還原檔案，方法是查詢檔案共用的共用快照集。 然後，您可以檢索屬於特定共用快照的檔。 使用該版本直接讀取和比較或還原。
+您可以從檔案共用快照集還原檔案，方法是查詢檔案共用的共用快照集。 然後，您就可以抓取屬於特定共用快照集的檔案。 請使用該版本直接讀取和比較或進行還原。
 
 ```csharp
 CloudFileShare liveShare = fClient.GetShareReference(baseShareName);
@@ -420,22 +420,22 @@ fileInliveShare.StartCopyAsync(new Uri(sourceUri));
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
 ```
 
-## <a name="troubleshoot-azure-files-by-using-metrics"></a>使用指標對 Azure 檔進行故障排除<a name="troubleshooting-azure-files-using-metrics"></a>
+## <a name="troubleshoot-azure-files-by-using-metrics"></a>使用計量針對 Azure 檔案儲存體進行疑難排解<a name="troubleshooting-azure-files-using-metrics"></a>
 
 Azure 儲存體分析現在支援 Azure 檔案服務的計量。 利用度量資料，您可以追蹤要求及診斷問題。
 
-可以從[Azure 門戶](https://portal.azure.com)啟用 Azure 檔的指標。 還可以使用 REST API 或其一個類似項調用 REST API 或其類似項在存儲用戶端庫中調用 Set 檔服務屬性操作，以程式設計方式啟用指標。
+您可以從[Azure 入口網站](https://portal.azure.com)啟用 Azure 檔案儲存體的計量。 您也可以用程式設計方式啟用計量，方法是在儲存體用戶端程式庫中，使用 REST API 或其中一個類比呼叫 [設定檔案服務屬性] 作業。
 
 下列程式碼範例會示範如何使用適用於 .NET 的儲存體用戶端程式庫，啟用 Azure 檔案服務的計量。
 
-首先，將以下`using`指令以及上面添加`Program.cs`的指令添加到檔中：
+首先，將下列`using`指示詞新增至`Program.cs`您的檔案，以及您在上面新增的指示詞：
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-儘管 Azure Blob、Azure 表和 Azure 佇列`ServiceProperties`在`Microsoft.Azure.Storage.Shared.Protocol`命名空間中使用共用類型，但 Azure 檔使用其`FileServiceProperties`自己的類型，`Microsoft.Azure.Storage.File.Protocol`即命名空間中的類型。 但是，您必須從代碼中引用兩個命名空間才能編譯以下代碼。
+雖然 Azure Blob、Azure 資料表和 Azure `ServiceProperties`佇列會在`Microsoft.Azure.Storage.Shared.Protocol`命名空間中使用共用類型，Azure 檔案儲存體會使用其本身的類型`FileServiceProperties` ，也就`Microsoft.Azure.Storage.File.Protocol`是命名空間中的類型。 不過，您必須從程式碼參考這兩個命名空間，才能編譯下列程式碼。
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -478,11 +478,11 @@ Console.WriteLine(serviceProperties.MinuteMetrics.RetentionDays);
 Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ```
 
-如果遇到任何問題，可以參考[Windows 中的 Azure 檔疑難排解問題](storage-troubleshoot-windows-file-connection-problems.md)。
+如果您遇到任何問題，您可以參閱[疑難排解 Windows 中的 Azure 檔案儲存體問題](storage-troubleshoot-windows-file-connection-problems.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-有關 Azure 檔的詳細資訊，請參閱以下資源：
+如需 Azure 檔案儲存體的詳細資訊，請參閱下列資源：
 
 ### <a name="conceptual-articles-and-videos"></a>概念性文章和影片
 
@@ -494,14 +494,14 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 * [開始使用 AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [針對 Windows 中的 Azure 檔案服務問題進行疑難排解](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
-### <a name="reference"></a>參考資料
+### <a name="reference"></a>參考
 
 * [適用於 .NET 的 Azure 儲存體 API](/dotnet/api/overview/azure/storage)
 * [檔案服務 REST API](/rest/api/storageservices/File-Service-REST-API)
 
 ### <a name="blog-posts"></a>部落格文章
 
-* [Azure 檔存儲，現在通常可用](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [在 Azure 檔存儲中](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [介紹微軟 Azure 檔服務](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+* [Azure 檔案儲存體現已正式推出](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+* [內部 Azure 檔案儲存體](https://azure.microsoft.com/blog/inside-azure-file-storage/)
+* [Microsoft Azure Files 服務簡介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [保留與 Microsoft Azure 檔案的連線](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)

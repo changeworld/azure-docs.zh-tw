@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 創建 Linux 環境
+title: 使用 Azure CLI 建立 Linux 環境
 description: 使用 Azure CLI 從頭開始建立儲存體、Linux VM、虛擬網路和子網路、負載平衡器、NIC、公用 IP 以及網路安全性群組。
 author: cynthn
 ms.service: virtual-machines-linux
@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/14/2017
 ms.author: cynthn
 ms.openlocfilehash: 7ee4674f5e7c04709256459c3417a1379a65aedc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78969552"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>使用 Azure CLI 來建立完整的 Linux 虛擬機器
@@ -21,7 +21,7 @@ ms.locfileid: "78969552"
 在下列範例中，請以您自己的值取代範例參數名稱。 範例參數名稱包含 *myResourceGroup*、*myVnet* 和 *myVM*。
 
 ## <a name="create-resource-group"></a>建立資源群組
-Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 您必須在建立虛擬機器和支援虛擬網路支援之前，先建立資源群組。 使用 [az group create](/cli/azure/group) 建立資源群組。 下面的示例在*東部*位置創建名為*myResourceGroup*的資源組：
+Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 您必須在建立虛擬機器和支援虛擬網路支援之前，先建立資源群組。 使用 [az group create](/cli/azure/group) 建立資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -436,7 +436,7 @@ az network nic create \
 
 將多個 VM 放在一個可用性設定組中時，Azure 會自動將它們分散到容錯和更新網域。 如需詳細資訊，請參閱[管理 VM 的可用性](manage-availability.md)。
 
-請使用 [az vm availability-set create](/cli/azure/vm/availability-set) 來建立 VM 的可用性設定組。 下列範例會建立名為 myAvailabilitySet** 的可用性設定組：
+請使用 [az vm availability-set create](/cli/azure/vm/availability-set) 來建立 VM 的可用性設定組。 下列範例會建立名為 myAvailabilitySet  的可用性設定組：
 
 ```azurecli
 az vm availability-set create \
@@ -473,7 +473,7 @@ az vm availability-set create \
 
 指定要用於驗證的 SSH 金鑰。 如果您沒有 SSH 公開金鑰組，則可以[建立 SSH 公開金鑰組](mac-create-ssh-keys.md)，或使用 `--generate-ssh-keys` 參數來為您建立這些金鑰組。 如果您已經有金鑰組，此參數就會使用 `~/.ssh` 中的現有金鑰。
 
-請使用 [az vm create](/cli/azure/vm) 命令將我們的所有資源和資訊結合在一起來建立 VM。 下面的示例創建名為*myVM 的 VM*：
+請使用 [az vm create](/cli/azure/vm) 命令將我們的所有資源和資訊結合在一起來建立 VM。 下列範例會建立名為*myVM*的 VM：
 
 ```azurecli
 az vm create \
@@ -550,7 +550,7 @@ sudo apt-get install -y nginx
 ![您 VM 上的預設 NGINX 站台](media/create-cli-complete/nginx.png)
 
 ## <a name="export-as-a-template"></a>以範本形式匯出
-如果您現在想要使用相同的參數來建立其他開發環境，或想要建立與其相符的生產環境，該怎麼辦？ Resource Manager 可使用定義了所有環境參數的 JSON 範本。 您可以藉由參考此 JSON 範本來建置整個環境。 您可以[手動構建 JSON 範本](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)或匯出現有環境，為您創建 JSON 範本。 使用 [az group export](/cli/azure/group) 來匯出您的資源群組，如下所示︰
+如果您現在想要使用相同的參數來建立其他開發環境，或想要建立與其相符的生產環境，該怎麼辦？ Resource Manager 可使用定義了所有環境參數的 JSON 範本。 您可以藉由參考此 JSON 範本來建置整個環境。 您可以[手動建立 json 範本](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，或匯出現有的環境來為您建立 json 範本。 使用 [az group export](/cli/azure/group) 來匯出您的資源群組，如下所示︰
 
 ```azurecli
 az group export --name myResourceGroup > myResourceGroup.json
