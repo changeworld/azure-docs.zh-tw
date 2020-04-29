@@ -10,10 +10,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.openlocfilehash: 741906bbe9de68459b2e4a704a243fde4771b3a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80067318"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database 應用程式開發概觀
@@ -50,13 +50,13 @@ Azure SQL Database 為雲端服務，因此基礎結構或雲端實體之間的�
 
 如需關於如何對 Azure SQL 資料庫上的計劃性維護事件進行準備的詳細資訊，請參閱[規劃 Azure SQL Database 的 Azure 維護事件](sql-database-planned-maintenance.md)。
 
-## <a name="network-considerations"></a>網路考量事項
+## <a name="network-considerations"></a>網路考量
 
 - 在託管您的用戶端程式的電腦上，請確定防火牆允許連接埠 1433 上的傳出 TCP 通訊。  詳細資訊：[設定 Azure SQL Database 防火牆](sql-database-configure-firewall-settings.md)。
-- 如果您的用戶端程式是在 Azure 虛擬機器 (VM) 上執行，而用戶端程式會連線至 SQL Database，您就必須開啟該 VM 上特定的連接埠範圍。 更多資訊：ADO.NET [4.5 和 SQL 資料庫的埠超過 1433。](sql-database-develop-direct-route-ports-adonet-v12.md)
+- 如果您的用戶端程式是在 Azure 虛擬機器 (VM) 上執行，而用戶端程式會連線至 SQL Database，您就必須開啟該 VM 上特定的連接埠範圍。 詳細資訊： [ADO.NET 4.5 和 SQL Database 的埠超過 1433](sql-database-develop-direct-route-ports-adonet-v12.md)。
 - 與 Azure SQL Database 的用戶端連線有時會略過 proxy 並直接與資料庫互動。 1433 以外的連接埠變得重要。 如需詳細資訊，請參閱 [Azure SQL Database 連線架構](sql-database-connectivity-architecture.md)和[針對 ADO.NET 4.5 及 SQL Database 的 1433 以外的連接埠](sql-database-develop-direct-route-ports-adonet-v12.md)一節。
-- 有關託管實例的網路設定，請參閱[託管實例的網路設定](sql-database-howto-managed-instance.md#network-configuration)。
+- 如需受控實例的網路設定，請參閱[受控實例的網路](sql-database-howto-managed-instance.md#network-configuration)設定。
 
 ## <a name="next-steps"></a>後續步驟
 
-流覽[SQL 資料庫的所有功能](sql-database-technical-overview.md)。
+探索 SQL Database 的所有[功能](sql-database-technical-overview.md)。

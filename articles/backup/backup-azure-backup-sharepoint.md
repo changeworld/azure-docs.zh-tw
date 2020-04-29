@@ -1,46 +1,46 @@
 ---
-title: 使用 DPM 將 SharePoint 伺服器場備份到 Azure
+title: 使用 DPM 將 SharePoint 伺服器陣列備份至 Azure
 description: 這篇文章概述 SharePoint 伺服器陣列至 Azure 的 DPM/Azure 備份伺服器保護
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 0199495e3b0eb002e58c096ed9abf05d46f43f97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80054120"
 ---
-# <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 將 SharePoint 伺服器場備份到 Azure
+# <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>使用 DPM 將 SharePoint 伺服器陣列備份至 Azure
 
 您可以使用 System Center Data Protection Manager (DPM)，將 SharePoint 伺服器陣列備份到 Microsoft Azure，其方法與備份其他資料來源極為類似。 Azure 備份提供靈活的備份排程來建立每日、每週、每月或每年備份點，並可讓您針對各種備份點執行保留原則選項。 DPM 可讓您儲存本機磁碟複本來快速達成復原時間目標 (RTO)，也可以將複本儲存到 Azure 來進行經濟實惠的長期保留。
 
-使用 DPM 將 SharePoint 備份到 Azure 的過程與本地將 SharePoint 備份到 DPM 的過程非常相似。 本文將注意 Azure 的特定注意事項。
+使用 DPM 將 SharePoint 備份至 Azure，是將 SharePoint 備份至本機 DPM 的類似程式。 這篇文章會說明 Azure 的特定考慮。
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>SharePoint 支援的版本與相關保護案例
 
 如需支援的 SharePoint 版本清單以及備份所需的 DPM 版本清單，請參閱 [What can DPM back up?](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019#applications-backup) (DPM 可以備份的內容)。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
 您需要先確定幾件事，再將 SharePoint 伺服器陣列備份至 Azure。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 繼續之前，請確定 [使用 Microsoft Azure 備份來保護工作負載的所有必要條件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) 已滿足。 一些滿足必要條件的工作包括︰建立備份保存庫、下載保存庫認證、安裝 Azure 備份代理程式，以及向保存庫註冊 DPM/Azure 備份伺服器。
 
-其他先決條件和限制可在 DPM 文章中找到備份[共用點](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#prerequisites-and-limitations)。
+您可以在[使用 DPM 備份 SharePoint 一](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#prerequisites-and-limitations)文中找到其他必要條件和限制。
 
 ## <a name="configure-backup"></a>設定備份
 
-若要備份 SharePoint 伺服器陣列，您要使用 ConfigureSharePoint.exe 設定 SharePoint 保護，然後在 DPM 中建立保護群組。 有關說明，請參閱在 DPM 文檔中[配置備份](https://docs.microsoft.com//system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup)。
+若要備份 SharePoint 伺服器陣列，您要使用 ConfigureSharePoint.exe 設定 SharePoint 保護，然後在 DPM 中建立保護群組。 如需指示，請參閱 DPM 檔中的[設定備份](https://docs.microsoft.com//system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#configure-backup)。
 
 ## <a name="monitoring"></a>監視
 
-要監視備份作業，請按照[監視 DPM 備份](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#monitoring)中的說明操作
+若要監視備份作業，請依照[監視 DPM 備份](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#monitoring)中的指示進行操作。
 
 ## <a name="restore-sharepoint-data"></a>還原 SharePoint 資料
 
-要瞭解如何從具有 DPM 的磁片還原 SharePoint 項，請參閱[還原 SharePoint 資料](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#restore-sharepoint-data)。
+若要瞭解如何使用 DPM 從磁片還原 SharePoint 專案，請參閱[還原 sharepoint 資料](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#restore-sharepoint-data)。
 
 ## <a name="restore-a-sharepoint-database-from-azure-by-using-dpm"></a>使用 DPM 從 Azure 中還原 SharePoint 資料庫
 
@@ -71,9 +71,9 @@ ms.locfileid: "80054120"
 
 ## <a name="switching-the-front-end-web-server"></a>切換前端網頁伺服器
 
-如果您有多個前端 Web 服務器，並且想要切換 DPM 用於保護伺服器場的伺服器，請按照[切換前端 Web 服務器](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server)中的說明操作。
+如果您有一部以上的前端網頁伺服器，而且想要切換 DPM 用來保護伺服器陣列的伺服器，請遵循[切換前端網頁伺服器](https://docs.microsoft.com/system-center/dpm/back-up-sharepoint?view=sc-dpm-2019#switching-the-front-end-web-server)中的指示。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [Azure 備份伺服器和 DPM - 常見問題解答](backup-azure-dpm-azure-server-faq.md)
+* [Azure 備份伺服器和 DPM-常見問題](backup-azure-dpm-azure-server-faq.md)
 * [針對 System Center Data Protection Manager 疑難排解](backup-azure-scdpm-troubleshooting.md)
