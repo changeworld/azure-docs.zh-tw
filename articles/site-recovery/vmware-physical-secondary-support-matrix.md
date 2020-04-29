@@ -1,5 +1,5 @@
 ---
-title: 支援 VMware/物理災害復原到具有 Azure 網站恢復的輔助網站
+title: 使用 Azure Site Recovery 支援對次要網站進行 VMware/實體嚴重損壞修復
 description: 摘要說明使用 Azure Site Recovery 將 VMware VM 和實體伺服器災害復原至次要網站的支援。
 author: rayne-wiselman
 manager: carmonm
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79256792"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>從 VMware VM 和實體伺服器至次要網站之災害復原的支援矩陣
@@ -26,9 +26,9 @@ ms.locfileid: "79256792"
 > 內部部署 VMware VM 和實體伺服器的複寫是由 InMage Scout 提供。 InMage Scout 包含在 Azure Site Recovery 服務訂用帳戶中。
 
 ## <a name="end-of-support-announcement"></a>終止支援公告
-本地 VMware 或物理資料中心之間複製的網站恢復方案正在到達支援結束。
+在內部部署 VMware 或實體資料中心之間進行複寫的 Site Recovery 案例即將到達支援終止。
 
-- 從 2018 年 8 月起，無法在恢復服務保存庫中配置該方案，並且無法從保存庫下載 InMage Scout 軟體。 現有的部署仍受支援。
+- 從2018年8月起，無法在復原服務保存庫中設定案例，而且無法從保存庫下載 InMage Scout 軟體。 現有的部署仍受支援。
 - - 自 2020 年 12 月 31 日起，將不再支援此案例。
 現有的合作夥伴可在支援終止前將新客戶登入至案例。
 - 在 2018 年和 2019 年期間，將會發行兩項更新：
@@ -66,7 +66,7 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 
 ## <a name="network-configuration---hostguest-vm"></a>網路設定 - 主機/客體 VM
 
-**組態** | **支援**  
+**設定** | **支援**  
 --- | --- 
 主機 - NIC 小組 | 是 
 主機 - VLAN | 是 
@@ -79,7 +79,7 @@ Linux | Red Hat Enterprise Linux 6.7、6.8、6.9、7.1、7.2 <br/><br/> Centos 6
 客體 VM - 多重 NIC | 是
 
 
-## <a name="storage"></a>存放裝置
+## <a name="storage"></a>儲存體
 
 ### <a name="host-storage"></a>主機儲存體
 
@@ -92,7 +92,7 @@ SAN (ISCSI) | 是
 
 ### <a name="guest-or-physical-server-storage"></a>客體或實體伺服器儲存體
 
-**組態** | **支援** 
+**設定** | **支援** 
 --- | --- 
 VMDK | 是 
 VHD/VHDX | N/A 

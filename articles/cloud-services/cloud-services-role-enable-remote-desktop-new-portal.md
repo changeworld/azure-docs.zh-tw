@@ -1,5 +1,5 @@
 ---
-title: 使用門戶為角色啟用遠端桌面
+title: 使用入口網站為角色啟用遠端桌面
 titleSuffix: Azure Cloud Services
 description: 如何設定的 Azure 雲端服務應用程式以允許遠端桌面連線
 services: cloud-services
@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: memccror
 ms.openlocfilehash: d65f4b55be317234c10a0e90cfe413d9e38a6a90
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247458"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>啟用 Azure 雲端服務中角色的遠端桌面連線
 
 > [!div class="op_single_selector"]
-> * [Azure 門戶](cloud-services-role-enable-remote-desktop-new-portal.md)
-> * [電源外殼](cloud-services-role-enable-remote-desktop-powershell.md)
+> * [Azure 入口網站](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 > * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 遠端桌面可讓您存取 Azure 內執行中角色的桌面。 您可以使用遠端桌面連線來疑難排解和診斷執行中應用程式的問題。

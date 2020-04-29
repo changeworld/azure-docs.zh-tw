@@ -1,5 +1,5 @@
 ---
-title: Linux 的 Azure 磁片加密
+title: 適用于 Linux 的 Azure 磁碟加密
 description: 使用虛擬機器擴充功能將 Azure 磁碟加密部署至 Linux 的虛擬機器。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: ejarvi
 ms.openlocfilehash: 22568c7c23771f143f6cd583114949c380d15e3d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80066923"
 ---
 # <a name="azure-disk-encryption-for-linux-microsoftazuresecurityazurediskencryptionforlinux"></a>適用於 Linux 的 Azure 磁碟加密 (Microsoft.Azure.Security.AzureDiskEncryptionForLinux)
@@ -26,26 +26,26 @@ ms.locfileid: "80066923"
 
 Azure 磁碟加密會使用 Linux 中的 dm-crypt 子系統在[選取的 Azure Linux 發行版本](https://aka.ms/adelinux)上提供完整的磁碟加密。  此解決方案會與 Azure Key Vault 整合，以管理磁碟加密金鑰和祕密。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-有關先決條件的完整清單，請參閱 Linux [VM 的 Azure 磁片加密](../linux/disk-encryption-overview.md)，具體介紹以下各節：
+如需必要條件的完整清單，請參閱[適用于 Linux vm 的 Azure 磁碟加密](../linux/disk-encryption-overview.md)，特別是下列各節：
 
-- [支援的 VM 和作業系統](../linux/disk-encryption-overview.md#supported-vms-and-operating-systems)
-- [其他 VM 要求](../linux/disk-encryption-overview.md#additional-vm-requirements)
+- [支援的 Vm 和作業系統](../linux/disk-encryption-overview.md#supported-vms-and-operating-systems)
+- [其他 VM 需求](../linux/disk-encryption-overview.md#additional-vm-requirements)
 - [網路需求](../linux/disk-encryption-overview.md#networking-requirements)
-- [加密金鑰存儲要求](../linux/disk-encryption-overview.md#encryption-key-storage-requirements)
+- [加密金鑰儲存需求](../linux/disk-encryption-overview.md#encryption-key-storage-requirements)
 
 ## <a name="extension-schema"></a>擴充功能結構描述
 
-Azure 磁片加密 （ADE） 有兩個版本的擴展架構：
-- v1.1 - 不使用 Azure 活動目錄 （AAD） 屬性的較新的建議架構。
-- v0.1 - 需要 Azure 活動目錄 （AAD） 屬性的舊架構。 
+Azure 磁碟加密（ADE）的延伸模組架構有兩個版本：
+- v1.1-不使用 Azure Active Directory （AAD）屬性的較新建議架構。
+- v 0.1-需要 Azure Active Directory （AAD）屬性的舊版架構。 
 
-要選擇目標架構，`typeHandlerVersion`必須將屬性設置為等於要使用的架構版本。
+若要選取目標架構， `typeHandlerVersion`屬性必須設定為等於您要使用的架構版本。
 
-### <a name="schema-v11-no-aad-recommended"></a>架構 v1.1： 無 AAD（推薦）
+### <a name="schema-v11-no-aad-recommended"></a>架構 v1.1：無 AAD （建議）
 
-建議使用 v1.1 架構，不需要 Azure 活動目錄 （AAD） 屬性。
+建議使用 v1.1 架構，而且不需要 Azure Active Directory （AAD）屬性。
 
 ```json
 {
@@ -74,9 +74,9 @@ Azure 磁片加密 （ADE） 有兩個版本的擴展架構：
 ```
 
 
-### <a name="schema-v01-with-aad"></a>架構 v0.1： 與 AAD 
+### <a name="schema-v01-with-aad"></a>架構 v 0.1：使用 AAD 
 
-0.1 架構需要`AADClientID`和`AADClientSecret``AADClientCertificate`或 。
+0.1 架構需要`AADClientID`和`AADClientSecret`或。 `AADClientCertificate`
 
 使用 `AADClientSecret`：
 
@@ -141,39 +141,39 @@ Azure 磁片加密 （ADE） 有兩個版本的擴展架構：
 
 ### <a name="property-values"></a>屬性值
 
-| 名稱 | 值 / 範例 | 資料類型 |
+| Name | 值 / 範例 | 資料類型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.Security | 字串 |
 | type | AzureDiskEncryptionForLinux | 字串 |
-| typeHandlerVersion | 1.1, 0.1 | int |
+| typeHandlerVersion | 1.1、0。1 | int |
 | （0.1 架構）AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | guid | 
-| （0.1 架構）AADClient秘密 | 密碼 | 字串 |
-| （0.1 架構）AADClient 證書 | thumbprint | 字串 |
-| （可選）（0.1 架構）密碼 | 密碼 | 字串 |
+| （0.1 架構）AADClientSecret | password | 字串 |
+| （0.1 架構）AADClientCertificate | thumbprint | 字串 |
+| 選擇性（0.1 架構）通行 | password | 字串 |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON 字典 |
 | EncryptionOperation | EnableEncryption、EnableEncryptionFormatAll | 字串 | 
-| （可選 - 預設 RSA-OAEP ）金鑰加密演算法 | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | 字串 |
+| （選擇性-預設的 RSA-OAEP）KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | 字串 |
 | KeyVaultURL | url | 字串 |
-| 金鑰庫資源 Id | url | 字串 |
-| （可選）金鑰加密鍵URL | url | 字串 |
-| （可選）凱庫沃資源Id | url | 字串 |
-| （可選）序列版本 | UNIQUEIDENTIFIER | 字串 |
+| Keyvaultresourceid 值 | url | 字串 |
+| 選擇性KeyEncryptionKeyURL | url | 字串 |
+| 選擇性KekVaultResourceId | url | 字串 |
+| 選擇性SequenceVersion | UNIQUEIDENTIFIER | 字串 |
 | VolumeType | 作業系統、資料、全部 | 字串 |
 
 ## <a name="template-deployment"></a>範本部署
 
-有關基於架構 v1.1 的範本部署示例，請參閱 Azure 快速入門範本[201-加密運行-linux-vm-無 aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)。
+如需以架構 v1.1 為基礎之範本部署的範例，請參閱 Azure 快速入門範本[201-加密-linux-vm-不含 aad](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)。
 
-有關基於架構 v0.1 的範本部署的示例，請參閱 Azure 快速入門範本[201 加密運行-linux-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)。
+如需以架構 v 0.1 為基礎之範本部署的範例，請參閱 Azure 快速入門範本[201-加密-linux-vm](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)。
 
 >[!WARNING]
-> - 如果以前使用 Azure 磁片加密與 Azure AD 一起加密 VM，則必須繼續使用此選項對 VM 進行加密。
-> - 加密 Linux 作業系統卷時，應認為 VM 不可用。 我們強烈建議在加密過程中避免 SSH 登錄，以避免在加密過程中阻止任何需要訪問的打開檔的問題。 要檢查進度，請使用[獲取-AzVM 磁片加密狀態](/powershell/module/az.compute/get-azvmdiskencryptionstatus)PowerShell Cmdlet 或[vm 加密顯示](/cli/azure/vm/encryption#az-vm-encryption-show)CLI 命令。 對於 30GB OS 磁碟區，此過程可能需要幾個小時，再加上額外的時間來進行加密資料磁碟區。 除非使用加密格式所有選項，否則資料磁碟區加密時間將與資料磁碟區的大小和數量成正比。 
+> - 如果您先前已使用 Azure 磁碟加密搭配 Azure AD 來加密 VM，則必須繼續使用此選項來加密您的 VM。
+> - 加密 Linux OS 磁片區時，VM 應視為無法使用。 我們強烈建議您在加密進行時避免 SSH 登入，以避免在加密程式期間封鎖需要存取的任何已開啟檔案的問題。 若要檢查進度，請使用[AzVMDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) PowerShell Cmdlet 或[vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) CLI 命令。 對於 30GB OS 磁碟區，此過程可能需要幾個小時，再加上額外的時間來進行加密資料磁碟區。 除非使用加密格式所有選項，否則資料磁碟區加密時間將與資料磁碟區的大小和數量成正比。 
 > - 只有資料磁碟區支援在 Linux VM 上停用加密。 如果 OS 磁碟區已加密，則不支援在資料或 OS 磁碟區上停用加密。 
 
 >[!NOTE]
-> 此外，`VolumeType`如果參數設置為 All，則資料磁片僅在正確裝載時才會加密。
+> 此外， `VolumeType`如果將參數設定為 All，只有在資料磁片已正確掛接時，才會將其加密。
 
 ## <a name="troubleshoot-and-support"></a>疑難排解與支援
 
@@ -183,11 +183,11 @@ Azure 磁片加密 （ADE） 有兩個版本的擴展架構：
 
 ### <a name="support"></a>支援
 
-如果本文中的任何一點都需要更多説明，則可以在[MSDN Azure 和堆疊溢位論壇](https://azure.microsoft.com/support/community/)上聯繫 Azure 專家。 
+如果您在本文中有任何需要協助的地方，您可以與[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/community/)上的 azure 專家聯繫。 
 
-或者，您可以提出 Azure 支援事件。 轉到[Azure 支援](https://azure.microsoft.com/support/options/)並選擇"獲取支援"。 有關使用 Azure 支援的資訊，請閱讀[Microsoft Azure 支援常見問題解答](https://azure.microsoft.com/support/faq/)。
+或者，您可以提出 Azure 支援事件。 移至[Azure 支援](https://azure.microsoft.com/support/options/)，然後選取 [取得支援]。 如需使用 Azure 支援的相關資訊，請參閱[Microsoft Azure 支援常見問題](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 如需 VM 擴充功能的詳細資訊，請參閱[適用於 Linux 的虛擬機器擴充功能和功能](features-linux.md)。
-* 有關 Linux 的 Azure 磁片加密的詳細資訊，請參閱[Linux 虛擬機器](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#linux-virtual-machines)。
+* 如需 Linux Azure 磁碟加密的詳細資訊，請參閱[linux 虛擬機器](../../security/fundamentals/azure-disk-encryption-vms-vmss.md#linux-virtual-machines)。

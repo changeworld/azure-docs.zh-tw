@@ -15,10 +15,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
 ms.openlocfilehash: e4c126bbac73accb984f1040a7fea1740d919233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249772"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure 虛擬機器中的 SQL Server 備份和還原
@@ -55,10 +55,10 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 
 如需如何針對 SQL VM 設定自動備份的詳細資訊，請參閱下列其中一篇文章：
 
-- **SQL 伺服器 2016/2017**： [Azure 虛擬機器的自動備份 v2](virtual-machines-windows-sql-automated-backup-v2.md)
+- **SQL Server 2016/2017**：[適用于 Azure 虛擬機器的自動備份 v2](virtual-machines-windows-sql-automated-backup-v2.md)
 - **SQL Server 2014**：[SQL Server 2014 虛擬機器的自動備份](virtual-machines-windows-sql-automated-backup.md)
 
-## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a>用於 SQL VM 的 Azure 備份
+## <a name="azure-backup-for-sql-vms"></a><a id="azbackup"></a>適用于 SQL Vm 的 Azure 備份
 
 [Azure 備份](/azure/backup/)針對在 Azure VM 中執行的 SQL Server 提供企業級備份功能。 所有備份都會儲存在復原服務保存庫儲存中，並在那裡進行管理。 此解決方案能提供數項特別適用於企業的優點：
 
@@ -77,7 +77,7 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 
 > [!VIDEO https://www.youtube.com/embed/wmbANpHos_E]
 
-此適用于 SQL VM 的 Azure 備份解決方案通常可用。 如需詳細資訊，請參閱[將 SQL Server 資料庫備份至 Azure](../../../backup/backup-azure-sql-database.md)。
+適用于 SQL Vm 的此 Azure 備份解決方案已正式運作。 如需詳細資訊，請參閱[將 SQL Server 資料庫備份至 Azure](../../../backup/backup-azure-sql-database.md)。
 
 ## <a name="manual-backup"></a><a id="manual"></a> 手動備份
 
@@ -143,7 +143,7 @@ SQL Server 2016 和更新版本的 VM，會透過自動備份 v2 提供更多自
 | 備份至 VM 上的已連接磁碟 |   |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 可集中自訂的備份報告 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 彙總的失敗電子郵件警示 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| 基於 Azure 監視器日誌自訂監視 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| 根據 Azure 監視器記錄自訂監視 |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | 使用 SSMS 或 Transact-SQL 指令碼監視備份作業 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 使用 SSMS 或 Transact-SQL 指令碼還原資料庫 | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![是](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 

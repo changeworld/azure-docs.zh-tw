@@ -1,13 +1,13 @@
 ---
-title: 打包 Azure 服務結構應用
-description: 瞭解如何打包 Azure 服務結構應用程式以及如何準備部署到群集。
+title: 封裝 Azure Service Fabric 應用程式
+description: 瞭解如何封裝 Azure Service Fabric 應用程式，以及如何準備部署至叢集。
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 7c99eec28ac06ecf666d6dda1015f889841a5dbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258339"
 ---
 # <a name="package-an-application"></a>封裝應用程式
@@ -48,7 +48,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 * 設定及初始化服務可執行檔需要的環境變數。 這不僅限於透過 Service Fabric 程式設計模型撰寫的可執行檔。 例如，npm.exe 部署 node.js 應用程式，需要設定某些環境變數。
 * 透過安裝安全性憑證設定存取控制。
 
-有關如何配置**SetupEntryPoint**的詳細資訊，請參閱[為服務設置進入點配置策略](service-fabric-application-runas-security.md)
+如需有關如何設定**SetupEntryPoint**的詳細資訊，請參閱[設定服務安裝程式進入點的原則](service-fabric-application-runas-security.md)
 
 <a id="Package-App"></a>
 
@@ -56,9 +56,9 @@ D:\TEMP\MYAPPLICATIONTYPE
 
 ### <a name="build-a-package-by-using-visual-studio"></a>使用 Visual Studio 建置封裝
 
-如果使用 Visual Studio 創建應用程式，則可以使用 *"包"* 命令自動創建與上述佈局相匹配的包。
+如果您使用 Visual Studio 來建立應用程式，您可以使用 [*封裝*] 命令，自動建立符合上述版面配置的套件。
 
-要創建包，請按右鍵*解決方案資源管理器*中的應用程式專案，然後選擇 **"包**"命令：
+若要建立封裝，請以滑鼠右鍵按一下*方案總管*中的應用程式專案，然後選擇 [**封裝**] 命令：
 
 ![使用 Visual Studio 封裝應用程式][vs-package-command]
 
@@ -226,7 +226,7 @@ ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
 
 ## <a name="next-steps"></a>後續步驟
 
-[部署和刪除應用程式][10]描述如何使用 PowerShell 管理應用程式實例
+[部署和移除應用程式][10]說明如何使用 PowerShell 來管理應用程式實例
 
 [管理多個環境的應用程式參數][11]說明如何為不同的應用程式執行個體設定參數和環境變數。
 

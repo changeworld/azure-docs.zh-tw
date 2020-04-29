@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/14/2020
 ms.author: genli
 ms.openlocfilehash: 280943bd965c4799ce294321129d1088be9c0caf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80060379"
 ---
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
-為了更好地說明如何為 VM 配置靜態 IP 位址，本文檔使用以下方案：
+為了更清楚說明如何設定 VM 的靜態 IP 位址，本檔會使用下列案例：
 
-![虛擬網路方案：前端和後端子網，具有前端子網的靜態 IP 位址](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
+![虛擬網路案例：前端和後端子網，具有前端子網的靜態 IP 位址](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
 
-在這種情況下，您將在*FrontEnd*子網中創建名為*DNS01*的 VM，然後將其設置為使用*192.168.1.101*的靜態 IP 位址。
+在此案例中，您會在*前端*子網中建立名為*DNS01*的 VM，然後將它設定為使用靜態 IP 位址*192.168.1.101*。

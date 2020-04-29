@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79258937"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
@@ -18,7 +18,7 @@ Azure Service Fabric 命令列介面 (CLI) 是一個命令列公用程式，用�
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 安裝之前，請確定您的環境已安裝 Python 和 pip。 如需詳細資訊，請參閱 [pip 快速入門文件](https://pip.pypa.io/en/latest/quickstart/)和正式的 [Python 安裝文件](https://wiki.python.org/moin/BeginnersGuide/Download)。
 
@@ -30,7 +30,7 @@ Service Fabric CLI 旨在支援 Service Fabric SDK 的最新執行階段版本�
 
 | CLI 版本   | 支援的執行階段版本 |
 |---------------|---------------------------|
-| 最新 （+9）  | 最新 (~=7)              |
+| 最新（~ = 9）  | 最新 (~=7)              |
 | 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |

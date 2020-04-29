@@ -1,5 +1,5 @@
 ---
-title: 安裝微軟 Azure StorSimple 8600 設備
+title: 安裝 Microsoft Azure StorSimple 8600 裝置
 description: 描述如何打開包裝、掛接機架和佈線 StorSimple 8600 裝置，再部署和設定軟體。
 author: alkohli
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79254751"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>打開包裝、掛接機架和佈線 StorSimple 8600 裝置
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 您的 Microsoft Azure StorSimple 8600 是雙重機箱裝置，包含主要及 EBOD 機箱。 本教學課程說明如何在您設定 StorSimple 軟體之前，打開包裝、利用機架掛接和配接 StorSimple 8600 裝置硬體纜線。
 
 ## <a name="unpack-your-storsimple-8600-device"></a>打開您的 StorSimple 8600 裝置包裝
@@ -164,7 +164,7 @@ ms.locfileid: "79254751"
 ## <a name="cable-your-storsimple-8600-device"></a>佈線您的 StorSimple 8600 裝置
 下列程序說明如何針對 StorSimple 8600 裝置的電源、網路和序列連線進行佈線。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 開始您的裝置佈線之前，您需要：
 
 * 完全打開您的主要機箱與 EBOD 機箱的包裝

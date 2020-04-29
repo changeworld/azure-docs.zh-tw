@@ -6,35 +6,35 @@ ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
 ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80419204"
 ---
-標準化虛擬機 (VM) 映像允許組織遷移到雲並確保部署的一致性。 映像通常包括預定義的安全和配置設置以及必要的軟體。 設置自己的映射管道需要時間、基礎結構和設置,但使用 Azure VM 映射生成器,只需提供描述映射的簡單配置,將其提交到服務,並生成映射並分發映射即可。
+標準化的虛擬機器（VM）映射可讓組織遷移至雲端，並確保部署的一致性。 映射通常包含預先定義的安全性和設定，以及必要的軟體。 設定您自己的映射處理管線需要時間、基礎結構和設定，但使用 Azure VM 映射產生器時，只需提供簡單的設定來描述您的映射、將它提交至服務，然後建立映射並加以散發。
  
-Azure VM 映射生成器(Azure 映像產生器)允許您從基於 Windows 或 Linux 的 Azure 應用商店映像、現有自定義映射或紅帽企業 Linux (RHEL) ISO 開始,並開始添加自己的自定義項。 由於映射生成器是建立在[HashiCorp 打包器](https://packer.io/)之上的,因此還可以導入現有的打包器外殼預配器腳本。 您還可以在[Azure 共用映射庫中](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)指定希望將映射託管的位置作為託管映射或 VHD。
+Azure VM 映射產生器（Azure 映射產生器）可讓您從以 Windows 或 Linux 為基礎的 Azure Marketplace 映射、現有的自訂映射或 Red Hat Enterprise Linux （RHEL） ISO 開始，並開始新增您自己的自訂專案。 因為映射產生器是建立在[HashiCorp Packer](https://packer.io/)上，您也可以匯入現有的 Packer shell 布建程式腳本。 您也可以在[Azure 共用映射資源庫](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)中，指定您想要裝載映射的位置，做為受控映射或 VHD。
 
 > [!IMPORTANT]
-> Azure 映射生成器當前處於公共預覽版中。
+> Azure 映射產生器目前為公開預覽版。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="preview-features"></a>預覽功能
 
-對於預覽,支援以下功能:
+針對預覽版本，支援下列功能：
 
-- 創建黃金基線映射,包括您的最低安全性和企業配置,並允許各部門進一步自定義它以滿足其需求。
-- 修補現有圖像,圖像生成器將允許您持續修補現有的自定義圖像。
-- 將映射生成器連接到現有虛擬網路,以便連接到現有配置伺服器(DSC、Chef、Puppet等)、檔案共享或任何其他可路由的伺服器/服務。
-- 與 Azure 共用映像庫整合,允許您全域分發、版本和縮放映射,並為您提供映射管理系統。
-- 與現有映射生成管道整合,只需從管道呼叫映像生成器,或使用簡單的預覽映射生成器 Azure DevOps 任務。
-- 將現有映射自定義管道遷移到 Azure。 使用現有文稿、命令和進程自定義映射。
-- 以 VHD 格式創建圖像。
+- 建立黃金基準影像，其中包括您的最低安全性和公司設定，並允許部門根據其需求進一步進行自訂。
+- 修補現有的映射，映射產生器可讓您持續修補現有的自訂映射。
+- 將映射產生器連接到現有的虛擬網路，以便連接到現有的設定伺服器（DSC、Chef、Puppet 等）、檔案共用，或任何其他可路由傳送的伺服器/服務。
+- 與 Azure 共用映射資源庫整合，可讓您全域散發、版本及調整影像，並提供映射管理系統。
+- 與現有的映射組建管線整合，只需從管線呼叫影像產生器，或使用簡單的預覽影像產生器 Azure DevOps 工作。
+- 將現有的映射自訂管線遷移至 Azure。 使用您現有的腳本、命令和進程來自訂映射。
+- 以 VHD 格式建立映射。
  
 
 ## <a name="regions"></a>區域
-Azure 映射生成器服務將在這些區域中預覽。 圖像可以分佈在這些區域之外。
+Azure 映射產生器服務會在這些區域中提供預覽。 映射可以散佈在這些區域之外。
 - 美國東部
 - 美國東部 2
 - 美國中西部
@@ -43,46 +43,46 @@ Azure 映射生成器服務將在這些區域中預覽。 圖像可以分佈在�
 - 北歐
 - 西歐
 
-## <a name="os-support"></a>作業系統支援
-AIB 將支援 Azure 應用商店基礎作業系統映像:
+## <a name="os-support"></a>OS 支援
+AIB 將支援 Azure Marketplace 基本 OS 映射：
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7.6, 7.7
-- CentOS 7.6, 7.7
+- RHEL 7.6、7。7
+- CentOS 7.6、7。7
 - SLES 12 SP4
-- SLES 15, SLES 15 SP1
-- Windows 10 RS5 企業/企業多會話/專業
+- SLES 15、SLES 15 SP1
+- Windows 10 RS5 Enterprise/Enterprise 多會話/專業版
 - Windows 2016
-- 視窗 2019
+- Windows 2019
 
-RHEL ISO 支援正在被棄用,請查看範本文檔以瞭解更多詳細資訊。
+RHEL Iso 支援即將淘汰，請參閱範本檔以取得進一步的詳細資料。
 
 ## <a name="how-it-works"></a>運作方式
 
 
-![Azure 映像產生器的概念繪圖](./media/virtual-machines-image-builder-overview/image-builder.png)
+![Azure 映射產生器的概念圖](./media/virtual-machines-image-builder-overview/image-builder.png)
 
-Azure 映射生成器是一個完全託管的 Azure 服務,由 Azure 資源提供程式訪問。 Azure 映射生成器過程有三個主要部分:源、自定義和分發,這些部分在範本中表示。 下圖顯示了元件及其某些屬性。 
+Azure 映射產生器是完全受控的 Azure 服務，可供 Azure 資源提供者存取。 Azure 映射產生器流程有三個主要部分：來源、自訂和散發，這些都是以範本表示。 下圖顯示元件及其部分屬性。 
  
 
 
-**影像產生器程序** 
+**影像產生器進程** 
 
-![Azure 映像產生器程序的概念繪圖](./media/virtual-machines-image-builder-overview/image-builder-process.png)
+![Azure 映射產生器進程的概念繪圖](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
-1. 將圖像範本創建為 .json 檔。 此 .json 檔包含有關映射源、自定義項和分發的資訊。 [Azure 映射生成器 GitHub 儲存庫](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)中有多個範例。
-1. 將其提交到服務,這將在指定的資源組中創建圖像範本專案。 在後台,圖像生成器將根據需要下載源映射或 ISO 和文稿。 這些資源存儲在訂閱中自動創建的單獨資源組中,其格式為:IT_\<目標資源組>_\<範本名稱>。 
-1. 創建圖像範本後,可以生成映射。 在後台,映射生成器使用範本和源檔在IT_\<目標資源組>_\<範本名稱>資源組中創建 VM(預設大小:Standard_D1_v2)、網路、公共 IP、NSG 和儲存。
-1. 作為映射創建的一部分,圖像生成器會根據範本分發映射,然後刪除為進程創建的IT_\<目標資源組>_\<範本名稱>資源組中的其他資源。
+1. 建立映射範本作為 json 檔案。 此 json 檔案包含映射來源、自訂和散發的相關資訊。 [Azure 映射](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)產生器 GitHub 存放庫中有多個範例。
+1. 將它提交給服務，這會在您指定的資源群組中建立映射範本成品。 在背景中，映射產生器會視需要下載來源映射或 ISO 和腳本。 這些會儲存在您的訂用帳戶中自動建立的個別資源群組中，格式為：\<IT_ DestinationResourceGroup\<>_ TemplateName>。 
+1. 建立映射範本之後，您就可以建立映射。 在背景影像產生器中，會使用範本和來源檔案來建立 VM （預設大小： Standard_D1_v2）、網路、公用 IP、NSG，以及 IT_\<DestinationResourceGroup>_\<TemplateName> 資源群組中的儲存體。
+1. 作為映射建立的一部分，映射產生器會根據範本散發映射，然後刪除 IT_\<DestinationResourceGroup 中的其他資源，>_\<TemplateName 為該進程建立的> 資源群組。
 
 
 ## <a name="permissions"></a>權限
 
-要允許 Azure VM 映射生成器將映像分發到託管映射或共用映射庫,您需要為資源組中的服務" Azure 虛擬機器映射生成器」(應用 ID:cf32a0cc-373c-47c9-9156-0db11f6a6dfc)提供"參與者"許可權。 
+若要允許 Azure VM 映射產生器將映射發佈至受控映射或共用映射資源庫，您必須在資源群組上提供服務「Azure 虛擬機器映射產生器」（應用程式識別碼： cf32a0cc-373c-47c9-9156-0db11f6a6dfc）的「參與者」許可權。 
 
-如果使用現有的自定義託管映射或映射版本,則 Azure 映射生成器將需要對這些資源組的最小"讀取器"存取許可權。
+如果您使用現有的自訂受控映射或映射版本，則 Azure 映射產生器必須至少有這些資源群組的「讀取者」存取權。
 
-可以使用 Azure CLI 分配存取權限:
+您可以使用 Azure CLI 來指派存取權：
 
 ```azurecli-interactive
 az role assignment create \
@@ -91,27 +91,27 @@ az role assignment create \
     --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
 ```
 
-您可以使用 PowerShell 分配存取權限:
+您可以使用 PowerShell 指派存取權：
 
 ```azurePowerShell-interactive
 New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName> -RoleDefinitionName Contributor
 ```
 
 
-如果未找到服務帳戶,則可能意味著要添加角色分配的訂閱尚未為資源提供程式註冊。
+如果找不到服務帳戶，這可能表示您要新增角色指派的訂用帳戶尚未針對資源提供者註冊。
 
 
 ## <a name="costs"></a>費用
-使用 Azure 映像產生器創建、構建和儲存映像時,將會產生一些計算、網路和儲存成本。 這些成本與手動創建自定義映射的成本類似。 對於資源,您將按 Azure 費率收費。 
+建立、建立和儲存映射時，您將會產生一些計算、網路和儲存體成本。 這些成本類似于手動建立自訂映射所產生的成本。 對於資源，您將以 Azure 費率向您收費。 
 
-在映射創建過程中,檔被下載並存儲在`IT_<DestinationResourceGroup>_<TemplateName>`資源組中,這將產生較小的儲存成本。 如果不想保留這些,請在映像產生後移除**映像樣本**。
+在映射建立過程中，會下載檔案並將其儲存`IT_<DestinationResourceGroup>_<TemplateName>`在資源群組中，這將會產生少量的儲存成本。 如果您不想要保留這些，請在映射組建之後刪除**映射範本**。
  
-映射生成器使用 D1v2 VM 大小以及 VM 所需的儲存和網路創建 VM。 這些資源將持續在生成過程的持續時間內,並在映射生成器完成創建映射後刪除。 
+映射產生器會使用 D1v2 VM 大小、儲存體，以及 VM 所需的網路功能，來建立 VM。 這些資源會在建立程式期間持續，而且一旦影像產生器完成影像的建立後，就會刪除。 
  
-Azure 映射生成器將映射分發到所選區域,這可能會產生網路出口費用。
+Azure 映射產生器會將映射散發至您選擇的區域，這可能會產生網路輸出費用。
  
 ## <a name="next-steps"></a>後續步驟 
  
-要嘗試 Azure 映像產生器,請參閱有關建[構 Linux](../articles/virtual-machines/linux/image-builder.md)或[Windows](../articles/virtual-machines/windows/image-builder.md)映像的文章。
+若要試用 Azure 映射產生器，請參閱建立[Linux](../articles/virtual-machines/linux/image-builder.md)或[Windows](../articles/virtual-machines/windows/image-builder.md)映射的文章。
  
  

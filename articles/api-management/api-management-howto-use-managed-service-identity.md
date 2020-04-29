@@ -1,6 +1,6 @@
 ---
-title: 在 Azure API 管理中使用託管標識 |微軟文檔
-description: 瞭解如何在 API 管理中使用託管標識
+title: 在 Azure API 管理中使用受控識別 |Microsoft Docs
+description: 瞭解如何在 API 管理中使用受控識別
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -12,24 +12,24 @@ ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
 ms.openlocfilehash: 49576b805e6c6d01340e663bfb5d8e9013917625
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79249629"
 ---
-# <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用託管標識
+# <a name="use-managed-identities-in-azure-api-management"></a>在 Azure API 管理中使用受控識別
 
-本文介紹如何為 API 管理服務實例創建託管標識以及如何訪問其他資源。 Azure 活動目錄 （Azure AD） 生成的託管標識允許 API 管理實例輕鬆安全地訪問其他受 Azure AD 保護的資源，如 Azure 金鑰保存庫。 此標識由 Azure 管理，不需要預配或輪換任何機密。 有關託管標識的詳細資訊，請參閱 Azure[資源的託管標識](../active-directory/managed-identities-azure-resources/overview.md)是什麼。
+本文說明如何為「API 管理」服務實例建立受控識別，以及如何存取其他資源。 Azure Active Directory （Azure AD）所產生的受控識別，可讓您的 API 管理實例輕鬆且安全地存取其他受 Azure AD 保護的資源，例如 Azure Key Vault。 此身分識別由 Azure 管理，您不需要布建或輪替任何秘密。 如需受控識別的詳細資訊，請參閱[什麼是適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別。
 
-## <a name="create-a-managed-identity-for-an-api-management-instance"></a>為 API 管理實例創建託管標識
+## <a name="create-a-managed-identity-for-an-api-management-instance"></a>建立 API 管理實例的受控識別
 
 ### <a name="using-the-azure-portal"></a>使用 Azure 入口網站
 
-要在門戶中設置託管標識，首先將像往常一樣創建 API 管理實例，然後啟用該功能。
+若要在入口網站中設定受控識別，您會先建立正常的 API 管理實例，然後再啟用此功能。
 
 1. 像平常一樣在入口網站中建立 API 管理執行個體。 在入口網站中瀏覽至該應用程式。
-2. 選擇**託管服務標識**。
+2. 選取 [**受控服務**識別]。
 3. 將 [向 Azure Active Directory 註冊應用程式] 切換為 [開啟]。 按一下 [儲存]。
 
 ![啟用 MSI](./media/api-management-msi/enable-msi.png)
@@ -75,14 +75,14 @@ ms.locfileid: "79249629"
 ## <a name="use-the-managed-service-identity-to-access-other-resources"></a>使用受控服務識別來存取其他資源
 
 > [!NOTE]
-> 目前，託管標識可用於從 Azure 金鑰保存庫獲取 API 管理自訂功能變數名稱的證書。 很快就會支援更多的案例。
+> 目前，受控識別可用於從 API 管理自訂功能變數名稱的 Azure Key Vault 取得憑證。 很快就會支援更多的案例。
 >
 >
 
 
 ### <a name="obtain-a-certificate-from-azure-key-vault"></a>從 Azure Key Vault 取得憑證
 
-#### <a name="prerequisites"></a>Prerequisites
+#### <a name="prerequisites"></a>先決條件
 1. 包含 pfx 憑證的 Key Vault 必須位於相同的 Azure 訂用帳戶中，以及與 API 管理服務相同的資源群組中。 這是 Azure Resource Manager 範本的需求。
 2. 秘密的內容類型必須是 application/x-pkcs12**。 您可以使用下列指令碼來上傳憑證：
 
@@ -105,7 +105,7 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 下列範例顯示的 Azure Resource Manager 範本包含下列步驟：
 
-1. 使用託管標識創建 API 管理實例。
+1. 建立具有受控識別的 API 管理實例。
 2. 更新 Azure Key Vault 執行個體的存取原則，以允許「API 管理」執行個體從它取得祕密。
 3. 透過來自 Key Vault 執行個體的憑證來設定自訂網域名稱，以更新「API 管理」執行個體。
 
@@ -233,8 +233,8 @@ Set-AzureKeyVaultSecret -VaultName KEY_VAULT_NAME -Name KEY_VAULT_SECRET_NAME -S
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解有關 Azure 資源的託管標識詳細資訊：
+深入瞭解適用于 Azure 資源的受控識別：
 
-* [Azure 資源的託管標識是什麼](../active-directory/managed-identities-azure-resources/overview.md)
+* [什麼是適用于 Azure 資源的受控識別](../active-directory/managed-identities-azure-resources/overview.md)
 * [Azure 資源管理員範本](https://github.com/Azure/azure-quickstart-templates)
-* [使用策略中的託管標識進行身份驗證](./api-management-authentication-policies.md#ManagedIdentity)
+* [在原則中使用受控識別進行驗證](./api-management-authentication-policies.md#ManagedIdentity)

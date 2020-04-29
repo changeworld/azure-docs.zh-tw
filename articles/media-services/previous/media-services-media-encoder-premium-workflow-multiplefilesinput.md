@@ -16,14 +16,14 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250994"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>搭配進階編碼器使用多個輸入檔案和元件屬性
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 在某些情況下，您可能需要在使用「媒體編碼器高階工作流程」 **** 媒體處理器提交工作時，自訂元件屬性、指定剪輯清單 XML 內容，或傳送多個輸入檔案。 部份範例如下：
 
 * 在每個輸入視訊的執行階段在視訊上覆疊文字並設定文字值 (例如，目前的日期)。
@@ -331,7 +331,7 @@ task.OutputAssets.AddNew("Output asset", AssetCreationOptions.None);
 
 ![視訊資料類型更新器和格式轉換器](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter.png)
 
-*視頻資料類型更新器和格式轉換器*
+*影片資料類型更新程式和格式轉換器*
 
 ![配置類型 = 可設定平面](./media/media-services-media-encoder-premium-workflow-multiplefilesinput/capture12_formatconverter2.png)
 
@@ -466,11 +466,11 @@ public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string conf
 
 * 編碼的資產將會包含多種語言的曲目，而這些曲目應該可在 Azure 媒體播放器中加以選取。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 * [介紹 Azure 媒體服務中的 Premium 編碼](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services)
-* [如何在 Azure 媒體服務中使用高級編碼](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
-* [使用 Azure 媒體服務對按需內容進行編碼](media-services-encode-asset.md#media-encoder-premium-workflow)
-* [媒體編碼器高階工作流程格式和轉碼器](media-services-premium-workflow-encoder-formats.md)
+* [如何在 Azure 媒體服務中使用 Premium 編碼](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services)
+* [使用 Azure 媒體服務編碼隨選內容](media-services-encode-asset.md#media-encoder-premium-workflow)
+* [媒體編碼器高階工作流程格式和編解碼器](media-services-premium-workflow-encoder-formats.md)
 * [範例工作流程檔案](https://github.com/Azure/azure-media-services-samples)
 * [Azure 媒體服務總管工具](https://aka.ms/amse)
 

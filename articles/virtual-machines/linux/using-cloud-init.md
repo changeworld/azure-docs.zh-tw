@@ -1,6 +1,6 @@
 ---
-title: Azure 中對 Linux VM 的雲 init 支援概述
-description: 在 Azure 中的預配時間配置 VM 的雲 init 功能概述。
+title: Azure 中 Linux Vm 的雲端 init 支援總覽
+description: 在 Azure 中布建階段設定 VM 的雲端 init 功能總覽。
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -16,85 +16,85 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danis
 ms.openlocfilehash: 1f0395956fa6977be5d1d6f4f4faf06b84c094d8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79465034"
 ---
-# <a name="cloud-init-support-for-virtual-machines-in-azure"></a>對 Azure 中的虛擬機器的雲 init 支援
-本文介紹[雲 init](https://cloudinit.readthedocs.io)在 Azure 中的預配時間配置虛擬機器 （VM） 或虛擬機器縮放集的支援。 Azure 預配資源後，這些雲 init 配置將首先啟動。  
+# <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure 中虛擬機器的雲端初始化支援
+本文說明在 Azure 中布建時， [cloud init](https://cloudinit.readthedocs.io)用來設定虛擬機器（VM）或虛擬機器擴展集的支援。 一旦 Azure 布建資源之後，就會在第一次開機時執行這些雲端 init 設定。  
 
-VM 預配是 Azure 將傳遞 VM Create 參數值（如主機名稱、使用者名、密碼等）的過程，並在啟動時將其提供給 VM。 "預配代理"將使用這些值、配置 VM 並在完成後報告。 
+VM 布建是 Azure 會將您的 VM 建立參數值（例如主機名稱、使用者名稱、密碼等），並在啟動時提供給 VM 使用的程式。 「布建代理程式」將會使用這些值、設定 VM，並在完成時回報回來。 
 
-Azure 支援兩個預配代理[雲 init](https://cloudinit.readthedocs.io)和[Azure Linux 代理 （WALA）。](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)
+Azure 支援兩個布建代理程式：[雲端 init](https://cloudinit.readthedocs.io)和[Azure Linux 代理程式（WALA）](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)。
 
-## <a name="cloud-init-overview"></a>雲 init 概述
-[雲init](https://cloudinit.readthedocs.io)是一種廣泛使用的方法，用於自訂Linux VM，因為它第一次啟動。 您可以使用 cloud-init 來安裝封裝和寫入檔案，或者設定使用者和安全性。 因為在初次開機程序期間時會呼叫 Cloud-init，因此不需要使用任何額外的步驟或必要的代理程式，就可以套用您的設定。  有關如何正確設置`#cloud-config`檔或其他輸入的格式的詳細資訊，請參閱[雲 init 文檔網站](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 檔案是以 base64 編碼的文字檔。
+## <a name="cloud-init-overview"></a>雲端-init 總覽
+[雲端 init](https://cloudinit.readthedocs.io)是一種廣泛使用的方法，可在第一次啟動 Linux VM 時進行自訂。 您可以使用 cloud-init 來安裝封裝和寫入檔案，或者設定使用者和安全性。 因為在初次開機程序期間時會呼叫 Cloud-init，因此不需要使用任何額外的步驟或必要的代理程式，就可以套用您的設定。  如需如何正確格式化`#cloud-config`檔案或其他輸入的詳細資訊，請參閱[雲端初始化檔網站](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)。  `#cloud-config` 檔案是以 base64 編碼的文字檔。
 
-雲 init 還跨發行版本工作。 例如，您不使用 **apt-get install** 或 **yum install** 來安裝套件。 您可以改為定義要安裝的套件清單。 雲 init 會自動使用本機包管理工具進行您選擇的發行版本。
+雲端 init 也可以跨散發套件運作。 例如，您不使用 **apt-get install** 或 **yum install** 來安裝套件。 您可以改為定義要安裝的套件清單。 雲端初始化會自動針對您選取的散發版本使用原生封裝管理工具。
 
-我們一直積極地與背書的 Linux 發行版本合作夥伴合作，以便在 Azure Marketplace 中提供支援 Cloud-init 的映像。 這些映像會讓您的 Cloud-init 部署和設定順暢地與 VM 和虛擬機器擴展集運作。 最初，我們與認可的 Linux 分型合作夥伴和上游協作，以確保在 Azure 上的作業系統中使用雲 init 函數，然後更新包並在分眾包存儲庫中公開提供。 
+我們一直積極地與背書的 Linux 發行版本合作夥伴合作，以便在 Azure Marketplace 中提供支援 Cloud-init 的映像。 這些映像會讓您的 Cloud-init 部署和設定順暢地與 VM 和虛擬機器擴展集運作。 一開始，我們會與背書的 Linux 散發版本合作夥伴和上游共同作業，以確保 Azure 上的 OS 能夠進行雲端 init 功能，然後更新套件並在散發版本套件存放庫中公開提供。 
 
-在 Azure 上向支援的 Linux 發行版本作業系統提供雲 init 分為兩個階段，包括包支援，然後是映射支援：
-* 支援或預覽中的雲 init 包在 Azure 文檔上的"雲 init 包支援"，因此可以在自訂映射中將這些包與作業系統一起使用。
-* 如果映射已配置為使用雲 init，則"映射雲 init 就緒"文檔。
+有兩個階段可以讓已背書的 Linux 散發版本作業系統在 Azure 上使用，套件支援，然後支援映射：
+* 「Azure 上的雲端初始化套件支援」記載哪些雲端 init 封裝已開始支援或處於預覽狀態，因此您可以在自訂映射中搭配 OS 使用這些套件。
+* 如果映射已設定為使用雲端 init，則為「映射雲端初始化就緒」檔。
 
 
 ### <a name="canonical"></a>Canonical
-| 發行者/版本| 供應項目 | SKU | 版本 | 圖像雲 init 就緒 | Azure 上的雲 init 包支援|
+| 發行者/版本| 產品 | SKU | 版本 | 映射雲端-初始化就緒 | Azure 上的雲端 init 套件支援|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|規範 18.04 |UbuntuServer |18.04-LTS |最新 |是 | 是 |
-|規範 16.04|UbuntuServer |16.04-LTS |最新 |是 | 是 |
-|規範 14.04|UbuntuServer |14.04.5-LTS |最新 |是 | 是 |
+|標準18.04 |UbuntuServer |18.04-LTS |最新 |是 | 是 |
+|標準16.04|UbuntuServer |16.04-LTS |最新 |是 | 是 |
+|標準14.04|UbuntuServer |14.04.5-LTS |最新 |是 | 是 |
 
 ### <a name="rhel"></a>RHEL
-| 發行者/版本 | 供應項目 | SKU | 版本 | 圖像雲 init 就緒 | Azure 上的雲 init 包支援|
+| 發行者/版本 | 產品 | SKU | 版本 | 映射雲端-初始化就緒 | Azure 上的雲端 init 套件支援|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |是 | 是 - 來自包版本的支援 *：18.2-1.el7_6.2*|
-|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | 是的（請注意，這是一個預覽圖像，一旦所有 RHEL 7.7 圖像都支援雲 init，這將在 2020 年年中刪除，將發出通知） | 是 - 包版本支援： *18.5-3.el7*|
-|RedHat 7.7 |RHEL |7-RAW | n/a| 否 - 2020 年 4 月底完成的圖像更新| 是 - 包版本支援： *18.5-3.el7*|
-|RedHat 7.7 |RHEL |7-LVM | n/a| 否 - 圖像更新，于 4 月底完成| 是 - 包版本支援： *18.5-3.el7*|
-|RedHat 7.7 |RHEL |7.7 | n/a| 否 - 圖像更新，于 4 月底完成 | 是 - 包版本支援： *18.5-3.el7*|
-|RedHat 7.7 |雷爾-比奧斯 | rhel-lvm77 | n/a|否 - 圖像更新，于 4 月底完成  | 是 - 包版本支援： *18.5-3.el7*|
+|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |是 | 是-封裝版本的支援： *18.2-1。 el7_6。 2*|
+|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 | 是（請注意，這是預覽映射，一旦所有 RHEL 7.7 映射都支援雲端 init 之後，這將會在2020中移除，並會提供通知） | 是-封裝版本的支援： *18.5-3. el7*|
+|RedHat 7.7 |RHEL |7-RAW | n/a| 無-在2020年4月底結束的映射更新| 是-封裝版本的支援： *18.5-3. el7*|
+|RedHat 7.7 |RHEL |7-LVM | n/a| 無-在4月底完成的映射更新| 是-封裝版本的支援： *18.5-3. el7*|
+|RedHat 7.7 |RHEL |7.7 | n/a| 無-在4月底完成的映射更新 | 是-封裝版本的支援： *18.5-3. el7*|
+|RedHat 7.7 |rhel-byos | rhel-lvm77 | n/a|無-在4月底完成的映射更新  | 是-封裝版本的支援： *18.5-3. el7*|
 
 ### <a name="centos"></a>CentOS
 
-| 發行者/版本 | 供應項目 | SKU | 版本 | 圖像雲 init 就緒 | Azure 上的雲 init 包支援|
+| 發行者/版本 | 產品 | SKU | 版本 | 映射雲端-初始化就緒 | Azure 上的雲端 init 套件支援|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|開放邏輯 7.7 |CentOS |7-CI |7.7.20190920 |是的（請注意，這是一個預覽圖像，一旦所有 CentOS 7.7 圖像都支援雲 init，這將在 2020 年年中刪除，將發出通知） | 是 - 從包版本支援： *18.5-3.el7.centos*|
+|OpenLogic 7。7 |CentOS |7-CI |7.7.20190920 |是（請注意，這是預覽映射，一旦所有 CentOS 7.7 映射都支援雲端 init 之後，這將會在2020中移除，並會提供通知） | 是-封裝版本的支援： *18.5-3. el7. centos*|
 
-* 2020 年 3 月將在此處更新將啟用雲的 CentOS 7.7 圖像 
+* 將啟用雲端 init 的 CentOS 7.7 映射將于3月2020日更新 
 
 ### <a name="oracle"></a>Oracle
 
-| 發行者/版本 | 供應項目 | SKU | 版本 | 圖像雲 init 就緒 | Azure 上的雲 init 包支援|
+| 發行者/版本 | 產品 | SKU | 版本 | 映射雲端-初始化就緒 | Azure 上的雲端 init 套件支援|
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|甲骨文 7.7 |Oracle-Linux |77-ci |7.7.01| 預覽圖像（請注意，這是預覽圖像，一旦所有 Oracle 7.7 圖像都支援雲 init，這將在 2020 年年中刪除，將發出通知） | 否，在預覽中，包是： *18.5-3.0.1.el7*
+|Oracle 7。7 |Oracle-Linux |77-ci |7.7.01| 預覽影像（請注意，這是預覽影像，一旦所有 Oracle 7.7 映射都支援雲端 init，這將會在2020中移除，並會提供通知） | 否，在預覽中，套件為： *18.5-3.0.1. el7*
 
-### <a name="debian--suse-sles"></a>debian & 蘇塞 SLES
-我們目前正在努力預覽支援，預計在 2020 年 2 月和 3 月更新。
+### <a name="debian--suse-sles"></a>Debian & SuSE SLES
+我們目前正致力於預覽支援，預計會在2月和3月2020更新。
 
-目前，Azure 堆疊將支援預配啟用雲的映射。
+目前 Azure Stack 將支援布建已啟用雲端初始化的映射。
 
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>cloud-init 和 Linux 代理程式 (WALA) 之間有哪些差異？
-WALA 是特定于 Azure 的平臺代理，用於預配和配置 VM 以及處理[Azure 擴展](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)。 
+WALA 是 Azure 平臺專屬的代理程式，可用來布建和設定 Vm，以及處理[azure 擴充](https://docs.microsoft.com/azure/virtual-machines/extensions/features-linux)功能。 
 
-我們正在加強將 VM 配置為使用雲 init 而不是 Linux 代理的任務，以便允許現有雲 init 客戶使用其當前的雲 init 腳本，或者新客戶利用豐富的雲 init 配置功能。 如果您對用於配置 Linux 系統的雲 init 腳本進行了現有投資，則**無需其他設置**即可啟用雲 init 處理它們。 
+我們正在增強設定 Vm 以使用雲端 init （而不是 Linux 代理程式）的工作，以允許現有的雲端 init 客戶使用其目前的雲端 init 腳本，或新的客戶利用豐富的雲端 init 設定功能。 如果您目前已投資用於設定 Linux 系統的雲端初始化腳本，則**不需要進行其他設定**，就能啟用雲端初始化處理。 
 
-雲 init 無法處理 Azure 擴展，因此映射中仍需要 WALA 來處理擴展，但需要禁用其預配代碼，對於被雲 init 轉換為預配的支援的 Linux 發行版本映射，它們將具有 WALA安裝並正確設置。
+雲端 init 無法處理 Azure 擴充功能，因此映射中仍需要 WALA 來處理延伸模組，但需要停用其布建程式碼，針對轉換成由雲端 init 布建的背書 Linux 散發版本映射，它們會安裝 WALA 並正確設定。
 
-創建 VM 時，如果在預配時未包括 Azure `--custom-data` CLI 交換器，則雲 init 或 WALA 會採用預配 VM 和完成預設部署所需的最少 VM 預配參數。  如果使用`--custom-data`交換器引用雲 init 配置，則自訂資料中包含的任何內容都將在 VM 啟動時可供雲 init 使用。
+建立 VM 時，如果您在布建時未包含`--custom-data` Azure CLI 參數，則雲端 INIT 或 WALA 會採用布建 vm 所需的最低 VM 布建參數，並使用預設值完成部署。  如果您使用`--custom-data`參數來參考雲端 init 設定，則當 VM 開機時，您的自訂資料中包含的任何內容都會提供給雲端初始化使用。
 
-應用於 VM 的雲 init 配置沒有時間限制，也不會通過超時導致部署失敗。WALA 的情況並非如此，如果將 WALA 預設值更改為處理自訂資料，則不能超過 40 分鐘的總 VM 預配時間余量，如果是，VM Create 將失敗。
+套用至 Vm 的雲端 init 設定沒有時間限制，且不會因超時而導致部署失敗。這不是 WALA 的情況，如果您將 WALA 預設值變更為處理自訂資料，它就不能超過 VM 布建的總布建時間額度40mins （如果有的話），VM 建立將會失敗。
 
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>部署支援 cloud-init 的虛擬機器
 部署支援 cloud-init 的虛擬機器就像在部署期間參考支援 cloud-init 的發行版本一樣簡單。  Linux 發行版本維護者必須選擇啟用，並將 cloud-init 整合到其基礎 Azure 發行映像。 一旦確認您想要部署的映像支援 cloud-init，您就可以使用 Azure CLI 來部署映像。 
 
 部署此映像的第一個步驟是使用 [az group create](/cli/azure/group) 命令建立資源群組。 Azure 資源群組是在其中部署與管理 Azure 資源的邏輯容器。 
 
-下面的示例在*東部*位置創建名為*myResourceGroup*的資源組。
+下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus

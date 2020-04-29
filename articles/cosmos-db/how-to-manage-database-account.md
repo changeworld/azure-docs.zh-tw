@@ -1,16 +1,16 @@
 ---
 title: 了解如何在 Azure Cosmos DB 中管理資料庫帳戶
-description: 瞭解如何使用 Azure 門戶、PowerShell、CLI 和 Azure 資源管理器範本管理 Azure Cosmos 資料庫資源
+description: 瞭解如何使用 Azure 入口網站、PowerShell、CLI 和 Azure Resource Manager 範本來管理 Azure Cosmos DB 資源
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247380"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帳戶
@@ -25,25 +25,25 @@ ms.locfileid: "79247380"
 
 ### <a name="azure-cli"></a><a id="create-database-account-via-cli"></a>Azure CLI
 
-請參閱[使用 Azure CLI 創建 Azure 宇宙資料庫帳戶](manage-with-cli.md#create-an-azure-cosmos-db-account)
+請參閱[使用 Azure CLI 建立 Azure Cosmos DB 帳戶](manage-with-cli.md#create-an-azure-cosmos-db-account)
 
-### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure 電源外殼
+### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure PowerShell
 
-請參閱[使用電源外殼創建 Azure 宇宙資料庫帳戶](manage-with-powershell.md#create-account)
+請參閱[使用 Powershell 建立 Azure Cosmos DB 帳戶](manage-with-powershell.md#create-account)
 
-### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure 資源管理器範本
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager 範本
 
-此 Azure 資源管理器範本將為 SQL API 創建 Azure Cosmos 帳戶，該帳戶配置了兩個區域和選項，用於選擇一致性級別、自動容錯移轉和多主機。 若要部署此範本，請在讀我檔案頁面的[建立 Azure Cosmos 帳戶](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)中，按一下 [部署至 Azure]
+此 Azure Resource Manager 範本會建立一個 Azure Cosmos 帳戶，適用于設定了兩個區域的 SQL API，以及用來選取一致性層級、自動容錯移轉和多宿主的選項。 若要部署此範本，請在讀我檔案頁面的[建立 Azure Cosmos 帳戶](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)中，按一下 [部署至 Azure]
 
 ## <a name="addremove-regions-from-your-database-account"></a>在資料庫帳戶中新增/移除區域
 
 ### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure 入口網站
 
-1. 登錄到[Azure 門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
 1. 移至 Azure Cosmos 帳戶，然後開啟 [全域複寫資料]**** 功能表。
 
-1. 要添加區域，請選擇地圖上的六邊形，**+** 其標籤與所需區域相對應。 或者，若要新增區域，請選取 [+ 新增區域]**** 選項，然後從下拉式功能表中選擇區域，藉以新增區域。
+1. 若要新增區域，請選取地圖上的六邊形， **+** 其標籤會對應至您所需的區域。 或者，若要新增區域，請選取 [+ 新增區域]**** 選項，然後從下拉式功能表中選擇區域，藉以新增區域。
 
 1. 若要移除區域，請選取具有核取記號的藍色六邊形，以清除地圖中的一或多個區域。 或者，選取右側區域旁邊的「垃圾桶」(🗑) 圖示。
 
@@ -57,11 +57,11 @@ ms.locfileid: "79247380"
 
 ### <a name="azure-cli"></a><a id="add-remove-regions-via-cli"></a>Azure CLI
 
-請參閱[使用 Azure CLI 添加或刪除區域](manage-with-cli.md#add-or-remove-regions)
+請參閱[使用 Azure CLI 新增或移除區域](manage-with-cli.md#add-or-remove-regions)
 
-### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure 電源外殼
+### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
-請參閱[使用電源殼添加或刪除區域](manage-with-powershell.md#update-account)
+請參閱[使用 Powershell 新增或移除區域](manage-with-powershell.md#update-account)
 
 ## <a name="configure-multiple-write-regions"></a><a id="configure-multiple-write-regions"></a>設定多重寫入區域
 
@@ -73,11 +73,11 @@ ms.locfileid: "79247380"
 
 ### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
-請參閱[使用 Azure CLI 啟用多寫區域](manage-with-cli.md#enable-multiple-write-regions)
+請參閱[使用 Azure CLI 啟用多重寫入區域](manage-with-cli.md#enable-multiple-write-regions)
 
-### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure 電源外殼
+### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
-請參閱[使用 Powershell 啟用多寫區域](manage-with-powershell.md#multi-master)
+請參閱[使用 Powershell 啟用多重寫入區域](manage-with-powershell.md#multi-master)
 
 ### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Resource Manager 範本
 
@@ -153,7 +153,7 @@ ms.locfileid: "79247380"
 
 3. 在 [自動容錯移轉]**** 窗格中，確定 [啟用自動容錯移轉]**** 設定為 [開啟]****。 
 
-4. 選取 [儲存]****。
+4. 選取 [儲存]  。
 
    ![自動容錯移轉入口網站功能表](./media/how-to-manage-database-account/automatic-failover.png)
 
@@ -161,9 +161,9 @@ ms.locfileid: "79247380"
 
 請參閱[使用 Azure CLI 啟用自動容錯移轉](manage-with-cli.md#enable-automatic-failover)
 
-### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure 電源外殼
+### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
-請參閱[使用電源shell 啟用自動容錯移轉](manage-with-powershell.md#enable-automatic-failover)
+請參閱[使用 Powershell 啟用自動容錯移轉](manage-with-powershell.md#enable-automatic-failover)
 
 ## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>設定 Azure Cosmos 帳戶的容錯移轉屬性
 
@@ -184,17 +184,17 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 
 4. 若要修改容錯移轉優先順序，請透過當您暫留其上時出現在資料列左側的三個點拖曳讀取區域。
 
-5. 選取 [儲存]****。
+5. 選取 [儲存]  。
 
    ![自動容錯移轉入口網站功能表](./media/how-to-manage-database-account/automatic-failover.png)
 
 ### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
-請參閱[使用 Azure CLI 設置容錯移轉優先順序](manage-with-cli.md#set-failover-priority)
+請參閱[使用 Azure CLI 設定容錯移轉優先順序](manage-with-cli.md#set-failover-priority)
 
-### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure 電源外殼
+### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure PowerShell
 
-請參閱[使用電源shell設置容錯移轉優先順序](manage-with-powershell.md#modify-failover-priority)
+請參閱[使用 Powershell 設定容錯移轉優先順序](manage-with-powershell.md#modify-failover-priority)
 
 ## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>在 Azure Cosmos 帳戶上執行手動容錯移轉
 
@@ -224,9 +224,9 @@ Cosmos 帳戶設定自動容錯移轉後，可以變更區域的容錯移轉優�
 
 請參閱[使用 Azure CLI 觸發手動容錯移轉](manage-with-cli.md#trigger-manual-failover)
 
-### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure 電源外殼
+### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure PowerShell
 
-請參閱[使用電源shell 觸發手動容錯移轉](manage-with-powershell.md#trigger-manual-failover)
+請參閱[使用 Powershell 觸發手動容錯移轉](manage-with-powershell.md#trigger-manual-failover)
 
 ## <a name="next-steps"></a>後續步驟
 

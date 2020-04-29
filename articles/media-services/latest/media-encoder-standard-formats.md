@@ -1,5 +1,5 @@
 ---
-title: 標準編碼器格式和編解碼器 - Azure
+title: 標準編碼器格式和編解碼器-Azure
 description: 本文件包含您可以藉由 StandardEncoderPreset 使用的最常見匯入和匯出檔案格式列出的清單。
 services: media-services
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
 ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79251358"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>標準編碼器格式和編解碼器
@@ -43,7 +43,7 @@ ms.locfileid: "79251358"
 
 ### <a name="audio-formats-in-input-containers"></a>輸入容器中的音訊格式
 
-標準編碼器支援在輸入容器中攜帶以下音訊格式：
+標準編碼器支援在輸入容器中攜帶下列音訊格式：
 
 * MXF、GXF 和 QuickTime 檔案，其具有交錯立體聲或 5.1 範例的音訊音軌
 
@@ -82,9 +82,9 @@ ms.locfileid: "79251358"
 | MP3 (MPEG-1 音訊層 3) |是 |
 | Windows Media 音訊 |是 |
 | WAV/PCM |是 |
-| [Flac](https://en.wikipedia.org/wiki/FLAC)</a> |是 |
-| [作品](https://go.microsoft.com/fwlink/?LinkId=822667) |是 |
-| [沃爾比斯](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |
+| [FLAC](https://en.wikipedia.org/wiki/FLAC)</a> |是 |
+| [Opus](https://go.microsoft.com/fwlink/?LinkId=822667) |是 |
+| [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |是 |
 | AMR (可變多速率) |是 |
 | AES (SMPTE 331M 和 302M，AES3-2003) |否 |
 | Dolby® E |否 |

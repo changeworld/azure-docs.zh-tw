@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 32603f4ab33e020245861e5dc66d2ade545fa627
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79247484"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什麼是雲端服務模型？如何封裝？
@@ -24,7 +24,7 @@ ms.locfileid: "79247484"
 * 我已經了解，請給我 [一些範例](#next-steps) ，讓我可以設定。
 * 我想要建立 [ServicePackage.cspkg](#cspkg)。
 * 我打算使用 Visual Studio，而我想要...
-  * [創建雲服務][vs_create]
+  * [建立雲端服務][vs_create]
   * [重新設定現有的雲端服務][vs_reconfigure]
   * [部署雲端服務專案][vs_deploy]
   * [從遠端桌面進入雲端服務執行個體][remotedesktop]
@@ -83,7 +83,7 @@ ms.locfileid: "79247484"
 </ServiceDefinition>
 ```
 
-您可以參考[服務定義架構](/previous-versions/azure/reference/ee758711(v=azure.100))，以便更好地瞭解此處使用的 XML 架構，但是，下面是一些元素的快速說明：
+您可以參考[服務定義架構](/previous-versions/azure/reference/ee758711(v=azure.100))，以進一步瞭解此處所使用的 XML 架構，不過，以下是一些元素的簡短說明：
 
 **網站**  
  包含 IIS7 中所裝載的網站或 Web 應用程式的定義。
@@ -97,16 +97,16 @@ ms.locfileid: "79247484"
 **ConfigurationSettings**  
  包含特定角色功能的設定定義。
 
-**證書**  
+**憑證**  
  包含角色所需的憑證的定義。 上述程式碼範例顯示用於設定 Azure Connect 的憑證。
 
 **LocalResources**  
  包含本機儲存資源的定義。 本機儲存資源是執行中角色執行個體所在之虛擬機器的檔案系統上的保留目錄。
 
-**Imports**  
+**進口**  
  包含匯入的模組的定義。 上述程式碼範例顯示遠端桌面連線與 Azure Connect 的模組。
 
-**Startup**  
+**啟動**  
  包含角色啟動時執行的工作。 這些工作是在 .cmd 或可執行檔中定義。
 
 <a name="cscfg"></a>
@@ -136,13 +136,13 @@ ms.locfileid: "79247484"
 
 您可以參考 [服務組態結構描述](/previous-versions/azure/reference/ee758710(v=azure.100)) ，進一步了解此處所使用的 XML 結構描述，不過，以下是元素的簡短說明：
 
-**實例**  
+**數**  
  設定執行中角色執行個體的數目。 為防止您的雲端服務在升級期間可能變成無法使用，建議您部署多個 Web 對向角色執行個體。 部署多個執行個體的做法符合 [Azure 計算服務等級協定 (SLA)](https://azure.microsoft.com/support/legal/sla/)中的指導方針，當您為服務部署兩個或更多個角色執行個體時，此等級協定可保證網際網路對向角色有 99.95% 的外部連線能力。
 
 **ConfigurationSettings**  
  設定執行中角色執行個體的設定。 `<Setting>` 元素的名稱必須符合服務定義檔中的設定定義。
 
-**證書**  
+**憑證**  
  設定服務所使用的憑證。 上述程式碼範例顯示如何定義 RemoteAccess 模組的憑證。 *thumbprint* 屬性的值必須設定為要使用的憑證的指紋。
 
 <p/>
@@ -217,7 +217,7 @@ Azure 對於 Web 角色，僅允許一個進入點。 這表示所有流量都�
 
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
 > [!NOTE]
-> 可部署的最大包大小為 600MB
+> 可部署的套件大小上限為600MB
 
 若要將應用程式部署為 Azure 中的雲端服務，您必須先使用適當的格式封裝應用程式。 您可以使用 **CSPack** 命令列工具 (隨 [Azure SDK](https://azure.microsoft.com/downloads/)安裝) 做為 Visual Studio 的替代方案，以建立封裝檔案。
 
