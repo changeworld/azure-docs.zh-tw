@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 網路服務遠端工作
-description: 本頁介紹如何使用可用於遠端工作的 Azure 網路服務,以及如何緩解因遠端工作人數增加而導致的流量問題。
+title: 使用 Azure 網路服務從遠端工作
+description: 此頁面說明如何使用可用來從遠端工作的 Azure 網路服務，以及如何減輕從遠端工作的人數增加而產生的流量問題。
 services: networking
 author: rambk
 ms.service: virtual-network
@@ -8,88 +8,88 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
 ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982849"
 ---
-# <a name="working-remotely-using-azure-networking-services"></a>使用 Azure 網路服務遠端工作
+# <a name="working-remotely-using-azure-networking-services"></a>使用 Azure 網路服務從遠端工作
 
 >[!NOTE]
-> 本文介紹如何利用 Azure 網路服務、Microsoft 網路和 Azure 合作夥伴生態系統遠端工作並緩解因 COVID-19 危機而可能面臨的網路問題。
+> 本文說明如何利用 Azure 網路服務、Microsoft 網路和 Azure 合作夥伴生態系統，從遠端工作，並減輕因 COVID-19 危機而可能面臨的網路問題。
 
-本文介紹了組織可用於為其使用者設置遠端訪問或在高峰使用期間用額外容量補充其現有解決方案的選項。 網路架構師面臨以下挑戰:
+本文說明可供組織用來為使用者設定遠端存取的選項，或在尖峰使用率期間，以額外的容量補充其現有解決方案。 網路架構設計人員面臨下列挑戰：
 
-- 解決網路利用率的提高問題。
-- 為公司和客戶中的更多員工提供可靠的安全連接。
-- 提供與全球遠端位置的連接。
+- 解決網路使用率的增加。
+- 為公司和客戶的更多員工提供可靠的連線能力。
+- 提供全球遠端位置的連線能力。
 
-並非所有網路(例如,專用廣域網和企業核心網路)都遇到來自峰值遠端工作負載的擁塞。 瓶頸通常只報告在家庭寬頻網路和公司本地網路的VPN閘道。
+並非所有網路（例如私人 WAN 和公司核心網路）都會遭遇尖峰遠端背景工作負載的擁塞。 這些瓶頸通常只會在家庭寬頻網路和公司內部部署網路的 VPN 閘道中報告。
 
-網路規劃人員可以通過記住不同的流量類型需要不同的網路處理優先順序以及一些智慧負載重定向/分發來幫助緩解瓶頸並緩解網路擁塞。 例如,醫生與患者互動的即時遠端電敏流量非常重要,並且對延遲/抖動非常敏感。 但是,在存儲之間複製相同的流量並不敏感。 以前的流量必須通過最佳網路路徑路由,服務品質更高;而通過次優路線路由後續流量是可以接受的。
+網路規劃人員可以藉由記住不同的流量類型需要不同的網路處理優先順序以及一些智慧型負載重新導向/散發，協助減輕瓶頸並減輕網路擁塞。 例如，醫生與病人互動的即時 telepresence medecine 流量，是高重要性和延遲/抖動的敏感性。 然而，在儲存體之間複寫相同的流量並不會延遲敏感性。 先前的流量必須透過具有更高服務品質的最佳網路路徑來路由傳送;不過，您可以透過次佳路由來路由傳送之後的流量。
 
 
 
-## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>共用我們的最佳實務 - Azure 網路專為彈性和高可用性而設計
+## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>分享我們的最佳做法-Azure 網路是針對彈性和高可用性所設計
 
-Azure 旨在承受資源利用率的突然變化,在高峰利用期間可以大有説明。 此外,微軟維護並運營著世界上最大的網路之一。 Microsoft 的網路專為高可用性而設計,可以承受不同類型的故障:從單個網路元素故障到整個區域的故障。
+Azure 的設計目的是為了承受資源使用率突然變化，而且可以在尖峰使用率期間大幅提供協助。 此外，Microsoft 也會維護並操作其中一個世界最大的網路。 Microsoft 的網路已針對高可用性而設計，可承受不同類型的失敗：從單一網路元素失敗到整個區域失敗。
 
-Microsoft 網路旨在滿足各種網路流量的要求,並為不同類型的網路流量提供最佳性能,包括 Skype 和 Teams、CDN、即時大數據分析、Azure 存儲、必應和 Xbox 的延遲敏感多媒體流量。 為了為不同類型的流量提供最佳性能,Microsoft 網路吸引了所有注定傳輸或想要傳輸的流量,其資源盡可能接近流量的來源。
+Microsoft 網路的設計目的是為了符合需求，並針對不同類型的網路流量提供最佳效能，包括延遲 Skype 和小組、CDN、即時海量資料分析、Azure 儲存體、Bing 和 Xbox 的敏感多媒體流量。 為了針對不同類型的流量提供最佳效能，Microsoft 網路會吸引所有目的地的流量，或想要以盡可能接近流量來源的資源傳輸。
 
 >[!NOTE] 
->使用下面描述的 Azure 網路功能利用 Microsoft 全球網路的流量吸引行為提供更好的客戶網路體驗。 Microsoft 網络的流量吸引行為有助於儘快從在高峰使用期間可能會遇到擁塞的第一英里/最後一英里網路卸載流量。
+>使用下面所述的 Azure 網路功能，運用 Microsoft 全球網路的流量遊樂設施行為，以提供更好的客戶網路體驗。 Microsoft 網路的「流量遊樂設施」行為可協助您儘快從第一個/最後一英里網路（可能會在尖峰使用率期間遇到擁塞）停止載入流量。
 >
 
-## <a name="enable-employees-to-work-remotely"></a>使員工能夠遠端工作
+## <a name="enable-employees-to-work-remotely"></a>讓員工可以從遠端工作
 
-Azure VPN 閘道同時支援點到網站 (P2S) 和網站到網站 (S2S) VPN 連接。 使用 Azure VPN 閘道可以縮放員工的連接以安全地存取 Azure 部署的資源和本地資源。 有關詳細資訊,請參閱[如何允許使用者遠端工作](../vpn-gateway/work-remotely-support.md)。 
+Azure VPN 閘道支援點對站（P2S）和站對站（S2S） VPN 連線。 使用 Azure VPN 閘道，您可以調整員工的連線，以安全地存取您的 Azure 已部署資源和內部部署資源。 如需詳細資訊，請參閱[如何讓使用者在遠端工作](../vpn-gateway/work-remotely-support.md)。 
 
-如果使用安全套接字隧道協定 (SSTP),則併發連接數限制為 128。 為了獲得更多的連接,我們建議過渡到 OpenVPN 或 IKEv2。 有關詳細資訊,請參閱從[SSTP 過渡到 OpenVPN 協定或 IKEv2。](../vpn-gateway/ikev2-openvpn-from-sstp.md
-)
+如果您使用安全通訊端通道通訊協定（SSTP），則並行連線數目限制為128。 若要取得較高的連接數目，建議您轉換為 OpenVPN 或 IKEv2。 如需詳細資訊，請參閱[從 SSTP 轉換至 OpenVPN 通訊協定或 IKEv2](../vpn-gateway/ikev2-openvpn-from-sstp.md
+)。
 
-要造訪部署在 Azure 中的資源,遠端開發人員可以使用 Azure Bastion 解決方案,而不是 VPN 連接來獲取安全外殼訪問(RDP 或 SSH),而無需存取 VM 上的公共 IP。 有關詳細資訊,請參閱使用[Azure 堡壘 遠端工作](../bastion/work-remotely-support.md)。
+若要存取部署在 Azure 中的資源，遠端開發人員可以使用 Azure 防禦解決方案（而不是 VPN 連線）來取得安全的 shell 存取（RDP 或 SSH），而不需要存取 Vm 上的公用 Ip。 如需詳細資訊，請參閱[使用 Azure 防禦從遠端工作](../bastion/work-remotely-support.md)。
 
-對於聚合大規模 VPN 連接,支援不同本地全域位置、不同區域中心和分支虛擬網路中的資源之間的任意連接,以及優化多個家庭寬頻網路的利用率,您可以使用 Azure 虛擬 WAN。 有關詳細資訊,請參閱[從家庭需求中努力滿足工作需求?這裡是 Azure 虛擬 WAN 可以提供説明的地方](../virtual-wan/work-remotely-support.md)。
+若要匯總大規模 VPN 連線，以支援不同內部部署全球位置、不同區域中樞和輪輻虛擬網路中的資源之間的任何連線，以及將多個家庭寬頻網路的使用率優化，您可以使用 Azure 虛擬 WAN。 如需詳細資訊，請參閱尋求[因應家庭需求的工作？以下是 Azure 虛擬 WAN 可提供協助的地方](../virtual-wan/work-remotely-support.md)。
 
-支援遠端工作人員的另一種方法是部署託管在 Azure 虛擬網路中的虛擬桌面基礎結構 (VDI),該基礎結構(VDI)通過 Azure 防火牆進行保護。 例如,Windows 虛擬桌面 (WVD) 是在 Azure 中運行的桌面和應用虛擬化服務。 使用 Windows 虛擬桌面,您可以在 Azure 訂閱中設定可擴展且靈活的環境,而無需運行任何其他閘道伺服器。 您只對虛擬網路中的 WVD 虛擬機器負責。 有關詳細資訊,請參閱[Azure 防火牆遠端工作支援](../firewall/remote-work-support.md)。 
+另一種支援遠端工作的方法，就是部署裝載于 Azure 虛擬網路中的虛擬桌面基礎結構（VDI），並使用 Azure 防火牆進行保護。 例如，Windows 虛擬桌面（WVD）是在 Azure 中執行的桌面和應用程式虛擬化服務。 有了 Windows 虛擬桌面，您就可以在 Azure 訂用帳戶中設定可擴充且彈性的環境，而不需要執行任何額外的閘道伺服器。 您只負責虛擬網路中的 WVD 虛擬機器。 如需詳細資訊，請參閱[Azure 防火牆遠端工作支援](../firewall/remote-work-support.md)。 
 
-Azure 還具有一組豐富的生態系統合作夥伴。 我們的合作夥伴 Azure 上的網路虛擬裝置還可以幫助擴展 VPN 連接。 有關詳細資訊,請參閱[遠端工作的網路虛擬裝置 (NVA) 注意事項](../vpn-gateway/nva-work-remotely-support.md)。
+Azure 也有一組豐富的 eco 系統合作夥伴。 我們的合作夥伴在 Azure 上的網路虛擬裝置也可以協助調整 VPN 連線能力。 如需詳細資訊，請參閱[遠端工作的網路虛擬裝置（NVA）考慮](../vpn-gateway/nva-work-remotely-support.md)。
 
-## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>擴充員工連線以存取全球分布的資源
+## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>延伸員工的連線以存取全域散發的資源
 
-以下 Azure 服務可幫助員工訪問全域分佈的資源。 您的資源可能位於任何 Azure 區域、本地網路,甚至位於其他公共或私有雲中。 
+下列 Azure 服務有助於讓員工存取您的全域散發資源。 您的資源可以位於任何 Azure 區域、內部部署網路，甚至是其他公用或私人雲端。 
 
-- **Azure 虛擬網路對等**:如果將資源部署在多個 Azure 區域和/或者使用多個虛擬網路聚合遠端工作員工的連接,則可以使用虛擬網路對等互連在多個 Azure 虛擬網路之間建立連接。 如需詳細資訊，請參閱[虛擬網路對等互連][VNet-peer]。
+- **Azure 虛擬網路對等互連**：如果您在多個 azure 區域中部署資源，以及（或）使用多個虛擬網路匯總遠端工作員工的連線能力，您可以使用虛擬網路對等互連，在多個 azure 虛擬網路之間建立連線能力。 如需詳細資訊，請參閱[虛擬網路對等互連][VNet-peer]。
 
-- **基於 Azure VPN 的解決方案**:對於透過 P2S 或 S2S VPN 連接到 Azure 的遠端員工,可以透過在本地網路和 Azure VPN 閘道之間配置 S2S VPN 來啟用對本地網路的訪問。 有關詳細資訊,請參閱[建立網站到網站的連線][S2S]。
+- **AZURE VPN 解決方案**：針對透過 P2S 或 S2S VPN 連線至 Azure 的遠端員工，您可以設定內部部署網路和 Azure VPN 閘道之間的 S2S VPN，以啟用對內部部署網路的存取。 如需詳細資訊，請參閱[建立站對站][S2S]連線。
 
-- **ExpressRoute**:使用 ExpressRoute 專用對等互連,可以在 Azure 部署與本地基礎結構或位於主機位置設施中的基礎結構之間啟用專用連接。 ExpressRoute 透過Microsoft對等互連,還允許從本地網路存取Microsoft中的公共終結點。 ExpressRoute 連線不會經過公用網際網路。 它們提供安全的連接、可靠性、更高的輸送量,比 Internet 上的典型連接具有更低且一致的延遲。 如需詳細資訊，請參閱 [ExpressRoute 概觀][ExR]。 利用您現有的網路供應商,這已經是我們[ExpressRoute 合作夥伴生態系統][ExR-eco]的一部分,可以幫助縮短與 Microsoft 進行大型頻寬連接的時間。  使用[ExpressRoute Direct,][ExR-D]您可以將本地網路直接連接到 Microsoft 主幹。 ExpressRoute Direct 提供兩種不同的線路速率選項,雙 10 Gbps 或 100 Gbps。 
+- **Expressroute**：使用 expressroute 私人對等互連，您可以在您的 Azure 部署與內部部署基礎結構或共置設施中的基礎結構之間啟用私人連線能力。 透過 Microsoft 對等互連的 ExpressRoute 也允許從您的內部部署網路存取 Microsoft 中的公用端點。 ExpressRoute 連線不會經過公用網際網路。 這些服務提供安全的連線能力、可靠性、更高的輸送量，且延遲比一般透過網際網路的連接更低且一致。 如需詳細資訊，請參閱 [ExpressRoute 概觀][ExR]。 利用現有的網路提供者，您已經成為[ExpressRoute 合作夥伴生態系統][ExR-eco]的一部分，有助於減少取得與 Microsoft 的大型頻寬連線的時間。  使用[ExpressRoute Direct][ExR-D] ，您可以直接將內部部署網路連線到 Microsoft 骨幹。 ExpressRoute Direct 提供兩個不同的線路費率選項：雙 10 Gbps 或 100 Gbps。 
 
-- **Azure 虛擬 WAN**:Azure 虛擬 WAN 允許 VPN 連接和 ExpressRoute 電路之間的無縫互操作性。 如前所述,Azure 虛擬 WAN 還支援不同預部署全域位置、不同區域中心和分支虛擬網路中的資源之間的任意連接
+- **Azure 虛擬 wan**： AZURE 虛擬 wan 可讓您的 VPN 連線與 ExpressRoute 線路之間有順暢的互通性。 如先前所述，在不同的區域中樞和輪輻虛擬網路中，Azure 虛擬 WAN 也支援不同內部內部部署全球位置的資源之間的任何連線
 
-## <a name="scale-customer-connectivity-to-frontend-resources"></a>擴充客戶與前端資源的連線
+## <a name="scale-customer-connectivity-to-frontend-resources"></a>調整客戶對前端資源的連線能力
 
-在越來越多的人上網的時候,許多公司網站的客戶流量都有所增加。 Azure 應用程式閘道可説明管理此增加的前端工作負荷。 有關詳細資訊,請參閱[應用程式閘道高流量支援](../application-gateway/high-traffic-support.md)。
+當有更多人上線時，許多公司網站都會增加客戶流量。 Azure 應用程式閘道可以協助管理這種增加的前端工作負載。 如需詳細資訊，請參閱[應用程式閘道高流量支援](../application-gateway/high-traffic-support.md)。
 
-## <a name="microsoft-support-for-multi-cloud-traffic"></a>微軟支援多雲流量
+## <a name="microsoft-support-for-multi-cloud-traffic"></a>Microsoft 對多雲端流量的支援
 
-對於在其他公共雲中的部署,Microsoft 可以提供全域連接。 Azure 虛擬廣域網、VPN 或 ExpressRoute 在這方面可以提供説明。 要將連接從 Azure 擴展到其他雲端,可以在兩個雲端之間配置 S2S VPN。 您還可以使用 ExpressRoute 建立從 Azure 到其他公共雲端的連接。 Oracle 雲端是 ExpressRoute 合作夥伴生態系統的一部分。 您可以在[Azure 與 Oracle 雲端結構之間建立直接互連][Az-OCI]。 屬於 ExpressRoute 合作夥伴生態系統的大多數服務提供者還提供與其他公共雲的專用連接。 利用這些服務提供者,您可以通過 ExpressRoute 在 Azure 中的部署與其他雲端之間建立專用連接。
+針對您在其他公用雲端中的部署，Microsoft 可以提供全域連線能力。 Azure 虛擬 WAN、VPN 或 ExpressRoute 在此方面可以提供協助。 若要將從 Azure 到其他雲端的連線能力擴充，您可以設定兩個雲端之間的 S2S VPN。 您也可以使用 ExpressRoute 來建立從 Azure 到其他公用雲端的連線能力。 Oracle 雲端是 ExpressRoute 合作夥伴生態系統的一部分。 您可以[設定 Azure 和 Oracle 雲端基礎結構之間的直接互連][Az-OCI]。 大部分屬於 ExpressRoute 合作夥伴生態系統的服務提供者，也提供與其他公用雲端的私人連線能力。 利用這些服務提供者，您可以在 Azure 中的部署與透過 ExpressRoute 的其他雲端之間建立私人連線。
 
 ## <a name="next-steps"></a>後續步驟
 
-以下文章討論了如何使用不同的 Azure 網路功能來擴展使用者以遠端工作:
+下列文章將討論如何使用不同的 Azure 網路功能來調整使用者，以進行遠端工作：
 
-| **文章** | **說明** |
+| **篇** | **說明** |
 | --- | --- |
-| [如何使用使用者能夠遠端工作](../vpn-gateway/work-remotely-support.md) | 查看可用選項,為使用者設置遠程存訪問,或為組織補充其現有解決方案。|
-| [努力滿足家庭需求的工作?這裡是 Azure 虛擬 WAN 可以提供説明的地方](../virtual-wan/work-remotely-support.md) | 使用 Azure 虛擬 WAN 滿足組織的遠端連接需求。|
-| [應用程式閘道高流量支援](../application-gateway/high-traffic-support.md) | 將應用程式閘道與 Web 應用程式防火牆 (WAF) 一起用於可擴展且安全的方式來管理 Web 應用程式的流量。 |
-| [遠端工作的網路虛擬裝置 (NVA) 注意事項](../vpn-gateway/nva-work-remotely-support.md)|查看有關利用 Azure 中的 NVA 提供遠端存取解決方案的指導。 |
-| [從 SSTP 過渡到 OpenVPN 協定或 IKEv2](https://go.microsoft.com/fwlink/?linkid=2124112) | 通過過渡到 OpenVPN 協定或 IKEv2,克服了 SSTP 的 128 個併發連接限制。|
-| [使用 Azure 堡壘遠端工作](../bastion/work-remotely-support.md) | 直接在 Azure 門戶中向 Azure 虛擬網路中的虛擬機提供安全和無縫的 RDP/SSH 連接,而無需使用公共 IP 位址。 |
-| [使用 Azure 快速路由建立混合連線以支援遠端使用者](../expressroute/work-remotely-support.md) | 將 ExpressRoute 用於混合連接,使組織中的用戶能夠遠端工作。|
-| [Azure 防火牆遠端工作支援](../firewall/remote-work-support.md)|使用 Azure 防火牆保護 Azure 虛擬網路資源。 |
+| [如何讓使用者從遠端工作](../vpn-gateway/work-remotely-support.md) | 查看可用的選項來設定使用者的遠端存取，或為您的組織提供額外的容量來補充其現有解決方案。|
+| [要努力滿足家庭需求的工作嗎？以下是 Azure 虛擬 WAN 可提供協助的地方](../virtual-wan/work-remotely-support.md) | 使用 Azure 虛擬 WAN 來解決組織的遠端連線需求。|
+| [應用程式閘道高流量支援](../application-gateway/high-traffic-support.md) | 使用應用程式閘道搭配 Web 應用程式防火牆（WAF），以提供可擴充且安全的方式來管理 web 應用程式的流量。 |
+| [遠端工作的網路虛擬裝置（NVA）考慮](../vpn-gateway/nva-work-remotely-support.md)|請參閱在 Azure 中利用 Nva 來提供遠端存取解決方案的指引。 |
+| [從 SSTP 轉換至 OpenVPN 通訊協定或 IKEv2](https://go.microsoft.com/fwlink/?linkid=2124112) | 藉由轉換成 OpenVPN 通訊協定或 IKEv2，克服 SSTP 的128同時連線限制。|
+| [使用 Azure 防禦從遠端工作](../bastion/work-remotely-support.md) | 直接在 Azure 入口網站中，為 Azure 虛擬網路內的虛擬機器提供安全且順暢的 RDP/SSH 連線，而不需要使用公用 IP 位址。 |
+| [使用 Azure ExpressRoute 建立混合式連線以支援遠端使用者](../expressroute/work-remotely-support.md) | 使用 ExpressRoute 進行混合式連線，讓您組織中的使用者可以從遠端工作。|
+| [Azure 防火牆遠端工作支援](../firewall/remote-work-support.md)|使用 Azure 防火牆來保護您的 Azure 虛擬網路資源。 |
 
 <!--Link References-->
 [VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview

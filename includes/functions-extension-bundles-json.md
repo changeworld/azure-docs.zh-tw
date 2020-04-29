@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: glenga
 ms.openlocfilehash: f64892193eb6cfcce8f948b54e5557b5fa3d90ab
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80878235"
 ---
 ```json
@@ -21,13 +21,13 @@ ms.locfileid: "80878235"
 }
 ```
 
-以下屬性在`extensionBundle`中可用。
+下列屬性可用於`extensionBundle`：
 
-| 屬性 | 描述 |
+| 屬性 | 說明 |
 | -------- | ----------- |
-| id | Microsoft Azure 函數擴展包的命名空間。 |
-| version | 要安裝的捆綁包的版本。 函數運行時始終選擇由版本範圍或間隔定義的最大允許版本。 上述版本值允許從 1.0.0 到 但不包括 2.0.0 的所有捆綁版本。 有關詳細資訊,請參閱[用於指定版本範圍的間隔表示法](/nuget/reference/package-versioning#version-ranges)。 |
+| id | Microsoft Azure 函式擴充功能配套的命名空間。 |
+| 版本 | 要安裝的配套版本。 函數執行時間一律會挑選版本範圍或間隔所定義的最大允許版本。 上述版本值允許所有來自1.0.0 的套件組合版本，但不包括2.0.0。 如需詳細資訊，請參閱[指定版本範圍的間隔標記法](/nuget/reference/package-versioning#version-ranges)。 |
 
-捆綁包版本隨著捆綁包中的包更改而遞增。 當包中的包由主要版本增加時,將發生重大版本更改。 捆綁包中的主要版本更改通常與函數運行時的主要版本更改一致。  
+配套版本隨著套件在配套中的增加而變更。 當配套中的套件以主要版本遞增時，就會發生主要版本變更。 套件組合中的主要版本變更通常會與函式執行時間的主要版本變更一致。  
 
-默認捆綁包安裝的當前擴展集在此[擴展.json 檔中](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)枚舉。
+預設配套所安裝的目前延伸模組集合會在此[副檔名 json](https://github.com/Azure/azure-functions-extension-bundles/blob/dev/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json)檔案中列舉。

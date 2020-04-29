@@ -1,16 +1,16 @@
 ---
-title: 管理應用服務計劃
-description: 瞭解如何執行不同的任務來管理應用服務計畫,例如創建、移動、縮放和刪除。
+title: 管理 App Service 計畫
+description: 瞭解如何執行不同的工作來管理 App Service 方案，例如建立、移動、調整和刪除。
 keywords: App Service, Azure App Service, 級別, App Service方案, 變更, 建立, 管理, 管控
 ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: d40f5db65ce9ca90ae978bac4491bdebccc2a328
-ms.sourcegitcommit: 98e79b359c4c6df2d8f9a47e0dbe93f3158be629
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80811722"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>在 Azure 建立管理 App Service 方案
@@ -26,19 +26,19 @@ ms.locfileid: "80811722"
 
 1. 在 [Azure 入口網站](https://portal.azure.com)中，選取 [建立資源]****。
 
-   ![在 Azure 門戶中創建資源。][createResource] 
+   ![在 Azure 入口網站中建立資源。][createResource] 
 
-1. 選擇 **「新增** > **Web 應用**」或「其他應用服務應用」。
+1. 選取 [**新增** > **Web 應用程式**] 或其他類型的 app service 應用程式。
 
    ![在 Azure 入口網站中建立應用程式。][createWebApp] 
 
-2. 在配置應用服務計畫之前配置 **「實例詳細資訊**」部分。 **發佈**和**作業系統**等設置可以更改應用服務計劃的可用定價層。 **區域**確定應用服務計劃的創建位置。 
+2. 請先設定 [**實例詳細資料**] 區段，再設定 App Service 計畫。 **發佈**和**作業系統**等設定可以變更 App Service 方案的可用定價層。 **區域**決定您的 App Service 方案的建立位置。 
    
-3. 在 **「應用服務計劃」** 部分中,選擇現有計畫,或通過選擇 **「創建新**」來創建計畫。
+3. 在 [ **App Service 計畫**] 區段中，選取現有的方案，或選取 **[新建]** 來建立方案。
 
    ![建立 App Service 方案。][createASP] 
 
-4. 創建計劃時,您可以選擇新計劃的定價層。 在**Sku 和大小**中,選擇 **「更改大小」** 以更改定價層。 
+4. 在建立方案時，您可以選取新方案的定價層。 在 [ **Sku 和大小**] 中，選取 [**變更大小**] 以變更定價層。 
 
 <a name="move"></a>
 
@@ -52,16 +52,16 @@ ms.locfileid: "80811722"
 > 您無法在建立方案時指定您想要的網路空間，但這可確保方案建立於與現有方案相同的網路空間中。 簡單地說，所有使用相同資源群組和區域組合建立的方案都會部署到相同的網路空間中。 比方說，如果您在資源群組 A 和區域 B 中建立方案，則您後續在資源群組 A 和區域 B 中建立的方案都會部署到相同網路空間中。 請注意，方案建立之後便不能移動網路空間，所以您無法藉由將方案移至另一個資源群組，將其移到與另一個方案「相同的網路空間」中。
 > 
 
-1. 在[Azure 門戶](https://portal.azure.com)中,搜索並選擇**應用服務**,然後選擇要移動的應用。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，搜尋並選取 [**應用程式服務**]，然後選取您想要移動的應用程式。
 
-2. 從左側功能表中,選擇 **「更改應用服務計劃**」。
+2. 從左側功能表中，選取 [**變更 App Service 方案**]。
 
-3. 在**應用服務計劃**下拉清單中,選擇要將應用移動到的現有計劃。 下拉清單僅顯示與當前應用服務計劃位於同一資源組和地理區域中的計劃。 如果不存在此類計劃,則默認情況下允許您創建計劃。 還可以通過選擇 **「創建新**」手動創建新計畫。
+3. 在 [ **App Service 方案**] 下拉式清單中，選取要將應用程式移至其中的現有方案。 下拉式清單只會顯示與目前 App Service 方案位於相同資源群組和地理區域中的方案。 如果沒有這類計畫，它可讓您依預設建立計畫。 您也**可以選取 [新建]**，以手動方式建立新的方案。
 
-4. 如果創建計劃,則可以選擇新計劃的定價層。 在**定價層**中,選擇現有層以進行更改。 
+4. 如果您建立方案，則可以選取新方案的定價層。 在 [**定價層**] 中，選取要變更的現有層。 
    
    > [!IMPORTANT]
-   > 如果要將應用從更分層計劃移動到較低層計劃(如從**D1**到**F1),** 則應用可能會失去目標計劃中的某些功能。 例如,如果應用程式使用 TLS/SSL 憑證,您可能會看到以下錯誤訊息:
+   > 如果您要將應用程式從較高層級的方案移至較低層的方案（例如從**D1**到**F1**），應用程式可能會遺失目標方案中的某些功能。 例如，如果您的應用程式使用 TLS/SSL 憑證，您可能會看到此錯誤訊息：
    >
    > `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`
 

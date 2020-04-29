@@ -1,7 +1,7 @@
 ---
-title: 在應用程式見解中調試和排除機器學習管道
+title: 在 Application Insights 中，針對機器學習管線進行調試和疑難排解
 titleSuffix: Azure Machine Learning
-description: 將日誌記錄添加到您的訓練和批處理評分管道,並在應用程式見解中查看記錄的結果。
+description: 將記錄新增至定型和批次計分管線，並在 Application Insights 中查看記錄的結果。
 services: machine-learning
 author: sanpil
 ms.author: sanpil
@@ -12,34 +12,34 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: b3e4bf19a7ec153f85483f3c5028e468e06ed7f0
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80982356"
 ---
-# <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>在應用程式見解中調試和排除機器學習管道
+# <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>在 Application Insights 中，針對機器學習管線進行調試和疑難排解
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-[OpenCensus](https://opencensus.io/quickstart/python/) python 庫可用於從文本將日誌路由到應用程式見解。 聚合管道中的日誌在一個位置運行,允許您生成查詢和診斷問題。 使用應用程式見解將允許您跟蹤日誌隨時間而過,並在運行中比較管道日誌。
+[OpenCensus](https://opencensus.io/quickstart/python/) python 程式庫可以用來將記錄路由至您的腳本中的 Application Insights。 在同一個位置匯總管線執行的記錄，可讓您建立查詢並診斷問題。 使用 Application Insights 可讓您追蹤一段時間的記錄，並比較執行之間的管線記錄。
 
-將日誌放在原位後將提供異常和錯誤消息的歷史記錄。 由於應用程式見解與 Azure 警報集成,因此還可以根據應用程式見解查詢創建警報。
+讓您的登入一次，將會提供例外狀況和錯誤訊息的歷程記錄。 因為 Application Insights 與 Azure 警示整合，您也可以根據 Application Insights 查詢來建立警示。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* 依以下步驟建立 Azure[機器學習](./how-to-manage-workspace.md)工作區並[建立第一個管道](./how-to-create-your-first-pipeline.md)
+* 遵循步驟來建立[Azure Machine Learning](./how-to-manage-workspace.md)工作區，並[建立您的第一個管線](./how-to-create-your-first-pipeline.md)
 * [設定開發環境](./how-to-configure-environment.md)以安裝 Azure Machine Learning SDK。
-* 在本地安裝[OpenCensus Azure 監視器匯出](https://pypi.org/project/opencensus-ext-azure/)套件:
+* 在本機安裝[OpenCensus Azure 監視器匯出](https://pypi.org/project/opencensus-ext-azure/)工具套件：
   ```python
   pip install opencensus-ext-azure
   ```
-* 建立[應用程式的設定解實例](../azure-monitor/app/opencensus-python.md)(此文件包含有關取得資源的連接字串的資訊)
+* 建立[Application Insights 實例](../azure-monitor/app/opencensus-python.md)（本檔也包含取得資源連接字串的相關資訊）
 
 ## <a name="getting-started"></a>開始使用
 
-本節是有關使用 Azure 機器學習管道的 OpenCensus 的介紹。 有關詳細教學,請參閱[開啟 Census Azure 監視器匯出器](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
+本節是從 Azure Machine Learning 管線使用 OpenCensus 的特定簡介。 如需詳細的教學課程，請參閱[OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
-向 Azure ML 管道添加 PythonScript 步驟。 使用對開放 ext-azure 的相依項設定[Run 設定](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py)。 配置`APPLICATIONINSIGHTS_CONNECTION_STRING`環境變數。
+將 PythonScriptStep 新增至您的 Azure ML 管線。 使用 opencensus-ext-azure 上的相依性來設定您的[RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) 。 設定`APPLICATIONINSIGHTS_CONNECTION_STRING`環境變數。
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -72,14 +72,14 @@ pipeline = Pipeline(workspace=ws, steps=[sample_step])
 pipeline.submit(experiment_name="Logging_Experiment")
 ```
 
-建立名為 `sample_step.py`的檔案。 導入 AzureLogHandler 類以將日誌路由到應用程式見解。 您還需要匯入 Python 紀錄記錄庫。
+建立名為 `sample_step.py`的檔案。 匯入 AzureLogHandler 類別以將記錄路由至 Application Insights。 您也需要匯入 Python 記錄程式庫。
 
 ```python
 from opencensus.ext.azure.log_exporter import AzureLogHandler
 import logging
 ```
 
-接下來,將 AzureLogHandler 添加到 python 記錄器。
+接下來，將 AzureLogHandler 新增至 python 記錄器。
 
 ```python
 logger = logging.getLogger(__name__)
@@ -91,32 +91,32 @@ logger.addHandler(AzureLogHandler())
 logger.warning("I will be sent to Application Insights")
 ```
 
-## <a name="logging-with-custom-dimensions"></a>使用自訂維度進行紀錄記錄
+## <a name="logging-with-custom-dimensions"></a>使用自訂維度記錄
  
-默認情況下,轉發到應用程式見解的日誌將沒有足夠的上下文追溯到運行或實驗。 為了使日誌可操作以診斷問題,需要額外的欄位。 
+根據預設，轉送至 Application Insights 的記錄不會有足夠的內容可以回溯至執行或實驗。 若要讓記錄可採取動作來診斷問題，則需要其他欄位。 
 
-要添加這些欄位,可以添加自定義維度以向日誌消息提供上下文。 例如,當有人想要在同一管道運行中查看跨多個步驟的日誌時。
+若要加入這些欄位，可以加入自訂維度以提供內容給記錄訊息。 其中一個範例是當有人想要在相同的管線執行中跨多個步驟來查看記錄時。
 
-自定義維度構成鍵值(存儲為字串、字串)對的字典。 然後,字典將發送到應用程式見解,並作為列顯示在查詢結果中。 此單一個維度可用[查詢參數](#additional-helpful-queries)。
+自訂維度會組成索引鍵/值的字典（儲存為字串、字串）組。 然後，此字典會傳送至 Application Insights，並顯示為查詢結果中的資料行。 其個別維度可用來做為[查詢參數](#additional-helpful-queries)。
 
-### <a name="helpful-context-to-include"></a>要包含的有用上下文
+### <a name="helpful-context-to-include"></a>包含有用的內容
 
 | 欄位                          | 推理/範例                                                                                                                                                                       |
 |--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| parent_run_id                  | 可以查詢具有相同parent_run_id的日誌,以便隨著時間的推移查看所有步驟的日誌,而不必深入到每個步驟中                                        |
-| step_id                        | 可以查詢具有相同step_id的日誌,以查看問題發生的地方,範圍縮小到單個步驟                                                        |
-| step_name                      | 可以查詢日誌以查看隨時間而執行的步驟性能。 還有助於查找最近運行step_id,而無需潛入門戶 UI                                          |
-| experiment_name                | 可以跨日誌查詢以查看實驗性能。 還有助於查找最近運行parent_run_id或step_id,而無需深入了解門戶 UI                   |
-| run_url                 | 可以提供直接回運行以進行調查的連結。 |
+| parent_run_id                  | 可以查詢具有相同 parent_run_id 的記錄，以查看一段時間內所有步驟的記錄，而不需要深入探索每個個別步驟                                        |
+| step_id                        | 可以查詢具有相同 step_id 的記錄，以查看範圍僅限於個別步驟的問題發生所在的位置                                                        |
+| step_name                      | 可以查詢記錄，以查看經過一段時間的逐步執行效能。 也有助於尋找最近執行的 step_id，而不需要深入瞭解入口網站 UI                                          |
+| experiment_name                | 可以跨記錄查詢，以查看經過一段時間的實驗效能。 也有助於尋找最近執行的 parent_run_id 或 step_id，而不需要深入瞭解入口網站 UI                   |
+| run_url                 | 可以將連結直接提供給執行調查。 |
 
-**其他有用的欄位**
+**其他實用的欄位**
 
-這些欄位可能需要其他程式碼檢測,並且不由運行上下文提供。
+這些欄位可能需要額外的程式碼檢測，而且不是由執行內容所提供。
 
 | 欄位                   | 推理/範例                                                                                                                                                                                                           |
 |-------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| build_url/build_version | 如果使用 CI/CD 進行部署,此欄位可以將日誌與提供步驟和管道邏輯的代碼版本相關聯。 此連結可進一步幫助診斷問題,或識別具有特定特徵的模型(日誌/指標值) |
-| run_type                       | 可以區分不同的模型類型,或訓練與評分運行 |
+| build_url/build_version | 如果使用 CI/CD 來部署，此欄位可以將記錄與提供步驟和管線邏輯的程式碼版本相互關聯。 此連結可進一步協助診斷問題，或找出具有特定特性的模型（記錄/度量值） |
+| run_type                       | 可以區別不同的模型類型，或定型與評分的執行 |
 
 ### <a name="creating-a-custom-dimensions-dictionary"></a>建立自訂維度字典
 
@@ -138,33 +138,33 @@ custom_dimensions = {
 logger.info("I will be sent to Application Insights with Custom Dimensions", custom_dimensions)
 ```
 
-## <a name="opencensus-python-logging-considerations"></a>開啟Census Python 紀錄記錄事項
+## <a name="opencensus-python-logging-considerations"></a>OpenCensus Python 記錄考慮
 
-OpenCensus AzureLogHandler 用於將 Python 日誌路由到應用程式見解。 因此,應考慮 Python 日誌記錄細微差別。 創建記錄器時,它具有預設日誌級別,並將顯示大於或等於該級別的日誌。 使用 Python 紀錄紀錄功能的一個很好的參考是[紀錄紀錄的說明書](https://docs.python.org/3/howto/logging-cookbook.html)。
+OpenCensus AzureLogHandler 是用來將 Python 記錄路由至 Application Insights。 因此，您應該考慮 Python 記錄的細節。 當記錄器建立時，它會有預設的記錄層級，而且會顯示大於或等於該層級的記錄。 使用 Python 記錄功能的良好參考是記錄操作[手冊](https://docs.python.org/3/howto/logging-cookbook.html)。
 
-OpenCensus 庫`APPLICATIONINSIGHTS_CONNECTION_STRING`需要 環境變數。 我們建議設置此環境變數,而不是將其作為管道參數傳入,以避免繞過純文本連接字串。
+OpenCensus `APPLICATIONINSIGHTS_CONNECTION_STRING`程式庫需要環境變數。 我們建議您設定此環境變數，而不是將它當做管線參數傳遞，以避免傳遞純文字連接字串。
 
-## <a name="querying-logs-in-application-insights"></a>在應用程式見解中查詢紀錄
+## <a name="querying-logs-in-application-insights"></a>查詢 Application Insights 中的記錄
 
-路由到應用程式見解的日誌將在"跟蹤"或"異常"下顯示。 請務必調整時間視窗以包括管道運行。
+路由傳送至 Application Insights 的記錄會顯示在 [追蹤] 或 [例外狀況] 底下。 請務必調整您的時間範圍，以包含您的管線執行。
 
-![應用程式見解查詢結果](./media/how-to-debug-pipelines-application-insights/traces-application-insights-query.png)
+![Application Insights 查詢結果](./media/how-to-debug-pipelines-application-insights/traces-application-insights-query.png)
 
-應用程式見解中的結果將顯示日誌消息和級別、文件路徑和代碼行號。 它還將顯示包含的任何自定義維度。 在此圖像中,自定義 Dimensions 字典顯示上一[個代碼示例](#creating-a-custom-dimensions-dictionary)中的鍵/值對。
+Application Insights 中的結果會顯示記錄訊息和層級、檔案路徑和程式程式碼號。 它也會顯示包含的任何自訂維度。 在此影像中，customDimensions 字典會顯示先前程式[代碼範例](#creating-a-custom-dimensions-dictionary)中的索引鍵/值組。
 
-### <a name="additional-helpful-queries"></a>其他有用的查詢
+### <a name="additional-helpful-queries"></a>其他實用的查詢
 
-以下一些查詢使用"自定義維度.級別"。 這些嚴重性級別對應於 Python 日誌最初發送的級別。 有關其他查詢資訊,請參閱[Azure 監視器紀錄查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)。
+以下的部分查詢使用 ' customDimensions. Level '。 這些嚴重性層級會對應到原先用來傳送 Python 記錄檔的層級。 如需其他查詢資訊，請參閱[Azure 監視器記錄查詢](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)。
 
 | 使用案例                                                               | 查詢                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
-| 記錄特定自定義維度的結果,例如"parent_run_id" | <pre>traces \| <br>where customDimensions.parent_run_id == '931024c2-3720-11ea-b247-c49deda841c1</pre> |
-| 記錄過去 7 天內所有培訓運行的結果                     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.run_type == 'training'</pre>           |
-| 記錄過去 7 天的嚴重性級別錯誤的結果              | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR'                     |
-| 過去 7 天具有嚴重性級別的錯誤的紀錄結果計數     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR' \| <br>summarize count()</pre> |
+| 特定自訂維度的記錄結果，例如 ' parent_run_id ' | <pre>traces \| <br>where customDimensions.parent_run_id == '931024c2-3720-11ea-b247-c49deda841c1</pre> |
+| 過去7天內所有定型執行的記錄結果                     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.run_type == 'training'</pre>           |
+| 過去7天內 severityLevel 錯誤的記錄結果              | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR'                     |
+| 過去7天內發生 severityLevel 錯誤的記錄結果計數     | <pre>traces \| <br>where timestamp > ago(7d) <br>and customDimensions.Level == 'ERROR' \| <br>summarize count()</pre> |
 
 ## <a name="next-steps"></a>後續步驟
 
-在應用程式見解實例中擁有紀錄後,可以使用這些紀錄根據查詢結果設定[Azure 監視器警報](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on)。
+一旦您的 Application Insights 實例中有記錄，就可以用來根據查詢結果設定[Azure 監視器警示](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on)。
 
-您還可以將查詢的結果添加到[Azure 儀表板](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query)以獲取其他見解。
+您也可以將查詢的結果新增至[Azure 儀表板](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query)，以取得其他見解。

@@ -1,5 +1,5 @@
 ---
-title: 使用樣本建立 Apache Hadoop 叢集 - Azure HDInsight
+title: 使用範本建立 Apache Hadoop 叢集-Azure HDInsight
 description: 了解如何使用 Resource Manager 範本建立 HDInsight 的叢集
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/07/2020
 ms.openlocfilehash: 67d5481b82b7469c5ae55704768ce494dbc9dca5
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80879134"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用 Resource Manager 範本在 HDInsight 中建立 Apache Hadoop 叢集
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-在本文中,您將瞭解使用[Azure 資源管理器範本](../azure-resource-manager/templates/deploy-powershell.md)創建 Azure HDInsight 叢集的幾種方法。 要瞭解其他群集創建工具和功能,請按一下此頁面頂部的選項卡選擇器。 另請參考[叢集建立方法](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods)。
+在本文中，您將瞭解使用[Azure Resource Manager 範本](../azure-resource-manager/templates/deploy-powershell.md)建立 Azure HDInsight 叢集的數種方式。 若要瞭解其他叢集建立工具和功能，請按一下此頁面頂端的索引標籤選取器。 另請參閱叢集[建立方法](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods)。
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="resource-manager-templates"></a>Resource Manager 範本
 
-資源管理員樣本便於在單一協調的操作中為應用程式建立以下資源:
+Resource Manager 範本可讓您輕鬆地在單一、協調的作業中為您的應用程式建立下列資源：
 
 * HDInsight 叢集及其相依資源 (例如，預設儲存體帳戶)。
 * 其他資源 (例如，使用 [Apache Sqoop](https://sqoop.apache.org/) \(英文\) 的 Azure SQL Database)。
@@ -43,7 +43,7 @@ ms.locfileid: "80879134"
 
 ## <a name="generate-templates"></a>產生範本
 
-Resource Manager 可讓您使用不同工具，從您的訂用帳戶中現有的資源匯出 Resource Manager 範本。 您可以使用產生的範本了解範本語法，或視需要自動重新部署解決方案。 有關詳細資訊,請參閱[匯出範本](../azure-resource-manager/templates/export-template-portal.md)。
+Resource Manager 可讓您使用不同工具，從您的訂用帳戶中現有的資源匯出 Resource Manager 範本。 您可以使用產生的範本了解範本語法，或視需要自動重新部署解決方案。 如需詳細資訊，請參閱[匯出範本](../azure-resource-manager/templates/export-template-portal.md)。
 
 ## <a name="deploy-using-the-portal"></a>使用入口網站進行部署
 
@@ -75,7 +75,7 @@ Resource Manager 可讓您使用不同工具，從您的訂用帳戶中現有的
 
 在本文中，您學到幾種建立 HDInsight 叢集的方法。 如需詳細資訊，請參閱下列文章：
 
-* 有關更多 HDInsight 相關樣本,請參閱[Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?term=hdinsight)。
+* 如需更多 HDInsight 相關範本，請參閱[Azure 快速入門範本](https://azure.microsoft.com/resources/templates/?term=hdinsight)。
 * 如需透過 .NET 用戶端程式庫部署資源的範例，請參閱[使用 .NET 程式庫與範本部署資源](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 * 如需部署應用程式的深入範例，請參閱 [透過可預測方式在 Azure 中佈建和部署微服務](../app-service/deploy-complex-application-predictably.md)。
 * 如需將您的方案部署到不同環境的指引，請參閱 [Microsoft Azure 中的開發和測試環境](../solution-dev-test-environments.md)。

@@ -1,57 +1,57 @@
 ---
 title: 資產轉換 REST API
-description: 描述如何透過 REST API 轉換資產
+description: 說明如何透過 REST API 轉換資產
 author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887039"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>使用模型轉換 REST API
 
-[模型轉換](model-conversion.md)服務通過[REST API](https://en.wikipedia.org/wiki/Representational_state_transfer)進行控制。 本文介紹了轉換服務 API 詳細資訊。
+[模型轉換](model-conversion.md)服務是透過[REST API](https://en.wikipedia.org/wiki/Representational_state_transfer)來控制。 本文說明轉換服務 API 的詳細資料。
 
 ## <a name="regions"></a>區域
 
-請參考要將要求傳送到的基本網址[的區域清單](../../reference/regions.md)。
+查看基底 Url 用來傳送要求的[可用區域清單](../../reference/regions.md)。
 
-## <a name="common-headers"></a>常見標頭
+## <a name="common-headers"></a>一般標頭
 
-### <a name="common-request-headers"></a>常見要求標頭
+### <a name="common-request-headers"></a>常見的要求標頭
 
-必須指定所有標頭:
+所有要求都必須指定這些標頭：
 
-- **授權**標頭的值必須為「承載器 =*TOKEN*}」,其中 [*TOKEN*] 是[服務存取權杖](../tokens.md)。
+- **Authorization**標頭的值必須是 "持有人 [*token*]"，其中 [*token*] 是[服務存取權杖](../tokens.md)。
 
-### <a name="common-response-headers"></a>常見回應標頭
+### <a name="common-response-headers"></a>常見的回應標頭
 
-所有回應都包含以下標頭:
+所有回應都包含下列標頭：
 
-- **MS-CV**標頭包含一個唯一字串,可用於跟蹤服務中的調用。
+- **MS-CV**標頭包含唯一的字串，可用來追蹤服務內的呼叫。
 
 ## <a name="endpoints"></a>端點
 
-轉換服務提供三個 REST API 終結點,以:
+轉換服務會提供三個 REST API 端點來執行下列動作：
 
-- 使用與 Azure 遠端呈現帳戶關聯的存儲帳戶啟動模型轉換。 
-- 使用提供的*共享存取簽名 (SAS)* 啟動模型轉換。
+- 使用與您的 Azure 遠端轉譯帳戶連結的儲存體帳戶，啟動模型轉換。 
+- 使用提供的*共用存取簽章（SAS）* 啟動模型轉換。
 - 查詢轉換狀態
 
-### <a name="start-conversion-using-a-linked-storage-account"></a>使用連結的儲存帳戶開始轉換
-Azure 遠端呈現帳戶需要按照有關如何[連結存儲帳戶](../create-an-account.md#link-storage-accounts)的步驟訪問提供的存儲帳戶。
+### <a name="start-conversion-using-a-linked-storage-account"></a>使用連結的儲存體帳戶開始轉換
+您的 Azure 遠端轉譯帳戶必須遵循如何[連結儲存體帳戶](../create-an-account.md#link-storage-accounts)中的步驟，才能存取提供的儲存體帳戶。
 
 | 端點 | 方法 |
 |-----------|:-----------|
-| /v1/帳戶/**帳戶 ID**/轉換/建立 | POST |
+| /v1/accounts/**accountID**/conversions/create | POST |
 
-返回在 JSON 文件中包裝的持續轉換的 ID。 欄位名稱為"轉換ID"。
+傳回進行中轉換的識別碼，包裝在 JSON 檔中。 功能變數名稱為 "conversionId"。
 
-#### <a name="request-body"></a>Request body
+#### <a name="request-body"></a>要求本文
 
 
 ```json
@@ -72,21 +72,21 @@ Azure 遠端呈現帳戶需要按照有關如何[連結存儲帳戶](../create-a
     }
 }
 ```
-### <a name="start-conversion-using-provided-shared-access-signatures"></a>使用分享分享存取簽署開始轉換
-如果您的 ARR 帳戶未連結到儲存帳戶,則此 REST 介面允許您使用*共享存取簽名 (SAS)* 提供訪問許可權。
+### <a name="start-conversion-using-provided-shared-access-signatures"></a>使用提供的共用存取簽章開始轉換
+如果您的 ARR 帳戶未連結至您的儲存體帳戶，此 REST 介面可讓您使用*共用存取簽章（SAS）* 來提供存取權。
 
 | 端點 | 方法 |
 |-----------|:-----------|
-| /v1/帳戶/**帳戶 ID**/轉化/建立共享存取簽名 | POST |
+| /v1/accounts/**accountID**/conversions/createWithSharedAccessSignature | POST |
 
-返回在 JSON 文件中包裝的持續轉換的 ID。 欄位名稱為"轉換ID"。
+傳回進行中轉換的識別碼，包裝在 JSON 檔中。 功能變數名稱為 "conversionId"。
 
-#### <a name="request-body"></a>Request body
+#### <a name="request-body"></a>要求本文
 
-要求正文與上面建立 REST 呼叫相同,但輸入與輸出包含*分享存取簽章 (SAS) 權杖*。 這些權杖提供對儲存帳戶的訪問,用於讀取輸入和寫入轉換結果。
+要求主體與上述的建立 REST 呼叫中的相同，但輸入和輸出包含*共用存取簽章（SAS）權杖*。 這些權杖可讓您存取儲存體帳戶以讀取輸入和寫入轉換結果。
 
 > [!NOTE]
-> 這些 SAS URI 令牌是查詢字串,而不是完整的 URI。 
+> 這些 SAS URI 權杖是查詢字串，而不是完整的 URI。 
 
 
 ```json
@@ -111,20 +111,20 @@ Azure 遠端呈現帳戶需要按照有關如何[連結存儲帳戶](../create-a
 ```
 
 ### <a name="poll-conversion-status"></a>輪詢轉換狀態
-可以使用以下介面查詢從上述 REST 呼叫之一開始的正在進行的轉換的狀態:
+使用上述其中一個 REST 呼叫來開始進行中的轉換狀態，可以使用下列介面來進行查詢：
 
 
 | 端點 | 方法 |
 |-----------|:-----------|
-| /v1/帳戶/**帳戶 ID**/轉換/**轉換 Id** | GET |
+| /v1/accounts/**accountID**/conversions/**conversionId** | GET |
 
-傳回具有「狀態」欄位的 JSON 文件,該欄位可以具有以下值:
+傳回具有 "status" 欄位且具有下列值的 JSON 檔：
 
-- "正在運行"
+- 運行
 - "Success"
-- "失敗"
+- 出
 
-如果狀態為"失敗",則將存在一個附加的"錯誤"欄位,其中將顯示一個包含錯誤資訊的"消息"子欄位。 其他日誌將上載到輸出容器。
+如果狀態為「失敗」，則會有一個額外的「錯誤」欄位，內含含有錯誤資訊的「訊息」子欄位。 其他記錄將會上傳至您的輸出容器。
 
 ## <a name="next-steps"></a>後續步驟
 

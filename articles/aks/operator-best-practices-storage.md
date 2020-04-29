@@ -1,15 +1,15 @@
 ---
-title: 儲存和備份的最佳做法
+title: 儲存和備份的最佳作法
 titleSuffix: Azure Kubernetes Service
 description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中進行儲存、資料加密及備份時的最佳做法
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80877893"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中進行儲存和備份的最佳做法
@@ -32,7 +32,7 @@ ms.locfileid: "80877893"
 
 下表會概述可用的儲存體類型及其功能：
 
-| 使用案例 | 磁碟區外掛程式 | 單次讀取/寫入 | 多次唯讀 | 多次讀取/寫入 | Windows 伺服器容器支援 |
+| 使用案例 | 磁碟區外掛程式 | 單次讀取/寫入 | 多次唯讀 | 多次讀取/寫入 | Windows Server 容器支援 |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
 | 共用設定       | Azure 檔案   | 是 | 是 | 是 | 是 |
 | 結構化應用程式資料        | Azure 磁碟   | 是 | 否  | 否  | 是 |
@@ -40,7 +40,7 @@ ms.locfileid: "80877893"
 
 AKS 中針對磁碟區所提供的兩個主要儲存體類型，是由 Azure 磁碟或 Azure 檔案所支援。 為了提升安全性，這兩種儲存體預設都會使用 Azure 儲存體服務加密 (SSE) 來對待用資料進行加密。 目前磁碟無法在 AKS 節點層級使用 Azure 磁碟加密進行加密。
 
-Azure 檔案與 Azure 磁碟在標準效能和進階效能層中都可用:
+Azure 檔案儲存體和 Azure 磁片都適用于 Standard 和 Premium 效能層級：
 
 - 「進階」** 磁碟是由高效能固態硬碟 (SSD) 所支援。 針對所有生產環境工作負載，都建議使用進階磁碟。
 - 「標準」** 磁碟是由一般磁碟 (HDD) 所支援，且適用於封存或不常存取的資料。
@@ -76,7 +76,7 @@ AKS 節點會以 Azure VM 的形式執行。 有不同類型和大小的 VM 可�
 
 ![Azure Kubernetes Service (AKS) 叢集中的永續性磁碟區宣告](media/concepts-storage/persistent-volume-claims.png)
 
-永續性磁碟區宣告 (PVC) 可讓您視需求以動態方式建立儲存體。 基礎的 Azure 磁碟會在 Pod 要求它們時建立。 在 pod 定義中,您請求建立卷並將其附加到指定的裝載路徑。
+永續性磁碟區宣告 (PVC) 可讓您視需求以動態方式建立儲存體。 基礎的 Azure 磁碟會在 Pod 要求它們時建立。 在 pod 定義中，您會要求建立磁片區，並將其附加至指定的掛接路徑。
 
 如需如何動態建立及使用磁碟區的概念，請參閱[永續性磁碟區宣告][aks-concepts-storage-pvcs]。
 
@@ -88,9 +88,9 @@ AKS 節點會以 Azure VM 的形式執行。 有不同類型和大小的 VM 可�
 
 ## <a name="secure-and-back-up-your-data"></a>保護並備份您的資料
 
-**最佳實務指南**- 使用適合儲存類型的工具(如 Velero 或 Azure 網站恢復)備份資料。 驗證那些備份的完整性及安全性。
+**最佳做法指引**-針對您的儲存體類型（例如 Velero 或 Azure Site Recovery）使用適當的工具來備份您的資料。 驗證那些備份的完整性及安全性。
 
-當您的應用程式儲存及使用保存在磁碟上或檔案中的資料時，您必須對該資料進行定期備份或擷取快照集。 Azure 磁碟可以使用內建的快照集技術。 在執行快照操作之前,可能需要查找應用程式以刷新寫入磁碟。 [Velero][velero]可以備份持久性卷以及其他群集資源和配置。 如果您無法[從應用程式移除狀態][remove-state]，請備份來自永續性磁碟區的資料並定期測試還原作業，以確認資料完整性及必要的處理程序。
+當您的應用程式儲存及使用保存在磁碟上或檔案中的資料時，您必須對該資料進行定期備份或擷取快照集。 Azure 磁碟可以使用內建的快照集技術。 在執行快照集作業之前，您可能需要先尋找應用程式，將寫入排清至磁片。 [Velero][velero]可以備份持續性磁片區，以及其他叢集資源和設定。 如果您無法[從應用程式移除狀態][remove-state]，請備份來自永續性磁碟區的資料並定期測試還原作業，以確認資料完整性及必要的處理程序。
 
 請了解不同資料備份方法的限制，以及您是否需要在擷取快照集之前使資料靜止。 資料備份並不一定能讓您還原您的叢集部署應用程式環境。 如需那些案例的詳細資訊，請參閱 [AKS 中商務持續性和災害復原的最佳做法][best-practices-multi-region]。
 

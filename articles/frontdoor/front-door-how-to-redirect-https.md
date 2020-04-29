@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 門戶建立具有 HTTP 到 HTTPS 重定向的前門
-description: 瞭解如何使用 Azure 門戶創建具有從 HTTP 重定向流量重定向到 HTTPS 的前門。
+title: 使用 Azure 入口網站建立具有 HTTP 到 HTTPS 重新導向的 Front 門
+description: 瞭解如何使用 Azure 入口網站，建立具有從 HTTP 到 HTTPS 的重新導向流量的 Front 門。
 services: front-door
 author: sharad4u
 ms.service: frontdoor
@@ -8,104 +8,104 @@ ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
 ms.openlocfilehash: f1b8c033a3ec230d60c30f6168de8ce013a80ac6
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80877995"
 ---
-# <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 門戶建立具有 HTTP 到 HTTPS 重定向的前門
+# <a name="create-a-front-door-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 入口網站建立具有 HTTP 到 HTTPS 重新導向的 Front 門
 
-可以使用 Azure 門戶建立具有 TLS 終止憑證[的前門](front-door-overview.md)。 路由規則用於將 HTTP 流量重定向到 HTTPS。
+您可以使用 Azure 入口網站來建立具有憑證的[Front 門](front-door-overview.md)以進行 TLS 終止。 路由規則可用來將 HTTP 流量重新導向至 HTTPS。
 
 在本文中，您將學會如何：
 
 > [!div class="checklist"]
-> * 使用現有的 Web 應用程式建立前門
-> * 使用 TLS/SSL 憑證新增自訂網域 
-> * 設定在自訂網域上重定向 HTTPS
+> * 建立具有現有 Web 應用程式資源的 Front
+> * 新增具有 TLS/SSL 憑證的自訂網域 
+> * 在自訂網域上設定 HTTPS 重新導向
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="create-a-front-door-with-an-existing-web-app-resource"></a>使用現有的 Web 應用程式建立前門
+## <a name="create-a-front-door-with-an-existing-web-app-resource"></a>建立具有現有 Web 應用程式資源的 Front
 
-1. 登錄到中的[https://portal.azure.com](https://portal.azure.com)Azure 門戶。
+1. 登入 Azure 入口網站：[https://portal.azure.com](https://portal.azure.com)。
 2. 按一下 Azure 入口網站左上角的 [建立資源]****。
-3. 使用搜索欄搜索**前門**,找到資源類型後,按兩下"**創建**"。
-4. 選擇訂閱,然後使用現有資源組或創建新資源組。 請注意,UI 中請求的位置僅適用於資源組。 您的前門設定將部署在 Azure 前門的所有[POP 位置](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door)。
+3. 使用搜尋列來搜尋**Front** ，然後在找到資源類型之後，按一下 [**建立**]。
+4. 選擇訂用帳戶，然後使用現有的資源群組或建立一個新的。 請注意，在 UI 中要求的位置僅適用于資源群組。 您的 Front 門板設定會部署到所有[Azure Front 門板的 POP 位置](front-door-faq.md#what-are-the-pop-locations-for-azure-front-door)。
 
-    ![為新前門配置基礎知識](./media/front-door-url-redirect/front-door-create-basics.png)
+    ![設定新 Front 門的基本概念](./media/front-door-url-redirect/front-door-create-basics.png)
 
-5. 按下 **「下一步**」輸入設定選項卡。前門的配置分三個步驟進行 - 添加預設前端主機,在後端池中添加後端,然後創建路由規則以映射前端主機的路由行為。 
+5. 按 **[下一步**] 以輸入 [設定] 索引標籤。Front 的設定會在三個步驟中進行：新增預設前端主機、在後端集區中新增後端，然後建立路由規則來對應前端主機的路由行為。 
 
-     ![前門設定設計器](./media/front-door-url-redirect/front-door-designer.png)
+     ![Front 門板設定設計工具](./media/front-door-url-redirect/front-door-designer.png)
 
-6. 按一**+** 下_前端主機_上的『圖示以創建前端主機,為前門的預設前端主機輸入全域唯一名稱)。`\<**name**\>.azurefd.net` 按下「**添加**」以繼續下一步。
+6. 按一下前端**+**_主機_上的 ['] 圖示，以建立前端主機，並為您的前端輸入預設前端主機的全域唯一名稱（`\<**name**\>.azurefd.net`）。 按一下 [**新增**] 繼續進行下一個步驟。
 
      ![新增前端主機](./media/front-door-url-redirect/front-door-create-fehost.png)
 
-7. 單擊**+**_後端池_上的『圖示以創建後端池』 。 提供後端介面的名稱,然後按下「**新增後端**」。
-8. 選擇「後端介面主機類型」 作為_套用服務_。 選擇託管 Web 應用的訂閱,然後從**後端主機名**的下拉清單中選擇特定的 Web 應用。
-9. 按下「**新增」** 以儲存後端,然後按一下「再次**新增**」 以儲存後端池配置。  ![在後端介面中加入後端介面](./media/front-door-url-redirect/front-door-create-backendpool.png)
+7. 按一下**+**_後端_集區上的 ['] 圖示，以建立後端集區。 提供後端集區的名稱，然後按一下 [**新增後端**]。
+8. 選取後端主機類型作為 [ _App service_]。 選取您的 web 應用程式裝載所在的訂用帳戶，然後從下拉式清單中選取 [**後端主機名稱**] 的特定 web 應用程式。
+9. 按一下 [**新增**] 以儲存後端，然後按一下 [**新增**] 以儲存後端集區設定。  ![在後端集區中新增後端](./media/front-door-url-redirect/front-door-create-backendpool.png)
 
-10. 按一**+** 下_路由規則_上的 '' 圖示以建立路由。 提供路由的名稱,例如"HttpToHTTtextsRedirect",然後將 _「接受的協定」_ 欄位設定為 **「僅 HTTP」。。** 確保選擇適當的_前端主機_。  
-11. 在 _「路徑詳細資訊_」部分,將 _「路由類型_」設置為**重定向**,_確保重定向類型_設定為 **「找到」(302),** 重定向_協定_設定為**僅 HTTPS。** 
-12. 按下「添加」將 HTTP 的路由規則保存到 HTTPS 重定向。
-     ![將 HTTP 新增到 HTTPS 重定向路由](./media/front-door-url-redirect/front-door-redirect-config-example.png)
-13. 添加用於處理 HTTPS 流量的另一個路由規則。 按下**+**_路由規則_上的『符號,並為路由提供名稱,例如"默認轉發路由",然後將 _"接受的協定"_ 欄位設置為 **「僅 HTTPS」。。** 確保選擇適當的_前端主機_。
-14. 在"路徑詳細資訊"部分,將_路由類型_設置為 **"轉發 ",** 確保選擇了正確的後端池,並且 _"轉發協定_**"設置為僅 HTTPS。** 
-15. 按下「添加」以保存路由規則以進行請求轉發。
-     ![為 HTTPS 流量新增轉寄路由](./media/front-door-url-redirect/front-door-forward-route-example.png)
-16. 按下 **「審閱 + 創建**」,然後**創建**,以創建前門配置檔。 轉到創建後的資源。
+10. 按一下**+**_路由規則_上的 ['] 圖示，以建立路由。 提供路由的名稱，例如 ' HttpToHttpsRedirect '，然後將 [_接受的通訊協定_] 欄位設為 [**僅限 HTTP**]。 確定已選取適當的_前端主機_。  
+11. 在 [_路由詳細資料_] 區段上，將_路由類型_設定為 [重新**導向**]，確定 [重新導向_類型_] 設定為 [**找到（302）** ]，而 [重新_導向通訊協定_] 設定為 [**僅 HTTPS** 
+12. 按一下 [新增] 以儲存 HTTP 至 HTTPS 重新導向的路由規則。
+     ![將 HTTP 新增至 HTTPS 重新導向路由](./media/front-door-url-redirect/front-door-redirect-config-example.png)
+13. 新增另一個用來處理 HTTPS 流量的路由規則。 按一下**+**_路由規則_上的 [登入]，並提供路由的名稱（例如 ' DefaultForwardingRoute '），然後將 [_接受的通訊協定_] 欄位設為 [**僅 HTTPS**]。 確定已選取適當的_前端主機_。
+14. 在 [路由詳細資料] 區段上，將 [_路由類型_] 設定為 [**轉寄**]，確定已選取正確的後端集區，而且_轉送通訊協定_設定為 [**僅限 HTTPS**]。 
+15. 按一下 [新增] 以儲存要求轉送的路由規則。
+     ![新增 HTTPS 流量的正向路由](./media/front-door-url-redirect/front-door-forward-route-example.png)
+16. 按一下 [審核] [ **+ 建立**]，然後按一下 [**建立**] 以建立您的 Front 設定檔。 建立之後，移至資源。
 
-## <a name="add-a-custom-domain-to-your-front-door-and-enable-https-on-it"></a>將自訂網域加入前門,並在其上啟用 HTTPS
-以下步驟演示如何在現有前門資源上添加自定義域,然後啟用 HTTP 到 HTTPS 重定向。 
+## <a name="add-a-custom-domain-to-your-front-door-and-enable-https-on-it"></a>將自訂網域新增至您的 Front 門並在其上啟用 HTTPS
+下列步驟展示如何在現有的 Front a 資源上新增自訂網域，然後在其上啟用 HTTP 對 HTTPS 的重新導向。 
 
 ### <a name="add-a-custom-domain"></a>新增自訂網域
 
-這個功能中,為`www`子域加入 CNAME 紀錄(例如`www.contosonews.com`,
+在此範例中，您會新增`www`子域的 CNAME 記錄（例如`www.contosonews.com`）。
 
 #### <a name="create-the-cname-record"></a>建立 CNAME 記錄
 
-添加 CNAME 記錄以將子域映射到前門的預設前端主機`<name>.azurefd.net`(, 前門配置檔的`<name>`名稱)。
+新增 CNAME 記錄以將子域對應至您的 Front 前端預設前端主機（`<name>.azurefd.net`，其中`<name>`是您的前門設定檔名稱）。
 
-對於`www.contoso.com`網域,例如,添加將`www`名稱映射`<name>.azurefd.net`到的CNAME記錄。
+如需`www.contoso.com`網域的範例，請新增將名稱`www`對應至`<name>.azurefd.net`的 CNAME 記錄。
 
 新增 CNAME 之後，DNS 記錄分頁看起來如下列範例所示：
 
-![CNAME 自訂網域到前門](./media/front-door-url-redirect/front-door-dns-cname.png)
+![從 CNAME 自訂網域到 Front](./media/front-door-url-redirect/front-door-dns-cname.png)
 
-#### <a name="onboard-the-custom-domain-on-your-front-door"></a>在前門上的自訂網域
+#### <a name="onboard-the-custom-domain-on-your-front-door"></a>在您的 Front 中將自訂網域上線
 
-1. 在「前門設計器」選項卡上,按一下「前端主機」部分上的「+」圖示以添加新的自定義域。 
-2. 在自訂主機名稱段中輸入完全限定的自訂 DNS`www.contosonews.com`名稱, 範例 。 
-3. 驗證從網域到前門的 CNAME 映射後,按下「**添加」** 以添加自訂域。
-4. 按下 **「保存」** 以提交更改。
+1. 在 [Front 入口設計工具] 索引標籤上，按一下 [前端主機] 區段上的 [+] 圖示，以新增自訂網域。 
+2. 在 [自訂主機名稱] 欄位中輸入完整的自訂 DNS `www.contosonews.com`名稱，例如。 
+3. 一旦將來自網域的 CNAME 對應驗證完成後，請按一下 [**新增**] 以新增自訂網域。
+4. 按一下 [**儲存**] 以提交變更。
 
 ![[自訂網域] 功能表](./media/front-door-url-redirect/front-door-add-custom-domain.png)
 
-### <a name="enable-https-on-your-custom-domain"></a>在自訂網域上啟用 HTTPS
+### <a name="enable-https-on-your-custom-domain"></a>在您的自訂網域上啟用 HTTPS
 
-1. 按下已添加的自訂網域,並在 **「自訂域 HTTPS」** 部分下將狀態更改為 **「已啟用**」 。
-2. 您可以將**憑證管理類型**設置為_前門管理_,以便由前門維護、管理和自動旋轉免費證書。 您還可以選擇使用與 Azure 密鑰保管庫一起存儲的自定義 TLS/SSL 證書。 本教程假定使用前門託管證書。
-![為自訂網域開啟 HTTPS](./media/front-door-url-redirect/front-door-custom-domain-https.png)
+1. 按一下已新增的自訂網域，然後在 [**自訂網域 HTTPS**] 區段下，將狀態變更為 [**已啟用**]。
+2. 您可以將 [**憑證管理類型**] 設定為 [前端]，並由 front 門板維護、管理及 autorotated 的免費憑證進行_管理_。 您也可以選擇使用與 Azure Key Vault 一起儲存的自訂 TLS/SSL 憑證。 本教學課程假設您使用的是 Front-受管理的憑證。
+![為自訂網域啟用 HTTPS](./media/front-door-url-redirect/front-door-custom-domain-https.png)
 
-3. 按下 **「更新」** 以保存所選內容,然後單擊「**保存**」 。
-4. 按下幾分鐘後**刷新**,然後再次按下自定義域以查看證書預配的進度。 
+3. 按一下 [**更新**] 以儲存選取專案，然後按一下 [**儲存**]。
+4. 在**幾分鐘後按一下**[重新整理]，然後再次按一下自訂網域，以查看憑證布建的進度。 
 
 > [!WARNING]
-> 為自訂網域啟用 HTTPS 可能需要幾分鐘時間,並且如果 CNAME 未直接映`<name>.azurefd.net`射到前門主機 ,則還要依賴於網域擁有權驗證。 詳細瞭解[如何為自定義域啟用 HTTPS。](./front-door-custom-domain-https.md)
+> 針對自訂網域啟用 HTTPS 可能需要幾分鐘的時間，而且如果 CNAME 未直接對應至您的 Front 主機`<name>.azurefd.net`，也會依賴網域擁有權驗證。 深入瞭解[如何為自訂網域啟用 HTTPS](./front-door-custom-domain-https.md)。
 
 ## <a name="configure-the-routing-rules-for-the-custom-domain"></a>設定自訂網域的路由規則
 
-1. 按下之前創建的重定向路由規則。
-2. 按下 Frontend 主機的下拉清單,並選擇自訂網域以為您的域應用此路由。
-3. 按一下 [更新]****。
-4. 對其他路由規則執行相同的操作,即為轉發路由添加自定義域。
-5. 按下 **「保存」** 以提交更改。
+1. 按一下稍早建立的重新導向路由規則。
+2. 按一下 [前端主機] 的下拉式清單，然後選取您的自訂網域，將此路由套用至您的網域。
+3. 按一下 [更新]  。
+4. 也請針對其他路由規則執行相同的作業，也就是您的轉送路由新增自訂網域。
+5. 按一下 [**儲存**] 以提交變更。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 了解如何[建立 Front Door](quickstart-create-front-door.md)。
 - 了解 [Front Door 的運作方式](front-door-routing-architecture.md)。
-- 瞭解有關前門[URL 重定向](front-door-url-redirect.md)的更多資訊。
+- 深入瞭解如何[在前門上重新導向 URL](front-door-url-redirect.md)。

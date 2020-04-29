@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務 v3 的 iOS 離線公平播放流式處理
+title: 使用 Azure 媒體服務 v3 進行 iOS 的離線 FairPlay 串流
 description: 本主題提供概觀，並示範如何使用 Azure 媒體服務，利用離線模式的 Apple FairPlay 動態加密您的 HTTP 即時串流 (HLS) 內容。
 services: media-services
 keywords: HLS, DRM, FairPlay Streaming (FPS), Offline, iOS 10, FairPlay 串流 (FPS), 離線
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
 ms.openlocfilehash: 41893c2460ecb2d17e3893f867bc460105d57bbd
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80887209"
 ---
-# <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>離線公平播放流式處理 iOS 與媒體服務 v3
+# <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>使用媒體服務 v3 進行 iOS 的離線 FairPlay 串流
 
  Azure 媒體服務提供一組設計良好的[內容保護服務](https://azure.microsoft.com/services/media-services/content-protection/)，其中涵蓋：
 
@@ -38,15 +38,15 @@ ms.locfileid: "80887209"
 除了透過各種不同的串流處理通訊協定來保護內容進行線上串流處理，受保護內容的離線模式也是一個經常被要求的功能。 下列案例需要離線模式支援：
 
 * 在無法使用網際網路連線 (例如旅行期間) 時播放。
-* 某些內容供應商可能會禁止將 DRM 許可證交付到國家/區域邊界以外。 如果使用者想要在國家/地區之外旅行時觀看內容,則需要脫機下載。
-* 在某些國家/地區,互聯網可用性和/或頻寬仍然有限。 使用者可選擇先下載內容，才能觀賞解析度夠高的內容，從而獲得滿意的觀賞體驗。 因此，問題通常不在於網路可用性，而是網路頻寬有限。 Over-the-top (OTT)/線上視訊平台 (OVP) 提供者會要求離線模式支援。
+* 某些內容提供者可能不允許超出國家/地區框線的 DRM 授權傳遞。 如果使用者想要在國家/地區外出差時觀賞內容，就需要離線下載。
+* 在某些國家/地區，網際網路可用性和/或頻寬仍然受到限制。 使用者可選擇先下載內容，才能觀賞解析度夠高的內容，從而獲得滿意的觀賞體驗。 因此，問題通常不在於網路可用性，而是網路頻寬有限。 Over-the-top (OTT)/線上視訊平台 (OVP) 提供者會要求離線模式支援。
 
 本文會說明 FairPlay 串流 (FPS) 離線模式支援，此支援是以執行 iOS 10 或更新版本的裝置為目標。 其他 Apple 平台 (例如 watchOS、tvOS 或 macOS 上的 Safari) 則不支援此功能。
 
 > [!NOTE]
-> 離線 DRM 僅在下載內容時針對單個許可證請求收費。 不計費任何錯誤。
+> 只有在您下載內容時，才會向離線 DRM 收取授權的單一要求。 任何錯誤都不會計費。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在 iOS 10+ 裝置上實作適用於 FairPlay 的離線 DRM 之前：
 
@@ -54,7 +54,7 @@ ms.locfileid: "80887209"
 
     - [Apple FairPlay 授權需求和設定](fairplay-license-overview.md)
     - [使用 DRM 動態加密與授權傳遞服務](protect-with-drm.md)
-    - 包含線上 FPS 串流設定的 .NET 範例:[設定公平播放原則選項](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
+    - 包含線上 FPS 串流設定的 .NET 範例： [ConfigureFairPlayPolicyOptions](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L505)
 * 從 Apple 開發人員網路取得 FPS SDK。 FPS SDK 包含兩個元件：
 
     - FPS Server SDK，內含金鑰安全性模組 (KSM)、用戶端範例、規格，以及一組測試向量。
@@ -123,7 +123,7 @@ CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
 FPS 離線模式支援僅適用於 iOS 10 和更新版本。 FPS Server SDK (3.0 版或更新版本) 包含有關於 FPS 離線模式的文件和範例。 具體來說，FPS Server SDK (3.0 版或更新版本) 包含下列兩個與離線模式相關的項目：
 
 * 文件：《Offline Playback with FairPlay Streaming and HTTP Live Streaming》(使用 FairPlay 串流和 HTTP 即時串流進行離線播放)。 Apple，2016 年 9 月 14 日發行。 在 FPS Server SDK 4.0 版中，這份文件會合併到主要 FPS 文件中。
-* 範例代碼:HLSCatalog 範例(Apple FPS 伺服器 SDK 的一部分)用於 FPS 離線模式,適用於 [公平播放流式伺服器 SDK 版本 3.1]開發\用戶端\HLSCatalog_With_FPS_HLSCatalog]。 HLSCatalog 應用程式範例會使用下列程式碼檔案來實作離線模式功能：
+* 範例程式碼：位於 \fairplay 串流伺服器 SDK 3.1 版 \ Development\Client\ 中的 FPS 離線模式 HLSCatalog 範例（Apple 的 FPS 伺服器 SDK 的一部分） HLSCatalog_With_FPS \HLSCatalog\。 HLSCatalog 應用程式範例會使用下列程式碼檔案來實作離線模式功能：
 
     - AssetPersistenceManager.swift 程式碼檔案：AssetPersistenceManager 是此範例中的主類別，會示範如何進行下列操作：
 
@@ -203,7 +203,7 @@ func requestApplicationCertificate() throws -> Data {
 
 ## <a name="faq"></a>常見問題集
 
-請參閱[常見問題,提供有關故障排除的説明](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)。
+請參閱[常見問題以提供疑難排解的協助](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)。
 
 ## <a name="next-steps"></a>後續步驟
 

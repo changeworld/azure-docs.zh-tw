@@ -6,79 +6,79 @@ ms.subservice: shared-capabilities
 ms.date: 03/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: f917e9c64a932d75fd0f6b14c9e0f35808467355
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80984652"
 ---
 # <a name="managing-azure-automation-data"></a>管理 Azure 自動化資料
 
-本文包含多個主題,用於在 Azure 自動化環境中管理數據。
+本文包含多個主題，可用於管理 Azure 自動化環境中的資料。
 
 >[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有關混合 Runbook 輔助角色上的 Az 模組安裝說明,請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 對於自動化帳戶,可以使用[「如何更新 Azure 自動化 中的 Azure PowerShell」模組](automation-update-azure-modules.md)將模組更新到最新版本。
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="data-retention"></a>資料保留
 
-刪除 Azure 自動化中的資源時,在永久刪除之前,資源將保留數天以進行審核。 在此期間,您無法查看或使用資源。 此策略也適用於屬於已刪除的自動化帳戶的資源。
+當您刪除 Azure 自動化中的資源時，在永久移除之前，會保留幾天供審核之用。 您在這段時間內看不到或無法使用資源。 此原則也適用于屬於已刪除之自動化帳戶的資源。
 
 下表摘要說明不同的資源的保留原則。
 
 | 資料 | 原則 |
 |:--- |:--- |
-| 帳戶 |帳戶在使用者刪除帳戶 30 天後被永久刪除。 |
-| Assets |在使用者刪除資產 30 天后或使用者刪除持有該資產的帳戶 30 天后,將永久刪除資產。 |
-| DSC 節點 |使用 Azure 門戶或 Windows PowerShell 中的[「取消註冊-AzAutomationDnode」cmdlet](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0)從自動化帳戶註銷 30 天後,將永久刪除 DSC 節點。 在使用者刪除保存該節點的帳戶 30 天後,節點也會被永久刪除。 |
-| 工作 |修改後 30 天內刪除和永久刪除作業,例如,作業完成後,該作業將停止或掛起。 |
-| 模組 |模組在使用者刪除該模組 30 天后或使用者刪除持有該模組的帳戶 30 天後被永久刪除。 |
-| 節點組態/MOF 檔案 |生成新節點配置 30 天後,將永久刪除舊節點配置。 |
-| 節點報告 |節點報告在生成該節點的新報告 90 天后被永久刪除。 |
-| Runbook |Runbook 在使用者刪除資源 30 天后或使用者刪除保存資源的帳戶 30 天後被永久刪除。 |
+| 帳戶 |帳戶會在使用者刪除後的30天內永久移除。 |
+| 資產 |資產會在使用者刪除後的30天內永久移除，或在使用者刪除持有資產的帳戶後30天。 |
+| DSC 節點 |DSC 節點在使用 Azure 入口網站或 Windows PowerShell 中的[AzAutomationDscNode](https://docs.microsoft.com/powershell/module/az.automation/unregister-azautomationdscnode?view=azps-3.7.0)指令程式，從自動化帳戶取消註冊後的30天內永久移除。 節點也會在使用者刪除保存節點的帳戶後的30天內永久移除。 |
+| 工作 |作業會在修改後的30天內刪除並永久移除，例如，在作業完成、停止或暫停之後。 |
+| 模組 |模組會在使用者刪除之後的30天內永久移除，或在使用者刪除保存模組的帳戶後的30天內。 |
+| 節點組態/MOF 檔案 |在新節點設定產生後的30天內，會永久移除舊的節點設定。 |
+| 節點報告 |在為該節點產生新報告之後，會永久移除節點報告90天。 |
+| Runbook |Runbook 會在使用者刪除資源後的30天內永久移除，或在使用者刪除保存資源的帳戶後30天。 |
 
-保留策略適用於所有使用者,當前無法自定義。 但是,如果需要將資料保留更長時間,可以將[Azure 自動化作業資料轉寄到 Azure 監視器日誌](automation-manage-send-joblogs-log-analytics.md)。
+保留原則適用于所有使用者，目前無法自訂。 不過，如果您需要將資料保留較長的時間，您可以將[Azure 自動化作業資料轉送至 Azure 監視器記錄](automation-manage-send-joblogs-log-analytics.md)。
 
 ## <a name="data-backup"></a>資料備份
 
-刪除 Azure 中的自動化帳戶時,該帳戶中的所有物件都將被刪除。 這些物件包括 Runbook、模組、配置、設置、作業和資產。 刪除帳戶後無法恢復它們。 在刪除自動化帳戶之前,可以使用以下信息備份其內容。
+當您在 Azure 中刪除自動化帳戶時，會刪除帳戶中的所有物件。 這些物件包括 runbook、模組、設定、設定、作業和資產。 刪除帳戶之後，就無法復原它們。 您可以使用下列資訊來備份您的自動化帳戶的內容，然後再刪除它。
 
 ### <a name="runbooks"></a>Runbook
 
-您可以使用 Azure 入口網站或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition)Cmdlet，將您的 Runbook 匯出為指令碼檔案。 您可以將這些文本檔匯入到另一個自動化帳戶中,如[Azure 自動化中的管理 Runbook 中](manage-runbooks.md)所述。
+您可以使用 Azure 入口網站或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition)Cmdlet，將您的 Runbook 匯出為指令碼檔案。 您可以將這些腳本檔案匯入到另一個自動化帳戶，如[管理 Azure 自動化中的 runbook](manage-runbooks.md)中所述。
 
 ### <a name="integration-modules"></a>整合模組
 
-無法從 Azure 自動化匯出集成模組。 您必須在自動化帳戶之外提供它們。
+您無法從 Azure 自動化匯出整合模組。 您必須將它們提供給自動化帳戶之外。
 
-### <a name="assets"></a>Assets
+### <a name="assets"></a>資產
 
-無法匯出 Azure 自動化資產:證書、連接、憑據、計畫和變數。 相反,您可以使用 Azure 門戶和 Azure cmdlet 來記錄這些資產的詳細資訊。 然後使用這些詳細資訊創建您導入到另一個自動化帳戶的 Runbook 使用的任何資產。
+您無法匯出 Azure 自動化資產：憑證、連接、認證、排程和變數。 相反地，您可以使用 Azure 入口網站和 Azure Cmdlet 來記錄這些資產的詳細資料。 然後使用這些詳細資料，建立您匯入至另一個自動化帳戶的 runbook 所使用的任何資產。
 
-無法使用 cmdlet 檢索加密變數或憑據的密碼欄位的值。 如果您不知道這些值,可以在 Runbook 中檢索它們。 有關檢索變數值,請參閱[Azure 自動化 中的變數資產](shared-resources/variables.md)。 要瞭解有關檢索認證的更多資訊,請參閱[Azure 自動化 中的認證資產](shared-resources/credentials.md)。
+您無法使用 Cmdlet 來抓取加密變數的值或認證的密碼欄位。 如果您不知道這些值，您可以在 runbook 中加以取出。 如需抓取變數值，請參閱[Azure 自動化中的變數資產](shared-resources/variables.md)。 若要瞭解如何取得認證值的詳細資訊，請參閱[Azure 自動化中的認證資產](shared-resources/credentials.md)。
 
  ### <a name="dsc-configurations"></a>DSC 組態
 
-您可以使用 Azure 門戶或 Windows PowerShell 中的[匯出-AzAutomationDsc配置](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
-)cmdlet 將 DSC 設定匯出到文本檔。 您可以在另一個自動化帳戶中導入和使用這些配置。
+您可以使用 Windows PowerShell 中的 Azure 入口網站或[AzAutomationDscConfiguration](https://docs.microsoft.com/powershell/module/az.automation/export-azautomationdscconfiguration?view=azps-3.7.0
+) Cmdlet，將 DSC 設定匯出至腳本檔案。 您可以在另一個自動化帳戶中匯入和使用這些設定。
 
 ## <a name="geo-replication-in-azure-automation"></a>Azure 自動化中的異地複寫
 
-異地複製是 Azure 自動化帳戶中的標準配置。 設置帳戶時,您可以選擇主要區域。 內部自動化異地複製服務自動將輔助區域分配給帳戶。 然後,該服務會持續將帳戶數據從主區域備份到輔助區域。 主要區域與輔助區域的完整清單可在[業務連續性和災難復原 (BCDR) 中找不到:Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。 
+異地複寫在 Azure 自動化帳戶中是標準的。 當您設定帳戶時，請選擇主要區域。 內部自動化地理複寫服務會自動將次要區域指派給帳戶。 然後，服務會持續將帳戶資料從主要區域備份到次要區域。 主要和次要區域的完整清單可在[商務持續性和嚴重損壞修復（BCDR）： Azure 配對的區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)中找到。 
 
-由自動化異地複製服務創建的備份是自動化資產、配置等的完整副本。 如果主區域出現故障並丟失數據,可以使用此備份。 如果主區域的數據丟失,Microsoft 會嘗試恢復它。 如果公司無法恢復主數據,則它使用自動故障轉移,並通過 Azure 訂閱通知您情況。 
+自動化異地複寫服務所建立的備份，是自動化資產、設定等的完整複本。 如果主要區域停機並遺失資料，則可以使用此備份。 在不太可能發生的情況下，主要區域的資料遺失時，Microsoft 會嘗試加以復原。 如果公司無法復原主要資料，它會使用自動容錯移轉，並透過您的 Azure 訂用帳戶通知您這種情況。 
 
-如果出現區域故障,則外部客戶無法直接訪問自動化異地複製服務。 如果要在區域故障期間維護自動化設定與執行簿:
+如果發生區域性失敗，自動化異地複寫服務無法直接存取外部客戶。 如果您想要在區域失敗期間維護自動化設定和 runbook：
 
-1. 選擇要與主自動化帳戶的地理區域配對的輔助區域。
+1. 選取要與主要自動化帳戶的地理區域配對的次要區域。
 
-2. 在輔助區域中創建自動化帳戶。
+2. 在次要區域中建立自動化帳戶。
 
-3. 在主帳戶中,將 Runbook 匯出為腳本檔。
+3. 在主要帳戶中，將您的 runbook 匯出為腳本檔案。
 
-4. 將 Runbook 導入輔助區域中的自動化帳戶。
+4. 將 runbook 匯入至次要區域中的自動化帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要瞭解有關 Azure 自動化中安全資產的更多資訊,請參閱[在 Azure 自動化 中加密安全資產](automation-secure-asset-encryption.md)。
+* 若要深入瞭解 Azure 自動化中的安全資產，請參閱[Azure 自動化中的加密安全資產](automation-secure-asset-encryption.md)。
 
-* 要瞭解有關異地複製的更多,請參閱[建立和使用活動異地複製](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)。
+* 若要瞭解異地複寫的詳細資訊，請參閱[建立和使用主動式異地](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)複寫。
