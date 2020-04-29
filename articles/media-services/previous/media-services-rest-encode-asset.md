@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 6854400f2152a5952a7b24dbd860d7ad4bfc943d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76774923"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>如何使用媒體編碼器標準為資產編碼
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
-> * [休息](media-services-rest-encode-asset.md)
+> * [REST](media-services-rest-encode-asset.md)
 > * [入口網站](media-services-portal-encode.md)
 >
 >
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 若要透過網際網路傳遞數位視訊，您必須壓縮媒體。 數位視訊檔案十分龐大，而且可能太大而無法透過網際網路傳遞，或是太大而使您客戶的裝置無法正確顯示。 編碼是壓縮視訊和音訊，好讓客戶能檢視您的媒體的程序。
 
@@ -42,7 +42,7 @@ ms.locfileid: "76774923"
 
 我們建議一律將來源檔案編碼為調適型位元速率 MP4 集，然後使用[動態封裝](media-services-dynamic-packaging-overview.md)，將該集合轉換為所需的格式。
 
-如果您的輸出資產是已加密的儲存體，就必須設定資產傳遞原則。 有關詳細資訊，請參閱[配置資產交付策略](media-services-rest-configure-asset-delivery-policy.md)。
+如果您的輸出資產是已加密的儲存體，就必須設定資產傳遞原則。 如需詳細資訊，請參閱設定[資產傳遞原則](media-services-rest-configure-asset-delivery-policy.md)。
 
 ## <a name="considerations"></a>考量
 
@@ -59,7 +59,7 @@ ms.locfileid: "76774923"
 > [!NOTE]
 > 使用媒體服務 REST API 時，適用下列考量事項：
 >
-> 在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 有關詳細資訊，請參閱[媒體服務 REST API 開發設置](media-services-rest-how-to-use.md)。
+> 在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱[媒體服務 REST API 開發的設定](media-services-rest-how-to-use.md)。
 >
 > 使用 JSON 並指定在要求中使用 **__metadata** 關鍵字時 (例如，為了參考連結的物件)，您必須將 **Accept** 標頭設為 [JSON Verbose 格式 (英文)](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/)：Accept: application/json;odata=verbose。
 >
@@ -279,5 +279,5 @@ ms.locfileid: "76774923"
 ## <a name="next-steps"></a>後續步驟
 現在您已了解如何建立作業來為資產編碼，請參閱[如何使用媒體服務檢查作業進度](media-services-rest-check-job-progress.md)。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 [取得媒體處理器](media-services-rest-get-media-processor.md)

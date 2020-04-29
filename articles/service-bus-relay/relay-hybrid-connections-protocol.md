@@ -15,15 +15,15 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: clemensv
 ms.openlocfilehash: 68668452152064584d1c419a3053ccb642b103f8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76514947"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure 轉送混合式連線通訊協定
 
-Azure 轉送是 Azure 服務匯流排平台的重要功能支柱。 轉送的新「混合式連線」__ 功能是以 HTTP 和 Websocket 為基礎的安全、開放式通訊協定演化。 它取代了以前，同樣命名的_BizTalk服務_功能，是建立在專有的協定基礎。 整合到 Azure 應用程式服務的混合式連線會繼續如往常般運作。
+Azure 轉送是 Azure 服務匯流排平台的重要功能支柱。 轉送的新「混合式連線」__ 功能是以 HTTP 和 Websocket 為基礎的安全、開放式通訊協定演化。 它會取代先前的，也就是在專屬通訊協定基礎上建立的_BizTalk 服務_功能。 整合到 Azure 應用程式服務的混合式連線會繼續如往常般運作。
 
 「混合式連線」可在網路上的兩個應用程式之間，建立雙向的二進位串流通訊和簡單的資料包流程。 讓其中一方或雙方都能位在 NAT 或防火牆之後。
 
@@ -51,7 +51,7 @@ Azure 轉送是 Azure 服務匯流排平台的重要功能支柱。 轉送的新
 
 為了讓服務知道接聽程式已準備好接受連線，它會建立輸出 WebSocket 連線。 連線交握會攜帶轉送命名空間中所設定的混合式連線名稱，以及對該名稱授予「接聽」權限的安全性權杖。
 
-服務接受 WebSocket 時，註冊便已完成，所建立的 WebSocket 會保持運作，以作為用來啟用所有後續互動的「控制通道」。 該服務允許一個混合連接最多允許 25 個併發攔截器。 AppHooks 的配額有待決定。
+服務接受 WebSocket 時，註冊便已完成，所建立的 WebSocket 會保持運作，以作為用來啟用所有後續互動的「控制通道」。 服務允許一個混合式連線有多達25個並行接聽程式。 AppHooks 的配額有待決定。
 
 對於混合式連線，如果有 2 個以上的作用中接聽程式，則會將連入連線隨機平衡分配給這些接聽程式；嘗試盡力達到公平分配。
 
@@ -146,7 +146,7 @@ HTTP 要求/回應模型為傳送者提供大致不受限且具有選擇性授�
 
 | 參數        | 必要 | 描述
 | ---------------- | -------- | -------------------------------------------
-| `sb-hc-action`   | 是      | 對於攔截器角色，參數必須是**sb-hc-action_listen**
+| `sb-hc-action`   | 是      | 針對接聽程式角色，參數必須是**sb-hc-action = 接聽**
 | `{path}`         | 是      | 用來註冊此接聽程式之預先設定混合式連線的 URL 編碼命名空間路徑。 此運算式會附加至固定的 `$hc/` 路徑部分。
 | `sb-hc-token`    | 是\*    | 針對授予**接聽**權限的命名空間或混合式連線，接聽程式必須提供有效且以 URL 編碼的服務匯流排共用存取權杖。
 | `sb-hc-id`       | 否       | 用戶端提供的這個選擇性識別碼可讓您進行端對端診斷追蹤。
@@ -402,7 +402,7 @@ FEFEFEFEFEFEFEFEFEFEF...
 
 接聽程式權杖即將到期時，透過所建立的控制通道對服務傳送文字框訊息即可加以取代。 訊息中包含名為 `renewToken` 的 JSON 物件，其在此階段會定義下列屬性︰
 
-* **權杖**– 指定空間或混合連接授予**偵聽**權的有效 URL 編碼的服務匯流排共用訪問權杖。
+* **token** –適用于授**接聽**許可權的命名空間或混合式連線，有效且以 URL 編碼的服務匯流排共用存取權杖。
 
 ```json
 {
@@ -434,7 +434,7 @@ _namespace-address_ 是裝載混合式連線之 Azure 轉送命名空間的完�
 
 查詢字串參數選項如下：
 
-| Param          | 必要項？ | 描述
+| Param          | 必要？ | 描述
 | -------------- | --------- | -------------------------- |
 | `sb-hc-action` | 是       | 傳送者角色的參數必須是 `sb-hc-action=connect`。
 | `{path}`       | 是       | (請參閱下列段落)
@@ -482,7 +482,7 @@ _namespace-address_ 是裝載混合式連線之 Azure 轉送命名空間的完�
 
 查詢字串參數選項如下：
 
-| Param          | 必要項？ | 描述
+| Param          | 必要？ | 描述
 | -------------- | --------- | ---------------- |
 | `sb-hc-token`  | 是\*     | 針對授予**傳送**權限的命名空間或混合式連線，接聽程式必須提供有效且以 URL 編碼的服務匯流排共用存取權杖。
 
@@ -510,6 +510,6 @@ _namespace-address_ 是裝載混合式連線之 Azure 轉送命名空間的完�
 ## <a name="next-steps"></a>後續步驟
 
 * [轉送常見問題集](relay-faq.md)
-* [創建命名空間](relay-create-namespace-portal.md)
+* [建立命名空間](relay-create-namespace-portal.md)
 * [開始使用 .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [開始使用 Node](relay-hybrid-connections-node-get-started.md)

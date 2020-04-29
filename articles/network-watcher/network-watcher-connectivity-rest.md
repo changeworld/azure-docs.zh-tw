@@ -1,5 +1,5 @@
 ---
-title: 故障排除連接 - Azure REST API
+title: 針對連線進行疑難排解-Azure REST API
 titleSuffix: Azure Network Watcher
 description: 了解如何運用 Azure REST API，來使用 Azure 網路監看員的連線疑難排解功能。
 services: network-watcher
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
 ms.openlocfilehash: f1d4b02731f9e0f22fb1eaba03e55e49f84cd87a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76845088"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>使用 Azure REST API 利用 Azure 網路監看員進行連線疑難排解
 
 > [!div class="op_single_selector"]
 > - [入口網站](network-watcher-connectivity-portal.md)
-> - [電源外殼](network-watcher-connectivity-powershell.md)
+> - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
@@ -466,6 +466,6 @@ null
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何通過查看[創建觸發的警報資料包捕獲](network-watcher-alert-triggered-packet-capture.md)，使用虛擬機器警報自動捕獲資料包。
+瞭解如何藉由查看[建立警示觸發的封包捕獲](network-watcher-alert-triggered-packet-capture.md)，自動執行具有虛擬機器警示的封包捕獲。
 
 造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)來得知 VM 是否允許特定流量流入或流出。

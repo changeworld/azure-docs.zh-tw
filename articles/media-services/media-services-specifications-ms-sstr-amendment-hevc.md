@@ -1,5 +1,5 @@
 ---
-title: HEVC 的平滑流式處理協定 （MS-SSTR） 修正案 - Azure
+title: 適用于 HEVC 的 Smooth Streaming 通訊協定（MS-SSTR）修訂-Azure
 description: 此規格說明在 Azure 媒體服務中採用 HEVC 的分散式 MP4 即時串流所適用的通訊協定和格式。 本文僅指出為了傳遞 HEVC 而需要的變更，但「(無變更)」是表示複製文字僅供說明之用，則屬例外。
 services: media-services
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
 ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76514216"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的 Smooth Streaming 通訊協定 (MS-SSTR) 增修條款 
@@ -27,7 +27,7 @@ ms.locfileid: "76514216"
 
 本文提供可啟用 HEVC 編碼視訊之 Smooth Streaming 的 Smooth Streaming 通訊協定規格 [MS-SSTR] 所適用的詳細修訂文件。 在此規格中，我們僅概述為了傳遞 HEVC 視訊轉碼器所需的變更。 本文依循與 [MS-SSTR] 規格相同的編號結構描述。 整份文件中顯示的空白標題，是為了讓讀者了解他們在 [MS SSTR] 規格中的位置。  「(無變更)」是表示複製文字僅供說明之用。
 
-本文提供了 HEVC 視頻編解碼器（使用"hev1"或"hvc1"格式軌道）在平滑流清單和規範參考中的信號化技術實現要求，這些參考將更新以引用當前的 MPEG 標準，包括 HEVC、HEVC 的通用加密以及 ISO 基本媒體檔案格式的框名稱已更新，以符合最新規範。 
+本文會針對 HEVC video 編解碼器（使用 ' hev1 ' 或 ' hvc1 ' 格式追蹤）在 Smooth Streaming 的資訊清單中提供技術執行需求，並更新規範參考以參考目前的 MPEG 標準，其中包括 HEVC、HEVC 一般加密，以及 ISO 基底媒體檔案案格式的方塊名稱已更新為與最新規格一致。 
 
 參考的 Smooth Streaming 通訊協定規格 [MS-SSTR] 說明用來以下列方式傳遞即時和點播數位媒體 (例如音訊及視訊) 的電傳格式：從編碼器到 Web 伺服器、從伺服器到另一部伺服器，以及從伺服器到 HTTP 用戶端。
 使用透過 HTTP 的 MPEG-4 ([[MPEG4-RA])](https://go.microsoft.com/fwlink/?LinkId=327787) 型資料結構傳遞，可幾近即時地在壓縮媒體內容的不同品質水準間進行切換。 其結果是，HTTP 用戶端使用者可享有穩定的播放體驗，即使用戶端電腦或裝置的網路和視訊轉譯條件有所變動，仍不受影響。
@@ -40,11 +40,11 @@ ms.locfileid: "76514216"
 
 以下是本文專用的字詞：
 
->  **組成時間：** 在用戶端上顯示樣本的時間，如[[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)中定義的。
+>  **撰寫時間：** 在用戶端上呈現樣本的時間，如[[ISO/IEC-iec-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)所定義。
 > 
 >   **CENC**：一般加密，如 [ISO/IEC 23001-7] 第二版所定義。
 > 
->   **解碼時間：** 在用戶端上解碼樣本所需的時間，如[[ISO/IEC 14496-12：2008]](https://go.microsoft.com/fwlink/?LinkId=183695)中定義的。
+>   解碼**時間：** 需要在用戶端上解碼樣本的時間，如[[ISO/IEC 14496-12:2008]](https://go.microsoft.com/fwlink/?LinkId=183695)所定義。
 
 **片段：** 可單獨下載、包含一或多個**樣本**的**媒體**單元。
 
@@ -52,11 +52,11 @@ ms.locfileid: "76514216"
 > 
 >   **資訊清單：** 可讓用戶端發出**媒體**要求之**顯示**的相關中繼資料。 **媒體：** 用戶端用來播放**顯示**的壓縮音訊、視訊和文字資料。 **媒體格式：** 一個妥善定義的格式，可將音訊或視訊顯示為壓縮的**樣本**。
 > 
->   **顯示：** 播放單一影片所需的所有**資料流**和相關中繼資料的集合。 **請求：** 從用戶端發送到伺服器的 HTTP 消息，如[[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)回應中定義 **：** 從伺服器發送到用戶端的 HTTP 消息，如[[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)中定義的
+>   **顯示：** 播放單一影片所需的所有**資料流**和相關中繼資料的集合。 **要求：** 從用戶端傳送至伺服器的 HTTP 訊息（如[[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372) **回應**中所定義）：從伺服器傳送至用戶端的 HTTP 訊息（如[[RFC2616]](https://go.microsoft.com/fwlink/?LinkId=90372)中所定義）
 > 
 >   **樣本：** 儲存及處理**媒體**的最小基本單位 (例如框架)。
 > 
->   **可能，應該，必須，不應該，不得：** 這些術語（在所有大寫字母中）均按[[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317)中所述使用，可選行為的所有語句都使用五月、應該或不應使用。
+>   不得為，不得**為：** 如[[RFC2119]](https://go.microsoft.com/fwlink/?LinkId=90317)所有選擇性行為的語句中所述，使用這些詞彙（全部大寫）會使用 [可能]、[應該] 或 [不應該]。
 
 ## <a name="12-references"></a>1.2 參考
 
@@ -64,7 +64,7 @@ ms.locfileid: "76514216"
 
 ### <a name="121-normative-references"></a>1.2.1 標準參考 
 
->  [MS-SSTR]平滑流式處理協定*v20140502*[https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
+>  [MS-MS-SSTR]Smooth Streaming 通訊協定*v20140502*[https://msdn.microsoft.com/library/ff469518.aspx](https://msdn.microsoft.com/library/ff469518.aspx)
 > 
 >   [ISO/IEC 14496-12] 國際標準化組織，「資訊技術 -- 音訊-視覺化物件的編碼 -- 第 12 部分：ISO Base Media 檔案格式」，ISO/IEC 14496-12:2014，第4 版，Plus Corrigendum 1，修訂文件 1 和 2。
 >   <https://standards.iso.org/ittf/PubliclyAvailableStandards/c061988_ISO_IEC_14496-12_2012.zip>
@@ -78,17 +78,17 @@ ms.locfileid: "76514216"
 > 
 >   [RFC-6381] IETF RFC-6381，「貯體媒體類型的轉碼器和設定檔參數」<https://tools.ietf.org/html/rfc6381>
 > 
->   [MPEG4-RA]MP4註冊局，"MP4REG"，[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA]未通過的登錄授權單位 "MP4REG"，[http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 > 
->   [RFC2119]Bradner， S.，"用於 RFC 以指示需求水準的關鍵字"，BCP 14，RFC 2119，1997 年 3 月，[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   RFC2119Bradner，S，「用來在 Rfc 中指出需求層級的關鍵字」，BCP 14，RFC 2119，3月1997日[https://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 資訊參考 
 
 >   [MS-GLOS] Microsoft Corporation，「*Windows 通訊協定主要詞彙*」。
 > 
->   [RFC3548]約瑟夫松，S.，Ed.，"Base16，Base32和Base64資料編碼"，RFC 3548，2003年7月，[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   RFC3548Josefsson，S.，Ed.，"the Base16，Base32，and Base64 Data 編碼"，RFC 3548，7月2003日[https://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 > 
->   [RFC5234]華盛頓特區克羅克和 Overell， P.，" 增強 BNF 語法規范： ABNF"， STD 68， RFC 5234， 2008年1月，[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   RFC5234Crocker，d.，Ed.，and Overell p.，P.，"BNF for 句法規格： ABNF"，STD 68，RFC 5234，1月2008，[https://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1.3 概觀 
@@ -108,7 +108,7 @@ ms.locfileid: "76514216"
 >   「應該」使用下列方法來識別使用 HEVC 視訊格式的資料流：
 > 
 >   * **媒體格式的自訂描述性代碼：** 這項功能由 **FourCC** 欄位提供，如 *2.2.2.5* 小節所指定。
->   實施者可以通過在[[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)中指定的 MPEG4-RA 註冊擴展代碼來確保擴展不會衝突。
+>   實施者可以使用 MPEG4-RA 註冊延伸模組程式碼，以確保延伸模組不會發生衝突，如[[ISO/IEC-iec-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695)中所指定。
 
 ## <a name="19-standards-assignments"></a>1.9 標準指派 
 
@@ -129,7 +129,7 @@ ms.locfileid: "76514216"
 >   **TimeScale (變數)：**「持續時間」屬性的時間間隔，指定為一秒內的增量數目。 預設值為
 > 1. (無變更)
 > 
->    建議的值為 90000，用於表示包含小幀和片段（例如 30/1.001 Hz）的視頻幀和片段的確切持續時間。
+>    建議的值為90000，表示影片畫面格的確切持續時間和包含小數螢幕畫面的片段（例如 30/1.001 Hz）。
 
 #### <a name="2222-protectionelement"></a>2.2.2.2 ProtectionElement 
 
@@ -149,13 +149,13 @@ ms.locfileid: "76514216"
 > 
 > * "hev1"：此音軌的視訊樣本會使用 HEVC 視訊，採用 [ISO/IEC-14496-15] 所指定的 ‘hev1’ 樣本說明格式。
 >
-> * "hvc1"：此軌道的視頻樣本使用 HEVC 視頻，使用 [ISO/IEC-14496-15] 中指定的"hvc1"示例描述格式。
+> * "hvc1"：此追蹤的影片範例使用 HEVC 影片，並使用 [ISO/IEC-iec-14496-15] 中指定的 ' hvc1 ' 範例描述格式。
 > 
 >   **CodecPrivateData (變數)：** 這項資料會指定媒體格式的特定參數和音軌中所有樣本通用的參數，以十六進位編碼位元組的字串表示。 位元組序列的格式和語意會隨著 **FourCC** 欄位的值而不同，如下所示：
 > 
->   * 當 TrackElement 描述 HEVC 視頻時 **，FourCC**欄位應等於 **"hev1"** 或 **"hvc1"**
+>   * 當 TrackElement 描述 HEVC 影片時， **FourCC**欄位應等於 **"hev1"** 或 **"hvc1"**
 > 
->   **CodecPrivateData**欄位 SHALL 包含以下位元組序列的六進制字串表示形式，在 ABNF [[RFC5234] 中指定：](https://go.microsoft.com/fwlink/?LinkId=123096) （MS-SSTR 沒有變化）
+>   **CodecPrivateData**欄位應包含下列位元組序列的十六進位編碼字串標記法，指定于 ABNF [[RFC5234]：](https://go.microsoft.com/fwlink/?LinkId=123096) （不會從 MS ms-sstr 變更）
 > 
 >   * %x00 %x00 %x00 %x01 SPSField %x00 %x00 %x00 %x01 PPSField
 > 
@@ -175,7 +175,7 @@ ms.locfileid: "76514216"
 
 ### <a name="223-fragment-request"></a>2.2.3 片段要求 
 
->   **注意**：**為 MinorVersion** 2 和"hev1" 或"hvc1"請求的預設媒體格式是 [ISO/IEC 14496-12] ISO 基本媒體檔案格式第四版和 [ISO/IEC 23001-7] 通用加密第二版中指定的"iso8"牌 ISO8 基礎媒體檔案格式。
+>   **注意**：針對**MinorVersion** 2 和 ' hev1 ' 或 ' hvc1 ' 所要求的預設媒體格式為 [iso/Iec 14496-12] Iso Base Media 檔案格式第四版中指定的 ' Iso8 ' 品牌 ISO base media 檔案格式，而 [iso/Iec 23001-7] 一般加密第二版。
 
 ### <a name="224-fragment-response"></a>2.2.4 片段回應 
 
@@ -280,8 +280,8 @@ ms.locfileid: "76514216"
 > 
 > * **MajorVersion**
 > * **MinorVersion**
-> * **時程表**
 > * **時間**
+> * **Duration**
 > * **IsLive**
 > * **LookaheadCount**
 > * **DVRWindowLength**
@@ -307,7 +307,7 @@ ms.locfileid: "76514216"
 > 
 >   保護標題說明：關於單一「內容保護系統」的內容保護中繼資料。 「保護標題說明」包含下列指定於 *2.2.2.2* 小節中的欄位：
 > 
->   * **系統 ID**
+>   * **SystemID**
 >   * **ProtectionHeaderContent**
 
 ##### <a name="31112-stream-description"></a>3.1.1.1.2 資料流說明 
@@ -359,7 +359,7 @@ ms.locfileid: "76514216"
 ## <a name="52-index-of-security-parameters"></a>5.2 安全性參數的索引 
 
 
-| **安全性參數**  | **部分**         |
+| **安全性參數**  | **區段**         |
 |-------------------------|---------------------|
 | ProtectionElement       | *2.2.2.2*           |
 | 一般加密方塊 | *[ISO/IEC 23001-7]* |

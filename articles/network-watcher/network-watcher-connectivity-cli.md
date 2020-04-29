@@ -1,5 +1,5 @@
 ---
-title: 故障排除連接 - Azure CLI
+title: 疑難排解連接-Azure CLI
 titleSuffix: Azure Network Watcher
 description: 了解如何使用 Azure CLI，來使用 Azure 網路監看員的連線疑難排解功能。
 services: network-watcher
@@ -14,16 +14,16 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: 842e58de8dbc06d3f045b0e9d0dc6b99e6b1e2fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76842881"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>使用 Azure CLI 利用 Azure 網路監看員進行連線疑難排解
 
 > [!div class="op_single_selector"]
-> - [電源外殼](network-watcher-connectivity-powershell.md)
+> - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
@@ -273,4 +273,4 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示自動化封包擷取
 
-通過訪問[檢查 IP 流驗證](diagnose-vm-network-traffic-filtering-problem.md)，查找是否允許某些流量進入或退出 VM
+造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)來尋找 VM 是否允許特定流量流入或流出

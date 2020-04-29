@@ -1,5 +1,5 @@
 ---
-title: 如何使用批次處理提高應用程式性能
+title: 如何使用批次處理來改善應用程式效能
 description: 本主題提供證據，表明批次處理資料庫作業可大幅改善 Azure SQL Database 應用程式的速度和延展性。 雖然這些批次處理技術適用於任何 SQL Server 資料庫，但本文的重點在於 Azure。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76545019"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>如何使用批次處理來改善 SQL Database 應用程式效能
@@ -43,7 +43,7 @@ ms.locfileid: "76545019"
 > [!NOTE]
 > 結果並不是基準，主要是示範 **相對效能**。 計時至少根據 10 個測試回合的平均值。 作業插入至空的資料表。 這些測試是在 V12 以前的版本中測量，不見得符合您在 V12 資料庫中使用新的 [DTU 服務層級](sql-database-service-tiers-dtu.md)或[虛擬核心服務層級](sql-database-service-tiers-vcore.md)時可能遇過的輸送量。 批次處理技術的相對優點應該類似。
 
-### <a name="transactions"></a>交易
+### <a name="transactions"></a>異動
 
 從討論交易來開始評論批次處理可能有點奇怪。 但使用用戶端交易也隱約有可改善效能的伺服器端批次處理效果。 只需要幾行程式碼就能新增交易，因此可快速改善循序作業的效能。
 
@@ -93,9 +93,9 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 這兩個範例實際上都使用交易。 在第一個範例中，每個個別的呼叫就是隱含的交易。 在第二個範例中，明確的交易包裝所有的呼叫。 根據[預先寫入交易記錄](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)的文件，記錄檔記錄會在交易認可時排清到磁碟。 因此，交易中包含越多呼叫，就越可能延遲到認可交易時，才會寫入交易記錄檔。 事實上，您是對寫入伺服器交易記錄檔的動作啟用批次處理。
 
-下表顯示了一些臨時測試結果。 這些測試分別以有交易和無交易，執行相同的循序插入。 為了進一步觀察，第一組測試是從遠端的膝上型電腦連到 Microsoft Azure 中的資料庫執行。 第二組測試是從位在相同 Microsoft Azure 資料中心 (美國西部) 內的雲端服務和資料庫執行。 下表分別以有交易和無交易，顯示循序插入的持續時間 (以毫秒為單位)。
+下表顯示一些特定的測試結果。 這些測試分別以有交易和無交易，執行相同的循序插入。 為了進一步觀察，第一組測試是從遠端的膝上型電腦連到 Microsoft Azure 中的資料庫執行。 第二組測試是從位在相同 Microsoft Azure 資料中心 (美國西部) 內的雲端服務和資料庫執行。 下表分別以有交易和無交易，顯示循序插入的持續時間 (以毫秒為單位)。
 
-**本地到 Azure**：
+**內部部署至 Azure**：
 
 | 作業 | 無交易 (毫秒) | 交易 (毫秒) |
 | --- | --- | --- |
@@ -167,7 +167,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-在前面的示例中 **，SqlCommand**物件從表值參數**\@TestTvp**插入行。 先前建立的 **DataTable** 物件透過 **SqlCommand.Parameters.Add** 方法指派給此參數。 在一個呼叫中批次處理插入的效能明顯高於循序插入。
+在上述範例中， **SqlCommand**物件會從資料表值參數** \@TestTvp**插入資料列。 先前建立的 **DataTable** 物件透過 **SqlCommand.Parameters.Add** 方法指派給此參數。 在一個呼叫中批次處理插入的效能明顯高於循序插入。
 
 若要進一步改善上述範例，請使用預存程序代替文字式命令。 下列 Transact-SQL 命令會建立一個接受 **SimpleTestTableType** 資料表值參數的預存程序。
 
@@ -191,7 +191,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 在大部分情況下，資料表值參數的效能同於或高於其他批次處理技術。 資料表值參數通常較適合，因為比其他選項更有彈性。 例如，其他技術 (例如 SQL 大量複製) 只允許插入新資料列。 但使用資料表值參數時，您可以在預存程序中使用邏輯，判斷哪些資料列是更新和哪些是插入。 也可以修改資料表類型來包含「作業」資料行，指出是否應該插入、更新或刪除指定的資料列。
 
-下表顯示了以毫秒為單位使用表值參數的臨時測試結果。
+下表顯示使用資料表值參數的特定測試結果（以毫秒為單位）。
 
 | 作業 | 內部部署至 Azure (亳秒) | Azure 相同資料中心 (毫秒) |
 | --- | --- | --- |
@@ -231,7 +231,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 在某些情況下，大量複製比資料表值參數更適合。 請參閱[資料表值參數](https://msdn.microsoft.com/library/bb510489.aspx)一文中的資料表值參數與 BULK INSERT 作業的比較表。
 
-以下臨時測試結果顯示了以毫秒為單位使用**SqlBulkCopy**進行批次處理的性能。
+下列臨機操作測試結果顯示**SqlBulkCopy**的批次處理效能（以毫秒為單位）。
 
 | 作業 | 內部部署至 Azure (亳秒) | Azure 相同資料中心 (毫秒) |
 | --- | --- | --- |
@@ -246,7 +246,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 > 
 > 
 
-批次較小時，使用資料表值參數的效能勝過 **SqlBulkCopy** 類別。 但是 **，SqlBulkCopy**執行的速度比 1，000 行和 10，000 行的測試的表值參數快 12-31%。 就像資料表值參數一樣， **SqlBulkCopy** 是批次插入的理想選擇，尤其與非批次作業的效能相比較。
+批次較小時，使用資料表值參數的效能勝過 **SqlBulkCopy** 類別。 不過， **SqlBulkCopy**的執行速度比資料表值參數快12-31%，以供1000和10000資料列的測試之用。 就像資料表值參數一樣， **SqlBulkCopy** 是批次插入的理想選擇，尤其與非批次作業的效能相比較。
 
 如需有關 ADO.NET 中大量複製的詳細資訊，請參閱 [SQL Server 中的大量複製作業](https://msdn.microsoft.com/library/7ek5da1a.aspx)。
 
@@ -276,7 +276,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 此範例主要是示範基本概念。 在更實際的案例中會循環查看需要的實體，以同時建構查詢字串和命令參數。 總計以 2100 個查詢參數為限，此方法可處理的資料列總數受限於此。
 
-以下臨時測試結果以毫秒為單位顯示此類插入語句的性能。
+下列臨機操作測試結果顯示這種插入語句的效能（以毫秒為單位）。
 
 | 作業 | 資料表值參數 (毫秒) | 單一陳述式 INSERT (毫秒) |
 | --- | --- | --- |
@@ -297,7 +297,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 ### <a name="entity-framework"></a>Entity Framework
 
-Entity Framework 目前不支援批次處理。 社群中不同的開發人員已嘗試示範因應措施，例如覆寫 **SaveChanges** 方法。 但解決方案通常太複雜，而且都針對應用程式和資料模型來自訂。 Entity Framework codeplex 專案目前有這項功能要求的討論頁。 要查看此討論，請參閱[設計會議說明 - 2012 年 8 月 2 日](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012)。
+Entity Framework 目前不支援批次處理。 社群中不同的開發人員已嘗試示範因應措施，例如覆寫 **SaveChanges** 方法。 但解決方案通常太複雜，而且都針對應用程式和資料模型來自訂。 Entity Framework codeplex 專案目前有這項功能要求的討論頁。 若要觀看這段討論，請參閱[設計會議筆記-2012 年8月2日](https://entityframework.codeplex.com/wikipage?title=Design%20Meeting%20Notes%20-%20August%202%2c%202012)。
 
 ### <a name="xml"></a>XML
 

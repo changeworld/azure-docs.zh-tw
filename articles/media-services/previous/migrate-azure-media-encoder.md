@@ -1,6 +1,6 @@
 ---
-title: 從 Azure 媒體編碼器遷移到媒體編碼器標準 |微軟文檔
-description: 本主題討論如何從 Azure 媒體編碼器遷移到媒體編碼器標準媒體處理器。
+title: 從 Azure 媒體編碼器遷移至媒體編碼器標準 |Microsoft Docs
+description: 本主題討論如何從 Azure 媒體編碼器遷移至媒體編碼器標準媒體處理器。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,21 +14,21 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
 ms.openlocfilehash: f8fe1b13db6473e80f0d7cdc638b775a0c8062c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513496"
 ---
-# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>從 Azure 媒體編碼器遷移到媒體編碼器標準
+# <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>從 Azure 媒體編碼器遷移至媒體編碼器標準
 
-本文討論從舊版 Azure 媒體編碼器 （AME） 媒體處理器（正在停用）遷移到媒體編碼器標準媒體處理器的步驟。 有關停用日期，請參閱此[遺留元件](legacy-components.md)主題。
+本文討論從舊版 Azure 媒體編碼器（AME）媒體處理器（已淘汰）遷移至媒體編碼器標準媒體處理器的步驟。 如需停用日期，請參閱此[舊版元件](legacy-components.md)主題。
 
-使用 AME 對檔進行編碼時，客戶通常使用指定的預設`H264 Adaptive Bitrate MP4 Set 1080p`字串（如 ） 為了遷移，需要更新代碼才能使用**媒體編碼器標準**媒體處理器而不是 AME，以及等效[的系統預設](media-services-mes-presets-overview.md)之一，如`H264 Multiple Bitrate 1080p`。 
+使用 AME 編碼檔案時，客戶通常會使用名為的預設字串`H264 Adaptive Bitrate MP4 Set 1080p`，例如。 為了進行遷移，您的程式碼必須更新為使用**媒體編碼器標準**媒體處理器，而不是 [AME]，以及其中一個[system presets](media-services-mes-presets-overview.md)對等系統`H264 Multiple Bitrate 1080p`預設值（例如）。 
 
-## <a name="migrating-to-media-encoder-standard"></a>遷移到媒體編碼器標準
+## <a name="migrating-to-media-encoder-standard"></a>遷移至媒體編碼器標準
 
-下面是使用舊媒體處理器的典型 C# 代碼示例。 
+以下是使用舊版媒體處理器的一般 c # 程式碼範例。 
 
 ```csharp
 // Declare a new job. 
@@ -45,7 +45,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
     TaskOptions.None); 
 ```
 
-下面是使用媒體編碼器標準的更新版本。
+以下是使用媒體編碼器標準的更新版本。
 
 ```csharp
 // Declare a new job. 
@@ -64,13 +64,13 @@ ITask task = job.Tasks.AddNew("My encoding task",
 
 ### <a name="advanced-scenarios"></a>進階案例 
 
-如果您已使用 AME 的架構為 AME 創建了自己的編碼預設，則[媒體編碼器標準存在等效架構](media-services-mes-schema.md)。 如果您對如何將舊設置映射到新編碼器有疑問，請通過mailto:amshelp@microsoft.com  
-## <a name="known-differences"></a>已知差異 
+如果您已使用其架構為 AME 建立自己的編碼預設值，則會有媒體編碼器標準的對[等架構](media-services-mes-schema.md)。 如果您有關于如何將較舊的設定對應到新編碼器的問題，請透過mailto:amshelp@microsoft.com  
+## <a name="known-differences"></a>已知的差異 
 
-介質編碼器標準比傳統的 AME 編碼器更堅固、更可靠、性能更好、輸出品質更好。 此外： 
+媒體編碼器標準更健全、可靠、具有較佳的效能，並產生比舊版 AME 編碼器更佳的品質輸出。 此外： 
 
-* 媒體編碼器標準生成具有與 AME 不同的命名約定的輸出檔案。
-* 媒體編碼器標準生成專案，如包含[輸入檔中繼資料](media-services-input-metadata-schema.md)和[輸出檔案中繼資料](media-services-output-metadata-schema.md)的檔。
+* 媒體編碼器標準會產生不同命名慣例的輸出檔，而不是 AME。
+* 媒體編碼器標準會產生成品，例如包含[輸入檔案中繼資料](media-services-input-metadata-schema.md)和[輸出檔案中繼資料](media-services-output-metadata-schema.md)的檔案。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,5 +1,5 @@
 ---
-title: 自動執行 NSG 審核 - 安全性群組視圖
+title: 自動化 NSG 審核-安全性群組視圖
 titleSuffix: Azure Network Watcher
 description: 此頁面說明如何設定網路安全性群組的稽核
 services: network-watcher
@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 59c1b6e6c281a736a79d110bd7d943344bcd5130
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840973"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>使用 Azure 網路監看員安全性群組檢視自動化 NSG 稽核
@@ -34,7 +34,7 @@ ms.locfileid: "76840973"
 
 此案例假設您已依照[建立網路監看員](network-watcher-create.md)中的步驟建立網路監看員。 此案例也假設已有具有有效虛擬機器的資源群組可供使用。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 本文章涵蓋的案例會取得虛擬機器的安全性群組檢視。
 

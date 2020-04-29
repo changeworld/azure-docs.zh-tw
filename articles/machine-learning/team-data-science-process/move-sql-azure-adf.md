@@ -12,15 +12,15 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76722487"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>使用 Azure Data Factory 從內部部署 SQL Server 將資料移至 SQL Azure
 
-本文演示如何使用 Azure 資料工廠 （ADF） 通過 Azure Blob 存儲將資料從本地 SQL Server 資料庫移動到 SQL Azure 資料庫：此方法是受支援的舊方法，具有複製暫存副本的優點，但[我們建議查看資料移轉頁以獲取最新選項](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)。
+本文說明如何透過 Azure Blob 儲存體使用 Azure Data Factory （ADF），將資料從內部部署 SQL Server 資料庫移至 SQL Azure 資料庫：此方法是支援的舊版方法，其具有複寫的暫存複本的優點，但[我們建議您查看我們的資料移轉頁面，以取得最新的選項](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1)。
 
 針對將資料移至 Azure SQL Database 的各種選項，如需摘要說明的資料表，請參閱[將資料移至 Azure Machine Learning 的 Azure SQL Database](move-sql-azure.md)。
 
@@ -32,27 +32,27 @@ Azure Data Factory 是完全受控的雲端架構資料整合服務，用來協�
 請考慮使用 ADF：
 
 * 若同時存取內部部署和雲端資源的混合式案例需要持續移轉資料
-* 當資料需要轉換或在遷移時向其添加業務邏輯時。
+* 當資料需要轉換或在遷移時新增商務邏輯。
 
 ADF 允許使用定期管理資料移動的簡易 JSON 指令碼，來進行排程和監視的工作。 ADF 也有其他功能，例如支援複雜作業。 如需 ADF 的詳細資訊，請參閱 [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/)上的文件。
 
 ## <a name="the-scenario"></a><a name="scenario"></a>案例
-我們設定了 ADF 管線來組成兩個資料移轉活動。 它們每天在本地 SQL 資料庫和雲中的 Azure SQL 資料庫之間移動資料。 這兩個活動為：
+我們設定了 ADF 管線來組成兩個資料移轉活動。 它們會一起在內部部署 SQL Database 和雲端中的 Azure SQL Database 之間，每天移動資料。 這兩個活動為：
 
 * 將資料從內部部署 SQL Server 資料庫複製到 Azure Blob 儲存體帳戶
 * 將資料從 Azure Blob 儲存體帳戶複製至 Azure SQL Database
 
 > [!NOTE]
-> 此處顯示的步驟已根據 ADF 團隊提供的更詳細的教程進行了調整：將[資料從本地 SQL Server 資料庫複製到 Azure Blob 存儲](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/)引用，該主題的相關部分在適當的時候提供。
+> 此處顯示的步驟已根據 ADF 團隊所提供的更詳細教學課程進行調整：[將資料從內部部署 SQL Server 資料庫複製到 Azure Blob 儲存體](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/)參考，以在適當時提供該主題的相關章節。
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Prerequisites
+## <a name="prerequisites"></a><a name="prereqs"></a>必要條件
 本教學課程假設您有：
 
-* **Azure 訂閱**。 如果您沒有訂用帳戶，可以註冊[免費試用](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure 存儲帳戶**。 在本教學課程中，您會使用 Azure 儲存體帳戶來儲存資料。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文。 建立儲存體帳戶之後，您必須取得用來存取儲存體的帳戶金鑰。 請參閱[管理存儲帳戶訪問金鑰](../../storage/common/storage-account-keys-manage.md)。
-* 存取 **Azure SQL Database**。 如果必須設置 Azure SQL 資料庫，則主題["使用 Microsoft Azure SQL 資料庫入門](../../sql-database/sql-database-get-started.md)"提供了有關如何預配 Azure SQL 資料庫新實例的資訊。
+* **Azure 訂**用帳戶。 如果您沒有訂用帳戶，可以註冊[免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 儲存體帳戶**。 在本教學課程中，您會使用 Azure 儲存體帳戶來儲存資料。 如果您沒有 Azure 儲存體帳戶，請參閱 [建立儲存體帳戶](../../storage/common/storage-account-create.md) 一文。 建立儲存體帳戶之後，您必須取得用來存取儲存體的帳戶金鑰。 請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。
+* 存取 **Azure SQL Database**。 如果您必須設定 Azure SQL Database，[與 Microsoft Azure SQL Database 消費者入門](../../sql-database/sql-database-get-started.md)的主題會提供如何布建 Azure SQL Database 之新實例的相關資訊。
 * 已在本機上安裝和設定 **Azure PowerShell** 。 如需指示，請參閱 [如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
 
 > [!NOTE]
@@ -65,13 +65,13 @@ ADF 允許使用定期管理資料移動的簡易 JSON 指令碼，來進行排�
 
 您可以將這裡提供的程序調整為自己的資料集，或者遵循上述步驟使用 NYC 計程車資料集。 若要將 NYC 計程車資料集上傳至您的內部部署 SQL Server 資料庫，請遵循[大量匯入資料至 SQL Server 資料庫](sql-walkthrough.md#dbload)中概述的程序進行。 這些指示適用於 Azure 虛擬機器上的 SQL Server，但將資料上傳至內部部署 SQL Server 的程序是相同的。
 
-## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>創建 Azure 資料工廠
+## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>建立 Azure Data Factory
 用於建立新 Azure Data Factory 的指示及 [Azure 入口網站](https://portal.azure.com/)中的資源群組，已在[建立 Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory) 提供。 將新的 ADF 執行個體命名為 *adfdsp*，並將建立的資源群組命名為 *adfdsprg*。
 
 ## <a name="install-and-configure-azure-data-factory-integration-runtime"></a>安裝和設定 Azure Data Factory Integration Runtime
-集成運行時是 Azure 資料工廠用於跨不同網路環境提供資料整合功能的客戶管理的資料整合基礎結構。 此執行階段先前稱為「資料管理閘道」。
+Integration Runtime 是客戶管理的資料整合基礎結構，Azure Data Factory 用來提供跨不同網路環境的資料整合功能。 此執行階段先前稱為「資料管理閘道」。
 
-要設置，[請按照創建管道的說明進行操作](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
+若要設定，請[遵循建立管線的指示](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal#create-a-pipeline)
 
 ## <a name="create-linked-services-to-connect-to-the-data-resources"></a><a name="adflinkedservices"></a>建立連結服務以連接至資料資源
 連結服務定義會定義 Azure Data Factory 所需的資訊，以便連接到資料資源。 此案例中的三個資源都必須使用連結服務：
@@ -99,8 +99,8 @@ ADF 允許使用定期管理資料移動的簡易 JSON 指令碼，來進行排�
 此 ADF 管線所需的三個資料表定義為：
 
 1. [SQL 內部部署資料表](#adf-table-onprem-sql)
-2. [Blob 表](#adf-table-blob-store)
-3. [SQL Azure 表](#adf-table-azure-sql)
+2. [Blob 資料表](#adf-table-blob-store)
+3. [SQL Azure 資料表](#adf-table-azure-sql)
 
 > [!NOTE]
 > 這些程序使用 Azure PowerShell 來定義和建立 ADF 活動。 但是，這些工作也可以透過 Azure 入口網站來完成。 如需詳細資訊，請參閱[建立資料集](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline)。
@@ -136,7 +136,7 @@ ADF 允許使用定期管理資料移動的簡易 JSON 指令碼，來進行排�
 }
 ```
 
-這裡未包含資料行名稱。 您可以通過在此處包括列名稱來子選擇它們（有關詳細資訊，請查看[ADF 文檔](../../data-factory/copy-activity-overview.md)主題）。
+這裡未包含資料行名稱。 您可以在資料行名稱上加入子選擇，方法是將其納入此處（如需詳細資訊，請參閱[ADF 檔](../../data-factory/copy-activity-overview.md)主題。
 
 將資料表的 JSON 定義複製到名為 *onpremtabledef.json* 的檔案，並將其儲存至已知位置 (此處假設為 *C:\temp\onpremtabledef.json*)。 使用下列 Azure PowerShell Cmdlet，在 ADF 中建立資料表：
 
@@ -302,4 +302,4 @@ SQL Azure 輸出的資料表定義如下 (此結構描述會對應來自 Blob �
 
 當管線執行時，您應該可以看到資料在選取用於 Blob 的容器中顯示 (每天一個檔案)。
 
-我們沒有利用 ADF 提供的功能來增量地管道資料。 如需如何執行此功能和 ADF 提供之其他功能的詳細資訊，請參閱 [ADF 文件](https://azure.microsoft.com/services/data-factory/)。
+我們尚未利用 ADF 提供的功能，以累加方式對資料進行管道傳送。 如需如何執行此功能和 ADF 提供之其他功能的詳細資訊，請參閱 [ADF 文件](https://azure.microsoft.com/services/data-factory/)。

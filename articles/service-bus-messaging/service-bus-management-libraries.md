@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排管理程式庫| Microsoft Docs
-description: 本文介紹如何使用 Azure 服務匯流排管理庫動態預配服務匯流排命名空間和實體。
+description: 本文說明如何使用 Azure 服務匯流排管理程式庫，以動態方式布建服務匯流排的命名空間和實體。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76756261"
 ---
 # <a name="service-bus-management-libraries"></a>服務匯流排管理程式庫
@@ -32,11 +32,11 @@ Azure 服務匯流排管理程式庫可以動態佈建服務匯流排命名空�
 * 建立、更新、刪除主題
 * 建立、更新、刪除訂用帳戶
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要開始使用服務匯流排管理程式庫，您必須使用 Azure Active Directory (Azure AD) 服務來驗證。 Azure AD 會要求您以提供 Azure 資源存取權的服務主體來進行驗證。 如需建立服務主體的詳細資訊，請參閱以下其中一篇文章：  
 
-* [使用 Azure 門戶創建可訪問資源的活動目錄應用程式和服務主體](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+* [使用 Azure 入口網站建立可存取資源的 Active Directory 應用程式和服務主體](/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 * [使用 Azure PowerShell 建立用來存取資源的服務主體](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [使用 Azure CLI 建立用來存取資源的服務主體](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
@@ -76,8 +76,8 @@ Azure 服務匯流排管理程式庫可以動態佈建服務匯流排命名空�
    await sbClient.Queues.CreateOrUpdateAsync(resourceGroupName, namespaceName, QueueName, queueParams);
    ```
 
-## <a name="complete-code-to-create-a-queue"></a>完成創建佇列的代碼
-下面是創建服務匯流排佇列的完整代碼： 
+## <a name="complete-code-to-create-a-queue"></a>完整的程式碼以建立佇列
+以下是建立服務匯流排佇列的完整程式碼： 
 
 ```csharp
 using System;
@@ -164,7 +164,7 @@ namespace SBusADApp
 ```
 
 > [!IMPORTANT]
-> 有關完整示例，請參閱[GitHub 上的 .NET 管理示例](https://github.com/Azure-Samples/service-bus-dotnet-management/)。 
+> 如需完整範例，請參閱[GitHub 上的 .net 管理範例](https://github.com/Azure-Samples/service-bus-dotnet-management/)（英文）。 
 
 ## <a name="next-steps"></a>後續步驟
 [Microsoft.Azure.Management.ServiceBus API 參考](/dotnet/api/Microsoft.Azure.Management.ServiceBus)

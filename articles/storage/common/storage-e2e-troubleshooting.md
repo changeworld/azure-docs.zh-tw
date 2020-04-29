@@ -1,5 +1,5 @@
 ---
-title: 使用診斷和消息分析器對資料操作進行故障排除
+title: 使用診斷和訊息分析器針對資料作業進行疑難排解
 titleSuffix: Azure Storage
 description: 示範使用 Azure Storage Analytics、AzCopy 和 Microsoft Message Analyzer 進行端對端疑難排解的教學課程
 author: normesta
@@ -10,10 +10,10 @@ ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76314754"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 儲存體計量和記錄、AzCopy 和 Message Analyzer 進行端對端疑難排解
@@ -30,20 +30,20 @@ ms.locfileid: "76314754"
 
 若要使用 Microsoft Azure 儲存體進行用戶端應用程式的疑難排解，您可以使用一些工具組合來判斷何時發生問題和問題的可能原因。 這些工具包括：
 
-* **Azure 存儲分析**。 [Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics) 提供 Azure 儲存體的度量和記錄。
+* **Azure 儲存體分析**。 [Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics) 提供 Azure 儲存體的度量和記錄。
 
   * **儲存體度量** 可追蹤儲存體帳戶的交易度量和容量度量。 您可以使用度量，判斷如何根據各種不同的量值來執行您的應用程式。 如需 Storage Analytics 追蹤的度量類型詳細資訊，請參閱 [Storage Analytics 度量資料表結構描述](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) 。
   * **儲存體記錄**可將對 Azure 儲存體服務的每項要求記錄至伺服器端記錄。 記錄檔可追蹤每項要求的詳細資料，包括執行的作業、作業的狀態及延遲資訊。 如需 Storage Analytics 寫入記錄的要求和回應資料詳細資訊，請參閱 [Storage Analytics 記錄格式](/rest/api/storageservices/Storage-Analytics-Log-Format)。
 
-* **Azure 門戶**。 您可以在[Azure 門戶](https://portal.azure.com)中為存儲帳戶配置指標和日誌記錄。 您也可以檢視圖表和圖形 (其中顯示應用程式在一段時間內的執行狀況)，並設定警示，通知應用程式是否對指定的度量以超乎預期的方式執行。
+* **Azure 入口網站**。 您可以在[Azure 入口網站](https://portal.azure.com)中設定儲存體帳戶的計量和記錄。 您也可以檢視圖表和圖形 (其中顯示應用程式在一段時間內的執行狀況)，並設定警示，通知應用程式是否對指定的度量以超乎預期的方式執行。
 
-    有關在 Azure 門戶中配置監視的資訊，請參閱[Azure 門戶中的監視存儲帳戶](storage-monitor-storage-account.md)。
-* **阿茲比貝**. Azure 儲存體的伺服器記錄會儲存為 Blob，因此您可以使用 AzCopy，將記錄 Blob 複製到本機目錄，以便使用 Microsoft Message Analyzer 分析。 如需 AzCopy 的詳細資訊，請參閱[使用 AzCopy 命令列公用程式傳輸資料](storage-use-azcopy.md)。
-* **微軟消息分析器**. Message Analyzer 是一種可取用記錄檔並以視覺化格式顯示記錄檔資料的工具，讓您輕鬆地篩選、搜尋記錄檔資料並分組為實用的資料集，以便用來分析錯誤和效能問題。 如需 Message Analyzer 的詳細資訊，請參閱 [Microsoft Message Analyzer 操作指南](https://technet.microsoft.com/library/jj649776.aspx)。
+    如需在 Azure 入口網站中設定監視的相關資訊，請參閱[Azure 入口網站中的監視儲存體帳戶](storage-monitor-storage-account.md)。
+* **AzCopy**。 Azure 儲存體的伺服器記錄會儲存為 Blob，因此您可以使用 AzCopy，將記錄 Blob 複製到本機目錄，以便使用 Microsoft Message Analyzer 分析。 如需 AzCopy 的詳細資訊，請參閱[使用 AzCopy 命令列公用程式傳輸資料](storage-use-azcopy.md)。
+* **Microsoft Message Analyzer**。 Message Analyzer 是一種可取用記錄檔並以視覺化格式顯示記錄檔資料的工具，讓您輕鬆地篩選、搜尋記錄檔資料並分組為實用的資料集，以便用來分析錯誤和效能問題。 如需 Message Analyzer 的詳細資訊，請參閱 [Microsoft Message Analyzer 操作指南](https://technet.microsoft.com/library/jj649776.aspx)。
 
 ## <a name="about-the-sample-scenario"></a>關於範例案例
 
-在本教學課程中，我們將檢驗一個案例，其中的 Azure 儲存體度量表示應用程式呼叫 Azure 儲存體的成功率很低。 低成功率指標（在[Azure 門戶](https://portal.azure.com)和指標表中顯示為**百分比成功**）跟蹤成功但返回大於 299 的 HTTP 狀態碼的操作。 在伺服器端的儲存體記錄檔中，這些作業會加上 **ClientOtherErrors**的交易狀態記錄下來。 如需低成功百分比度量的詳細資訊，請參閱 [度量顯示低 PercentSuccess 或分析記錄檔項目的交易狀態為 ClientOtherErrors](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success)。
+在本教學課程中，我們將檢驗一個案例，其中的 Azure 儲存體度量表示應用程式呼叫 Azure 儲存體的成功率很低。 低百分比成功率計量（在[Azure 入口網站](https://portal.azure.com)中和計量資料表中顯示為**PercentSuccess** ）會追蹤成功的作業，但是會傳回大於299的 HTTP 狀態碼。 在伺服器端的儲存體記錄檔中，這些作業會加上 **ClientOtherErrors**的交易狀態記錄下來。 如需低成功百分比度量的詳細資訊，請參閱 [度量顯示低 PercentSuccess 或分析記錄檔項目的交易狀態為 ClientOtherErrors](storage-monitoring-diagnosing-troubleshooting.md#metrics-show-low-percent-success)。
 
 Azure 儲存體作業可能會傳回大於 299 的 HTTP 狀態碼為其正常功能的一部分。 但是在某些情況下，這些錯誤表示您可能可以最佳化您的用戶端應用程式，以改善效能。
 
@@ -85,7 +85,7 @@ Azure 儲存體作業可能會傳回大於 299 的 HTTP 狀態碼為其正常功
 
 ### <a name="configure-server-side-logging-and-metrics"></a>設定伺服器端記錄和度量
 
-首先，我們需要配置 Azure 存儲日誌記錄和指標，以便從服務端分析資料。 您可以通過多種方式配置日誌記錄和指標 - 通過[Azure 門戶](https://portal.azure.com)，使用 PowerShell 或以程式設計方式配置。 有關配置日誌記錄和指標的詳細資訊[，請參閱啟用指標](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal)和[啟用日誌記錄](storage-analytics-logging.md#enable-storage-logging)。
+首先，我們需要設定 Azure 儲存體記錄和計量，讓我們有服務端的資料可進行分析。 您可以用各種方式設定記錄和度量-透過[Azure 入口網站](https://portal.azure.com)、使用 PowerShell 或以程式設計方式。 如需設定記錄和計量的詳細資訊，請參閱[啟用計量](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal)和[啟用記錄](storage-analytics-logging.md#enable-storage-logging)。
 
 ### <a name="configure-net-client-side-logging"></a>設定 .NET 用戶端記錄
 
@@ -126,7 +126,7 @@ Azure 儲存體作業可能會傳回大於 299 的 HTTP 狀態碼為其正常功
 
 ## <a name="review-metrics-data-in-the-azure-portal"></a>在 Azure 入口網站中檢閱計量資料
 
-應用程式運行一段時間後，您可以查看[Azure 門戶](https://portal.azure.com)中顯示的指標圖表，以觀察服務的性能。
+一旦您的應用程式執行一段時間，您就可以查看出現在[Azure 入口網站](https://portal.azure.com)中的度量圖表，以觀察您的服務如何運作。
 
 首先，在 Azure 入口網站中瀏覽至您的儲存體帳戶。 根據預設，包含 [成功百分比]**** 計量的監視圖表會顯示在 [帳戶] 刀鋒視窗上。 如果您之前曾修改圖表以顯示不同的計量，請新增 [成功百分比]**** 計量。
 
@@ -143,7 +143,7 @@ Azure 儲存體作業可能會傳回大於 299 的 HTTP 狀態碼為其正常功
 
 Azure 儲存體會將伺服器記錄檔資料寫入至 Blob，而度量會寫入至資料表。 記錄檔 Blob 位於您儲存體帳戶已知名稱的 `$logs` 容器中。 記錄檔 Blob 會以階層方式依照年、月、日和小時命名，讓您輕鬆地找出您要調查的時間範圍。 例如，在 `storagesample` 帳戶中，01/02/2015 上午 8-9 點的記錄檔 Blob 容器為 `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`。 此容器中的個別 Blob 會循序命名，並以 `000000.log`開頭。
 
-您可以使用 AzCopy 命令列工具，將這些伺服器端記錄檔下載至您在本機電腦上選擇的位置。 例如，可以使用以下命令將 2015 年 1 月 2 日發生的 Blob 操作的日誌檔下載到資料夾`C:\Temp\Logs\Server`;替換為`<storageaccountname>`存儲帳戶的名稱：
+您可以使用 AzCopy 命令列工具，將這些伺服器端記錄檔下載至您在本機電腦上選擇的位置。 例如，您可以使用下列命令，將在2015年1月2日發生之 blob 作業的記錄檔下載到資料夾`C:\Temp\Logs\Server`;將`<storageaccountname>`取代為您的儲存體帳戶名稱：
 
 ```azcopy
 azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
@@ -288,7 +288,7 @@ Azure 儲存體用戶端程式庫會自動為每一項要求產生唯一的用�
 接下來，我們會讓此用戶端要求識別碼與用戶端記錄檔資料相互關聯，以查看用戶端在錯誤發生時所採取的動作。 您可以顯示此工作階段的新分析方格檢視，以檢視在第二個索引標籤中開啟的用戶端記錄檔資料：
 
 1. 首先，將 **ClientRequestId** 欄位的值複製到剪貼簿。 您可以選取任一個資料列、找出 **ClientRequestId** 欄位，以滑鼠右鍵按一下資料值，然後選擇 [複製 'ClientRequestId']****。
-2. 在工具列功能區上，選擇 **"新檢視器**"，然後選擇 **"分析網格"** 以打開新選項卡。新選項卡顯示日誌檔中的所有資料，無需分組、篩選或顏色規則。
+2. 在工具列功能區上，選取 [**新增檢視器**]，然後選取 [**分析方格**] 以開啟新的索引標籤。[新增] 索引標籤會顯示記錄檔中的所有資料，但不含群組、篩選或色彩規則。
 3. 在工具列功能區中，選取 [檢視版面配置]****，然後選取 [Azure 儲存體]**** 區段下的 [所有 .NET 用戶端資料行]****。 此檢視版面配置會顯示用戶端記錄中的資料，以及伺服器和網路追蹤記錄中的資料。 預設會依 **MessageNumber** 資料行排序。
 4. 接下來，搜尋用戶端記錄檔中的用戶端要求識別碼。 在工具列功能區中，選取 [尋找訊息]****，然後在 [尋找]**** 欄位中指定用戶端要求識別碼的自訂篩選條件。 將此語法用於篩選，並指定自己的用戶端要求識別碼：
 
@@ -319,10 +319,10 @@ Message Analyzer 會找出並選取搜尋準則符合用戶端要求識別碼的
 | 共用存取簽章 (SAS) 授權問題 |AzureStorageLog.RequestStatus ==  "SASAuthorizationError" |網路 |
 | HTTP 409 (衝突) 訊息 |HTTP.Response.StatusCode   == 409 |網路 |
 | 409 (全部) |*StatusCode   == 409 |全部 |
-| 低 PercentSuccess，或是分析記錄項目內含具有 ClientOtherErrors 交易狀態的作業 |AzureStorageLog.RequestStatus ==   "ClientOtherError" |伺服器 |
-| Nagle 警告 |((AzureStorageLog.EndToEndLatencyMS   - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS *   1.5)) 和 (AzureStorageLog.RequestPacketSize <1460) 和 (AzureStorageLog.EndToEndLatencyMS -   AzureStorageLog.ServerLatencyMS >= 200) |伺服器 |
+| 低 PercentSuccess，或是分析記錄項目內含具有 ClientOtherErrors 交易狀態的作業 |AzureStorageLog.RequestStatus ==   "ClientOtherError" |Server (伺服器) |
+| Nagle 警告 |((AzureStorageLog.EndToEndLatencyMS   - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS *   1.5)) 和 (AzureStorageLog.RequestPacketSize <1460) 和 (AzureStorageLog.EndToEndLatencyMS -   AzureStorageLog.ServerLatencyMS >= 200) |Server (伺服器) |
 | 伺服器和網路記錄中的時間範圍 |#Timestamp   >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 |伺服器、網路 |
-| 伺服器記錄中的時間範圍 |AzureStorageLog.Timestamp   >= 2014-10-20T16:36:38 和 AzureStorageLog.Timestamp <=   2014-10-20T16:36:39 |伺服器 |
+| 伺服器記錄中的時間範圍 |AzureStorageLog.Timestamp   >= 2014-10-20T16:36:38 和 AzureStorageLog.Timestamp <=   2014-10-20T16:36:39 |Server (伺服器) |
 
 ## <a name="next-steps"></a>後續步驟
 

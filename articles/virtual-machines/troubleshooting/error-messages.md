@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: f5639d1cf94c77d699dc6de9841698b045ac1f96
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76543013"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>了解當您在 Azure 中管理虛擬機器時，常見的錯誤訊息
@@ -99,8 +99,8 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  InvalidParameter  |  提供的密碼長度必須介於 {0}-{1} 個字元之間，而且至少必須符合下列其中 {2} 項對密碼複雜性的要求： <ol><li> 包含大寫字元</li><li>包含小寫字元</li><li>包含數字</li><li>包含特殊字元。</li></ol>  |
 |  InvalidParameter  |  不允許指定的系統管理員使用者名稱。  |
 |  InvalidParameter  |  如果從平台或使用者映像建立 VM，將無法連結現有的作業系統磁碟。  |
-|  InvalidParameter  |  容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 連字號必須前面和後面跟一個字母數位字元。  |
-|  InvalidParameter  |  URL {1} 中的容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 連字號必須前面和後面跟一個字母數位字元。  |
+|  InvalidParameter  |  容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 連字號的前面必須加上英數位元。  |
+|  InvalidParameter  |  URL {1} 中的容器名稱 {0} 無效。 容器名稱長度必須是 3-63 個字元，而且只能包含小寫英數字元和連字號。 連字號的前面必須加上英數位元。  |
 |  InvalidParameter  |  URL {0} 中的 blob 名稱包含斜線。 磁碟目前不支援這種作法。  |
 |  InvalidParameter  |  URI {0} 似乎不是正確的 blob URI。  |
 |  InvalidParameter  |  名為 '{0}' 的磁碟已使用相同的 LUN：{1}。  |
@@ -205,7 +205,7 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 |  VMExtensionManagementInternalError  |  準備 VM 擴充時發生多個錯誤。 如需詳細資訊，請參閱 VM 擴充執行個體檢視。  |
 |  VMExtensionProvisioningError  |  VM 回報在處理擴充 '{0}' 時失敗。 錯誤訊息："{1}"。  |
 |  VMExtensionProvisioningError  |  多個 VM 擴充無法佈建在 VM 上。 如需詳細資訊，請參閱 VM 擴充執行個體檢視。  |
-|  VMExtensionProvisioningTimeout  |  VM 擴展的{0}預配已超時。擴展安裝可能時間過長，或無法獲得擴展狀態。  |
+|  VMExtensionProvisioningTimeout  |  VM 擴充功能 '{0}' 的布建已超時。延伸模組安裝可能會花費太長的時間，或無法取得延伸模組狀態。  |
 |  VMMarketplaceInvalidInput  |  從非 Marketplace 映像建立虛擬機器不需要方案資訊，請移除要求中的方案資訊。 作業系統磁碟名稱是 {0}。  |
 |  VMMarketplaceInvalidInput  |  購買資訊不符。 無法從 Marketplace 映像部署。 作業系統磁碟名稱是 {0}。  |
 |  VMMarketplaceInvalidInput  |  要求中必須有方案資訊，才能從 Marketplace 映像建立虛擬機器。 作業系統磁碟名稱是 {0}。  |
@@ -216,4 +216,4 @@ Azure VM 使用下列 JSON 格式來產生錯誤回應：
 
 
 ## <a name="next-steps"></a>後續步驟
-如果您需要更多協助，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **"獲取支援**"。
+如果您需要更多協助，您可以連絡 [MSDN Azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，您可以提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。

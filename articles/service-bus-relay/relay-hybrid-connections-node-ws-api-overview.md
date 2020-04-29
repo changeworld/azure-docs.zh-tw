@@ -1,6 +1,6 @@
 ---
 title: Azure 轉送 Node API 概觀 | Microsoft Docs
-description: 本文概述了 Azure 中繼服務的 Node.js API。 它還演示如何使用 hyco-ws 節點包。
+description: 本文概述適用于 Azure 轉送服務的 node.js API。 它也會說明如何使用 hyco-ws-ws 節點套件。
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,17 +15,17 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76514505"
 ---
 # <a name="relay-hybrid-connections-node-api-overview"></a>轉送混合式連線 Node API 概觀
 
 ## <a name="overview"></a>總覽
 
-Azure[`hyco-ws`](https://www.npmjs.com/package/hyco-ws)中繼混合連接的節點包構建並擴展[了"ws"NPM](https://www.npmjs.com/package/ws)包。 此封裝重新匯出該基本封裝的所有匯出，並新增新的匯出，可啟用與 Azure 轉送服務混合式連線功能整合。 
+Azure 轉送[`hyco-ws`](https://www.npmjs.com/package/hyco-ws)混合式連線的節點封裝建置於並擴充[' ws '](https://www.npmjs.com/package/ws) NPM 封裝。 此封裝重新匯出該基本封裝的所有匯出，並新增新的匯出，可啟用與 Azure 轉送服務混合式連線功能整合。 
 
 現有的應用程式 `require('ws')` 可以改為搭配使用這個套件與 `require('hyco-ws')`，這也會啟用混合式案例，其中應用程式可以從「防火牆內部」及透過混合式連線，在本機接聽 WebSocket 連線，全部都在相同的時間。
   
@@ -143,7 +143,7 @@ function(headers)
 
 接受連入連線前才會引發 `headers` 事件，讓修改標題傳送給用戶端。 
 
-##### <a name="connection"></a>連接
+##### <a name="connection"></a>connection
 
 ```JavaScript
 function(socket)

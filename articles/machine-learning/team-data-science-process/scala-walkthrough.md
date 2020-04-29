@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: b36a3faab49ee8d51c25aa18879e6f5d1db8c2fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76716772"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>在 Azure 上使用 Scala 與 Spark 的資料科學
@@ -39,7 +39,7 @@ ms.locfileid: "76716772"
 > 
 > 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 * 您必須擁有 Azure 訂用帳戶。 如果還沒有， [請取得 Azure 免費試用](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
 * 您需要 Azure HDInsight 3.4 Spark 1.6 叢集來完成下列程序。 若要建立叢集，請參閱 [開始使用：在 Azure HDInsight 上建立 Apache Spark](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)中的指示。 在 [選取叢集類型] **** 功能表上設定叢集類型和版本。
 
@@ -56,7 +56,7 @@ ms.locfileid: "76716772"
 
 ![叢集儀表板和 Jupyter Notebook](./media/scala-walkthrough/spark-jupyter-on-portal.png)
 
-您也可以在 https://&lt;clustername&gt;.azurehdinsight.net/jupyter 存取 Jupyter Notebook。 將*群集名稱*替換為群集的名稱。 您需要有系統管理員帳戶的密碼才能存取 Jupyter Notebook。
+您也可以在 https://&lt;clustername&gt;.azurehdinsight.net/jupyter 存取 Jupyter Notebook。 將*clustername*取代為您的叢集名稱。 您需要有系統管理員帳戶的密碼才能存取 Jupyter Notebook。
 
 ![使用叢集名稱移至 Jupyter Notebook](./media/scala-walkthrough/spark-jupyter-notebook.png)
 
@@ -224,7 +224,7 @@ Spark 可以讀取和寫入 Azure Blob 儲存體。 您可以使用 Spark 來處
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**輸出：**
+**輸出**
 
 執行資料格的時間︰8 秒。
 
@@ -245,7 +245,7 @@ Spark 可以讀取和寫入 Azure Blob 儲存體。 您可以使用 Spark 來處
     # SHOW ONLY THE TOP THREE ROWS
     sqlResultsDF.show(3)
 
-**輸出：**
+**輸出**
 
 | fare_amount | passenger_count | tip_amount | tipped |
 | --- | --- | --- | --- |
@@ -254,12 +254,12 @@ Spark 可以讀取和寫入 Azure Blob 儲存體。 您可以使用 Spark 來處
 |        10.5 |2.0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>資料探索和虛擬化
-將資料帶入 Spark 之後，資料科學程序的下一個步驟是透過探索和視覺化以更深入瞭解資料。 本節中，您可以使用 SQL 查詢檢查計程車資料。 然後，將結果導入資料框，使用自動視覺化 Jupyter 功能繪製目標變數和預期要素以進行目視檢查。
+將資料帶入 Spark 之後，資料科學程序的下一個步驟是透過探索和視覺化以更深入瞭解資料。 本節中，您可以使用 SQL 查詢檢查計程車資料。 然後，將結果匯入資料框架，以使用自動視覺化 Jupyter 功能繪製目標變數和潛在功能以進行視覺檢查。
 
 ### <a name="use-local-and-sql-magic-to-plot-data"></a>使用本機和 SQL magic 來繪製資料
 根據預設，在背景工作節點上保存的工作階段內容中，可取得您從 Jupyter Notebook 執行之任何程式碼片段的輸出。 如果您想要將車程儲存至每個計算的背景工作節點，而且如果在 Jupyter 伺服器節點 (此為前端節點) 的本機上可取得計算所需的所有資料，您可以使用 `%%local` Magic 在 Jupyter 伺服器上執行程式碼片段。
 
-* **SQL**魔法`%%sql`（ 。 HDInsight Spark 核心支援針對 SQLContext 進行簡單的內嵌 HiveQL 查詢。 (`-o VARIABLE_NAME`) 引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 此設置表示輸出將在本地模式下可用。
+* **SQL 魔術**（`%%sql`）。 HDInsight Spark 核心支援針對 SQLContext 進行簡單的內嵌 HiveQL 查詢。 (`-o VARIABLE_NAME`) 引數會將 SQL 查詢的輸出，保存為 Jupyter 伺服器上的 Pandas 資料框架。 這項設定表示輸出將會以原生模式提供。
 * `%%local` **magic**。 `%%local` magic 在 Jupyter 伺服器本機 (HDInsight 叢集的前端節點) 上執行程式碼。 一般而言，您會使用 `%%local` magic 來搭配含有 `-o` 參數的 `%%sql` magic。 `-o` 參數會保存本機 SQL 查詢的輸出，然後 `%%local` magic 會針對已保存在本機上的 SQL 查詢輸出，觸發下一組要在本機上執行的程式碼片段。
 
 ### <a name="query-the-data-by-using-sql"></a>使用 SQL 查詢資料
@@ -327,7 +327,7 @@ Spark 可以讀取和寫入 Azure Blob 儲存體。 您可以使用 Spark 來處
     plt.show()
 
 
-**輸出：**
+**輸出**
 
 ![小費金額長條圖](./media/scala-walkthrough/plot-tip-amount-histogram.png)
 
@@ -409,7 +409,7 @@ MLlib 的模型化和預測函式需要先執行功能來分類要索引或編�
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**輸出：**
+**輸出**
 
 執行資料格的時間︰4 秒。
 
@@ -448,7 +448,7 @@ MLlib 的模型化和預測函式需要先執行功能來分類要索引或編�
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**輸出：**
+**輸出**
 
 執行資料格的時間︰2 秒。
 
@@ -491,7 +491,7 @@ MLlib 的模型化和預測函式需要先執行功能來分類要索引或編�
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**輸出：**
+**輸出**
 
 執行資料格的時間︰4 秒。
 
@@ -594,7 +594,7 @@ MLlib 的模型化和預測函式需要先執行功能來分類要索引或編�
     println("ROC on test data = " + ROC)
 
 
-**輸出：**
+**輸出**
 
 測試資料的 ROC = 0.9827381497557599
 
@@ -632,7 +632,7 @@ MLlib 的模型化和預測函式需要先執行功能來分類要索引或編�
     plt.show()
 
 
-**輸出：**
+**輸出**
 
 ![小費或沒有小費的 ROC 曲線](./media/scala-walkthrough/plot-roc-curve-tip-or-not.png)
 
@@ -665,7 +665,7 @@ MLlib 的模型化和預測函式需要先執行功能來分類要索引或編�
     println("ROC on test data = " + ROC)
 
 
-**輸出：**
+**輸出**
 
 測試資料的 ROC = 0.9847103571552683
 
@@ -721,7 +721,7 @@ MLlib 的模型化和預測函式需要先執行功能來分類要索引或編�
     println(s"Area under ROC curve: ${metrics.areaUnderROC}")
 
 
-**輸出：**
+**輸出**
 
 ROC 曲線夏的領域 = 0.9846895479241554
 
@@ -773,7 +773,7 @@ ROC 曲線夏的領域 = 0.9846895479241554
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**輸出：**
+**輸出**
 
 執行資料格的時間︰13 秒。
 
@@ -804,7 +804,7 @@ ROC 曲線夏的領域 = 0.9846895479241554
     println("R-sqr on test data = " + r2)
 
 
-**輸出：**
+**輸出**
 
 測試資料的 R-sqr = 0.5960320470835743
 
@@ -846,14 +846,14 @@ ROC 曲線夏的領域 = 0.9846895479241554
     plt.axis([-1, 15, -1, 8])
     plt.show(ax)
 
-**輸出：**
+**輸出**
 
 ![小費金額︰實際與預測](./media/scala-walkthrough/plot-actual-vs-predicted-tip-amount.png)
 
 ### <a name="create-a-gbt-regression-model"></a>建立 GBT 迴歸模型
 使用 SparkML `GBTRegressor()` 函式建立 GBT 迴歸模型，然後對測試資料評估模型。
 
-[漸變提升樹](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（GBTS） 是決策樹的合奏。 GBTS 以反覆運算方式訓練決策樹，以儘量減少損失函數。 您可以使用 GBTS 進行回歸和分類。 GBT 可以處理分類特徵、不需要調整特徵，而且可以擷取非線性和特徵互動。 您也可以在多類別分類設定中使用 GBT。
+漸層[提升樹狀](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)結構（gbt）是整體的決策樹。 GBT 會反復定型決策樹，將損失函數降至最低。 您可以使用 GBT 進行回歸和分類。 GBT 可以處理分類特徵、不需要調整特徵，而且可以擷取非線性和特徵互動。 您也可以在多類別分類設定中使用 GBT。
 
     # RECORD THE START TIME
     val starttime = Calendar.getInstance().getTime()
@@ -879,7 +879,7 @@ ROC 曲線夏的領域 = 0.9846895479241554
     println("Test R-sqr is: " + Test_R2);
 
 
-**輸出：**
+**輸出**
 
 測試 R-sqr：0.7655383534596654
 
@@ -936,7 +936,7 @@ ROC 曲線夏的領域 = 0.9846895479241554
     println("Test R-sqr is: " + Test_R2);
 
 
-**輸出：**
+**輸出**
 
 測試 R-sqr：0.6226484708501209
 
@@ -980,7 +980,7 @@ ROC 曲線夏的領域 = 0.9846895479241554
     println("Time taken to run the above cell: " + elapsedtime + " seconds.");
 
 
-**輸出：**
+**輸出**
 
 執行資料格的時間︰33 秒。
 
@@ -1095,7 +1095,7 @@ ROC 曲線夏的領域 = 0.9846895479241554
     val test_rsqr = new RegressionMetrics(labelAndPreds).r2
 
 
-**輸出：**
+**輸出**
 
 執行資料格的時間︰61 秒。
 

@@ -1,6 +1,6 @@
 ---
-title: 自動轉發 Azure 服務匯流排消息傳遞實體
-description: 本文介紹如何將 Azure 服務匯流排佇列或訂閱連結到其他佇列或主題。
+title: 自動轉送 Azure 服務匯流排訊息實體
+description: 本文說明如何將 Azure 服務匯流排的佇列或訂用帳戶連結至另一個佇列或主題。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76761044"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自動轉寄鏈結服務匯流排實體
@@ -48,10 +48,10 @@ namespaceManager.CreateSubscription(srcSubscription));
 如果 Alice 去渡假，她的個人佇列 (而不是 ERP 主題) 會填滿。 在此案例中，因為銷售代表未收到任何訊息，所以沒有任何 ERP 主題達到配額。
 
 > [!NOTE]
-> 設置自動轉發時 **，"源"和目標**上的 AutoDeleteOnIdle 值將自動設置為資料類型的最大值。
+> 設定自動轉寄時，會自動將**來源和目的地**上的 AutoDeleteOnIdle 值設定為資料類型的最大值。
 > 
->   - 在源端，自動轉發充當接收操作。 因此，具有自動轉發設置的源永遠不會真正"空閒"。
->   - 在目標端，這樣做是為了確保始終有一個要將消息轉發到的目標。
+>   - 在來源端，自動轉寄會作為接收作業。 因此，具有自動轉寄設定的來源絕對不會真正「閒置」。
+>   - 在目的地端，這樣做是為了確保一律有目的地可將訊息轉送到。
 
 ## <a name="autoforwarding-considerations"></a>自動轉寄考量
 
@@ -61,7 +61,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 服務匯流排會針對每一則轉寄的訊息向一個作業計費。 例如，如果所有第一層訂用帳戶都收到訊息的複本，將訊息傳送至有 20 個訂用帳戶的主題 (其中的每個訂用帳戶都會設定成將訊息自動轉寄至另一個佇列或主題) 會以 21 個作業計費。
 
-要創建連結到其他佇列或主題的訂閱，訂閱的建立者必須同時對源實體和目標實體具有 **"管理**"許可權。 將訊息傳送至來源主題只需要來源主題的**傳送**權限。
+若要建立連結至另一個佇列或主題的訂用帳戶，訂用帳戶的建立者必須同時擁有來源和目的地實體的**管理**許可權。 將訊息傳送至來源主題只需要來源主題的**傳送**權限。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -74,7 +74,7 @@ namespaceManager.CreateSubscription(srcSubscription));
 若要深入了解服務匯流排效能改進，請參閱 
 
 * [使用服務匯流排傳訊的效能改進最佳作法](service-bus-performance-improvements.md)
-* [分區的消息傳遞實體][Partitioned messaging entities]。
+* [分割訊息實體][Partitioned messaging entities]。
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
 [SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo

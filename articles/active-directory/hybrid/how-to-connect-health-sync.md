@@ -17,14 +17,14 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897201"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>使用 Azure AD Connect Health 監視 Azure AD Connect 同步處理
-下列文件適用於使用 Azure AD Connect Health 來監視 Azure AD Connect (同步處理)。  如需使用 Azure AD Connect Health 來監視 AD FS 的詳細資訊，請參閱 [在 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，有關使用 Azure AD 連接運行狀況監視活動目錄域服務的資訊，請參閱[使用 Azure AD 將運行狀況與 AD DS 連接](how-to-connect-health-adds.md)運行狀況。
+下列文件適用於使用 Azure AD Connect Health 來監視 Azure AD Connect (同步處理)。  如需使用 Azure AD Connect Health 來監視 AD FS 的詳細資訊，請參閱 [在 AD FS 使用 Azure AD Connect Health](how-to-connect-health-adfs.md)。 此外，如需使用 Azure AD Connect Health 監視 Active Directory Domain Services 的詳細資訊，請參閱搭配[使用 Azure AD Connect Health 與 AD DS](how-to-connect-health-adds.md)。
 
 ![適用於同步處理的 Azure AD Connect Health](./media/how-to-connect-health-sync/syncsnapshot.png)
 
@@ -70,7 +70,7 @@ ms.locfileid: "76897201"
 * 此報告涵蓋同步處理用戶端所記錄的錯誤 (Azure AD Connect 1.1.281.0 版或更高版本)
 * 它包含同步處理引擎上執行的最後一個同步處理作業所發生的錯誤 (Azure AD Connector 上的「匯出」)。
 * 用於同步處理的 Azure AD Connect Health 代理程式必須有指向所需端點的輸出連線，此報告才會包含最新的資料。
-* 使用 Azure AD Connect 運行狀況代理上傳的資料進行同步，**報告每 30 分鐘後更新**一次。它提供以下關鍵功能
+* 報表會**每隔30分鐘更新一次**，並使用 Azure AD Connect Health 代理程式所上傳的資料進行同步處理。它提供下列主要功能
 
   * 錯誤分類
   * 依各類別之錯誤列出物件
@@ -114,7 +114,7 @@ ms.locfileid: "76897201"
 對於涉及使用者來源錨點更新的特定重複屬性同步錯誤案例，您可以直接從入口網站加以修正。 深入了解[對重複的屬性同步錯誤進行診斷和修復](how-to-connect-health-diagnose-sync-errors.md)
 
 ## <a name="related-links"></a>相關連結
-* [同步期間的故障排除錯誤](tshoot-connect-sync-errors.md)
+* [針對同步處理期間的錯誤進行疑難排解](tshoot-connect-sync-errors.md)
 * [重複屬性恢復功能](how-to-connect-syncservice-duplicate-attribute-resiliency.md)
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health 代理程式安裝](how-to-connect-health-agent-install.md)
@@ -122,4 +122,4 @@ ms.locfileid: "76897201"
 * [使用 Azure AD Connect Health 搭配 AD FS](how-to-connect-health-adfs.md)
 * [在 AD DS 使用 Azure AD Connect Health](how-to-connect-health-adds.md)
 * [Azure AD Connect Health 常見問題集](reference-connect-health-faq.md)
-* [Azure AD 連接運行狀況版本歷程記錄](reference-connect-health-version-history.md)
+* [Azure AD Connect Health 版本歷程記錄](reference-connect-health-version-history.md)

@@ -1,5 +1,5 @@
 ---
-title: 管理 NSG 流日誌 - Azure CLI
+title: 管理 NSG 流量記錄-Azure CLI
 titleSuffix: Azure Network Watcher
 description: 此頁面說明如何使用 Azure CLI 在 Azure 網路監看員中管理網路安全性群組流量記錄
 services: network-watcher
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 285d19dbd0e7b8a94eada66f837d33b787006f09
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840956"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>使用 Azure CLI 設定網路安全性群組流量記錄
 
 > [!div class="op_single_selector"]
-> - [Azure 門戶](network-watcher-nsg-flow-logging-portal.md)
-> - [電源外殼](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure 入口網站](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 

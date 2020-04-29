@@ -16,15 +16,15 @@ ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48ed9abf3e088e2581a3dd81b7c89e6b99da3ceb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76897189"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>對重複屬性同步處理錯誤進行診斷和修復
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 為了更進一步地點出同步處理錯誤，Azure Active Directory (Azure AD) Connect Health 導入了自助服務修復功能。 此功能會對重複屬性同步處理錯誤進行疑難排解，並修正來自 Azure AD 的孤立物件。
 診斷功能具有下列功效：
 - 可提供診斷程序，來縮小重複屬性同步處理錯誤的範圍。 此外，還可提供特定的修正方法。
@@ -34,7 +34,7 @@ ms.locfileid: "76897189"
 
 ## <a name="problems"></a>問題
 ### <a name="a-common-scenario"></a>常見案例
-發生 **QuarantinedAttributeValueMustBeUnique** 和 **AttributeValueMustBeUnique** 同步處理錯誤時，您常會在 Azure AD 中發現 **UserPrincipalName** 或 **Proxy 位址**衝突。 您可以從內部部署端更新衝突的來源物件，藉以解決同步處理錯誤。 同步錯誤將在下次同步後解決。例如，此圖像指示兩個使用者的使用者**主體名稱**發生衝突。 兩人都是**喬.Jcontoso.com。\@ ** 有衝突的物件會在 Azure AD 中隔離。
+發生 **QuarantinedAttributeValueMustBeUnique** 和 **AttributeValueMustBeUnique** 同步處理錯誤時，您常會在 Azure AD 中發現 **UserPrincipalName** 或 **Proxy 位址**衝突。 您可以從內部部署端更新衝突的來源物件，藉以解決同步處理錯誤。 同步處理錯誤將在下一次同步處理後解決。例如，此影像表示兩個使用者的**UserPrincipalName**有衝突。 兩者都是**Joe.\@J contoso.com**。 有衝突的物件會在 Azure AD 中隔離。
 
 ![診斷同步處理錯誤的常見案例](./media/how-to-connect-health-diagnose-sync-errors/IIdFixCommonCase.png)
 
@@ -129,31 +129,31 @@ ms.locfileid: "76897189"
 > **套用修正**變更只會套用至孤立物件案例。
 >
 
-完成前述步驟後，使用者即可存取連結至現有物件的原始資源。 清單視圖中的**診斷狀態**值將更新為 **"掛起同步**"。同步錯誤將在下次同步後解決。連接運行狀況將不再在清單視圖中顯示已解決的同步錯誤。
+完成前述步驟後，使用者即可存取連結至現有物件的原始資源。 清單視圖中的 [**診斷狀態**] 值會更新為 [**暫止同步**]。同步處理錯誤將在下一次同步處理後解決。Connect Health 不會再于清單視圖中顯示已解決的同步處理錯誤。
 
 ## <a name="failures-and-error-messages"></a>失敗和錯誤訊息
-**具有衝突屬性的使用者在 Azure 活動目錄中虛刪除。在重試之前，請確保使用者被實刪除。**  
+**具有衝突屬性的使用者會在 Azure Active Directory 中虛刪除。請確定使用者在重試前已被實刪除。**  
 應先清除 Azure AD 中具有衝突屬性的使用者，才能套用修正程式。 請參閱[如何在 Azure AD 中永久刪除使用者](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore)，再重試此修正程式。 進入虛刪除狀態 30 天後，也會自動永久刪除使用者。 
 
 **不支援對租用戶中的雲端式使用者更新來源錨點。**  
 Azure AD 中的雲端式使用者不應擁有來源錨點。 在此情況下，不支援更新來源錨點。 必須從內部部署環境手動修正。 
 
 ## <a name="faq"></a>常見問題集
-**問。** 如果**套用修正**執行失敗，會發生什麼狀況？  
-**A.** 如果執行失敗，可能表示 Azure AD Connect 正在執行匯出錯誤。 刷新門戶頁面並在下次同步後重試。預設同步週期為 30 分鐘。 
+**問：** 如果**套用修正**執行失敗，會發生什麼狀況？  
+**答：** 如果執行失敗，可能表示 Azure AD Connect 正在執行匯出錯誤。 重新整理入口網站頁面，並在下一次同步之後重試。預設的同步處理週期為30分鐘。 
 
 
-**問。** 如果**現有的物件**是要刪除的物件，將會如何？  
-**A.** 如果應刪除**現有的物件**，則不會在此程序中變更**來源錨點**。 您通常可以從內部部署 Active Directory 修正此錯誤。 
+**問：** 如果**現有的物件**是要刪除的物件，將會如何？  
+**答：** 如果應刪除**現有的物件**，則不會在此程序中變更**來源錨點**。 您通常可以從內部部署 Active Directory 修正此錯誤。 
 
 
-**問。** 使用者需要哪些權限才能套用修正？  
-**A.** RBAC 設定中的**全域管理員**或**參與者**有權存取診斷和疑難排解程序。
+**問：** 使用者需要哪些權限才能套用修正？  
+**答：** RBAC 設定中的**全域管理員**或**參與者**有權存取診斷和疑難排解程序。
 
 
-**問。** 我需要針對這項功能設定 Azure AD Connect 或更新 Azure AD Connect Health 代理程式嗎？  
-**A.** 不需要，診斷程序是完整的雲端功能。
+**問：** 我需要針對這項功能設定 Azure AD Connect 或更新 Azure AD Connect Health 代理程式嗎？  
+**答：** 不需要，診斷程序是完整的雲端功能。
 
 
-**問。** 如果現有的物件遭到虛刪除，診斷程序是否會將物件再次還原為使用中的物件？  
-**A.** 否，修正並不會更新**來源錨點**以外的物件屬性。
+**問：** 如果現有的物件遭到虛刪除，診斷程序是否會將物件再次還原為使用中的物件？  
+**答：** 否，修正並不會更新**來源錨點**以外的物件屬性。

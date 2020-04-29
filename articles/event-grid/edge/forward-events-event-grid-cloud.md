@@ -1,6 +1,6 @@
 ---
-title: 將邊緣事件轉發到事件網格雲 - Azure 事件網格 IoT 邊緣 |微軟文檔
-description: 將邊緣事件轉發到事件網格雲
+title: 將邊緣事件轉寄至事件方格雲端-Azure Event Grid IoT Edge |Microsoft Docs
+description: 將邊緣事件轉寄至事件方格雲端
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,41 +10,41 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844712"
 ---
-# <a name="tutorial-forward-events-to-event-grid-cloud"></a>教程：將事件轉發到事件網格雲
+# <a name="tutorial-forward-events-to-event-grid-cloud"></a>教學課程：將事件轉寄至事件方格雲端
 
-本文介紹將邊緣事件轉發到 Azure 雲中的事件網格所需的所有步驟。 您可能需要這樣做的原因如下：
+本文會逐步解說將邊緣事件轉送至 Azure 雲端中事件方格所需的所有步驟。 基於下列原因，您可能會想要這麼做：
 
-* 回應雲中的邊緣事件。
-* 將事件轉發到雲中的事件網格，並使用 Azure 事件中心或 Azure 存儲佇列在雲中處理事件之前緩衝事件。
+* 對雲端中的邊緣事件做出回應。
+* 將事件轉送到雲端中的事件方格，並使用 Azure 事件中樞或 Azure 儲存體佇列來緩衝事件，然後再于雲端中處理它們。
 
- 要完成本教程，您需要瞭解[邊緣](concepts.md)和[Azure](../concepts.md)上的事件網格概念。 有關其他目標型別，請參閱[事件處理常式](event-handlers.md)。 
+ 若要完成本教學課程，您需要瞭解[edge](concepts.md)和[Azure](../concepts.md)上的事件方格概念。 如需其他目的地類型，請參閱[事件處理常式](event-handlers.md)。 
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>先決條件 
 若要完成這個教學課程，您將需要：
 
-* **Azure 訂閱**- 如果尚未創建[免費帳戶](https://azure.microsoft.com/free)，則創建免費帳戶。 
-* **Azure IoT 中心和 IoT 邊緣設備**- 如果尚未啟動[Linux](../../iot-edge/quickstart-linux.md)或[Windows 設備](../../iot-edge/quickstart.md)，請按照快速入門中的步驟操作。
+* **Azure 訂**用帳戶-如果您還沒有帳戶，請建立一個[免費帳戶](https://azure.microsoft.com/free)。 
+* **Azure IoT 中樞和 IoT Edge 裝置**-遵循[Linux](../../iot-edge/quickstart-linux.md)或[Windows 裝置](../../iot-edge/quickstart.md)的 [快速入門] 中的步驟（如果您還沒有的話）。
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)] 
-## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>在雲中創建事件網格主題和訂閱
+## <a name="create-event-grid-topic-and-subscription-in-cloud"></a>在雲端中建立事件方格主題和訂用帳戶
 
-通過按照[本教程](../custom-event-quickstart-portal.md)創建事件網格主題和在雲中的訂閱。 記下`topicURL`，`sasKey`以及`topicName`本教程稍後將使用的新創建主題。
+遵循[本教學](../custom-event-quickstart-portal.md)課程，在雲端中建立事件方格主題和訂用帳戶。 請記`topicURL`下`sasKey`您稍後`topicName`將在本教學課程中使用之新建立主題的、和。
 
-例如，如果您創建了在美國西部命名的`testegcloudtopic`主題，則這些值將如下所示：
+例如，如果您在美國西部建立名`testegcloudtopic`為的主題，這些值看起來會像這樣：
 
-* **主題Url**：`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
-* **主題名稱**：`testegcloudtopic`
-* **SasKey**： 可在主題**的便捷鍵**下提供。 使用**鍵1**。
+* **TopicUrl**：`https://testegcloudtopic.westus2-1.eventgrid.azure.net/api/events`
+* **TopicName**：`testegcloudtopic`
+* **SasKey**：適用于您的主題**AccessKey** 。 使用**key1**。
 
-## <a name="create-event-grid-topic-at-the-edge"></a>在邊緣創建事件網格主題
+## <a name="create-event-grid-topic-at-the-edge"></a>在邊緣建立事件方格主題
 
-1. 使用以下內容創建主題3.json。 有關有效負載的詳細資訊，請參閱我們的[API 文檔](api.md)。
+1. 使用下列內容建立 topic3。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
     ```json
         {
@@ -54,12 +54,12 @@ ms.locfileid: "76844712"
           }
         }
     ```
-1. 運行以下命令以創建主題。 應返回 200 OK 的 HTTP 狀態碼。
+1. 執行下列命令來建立主題。 應傳回200正常的 HTTP 狀態碼。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
-1. 運行以下命令以驗證主題已成功創建。 應返回 200 OK 的 HTTP 狀態碼。
+1. 執行下列命令，以確認已成功建立主題。 應傳回200正常的 HTTP 狀態碼。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
@@ -81,11 +81,11 @@ ms.locfileid: "76844712"
         ]
    ```
   
-## <a name="create-event-grid-subscription-at-the-edge"></a>在邊緣創建事件網格訂閱
+## <a name="create-event-grid-subscription-at-the-edge"></a>在邊緣建立事件方格訂用帳戶
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. 使用以下內容創建訂閱3.json。 有關有效負載的詳細資訊，請參閱我們的[API 文檔](api.md)。
+1. 使用下列內容建立 subscription3。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
    ```json
         {
@@ -103,7 +103,7 @@ ms.locfileid: "76844712"
    ```
 
    >[!NOTE]
-   > **終結點 Url**指定雲中的事件網格主題 URL。 **sasKey**是指事件網格雲主題的鍵。 **主題名稱**中的值將用於將所有傳出事件標記到事件網格。 這在發佈到事件網格域主題時非常有用。 有關事件網格域主題的詳細資訊，請參閱[事件域](../event-domains.md)
+   > **EndpointUrl**會指定雲端中的事件方格主題 URL。 **SasKey**是指事件方格雲端主題的金鑰。 **TopicName**中的值將用來將所有傳出事件標記為事件方格。 張貼到 Event Grid 網域主題時，這會很有用。 如需事件方格網域主題的詳細資訊，請參閱[事件網域](../event-domains.md)
 
     例如，
   
@@ -122,13 +122,13 @@ ms.locfileid: "76844712"
         }
     ```
 
-2. 運行以下命令以創建訂閱。 應返回 200 OK 的 HTTP 狀態碼。
+2. 執行下列命令來建立訂用帳戶。 應傳回200正常的 HTTP 狀態碼。
 
      ```sh
      curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
      ```
 
-3. 運行以下命令以驗證已成功創建訂閱。 應返回 200 OK 的 HTTP 狀態碼。
+3. 執行下列命令，確認已成功建立訂用帳戶。 應傳回200正常的 HTTP 狀態碼。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/eventSubscriptions/sampleSubscription3?api-version=2019-01-01-preview
@@ -157,7 +157,7 @@ ms.locfileid: "76844712"
 
 ## <a name="publish-an-event-at-the-edge"></a>在邊緣發佈事件
 
-1. 使用以下內容創建 event3.json。 有關有效負載的詳細資訊，請參閱[API 文檔](api.md)。
+1. 使用下列內容建立 event3。 如需裝載的詳細資訊，請參閱[API 檔](api.md)。
 
     ```json
         [
@@ -175,31 +175,31 @@ ms.locfileid: "76844712"
         ]
     ```
 
-1. 執行以下命令：
+1. 執行下列命令：
 
     ```sh
     curl -k -H "Content-Type: application/json" -X POST -g -d @event3.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3/events?api-version=2019-01-01-preview
     ```
 
-## <a name="verify-edge-event-in-cloud"></a>在雲中驗證邊緣事件
+## <a name="verify-edge-event-in-cloud"></a>確認雲端中的邊緣事件
 
-有關查看雲主題傳遞的事件的資訊，請參閱[教程](../custom-event-quickstart-portal.md)。
+如需有關如何查看雲端所傳遞之事件的詳細資訊，請參閱[教學](../custom-event-quickstart-portal.md)課程。
 
 ## <a name="cleanup-resources"></a>清除資源
 
-* 運行以下命令以刪除主題及其所有訂閱
+* 執行下列命令來刪除主題及其所有訂用帳戶
 
     ```sh
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic3?api-version=2019-01-01-preview
     ```
 
-* 刪除在雲（Azure 事件網格）中創建的主題和訂閱。
+* 同時刪除在雲端中建立的主題和訂用帳戶（Azure 事件方格）。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教程中，您將在邊緣上發佈一個事件，並轉發到 Azure 雲中的事件網格。 現在您已經瞭解了在雲中轉發到事件網格的基本步驟：
+在本教學課程中，您已在 edge 上發佈事件並轉送至 Azure 雲端中的事件方格。 現在您已經知道要轉送到雲端中事件方格的基本步驟：
 
-* 要解決在 IoT 邊緣上使用 Azure 事件網格的問題，請參閱[故障排除指南](troubleshoot.md)。
-* 按照[本教程](forward-events-iothub.md)將事件轉發到 IoTHub
-* 按照[本教程](pub-sub-events-webhook-cloud.md)將事件轉發到雲中的 Webhook
-* [監視邊緣的主題和訂閱](monitor-topics-subscriptions.md)
+* 若要針對在 IoT Edge 上使用 Azure 事件方格的問題進行疑難排解，請參閱[疑難排解指南](troubleshoot.md)。
+* 遵循本[教學](forward-events-iothub.md)課程將事件轉寄至 IoTHub
+* 遵循本[教學](pub-sub-events-webhook-cloud.md)課程，將事件轉寄到雲端中的 Webhook
+* [監視邊緣上的主題和訂用帳戶](monitor-topics-subscriptions.md)

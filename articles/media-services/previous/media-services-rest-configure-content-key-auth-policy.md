@@ -15,23 +15,23 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 8942ad8bdc4f9fc37a88d09871c983f63cd8c1b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773705"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>動態加密：設定內容金鑰授權原則  
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
  您可以使用 Azure 媒體服務傳遞使用進階加密標準 (AES) (使用 128 位元加密金鑰) 和 PlayReady 或 Widevine 數位版權管理 (DRM) 所動態加密的內容。 媒體服務也提供服務，可傳遞金鑰和 PlayReady/Widevine 授權給授權用戶端。
 
 如果您想要使用媒體服務加密資產，則需要建立加密金鑰 (CommonEncryption 或 EnvelopeEncryption) 與資產的關聯。 如需詳細資訊，請參閱[使用 REST 建立內容金鑰](media-services-rest-create-contentkey.md)。 您也需要為金鑰設定授權原則 (如本文所述)。
 
 播放程式要求串流時，媒體服務便會使用 AES 或 PlayReady，以指定的金鑰動態加密您的內容。 為了將串流解密，播放程式將向金鑰傳遞服務要求金鑰。 為了決定使用者是否有權取得金鑰，服務會評估為金鑰指定的授權原則。
 
-媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可能有一個或多個授權限制，可能是使用 Open 或 Token 限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 Web 權杖 （[SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)） 和 JSON Web 權杖 （JWT） 格式的權杖。
+媒體服務支援多種方式來驗證提出金鑰要求的使用者。 內容金鑰授權原則可能有一個或多個授權限制，可能是使用 Open 或 Token 限制。 權杖限制原則必須伴隨 Security Token Service (STS) 所發出的權杖。 媒體服務支援簡單 web 權杖（[SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)）和 JSON web 權杖（JWT）格式的權杖。
 
 媒體服務不提供 STS。 您可以建立自訂 STS，或使用 Azure Active Directory (Azure AD) 來發行權杖。 STS 必須設定為建立使用指定金鑰簽署的權杖，並發行在權杖限制組態中指定的宣告 (如本文中所述)。 如果權杖有效，且權杖中的宣告符合為內容金鑰設定的宣告，媒體服務金鑰傳遞服務會將加密金鑰傳回給用戶端。
 
@@ -53,7 +53,7 @@ ms.locfileid: "76773705"
 > [!NOTE]
 > 當您使用媒體服務 REST API 時，適用下列考量事項。
 > 
-> 當您在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 有關詳細資訊，請參閱[媒體服務 REST API 開發設置](media-services-rest-how-to-use.md)。
+> 當您在媒體服務中存取實體時，您必須在 HTTP 要求中設定特定的標頭欄位和值。 如需詳細資訊，請參閱[媒體服務 REST API 開發的設定](media-services-rest-how-to-use.md)。
 > 
 > 
 > 
@@ -135,7 +135,7 @@ Open 限制表示系統會將金鑰傳遞給提出金鑰要求的任何人。 �
 
     {"odata.metadata":"https://wamsbayclus001rest-hs.cloudapp.net/api/$metadata#ContentKeyAuthorizationPolicyOptions/@Element","Id":"nb:ckpoid:UUID:57829b17-1101-4797-919b-f816f4a007b7","Name":"policy","KeyDeliveryType":2,"KeyDeliveryConfiguration":"","Restrictions":[{"Name":"HLS Open Authorization Policy","KeyRestrictionType":0,"Requirements":null}]}
 
-#### <a name="link-contentkeyauthorizationpolicies-with-options"></a><a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>連結內容金鑰授權策略與選項
+#### <a name="link-contentkeyauthorizationpolicies-with-options"></a><a id="LinkContentKeyAuthorizationPoliciesWithOptions"></a>連結 ContentKeyAuthorizationPolicies 與選項
 要求：
 
     POST https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeyAuthorizationPolicies('nb%3Ackpid%3AUUID%3A0baa438b-8ac2-4c40-a53c-4d4722b78715')/$links/Options HTTP/1.1
@@ -283,7 +283,7 @@ Open 限制表示系統會將金鑰傳遞給提出金鑰要求的任何人。 �
 ## <a name="playready-dynamic-encryption"></a>PlayReady 動態加密。
 您可以使用媒體服務來設定您要 PlayReady DRM 執行階段在使用者嘗試播放受保護內容時強制執行的權限和限制。 
 
-當您使用 PlayReady 保護內容時，需要在授權策略中指定的內容之一是定義[PlayReady 許可證範本](media-services-playready-license-template-overview.md)的 XML 字串。 
+當您使用 PlayReady 保護內容時，您需要在授權原則中指定的其中一件事是定義[PlayReady 授權範本](media-services-playready-license-template-overview.md)的 XML 字串。 
 
 ### <a name="open-restriction"></a>Open 限制
 Open 限制表示系統會將金鑰傳遞給提出金鑰要求的任何人。 這項限制可用於測試用途。

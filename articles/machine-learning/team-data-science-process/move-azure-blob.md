@@ -1,6 +1,6 @@
 ---
 title: 從 Azure Blob 儲存體來回移動資料 - Team Data Science Process
-description: 使用 Azure 存儲資源管理器、AzCopy、Python 和 SSIS 將資料移入和移入 Azure Blob 存儲。
+description: 使用 Azure 儲存體總管、AzCopy、Python 和 SSIS，從 Azure Blob 儲存體來回移動資料。
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: fc58651bcb3b266b981fb953fd7341427d47fb2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76717582"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage"></a>從 Azure Blob 儲存體來回移動資料
@@ -27,9 +27,9 @@ Team Data Science Process 要求將資料內嵌或載入至各種不同的儲存
 下列文章說明如何使用不同的技術，從 Azure Blob 儲存體來回移動資料。
 
 * [Azure 儲存體總管](move-data-to-azure-blob-using-azure-storage-explorer.md)
-* [阿茲比貝](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+* [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 * [Python](move-data-to-azure-blob-using-python.md)
-* [Ssis](move-data-to-azure-blob-using-ssis.md)
+* [SSIS](move-data-to-azure-blob-using-ssis.md)
 
 哪一種方法最適合會取決於您的案例。 [在 Azure 機器學習中的進階分析案例](plan-sample-scenarios.md) 文章可協助您判斷進階分析程序中各種資料科學工作流程所需的資源。
 
@@ -49,9 +49,9 @@ Team Data Science Process 要求將資料內嵌或載入至各種不同的儲存
 
 如需詳細資訊，請參閱 [使用 Azure Data Factory 和 Azure Machine Learning 來建立預測管線](../../data-factory/transform-data-using-machine-learning.md)。
 
-## <a name="prerequisites"></a>Prerequisites
-本文章假設您擁有 Azure 訂用帳戶、儲存體帳戶和該帳戶的對應儲存體金鑰。 在上傳/下載資料之前，必須知道 Azure 存儲帳戶名稱和帳戶金鑰。
+## <a name="prerequisites"></a>先決條件
+本文章假設您擁有 Azure 訂用帳戶、儲存體帳戶和該帳戶的對應儲存體金鑰。 上傳/下載資料之前，您必須知道 Azure 儲存體帳戶名稱和帳戶金鑰。
 
-* 要設置 Azure 訂閱，請參閱[免費試用一個月](https://azure.microsoft.com/pricing/free-trial/)。
-* 有關創建存儲帳戶以及獲取帳戶和關鍵資訊的說明，請參閱有關 Azure[存儲帳戶](../../storage/common/storage-create-storage-account.md)。
+* 若要設定 Azure 訂用帳戶，請參閱[免費試用一個月](https://azure.microsoft.com/pricing/free-trial/)。
+* 如需有關建立儲存體帳戶以及取得帳戶和金鑰資訊的指示，請參閱[關於 Azure 儲存體帳戶](../../storage/common/storage-create-storage-account.md)。
 

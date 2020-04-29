@@ -1,5 +1,5 @@
 ---
-title: 管理 NSG 流日誌 - Azure REST API
+title: 管理 NSG 流量記錄-Azure REST API
 titleSuffix: Azure Network Watcher
 description: 此頁面說明如何使用 REST API 在 Azure 網路監看員中管理網路安全性群組流量記錄
 services: network-watcher
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 7cc47414dc985f6fc2fff3c57d809f307b142e30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840922"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>使用 REST API 設定網路安全性群組流量記錄
 
 > [!div class="op_single_selector"]
-> - [Azure 門戶](network-watcher-nsg-flow-logging-portal.md)
-> - [電源外殼](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure 入口網站](network-watcher-nsg-flow-logging-portal.md)
+> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
@@ -31,14 +31,14 @@ ms.locfileid: "76840922"
 
 ## <a name="before-you-begin"></a>開始之前
 
-使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 在巧克力的[ARMClient](https://chocolatey.org/packages/ARMClient)的巧克力上被發現
+使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 可在 chocolatey 的[ARMClient 上找到 chocolatey](https://chocolatey.org/packages/ARMClient)
 
 此案例假設您已依照[建立網路監看員](network-watcher-create.md)中的步驟建立網路監看員。
 
 > [!Important]
 > 針對網路監看員 REST API 呼叫，要求 URI 中的資源群組名稱是包含網路監看員的資源群組，而非您要執行診斷動作的資源。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 本文章涵蓋的案例會示範如何使用 REST API 啟用、停用以及查詢流程記錄。 若要深入了解網路安全性群組流程記錄，請造訪[網路安全性群組流程記錄 - 概觀](network-watcher-nsg-flow-logging-overview.md)。
 

@@ -1,6 +1,6 @@
 ---
 title: 媒體服務作業 REST API 概觀 | Microsoft Docs
-description: "\"媒體服務操作 REST\"API 用於在媒體服務帳戶中創建作業、資產、即時通道和其他資源。 本文提供 Azure 媒體服務 v2 REST API 概述。"
+description: 「媒體服務作業 REST」 API 是用來建立媒體服務帳戶中的工作、資產、即時頻道和其他資源。 本文提供 Azure 媒體服務 v2 REST API 總覽。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -16,16 +16,16 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773666"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒體服務作業 REST API 概觀 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
 **媒體服務作業 REST** API 用於在媒體服務帳戶中建立作業、資產、直播頻道和其他資源。 如需詳細資訊，請參閱[媒體服務作業 REST API 參考](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)。
 
@@ -81,15 +81,15 @@ ms.locfileid: "76773666"
 | Accept-Charset |字元集類型，如 "UTF-8" |預設值為 UTF-8。 |
 | X-HTTP-Method |HTTP 方法 |可讓不支援 PUT 或 DELETE 等 HTTP 方法的用戶端或防火牆，透過 GET 呼叫通道傳送使用這些方法。 |
 | Content-Type |內容類型 |PUT 或 POST 要求中的要求主體內容類型。 |
-| client-request-id |String |呼叫端定義的值，識別指定的要求。 如果指定，回應訊息中將包含此值以做為對應要求的方式。 <p><p>**重要**<p>值的上限應該為 2096b (2k)。 |
+| client-request-id |字串 |呼叫端定義的值，識別指定的要求。 如果指定，回應訊息中將包含此值以做為對應要求的方式。 <p><p>**重要**<p>值的上限應該為 2096b (2k)。 |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>媒體服務支援的標準 HTTP 回應標頭
 以下是一組可能會根據您所要求的資源，以及您要執行的動作而傳回給您的標頭。
 
 | 頁首 | 類型 | 值 |
 | --- | --- | --- |
-| request-id |String |目前作業的唯一識別碼，由服務產生。 |
-| client-request-id |String |在原始要求中，呼叫者所指定的識別碼 (如果有的話)。 |
+| request-id |字串 |目前作業的唯一識別碼，由服務產生。 |
+| client-request-id |字串 |在原始要求中，呼叫者所指定的識別碼 (如果有的話)。 |
 | Date |RFC 1123 日期 |處理要求的日期/時間。 |
 | Content-Type |不定 |回應主體的內容類型。 |
 | Content-Encoding |不定 |Gzip 或 deflate (視情況)。 |

@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排重複訊息偵測 | Microsoft 文件
-description: 本文介紹如何在 Azure 服務匯流排消息中檢測重複項。 可以忽略和刪除重複的消息。
+description: 本文說明如何偵測 Azure 服務匯流排訊息中的重複專案。 可以忽略和捨棄重複的訊息。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: c109b9fd310a09e5eb4c6d18cc3536e4d8069c0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76760363"
 ---
 # <a name="duplicate-detection"></a>重複偵測
@@ -37,7 +37,7 @@ ms.locfileid: "76760363"
 *MessageId* 永遠都可以是某個 GUID，不過將識別碼錨定在商務程序中會產生可預測的重複性，這是有效運用重複偵測功能不可或缺的一環。
 
 > [!NOTE]
-> 如果啟用了重複檢測，並且未設置會話 ID 或分區鍵，則消息 ID 將用作分區金鑰。 如果未設置消息 ID，則 .NET 和 AMQP 庫會自動為消息生成消息 ID。 有關詳細資訊，請參閱[使用分區鍵](service-bus-partitioning.md#use-of-partition-keys)。
+> 如果已啟用重複偵測，而且未設定會話識別碼或分割區索引鍵，則會使用訊息識別碼做為分割區索引鍵。 如果訊息識別碼也未設定，則 .NET 和 AMQP 程式庫會自動產生訊息的訊息識別碼。 如需詳細資訊，請參閱[使用資料分割索引鍵](service-bus-partitioning.md#use-of-partition-keys)。
 
 ## <a name="enable-duplicate-detection"></a>啟用重複偵測
 
@@ -68,7 +68,7 @@ ms.locfileid: "76760363"
 * [開始使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)
 * [如何使用服務匯流排主題和訂用帳戶](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
-在用戶端代碼無法以前使用與以前相同的*MessageId*重新提交消息的情況下，設計可以安全重新處理的消息非常重要。 這個[博客文章關於陽萎](https://particular.net/blog/what-does-idempotent-mean)描述了各種技術，如何做到這一點。
+在用戶端程式代碼無法使用與之前相同的*MessageId*重新提交訊息的案例中，請務必設計可安全重新處理的訊息。 這[篇關於等冪的文章](https://particular.net/blog/what-does-idempotent-mean)會說明如何執行這方面的各種技術。
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

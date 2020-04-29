@@ -12,14 +12,14 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df85edc3de00e2b0342bc3102fe9e85564a9835b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76719988"
 ---
 # <a name="sample-data-in-azure-hdinsight-hive-tables"></a>在 Azure HDInsight Hive 資料表中進行資料取樣
-本文說明如何使用 Hive 查詢，對 Azure HDInsight Hive 資料表中儲存的資料向下取樣，以縮減至更適合操控分析的大小。 它包括三種常用的採樣方法：
+本文說明如何使用 Hive 查詢，對 Azure HDInsight Hive 資料表中儲存的資料向下取樣，以縮減至更適合操控分析的大小。 其中涵蓋三個也就一般使用的取樣方法：
 
 * 統一隨機取樣
 * 依群組隨機取樣
@@ -31,7 +31,7 @@ ms.locfileid: "76719988"
 這個取樣工作是 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)中的一個步驟。
 
 ## <a name="how-to-submit-hive-queries"></a>如何提交 Hive 查詢
-Hive 查詢可以從 Hadoop 叢集前端節點上的 Hadoop 命令列主控台提交。  登錄到 Hadoop 群集的頭節點，打開 Hadoop 命令列主控台，並從那裡提交 Hive 查詢。 如需在 Hadoop 命令列主控台中提交 Hive 查詢的相關指示，請參閱[如何提交 Hive 查詢](move-hive-tables.md#submit)。
+Hive 查詢可以從 Hadoop 叢集前端節點上的 Hadoop 命令列主控台提交。  登入 Hadoop 叢集的前端節點、開啟 Hadoop 命令列主控台，然後從該處提交 Hive 查詢。 如需在 Hadoop 命令列主控台中提交 Hive 查詢的相關指示，請參閱[如何提交 Hive 查詢](move-hive-tables.md#submit)。
 
 ## <a name="uniform-random-sampling"></a><a name="uniform"></a> 統一隨機取樣
 統一隨機取樣表示資料集中的每個資料列都具有相等的取樣機率。 藉由在內部 "select" 查詢中，以及在外部 "select" 查詢 (在該隨機欄位中設定條件) 中，將額外的欄位 rand() 新增至資料集中，即可實作此取樣。

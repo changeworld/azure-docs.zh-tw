@@ -12,17 +12,17 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
 ms.openlocfilehash: 9612114bb368898ccf31b2c8692869b84544b652
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721949"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>使用 Team Data Science Process 和 Azure DevOps Services，在 Azure 上進行資料科學程式碼測試
 本文提供在資料科學工作流程中測試程式碼的初步指導方針。 這類測試可提供資料科學家一個系統化且有效率的方式，來檢查其程式碼的品質和預期的結果。 我們會使用 Team Data Science Process (TDSP) [專案 (使用先前發佈的 UCI 成人收入資料集)](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) 來示範如何進行程式碼測試。 
 
 ## <a name="introduction-on-code-testing"></a>程式碼測試簡介
-「單元測試」是一個存在已久的軟體開發做法。 但對於資料科學而言，通常不清楚"單元測試"的含義，以及如何測試資料科學生命週期的不同階段的代碼，例如：
+「單元測試」是一個存在已久的軟體開發做法。 但對於資料科學而言，通常並不清楚「單元測試」的意義，以及您應該如何針對資料科學生命週期的不同階段測試程式碼，例如：
 
 * 資料準備
 * 資料品質檢查
@@ -124,11 +124,11 @@ ms.locfileid: "76721949"
 
     ![範本清單和 [空的處理序] 按鈕](./media/code-test/start_empty_process_template.PNG)
 
-    d. 為組建命名並選取代理程式。 如果要使用 DSVM 完成生成過程，可以在此處選擇預設值。 如需有關設定代理程式的詳細資訊，請參閱[建置及發行代理程式](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts) \(英文\)。
+    d. 為組建命名並選取代理程式。 如果您想要使用 DSVM 來完成組建程式，可以選擇這裡的預設值。 如需有關設定代理程式的詳細資訊，請參閱[建置及發行代理程式](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts) \(英文\)。
     
     ![建置和代理程式選項](./media/code-test/select_agent.PNG)
 
-    e. 在**+** 左側窗格中選擇，以為此生成階段添加任務。 由於我們將運行 Python 腳本**test1.py**以完成所有檢查，因此此任務使用 PowerShell 命令運行 Python 代碼。
+    e. 在**+** 左窗格中選取，以加入此組建階段的工作。 因為我們將執行 Python 腳本**test1.py**來完成所有檢查，所以這項工作會使用 PowerShell 命令來執行 Python 程式碼。
     
     ![已選取 [PowerShell] 的 [新增工作] 窗格](./media/code-test/add_task_powershell.PNG)
 
@@ -138,11 +138,11 @@ ms.locfileid: "76721949"
     
     ![PowerShell 詳細資料](./media/code-test/powershell_scripts.PNG)
 
-    g. 選擇 **"保存&佇列**以完成生成管道過程。
+    g. 選取 [**儲存 & 佇列**] 以完成組建管線進程。
 
     ![[儲存並排入佇列] 按鈕](./media/code-test/save_and_queue_build_definition.PNG)
 
-現在，每當將新認可推送至程式碼存放庫時，都會自動啟動建置流程。 （在這裡，我們使用主存儲庫，但您可以定義任何分支。進程在代理電腦中運行**test1.py**檔，以確保代碼中定義的所有內容都正確運行。 
+現在，每當將新認可推送至程式碼存放庫時，都會自動啟動建置流程。 （這裡我們使用 master 做為存放庫，但您可以定義任何分支）。該進程會在代理程式電腦中執行**test1.py**檔案，以確保程式碼中定義的所有專案都能正確執行。 
 
 如果已正確設定警示，當建置完成時，您將會收到電子郵件通知。 您也可以在 Azure DevOps 中檢查組建狀態。 如果建置失敗，您可以查看建置詳細資料並找出哪個部分發生問題。
 

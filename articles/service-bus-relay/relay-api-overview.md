@@ -1,6 +1,6 @@
 ---
 title: Azure 轉送 API 概觀 | Microsoft Docs
-description: 本文概述了可用的 Azure 中繼 API（.NET 標準、.NET 框架、Node.js 等）
+description: 本文提供可用 Azure 轉送 Api （.NET Standard、.NET Framework、node.js 等）的總覽。
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76513961"
 ---
 # <a name="available-relay-apis"></a>可用的轉送 API
@@ -33,13 +33,13 @@ ms.locfileid: "76513961"
 | --- | --- | --- | --- |
 | .NET Standard | 混合式連線 | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
 | .NET Framework | WCF 轉送 | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | N/A |
-| 節點 | 混合式連線 | [網路通訊端：`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[網路通訊端：`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP 要求：`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
+| 節點 | 混合式連線 | [Websocket`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websocket`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP 要求：`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>其他資訊
 
 #### <a name="net"></a>.NET
 
-.NET 生態系統有多個執行階段，因此有多個適用於轉送的 .NET 程式庫。 .NET Standard 程式庫可使用 .NET Core 或 .NET Framework 執行，然而 .NET Framework 程式庫只能在 .NET Framework 環境中執行。 有關 .NET 框架的詳細資訊，請參閱[框架版本](/dotnet/articles/standard/frameworks)。
+.NET 生態系統有多個執行階段，因此有多個適用於轉送的 .NET 程式庫。 .NET Standard 程式庫可使用 .NET Core 或 .NET Framework 執行，然而 .NET Framework 程式庫只能在 .NET Framework 環境中執行。 如需 .NET Framework 的詳細資訊，請參閱[架構版本](/dotnet/articles/standard/frameworks)。
 
 .NET Framework 程式庫只支援 WCF 程式設計模型，並且會依賴 WCF `net.tcp` 傳輸型的專屬二進位通訊協定。 此通訊協定和程式庫會保有適用於現有應用程式的回溯相容性。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure 服務匯流排常見問題集 (FAQ) | Microsoft Docs
-description: 本文提供了有關 Azure 服務匯流排的一些常見問題 （FAQ） 的解答。
+description: 本文提供一些關於 Azure 服務匯流排的常見問題（FAQ）的解答。
 services: service-bus-messaging
 author: axisc
 manager: timlt
@@ -10,13 +10,13 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76760244"
 ---
-# <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服務匯流排 - 常見問題 （FAQ）
+# <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服務匯流排-常見問題（FAQ）
 
 本文討論 Microsoft Azure 服務匯流排的一些常見問題解集。 您也可以造訪 [Azure 支援常見問題集](https://azure.microsoft.com/support/faq/)，以取得一般的 Azure 價格和支援資訊。
 
@@ -24,7 +24,7 @@ ms.locfileid: "76760244"
 
 ## <a name="general-questions-about-azure-service-bus"></a>關於 Azure 服務匯流排的一般問題
 ### <a name="what-is-azure-service-bus"></a>什麼是 Azure 服務匯流排？
-[Azure 服務匯流排](service-bus-messaging-overview.md)是一個非同步消息雲平臺，使您能夠在分離的系統之間發送資料。 Microsoft 以服務的形式提供此功能，這意謂著您無須裝載自己的硬體即可使用它。
+[Azure 服務匯流排](service-bus-messaging-overview.md)是非同步訊息雲端平臺，可讓您在分離的系統之間傳送資料。 Microsoft 以服務的形式提供此功能，這意謂著您無須裝載自己的硬體即可使用它。
 
 ### <a name="what-is-a-service-bus-namespace"></a>什麼是服務匯流排命名空間？
 [命名空間](service-bus-create-namespace-portal.md)提供範圍容器，可在應用程式內定址服務匯流排資源。 必須建立命名空間才能使用服務匯流排，而且這也是開始使用的第一個步驟。
@@ -42,46 +42,46 @@ ms.locfileid: "76760244"
 
  [Premium SKU](service-bus-premium-messaging.md) 不再支援分割的實體。 
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火牆上打開哪些埠？ 
-可以使用以下與 Azure 服務匯流排的協定來發送和接收消息：
+### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>我需要在防火牆上開啟哪些埠？ 
+您可以搭配使用下列通訊協定與 Azure 服務匯流排來傳送和接收訊息：
 
 - 進階訊息佇列通訊協定 (AMQP)
 - 服務匯流排傳訊通訊協定 (SBMP)
 - HTTP
 
-有關使用這些協定與 Azure 事件中心通信需要打開的出站埠，請參閱下表。 
+請參閱下表，以瞭解您需要開啟的輸出埠，以使用這些通訊協定與 Azure 事件中樞進行通訊。 
 
 | 通訊協定 | 連接埠 | 詳細資料 | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 和 5672 | 請參閱[AMQP 協定指南](service-bus-amqp-protocol-guide.md) | 
-| SBMP | 9350 到 9354 | 請參閱[連接模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
+| AMQP | 5671和5672 | 請參閱[AMQP 通訊協定指南](service-bus-amqp-protocol-guide.md) | 
+| SBMP | 9350到9354 | 請參閱連線[模式](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
 | HTTP、HTTPS | 80、443 | 
 
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要哪些 IP 位址才能進行白名單？
-要查找連接的右側 IP 位址到白清單，請按照以下步驟操作：
+### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>我需要列入允許清單的 IP 位址為何？
+若要針對您的連線尋找適當的 IP 位址給白名單，請遵循下列步驟：
 
-1. 從命令提示符運行以下命令： 
+1. 從命令提示字元執行下列命令： 
 
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. 記下在 中返回的`Non-authoritative answer`IP 位址。 此 IP 位址是靜態的。 它唯一會更改的時間點是，如果將命名空間還原到其他群集。
+2. 記下中`Non-authoritative answer`傳回的 IP 位址。 這個 IP 位址是靜態的。 只有當您將命名空間還原到不同的叢集時，才會發生變更的唯一時間點。
 
-如果對命名空間使用區域冗余，則需要執行一些其他步驟： 
+如果您使用命名空間的區域複本，則需要執行一些額外的步驟： 
 
-1. 首先，在命名空間上運行 ns 查找。
+1. 首先，您會在命名空間上執行 nslookup。
 
     ```
     nslookup <yournamespace>.servicebus.windows.net
     ```
-2. 記下**非權威答案**部分中的名稱，該部分採用以下格式之一： 
+2. 記下 [**非權威式回應**] 區段中的名稱，這是下列其中一種格式： 
 
     ```
     <name>-s1.servicebus.windows.net
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. 運行每個帶有尾碼 s1、s2 和 s3 的 nslook，以獲取在三個可用性區域中運行的所有三個實例的 IP 位址， 
+3. 針對每個尾碼為 s1、s2 和 s3 的程式執行 nslookup，以取得三個可用性區域中執行之三個實例的 IP 位址。 
 
 
 ## <a name="best-practices"></a>最佳作法
@@ -112,12 +112,12 @@ ms.locfileid: "76760244"
 ### <a name="does-service-bus-charge-for-storage"></a>服務匯流排是否會收取儲存體費用？
 不會，服務匯流排不會收取儲存體費用。 不過，有配額會限制每個佇列/主題可保存的資料數量上限。 請參閱下一個常見問題。
 
-### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>我有一個服務匯流排標準命名空間。 為什麼我在資源組"$system"下看到費用？
-Azure 服務匯流排最近升級了計費元件。 因此，如果您有服務匯流排標準命名空間，您可能會在資源組"$system"下看到資源"/訂閱/<azure_subscription_id>/資源組/$system/提供程式/Microsoft.ServiceBus/命名空間/$system"的行項。
+### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>我有一個服務匯流排標準命名空間。 為什麼我會看到資源群組 ' $system ' 下的費用？
+Azure 服務匯流排最近已升級計費元件。 因此，如果您有服務匯流排標準命名空間，您可能會在資源群組 ' $system ' 下看到資源 '/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system ' 的明細專案。
 
-這些費用表示預配服務匯流排標準命名空間的每個 Azure 訂閱的基本費用。 
+這些費用代表已布建服務匯流排標準命名空間的每個 Azure 訂用帳戶基本費用。 
 
-請務必注意，這些不是新的費用，即它們也存在於以前的計費模型中。 唯一的更改是，它們現在列在"$system"下。 這是由於新計費系統中的相反項，這些帳戶在"$system"資源識別碼 下對訂閱級別費用進行分組，而不是與特定資源綁定。
+請務必注意，這些不是新的費用，也就是它們也存在於先前的計費模型中。 唯一的變更是它們現在會列在 ' $system ' 之下。 這是因為新計費系統中的條件約束，其會將訂用帳戶等級費用（而不是系結至特定資源）在「$system」資源識別碼底下進行分組。
 
 ## <a name="quotas"></a>配額
 
@@ -141,7 +141,7 @@ Azure 服務匯流排最近升級了計費元件。 因此，如果您有服務�
 如需可能的服務匯流排例外狀況，請參閱[例外狀況概觀][Exceptions overview]。
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>什麼是共用存取簽章，何種語言可支援產生簽章？
-共用存取簽章是以 SHA-256 安全雜湊或 URI 為基礎的驗證機制。 有關如何在 Node.js、PHP、JAVA、Python 和 C# 中生成您自己的簽名的資訊，請參閱[共用訪問簽名][Shared Access Signatures]一文。
+共用存取簽章是以 SHA-256 安全雜湊或 URI 為基礎的驗證機制。 如需如何在 node.js、PHP、JAVA、Python 和 c # 中產生您自己的簽章的相關資訊，請參閱[共用存取][Shared Access Signatures]簽章一文。
 
 ## <a name="subscription-and-namespace-management"></a>訂用帳戶和命名空間管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>如何將命名空間移轉到另一個 Azure 訂用帳戶？
@@ -172,7 +172,7 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 
 * [Azure 服務匯流排進階簡介 (部落格文章)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Azure 服務匯流排進階簡介 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [服務匯流排概述](service-bus-messaging-overview.md)
+* [服務匯流排總覽](service-bus-messaging-overview.md)
 * [開始使用服務匯流排佇列](service-bus-dotnet-get-started-with-queues.md)
 
 [Best practices for performance improvements using Service Bus]: service-bus-performance-improvements.md

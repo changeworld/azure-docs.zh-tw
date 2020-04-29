@@ -1,5 +1,5 @@
 ---
-title: Azure 媒體服務 v3，具有 Widevine 許可證範本概述
+title: 含 Widevine 授權範本的 Azure 媒體服務 v3 總覽
 description: 本主題提供了用來設定 Widevine 授權之 Widevine 授權範本的概觀。
 author: juliako
 manager: femila
@@ -14,13 +14,13 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: 94ce5e45a9a43e81020096ddc0a67429b286d9b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76705627"
 ---
-# <a name="media-services-v3-with-widevine-license-template-overview"></a>媒體服務 v3，帶 Widevine 許可證範本概述
+# <a name="media-services-v3-with-widevine-license-template-overview"></a>含 Widevine 授權範本的媒體服務 v3 總覽
 
 Azure 媒體服務可讓您使用 **Google Widevine** 來加密您的內容。 媒體服務也提供傳遞 Widevine 授權的服務。 您可以使用 Azure 媒體服務 API 來設定 Widevine 授權。 當播放程式嘗試播放以 Widevine 保護的內容時，會將要求傳送到授權傳遞服務來取得授權。 如果授權服務核准要求，服務就會發出授權。 授權會傳送至用戶端，並用來解密及播放指定內容。
 
@@ -74,7 +74,7 @@ Widevine 授權要求會格式化為 JSON 訊息。
 | parse_only |布林值，true 或 false |剖析授權要求，但不會發出任何授權。 不過，授權要求中的值會在回應中傳回。 |
 
 ## <a name="content-key-specs"></a>內容金鑰規格
-如果存在預先存在的策略，則無需在內容金鑰規範中指定任何值。與此內容關聯的預先存在的策略用於確定輸出保護，例如高頻寬數位內容保護 （HDCP） 和複製一般管理系統 （CGMS）。 如果預先存在的原則未向 Widevine 授權伺服器登錄，內容提供者可以在授權要求中插入值。   
+如果存在既有的原則，則不需要在內容金鑰規格中指定任何值。與此內容相關聯的預先存在原則會用來決定輸出保護，例如高頻寬數位內容保護（HDCP）和複製一般管理系統（CGMS）。 如果預先存在的原則未向 Widevine 授權伺服器登錄，內容提供者可以在授權要求中插入值。   
 
 必須對所有追蹤指定每個 content_key_specs 值，不論 use_policy_overrides_exclusively 選項為何。 
 
@@ -83,7 +83,7 @@ Widevine 授權要求會格式化為 JSON 訊息。
 | content_key_specs track_type |字串 |追蹤類型名稱。 如果授權要求中指定 content_key_specs，則請務必明確指定所有追蹤類型。 未這樣做會導致無法播放過去 10 秒。 |
 | content_key_specs  <br/> security_level |uint32 |定義用戶端對於播放的穩健性需求。 <br/> 以軟體為基礎白箱加密是必要的。 <br/> 軟體加密和模糊化的解碼器是必要的。 <br/> 金鑰資料和加密作業必須在支援硬體的受信任執行環境中執行。 <br/> 內容的加密和解密必須在支援硬體的受信任執行環境中執行。  <br/> 加密、解密和媒體 (壓縮和未壓縮) 的所有處理必須在支援硬體的受信任執行環境中處理。 |
 | content_key_specs <br/> required_output_protection.hdc |字串，以下項目的其中一個：HDCP_NONE、HDCP_V1、HDCP_V2 |指出是否需要 HDCP。 |
-| content_key_specs <br/>索引鍵 |Base64 <br/>編碼的字串 |用於此軌道的內容金鑰。如果指定，則需要track_type或key_id。 內容提供者可使用此選項插入此追蹤的內容金鑰，而不是讓 Widevine 授權伺服器產生或查閱金鑰。 |
+| content_key_specs <br/>索引鍵 |Base64 <br/>編碼的字串 |要用於此播放軌的內容金鑰。若已指定，則需要 track_type 或 key_id。 內容提供者可使用此選項插入此追蹤的內容金鑰，而不是讓 Widevine 授權伺服器產生或查閱金鑰。 |
 | content_key_specs.key_id |Base64 編碼的二進位字串，16 位元組 |金鑰的唯一識別碼。 |
 
 ## <a name="policy-overrides"></a>原則覆寫

@@ -1,6 +1,6 @@
 ---
-title: 發佈、訂閱雲中的事件 - Azure 事件網格 IoT 邊緣 |微軟文檔
-description: 使用 Webhook 在 IoT 邊緣使用事件網格發佈、訂閱雲中的事件
+title: 發佈、訂閱雲端中的事件-Azure Event Grid IoT Edge |Microsoft Docs
+description: 在 IoT Edge 上使用 Webhook 搭配事件方格來發佈、訂閱雲端中的事件
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,31 +10,31 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76844579"
 ---
-# <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教程：發佈、訂閱雲中的事件
+# <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>教學課程：發佈、訂閱雲端中的事件
 
-本文介紹使用 IoT Edge 上的事件網格發佈和訂閱事件所需的所有步驟。 本教程使用 Azure 函數作為事件處理常式。 有關其他目標型別，請參閱[事件處理常式](event-handlers.md)。
+本文會逐步解說在 IoT Edge 上使用事件方格發佈和訂閱事件所需的所有步驟。 本教學課程會使用和 Azure Function 作為事件處理常式。 如需其他目的地類型，請參閱[事件處理常式](event-handlers.md)。
 
-請參閱[事件網格概念](concepts.md)，以瞭解事件網格主題和訂閱是什麼，然後再繼續。
+請參閱[事件方格概念](concepts.md)，以瞭解事件方格主題和訂用帳戶在繼續之前的功能。
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>先決條件 
 若要完成這個教學課程，您將需要：
 
-* **Azure 訂閱**- 如果尚未創建[免費帳戶](https://azure.microsoft.com/free)，則創建免費帳戶。 
-* **Azure IoT 中心和 IoT 邊緣設備**- 如果尚未啟動[Linux](../../iot-edge/quickstart-linux.md)或[Windows 設備](../../iot-edge/quickstart.md)，請按照快速入門中的步驟操作。
+* **Azure 訂**用帳戶-如果您還沒有帳戶，請建立一個[免費帳戶](https://azure.microsoft.com/free)。 
+* **Azure IoT 中樞和 IoT Edge 裝置**-遵循[Linux](../../iot-edge/quickstart-linux.md)或[Windows 裝置](../../iot-edge/quickstart.md)的 [快速入門] 中的步驟（如果您還沒有的話）。
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-deploy-iot-edge.md)]
 
-## <a name="create-an-azure-function-in-the-azure-portal"></a>在 Azure 門戶中創建 Azure 函數
+## <a name="create-an-azure-function-in-the-azure-portal"></a>在 Azure 入口網站中建立 Azure 函式
 
-按照[本教程](../../azure-functions/functions-create-first-azure-function.md)中概述的步驟創建 Azure 函數。 
+請依照[教學](../../azure-functions/functions-create-first-azure-function.md)課程中概述的步驟來建立 Azure 函式。 
 
-將程式碼片段替換為以下代碼：
+將程式碼片段取代為下列程式碼：
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -58,16 +58,16 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 }
 ```
 
-在新功能中，選擇右上角**的獲取函數 URL，** 選擇預設（**函數鍵**），然後選擇 **"複製**"。 您將在本教程的後面部分使用函數 URL 值。
+在您的新函式中，選取右上方的 [取得函式**URL** ]，選取 [預設（**功能鍵**）]，然後選取 [**複製**]。 您稍後會在本教學課程中使用函數 URL 值。
 
 > [!NOTE]
-> 有關對事件網格事件觸發器的事件做出反應的更多示例和教程，請參閱[Azure 函數](../../azure-functions/functions-overview.md)文檔。
+> 如需使用 EventGrid 事件觸發程式回應事件的更多範例和教學課程，請參閱[Azure Functions](../../azure-functions/functions-overview.md)檔。
 
 ## <a name="create-a-topic"></a>建立主題
 
-作為事件的發行者，您需要創建事件網格主題。 主題是指發行者可以向其發送事件的結束點。
+身為事件的發行者，您必須建立事件方格主題。 主題是指發行者可以將事件傳送至其中的端點。
 
-1. 使用以下內容創建主題2.json。 有關有效負載的詳細資訊，請參閱我們的[API 文檔](api.md)。
+1. 使用下列內容建立 topic2。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
     ```json
          {
@@ -77,12 +77,12 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
           }
         }
     ```
-1. 運行以下命令以創建主題。 應返回 200 OK 的 HTTP 狀態碼。
+1. 執行下列命令來建立主題。 應傳回200正常的 HTTP 狀態碼。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
     ```
-1. 運行以下命令以驗證主題已成功創建。 應返回 200 OK 的 HTTP 狀態碼。
+1. 執行下列命令，以確認已成功建立主題。 應傳回200正常的 HTTP 狀態碼。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
@@ -106,11 +106,11 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 ## <a name="create-an-event-subscription"></a>建立事件訂閱
 
-訂閱者可以註冊發佈到主題的事件。 要接收任何事件，訂閱者將需要創建感興趣的主題的事件網格訂閱。
+訂閱者可以註冊發佈至主題的事件。 若要接收任何事件，訂閱者必須在感關注的主題上建立 Event grid 訂用帳戶。
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. 使用以下內容創建訂閱2.json。 有關有效負載的詳細資訊，請參閱我們的[API 文檔](api.md)。
+1. 使用下列內容建立 subscription2。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
     ```json
         {
@@ -126,13 +126,13 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     ```
 
    >[!NOTE]
-   > **終結點類型**指定訂閱者是 Webhook。  **終結點 Url**指定訂閱者偵聽事件的 URL。 此 URL 對應于之前設置的 Azure 函數示例。
-2. 運行以下命令以創建訂閱。 應返回 200 OK 的 HTTP 狀態碼。
+   > **EndpointType**指定訂閱者為 Webhook。  **EndpointUrl**會指定訂閱者接聽事件的 URL。 此 URL 會對應至您稍早設定的 Azure 函式範例。
+2. 執行下列命令來建立訂用帳戶。 應傳回200正常的 HTTP 狀態碼。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/eventSubscriptions/sampleSubscription2?api-version=2019-01-01-preview
     ```
-3. 運行以下命令以驗證已成功創建訂閱。 應返回 200 OK 的 HTTP 狀態碼。
+3. 執行下列命令，確認已成功建立訂用帳戶。 應傳回200正常的 HTTP 狀態碼。
 
     ```sh
     curl -k -H "Content-Type: application/json" -X GET -g https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/eventSubscriptions/sampleSubscription2?api-version=2019-01-01-preview
@@ -159,7 +159,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 ## <a name="publish-an-event"></a>發佈事件
 
-1. 使用以下內容創建 event2.json。 有關有效負載的詳細資訊，請參閱我們的[API 文檔](api.md)。
+1. 使用下列內容建立 event2。 如需裝載的詳細資訊，請參閱我們的[API 檔](api.md)。
 
     ```json
         [
@@ -176,7 +176,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
           }
         ]
     ```
-1. 運行以下命令以發佈事件
+1. 執行下列命令以發佈事件
 
     ```sh
     curl -k -H "Content-Type: application/json" -X POST -g -d @event2.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2/events?api-version=2019-01-01-preview
@@ -184,25 +184,25 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 
 ## <a name="verify-event-delivery"></a>驗證事件傳遞
 
-您可以在函數的 **"監視器"** 選項下查看在 Azure 門戶中傳遞的事件。
+您可以在函式的 [**監視**] 選項底下，查看 Azure 入口網站中傳遞的事件。
 
 ## <a name="cleanup-resources"></a>清除資源
 
-* 運行以下命令以刪除主題及其所有訂閱
+* 執行下列命令來刪除主題及其所有訂用帳戶
 
     ```sh
     curl -k -H "Content-Type: application/json" -X DELETE https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic2?api-version=2019-01-01-preview
     ```
 
-* 刪除在 Azure 門戶中創建的 Azure 函數。
+* 刪除在 Azure 入口網站中建立的 Azure function。
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教程中，您創建了事件網格主題、訂閱和已發佈的事件。 現在您已經瞭解了基本步驟，請參閱以下文章：
+在本教學課程中，您已建立事件方格主題、訂用帳戶和已發佈的事件。 現在您已瞭解基本步驟，請參閱下列文章：
 
-* 要解決在 IoT 邊緣上使用 Azure 事件網格的問題，請參閱[故障排除指南](troubleshoot.md)。
-* 使用篩選器創建/更新[訂閱](advanced-filtering.md)。
-* 在[linux](persist-state-linux.md)或[Windows](persist-state-windows.md)上設置事件網格模組的持久性
-* 按照[文檔](configure-client-auth.md)配置用戶端身份驗證
-* 按照[本教程](forward-events-event-grid-cloud.md)將事件轉發到雲中的 Azure 事件網格
-* [監視邊緣的主題和訂閱](monitor-topics-subscriptions.md)
+* 若要針對在 IoT Edge 上使用 Azure 事件方格的問題進行疑難排解，請參閱[疑難排解指南](troubleshoot.md)。
+* 使用[篩選器](advanced-filtering.md)建立/更新訂用帳戶。
+* 在[linux](persist-state-linux.md)或[Windows](persist-state-windows.md)上設定事件方格模組的持續性
+* 遵循[檔](configure-client-auth.md)以設定用戶端驗證
+* 遵循本[教學](forward-events-event-grid-cloud.md)課程，將事件轉寄到雲端中的 Azure 事件方格
+* [監視邊緣上的主題和訂用帳戶](monitor-topics-subscriptions.md)

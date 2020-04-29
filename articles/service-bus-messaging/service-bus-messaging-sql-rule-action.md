@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排中的 SQLRuleAction 語法引用
-description: 本文提供了 SQLRuleAction 語法的參考。 這些操作使用基於 SQL 語言的語法編寫，該語法針對代理消息執行。
+title: Azure 服務匯流排中的 SQLRuleAction 語法參考
+description: 本文提供 SQLRuleAction 語法的參考。 這些動作是以以 SQL 語言為基礎的語法所撰寫，會針對代理訊息來執行。
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 37615e39577ef60cccc9df91b61a6aa24ca794d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759623"
 ---
-# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服務匯流排的 SQLRuleAction 語法引用
+# <a name="sqlruleaction-syntax-reference-for-azure-service-bus"></a>Azure 服務匯流排的 SQLRuleAction 語法參考
 
 *SqlRuleAction* 是 [SqlRuleAction](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction) 類別的執行個體，代表對 [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)執行的以 SQL 語言為基礎之語法所撰寫的動作集。   
   

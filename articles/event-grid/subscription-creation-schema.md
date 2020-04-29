@@ -1,6 +1,6 @@
 ---
 title: Azure 事件格線訂用帳戶的結構描述
-description: 本文介紹用於訂閱具有 Azure 事件網格的事件的屬性。 事件網格訂閱架構。
+description: 本文說明使用 Azure 事件方格來訂閱事件的屬性。 事件方格訂用帳戶架構。
 services: event-grid
 author: banisadr
 ms.service: event-grid
@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 01/23/2020
 ms.author: babanisa
 ms.openlocfilehash: 4bb04d22b762f31a02515549b698030a5267e4cd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76720753"
 ---
 # <a name="event-grid-subscription-schema"></a>事件格線訂用帳戶的結構描述
@@ -34,8 +34,8 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
 
 | 屬性 | 類型 | 描述 |
 | -------- | ---- | ----------- |
-| 目的地 | 物件 (object) | 定義端點的物件。 |
-| filter | 物件 (object) | 篩選事件類型的選擇性欄位。 |
+| 目的地 | 物件 | 定義端點的物件。 |
+| filter | 物件 | 篩選事件類型的選擇性欄位。 |
 
 ### <a name="destination-object"></a>目的地物件
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 REST 建立內容金鑰 | Microsoft Docs
-description: 本文演示如何創建提供對資產的安全訪問的內容金鑰。
+description: 本文示範如何建立內容金鑰，以提供資產的安全存取。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d256f417fb3bacbf3f363fc2a9f8701a1bb49d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76773633"
 ---
 # <a name="create-content-keys-with-rest"></a>使用 REST 建立內容金鑰
 > [!div class="op_single_selector"]
-> * [休息](media-services-rest-create-contentkey.md)
+> * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
 > 
 > 
@@ -177,7 +177,7 @@ ms.locfileid: "76773633"
     }
 
 
-下面的示例演示如何使用用於存儲加密**的 ContentKeyType**集創建 ContentKey（"1"）和保護**ContentKey****金鑰類型**設置為"0"以指示保護金鑰識別碼 是 X.509 憑證指紋。  
+下列範例示範如何建立**ContentKey** ，並將**ContentKeyType**設定為儲存加密（"1"），並將**ProtectionKeyType**設定為 "0"，以表示保護金鑰識別碼是 x.509 憑證指紋。  
 
 要求
 

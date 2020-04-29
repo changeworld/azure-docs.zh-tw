@@ -1,5 +1,5 @@
 ---
-title: 為 Azure HDInsight Hadoop 群集中的資料創建功能 - 團隊資料科學流程
+title: 為 Azure HDInsight Hadoop 叢集的資料建立功能-小組資料科學流程
 description: Hive 查詢的範例，產生儲存在 Azure HDInsight Hadoop 叢集中之資料中的特性。
 services: machine-learning
 author: marktab
@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76721773"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>針對使用 Hive 查詢之 Hadoop 叢集中的資料建立特徵
@@ -27,24 +27,24 @@ ms.locfileid: "76721773"
 
 此工作是 [Team Data Science Process (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)中的一個步驟。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 本文假設您已經：
 
 * 建立 Azure 儲存體帳戶。 如需指示，請參閱[建立 Azure 儲存體帳戶](../../storage/common/storage-account-create.md)
-* 佈建含有 HDInsight 服務的自訂 Hadoop 叢集。  如果需要說明，請參閱[自訂 Azure HDInsight Hadoop 群集以進行高級分析](customize-hadoop-cluster.md)。
+* 佈建含有 HDInsight 服務的自訂 Hadoop 叢集。  如需相關指示，請參閱[自訂適用于 Advanced Analytics 的 Azure HDInsight Hadoop](customize-hadoop-cluster.md)叢集。
 * 已將資料上傳至 Azure HDInsight Hadoop 叢集中的 Hive 資料表。 如果沒有，則遵循[建立資料並載入到 Hive 資料表](move-hive-tables.md) ，先將資料上傳至 Hive 資料表。
 * 啟用叢集的遠端存取。 如需指示，請參閱 [存取 Hadoop 叢集的前端節點](customize-hadoop-cluster.md)。
 
 ## <a name="feature-generation"></a><a name="hive-featureengineering"></a>特徵產生
 在本節中，說明可以使用 Hive 查詢特性之數個方式的範例。 一旦產生額外功能之後，就可以將它們當成資料行新增至現有的資料表，或是建立具有其他功能和主索引鍵的新資料表 (然後與原始資料表聯結)。 以下是顯示的範例：
 
-1. [基於頻率的功能生成](#hive-frequencyfeature)
-2. [二進位分類中的分類變數風險](#hive-riskfeature)
+1. [以頻率為基礎的功能產生](#hive-frequencyfeature)
+2. [二元分類中類別變數的風險](#hive-riskfeature)
 3. [從日期時間欄位擷取功能](#hive-datefeatures)
 4. [從文字欄位擷取功能](#hive-textfeatures)
-5. [計算 GPS 座標之間的距離](#hive-gpsdistance)
+5. [計算 GPS 座標間的距離](#hive-gpsdistance)
 
-### <a name="frequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>基於頻率的要素生成
+### <a name="frequency-based-feature-generation"></a><a name="hive-frequencyfeature"></a>以頻率為基礎的功能產生
 計算類別變數層級的頻率，或是來自多個類別變數之特定層級組合的頻率，通常很實用。 使用者可以使用下列指令碼來計算這些頻率：
 
         select
@@ -83,27 +83,27 @@ ms.locfileid: "76721773"
 
 計算出風險資料表之後，使用者就可以藉由將資料表聯結至風險資料表，來將風險值指派給該資料表。 Hive 聯結查詢已在上一節中提供。
 
-### <a name="extract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>從日期時間欄位中提取要素
+### <a name="extract-features-from-datetime-fields"></a><a name="hive-datefeatures"></a>從日期時間欄位解壓縮功能
 Hive 會和一組 UDF 一起出現，用來處理日期時間欄位。 在 Hive 中，預設的日期時間格式是 'yyyy-MM-dd 00:00:00' (例如 '1970-01-01 12:21:32')。 本節會顯示擷取月份日期和來自日期時間欄位的月份範例，以及其他可將預設格式以外格式的日期時間字串轉換為預設格式的日期時間字串範例。
 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
 
-此 Hive 查詢假定*\<>日期時間欄位*為預設日期時間格式。
+這個 Hive 查詢假設* \<datetime 欄位>* 是預設的日期時間格式。
 
 如果日期時間欄位不是預設格式，您需要先將日期時間欄位轉換為 Unix 時間戳記，然後將 Unix 時間戳記轉換為預設格式的日期時間字串。 將日期時間為預設格式之後，使用者就可以套用內嵌的日期時間 UDF 來擷取功能。
 
         select from_unixtime(unix_timestamp(<datetime field>,'<pattern of the datetime field>'))
         from <databasename>.<tablename>;
 
-在此查詢`'MM/dd/yyyy HH:mm:ss'`中*\<，如果日期時間欄位>* 具有模式，如*03/26/2015 12：04：39，**\<則日期時間欄位>的模式*應為 。 若要進行測試，使用者可以執行
+在此查詢中，如果* \<日期時間欄位>* 的模式類似*03/26/2015 12:04:39*， * \<則 datetime 欄位> ' 的模式*應該是。 `'MM/dd/yyyy HH:mm:ss'` 若要進行測試，使用者可以執行
 
         select from_unixtime(unix_timestamp('05/15/2015 09:32:10','MM/dd/yyyy HH:mm:ss'))
         from hivesampletable limit 1;
 
 佈建叢集時，這個查詢中的 *hivesampletable* 預設會預先安裝於所有 Azure HDInsight Hadoop 叢集中。
 
-### <a name="extract-features-from-text-fields"></a><a name="hive-textfeatures"></a>從文字欄位中提取要素
+### <a name="extract-features-from-text-fields"></a><a name="hive-textfeatures"></a>從文字欄位解壓縮功能
 當 Hive 資料表具有一個文字欄位且其中包含以空格分隔的文字字串時，下列查詢便會擷取字串長度，以及字串中的字數。
 
         select length(<text field>) as str_len, size(split(<text field>,' ')) as word_num
@@ -130,7 +130,7 @@ Hive 會和一組 UDF 一起出現，用來處理日期時間欄位。 在 Hive 
         and dropoff_latitude between 30 and 90
         limit 10;
 
-您可以在<a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">可移動的類型指令碼</a>網站 (作者為 Peter Lapisu) 上找到計算兩個 GPS 座標間之距離的數學方程式。 在此 JAVAscript 中，`toRad()`該函數只是 pi/180 *lat_or_lon，* 該函數將度轉換為弧度。 此處的 *lat_or_lon* 為緯度或經度。 由於 Hive 不提供函式 `atan2`，但提供函式 `atan`，因此 `atan2` 函式是由上述 Hive 查詢中的 `atan` 函式以 <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定義來實作。
+您可以在<a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">可移動的類型指令碼</a>網站 (作者為 Peter Lapisu) 上找到計算兩個 GPS 座標間之距離的數學方程式。 在此 JAVAscript 中，函`toRad()`式只是*lat_or_lon*pi/180，可將角度轉換為弧度。 此處的 *lat_or_lon* 為緯度或經度。 由於 Hive 不提供函式 `atan2`，但提供函式 `atan`，因此 `atan2` 函式是由上述 Hive 查詢中的 `atan` 函式以 <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> 中提供的定義來實作。
 
 ![建立工作區](./media/create-features-hive/atan2new.png)
 
@@ -144,18 +144,18 @@ Hive 叢集的預設參數設定可能不適合 Hive 查詢以及查詢正在處
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    此參數將 4 GB 記憶體分配給 JAVA 堆空間，並通過為其分配更多記憶體來提高排序效率。 如果發生任何與堆積空間相關的工作失敗錯誤，那麼使用這些配置會是個好主意。
+    此參數會配置 4 GB 記憶體給 JAVA 堆積空間，並藉由為其配置更多記憶體，讓排序更有效率。 如果發生任何與堆積空間相關的工作失敗錯誤，那麼使用這些配置會是個好主意。
 
 1. **DFS 區塊大小**：這個參數會設定檔案系統所儲存的最小資料單位。 例如，如果 DFS 區塊大小為 128 MB，則大小小於和等於 128 MB 的任何資料都會儲存在單一區塊中。 系統會分配額外的區塊給大於 128 MB 的資料。 
 2. 選擇小的區塊大小會在 Hadoop 中造成極大的負荷，因為名稱節點必須處理更多要求，以尋找與檔案有關的相關區塊。 在處理 GB (或更大型) 資料時，建議的設定如下：
 
         set dfs.block.size=128m;
 
-2. **將 Hive 中的聯結作業最佳化**：儘管 Map/Reduce 架構中的聯結作業通常是在縮減階段執行，但有時可藉由在對應階段中排程聯結 (亦稱為 "mapjoin") 來得到大量的收穫。 設置此選項：
+2. **將 Hive 中的聯結作業最佳化**：儘管 Map/Reduce 架構中的聯結作業通常是在縮減階段執行，但有時可藉由在對應階段中排程聯結 (亦稱為 "mapjoin") 來得到大量的收穫。 設定此選項：
    
        set hive.auto.convert.join=true;
 
-3. **指定 Hive 的對應程式數目**：儘管 Hadoop 允許使用者設定縮減程式的數目，但使用者通常不會設定對應程式的數目。 允許對此數位進行一定程度的控制的訣竅是選擇*Hadoop 變數映射.min.split.size*和*映射.max.split.size，* 因為每個地圖任務的大小由以下因素決定：
+3. **指定 Hive 的對應程式數目**：儘管 Hadoop 允許使用者設定縮減程式的數目，但使用者通常不會設定對應程式的數目。 允許對此數目進行某種程度控制的技巧是選擇 Hadoop 變數 mapred.max.split.size，因為每個對應工作*的大小是*由下列各項所決定 *..*
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    
@@ -167,7 +167,7 @@ Hive 叢集的預設參數設定可能不適合 Hive 查詢以及查詢正在處
 
      誠如所見，若指定了資料大小，則藉由「設定」這些參數來微調它們，讓我們能夠微調所使用的對應程式數目。
 
-4. 以下是最佳化 Hive 效能的其他數個更**進階的選項**。 這些選項允許您設置分配給映射和減少任務的記憶體，並且可用於調整性能。 請記住，*mapreduce.reduce.memory.mb* 不能大於 Hadoop 叢集中每個背景工作角色節點的實際記憶體大小。
+4. 以下是最佳化 Hive 效能的其他數個更**進階的選項**。 這些選項可讓您設定配置用來對應和縮減工作的記憶體，而且在調整效能時非常有用。 請記住，*mapreduce.reduce.memory.mb* 不能大於 Hadoop 叢集中每個背景工作角色節點的實際記憶體大小。
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

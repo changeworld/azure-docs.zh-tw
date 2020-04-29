@@ -1,6 +1,6 @@
 ---
-title: 配置 - Azure 事件網格 IoT 邊緣 |微軟文檔
-description: IoT 邊緣事件網格中的配置。
+title: 設定-Azure Event Grid IoT Edge |Microsoft Docs
+description: IoT Edge 上事件方格中的設定。
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,80 +10,80 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 841b5092775353bbe3340dbbd55610026f998a15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76846465"
 ---
-# <a name="event-grid-configuration"></a>事件網格配置
+# <a name="event-grid-configuration"></a>事件方格設定
 
-事件網格提供了許多配置，可以按環境進行修改。 以下部分是對所有可用選項及其預設值的引用。
+事件方格提供許多可在每個環境中修改的設定。 下一節是所有可用選項及其預設值的參考。
 
-## <a name="tls-configuration"></a>TLS 配置
+## <a name="tls-configuration"></a>TLS 設定
 
-要瞭解用戶端身份驗證，請參閱[安全和身份驗證](security-authentication.md)。 其用法示例可[在本文中](configure-api-protocol.md)找到。
-
-| 屬性名稱 | 描述 |
-| ---------------- | ------------ |
-|`inbound__serverAuth__tlsPolicy`| 事件網格模組的 TLS 策略。 預設值僅為 HTTPS。
-|`inbound__serverAuth__serverCert__source`| 事件網格模組用於其 TLS 配置的伺服器憑證源。 預設值為 IoT 邊緣。
-
-## <a name="incoming-client-authentication"></a>傳入用戶端身份驗證
-
-要瞭解用戶端身份驗證，請參閱[安全和身份驗證](security-authentication.md)。 [在本文中](configure-client-auth.md)可以找到示例。
+若要深入瞭解用戶端驗證的一般資訊，請參閱[安全性和驗證](security-authentication.md)。 您可以在[這篇文章](configure-api-protocol.md)中找到其使用方式的範例。
 
 | 屬性名稱 | 描述 |
 | ---------------- | ------------ |
-|`inbound__clientAuth__clientCert__enabled`| 打開/關閉基於證書的用戶端身份驗證。 預設值為 true。
-|`inbound__clientAuth__clientCert__source`| 用於驗證用戶端憑證的源。 預設值為 IoT 邊緣。
-|`inbound__clientAuth__clientCert__allowUnknownCA`| 允許自簽名用戶端憑證的策略。 預設值為 true。
-|`inbound__clientAuth__sasKeys__enabled`| 打開/關閉基於 SAS 金鑰的用戶端身份驗證。 預設值已關閉。
-|`inbound__clientAuth__sasKeys__key1`| 用於驗證傳入請求的值之一。
-|`inbound__clientAuth__sasKeys__key2`| 用於驗證傳入請求的可選第二個值。
+|`inbound__serverAuth__tlsPolicy`| 事件方格模組的 TLS 原則。 預設值為 [僅限 HTTPS]。
+|`inbound__serverAuth__serverCert__source`| 事件方格模組用來進行 TLS 設定的伺服器憑證來源。 預設值為 IoT Edge。
 
-## <a name="outgoing-client-authentication"></a>傳出用戶端身份驗證
-要瞭解用戶端身份驗證，請參閱[安全和身份驗證](security-authentication.md)。 [在本文中](configure-identity-auth.md)可以找到示例。
+## <a name="incoming-client-authentication"></a>傳入用戶端驗證
+
+若要深入瞭解用戶端驗證的一般資訊，請參閱[安全性和驗證](security-authentication.md)。 您可以在[這篇文章](configure-client-auth.md)中找到範例。
 
 | 屬性名稱 | 描述 |
 | ---------------- | ------------ |
-|`outbound__clientAuth__clientCert__enabled`| 打開/關閉為傳出請求附加標識證書。 預設值為 true。
-|`outbound__clientAuth__clientCert__source`| 用於檢索事件網格模組的傳出證書的源。 預設值為 IoT 邊緣。
+|`inbound__clientAuth__clientCert__enabled`| 開啟/關閉以憑證為基礎的用戶端驗證。 預設值為 true。
+|`inbound__clientAuth__clientCert__source`| 驗證用戶端憑證的來源。 預設值為 IoT Edge。
+|`inbound__clientAuth__clientCert__allowUnknownCA`| 允許自我簽署用戶端憑證的原則。 預設值為 true。
+|`inbound__clientAuth__sasKeys__enabled`| 若要開啟/關閉以 SAS 金鑰為基礎的用戶端驗證。 預設值為 off。
+|`inbound__clientAuth__sasKeys__key1`| 其中一個值，用來驗證傳入的要求。
+|`inbound__clientAuth__sasKeys__key2`| 選擇性的第二個值，用來驗證傳入的要求。
+
+## <a name="outgoing-client-authentication"></a>外寄用戶端驗證
+若要深入瞭解用戶端驗證的一般資訊，請參閱[安全性和驗證](security-authentication.md)。 您可以在[這篇文章](configure-identity-auth.md)中找到範例。
+
+| 屬性名稱 | 描述 |
+| ---------------- | ------------ |
+|`outbound__clientAuth__clientCert__enabled`| 若要開啟/關閉附加連出要求的身分識別憑證。 預設值為 true。
+|`outbound__clientAuth__clientCert__source`| 用來抓取事件方格模組外寄憑證的來源。 預設值為 IoT Edge。
 
 ## <a name="webhook-event-handlers"></a>Webhook 事件處理常式
 
-要瞭解用戶端身份驗證，請參閱[安全和身份驗證](security-authentication.md)。 [在本文中](configure-webhook-subscriber-auth.md)可以找到示例。
+若要深入瞭解用戶端驗證的一般資訊，請參閱[安全性和驗證](security-authentication.md)。 您可以在[這篇文章](configure-webhook-subscriber-auth.md)中找到範例。
 
 | 屬性名稱 | 描述 |
 | ---------------- | ------------ |
-|`outbound__webhook__httpsOnly`| 用於控制是否僅允許 HTTPS 訂閱者的策略。 預設值為 true（僅 HTTPS）。
-|`outbound__webhook__skipServerCertValidation`| 標誌以控制是否驗證訂閱者的證書。 預設值為 true。
-|`outbound__webhook__allowUnknownCA`| 用於控制訂閱者是否可以顯示自簽章憑證的策略。 預設值為 true。 
+|`outbound__webhook__httpsOnly`| 控制是否只允許 HTTPS 訂閱者的原則。 預設值為 true （僅限 HTTPS）。
+|`outbound__webhook__skipServerCertValidation`| 用來控制是否要驗證訂閱者憑證的旗標。 預設值為 true。
+|`outbound__webhook__allowUnknownCA`| 控制訂閱者是否可以出示自我簽署憑證的原則。 預設值為 true。 
 
 ## <a name="delivery-and-retry"></a>傳遞和重試
 
-要瞭解此功能，請參閱[交付和重試](delivery-retry.md)。
+若要深入瞭解這項功能的一般資訊，請參閱[傳遞和重試](delivery-retry.md)。
 
 | 屬性名稱 | 描述 |
 | ---------------- | ------------ |
-| `broker__defaultMaxDeliveryAttempts` | 傳遞事件的最大嘗試次數。 預設值為 30。
-| `broker__defaultEventTimeToLiveInSeconds` | 存留時間 （TTL） 以秒為單位，之後如果未傳遞事件，則丟棄事件。 預設值為**7200**秒
+| `broker__defaultMaxDeliveryAttempts` | 傳遞事件的嘗試次數上限。 預設值為 30。
+| `broker__defaultEventTimeToLiveInSeconds` | 存留時間（TTL），以秒為單位，如果未傳遞，則會捨棄事件。 預設值為**7200**秒
 
 ## <a name="output-batching"></a>輸出批次處理
 
-要瞭解此功能，請參閱[交付和輸出批次處理](delivery-output-batching.md)。
+若要深入瞭解這項功能的一般資訊，請參閱[傳遞和輸出批次處理](delivery-output-batching.md)。
 
 | 屬性名稱 | 描述 |
 | ---------------- | ------------ |
 | `api__deliveryPolicyLimits__maxBatchSizeInBytes` | `ApproxBatchSizeInBytes`旋鈕允許的最大值。 預設值為 `1_058_576`。
 | `api__deliveryPolicyLimits__maxEventsPerBatch` | `MaxEventsPerBatch`旋鈕允許的最大值。 預設值為 `50`。
-| `broker__defaultMaxBatchSizeInBytes` | 僅`MaxEventsPerBatch`指定時的最大傳遞請求大小。 預設值為 `1_058_576`。
-| `broker__defaultMaxEventsPerBatch` | 僅`MaxBatchSizeInBytes`指定時要添加到批次處理的最大事件數。 預設值為 `10`。
+| `broker__defaultMaxBatchSizeInBytes` | 只有`MaxEventsPerBatch`在指定時，傳遞要求大小上限。 預設值為 `1_058_576`。
+| `broker__defaultMaxEventsPerBatch` | 只有在指定時，才`MaxBatchSizeInBytes`會新增至批次的事件數目上限。 預設值為 `10`。
 
 ## <a name="metrics"></a>計量
 
-要瞭解如何在 IoT 邊緣上使用事件網格指標，請參閱[監視主題和訂閱](monitor-topics-subscriptions.md)
+若要瞭解如何在 IoT Edge 上搭配使用計量與事件方格，請參閱[監視主題和](monitor-topics-subscriptions.md)訂用帳戶
 
 | 屬性名稱 | 描述 |
 | ---------------- | ------------ |
-| `metrics__reporterType` | 報告者類型為指標 enpoint。 預設值為`none`並禁用指標。 設置為`prometheus`啟用普羅米古斯博覽會格式的指標。
+| `metrics__reporterType` | 計量端點的報告類型。 預設值`none`為，並停用計量。 將設定`prometheus`為，可啟用 Prometheus 展示格式的計量。

@@ -8,10 +8,10 @@ ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
 ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76549048"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(已淘汰) 使用 Azure DevOps Services 搭配 Docker Swarm 在 Azure Container Service 上部署多容器應用程式的完整 CI/CD 管線
@@ -38,13 +38,13 @@ ms.locfileid: "76549048"
 1. 叢集上的 Docker Swarm 提取最新版本的映像 
 1. 使用 Docker Compose 部署應用程式的最新版本 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 開始進行本教學課程之前，您需要完成下列工作：
 
 - [在 Azure 容器服務中建立 Swarm 叢集](container-service-deployment.md)
 - [連接到 Azure 容器服務中的 Swarm 叢集](../container-service-connect.md)
-- [創建 Azure 容器註冊表](../../container-registry/container-registry-get-started-portal.md)
+- [建立 Azure container registry](../../container-registry/container-registry-get-started-portal.md)
 - [具有 Azure DevOps Services 組織並已建立專案](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 - [在您的 GitHub 帳戶建立該 GitHub 存放庫的分叉 (英文)](https://github.com/jcorioland/MyShop/)
 
@@ -80,7 +80,7 @@ Microsoft 提供 Azure DevOps Services 擴充功能，以在 Azure Pipelines 程
 
     ![Azure DevOps Services - 外部連線](./media/container-service-docker-swarm-setup-ci-cd/vsts-services-menu.png)
 
-1. 在左側，按一下 **"新服務終結點** > **GitHub**"。
+1. 在左側，按一下 [**新增服務端點** > ] [**GitHub**]。
 
     ![Azure DevOps Services - GitHub](./media/container-service-docker-swarm-setup-ci-cd/vsts-github.png)
 
@@ -147,7 +147,7 @@ Microsoft 提供 Azure DevOps Services 擴充功能，以在 Azure Pipelines 程
 
     ![Azure DevOps Services - Docker 組建](./media/container-service-docker-swarm-setup-ci-cd/vsts-docker-build.png)
 
-    對於生成操作，請選擇 Azure 容器註冊表、**生成映射**操作和定義每個映射的 Dockerfile。 將 [Build context]**** \(組件內容) 設為 Dockerfile 根目錄，並定義 [Image Name]**** \(映像名稱)。 
+    針對組建作業，選取您的 Azure container registry、[**建立映射**] 動作，以及定義每個映射的 Dockerfile。 將 [Build context]**** \(組件內容) 設為 Dockerfile 根目錄，並定義 [Image Name]**** \(映像名稱)。 
     
     如上一個畫面顯示，使用您 Azure 容器登錄的 URI 做為映像名稱的開頭。 (您也可以使用組建變數將映像的標籤參數化，就像此範例中的組建識別碼一樣。)
 
@@ -159,7 +159,7 @@ Microsoft 提供 Azure DevOps Services 擴充功能，以在 Azure Pipelines 程
 
 1. 針對這五個映像個別設定好建置和推送步驟之後，請在建置工作流程中再新增兩個步驟。
 
-    a. 使用 bash 腳本將 docker-compose.yml 檔中的*BuildNumber*事件替換為當前生成 Id 的命令列任務。有關詳細資訊，請參閱以下螢幕。
+    a. 命令列工作，使用 bash 腳本以目前的組建識別碼取代 docker-compose.dev.debug.yml. yml 檔案中的*BuildNumber*發生次數。如需詳細資訊，請參閱下列畫面。
 
     ![Azure DevOps Services - 更新 Compose 檔案](./media/container-service-docker-swarm-setup-ci-cd/vsts-build-replace-build-number.png)
 
@@ -177,9 +177,9 @@ Azure DevOps Services 可讓您[跨環境管理發行](https://www.visualstudio.
 
 ### <a name="initial-release-setup"></a>初始發行設定
 
-1. 要創建發佈管道，請按一下 **"發佈** > **"**
+1. 若要建立發行管線，請按一下 [**發行** > **+ 發行**]
 
-1. 要設定項目源，請按一下 **"專案** > **連結專案"源**。 在此，請將這個新的發行管線連結到您在上一個步驟中定義的組建。 如此一來，就可以在發行程序中取得 docker-compose.yml 檔案。
+1. 若要設定成品來源，請按一下 [**構件** > ] [**連結成品來源**]。 在此，請將這個新的發行管線連結到您在上一個步驟中定義的組建。 如此一來，就可以在發行程序中取得 docker-compose.yml 檔案。
 
     ![Azure DevOps Services - 發行成品](./media/container-service-docker-swarm-setup-ci-cd/vsts-release-artefacts.png) 
 
@@ -222,4 +222,4 @@ Azure DevOps Services 可讓您[跨環境管理發行](https://www.visualstudio.
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關使用 Azure DevOps 服務進行 CI/CD 的詳細資訊，請參閱[Azure 管道文檔](/azure/devops/pipelines/?view=azure-devops)一文。
+* 如需 CI/CD 與 Azure DevOps Services 的詳細資訊，請參閱[Azure Pipelines 檔](/azure/devops/pipelines/?view=azure-devops)文章。

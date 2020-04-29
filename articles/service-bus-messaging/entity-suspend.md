@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排 - 掛起消息傳遞實體
-description: 本文介紹如何暫時掛起和重新啟動 Azure 服務匯流排消息實體（佇列、主題和訂閱）。
+title: Azure 服務匯流排-暫止訊息實體
+description: 本文說明如何暫時暫停和重新開機 Azure 服務匯流排訊息實體（佇列、主題和訂用帳戶）。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: 7386932f19eee064926184eb17f5e92e30add98e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76760380"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>暫止及重新啟動傳訊實體 (停用)
@@ -28,7 +28,7 @@ ms.locfileid: "76760380"
 
 暫止或重新啟動可以由使用者或系統執行。 系統只會因為重大的管理原因暫止實體，如達到訂用帳戶消費限制。 使用者無法重新啟動由系統停用的實體，不過當導致暫止的原因排除後實體將能恢復正常狀態。
 
-在門戶中，相應實體的 **"屬性"** 部分允許更改狀態;因此，您可以更改狀態。以下螢幕截圖顯示了佇列的切換：
+在入口網站中，個別實體的 [**屬性**] 區段可讓您變更狀態;下列螢幕擷取畫面顯示佇列的切換：
 
 ![][1]
 

@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排 - 消息過期
-description: 本文介紹了 Azure 服務匯流排消息的過期和存留時間。 在這樣的截止日期之後，消息不再傳遞。
+title: Azure 服務匯流排訊息過期
+description: 本文說明 Azure 服務匯流排訊息的到期和存留時間。 在這種期限之後，就不會再傳遞訊息。
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
 ms.openlocfilehash: e86c92fa1cfb13929d5617502224f479709efdd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76756329"
 ---
 # <a name="message-expiration-time-to-live"></a>訊息到期 (存留時間)
@@ -26,7 +26,7 @@ ms.locfileid: "76756329"
 
 對於通常會在應用程式或應用程式組件的部分執行內容中使用佇列和主題的開發與測試環境，它也很適合用來將擱置的測試訊息自動進行記憶體回收，如此一來，就能全新開始下一個測試執行。
 
-任何個別訊息的到期都能透過設定 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 系統屬性來控制，其會指定相對的持續期間。 將訊息加入實體的佇列時，到期就會變成絕對瞬間。 此時，[過期 AtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc)屬性將採用該值[（**排隊時間**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc)[**TimeToLive**](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) + 到生活）。 如果沒有用戶端主動偵聽時，不會強制執行中轉消息上的存留時間 （TTL） 設置。
+任何個別訊息的到期都能透過設定 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 系統屬性來控制，其會指定相對的持續期間。 將訊息加入實體的佇列時，到期就會變成絕對瞬間。 在這段時間， [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc)屬性會採用值[（**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**）](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)。 當沒有任何用戶端正在主動接聽時，不會強制執行代理訊息上的存留時間（TTL）設定。
 
 經過 **ExpiresAtUtc** 瞬間之後，訊息就會變成不適合用於擷取。 到期不會影響目前已鎖定來進行傳遞的訊息；仍會正常處理那些訊息。 如果鎖定到期或已放棄訊息，則到期將會立即生效。
 
@@ -37,9 +37,9 @@ ms.locfileid: "76756329"
 傳送到佇列或主題的所有訊息都受限於預設的到期，其設定於具 [defaultMessageTimeToLive](/azure/templates/microsoft.servicebus/namespaces/queues) 屬性的實體層級，同時也可在建立期間於入口網站中加以設定且稍後進行調整。 預設的到期適用於所有傳送至實體且未明確設定 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) 的訊息。 預設到期也可用來作為 **TimeToLive** 值的上限。 若訊息的 **TimeToLive** 到期比預設值還長，則會在加入佇列之前，以無訊息方式調整為 **defaultMessageTimeToLive** 值。
 
 > [!NOTE]
-> 中轉郵件的預設[TimetoLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)值是[TimeSpan.Max，](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)如果未另行指定。
+> 代理訊息的預設[TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive)值為 TimeSpan，如果未指定則為[Max。](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)
 >
-> 對於消息傳遞實體（佇列和主題），預設過期時間也是[TimeSpan.Max](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)服務匯流排標準和高級層。  對於基本層，預設過期時間是 14 天。
+> 對於訊息實體（佇列和主題），預設到期時間也是 TimeSpan。服務匯流排 standard 和 premium 層的[最大值。](https://docs.microsoft.com/dotnet/api/system.timespan.maxvalue)  基本層的預設到期時間為14天。
 
 您可以藉由設定 [EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enabledeadletteringonmessageexpiration#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) 屬性，或在入口網站中勾選相對的方塊，選擇性地將過期的訊息移到[無效信件佇列](service-bus-dead-letter-queues.md)。 如果將選項保留為已停用，即會卸除過期的訊息。 移至無效信件佇列的過期訊息可以藉由評估訊息代理程式儲存於使用者屬性區段的 [DeadletterReason](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq) 屬性來區分；在此案例中，值為 [TTLExpiredException](service-bus-dead-letter-queues.md#moving-messages-to-the-dlq)。
 
@@ -74,7 +74,7 @@ ms.locfileid: "76756329"
     - 沒有傳送  
     - 沒有對主題的更新  
     - 沒有排定的訊息 
-- 訂用帳戶
+- 訂閱
     - 沒有接收  
     - 沒有對訂用帳戶的更新  
     - 沒有新規則新增到訂用帳戶  

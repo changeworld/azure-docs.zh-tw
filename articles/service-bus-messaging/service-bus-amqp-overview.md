@@ -1,6 +1,6 @@
 ---
-title: Azure 服務匯流排中的 AMQP 1.0 概述
-description: 瞭解 Azure 服務匯流排如何支援高級訊息佇列協定 （AMQP），這是一個開放的標準協定。
+title: Azure 服務匯流排中的 AMQP 1.0 總覽
+description: 瞭解 Azure 服務匯流排如何支援先進訊息佇列通訊協定（AMQP），這是一種開放式標準通訊協定。
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 50d21cfe8136b9c794eae5104bbb34e28f7c1661
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76759307"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>服務匯流排中的 AMQP 1.0 支援
@@ -71,17 +71,17 @@ Azure 服務匯流排中的 AMQP 1.0 支援代表您現在能夠從一組平台�
 
 目前已知下列用戶端程式庫可以使用服務匯流排：
 
-| 語言 | 程式庫 |
+| Language | 程式庫 |
 | --- | --- |
 | Java |Apache Qpid Java 訊息服務 (JMS) 用戶端<br/>IIT Software SwiftMQ Java 用戶端 |
 | C |Apache Qpid Proton-C |
 | PHP |Apache Qpid Proton-PHP |
 | Python |Apache Qpid Proton-Python |
-| C# |AMQP .NET 精簡版 |
+| C# |AMQP .NET Lite |
 
 **圖 2：AMQP 1.0 用戶端程式庫的資料表**
 
-## <a name="summary"></a>總結
+## <a name="summary"></a>[摘要]
 * AMQP 1.0 是一個既開放又可靠的訊息通訊協定，可以用來建置跨平台的混合應用程式。 AMQP 1.0 是一項 OASIS 標準。
 * Azure 服務匯流排和 Service Bus for Windows Server (Service Bus 1.1) 中現可支援 AMQP 1.0。 價格與現有的通訊協定一樣。
 

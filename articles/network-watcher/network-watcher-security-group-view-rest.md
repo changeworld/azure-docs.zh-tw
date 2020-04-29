@@ -1,5 +1,5 @@
 ---
-title: 分析網路安全 - 安全性群組視圖 - Azure REST API
+title: 分析網路安全性-安全性群組視圖-Azure REST API
 titleSuffix: Azure Network Watcher
 description: 本文會說明如何使用 PowerShell，利用安全性群組檢視分析虛擬機器的安全性。
 services: network-watcher
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: c9c76e9c06d4c45a096cff79dac82bb80ebe25d1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840735"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>使用 REST API，利用安全性群組檢視分析虛擬機器的安全性
 
 > [!div class="op_single_selector"]
-> - [電源外殼](network-watcher-security-group-view-powershell.md)
+> - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
@@ -33,11 +33,11 @@ ms.locfileid: "76840735"
 
 ## <a name="before-you-begin"></a>開始之前
 
-在此案例中，您可以呼叫網路監看員 REST API 來取得的虛擬機器安全性群組檢視。 使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 在巧克力的[ARMClient](https://chocolatey.org/packages/ARMClient)的巧克力上被發現
+在此案例中，您可以呼叫網路監看員 REST API 來取得的虛擬機器安全性群組檢視。 使用 ARMclient 透過 PowerShell 呼叫 REST API。 ARMClient 可在 chocolatey 的[ARMClient 上找到 chocolatey](https://chocolatey.org/packages/ARMClient)
 
 此案例假設您已依照[建立網路監看員](network-watcher-create.md)中的步驟建立網路監看員。 此案例也假設已有具有有效虛擬機器的資源群組可供使用。
 
-## <a name="scenario"></a>狀況
+## <a name="scenario"></a>案例
 
 本文涵蓋的案例會擷取有效且已套用指定虛擬機器的安全性規則。
 
@@ -51,7 +51,7 @@ armclient login
 
 執行下列程式碼以傳回虛擬機器。下列程式碼需要變數︰
 
-- **訂閱 Id** - 也可以使用**獲取-Az訂閱**Cmdlet 檢索訂閱 ID。
+- **subscriptionId** -訂用帳戶識別碼也可以使用 get-azsubscription Cmdlet 來**取得**。
 - **resourceGroupName** - 包含虛擬機器的資源群組名稱。
 
 ```powershell

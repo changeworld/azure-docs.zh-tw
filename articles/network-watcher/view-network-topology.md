@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: 675919db55932d3ccc04fd5397f6f673832b4900
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76840565"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>檢視 Azure 虛擬網路的拓撲
@@ -84,17 +84,17 @@ ms.locfileid: "76840565"
 
 您可以在下列步驟中執行命令：
 - 在 Azure Cloud Shell 中，選取位於任何命令右上方的**試試看**。 Azure Cloud Shell 是一個免費的互動式殼層，具有預先安裝和設定的通用 Azure 工具，可與您的帳戶搭配使用。
-- 從您的電腦執行 PowerShell。 如果從電腦運行 PowerShell，本文需要 Azure PowerShell`Az`模組。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
+- 從您的電腦執行 PowerShell。 如果您從電腦執行 PowerShell，本文需要 Azure PowerShell `Az`模組。 執行 `Get-Module -ListAvailable Az` 來了解安裝的版本。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-Az-ps)。 如果您在本機執行 PowerShell，則也需要執行 `Connect-AzAccount` 以建立與 Azure 的連線。
 
 您所使用的帳戶必須具有必要的[權限](required-rbac-permissions.md)。
 
-1. 如果您在要建立拓撲的虛擬網路所在的相同區域中已有網路監看員，請跳至步驟 3。 使用[New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup)創建資源組以包含網路觀察程式。 下列範例會在 *eastus* 區域中建立資源群組：
+1. 如果您在要建立拓撲的虛擬網路所在的相同區域中已有網路監看員，請跳至步驟 3。 建立資源群組，以包含具有[remove-azresourcegroup](/powershell/module/az.Resources/New-azResourceGroup)的網路監看員。 下列範例會在 *eastus* 區域中建立資源群組：
 
     ```azurepowershell-interactive
     New-AzResourceGroup -Name NetworkWatcherRG -Location EastUS
     ```
 
-2. 使用[新 AzNetwork 觀察程式](/powershell/module/az.network/new-aznetworkwatcher)創建網路觀察程式。 下列範例會在 eastus 區域中建立網路監看員：
+2. 使用[new-aznetworkwatcher](/powershell/module/az.network/new-aznetworkwatcher)建立網路監看員。 下列範例會在 eastus 區域中建立網路監看員：
 
     ```azurepowershell-interactive
     New-AzNetworkWatcher `
@@ -102,7 +102,7 @@ ms.locfileid: "76840565"
       -ResourceGroupName NetworkWatcherRG
     ```
 
-3. 使用[獲取-AzNetwork 觀察程式](/powershell/module/az.network/get-aznetworkwatcher)檢索網路觀察程式實例。 下列範例會擷取美國東部區域中的網路監看員：
+3. 使用[new-aznetworkwatcher](/powershell/module/az.network/get-aznetworkwatcher)取得網路監看員實例。 下列範例會擷取美國東部區域中的網路監看員：
 
     ```azurepowershell-interactive
     $nw = Get-AzResource `
@@ -112,7 +112,7 @@ ms.locfileid: "76840565"
       -ResourceGroupName $nw.ResourceGroupName
     ```
 
-4. 檢索具有[獲取網路觀察者拓撲的](/powershell/module/az.network/get-aznetworkwatchertopology)拓撲。 下列範例會擷取資源群組 *MyResourceGroup* 中的虛擬網路的拓撲：
+4. 使用[AzNetworkWatcherTopology](/powershell/module/az.network/get-aznetworkwatchertopology)取得拓撲。 下列範例會擷取資源群組 *MyResourceGroup* 中的虛擬網路的拓撲：
 
     ```azurepowershell-interactive
     Get-AzNetworkWatcherTopology `

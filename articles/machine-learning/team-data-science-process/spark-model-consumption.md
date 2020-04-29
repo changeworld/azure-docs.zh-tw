@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3f02690d7c54581ed80b521e8222d1bd5964c878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76718543"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>實作 Spark 建置機器學習模型
@@ -32,10 +32,10 @@ ms.locfileid: "76718543"
 若要修改此 Jupyter Notebook for Spark 1.6 來與 HDInsight Spark 2.0 叢集搭配使用，請使用[這個檔案](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py)來取代 Python 程式碼檔案。 此程式碼示範如何使用 Spark 2.0 中所建立的模型。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 1. 您需要 Azure 帳戶和 Spark 1.6 (或 Spark 2.0) HDInsight 叢集，才能完成此逐步解說。 請參閱[使用 Azure HDInsight 上的 Spark 的資料科學概觀](spark-overview.md)以取得這些需求。 此主題也包括這裡使用的 NYC 2013 計程車資料的描述，以及如何從 Spark 叢集的 Jupyter Notebook 執行程式碼的指示。 
-2. 通過 Spark 1.6 群集或 Spark 2.0 筆記本電腦[的資料探索和建模](spark-data-exploration-modeling.md)，創建要在此處評分的機器學習模型。 
+2. 使用 Spark 1.6 叢集或 Spark 2.0 筆記本的「[使用 spark 進行資料探索和模型](spark-data-exploration-modeling.md)化」主題，在這裡建立要評分的機器學習服務模型。 
 3. Spark 2.0 Notebook 會針對分類工作使用額外的資料集，即 2011 年和 2012 年知名航空公司準時起飛的資料集。 Notebook 的描述及它們的連結已在包含它們的 GitHub 儲存機制的 [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) 中提供。 此外，此處及連結的 Notebook 內的程式碼皆屬泛型程式碼，而且應該能在任何 Spark 叢集上運作。 若您不是使用 HDInsight Spark，叢集設定和管理步驟可能與這裡顯示的稍有不同。 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "76718543"
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>安裝程式︰儲存體位置、程式庫和預設 Spark 內容
 Spark 也可以讀取和寫入 Azure 儲存體 Blob (WASB)。 如此可使用 Spark 處理該處儲存的任何現有資料，並在 WASB 中再次儲存結果。
 
-若要在 WASB 中儲存模型或檔案，必須正確指定路徑。 可以使用以 *"wasb////"* 開頭的路徑引用附加到 Spark 群集的預設容器。 下列程式碼範例會指定要讀取資料的位置，和將儲存模型輸出的模型儲存體目錄的路徑。 
+若要在 WASB 中儲存模型或檔案，必須正確指定路徑。 附加至 Spark 叢集的預設容器可以使用開頭為： *"wasb///"* 的路徑來參考。 下列程式碼範例會指定要讀取資料的位置，和將儲存模型輸出的模型儲存體目錄的路徑。 
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>在 WASB 中設定儲存位置的目錄路徑
 模型會儲存在：「wasb:///user/remoteuser/NYCTaxi/Models」。 如果未正確設定此路徑，不會載入模型進行評分。
@@ -80,7 +80,7 @@ Spark 也可以讀取和寫入 Azure 儲存體 Blob (WASB)。 如此可使用 Sp
     import datetime
     datetime.datetime.now()
 
-**輸出：**
+**輸出**
 
 datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
@@ -104,7 +104,7 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 
 
 ### <a name="preset-spark-context-and-pyspark-magics"></a>預設 Spark 內容及 PySpark magic
-Jupyter Notebook 所提供的 PySpark 核心有預設的內容。 因此，在開始使用正在開發的應用程式之前，不需要顯式設置 Spark 或 Hive 上下文。 預設情況下，這些上下文可用：
+Jupyter Notebook 所提供的 PySpark 核心有預設的內容。 因此，您不需要明確地設定 Spark 或 Hive 內容，就能開始使用您正在開發的應用程式。 預設會提供這些內容：
 
 * sc - 代表 Spark 
 * sqlContext - 代表 Hive
@@ -112,7 +112,7 @@ Jupyter Notebook 所提供的 PySpark 核心有預設的內容。 因此，在�
 PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 呼叫的特殊命令。 在這些程式碼範例中，就使用了兩個此類型的命令。
 
 * **%%local** 指定後續行所列的程式碼要在本機執行。 程式碼必須是有效的 Python 程式碼。
-* **%%%sql \<-o 變數名稱>** 
+* **%% sql-o \<變數名稱>** 
 * 針對 sqlContext 執行 Hive 查詢。 如果傳遞 -o 參數，則查詢的結果會當做 Pandas 資料框架，保存在 %%local Python 內容中。
 
 如需關於 Jupyter Notebook 核心，以及其所提供的預先定義 "magics" 的詳細資訊，請參閱 [HDInsight 上的 HDInsight Spark Linux 叢集可供 Jupyter Notebook 使用的核心](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)。
@@ -180,7 +180,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**輸出：**
+**輸出**
 
 執行上述儲存格所花費的時間︰46.37 秒
 
@@ -252,12 +252,12 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**輸出：**
+**輸出**
 
 執行上述儲存格所花費的時間︰5.37 秒
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>使用功能陣列建立 RDD 物件以輸入至模型
-本節包含程式碼，示範如何將分類的文字資料索引為 RDD 物件並加以單次編碼，以用來訓練及測試 MLlib 羅吉斯迴歸和樹狀結構型模型。 已編製索引的資料是儲存在 [彈性分散式資料集 (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) 物件中。 RDD 是 Spark 中的基本抽象。 RDD 物件代表不可變、資料分割、可與 Spark 平行操作的元素集合。
+本節包含程式碼，示範如何將分類的文字資料索引為 RDD 物件並加以單次編碼，以用來訓練及測試 MLlib 羅吉斯迴歸和樹狀結構型模型。 已編製索引的資料是儲存在 [彈性分散式資料集 (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) 物件中。 Rdd 是 Spark 中的基本抽象概念。 RDD 物件代表不可變、資料分割、可與 Spark 平行操作的元素集合。
 
 它也包含程式碼，顯示如何使用 MLlib 提供的 `StandardScalar` 來調整資料，用於使用隨機梯度下降法 (SGD) 的線性迴歸，此為訓練廣泛的機器學習服務模型的常用演算法。 [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) 是用來調整單位變異數的特徵。 調整功能，也稱為資料正規化，以確保具廣泛分散值的功能在目標函式中沒有過多權重。 
 
@@ -326,7 +326,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**輸出：**
+**輸出**
 
 執行上述儲存格所花費的時間︰11.72 秒
 
@@ -357,7 +357,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**輸出：**
+**輸出**
 
 執行上述儲存格所花費的時間︰19.22 秒
 
@@ -390,7 +390,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**輸出：**
+**輸出**
 
 執行上述儲存格所花費的時間︰16.63 秒
 
@@ -436,16 +436,16 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**輸出：**
+**輸出**
 
 執行上述儲存格所花費的時間︰31.07 秒
 
 ## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>評分分類和迴歸的漸層停駐提升樹狀結構模型
 本節的程式碼示範如何從 Azure blob 儲存體載入分類和迴歸的漸層停駐提升樹狀結構模型、使用標準分類器和迴歸措施來評分其效能，然後將結果存回 blob 儲存體。 
 
-**spark.mllib**支援 GBTS 進行二進位分類和回歸，使用連續和分類功能。 
+**mllib**支援二元分類的 gbt，以及使用連續和分類功能的回歸。 
 
-[漸變提升樹](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)（GBTS） 是決策樹的合奏。 GBTS 以反覆運算方式訓練決策樹，以儘量減少損失函數。 GBTS 可以處理分類要素，不需要要素縮放，並能夠捕獲非線性和要素交互。 此演算法還可用於多類分類設置。
+[梯度提升樹狀](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts)結構（gbt）是整體的決策樹。 GBT 反復定型決策樹，將損失函式降至最低。 GBT 可以處理分類功能、不需要調整功能，而且能夠捕捉非非線性和功能互動。 此演算法也可以用於多元分類設定。
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -486,7 +486,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**輸出：**
+**輸出**
 
 執行上述儲存格所花費的時間︰14.6 秒
 
@@ -509,7 +509,7 @@ PySpark 核心提供一些預先定義的「magic」，這是您可以使用 %% 
     print "BoostedTreeRegressionFileLoc: " + btregressionfilename;
 
 
-**輸出：**
+**輸出**
 
 logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt
 
@@ -524,10 +524,10 @@ BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-031
 BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>透過 Web 介面使用 Spark 模型
-Spark 提供一個機制，透過 REST 介面 (包含稱為 Livy 的元件) 從遠端提交批次工作或互動式查詢。 Livy 預設在 HDInsight Spark 叢集上啟用。 有關利維的詳細資訊，請參閱：[使用 Livy 遠端提交 Spark 作業](../../hdinsight/spark/apache-spark-livy-rest-interface.md)。 
+Spark 提供一個機制，透過 REST 介面 (包含稱為 Livy 的元件) 從遠端提交批次工作或互動式查詢。 Livy 預設在 HDInsight Spark 叢集上啟用。 如需 Livy 的詳細資訊，請參閱：[使用 Livy 從遠端提交 Spark 作業](../../hdinsight/spark/apache-spark-livy-rest-interface.md)。 
 
 您可以使用 Livy 從遠端提交作業，其批次批分儲存在 Azure blob 中的檔案，然後將結果寫入另一個 blob。 若要這樣做，需要將 Python 指令碼從   
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上傳至 Spark 叢集的 blob。 您可以使用類似 **Microsoft Azure 儲存體總管**或 **AzCopy** 的工具，將指令碼複製到叢集 blob。 在我們的案例中，我們將腳本上載到***wasb:///example/python/ConsumeGBNYCReg.py***。   
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) 上傳至 Spark 叢集的 blob。 您可以使用類似 **Microsoft Azure 儲存體總管**或 **AzCopy** 的工具，將指令碼複製到叢集 blob。 在我們的案例中，我們將腳本上傳至***wasb:///example/python/ConsumeGBNYCReg.py***。   
 
 > [!NOTE]
 > 您可在入口網站上，為 Spark 叢集關聯的儲存體帳戶尋找需要的存取金鑰。 
@@ -580,7 +580,7 @@ Spark 提供一個機制，透過 REST 介面 (包含稱為 Livy 的元件) 從�
 
 如果您偏好程式碼可用的用戶端體驗，請使用 [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) 來叫用 Spark 批次評分，方法是在 **Logic Apps Designer** 上定義 HTTP 動作並設定它的參數。 
 
-* 從 Azure 門戶中，通過選擇 **[新** -> **Web + 移動** -> **邏輯應用**》，創建新的邏輯應用。 
+* 從 Azure 入口網站，選取 [ **+ 新增** -> ] [**Web +** -> 行動] [**邏輯應用程式**] 來建立新的邏輯應用程式。 
 * 若要引進 **Logic Apps Designer**，請輸入邏輯應用程式和 App Service 方案的名稱。
 * 選取 HTTP 動作，然後輸入下圖顯示的參數︰
 
