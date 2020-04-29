@@ -1,57 +1,57 @@
 ---
-title: 服務設定 - QnA 製造商
-description: 瞭解如何配置資源以及在哪裡配置資源。
+title: 服務設定-QnA Maker
+description: 瞭解設定資源的方式和位置。
 ms.topic: reference
 ms.date: 02/21/2020
 ms.openlocfilehash: 3be32d1778604121c2acac88415cbfbc4bdbca3d
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804255"
 ---
 # <a name="service-configuration"></a>服務設定
 
-QnA Maker 使用多個 Azure 資源(服務),包括認知搜索、應用服務、應用服務計劃和應用程式見解。
+QnA Maker 使用數個 Azure 資源（服務），包括認知搜尋、App Service、App Service 方案和 Application Insights。
 
-下面列出了 QnA Maker 支援的這些設置的所有自定義項。
+QnA Maker 所支援的這些設定的所有自訂，如下所示。
 
 ## <a name="app-service"></a>App Service 方案
 
-QnA Maker 使用應用服務提供[生成應答 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)使用的查詢運行時。
+QnA Maker 使用 App Service 來提供[GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)所使用的查詢執行時間。
 
 
-這些設置在 Azure 門戶中可用於應用服務。 這些設定可通過選擇 **「設定」 (** 然後 **「設定」 來**提供。
+這些設定適用于 App Service 的 Azure 入口網站。 您可以依序選取 [**設定**] 和 [設定] 來取得**設定。**
 
-您可以通過"應用程式設置"清單設置單個設置,也可以通過選擇 **「高級編輯**」來修改多個設置。
+您可以透過 [應用程式設定] 清單來設定個別設定，或選取 [ **Advanced edit**] 來修改數個設定。
 
 |資源|設定|
 |--|--|
-|Azure 搜尋管理金鑰|認知搜尋 - 用於 QnA 儲存和 Ranker #1|
-|Azure 搜尋名稱|認知搜尋 - 用於 QnA 儲存和 Ranker #1|
-|預設答案|找不到符合項目時的應答文字|
-|使用者AppInsightsAppId|聊天日誌和遙測|
-|使用者套用解鍵|聊天日誌和遙測|
-|使用者套用解名稱|聊天日誌和遙測|
+|AzureSearchAdminKey|認知搜尋-用於 QnA 配對儲存體和 Ranker #1|
+|AzureSearchName|認知搜尋-用於 QnA 配對儲存體和 Ranker #1|
+|DefaultAnswer|找不到相符的答案文字|
+|UserAppInsightsAppId|聊天記錄和遙測|
+|UserAppInsightsKey|聊天記錄和遙測|
+|UserAppInsightsName|聊天記錄和遙測|
 
-[瞭解如何將更改認知搜索服務](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)添加到服務中。
+瞭解[如何將您的認知搜尋服務變更](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)為您的服務。
 
-完成更改後,需要從 Azure 門戶的 **「概述」** 頁**重新啟動**服務。
+當您完成變更之後，您必須從 Azure 入口網站的 [**總覽**] 頁面**重新開機**服務。
 
 ## <a name="qna-maker-service"></a>QnA Maker 服務
 
-QnA Maker 服務為以下使用者提供配置,以便協作處理單個 QnA Maker 服務及其所有知識庫。
+QnA Maker 服務會提供設定，讓下列使用者在單一 QnA Maker 服務及其所有知識庫上共同作業。
 
-[瞭解如何提供服務的協作者](./how-to/collaborate-knowledge-base.md)。
+瞭解[如何將](./how-to/collaborate-knowledge-base.md)共同作業者新增至您的服務。
 
 ## <a name="application-insights"></a>Application Insights
 
-應用程式見解沒有特定於 QnA 製造商的配置設置。
+Application Insights 沒有 QnA Maker 特有的設定。
 
 ## <a name="app-service-plan"></a>App Service 方案
 
-應用服務計劃沒有特定於 QnA 製造商的配置設置。
+App Service 計畫沒有 QnA Maker 特有的設定。
 
 ## <a name="next-steps"></a>後續步驟
 
-詳細瞭解要匯入知識庫的文件與網址的[格式](reference-document-format-guidelines.md)。
+深入瞭解您想要匯入知識庫之檔和 Url 的[格式](reference-document-format-guidelines.md)。

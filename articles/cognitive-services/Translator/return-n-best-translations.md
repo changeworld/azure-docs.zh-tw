@@ -1,7 +1,7 @@
 ---
-title: 返回 N- 最佳翻譯 - 翻譯文本
+title: 傳回 N-最佳翻譯-翻譯工具文字
 titleSuffix: Azure Cognitive Services
-description: 使用翻譯人員文本 API 返回 N- 最佳翻譯。
+description: 使用翻譯工具文字 API 傳回 N 個最佳的翻譯。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
 ms.openlocfilehash: eff25877165ac365e0af77651147fcdd1eebe294
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73837250"
 ---
 # <a name="how-to-return-n-best-translations"></a>如何傳回前 N 名最佳翻譯

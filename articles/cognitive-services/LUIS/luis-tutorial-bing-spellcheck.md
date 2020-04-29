@@ -1,5 +1,5 @@
 ---
-title: 更拼字字 ─ LUIS
+title: 更正拼錯的文字-LUIS
 titleSuffix: Azure Cognitive Services
 description: 將 Bing 拼字檢查 API V7 新增至 LUIS 端點查詢，可更正語句中拼錯的字組。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: a1e43cfc55611c432652055db2ac8411d835608b
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80396824"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>使用 Bing 拼字檢查更正拼錯的字組
@@ -36,7 +36,7 @@ ms.locfileid: "80396824"
 ## <a name="create-endpoint-key"></a>建立端點金鑰
 如果您的免費金鑰過期，請建立端點金鑰。
 
-1. 登入 Azure[門戶](https://portal.azure.com)。 
+1. 登入 [Azure 入口網站](https://portal.azure.com)。 
 
 2. 在左上角選取 [建立資源]****。
 
@@ -96,12 +96,12 @@ There are two places in LUIS to use the key. The first is in the [test panel](lu
 
 ## <a name="ignore-spelling-mistakes"></a>忽略拼字錯誤
 
-如果不想使用必應拼寫檢查 API v7 服務,則需要添加正確且不正確的拼寫。 
+如果您不想要使用 Bing 拼寫檢查 API v7 服務，則必須新增正確和不正確的拼寫。 
 
-兩種解決方案是:
+有兩種解決方案：
 
-* 標記具有所有不同拼寫的範例陳述,以便 LUIS 可以學習正確的拼寫以及拼寫錯誤。 相較於使用拼字檢查工具，此選項需要更多標記工作。
-* 建立包含單詞所有變體的短語清單。 使用此解決方案,您無需在示例陳述中標記單詞變體。 
+* 標籤範例語句，其中包含所有不同的拼寫，讓 LUIS 可以學習正確的拼寫及打字錯誤。 相較於使用拼字檢查工具，此選項需要更多標記工作。
+* 建立包含單字所有變化的片語清單。 透過此解決方案，您不需要在範例語句中標記單字變化。 
 
 ## <a name="publishing-page"></a>發佈頁面
 [發佈](luis-how-to-publish-app.md) 頁面具有 **啟用 Bing 拼字檢查工具** 核取方塊。 這方便於建立金鑰並理解如何變更端點 URL。 您仍然必須使用正確的端點參數，以便更正每個語句的拼字。 

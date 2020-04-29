@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
 ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072812"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>設定您的自訂自動建議體驗
@@ -36,7 +36,7 @@ ms.locfileid: "74072812"
 
 ## <a name="add-your-own-suggestions"></a>新增您自己的建議
 
-若要新增您自己的查詢字串建議，請將它們新增到 [使用者定義建議]**** 底下的清單。 在清單中添加建議後，按輸入鍵或按一下**+** 該圖示。 您可以用任何語言指定建議。 您可以新增最多 5000 個查詢字串建議。
+若要新增您自己的查詢字串建議，請將它們新增到 [使用者定義建議]**** 底下的清單。 在清單中新增建議之後，按下 enter 鍵或按一下**+** 圖示。 您可以用任何語言指定建議。 您可以新增最多 5000 個查詢字串建議。
 
 ## <a name="upload-suggestions"></a>上傳建議
 
@@ -48,7 +48,7 @@ ms.locfileid: "74072812"
 
 ## <a name="block-suggestions"></a>封鎖建議
 
-如果包含 Bing 的建議，您可以新增不希望 Bing 傳回的搜尋查詢字串清單。 若要新增封鎖的查詢字串，請按一下 [顯示封鎖的建議]****。 將查詢字串添加到清單中，然後按輸入鍵或按一下**+** 該圖示。 您可以新增最多 50 個封鎖的查詢字串。
+如果包含 Bing 的建議，您可以新增不希望 Bing 傳回的搜尋查詢字串清單。 若要新增封鎖的查詢字串，請按一下 [顯示封鎖的建議]****。 將查詢字串新增至清單，然後按 enter 鍵或按一下**+** 圖示。 您可以新增最多 50 個封鎖的查詢字串。
 
 
 

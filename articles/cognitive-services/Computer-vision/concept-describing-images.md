@@ -1,5 +1,5 @@
 ---
-title: 圖像描述 - 電腦視覺
+title: 影像描述-電腦視覺
 titleSuffix: Azure Cognitive Services
 description: 電腦視覺 API 的影像描述功能相關概念。
 services: cognitive-services
@@ -12,15 +12,15 @@ ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 7bf95a2b49608ef1f031a3b443db92b42cdae624
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80244700"
 ---
 # <a name="describe-images-with-human-readable-language"></a>描述映包含人類可讀語言的影像
 
-電腦視覺可以分析影像，並產生人類看得懂的句子來描述其內容。 該演算法實際上根據不同的視覺特徵返回多個描述，並且每個描述都給出一個置信度分數。 最後的輸出是從最高到最低信賴分數排序的描述清單。
+電腦視覺可以分析影像，並產生人類看得懂的句子來描述其內容。 此演算法實際上會根據不同的視覺特徵傳回數個描述，而每個描述都會獲得信賴分數。 最後的輸出是從最高到最低信賴分數排序的描述清單。
 
 ## <a name="image-description-example"></a>影像描述範例
 
@@ -58,11 +58,11 @@ ms.locfileid: "80244700"
 
 ## <a name="use-the-api"></a>使用 API
 
-圖像描述功能是[分析圖像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包括在`Description`**視覺化功能**查詢參數中。 然後，當您獲得完整的 JSON 回應時，只需分析節的內容的`"description"`字串。
+影像描述功能是[分析影像](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API 的一部分。 您可以透過原生 SDK 或 REST 呼叫來呼叫此 API。 包含`Description`在**visualFeatures**查詢參數中。 然後，當您取得完整的 JSON 回應時，只要剖析`"description"`區段內容的字串即可。
 
 * [快速入門：電腦視覺 .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-* [快速入門：分析圖像（REST API）](./quickstarts/csharp-analyze.md)
+* [快速入門：分析影像（REST API）](./quickstarts/csharp-analyze.md)
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解[標記圖像](concept-tagging-images.md)和[分類圖像](concept-categorizing-images.md)的相關概念。
+瞭解[標記影像](concept-tagging-images.md)和[分類影像](concept-categorizing-images.md)的相關概念。

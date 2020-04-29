@@ -1,34 +1,34 @@
 ---
-title: 匯入文件格式指南 - QnA 製造商
-description: 瞭解如何使用 URL 類型導入和創建 QnA 對。
+title: 匯入檔案格式方針-QnA Maker
+description: 瞭解 Url 類型如何用來匯入和建立 QnA 組。
 ms.topic: reference
 ms.date: 04/06/2020
 ms.openlocfilehash: 799e85e2200d3caa29c9b76bc57a62fc883d246d
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80804328"
 ---
-# <a name="format-guidelines-for-imported-documents-and-urls"></a>匯入文件與網址的格式指南
+# <a name="format-guidelines-for-imported-documents-and-urls"></a>匯入檔和 Url 的格式方針
 
-查看這些格式設置指南,以獲得內容的最佳結果。
+請參閱這些格式設定指導方針，以取得您內容的最佳結果。
 
 ## <a name="formatting-considerations"></a>格式化考量
 
-匯入檔案或網址 後,QnA Maker 會以[標記格式](https://en.wikipedia.org/wiki/Markdown)轉換和儲存您的內容。 轉換過程在文字中加入新行,如`\n\n`。 瞭解標記格式可説明您瞭解轉換後的內容並管理知識庫內容。
+匯入檔案或 URL 之後，QnA Maker 會以[markdown 格式](https://en.wikipedia.org/wiki/Markdown)轉換並儲存您的內容。 轉換程式會在文字中加入新行，例如`\n\n`。 Markdown 格式的知識可協助您瞭解已轉換的內容，並管理您的知識庫內容。
 
-如果直接在知識庫中添加或編輯內容,請使用**標記格式**創建豐富的文本內容或更改答案中已有的標記格式內容。 QnA Maker 支援大部分標記格式,為您的內容帶來豐富的文本功能。 但是,用戶端應用程式(如聊天機器人)可能不支援相同的標記格式集。 測試客戶端應用程式的顯示答案非常重要。
+如果您直接在知識庫中新增或編輯內容，請使用**markdown 格式**來建立 rtf 文字內容，或變更已在解答中的 markdown 格式內容。 QnA Maker 支援許多 markdown 格式，可將豐富的文字功能帶入您的內容。 不過，用戶端應用程式（例如聊天機器人）可能不支援相同的一組 markdown 格式。 測試用戶端應用程式的答案顯示是很重要的。
 
-查看[內容類型和範例](./Concepts/content-types.md#file-and-url-data-types)的完整清單。
+如需[內容類型和範例](./Concepts/content-types.md#file-and-url-data-types)的完整清單，請參閱。
 
-## <a name="basic-document-formatting"></a>基本文件格式
+## <a name="basic-document-formatting"></a>基本檔案格式
 
-QnA Maker 根據視覺線索(如:
+QnA Maker 會根據視覺線索，識別檔案中的區段和小節和關聯性，例如：
 
 * 字型大小
 * 字型樣式
-* 編號
+* 低
 * 色彩
 
 ## <a name="product-manuals"></a>產品手冊
@@ -44,7 +44,7 @@ QnA Maker 根據視覺線索(如:
 
 ## <a name="brochures-guidelines-papers-and-other-files"></a>摺頁冊、指導方針、白皮書及其他檔案
 
-許多其他類型的文件經過處理後也能產生問答組合，但前提是這些文件要有明確的結構和版面配置。 其中包括:摺頁冊、指南、報告、白皮書、科學論文、政策、書籍等。[在此處](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)查看示例。
+許多其他類型的文件經過處理後也能產生問答組合，但前提是這些文件要有明確的結構和版面配置。 其中包括：摺頁冊、指導方針、報告、白皮書、科學論文、原則、書籍等。請參閱[這裡](https://qnamakerstore.blob.core.windows.net/qnamakerdata/docs/Manage%20Azure%20Blob%20Storage.docx)的範例。
 
 以下是沒有索引的半結構化文件範例：
 
@@ -72,7 +72,7 @@ Answer2
 
 採用結構化 .txt**、.tsv** 或 .xls** 檔案形式的 QnA 也可上傳至 QnA Maker，以便建立或擴大知識庫。  這些檔案可以是純文字，也可以具有 RTF 或 HTML 的內容。
 
-| 問題  | Answer  | 中繼資料(1個鍵:1 個值) |
+| 問題  | Answer  | 中繼資料（1個索引鍵：1個值） |
 |-----------|---------|-------------------------|
 | 問題 1 | 解答 1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 問題 2 | 解答 2 |      `Key:Value`           |
@@ -85,35 +85,35 @@ Answer2
 
  ![知識庫的結構化 QnA Excel 範例](./media/qnamaker-concepts-datasources/structured-qna-xls.png)
 
-### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Excel 檔中單一答案的備用問題範例
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Excel 檔案中單一答案的替代問題範例
 
-下面是結構化 QnA *.xls*檔的範例,其中有幾個備用問題可供單個答案回答:
+以下是結構化 QnA *.xls*檔案的範例，其中單一答案有數個替代問題：
 
- ![Excel 檔中單一答案的備用問題範例](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+ ![Excel 檔案中單一答案的替代問題範例](./media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
 
-匯入檔後,問答對位於知識庫中,如下所示:
+匯入檔案之後，問與答配對會在知識庫中，如下所示：
 
- ![匯入知識庫的單一答案的備用問題的屏幕截圖](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
+ ![匯入知識庫之單一回應的替代問題螢幕擷取畫面](./media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
 ## <a name="structured-data-format-through-import"></a>透過匯入的結構化資料格式
 
 匯入知識庫後，將會取代現有知識庫的內容。 匯入時必須要有包含資料來源資訊的結構化 .tsv 檔案。 這項資訊可協助 QnA Maker 將問答組分組，並將其歸於特定資料來源。
 
-| 問題  | Answer  | 來源| 中繼資料(1個鍵:1 個值) |
+| 問題  | Answer  | 來源| 中繼資料（1個索引鍵：1個值） |
 |-----------|---------|----|---------------------|
 | 問題 1 | 解答 1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 問題 2 | 解答 2 | 編輯|    `Key:Value`       |
 
 <a href="#formatting-considerations"></a>
 
-## <a name="multi-turn-document-formatting"></a>多轉文件格式
+## <a name="multi-turn-document-formatting"></a>多回合檔案格式設定
 
-* 使用標題和子標題表示層次結構。 例如,您可以 h1 表示父 QnA 和 h2 以表示應作為提示符的 QnA。 使用小標題大小表示後續層次結構。 不要使用樣式、顏色或其他機制來暗示文檔中的結構,QnA Maker 不會提取多轉提示。
-* 標題的第一個字元必須大寫。
-* 不要用問號結束標題。 `?`
+* 使用標題和子標題來表示階層。 例如，您可以利用 h1 來表示父 QnA 和 h2，以表示應該當做提示的 QnA。 使用 [小標題大小] 來表示後續的階層。 請勿使用樣式、色彩或其他一些機制來表示檔中的結構，QnA Maker 不會解壓縮多回合提示。
+* 標題的第一個字元必須是大寫。
+* 不要結束具有問號的標題`?`。
 
-**範例文件**:<br>[表面專業版(多cx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[康托索優勢 (多 cx)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[康托索福利 (pdf)](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
+**範例檔**：<br>[Surface Pro （.docx）](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)<br>[Contoso 權益（.docx）](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.docx)<br>[Contoso 權益（pdf）](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/Multiturn-ContosoBenefits.pdf)
 
 ## <a name="next-steps"></a>後續步驟
 
-檢視[內容類型與範例](./Concepts/content-types.md#file-and-url-data-types)的完整清單
+請參閱[內容類型和範例](./Concepts/content-types.md#file-and-url-data-types)的完整清單

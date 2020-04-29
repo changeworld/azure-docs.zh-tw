@@ -1,65 +1,65 @@
 ---
 title: 改善知識庫 - QnA Maker
-description: 通過積極學習提高知識庫的品質。 審核、接受或拒絕,添加而不刪除或更改現有問題。
+description: 利用主動式學習來改善知識庫的品質。 在不移除或變更現有問題的情況下，進行審查、接受或拒絕、新增。
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756730"
 ---
-# <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>在知識庫中接受主動學習建議的問題
+# <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知識庫中的主動式學習建議問題
 
 
 <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>
 
-"活動學習"在批准建議後更改知識庫或搜索服務,然後保存並訓練。 如果您批准該建議,它將作為備用問題添加。
+當您核准建議之後，主動式學習會改變知識庫或搜尋服務，然後儲存並定型。 如果您核准建議，則會將其新增為替代的問題。
 
 ## <a name="turn-on-active-learning"></a>開啟主動式學習
 
-要檢視建議的問題,您必須為 QnA Maker 資源[開啟主動學習](use-active-learning.md)。
+若要查看建議的問題，您必須為您的 QnA Maker 資源[開啟主動式學習](use-active-learning.md)。
 
-## <a name="view-suggested-questions"></a>檢視建議的問題
+## <a name="view-suggested-questions"></a>查看建議的問題
 
-1. 要查看建議的問題,在 **「編輯**知識庫」頁上,選擇 **「查看選項**」,然後選擇 **「顯示活動學習建議**」 。。
+1. 若要查看建議的問題，請在 [**編輯**知識庫] 頁面上，選取 [**視圖選項**]，然後選取 [**顯示主動式學習建議**]。
 
-    [![在門戶的"編輯"部分,選擇"顯示建議"以查看活動學習的新問題備選方案。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
+    [![在入口網站的 [編輯] 區段上，選取 [顯示建議]，以查看主動式學習的新問題替代方案。](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. 使用問答對篩選知識庫,通過選擇 **「按建議篩選」** 來僅顯示建議。
+1. 藉由選取 [**依建議篩選**]，篩選具有問題和答案配對的知識庫，僅顯示建議。
 
-    [![使用「按建議篩選」切換僅查看活動學習建議的問題備選方案。](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
+    [![使用 [依建議篩選] 切換，即可只查看主動式學習的建議問題替代方案。](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. 每個 QnA 對都建議使用複選標記的新問題備`✔`選方案 ,以接受`x`問題或拒絕 建議。 選取核取記號可新增問題。
+1. 每個 QnA 組都會以核取記號來建議新的問題`✔`替代專案，以接受問題或`x`拒絕建議。 選取核取記號可新增問題。
 
-    [![通過選擇綠色複選標記或紅色刪除標記,選擇或拒絕活動學習建議的問題備選方案。](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
+    [![選取或拒絕主動式學習的建議問題，方法是選取綠色核取記號或紅色刪除標記。](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
-    您可以通過選擇 **'或****'拒絕**上下文工具列中的所有建議'來新增或刪除_所有建議_。
+    您可以在內容相關工具列中選取 [全部**新增**] 或 [**全部拒絕**]，來新增或刪除_所有建議_。
 
 1. 選取 [儲存並訓練]****，以儲存對知識庫所做的變更。
 
-1. 選擇 **「發布」** 以允許從[生成應答 API](metadata-generateanswer-usage.md#generateanswer-request-configuration)中提供更改。
+1. 選取 [**發佈**]，以允許可從[GenerateAnswer API](metadata-generateanswer-usage.md#generateanswer-request-configuration)取得變更。
 
-    當 5 個或更多類似的查詢被群集時,每 30 分鐘,QnA Maker 會建議您接受或拒絕其他問題。
+    當有5個或更多類似的查詢叢集化時，每隔30分鐘 QnA Maker 建議您接受或拒絕的替代問題。
 
 
 <a name="#score-proximity-between-knowledge-base-questions"></a>
 
-### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>使用來自自動程式產生應答和訓練 API 的架構結構流程
+### <a name="architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot"></a>使用 GenerateAnswer 和從 bot 訓練 Api 的架構流程
 
-自動程式或其他用戶端應用程式應使用以下體系結構串流來使用活動學習:
+Bot 或其他用戶端應用程式應該使用下列架構流程來使用主動式學習：
 
-* Bot 使用生成應答 API[從知識庫中獲取答案](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers),使用`top`屬性獲取多個答案。
-* 機器人確定顯示式回饋:
-    * 使用您自己的[自定義業務邏輯](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user),過濾掉低分數。
-    * 在自動程式或客戶端應用程式中,顯示使用者可能的答案清單,並獲取使用者選擇的答案。
-* 機器人使用[訓練 API](#train-api)[會選擇的答案傳送到 QnA 製造商](#bot-framework-sample-code)。
+* Bot 會透過 GenerateAnswer API[從知識庫取得答案](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)，並使用`top`屬性來取得一些答案。
+* Bot 會決定明確的意見反應：
+    * 使用您自己的[自訂商務邏輯](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)，篩選出低分數。
+    * 在 bot 或用戶端應用程式中，顯示使用者可能的解答清單，並取得使用者選取的答案。
+* Bot 會使用[訓練 API](#train-api)[將選取的回應傳送回 QnA Maker](#bot-framework-sample-code) 。
 
 
-### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>使用「產生應答」請求中的頂部屬性取得多個符合的答案
+### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>使用 GenerateAnswer 要求中的 top 屬性來取得數個相符的答案
 
-向 QnA Maker 提交問題以進行回答時`top`,JSON 正文的屬性將設置要返回的答案數。
+提交問題給 QnA Maker 以取得解答時，JSON 主體`top`的屬性會設定要傳回的答案數目。
 
 ```json
 {
@@ -69,9 +69,9 @@ ms.locfileid: "80756730"
 }
 ```
 
-### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>使用分數屬性以及業務邏輯取得答案清單以顯示使用者
+### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>使用分數屬性和商務邏輯來取得顯示使用者的答案清單
 
-當用戶端應用程式(如聊天機器人)收到回應時,將返回前3個問題。 使用`score`屬性分析分數之間的鄰近程度。 此鄰近範圍由您自己的業務邏輯決定。
+當用戶端應用程式（例如聊天機器人）收到回應時，就會傳回前3個問題。 使用`score`屬性來分析分數之間的近距離。 這個鄰近範圍是由您自己的商務邏輯所決定。
 
 ```json
 {
@@ -112,13 +112,13 @@ ms.locfileid: "80756730"
 
 ## <a name="client-application-follow-up-when-questions-have-similar-scores"></a>用戶端應用程式在問題具有類似分數時的後續動作
 
-用戶端應用程式顯示問題,並允許使用者選擇最代表其意圖_的單一問題_。
+您的用戶端應用程式會顯示問題，並提供選項讓使用者選取最能代表其意圖_的單一問題_。
 
-使用者選擇現有問題之一後,用戶端應用程式將使用QnAMaker的火車API將使用者的選擇作為反饋發送。 此反饋完成活動學習反饋迴圈。
+當使用者選取其中一個現有的問題時，用戶端應用程式會使用 QnA Maker 的訓練 API，將使用者的選擇傳送至意見反應。 此意見反應會完成主動式學習回饋迴圈。
 
 ## <a name="train-api"></a>將 API 定型
 
-主動學習反饋通過培訓 API POST 請求發送給 QnA 製造商。 API 簽章是:
+使用訓練 API POST 要求，將主動式學習意見反應傳送至 QnA Maker。 API 簽章為：
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train
@@ -129,22 +129,22 @@ Content-Type: application/json
 
 |HTTP 要求屬性|名稱|類型|目的|
 |--|--|--|--|
-|網址路由參數|知識庫識別碼|字串|測試您知識庫的 GUID。|
-|自訂子域|QnAMaker 資源名稱|字串|資源名稱用作QnAMaker的自定義子域。 在發佈知識庫后,"設置"頁上提供了此功能。 它被列為`host`。|
-|頁首|Content-Type|字串|傳送至 API 的本文媒體類型。 預設值為:`application/json`|
+|URL 路由參數|知識庫識別碼|字串|測試您知識庫的 GUID。|
+|自訂子域|QnAMaker 資源名稱|字串|資源名稱會用來做為 QnA Maker 的自訂子域。 這會在您發佈知識庫之後的 [設定] 頁面上提供。 它會列為`host`。|
+|頁首|Content-Type|字串|傳送至 API 的本文媒體類型。 預設值為：`application/json`|
 |頁首|授權|字串|您的端點金鑰 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
-|張貼本文|JSON 物件|JSON|培訓反饋|
+|張貼本文|JSON 物件|JSON|訓練意見反應|
 
-JSON 正文具有多個設定:
+JSON 主體有數個設定：
 
-|JSON 本文屬性|類型|目的|
+|JSON 主體屬性|類型|目的|
 |--|--|--|--|
-|`feedbackRecords`|array|回饋清單。|
-|`userId`|字串|接受建議問題的人員的用戶 ID。 使用者 ID 格式由您決定。 例如,電子郵件地址可以是體系結構中的有效使用者 ID。 選擇性。|
-|`userQuestion`|字串|用戶查詢的確切文本。 必要。|
-|`qnaID`|number|問題的 ID,在[生成答案回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
+|`feedbackRecords`|array|意見反應清單。|
+|`userId`|字串|接受建議問題之人員的使用者識別碼。 使用者識別碼格式是由您負責。 例如，電子郵件地址可以是您架構中的有效使用者識別碼。 選擇性。|
+|`userQuestion`|字串|使用者查詢的確切文字。 必要。|
+|`qnaID`|number|問題的識別碼，可在[GenerateAnswer 回應](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到。 |
 
-JSON 正文的示例如下所示:
+範例 JSON 主體如下所示：
 
 ```json
 {
@@ -158,13 +158,13 @@ JSON 正文的示例如下所示:
 }
 ```
 
-成功回應返回狀態為 204,沒有 JSON 回應機構。
+成功的回應會傳回狀態204，而且不會傳回 JSON 回應主體。
 
-### <a name="batch-many-feedback-records-into-a-single-call"></a>將許多回饋記錄批次處理為單一通話
+### <a name="batch-many-feedback-records-into-a-single-call"></a>將許多意見反應記錄批次成單一呼叫
 
-在用戶端應用程式中(如自動程式),可以存儲數據,然後在`feedbackRecords`陣列中的單個 JSON 正文中發送許多記錄。
+在用戶端應用程式（例如 bot）中，您可以儲存資料，然後在`feedbackRecords`陣列中的單一 JSON 主體中傳送許多記錄。
 
-JSON 正文的示例如下所示:
+範例 JSON 主體如下所示：
 
 ```json
 {
@@ -192,18 +192,18 @@ JSON 正文的示例如下所示:
 
 <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>
 
-## <a name="bot-framework-sample-code"></a>機器人框架範例代碼
+## <a name="bot-framework-sample-code"></a>Bot framework 範例程式碼
 
-如果用戶的查詢應用於活動學習,則自動程式框架代碼需要調用訓練 API。 有兩段代碼要編寫:
+如果使用者的查詢應該用於主動式學習，您的 bot framework 程式碼必須呼叫訓練 API。 有兩段程式碼可以撰寫：
 
-* 確定是否應將查詢用於活動學習
-* 將查詢傳送到 QnA 製造商的列車 API 以進行主動學習
+* 判斷查詢是否應該用於主動式學習
+* 將查詢傳送回 QnA Maker 的訓練 API 以進行主動式學習
 
-在[Azure 機器人示例中](https://aka.ms/activelearningsamplebot),這兩個活動都已程式設計。
+在[Azure Bot 範例](https://aka.ms/activelearningsamplebot)中，這兩個活動都已經過編寫。
 
-### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>使用機器人架構 4.x 訓練 API 的範例 C# 程式碼
+### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>使用 Bot Framework 4.x 訓練 API 的範例 c # 程式碼
 
-以下代碼說明了如何使用訓練 API 將資訊發送回 QnA 製造商。
+下列程式碼說明如何使用定型 API 將資訊傳送回 QnA Maker。
 
 ```csharp
 public class FeedbackRecords
@@ -264,9 +264,9 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 }
 ```
 
-### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>帶有 Bot 框架 4.x 的火車 API 的範例 Node.js 程式碼
+### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>使用 Bot Framework 4.x 訓練 API 的範例 node.js 程式碼
 
-以下代碼說明了如何使用訓練 API 將資訊發送回 QnA 製造商。
+下列程式碼說明如何使用定型 API 將資訊傳送回 QnA Maker。
 
 ```javascript
 async callTrain(stepContext){
@@ -307,11 +307,11 @@ async callTrain(stepContext){
 }
 ```
 
-## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>主動學習儲存在匯出的知識庫中
+## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>主動式學習會儲存在匯出的知識庫中
 
-當應用啟用了活動學習並匯出應用時,tsv`SuggestedQuestions`檔中的列將保留活動學習數據。
+當您的應用程式啟用主動式學習，並匯出應用程式時， `SuggestedQuestions` tsv 檔案中的資料行會保留使用中的學習資料。
 
-該`SuggestedQuestions`列是隱式`autosuggested`、 顯式反饋和`usersuggested`顯式 反饋資訊的 JSON 物件。 對於單個使用者提交的問題,此 JSON 物件的`help`範例 是:
+資料`SuggestedQuestions`行是隱含、 `autosuggested`和明確的`usersuggested`意見反應之資訊的 JSON 物件。 針對單一使用者提交的問題，此 JSON 物件的範例`help`為：
 
 ```JSON
 [
@@ -330,12 +330,12 @@ async callTrain(stepContext){
 ]
 ```
 
-您還可以使用下載變更 API 使用 REST 或任何基於語言的 SDK 來查看這些變更:
+您也可以使用 REST 或任何以語言為基礎的 Sdk，透過下載更改 API 來檢查這些變更：
 * [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
 
 
-當您重新導入此應用程式時,活動學習將繼續收集資訊並為您的知識庫提供建議。
+當您重新匯入此應用程式時，主動式學習會繼續收集資訊，並建議您的知識庫建議。
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: 必應本地業務搜索 API v7 參考
+title: Bing 當地企業搜尋 API v7 參考
 titleSuffix: Azure Cognitive Services
-description: 本文提供有關回應物件以及影響搜尋結果的查詢參數和標頭的技術詳細資訊。
+description: 本文提供回應物件的相關技術詳細資料，以及影響搜尋結果的查詢參數和標頭。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
 ms.openlocfilehash: db764a73aa1bb18ef2fc0f8f6e5ffe8fd60d388c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74075687"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Bing 當地商家搜尋 API v7 參考
 
-當地商家搜尋 API 向 Bing 傳送搜尋查詢以取得包含餐廳、旅館或其他當地商家的結果。 針對地點，查詢可指定本地商家名稱或類別 (例如，我附近的餐廳)。 實體結果包含人員、地點或事項。 在此上下文中放置的是業務實體、州、國家/地區等。  
+當地商家搜尋 API 向 Bing 傳送搜尋查詢以取得包含餐廳、旅館或其他當地商家的結果。 針對地點，查詢可指定本地商家名稱或類別 (例如，我附近的餐廳)。 實體結果包含人員、地點或事項。 此內容中的地點為商業實體、州、國家/地區等。  
 
 本節將提供關於影響搜尋結果的回應物件，以及查詢參數和標頭的技術詳細資料。 如需示範如何提出要求的範例，請參閱[當地商家搜尋 C# 快速入門](quickstarts/local-quickstart.md)或[當地商家搜尋 Java 快速入門](quickstarts/local-search-java-quickstart.md)。 
   
@@ -73,14 +73,14 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |名稱|值|類型|必要|  
 |----------|-----------|----------|--------------|
-|<a name="count" />count|要返回的結果數，從`offset`參數指定的索引開始。|String|否|   
-|<a name="localCategories" />localCategories|依商家類別定義搜尋的選項清單。  請參閱[當地商家類別搜尋](local-categories.md)|String|否|  
+|<a name="count" />count|要傳回的結果數目，從`offset`參數所指定的索引開始。|字串|否|   
+|<a name="localCategories" />localCategories|依商家類別定義搜尋的選項清單。  請參閱[當地商家類別搜尋](local-categories.md)|字串|否|  
 |<a name="mkt" />mkt|產生結果的市場。 <br /><br />如需可能的市場值清單，請參閱市場代碼。<br /><br /> **注意：** 當地商家搜尋 API 目前僅支援 en-us 市場和語言。<br /><br />|String|是|
-|<a name="offset"/>offset|用於啟動 `count` 參數指定之結果的索引。|整數 |否|  
-|<a name="query" />q|使用者的搜尋字詞。|String|否|  
-|<a name="responseformat" />responseFormat|要用於回應的媒體類型。 以下是可能的值 (不區分大小寫)。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 預設值為 JSON。 如需回應所含 JSON 物件的相關資訊，請參閱[回應物件](#response-objects)。<br /><br />  如果您指定 JsonLd，回應本文會有內含搜尋結果的 JSON-LD 物件。 如需 JSON-LD 的相關資訊，請參閱 [JSON-LD](https://json-ld.org/)。|String|否|  
-|<a name="safesearch" />safeSearch|用來篩選成人內容的篩選條件。 以下是可能的篩選值 (不區分大小寫)。<br /><ul><li>關閉 &mdash; 傳回含有成人文字、影像或視訊的網頁。<br /><br/></li><li>中度 &mdash; 傳回含有成人文字、但不含成人影像或視訊的網頁。<br /><br/></li><li>嚴格 &mdash; 不傳回含有成人文字、影像或視訊的網頁。</li></ul><br /> 預設值為「中度」。<br /><br /> **注意：** 如果要求來自於 Bing 的成人內容原則必須將 `safeSearch` 設為「嚴格」的市場，Bing 將會忽略 `safeSearch` 值並使用「嚴格」。<br/><br/>**注意：** 如果您使用 `site:` 查詢運算子，則無論 `safeSearch` 查詢參數設定為何，回應都有可能包含成人內容。 只有在您了解網站上的內容，而且您的案例支援成人內容的可能性時，才可使用 `site:`。 |String|否|  
-|<a name="setlang" />setLang|用於使用者介面字串的語言。 請使用 ISO 639-1 2 字母語言代碼指定語言。 例如，英文的語言代碼是 EN。 預設值為 EN (英文)。<br /><br /> 語言雖然是選擇性的，但您應一律加以指定。 一般而言，除非使用者想要以不同的語言顯示使用者介面字串，否則您都會將 `setLang` 設定為 `mkt` 所指定的相同語言。<br /><br /> 此參數和 [Accept-Language](#acceptlanguage) 標頭彼此互斥 &mdash; 請勿同時指定。<br /><br /> 使用者介面字串是在使用者介面中作為標籤的字串。 JSON 回應物件中有幾個使用者介面字串。 同樣地，回應物件中 Bing.com 屬性的任何連結都會套用指定的語言。|String|否| 
+|<a name="offset"/>offset|用於啟動 `count` 參數指定之結果的索引。|整數|否|  
+|<a name="query" />q|使用者的搜尋字詞。|字串|否|  
+|<a name="responseformat" />responseFormat|要用於回應的媒體類型。 以下是可能的值 (不區分大小寫)。<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> 預設值為 JSON。 如需回應所含 JSON 物件的相關資訊，請參閱[回應物件](#response-objects)。<br /><br />  如果您指定 JsonLd，回應本文會有內含搜尋結果的 JSON-LD 物件。 如需 JSON-LD 的相關資訊，請參閱 [JSON-LD](https://json-ld.org/)。|字串|否|  
+|<a name="safesearch" />safeSearch|用來篩選成人內容的篩選條件。 以下是可能的篩選值 (不區分大小寫)。<br /><ul><li>關閉 &mdash; 傳回含有成人文字、影像或視訊的網頁。<br /><br/></li><li>中度 &mdash; 傳回含有成人文字、但不含成人影像或視訊的網頁。<br /><br/></li><li>嚴格 &mdash; 不傳回含有成人文字、影像或視訊的網頁。</li></ul><br /> 預設值為「中度」。<br /><br /> **注意：** 如果要求來自於 Bing 的成人內容原則必須將 `safeSearch` 設為「嚴格」的市場，Bing 將會忽略 `safeSearch` 值並使用「嚴格」。<br/><br/>**注意：** 如果您使用 `site:` 查詢運算子，則無論 `safeSearch` 查詢參數設定為何，回應都有可能包含成人內容。 只有在您了解網站上的內容，而且您的案例支援成人內容的可能性時，才可使用 `site:`。 |字串|否|  
+|<a name="setlang" />setLang|用於使用者介面字串的語言。 請使用 ISO 639-1 2 字母語言代碼指定語言。 例如，英文的語言代碼是 EN。 預設值為 EN (英文)。<br /><br /> 語言雖然是選擇性的，但您應一律加以指定。 一般而言，除非使用者想要以不同的語言顯示使用者介面字串，否則您都會將 `setLang` 設定為 `mkt` 所指定的相同語言。<br /><br /> 此參數和 [Accept-Language](#acceptlanguage) 標頭彼此互斥 &mdash; 請勿同時指定。<br /><br /> 使用者介面字串是在使用者介面中作為標籤的字串。 JSON 回應物件中有幾個使用者介面字串。 同樣地，回應物件中 Bing.com 屬性的任何連結都會套用指定的語言。|字串|否| 
 
 
 ## <a name="response-objects"></a>回應物件  
@@ -89,7 +89,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 |Object|描述|  
 |------------|-----------------|  
-|[地方](#place)|定義有關當地商家 (例如餐廳或旅館) 的相關資訊。|  
+|[Place](#place)|定義有關當地商家 (例如餐廳或旅館) 的相關資訊。|  
 
   
 ### <a name="error"></a>錯誤  
@@ -97,12 +97,12 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |元素|描述|類型|  
 |-------------|-----------------|----------|  
-|<a name="error-code" />code|識別錯誤類別的錯誤碼。 如需可能的代碼清單，請參閱[錯誤碼](#error-codes)。|String|  
-|<a name="error-message" />message|錯誤的描述。|String|  
-|<a name="error-moredetails" />moreDetails|提供其他錯誤相關資訊的描述。|String|  
-|<a name="error-parameter" />parameter|要求中導致錯誤的查詢參數。|String|  
-|<a name="error-subcode" />subCode|識別錯誤的錯誤碼。 例如，如果 `code`是 InvalidRequest，則 `subCode` 可能是 ParameterInvalid 或 ParameterInvalidValue。 |String|  
-|<a name="error-value" />value|非有效的查詢參數值。|String|  
+|<a name="error-code" />code|識別錯誤類別的錯誤碼。 如需可能的代碼清單，請參閱[錯誤碼](#error-codes)。|字串|  
+|<a name="error-message" />message|錯誤的描述。|字串|  
+|<a name="error-moredetails" />moreDetails|提供其他錯誤相關資訊的描述。|字串|  
+|<a name="error-parameter" />parameter|要求中導致錯誤的查詢參數。|字串|  
+|<a name="error-subcode" />subCode|識別錯誤的錯誤碼。 例如，如果 `code`是 InvalidRequest，則 `subCode` 可能是 ParameterInvalid 或 ParameterInvalidValue。 |字串|  
+|<a name="error-value" />value|非有效的查詢參數值。|字串|  
   
 
 ### <a name="errorresponse"></a>ErrorResponse  
@@ -110,8 +110,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |名稱|值|類型|  
 |----------|-----------|----------|  
-|_type|類型提示。|String|  
-|<a name="errors" />errors|說明要求失敗原因的錯誤清單。|[錯誤](#error)||  
+|_type|類型提示。|字串|  
+|<a name="errors" />errors|說明要求失敗原因的錯誤清單。|[錯誤](#error)[]|  
 
   
   
@@ -120,8 +120,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |名稱|值|類型|  
 |----------|-----------|----------|  
-|NAME|授權的名稱。|String|  
-|url|可讓使用者取得更多授權相關資訊的網站 URL。<br /><br /> 請使用名稱和 URL 建立超連結。|String|  
+|名稱|授權的名稱。|字串|  
+|url|可讓使用者取得更多授權相關資訊的網站 URL。<br /><br /> 請使用名稱和 URL 建立超連結。|字串|  
 
 
 ### <a name="link"></a>連結  
@@ -129,9 +129,9 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |名稱|值|類型|  
 |----------|-----------|----------|  
-|_type|類型提示。|String|  
-|text|顯示文字。|String|  
-|url|一個 URL。 使用 URL 和顯示文字建立超連結。|String|  
+|_type|類型提示。|字串|  
+|text|顯示文字。|字串|  
+|url|一個 URL。 使用 URL 和顯示文字建立超連結。|字串|  
   
 
 
@@ -143,8 +143,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |名稱|值|類型|  
 |----------|-----------|----------|  
-|NAME|發行者的名稱。|String|  
-|url|發行者網站的 URL。<br /><br /> 請注意，發行者可能不會提供網站。|String|  
+|名稱|發行者的名稱。|字串|  
+|url|發行者網站的 URL。<br /><br /> 請注意，發行者可能不會提供網站。|字串|  
   
   
 
@@ -153,13 +153,13 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |名稱|值|類型|  
 |----------|-----------|----------|  
-|_type|類型提示，可能會設定為下列其中之一：<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>餐廳</ul><li>|String|  
+|_type|類型提示，可能會設定為下列其中之一：<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>餐廳</ul><li>|字串|  
 |address|實體所在位置的郵政地址。|PostalAddress|  
 |entityPresentationInfo|有關實體的其他資訊，例如可用於判斷實體類型的提示。 例如，是餐廳還是旅館。 `entityScenario` 欄位設定為 ListItem。|EntityPresentationInfo|  
-|NAME|實體的名稱。|String|  
-|telephone|實體的電話號碼。|String|  
-|url|實體網站的 URL。<br /><br /> 使用此 URL 以及實體的名稱建立超連結，按一下該連結會將使用者帶到實體的網站。|String|  
-|webSearchUrl|此地點的 Bing 搜尋結果 URL。|String| 
+|名稱|實體的名稱。|字串|  
+|telephone|實體的電話號碼。|字串|  
+|url|實體網站的 URL。<br /><br /> 使用此 URL 以及實體的名稱建立超連結，按一下該連結會將使用者帶到實體的網站。|字串|  
+|webSearchUrl|此地點的 Bing 搜尋結果 URL。|字串| 
   
   
 ### <a name="querycontext"></a>QueryContext  
@@ -167,17 +167,17 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |元素|描述|類型|  
 |-------------|-----------------|----------|  
-|adultIntent|一個布林值，用以指出指定的查詢是否有成人意圖。 如果查詢有成人意圖，則此值為 **true**，若沒有則為 **false**。|Boolean|  
-|alterationOverrideQuery|要用來強制 Bing 使用原始字串的查詢字串。 例如，如果查詢字串為 *saling downwind*，覆寫查詢字串將是 *+saling downwind*。 請記得編碼會產生 *%2Bsaling+downwind* 的查詢字串。<br /><br /> 只有原始查詢字串包含拼字錯誤時，才需要加入此欄位。|String|  
-|alteredQuery|Bing 用來執行查詢的查詢字串。 如果原始查詢字串包含拼字錯誤，Bing 就會使用更改的查詢字串。 例如，如果查詢字串是 `saling downwind`，更改的查詢字串將是 `sailing downwind`。<br /><br /> 只有原始查詢字串包含拼字錯誤時，才需要加入此欄位。|String|  
-|askUserForLocation|一個布林值，用以指出 Bing 是否需要使用者的位置以提供精確的結果。 如果您已使用 [X-MSEdge-ClientIP](#clientip) 和 [X-Search-Location](#location) 標頭指定使用者的位置，則可以忽略此欄位。<br /><br /> 針對需要使用者位置以提供精確結果的位置感知查詢 (例如「今天的天氣」或「這附近的餐廳」)，此欄位會設定為 **true**。<br /><br /> 針對包含位置的位置感知查詢 (例如「西雅圖的天氣」)，此欄位會設定為 **false**。 針對不是位置感知的查詢 (例如「最佳銷售員」)，此欄位也會設定為 **false**。|Boolean|  
-|originalQuery|指定於要求中的查詢字串。|String|  
+|adultIntent|一個布林值，用以指出指定的查詢是否有成人意圖。 如果查詢有成人意圖，則此值為 **true**，若沒有則為 **false**。|布林值|  
+|alterationOverrideQuery|要用來強制 Bing 使用原始字串的查詢字串。 例如，如果查詢字串為 *saling downwind*，覆寫查詢字串將是 *+saling downwind*。 請記得編碼會產生 *%2Bsaling+downwind* 的查詢字串。<br /><br /> 只有原始查詢字串包含拼字錯誤時，才需要加入此欄位。|字串|  
+|alteredQuery|Bing 用來執行查詢的查詢字串。 如果原始查詢字串包含拼字錯誤，Bing 就會使用更改的查詢字串。 例如，如果查詢字串是 `saling downwind`，更改的查詢字串將是 `sailing downwind`。<br /><br /> 只有原始查詢字串包含拼字錯誤時，才需要加入此欄位。|字串|  
+|askUserForLocation|一個布林值，用以指出 Bing 是否需要使用者的位置以提供精確的結果。 如果您已使用 [X-MSEdge-ClientIP](#clientip) 和 [X-Search-Location](#location) 標頭指定使用者的位置，則可以忽略此欄位。<br /><br /> 針對需要使用者位置以提供精確結果的位置感知查詢 (例如「今天的天氣」或「這附近的餐廳」)，此欄位會設定為 **true**。<br /><br /> 針對包含位置的位置感知查詢 (例如「西雅圖的天氣」)，此欄位會設定為 **false**。 針對不是位置感知的查詢 (例如「最佳銷售員」)，此欄位也會設定為 **false**。|布林值|  
+|originalQuery|指定於要求中的查詢字串。|字串|  
 
 ### <a name="identifiable"></a>Identifiable
 
 |名稱|值|類型|  
 |-------------|-----------------|----------|
-|id|資源識別碼|String|
+|id|資源識別碼|字串|
  
 ### <a name="rankinggroup"></a>RankingGroup
 定義搜尋結果群組，例如主線。
@@ -191,8 +191,8 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 |名稱|值|類型|  
 |-------------|-----------------|----------|
-|resultIndex|答案中要顯示的項目以零為起始的索引。 如果該項目未包含此欄位，則會顯示答案中的所有項目。 例如，顯示「新聞」答案中的所有新聞發行項。|整數 |
-|answerType|包含要顯示項目的答案。 例如「新聞」。<br /><br />請使用類型在 SearchResponse 物件中尋找答案。 類型是 SearchResponse 欄位的名稱。<br /><br /> 不過，只有在此物件包含值欄位時，才需要使用答案類型，否則請加以忽略。|String|
+|resultIndex|答案中要顯示的項目以零為起始的索引。 如果該項目未包含此欄位，則會顯示答案中的所有項目。 例如，顯示「新聞」答案中的所有新聞發行項。|整數|
+|answerType|包含要顯示項目的答案。 例如「新聞」。<br /><br />請使用類型在 SearchResponse 物件中尋找答案。 類型是 SearchResponse 欄位的名稱。<br /><br /> 不過，只有在此物件包含值欄位時，才需要使用答案類型，否則請加以忽略。|字串|
 |textualIndex|TextualAnswers 中要顯示答案的索引。| 不帶正負號的整數|
 |value|此為識別碼，用來識別要顯示的答案或要顯示的答案項目。 如果此識別碼用來識別答案，則會顯示答案的所有項目。|Identifiable|
 
@@ -212,7 +212,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
   
 |名稱|值|類型|  
 |----------|-----------|----------|  
-|_type|類型提示，設定為 SearchResponse。|String|  
+|_type|類型提示，設定為 SearchResponse。|字串|  
 |places|與搜索查詢相關的實體清單。|JSON 物件|  
 |queryContext|包含 Bing 用於要求之查詢字串的物件。<br /><br /> 此物件包含使用者輸入的查詢字串。 如果查詢字串包含拼字錯誤，它還可能包含 Bing 針對查詢所使用的變更查詢字串。|[QueryContext](#querycontext)|  
 
@@ -271,6 +271,6 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 
 ## <a name="next-steps"></a>後續步驟
 - [當地商家搜尋快速入門](quickstarts/local-quickstart.md)
-- [本地業務搜索 JAVA 快速入門](quickstarts/local-search-java-quickstart.md)
-- [本地業務搜索節點快速啟動](quickstarts/local-search-node-quickstart.md)
+- [當地商家搜尋 Java 快速入門](quickstarts/local-search-java-quickstart.md)
+- [當地商家搜尋 Node 快速入門](quickstarts/local-search-node-quickstart.md)
 - [當地商家搜尋 Python 快速入門](quickstarts/local-search-python-quickstart.md)

@@ -1,7 +1,7 @@
 ---
-title: 如何創建專案 - 自訂轉換器
+title: 如何建立專案-自訂翻譯
 titleSuffix: Azure Cognitive Services
-description: 本文介紹如何在 Azure 認知服務自訂轉換器中創建和管理專案。
+description: 本文說明如何在 Azure 認知服務自訂翻譯中建立和管理專案。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 5b3a6f2e903d8178554b7a076ae1277633569353
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73836572"
 ---
 # <a name="create-a-project"></a>建立專案

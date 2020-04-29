@@ -1,7 +1,7 @@
 ---
-title: 即時對話轉錄 (預覽) - 語音服務
+title: 即時對話轉譯（預覽）-語音服務
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何將即時對話轉錄與語音 SDK 一起使用。 可用於C++、C# 和 JAva。
+description: '瞭解如何搭配語音 SDK 使用即時對話轉譯。 適用于 c + +、c # 和 JAVA。'
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -11,46 +11,46 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
 ms.openlocfilehash: e2c9c0aadc8e443f07f60f3ccddb4a1b6dd661b1
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80520919"
 ---
-# <a name="real-time-conversation-transcription-preview"></a>即時對話轉錄(預覽)
+# <a name="real-time-conversation-transcription-preview"></a>即時對話轉譯（預覽）
 
-語音 SDK 的 **「對話轉錄器」API**允許您轉錄會議和其他對話`PullStream``PushStream`,以便使用 或將音訊串流式傳輸到語音服務,從而添加、刪除和識別多個參與者。 本主題要求您瞭解如何將語音到文本與語音 SDK(版本 1.8.0 或更高版本)一起使用。 有關詳細資訊,請參閱[什麼是語音服務](overview.md)。
+語音 SDK 的**ConversationTranscriber** API 可讓您透過使用`PullStream`或`PushStream`，將音訊串流到語音服務，轉譯會議和其他交談，使其能夠加入、移除和識別多個參與者。 本主題會要求您瞭解如何搭配語音 SDK （1.8.0 或更新版本）使用語音轉換文字。 如需詳細資訊，請參閱[什麼是語音服務](overview.md)。
 
 ## <a name="limitations"></a>限制
 
-- 在 Windows、Linux 和 Android 上支援 C++、C# 和 Java 的作業階段轉錄器 API。
-- 目前在以下區域提供「en-US」和「zh-CN」語言:_中亞_和_東亞_。
-- 需要一個帶播放參考流的 7 麥克風圓形多麥克風陣列。 麥克風陣列應符合[我們的規格](https://aka.ms/sdsdk-microphone)。
-- [語音裝置 SDK](speech-devices-sdk.md)提供合適的設備和演示對話轉錄的範例應用。
+- Windows、Linux 和 Android 上的 c + +、c # 和 JAVA 支援 ConversationTranscriber API。
+- 目前可在下欄區域中的 "en-us" 和 "zh-CN" 語言中使用： _centralus_和_eastasia_。
+- 需要具有播放參照資料流程的7個 mic 迴圈多麥克風陣列。 麥克風陣列應符合[我們的規格](https://aka.ms/sdsdk-microphone)。
+- [語音裝置 SDK](speech-devices-sdk.md)提供適合的裝置，以及示範對話轉譯的範例應用程式。
 
-## <a name="optional-sample-code-resources"></a>選擇範例碼資源
+## <a name="optional-sample-code-resources"></a>選擇性的範例程式碼資源
 
-語音裝置 SDK 在 Java 中提供範例代碼,以便使用 8 個通道進行即時音訊捕獲。
+語音裝置 SDK 提供 JAVA 的範例程式碼，可使用8個通道進行即時音訊捕捉。
 
-- [ROOBO 裝置範例代碼](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
-- [Azure Kinect 開發人員工具套件範例代碼](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
+- [ROOBO 裝置範例程式碼](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Android/Speech%20Devices%20SDK%20Starter%20App/example/app/src/main/java/com/microsoft/cognitiveservices/speech/samples/sdsdkstarterapp/ConversationTranscription.java)
+- [Azure Kinect 開發工具組範例程式碼](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/blob/master/Samples/Windows_Linux/SampleDemo/src/com/microsoft/cognitiveservices/speech/samples/Cts.java)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-語音服務訂閱。 如果沒有["語音試用版"訂閱,則可以取得語音試用版訂閱](https://azure.microsoft.com/try/cognitive-services/)。
+語音服務訂用帳戶。 您可以[取得語音試用版訂用](https://azure.microsoft.com/try/cognitive-services/)帳戶（如果您沒有的話）。
 
-## <a name="create-voice-signatures"></a>建立語音章
+## <a name="create-voice-signatures"></a>建立語音簽名
 
-第一步是為對話參與者創建語音簽名,以便有效地識別演講者。
+第一個步驟是為交談參與者建立語音簽名，以有效率地說話者識別。
 
-### <a name="audio-input-requirements"></a>音訊輸入要求
+### <a name="audio-input-requirements"></a>音訊輸入需求
 
-- 用於創建語音簽名的輸入音訊波檔應採用 16 位元採樣、16 kHz 採樣速率和單聲道(單聲道)格式。
-- 每個音訊樣本的建議長度在三十秒到兩分鐘之間。
+- 用於建立語音簽名的輸入音訊 wave 檔案應該是16位樣本、16 kHz 採樣速率和單一通道（mono）格式。
+- 每個音訊樣本的建議長度介於三十秒到2分鐘之間。
 
 ### <a name="sample-code"></a>範例程式碼
 
-下面的範例顯示了使用 C# 中的 REST [API](https://aka.ms/cts/signaturegenservice)建立語音簽名的兩種不同方法。 請注意,您需要將真實資訊替換為「您的訂閱密鑰」,您的波檔名稱為「揚聲器Voice.wav」,以及您所在區域`{region}`和「您的服務區域」(_中央_或_東亞_)。
+下列範例顯示使用 c # 中[的 REST API](https://aka.ms/cts/signaturegenservice)來建立語音簽名的兩種不同方式。 請注意，您必須以「YourSubscriptionKey」的真實資訊、「speakerVoice」的 wave 檔案名，以及`{region}`和「YourServiceRegion」（_centralus_或_eastasia_）的區域取代。
 
 ```csharp
 class Program
@@ -102,20 +102,20 @@ class Program
 }
 ```
 
-## <a name="transcribe-conversations"></a>轉錄對話
+## <a name="transcribe-conversations"></a>轉譯交談
 
-以下範例代碼演示如何即時轉錄三個揚聲器的對話。 它假定您已經為每個揚聲器創建了語音簽名,如上所示。 創建語音設定物件時,將真實資訊替換為「訂閱金鑰」和「您的服務區域」。
+下列範例程式碼示範如何即時轉譯三個喇叭的交談。 它假設您已經為每個說話者建立語音簽名，如上所示。 建立 SpeechConfig 物件時，請將 "YourSubscriptionKey" 和 "YourServiceRegion" 的實際資訊替換為。
 
-範例代碼亮點包括:
+範例程式碼重點包括：
 
-- 使用使用`Conversation`會議識別碼`SpeechConfig`產生的會議識別碼從物件建立物件`Guid.NewGuid()`
-- 建立`ConversationTranscriber`物件並加入對話`JoinConversationAsync()`以開始轉錄
-- 註冊感興趣的事件
-- 使用對話物件向對話新增或刪除參與者
-- 串流式傳輸音訊
-- 在語音 SDK 版本 1.9.0`int`中`string`,語音簽名版本欄位中支援和值類型。
+- 使用以`Conversation`產生的會議`SpeechConfig`識別碼，從物件建立物件`Guid.NewGuid()`
+- 建立`ConversationTranscriber`物件並與`JoinConversationAsync()`交談加入以開始轉譯
+- 註冊感關注的事件
+- 使用交談物件在交談中加入或移除參與者
+- 串流處理音訊
+- 在語音 SDK 版本 1.9.0 `int`中，語音簽名`string`版本欄位支援和數值型別。
 
-轉錄和揚聲器標識符在已註冊的事件中返回。
+轉譯和說話者識別碼會回到已註冊的事件中。
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -218,4 +218,4 @@ public class MyConversationTranscriber
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [非同步對話轉錄](how-to-async-conversation-transcription.md)
+> [非同步對話轉譯](how-to-async-conversation-transcription.md)

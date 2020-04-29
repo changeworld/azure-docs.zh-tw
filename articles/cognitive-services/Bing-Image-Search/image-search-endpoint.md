@@ -1,7 +1,7 @@
 ---
 title: Bing 影像搜尋 API 的端點
 titleSuffix: Azure Cognitive Services
-description: 圖像搜索 API 包括三個終結點。 終結點 1 返回來自 Web 的圖像。 端點 2 會傳回 ImageInsights。 端點 3 會傳回發燒影像。
+description: 影像搜尋 API 包含三個端點。 端點1會從 web 傳回影像。 端點 2 會傳回 ImageInsights。 端點 3 會傳回發燒影像。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 38416f6a580d270aefc287de0c198bd418a44db9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072634"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>Bing 影像搜尋 API 的端點

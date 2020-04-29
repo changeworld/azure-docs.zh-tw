@@ -1,7 +1,7 @@
 ---
 title: 如何使用語音 SDK 選取音訊輸入裝置
 titleSuffix: Azure Cognitive Services
-description: 通過獲取連接到系統的音訊裝置的 CD，瞭解如何在語音 SDK（C++、C#、Python、Objective-C、JAVA、JavaScript）中選擇音訊輸入裝置。
+description: '瞭解如何藉由取得連接到系統的音訊裝置識別碼，在語音 SDK （c + +、c #、Python、目標-C、JAVA、JavaScript）中選取音訊輸入裝置。'
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
 ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74109970"
 ---
-# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>如何：選擇帶有語音 SDK 的音訊輸入裝置
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>如何：使用語音 SDK 選取音訊輸入裝置
 
 語音 SDK 1.3.0 版導入了可選取音訊輸入的 API。 本文說明如何取得連線至系統之音訊裝置的識別碼。 隨後，您可以透過 `AudioConfig` 物件設定音訊裝置，以在語音 SDK 中使用這些識別碼：
 
@@ -175,7 +175,7 @@ namespace ConsoleApp
 
 ## <a name="audio-device-ids-on-uwp"></a>UWP 上的音訊裝置識別碼
 
-在通用 Windows 平臺 （UWP） 上，可以使用相應`Id()`[`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation)物件的屬性獲取音訊輸入裝置。
+在通用 Windows 平臺（UWP）上，可以使用對應`Id()` [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation)物件的屬性來取得音訊輸入裝置。
 
 下列程式碼範例說明如何在 C++ 和 C# 中執行此作業：
 
@@ -365,7 +365,7 @@ CFArrayRef CreateInputDeviceArray()
 
 ## <a name="audio-device-ids-on-ios"></a>iOS 上的音訊裝置識別碼
 
-iOS 不支援使用語音 SDK 選取音訊裝置的功能。 但是，使用 SDK 的應用可能會影響通過框架的[`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc)音訊路由。
+iOS 不支援使用語音 SDK 選取音訊裝置的功能。 不過，使用 SDK 的應用程式可能會影響透過架構[`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc)的音訊路由。
 
 例如，指令
 
@@ -385,7 +385,7 @@ iOS 不支援使用語音 SDK 選取音訊裝置的功能。 但是，使用 SDK
 > [!div class="nextstepaction"]
 > [在 GitHub 上探索我們的範例](https://aka.ms/csspeech/samples)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [自訂原音模型](how-to-customize-acoustic-models.md)
 - [自訂語言模型](how-to-customize-language-model.md)

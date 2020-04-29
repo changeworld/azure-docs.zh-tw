@@ -1,7 +1,7 @@
 ---
-title: 如何為語音文本指定來源語言
+title: 如何指定語音轉換文字的來來源語言
 titleSuffix: Azure Cognitive Services
-description: 語音 SDK 允許您在將語音轉換為文本時指定來源語言。 本文介紹如何使用 FromConfig 和 Source語言配置方法讓語音服務瞭解來源語言並提供自訂模型目標。
+description: 語音 SDK 可讓您在將語音轉換成文字時，指定來源語言。 本文說明如何使用 FromConfig 和 SourceLanguageConfig 方法，讓語音服務知道來源語言，並提供自訂模型目標。
 services: cognitive-services
 author: susanhu
 manager: nitinme
@@ -12,34 +12,34 @@ ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
 ms.openlocfilehash: f0723534d9d2187593cb73f058ffea62473b80a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80235984"
 ---
-# <a name="specify-source-language-for-speech-to-text"></a>指定語音到文本的來源語言
+# <a name="specify-source-language-for-speech-to-text"></a>指定語音轉換文字的來來源語言
 
-在本文中，您將學習如何為傳遞給語音 SDK 的音訊輸入指定來源語言以進行語音辨識。 此外，還提供了示例代碼來指定自訂語音模型，以提高識別性。
+在本文中，您將瞭解如何針對傳遞至語音 SDK 以進行語音辨識的音訊輸入，指定來源語言。 此外，也會提供範例程式碼來指定自訂語音模型，以改善辨識。
 
 ::: zone pivot="programming-language-csharp"
 
-## <a name="how-to-specify-source-language-in-c"></a>如何以 C 方式指定來源語言#
+## <a name="how-to-specify-source-language-in-c"></a>如何在 C 中指定來源語言#
 
-在此示例中，來源語言使用`SpeechRecognizer`構造顯式作為參數提供。
+在此範例中，會使用`SpeechRecognizer`結構明確地提供來來源語言做為參數。
 
 ```csharp
 var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-在此示例中，使用 提供來源語言`SourceLanguageConfig`。 然後，`sourceLanguageConfig`傳遞為要構造的`SpeechRecognizer`參數.
+在此範例中，會使用來`SourceLanguageConfig`提供來來源語言。 然後， `sourceLanguageConfig`會傳遞做為參數以進行`SpeechRecognizer`結構。
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
 var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-在此示例中，使用 提供來源語言和自訂終結點`SourceLanguageConfig`。 然後，`sourceLanguageConfig`傳遞為要構造的`SpeechRecognizer`參數.
+在此範例中，會使用`SourceLanguageConfig`來提供來來源語言和自訂端點。 然後， `sourceLanguageConfig`會傳遞做為參數以進行`SpeechRecognizer`結構。
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -47,29 +47,29 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 ```
 
 >[!Note]
-> `SpeechRecognitionLanguage`和`EndpointId`設置方法從 C# 中的`SpeechConfig`類中棄用。 不鼓勵使用這些方法，在構造 時不應使用`SpeechRecognizer`。
+> `SpeechRecognitionLanguage`和`EndpointId` set 方法已從 c # `SpeechConfig`中的類別取代。 不建議使用這些方法，而不應在建立時使用`SpeechRecognizer`。
 
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
 
 
-## <a name="how-to-specify-source-language-in-c"></a>如何在C++中指定來源語言
+## <a name="how-to-specify-source-language-in-c"></a>如何在 c + + 中指定來源語言
 
-在此示例中，使用`FromConfig`方法顯式提供來源語言作為參數。
+在此範例中，會使用`FromConfig`方法，將原始語言明確地提供給參數。
 
 ```C++
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, "de-DE", audioConfig);
 ```
 
-在此示例中，使用 提供來源語言`SourceLanguageConfig`。 然後，`sourceLanguageConfig`在創建`FromConfig`時，將作為參數傳遞給 。 `recognizer`
+在此範例中，會使用來`SourceLanguageConfig`提供來來源語言。 然後，在`sourceLanguageConfig`建立時，會將做`FromConfig`為參數傳遞`recognizer`至。
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE");
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-在此示例中，使用 提供來源語言和自訂終結點`SourceLanguageConfig`。 在`sourceLanguageConfig`創建`FromConfig`時`recognizer`，將作為參數傳遞給 。
+在此範例中，會使用`SourceLanguageConfig`來提供來來源語言和自訂端點。 在`sourceLanguageConfig`建立時，會將當做`FromConfig`參數傳遞至`recognizer`。
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -77,7 +77,7 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 ```
 
 >[!Note]
-> `SetSpeechRecognitionLanguage`並且`SetEndpointId`從C++和JAVA中的`SpeechConfig`類中棄用的方法。 不鼓勵使用這些方法，在構造 時不應使用`SpeechRecognizer`。
+> `SetSpeechRecognitionLanguage`和`SetEndpointId`已被取代為 c `SpeechConfig` + + 和 JAVA 中類別的方法。 不建議使用這些方法，而不應在建立時使用`SpeechRecognizer`。
 
 ::: zone-end
 
@@ -85,20 +85,20 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 
 ## <a name="how-to-specify-source-language-in-java"></a>如何在 JAVA 中指定來源語言
 
-在此示例中，在創建新`SpeechRecognizer`的 時顯式提供來源語言。
+在此範例中，建立新`SpeechRecognizer`的時，會明確地提供來來源語言。
 
 ```Java
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-在此示例中，使用 提供來源語言`SourceLanguageConfig`。 然後，`sourceLanguageConfig`在創建新`SpeechRecognizer`的 時，將作為參數傳遞 。
+在此範例中，會使用來`SourceLanguageConfig`提供來來源語言。 然後，在`sourceLanguageConfig`建立新`SpeechRecognizer`的時，會傳遞做為參數。
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE");
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-在此示例中，使用 提供來源語言和自訂終結點`SourceLanguageConfig`。 然後，`sourceLanguageConfig`在創建新`SpeechRecognizer`的 時，將作為參數傳遞 。
+在此範例中，會使用`SourceLanguageConfig`來提供來來源語言和自訂端點。 然後，在`sourceLanguageConfig`建立新`SpeechRecognizer`的時，會傳遞做為參數。
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -106,7 +106,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 ```
 
 >[!Note]
-> `setSpeechRecognitionLanguage`並且`setEndpointId`從C++和JAVA中的`SpeechConfig`類中棄用的方法。 不鼓勵使用這些方法，在構造 時不應使用`SpeechRecognizer`。
+> `setSpeechRecognitionLanguage`和`setEndpointId`已被取代為 c `SpeechConfig` + + 和 JAVA 中類別的方法。 不建議使用這些方法，而不應在建立時使用`SpeechRecognizer`。
 
 ::: zone-end
 
@@ -114,14 +114,14 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 
 ## <a name="how-to-specify-source-language-in-python"></a>如何在 Python 中指定來源語言
 
-在此示例中，來源語言使用`SpeechRecognizer`構造顯式作為參數提供。
+在此範例中，會使用`SpeechRecognizer`結構明確地提供來來源語言做為參數。
 
 ```Python
 speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, language="de-DE", audio_config=audio_config)
 ```
 
-在此示例中，使用 提供來源語言`SourceLanguageConfig`。 然後，`SourceLanguageConfig`傳遞為要構造的`SpeechRecognizer`參數.
+在此範例中，會使用來`SourceLanguageConfig`提供來來源語言。 然後， `SourceLanguageConfig`會傳遞做為參數以進行`SpeechRecognizer`結構。
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE")
@@ -129,7 +129,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
 
-在此示例中，使用 提供來源語言和自訂終結點`SourceLanguageConfig`。 然後，`SourceLanguageConfig`傳遞為要構造的`SpeechRecognizer`參數.
+在此範例中，會使用`SourceLanguageConfig`來提供來來源語言和自訂端點。 然後， `SourceLanguageConfig`會傳遞做為參數以進行`SpeechRecognizer`結構。
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE", "The Endpoint ID for your custom model.")
@@ -138,7 +138,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
 ```
 
 >[!Note]
-> `speech_recognition_language`屬性`endpoint_id`從 Python 中的`SpeechConfig`類中棄用。 不鼓勵使用這些屬性，並且不應在構造 時`SpeechRecognizer`使用 。
+> `speech_recognition_language`和`endpoint_id`屬性已從 Python 中`SpeechConfig`的類別取代。 不建議使用這些屬性，而且不應在建立時使用`SpeechRecognizer`。
 
 ::: zone-end
 
@@ -146,39 +146,39 @@ speech_recognizer = speechsdk.SpeechRecognizer(
 
 ## <a name="how-to-specify-source-language-in-javascript"></a>如何在 JAVAscript 中指定來源語言
 
-第一步是創建 ： `SpeechConfig`
+第一個步驟是建立`SpeechConfig`：
 
 ```Javascript
 var speechConfig = sdk.SpeechConfig.fromSubscription("YourSubscriptionkey", "YourRegion");
 ```
 
-接下來，使用 指定音訊的來源語言： `speechRecognitionLanguage`
+接下來，使用下列方式`speechRecognitionLanguage`指定音訊的來來源語言：
 
 ```Javascript
 speechConfig.speechRecognitionLanguage = "de-DE";
 ```
 
-如果使用自訂模型進行識別，則可以使用 指定終結點`endpointId`：
+如果您使用自訂模型進行辨識，則可以使用`endpointId`來指定端點：
 
 ```Javascript
 speechConfig.endpointId = "The Endpoint ID for your custom model.";
 ```
 
-## <a name="how-to-specify-source-language-in-objective-c"></a>如何在目標 C 中指定來源語言
+## <a name="how-to-specify-source-language-in-objective-c"></a>如何指定目標中的來源語言-C
 
-第一步是創建 ： `speechConfig`
+第一個步驟是建立`speechConfig`：
 
 ```Objective-C
 SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithSubscription:@"YourSubscriptionkey" region:@"YourRegion"];
 ```
 
-接下來，使用 指定音訊的來源語言： `speechRecognitionLanguage`
+接下來，使用下列方式`speechRecognitionLanguage`指定音訊的來來源語言：
 
 ```Objective-C
 speechConfig.speechRecognitionLanguage = @"de-DE";
 ```
 
-如果使用自訂模型進行識別，則可以使用 指定終結點`endpointId`：
+如果您使用自訂模型進行辨識，則可以使用`endpointId`來指定端點：
 
 ```Objective-C
 speechConfig.endpointId = @"The Endpoint ID for your custom model.";
@@ -186,10 +186,10 @@ speechConfig.endpointId = @"The Endpoint ID for your custom model.";
 
 ::: zone-end
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-* 有關語音到文本的支援語言和地區設定的清單，請參閱[語言支援](language-support.md)。
+* 如需支援的語言和語音轉換文字的地區設定清單，請參閱[語言支援](language-support.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [語音 SDK 參考文檔](speech-sdk.md)
+* [語音 SDK 參考檔](speech-sdk.md)

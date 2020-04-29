@@ -1,7 +1,7 @@
 ---
 title: 安全性
 titleSuffix: Azure Cognitive Services
-description: 瞭解認知服務使用的各種安全注意事項。
+description: 深入瞭解認知服務使用方式的各種安全性考慮。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,65 +10,65 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: dapine
 ms.openlocfilehash: c86d806c408c2e8226e632a0b15e1e8729c987f9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80131525"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 認知服務安全性
 
-在開發任何和所有應用程式時，安全性應被視為重中之重。 隨著啟用人工智慧的應用程式的建立，安全性就顯得尤為重要。 在本文中，概述了 Azure 認知服務安全性的各個方面，例如使用傳輸層安全性、身份驗證和安全配置敏感性資料。
+開發任何和所有應用程式時，應將安全性視為最高優先順序。 有了人工智慧功能的應用程式萌芽，安全性就更為重要。 本文概述了 Azure 認知服務安全性的各個層面，例如使用傳輸層安全性、驗證，以及安全地設定敏感性資料。
 
 ## <a name="transport-layer-security-tls"></a>傳輸層安全性 (TLS)
 
-通過 HTTP 公開的所有認知服務終結點都強制實施 TLS 1.2。 使用強制安全協定，嘗試調用認知服務終結點的消費者應遵守以下準則：
+所有透過 HTTP 公開的認知服務端點都會強制使用 TLS 1.2。 透過強制執行的安全性通訊協定，嘗試呼叫認知服務端點的取用者應遵循下列指導方針：
 
-* 用戶端作業系統 （OS） 需要支援 TLS 1.2
-* 用於進行 HTTP 調用的語言（和平臺）需要指定 TLS 1.2 作為請求的一部分
-  * 根據語言和平臺的不同，指定 TLS 是隱式或顯式完成的
+* 用戶端作業系統（OS）必須支援 TLS 1。2
+* 用來進行 HTTP 呼叫的語言（和平臺）必須指定 TLS 1.2 做為要求的一部分。
+  * 視語言和平臺而定，指定 TLS 是隱含或明確地完成
 
-對於 .NET 使用者，請考慮<a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">傳輸層安全最佳實踐<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+針對 .NET 使用者，請考慮<a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">傳輸層安全性最佳做法<span class="docon docon-navigate-external x-hidden-focus"></span> </a>。
 
 ## <a name="authentication"></a>驗證
 
-在討論身份驗證時，有幾個常見的誤解。 身份驗證和授權經常相互混淆。 身份也是安全性的重要組成部分。 標識是有關<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">主體<span class="docon docon-navigate-external x-hidden-focus"></span></a>的資訊的集合。 標識提供程式 （IdP） 向身份驗證服務提供標識。 身份驗證是驗證使用者身份的行為。 授權是指定給定標識的資源存取權限和許可權的規範。 一些認知服務產品包括基於角色的存取控制 （RBAC）。 RBAC 可用於簡化手動管理主體所涉及的一些儀式。 有關詳細資訊，請參閱[Azure 資源的基於角色的存取控制](../role-based-access-control/overview.md)。
+在討論驗證時，有幾個常見的誤解。 驗證和授權通常會相互混淆。 身分識別也是安全性的主要元件。 身分識別是<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">主體<span class="docon docon-navigate-external x-hidden-focus"> </span></a>相關資訊的集合。 身分識別提供者（IdP）提供驗證服務的身分識別。 驗證是確認使用者身分識別的動作。 授權是指定身分識別之資源的存取權和許可權的規格。 其中幾項認知服務供應專案包含角色型存取控制（RBAC）。 RBAC 可用來簡化與手動管理主體有關的部分儀式。 如需詳細資訊，請參閱[適用于 Azure 資源的角色型存取控制](../role-based-access-control/overview.md)。
 
-有關使用訂閱金鑰、訪問權杖和 Azure 活動目錄 （AAD） 進行身份驗證的詳細資訊，請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">對 Azure<span class="docon docon-navigate-external x-hidden-focus"></span>認知服務的身份驗證請求</a>。
+如需使用訂用帳戶金鑰、存取權杖和 Azure Active Directory （AAD）進行驗證的詳細資訊，請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">向 Azure 認知服務<span class="docon docon-navigate-external x-hidden-focus"></span>驗證要求</a>。
 
-## <a name="environment-variables-and-application-configuration"></a>環境變數和應用程式佈建
+## <a name="environment-variables-and-application-configuration"></a>環境變數和應用程式設定
 
-環境變數是名稱值對，存儲在特定環境中。 對敏感性資料使用硬編碼值的一個更安全的替代方法是使用環境變數。 硬編碼值不安全，應避免使用。
+環境變數是名稱/值組，儲存在特定環境中。 針對機密資料使用硬式編碼值，更安全的替代方法是使用環境變數。 硬式編碼的值不安全，應予以避免。
 
 > [!CAUTION]
-> **不要**對敏感性資料使用硬編碼值，這樣做是一個主要的安全性漏洞。
+> 請勿**針對機密資料使用硬**式編碼的值，這是一個主要的安全性弱點。
 
 > [!NOTE]
-> 當環境變數以純文字形式存儲時，它們被隔離到環境中。 如果環境遭到破壞，則環境中的變數也會受到影響。
+> 雖然環境變數是以純文字儲存，但它們會隔離到環境中。 如果環境遭到入侵，也就是環境的變數。
 
-### <a name="set-environment-variable"></a>設置環境變數
+### <a name="set-environment-variable"></a>設定環境變數
 
-要設置環境變數，請使用以下命令之一 - 其中`ENVIRONMENT_VARIABLE_KEY`是命名鍵，`value`是存儲在環境變數中的值。
+若要設定環境變數，請使用下列其中一個命令- `ENVIRONMENT_VARIABLE_KEY` ，其中是已命名`value`的索引鍵，而是儲存在環境變數中的值。
 
 # <a name="command-line"></a>[命令列](#tab/command-line)
 
-創建和分配持久化環境變數（給定值）。
+根據指定的值，建立並指派保存的環境變數。
 
 ```CMD
 :: Assigns the env var to the value
 setx ENVIRONMENT_VARIABLE_KEY="value"
 ```
 
-在**命令提示符**的新實例中，讀取環境變數。
+在**命令提示**字元的新實例中，讀取環境變數。
 
 ```CMD
 :: Prints the env var value
 echo %ENVIRONMENT_VARIABLE_KEY%
 ```
 
-# <a name="powershell"></a>[電源外殼](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-創建和分配持久化環境變數（給定值）。
+根據指定的值，建立並指派保存的環境變數。
 
 ```powershell
 # Assigns the env var to the value
@@ -84,7 +84,7 @@ echo %ENVIRONMENT_VARIABLE_KEY%
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-創建和分配持久化環境變數（給定值）。
+根據指定的值，建立並指派保存的環境變數。
 
 ```Bash
 # Assigns the env var to the value
@@ -104,15 +104,15 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 ---
 
 > [!TIP]
-> 設置環境變數後，重新開機整合式開發環境 （IDE），以確保新添加的環境變數可用。
+> 設定環境變數之後，請重新開機您的整合式開發環境（IDE），以確保可以使用新加入的環境變數。
 
-### <a name="get-environment-variable"></a>獲取環境變數
+### <a name="get-environment-variable"></a>取得環境變數
 
-要獲取環境變數，必須將其讀取到記憶體中。 根據所使用的語言，請考慮以下程式碼片段。 這些程式碼片段演示如何獲取環境變數給定`ENVIRONMENT_VARIABLE_KEY`並分配給名為 的`value`變數。
+若要取得環境變數，則必須將它讀入記憶體中。 視您使用的語言而定，請考慮下列程式碼片段。 這些程式碼片段示範如何取得指定的`ENVIRONMENT_VARIABLE_KEY`環境變數，並將指派給名為`value`的變數。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-有關詳細資訊，請參閱<a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"> </span></a>請參閱。
 
 ```csharp
 using static System.Environment;
@@ -129,9 +129,9 @@ class Program
 }
 ```
 
-# <a name="c"></a>[C++](#tab/cpp)
+# <a name="c"></a>[C + +](#tab/cpp)
 
-有關詳細資訊，請參閱<a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` <span class="docon docon-navigate-external x-hidden-focus"> </span></a>請參閱。
 
 ```cpp
 #include <stdlib.h>
@@ -144,9 +144,9 @@ int main()
 }
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-有關詳細資訊，請參閱<a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` <span class="docon docon-navigate-external x-hidden-focus"> </span></a>請參閱。
 
 ```java
 import java.lang.*;
@@ -163,7 +163,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-有關詳細資訊，請參閱<a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` <span class="docon docon-navigate-external x-hidden-focus"> </span></a>請參閱。
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -173,7 +173,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-有關詳細資訊，請參閱<a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` <span class="docon docon-navigate-external x-hidden-focus"> </span></a>請參閱。
 
 ```python
 import os
@@ -182,9 +182,9 @@ import os
 value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 ```
 
-# <a name="objective-c"></a>[目標C](#tab/objective-c)
+# <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-有關詳細資訊，請參閱<a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment`<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+如需詳細資訊， <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` <span class="docon docon-navigate-external x-hidden-focus"> </span></a>請參閱。
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -197,4 +197,4 @@ NSString* value =
 ## <a name="next-steps"></a>後續步驟
 
 * 探索各種[認知服務](welcome.md)
-* 瞭解有關[認知服務虛擬網路的更多資訊](cognitive-services-virtual-networks.md)
+* 深入瞭解[認知服務虛擬網路](cognitive-services-virtual-networks.md)

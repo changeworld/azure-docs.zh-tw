@@ -1,7 +1,7 @@
 ---
 title: 粗話篩選功能 - 翻譯工具文字 API
 titleSuffix: Azure Cognitive Services
-description: 使用褻瀆篩選來確定在 Azure 認知服務翻譯器文本 API 中翻譯的文本中的褻瀆程度。
+description: 使用 [不雅內容篩選] 來判斷您在 Azure 認知服務翻譯工具文字 API 的文字中翻譯的不雅內容層級。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: e7e2097e0d3daf360f1fa0f30bf3fd2c62c07163
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73836236"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>使用翻譯工具文字 API 新增粗話篩選功能

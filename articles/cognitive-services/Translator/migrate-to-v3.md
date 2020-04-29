@@ -1,7 +1,7 @@
 ---
 title: 移轉至 V3 - 翻譯工具文字 API
 titleSuffix: Azure Cognitive Services
-description: 本文提供了説明您從 Azure 認知服務轉換器文本 API 的 V2 遷移到 V3 的步驟。
+description: 本文提供的步驟可協助您從 V2 遷移至 Azure 認知服務翻譯工具文字 API 的 V3。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: eb43d549d3e0cd449c865d533fc8701c4c3912fd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73837315"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 到 V3 的移轉
 
 > [!NOTE]
-> V2 于 2018 年 4 月 30 日棄用。 請將應用程式遷移到 V3，以便利用 V3 中獨有功能。
+> V2 已于2018年4月30日淘汰。 請將您的應用程式遷移至 V3，以利用在 V3 中專門提供的新功能。
 > 
-> 微軟翻譯中心將于2019年5月17日停用。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。  
+> Microsoft Translator Hub 將于 2019 5 月17日淘汰。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。  
 
 Microsoft Translator 團隊已發行第 3 版 (V3) 的翻譯工具文字 API。 本版包含對 Microsoft Translator 服務傳送和接收資料的新功能、汰用方法和新格式。 本文件提供將應用程式變更為使用 V3 的資訊。 
 
@@ -49,8 +49,8 @@ Microsoft Translator 團隊已發行第 3 版 (V3) 的翻譯工具文字 API。 
 | `GetLanguagesForTranslate`     | [語言](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft 語音服務](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| `Detect`     | [偵測](reference/v3-0-detect.md)         |
-| `DetectArray`     | [偵測](reference/v3-0-detect.md)         |
+| `Detect`     | [Detect](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Detect](reference/v3-0-detect.md)         |
 | `AddTranslation`     | 不再支援功能       |
 | `AddTranslationArray`    | 不再支援功能          |
 | `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
@@ -65,7 +65,7 @@ Microsoft Translator Text Translation V2 可接受及傳回 XML 格式的資料�
 
 語言方法不需要驗證，您只要按一下以下連結，即可用 JSON 格式檢視 V3 的所有語言資訊：
 
-[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation，字典，音譯](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
+[https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation、dictionary、音譯](https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation,dictionary,transliteration)
 
 ## <a name="authentication-key"></a>驗證金鑰
 
@@ -110,7 +110,7 @@ Microsoft Translator V3 的定價方式與 V2 相同，即依字元計價，包�
 
 > [!NOTE]
 > 
-> 微軟翻譯中心將于2019年5月17日停用。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。   
+> Microsoft Translator Hub 將于 2019 5 月17日淘汰。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。   
 
 Microsoft Translator V3 依預設會使用類神經機器翻譯。 因此，無法搭配 Microsoft Translator Hub 使用。 Translator Hub 僅支援傳統統計機器翻譯。 類神經翻譯現在已可使用自訂翻譯工具進行自訂。 [深入了解如何自訂類神經機器翻譯](custom-translator/overview.md)
 

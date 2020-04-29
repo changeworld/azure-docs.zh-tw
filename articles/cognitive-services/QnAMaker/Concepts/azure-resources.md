@@ -1,40 +1,40 @@
 ---
-title: Azure 資源 - QnA 製造商
-description: QnA Maker 使用多個 Azure 源,每個源具有不同的用途。 瞭解它們是如何單獨使用的,您可以規劃和選擇正確的定價層,或知道何時更改定價層。 瞭解它們的組合使用方式,可以在問題發生時查找和修復問題。
+title: Azure 資源-QnA Maker
+description: QnA Maker 使用數個 Azure 來源，各有不同的用途。 瞭解個別使用它們的方式，可讓您規劃並選取正確的定價層，或知道何時要變更定價層。 瞭解它們的組合使用方式，可讓您在發生問題時找出並加以修正。
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80873900"
 ---
-# <a name="azure-resources-for-qna-maker"></a>QnA 製造商的 Azure 資源
+# <a name="azure-resources-for-qna-maker"></a>適用于 QnA Maker 的 Azure 資源
 
-QnA Maker 使用多個 Azure 源,每個源具有不同的用途。 瞭解它們是如何單獨使用的,您可以規劃和選擇正確的定價層,或知道何時更改定價層。 瞭解它們_的組合使用方式_,可以在問題發生時查找和修復問題。
+QnA Maker 使用數個 Azure 來源，各有不同的用途。 瞭解個別使用它們的方式，可讓您規劃並選取正確的定價層，或知道何時要變更定價層。 瞭解它們的_組合_使用方式，可讓您在發生問題時找出並加以修正。
 
 ## <a name="resource-planning"></a>資源規劃
 
-當您首次開發QnAMaker知識庫時,在原型階段,通常擁有用於測試和生產的單個QnAMaker資源。
+當您第一次在原型階段開發 QnA Maker 知識庫時，測試和生產環境通常會有單一 QnA Maker 資源。
 
-進入專案的開發階段時,應考慮:
+當您移至專案的開發階段時，您應該考慮：
 
-* 您的知識庫系統將持有多少種語言
-* 您需要在/從中提供多少區域
-* 系統儲存每個網域的文件數
+* 您的知識庫系統將保留多少語言
+* 您需要的知識庫有多少區域可供使用/從
+* 您的系統會在每個網域中保存多少份檔
 
-計劃讓單個 QnA Maker 資源保存具有相同語言、相同區域和相同主題域組合的所有知識庫。
+打算讓單一 QnA Maker 資源保存所有具有相同語言、相同區域和相同主體網域組合的知識庫。
 
-## <a name="pricing-tier-considerations"></a>定價層注意事項
+## <a name="pricing-tier-considerations"></a>定價層考慮
 
 一般而言，您有三個參數必須考量：
 
 * **您所需的服務輸送量**：
     * 根據您的需求為您的應用程式服務選取適當的[應用程式方案](https://azure.microsoft.com/pricing/details/app-service/plans/)。 您可以[相應增加](https://docs.microsoft.com/azure/app-service/manage-scale-up)或相應減少應用程式。
-    * 這還應影響 Azure**認知搜尋**SKU 選擇,[請參閱此處](https://docs.microsoft.com/azure/search/search-sku-tier)的更多詳細資訊。 此外,您可能需要調整具有複本的認知搜尋[容量](../../../search/search-capacity-planning.md)。
+    * 這應該也會影響您的 Azure**認知搜尋**SKU 選擇，請參閱[這裡](https://docs.microsoft.com/azure/search/search-sku-tier)的詳細資料。 此外，您可能需要使用複本來調整認知搜尋[容量](../../../search/search-capacity-planning.md)。
 
-* **知識庫的大小和數量**：針對您的案例選擇適當的 [Azure 搜尋服務 SKU](https://azure.microsoft.com/pricing/details/search/)。 通常,您可以根據不同主題域的數量決定所需的知識庫數量。 一旦主題域(對於單一語言)應位於一個知識庫中。
+* **知識庫的大小和數量**：針對您的案例選擇適當的 [Azure 搜尋服務 SKU](https://azure.microsoft.com/pricing/details/search/)。 一般來說，您會根據不同的主旨網域數目來決定所需的知識庫數目。 一旦主體網域（適用于單一語言）應在一個知識庫中。
 
     您可以在特定層中發佈 N-1 個知識庫，其中，N 是該層中允許的索引數上限。 同時也請檢查每個層允許的大小上限和文件數目。
 
@@ -47,145 +47,145 @@ QnA Maker 使用多個 Azure 源,每個源具有不同的用途。 瞭解它們�
 |                        | QnA Maker 管理 | App Service 方案 | Azue 認知搜尋 | 限制                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | 測試        | 免費 SKU             | 免費層   | 免費層    | 最多發佈 2 個 KB，大小為 50 MB  |
-| 開發/測試環境   | 標準 SKU         | 共用      | 基本        | 最多發佈 14 KB，大小為 2 GB    |
+| 開發/測試環境   | 標準 SKU         | Shared      | 基本        | 最多發佈 14 KB，大小為 2 GB    |
 | 生產環境 | 標準 SKU         | 基本       | 標準     | 最多發佈 49 個 KB，大小為 25 GB |
 
 ## <a name="recommended-settings"></a>建議的設定
 
 |目標 QPS | App Service 方案 | Azue 認知搜尋 |
 | -------------------- | ----------- | ------------ |
-| 3             | S1,1 個實體   | S1,1 個實體    |
-| 50         | S3,10 個實體       | S1, 12 實體         |
-| 80         | S3,10 個實體      |  S3, 12 實體  |
-| 100         | P3V2,10 個實體  | S3,12 個實例,3 個分區   |
-| 200 到 250         | P3V2,20 個實體 | S3,12 個實例,3 個分區    |
+| 3             | S1，1個實例   | S1，1個實例    |
+| 50         | S3，10個實例       | S1、12個實例         |
+| 80         | S3，10個實例      |  S3、12個實例  |
+| 100         | P3V2，10個實例  | S3、12個實例、3個磁碟分割   |
+| 200到250         | P3V2，20個實例 | S3、12個實例、3個磁碟分割    |
 
-## <a name="when-to-change-a-pricing-tier"></a>何時變更定價層
+## <a name="when-to-change-a-pricing-tier"></a>變更定價層的時機
 
 |升級|原因|
 |--|--|
-|[升級](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)QnA 製造商管理 SKU|您希望在知識庫中有更多的 QnA 對或文檔源。|
-|[升級](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service)套用服務 SKU 並檢查認知搜尋層並[建立認知搜尋副本](../../../search/search-capacity-planning.md)|您的知識庫需要從用戶端應用(如聊天機器人)提供更多請求。|
-|[升級](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)Azure 認知搜尋服務|你計劃擁有許多知識庫。|
+|[升級](../How-to/set-up-qnamaker-service-azure.md#upgrade-qna-maker-sku)QnA Maker 管理 SKU|您想要在知識庫中擁有更多 QnA 組或檔來源。|
+|[升級](../How-to/set-up-qnamaker-service-azure.md#upgrade-app-service)App Service SKU 及檢查認知搜尋層，並[建立認知搜尋複本](../../../search/search-capacity-planning.md)|您的知識庫需要為來自用戶端應用程式的更多要求提供服務，例如聊天機器人。|
+|[升級](../How-to/set-up-qnamaker-service-azure.md#upgrade-the-azure-cognitive-search-service)Azure 認知搜尋服務|您打算有許多知識庫。|
 
-通過在[Azure 門戶中更新應用服務來](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)獲取最新的運行時更新。
+[更新 Azure 入口網站中的 App Service，以](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)取得最新的執行時間更新。
 
-## <a name="resource-naming-considerations"></a>資源命名注意事項
+## <a name="resource-naming-considerations"></a>資源命名考慮
 
-QnA Maker 資源`qna-westus-f0-b`(如 )的資源名稱也用於命名其他資源。
+QnA Maker 資源的資源名稱（例如`qna-westus-f0-b`）也會用來命名其他資源。
 
-Azure 門戶建立視窗允許您創建 QnA Maker 資源,並為其他資源選擇定價層。
-
-> [!div class="mx-imgBorder"]
-> ![建立 QnA Maker 資源的 Azure 門戶螢幕截圖](../media/concept-azure-resource/create-blade.png)
-
-創建資源後,它們具有相同的名稱,但可選的應用程式見解資源除外,這些資源將字元後發佈到名稱。
+[Azure 入口網站建立] 視窗可讓您建立 QnA Maker 資源，並選取其他資源的定價層。
 
 > [!div class="mx-imgBorder"]
-> ![Azure 門戶資源清單的螢幕截圖](../media/concept-azure-resource/all-azure-resources-created-qnamaker.png)
+> ![QnA Maker 資源建立 Azure 入口網站的螢幕擷取畫面](../media/concept-azure-resource/create-blade.png)
+
+建立資源之後，它們會具有相同的名稱，但選擇性的 Application Insights 資源除外，其 postpends 的字元名稱。
+
+> [!div class="mx-imgBorder"]
+> ![Azure 入口網站資源清單的螢幕擷取畫面](../media/concept-azure-resource/all-azure-resources-created-qnamaker.png)
 
 > [!TIP]
-> 創建新資源群組時創建 QnA Maker 資源。 這允許您在按資源組搜索時查看與 QnA Maker 資源關聯的所有資源。
+> 當您建立 QnA Maker 資源時，請建立新的資源群組。 這可讓您在依資源群組搜尋時，查看與 QnA Maker 資源相關聯的所有資源。
 
 > [!TIP]
-> 使用命名約定指示資源或資源組名稱中的定價層。 當您收到創建新知識庫或添加新文檔時的錯誤時,認知搜索定價層限制是一個常見問題。
+> 使用命名慣例來表示資源或資源群組名稱內的定價層。 當您從建立新的知識庫或加入新的檔收到錯誤時，認知搜尋定價層限制是常見的問題。
 
 ## <a name="resource-purposes"></a>資源用途
 
-使用 QnA Maker 建立的每個 Azure 資源都有特定用途:
+使用 QnA Maker 建立的每個 Azure 資源都有特定的用途：
 
 * QnA Maker 資源
 * 認知搜尋資源
 * App Service 方案
-* 應用計劃服務
-* 應用程式洞察服務
+* 應用程式方案服務
+* Application Insights 服務
 
 
 ### <a name="cognitive-search-resource"></a>認知搜尋資源
 
-[認知搜尋](../../../search/index.yml)資源用於:
+[認知搜尋](../../../search/index.yml)資源是用來：
 
-* 儲存 QnA 對
-* 在執行時提供 QnA 對的初始排名(排名#1)
+* 儲存 QnA 配對
+* 在執行時間提供 QnA 配對的初始排名（ranker #1）
 
 #### <a name="index-usage"></a>索引使用方式
 
-資源保留一個索引作為測試索引,其餘索引與每個已發佈的知識庫相關聯。
+資源會保留一個索引作為測試索引，而其餘的索引會與每個已發佈的知識庫相互關聯。
 
-一個資源定價,以容納15個索引,將持有14個已發佈的知識庫,一個索引用於測試所有的知識庫。 此測試索引按知識庫進行分區,以便使用互動式測試窗格的查詢將使用測試索引,但僅返回與特定知識庫關聯的特定分區的結果。
+定價為保留15個索引的資源會保留14個已發佈的知識庫，並使用一個索引來測試所有知識庫。 此測試索引是由知識庫進行分割，因此使用 [互動式測試] 窗格的查詢將會使用測試索引，但只會傳回與特定知識庫相關聯之特定資料分割的結果。
 
-#### <a name="language-usage"></a>語言用法
+#### <a name="language-usage"></a>語言使用方式
 
-在 QnA Maker 資源中創建的第一個知識庫用於確定認知搜索資源及其所有索引_的單一_語言集。 對於 QnA Maker 服務,您只能設置_一種語言_設置。
+在 QnA Maker 資源中建立的第一個知識庫，是用來判斷針對認知搜尋資源及其所有索引所設定的_單一_語言。 QnA Maker 服務只能_設定一種語言_。
 
 ### <a name="qna-maker-resource"></a>QnA Maker 資源
 
-QnA Maker 資源提供對創作和發佈 API 以及運行時 QnA 對的第二排名層 (NLP)(排名#2)的訪問。
+QnA Maker 資源可讓您在執行時間存取撰寫和發佈 Api，以及 QnA 配對的自然語言處理（NLP）型第二個排名層（ranker #2）。
 
-第二個排名應用智慧篩選器,其中可以包含元數據和後續提示。
+第二個排名會套用可包含中繼資料和後續提示的智慧型篩選準則。
 
-#### <a name="qna-maker-resource-configuration-settings"></a>QnA 製造商資源設定設定
+#### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker 資源設定
 
-在[QnA Maker 門戶](https://qnamaker.ai)中建立新的知識庫時,**語言**設置是在資源級別應用的唯一設置。 在為資源創建第一個知識庫時,請選擇該語言。
+當您在[QnA Maker 入口網站](https://qnamaker.ai)中建立新的知識庫時，**語言**設定是在資源層級套用的唯一設定。 當您建立資源的第一個知識庫時，請選取語言。
 
-### <a name="app-service-and-app-service-plan"></a>套用服務和應用程式服務計劃
+### <a name="app-service-and-app-service-plan"></a>App service 和 App service 方案
 
-用戶端應用程式使用[應用服務](../../../app-service/index.yml)通過運行時終結點訪問已發佈的知識庫。
+您的用戶端應用程式會使用[App service](../../../app-service/index.yml) ，透過執行時間端點存取已發佈的知識庫。
 
-要查詢已發佈的知識庫,所有已發佈的知識庫都使用相同的 URL 終結點,但在路由中指定**知識庫 ID。**
+為了查詢已發佈的知識庫，所有已發佈的知識庫都會使用相同的 URL 端點，但會指定路由內的**知識庫識別碼**。
 
 `{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
 
 ### <a name="application-insights"></a>Application Insights
 
-[應用程式見解](../../../azure-monitor/app/app-insights-overview.md)用於收集聊天日誌和遙測數據。 查看常見的[Kusto 查詢](../how-to/get-analytics-knowledge-base.md),瞭解有關服務的資訊。
+[Application Insights](../../../azure-monitor/app/app-insights-overview.md)可用來收集聊天記錄和遙測。 如需服務的相關資訊，請參閱常見的[Kusto 查詢](../how-to/get-analytics-knowledge-base.md)。
 
-## <a name="share-services-with-qna-maker"></a>與 QnA 製造商分享服務
+## <a name="share-services-with-qna-maker"></a>與 QnA Maker 共用服務
 
-QnA Maker 創建多個 Azure 資源。 要減少管理並從成本分攤中獲益,請使用下表瞭解您可以共用和不能共用的內容:
+QnA Maker 會建立數個 Azure 資源。 若要減少管理和受益于成本共用，請使用下表來瞭解您可以和無法共用的內容：
 
-|服務|共用|原因|
+|Service|共用|原因|
 |--|--|--|
-|認知服務|X|設計上不可能|
-|App Service 方案|✔|為應用服務計劃分配的固定磁碟空間。 如果共用同一應用服務計劃的其他應用使用大量磁碟空間,則 QnAMaker 應用服務實例將遇到問題。|
-|App Service 方案|X|設計上不可能|
+|認知服務|X|設計不可行|
+|App Service 方案|✔|已修正配置給 App Service 方案的磁碟空間。 如果其他共用相同 App Service 方案的應用程式使用大量磁碟空間，QnAMaker App Service 實例就會發生問題。|
+|App Service|X|設計不可行|
 |Application Insights|✔|可以共用|
-|搜尋服務|✔|1.`testkb`是 QnAMaker 服務的保留名稱;不能被別人使用。<br>2.`synonym-map`名稱 的 Synonym 地圖保留為 QnAMaker 服務。<br>3. 已發佈的知識庫的數量受搜索服務層的限制。 如果有可用的免費索引,其他服務可以使用它們。|
+|搜尋服務|✔|1. `testkb`是 QnAMaker 服務的保留名稱;不能供其他人使用。<br>2. 為 QnAMaker 服務保留名稱`synonym-map`為的同義字對應。<br>3. 已發佈的知識庫數目會受到搜尋服務層級的限制。 如果有可用的索引，其他服務就可以使用它們。|
 
-### <a name="using-a-single-cognitive-search-service"></a>使用單一個認知搜尋服務
+### <a name="using-a-single-cognitive-search-service"></a>使用單一認知搜尋服務
 
-如果透過門戶建立 QnA 服務及其依賴項(如搜尋),則為您創建搜尋服務並連結到 QnA Maker 服務。 創建這些資源後,可以更新應用服務設置以使用以前存在的搜索服務,並刪除剛剛創建的搜索服務。
+如果您透過入口網站建立 QnA 服務及其相依性（例如搜尋），系統就會為您建立搜尋服務，並連結至 QnA Maker 服務。 建立這些資源之後，您可以更新 App Service 設定，以使用先前現有的搜尋服務，並移除您剛建立的搜尋服務。
 
-[瞭解如何設定](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)QnA Maker 以使用不同於作為 QnA Maker 資源創建過程一部分創建的認知服務資源。
+瞭解[如何設定](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)QnA Maker 使用與在 QnA Maker 資源建立程式中建立的不同認知服務資源。
 
 ## <a name="management-service-region"></a>管理服務區域
 
-QnA Maker 的管理服務僅用於 QnA 製造商門戶和初始數據處理。 此服務僅在**美國西部**區域提供。 此美國西部服務中不存儲任何客戶數據。
+QnA Maker 的管理服務僅適用于 QnA Maker 入口網站，以及用於初始資料處理。 此服務僅適用于**美國西部**區域。 此美國西部服務中不會儲存任何客戶資料。
 
-## <a name="keys-in-qna-maker"></a>QnA 製造商的金鑰
+## <a name="keys-in-qna-maker"></a>QnA Maker 中的機碼
 
-QnA Maker 服務處理兩種類型的金鑰:創作與 App 服務中託管的執行時一起使用的**金鑰**與**查詢終結點金鑰**。
+您的 QnA Maker 服務會處理兩種金鑰：**撰寫金鑰**和**查詢端點金鑰**，搭配裝載在 App service 中的執行時間使用。
 
-如果您要尋找**訂閱金鑰**[,字語已變更](#subscription-keys)。
+如果您要尋找訂用帳戶**金鑰**，[術語已改變](#subscription-keys)。
 
-通過 API 向服務發出請求時使用這些密鑰。
+透過 Api 對服務提出要求時，請使用這些金鑰。
 
 ![金鑰管理](../media/qnamaker-how-to-key-management/key-management.png)
 
-|名稱|Location|目的|
+|Name|Location|目的|
 |--|--|--|
-|撰寫金鑰|[Azure 入口網站](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|這些金鑰可用來存取 [QnA Maker 管理服務 API](https://go.microsoft.com/fwlink/?linkid=2092179)。 這些 API 允許您編輯知識庫中的問題和答案,併發布您的知識庫。 當您創建新的 QnA Maker 服務時,將創建這些密鑰。<br><br>在 **「密鑰**」頁上的 **「認知服務**」資源上找到這些鍵。|
-|查詢終結點鍵|[QnA Maker 入口網站](https://www.qnamaker.ai)|這些鍵用於查詢已發佈的知識庫終結點,以獲得用戶問題的回應。 您通常在聊天機器人或連接到 QnA Maker 服務的用戶端應用程式代碼中使用此查詢終結點。 這些密鑰是在發佈QnAMaker知識庫時創建的。<br><br>在 **「服務設置」** 頁中找到這些鍵。 從下拉菜單右上角的用戶功能表中尋找此頁面。|
+|撰寫金鑰|[Azure 入口網站](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|這些金鑰可用來存取 [QnA Maker 管理服務 API](https://go.microsoft.com/fwlink/?linkid=2092179)。 這些 Api 可讓您編輯知識庫中的問題和答案，併發布您的知識庫。 當您建立新的 QnA Maker 服務時，會建立這些金鑰。<br><br>在 [**金鑰**] 頁面上的**認知服務**資源上尋找這些金鑰。|
+|查詢端點金鑰|[QnA Maker 入口網站](https://www.qnamaker.ai)|這些金鑰可用來查詢已發佈的知識庫端點，以取得使用者問題的回應。 您通常會在聊天機器人或連接到 QnA Maker 服務的用戶端應用程式程式碼中使用此查詢端點。 當您發佈 QnA Maker 知識庫時，會建立這些金鑰。<br><br>在 [**服務設定**] 頁面中尋找這些金鑰。 從下拉式選單上頁面右上方的使用者功能表中，尋找此頁面。|
 
 ### <a name="subscription-keys"></a>訂用帳戶金鑰
 
-創作和查詢終結點鍵的術語是更正術語。 前一個字語是**訂閱金鑰**。 如果看到引用訂閱密鑰的其他文件,這些文檔等效於創作和查詢終結點密鑰(在運行時使用)。
+撰寫和查詢端點金鑰這兩者都是更正詞彙。 先前的詞彙是**訂**用帳戶金鑰。 如果您看到參考訂用帳戶金鑰的其他檔，這些就相當於撰寫和查詢端點金鑰（在執行時間中使用）。
 
-您必須知道金鑰是訪問、知識庫管理或知識庫查詢,才能知道需要查找哪個密鑰。
+您必須知道金鑰的存取權、知識庫管理或知識庫查詢，以知道您需要尋找的索引鍵。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解 QnA 製造商[知識庫](knowledge-base.md)
+* 瞭解 QnA Maker[知識庫](knowledge-base.md)
 * 瞭解[知識庫生命週期](development-lifecycle-knowledge-base.md)
 * 審查服務和知識庫[限制](../limits.md)
 

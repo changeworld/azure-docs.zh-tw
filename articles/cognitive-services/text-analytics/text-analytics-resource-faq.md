@@ -1,7 +1,7 @@
 ---
 title: 關於文字分析 API 的常見問題集
 titleSuffix: Azure Cognitive Services
-description: 查找有關與 Azure 認知服務的文本分析 API 相關的概念、代碼和方案的常見問題的解答。
+description: 尋找關於 Azure 認知服務的文字分析 API 相關概念、程式碼和案例常見問題的解答。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
 ms.openlocfilehash: aca3b0bea65923cee1bae25020058666c973922c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73837130"
 ---
 # <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>關於文字分析認知服務的常見問題集 (FAQ)
@@ -51,7 +51,7 @@ ms.locfileid: "73837130"
 
 您的問題是否與缺少特性或功能相關？ 請考慮在我們的 [UserVoice 網站](https://cognitive.uservoice.com/forums/555922-text-analytics)上要求或對它投票。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
- [堆疊溢位：文本分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow：文字分析 API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow：認知服務](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

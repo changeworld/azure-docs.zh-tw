@@ -1,7 +1,7 @@
 ---
 title: 如何上傳文件 - 自訂翻譯工具
 titleSuffix: Azure Cognitive Services
-description: 文檔上傳功能將並行文檔（其中一個是源的文檔，另一個是翻譯）上載到服務中。
+description: 檔上傳功能會將平行檔（兩個檔，其中一個是原點，另一個則是轉譯）上傳至服務。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: b2a249a40d8c782d54a12df43d33655f3409753c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73647374"
 ---
 # <a name="upload-a-document"></a>上傳文件

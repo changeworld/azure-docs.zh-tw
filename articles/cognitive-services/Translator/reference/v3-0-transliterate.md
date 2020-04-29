@@ -1,7 +1,7 @@
 ---
 title: 翻譯文字 API 轉換方法
 titleSuffix: Azure Cognitive Services
-description: 使用翻譯文本 API 轉譯方法將一種語言的文本從一個腳本轉換為另一個腳本。
+description: 使用翻譯工具文字 API 直譯方法，將文字轉換成另一種語言的腳本。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: e6bb1541b2b668796b352bebc68d59b4ade143e3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73837286"
 ---
 # <a name="translator-text-api-30-transliterate"></a>翻譯文字 API 3.0：轉換
@@ -60,7 +60,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   <th width="20%">headers</th>
   <th>描述</th>
   <tr>
-    <td>身份驗證標頭</td>
+    <td>驗證標頭</td>
     <td>必要的要求標頭<em></em>。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
   </tr>
   <tr>
@@ -77,7 +77,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
 </table> 
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 
 要求的本文是 JSON 陣列。 每個陣列項目都是字串屬性名為 `Text` 的 JSON 物件，其代表要轉換的字串。
 
@@ -147,7 +147,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>伺服器拒絕請求，因為用戶端已超過請求限制。</td>
+    <td>伺服器已拒絕要求，因為用戶端已超過要求限制。</td>
   </tr>
   <tr>
     <td>500</td>
