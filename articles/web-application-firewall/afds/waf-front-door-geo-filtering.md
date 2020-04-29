@@ -1,5 +1,5 @@
 ---
-title: Azure 前門服務域上的地理篩選
+title: Azure Front Service 的網域上的地區篩選
 description: 在本文中，您會了解 Azure Front Door Service 的地區篩選原則
 services: web-application-firewall
 author: vhorne
@@ -9,10 +9,10 @@ ms.date: 03/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: e287da94a71fccabddb90f3f5a3699f4c4cf22a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79472600"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什麼是 Azure Front Door 的網域地區篩選？
@@ -89,16 +89,16 @@ WAF 原則通常包含一組自訂規則。 規則會由比對條件、動作及
 | GF | 法屬圭亞那|
 | GH | 迦納|
 | GN | 幾內亞|
-| GP | 哥德洛普|
+| GP | 哥德普洛|
 | GR | 希臘|
 | GT | 瓜地馬拉|
-| GY | 蓋亞那|
+| GY | 蓋亞納|
 | HK | 香港特別行政區|
 | HN | 宏都拉斯|
 | HR | 克羅埃西亞|
 | HT | 海地|
 | HU | 匈牙利|
-| ID | 印尼|
+| 識別碼 | 印尼|
 | IE | 愛爾蘭|
 | IL | 以色列|
 | IN | 印度|

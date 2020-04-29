@@ -1,6 +1,6 @@
 ---
 title: Azure 活動記錄事件結構描述
-description: 描述 Azure 活動日誌中每個類別的事件架構。
+description: 說明 Azure 活動記錄中每個類別目錄的事件架構。
 author: bwren
 services: azure-monitor
 ms.topic: reference
@@ -8,16 +8,16 @@ ms.date: 12/04/2019
 ms.author: bwren
 ms.subservice: logs
 ms.openlocfilehash: c2f171c79423e0cfe8b57c05b8248679f9ada9f1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79472736"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活動記錄事件結構描述
-[Azure 活動日誌](platform-logs-overview.md)提供對 Azure 中發生的任何訂閱級事件的見解。 本文介紹了每個類別的事件架構。 
+[Azure 活動記錄](platform-logs-overview.md)可讓您深入瞭解 azure 中發生的任何訂用帳戶層級事件。 本文說明每個類別目錄的事件架構。 
 
-以下示例顯示從門戶、PowerShell、CLI 和 REST API 訪問活動日誌時的架構。 當您[將活動日誌資料流到存儲或事件中心時，](resource-logs-stream-event-hubs.md)架構是不同的。 文章末尾提供了屬性到[資源日誌架構](diagnostic-logs-schema.md)的映射。
+下列範例顯示當您從入口網站、PowerShell、CLI 和 REST API 存取活動記錄檔時的架構。 當您將[活動記錄串流至儲存體或事件中樞](resource-logs-stream-event-hubs.md)時，架構會不同。 本文結尾會提供屬性與[資源記錄架構](diagnostic-logs-schema.md)的對應。
 
 ## <a name="administrative"></a>管理
 透過 Resource Manager 執行的所有建立、更新、刪除和動作作業皆記錄在此類別中。 您可能會在此類別中看到的事件類型範例包括「建立虛擬機器」和「刪除網路安全性群組」。使用者或應用程式使用 Resource Manager 所執行的每個動作，都會成為特定資源類型上的作業模型。 如果作業類型為「寫入」、「刪除」或「動作」，則該作業的啟動及成功或失敗記錄皆會記錄在「系統管理」類別。 「系統管理」類別也包含訂用帳戶中角色型存取控制的所有變更。
@@ -120,13 +120,13 @@ ms.locfileid: "79472736"
 | correlationId |通常是字串格式的 GUID。 具有相同 correlationId、屬於同一 uber 動作的事件。 |
 | description |事件的靜態文字描述。 |
 | eventDataId |事件的唯一識別碼。 |
-| eventName | 管理事件的易記名稱。 |
-| category | 始終"管理" |
+| eventName | 系統管理事件的易記名稱。 |
+| category | 一律為「系統管理」 |
 | httpRequest |描述 HTTP 要求的 blob。 通常包括 “clientRequestId”、“clientIpAddress”和 “method” (HTTP 方法。 例如，PUT)。 |
 | 層級 |事件的層級。 下列其中一個值：“Critical”、“Error”、“Warning” 和 “Informational” |
 | resourceGroupName |受影響資源的資源群組的名稱。 |
 | resourceProviderName |受影響資源的資源提供者的名稱。 |
-| resourceType | 受管理事件影響的資源類型。 |
+| resourceType | 受系統管理事件影響的資源類型。 |
 | resourceId |受影響資源的資源識別碼。 |
 | operationId |對應至單一作業的事件共用的 GUID。 |
 | operationName |作業名稱。 |
@@ -359,7 +359,7 @@ ms.locfileid: "79472736"
 | correlationId | 字串格式的 GUID。 |
 | description |警示事件的靜態文字描述。 |
 | eventDataId |警示事件的唯一識別碼。 |
-| category | 始終"警報" |
+| category | 一律為「警示」 |
 | 層級 |事件的層級。 下列其中一個值：“Critical”、“Error”、“Warning” 和 “Informational” |
 | resourceGroupName |如果為計量警示，這是受影響資源的資源群組名稱。 針對其他警示類型，這是包含警示本身的資源群組名稱。 |
 | resourceProviderName |如果為計量警示，這是受影響資源的資源提供者名稱。 針對其他警示類型，這是警示本身的資源提供者名稱。 |
@@ -558,8 +558,8 @@ ms.locfileid: "79472736"
 | description |安全性事件的靜態文字描述。 |
 | eventDataId |安全性事件的唯一識別碼。 |
 | eventName |安全性事件的易記名稱。 |
-| category | 始終為"安全" |
-| ID |安全性事件的唯一資源識別碼。 |
+| category | 一律為「安全性」 |
+| 識別碼 |安全性事件的唯一資源識別碼。 |
 | 層級 |事件的層級。 下列其中一個值：“Critical”、“Error”、“Warning” 和 “Informational” |
 | resourceGroupName |資源的資源群組名稱。 |
 | resourceProviderName |「Azure 資訊安全中心」的資源提供者名稱。 一律為 "Microsoft.Security"。 |
@@ -576,7 +576,7 @@ ms.locfileid: "79472736"
 | subscriptionId |Azure 訂用帳戶識別碼。 |
 
 ## <a name="recommendation"></a>建議
-這個類別包含為您的服務產生的任何新建議記錄。 建議的範例像是「使用可用性設定組改善容錯。」 可以生成四種類型的建議事件：高可用性、性能、安全性和成本優化。 
+這個類別包含為您的服務產生的任何新建議記錄。 建議的範例像是「使用可用性設定組改善容錯。」 有四種類型的建議事件可產生：高可用性、效能、安全性和成本優化。 
 
 ### <a name="sample-event"></a>範例事件
 ```json
@@ -639,7 +639,7 @@ ms.locfileid: "79472736"
 | description |建議事件的靜態文字描述 |
 | eventDataId | 建議事件的唯一識別碼。 |
 | category | 一律為 "Recommendation" |
-| ID |建議事件的唯一資源識別碼。 |
+| 識別碼 |建議事件的唯一資源識別碼。 |
 | 層級 |事件的層級。 下列其中一個值：“Critical”、“Error”、“Warning” 和 “Informational” |
 | operationName |作業名稱。  一律為 "Microsoft.Advisor/generateRecommendations/action"|
 | resourceGroupName |資源的資源群組名稱。 |
@@ -657,7 +657,7 @@ ms.locfileid: "79472736"
 
 ## <a name="policy"></a>原則
 
-此類別包含 [Azure 原則](../../governance/policy/overview.md)所執行所有效果動作作業的記錄。 在此類別中將看到的事件種類的示例包括_審核_和_拒絕_。 原則所採取的每個動作會模型化為資源上的作業。
+此類別包含 [Azure 原則](../../governance/policy/overview.md)所執行所有效果動作作業的記錄。 您會在此類別中看到的事件種類範例包括 [ _Audit_ ] 和 [ _Deny_]。 原則所採取的每個動作會模型化為資源上的作業。
 
 ### <a name="sample-policy-event"></a>範例原則事件
 
@@ -754,7 +754,7 @@ ms.locfileid: "79472736"
 | eventName | 「BeginRequest」或「EndRequest」。 「BeginRequest」用於延遲的 auditIfNotExists 和 deployIfNotExists 評估，以及當 deployIfNotExists 效果開始範本部署時。 所有其他的作業都會傳回「EndRequest」。 |
 | category | 將活動記錄事件宣告為屬於「Policy」。 |
 | eventTimestamp | 處理與事件對應之要求的Azure 服務產生事件時的時間戳記。 |
-| ID | 特定資源上事件的唯一識別碼。 |
+| 識別碼 | 特定資源上事件的唯一識別碼。 |
 | 層級 | 事件的層級。 Audit 會使用「Warning」，Deny 會使用「Error」。 auditIfNotExists 或 deployIfNotExists 錯誤會根據嚴重性產生「Warning」或「Error」。 所有其他的原則事件會使用「Informational」。 |
 | operationId | 對應至單一作業的事件共用的 GUID。 |
 | operationName | 作業的名稱，且直接與「原則」效果相互關聯。 |
@@ -773,14 +773,14 @@ ms.locfileid: "79472736"
 | relatedEvents | 原則事件的這個欄位是空白的。 |
 
 
-## <a name="schema-from-storage-account-and-event-hubs"></a>來自存儲帳戶和事件中心的架構
-將 Azure 活動日誌資料流到存儲帳戶或事件中心時，資料遵循[資源日誌架構](diagnostic-logs-schema.md)。 下表提供了從上面的架構到資源日誌架構的屬性對應。
+## <a name="schema-from-storage-account-and-event-hubs"></a>來自儲存體帳戶和事件中樞的架構
+將 Azure 活動記錄串流處理至儲存體帳戶或事件中樞時，資料會遵循[資源記錄架構](diagnostic-logs-schema.md)。 下表提供從上述架構到資源記錄架構之屬性的對應。
 
 > [!IMPORTANT]
-> 2018 年 11 月 1 日，寫入存儲帳戶的活動日誌資料的格式更改為 JSON 行。 有關此格式更改的詳細資訊，請參閱[準備對存檔到存儲帳戶的 Azure 監視器資源日誌進行格式更改](diagnostic-logs-append-blobs.md)。
+> 寫入儲存體帳戶的活動記錄資料格式，在2018年11月1日變更為 JSON 行。 如需此格式變更的詳細資訊，請參閱[準備將格式變更 Azure 監視器封存到儲存體帳戶的資源記錄](diagnostic-logs-append-blobs.md)。
 
 
-| 資源日誌架構屬性 | 活動記錄 REST API 結構描述屬性 | 注意 |
+| 資源記錄架構屬性 | 活動記錄 REST API 結構描述屬性 | 備忘錄 |
 | --- | --- | --- |
 | time | eventTimestamp |  |
 | resourceId | resourceId | subscriptionId、resourceType、resourceGroupName 全都推斷自 resourceId。 |
@@ -794,14 +794,14 @@ ms.locfileid: "79472736"
 | correlationId | correlationId |  |
 | 身分識別 | 宣告和授權屬性 |  |
 | 層級 | 層級 |  |
-| location | N/A | 處理事件所在的位置。 *這不是資源的位置，而是處理事件的位置。此屬性將在將來的更新中刪除。* |
+| location | N/A | 處理事件所在的位置。 *這不是資源的位置，而是事件的處理位置。在未來的更新中將會移除此屬性。* |
 | 屬性 | properties.eventProperties |  |
 | properties.eventCategory | category | 如果 properties.eventCategory 不存在，則類別為 "Administrative" |
 | properties.eventName | eventName |  |
 | properties.operationId | operationId |  |
 | properties.eventProperties | properties |  |
 
-下面是使用此架構的事件的示例。
+以下是使用此架構的事件範例。
 
 ``` JSON
 {
@@ -864,6 +864,6 @@ ms.locfileid: "79472736"
 
 
 ## <a name="next-steps"></a>後續步驟
-* [瞭解有關活動日誌的更多內容](platform-logs-overview.md)
-* [創建診斷設置以將活動日誌發送到日誌分析工作區、Azure 存儲或事件中心](diagnostic-settings.md)
+* [深入瞭解活動記錄](platform-logs-overview.md)
+* [建立診斷設定，以將活動記錄傳送至 Log Analytics 工作區、Azure 儲存體或事件中樞](diagnostic-settings.md)
 

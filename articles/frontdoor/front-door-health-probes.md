@@ -1,6 +1,6 @@
 ---
-title: Azure 前門 - 後端運行狀況監控 |微軟文檔
-description: 本文可説明您瞭解 Azure 前門如何監視後端的運行狀況
+title: Azure Front 門板-後端健康情況監視 |Microsoft Docs
+description: 本文可協助您瞭解 Azure Front 門板如何監視後端的健康情況
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -12,32 +12,32 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: e2e656c395f1a31c1f5ebbd46d5a18a046f854f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471569"
 ---
 # <a name="health-probes"></a>健康狀態探查
 
-為了確定每個後端從給定的前門環境的運行狀況和鄰近性，每個前門環境都會定期向每個配置的後端發送綜合 HTTP/HTTPS 請求。 接著，Front Door 會使用來自這些探查的回應，來判斷它應該要路由傳送實際用戶端要求的「最佳」後端。 
+為了從指定的前端環境判斷每個後端的健全狀況和鄰近性，每個 Front 門環境都會定期將綜合 HTTP/HTTPS 要求傳送給每個已設定的後端。 接著，Front Door 會使用來自這些探查的回應，來判斷它應該要路由傳送實際用戶端要求的「最佳」後端。 
 
 > [!WARNING]
-> 由於前門在全球有許多邊緣環境，因此運行狀況探測器向後端請求的音量可能相當高 - 根據配置的運行狀況探測頻率，每分鐘從 25 個請求到每分鐘高達 1200 個請求。 預設探測頻率為 30 秒，後端上的探頭體積應約為每分鐘 200 個請求。
+> 由於前端有許多邊緣環境，因此後端的健康情況探查要求量可能非常高，範圍從25個要求到每分鐘的最高可達1200個要求，視所設定的健康情況探查頻率而定。 預設探查頻率為30秒，後端上的探查磁片區應為每分鐘大約200個要求。
 
 ## <a name="supported-protocols"></a>支援的通訊協定
 
 Front Door 支援透過 HTTP 或 HTTPS 通訊協定傳送探查。 這些探查透過設定用於路由傳送用戶端要求之相同的 TCP 連接埠傳送，並且無法覆寫。
 
-## <a name="supported-http-methods-for-health-probes"></a>支援運行狀況探測器的 HTTP 方法
+## <a name="supported-http-methods-for-health-probes"></a>健康情況探查支援的 HTTP 方法
 
-前門支援以下用於發送運行狀況探測器的 HTTP 方法：
+Front 門支援下列傳送健康情況探查的 HTTP 方法：
 
-1. **獲取：** GET 方法意味著檢索請求 URI 標識的任何資訊（以實體的形式）。
-2. **頭：** HEAD 方法與 GET 相同，只是伺服器不得在回應中返回郵件內文。 預設情況下，對於新的前門設定檔，探頭方法設置為 HEAD。
+1. **GET：** GET 方法表示會以要求 URI 識別任何資訊（以實體的形式）。
+2. **HEAD：** HEAD 方法與 GET 相同，不同之處在于伺服器不能傳迴響應中的訊息內文。 針對新的 Front 門板設定檔，探查方法預設會設定為 HEAD。
 
 > [!NOTE]
-> 為了降低後端的負載和成本，前門建議使用 HEAD 請求進行運行狀況探頭。
+> 針對較低的後端負載和成本，Front 門建議使用健康狀態探查的 HEAD 要求。
 
 ## <a name="health-probe-responses"></a>健全狀況探查回應
 
@@ -48,16 +48,16 @@ Front Door 支援透過 HTTP 或 HTTPS 通訊協定傳送探查。 這些探查�
 
 ## <a name="how-front-door-determines-backend-health"></a>Front Door 如何判斷後端的健康狀態
 
-Azure 前門在所有演算法中使用相同的三步過程來確定運行狀況。
+Azure Front 門板會在所有演算法上使用相同的三步驟程式來判斷健全狀況。
 
 1. 排除已停用後端。
 
 2. 排除有健康情況探查錯誤的後端：
     * 藉由查看最後 _n_ 個健全狀況探查回應來完成此選取。 如果至少 _x_ 狀況良好，則後端會視為狀況良好。
 
-    * _n_通過在負載平衡設置中更改 SampleSize 屬性進行配置。
+    * _n_是藉由變更負載平衡設定中的 SampleSize 屬性來設定。
 
-    * _x_是通過在負載平衡設置中更改成功採樣必需屬性來配置的。
+    * _x_是藉由變更負載平衡設定中的 SuccessfulSamplesRequired 屬性來設定。
 
 3. 在後端集區中狀況良好的集合中，Front Door 還會測量並維護每個後端的延遲 (來回時間)。
 
@@ -66,11 +66,11 @@ Azure 前門在所有演算法中使用相同的三步過程來確定運行狀�
 
 如果後端集區中的每個後端的健全狀況探查失敗，那麼 Front Door 會將所有的後端視為狀況良好，並在所有後端的循環配置資源散發中路由傳送流量。
 
-一旦任何後端恢復到正常狀態，前門將恢復正常的負載平衡演算法。
+一旦任何後端回到狀況良好狀態，Front 門板就會繼續正常的負載平衡演算法。
 
-## <a name="disabling-health-probes"></a>禁用運行狀況探測器
+## <a name="disabling-health-probes"></a>停用健全狀況探查
 
-如果後端池中只有一個後端，則可以選擇禁用運行狀況探測器，以減少應用程式後端的負載。 即使您在後端池中有多個後端，但只有一個後端處於啟用狀態，您也可以禁用運行狀況探測。
+如果您的後端集區中有單一後端，您可以選擇停用健全狀況探查以減少應用程式後端的負載。 即使您在後端集區中有多個後端，但只有其中一個處於 [已啟用] 狀態，您也可以停用健康情況探查。
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -1,5 +1,5 @@
 ---
-title: 解決 Azure 前門配置問題
+title: 針對 Azure Front 門板設定問題進行疑難排解
 description: 在本教學課程中，您會了解如何自行排解您可能會面臨的一些 Front Door 常見問題。
 services: frontdoor
 documentationcenter: ''
@@ -13,39 +13,39 @@ ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
 ms.openlocfilehash: 962c884eb8adc05e5d50b6b254d5c3f0b18af556
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79471501"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>針對常見路由問題進行疑難排解
 
-本文介紹如何解決 Azure 前門配置可能面臨的一些常見路由問題。
+本文說明如何針對您的 Azure Front 門板設定，針對您可能會面臨的一些常見路由問題進行疑難排解。
 
-## <a name="503-response-from-front-door-after-a-few-seconds"></a>幾秒鐘後前門的503回應
+## <a name="503-response-from-front-door-after-a-few-seconds"></a>503幾秒後面板的回應
 
 ### <a name="symptom"></a>徵狀
 
-- 發送到後端而不經過前門的常規請求將成功，但通過前門會導致 503 個錯誤回應。
+- 傳送至後端的一般要求若未通過 Front，就會繼續進行，但透過 Front 大門會產生503錯誤回應。
 
-- 前門故障在幾秒鐘後顯示（通常在 30 秒後左右）
+- Front 門板的失敗會在幾秒後顯示（通常約在30秒之後）
 
 ### <a name="cause"></a>原因
 
-當您的後端超出超時配置（預設為 30 秒）才能接收前門的請求，或者如果超出此超時值才能從前門發送對請求的回應時，就會發生此症狀。 
+當您的後端超過超時設定（預設值為30秒），以接收來自 Front 的要求，或超出此超時值來傳送來自 Front 的要求的回應時，就會發生此徵兆。 
 
 ### <a name="troubleshooting-steps"></a>疑難排解步驟
 
-- 直接將要求傳送到後端（無需通過前門），並查看後端回應所需的通常時間。
-- 通過前門發送請求，查看您是否看到任何 503 回應。 如果不是，則這可能不是超時問題。 請聯繫支援人員。
-- 如果通過前門會導致 503 錯誤回應代碼，則為前門配置"發送接收超時"欄位，將預設超時延長至 4 分鐘（240 秒）。 設置在 下`backendPoolSettings`稱為`sendRecvTimeoutSeconds`。 
+- 直接將要求傳送給您的後端（不需要透過 Front），並查看您的後端需要什麼時間來回應。
+- 透過前門傳送要求，並查看您是否看到任何503回應。 如果沒有，則這可能不是超時問題。 請聯絡支援人員。
+- 如果透過 Front 門板進行，會產生503錯誤回應碼，然後設定您的前門的 sendReceiveTimeout 欄位，將預設的超時時間延長為4分鐘（240秒）。 設定位於底下`backendPoolSettings` ，而且會呼叫`sendRecvTimeoutSeconds`。 
 
-## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>發送到自訂域的請求返回 400 狀態碼
+## <a name="requests-sent-to-the-custom-domain-returns-400-status-code"></a>傳送至自訂網域的要求會傳回400狀態碼
 
 ### <a name="symptom"></a>徵狀
 
-- 您已創建前門，但對域或前端主機的請求正在返回 HTTP 400 狀態碼。
+- 您已建立 Front 門，但對網域或前端主機的要求傳回 HTTP 400 狀態碼。
 
 - 您已建立從自訂網域到您所設定前端主機的 DNS 對應。 不過，將要求傳送至自訂網域主機名稱會傳回 HTTP 400 狀態碼，而且似乎不會路由傳送至您已設定的後端。
 
@@ -57,15 +57,15 @@ ms.locfileid: "79471501"
 
 新增從自訂網域到所需後端集區的路由規則。
 
-## <a name="front-door-is-not-redirecting-http-to-https"></a>前門未將 HTTP 重定向到 HTTPS
+## <a name="front-door-is-not-redirecting-http-to-https"></a>Front 門不會將 HTTP 重新導向至 HTTPS
 
 ### <a name="symptom"></a>徵狀
 
-前門有一個路由規則，該規則表示將 HTTP 重定向到 HTTPS，但訪問域仍保留 HTTP 作為協定。
+您的 Front，有一條路由規則顯示 [將 HTTP 重新導向至 HTTPS]，但存取網域仍會將 HTTP 維護為通訊協定。
 
 ### <a name="cause"></a>原因
 
-如果未正確配置前門的路由規則，則可能發生此行為。 基本上，您當前的配置並不具體，並且可能有衝突的規則。
+如果您沒有正確設定 Front 的路由規則，就可能會發生這種行為。 基本上，您目前的設定並不明確，而且可能會有衝突的規則。
 
 ### <a name="troubleshooting-steps"></a>疑難排解步驟
 
@@ -79,8 +79,8 @@ ms.locfileid: "79471501"
 
 這個徵狀的可能原因有幾個，包括︰
 
-- 後端不是面向後端的公共，前門不可見。
-- 後端配置錯誤，導致前門發送錯誤的請求（即，後端僅接受 HTTP，但您尚未取消選中允許 HTTPS，因此前門正在嘗試轉發 HTTPS 請求）。
+- 後端不是公開的後端，因此不會顯示在 Front 中。
+- 後端設定錯誤，這會導致前門傳送錯誤的要求（也就是，您的後端只接受 HTTP，但您並未取消核取允許 HTTPS，因此 Front 會嘗試轉送 HTTPS 要求）。
 - 後端會拒絕已透過要求轉送至後端的主機標頭。
 - 尚未完整部署後端的組態。
 
@@ -98,7 +98,7 @@ ms.locfileid: "79471501"
 
 
 3. 檢查路由規則設定
-    - 瀏覽到應會從有問題的前端主機名稱路由傳送至後端集區的路由規則。 確定接受的通訊協定設定正確，若非如此，請確定已正確設定 Front Door 在轉送要求時會使用的通訊協定。 _接受的協定_欄位確定前門應接受哪些請求，_轉發協定_確定前門應使用什麼協定將請求轉發到後端。
+    - 瀏覽到應會從有問題的前端主機名稱路由傳送至後端集區的路由規則。 確定接受的通訊協定設定正確，若非如此，請確定已正確設定 Front Door 在轉送要求時會使用的通訊協定。 [_接受的通訊協定_] 欄位會決定 front 門板應接受的要求，而_轉送通訊協定_則決定 front 門板應使用哪一個通訊協定來將要求轉送至後端。
          - 例如，如果後端只接受 HTTP 要求，則下列組態會有效：
             - [接受的通訊協定]__ 為 HTTP 和 HTTPS。 [轉送通訊協定]__ 為 HTTP。 比對要求無法運作，因為 HTTPS 是允許的通訊協定，而如果要求以 HTTPS 形式傳入，Front Door 會嘗試使用 HTTPS 轉送它。
 
