@@ -1,5 +1,5 @@
 ---
-title: 管理資料包捕獲 - Azure PowerShell
+title: 管理封包捕獲-Azure PowerShell
 titleSuffix: Azure Network Watcher
 description: 此頁面說明如何使用 PowerShell 管理網路監看員的封包擷取功能
 services: network-watcher
@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 06263f85f7d6ad6cc80724baab01124833498739
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79129646"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>使用 PowerShell 以 Azure 網路監看員管理封包擷取
 
 > [!div class="op_single_selector"]
-> - [Azure 門戶](network-watcher-packet-capture-manage-portal.md)
-> - [電源外殼](network-watcher-packet-capture-manage-powershell.md)
+> - [Azure 入口網站](network-watcher-packet-capture-manage-portal.md)
+> - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
@@ -278,7 +278,7 @@ https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscrip
 
 檢視[建立由警示觸發的封包擷取](network-watcher-alert-triggered-packet-capture.md)來了解如何透過虛擬機器警示自動化封包擷取
 
-通過訪問[檢查 IP 流驗證](diagnose-vm-network-traffic-filtering-problem.md)，查找是否允許某些流量進入或退出 VM
+造訪[檢查 IP 流量驗證](diagnose-vm-network-traffic-filtering-problem.md)來尋找 VM 是否允許特定流量流入或流出
 
 <!-- Image references -->
 

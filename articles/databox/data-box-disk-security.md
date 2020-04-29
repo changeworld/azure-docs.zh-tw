@@ -1,6 +1,6 @@
 ---
-title: 微軟 Azure 資料盒磁片安全功能 |微軟資料文檔
-description: 描述為 Azure 資料盒磁片實現的安全功能，該雲解決方案使您能夠將大量資料傳輸到 Azure
+title: Microsoft Azure 資料箱磁碟安全性功能 |資料中的 Microsoft Docs
+description: 說明為 Azure 資料箱磁碟所實行的安全性功能，這是可讓您將大量資料傳輸至 Azure 的雲端解決方案
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: alkohli
 ms.openlocfilehash: 59cce6d89bc863ad489a8ed37c7f284d3085c775
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79117294"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure 資料箱磁碟安全性和資料保護

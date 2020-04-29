@@ -11,13 +11,13 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
 ms.openlocfilehash: e30103589c1baf9a165839cd041ff511a119c5ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79204370"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Azure 機器學習工作室（經典）Web 服務的 Excel 外接程式
+# <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>適用于 Azure Machine Learning Studio （傳統） web 服務的 Excel 增益集
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Excel 可以讓您直接輕鬆呼叫 Web 服務，而不需要撰寫任何程式碼。
@@ -39,44 +39,44 @@ Excel 可以讓您直接輕鬆呼叫 Web 服務，而不需要撰寫任何程式
    
     ![預測區段](./media/excel-add-in-for-web-services/image1.png)
 
-部署 Web 服務或使用現有的 Web 服務。 有關部署 Web 服務的詳細資訊，請參閱教程[3：部署信用風險模型](tutorial-part3-credit-risk-deploy.md)。
+部署 Web 服務或使用現有的 Web 服務。 如需部署 web 服務的詳細資訊，請參閱[教學課程3：部署信用風險模型](tutorial-part3-credit-risk-deploy.md)。
 
 取得 Web 服務的 API 金鑰。 執行此動作的位置，取決於您發佈的是傳統 Machine Learning Web 服務或新的 Machine Learning Web 服務。
 
-**使用經典 Web 服務** 
+**使用傳統 web 服務** 
 
-1. 在機器學習工作室（經典版）中，按一下左側窗格中的**WEB 服務**部分，然後選擇 Web 服務。
+1. 在 [Machine Learning Studio （傳統）] 中，按一下左窗格中的 [ **WEB 服務**] 區段，然後選取 [web 服務]。
    
     ![Studio 選取 Web 服務](./media/excel-add-in-for-web-services/image4.png)
 2. 複製 web 服務的 API 金鑰。
    
     ![Studio API 金鑰](./media/excel-add-in-for-web-services/image5.png)
-3. 在 Web 服務的 **"DASHBOARD"** 選項卡上，按一下 **"請求/回應**"連結。
+3. 在 web 服務的 [**儀表板**] 索引標籤上，按一下 [**要求/回應**] 連結。
 4. 尋找 [要求 URI] **** 區段。  複製並儲存 URL。
 
 > [!NOTE]
-> 現在可以登錄到[Azure 機器學習 Web 服務](https://services.azureml.net)門戶以獲取經典機器學習 Web 服務的 API 金鑰。
+> 現在可以登入[Azure Machine Learning Web 服務](https://services.azureml.net)入口網站，以取得傳統 Machine Learning Web 服務的 API 金鑰。
 > 
 > 
 
-**使用新的 Web 服務**
+**使用新的 web 服務**
 
-1. 在[Azure 機器學習 Web 服務](https://services.azureml.net)門戶中，按一下**Web 服務**，然後選擇 Web 服務。 
+1. 在[Azure Machine Learning Web 服務](https://services.azureml.net)入口網站中，按一下 [ **web 服務**]，然後選取您的 web 服務。 
 2. 按一下 [取用] ****。
 3. 尋找 [基本使用資訊] **** 區段。 複製並儲存 [主要金鑰]**** 和 [要求-回應]**** URL。
 
 ## <a name="steps-to-add-a-new-web-service"></a>新增 Web 服務的步驟
 
-1. 部署 Web 服務或使用現有的 Web 服務。 有關部署 Web 服務的詳細資訊，請參閱教程[3：部署信用風險模型](tutorial-part3-credit-risk-deploy.md)。
+1. 部署 Web 服務或使用現有的 Web 服務。 如需部署 web 服務的詳細資訊，請參閱[教學課程3：部署信用風險模型](tutorial-part3-credit-risk-deploy.md)。
 2. 按一下 [取用] ****。
 3. 尋找 [基本使用資訊] **** 區段。 複製並儲存 [主要金鑰]**** 和 [要求-回應]**** URL。
-4. 在 Excel 中，轉到**Web 服務**部分（如果您在 **"預測"** 部分中，請按一下後退箭頭以轉到 Web 服務清單）。
+4. 在 Excel 中，移至 [ **Web 服務**] 區段（如果您是在 [**預測**] 區段中，請按一下 [上一步] 箭號以移至 web 服務的清單）。
    
     ![前往 Web 服務](./media/excel-add-in-for-web-services/image3.png)
 5. 按一下 [新增 Web 服務] ****。
 6. 將 URL 貼到標示為 [URL] **** 的 Excel 增益集文字方塊中。
 7. 將 API/主要金鑰貼到標示為 [API 金鑰] **** 的文字方塊中。
-8. 按一下 **[新增]**。
+8. 按一下 [加入]  。
    
     ![傳統 Web 服務的 URL 和 API 金鑰。](./media/excel-add-in-for-web-services/image6.png)
 9. 若要使用 Web 服務，請遵循前述「使用現有 Web 服務的步驟」的指示。

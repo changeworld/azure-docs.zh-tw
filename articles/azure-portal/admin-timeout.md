@@ -1,8 +1,8 @@
 ---
-title: 為 Azure 門戶的使用者設置目錄級不活動超時 |微軟文檔
-description: 管理員可以在會話登出之前強制執行最大閒置時間。非活動超時策略在目錄級別設置。
+title: 為 Azure 入口網站的使用者設定目錄層級的非啟用時間 |Microsoft Docs
+description: 系統管理員可以在會話登出之前，強制執行最大閒置時間。在目錄層級設定的無活動超時原則。
 services: azure-portal
-keywords: 設置、超時
+keywords: 設定，超時
 author: mgblythe
 ms.author: mblythe
 ms.date: 02/10/2020
@@ -10,40 +10,40 @@ ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: e27135d09da7060f2a948e37f6026fe66fbef5b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79096603"
 ---
-# <a name="set-directory-level-inactivity-timeout"></a>設置目錄級非活動超時
+# <a name="set-directory-level-inactivity-timeout"></a>設定目錄層級的非啟用時間
 
-不活動超時設置有助於保護資源免受使用者忘記保護其工作站的未授權訪問。 當使用者處於空閒狀態一段時間時，其 Azure 門戶會話將自動登出。[全域管理員角色的](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)管理員可以在會話登出之前強制執行最大閒置時間。不活動超時設置適用于目錄級別。 有關目錄的詳細資訊，請參閱[活動目錄域服務概述](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
+如果使用者忘記保護其工作站，無活動超時設定有助於保護您的資源免于未經授權的存取。 當使用者閒置一段時間時，系統會自動登出他們的 Azure 入口網站會話。[全域管理員角色](../active-directory/users-groups-roles/directory-assign-admin-roles.md#global-administrator--company-administrator)中的系統管理員可以在會話登出之前，強制執行最大閒置時間。無活動超時設定適用于目錄層級。 如需目錄的詳細資訊，請參閱[Active Directory Domain Services 總覽](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)。
 
-## <a name="configure-the-inactive-timeout-setting"></a>配置非活動超時設置
+## <a name="configure-the-inactive-timeout-setting"></a>設定非使用中的超時設定
 
-如果您是全域管理員，並且希望為 Azure 門戶的所有使用者強制實施空閒超時設置，請按照以下步驟操作：
+如果您是全域系統管理員，而且想要針對 Azure 入口網站的所有使用者強制執行閒置的超時設定，請遵循下列步驟：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
-2. 從全域頁面標題中選擇 **"設置**"。
-3. 選擇連結文本**配置目錄級別超時**。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
+2. 從全域頁面標頭中選取 [**設定**]。
+3. 選取連結文字 [**設定目錄層級超時**]。
 
-    ![顯示突出顯示連結文本的門戶設置的螢幕截圖](./media/admin-timeout/settings.png)
+    ![螢幕擷取畫面，其中顯示已醒目提示連結文字的入口網站設定](./media/admin-timeout/settings.png)
 
-4. 新的頁面隨即開啟。 在 **"配置目錄級別不活動超時"** 頁上，選擇**啟用目錄級空閒超時，以便 Azure 門戶**打開該設置。
-5. 接下來，輸入使用者在自動登出會話之前可以空閒的最長時間**的時間和****分鐘**。
-6. 選取 [**套用**]。
+4. 新的頁面隨即開啟。 在 [**設定目錄層級的非使用時間超時**] 頁面上，選取 **[啟用 Azure 入口網站的目錄層級閒置時間**] 以開啟設定。
+5. 接下來，輸入使用者在其會話自動登出之前，可以閒置的時間和**分鐘****數**。
+6. 選取 [套用]  。
 
-    ![顯示頁面以設置目錄級非活動超時的螢幕截圖](./media/admin-timeout/configure.png)
+    ![顯示頁面以設定目錄層級非啟用時間的螢幕擷取畫面](./media/admin-timeout/configure.png)
 
-要確認未活動超時策略設置正確，請從全域頁眉中選擇 **"通知**"。 驗證是否列出了成功通知。
+若要確認是否已正確設定 [無活動超時] 原則，請從全域頁面標頭選取 [**通知**]。 確認已列出成功通知。
 
-  ![顯示目錄級非活動超時成功通知訊息的螢幕截圖](./media/admin-timeout/confirmation.png)
+  ![螢幕擷取畫面，顯示目錄層級非啟用時間的成功通知訊息](./media/admin-timeout/confirmation.png)
 
-該設置對新會話生效。 它不會立即應用於已登錄的任何使用者。
+此設定會對新的會話生效。 它不會立即套用到已登入的任何使用者。
 
 > [!NOTE]
-> 如果全域管理員配置了目錄級超時設置，使用者可以覆蓋策略並設置自己的非活動登出持續時間。 但是，使用者必須選擇的時間間隔小於全域管理員在目錄級別設置的時間間隔。
+> 如果全域管理員已設定目錄層級的超時設定，使用者可以覆寫原則並設定自己的非作用中登出持續時間。 不過，使用者必須選擇小於全域管理員在目錄層級設定的時間間隔。
 >
 
 ## <a name="next-steps"></a>後續步驟

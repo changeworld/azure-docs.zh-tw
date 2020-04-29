@@ -1,27 +1,27 @@
 ---
 title: 使用 Docker Compose
-description: 如何使用 Azure CLI 在 Linux 虛擬機器上安裝和使用 Docker 和合成。
+description: 如何在具有 Azure CLI 的 Linux 虛擬機器上安裝和使用 Docker 並加以撰寫。
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78970313"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>在 Azure 中開始使用 Docker 和 Compose 定義並執行多容器應用程式
-使用[Compose](https://github.com/docker/compose)，您可以使用簡單的文字檔來定義由多個 Docker 容器組成的應用程式。 接著，您可以透過單一命令來啟動應用程式，此命令會執行所需的一切準備工作，以部署您的已定義環境。 舉例來說，本文將說明如何藉由 Ubuntu VM 上的後端 MariaDB SQL 資料庫來快速設定 WordPress 部落格。 您也可以使用 Compose 來設定更複雜的應用程式。
+使用 [[撰寫](https://github.com/docker/compose)] 時，您可以使用簡單的文字檔來定義由多個 Docker 容器所組成的應用程式。 接著，您可以透過單一命令來啟動應用程式，此命令會執行所需的一切準備工作，以部署您的已定義環境。 舉例來說，本文將說明如何藉由 Ubuntu VM 上的後端 MariaDB SQL 資料庫來快速設定 WordPress 部落格。 您也可以使用 Compose 來設定更複雜的應用程式。
 
 本文最後一次測試是在 2019 年 2 月 14 日，使用 [Azure Cloud Shell](https://shell.azure.com/bash) 和 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 2.0.58 版進行的。
 
 ## <a name="create-docker-host-with-azure-cli"></a>使用 Azure CLI 建立 Docker 主機
 請安裝最新的 [Azure CLI](/cli/azure/install-az-cli2)，並使用 [az login](/cli/azure/reference-index) 來登入 Azure 帳戶。
 
-首先，使用 [az group create](/cli/azure/group) 建立 Docker 環境的資源群組。 下面的示例在*東部*位置創建名為*myResourceGroup*的資源組：
+首先，使用 [az group create](/cli/azure/group) 建立 Docker 環境的資源群組。 下列範例會在 eastus  位置建立名為 myResourceGroup  的資源群組：
 
 ```azurecli-interactive
 az group create --name myDockerGroup --location eastus

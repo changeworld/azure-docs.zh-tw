@@ -1,5 +1,5 @@
 ---
-title: 監視器 XTP 記憶體記憶體儲
+title: 監視 XTP 記憶體內部儲存體
 description: 估計和監視 XTP 記憶體內儲存體使用量、容量；解決容量錯誤 41823
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 22ff83b1ccd009624082e45073123a45006df70f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79209443"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>監視記憶體內部 OLTP 儲存體

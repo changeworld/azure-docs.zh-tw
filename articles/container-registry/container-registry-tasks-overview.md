@@ -1,37 +1,37 @@
 ---
 title: ACR 工作概觀
-description: ACR 任務簡介，Azure 容器註冊表中的一組功能，在雲中提供安全、自動化的容器映射生成、管理和修補。
+description: ACR 工作簡介，這是 Azure Container Registry 中的一套功能，可在雲端中提供安全、自動化的容器映射組建、管理和修補。
 ms.topic: article
 ms.date: 01/22/2020
 ms.openlocfilehash: 4fda57c1d7c866f2e6f72b04d75e53f91e995baf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79087287"
 ---
-# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 任務自動執行容器映射生成和維護
+# <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>使用 ACR 工作自動化容器映射組建和維護
 
-容器提供新的虛擬化層級，並且隔離應用程式和開發人員相依性與基礎結構和作業需求。 但是，仍然存在的是需要解決如何在容器生命週期中管理和修補此應用程式虛擬化。
+容器提供新的虛擬化層級，並且隔離應用程式和開發人員相依性與基礎結構和作業需求。 不過，仍然需要解決此應用程式虛擬化如何透過容器生命週期進行管理和修補。
 
 ## <a name="what-is-acr-tasks"></a>什麼是 ACR 工作？
 
-「ACR 工作」**** 是 Azure Container Registry 內的一套功能。 它為 Linux、Windows 和 ARM 等[平臺](#image-platforms)提供基於雲的容器映射構建，並可自動為 Docker 容器[進行作業系統和框架修補](#automate-os-and-framework-patching)。 ACR 任務不僅通過按需容器映射生成將"內部迴圈"開發週期擴展到雲，還支援由原始程式碼更新、容器基本映射更新或計時器觸發的自動生成。 例如，使用基本映射更新觸發器，您可以自動執行作業系統和應用程式框架修補工作流，在遵守不可變容器原則的同時維護安全環境。
+「ACR 工作」**** 是 Azure Container Registry 內的一套功能。 它提供以雲端為基礎的容器映射，適用于包含 Linux、Windows 和 ARM 的[平臺](#image-platforms)，並可自動為您的 Docker 容器進行[OS 和架構修補](#automate-os-and-framework-patching)。 ACR 工作不僅會使用隨選容器映射組建將您的「內部迴圈」開發週期延伸到雲端，還可讓原始程式碼更新所觸發的自動化組建、容器基底映射或計時器的更新。 例如，透過基底映射更新觸發程式，您可以將作業系統和應用程式架構修補工作流程自動化，維護安全環境，同時遵守不可變容器的原則。
 
-## <a name="task-scenarios"></a>任務方案
+## <a name="task-scenarios"></a>工作案例
 
-ACR 任務支援多個方案來生成和維護容器映射和其他專案。 有關詳細資訊，請參閱本文中的以下部分。
+ACR 工作支援數種建立和維護容器映射和其他成品的案例。 如需詳細資訊，請參閱本文中的下列各節。
 
-* **[快速任務](#quick-task)**- 在 Azure 中按需生成單個容器映射並將其推送到容器註冊表，而無需安裝本地 Docker 引擎。 請思考一下雲端中的 `docker build`、`docker push`。
-* **自動觸發的任務**- 啟用一個或多個*觸發器*來生成映射：
-  * **[在原始程式碼更新時觸發](#trigger-task-on-source-code-update)** 
-  * **[基於基本映射更新觸發](#automate-os-and-framework-patching)** 
-  * **[按計劃觸發](#schedule-a-task)** 
-* **[多步驟任務](#multi-step-tasks)**- 使用多步、多容器的工作流擴展 ACR 任務的單映射構建和推送功能。 
+* **[快速](#quick-task)** 工作-在 Azure 中建立單一容器映射並隨選推送至容器登錄，而不需要本機 Docker 引擎安裝。 請思考一下雲端中的 `docker build`、`docker push`。
+* **自動觸發**的工作-啟用一或多個*觸發*程式來建立映射：
+  * **[原始程式碼更新的觸發程式](#trigger-task-on-source-code-update)** 
+  * **[基底映射更新的觸發程式](#automate-os-and-framework-patching)** 
+  * **[依排程觸發](#schedule-a-task)** 
+* **[多步驟](#multi-step-tasks)** 工作-使用多步驟、多容器型工作流程，擴充 ACR 工作的單一映射組建和推送功能。 
 
-每個 ACR 任務都有一個關聯的[原始程式碼上下文](#context-locations)- 用於生成容器映射或其他工件的一組原始檔案的位置。 示例上下文包括 Git 存儲庫或本地檔案系統。
+每個 ACR 工作都有相關聯的[原始程式碼內容](#context-locations)，也就是用來建立容器映射或其他成品的一組原始程式檔的位置。 範例內容包含 Git 存放庫或本機檔案系統。
 
-任務還可以利用[運行變數](container-registry-tasks-reference-yaml.md#run-variables)，因此您可以重用任務定義並標準化圖像和工件的標記。
+工作也可以利用[執行變數](container-registry-tasks-reference-yaml.md#run-variables)，因此您可以重複使用工作定義，並將影像和成品的標記標準化。
 
 ## <a name="quick-task"></a>快速工作
 
@@ -41,27 +41,27 @@ ACR 任務支援多個方案來生成和維護容器映射和其他專案。 有
 
 Azure CLI 中的 [az acr build][az-acr-build]命令會使用熟悉的 `docker build` 格式來取得「內容」[](#context-locations)(要建置的一組檔案)、將它傳送給「ACR 工作」，然後依預設在完成時將所建置的映像推送至其登錄。
 
-有關簡介，請參閱在 Azure 容器註冊表中[生成和運行容器映射](container-registry-quickstart-task-cli.md)的快速入門。  
+如需簡介，請參閱在 Azure Container Registry 中[建立和執行容器映射](container-registry-quickstart-task-cli.md)的快速入門。  
 
 「ACR 工作」已設計為容器生命週期原始物件。 例如，您可以將「ACR 工作」整合到 CI/CD 解決方案中。 透過[服務主體][az-login-service-principal]執行 [az login][az-login]，您的 CI/CD 解決方案可接著發出 [az acr build][az-acr-build] 命令來開始進行映像建置。
 
 若要了解如何使用快速工作，請參閱第一個「ACR 工作」教學課程：[使用 Azure Container Registry 工作在雲端中建置容器映像](container-registry-tutorial-quick-task.md)。
 
 > [!TIP]
-> 如果要直接從原始程式碼生成和推送映射，而不使用 Dockerfile，Azure 容器註冊表提供[az acr 包生成][az-acr-pack-build]命令（預覽）。 此工具使用[雲本機構建包](https://buildpacks.io/)從應用程式原始程式碼生成和推送映射。
+> 如果您想要直接從原始程式碼建立和推送映射，但沒有 Dockerfile，Azure Container Registry 提供[az acr pack build][az-acr-pack-build]命令（preview）。 此工具會使用[雲端原生 Buildpacks](https://buildpacks.io/)，從應用程式原始程式碼建立和推送映射。
 
-## <a name="trigger-task-on-source-code-update"></a>在原始程式碼更新時觸發任務
+## <a name="trigger-task-on-source-code-update"></a>原始程式碼更新的觸發程式工作
 
-當向 GitHub 或 Azure DevOps 中的公共或私有 Git 存儲庫提交或發出拉取請求時，觸發容器映射生成或多步驟任務。 例如，通過指定 Git 存儲庫和可選地指定分支和 Dockerfile 來配置使用 Azure CLI 命令[az acr 任務創建的生成任務][az-acr-task-create]。 當團隊更新存儲庫中的代碼時，ACR 任務創建的 Webhook 將觸發存儲庫中定義的容器映射的生成。 
+在將程式碼認可或提取要求或更新至 GitHub 或 Azure DevOps 中的公用或私人 Git 存放庫時，觸發容器映射組建或多步驟工作。 例如，藉由指定 Git 存放庫和選擇性的分支和 Dockerfile，使用 Azure CLI 命令[az acr task create][az-acr-task-create]來設定組建工作。 當您的小組更新儲存機制中的程式碼時，ACR 工作建立的 webhook 會觸發存放庫中所定義之容器映射的組建。 
 
-當您將 Git 存儲庫設置為任務的上下文時，ACR 任務支援以下觸發器：
+當您將 Git 存放庫設定為工作的內容時，ACR 工作支援下列觸發程式：
 
 | 觸發程序 | 預設已啟用 |
 | ------- | ------------------ |
 | Commit | 是 |
 | 提取要求 | 否 |
 
-要配置原始程式碼更新觸發器，您需要為任務提供個人訪問權杖 （PAT）， 以在公共或私有 GitHub 或 Azure DevOps 存儲庫中設置 Webhook。
+若要設定原始程式碼更新觸發程式，您必須提供工作個人存取權杖（PAT），以在公用或私人 GitHub 或 Azure DevOps 存放庫中設定 webhook。
 
 > [!NOTE]
 > 目前，ACR 工作不支援 GitHub Enterprise 存放庫中的認可或提取要求觸發程序。
@@ -70,27 +70,27 @@ Azure CLI 中的 [az acr build][az-acr-build]命令會使用熟悉的 `docker bu
 
 ## <a name="automate-os-and-framework-patching"></a>自動進行作業系統和架構修補
 
-ACR 任務真正增強容器生成工作流的強大功能來自于它檢測*基本映射*的更新的能力。 大多數容器映射的一個功能，基本映射是一個或多個應用程式映射基於的父映射。 基本映射通常包含作業系統，有時包括應用程式框架。 
+真正加強容器組建工作流程的 ACR 工作功能，是因為它能夠偵測到*基底映射*的更新。 大部分容器映射的功能，基底映射是一或多個應用程式映射所依據的父映射。 基底映射通常包含作業系統，有時是應用程式架構。 
 
-您可以設置 ACR 任務，以在生成應用程式映射時跟蹤對基本映射的依賴項。 將更新的基本映射推送到註冊表，或在諸如 Docker Hub 中等公共回購中更新基本映射時，ACR 任務可以基於它自動生成任何應用程式映射。
+建立應用程式映射時，您可以設定 ACR 工作來追蹤基底映射的相依性。 當更新的基底映射推送至您的登錄，或在公用儲存機制（例如 Docker Hub）中更新基底映射時，ACR 工作可以根據它自動建立任何應用程式映射。
 透過這個自動偵測和重建功能，「ACR 工作」便可讓您針對參考已更新之基底映像的每個應用程式映像，省下手動追蹤及更新通常所需的時間與精力。
 
-瞭解有關 ACR 任務[的基本映射更新觸發器](container-registry-tasks-base-images.md)的詳細資訊。 瞭解如何在教程中將基本映射推送到容器註冊表時觸發映射[生成，在 Azure 容器註冊表中更新基本映射時自動生成容器映射](container-registry-tutorial-base-image-update.md)
+深入瞭解 ACR 工作的[基底映射更新觸發](container-registry-tasks-base-images.md)程式。 並瞭解如何在基底映射推送至容器登錄時觸發映射組建，教學課程會在[Azure container registry 中更新基底映射時自動執行容器映射組建](container-registry-tutorial-base-image-update.md)
 
 ## <a name="schedule-a-task"></a>排程工作
 
-在創建或更新任務時，可以選擇設置一個或多個*計時器觸發器來*安排任務。 計畫任務對於按計劃運行容器工作負載，或在定期推送到註冊表的映射上運行維護操作或測試非常有用。 有關詳細資訊，請參閱[在定義的計畫上運行 ACR 任務](container-registry-tasks-scheduled.md)。
+當您建立或更新工作時，藉由設定一或多個*計時器觸發*程式，選擇性地排程工作。 排程工作適用于依照定義的排程執行容器工作負載，或對定期推送至您的登錄的映射執行維護作業或測試。 如需詳細資訊，請參閱依[定義的排程執行 ACR](container-registry-tasks-scheduled.md)工作。
 
 ## <a name="multi-step-tasks"></a>多步驟工作
 
-多步驟工作提供適用於在雲端建置、測試及修補容器映像的步驟型工作定義與執行。 在[YAML 檔中](container-registry-tasks-reference-yaml.md)定義的任務步驟指定容器映射或其他工件的單個生成和推送操作。 它們也可以定義一或多個容器的執行，其中每個步驟都使用容器作為其執行環境。
+多步驟工作提供適用於在雲端建置、測試及修補容器映像的步驟型工作定義與執行。 在[YAML](container-registry-tasks-reference-yaml.md)檔中定義的工作步驟會指定容器映射或其他成品的個別組建和推送作業。 它們也可以定義一或多個容器的執行，其中每個步驟都使用容器作為其執行環境。
 
 例如，您可以建立一個自動執行下列操作的多步驟工作：
 
 1. 建置 Web 應用程式映像
 1. 執行 Web 應用程式容器
 1. 建置 Web 應用程式測試映像
-1. 運行 Web 應用程式測試容器，該容器對正在運行的應用程式容器執行測試
+1. 執行 web 應用程式測試容器，它會對執行中的應用程式容器執行測試
 1. 如果測試通過，便建置 Helm 圖表封存套件
 1. 使用新的 Helm 圖表封存套件來執行 `helm upgrade`
 
@@ -98,41 +98,41 @@ ACR 任務真正增強容器生成工作流的強大功能來自于它檢測*基
 
 如需了解多步驟工作，請參閱[執行 ACR 工作中的多步驟建置、測試及修補工作](container-registry-tasks-multi-step.md)。
 
-## <a name="context-locations"></a>上下文位置
+## <a name="context-locations"></a>內容位置
 
 下表顯示「ACR 工作」的幾個所支援內容位置範例：
 
-| 內容位置 | 描述 | 範例 |
+| 內容位置 | 說明 | 範例 |
 | ---------------- | ----------- | ------- |
 | 本機檔案系統 | 本機檔案系統上目錄內的檔案。 | `/home/user/projects/myapp` |
-| GitHub 主要分支 | 公共或私有 GitHub 存儲庫的主分支（或其他預設）分支中的檔。  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub 分支 | 公共或私有 GitHub 存儲庫的特定分支。| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub 子資料夾 | 公共或私有 GitHub 存儲庫中的子資料夾中的檔。 示例顯示分支和子資料夾規範的組合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| GitHub 提交 | 公共或私有 GitHub 存儲庫中的特定提交。 示例顯示提交雜湊 （SHA） 和子資料夾規範的組合。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
-| Azure DevOps 子資料夾 | 公共或專用 Azure 回購中的子資料夾中的檔。 示例顯示分支和子資料夾規範的組合。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
+| GitHub 主要分支 | 公用或私人 GitHub 存放庫之主要（或其他預設）分支內的檔案。  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub 分支 | 公用或私人 GitHub 存放庫的特定分支。| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub 子資料夾 | 公用或私人 GitHub 存放庫中子資料夾內的檔案。 範例會顯示分支和子資料夾規格的組合。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| GitHub 認可 | 公用或私人 GitHub 存放庫中的特定認可。 範例會顯示認可雜湊（SHA）和子資料夾規格的組合。 | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |
+| Azure DevOps 子資料夾 | 公用或私人 Azure 存放庫中子資料夾內的檔案。 範例會顯示分支和子資料夾規格的組合。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | 遠端 Tarball | 遠端 Web 伺服器上壓縮封存中的檔案。 | `http://remoteserver/myapp.tar.gz` |
 
 > [!NOTE]
-> 使用私有 Git 存儲庫作為任務的上下文時，需要提供個人訪問權杖 （PAT）。
+> 使用私人 Git 存放庫做為工作的內容時，您需要提供個人存取權杖（PAT）。
 
-## <a name="image-platforms"></a>圖像平臺
+## <a name="image-platforms"></a>映射平臺
 
-預設情況下，ACR 任務為 Linux 作業系統和 amd64 體系結構生成映射。 指定用於`--platform`為其他體系結構生成 Windows 映像或 Linux 映射的標記。 以作業系統/體系結構格式（例如，）`--platform Linux/arm`指定作業系統，並選擇支援體系結構。 對於 ARM 體系結構，可以選擇以作業系統/體系結構/變體格式指定變體（例如， `--platform Linux/arm64/v8`
+根據預設，ACR 工作會建立 Linux OS 和 amd64 架構的映射。 指定`--platform`標記以建立其他架構的 Windows 映像或 Linux 映射。 指定 os/架構格式（例如， `--platform Linux/arm`）的作業系統和選擇性的支援架構。 針對 ARM 架構，選擇性地指定 OS/架構/變異格式的 variant （例如， `--platform Linux/arm64/v8`）：
 
 | OS | 架構|
 | --- | ------- | 
-| Linux | amd64<br/>arm<br/>臂64<br/>386 |
+| Linux | amd64<br/>arm<br/>arm64<br/>386 |
 | Windows | amd64 |
 
 ## <a name="view-task-output"></a>檢視工作輸出
 
-每個任務運行都會生成日誌輸出，您可以檢查這些日誌輸出以確定任務步驟是否成功運行。 手動觸發任務時，任務運行的日誌輸出將資料流到主控台，並存儲以供以後檢索。 當任務自動觸發時（例如由原始程式碼提交或基本映射更新），僅存儲任務日誌。 在 Azure 門戶中查看運行日誌，或使用[az acr 任務日誌](/cli/azure/acr/task#az-acr-task-logs)命令。
+每個工作執行都會產生可供您檢查的記錄輸出，以判斷工作步驟是否已順利執行。 當您手動觸發工作時，會將工作執行的記錄輸出串流處理到主控台，並儲存以供日後抓取。 當工作自動觸發時（例如，由原始程式碼認可或基底映射更新），只會儲存工作記錄。 查看 Azure 入口網站中的執行記錄，或使用[az acr task logs](/cli/azure/acr/task#az-acr-task-logs)命令。
 
-查看[和管理工作日誌](container-registry-tasks-logs.md)。
+進一步瞭解如何[查看和管理工作記錄](container-registry-tasks-logs.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-當您準備好在雲中自動執行容器映射生成和維護時，請查看[ACR 任務教程系列](container-registry-tutorial-quick-task.md)。
+當您準備好在雲端中自動執行容器映射組建和維護時，請參閱[ACR 工作教學課程系列](container-registry-tutorial-quick-task.md)。
 
 您可以選擇性地安裝[適用於 Visual Studio Code 的 Docker 擴充功能](https://code.visualstudio.com/docs/azure/docker)和 [Azure 帳戶](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)擴充功能，來搭配 Azure 容器登錄使用。 向 Azure 容器登錄提取及推送映像，或是執行 ACR 工作，都可以在 Visual Studio Code 內完成。
 

@@ -12,15 +12,15 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 11/14/2019
 ms.openlocfilehash: c3f7b33e4b42b08334cfb687024985c878dc3713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79209436"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL Database
 
-在本節中，您可以找到各種指南、指令碼，以及可協助您管理和設定您 Azure SQL Database 的說明。 您還可以查找[單個資料庫](sql-database-howto-single-database.md)和[託管實例](sql-database-howto-managed-instance.md)的具體使用指南。
+在本節中，您可以找到各種指南、指令碼，以及可協助您管理和設定您 Azure SQL Database 的說明。 您也可以尋找[單一資料庫](sql-database-howto-single-database.md)和[受控執行個體](sql-database-howto-managed-instance.md)的特定操作指南。
 
 ## <a name="load-data"></a>載入資料
 
@@ -34,7 +34,7 @@ ms.locfileid: "79209436"
 
 - [SQL 資料同步](sql-database-sync-data.md)
 - [Data Sync Agent](sql-database-data-sync-agent.md)
-- [複製架構更改](sql-database-update-sync-schema.md)
+- [複寫結構描述變更](sql-database-update-sync-schema.md)
 - [透過 OMS 進行監視](sql-database-sync-monitor-oms.md)
 - [資料同步最佳做法](sql-database-best-practices-data-sync.md)
 - [資料同步疑難排解](sql-database-troubleshoot-data-sync.md)
@@ -57,7 +57,7 @@ ms.locfileid: "79209436"
 ## <a name="configure-features"></a>設定功能
 
 - [設定 Azure AD 驗證](sql-database-aad-authentication-configure.md)
-- [配置條件訪問](sql-database-conditional-access.md)
+- [設定條件式存取](sql-database-conditional-access.md)
 - [多重要素 AAD 驗證](sql-database-ssms-mfa-authentication.md)
 - [設定多因素驗證](sql-database-ssms-mfa-authentication-configure.md)
 - [設定時態性保留原則](sql-database-temporal-tables-retention-policy.md)
@@ -69,9 +69,9 @@ ms.locfileid: "79209436"
 
 ## <a name="develop-applications"></a>開發應用程式
 
-- [連接](sql-database-libraries.md)
+- [連線能力](sql-database-libraries.md)
 - [使用 Spark 連接器](sql-database-spark-connector.md)
-- [驗證應用](sql-database-client-id-keys.md)
+- [驗證應用程式](sql-database-client-id-keys.md)
 - [使用批次處理改善效能](sql-database-use-batching-to-improve-performance.md)
 - [連線指導方針](sql-database-connectivity-issues.md)
 - [DNS 別名](dns-alias-overview.md)
@@ -95,4 +95,4 @@ ms.locfileid: "79209436"
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解[受控執行個體的操作指南](sql-database-howto-managed-instance.md)。
-- 詳細瞭解[單個資料庫的"如何"指南](sql-database-howto-single-database.md)。
+- 深入瞭解[單一資料庫的操作指南](sql-database-howto-single-database.md)。

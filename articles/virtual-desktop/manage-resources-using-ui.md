@@ -9,10 +9,10 @@ ms.date: 01/10/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dac17da4aa3d3d73ccbbc101cba4326a17fec9b1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79127778"
 ---
 # <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>透過 Azure Resource Manager 範本部署管理工具
@@ -102,7 +102,7 @@ ms.locfileid: "79127778"
   > [!NOTE]
   > 若您有自訂租用戶群組，請手動輸入名稱，不要從下拉式清單選擇。
 
-## <a name="report-issues"></a>報告問題
+## <a name="report-issues"></a>回報問題
 
 如果管理工具或其他 Windows 虛擬桌面工具發生任何問題，請依照[遠端桌面服務的 Azure Resource Manager 範本](https://github.com/Azure/RDS-Templates/blob/master/README.md)中的指示，在 GitHub 上回報問題。
 

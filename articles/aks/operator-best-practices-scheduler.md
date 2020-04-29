@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: cccc476a944b28d24c53a947e434d465c94f94ee
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79126564"
 ---
 # <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中基本排程器功能的最佳做法
@@ -77,7 +77,7 @@ kubectl apply -f dev-app-team-quotas.yaml --namespace dev-apps
 
 如果要升級叢集或更新部署範本，Kubernetes 排程器會先確定其他節點上已排程另外的 Pod，才讓自發性中斷事件繼續進行。 排程器在等到叢集的其他節點上已成功排程所定義數量的 Pod，才會將節點重新開機。
 
-讓我們看看一個複本集範例，此複本集具有五個執行 NGINX 的 Pod。 複本集中的窗格被分配了標籤`app: nginx-frontend`。 在自發性中斷事件 (例如，叢集升級) 發生期間，您想要確定至少有三個 Pod 會繼續執行。 PodDisruptionBudget** 物件的下列 YAML 資訊清單會定義這些需求：
+讓我們看看一個複本集範例，此複本集具有五個執行 NGINX 的 Pod。 複本集內的 pod 會被指派標籤`app: nginx-frontend`。 在自發性中斷事件 (例如，叢集升級) 發生期間，您想要確定至少有三個 Pod 會繼續執行。 PodDisruptionBudget** 物件的下列 YAML 資訊清單會定義這些需求：
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -119,11 +119,11 @@ kubectl apply -f nginx-pdb.yaml
 
 ## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>使用 kube-advisor 定期檢查叢集的問題
 
-**最佳實踐指南**- 定期運行最新版本的`kube-advisor`開源工具，以檢測群集中的問題。 如果您在現有的 AKS 叢集上套用資源配額，請先執行 `kube-advisor` 以尋找未定義資源要求和限制的 Pod。
+**最佳做法指引**-定期執行最新版本的`kube-advisor`開放原始碼工具，以偵測您叢集中的問題。 如果您在現有的 AKS 叢集上套用資源配額，請先執行 `kube-advisor` 以尋找未定義資源要求和限制的 Pod。
 
-[kube-advisor][kube-advisor]工具是一個關聯的 AKS 開源專案，用於掃描 Kubernetes 群集並報告它發現的問題。 一個實用的檢查，就是找出沒有備妥資源要求和限制的 Pod。
+[Kube advisor][kube-advisor]工具是一個相關聯的 AKS 開放原始碼專案，可掃描 Kubernetes 叢集並報告發現的問題。 一個實用的檢查，就是找出沒有備妥資源要求和限制的 Pod。
 
-kube-Advisor 工具可以報告 Windows 應用程式和 Linux 應用程式的 PodSpecs 中缺少的資源請求和限制，但 kube-advisor 工具本身必須安排在 Linux 窗格中。 您可以使用窗格配置中的[節點選擇器][k8s-node-selector]安排具有特定作業系統的 pod 在節點池上運行。
+Kube advisor 工具可以針對 Windows 應用程式和 Linux 應用程式，報告 PodSpecs 中遺漏的資源要求和限制，但 kube advisor 工具本身必須排程在 Linux pod 上。 您可以使用 pod 設定中的[節點選取器][k8s-node-selector]，將 pod 排程在具有特定 OS 的節點集區上執行。
 
 在裝載多個開發小組和應用程式的 AKS 叢集中，若沒有這些資源要求和限制集，就可能難以追蹤 Pod。 最佳做法是在您的 AKS 叢集上定期執行 `kube-advisor`，特別是如果您未對命名空間指派資源配額時。
 
@@ -133,7 +133,7 @@ kube-Advisor 工具可以報告 Windows 應用程式和 Linux 應用程式的 Po
 
 * [多租用戶和叢集隔離][aks-best-practices-cluster-isolation]
 * [Kubernetes 排程器的進階功能][aks-best-practices-advanced-scheduler]
-* [身份驗證和授權][aks-best-practices-identity]
+* [驗證與授權][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->
 [k8s-resource-quotas]: https://kubernetes.io/docs/concepts/policy/resource-quotas/

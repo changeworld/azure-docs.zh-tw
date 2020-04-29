@@ -1,7 +1,7 @@
 ---
-title: 從示例開始實驗
+title: 從範例 Kickstart 實驗
 titleSuffix: ML Studio (classic) - Azure
-description: 瞭解如何使用示例機器學習實驗使用 Azure AI 庫和 Azure 機器學習工作室（經典）創建新實驗。
+description: 瞭解如何使用範例機器學習實驗，以 Azure AI 資源庫和 Azure Machine Learning Studio （傳統）來建立新的實驗。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,19 +11,19 @@ ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
 ms.openlocfilehash: 1a913e714565ffb99237357e331ef5cf0189c40f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79204216"
 ---
-# <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>從 Azure AI 庫中的工作示例創建 Azure 機器學習工作室（經典）實驗
+# <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>從 Azure AI 資源庫中的工作範例建立 Azure Machine Learning Studio （傳統）實驗
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 了解如何從 [Azure AI 資源庫](https://gallery.azure.ai/)的範例實驗開始，而不是從頭建立機器學習服務實驗。 您可以使用範例來建立自己的機器學習服務解決方案。
 
-該庫具有 Microsoft Azure 機器學習工作室（經典）團隊的示例實驗以及機器學習社區共用的示例。 您也可以提出有關實驗的問題或張貼意見。
+資源庫有 Microsoft Azure Machine Learning Studio （傳統）小組的範例實驗，以及 Machine Learning 的社區共用的範例。 您也可以提出有關實驗的問題或張貼意見。
 
 若要查看如何使用資源庫，請觀看[初學者的資料科學](data-science-for-beginners-the-5-questions-data-science-answers.md)系列中的 3 分鐘影片[複製其他人的工作來進行資料科學](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md)。
 
@@ -51,12 +51,12 @@ ms.locfileid: "79204216"
     ![範例實驗](./media/sample-experiments/example-experiment.png)
 
 ## <a name="create-a-new-experiment-using-an-example-as-a-template"></a>使用範例作為範本來建立新實驗
-您還可以使用庫示例作為範本在機器學習工作室（經典）中創建新實驗。
+您也可以使用資源庫範例作為範本，在 Machine Learning Studio （傳統）中建立新的實驗。
 
 1. 用您的 Microsoft 帳戶認證登入 [Studio](https://studio.azureml.net)，然後按一下 [新增]**** 以建立實驗。
 2. 瀏覽範例內容，然後按一下其中一個。
 
-使用示例實驗作為範本，在機器學習工作室（經典）工作區中創建新實驗。
+在您的 Machine Learning Studio （傳統）工作區中，會使用範例實驗做為範本來建立新的實驗。
 
 ## <a name="next-steps"></a>後續步驟
 * [從各種資源匯入資料](import-data.md)

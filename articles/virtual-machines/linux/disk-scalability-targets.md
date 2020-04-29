@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.openlocfilehash: 7298b54d94effaa5bd7e600ec2d8d1045aa263ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78970439"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Linux 中虛擬機器磁碟的延展性和效能目標
@@ -31,6 +31,6 @@ ms.locfileid: "78970439"
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 [Azure 訂用帳戶和服務限制、配額與限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)
