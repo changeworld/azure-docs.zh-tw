@@ -1,40 +1,50 @@
 ---
-title: 監視在任何環境中執行的 Java 應用程式 - Azure 監視器應用程式見解
-description: 應用程式效能監視,適用於使用 JAVA 獨立代理在任何環境中運行的 Java 應用程式,而無需檢測應用程式。 分散式跟蹤和應用程式映射。
+title: 監視在任何環境中執行的 JAVA 應用程式-Azure 監視器 Application Insights
+description: 應用程式效能監視，適用于使用 JAVA 獨立代理程式在任何環境上執行的 JAVA 應用程式，不需檢測應用程式。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 04/16/2020
-ms.openlocfilehash: 08a83fbc05276808b62a0391a5c4217cc09f6d00
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 527f1eaf04be7b5e8c89c12912a06d2f5d50321f
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641871"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508032"
 ---
-# <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>為 Azure 監視器應用程式見解設定 JVM args Java 獨立代理
+# <a name="configuring-jvm-args-java-standalone-agent-for-azure-monitor-application-insights"></a>設定適用于 Azure 監視器 Application Insights 的 JVM args JAVA 獨立代理程式
 
 
 
 ## <a name="azure-environments"></a>Azure 環境
 
-設定[套用服務](https://docs.microsoft.com/azure/app-service/configure-language-java#set-java-runtime-options)。
+設定[應用程式服務](https://docs.microsoft.com/azure/app-service/configure-language-java#set-java-runtime-options)。
 
 ## <a name="spring-boot"></a>Spring Boot
 
-在之前`-jar <myapp.jar>`的某個地方添加`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`JVM arg,例如:
+在之前`-jar`的某個`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`位置新增 JVM 參數，例如：
 
 ```
 java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
 ```
 
-> [!NOTE]
-> 之後放置的`-jar <myapp.jar>`Args 作為程式 args 傳遞給應用程式。
+## <a name="spring-boot-via-docker-entry-point"></a>透過 Docker 進入點的彈簧開機
 
+如果您使用*exec*格式，請將參數`"-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"`加入參數的參數清單`"-jar"`中，例如：
 
-## <a name="tomcat-8-linux"></a>湯姆卡特 8 (Linux)
+```
+ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar", "-jar", "<myapp.jar>"]
+```
 
-### <a name="tomcat-installed-via-apt-get-or-yum"></a>通過`apt-get`或`yum`
+如果您使用*shell*表單，請在之前`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` `-jar`的某個位置新增 JVM 參數，例如：
 
-如果您通過`apt-get``yum`或 () 安裝了 Tomcat,則應`/etc/tomcat8/tomcat8.conf`有一個檔。  將此行新增到該檔案的末尾:
+```
+ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar -jar <myapp.jar>
+```
+
+## <a name="tomcat-8-linux"></a>Tomcat 8 （Linux）
+
+### <a name="tomcat-installed-via-apt-get-or-yum"></a>透過`apt-get`或安裝 Tomcat`yum`
+
+如果您是透過`apt-get`或`yum`安裝 Tomcat，則應該有檔案。 `/etc/tomcat8/tomcat8.conf`  將下面這一行新增至該檔案的結尾：
 
 ```
 JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
@@ -42,43 +52,43 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW
 
 ### <a name="tomcat-installed-via-download-and-unzip"></a>透過下載和解壓縮安裝的 Tomcat
 
-如果你通過下載和解壓縮安裝[https://tomcat.apache.org](https://tomcat.apache.org)Tomcat,那麼你應該有一個檔`<tomcat>/bin/catalina.sh`。  在同一目錄`<tomcat>/bin/setenv.sh`建立包含以下內容的新檔案:
+如果您已透過下載和解壓縮來安裝[https://tomcat.apache.org](https://tomcat.apache.org)Tomcat，則您應該會有`<tomcat>/bin/catalina.sh`一個檔案。  使用下列內容，在名為`<tomcat>/bin/setenv.sh`的相同目錄中建立新的檔案：
 
 ```
 CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
 ```
 
-如果檔案`<tomcat>/bin/setenv.sh`已存在,則修改此檔案並加入`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar``CATALINA_OPTS`。
+如果檔案`<tomcat>/bin/setenv.sh`已經存在，則修改該檔案，並將`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`新增`CATALINA_OPTS`至。
 
 
-## <a name="tomcat-8-windows"></a>湯姆卡特 8 (視窗)
+## <a name="tomcat-8-windows"></a>Tomcat 8 （Windows）
 
 ### <a name="running-tomcat-from-the-command-line"></a>從命令列執行 Tomcat
 
-找出 `<tomcat>/bin/catalina.bat` 檔案。  在同一目錄`<tomcat>/bin/setenv.bat`建立包含以下內容的新檔案:
+找出 `<tomcat>/bin/catalina.bat` 檔案。  使用下列內容，在名為`<tomcat>/bin/setenv.bat`的相同目錄中建立新的檔案：
 
 ```
 set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar
 ```
 
-報價不是必需的,但如果要包括報價,正確的放置位置是:
+引號並不是必要的，但如果您想要將它們包含在內，適當的位置如下：
 
 ```
 set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar"
 ```
 
-如果檔案`<tomcat>/bin/setenv.bat`已存在,只需修改此檔案並加入`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar``CATALINA_OPTS`。
+如果檔案`<tomcat>/bin/setenv.bat`已經存在，只需要修改該檔案，並`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`將`CATALINA_OPTS`新增至。
 
-### <a name="running-tomcat-as-a-windows-service"></a>將 Tomcat 為 Windows 服務執行
+### <a name="running-tomcat-as-a-windows-service"></a>執行 Tomcat 做為 Windows 服務
 
-找出 `<tomcat>/bin/tomcat8w.exe` 檔案。  運行該可執行檔並`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`添加到選項`Java Options`卡`Java`下。
+找出 `<tomcat>/bin/tomcat8w.exe` 檔案。  執行該可執行檔`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar` ，並`Java Options`將新增`Java`至索引標籤底下的。
 
 
 ## <a name="jboss-eap-7"></a>JBoss EAP 7
 
 ### <a name="standalone-server"></a>獨立伺服器
 
-新增到`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar``JAVA_OPTS``JBOSS_HOME/bin/standalone.conf`檔案 (Linux) 或`JBOSS_HOME/bin/standalone.conf.bat`(Windows) 中的現有環境變數:
+將`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`新增至檔案`JAVA_OPTS` `JBOSS_HOME/bin/standalone.conf` （Linux）或`JBOSS_HOME/bin/standalone.conf.bat` （Windows）中的現有環境變數：
 
 ```java    ...
     JAVA_OPTS="<b>-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar</b> -Xms1303m -Xmx1303m ..."
@@ -87,7 +97,7 @@ set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-
 
 ### <a name="domain-server"></a>網域伺服器
 
-新增到`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`的現有`jvm-options``JBOSS_HOME/domain/configuration/host.xml`:
+將`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`加入至現有`jvm-options`的`JBOSS_HOME/domain/configuration/host.xml`：
 
 ```xml
 ...
@@ -106,7 +116,7 @@ set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-
 ...
 ```
 
-如果在單一主機上執行多個託管伺服器,則需要為每個伺服器新增`applicationinsights.agent.id`到 : `system-properties` `server`
+如果您在單一主機上執行多部受管理的伺服器，則必須將`applicationinsights.agent.id`新增至`system-properties`每個`server`的：
 
 ```xml
 ...
@@ -128,12 +138,12 @@ set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-
 ...
 ```
 
-指定的`applicationinsights.agent.id`值必須是唯一的。 它用於在應用程式見解目錄下創建子目錄,因為每個 JVM 進程都需要其自己的本地應用程式見解配置和本地應用程式見解日誌檔。 此外,如果向中央收集器報告,`applicationinsights.properties`該檔將由多個託管伺服器共用,因此需要指定`applicationinsights.agent.id`來覆蓋該共享檔`agent.id`中的 設置。 `applicationinsights.agent.rollup.id``system-properties`如果需要覆蓋每個託管伺服器的設定,`agent.rollup.id`可以在伺服器中同樣指定。
+指定`applicationinsights.agent.id`的值必須是唯一的。 它可用來在 applicationinsights 目錄下建立子目錄，因為每個 JVM 程式都需要自己的本機 applicationinsights config 和本機 applicationinsights 記錄檔。 此外，如果向中央收集器報告， `applicationinsights.properties`則檔案會由多個受管理的伺服器共用，因此需要`applicationinsights.agent.id`指定才能覆寫該`agent.id`共用檔案中的設定。 `applicationinsights.agent.rollup.id`如果您需要覆寫每個受`system-properties`管理伺服器的`agent.rollup.id`設定，可以在伺服器的中指定。
 
 
-## <a name="jetty-9"></a>碼頭 9
+## <a name="jetty-9"></a>Jetty 9
 
-新增這些行`start.ini`
+將這些行新增至`start.ini`
 
 ```
 --exec
@@ -141,9 +151,9 @@ set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-
 ```
 
 
-## <a name="payara-5"></a>帕亞拉 5
+## <a name="payara-5"></a>Payara 5
 
-新增到`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`的現有`jvm-options``glassfish/domains/domain1/config/domain.xml`:
+將`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar`加入至現有`jvm-options`的`glassfish/domains/domain1/config/domain.xml`：
 
 ```xml
 ...
@@ -157,23 +167,23 @@ set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-
 ...
 ```
 
-## <a name="websphere-8"></a>網路圈 8
+## <a name="websphere-8"></a>WebSphere 8
 
-開放管理主控台轉到**WebSphere 應用程式伺服器>應用程式伺服器>伺服器**,選擇適當的應用程式伺服器,然後按一下: 
+開啟 [管理主控台]，移至 [**伺服器] > WebSphere 應用**程式伺服器] > 應用程式伺服器，選擇適當的應用程式伺服器，然後按一下： 
 
 ```
 Java and Process Management > Process definition >  Java Virtual Machine
 ```
-在「通用 JVM 參數」中新增以下內容:
+在 [一般 JVM 引數] 中，新增下列內容：
 ```
 -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar
 ```
-之後,保存並重新啟動應用程式伺服器。
+之後，請儲存並重新啟動應用程式伺服器。
 
 
-## <a name="openliberty-18"></a>開放自由 18
+## <a name="openliberty-18"></a>OpenLiberty 18
 
-在伺服器目錄中建立新`jvm.options`檔案(`<openliberty>/usr/servers/defaultServer`例如 ),然後新增此行:
+`jvm.options`在伺服器目錄中建立新檔案（例如`<openliberty>/usr/servers/defaultServer`），並加入這一行：
 ```
 -javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.jar
 ```

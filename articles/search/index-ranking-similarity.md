@@ -1,34 +1,36 @@
 ---
 title: 排名相似性演算法
 titleSuffix: Azure Cognitive Search
-description: 如何設置相似性演算法以嘗試新的相似性演算法進行排名
+description: 如何設定相似性演算法以嘗試排名的新相似性演算法
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.openlocfilehash: c327440649300533c94c2a1956e3c45f433c9780
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1975c13162316b4132bae34659b1c5af8e416573
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409969"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231606"
 ---
-# <a name="ranking-algorithm-in-azure-cognitive-search"></a>Azure 認知搜索中的排名演算法
+# <a name="ranking-algorithm-in-azure-cognitive-search"></a>Azure 認知搜尋中的排名演算法
 
 > [!IMPORTANT]
-> 從 2020 年 7 月 15 日起，新創建的搜索服務將使用 BM25 排名功能，在大多數情況下，該功能已證明可提供與使用者期望更好的搜索排名，而不是當前的預設排名。  除了卓越的排名之外，BM25 還支援基於文檔大小等因素調整結果的配置選項。  
+> 從2020年7月15日開始，新建立的搜尋服務會自動使用 BM25 排名函式，這在大部分情況下已證實，可提供比目前預設排名更適合使用者期望的搜尋排名。 除了高階排名之外，BM25 也會根據檔案大小等因素，啟用微調結果的設定選項。  
 >
-> 有了此更改，您很可能會看到搜尋結果的順序略有變化。   對於那些想要測試此更改的影響的使用者，我們在 2019-05-06-預覽 API 中提供了啟用 BM25 在新索引上評分的能力。  
+> 有了這項變更，您很可能會看到搜尋結果的排序有些許變更。 對於想要測試此變更影響的使用者，BM25 演算法會在 api 版本 2019-05-06-Preview 中提供。  
 
-本文介紹如何更新 2020 年 7 月 15 日之前創建的服務，以使用新的 BM25 排名演算法。
+本文說明如何在現有的搜尋服務上使用新的 BM25 排名演算法，以取得使用預覽 API 建立及查詢的新索引。
 
-Azure 認知搜索將使用 Okapi BM25 演算法*BM25 相似性*的官方 Lucene 實現，該演算法將取代以前使用*的經典相似性*實現。 與較舊的經典相似性演算法一樣，BM25相似性是一種類似于TF-IDF的檢索函數，它使用術語頻率 （TF） 和反向文檔頻率 （IDF） 作為變數來計算每個文檔查詢對的相關性分數，然後計算用於排名。 雖然BM25在概念上與舊的經典相似性演算法相似，但它在概率資訊檢索中具有根，以改進它。 BM25 還提供高級自訂選項，例如允許使用者決定相關性分數如何與匹配術語的術語頻率一起縮放。
+Azure 認知搜尋正在採用官方 Lucene 實 Okapi BM25 演算法*BM25Similarity*，這會取代先前使用的*ClassicSimilarity*實作為。 如同較舊的 ClassicSimilarity 演算法，BM25Similarity 是一種類似 TF 的函數，它會使用「詞彙頻率」（TF）和「反向檔頻率」（IDF）做為變數來計算每個檔查詢配對的相關性分數，然後用於排名。 
 
-## <a name="how-to-test-bm25-today"></a>今天如何測試BM25
+雖然在概念上類似于較舊的傳統相似性演算法，BM25 會在概率資訊抓取中取得其根，以在其上進行改善。 BM25 也提供先進的自訂選項，例如允許使用者決定相關性分數如何根據符合詞彙的詞彙頻率來調整。
 
-創建新索引時，可以設置"相似性"屬性。 您需要使用*2019-05-06 預覽*版，如下所示。
+## <a name="how-to-test-bm25-today"></a>如何立即測試 BM25
+
+當您建立新的索引時，您可以設定**相似性**屬性來指定演算法。 您將需要使用`api-version=2019-05-06-Preview`，如下所示。
 
 ```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
@@ -57,32 +59,35 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 }
 ```
 
-對於在 2020 年 7 月 15 日之前創建的服務：如果省略相似性或設置為 null，則索引將使用舊的經典相似性演算法。
+當這兩種演算法都可供使用時，**相似性**屬性在這段期間很有用，僅適用于現有的服務。 
 
-對於 2020 年 7 月 15 日之後創建的服務：如果省略相似性或設置為 null，則索引將使用新的 BM25 相似性演算法。
+| 屬性 | 描述 |
+|----------|-------------|
+| 相似度 | 選擇性。 有效值包括 *"#Microsoft ClassicSimilarity"* 或 *"#Microsoft". BM25Similarity "*。 <br/> 在`api-version=2019-05-06-Preview` 2020 年7月15日前建立的搜尋服務上需要或更新版本。 |
 
-您還可以顯式將相似性值設置為以下兩個值之一 *："#Microsoft.Azure.Search.Classic.經典相似性"* 或 *"#Microsoft.Azure.Search.BM25 相似性"。*
+如果是在2020年7月15日之後建立的新服務，則會自動使用 BM25，而且它是唯一的相似性演算法。 如果您嘗試`ClassicSimilarity`在新的服務上設定**相似性**，則會傳回400錯誤，因為新的服務不支援該演算法。
 
+針對在2020年7月15日前建立的現有服務，傳統的相似性仍然是預設演算法。 如果已省略**相似性**屬性或將其設定為 null，則索引會使用傳統演算法。 如果您想要使用新的演算法，您將需要設定**相似性**，如上所述。
 
 ## <a name="bm25-similarity-parameters"></a>BM25 相似性參數
 
-BM25 相似性添加了兩個使用者可自訂的參數來控制計算的相關性分數：
+BM25 相似性會加入兩個使用者可自訂的參數，以控制所計算的相關性分數。
 
 ### <a name="k1"></a>k1
 
-*k1*參數控制每個匹配術語的術語頻率與文檔查詢對的最終相關性分數之間的縮放函數。
+*版 k1*參數會控制每個比對詞彙的詞彙頻率與檔查詢組最終相關性分數之間的縮放功能。
 
-值零表示"二進位模型"，其中單個匹配項的貢獻對於所有匹配文檔都是相同的，而該術語在文本中出現的次數如何，而較大的 k1 值允許分數繼續隨著更多時間增加而增加同一術語的實例在文檔中找到。 預設情況下，Azure 認知搜索對 k1 參數使用值 1.2。 在我們希望多個術語成為搜索查詢的一部分的情況下，使用較高的 k1 值可能很重要。 在這些情況下，我們可能希望支援與搜索的許多不同的查詢詞匹配的文檔，這些查詢詞僅與單個查詢詞匹配多次。 例如，在查詢包含術語"阿波羅太空飛行"的文檔索引時，我們可能希望降低一篇關於希臘神話的文章的分數，該文章包含"阿波羅"一詞幾十次，而沒有提到"太空飛行"，與另一篇文章，明確提到"阿波羅"和"太空飛行"只有幾次。 
+值為零表示「二進位模型」，其中單一比對詞彙的貢獻對所有相符的檔而言都相同，不論該詞彙在文字中出現多少次，而較大的版 k1 值則允許分數繼續增加，因為在檔中找到相同詞彙的多個實例。 根據預設，Azure 認知搜尋會針對版 k1 參數使用1.2 的值。 在我們預期有多個詞彙屬於搜尋查詢的情況下，使用較高的版 k1 值可能很重要。 在這些情況下，我們可能會想要比對只比對一次只比對單一檔的多個不同查詢詞彙的檔。 例如，查詢包含「Apollo Spaceflight」詞彙之檔的索引時，我們可能會想要降低文章的分數，其中包含「Apollo」一詞，而不會提及「Spaceflight」，相較于另一個同時明確提及「Apollo」和「Spaceflight」的文章。 
  
 ### <a name="b"></a>b
 
-*b*參數控制文檔的長度如何影響相關性分數。
+*B*參數會控制檔長度對相關性分數的影響。
 
-值 0.0 表示文檔的長度不會影響分數，而值 1.0 表示術語頻率對相關性分數的影響將按文檔的長度進行正常化。 Azure 認知搜索 b 參數使用的預設值為 0.75。 在我們想要懲罰較長的文檔的情況下，按文檔長度將術語頻率正常化非常有用。 在某些情況下，與較短的文檔相比，較長的文檔（如完整的小說）更有可能包含許多不相關的術語。
+值為0.0 表示檔的長度不會影響分數，而1.0 的值則表示對相關性分數之詞彙頻率的影響會由檔的長度正規化。 Azure 認知搜尋中用於 b 參數的預設值為0.75。 當我們想要會較長的檔時，根據檔長度將詞彙頻率正規化會很有用。 在某些情況下，較長的檔（例如完整 novel）可能包含許多不相關的詞彙，相較于更短的檔。
 
-### <a name="setting-k1-and-b-parameters"></a>設置 k1 和 b 參數
+### <a name="setting-k1-and-b-parameters"></a>設定版 k1 和 b 參數
 
-要自訂 b 或 k1 值，只需將它們作為屬性添加到相似性物件時，使用 BM25：
+若要自訂 b 或版 k1 值，請只在使用 BM25 時，將它們新增為相似性物件的屬性：
 
 ```json
     "similarity": {
@@ -92,16 +97,15 @@ BM25 相似性添加了兩個使用者可自訂的參數來控制計算的相關
     }
 ```
 
-相似性演算法只能在索引創建時設置。 這意味著不能更改現有索引所使用的相似性演算法。 在更新使用 BM25 的現有索引定義時，可以修改 *"b"* 和 *"k1"* 參數。 更改現有索引上的這些值將使索引離線至少幾秒鐘，從而導致索引和查詢請求失敗。 因此，您需要在更新要求的查詢字串中設置"allowIndexDowntime_true"參數：
+相似性演算法只能在索引建立時設定。 這表示所使用的相似性演算法無法針對現有的索引進行變更。 當您更新使用 BM25 的現有索引定義時，可以修改 *"b"* 和 *"版 k1"* 參數。 在現有的索引上變更這些值，會讓索引至少有幾秒鐘的時間離線，導致您的索引編制和查詢要求失敗。 因此，您必須在更新要求的查詢字串中設定 "allowIndexDowntime = true" 參數：
 
 ```http
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
 ```
 
+## <a name="see-also"></a>請參閱  
 
-## <a name="see-also"></a>另請參閱  
-
- [Azure 認知搜索 REST](https://docs.microsoft.com/rest/api/searchservice/)   
- [將評分設定檔添加到索引](index-add-scoring-profiles.md)    
- [創建索引&#40;Azure 認知搜索 REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)   
-  [Azure 認知搜索 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  
++ [REST API 參考](https://docs.microsoft.com/rest/api/searchservice/)   
++ [將評分設定檔新增至您的索引](index-add-scoring-profiles.md)    
++ [建立索引 API](https://docs.microsoft.com/rest/api/searchservice/create-index)   
++ [Azure 認知搜尋 .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

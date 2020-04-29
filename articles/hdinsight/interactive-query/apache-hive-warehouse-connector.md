@@ -6,21 +6,22 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/02/2020
-ms.openlocfilehash: f386530ffb3a074a5c1db1d9f28535d28c8b1284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seoapr2020
+ms.date: 04/28/2020
+ms.openlocfilehash: 77623a89e52a5e15fbb4159ff49d9377e53e7d4c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78252413"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509528"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>整合 Apache Spark 和 Apache Hive 與 Hive Warehouse Connector
 
-Apache Hive 倉儲連接器（HWC）是一種程式庫，可讓您更輕鬆地使用 Apache Spark 和 Apache Hive，方法是支援在 Spark 資料框架和 Hive 資料表之間移動資料，以及將 Spark 串流資料導向 Hive 資料表的工作。 Hive 倉儲連接器的運作方式類似于 Spark 和 Hive 之間的橋樑。 它支援 Scala、JAVA 和 Python 以進行開發。
+「Apache Hive 倉儲連接器」（HWC）是一種程式庫，可讓您更輕鬆地使用 Apache Spark 和 Apache Hive。 藉由支援工作（例如在 Spark 資料框架和 Hive 資料表之間移動資料），更容易進行。 並將 Spark 串流資料導向 Hive 資料表。 Hive 倉儲連接器的運作方式類似于 Spark 和 Hive 之間的橋樑。 它支援 Scala、JAVA 和 Python 以進行開發。
 
-Hive 倉儲連接器可讓您利用 Hive 和 Spark 的獨特功能，來建立功能強大的大型資料應用程式。 Apache Hive 提供不可部分完成、一致、隔離且持久（ACID）的資料庫交易支援。 如需 Hive 中 ACID 和交易的詳細資訊，請參閱[Hive 交易](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions)。 Hive 也會透過 Apache Ranger 提供詳細的安全性控制，且 Apache Spark 不提供低延遲分析處理。
+Hive 倉儲連接器可讓您利用 Hive 和 Spark 的獨特功能。 用來建立強大的大型資料應用程式的功能。 Apache Hive 提供不可部分完成、一致、隔離且持久（ACID）的資料庫交易支援。 如需 Hive 中 ACID 和交易的詳細資訊，請參閱[Hive 交易](https://cwiki.apache.org/confluence/display/Hive/Hive+Transactions)。 Hive 也會透過 Apache Ranger 提供詳細的安全性控制，且 Apache Spark 不提供低延遲分析處理。
 
-Apache Spark，具有結構化串流 API，提供 Apache Hive 中無法使用的串流功能。 從 HDInsight 4.0 開始，Apache Spark 2.3.1 和 Apache Hive 3.1.0 有個別的中繼存放區，這可能會使互通性變得很棘手。 Hive Warehouse Connector 可讓您更輕鬆地搭配使用 Spark 和 Hive。 HWC 程式庫會以平行方式將 LLAP 守護程式中的資料載入 Spark 執行程式，使其更有效率且更具擴充性，而不是使用從 Spark 到 Hive 的標準 JDBC 連接。
+Apache Spark，具有結構化串流 API，提供 Apache Hive 中無法使用的串流功能。 從 HDInsight 4.0 開始，Apache Spark 2.3.1 和 Apache Hive 3.1.0 有個別的中繼存放區。 這些個別的中繼存放區可能使互通性變得很棘手。 Hive Warehouse Connector 可讓您更輕鬆地搭配使用 Spark 和 Hive。 HWC 程式庫會將 LLAP （低延遲分析處理）守護程式中的資料，以平行方式載入 Spark 執行程式。 此動作可讓您比使用從 Spark 到 Hive 的標準 JDBC 連線更有效率且更具適應性。
 
 ![hive 倉儲連接器架構](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
@@ -72,7 +73,7 @@ Hive Warehouse Connector 所支援的部分作業包括：
 
 ![Apache Ambari Spark2 configuration](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-視需要選取 [**新增屬性**]，以新增/更新下列各項：
+視需要選取 [**新增屬性**]，以新增/更新下列值：
 
 | Key | 值 |
 |----|----|
@@ -122,13 +123,13 @@ Hive Warehouse Connector 所支援的部分作業包括：
 
 ### <a name="connecting-and-running-queries-on-enterprise-security-package-esp-clusters"></a>在企業安全性套件（ESP）叢集上連接及執行查詢
 
-企業安全性套件（ESP）為 Azure HDInsight 中的 Apache Hadoop 叢集，提供企業級的功能，例如 Active Directory 型驗證、多使用者支援和角色型存取控制。 如需 ESP 的詳細資訊，請參閱[在 HDInsight 中使用企業安全性套件](../domain-joined/apache-domain-joined-architecture.md)。
+企業安全性套件（ESP）提供了企業級的功能，例如以 Active Directory 為基礎的驗證。 和多使用者支援，以及 Azure HDInsight 中 Apache Hadoop 叢集的角色型存取控制。 如需 ESP 的詳細資訊，請參閱[在 HDInsight 中使用企業安全性套件](../domain-joined/apache-domain-joined-architecture.md)。
 
-1. 透過 SSH 連線到您 Apache Spark 叢集的前端節點。 如需使用 SSH 連線到您的叢集的詳細資訊，請參閱[使用 ssh 連線到 HDInsight （Apache Hadoop）](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)。
+1. 透過 SSH 連線到您 Apache Spark 叢集的前端節點。
 
 1. 輸入`kinit`網域使用者並登入。
 
-1. 使用完整的設定參數清單來啟動 spark-shell，如下所示。 在角括弧之間的所有大寫字母中的所有值都必須根據您的叢集來指定。 如果您需要找出下列任何參數的輸入值，請參閱[Hive 倉儲連接器設定](#hive-warehouse-connector-setup)上的一節：
+1. 使用完整的設定參數清單來啟動 spark-shell，如下所示。 在角括弧之間的所有大寫字母中的所有值都必須根據您的叢集來指定。 如果您需要找出下列任何參數的輸入值，請參閱[Hive 倉儲連接器設定](#hive-warehouse-connector-setup)一節。
 
     ```bash
     spark-shell --master yarn \
@@ -181,7 +182,7 @@ Spark 原本就不支援寫入 Hive 的受控 ACID 資料表。 不過，您可�
 
 使用 Hive 倉儲連接器，您可以使用 Spark 串流將資料寫入 Hive 資料表。
 
-請遵循下列步驟來建立 Hive 倉儲連接器範例，以從 localhost 埠9999上的 Spark 資料流程將資料內嵌至 Hive 資料表。
+請遵循下列步驟來建立 Hive 倉儲連接器。 此範例會從 localhost 埠9999上的 Spark 資料流程將資料內嵌至 Hive 資料表。
 
 1. 遵循 [[連接和執行查詢](#connecting-and-running-queries)] 底下的步驟。
 
@@ -193,7 +194,7 @@ Spark 原本就不支援寫入 Hive 的受控 ACID 資料表。 不過，您可�
 
 1. 執行下列步驟，為您建立的 Spark 資料流程產生資料：
     1. 在相同的 Spark 叢集中開啟第二個 SSH 會話。
-    1. 在命令提示字元中，輸入 `nc -lk 9999`。 此命令會使用 netcat 公用程式，從命令列將資料傳送至指定的埠。
+    1. 在命令提示字元中，輸入 `nc -lk 9999`。 此命令會使用`netcat`公用程式，從命令列將資料傳送到指定的埠。
 
 1. 返回第一個 SSH 會話，並建立新的 Hive 資料表來保存串流資料。 在 spark shell 中，輸入下列命令：
 
@@ -224,7 +225,7 @@ Spark 原本就不支援寫入 Hive 的受控 ACID 資料表。 不過，您可�
     hive.table("stream_table").show()
     ```
 
-使用**Ctrl + C**在第二個 SSH 會話上停止 netcat。 使用`:q`在第一個 SSH 會話上結束 spark shell。
+使用**Ctrl + C**停止`netcat`第二個 SSH 會話。 使用`:q`在第一個 SSH 會話上結束 spark shell。
 
 ### <a name="securing-data-on-spark-esp-clusters"></a>保護 Spark ESP 叢集上的資料
 
@@ -253,7 +254,7 @@ Spark 原本就不支援寫入 Hive 的受控 ACID 資料表。 不過，您可�
 
         ![hive 倉儲連接器 ranger hive 原則清單](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
 
-    a. 提供所需的原則名稱。 選取資料庫：**預設值**，hive 資料表：**示範**，hive 資料行：**名稱**，使用者： **rsadmin2**，存取類型：**選取**，以及部分遮罩：從**選取遮罩選項**功能表**顯示最後4個**。 按一下 [加入]  。
+    a. 提供原則名稱。 選取資料庫：**預設值**，hive 資料表：**示範**，hive 資料行：**名稱**，使用者： **rsadmin2**，存取類型：**選取**，以及部分遮罩：從**選取遮罩選項**功能表**顯示最後4個**。 按一下 [加入]  。
                 ![建立原則](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. 再次查看資料表的內容。 套用 ranger 原則之後，我們只會看到資料行的最後四個字元。
 

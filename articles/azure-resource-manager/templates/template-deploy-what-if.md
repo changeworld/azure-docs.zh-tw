@@ -3,29 +3,27 @@ title: 範本部署假設（預覽）
 description: 在部署 Azure Resource Manager 範本之前，請先判斷您的資源會發生哪些變更。
 author: mumian
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 04/28/2020
 ms.author: jgao
-ms.openlocfilehash: b5b19bf9d630230fbdb8cec41cc77718bbbb4585
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f13789912e5b801295f1f926a12db50849cd75d8
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192377"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509579"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM 範本部署假設作業（預覽）
 
-部署 Azure Resource Manager （ARM）範本之前，您可能會想要預覽即將發生的變更。 Azure Resource Manager 提供「假設」作業，讓您在部署範本時查看資源的變更方式。 「假設」作業不會對現有的資源進行任何變更。 相反地，它會在部署指定的範本時預測變更。
+部署 Azure Resource Manager （ARM）範本之前，您可以預覽將會發生的變更。 Azure Resource Manager 提供「假設」作業，讓您在部署範本時查看資源的變更方式。 「假設」作業不會對現有的資源進行任何變更。 相反地，它會在部署指定的範本時預測變更。
 
 > [!NOTE]
 > 「假設」作業目前為預覽狀態。 作為預覽版本，結果有時可能會顯示資源將會變更，但實際上不會發生任何變更。 我們正努力減少這些問題，但我們需要您的協助。 請在[https://aka.ms/whatifissues](https://aka.ms/whatifissues)報告這些問題。
 
-您可以搭配 PowerShell 命令或 REST API 作業來使用「假設」操作。
+您可以使用 Azure PowerShell、Azure CLI 或 REST API 作業的「假設」操作。
 
 ## <a name="install-powershell-module"></a>安裝 PowerShell 模組
 
-若要在 PowerShell 中使用「假設」，您必須具有 PowerShell Core （6.x 或7.x）。 如果您有 PowerShell 5.x 或更早版本，請[更新您的 powershell 版本](/powershell/scripting/install/installing-powershell)。
-
-確定您有正確的 PowerShell 版本之後，請從 PowerShell 資源庫安裝 Az .Resources 模組的預覽版本。
+若要在 PowerShell 中使用「假設」，您必須從「PowerShell 資源庫」安裝 Az .Resources 模組的預覽版本。 但是，在安裝模組之前，請確定您有 PowerShell Core （6.x 或7.x）。 如果您有 PowerShell 5.x 或更早版本，請[更新您的 powershell 版本](/powershell/scripting/install/installing-powershell)。 您無法在 PowerShell 5.x 或更早版本上安裝預覽模組。
 
 ### <a name="install-preview-version"></a>安裝預覽版本
 
@@ -60,9 +58,13 @@ Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
 
 您已準備好使用 [假設]。
 
+## <a name="install-azure-cli-module"></a>安裝 Azure CLI 模組
+
+若要在 Azure CLI 中使用「假設」，您必須具有 Azure CLI 2.5.0 或更新版本。 如有需要，請[安裝最新版本的 Azure CLI](/cli/azure/install-azure-cli)。
+
 ## <a name="see-results"></a>查看結果
 
-在 PowerShell 中，輸出包含色彩編碼的結果，可協助您查看不同類型的變更。
+當您使用 PowerShell 或 Azure CLI 中的 if 時，輸出會包含色彩編碼的結果，以協助您查看不同類型的變更。
 
 ![Resource Manager 範本部署假設作業 fullresourcepayload 和變更類型](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
@@ -97,11 +99,9 @@ Resource changes: 1 to modify.
 
 ## <a name="what-if-commands"></a>假設命令
 
-您可以使用 Azure PowerShell 或 Azure REST API 進行「假設」作業。
-
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-若要在部署範本之前查看變更的預覽，請將`-Whatif`切換參數新增至部署命令。
+若要在部署範本之前預覽變更，請`-Whatif`將切換參數新增至部署命令。
 
 * `New-AzResourceGroupDeployment -Whatif`針對資源群組部署
 * `New-AzSubscriptionDeployment -Whatif`和`New-AzDeployment -Whatif`適用于訂用帳戶層級部署
@@ -115,6 +115,23 @@ Resource changes: 1 to modify.
 
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult`針對資源群組部署
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult`或`$results = Get-AzDeploymentWhatIfResult`適用于訂用帳戶層級部署
+
+### <a name="azure-cli"></a>Azure CLI
+
+若要在部署範本之前預覽變更， `what-if`請使用搭配部署命令。
+
+* `az deployment group what-if`針對資源群組部署
+* `az deployment sub what-if`針對訂用帳戶層級部署
+
+或者，您可以使用`--confirm-with-what-if`參數來預覽變更，並提示您繼續進行部署。
+
+* `az deployment group create --confirm-with-what-if`針對資源群組部署
+* `az deployment sub create --confirm-with-what-if`針對訂用帳戶層級部署
+
+上述命令會傳回您可以手動檢查的文字摘要。 若要取得可透過程式設計方式檢查是否有變更的 JSON 物件，請使用：
+
+* `az deployment group what-if --no-pretty-print`針對資源群組部署
+* `az deployment sub what-if --no-pretty-print`針對訂用帳戶層級部署
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -141,10 +158,17 @@ Resource changes: 1 to modify.
 
 ## <a name="result-format"></a>結果格式
 
-您可以控制針對預測變更所傳回的詳細資料層級。 在部署命令（`New-Az*Deployment`）中，使用 **-WhatIfResultFormat**參數。 在程式設計物件命令（`Get-Az*DeploymentWhatIf`）中，使用**ResultFormat**參數。
+您可以控制針對預測變更所傳回的詳細資料層級。 您有兩個選擇：
 
-將 format 參數設定為**FullResourcePayloads** ，以取得將會變更的資源清單，以及將變更之屬性的詳細資料。 將 format 參數設定為**ResourceIdOnly** ，以取得將會變更的資源清單。 預設值為**FullResourcePayloads**。  
+* **FullResourcePayloads** -傳回將變更的資源清單，以及將變更之屬性的詳細資料
+* **ResourceIdOnly** -傳回將變更的資源清單
 
+預設值為**FullResourcePayloads**。
+
+針對 PowerShell 部署命令，請使用`-WhatIfResultFormat`參數。 在程式設計物件命令中，使用`ResultFormat`參數。
+
+針對 Azure CLI，請使用 `--result-format` 參數。
+ 
 下列結果顯示兩種不同的輸出格式：
 
 - 完整資源承載
@@ -197,6 +221,8 @@ Resource changes: 1 to modify.
 
 若要查看假設的運作方式，讓我們執行一些測試。 首先，部署[可建立虛擬網路的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-before.json)。 您將使用此虛擬網路來測試如何回報變更。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroup `
   -Name ExampleGroup `
@@ -206,9 +232,24 @@ New-AzResourceGroupDeployment `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az group create \
+  --name ExampleGroup \
+  --location "Central US"
+az deployment group create \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
+```
+
+---
+
 ### <a name="test-modification"></a>測試修改
 
-部署完成之後，您就可以測試「假設」作業。 此時，請部署[會變更虛擬網路的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json)。 缺少一個原始標記、已移除子網，而且位址首碼已經變更。
+部署完成之後，您就可以測試「假設」作業。 這次您會部署可[變更虛擬網路的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/what-if/what-if-after.json)。 缺少一個原始標記、已移除子網，而且位址首碼已經變更。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -216,6 +257,16 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName ExampleGroup `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group what-if \
+  --resource-group ExampleGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
+```
+
+---
 
 假設輸出如下所示：
 
@@ -260,6 +311,8 @@ Resource changes: 1 to modify.
 
 現在，讓我們藉由將命令設定為變數，以程式設計方式評估假設結果。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 $results = Get-AzResourceGroupDeploymentWhatIfResult `
   -ResourceGroupName ExampleGroup `
@@ -275,19 +328,41 @@ foreach ($change in $results.Changes)
 }
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+results=$(az deployment group what-if --resource-group ExampleGroup --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json" --no-pretty-print)
+```
+
+---
+
 ## <a name="confirm-deletion"></a>確認刪除
 
 「假設」作業支援使用[部署模式](deployment-modes.md)。 當設定為完成模式時，不在範本中的資源會被刪除。 下列範例會部署未在完整模式中[定義任何資源的範本](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json)。
 
 若要在部署範本之前預覽變更，請`-Confirm`使用 switch 參數搭配部署命令。 如果變更如您所預期，請確認您想要部署完成。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Confirm `
   -ResourceGroupName ExampleGroup `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json" `
-  -Mode Complete
+  -Mode Complete `
+  -Confirm `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --resource-group ExampleGroup \
+  --mode Complete \
+  --confirm-with-what-if \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/empty-template/azuredeploy.json"
+```
+
+---
 
 因為範本中未定義任何資源，且部署模式設定為 [完成]，所以會刪除虛擬網路。
 
@@ -326,4 +401,5 @@ Are you sure you want to execute the deployment?
 
 - 如果您注意到「假設」的預覽版本中有不正確的結果，請在[https://aka.ms/whatifissues](https://aka.ms/whatifissues)回報問題。
 - 若要使用 Azure PowerShell 部署範本，請參閱[使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。
+- 若要使用 Azure CLI 部署範本，請參閱[使用 ARM 範本部署資源和 Azure CLI](deploy-cli.md)。
 - 若要使用 REST 部署範本，請參閱[使用 ARM 範本部署資源和 Resource Manager REST API](deploy-rest.md)。

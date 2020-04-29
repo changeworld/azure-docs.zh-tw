@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: fce60a10818943a9c6d420044d97c0c5b803de32
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 813baba37684525c336bc34a49e496f54a19288d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133324"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509732"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Azure Synapse 分析版本資訊
 
@@ -25,9 +25,10 @@ ms.locfileid: "82133324"
 
 ## <a name="check-your-azure-synapse-version"></a>檢查您的 Azure Synapse 版本
 
-當新功能推出至所有區域時，請檢查部署至您實例的版本，以及功能可用性的最新版本資訊。 若要檢查版本，請透過 SQL Server Management Studio （SSMS）連接到您的 SQL 集`SELECT @@VERSION;`區，然後執行以傳回目前的版本。
+當新功能推出至所有區域時，請檢查部署至您實例的版本，以及功能可用性的最新版本資訊。 若要檢查版本，請透過 SQL Server Management Studio （SSMS）連接到您的 SQL 集`SELECT @@VERSION;`區，然後執行以傳回目前的版本。 使用此版本來確認已套用至您的 SQL 集區的版本。 輸出中的日期會識別適用于您的 SQL 集區之發行的月份。 這僅適用于服務層級的改進。 
 
-使用識別的版本來確認已套用至您的 SQL 集區的發行。 輸出中的日期會識別適用于您的 SQL 集區之發行的月份。
+如需工具改良功能，請確定您已在版本注意事項中指定正確的版本。 
+
 
 > [!NOTE]
 > SELECT @@VERSION所傳回的產品名稱將從 Microsoft Azure SQL 資料倉儲變更為 Azure Synapse Analytics。 在進行變更之前，我們會傳送 advanced 通知。 這項變更與在應用程式代碼中從 SELECT @@VERSION的結果中剖析產品名稱的客戶有關。 若要避免因為產品品牌再造而變更應用程式代碼，請使用下列命令來查詢 SERVERPROPERTY 中的資料庫產品名稱和版本：傳回版本號碼 XX。X XXXXX。X （不含產品名稱）使用此命令：
@@ -40,13 +41,20 @@ ms.locfileid: "82133324"
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
 
+
+
 ## <a name="april-2020"></a>2020 年 4 月
 
 | 服務改進功能 | 詳細資料 |
 | --- | --- |
 |**資料庫相容性層級（預覽）**| 在此版本中，使用者現在可以設定資料庫的相容性層級，以取得特定版本 Synapse SQL 引擎的 Transact-sql 語言和查詢處理行為。 如需詳細資訊，請參閱[sys.databases database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)和[Alter database 範圍](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)設定。|
 |**Sp_describe_undeclared_parameters**| 允許使用者查看 Transact-sql 批次中未宣告之參數的相關中繼資料。 如需詳細資訊，請參閱[sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。|
-|**[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview) SQL SERVER DATA TOOLS （SSDT）** | 此版本包含 SSDT 的下列改良功能和修正： </br> </br> -已解決變更具體化視圖（MV）所參考之資料表的問題，導致產生不支援 MVs 的 Alter View 語句<br/><br/> -已執行變更，以確保當資料庫或專案中有資料列層級安全性物件時，架構比較作業不會失敗。 目前不支援 SSDT 的資料列層級安全性物件。  <br/><br/> -SQL Server 物件總管超時閾值已增加，以避免在資料庫中列出大量物件時的超時<br/><br/> -優化 SQL Server 物件總管抓取資料庫物件清單的方式，以在擴展 [物件瀏覽器] 時減少不穩定並提升效能 |
+
+## <a name="march-2020"></a>2020 年 3 月
+
+| 工具改良功能                                         | 詳細資料                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16.6 Preview 2](/visualstudio/releases/2019/release-notes-preview) SQL SERVER DATA TOOLS （SSDT）** | 此版本包含 SSDT 的下列改良功能和修正： </br> </br> -已解決變更具體化視圖（MV）所參考之資料表的問題，導致產生不支援 MVs 的 Alter View 語句<br/><br/> -已執行變更，以確保當資料庫或專案中有資料列層級安全性物件時，架構比較作業不會失敗。 目前不支援 SSDT 的資料列層級安全性物件。  <br/><br/> -SQL Server 物件總管超時閾值已增加，以避免在資料庫中列出大量物件時的超時<br/><br/> -優化 SQL Server 物件總管抓取資料庫物件清單的方式，以在擴展 [物件瀏覽器] 時減少不穩定並提升效能 |
 
 ## <a name="january-2020"></a>2020 年 1 月
 
@@ -169,7 +177,7 @@ ms.locfileid: "82133324"
 
 - [建立 SQL 集區](create-data-warehouse-portal.md)
 
-## <a name="more-information"></a>其他資訊
+## <a name="more-information"></a>更多資訊
 
 - [Blog-Azure Synapse 分析](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
 - [客戶諮詢小組部落格](https://docs.microsoft.com/archive/blogs/sqlcat/)

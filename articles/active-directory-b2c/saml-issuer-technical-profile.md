@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/10/2020
+ms.date: 04/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c35f85b9ec5d86d1cd61f165b891c576c06a03db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f7beccde92030d1e01633f4e4044849d7e91d05
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "78967260"
+ms.locfileid: "82229947"
 ---
 # <a name="define-a-technical-profile-for-a-saml-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 SAML 權杖簽發者的技術設定檔
 
@@ -33,7 +33,7 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
 ```XML
 <TechnicalProfile Id="Saml2AssertionIssuer">
   <DisplayName>Token Issuer</DisplayName>
-  <Protocol Name="None"/>
+  <Protocol Name="SAML2"/>
   <OutputTokenFormat>SAML2</OutputTokenFormat>
   <Metadata>
     <Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>
@@ -44,7 +44,7 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
   </CryptographicKeys>
   <InputClaims/>
   <OutputClaims/>
-  <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-sp"/>
+  <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-issuer"/>
 </TechnicalProfile>
 ```
 
@@ -54,7 +54,7 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | IssuerUri | 否 | 出現在 SAML 回應中的簽發者名稱。 此值應該與信賴憑證者應用程式中所設定的名稱相同。 |
 
@@ -62,7 +62,7 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
 
 CryptographicKeys 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | MetadataSigning | 是 | 用來簽署 SAML 中繼資料的 X509 憑證 (RSA 金鑰組)。 Azure AD B2C 會使用此金鑰來簽署中繼資料。 |
 | SamlMessageSigning| 是| 指定要用來簽署 SAML 訊息的 X509 憑證（RSA 金鑰組）。 Azure AD B2C 使用此金鑰來簽署傳送至`<samlp:Response>`信賴憑證者的回應。|

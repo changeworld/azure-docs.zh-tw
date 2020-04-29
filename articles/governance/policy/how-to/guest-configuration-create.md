@@ -3,12 +3,12 @@ title: 如何建立 Windows 的來賓設定原則
 description: 瞭解如何建立適用于 Windows 的 Azure 原則來賓設定原則。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: f09bb543f73e37bd211a55e2238808f57585bb18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a75525b25945dd9548d7c293d5965cc67eb463dc
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024892"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509613"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何建立 Windows 的來賓設定原則
 
@@ -16,7 +16,7 @@ ms.locfileid: "82024892"
  
 若要瞭解如何建立適用于 Linux 的來賓設定原則，請參閱[如何建立適用于 linux 的來賓設定原則](./guest-configuration-create-linux.md)頁面
 
-在審核 Windows 時，來賓設定會使用[Desired State Configuration](/powershell/scripting/dsc/overview/overview) （DSC）資源模組和設定檔案。 DSC 設定會定義機器應處於的條件。
+在審核 Windows 時，來賓設定會使用[Desired State Configuration](/powershell/scripting/dsc/overview/overview) （DSC）資源模組來建立設定檔。 DSC 設定會定義機器應處於的條件。
 如果設定的評估失敗，則會觸發原則效果**auditIfNotExists** ，並將機器視為**不相容**。
 
 [Azure 原則來賓](../concepts/guest-configuration.md)設定只能用來審查電腦內的設定。 尚未提供機器內設定的補救功能。

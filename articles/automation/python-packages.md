@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9f52dfd92d430abffe5857d231898dd4b0e7745e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 701a5aab7a0061f8b5abfaac1b699034db2671b9
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679910"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508984"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>管理 Azure 自動化中的 Python 2 封裝
 
@@ -32,7 +32,7 @@ Azure 自動化可讓您在 Azure 和 Linux 混合式 Runbook 背景工作角色
 
 ## <a name="import-packages-with-dependencies"></a>匯入具有相依性的套件
 
-在匯入過程中，Azure 自動化不會解析 python 套件的相依性。 有兩種方式可匯入套件及其所有相依性。 只有下列其中一個步驟需要用來將套件匯入至您的自動化帳戶。
+在匯入過程中，Azure 自動化不會解析 Python 套件的相依性。 有兩種方式可匯入套件及其所有相依性。 只有下列其中一個步驟需要用來將套件匯入至您的自動化帳戶。
 
 ### <a name="manually-download"></a>手動下載
 
@@ -46,7 +46,7 @@ C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 
 ### <a name="runbook"></a>Runbook
 
-匯入 python runbook 將[python 2 套件從 pypi](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509)匯入到您的自動化帳戶，從資源庫匯入到 Azure 自動化帳戶。 請確定回合設定已設定為**Azure** ，並使用參數啟動 runbook。 Runbook 需要執行身分帳戶，自動化帳戶才能運作。 針對每個參數，請確定您已使用交換器來啟動它，如下列清單和影像所示：
+ 若要取得 runbook，請從資源庫將[Python 2 套件從 pypi 匯入](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509)到您的自動化帳戶中的 Azure 自動化帳戶。 請確定回合設定已設定為**Azure** ，並使用參數啟動 runbook。 Runbook 需要執行身分帳戶，自動化帳戶才能運作。 針對每個參數，請確定您已使用交換器來啟動它，如下列清單和影像所示：
 
 * -s \<subscriptionId\>
 * -g \<resourceGroup\>
@@ -85,7 +85,7 @@ for group in groups:
 
 ## <a name="develop-and-test-runbooks-offline"></a>離線開發和測試 Runbook
 
-若要離線開發和測試 Python 2 Runbook，您可以使用 GitHub 上的 [Azure 自動化 Python 模擬資產模組](https://github.com/azureautomation/python_emulated_assets)。 此模組可讓您參考共用的資源，例如認證、變數、連線和憑證。
+若要離線開發和測試您的 Python 2 runbook，您可以使用 GitHub 上的[Azure 自動化 python 模擬資產](https://github.com/azureautomation/python_emulated_assets)] 模組。 此模組可讓您參考共用的資源，例如認證、變數、連線和憑證。
 
 ## <a name="next-steps"></a>後續步驟
 

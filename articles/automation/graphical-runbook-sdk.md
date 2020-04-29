@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 21f6ff8078d5a1db88b2fde33c9063a56b3ee43a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 0058c0a0cedf2ea3f6c32f8f8368cca5b8dc6e3c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682913"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509001"
 ---
 # <a name="use-the-azure-automation-graphical-runbook-sdk"></a>使用 Azure 自動化圖形化 runbook SDK
 
@@ -18,7 +18,7 @@ ms.locfileid: "81682913"
 
 ## <a name="prerequisites"></a>先決條件
 
-將套件`Microsoft.Azure.Automation.GraphicalRunbook.Model`匯入您的專案中。
+將套件`Microsoft.Azure.Management.Automation.GraphicalRunbook.Model`匯入您的專案中。
 
 ## <a name="create-a-runbook-object-instance"></a>建立 Runbook 物件執行個體
 

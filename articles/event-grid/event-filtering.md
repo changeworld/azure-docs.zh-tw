@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/21/2019
+ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: ce1bb3760ae73a9eaeee3cde957cc94841ebdf29
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: ab5dd716253875e4a992b94a4e143cb3e806a4b0
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81731947"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509647"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解適用於事件格線訂用帳戶的事件篩選
 
@@ -43,7 +43,7 @@ ms.locfileid: "81731947"
 
 將事件發佈至自訂主題時，為您的事件建立主旨，以便訂閱者輕鬆地了解他們是否對該事件感興趣。 訂閱者使用主旨屬性以篩選和路由事件。 請考慮新增事件發生之位置的路徑，以便訂閱者可以根據該路徑的區段進行篩選。 該路徑可讓訂閱者縮小或放大篩選事件的範圍。 如果您在主旨中提供三區段路徑 (例如 `/A/B/C`)，訂閱者可根據第一個區段 `/A` 進行篩選，以取得一組廣泛的事件。 這些訂閱者可使用 `/A/B/C` 或 `/A/D/E` 之類的主旨來取得事件。 其他訂閱者可以根據 `/A/B` 篩選以取得一組範圍較小的事件。
 
-依主題篩選的 JSON 語法是:
+依照主旨篩選的 JSON 語法為：
 
 ```json
 "filter": {
@@ -59,9 +59,9 @@ ms.locfileid: "81731947"
 
 * 運算子類型 - 比較的類型。
 * 索引鍵 - 事件資料中用來進行篩選的欄位。 它可以是數字、布林值或字串。
-* 值 - 要與鍵進行比較的值。
+* values-要與索引鍵比較的值或值。
 
-如果指定具有多個值的單個篩選器,則執行**OR**操作,因此鍵欄位的值必須是這些值之一。 範例如下：
+如果您指定具有多個值的單一篩選，則會執行**或**作業，因此索引鍵欄位的值必須是下列值之一。 範例如下：
 
 ```json
 "advancedFilters": [
@@ -76,7 +76,7 @@ ms.locfileid: "81731947"
 ]
 ```
 
-如果指定多個不同的篩選器,則執行**AND**操作,因此必須滿足每個篩選器條件。 範例如下： 
+如果您指定多個不同的篩選器，就會執行**和**作業，因此必須符合每個篩選準則。 範例如下： 
 
 ```json
 "advancedFilters": [
@@ -97,9 +97,9 @@ ms.locfileid: "81731947"
 ]
 ```
 
-### <a name="operator"></a>運算子
+### <a name="operators"></a>運算子
 
-適用於數字的可用運算子為：
+適用于**數位**的運算子如下：
 
 * NumberGreaterThan
 * NumberGreaterThanOrEquals
@@ -108,9 +108,10 @@ ms.locfileid: "81731947"
 * NumberIn
 * NumberNotIn
 
-適用於布林值的可用運算子為：BoolEquals
+**布林**值的可用運算子為： 
+- BoolEquals
 
-適用於字串的可用運算子為：
+適用于**字串**的可用運算子如下：
 
 * StringContains
 * StringBeginsWith
@@ -118,13 +119,13 @@ ms.locfileid: "81731947"
 * StringIn
 * StringNotIn
 
-所有字串比較皆會區分大小寫。
+所有字串比較都**不**區分大小寫。
 
 ### <a name="key"></a>Key
 
 針對事件格線結構描述中的事件，請使用下列值作為索引鍵：
 
-* ID
+* 識別碼
 * 主題
 * 主體
 * EventType
@@ -159,6 +160,155 @@ ms.locfileid: "81731947"
 * **in** 和 **not in** 運算子個別只能有五個值
 
 相同的索引鍵可以用在多個篩選中。
+
+### <a name="examples"></a>範例
+
+### <a name="stringcontains"></a>StringContains
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringContains",
+    "key": "data.key1",
+    "values": [
+        "microsoft", 
+        "azure"
+    ]
+}]
+```
+
+### <a name="stringbeginswith"></a>StringBeginsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringBeginsWith",
+    "key": "data.key1",
+    "values": [
+        "event", 
+        "grid"
+    ]
+}]
+```
+
+### <a name="stringendswith"></a>StringEndsWith
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringEndsWith",
+    "key": "data.key1",
+    "values": [
+        "jpg", 
+        "jpeg", 
+        "png"
+    ]
+}]
+```
+
+### <a name="stringin"></a>StringIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringIn",
+    "key": "data.key1",
+    "values": [
+        "exact", 
+        "string", 
+        "matches"
+    ]
+}]
+```
+
+### <a name="stringnotin"></a>StringNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "StringNotIn",
+    "key": "data.key1",
+    "values": [
+        "aws", 
+        "bridge"
+    ]
+}]
+```
+
+### <a name="numberin"></a>NumberIn
+
+```json
+
+"advancedFilters": [{
+    "operatorType": "NumberIn",
+    "key": "data.counter",
+    "values": [
+        5,
+        1
+    ]
+}]
+
+```
+
+### <a name="numbernotin"></a>NumberNotIn
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberNotIn",
+    "key": "data.counter",
+    "values": [
+        41,
+        0,
+        0
+    ]
+}]
+```
+
+### <a name="numberlessthan"></a>NumberLessThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThan",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthan"></a>NumberGreaterThan
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThan",
+    "key": "data.counter",
+    "value": 20
+}]
+```
+
+### <a name="numberlessthanorequals"></a>NumberLessThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberLessThanOrEquals",
+    "key": "data.counter",
+    "value": 100
+}]
+```
+
+### <a name="numbergreaterthanorequals"></a>NumberGreaterThanOrEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "NumberGreaterThanOrEquals",
+    "key": "data.counter",
+    "value": 30
+}]
+```
+
+### <a name="boolequals"></a>BoolEquals
+
+```json
+"advancedFilters": [{
+    "operatorType": "BoolEquals",
+    "key": "data.isEnabled",
+    "value": true
+}]
+```
+
 
 ## <a name="next-steps"></a>後續步驟
 

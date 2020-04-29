@@ -4,12 +4,12 @@ description: 了解如何使用叢集自動調整程式，根據 Azure Kubernete
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: 732c405cad20aef3485b521fa245cb504a809c40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ebbeab82031ddc037c7885e7453e603a8f440a1
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129066"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509239"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>自動調整叢集以符合 Azure Kubernetes Service (AKS) 的應用程式需求
 
@@ -44,7 +44,7 @@ ms.locfileid: "82129066"
 
 如需更多叢集自動調整程式可能無法相應減少的相關資訊，請參閱[哪些類型的 Pod 可以防止叢集自動調整程式移除節點？][autoscaler-scaledown]
 
-叢集自動調整程式會使用啟動參數來處理調整事件和資源閾值之間的時間間隔。 這些參數由 Azure 平台定義，而且目前未公開供您調整。 如需叢集自動調整程式使用哪些參數的相關資訊，請參閱[什麼是叢集自動調整程式參數？][autoscaler-parameters]。
+叢集自動調整程式會使用啟動參數來處理調整事件和資源閾值之間的時間間隔。 如需叢集自動調整程式使用哪些參數的相關資訊，請參閱[什麼是叢集自動調整程式參數？][autoscaler-parameters]。
 
 叢集和水準 pod autoscalers 可以搭配使用，而且通常都是部署在叢集中。 當兩者組合時，水平 Pod 自動調整程式著重於執行符合應用程式需求的 Pod 數目。 叢集自動調整程式著重於執行支援排程 Pod 所需的節點數目。
 

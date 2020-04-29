@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: b75e0c1e53f1e00579de73897197cdd2f14d79af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae9d219c376aa704be34088a4f7c48c35baa9669
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81455405"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509494"
 ---
 # <a name="virtual-network-service-endpoints"></a>虛擬網路服務端點
 
@@ -43,7 +43,7 @@ ms.locfileid: "81455405"
 
 **公開預覽**
 
-- **[Azure Container Registry](../container-registry/container-registry-vnet.md)** （*ContainerRegistry*）：可在 Azure Container Registry 的所有 Azure 區域中使用預覽。
+- **[Azure Container Registry](../container-registry/container-registry-vnet.md)** （*ContainerRegistry*）：預覽適用于 Azure Container Registry 可供使用的有限 Azure 區域。
 
 如需最新通知，請查看[Azure 虛擬網路更新](https://azure.microsoft.com/updates/?product=virtual-network)頁面。
 
