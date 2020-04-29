@@ -1,5 +1,5 @@
 ---
-title: 合作夥伴常見問題解答：雲解決方案供應商計畫的 StorSimple
+title: 合作夥伴的常見問題： StorSimple for Cloud 解決方案提供者方案
 description: 針對適用於合作夥伴的 StorSimple 和 CSP 的一些常見問題，尋找解答。
 services: storsimple
 documentationcenter: NA
@@ -15,16 +15,16 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: eaf22773e581f0b7557a64917e183573039d1cef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77116158"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>適用於雲端解決方案提供者的 StorSimple 方案︰常見問題集
 
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 以下是 StorSimple 合作夥伴在 Azure 入口網站中部署或管理 StorSimple Virtual Array 時，可能遇到的問題和解答。
 
 問題和解答分成下列幾個類別：
@@ -63,7 +63,7 @@ StorSimple 是依使用量計算的服務。 透過 CSP 途徑採購 StorSimple 
 - 他們在提供受控服務時，也能發現新的商業模型。
 
 ### <a name="what-are-the-incentives-available-for-storsimple-csp-partners-do-i-qualify-for-any-csp-program-incentives"></a>StorSimple CSP 合作夥伴可以獲得什麼獎勵？ 我有資格獲得任何 CSP 方案的獎勵嗎？
-有關獎勵的資訊，請訪問[CSP 計畫獎勵](https://partner.microsoft.com/en-US/cloud-solution-provider/program-details)。
+如需獎勵的相關資訊，請移至[CSP 方案獎勵](https://partner.microsoft.com/en-US/cloud-solution-provider/program-details)。
 
 
 ## <a name="deploy-and-manage-storsimple-as-a-partner"></a>合作夥伴部署和管理 StorSimple

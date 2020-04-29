@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/11/2018
 ms.author: rogarana
 ms.openlocfilehash: aeb15fbb8da44a203789e06a359cb664998602ab
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77123243"
 ---
 Azure 檔案同步代理程式會定期更新，以新增功能和解決問題。 建議您設定 Microsoft Update，以取得 Azure 檔案同步代理程式的最新更新。
@@ -23,40 +23,40 @@ Azure 檔案同步代理程式會定期更新，以新增功能和解決問題�
     建議一律採用每個 Azure 檔案同步更新，以確保您可存取伺服器代理程式的最新修正程式。 Microsoft Update 會為您自動下載和安裝更新，讓這個程序順暢進行。
 2. **使用 AfsUpdater.exe 下載並安裝代理程式更新。**  
     AfsUpdater.exe 位於代理程式安裝目錄中。 按兩下可執行檔，即可下載並安裝代理程式的更新。 
-3. **使用 Microsoft 更新修補程式檔或 .msp 可執行檔修補現有 Azure 檔同步代理。最新的 Azure 檔同步更新包可以從[Microsoft 更新目錄](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync)下載。**  
+3. **使用 Microsoft Update 修補程式檔案或 .msp 可執行檔，修補現有的 Azure 檔案同步代理程式。您可以從[Microsoft Update 目錄](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync)下載最新的 Azure 檔案同步更新套件。**  
     執行 .msp 可執行檔將會使用與 Microsoft Update 在先前升級路徑中自動使用的相同方法，來升級 Azure 檔案同步安裝。 套用 Microsoft Update 修補程式將會執行 Azure 檔案同步安裝的就地升級。
-4. **從[微軟下載中心](https://go.microsoft.com/fwlink/?linkid=858257)下載最新的 Azure 檔同步代理安裝程式。**  
+4. **從[Microsoft 下載中心](https://go.microsoft.com/fwlink/?linkid=858257)下載最新的 Azure 檔案同步 agent 安裝程式。**  
     若要升級現有的 Azure 檔案同步代理程式安裝，請將舊版解除安裝，然後從所下載的安裝程式安裝最新版本。 Azure 檔案同步安裝程式會維護伺服器註冊、同步群組和任何其他設定。
 
-#### <a name="automatic-agent-lifecycle-management"></a>自動代理生命週期管理
-使用代理版本 6，檔同步團隊引入了代理自動升級功能。 您可以選擇兩種模式之一，並指定在伺服器上嘗試升級的維護視窗。 此功能旨在通過提供防止代理過期的護欄或允許無憂、保持當前設置來説明您進行代理生命週期管理。
-1. **預設設置**將嘗試防止代理過期。 在代理髮布到期日期後的 21 天內，代理將嘗試自我升級。 它將在過期前 21 天內在選定的維護視窗中開始嘗試每週升級一次。 **此選項不會消除使用常規 Microsoft 更新修補程式的需要。**
-1. 或者，您可以選擇代理在新代理版本可用（當前不適用於叢集服務器）後立即自動升級自身。 此更新將在選定的維護時段進行，並允許伺服器在新功能和改進普遍可用後立即從中受益。 這是推薦的無憂設置，它將為主要代理版本以及定期補救伺服器修補程式。 釋放的每個代理都處於 GA 品質。 如果選擇此選項，Microsoft 將您提供最新的代理版本。 叢集服務器被排除。 飛行完成後，代理也將在[Microsoft 下載中心](https://go.microsoft.com/fwlink/?linkid=858257)aka.ms/AFS/agent上可用。
+#### <a name="automatic-agent-lifecycle-management"></a>自動代理程式生命週期管理
+在代理程式第6版中，檔案同步團隊引進了代理程式自動升級功能。 您可以選取兩種模式的其中一種，並指定要在伺服器上嘗試升級的維護視窗。 這項功能的設計是為了協助您進行代理程式生命週期管理，方法是提供 guardrail，讓您的代理程式無法到期，或允許不麻煩且保持最新的設定。
+1. **預設設定**會嘗試防止代理程式到期。 在代理程式張貼到期日的21天內，代理程式將嘗試自我升級。 它會在到期之前的21天內或在選取的維護期間，開始嘗試升級一週一次。 **此選項不會讓您不需要定期 Microsoft Update 修補程式。**
+1. （選擇性）您可以選擇在新的代理程式版本可供使用（目前不適用於叢集伺服器）時，代理程式會自動立即升級。 這項更新會在選取的維護期間進行，並允許您的伺服器在正式推出時立即受益于新的功能和改進。 這是建議的免擔心設定，會提供主要代理程式版本，以及伺服器的定期更新修補程式。 每個發行的代理程式都有 GA 的品質。 如果您選取此選項，Microsoft 會將最新的代理程式版本傳送給您。 排除叢集伺服器。 試驗完成後，代理程式也會在[Microsoft 下載中心](https://go.microsoft.com/fwlink/?linkid=858257)aka.ms/AFS/agent 提供使用。
 
- ##### <a name="changing-the-auto-upgrade-setting"></a>更改自動升級設置
+ ##### <a name="changing-the-auto-upgrade-setting"></a>變更自動升級設定
 
-以下說明描述在完成安裝程式後如何更改設置（如果需要進行更改）。
+下列指示說明在您完成安裝程式之後，如果需要進行變更，如何變更設定。
 
-打開 PowerShell 主控台並導航到安裝同步代理的目錄，然後導入伺服器 Cmdlet。 預設情況下，如下所示：
+開啟 PowerShell 主控台，並流覽至您安裝同步代理程式的目錄，然後匯入伺服器 Cmdlet。 根據預設，這會看起來像這樣：
 ```powershell
 cd 'C:\Program Files\Azure\StorageSyncAgent'
 Import-Module -Name .\StorageSync.Management.ServerCmdlets.dll
 ```
 
-可以運行`Get-StorageSyncAgentAutoUpdatePolicy`以檢查當前策略設置並確定是否要更改它。
+您可以執行`Get-StorageSyncAgentAutoUpdatePolicy`來檢查目前的原則設定，並判斷是否要變更它。
 
-要將當前策略設置更改為延遲更新軌道，可以使用：
+若要將目前的原則設定變更為延遲的更新追蹤，您可以使用：
 ```powershell
 Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode UpdateBeforeExpiration
 ```
 
-要將當前策略設置更改為即時更新軌道，可以使用：
+若要將目前的原則設定變更為立即更新追蹤，您可以使用：
 ```powershell
 Set-StorageSyncAgentAutoUpdatePolicy -PolicyMode InstallLatest
 ```
 
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>代理程式生命週期和變更管理保證
-Azure 檔同步是一種雲服務，它不斷引入新功能和改進。 這表示特定的 Azure 檔案同步代理程式版本只會支援一段有限的時間。 為了便於部署，以下規則保證您有足夠的時間和通知來適應更改管理過程中的代理更新/升級：
+Azure 檔案同步是一項雲端服務，持續引進了新功能和改良功能。 這表示特定的 Azure 檔案同步代理程式版本只會支援一段有限的時間。 為了協助您進行部署，下列規則保證您有足夠的時間和通知，可在您的變更管理程式中容納代理程式更新/升級：
 
 - 主要代理程式版本從初始發行日期算起會獲得至少六個月的支援。
 - 我們保證主要代理程式版本之間的支援至少有三個月的重疊。 

@@ -9,15 +9,15 @@ ms.date: 02/11/2020
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 0fbd2f1d01665d7fefe03430855dc5c063fdaec9
-ms.sourcegitcommit: b95983c3735233d2163ef2a81d19a67376bfaf15
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77137720"
 ---
 **應用程式範本**
 
-| [範本]                 | 名稱        | 描述 |
+| [範本]                 | Name        | 說明 |
 | ------------------------ | ----------- | ----------- |
 | iotc-pnp-preview@1.0.0   | 自訂應用程式 | 為您建立空的應用程式，以填入您自己的裝置範本和裝置。 |
 | iotc-default@1.0.0       | 自訂應用程式（舊版） | 建立空白的繼承應用程式，以供您填入自己的裝置範本和裝置。
@@ -27,7 +27,7 @@ ms.locfileid: "77137720"
 | iotc-inventory@1.0.0     | 智慧清查管理 | 建立應用程式來自動化接收、產品移動、迴圈計數和追蹤。 |
 | iotc-logistics@1.0.0     | 連線的物流 | 建立應用程式，以透過位置和條件監視，在空中、水和土地上即時追蹤您的貨物。 |
 | iotc-meter@1.0.0         | 智慧計量分析 | 建立應用程式來監視能源消耗、網路狀態，以及找出趨勢以改善客戶支援和智慧計量管理。  |
-| iotc-mfc@1.0.0           | 微履行中心 | 建立應用程式以數位方式連接及管理完全自動化的履行中心。 |
+| iotc-mfc@1.0.0           | 微型物流中心 | 建立應用程式以數位方式連接及管理完全自動化的履行中心。 |
 | iotc-patient@1.0.0       | 持續患者監控 | 建立應用程式以擴充病人護理、減少再住院率及管理疾病。 |
 | iotc-power@1.0.0         | 日光電監控 | 建立應用程式來監視日光面板狀態和能源產生趨勢。 |
 | iotc-quality@1.0.0       | 水品質監控 | 建立應用程式以數位方式監視水品質。 |
