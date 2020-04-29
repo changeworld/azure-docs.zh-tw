@@ -1,5 +1,5 @@
 ---
-title: Azure 應用商店 IoT 邊緣模組
+title: Azure Marketplace IoT Edge 模組
 description: Azure Marketplace 中適用於應用程式和服務發行者的 IoT Edge 模組供應項目。
 author: qianw211
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
 ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81684346"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模組
@@ -46,7 +46,7 @@ IoT Edge 模組只會發佈至 Azure Marketplace，AppSource 則不適用。  �
 
 Marketplace 目前針對 IoT Edge 模組支援 [免費]**** 和 [自備授權 (BYOL)]**** 計費選項。
  
-**發佈選項**
+**發行選項**
 
 在所有情況下，IoT Edge 模組都應該選取 [交易]**** 發佈選項。  如需有關發佈選項的更多詳細資料，請參閱[選擇發佈選項](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)。  
 
@@ -58,7 +58,7 @@ Marketplace 目前針對 IoT Edge 模組支援 [免費]**** 和 [自備授權 (B
 
 若要將 IoT Edge 模組發佈至 Azure Marketplace，您必須滿足下列先決條件：
 
-- 訪問合作夥伴中心。 如需詳細資訊，請參閱 [Azure Marketplace 和 AppSource 發行指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
+- 合作夥伴中心的存取權。 如需詳細資訊，請參閱 [Azure Marketplace 和 AppSource 發行指南](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide)。
 - 將您的 IoT Edge 模組裝載在 Azure Container Registry 中。 
 - 備妥您的 IoT Edge 模組中繼資料，例如 (非完整清單)： 
     - 標題
@@ -75,15 +75,15 @@ Marketplace 目前針對 IoT Edge 模組支援 [免費]**** 和 [自備授權 (B
 
 ## <a name="documentation-and-resources"></a>文件和資源
 
-[創建 IoT 邊緣模組產品 /](./partner-center-portal/azure-iot-edge-module-creation.md)在合作夥伴中心發表新的 IoT Edge 模組產品的步驟。
+[建立 IoT Edge 模組供應](./partner-center-portal/azure-iot-edge-module-creation.md)專案--在合作夥伴中心發佈新 IoT Edge 模組供應專案的步驟。
 
 ## <a name="next-steps"></a>後續步驟
 
 如果您還沒有這麼做，請
 
-- [了解](https://azuremarketplace.microsoft.com/sell)市場。
+- [瞭解](https://azuremarketplace.microsoft.com/sell)marketplace。
 
-要在合作夥伴中心註冊,並開始創建新產品/服務或處理現有產品/服務,
+若要在合作夥伴中心註冊，並開始建立新的供應專案或使用現有的供應專案，
 
-- 登錄[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)創建或完成您的優惠。
-- 有關如何發佈 IoT Edge 模組產品/服務的資訊,請參閱[創建 IoT Edge 模組產品/服務](./partner-center-portal/azure-iot-edge-module-creation.md)。
+- 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以建立或完成您的供應專案。
+- 如需如何發佈 IoT Edge 模組供應專案的相關資訊，請參閱[建立 IoT Edge 模組供應](./partner-center-portal/azure-iot-edge-module-creation.md)專案。

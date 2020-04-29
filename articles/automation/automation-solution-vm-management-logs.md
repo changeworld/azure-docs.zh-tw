@@ -1,20 +1,20 @@
 ---
-title: 如何從啟動/停止 VM 解決方案查詢紀錄
-description: 本文介紹如何查詢 Azure 監視器中的開始/停止 VM 解決方案生成的日誌數據。
+title: 如何從啟動/停止 Vm 解決方案查詢記錄
+description: 本文說明如何從 Azure 監視器查詢啟動/停止 Vm 解決方案所產生的記錄資料。
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81604734"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-solution"></a>如何從啟動/停止 VM 解決方案查詢紀錄
+# <a name="how-to-query-logs-from-startstop-vms-solution"></a>如何從啟動/停止 Vm 解決方案查詢記錄
 
-Azure 自動化將兩種類型的記錄轉發到連結的日誌分析工作區:作業日誌和作業流。 此資料可用於 Azure 監視器中的[查詢](../azure-monitor/log-query/log-query-overview.md)。
+Azure 自動化將兩種類型的記錄轉送至連結的 Log Analytics 工作區：作業記錄和作業串流。 這項資料可用於 Azure 監視器中的[查詢](../azure-monitor/log-query/log-query-overview.md)。
 
 ## <a name="job-logs"></a>作業記錄
 
@@ -35,7 +35,7 @@ Azure 自動化將兩種類型的記錄轉發到連結的日誌分析工作區:�
 |SourceSystem | 指定所提交資料的來源系統。 對自動化來說，該值是 OpsManager|
 |StreamType | 指定事件的類型。 可能的值包括：<br>- Verbose<br>- Output<br>- Error (錯誤)<br>- Warning (警告)|
 |SubscriptionId | 指定作業的訂用帳戶 ID。
-|Time | Runbook 作業的執行日期和時間。|
+|時間 | Runbook 作業的執行日期和時間。|
 
 ## <a name="job-streams"></a>作業串流
 
@@ -54,7 +54,7 @@ Azure 自動化將兩種類型的記錄轉發到連結的日誌分析工作區:�
 |RunbookName | Runbook 的名稱。|
 |SourceSystem | 指定所提交資料的來源系統。 對自動化來說，該值是 OpsManager。|
 |StreamType | 作業串流的類型。 可能的值包括：<br>- Progress (進度)<br>- Output<br>- Warning (警告)<br>- Error (錯誤)<br>- Debug (偵錯)<br>- Verbose|
-|Time | Runbook 作業的執行日期和時間。|
+|時間 | Runbook 作業的執行日期和時間。|
 
 當您執行的記錄搜尋傳回 **JobLogs** 或 **JobStreams** 的類別記錄時，您可以選取 **JobLogs** 或 **JobStreams** 檢視，其中會顯示一組彙總搜尋所傳回更新的圖格。
 
@@ -65,10 +65,10 @@ Azure 自動化將兩種類型的記錄轉發到連結的日誌分析工作區:�
 |查詢 | 描述|
 |----------|----------|
 |尋找 ScheduledStartStop_Parent Runbook 已順利完成的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|尋找未成功完成的 runbook ScheduledStartStop_Parent的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|尋找尚未成功完成之 runbook ScheduledStartStop_Parent 的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" )  <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |尋找 SequencedStartStop_Parent Runbook 已順利完成的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
-|尋找未成功完成的 runbook SequencedStartStop_Parent的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
+|尋找尚未成功完成之 runbook SequencedStartStop_Parent 的作業 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Failed" ) <br>&#124;  summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 
 ## <a name="next-steps"></a>後續步驟
 
-**非工作時間解決方案期間的啟動/停止 VM**不包括預定義的警報集。 使用 Azure 監視器查看[創建日誌警報](../azure-monitor/platform/alerts-log.md),瞭解如何建立作業失敗警報以支援 DevOps 或操作過程和過程。
+**「停機期間啟動/停止 Vm」** 解決方案不包含預先定義的一組警示。 請參閱使用 Azure 監視器[建立記錄警示](../azure-monitor/platform/alerts-log.md)，以瞭解如何建立作業失敗的警示，以支援您的 DevOps 或操作進程和程式。

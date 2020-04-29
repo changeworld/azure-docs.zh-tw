@@ -9,102 +9,102 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: b8073240bdda38757a5e4feee66c9f54746966c4
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632065"
 ---
 ### <a name="portal"></a>入口網站
 
-為磁碟設定客戶管理的密鑰將需要您按特定順序創建資源(如果您是第一次這樣做)。 首先,您需要創建和設置 Azure 密鑰保管庫。
+如果您是第一次執行，則為您的磁片設定客戶管理的金鑰將會要求您以特定順序建立資源。 首先，您將需要建立並設定 Azure Key Vault。
 
-#### <a name="setting-up-your-azure-key-vault"></a>設定 Azure 金鑰保存庫
+#### <a name="setting-up-your-azure-key-vault"></a>設定您的 Azure Key Vault
 
-1. 登入[Azure 門戶](https://portal.azure.com/)。
-1. 搜尋並選擇**金鑰保存庫**。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+1. 搜尋並選取 [**金鑰保存庫**]。
 
-    [![sse-鍵-保管庫-門戶搜索.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
+    [![sse-key-vault-portal-search .png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
 
     > [!IMPORTANT]
-    > Azure 密鑰保管庫、磁碟加密集、VM、磁碟和快照必須都位於同一區域中,並且要成功部署。
+    > 您的 Azure 金鑰保存庫、磁片加密集、VM、磁片和快照必須全都位於相同的區域和訂用帳戶，部署才會成功。
 
-1. 選擇 **「新增」** 以建立新的密鑰保管庫。
+1. 選取 [ **+ 新增**] 以建立新的 Key Vault。
 1. 建立新的資源群組。
-1. 輸入金鑰保管庫名稱,選擇區域,然後選擇定價層。
-1. 選擇 **「審閱 」 建立**「,驗證您的選擇,然後選擇 **」創建**」。
+1. 輸入金鑰保存庫名稱、選取區域，然後選取 [定價層]。
+1. 選取 [審核] [ **+ 建立**]，驗證您的選擇，然後選取 [**建立**]。
 
-    ![Azure 密鑰保管庫創建體驗的屏幕截圖。 顯示您建立的特定值](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
+    ![Azure Key Vault 建立體驗的螢幕擷取畫面。 顯示您所建立的特定值](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
 
-1. 金鑰保管庫完成部署後,選擇它。
-1. 在 **「設定」** 選擇 **「鍵**」 。
-1. 選擇 **「生成/匯入**」 。
+1. 完成部署金鑰保存庫後，請選取它。
+1. 選取 [**設定**] 底下的 [**金鑰**]。
+1. 選取 [產生/匯入]  。
 
-    !["金鑰保管庫"資源設置窗格的屏幕截圖。 在設置中顯示生成/導入按鈕。](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
+    ![[Key Vault 資源設定] 窗格的螢幕擷取畫面。 顯示 [設定] 內的 [產生/匯入] 按鈕。](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
-1. 將**金鑰類型**設定為**RSA**與**RSA 金鑰大小**設定為**2048**。
-1. 根據需要填寫其餘選擇,然後選擇 **"創建**"。
+1. 將 [**金鑰類型**] 設定為 [ **rsa** ]，並將 [ **rsa 金鑰大小**] 設定為**2048**。
+1. 視需要填寫剩餘的選項，然後選取 [**建立**]。
 
-    ![選擇產生/匯入按鈕後出現的建立鍵邊列選項卡的螢幕截圖](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
+    ![選取 [產生/匯入] 按鈕後出現的 [建立金鑰] 分頁的螢幕擷取畫面](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
 
-#### <a name="setting-up-your-disk-encryption-set"></a>設定磁碟加密集
+#### <a name="setting-up-your-disk-encryption-set"></a>設定磁片加密集
 
-1. 搜索**磁碟加密集**並選擇它。
-1. 在 **「磁碟加密集**」邊欄選項卡上選擇 **「添加**」 。
+1. 搜尋**磁片加密集**並加以選取。
+1. 在 [**磁片加密設定**] 分頁上，選取 [ **+ 新增**]。
 
-    ![磁片加密門戶主螢幕的螢幕截圖。 突顯「新增」按鈕](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
+    ![磁片加密入口網站主畫面的螢幕擷取畫面。 反白顯示 [新增] 按鈕](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
-1. 選擇資源組,命名加密集,然後選擇與密鑰保管庫相同的區域。
-1. 選擇**金鑰保存與金鑰**。
-1. 選擇以前創建的金鑰保管庫和密鑰以及版本。
+1. 選取您的資源群組、命名您的加密集，然後選取與金鑰保存庫相同的區域。
+1. 選取 [**金鑰保存庫] 和 [金鑰**]。
+1. 選取您先前建立的金鑰保存庫和金鑰，以及版本。
 1. 按 [選取]****。
-1. 選擇 **「檢視」 建立**然後**建立**。
+1. 選取 [審核] [ **+ 建立**]，然後按一下 [**建立**]。
 
-    ![磁碟加密創建邊欄選項卡的螢幕截圖。 顯示訂閱、資源組、磁碟加密集名稱、區域和密鑰保管庫 + 密鑰選擇器。](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
+    ![[磁片加密建立] 分頁的螢幕擷取畫面。 顯示訂用帳戶、資源群組、磁片加密集名稱、區域，以及金鑰保存庫 + 金鑰選取器。](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
 
-1. 完成創建後打開磁碟加密集,並選擇彈出的警報。
+1. 完成建立後，請開啟磁片加密集，然後選取要顯示的警示。
 
-    ![警報彈出視窗的螢幕截圖:「要將磁碟、映射或快照與磁碟加密集關聯,必須授予密鑰保管庫的許可權」。。 選擇此警報以繼續](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
+    ![警示快顯視窗的螢幕擷取畫面： ' 若要將磁片、映射或快照集與磁片加密組產生關聯，您必須將許可權授與金鑰保存庫 '。 選取此警示以繼續](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
 
-應彈出兩個通知並成功。 這樣做將允許您將磁碟加密集與密鑰保管庫一起使用。
+兩個通知應該會快顯並成功。 這麼做可讓您使用金鑰保存庫中的磁片加密集。
 
-![密鑰保管庫成功許可權和角色分配的屏幕截圖。](media/virtual-machines-disk-encryption-portal/disk-enc-notification-success.png)
+![金鑰保存庫的成功許可權和角色指派的螢幕擷取畫面。](media/virtual-machines-disk-encryption-portal/disk-enc-notification-success.png)
 
 #### <a name="deploy-a-vm"></a>部署 VM
 
-現在,您已經創建並設置了密鑰保管庫和磁碟加密集,您可以使用加密部署 VM。
-VM 部署過程與標準部署過程類似,唯一的區別是您需要將 VM 部署到與其他資源相同的區域中,並且選擇使用客戶託管金鑰。
+現在您已建立並設定您的金鑰保存庫和磁片加密集，您可以使用加密來部署 VM。
+VM 部署程式類似于標準部署程式，唯一的差異在於您需要在與其他資源相同的區域中部署 VM，而且您選擇使用客戶管理的金鑰。
 
-1. 搜尋**虛擬機**並選擇 **「添加」** 以建立 VM。
-1. 在 **「基本」** 選項卡上,選擇與磁碟加密集和 Azure 密鑰保管庫相同的區域。
-1. 根據需要在 **「基本」** 選項卡上填寫其他值。
+1. 搜尋**虛擬機器**，然後選取 [ **+ 新增**] 以建立 VM。
+1. 在 [**基本**] 索引標籤上，選取與您的磁片加密集相同的區域，然後 Azure Key Vault]。
+1. 視需要在 [**基本**] 索引標籤上填入其他值。
 
-    ![VM 創建體驗的螢幕截圖,區域值突出顯示。](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
+    ![VM 建立體驗的螢幕擷取畫面，並反白顯示區域值。](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
 
-1. 在**磁碟選項**卡上,**選擇使用客戶管理的金鑰靜態加密**。
-1. 在**磁碟加密集**下拉清單中選擇磁碟加密集。
-1. 根據需要進行其餘選擇。
+1. 在 [**磁片**] 索引標籤上，選取 [待用**時使用客戶管理的金鑰進行加密**]。
+1. 在 [**磁片加密集**] 下拉式選單中，選取您的磁片加密集。
+1. 依您的需要進行其餘的選擇。
 
-    ![VM 創建體驗的螢幕截圖,磁碟邊欄選項卡。 磁碟加密集下拉清單突出顯示。](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
+    ![VM 建立體驗的螢幕擷取畫面： [磁片] 分頁。 並反白顯示 [磁片加密集] 下拉式按鈕。](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
 
-#### <a name="enable-on-an-existing-disk"></a>在現有磁碟上開啟
+#### <a name="enable-on-an-existing-disk"></a>在現有磁片上啟用
 
 > [!CAUTION]
-> 在連接到 VM 的任何磁碟上啟用磁碟加密需要停止 VM。
+> 若要在任何連接至 VM 的磁片上啟用磁片加密，則需要停止 VM。
     
-1. 導航到與磁碟加密集之一位於同一區域的 VM。
-1. 打開 VM 並選擇 **「停止**」。
+1. 流覽至與您其中一個磁片加密集位於相同區域中的 VM。
+1. 開啟 VM，然後選取 [**停止**]。
 
-    ![示例 VM 的主疊加螢幕截圖。 突顯「停止」按鈕](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
+    ![範例 VM 主要重迭的螢幕擷取畫面。 反白顯示 [停止] 按鈕](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
 
-1. 在 VM 完成停止後,選擇**磁碟**,然後選擇要加密的磁碟。
+1. VM 完成停止之後，請選取 [**磁片**]，然後選取您想要加密的磁片。
 
-    ![示例 VM 的螢幕截圖,打開磁碟邊欄選項卡。 OS 磁碟將突出顯示,作為要選擇的示例磁碟。](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
+    ![範例 VM 的螢幕擷取畫面，其中已開啟 [磁片] 分頁。 系統會反白顯示 OS 磁片，做為您要選取的範例磁片。](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
 
-1. 選擇 **"加密****",然後選擇使用客戶管理的密鑰靜態加密**,然後在下拉清單中選擇磁碟加密集。
+1. 選取 [**加密**]，然後選取 [**使用客戶管理的金鑰進行待用加密**]，然後在下拉式清單中選取您的磁片加密集。
 1. 選取 [儲存]  。
 
-    ![示例OS磁碟的螢幕截圖。 加密邊欄選項卡處於打開狀態,選擇了使用客戶管理的密鑰進行靜態加密,以及示例 Azure 密鑰保管庫。 進行這些選擇后,將選擇保存按鈕。](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
+    ![範例作業系統磁片的螢幕擷取畫面。 [加密] 分頁已開啟，同時選取了 [使用客戶管理的金鑰進行待用加密]，以及您的範例 Azure Key Vault。 進行這些選擇之後，就會選取 [儲存] 按鈕。](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
 
-1. 對要加密的 VM 的任何其他磁碟重複此過程。
-1. 當磁碟完成切換到客戶管理的密鑰後,如果沒有要加密的其他附加磁碟,您可以啟動 VM。
+1. 針對連接至您想要加密之 VM 的任何其他磁片，重複此程式。
+1. 當您的磁片完成切換到客戶管理的金鑰時，如果沒有任何其他您想要加密的連接磁片，您可以啟動 VM。

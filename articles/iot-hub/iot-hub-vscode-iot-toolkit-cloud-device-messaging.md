@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure IoT 工具進行 VSCode 管理 IT 中心訊息傳送
+title: 使用適用于 VSCode 的 Azure IoT Tools 來管理 IT 中樞訊息
 description: 了解如何使用適用於 Visual Studio Code 的 Azure IoT Tools 來監視 Azure IoT 中樞的裝置到雲端訊息，以及傳送雲端到裝置訊息。
 author: formulahendry
 ms.service: iot-hub
@@ -9,10 +9,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
 ms.openlocfilehash: 31a5d55d1067b9dd946c1667118d0bde5ee3d59e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682506"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>使用適用於 Visual Studio Code 的 Azure IoT Tools 來傳送和接收裝置與 IoT 中樞之間的訊息
@@ -41,7 +41,7 @@ ms.locfileid: "81682506"
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-* [以 VS 代碼的 Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或複製此網址 並將其貼上到瀏覽器視窗中:`vscode:extension/vsciot-vscode.azure-iot-tools`
+* [Azure IoT Tools，VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)或將此 URL 複製並貼到瀏覽器視窗中：`vscode:extension/vsciot-vscode.azure-iot-tools`
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>登入以存取 IoT 中樞
 
@@ -56,17 +56,17 @@ ms.locfileid: "81682506"
 5. 在幾秒鐘的時間內，裝置清單會顯示在 [Azure IoT Hub Devices]**** \(Azure IoT 中樞裝置\) 索引標籤中。
 
    > [!Note]
-   > 您也可以選擇 [設定 IoT 中樞連接字串]**** 來完成設定。 在彈出視窗中輸入 IoT 裝置連接到的 IoT 中心的**iothubowner**策略連接字串。
+   > 您也可以選擇 [設定 IoT 中樞連接字串]**** 來完成設定。 在快顯視窗中，輸入 IoT 裝置所連接之 IoT 中樞的**iothubowner**原則連接字串。
 
 ## <a name="monitor-device-to-cloud-messages"></a>監視裝置到雲端的訊息
 
 若要監視從您的裝置傳送到IoT 中樞的訊息，請遵循下列步驟：
 
-1. 右鍵按一下裝置並選擇 **「開始監視內置事件終結點**」。
+1. 以滑鼠右鍵按一下您的裝置，然後選取 [**開始監視內建事件端點**]。
 
-2. 受監視的消息將顯示在**輸出** > **Azure IoT 中心**檢視中。
+2. 受監視的訊息會顯示在 [**輸出** > **Azure IoT 中樞**] 視圖中。
 
-3. 要停止監視,請右鍵按兩下 **「輸出」** 視圖並選擇 **「停止監視內置事件終結點**」。
+3. 若要停止監視，請以滑鼠右鍵按一下**輸出**視圖，然後選取 [**停止監視內建事件端點**]。
 
 ## <a name="send-cloud-to-device-messages"></a>傳送雲端到裝置訊息
 
@@ -76,7 +76,7 @@ ms.locfileid: "81682506"
 
 2. 在輸入方塊中輸入訊息。
 
-3. 結果將顯示在**輸出** > **Azure IoT 中心**檢視中。
+3. 結果會顯示在 [**輸出** > **Azure IoT 中樞**] 視圖中。
 
 ## <a name="next-steps"></a>後續步驟
 

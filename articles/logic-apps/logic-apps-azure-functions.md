@@ -1,70 +1,70 @@
 ---
-title: 從 Azure 邏輯套用與呼叫 Azure 函數
-description: 從 Azure 邏輯應用程式中的自動工作與工作流呼叫和執行 Azure 函數中的自訂代碼
+title: 從 Azure Logic Apps 新增和呼叫 Azure Functions
+description: 從中的自動化工作和工作流程，在您的 Azure Functions 中呼叫並執行自訂程式碼 Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.openlocfilehash: 29713622be90ea280bff3c002be746bf1615718f
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605906"
 ---
-# <a name="call-azure-functions-from-azure-logic-apps"></a>從 Azure 邏輯應用呼叫 Azure 函數
+# <a name="call-azure-functions-from-azure-logic-apps"></a>從 Azure Logic Apps 呼叫 Azure 函式
 
-如果要在邏輯應用執行特定工作的代碼,可以使用[Azure 函數建立自己的函數](../azure-functions/functions-overview.md)。 此服務可説明您創建 Node.js、C# 和 F# 函數,因此您不必建構完整的應用或基礎結構來執行代碼。 您也可以[從 Azure 函式內呼叫邏輯應用程式](#call-logic-app)。 Azure Functions 可提供在雲端進行的無伺服器運算，適合用來執行以下舉例的各種工作：
+當您想要執行程式碼以在邏輯應用程式中執行特定作業時，您可以使用[Azure Functions](../azure-functions/functions-overview.md)來建立自己的函式。 此服務可協助您建立 node.js、c # 和 F # 函式，因此您不需要建立完整的應用程式或基礎結構來執行程式碼。 您也可以[從 Azure 函式內呼叫邏輯應用程式](#call-logic-app)。 Azure Functions 可提供在雲端進行的無伺服器運算，適合用來執行以下舉例的各種工作：
 
 * 使用 Node.js 或 C# 中的函式來擴充邏輯應用程式的行為。
 * 在邏輯應用程式工作流程中執行計算。
 * 在邏輯應用程式中套用進階格式設定或計算欄位。
 
-您可以建立 Azure 函數, 請瞭解如何[新增與執行內聯代碼](../logic-apps/logic-apps-add-run-inline-code.md)。
+若要在不建立 Azure 函式的情況下執行程式碼片段，請瞭解如何[新增和執行內嵌程式碼](../logic-apps/logic-apps-add-run-inline-code.md)。
 
 > [!NOTE]
-> 邏輯應用和 Azure 函數之間的集成當前與啟用的插槽不起作用。
+> Logic Apps 和 Azure Functions 之間的整合目前不適用於已啟用的位置。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* Azure 函數應用(它是 Azure 函數的容器)以及 Azure 函數。 如果您沒有函式應用程式，[請先建立該函式應用程式](../azure-functions/functions-create-first-azure-function.md)。 然後,您可以在 Azure 門戶中的邏輯應用外部或在邏輯應用設計器[中的邏輯應用內部](#create-function-designer)創建函數。
+* Azure 函數應用程式，這是 Azure 函式的容器，以及您的 Azure 函式。 如果您沒有函式應用程式，[請先建立該函式應用程式](../azure-functions/functions-create-first-azure-function.md)。 接著，您可以在 Azure 入口網站的邏輯應用程式之外，或從邏輯應用程式設計工具中的[邏輯應用程式內部](#create-function-designer)建立函式。
 
-* 使用邏輯應用時,相同的要求適用於函數應用和函數,無論它們是現有還是新應用:
+* 使用邏輯應用程式時，相同的需求適用于函式應用程式和函式，不論它們是現有或新的：
 
-  * 函數應用和邏輯應用必須使用相同的 Azure 訂閱。
+  * 您的函數應用程式和邏輯應用程式必須使用相同的 Azure 訂用帳戶。
 
-  * 新函數應用必須使用 .NET 或 JAVAScript 作為運行時堆疊。 將新功能添加到現有函數應用時,可以選擇 C# 或 JavaScript。
+  * 新的函數應用程式必須使用 .NET 或 JavaScript 做為執行時間堆疊。 當您將新的函式新增至現有的函式應用程式時，可以選取 [c #] 或 [JavaScript]。
 
-  * 您的函數使用**HTTP 觸發器**範本。
+  * 您的函式會使用**HTTP 觸發**程式範本。
 
-    HTTP 觸發程序範本可以接受內容中有來自邏輯應用程式的 `application/json` 類型。 將 Azure 函數添加到邏輯應用時,邏輯應用設計器會顯示 Azure 訂閱中使用此範本創建的自訂函數。
+    HTTP 觸發程序範本可以接受內容中有來自邏輯應用程式的 `application/json` 類型。 當您將 Azure 函式新增至邏輯應用程式時，邏輯應用程式設計工具會顯示在您的 Azure 訂用帳戶內從這個範本建立的自訂函式。
 
-  * 除非定義了[OpenAPI 定義](../azure-functions/functions-openapi-definition.md)(以前稱為[Swagger 檔案](https://swagger.io/)),否則函數不使用自訂路由。
+  * 您的函式不會使用自訂路由，除非您已定義[OpenAPI 定義](../azure-functions/functions-openapi-definition.md)（先前稱為[Swagger](https://swagger.io/)檔案）。
 
-  * 如果函數具有 OpenAPI 定義,則邏輯應用設計器在使用函數參數時為您提供更豐富的體驗。 邏輯應用程式若要尋找和存取具有 OpenAPI 定義的函式，必須先[遵循下列步驟來設定函式應用程式](#function-swagger)。
+  * 如果您有函式的 OpenAPI 定義，當您使用函式參數時，Logic Apps 設計工具會提供更豐富的體驗。 邏輯應用程式若要尋找和存取具有 OpenAPI 定義的函式，必須先[遵循下列步驟來設定函式應用程式](#function-swagger)。
 
 * 您要在其中新增函式的邏輯應用程式，並包括作為邏輯應用程式中第一個步驟的[觸發程序](../logic-apps/logic-apps-overview.md#logic-app-concepts)
 
-  在添加運行函數的操作之前,邏輯應用必須從觸發器開始。 如果您還不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+  您的邏輯應用程式必須以觸發程式開頭，才可以新增執行函式的動作。 如果您還不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 <a name="function-swagger"></a>
 
-## <a name="find-functions-that-have-openapi-descriptions"></a>尋找一個 OpenAPI 的函式
+## <a name="find-functions-that-have-openapi-descriptions"></a>尋找具有 OpenAPI 描述的函式
 
-為了在邏輯應用設計器中使用函數參數時獲得更豐富的體驗,請為您的函數[生成 OpenAPI 定義](../azure-functions/functions-openapi-definition.md)(以前稱為[Swagger 檔](https://swagger.io/))。 若要設定函式應用程式，讓邏輯應用程式可以尋找和使用具有 Swagger 描述的函式，請遵循下列步驟：
+當您在 Logic Apps 設計工具中使用函式參數時，如需更豐富的體驗，請針對您的函[式產生 OpenAPI 定義](../azure-functions/functions-openapi-definition.md)（之前稱為[Swagger](https://swagger.io/)檔案）。 若要設定函式應用程式，讓邏輯應用程式可以尋找和使用具有 Swagger 描述的函式，請遵循下列步驟：
 
-1. 確保函數應用正在主動運行。
+1. 請確定您的函數應用程式正在執行。
 
-1. 在函數應用中,設定[跨源資源分享 (CORS),](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)以便按照以下步驟允許所有來源:
+1. 在您的函式應用程式中，設定[跨原始來源資源分享（CORS）](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) ，以遵循這些步驟來允許所有來源：
 
-   1. 從 **「功能應用」** 清單中,選擇函數應用。 在右邊窗格中,選擇 **「平臺」功能** > **CORS**。
+   1. 從 [**函數應用程式**] 清單中，選取您的函數應用程式。 在右窗格中，選取 [**平臺功能** > ] [**CORS**]。
 
       ![選取您的函式應用程式 > [平台功能] > [CORS]](./media/logic-apps-azure-functions/function-platform-features-cors.png)
 
-   1. 在**CORS**下,添加**`*`** 星號 () 通配符,但刪除清單中的所有其他源,然後選擇 **「保存**」。
+   1. 在 [ **CORS**] 底下，新增**`*`** 星號（）萬用字元，但移除清單中的所有其他來源，然後選取 [**儲存**]。
 
       ![將 "CORS* 設為萬用字元 "*"](./media/logic-apps-azure-functions/function-platform-features-cors-origins.png)
 
@@ -101,23 +101,23 @@ function convertToDateString(request, response){
 
 ## <a name="create-functions-inside-logic-apps"></a>在邏輯應用程式內部建立函式
 
-可以使用邏輯應用設計器中的內建 Azure 函數操作直接從邏輯應用的工作流創建 Azure 函數,但只能對 JavaScript 中編寫的 Azure 函數使用此方法。 對於其他語言,可以通過 Azure 門戶中的 Azure 函數體驗創建 Azure 函數。 有關詳細資訊,請參閱在[Azure 門戶中建立第一個函數](../azure-functions/functions-create-first-azure-function.md)。
+您可以使用邏輯應用程式設計工具中的內建 Azure Functions 動作，直接從邏輯應用程式的工作流程建立 Azure 函式，但只能針對以 JavaScript 撰寫的 Azure 函式使用此方法。 針對其他語言，您可以透過 Azure 入口網站中的 Azure Functions 體驗來建立 Azure 函式。 如需詳細資訊，請參閱[在 Azure 入口網站中建立您的第一個](../azure-functions/functions-create-first-azure-function.md)函式。
 
-但是,在創建任何 Azure 函數之前,必須已經具有 Azure 函數應用,它是函數的容器。 如果您沒有函式應用程式，請先建立該函式應用程式。 請參閱[在 Azure 入口網站中建立您的第一個函式](../azure-functions/functions-create-first-azure-function.md)。
+不過，在您可以建立任何 Azure 函數之前，您必須已有 Azure 函式應用程式，這是您函式的容器。 如果您沒有函式應用程式，請先建立該函式應用程式。 請參閱[在 Azure 入口網站中建立您的第一個函式](../azure-functions/functions-create-first-azure-function.md)。
 
-1. 在[Azure 門戶](https://portal.azure.com)中,在邏輯應用設計器中打開邏輯應用。
+1. 在[Azure 入口網站](https://portal.azure.com)中，于邏輯應用程式設計工具中開啟邏輯應用程式。
 
 1. 若要建立並新增函式，請遵循適用於您案例的步驟：
 
-   * 在邏輯應用工作流的最後一步下,選擇 **「新建步驟**」。。
+   * 在邏輯應用程式工作流程的最後一個步驟底下，選取 [**新增步驟**]。
 
-   * 在邏輯應用工作流的現有步驟之間,將滑鼠移到箭頭上,選擇加號 (+) 符號,然後選擇「**添加操作**」。
+   * 在邏輯應用程式工作流程中的現有步驟之間，將滑鼠移至箭號上，選取加號（+），然後選取 [**新增動作**]。
 
-1. 在搜尋方塊中，輸入「azure functions」作為篩選條件。 從操作清單中選擇 **「選擇 Azure 函數**」 操作「,例如:
+1. 在搜尋方塊中，輸入「azure functions」作為篩選條件。 從 [動作] 清單中，選取 [**選擇 Azure 函數**] 動作，例如：
 
    ![尋找 "Azure functions"](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-1. 從函式應用程式清單中，選取您的函式應用程式。 操作清單開啟後,選擇此操作:**建立新函式**
+1. 從函式應用程式清單中，選取您的函式應用程式。 在動作清單開啟後，選取此動作：**建立新**的函式
 
    ![選取函式應用程式](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -125,13 +125,13 @@ function convertToDateString(request, response){
 
    1. 在 [函式名稱]**** 方塊中，為您的函式提供名稱。
 
-   1. 在 **「代碼」** 框中,將代碼添加到函數範本中,包括函數完成運行後要返回到邏輯應用的回應和有效負載。 當您完成時，選取 [建立]  。
+   1. 在 [程式**代碼**] 方塊中，將您的程式碼新增至函式範本，包括您想要在函式完成執行後傳回給邏輯應用程式的回應和承載。 當您完成時，選取 [建立]  。
 
    例如：
 
    ![定義函式](./media/logic-apps-azure-functions/add-code-function-definition.png)
 
-   在範本的代碼中,*`context`物件*是指邏輯應用在後續步驟中通過 **「請求正文」** 欄位發送的消息。 若要從您的函式內存取 `context` 物件的屬性，請使用此語法：
+   在範本的程式碼中， * `context`物件*會參考您的邏輯應用程式在稍後步驟中透過 [**要求**本文] 欄位傳送的訊息。 若要從您的函式內存取 `context` 物件的屬性，請使用此語法：
 
    `context.body.<property-name>`
 
@@ -146,15 +146,15 @@ function convertToDateString(request, response){
 
 1. 在 [要求本文]**** 方塊中，提供函式的輸入 (必須以 JavaScript 物件標記法 (JSON) 物件進行格式化)。
 
-   此輸入是邏輯應用程式傳送給函式的「內容物件」** 或訊息。 當您在 [要求本文]**** 欄位內按一下時，動態內容清單會隨即出現，讓您可以選取前面步驟中的輸出權杖。 此示例指定上下文負載包含名為具有`content`電子郵件觸發器的**From**令牌值的屬性。
+   此輸入是邏輯應用程式傳送給函式的「內容物件」** 或訊息。 當您在 [要求本文]**** 欄位內按一下時，動態內容清單會隨即出現，讓您可以選取前面步驟中的輸出權杖。 這個範例會指定內容承載包含名為`content`的屬性，其具有**來自**電子郵件觸發程式的 from token 值。
 
    ![「要求本文」範例 - 內容物件承載](./media/logic-apps-azure-functions/function-request-body-example.png)
 
-   在此處，內容物件不會轉換為字串，所以物件內容會直接新增至 JSON 承載。 不過，如果內容物件不是傳遞字串、JSON 物件或 JSON 陣列的 JSON 權杖，您就會收到錯誤。 因此,如果此示例改用 **「接收時間**」令牌,則可以通過添加雙引號將上下文物件轉換為字串。
+   在此處，內容物件不會轉換為字串，所以物件內容會直接新增至 JSON 承載。 不過，如果內容物件不是傳遞字串、JSON 物件或 JSON 陣列的 JSON 權杖，您就會收到錯誤。 因此，如果此範例改為使用**接收的時間**token，您可以藉由加入雙引號，將內容物件轉換為字串。
 
    ![將物件轉換為字串](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 要指定其他詳細資訊(如要使用的方法、請求標頭或查詢參數或身份驗證),請打開 **「添加新參數**清單」,然後選擇所需的選項。 對於身份驗證,您的選項因所選功能而異。 請參考[啟用 Azure 函式認證](#enable-authentication-functions)。
+1. 若要指定其他詳細資料，例如要使用的方法、要求標頭或查詢參數，或驗證，請開啟 [**加入新的參數**] 清單，然後選取您想要的選項。 針對驗證，您的選項會根據您選取的函式而有所不同。 請參閱[啟用 Azure 函式的驗證](#enable-authentication-functions)。
 
 <a name="add-function-logic-app"></a>
 
@@ -162,11 +162,11 @@ function convertToDateString(request, response){
 
 若要從邏輯應用程式呼叫現有 Azure 函式，您可以在邏輯應用程式設計工具中新增 Azure 函式，例如任何其他動作。
 
-1. 在[Azure 門戶](https://portal.azure.com)中,在邏輯應用設計器中打開邏輯應用。
+1. 在[Azure 入口網站](https://portal.azure.com)中，于邏輯應用程式設計工具中開啟邏輯應用程式。
 
-1. 在要添加函數的步驟下,選擇 **"新建步驟**"。
+1. 在您要新增函式的步驟底下，選取 [**新增步驟**]。
 
-1. 在搜尋框中**選擇操作**,在搜尋框中輸入"azure 函數"作為篩選器。 從操作清單中選擇 **「選擇 Azure 函數**操作」。
+1. 在 [**選擇動作**] 下的 [搜尋] 方塊中，輸入「azure 函式」作為篩選準則。 從 [動作] 清單中，選取 [**選擇 Azure 函數**] 動作。
 
    ![尋找 "Azure functions"](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
@@ -174,13 +174,13 @@ function convertToDateString(request, response){
 
    ![選取函式應用程式和 Azure 函式](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
-   對於具有 API 定義 (斯瓦格描述)並[設定的函數,以便邏輯應用可以找到和存取這些函式](#function-swagger),您可以選擇**Swagger 操作**。
+   針對具有 API 定義（Swagger 描述）並已設定好[讓邏輯應用程式可以尋找和存取這些](#function-swagger)函式的函式，您可以選取 [ **Swagger 動作**]。
 
-   ![選擇函數應用「搖曳」 與 Azure 函式](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
+   ![選取您的函數應用程式、「Swagger 動作」和您的 Azure 函式](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
 1. 在 [要求本文]**** 方塊中，提供函式的輸入 (必須以 JavaScript 物件標記法 (JSON) 物件進行格式化)。
 
-   此輸入是邏輯應用程式傳送給函式的「內容物件」** 或訊息。 按下「**請求正文**」 欄位中時,將顯示動態內容清單,以便從前面的步驟中為輸出選擇權杖。 此示例指定上下文負載包含名為具有`content`電子郵件觸發器的**From**令牌值的屬性。
+   此輸入是邏輯應用程式傳送給函式的「內容物件」** 或訊息。 當您按一下 [**要求**本文] 欄位時，動態內容清單隨即出現，讓您可以從先前的步驟中選取輸出的權杖。 這個範例會指定內容承載包含名為`content`的屬性，其具有**來自**電子郵件觸發程式的 from token 值。
 
    ![「要求本文」範例 - 內容物件承載](./media/logic-apps-azure-functions/function-request-body-example.png)
 
@@ -188,129 +188,129 @@ function convertToDateString(request, response){
 
    ![將物件轉換為字串](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. 要指定其他詳細資訊(如要使用的方法、請求標頭、查詢參數或身份驗證),請打開 **「添加新參數**清單」,然後選擇所需的選項。 對於身份驗證,您的選項因所選功能而異。 請參考[Azure 函數中啟用認證](#enable-authentication-functions)。
+1. 若要指定其他詳細資料，例如要使用的方法、要求標頭、查詢參數或驗證，請開啟 [**加入新的參數**] 清單，然後選取您想要的選項。 針對驗證，您的選項會根據您選取的函式而有所不同。 請參閱[在 Azure 函式中啟用驗證](#enable-authentication-functions)。
 
 <a name="call-logic-app"></a>
 
-## <a name="call-logic-apps-from-azure-functions"></a>從 Azure 函數呼叫邏輯應用
+## <a name="call-logic-apps-from-azure-functions"></a>從 Azure 函式呼叫邏輯應用程式
 
 若要從 Azure 函式內觸發邏輯應用程式，該邏輯應用程式必須以能提供可呼叫端點的觸發程序作為開頭。 例如，您可以使用 **HTTP**、**要求**、**Azure 佇列**或**事件方格**觸發程序來起始邏輯應用程式。 在函式內部，將 HTTP POST 要求傳送給該觸發程序的 URL，並包含您想要讓該邏輯應用程式處理的承載。 如需詳細資訊，請參閱[呼叫、觸發或巢狀邏輯應用程式](../logic-apps/logic-apps-http-endpoint.md)。
 
 <a name="enable-authentication-functions"></a>
 
-## <a name="enable-authentication-for-azure-functions"></a>為 Azure 函數啟用認證
+## <a name="enable-authentication-for-azure-functions"></a>啟用 Azure 函式的驗證
 
-要驗證對其他 Azure 活動目錄 (Azure AD) 租戶中的資源的訪問許可權,而無需登錄並提供認證或機密,邏輯應用可以使用[託管標識](../active-directory/managed-identities-azure-resources/overview.md)(以前稱為託管服務標識或 MSI)。 Azure 會為您管理此身分識別，並協助保護您的認證，因為您不需要提供或輪替使用祕密。 詳細瞭解支援[Azure AD 認證的系統辨識的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+若要驗證對其他 Azure Active Directory （Azure AD）租使用者中資源的存取權，而不需要登入並提供認證或密碼，您的邏輯應用程式可以使用[受控識別](../active-directory/managed-identities-azure-resources/overview.md)（先前稱為受控服務識別或 MSI）。 Azure 會為您管理此身分識別，並協助保護您的認證，因為您不需要提供或輪替使用祕密。 深入瞭解[支援受控識別以進行 Azure AD 驗證的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
-如果將邏輯應用設置為使用系統分配的標識或手動創建的使用者分配的標識,則邏輯應用中的 Azure 函數也可以使用相同的標識進行身份驗證。 有關邏輯應用中 Azure 函式的身份驗證支援的詳細資訊,請參閱[將身份驗證添加到出站呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
+如果您將邏輯應用程式設定為使用系統指派的身分識別，或手動建立的使用者指派身分識別，則邏輯應用程式中的 Azure 函式也可以使用相同的身分識別進行驗證。 如需在邏輯應用程式中對 Azure 函式進行驗證支援的詳細資訊，請參閱[將驗證新增至輸出呼叫](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)。
 
-要將託管標識與函數一起設置和使用,請按照以下步驟操作:
+若要設定和使用受控識別搭配您的函式，請遵循下列步驟：
 
-1. 在邏輯應用中啟用託管標識,並設置該標識對目標資源的訪問許可權。 請參考[Azure 邏輯套用使用託管識別對 Azure 資源的身份認證 。](../logic-apps/create-managed-service-identity.md)
+1. 在您的邏輯應用程式上啟用受控識別，並設定該身分識別對目標資源的存取權。 請參閱[使用 Azure Logic Apps 中的受控識別來驗證對 Azure 資源的存取](../logic-apps/create-managed-service-identity.md)。
 
-1. 依以下步驟在 Azure 函數和函數應用中啟用身份驗證:
+1. 遵循下列步驟，在您的 Azure 函式和函式應用程式中啟用驗證：
 
-   * [在函式中設定匿名認證](#set-authentication-function-app)
-   * [在函數應用中設定 Azure AD 認證](#set-azure-ad-authentication)
+   * [在您的函式中設定匿名驗證](#set-authentication-function-app)
+   * [在您的函數應用程式中設定 Azure AD 驗證](#set-azure-ad-authentication)
 
 <a name="set-authentication-function-app"></a>
 
-### <a name="set-up-anonymous-authentication-in-your-function"></a>在函式中設定匿名認證
+### <a name="set-up-anonymous-authentication-in-your-function"></a>在您的函式中設定匿名驗證
 
-要在 Azure 函數中使用邏輯應用的託管標識,可以將函數的身份驗證級別設置為匿名。 否則,邏輯應用將引發"錯誤請求"錯誤。
+若要在您的 Azure 函式中使用邏輯應用程式的受控識別，您已將函式的驗證層級設為匿名。 否則，您的邏輯應用程式會擲回「BadRequest」錯誤。
 
-1. 在[Azure 門戶](https://portal.azure.com)中,查找並選擇函數應用。 這些步驟使用"Fabrikam函數應用程式"作為示例功能應用。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，尋找並選取您的函數應用程式。 這些步驟會使用 "FabrikamFunctionApp" 作為範例函數應用程式。
 
-1. 在功能套用窗格中,選擇 **「平臺」功能**。 在**開發工具**下,選擇**高級工具(庫杜)。**
+1. 在 [函數應用程式] 窗格上，選取 [**平臺功能**]。 在 [**開發工具**] 底下，選取 **[Advanced tools （Kudu）**]。
 
-   ![為庫杜開啟進階工具](./media/logic-apps-azure-functions/open-advanced-tools-kudu.png)
+   ![開啟 advanced tools for Kudu](./media/logic-apps-azure-functions/open-advanced-tools-kudu.png)
 
-1. 在 Kudu 網站的標題列上,從**除錯主控台**選單中選擇**CMD**。
+1. 在 Kudu 網站的標題列上，從 [**偵錯主控台**] 功能表中，選取 [ **CMD**]。
 
-   ![從除錯主控台選單中,選擇「CMD」選項](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
+   ![從 [調試] 主控台功能表中，選取 [CMD] 選項](./media/logic-apps-azure-functions/open-debug-console-kudu.png)
 
-1. 下一頁顯示後,從資料夾清單中,選擇**網站** > **wwwroot** > *您的功能*。 這些步驟使用"FabrikamAzure函數"作為示例函數。
+1. 下一個頁面出現之後，請從 [資料夾] 清單中選取 [ **site** > **wwwroot** > ] [*您的功能*]。 這些步驟會使用 "FabrikamAzureFunction" 作為範例函數。
 
-   ![選擇「網站」>「wwwroot」>函数](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
+   ![> 您的函式中選取 "site" > "wwwroot"](./media/logic-apps-azure-functions/select-site-wwwroot-function-folder.png)
 
-1. 打開`function.json`檔案進行編輯。
+1. `function.json`開啟檔案進行編輯。
 
-   ![點選「函數.json」檔的編輯](./media/logic-apps-azure-functions/edit-function-json-file.png)
+   ![針對 "function. json" 檔案按一下 [編輯]](./media/logic-apps-azure-functions/edit-function-json-file.png)
 
-1. 在物件`bindings`中,檢查`authLevel`該 屬性是否存在。 如果屬性存在,則將屬性值設定為`anonymous`。 否則,添加該屬性並設置該值。
+1. 在`bindings`物件中，檢查`authLevel`屬性是否存在。 如果屬性存在，請將屬性值設定為`anonymous`。 否則，請加入該屬性並設定值。
 
-   ![添加"authLevel"屬性並設置為"匿名"](./media/logic-apps-azure-functions/set-authentication-level-function-app.png)
+   ![新增 "authLevel" 屬性並設定為 "anonymous"](./media/logic-apps-azure-functions/set-authentication-level-function-app.png)
 
-1. 完成後,請保存設置,然後繼續下一節。
+1. 當您完成時，請儲存您的設定，然後繼續進行下一節。
 
 <a name="set-azure-ad-authentication"></a>
 
-### <a name="set-up-azure-ad-authentication-for-your-function-app"></a>為函數應用設定 Azure AD 認證
+### <a name="set-up-azure-ad-authentication-for-your-function-app"></a>設定函數應用程式的 Azure AD 驗證
 
-在開始此工作之前,尋找這些值並將其放在一邊供以後使用:
+開始這項工作之前，請先找出這些值，並將它們放在一旁，以供稍後使用：
 
-* 為表示邏輯應用的系統分配識別產生的物件識別碼
+* 為系統指派的身分識別產生的物件識別碼，代表您的邏輯應用程式
 
-  * 要產生此物件代碼,[請啟用邏輯應用的系統分配的識別](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app)。
+  * 若要產生此物件識別碼，請[啟用邏輯應用程式系統指派的身分識別](../logic-apps/create-managed-service-identity.md#azure-portal-system-logic-app)。
 
-  * 否則,要查找此物件 ID,請在邏輯應用設計器中打開邏輯應用。 在邏輯應用程式選單中,**在「設定」** 下,選擇分配的**識別** > **系統**。
+  * 否則，若要尋找此物件識別碼，請在邏輯應用程式設計工具中開啟邏輯應用程式。 在邏輯應用程式功能表的 [**設定**] 底下，選取 [身分**識別** > **系統指派**]。
 
-* Azure 活動目錄 (Azure AD) 中的租戶的目錄 ID
+* Azure Active Directory （Azure AD）中租使用者的目錄識別碼
 
-  要獲取租戶的目錄 ID,可以[`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount)運行 Powershell 命令。 或者,在 Azure 門戶中,按照以下步驟操作:
+  若要取得租使用者的目錄識別碼，您可以執行[`Get-AzureAccount`](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureaccount) Powershell 命令。 或者，在 [Azure 入口網站中，依照下列步驟執行：
 
-  1. 在[Azure 門戶](https://portal.azure.com)中,查找並選擇函數應用。
+  1. 在 [ [Azure 入口網站](https://portal.azure.com)中，尋找並選取您的函數應用程式。
 
-  1. 查找並選擇 Azure AD 租戶。 這些步驟使用"Fabrikam"作為示例租戶。
+  1. 尋找並選取您的 Azure AD 租使用者。 這些步驟會使用「Fabrikam」作為範例租使用者。
 
-  1. 在租戶的選單上,在 **"管理**"下,選擇**屬性**。
+  1. 在租使用者的功能表中，選取 [**管理**] 底下的 [**屬性**]。
 
-  1. 例如,複製租戶的目錄 ID,並保存該 ID 以供以後使用。
+  1. 複製租使用者的目錄識別碼，例如，並儲存該識別碼以供稍後使用。
 
-     ![尋找與複製 Azure AD 租戶的目錄 ID](./media/logic-apps-azure-functions/azure-active-directory-tenant-id.png)
+     ![尋找並複製 Azure AD 租使用者的目錄識別碼](./media/logic-apps-azure-functions/azure-active-directory-tenant-id.png)
 
-* 要存取的目標資源的資源識別碼
+* 您想要存取之目標資源的資源識別碼
 
-  * 要尋找這些資源識別,請檢視支援 Azure [AD 的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
+  * 若要尋找這些資源識別碼，請參閱[支援 Azure AD 的 Azure 服務](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。
 
   > [!IMPORTANT]
-  > 此資源 ID 必須與 Azure AD 期望的值完全匹配,包括任何必需的尾隨斜杠。
+  > 此資源識別碼必須完全符合 Azure AD 預期的值，包括任何必要的尾端斜線。
 
-  此資源 ID 與以後在 **「訪問群體」** 屬性中使用的值相同,當您[設定函數操作以使用系統分配的標識](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)時。
+  當您[將函式動作設定為使用系統指派](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)的身分識別時，此資源識別碼也會與您稍後在 [**物件**] 屬性中使用的值相同。
 
-現在,您已準備好為函數應用設置 Azure AD 身份驗證。
+現在您已準備好設定函數應用程式的 Azure AD 驗證。
 
-1. 在[Azure 門戶](https://portal.azure.com)中,查找並選擇函數應用。
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，尋找並選取您的函數應用程式。
 
-1. 在功能套用窗格中,選擇 **「平臺」功能**。 在 **「網路」** 下,選擇**認證或授權**。
+1. 在 [函數應用程式] 窗格上，選取 [**平臺功能**]。 在 [**網路**] 底下，選取 [**驗證/授權**]。
 
-   ![檢視認證與授權設定](./media/logic-apps-azure-functions/view-authentication-authorization-settings.png)
+   ![查看驗證和授權設定](./media/logic-apps-azure-functions/view-authentication-authorization-settings.png)
 
-1. 將**應用服務身份驗證**設置更改為 **"打開**" 從**要求未經過身份驗證時執行的操作**清單中,選擇使用 Azure**的目錄登入**。 在 [驗證提供者]**** 底下，選取 [Azure Active Directory]****。
+1. 將**App Service Authentication**設定變更為 [**開啟**]。 從 [**要求未通過驗證時所要採取的動作**] 清單中，選取 [**使用 Azure Active Directory 登入**]。 在 [驗證提供者]**** 底下，選取 [Azure Active Directory]****。
 
-   ![使用 Azure AD 開啟認證](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
+   ![使用 Azure AD 開啟驗證](./media/logic-apps-azure-functions/turn-on-authentication-azure-active-directory.png)
 
-1. 在**Azure 活動目錄設定**窗格中,按照以下步驟操作:
+1. 在 [ **Azure Active Directory 設定**] 窗格中，依照下列步驟執行：
 
-   1. 將**管理模式**設定為 **「進階**」。
+   1. 將 [**管理模式]** 設定為 [ **Advanced**]。
 
-   1. 在**用戶端ID**屬性中,輸入邏輯應用的系統分配標識的物件ID。
+   1. 在 [**用戶端識別碼**] 屬性中，輸入邏輯應用程式系統指派之身分識別的物件識別碼。
 
-   1. 在**頒發者網址**`https://sts.windows.net/`屬性中 ,輸入 URL 並追加 Azure AD 租戶的目錄 ID。
+   1. 在 [**簽發者 Url** ] 屬性中`https://sts.windows.net/` ，輸入 Url，並附加您的 Azure AD 租使用者的目錄識別碼。
 
       `https://sts.windows.net/<Azure-AD-tenant-directory-ID>`
 
-   1. 在 **「允許的權杖存取群體」** 屬性中,輸入要存取的目標資源的資源 ID。
+   1. 在 [**允許的權杖**物件] 屬性中，輸入您想要存取之目標資源的資源識別碼。
 
-      此資源 ID 與以後在 **「訪問群體」** 屬性中使用的值相同,當您[設定函數操作以使用系統分配的標識](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)時。
+      當您[將函式動作設定為使用系統指派](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)的身分識別時，此資源識別碼的值會與您稍後在 [**物件**] 屬性中使用的值相同。
 
-   此時,您的版本與此範例類似:
+   此時，您的版本看起來類似此範例：
 
-   ![Azure 的目錄身份認證設定](./media/logic-apps-azure-functions/azure-active-directory-authentication-settings.png)
+   ![Azure Active Directory 驗證設定](./media/logic-apps-azure-functions/azure-active-directory-authentication-settings.png)
 
 1. 完成後，選取 [確定]  。
 
-1. 傳回到邏輯應用設計器,然後按照[步驟對託管識別的存取進行身份驗證](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)。
+1. 返回邏輯應用程式設計工具，並遵循[步驟以使用受控識別來驗證存取權](../logic-apps/create-managed-service-identity.md#authenticate-access-with-identity)。
 
 ## <a name="next-steps"></a>後續步驟
 

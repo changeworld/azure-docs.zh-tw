@@ -4,10 +4,10 @@ description: 使用 Stream Analytics 持續將 Application Insights 資料匯出
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.openlocfilehash: e67365038b9a481bc0cacf079e5d197cc3139a5f
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536908"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>逐步解說：使用串流分析從 Application Insights 匯出至 SQL
@@ -153,7 +153,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 #### <a name="set-path-prefix-pattern"></a>設定路徑前置詞模式
 
-**請務必將日期格式設置為 YYYY-MM-DD(帶破折號)。**
+**請務必將日期格式設定為 YYYY-MM-DD （含破折號）。**
 
 [路徑前置詞模式] 會指定串流分析在儲存體中尋找輸入檔案的方式。 您需要將它設定為與連續匯出儲存資料的方式相對應。 請設定如下：
 

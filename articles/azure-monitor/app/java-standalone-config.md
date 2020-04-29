@@ -1,20 +1,20 @@
 ---
-title: 隨時隨地監視 Java 應用程式 - Azure 監視器應用程式見解
-description: 無需檢測應用程式即可在任何環境中運行的 Java 應用程式的無代碼應用程式性能監視。 使用分散式跟蹤和應用程式映射查找問題 d 的根本原因。
+title: 隨時隨地監視 JAVA 應用程式-Azure 監視器 Application Insights
+description: 無程式碼應用程式效能監視，適用于在任何環境中執行的 JAVA 應用程式，而不需要檢測應用程式。 使用分散式追蹤和應用程式對應，找出問題 d 的根本原因。
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.openlocfilehash: 5d930d349a2ab1efbd7a61904874bf6bdb411889
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641884"
 ---
-# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>設定選項 - 用於 Azure 監視器應用程式來見解的 Java 獨立代理
+# <a name="configuration-options---java-standalone-agent-for-azure-monitor-application-insights"></a>設定選項-適用于 Azure 監視器的 JAVA 獨立代理程式 Application Insights
 
 
 
-## <a name="connection-string-and-role-name"></a>連接字串與角色名稱
+## <a name="connection-string-and-role-name"></a>連接字串和角色名稱
 
 ```json
 {
@@ -27,34 +27,34 @@ ms.locfileid: "81641884"
 }
 ```
 
-連接字串是必需的,並且每當將不同應用程式的數據發送到同一應用程式見解資源時,角色名稱都很重要。
+需要連接字串，而且當您從不同的應用程式將資料傳送至相同的 Application Insights 資源時，角色名稱很重要。
 
-有關更多詳細資訊,請參閱下面的更多詳細資訊和其他配置選項。
+如需更多詳細資料，您可以在下方找到更多詳細資料和其他設定選項。
 
 ## <a name="configuration-file-path"></a>設定檔案路徑
 
-預設情況下,應用程式見解 Java 3.0 預覽版`ApplicationInsights.json`希望配置檔 被命名為`applicationinsights-agent-3.0.0-PREVIEW.jar`,並且應位於與的目錄中。
+根據預設，Application Insights JAVA 3.0 Preview 會預期要將設定檔命名`ApplicationInsights.json`為，而且必須與位於相同的目錄中`applicationinsights-agent-3.0.0-PREVIEW.jar`。
 
-您可以使用以下任一
+您可以使用下列其中一種方式來指定您自己的設定檔路徑
 
-* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境變數,或
-* `applicationinsights.configurationFile`Java 系統屬性
+* `APPLICATIONINSIGHTS_CONFIGURATION_FILE`環境變數，或
+* `applicationinsights.configurationFile`JAVA 系統屬性
 
-如果指定相對路徑,則會相對於所在的目錄解析該路徑`applicationinsights-agent-3.0.0-PREVIEW.jar`。
+如果您指定相對路徑，它會相對於所在的目錄`applicationinsights-agent-3.0.0-PREVIEW.jar`來解析。
 
 ## <a name="connection-string"></a>連接字串
 
-這是必填欄位。 您可以在應用程式見解資源中找到連接字串:
+這是必填欄位。 您可以在 Application Insights 資源中找到您的連接字串：
 
-:::image type="content" source="media/java-ipa/connection-string.png" alt-text="應用程式見解連線字串":::
+:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights 連接字串":::
 
-您還可以使用環境變數`APPLICATIONINSIGHTS_CONNECTION_STRING`設定連接字串。
+您也可以使用環境變數`APPLICATIONINSIGHTS_CONNECTION_STRING`來設定連接字串。
 
-## <a name="cloud-role-name"></a>雲角色名稱
+## <a name="cloud-role-name"></a>雲端角色名稱
 
-雲角色名稱用於在應用程式映射上標記元件。
+雲端角色名稱是用來標示應用程式對應上的元件。
 
-如果要設定雲角色名稱:
+如果您想要設定雲端角色名稱：
 
 ```json
 {
@@ -66,15 +66,15 @@ ms.locfileid: "81641884"
 }
 ```
 
-如果未設置雲角色名稱,則應用程式見解資源的名稱將用於在應用程式映射上標記元件。
+如果未設定雲端角色名稱，Application Insights 資源的名稱將會用來標示應用程式對應上的元件。
 
-您還可以使用環境變數`APPLICATIONINSIGHTS_ROLE_NAME`設置雲角色名稱。
+您也可以使用環境變數`APPLICATIONINSIGHTS_ROLE_NAME`來設定雲端角色名稱。
 
 ## <a name="cloud-role-instance"></a>雲端角色執行個體
 
-雲角色實例預設為計算機名稱。
+雲端角色實例預設為電腦名稱稱。
 
-如果要將雲角色實例設置為不同內容,而不是計算機名稱:
+如果您想要將雲端角色實例設定為不同的名稱，而不是電腦名稱稱：
 
 ```json
 {
@@ -86,15 +86,15 @@ ms.locfileid: "81641884"
 }
 ```
 
-您還可以使用環境變數`APPLICATIONINSIGHTS_ROLE_INSTANCE`設置雲角色實例。
+您也可以使用環境變數`APPLICATIONINSIGHTS_ROLE_INSTANCE`來設定雲端角色實例。
 
-## <a name="application-log-capture"></a>應用程式記錄擷取
+## <a name="application-log-capture"></a>應用程式記錄檔捕獲
 
-應用程式見解 Java 3.0 預覽版通過 Log4j、Logback 和 java.util.log 自動捕獲應用程式日誌記錄。
+Application Insights JAVA 3.0 Preview 會自動透過 Log4j、Logback 和 util 來捕獲應用程式記錄。
 
-默認情況下,它將捕獲在`WARN`級別或以上級別執行的所有日誌記錄。
+根據預設，它會捕獲在`WARN`層級或以上執行的所有記錄。
 
-如果要變更此閾值:
+如果您想要變更此閾值：
 
 ```json
 {
@@ -110,24 +110,24 @@ ms.locfileid: "81641884"
 }
 ```
 
-這些是可以在`ApplicationInsights.json`檔案中`threshold`指定的有效值,以及它們如何對應於不同紀錄記錄框架中的紀錄紀錄等級:
+這些是您可以`threshold`在檔案中`ApplicationInsights.json`指定的有效值，以及這些值如何對應至不同記錄架構的記錄層級：
 
 | `threshold`  | Log4j  | Logback | 7 月     |
 |--------------|--------|---------|---------|
 | OFF          | OFF    | OFF     | OFF     |
-| 致命        | 致命  | ERROR   | SEVERE  |
+| 時發生        | 時發生  | ERROR   | SEVERE  |
 | 錯誤/嚴重 | ERROR  | ERROR   | SEVERE  |
 | 警告/警告 | 警告   | 警告    | WARNING |
 | INFO         | INFO   | INFO    | INFO    |
 | CONFIG       | DEBUG  | DEBUG   | CONFIG  |
-| 除錯/精細   | DEBUG  | DEBUG   | FINE    |
+| DEBUG/精細   | DEBUG  | DEBUG   | FINE    |
 | FINER        | DEBUG  | DEBUG   | FINER   |
-| 追蹤/精細 | TRACE  | TRACE   | FINEST  |
+| 追蹤/最佳 | TRACE  | TRACE   | FINEST  |
 | ALL          | ALL    | ALL     | ALL     |
 
-## <a name="jmx-metrics"></a>JMX 指標
+## <a name="jmx-metrics"></a>JMX 計量
 
-如果您有一些 JMX 指標,您有興趣捕獲:
+如果您有想要捕捉的一些 JMX 計量：
 
 ```json
 {
@@ -152,9 +152,9 @@ ms.locfileid: "81641884"
 
 ## <a name="micrometer"></a>Micrometer
 
-默認情況下,如果應用程式使用[微數計](https://micrometer.io),應用程式見解 3.0(從 Preview.2 開始)現在將自己添加到微米全域註冊表並捕獲微米指標。
+根據預設，如果您的應用程式使用[Micrometer](https://micrometer.io)，Application Insights 3.0 （從 Preview 開始），現在會將其本身新增至 Micrometer 全域登錄並捕捉 Micrometer 計量。
 
-如果要關閉此功能:
+如果您想要停用這項功能：
 
 ```json
 {
@@ -172,7 +172,7 @@ ms.locfileid: "81641884"
 
 ## <a name="heartbeat"></a>Heartbeat
 
-默認情況下,應用程式見解 Java 3.0 預覽每 15 分鐘發送一次檢測信號指標。 如果使用檢測信號指標觸發警報,則可以增加此檢測信號的頻率:
+根據預設，Application Insights JAVA 3.0 Preview 每隔15分鐘就會傳送一次「心跳標準」。 如果您使用 [心跳標準] 來觸發警示，您可以增加此信號的頻率：
 
 ```json
 {
@@ -187,16 +187,16 @@ ms.locfileid: "81641884"
 ```
 
 > [!NOTE]
-> 您不能降低此檢測信號的頻率,因為檢測信號數據也用於跟蹤應用程式見解使用方式。
+> 您無法減少此信號的頻率，因為也會使用心跳資料來追蹤 Application Insights 使用狀況。
 
 ## <a name="sampling"></a>取樣
 
-如果需要降低成本,採樣非常有用。
-採樣作為操作 ID(也稱為跟蹤 ID)上的函數執行,以便相同的操作 ID 始終導致相同的採樣決策。 這可確保在採樣分散式事務的其他部分時不會獲取該部分。
+如果您需要降低成本，取樣會很有説明。
+取樣會當做作業識別碼（也稱為追蹤識別碼）的函式來執行，因此相同的作業識別碼一律會產生相同的取樣決策。 這可確保您不會取得在中取樣的分散式交易部分，而是會取樣其他部分。
 
-例如,如果將採樣設置為 10%,則只能看到 10% 的事務,但其中 10% 中的每一個都將具有完整的端到端事務詳細資訊。
+例如，如果您將取樣設定為10%，您只會看到10% 的交易，但這10% 的每一個都有完整的端對端交易詳細資料。
 
-下面是如何將取樣設定為**所有事務的 10%** 的範例 - 請確保設定適合使用方式的取樣率:
+以下範例說明如何將取樣設定為**所有交易的 10%** -請務必為您的使用案例設定正確的取樣率：
 
 ```json
 {
@@ -212,9 +212,9 @@ ms.locfileid: "81641884"
 }
 ```
 
-## <a name="http-proxy"></a>HTTP 代理
+## <a name="http-proxy"></a>HTTP Proxy
 
-如果應用程式位於防火牆後面,並且無法直接連接到應用程式見解(請參閱[應用程式見解使用的 IP 位址](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)),則可以將應用程式見解 Java 3.0 預覽設定為使用 HTTP 代理:
+如果您的應用程式位於防火牆後方，而且無法直接連線到 Application Insights （請參閱[Application Insights 所使用的 IP 位址](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses)），您可以將 Application Insights JAVA 3.0 Preview 設定為使用 HTTP proxy：
 
 ```json
 {
@@ -229,13 +229,13 @@ ms.locfileid: "81641884"
 }
 ```
 
-## <a name="self-diagnostics"></a>自診斷
+## <a name="self-diagnostics"></a>自我診斷
 
-"自診斷"是指來自應用程式見解 JAva 3.0 預覽的內部日誌記錄。
+「自我診斷」指的是來自 Application Insights JAVA 3.0 Preview 的內部記錄。
 
-這有助於發現和診斷應用程式見解本身的問題。
+這有助於找出和診斷 Application Insights 本身的問題。
 
-預設情況下,它登入到與級別`warn`對應此 配置的級別 的主控台:
+根據預設，它會使用層級`warn`來記錄與此設定相對應的主控台：
 
 ```json
 {
@@ -250,9 +250,9 @@ ms.locfileid: "81641884"
 }
 ```
 
-有效等級為`OFF``ERROR``WARN``INFO``DEBUG`、、、、、、`TRACE`和 。
+有效的層`OFF`級`ERROR`為`WARN`、 `INFO`、 `DEBUG`、、 `TRACE`和。
 
-如果要登入檔案而不是登入主控台:
+如果您想要記錄到檔案，而不是記錄至主控台：
 
 ```json
 {
@@ -269,4 +269,4 @@ ms.locfileid: "81641884"
 }
 ```
 
-使用檔日誌記錄時,一旦檔命中`maxSizeMB`,它將滾動,除了當前日誌檔之外,僅保留最近完成的日誌檔。
+使用檔案記錄時，一旦檔案到達`maxSizeMB`之後，它就會變換，只保留最近完成的記錄檔，以及目前的記錄檔。

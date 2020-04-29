@@ -1,6 +1,6 @@
 ---
-title: 將樹莓派連接到雲中的 Azure IoT 中心(Node.js)
-description: 瞭解如何在本教程中設置和連接樹莓派到樹莓派的 Azure IoT 中心,將數據發送到 Azure 雲平臺。
+title: 將 Raspberry Pi 連線至雲端中的 Azure IoT 中樞（node.js）
+description: 瞭解如何在本教學課程中設定 Raspberry Pi，並將其連線至 Raspberry Pi 的 Azure IoT 中樞，以將資料傳送到 Azure 雲端平臺。
 author: wesmc7777
 manager: eliotgra
 keywords: azure iot raspberry pi, raspberry pi iot 中樞, raspberry pi 將資料傳送至雲端, raspberry pi 至 cloud
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: wesmc
 ms.openlocfilehash: 3175956e35603cc4ad3a938f3d316c0af8f2d227
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640522"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>將 Raspberry Pi 連接至 Azure IoT Hub (Node.js)
@@ -94,13 +94,13 @@ ms.locfileid: "81640522"
 
 1. 下載 Raspbian。
 
-   a. [帶桌面的拉斯普比布斯特](https://www.raspberrypi.org/downloads/raspbian/)(.zip檔)。
+   a. [使用桌面的 Raspbian Buster](https://www.raspberrypi.org/downloads/raspbian/) （.zip 檔案）。
 
    b. 將 Raspbian 映像解壓縮到您電腦上的資料夾。
 
 2. 將 Raspbian 安裝到 microSD 記憶卡。
 
-   a. [下載並安裝蝕刻SD卡燒錄機實用程式](https://etcher.io/)。
+   a. [下載並安裝 ETCHER SD 記憶卡燒錄器公用程式](https://etcher.io/)。
 
    b. 執行 Etcher 並選取您在步驟 1 中解壓縮的 Raspbian 映像。
 
@@ -116,9 +116,9 @@ ms.locfileid: "81640522"
 
 1. 將 Pi 連接至監視器、鍵盤及滑鼠。
 
-2. 啟動 Pi,然後`pi`使用 使用者`raspberry`名稱和密碼登錄 Raspbian。
+2. 啟動 Pi，然後使用`pi`做為使用者名稱和`raspberry`密碼來登入 Raspbian。
 
-3. 點擊樹莓圖示>**偏好** > **樹莓派設定**。
+3. 按一下 [Raspberry] 圖示 >**偏好** > 設定] [**Raspberry Pi**設定]。
 
    ![[Raspbian 偏好設定] 功能表](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
@@ -131,7 +131,7 @@ ms.locfileid: "81640522"
 
 ### <a name="connect-the-sensor-to-pi"></a>將感應器連接至 Pi
 
-使用麵包板和跳線將 LED 和 BME280 連接至 Pi，如下所示。 如果沒有感應器,[請跳過此部份](#connect-pi-to-the-network)。
+使用麵包板和跳線將 LED 和 BME280 連接至 Pi，如下所示。 如果您沒有感應器，請[略過本節](#connect-pi-to-the-network)。
 
 ![Raspberry Pi 和感應器連接](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
@@ -148,7 +148,7 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
 | LED VDD (針腳 18F)        | GPIO 24 (針腳 18)       | 白色纜線   |
 | LED GND (針腳 17F)        | GND (針腳 20)           | 黑色纜線   |
 
-按下以查看[樹莓派 2 & 3 針映射](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi),供參考。
+按一下以查看[Raspberry Pi 2 & 3 pin](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi)對應以供您參考。
 
 將 BME280 成功連接至 Raspberry Pi 之後，應該如下圖所示。
 
@@ -192,7 +192,7 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
    node -v
    ```
 
-   如果版本低於 10.x,或者 Pi 上沒有 Node.js,請安裝最新版本。
+   如果版本低於 10. x，或 Pi 上沒有 node.js，請安裝最新版本。
 
    ```bash
    curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
@@ -229,7 +229,7 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
 
    如果**沒有感應器**，請將 `simulatedData` 值設定為 `true`，使範例應用程式建立和使用模擬感應器資料。
 
-   *注意:默認情況下,本教程中使用的 i2c 位址為 0x77。根據您的配置,它也可能為 0x76:如果您遇到 i2c 錯誤,請嘗試將值更改為 118,並查看該值是否效果更好。要檢視感測器使用的位址,請以樹莓派上的`sudo i2cdetect -y 1`外殼運行*
+   *注意：本教學課程中使用的 i2c 位址預設為0x77。根據您的設定，可能也會 0x76 .. 如果您遇到 i2c 錯誤，請嘗試將此值變更為118，並查看是否有更好的效果。若要查看您的感應器所使用的位址， `sudo i2cdetect -y 1`請在 raspberry pi 上的 shell 中執行*
 
 2. 輸入 Control-O > 按 Enter 鍵 > Control-X 來儲存並結束。
 
@@ -248,14 +248,14 @@ BME280 感應器可以收集溫度和溼度資料。 當裝置將訊息傳送至
 
 ![輸出 - 從 Raspberry Pi 傳送至 IoT 中樞的感應器資料](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
 
-## <a name="read-the-messages-received-by-your-hub"></a>閱讀中心收到的消息
+## <a name="read-the-messages-received-by-your-hub"></a>讀取您的中樞所接收的訊息
 
-監視 IoT 中心從設備接收的消息的一種方法是使用 Azure IoT 工具進行可視化工作室代碼。 要瞭解更多資訊,請參閱[使用 Azure IoT 工具進行視覺化工作室碼,在裝置和 IoT 中心之間傳送和接收訊息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+若要監視您的 IoT 中樞從裝置接收的訊息，其中一種方式是使用 Visual Studio Code 的 Azure IoT Tools。 若要深入瞭解，請參閱[使用 Visual Studio Code 的 Azure IoT Tools，在您的裝置與 IoT 中樞之間傳送和接收訊息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
 
-有關處理設備發送數據的更多方法,請繼續執行下一節。
+如需更多方式來處理您的裝置所傳送的資料，請繼續進行下一節。
 
 ## <a name="next-steps"></a>後續步驟
 
-您已執行一個範例應用程式來收集感測器資料並將其發送到IoT中心。
+您已執行範例應用程式來收集感應器資料，並將它傳送到您的 IoT 中樞。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

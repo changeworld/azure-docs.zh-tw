@@ -9,15 +9,15 @@ ms.date: 03/19/2020
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: a00291182059506aeab9cde965fa4cbd5177ecf7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80132216"
 ---
-如果使用者沒有應用標記所需的存取權限，則可以將**標記參與者**角色指派給該使用者。 有關詳細資訊，請參閱[教程：使用 RBAC 和 Azure 門戶授予使用者對 Azure 資源的存取權限](../articles/role-based-access-control/quickstart-assign-role-user-portal.md)。
+如果使用者沒有套用標記的必要存取權，您可以將**標記參與者**角色指派給使用者。 如需詳細資訊，請參閱[教學課程：使用 RBAC 和 Azure 入口網站來授與使用者對 Azure 資源的存取權](../articles/role-based-access-control/quickstart-assign-role-user-portal.md)。
 
-1. 要查看資源或資源組的標記，請查看概覽中的現有標記。 如果您先前尚未套用標記，清單就會是空的。
+1. 若要查看資源或資源群組的標記，請在總覽中尋找現有的標記。 如果您先前尚未套用標記，清單就會是空的。
 
    ![檢視資源或資源群組的標記](./media/resource-manager-tag-resources/view-tags.png)
 
@@ -37,23 +37,23 @@ ms.locfileid: "80132216"
 
 1. 若要新增或刪除標記，請選取 [變更]****。
 
-1. 若要刪除標記，請選取垃圾桶圖示。 然後，選擇 **"保存**"。
+1. 若要刪除標記，請選取垃圾桶圖示。 然後選取 [**儲存**]。
 
    ![刪除標記](./media/resource-manager-tag-resources/delete-tag.png)
 
 將標籤大量指派給多個資源：
 
-1. 從任何資源的清單中，勾選您要指派標記的資源核取方塊。 然後，選擇 **"分配標記**"。
+1. 從任何資源的清單中，勾選您要指派標記的資源核取方塊。 然後，選取 [**指派**標籤]。
 
    ![選取多個資源](./media/resource-manager-tag-resources/select-multiple-resources.png)
 
-1. 添加名稱和值。 完成時，選取 [儲存]****。
+1. 新增名稱和值。 完成時，選取 [儲存]****。
 
    ![選取 [指派]](./media/resource-manager-tag-resources/select-assign.png)
 
 若要檢視具有標記的所有資源：
 
-1. 在 Azure 門戶功能表上，搜索**標記**。 從可用選項中選擇它。
+1. 在 [Azure 入口網站] 功能表上，搜尋**標記**。 從可用的選項中選取它。
 
    ![依標記尋找](./media/resource-manager-tag-resources/find-tags-general.png)
 

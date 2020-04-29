@@ -16,15 +16,15 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
 ms.openlocfilehash: 8e3705aaecb0760513f0605aece89b7ffc0044a8
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641651"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>使用 Wirecast 編碼器來傳送單一位元速率的即時串流 
 > [!div class="op_single_selector"]
-> * [有線廣播](media-services-configure-wirecast-live-encoder.md)
+> * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 >
 
 本文示範如何設定 [Telestream Wirecast](https://www.telestream.net/wirecast/overview.htm) 即時編碼器，藉此將單一位元速率的即時串流傳送到已啟用即時編碼的 AMS 通道。 如需詳細資訊，請參閱 [使用啟用的通道以 Azure 媒體服務執行即時編碼](media-services-manage-live-encoder-enabled-channels.md)。
@@ -32,9 +32,9 @@ ms.locfileid: "81641651"
 本教學課程示範如何使用 Azure 媒體服務總管 (AMSE) 工具管理 Azure 媒體服務 (AMS)。 此工具只會在 Windows 電腦上執行。 如果您是用 Mac 或 Linux，請使用 Azure 入口網站建立[通道](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel)和[程式](media-services-portal-creating-live-encoder-enabled-channel.md)。
 
 > [!NOTE]
-> 使用 RTMPS 協定時,編碼器必須支援 TLS 1.2。 由於 TLS 1.2 要求,請使用有線廣播版本 13.0.2 或更高版本。
+> 使用 RTMPS 通訊協定時，編碼器必須支援 TLS 1.2。 基於 TLS 1.2 需求，請使用 Wirecast 13.0.2 或更高版本。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 * [建立 Azure 媒體服務帳戶](media-services-portal-create-account.md)
 * 確定有執行中的「串流端點」。 如需詳細資訊，請參閱 [在媒體服務帳戶中管理串流端點](media-services-portal-manage-streaming-endpoints.md)
 * 安裝最新版的 [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) 工具。
@@ -63,7 +63,7 @@ ms.locfileid: "81641651"
 >
 >
 
-當頻道啟動時,您可以[設定編碼器](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp)。
+當頻道啟動時，您可以[設定編碼器](media-services-configure-wirecast-live-encoder.md#configure_wirecast_rtmp)。
 
 > [!IMPORTANT]
 > 只要通道進入就緒狀態，就會開始計費。 如需詳細資訊，請參閱 [通道的狀態](media-services-manage-live-encoder-enabled-channels.md#states)。
@@ -73,7 +73,7 @@ ms.locfileid: "81641651"
 ## <a name="configure-the-telestream-wirecast-encoder"></a><a id="configure_wirecast_rtmp" />設定 Telestream Wirecast 編碼器
 在本教學課程中，我們會使用下列輸出設定。 本章節的其餘部分將詳細說明組態步驟。
 
-**影像**:
+**影片**：
 
 * 轉碼器：H.264
 * 設定檔：高 (層級 4.0)
@@ -81,7 +81,7 @@ ms.locfileid: "81641651"
 * 主要畫面格：2 秒 (60 秒)
 * 畫面播放速率：30
 
-**音訊**:
+**音訊**：
 
 * 轉碼器：AAC (LC)
 * 位元速率：192 kbps
@@ -102,7 +102,7 @@ ms.locfileid: "81641651"
 
     為預設命名，並檢查下列建議的設定：
 
-    **視訊**
+    **影片**
 
    * 編碼器：MainConcept H.264
    * 每秒畫面格數：30
@@ -110,7 +110,7 @@ ms.locfileid: "81641651"
    * 設定檔：主要
    * 畫面間隔：60 個畫面
 
-     **音訊**
+     **曲目**
 
    * 目標位元速率：192 kbit/秒
    * 取樣速率：44.100 kHz

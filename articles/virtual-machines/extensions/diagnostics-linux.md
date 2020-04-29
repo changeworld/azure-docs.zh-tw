@@ -1,5 +1,5 @@
 ---
-title: Azure 計算 - Linux 診斷擴展
+title: Azure 計算-Linux 診斷擴充功能
 description: 如何設定 Azure Linux 診斷擴充功能 (LAD) 從 Azure 中執行的 Linux VM 中收集計量並記錄事件。
 services: virtual-machines-linux
 author: axayjo
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
 ms.openlocfilehash: 7a7c1af1193ba391550438229a22c4a8c116e6be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80289170"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 診斷擴充功能監視計量與記錄
@@ -49,7 +49,7 @@ Linux 診斷擴充功能可協助使用者監視在 Microsoft Azure 上執行的
 
 可下載組態只是範例，可修改以符合您的需求。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 * **Azure Linux Agent 2.2.0 版或更新版本**。 大部分的 Azure VM Linux 資源庫映像包含版本 2.2.7 或更新版本。 執行 `/usr/sbin/waagent -version` 以確認安裝在 VM 上的版本。 如果 VM 執行的是舊版客體代理程式，請依照[這些指示](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)更新。
 * **Azure CLI**。 在您的電腦上[設定 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 環境。
@@ -59,7 +59,7 @@ Linux 診斷擴充功能可協助使用者監視在 Microsoft Azure 上執行的
 
 ### <a name="sample-installation"></a>範例安裝
 
-在運行前填寫第一節中變數的正確值：
+在執行之前，為第一節中的變數填入正確的值：
 
 ```azurecli
 # Set your Azure VM diagnostic variables correctly below
@@ -89,7 +89,7 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
 
-這些示例中下載的示例配置收集一組標準資料並將其發送到表存儲。 示例配置及其內容的 URL 可能會更改。 在大多數情況下，您應該下載門戶設置 JSON 檔的副本並根據您的需要對其進行自訂，然後讓構造的任何範本或自動化使用您自己的設定檔版本，而不是每次都下載該 URL。
+在這些範例中下載的範例設定會收集一組標準資料，並將它們傳送到資料表儲存體。 範例設定和其內容的 URL 可能會變更。 在大部分情況下，您應該下載一份入口網站設定 JSON 檔案，並依據您的需求進行自訂，然後讓您所建立的任何範本或自動化都使用您自己的設定檔版本，而不是每次下載該 URL。
 
 #### <a name="powershell-sample"></a>PowerShell 範例
 
@@ -163,7 +163,7 @@ storageAccountSasToken | Blob 與資料表服務 (`ss='bt'`) 的 [帳戶 SAS 權
 mdsdHttpProxy | (選擇性) 啟用擴充功能以連線所指定儲存體帳戶和端點時所需的 HTTP proxy 資訊。
 sinksConfig | (選擇性) 可將計量與事件傳遞至的替代目的地詳細資料。 以下各節包含擴充功能所支援每個資料接收的特定詳細資料。
 
-要在資源管理器範本中獲取 SAS 權杖，請使用**清單帳戶管理器**功能。 有關示例範本，請參閱[清單函數示例](../../azure-resource-manager/templates/template-functions-resource.md#list-example)。
+若要取得 Resource Manager 範本內的 SAS 權杖，請使用**listAccountSas**函數。 如需範例範本，請參閱[List function 範例](../../azure-resource-manager/templates/template-functions-resource.md#list-example)。
 
 您可以輕鬆地透過 Azure 入口網站建構所需的 SAS 權杖。
 
@@ -225,7 +225,7 @@ type | 正在定義的接收類型。 決定此類型執行個體中的其他值
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-有關生成和檢索事件中心 SAS 權杖上的資訊的詳細資訊，請參閱[此網頁](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)。
+如需有關在事件中樞的 SAS 權杖上產生和取得資訊的詳細資訊，請參閱[此網頁](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell)。
 
 #### <a name="the-jsonblob-sink"></a>JsonBlob 接收
 
@@ -528,7 +528,7 @@ TransfersPerSecond | 每秒的讀取或寫入作業數
 
 可透過設定 `"condition": "IsAggregate=True"` 取得的所有檔案系統彙總值。 可透過設定 `"condition": 'Name="/mnt"'` 取得的特定已掛接檔案系統 (例如 "/mnt") 的值。 
 
-**注**： 如果使用 Azure 門戶而不是 JSON，則正確的條件欄位表單是 Name_'/mnt'
+**注意**：如果使用 Azure 入口網站，而不是 JSON，正確的條件欄位表單就是 Name = '/mnt '
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>磁碟類別的內建計量
 
@@ -723,7 +723,7 @@ az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Az
 此外，您可以使用這些 UI 工具存取 Azure 儲存體中的資料：
 
 * Visual Studio 伺服器總管。
-* [微軟 Azure 存儲資源管理器](https://azurestorageexplorer.codeplex.com/ "Azure 儲存體總管")。
+* [Microsoft Azure 儲存體總管](https://azurestorageexplorer.codeplex.com/ "Azure 儲存體總管")。
 
 Microsoft Azure 儲存體總管工作階段的這個快照顯示從測試 VM 上正確設定的 LAD 3.0 擴充功能產生的 Azure 儲存體資料表及容器。 影像不完全符合[範例 LAD 3.0 組態](#an-example-lad-30-configuration)。
 

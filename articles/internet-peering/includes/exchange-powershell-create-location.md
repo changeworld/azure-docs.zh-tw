@@ -9,30 +9,30 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 2ebf5d574b4d185953ab0f7984648c440d6f107e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678694"
 ---
-PowerShell cmdlet **Get-AzPeeringLocation**傳`Kind`回具有強制參數的對等位置清單,您將在後面的步驟中使用該參數。
+PowerShell Cmdlet **AzPeeringLocation**會傳回具有必要參數`Kind`的對等互連位置清單，在稍後的步驟中將會用到。
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"
 ```
 
-交換對等位置包含以下欄位:
-* 交換名稱
-* 對等位置
+交換對等互連位置包含下欄欄位：
+* ExchangeName
+* PeeringLocation
 * Country
-* 對等資料庫設施Id
-* 對等DB設施連結
-* 微軟IPv4位址
-* 微軟IPv6位址
+* PeeringDBFacilityId
+* PeeringDBFacilityLink
+* MicrosoftIPv4Address
+* MicrosoftIPv6Address
 
-通過引用[對等互連資料庫](https://wwww.peeringdb.com),驗證您是否在所需的對等設施中。
+藉由參考[PeeringDB](https://wwww.peeringdb.com)，驗證您是否存在於所需的對等設備上。
 
-此示例演示如何使用西雅圖作為對等位置來創建對等互連。
+這個範例示範如何使用西雅圖做為對等互連位置來建立對等互連。
 
 ```powershell
 $exchangeLocations = Get-AzPeeringLocation -Kind Exchange

@@ -1,6 +1,6 @@
 ---
 title: 建立環境 - Azure 時間序列深入解析 | Microsoft Docs
-description: 瞭解如何使用 Azure 門戶創建新的時序見解環境。
+description: 瞭解如何使用 Azure 入口網站建立新的時間序列深入解析環境。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/16/2020
 ms.custom: seodec18
 ms.openlocfilehash: 7459c6afc775aa0df43d6f9285191c4c7e1b8cb8
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81602361"
 ---
 # <a name="create-a-new-time-series-insights-environment-in-the-azure-portal"></a>在 Azure 入口網站中建立新的 Time Series Insights 環境
@@ -30,7 +30,7 @@ ms.locfileid: "81602361"
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 選擇 **「建立資源**」 按鈕。
+1. 選取 [ **+ 建立資源**] 按鈕。
 
 1. 選取 [物聯網]**** 類別，然後選取 [時間序列深入解析]****。
 
@@ -45,9 +45,9 @@ ms.locfileid: "81602361"
    設定|建議的值|描述
    ---|---|---
    環境名稱 | 唯一的名稱 | 此名稱代表[時間序列總管](https://insights.timeseries.azure.com)中的環境
-   訂用帳戶 | 您的訂用帳戶 | 如果您有多個訂用帳戶，最好是選擇包含事件來源的訂用帳戶。 時間序列見解可以自動檢測同一訂閱中現有的 Azure IoT 中心和事件中心資源。
+   訂用帳戶 | 您的訂用帳戶 | 如果您有多個訂用帳戶，最好是選擇包含事件來源的訂用帳戶。 時間序列深入解析可以自動偵測相同訂用帳戶中現有的 Azure IoT 中樞和事件中樞資源。
    資源群組 | 建立新的或使用現有的 | 資源群組是一起使用之 Azure 資源的集合。 您可以選擇現有的資源群組，例如包含事件中樞或 IoT 中樞的資源群組。 或者，如果此資源與其他資源不相關，您可以製作新的群組。
-   Location | 最接近您的事件來源 | 最好是選擇包含事件來源資料的相同資料中心位置，以避免跨區域和跨地區頻寬成本，以及在將資料移出區域時增加延遲。
+   位置 | 最接近您的事件來源 | 最好是選擇包含事件來源資料的相同資料中心位置，以避免跨區域和跨地區頻寬成本，以及在將資料移出區域時增加延遲。
    定價層 | S1 | 選擇所需的輸送量。 如需最低成本和入門容量，選取 S1。
    Capacity | 1 | 容量是套用至輸入速率、儲存體容量以及與選取之 SKU 相關聯成本的乘數。  您可以在環境建立後變更其容量。 如需最低成本，選取 1 作為容量。
   
@@ -57,11 +57,11 @@ ms.locfileid: "81602361"
 
    [![觀看通知](media/time-series-insights-get-started/tsi-deploy-notifications.png)](media/time-series-insights-get-started/tsi-deploy-notifications.png#lightbox)
 
-1. 在資源**概述**中,驗證部署配置設置。
+1. 在資源**總覽**中，確認您的部署設定。
 
    [![建立 Time Series Insights [釘選到儀表板]](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
 
-1. **( 選擇性的 )** 選擇右上角的**針圖示**,以便以後輕鬆存取時間序列見解環境。
+1. **（選擇性）** 選取右上角的**釘選圖示**，以便日後輕鬆地存取您的時間序列深入解析環境。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -69,6 +69,6 @@ ms.locfileid: "81602361"
 
 * [新增事件中樞事件來源](time-series-insights-how-to-add-an-event-source-eventhub.md)到您的 Azure 時間序列深入解析環境。
 
-* [將事件發送到](time-series-insights-send-events.md)事件源。
+* [將事件傳送](time-series-insights-send-events.md)到事件來源。
 
-* 在[時間序列見解資源管理員](https://insights.timeseries.azure.com)中查看您的環境。
+* 在[時間序列深入解析 explorer](https://insights.timeseries.azure.com)中查看您的環境。

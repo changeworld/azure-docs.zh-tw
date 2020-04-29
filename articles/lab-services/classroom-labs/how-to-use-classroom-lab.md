@@ -15,10 +15,10 @@ ms.custom: mvc
 ms.date: 03/17/2020
 ms.author: spelluru
 ms.openlocfilehash: db1e60ccd7e05cb8b6923d6b2ec008cdfb76eaa1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79501922"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何存取 Azure 實驗室服務中的教室實驗室
@@ -26,7 +26,7 @@ ms.locfileid: "79501922"
 
 ## <a name="register-to-the-lab"></a>向實驗室註冊
 
-1. 瀏覽至教師/授課者提供給您的**註冊 URL**。 完成註冊之後，您不需要使用註冊 URL。 而是使用 URL： [https://labs.azure.com](https://labs.azure.com)。 目前尚未支援 Internet Explorer 11。 
+1. 瀏覽至教師/授課者提供給您的**註冊 URL**。 完成註冊之後，您不需要使用註冊 URL。 請改用 URL： [https://labs.azure.com](https://labs.azure.com)。 目前尚未支援 Internet Explorer 11。 
 1. 使用學校帳戶登入服務，以完成註冊。 
 
     > [!NOTE]
@@ -80,7 +80,7 @@ ms.locfileid: "79501922"
 ## <a name="view-all-the-classroom-labs"></a>檢視所有教室實驗室
 向實驗室註冊之後，您可以採取下列步驟來檢視所有教室實驗室： 
 
-1. 導航到[https://labs.azure.com](https://labs.azure.com)。 目前尚未支援 Internet Explorer 11。 
+1. 瀏覽至 [https://labs.azure.com](https://labs.azure.com)。 目前尚未支援 Internet Explorer 11。 
 2. 使用您用來向實驗室註冊的使用者帳戶登入服務。 
 3. 確認您看到您有權存取的所有實驗室。 
 

@@ -1,13 +1,13 @@
 ---
 title: 使用 Azure 備份伺服器來備份 VMware VM
-description: 在本文中,瞭解如何使用 Azure 備份伺服器備份 VMware vCenter/ESXi 伺服器上運行的 VMware VM。
+description: 在本文中，您將瞭解如何使用 Azure 備份伺服器來備份在 VMware vCenter/ESXi 伺服器上執行的 VMware Vm。
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.openlocfilehash: 92846f9bb9259e55a2c957716676ff42c032b2b5
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537401"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 備份伺服器來備份 VMware VM
@@ -22,9 +22,9 @@ ms.locfileid: "81537401"
 - 將 vCenter 或 ESXi 伺服器新增至 Azure 備份伺服器。
 - 設定包含您要備份之 VMware VM 的保護群組、指定備份設定和排程備份。
 
-## <a name="before-you-start"></a>開始之前
+## <a name="before-you-start"></a>在您開始使用 Intune 之前
 
-- 驗證您是否正在運行支援備份的 vCenter/ESXi 版本。 請參閱[此處](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)的支援矩陣。
+- 請確認您正在執行支援備份的 vCenter/ESXi 版本。 請參閱[這裡](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)的支援矩陣。
 - 確定您已設定 Azure 備份伺服器。 如果還沒，請在開始之前[進行設定](backup-azure-microsoft-azure-backup.md)。 您應該執行具有最新更新的 Azure 備份伺服器。
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>建立 vCenter Server 的安全連線
@@ -33,10 +33,10 @@ ms.locfileid: "81537401"
 
 ### <a name="before-you-begin"></a>開始之前
 
-- 如果不想使用 HTTPS,可以[關閉所有 VMware 伺服器的 HTTPS 憑證認證](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
-- 通常您會使用 vSphere Web 用戶端，從 Azure 備份伺服器電腦上的瀏覽器連線到 vCenter/ESXi 伺服器。 第一次執行此操作時,連接不安全,將顯示以下內容。
+- 如果您不想使用 HTTPS，則可以[停用所有 VMware 伺服器的 HTTPs 憑證驗證](backup-azure-backup-server-vmware.md#disable-https-certificate-validation)。
+- 通常您會使用 vSphere Web 用戶端，從 Azure 備份伺服器電腦上的瀏覽器連線到 vCenter/ESXi 伺服器。 當您第一次執行此動作時，連接並不安全，而且會顯示下列各項。
 - 請務必了解 Azure 備份伺服器處理備份的方式。
-  - 作為第一個步驟，Azure 備份伺服器會將資料備份到本機磁碟儲存體上。 Azure 備份伺服器使用儲存體集區，這是一組磁碟，而 Azure 備份伺服器可在磁碟上的磁碟區儲存受保護資料的磁碟復原點。 儲存體集區可直接連結儲存體 (DAS)、光纖通道 SAN，或 iSCSI 存放裝置或 SAN。 請務必確保有足夠的儲存空間來本地備份 VMware VM 資料。
+  - 作為第一個步驟，Azure 備份伺服器會將資料備份到本機磁碟儲存體上。 Azure 備份伺服器使用儲存體集區，這是一組磁碟，而 Azure 備份伺服器可在磁碟上的磁碟區儲存受保護資料的磁碟復原點。 儲存體集區可直接連結儲存體 (DAS)、光纖通道 SAN，或 iSCSI 存放裝置或 SAN。 請務必確定您有足夠的儲存空間來進行 VMware VM 資料的本機備份。
   - 接著，Azure 備份伺服器會從本機磁碟儲存體備份至 Azure。
   - [取得說明](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1807#figure-out-how-much-storage-space-you-need)以了解您需要多少儲存空間。 該資訊適用於 DPM，但也可用於 Azure 備份伺服器。
 
@@ -58,7 +58,7 @@ ms.locfileid: "81537401"
 
 4. 使用 .zip 副檔名，將檔案儲存在 Azure 備份伺服器電腦上。
 
-5. 右鍵按下**下載.zip** > **擷取全部**。 .zip 檔案會將其內容解壓縮到 **certs** 資料夾，其中包含：
+5. 以滑鼠右鍵按一下 [**下載]。 zip** > [**解壓縮全部**]。 .zip 檔案會將其內容解壓縮到 **certs** 資料夾，其中包含：
    - 根憑證檔案，其副檔名的開頭是編號序列，例如 .0 和 .1。
    - CRL 檔案，其副檔名的開頭是序列，例如 .r0 和 .r1。 與憑證相關聯的 CRL 檔案。
 
@@ -90,9 +90,9 @@ ms.locfileid: "81537401"
 
 13. 在確認憑證匯入之後，請登入 vCenter Server 以確認您的連線是否安全。
 
-### <a name="disable-https-certificate-validation"></a>關閉 HTTPS 憑證驗證
+### <a name="disable-https-certificate-validation"></a>停用 HTTPS 憑證驗證
 
-如果組織內具有安全邊界,並且不想在 VMware 伺服器和 Azure 備份伺服器電腦之間使用 HTTPS 協定,請禁用 HTTPS,如下所示:
+如果您的組織中有安全的界限，而且不想在 VMware 伺服器與 Azure 備份伺服器機器之間使用 HTTPS 通訊協定，請停用 HTTPS，如下所示：
 
 1. 複製以下文字並貼到 .txt 檔案中。
 
@@ -115,11 +115,11 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![系統管理](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. 在 **"管理** > **角色**"中,按一下添加角色圖示(+符號)。
+3. 在 [**管理** > **角色**] 中，按一下 [新增角色] 圖示（+ 符號）。
 
     ![新增角色](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-4. 在 **"創建角色** > **角色名稱**"中,輸入 *"備份管理員角色*"。 角色名稱可以是您喜歡的名稱，但它應該是可辨識該角色的用途。
+4. 在 [**建立角色** > **角色名稱**] 中，輸入*BackupAdminRole*。 角色名稱可以是您喜歡的名稱，但它應該是可辨識該角色的用途。
 
 5. 選取如下表摘要說明的權限，然後按一下 [確定]****。  新的角色會出現在 [角色]**** 面板上的清單中。
    - 按一下父標籤旁的圖示，以展開父權限並檢視子權限。
@@ -130,9 +130,9 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
 ### <a name="role-permissions"></a>角色權限
 
-| vCenter 6.7 使用者帳戶的權限                     | vCenter 6.5 使用者帳戶的權限                     |
+| VCenter 6.7 使用者帳戶的許可權                     | VCenter 6.5 使用者帳戶的許可權                     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| 數據存儲群集。設定資料儲存叢集            | 數據存儲群集。設定資料儲存叢集            |
+| 資料存放區叢集。設定 datatstore 叢集            | 資料存放區叢集。設定 datatstore 叢集            |
 | Datastore.AllocateSpace                                      | Datastore.AllocateSpace                                      |
 | 資料存放區。瀏覽資料存放區                                   | 資料存放區。瀏覽資料存放區                                   |
 | 資料存放區。低層級檔案作業                          | 資料存放區。低層級檔案作業                          |
@@ -142,60 +142,60 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 | 全域。記錄事件                                             | 全域。記錄事件                                             |
 | 全域。管理自訂屬性                              | 全域。管理自訂屬性                              |
 | 全域。設定自訂屬性                                  | 全域。設定自訂屬性                                  |
-| 主機.本地操作。建立虛擬機器                | 主機.本地操作。建立虛擬機器                |
+| 主機。本機作業。建立虛擬機器                | 主機。本機作業。建立虛擬機器                |
 | 網路。指派網路                                       | 網路。指派網路                                       |
-| 資源。 將虛擬機配置給資源池           | 資源。 將虛擬機配置給資源池           |
+| 資源。 將虛擬機器指派給資源集區           | 資源。 將虛擬機器指派給資源集區           |
 | vApp。新增虛擬機器                                     | vApp。新增虛擬機器                                     |
 | vApp。指派資源集區                                    | vApp。指派資源集區                                    |
 | vApp。取消註冊                                              | vApp。取消註冊                                              |
-| 虛擬機.配置。 新增或移除裝置          | 虛擬機.配置。 新增或移除裝置          |
-| 虛擬機器。設定.獲取磁碟租約            | 虛擬機器。設定。磁碟租用                     |
+| VirtualMachine。 新增或移除裝置          | VirtualMachine。 新增或移除裝置          |
+| 虛擬機器。設定。取得磁片租用            | 虛擬機器。設定。磁碟租用                     |
 | 虛擬機器。設定。新增磁碟                   | 虛擬機器。設定。新增磁碟                   |
-| 虛擬機器。設定.進階設定        | 虛擬機器。設定。進階                       |
-| 虛擬機器。設定.切換磁碟變更追蹤   | 虛擬機器。設定.磁碟變更追蹤          |
-| 虛擬機器。設定.設定主機 USB 裝置     | 虛擬機器。設定.主機 USB 裝置               |
-| 虛擬機器。設定.延伸虛擬磁碟           | 虛擬機器。設定.延伸虛擬磁碟           |
-| 虛擬機器。設定.查詢未擁有的檔案           | 虛擬機器。設定.查詢未擁有的檔案           |
-| 虛擬機器。設定.變更交換檔案放置位置     | 虛擬機器。設定.交換檔案放置位置            |
-| 虛擬機器。來賓操作.來賓操作計劃執行 | 虛擬機器。來賓操作.來賓操作計劃執行 |
-| 虛擬機器。來賓操作.來賓操作修改 | 虛擬機器。來賓操作.來賓操作修改 |
-| 虛擬機器。來賓操作.來賓操作查詢    | 虛擬機器。來賓操作.來賓操作查詢    |
-| 虛擬機器 。互動。裝置連線             | 虛擬機器 。互動。裝置連線             |
-| 虛擬機器 。互動。VIX API 的訪客作業系統管理 | 虛擬機器 。互動。VIX API 的訪客作業系統管理 |
-| 虛擬機器 。互動。關機                      | 虛擬機器 。互動。關機                      |
-| 虛擬機器 。庫存.建立新                        | 虛擬機器 。庫存.建立新                        |
+| 虛擬機器。設定。 Advanced configuration        | 虛擬機器。設定。進階                       |
+| 虛擬機器。設定。切換磁片變更追蹤   | 虛擬機器。設定磁片變更追蹤          |
+| 虛擬機器。設定。設定主機 USB 裝置     | 虛擬機器。設定。主機 USB 裝置               |
+| 虛擬機器。設定。擴充虛擬磁片           | 虛擬機器。設定。擴充虛擬磁片           |
+| 虛擬機器。設定。查詢未擁有的檔案           | 虛擬機器。設定。查詢未擁有的檔案           |
+| 虛擬機器。設定。變更 Cloud-init 位置     | 虛擬機器。Cloud-init 放置            |
+| 虛擬機器。來賓操作。來賓作業程式執行 | 虛擬機器。來賓操作。來賓作業程式執行 |
+| 虛擬機器。來賓作業。來賓操作修改 | 虛擬機器。來賓作業。來賓操作修改 |
+| 虛擬機器。來賓作業。來賓操作查詢    | 虛擬機器。來賓作業。來賓操作查詢    |
+| 虛擬機器。操作.裝置連線             | 虛擬機器。操作.裝置連線             |
+| 虛擬機器。操作.VIX API 的客體作業系統管理 | 虛擬機器。操作.VIX API 的客體作業系統管理 |
+| 虛擬機器。操作.關閉電源                      | 虛擬機器。操作.關閉電源                      |
+| 虛擬機器。清查。建立新的                        | 虛擬機器。清查。建立新的                        |
 | 虛擬機器。清查。移除                            | 虛擬機器。清查。移除                            |
 | 虛擬機器。清查。註冊                          | 虛擬機器。清查。註冊                          |
-| 虛擬機器 。預先使用.允許磁碟存取             | 虛擬機器 。預先使用.允許磁碟存取             |
-| 虛擬機器 。預先存存存存取檔案存取             | 虛擬機器 。預先存存存存取檔案存取             |
-| 虛擬機器 。預先使用.允許唯讀磁碟存取   | 虛擬機器 。預先使用.允許唯讀磁碟存取   |
-| 虛擬機器 。預先設定.允許虛擬機器下載 | 虛擬機器 。預先設定.允許虛擬機器下載 |
+| 虛擬機器。布建。允許磁片存取             | 虛擬機器。布建。允許磁片存取             |
+| 虛擬機器。布建。允許檔案存取             | 虛擬機器。布建。允許檔案存取             |
+| 虛擬機器。布建。允許唯讀磁片存取   | 虛擬機器。布建。允許唯讀磁片存取   |
+| 虛擬機器。布建。允許虛擬機器下載 | 虛擬機器。布建。允許虛擬機器下載 |
 | 虛擬機器。快照集管理。  建立快照集       | 虛擬機器。快照集管理。  建立快照集       |
-| 虛擬機器 。快照管理。刪除快照        | 虛擬機器 。快照管理。刪除快照        |
-| 虛擬機器 。快照管理。還原為快照     | 虛擬機器 。快照管理。還原為快照     |
+| 虛擬機器。快照集管理。移除快照集        | 虛擬機器。快照集管理。移除快照集        |
+| 虛擬機器。快照集管理。還原為快照集     | 虛擬機器。快照集管理。還原為快照集     |
 
 <br>
 
 | **vCenter 6.0 使用者帳戶的權限**                | **vCenter 5.5 使用者帳戶的權限** |
 | ---------------------------------------------------------- | ------------------------------------------- |
 | Datastore.AllocateSpace                                    | Network.Assign                              |
-| 全域管理自訂屬性                           | Datastore.AllocateSpace                     |
-| 全域設定自訂屬性                               | VirtualMachine.Config.ChangeTracking        |
-| 主機.本地操作。建立虛擬機器              | VirtualMachine.State.RemoveSnapshot         |
+| Global. 管理自訂屬性                           | Datastore.AllocateSpace                     |
+| Global. 設定自訂屬性                               | VirtualMachine.Config.ChangeTracking        |
+| 主機。本機作業。建立虛擬機器              | VirtualMachine.State.RemoveSnapshot         |
 | 網路。  指派網路                                   | VirtualMachine.State.CreateSnapshot         |
 | 資源。  將虛擬機器指派給資源集區         | VirtualMachine.Provisioning.DiskRandomRead  |
-| 虛擬機器。設定.新增磁碟                | VirtualMachine.Interact.PowerOff            |
-| 虛擬機器。設定.進階                    | VirtualMachine.Inventory.Create             |
-| 虛擬機器。設定.磁碟變更追蹤        | VirtualMachine.Config.AddNewDisk            |
-| 虛擬機器。設定.主機 USB 裝置             | VirtualMachine.Config.HostUSBDevice         |
-| 虛擬機器。設定.查詢未擁有的檔案         | VirtualMachine.Config.AdvancedConfig        |
-| 虛擬機器。設定.交換檔案放置位置          | VirtualMachine.Config.SwapPlacement         |
-| 虛擬機器。互動.關閉電源                     | Global.ManageCustomFields                   |
-| 虛擬機器。庫存。 新建                     |                                             |
-| 虛擬機器。預先使用.允許磁碟存取            |                                             |
-| 虛擬機器。供應。 允許唯讀磁碟存取 |                                             |
-| 虛擬機器。快照管理。建立快照       |                                             |
-| 虛擬機器。快照管理。刪除快照       |                                             |
+| 虛擬機器。設定。新增磁片                | VirtualMachine.Interact.PowerOff            |
+| 虛擬機器。設定。 Advanced                    | VirtualMachine.Inventory.Create             |
+| 虛擬機器。設定磁片變更追蹤        | VirtualMachine.Config.AddNewDisk            |
+| 虛擬機器。設定。主機 USB 裝置             | VirtualMachine.Config.HostUSBDevice         |
+| 虛擬機器。設定。查詢未擁有的檔案         | VirtualMachine.Config.AdvancedConfig        |
+| 虛擬機器。Cloud-init 放置          | VirtualMachine.Config.SwapPlacement         |
+| 虛擬機器。互動。關閉電源                     | Global.ManageCustomFields                   |
+| 虛擬機器。進程. 新建                     |                                             |
+| 虛擬機器。布建。允許磁片存取            |                                             |
+| 虛擬機器。調配. 允許唯讀磁碟存取 |                                             |
+| 虛擬機器。快照集管理。建立快照集       |                                             |
+| 虛擬機器。快照集管理。移除快照集       |                                             |
 
 ## <a name="create-a-vmware-account"></a>建立 VMware 帳戶
 
@@ -203,7 +203,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![[使用者和群組] 選項](./media/backup-azure-backup-server-vmware/vmware-userandgroup-panel.png)
 
-    將顯示**vCenter 使用者和組**面板。
+    [ **VCenter 使用者和群組**] 面板隨即出現。
 
 2. 在 [vCenter 使用者和群組]**** 面板中，選取 [使用者]**** 索引標籤，然後按一下 [新增使用者] 圖示 (+ 符號)。
 
@@ -237,7 +237,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![Azure 備份伺服器圖示](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. 在 Azure 備份伺服器控制台中,按一下 **「管理** >  **生產伺服器** > **管理 VMware**」。。
+2. 在 Azure 備份伺服器主控台中，按一下 [**管理** >  ] [**生產伺服器** > ] [**管理 VMware**]。
 
     ![Azure 備份伺服器主控台](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
@@ -245,7 +245,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![Azure 備份伺服器的 [管理認證] 對話方塊](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
-4. 在 **「添加認證」** 中,輸入新憑據的名稱和說明,並指定您在 VMware 伺服器上定義的使用者名稱和密碼。 我們會使用「Contoso Vcenter 認證」** 這個名稱來識別此程序中的認證。 如果 VMware 伺服器和 Azure 備份伺服器不在相同網域中，請在使用者名稱中指定網域。
+4. 在 [新增**認證**] 中，輸入新認證的名稱和描述，並指定您在 VMware 伺服器上定義的使用者名稱和密碼。 我們會使用「Contoso Vcenter 認證」** 這個名稱來識別此程序中的認證。 如果 VMware 伺服器和 Azure 備份伺服器不在相同網域中，請在使用者名稱中指定網域。
 
     ![Azure 備份伺服器的 [新增認證] 對話方塊](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
@@ -257,11 +257,11 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
 將 vCenter Server 新增至 Azure 備份伺服器。
 
-1. 在 Azure 備份伺服器控制台中,按一下 **「管理** > **生產伺服器** > **添加**」。
+1. 在 Azure 備份伺服器主控台中，按一下 [**管理** > ] [**實際執行伺服器** > ] [**新增**]。
 
     ![開啟「生產伺服器新增精靈」](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. 在**生產伺服器添加精靈** > **選擇生產伺服器類型**頁中,選擇**VMware 伺服器**,然後按下「**下一步**」。
+2. 在 [**生產伺服器]** > 中，**選取 [生產伺服器類型**] 頁面，選取 [ **VMware 伺服器**]，然後按 **[下一步]**。
 
     ![生產伺服器新增精靈](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
@@ -303,10 +303,10 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
 1. 在 [選取保護群組類型]**** 頁面上，選取 [伺服器]****，然後按 [下一步]****。 [選取群組成員]**** 頁面隨即出現。
 
-1. 在 **「選擇群組成員」** 中,選擇要備份的 VM(或 VM 資料夾)。 然後按一下 [下一步]  。
+1. 在 [**選取群組成員**] 中，選取您想要備份的 vm （或 vm 資料夾）。 然後按一下 [下一步]  。
 
     - 當您選取資料夾時，也會選取該資料夾內的 VM 或資料夾以進行備份。 您可以將不想備份的資料夾或 VM 取消選取。
-1. 如果 VM 或資料夾已經過備份，您就無法加以選取。 這可確保不會為 VM 創建重複的恢復點。
+1. 如果 VM 或資料夾已經過備份，您就無法加以選取。 這可確保不會為 VM 建立重複的復原點。
 
     ![選擇群組成員](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
@@ -317,7 +317,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 1. 在 [指定短期目標]**** 中，指定備份至磁碟之資料要保留的時間長度。
    - 在 [保留範圍]**** 中，指定磁碟復原點應保留的天數。
    - 在 [同步處理頻率]**** 中，指定擷取磁碟復原點的頻率。
-       - 如果不想設置備份間隔,可以在**恢復點之前**檢查,以便備份在計劃每個恢復點之前運行。
+       - 如果您不想要設定備份間隔，您可以在**復原點之前**進行檢查，讓備份在每個復原點排定之前就執行。
        - 短期備份是完整備份且不會累加。
        - 當發生短期備份時，按一下 [修改]**** 以變更時間/日期。
 
@@ -329,7 +329,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
    - **資料大小：** 保護群組中的資料大小。
    - **磁碟空間：** 保護群組的建議磁碟空間數量。 如果您想要修改此設定，您配置的總空間應該稍微大於您預估每個資料來源將成長的數量。
    - **共置資料：** 如果您開啟共置功能，受保護的多個資料來源可以對應至單一複本和復原點磁碟區。 不支援所有工作負載的共置。
-   - **自動成長:** 如果打開此設置,如果受保護組中的數據超過初始分配,Azure 備份伺服器將嘗試將磁碟大小增加 25%。
+   - **自動成長：** 如果您開啟此設定，如果受保護群組中的資料成長到超過初始配置，Azure 備份伺服器會嘗試增加25% 的磁片大小。
    - **儲存集區詳細資料：** 顯示儲存體集區的狀態，包括總計和剩餘的磁碟大小。
 
     ![檢閱磁碟配置](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
@@ -356,7 +356,7 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
     ![指定線上備份排程](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. 在 [指定線上保留原則]**** 頁面上，指定從每日/每週/每月/每年備份至 Azure 所建立的資料復原點要保留的時間長度。 然後按**下 「下一步**」。
+1. 在 [指定線上保留原則]**** 頁面上，指定從每日/每週/每月/每年備份至 Azure 所建立的資料復原點要保留的時間長度。 然後按 **[下一步]**。
 
     - 您可以在 Azure 中保留資料的時間長度沒有限制。
     - 唯一的限制是每個受保護的執行個體不能有超過 9999 個復原點。 在此範例中，受保護的執行個體是 VMware 伺服器。
@@ -369,12 +369,12 @@ Azure 備份伺服器需要具有存取 v-Center Server/ESXi 主機權限的使�
 
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6.7
 
-要備份 vSphere 6.7,執行以下操作:
+若要備份 vSphere 6.7，請執行下列動作：
 
 - 在 DPM Server 上啟用 TLS 1.2
 
 >[!NOTE]
->VMWare 6.7 以後已啟用 TLS 作為通訊協定。
+>VMWare 6.7 開始已將 TLS 啟用為通訊協定。
 
 - 設定登錄機碼，如下所示：
 

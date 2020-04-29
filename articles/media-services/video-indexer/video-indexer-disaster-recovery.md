@@ -1,7 +1,7 @@
 ---
-title: 視頻索引子容錯移轉和災害復原
+title: 影片索引子容錯移轉和嚴重損壞修復
 titleSuffix: Azure Media Services
-description: 瞭解如何在區域資料中心發生故障或災難時容錯移轉到輔助視頻索引子帳戶。
+description: 瞭解發生區域資料中心失敗或嚴重損壞時，如何容錯移轉至次要影片索引子帳戶。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,34 +15,34 @@ ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
 ms.openlocfilehash: 17c21900448fcb6d0a40fe5407f3b8bd62f9e3e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79499614"
 ---
-# <a name="video-indexer-failover-and-disaster-recovery"></a>視頻索引子容錯移轉和災害復原
+# <a name="video-indexer-failover-and-disaster-recovery"></a>影片索引子容錯移轉和嚴重損壞修復
 
-如果區域資料中心中斷或發生故障，Azure 媒體服務視頻索引子不會提供服務的即時容錯移轉。 本文介紹如何為容錯移轉配置環境，以確保應用的最佳可用性，並在發生災難時最大限度地減少恢復時間。
+如果發生區域資料中心中斷或失敗，Azure 媒體服務影片索引子不會提供服務的立即容錯移轉。 本文說明如何設定您的環境以進行容錯移轉，以確保應用程式的最佳可用性，並在發生嚴重損壞時減少復原時間。
 
-我們建議您跨區域對配置業務連續性災害復原 （BCDR），以便從 Azure 的隔離和可用性策略中受益。 如需詳細資訊，請參閱 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
+我們建議您設定跨區域配對的商務持續性嚴重損壞修復（BCDR），以受益于 Azure 的隔離和可用性原則。 如需詳細資訊，請參閱 [Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-Azure 訂用帳戶。 如果尚未使用 Azure 訂閱，請註冊[Azure 免費試用](https://azure.microsoft.com/free/)版。
+Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，請註冊[azure 免費試用](https://azure.microsoft.com/free/)。
 
-## <a name="failover-to-a-secondary-account"></a>容錯移轉到輔助帳戶
+## <a name="failover-to-a-secondary-account"></a>容錯移轉至次要帳戶
 
-要實現 BCDR，您需要有兩個視頻索引子帳戶來處理冗余。
+若要執行 BCDR，您需要有兩個影片索引子帳戶來處理冗余。
 
-1. 創建連接到 Azure 的兩個視頻索引子[帳戶（請參閱創建視頻索引子帳戶](connect-to-azure.md)）。 為主區域創建一個帳戶，為配對的 Azure 區域創建另一個帳戶。
-1. 如果主區域出現故障，請使用輔助帳戶切換到索引。
+1. 建立兩個連線到 Azure 的影片索引子帳戶（請參閱[建立影片索引子帳戶](connect-to-azure.md)）。 為主要區域和配對的 azure 區域建立一個帳戶。
+1. 如果您的主要區域發生失敗，請使用次要帳戶切換到索引編制。
 
 > [!TIP]
-> 您可以通過根據"[在服務通知上創建活動日誌警報](../../service-health/alerts-activity-log-service-notifications.md)"為服務運行狀況通知設置活動日誌警報來自動執行 BCDR。
+> 您可以根據針對[服務通知建立活動記錄警示](../../service-health/alerts-activity-log-service-notifications.md)的方式，設定服務健康狀態通知的活動記錄警示，以自動化 BCDR。
 
-有關使用多個租戶的資訊，請參閱[管理多個租戶](manage-multiple-tenants.md)。 要實現 BCDR，請選擇以下兩個選項之一：[每個租戶的視頻索引子帳戶](manage-multiple-tenants.md#video-indexer-account-per-tenant)或[每個租戶的 Azure 訂閱](manage-multiple-tenants.md#azure-subscription-per-tenant)。
+如需使用多個租使用者的相關資訊，請參閱[管理多個](manage-multiple-tenants.md)租使用者。 若要執行 BCDR，請選擇下列兩個選項之一：每個租使用者的[影片索引子帳戶](manage-multiple-tenants.md#video-indexer-account-per-tenant)或[每個租使用者的 Azure 訂](manage-multiple-tenants.md#azure-subscription-per-tenant)用帳戶
 
 ## <a name="next-steps"></a>後續步驟
 
-[管理連接到 Azure 的視頻索引子帳戶](manage-account-connected-to-azure.md)。
+[管理連線到 Azure 的影片索引子帳戶](manage-account-connected-to-azure.md)。

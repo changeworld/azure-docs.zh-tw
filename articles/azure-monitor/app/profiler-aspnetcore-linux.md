@@ -7,15 +7,15 @@ ms.author: cweining
 ms.date: 02/23/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: d845e245a242a88d16a2597f0144a0ae4a727cb0
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81640963"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 來分析 ASP.NET Core Azure Linux Web 應用程式
 
-此功能目前為預覽狀態。
+這項功能目前為預覽狀態。
 
 了解在使用 [Application Insights ](../../azure-monitor/app/app-insights-overview.md) 時，即時 Web 應用程式的每個方法各使用了多少時間。 Application Insights Profiler 現在可在 Azure App Service 上供裝載於 Linux 中的 ASP.NET Core Web 應用程式使用。 本指南提供逐步指示，說明如何針對 ASP.NET Core Linux Web 應用程式收集分析工具追蹤。
 
@@ -23,7 +23,7 @@ ms.locfileid: "81640963"
 
 ![分析工具追蹤](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 下列指示適用於所有 Windows、Linux 和 Mac 開發環境：
 
 * 安裝 [.NET Core SDK 2.1.2 或更新版本](https://dotnet.microsoft.com/download/archives)。
@@ -47,7 +47,7 @@ ms.locfileid: "81640963"
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-1. 在Program.cs中啟用應用程式的解解:
+1. 啟用 Program.cs 中的 Application Insights：
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -56,7 +56,7 @@ ms.locfileid: "81640963"
             .UseStartup<Startup>();
     ```
     
-1. Startup.cs啟用探查器:
+1. 在 Startup.cs 中啟用 Profiler：
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
@@ -150,7 +150,7 @@ ms.locfileid: "81640963"
 
 ## <a name="add-application-insights-to-monitor-your-web-apps"></a>新增 Application Insights 以監視您的 Web 應用程式
 
-1. [建立應用程式的解取資源](./../../azure-monitor/app/create-new-resource.md )。
+1. [建立 Application Insights 資源](./../../azure-monitor/app/create-new-resource.md )。
 
 2. 複製 Application Insights 資源的 **iKey** 值，並在您的 Web 應用程式中進行下列設定：
 

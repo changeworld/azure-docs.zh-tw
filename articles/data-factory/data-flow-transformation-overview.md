@@ -1,6 +1,6 @@
 ---
-title: 對應資料流程轉換概述
-description: 對應資料串體的不同轉換的概述
+title: 對應資料流程轉換總覽
+description: 對應資料流程中可用的各種轉換總覽
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
@@ -8,36 +8,36 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 0442c701f39fd3e84361ad0201aaf8d1840d8851
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606276"
 ---
-# <a name="mapping-data-flow-transformation-overview"></a>對應資料流程轉換概述
+# <a name="mapping-data-flow-transformation-overview"></a>對應資料流程轉換總覽
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
-下面是映射數據流中當前支援的轉換的清單。 按一下每個轉換以瞭解其配置詳細資訊。
+以下是目前對應資料流程中支援的轉換清單。 按一下每個轉換，以瞭解其設定詳細資料。
 
-| 名稱 | 類別 | 描述 |
+| Name | 類別 | 描述 |
 | ---- | -------- | ----------- |
-| [骨料](data-flow-aggregate.md) | 架構修改器 | 定義不同類型的聚合,如 SUM、MIN、MAX 和 COUNT,按現有或計算列分組。 | 
-| [變更資料列](data-flow-alter-row.md) | 列變更器 | 在行上設置插入、刪除、更新和向上策略。 |
-| [條件式分割](data-flow-conditional-split.md) | 多個輸入/輸出 | 根據匹配條件將數據行路由到不同的流。 |
-| [衍生的資料行](data-flow-derived-column.md) | 架構修改器 | 使用數據流表達式語言生成新列或修改現有欄位。 | 
-| [存在](data-flow-exists.md) | 多個輸入/輸出 | 檢查數據是否存在於其他源或流中。 | 
-| [Filter](data-flow-filter.md) | 列變更器 | 根據條件篩選行。 |
-| [扁平化](data-flow-flatten.md) | 架構修改器 |  在分層結構(如 JSON)中獲取陣列值,並將其展開到單獨的行中。 |
-| [加入](data-flow-join.md) | 多個輸入/輸出 |  合併來自兩個源或流的數據。 |
-| [查閱](data-flow-lookup.md) | 多個輸入/輸出 | 來自另一個源的引用數據。 |
-| [新增分支](data-flow-new-branch.md) | 多個輸入/輸出 | 針對同一數據流應用多組操作和轉換。 |
-| [樞紐](data-flow-pivot.md) | 架構修改器 | 一個或多個分組列具有將其不同行值轉換為單個列的聚合。 |
-| [選取](data-flow-select.md) | 架構修改器 | 別名列與串流名稱,以及刪除或重新排序列 |
+| [Aggregate](data-flow-aggregate.md) | 架構修飾詞 | 定義不同類型的匯總，例如 SUM、MIN、MAX 和 COUNT，依現有或計算資料行分組。 | 
+| [變更資料列](data-flow-alter-row.md) | 資料列修飾詞 | 在資料列上設定 insert、delete、update 和 upsert 原則。 |
+| [條件式分割](data-flow-conditional-split.md) | 多個輸入/輸出 | 根據相符的條件，將資料列路由傳送至不同的資料流程。 |
+| [衍生的資料行](data-flow-derived-column.md) | 架構修飾詞 | 使用資料流程運算式語言產生新的資料行或修改現有欄位。 | 
+| [Exists](data-flow-exists.md) | 多個輸入/輸出 | 檢查您的資料是否存在於另一個來源或資料流程中。 | 
+| [Filter](data-flow-filter.md) | 資料列修飾詞 | 根據條件來篩選資料列。 |
+| [扁平化](data-flow-flatten.md) | 架構修飾詞 |  接受階層式結構（例如 JSON）內的陣列值，並將其展開為個別的資料列。 |
+| [加入](data-flow-join.md) | 多個輸入/輸出 |  結合兩個來源或資料流程的資料。 |
+| [查閱](data-flow-lookup.md) | 多個輸入/輸出 | 參考來自另一個來源的資料。 |
+| [新增分支](data-flow-new-branch.md) | 多個輸入/輸出 | 針對相同的資料流程套用多組作業和轉換。 |
+| [樞紐](data-flow-pivot.md) | 架構修飾詞 | 一或多個群組資料行的匯總，其中會將其相異的資料列值轉換成個別資料行。 |
+| [選取](data-flow-select.md) | 架構修飾詞 | 別名資料行和資料流程名稱，以及放置或重新排序資料行 |
 | [接收](data-flow-sink.md) | - | 資料的最終目的地 |
-| [Sort](data-flow-sort.md) | 列變更器 | 在目前資料串流的傳入列排序 |
-| [來源](data-flow-source.md) | - | 資料流程資料來源 |
-| [代理鍵](data-flow-surrogate-key.md) | 架構修改器 | 新增遞增的非業務的按鍵值 |
-| [Union](data-flow-union.md) | 多個輸入/輸出 | 垂直組合多個資料串流 |
-| [取消樞紐](data-flow-unpivot.md) | 架構修改器 | 將列透視到行值 |
-| [視窗](data-flow-window.md) | 架構修改器 |  定義數據流中列的基於視窗的聚合。 |
+| [Sort](data-flow-sort.md) | 資料列修飾詞 | 排序目前資料流程上的傳入資料列 |
+| [來源](data-flow-source.md) | - | 資料流程的資料來源 |
+| [代理鍵](data-flow-surrogate-key.md) | 架構修飾詞 | 新增遞增的非企業任意索引鍵值 |
+| [Union](data-flow-union.md) | 多個輸入/輸出 | 垂直合併多個資料流程 |
+| [取消樞紐](data-flow-unpivot.md) | 架構修飾詞 | 將資料行轉換成資料列值 |
+| [視窗](data-flow-window.md) | 架構修飾詞 |  定義資料流程中資料行的以視窗為基礎的匯總。 |

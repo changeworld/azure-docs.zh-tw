@@ -9,21 +9,21 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 17df5dca584b760cc52ddc171e92fb26b418c347
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79500194"
 ---
-1. 在 Windows 10 用戶端上安裝用戶端憑證，如此[點對點 VPN 用戶端](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)文章所示。 證書必須位於當前使用者存儲中。
+1. 在 Windows 10 用戶端上安裝用戶端憑證，如此[點對站 VPN 用戶端一](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)文所示。 憑證必須位於 [目前使用者] 存放區中。
 
-1. 通過 PowerShell、組態管理員或 Intune 配置始終打開 VPN 用戶端，請按照[配置 Windows 10 用戶端始終打開 VPN 連接](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)中的說明。
+1. 遵循[設定 Windows 10 用戶端 ALWAYS ON VPN](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)連線中的指示，透過 PowerShell、Configuration Manager 或 Intune 設定 Always On VPN 用戶端。
 
-### <a name="example-configuration-for-the-user-tunnel"></a>使用者隧道的示例配置
+### <a name="example-configuration-for-the-user-tunnel"></a>使用者通道的範例設定
 
-配置虛擬網路閘道並在 Windows 10 用戶端上的本地電腦存儲中安裝用戶端憑證後，請使用以下示例配置用戶端設備隧道：
+設定虛擬網路閘道並在 Windows 10 用戶端的本機電腦存放區中安裝用戶端憑證之後，請使用下列範例來設定用戶端裝置通道：
 
-1. 複製以下文本，並將其另存為*usercert.ps1*：
+1. 複製下列文字，並將它儲存為*usercert*：
 
    ```
    Param(
@@ -75,7 +75,7 @@ ms.locfileid: "79500194"
    $Message = "Complete."
    Write-Host "$Message"
    ```
-1. 複製以下文本，並將其保存為*VPNProfile.xml*與*usercert.ps1*在同一資料夾中。 編輯以下文本以匹配您的環境：
+1. 複製下列文字，並將它儲存為*VPNProfile*與*usercert*相同的資料夾中。 編輯下列文字以符合您的環境：
 
    * `<Servers>azuregateway-1234-56-78dc.cloudapp.net</Servers>  <= Can be found in the VpnSettings.xml in the downloaded profile zip file`
    * `<Address>192.168.3.5</Address>  <= IP of resource in the vnet or the vnet address space`
@@ -121,13 +121,13 @@ ms.locfileid: "79500194"
    ```
 1. 以系統管理員身分執行 PowerShell。
 
-1. 在 PowerShell 中，切換到*usercert.ps1*和*VPNProfile.xml*所在的資料夾，並運行以下命令：
+1. 在 PowerShell 中，切換至*usercert*和*VPNProfile*所在的資料夾，然後執行下列命令：
 
    ```powershell
    C:\> .\usercert.ps1 .\VPNProfile.xml UserTest
    ```
    
-   ![機器證書測試](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
-1. 在**VPN 設置**下，查找**使用者測試**條目，然後選擇"**連接**"。
+   ![MachineCertTest](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
+1. 在 [ **VPN 設定**] 底下，尋找 [ **UserTest** ] 專案，然後選取 **[連線]**。
 
-1. 如果連接成功，則已成功配置"始終打開使用者隧道"。
+1. 如果連線成功，則您已成功設定 Always On 的使用者通道。

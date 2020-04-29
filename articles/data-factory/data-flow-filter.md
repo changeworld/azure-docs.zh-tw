@@ -1,6 +1,6 @@
 ---
-title: 映射資料流程的篩選器轉換
-description: 使用 Azure 資料工廠映射資料串流的篩選器轉換篩選出行
+title: 對應資料流程中的篩選轉換
+description: 使用 Azure Data Factory 對應資料流程中的篩選準則轉換來篩選出資料列
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,23 +9,23 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
 ms.openlocfilehash: 32a40f3d4da93318c6d2ec25295c89a7b53141e4
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81606431"
 ---
-# <a name="filter-transformation-in-mapping-data-flow"></a>映射資料流程的篩選器轉換
+# <a name="filter-transformation-in-mapping-data-flow"></a>對應資料流程中的篩選轉換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-篩選器轉換允許基於條件進行行篩選。 輸出流包括與篩選條件匹配的所有行。 篩選器轉換類似於 SQL 中的 WHERE 子句。
+篩選轉換可讓您根據條件來進行資料列篩選。 輸出資料流程包含符合篩選準則的所有資料列。 篩選器轉換類似于 SQL 中的 WHERE 子句。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
-使用數據流運算式生成器為篩選器條件輸入運算式。 要打開表達式生成器,請單擊藍色框。 過濾器條件必須為布爾類型。 有關如何創建表達式的詳細資訊,請參閱[表達式生成器](concepts-data-flow-expression-builder.md)文件。
+使用資料流程運算式產生器，為篩選準則輸入運算式。 若要開啟 [運算式產生器]，請按一下藍色方塊。 篩選準則的類型必須是布林值。 如需如何建立運算式的詳細資訊，請參閱[expression builder](concepts-data-flow-expression-builder.md)檔。
 
-![過濾器轉換](media/data-flow/filter1.png "過濾器轉換")
+![篩選轉換](media/data-flow/filter1.png "篩選轉換")
 
 ## <a name="data-flow-script"></a>資料流程指令碼
 
@@ -40,13 +40,13 @@ ms.locfileid: "81606431"
 
 ### <a name="example"></a>範例
 
-下面的範例是一個篩選器轉換,`FilterBefore1960`該轉換名為,`CleanData`用於傳入流。 篩選器條件是表示式`year <= 1960`。
+下列範例是一個名為`FilterBefore1960`的篩選器轉換，它會`CleanData`接受傳入的資料流程。 篩選準則是運算式`year <= 1960`。
 
-在資料工廠的一個數字的數字, 此轉換類似於下圖:
+在 Data Factory UX 中，這項轉換看起來如下圖所示：
 
-![過濾器轉換](media/data-flow/filter1.png "過濾器轉換")
+![篩選轉換](media/data-flow/filter1.png "篩選轉換")
 
-此轉換的資料串流文稿位於下面的代碼段中:
+此轉換的資料流程腳本位於下列程式碼片段中：
 
 ```
 CleanData
@@ -58,4 +58,4 @@ CleanData
 
 ## <a name="next-steps"></a>後續步驟
 
-使用[選擇轉換](data-flow-select.md)篩選出欄位
+使用[select 轉換](data-flow-select.md)來篩選出資料行

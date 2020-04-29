@@ -9,10 +9,10 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605073"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>監視、診斷與疑難排解 Microsoft Azure 儲存體
@@ -30,10 +30,10 @@ ms.locfileid: "81605073"
 如需在 Azure 儲存體應用程式進行端對端疑難排解的實際操作指南，請參閱 [使用 Azure 儲存體度量和記錄、AzCopy 和 Message Analyzer 進行端對端疑難排解](../storage-e2e-troubleshooting.md)。
 
 * [簡介]
-  * [本指南是如何組織的]
+  * [本指南的組織方式]
 * [監視您的儲存體服務]
-  * [監控服務執行狀況]
-  * [監測能力]
+  * [監視服務健康情況]
+  * [監視容量]
   * [監視可用性]
   * [監視效能]
 * [診斷儲存體問題]
@@ -41,10 +41,10 @@ ms.locfileid: "81605073"
   * [效能問題]
   * [診斷錯誤]
   * [儲存體模擬器問題]
-  * [儲存記錄工具]
+  * [儲存體記錄工具]
   * [使用網路記錄工具]
-* [端至端端]
-  * [關聯紀錄資料]
+* [端對端追蹤]
+  * [相互關聯記錄資料]
   * [用戶端要求識別碼]
   * [伺服器要求 ID]
   * [時間戳記]
@@ -56,24 +56,24 @@ ms.locfileid: "81605073"
   * [度量顯示 PercentThrottlingError 增加]
   * [度量顯示 PercentTimeoutError 增加]
   * [度量顯示 PercentNetworkError 增加]
-  * [用戶端正在接收 HTTP 403(禁止)訊息]
-  * [用戶端正在接收 HTTP 404(找不到)訊息]
-  * [用戶端正在接收 HTTP 409(衝突)訊息]
-  * [指標顯示低成功百分比或分析紀錄項目具有具有客戶端其他錯誤事務狀態的操作]
-  * [容量指標顯示儲存容量使用量意外增加]
+  * [用戶端收到 HTTP 403 （禁止）訊息]
+  * [用戶端收到 HTTP 404 （找不到）訊息]
+  * [用戶端收到 HTTP 409 （衝突）訊息]
+  * [計量顯示低 PercentSuccess 或分析記錄專案具有交易狀態為 ClientOtherErrors 的作業]
+  * [容量度量顯示非預期的儲存體容量使用量增加]
   * [您的問題起因於使用儲存體模擬器進行開發或測試]
   * [安裝 Azure SDK for .NET 時發生問題]
-  * [儲存服務有不同的問題]
+  * [您的儲存體服務有不同的問題]
   * [針對 Windows 虛擬機器上的 VHD 進行疑難排解](../../virtual-machines/windows/troubleshoot-vhds.md)   
   * [針對 Linux 虛擬機器上的 VHD 進行疑難排解](../../virtual-machines/linux/troubleshoot-vhds.md)
   * [使用 Windows 針對 Azure 檔案服務問題進行疑難排解](../files/storage-troubleshoot-windows-file-connection-problems.md)   
   * [使用 Linux 針對 Azure 檔案服務問題進行疑難排解](../files/storage-troubleshoot-linux-file-connection-problems.md)
 * [附錄]
-  * [附錄 1:使用 Fiddler 擷取 HTTP 與 HTTPS 流量]
-  * [附錄 2:使用 Wireshark 擷取網路流量]
-  * [附錄 3:使用 Microsoft 訊息分析器擷取網路流量]
-  * [附錄 4:使用 Excel 檢視指標和紀錄資料]
-  * [附錄 5:使用 Azure DevOps 的應用程式見解進行監視]
+  * [附錄1：使用 Fiddler 來捕捉 HTTP 和 HTTPS 流量]
+  * [附錄2：使用 Wireshark 來捕獲網路流量]
+  * [附錄3：使用 Microsoft Message Analyzer 來捕獲網路流量]
+  * [附錄4：使用 Excel 來查看計量和記錄資料]
+  * [附錄5：使用 Azure DevOps 的 Application Insights 進行監視]
 
 ## <a name="introduction"></a><a name="introduction"></a>簡介
 本指南說明如何使用 Azure 儲存體分析、Azure 儲存體用戶端程式庫內的用戶端記錄，與其他協力廠商工具等功能，來為 Azure 儲存體的相關問題進行識別、診斷與疑難排解。
@@ -100,9 +100,9 @@ ms.locfileid: "81605073"
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>監視您的儲存體服務
 如果您熟悉 Windows 效能監視，可以將儲存體度量當成相當於 Windows 效能監視器計數的 Azure 儲存體。 儲存體度量中包含完整的度量集合 (Windows 效能監視器詞彙裡的計數)，例如服務可用性、服務要求總數，或是服務要求成功的百分比。 如需可用度量的完整清單，請參閱 [儲存體分析度量資料表結構描述](https://msdn.microsoft.com/library/azure/hh343264.aspx)。 您可以指定讓儲存體服務每小時或每分鐘收集並彙總度量一次。 如需如何啟用度量並監視您的儲存體帳戶的詳細資訊，請參閱 [啟用儲存體度量和檢視度量資料](https://go.microsoft.com/fwlink/?LinkId=510865)。
 
-您可以選擇要在 [Azure 入口網站](https://portal.azure.com)中顯示哪些每小時計量，並設定規則以在每次每小時計量超出特定臨界值時，便以電子郵件通知系統管理員。 有關詳細資訊,請參閱[接收警報通知](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)。
+您可以選擇要在 [Azure 入口網站](https://portal.azure.com)中顯示哪些每小時計量，並設定規則以在每次每小時計量超出特定臨界值時，便以電子郵件通知系統管理員。 如需詳細資訊，請參閱[接收警示通知](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)。
 
-我們建議您查看[Azure 監視器的存儲](../../azure-monitor/insights/storage-insights-overview.md)(預覽)。 它是 Azure 監視器的一項功能,透過提供 Azure 儲存服務性能、容量和可用性的統一檢視,提供 Azure 儲存帳戶的全面監視。 它不需要您啟用或設定任何內容,您可以立即從預定義的互動式圖表和包含的其他可視化效果中查看這些指標。
+我們建議您參閱[儲存體的 Azure 監視器](../../azure-monitor/insights/storage-insights-overview.md)（預覽）。 它是 Azure 監視器的一項功能，藉由提供 Azure 儲存體服務效能、容量和可用性的統一觀點，提供 Azure 儲存體帳戶的全面監視。 您不需要啟用或設定任何專案，而且可以立即從預先定義的互動式圖表和包含的其他視覺效果中查看這些計量。
 
 儲存體服務會盡其所能收集各項度量，但是不一定會記錄每一次的儲存體操作。
 
@@ -201,7 +201,7 @@ ms.locfileid: "81605073"
 * [常見的 REST API 錯誤碼](https://msdn.microsoft.com/library/azure/dd179357.aspx)
 * [Blob 服務錯誤碼](https://msdn.microsoft.com/library/azure/dd179439.aspx)
 * [佇列服務錯誤碼](https://msdn.microsoft.com/library/azure/dd179446.aspx)
-* [表服務錯誤代碼](https://msdn.microsoft.com/library/azure/dd179438.aspx)
+* [表格服務錯誤碼](https://msdn.microsoft.com/library/azure/dd179438.aspx)
 * [檔案服務錯誤碼](https://msdn.microsoft.com/library/azure/dn690119.aspx)
 
 ### <a name="storage-emulator-issues"></a><a name="storage-emulator-issues"></a>儲存體模擬器問題
@@ -222,10 +222,10 @@ Storage Client Library for .NET 能讓您針對應用程式所執行的儲存體
 ### <a name="using-network-logging-tools"></a><a name="using-network-logging-tools"></a>使用網路記錄工具
 您可以擷取用戶端與伺服器之間的流量，針對用戶端與伺服器在交換的資料，以及在底層運作的網路狀況提供詳細資訊。 有用的網路記錄工具如下：
 
-* [Fiddler](https://www.telerik.com/fiddler) 是免費的 Web 偵錯 Proxy，可讓您檢視 HTTP 與 HTTPS 要求及回應訊息的標頭與承載資料。 有關詳細資訊,請參閱附錄[1:使用 Fiddler 擷取 HTTP 與 HTTPS 流量](#appendix-1)。
+* [Fiddler](https://www.telerik.com/fiddler) 是免費的 Web 偵錯 Proxy，可讓您檢視 HTTP 與 HTTPS 要求及回應訊息的標頭與承載資料。 如需詳細資訊，請參閱[附錄1：使用 Fiddler 來捕捉 HTTP 和 HTTPS 流量](#appendix-1)。
 * [Microsoft Network Monitor (Netmon)](https://www.microsoft.com/download/details.aspx?id=4865) 與 [Wireshark](https://www.wireshark.org/) 都是免費的網路通訊協定分析器，可讓您針對廣泛的網路通訊協定檢視詳細封包資訊。 如需 Wireshark 的詳細資訊，請參閱[附錄 2：使用 Wireshark 擷取網路流量](#appendix-2)。
 * 來自 Microsoft 的 Microsoft Message Analyzer 工具功能比 Netmon 更強，除了可擷取網路封包資料之外，還能協助您檢視並分析其他工具所擷取的記錄資料。 如需詳細資訊，請參閱[附錄 3：使用 Microsoft Message Analyzer 擷取網路流量](#appendix-3)。
-* 如果您想要執行基本的連線測試以確認用戶端機器能夠透過網路與 Azure 儲存體服務連線的話，您無法使用用戶端上的標準 **ping** 工具來執行。 但是,您可以使用[**tcping**工具](https://www.elifulkerson.com/projects/tcping.php)檢查連接性。
+* 如果您想要執行基本的連線測試以確認用戶端機器能夠透過網路與 Azure 儲存體服務連線的話，您無法使用用戶端上的標準 **ping** 工具來執行。 不過，您可以使用[ **tcping**工具](https://www.elifulkerson.com/projects/tcping.php)來檢查連線能力。
 
 在許多案例中，來自儲存體記錄與儲存體用戶端程式庫的記錄資料，用來診斷問題都已綽綽有餘，但是在某些情況中，您可能需要比這些網路記錄工具所能提供的資訊還要詳盡的資料才行。 舉例來說，透過 Fiddler 來檢視 HTTP 與 HTTPS 訊息可以讓您檢視在儲存體服務之間來回傳送的標頭與裝載資料，進一步幫助您確認用戶端應用程式如何重試儲存體操作。 諸如 Wireshark 之類的通訊協定分析器可在封包層級運作，方便您檢視 TCP 資料，從而為遺失的封包與連線問題進行疑難排解。 Message Analyzer 可同時在 HTTP 與 TCP 網路層運作。
 
@@ -238,8 +238,8 @@ Storage Client Library for .NET 能讓您針對應用程式所執行的儲存體
 ### <a name="client-request-id"></a><a name="client-request-id"></a>用戶端要求識別碼
 儲存體用戶端程式庫會自動為每一項要求產生唯一的用戶端要求識別碼。
 
-* 在儲存用戶端庫建立的用戶端日誌中,用戶端請求 ID 將顯示在與請求相關的每個日誌條目的**用戶端請求 ID**欄位中。
-* 在網路追蹤(如 Fiddler 捕獲的追蹤)中,用戶端請求 ID 在請求消息中作為**x-ms-用戶端-請求-id** HTTP 標頭值可見。
+* 在儲存體用戶端程式庫所建立的用戶端記錄中，用戶端要求 ID 會出現在與要求相關之每個記錄專案的 [**用戶端要求識別碼**] 欄位中。
+* 在 Fiddler 所捕捉的網路追蹤中，用戶端要求識別碼會顯示在要求訊息中，做為**x-ms-用戶端要求識別碼**HTTP 標頭值。
 * 在伺服器端的儲存體記錄中，用戶端要求用戶端要求識別碼會顯示在用戶端要求用戶端要求識別碼資料行。
 
 > [!NOTE]
@@ -248,11 +248,11 @@ Storage Client Library for .NET 能讓您針對應用程式所執行的儲存體
 >
 
 ### <a name="server-request-id"></a><a name="server-request-id"></a>伺服器要求 ID
-存儲服務會自動生成伺服器請求指示。
+儲存體服務會自動產生伺服器要求識別碼。
 
 * 在伺服器端的儲存體記錄中，伺服器要求識別碼會顯示在 [要求識別碼標頭]**** 資料行。
 * 以 Fiddler 所擷取的網路追蹤為例，伺服器要求識別碼會顯示在回應訊息中，並呈現為 **x-ms-request-id** HTTP 標頭值。
-* 在儲存用戶端庫建立的用戶端日誌中,伺服器請求 ID 將顯示在顯示伺服器回應詳細資訊的日誌條目**的操作文本**列中。
+* 在儲存體用戶端程式庫所建立的用戶端記錄中，伺服器要求 ID 會出現在顯示伺服器回應詳細資料之記錄專案的 [作業**文字**] 欄位中。
 
 > [!NOTE]
 > 儲存體服務一律會為每個收到的要求指派唯一的伺服器要求識別碼，因此用戶端的每一次重試以及批次裡所包含的每一項作業，都會具備唯一的伺服器要求識別碼。
@@ -321,15 +321,15 @@ catch (StorageException storageException)
 ---
  您的用戶端應用程式是否收到來自儲存體服務的 HTTP 4XX (例如 404) 回應？
 
-* [用戶端正在接收 HTTP 403(禁止)訊息]
-* [用戶端正在接收 HTTP 404(找不到)訊息]
-* [用戶端正在接收 HTTP 409(衝突)訊息]
+* [用戶端收到 HTTP 403 （禁止）訊息]
+* [用戶端收到 HTTP 404 （找不到）訊息]
+* [用戶端收到 HTTP 409 （衝突）訊息]
 
 ---
-[指標顯示低成功百分比或分析紀錄項目具有具有客戶端其他錯誤事務狀態的操作]
+[計量顯示低 PercentSuccess 或分析記錄專案具有交易狀態為 ClientOtherErrors 的作業]
 
 ---
-[容量指標顯示儲存容量使用量意外增加]
+[容量度量顯示非預期的儲存體容量使用量增加]
 
 ---
 [附加大量 VHD 的虛擬機器，出現非預期的重新開機情況]
@@ -341,7 +341,7 @@ catch (StorageException storageException)
 [安裝 Azure SDK for .NET 時發生問題]
 
 ---
-[儲存服務有不同的問題]
+[您的儲存體服務有不同的問題]
 
 ---
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>度量顯示高 AverageE2ELatency 與低 AverageServerLatency
@@ -359,7 +359,7 @@ catch (StorageException storageException)
 #### <a name="investigating-client-performance-issues"></a>調查用戶端效能問題
 用戶端回應速度較慢的可能原因包括可用的連線或執行緒數量有限或資源 (例如 CPU、記憶體或網路頻寬) 不足。 您可以試著將用戶端程式碼修改得更有效率 (例如對儲存體服務使用非同步呼叫) 或是使用較大型的虛擬機器 (核心數量增加，記憶體容量加大) 來解決這個問題。
 
-對於表格與佇列服務,Nagle 演演算法還會導致與**平均伺服器延遲**相比的**較高平均E2E延遲**:有關詳細資訊,請參閱後[Nagle 的演演演算法對小請求不友好](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)。 您可以在 **System.Net** 命名空間中使用 **ServicePointManager** 類別，來停用程式碼中的 Nagle 演算法。 由於這麼做會影響已經開啟的連線，因此在對應用程式裡的資料表或佇列服務進行任何呼叫之前，請先完成這個動作。 以下範例來自背景工作角色裡的 **Application_Start** 方法。
+對於資料表和佇列服務，Nagle 演算法也會導致與**AverageServerLatency**相較之下的高**AverageE2ELatency** ：如需詳細資訊，請參閱在小型要求中，無法辨識後的[nagle 演算法](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx)。 您可以在 **System.Net** 命名空間中使用 **ServicePointManager** 類別，來停用程式碼中的 Nagle 演算法。 由於這麼做會影響已經開啟的連線，因此在對應用程式裡的資料表或佇列服務進行任何呼叫之前，請先完成這個動作。 以下範例來自背景工作角色裡的 **Application_Start** 方法。
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
@@ -417,17 +417,17 @@ queueServicePoint.UseNagleAlgorithm = false;
 * 檢查儲存體記錄中，是否有任何佇列作業在超出慣常的期間內，產生超出預期的 **E2ELatency** 與 **ServerLatency** 值。
 
 ### <a name="metrics-show-an-increase-in-percentthrottlingerror"></a><a name="metrics-show-an-increase-in-PercentThrottlingError"></a>度量顯示 PercentThrottlingError 增加
-當超出儲存體服務的延展性目標時，會出現節流錯誤。 儲存體服務節流是為了確保沒有任何用戶端或是租用戶可犧牲其他服務來使用這項服務。 有關詳細資訊,請參閱[標準存儲帳戶的可伸縮性和性能目標](scalability-targets-standard-account.md),瞭解有關存儲帳戶的可伸縮性目標的詳細資訊以及存儲帳戶中分區的性能目標。
+當超出儲存體服務的延展性目標時，會出現節流錯誤。 儲存體服務節流是為了確保沒有任何用戶端或是租用戶可犧牲其他服務來使用這項服務。 如需詳細資訊，請參閱[標準儲存體帳戶的擴充性和效能目標](scalability-targets-standard-account.md)，以取得儲存體帳戶的擴充目標和儲存體帳戶內資料分割的效能目標詳細資訊。
 
 如果 **PercentThrottlingError** 度量顯示失敗的要求百分比增加且出現節流錯誤時，您應該調查下列其中一個情況：
 
-* [暫態增加百分比旋轉錯誤]
+* [PercentThrottlingError 中的暫時性增加]
 * [PercentThrottlingError 錯誤中的永久性增加]
 
 **PercentThrottlingError** 的增加通常會伴隨著儲存體要求數量增加一起發生，或是當您第一次對應用程式進行負載測試時。 當儲存體作業出現「503 伺服器忙碌」或是「500 作業逾時」狀態訊息時，用戶端也會明顯出現這個情況。
 
 #### <a name="transient-increase-in-percentthrottlingerror"></a><a name="transient-increase-in-PercentThrottlingError"></a>PercentThrottlingError 的暫時性增加
-如果應用程式中與高活動期間同時發生的 **PercentThrottlingError** 值突然增加，則您會在用戶端中針對重試作業實作指數型 (而非線性) 輪詢策略。 輪詢重試會減少資料分割上的即時負載，協助應用程式緩和突然增加的流量。 有關如何使用儲存用戶端庫實現重試策略的詳細資訊,請參閱[Microsoft.Azure.Storage.Retry 策略命名空間](/dotnet/api/microsoft.azure.storage.retrypolicies)。
+如果應用程式中與高活動期間同時發生的 **PercentThrottlingError** 值突然增加，則您會在用戶端中針對重試作業實作指數型 (而非線性) 輪詢策略。 輪詢重試會減少資料分割上的即時負載，協助應用程式緩和突然增加的流量。 如需如何使用儲存體用戶端程式庫來執行重試原則的詳細資訊，請參閱[microsoft.windowsazure.storage.retrypolicies 命名空間](/dotnet/api/microsoft.azure.storage.retrypolicies)。
 
 > [!NOTE]
 > **PercentThrottlingError** 值的突然增加也可能與應用程式的大量活動期間非同時發生：最可能的原因是儲存體服務移動資料分割以改善負載平衡。
@@ -470,15 +470,15 @@ queueServicePoint.UseNagleAlgorithm = false;
 
 | 來源 | 詳細程度 | 詳細程度 | 用戶端要求 ID | 作業內容 |
 | --- | --- | --- | --- | --- |
-| 微軟.Azure.儲存 |資訊 |3 |85d077ab-… |從主要位置開始作業 (依據位置模式 PrimaryOnly)。 |
-| 微軟.Azure.儲存 |資訊 |3 |85d077ab -… |啟動同步要求<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
-| 微軟.Azure.儲存 |資訊 |3 |85d077ab -… |等候回應。 |
-| 微軟.Azure.儲存 |警告 |2 |85d077ab -… |等候回應時擲回例外狀況：遠端伺服器傳回錯誤：(403) 禁止。 |
-| 微軟.Azure.儲存 |資訊 |3 |85d077ab -… |收到回應。 狀態碼 = 403，要求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d，Content-MD5 =，ETag = . |
-| 微軟.Azure.儲存 |警告 |2 |85d077ab -… |作業期間擲回例外狀況：遠端伺服器傳回錯誤：(403) 禁止... |
-| 微軟.Azure.儲存 |資訊 |3 |85d077ab -… |檢查是否應該重試作業。 重試計數 = 0，HTTP 狀態碼 = 403，例外狀況 = 遠端伺服器傳回錯誤：(403) 禁止. |
-| 微軟.Azure.儲存 |資訊 |3 |85d077ab -… |以下位置已經設為「主要」(依據位置模式)。 |
-| 微軟.Azure.儲存 |錯誤 |1 |85d077ab -… |重試原則不允許重試。 失敗時遠端伺服器傳回錯誤：(403) 禁止。 |
+| Microsoft Azure 儲存體 |資訊 |3 |85d077ab-… |從主要位置開始作業 (依據位置模式 PrimaryOnly)。 |
+| Microsoft Azure 儲存體 |資訊 |3 |85d077ab -… |啟動對的同步要求<https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
+| Microsoft Azure 儲存體 |資訊 |3 |85d077ab -… |等候回應。 |
+| Microsoft Azure 儲存體 |警告 |2 |85d077ab -… |等候回應時擲回例外狀況：遠端伺服器傳回錯誤：(403) 禁止。 |
+| Microsoft Azure 儲存體 |資訊 |3 |85d077ab -… |收到回應。 狀態碼 = 403，要求 ID = 9d67c64a-64ed-4b0d-9515-3b14bbcdc63d，Content-MD5 =，ETag = . |
+| Microsoft Azure 儲存體 |警告 |2 |85d077ab -… |作業期間擲回例外狀況：遠端伺服器傳回錯誤：(403) 禁止... |
+| Microsoft Azure 儲存體 |資訊 |3 |85d077ab -… |檢查是否應該重試作業。 重試計數 = 0，HTTP 狀態碼 = 403，例外狀況 = 遠端伺服器傳回錯誤：(403) 禁止. |
+| Microsoft Azure 儲存體 |資訊 |3 |85d077ab -… |以下位置已經設為「主要」(依據位置模式)。 |
+| Microsoft Azure 儲存體 |錯誤 |1 |85d077ab -… |重試原則不允許重試。 失敗時遠端伺服器傳回錯誤：(403) 禁止。 |
 
 在此案例中，您應該調查 SAS 權杖為何在用戶端將權杖傳送給伺服器之前到期：
 
@@ -555,7 +555,7 @@ queueServicePoint.UseNagleAlgorithm = false;
 | de8b1c3c-... |重試原則不允許重試。 失敗時遠端伺服器傳回錯誤：(404) 找不到. |
 | e2d06d78-... |重試原則不允許重試。 失敗時遠端伺服器傳回錯誤：(409) 衝突. |
 
-在此示例中,日誌顯示用戶端正在與**來自 Upload FromStream**方法 (de8b1c3c-...) 的請求進行交錯來自**CreateIf NotExists**方法(請求 ID e2d06d78...)的請求。發生此交錯的原因是客戶端應用程式非同步調用這些方法。 請修改用戶端裡的非同步程式碼，確保該程式碼在嘗試將任何資料上傳至容器的 Blob 之前，先建立該容器。 理想的情況是，您應該事先建立所有容器。
+在此範例中，記錄檔顯示用戶端是從**CreateIfNotExists**方法（要求識別碼 e2d06d78 ... ...）與來自**UploadFromStream**方法（de8b1c3c-...）要求的交錯要求。此交錯發生的原因是用戶端應用程式會以非同步方式叫用這些方法。 請修改用戶端裡的非同步程式碼，確保該程式碼在嘗試將任何資料上傳至容器的 Blob 之前，先建立該容器。 理想的情況是，您應該事先建立所有容器。
 
 #### <a name="a-shared-access-signature-sas-authorization-issue"></a><a name="SAS-authorization-issue"></a>共用存取簽章 (SAS) 授權問題
 如果用戶端應用程式嘗試使用的 SAS 金鑰並未包含作業的必要權限，則儲存體服務會將 HTTP 404 (找不到) 訊息傳回給用戶端。 這時，您會在度量當中同時看到非零的 **SASAuthorizationError** 值。
@@ -613,10 +613,10 @@ sp.Cors.CorsRules.Add(cr);
 client.SetServiceProperties(sp);
 ```
 
-#### <a name="network-failure"></a><a name="network-failure"></a>網路故障
+#### <a name="network-failure"></a><a name="network-failure"></a>網路失敗
 在某些情況中，遺失網路封包可能導致儲存體服務將 HTTP 404 訊息傳回給用戶端。 舉例來說，當您的用戶端應用程式正在刪除資料表服務中的某個實體，您看到該用戶端正從資料表服務擲回一個回報「HTTP 404 (找不到)」狀態訊息的儲存體例外。 當您調查資料表儲存體服務中的資料表時，會看到該服務已依要求刪除該實體。
 
-用戶端中的異常詳細資訊包括表服務為請求分配的請求 ID (7e84f12d...):您可以通過在日誌檔中的**請求 id-header**列中搜尋來查找伺服器端儲存日誌中的請求詳細資訊。 您也可以使用度量，判定此類失敗情況何時發生，然後依據度量記錄此錯誤的時間搜尋記錄檔。 此記錄項目顯示刪除作業失敗，並顯示「HTTP (404) 用戶端其他錯誤」的狀態訊息。 同一日誌條目還包括用戶端在**用戶端請求 id**列 (813ea74f... ) 中生成的請求 ID。
+用戶端中的例外狀況詳細資料包括要求的表格服務所指派的要求識別碼（7e84f12d ... ...）：您可以使用這項資訊，在記錄檔的 [**要求識別碼-標頭] 資料**行中搜尋，以尋找伺服器端儲存體記錄中的要求詳細資料。 您也可以使用度量，判定此類失敗情況何時發生，然後依據度量記錄此錯誤的時間搜尋記錄檔。 此記錄項目顯示刪除作業失敗，並顯示「HTTP (404) 用戶端其他錯誤」的狀態訊息。 相同的記錄專案也會在**用戶端要求識別碼**資料行（813ea74f ... ...）中包含用戶端所產生的要求識別碼。
 
 伺服器端記錄還包含帶有相同 **client-request-id** 值的另一個項目 (813ea74f…)，這個值是來自同一個實體與同一個用戶端順利完成的刪除作業所產生。 此順利完成的刪除作業會在刪除要求失敗之前很快地發生。
 
@@ -655,9 +655,9 @@ client.SetServiceProperties(sp);
 ### <a name="your-issue-arises-from-using-the-storage-emulator-for-development-or-test"></a><a name="your-issue-arises-from-using-the-storage-emulator"></a>您的問題起因於使用儲存體模擬器進行開發或測試
 通常您會在開發與測試期間使用儲存體模擬器，來迴避 Azure 儲存體帳戶的要求。 以下列出您在使用儲存體模擬器時，常見的問題：
 
-* [功能「X」在儲存模擬器中不起作用]
-* [使用存儲模擬器時,錯誤"其中一個 HTTP 標頭的值格式不正確"]
-* [執行儲存模擬程式需要管理權限]
+* [「X」功能無法在儲存體模擬器中運作]
+* [使用儲存體模擬器時，發生「其中一個 HTTP 標頭的值格式不正確」錯誤]
+* [執行儲存體模擬器需要系統管理員許可權]
 
 #### <a name="feature-x-is-not-working-in-the-storage-emulator"></a><a name="feature-X-is-not-working"></a>儲存體模擬器裡的功能 "X" 未能發揮作用
 儲存體模擬器並未支援所有的 Azure 儲存體服務，例如檔案服務。 如需詳細資訊，請參閱 [使用 Azure 儲存體模擬器進行開發和測試](storage-use-emulator.md)。
@@ -710,7 +710,7 @@ sqllocaldb create v11.0
 以下附錄說明當您為 Azure 儲存體 (與其他服務) 的相關問題進行診斷與疑難排解時，可能會有幫助的多項工具。 這些工具並非 Azure 儲存體內建的工具，有些則是協力廠商的產品。 因此，以下附錄所討論的工具，並未包含在您就 Microsoft Azure 或 Azure 儲存體所簽訂的任何支援合約內容裡，因此在您評估期間，請檢視這些工具的供應商所提供的授權與支援選項。
 
 ### <a name="appendix-1-using-fiddler-to-capture-http-and-https-traffic"></a><a name="appendix-1"></a>附錄 1：使用 Fiddler 擷取 HTTP 與 HTTPS 流量
-[Fiddler](https://www.telerik.com/fiddler)是分析用戶端應用程式和正在使用的 Azure 儲存服務之間的 HTTP 和 HTTPS 流量的有用工具。
+[Fiddler](https://www.telerik.com/fiddler)是一個實用的工具，可用於分析用戶端應用程式與您所使用的 Azure 儲存體服務之間的 HTTP 和 HTTPS 流量。
 
 > [!NOTE]
 > Fiddler 可以解碼 HTTPS 流量；請仔細閱讀 Fiddler 文件，了解其運作原理，並了解其安全性意涵。
@@ -724,7 +724,7 @@ Fiddler 一經啟動後，就會開始擷取本機電腦上的 HTTP 與 HTTPS �
 * 停止與開始擷取流量。 在主要功能表上，移至 [檔案]**** 並按一下 [擷取流量]**** 以開啟及關閉擷取作業。
 * 儲存擷取的流量資料。 在主功能表上，移至 [檔案]****，按一下 [儲存]****，然後按一下 [所有工作階段]****：這麼做可讓您將流量儲存在「工作階段封存」檔案中。 您稍後可以重新載入工作階段封存以供分析，或是因應要求傳送給 Microsoft 支援服務中心。
 
-要限制 Fiddler 擷取的流量,可以使用在 **『篩選器』** 選項卡中設定的篩選器。以下螢幕截圖顯示了僅擷取到**contosoemaildist.table.core.windows.net**儲存終結點的流量的篩選器:
+若要限制 Fiddler 所捕獲的流量，您可以使用您在 [**篩選器**] 索引標籤中設定的篩選器。下列螢幕擷取畫面顯示的篩選只會捕獲傳送至**contosoemaildist.table.core.windows.net**儲存體端點的流量：
 
 ![][5]
 
@@ -811,22 +811,22 @@ Microsoft Message Analyzer 內建的 **Web Proxy** 追蹤功能是依據 Fiddler
 
 ## <a name="next-steps"></a>後續步驟
 
-有關 Azure 儲存中分析的詳細資訊,請參閱以下資源:
+如需 Azure 儲存體中分析的詳細資訊，請參閱下列資源：
 
 * [在 Azure 入口網站中監視儲存體帳戶](storage-monitor-storage-account.md)
 * [儲存體分析](storage-analytics.md)
-* [儲存分析指標](storage-analytics-metrics.md)
-* [儲存分析指標表架構](/rest/api/storageservices/storage-analytics-metrics-table-schema)
+* [儲存體分析計量](storage-analytics-metrics.md)
+* [儲存體分析度量資料表架構](/rest/api/storageservices/storage-analytics-metrics-table-schema)
 * [儲存體分析記錄](storage-analytics-logging.md)
-* [儲存分析紀錄格式](/rest/api/storageservices/storage-analytics-log-format)
+* [儲存體分析記錄格式](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
 [簡介]: #introduction
-[本指南是如何組織的]: #how-this-guide-is-organized
+[本指南的組織方式]: #how-this-guide-is-organized
 
 [監視您的儲存體服務]: #monitoring-your-storage-service
 [監視服務健康情況]: #monitoring-service-health
-[監測能力]: #monitoring-capacity
+[監視容量]: #monitoring-capacity
 [監視可用性]: #monitoring-availability
 [監視效能]: #monitoring-performance
 
@@ -835,11 +835,11 @@ Microsoft Message Analyzer 內建的 **Web Proxy** 追蹤功能是依據 Fiddler
 [效能問題]: #performance-issues
 [診斷錯誤]: #diagnosing-errors
 [儲存體模擬器問題]: #storage-emulator-issues
-[儲存記錄工具]: #storage-logging-tools
+[儲存體記錄工具]: #storage-logging-tools
 [使用網路記錄工具]: #using-network-logging-tools
 
-[端至端端]: #end-to-end-tracing
-[關聯紀錄資料]: #correlating-log-data
+[端對端追蹤]: #end-to-end-tracing
+[相互關聯記錄資料]: #correlating-log-data
 [用戶端要求識別碼]: #client-request-id
 [伺服器要求 ID]: #server-request-id
 [時間戳記]: #timestamps
@@ -851,34 +851,34 @@ Microsoft Message Analyzer 內建的 **Web Proxy** 追蹤功能是依據 Fiddler
 [佇列上的訊息在遞送期間出現非預期的延遲]: #you-are-experiencing-unexpected-delays-in-message-delivery
 
 [度量顯示 PercentThrottlingError 增加]: #metrics-show-an-increase-in-PercentThrottlingError
-[暫態增加百分比旋轉錯誤]: #transient-increase-in-PercentThrottlingError
+[PercentThrottlingError 中的暫時性增加]: #transient-increase-in-PercentThrottlingError
 [PercentThrottlingError 錯誤中的永久性增加]: #permanent-increase-in-PercentThrottlingError
 [度量顯示 PercentTimeoutError 增加]: #metrics-show-an-increase-in-PercentTimeoutError
 [度量顯示 PercentNetworkError 增加]: #metrics-show-an-increase-in-PercentNetworkError
 
-[用戶端正在接收 HTTP 403(禁止)訊息]: #the-client-is-receiving-403-messages
-[用戶端正在接收 HTTP 404(找不到)訊息]: #the-client-is-receiving-404-messages
+[用戶端收到 HTTP 403 （禁止）訊息]: #the-client-is-receiving-403-messages
+[用戶端收到 HTTP 404 （找不到）訊息]: #the-client-is-receiving-404-messages
 [用戶端或其他程序先前刪除了該物件]: #client-previously-deleted-the-object
 [共用存取簽章 (SAS) 授權問題]: #SAS-authorization-issue
 [用戶端 JavaScript 程式碼沒有存取該物件的權限]: #JavaScript-code-does-not-have-permission
 [網路失敗]: #network-failure
-[用戶端正在接收 HTTP 409(衝突)訊息]: #the-client-is-receiving-409-messages
+[用戶端收到 HTTP 409 （衝突）訊息]: #the-client-is-receiving-409-messages
 
-[指標顯示低成功百分比或分析紀錄項目具有具有客戶端其他錯誤事務狀態的操作]: #metrics-show-low-percent-success
-[容量指標顯示儲存容量使用量意外增加]: #capacity-metrics-show-an-unexpected-increase
+[計量顯示低 PercentSuccess 或分析記錄專案具有交易狀態為 ClientOtherErrors 的作業]: #metrics-show-low-percent-success
+[容量度量顯示非預期的儲存體容量使用量增加]: #capacity-metrics-show-an-unexpected-increase
 [您的問題起因於使用儲存體模擬器進行開發或測試]: #your-issue-arises-from-using-the-storage-emulator
-[功能「X」在儲存模擬器中不起作用]: #feature-X-is-not-working
-[使用存儲模擬器時,錯誤"其中一個 HTTP 標頭的值格式不正確"]: #error-HTTP-header-not-correct-format
-[執行儲存模擬程式需要管理權限]: #storage-emulator-requires-administrative-privileges
+[「X」功能無法在儲存體模擬器中運作]: #feature-X-is-not-working
+[使用儲存體模擬器時，發生「其中一個 HTTP 標頭的值格式不正確」錯誤]: #error-HTTP-header-not-correct-format
+[執行儲存體模擬器需要系統管理員許可權]: #storage-emulator-requires-administrative-privileges
 [安裝 Azure SDK for .NET 時發生問題]: #you-are-encountering-problems-installing-the-Windows-Azure-SDK
-[儲存服務有不同的問題]: #you-have-a-different-issue-with-a-storage-service
+[您的儲存體服務有不同的問題]: #you-have-a-different-issue-with-a-storage-service
 
 [附錄]: #appendices
-[附錄 1:使用 Fiddler 擷取 HTTP 與 HTTPS 流量]: #appendix-1
-[附錄 2:使用 Wireshark 擷取網路流量]: #appendix-2
-[附錄 3:使用 Microsoft 訊息分析器擷取網路流量]: #appendix-3
-[附錄 4:使用 Excel 檢視指標和紀錄資料]: #appendix-4
-[附錄 5:使用 Azure DevOps 的應用程式見解進行監視]: #appendix-5
+[附錄1：使用 Fiddler 來捕捉 HTTP 和 HTTPS 流量]: #appendix-1
+[附錄2：使用 Wireshark 來捕獲網路流量]: #appendix-2
+[附錄3：使用 Microsoft Message Analyzer 來捕獲網路流量]: #appendix-3
+[附錄4：使用 Excel 來查看計量和記錄資料]: #appendix-4
+[附錄5：使用 Azure DevOps 的 Application Insights 進行監視]: #appendix-5
 
 <!--Image references-->
 [1]: ./media/storage-monitoring-diagnosing-troubleshooting/overview.png

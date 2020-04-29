@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 媒體服務之即時串流的概觀 | Microsoft Docs
-description: 本文概述了使用 Microsoft Azure 媒體服務的即時流。
+description: 本文概述使用 Microsoft Azure 媒體服務的即時串流。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: f875b4a5c4f1322f4a992dc3738ab1ce6431149d
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641131"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>使用媒體服務之即時串流的概觀
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>檢視版本,[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外,請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 使用 Azure 媒體服務傳遞即時串流時，通常涉及下列元件：
 
@@ -44,24 +44,24 @@ ms.locfileid: "81641131"
 
 **Microsoft Azure 媒體服務** (AMS) 提供擷取、編碼、預覽、儲存和傳遞即時串流內容的能力。
 
-使用媒體服務,您可以利用[動態打包](media-services-dynamic-packaging-overview.md),允許您從發送到服務的貢獻源中以 MPEG DASH、HLS 和平滑流格式廣播即時流。 您的檢視者可以搭配支援 HLS、DASH 或 Smooth Streaming 的播放器播放即時串流。 您可以在網路或行動應用程式中使用 Azure 媒體播放器，透過這些通訊協定中的任何一個傳遞串流。
+使用媒體服務，您可以利用[動態封裝](media-services-dynamic-packaging-overview.md)，讓您以 MPEG 破折號、HLS 和 Smooth Streaming 格式，從傳送到服務的發佈摘要廣播即時串流。 您的檢視者可以搭配支援 HLS、DASH 或 Smooth Streaming 的播放器播放即時串流。 您可以在網路或行動應用程式中使用 Azure 媒體播放器，透過這些通訊協定中的任何一個傳遞串流。
 
 > [!NOTE]
 > 從 2018 年 5 月 12 日開始，即時通道將不再支援 RTP/MPEG-2 傳輸串流內嵌通訊協定。 請從 RTP/MPEG-2 移轉到 RTMP 或分散式 MP4 (Smooth Streaming) 內嵌通訊協定。
 
-## <a name="streaming-endpoints-channels-programs"></a>流式處理端點、頻道、程式
+## <a name="streaming-endpoints-channels-programs"></a>串流端點，通道，程式
 
 在 Azure 媒體服務中，**通道**、**程式**及 **StreamingEndpoints** 會處理所有的即時串流功能，包括內嵌、格式化、DVR、安全性、延展性和備援能力。
 
 在 Azure 媒體服務中， **通道** 代表處理即時串流內容的管線。 通道可以用下列方式接收即時輸入串流：
 
-* 內部部署即時編碼器會傳送多位元速率 **RTMP** 或 **Smooth Streaming** (分散的 MP4) 到針對**即時通行**傳遞所設定的通道。 **即時通行**傳遞就是擷取的串流會通過**通道**，無需進一步的處理。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 以下即時編碼器輸出 RTMP:遠端有線廣播、海視、捷達台轉碼器。  即時編碼器也會將單一位元速率串流傳送至無法用於即時編碼的通道，但是不建議您使用此方法。 接到要求時，媒體服務會傳遞串流給客戶。
+* 內部部署即時編碼器會傳送多位元速率 **RTMP** 或 **Smooth Streaming** (分散的 MP4) 到針對**即時通行**傳遞所設定的通道。 **即時通行**傳遞就是擷取的串流會通過**通道**，無需進一步的處理。 您可以使用下列輸出多位元速率 Smooth Streaming 的即時編碼器：MediaExcel、Ateme、Imagine Communications、Envivio、Cisco 和 Elemental。 下列即時編碼器會輸出 RTMP： Telestream Wirecast、Haivision、Teradek 轉錄器。  即時編碼器也會將單一位元速率串流傳送至無法用於即時編碼的通道，但是不建議您使用此方法。 接到要求時，媒體服務會傳遞串流給客戶。
 
   > [!NOTE]
   > 如果您在很長一段時間內進行多個事件，而且已投資內部部署編碼器時，使用傳遞方法是進行即時串流的最經濟實惠方式。 請參閱 [價格](https://azure.microsoft.com/pricing/details/media-services/) 詳細資料。
   > 
   > 
-* 內部部署即時編碼器會將單一位元速率串流傳送至通道，可以使用下列格式之一，以媒體服務執行即時編碼：RTMP 或 Smooth Streaming (分散的 MP4)。 已知具有 RTMP 輸出的以下即時編碼器適用於此類通道:遠端有線廣播。 通道接著會執行即時編碼，將連入的單一位元速率串流編碼成多位元速率 (自動調整) 視訊串流。 接到要求時，媒體服務會傳遞串流給客戶。
+* 內部部署即時編碼器會將單一位元速率串流傳送至通道，可以使用下列格式之一，以媒體服務執行即時編碼：RTMP 或 Smooth Streaming (分散的 MP4)。 下列具有 RTMP 輸出的即時編碼器已知可與此類型的通道搭配使用： Telestream Wirecast。 通道接著會執行即時編碼，將連入的單一位元速率串流編碼成多位元速率 (自動調整) 視訊串流。 接到要求時，媒體服務會傳遞串流給客戶。
 
 自媒體服務 2.10 版起，當您建立通道時，您可以指定您希望通道接收輸入串流的方式，以及您是否想要通道執行串流的即時編碼。 您有兩個選擇：
 
@@ -77,7 +77,7 @@ ms.locfileid: "81641131"
 | 單一位元速率輸入會在雲端編碼為多重位元速率 |否 |是 |
 | 最大解析度、分層數目 |1080p、8 層、60+fps |720p、6 層、30 fps |
 | 輸入通訊協定 |RTMP、Smooth Streaming |RTMP、Smooth Streaming |
-| Price |請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤 |檢視[定價頁面](https://azure.microsoft.com/pricing/details/media-services/) |
+| Price |請參閱 [定價頁面](https://azure.microsoft.com/pricing/details/media-services/) 並按一下 [即時影片] 索引標籤 |請參閱[定價頁面](https://azure.microsoft.com/pricing/details/media-services/) |
 | 最長執行時間 |全天候 |8 小時 |
 | 插入靜態圖像支援 |否 |是 |
 | 廣告訊號支援 |否 |是 |
@@ -104,7 +104,7 @@ ms.locfileid: "81641131"
 
 ## <a name="description-of-a-channel-and-its-related-components"></a>通道和其相關元件的說明
 
-### <a name="channel"></a>通路
+### <a name="channel"></a>頻道
 
 在媒體服務中， [通道](https://docs.microsoft.com/rest/api/media/operations/channel)負責處理即時資料流內容。 通道會提供輸入端點 (內嵌 URL)，接著您再提供給即時轉碼器。 通道從即時轉碼器接收即時輸入資料流，再透過一或多個 StreamingEndpoint 進行串流處理。 通道也會提供預覽端點 (預覽 URL)，您可在進一步處理和傳遞之前先用來預覽及驗證您的資料流。
 
@@ -112,11 +112,11 @@ ms.locfileid: "81641131"
 
 每個媒體服務帳戶可以包含多個通道、多個程式和多個 StreamingEndpoints。 根據頻寬和安全性需求，StreamingEndpoint 服務可以專屬於一或多個通道。 任何 StreamingEndpoint 可以從任何通道中提取。
 
-創建通道時,可以指定以下格式之一的允許 IP 位址:IpV4 位址,4 個數位,CIDR 位址範圍。
+建立通道時，您可以使用下列其中一種格式來指定允許的 IP 位址：具有4個數字的 IpV4 位址、CIDR 位址範圍。
 
 ### <a name="program"></a>程式
-[程式](https://docs.microsoft.com/rest/api/media/operations/program)使您能夠控制即時流中段的發佈和存儲。 通道會管理程式。 通道和程式的關聯性非常類似於傳統媒體，此處的通道有常數內容資料流，而程式的範圍是該通道上的某些計時事件。
-您可以通過設定 **「存檔視窗長度」** 屬性來指定要保留程式錄製的內容的小時數。 此值最小可以設定為 5 分鐘，最大可以設定為 25 個小時。
+[程式](https://docs.microsoft.com/rest/api/media/operations/program)可讓您控制即時串流中區段的發行和儲存。 通道會管理程式。 通道和程式的關聯性非常類似於傳統媒體，此處的通道有常數內容資料流，而程式的範圍是該通道上的某些計時事件。
+您可以藉由設定**ArchiveWindowLength**屬性，指定您想要保留程式之錄製內容的時數。 此值最小可以設定為 5 分鐘，最大可以設定為 25 個小時。
 
 ArchiveWindowLength 也指定用戶端可從目前即時位置往回搜尋的最大時間量。 程式在超過指定的時間量後還是可以執行，但是會持續捨棄落後時間範圍長度的內容。 此屬性值也會決定用戶端資訊清單可以擴充的時間。
 
@@ -140,10 +140,10 @@ ArchiveWindowLength 也指定用戶端可從目前即時位置往回搜尋的最
 ### <a name="channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>通道狀態和狀態如何對應至計費模式
 通道的目前狀態。 可能的值包括：
 
-* **已停止**。 這是通道創建后的初始狀態(除非在門戶中選擇了自動啟動)。此狀態下不發生計費。 在此狀態下，通道屬性可以更新，但是不允許串流。
-* **開始**。 正在啟動通道。 此狀態中不會計費。 在此狀態期間允許任何更新或串流。 如果發生錯誤，通道會回到已停止狀態。
-* **執行**中 。 通道能夠處理即時串流。 現在針對使用量計費。 您必須停止通道來防止進一步計費。
-* **停止**。 正在停止通道。 此暫時性狀態中不會計費。 在此狀態期間允許任何更新或串流。
+* **已停止**。 這是通道建立後的初始狀態（除非已在入口網站中選取 [自動啟動]）。在此狀態下不會計費。 在此狀態下，通道屬性可以更新，但是不允許串流。
+* **啟動**。 正在啟動通道。 此狀態中不會計費。 在此狀態期間允許任何更新或串流。 如果發生錯誤，通道會回到已停止狀態。
+* **正在**執行。 通道能夠處理即時串流。 現在針對使用量計費。 您必須停止通道來防止進一步計費。
+* **正在停止**。 正在停止通道。 此暫時性狀態中不會計費。 在此狀態期間允許任何更新或串流。
 * **刪除中**。 正在刪除通道。 此暫時性狀態中不會計費。 在此狀態期間允許任何更新或串流。
 
 下表顯示通道狀態如何對應至計費模式。
@@ -162,11 +162,11 @@ ArchiveWindowLength 也指定用戶端可從目前即時位置往回搜尋的最
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>相關主題
-[Azure 媒體服務 碎片 MP4 實時引入規範](../media-services-fmp4-live-ingest-overview.md)
+[Azure 媒體服務分散的未規範即時內嵌規格](../media-services-fmp4-live-ingest-overview.md)
 
-[使用啟用以使用 Azure 媒體服務執行即時編碼的通道](media-services-manage-live-encoder-enabled-channels.md)
+[使用已啟用的通道來執行 Azure 媒體服務的即時編碼](media-services-manage-live-encoder-enabled-channels.md)
 
-[使用從本地端編碼器接收多位元率即時流的通道](media-services-live-streaming-with-onprem-encoders.md)
+[使用通道，從內部部署編碼器接收多位元率即時資料流](media-services-live-streaming-with-onprem-encoders.md)
 
 [配額和限制](media-services-quotas-and-limitations.md)。  
 

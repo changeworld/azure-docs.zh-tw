@@ -1,7 +1,7 @@
 ---
 title: 如何使用搜尋結果
 titleSuffix: Azure Cognitive Search
-description: 在 Azure 認知搜尋中構建和排序搜尋結果、獲取文檔計數並將內容導航添加到搜尋結果。
+description: 結構和排序搜尋結果、取得檔計數，以及在 Azure 認知搜尋中將內容導覽新增至搜尋結果。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,23 +9,23 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81641610"
 ---
-# <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中處理搜尋結果
+# <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用搜尋結果
 
-本文介紹如何獲取查詢回應,該回應附帶了匹配文檔、分頁結果、排序結果和點擊突出顯示的術語的總數。
+本文說明如何取得傳回的查詢回應，其中包含相符檔的總計數、分頁結果、排序的結果，以及按反白顯示的詞彙。
 
-回應的結構由查詢中的參數確定:REST API 中的[搜尋文件](https://docs.microsoft.com/rest/api/searchservice/Search-Documents),或 .NET SDK 中的[DocumentSearchResult 類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
+回應的結構是由查詢中的參數所決定： REST API 中的[搜尋檔](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)，或 .net SDK 中的[DocumentSearchResult 類別](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)。
 
 ## <a name="result-composition"></a>結果組合
 
-雖然搜索文檔可能由大量欄位組成,但通常只需要幾個欄位來表示結果集中的每個文檔。 在查詢請求上,追加以`$select=<field list>`指定回應中顯示的欄位。 欄位必須歸為要包含在結果中的索引中的**可檢索**欄位。 
+雖然搜尋檔可能包含大量欄位，但通常只需要少數幾個來表示結果集中的每個檔。 在查詢要求中，附加`$select=<field list>`以指定要在回應中顯示的欄位。 在要包含在結果中的**索引中，** 必須將欄位的屬性設為可抓取。 
 
-最起作用的欄位包括那些對文件進行對比和區分的欄位,這些欄位提供了足夠的資訊來邀請使用者進行點擊式回應。 在電子商務網站上,它可能是產品名稱、描述、品牌、顏色、大小、價格和評級。 對於酒店示例索引內置示例,可能是以下示例中的欄位:
+最適合的欄位包括在檔之間進行對比和區別的工作，提供足夠的資訊來邀請使用者的按下回應。 在電子商務網站上，它可能是產品名稱、描述、品牌、色彩、大小、價格和評等。 針對飯店-範例索引內建範例，它可能是下列範例中的欄位：
 
 ```http
 POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
@@ -37,64 +37,64 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 ```
 
 > [!NOTE]
-> 如果要在結果中包含圖像檔(如產品照片或徽標),請將它們存儲在 Azure 認知搜索之外,但在索引中包含一個字段以引用搜尋文檔中的圖像 URL。 支援結果中影像的範例索引包括**房地產樣本-us**演示,在此[快速入門](search-create-app-portal.md)中介紹,以及[紐約市就業演示應用程式](https://aka.ms/azjobsdemo)。
+> 如果想要在結果中包含影像檔案（例如產品相片或標誌），請將它們儲存在 Azure 認知搜尋之外，但在索引中包含欄位，以參考搜尋檔中的影像 URL。 結果中支援影像的範例索引包括 realestate-**範例-us**示範、本[快速入門](search-create-app-portal.md)中的精選，以及[紐約市工作示範應用程式](https://aka.ms/azjobsdemo)。
 
 ## <a name="paging-results"></a>分頁結果
 
-默認情況下,如果查詢為全文搜索,或者按任意順序返回前 50 個匹配項,由搜索分數確定。
+根據預設，搜尋引擎最多會傳回前50個相符專案（如果查詢是全文檢索搜尋，則是由搜尋分數決定），或是完全相符查詢的任意順序。
 
-要返回不同數量的匹配文檔,請向`$top`查詢`$skip`請求添加和參數。 下面的清單解釋了邏輯。
+若要傳回不同數目的相符檔，請`$top`將`$skip`和參數新增至查詢要求。 下列清單說明邏輯。
 
-+ 添加`$count=true`以獲取索引中匹配文檔總數的計數。
++ 新增`$count=true`以取得索引中相符檔總數的計數。
 
-+ 傳回第一組 15 個符合文件以及總符合計數:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
++ 傳回15個相符檔的第一組，加上總相符專案的計數：`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ 返回第二盤,跳過前15,得到下一個15: `$top=15&$skip=15`。 對於第三組 15 執行相同的操作:`$top=15&$skip=30`
++ 傳回第二個集合，略過前15個來取得接下來`$top=15&$skip=15`的15個：。 針對第三組15執行相同動作：`$top=15&$skip=30`
 
-如果基礎索引正在更改,則分頁查詢的結果不能保證是穩定的。 分頁會更改每個頁面`$skip`的值,但每個查詢都是獨立的,並且對查詢時在索引中存在的數據的當前視圖進行操作(換句話說,沒有緩存或快照的結果,例如在通用資料庫中找到的結果)。
+如果基礎索引正在變更，則分頁查詢的結果不保證穩定。 分頁會`$skip`針對每個頁面變更的值，但每個查詢都是獨立的，而且會在查詢時以現有資料的目前觀點來運作（換句話說，沒有結果的快取或快照集，例如在一般用途資料庫中找到的）。
  
-下面是如何獲取重複項的範例。 假設索引有四個文件:
+以下是您可能會取得重複專案的範例。 假設有四個檔的索引：
 
     { "id": "1", "rating": 5 }
     { "id": "2", "rating": 3 }
     { "id": "3", "rating": 2 }
     { "id": "4", "rating": 1 }
  
-現在假設您希望結果一次返回兩個,按評級排序。 您會執行此查詢以取得結果的第一頁: `$top=2&$skip=0&$orderby=rating desc`,產生以下結果:
+現在假設您想要一次傳回兩個結果，並依評等排序。 您會執行此查詢來取得結果的第一頁： `$top=2&$skip=0&$orderby=rating desc`，產生下列結果：
 
     { "id": "1", "rating": 5 }
     { "id": "2", "rating": 3 }
  
-在服務上,假設查詢呼叫之間的索引中新增了第五個文件: `{ "id": "5", "rating": 4 }`。  不久之後,您將執行查詢以取得第二頁:`$top=2&$skip=2&$orderby=rating desc`取得這些結果:
+在服務上，假設在查詢呼叫之間，會將第五份檔加入至`{ "id": "5", "rating": 4 }`索引：。  之後，您可以執行查詢來提取第二頁： `$top=2&$skip=2&$orderby=rating desc`，並取得下列結果：
 
     { "id": "2", "rating": 3 }
     { "id": "3", "rating": 2 }
  
-請注意,文檔 2 被提取兩次。 這是因為新文檔 5 具有更大的評級值,因此它在文檔 2 之前排序並落在第一頁上。 雖然這種行為可能出乎意料,但它是搜尋引擎行為的典型表現。
+請注意，檔2會提取兩次。 這是因為新檔5的評等值較大，因此它會在檔2之前排序，並落在第一頁。 雖然這種行為可能不是預期的，但它通常是搜尋引擎的運作方式。
 
 ## <a name="ordering-results"></a>排序結果
 
-對於全文搜索查詢,結果根據文檔中的術語頻率和鄰近程度計算,結果自動按搜索分數排序,較高的分數將到搜索詞上匹配更多或更強的文檔。 
+對於全文檢索搜尋查詢，結果會依搜尋分數自動排序，並根據檔中的詞彙頻率和鄰近性來計算，並以較高的分數到達具有搜尋詞彙更多或更強相符的檔。 
 
-搜索分數傳達一般的相關性,反映匹配強度與同一結果集中的其他文檔相比。 分數在一個查詢和下一個查詢並不總是一致的,因此當您處理查詢時,您可能會注意到搜索文檔的排序方式存在小差異。 有幾個解釋來解釋為什麼會發生這種情況。
+搜尋分數可傳達相關性的一般意義，與相同結果集中的其他檔相較之下，反映比對的強度。 分數不一定會與下一個查詢一致，因此當您使用查詢時，您可能會注意到搜尋檔的排序方式不會有些許差異。 有幾個說明可能會發生這種情況。
 
 | 原因 | 描述 |
 |-----------|-------------|
-| 資料波動性 | 當您添加、修改或刪除文檔時,索引內容會有所不同。 隨著索引更新的處理時間的變化,期限頻率將發生變化,從而影響匹配文檔的搜索分數。 |
-| 多個複本 | 對於使用多個副本的服務,將並行針對每個副本發出查詢。 用於計算搜尋分數的索引統計資訊按副本計算,結果在查詢回應中合併並排序。 副本大多是彼此的鏡像,但由於狀態差異小,統計資訊可能不同。 例如,一個副本可能刪除了導致其統計資訊的文檔,這些文件從其他副本中合併。 通常,每個副本統計資訊的差異在較小的索引中更為明顯。 |
-| 相同分數 | 如果多個文檔具有相同的分數,則其中任何文檔可能首先出現。  |
+| 資料變動性 | 當您新增、修改或刪除檔時，索引內容會有所不同。 當索引更新在一段時間內處理時，將會變更詞彙頻率，這會影響相符檔的搜尋分數。 |
+| 多個複本 | 對於使用多個複本的服務，會以平行方式對每個複本發出查詢。 用來計算搜尋分數的索引統計資料是依據每個複本計算，並在查詢回應中合併和排序結果。 複本大部分都是鏡像，但統計資料可能會因為狀態的小差異而有所不同。 例如，一個複本可能已刪除對其統計資料造成影響的檔，而這些檔已合併到其他複本。 一般來說，在較小的索引中，每個複本統計資料的差異會更明顯。 |
+| 相同分數 | 如果有多個檔具有相同的分數，則其中任何一項可能會先出現。  |
 
-### <a name="consistent-ordering"></a>一致的訂購
+### <a name="consistent-ordering"></a>一致的順序
 
-給定結果排序的靈活性,如果一致性是應用程式要求,則可能需要探索其他選項。 最簡單的方法是按欄位值(如評級或日期)進行排序。 對於要按特定欄位排序的方案(如評級或日期),可以顯式定義[`$orderby`運算式](query-odata-filter-orderby-syntax.md),該運算式可以應用於索引為**可排序**的任何欄位。
+根據結果排序中的彈性，如果一致性是應用程式需求，您可能會想要探索其他選項。 最簡單的方法是依域值排序，例如 [評等] 或 [日期]。 針對您想要依特定欄位排序的案例，例如評等或日期，您可以明確定義[ `$orderby`運算式](query-odata-filter-orderby-syntax.md)，這可以套用至任何索引為可**排序**的欄位。
 
-另一個選項是使用[自訂評分設定檔](index-add-scoring-profiles.md)。 評分設定檔使您能夠對搜尋結果中的專案排名進行更多控制,並能夠提升特定欄位中的匹配項。 附加評分邏輯可幫助覆蓋副本之間的細微差異,因為每個文檔的搜索分數相距較遠。 我們建議這個方法的排名[演演算法](index-ranking-similarity.md)。
+另一個選項是使用[自訂評分設定檔](index-add-scoring-profiles.md)。 計分設定檔可讓您更充分掌控搜尋結果中的專案排名，並能夠提升特定欄位中找到的相符專案。 額外的計分邏輯有助於覆寫複本之間的差異，因為每份檔的搜尋分數會相距較遠。 我們建議採用這種方法的[排名演算法](index-ranking-similarity.md)。
 
 ## <a name="hit-highlighting"></a>搜尋結果醒目提示
 
-點擊突出顯示是指應用於結果匹配術語的文本格式(如粗體或黃色突出顯示),便於發現匹配項。 [查詢請求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上提供了命中突出顯示說明。 The search engine encloses the matching `highlightPreTag` term in tags, and `highlightPostTag`, and your code handles the response (for example, applying a bold font).
+搜尋反白顯示是指套用至結果中比對詞彙的文字格式設定（例如粗體或黃色反白顯示），讓您更容易找到相符的內容。 [查詢要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上會提供搜尋反白顯示指示。 搜尋引擎會將比對詞彙括在標記`highlightPreTag`中`highlightPostTag`、和，而且您的程式碼會處理回應（例如，套用粗體字型）。
 
-格式應用於整個術語查詢。 在下面的示例中,在"描述"欄位中找到的術語"沙","沙子","海灘","海灘"被標記為突出顯示。 觸發引擎中查詢擴展的查詢(如模糊搜索和通配符搜索)對命中突出顯示的支援有限。
+將格式套用至整個詞彙查詢。 在下列範例中，在 [描述] 欄位中找到的 "sandy"、"海灘"、"海灘"、"浮水" 詞彙會標記為反白顯示。 在引擎中觸發查詢展開的查詢（例如模糊和萬用字元搜尋）對搜尋反白顯示的支援有限。
 
 ```http
 GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 
@@ -108,28 +108,28 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
     }
 ```
 
-### <a name="new-behavior-starting-july-15"></a>新行為(從 7 月 15 日開始)
+### <a name="new-behavior-starting-july-15"></a>新行為（從7月15日起）
 
-2020 年 7 月 15 日之後創建的服務將提供不同的突出顯示體驗。 該日期之前創建的服務在突出顯示行為中不會改變。 
+2020年7月15日之後建立的服務將提供不同的醒目提示體驗。 在該日期之前建立的服務在其反白顯示行為中不會變更。 
 
-使用新行為:
+具有新的行為：
 
-* 將僅返回與完整短語查詢匹配的短語。 查詢「超級碗」將返回如下所示的亮點:
+* 只會傳回符合完整片語查詢的片語。 「超級杯」查詢會傳回如下所示的重點：
 
     ```html
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
-  請注意,晶元術語*碗*沒有任何突出顯示,因為它與完整短語不匹配。
+  請注意，晶片的「*杯*」一詞沒有任何反白顯示，因為它不符合完整的片語。
   
-* 可以指定為高光返回的片段大小。 片段大小指定為字元數(最大為 1000 個字元)。
+* 您可以指定為反白顯示傳回的片段大小。 片段大小會指定為字元數（最大值為1000個字元）。
 
-編寫實現命中突出顯示的客戶端代碼時,請注意此更改。 請注意,除非您創建全新的搜索服務,否則這不會影響您。
+當您撰寫會執行反白顯示的用戶端程式代碼時，請注意這項變更。 請注意，除非您建立全新的搜尋服務，否則這不會對您造成影響。
 
 ## <a name="next-steps"></a>後續步驟
 
-要快速產生用戶端的搜尋頁,請考慮以下選項:
+若要為您的用戶端快速產生搜尋頁面，請考慮下列選項：
 
-+ [應用程式生成器](search-create-app-portal.md)在門戶中創建一個 HTML 頁面,其中包含搜索欄、分面導航和包含圖像的結果區域。
-+ [在 C# 中建立第一個應用](tutorial-csharp-create-first-app.md)是建構功能用戶端的教程。 範例代碼展示分頁查詢、點擊突出顯示和排序。
++ [應用程式](search-create-app-portal.md)產生器，在入口網站中，使用搜尋列、多面向導覽和包含影像的結果區域來建立 HTML 網頁。
++ [在 c # 中建立第一個應用程式](tutorial-csharp-create-first-app.md)是建立功能用戶端的教學課程。 範例程式碼示範分頁查詢、搜尋反白顯示和排序。
 
-幾個程式碼範例包括網頁前端介面,您可以在這裡找到:[紐約市工作示範應用程式](https://aka.ms/azjobsdemo)[,JavaScript 範例碼與即時展示網站](https://github.com/liamca/azure-search-javascript-samples), 並[認知搜尋 FrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
+有幾個程式碼範例包含 web 前端介面，您可以在這裡找到：[紐約的作業示範應用程式](https://aka.ms/azjobsdemo)、 [JavaScript 使用即時示範網站的範例程式碼](https://github.com/liamca/azure-search-javascript-samples)，以及[CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd)。
