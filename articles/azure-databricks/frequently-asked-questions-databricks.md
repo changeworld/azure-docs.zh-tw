@@ -10,10 +10,10 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.openlocfilehash: 8d7aab43641c6c594ff60368ccb3810e0c060dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78671569"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>關於 Azure Databricks 的常見問題
@@ -27,28 +27,28 @@ ms.locfileid: "78671569"
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>我可以將 Azure 虛擬網路與 Databricks 搭配使用嗎？
 是。 您可以將 Azure 虛擬網路 (VNET) 與 Azure Databricks 搭配使用。 如需詳細資訊，請參閱[在 Azure 虛擬網路中部署 Azure Databricks](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)。
 
-## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>如何從筆記本訪問 Azure 資料湖存儲？ 
+## <a name="how-do-i-access-azure-data-lake-storage-from-a-notebook"></a>如何? 從筆記本存取 Azure Data Lake Storage 嗎？ 
 
 請遵循下列步驟：
 1. 在 Azure Active Directory (Azure AD) 中，佈建服務主體並記錄其金鑰。
-1. 在資料湖存儲中為服務主體分配必要的許可權。
-1. 要訪問"資料存儲庫"中的檔，請使用筆記本中的服務主體憑據。
+1. 在 Data Lake Storage 中，將必要的許可權指派給服務主體。
+1. 若要存取 Data Lake Storage 中的檔案，請在筆記本中使用服務主體認證。
 
-有關詳細資訊，請參閱使用[Azure 資料塊使用 Azure 資料湖存儲](/azure/databricks/data/data-sources/azure/azure-datalake)。
+如需詳細資訊，請參閱搭配[Azure Databricks 使用 Azure Data Lake Storage](/azure/databricks/data/data-sources/azure/azure-datalake)。
 
 ## <a name="fix-common-problems"></a>修正常見問題
 
 以下是您使用 Databricks 時可能遇到的一些問題。
 
-### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>問題：此訂閱未註冊使用命名空間"Microsoft.Databricks"
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>問題：此訂用帳戶未註冊為使用命名空間 ' Databricks '
 
 #### <a name="error-message"></a>錯誤訊息
 
-此訂閱未註冊使用命名空間 "Microsoft.Databricks"。 請參閱 https://aka.ms/rps-not-found 以了解如何註冊訂用帳戶。 (錯誤碼：MissingSubscriptionRegistration)」
+「此訂用帳戶未註冊為使用命名空間 ' Databricks '。 請參閱 https://aka.ms/rps-not-found 以了解如何註冊訂用帳戶。 (錯誤碼：MissingSubscriptionRegistration)」
 
 #### <a name="solution"></a>解決方法
 
-1. 轉到[Azure 門戶](https://portal.azure.com)。
+1. 移至 [Azure 入口網站](https://portal.azure.com)。
 1. 依序選取 [訂用帳戶]****、您所使用的訂用帳戶及 [資源提供者]****。 
 1. 在資源提供者清單中，針對 **Microsoft.Databricks** 選取 [註冊]****。 您在訂用帳戶中必須具有參與者或擁有者角色，才能註冊資源提供者。
 
@@ -67,7 +67,7 @@ ms.locfileid: "78671569"
 
 * 如果您的電子郵件網域名稱指派給 Azure AD 中的多個目錄，也可能發生此錯誤。 若要避開此問題，請使用 Databricks 工作區，在包含訂用帳戶的目錄中建立新的使用者。
 
-    a. 在 Azure 入口網站中，移至 Azure AD。 選擇 **"使用者和組** > **添加使用者**"。
+    a. 在 Azure 入口網站中，移至 Azure AD。 選取 [**使用者和群組** > ] [**新增使用者**]。
 
     b. 以 `@<tenant_name>.onmicrosoft.com` 電子郵件 (而非 `@<your_domain>` 電子郵件) 來新增使用者。 您可以在 Azure 入口網站中 Azure AD 下方的[自訂網域]**** 中找到此選項。
     
@@ -88,20 +88,20 @@ ms.locfileid: "78671569"
 
 #### <a name="error-message"></a>錯誤訊息
 
-「雲端提供者啟動失敗：設定叢集時發生雲端提供者錯誤。 如需詳細資訊，請參閱 Databricks 指南。 Azure 錯誤碼：PublicIPCountLimitReached。 Azure 錯誤訊息：在此區域中無法為此訂閱創建超過 10 個公共 IP 位址。
+「雲端提供者啟動失敗：設定叢集時發生雲端提供者錯誤。 如需詳細資訊，請參閱 Databricks 指南。 Azure 錯誤碼：PublicIPCountLimitReached。 Azure 錯誤訊息：無法為此區域中的這個訂用帳戶建立超過10個公用 IP 位址。」
 
 #### <a name="background"></a>背景
 
-資料磚塊群集每個節點（包括驅動程式節點）使用一個公共 IP 位址。 Azure 訂閱具有每個區域[的公共 IP 位址限制](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address)。 因此，如果群集創建和擴展操作將導致分配給該區域中該訂閱的公共 IP 位址數超過限制，則它們可能會失敗。 此限制還包括為非資料磚塊使用（如自訂使用者定義的 VM）分配的公共 IP 位址。
+Databricks 叢集會在每個節點（包括驅動程式節點）上使用一個公用 IP 位址。 Azure 訂用帳戶在每個區域都有[公用 IP 位址限制](/azure/azure-resource-manager/management/azure-subscription-service-limits#publicip-address)。 因此，如果叢集建立和相應增加作業會導致該區域中配置給該訂用帳戶的公用 IP 位址數目超過限制，則可能會失敗。 此限制也包含配置給非 Databricks 使用的公用 IP 位址，例如自訂使用者定義的 Vm。
 
-通常，群集僅在它們處於活動狀態時使用公共 IP 位址。 但是，`PublicIPCountLimitReached`即使其他群集終止，錯誤也可能在短時間內繼續發生。 這是因為資料磚在群集終止時臨時緩存 Azure 資源。 資源緩存是設計，因為它可顯著減少群集啟動和自動縮放在許多常見方案中的延遲。
+一般而言，叢集只會在作用中時使用公用 IP 位址。 不過， `PublicIPCountLimitReached`即使在其他叢集終止之後，錯誤仍可能會繼續發生一小段時間。 這是因為在終止叢集時，Databricks 會暫時快取 Azure 資源。 資源快取是根據設計，因為它可大幅降低叢集啟動的延遲，以及在許多常見案例中自動調整。
 
 #### <a name="solution"></a>解決方法
 
-如果您的訂閱已達到給定區域的公共 IP 位址限制，則應執行以下一項或另一項操作。
+如果您的訂用帳戶已達到給定區域的公用 IP 位址限制，則您應該執行下列其中一項或其他動作。
 
-- 在不同的 Databricks 工作區中創建新群集。 另一個工作區必須位於尚未達到訂閱的公共 IP 位址限制的區域。
-- [請求增加公共 IP 位址限制](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。 選擇 [配額]**** 作為 [問題類型]****，並選擇 [網路：ARM]**** 作為 [配額類型]****。 在 [詳細資料]**** 中，申請提高公用 IP 位址配額。 例如，如果您目前的限制是 60，而您想要建立具有 100 個節點的叢集，請申請將限制提高到 160。
+- 在不同的 Databricks 工作區中建立新的叢集。 另一個工作區必須位於尚未到達訂用帳戶的公用 IP 位址限制的區域中。
+- [要求增加您的公用 IP 位址限制](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request)。 選擇 [配額]**** 作為 [問題類型]****，並選擇 [網路：ARM]**** 作為 [配額類型]****。 在 [詳細資料]**** 中，申請提高公用 IP 位址配額。 例如，如果您目前的限制是 60，而您想要建立具有 100 個節點的叢集，請申請將限制提高到 160。
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>問題：設定叢集時發生第二種類型的雲端提供者啟動失敗 (MissingSubscriptionRegistration)
 
@@ -112,7 +112,7 @@ Azure 錯誤碼：MissingSubscriptionRegistration Azure 錯誤訊息：訂用帳
 
 #### <a name="solution"></a>解決方法
 
-1. 轉到[Azure 門戶](https://portal.azure.com)。
+1. 移至 [Azure 入口網站](https://portal.azure.com)。
 1. 依序選取 [訂用帳戶]****、您所使用的訂用帳戶及 [資源提供者]****。 
 1. 在資源提供者清單中，針對 **Microsoft.Compute** 選取 [註冊]****。 您在訂用帳戶中必須具有參與者或擁有者角色，才能註冊資源提供者。
 

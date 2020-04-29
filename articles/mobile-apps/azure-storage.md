@@ -1,6 +1,6 @@
 ---
-title: 雲存儲，使用 Azure 存儲構建高度安全、耐用、可擴展的應用
-description: 瞭解在雲中存儲大型結構化和非結構化移動應用程式資料的服務。
+title: 使用 Azure 儲存體建立高度安全、持久、可擴充應用程式的雲端儲存體
+description: 瞭解在雲端中儲存大型結構化和非結構化行動應用程式資料的服務。
 author: codemillmatt
 ms.assetid: 12bbb070-9b3c-4faf-8588-ccff02097224
 ms.service: vs-appcenter
@@ -8,72 +8,72 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: 682f06936480d9018d759b4df3bed80be1206faf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240982"
 ---
-# <a name="cloud-storage-for-highly-secure-durable-scalable-apps-with-azure-storage"></a>雲存儲，使用 Azure 存儲提供高度安全、耐用、可擴展的應用
-[Azure 存儲](https://azure.microsoft.com/services/storage/)是 Microsoft 面向現代應用程式的雲存儲解決方案，它為數據物件提供可大規模擴展的物件存儲、雲的檔案系統服務、用於可靠消息傳送的消息存儲和 NoSQL 存儲。 Azure 儲存體的特色：
-- **耐用且高度可用：** 冗余可確保在發生暫態硬體故障時資料是安全的。 您也可以選擇在資料中心或地理區域間複寫資料，以便在發生地方性災難或天然災害時獲得額外保護。 以此方式複寫資料，可在發生未預期的中斷事件時保持高可用性。
-- **安全：** 寫入 Azure 存儲的所有資料都由服務加密。 Azure 儲存體在存取您資料的人員控管上，提供更細微的控制。
-- **可擴展：** 服務設計為可大規模擴展，以滿足當今應用程式的資料存儲和性能需求。
-- **託管：** Azure 可為您處理硬體維護、更新和關鍵問題。
-- **可訪問：** 可通過 HTTP 或 HTTPS 從世界任何地方訪問資料。 Microsoft 以多種語言提供用戶端庫，如 .NET、JAVA、Node.js、Python、PHP、Ruby 和 Go，以及成熟的 REST API。 Azure PowerShell 或 Azure CLI 中支援腳本編寫。 Azure 門戶和 Azure 存儲資源管理器提供了用於處理資料的簡便視覺化解決方案。
+# <a name="cloud-storage-for-highly-secure-durable-scalable-apps-with-azure-storage"></a>具有 Azure 儲存體的高安全性、耐用、可擴充應用程式的雲端儲存體
+[Azure 儲存體](https://azure.microsoft.com/services/storage/)是適用于新式應用程式的 Microsoft 雲端儲存體解決方案，可為數據物件提供可大幅調整的物件存放區、適用于雲端的檔案系統服務、可靠訊息的訊息存放區，以及 NoSQL 存放區。 Azure 儲存體的特色：
+- **持久性和高可用性：** 冗余可確保您的資料在發生暫時性硬體失敗時安全。 您也可以選擇在資料中心或地理區域間複寫資料，以便在發生地方性災難或天然災害時獲得額外保護。 以此方式複寫資料，可在發生未預期的中斷事件時保持高可用性。
+- **安全：** 寫入 Azure 儲存體的所有資料都會由服務加密。 Azure 儲存體在存取您資料的人員控管上，提供更細微的控制。
+- **可調整：** 服務的設計可大幅擴充，以符合現今應用程式的資料儲存和效能需求。
+- **受控：** Azure 會為您處理硬體維護、更新和重大問題。
+- **可存取：** 資料可透過 HTTP 或 HTTPS 從世界各地存取。 Microsoft 提供各種語言的用戶端程式庫，例如 .NET、JAVA、node.js、Python、PHP、Ruby 和 Go，以及成熟的 REST API。 Azure PowerShell 或 Azure CLI 都支援腳本。 Azure 入口網站和 Azure 儲存體總管提供簡單的視覺解決方案來處理您的資料。
 
-使用以下服務在移動應用中啟用雲存儲。
+使用下列服務在您的行動應用程式中啟用雲端存放裝置。
 
 ## <a name="azure-blob-storage"></a>Azure Blob 儲存體
-[Azure Blob 存儲](https://azure.microsoft.com/services/storage/blobs/)為雲提供了物件存儲解決方案。 Blob 存儲經過優化，用於存儲大量不符合特定資料模型或定義（如文本或二進位）的非結構化資料。 它支援用戶端庫使用的各種語言。 Blob 存儲旨在：
-- 將圖像或文檔直接送達瀏覽器。
-- 存儲檔以進行分散式訪問。
-- 資料流視頻和音訊。
-- 寫入日誌檔。
-- 存儲用於備份和還原、災害復原和存檔的資料。
-- 存儲資料，以便按本地或 Azure 託管的服務進行分析。
+[Azure Blob 儲存體](https://azure.microsoft.com/services/storage/blobs/)提供適用于雲端的物件儲存體解決方案。 Blob 儲存體已優化，可用於儲存大量非結構化資料，而不會遵守特定資料模型或定義，例如文字或二進位檔。 它支援用戶端程式庫所使用的各種語言。 Blob 儲存體的設計目的是：
+- 將影像或檔直接提供給瀏覽器。
+- 儲存檔案以供分散式存取。
+- 串流影片和音訊。
+- 寫入記錄檔。
+- 儲存用於備份和還原、嚴重損壞修復和封存的資料。
+- 儲存資料供內部部署或 Azure 託管服務進行分析。
 
-**引用**
-- [Azure 門戶](https://portal.azure.com)
+**參考**
+- [Azure 入口網站](https://portal.azure.com)
 - [Azure Blob 儲存體文件](/azure/storage/blobs/storage-blobs-introduction)
 - [快速入門](/azure/storage/blobs/storage-quickstart-blobs-portal)
-- [樣品](/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [範例](/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 ## <a name="azure-table-storage"></a>Azure 資料表儲存體
-[Azure 表存儲](https://azure.microsoft.com/services/storage/tables/)是一種服務，用於在雲中存儲結構化的 NoSQL 資料，並提供具有無架構設計的金鑰或屬性存儲。 Azure 資料表儲存體可儲存大量的結構化資料。 該服務是 NoSQL 資料存儲，它接受 Azure 雲內外的經過身份驗證的調用。 Azure 表是存儲結構化非關係資料的理想選擇。 表存儲通常用於：
-- 存儲能夠為 Web 規模應用程式提供服務的 TB 結構化資料。
-- 存儲不需要複雜聯接、外鍵或預存程序的資料集，並且可以非正常化以快速訪問。
-- 使用群集索引快速查詢資料。
-- 使用 OData 協定和 LINQ 查詢訪問資料，這些查詢與 Windows 通信基礎 （WCF） 資料服務 .NET 庫一起。
+[Azure 表格儲存體](https://azure.microsoft.com/services/storage/tables/)是在雲端儲存結構化 NoSQL 資料的服務，並提供具有無架構設計的索引鍵或屬性存放區。 Azure 資料表儲存體可儲存大量的結構化資料。 此服務是 NoSQL 資料存放區，可接受來自 Azure 雲端內部和外部的已驗證呼叫。 Azure 資料表非常適合用來儲存結構化的非關聯式資料。 資料表儲存體通常用來：
+- 儲存數 tb 的結構化資料，能夠提供 web 規模的應用程式。
+- 儲存不需要複雜聯結、外鍵或預存程式的資料集，而且可以進行反正規化以進行快速存取。
+- 使用叢集索引快速地查詢資料。
+- 使用 OData 通訊協定和 LINQ 查詢搭配 Windows Communication Foundation （WCF）資料服務 .NET 程式庫來存取資料。
 
-您可以使用表存儲來存儲和查詢大量結構化的非關係資料。 您的表會隨著需求增加而縮放。
+您可以使用資料表儲存體來儲存和查詢龐大的結構化、非關聯式資料集。 您的資料表會隨著需求增加而調整。
 
-**引用**
-- [Azure 門戶](https://portal.azure.com)
-- [Azure 資料表儲存體文件](/azure/storage/tables/table-storage-overview)
-- [樣品](/azure/cosmos-db/tutorial-develop-table-dotnet?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
+**參考**
+- [Azure 入口網站](https://portal.azure.com)
+- [Azure 表格儲存體檔](/azure/storage/tables/table-storage-overview)
+- [範例](/azure/cosmos-db/tutorial-develop-table-dotnet?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fstorage%2Ftables%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 - [快速入門](/azure/storage/tables/table-storage-quickstart-portal)
 
 ## <a name="azure-files"></a>Azure 檔案
-使用[Azure 檔](https://azure.microsoft.com/services/storage/files/)，可以設置可以使用標準伺服器訊息區 （SMB） 協定訪問的高可用性網路檔共用。 多個 VM 可以同時共用具有讀取和寫入存取權限的相同檔。 您還可以使用 REST 介面或存儲用戶端庫讀取檔。 您可以使用指向該檔的 URL 並包含共用訪問簽名 （SAS） 權杖，從世界任何地方訪問檔。 您可以生成 SAS 權杖。 它們允許在特定時間內特定地訪問私有資產。
+使用[Azure 檔案儲存體](https://azure.microsoft.com/services/storage/files/)，您可以設定高可用性網路檔案共用，以使用標準伺服器訊息區（SMB）通訊協定來存取。 多個 Vm 可以同時與讀取和寫入權限共用相同的檔案。 您也可以使用 REST 介面或儲存體用戶端程式庫來讀取檔案。 您可以使用指向檔案並包含共用存取簽章（SAS）權杖的 URL，從世界各地存取檔案。 您可以產生 SAS 權杖。 它們允許特定的一段時間記憶體取私人資產。
 
 Azure 檔案共用可以用來：
-- **替換或補充本地檔案伺服器：** 流行的作業系統（如 Windows、macOS 和 Linux）可以直接將 Azure 檔共用裝載到世界上任何位置。 透過 Azure 檔案同步，也可以將 Azure 檔案共用複寫到 Windows Server (在內部部署環境或雲端)，從而在資料的使用位置進行高效能和分散式快取。
-- **提升和換檔應用：** 將應用程式遷移到希望檔共用以存儲檔應用程式或使用者資料的雲。
-- **簡化雲開發：** Azure 檔還可通過多種方式用於簡化新的雲開發專案。 例如：
-    - **共用應用程式設定：** 分散式應用程式的一個常見模式是，在集中位置將設定檔從許多應用程式實例訪問它們。 應用程式實例可以通過檔 REST API 載入其配置。 使用者可以根據需要通過在本地安裝 SMB 共用來訪問它們。
-    - **診斷共用：** Azure 檔共用是雲應用程式編寫日誌、指標和崩潰轉儲的方便場所。 日誌可以由應用程式實例通過檔 REST API 寫入。 開發人員可以通過在其本地電腦上安裝檔共用來訪問它們。 此功能可實現極大的靈活性。 開發人員可以採用雲開發，而無需放棄他們所知道的現有工具。
+- **取代或補充內部部署檔案伺服器：** 熱門的作業系統（例如 Windows、macOS 和 Linux）可以在世界各地直接掛接 Azure 檔案共用。 透過 Azure 檔案同步，也可以將 Azure 檔案共用複寫到 Windows Server (在內部部署環境或雲端)，從而在資料的使用位置進行高效能和分散式快取。
+- 隨即**轉移應用程式：** 將應用程式遷移至預期檔案共用儲存檔案應用程式或使用者資料的雲端。
+- **簡化雲端開發：** Azure 檔案儲存體也可以用多種方式來簡化新的雲端開發專案。 例如：
+    - **共用的應用程式設定：** 分散式應用程式的常見模式是將設定檔放在可從許多應用程式實例存取的集中位置。 應用程式實例可以透過 REST API 的檔案來載入其設定。 使用者可以視需要在本機掛接 SMB 共用來存取它們。
+    - **診斷共用：** Azure 檔案共用是一個方便的位置，可讓雲端應用程式寫入其記錄、計量和損毀傾印。 應用程式實例可以透過 REST API 的檔案來寫入記錄。 開發人員可以藉由在本機電腦上掛接檔案共用來存取這些檔案。 這項功能可提供極大的彈性。 開發人員可以採用雲端開發，而不需要放棄他們知道的現有工具。
 
-**引用**
-- [Azure 門戶](https://portal.azure.com)
+**參考**
+- [Azure 入口網站](https://portal.azure.com)
 - [Azure 檔案文件](/azure/storage/files/storage-files-introduction)
 - [快速入門](/azure/storage/files/storage-files-quick-create-use-windows)
 
 ## <a name="azure-queue-storage"></a>Azure 佇列儲存體
-[Azure 佇列存儲](https://azure.microsoft.com/services/storage/queues/)是存儲大量消息的服務。 您可以使用 HTTP 或 HTTPS 通過經過身份驗證的調用從世界任何地方訪問消息。 一則佇列訊息的大小可能高達 64 KB。 佇列可能包含數百萬條消息，最高為存儲帳戶的總容量限制。 佇列通常用來建立要以非同步方式處理的待處理項目 (backlog)。
+[Azure 佇列儲存體](https://azure.microsoft.com/services/storage/queues/)是用來儲存大量訊息的服務。 您可以使用 HTTP 或 HTTPS，透過已驗證的呼叫，從世界各地存取訊息。 一則佇列訊息的大小可能高達 64 KB。 佇列可能包含數百萬則訊息，最高可達儲存體帳戶的總容量限制。 佇列通常用來建立要以非同步方式處理的待處理項目 (backlog)。
 
-**引用**
-- [Azure 門戶](https://portal.azure.com)
+**參考**
+- [Azure 入口網站](https://portal.azure.com)
 - [Azure 佇列儲存體文件](/azure/storage/queues/)
 - [快速入門](/azure/storage/queues/storage-quickstart-queues-portal)
-- [樣品](/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [範例](/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)

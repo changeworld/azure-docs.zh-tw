@@ -1,6 +1,6 @@
 ---
-title: 所有有關 DevOps 的視覺化工作室應用中心和 Azure 服務
-description: 瞭解移動應用程式開發中所有關于 DevOps 的功能。
+title: 關於 DevOps 與 Visual Studio App Center 和 Azure 服務的相關資訊
+description: 深入瞭解行動應用程式開發中的 DevOps。
 author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-2323-ccff02097224
 ms.service: vs-appcenter
@@ -8,21 +8,21 @@ ms.topic: article
 ms.date: 03/24/2020
 ms.author: masoucou
 ms.openlocfilehash: 1c87dc01d6fda5032556c175218d9aea46bed495
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240900"
 ---
 # <a name="what-is-devops"></a>什麼是 DevOps？
-"DevOps"一詞來自"開發"和"操作"的組合。 DevOps 強調了軟體發展人員和生產 IT 專業人員之間通信和協作的重要性，同時自動部署軟體和基礎架構更改。 DevOps 專注于採用敏捷和精益方法以及自動化重複性任務。 DevOps 的目標是及時、成功的應用程式版本。
+「DevOps」一詞來自「開發」和「作業」的組合。 DevOps 強調軟體發展人員與生產 IT 專業人員之間的溝通與共同作業的重要性，同時自動部署軟體和基礎結構變更。 DevOps 著重于採用 agile 和精簡方法，並自動化重複性的工作。 DevOps 的目標是及時、成功的應用程式版本。
 
-微軟通過[Azure DevOps（](https://azure.microsoft.com/services/devops/)雲）和[視覺化工作室應用中心](https://azure.microsoft.com/services/app-center/)，擁有一套全面的[DevOps 解決方案](https://azure.microsoft.com/solutions/devops/)。 這些產品創造了一個工作環境，團隊成員可以在其中快速、頻繁、可靠地構建、測試和部署軟體。 由於部署新功能、安全修補程式和 Bug 修復的周轉時間更快，組織可以更快地實現其目標。
+Microsoft 透過[Azure DevOps](https://azure.microsoft.com/services/devops/) （雲端）和[Visual Studio App Center](https://azure.microsoft.com/services/app-center/)提供了一組完整的[DevOps 解決方案](https://azure.microsoft.com/solutions/devops/)。 這些產品會建立一個工作環境，小組成員可以在其中快速、經常且可靠地建立、測試及部署軟體。 因為部署新功能、安全性修補程式和 bug 修正的速度更快，所以組織可以更快達到其目標。
 
 **DevOps 的重要性**
-- 從代碼提交到生產部署，使整個軟體生命週期更快。
-- 允許組織在內部和客戶更快地交付軟體和安全更新。
-- 旨在減少開發和運營團隊之間的衝突。 開發人員通常專注于滿足業務需求，以添加功能並提高應用程式的可用性。 通常，運營團隊更注重計算環境的穩定性和安全性。
-- 提供更高的敏捷性，提高客戶的回應能力，並縮短上市時間。
-- 通過將人員、流程和產品彙集在一起，從而持續向使用者交付價值，從而擴展敏捷性。
-- 當組織遵循 DevOps 實踐時，降低成本。 無論組織的使命是什麼，它們都能更好地實現其目標。
+- 從程式碼認可到生產部署，讓整個軟體生命週期更快。
+- 可讓組織在內部及客戶更快速地提供軟體和安全性更新。
+- 旨在減少開發和作業小組之間發生的衝突。 開發人員通常會專注于滿足商務需求，以加入功能並改善應用程式的可用性。 營運小組在傳統上更著重于計算環境的穩定性和安全性。
+- 提供更高的靈活性、改善客戶回應能力，並縮短上市時間。
+- 將人員、程式和產品整合在一起，以持續傳遞價值給使用者，以擴充靈活性。
+- 當組織遵循 DevOps 實務時，會導致成本降低。 無論組織的任務為何，都能獲得更好的目標。

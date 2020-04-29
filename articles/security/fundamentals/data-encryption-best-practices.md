@@ -1,5 +1,5 @@
 ---
-title: 資料安全和加密最佳實踐 - 微軟 Azure
+title: 資料安全性和加密最佳作法-Microsoft Azure
 description: 本文提供使用內建 Azure 功能的一些資料安全性和加密最佳作法。
 services: security
 documentationcenter: na
@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
 ms.openlocfilehash: c5bf62f434b2095f7200b5562c38c252a0195c5b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243493"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 資料安全性和加密最佳做法
-本文介紹了資料安全和加密的最佳做法。
+本文說明資料安全性與加密的最佳作法。
 
-最佳作法是根據共識的意見，並使用目前的 Azure 平台功能及功能集。 觀點和技術會隨時間而變化，本文會定期更新以反映這些變化。
+最佳作法是根據共識的意見，並使用目前的 Azure 平台功能及功能集。 意見和技術會隨著時間而改變，而本文會定期更新以反映這些變更。
 
 ## <a name="protect-data"></a>保護資料
 若要協助保護雲端上的資料，您必須考慮您的資料可能會發生的狀態，以及哪些控制項適用於該狀態。 Azure 資料安全性和加密的最佳做法與下列資料狀態相關：
@@ -37,7 +37,7 @@ ms.locfileid: "79243493"
 
 保護您的金鑰對於保護雲端中的資料至關重要。
 
-[Azure 金鑰保存庫](/azure/key-vault/key-vault-overview)可説明保護雲應用程式和服務使用的加密金鑰和機密。 金鑰保存庫簡化了金鑰管理程序，並可讓您控管存取和加密資料的金鑰。 開發人員可以在幾分鐘內建立開發和測試的金鑰，然後將它們移轉至生產金鑰。 安全性系統管理員可以視需要授與 (和撤銷) 存取金鑰的權限。
+[Azure Key Vault](/azure/key-vault/key-vault-overview)有助於保護雲端應用程式和服務所使用的密碼編譯金鑰和秘密。 金鑰保存庫簡化了金鑰管理程序，並可讓您控管存取和加密資料的金鑰。 開發人員可以在幾分鐘內建立開發和測試的金鑰，然後將它們移轉至生產金鑰。 安全性系統管理員可以視需要授與 (和撤銷) 存取金鑰的權限。
 
 您可以使用 Key Vault 建立多個安全的容器，稱之為保存庫。 這些保存庫由 HSM 支援。 保存庫藉由集中儲存應用程式祕密，協助減少意外遺失安全性資訊的機會。 Key Vault 也會控制和記錄其中所儲存項目的存取權。 Azure Key Vault 可以處理要求及更新傳輸層安全性 (TLS) 憑證。 它為憑證生命週期管理提供了健全的解決方案功能。
 
@@ -111,7 +111,7 @@ Azure 儲存體和 Azure SQL Database 預設會加密待用資料，且許多服
 **詳細資料**：使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)。 如果您選擇使用 ExpressRoute，您也可以透過使用 SSL/TLS 或其他通訊協定，在應用程式層級加密資料，以提供額外的保護。
 
 **最佳做法**：透過 Azure 入口網站與 Azure 儲存體互動。   
-**詳細資料**：透過 HTTPS 發生的所有交易。 還可以通過 HTTPS 使用[存儲 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)與 Azure[存儲](https://azure.microsoft.com/services/storage/)進行交互。
+**詳細資料**：透過 HTTPS 發生的所有交易。 您也可以使用透過 HTTPS 的[儲存體 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx)來與[Azure 儲存體](https://azure.microsoft.com/services/storage/)互動。
 
 無法保護傳輸中資料的組織比較容易遭受[攔截攻擊](https://technet.microsoft.com/library/gg195821.aspx)、[竊聽](https://technet.microsoft.com/library/gg195641.aspx)及工作階段攔截。 這些攻擊可能是取得機密資料存取權的第一步。
 

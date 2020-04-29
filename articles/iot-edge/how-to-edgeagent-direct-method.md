@@ -1,6 +1,6 @@
 ---
-title: 內置邊緣代理直接方法 - Azure IoT 邊緣
-description: 使用 IoT Edge 代理運行時模組中的內置直接方法監視和管理 IoT Edge 部署
+title: 內建的 edgeAgent 直接方法-Azure IoT Edge
+description: 在 IoT Edge 代理程式執行時間模組中使用內建的直接方法來監視和管理 IoT Edge 部署
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -10,23 +10,23 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 57b9d46918414cef9e8cbcffb941b98c98f985ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80240352"
 ---
-# <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>使用內置直接方法與邊緣代理通信
+# <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>使用內建的直接方法與 edgeAgent 通訊
 
-使用 IoT Edge 代理模組中包含的直接方法監視和管理 IoT Edge 部署。 直接方法在設備上實現，然後可以從雲調用。 IoT Edge 代理包括直接方法，可説明您遠端監視和管理 IoT Edge 設備。
+使用 IoT Edge agent 模組中包含的直接方法，來監視和管理 IoT Edge 部署。 直接方法會在裝置上執行，然後可以從雲端叫用。 IoT Edge 代理套裝程式含直接方法，可協助您從遠端監視和管理您的 IoT Edge 裝置。
 
-有關直接方法、如何使用這些方法以及如何在您自己的模組中實現它們的詳細資訊，請參閱[從 IoT 中心瞭解和調用直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
+如需直接方法、如何使用它們，以及如何在自己的模組中執行的詳細資訊，請參閱[瞭解和叫用來自 IoT 中樞的直接方法](../iot-hub/iot-hub-devguide-direct-methods.md)。
 
-這些直接方法的名稱不區分大小寫。
+這些直接方法的名稱會以不區分大小寫的方式處理。
 
 ## <a name="ping"></a>Ping
 
-**ping**方法可用於檢查 IoT Edge 是否在設備上運行，或者設備是否與 IoT 中心具有打開的連接。 使用此直接方法 ping IoT Edge 代理並獲取其狀態。 成功的 ping 返回空有效負載和 **"狀態"：200**。
+**Ping**方法適用于檢查裝置上是否正在執行 IoT Edge，或裝置是否有開啟的連線可 IoT 中樞。 使用此直接方法來偵測 IoT Edge 代理程式並取得其狀態。 成功的 ping 會傳回空的承載和 **"status"： 200**。
 
 例如：
 
@@ -34,17 +34,17 @@ ms.locfileid: "80240352"
 az iot hub invoke-module-method --method-name 'ping' -n <hub name> -d <device name> -m '$edgeAgent'
 ```
 
-在 Azure 門戶中，使用方法名稱`ping`和空 JSON 負載`{}`調用 方法。
+在 Azure 入口網站中，使用方法名稱`ping`和空的 JSON 承載來叫用方法`{}`。
 
-![在 Azure 門戶中調用直接方法"ping"](./media/how-to-edgeagent-direct-method/ping-direct-method.png)
+![叫用 Azure 入口網站中的直接方法 ' ping '](./media/how-to-edgeagent-direct-method/ping-direct-method.png)
 
 ## <a name="restart-module"></a>重新開機模組
 
-**RestartModule**方法允許遠端系統管理在 IoT 邊緣設備上運行的模組。 如果模組報告失敗狀態或其他不正常行為，則可以觸發 IoT Edge 代理重新開機它。 成功的重新開機命令返回空有效負載和 **"狀態"：200**。
+**RestartModule**方法可讓您遠端系統管理在 IoT Edge 裝置上執行的模組。 如果模組回報失敗狀態或其他狀況不良的行為，您可以觸發 IoT Edge 代理程式來重新開機它。 成功的重新開機命令會傳回空的承載和 **"status"： 200**。
 
-重新開機模組方法在 IoT 邊緣版本 1.0.9 及更高版本中可用。 
+RestartModule 方法可在 IoT Edge 版本1.0.9 和更新版本中取得。 
 
-您可以在 IoT 邊緣設備上運行的任何模組（包括邊緣代理模組本身）上使用 RestartModule 直接方法。 但是，如果使用此直接方法關閉 EdgeAgent，則不會收到成功結果，因為在模組重新開機時連接中斷。
+您可以在 IoT Edge 裝置上執行的任何模組上使用 RestartModule 直接方法，包括 edgeAgent 模組本身。 不過，如果您使用此直接方法來關閉 edgeAgent，就不會收到成功的結果，因為當模組重新開機時，連線會中斷。
 
 例如：
 
@@ -58,7 +58,7 @@ az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <
 '
 ```
 
-在 Azure 門戶中，使用方法名稱`RestartModule`和以下 JSON 負載調用方法：
+在 Azure 入口網站中，使用方法名稱`RestartModule`和下列 JSON 承載來叫用方法：
 
 ```json
 {
@@ -67,15 +67,15 @@ az iot hub invoke-module-method --method-name 'RestartModule' -n <hub name> -d <
 }
 ```
 
-![在 Azure 門戶中調用直接方法"重新開機模組"](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
+![叫用 Azure 入口網站中的直接方法 ' RestartModule '](./media/how-to-edgeagent-direct-method/restartmodule-direct-method.png)
 
-## <a name="experimental-methods"></a>實驗方法
+## <a name="experimental-methods"></a>實驗性方法
 
-新的直接方法選項可作為實驗功能進行測試，包括：
+新的直接方法選項可作為測試的實驗性功能，包括：
 
-* [上載日誌](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md)：檢索模組日誌並將其上載到 Azure Blob 存儲。
-* [獲取任務狀態](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus)：檢查上載日誌請求的狀態。
-* [GetLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs)：在直接方法的回應中內聯檢索模組日誌。
+* [UploadLogs](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md)：取出模組記錄，並將其上傳至 Azure Blob 儲存體。
+* [GetTaskStatus](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#gettaskstatus)：檢查上傳記錄檔要求的狀態。
+* [取得記錄](https://github.com/Azure/iotedge/blob/master/doc/built-in-logs-pull.md#getlogs)：在直接方法的回應中，以內嵌方式取出模組記錄。
 
 ## <a name="next-steps"></a>後續步驟
 

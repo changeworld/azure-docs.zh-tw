@@ -1,5 +1,5 @@
 ---
-title: 如何從 Mac 連接到 Azure 實驗室服務 VM |微軟文檔
+title: 如何從 Mac 連接到 Azure 實驗室服務 VM |Microsoft Docs
 description: 本文
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 03/17/2020
 ms.author: spelluru
 ms.openlocfilehash: 0d3484c1008e00bcfde3adb399e925c0e054f49e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79503084"
 ---
 # <a name="connect-to-a-vm-using-rdp-on-a-mac"></a>在 Mac 上使用 RDP 連線至 VM
-本節演示如何使用 RDP 從 Mac 連接到教室實驗室 VM。
+本節說明學生可以如何使用 RDP 從 Mac 連線到教室實驗室 VM。
 
 ## <a name="install-microsoft-remote-desktop-on-a-mac"></a>在 Mac 上安裝 Microsoft 遠端桌面
 1. 在您的 Mac 上開啟 App Store，然後搜尋 **Microsoft 遠端桌面**。
@@ -45,6 +45,6 @@ ms.locfileid: "79503084"
 
 
 ## <a name="next-steps"></a>後續步驟
-要瞭解如何使用 RDP 連接到 Linux VM，請參閱[為 Linux 虛擬機器使用遠端桌面](how-to-use-remote-desktop-linux-student.md)
+若要瞭解如何使用 RDP 連接到 Linux Vm，請參閱[使用 linux 虛擬機器的遠端桌面](how-to-use-remote-desktop-linux-student.md)
 
 

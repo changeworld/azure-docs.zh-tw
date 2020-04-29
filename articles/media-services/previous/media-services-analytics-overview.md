@@ -16,18 +16,18 @@ ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
 ms.openlocfilehash: ab1eba3de474d9ff985e62f491c24fa63be0fa63
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77069620"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒體服務平台上的媒體分析 
 
-## <a name="retirement-plans"></a>退休計畫
+## <a name="retirement-plans"></a>淘汰計畫
 
 > [!IMPORTANT]
-> 某些媒體處理器正在停用。 有關停用日期和詳細資訊，請參閱[舊元件](legacy-components.md)主題。 
+> 有些媒體處理器已淘汰。 如需停用日期和詳細資訊，請參閱[舊版元件](legacy-components.md)主題。 
 
 ## <a name="overview"></a>總覽
 
@@ -46,13 +46,13 @@ ms.locfileid: "77069620"
 ## <a name="media-analytics-services"></a>媒體分析服務
 
 ### <a name="indexer"></a>索引器
-Azure 媒體索引器可讓您的內容可供搜尋，並且產生隱藏式輔助字幕。 有關詳細資訊和示例，請參閱使用[Azure 媒體索引子索引媒體檔案](media-services-index-content.md)索引。
+Azure 媒體索引器可讓您的內容可供搜尋，並且產生隱藏式輔助字幕。 如需詳細資訊和範例，請參閱[使用 Azure 媒體索引子編制媒體檔案的索引](media-services-index-content.md)。
 
 ### <a name="motion-detector"></a>動作偵測
-您可以使用動作偵測在影片中偵測背景靜止的動作。 如此一來，便能夠檢查監視攝影機所偵測到的動作事件中是否有誤判。 有關詳細資訊和示例，請參閱[Azure 媒體分析的運動檢測](media-services-motion-detection.md)。
+您可以使用動作偵測在影片中偵測背景靜止的動作。 如此一來，便能夠檢查監視攝影機所偵測到的動作事件中是否有誤判。 如需詳細資訊和範例，請參閱[Azure 媒體分析的動作偵測](media-services-motion-detection.md)。
 
 ### <a name="face-detector"></a>臉部偵測
-透過使用臉部偵測，您便能偵測人臉及其表情，包括快樂、悲傷及驚喜。 這項服務有數個實用的產業應用程式 (將於稍後說明)，包括彙總並分析事件參與人員的反應。 有關詳細資訊和示例，請參閱[Azure 媒體分析的人臉和情感檢測](media-services-face-and-emotion-detection.md)。
+透過使用臉部偵測，您便能偵測人臉及其表情，包括快樂、悲傷及驚喜。 這項服務有數個實用的產業應用程式 (將於稍後說明)，包括彙總並分析事件參與人員的反應。 如需詳細資訊和範例，請參閱[Azure 媒體分析的臉部和表情偵測](media-services-face-and-emotion-detection.md)。
 
 ### <a name="video-summarization"></a>影片摘要
 視訊摘要可自動選取來源視訊的有趣片段，協助您建立較長視訊的摘要。 針對片長較長的影片，如果您想要提供精彩內容的快速概觀，此功能非常有用。 如需詳細資訊和範例，請參閱[使用 Azure 媒體影片縮圖建立影片摘要](media-services-video-summarization.md)。
@@ -64,7 +64,7 @@ Azure 媒體修訂器是媒體分析媒體處理器，可在雲端提供可調�
 ### <a name="content-moderation"></a>內容仲裁
 Azure 內容仲裁可讓您針對影片使用機器輔助仲裁。 例如，您可能會想要偵測影片中潛在的成人和猥褻內容，並由您的人力仲裁小組檢閱這些被標記的內容。 但手動仲裁不需要的影片內容是很耗費時間和成本的工作。 透過此服務和相關聯的檢閱工具，您可以結合機器輔助仲裁和人機互動 (human-in-the-loop) 功能，以有效率且符合成本效益的方式獲得最佳結果。 若要進一步了解，請參閱[使用 Azure 內容仲裁處理您的視訊](media-services-content-moderation.md)一文。
 
-## <a name="common-scenarios"></a>常見的案例
+## <a name="common-scenarios"></a>常見案例
 媒體分析可協助組織和企業從影片中得到新的見解，並更有效地管理大量的影片內容。 以下是幾個案例︰
 
 * **話務中心**。 即使社交媒體出現，但客服中心仍能協助處理大量的客戶服務交易。 客服中心的語音資料經編碼後可成為大量的客戶資訊，企業可分析這些資訊以提高客戶滿意度。 組織可使用媒體索引器擷取文字，及建置搜尋索引與儀表板。 接著便可以從一般客訴、客訴來源及其他相關資料中獲取情報。

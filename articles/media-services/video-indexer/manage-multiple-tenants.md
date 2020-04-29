@@ -14,10 +14,10 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76990499"
 ---
 # <a name="manage-multiple-tenants"></a>管理多個租用戶
@@ -68,7 +68,7 @@ ms.locfileid: "76990499"
 
 ## <a name="azure-subscription-per-tenant"></a>每個租用戶的 Azure 訂用帳戶 
 
-使用此體系結構時，每個租戶都將有自己的 Azure 訂閱。 針對每個使用者，您將在租用戶訂用帳戶中建立新的影片索引器帳戶。
+使用此架構時，每個租使用者都會有自己的 Azure 訂用帳戶。 針對每個使用者，您將在租用戶訂用帳戶中建立新的影片索引器帳戶。
 
 ![每個租用戶的 Azure 訂用帳戶](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 

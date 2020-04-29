@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB 的遷移和應用程式開發合作夥伴
+title: Azure Cosmos DB 的遷移和應用程式開發夥伴
 description: 列出提供移轉解決方案，並支援 Azure Cosmos DB 的 Microsoft 合作夥伴。
 author: SnehaGunda
 ms.author: sngun
@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76988170"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 移轉和應用程式開發合作夥伴
@@ -19,13 +19,13 @@ ms.locfileid: "76988170"
 
 ## <a name="migration-tools"></a>移轉工具
 
-|**夥伴**  |**功能和體驗**  |**支援的國家/區域**  |**連絡人**  |
+|**合作夥伴**  |**功能和體驗**  |**支援的國家/區域**  |**Contact**  |
 |---------|---------|---------|---------|
-|![Striim][2]    |  從各種資料來源[將即時資料移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 簡化了從各種本地源（包括企業文檔和關係資料庫、感應器和日誌檔）到 Azure Cosmos DB 中即時收集和移動資料的過程。 |   USA   |  [網站](https://www.striim.com/)       |
+|![Striim][2]    |  從各種資料來源[將即時資料移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 可簡化從各種內部部署來源（包括企業檔和關係資料庫、感應器和記錄檔）到 Azure Cosmos DB 的即時收集和移動資料。 |   USA   |  [網站](https://www.striim.com/)       |
 
 ## <a name="systems-integrator-partners"></a>系統整合者合作夥伴
 
-|**夥伴**  |**功能和體驗**  |**支援的國家/區域**  |**連絡人**  |
+|**合作夥伴**  |**功能和體驗**  |**支援的國家/區域**  |**Contact**  |
 |---------|---------|---------|---------|
 | ![10thMagnitude][13] | NoSQL 移轉；新的應用程式開發 | USA | [網站](https://www.10thmagnitude.com/)|
 |![Altoros 開發 LLC][3]    |  NoSQL 移轉、 <br/> 應用程式創新 (現有的應用程式)、 <br/> 新的應用程式開發 |   美國、挪威、芬蘭、白俄羅斯、阿根廷 |  [網站](https://www.altoros.com/)     |

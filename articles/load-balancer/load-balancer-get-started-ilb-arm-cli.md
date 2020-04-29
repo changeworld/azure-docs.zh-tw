@@ -1,7 +1,7 @@
 ---
 title: 建立內部基本負載平衡器 - Azure CLI
 titleSuffix: Azure Load Balancer
-description: 在本文中，瞭解如何使用 Azure CLI 創建內部負載等化器
+description: 在本文中，您將瞭解如何使用 Azure CLI 來建立內部負載平衡器
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
 ms.openlocfilehash: 51df1936e5d8725b2243e7c0084973370139c540
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79457006"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>使用 Azure CLI 來建立內部負載平衡器以平衡 VM 的負載
@@ -26,7 +26,7 @@ ms.locfileid: "79457006"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-如果您選擇在本機安裝和使用 CLI，在執行本教學課程時，您必須執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
+如果您選擇在本機安裝和使用 CLI，在執行本教學課程時，您必須執行 Azure CLI 2.0.28 版或更新版本。 若要尋找版本，請執行 `az --version`。 如果您需要安裝或升級，請參閱[安裝 Azure CLI]( /cli/azure/install-azure-cli)。
 
 ## <a name="create-a-resource-group"></a>建立資源群組
 
@@ -42,7 +42,7 @@ ms.locfileid: "79457006"
 
 ## <a name="create-a-virtual-network"></a>建立虛擬網路
 
-使用 az 網路 vnet 創建，在*myResourceGroup*中創建名為*myVnet*的子網，創建名為*myVnet*的虛擬[網路](https://docs.microsoft.com/cli/azure/network/vnet)。
+使用[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet)，在*myResourceGroup*中建立名為*myVnet*的虛擬網路，並使用名為*mySubnet*的子網。
 
 ```azurecli-interactive
   az network vnet create \
@@ -62,7 +62,7 @@ ms.locfileid: "79457006"
 
 ### <a name="create-the-load-balancer"></a>建立負載平衡器
 
-創建具有 az 網路 lb 的內部負載等化器[，創建](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest)名為**myLoadBalancer**的前端 IP 配置，稱為**myFrontEnd，** 一個名為**myBackEndPool**的後端池，它與私人 IP 位址 #10.0.0.7 相關聯。
+使用[az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest)建立內部 Load Balancer，名為**myLoadBalancer** ，其中包含名為**myFrontEnd**的前端 IP 設定、名為**myBackEndPool**的後端集區，與私人 IP 位址 * * 10.0.0.7 相關聯。
 
 ```azurecli-interactive
   az network lb create \
@@ -77,7 +77,7 @@ ms.locfileid: "79457006"
 
 ### <a name="create-the-health-probe"></a>建立健康狀態探查
 
-健全狀況探查會檢查所有虛擬機器執行個體，確認它們可以接收網路流量。 探查檢查失敗的虛擬機器執行個體會從負載平衡器上移除，直到其恢復正常運作且探查判斷其健全狀況良好為止。 創建使用 az[網路 lb 探測器創建的](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest)運行狀況探測，以監視虛擬機器的運行狀況。 
+健全狀況探查會檢查所有虛擬機器執行個體，確認它們可以接收網路流量。 探查檢查失敗的虛擬機器執行個體會從負載平衡器上移除，直到其恢復正常運作且探查判斷其健全狀況良好為止。 使用[az network lb create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest)來建立健康狀態探查，以監視虛擬機器的健康情況。 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -131,7 +131,7 @@ done
 
 ### <a name="create-an-availability-set"></a>建立可用性設定組
 
-使用 [az vm availabilityset create](/cli/azure/network/nic) 建立可用性設定組
+使用[az vm availabilityset create](/cli/azure/network/nic)建立可用性設定組
 
 ```azurecli-interactive
   az vm availability-set create \

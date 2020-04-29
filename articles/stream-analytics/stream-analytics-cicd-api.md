@@ -1,5 +1,5 @@
 ---
-title: 使用 REST API 在 IoT 邊緣執行 AZURE 流分析的 CI/CD
+title: 使用 REST Api 來執行 CI/CD 以進行 Azure IoT Edge 串流分析
 description: 了解如何使用 REST API 實作適用於 Azure 串流分析的持續整合和部署管線。
 author: mamccrea
 ms.author: mamccrea
@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.openlocfilehash: 328ca7cd2c6f76095c8334ae6fdb4aa75fbb867d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80292012"
 ---
 # <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>為 IoT Edge 串流分析實作 CI/CD

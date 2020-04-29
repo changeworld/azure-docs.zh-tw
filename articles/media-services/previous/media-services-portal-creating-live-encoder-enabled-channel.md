@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 媒體服務執行即時流式處理，使用 Azure 門戶創建多位元率流 |微軟文檔
+title: 使用 Azure 媒體服務執行即時串流，以使用 Azure 入口網站建立多位元率串流 |Microsoft Docs
 description: 本教學課程將逐步引導您使用 Azure 入口網站建立通道，以接收單一位元速率即時串流，並將其編碼為多位元速率串流。
 services: media-services
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "77162560"
 ---
-# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒體服務執行即時流，使用 Azure 門戶創建多位元率流  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒體服務執行即時串流，以使用 Azure 入口網站建立多位元率串流  
 > [!div class="op_single_selector"]
 > * [入口網站](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -29,7 +29,7 @@ ms.locfileid: "77162560"
 > 
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
 本教學課程將逐步引導您建立 **通道** ，可接收單一位元速率的即時串流，並將其編碼為多位元速率串流。
 
@@ -43,8 +43,8 @@ ms.locfileid: "77162560"
 
 1. 將攝影機連接到電腦。 <br/>如需了解裝備，請參閱[簡單的可攜式活動視訊器材裝備]( https://link.medium.com/KNTtiN6IeT) \(英文\)。
 
-    如果您無法訪問攝像機，可以使用[Telestream 有線廣播](media-services-configure-wirecast-live-encoder.md)等工具從視頻檔生成即時源。
-1. 啟動和設定可使用下列其中一種通訊協定輸出單一位元速率串流的內部部署即時編碼器：RTMP 或 Smooth Streaming。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>此外，看看這個博客：[使用OBS進行即時流式處理](https://link.medium.com/ttuwHpaJeT)。
+    如果您沒有攝影機的存取權，就可以使用像是[Telestream Wirecast](media-services-configure-wirecast-live-encoder.md)的工具，從影片檔案產生即時摘要。
+1. 啟動和設定可使用下列其中一種通訊協定輸出單一位元速率串流的內部部署即時編碼器：RTMP 或 Smooth Streaming。 如需詳細資訊，請參閱 [Azure 媒體服務 RTMP 支援和即時編碼器](https://go.microsoft.com/fwlink/?LinkId=532824)。 <br/>此外，請參閱此 blog：[使用 OBS 的即時串流生產](https://link.medium.com/ttuwHpaJeT)。
 
     此步驟也可以在您建立通道之後執行。
 1. 建立並啟動通道。 
@@ -61,12 +61,12 @@ ms.locfileid: "77162560"
 1. 每當您想要停止串流處理和封存事件時，請停止事件。
 1. 刪除事件 (並選擇性地刪除資產)。   
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 需要有下列項目，才能完成教學課程。
 
 * 若要完成此教學課程，您需要 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立免費試用帳戶。 
-  有關詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
+  如需詳細資訊，請參閱[Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 * 媒體服務帳戶。 若要建立媒體服務帳戶，請參閱 [建立帳戶](media-services-portal-create-account.md)。
 * 網路攝影機以及可以傳送單一位元速率即時串流的編碼器。
 
@@ -77,7 +77,7 @@ ms.locfileid: "77162560"
 3. 選取 [自訂建立] ****。 此選項可讓您建立通道，而啟用通道即可進行即時編碼。
 
     ![建立通道](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
-4. 按一下 **"設置**"。
+4. 按一下 [**設定**]。
 
    1. 選擇 [即時編碼] **** 通道類型。 此類型指定您想要建立通道，而啟用通道即可進行即時編碼。 這表示內送單一位元速率串流會傳送至通道，並編碼為使用所指定即時編碼器設定的多位元速率串流。 如需詳細資訊，請參閱 [使用 Azure 媒體服務的即時串流，以建立多位元速率串流](media-services-manage-live-encoder-enabled-channels.md)。 按一下 [確定]。
    2. 指定通道的名稱。
@@ -114,7 +114,7 @@ ms.locfileid: "77162560"
 ## <a name="get-ingest-urls"></a>取得內嵌 URL
 建立通道之後，即可取得您提供給即時編碼器的內嵌 URL。 編碼器會使用這些 URL 來輸入即時串流。
 
-![引入 URL](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
+![內嵌 url](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
 
 ## <a name="create-and-manage-events"></a>建立和管理事件
 
@@ -141,7 +141,7 @@ ms.locfileid: "77162560"
 讓串流流入通道之後，您可以建立「資產」、「程式」和「串流定位器」來開始串流事件。 這將封存串流，並透過「串流端點」將它提供給檢視器。 
 
 >[!NOTE]
->創建 AMS 帳戶時，**預設**流式處理終結點將添加到處于 **"已停止"** 狀態的帳戶。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中]**** 狀態。 
+>建立 AMS 帳戶時，**預設**串流端點會新增至您的帳戶處於 [**已停止**] 狀態。 若要開始串流內容並利用動態封裝和動態加密功能，您想要串流內容的串流端點必須處於 [執行中]**** 狀態。 
 
 有兩種方式可以啟動事件： 
 
@@ -149,7 +149,7 @@ ms.locfileid: "77162560"
 
     指定：事件名稱、資產名稱、封存時間範圍和加密選項。
 
-    ![創建程式](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
+    ![建立程式](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
 
     如果您保留 [立即發佈此即時事件] **** 的核取狀態，則事件會建立發佈 URL。
 
@@ -183,7 +183,7 @@ ms.locfileid: "77162560"
 
 若要管理您的資產，請選取 [設定]****，然後按一下 [資產]****。
 
-![Assets](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
+![資產](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-assets.png)
 
 ## <a name="considerations"></a>考量
 * 目前，即時事件的最大建議持續時間是 8 小時。 如果您需要較長的時間來執行通道，請連絡 amshelp@microsoft.com。
