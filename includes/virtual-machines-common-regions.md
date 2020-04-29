@@ -9,10 +9,10 @@ ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 5e3f25727204343de107bacb9fc99d6cfb77d76f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76020916"
 ---
 請務必了解虛擬機器 (VM) 在 Azure 中的運作方式和位置，以及可充分發揮效能、可用性和備援功能的選項。 本文提供 Azure 可用性和備援功能的概觀。
@@ -29,7 +29,7 @@ Azure 在世界各地多個資料中心運作。 這些資料中心會依據地�
 * **US Gov 維吉尼亞州**和 **US Gov 愛荷華州**
   * 由經篩選的美國人士所操作、適用於 US Gov 機構及其合作夥伴的實體與邏輯網路隔離 Azure 執行個體。 包含其他法規遵循認證，例如 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) 和 [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA)。 深入了解 [Azure Government](https://azure.microsoft.com/features/gov/)。
 * **中國東部**和**中國北部**
-  * 這些區域是透過 Microsoft 與 21Vianet 之間的唯一合作關係提供，其中 Microsoft 不會直接維護資料中心。 查看有關[Azure 中國 21Vianet 的更多。](https://www.windowsazure.cn/)
+  * 這些區域是透過 Microsoft 與 21Vianet 之間的唯一合作關係提供，其中 Microsoft 不會直接維護資料中心。 查看更多有關[Azure 中國世紀](https://www.windowsazure.cn/)的資訊。
 * **德國中部**和**德國東北部**
   * 這些區域透過資料信任者模型提供，其中客戶資料會留在德國受到 T-Systems 控管，這是 Deutsche Telekom 旗下的公司，扮演德國資料信任者的角色。
 
@@ -56,7 +56,7 @@ Azure 在世界各地多個資料中心運作。 這些資料中心會依據地�
 ## <a name="storage-availability"></a>儲存體可用性
 在您考慮可用的儲存體複寫選項時，了解 Azure 區域和地理位置會變得相當重要。 根據儲存體類型，您會有不同的複寫選項。
 
-**Azure 託管磁片**
+**Azure 受控磁碟**
 * 本機備援儲存體 (LRS)
   * 此選項會在您建立儲存體帳戶的區域內複寫資料三次。
 
@@ -78,12 +78,12 @@ Azure 在世界各地多個資料中心運作。 這些資料中心會依據地�
 | 可從次要位置及主要位置讀取資料。 |否 |否 |否 |是 |
 | 可在不同的節點上維護的資料副本數量。 |3 |3 |6 |6 |
 
-您可以 [在這裡深入了解 Azure 儲存體複寫選項](../articles/storage/common/storage-redundancy.md)。 有關託管磁片的詳細資訊，請參閱 Azure[託管磁片概述](../articles/virtual-machines/windows/managed-disks-overview.md)。
+您可以 [在這裡深入了解 Azure 儲存體複寫選項](../articles/storage/common/storage-redundancy.md)。 如需受控磁片的詳細資訊，請參閱[Azure 受控磁碟總覽](../articles/virtual-machines/windows/managed-disks-overview.md)。
 
 ### <a name="storage-costs"></a>儲存成本
 價格會依據您選取的儲存體類型和可用性而有所不同。
 
-**Azure 託管磁片**
+**Azure 受控磁碟**
 * 進階受控磁碟是由固態硬碟 (SSD) 所支援，標準受控磁碟則是由一般轉動式磁碟所支援。 進階和標準受控磁碟的收費是依據磁碟的佈建容量。
 
 **非受控磁碟**
