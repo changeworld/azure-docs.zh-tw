@@ -1,6 +1,6 @@
 ---
-title: 委派子域 - Azure 電源外殼 - Azure DNS
-description: 使用此學習路徑，開始使用 Azure PowerShell 委派 Azure DNS 子域。
+title: 委派子域-Azure PowerShell Azure DNS
+description: 透過此學習路徑，開始使用 Azure PowerShell 委派 Azure DNS 子域。
 services: dns
 author: rohinkoul
 ms.service: dns
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: 7e019afaae98422b8d5a3c8fa7a5f79e26c6a149
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "76937692"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>使用 Azure PowerShell 委派 Azure DNS 子網域
@@ -23,7 +23,7 @@ ms.locfileid: "76937692"
 > [!NOTE]
 > 本文章會使用 Contoso.com 作為範例。 用您自己的網域名稱來取代 contoso.com。
 
-如果沒有 Azure 訂閱，請先創建[一個免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。"
+如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
