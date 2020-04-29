@@ -5,21 +5,21 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.openlocfilehash: a5015a018f905b4353afd6bf25a48a2d942b3b97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153347"
 ---
-# <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>使用 IntelliJ IDEA 創建和部署 ARM 範本
+# <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>使用 IntelliJ 概念來建立和部署 ARM 範本
 
-瞭解如何使用 IntelliJ IDEA 將 Azure 資源管理器 （ARM） 範本部署到 Azure，以及直接從 IDE 編輯和更新範本的過程。 ARM 範本是 JSON 檔，用於定義需要為解決方案部署的資源。 若要了解部署和管理 Azure 解決方案的相關概念，請參閱[範本部署概觀](overview.md)。
+瞭解如何使用 IntelliJ 概念將 Azure Resource Manager （ARM）範本部署至 Azure，以及直接從 IDE 編輯和更新範本的程式。 ARM 範本是 JSON 檔案，可定義您需要為解決方案部署的資源。 若要了解部署和管理 Azure 解決方案的相關概念，請參閱[範本部署概觀](overview.md)。
 
-![資源管理器範本門戶圖](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
+![Resource Manager 範本入口網站圖表](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
 完成教學課程之後，您就可以部署 Azure 儲存體帳戶。 相同的程序也可用來部署其他 Azure 資源。
 
-如果沒有 Azure 訂閱，請先[創建一個免費帳戶](https://azure.microsoft.com/free/)。"
+如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -31,9 +31,9 @@ ms.locfileid: "80153347"
 
 ## <a name="deploy-a-quickstart-template"></a>部署快速入門範本
 
-您可以從 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)開啟範本，而無須從頭建立範本。 Azure 快速入門範本是 ARM 範本的存儲庫。 本文中使用的範本稱為["創建標準存儲帳戶](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)"。 此範本會定義 Azure 儲存體帳戶資源。
+您可以從 [Azure 快速入門範本](https://azure.microsoft.com/resources/templates/)開啟範本，而無須從頭建立範本。 Azure 快速入門範本是 ARM 範本的存放庫。 本文中使用的範本稱為「[建立標準儲存體帳戶](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/)」。 此範本會定義 Azure 儲存體帳戶資源。
 
-1. 按右鍵並將[`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)和[`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json)保存到本地電腦。
+1. 以滑鼠右鍵按一下，並[`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json)將[`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json)和儲存到您的本機電腦。
 
 1. 如果您已正確安裝並登入 Azure Toolkit，應該會在 IntelliJ IDEA 的提要欄位中看到 Azure Explorer。 以滑鼠右鍵按一下 [資源管理]****，然後選取 [建立部署]****。
 
@@ -80,7 +80,7 @@ ms.locfileid: "80153347"
 
 ## <a name="next-steps"></a>後續步驟
 
-本文的主要重點是使用 IntelliJ IDEA 從 Azure 快速入門範本部署現有範本。 您也已經了解如何在 Azure 上檢視和更新現有部署。 Azure 快速入門範本中的範本可能無法提供您所需的一切。 若要深入了解範本開發，請參閱我們的新初學者教學課程系列：
+本文的主要重點是要使用 IntelliJ 概念，從 Azure 快速入門範本部署現有的範本。 您也已經了解如何在 Azure 上檢視和更新現有部署。 Azure 快速入門範本中的範本可能無法提供您所需的一切。 若要深入了解範本開發，請參閱我們的新初學者教學課程系列：
 
 > [!div class="nextstepaction"]
 > [初學者教學課程](./template-tutorial-create-first-template.md)

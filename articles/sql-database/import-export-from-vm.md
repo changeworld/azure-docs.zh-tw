@@ -1,6 +1,6 @@
 ---
 title: 匯入或匯出 SQL 資料庫
-description: 導入或匯出 Azure SQL 資料庫,而不允許 Azure 服務存取伺服器。
+description: 匯入或匯出 Azure SQL 資料庫，而不允許 Azure 服務存取伺服器。
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
@@ -12,15 +12,15 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
 ms.openlocfilehash: 61a85b2554bbd69541b3081f72525d2b7deed625
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80529241"
 ---
-# <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>匯入或匯出 Azure SQL 資料庫,而無需允許 Azure 服務存取伺服器
+# <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>匯入或匯出 Azure SQL 資料庫，而不允許 Azure 服務存取伺服器
 
-本文介紹如何在 Azure SQL 伺服器上將允許 Azure*服務*設置為*OFF*時導入或匯出 Azure SQL 資料庫。 工作流使用 Azure 虛擬機器運行 SqlPackage 來執行導入或匯出操作。
+本文說明如何在 Azure SQL server 上的 [*允許 Azure 服務*] 設為 [*關閉*] 時匯入或匯出 azure sql 資料庫。 工作流程會使用 Azure 虛擬機器來執行 SqlPackage，以執行匯入或匯出作業。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
@@ -28,33 +28,33 @@ ms.locfileid: "80529241"
 
 ## <a name="create-the-azure-virtual-machine"></a>建立 Azure 虛擬機器
 
-通過選擇 **「 部署到 Azure」按鈕創建 Azure**虛擬機器。
+選取 [**部署至 azure** ] 按鈕，以建立 azure 虛擬機器。
 
-此範本允許您使用 Windows 版本的幾個不同選項,使用最新的修補版本部署簡單的 Windows 虛擬機器。 這將在資源組位置部署 A2 大小的 VM,並返回 VM 的完全限定功能變數名稱。
+此範本可讓您使用最新修補版本的 Windows 版本，來部署簡單的 Windows 虛擬機器。 這會在資源群組位置中部署 A2 大小 VM，並傳回 VM 的完整功能變數名稱。
 <br><br>
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json" target="_blank">
     <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-有關詳細資訊,請參閱[Windows VM 的非常簡單的部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)。
+如需詳細資訊，請參閱[非常簡單的 WINDOWS VM 部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)。
 
 
 ## <a name="connect-to-the-virtual-machine"></a>連接至虛擬機器
 
-以下步驟演示如何使用遠端桌面連接連接到虛擬機器。
+下列步驟說明如何使用遠端桌面連線來連接到您的虛擬機器。
 
 1. 部署完成之後，請移至虛擬機器資源。
 
     ![VM](./media/import-export-from-vm/vm.png)  
 
-2. 選擇**連接**"連接"
+2. 選取 [連線]  。
 
    將顯示遠端桌面通訊協定檔案 (.rdp 檔案) 表單，其中包含虛擬機器的公用 IP 位址與連接埠號碼。
 
    ![RDP 表單](./media/import-export-from-vm/rdp.png)  
 
-3. 選擇**下載 RDP 檔案**。
+3. 選取 [下載 RDP 檔案]  。
 
    > [!NOTE]
    > 您也可以使用 SSH 來連線到您的 VM。
@@ -69,24 +69,24 @@ ms.locfileid: "80529241"
 
 
 
-## <a name="install-sqlpackage"></a>安裝 Sql 套件
+## <a name="install-sqlpackage"></a>安裝 SqlPackage
 
-[下載並安裝最新版本的 SqlPackage。](https://docs.microsoft.com/sql/tools/sqlpackage-download)
-
-
+[下載並安裝最新版本的 SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)。
 
 
-有關詳細資訊,請參閱[SqlPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)。
+
+
+如需其他資訊，請參閱[SqlPackage。](https://docs.microsoft.com/sql/tools/sqlpackage)
 
 ## <a name="create-a-firewall-rule-to-allow-the-vm-access-to-the-database"></a>建立防火牆規則以允許 VM 存取資料庫
 
-將虛擬機器的公共 IP 位址加入 SQL 資料庫伺服器防火牆。
+將虛擬機器的公用 IP 位址新增至 SQL Database 伺服器防火牆。
 
-以下步驟為虛擬機器的公共 IP 位址建立伺服器級 IP 防火牆規則,並啟用虛擬機器的連接。
+下列步驟會針對虛擬機器的公用 IP 位址建立伺服器層級 IP 防火牆規則，並啟用虛擬機器的連線能力。
 
-1. 從左側功能表中選擇**SQL 資料庫**,然後在**SQL 資料庫**頁面上選擇資料庫。 資料庫的概述頁將打開,顯示完全限定的伺服器名稱(如**servername.database.windows.net),** 並提供進一步配置的選項。
+1. 從左側功能表中選取 **[SQL 資料庫**]，然後在 [ **SQL 資料庫**] 頁面上選取您的資料庫。 資料庫的 [總覽] 頁面隨即開啟，其中會顯示完整伺服器名稱（例如**servername.database.windows.net**），並提供進一步設定的選項。
 
-2. 複製此完全限定的伺服器名稱,以便連接到伺服器及其資料庫時使用。
+2. 複製此完整伺服器名稱，以在連接到您的伺服器及其資料庫時使用。
 
    ![伺服器名稱](./media/sql-database-get-started-portal/server-name.png)
 
@@ -94,9 +94,9 @@ ms.locfileid: "80529241"
 
    ![伺服器層級 IP 防火牆規則](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
-4. 選擇**在工具列上添加用戶端 IP,** 將虛擬機器的公共 IP 位址添加到新的伺服器級 IP 防火牆規則中。 伺服器層級 IP 防火牆規則可以針對單一 IP 位址或 IP 位址範圍開啟連接埠 1433。
+4. 選擇工具列上的 [**新增用戶端 IP** ]，將虛擬機器的公用 IP 位址新增至新的伺服器層級 IP 防火牆規則。 伺服器層級 IP 防火牆規則可以針對單一 IP 位址或 IP 位址範圍開啟連接埠 1433。
 
-5. 選取 [儲存]  。 為虛擬機在 SQL 資料庫伺服器上打開埠 1433 的公共 IP 位址創建了伺服器級 IP 防火牆規則。
+5. 選取 [儲存]  。 系統會針對虛擬機器的公用 IP 位址建立伺服器層級 IP 防火牆規則，以在 SQL Database 伺服器上開啟埠1433。
 
 6. 關閉 [防火牆設定]**** 頁面。
 
@@ -104,11 +104,11 @@ ms.locfileid: "80529241"
 
 ## <a name="export-a-database-using-sqlpackage"></a>使用 SqlPackage 匯出資料庫
 
-若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令列公用程式匯出 SQL 資料庫，請參閱[匯出參數和屬性](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)。 SqlPackage 實用程式附帶最新版本的 SQL [Server 管理工作室](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)和[SQL 伺服器資料工具](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt),或者您可以下載最新版本的[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)。
+若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令列公用程式匯出 SQL 資料庫，請參閱[匯出參數和屬性](https://docs.microsoft.com/sql/tools/sqlpackage#export-parameters-and-properties)。 SqlPackage 公用程式隨附[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)和[SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)的最新版本，您也可以下載最新版的[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)。
 
-我們建議在大多數生產環境中使用 SqlPackage 實用程式進行擴展和性能。 如需 SQL Server 客戶諮詢小組部落格中有關使用 BACPAC 檔案進行移轉的主題，請參閱[使用 BACPAC 檔案從 SQL Server 移轉至 Azure SQL Database](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)。
+我們建議在大部分的生產環境中，使用 SqlPackage 公用程式來調整規模和效能。 如需 SQL Server 客戶諮詢小組部落格中有關使用 BACPAC 檔案進行移轉的主題，請參閱[使用 BACPAC 檔案從 SQL Server 移轉至 Azure SQL Database](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)。
 
-此示例演示如何使用 SqlPackage.exe 使用活動目錄通用身份驗證匯出資料庫。 替換為特定於環境的值。
+這個範例示範如何使用 SqlPackage 搭配 Active Directory 通用驗證來匯出資料庫。 取代為您的環境特有的值。
 
 ```cmd
 SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.database.windows.net;Initial Catalog=MyDB;" /ua:True /tid:"apptest.onmicrosoft.com"
@@ -119,11 +119,11 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=<servername>.da
 
 ## <a name="import-a-database-using-sqlpackage"></a>使用 SqlPackage 匯入資料庫
 
-若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令列公用程式匯入 SQL Server 資料庫，請參閱[匯入參數和屬性](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)。 SqlPackage 具有最新的[SQL 伺服器管理工作室](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)與[SQL 伺服器資料工具](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。 您還可以下載最新版本的[SqlPackage。](https://docs.microsoft.com/sql/tools/sqlpackage-download)
+若要使用 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 命令列公用程式匯入 SQL Server 資料庫，請參閱[匯入參數和屬性](https://docs.microsoft.com/sql/tools/sqlpackage#import-parameters-and-properties)。 SqlPackage 具有最新的[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)和[SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。 您也可以下載最新版的[SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage-download)。
 
 為了規模和效能，我們建議在大部分生產環境中使用 SqlPackage，而不使用 Azure 入口網站。 如需 SQL Server 客戶諮詢小組部落格中有關使用 `BACPAC` 檔案進行移轉的主題，請參閱[使用 BACPAC 檔案從 SQL Server 移轉至 Azure SQL Database](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) \(英文\)。
 
-以下 SqlPackage 命令將**AdventureWorks2017**資料庫從本地存儲導入 Azure SQL 資料庫伺服器。 此命令會建立名為 **myMigratedDatabase**、且具有**進階**服務層級和 **P6** 服務目標的新資料庫。 請針對您的環境適當變更這些值。
+下列 SqlPackage 命令會將**AdventureWorks2017**資料庫從本機儲存體匯入 Azure SQL Database 伺服器。 此命令會建立名為 **myMigratedDatabase**、且具有**進階**服務層級和 **P6** 服務目標的新資料庫。 請針對您的環境適當變更這些值。
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=myMigratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2017.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -140,32 +140,32 @@ sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.
 
 ## <a name="performance-considerations"></a>效能考量
 
-匯出速度因許多因素(例如資料形狀)而異,因此無法預測應期望的速度。 SqlPackage 可能需要相當長的時間,尤其是對於大型資料庫。
+匯出速度因許多因素（例如，資料圖形）而有所不同，因此無法預測預期的速度。 SqlPackage 可能需要相當長的時間，特別是針對大型資料庫。
 
-要取得最佳效能,您可以嘗試以下策略:
+若要獲得最佳效能，您可以嘗試下列策略：
 
-1. 確保資料庫上沒有其他工作負荷運行。 在匯出之前創建副本可能是確保沒有其他工作負荷運行的最佳解決方案。
-2. 提高資料庫服務等級目標 (SLO) 以更好地處理匯出工作負載(主要是讀取 I/O)。 如果資料庫當前GP_Gen5_4,則業務關鍵型層可能有助於讀取工作負載。
-3. 確保有群集索引,特別是對於大型表。 
-4. 虛擬機器 (VM) 應與資料庫位於同一區域,以説明避免網路約束。
-5. VM 應具有足夠大小的 SSD,用於在上載到 Blob 儲存之前生成臨時工件。
-6. VM 應具有特定資料庫的足夠核心和記憶體配置。
+1. 請確定資料庫上沒有任何其他工作負載正在執行。 在匯出之前建立複本可能是確保沒有任何其他工作負載正在執行的最佳解決方案。
+2. 增加資料庫服務等級目標（SLO），以更妥善處理匯出工作負載（主要是讀取 i/o）。 如果資料庫目前 GP_Gen5_4，則業務關鍵層可能有助於讀取工作負載。
+3. 請確定有叢集索引，特別是大型資料表。 
+4. 虛擬機器（Vm）應與資料庫位於相同的區域，以協助避免網路限制。
+5. 在上傳至 blob 儲存體之前，Vm 應具有足夠大小的 SSD，以產生臨時構件。
+6. Vm 應該具有特定資料庫的適當核心和記憶體設定。
 
-## <a name="store-the-imported-or-exported-bacpac-file"></a>儲存匯入或匯出 。BACPAC 檔案
+## <a name="store-the-imported-or-exported-bacpac-file"></a>儲存匯入或匯出的。BACPAC 檔案
 
-.BACPAC 檔案可以儲存在[Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)或[Azure 檔案中](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)。 
+該.BACPAC 檔案可以儲存在[Azure blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)中，或[Azure 檔案儲存體](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)。 
 
-要獲得最佳性能,請使用 Azure 檔。 Sql包使用檔案系統運行,以便可以直接存取 Azure 檔。
+若要達到最佳效能，請使用 Azure 檔案儲存體。 SqlPackage 會操作檔案系統，讓它可以直接存取 Azure 檔案儲存體。
 
-要降低成本,請使用 Azure Blob,其成本低於高級 Azure 檔共用。 但是,它將要求您複製[。](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)在導入或匯出操作之前,blob 和本地檔案系統之間的 BACPAC 檔案。 因此,該過程將需要更長的時間。
+若要降低成本，請使用 Azure Blob，其成本低於 premium Azure 檔案共用。 不過，它會要求您複製[。](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)在匯入或匯出作業之前，blob 和本機檔案系統之間的 BACPAC 檔案。 因此，處理常式將會花費較長的時間。
 
-上傳或下載 。BACPAC 檔案,請參閱[使用 AzCopy 和 Blob 儲存傳輸資料](../storage/common/storage-use-azcopy-blobs.md),以及[使用 AzCopy 和檔案儲存傳輸資料](../storage/common/storage-use-azcopy-files.md)。
+上傳或下載。BACPAC 檔案，請參閱[使用 AzCopy 和 Blob 儲存體傳輸資料](../storage/common/storage-use-azcopy-blobs.md)和[使用 AzCopy 和檔案儲存體傳輸資料](../storage/common/storage-use-azcopy-files.md)。
 
-從您的環境,您可能需要[設定 Azure 儲存防火牆和虛擬網路](../storage/common/storage-network-security.md)。
+視您的環境而定，您可能需要[設定 Azure 儲存體防火牆和虛擬網路](../storage/common/storage-network-security.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 要瞭解如何連線到與查詢匯入的 SQL 資料庫,請參閱[快速入門:Azure SQL 資料庫:使用 SQL 伺服器管理工作室連接和查詢資料](sql-database-connect-query-ssms.md)。
+- 若要瞭解如何連接並查詢匯入的 SQL Database，請參閱[快速入門： Azure SQL Database：使用 SQL Server Management Studio 來連接及查詢資料](sql-database-connect-query-ssms.md)。
 - 如需 SQL Server 客戶諮詢小組部落格中有關使用 BACPAC 檔案進行移轉的主題，請參閱[使用 BACPAC 檔案從 SQL Server 移轉至 Azure SQL Database](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407)。
 - 如需有關整個 SQL Server 資料庫移轉程序的討論，包括效能建議，請參閱[將 SQL Server 資料庫移轉至 Azure SQL Database](sql-database-single-database-migrate.md)。
 - 若要了解如何管理和共用儲存體金鑰，以及安全地共用存取簽章，請參閱 [Azure 儲存體安全性指南](https://docs.microsoft.com/azure/storage/common/storage-security-guide)。

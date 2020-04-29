@@ -1,5 +1,5 @@
 ---
-title: 什麼是試用產品？ |Azure 應用商店
+title: 什麼是試用產品？ |Azure Marketplace
 description: Marketplace 試用產品功能說明
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: bdfadf359195464c4024b28c5e597c571305481a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80278224"
 ---
 <a name="what-is-test-drive"></a>什麼是試用產品？
@@ -63,7 +63,7 @@ ms.locfileid: "80278224"
 
 您現在已了解試用產品的功能，接著可以瀏覽您想發行的特定試用產品類型，以了解需要的所有必要欄位。
 
-- **[Azure 資源管理器](./azure-resource-manager-test-drive.md)**
-- **[邏輯應用](./logic-app-test-drive.md)**
+- **[Azure Resource Manager](./azure-resource-manager-test-drive.md)**
+- **[邏輯應用程式](./logic-app-test-drive.md)**
 
 如果您有其他問題、在尋找疑難排解建議，或想讓試用產品更成功，請移至[常見問題集、疑難排解與最佳做法](./marketing-and-best-practices.md)。

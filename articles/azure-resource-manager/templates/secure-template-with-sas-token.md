@@ -1,24 +1,24 @@
 ---
 title: 使用 SAS 權杖安全地部署範本
-description: 使用受 SAS 權杖保護的 Azure 資源管理器範本將資源部署到 Azure。 顯示 Azure 電源外殼和 Azure CLI。
+description: 使用受到 SAS 權杖保護的 Azure Resource Manager 範本，將資源部署至 Azure。 顯示 Azure PowerShell 和 Azure CLI。
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156390"
 ---
-# <a name="deploy-private-arm-template-with-sas-token"></a>使用 SAS 權杖部署專用 ARM 範本
+# <a name="deploy-private-arm-template-with-sas-token"></a>使用 SAS 權杖部署私人 ARM 範本
 
-當 Azure 資源管理器 （ARM） 範本位於存儲帳戶中時，可以限制對範本的訪問，以避免公開公開範本。 通過為範本創建共用訪問簽名 （SAS） 權杖並在部署期間提供該權杖來訪問安全範本。 本文介紹如何使用 Azure PowerShell 或 Azure CLI 部署具有 SAS 權杖的範本。
+當您的 Azure Resource Manager （ARM）範本位於儲存體帳戶時，您可以限制對範本的存取，以避免公開公開。 您可以藉由建立範本的共用存取簽章（SAS）權杖，並在部署期間提供該權杖，來存取受保護的範本。 本文說明如何使用 Azure PowerShell 或 Azure CLI 來部署具有 SAS 權杖的範本。
 
-## <a name="create-storage-account-with-secured-container"></a>使用安全容器創建存儲帳戶
+## <a name="create-storage-account-with-secured-container"></a>建立具有安全容器的儲存體帳戶
 
-以下腳本創建已關閉公共訪問的存儲帳戶和容器。
+下列腳本會建立儲存體帳戶和已關閉公用存取的容器。
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -61,11 +61,11 @@ az storage container create \
 
 ---
 
-## <a name="upload-template-to-storage-account"></a>將範本上載到存儲帳戶
+## <a name="upload-template-to-storage-account"></a>將範本上傳至儲存體帳戶
 
-現在，您已準備好將範本上載到存儲帳戶。 提供要使用的範本的路徑。
+現在，您已經準備好將範本上傳至儲存體帳戶。 提供您想要使用之範本的路徑。
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 Set-AzStorageBlobContent `
@@ -90,10 +90,10 @@ az storage blob upload \
 若要在儲存體帳戶中部署私人範本，請產生 SAS Token 並將它包含在範本的 URI 中。 設定到期時間，以允許足夠的時間來完成部署。
 
 > [!IMPORTANT]
-> 包含範本的 Blob 只能由帳戶擁有者訪問。 不過，當您建立 Blob 的 SAS Token 時，具備該 URI 的任何人都可以存取該 Blob。 如果另一位使用者攔截了 URI，該使用者也能存取範本。 SAS 權杖是限制對範本的訪問的好方法，但不應直接在範本中包含密碼等敏感性資料。
+> 僅有帳戶擁有者可以存取包含範本的 Blob。 不過，當您建立 Blob 的 SAS Token 時，具備該 URI 的任何人都可以存取該 Blob。 如果另一位使用者攔截了 URI，該使用者也能存取範本。 SAS Token 是限制存取範本的好方法，但您不應該將機密資料 (如密碼) 直接包含在範本中。
 >
 
-# <a name="powershell"></a>[電源外殼](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 # get the URI with the SAS token
@@ -140,5 +140,5 @@ az deployment group create \
 
 
 ## <a name="next-steps"></a>後續步驟
-* 有關部署範本的簡介，請參閱[使用 ARM 範本和 Azure PowerShell 部署資源](deploy-powershell.md)。
+* 如需部署範本的簡介，請參閱[使用 ARM 範本部署資源和 Azure PowerShell](deploy-powershell.md)。
 * 若要在範本中定義參數，請參閱 [編寫範本](template-syntax.md#parameters)。

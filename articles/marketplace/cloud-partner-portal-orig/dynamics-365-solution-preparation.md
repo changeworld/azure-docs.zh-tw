@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: ac1e4fa541e945f20904ced114a36b58d14585ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80278581"
 ---
 # <a name="dynamics-365-solution-preparation"></a>Dynamics 365 解決方案準備
@@ -24,7 +24,7 @@ Dynamics 365 解決方案系統是用於封裝、安裝和解除安裝元件的�
 
 _**注意：** 在接下來的套件範例中，我們會假設方案名稱是 "SampleSolution.zip"_
 
-如果您是新的 ISV，您可以在此處獲取有關創建解決方案的更多詳細資訊：[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
+如果您是新的 ISV，您可以在這裡取得更多有關建立解決方案的詳細資料：[https://msdn.microsoft.com/library/gg334530.aspx](https://msdn.microsoft.com/library/gg334530.aspx)
 
 如果您的解決方案需要支援的資料：
 

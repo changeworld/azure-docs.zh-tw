@@ -1,6 +1,6 @@
 ---
-title: 由於 Windows 引導管理器，Windows 虛擬機器無法啟動
-description: 本文提供瞭解決 Windows 引導管理器阻止啟動 Azure 虛擬機器的問題的步驟。
+title: Windows 虛擬機器無法開機，因為 windows 開機管理程式
+description: 本文提供解決 Windows 開機管理程式防止啟動 Azure 虛擬機器之問題的步驟。
 services: virtual-machines-windows
 documentationcenter: ''
 author: v-miegge
@@ -15,120 +15,120 @@ ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 5d2fb62870e2c41af635627f5d692f08c67f8394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80373345"
 ---
-# <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>由於 Windows 引導管理器，Windows VM 無法啟動
+# <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Windows VM 無法開機，因為 Windows 開機管理程式
 
-本文提供瞭解決 Windows 引導管理器阻止啟動 Azure 虛擬機器 （VM） 的問題的步驟。
+本文提供的步驟可解決 Windows 開機管理程式防止 Azure 虛擬機器（VM）啟動的問題。
 
 ## <a name="symptom"></a>徵狀
 
-VM 卡在使用者提示後處於等待，除非手動指示，否則不會啟動。
+VM 在等候使用者提示時停滯，除非手動指示，否則不會開機。
 
-當您使用[引導診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)來查看 VM 的螢幕截圖時，您將看到螢幕截圖顯示 Windows 啟動管理器，並顯示消息 *"選擇要啟動的作業系統"，或者按 TAB 選擇工具：*。
+當您使用 [[開機診斷](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics)] 來查看 VM 的螢幕擷取畫面時，您會看到螢幕擷取畫面顯示 Windows 開機管理程式，其中包含 [*選擇要啟動的作業系統]，或按 tab 鍵來選取工具：*。
 
 圖 1
  
-![Windows 啟動管理器指出"選擇要啟動的作業系統，或按 TAB 選擇工具：](media/troubleshoot-guide-windows-boot-manager-menu/1.jpg)
+![Windows 開機管理程式會指出「選擇要啟動的作業系統，或按 TAB 鍵來選取工具：」](media/troubleshoot-guide-windows-boot-manager-menu/1.jpg)
 
 ## <a name="cause"></a>原因
 
-該錯誤是由於 Windows 啟動管理器中的 BCD 標誌*顯示引導功能表*造成的。 啟用標誌後，Windows 引導管理器會提示使用者在引導過程中選擇要運行的載入程式，從而導致啟動延遲。 在 Azure 中，此功能可以添加到啟動 VM 所需的時間。
+錯誤是因為 Windows 開機管理程式中*displaybootmenu*的 BCD 旗標。 啟用旗標時，Windows 開機管理員會在開機過程中提示使用者，以選取他們想要執行的載入器，因而導致開機延遲。 在 Azure 中，這項功能可新增至啟動 VM 所需的時間。
 
 ## <a name="solution"></a>解決方法
 
-流程概述：
+進程總覽：
 
-1. 使用串列主控台配置更快的啟動時間。
-2. 創建和訪問修復 VM。
-3. 配置修復 VM 上的啟動時間更快。
-4. **建議**：在重建 VM 之前，請啟用串列主控台和記憶體傾印集合。
+1. 使用序列主控台來設定更快速的開機時間。
+2. 建立和存取修復 VM。
+3. 針對修復 VM 設定更快速的開機時間。
+4. **建議**：重建 VM 之前，請先啟用序列主控台和記憶體傾印集合。
 5. 重建 VM。
 
-### <a name="configure-for-faster-boot-time-using-serial-console"></a>使用串列主控台配置更快的啟動時間
+### <a name="configure-for-faster-boot-time-using-serial-console"></a>使用序列主控台設定更快速的開機時間
 
-如果您有權訪問串列主控台，可通過兩種方式實現更快的啟動時間。 減少*顯示引導功能表*等待時間，或完全刪除標誌。
+如果您可以存取序列主控台，有兩種方式可達到更快速的開機時間。 請減少*displaybootmenu*等候時間，或完全移除旗標。
 
-1. 按照指示訪問[Windows 的 Azure 串列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)以訪問基於文本的主控台。
+1. 遵循指示來存取[適用于 Windows 的 Azure 序列主控台](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows)，以取得以文字為基礎的主控台存取權。
 
    > [!NOTE]
-   > 如果無法訪問串列主控台，請跳到"[創建和訪問修復 VM"。](#create-and-access-a-repair-vm)
+   > 如果您無法存取序列主控台，請直接跳到[建立並存取修復 VM](#create-and-access-a-repair-vm)。
 
-2. **選項 A**： 減少等待時間
+2. **選項 A**：縮短等待時間
 
-   a. 預設情況下，等待時間設置為 30 秒，但可以更改為更快速的時間（例如 5 秒）。
+   a. 等待時間預設會設定為30秒，但可以變更為較快的時間（例如5秒）。
 
-   b. 在串列主控台中使用以下命令來調整超時值：
+   b. 在序列主控台中使用下列命令來調整 timeout 值：
 
       `bcdedit /set {bootmgr} timeout 5`
 
-3. **選項 B**： 刪除 BCD 標誌
+3. **選項 B**：移除 BCD 旗標
 
-   a. 要完全防止顯示引導功能表提示，請輸入以下命令：
+   a. 若要完全避免顯示開機功能表提示，請輸入下列命令：
 
       `bcdedit /deletevalue {bootmgr} displaybootmenu`
 
       > [!NOTE]
-      > 如果無法使用串列主控台在上述步驟中配置更快的啟動時間，則可以繼續執行以下步驟。 現在，您將在離線模式下進行故障排除以解決此問題。
+      > 如果您無法在上述步驟中使用序列主控台來設定更快速的開機時間，您可以改為繼續進行下列步驟。 您現在會在離線模式中進行疑難排解，以解決此問題。
 
-### <a name="create-and-access-a-repair-vm"></a>創建和訪問修復 VM
+### <a name="create-and-access-a-repair-vm"></a>建立和存取修復 VM
 
-1. 使用[VM 修復命令的步驟 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)準備修復 VM。
+1. 使用[VM 修復命令的步驟 1-3](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands)來準備修復 VM。
 2. 使用遠端桌面連線連接到修復 VM。
 
-### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>配置修復 VM 上的更快的啟動時間
+### <a name="configure-for-faster-boot-time-on-a-repair-vm"></a>針對修復 VM 設定更快速的開機時間
 
 1. 開啟提升權限的命令提示字元。
-2. 輸入以下內容以啟用 DisplayBootMenu：
+2. 輸入下列內容以啟用 DisplayBootMenu：
 
-   對於**第 1 代 VM**使用此命令：
+   針對**第1代 vm**使用此命令：
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} displaybootmenu yes`
 
-   對於**第 2 代 VM**使用此命令 ：
+   針對**第2代 vm**使用此命令：
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} displaybootmenu yes`
 
-   替換任何大於或小於符號以及符號內的文本，例如"<文本>"。
+   取代任何大於或小於符號以及其中的文字（例如「此處的 < 文字 >」）。
 
-3. 將超時值更改為 5 秒：
+3. 將 timeout 值變更為5秒：
 
-   對於**第 1 代 VM**使用此命令：
+   針對**第1代 vm**使用此命令：
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /set {bootmgr} timeout 5`
 
-   對於**第 2 代 VM**使用此命令 ：
+   針對**第2代 vm**使用此命令：
 
    `bcdedit /store <VOLUME LETTER OF EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /set {bootmgr} timeout 5`
 
-   替換任何大於或小於符號以及符號內的文本，例如"<文本>"。
+   取代任何大於或小於符號以及其中的文字（例如「此處的 < 文字 >」）。
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>建議：在重建 VM 之前，請啟用串列主控台和記憶體傾印集合
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>建議：重建 VM 之前，請先啟用序列主控台和記憶體傾印集合
 
-要啟用記憶體傾印集合和串列主控台，請運行以下腳本：
+若要啟用記憶體傾印收集和序列主控台，請執行下列腳本：
 
-1. 打開提升的命令提示會話（以管理員身份運行）。
+1. 開啟提升許可權的命令提示字元會話（以系統管理員身分執行）。
 2. 執行下列命令：
 
-   啟用串列主控台
+   啟用序列主控台
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON`
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-   替換任何大於或小於符號以及符號內的文本，例如"<文本>"。
+   取代任何大於或小於符號以及其中的文字（例如「此處的 < 文字 >」）。
 
-3. 驗證 OS 磁片上的可用空間是否與 VM 上的記憶體大小 （RAM） 相同。
+3. 確認 OS 磁片上的可用空間，與 VM 上的記憶體大小（RAM）一樣大。
 
-   如果 OS 磁片上沒有足夠的空間，則應更改將創建記憶體傾印檔的位置，並將其引用到連接到具有足夠可用空間的 VM 的任何資料磁片。 要更改位置，請將"%SystemRoot%"替換為以下命令中資料磁片的磁碟機號（例如"F："）。
+   如果 OS 磁片上沒有足夠的空間，您應該變更記憶體傾印檔案的建立位置，並將其指向任何連接至具有足夠可用空間之 VM 的資料磁片。 若要變更位置，請在下列命令中使用資料磁片的磁碟機號（例如 "F："）取代 "% SystemRoot%"。
 
-#### <a name="suggested-configuration-to-enable-os-dump"></a>啟用 OS 轉儲的建議配置
+#### <a name="suggested-configuration-to-enable-os-dump"></a>啟用 OS 轉儲的建議設定
 
-**載入損壞的 OS 磁片**：
+**載入中斷的 OS 磁片**：
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
@@ -148,10 +148,10 @@ VM 卡在使用者提示後處於等待，除非手動指示，否則不會啟�
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**卸載損壞的 OS 磁片：**
+**卸載中斷的 OS 磁片：**
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
 ### <a name="rebuild-the-original-vm"></a>重建原始 VM
 
-使用[VM 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)重新組裝 VM。
+使用[Vm 修復命令的步驟 5](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example)來重新組裝 vm。

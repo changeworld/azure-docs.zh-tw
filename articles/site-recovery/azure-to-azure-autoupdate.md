@@ -1,6 +1,6 @@
 ---
-title: Azure 網站回復中的行動服務自動更新
-description: 使用 Azure 網站恢復複製 Azure VM 時自動更新行動服務的概述。
+title: 自動更新 Azure Site Recovery 中的行動服務
+description: 使用 Azure Site Recovery 複寫 Azure Vm 時，自動更新行動服務的總覽。
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
@@ -9,71 +9,71 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: rajanaki
 ms.openlocfilehash: 67298ecf0c17feee2d36bb8774cae37b1ca81381
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80618966"
 ---
-# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 複製中的行動服務自動更新
+# <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 複寫中的行動服務自動更新
 
-Azure 網站恢復使用每月發佈節奏來修復任何問題並增強現有功能或添加新功能。 要保持服務的最新狀態,您必須計劃每月進行修補程式部署。 為了避免與每次升級關聯的開銷,可以允許網站恢復管理元件更新。
+Azure Site Recovery 會使用每月發行頻率來修正任何問題，並增強現有功能或加入新功能。 若要讓服務保持最新狀態，您必須規劃每個月的修補程式部署。 若要避免與每次升級相關聯的額外負荷，您可以允許 Site Recovery 管理元件更新。
 
-如[Azure 到 Azure 災難復原體系結構](azure-to-azure-architecture.md)中所述,行動服務安裝在所有 Azure 虛擬機器 (VM) 上,這些虛擬機器已啟用從一個 Azure 區域到另一個 Azure 區域。 使用自動更新時,每個新版本都會更新行動服務擴展。
+如[azure 到 azure](azure-to-azure-architecture.md)的嚴重損壞修復架構中所述，行動服務會安裝在已從一個 Azure 區域啟用複寫的所有 azure 虛擬機器（vm）上。 當您使用自動更新時，每個新版本都會更新行動服務延伸模組。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="how-automatic-updates-work"></a>自動更新的工作原理
+## <a name="how-automatic-updates-work"></a>自動更新的工作方式
 
-使用網站恢復來管理更新時,它會通過與保管庫在同一訂閱中創建的自動化帳戶部署全域 Runbook(由 Azure 服務使用)。 每個保管庫使用一個自動化帳戶。 對於保管庫中的每個 VM,Runbook 將檢查活動自動更新。 如果行動服務擴展的較新版本可用,則安裝更新。
+當您使用 Site Recovery 來管理更新時，它會透過與保存庫相同的訂用帳戶中所建立的自動化帳戶，部署 Azure 服務所使用的全域 runbook。 每個保存庫會使用一個自動化帳戶。 針對保存庫中的每個 VM，runbook 會檢查是否有作用中的自動更新。 如果有較新版本的行動服務延伸模組可供使用，則會安裝更新。
 
-預設 Runbook 計劃每天上午 12:00 在複製 VM 的地理位置的時區發生。 您還可以透過自動化帳戶更改 Runbook 計畫。
+預設 runbook 排程會在複寫 VM 地理位置的時區上午12:00，每天執行一次。 您也可以透過自動化帳戶變更 runbook 排程。
 
 > [!NOTE]
-> 從[更新匯總 35](site-recovery-whats-new.md#updates-march-2019)開始,您可以選擇用於更新的現有自動化帳戶。 在更新匯總 35 之前,默認情況下,網站恢復創建了自動化帳戶。 僅當為 VM 啟用複製時,才能選擇此選項。 它不適用於已啟用複製的 VM。 您選擇的設定將應用於同一保管庫中保護的所有 Azure VM。
+> 從[更新彙總套件 35](site-recovery-whats-new.md#updates-march-2019)開始，您可以選擇要用於更新的現有自動化帳戶。 在更新彙總套件35之前，Site Recovery 預設會建立自動化帳戶。 當您啟用 VM 的複寫時，您只能選取此選項。 它不適用於已啟用複寫功能的 VM。 您選取的設定會套用至相同保存庫中受保護的所有 Azure Vm。
 
-打開自動更新不需要重新啟動 Azure VM 或影響正在進行的複製。
+開啟自動更新不需要重新開機您的 Azure Vm 或影響進行中的複寫。
 
-自動化帳戶中的作業計費基於一個月內使用的作業運行時分鐘數。 作業執行每天需要幾秒鐘到大約一分鐘,並作為免費單元進行覆蓋。 預設情況下,500 分鐘作為自動化帳戶的可用單位包含在內,如下表所示:
+自動化帳戶中的作業計費是以一個月內使用的作業執行時間分鐘數為基礎。 作業執行需要幾秒鐘到大約一分鐘的時間，並以免費單位來涵蓋。 根據預設，500分鐘會包含為自動化帳戶的免費單位，如下表所示：
 
-| 包括免費單位(每月) | Price |
+| 內含免費單位（每月） | Price |
 |---|---|
-| 工作執行時 500 分鐘 | ±0.14/分鐘
+| 作業執行時間500分鐘 | ₹ 0.14/minute
 
 ## <a name="enable-automatic-updates"></a>啟用自動更新
 
-站台恢復可透過多種方式管理延伸更新:
+Site Recovery 可以管理延伸模組更新的方法有好幾種：
 
-- [開啟複製步驟的一部份進行管理](#manage-as-part-of-the-enable-replication-step)
+- [作為啟用複寫步驟的一部分進行管理](#manage-as-part-of-the-enable-replication-step)
 - [切換保存庫內的擴充功能更新設定](#toggle-the-extension-update-settings-inside-the-vault)
 - [手動管理更新](#manage-updates-manually)
 
-### <a name="manage-as-part-of-the-enable-replication-step"></a>開啟複製步驟的一部份進行管理
+### <a name="manage-as-part-of-the-enable-replication-step"></a>作為啟用複寫步驟的一部分進行管理
 
-當您啟用[從 VM 檢視](azure-to-azure-quickstart.md)或[恢復服務保管庫](azure-to-azure-how-to-enable-replication.md)開始的 VM 複製時,可以允許網站恢復管理站點恢復擴展的更新或手動管理它。
+當您[從 vm](azure-to-azure-quickstart.md)或復原[服務保存庫](azure-to-azure-how-to-enable-replication.md)啟動 vm 的複寫時，您可以允許 Site Recovery 管理 Site Recovery 延伸模組的更新，或以手動方式進行管理。
 
-:::image type="content" source="./media/azure-to-azure-autoupdate/enable-rep.png" alt-text="延伸設定":::
+:::image type="content" source="./media/azure-to-azure-autoupdate/enable-rep.png" alt-text="延伸模組設定":::
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>切換保存庫內的擴充功能更新設定
 
-1. 從回復服務保存庫到**管理** > **站台修復基礎結構**。
-1. **在"對於 Azure 虛擬機器** > **擴展更新設定** > **"下,允許網站恢復管理**,選擇 **"打開**"。
+1. 從復原服務保存庫，移至 [**管理** > **Site Recovery 基礎結構**]。
+1. 在 [ **Azure 虛擬機器** > **延伸模組更新設定** > ] 下的 [**允許 Site Recovery 管理**] 底下，選取 [**開啟**]。
 
-   要手動管理擴展,請選擇 **"關閉**"。
+   若要手動管理延伸模組，請選取 [**關閉**]。
 
 1. 選取 [儲存]  。
 
-:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="延伸更新設定":::
+:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="延伸模組更新設定":::
 
 > [!IMPORTANT]
-> 當您選擇**允許網站恢復管理**時,該設置將應用於保管庫中的所有 VM。
+> 當您選擇 [**允許 Site Recovery 管理**] 時，此設定會套用至保存庫中的所有 vm。
 
 > [!NOTE]
-> 任一選項都通知您用於管理更新的自動化帳戶。 如果您首次在保管庫中使用此功能,則默認情況下將創建新的自動化帳戶。 或者,您可以自定義設置,並選擇現有的自動化帳戶。 要在同一保管庫中啟用複製的所有後續節拍都將使用以前創建的自動化帳戶。 目前,下拉菜單將僅列出與保管庫位於同一資源組中的自動化帳戶。
+> 其中一個選項會通知您用於管理更新的自動化帳戶。 如果您是第一次在保存庫中使用這項功能，預設會建立新的自動化帳戶。 或者，您可以自訂設定，並選擇現有的自動化帳戶。 在相同保存庫中啟用複寫的所有後續變成，都會使用先前建立的自動化帳戶。 目前，下拉式功能表只會列出與保存庫位於相同資源群組中的自動化帳戶。
 
 > [!IMPORTANT]
-> 需要在自動化帳戶的上下文中運行以下腳本。
-對於自訂自動化帳戶,請使用以下文稿:
+> 下列腳本必須在自動化帳戶的內容中執行。
+若為自訂自動化帳戶，請使用下列腳本：
 
 ```azurepowershell
 param(
@@ -512,44 +512,44 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 ### <a name="manage-updates-manually"></a>手動管理更新
 
-1. 如果 VM 上安裝了行動服務的新更新,您將看到以下通知:**新網站恢復複製代理更新可用。單擊以進行安裝。**
+1. 如果您的 Vm 上已安裝行動服務的新更新，您會看到下列通知：**新的 Site Recovery 複寫代理程式更新可供使用。按一下以安裝。**
 
    :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="[複寫的項目] 視窗":::
 
-1. 選擇通知以打開 VM 選擇頁。
-1. 選擇要升級的 VM,然後選擇 **「確定**」。 將為每個選定的 VM 啟動更新行動服務。
+1. 選取通知以開啟 [VM 選擇] 頁面。
+1. 選擇您想要升級的 Vm，然後選取 **[確定]**。 系統會針對每個選取的 VM 啟動更新行動服務。
 
    :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="複寫的項目 VM 清單":::
 
-## <a name="common-issues-and-troubleshooting"></a>常見問題和故障排除
+## <a name="common-issues-and-troubleshooting"></a>常見的問題和疑難排解
 
-如果自動更新有問題,您將在保管庫儀錶板中的 **「配置」問題**下看到錯誤通知。
+如果自動更新發生問題，您會在保存庫儀表板的 [設定**問題**] 底下看到錯誤通知。
 
-如果無法開啟自動更新,請參閱以下常見錯誤和建議的操作:
+如果您無法啟用自動更新，請參閱下列常見的錯誤和建議的動作：
 
 - **錯誤**：您沒有權限，無法建立 Azure 執行身分帳戶 (服務主體) 以及將參與者角色授與服務主體。
 
-  **建議的操作**:請確保已登錄帳戶已分配為"參與者",然後重試。 有關分配許可權的詳細資訊,請參閱[「如何:使用門戶創建可以存取資源的 Azure AD 應用程式和服務主體](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)」所需的許可權部分。
+  **建議動作**：請確定已將登入的帳戶指派為參與者，然後再試一次。 如需指派許可權的詳細資訊，請參閱[如何：使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)的必要許可權一節。
 
-  要在啟用自動更新后修復大多數問題,請選擇 **「修復**」。。 如果修復按鈕不可用,請參閱擴展更新設置窗格中顯示的錯誤消息。
+  若要在啟用自動更新後修正大部分的問題，請選取 [**修復**]。 如果 [修復] 按鈕無法使用，請參閱 [擴充功能更新設定] 窗格中顯示的錯誤訊息。
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="延伸更新設定中的站台復原服務修復按鈕":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="延伸模組更新設定中的 Site Recovery 服務修復按鈕":::
 
 - **錯誤**：執行身分帳戶沒有存取復原服務資源的權限。
 
-  **建議的操作**:刪除,然後[重新建立「執行為「帳戶](/azure/automation/automation-create-runas-account)。 或者,確保自動化運行為帳戶的 Azure 活動目錄應用程式可以訪問恢復服務資源。
+  **建議的動作**：刪除然後[重新建立執行身分帳戶](/azure/automation/automation-create-runas-account)。 或者，請確定自動化執行身分帳戶的 Azure Active Directory 應用程式可以存取復原服務資源。
 
 - **錯誤**：找不到執行身分帳戶。 下列其中一個項目已刪除或未建立：Azure Active Directory 應用程式、服務主體、角色、自動化憑證資產、自動化連線資產，或憑證與連線之間的指紋不相同。
 
-  **建議的操作**:刪除,然後[重新建立「執行為「帳戶](/azure/automation/automation-create-runas-account)。
+  **建議的動作**：刪除然後[重新建立執行身分帳戶](/azure/automation/automation-create-runas-account)。
 
-- **錯誤**: 自動化帳戶使用的 Azure 執行為憑證即將過期。
+- **錯誤**：自動化帳戶所使用的 Azure 執行身分憑證即將到期。
 
-  為「運行」帳戶創建的自簽名證書自創建之日起一年過期。 您可以在該憑證到期前隨時更新憑證。 如果您已註冊電子郵件通知,則當需要從您方面執行操作時,您還會收到電子郵件。 此錯誤將在到期日期前兩個月顯示,如果證書已過期,則將更改為嚴重錯誤。 證書過期后,在續訂后,自動更新將不起作用。
+  針對執行身分帳戶所建立的自我簽署憑證，會從建立日期起算一年後到期。 您可以在該憑證到期前隨時更新憑證。 如果您已註冊電子郵件通知，當您需要執行動作時，也會收到電子郵件。 此錯誤會在到期日之前的兩個月內顯示，如果憑證已過期，將會變更為重大錯誤。 憑證過期後，自動更新將無法正常運作，直到您更新相同的為止。
 
-  **建議的操作**:要解決此問題,請選擇 **「修復**」,然後**選擇續訂證書**。
+  **建議動作**：若要解決此問題，請選取 [**修復**]，然後按一下 [**更新憑證**]。
 
-  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="更新憑證":::
+  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="續訂-cert":::
 
   > [!NOTE]
-  > 續訂證書後,刷新頁面以顯示當前狀態。
+  > 更新憑證之後，請重新整理頁面，以顯示目前的狀態。

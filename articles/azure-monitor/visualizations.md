@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
 ms.openlocfilehash: 877616f6fd31bdfbe193bd8f03efb3f79317ad42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79535364"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>將來自 Azure 監視器的資料視覺化
@@ -42,11 +42,11 @@ ms.locfileid: "79535364"
 ![儀表板](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>優點
-- 深入整合至 Azure。 視覺化效果可以從多個 Azure 頁面（包括指標資源管理器、日誌分析和應用程式見解）固定到儀表板。
+- 深入整合至 Azure。 視覺效果可以釘選到多個 Azure 頁面的儀表板，包括計量瀏覽器、Log Analytics 和 Application Insights。
 - 支援計量和記錄。
 - 可結合來自多個來源的資料，包括來自[計量瀏覽器](platform/metrics-charts.md)、[記錄查詢](log-query/log-query-overview.md)以及 Application Insights 中[對應](app/app-map.md)和可用性的輸出結果。
 - 個人或共用儀表板的選項。 與 Azure [角色型驗證 (RBAC)](../role-based-access-control/overview.md) 整合。
-- 自動重新整理。 計量的重新整理端看時間範圍而定，最少五分鐘。 通過按一下給定視覺化效果上的"刷新"圖示或刷新整個儀表板，每小時記錄刷新一次，並按需使用手動刷新選項。
+- 自動重新整理。 計量的重新整理端看時間範圍而定，最少五分鐘。 記錄會每小時重新整理一次，並在指定的視覺效果上按一下 [重新整理] 圖示，或重新整理完整的儀表板，視需要手動重新整理選項。
 - 使用時間戳記和自訂參數以參數化計量儀表板。
 - 彈性的版面配置選項。
 - 全螢幕模式。
@@ -111,7 +111,7 @@ ms.locfileid: "79535364"
 ## <a name="azure-monitor-views"></a>Azure 監視器檢視
 
 > [!IMPORTANT]
-> 視圖正在被棄用。 有關將視圖轉換為活頁簿的指導，請參閱[Azure 監視器視圖設計器到活頁簿過渡指南](platform/view-designer-conversion-overview.md)。
+> Views 正在被取代。 如需將視圖轉換為活頁簿的指引，請參閱[Azure 監視器 view designer to 活頁簿轉換指南](platform/view-designer-conversion-overview.md)。
 
 [Azure 監視器中的檢視](platform/view-designer.md)可讓您使用記錄資料建立自訂視覺效果。 [監視解決方案](insights/solutions.md)會使用這些視覺效果呈現收集到的資料。
 
@@ -137,7 +137,7 @@ ms.locfileid: "79535364"
 - 了解 [ Azure 監視器收集的資料](platform/data-platform.md)。
 - 了解 [Azure 儀表板](../azure-portal/azure-portal-dashboards.md)。
 - 了解 [Azure 監視器中的檢視](platform/view-designer.md)。
-- 瞭解[工作手冊](../azure-monitor/app/usage-workbooks.md)。
+- 瞭解活頁[簿](../azure-monitor/app/usage-workbooks.md)。
 - 了解[將記錄資料匯入 Power BI](../azure-monitor/platform/powerbi.md)。
 - 了解 [Grafana Azure 監視器資料來源外掛程式](../azure-monitor/platform/grafana-plugin.md)。
 

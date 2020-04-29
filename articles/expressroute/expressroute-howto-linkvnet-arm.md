@@ -1,5 +1,5 @@
 ---
-title: 快速路由:將 VNet 連結到電路:Azure 電源外殼
+title: ExpressRoute：將 VNet 連結到線路： Azure PowerShell
 description: 本文提供以下內容的概觀：如何使用 Resource Manager 部署模型和 PowerShell 將虛擬網路 (VNet) 連結到 ExpressRoute 線路。
 services: expressroute
 author: charwen
@@ -9,10 +9,10 @@ ms.date: 05/20/2018
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 755b1898ee4cbc32de3a65a6bbc368ecf3eb3acf
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80616374"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>將虛擬網路連線到 ExpressRoute 電路
@@ -20,8 +20,8 @@ ms.locfileid: "80616374"
 > * [Azure 入口網站](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [視訊 - Azure 門戶](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [電源外殼(經典)](expressroute-howto-linkvnet-classic.md)
+> * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [PowerShell （傳統）](expressroute-howto-linkvnet-classic.md)
 >
 
 本文會協助您使用 Resource Manager 部署模型和 PowerShell，將虛擬網路 (VNet) 連結到 Azure ExpressRoute 線路。 虛擬網路可以位於相同的訂用帳戶中，或屬於另一個訂用帳戶。 本文也會示範如何更新虛擬網路連結。
@@ -176,10 +176,10 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 
 *RoutingWeight* 的範圍是從 0 到 32000。 預設值為 0。
 
-## <a name="configure-expressroute-fastpath"></a>設定快速路由快速路徑 
-如果您的虛擬網路閘道是超高性能或 ErGw3AZ,則可以啟用[ExpressRoute 快速路徑](expressroute-about-virtual-network-gateways.md)。 FastPath 提高了資料路徑性能,例如每秒數據包和本地網路和虛擬網路之間的每秒連接。 
+## <a name="configure-expressroute-fastpath"></a>設定 ExpressRoute FastPath 
+如果您的虛擬網路閘道是 Ultra 效能或 ErGw3AZ，您可以啟用[ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 可改善資料路徑效能，例如每秒封包數，以及內部部署網路與虛擬網路之間的每秒連線數。 
 
-**在新連線上設定快速路徑**
+**在新連接上設定 FastPath**
 
 ```azurepowershell-interactive 
 $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
@@ -187,7 +187,7 @@ $gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG"
 $connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
 ``` 
 
-**更新現有連線以開啟 FastPath**
+**更新現有的連接以啟用 FastPath**
 
 ```azurepowershell-interactive 
 $connection = Get-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" 

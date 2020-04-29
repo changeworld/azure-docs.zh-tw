@@ -1,5 +1,5 @@
 ---
-title: 查看市場優惠的狀態 |Azure 應用商店
+title: 查看 marketplace 供應專案的狀態 |Azure Marketplace
 description: 使用 Cloud Partner 入口網站檢視 Azure 和 AppSource Marketplace 上供應項目的狀態
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: dsindona
 ms.openlocfilehash: 0cbe6a45ba205f32a764bdadb021dc0dcf5bf0cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80275963"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>檢視 Azure Marketplace 和 AppSource 供應項目的發佈狀態
@@ -22,7 +22,7 @@ ms.locfileid: "80275963"
 |            ------              |   -----------                                                           |
 | **-**                          | 已經建立供應項目，但發佈程序尚未開始。            |
 | **正在發行**        | 供應項目正在進行發佈程序的步驟。   |
-| **發佈失敗**             | 由 Microsoft 驗證或檢閱的期間發現重大問題。 |
+| **發行失敗**             | 由 Microsoft 驗證或檢閱的期間發現重大問題。 |
 | **發行已取消**           | 發行者已取消供應項目發佈程序。  此狀態不會將市集中的現有供應項目取消列入。 | 
 | **正在等待發行者登出** | 供應項目已由 Microsoft 檢閱，正在等待發行者進行最終驗證。 |
 | **取消列入**                   | 市集中先前發佈的供應項目已經被移除。      | 
@@ -39,7 +39,7 @@ ms.locfileid: "80275963"
 
 ![諮詢服務的 [狀態] 索引標籤顯示錯誤](./media/consulting-service-error.png)
 
-最後一個 Azure 應用程式狀態的範例顯示重大 Microsoft 檢閱問題。  它包含指向 Azure DevOps 項的熱連結，其中包含有關此審核問題的詳細資訊。  如需詳細資訊，請參閱[發佈 Azure 應用程式供應項目](cpp-publish-offer.md)。
+最後一個 Azure 應用程式狀態的範例顯示重大 Microsoft 檢閱問題。  其中包含 Azure DevOps 專案的熱連結，其中包含有關此審查問題的詳細資訊。  如需詳細資訊，請參閱[發佈 Azure 應用程式供應項目](cpp-publish-offer.md)。
 
 ![顯示檢閱問題的 Azure 應用程式 [狀態] 索引標籤](../azure-applications/media/status-tab-ms-review.png)
 

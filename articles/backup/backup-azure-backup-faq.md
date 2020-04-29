@@ -4,10 +4,10 @@ description: '有關以下常見問題的解答：包括復原服務保存庫、
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156050"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 備份 - 常見問題集
@@ -22,7 +22,7 @@ ms.locfileid: "80156050"
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>針對每個保存庫註冊的伺服器/電腦具有數目限制嗎？
 
-每個保存庫可以註冊最多 1000 個 Azure 虛擬機器。 如果使用 Microsoft Azure 備份代理，則每個保存庫最多可以註冊 50 個 MARS 代理。 您還可以將 50 台 MABS 伺服器/DPM 服務器註冊到保存庫。
+每個保存庫可以註冊最多 1000 個 Azure 虛擬機器。 如果您使用 Microsoft Azure 備份代理程式，則每個保存庫最多可以註冊 50 MARS 代理程式。 而且您可以向保存庫註冊 50 MABS 伺服器/DPM 服務器。
 
 ### <a name="how-many-datasourcesitems-can-be-protected-in-a-vault"></a>保存庫中可以保護多少個資料來源/項目？
 
@@ -75,14 +75,14 @@ ms.locfileid: "80156050"
 
 「Azure 備份」支援使用下列作業系統來備份檔案和資料夾，以及受「Azure 備份伺服器」和 DPM 保護的應用程式。
 
-**作業系統** | **Sku** | **詳細資料**
+**等於** | **SKU** | **詳細資料**
 --- | --- | ---
-Workstation | |
+工作站 | |
 Windows 10 64 位元 | 企業版、專業版、家用版 | 機器應該執行最新的服務套件和更新。
 Windows 8.1 64 位元 | Enterprise、Pro | 機器應該執行最新的服務套件和更新。
 Windows 8 64 位元 | Enterprise、Pro | 機器應該執行最新的服務套件和更新。
 Windows 7 64 位元 | Ultimate、Enterprise、Professional、Home Premium、Home Basic、Starter | 機器應該執行最新的服務套件和更新。
-伺服器 | |
+Server (伺服器) | |
 Windows Server 2019 64 位元 | Standard、Datacenter、Essentials | 含最新的服務套件/更新。
 Windows Server 2016 64 位元 | Standard、Datacenter、Essentials | 含最新的服務套件/更新。
 Windows Server 2012 R2 64 位元 | Standard、Datacenter、Foundation | 含最新的服務套件/更新。
@@ -123,7 +123,7 @@ BMR/系統狀態 |所要備份之機器的 BMR 或系統狀態的每個個別複
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>使用「復原服務保存庫」來備份的資料量是否有限制？
 
-您可以使用恢復服務保存庫備份的資料總量沒有限制。 單個資料來源（Azure VM 以外的）的大小最多可為 54，400 GB。 有關限制的詳細資訊，請參閱[支援矩陣 中的保存庫限制部分](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)。
+您可以使用復原服務保存庫來備份的總數據量沒有限制。 個別資料來源（不是 Azure Vm）的大小上限可以是 54400 GB。 如需有關限制的詳細資訊，請參閱[支援矩陣中的保存庫限制一節](https://docs.microsoft.com/azure/backup/backup-support-matrix#vault-support)。
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>為何傳輸到「復原服務保存庫」的資料大小會小於所選取要備份的資料？
 

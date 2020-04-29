@@ -1,5 +1,5 @@
 ---
-title: 對雲合作夥伴門戶的支援 |Azure 應用商店
+title: Cloud Partner 入口網站的支援 |Azure Marketplace
 description: 取得 Cloud Partner 入口網站的支援。
 author: dsindona
 ms.service: marketplace
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: dsindona
 ms.openlocfilehash: d27482fbec91700f24e5d0f25d4796ab24f1a9e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80276167"
 ---
 # <a name="get-support-for-cloud-partner-portal"></a>取得 Cloud Partner 入口網站的支援
@@ -19,13 +19,13 @@ ms.locfileid: "80276167"
 Microsoft 提供各式各樣的產品和服務支援。
 務必讓您的查詢能找到正確的支援團隊，對確保適當且及時的回應很重要。 請考慮下列案例，這些案例應有助於將您的查詢傳送給適當的團隊：
 
--   如果您是發行者，並且對客戶有疑問，請客戶使用 [Azure 門戶](https://portal.azure.com/)的支援連結請求支援
+-   如果您是發行者，並有來自客戶的問題，請在 [Azure 入口網站](https://portal.azure.com/)上使用支援連結要求您的客戶要求支援
 
 -   如果您是發佈者，而且有與應用程式或服務相關的問題，請檢閱下列步驟，開立支援票證。
 
 ## <a name="to-open-a-support-ticket"></a>若要開立支援票證
 
-1. 轉到 [雲合作夥伴門戶](https://cloudpartner.azure.com/)並使用工作或學校帳戶登錄。
+1. 請移至 [Cloud Partner 入口網站](https://cloudpartner.azure.com/)，然後使用您的工作或學校帳戶登入。
 
 2. 在頁面右上方的功能表中，選取 [說明]**** 圖示，然後選取 [支援]****。
 
@@ -38,7 +38,7 @@ Microsoft 提供各式各樣的產品和服務支援。
 ![support2](./media/cloud-partner-portal-support-for-cloud-partner-portal/support2.png)
 
 
-1. 選擇 **"開始請求**"。
+1. 選取 [**啟動要求**]。
 
 1. 提供連絡資訊並描述問題。 盡可能完整地描述問題。 提供可能有助於解決問題的任何檔案 (例如，螢幕擷取畫面、錯誤描述或網路追蹤)。
 

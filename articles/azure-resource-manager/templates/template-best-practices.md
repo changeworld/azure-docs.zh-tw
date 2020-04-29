@@ -4,23 +4,23 @@ description: 說明用於製作 Azure Resource Manager 範本的建議方法。 
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80156407"
 ---
-# <a name="arm-template-best-practices"></a>ARM 範本最佳實踐
+# <a name="arm-template-best-practices"></a>ARM 範本最佳做法
 
-本文提供有關如何構造 Azure 資源管理器 （ARM） 範本的建議。 這些建議可説明您避免使用 ARM 範本部署解決方案時的常見問題。
+本文提供有關如何建立您的 Azure Resource Manager （ARM）範本的建議。 當您使用 ARM 範本來部署解決方案時，這些建議可協助您避免常見的問題。
 
-有關如何管理 Azure 訂閱的建議，請參閱[Azure 企業基架：規範訂閱治理](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)。
+如需如何管理 Azure 訂用帳戶的建議，請參閱[azure enterprise scaffold：規定的訂](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)用帳戶治理。
 
 如需相關建議以了解如何建置適用於所有 Azure 雲端環境的範本，請參閱[開發針對雲端一致性的 Azure Resource Manager 範本](templates-cloud-consistency.md)。
 
 ## <a name="template-limits"></a>範本限制
 
-將範本的大小限制為 4 MB，每個參數檔將限制為 64 KB。 4-MB 限制適用于範本的最終狀態，在範本已擴展為反覆運算資源定義以及變數和參數的值後。 
+將您的範本大小限制為 4 MB，並將每個參數檔案限制為 64 KB。 4 MB 的限制適用于已展開反復資源定義的範本最終狀態，以及變數和參數的值。 
 
 您也受限於：
 
@@ -34,7 +34,7 @@ ms.locfileid: "80156407"
 
 ## <a name="resource-group"></a>資源群組
 
-將資源部署到資源組時，資源組將存儲有關資源的中繼資料。 中繼資料存儲在資源組的位置。
+當您將資源部署至資源群組時，資源群組會儲存資源的相關中繼資料。 中繼資料會儲存在資源群組的位置。
 
 如果資源群組的區域暫時無法使用，您就無法更新資源群組中的資源，因為中繼資料無法使用。 其他區域中的資源仍可如預期般運作，但您無法更新這些資源。 若要將風險降至最低，請將資源群組和資源放在相同區域。
 
@@ -93,7 +93,7 @@ ms.locfileid: "80156407"
 
 * 針對資源類型的 API 版本，請勿使用參數。 資源屬性和值可能會隨版本號碼而不同。 將 API 版本設定為參數時，程式碼編輯器中的 Intellisense 會無法判斷正確的結構描述。 請改為將 API 版本硬式編碼在範本中。
 
-* 請謹慎使用 `allowedValues`。 只有當您必須確保允許的選項中不會包含某些值時才可使用。 如果使用`allowedValues`過於廣泛，則可以通過不使清單保持最新來阻止有效的部署。
+* 請謹慎使用 `allowedValues`。 只有當您必須確保允許的選項中不會包含某些值時才可使用。 如果您的`allowedValues`使用量過廣，您可能會因為不讓清單保持最新狀態而封鎖有效的部署。
 
 * 當範本中的參數名稱與 PowerShell 部署命令中的參數相符時，Resource Manager 會在範本參數加上後置詞 **FromTemplate** 以避免命名衝突。 例如，如果您在範本中包含名為 **ResourceGroupName** 的參數，它會與 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) Cmdlet 中的 **ResourceGroupName** 參數發生衝突。 部署期間，系統會提示您為 **ResourceGroupNameFromTemplate** 提供值。
 
@@ -144,7 +144,7 @@ ms.locfileid: "80156407"
 
 當您使用[變數](template-variables.md)時，下列資訊可能會很有幫助︰
 
-* 對變數名稱使用 camel 大小寫。
+* 針對變數名稱使用 camel 大小寫。
 
 * 您需要在範本中使用一次以上的值，才使用變數。 如果值只會使用一次，硬式編碼值會讓您的範本較容易看懂。
 
@@ -162,7 +162,7 @@ ms.locfileid: "80156407"
 
 ## <a name="resource-dependencies"></a>資源相依性
 
-在決定要設置的依賴[項](define-resource-dependency.md)時，請使用以下準則：
+決定[要設定](define-resource-dependency.md)哪些相依性時，請使用下列指導方針：
 
 * 使用 **reference** 函式並傳入資源名稱，以便在必須共用屬性的資源之間設定隱含相依性。 當您已經定義隱含的相依性時，請勿新增明確的 `dependsOn` 元素。 這種方法可減少產生不必要相依性的風險。
 
@@ -204,7 +204,7 @@ ms.locfileid: "80156407"
    }
    ```
    
-   如果存儲帳戶部署在要創建的同一範本中，並且存儲帳戶的名稱未與範本中的另一個資源分享，則在引用資源時無需指定提供程式命名空間或 apiVersion。 下列範例顯示簡化的語法：
+   如果儲存體帳戶部署在您要建立的相同範本中，而且儲存體帳戶的名稱不會與範本中的其他資源分享，則當您參考資源時，不需要指定提供者命名空間或 apiVersion。 下列範例顯示簡化的語法：
    
    ```json
    "diagnosticsProfile": {
@@ -279,5 +279,5 @@ ms.locfileid: "80156407"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關範本檔結構的資訊，請參閱瞭解 ARM[範本的結構和語法](template-syntax.md)。
-* 有關如何構建適用于所有 Azure 雲環境中的範本的建議，請參閱[為雲一致性開發 ARM 範本](templates-cloud-consistency.md)。
+* 如需範本檔案結構的詳細資訊，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 如需有關如何建立可在所有 Azure 雲端環境中使用之範本的建議，請參閱[開發適用于雲端一致性的 ARM 範本](templates-cloud-consistency.md)。

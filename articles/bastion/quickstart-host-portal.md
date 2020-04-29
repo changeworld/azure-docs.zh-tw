@@ -1,6 +1,6 @@
 ---
-title: 快速入門:使用專用 IP 位址連接到虛擬機器:Azure 堡壘
-description: 在本文中,瞭解如何從虛擬機創建 Azure Bastion 主機,以及如何使用專用 IP 位址安全地連接。
+title: 快速入門：使用私人 IP 位址連接到虛擬機器： Azure 防禦
+description: 在本文中，您將瞭解如何從虛擬機器建立 Azure 防禦主機，並使用私人 IP 位址安全地連接。
 services: bastion
 author: charwen
 ms.service: bastion
@@ -8,90 +8,90 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: charwen
 ms.openlocfilehash: a420a3253040fff8b767a81f298ede283c1d214b
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80619258"
 ---
-# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>快速入門:使用專用 IP 位址和 Azure 堡壘連接到虛擬機器
+# <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>快速入門：使用私人 IP 位址和 Azure 防禦連接到虛擬機器
 
-此快速入門文章介紹如何使用專用 IP 位址連接到虛擬機器。 通過 Bastion 進行連接時,虛擬機器不需要公共 IP 位址。 本文中的步驟可説明您通過門戶中的虛擬機將堡壘部署到虛擬網路。 預配服務後,RDP/SSH 體驗將提供給同一虛擬網路中的所有虛擬機。
+本快速入門文章說明如何使用私人 IP 位址連接到虛擬機器。 當您透過防禦進行連線時，您的虛擬機器不需要公用 IP 位址。 這篇文章中的步驟可協助您透過入口網站中的虛擬機器，將防禦部署至您的虛擬網路。 布建服務之後，就可以在相同虛擬網路中的所有虛擬機器使用 RDP/SSH 體驗。
 
-## <a name="prerequisites"></a><a name="prereq"></a>Prerequisites
+## <a name="prerequisites"></a><a name="prereq"></a>必要條件
 
 * Azure 虛擬網路。
-* 位於打開埠 3389 的虛擬網路中的 Azure 虛擬機器。
+* 位於虛擬網路中的 Azure 虛擬機器，其埠3389已開啟。
 
 ### <a name="example-values"></a>範例值
 
-|**名稱** | **ReplTest1** |
+|**Name** | **ReplTest1** |
 | --- | --- |
-| 名稱 |  VNet1 堡壘 |
+| Name |  VNet1Bastion |
 | 區域 | eastus |
 | 虛擬網路 |  VNet1 |
-| • 子網名稱 | Azure 堡壘子網 |
-| AzureBastion Subnet 位址 |  10.1.254.0/27 |
+| + 子網名稱 | AzureBastionSubnet |
+| AzureBastionSubnet 位址 |  10.1.254.0/27 |
 | 公用 IP 位址 |  新建 |
 | 公用 IP 位址名稱 | VNet1BastionPIP  |
-| 公共 IP 位址 SKU |  標準  |
+| 公用 IP 位址 SKU |  Standard  |
 | 指派  | 靜態 |
 
 ## <a name="create-a-bastion-host"></a><a name="createvmset"></a>建立 Bastion 主機
 
-當您使用現有虛擬機器在門戶中創建堡壘主機時,各種設置將自動預設以對應於虛擬機器和/或虛擬網路。
+當您使用現有的虛擬機器在入口網站中建立防禦主機時，會自動將各種設定設為對應至您的虛擬機器和/或虛擬網路。
 
-1. 開啟[Azure 門戶](https://portal.azure.com)。 轉到虛擬機,然後單擊"**連接**"。
+1. 開啟 [Azure 入口網站](https://portal.azure.com)。 移至您的虛擬機器，然後按一下 **[連線]**。
 
    ![虛擬機器設定](./media/quickstart-host-portal/vm-settings.png)
-1. 從下拉清單中,選擇 **「堡壘**」。。
-1. 在"連接"頁上,選擇 **"使用堡壘**"。
+1. 從下拉式清單**中選取 [** 防禦]。
+1. 在 [連線] 頁面上，選取 [**使用**防禦]。
 
-   ![選擇堡壘](./media/quickstart-host-portal/select-bastion.png)
+   ![選取防禦](./media/quickstart-host-portal/select-bastion.png)
 
-1. 在「堡壘」頁上,填寫以下設置欄位:
+1. 在 [防禦] 頁面上，填寫下列設定欄位：
 
-   * **名稱**: 命名堡壘主機
-   * **子網**:將部署堡壘資源的虛擬網路中的子網。 子網必須使用**名稱 AzureBastion Subnet 建立**。 該名稱使 Azure 知道要將堡壘資源部署到哪個子網。 這與閘道網不同。 使用至少 /27 或更大的子網(/27、/26、/25 等)。
+   * **名稱**：為防禦主機命名
+   * **子網**：虛擬網路內部將用來部署防禦資源的子網。 子網必須以名稱**AzureBastionSubnet**建立。 此名稱可讓 Azure 知道要將防禦資源部署到哪一個子網。 這與閘道子網不同。 使用至少為/27 或更大（/27、/26、/25 等）的子網。
    
-      * 選擇 **"管理子網設定**",然後選擇 **「子網**」。
-      * 在「新增子網」頁上,鍵入**AzureBastion 子網**。
-      * 在 CIDR 表示法中指定位址範圍。 例如,10.1.254.0/27。
-      * 選擇 **"確定"** 以建立子網。 在頁面頂部,導航回堡壘以完成其餘設置。
+      * 選取 [**管理子網**設定]，然後選取 [ **+ 子網**]。
+      * 在 [新增子網] 頁面上，輸入**AzureBastionSubnet**。
+      * 以 CIDR 標記法指定位址範圍。 例如，10.1.254.0/27。
+      * 選取 **[確定]** 以建立子網。 在頁面頂端，流覽回到 [防禦] 以完成其餘設定。
 
-         ![導覽到堡壘設定](./media/quickstart-host-portal/navigate-bastion.png)
-   * **公共 IP 位址**:這是將存取 RDP/SSH 的堡壘資源的公共 IP(透過連接埠 443)。 創建新的公共 IP 或使用現有 IP。 公共 IP 位址必須與您正在創建的堡壘資源位於同一區域。
-   * **公共 IP 位址名稱**:公共 IP 位址資源的名稱。
-1. 在驗證螢幕上,按一下「**創建**」。。 等待大約 5 分鐘,以便創建和部署堡壘資源。
+         ![流覽至防禦設定](./media/quickstart-host-portal/navigate-bastion.png)
+   * **公用 ip 位址**：這是將存取 RDP/SSH 的防禦資源公用 ip （透過埠443）。 建立新的公用 IP，或使用現有的。 公用 IP 位址必須與您建立的防禦資源位於相同的區域中。
+   * **公用 ip 位址名稱**：公用 ip 位址資源的名稱。
+1. 在 [驗證] 畫面上，按一下 [**建立**]。 請等候約5分鐘，以建立和部署防禦資源。
 
-   ![建立堡壘主機](./media/quickstart-host-portal/bastion-settings.png)
+   ![建立防禦主機](./media/quickstart-host-portal/bastion-settings.png)
 
 ## <a name="connect"></a><a name="connect"></a>連線
 
-將堡壘部署到虛擬網路後,螢幕將更改為連接頁。
+將防禦部署至虛擬網路之後，畫面會變更為 [連接] 頁面。
 
-1. 鍵入虛擬機的使用者名稱和密碼。 然後,選擇 **"連接**"。
+1. 輸入虛擬機器的使用者名稱和密碼。 然後選取 **[連線]**。
 
-   ![連線](./media/quickstart-host-portal/connect.png)
-1. 通過 Bastion 連接到此虛擬機器的 RDP 連接將直接在 Azure 門戶(透過 HTML5)中使用埠 443 和堡壘服務打開。
+   ![connect](./media/quickstart-host-portal/connect.png)
+1. 透過防禦的此虛擬機器的 RDP 連線，會使用埠443和防禦服務，直接在 Azure 入口網站（透過 HTML5）中開啟。
 
-   ![RDP 連線](./media/quickstart-host-portal/443-rdp.png)
+   ![RDP 連接](./media/quickstart-host-portal/443-rdp.png)
 
 ## <a name="clean-up-resources"></a>清除資源
 
-使用虛擬網路與虛擬機器完成後,請刪除資源群組及其包含的所有資源:
+當您完成使用虛擬網路和虛擬機器時，請刪除資源群組及其包含的所有資源：
 
-1. 在門戶頂部的 **「搜索**」框中輸入*TestRG1,* 然後從搜尋結果中選擇**TestRG1。**
+1. 在入口網站頂端的**搜尋**方塊中輸入*TestRG1* ，然後從搜尋結果中選取 [ **TestRG1** ]。
 
-2. 選取 [刪除資源群組]****。
+2. 選取 [刪除資源群組]  。
 
-3. 輸入*TESTRG1*以**鍵入資源群組名稱**,然後選擇 **「刪除**」。
+3. 針對 [輸入**資源組名**] 輸入*TestRG1* ，然後選取 [**刪除**]。
 
 ## <a name="next-steps"></a>後續步驟
 
-在此快速入門中,您為虛擬網路創建了一個堡壘主機,然後通過堡壘主機安全地連接到虛擬機器。
+在本快速入門中，您已建立虛擬網路的防禦主機，然後透過防禦主機安全地連線到虛擬機器。
 
-* 要瞭解有關 Azure 堡壘的詳細資訊,請閱讀[堡壘概述](bastion-overview.md)和[堡壘常見問題 。](bastion-faq.md)
-* 要將網路安全組與 Azure 堡壘子網一起使用,請參閱[使用 NSG。](bastion-nsg.md)
-* 有關包含 Azure 堡壘主機設定說明的說明,請參閱[教程](bastion-create-host-portal.md)。
-* 要連接到虛擬機器縮放集,請參考[Azure Bastion 連接到虛擬機器規模集](bastion-connect-vm-scale-set.md)。
+* 若要深入瞭解 Azure 防禦，請閱讀防禦[總覽](bastion-overview.md)和防禦[常見問題](bastion-faq.md)。
+* 若要搭配使用網路安全性群組與 Azure 防禦子網，請參閱使用[nsg](bastion-nsg.md)。
+* 如需包含 Azure 防禦主機設定說明的指示，請參閱[教學](bastion-create-host-portal.md)課程。
+* 若要連線至虛擬機器擴展集，請參閱[使用 Azure 防禦連線到虛擬機器擴展集](bastion-connect-vm-scale-set.md)。

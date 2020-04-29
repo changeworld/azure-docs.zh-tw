@@ -1,5 +1,5 @@
 ---
-title: Azure 的互通性 :資料平面分析
+title: Azure 中的互通性：資料平面分析
 description: 本文提供測試設定的資料平面分析，您可使用該設定分析 Azure 中 ExpressRoute、站對站 VPN 及虛擬網路對等互連之間的互通性。
 documentationcenter: na
 services: networking
@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
 ms.openlocfilehash: fe7b74b0d4d065d4f222fefbbdc4a1d434d1163b
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80518256"
 ---
-# <a name="interoperability-in-azure--data-plane-analysis"></a>Azure 的互通性 :資料平面分析
+# <a name="interoperability-in-azure--data-plane-analysis"></a>Azure 中的互通性：資料平面分析
 
 本文說明[測試設定][Setup]的資料平面分析。 您也可以檢閱測試設定的[測試設定組態][Configuration]和[控制平面分析][Control-Analysis]。
 
@@ -164,7 +164,7 @@ ms.locfileid: "80518256"
 
     Trace complete.
 
-在此追蹤路由中,第一個躍點是集線器 VNet 的到 MSEE 的 ExpressRoute 閘道隧道終結點。 第二個和第三個躍點是 CE 路由器和內部部署位置 1 LAN IP。 這些 IP 位址沒有在中樞/輪幅 VNet 中公告。 第四個躍點是內部部署位置 1 中的 VM。
+在此追蹤路由中，第一個躍點是中樞 VNet 的 ExpressRoute 閘道通道端點至 MSEE。 第二個和第三個躍點是 CE 路由器和內部部署位置 1 LAN IP。 這些 IP 位址沒有在中樞/輪幅 VNet 中公告。 第四個躍點是內部部署位置 1 中的 VM。
 
 ### <a name="path-to-on-premises-location-2"></a>往內部部署位置 2 的路徑
 
@@ -182,7 +182,7 @@ ms.locfileid: "80518256"
 
     Trace complete.
 
-在此追蹤路由中,第一個躍點是集線器 VNet 的到 MSEE 的 ExpressRoute 閘道隧道終結點。 第二個和第三個躍點是 CE 路由器和內部部署位置 2 LAN IP。 這些 IP 位址沒有在中樞/輪幅 VNet 中公告。 第四個躍點是內部部署位置 2 中的 VM。
+在此追蹤路由中，第一個躍點是中樞 VNet 的 ExpressRoute 閘道通道端點至 MSEE。 第二個和第三個躍點是 CE 路由器和內部部署位置 2 LAN IP。 這些 IP 位址沒有在中樞/輪幅 VNet 中公告。 第四個躍點是內部部署位置 2 中的 VM。
 
 ### <a name="path-to-the-remote-vnet"></a>往遠端 VNet 的路徑
 
@@ -198,7 +198,7 @@ ms.locfileid: "80518256"
 
     Trace complete.
 
-在此追蹤路由中,第一個躍點是集線器 VNet 的到 MSEE 的 ExpressRoute 閘道隧道終結點。 第二個躍點是遠端 VNet 的閘道 IP。 第二個躍點 IP 範圍沒有在中樞/輪幅 VNet 中公告。 第三個躍點是遠端 VNet 上的 VM。
+在此追蹤路由中，第一個躍點是中樞 VNet 的 ExpressRoute 閘道通道端點至 MSEE。 第二個躍點是遠端 VNet 的閘道 IP。 第二個躍點 IP 範圍沒有在中樞/輪幅 VNet 中公告。 第三個躍點是遠端 VNet 上的 VM。
 
 ## <a name="data-path-from-the-branch-vnet"></a>從分支 VNet 來的資料路徑
 
@@ -304,7 +304,7 @@ ms.locfileid: "80518256"
 
 ![4][4]
 
-如稍早所述，測試安裝程式使用對站 VPN 作為內部部署位置 1 和中樞 VNet 之間 ExpressRoute 的備份連線。 要測試備份資料路徑,讓我們在本地位置 1 主 CE 路由器和相應的 MSEE 之間引發 ExpressRoute 鏈路故障。 為了引發 ExpressRoute 連結失敗，請關閉面對 MSEE 的 CE 介面：
+如稍早所述，測試安裝程式使用對站 VPN 作為內部部署位置 1 和中樞 VNet 之間 ExpressRoute 的備份連線。 為了測試備份資料路徑，讓我們引發內部部署位置1主要 CE 路由器與對應的 MSEE 之間的 ExpressRoute 連結失敗。 為了引發 ExpressRoute 連結失敗，請關閉面對 MSEE 的 CE 介面：
 
     C:\Users\rb>tracert 10.10.30.4
 
@@ -510,11 +510,11 @@ ExpressRoute 作為備援線路組可確保高可用性。 您可以在不同的
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "從集線器 VNet 到分支 VNet 的連線的網路觀察器檢視"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "從集線器 VNet 到分支 VNet 的連線的網路觀察器檢視"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "從集線器 VNet 到分支 VNet 的連線的網路觀察程式網格檢視"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "透過 ExpressRoute 1 從位置 1 VM 到集線器 VNet 的連接的網路效能監視器檢視"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "以網站到網站 VPN 從位置 1 VM 到集線器 VNet 的連接的網路效能監視器檢視"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "從中樞 VNet 到輪輻 VNet 的連線網路監看員觀點"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "從中樞 VNet 到分支 VNet 的連線網路監看員觀點"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "從中樞 VNet 到分支 VNet 的連線網路監看員方格視圖"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "透過 ExpressRoute 1 從位置 1 VM 至中樞 VNet 的連線網路效能監控觀點"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "透過站對站 VPN 從位置 1 VM 至中樞 VNet 的連線網路效能監控觀點"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

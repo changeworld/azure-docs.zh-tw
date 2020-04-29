@@ -1,6 +1,6 @@
 ---
-title: 解決 Azure 應用服務中的間歇性出站連接錯誤
-description: 解決 Azure 應用服務中的間歇性連接錯誤和相關性能問題
+title: 疑難排解 Azure App Service 中的間歇輸出連接錯誤
+description: 針對間歇連接錯誤和 Azure App Service 中的相關效能問題進行疑難排解
 author: v-miegge
 manager: barbkess
 ms.topic: troubleshooting
@@ -8,169 +8,169 @@ ms.date: 03/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
 ms.openlocfilehash: 028ddccdb989d35710e387081b08a3b973d75bdc
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80367547"
 ---
-# <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>解決 Azure 應用服務中的間歇性出站連接錯誤
+# <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>疑難排解 Azure App Service 中的間歇輸出連接錯誤
 
-本文可説明您解決[Azure 應用服務](https://docs.microsoft.com/azure/app-service/overview)中的間歇性連接錯誤和相關性能問題。 本主題將提供有關源位址網路轉換 （SNAT） 埠耗盡的詳細資訊和故障排除方法。 如果本文中的任何一點都需要更多説明，請與[MSDN Azure 和堆疊溢位論壇中的](https://azure.microsoft.com/support/forums/)Azure 專家聯繫。 或者，提交 Azure 支援事件。 轉到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **"獲取支援**"。
+本文可協助您針對間歇連線錯誤和[Azure App Service](https://docs.microsoft.com/azure/app-service/overview)中的相關效能問題進行疑難排解。 本主題將提供來源位址網路轉譯（SNAT）埠耗盡的詳細資訊，以及疑難排解的方法。 如果您在本文中有任何需要協助的地方，請洽詢[MSDN azure 和 Stack Overflow 論壇](https://azure.microsoft.com/support/forums/)上的 Azure 專家。 或者，將 Azure 支援事件提出。 請移至[Azure 支援網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。
 
-## <a name="symptoms"></a>徵狀
+## <a name="symptoms"></a>徵兆
 
-Azure 應用服務上託管的應用程式和函數可能會表現出以下一個或多個症狀：
+裝載于 Azure App 服務上的應用程式和函式可能會出現下列一個或多個徵兆：
 
-* 服務方案中所有或某些實例的回應時間變慢。
-* 間歇性 5xx 或**錯誤閘道**錯誤
-* 逾時錯誤消息
-* 無法連接到外部終結點（如 SQLDB、服務結構、其他應用服務等）
+* 服務方案中所有或部分實例的回應時間緩慢。
+* 間歇5xx 或不**正確的閘道**錯誤
+* 逾時錯誤訊息
+* 無法連接到外部端點（例如 SQLDB、Service Fabric、其他應用程式服務等）
 
 ## <a name="cause"></a>原因
 
-這些症狀的一個主要原因是應用程式實例無法打開到外部終結點的新連接，因為它已達到以下限制之一：
+這些徵兆的主要原因是應用程式實例無法開啟連至外部端點的新連線，因為它已達到下列其中一個限制：
 
-* TCP 連接：可以進行的出站連接數有限制。 這與所使用的工作人員的大小相關聯。
-* SNAT 埠：如[Azure 中的出站連接中](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)所述，Azure 使用源網路位址轉譯 （SNAT） 和負載等化器（不向客戶公開）在公共 IP 位址空間中與 Azure 外部的終結點進行通信。 Azure 應用服務中的每個實例最初都會獲得預分配的**128**個 SNAT 埠數。 該限制會影響打開連接到同一主機和埠組合的連接。 如果應用創建到位址和埠組合的連接，則不會佔用 SNAT 埠。 重複調用同一位址和埠組合時，SNAT 埠將用用。 釋放埠後，該埠可根據需要重複使用。 Azure 網路負載等化器僅在等待 4 分鐘後從已關閉的連接中回收 SNAT 埠。
+* TCP 連線：可以進行的輸出連線數目有限制。 這會與所使用的工作者大小相關聯。
+* SNAT 埠：如同 Azure 中的[輸出](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)連線所述，azure 會使用來源網路位址轉譯（SNAT）和 Load Balancer （不會向客戶公開），在公用 IP 位址空間中與 Azure 外部的端點進行通訊。 Azure App 服務上的每個實例一開始都會指定**128** SNAT 埠的預先配置數目。 該限制會影響到相同主機和埠組合的開啟連接。 如果您的應用程式會建立混合位址和埠組合的連線，您將不會使用 SNAT 埠。 當您重複呼叫相同的位址和埠組合時，會使用 SNAT 埠。 一旦釋放埠之後，埠就可以視需要重複使用。 Azure 網路負載平衡器只會在等待4分鐘後，才從已關閉的連線中回收 SNAT 埠。
 
-當應用程式或函數快速打開新連接時，它們會快速耗盡其預分配的 128 個埠配額。 然後，通過動態分配其他 SNAT 埠或重新回收的 SNAT 埠，阻止它們，直到新的 SNAT 埠可用。 由於無法創建新連接而被阻止的應用程式或函數將開始遇到本文"**症狀**"部分中描述的一個或多個問題。
+當應用程式或函式快速開啟新的連線時，他們可以快速耗盡其預先配置的128埠配額。 然後，它們會被封鎖，直到新的 SNAT 埠可供使用為止，不論是透過動態配置額外的 SNAT 埠，或重複使用已回收的 SNAT 埠。 因為無法建立新連線而遭到封鎖的應用程式或函式，將會開始遇到本文的**徵兆**一節中所述的一或多個問題。
 
-## <a name="avoiding-the-problem"></a>避免問題
+## <a name="avoiding-the-problem"></a>避免此問題
 
-避免 SNAT 埠問題意味著避免重複創建與同一主機和埠的新連接。
+避免 SNAT 埠問題，表示避免重複建立新連線到相同的主機和埠。
 
-Azure 文檔**的出站連接**[的問題解決部分](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving)討論了緩解 SNAT 埠耗盡的一般策略。 在這些策略中，以下策略適用于 Azure 應用服務上託管的應用和功能。
+**Azure 檔輸出**連線的[問題解決一節](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#problemsolving)中會討論減少 SNAT 埠耗盡的一般策略。 在這些策略中，下列適用于 Azure App 服務上所裝載的應用程式和功能。
 
 ### <a name="modify-the-application-to-use-connection-pooling"></a>將應用程式修改成使用連線共用
 
-* 要池 HTTP 連接，請查看[使用 HttpClientFactory](https://docs.microsoft.com/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory)的池 HTTP 連接。
-* 有關 SQL Server 連接池的資訊，請查看[SQL 伺服器連接池 （ADO.NET）](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)。
-* 要實現與實體框架應用程式池，請查看[DbCoNtext 池](https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling)。
+* 針對共用 HTTP 連線，請參閱[使用 HttpClientFactory 的集區 HTTP](https://docs.microsoft.com/aspnet/core/performance/performance-best-practices#pool-http-connections-with-httpclientfactory)連線。
+* 如需 SQL Server 連接共用的詳細資訊，請參閱[SQL Server 連接共用（ADO.NET）](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)。
+* 如需使用 entity framework 應用程式執行共用，請參閱[DbCoNtext](https://docs.microsoft.com/ef/core/what-is-new/ef-core-2.0#dbcontext-pooling)共用。
 
-下面是用於通過不同解決方案堆疊實現連接池的連結集合。
+以下是不同解決方案堆疊用來執行連接共用的連結集合。
 
 #### <a name="node"></a>節點
 
-預設情況下，NodeJS 的連接不會保持活動狀態。 下面是用於連接池的熱門資料庫和包，其中包含如何實現它們的示例。
+根據預設，NodeJS 的連接不會保持運作。 以下是連接共用的熱門資料庫和封裝，其中包含如何執行這些工作的範例。
 
-* [Mysql](https://github.com/mysqljs/mysql#pooling-connections)
-* [Mongodb](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
-* [後格雷SQL](https://node-postgres.com/features/pooling)
+* [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
+* [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
+* [PostgreSQL](https://node-postgres.com/features/pooling)
 * [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools)
 
-HTTP 保持活動狀態
+HTTP Keep-alive
 
-* [代理保存](https://www.npmjs.com/package/agentkeepalive)
-* [Node.js v13.9.0 文檔](https://nodejs.org/api/http.html)
+* [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)
+* [Node.js v 13.9.0 檔](https://nodejs.org/api/http.html)
 
 #### <a name="java"></a>Java
 
-下面是用於 JDBC 連接池的熱門庫，其中包含如何實現它們的示例：JDBC 連接池。
+以下是用於 JDBC 連接共用的熱門程式庫，其中包含如何執行這些工作的範例： JDBC Connection Pooling。
 
-* [湯姆卡特 8](https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html)
+* [Tomcat 8](https://tomcat.apache.org/tomcat-8.0-doc/jdbc-pool.html)
 * [C3p0](https://github.com/swaldman/c3p0)
-* [希卡裡CP](https://github.com/brettwooldridge/HikariCP)
-* [阿帕奇 DBCP](https://commons.apache.org/proper/commons-dbcp/)
+* [HikariCP](https://github.com/brettwooldridge/HikariCP)
+* [Apache DBCP](https://commons.apache.org/proper/commons-dbcp/)
 
-HTTP 連接池
+HTTP 連接共用
 
-* [阿帕奇連接管理](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html)
-* [類池Http用戶端連線管理員](http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.html)
+* [Apache 連接管理](https://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html)
+* [類別 PoolingHttpClientConnectionManager](http://hc.apache.org/httpcomponents-client-ga/httpclient/apidocs/org/apache/http/impl/conn/PoolingHttpClientConnectionManager.html)
 
 #### <a name="php"></a>PHP
 
-儘管 PHP 不支援連接池，但您可以嘗試使用與後端伺服器的持久資料庫連接。
+雖然 PHP 不支援連接共用，但您可以嘗試對後端伺服器使用持續性資料庫連接。
  
 * MySQL 伺服器
 
    * 較新版本的[MySQLi 連接](https://www.php.net/manual/mysqli.quickstart.connections.php)
-   * [mysql_pconnect](https://www.php.net/manual/function.mysql-pconnect.php)舊版本的 PHP
+   * 舊版 PHP 的[mysql_pconnect](https://www.php.net/manual/function.mysql-pconnect.php)
 
 * 其他資料來源
 
-   * [PHP連接管理](https://www.php.net/manual/en/pdo.connections.php)
+   * [PHP 連接管理](https://www.php.net/manual/en/pdo.connections.php)
 
 #### <a name="python"></a>Python
 
-* [Mysql](https://github.com/mysqljs/mysql#pooling-connections)
-* [Mongodb](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
-* [後格雷SQL](https://node-postgres.com/features/pooling)
-* [SQL 伺服器](https://github.com/tediousjs/node-mssql#connection-pools)（注意：SQLAlchemy 可用於除 MicrosoftSQL Server 之外的其他資料庫）
-* [HTTP 保持活動](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)狀態（使用[會話物件](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)時，保持活動是自動的）。
+* [MySQL](https://github.com/mysqljs/mysql#pooling-connections)
+* [MongoDB](https://blog.mlab.com/2017/05/mongodb-connection-pooling-for-express-applications/)
+* [PostgreSQL](https://node-postgres.com/features/pooling)
+* [SQL Server](https://github.com/tediousjs/node-mssql#connection-pools) （注意： SQLAlchemy 可與 MicrosoftSQL 伺服器以外的其他資料庫搭配使用）
+* [HTTP keep-alive](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)（使用會話[會話物件](https://requests.readthedocs.io/en/master/user/advanced/#keep-alive)時保持運作的狀態是自動的）。
 
-對於其他環境，請查看提供程式或特定于驅動程式的文檔，以便在應用程式中實現連接池。
+針對其他環境，請參閱提供者或驅動程式特定的檔，以在您的應用程式中執行連接共用。
 
 ### <a name="modify-the-application-to-reuse-connections"></a>將應用程式修改成重複使用連線
 
-*  有關在 Azure 函數中管理連接的其他指標和示例，請查看[Azure 函數中的管理連接](https://docs.microsoft.com/azure/azure-functions/manage-connections)。
+*  如需在 Azure 函式中管理連線的其他指標和範例，請參閱[管理 Azure Functions 中的連接](https://docs.microsoft.com/azure/azure-functions/manage-connections)。
 
 ### <a name="modify-the-application-to-use-less-aggressive-retry-logic"></a>將應用程式修改成使用較不積極的重試邏輯
 
-* 有關其他指導和示例，請查看[重試模式](https://docs.microsoft.com/azure/architecture/patterns/retry)。
+* 如需其他指引和範例，請參閱[重試模式](https://docs.microsoft.com/azure/architecture/patterns/retry)。
 
 ### <a name="use-keepalives-to-reset-the-outbound-idle-timeout"></a>使用 Keepalive 來重設輸出閒置逾時
 
-* 要實現 Node.js 應用的保持計畫，請查看[我的節點應用程式正在進行過多的出站調用](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)。
+* 針對 node.js 應用程式的執行 keepalive，請檢查[我的節點應用程式是否進行過多的輸出呼叫](https://docs.microsoft.com/azure/app-service/app-service-web-nodejs-best-practices-and-troubleshoot-guide#my-node-application-is-making-excessive-outbound-calls)。
 
-### <a name="additional-guidance-specific-to-app-service"></a>特定于應用服務的其他指南：
+### <a name="additional-guidance-specific-to-app-service"></a>App Service 特定的其他指導方針：
 
-* [負載測試](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test)應以穩定的饋送速度類比真實世界資料。 在真實壓力下測試應用和功能可以提前識別和解決 SNAT 埠耗盡問題。
-* 確保後端服務能夠快速返回回應。 要解決 Azure SQL 資料庫的性能問題，請查看[使用智慧見解解決 Azure SQL 資料庫性能問題](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)。
-* 將應用服務方案擴展到更多實例。 如需有關調整的詳細資訊，請參閱[在 Azure App Service 中調整應用程式規模](https://docs.microsoft.com/azure/app-service/manage-scale-up)。 應用服務方案中的每個輔助角色實例都分配了多個 SNAT 埠。 如果將使用方式分散到更多實例中，則每個實例的 SNAT 埠使用量可能會低於建議限制的 100 個出站連接，每個唯一的遠端終結點。
-* 請考慮遷移到[應用服務環境 （ASE），](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)其中分配給您單個出站 IP 位址，並且連接和 SNAT 埠的限制要高得多。
+* [負載測試](https://docs.microsoft.com/azure/devops/test/load-test/app-service-web-app-performance-test)應以穩定的進紙速度來模擬真實世界的資料。 在真實世界壓力下測試應用程式和功能，可以提早識別及解決 SNAT 埠耗盡問題。
+* 請確定後端服務可以快速傳迴響應。 如需疑難排解 Azure SQL database 的效能問題，請參閱[疑難排解 Intelligent Insights 的 Azure SQL Database 效能問題](https://docs.microsoft.com/azure/sql-database/sql-database-intelligent-insights-troubleshoot-performance#recommended-troubleshooting-flow)。
+* 將 App Service 方案相應放大為更多實例。 如需有關調整的詳細資訊，請參閱[在 Azure App Service 中調整應用程式規模](https://docs.microsoft.com/azure/app-service/manage-scale-up)。 App service 方案中的每個背景工作實例都會配置一些 SNAT 埠。 如果您將使用量分散到多個實例，您可能會取得每個實例的 SNAT 埠使用量，低於每個唯一遠端端點的建議限制100輸出連線。
+* 請考慮移至[App Service 環境（ASE）](https://docs.microsoft.com/azure/app-service/environment/using-an-ase)，您會在其中配置單一輸出 IP 位址，而連線和 SNAT 埠的限制會更高。
 
-避免出站 TCP 限制更容易解決，因為限制由工作人員的大小設置。 您可以在[沙箱交叉 VM 數位限制 - TCP 連接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)中看到限制
+避免輸出 TCP 限制比較容易解決，因為限制是由背景工作角色的大小所設定。 您可以查看[沙箱跨 VM 數值限制的限制-TCP](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)連線
 
-|限制名稱|描述|小 （A1）|中等 （A2）|大 （A3）|隔離層 （ASE）|
+|限制名稱|描述|小型（A1）|中（A2）|大型（A3）|隔離層（ASE）|
 |---|---|---|---|---|---|
-|連接|跨整個 VM 的連接數|1920|3968|8064|16,000|
+|連接|跨整個 VM 的連線數目|1920|3968|8064|16,000|
 
-為了避免出站 TCP 限制，可以增加輔助物件的大小，也可以橫向橫向橫向橫向擴展。
+若要避免輸出 TCP 限制，您可以增加背景工作角色的大小，或水準相應放大。
 
 ## <a name="troubleshooting"></a>疑難排解
 
-瞭解兩種類型的出站連接限制以及你的應用的作用，應該更容易疑難排解。 如果您知道你的應用對同一存儲帳戶進行多次調用，您可能會懷疑 SNAT 限制。 如果你的應用在互聯網上創建了大量對終結點的調用，你會懷疑您達到了 VM 限制。
+瞭解這兩種類型的輸出連線限制，以及您的應用程式執行的作業，應可讓您更輕鬆地進行疑難排解。 如果您知道您的應用程式對相同的儲存體帳戶進行多次呼叫，您可能會懷疑 SNAT 限制。 如果您的應用程式透過網際網路對端點建立了很多的呼叫，您會懷疑達到 VM 的限制。
 
-如果您沒有足夠的應用程式行為來快速確定原因，應用服務中可以使用一些工具和技術來説明確定。
+如果您不知道應用程式行為是否能快速判斷原因，App Service 中有一些工具和技術可協助進行判斷。
 
-### <a name="find-snat-port-allocation-information"></a>查找 SNAT 埠分配資訊
+### <a name="find-snat-port-allocation-information"></a>尋找 SNAT 埠配置資訊
 
-您可以使用[應用服務診斷](https://docs.microsoft.com/azure/app-service/overview-diagnostics)查找 SNAT 埠分配資訊，並遵守應用服務網站的 SNAT 埠分配指標。 要查找 SNAT 埠分配資訊，請按照以下步驟操作：
+您可以使用[App Service 診斷](https://docs.microsoft.com/azure/app-service/overview-diagnostics)來尋找 snat 埠配置資訊，並觀察 App Service 網站的 snat 埠配置度量。 若要尋找 SNAT 埠配置資訊，請遵循下列步驟：
 
-1. 要訪問應用服務診斷，請導航到[Azure 門戶](https://portal.azure.com/)中的應用服務 Web 應用或應用服務環境。 在左側導航中，選擇 **"診斷並解決問題**"。
-2. 選擇可用性和性能類別
-3. 在類別下的可用磁貼清單中選擇 SNAT 埠耗盡磁貼。 其做法是將其保持在 128 以下。
-如果您確實需要它，您仍然可以打開支援票證，支援工程師將從後端為您獲取指標。
+1. 若要存取 App Service 診斷，請流覽至您的 App Service web 應用程式，或[Azure 入口網站](https://portal.azure.com/)中的 App Service 環境。 在左側導覽中，選取 [**診斷並解決問題**]。
+2. 選取可用性和效能類別
+3. 在類別底下的可用磚清單中，選取 [SNAT 埠耗盡] 磚。 做法是將它保持在128以下。
+如果您需要它，您仍然可以開啟支援票證，而支援工程師會為您取得來自後端的計量。
 
-請注意，由於 SNAT 埠使用方式不能作為指標提供，因此無法基於 SNAT 埠使用方式自動縮放，也不能根據 SNAT 埠分配指標配置自動縮放。
+請注意，由於 SNAT 埠的使用不是計量，因此不可能根據 SNAT 埠使用方式自動調整，或根據 SNAT 埠配置計量來設定自動調整。
 
-### <a name="tcp-connections-and-snat-ports"></a>TCP 連接和 SNAT 埠
+### <a name="tcp-connections-and-snat-ports"></a>TCP 連線和 SNAT 埠
 
-TCP 連接和 SNAT 埠沒有直接關係。 任何應用服務網站的"診斷和解決問題"邊欄選項卡中都包含 TCP 連接使用檢測器。 搜索短語"TCP 連接"以查找它。
+TCP 連線和 SNAT 埠並不直接相關。 任何 App Service 網站的 [診斷並解決問題] 分頁中都會包含 TCP 連線使用偵測器。 搜尋片語 "TCP connections" 以尋找它。
 
-* SNAT 埠僅用於外部網路流，而總 TCP 連接包括本地回環連接。
-* 如果流在協定、IP 位址或埠中不同，則可以由不同的流共用 SNAT 埠。 TCP 連接指標對每個 TCP 連接進行計數。
-* TCP 連接限制發生在輔助角色實例級別。 Azure 網路出站負載平衡不使用 TCP 連接指標進行 SNAT 埠限制。
-* TCP 連接限制在[沙箱交叉 VM 數位限制 - TCP 連接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)中描述
+* SNAT 埠只會用於外部網路流程，而 TCP 連線總數則包括本機回送連接。
+* 如果通訊協定、IP 位址或埠中的流程不同，則可以由不同的流程共用 SNAT 埠。 TCP 連接計量會計算每個 TCP 連線。
+* TCP 連接限制會發生在背景工作角色實例層級。 Azure 網路輸出負載平衡不會使用適用于 SNAT 埠限制的 TCP 連線計量。
+* [沙箱跨 VM 數值限制-tcp](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)連線中描述 tcp 連線限制
 
-|限制名稱|描述|小 （A1）|中等 （A2）|大 （A3）|隔離層 （ASE）|
+|限制名稱|描述|小型（A1）|中（A2）|大型（A3）|隔離層（ASE）|
 |---|---|---|---|---|---|
-|連接|跨整個 VM 的連接數|1920|3968|8064|16,000|
+|連接|跨整個 VM 的連線數目|1920|3968|8064|16,000|
 
-### <a name="webjobs-and-database-connections"></a>Web 作業和資料庫連接
+### <a name="webjobs-and-database-connections"></a>Webjob 和資料庫連接
  
-如果 SNAT 埠已耗盡，Web 作業無法連接到 Azure SQL 資料庫，則沒有指標顯示每個單獨的 Web 應用程式進程打開的連接數。 要查找有問題的 WebJob，將多個 Web 作業移出另一個應用服務方案，以查看情況是否有所改善，或者其中一個計畫中是否仍然存在問題。 重複此過程，直到發現有問題的 WebJob。
+如果 SNAT 埠已耗盡，其中 Webjob 無法連線至 Azure SQL 資料庫，則不會顯示每個個別 web 應用程式進程所開啟的連接數目。 若要找出有問題的 WebJob，請將數個 Webjob 移至另一個 App Service 計畫，以查看情況是否改善，或是否有問題仍然存在於其中一個方案中。 重複此程式，直到您找到有問題的 WebJob 為止。
 
-### <a name="using-snat-ports-sooner"></a>更快地使用 SNAT 埠
+### <a name="using-snat-ports-sooner"></a>更快使用 SNAT 埠
 
-您不能更改任何 Azure 設置以更快地釋放已使用的 SNAT 埠，因為所有 SNAT 埠都將根據以下條件發佈，並且行為是設計。
+您無法將任何 Azure 設定變更為較早釋放已使用的 SNAT 埠，因為所有 SNAT 埠都會根據下列條件釋放，而且行為是依設計而成。
  
-* 如果伺服器或用戶端發送[FINACK，SNAT 埠將在](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#tcp-snat-port-release)240 秒後釋放。
-* 如果看到 RST，SNAT 埠將在 15 秒後釋放。
-* 如果已達到空閒超時，則釋放埠。
+* 如果伺服器或用戶端傳送 FINACK，則會在240秒後[釋放 SNAT 埠](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#tcp-snat-port-release)。
+* 如果看到 RST，則會在15秒後釋放 SNAT 埠。
+* 如果已達到閒置超時，則會釋放埠。
  
 ## <a name="additional-information"></a>其他資訊
 
-* [具有應用服務的 SNAT](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)
+* [具有 App Service 的 SNAT](https://4lowtherabbit.github.io/blogs/2019/10/SNAT/)
 * [針對 Azure App Service 中應用程式效能變慢的問題進行疑難排解](https://docs.microsoft.com/azure/app-service/troubleshoot-performance-degradation)

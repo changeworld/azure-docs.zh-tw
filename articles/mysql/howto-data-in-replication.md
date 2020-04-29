@@ -1,5 +1,5 @@
 ---
-title: 設定資料內複製 ─MySQL 的 Azure 資料庫
+title: 設定資料傳入複寫-適用於 MySQL 的 Azure 資料庫
 description: 本文將說明如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料。
 author: ajlam
 ms.author: andrela
@@ -7,19 +7,19 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80474035"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何為適用於 MySQL 的 Azure 資料庫設定複寫中的資料
 
-本文介紹如何通過配置主伺服器和副本伺服器在 MySQL 的 Azure 資料庫中設置數據內複製。 本文假定您以前對 MySQL 伺服器和資料庫有一些經驗。
+本文說明如何藉由設定主要和複本伺服器，在適用於 MySQL 的 Azure 資料庫中設定資料傳入複寫。 本文假設您先前已有使用 MySQL 伺服器和資料庫的經驗。
 
-要在 MySQL 服務的 Azure 資料庫中創建副本,資料內複製將同步來自本地主 MySQL 伺服器、虛擬機器 (VM) 或雲端資料庫服務中的數據。
+若要在適用於 MySQL 的 Azure 資料庫服務中建立複本，資料複製複寫會同步處理內部部署的主要 MySQL 伺服器、虛擬機器（Vm）或雲端資料庫服務中的資料。
 
-在執行本文中的步驟之前,請檢視資料內複製[的限制和要求](concepts-data-in-replication.md#limitations-and-considerations)。
+執行本文中的步驟之前，請先參閱複寫資料的[限制和需求](concepts-data-in-replication.md#limitations-and-considerations)。
 
 ## <a name="create-a-mysql-server-to-be-used-as-replica"></a>建立 MySQL 伺服器做為複本
 
@@ -35,7 +35,7 @@ ms.locfileid: "80474035"
 
    使用者帳戶不會從主要伺服器複寫到複本伺服器。 如果您預計提供複本伺服器存取權給使用者，則必須在此新建的適用於 MySQL 伺服器的 Azure資料庫中，手動建立所有帳戶及對應權限。
 
-3. 將主伺服器的 IP 位址添加到複本的防火牆規則中。 
+3. 將主伺服器的 IP 位址新增至複本的防火牆規則。 
 
    使用 [Azure 入口網站](howto-manage-firewall-using-portal.md)或 [Azure CLI](howto-manage-firewall-using-cli.md) 更新防火牆規則。
 
@@ -43,11 +43,11 @@ ms.locfileid: "80474035"
 下列步驟會針對裝載在內部部署的 MySQL 伺服器、虛擬機器中的 MySQL 伺服器或由其他雲端提供者所代管的資料庫服務，準備及設定資料帶入複寫。 此伺服器是「資料輸入複寫」中的「主要」伺服器。
 
 
-1. 在繼續操作之前,請檢視[主伺服器要求](concepts-data-in-replication.md#requirements)。 
+1. 請先檢查[主伺服器需求](concepts-data-in-replication.md#requirements)，再繼續進行。 
 
-   例如,確保主伺服器允許埠 3306 上的入站和出站流量,並且主伺服器具有公共**IP 位址**、DNS 是可公開訪問的,或者具有完全限定的功能變數名稱 (FQDN)。 
+   例如，請確定主伺服器允許埠3306上的輸入和輸出流量，而且主伺服器具有**公用 IP 位址**、DNS 可公開存取，或具有完整功能變數名稱（FQDN）。 
    
-   通過嘗試從工具(如在另一台電腦上託管的 MySQL 命令行或 Azure 門戶中可用的[Azure 雲外殼](https://docs.microsoft.com/azure/cloud-shell/overview))進行連接,測試與主伺服器的連接。
+   嘗試從另一部電腦上裝載的 MySQL 命令列之類的工具連線，或從 Azure 入口網站中提供的[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ，來測試主伺服器的連線能力。
 
 2. 開啟二進位記錄
 
@@ -57,9 +57,9 @@ ms.locfileid: "80474035"
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   如果變數[`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin)返回的值"ON",則在伺服器上啟用二進位日誌記錄。 
+   如果傳回值[`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin)為 "ON" 的變數，則會在您的伺服器上啟用二進位記錄。 
 
-   如果`log_bin`返回的值"OFF",請通過編輯 my.cnf 檔打開二進位日誌`log_bin=ON`記錄, 以便重新啟動伺服器,使更改生效。
+   如果`log_bin`傳回的值為 "OFF"，請藉由編輯 my.cnf 檔案來開啟二進位記錄，讓`log_bin=ON`您的伺服器重新開機，使變更生效。
 
 3. 主要伺服器設定
 
@@ -75,7 +75,7 @@ ms.locfileid: "80474035"
 
    在以下命令中，新建的複寫角色除了從裝載主要伺服器的機器存取主要伺服器，還可從任何機器存取主要伺服器。 在建立使用者命令中指定 "syncuser@'%'"，即可執行此作業。 請參閱 MySQL 文件，進一步了解[如何指定帳戶名稱](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)。
 
-   **SQL 指令**
+   **SQL 命令**
 
    *使用 SSL 的複寫*
 
@@ -121,7 +121,7 @@ ms.locfileid: "80474035"
 
 6. 取得二進位記錄檔的檔案名稱和位移
 
-   運行該[`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html)命令以確定當前二進位紀錄檔名稱和偏移量。
+   執行[`show master status`](https://dev.mysql.com/doc/refman/5.7/en/show-master-status.html)命令來判斷目前的二進位記錄檔名稱和位移。
     
    ```sql
    show master status;
@@ -166,7 +166,7 @@ ms.locfileid: "80474035"
    - master_password：主要伺服器的密碼
    - master_log_file：執行 `show master status` 產生的二進位記錄檔的名稱
    - master_log_pos：執行 `show master status` 產生的二進位記錄檔的位置
-   - master_ssl_ca:CA 證書的上下文。 如果不使用 SSL，請傳入空字串。
+   - master_ssl_ca： CA 憑證的內容。 如果不使用 SSL，請傳入空字串。
        - 建議將此參數以變數形式傳遞。 請參閱下列範例，以取得詳細資訊。
 
 > [!NOTE]
@@ -184,14 +184,14 @@ ms.locfileid: "80474035"
    -----END CERTIFICATE-----'
    ```
 
-   使用 SSL 進行複製是在託管在域「companya.com」的主伺服器和 MySQL Azure 資料庫中託管的副本伺服器之間設置的。 此已儲存的程序可在複本伺服器上執行。 
+   使用 SSL 的複寫是在裝載于網域 "companya.com" 的主伺服器與適用於 MySQL 的 Azure 資料庫中主控的複本伺服器之間設定。 此已儲存的程序可在複本伺服器上執行。 
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, @cert);
    ```
    *不使用 SSL 的複寫*
 
-   在沒有 SSL 的複製在託管在域"companya.com"的主伺服器和 MySQL Azure 資料庫中託管的副本伺服器之間設置。 此已儲存的程序可在複本伺服器上執行。
+   不使用 SSL 的複寫是在裝載于網域 "companya.com" 的主伺服器與適用於 MySQL 的 Azure 資料庫中託管的複本伺服器之間設定。 此已儲存的程序可在複本伺服器上執行。
 
    ```sql
    CALL mysql.az_replication_change_master('master.companya.com', 'syncuser', 'P@ssword!', 3306, 'mysql-bin.000002', 120, '');
@@ -207,13 +207,13 @@ ms.locfileid: "80474035"
 
 1. 檢查複寫狀態
 
-   呼叫[`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html)副本伺服器上的命令以查看複製狀態。
+   呼叫複本[`show slave status`](https://dev.mysql.com/doc/refman/5.7/en/show-slave-status.html)伺服器上的命令，以查看複寫狀態。
     
    ```sql
    show slave status;
    ```
 
-   如果`Slave_IO_Running``Slave_SQL_Running`和 的狀態為"是",值`Seconds_Behind_Master`為"0",則複製工作良好。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不是 “0”，代表複本正在處理更新。 
+   如果`Slave_IO_Running`和`Slave_SQL_Running`的狀態為 "yes"，且的值`Seconds_Behind_Master`為 "0"，則複寫運作良好。 `Seconds_Behind_Master` 可指定複本的延遲時間。 如果值不是 “0”，代表複本正在處理更新。 
 
 ## <a name="other-stored-procedures"></a>其他已儲存的程序
 

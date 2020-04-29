@@ -1,5 +1,5 @@
 ---
-title: 使用 OpenID 連接授權 Web 應用訪問，& Azure AD |微軟文檔
+title: 使用 OpenID Connect & Azure AD 授權 web 應用程式存取 |Microsoft Docs
 description: 本文章說明如何使用 HTTP 訊息來使用 Azure Active Directory 和 OpenID Connect 授權存取您的租用戶中的 Web 應用程式和 Web API。
 services: active-directory
 documentationcenter: .net
@@ -15,42 +15,42 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: eef8174056be7e6be35cea56788c0a519d02944e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154435"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>使用 OpenID Connect 和 Azure Active Directory 授權存取 Web 應用程式
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 是以 OAuth 2.0 通訊協定為建置基礎的簡單身分識別層。 OAuth 2.0 定義的機制可以取得及使用[**存取權杖**](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)來存取受保護的資源，但它們不會定義提供身分識別資訊的標準方法。 OpenID Connect 實作驗證來做為 OAuth 2.0 的授權程序的擴充。 它以 驗證[`id_token`](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)使用者身份並提供有關使用者的基本設定檔資訊的形式提供有關最終使用者的資訊。
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) 是以 OAuth 2.0 通訊協定為建置基礎的簡單身分識別層。 OAuth 2.0 定義的機制可以取得及使用[**存取權杖**](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)來存取受保護的資源，但它們不會定義提供身分識別資訊的標準方法。 OpenID Connect 實作驗證來做為 OAuth 2.0 的授權程序的擴充。 它會以的形式提供使用者的相關資訊[`id_token`](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) ，以驗證使用者的身分識別，並提供使用者的基本設定檔資訊。
 
 如果您要建置的 Web 應用程式是裝載於伺服器且透過瀏覽器存取，建議使用 OpenID Connect。
 
 ## <a name="register-your-application-with-your-ad-tenant"></a>向 AD 租用戶註冊應用程式
-首先，向 Azure 活動目錄 （Azure AD） 租戶註冊應用程式。 這會讓應用程式獲得應用程式識別碼，以及讓它可以接收權杖。
+首先，向您的 Azure Active Directory （Azure AD）租使用者註冊您的應用程式。 這會讓應用程式獲得應用程式識別碼，以及讓它可以接收權杖。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
    
-1. 通過在頁面右上角選擇帳戶，然後選擇 **"切換目錄"** 導航，然後選擇適當的租戶，選擇 Azure AD 租戶。 
-   - 如果帳戶下只有一個 Azure AD 租戶，或者已選擇相應的 Azure AD 租戶，請跳過此步驟。
+1. 在頁面右上角選取您的帳戶，然後選取 [**切換目錄**] 流覽，然後選取適當的租使用者，以選擇您的 Azure AD 租使用者。 
+   - 如果您的帳戶下只有一個 Azure AD 租使用者，或如果您已選取適當的 Azure AD 租使用者，請略過此步驟。
    
 1. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]****。
    
-1. 在**Azure 活動目錄**左側功能表中，選擇**應用註冊**，然後選擇 **"新建註冊**"。
+1. 在**Azure Active Directory**左側功能表中，選取 [**應用程式註冊**]，然後選取 [**新增註冊**]。
    
-1. 遵照提示進行，並建立新的應用程式。 本教程的 Web 應用程式還是公共用戶端（移動&桌面）應用程式並不重要，但如果您希望 Web 應用程式或公共用戶端應用程式提供特定示例，請查看我們的[快速入門](v1-overview.md)。
+1. 遵照提示進行，並建立新的應用程式。 本教學課程的 web 應用程式或公用用戶端（行動 & 桌面）應用程式並不重要，但如果您想要 web 應用程式或公用用戶端應用程式的特定範例，請參閱我們的[快速入門](v1-overview.md)。
    
    - [名稱]**** 為應用程式名稱，並能向使用者描述您的應用程式。
-   - 在 [支援的帳戶類型]**** 底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]****。
-   - 提供**重定向 URI**。 對於 Web 應用程式，這是使用者可以登錄的應用的基本 URL。  例如： `http://localhost:12345` 。 對於公共用戶端（移動&桌面），Azure AD 使用它返回權杖回應。 輸入應用程式特定的值。  例如： `http://MyFirstAADApp` 。
+   - 在 [支援的帳戶類型]  底下，選取 [任何組織目錄中的帳戶及個人的 Microsoft 帳戶]  。
+   - 提供重新**導向 URI**。 對於 web 應用程式，這是使用者可以登入之應用程式的基底 URL。  例如： `http://localhost:12345` 。 若為公用用戶端（行動 & 桌面），Azure AD 會使用它來傳回權杖回應。 輸入應用程式特定的值。  例如： `http://MyFirstAADApp` 。
    <!--TODO: add once App ID URI is configurable: The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`-->  
    
-1. 完成註冊後，Azure AD 將為應用程式分配唯一的用戶端識別碼（應用程式**ID）。** 您會在後續章節中用到這個值，所以請從應用程式頁面中複製此值。
+1. 完成註冊後，Azure AD 會為您的應用程式指派唯一的用戶端識別碼（**應用程式**識別碼）。 您會在後續章節中用到這個值，所以請從應用程式頁面中複製此值。
    
-1. 要在 Azure 門戶中查找應用程式，請選擇**應用註冊**，然後選擇 **"查看所有應用程式**"。
+1. 若要在 Azure 入口網站中尋找您的應用程式，請選取 [**應用程式註冊**]，然後選取 [**查看所有應用程式**]。
 
 ## <a name="authentication-flow-using-openid-connect"></a>使用 OpenID Connect 驗證流程
 
@@ -65,7 +65,7 @@ OpenID Connect 所描述的中繼資料文件包含應用程式執行登入所�
 ```
 https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
 ```
-中繼資料是簡單的「JavaScript 物件標記法」(JSON) 文件。 如需範例，請參閱下列程式碼片段。 [OpenID Connect 規格](https://openid.net)中有程式碼片段內容的完整說明。 請注意，提供上述租戶 ID`common`而不是代替 [租戶] 將導致返回 JSON 物件中特定于租戶的 URI。
+中繼資料是簡單的「JavaScript 物件標記法」(JSON) 文件。 如需範例，請參閱下列程式碼片段。 [OpenID Connect 規格](https://openid.net)中有程式碼片段內容的完整說明。 請注意，提供租使用者識別碼， `common`而非上面的 {tenant}，會導致傳回的 JSON 物件中有租使用者特定的 uri。
 
 ```
 {
@@ -83,7 +83,7 @@ https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration
 }
 ```
 
-如果應用由於使用[宣告對應](../develop/active-directory-claims-mapping.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)功能而具有自訂簽名金鑰，則必須追加包含`appid`應用 ID 的查詢參數，以便獲取`jwks_uri`指向應用的簽名金鑰資訊。 例如：`https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e`包含 的`jwks_uri``https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`。
+如果您的應用程式具有自訂簽署金鑰做為使用[宣告對應](../develop/active-directory-claims-mapping.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)功能的結果，您必須附加`appid`包含應用程式識別碼的查詢參數，才能取得指向`jwks_uri`應用程式簽署金鑰資訊的。 例如： `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e`包含`jwks_uri`的。 `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`
 
 ## <a name="send-the-sign-in-request"></a>傳送登入要求
 
@@ -110,22 +110,22 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 參數 |  | 描述 |
 | --- | --- | --- |
-| tenant |required |要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 租用戶獨立權杖允許的值為租用戶識別碼，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` 或 `contoso.onmicrosoft.com` 或 `common` |
-| client_id |required |向 Azure AD 註冊應用程式時，指派給您應用程式的應用程式識別碼。 您可以在 Azure 入口網站中找到這個值。 按一下**Azure 活動目錄**，按一下**應用註冊**，選擇應用程式並在應用程式頁面上找到應用程式 ID。 |
-| response_type |required |必須包含 OpenID Connect 登入的 `id_token` 。 它也可能包含其他 response_types，例如 `code` 或 `token`。 |
-| scope | 建議使用 | OpenID Connect 規範需要作用域`openid`，該範圍將轉換為同意 UI 中的"登錄"許可權。 此參數和其他 OIDC 作用域在 v1.0 終結點上被忽略，但仍是符合標準的用戶端的最佳做法。 |
-| nonce |required |包含在要求中的值 (由應用程式所產生)，將會包含在所得的 `id_token` 中來做為宣告。 應用程式接著便可確認此值，以減少權杖重新執行攻擊。 此值通常是隨機的唯一字串或 GUID，可用以識別要求的來源。 |
-| redirect_uri | 建議使用 |應用程式的 redirect_uri，您的應用程式可在此傳送及接收驗證回應。 其必須完全符合您在入口網站中註冊的其中一個 redirect_uris，不然就必須得是編碼的 url。 如果丟失，使用者代理將隨機發送回為應用註冊的重定向 URI 之一。 最大長度為 255 位元組 |
+| tenant |必要 |要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 租用戶獨立權杖允許的值為租用戶識別碼，例如 `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` 或 `contoso.onmicrosoft.com` 或 `common` |
+| client_id |必要 |向 Azure AD 註冊應用程式時，指派給您應用程式的應用程式識別碼。 您可以在 Azure 入口網站中找到這個值。 依序按一下 [ **Azure Active Directory**]、[**應用程式註冊**]、應用程式，並在應用程式頁面上找到應用程式識別碼。 |
+| response_type |必要 |必須包含 OpenID Connect 登入的 `id_token` 。 它也可能包含其他 response_types，例如 `code` 或 `token`。 |
+| scope | 建議使用 | OpenID Connect 規格需要範圍`openid`，這會轉譯為同意 UI 中的「登入」許可權。 在 v1.0 端點上會忽略此和其他 OIDC 範圍，但仍然是符合標準的用戶端的最佳作法。 |
+| nonce |必要 |包含在要求中的值 (由應用程式所產生)，將會包含在所得的 `id_token` 中來做為宣告。 然後，應用程式可以驗證此值，以減輕權杖重新執行所造成的攻擊。 此值通常是隨機的唯一字串或 GUID，可用以識別要求的來源。 |
+| redirect_uri | 建議使用 |應用程式的 redirect_uri，您的應用程式可以從中傳送及接收驗證回應。 其必須完全符合您在入口網站中註冊的其中一個 redirect_uris，不然就必須得是編碼的 url。 如果遺漏，使用者代理程式將會隨機傳送回其中一個為應用程式註冊的重新導向 Uri。 長度上限為255個位元組 |
 | response_mode |選用 |指定將產生的 authorization_code 傳回到應用程式所應該使用的方法。 支援的值為 `form_post` (*HTTP 表單張貼*) 和 `fragment` (*URL 片段*)。 針對 Web 應用程式，建議使用 `response_mode=form_post`，確保會以最安全的方式將權杖傳輸至您的應用程式。 包括 id_token 在內的任何流程預設值皆為 `fragment`。|
-| state |建議使用 |會隨權杖回應傳回之要求中所包含的值。 其可以是您想要之任何內容的字串。 隨機生成的唯一值通常用於[防止跨網站請求偽造攻擊](https://tools.ietf.org/html/rfc6749#section-10.12)。 此狀態也用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。 |
-| prompt |選用 |表示需要的使用者互動類型。 目前只有 'login'、'none'、'consent' 是有效值。 `prompt=login` 會強制使用者在該要求上輸入認證，否定單一登入。 `prompt=none` 則相反 - 它會確保不會對使用者顯示任何互動式提示。 如果無法透過單一登入以無訊息方式完成要求，端點就會傳回錯誤。 `prompt=consent` 會在使用者登入之後觸發 OAuth 同意對話方塊，詢問使用者是否要授與權限給應用程式。 |
-| login_hint |選用 |如果您事先知道其使用者名稱，可用來預先填入使用者登入頁面的使用者名稱/電子郵件地址欄位。 通常應用程式會在重新驗證期間使用此參數，並已經使用 `preferred_username` 宣告從上一個登入擷取使用者名稱。 |
+| State |建議使用 |會隨權杖回應傳回之要求中所包含的值。 其可以是任何內容的字串。 隨機產生的唯一值通常用於[防止跨網站偽造要求攻擊](https://tools.ietf.org/html/rfc6749#section-10.12)。 此狀態也可用來在驗證要求發生之前，將使用者狀態的相關資訊編碼，例如他們所在的頁面或檢視。 |
+| Prompt |選用 |表示必要的使用者互動類型。 目前只有 'login'、'none'、'consent' 是有效值。 `prompt=login` 會強制使用者在該要求上輸入認證，否定單一登入。 `prompt=none` 則相反 - 它會確保不會對使用者顯示任何互動式提示。 如果無法透過單一登入以無訊息方式完成要求，端點就會傳回錯誤。 `prompt=consent` 會在使用者登入之後觸發 OAuth 同意對話方塊，詢問使用者是否要授與權限給應用程式。 |
+| login_hint |選用 |如果您事先知道使用者的使用者名稱，可以用此項目來預先填入使用者登入頁面上的使用者名稱/電子郵件地址欄位。 通常應用程式會在重新驗證期間使用此參數，並已經使用 `preferred_username` 宣告從上一個登入擷取使用者名稱。 |
 
 此時，系統會要求使用者輸入其認證並完成驗證。
 
 ### <a name="sample-response"></a>範例回應
 
-在使用者經過身份驗證後發送到登錄`redirect_uri`請求中指定的示例回應可能如下所示：
+在使用者經過驗證之後，傳送`redirect_uri`至登入要求中指定的回應範例如下所示：
 
 ```
 POST / HTTP/1.1
@@ -137,8 +137,8 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 | 參數 | 描述 |
 | --- | --- |
-| id_token |應用程式要求的 `id_token` 。 您可以使用 `id_token` 確認使用者的身分識別，並以使用者開始工作階段。 |
-| state |要求中包含的值，也會隨權杖回應傳回。 隨機生成的唯一值通常用於[防止跨網站請求偽造攻擊](https://tools.ietf.org/html/rfc6749#section-10.12)。 此狀態也用於在驗證要求出現之前，於應用程式中編碼使用者的狀態資訊，例如之前所在的網頁或檢視。 |
+| id_token |應用程式要求的 `id_token`。 您可以使用 `id_token` 確認使用者的身分識別，並以使用者開始工作階段。 |
+| State |要求中包含的值，也會隨權杖回應傳回。 隨機產生的唯一值通常用於[防止跨網站偽造要求攻擊](https://tools.ietf.org/html/rfc6749#section-10.12)。 此狀態也可用來在驗證要求發生之前，將使用者狀態的相關資訊編碼，例如他們所在的頁面或檢視。 |
 
 ### <a name="error-response"></a>錯誤回應
 
@@ -180,14 +180,14 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 您可能也希望根據自己的案例驗證其他宣告。 一些常見的驗證包括：
 
 * 確保使用者/組織已註冊應用程式。
-* 確保使用者具有使用`wids`或`roles`聲明的適當授權/許可權。 
+* 使用`wids`或`roles`宣告，確保使用者具有適當的授權/許可權。 
 * 確保驗證具有特定強度，例如多重要素驗證。
 
-驗證 `id_token` 之後，即可利用該使用者開始工作階段，並使用 `id_token` 中的宣告來取得應用程式中的使用者相關資訊。 此資訊可用於顯示、記錄、個人化等。有關`id_tokens`和聲明的詳細資訊，請閱讀[AAD id_tokens](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
+驗證 `id_token` 之後，即可利用該使用者開始工作階段，並使用 `id_token` 中的宣告來取得應用程式中的使用者相關資訊。 這種資訊可以用於顯示、記錄、個人化等。如需`id_tokens`和宣告的詳細資訊，請參閱[AAD id_tokens](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
 
 ## <a name="send-a-sign-out-request"></a>傳送登出要求
 
-當您想要將使用者登出應用程式時，只是清除應用程式的 Cookie 或結束使用者的工作階段還是不夠。 您還必須將使用者重定向到`end_session_endpoint`要登出。如果未能執行此操作，使用者將能夠重新驗證你的應用，而無需再次輸入其憑據，因為他們將與 Azure AD 終結點具有有效的單一登入會話。
+當您想要將使用者登出應用程式時，只是清除應用程式的 Cookie 或結束使用者的工作階段還是不夠。 您也必須將使用者重新導向至`end_session_endpoint`以進行登出。如果您無法這麼做，使用者將能夠重新驗證您的應用程式，而不需要再次輸入其認證，因為他們將會與 Azure AD 端點進行有效的單一登入會話。
 
 您可以直接將使用者重新導向至 OpenID Connect 中繼資料文件中所列出的 `end_session_endpoint` ：
 
@@ -199,19 +199,19 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | 參數 |  | 描述 |
 | --- | --- | --- |
-| post_logout_redirect_uri |建議使用 |成功登出後，應重定向到使用者的 URL。 此 URL 必須與應用註冊門戶中為應用程式註冊的重定向 URI 之一匹配。  如果未包含*post_logout_redirect_uri，* 則會向使用者顯示一條通用消息。 |
+| post_logout_redirect_uri |建議使用 |使用者在成功登出後應重新導向至的 URL。 此 URL 必須符合在應用程式註冊入口網站中為您的應用程式註冊的其中一個重新導向 Uri。  如果未包含*post_logout_redirect_uri* ，使用者就會顯示為一般訊息。 |
 
 ## <a name="single-sign-out"></a>單一登出
 
 當您將使用者重新導向至 `end_session_endpoint` 時，Azure AD 會清除瀏覽器中的使用者工作階段。 不過，使用者可能仍然登入其他使用 Azure AD 進行驗證的應用程式。 為了讓這些應用程式能同時將使用者登入，Azure AD 會將 HTTP GET 要求傳送至使用者目前登入之所有應用程式的已註冊 `LogoutUrl`。 應用程式必須藉由清除任何可識別使用者的工作階段並傳回 `200` 回應，以回應此要求。 如果您想要在應用程式中支援單一登出，您必須在應用程式的程式碼中實作這類 `LogoutUrl`。 您可以在 Azure 入口網站中設定 `LogoutUrl`：
 
-1. 導航到[Azure 門戶](https://portal.azure.com)。
+1. 流覽至 [ [Azure 入口網站](https://portal.azure.com)]。
 2. 在頁面右上角按一下您的帳戶，以選擇您的 Active Directory。
 3. 在左側導覽窗格中，依序選擇 [Azure Active Directory]****、[應用程式註冊]****，然後選取您的應用程式。
 4. 依序按一下 [設定]**** 和 [屬性]****，並找到 [登出 URL]**** 文字方塊。 
 
 ## <a name="token-acquisition"></a>權杖取得
-許多 Web Apps 不僅需要將使用者登入，同時需要使用 OAuth 代表使用者來存取 Web 服務。 此方案將 OpenID Connect 合併用於使用者身份驗證`authorization_code`，同時獲取可用於`access_tokens`使用[OAuth 授權代碼流的](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)。
+許多 Web Apps 不僅需要將使用者登入，同時需要使用 OAuth 代表使用者來存取 Web 服務。 此案例結合 OpenID Connect 來進行使用者驗證`authorization_code` ，同時取得可用於`access_tokens`使用[OAuth 授權碼流程](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)的。
 
 ## <a name="get-access-tokens"></a>取得存取權杖
 若要取得存取權杖，您需要修改上述的登入要求：
@@ -232,9 +232,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e        // Your registered Applica
 
 藉由在要求中包含權限範圍，並且使用 `response_type=code+id_token`，`authorize` 端點可確保使用者已經同意 `scope` 查詢參數中表示的權限，並且將授權碼傳回至您的應用程式以交換存取權杖。
 
-### <a name="successful-response"></a>成功回應
+### <a name="successful-response"></a>成功的回應
 
-發送到`redirect_uri`using`response_mode=form_post`的成功回應如下所示：
+成功的回應（ `redirect_uri`使用`response_mode=form_post`傳送至）看起來像這樣：
 
 ```
 POST /myapp/ HTTP/1.1
@@ -246,9 +246,9 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 | 參數 | 描述 |
 | --- | --- |
-| id_token |應用程式要求的 `id_token` 。 您可以使用 `id_token` 確認使用者的身分識別，並以使用者開始工作階段。 |
-| 代碼 |應用程式要求的 authorization_code。 應用程式可以使用授權碼要求目標資源的存取權杖。 authorization_code 的有效期很短，通常約 10 分鐘後即到期。 |
-| state |如果要求中包含狀態參數，回應中就應該出現相同的值。 應用程式應該確認要求和回應中的狀態值完全相同。 |
+| id_token |應用程式要求的 `id_token`。 您可以使用 `id_token` 確認使用者的身分識別，並以使用者開始工作階段。 |
+| code |應用程式要求的 authorization_code。 應用程式可以使用授權碼來要求目標資源的存取權杖。 authorization_code 的有效期很短，通常約 10 分鐘後即到期。 |
+| State |如果要求中包含 state 參數，則回應中應該會出現相同的值。 應用程式必須驗證要求與回應中的狀態值是否相同。 |
 
 ### <a name="error-response"></a>錯誤回應
 
@@ -269,9 +269,9 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 如需可能的錯誤碼及建議的用戶端動作說明，請參閱[授權端點錯誤的錯誤碼](#error-codes-for-authorization-endpoint-errors)。
 
-獲得授權`code`和 後`id_token`，即可登錄使用者並代表他們獲取[訪問權杖](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 若要將使用者登入，您必須完整地如上方所述驗證 `id_token` 。 若要取得存取權杖，您可以依照 [OAuth 程式碼流程文件](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)中＜使用授權碼來要求存取權杖＞一節中所述的步驟操作。
+一旦取得授權`code`和`id_token`，您可以將使用者登入，並代表他們取得[存取權杖](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 若要將使用者登入，您必須完整地如上方所述驗證 `id_token` 。 若要取得存取權杖，您可以依照 [OAuth 程式碼流程文件](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token)中＜使用授權碼來要求存取權杖＞一節中所述的步驟操作。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 深入了解[存取權杖](../develop/access-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
-* 瞭解有關[`id_token`和 聲明](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)的更多。
+* 深入瞭解[ `id_token`和宣告](../develop/id-tokens.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。

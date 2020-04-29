@@ -1,13 +1,13 @@
 ---
-title: 將現有執行檔部署到 Azure 服務結構
+title: 將現有的可執行檔部署至 Azure Service Fabric
 description: 了解如何將現有應用程式封裝為來賓可執行檔，使其可以部署至 Service Fabric 叢集。
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: c6c6bc0369593c177b74261da1fd8c15dd73fcb3
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80520494"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>將現有可執行檔封裝和部署至 Service Fabric
@@ -22,10 +22,10 @@ ms.locfileid: "80520494"
 
 Visual Studio 會提供 Service Fabric 服務範本，協助您將來賓可執行檔部署至 Service Fabric 叢集。
 
-1. 選擇 **「檔案** > **新專案**」 並建立服務結構應用程式。
+1.  > 選擇 **[** 檔案] [新增] [**專案**]，然後建立 Service Fabric 應用程式。
 2. 選擇 [來賓執行檔]**** 做為服務範本。
-3. 按下 **「瀏覽**」以選擇具有可執行檔的資料夾,並填寫創建服務的其他參數。
-   * *程式碼包行為*。 可設定為將資料夾的所有內容複製到 Visual Studio 專案，這在執行檔沒有變更時很有用。 如果您預期會變更可執行檔，並想要以動態方式取得新組建，則可以選擇改為連結到資料夾。 在 Visual Studio 中建立應用程式專案時，您可以使用連結的資料夾。 這會從專案內連結到來源位置，讓您可以在來源目的地更新來賓執行檔。 在組建時使這些更新會成為應用程式套件的一部分。
+3. 按一下 **[流覽]** 以選取包含您可執行檔的資料夾，並填入其餘參數以建立服務。
+   * 程式*代碼封裝行為*。 可設定為將資料夾的所有內容複製到 Visual Studio 專案，這在執行檔沒有變更時很有用。 如果您預期會變更可執行檔，並想要以動態方式取得新組建，則可以選擇改為連結到資料夾。 在 Visual Studio 中建立應用程式專案時，您可以使用連結的資料夾。 這會從專案內連結到來源位置，讓您可以在來源目的地更新來賓執行檔。 在組建時使這些更新會成為應用程式套件的一部分。
    * 「Program」** 指定應執行以便啟動服務的執行檔。
    * 「Arguments」** 指定應傳遞至執行檔的引數。 這可以是具有引數的參數清單。
    * 「WorkingFolder」** 指定即將啟動之程序的工作目錄。 您可以指定三個值：
@@ -39,9 +39,9 @@ Visual Studio 會提供 Service Fabric 服務範本，協助您將來賓可執�
 
 如需逐步解說範例，請參閱[使用 Visual Studio 建立第一個客體可執行檔應用程式](quickstart-guest-app.md)。
 
-### <a name="packaging-multiple-executables-with-visual-studio"></a>使用 Visual Studio 打包多個可執行檔
+### <a name="packaging-multiple-executables-with-visual-studio"></a>使用 Visual Studio 封裝多個可執行檔
 
-您可以使用 Visual Studio 生成包含多個來賓可執行檔的應用程式包。 添加第一個來賓可執行檔後,右鍵單擊應用程式專案並選擇 **「添加>新服務交換矩陣服務**,將第二個來賓可執行專案添加到解決方案中。
+您可以使用 Visual Studio 來產生應用程式封裝，其中包含多個來賓可執行檔。 新增第一個來賓可執行檔之後，以滑鼠右鍵按一下應用程式專案，然後選取 [**新增 >新 Service Fabric 服務**，將第二個來賓可執行檔專案新增至方案。
 
 > [!NOTE]
 > 如果您選擇在 Visual Studio 專案中連結來源，則建置 Visual Studio 方案將可確保應用程式封裝是最新的，並且含有來源中的變更。
@@ -56,7 +56,7 @@ Visual Studio 會提供 Service Fabric 服務範本，協助您將來賓可執�
 
 Yeoman 會建立應用程式套件，其中包含適當的應用程式和資訊清單檔案，以及安裝和解除安裝指令碼。
 
-### <a name="packaging-multiple-executables-using-yeoman-on-linux"></a>Linux 使用 Yeoman 打包多個可執行檔
+### <a name="packaging-multiple-executables-using-yeoman-on-linux"></a>在 Linux 上使用 Yeoman 封裝多個可執行檔
 
 若要將其他服務新增至已使用 `yo` 建立的應用程式，請執行下列步驟︰
 
@@ -76,7 +76,7 @@ Yeoman 會建立應用程式套件，其中包含適當的應用程式和資訊�
 
 ### <a name="create-the-package-directory-structure"></a>建立套件目錄結構
 
-可以首先創建目錄結構,如[Azure 服務結構應用包](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)中所述。
+您可以從建立目錄結構開始，如[封裝 Azure Service Fabric 應用程式](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps)中所述。
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>新增應用程式的程式碼和組態檔
 

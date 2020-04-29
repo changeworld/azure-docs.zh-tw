@@ -1,13 +1,13 @@
 ---
 title: 管理 Azure 復原服務保存庫與伺服器
-description: 在本文中，瞭解如何使用恢復服務保存庫概述儀表板來監視和管理恢復服務保存庫。
+description: 在本文中，您將瞭解如何使用復原服務保存庫總覽儀表板來監視和管理您的復原服務保存庫。
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80131982"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>監視及管理復原服務保存庫
@@ -24,7 +24,7 @@ ms.locfileid: "80131982"
 
 若要監視警示，或檢視關於復原服務保存庫的管理資料，請開啟保存庫。
 
-1. 使用 Azure 訂閱登錄到[Azure 門戶](https://portal.azure.com/)。
+1. 使用您的 Azure 訂用帳戶登入[Azure 入口網站](https://portal.azure.com/)。
 
 2. 在入口網站中，按一下 [所有服務]****。
 
@@ -49,7 +49,7 @@ ms.locfileid: "80131982"
 [監視] 區段會顯示預先定義的 [備份警示]**** 和 [備份作業]**** 查詢結果。 [監視] 圖格會提供有關下列各項的最新資訊：
 
 * 備份作業的 [重大] 和 [警告] 警示 (在過去 24 小時內)
-* Azure VM 的預檢查狀態。 有關預檢查狀態的完整資訊，請參閱[備份預檢查狀態](#backup-pre-check-status)。
+* Azure Vm 的前置檢查狀態。 如需預先檢查狀態的完整資訊，請參閱[備份預先檢查狀態](#backup-pre-check-status)。
 * 進行中的備份作業，以及失敗的作業 (在過去 24 小時內)。
 
 [使用量] 圖格會提供：
@@ -63,21 +63,21 @@ ms.locfileid: "80131982"
 
 上圖中的 [備份警示] 功能表的篩選依據：狀態為作用中、嚴重性為重大，且時間為前 24 小時。
 
-### <a name="backup-pre-check-status"></a>備份預檢查狀態
+### <a name="backup-pre-check-status"></a>備份預先檢查狀態
 
-備份預檢查檢查 VM 的配置中，有無可能對備份產生不利影響的問題。 它們聚合此資訊，以便您可以直接從恢復服務保存庫儀表板查看這些資訊，並提供糾正措施建議，以確保成功進行檔一致性或應用程式一致性備份。 它們不需要基礎設施，也沒有額外費用。  
+備份預先檢查檢查您的 Vm 設定是否有可能會對備份造成負面影響的問題。 它們會匯總此資訊，讓您可以直接從復原服務保存庫儀表板進行查看，並提供更正措施的建議，以確保檔案一致或應用程式一致的備份。 它們不需要任何基礎結構，而且沒有額外費用。  
 
-備份預檢查作為 Azure VM 計畫備份操作的一部分運行。 它們最後有以下狀態之一：
+備份預先檢查會在 Azure Vm 的排程備份作業中執行。 他們最後會有下列其中一種狀態：
 
-* **已通過**：此狀態指示 VM 的配置應導致成功的備份，並且無需採取任何糾正措施。
-* **警告**： 此狀態指示 VM 配置中的一個或多個可能導致備份*might*失敗的問題。 它提供了確保成功備份*的建議*步驟。 例如，未安裝最新的 VM 代理可能會導致備份間歇性失敗。 這種情況將提供警告狀態。
-* **嚴重**：此狀態指示 VM 配置中的一個或多個關鍵問題，*這些問題將導致*備份失敗，並提供確保成功備份*的必要*步驟。 例如，由於 VM 的 NSG 規則更新而導致的網路問題將導致備份失敗，因為它會阻止 VM 與 Azure 備份服務通信。 這種情況將提供一個嚴重狀態。
+* 已**通過**：此狀態表示 VM 的設定應該會導致備份成功，而且不需要採取任何更正動作。
+* **警告**：此狀態表示 VM 設定中*可能*導致備份失敗的一或多個問題。 它會提供*建議*的步驟，以確保備份成功。 例如，未安裝最新的 VM 代理程式，可能會導致備份間歇地失敗。 這種情況會提供警告狀態。
+* **重大**：此狀態表示 VM 設定中*會*導致備份失敗的一或多個重大問題，並提供*必要*的步驟來確保備份成功。 例如，因 VM 的 NSG 規則更新而造成的網路問題，將會導致備份失敗，因為它會防止 VM 與 Azure 備份服務進行通訊。 這種情況會提供嚴重的狀態。
 
-按照以下步驟開始解決備份預檢查在恢復服務保存庫中的 VM 備份報告的任何問題。
+請遵循下列步驟，以開始解決復原服務保存庫上 VM 備份預先檢查備份前所回報的任何問題。
 
-* 在恢復服務保存庫儀表板上選擇**備份預檢查狀態 （Azure VM）** 磁貼。
-* 選擇備份預檢查狀態**為"嚴重**"或"**警告**"的任何 VM。 此操作將打開**VM 詳細資訊**窗格。
-* 選擇窗格頂部的窗格通知，以顯示配置問題說明和補救措施。
+* 選取 [復原服務保存庫] 儀表板上的 [**備份檢查前狀態（Azure vm）** ] 磚。
+* 選取 [**重大**] 或 [**警告**] 的備份前置檢查狀態的任何 VM。 此動作會開啟 [ **VM 詳細資料**] 窗格。
+* 選取窗格頂端的窗格通知，以顯示設定問題描述和補救步驟。
 
 ## <a name="manage-backup-alerts"></a>管理備份警示
 
@@ -166,7 +166,7 @@ ms.locfileid: "80131982"
 
 ## <a name="manage-backup-items"></a>管理備份項目
 
-復原服務保存庫可保存許多類型的備份資料。 [詳細瞭解](backup-overview.md#what-can-i-back-up)您可以備份的內容。 若要管理各種伺服器、電腦、資料庫和工作負載，請按一下 [備份項目]**** 圖格以檢視保存庫的內容。
+復原服務保存庫可保存許多類型的備份資料。 [深入瞭解](backup-overview.md#what-can-i-back-up)您可以備份的內容。 若要管理各種伺服器、電腦、資料庫和工作負載，請按一下 [備份項目]**** 圖格以檢視保存庫的內容。
 
 ![備份項目圖格](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -186,7 +186,7 @@ ms.locfileid: "80131982"
 
 保存庫儀表板中的 [備份作業]**** 圖格會顯示過去 24 小時內 [進行中] 或 [失敗] 的作業數目。 此圖格可讓您一窺 [備份作業] 功能表。
 
-![從設置中備份專案](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
+![從設定備份專案](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
 若要查看有關作業的其他詳細資料，請按一下 [進行中]**** 或 [失敗]**** 以開啟針對該狀態篩選的 [備份作業] 功能表。
 
@@ -196,11 +196,11 @@ ms.locfileid: "80131982"
 
 若要開啟 [備份作業] 功能表，請在保存庫的主功能表中，按一下 [備份作業]****。
 
-![從設置中備份專案](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
+![從設定備份專案](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
 備份作業清單隨即開啟。
 
-![從設置中備份專案](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
+![從設定備份專案](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
 
 [備份作業] 功能表會顯示過去 24 小時內所有備份類型的所有作業狀態。 使用 [篩選]**** 來變更篩選條件。 下列各節將說明篩選條件。
 
@@ -208,11 +208,11 @@ ms.locfileid: "80131982"
 
 1. 在保存庫的 [備份作業] 功能表中，按一下 [篩選]****。
 
-   ![從設置中備份專案](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
+   ![從設定備份專案](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
     [篩選] 功能表隨即開啟。
 
-   ![從設置中備份專案](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
+   ![從設定備份專案](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
 2. 選擇篩選設定，然後按一下 [完成]****。 經過篩選的清單會根據新的設定重新整理。
 
@@ -233,7 +233,7 @@ ms.locfileid: "80131982"
 * 所有作業
 * 註冊
 * 設定備份
-* Backup 
+* Backup
 * 還原
 * 停用備份
 * 刪除備份資料
@@ -245,7 +245,7 @@ ms.locfileid: "80131982"
 * 所有狀態
 * Completed
 * 進行中
-* 失敗
+* Failed
 * 已取消
 * 已完成，但出現警告
 
@@ -270,7 +270,7 @@ ms.locfileid: "80131982"
 * 與保存庫相關聯的雲端 LRS 儲存體使用量
 * 與保存庫相關聯的雲端 GRS 儲存體使用量
 
-## <a name="troubleshooting-monitoring-issues"></a>故障排除監視問題
+## <a name="troubleshooting-monitoring-issues"></a>監視問題疑難排解
 
 **問題︰** 來自 Azure 備份代理程式的作業與警示未出現在入口網站中。
 

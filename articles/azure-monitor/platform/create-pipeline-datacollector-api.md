@@ -1,5 +1,5 @@
 ---
-title: 使用資料收集器 API 創建資料管道
+title: 使用資料收集器 API 建立資料管線
 description: 您可以使用 Azure 監視器 HTTP 資料收集器 API，將 POST JSON 資料從任何可呼叫 REST API 的用戶端新增至 Log Analytics 工作區。 本文將說明如何以自動化方式上傳儲存在檔案中的資料。
 ms.subservice: logs
 ms.topic: conceptual
@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/09/2018
 ms.openlocfilehash: 96c64f6a0167b678f14bf0199069ecd6b4c8d57a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80055102"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>使用資料收集器 API 建立資料管線
@@ -20,7 +20,7 @@ ms.locfileid: "80055102"
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="example-problem"></a>問題範例
-在本文的其餘部分中，我們將透過 Application Insights 檢查頁面檢視資料。 在我們的假設場景中，我們希望將應用程式洞察 SDK 預設收集的地理資訊與包含世界每個國家/地區人口的自訂資料相關聯，目的是確定我們應花費最多行銷資金的位置。 
+在本文的其餘部分中，我們將透過 Application Insights 檢查頁面檢視資料。 在我們的假設案例中，我們想要將 Application Insights SDK 預設收集的地理資訊相互關聯至包含全球每個國家/地區擴展的自訂資料，其目標是要找出我們應該花費最多行銷金額的位置。 
 
 我們會使用 [UN World Population Prospects](https://esa.un.org/unpd/wpp/) (聯合國世界人口展望) 等公開資料來源來完成此目的。 資料會有下列簡易結構描述：
 

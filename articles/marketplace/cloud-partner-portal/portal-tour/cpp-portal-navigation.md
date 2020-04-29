@@ -1,6 +1,6 @@
 ---
-title: Azure 應用商店的雲合作夥伴門戶導航
-description: Azure 應用商店雲合作夥伴門戶中的導航說明。
+title: Azure Marketplace 的 Cloud Partner 入口網站導覽
+description: Azure Marketplace 的 Cloud Partner 入口網站中的導覽說明。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dsindona
 ms.openlocfilehash: 2c1d0eafe96d6e1533bb980ae0e4fd3c43f0e56b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80278411"
 ---
 # <a name="cloud-partner-portal-navigation"></a>Cloud Partner 入口網站瀏覽
@@ -69,7 +69,7 @@ ms.locfileid: "80278411"
 佔用入口網站的左側的是可折疊的瀏覽窗格。  它包含的功能表具有可供合作夥伴使用的下列項目：
 
 
-|    **功能表項目**     |      **描述**                       |
+|    **功能表項目**     |      **說明**                       |
 |    -------------     |      ---------------                       |
 | ![[新增供應項目] 項目](./media/left-navbar1.png) | [[新增供應項目] 功能表](./cpp-new-offer-menu.md)可建立指定類型的新供應項目。 |
 | ![[所有供應項目] 項目](./media/left-navbar2.png) | [所有供應項目](./cpp-all-offers-page.md)頁面可檢視所有已提交的供應項目，以及一些主要特性。 |
@@ -77,7 +77,7 @@ ms.locfileid: "80278411"
 | ![[所有發行者] 項目](./media/left-navbar4.png) | [所有發行者](./cpp-all-publishers-page.md)頁面會列出所有目前已註冊的雲端合作夥伴發行者。 |
 | ![[使用者] 項目](./media/left-navbar5.png) | [使用者](./cpp-users-page.md)頁面會列出目前與註冊的雲端合作夥伴相關聯的所有使用者帳戶。 |
 | ![[歷程記錄] 頁面](./media/left-navbar6.png) | [歷程記錄](./cpp-history-page.md)頁面會列出所有發行者的供應項目發行和修改事件。 |
-| ![[見解] 項目](./media/left-navbar7.png) | [見解](./cpp-insights-page.md)頁包含構成此門戶的*賣家見解*功能的各種儀表板。 |
+| ![[見解] 項目](./media/left-navbar7.png) | [深入](./cpp-insights-page.md)解析頁面包含各種儀表板，其中組成此入口網站的*賣方見解*功能。 |
 | ![[文件] 項目](./media/left-navbar8.png) | 在新的索引標籤中啟動 Cloud Partner 入口網站的文件首頁 (與 [說明]**** 功能表中的項目重複)。 |
 | ![[論壇] 項目](./media/left-navbar9.png)  | 在新的索引標籤中啟動 AppSource 和 Azure Marketplaces 的合作夥伴文件首頁 (與 [說明]**** 功能表中的項目重複)。 |
 |  |  |

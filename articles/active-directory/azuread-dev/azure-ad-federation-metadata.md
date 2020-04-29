@@ -14,10 +14,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: bcc44f61ccb7b4a19e7df39ab979669c5aa37da1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154894"
 ---
 # <a name="federation-metadata"></a>同盟中繼資料
@@ -43,7 +43,7 @@ Azure AD 會在 `https://login.microsoftonline.com/<TenantDomainName>/Federation
 
 若為**租用戶獨立端點**，`TenantDomainName` 是 `common`。 本文件只列出通用於所有 Azure AD 租用戶 (裝載於 login.microsoftonline.com) 的同盟中繼資料項目。
 
-例如，租用戶專屬端點可能是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 與租戶無關的終結點為[https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 您可以在瀏覽器中輸入此 URL 以檢視同盟中繼資料文件。
+例如，租用戶專屬端點可能是 `https://login.microsoftonline.com/contoso.onmicrosoft.com/FederationMetadata/2007-06/FederationMetadata.xml`。 租使用者獨立端點是[https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml](https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml)。 您可以在瀏覽器中輸入此 URL 以檢視同盟中繼資料文件。
 
 ## <a name="contents-of-federation-metadata"></a>同盟中繼資料內容
 以下小節提供使用 Azure AD 所簽發之權杖的服務所需的資訊。
@@ -71,7 +71,7 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>權杖簽署憑證
-當服務收到由 Azure AD 租戶頒發的權杖時，必須使用聯合中繼資料文檔中發佈的簽名金鑰驗證權杖的簽名。 同盟中繼資料包含租用戶用於權杖簽署之憑證的公開部分。 憑證原始位元組會出現在 `KeyDescriptor` 項目中。 當 `use` 屬性值為 `signing` 時，權杖簽署憑證僅能適用於簽署。
+當服務收到 Azure AD 租使用者所發行的權杖時，必須使用在同盟元資料檔案中發佈的簽署金鑰來驗證權杖的簽章。 同盟中繼資料包含租用戶用於權杖簽署之憑證的公開部分。 憑證原始位元組會出現在 `KeyDescriptor` 項目中。 當 `use` 屬性值為 `signing` 時，權杖簽署憑證僅能適用於簽署。
 
 Azure AD 所發佈之同盟中繼資料文件可以有多組簽署金鑰 (例如，Azure AD 準備更新簽署憑證時)。 當同盟中繼資料文件包含多個憑證時，正在驗證權杖的服務應會支援該文件中的所有憑證。
 

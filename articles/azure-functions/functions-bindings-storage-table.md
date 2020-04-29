@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.openlocfilehash: 1aa3537679ee37cbc6085344d2f31ae4043d32bb
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80520679"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 資料表儲存體繫結
@@ -26,7 +26,7 @@ ms.locfileid: "80520679"
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x-and-higher"></a>封裝 - 功能 2.x 及以上
+## <a name="packages---functions-2x-and-higher"></a>封裝-函數2.x 和更新版本
 
 [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet 套件 3.x 版中提供資料表儲存體繫結。 套件的原始程式碼位於 [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub 存放庫中。
 
@@ -38,9 +38,9 @@ ms.locfileid: "80520679"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-### <a name="one-entity"></a>實體
+### <a name="one-entity"></a>一個實體
 
-下列範例示範可讀取單一資料表資料列的 [C# 函式](functions-dotnet-class-library.md)。 對於表中插入的每個記錄,將觸發該函數。
+下列範例示範可讀取單一資料表資料列的 [C# 函式](functions-dotnet-class-library.md)。 對於插入資料表中的每筆記錄，將會觸發函式。
 
 列索引鍵值 "{queueTrigger}" 表示資料列索引鍵來自佇列訊息字串。
 
@@ -67,7 +67,7 @@ public class TableStorage
 
 ### <a name="iqueryable"></a>IQueryable
 
-下面的範例顯示了一個[C# 函數](functions-dotnet-class-library.md),該函`MyPoco`數讀取`TableEntity`類派生自 的多個表行。
+下列範例顯示的[c #](functions-dotnet-class-library.md)函式會讀取類別衍生自`MyPoco` `TableEntity`的多個資料表資料列。
 
 ```csharp
 public class TableStorage
@@ -93,7 +93,7 @@ public class TableStorage
 
 ### <a name="cloudtable"></a>CloudTable
 
-[Functions V2 執行階段](functions-versions.md)不支援 `IQueryable`。 替代方式是使用 Azure 儲存體 SDK，藉此利用 `CloudTable` 方法參數來讀取資料表。 下面是查詢 Azure 函數紀錄表的函數的範例:
+[Functions V2 執行階段](functions-versions.md)不支援 `IQueryable`。 替代方式是使用 Azure 儲存體 SDK，藉此利用 `CloudTable` 方法參數來讀取資料表。 以下是查詢 Azure Functions 記錄資料表的函數範例：
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -143,9 +143,9 @@ namespace FunctionAppCloudTable2
 
 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-### <a name="one-entity"></a>實體
+### <a name="one-entity"></a>一個實體
 
 下列範例所示範的是使用繫結之 *function.json* 檔案，以及 [C# 指令碼](functions-reference-csharp.md)程式碼中的資料表輸入繫結。 此函式會使用佇列觸發程序來讀取單一資料表列。 
 
@@ -248,7 +248,7 @@ public class Person : TableEntity
 
 ### <a name="cloudtable"></a>CloudTable
 
-`IQueryable`[版本 2.x 和更高版本的](functions-versions.md)函數執行時不支援 。 替代方式是使用 Azure 儲存體 SDK，藉此利用 `CloudTable` 方法參數來讀取資料表。 下面是查詢 Azure 函數紀錄表的函數的範例:
+`IQueryable`在 2.x[版和更高版本](functions-versions.md)的函數執行時間中不支援。 替代方式是使用 Azure 儲存體 SDK，藉此利用 `CloudTable` 方法參數來讀取資料表。 以下是查詢 Azure Functions 記錄資料表的函數範例：
 
 ```json
 {
@@ -354,7 +354,7 @@ module.exports = function (context, myQueueItem) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-單表行 
+單一資料表資料列 
 
 ```json
 {
@@ -403,7 +403,7 @@ def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面的範例顯示一個 HTTP 觸發函數,該函數傳回表儲存中指定分區中的人員物件的清單。 在此示例中,從 HTTP 路由中提取分區鍵,表名稱和連接來自函數設置。 
+下列範例顯示 HTTP 觸發的函式，它會傳回資料表儲存體中指定之分割區的 person 物件清單。 在此範例中，資料分割索引鍵是從 HTTP 路由中解壓縮，而 tableName 和連接則來自函數設定。 
 
 ```java
 public class Person {
@@ -432,7 +432,7 @@ public Person[] get(
 }
 ```
 
-表輸入註釋還可以從請求的 json 正文中提取綁定,如下面的示例所示。
+TableInput 批註也可以從要求的 json 主體中解壓縮系結，如下列範例所示。
 
 ```java
 @FunctionName("GetPersonsByKeysFromRequest")
@@ -454,7 +454,7 @@ public HttpResponseMessage get(
 }
 ```
 
-以下範例使用篩選器查詢 Azure 表中具有特定名稱的人員,並將可能的匹配數限制為 10 個結果。
+下列範例會使用篩選準則來查詢 Azure 資料表中具有特定名稱的人員，並將可能的相符專案數目限制為10個結果。
 
 ```java
 @FunctionName("getPersonsByName")
@@ -472,7 +472,7 @@ public Person[] get(
 
 ---
 
-## <a name="input---attributes-and-annotations"></a>輸入 - 屬性與註解
+## <a name="input---attributes-and-annotations"></a>輸入-屬性和注釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -480,7 +480,7 @@ public Person[] get(
 
 * [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)
 
-  屬性的建構函式採用資料表名稱、分割區索引鍵以及資料列索引鍵。 該屬性可用於`out`參數或函數的傳回值,如以下範例所示:
+  屬性的建構函式採用資料表名稱、分割區索引鍵以及資料列索引鍵。 屬性可用於`out`參數或函數的傳回值，如下列範例所示：
 
   ```csharp
   [FunctionName("TableInput")]
@@ -532,9 +532,9 @@ public Person[] get(
 * `StorageAccount` 屬性套用至該類別。
 * 函數應用程式 (「AzureWebJobsStorage」應用程式設定) 的預設儲存體帳戶。
 
-# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-C# 文稿不支援屬性。
+C # 腳本不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -552,19 +552,19 @@ Python 不支援屬性。
 
 ## <a name="input---configuration"></a>輸入 - 組態
 
-下表介紹了您在*函數.json*`Table`檔和 屬性中設置的綁定配置屬性。
+下表說明您在*函數 json*檔案和`Table`屬性中設定的系結設定屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-|**型別** | n/a | 必須設為 `table`。 當您在 Azure 入口網站中建立繫結時，會自動設定此屬性。|
-|**direction** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立繫結時，會自動設定此屬性。 |
-|**名稱** | n/a | 代表函式程式碼中的資料表或實體的變數名稱。 | 
-|**表格名稱** | **表格名稱** | 資料表的名稱。| 
-|**分割區鍵** | **PartitionKey** |選擇性。 要讀取之資料表實體的分割區索引鍵。 若要了解如何使用該屬性，請參閱[使用方式](#input---usage)一節。| 
-|**行鍵** |**行鍵** | 選擇性。 要讀取之資料表實體的資料列索引鍵。 若要了解如何使用該屬性，請參閱[使用方式](#input---usage)一節。| 
-|**採取** |**服用** | 選擇性。 要在 JavaScript 中讀取的實體數目上限。 若要了解如何使用該屬性，請參閱[使用方式](#input---usage)一節。| 
-|**濾波器** |**Filter** | 選擇性。 用於在 JavaScript 中輸入資料表的 OData 篩選運算式。 若要了解如何使用該屬性，請參閱[使用方式](#input---usage)一節。| 
-|**連線** |**連線** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 該設定可以是「AzureWebJobs」預固定應用設定或連接字串名稱的名稱。 例如,如果您的設置名稱是「AzureWebJobsMyStorage」,則可以在此處指定「我的存儲」。 函數運行時將自動查找名為「AzureWebJobsMy存儲」的應用設置。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
+|**type** | n/a | 必須設為 `table`。 當您在 Azure 入口網站中建立繫結時，會自動設定此屬性。|
+|**方向** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立繫結時，會自動設定此屬性。 |
+|**name** | n/a | 代表函式程式碼中的資料表或實體的變數名稱。 | 
+|**tableName** | **TableName** | 資料表的名稱。| 
+|**partitionKey** | **PartitionKey** |選擇性。 要讀取之資料表實體的分割區索引鍵。 若要了解如何使用該屬性，請參閱[使用方式](#input---usage)一節。| 
+|**rowKey** |**RowKey** | 選擇性。 要讀取之資料表實體的資料列索引鍵。 若要了解如何使用該屬性，請參閱[使用方式](#input---usage)一節。| 
+|**採取** |**採取** | 選擇性。 要在 JavaScript 中讀取的實體數目上限。 若要了解如何使用該屬性，請參閱[使用方式](#input---usage)一節。| 
+|**出** |**Filter** | 選擇性。 用於在 JavaScript 中輸入資料表的 OData 篩選運算式。 若要了解如何使用該屬性，請參閱[使用方式](#input---usage)一節。| 
+|**connection** |**建立** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 此設定可以是「AzureWebJobs」的名稱，前面加上應用程式設定或連接字串名稱。 例如，如果您的設定名稱是 "AzureWebJobsMyStorage"，您可以在這裡指定 "MyStorage"。 函數執行時間會自動尋找名為 "AzureWebJobsMyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -572,24 +572,24 @@ Python 不支援屬性。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-* **讀取中的一行**
+* **讀取中的一個資料列**
 
   請設定 `partitionKey` 和 `rowKey`。 使用方法參數 `T <paramName>` 存取資料表資料。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 `T` 通常是實作 `ITableEntity` 的型別或衍生自 `TableEntity`。 此案例中不使用 `filter` 和 `take` 屬性。
 
-* **讀取一行或多行**
+* **讀取一或多個資料列**
 
   使用方法參數 `IQueryable<T> <paramName>` 存取資料表資料。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 `T` 通常是實作 `ITableEntity` 的型別或衍生自 `TableEntity`。 您可以使用 `IQueryable` 方法，以執行任何所需的篩選條件。 此案例中不使用 `partitionKey`、`rowKey`、`filter` 和 `take` 屬性。  
 
   > [!NOTE]
   > [Functions V2 執行階段](functions-versions.md)不支援 `IQueryable`。 替代方式是使用 Azure 儲存體 SDK，藉以[使用 CloudTable paramName 方法參數](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) \(英文\) 來讀取資料表。 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-* **讀取中的一行**
+* **讀取中的一個資料列**
 
   請設定 `partitionKey` 和 `rowKey`。 使用方法參數 `T <paramName>` 存取資料表資料。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 `T` 通常是實作 `ITableEntity` 的型別或衍生自 `TableEntity`。 此案例中不使用 `filter` 和 `take` 屬性。
 
-* **讀取一行或多行**
+* **讀取一或多個資料列**
 
   使用方法參數 `IQueryable<T> <paramName>` 存取資料表資料。 在 C# 指令碼中，`paramName` 是 *function.json* 之 `name` 屬性中指定的值。 `T` 通常是實作 `ITableEntity` 的型別或衍生自 `TableEntity`。 您可以使用 `IQueryable` 方法，以執行任何所需的篩選條件。 此案例中不使用 `partitionKey`、`rowKey`、`filter` 和 `take` 屬性。  
 
@@ -602,11 +602,11 @@ Python 不支援屬性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-表數據作為 JSON 字串傳遞給函數。 通過調用`json.loads`將消息序列化,如輸入[示例](#input)所示。
+資料表資料會當做 JSON 字串傳遞至函數。 藉由呼叫`json.loads`來還原序列化訊息，如輸入[範例](#input)中所示。
 
 # <a name="java"></a>[Java](#tab/java)
 
-表[輸入](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput)屬性允許您存取觸發函數的表行。
+[TableInput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableinput)屬性可讓您存取觸發函數的資料表資料列。
 
 ---
 
@@ -641,7 +641,7 @@ public class TableStorage
 }
 ```
 
-# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
 下列範例所示範的是使用繫結之 *function.json* 檔案，以及 [C# 指令碼](functions-reference-csharp.md)程式碼中的資料表輸出繫結。 函式會寫入多個資料表實體。
 
@@ -745,7 +745,7 @@ module.exports = function (context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的範例展示如何使用表儲存輸出綁定。 透過`table`*函數.json*`name`中設定結合,將值配置給,`tableName``partitionKey`與`connection`:
+下列範例示範如何使用資料表儲存體輸出系結。 `table`系結會透過將值*function.json*指派給`name`、 `tableName`、 `partitionKey`和`connection`，在 json 中進行設定：
 
 ```json
 {
@@ -778,7 +778,7 @@ module.exports = function (context) {
 }
 ```
 
-以下函數為值生成唯一的`rowKey`UUI,並將消息保留到表存儲中。
+下列函式會為`rowKey`值產生唯一的 UUI，並將訊息保存到資料表儲存體中。
 
 ```python
 import logging
@@ -804,7 +804,7 @@ def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面的範例顯示了使用 HTTP 觸發器編寫單個表行的 Java 函數。
+下列範例顯示的 JAVA 函式會使用 HTTP 觸發程式來寫入單一資料表資料列。
 
 ```java
 public class Person {
@@ -845,7 +845,7 @@ public class AddPerson {
 }
 ```
 
-下面的範例顯示了使用 HTTP 觸發器寫入多個表行的 Java 函數。
+下列範例顯示的 JAVA 函式會使用 HTTP 觸發程式來寫入多個資料表資料列。
 
 ```java
 public class Person {
@@ -881,13 +881,13 @@ public class AddPersons {
 
 ---
 
-## <a name="output---attributes-and-annotations"></a>輸出 - 屬性與註解
+## <a name="output---attributes-and-annotations"></a>輸出-屬性和注釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 在 [C# 類別庫](functions-dotnet-class-library.md)中，使用 [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables/TableAttribute.cs)。
 
-屬性的建構函式採用資料表名稱。 該屬性可用於`out`參數或函數的傳回值,如以下範例所示:
+屬性的建構函式採用資料表名稱。 屬性可用於`out`參數或函數的傳回值，如下列範例所示：
 
 ```csharp
 [FunctionName("TableOutput")]
@@ -913,13 +913,13 @@ public static MyPoco TableOutput(
 }
 ```
 
-有關完整範例,請參閱[輸出 - C# 範例](#output)。
+如需完整範例，請參閱[輸出-c # 範例](#output)。
 
 您可以使用 `StorageAccount` 屬性來指定類別、方法或參數層級的儲存體帳戶。 如需詳細資訊，請參閱[輸入 - 屬性](#input---attributes-and-annotations)。
 
-# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-C# 文稿不支援屬性。
+C # 腳本不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -931,25 +931,25 @@ Python 不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-在[Java 函數執行時庫中](/java/api/overview/azure/functions/runtime),使用參數上的[表輸出](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/)註釋將值寫入表存儲。
+在 JAVA 函式執行時間連結[庫](/java/api/overview/azure/functions/runtime)中，在參數上使用[TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/)注釋，將值寫入資料表儲存體。
 
-有關詳細資訊,請參閱[範例](#output)。
+如需[詳細資訊](#output)，請參閱範例。
 
 ---
 
 ## <a name="output---configuration"></a>輸出 - 設定
 
-下表介紹了您在*函數.json*`Table`檔和 屬性中設置的綁定配置屬性。
+下表說明您在*函數 json*檔案和`Table`屬性中設定的系結設定屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-|**型別** | n/a | 必須設為 `table`。 當您在 Azure 入口網站中建立繫結時，會自動設定此屬性。|
-|**direction** | n/a | 必須設為 `out`。 當您在 Azure 入口網站中建立繫結時，會自動設定此屬性。 |
-|**名稱** | n/a | 函式程式碼中所使用的變數名稱，代表資料表或實體。 設為 `$return` 以參考函式傳回值。| 
-|**表格名稱** |**表格名稱** | 資料表的名稱。| 
-|**分割區鍵** |**PartitionKey** | 要寫入之資料表實體的分割區索引鍵。 有關如何使用此屬性的指導,請參閱[使用部分](#output---usage)。| 
-|**行鍵** |**行鍵** | 要寫入之資料表實體的資料列索引鍵。 有關如何使用此屬性的指導,請參閱[使用部分](#output---usage)。| 
-|**連線** |**連線** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如,如果設置為`connection`「我的存儲」,函數運行時將查找名為「我的存儲」的應用設置。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
+|**type** | n/a | 必須設為 `table`。 當您在 Azure 入口網站中建立繫結時，會自動設定此屬性。|
+|**方向** | n/a | 必須設為 `out`。 當您在 Azure 入口網站中建立繫結時，會自動設定此屬性。 |
+|**name** | n/a | 函式程式碼中所使用的變數名稱，代表資料表或實體。 設為 `$return` 以參考函式傳回值。| 
+|**tableName** |**TableName** | 資料表的名稱。| 
+|**partitionKey** |**PartitionKey** | 要寫入之資料表實體的分割區索引鍵。 如需如何使用此屬性的指引，請參閱[使用方式一節](#output---usage)。| 
+|**rowKey** |**RowKey** | 要寫入之資料表實體的資料列索引鍵。 如需如何使用此屬性的指引，請參閱[使用方式一節](#output---usage)。| 
+|**connection** |**建立** | 應用程式設定的名稱包含要用於此繫結的儲存體連接字串。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定`connection`為 "MyStorage"，函數執行時間會尋找名為 "MyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -957,41 +957,41 @@ Python 不支援屬性。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-使用`ICollector<T> paramName`方法參數`IAsyncCollector<T> paramName`或`T``PartitionKey``RowKey`包含和 屬性的位置存取輸出表實體。 這些屬性通常伴隨著實現`ITableEntity`或繼承`TableEntity`。
+使用方法參數`ICollector<T> paramName`或`IAsyncCollector<T> paramName`其中`T`包含`PartitionKey`和`RowKey`屬性，以存取輸出資料表實體。 這些屬性通常會伴隨著執行`ITableEntity`或繼承`TableEntity`。
 
-或者,`CloudTable`可以使用方法參數使用 Azure 儲存 SDK 寫入表。 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+或者，您可以使用`CloudTable`方法參數，使用 Azure 儲存體 SDK 來寫入資料表。 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
-# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-使用`ICollector<T> paramName`方法參數`IAsyncCollector<T> paramName`或`T``PartitionKey``RowKey`包含和 屬性的位置存取輸出表實體。 這些屬性通常伴隨著實現`ITableEntity`或繼承`TableEntity`。 該`paramName`值在`name`*函數的*屬性中指定。
+使用方法參數`ICollector<T> paramName`或`IAsyncCollector<T> paramName`其中`T`包含`PartitionKey`和`RowKey`屬性，以存取輸出資料表實體。 這些屬性通常會伴隨著執行`ITableEntity`或繼承`TableEntity`。 此`paramName`值會在函式`name` *的屬性中指定。*
 
-或者,`CloudTable`可以使用方法參數使用 Azure 儲存 SDK 寫入表。 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
+或者，您可以使用`CloudTable`方法參數，使用 Azure 儲存體 SDK 來寫入資料表。 如果您嘗試繫結至 `CloudTable`，並出現錯誤訊息，請確定您已參考[正確的儲存體 SDK 版本](#azure-storage-sdk-version-in-functions-1x)。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用`context.bindings.<name>`*函數.json*`<name>``name`屬性中指定的值來訪問輸出事件。
+使用`context.bindings.<name>`來存取輸出事件，其中`<name>`是在*函數. json*的`name`屬性中指定的值。
 
 # <a name="python"></a>[Python](#tab/python)
 
-從函數中提供表儲存行訊息有兩個選項:
+有兩個選項可從函式輸出資料表儲存體資料列訊息：
 
-- **傳回值**`name`:傳*回函數.json*的`$return`屬性設定為 。 使用此配置,函數的返回值將保留為表存儲行。
+- 傳回**值**：將*函數. json*中的`$return` `name`屬性設定為。 使用此設定時，函數的傳回值會保存為數據表儲存體資料列。
 
-- **指令 :** 將值傳遞給宣告為[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)類型的參數的[集](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞給`set`的值將保留為事件中心消息。
+- **命令式**：將值傳遞給宣告為[Out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python)類型之參數的[set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法。 傳遞給`set`的值會保存為事件中樞訊息。
 
 # <a name="java"></a>[Java](#tab/java)
 
-使用[表儲存輸出](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet)註解從函數中輸出表儲存行有兩個選項:
+有兩個選項可使用[TableStorageOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet)注釋，從函式輸出資料表儲存體資料列：
 
-- **返回值**:通過將註釋應用於函數本身,函數的返回值將保留為表存儲行。
+- 傳回**值**：藉由將注釋套用至函數本身，函數的傳回值會保存為數據表儲存體資料列。
 
-- **命令:** 要顯式設定消息值,請將註釋應用[`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)於 類型的特定參數`T`,其中`PartitionKey``RowKey`包括和 屬性。 這些屬性通常伴隨著實現`ITableEntity`或繼承`TableEntity`。
+- **命令式** [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)：若要明確設定訊息值，請將注釋套用至類型的特定參數，其中`T`包含`PartitionKey`和`RowKey`屬性。 這些屬性通常會伴隨著執行`ITableEntity`或繼承`TableEntity`。
 
 ---
 
 ## <a name="exceptions-and-return-codes"></a>例外狀況和傳回碼
 
-| 繫結 | 參考 |
+| 繫結 | 參考資料 |
 |---|---|
 | Table | [資料表錯誤碼](https://docs.microsoft.com/rest/api/storageservices/fileservices/table-service-error-codes) |
 | Bob、資料表、佇列 | [儲存體錯誤碼](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |

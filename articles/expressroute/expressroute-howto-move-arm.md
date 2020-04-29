@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由:將經典電路移動到資源管理員
+title: Azure ExpressRoute：將傳統電路移至 Resource Manager
 description: 本頁面會描述如何使用 PowerShell 將傳統的電路移至 Resource Manager 部署模型。
 services: expressroute
 author: charwen
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: charwen
 ms.openlocfilehash: d3014aae44b8d63be67cd0d31f996470aeda40df
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80616283"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>使用 PowerShell 將 ExpressRoute 線路從傳統部署模型移至 Resource Manager 部署模型
@@ -22,7 +22,7 @@ ms.locfileid: "80616283"
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
-* 驗證您是否在電腦上本地安裝了經典和 Az Azure PowerShell 模組。 有關詳細資訊,請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
+* 確認您已在本機電腦上安裝傳統和 Az Azure PowerShell 模組。 如需詳細資訊，請參閱[如何安裝和設定 Azure PowerShell](/powershell/azure/overview)。
 * 開始設定之前，請確定您已經檢閱過[必要條件](expressroute-prerequisites.md)、[路由需求](expressroute-routing.md)和[工作流程](expressroute-workflows.md)。
 * 請檢閱[將 ExpressRoute 電路從傳統移至 Resource Manager](expressroute-move.md) 下提供的資訊。 請確定您已完整了解各項限制。
 * 請確認電路在傳統部署模型中的運作完全正常。
@@ -91,7 +91,7 @@ ms.locfileid: "80616283"
 Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-在傳統模式中，ExpressRoute 電路沒有繫結至區域的概念。 不過，在 Resource Manager 中，每個資源都必須對應至 Azure 區域。 Move-AzExpressRoute 電路 cmdlet 中指定的區域在技術上可以是任何區域。 基於組織目的，您可能想要選擇最能代表您對等互連位置的區域。
+在傳統模式中，ExpressRoute 電路沒有繫結至區域的概念。 不過，在 Resource Manager 中，每個資源都必須對應至 Azure 區域。 在技術上，AzExpressRouteCircuit Cmdlet 中指定的區域可以是任何區域。 基於組織目的，您可能想要選擇最能代表您對等互連位置的區域。
 
 > [!NOTE]
 > 移動完成之後，列在前一個 Cmdlet 中的新名稱會用來處理資源。 電路基本上會重新命名。

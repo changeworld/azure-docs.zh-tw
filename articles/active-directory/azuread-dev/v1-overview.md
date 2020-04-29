@@ -14,10 +14,10 @@ ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: ade350c91ebd2f3a68b52011e598f739a14c220f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80154486"
 ---
 # <a name="azure-active-directory-for-developers-v10-overview"></a>開發人員適用的 Azure Active Directory (v1.0) 概觀
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) 是一項雲端識別服務，可讓開發人�
 
 v1.0 快速入門和教學課程會逐步引導您使用 Azure AD 驗證程式庫 (ADAL) SDK，在慣用平台上建置應用程式。 請參閱 [Microsoft 身分識別平台 (適用於開發人員的 Azure Active Directory)](index.yml) 中的 **v1.0 快速入門**和 **v1.0 教學課程**來開始著手。
 
-## <a name="how-to-guides"></a>作法指南
+## <a name="how-to-guides"></a>操作指南
 
 請參閱 **v1.0 操作指南**，以取得 Azure AD 中最常見工作的詳細資訊和逐步解說。
 
@@ -51,11 +51,11 @@ v1.0 快速入門和教學課程會逐步引導您使用 Azure AD 驗證程式�
 | ----------------------------------------------------------------------------------| --- |
 | [驗證程式庫 (ADAL)](active-directory-authentication-libraries.md)   | Azure AD 所提供的程式庫和 SDK 概觀。 |
 | [程式碼範例](sample-v1-code.md)                                  | 所有 Azure AD 程式碼範例的清單。 |
-| [字彙表](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | 本文件中使用的術語和文字定義。 |
+| [詞彙](../develop/developer-glossary.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)                                      | 本文件中使用的術語和文字定義。 |
 |  |  |
 
 ## <a name="videos"></a>影片
 
-有關遷移到新的 Microsoft 標識平臺的説明，請參閱[Azure 活動目錄開發人員平臺視頻](videos.md)。
+請參閱[Azure Active Directory 開發人員平臺](videos.md)影片，以協助您遷移至新的 Microsoft 身分識別平臺。
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

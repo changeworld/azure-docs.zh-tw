@@ -1,6 +1,6 @@
 ---
-title: Azure 堡壘:查看虛擬機會話:全屏
-description: 在本文中,瞭解如何將視圖更改為全屏。
+title: Azure 防禦：觀看虛擬機器會話：全螢幕
+description: 在本文中，您將瞭解如何將此視圖變更為全螢幕。
 services: bastion
 author: charwen
 ms.service: bastion
@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
 ms.openlocfilehash: 2e72eb9ffc3affa0bf09692ac0780f9310308521
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80619283"
 ---
-# <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>更改為 vm 工作階段的全螢幕檢視:Azure 堡壘
+# <a name="change-to-full-screen-view-for-a-vm-session-azure-bastion"></a>變更 vm 會話的全螢幕視圖： Azure 防禦
 
-本文可説明您將虛擬機器檢視更改為全屏並在瀏覽器中返回。 在使用 VM 之前,請確保已遵循[創建堡壘主機](bastion-create-host-portal.md)的步驟。 然後,使用[RDP](bastion-connect-vm-rdp.md)或[SSH](bastion-connect-vm-ssh.md)連接到要使用的 VM。
+本文可協助您將虛擬機器視圖變更為全螢幕，並回到瀏覽器中。 使用 VM 之前，請確定您已遵循[建立防禦主機](bastion-create-host-portal.md)的步驟。 然後，使用[RDP](bastion-connect-vm-rdp.md)或[SSH](bastion-connect-vm-ssh.md)連接到您想要使用的 VM。
 
-## <a name="launch-the-clipboard-tool"></a>開機剪貼簿工具
+## <a name="launch-the-clipboard-tool"></a>啟動剪貼簿工具
 
-在遠端作業階段期間,通過選擇位於會話左中心的兩個箭頭啟動 Bastion 剪貼簿存取工具調色板。
+在遠端會話期間，選取位於會話左邊中間的兩個箭號，啟動 [防禦剪貼簿存取工具] 選擇區。
 
 ![工具](./media/bastion-vm-manage/left.png)
 
-## <a name="select-full-screen"></a>選擇全螢幕
+## <a name="select-full-screen"></a>選取全螢幕
 
-選擇 **「全屏**」按鈕可將會話切換到全屏體驗。 切換后,會話將重新初始化為全屏。
+選取 [**全**螢幕] 按鈕，將會話切換至全螢幕體驗。 切換之後，會話就會重新初始化為全螢幕。
 
 ![全螢幕](./media/bastion-vm-manage/full-screen.png)
  
 ## <a name="next-steps"></a>後續步驟
 
-閱讀[的移除的裝置的錯誤 。](bastion-faq.md)
-瞭解如何[複製和粘貼](bastion-vm-copy-paste.md)到 Azure VM 中。
+閱讀防禦[常見問題](bastion-faq.md)。
+瞭解如何在 Azure VM 之間進行[複製和貼](bastion-vm-copy-paste.md)上。

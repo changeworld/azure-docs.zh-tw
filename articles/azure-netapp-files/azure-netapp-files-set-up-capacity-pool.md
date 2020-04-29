@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: b-juche
 ms.openlocfilehash: b21db3e842898e8ce11b560714888b946373300e
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80616441"
 ---
 # <a name="set-up-a-capacity-pool"></a>設定容量集區
@@ -41,15 +41,15 @@ ms.locfileid: "80616441"
     [新增容量集區] 視窗隨即出現。
 
 3. 請提供新容量集區的下列資訊：  
-   * **名稱**  
+   * **Name**  
      指定容量集區的名稱。  
      每個 NetApp 帳戶的容量集區名稱必須是唯一的。
 
    * **服務等級**   
      此欄位會顯示容量集區的目標效能。  
-     指定容量池的服務等級:[**超**](azure-netapp-files-service-levels.md#Ultra)容量、[**進階**](azure-netapp-files-service-levels.md#Premium)或[**標準**](azure-netapp-files-service-levels.md#Standard)。
+     指定容量集區的服務層級： [**Ultra**](azure-netapp-files-service-levels.md#Ultra)、 [**Premium**](azure-netapp-files-service-levels.md#Premium)或[**Standard**](azure-netapp-files-service-levels.md#Standard)。
 
-   * **大小**     
+   * **容量**     
      指定您購買的容量集區大小。        
      最小容量集區大小是 4 TB。 您可以建立大小是 4 TB 倍數的集區。   
       

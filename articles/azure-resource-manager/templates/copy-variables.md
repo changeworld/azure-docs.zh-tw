@@ -1,24 +1,24 @@
 ---
 title: 定義變數的多個實例
-description: 在 Azure 資源管理器範本中使用複製操作在創建變數時多次反覆運算。
+description: 在 Azure Resource Manager 範本中使用複製作業，在建立變數時反復執行多次。
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153296"
 ---
-# <a name="variable-iteration-in-arm-templates"></a>ARM 範本中的可變反覆運算
+# <a name="variable-iteration-in-arm-templates"></a>ARM 範本中的變數反復專案
 
-本文介紹如何在 Azure 資源管理器 （ARM） 範本中為變數創建多個值。 通過將**複製**元素添加到範本的變數部分，可以在部署期間動態設置變數的項數。 您還避免重複範本語法。
+本文說明如何在您的 Azure Resource Manager （ARM）範本中為變數建立一個以上的值。 藉由將**copy**元素新增至範本的 variables 區段，您可以在部署期間，動態設定變數的專案數。 您也可以避免重複範本語法。
 
-還可以將 copy 與[資源](copy-resources.md)、[資源中的屬性](copy-properties.md)和[輸出](copy-outputs.md)一起使用 。
+您也可以使用 [複製[資源](copy-resources.md)]、[資源中的屬性](copy-properties.md)和 [[輸出](copy-outputs.md)]。
 
 ## <a name="variable-iteration"></a>變數反覆項目
 
-複製元素具有以下常規格式：
+Copy 元素具有下列一般格式：
 
 ```json
 "copy": [
@@ -30,11 +30,11 @@ ms.locfileid: "80153296"
 ]
 ```
 
-**名稱**屬性是標識迴圈的任何值。 **count**屬性指定變數所需的反覆運算次數。
+**Name**屬性是識別迴圈的任何值。 **Count**屬性會指定您想要用於變數的反覆運算次數。
 
-**輸入**屬性指定要重複的屬性。 創建從**輸入**屬性中的值構造的元素陣列。 它可以是單個屬性（如字串），也可以是具有多個屬性的物件。
+**輸入**屬性會指定您想要重複的屬性。 您會建立從**輸入**屬性中的值所構造的元素陣列。 它可以是單一屬性（例如字串）或具有數個屬性的物件。
 
-下面的示例演示如何創建字串值陣列：
+下列範例顯示如何建立字串值的陣列：
 
 ```json
 {
@@ -65,7 +65,7 @@ ms.locfileid: "80153296"
 }
 ```
 
-前面的範本返回具有以下值的陣列：
+上述範本會傳回具有下列值的陣列：
 
 ```json
 [
@@ -77,7 +77,7 @@ ms.locfileid: "80153296"
 ]
 ```
 
-下一個示例演示如何創建具有三個屬性的物件陣列 - 名稱、磁片大小GB 和 diskIndex。
+下一個範例顯示如何建立具有三個屬性的物件陣列-name、diskSizeGB 和 diskIndex。
 
 ```json
 {
@@ -112,7 +112,7 @@ ms.locfileid: "80153296"
 }
 ```
 
-前面的示例返回具有以下值的陣列：
+上述範例會傳回具有下列值的陣列：
 
 ```json
 [
@@ -145,10 +145,10 @@ ms.locfileid: "80153296"
 ```
 
 > [!NOTE]
-> 變數反覆運算支援偏移參數。 偏移量必須以反覆運算的名稱（如 copyIndex（"磁片名稱"1）之後提供。 如果不提供偏移值，則第一個實例預設為 0。
+> 變數反復專案支援 offset 引數。 位移必須位於反復專案的名稱之後，例如 copyIndex （' diskNames '，1）。 如果您未提供位移值，第一個實例的預設值會是0。
 >
 
-您還可以在變數中使用複製元素。 下面的示例創建一個物件，該物件具有陣列作為其值之一。
+您也可以在變數內使用 copy 元素。 下列範例會建立一個物件，其具有陣列做為其中一個值。
 
 ```json
 {
@@ -186,7 +186,7 @@ ms.locfileid: "80153296"
 }
 ```
 
-前面的示例返回具有以下值的物件：
+上述範例會傳回具有下列值的物件：
 
 ```json
 {
@@ -221,7 +221,7 @@ ms.locfileid: "80153296"
 }
 ```
 
-下一個示例顯示了將複製與變數一起使用的不同方法。
+下一個範例顯示您可以使用 copy 搭配變數的不同方式。
 
 ```json
 {
@@ -297,13 +297,13 @@ ms.locfileid: "80153296"
 
 ## <a name="copy-limits"></a>複製限制
 
-計數不能超過 800。
+計數不能超過800。
 
-計數不能為負數。 如果部署具有 Azure PowerShell 2.6 或更高版本、Azure CLI 2.0.74 或更高版本或 REST API 版本**2019-05-10**或更高版本的範本，則可以將計數設置為零。 早期版本的 PowerShell、CLI 和 REST API 不支援零計數。
+計數不可為負數。 如果您部署具有 Azure PowerShell 2.6 或更新版本的範本、Azure CLI 2.0.74 或更新版本，或 REST API **2019-05-10**版或更新版本，您可以將 count 設定為零。 舊版的 PowerShell、CLI 和 REST API 不支援 count 的零。
 
 ## <a name="example-templates"></a>範本的範例
 
-以下示例顯示了為變數創建多個值的常見方案。
+下列範例顯示為變數建立一個以上值的常見案例。
 
 |[範本]  |描述  |
 |---------|---------|
@@ -312,11 +312,11 @@ ms.locfileid: "80153296"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要流覽教程，請參閱[教程：使用 ARM 範本創建多個資源實例](template-tutorial-create-multiple-instances.md)。
-* 有關複製元素的其他用途，請參閱：
-  * [ARM 範本中的資源反覆運算](copy-resources.md)
-  * [ARM 範本中的屬性反覆運算](copy-properties.md)
-  * [ARM 範本中的輸出反覆運算](copy-outputs.md)
-* 如果要瞭解範本的各個部分，請參閱[創作 ARM 範本](template-syntax.md)。
-* 要瞭解如何部署範本，請參閱[使用 ARM 範本部署應用程式](deploy-powershell.md)。
+* 若要進行教學課程，請參閱[教學課程：使用 ARM 範本建立多個資源實例](template-tutorial-create-multiple-instances.md)。
+* 如需 copy 元素的其他用法，請參閱：
+  * [ARM 範本中的資源反復專案](copy-resources.md)
+  * [ARM 範本中的屬性反復專案](copy-properties.md)
+  * [ARM 範本中的輸出反復專案](copy-outputs.md)
+* 如果您想要瞭解範本的各區段，請參閱[編寫 ARM 範本](template-syntax.md)。
+* 若要瞭解如何部署您的範本，請參閱[使用 ARM 範本部署應用程式](deploy-powershell.md)。
 

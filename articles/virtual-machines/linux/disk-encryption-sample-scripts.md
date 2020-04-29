@@ -1,6 +1,6 @@
 ---
 title: Azure 磁碟加密範例指令碼
-description: 本文是適用於 Linux VM 的 Microsoft Azure 磁碟加密的附錄。
+description: 本文是 Linux Vm 的 Microsoft Azure 磁片加密附錄。
 author: msmbaldwin
 ms.service: virtual-machines-linux
 ms.subservice: security
@@ -9,15 +9,15 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80585966"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure 磁碟加密範例指令碼 
 
-本文提供了用於準備預加密 VHD 和其他任務的示例腳本。
+本文提供準備預先加密的 Vhd 和其他工作的範例腳本。
 
  
 
@@ -56,13 +56,13 @@ ms.locfileid: "80585966"
 
 ### <a name="encrypt-or-decrypt-vms-without-an-azure-ad-app"></a>加密或解密沒有 Azure AD 應用程式的 VM
 
-- [在現有或正在執行的 Linux VM 上啟用磁碟加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
+- [在現有或執行中的 Linux VM 上啟用磁片加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm-without-aad)  
 - [在執行中 Linux VM 上停用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm-without-aad) 
     - 只能在 Linux VM 的資料磁碟區上停用加密。  
 
 ### <a name="encrypt-or-decrypt-vms-with-an-azure-ad-app-previous-release"></a>加密或解密具有 Azure AD 應用程式 (舊版) 的 VM 
  
-- [在現有或正在執行的 Linux VM 上啟用磁碟加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
+- [在現有或執行中的 Linux VM 上啟用磁片加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-linux-vm)    
 
 
 -  [在執行中 Linux VM 上停用加密](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-running-linux-vm) 
@@ -80,7 +80,7 @@ ms.locfileid: "80585966"
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>OS 磁碟加密的必要條件
 
-* VM 必須使用與[Azure 磁碟加密支援的作業系統](disk-encryption-overview.md#supported-vms)中列出的 OS 磁碟加密相容的分發 
+* VM 必須使用與作業系統磁片加密相容的散發套件，如[Azure 磁碟加密支援的作業系統](disk-encryption-overview.md#supported-vms)中所列 
 * 必須從 Azure Resource Manager 的Marketplace 映像建立 VM。
 * 具有至少 4 GB RAM 的 Azure VM (建議大小為 7 GB)。
 * (適用於 RHEL 和 CentOS) 停用 SELinux。 若要停用 SELinux，請參閱「4.4.2. 停用 SELinux」，其位於 VM 上的 [SELinux 使用者和系統管理員指南](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux)。
@@ -101,14 +101,14 @@ ms.locfileid: "80585966"
 
 3. 登出 SSH 工作階段。
 
-4. 要加密作業系統,請在啟用加密時將卷類型指定為 **「全部**」或 **「作業系統**」。
+4. 若要加密 OS，請在啟用加密時將 volumeType 指定為**All**或**OS** 。
 
    > [!NOTE]
    > 未以 `systemd` 服務的形式執行的所有使用者空間程序皆應使用 `SIGKILL` 來終止。 重新啟動 VM。 當您在執行中的 VM 上啟用 OS 磁碟加密時，請規劃 VM 停機時間。
 
 5. 使用[下一節](#monitoring-os-encryption-progress)的指示定期監視加密進度。
 
-6. 獲取-AzVmDisk加密狀態顯示「VMRestart 掛起」後,請透過登錄到VM或使用門戶PowerShell或CLI重新啟動VM。
+6. AzVmDiskEncryptionStatus 顯示「VMRestartPending」之後，請登入或使用入口網站、PowerShell 或 CLI 來重新開機您的 VM。
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -294,7 +294,7 @@ ms.locfileid: "80585966"
    ```bash
     if [ 1 ]; then
    ```
-4. 編輯 /usr/lib/dracut/模組.d/90crypt/cryptroot-ask.sh 並將其追加到"# 打開 LUKS 設備":
+4. 編輯/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh 並將它附加至 "# Open LUKS device"：
 
     ```bash
     MountPoint=/tmp-keydisk-mount
@@ -320,7 +320,7 @@ ms.locfileid: "80585966"
 
 6. 現在您可以取消佈建 VM，並將 VHD 上傳到 Azure。
 
-### <a name="centos-7-and-rhel-81"></a>CentOS 7 和 RHEL 8.1
+### <a name="centos-7-and-rhel-81"></a>CentOS 7 和 RHEL 8。1
 
 若要在發佈安裝期間設定加密，請執行下列步驟︰
 1. 在分割磁碟時選取 [加密資料]****。
@@ -375,7 +375,7 @@ ms.locfileid: "80585966"
    ```bash
     if [ 1 ]; then
    ```
-4. 編輯 /usr/lib/dracut/模組.d/90crypt/cryptroot-ask.sh 並在"# 打開 LUKS 設備"後追加以下內容:
+4. 編輯/usr/lib/dracut/modules.d/90crypt/cryptroot-ask.sh，並在 "# Open LUKS device" 後面附加下列內容：
     ```bash
     MountPoint=/tmp-keydisk-mount
     KeyFileName=LinuxPassPhraseFileName
@@ -396,12 +396,12 @@ ms.locfileid: "80585966"
     fi
     done
     ```    
-5. 執行"/usr/sbin/dracut -f-v"以更新 initrd。
+5. 執行 "/usr/sbin/dracut-f-v" 以更新 initrd。
 
     ![CentOS 7 設定 - 執行 /usr/sbin/dracut -f -v](./media/disk-encryption/centos-encrypt-fig5.png)
 
 ## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>上傳加密的 VHD 至 Azure 儲存體帳戶
-啟用 DM-Crypt 加密後,需要將本地加密的 VHD 上傳到儲存帳戶。
+啟用 DM Crypt 加密之後，需要將本機加密的 VHD 上傳至您的儲存體帳戶。
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
@@ -419,7 +419,7 @@ ms.locfileid: "80585966"
 ``` 
 
 ### <a name="disk-encryption-secret-not-encrypted-with-a-kek"></a>未使用 KEK 加密的磁碟加密密碼
-在金鑰保存庫中設定機密,請使用[Set-AzKeyVault 秘密](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 密碼短語編碼為 base64 字串,然後上傳到密鑰保管庫。 此外，請確定在金鑰保存庫中建立密碼時會設定下列標籤。
+若要在金鑰保存庫中設定密碼，請使用[AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret)。 複雜密碼會編碼為 base64 字串，然後上傳至金鑰保存庫。 此外，請確定在金鑰保存庫中建立密碼時會設定下列標籤。
 
 ```powershell
 
@@ -439,7 +439,7 @@ ms.locfileid: "80585966"
 在下一個步驟中使用 `$secretUrl`，以便[在不使用 KEK 的狀況下連接 OS 磁碟](#without-using-a-kek)。
 
 ### <a name="disk-encryption-secret-encrypted-with-a-kek"></a>使用 KEK 加密的磁碟加密密碼
-將密碼上傳至金鑰保存庫之前，您可以選擇性地使用金鑰加密金鑰來加密密碼。 使用包裝 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 先加密使用金鑰加密金鑰的密碼。 此換行操作的輸出是 base64 URL 編碼字串,然後[`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret)可以使用 cmdlet 將其上傳為機密。
+將密碼上傳至金鑰保存庫之前，您可以選擇性地使用金鑰加密金鑰來加密密碼。 使用包裝 [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) 先加密使用金鑰加密金鑰的密碼。 此 wrap 作業的輸出是 base64 URL 編碼的字串，您可以使用[`Set-AzKeyVaultSecret`](/powershell/module/az.keyvault/set-azkeyvaultsecret) Cmdlet 上傳為秘密。
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

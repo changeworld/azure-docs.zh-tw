@@ -1,26 +1,26 @@
 ---
-title: 部署多個資源實例
-description: 在 Azure 資源管理器範本中使用複製操作和陣列多次部署資源類型。
+title: 部署資源的多個實例
+description: 使用 Azure Resource Manager 範本中的複製作業和陣列，多次部署資源類型。
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80153313"
 ---
-# <a name="resource-iteration-in-arm-templates"></a>ARM 範本中的資源反覆運算
+# <a name="resource-iteration-in-arm-templates"></a>ARM 範本中的資源反復專案
 
-本文介紹如何在 Azure 資源管理器 （ARM） 範本中創建多個資源的實例。 通過將**複製**元素添加到範本的資源部分，可以動態設置要部署的資源數。 您還避免重複範本語法。
+本文說明如何在您的 Azure Resource Manager （ARM）範本中建立一個以上的資源實例。 藉由將**copy**元素新增至範本的 resources 區段，您可以動態設定要部署的資源數目。 您也可以避免重複範本語法。
 
-您還可以使用與[屬性](copy-properties.md)、[變數](copy-variables.md)和[輸出一](copy-outputs.md)起複製。
+您也[可以使用 [](copy-properties.md)複製內容]、[[變數](copy-variables.md)] 和 [[輸出](copy-outputs.md)]。
 
 若需要指定是否要部署資源，請參閱[條件元素](conditional-resource-deployment.md)。
 
 ## <a name="resource-iteration"></a>資源反覆項目
 
-複製元素具有以下常規格式：
+Copy 元素具有下列一般格式：
 
 ```json
 "copy": {
@@ -31,11 +31,11 @@ ms.locfileid: "80153313"
 }
 ```
 
-**名稱**屬性是標識迴圈的任何值。 **count**屬性指定所需的資源類型的反覆運算次數。
+**Name**屬性是識別迴圈的任何值。 **Count**屬性會指定您想要用於資源類型的反覆運算次數。
 
-使用**模式**和**batchSize**屬性指定資源是並行部署還是按順序部署。 這些屬性在[串列或並行](#serial-or-parallel)中描述。
+使用**mode**和**batchSize**屬性來指定以平行方式或順序部署資源。 這些屬性會以[序列或平行](#serial-or-parallel)方式加以描述。
 
-下面的示例創建**存儲Count**參數中指定的存儲帳戶數。
+下列範例會建立**storageCount**參數中指定的儲存體帳戶數目。
 
 ```json
 {
@@ -80,7 +80,7 @@ ms.locfileid: "80153313"
 * storage1
 * storage2.
 
-若要位移索引值，您可以傳遞 copyIndex() 函式中的值。 反覆運算次數仍在複製元素中指定，但 copyIndex 的值被指定值偏移。 因此，下列範例：
+若要位移索引值，您可以傳遞 copyIndex() 函式中的值。 反復專案的數目仍指定于 copy 元素中，但 copyIndex 的值是以指定的值位移。 因此，下列範例：
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -94,7 +94,7 @@ ms.locfileid: "80153313"
 
 使用陣列時，複製作業會有幫助，因為您可以逐一查看陣列中的每個項目。 使用陣列上的 `length` 函式指定反覆運算的計數，並使用 `copyIndex` 來擷取陣列中目前的索引。
 
-下面的示例為參數中提供的每個名稱創建一個存儲帳戶。
+下列範例會為參數中提供的每個名稱建立一個儲存體帳戶。
 
 ```json
 {
@@ -131,11 +131,11 @@ ms.locfileid: "80153313"
 }
 ```
 
-如果要從已部署的資源傳回值，可以在[輸出部分中使用複製](copy-outputs.md)。
+如果您想要從已部署的資源傳回值，您可以使用[[輸出] 區段中的 [複製](copy-outputs.md)]。
 
-## <a name="serial-or-parallel"></a>串列或並行
+## <a name="serial-or-parallel"></a>序列或平行
 
-根據預設，Resource Manager 會以平行方式建立資源。 除了範本中 800 個資源的總限制之外，它對並行部署的資源數量沒有限制。 不保證資源會循序建立。
+根據預設，Resource Manager 會以平行方式建立資源。 除了範本中800資源的總限制以外，不會對平行部署的資源數目套用任何限制。 不保證資源會循序建立。
 
 不過，建議您指定將資源部署在序列中。 例如，在更新生產環境時，您可以錯開更新，因此任何一次就只會更新特定數目。 若要以序列方式部署資源的多個執行個體，請將 `mode` 設定為 **serial** 並將 `batchSize` 設為一次要部署的執行個體數目。 透過序列模式，Resource Manager 會在迴圈中較早的執行個體上建立相依性，因此在前一批次完成之前，它不會啟動一個批次。
 
@@ -172,7 +172,7 @@ mode 屬性也接受**平行**，這是預設值。
 
 ## <a name="depend-on-resources-in-a-loop"></a>依迴圈中的資源而定
 
-您可以透過使用 `dependsOn` 元素，讓某個資源在另一個資源之後才部署。 若要部署相依於迴圈中資源集合的資源時，請在 dependsOn 元素中提供複製迴圈的名稱。 下面的示例演示如何在部署虛擬機器之前部署三個存儲帳戶。 未顯示完整的虛擬機器定義。 請注意，複製元素的名稱設置為`storagecopy`，虛擬機器的 dependsOn 元素也設置為`storagecopy`。
+您可以透過使用 `dependsOn` 元素，讓某個資源在另一個資源之後才部署。 若要部署相依於迴圈中資源集合的資源時，請在 dependsOn 元素中提供複製迴圈的名稱。 下列範例顯示如何在部署虛擬機器之前部署三個儲存體帳戶。 不會顯示完整的虛擬機器定義。 請注意，copy 元素的名稱設定為`storagecopy` ，而虛擬機器的 dependsOn 元素也設定為`storagecopy`。
 
 ```json
 {
@@ -260,11 +260,11 @@ mode 屬性也接受**平行**，這是預設值。
 
 ## <a name="copy-limits"></a>複製限制
 
-計數不能超過 800。
+計數不能超過800。
 
-計數不能為負數。 如果部署具有 Azure PowerShell 2.6 或更高版本、Azure CLI 2.0.74 或更高版本或 REST API 版本**2019-05-10**或更高版本的範本，則可以將計數設置為零。 早期版本的 PowerShell、CLI 和 REST API 不支援零計數。
+計數不可為負數。 如果您部署具有 Azure PowerShell 2.6 或更新版本的範本、Azure CLI 2.0.74 或更新版本，或 REST API **2019-05-10**版或更新版本，您可以將 count 設定為零。 舊版的 PowerShell、CLI 和 REST API 不支援 count 的零。
 
-使用[完整模式部署](deployment-modes.md)和複製時要小心。 如果以完全模式重新部署到資源組，則在解決複製迴圈後未在範本中指定的任何資源都將被刪除。
+請小心使用[完整模式部署](deployment-modes.md)搭配 copy。 如果您使用完整模式重新部署至資源群組，則會刪除在解析複製迴圈後未在範本中指定的任何資源。
 
 ## <a name="example-templates"></a>範本的範例
 
@@ -280,12 +280,12 @@ mode 屬性也接受**平行**，這是預設值。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要流覽教程，請參閱[教程：使用 ARM 範本創建多個資源實例](template-tutorial-create-multiple-instances.md)。
-* 有關複製元素的其他用途，請參閱：
-  * [ARM 範本中的屬性反覆運算](copy-properties.md)
-  * [ARM 範本中的可變反覆運算](copy-variables.md)
-  * [ARM 範本中的輸出反覆運算](copy-outputs.md)
-* 有關將副本與嵌套範本一起使用的資訊，請參閱[使用副本](linked-templates.md#using-copy)。
-* 如果要瞭解範本的各個部分，請參閱[創作 ARM 範本](template-syntax.md)。
-* 要瞭解如何部署範本，請參閱[使用 ARM 範本部署應用程式](deploy-powershell.md)。
+* 若要進行教學課程，請參閱[教學課程：使用 ARM 範本建立多個資源實例](template-tutorial-create-multiple-instances.md)。
+* 如需 copy 元素的其他用法，請參閱：
+  * [ARM 範本中的屬性反復專案](copy-properties.md)
+  * [ARM 範本中的變數反復專案](copy-variables.md)
+  * [ARM 範本中的輸出反復專案](copy-outputs.md)
+* 如需搭配使用複製與嵌套範本的詳細資訊，請參閱[使用複製](linked-templates.md#using-copy)。
+* 如果您想要瞭解範本的各區段，請參閱[編寫 ARM 範本](template-syntax.md)。
+* 若要瞭解如何部署您的範本，請參閱[使用 ARM 範本部署應用程式](deploy-powershell.md)。
 

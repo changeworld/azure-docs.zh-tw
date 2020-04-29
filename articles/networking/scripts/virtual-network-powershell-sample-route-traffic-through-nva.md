@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell 文稿範例 - 透過網路虛擬裝置路由流量
+title: Azure PowerShell 腳本範例-透過網路虛擬裝置路由傳送流量
 description: Azure PowerShell 指令碼範例 - 透過防火牆網路虛擬設備來路由傳送流量。
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
 ms.openlocfilehash: 98509399c1f4bd66640152e8a9cb02cf396a1b62
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80521479"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>透過網路虛擬設備來路由傳送流量
 
 此指令碼範例會建立一個具有前端和後端子網路的虛擬網路。 它也會建立一個已啟用 IP 轉送功能的 VM，以在兩個子網路之間路由傳送流量。 執行此指令碼之後，您可以將網路軟體 (例如防火牆應用程式) 部署到 VM。
 
-如果需要,請使用 Azure PowerShell 指南中的說明安裝 Azure [PowerShell,](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)然後運行`Connect-AzAccount`以創建與 Azure 的連接。
+您可以視需要使用 [Azure PowerShell 指南](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) \(英文\) 中的指示來安裝 Azure PowerShell，然後執行 `Connect-AzAccount` 來建立與 Azure 的連線。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

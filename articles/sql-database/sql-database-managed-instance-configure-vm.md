@@ -1,5 +1,5 @@
 ---
-title: 連線客戶端 VM - 託管實例
+title: 連接用戶端 VM-受控實例
 description: 使用 Azure 虛擬機器中的 SQL Server Management Studio 連線到 Azure SQL Database 受控執行個體。
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,17 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, srbozovi, bonova
 ms.date: 02/18/2019
 ms.openlocfilehash: 8b5dce0b43fac7cfd0e974f26451338ca1541f8f
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80528410"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>快速入門：設定 Azure VM 以連線到 Azure SQL Database 受控執行個體
 
 此快速入門示範了如何設定 Azure 虛擬機器，以使用 SQL Server Management Studio (SSMS) 連線到 Azure SQL Database 受控執行個體。 如需如何使用點對站連線從內部部署用戶端電腦進行連線的快速入門，請參閱[設定點對站連線](sql-database-managed-instance-configure-p2s.md)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 此快速入門會使用在[建立受控執行個體](sql-database-managed-instance-get-started.md)中建立的資源作為起點。
 
@@ -48,10 +48,10 @@ ms.locfileid: "80528410"
    | ---------------- | ----------------- | ----------- |
    | **名稱** | 任何有效名稱|如需有效的名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming)。|
    | **位址範圍 (CIDR 區塊)** | 有效範圍 | 針對此快速入門，使用預設值即可。|
-   | **網路安全組** | None | 針對此快速入門，使用預設值即可。|
-   | **路由表** | None | 針對此快速入門，使用預設值即可。|
-   | **服務終結點** | 已選取 0 | 針對此快速入門，使用預設值即可。|
-   | **子網委派** | None | 針對此快速入門，使用預設值即可。|
+   | **網路安全性群組** | 無 | 針對此快速入門，使用預設值即可。|
+   | **路由表** | 無 | 針對此快速入門，使用預設值即可。|
+   | **服務端點** | 已選取 0 | 針對此快速入門，使用預設值即可。|
+   | **子網路委派** | 無 | 針對此快速入門，使用預設值即可。|
 
    ![為用戶端 VM 新增受控執行個體子網路](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "80528410"
 
 要使用所有的必要工具建立用戶端虛擬機器，最簡單的方式是使用 Azure Resource Manager 範本。
 
-1. 請確保已登錄到另一個瀏覽器選項卡中的 Azure 門戶。然後,選擇以下按鈕以建立用戶端虛擬機並安裝 SQL 伺服器管理工作室:
+1. 請確定您已在另一個瀏覽器索引標籤中登入 Azure 入口網站。然後，選取下列按鈕以建立用戶端虛擬機器，並安裝 SQL Server Management Studio：
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjovanpop-msft%2Fazure-quickstart-templates%2Fsql-win-vm-w-tools%2F201-vm-win-vnet-sql-tools%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -83,10 +83,10 @@ ms.locfileid: "80528410"
    |**密碼**|任何有效密碼|密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。<br>您隨時要[連線至 VM](#connect-to-virtual-machine) 時，都可以使用這個密碼。|
    | **虛擬機器大小** | 任何有效大小 | 在此快速入門中，使用此範本的預設值 **Standard_B2s** 就已足夠。 |
    | **位置**|[resourceGroup().location]。| 請勿變更此值。 |
-   | **虛擬網路名稱**|在其中創建託管實例的虛擬網路。|
-   | **子網名稱**|您在上一個程序中建立的子網路名稱| 請勿選擇您在其中建立受控執行個體的子網路。|
-   | **工件位置** | [deployment().properties.templateLink.uri] | 請勿變更此值。 |
-   | **工件位置 Sas 權杖** | 保留空白 | 請勿變更此值。 |
+   | **虛擬網路名稱**|您在其中建立受控執行個體的虛擬網路。|
+   | **子網路名稱**|您在上一個程序中建立的子網路名稱| 請勿選擇您在其中建立受控執行個體的子網路。|
+   | **成品位置** | [deployment().properties.templateLink.uri] | 請勿變更此值。 |
+   | **構件位置 Sas 權杖** | 保留空白 | 請勿變更此值。 |
 
    ![建立用戶端 VM](./media/sql-database-managed-instance-configure-vm/create-client-sql-vm.png)
 
@@ -107,13 +107,13 @@ ms.locfileid: "80528410"
 
     ![VM](./media/sql-database-managed-instance-configure-vm/vm.png)  
 
-2. 選擇**連接**"連接"
+2. 選取 [連線]  。
 
    將顯示遠端桌面通訊協定檔案 (.rdp 檔案) 表單，其中包含虛擬機器的公用 IP 位址與連接埠號碼。
 
    ![RDP 表單](./media/sql-database-managed-instance-configure-vm/rdp.png)  
 
-3. 選擇**下載 RDP 檔案**。
+3. 選取 [下載 RDP 檔案]  。
 
    > [!NOTE]
    > 您也可以使用 SSH 來連線到您的 VM。
@@ -141,6 +141,6 @@ ms.locfileid: "80528410"
 
 ## <a name="next-steps"></a>後續步驟
 
-- 有關如何使用點對點連接從本地端電腦連接的快速入門,請參閱[設定點對點連接](sql-database-managed-instance-configure-p2s.md)。
+- 如需顯示如何使用點對站連線從內部部署用戶端電腦連線的快速入門，請參閱[設定點對站](sql-database-managed-instance-configure-p2s.md)連線。
 - 如需有關應用程式連線選項的概觀，請參閱[將您的應用程式連線至受控執行個體](sql-database-managed-instance-connect-app.md)。
 - 若要將現有 SQL Server 資料庫從內部部署還原到受控執行個體，您可以使用 [Azure 資料庫移轉服務 (DMS) 來進行移轉](../dms/tutorial-sql-server-to-managed-instance.md)，或使用 [T-SQL RESTORE 命令](sql-database-managed-instance-get-started-restore.md)從資料庫備份檔案還原。

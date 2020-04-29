@@ -1,6 +1,6 @@
 ---
-title: 試駕行銷最佳實踐 |Azure 應用商店
-description: 面向發佈商的試駕行銷最佳實踐
+title: 試用產品行銷最佳做法 |Azure Marketplace
+description: 為發行者試用產品行銷最佳做法
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: dsindona
 ms.openlocfilehash: 3520e2c16f9a0c891db0d641fa7c9b811cac7b10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80278241"
 ---
 <a name="test-drive-marketing-and-best-practices"></a>試用產品行銷與最佳做法

@@ -1,6 +1,6 @@
 ---
-title: 可管理性和監控 - 概述
-description: 使用 Synapse SQL 池監視和可管理性概述,瞭解資源利用率、日誌和查詢活動、建議和數據保護(備份和還原)。
+title: 管理性與監視-總覽
+description: 使用 Synapse SQL 集區的資源使用率、記錄和查詢活動、建議和資料保護（備份與還原）的監視和管理性總覽。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,17 +12,17 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: e41bf003af7d0926aab04ffed86bf6ec5031c4f7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80586426"
 ---
-# <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>使用 Synapse SQL 池進行可管理性和監視
+# <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>Synapse SQL 集區的管理能力和監視
 
-Synapse SQL 允許您通過 SQL 池預配數據倉庫。 以下文章將説明您管理和監視數據倉庫。 您還將瞭解如何優化數據倉庫的使用和性能。
+Synapse SQL 可讓您透過 SQL 集區布建資料倉儲。 下列文章將協助您管理及監視您的資料倉儲。 您也將瞭解如何將資料倉儲的使用方式和效能優化。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 * [深入了解計算管理和彈性](sql-data-warehouse-manage-compute-overview.md)
 * [了解 Azure 入口網站中可取得哪些計量和記錄](sql-data-warehouse-concept-resource-utilization-query-activity.md)
@@ -33,4 +33,4 @@ Synapse SQL 允許您通過 SQL 池預配數據倉庫。 以下文章將説明�
 
 
 ## <a name="next-steps"></a>後續步驟
-有關"如何"指南,請參閱[監視和調整 SQL 池](sql-data-warehouse-manage-monitor.md)。
+如需作法指南，請參閱[監視及調整您的 SQL 集](sql-data-warehouse-manage-monitor.md)區。

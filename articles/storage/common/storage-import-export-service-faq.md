@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80519490"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure 匯入/匯出服務：常見問題集
@@ -70,11 +70,11 @@ ms.locfileid: "80519490"
 ### <a name="if-i-want-to-import-or-export-more-than-10-drives-what-should-i-do"></a>如果我想匯入或匯出的磁碟機超過 10 個，我該怎麼做？
 
 一項匯入或匯出作業只能參考單一作業中的 10 個磁碟機。 若要寄送的磁碟機超過 10 個，應建立多項作業。 與相同作業相關聯的磁碟機必須在相同的包裹中一起寄送。
-有關資料容量跨越多個磁碟導入作業時的詳細資訊和指導,請與 Microsoft 支援部門聯繫。
+如需資料容量跨越多個磁片匯入作業的詳細資訊和指引，請聯絡 Microsoft 支援服務。
 
 ### <a name="the-uploaded-blob-shows-status-as-lease-expired-what-should-i-do"></a>所上傳的 Blob 顯示狀態為「租用已過期」。 我該怎麼辦？
 
-您可以忽略「租約過期」欄位。 「匯入/匯出」在上傳期間會租用 Blob，以確定沒有其他處理序會同時更新 Blob。 「租用已過期」表示匯入/匯出不再上傳至 Blob，該 Blob 可供您使用。
+您可以忽略「租用已過期」欄位。 「匯入/匯出」在上傳期間會租用 Blob，以確定沒有其他處理序會同時更新 Blob。 「租用已過期」表示匯入/匯出不再上傳至 Blob，該 Blob 可供您使用。
 
 ## <a name="shipping-disks"></a>寄送磁碟
 
@@ -97,20 +97,20 @@ ms.locfileid: "80519490"
 - 亞洲和澳洲地區的 DHL 帳戶號碼。
 
 > [!NOTE]
-> 印度的數據中心需要信頭(送達查蘭)上的聲明信才能返回驅動器。 要安排所需的輸入通行證,還必須與所選運營商預訂取件,並與數據中心共用詳細資訊。
+> 印度的資料中心在您的信頭上需要宣告字母（傳遞 challan）以傳回磁片磁碟機。 若要安排所需的進入階段，您也必須預訂您選取的貨運公司，並與資料中心分享詳細資訊。
 
-### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>航運和返回我的驅動器國際是否有任何限制?
+### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>運送和傳回我的磁片磁碟機是否有任何限制？
 
 請注意，您寄送的實體媒體可能需要跨國界。 您必須確定實體媒體和資料的匯入和/或匯出符合相關管轄法律。 在寄出實體媒體之前，請洽詢顧問來確認您的媒體和資料可以合法地寄到所識別的資料中心。 這有助於確保及時送達 Microsoft。
 
-上傳完成後,將驅動器返回到國際位址的過程可能比本地運輸所需的通常 2-3 天要長。 在 Azure 門戶中列出的階段(打包)中,數據盒團隊確保提供正確的文檔,以確保貨件符合各種國際進出口要求。
+上傳完成之後，將磁片磁碟機傳回國際位址的程式，可能會比本機運送所需的標準2-3 天長。 在 Azure 入口網站列為封裝的階段中，資料箱小組會確保提供正確的檔，以確保出貨符合各種國際匯入和匯出需求。
 
-### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>將磁碟傳送到資料中心是否有任何特殊要求?
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>將磁片傳遞至資料中心是否有任何特殊需求？
 
-這些要求取決於特定的 Azure 資料中心限制。
+這些需求取決於特定的 Azure 資料中心限制。
 
-- 出於安全原因,有幾個網站(如澳大利亞、德國和英國南部)要求在包裹上寫入 Microsoft 數據中心入站 ID 號。 在將驅動器或磁碟運送到資料中心之前,請與 Azure DataBoxadbops@microsoft.com操作部 () 聯繫以獲得此號碼。 如果沒有此編號,包將被拒絕。
-- 印度的數據中心需要司機的個人資料,如政府身份證或證明號。 (例如,PAN、AADHAR、DL)、姓名、聯繫人和車牌號,以獲得門進入通行證。 為避免交貨延誤,請告知您的承運商這些要求。
+- 有幾個網站（例如澳大利亞、德國和英國南部）需要在包裹上寫入 Microsoft datacenter 輸入識別碼，以確保安全的理由。 將您的磁片磁碟機或磁片寄送到資料中心之前，請洽詢adbops@microsoft.comAzure DataBox 作業（）以取得此號碼。 若沒有此數位，將會拒絕封裝。
+- 印度的資料中心需要驅動程式的個人詳細資料，例如政府識別碼卡或證明否。 （例如，[PAN]、[AADHAR]、[DL]、[名稱]、[連絡人] 和 [汽車] 盤子編號，以取得閘道進入階段。 為避免傳遞延遲，請告知您的電訊廠商有關這些需求的資訊。
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>建立作業時，寄送地址是與我儲存體帳戶位置不同的位置。 我該怎麼辦？
 
@@ -132,7 +132,7 @@ Azure 資料中心會將不符支援需求的磁碟機退回給您。 如果包�
 
 ### <a name="how-can-i-access-data-that-is-imported-by-this-service"></a>如何存取這個服務所匯入的資料？
 
-使用 Azure 門戶或[儲存資源管理員](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)訪問 Azure 儲存帳戶下的數據。  
+使用 Azure 入口網站或[儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)來存取 Azure 儲存體帳戶下的資料。  
 
 ### <a name="after-the-import-is-complete-what-does-my-data-look-like-in-the-storage-account-is-my-directory-hierarchy-preserved"></a>匯入作業完成後，我的資料在儲存體帳戶中會是什麼樣子？ 我的目錄階層會保留嗎？
 
@@ -149,11 +149,11 @@ Azure 資料中心會將不符支援需求的磁碟機退回給您。 如果包�
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Azure 匯入/匯出所支援的最大區塊 Blob 和分頁 Blob 大小是多少？
 
 - 最大區塊 Blob 大小大約是 4.768 TB 或 5,000,000 MB。
-- 最大頁面 Blob 大小為 8TB。
+- 分頁 Blob 大小的最大值為8TB。
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Azure 匯入/匯出是否支援 AES-256 加密？
 
-否。 Azure 導入/匯出服務使用 AES-128 位鎖加密。
+否。 Azure 匯入/匯出服務會使用 AES-128 BitLocker 加密。
 
 ## <a name="next-steps"></a>後續步驟
 

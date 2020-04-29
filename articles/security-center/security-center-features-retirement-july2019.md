@@ -1,6 +1,6 @@
 ---
-title: 安全中心停用功能 (2019 年 7 月) |微軟文件
-description: 本文介紹了安全中心在 2019 年 7 月 31 日停用的功能。
+title: 淘汰資訊安全中心功能（2019年7月） |Microsoft Docs
+description: 本文說明2019年7月31日淘汰的資訊安全中心功能。
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,190 +9,190 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80583227"
 ---
-# <a name="retirement-of-security-center-features-july-2019"></a>安全中心停用功能(2019年7月)
+# <a name="retirement-of-security-center-features-july-2019"></a>淘汰資訊安全中心功能（2019年7月）
 
 > [!NOTE]
-> 本文檔詳細介紹了 2019 年 7 月 31 日從 Azure 安全中心停用的功能清單。
+> 本檔詳述從2019年7月31日 Azure 資訊安全中心淘汰的功能清單。
 >
 >
 
-在 2019 年 7 月的六個月中,我們對 Azure 安全中心進行了多項[改進](https://azure.microsoft.com/updates/?product=security-center)。
-通過這些改進的功能,我們於 2019 年 7 月 31 日從安全中心刪除了一些冗餘功能和相關 API。
+我們在2019年7月前六個月對 Azure 資訊安全中心進行了幾項[改進](https://azure.microsoft.com/updates/?product=security-center)。
+有了這些改良的功能，我們從2019年7月31日資訊安全中心移除一些多餘的功能和相關的 Api。
 
-這些停用功能中的大多數都可以替換為 Azure 安全中心或 Azure 日誌分析中的其他功能。 可以使用[Azure Sentinel(預覽)](https://azure.microsoft.com/services/azure-sentinel/)實現其他功能。
+這些已淘汰的功能大部分都可以取代為 Azure 資訊安全中心或 Azure Log Analytics 中的其他功能。 您可以使用[Azure Sentinel （預覽）](https://azure.microsoft.com/services/azure-sentinel/)來執行其他功能。
 
-已停用的安全中心功能包括:
+已淘汰的資訊安全中心功能包括：
 
 - [事件儀表板](#menu_events)
-- [搜尋選單項目](#menu_search)
-- [檢視「身份&存取上的經典身份連結(預覽)](#menu_classicidentity)
-- [安全警示地圖上的安全事件對應按鈕(預覽)](#menu_securityeventsmap)
-- [自訂警示規則 (預覽)](#menu_customalerts)
-- [調查威脅保護安全警報中的按鈕](#menu_investigate)
-- [安全解決方案的子集](#menu_solutions)
-- [編輯安全原則的安全設定](#menu_securityconfigurations)
-- [紀錄分析工作區的安全和審核儀表板(最初用於 OMS 門戶)](#menu_securityomsdashboard)
+- [搜尋功能表項目](#menu_search)
+- [在身分識別和存取上查看傳統身分識別 & 存取連結（預覽）](#menu_classicidentity)
+- [安全性警示地圖上的安全性事件對應按鈕（預覽）](#menu_securityeventsmap)
+- [自訂警示規則（預覽）](#menu_customalerts)
+- [[威脅防護] 安全性警示中的 [調查] 按鈕](#menu_investigate)
+- [安全性解決方案的子集](#menu_solutions)
+- [編輯安全性原則的安全性設定](#menu_securityconfigurations)
+- [適用于 Log Analytics 工作區的安全性和審核儀表板（原本用於 OMS 入口網站）](#menu_securityomsdashboard)
 
-本文提供了每個停用功能的詳細資訊,以及實現替換功能可以採取的步驟。
+本文提供每個已淘汰功能的詳細資訊，以及您可以採取來執行取代功能的步驟。
 
 ## <a name="events-dashboard"></a>事件儀表板<a name="menu_events"></a>
 
-安全中心使用日誌分析代理從您的電腦收集各種與安全相關的配置和事件。 它將這些事件存儲在工作區中。 事件[儀表板](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard)允許您查看此數據,並為您提供日誌分析的入口點。
+資訊安全中心會使用 Log Analytics 代理程式，從您的電腦收集各種安全性相關設定和事件。 它會將這些事件儲存在您的工作區中。 [[事件] 儀表板](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard)可讓您查看這項資料，並為您提供 Log Analytics 的進入點。
 
-我們停用了您選擇工作區時顯示的事件儀表板:
+我們已淘汰當您選取工作區時所出現的 [事件] 儀表板：
 
 ![事件儀表板][2]
 
-### <a name="events-dashboard---the-new-experience"></a>事件儀表板 - 新體驗
+### <a name="events-dashboard---the-new-experience"></a>事件儀表板-新體驗
 
-我們鼓勵您使用 Azure 日誌分析的本機功能來查看工作區上的顯著事件。
+我們鼓勵您使用 Azure Log Analytics 的原生功能來查看您工作區上的值得注意事件。
 
-如果您在安全中心中創建了自定義值得注意的事件,則可以訪問這些事件。 在紀錄分析中,轉到**選擇工作區** > **儲存的搜尋**。 您的資料不會丟失或修改。 日誌分析中的同一螢幕也提供了本機值得注意的事件。
+如果您已在資訊安全中心中建立自訂值得注意的事件，則可加以存取。 在 Log Analytics 中，移至 [**選取工作區** > ] [**已儲存的搜尋**]。 您的資料不會遺失或修改。 您也可以從 Log Analytics 中的相同畫面取得原生值得注意的事件。
 
 ![工作區儲存的搜尋][3]
 
-## <a name="search-menu-entry"></a>搜尋選單項目<a name="menu_search"></a>
+## <a name="search-menu-entry"></a>搜尋功能表項目<a name="menu_search"></a>
 
-Azure 安全中心當前使用 Azure 監視器日誌搜索來檢索和分析安全數據。 此螢幕用作日誌分析搜索頁的視窗,並使用戶能夠在其選定的工作區上運行搜索查詢。 有關詳細資訊,請參閱[Azure 安全中心搜尋](https://docs.microsoft.com/azure/security-center/security-center-search)。 我們停用了此搜尋視窗:
+Azure 資訊安全中心目前使用 Azure 監視器記錄搜尋來抓取和分析您的安全性資料。 此畫面可作為 Log Analytics 搜尋頁面的視窗，並可讓使用者在其選取的工作區上執行搜尋查詢。 如需詳細資訊，請參閱[Azure 資訊安全中心搜尋](https://docs.microsoft.com/azure/security-center/security-center-search)。 我們已淘汰此搜尋視窗：
 
 ![Search page][4]
 
-### <a name="search-menu-entry---the-new-experience"></a>搜尋選單項目 - 新體驗
+### <a name="search-menu-entry---the-new-experience"></a>搜尋功能表項目-新體驗
 
-我們鼓勵您使用 Azure 日誌分析本機功能在工作區上執行搜尋查詢。 跳到 Azure 紀錄分析並選擇 **「日誌**」。。
+我們鼓勵您使用 Azure Log Analytics 原生功能，在您的工作區上執行搜尋查詢。 移至 Azure Log Analytics，然後選取 [**記錄**]。
 
-![紀錄分析紀錄頁面][5]
+![Log Analytics 記錄頁面][5]
 
-## <a name="classic-identity--access-preview"></a>經典身份&存取(預覽)<a name="menu_classicidentity"></a>
+## <a name="classic-identity--access-preview"></a>傳統身分識別 & 存取（預覽）<a name="menu_classicidentity"></a>
 
-安全中心中的經典標識&訪問體驗當前在日誌分析中顯示標識和訪問資訊的儀錶板。 要檢視此儀表板:
+資訊安全中心中的傳統身分識別 & 存取體驗目前顯示 Log Analytics 中身分識別和存取訊號的儀表板。 若要查看此儀表板：
 
-1. 選擇 **「檢視經典身份&」 訪問**。
+1. 選取 [ **View 傳統 Identity & 存取**]。
 
-   ![識別頁][6]
+   ![身分識別頁面][6]
 
-1. 檢視**識別& 存取儀表板**。
+1. 查看 **& 存取儀表板**的身分識別。
 
-    ![識別頁 - 工作區選擇][7]
+    ![識別頁-工作區選取][7]
 
-1. 選擇工作區以在日誌分析中打開 **「標識&訪問**」儀錶板,以查看工作區上的標識和訪問資訊。
+1. 選取工作區以在 Log Analytics 中開啟身分**識別 & 存取**儀表板，以查看您工作區上的身分識別和存取訊號。
 
-   ![識別頁 - 儀表板][8]
+   ![標識頁-儀表板][8]
 
-我們停用了前面步驟中顯示的所有三個螢幕。 您的數據在日誌分析安全解決方案中仍然可用,並且未修改或刪除。
+我們已淘汰上述步驟中所示的三個畫面。 您的資料仍可在 Log Analytics 安全性解決方案中使用，且未修改或移除。
 
-### <a name="classic-identity--access-preview---the-new-experience"></a>經典身份&存取(預覽) - 新體驗
+### <a name="classic-identity--access-preview---the-new-experience"></a>傳統身分識別 & 存取（預覽）-新體驗
 
-日誌分析儀錶板在單個工作區上顯示了見解。 但是,本機安全中心功能提供對所有訂閱及其關聯的所有工作區的可見性。 您可以造訪易於使用的檢視,該檢視可讓您關注根據安全分數排列的建議的重要性。
+Log Analytics 儀表板已在單一工作區上顯示深入解析。 不過，原生資訊安全中心功能可讓您看到所有訂用帳戶和所有與其相關聯的工作區。 您可以存取便於使用的觀點，讓您專注于根據其安全分數排序的建議事項。
 
-通過選擇安全中心內的**標識&訪問(預覽),** 可以訪問日誌分析中的**標識&訪問**儀錶板的所有功能。
+在 Log Analytics 中的身分**識別 & 存取**儀表板的所有功能，都可以藉由選取資訊安全中心內的 **[身分識別 & 存取（預覽）** ] 來達成。
 
-![身份頁面 - 經典體驗退休][9]
+![識別頁-傳統體驗淘汰][9]
 
-## <a name="security-events-map"></a>安全事件對應<a name="menu_securityeventsmap"></a>
+## <a name="security-events-map"></a>安全性事件對應<a name="menu_securityeventsmap"></a>
 
-安全中心為您提供安全警報映射,以幫助識別安全威脅。 **該地圖中的「轉到安全事件映射」** 按鈕將打開一個儀表板,允許您查看所選工作區上的原始安全事件。
+資訊安全中心會提供安全性警示對應，協助您識別安全性威脅。 該對應中的 [**移至安全性事件對應**] 按鈕會開啟儀表板，讓您在選取的工作區上查看原始安全性事件。
 
-我們刪除了 **「轉到安全事件映射」** 按鈕和每個工作區儀錶板。
+我們已移除 [**移至安全性事件] 地圖**按鈕和 [每個工作區] 儀表板。
 
-![安全警示映射 - 按鈕][10]
+![安全性警示對應-按鈕][10]
 
-當您選擇「**轉到安全事件映射」** 按鈕時,它將打開(現已停用)威脅情報儀錶板。
+當您選取 [**前往安全性事件對應**] 按鈕時，它會開啟 [（現已淘汰）] 威脅情報儀表板。
 
 ![威脅情報儀表板][11]
 
-當您選擇工作區以查看其威脅智慧儀錶板時,您將在日誌分析中打開(現已停用)安全警報映射(預覽)螢幕。
+當您選擇工作區來查看其威脅情報儀表板時，您會在 Log Analytics 中開啟 [（現在已淘汰）安全性警示對應（預覽）] 畫面。
 
-![紀錄分析中的安全警報對應][12]
+![Log Analytics 中的安全性警示對應][12]
 
-您的現有數據在日誌分析安全解決方案中仍然可用,並且未修改或刪除。
+您現有的資料仍可在 Log Analytics 安全性解決方案中使用，且未修改或移除。
 
-### <a name="security-events-map---the-new-experience"></a>安全事件映射 - 新體驗
+### <a name="security-events-map---the-new-experience"></a>安全性事件對應-新體驗
 
-我們鼓勵您使用安全中心內置的警報映射功能:**安全警報映射(預覽)。** 此功能提供優化的體驗,適用於所有訂閱和關聯的工作區。 它為您提供整個環境的高級檢視,並且不專注於單個工作區。
+我們鼓勵您使用內建在資訊安全中心：**安全性警示對應（預覽）** 中的警示對應功能。 此功能可提供優化的體驗，並在所有訂用帳戶和相關聯的工作區中運作。 它可讓您在整個環境中擁有高階觀點，而不是專注于單一工作區。
 
-## <a name="custom-alert-rules-preview"></a>自訂警示規則 (預覽)<a name="menu_customalerts"></a>
+## <a name="custom-alert-rules-preview"></a>自訂警示規則（預覽）<a name="menu_customalerts"></a>
 
-我們於 2019 年 6 月 30 日[停用了自定義警報體驗](https://docs.microsoft.com/azure/security-center/security-center-custom-alert),因為它的基礎基礎結構已停用。 停用日期后,將不再生成自定義安全警報。
-我們建議您啟用 Azure [Sentinel](https://azure.microsoft.com/services/azure-sentinel/)並在那裡重新建立自訂警報。 或者,您可以使用 Azure 監視器日誌警報創建警報。
+我們已在2019年6月30日[淘汰自訂警示體驗](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)，因為其基礎結構已淘汰。 停用日期之後，就不會再產生自訂安全性警示。
+我們建議您啟用[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) ，並在該處重新建立自訂警示。 或者，您可以使用 Azure 監視器記錄警示來建立警示。
 
-要使用 Azure 哨兵建立自訂警報,請執行以下準備:
+若要使用 Azure Sentinel 建立自訂警示：
 
-1. [開啟 Azure 哨兵](https://portal.azure.com/#create/Microsoft.ASI/preview)並選擇自訂警示的儲存工作區
-1. 從選單中選擇**分析**
-1. 依以下[教學](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)中有關如何在 Azure Sentinel 建立自訂警報的說明進行操作
+1. [開啟 Azure Sentinel](https://portal.azure.com/#create/Microsoft.ASI/preview) ，並選取您的自訂警示儲存所在的工作區
+1. 從功能表選取 [**分析**]
+1. 依照下列[教學](https://docs.microsoft.com/azure/sentinel/tutorial-detect-threats)課程中的指示，瞭解如何在 Azure Sentinel 中建立自訂警示
 
-如果您對使用 Azure Sentinel 不感興趣,則可以使用 Azure 監視器日誌警報創建警報。 有關說明,請參閱使用 Azure 監視器 中的 Azure 監視器和[紀錄警報](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) [建立、檢視和管理紀錄警報](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)。
+如果您不想使用 Azure Sentinel，您可以使用 Azure 監視器記錄警示來建立警示。 如需指示，請參閱[在 Azure 監視器中](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)使用 Azure 監視器和記錄警示 [來建立、查看和記錄管理警示](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)。
 
 ![自訂警示][13]
 
-有關自訂警報停用的詳細資訊,請參閱 Azure[安全中心(預覽)中的自訂警報規則](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)。
+如需有關自訂警示淘汰的詳細資訊，請參閱[Azure 資訊安全中心（預覽）中的自訂警示規則](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)。
 
-## <a name="security-alerts-investigation"></a>安全警報調查<a name="menu_investigate"></a>
+## <a name="security-alerts-investigation"></a>安全性警示調查<a name="menu_investigate"></a>
 
-安全中心中的"調查"功能可説明您對潛在的安全事件進行會審。 該功能允許您瞭解事件的範圍並跟蹤其根本原因。 我們從安全中心刪除了此功能,因為它已被[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)中改進的體驗所取代。
+資訊安全中心中的調查功能可協助您將潛在的安全性事件分級。 此功能可讓您瞭解事件的範圍，並追蹤其根本原因。 我們已從資訊安全中心中移除這項功能，因為已將其取代為[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)中的改善體驗。
 
 ![安全性事件][14]
 
-從**安全事件**螢幕中選擇「**調查**」按鈕時,請在日誌分析中打開調查儀錶板(預覽)。 我們停用了調查儀錶板。
+當您從 [**安全性事件**] 畫面選取 [**調查**] 按鈕時，您會在 Log Analytics 中開啟調查儀表板（預覽）。 我們已淘汰調查儀表板。
 
-您的現有數據在日誌分析安全解決方案中仍然可用,並且未修改或刪除。
+您現有的資料仍可在 Log Analytics 安全性解決方案中使用，且未修改或移除。
 
-![紀錄分析中的調查儀表板][15]
+![Log Analytics 中的調查儀表板][15]
 
-### <a name="investigation---the-new-experience"></a>調查 - 新體驗
+### <a name="investigation---the-new-experience"></a>調查-新體驗
 
-我們鼓勵您過渡到 Azure [Sentinel,](https://azure.microsoft.com/services/azure-sentinel/)獲得豐富的調查體驗。 Azure Sentinel 提供了強大的搜索和查詢工具,用於查找組織數據源的安全威脅。
+我們鼓勵您轉換到[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/) ，以取得豐富的調查體驗。 Azure Sentinel 提供強大的搜尋和查詢工具，以尋找整個組織資料來源的安全性威脅。
 
-## <a name="subset-of-security-solutions"></a>安全解決方案子集<a name="menu_solutions"></a>
+## <a name="subset-of-security-solutions"></a>安全性解決方案的子集<a name="menu_solutions"></a>
 
-安全中心可以在[Azure 中啟用整合的安全解決方案](https://docs.microsoft.com/azure/security-center/security-center-partner-integration)。 我們從安全中心停用了以下合作夥伴解決方案。 這些解決方案在[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)中以及許多其他數據源中啟用。
+資訊安全中心可以[在 Azure 中啟用整合式安全性解決方案](https://docs.microsoft.com/azure/security-center/security-center-partner-integration)。 我們已淘汰資訊安全中心的下列合作夥伴解決方案。 這些解決方案會在[Azure Sentinel](https://azure.microsoft.com/services/azure-sentinel/)中啟用，以及一些額外的資料來源。
 
-- [下一代防火牆和 Web 應用程式防火牆解決方案](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
-- [整合支援通用事件格式 (CEF) 的安全解決方案](https://docs.microsoft.com/azure/sentinel/connect-common-event-format)
-- [Microsoft Advanced Threat Analytics](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
-- [Azure AD 識別保護](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
+- [新一代防火牆和 web 應用程式防火牆解決方案](https://docs.microsoft.com/azure/sentinel/connect-data-sources)
+- [整合支援通用事件格式（CEF）的安全性解決方案](https://docs.microsoft.com/azure/sentinel/connect-common-event-format)
+- [Microsoft 進階威脅分析](https://docs.microsoft.com/azure/sentinel/connect-azure-atp)
+- [Azure AD Identity Protection](https://docs.microsoft.com/azure/sentinel/connect-azure-ad-identity-protection)
 
-停用後,不能從 UI 或 API 添加或修改前面清單中提及的任何解決方案類型。 Azure 安全中心將不再發現這些合作夥伴解決方案的任何新實例。
+淘汰之後，您就無法從 UI 或 API 新增或修改前述清單中提及的任何解決方案類型。 Azure 資訊安全中心將不會再探索這些合作夥伴解決方案的任何新實例。
 
-如果您有現有的連接解決方案,我們鼓勵您遷移到 Azure Sentinel。
+如果您有現有的已連線解決方案，我們鼓勵您移至 Azure Sentinel。
 
-![安全中心解決方案][16]
+![安全性中心解決方案][16]
 
-## <a name="edit-security-configurations-for-security-policies"></a>編輯安全原則的安全設定<a name="menu_securityconfigurations"></a>
+## <a name="edit-security-configurations-for-security-policies"></a>編輯安全性原則的安全性設定<a name="menu_securityconfigurations"></a>
 
-Azure 資訊安全中心會套用一組[具有超過 150 個建議規則的集合](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) (英文)，以此方式監視安全性設定以強化作業系統。 這些規則涉及防火牆、審核、密碼策略等。 如果發現電腦設定有弱點，資訊安全中心會產生安全性建議。 [「編輯安全設定」螢幕](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config)允許客戶自定義安全中心的預設作業系統安全配置。
+Azure 資訊安全中心會套用一組[具有超過 150 個建議規則的集合](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) (英文)，以此方式監視安全性設定以強化作業系統。 這些規則與防火牆、審核、密碼原則等相關。 如果發現電腦設定有弱點，資訊安全中心會產生安全性建議。 [[編輯安全性](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config)設定] 畫面可讓客戶自訂資訊安全中心中的預設 OS 安全性設定。
 
-我們停用了此預覽功能。 要在停用日期后將安全配置重置回其預設值,請使用[以下說明](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization)通過 API 或 Powershell 執行此操作。
+我們已淘汰此預覽功能。 若要在停用日期之後將安全性設定重設回其預設值，請使用[下列指示](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization)，透過 API 或 Powershell 來執行這項操作。
 
 ![編輯安全性設定][17]
 
-### <a name="edit-security-configurations---the-new-experience"></a>編輯安全性設定 - 新體驗
+### <a name="edit-security-configurations---the-new-experience"></a>編輯安全性設定-新體驗
 
-我們打算啟用安全中心來支援[來賓設定代理](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)。 此類更新將允許更豐富的功能集,包括支援更多操作系統和集成來賓配置的 Azure 來賓策略。 啟用這些更改後,您還可以大規模控制配置並自動將其應用於新資源。
+我們想要啟用資訊安全中心以支援[來賓設定代理程式](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)。 這類更新可讓您擁有更豐富的功能集，包括支援更多作業系統，以及與來賓設定的 Azure 來賓原則整合。 啟用這些變更之後，您也能夠控制大規模的設定，並自動將它們套用至新的資源。
 
-## <a name="security-and-audit-dashboard-for-log-analytics-workspaces"></a>紀錄分析工作區的安全和審核儀表板<a name="menu_securityomsdashboard"></a>
+## <a name="security-and-audit-dashboard-for-log-analytics-workspaces"></a>Log Analytics 工作區的安全性和審核儀表板<a name="menu_securityomsdashboard"></a>
 
-安全和審核儀錶板最初用於OMS門戶。 在日誌分析中,儀錶板提供每個工作區顯著安全事件和威脅的概述、威脅智慧映射以及保存在工作區中的安全事件的標識和訪問評估。 我們刪除了儀錶板。 正如我們已在儀錶板 UI 中建議的,我們建議您過渡到 Azure 安全中心。
+[安全性和審核] 儀表板原本是在 OMS 入口網站中使用。 在 Log Analytics 中，儀表板會提供值得注意的安全性事件和威脅、威脅情報對應，以及儲存在工作區中的安全性事件的身分識別和存取評估的每個工作區。 我們已移除儀表板。 如同我們在儀表板 UI 中的建議，我們建議您轉換到 Azure 資訊安全中心。
 
-![日誌分析安全儀表板][18]
+![Log Analytics 安全性儀表板][18]
 
-### <a name="security-and-audit-dashboard---the-new-experience"></a>安全與稽核儀表板 - 新體驗
+### <a name="security-and-audit-dashboard---the-new-experience"></a>安全性與審核儀表板-新體驗
 
-我們建議您切換到 Azure 安全中心。 它跨多個訂閱及其關聯的工作區以及更豐富的功能集提供相同的安全概述。
+我們建議您切換到 Azure 資訊安全中心。 它在多個訂用帳戶及其相關聯的工作區之間提供相同的安全性總覽，再加上更豐富的功能集。
 
-您可以在安全中心的[GitHub 儲存庫](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards)中獲取填充安全和審核儀錶板的原始日誌分析查詢。
+您可以取得原始的 Log Analytics 查詢，以填入[GitHub 存放庫](https://github.com/Azure/Azure-Security-Center/tree/master/Legacy%20Log%20Analytics%20dashboards)中資訊安全中心的 [安全性和 audit] 儀表板。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解有關[Azure 安全中心](https://docs.microsoft.com/azure/security-center/)的更多詳細資訊。
-- 瞭解有關[Azure 哨兵](https://docs.microsoft.com/azure/sentinel)的更多內容。
+- 深入瞭解[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/)。
+- 深入瞭解[Azure Sentinel](https://docs.microsoft.com/azure/sentinel)。
 
 <!--Image references - events-->
 [1]: ./media/security-center-features-retirement-july2019/asc_events_dashboard.png
