@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: c7df6e31cd021fc61129131f9bd02acc7b96e2ad
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457547"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>從 Orchestrator 移轉到 Azure 自動化 (Beta)
@@ -29,7 +29,7 @@ ms.locfileid: "81457547"
 7. 在本機的資料中心設定 [Hybrid Runbook Worker](#hybrid-runbook-worker) ，以執行將存取本機資源、經轉換的 Runbook。
 
 >[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有關混合 Runbook 輔助角色上的 Az 模組安裝說明,請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 對於自動化帳戶,可以使用[「如何更新 Azure 自動化 中的 Azure PowerShell」模組](automation-update-azure-modules.md)將模組更新到最新版本。
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="service-management-automation"></a>服務管理自動化
 
@@ -73,7 +73,7 @@ Microsoft 提供 [整合套件](https://technet.microsoft.com/library/hh295851.a
 
 Runbook Converter 會將 Orchestrator Runbook 轉換為可以匯入 Azure 自動化的[圖形化 Runbook](automation-runbook-types.md#graphical-runbooks)。  
 
-Runbook 轉換器作為 PowerShell 模組實現,`ConvertFrom-SCORunbook`該模組名為 cmdlet,用於執行轉換。  安裝工具時，它會建立可載入 Cmdlet 的 PowerShell 工作階段的捷徑。   
+Runbook 轉換器會實作為 PowerShell 模組，並使用名`ConvertFrom-SCORunbook`為的 Cmdlet 來執行轉換。  安裝工具時，它會建立可載入 Cmdlet 的 PowerShell 工作階段的捷徑。   
 
 以下是將 Orchestrator Runbook 轉換並匯入 Azure 自動化的基本程序。  以下各節提供使用工具和處理已轉換的 Runbook 的進一步詳細資料。
 
@@ -122,11 +122,11 @@ Runbook Converter 可與來自包含一或多個 Runbook 的 Orchestrator 匯出
 
 Runbook Converter 會將 Orchestrator Runbook 中的每個活動轉換成 Azure 自動化中的對應活動。  針對無法轉換的這些活動，會在 Runbook 中建立預留位置活動，並帶有警告文字。  將轉換的 Runbook 匯入 Azure 自動化之後，您必須將這些活動取代為可執行所需功能的有效活動。
 
-將會轉換 [標準活動模組](#standard-activities-module) 中的任何 Orchestrator 活動。  不過，在此模組有一些標準 Orchestrator 活動，並不會被轉換。  例如,`Send Platform Event`沒有等效的 Azure 自動化,因為事件特定於協調器。
+將會轉換 [標準活動模組](#standard-activities-module) 中的任何 Orchestrator 活動。  不過，在此模組有一些標準 Orchestrator 活動，並不會被轉換。  例如，沒有`Send Platform Event`任何 Azure 自動化對等專案，因為該事件是 Orchestrator 特有的。
 
 [監視器活動](https://technet.microsoft.com/library/hh403827.aspx) ，因為它們在 Azure 自動化中沒有對等項目。  例外狀況是在 [轉換整合套件](#integration-pack-converter) 中監視活動，將會轉換成預留位置活動。
 
-如果提供具有`modules`參數的整合模組的路徑,則[轉換後整合的任何](#integration-pack-converter)活動都將轉換。 針對 System Center 整合套件，您可以使用 [System Center Orchestrator 整合模組](#system-center-orchestrator-integration-modules)。
+如果您使用`modules`參數提供整合模組的路徑，則會轉換已[轉換整合套件](#integration-pack-converter)中的任何活動。 針對 System Center 整合套件，您可以使用 [System Center Orchestrator 整合模組](#system-center-orchestrator-integration-modules)。
 
 ### <a name="orchestrator-resources"></a>Orchestrator 資源
 
@@ -136,13 +136,13 @@ Runbook Converter 只會轉換 Runbook，而不會轉換其他 Orchestrator 資�
 
 ### <a name="input-parameters"></a>輸入參數
 
-協調器中的 Runbook`Initialize Data`接受與 活動的輸入參數。  如果要轉換的 Runbook 包含此活動，則會對活動中的每個參數在 Azure 自動化 Runbook 中建立 [輸入參數](automation-graphical-authoring-intro.md#runbook-input-and-output) 。  在擷取並傳回每個參數的轉換 Runbook 中建立 [工作流程指令碼控制項](automation-graphical-authoring-intro.md#activities) 活動。  Runbook 中使用輸入參數的任何活動會參照此活動的輸出。
+Orchestrator 中的 runbook 會接受具有活動`Initialize Data`的輸入參數。  如果要轉換的 Runbook 包含此活動，則會對活動中的每個參數在 Azure 自動化 Runbook 中建立 [輸入參數](automation-graphical-authoring-intro.md#runbook-input-and-output) 。  在擷取並傳回每個參數的轉換 Runbook 中建立 [工作流程指令碼控制項](automation-graphical-authoring-intro.md#activities) 活動。  Runbook 中使用輸入參數的任何活動會參照此活動的輸出。
 
 使用此策略的原因是最能與 Orchestrator Runbook 中的功能對映。  新圖形化 Runbook 中的活動應該使用 Runbook 輸入資料來源直接參照輸入參數。
 
 ### <a name="invoke-runbook-activity"></a>叫用 Runbook 活動
 
-協調器中的 Runbook`Invoke Runbook`使用 活動啟動其他 Runbook。 如果要轉換的 Runbook 包含`Wait for completion`此活動 並設置了該選項,則會在轉換後的 Runbook 中為其創建 Runbook 活動。  如果未設置`Wait for completion`該選項,則創建工作流腳本活動,使用[「開始-AzAutomationRunbook」](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)啟動 Runbook。 將轉換的 Runbook 匯入 Azure 自動化之後，您必須以活動中指定的資訊修改此活動。
+Orchestrator 中的`Invoke Runbook` runbook 會使用活動來啟動其他 runbook。 如果要轉換的 runbook 包含此活動且已`Wait for completion`設定選項，則會在已轉換的 runbook 中建立 runbook 活動。  如果未`Wait for completion`設定此選項，則會建立使用[AzAutomationRunbook](https://docs.microsoft.com/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0)啟動 Runbook 的工作流程腳本活動。 將轉換的 Runbook 匯入 Azure 自動化之後，您必須以活動中指定的資訊修改此活動。
 
 ## <a name="related-articles"></a>相關文章
 

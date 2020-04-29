@@ -1,6 +1,6 @@
 ---
-title: 靜態資料的 Azure 儲存加密
-description: Azure 儲存通過自動加密數據,然後再將其保存到雲中來保護數據。 您可以依賴 Microsoft 管理的密鑰來加密儲存帳戶中的數據,也可以使用自己的密鑰管理加密。
+title: 待用資料的 Azure 儲存體加密
+description: Azure 儲存體保護您的資料，方法是在將它保存到雲端之前自動將其加密。 您可以依賴 Microsoft 管理的金鑰來加密儲存體帳戶中的資料，也可以使用您自己的金鑰來管理加密。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,47 +10,47 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
 ms.openlocfilehash: c737ccf83dae0cc4b198b9cd708a55b988e6593b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457938"
 ---
-# <a name="azure-storage-encryption-for-data-at-rest"></a>靜態資料的 Azure 儲存加密
+# <a name="azure-storage-encryption-for-data-at-rest"></a>待用資料的 Azure 儲存體加密
 
-Azure 儲存在將數據保存到雲時自動加密數據。 Azure 儲存加密可保護數據並説明您履行組織安全和合規性承諾。
+當您的資料保存到雲端時，Azure 儲存體會自動將其加密。 Azure 儲存體加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。
 
-## <a name="about-azure-storage-encryption"></a>關於 Azure 儲存加密
+## <a name="about-azure-storage-encryption"></a>關於 Azure 儲存體加密
 
-Azure 儲存中的數據使用 256 位[元 AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)進行加密和透明解密,這是可用的最強的塊密碼之一,並且符合 FIPS 140-2 標準。 Azure 儲存加密類似於 Windows 上的 BitLocker 加密。
+Azure 儲存體中的資料會使用256位[AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最強區塊密碼之一），以透明的方式進行加密和解密，且符合 FIPS 140-2 標準。 Azure 儲存體加密類似于 Windows 上的 BitLocker 加密。
 
-為所有儲存帳戶(包括資源管理員和經典儲存帳戶)啟用Azure儲存加密。 無法禁用 Azure 儲存加密。 由於數據在默認情況下是安全的,因此無需修改代碼或應用程式就可以利用 Azure 儲存加密。
+所有儲存體帳戶都會啟用 Azure 儲存體加密，包括 Resource Manager 和傳統儲存體帳戶。 無法停用 Azure 儲存體加密。 因為預設會保護您的資料，所以您不需要修改程式碼或應用程式，就能利用 Azure 儲存體加密。
 
-無論性能層(標準層或高級級)、訪問層(熱或酷)或部署模型(Azure 資源管理器或經典)如何,存儲帳戶中的數據都會加密。 存檔層中的所有 Blob 也進行加密。 所有 Azure 儲存冗餘選項都支援加密,啟用異地複製後,主區域和輔助區域中的所有數據都會加密。 所有 Azure 儲存資源都已加密,包括 Blob、磁碟、檔、佇列和表。 所有物件元數據也已加密。 Azure 儲存加密沒有額外費用。
+不論效能層級（標準或高階）、存取層（經常性或非經常性）或部署模型（Azure Resource Manager 或傳統），儲存體帳戶中的資料都會進行加密。 封存層中的所有 blob 也會進行加密。 所有 Azure 儲存體的冗余選項都支援加密，而且主要和次要區域中的所有資料都會在啟用異地複寫時加密。 所有 Azure 儲存體資源都會加密，包括 blob、磁片、檔案、佇列和資料表。 所有物件中繼資料也會加密。 Azure 儲存體加密不會產生額外的費用。
 
-2017 年 10 月 20 日之後寫入 Azure 儲存的每個塊 Blob、追加 Blob 或頁面 Blob 都會加密。 在此日期之前創建的 Blob 將繼續由後台進程加密。 要強制加密在 2017 年 10 月 20 日之前創建的 Blob,可以重寫 Blob。 要瞭解如何檢查 Blob 的加密狀態,[請參考 blob 的加密狀態](../blobs/storage-blob-encryption-status.md)。
+在2017年10月20日之後寫入 Azure 儲存體的每個區塊 blob、附加 blob 或分頁 blob 都會進行加密。 在此日期之前建立的 blob 會繼續由背景處理常式加密。 若要強制加密在2017年10月20日之前建立的 blob，您可以重寫 blob。 若要瞭解如何檢查 blob 的加密狀態，請參閱[檢查 blob 的加密狀態](../blobs/storage-blob-encryption-status.md)。
 
-有關 Azure 儲存加密基礎的加密模組的詳細資訊,請參閱[加密 API:下一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)。
+如需 Azure 儲存體加密之基礎密碼編譯模組的詳細資訊，請參閱[密碼編譯 API：新一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)。
 
 ## <a name="about-encryption-key-management"></a>關於加密金鑰管理
 
-新儲存帳戶中的數據使用Microsoft管理的密鑰進行加密。 您可以依賴 Microsoft 管理的密鑰來加密數據,也可以使用自己的密鑰管理加密。 如果您選擇使用自己的金鑰管理加密,則有兩個選項:
+新儲存體帳戶中的資料會使用 Microsoft 管理的金鑰進行加密。 您可以依賴 Microsoft 管理的金鑰來加密您的資料，也可以使用您自己的金鑰來管理加密。 如果您選擇使用自己的金鑰來管理加密，您有兩個選項：
 
-- 您可以使用 Azure 金鑰保管庫指定*客戶管理的密鑰*,用於加密和解密 Blob 儲存和 Azure 檔案中的數據。<sup>1,2</sup>有關客戶管理的金鑰的詳細資訊,請參閱使用[Azure 金鑰保存式庫使用客戶管理的金鑰來管理 Azure 儲存加密](encryption-customer-managed-keys.md)。
-- 您可以在 Blob 儲存的操作上指定*客戶提供的金鑰*。 針對 Blob 儲存發出讀取或寫入請求的用戶端可以包含對 Blob 資料加密和解密方式進行精細控制請求的加密金鑰。 有關客戶提供密鑰的詳細資訊,請參閱[在請求 Blob 儲存時提供加密密鑰(預覽)。](encryption-customer-provided-keys.md)
+- 您可以使用 Azure Key Vault 來指定*客戶管理的金鑰*，以用來加密和解密 Blob 儲存體和 Azure 檔案儲存體中的資料。<sup>1，2</sup>如需有關客戶管理金鑰的詳細資訊，請參閱搭配[使用客戶管理的金鑰與 Azure Key Vault 來管理 Azure 儲存體加密](encryption-customer-managed-keys.md)。
+- 您可以在 Blob 儲存體作業上指定*客戶提供的金鑰*。 對 Blob 儲存體發出讀取或寫入要求的用戶端可以在要求中包含加密金鑰，以便更精確地控制 blob 資料的加密和解密方式。 如需有關客戶提供的金鑰的詳細資訊，請參閱[在對 Blob 儲存體的要求上提供加密金鑰（預覽）](encryption-customer-provided-keys.md)。
 
-下表比較了 Azure 儲存加密的關鍵管理選項。
+下表比較 Azure 儲存體加密的金鑰管理選項。
 
 |                                        |    Microsoft 管理的金鑰                             |    客戶管理的金鑰                                                                                                                        |    客戶提供的金鑰                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    加密/解密作業    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    支援 Azure 儲存服務    |    全部                                                |    Blob 儲存,Azure 檔案<sup>1,2</sup>                                                                                                               |    Blob 儲存體                                                                  |
-|    金鑰儲存                         |    Microsoft S-Microt    |    Azure 金鑰保存庫                                                                                                                              |    客戶自己的金鑰儲存                                                                 |
-|    關鍵輪換責任         |    Microsoft                                          |    客戶                                                                                                                                     |    客戶                                                                      |
-|    金鑰控制                          |    Microsoft                                     |    客戶                                                                                                                    |    客戶                                                                 |
+|    支援的 Azure 儲存體服務    |    全部                                                |    Blob 儲存體，Azure 檔案儲存體<sup>1，2</sup>                                                                                                               |    Blob 儲存體                                                                  |
+|    金鑰儲存                         |    Microsoft 金鑰存放區    |    Azure 金鑰保存庫                                                                                                                              |    客戶自己的金鑰存放區                                                                 |
+|    金鑰輪替責任         |    Microsoft                                          |    客戶                                                                                                                                     |    客戶                                                                      |
+|    金鑰控制項                          |    Microsoft                                     |    客戶                                                                                                                    |    客戶                                                                 |
 
-<sup>1</sup>有關建立支援使用具有佇列儲存的客戶託管金鑰的帳戶的資訊,請參考[建立帳戶,該帳戶支援佇列的客戶託管金鑰](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
-<sup>2</sup>有關建立支援將客戶管理的金鑰與表儲存一起使用的帳戶的資訊,請參考[建立帳戶,該帳戶支援表的客戶託管金鑰](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
+<sup>1</sup>如需有關建立支援使用客戶管理的金鑰搭配佇列儲存體的帳戶的詳細資訊，請參閱[建立支援佇列客戶管理金鑰的帳戶](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
+<sup>2</sup>如需建立支援使用客戶管理的金鑰搭配資料表儲存體之帳戶的相關資訊，請參閱[建立支援資料表之客戶管理金鑰的帳戶](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 
 ## <a name="next-steps"></a>後續步驟
 

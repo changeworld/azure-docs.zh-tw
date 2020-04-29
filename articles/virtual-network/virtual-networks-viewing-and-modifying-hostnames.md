@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 09c911838d34a083de8450145ce849fc966eb0e8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459146"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>檢視與修改主機名稱
@@ -41,7 +41,7 @@ ms.locfileid: "81459146"
 
 1. 確定您有連線到 Azure 入口網站的用戶端憑證 若要取得用戶端憑證，請遵循[做法：下載與匯入發行設定與訂用帳戶資訊](https://msdn.microsoft.com/library/dn385850.aspx)中的步驟。 
 2. 設定名稱為 x-ms-version，值為 2013-11-01 的標頭項目。
-3. 以以下格式傳送\/要求 :H/.\<h\>management.core.windows.net//服務/託管服務\</\>服務名稱 ?嵌入詳細資訊_true
+3. 以下列格式傳送要求：\/HTTPs：/management.core.windows.net/\<subscrition-id/services/hostedservices/-id\>/services/hostedservices/service-name?\<服務名稱\>？內嵌-詳細資料 = true
 4. 尋找 每個 **RoleInstance** 元素的 **HostName** 元素。
 
 > [!WARNING]

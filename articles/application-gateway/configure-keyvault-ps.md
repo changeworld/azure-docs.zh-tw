@@ -1,7 +1,7 @@
 ---
-title: 使用金鑰保存庫憑證設定 TLS 連接 - PowerShell
+title: 以 Key Vault 憑證設定 TLS 終止-PowerShell
 titleSuffix: Azure Application Gateway
-description: 瞭解如何將 Azure 應用程式閘道與連接到啟用 HTTPS 的偵聽器的伺服器證書的密鑰保管庫整合。
+description: 瞭解如何將 Azure 應用程式閘道與連結到啟用 HTTPS 的接聽程式之伺服器憑證的 Key Vault 整合。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,27 +9,27 @@ ms.topic: article
 ms.date: 02/27/2020
 ms.author: victorh
 ms.openlocfilehash: ffda4b41497a9fd84db5fcee36202eb1c1dca2c0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457836"
 ---
-# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>使用 Azure PowerShell 使用金鑰保管庫憑證設定 TLS 終止
+# <a name="configure-tls-termination-with-key-vault-certificates-by-using-azure-powershell"></a>使用 Azure PowerShell 設定 Key Vault 憑證的 TLS 終止
 
-[Azure 密鑰保管庫](../key-vault/general/overview.md)是一個平臺管理的秘密存儲,可用於保護機密、密鑰和 TLS/SSL 證書。 Azure 應用程式閘道支援與連接到啟用 HTTPS 的偵聽器的伺服器證書的密鑰保管庫整合。 此支援僅限於應用程式閘道 v2 SKU。
+[Azure Key Vault](../key-vault/general/overview.md)是平臺管理的秘密存放區，可讓您用來保護秘密、金鑰和 TLS/SSL 憑證。 Azure 應用程式閘道支援與 Key Vault 整合連接到已啟用 HTTPS 之接聽程式的伺服器憑證。 這種支援僅限於應用程式閘道 v2 SKU。
 
-關於詳細資訊,請參閱[使用金鑰保管庫憑證的 TLS 終止](key-vault-certs.md)。
+如需詳細資訊，請參閱[使用 Key Vault 憑證的 TLS 終止](key-vault-certs.md)。
 
-本文介紹如何使用 Azure PowerShell 文本將密鑰保管庫與 TLS/SSL 終止證書的應用程式閘道整合。
+本文說明如何使用 Azure PowerShell 腳本，將您的金鑰保存庫與您的應用程式閘道（TLS/SSL 終止憑證）進行整合。
 
-本文需要 Azure PowerShell 模組版本 1.0.0 或更高版本。 若要尋找版本，請執行 `Get-Module -ListAvailable Az`。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 要運行本文中的命令,還需要通過運行`Connect-AzAccount`創建與 Azure 的連接。
+本文需要 Azure PowerShell 模組1.0.0 版或更新版本。 若要尋找版本，請執行 `Get-Module -ListAvailable Az`。 如果您需要升級，請參閱[安裝 Azure PowerShell 模組](/powershell/azure/install-az-ps)。 若要執行本文中的命令，您也必須執行來建立與 Azure 的連線`Connect-AzAccount`。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
-在開始之前,必須安裝託管服務標識模組:
+開始之前，您必須先安裝 ManagedServiceIdentity 模組：
 
 ```azurepowershell
 Install-Module -Name Az.ManagedServiceIdentity
@@ -48,7 +48,7 @@ $kv = "TestKeyVaultAppGw"
 $appgwName = "AppGwKVIntegration"
 ```
 
-### <a name="create-a-resource-group-and-a-user-managed-identity"></a>建立資源群組與使用者託管識別
+### <a name="create-a-resource-group-and-a-user-managed-identity"></a>建立資源群組和使用者管理的身分識別
 
 ```azurepowershell
 $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
@@ -56,7 +56,7 @@ $identity = New-AzUserAssignedIdentity -Name "appgwKeyVaultIdentity" `
   -Location $location -ResourceGroupName $rgname
 ```
 
-### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>建立要由應用程式閘道使用的金鑰保管庫、原則和證書
+### <a name="create-a-key-vault-policy-and-certificate-to-be-used-by-the-application-gateway"></a>建立要供應用程式閘道使用的金鑰保存庫、原則和憑證
 
 ```azurepowershell
 $keyVault = New-AzKeyVault -Name $kv -ResourceGroupName $rgname -Location $location -EnableSoftDelete 
@@ -71,7 +71,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> -啟用SoftDelete 標誌必須用於TLS終止才能正常運行。 如果要[通過門戶配置密鑰保管庫軟刪除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior),則保留期必須保持在預設值 90 天。 應用程式閘道還不支援不同的保留期。 
+> -EnableSoftDelete 旗標必須用於 TLS 終止，才能正常運作。 如果您要[透過入口網站設定 Key Vault 虛刪除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)，則保留期限必須保留在90天（預設值）。 應用程式閘道尚不支援不同的保留期間。 
 
 ### <a name="create-a-virtual-network"></a>建立虛擬網路
 
@@ -82,14 +82,14 @@ $vnet = New-AzvirtualNetwork -Name "Vnet1" -ResourceGroupName $rgname -Location 
   -AddressPrefix "10.0.0.0/16" -Subnet @($sub1, $sub2)
 ```
 
-### <a name="create-a-static-public-virtual-ip-vip-address"></a>建立靜態公共虛擬 IP (VIP) 位址
+### <a name="create-a-static-public-virtual-ip-vip-address"></a>建立靜態公用虛擬 IP （VIP）位址
 
 ```azurepowershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name "AppGwIP" `
   -location $location -AllocationMethod Static -Sku Standard
 ```
 
-### <a name="create-pool-and-front-end-ports"></a>建立池和前端埠
+### <a name="create-pool-and-front-end-ports"></a>建立集區和前端埠
 
 ```azurepowershell
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "appgwSubnet" -VirtualNetwork $vnet
@@ -102,13 +102,13 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port1" -Port 443
 $fp02 = New-AzApplicationGatewayFrontendPort -Name "port2" -Port 80
 ```
 
-### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>將 TLS/SSL 憑證指向金鑰保管庫
+### <a name="point-the-tlsssl-certificate-to-your-key-vault"></a>將 TLS/SSL 憑證指向您的金鑰保存庫
 
 ```azurepowershell
 $sslCert01 = New-AzApplicationGatewaySslCertificate -Name "SSLCert1" -KeyVaultSecretId $secretId
 ```
 
-### <a name="create-listeners-rules-and-autoscale"></a>建立偵聽器、規則與自動縮放
+### <a name="create-listeners-rules-and-autoscale"></a>建立接聽程式、規則和自動調整
 
 ```azurepowershell
 $listener01 = New-AzApplicationGatewayHttpListener -Name "listener1" -Protocol Https `
@@ -125,7 +125,7 @@ $autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
 $sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
 ```
 
-### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>將使用者託管識別分配給應用程式閘道
+### <a name="assign-the-user-managed-identity-to-the-application-gateway"></a>將使用者管理的身分識別指派給應用程式閘道
 
 ```azurepowershell
 $appgwIdentity = New-AzApplicationGatewayIdentity -UserAssignedIdentityId $identity.Id
@@ -144,4 +144,4 @@ $appgw = New-AzApplicationGateway -Name $appgwName -Identity $appgwIdentity -Res
 
 ## <a name="next-steps"></a>後續步驟
 
-[瞭解有關 TLS 終止的更多](ssl-overview.md)
+[深入瞭解 TLS 終止](ssl-overview.md)

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 80a9397838e90a2af504125b2dc4c4ef39251d4e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81455357"
 ---
 # <a name="virtual-appliance-scenario"></a>虛擬設備的案例
@@ -29,23 +29,23 @@ ms.locfileid: "81455357"
 * 經過應用程式伺服器的所有流量都必須通過防火牆虛擬設備。 這個虛擬設備會用於存取後端伺服器，以及存取透過 VPN 閘道來自內部部署的網路。
 * 系統管理員必須能夠使用管理用途專用的第三個防火牆虛擬設備，從他們的內部部署電腦來管理防火牆虛擬設備。
 
-這是具有 DMZ 和受保護網路的標準週邊網路(也稱為 DMZ) 方案。 此類方案可以通過使用 NSG、防火牆虛擬設備或兩者的組合在 Azure 中構建。 下表會顯示 NSG 和防火牆虛擬設備之間的優缺點。
+這是使用 DMZ 和受保護網路的標準周邊網路（也會 knowns 為 DMZ）案例。 您可以使用 Nsg、防火牆虛擬裝置或兩者的組合，在 Azure 中建立這類案例。 下表會顯示 NSG 和防火牆虛擬設備之間的優缺點。
 
 |  | 優點 | 缺點 |
 | --- | --- | --- |
-| NSG |無成本。 <br/>整合到 Azure RBAC。 <br/>可以在 Azure 資源管理器樣本中創建規則。 |大型環境中的複雜性各有不同。 |
+| NSG |無成本。 <br/>整合到 Azure RBAC。 <br/>您可以在 Azure Resource Manager 範本中建立規則。 |大型環境中的複雜性各有不同。 |
 | 防火牆 |完全掌控資料面。 <br/>透過防火牆主控台集中管理。 |防火牆設備的成本。 <br/>不與 Azure RBAC 相整合。 |
 
-下面的解決方案使用防火牆虛擬設備來實現週邊網路 (DMZ)/受保護的網路方案。
+下列解決方案使用防火牆虛擬應用裝置來執行周邊網路（DMZ）/protected 網路案例。
 
 ## <a name="considerations"></a>考量
 您可以使用目前可用的不同功能，在 Azure 中部署上述環境，如下所示。
 
-* **虛擬網路 (VNet)**。 Azure VNet 運作的方式與內部部署網路相似，可以切割成一或多個子網路提供流量隔離並區隔問題。
+* **虛擬網路 (VNet)** 。 Azure VNet 運作的方式與內部部署網路相似，可以切割成一或多個子網路提供流量隔離並區隔問題。
 * **虛擬裝置**。 Azure Marketplace 中有數家合作夥伴提供的虛擬設備，可用為上述三種防火牆。 
 * **使用者定義路由 (UDR)**。 路由表可以包含 Azure 網路用來控制 VNet 中封包流程的 UDR。 這些路由表可以套用至子網路。 Azure 其中一項最新功能是能夠將路由表套用至 GatewaySubnet，讓您能夠將從混合式連線進入 Azure VNet 的所有流量都轉送至虛擬設備。
-* **IP 轉寄**。 根據預設，只有封包目的地 IP 位址符合 NIC IP 位址時，Azure 網路引擎才會將封包轉送到虛擬網路介面卡 (NIC)。 因此，如果 UDR 定義封包必須傳送到指定的虛擬設備，則 Azure 網路引擎就會卸除此封包。 為確保將封包遞送到不是封包實際目的地的 VM (本例中為虛擬設備)，您需要為虛擬設備啟用 [IP 轉送]。
-* 網路安全性群組 (NSG)****。 下列範例不會使用 NSG，但是您可以在此解決方案中使用子網路所套用的 NSG 和/或 NIC，以進一步篩選出入這些子網路和 NIC 的流量。
+* **IP 轉送**。 根據預設，只有封包目的地 IP 位址符合 NIC IP 位址時，Azure 網路引擎才會將封包轉送到虛擬網路介面卡 (NIC)。 因此，如果 UDR 定義封包必須傳送到指定的虛擬設備，則 Azure 網路引擎就會卸除此封包。 為確保將封包遞送到不是封包實際目的地的 VM (本例中為虛擬設備)，您需要為虛擬設備啟用 [IP 轉送]。
+* **網路安全性群組（nsg）**。 下列範例不會使用 NSG，但是您可以在此解決方案中使用子網路所套用的 NSG 和/或 NIC，以進一步篩選出入這些子網路和 NIC 的流量。
 
 ![IPv6 網路連線](./media/virtual-network-scenario-udr-gw-nva/figure01.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "81455357"
   * **azsn4**。 專門提供所有防火牆虛擬設備管理存取的管理子網路。 這個子網路只包含解決方案中所用之每個防火牆虛擬設備的 NIC。
   * **GatewaySubnet**。 ExpressRoute 和 VPN 閘道所需要的 Azure 混合式連線子網路，以提供 Azure Vnet 和其他網路間的連線。 
 * **azurevnet** 網路有 3 個防火牆虛擬裝置。 
-  * **AZF1**. 在 Azure 中使用公用 IP 位址資源對公用網際網路公開的外部防火牆。 您需確定具備來自 Marketplace 或直接來自設備廠商的佈建 3-NIC 的虛擬設備範本。
+  * **AZF1**。 在 Azure 中使用公用 IP 位址資源對公用網際網路公開的外部防火牆。 您需確定具備來自 Marketplace 或直接來自設備廠商的佈建 3-NIC 的虛擬設備範本。
   * **AZF2**。 用以控制 **azsn2** 和 **azsn3** 間流量的內部防火牆。 這也是 3-NIC 的虛擬設備。
   * **AZF3**。 內部部署資料中心系統管理員可存取的管理防火牆，且已連線到用來管理所有防火牆設備的管理子網路。 您可以在 Marketplace 中找到 2-NIC 虛擬設備的範本，或直接向您的設備廠商要求一份。
 
@@ -166,5 +166,5 @@ AZF2 代表包含下列規則的 Azure 虛擬設備︰
 2. 如果您想要部署 VNet 來模擬內部部署網路，請佈建屬於 **ONPREMRG**的資源。
 3. 佈建屬於 **AZURERG**的資源。
 4. 佈建 **onpremvnet** 到 **azurevnet** 的通道。
-5. 預配所有資源後,登錄到**onpremvm2**和 ping 10.0.3.101 以測試**onpremsn2**和**azsn3**之間的連接。
+5. 布建所有資源之後，請登入**onpremvm2**並偵測10.0.3.101，以測試**onpremsn2**與**azsn3**之間的連線。
 

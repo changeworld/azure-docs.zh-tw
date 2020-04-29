@@ -16,10 +16,10 @@ ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9255ca3a2ed7e446c60a269deef61372955c25f4
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458500"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>使用 PowerShell 設定虛擬機器 (傳統) 的私人 IP 位址
@@ -34,7 +34,7 @@ ms.locfileid: "81458500"
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-以下的範例 PowerShell 命令會預期已經建立簡單的環境。 如果要在文件中顯示命令時運行這些命令,請首先生成[創建 VNet](virtual-networks-create-vnet-classic-netcfg-ps.md)中描述的測試環境。
+以下的範例 PowerShell 命令會預期已經建立簡單的環境。 如果您想要執行如本檔中所顯示的命令，請先建立「[建立 VNet](virtual-networks-create-vnet-classic-netcfg-ps.md)」中所述的測試環境。
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>如何驗證特定 IP 位址是否可用
 若要驗證 IP 位址 192.168.1.101** 在名為 TestVnet** 的 VNet 中是否可用，請執行下列 PowerShell 命令，並驗證 IsAvailable** 的值：

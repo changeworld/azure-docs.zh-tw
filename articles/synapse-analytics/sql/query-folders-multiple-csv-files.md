@@ -1,6 +1,6 @@
 ---
-title: 使用 SQL 以查詢資料夾與多個 CSV 檔案(預覽)
-description: SQL 按需(預覽)支援使用通配符讀取多個檔/資料夾,這與 Windows OS 中使用的通配符類似。
+title: 使用 SQL 隨選查詢資料夾和多個 CSV 檔案（預覽）
+description: SQL 隨選（預覽）支援使用萬用字元讀取多個檔案/資料夾，這類似于 Windows 作業系統中使用的萬用字元。
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,46 +10,46 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: 8f8af7fab7113e38b91c3f5f1bcc41b4e4fba2c1
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457360"
 ---
-# <a name="query-folders-and-multiple-csv-files"></a>查詢資料夾與多個 CSV 檔案  
+# <a name="query-folders-and-multiple-csv-files"></a>查詢資料夾和多個 CSV 檔案  
 
-在本文中,您將學習如何在 Azure 同步分析中使用 SQL 按需(預覽)編寫查詢。
+在本文中，您將瞭解如何使用 Azure Synapse 分析中的 SQL 隨選（預覽）來撰寫查詢。
 
-SQL 按需支援使用通配符讀取多個檔/資料夾,這與 Windows OS 中使用的通配符類似。 但是,由於允許使用多個通配符,因此存在更大的靈活性。
+SQL 隨選支援使用萬用字元讀取多個檔案/資料夾，這類似于 Windows 作業系統中使用的萬用字元。 不過，因為允許多個萬用字元，所以有更大的彈性。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-在閱讀本文的其餘部分之前,請務必查看下面列出的文章:
+閱讀本文的其餘部分之前，請務必先參閱下列文章：
 
-- [首次設定](query-data-storage.md#first-time-setup)
+- [第一次設定](query-data-storage.md#first-time-setup)
 - [先決條件](query-data-storage.md#prerequisites)
 
 ## <a name="read-multiple-files-in-folder"></a>讀取資料夾中的多個檔案
 
-您將使用資料夾*csv/taxi*來追蹤範例查詢。 它包含 2016 年 7 月至 2018 年 6 月的紐約計程車 - 黃色計程車旅行記錄數據。
+您將使用*csv/計程車*資料夾來遵循範例查詢。 其中包含 NYC 計程車-黃色計程車旅程記錄資料，從2016年7月到6月2018。
 
-*csv/計程車*中的檔案以年份與月命名:
+*Csv/計程車*中的檔案會以年和月命名：
 
-- yellow_tripdata_2016-07.csv
-- yellow_tripdata_2016-08.csv
-- yellow_tripdata_2016-09.csv
+- yellow_tripdata_2016-07 .csv
+- yellow_tripdata_2016 2018 .csv
+- yellow_tripdata_2016-09 .csv
 - ...
-- yellow_tripdata_2018-04.csv
-- yellow_tripdata_2018-05.csv
-- yellow_tripdata_2018-06.csv
+- yellow_tripdata_2018-04 .csv
+- yellow_tripdata_2018-05 .csv
+- yellow_tripdata_2018 06-01.5.1 .csv
 
-每個檔案具有以下結構:
+每個檔案都有下列結構：
         
     [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
 
 ## <a name="read-all-files-in-folder"></a>讀取資料夾中的所有檔案
     
-下面的示例從*csv/計程車*資料夾中讀取所有 NYC 黃色計程車數據檔,並返回每年的乘客和乘車總數。 它還顯示了聚合函數的使用方式。
+下列範例會從*csv/計程車*資料夾讀取所有 NYC 的黃色計程車資料檔案，並傳回每年乘客和乘車的總數。 它也會顯示彙總函式的使用方式。
 
 ```sql
 SELECT 
@@ -87,11 +87,11 @@ ORDER BY
 ```
 
 > [!NOTE]
-> 使用單個 OPENROWSET 存取的所有文件必須具有相同的結構(即列數及其資料類型)。
+> 使用單一 OPENROWSET 存取的所有檔案都必須具有相同的結構（也就是資料行數目和其資料類型）。
 
 ### <a name="read-subset-of-files-in-folder"></a>讀取資料夾中的檔案子集
 
-下面的示例使用通配符從*csv/計程車*資料夾中讀取 2017 年紐約市黃色計程車數據檔,並返回每個付款類型的總票價金額。
+下列範例會使用萬用字元從*csv/計程車*資料夾讀取 2017 NYC 的黃色計程車資料檔案，並傳回每個付款類型的總費用數量。
 
 ```sql
 SELECT 
@@ -126,20 +126,20 @@ ORDER BY payment_type;
 ```
 
 > [!NOTE]
-> 使用單個 OPENROWSET 存取的所有文件必須具有相同的結構(即列數及其資料類型)。
+> 使用單一 OPENROWSET 存取的所有檔案都必須具有相同的結構（也就是資料行數目和其資料類型）。
 
 ## <a name="read-folders"></a>讀取資料夾
 
-提供給 OPENROWSET 的路徑也可以是資料夾的路徑。 以下部分包括這些查詢類型。
+您提供給 OPENROWSET 的路徑也可以是資料夾的路徑。 下列各節包含這些查詢類型。
 
-### <a name="read-all-files-from-specific-folder"></a>從特定資料夾讀取所有檔案
+### <a name="read-all-files-from-specific-folder"></a>讀取特定資料夾中的所有檔案
 
-您可以使用檔案級通配符讀取資料夾中的所有檔,如[「讀取資料夾中的所有檔案」中](#read-all-files-in-folder)所示。 但是,有一種方法來查詢資料夾並使用該資料夾中的所有檔。
+您可以使用檔案層級萬用字元讀取資料夾中的所有檔案，如[讀取資料夾中的所有](#read-all-files-in-folder)檔案所示。 但是，有一種方法可以查詢資料夾，並取用該資料夾內的所有檔案。
 
-如果 OPENROWSET 中提供的路徑指向資料夾,則該資料夾中的所有檔都將用作查詢的源。 以下查詢將讀取*csv/taxi*資料夾中的所有檔案。
+如果 OPENROWSET 中提供的路徑指向資料夾，則會使用該資料夾中的所有檔案作為查詢的來源。 下列查詢會讀取*csv/計程車*資料夾中的所有檔案。
 
 > [!NOTE]
-> 請注意下面的查詢中路徑末尾存在 /。 它表示一個資料夾。 如果省略 /,則查詢將針對名為*taxi*的檔。
+> 請注意下列查詢中，路徑結尾是否有/。 它代表一個資料夾。 如果省略/，查詢將會改為以名為*計程車*的檔案為目標。
 
 ```sql
 SELECT
@@ -177,14 +177,14 @@ ORDER BY
 ```
 
 > [!NOTE]
-> 使用單個 OPENROWSET 存取的所有文件必須具有相同的結構(即列數及其資料類型)。
+> 使用單一 OPENROWSET 存取的所有檔案都必須具有相同的結構（也就是資料行數目和其資料類型）。
 
-### <a name="read-all-files-from-multiple-folders"></a>從多個資料夾中讀取所有檔案
+### <a name="read-all-files-from-multiple-folders"></a>讀取多個資料夾中的所有檔案
 
-可以使用通配符從多個資料夾中讀取檔。 以下查詢將從*csv*資料夾中的所有資料夾中讀取所有檔,這些資料夾中的名稱以*t*開頭,以*i*結尾。
+您可以使用萬用字元，從多個資料夾讀取檔案。 下列查詢會從*csv*資料夾中名稱開頭為*t*並以*i*結尾的所有資料夾讀取所有檔案。
 
 > [!NOTE]
-> 請注意下面的查詢中路徑末尾存在 /。 它表示一個資料夾。 如果省略 /,則查詢將針對名為*t&ast;i*的檔。
+> 請注意下列查詢中，路徑結尾是否有/。 它代表一個資料夾。 如果省略/，查詢將會以名為*t&ast;i*的檔案作為目標。
 
 ```sql
 SELECT
@@ -222,17 +222,17 @@ ORDER BY
 ```
 
 > [!NOTE]
-> 使用單個 OPENROWSET 存取的所有文件必須具有相同的結構(即列數及其資料類型)。
+> 使用單一 OPENROWSET 存取的所有檔案都必須具有相同的結構（也就是資料行數目和其資料類型）。
 
-由於您只有一個與條件匹配的資料夾,因此查詢結果與[讀取資料夾中的所有檔](#read-all-files-in-folder)相同。
+因為您只有一個符合準則的資料夾，所以查詢結果與 [[讀取資料夾中的所有](#read-all-files-in-folder)檔案] 相同。
 
-## <a name="multiple-wildcards"></a>多個通配子
+## <a name="multiple-wildcards"></a>多個萬用字元
 
-您可以在不同的路徑等級上使用多個通配符。 例如,您可以豐富以前的查詢,以便僅從以*t*開頭和以*i*開頭的所有資料夾中讀取包含 2017 數據的檔。
+您可以在不同的路徑層級上使用多個萬用字元。 例如，您可以擴充先前的查詢，以讀取只有2017資料的檔案，從所有名稱開頭為*t*並以*i*結尾的資料夾。
 
 > [!NOTE]
-> 請注意下面的查詢中路徑末尾存在 /。 它表示一個資料夾。 如果省略 /,則查詢將針對名為*t&ast;i*的檔。
-> 每個查詢的最大限制為 10 個通配符。
+> 請注意下列查詢中，路徑結尾是否有/。 它代表一個資料夾。 如果省略/，查詢將會以名為*t&ast;i*的檔案作為目標。
+> 每個查詢的最大限制為10個萬用字元。
 
 ```sql
 SELECT
@@ -270,10 +270,10 @@ ORDER BY
 ```
 
 > [!NOTE]
-> 使用單個 OPENROWSET 存取的所有文件必須具有相同的結構(即列數及其資料類型)。
+> 使用單一 OPENROWSET 存取的所有檔案都必須具有相同的結構（也就是資料行數目和其資料類型）。
 
-由於您只有一個與條件匹配的資料夾,因此查詢結果與[資料夾中檔的「讀取」子集](#read-subset-of-files-in-folder)和[從特定資料夾中讀取所有檔](#read-all-files-from-specific-folder)相同。 更複雜的通配符使用方案在[查詢鑲拍檔中](query-parquet-files.md)介紹。
+因為您只有一個符合準則的資料夾，所以查詢結果與 [[讀取資料夾中的檔案子集]](#read-subset-of-files-in-folder)和 [[讀取來自特定資料夾的所有](#read-all-files-from-specific-folder)檔案] 相同。 [查詢 Parquet](query-parquet-files.md)檔中涵蓋了更複雜的萬用字元使用案例。
 
 ## <a name="next-steps"></a>後續步驟
 
-有關詳細資訊,請參閱[查詢特定檔](query-specific-files.md)一文。
+您可以在[查詢特定](query-specific-files.md)檔案一文中找到詳細資訊。

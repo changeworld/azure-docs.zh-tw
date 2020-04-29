@@ -1,103 +1,103 @@
 ---
-title: 載入 Azure HPC 快取
-description: 如何將客戶端連接到 Azure HPC 快取服務
+title: 裝載 Azure HPC 快取
+description: 如何將用戶端連線至 Azure HPC 快取服務
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: v-erkel
 ms.openlocfilehash: a44232f06b455e20530271723e816c2117b339a0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81458339"
 ---
 # <a name="mount-the-azure-hpc-cache"></a>掛接 Azure HPC Cache
 
-創建快取後,NFS 用戶端可以使用`mount`簡單 命令存取它。 該命令將 Azure HPC 快取上的特定儲存目標路徑連接到用戶端電腦上的本地目錄。
+建立快取之後，NFS 用戶端就可以使用簡單`mount`的命令來存取它。 命令會將 Azure HPC 快取上的特定儲存體目標路徑連接到用戶端電腦上的本機目錄。
 
-載入指令是由以下元素組成:
+Mount 命令是由下列元素所組成：
 
-* 快取的載入位址之一(列在快取概述頁上)
-* 建立儲存目標時設定的虛擬命名空間路徑
-* 要在用戶端上使用的本地端路徑
-* 最佳化 NFS 載入成功的指令參數
+* 其中一個快取的掛接位址（列于快取總覽頁面）
+* 您在建立儲存體目標時所設定的虛擬命名空間路徑
+* 要在用戶端上使用的本機路徑
+* 可將這類 NFS 掛接的成功優化的命令參數
 
-快取的 **「裝載指令」** 頁會收集資訊和推薦的選項,並創建可以複製的原型裝載命令。 閱讀[使用裝載說明實用程式](#use-the-mount-instructions-utility)瞭解詳細資訊。
+您快取的 [**掛接指示**] 頁面會收集資訊和建議的選項，並建立可供您複製的原型掛接命令。 如需詳細資訊，[請參閱使用掛接指示公用程式](#use-the-mount-instructions-utility)。
 
-## <a name="prepare-clients"></a>準備客戶
+## <a name="prepare-clients"></a>準備用戶端
 
-按照本節中的指南,確保客戶端能夠裝載 Azure HPC 緩存。
+請確定您的用戶端能夠遵循本節中的指導方針來掛接 Azure HPC 快取。
 
 ### <a name="provide-network-access"></a>提供網路存取
 
-用戶端計算機必須具有對快取的虛擬網路和專用子網路的網路存取許可權。
+用戶端電腦必須具有快取的虛擬網路和私人子網的網路存取權。
 
-例如,在同一虛擬網路中創建用戶端 VM,或使用虛擬網路中的終結點、閘道或其他解決方案從外部存取。 (請記住,除了緩存本身之外,其他內容都不應託管在緩存的子網內。
+例如，在相同的虛擬網路內建立用戶端 Vm，或使用端點、閘道或虛擬網路中的其他解決方案，從外部進行存取。 （請記住，快取本身以外的任何內容都應該裝載于快取的子網內）。
 
 ### <a name="install-utilities"></a>安裝公用程式
 
-安裝適當的 Linux 實用程式軟體以支援 NFS 裝載命令:
+安裝適當的 Linux 公用程式軟體以支援 NFS 掛接命令：
 
-* 對於紅帽企業 Linux 或 SuSE:`sudo yum install -y nfs-utils`
-* 對於烏本圖或德比安:`sudo apt-get install nfs-common`
+* 針對 Red Hat Enterprise Linux 或 SuSE：`sudo yum install -y nfs-utils`
+* 針對 Ubuntu 或 Debian：`sudo apt-get install nfs-common`
 
-### <a name="create-a-local-path"></a>建立本地端路徑
+### <a name="create-a-local-path"></a>建立本機路徑
 
-在每個用戶端上創建本地目錄路徑以連接到快取。 為要裝載的每個命名空間路徑創建路徑。
+在每個用戶端上建立本機目錄路徑，以連接到快取。 為您要裝載的每個命名空間路徑建立路徑。
 
-範例： `sudo mkdir -p /mnt/hpc-cache-1/target3`
+範例：`sudo mkdir -p /mnt/hpc-cache-1/target3`
 
-Azure 門戶中的[「裝載說明」](#use-the-mount-instructions-utility)頁包含可以複製的原型命令。
+Azure 入口網站中的 [[掛接指示](#use-the-mount-instructions-utility)] 頁面包含可供您複製的原型命令。
 
-將用戶端電腦連接到緩存時,將此路徑與表示存儲目標導出的虛擬命名空間路徑相關聯。 為用戶端將使用的每個虛擬命名空間路徑創建目錄。
+當您將用戶端電腦連線到快取時，您會將此路徑與代表儲存體目標匯出的虛擬命名空間路徑產生關聯。 為用戶端將使用的每個虛擬命名空間路徑建立目錄。
 
-## <a name="use-the-mount-instructions-utility"></a>使用載入說明實用程式
+## <a name="use-the-mount-instructions-utility"></a>使用掛接指示公用程式
 
-可以使用 Azure 門戶中的 **「裝載指令」** 頁創建可複製裝載命令。 從門戶中緩存檢視的 **「設定**」部分打開頁面。
+您可以使用 Azure 入口網站中的 [**掛接指示**] 頁面來建立可複製 Mount 命令。 在入口網站中，從快取視圖的 [**設定**] 區段開啟頁面。
 
-在用戶端上使用 命令之前,請確保客戶端滿足先決條件,並具有使用`mount`NFS 命令所需的軟體,如上述在[「準備用戶端](#prepare-clients)」中所述。
+在用戶端上使用命令之前，請確定用戶端符合必要條件，並具有如先前[準備用戶端](#prepare-clients)中所`mount`述的使用 NFS 命令所需的軟體。
 
-![門戶中的 Azure HPC 緩存實例的螢幕截圖,載入了「設定>裝載指令頁](media/mount-instructions.png)
+![入口網站中的 Azure HPC 快取實例的螢幕擷取畫面，其中已載入 [設定 > 掛接指示] 頁面](media/mount-instructions.png)
 
-按照此過程創建裝載命令。
+請遵循此程式來建立掛接命令。
 
-1. 自訂**用戶端路徑**欄位。 此欄位提供一個範例命令,可用於在用戶端上創建本地路徑。 用戶端在此目錄中本地訪問 Azure HPC 快取中的內容。
+1. 自訂 [**用戶端路徑**] 欄位。 此欄位提供一個範例命令，您可以用來在用戶端上建立本機路徑。 用戶端會從本機的 Azure HPC 快取存取此目錄中的內容。
 
-   按一下該欄位並編輯該指令以包含所需的目錄名稱。 這個名稱顯示在字串的末尾`sudo mkdir -p`
+   按一下欄位並編輯命令，以包含您想要的目錄名稱。 名稱會出現在字串結尾的後面`sudo mkdir -p`
 
-   ![用戶端路徑欄位的螢幕截圖,游標位於末尾](media/mount-edit-client.png)
+   ![[用戶端路徑] 欄位的螢幕擷取畫面，其中游標位於結尾處](media/mount-edit-client.png)
 
-   完成編輯欄位後,頁面底部的裝載命令將更新新用戶端路徑。
+   完成欄位的編輯後，頁面底部的 mount 命令會以新的用戶端路徑更新。
 
-1. 從清單中選擇**快取載入位址**。 此選單列的快取所有[客戶端載入點](#find-mount-command-components)。
+1. 從清單中選擇快取**裝載位址**。 此功能表會列出所有快取的[用戶端掛接點](#find-mount-command-components)。
 
-   平衡所有可用裝載位址的客戶端負載,以更好的緩存性能。
+   平衡所有可用掛接位址的用戶端負載，以獲得更好的快取效能。
 
-   ![快取載入位址欄位的螢幕擷取,選擇器顯示三個 IP 位址可供選擇](media/mount-select-ip.png)
+   ![[快取裝載位址] 欄位的螢幕擷取畫面，其中顯示可供選擇的三個 IP 位址的選擇器](media/mount-select-ip.png)
 
-1. 選擇要用於客戶端的**虛擬命名空間路徑**。 這些路徑連結到後端存儲系統上的匯出。
+1. 選擇要用於用戶端的**虛擬命名空間路徑**。 這些路徑連結至後端儲存體系統上的匯出。
 
-   ![命名空間路徑欄位的螢幕截圖,選擇器開啟](media/mount-select-target.png)
+   ![[命名空間路徑] 欄位的螢幕擷取畫面，並開啟選取器](media/mount-select-target.png)
 
-   您可以在「存儲目標」 門戶頁上查看和更改虛擬命名空間路徑。 閱讀[添加存儲目標](hpc-cache-add-storage.md)以查看如何。
+   您可以在儲存體目標入口網站頁面上，查看和變更虛擬命名空間路徑。 如要瞭解，請閱讀[新增儲存體目標](hpc-cache-add-storage.md)。
 
-   要瞭解有關 Azure HPC 快取集合的總命名空間功能的詳細資訊,請閱讀[規劃聚合命名空間](hpc-cache-namespace.md)。
+   若要深入瞭解 Azure HPC Cache 的匯總命名空間功能，請參閱[規劃匯總的命名空間](hpc-cache-namespace.md)。
 
-1. 步驟三中的 **「裝載」命令**欄位使用自訂裝載命令自動填充,該命令使用在前面的欄位中設置的裝載位址、虛擬命名空間路徑和用戶端路徑。
+1. 步驟3中的 [**掛接命令**] 欄位會使用自訂的掛接命令，自動填入您在先前欄位中設定的掛接位址、虛擬命名空間路徑和用戶端路徑。
 
-   按下欄位右側的複製符號,自動將其複製到剪貼簿。
+   按一下欄位右側的 [複製] 符號，自動將它複製到剪貼簿。
 
-   ![命名空間路徑欄位的螢幕截圖,選擇器開啟](media/mount-command-copy.png)
+   ![[命名空間路徑] 欄位的螢幕擷取畫面，並開啟選取器](media/mount-command-copy.png)
 
-1. 使用用戶端電腦上的複製載入命令將其連接到 Azure HPC 快取。 可以直接從用戶端命令行發出該命令,或在用戶端設置腳本或範本中包括裝載命令。
+1. 在用戶端電腦上使用複製的掛接命令，將它連線到 Azure HPC 快取。 您可以直接從用戶端命令列發出命令，或在用戶端安裝腳本或範本中包含 mount 命令。
 
-## <a name="understand-mount-command-syntax"></a>瞭解載入命令語法
+## <a name="understand-mount-command-syntax"></a>瞭解掛接命令語法
 
-載入指令的以下形式:
+Mount 命令的格式如下：
 
-> sudo 安裝 [*選項*] *cache_mount_address*:/*namespace_pathlocal_path* *local_path*
+> sudo mount {*options*} *cache_mount_address*：/*namespace_path* *local_path*
 
 範例：
 
@@ -107,34 +107,34 @@ root@test-client:/tmp# sudo mount -o hard,proto=tcp,mountproto=tcp,retry=30 10.0
 root@test-client:/tmp#
 ```
 
-此命令成功後,存儲匯出的內容將在用戶端的``hpccache``目錄中可見。
+此命令成功之後，就會在用戶端的``hpccache``目錄中看到儲存體匯出的內容。
 
-### <a name="mount-command-options"></a>載入指令選項
+### <a name="mount-command-options"></a>掛接命令選項
 
-對於可靠的用戶端裝載,在載入指令中傳遞這些設定和參數:
+若是健全的用戶端掛接，請在您的 mount 命令中傳遞這些設定和引數：
 
-> 安裝 -o 硬,proto_tcp,mountproto_tcp,retry_30 {CACHE_IP_ADDRESS}:/$NAMESPACE_PATH} {LOCAL_FILESYSTEM_MOUNT_POINT}
+> 掛接-o hard，proto = tcp，mountproto = tcp，重試 = 30 $ {CACHE_IP_ADDRESS}:/$ {NAMESPACE_PATH} $ {LOCAL_FILESYSTEM_MOUNT_POINT}
 
-| 建議的載入指令設定 | |
+| 建議的掛接命令設定 | |
 --- | ---
-``hard`` | Azure HPC 快取的軟載載與應用程式故障和可能的資料遺失相關聯。
+``hard`` | 軟掛接至 Azure HPC 快取會與應用程式失敗和可能的資料遺失相關聯。
 ``proto=tcp`` | 此選項支援適當處理 NFS 網路錯誤的功能。
 ``mountproto=tcp`` | 此選項支援在掛接作業中適當處理網路錯誤的功能。
 ``retry=<value>`` | 設定 ``retry=30`` 可避免暫時性的掛接失敗。 (執行前景掛接時建議使用不同的值)。
 
-### <a name="find-mount-command-components"></a>尋找載入指令元件
+### <a name="find-mount-command-components"></a>尋找掛接命令元件
 
-如果要創建裝載命令而不使用 **「裝載指令」** 頁,可以在快取**概述**頁上找到裝載位址和**儲存目標**頁上的虛擬命名空間路徑。
+如果您想要建立掛接命令，而不使用 [**掛接指示**] 頁面，您可以在 [快取**總覽**] 頁面上找到掛接位址，並在 [**儲存體目標**] 頁面上尋找虛擬命名空間路徑。
 
-![Azure HPC 快取實體的「概述」頁面的螢幕截圖,右下角的裝載地址清單周圍有一個突出顯示框](media/hpc-cache-mount-addresses.png)
+![Azure HPC 快取實例 [總覽] 頁面的螢幕擷取畫面，並在右下方的 [掛接位址] 清單周圍加上醒目提示方塊](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE]
-> 快取載入位址對應於緩存子網中的網路介面。 在資源組中,這些 NIC 列出的名稱以`-cluster-nic-`結尾 ,以數位結尾。 不要更改或刪除這些介面,否則緩存將不可用。
+> 快取掛接位址會對應至快取子網內的網路介面。 在資源群組中，這些 Nic 會以結尾為的名稱`-cluster-nic-`和數位來列出。 請勿更改或刪除這些介面，否則快取將會變成無法使用。
 
-虛擬命名空間路徑顯示在每個儲存目標的詳細資訊頁上。 單擊單個儲存目標名稱以查看其詳細資訊,包括與其關聯的聚合命名空間路徑。
+虛擬命名空間路徑會顯示在每個儲存體目標的詳細資料頁面上。 按一下個別的儲存體目標名稱以查看其詳細資料，包括與其相關聯的匯總命名空間路徑。
 
-![儲存目標詳細資訊頁面的螢幕截圖(標題"更新存儲目標")。 表的虛擬命名空間路徑列中項目周圍有一個突出顯示框](media/hpc-cache-view-namespace-paths.png)
+![儲存體目標詳細資料頁面（標頭「更新儲存體目標」）的螢幕擷取畫面。 資料表之 [虛擬命名空間路徑] 資料行中的專案周圍有一個醒目提示方塊](media/hpc-cache-view-namespace-paths.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要將資料移至快取的儲存目標,請閱讀[填充新的 Azure Blob 儲存](hpc-cache-ingest.md)。
+* 若要將資料移至快取的儲存體目標，請閱讀[填入新的 Azure Blob 儲存體](hpc-cache-ingest.md)。

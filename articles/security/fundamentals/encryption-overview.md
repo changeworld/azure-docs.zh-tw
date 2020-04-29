@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/20/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ce78ade4df3c5bcea9e4e44750c430065cbfc5b0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81454640"
 ---
 # <a name="azure-encryption-overview"></a>Azure 加密概觀
@@ -105,7 +105,7 @@ CLE 具有內建函式，可供您使用對稱或非對稱金鑰、憑證的公�
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB 資料庫加密
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md)是Microsoft的全球分散式多模型資料庫。 預設會加密儲存在 Cosmos DB 非揮發性儲存體 (固態硬碟) 中的使用者資料。 沒有可開啟或關閉它的控制項。 待用加密是使用數種安全性技術來實作的，這些技術包括安全金鑰儲存體系統、加密的網路，以及密碼編譯 API。 加密金鑰是由 Microsoft 管理，並根據 Microsoft 內部方針來輪替。
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md)是 Microsoft 的全域散發多模型資料庫。 預設會加密儲存在 Cosmos DB 非揮發性儲存體 (固態硬碟) 中的使用者資料。 沒有可開啟或關閉它的控制項。 待用加密是使用數種安全性技術來實作的，這些技術包括安全金鑰儲存體系統、加密的網路，以及密碼編譯 API。 加密金鑰是由 Microsoft 管理，並根據 Microsoft 內部方針來輪替。
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Data Lake 中的待用加密
 
@@ -181,7 +181,7 @@ Azure 提供許多機制，可在將資料從一個位置移至另一個位置�
 
 您可以使用 Azure 入口網站、PowerShell 或 Azure CLI，來設定虛擬網路的站對站 VPN 連線。
 
-如需詳細資訊，請參閱
+如需詳細資訊，請參閱：
 
 [在 Azure 入口網站中建立站對站連線](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 
@@ -207,5 +207,5 @@ Key Vault 讓組織不需要設定、修補及維護硬體安全模組 (HSM) 和
 - [Azure 網路安全性概觀](network-overview.md)
 - [Azure 資料庫安全性概觀](database-security-overview.md)
 - [Azure 虛擬機器安全性概觀](virtual-machines-overview.md)
-- [靜態資料加密](encryption-atrest.md)
+- [待用資料加密](encryption-atrest.md)
 - [資料安全性與加密的最佳做法](data-encryption-best-practices.md)

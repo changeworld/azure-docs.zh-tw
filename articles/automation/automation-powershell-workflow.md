@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1b275239c19584bc11472711a32972aa3ebea1ab
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457530"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>了解適用於自動化 Runbook 的重要 Windows PowerShell 工作流程概念
@@ -21,11 +21,11 @@ Azure 自動化中的 Runbook 會實作為 Windows PowerShell 工作流程。  W
 如需這篇文章中的主題的完整詳細資訊，請參閱 [開始使用 Windows PowerShell 工作流程](https://technet.microsoft.com/library/jj134242.aspx)。
 
 >[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有關混合 Runbook 輔助角色上的 Az 模組安裝說明,請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 對於自動化帳戶,可以使用[「如何更新 Azure 自動化 中的 Azure PowerShell」模組](automation-update-azure-modules.md)將模組更新到最新版本。
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="basic-structure-of-a-workflow"></a>工作流程的基本結構
 
-將 PowerShell 文稿轉換為 PowerShell 工作流的第一`Workflow`步是將其與 關鍵字一起包含。  工作流從關鍵字開始,`Workflow`後跟括弧中包含的腳本正文。 工作流的名稱遵循`Workflow`以下文法中的關鍵字:
+將 PowerShell 腳本轉換成 PowerShell 工作流程的第一個步驟是使用`Workflow`關鍵字來括住它。  工作流程會以`Workflow`關鍵字開頭，後面接著以大括弧括住的腳本主體。 工作流程的名稱會遵循`Workflow`關鍵字，如下列語法所示：
 
 ```powershell
 Workflow Test-Workflow
@@ -34,9 +34,9 @@ Workflow Test-Workflow
 }
 ```
 
-工作流程的名稱必須符合自動化 Runbook 的名稱。 如果正在導入 Runbook,則檔名必須與工作流名稱匹配,並且必須以 *.ps1*結尾。
+工作流程的名稱必須符合自動化 Runbook 的名稱。 如果正在匯入 runbook，則檔案名必須符合工作流程名稱，且必須以 *. ps1*結尾。
 
-要向工作流添加參數,請使用關鍵字,`Param`就像在腳本中一樣。
+若要將參數加入至工作流程， `Param`請使用關鍵字，就像在腳本中一樣。
 
 ## <a name="code-changes"></a>程式碼變更
 
@@ -102,7 +102,7 @@ Workflow Stop-MyService
 
 ## <a name="inlinescript"></a>InlineScript
 
-當您`InlineScript`需要作為傳統的 PowerShell 腳本而不是 PowerShell 工作流運行一個或多個命令時,該活動非常有用。  在工作流程中的命令會傳送至 Windows Workflow Foundation 進行處理，而 Windows PowerShell 會處理 InlineScript 區塊中的命令。
+當`InlineScript`您需要執行一或多個命令做為傳統的 powershell 腳本，而不是 powershell 工作流程時，活動會很有用。  在工作流程中的命令會傳送至 Windows Workflow Foundation 進行處理，而 Windows PowerShell 會處理 InlineScript 區塊中的命令。
 
 InlineScript 使用如下所示的語法。
 
@@ -157,7 +157,7 @@ Workflow Stop-MyService
 
 Windows PowerShell 工作流程的優點之一是可平行執行一組命令，而不是如同一般的指令碼以循序方式執行。
 
-可以使用關鍵字`Parallel`創建具有多個同時運行的命令的腳本塊。 這會使用如下所示的語法。 在此情況下，Activity1 和 Activity2 將同時開始。 只有在 Activity1 和 Activity2 都已完成之後，Activity3 才會開始。
+您可以使用`Parallel`關鍵字來建立具有多個同時執行之命令的腳本區塊。 這會使用如下所示的語法。 在此情況下，Activity1 和 Activity2 將同時開始。 只有在 Activity1 和 Activity2 都已完成之後，Activity3 才會開始。
 
 ```powershell
 Parallel
@@ -225,7 +225,7 @@ Workflow Copy-Files
 
 ## <a name="checkpoints"></a>檢查點
 
-*檢查點* 是包含變數的目前值和在該點產生的任何輸出的工作流程的目前狀態的快照。 如果工作流程結束時發生錯誤或是擱置，下次執行時，就會從其最後一個檢查點開始，而不是從工作流程的開頭開始。  您可以使用`Checkpoint-Workflow`活動在工作流中設置檢查點。 Azure 自動化具有一個稱為[公平共用](automation-runbook-execution.md#fair-share)的功能,其中將卸載運行 3 小時的 Runbook 以允許其他 Runbook 運行。 最終,將重新載入已卸載的 Runbook,當它被重新載入時,它將從 Runbook 中獲取的最後一個檢查點恢復執行。 為了保證 Runbook 最終完成,您必須按運行時間少於 3 小時的間隔添加檢查點。 如果在每次運行期間都添加了一個新檢查點,並且 Runbook 在 3 小時後由於錯誤而被逐出,則 Runbook 將無限期恢復。
+*檢查點* 是包含變數的目前值和在該點產生的任何輸出的工作流程的目前狀態的快照。 如果工作流程結束時發生錯誤或是擱置，下次執行時，就會從其最後一個檢查點開始，而不是從工作流程的開頭開始。  您可以使用`Checkpoint-Workflow`活動在工作流程中設定檢查點。 Azure 自動化具有稱為「[公平共用](automation-runbook-execution.md#fair-share)」的功能，其中任何執行3小時的 runbook 都會卸載，以允許其他 runbook 執行。 最後，卸載的 runbook 將會重載，當它是時，它會從 runbook 中的最後一個檢查點繼續執行。 為了保證 runbook 最後會完成，您必須在執行時間不到3小時的間隔中新增檢查點。 如果在每次執行期間新增了新的檢查點，而且在3小時後收回 runbook，因為發生錯誤，則會無限期地繼續 runbook。
 
 在下列範例程式碼中，Activity2 之後發生的例外狀況造成工作流程結束。 工作流程再次執行時，它會先執行 Activity2，因為這是緊接在設定的最後一個檢查點之後。
 
@@ -257,7 +257,7 @@ Workflow Copy-Files
 }
 ```
 
-由於使用者名憑據在調用[掛起工作流](https://technet.microsoft.com/library/jj733586.aspx)活動后或最後一個檢查點之後不會保留,因此您需要將憑據設置為 null,然後在調用或調用`Suspend-Workflow`檢查點後 從資產存儲處再次檢索它們。  否則,您可能會收到以下錯誤訊息:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+在您呼叫[暫止工作流程](https://technet.microsoft.com/library/jj733586.aspx)活動之後，或在最後一個檢查點之後，使用者名稱認證不會保存，因此，您必須將認證設定為 null，然後在呼叫`Suspend-Workflow`或檢查點之後，再次從資產存放區中取回它們。  否則，您可能會收到下列錯誤訊息：`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 下列同一個程式碼會示範如何在 PowerShell 工作流程 Runbook 中處理此問題。
 
@@ -286,7 +286,7 @@ workflow CreateTestVms
 ```
 
 > [!NOTE]
-> 對於非圖形 PowerShell`Add-AzAccount`執行`Add-AzureRMAccount`簿, 並且是[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)的別名。 您可以使用這些 cmdlet,也可以將自動化帳戶中的[模組更新](automation-update-azure-modules.md)到最新版本。 即使您剛剛創建了新的自動化帳戶,您也可能需要更新模組。
+> 針對非圖形化 PowerShell runbook， `Add-AzAccount`和`Add-AzureRMAccount`是[disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)的別名。 您可使用這些 Cmdlet，也可以在您的自動化帳戶中[將您的模組更新](automation-update-azure-modules.md)為最新版本。 即使您才剛建立新的自動化帳戶，可能還是需要更新您的模組。
 
 
 如果您使用以服務主體設定的執行身分帳戶進行驗證，則不必這麼做。
@@ -295,5 +295,5 @@ workflow CreateTestVms
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要開始使用 PowerShell 工作流執行簿,請參閱[我的第一個 PowerShell 工作流執行簿](automation-first-runbook-textual.md)
+* 若要開始使用 PowerShell 工作流程 runbook，請參閱[我的第一個 powershell 工作流程 runbook](automation-first-runbook-textual.md)
 

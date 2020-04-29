@@ -1,6 +1,6 @@
 ---
-title: 驗證和授權
-description: 瞭解 Azure 應用服務和 Azure 函數中的內建身份驗證和授權支援,以及它如何説明保護應用免受未經授權的訪問。
+title: 驗證與授權
+description: 瞭解 Azure App Service 和 Azure Functions 中內建的驗證和授權支援，以及它如何協助保護您的應用程式免于未經授權的存取。
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 04/15/2020
@@ -9,16 +9,16 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: a4ceed0d897f069a7895a3eb6b10c327566afbe5
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81457853"
 ---
-# <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 應用程式服務和 Azure 函數中的身份驗證和授權
+# <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure App Service 和 Azure Functions 中的驗證和授權
 
 > [!NOTE]
-> 此時,ASP.NET核心當前不支援使用身份驗證/授權功能填充當前使用者。
+> 此時，ASP.NET Core 目前不支援以驗證/授權功能來填入目前的使用者。
 >
 
 Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用程式、RESTful API 和行動裝置後端以及 [Azure Functions](../azure-functions/functions-overview.md) 中幾乎不需要寫入或完全無需寫入程式碼，即可登入使用者及存取資料。 本文說明 App Service 如何協助您簡化應用程式的驗證和授權。
@@ -26,9 +26,9 @@ Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用
 若要有安全的驗證和授權，必須對安全性有深入了解，包括同盟、加密、[JSON Web 權杖 (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) 管理、[授與類型](https://oauth.net/2/grant-types/)等等。 App Service 會提供這些公用程式，以便您可以將更多的時間和精力花在為客戶提供商務價值上。
 
 > [!IMPORTANT]
-> 您無需使用此功能進行身份驗證和授權。 您可以在您選擇的 Web 框架中使用捆綁安全功能,也可以編寫自己的實用程式。 但是,請記住[,Chrome 80 正在對其實施 SameSite Cookie(](https://www.chromestatus.com/feature/5088147346030592)發佈日期在 2020 年 3 月左右)進行重大更改,而自定義遠端身份驗證或其他依賴於跨網站 Cookie 發佈的方案可能會在用戶端 Chrome 瀏覽器更新時中斷。 解決方法很複雜,因為它需要支援不同瀏覽器的不同 SameSite 行為。 
+> 您不需要使用這項功能來進行驗證和授權。 您可以在您選擇的 web 架構中使用配套的安全性功能，也可以撰寫自己的公用程式。 不過，請記住， [Chrome 80 正在對 cookie 的 SameSite 進行重大變更](https://www.chromestatus.com/feature/5088147346030592)（在2020年3月的發行日期），而自訂遠端驗證或依賴跨網站 cookie 張貼的其他案例，可能會在用戶端 Chrome 瀏覽器更新時中斷。 因應措施很複雜，因為它需要針對不同的瀏覽器支援不同的 SameSite 行為。 
 >
-> 應用服務託管的ASP.NET酷睿 2.1 及以上版本已針對此重大更改進行了修補,並適當處理 Chrome 80 及較舊的瀏覽器。 此外,整個 2020 年 1 月,ASP.NET 框架 4.7.2 的相同修補程式正在應用服務實例上部署。 有關詳細資訊(包括如何知道應用是否已收到修補程式),請參閱[Azure 應用服務 SameSite Cookie 更新](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)。
+> App Service 所裝載的 ASP.NET Core 2.1 和以上版本已針對這項重大變更進行修補，並適當地處理 Chrome 80 和較舊的瀏覽器。 此外，ASP.NET Framework 4.7.2 的相同修補程式會部署在2020年1月的 App Service 實例上。 如需詳細資訊，包括如何知道您的應用程式是否已收到修補程式，請參閱[Azure App Service SameSite cookie update](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)。
 >
 
 如需原生行動應用程式的專屬資訊，請參閱 [Azure App Service 的行動應用程式使用者驗證和授權](../app-service-mobile/app-service-mobile-auth.md)。
@@ -48,11 +48,11 @@ Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用
 
 此模組會與應用程式程式碼分開執行，並且會使用應用程式設定加以設定。 不需要任何 SDK、特定語言或對應用程式程式碼進行任何變更。 
 
-### <a name="userapplication-claims"></a>使用者/應用程式聲明
+### <a name="userapplication-claims"></a>使用者/應用程式宣告
 
-對於所有語言框架,App Service 通過將傳入權杖(無論是來自經過身份驗證的最終用戶還是客戶端應用程式)添加到請求標頭中,使代碼中的聲明可用。 在 ASP.NET 4.6 應用程式中，App Service 會使用已驗證的使用者宣告填入 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)，因此您可以遵循標準的 .NET 程式碼模式，包括 `[Authorize]` 屬性。 同樣地，在 PHP 應用程式中，App Service 會填入 `_SERVER['REMOTE_USER']` 變數。 對於 Java 應用程式,可以從[Tomcat servlet 訪問](containers/configure-language-java.md#authenticate-users-easy-auth)聲明。
+針對所有語言架構，App Service 會將傳入權杖中的宣告（不論是來自已驗證的使用者或用戶端應用程式）提供給程式碼，方法是將它們插入要求標頭中。 在 ASP.NET 4.6 應用程式中，App Service 會使用已驗證的使用者宣告填入 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current)，因此您可以遵循標準的 .NET 程式碼模式，包括 `[Authorize]` 屬性。 同樣地，在 PHP 應用程式中，App Service 會填入 `_SERVER['REMOTE_USER']` 變數。 針對 JAVA 應用程式，[可從 Tomcat servlet 存取](containers/configure-language-java.md#authenticate-users-easy-auth)宣告。
 
-對於[Azure](../azure-functions/functions-overview.md)`ClaimsPrincipal.Current`函數 ,不填充 .NET 代碼,但仍可以在請求標頭中找到使用者聲明,或從`ClaimsPrincipal`請求上下文甚至通過 綁定參數獲取物件。 有關詳細資訊[,請參閱使用客戶端識別](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities)。
+針對[Azure Functions](../azure-functions/functions-overview.md)， `ClaimsPrincipal.Current`不會針對 .net 程式碼填入，但您仍然可以在要求標頭中找到使用者宣告，或從`ClaimsPrincipal`要求內容取得物件，甚至是透過系結參數。 如需詳細資訊，請參閱[使用用戶端](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities)身分識別。
 
 如需詳細資訊，請參閱[存取使用者宣告](app-service-authentication-how-to.md#access-user-claims)。
 
@@ -61,17 +61,17 @@ Azure App Service 提供內建的驗證和授權支援，因此您在 Web 應用
 App Service 會提供內建的權杖存放區，也就是與 Web 應用程式、API 或原生行動應用程式相關聯的權杖存放庫。 當您使用任何提供者啟用驗證時，此權杖存放區就會立即供應用程式使用。 如果應用程式程式碼需要代表使用者存取這些提供者的資料，例如： 
 
 - 張貼至已驗證使用者的 Facebook 時間軸
-- 使用 Microsoft 圖形 API 讀取使用者的公司資料
+- 使用 Microsoft Graph API 讀取使用者的公司資料
 
 您通常必須撰寫程式碼，才能在應用程式中收集、儲存及重新整理這些權杖。 使用權杖存放區時，您只有在需要權杖時才會[取出權杖](app-service-authentication-how-to.md#retrieve-tokens-in-app-code)，並在權杖失效時才會[告知 App Service 加以重新整理](app-service-authentication-how-to.md#refresh-identity-provider-tokens)。 
 
-ID 權杖、存取權杖和刷新權杖快取用於經過身份驗證的工作階段,並且僅由關聯的使用者存取它們。  
+系統會針對已驗證的會話快取識別碼權杖、存取權杖和重新整理權杖，而且它們只能由相關聯的使用者存取。  
 
 如果您不需要在應用程式中使用權杖，可以將權杖存放區停用。
 
 ### <a name="logging-and-tracing"></a>記錄和追蹤
 
-如果您[啟用應用程式記錄](troubleshoot-diagnostic-logs.md)，則會直接在記錄檔中看到驗證和授權追蹤。 如果您看到前所未有的身份驗證錯誤,則可以通過查看現有應用程式日誌來方便地查找所有詳細資訊。 如果您啟用[失敗要求追蹤](troubleshoot-diagnostic-logs.md)，就可以看到驗證和授權模組可能在失敗要求中所扮演的確切角色。 在追蹤記錄中，尋找名為 `EasyAuthModule_32/64` 的模組參考。 
+如果您[啟用應用程式記錄](troubleshoot-diagnostic-logs.md)，則會直接在記錄檔中看到驗證和授權追蹤。 如果您看到未預期的驗證錯誤，您可以藉由查看現有的應用程式記錄檔，輕鬆地找到所有詳細資料。 如果您啟用[失敗要求追蹤](troubleshoot-diagnostic-logs.md)，就可以看到驗證和授權模組可能在失敗要求中所扮演的確切角色。 在追蹤記錄中，尋找名為 `EasyAuthModule_32/64` 的模組參考。 
 
 ## <a name="identity-providers"></a>識別提供者
 
@@ -95,17 +95,17 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 - 使用提供者 SDK：應用程式會以手動方式將使用者登入提供者，然後將驗證權杖提交給 App Service 進行驗證。 無瀏覽器應用程式通常是這種情況，無法向使用者顯示提供者的登入頁面。 應用程式程式碼會管理登入程序，因此也稱為「用戶端導向流程」__ 或「用戶端流程」__。 此案例適用於 REST API、[Azure Functions](../azure-functions/functions-overview.md)、JavaScript 瀏覽器用戶端，以及在登入程序中需要更多彈性的瀏覽器應用程式。 它也適用於使用提供者 SDK 將使用者登入的原生行動應用程式。
 
 > [!NOTE]
-> 可以使用伺服器定向流對應用服務或[Azure 函數](../azure-functions/functions-overview.md)中另一個 REST API 的受信任瀏覽器應用的調用進行身份驗證。 如需詳細資訊，請參閱[自訂 App Service 中的驗證與授權](app-service-authentication-how-to.md)。
+> 從 App Service 中受信任的瀏覽器應用程式呼叫至 App Service 或[Azure Functions](../azure-functions/functions-overview.md)中的另一個 REST API，可以使用伺服器導向流程來進行驗證。 如需詳細資訊，請參閱[自訂 App Service 中的驗證與授權](app-service-authentication-how-to.md)。
 >
 
 下表顯示驗證流程的步驟。
 
 | 步驟 | 不使用提供者 SDK | 使用提供者 SDK |
 | - | - | - |
-| 1. 登入使用者 | 將用戶端重新導向至 `/.auth/login/<provider>`。 | 用戶端程式碼會直接使用提供者的 SDK 將使用者登入，並接收驗證權杖。 如需詳細資訊，請參閱提供者的文件。 |
-| 2. 認證後 | 提供者會將用戶端重新導向至 `/.auth/login/<provider>/callback`。 | 用戶端代碼[將權杖從提供程式發佈到](app-service-authentication-how-to.md#validate-tokens-from-providers)`/.auth/login/<provider>`驗證。 |
-| 3. 建立經過身份驗證的工作階段 | App Service 會將已驗證的 Cookie 新增至回應。 | App Service 會將自己的驗證權杖傳回至用戶端程式碼。 |
-| 4. 提供經過身份認證的內容 | 用戶端會在後續要求中包含驗證 Cookie (瀏覽器會自動處理)。 | 用戶端程式碼會在 `X-ZUMO-AUTH` 標頭中顯示驗證權杖 (Mobile Apps 用戶端 SDK 會自動處理)。 |
+| 1. 將使用者登入 | 將用戶端重新導向至 `/.auth/login/<provider>`。 | 用戶端程式碼會直接使用提供者的 SDK 將使用者登入，並接收驗證權杖。 如需詳細資訊，請參閱提供者的文件。 |
+| 2. 驗證後 | 提供者會將用戶端重新導向至 `/.auth/login/<provider>/callback`。 | 用戶端程式代碼會將[來自提供者的 token 張貼](app-service-authentication-how-to.md#validate-tokens-from-providers)至`/.auth/login/<provider>`以進行驗證。 |
+| 3. 建立已驗證的會話 | App Service 會將已驗證的 Cookie 新增至回應。 | App Service 會將自己的驗證權杖傳回至用戶端程式碼。 |
+| 4. 提供已驗證的內容 | 用戶端會在後續要求中包含驗證 Cookie (瀏覽器會自動處理)。 | 用戶端程式碼會在 `X-ZUMO-AUTH` 標頭中顯示驗證權杖 (Mobile Apps 用戶端 SDK 會自動處理)。 |
 
 對於用戶端瀏覽器，App Service 可以自動將所有未經驗證的使用者導向至 `/.auth/login/<provider>`。 您也可以向使用者顯示一或多個 `/.auth/login/<provider>` 連結，讓其使用選擇的提供者登入您的應用程式。
 
@@ -113,15 +113,15 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 
 ## <a name="authorization-behavior"></a>授權行為
 
-在[Azure 門戶](https://portal.azure.com)中,可以在傳入請求未經過身份驗證時配置具有許多行為的應用服務授權。
+在[Azure 入口網站](https://portal.azure.com)中，您可以在未驗證傳入要求時，使用一些行為來設定 App Service 授權。
 
 ![](media/app-service-authentication-overview/authorization-flow.png)
 
 下列標題會說明可用選項。
 
-### <a name="allow-anonymous-requests-no-action"></a>允許匿名要求(無操作 )
+### <a name="allow-anonymous-requests-no-action"></a>允許匿名要求（無動作）
 
-此選項將未經身份驗證的流量的授權延遲到應用程式代碼。 對於已驗證的要求，App Service 也會在 HTTP 標頭中一起傳送驗證資訊。 
+此選項會將未驗證流量的授權延遲到您的應用程式程式碼。 對於已驗證的要求，App Service 也會在 HTTP 標頭中一起傳送驗證資訊。 
 
 此選項會提供更大的彈性來處理匿名要求。 例如，它可讓您向使用者[顯示多個登入提供者](app-service-authentication-how-to.md#use-multiple-sign-in-providers)。 不過，您必須撰寫程式碼。 
 
@@ -132,19 +132,19 @@ App Service 使用[同盟身分識別](https://en.wikipedia.org/wiki/Federated_i
 使用此選項時，您不需要在應用程式中撰寫任何驗證程式碼。 您可以藉由檢查使用者的宣告來處理更精細的授權 (例如特定角色授權，請參閱[存取使用者宣告](app-service-authentication-how-to.md#access-user-claims))。
 
 > [!CAUTION]
-> 以這種方式限制訪問適用於對應用的所有調用,對於希望擁有公開主頁的應用,這可能不可取,如許多單頁應用程式。
+> 以這種方式限制存取適用于應用程式的所有呼叫，這對於想要公開使用首頁的應用程式（如許多單頁應用程式），可能不是理想的做法。
 
 > [!NOTE]
-> 身份驗證/授權以前稱為「簡單身份驗證」。
+> 驗證/授權先前稱為「輕鬆驗證」。
 >
 
 ## <a name="more-resources"></a>其他資源
 
 [教學課程：在 Azure App Service 中端對端驗證和授權使用者 (Windows)](app-service-web-tutorial-auth-aad.md)  
 [教學課程：在適用於 Linux 的 Azure App Service 中端對端驗證和授權使用者](containers/tutorial-auth-aad.md)  
-[在應用服務](app-service-authentication-how-to.md)
-[.NET 中自訂 Azure 應用服務 EasyAuth (第三方)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
-的核心整合,[取得使用 .NET Core(第三方)使用的 Azure 應用服務身份驗證](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+[在 App Service](app-service-authentication-how-to.md)
+[.net core Azure AppService EasyAuth （協力廠商）](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+整合中自訂驗證和授權[使用 .net core （協力廠商）取得 Azure App Service 驗證](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 提供者專屬的使用說明指南：
 

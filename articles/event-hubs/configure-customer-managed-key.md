@@ -1,6 +1,6 @@
 ---
-title: 設定您自己的金鑰以加密靜態 Azure 事件中心資料
-description: 本文提供有關如何配置自己的密鑰以加密 Azure 事件中心數據靜態的資訊。
+title: 設定您自己的金鑰來加密待用 Azure 事件中樞資料
+description: 本文提供有關如何設定您自己的金鑰來加密 Azure 事件中樞資料其餘部分的資訊。
 services: event-hubs
 ms.service: event-hubs
 documentationcenter: ''
@@ -9,110 +9,110 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
 ms.openlocfilehash: f515d3ad832db7f78f98111ab67628a2874033ff
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81459129"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>設定客戶管理的金鑰,以便使用 Azure 閘戶加密靜態 Azure 事件中心資料
-Azure 事件中心透過 Azure 儲存服務加密 (Azure SSE) 提供靜態數據加密。 事件中心依賴於 Azure 儲存來儲存數據,默認情況下,與 Azure 儲存一起存儲的所有數據都使用 Microsoft 管理的金鑰進行加密。 
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 入口網站，設定客戶管理的金鑰來加密待用 Azure 事件中樞資料
+Azure 事件中樞使用 Azure 儲存體服務加密（Azure SSE）提供待用資料的加密。 事件中樞依賴 Azure 儲存體來儲存資料，而且根據預設，與 Azure 儲存體一起儲存的所有資料都會使用 Microsoft 管理的金鑰進行加密。 
 
-## <a name="overview"></a>概觀
-Azure 事件中心現在支援使用 Microsoft 管理的密鑰或客戶管理的密鑰(自帶密鑰 + BYOK)加密靜態數據的選項。 此功能使您能夠創建、旋轉、禁用和撤銷對用於加密靜態 Azure 事件中心數據的客戶託管密鑰的訪問許可權。
+## <a name="overview"></a>總覽
+Azure 事件中樞現在支援使用 Microsoft 管理的金鑰或客戶管理的金鑰（攜帶您自己的金鑰– BYOK）來加密待用資料的選項。 這項功能可讓您建立、輪替、停用及撤銷用來加密待用資料 Azure 事件中樞的客戶管理金鑰的存取權。
 
-啟用 BYOK 功能是命名空間上的一次性設置過程。
+啟用 BYOK 功能是在命名空間上進行的一次性設定程式。
 
 > [!NOTE]
-> BYOK 功能由[事件中心專用單租戶](event-hubs-dedicated-overview.md)群集支援。 無法為標準事件中心命名空間啟用它。
+> [事件中樞專用的單一租](event-hubs-dedicated-overview.md)使用者叢集支援 BYOK 功能。 無法針對標準事件中樞命名空間啟用此功能。
 
-您可以使用 Azure 金鑰保管庫來管理金鑰並審核金鑰使用方式。 您可以建立自己的密鑰並將其存儲在密鑰保管庫中,也可以使用 Azure 金鑰保管庫 API 產生金鑰。 有關 Azure 金鑰保管庫的詳細資訊,請參閱[什麼是 Azure 密鑰保管庫?](../key-vault/general/overview.md)
+您可以使用 Azure Key Vault 來管理金鑰，並審核金鑰使用方式。 您可以建立自己的金鑰，並將其儲存在金鑰保存庫中，或者您可以使用 Azure Key Vault Api 來產生金鑰。 如需 Azure Key Vault 的詳細資訊，請參閱[什麼是 Azure Key Vault？](../key-vault/general/overview.md)
 
-本文演示如何使用 Azure 門戶使用客戶管理的密鑰配置密鑰保管庫。 若要瞭解如何使用 Azure 門戶建立金鑰保管庫,請參閱[快速入門:使用 Azure 門戶從 Azure 金鑰保管庫設定和檢索機密](../key-vault/secrets/quick-create-portal.md)。
+本文說明如何使用 Azure 入口網站，以客戶管理的金鑰來設定金鑰保存庫。 若要瞭解如何使用 Azure 入口網站建立金鑰保存庫，請參閱[快速入門：使用 Azure 入口網站從 Azure Key Vault 設定和取出秘密](../key-vault/secrets/quick-create-portal.md)。
 
 > [!IMPORTANT]
-> 將客戶管理的密鑰與 Azure 事件中心一起使用需要密鑰保管庫配置兩個必需屬性。 它們是:**軟刪除**與**不清除**。 默認情況下,在 Azure 門戶中創建新密鑰保管庫時,將啟用這些屬性。 但是,如果需要在現有密鑰保管庫上啟用這些屬性,則必須使用 PowerShell 或 Azure CLI。
+> 將客戶管理的金鑰與 Azure 事件中樞搭配使用時，金鑰保存庫必須設定兩個必要的屬性。 它們是：虛**刪除**且**不會清除**。 當您在 Azure 入口網站中建立新的金鑰保存庫時，預設會啟用這些屬性。 不過，如果您需要在現有的金鑰保存庫上啟用這些屬性，則必須使用 PowerShell 或 Azure CLI。
 
-## <a name="enable-customer-managed-keys"></a>開啟客戶管理的金鑰
-要在 Azure 門戶開啟客戶管理的金鑰,請按照以下步驟操作:
+## <a name="enable-customer-managed-keys"></a>啟用客戶管理的金鑰
+若要在 Azure 入口網站中啟用客戶管理的金鑰，請遵循下列步驟：
 
-1. 導航到事件中心專用群集。
-1. 選擇要在其上啟用 BYOK 的命名空間。
-1. 在事件中心命名空間的 **「設定」** 頁上,選擇 **「加密**」 。 
-1. 選擇**客戶管理金鑰靜態加密,** 如下圖所示。 
+1. 流覽至您的事件中樞專用叢集。
+1. 選取您要啟用 BYOK 的命名空間。
+1. 在事件中樞命名空間的 [**設定**] 頁面上，選取 [**加密**]。 
+1. 選取 [待用**客戶管理的金鑰加密**]，如下圖所示。 
 
-    ![開啟客戶託管金鑰](./media/configure-customer-managed-key/enable-customer-managed-key.png)
+    ![啟用客戶管理的金鑰](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
-## <a name="set-up-a-key-vault-with-keys"></a>設定帶金鑰的金鑰保存庫
-啟用客戶管理的密鑰後,需要將客戶託管密鑰與 Azure 事件中心命名空間相關聯。 事件中心僅支援 Azure 密鑰保管庫。 如果在上一節中啟用**了使用客戶管理的密鑰選項的加密**,則需要將密鑰導入 Azure 密鑰保管庫。 此外,金鑰必須為金鑰配置 **「軟刪除****」和「不清除**」 。 這些設置可以使用[PowerShell](../key-vault/general/soft-delete-powershell.md)或[CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)進行配置。
+## <a name="set-up-a-key-vault-with-keys"></a>使用金鑰設定金鑰保存庫
+啟用客戶管理的金鑰之後，您必須將客戶管理的金鑰與您的 Azure 事件中樞命名空間產生關聯。 事件中樞只支援 Azure Key Vault。 如果您在上一節中啟用 [**使用客戶管理的金鑰進行加密**] 選項，則必須將金鑰匯入 Azure Key Vault。 此外，索引鍵必須具有虛**刪除**，而且**不會**針對金鑰進行清除設定。 這些設定可以使用[PowerShell](../key-vault/general/soft-delete-powershell.md)或[CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection)來設定。
 
-1. 要建立新金鑰保管庫,請按照 Azure 金鑰保管庫[快速入門](../key-vault/general/overview.md)。 有關匯入現有金鑰的詳細資訊,請參閱[有關金鑰、機密和憑證](../key-vault/about-keys-secrets-and-certificates.md)。
-1. 要在建立保管庫時同時打開軟刪除和清除保護,請使用[az 密鑰保管庫創建](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create)命令。
+1. 若要建立新的金鑰保存庫，請遵循 Azure Key Vault[快速入門](../key-vault/general/overview.md)。 如需匯入現有金鑰的詳細資訊，請參閱[關於金鑰、秘密和憑證](../key-vault/about-keys-secrets-and-certificates.md)。
+1. 若要在建立保存庫時開啟虛刪除和清除保護，請使用[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create)命令。
 
     ```azurecli-interactive
     az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. 要向現有保管庫(已啟用軟刪除)添加清除保護,請使用[az keyvault 更新](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update)命令。
+1. 若要將清除保護新增至現有的保存庫（已啟用虛刪除），請使用[az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update)命令。
 
     ```azurecli-interactive
     az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
     ```
-1. 以以下步驟建立鍵:
+1. 依照下列步驟建立金鑰：
     1. 若要建立新的金鑰，從 [設定]**** 下方的 [金鑰]**** 功能表中選取 [產生/匯入]****。
         
-        ![選擇'產生/匯入按鈕](./media/configure-customer-managed-key/select-generate-import.png)
+        ![選取 [產生/匯入] 按鈕](./media/configure-customer-managed-key/select-generate-import.png)
     1. 將 [選項]**** 設定為 [產生]****，並為金鑰提供名稱。
 
         ![建立金鑰](./media/configure-customer-managed-key/create-key.png) 
-    1. 現在,您可以選擇此密鑰以與事件中心命名空間關聯,以便從下拉清單中進行加密。 
+    1. 您現在可以從下拉式清單中選取此金鑰，使其與要加密的事件中樞命名空間產生關聯。 
 
-        ![從金鑰保存庫中選擇金鑰](./media/configure-customer-managed-key/select-key-from-key-vault.png)
-    1. 填寫金鑰的詳細資訊,然後按下 **「選擇**」。 這將啟用使用客戶託管金鑰在命名空間上靜態數據加密。 
+        ![從 key vault 選取金鑰](./media/configure-customer-managed-key/select-key-from-key-vault.png)
+    1. 填入金鑰的詳細資料，然後按一下 [**選取**]。 這可讓您使用客戶管理的金鑰，對命名空間中的待用資料進行加密。 
 
 
-## <a name="rotate-your-encryption-keys"></a>旋轉加密金鑰
-可以使用 Azure 金鑰保管庫輪換機制在密鑰保管庫中旋轉密鑰。 關於詳細資訊,請參閱[設定金鑰存取和審核](../key-vault/secrets/key-rotation-log-monitoring.md)。 啟動和到期日期也可以設置為自動輪換密鑰。 事件中心服務將檢測新的密鑰版本,並自動開始使用它們。
+## <a name="rotate-your-encryption-keys"></a>輪替加密金鑰
+您可以使用 Azure 金鑰保存庫迴圈機制來輪替金鑰保存庫中的金鑰。 如需詳細資訊，請參閱[設定金鑰輪替和審核](../key-vault/secrets/key-rotation-log-monitoring.md)。 啟用和到期日期也可以設定為自動執行金鑰輪替。 事件中樞服務會偵測新的金鑰版本，並開始自動使用它們。
 
-## <a name="revoke-access-to-keys"></a>復原金鑰的存取
-撤銷對加密金鑰的訪問不會從事件中心清除資料。 但是,無法從事件中心命名空間訪問數據。 您可以通過存取策略或刪除金鑰來復原加密金鑰。 詳細瞭解存取原則和保護金鑰保管庫從[安全存取金鑰保管庫](../key-vault/general/secure-your-key-vault.md)。
+## <a name="revoke-access-to-keys"></a>撤銷金鑰的存取權
+撤銷加密金鑰的存取權並不會從事件中樞清除資料。 不過，資料無法從事件中樞命名空間存取。 您可以透過存取原則或藉由刪除金鑰來撤銷加密金鑰。 深入瞭解存取原則和保護您的金鑰保存庫，[以安全地存取金鑰保存庫](../key-vault/general/secure-your-key-vault.md)。
 
-一旦加密密鑰被吊銷,加密命名空間上的事件中心服務將變得無法運行。 如果啟用了對密鑰的訪問或已還原刪除密鑰,事件中心服務將選取該密鑰,以便可以從加密的事件中心命名空間訪問數據。
+撤銷加密金鑰之後，加密命名空間上的事件中樞服務就會變成無法運作。 如果已啟用金鑰的存取權，或還原刪除金鑰，事件中樞服務會挑選金鑰，讓您可以從加密的事件中樞命名空間存取資料。
 
 ## <a name="set-up-diagnostic-logs"></a>設定診斷記錄 
-為啟用 BYOK 的命名空間設定診斷日誌可提供有關命名空間使用客戶管理的密鑰加密時操作所需的資訊。 這些日誌可以啟用,然後流式傳輸到事件中心,或通過日誌分析進行分析,或流式傳輸到存儲以執行自定義分析。 要瞭解有關診斷日誌的詳細資訊,請參閱[Azure 診斷紀錄概述](../azure-monitor/platform/platform-logs-overview.md)。
+設定已啟用 BYOK 之命名空間的診斷記錄，可在使用客戶管理的金鑰加密命名空間時，提供有關作業的必要資訊。 這些記錄可以啟用並于稍後串流至事件中樞，或透過 log analytics 分析，或串流至儲存體來執行自訂分析。 若要深入瞭解診斷記錄，請參閱[Azure 診斷記錄的總覽](../azure-monitor/platform/platform-logs-overview.md)。
 
-## <a name="enable-user-logs"></a>啟用使用者紀錄
-按照以下步驟啟用客戶管理密鑰的日誌。
+## <a name="enable-user-logs"></a>啟用使用者記錄
+請遵循下列步驟來啟用客戶管理金鑰的記錄。
 
-1. 在 Azure 門戶中,導航到啟用了 BYOK 的命名空間。
-1. 選擇 **「監視**」下的**診斷設定**。
+1. 在 [Azure 入口網站中，流覽至已啟用 BYOK 的命名空間。
+1. 選取 [**監視**] 下的 [**診斷設定**]。
 
-    ![選擇診斷設定](./media/configure-customer-managed-key/select-diagnostic-settings.png)
-1. 選擇 **+新增診斷設定**。 
+    ![選取 [診斷設定]](./media/configure-customer-managed-key/select-diagnostic-settings.png)
+1. 選取 [ **+ 新增診斷設定**]。 
 
-    ![選擇新增診斷設定](./media/configure-customer-managed-key/select-add-diagnostic-setting.png)
-1. 提供**名稱**並選擇要將日誌流式傳輸到的位置。
-1. 選擇**客戶管理金鑰使用者紀錄**並**儲存**。 此操作啟用命名空間上的 BYOK 日誌。
+    ![選取 [新增診斷設定]](./media/configure-customer-managed-key/select-add-diagnostic-setting.png)
+1. 提供**名稱**，然後選取您要將記錄串流至其中的位置。
+1. 選取 [ **CustomerManagedKeyUserLogs** ]，然後按一下 [**儲存**]。 此動作會在命名空間上啟用 BYOK 的記錄。
 
-    ![選擇客戶管理的關鍵使用者紀錄選項](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
+    ![選取 [客戶管理的金鑰使用者記錄檔] 選項](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
 
 ## <a name="log-schema"></a>記錄檔結構描述 
-所有記錄都會以「JavaScript 物件標記法」(JSON) 格式儲存。 每個項目都有使用下表中描述的格式的字串欄位。 
+所有記錄都會以「JavaScript 物件標記法」(JSON) 格式儲存。 每個專案都有使用下表所述格式的字串欄位。 
 
-| 名稱 | 描述 |
+| Name | 描述 |
 | ---- | ----------- | 
 | TaskName | 失敗工作的描述。 |
 | ActivityId | 用於追蹤的內部識別碼。 |
-| category | 定義任務的分類。 例如,如果禁用密鑰保管庫中的密鑰,則該密鑰將是資訊類別,或者如果無法解包密鑰,則該密鑰可能會出錯。 |
+| category | 定義工作的分類。 例如，如果您的金鑰保存庫中的金鑰已停用，則它會是資訊類別目錄，或者，如果無法解除包裝金鑰，可能會發生錯誤。 |
 | resourceId | Azure Resource Manager 資源識別碼 |
-| 鍵庫 | 密鑰保管庫的全名。 |
-| 索引鍵 | 用於加密事件中心命名空間的密鑰名稱。 |
-| version | 正在使用的密鑰的版本。 |
-| operation (作業) | 對金鑰保管庫中的密鑰執行的操作。 例如,關閉/啟用金鑰、換行或取消包裝 |
-| 代碼 | 與操作關聯的代碼。 範例:錯誤代碼 404 表示未找到密鑰。 |
-| message | 與操作關聯的任何錯誤訊息 |
+| keyVault | 金鑰保存庫的完整名稱。 |
+| 索引鍵 | 用來加密事件中樞命名空間的索引鍵名稱。 |
+| 版本 | 所使用的金鑰版本。 |
+| operation (作業) | 金鑰保存庫中金鑰上執行的作業。 例如，停用/啟用金鑰、換行或解除包裝 |
+| code | 與作業相關聯的程式碼。 範例：錯誤碼404表示找不到索引鍵。 |
+| 訊息 | 與作業相關聯的任何錯誤訊息 |
 
-下面是客戶託管金鑰的紀錄範例:
+以下是客戶管理的金鑰的記錄範例：
 
 ```json
 {
@@ -144,18 +144,18 @@ Azure 事件中心現在支援使用 Microsoft 管理的密鑰或客戶管理的
 }
 ```
 
-## <a name="use-resource-manager-template-to-enable-encryption"></a>使用資源管理員樣本開啟加密
-本節演示如何使用**Azure 資源管理器範本**執行以下任務。 
+## <a name="use-resource-manager-template-to-enable-encryption"></a>使用 Resource Manager 範本來啟用加密
+本節說明如何使用**Azure Resource Manager 範本**執行下列工作。 
 
-1. 使用系統管理服務識別**建立 事件中心命名空間**。
-2. 創建**金鑰保管庫**並授予對密鑰保管庫的服務標識訪問許可權。 
-3. 使用金鑰保管庫資訊(鍵/值)更新事件中心命名空間。 
+1. 建立具有受控服務識別的**事件中樞命名空間**。
+2. 建立**金鑰保存庫**，並將金鑰保存庫的存取權授與服務識別。 
+3. 使用金鑰保存庫資訊（索引鍵/值）更新事件中樞的命名空間。 
 
 
-### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>使用託管服務識別建立事件中心叢集與命名空間
-本節演示如何使用 Azure 資源管理器範本和 PowerShell 使用託管服務標識創建 Azure 事件中心命名空間。 
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>建立具有受控服務識別的事件中樞叢集和命名空間
+本節說明如何使用 Azure Resource Manager 範本和 PowerShell，建立具有受控服務識別的 Azure 事件中樞命名空間。 
 
-1. 創建 Azure 資源管理器樣本以創建具有託管服務標識的事件中心命名空間。 命名檔案:**建立事件HubCluster與命名空間.json**: 
+1. 建立 Azure Resource Manager 範本，以使用受控服務識別建立事件中樞命名空間。 將檔案命名為： **CreateEventHubClusterAndNamespace. json**： 
 
     ```json
     {
@@ -224,13 +224,13 @@ Azure 事件中心現在支援使用 Microsoft 管理的密鑰或客戶管理的
        }
     }
     ```
-2. 建立名為:**創建事件HubCluster和命名空間帕拉森.json 的**範本參數檔。 
+2. 建立名為的範本參數檔案： **CreateEventHubClusterAndNamespaceParams. json**。 
 
     > [!NOTE]
     > 取代下列值： 
-    > - `<EventHubsClusterName>`- 事件中心叢集名稱    
-    > - `<EventHubsNamespaceName>`- 事件中心命名空間的名稱
-    > - `<Location>`- 事件中心命名空間的位置
+    > - `<EventHubsClusterName>`-事件中樞叢集的名稱    
+    > - `<EventHubsNamespaceName>`-您事件中樞命名空間的名稱
+    > - `<Location>`-事件中樞命名空間的位置
 
     ```json
     {
@@ -250,7 +250,7 @@ Azure 事件中心現在支援使用 Microsoft 管理的密鑰或客戶管理的
     }
     
     ```
-3. 運行以下 PowerShell 命令以部署範本以創建事件中心命名空間。 然後,檢索事件中心命名空間的 ID 以以後使用它。 在`{MyRG}`執行命令之前,請替換為資源組的名稱。  
+3. 執行下列 PowerShell 命令來部署範本，以建立事件中樞命名空間。 然後，取出事件中樞命名空間的識別碼，以供稍後使用。 執行`{MyRG}`命令之前，請將取代為資源群組的名稱。  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
@@ -258,9 +258,9 @@ Azure 事件中心現在支援使用 Microsoft 管理的密鑰或客戶管理的
     $EventHubNamespaceId = $outputs.Outputs["eventHubNamespaceId"].value
     ```
  
-### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>給事件中心命名空間配對金鑰保存的識別存取
+### <a name="grant-event-hubs-namespace-identity-access-to-key-vault"></a>授與金鑰保存庫的事件中樞命名空間身分識別存取權
 
-1. 執行以下命令以建立具有**清除保護和****軟刪除**功能的密鑰保管庫。 
+1. 執行下列命令，以建立已啟用**清除保護**和虛**刪除**的金鑰保存庫。 
 
     ```powershell
     New-AzureRmKeyVault -Name {keyVaultName} -ResourceGroupName {RGName}  -Location {location} -EnableSoftDelete -EnablePurgeProtection    
@@ -268,12 +268,12 @@ Azure 事件中心現在支援使用 Microsoft 管理的密鑰或客戶管理的
     
     (或)    
     
-    執行以下指令以更新**現有金鑰保存 。** 在執行命令之前,指定資源組和密鑰保管庫名稱的值。 
+    執行下列命令來更新現有的**金鑰保存庫**。 執行命令之前，請先指定資源群組和金鑰保存庫名稱的值。 
     
     ```powershell
     ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
     ``` 
-2. 設置金鑰保管庫存取策略,以便事件中心命名空間的託管標識可以存取金鑰保管庫中的鍵值。 使用上一節中的事件中心命名空間的 ID。 
+2. 設定 key vault 存取原則，讓事件中樞命名空間的受控識別可以存取金鑰保存庫中的金鑰值。 使用上一節中事件中樞命名空間的識別碼。 
 
     ```powershell
     $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
@@ -281,15 +281,15 @@ Azure 事件中心現在支援使用 Microsoft 管理的密鑰或客戶管理的
     Set-AzureRmKeyVaultAccessPolicy -VaultName {keyVaultName} -ResourceGroupName {RGName} -ObjectId $identity.PrincipalId -PermissionsToKeys get,wrapKey,unwrapKey,list
     ```
 
-### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>使用金鑰保存庫的客戶託管金鑰對事件中心命名空間中的資料進行加密
-到目前為止,您已完成以下步驟: 
+### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>使用 key vault 中客戶管理的金鑰來加密事件中樞命名空間中的資料
+您目前已完成下列步驟： 
 
-1. 使用託管標識創建高級命名空間。
-2. 創建金鑰保管庫並授予對密鑰保管庫的託管標識訪問許可權。 
+1. 已建立具有受控識別的 premium 命名空間。
+2. 建立金鑰保存庫，並將金鑰保存庫的存取權授與受控識別。 
 
-在此步驟中,您將使用密鑰保管庫資訊更新事件中心命名空間。 
+在此步驟中，您將使用金鑰保存庫資訊來更新事件中樞命名空間。 
 
-1. 建立名為**CreateEventHubCluster 與Namespace.json**的 JSON 檔案,內容如下: 
+1. 使用下列內容建立名為**CreateEventHubClusterAndNamespace**的 json 檔案： 
 
     ```json
     {
@@ -361,15 +361,15 @@ Azure 事件中心現在支援使用 Microsoft 管理的密鑰或客戶管理的
     }
     ``` 
 
-2. 建立樣本參數檔:**更新事件HubCluster和命名空間帕拉森.** 
+2. 建立範本參數檔案： **UpdateEventHubClusterAndNamespaceParams。** 
 
     > [!NOTE]
     > 取代下列值： 
-    > - `<EventHubsClusterName>`- 事件中心群集的名稱。        
-    > - `<EventHubsNamespaceName>`- 事件中心命名空間的名稱
-    > - `<Location>`- 事件中心命名空間的位置
-    > - `<KeyVaultName>`- 金鑰保存庫的名稱
-    > - `<KeyName>`- 金鑰保存庫中金鑰的名稱
+    > - `<EventHubsClusterName>`-事件中樞叢集的名稱。        
+    > - `<EventHubsNamespaceName>`-您事件中樞命名空間的名稱
+    > - `<Location>`-事件中樞命名空間的位置
+    > - `<KeyVaultName>`-金鑰保存庫的名稱
+    > - `<KeyName>`-金鑰保存庫中的金鑰名稱
 
     ```json
     {
@@ -394,36 +394,36 @@ Azure 事件中心現在支援使用 Microsoft 管理的密鑰或客戶管理的
        }
     }
     ```             
-3. 運行以下 PowerShell 命令以部署資源管理器範本。 在`{MyRG}`執行命令之前,請替換為資源組的名稱。 
+3. 執行下列 PowerShell 命令來部署 Resource Manager 範本。 執行`{MyRG}`命令之前，請將取代為您的資源組名。 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
     ```
 
 ## <a name="troubleshoot"></a>疑難排解
-最佳做法是,始終啟用上一節所示的日誌。 它有助於在啟用 BYOK 加密時追蹤活動。 它還有助於縮小問題的範圍。
+最佳做法是一律啟用記錄，如前一節所示。 當啟用 BYOK 加密時，它有助於追蹤活動。 它也有助於界定問題的範圍。
 
-以下是啟用 BYOK 加密時要查找的常見錯誤代碼。
+以下是啟用 BYOK 加密時，要尋找的常見錯誤代碼。
 
-| 動作 | 錯誤碼 | 結果資料狀態 |
+| 動作 | 錯誤碼 | 產生的資料狀態 |
 | ------ | ---------- | ----------------------- | 
-| 從金鑰保存庫中移除換行/解包權限 | 403 |    無法存取 |
-| 從設定換行/解包權限的 AAD 主體中移除 AAD 角色成員身份 | 403 |  無法存取 |
-| 從金鑰保存庫中移除加密金鑰 | 404 | 無法存取 |
-| 刪除金鑰保存 | 404 | 無法訪問(假定啟用了軟刪除,這是必需的設置。 |
-| 變更加密金鑰的過期期限,使其已過期 | 403 |   無法存取  |
-| 變更 NBF(以前不),以便金鑰加密金鑰不處于活動狀態 | 403 | 無法存取  |
-| 為金鑰保管庫防火牆選擇「**允許 MSFT 服務**」選項,或者阻止網路存取有加密金鑰的金鑰保管庫 | 403 | 無法存取 |
-| 將金鑰保管庫移動到其他租戶 | 404 | 無法存取 |  
-| 間歇性網路問題或 DNS/AAD/MSI 中斷 |  | 使用快取的資料加密金鑰存取 |
+| 從金鑰保存庫移除 wrap/解除包裝許可權 | 403 |    無法存取 |
+| 從授與 wrap/解除包裝許可權的 AAD 主體移除 AAD 角色成員資格 | 403 |  無法存取 |
+| 從金鑰保存庫中刪除加密金鑰 | 404 | 無法存取 |
+| 刪除金鑰保存庫 | 404 | 無法存取（假設已啟用虛刪除，這是必要的設定）。 |
+| 變更加密金鑰的到期時間，使其已過期 | 403 |   無法存取  |
+| 變更 NBF （而不是之前），讓金鑰加密金鑰不在使用中 | 403 | 無法存取  |
+| 針對金鑰保存庫防火牆選取 [**允許 MSFT 服務**] 選項，或封鎖具有加密金鑰的金鑰保存庫的網路存取 | 403 | 無法存取 |
+| 將金鑰保存庫移至不同的租使用者 | 404 | 無法存取 |  
+| 間歇性的網路問題或 DNS/AAD/MSI 中斷 |  | 可使用快取資料加密金鑰來存取 |
 
 > [!IMPORTANT]
-> 要在使用 BYOK 加密的命名空間上啟用 Geo-DR,用於配對的輔助命名空間必須位於專用群集中,並且必須啟用系統分配的託管標識。 要瞭解更多資訊,請參閱[Azure 資源的託管識別](../active-directory/managed-identities-azure-resources/overview.md)。
+> 若要在使用 BYOK 加密的命名空間上啟用異地 DR，配對的次要命名空間必須在專用叢集中，而且必須在其上啟用系統指派的受控識別。 若要深入瞭解，請參閱[適用于 Azure 資源的受控](../active-directory/managed-identities-azure-resources/overview.md)識別。
 
 ## <a name="next-steps"></a>後續步驟
 查看下列文章：
 - [事件中心概觀](event-hubs-about.md)
-- [金鑰保存庫概述](../key-vault/general/overview.md)
+- [Key Vault 概觀](../key-vault/general/overview.md)
 
 
 
