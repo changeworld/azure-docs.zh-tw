@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: allensu
 ms.openlocfilehash: c6b8ecb443408f23ae604bd9c8139cb0a2afcd12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79477777"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>設定內部負載平衡器的高可用性連接埠
@@ -103,4 +103,4 @@ az network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --na
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解有關[高可用性埠](load-balancer-ha-ports-overview.md)的更多資訊。
+深入瞭解[高可用性埠](load-balancer-ha-ports-overview.md)。

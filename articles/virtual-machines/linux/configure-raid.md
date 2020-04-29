@@ -1,5 +1,5 @@
 ---
-title: 在 Linux VM 上配置軟體 RAID
+title: 在 Linux VM 上設定軟體 RAID
 description: 了解如何使用 mdadm，在 Azure 的 Linux 上設定 RAID。
 author: rickstercdn
 ms.service: virtual-machines-linux
@@ -8,10 +8,10 @@ ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250253"
 ---
 # <a name="configure-software-raid-on-linux"></a>在 Linux 上設定軟體 RAID
@@ -21,7 +21,7 @@ ms.locfileid: "79250253"
 設定 RAID 裝置需要兩個以上的空白資料磁碟。  建立 RAID 裝置的主要原因是要提升磁碟 IO 效能。  根據 IO 需求，您可以選擇連接儲存在標準儲存體且一個磁碟最多具有 500 IO/ps 的磁碟，或進階儲存體且一個磁碟最多具有 5000 IO/ps 的磁碟。 本文不會詳細說明如何佈建資料磁碟以及將其連接至 Linux 虛擬機器。  請參閱 Microsoft Azure 文章[連接磁碟](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)，取得如何在 Azure 上將空白資料磁碟連接至 Linux 虛擬機器的詳細指示。
 
 > [!IMPORTANT]
->不要混合不同大小的磁片，這樣做將導致 raidset 的性能限制為最慢的磁片的性能。 
+>請勿混用不同大小的磁片，這麼做會導致 raidset 的效能受限於最慢的磁片。 
 
 ## <a name="install-the-mdadm-utility"></a>安裝 mdadm 公用程式
 * **Ubuntu**

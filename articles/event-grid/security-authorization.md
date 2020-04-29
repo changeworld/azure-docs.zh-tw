@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
 ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78899278"
 ---
-# <a name="authorizing-access-to-event-grid-resources"></a>授權訪問事件網格資源
+# <a name="authorizing-access-to-event-grid-resources"></a>授權存取事件方格資源
 Azure Event Grid 讓您能控制給予不同使用者進行各種管理作業的存取層級，這些作業包含列出事件訂閱、建立新訂閱及產生金鑰等等。 事件格線會使用 Azure 的角色型存取控制 (RBAC)。
 
 ## <a name="operation-types"></a>作業類型
@@ -33,11 +33,11 @@ Azure Event Grid 讓您能控制給予不同使用者進行各種管理作業的
 
 ## <a name="built-in-roles"></a>內建角色
 
-事件格線能提供兩個內建角色以用來管理事件訂閱。 它們在實現[事件域](event-domains.md)時非常重要，因為它們為使用者提供了訂閱事件域中主題所需的許可權。 這些角色會將焦點放在事件訂閱上，而且不會針對建立主題之類的動作授與存取權。
+事件格線能提供兩個內建角色以用來管理事件訂閱。 它們在執行[事件網域](event-domains.md)時很重要，因為它們會授與使用者所需的許可權，以訂閱您事件網域中的主題。 這些角色會將焦點放在事件訂閱上，而且不會針對建立主題之類的動作授與存取權。
 
 您可以[將這些角色指派給使用者或群組](../role-based-access-control/quickstart-assign-role-user-portal.md)。
 
-**事件網格事件訂閱參與者**：管理事件網格訂閱操作
+**EventGrid EventSubscription 參與者**：管理事件方格訂用帳戶作業
 
 ```json
 [
@@ -73,7 +73,7 @@ Azure Event Grid 讓您能控制給予不同使用者進行各種管理作業的
 ]
 ```
 
-**事件網格事件訂閱讀取器**：讀取事件網格訂閱
+**EventGrid EventSubscription Reader**：讀取事件方格訂用帳戶
 
 ```json
 [
@@ -181,7 +181,7 @@ Azure Event Grid 讓您能控制給予不同使用者進行各種管理作業的
 
 ### <a name="encryption-at-rest"></a>待用加密
 
-事件網格服務寫入磁片的所有事件或資料都由 Microsoft 管理的金鑰加密，確保它在靜態時加密。 此外，事件或資料保留的最長時間段為 24 小時，符合[事件網格重試策略](delivery-and-retry.md)。 事件網格將在 24 小時後自動刪除所有事件或資料，或者事件存留時間（以較少者為准）。
+由「事件方格」服務寫入磁片的所有事件或資料都會由 Microsoft 管理的金鑰加密，以確保它會在待用時加密。 此外，事件或資料保留的最長時間為24小時，遵循[事件方格重試原則](delivery-and-retry.md)。 事件方格會在24小時或事件存留時間之後自動刪除所有事件或資料，以較少者為准。
 
 ## <a name="next-steps"></a>後續步驟
 

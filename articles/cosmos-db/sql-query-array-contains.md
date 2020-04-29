@@ -1,6 +1,6 @@
 ---
-title: ARRAY_CONTAINS Azure Cosmos DB 查詢語言
-description: 瞭解陣列在 Azure Cosmos DB 中的 SQL 系統功能如何返回布林，指示陣列是否包含指定值
+title: Azure Cosmos DB 查詢語言中的 ARRAY_CONTAINS
+description: 深入瞭解陣列在 Azure Cosmos DB 中如何包含 SQL 系統函數會傳回一個布林值，指出陣列是否包含指定的值。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,13 +8,13 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 47fe20888aa546e414b268b30c2e03580750a040
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78303472"
 ---
-# <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS（Azure 宇宙資料庫）
+# <a name="array_contains-azure-cosmos-db"></a>ARRAY_CONTAINS （Azure Cosmos DB）
 傳回布林值，表示陣列是否包含指定值。 您可以在命令中使用布林值運算式，以檢查物件為部分相符或完全相符。 
 
 ## <a name="syntax"></a>語法
@@ -26,13 +26,13 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
 ## <a name="arguments"></a>引數
   
 *arr_expr*  
-   是要搜索的陣列運算式。  
+   這是要搜尋的陣列運算式。  
   
 *expr*  
-   是要找到的運算式。  
+   這是要尋找的運算式。  
 
 *bool_expr*  
-   是布林運算式。 如果它計算為"true"，並且指定的搜索值是物件，則命令將檢查部分匹配（搜索物件是其中一個物件的子集）。 如果計算為"false"，則命令將檢查陣列中所有物件的完全符合。 若未指定，則預設值為 false。 
+   這是布林運算式。 如果評估為 ' true '，且指定的搜尋值為物件，則命令會檢查部分相符（搜尋物件是否為其中一個物件的子集）。 如果評估為 ' false '，此命令會檢查陣列中所有物件的完全相符。 若未指定，則預設值為 false。 
   
 ## <a name="return-types"></a>傳回類型
   
@@ -40,7 +40,7 @@ ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])
   
 ## <a name="examples"></a>範例
   
-  下面的示例如何使用 檢查陣列中的成員資格`ARRAY_CONTAINS`。  
+  下列範例說明如何使用`ARRAY_CONTAINS`來檢查陣列中的成員資格。  
   
 ```sql
 SELECT   
@@ -75,10 +75,10 @@ SELECT
 
 ## <a name="remarks"></a>備註
 
-該系統功能將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
+這個系統函數將受益于[範圍索引](index-policy.md#includeexclude-strategy)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [陣列函數 Azure 宇宙 DB](sql-query-array-functions.md)
-- [系統功能 Azure 宇宙 DB](sql-query-system-functions.md)
-- [Azure 宇宙 DB 簡介](introduction.md)
+- [陣列函數 Azure Cosmos DB](sql-query-array-functions.md)
+- [系統函數 Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB 簡介](introduction.md)

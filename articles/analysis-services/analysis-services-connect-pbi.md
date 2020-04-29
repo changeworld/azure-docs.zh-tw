@@ -1,6 +1,6 @@
 ---
 title: 使用 Power BI 來連接到 Azure Analysis Services | Microsoft Docs
-description: 了解如何使用 Power BI 來連接到 Azure Analysis Services 伺服器。 連接后,用戶可以流覽模型數據。
+description: 了解如何使用 Power BI 來連接到 Azure Analysis Services 伺服器。 一旦連線之後，使用者就可以流覽模型資料。
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,10 +8,10 @@ ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 6205c4189abfefc2ee9c4a273ebfd6773ea609b6
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411365"
 ---
 # <a name="connect-with-power-bi"></a>使用 Power BI 進行連接
@@ -25,7 +25,7 @@ ms.locfileid: "80411365"
   
 ## <a name="connect-in-power-bi-desktop"></a>在 Power BI Desktop 中連線
 
-1. 在 Power BI 桌面中,按下 **「取得資料** > **Azure** > **Azure 分析服務」 資料庫**。
+1. 在 Power BI Desktop 中，按一下 [**取得資料** > ] [**azure** > **azure Analysis Services 資料庫**]。
 
 2. 在 [伺服器]**** 中，輸入伺服器名稱。 請務必包含完整的 URL，例如 asazure://westcentralus.asazure.windows.net/advworks。
 
@@ -46,7 +46,7 @@ ms.locfileid: "80411365"
 1. 建立與您伺服器上模型即時連線的 Power BI Desktop 檔案。
 2. 在 [Power BI](https://powerbi.microsoft.com) 中，按一下 [取得資料]**** > [檔案]****，然後尋找並選取您的 .pbix 檔案。
 
-## <a name="see-also"></a>另請參閱
-[連接到 Azure 分析服務](analysis-services-connect.md)   
-[用戶端庫](analysis-services-data-providers.md)
+## <a name="see-also"></a>請參閱
+[連接到 Azure Analysis Services](analysis-services-connect.md)   
+[用戶端程式庫](analysis-services-data-providers.md)
 

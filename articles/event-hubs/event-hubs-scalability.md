@@ -1,6 +1,6 @@
 ---
-title: 可擴充性 - Azure 事件中心 |微軟文檔
-description: 本文提供有關如何使用分區和輸送量單位縮放 Azure 事件中心的資訊。
+title: 擴充性-Azure 事件中樞 |Microsoft Docs
+description: 本文提供如何使用資料分割和輸送量單位來調整 Azure 事件中樞的相關資訊。
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,21 +15,21 @@ ms.custom: seodec18
 ms.date: 06/18/2019
 ms.author: shvija
 ms.openlocfilehash: 2b36faef8c39a8e9b02a056576ae7f5a77b1f6bf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280946"
 ---
-# <a name="scaling-with-event-hubs"></a>使用事件中心進行縮放
+# <a name="scaling-with-event-hubs"></a>使用事件中樞進行調整
 
-有兩個因素會影響事件中心的縮放。
+有兩個因素會影響事件中樞的調整。
 *   輸送量單位
 *   資料分割
 
 ## <a name="throughput-units"></a>輸送量單位
 
-事件中心的輸送量由*輸送量單位*控制。 輸送量單位是預先購買的容量單位。 單個輸送量可讓您：
+事件中樞的輸送量容量是由*輸送量單位*所控制。 輸送量單位是預先購買的容量單位。 單一輸送量可讓您：
 
 * 輸入：每秒最多 1 MB 或 1000 個事件 (以先達到者為準)。
 * 輸出：最高每秒 2 MB 或每秒 4096 個事件。
@@ -45,7 +45,7 @@ ms.locfileid: "79280946"
 
 「事件中樞」服務可在負載超過最低閾值時增加輸送量，不會有任何要求因為發生 ServerBusy 錯誤而失敗。 
 
-有關自動充氣功能的詳細資訊，請參閱[自動縮放輸送量單位](event-hubs-auto-inflate.md)。
+如需自動擴充功能的詳細資訊，請參閱[自動調整輸送量單位](event-hubs-auto-inflate.md)。
 
 ## <a name="partitions"></a>資料分割
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]

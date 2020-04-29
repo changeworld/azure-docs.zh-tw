@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：配置對等互連：CLI
+title: Azure ExpressRoute：設定對等互連： CLI
 description: 本文將協助您為 ExpressRoute 線路建立和佈建私用、公用及 Microsoft 對等互連。 本文也示範如何檢查狀態、更新或刪除線路的對等。
 services: expressroute
 author: cherylmc
@@ -9,10 +9,10 @@ ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 91a1b6cc877b31fbcef638e34d3147d3377ce85c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476112"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>使用 CLI 建立和修改 ExpressRoute 線路的對等互連
@@ -20,13 +20,13 @@ ms.locfileid: "79476112"
 本文將協助您使用 CLI，以 Resource Manager 部署模型建立和管理 ExpressRoute 線路的路由設定/對等互連。 您還可以檢查狀態、更新，或是刪除與取消佈建 ExpressRoute 線路的對等互連。 如果您想要對線路使用不同的方法，可選取下列清單中的文章：
 
 > [!div class="op_single_selector"]
-> * [Azure 門戶](expressroute-howto-routing-portal-resource-manager.md)
-> * [電源外殼](expressroute-howto-routing-arm.md)
+> * [Azure 入口網站](expressroute-howto-routing-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [公共對等互連](about-public-peering.md)
+> * [公用對等互連](about-public-peering.md)
 > * [視訊 - 私用對等互連](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
 > * [視訊 - Microsoft 對等互連](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
-> * [電源外殼（經典）](expressroute-howto-routing-classic.md)
+> * [PowerShell （傳統）](expressroute-howto-routing-classic.md)
 > 
 
 ## <a name="configuration-prerequisites"></a>組態必要條件
@@ -37,9 +37,9 @@ ms.locfileid: "79476112"
 
 這些指示只適用於由提供第 2 層連線服務的服務提供者所建立的線路。 如果您使用的服務提供者提供受控第 3 層服務 (通常是 IPVPN，如 MPLS)，連線提供者會為您設定和管理路由。
 
-您可以為 ExpressRoute 電路配置專用對等互連和 Microsoft 對等互連（新電路將棄用 Azure 公共對等互連）。 可以按您選擇的任何順序配置對等互連。 不過，您必須確定一次只完成一個對等的設定。 如需路由網域和對等互連的詳細資訊，請參閱 [ExpressRoute 路由網域](expressroute-circuit-peerings.md)。 有關公共對等互連的資訊，請參閱[ExpressRoute 公共對等互連](about-public-peering.md)。
+您可以為 ExpressRoute 線路設定私用對等互連和 Microsoft 對等互連（新線路的 Azure 公用對等互連已被取代）。 對等互連可以依照您選擇的任何順序來設定。 不過，您必須確定一次只完成一個對等的設定。 如需路由網域和對等互連的詳細資訊，請參閱 [ExpressRoute 路由網域](expressroute-circuit-peerings.md)。 如需公用對等互連的相關資訊，請參閱[ExpressRoute 公用對等互連](about-public-peering.md)。
 
-## <a name="microsoft-peering"></a><a name="msft"></a>微軟對等互連
+## <a name="microsoft-peering"></a><a name="msft"></a>Microsoft 對等互連
 
 本節將協助您為 ExpressRoute 線路建立、取得、更新和刪除 Microsoft 對等互連設定。
 
@@ -50,7 +50,7 @@ ms.locfileid: "79476112"
 
 ### <a name="to-create-microsoft-peering"></a>建立 Microsoft 對等
 
-1. 安裝最新版的 Azure CLI。 使用最新版本的 Azure 命令列介面 （CLI）。 開始設定之前，請檢閱[必要條件](expressroute-prerequisites.md)和[工作流程](expressroute-workflows.md)。
+1. 安裝最新版的 Azure CLI。 使用最新版本的 Azure 命令列介面（CLI）。 開始設定之前，請檢閱[必要條件](expressroute-prerequisites.md)和[工作流程](expressroute-workflows.md)。
 
    ```azurecli
    az login
@@ -125,9 +125,9 @@ ms.locfileid: "79476112"
 az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzureMicrosoftPeering
 ```
 > [!IMPORTANT]
-> Microsoft 驗證是否在 Internet 路由註冊表中為您分配了指定的"播發的公共首碼"和"對等 ASN"（或"客戶 ASN"）。 如果從其他實體獲取公共首碼，並且分配未隨路由註冊表一起記錄，則自動驗證將不完整，需要手動驗證。 如果自動驗證失敗，您將在上述命令的輸出上看到"播發公共首碼狀態"作為"需要驗證"。 
+> Microsoft 會確認指定的「公告公用首碼」和「對等 ASN」（或「客戶 ASN」）是否在網際網路路由登錄中指派給您。 如果您要從另一個實體取得公用首碼，而且如果未使用路由登錄來記錄指派，自動驗證將不會完成，而且需要手動驗證。 如果自動驗證失敗，則會在上述命令的輸出上看到 ' AdvertisedPublicPrefixesState ' 為「需要驗證」。 
 > 
-> 如果您看到消息"需要驗證"，請收集顯示公共首碼的文檔，該實體由在路由註冊表中列為首碼擁有者的實體分配給您的組織，並提交這些文檔以供手動驗證。打開支援票證，如下所示。 
+> 如果您看到「需要驗證」訊息，則會將顯示公用首碼的檔收集為路由登錄中前置詞的擁有者，並提交這些檔以供手動驗證，方法是開啟支援票證，如下所示。 
 > 
 >
 

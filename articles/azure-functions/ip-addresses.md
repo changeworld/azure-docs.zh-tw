@@ -4,10 +4,10 @@ description: 了解如何尋找函式應用程式的輸入和輸出 IP 位址，
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.openlocfilehash: bfd2d573e0a1c78d0ef4c68be224f92e8f689f62
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80656775"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure 中的 IP 位址 中的 IP 位址
@@ -86,9 +86,9 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 - 刪除函式應用程式，並在不同資源群組中重建。
 - 刪除資源群組和區域組合中的最後一個函式應用程式，並予以重建。
-- 刪除 TLS 綁定,例如[在證書續訂](../app-service/configure-ssl-certificate.md#renew-certificate)期間。
+- 刪除 TLS 系結，例如在[憑證更新](../app-service/configure-ssl-certificate.md#renew-certificate)期間。
 
-當函數應用在[消耗計劃中](functions-scale.md#consumption-plan)運行時,即使尚未採取任何操作(如[上面列出的](#inbound-ip-address-changes)操作),入站 IP 位址也可能更改。
+當您的函式應用程式在取用[方案](functions-scale.md#consumption-plan)中執行時，即使您未採取任何動作（如[上方所列](#inbound-ip-address-changes)的動作），輸入 IP 位址也可能會變更。
 
 ## <a name="outbound-ip-address-changes"></a>輸出 IP 位址變更
 
@@ -97,7 +97,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 * 採取任何可變更輸入 IP 位址的動作。
 * 變更您的 App Service 方案定價層。 您的應用程式可使用的所有可能輸出 IP 位址清單 (適用於所有定價層) 位於 `possibleOutboundIPAddresses` 屬性中。 請參閱[尋找輸出 IP](#find-outbound-ip-addresses)。
 
-當函數應用在[消耗計劃中](functions-scale.md#consumption-plan)運行時,即使尚未採取任何操作(如[上面列出的](#inbound-ip-address-changes)操作),出站 IP 位址也可能更改。
+當您的函式應用程式在取用[方案](functions-scale.md#consumption-plan)中執行時，即使您未採取任何動作（如[上面所列](#inbound-ip-address-changes)），輸出 IP 位址也可能會變更。
 
 若要故意強制輸出 IP 位址變更：
 
@@ -117,7 +117,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 巡覽至函式應用程式。
-3. 選取 [概觀]**** 索引標籤。
+3. 選取 [概觀]  索引標籤。
 4. App Service 方案層會出現在 **App Service 方案/定價層**之下。 App Service 環境定價層為 [隔離]****。
  
 或者，您可以使用 [Cloud Shell](../cloud-shell/quickstart.md)：

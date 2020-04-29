@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 網站恢復將 NHyper-V 災害復原演練運行到輔助網站
+title: 使用 Azure Site Recovery 執行 NHyper-V 嚴重損壞修復至次要網站
 description: 了解如何使用 Azure Site Recovery 執行從 VMM 雲端中的 Hyper-V VM 到次要內部部署資料中心的 DR 演練。
 author: rajani-janaki-ram
 manager: rochakm
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79257962"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>執行從 Hyper-V VM 到次要網站的 DR 演練
@@ -46,7 +46,7 @@ ms.locfileid: "79257962"
 | **選項** | **詳細資料** | |
 | --- | --- | --- |
 | **無** | 會在複本 VM 所在的主機上建立測試 VM。 此機器不會新增至雲端，且不會連線至任何網路。<br/><br/> 您可以在機器建立後將其連線至 VM 網路。| |
-| **使用現有** | 會在複本 VM 所在的主機上建立測試 VM。 此機器不會新增至雲端。<br/><br/>建立與您的生產網路隔離的 VM 網路。<br/><br/>如果您是使用 VLAN 網路，建議您在 VMM 中另外建立未用於生產網路的測試專用邏輯網路。 此邏輯網路是用來建立測試容錯移轉的 VM 網路。<br/><br/>邏輯網路應該至少要與所有裝載虛擬機器之 Hyper-V 伺服器的其中一個網路介面卡相關聯。<br/><br/>若使用 VLAN 邏輯網路，應該要隔離您新增至邏輯網路的網路站台。<br/><br/>如果您是使用 Windows 網路虛擬化型邏輯網路，Azure Site Recovery 會自動建立隔離的 VM 網路。 | |
+| **使用現有的** | 會在複本 VM 所在的主機上建立測試 VM。 此機器不會新增至雲端。<br/><br/>建立與您的生產網路隔離的 VM 網路。<br/><br/>如果您是使用 VLAN 網路，建議您在 VMM 中另外建立未用於生產網路的測試專用邏輯網路。 此邏輯網路是用來建立測試容錯移轉的 VM 網路。<br/><br/>邏輯網路應該至少要與所有裝載虛擬機器之 Hyper-V 伺服器的其中一個網路介面卡相關聯。<br/><br/>若使用 VLAN 邏輯網路，應該要隔離您新增至邏輯網路的網路站台。<br/><br/>如果您是使用 Windows 網路虛擬化型邏輯網路，Azure Site Recovery 會自動建立隔離的 VM 網路。 | |
 | **建立網路** | 暫時性測試網路將根據您在 [邏輯網路]**** 及其相關網路站台中指定的設定自動建立。<br/><br/> 容錯移轉會確認 VM 是否已建立。<br/><br/> 如果復原計劃使用多個 VM 網路，您應使用此選項。<br/><br/> 如果您使用的是 Windows 網路虛擬化網路，這個選項會使用複本虛擬機器網路中的相同設定 (子網路和 IP 位址集區) 自動建立 VM 網路。 在測試容錯移轉完成後，這些 VM 網路將自動清除。<br/><br/> 將會在複本虛擬機器所在的主機上建立測試 VM。 此機器不會新增至雲端。|
 
 ### <a name="best-practices"></a>最佳作法
@@ -117,13 +117,13 @@ ms.locfileid: "79257962"
 
 ## <a name="run-a-test-failover"></a>執行測試容錯移轉
 
-此程序說明如何針對復原方案執行測試容錯移轉。 或者，您可以在 **"虛擬機器"** 選項卡上運行單個虛擬機器的容錯移轉。
+此程序說明如何針對復原方案執行測試容錯移轉。 或者，您可以在 [**虛擬機器**] 索引標籤上執行單一虛擬機器的容錯移轉。
 
-1. 選擇**恢復計畫** > *recoveryplan_name*。 按一下**容錯移轉** > **測試容錯移轉**。
+1. 選取 [復原**方案** > ]*recoveryplan_name*。 按一下 [**容錯移轉** > **測試容錯移轉**]。
 2. 在 [測試容錯移轉]**** 刀鋒視窗上，指定複本 VM 在測試容錯移轉後應如何連線至網路。
 3. 在 [工作] **** 索引標籤上追蹤容錯移轉進度。
 4. 完成容錯移轉之後，請確認 VM 已成功啟動。
-5. 完成後，按一下復原方案上的 [清除測試容錯移轉]****。 在**Notes**中，記錄並保存與測試容錯移轉關聯的任何觀測值。 此步驟會刪除 Site Recovery 在測試容錯移轉期間所建立的任何 VM 和網路。 
+5. 完成後，按一下復原方案上的 [清除測試容錯移轉]****。 在 [記事]  中，記錄並儲存關於測試容錯移轉的任何觀察。 此步驟會刪除 Site Recovery 在測試容錯移轉期間所建立的任何 VM 和網路。 
 
 ![測試容錯移轉](./media/hyper-v-vmm-test-failover/TestFailover.png)
  

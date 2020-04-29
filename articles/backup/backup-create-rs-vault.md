@@ -1,14 +1,14 @@
 ---
-title: 建立回復服務保存庫
-description: 在本文中,瞭解如何創建存儲備份和恢復點的恢復服務保管庫。
+title: 建立復原服務保存庫
+description: 在本文中，您將瞭解如何建立復原服務保存庫，以儲存備份和復原點。
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.openlocfilehash: 439f102e8f13bff63ab388be8f10df07ab2dc7d2
-ms.sourcegitcommit: b129186667a696134d3b93363f8f92d175d51475
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80672856"
 ---
 # <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
@@ -57,73 +57,73 @@ ms.locfileid: "80672856"
 
 ## <a name="set-storage-redundancy"></a>設定儲存體備援
 
-Azure 備份會自動處理保管庫的存儲。 您需要指定如何複製該存儲。
+Azure 備份會自動處理保存庫的儲存體。 您必須指定該儲存體的複寫方式。
 
-1. 從 [復原服務保存庫]**** 刀鋒視窗，按一下 [新增保存庫]。 在 **「設置」** 部分下,按一下「**屬性**」。
-2. 在**屬性**中,在 **「備份配置」** 下,按一下 **「更新**」。
+1. 從 [復原服務保存庫]**** 刀鋒視窗，按一下 [新增保存庫]。 在 [**設定**] 區段下，按一下 [**屬性**]。
+2. 在 [**屬性**] 的 [**備份**設定] 底下，按一下 [**更新**]。
 
-3. 選擇儲存複製類型,然後單擊 **「儲存**」 。
+3. 選取 [儲存體] 複寫類型，然後**按一下 [儲存]**。
 
      ![為新保存庫設定儲存體組態](./media/backup-try-azure-backup-in-10-mins/recovery-services-vault-backup-configuration.png)
 
-   - 我們建議您使用 Azure 作為主備份存儲終結點,請繼續使用預設**的異地冗餘**設置。
+   - 如果您使用 Azure 做為主要的備份儲存體端點，我們建議您繼續使用預設的**異地多餘**設定。
    - 如果您未使用 Azure 做為主要的備份儲存體端點，則選擇 [本地備援]****，以減少 Azure 儲存體成本。
-   - 詳細瞭解[地理](../storage/common/storage-redundancy-grs.md)和[本地](../storage/common/storage-redundancy-lrs.md)冗餘。
+   - 深入瞭解[地理](../storage/common/storage-redundancy-grs.md)和[本機](../storage/common/storage-redundancy-lrs.md)冗余。
 
 > [!NOTE]
-> 在配置保管庫中的備份之前,必須更改恢復服務保管庫的**存儲複製類型**(本地冗餘/異地冗餘)。 設定備份後,將關閉選項,並且無法變更**儲存複製類型**。
+> 您必須先變更復原服務保存庫的**儲存體複寫類型**（本機-多餘/異地），才能在保存庫中進行備份。 一旦您設定備份，[修改] 選項就會停用，而且您無法變更**儲存體複寫類型**。
 
-## <a name="set-cross-region-restore"></a>設定交叉區域還原
+## <a name="set-cross-region-restore"></a>設定跨區域還原
 
-作為還原選項之一,跨區域還原 (CRR) 允許您在輔助區域(即[Azure 配對區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions))中還原 Azure VM。 這個選項允許您:
+做為其中一個還原選項，跨區域還原（CRR）可讓您在次要區域（也就是[azure 配對的區域](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)）中還原 azure vm。 此選項可讓您：
 
-- 當有審計或合規性要求時進行演習
-- 如果主區域中發生災難,請還原 VM 或其磁碟。
+- 在有審核或合規性需求時進行演練
+- 如果主要區域發生損毀，請還原 VM 或其磁片。
 
-要選擇此功能,請從 **「備份設定」** 邊欄選項卡中選擇 **「啟用跨區域還原**」。。
+若要選擇這項功能，請從 [**備份**設定] 分頁選取 [**啟用跨區域還原**]。
 
-對於此過程,存在定價影響,因為它是在存儲級別。
+在此程式中，會有價格含意，因為它是在儲存體層級。
 
 >[!NOTE]
 >開始之前：
 >
->- 檢視[支援類型與區域清單的支援矩陣](backup-support-matrix.md#cross-region-restore)。
->- 跨區域還原 (CRR) 功能現在在所有 Azure 公共區域中預覽。
->- CRR 是任何 GRS 保管庫的保管庫級加入加入功能(預設情況下關閉)。
->- 請使用以下指令將訂閱上載此功能:<br>
+>- 如需支援的 managed 類型和區域清單，請參閱[支援矩陣](backup-support-matrix.md#cross-region-restore)。
+>- 跨區域還原（CRR）功能現在已在所有 Azure 公用區域中預覽。
+>- CRR 是適用于任何 GRS 保存庫的保存庫層級加入宣告功能（預設為關閉）。
+>- 請使用下列命令，將您的訂用帳戶上架此功能：<br>
 >  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`
->- 如果您在公共有限預覽期間加入此功能,審核審批電子郵件將包括定價政策詳細資訊。
->- 加入加入后,備份專案可能需要長達 48 小時才能在輔助區域中可用。
->- 目前,CRR 僅支援備份管理類型 - ARM Azure VM(不支援經典 Azure VM)。  當其他管理類型支援 CRR 時 **,它們將自動**註冊。
+>- 如果您在公開有限預覽期間上架此功能，審核核准電子郵件將會包含定價原則詳細資料。
+>- 加入宣告之後，最多可能需要48小時的時間，才能在次要區域中使用備份專案。
+>- 目前只有備份管理類型才支援 CRR-ARM Azure VM （不支援傳統的 Azure VM）。  當其他管理類型支援 CRR 時，將會**自動**註冊。
 
 ### <a name="configure-cross-region-restore"></a>設定跨區域還原
 
-使用 GRS 冗餘創建的保管庫包括配置跨區域還原功能的選項。 每個 GRS 保管庫都將有一個橫幅,該橫幅將鏈接到文檔。 要為保管庫配置 CRR,請轉到備份配置邊欄選項卡,該邊欄選項卡包含啟用此功能的選項。
+以 GRS 冗余建立的保存庫包含設定跨區域還原功能的選項。 每個 GRS 保存庫都會有橫幅，這會連結到檔。 若要設定保存庫的 CRR，請移至 [備份設定] 分頁，其中包含啟用此功能的選項。
 
  ![備份設定橫幅](./media/backup-azure-arm-restore-vms/banner.png)
 
-1. 從門戶轉到恢復服務保管庫>設置>屬性。
-2. 按一**下 此保管庫中啟用跨區域還原**以啟用該功能。
+1. 在入口網站中，移至 [復原服務保存庫] > [設定] > [內容]。
+2. 按一下 [**在此保存庫中啟用跨區域還原**] 以啟用功能。
 
-   ![按下此保存庫中的啟用跨區域還原之前](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+   ![在此保存庫中按一下 [啟用跨區域還原] 之前](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
 
-   ![按下此保存庫中的啟用跨區域還原後](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+   ![在此保存庫中按一下 [啟用跨區域還原] 之後](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
 
-瞭解如何[檢視輔助區域中的備份項目](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region)。
+瞭解如何[在次要區域中查看備份專案](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region)。
 
-瞭解如何[在輔助區域中還原](backup-azure-arm-restore-vms.md#restore-in-secondary-region)。
+瞭解如何[在次要區域中還原](backup-azure-arm-restore-vms.md#restore-in-secondary-region)。
 
-讓您如何[監視輔助區域還原工作](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs)。
+瞭解如何[監視次要區域還原作業](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs)。
 
-## <a name="modifying-default-settings"></a>變更預設設定
+## <a name="modifying-default-settings"></a>修改預設設定
 
-我們強烈建議您在在保管庫中配置備份之前查看**儲存複製類型****和安全設置**的預設設置。
+我們強烈建議您在保存庫中設定備份之前，先檢查**儲存體複寫類型**和**安全性設定**的預設值。
 
-- 預設情況下 **,儲存複製類型**設定為**異地冗餘**。 配置備份後,將禁用修改選項。 按照[以下步驟](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)查看和修改設置。
+- **儲存體複寫類型**預設會設定為 [**異地冗余**]。 一旦您設定備份之後，[修改] 選項就會停用。 請遵循下列[步驟](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)來審查和修改設定。
 
-- 預設情況下,**軟刪除**在新創建的保管庫中**啟用**,以保護備份數據免遭意外或惡意刪除。 按照[以下步驟](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete)查看和修改設置。
+- 預設會在新建立的保存庫上**啟用**虛**刪除**，以防止意外或惡意刪除的備份資料。 請遵循下列[步驟](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete)來審查和修改設定。
 
 ## <a name="next-steps"></a>後續步驟
 
-[瞭解](backup-azure-recovery-services-vault-overview.md)恢復服務保管庫。
-[瞭解](backup-azure-delete-vault.md)刪除恢復服務保管庫。
+[深入瞭解](backup-azure-recovery-services-vault-overview.md)復原服務保存庫。
+[深入瞭解](backup-azure-delete-vault.md)刪除復原服務保存庫。

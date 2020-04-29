@@ -1,5 +1,5 @@
 ---
-title: 檢查部署的最佳做法
+title: 檢查部署的最佳作法
 titleSuffix: Azure Kubernetes Service
 description: 了解如何使用 kube-advisor 檢查 Azure Kubernetes Service 上部署中的最佳做法實作
 services: container-service
@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/05/2018
 ms.author: seanmck
 ms.openlocfilehash: 17e21c142dc354de7b72bc17396b19366027c5cd
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668404"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>檢查叢集中的 Kubernetes 最佳做法
@@ -22,7 +22,7 @@ ms.locfileid: "80668404"
 
 [kube-advisor 工具][kube-advisor-github]是專門設計為在叢集中執行的單一容器。 它會向 Kubernetes API 伺服器查詢部署的相關資訊，並傳回一套建議改善事項。
 
-kube-Advisor 工具可以報告 Windows 應用程式和 Linux 應用程式的 PodSpecs 中缺少的資源請求和限制,但 kube-advisor 工具本身必須安排在 Linux 窗格中。 您可以使用窗格配置中的[節點選擇器][k8s-node-selector]安排具有特定作業系統的 pod 在節點池上運行。
+Kube advisor 工具可以針對 Windows 應用程式和 Linux 應用程式，報告 PodSpecs 中遺漏的資源要求和限制，但 kube advisor 工具本身必須排程在 Linux pod 上。 您可以使用 pod 設定中的[節點選取器][k8s-node-selector]，將 pod 排程在具有特定 OS 的節點集區上執行。
 
 > [!NOTE]
 > Microsoft 致力支援 kube advisor 工具。 問題和建議應在 GitHub 上建檔。

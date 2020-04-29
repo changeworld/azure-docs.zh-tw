@@ -1,6 +1,6 @@
 ---
-title: Azure 雲外殼快速啟動 - Bash
-description: 瞭解如何在瀏覽器中使用 Azure 雲外殼中的 Bash 命令列。
+title: Azure Cloud Shell 快速入門-Bash
+description: 瞭解如何在瀏覽器中使用 Azure Cloud Shell 的 Bash 命令列。
 author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
 ms.openlocfilehash: 58d795a5aee79e4149864a79a923ce34950b31d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79458064"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell 中 Bash 的快速入門
@@ -25,7 +25,7 @@ ms.locfileid: "79458064"
 > 也提供 [Azure Cloud Shell 中的 PowerShell](quickstart-powershell.md) 快速入門。
 
 ## <a name="start-cloud-shell"></a>啟動 Cloud Shell
-1. 從 Azure 門戶的頂部導航啟動**雲外殼**。 <br>
+1. 從 Azure 入口網站的頂端導覽啟動**Cloud Shell** 。 <br>
 ![](media/quickstart/shell-icon.png)
 
 2. 選取用來建立儲存體帳戶和 Microsoft Azure 檔案共用的訂用帳戶。

@@ -4,19 +4,19 @@ description: 使用 Application Insights 監視 Node.js 服務的效能和診斷
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 38336e3faf3764233dd94bffbfb24421e054496a
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80411587"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>使用 Application Insights 監視 Node.js 服務和應用程式
 
-[Azure 應用程式見解](../../azure-monitor/app/app-insights-overview.md)在部署後監視後端服務和元件,以説明您發現並快速診斷性能和其他問題。 您可以對在資料中心、在 Azure 虛擬機器和 Web 應用程式，和甚至其他公用雲端中託管的 Node.js 服務使用 Application Insights。
+[Azure 應用程式 Insights](../../azure-monitor/app/app-insights-overview.md)會在部署後監視您的後端服務和元件，以協助您探索並快速診斷效能和其他問題。 您可以對在資料中心、在 Azure 虛擬機器和 Web 應用程式，和甚至其他公用雲端中託管的 Node.js 服務使用 Application Insights。
 
 若要接收、儲存和探索您的監視資料，請在您的程式碼中包含 SDK，然後在 Azure 中設定對應的 Application Insights 資源。 SDK 會將資料傳送至該資源，進行進一步的分析和探索。
 
-Node.js SDK 可以自動監視傳入和傳出 HTTP 要求、例外狀況、和一些系統計量。 從版本 0.20 開始,SDK 還可以監視一些常見的[第三方包](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules),如 MongoDB、MySQL 和 Redis。 與傳入 HTTP 要求相關的所有事件都會相互關聯，以進行快速疑難排解。
+Node.js SDK 可以自動監視傳入和傳出 HTTP 要求、例外狀況、和一些系統計量。 從0.20 版開始，SDK 也可以監視一些常見[的協力廠商套件](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules)，例如 MongoDB、MySQL 和 Redis。 與傳入 HTTP 要求相關的所有事件都會相互關聯，以進行快速疑難排解。
 
 您可以使用 TelemetryClient API 手動檢測和監視您的應用程式及系統的其他層面。 我們將在本文稍後更詳細說明 TelemetryClient API。
 
@@ -24,7 +24,7 @@ Node.js SDK 可以自動監視傳入和傳出 HTTP 要求、例外狀況、和�
 
 完成下列工作來設定應用程式或服務的監視。
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 開始之前，請確定您有 Azure 訂用帳戶或[免費取得一個新訂用帳戶][azure-free-offer]。 如果您的組織已經有 Azure 訂用帳戶，系統管理員可以依照 [這些指示][add-aad-user] 將您新增至該訂用帳戶。
 
@@ -32,11 +32,11 @@ Node.js SDK 可以自動監視傳入和傳出 HTTP 要求、例外狀況、和�
 [add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
 
 
-### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>設定應用程式見解資源
+### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>設定 Application Insights 資源
 
 
 1. 登入 [Azure 入口網站][portal]。
-2. 選擇 **「創建資源** > **開發人員工具** > **應用程式見解**」。 此資源包含用於接收遙測資料的端點、此資料的儲存體、已儲存的報告和儀表板、規則和警示組態等等。
+2. 選取 [**建立資源** > ] [**開發人員工具** > ] [**Application Insights**]。 此資源包含用於接收遙測資料的端點、此資料的儲存體、已儲存的報告和儀表板、規則和警示組態等等。
 
 3. 在資源建立頁面上，於 [應用程式類型]**** 方塊中選取 [Node.js 應用程式]****。 應用程式類型可決定建立的預設儀表板和報告。 (任何 Application Insights 資源都可以從任何語言和平台收集資料。)
 
@@ -70,7 +70,7 @@ Node.js SDK 可以自動監視傳入和傳出 HTTP 要求、例外狀況、和�
 
    藉由設定 `appInsights.defaultClient.config.disableAppInsights = true`，您可以嘗試 SDK，而不需要傳送遙測。
 
-### <a name="monitor-your-app"></a><a name="monitor"></a>監視應用
+### <a name="monitor-your-app"></a><a name="monitor"></a>監視您的應用程式
 
 SDK 會自動蒐集有關 Node.js 執行階段和一些常見第三方模組的遙測。 使用您的應用程式來產生一些資料。
 
@@ -92,7 +92,7 @@ SDK 會自動蒐集有關 Node.js 執行階段和一些常見第三方模組的�
 * 按一下入口網站資源檢視中的 [重新整理]****。 圖表會自行定期重新整理，但手動重新整理會強制圖表立即重新整理。
 * 確認[所需的連出連接埠](../../azure-monitor/app/ip-addresses.md)已開啟。
 * 使用 [搜尋](../../azure-monitor/app/diagnostic-search.md) 來尋找特定的事件。
-* 檢查[錯誤的錯誤 。][FAQ]
+* 請查看[常見問題][FAQ]。
 
 
 ## <a name="sdk-configuration"></a>SDK 組態

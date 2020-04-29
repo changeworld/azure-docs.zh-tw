@@ -1,5 +1,5 @@
 ---
-title: 設定可用性組偵聽器&負載均衡器(PowerShell)
+title: 設定可用性群組接聽程式 & 負載平衡器（PowerShell）
 description: 使用具有一個或多個 IP 位址的內部負載平衡器，在 Azure Resource Manager 模型上設定可用性群組接聽程式。
 services: virtual-machines
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
 ms.openlocfilehash: cabfc84d2bc0c9d08a457e67c0182d7550f04ceb
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80668893"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>設定一或多個 Always On 可用性群組接聽程式 - Resource Manager
@@ -58,12 +58,12 @@ ms.locfileid: "80668893"
 
 ## <a name="determine-the-load-balancer-sku-required"></a>判斷所需的負載平衡器 SKU
 
-[Azure 負載均衡器](../../../load-balancer/load-balancer-overview.md)有 2 個 SKU:基本&標準。 建議使用標準負載平衡器。 如果虛擬機器在可用性設定組中，則允許使用基本負載平衡器。 如果虛擬機位於可用性區域中,則需要標準負載均衡器。 標準負載平衡器會要求所有 VM 的 IP 位址使用標準的 IP 位址。
+[Azure 負載平衡器](../../../load-balancer/load-balancer-overview.md)提供2個 Sku：基本 & Standard。 建議使用標準負載平衡器。 如果虛擬機器在可用性設定組中，則允許使用基本負載平衡器。 如果虛擬機器位於可用性區域中，則需要標準負載平衡器。 標準負載平衡器會要求所有 VM 的 IP 位址使用標準的 IP 位址。
 
 可用性群組的目前 [Microsoft 範本](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)會使用基本 IP 位址的基本負載平衡器。
 
    > [!NOTE]
-   > 如果使用標準負載均衡器和雲端見證的 Azure 儲存,則需要設定[服務終結點](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。 
+   > 如果您使用標準負載平衡器，並 Azure 儲存體雲端見證，您將需要設定[服務端點](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。 
 
 
 本文中的範例會指定標準負載平衡器。 在範例中，指令碼包含 `-sku Standard`。
@@ -141,7 +141,7 @@ foreach($VMName in $VMNames)
 > [!NOTE]
 > 就 SQL Server 可用性群組而言，每個 IP 位址都需要一個特定的探查連接埠。 例如，如果負載平衡器上有一個 IP 位址使用探查連接埠 59999，該負載平衡器上的任何其他 IP 位址就不能使用探查連接埠 59999。
 
-* 有關負載均衡器限制的資訊,請參閱[網路限制下](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)**每個負載均衡器的專用前端 IP** - Azure 資源管理程式 。
+* 如需負載平衡器限制的詳細資訊，請參閱[網路限制-Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)下**每個負載平衡器的私人前端 IP** 。
 * 如需有關可用性群組限制的資訊，請參閱[限制 (可用性群組)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG)。
 
 下列指令碼會將新的 IP 位址新增至現有的負載平衡器。 ILB 會使用接聽程式連接埠作為負載平衡前端連接埠。 此連接埠可以是 SQL Server 正在接聽的連接埠。 就預設的 SQL Server 執行個體而言，連接埠是 1433。 可用性群組的負載平衡規則需要浮動 IP (伺服器直接回傳)，因此後端連接埠與前端連接埠相同。 請更新您環境的變數。 
@@ -193,11 +193,11 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. 啟動 SQL Server Management Studio，然後連接到主要複本。
 
-1. 導航到 **「始終在高可用性** | **可用性組** | **可用性組偵聽器**」。。 
+1. 流覽至**AlwaysOn 高可用性** | **可用性** | 群組的**可用性群組**接聽程式。 
 
 1. 您現在應該會看到在容錯移轉叢集管理員中建立的接聽程式名稱。 以滑鼠右鍵按一下接聽程式名稱，然後按一下 **[屬性]**。
 
-1. 在 **「埠」** 框中,使用之前使用$EndpointPort(預設值為 1433),然後單擊 **「確定**」,指定可用性組偵聽器的埠號。
+1. 在 [**埠**] 方塊中，使用您稍早使用的 $EndpointPort （預設為1433）來指定可用性群組接聽程式的埠號碼，然後按一下 **[確定]**。
 
 ## <a name="test-the-connection-to-the-listener"></a>測試接聽程式的連線
 
@@ -205,7 +205,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. 透過 RDP 連接到相同虛擬網路中不擁有複本的 SQL Server。 這可以是叢集中的其他 SQL Server。
 
-1. 使用**sqlcmd**實用程式測試連接。 例如,以下文稿通過具有 Windows 身份驗證的偵聽器建立與主副本的**sqlcmd**連接:
+1. 使用**sqlcmd**公用程式來測試連接。 例如，下列腳本會透過接聽程式搭配 Windows 驗證，建立與主要複本的**sqlcmd**連接：
    
     ```
     sqlcmd -S <listenerName> -E
@@ -231,7 +231,7 @@ SQLCMD 連線會自動連線到任何一個裝載主要複本的 SQL Server 執�
 
 * 如果您使用 Azure 網路安全性群組來限制存取，請確定允許規則包含後端 SQL Server VM IP 位址和 AG 接聽程式的負載平衡器浮動 IP 位址，以及叢集核心 IP 位址 (如果適用的話)。
 
-* 在將具有 Azure 儲存的標準負載均衡器用於雲見證時創建服務終結點。 有關詳細資訊,請參閱[從虛擬網路共享存取權限](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。
+* 針對雲端見證使用具有 Azure 儲存體的標準負載平衡器時，請建立服務端點。 如需詳細資訊，請參閱[授與從虛擬網路存取權](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)。
 
 ## <a name="for-more-information"></a>取得詳細資訊
 如需詳細資訊，請參閱[在 Azure VM 中手動設定 Always On 可用性群組](virtual-machines-windows-portal-sql-availability-group-tutorial.md)。

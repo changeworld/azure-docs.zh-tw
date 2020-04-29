@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 0026c70a3a1a6b5e635e6b43e74b557d4218e6d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250305"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>使用 Azure CLI 在 Azure Marketplace 中尋找 Linux VM 映像
@@ -300,7 +300,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 }
 ```
 
-針對 RabbitMQ Certified by Bitnami 映像執行類似的命令會顯示下列 `plan` 屬性：`name`、`product` 和 `publisher`。 （某些圖像也有屬性`promotion code`。要部署此映射，請參閱以下部分以接受術語並啟用程式設計部署。
+針對 RabbitMQ Certified by Bitnami 映像執行類似的命令會顯示下列 `plan` 屬性：`name`、`product` 和 `publisher`。 （有些映射也有`promotion code`屬性。）若要部署此映射，請參閱下列各節以接受條款並啟用以程式設計方式部署。
 
 ```azurecli
 az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest

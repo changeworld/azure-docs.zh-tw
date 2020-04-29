@@ -1,20 +1,20 @@
 ---
-title: Azure 備份合規性產品
-description: Azure 備份的合規性產品摘要
+title: Azure 備份合規性供應專案
+description: Azure 備份的相容性供應專案摘要
 ms.topic: conceptual
 ms.date: 03/16/2020
 ms.openlocfilehash: da25c6b9b8206ebd2e7ca1a3d90ec88a6efe04b8
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80423115"
 ---
-# <a name="azure-backup-compliance-offerings"></a>Azure 備份合規性產品
+# <a name="azure-backup-compliance-offerings"></a>Azure 備份合規性供應專案
 
-為了説明組織遵守有關收集和使用個人數據的國家、區域和行業特定要求,Microsoft Azure & Azure 備份提供了一套全面的認證和證明。
+為了協助組織符合控管個人資料收集和使用的國家、地區和業界特定需求，Microsoft Azure & Azure 備份提供一組完整的認證和證明。
 
-您可以找到 Azure 備份的以下合規性產品,以確保在使用 Azure 備份服務時對服務進行監管。
+您可以在下方找到 Azure 備份的相容性供應專案，以確保您的服務在使用 Azure 備份服務時受到管制。
 
 ## <a name="global"></a>全域
 
@@ -27,7 +27,7 @@ ms.locfileid: "80423115"
 * [ISO 27017](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-27017)
 * [ISO 27018](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-27018)
 * [ISO 9001](https://docs.microsoft.com/microsoft-365/compliance/offering-iso-9001)
-* [SOC 1,2,3](https://docs.microsoft.com/microsoft-365/compliance/offering-soc)
+* [SOC 1、2、3](https://docs.microsoft.com/microsoft-365/compliance/offering-soc)
 
 ## <a name="us-government"></a>美國政府
 
@@ -48,4 +48,4 @@ ms.locfileid: "80423115"
 
 ## <a name="next-steps"></a>後續步驟
 
-在[Microsoft 信任中心](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)查找最新的覆蓋範圍和合規性詳細資訊。
+尋找[Microsoft TrustCenter](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)合規性的最新涵蓋範圍和詳細資料。

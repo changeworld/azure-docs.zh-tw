@@ -1,6 +1,6 @@
 ---
-title: Azure 多重身份驗證概述
-description: 瞭解 Azure 多重身份驗證如何幫助保護對數據和應用程式的訪問,同時滿足使用者對簡單登錄過程的需求。
+title: Azure 多因素驗證總覽
+description: 瞭解 Azure 多因素驗證如何協助保護資料和應用程式的存取，同時滿足使用者對簡單登入流程的需求。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c50232abd12c8c0390409bd7bf72833b4f153e02
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/05/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80667352"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>運作方式：Azure Multi-Factor Authentication
@@ -36,34 +36,34 @@ Azure Multi-Factor Authentication 的運作需要下列二種或更多的驗證�
 
 ![在 [登入] 畫面使用中的驗證方法](media/concept-authentication-methods/overview-login.png)
 
-Azure 多重身份驗證有助於保護對數據和應用程式的訪問,同時保持使用者的簡單性。 它藉由要求第二種形式的驗證來提供額外的安全性，並透過一系列易於使用的[驗證方法](concept-authentication-methods.md)來提供增強式驗證。 因管理員所做的設定決定不同，使用者可能必須也可能無須通過 MFA。
+Azure 多因素驗證有助於保護對資料和應用程式的存取，同時為使用者維持簡單性。 它藉由要求第二種形式的驗證來提供額外的安全性，並透過一系列易於使用的[驗證方法](concept-authentication-methods.md)來提供增強式驗證。 因管理員所做的設定決定不同，使用者可能必須也可能無須通過 MFA。
 
-應用程式或服務無需進行任何更改,即使用 Azure 多重身份驗證。 驗證提示是 Azure AD 登入事件的一部分,該事件在需要時自動請求和處理 MFA 質詢。
+您的應用程式或服務不需要進行任何變更，即可使用 Azure 多重要素驗證。 驗證提示是 Azure AD 登入事件的一部分，它會在需要時自動要求及處理 MFA 挑戰。
 
 ## <a name="available-verification-methods"></a>可用的驗證方法
 
-當使用者登錄到應用程式或服務並收到 MFA 提示時,他們可以選擇其註冊的其他驗證形式之一。 管理員可能需要註冊這些 Azure 多重身份驗證驗證方法,或者使用者可以存取自己的[「我的設定檔」](https://myprofile.microsoft.com)來編輯或添加驗證方法。
+當使用者登入應用程式或服務並收到 MFA 提示時，他們可以選擇其中一種已註冊的額外驗證形式。 系統管理員可能需要註冊這些 Azure 多重要素驗證方法，或使用者可以存取自己的 [[我的設定檔](https://myprofile.microsoft.com)] 來編輯或新增驗證方法。
 
-以下其他驗證形式可用於 Azure 多重身份驗證:
+下列其他形式的驗證可與 Azure 多重要素驗證搭配使用：
 
 * Microsoft Authenticator 應用程式
 * OATH 硬體權杖
-* sms
+* SMS
 * 語音通話
 
-## <a name="how-to-enable-and-use-azure-multi-factor-authentication"></a>如何開啟與使用 Azure 多重身份驗證
+## <a name="how-to-enable-and-use-azure-multi-factor-authentication"></a>如何啟用和使用 Azure 多重要素驗證
 
-可以為 Azure 多重身份驗證啟用使用者和組,以在登入事件期間提示進行其他驗證。 所有 Azure AD 租戶都可以使用[安全預設值](../fundamentals/concept-fundamentals-security-defaults.md),以便快速啟用所有使用者使用 Microsoft 身份驗證器應用。
+使用者和群組可以啟用 Azure 多重要素驗證，以在登入事件期間提示額外的驗證。 所有 Azure AD 租使用者都可以使用[安全性預設值](../fundamentals/concept-fundamentals-security-defaults.md)，以快速啟用所有使用者的 Microsoft Authenticator 應用程式。
 
-對於更精細的控制項,[條件存取](../conditional-access/overview.md)策略可用於定義需要 MFA 的事件或應用程式。 當用戶位於公司網路或已註冊的設備上時,這些策略可以允許定期登錄事件,但在遠端或個人設備上提示其他驗證因素。
+如需更細微的控制，您可以使用[條件式存取](../conditional-access/overview.md)原則來定義需要 MFA 的事件或應用程式。 當使用者位於公司網路或已註冊的裝置時，這些原則可以允許一般的登入事件，但在遠端或個人裝置上時，會提示您輸入額外的驗證因素。
 
 ![條件式存取如何運作以保護登入程序的概觀圖表](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-要瞭解許可,請參閱[Azure 多重身份驗證的功能和授權](concept-mfa-licensing.md)。
+若要深入瞭解授權，請參閱[Azure 多重要素驗證的功能和](concept-mfa-licensing.md)授權。
 
-要查看 MFA 的執行情況,請在以下教學中為一組測試使用者啟用 Azure 多重身份驗證:
+若要查看作用中的 MFA，請在下列教學課程中為一組測試使用者啟用 Azure 多重要素驗證：
 
 > [!div class="nextstepaction"]
 > [啟用 Azure Multi-Factor Authentication](tutorial-mfa-applications.md)

@@ -1,88 +1,88 @@
 ---
-title: PBR 材料
-description: 描述 PBR 材料類型。
+title: PBR 材質
+description: 描述 .PBR 材質類型。
 author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: 64553506f75451c50a87932904f00a7275ea9286
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80680254"
 ---
-# <a name="pbr-materials"></a>PBR 材料
+# <a name="pbr-materials"></a>PBR 材質
 
-*PBR 材質*是 Azure 遠端呈現中支援[的材料類型](../../concepts/materials.md)之一。 它們用於應接收逼真的照明[的網。](../../concepts/meshes.md)
+*.Pbr 材質*是 Azure 遠端呈現中支援的其中一種資料[類型](../../concepts/materials.md)。 它們會用於應該會收到實際光源的[網格](../../concepts/meshes.md)。
 
-PBR 代表**P**hysy **B**ased **R**端端,意味著材料以物理上合理的方式描述表面的視覺屬性,因此在所有照明條件下都能夠產生實際結果。 大多數現代遊戲引擎和內容創建工具都支援 PBR 材料,因為它們被認為是即時渲染的真實場景的最佳近似值。
+.PBR 代表**P**hysically **B**機型 gateway **R**endering，表示材質會以實體合理情況的方式描述介面的視覺屬性，因此在所有光源條件下可能會有實際的結果。 大部分的新式遊戲引擎和內容建立工具都支援 .PBR 資料，因為它們被視為即時轉譯的真實世界案例的最佳近似值。
 
-![由 ARR 渲染的頭盔 glTF 範例模型](media/helmet.png)
+![ARR 所轉譯的 Helmet glTF 範例模型](media/helmet.png)
 
-不過,PBR材料並不是通用解決方案。 有些材質根據視角的不同反射顏色不同。 例如,一些織物或汽車塗料。 這些類型的材料不由標準 PBR 模型處理,並且當前不受 Azure 遠端呈現的支援。 這包括 PBR 擴展,如*薄膜*(多層表面)和*透明塗層*(用於汽車塗料)。
+不過，.PBR 材料並不是通用的解決方案。 有一些資料會以不同的角度來反映色彩。 例如，某些網狀架構或汽車會繪製。 標準的 .PBR 模型不會處理這些類型的資料，Azure 遠端轉譯目前不支援這類資料。 這包括 .PBR 延伸模組，例如*細電影*（多層式表面）和*Coat* （適用于汽車繪製）。
 
-## <a name="common-material-properties"></a>常見材料屬性
+## <a name="common-material-properties"></a>一般材質屬性
 
-這些屬性是所有材料的通用屬性:
+這些屬性通用於所有材質：
 
-* **阿貝多顏色:** 此顏色與其他顏色(如*反色映射*或*頂點顏色*)相乘。 如果在材質上啟用*了透明度*,則 Alpha 通道用於調整`1`不透明度, 其含`0`義完全不透明, 含義完全透明。 默認值為白色。
+* **albedoColor：** 此色彩會乘以其他色彩，例如*albedoMap*或*頂點色彩*。 如果已啟用材質的*透明度*，Alpha 色板會用來調整不透明度，其`1`意義完全不透明且`0`意義完全透明。 預設為白色。
 
   > [!NOTE]
-  > 當 PBR 材料完全透明時,就像一塊完全乾淨的玻璃一樣,它仍然反映了環境。 像太陽這樣的亮點在反射中仍然可見。 對於[顏色材料](color-materials.md)來說,這是不同的。
+  > 當 .PBR 材質完全透明時，像是完美的半透明部分，它仍會反映環境。 像 sun 之類的明亮點仍會顯示在反映中。 這對[色彩材質](color-materials.md)而言是不同的。
 
-* **阿爾貝多地圖:** 每像素反貝度值的[2D 紋理](../../concepts/textures.md)。
+* **albedoMap：** 每圖元 albedo 值的[2d 材質](../../concepts/textures.md)。
 
-* **AlphaClip 啟用**和**alphaClip 閾值:** 如果*AlphaClip 啟用*為 true,則不會繪製所有白數 alpha 值低於*AlphaClip 閾值*的圖元。 即使不啟用透明度,也可以使用 Alpha 裁剪,渲染速度也快得多。 不過,Alpha 剪切材質渲染的速度仍然比完全不透明的材料慢。 默認情況下,禁用 Alpha 剪輯。
+* **AlphaClipEnabled**和**AlphaClipThreshold：** 如果*AlphaClipEnabled*為 true，則不會繪製 albedo Alpha 值低於*AlphaClipThreshold*的所有圖元。 即使沒有啟用透明度，也可以使用 Alpha 裁剪，而且呈現速度會更快。 不過，Alpha 裁剪材質的轉譯速度仍然會比完全不透明的材質更慢。 預設會停用 Alpha 裁剪。
 
-* **紋理座標和****紋理座標偏移:** 比例乘以 UV 紋理座標,偏移量添加到其中。 可用於拉伸和移動紋理。 預設比例為 (1,1),偏移量為 (0, 0)。
+* **textureCoordinateScale**和**textureCoordinateOffset：** 尺規會乘以 UV 材質座標，而位移會加入其中。 可以用來延展和轉換材質。 預設尺規為（1，1），而 offset 為（0，0）。
 
-* **使用VertexColor:** 如果格線包含頂點顏色並啟用這個選項,則格格的頂點顏色將乘以*反色*與*反反多對應*。 默認情況下,頂點顏色被禁用。
+* **useVertexColor：** 如果網格包含頂點色彩，而且已啟用此選項，則網格的頂點色彩會乘至*albedoColor*和*albedoMap*。 預設會停用頂點色彩。
 
-* **是雙面:** 如果雙面設置為 true,則即使攝像機正在查看其背面,也會渲染具有此材質的三角形。 對於 PBR 材料,也為後面正確計算照明。 默認情況下,此選項被禁用。 另請參閱[單面渲染](single-sided-rendering.md)。
+* **isDoubleSided：** 如果 sidedness 設定為 true，則會轉譯具有此材質的三角形，即使相機正在查看其背景表面也一樣。 對於後端臉部也會正確計算的 .PBR 資料光源。 預設會停用此選項。 另請參閱[單側](single-sided-rendering.md)轉譯。
 
-## <a name="pbr-material-properties"></a>PBR 材料屬性
+## <a name="pbr-material-properties"></a>.PBR 材質屬性
 
-基於物理的渲染的核心思想是使用*BaseColor、**金屬度*和*粗糙度*屬性來類比各種真實材料。 PBR 的詳細描述超出了本文的範圍。 有關 PBR 的詳細資訊,請參閱[其他來源](http://www.pbr-book.org)。 以下屬性特定於 PBR 材料:
+實體式轉譯的核心概念是，使用*BaseColor*、 *Metalness*和*粗糙度*屬性來模擬各式各樣的真實世界素材。 有關 .PBR 的詳細說明已超出本文的範圍。 如需有關 .PBR 的詳細資訊，請參閱[其他來源](http://www.pbr-book.org)。 下列屬性是針對 .PBR 資料所特有：
 
-* **基色:** 在 PBR 材料中,*色底色*稱為*底色*。 在 Azure 遠端渲染中,通過公共材質屬性已存在*色色*屬性,因此沒有其他基本顏色屬性。
+* **baseColor：** 在 .PBR 材質中， *albedo 色彩*稱為「*基底色彩*」。 在 Azure 遠端轉譯中， *albedo color*屬性已經透過一般材質屬性呈現，因此沒有其他的基本色彩屬性。
 
-* **粗糙度**和**粗糙度地圖:** 粗糙度定義表面的粗糙度或平滑度。 粗糙的表面將光以更平滑的方向散射,而不是平滑表面,這使得反射變得模糊而不是鋒利。 值範圍是從到`0.0``1.0`。 當`roughness`相等`0.0`時 ,反射將是尖銳的。 當`roughness`相等`0.5`時 ,反射將變得模糊。
+* **粗糙度**和**roughnessMap：** 粗糙度會定義表面的粗略或平滑程度。 粗略的表面散佈光線的方向遠高於平滑表面，使反射變得模糊，而不是清晰。 值範圍是從`0.0`到。 `1.0` 當`roughness`等於`0.0`時，反射會很銳利。 當`roughness`等於`0.5`時，反射會變得模糊。
 
-  如果同時提供粗糙度值和粗糙度圖,則最終值將是兩者的產物。
+  如果同時提供了粗糙度值和粗糙度對應，最後的值會是兩者的乘積。
 
-* **金屬性和****金屬度Map:** 在物理學中,此屬性對應於表面是導電的還是介電的。 導電材料具有不同的反射性能,並且往往反射無反光色。 在 PBR 材質中,此屬性會影響曲面反映周圍環境的頻率。 值範圍從`0.0`到`1.0`。 當金屬性時`0.0`,二貝多色是完全可見的,材料看起來像塑膠或陶瓷。 當金屬性時`0.5`,它看起來像是漆金屬。 當金屬性時`1.0`,表面幾乎完全失去其白度顏色,只反映周圍環境。 `metalness`例如,如果`1.0`是,`roughness``0.0`則曲面看起來像真實世界的鏡像。
+* **metalness**和**metalnessMap：** 在物理中，此屬性會對應至介面為導電或 dielectric。 「導電材質」具有不同的反射屬性，而且通常會反映不 albedo 的色彩。 在 .PBR 材質中，此屬性會影響表面反映周圍環境的程度。 值的範圍`0.0`從`1.0`到。 當 metalness 為`0.0`時，albedo 色彩會完全可見，而且材質看起來像是塑膠或 ceramics。 當 metalness 為`0.5`時，它看起來像是 [繪製金屬]。 當 metalness 為`1.0`時，表面幾乎完全失去其 albedo 色彩，而且只會反映周圍的環境。 `metalness`例如，如果`1.0`是，而`roughness`是`0.0` ，則表面看起來就像真實世界的鏡像。
 
-  如果同時提供金屬度值和金屬度貼圖,則最終值將是兩者的產品。
+  如果同時提供 metalness 值和 metalness 對應，最後的值會是兩者的乘積。
 
-  ![金屬性和粗糙度](./media/metalness-roughness.png)
+  ![metalness 和粗糙度](./media/metalness-roughness.png)
 
-  在上圖中,右下角的球體看起來像真正的金屬材料,左下角看起來像陶瓷或塑膠。 色白性顏色也根據物理屬性而變化。 隨著粗糙度的增加,材料會失去反射銳度。
+  在上圖中，右下角的球面看起來像是一個真實的金屬材料，左下方看起來像 ceramic 或塑膠。 Albedo 色彩也會根據實體屬性而變更。 隨著粗糙度的增加，材質會失去反映清晰度。
 
-* **正常映射:** 要模擬細粒度細節,可以提供[法貼圖](https://en.wikipedia.org/wiki/Normal_mapping)。
+* **normalMap：** 若要模擬精細的詳細資料，可以提供[一般對應](https://en.wikipedia.org/wiki/Normal_mapping)。
 
-* **遮擋貼圖**和**aoScale:**[環境遮擋](https://en.wikipedia.org/wiki/Ambient_occlusion)通過將陰影添加到遮擋區域,使具有縫隙的對象看起來更逼真。 `0.0`遮擋值範圍從`1.0`到`0.0`,其中 表示黑暗(遮擋`1.0`),表示 沒有遮擋。 如果 2D 紋理作為遮擋貼圖提供,則啟用效果 *,aoScale*充當乘數。
+* **occlusionMap**和**aoScale：** [環境遮蔽](https://en.wikipedia.org/wiki/Ambient_occlusion)藉由將陰影新增至 pixels occluded 區域，讓具有 crevices 的物件看起來更逼真。 遮蔽值的範圍`0.0`從`1.0`到， `0.0`其中表示暗度（pixels occluded） `1.0` ，表示沒有遮蔽。 如果將2D 材質當做遮蔽地圖提供，就會啟用效果，而*aoScale*會作為乘數。
 
-  ![遮擋貼圖](./media/boom-box-ao2.gif)
+  ![遮蔽地圖](./media/boom-box-ao2.gif)
 
-* **透明:** 對於 PBR 材質,只有一個透明度設置:是否啟用。 不一定是由色光的Alpha通道定義的。 啟用後,將調用更複雜的渲染管道來繪製半透明曲面。 Azure 遠端呈現實現真實[順序獨立透明度](https://en.wikipedia.org/wiki/Order-independent_transparency)(OIT)。
+* **透明：** 若是 .PBR 材質，只有一個透明度設定：已啟用或不是。 不透明度是由 albedo 色彩的 Alpha 色板所定義。 啟用時，會叫用較複雜的呈現管線，以繪製半透明表面。 Azure 遠端呈現會執行真正的[順序獨立透明度](https://en.wikipedia.org/wiki/Order-independent_transparency)（OIT）。
 
-  透明幾何圖形的渲染成本很高。 如果只需要曲面上的孔,例如樹的葉子,最好改用 Alpha 裁剪。
+  透明幾何的呈現成本很高。 如果您只需要介面中的洞（例如，針對樹狀結構的葉），最好改用 Alpha 裁剪。
 
-  ![透明度](./media/transparency.png)通知在上面的圖像中,最右邊的球體是如何完全透明的,但反射仍然可見。
+  ![上](./media/transparency.png)圖中的透明度注意事項、最右邊的球體如何完全透明，但反映仍然可見。
 
   > [!IMPORTANT]
-  > 如果任何材質在執行時應從不透明切換到透明,則渲染器必須使用*基於 Tile 的合成*[呈現模式](../../concepts/rendering-modes.md)。 此限制不適用於首先轉換為透明材料的材料。
+  > 如果在執行時間應該將任何材質從不透明切換為透明，轉譯器就必須使用*TileBasedComposition*轉譯[模式](../../concepts/rendering-modes.md)。 這項限制不適用於轉換為透明材質一開始的材質。
 
 ## <a name="technical-details"></a>技術詳細資訊
 
-Azure 遠端渲染使用帶有 GGX NDF 的庫克-托倫斯微面 BRDF、Schlick Fresnel 和 GGX Smith 相關可見性術語,帶有蘭伯特漫反射術語。 這種模式是目前事實上的行業標準。 有關更深入的詳細資訊,請參閱本文:[基於物理的渲染 - 烹飪托倫斯](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Azure 遠端轉譯會使用 Torrance 的微 facet BRDF 搭配 GGX NDF、Schlick Fresnel 和 GGX Smith 相互關聯的可見度詞彙與 Lambert 擴散詞彙。 這個模型是目前事實上的業界標準。 如需更深入的詳細資料，請參閱這篇文章：以實體為[基礎的轉譯-Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
- Azure 遠端渲染中使用的*金屬粗糙度*PBR 模型的替代是*鏡面光澤*PBR 模型。 此模型可以代表更廣泛的材料範圍。 但是,它更昂貴,通常不適用於即時案例。
-並不總是可以轉換從*鏡面光澤*度到*金屬粗糙度*,因為有 *(漫反射,鏡面)* 值對不能轉換為 *(基礎顏色,金屬度)。* 其他方向的轉換更簡單、更精確,因為所有 *(BaseColor、金屬度)* 對都對應於定義良好的 *(漫反射、鏡面)* 對。
+ 在 Azure 遠端轉譯中使用的*Metalness-粗糙度*.pbr 模型的替代方式，是*反射-光澤*的 .pbr 模型。 此模型可以代表更廣泛的素材。 不過，它的成本較高，而且通常不適合用于即時案例。
+不一定可以從*反射-光澤*轉換成*Metalness-粗糙度*，因為有 *（擴散，鏡面）* 值組無法轉換為 *（BaseColor，Metalness）*。 另一個方向的轉換比較簡單且更精確，因為 all *（BaseColor，Metalness）* 配對會對應到妥善定義的 *（擴散、反射）* 配對。
 
 ## <a name="next-steps"></a>後續步驟
 
 * [色彩材質](color-materials.md)
 * [紋理](../../concepts/textures.md)
-* [格](../../concepts/meshes.md)
+* [網狀](../../concepts/meshes.md)

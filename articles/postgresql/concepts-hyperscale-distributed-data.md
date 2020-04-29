@@ -1,6 +1,6 @@
 ---
-title: 分散式資料 = 超大規模（Citus） - 用於後格雷SQL的 Azure 資料庫
-description: 在用於 PostgreSQL 的 Azure 資料庫中瞭解分散式表、參考表、本地表和分片。
+title: 分散式資料–超大規模資料庫（Citus）-適用於 PostgreSQL 的 Azure 資料庫
+description: 瞭解適用於 PostgreSQL 的 Azure 資料庫中的分散式資料表、參考資料表、本機資料表和分區。
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -8,50 +8,50 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ade7632dc042741a07bdb59e34e30b3fb464e0e9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79243649"
 ---
-# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure 資料庫中的分散式資料，用於 PostgreSQL 和超大規模（Citus）
+# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>適用於 PostgreSQL 的 Azure 資料庫中的分散式資料–超大規模資料庫（Citus）
 
-本文概述了 Azure 資料庫中的三種表類型，用於 PostgreSQL 和超大規模 （Citus）。
-它顯示了分散式表如何存儲為分片，以及碎片放置在節點上的方式。
+本文概述適用於 PostgreSQL 的 Azure 資料庫–超大規模資料庫（Citus）中的三個數據表類型。
+它會顯示如何將分散式資料表儲存為分區，以及將分區放在節點上的方式。
 
 ## <a name="table-types"></a>資料表類型
 
-Hyperscale （Citus） 伺服器組中有三種類型的表，每種表都用於不同的用途。
+超大規模資料庫（Citus）伺服器群組中有三種類型的資料表，分別用於不同用途。
 
-### <a name="type-1-distributed-tables"></a>類型 1：分散式表
+### <a name="type-1-distributed-tables"></a>類型1：分散式資料表
 
-第一種類型（也是最常見的類型）是分散式表。 它們似乎是 SQL 語句的正常表，但它們跨工作節點水準分區。 這意味著表的行存儲在不同的節點上，在稱為分片的片段表中。
+第一種類型（最常見）是分散式資料表。 它們看起來就像是 SQL 語句的一般資料表，但是它們會在背景工作節點之間水準分割。 這表示資料表的資料列會儲存在不同的節點上，稱為分區的片段表中。
 
-超大規模 （Citus） 不僅在整個群集中運行 SQL，還運行 DDL 語句。
-更改分散式表的架構級聯以跨工作程式更新表的所有分片。
+超大規模資料庫（Citus）不僅會在整個叢集中執行 SQL，而是 DDL 語句。
+變更分散式資料表的架構，以在背景工作角色之間更新所有資料表的分區。
 
-#### <a name="distribution-column"></a>分發列
+#### <a name="distribution-column"></a>散發資料行
 
-超大規模 （Citus） 使用演算法分片將行分配給分片。 根據稱為分佈列的表列的值，確定分配。 分發表時，群集管理員必須指定此列。
-做出正確的選擇對於性能和功能非常重要。
+超大規模資料庫（Citus）使用演算法分區化將資料列指派給分區。 指派是根據稱為散發資料行之資料表資料行的值來做出決定性的。 散發資料表時，叢集系統管理員必須指定這個資料行。
+做出正確的選擇對於效能和功能非常重要。
 
-### <a name="type-2-reference-tables"></a>類型 2：參考表
+### <a name="type-2-reference-tables"></a>類型2：參考資料表
 
-參考表是一種分散式表，其整個內容集中到單個分片中。 分片將複製到每個工作執行緒上。 任何工作人員的查詢都可以在本地訪問引用資訊，而無需從另一個節點請求行的網路開銷。 引用表沒有分佈列，因為無需區分每行的單獨分片。
+參考資料表是一種分散式資料表，其完整內容會集中在單一分區中。 分區會在每個背景工作上複寫。 任何工作者的查詢都可以在本機存取參考資訊，而不需要從另一個節點要求資料列的網路額外負荷。 參考資料表沒有散發資料行，因為不需要區分每個資料列的個別分區。
 
-引用表通常很小，用於存儲與任何輔助節點上運行的查詢相關的資料。 例如枚舉值，如訂單狀態或產品類別。
+參考資料表通常很小，用來儲存與任何背景工作節點上執行之查詢相關的資料。 範例是列舉的值，例如訂單狀態或產品類別。
 
-### <a name="type-3-local-tables"></a>類型 3：本地表
+### <a name="type-3-local-tables"></a>類型3：本機資料表
 
-使用超大規模 （Citus） 時，連接到的協調員節點是常規 PostgreSQL 資料庫。 您可以在協調器上創建普通表，並選擇不分片。
+當您使用超大規模資料庫（Citus）時，您連接的協調器節點是一般的于 postgresql 資料庫。 您可以在協調器上建立一般資料表，並選擇不分區它們。
 
-本地表的一個好候選是不參與聯接查詢的小型管理表。 例如，應用程式登錄和身份驗證的使用者表。
+對於本機資料表而言，理想的候選就是不參與聯結查詢的小型系統管理資料表。 例如，應用程式登入和驗證的使用者資料表。
 
-## <a name="shards"></a>碎片
+## <a name="shards"></a>分區
 
-上一節介紹了如何在輔助節點上將分散式表存儲為分片。 本節討論更多的技術細節。
+上一節說明如何在背景工作節點上將分散式資料表儲存為分區。 本節討論更多的技術詳細資料。
 
-協調`pg_dist_shard`器上的中繼資料表包含系統中每個分散式表的每個分片的行。 該行將分片 ID 與雜湊空間中的一系列整數（分片值、分片最大值）匹配。
+協調`pg_dist_shard`器上的中繼資料表會針對系統中每個分散式資料表的每個分區，各包含一個資料列。 資料列符合雜湊空間（shardminvalue，shardmaxvalue）中具有整數範圍的分區識別碼。
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -64,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-如果協調器節點想要確定哪些分片包含一`github_events`行，它將對行中的分佈列的值進行雜湊。 然後，分片\'範圍的節點檢查包含雜湊值。 定義範圍，以便雜湊函數的圖像是它們不相交的聯合。
+如果協調器節點想要判斷哪些分區包含的資料列`github_events`，它會雜湊資料列中散發資料行的值。 然後，節點會檢查哪個\'分區 s 範圍包含雜湊值。 系統會定義範圍，讓雜湊函式的影像為其脫離聯集。
 
-### <a name="shard-placements"></a>碎片放置
+### <a name="shard-placements"></a>分區放置
 
-假設分片 102027 與有問題的行相關聯。 該行在其中一個輔助器中調用`github_events_102027`的表中讀取或寫入。 哪個工人？ 這完全由中繼資料表決定。 碎片映射到輔助角色稱為分片放置。
+假設分區102027與有問題的資料列相關聯。 資料列會讀取或寫入其中一個背景工作`github_events_102027`角色中名為的資料表。 哪個背景工作角色？ 這完全取決於中繼資料資料表。 分區與背景工作角色的對應稱為分區位置。
 
-協調器節點將查詢重寫為引用特定表的`github_events_102027`片段，並在相應的輔助程式上運行這些片段。 下面是一個查詢在後臺運行的示例，以查找包含分片 ID 102027 的節點。
+協調器節點會將查詢重寫為參考特定資料表（例如`github_events_102027` ）的片段，並在適當的背景工作上執行這些片段。 以下是在幕後執行查詢的範例，以找出持有分區識別碼102027的節點。
 
 ```sql
 SELECT
@@ -91,4 +91,4 @@ WHERE shardid = 102027;
     └─────────┴───────────┴──────────┘
 
 ## <a name="next-steps"></a>後續步驟
-- 瞭解如何為分散式表[選擇分發列](concepts-hyperscale-choose-distribution-column.md)。
+- 瞭解如何為分散式資料表[選擇散發資料行](concepts-hyperscale-choose-distribution-column.md)。

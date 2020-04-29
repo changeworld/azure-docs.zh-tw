@@ -1,5 +1,5 @@
 ---
-title: Azure 快速路由：將 VNet 連結到電路：CLI
+title: Azure ExpressRoute：將 VNet 連結至線路： CLI
 description: 本文說明如何使用 Resource Manager 部署模型和 CLI 將虛擬網路 (VNet) 連結至 Azure ExpressRoute 線路。
 services: expressroute
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: cherylmc
 ms.openlocfilehash: fdd809bcba703dbd8f9ee1e7c18185fd20e4586f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476129"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>使用 CLI 將虛擬網路連線到 ExpressRoute 線路
@@ -19,11 +19,11 @@ ms.locfileid: "79476129"
 本文可協助您使用 CLI 將虛擬網路 (VNet) 連結到 Azure ExpressRoute 線路。 若要使用 Azure CLI 進行連結，您必須使用 Resource Manager 部署模型建立虛擬網路。 其可以位於相同的訂用帳戶中，或屬於另一個訂用帳戶。 如果您想要使用不同的方法將 VNet 連線到 ExpressRoute 線路，您可以從下列清單選取文章：
 
 > [!div class="op_single_selector"]
-> * [Azure 門戶](expressroute-howto-linkvnet-portal-resource-manager.md)
-> * [電源外殼](expressroute-howto-linkvnet-arm.md)
+> * [Azure 入口網站](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
-> * [視頻 - Azure 門戶](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
-> * [電源外殼（經典）](expressroute-howto-linkvnet-classic.md)
+> * [影片-Azure 入口網站](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
+> * [PowerShell （傳統）](expressroute-howto-linkvnet-classic.md)
 > 
 
 ## <a name="configuration-prerequisites"></a>組態必要條件
@@ -152,16 +152,16 @@ az network vpn-connection update --name ERConnection --resource-group ExpressRou
 
 *RoutingWeight* 的範圍是從 0 到 32000。 預設值為 0。
 
-## <a name="configure-expressroute-fastpath"></a>配置快速路由快速路徑 
-如果您的 ExpressRoute 電路位於[ExpressRoute Direct](expressroute-erdirect-about.md)上，並且虛擬 Newtork 閘道為超高性能或 ErGw3AZ，則可以啟用[ExpressRoute 快速路徑](expressroute-about-virtual-network-gateways.md)。 FastPath 改進了資料路徑節率，例如每秒資料包和本地網路和虛擬網路之間的每秒連接。 
+## <a name="configure-expressroute-fastpath"></a>設定 ExpressRoute FastPath 
+如果您的 ExpressRoute 線路位於[Expressroute Direct](expressroute-erdirect-about.md) ，而您的虛擬網路閘道是 Ultra 效能或 ErGw3AZ，您可以啟用[expressroute FastPath](expressroute-about-virtual-network-gateways.md) 。 FastPath 可改善資料路徑效能，例如每秒封包數和內部部署網路與虛擬網路之間的每秒連線數。 
 
-**在新連接上配置快速路徑**
+**在新連接上設定 FastPath**
 
 ```azurecli
 az network vpn-connection create --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true --vnet-gateway1 VNet1GW --express-route-circuit2 MyCircuit
 ```
 
-**更新現有連接以啟用 FastPath**
+**更新現有的連接以啟用 FastPath**
 
 ```azurecli
 az network vpn-connection update --name ERConnection --resource-group ExpressRouteResourceGroup --express-route-gateway-bypass true
