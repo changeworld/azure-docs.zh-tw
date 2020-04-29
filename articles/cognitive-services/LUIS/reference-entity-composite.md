@@ -1,7 +1,7 @@
 ---
-title: 複合實體類型 - LUIS
+title: 複合實體類型-LUIS
 titleSuffix: Azure Cognitive Services
-description: 複合實體由其他實體組成，如預構建實體、簡單、正則運算式和清單實體。 個別實體會構成一個完整的提體。
+description: 複合實體是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,15 +11,15 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71695158"
 ---
 # <a name="composite-entity"></a>複合實體 
 
-複合實體由其他實體組成，如預構建實體、簡單、正則運算式和清單實體。 個別實體會構成一個完整的提體。 
+複合實體是由其他實體所組成，例如預建實體、簡單、正則運算式和列出實體。 個別實體會構成一個完整的提體。 
 
 **當資料有下列特性時，最適用此實體：**
 
@@ -33,7 +33,7 @@ ms.locfileid: "71695158"
 
 ## <a name="example-json"></a>範例 JSON
 
-考慮預構建`number`的複合實體，並`Location::ToLocation`具有以下話語：
+請考慮使用預建`number`和`Location::ToLocation`下列語句的複合實體：
 
 `book 2 tickets to cairo`
 
@@ -91,7 +91,7 @@ ms.locfileid: "71695158"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-如果在`verbose=false`查詢字串中設置，則這是 JSON：
+如果`verbose=false`是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -108,7 +108,7 @@ ms.locfileid: "71695158"
 }
 ```
 
-如果在`verbose=true`查詢字串中設置，則這是 JSON：
+如果`verbose=true`是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -175,8 +175,8 @@ ms.locfileid: "71695158"
 |資料物件|實體名稱|值|
 |--|--|--|
 |預先建置的實體 - number|"builtin.number"|"2"|
-|預構建實體 - 地理V2|"Location::ToLocation"|"開羅"|
+|預先建立的實體-GeographyV2|"Location::ToLocation"|cairo|
 
 ## <a name="next-steps"></a>後續步驟
 
-在[本教程中](luis-tutorial-composite-entity.md)，添加一個**複合實體**，將各種類型的提取資料捆綁到單個包含實體中。 用戶端應用程式可藉由組合資料，輕鬆地擷取不同資料類型的相關資料。
+在本[教學](luis-tutorial-composite-entity.md)課程中，新增**複合實體**以將各種類型的已解壓縮資料組合成單一包含實體。 用戶端應用程式可藉由組合資料，輕鬆地擷取不同資料類型的相關資料。

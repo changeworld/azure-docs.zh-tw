@@ -1,7 +1,7 @@
 ---
-title: 支援和説明選項 - 語音服務
+title: 支援和協助選項-語音服務
 titleSuffix: Azure Cognitive Services
-description: 在創建與語音服務集成的應用程式時，如何獲得對問題和問題的説明和支援
+description: 當您建立與語音服務整合的應用程式時，如何取得問題和問題的說明及支援
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
 ms.openlocfilehash: d35c02386b7bcb18781dcbd8c209da43d590868c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76169518"
 ---
 # <a name="support-and-help-options"></a>支援和協助選項
@@ -22,8 +22,8 @@ ms.locfileid: "76169518"
 您剛開始探索語音服務的功能嗎？ 您的應用程式是否要實作新功能？ 開發人員可遵循以下建議來取得協助。
 
 > [!div class="checklist"]
-> * 隨時瞭解*Azure 認知服務*的新發展，或查找與*語音服務*相關的最新消息。
-> * 版本資訊包含所有版本的資訊。
+> * 隨時掌握*Azure 認知服務*的新發展，或尋找與*語音服務*相關的最新消息。
+> * 版本資訊包含所有版本的相關資訊。
 > * 搜尋以查看社群是否已經在討論您的問題，或者您想要實作的功能是否已有現有文件。
 > * 如果您找不到滿意的答案，請在 Stack Overflow** 上發問。
 > * 如果您發現 GitHub 上的其中一個範例有問題，請提出 GitHub** 問題。
@@ -31,11 +31,11 @@ ms.locfileid: "76169518"
 
 ## <a name="stay-informed"></a>掌握最新資訊
 
-認知服務的相關消息會收集在[認知服務部落格](https://azure.microsoft.com/blog/topics/cognitive-services/)中。 有關語音服務的最新資訊，跟蹤[語音服務博客](https://azure.microsoft.com/blog/tag/speech-service/)。
+認知服務的相關消息會收集在[認知服務部落格](https://azure.microsoft.com/blog/topics/cognitive-services/)中。 如需語音服務的最新資訊，請追蹤[語音服務的 blog](https://azure.microsoft.com/blog/tag/speech-service/)。
 
 ## <a name="release-notes"></a>版本資訊
 
-[版本資訊](https://aka.ms/csspeech/whatsnew)在新版本可用後立即更新。 這些說明包含有關新功能、改進和 Bug 修復的資訊。
+當有新版本可用時，就會立即更新[版本](https://aka.ms/csspeech/whatsnew)資訊。 這些附注包含新功能、改進和 bug 修正的相關資訊。
 
 ## <a name="search"></a>搜尋
 
@@ -55,7 +55,7 @@ ms.locfileid: "76169518"
 
 Azure 客戶可以在 Azure 入口網站中建立和管理支援要求。
 
-* [Azure 門戶](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure 入口網站](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [美國政府的 Azure 入口網站](https://portal.azure.us)
 
 ## <a name="create-a-github-issue"></a>建立 GitHub 問題
@@ -65,7 +65,7 @@ Azure 客戶可以在 Azure 入口網站中建立和管理支援要求。
 * [語音 SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
 * [語音裝置 SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
-您可以創建 Bug 報告、功能請求或提出一般問題並共用最佳實踐。 針對 Bug 報告，請依照所提供的範本進行操作：
+您可以建立 bug 報告、功能要求，或詢問一般問題並分享最佳作法。 針對 Bug 報告，請依照所提供的範本進行操作：
 
 **描述 Bug**
 
@@ -94,22 +94,22 @@ Azure 客戶可以在 Azure 入口網站中建立和管理支援要求。
 **額外內容**
 
  - 錯誤訊息、記錄資訊、堆疊追蹤...
- - 如果報告特定服務交互的錯誤，則報告報告事件的 SessionId 和時間（包括時區）。 在您收到的所有回呼/事件中都會回報 SessionId。
+ - 如果您針對特定的服務互動回報錯誤，請報告事件的 SessionId 和時間（包括時區）。 在您收到的所有回呼/事件中都會回報 SessionId。
  - 任何其他額外資訊
 
 ## <a name="post-a-question-to-stack-overflow"></a>在 Stack Overflow 張貼問題
 
 Stack Overflow 是適用於開發相關問題的慣用管道。 社群成員和 Microsoft 小組成員會在這裡直接參與以協助您解決問題。
 
-如果您無法通過搜索找到問題的答案，請使用[\[\]\[微軟認知語音\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)標籤向堆疊溢位提交一個新問題。
+如果您無法透過搜尋找到問題的解答，請使用[ \[ \] \[microsoft 認知語音\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)的標記將新問題提交至 Stack Overflow。
 
 > [!TIP]
 > Stack Overflow 的下列貼文包含如何提出問題以及新增原始程式碼的提示。 遵循這些指導方針有助於增加社群成員快速評估並回應您問題的機會：  
-> * [我該如何問一個好問題？](https://stackoverflow.com/help/how-to-ask)
-> * [如何創建最小、完整和可驗證的示例](https://stackoverflow.com/help/mcve)
+> * [如何? 問一個好問題嗎？](https://stackoverflow.com/help/how-to-ask)
+> * [如何建立最小、完整且可驗證的範例](https://stackoverflow.com/help/mcve)
 
 ## <a name="uservoice-forum"></a>UserVoice 論壇
 
 分享您的想法，讓認知服務和搭配的 API 更適合您所開發的應用程式。 您可以使用我們不斷擴充的知識庫來尋找常見問題的解答：
 
-[使用者語音](https://cognitive.uservoice.com/)
+[UserVoice](https://cognitive.uservoice.com/)

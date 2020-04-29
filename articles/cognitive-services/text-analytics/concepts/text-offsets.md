@@ -1,7 +1,7 @@
 ---
-title: 文本分析 API 中的文本偏移量
+title: 文字分析 API 中的文字位移
 titleSuffix: Azure Cognitive Services
-description: 瞭解多語言編碼和表情符號編碼造成的偏移量。
+description: 深入瞭解多語系和表情編碼所造成的位移。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,38 +12,38 @@ ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
 ms.openlocfilehash: 6e404c710a244f06676edf50c3f5c95a7d681e35
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221191"
 ---
-# <a name="text-offsets-in-the-text-analytics-api-output"></a>文本分析 API 輸出中的文本偏移量
+# <a name="text-offsets-in-the-text-analytics-api-output"></a>文字分析 API 輸出中的文字位移
 
-多語言和表情符號支援已導致 Unicode 編碼使用多個[代碼點](https://wikipedia.org/wiki/Code_point)來表示單個顯示的字元，稱為圖形學。 例如，🌷等表情符號，👍可以使用多個字元來組成具有視覺屬性的其他字元（如膚色）的形狀。 同樣，印度文單詞`अनुच्छेद`被編碼為五個字母和三個組合標記。
+多語系和表情支援導致 Unicode 編碼，使用一個以上的程式[代碼點](https://wikipedia.org/wiki/Code_point)來表示單一顯示的字元，稱為語素簇。 例如，emoji 就像🌷， 👍而且可能會使用數個字元來撰寫圖形，其中包含視覺屬性的其他字元，例如外觀色調。 同樣地，印度文`अनुच्छेद`單字會編碼為五個字母和三個組合標記。
 
-由於可能的多語言編碼和表情符號編碼長度不同，文本分析 API 可能會在回應中返回偏移量。
+因為多語系和表情編碼的長度不同，文字分析 API 可能會在回應中傳回位移。
 
-## <a name="offsets-in-the-api-response"></a>API 回應中的偏移量。 
+## <a name="offsets-in-the-api-response"></a>API 回應中的位移。 
 
-每當返回偏移時，API 回應（如[命名實體識別](../how-tos/text-analytics-how-to-entity-linking.md)或[情緒分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)）請記住以下內容：
+每當傳回位移時，API 回應（例如，[命名實體](../how-tos/text-analytics-how-to-entity-linking.md)辨識或[情感分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)），請記住下列事項：
 
-* 回應中的元素可能特定于調用的終結點。 
-* HTTP POST/GET 有效負載在[UTF-8](https://www.w3schools.com/charsets/ref_html_utf8.asp)中編碼，這可能是用戶端編譯器或作業系統上的預設字元編碼。
-* 偏移量是指基於[Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0)標準而不是字元計數的圖目數。
+* 回應中的元素可能是所呼叫之端點的特定專案。 
+* HTTP POST/GET 承載以[utf-8](https://www.w3schools.com/charsets/ref_html_utf8.asp)編碼，這在您的用戶端編譯器或作業系統上不一定是預設的字元編碼。
+* 位移會參考以[Unicode 8.0.0](https://unicode.org/versions/Unicode8.0.0)標準為基礎的語素簇計數，而不是字元計數。
 
-## <a name="extracting-substrings-from-text-with-offsets"></a>從具有偏移量的文本中提取子字串
+## <a name="extracting-substrings-from-text-with-offsets"></a>從包含位移的文字解壓縮子字串
 
-使用基於字元的子字串方法（例如 .NET[子字串）](https://docs.microsoft.com/dotnet/api/system.string.substring?view=netframework-4.8)方法時，偏移可能會導致問題。 一個問題是，偏移量可能會導致子字串方法以多字元圖目數編碼而不是結束結束結束。
+使用以字元為基礎的子字串方法（例如 .NET [substring （）方法）](https://docs.microsoft.com/dotnet/api/system.string.substring?view=netframework-4.8)時，位移可能會造成問題。 其中一個問題是，位移可能會導致 substring 方法在多字元語素簇編碼的中間結束，而不是結束。
 
-在 .NET 中，請考慮使用[StringInfo](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8)類，該類使您能夠將字串用作一系列文本元素，而不是單個字元物件。 您還可以在首選軟體環境中查找石墨分分器庫。 
+在 .NET 中，請考慮使用[system.globalization.stringinfo>](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo?view=netframework-4.8)類別，它可讓您使用字串做為一連串的文字元素，而不是個別的字元物件。 您也可以在慣用的軟體環境中尋找語素簇分隔器程式庫。 
 
-為了方便起見，文本分析 API 也返回這些文本元素。
+為了方便起見，文字分析 API 也會傳回這些文字元素。
 
 ## <a name="see-also"></a>另請參閱
 
 * [文字分析概觀](../overview.md)
 * [情感分析](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [實體識別](../how-tos/text-analytics-how-to-entity-linking.md)
+* [實體辨識](../how-tos/text-analytics-how-to-entity-linking.md)
 * [偵測語言種類](../how-tos/text-analytics-how-to-keyword-extraction.md)
 * [辨識語言](../how-tos/text-analytics-how-to-language-detection.md)

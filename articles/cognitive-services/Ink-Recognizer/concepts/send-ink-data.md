@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221531"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>將筆跡資料傳送至筆跡辨識器 API 
@@ -82,7 +82,7 @@ ms.locfileid: "79221531"
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>整合筆跡辨識器 API 與 Windows Ink
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) 提供各種工具和技術，因此能在各種裝置上實現數位筆跡體驗。 您可以將 Windows 墨蹟平臺與墨蹟識別器 API 相結合，以創建顯示和解釋數位筆跡描邊的應用程式。
+[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) 提供各種工具和技術，因此能在各種裝置上實現數位筆跡體驗。 您可以將 Windows Ink 平臺與筆跡辨識器 API 結合，以建立顯示和解讀數位筆跡筆劃的應用程式。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -91,5 +91,5 @@ ms.locfileid: "79221531"
 
 * 使用下列工具來開始傳送數位筆跡筆觸資料：
     * [C#](../quickstarts/csharp.md)
-    * [JAVA](../quickstarts/java.md)
-    * [JAVAscript](../quickstarts/javascript.md)
+    * [Java](../quickstarts/java.md)
+    * [JavaScript](../quickstarts/javascript.md)

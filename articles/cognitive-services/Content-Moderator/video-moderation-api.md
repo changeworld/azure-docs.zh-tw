@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72755229"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>使用 C# 分析視訊內容中的不當題材
@@ -40,7 +40,7 @@ Content Moderator 的影片仲裁功能是以 Azure 媒體服務 (AMS) 中免費
 
 在 [Azure AD 應用程式]**** 區段中，選取 [新建]****，並為您新的 Azure AD 應用程式註冊命名 (例如 "VideoModADApp")。 按一下 [儲存]****，在設定應用程式的同時，請稍候幾分鐘。 然後，您應該會在頁面的 [Azure AD 應用程式]**** 區段底下看到您新增的應用程式註冊。
 
-選取您的應用程式註冊，然後按一下其下方 [管理應用程式]**** 按鈕。 記下 [應用程式識別碼]**** 欄位中的值，稍後會需要它。 選擇**設置** > **鍵**，然後輸入新金鑰的說明（如"視頻ModKey"）。 按一下 [儲存]****，然後留意到新的金鑰值。 複製這個字串，並將它儲存在安全的位置。
+選取您的應用程式註冊，然後按一下其下方 [管理應用程式]**** 按鈕。 記下 [應用程式識別碼]**** 欄位中的值，稍後會需要它。 選取 [**設定** > ] [**金鑰**]，然後輸入新金鑰的描述（例如 "VideoModKey"）。 按一下 [儲存]****，然後留意到新的金鑰值。 複製這個字串，並將它儲存在安全的位置。
 
 如需上述程序更完整的逐步解說，請參閱[利用 Azure 入口網站開始使用 Azure AD 驗證](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad)。
 
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>設定資源參考
 
-將以下靜態欄位添加到_Program.cs_**中的程式**類。 這些欄位持有連線到您的 AMS 訂用帳戶的必要資訊。 使用您在上述步驟中取得的值填入這些欄位。 請注意，`CLIENT_ID` 是您 Azure AD 應用程式的**應用程式識別碼**值，而 `CLIENT_SECRET` 是您為該應用程式建立的 "VideoModKey"。
+將下列靜態欄位新增至_Program.cs_中的**Program**類別。 這些欄位持有連線到您的 AMS 訂用帳戶的必要資訊。 使用您在上述步驟中取得的值填入這些欄位。 請注意，`CLIENT_ID` 是您 Azure AD 應用程式的**應用程式識別碼**值，而 `CLIENT_SECRET` 是您為該應用程式建立的 "VideoModKey"。
 
 ```csharp
 // declare constants and globals
@@ -158,7 +158,7 @@ RunContentModeratorJob(asset);
 
 ### <a name="create-an-azure-media-context"></a>建立 Azure 媒體內容
 
-將下列方法新增至 Program**** 類別。 這會使用您的 AMS 認證來允許對 AMS 的通訊。
+將下列方法新增至 **Program** 類別。 這會使用您的 AMS 認證來允許對 AMS 的通訊。
 
 ```csharp
 // Creates a media context from azure credentials
@@ -179,7 +179,7 @@ static void CreateMediaContext()
 
 ### <a name="add-the-code-to-create-an-azure-storage-context"></a>新增程式碼以建立 Azure 儲存體內容
 
-將下列方法新增至 Program**** 類別。 您會使用儲存體內容 (從您的儲存體認證建立)，來存取您的 Blob 儲存體。
+將下列方法新增至 **Program** 類別。 您會使用儲存體內容 (從您的儲存體認證建立)，來存取您的 Blob 儲存體。
 
 ```csharp
 // Creates a storage context from the AMS associated storage name and key

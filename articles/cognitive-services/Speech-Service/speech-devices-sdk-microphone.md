@@ -1,7 +1,7 @@
 ---
-title: 語音設備 SDK 麥克風陣列建議
+title: 語音裝置 SDK 麥克風陣列建議
 titleSuffix: Azure Cognitive Services
-description: 語音設備 SDK 麥克風陣列建議。 建議將這些陣列幾何體與 Microsoft 音訊堆疊一起使用。
+description: 語音裝置 SDK 麥克風陣列建議。 建議將這些陣列幾何用於 Microsoft 音訊堆疊。
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,105 +11,105 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
 ms.openlocfilehash: a87bdd7a55036e8b70f0bc5816d2b587c1569202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77168129"
 ---
-# <a name="speech-devices-sdk-microphone-array-recommendations"></a>語音設備 SDK 麥克風陣列建議
+# <a name="speech-devices-sdk-microphone-array-recommendations"></a>語音裝置 SDK 麥克風陣列建議
 
-在本文中，您將瞭解如何為語音設備 SDK 設計麥克風陣列。
+在本文中，您將瞭解如何設計「語音裝置 SDK」的麥克風陣列。
 
-語音設備 SDK 最適合根據以下準則（包括麥克風幾何形狀和元件選擇）設計的麥克風陣列。 還就集成和電氣注意事項提供了指導。
+語音裝置 SDK 最適合使用已根據下列指導方針設計的麥克風陣列，包括麥克風幾何和元件選取。 同時也提供整合和電氣考慮的指導方針。
 
-## <a name="microphone-geometry"></a>麥克風幾何形狀
+## <a name="microphone-geometry"></a>麥克風幾何
 
-建議使用以下陣列幾何體與 Microsoft 音訊堆疊一起使用。 隨著對特定應用程式、使用者方案和設備外形的依賴的麥克風數量增加，聲源的位置和環境雜訊的抑制得到了改進。
+建議將下列陣列幾何用於 Microsoft 音訊堆疊。 具有特定應用程式、使用者案例和裝置外型規格之相依性的更多麥克風，因而改善了音效來源的位置和環境雜訊的拒絕。
 
 |     | 圓形陣列 |     | 線性陣列 |     |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
 | \#麥克風 | 7 | 4 | 4 | 2 |
-| 幾何 | 6 外，1 中心，半徑 = 42.5 毫米，均勻間隔 | 3 外，1 中心，半徑 = 42.5 毫米，均勻間隔 | 長度 = 120 mm，間距 = 40 mm | 間距 = 40 mm |
+| 幾何 | 6個外部，1個中心，半徑 = 42.5 mm，平均間距 | 3個外部，1個中心，半徑 = 42.5 mm，平均間距 | 長度 = 120 mm，間距 = 40 mm | 間距 = 40 mm |
 
-麥克風通道應根據上述每個陣列的編號排序，從 0 增加到 0。 Microsoft 音訊堆疊將需要額外的音訊播放引用流來執行回聲取消。
+您應該根據上述每個陣列所描述的編號來排序麥克風頻道，從0增加。 Microsoft 音訊堆疊需要音訊播放的額外參考串流，才能執行 echo 取消作業。
 
-## <a name="component-selection"></a>元件選擇
+## <a name="component-selection"></a>元件選取
 
-應選擇麥克風元件，以準確再現無雜訊和失真的信號。
+應選取麥克風元件，以精確地重現無雜訊和失真的信號。
 
-選擇麥克風時，推薦的屬性是：
+選取麥克風時的建議屬性如下：
 
 | 參數 | 建議 |
 | --------- | ----------- |
-| 信 噪 比 | \>• 65 dB（1 kHz 信號 94 dBSPL，A 加權雜訊） |
-| 振幅匹配 | ± 1 dB = 1 kHz |
-| 相位匹配 | ± 2° × 1 千赫 |
-| 聲學超載點 （AOP） | \>• 120 dBSPL （THD = 10%） |
-| 位元速度 | 最小 24 位 |
+| SNR | \>= 65 dB （1 kHz 信號 94 dBSPL，加權雜訊） |
+| 波幅比對 | ± 1 dB @ 1 kHz |
+| 階段對應 | ±2° @ 1 kHz |
+| 聲場超載點（AOP） | \>= 120 dBSPL （THD = 10%） |
+| 位元速度 | 最小24位 |
 | 取樣率 | 最小 16 kHz\* |
-| 頻率回應 | • 3 dB，200-8000 Hz 浮動蒙版\* |
-| 可靠性 | 儲存溫度範圍 -40°C 至 70°C<br />工作溫度範圍 -20°C 至 55°C |
+| 頻率回應 | ± 3 dB，200-8000 Hz 浮動遮罩\* |
+| 可靠性 | 儲存溫度範圍-40 ° C 至70° C<br />操作溫度範圍-20 ° C 到55° C |
 
-\*_對於高品質的通信 （VoIP） 應用，可能需要更高的取樣速率或"更寬"的頻率範圍_
+\*_高品質通訊（VoIP）應用程式可能需要較高的取樣率或「更寬」頻率範圍_
 
-良好的元件選擇必須與良好的電聲集成配對，以避免損害所用元件的性能。 獨特的用例可能還需要額外的要求（例如：工作溫度範圍）。
+良好的元件選取範圍必須與良好的 electroacoustic 整合配對，才能避免損害所使用元件的效能。 唯一的使用案例可能也會需要額外的需求（例如：操作溫度範圍）。
 
-## <a name="microphone-array-integration"></a>麥克風陣列集成
+## <a name="microphone-array-integration"></a>麥克風陣列整合
 
-集成到設備中時，麥克風陣列的性能將不同于元件規範。 請務必確保話筒在集成後匹配良好。 因此，在任何固定增益或 EQ 之後測量的設備性能應符合以下建議：
+整合到裝置時，麥克風陣列的效能會與元件規格不同。 在整合之後，請務必確定麥克風的相符程度很重要。 因此，在任何固定增益或 EQ 之後測量的裝置效能應該符合下列建議：
 
 | 參數          | 建議                                        |
 | ------------------ | -------------------------------------------------- |
-| 信 噪 比                | \>63 dB （1 kHz 信號 94 dBSPL，A 加權雜訊） |
-| 輸出靈敏度 | -26 dBFS/Pa = 1 kHz（推薦）                  |
-| 振幅匹配 | ± 2 dB，200-8000 Hz                                |
-| THD%\*             | • 1%，200-8000 Hz，94 dBSPL，第 5 階             |
-| 頻率回應 | • 6 dB，200-8000 Hz 浮動蒙版\*\*              |
+| SNR                | \>63 dB （1 kHz 信號 94 dBSPL，加權雜訊） |
+| 輸出敏感度 | -26 dBFS/Pa @ 1 kHz （建議使用）                  |
+| 波幅比對 | ± 2 dB，200-8000 Hz                                |
+| THD%\*             | ≤1%，200-8000 Hz，94 dBSPL，第5順序             |
+| 頻率回應 | ±6資料庫，200-8000 Hz 浮動遮罩\*\*              |
 
-\*\*_測量 THD 需要低失真揚聲器（例如 Neumann KH120）_
+\*\*_需要低扭曲喇叭來測量 THD （例如 Neumann KH120）_
 
-\*\*_高品質通信 （VoIP） 應用可能需要"更寬"的頻率範圍_
+\*\*_高品質通訊（VoIP）應用程式可能需要「更寬」頻率範圍_
 
-## <a name="speaker-integration-recommendations"></a>揚聲器集成建議
+## <a name="speaker-integration-recommendations"></a>演講者整合建議
 
-由於包含揚聲器的語音辨識設備需要回聲消除，因此為揚聲器選擇和集成提供了其他建議。
+當包含喇叭的語音辨識裝置需要回應取消時，會針對說話者選取和整合提供其他建議。
 
 | 參數 | 建議 |
 | --------- | ----------- |
-| 線性度注意事項 | 揚聲器引用後無需非線性處理，否則需要基於硬體的環回引用流 |
-| 揚聲器環回 | 通過 WASAPI、專用 API、自訂 ALSA 外掛程式 （Linux） 提供或通過固件通道提供 |
-| THD% | 第三個八度頻段最小 5 階，70 dBA 重播 = 0.8 m = 6.3%，315-500 Hz = 5%，630-5000 Hz |
-| 回聲耦合到麥克風 | \>-10 dB TCLw 使用 ITU-T G.122 附件 B.4 方法，標準化為麥克風電平<br />TCLw = TCLw 測量\+（測量電平 - 目標輸出靈敏度）<br />TCLw = TCLw 測量\+（測量級別 - （-26）） |
+| 線性考慮 | 說話者參考後不進行非線性處理，否則需要以硬體為基礎的回送參考資料流 |
+| 喇叭回送 | 透過 WASAPI、私用 Api、自訂 ALSA 外掛程式（Linux）提供，或透過固件通道提供 |
+| THD% | 第三個 Octave 區段最少5個訂單，70 dBA 播放 @ 0.8 m ≤6.3%，315-500 Hz ≤5%，630-5000 Hz |
+| 回應與麥克風的結合 | \>-使用 ITU-T G. 122 附錄 B. 4 方法，正規化為 mic 層級的10個資料庫 TCLw<br />TCLw = TCLwmeasured \+ （測量的層級目標輸出敏感度）<br />TCLw = TCLwmeasured \+ （測量層級-（-26）） |
 
-## <a name="integration-design-architecture"></a>集成設計架構
+## <a name="integration-design-architecture"></a>整合設計架構
 
-將麥克風集成到設備中時，需要以下體系結構指南：
+將麥克風整合到裝置時，需要下列架構指導方針：
 
 | 參數 | 建議 |
 | --------- | -------------- |
-| 麥克風埠相似性 | 所有麥克風埠在陣列中的長度相同 |
-| 麥克風埠尺寸 | 埠尺寸 ±0.8-1.0 mm。 埠長度/ 埠\<直徑 2 |
-| 麥克風密封         | 密封墊片在堆疊中均勻實現。 建議\>泡沫墊片的壓縮率為 70% |
-| 麥克風可靠性     | 網格應用於防止灰塵和入口（底部移植麥克風的 PCB 和密封墊片/頂蓋之間） |
-| 麥克風隔離       | 橡膠墊片和振動通過結構分離，特別是用於隔離由於集成揚聲器造成的任何振動路徑 |
-| 採樣時鐘      | 設備音訊必須無抖動和低漂移的跌落 |
-| 記錄功能   | 設備必須能夠同時記錄單個通道原始流 |
-| USB                 | 所有 USB 音訊輸入裝置都必須根據[USB 音訊裝置 Rev3 規範](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement)設置描述項 |
-| 麥克風幾何 | 驅動程式必須正確實現[麥克風陣列幾何描述項](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry) |
-| 可搜尋性     | 設備不得具有任何不可發現或無法控制的硬體、固件或基於協力廠商軟體的非線性音訊處理演算法。 |
-| 捕獲格式      | 捕獲格式必須使用最小採樣速率為 16 kHz 和推薦的 24 位深度 |
+| Mic 埠相似性 | 陣列中所有麥克風埠的長度都相同 |
+| Mic 埠維度 | 埠大小Ø 0.8-1.0 mm。 埠長度/埠直徑\< 2 |
+| Mic 密封         | 在堆疊中以一致方式實作為的密封墊片。 為\>泡沫塑膠墊片建議70% 的壓縮比率 |
+| Mic 可靠性     | 網格應該用來防止灰塵和輸入（在適用于下一個移植麥克風的 PCB 和密封襯墊/頂端封面之間） |
+| Mic 隔離       | 透過結構的橡膠墊片和震動分離，特別是為了隔離任何震動路徑，因為整合式喇叭 |
+| 取樣時鐘      | 裝置音訊必須沒有抖動，而且有低漂移的下降 |
+| 記錄功能   | 裝置必須能夠同時記錄個別通道的原始資料流程 |
+| USB                 | 所有 USB 音訊輸入裝置都必須根據[USB 音訊裝置 Rev3 規格](https://www.usb.org/document-library/usb-audio-devices-rev-30-and-adopters-agreement)設定描述項 |
+| 麥克風幾何 | 驅動程式必須正確地執行[麥克風陣列幾何描述](https://docs.microsoft.com/windows-hardware/drivers/audio/ksproperty-audio-mic-array-geometry)項 |
+| 可搜尋性     | 裝置不得將任何 & 或無法控制硬體、固件或以協力廠商軟體為基礎的非線性音訊處理演算法提供給裝置 |
+| Capture 格式      | 捕捉格式必須使用 16 kHz 的最低取樣率和建議的24位深度 |
 
-## <a name="electrical-architecture-considerations"></a>電氣架構注意事項
+## <a name="electrical-architecture-considerations"></a>電力架構考慮
 
-在適用的情況下，陣列可以連接到 USB 主機（如運行 Microsoft 音訊堆疊的 SoC）和與語音服務或其他應用程式的介面。
+如果適用的話，陣列可能會連接到 USB 主機（例如執行 Microsoft 音訊堆疊的 SoC）以及語音服務或其他應用程式的介面。
 
-硬體元件（如 PDM 到 TDM 轉換）應確保將麥克風的動態範圍和 SNR 保存在重新採樣器中。
+硬體元件（例如 PDM 到 TDM 轉換）應確保在重新取樣器中保留麥克風的動態範圍和 SNR。
 
-任何音訊 MCU 都應支援高速 USB 音訊等級 2.0，以便為取樣速率和位深度高達 7 個通道提供必要的頻寬。
+在任何音訊 Mcu 中，都應該支援高速 USB 音訊類別2.0，以提供最多七個頻道的必要頻寬（以較高的取樣率和位深度表示）。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [瞭解有關語音設備 SDK 的更多內容](speech-devices-sdk.md)
+> [深入瞭解語音裝置 SDK](speech-devices-sdk.md)

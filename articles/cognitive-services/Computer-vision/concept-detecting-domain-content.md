@@ -1,5 +1,5 @@
 ---
-title: 特定于域的內容 - 電腦視覺
+title: 特定領域內容-電腦視覺
 titleSuffix: Azure Cognitive Services
 description: 了解如何指定影像分類網域，以傳回影像的詳細資訊。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 8d6dc91ae7bb0f6d7a24064749d9295558a7d39c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68946331"
 ---
 # <a name="detect-domain-specific-content"></a>偵測特定領域內容
@@ -30,7 +30,7 @@ ms.locfileid: "68946331"
 
 以下是針對指定的影像由 **models/celebrities/analyze** API 傳回的 JSON 回應範例：
 
-![薩蒂亞·納德拉站著，面帶微笑](./images/satya.jpeg)
+![Satya Nadella 的梯，微笑](./images/satya.jpeg)
 
 ```json
 {
@@ -100,7 +100,7 @@ ms.locfileid: "68946331"
 
 目前，電腦視覺支援下列特定領域模型：
 
-| 名稱 | 描述 |
+| Name | 描述 |
 |------|-------------|
 | 名人 | 支援 `people_` 類別中分類影像的名人辨識 |
 | 地標 | 支援 `outdoor_` 或 `building_` 類別中分類影像的地標辨識 |

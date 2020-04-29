@@ -1,7 +1,7 @@
 ---
-title: 學習複習工具概念 - 內容檢閱者
+title: 學習審查工具概念-內容仲裁
 titleSuffix: Azure Cognitive Services
-description: 瞭解內容審閱人審閱工具，這是一個協調聯合 AI 和人工審核審核工作的網站。
+description: 瞭解內容仲裁審查工具，此網站會協調合併的 AI 和人工審核審核工作。
 services: cognitive-services
 author: PatrickFarley
 manager: mikemcca
@@ -11,42 +11,42 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
 ms.openlocfilehash: a23e6d46ee6e79fd7a5cabf4434c561f7d83b31b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76169512"
 ---
-# <a name="content-moderator-review-tool"></a>內容檢閱者審閱工具
+# <a name="content-moderator-review-tool"></a>內容仲裁審查工具
 
-Azure 內容審閱人提供的服務是將機器學習內容審核與人工審閱相結合，[而"審閱"工具](https://contentmoderator.cognitive.microsoft.com)網站是方便使用的前端，提供對這些服務的詳細訪問。
+Azure 內容仲裁提供的服務可結合機器學習內容仲裁與人工審核，而[審核工具](https://contentmoderator.cognitive.microsoft.com)網站是方便使用的前端，可提供這些服務的詳細存取權。
 
-![瀏覽器中的審閱工具儀表板](./images/0-dashboard.png)
+![瀏覽器中的審核工具儀表板](./images/0-dashboard.png)
 
 ## <a name="what-it-does"></a>作用
 
-與機器輔助的審核 API 結合使用時，"[審閱"工具](https://contentmoderator.cognitive.microsoft.com)允許您在內容審核過程中完成以下任務：
+[審核工具](https://contentmoderator.cognitive.microsoft.com)搭配電腦輔助審核 api 使用時，可讓您在內容仲裁程式中完成下列工作：
 
-- 使用一組工具來調節多種格式（文本、圖像和視頻）的內容。
-- 當審核 API 結果出來時，自動創建人工[評審](../review-api.md#reviews)。
-- 將內容評審分配或上報給多個審核團隊，按內容類別別或體驗級別組織。
-- 使用預設或自訂邏輯篩選器 （[工作流](../review-api.md#workflows)） 對內容進行排序和跟蹤，而無需編寫任何代碼。
-- 使用[連接器](./configure.md#connectors)處理內容與 Microsoft PhotoDNA、文本分析和人臉服務以及內容審閱人 API。
-- 構建您自己的連接器，為任何 API 或業務流程創建工作流。
+- 使用一組工具來以多種格式（文字、影像和影片）來審核內容。
+- 在仲裁 API 結果出現時，自動建立人工[審核](../review-api.md#reviews)。
+- 將內容審查指派或呈報給多個審查小組，並依內容類別別或經驗層級組織。
+- 使用預設或自訂邏輯篩選（[工作流程](../review-api.md#workflows)）來排序和追蹤內容，而不需要撰寫任何程式碼。
+- 除了內容仲裁 Api 之外，您還可以使用[連接器](./configure.md#connectors)來處理 Microsoft PhotoDNA、文字分析和臉部服務的內容。
+- 建立您自己的連接器，為任何 API 或商務程式建立工作流程。
 - 取得您內容審核程序的關鍵效能計量。
 
-## <a name="review-tool-dashboard"></a>查看工具儀表板
+## <a name="review-tool-dashboard"></a>審查工具儀表板
 
-在 **"儀表板"** 選項卡上，您可以看到工具中完成的內容評審的關鍵指標。 查看圖像、文本和視頻內容的總、完整和掛起評論數。 您還可以查看已完成審核的使用者和團隊以及已應用的審核標記的細分。
+在 [**儀表板**] 索引標籤上，您可以看到在工具中完成之內容審查的重要計量。 查看影像、文字和影片內容的總計、完整和暫止的評論數目。 您也可以查看已完成評論的使用者和小組的細目，以及已套用的審核標記。
 
 ![檢視儀表板](images/0-dashboard.png)
 
-## <a name="review-tool-credentials"></a>查看工具憑據
+## <a name="review-tool-credentials"></a>審查工具認證
 
-使用["審閱"工具](https://contentmoderator.cognitive.microsoft.com)註冊時，系統將提示您為帳戶選擇 Azure 區域。 這是因為["審閱"工具](https://contentmoderator.cognitive.microsoft.com)為 Azure 內容檢閱者服務生成免費試用金鑰;因此，審核工具為 Azure 內容檢閱者服務生成免費試用金鑰。您需要此金鑰才能從 REST 調用或用戶端 SDK 訪問任何服務。 您可以通過選擇 **"設置** > **憑據**"來查看金鑰和 API 終結點 URL。
+當您註冊[審查工具](https://contentmoderator.cognitive.microsoft.com)時，系統會提示您為您的帳戶選取 Azure 區域。 這是因為[審查工具](https://contentmoderator.cognitive.microsoft.com)會為 Azure 內容仲裁服務產生免費試用金鑰;您將需要此金鑰，才能從 REST 呼叫或用戶端 SDK 存取任何服務。 您可以藉由選取 [**設定** > ] [**認證**] 來查看您的金鑰和 API 端點 URL。
 
 ![Content Moderator 認證](images/settings-6-credentials.png)
 
 ## <a name="next-steps"></a>後續步驟
 
-請參閱[配置審閱工具](./configure.md)以瞭解如何訪問審閱工具資源和更改設置。
+請參閱[設定審核工具](./configure.md)，以瞭解如何存取審核工具資源和變更設定。

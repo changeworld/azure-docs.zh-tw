@@ -1,7 +1,7 @@
 ---
-title: 查看使用者話語 - LUIS
+title: 審查使用者語句-LUIS
 titleSuffix: Azure Cognitive Services
-description: 查看通過主動學習捕獲的話語，以選擇意圖並為閱讀世界陳述標記實體;接受更改、培訓和發佈。
+description: 審查由主動式學習所捕捉到的語句，以選取意圖並標記實體以供讀取世界語句;接受變更、定型和發佈。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,59 +12,59 @@ ms.topic: conceptual
 ms.date: 01/27/2020
 ms.author: diberry
 ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221303"
 ---
-# <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何通過查看終結點陳述來改進 LUIS 應用
+# <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>如何藉由審查端點語句來改善 LUIS 應用程式
 
-查看端點陳述以進行正確預測的過程稱為["活動學習](luis-concept-review-endpoint-utterances.md)"。 活動學習捕獲終結點查詢並選擇使用者不確定的終結點陳述。 查看這些陳述以選擇這些讀取世界話語的意圖和標記實體。 接受這些更改到您的示例陳述中，然後培訓和發佈。 然後，LUIS 更準確地識別陳述。
+針對正確的預測來審查端點語句的程式稱為[主動式學習](luis-concept-review-endpoint-utterances.md)。 主動式學習會捕捉端點查詢，並選取不確定的使用者端點語句。 您可以檢查這些語句來選取意圖，並標記這些讀取世界語句的實體。 在您的範例語句中接受這些變更，然後進行定型和發佈。 然後，LUIS 會更準確地識別語句。
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="enable-active-learning"></a>啟用主動學習
+## <a name="enable-active-learning"></a>啟用主動式學習
 
-要啟用活動學習，必須記錄使用者查詢。 這是通過使用查詢字串參數和值調用[終結點查詢](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)來實現的`log=true`。
+若要啟用主動式學習，您必須記錄使用者查詢。 這是藉由呼叫具有`log=true` querystring 參數和值的[端點查詢](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)來完成。
 
-使用 LUIS 門戶構造正確的終結點查詢。
+使用 LUIS 入口網站來建立正確的端點查詢。
 
-1. 在[預覽 LUIS 門戶](https://preview.luis.ai/)中，從應用清單中選擇你的應用。
-1. 轉到 **"管理**"部分，然後選擇**Azure 資源**。
-1. 對於分配的預測資源，選擇 **"更改查詢參數**"。
-
-    > [!div class="mx-imgBorder"]
-    > ![使用 LUIS 門戶保存日誌，這是活動學習所必需的。](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
-
-1. 切換 **"保存"日誌**，然後通過選擇 **"完成"** 進行保存。
+1. 在[預覽 LUIS 入口網站](https://preview.luis.ai/)中，從應用程式清單中選取您的應用程式。
+1. 移至 [**管理**] 區段，然後選取 [ **Azure 資源**]。
+1. 針對指派的預測資源，選取 [**變更查詢參數**]。
 
     > [!div class="mx-imgBorder"]
-    > ![使用 LUIS 門戶保存日誌，這是活動學習所必需的。](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
+    > ![使用 LUIS 入口網站來儲存主動學習所需的記錄。](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+
+1. 藉由選取 [**完成**] 來切換**儲存記錄**檔，然後再加以儲存。
+
+    > [!div class="mx-imgBorder"]
+    > ![使用 LUIS 入口網站來儲存主動學習所需的記錄。](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
 
      此動作會藉由新增 `log=true` 查詢字串參數來變更範例 URL。 對執行階段端點進行預測查詢時，請複製並使用已變更的範例查詢 URL。
 
-## <a name="correct-intent-predictions-to-align-utterances"></a>更正意圖預測以對齊陳述
+## <a name="correct-intent-predictions-to-align-utterances"></a>更正意圖預測以對齊語句
 
 每個意圖都有建議的意圖顯示在 [一致的意圖]**** 資料行中。
 
 > [!div class="mx-imgBorder"]
-> [![查看 LUIS 不確定的終結點陳述](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
+> [![審查 LUIS 不確定的端點語句](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
 
-如果您同意該意圖，請選擇核取記號。 如果您不同意該建議，請從一致的意圖下拉式清單中選取正確的意圖，然後選取一致的意圖右邊的核取記號。 在核取記號上選擇後，陳述將移動到意圖，並從 **"查看終結點陳述"** 清單中刪除。
+如果您同意該意圖，請選取核取記號。 如果您不同意該建議，請從一致的意圖下拉式清單中選取正確的意圖，然後選取一致的意圖右邊的核取記號。 在您選取核取記號之後，語句會移至意圖，並從 [**審核端點語句**] 清單中移除。
 
 > [!TIP]
-> 請務必轉到"意向詳細資訊"頁，以查看和更正 **"查看終結點內容**"清單中所有示例陳述中的實體預測。
+> 請務必移至意圖詳細資料頁面，以從**審核端點語句**清單中的所有範例語句來審查和更正實體預測。
 
 ## <a name="delete-utterance"></a>刪除語句
 
 您可以從檢閱清單中刪除每個語句。 刪除後，它就不再出現於清單中。 即使使用者從端點輸入相同意圖，情況也是如此。
 
-如果您不確定是否應刪除陳述，請將其移動到"無"意圖，或創建一個新意圖，例如`miscellaneous`，並將陳述移動到該意圖。
+如果您不確定是否應該刪除語句，請將它移至 [無] 意圖，或建立新的意圖（例如`miscellaneous` ），並將語句移至該意圖。
 
-## <a name="disable-active-learning"></a>禁用活動學習
+## <a name="disable-active-learning"></a>停用主動式學習
 
-要禁用活動學習，請不要記錄使用者查詢。 這是通過使用`log=false`查詢字串參數和值設置[終結點查詢](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)來實現的，或者不使用查詢字串值，因為預設值為 false。
+若要停用主動式學習，請不要記錄使用者查詢。 這是藉由使用`log=false` querystring 參數和值來設定[端點查詢](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)，或不使用 querystring 值來完成，因為預設值為 false。
 
 ## <a name="next-steps"></a>後續步驟
 

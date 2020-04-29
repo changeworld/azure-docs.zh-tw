@@ -1,5 +1,5 @@
 ---
-title: 安裝與執行容器 - 文字分析
+title: 安裝和執行容器-文字分析
 titleSuffix: Azure Cognitive Services
 description: 本逐步解說教學課程的內容包含如何下載、安裝及執行適用於文字分析的容器。
 services: cognitive-services
@@ -12,24 +12,24 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 2d44df1bb828140e662b06ffbe5fb14f207f68e0
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876970"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安裝並執行文字分析容器
 
-容器使您能夠在您自己的環境中運行文本分析 API,並且非常適合特定的安全和數據治理要求。 Text Analytics 容器提供對原始文本的高級自然語言處理,包括三個主要功能:情緒分析、關鍵短語提取和語言檢測。 容器目前不支援實體連結。
+容器可讓您在自己的環境中執行文字分析 Api，而且非常適合您的特定安全性和資料控管需求。 文字分析容器提供原始文字的先進自然語言處理，並包含三個主要功能：情感分析、關鍵字組解壓縮和語言偵測。 容器目前不支援實體連結。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!IMPORTANT]
-> 免費帳戶每月限制為 5,000 筆交易,只有**免費**和**標準**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定價層<span class="docon docon-navigate-external x-hidden-focus"></span></a>對容器有效。 有關事務要求率的詳細資訊,請參閱[資料限制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)。
+> 免費帳戶限制為每月5000筆交易，只有**免費**和**標準**<a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">定價層<span class="docon docon-navigate-external x-hidden-focus"></span> </a>適用于容器。 如需交易要求率的詳細資訊，請參閱[資料限制](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-要運行任何文本分析容器,必須具有主機和容器環境。
+若要執行任何文字分析的容器，您必須擁有主機電腦和容器環境。
 
 ## <a name="preparation"></a>準備
 
@@ -39,7 +39,7 @@ ms.locfileid: "80876970"
 |--|--|
 |Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。| 
-|文字分析資源 |若要使用此容器，您必須具備：<br><br>取得關聯的 API 金鑰與終結點 URI 的 Azure[文字分析資源](../../cognitive-services-apis-create-account.md)。 這兩個值可在 Azure 入口網站的 [文字分析概觀和金鑰] 頁面上取得，需要這些值才能啟動容器。<br><br>**[API_KEY]**:**金鑰**頁上的兩個可用資源鍵之一<br><br>**[ENDPOINT_URI]**:**概述**頁上提供的終結點|
+|文字分析資源 |若要使用此容器，您必須具備：<br><br>Azure[文字分析資源](../../cognitive-services-apis-create-account.md)，用來取得相關聯的 API 金鑰和端點 URI。 這兩個值可在 Azure 入口網站的 [文字分析概觀和金鑰] 頁面上取得，需要這些值才能啟動容器。<br><br>**{API_KEY}**： [**金鑰**] 頁面上有兩個可用的資源金鑰之一<br><br>**{ENDPOINT_URI}**： [**總覽**] 頁面上所提供的端點|
 
 [!INCLUDE [Gathering required parameters](../../containers/includes/container-gathering-required-parameters.md)]
 
@@ -72,7 +72,7 @@ ms.locfileid: "80876970"
 
 ## <a name="get-the-container-image-with-docker-pull"></a>使用 `docker pull` 取得容器映像
 
-文本分析的容器映射可在Microsoft容器註冊表上提供。
+您可以在 Microsoft Container Registry 上取得文字分析的容器映射。
 
 # <a name="key-phrase-extraction"></a>[關鍵片語擷取](#tab/keyphrase)
 
@@ -90,7 +90,7 @@ ms.locfileid: "80876970"
 
 [!INCLUDE [Tip for using docker list](../../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
-### <a name="docker-pull-for-the-text-analytics-containers"></a>文字分析容器的 Docker 拉
+### <a name="docker-pull-for-the-text-analytics-containers"></a>文字分析容器的 Docker pull
 
 # <a name="key-phrase-extraction"></a>[關鍵片語擷取](#tab/keyphrase)
 
@@ -111,13 +111,13 @@ ms.locfileid: "80876970"
 容器位於[主機電腦](#the-host-computer)上時，請透過下列程序來使用容器。
 
 1. 使用所需的計費設定[執行容器](#run-the-container-with-docker-run)。 `docker run` 命令有相關[範例](../text-analytics-resource-container-config.md#example-docker-run-commands)可供參考。
-1. [查詢容器的預測終結點](#query-the-containers-prediction-endpoint)。
+1. [查詢容器的預測端點](#query-the-containers-prediction-endpoint)。
 
 ## <a name="run-the-container-with-docker-run"></a>透過 `docker run` 執行容器
 
-使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令來執行三個容器的其中一個。 有關如何獲取和`{ENDPOINT_URI}``{API_KEY}`值的詳細資訊,請參閱[「收集所需參數](#gathering-required-parameters)」。
+使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令來執行三個容器的其中一個。 如需如何取得`{ENDPOINT_URI}`和`{API_KEY}`值的詳細資訊，請參閱[收集必要的參數](#gathering-required-parameters)。
 
-[命令的範例可用。](../text-analytics-resource-container-config.md#example-docker-run-commands) `docker run`
+命令的範例可供使用。 [Examples](../text-analytics-resource-container-config.md#example-docker-run-commands) `docker run`
 
 # <a name="key-phrase-extraction"></a>[關鍵片語擷取](#tab/keyphrase)
 
@@ -170,11 +170,11 @@ ms.locfileid: "80876970"
 
 [!INCLUDE [Discoverability of more container information](../../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 在本文中，您已了解下載、安裝及執行文字分析容器的概念和工作流程。 摘要說明：
 
-* 文字分析為 Docker 提供了三個 Linux 容器,封裝了各種功能:
+* 文字分析提供三個適用于 Docker 的 Linux 容器，封裝各種功能：
    * *關鍵片語擷取*
    * *語言偵測*
    * *情感分析*

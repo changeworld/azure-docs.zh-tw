@@ -1,7 +1,7 @@
 ---
 title: 快取驗證權杖
 titleSuffix: Azure Cognitive Services
-description: 本文將介紹如何緩存身份驗證權杖。
+description: 本文將說明如何快取驗證權杖。
 author: metanMSFT
 manager: guillasi
 ms.service: cognitive-services
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75946292"
 ---
-# <a name="how-to-cache-the-authentication-token"></a>如何緩存身份驗證權杖
+# <a name="how-to-cache-the-authentication-token"></a>如何快取驗證權杖
 
-本文演示如何緩存身份驗證權杖以提高應用程式的性能。
+本文示範如何快取驗證權杖，以改善應用程式的效能。
 
-## <a name="using-aspnet"></a>使用ASP.NET
+## <a name="using-aspnet"></a>使用 ASP.NET
 
-導入用於獲取權杖的**Microsoft.身份模型.用戶端.ActiveDirectory** NuGet 包。 接下來，使用以下代碼獲取 的`AuthenticationResult`，使用[創建沉浸式讀取器資源](./how-to-create-immersive-reader.md)時獲得的身份驗證值。
+匯入**microsoft.identitymodel** ，這是用來取得權杖的 NuGet 套件。 接下來，使用下列程式`AuthenticationResult`代碼來取得，使用您在[建立沉浸式讀取器資源](./how-to-create-immersive-reader.md)時所得到的驗證值。
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,11 +34,11 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-該`AuthenticationResult`物件具有一`AccessToken`個屬性，該屬性是使用 SDK 啟動沉浸式讀取器時將使用的實際權杖。 它還具有一個`ExpiresOn`屬性，表示權杖何時過期。 在啟動沉浸式讀取器之前，您可以檢查權杖是否已過期，並且僅在權杖過期時才獲取新權杖。
+`AuthenticationResult`物件具有`AccessToken`屬性，這是您使用 SDK 啟動沉浸式讀取器時將使用的實際 token。 它也具有代表`ExpiresOn`權杖何時到期的屬性。 啟動沉浸式讀取器之前，您可以檢查權杖是否已過期，並只在過期時取得新的權杖。
 
-## <a name="using-nodejs"></a>使用節點.JS
+## <a name="using-nodejs"></a>使用 NODE.JS
 
-將[**請求**](https://www.npmjs.com/package/request)npm 包添加到您的專案。 使用以下代碼獲取權杖，使用[創建沉浸式讀取器資源](./how-to-create-immersive-reader.md)時獲得的身份驗證值。
+將[**要求**](https://www.npmjs.com/package/request)npm 套件新增至您的專案。 使用下列程式碼來取得權杖，使用您在[建立沉浸式讀取器資源](./how-to-create-immersive-reader.md)時所得到的驗證值。
 
 ```javascript
 router.get('/token', function(req, res) {
@@ -64,7 +64,7 @@ router.get('/token', function(req, res) {
 });
 ```
 
-該`expires_on`屬性是權杖過期的日期和時間，表示為自 1970 年 1 月 1 日 UTC 以來的秒數。 在嘗試獲取新權杖之前，使用此值確定權杖是否已過期。
+`expires_on`屬性是權杖到期的日期和時間，以1970年1月1日之後的秒數表示。 請使用此值來判斷您的權杖是否已過期，再嘗試取得新的權杖。
 
 ```javascript
 async function getToken() {

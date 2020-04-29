@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: e650529f3adb998ce683354565acdeb3928b50c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72931762"
 ---
 # <a name="moderate-with-custom-image-lists-in-c"></a>在 C# 中使用自訂影像清單進行仲裁
@@ -32,7 +32,7 @@ ms.locfileid: "72931762"
 > [!NOTE]
 > 上限是 **5 個影像清單**，且每個清單**不可超過 10,000 個影像**。
 
-本指南的主控台應用程式類比了可以使用映射清單 API 執行的某些任務。
+本指南的主控台應用程式會模擬一些您可以使用影像清單 API 來執行的工作。
 
 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
 
@@ -72,7 +72,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>建立 Content Moderator 用戶端
 
-新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。 使用終結點`AzureEndpoint` `CMSubscriptionKey` URL 和訂閱金鑰的值更新 和 欄位。 您可以在 Azure 門戶中的資源的 **"快速入門"** 選項卡中找到這些內容。
+新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。 使用您`AzureEndpoint`的`CMSubscriptionKey`端點 URL 和訂用帳戶金鑰值，更新和欄位。 您可以在 Azure 入口網站資源的 [**快速入門**] 索引標籤中找到這些選項。
 
 ```csharp
 /// <summary>
@@ -242,7 +242,7 @@ private static Body listDetails;
 
 ## <a name="create-a-method-to-write-messages-to-the-log-file"></a>建立方法以將訊息寫入至記錄檔
 
-將下列方法新增至 Program**** 類別。 
+將下列方法新增至 **Program** 類別。 
 
 ```csharp
 /// <summary>
@@ -263,7 +263,7 @@ private static void WriteLine(string message = null, bool echo = false)
 
 ## <a name="create-a-method-to-create-the-custom-list"></a>建立方法以建立自訂清單
 
-將下列方法新增至 Program**** 類別。 
+將下列方法新增至 **Program** 類別。 
 
 ```csharp
 /// <summary>
@@ -292,7 +292,7 @@ private static ImageList CreateCustomList(ContentModeratorClient client)
 
 ## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>建立方法以將影像集合新增至清單
 
-將下列方法新增至 Program**** 類別。 本指南不演示如何將標記應用於清單中的圖像。 
+將下列方法新增至 **Program** 類別。 本指南不會示範如何將標籤套用至清單中的影像。 
 
 ```csharp
 /// <summary>
@@ -336,7 +336,7 @@ IEnumerable<string> imagesToAdd, string label)
 
 ## <a name="create-a-method-to-remove-images-from-the-list"></a>建立方法以從清單中移除影像
 
-將下列方法新增至 Program**** 類別。 
+將下列方法新增至 **Program** 類別。 
 
 ```csharp
 /// <summary>
@@ -373,7 +373,7 @@ private static void RemoveImages(
 
 ## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>建立方法以取得清單中影像的所有內容識別碼
 
-將下列方法新增至 Program**** 類別。 
+將下列方法新增至 **Program** 類別。 
 
 ```csharp
 /// <summary>
@@ -400,7 +400,7 @@ private static ImageIds GetAllImageIds(
 
 ## <a name="create-a-method-to-update-the-details-of-the-list"></a>建立方法以更新清單的詳細資料
 
-將下列方法新增至 Program**** 類別。 
+將下列方法新增至 **Program** 類別。 
 
 ```csharp
 /// <summary>
@@ -430,7 +430,7 @@ private static ImageList UpdateListDetails(
 
 ## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>建立方法以擷取清單的詳細資料
 
-將下列方法新增至 Program**** 類別。
+將下列方法新增至 **Program** 類別。
 
 ```csharp
 /// <summary>
@@ -457,7 +457,7 @@ private static ImageList GetListDetails(
 
 ## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>建立方法以重新整理清單的搜尋索引
 
-將下列方法新增至 Program**** 類別。 每當您更新清單時，都必須先重新整理搜尋索引，才能使用清單來過濾影像。
+將下列方法新增至 **Program** 類別。 每當您更新清單時，都必須先重新整理搜尋索引，才能使用清單來過濾影像。
 
 ```csharp
 /// <summary>
@@ -484,7 +484,7 @@ private static RefreshIndex RefreshSearchIndex(
 
 ## <a name="create-a-method-to-match-images-against-the-list"></a>建立方法以依據清單比對影像
 
-將下列方法新增至 Program**** 類別。 
+將下列方法新增至 **Program** 類別。 
 
 ```csharp
 /// <summary>
@@ -514,7 +514,7 @@ private static void MatchImages(
 
 ## <a name="create-a-method-to-delete-all-images-from-the-list"></a>建立方法以從清單中刪除所有影像
 
-將下列方法新增至 Program**** 類別。 
+將下列方法新增至 **Program** 類別。 
 
 ```csharp
 /// <summary>
@@ -538,7 +538,7 @@ private static void DeleteAllImages(
 
 ## <a name="create-a-method-to-delete-the-list"></a>建立方法以刪除清單
 
-將下列方法新增至 Program**** 類別。 
+將下列方法新增至 **Program** 類別。 
 
 ```csharp
 /// <summary>
@@ -562,7 +562,7 @@ private static void DeleteCustomList(
 
 ## <a name="create-a-method-to-retrieve-ids-for-all-image-lists"></a>建立方法以擷取所有影像清單的識別碼
 
-將下列方法新增至 Program**** 類別。 
+將下列方法新增至 **Program** 類別。 
 
 ```csharp
 /// <summary>
@@ -587,7 +587,7 @@ private static IList<ImageList> GetAllListIds(ContentModeratorClient client)
 
 ## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>新增程式碼以模擬影像清單的使用
 
-將以下代碼添加到**Main**方法。 此程式碼會模擬許多您在定義和管理清單，以及使用清單來過濾影像時，會執行的作業。 記錄功能可讓您查看對 Content Moderator 服務發出的 SDK 呼叫所產生的回應物件。
+將下列程式碼新增至**Main**方法。 此程式碼會模擬許多您在定義和管理清單，以及使用清單來過濾影像時，會執行的作業。 記錄功能可讓您查看對 Content Moderator 服務發出的 SDK 呼叫所產生的回應物件。
 
 ```csharp
 // Create the text writer to use for logging, and cache a static reference to it.

@@ -1,7 +1,7 @@
 ---
-title: 語言偵測庫伯內斯配置和部署步驟
+title: 語言偵測 Kubernetes config 和 deploy 步驟
 titleSuffix: Azure Cognitive Services
-description: 語言偵測庫伯內斯配置和部署步驟
+description: 語言偵測 Kubernetes config 和 deploy 步驟
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,45 +10,45 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: dc344bd6e4927d39b72ba9af3ae2eeb61d9cec95
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877799"
 ---
-### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>將語言偵測容器部署到 AKS 叢集
+### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>將語言偵測容器部署至 AKS 叢集
 
-1. 打開 Azure CLI,然後登錄到 Azure。
+1. 開啟 Azure CLI，然後登入 Azure。
 
     ```azurecli
     az login
     ```
 
-1. 登錄到 AKS 群集。 使用`your-cluster-name`適當的`your-resource-group`值替換和替換。
+1. 登入 AKS 叢集。 以`your-cluster-name`適當`your-resource-group`的值取代和。
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
     ```
 
-    執行此指令後,它會報告類似於以下內容的消息:
+    執行此命令之後，它會報告類似下列的訊息：
 
     ```output
     Merged "your-cluster-name" as current context in /home/username/.kube/config
     ```
 
     > [!WARNING]
-    > 如果 Azure 帳號上有多個訂閱可用`az aks get-credentials`, 並且該命令傳回時出現錯誤,則常見問題是使用了錯誤的訂閱。 將 Azure CLI 工作階段的上下文設置為使用與創建資源相同的訂閱,然後重試。
+    > 如果您的 Azure 帳戶有多個可用的訂用帳戶， `az aks get-credentials`且該命令傳回錯誤，則常見的問題是您使用了錯誤的訂閱。 將 Azure CLI 會話的內容設定為使用您用來建立資源的相同訂用帳戶，然後再試一次。
     > ```azurecli
     >  az account set -s subscription-id
     > ```
 
-1. 開啟您選擇的文字編輯器。 此示例使用可視化工作室代碼。
+1. 開啟選擇的文字編輯器。 這個範例會使用 Visual Studio Code。
 
     ```console
     code .
     ```
 
-1. 在文字編輯器中,創建名為 *「語言.yaml」* 的新檔案,並將下面的 YAML 貼上到其中。 請務必替換`billing/value`並`apikey/value`使用您自己的資訊。
+1. 在文字編輯器中，建立名為*language. yaml*的新檔案，並將下列 yaml 貼入其中。 請務必將和`billing/value` `apikey/value`取代為您自己的資訊。
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -94,39 +94,39 @@ ms.locfileid: "80877799"
         app: language-app
     ```
 
-1. 儲存檔案,然後關閉文字編輯器。
-1. 以*語言.yaml*`apply`檔案為目標運行 Kubernetes 命令:
+1. 儲存檔案，然後關閉文字編輯器。
+1. 以 yaml 檔案`apply`作為目標來*language.yaml*執行 Kubernetes 命令：
 
     ```console
     kubectl apply -f language.yaml
     ```
 
-    命令成功應用部署設定後,將顯示一條訊息,類似於以下輸出:
+    命令成功套用部署設定後，會出現類似下列輸出的訊息：
 
     ```output
     deployment.apps "language" created
     service "language" created
     ```
-1. 驗證是否部署了該窗格:
+1. 確認已部署 pod：
 
     ```console
     kubectl get pods
     ```
 
-    窗格執行狀態的輸出:
+    Pod 執行狀態的輸出：
 
     ```output
     NAME                         READY     STATUS    RESTARTS   AGE
     language-5c9ccdf575-mf6k5   1/1       Running   0          1m
     ```
 
-1. 驗證服務是否可用,並獲取 IP 位址。
+1. 確認服務可供使用，並取得 IP 位址。
 
     ```console
     kubectl get services
     ```
 
-    窗格中*語言*服務執行狀態的輸出:
+    Pod 中*語言*服務執行狀態的輸出：
 
     ```output
     NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)          AGE

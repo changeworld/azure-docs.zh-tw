@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: 2cc89bf57167db75404c044f58d18ab48edfaf38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68854076"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>設定託管的 UI 體驗
@@ -104,7 +104,7 @@ Bing 自訂搜尋會提供一個託管 UI，您可輕鬆地將它以 JavaScript 
 |影像標題   | 決定是否要隨著搜尋結果顯示影像。|
 
 
-如果按一下"**顯示高級配置**"，將顯示以下配置：
+如果您按一下 [**顯示高級**設定]，則會顯示下列設定：
 
 
 |  | |

@@ -4,10 +4,10 @@ description: QnA Maker 在反覆的週期中學習模型變更、語句範例、
 ms.topic: conceptual
 ms.date: 02/27/2020
 ms.openlocfilehash: 98fbd81baa717c981486f33cfb2b3a608cec27c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77914947"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker 中的知識庫生命週期
@@ -16,18 +16,18 @@ QnA Maker 在反覆的週期中學習模型變更、語句範例、發佈資料�
 ![撰寫循環](../media/qnamaker-concepts-lifecycle/kb-lifecycle.png)
 
 ## <a name="creating-a-qna-maker-knowledge-base"></a>建立 QnA Maker 知識庫
-QnA Maker 知識庫 (KB) 端點會根據知識庫的內容對使用者查詢提供最相符的解答。 創建知識庫是設置問題、答案和相關中繼資料的內容存儲庫的一次性操作。 知識庫可藉由對既有的內容編目來建立，這些內容包括常見問題集頁面、產品手冊或結構化問答組。 了解如何[建立知識庫](../quickstarts/create-publish-knowledge-base.md)。
+QnA Maker 知識庫 (KB) 端點會根據知識庫的內容對使用者查詢提供最相符的解答。 建立知識庫是一次設定問題、解答和相關中繼資料之內容存放庫的動作。 知識庫可藉由對既有的內容編目來建立，這些內容包括常見問題集頁面、產品手冊或結構化問答組。 了解如何[建立知識庫](../quickstarts/create-publish-knowledge-base.md)。
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>測試和更新知識庫
 
-知識庫在填入內容 (透過編輯或自動擷取) 後即可供測試。 通過輸入常見使用者查詢並驗證返回的回應是否回應正確回應和足夠的置信度分數，可以通過**測試**面板在 QnA Maker 門戶中執行互動式測試。
+知識庫在填入內容 (透過編輯或自動擷取) 後即可供測試。 互動式測試可以透過**測試**面板在 QnA Maker 入口網站中完成，方法是輸入一般使用者查詢，並確認傳回的回應具有正確的回應和足夠的信賴分數。
 
-* **要修復低置信度分數**：添加備用問題。
-* **當查詢錯誤地返回[預設回應](../How-to/change-default-answer.md)** 時：向正確的問題添加新答案。
+* **若要修正低信賴分數**：新增替代問題。
+* **當查詢不正確地傳回[預設回應](../How-to/change-default-answer.md)時**：請將新答案新增至正確的問題。
 
 「測試-更新」的這個密封迴圈會持續執行，直到您得到滿意的結果為止。 了解如何[測試知識庫](../How-To/test-knowledge-base.md)。
 
-對於大型 KB，請使用與[生成應答 API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api)和`isTest`正文屬性的自動測試，後者查詢`test`知識庫而不是已發佈的知識庫。
+針對大型 Kb，請使用自動化測試搭配[GENERATEANSWER API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api)和`isTest` body 屬性，以查詢`test`知識庫，而不是已發行的知識庫。
 
 ```json
 {
@@ -39,11 +39,11 @@ QnA Maker 知識庫 (KB) 端點會根據知識庫的內容對使用者查詢提�
 ```
 
 ## <a name="publish-the-knowledge-base"></a>發佈知識庫
-完成知識庫的測試後，您即可發佈知識庫。 發佈將測試知識庫的最新版本推送到表示**已發佈的**知識庫的專用 Azure 認知搜索索引。 它也會建立可在您的應用程式或聊天機器人中呼叫的端點。
+完成知識庫的測試後，您即可發佈知識庫。 [發行] 會將已測試的最新知識庫版本推送至代表**已發佈**知識庫的專用 Azure 認知搜尋索引。 它也會建立可在您的應用程式或聊天機器人中呼叫的端點。
 
 如此，對測試版知識庫所做的任何變更，都不會對可能正在生產應用程式中執行的已發行版本造成影響。
 
-這些知識庫全都可以個別進行測試。 使用 API，您可以在生成應答調用中使用`isTest`正文屬性定位知識庫的測試版本。
+這些知識庫全都可以個別進行測試。 您可以使用 Api，以 generateAnswer 呼叫中的 [ `isTest`主體] 屬性作為目標的測試版本。
 
 了解如何[發佈知識庫](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)。
 
@@ -56,27 +56,27 @@ QnA Maker 知識庫 (KB) 端點會根據知識庫的內容對使用者查詢提�
 
 ## <a name="version-control-for-data-in-your-knowledge-base"></a>知識庫中資料的版本控制
 
-資料的版本控制通過 QnA Maker 門戶中的 **"設置"** 頁上的導入/匯出功能提供。
+資料的版本控制是透過 QnA Maker 入口網站中 [**設定**] 頁面上的 [匯入/匯出] 功能來提供。
 
-您可以通過匯出知識庫（以或格式`.tsv``.xls`）來備份知識庫。 匯出後，將此檔作為常規原始程式碼管理檢查的一部分。
+您可以使用`.tsv`或`.xls`格式匯出知識庫，以備份知識庫。 匯出之後，請將此檔案納入一般原始檔控制檢查的一部分。
 
-當您需要返回特定版本時，您需要從本地系統導入該檔。 匯出的知識庫**只能通過**"**設置"** 頁上的導入來使用。 不能將其用作檔或 URL 文檔資料來源。 這將用導入的檔的內容替換知識庫中當前的問題和答案。
+當您需要回到特定版本時，您需要從本機系統匯入該檔案。 匯出的**知識庫只能透過**[**設定**] 頁面上的 [匯入] 使用。 它不能當做檔案或 URL 檔資料來源使用。 這會將目前知識庫中的問題和答案取代為匯入檔案的內容。
 
 ## <a name="test-and-production-knowledge-base"></a>測試和生產知識庫
-知識庫是通過 QnA Maker 創建、維護和使用的問題和答案集的存儲庫。 每個 QnA Maker 資源可以容納多個知識庫。
+知識庫是透過 QnA Maker 所建立、維護及使用的問題與解答集存放庫。 每個 QnA Maker 資源都可以保存多個知識庫。
 
-知識庫有兩種狀態：*測試*和*發佈*。
+知識庫有兩種狀態： [*測試*] 和 [*已發行*]。
 
 ### <a name="test-knowledge-base"></a>測試知識庫
 
-*測試知識庫*是當前編輯、保存和測試回應的準確性和完整性的版本。 對測試知識庫所做的更改不會影響應用程式或聊天機器人的最終使用者。 測試知識庫在 HTTP`test`請求中稱為"測試知識庫"。 QnA `test` Maker 的門戶互動式**測試**窗格提供了這些知識。
+*測試知識庫*是目前編輯、儲存和測試的版本，以取得回應的正確性和完整性。 對測試知識庫所做的變更不會影響應用程式或聊天機器人的終端使用者。 測試知識庫在 HTTP 要求`test`中稱為。 QnA Maker `test`的入口網站互動式**測試**窗格提供此知識。
 
 ### <a name="production-knowledge-base"></a>生產知識庫
 
-*已發佈的知識庫*是聊天機器人或應用程式中使用的版本。 發佈知識庫的操作將測試知識庫的內容置於知識庫的已發佈版本中。 由於已發佈的知識庫是應用程式通過終結點使用的版本，因此請確保內容正確且測試良好。 已發佈的知識庫在 HTTP`prod`請求中稱為"已發佈的知識庫"。
+*已發佈的知識庫*是在聊天機器人或應用程式中使用的版本。 發佈知識庫的動作會將測試知識庫的內容放在已發行的知識庫版本中。 由於已發佈的知識庫是應用程式透過端點所使用的版本，因此請確定內容正確且經過妥善測試。 已發佈的知識庫`prod`在 HTTP 要求中稱為。
 
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [主動學習建議](./active-learning-suggestions.md)
+> [主動式學習建議](./active-learning-suggestions.md)

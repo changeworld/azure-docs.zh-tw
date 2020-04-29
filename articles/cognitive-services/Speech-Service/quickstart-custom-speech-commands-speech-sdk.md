@@ -1,7 +1,7 @@
 ---
-title: 快速入門：使用語音 SDK 連接到自訂命令應用 - 語音服務
+title: 快速入門：使用語音 SDK 連接到自訂命令應用程式-語音服務
 titleSuffix: Azure Cognitive Services
-description: 在本文中，您將使用自訂命令創建語音 SDK 用戶端應用程式。
+description: 在本文中，您將使用自訂命令來建立語音 SDK 用戶端應用程式。
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -11,59 +11,59 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
 ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76156772"
 ---
-# <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入門：使用語音 SDK 連接到自訂命令應用程式（預覽版）
+# <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>快速入門：使用語音 SDK 連接到自訂命令應用程式（預覽）
 
-創建託管自訂命令應用程式後，可以從用戶端設備開始與它進行對話。
+建立託管自訂命令應用程式之後，您就可以開始從用戶端裝置與它進行交談。
 
-在本文中，您將：
+在本文中，您將會：
 
-- 發佈自訂命令應用程式並獲取應用程式識別碼（應用程式 ID）
-- 使用語音 SDK 創建用戶端應用，以允許您與自訂命令應用程式對話
+- 發行自訂命令應用程式，並取得應用程式識別碼（App ID）
+- 使用語音 SDK 建立用戶端應用程式，以讓您與您的自訂命令應用程式交談
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-完成本文需要自訂命令應用程式。 如果您尚未創建自訂命令應用程式，則可以在以下快速啟動中執行此操作：
+必須要有自訂命令應用程式才能完成這篇文章。 如果您尚未建立自訂命令應用程式，您可以在先前的快速入門中執行此動作：
 
-- [快速入門：創建自訂命令（預覽）](./quickstart-custom-speech-commands-create-new.md)
-- [快速入門：使用參數創建自訂命令（預覽）](./quickstart-custom-speech-commands-create-parameters.md)
+- [快速入門：建立自訂命令（預覽）](./quickstart-custom-speech-commands-create-new.md)
+- [快速入門：使用參數來建立自訂命令（預覽）](./quickstart-custom-speech-commands-create-parameters.md)
 
-您還需要：
+您也需要：
 
-- [視覺工作室 2019](https://visualstudio.microsoft.com/downloads/)
-- 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費獲取一個](get-started.md)或在[Azure 門戶](https://portal.azure.com)上創建
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+- 適用於語音服務的 Azure 訂用帳戶金鑰。 [免費取得一個](get-started.md)或在[Azure 入口網站](https://portal.azure.com)上建立
 
-## <a name="optional-get-started-fast"></a>可選：快速入門
+## <a name="optional-get-started-fast"></a>選擇性：快速入門
 
-此快速入門逐步介紹了如何使用戶端應用程式連接到自訂命令應用。 如果您想要深入了解，可以在[語音 SDK 範例](https://aka.ms/csspeech/samples)的 `quickstart` 資料夾之下取得本快速入門中使用的完整、可立即編譯的原始程式碼。
+本快速入門會逐步說明如何讓用戶端應用程式連接到您的自訂命令應用程式。 如果您想要深入了解，可以在[語音 SDK 範例](https://aka.ms/csspeech/samples)的 `quickstart` 資料夾之下取得本快速入門中使用的完整、可立即編譯的原始程式碼。
 
-## <a name="step-1-publish-custom-commands-application"></a>第 1 步：發佈自訂命令應用程式
+## <a name="step-1-publish-custom-commands-application"></a>步驟1：發行自訂命令應用程式
 
-1. 打開[以前創建的自訂命令應用程式](./quickstart-custom-speech-commands-create-new.md)，然後選擇 **"發佈"**
+1. 開啟您[先前建立的自訂命令應用程式](./quickstart-custom-speech-commands-create-new.md)，然後選取 [**發佈**]
 
    > [!div class="mx-imgBorder"]
    > ![發佈應用程式](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
-1. 從發佈通知中複製應用 ID，以便以後使用
+1. 複製發佈通知中的 [應用程式識別碼] 以供稍後使用
 
-## <a name="step-2-create-a-visual-studio-project"></a>第 2 步：創建視覺化工作室專案
+## <a name="step-2-create-a-visual-studio-project"></a>步驟2：建立 Visual Studio 專案
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-quickstart-uwp-create-proj.md)]
 
-## <a name="step-3-add-sample-code"></a>步驟 3：添加示例代碼
+## <a name="step-3-add-sample-code"></a>步驟3：新增範例程式碼
 
-在此步驟中，我們添加定義應用程式的使用者介面的 XAML 代碼，並添加 C# 代碼背後的實現。
+在此步驟中，我們會新增 XAML 程式碼來定義應用程式的使用者介面，並新增 c # 程式碼後置的執行。
 
 ### <a name="xaml-code"></a>XAML 程式碼
 
-通過添加 XAML 代碼創建應用程式的使用者介面。
+藉由新增 XAML 程式碼來建立應用程式的使用者介面。
 
-1. 在**解決方案資源管理器中**，打開`MainPage.xaml`
+1. 在**方案總管**中，開啟`MainPage.xaml`
 
 1. 在設計工具的 XAML 檢視中，以下列程式碼片段取代整個內容：
 
@@ -116,20 +116,20 @@ ms.locfileid: "76156772"
 
 ### <a name="c-code-behind-source"></a>C# 程式碼後置來源
 
-添加代碼背後的原始程式碼，以便應用程式按預期工作。 開啟程式碼後置來源：
+加入程式碼後置來源，讓應用程式如預期般運作。 開啟程式碼後置來源：
 
-- 和命名空間所需的`using``Speech` `Speech.Dialog`
+- 和`using` `Speech.Dialog`命名空間的`Speech`必要語句
 - 進行簡單的實作，確認麥克風存取正常並連線至按鈕處理常式
 - 應用程式中的基本 UI 協助程式會顯示訊息及錯誤
 - 初始程式碼路徑登陸點，稍後會填入資訊
 - 協助程式會播放文字轉換語音資訊 (無需串流支援)
 - 稍後會填入即將開始接聽的空白按鈕處理常式
 
-添加代碼後面的源，如下所示：
+新增程式碼後置來源，如下所示：
 
-1. 在**解決方案資源管理器**中，打開代碼背後的原始程式碼檔`MainPage.xaml.cs`（分組在`MainPage.xaml`）
+1. 在**Solution Explorer** `MainPage.xaml.cs` [方案總管] 中，開啟程式碼後置原始程式`MainPage.xaml`檔（在下分組）
 
-1. 將檔的內容替換為以下代碼：
+1. 將檔案的內容取代為下列程式碼：
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -299,7 +299,7 @@ ms.locfileid: "76156772"
    }
    ```
 
-1. 將以下代碼添加到`InitializeDialogServiceConnector`
+1. 將下列程式碼新增至的方法主體`InitializeDialogServiceConnector`
 
    ```csharp
    // This code creates the `DialogServiceConnector` with your subscription information.
@@ -314,9 +314,9 @@ ms.locfileid: "76156772"
    connector = new DialogServiceConnector(speechCommandsConfig);
    ```
 
-1. 將字串`YourApplicationId`替換為`YourSpeechSubscriptionKey`應用、`YourServiceRegion`語音訂閱和[區域](regions.md)的您自己的值。
+1. 以您自己`YourApplicationId`的`YourSpeechSubscriptionKey`應用程式`YourServiceRegion` 、語音訂用帳戶和[區域](regions.md)的值取代字串、和
 
-1. 將以下程式碼片段追加到`InitializeDialogServiceConnector`
+1. 將下列程式碼片段附加至的方法主體結尾`InitializeDialogServiceConnector`
 
    ```csharp
    //
@@ -374,7 +374,7 @@ ms.locfileid: "76156772"
    };
    ```
 
-1. 將以下程式碼片段添加到`ListenButton_ButtonClicked``MainPage`類中方法的正文
+1. 將下列程式碼片段新增至`ListenButton_ButtonClicked` `MainPage`類別中方法的主體。
 
    ```csharp
    // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
@@ -398,24 +398,24 @@ ms.locfileid: "76156772"
    }
    ```
 
-1. 從功能表列中，選擇 **"全部檔** > **保存"** 以保存更改
+1. 從功能表列中 **，選擇 [** > 檔案] [**全部儲存**] 以儲存您的變更
 
 ## <a name="build-and-run-the-application"></a>建置並執行應用程式
 
-1. 在功能表列中，選擇**生成** > **生成解決方案**以生成應用程式。 這應該會編譯程式碼，而且不會出現任何錯誤。
+1. 從功能表列中，選擇 [建置]   > [建置方案]  來建置應用程式。 這應該會編譯程式碼，而且不會出現任何錯誤。
 
-1. 選擇**調試** > **啟動調試**（或按**F5**）以啟動應用程式。 **helloworld** 視窗會出現。
+1. 選擇 [偵錯]   > [開始偵錯]  (或按 **F5**) 以啟動應用程式。 **helloworld** 視窗會出現。
 
    ![範例 UWP 虛擬助理應用程式 (C#) - 快速入門](media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 
-1. 選取 [啟用麥克風]****。 如果存取權限請求彈出，請選擇"**是**"。
+1. 選取 [啟用麥克風]****。 如果出現存取權限要求，請選取 **[是]**。
 
    ![麥克風存取權限要求](media/sdk/qs-csharp-uwp-10-access-prompt.png)
 
-1. 選擇 **"說話**"，將英語短語或句子輸入裝置的麥克風。 您的語音會傳送到 Direct Line Speech 頻道並轉譯為文字，該文字會出現在視窗中。
+1. 選取 [**說話**]，並在裝置的麥克風中說出英文片語或句子。 您的語音會傳送到 Direct Line Speech 頻道並轉譯為文字，該文字會出現在視窗中。
 
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [如何：使用語音 SDK（預覽）](./how-to-custom-speech-commands-fulfill-sdk.md)
-> 實現用戶端上的命令[如何：將驗證添加到自訂命令參數（預覽）](./how-to-custom-speech-commands-validations.md)
+> [如何：使用語音 SDK 完成用戶端上的命令（預覽）](./how-to-custom-speech-commands-fulfill-sdk.md)
+> [如何：將驗證新增至自訂命令參數（預覽）](./how-to-custom-speech-commands-validations.md)

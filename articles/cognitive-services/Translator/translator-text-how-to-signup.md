@@ -1,7 +1,7 @@
 ---
 title: 開始使用 - 翻譯工具文字 API
 titleSuffix: Azure Cognitive Services
-description: 本文將介紹如何註冊 Azure 認知服務翻譯文本 API 並獲得訂閱金鑰。
+description: 本文將說明如何註冊 Azure 認知服務翻譯工具文字 API 並取得訂用帳戶金鑰。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -12,10 +12,10 @@ ms.date: 06/04/2019
 ms.author: swmachan
 ms.custom: seodec18
 ms.openlocfilehash: cfae5318213e8af164c8d0cc9ed378705a5644b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73835696"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>如何註冊翻譯工具文字 API
@@ -29,7 +29,7 @@ ms.locfileid: "73835696"
 
 登入入口網站之後，您可以建立翻譯工具文字 API 的訂用帳戶，如下所示：
 
-1. 選擇 **= 創建資源**。
+1. 選取 [ **+ 建立資源**]。
 1. 在 [搜尋 Marketplace]**** 搜尋方塊中，輸入**翻譯工具文字**，然後從結果中選取它。
 1. 選取 [建立]**** 定義訂用帳戶的詳細資料。
 1. 從 [定價層]**** 清單中，選取最符合您需求的定價層。

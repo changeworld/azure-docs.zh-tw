@@ -1,7 +1,7 @@
 ---
 title: 使用 Bing 自動建議 API 建議搜尋字詞
 titleSuffix: Azure Cognitive Services
-description: 本文討論了使用必應自動建議 API 建議查詢術語的概念以及查詢長度對相關性的影響。
+description: 本文討論使用 Bing 自動建議 API 建議查詢詞彙的概念，以及查詢長度對相關性的影響。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 060dbd29ee4ddb78e8ae9b2ed4e7814da3c4eebf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072896"
 ---
 # <a name="suggesting-query-terms"></a>建議查詢字詞

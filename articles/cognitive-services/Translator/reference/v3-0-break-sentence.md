@@ -1,7 +1,7 @@
 ---
 title: 翻譯工具文字 API BreakSentence 方法
 titleSuffix: Azure Cognitive Services
-description: 翻譯器文本 API Break句子方法標識句子邊界在文本中的定位。
+description: 翻譯工具文字 API BreakSentence 方法會識別句子界限在一段文字中的位置。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: 4c314148b8e1495a8b5a12c42d4989d13cdd6a08
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76548113"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>翻譯工具文字 API 3.0：BreakSentence
@@ -43,12 +43,12 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 | headers | 描述 |
 | ------- | ----------- |
-| 身份驗證標頭 <img width=200/>  | 必要的要求標頭****。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
+| 驗證標頭 <img width=200/>  | 必要的要求標頭****。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
 | Content-Type | 必要的要求標頭****。<br/>指定承載的內容類型。 可能的值為：`application/json`。 |
 | Content-Length    | 必要的要求標頭****。<br/>要求本文的長度。  | 
 | X-ClientTraceId   | **選擇項**。<br/>用於識別唯一要求的 GUID，由用戶端產生。 請注意，若您使用名為 `ClientTraceId` 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。  | 
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 
 要求的本文是 JSON 陣列。 每個陣列項目都是具有字串屬性 `Text` 的 JSON 物件。 會針對 `Text` 屬性的值計算句子界限。 具有一段文字的要求本文範例看起來像這樣：
 
@@ -129,7 +129,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>伺服器拒絕請求，因為用戶端已超過請求限制。</td>
+    <td>伺服器已拒絕要求，因為用戶端已超過要求限制。</td>
   </tr>
   <tr>
     <td>500</td>

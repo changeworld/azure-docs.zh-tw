@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 36071cdee25cfa99fc54b0e5c0c0aa822cb5fe2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68662827"
 ---
 # <a name="what-is-reinforcement-learning"></a>增強式學習是什麼？
@@ -64,7 +64,7 @@ John 先前也曾提供數個關於各項主題的教學課程，例如 Joint Pr
 * [在低技術債務下做出內容相關決策](https://arxiv.org/abs/1606.03966)
 * [公平分類的縮減方法](https://arxiv.org/abs/1803.02453)
 * [在非穩定世界中的有效率內容相關吃角子老虎機](https://arxiv.org/abs/1708.01799)
-* [剩餘損失預測：強化：無增量回饋的學習](https://openreview.net/pdf?id=HJNMYceCW)
+* [剩餘損失預測：增強式：不含增量意見反應的學習](https://openreview.net/pdf?id=HJNMYceCW)
 * [使用增強式學習來將指示和視覺化觀察對應至動作](https://arxiv.org/abs/1704.08795)
 * [學習成為比老師更加優秀的搜尋者](https://arxiv.org/abs/1502.02206)
 

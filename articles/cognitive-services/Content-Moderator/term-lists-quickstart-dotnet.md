@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72935948"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>在 C# 中根據自訂字詞清單檢查文字
 
 Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內容審核需求。 不過，您可能會需要審查屬於您組織的特定字詞。 例如，您可能要標記競爭對手名稱以供進一步檢閱。 
 
-您可以使用[.NET 的內容審閱人 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)創建要與文本審核 API 一起使用的自訂術語清單。
+您可以使用[適用于 .net 的內容仲裁 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)來建立自訂字詞清單，以搭配文字審核 API 使用。
 
 本文提供資訊和範例程式碼，可協助您開始使用 Content Moderator SDK for .NET 來執行下列操作：
 - 建立清單。
@@ -69,7 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>建立 Content Moderator 用戶端
 
-新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。 使用終結點`AzureEndpoint` `CMSubscriptionKey` URL 和訂閱金鑰的值更新 和 欄位。 您可以在 Azure 門戶中的資源的 **"快速入門"** 選項卡中找到這些內容。
+新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。 使用您`AzureEndpoint`的`CMSubscriptionKey`端點 URL 和訂用帳戶金鑰值，更新和欄位。 您可以在 Azure 入口網站資源的 [**快速入門**] 索引標籤中找到這些選項。
 
 ```csharp
 /// <summary>
@@ -264,7 +264,7 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 - MIME 類型，其可以是 "text/html"、"text/xml"、"text/markdown" 或 "text/plain"。
 - 要審查的文字。
 - 布林值。 將此欄位設為 **true**，可在審查文字前自動校正文字。
-- 布林值。 將此欄位設置為**true**以檢測文本中的個人資料。
+- 布林值。 將此欄位設定為**true** ，以偵測文字中的個人資料。
 - 字詞清單識別碼。
 
 如需詳細資訊，請參閱 [API 參考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) \(英文\)。
@@ -362,7 +362,7 @@ static void DeleteTermList (ContentModeratorClient client, string list_id)
 }
 ```
 
-## <a name="compose-the-main-method"></a>撰寫主方法
+## <a name="compose-the-main-method"></a>撰寫 Main 方法
 
 將 **Main** 方法定義新增至 **TermLists** 命名空間、**Program** 類別。 最後，關閉 **Program** 類別和 **TermLists** 命名空間。
 
@@ -404,7 +404,7 @@ static void Main(string[] args)
 
 ## <a name="run-the-application-to-see-the-output"></a>執行應用程式以查看此輸出
 
-您的主控台輸出將如下所示：
+您的主控台輸出看起來會像下面這樣：
 
 ```console
 Creating term list.

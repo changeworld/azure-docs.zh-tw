@@ -11,25 +11,25 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 96440bf0e9c26e6f222f3bc94c8fabb0bc8f488d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221431"
 ---
-# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA 製造商資源和知識庫的語言支援
+# <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>QnA Maker 資源和知識庫的語言支援
 
-在創建資源中的第一個知識庫時，將選擇服務的語言。 資源中的所有附加知識庫必須使用同一語言。 
+當您在資源中建立第一個知識庫時，會選取服務的語言。 資源中的所有其他知識庫都必須是相同的語言。 
 
-語言確定 QnA Maker 為回應使用者查詢而提供的結果的相關性。
+語言會決定 QnA Maker 提供的結果相關性，以回應使用者查詢。
 
-詳細瞭解[語言選擇的影響](../how-to/language-knowledge-base.md)。
+深入瞭解[語言選擇的影響](../how-to/language-knowledge-base.md)。
 
 ## <a name="languages-supported"></a>支援的語言
 
-以下清單包含 QnA Maker 資源支援的語言。 
+下列清單包含 QnA Maker 資源支援的語言。 
 
-|語言|
+|Language|
 |--|
 |阿拉伯文|
 |亞美尼亞文|

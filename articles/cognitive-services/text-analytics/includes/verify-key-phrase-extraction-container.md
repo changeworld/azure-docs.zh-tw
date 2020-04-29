@@ -1,7 +1,7 @@
 ---
-title: 驗證關鍵短文提取容器實體
+title: 確認關鍵片語擷取的容器實例
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何驗證關鍵短語提取容器實例。
+description: 瞭解如何驗證關鍵片語擷取的容器實例。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,22 +10,22 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 5c177517ec18d7526b1cc09da74e35cb5434766d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80876394"
 ---
-### <a name="verify-the-key-phrase-extraction-container-instance"></a>驗證關鍵短文提取容器實體
+### <a name="verify-the-key-phrase-extraction-container-instance"></a>確認關鍵片語擷取的容器實例
 
-1. 選擇 **「概述」** 選項卡,然後複製 IP 位址。
-1. 開啟新的瀏覽器選項卡,然後輸入 IP 位址。 例如,輸入`http://<IP-address>:5000 (http://55.55.55.55:5000`。 將顯示容器的主頁,讓您知道容器正在運行。
+1. 選取 [**總覽**] 索引標籤，然後複製 [IP 位址]。
+1. 開啟新的瀏覽器索引標籤，並輸入 IP 位址。 例如，輸入`http://<IP-address>:5000 (http://55.55.55.55:5000`）。 容器的首頁隨即顯示，讓您知道容器正在執行。
 
-    ![檢視容器主頁以驗證是否正在執行](../media/how-tos/container-instance/swagger-docs-on-container.png)
+    ![查看容器首頁以確認它正在執行](../media/how-tos/container-instance/swagger-docs-on-container.png)
 
-1. 選擇 **「服務 API 描述」** 連結以轉到容器的 Swagger 頁面。
+1. 選取 [**服務 API 描述**] 連結，以移至容器的 Swagger 頁面。
 
-1. 選擇任選**點**API,然後選擇 **「試用」。** 將顯示參數,其中包括此範例輸入:
+1. 選擇任何**張貼**api，然後選取 [立即**試用**]。會顯示參數，其中包括下列範例輸入：
 
     ```json
     {
@@ -50,7 +50,7 @@ ms.locfileid: "80876394"
     }
     ```
 
-1. 將輸入取代為以下 JSON 內容:
+1. 使用下列 JSON 內容來取代輸入：
 
     ```json
     {
@@ -64,13 +64,13 @@ ms.locfileid: "80876394"
     }
     ```
 
-1. 將 **「顯示」**`true`設定為 。
+1. 將**showStats**設定`true`為。
 
-1. 選擇 **「執行」** 以確定文本的情緒。
+1. 選取 [**執行**] 以決定文字的情感。
 
-    打包在容器中的模型生成介於 0 到 1 的分數,其中 0 為負,1 為正。
+    封裝在容器中的模型會產生範圍從0到1的分數，其中0是負數，而1是正數。
 
-    傳回的 JSON 回應包括更新的文字輸入的情緒:
+    傳回的 JSON 回應包含更新文字輸入的情感：
 
     ```json
     {
@@ -100,4 +100,4 @@ ms.locfileid: "80876394"
     }
     ```
 
-我們現在可以將回應有效負載的`id`JSON 數據的文檔與原始請求有效`id`負載文文件 相關聯。 生成的文件具有一個`keyPhrases`陣列,其中包含從相應的輸入文檔中提取的關鍵短語的清單。 此外,還有各種統計資訊,例如`characterCount`和`transactionCount`每個生成的文檔。
+我們現在可以將回應裝載`id`的 JSON 資料檔案與原始要求裝載檔`id`相互關聯。 產生的檔具有`keyPhrases`陣列，其中包含已從對應的輸入檔解壓縮的主要片語清單。 此外，每個產生的檔都`characterCount`有`transactionCount`各種統計資料（例如和）。

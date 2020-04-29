@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 1028443eaaf6c483cd7cd57289b0dcf2a9f11902
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595897"
 ---
 # <a name="data-filtering"></a>資料篩選
@@ -23,7 +23,7 @@ ms.locfileid: "68595897"
 ## <a name="sentence-alignment"></a>句子對齊
 如果文件不是 XLIFF、TMX 或 ALIGN 格式，則「自訂翻譯」會逐句對齊來源與目標文件的句子。 翻譯工具不會執行文件對齊，它會依照您的文件命名方式來尋找其他語言的相符文件。 在文件中，「自訂翻譯」會嘗試在其他語言中尋找對應的句子。 它會使用文件標記 (如內嵌 HTML 標記) 來協助對齊。  
 
-如果源端文檔中的句子數與目標端文檔中的句子數之間存在較大差異，則文檔可能最初沒有平行，或者由於其他原因無法對齊。 您需要再次查看每一端上句子差異很大 (> 10%) 的文件配對，以確保它們確實平行。 如果句子計數疑似不同，則「自訂翻譯」會在文件旁邊顯示警告。  
+如果來源和目標端檔中的句子數目不一致，您的檔可能不會在第一次進行平行處理，或因其他原因而無法對齊。 您需要再次查看每一端上句子差異很大 (> 10%) 的文件配對，以確保它們確實平行。 如果句子計數疑似不同，則「自訂翻譯」會在文件旁邊顯示警告。  
 
 
 ## <a name="deduplication"></a>重複資料刪除
@@ -45,7 +45,7 @@ ms.locfileid: "68595897"
 以單一執行個體取代多個句子結尾標點符號字元。  
 
 ## <a name="japanese-character-normalization"></a>日文字元正規化
-將全寬字母和數位轉換為半寬度字元。
+將全形字母和數位轉換為半形字元。
 
 ## <a name="unescaped-xml-tags"></a>未逸出的 XML 標記
 篩選作業會將未逸出的標記轉換成逸出的標記：

@@ -1,7 +1,7 @@
 ---
 title: Web 搜尋端點
 titleSuffix: Azure Cognitive Services
-description: 要獲取 Web 搜尋結果，請`GET`向以下終結點發送請求。 標頭和 URL 參數可定義進一步的規格。
+description: 若要取得 web 搜尋結果，請`GET`將要求傳送至下列端點。 標頭和 URL 參數可定義進一步的規格。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
 ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74111347"
 ---
 # <a name="web-search-endpoint"></a>Web 搜尋端點

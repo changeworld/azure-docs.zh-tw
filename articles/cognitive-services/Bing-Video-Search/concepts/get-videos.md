@@ -1,7 +1,7 @@
 ---
-title: 使用必應視頻搜索 API 搜索視頻
+title: 使用 Bing 影片搜尋 API 搜尋影片
 titleSuffix: Azure Cognitive Services
-description: 必應視頻搜索 API 從 Web 上查找並返回相關視頻，它提供了多種功能，用於在網路上進行智慧和集中的視頻檢索。
+description: Bing 影片搜尋從 web APIfinds 並傳回相關的影片，它提供了幾項功能，可讓您在網路上進行智慧型且專注的影片抓取。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221385"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>使用 Bing 影片搜尋 API 來搜尋影片
@@ -120,10 +120,10 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghi
 
 根據預設，影片搜尋 API 會傳回與查詢相關的所有影片。 如果您只需要長度不超過五分鐘的免費影片，您可以使用下列篩選查詢參數：
 
-- [按定價對](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;視頻進行定價（例如，免費或您必須付費的視頻）
-- [解析度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;按解析度篩選視頻（例如，解析度為 720p 或更高解析度的視頻）
-- [視頻長度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;按視頻長度篩選視頻（例如，長度小於 5 分鐘的視頻）
-- [新鮮度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;按年齡篩選視頻（例如，必應在過去一周發現的視頻）
+- [定價](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;依據定價篩選影片（例如，免費或您必須支付的影片）
+- [解析度](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;篩選影片（例如，具有720p 或更高解析度的影片）
+- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;依影片長度篩選影片（例如，長度少於五分鐘的影片）
+- [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness) &mdash;依年齡的有效性篩選影片（例如，Bing 在過去一周探索到的影片）
 
 若要取得特定網域中的影片，請在查詢字串中加入 [site:](https://msdn.microsoft.com/library/ff795613.aspx) 查詢運算子。
 

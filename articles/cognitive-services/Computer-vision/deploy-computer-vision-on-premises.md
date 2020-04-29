@@ -1,7 +1,7 @@
 ---
-title: 將電腦視覺容器與庫伯奈斯和赫爾姆一起使用
+title: 搭配 Kubernetes 和 Helm 使用電腦視覺容器
 titleSuffix: Azure Cognitive Services
-description: 將電腦視覺容器部署到 Azure 容器實例,並在 Web 瀏覽器中測試它。
+description: 將電腦視覺容器部署至 Azure 容器實例，並在網頁瀏覽器中進行測試。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,26 +11,26 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 9aac374de5af748eafbe4c22e5fc89f64e483c2a
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80877963"
 ---
-# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>將電腦視覺容器與庫伯奈斯和赫爾姆一起使用
+# <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>搭配 Kubernetes 和 Helm 使用電腦視覺容器
 
-本地管理計算機視覺容器的一個選項是使用庫伯內特斯和赫爾姆。 使用 Kubernetes 和 Helm 定義電腦視覺容器映像,我們將創建一個庫伯奈斯包。 此包將部署到本地的 Kubernetes 群集。 最後,我們將探討如何測試已部署的服務。 有關在沒有 Kubernetes 業務流程的情況下執行 Docker 容器的詳細資訊,請參閱[安裝和執行電腦視覺容器](computer-vision-how-to-install-containers.md)。
+管理內部部署電腦視覺容器的其中一個選項是使用 Kubernetes 和 Helm。 使用 Kubernetes 和 Helm 定義電腦視覺的容器映射，我們將建立 Kubernetes 套件。 此套件將會部署到內部部署的 Kubernetes 叢集。 最後，我們將探討如何測試已部署的服務。 如需執行 Docker 容器而不 Kubernetes 協調流程的詳細資訊，請參閱[安裝並執行電腦視覺容器](computer-vision-how-to-install-containers.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-在本地使用電腦視覺容器之前,以下先決條件:
+在內部部署使用電腦視覺容器之前，請先遵循下列必要條件：
 
 | 必要 | 目的 |
 |----------|---------|
 | Azure 帳戶 | 如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶][free-azure-account]。 |
-| 庫伯內斯 CLI | [庫伯內斯 CLI][kubernetes-cli]是管理容器註冊表中的共用憑據所必需的。 在赫爾姆之前也需要庫伯內特斯,這是庫伯內斯的包經理。 |
-| Helm CLI | 安裝[Helm CLI][helm-install],用於安裝掌舵圖(容器包定義)。 |
-| 電腦視覺資源 |若要使用此容器，您必須具備：<br><br>Azure**計算機視覺**資源和關聯的 API 鍵端點 URI。 這兩個值都可以在資源的「概述」和「鍵」頁上使用,並且需要啟動容器。<br><br>**[API_KEY]**:**金鑰**頁上的兩個可用資源鍵之一<br><br>**[ENDPOINT_URI]**:**概述**頁上提供的終結點|
+| Kubernetes CLI | 需要[KUBERNETES CLI][kubernetes-cli] ，才能從容器登錄中管理共用認證。 Helm 之前也需要 Kubernetes，這是 Kubernetes 套件管理員。 |
+| Helm CLI | 安裝[HELM CLI][helm-install]，用來安裝 Helm 圖表（容器封裝定義）。 |
+| 電腦視覺資源 |若要使用此容器，您必須具備：<br><br>Azure**電腦視覺**資源和相關聯的 API 金鑰端點 URI。 這兩個值都可在資源的 [總覽] 和 [金鑰] 頁面上取得，而且必須要有才能啟動容器。<br><br>**{API_KEY}**： [**金鑰**] 頁面上有兩個可用的資源金鑰之一<br><br>**{ENDPOINT_URI}**： [**總覽**] 頁面上所提供的端點|
 
 [!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
 
@@ -42,15 +42,15 @@ ms.locfileid: "80877963"
 
 [!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
-## <a name="connect-to-the-kubernetes-cluster"></a>連接到庫伯內特斯群集
+## <a name="connect-to-the-kubernetes-cluster"></a>連接到 Kubernetes 叢集
 
-主機應具有可用的庫伯內斯群集。 有關[部署 Kubernetes 群集](../../aks/tutorial-kubernetes-deploy-cluster.md)的本教程,瞭解如何將 Kubernetes 群集部署到主機的概念性理解。
+主機電腦預期會有可用的 Kubernetes 叢集。 請參閱本教學課程以瞭解如何[部署 Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md)叢集，以瞭解如何將 Kubernetes 叢集部署到主機電腦的概念。
 
-### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>與庫伯內斯群集共用 Docker 認證
+### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>與 Kubernetes 叢集共用 Docker 認證
 
-要允許 Kubernetes`docker pull`群`containerpreview.azurecr.io`集 從 容器註冊表到配置的映射,您需要將 Docker 認證到群集中。 執行下面的[`kubectl create`][kubectl-create]指令,根據從容器註冊表存取先決條件提供的認證為*Docker 註冊表金鑰*。
+若要允許 Kubernetes `docker pull`叢集從`containerpreview.azurecr.io`容器登錄中設定的映射，您需要將 docker 認證傳輸到叢集。 執行下列[`kubectl create`][kubectl-create]命令，根據容器登錄存取必要條件中提供的認證建立*docker 登錄密碼*。
 
-從您選擇的命令列介面中,執行以下命令。 請確保將和`<username>``<password>``<email-address>`替換為容器註冊表憑據。
+從您選擇的命令列介面，執行下列命令。 `<username>`請務必將、 `<password>`和`<email-address>`取代為容器登錄認證。
 
 ```console
 kubectl create secret docker-registry containerpreview \
@@ -61,35 +61,35 @@ kubectl create secret docker-registry containerpreview \
 ```
 
 > [!NOTE]
-> 如果您已經有權存取容器註冊表`containerpreview.azurecr.io`, 則可以使用泛型標誌創建 Kubernetes 機密。 請考慮以下針對 Docker 配置 JSON 執行的命令。
+> 如果您已經有容器登錄的`containerpreview.azurecr.io`存取權，您可以改為使用一般旗標來建立 Kubernetes 秘密。 請考慮下列會針對您的 Docker 設定 JSON 執行的命令。
 > ```console
 >  kubectl create secret generic containerpreview \
 >      --from-file=.dockerconfigjson=~/.docker/config.json \
 >      --type=kubernetes.io/dockerconfigjson
 > ```
 
-成功創建機密後,將以下輸出列印到主控台。
+成功建立秘密之後，會將下列輸出列印到主控台。
 
 ```console
 secret "containerpreview" created
 ```
 
-要驗證已建立機密,請使用[`kubectl get`][kubectl-get]`secrets`旗標執行 。
+若要確認是否已建立密碼，請[`kubectl get`][kubectl-get]使用`secrets`旗標來執行。
 
 ```console
 kubectl get secrets
 ```
 
-執行列印`kubectl get secrets`列印的所有已配置的機密。
+執行會`kubectl get secrets`列印所有設定的秘密。
 
 ```console
 NAME                  TYPE                                  DATA      AGE
 containerpreview      kubernetes.io/dockerconfigjson        1         30s
 ```
 
-## <a name="configure-helm-chart-values-for-deployment"></a>設定用於部署的 Helm 圖表值
+## <a name="configure-helm-chart-values-for-deployment"></a>設定部署的 Helm 圖表值
 
-首先創建名為*read*的資料夾,然後將以下 YAML 內容貼上到名為*Chart.yml*的新檔中。
+首先，建立名為*read*的資料夾，然後將下列 YAML 內容貼入名為*Chart. yml*的新檔案中。
 
 ```yaml
 apiVersion: v1
@@ -98,7 +98,7 @@ version: 1.0.0
 description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
 ```
 
-要配置 Helm 圖表預設值,請將以下 YAML 複製並`values.yaml`貼上到名為的檔案中。 將`# {ENDPOINT_URI}`和`# {API_KEY}`註釋替換為您自己的值。
+若要設定 Helm 圖表的預設值，請將下列 YAML 複製並貼到名`values.yaml`為的檔案中。 以您`# {ENDPOINT_URI}`自己`# {API_KEY}`的值取代和批註。
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -118,11 +118,11 @@ read:
 ```
 
 > [!IMPORTANT]
-> 如果未提供`billing``apikey`和值,則服務將在 15 分鐘後過期。 同樣,驗證將失敗,因為服務將不可用。
+> 如果未`billing`提供`apikey`和值，服務會在15分鐘後到期。 同樣地，驗證將會失敗，因為服務將無法使用。
 
-讀*取*目錄下建立*樣本*資料夾。 複製以下 YAML 並將其貼上`deployment.yaml`到名為的檔案中。 該檔`deployment.yaml`將用作 Helm 範本。
+在*讀取*目錄下建立*templates*資料夾。 將下列 YAML 複製並貼到名為`deployment.yaml`的檔案中。 `deployment.yaml`檔案將作為 Helm 範本。
 
-> 樣本生成清單檔,這是 Kubernetes 可以理解的 YAML 格式的資源描述。 [- 頭盔圖範本指南][chart-template-guide]
+> 範本會產生資訊清單檔案，這些檔案是 Kubernetes 可瞭解的 YAML 格式資源描述。 [-Helm 圖表範本指南][chart-template-guide]
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -163,25 +163,25 @@ spec:
     app: read-app
 ```
 
-該範本指定負載均衡器服務以及用於讀取的容器/映射的部署。
+範本會指定負載平衡器服務，以及要讀取的容器/映射部署。
 
-### <a name="the-kubernetes-package-helm-chart"></a>庫伯內斯包(赫爾姆圖)
+### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes 套件（Helm 圖）
 
-*Helm 圖表*包含從容器註冊錶中提取的 Docker`containerpreview.azurecr.io`映射的 配置。
+*Helm 圖表*包含要從`containerpreview.azurecr.io`容器登錄中提取之 docker 映射的設定。
 
-> [Helm 圖表][helm-charts]是描述一組相關的庫伯奈斯資源的檔的集合。 單個圖表可用於部署簡單內容,如 memcached pod 或複雜內容,例如包含 HTTP 伺服器、資料庫、緩存等的完整 Web 應用堆疊。
+> [Helm 圖][helm-charts]是描述一組相關 Kubernetes 資源的檔案集合。 單一圖表可能用來部署一些簡單的東西，像是 memcached pod 或複雜的東西，像是具有 HTTP 伺服器、資料庫、快取等的完整 web 應用程式堆疊。
 
-提供的*Helm 圖表*從`containerpreview.azurecr.io`容器註冊錶中提取計算機視覺服務的 Docker 映射和相應的服務。
+提供的*Helm 圖表*會提取電腦視覺服務的 docker 映射，以及`containerpreview.azurecr.io`容器登錄中的對應服務。
 
-## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>在庫伯內斯群集上安裝赫爾姆圖
+## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>在 Kubernetes 叢集上安裝 Helm 圖表
 
-要安裝*掌舵圖*,我們需要[`helm install`][helm-install-cmd]執行該 命令。 確保從`read`資料夾上方的目錄中執行安裝命令。
+若要安裝*helm 圖*，我們必須執行[`helm install`][helm-install-cmd]命令。 請務必從`read`資料夾上方的目錄執行 install 命令。
 
 ```console
 helm install read ./read
 ```
 
-下面是一個範例輸出,您可能期望從成功的安裝執行中看到:
+以下是您可能預期會從成功的安裝執行中看到的範例輸出：
 
 ```console
 NAME: read
@@ -203,13 +203,13 @@ NAME    READY  UP-TO-DATE  AVAILABLE  AGE
 read    0/1    1           0          0s
 ```
 
-庫伯內斯的部署可能需要幾分鐘才能完成。 要確認 pod 和服務都已正確部署且可用,請執行以下命令:
+Kubernetes 部署可能需要數分鐘的時間才能完成。 若要確認 pod 和服務都已正確部署並可供使用，請執行下列命令：
 
 ```console
 kubectl get all
 ```
 
-您應該會看到類似於以下輸出的內容:
+您應該會看到類似下列輸出的內容：
 
 ```console
 kubectl get all
@@ -232,7 +232,7 @@ replicaset.apps/read-57cb76bcf7   1         1         1       17s
 
 ## <a name="next-steps"></a>後續步驟
 
-有關在 Azure 函式庫伯奈斯服務 (AKS) 中使用 Helm 安裝應用程式的更多詳細資訊,[請存取此處][installing-helm-apps-in-aks]。
+如需在 Azure Kubernetes Service （AKS）中使用 Helm 安裝應用程式的詳細資訊，請[造訪這裡][installing-helm-apps-in-aks]。
 
 > [!div class="nextstepaction"]
 > [認知服務容器][cog-svcs-containers]

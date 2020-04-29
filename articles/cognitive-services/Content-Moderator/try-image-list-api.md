@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 27d9b12d9e1a0237050243c2b5f07edaa8d8857a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72757200"
 ---
 # <a name="moderate-with-custom-image-lists-in-the-api-console"></a>使用 API 主控台中的自訂影像清單進行仲裁
@@ -89,7 +89,7 @@ ms.locfileid: "72757200"
 
    請以索引鍵/值組形式新增清單中繼資料，而不要新增實際的影像。
  
-7. 選擇 **"發送**"。 您的清單隨即建立。 請注意與新清單關聯的 [ID] \(識別碼\)**** 值。 您需要有此識別碼，才能進行其他影像清單管理功能。
+7. 選取 [**傳送**]。 您的清單隨即建立。 請注意與新清單關聯的 [ID] \(識別碼\)**** 值。 您需要有此識別碼，才能進行其他影像清單管理功能。
 
    ![[Image Lists - Create] \(影像清單 - 建立\) 主控台的 [Response content] \(回應內容\) 方塊顯示清單識別碼](images/try-terms-list-create-2.png)
  
@@ -109,7 +109,7 @@ ms.locfileid: "72757200"
 
     [Image - Get All Image Ids] \(影像 - 取得所有影像識別碼\)**** API 主控台隨即開啟。
   
-12. 在 [listId]**** 方塊中，輸入清單識別碼，然後輸入您的訂用帳戶金鑰。 選擇 **"發送**"。
+12. 在 [listId]**** 方塊中，輸入清單識別碼，然後輸入您的訂用帳戶金鑰。 選取 [**傳送**]。
 
     ![[Image - Get All Image Ids] \(影像 - 取得所有影像識別碼\) 主控台的 [Response content] \(回應內容\) 方塊列出您輸入的影像](images/try-image-list-create-11.png)
  

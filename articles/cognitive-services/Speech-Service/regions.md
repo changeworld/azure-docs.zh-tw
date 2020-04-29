@@ -1,7 +1,7 @@
 ---
-title: 區域 - 語音服務
+title: 區域-語音服務
 titleSuffix: Azure Cognitive Services
-description: 語音服務的可用區域和終結點的清單，包括語音到文本、文本到語音轉換和語音翻譯。
+description: 適用于語音服務的可用區域和端點清單，包括語音轉換文字、文字轉換語音和語音翻譯。
 services: cognitive-services
 author: mahilleb-msft
 manager: nitinme
@@ -12,33 +12,33 @@ ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221415"
 ---
 # <a name="speech-service-supported-regions"></a>語音服務支援的區域
 
 「語音服務」可讓您的應用程式將音訊轉換為文字、執行語音翻譯，以及將文字轉換為語音。 此服務在多個區域中提供，針對語音 SDK 與 REST API 有唯一的端點。
 
-此處提供了"語音門戶"，用於對所有區域的語音體驗執行自訂配置：https://speech.microsoft.com
+這裡提供的語音入口網站可讓您為所有區域的語音體驗執行自訂設定：https://speech.microsoft.com
 
-對於語音服務的調用，請確保呼叫與訂閱的區域匹配。
+針對語音服務的調用，請確定呼叫符合您訂用帳戶的區域。
 
 ## <a name="speech-sdk"></a>語音 SDK
 
 在[語音 SDK](speech-sdk.md) 中，區域會指定為字串 (例如，在適用於 C# 的語音 SDK 中，作為 `SpeechConfig.FromSubscription` 的參數)。
 
-### <a name="speech-to-text-text-to-speech-and-translation"></a>語音到文本、文本到語音和翻譯
+### <a name="speech-to-text-text-to-speech-and-translation"></a>語音轉換文字、文字轉換語音和翻譯
 
-語音自訂門戶可在此處找到：https://speech.microsoft.com
+您可以在這裡取得語音自訂入口網站：https://speech.microsoft.com
 
-語音服務可在這些區域提供**語音辨識**、**文本到語音**和**翻譯**：
+語音服務適用于**語音辨識**、**文字到語音**轉換和**翻譯**這兩個區域：
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-如果使用[語音 SDK，](speech-sdk.md)區域由**區域識別碼**指定（例如，作為 的`SpeechConfig.FromSubscription`參數。 確保區域與訂閱區域匹配。
+如果您使用[語音 SDK](speech-sdk.md)，區域會由**區域識別碼**指定（例如，做為的參數`SpeechConfig.FromSubscription`）。 請確定該區域符合您訂用帳戶的區域。
 
 ### <a name="intent-recognition"></a>意圖辨識
 
@@ -63,7 +63,7 @@ ms.locfileid: "79221415"
 
 ### <a name="voice-assistants"></a>語音助理
 
-[語音 SDK](speech-sdk.md)支援以下區域的**語音助理**功能：
+[語音 SDK](speech-sdk.md)支援下欄區域中的**語音助理**功能：
 
 | 區域         | 區域識別碼 |
 | -------------- | -------------------- |
@@ -81,15 +81,15 @@ ms.locfileid: "79221415"
 
 ### <a name="speech-to-text"></a>語音轉文字
 
-有關語音到文本的參考文檔，請參閱[語音到文本 REST API](rest-speech-to-text.md)。
+如需語音轉換文字的參考檔，請參閱[語音轉換文字 REST API](rest-speech-to-text.md)。
 
-REST API 的終結點具有以下格式：
+REST API 的端點具有下列格式：
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
 ```
 
-替換`<REGION_IDENTIFIER>`與匹配此表中訂閱區域的識別碼：
+取代`<REGION_IDENTIFIER>`為符合此資料表中訂用帳戶區域的識別碼：
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
@@ -98,6 +98,6 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 ### <a name="text-to-speech"></a>文字轉換語音
 
-有關文本到語音轉換的參考文檔，請參閱[文本到語音轉換 REST API](rest-text-to-speech.md)。
+如需文字轉換語音的參考檔，請參閱[文字轉換語音 REST API](rest-text-to-speech.md)。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]

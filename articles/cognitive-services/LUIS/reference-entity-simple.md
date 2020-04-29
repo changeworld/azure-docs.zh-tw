@@ -1,7 +1,7 @@
 ---
-title: 簡單實體類型 - LUIS
+title: 簡單實體類型-LUIS
 titleSuffix: Azure Cognitive Services
-description: 一個簡單的實體描述機器學習上下文中的單個概念。 使用簡單實體改進結果時添加片語清單。
+description: 簡單實體描述來自機器學習內容的單一概念。 使用簡單實體來改善結果時，請新增片語清單。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74894767"
 ---
 # <a name="simple-entity"></a>簡單實體
@@ -51,7 +51,7 @@ ms.locfileid: "74894767"
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
-如果在`verbose=false`查詢字串中設置，則這是 JSON：
+如果`verbose=false`是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {

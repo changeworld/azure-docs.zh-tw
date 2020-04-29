@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67341728"
 ---
-# <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用見解權杖獲取圖像的見解
+# <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用見解權杖取得影像的深入解析
 
-Bing 圖像式搜尋 API 會傳回您所提供影像的相關資訊。 您可以使用影像的 URL、見解權杖，或上傳影像來提供影像。 如需這些選項的資訊，請參閱[什麼是 Bing 圖像式搜尋 API？](overview.md) 本文將示範如何使用見解權杖。 有關演示如何上傳圖像以獲得見解的示例，請參閱快速入門 （[C#](quickstarts/csharp.md) | [JAVA](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)）。
+Bing 圖像式搜尋 API 會傳回您所提供影像的相關資訊。 您可以使用影像的 URL、見解權杖，或上傳影像來提供影像。 如需這些選項的資訊，請參閱[什麼是 Bing 圖像式搜尋 API？](overview.md) 本文將示範如何使用見解權杖。 如需示範如何上傳影像以取得見解的範例，請參閱快速入門（[c #](quickstarts/csharp.md) | [JAVA](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | node.js[Python](quickstarts/python.md)）。
 
-如果向必應視覺搜索發送圖像權杖或 URL，則下面將顯示您必須包含在 POST 正文中的表單資料。 表單資料必須包含`Content-Disposition`標頭，並且必須將其`name`參數設置為"知識請求"。 有關物件的詳細資訊，`imageInfo`請參閱請求：
+如果您將影像權杖或 URL 傳送 Bing 圖像式搜尋，以下會顯示您必須包含在 POST 本文中的表單資料。 表單資料必須包含`Content-Disposition`標頭，而且您必須將其`name`參數設為 "knowledgeRequest"。 如需物件的`imageInfo`詳細資訊，請參閱要求：
 
 ```json
 {
@@ -43,7 +43,7 @@ Bing 圖像式搜尋 API 會傳回您所提供影像的相關資訊。 您可以
 }
 ```
 
-本文中的範例將示範如何使用見解權杖。 從 /image/搜索`Image`API 回應中的物件獲取見解權杖。 有關獲取見解權杖的資訊，請參閱[什麼是必應圖像搜索 API？](../Bing-Image-Search/overview.md)
+本文中的範例將示範如何使用見解權杖。 您會從/images/search API 回應中`Image`的物件取得深入解析權杖。 如需取得深入解析權杖的相關資訊，請參閱[什麼是 BING 影像搜尋 API？](../Bing-Image-Search/overview.md)。
 
 ```
 --boundary_1234-abcd
@@ -58,21 +58,21 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-有關使用見解權杖的示例，請參閱[C#](#use-with-c) | [JAVA](#use-with-java) | [Node.js](#use-with-nodejs) | [Python](#use-with-python)。
+如需使用 insights token 的範例，請參閱[c #](#use-with-c) | [JAVA](#use-with-java) | [Node.js](#use-with-nodejs) | node.js[Python](#use-with-python)。
 
-## <a name="use-with-c"></a>與 C 一起使用#
+## <a name="use-with-c"></a>搭配 C 使用#
 
-### <a name="c-prerequisites"></a>C# 先決條件
+### <a name="c-prerequisites"></a>C # 必要條件
 
-- 任何版本的[Visual Studio 2019，](https://www.visualstudio.com/downloads/)以在 Windows 上運行此代碼。
-- Azure 訂用帳戶。 對於此快速入門，您可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)訂閱金鑰或付費訂閱金鑰。
+- 任何版本的[Visual Studio 2019](https://www.visualstudio.com/downloads/) ，以讓此程式碼在 Windows 上執行。
+- Azure 訂用帳戶。 在本快速入門中，您可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)訂用帳戶金鑰或付費訂用帳戶金鑰。
 
 ## <a name="run-the-application"></a>執行應用程式
 
 若要執行此應用程式，請遵循下列步驟：
 
-1. 在視覺化工作室中創建主控台解決方案。
-2. 將Program.cs的內容替換為此快速入門中顯示的代碼。
+1. 在 Visual Studio 中建立主控台解決方案。
+2. 以本快速入門中顯示的程式碼取代 Program.cs 的內容。
 3. 以您的訂用帳戶金鑰取代 `accessKey` 值。
 4. 以 /images/search 回應中的見解權杖取代 `insightsToken` 值。
 5. 執行程式。
@@ -233,18 +233,18 @@ namespace VisualSearchInsightsToken
 }
 ```
 
-## <a name="use-with-java"></a>與 JAVA 一起使用
+## <a name="use-with-java"></a>搭配 JAVA 使用
 
-### <a name="java-prerequisites"></a>JAVA 先決條件
+### <a name="java-prerequisites"></a>JAVA 必要條件
 
-- 您必須使用[JDK 7 或 8](https://aka.ms/azure-jdks)來編譯和運行此代碼。 如果您有我的最愛，則可以使用 JAVA IDE，但文字編輯器就足夠了。
-- 對於此快速入門，您可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)訂閱金鑰或付費訂閱金鑰。
+- 您必須使用[JDK 7 或 8](https://aka.ms/azure-jdks)來編譯和執行此程式碼。 如果您有 [我的最愛]，可以使用 JAVA IDE，但是文字編輯器就夠了。
+- 在本快速入門中，您可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)訂用帳戶金鑰或付費訂用帳戶金鑰。
 
-## <a name="run-the-java-application"></a>運行 JAVA 應用程式
+## <a name="run-the-java-application"></a>執行 JAVA 應用程式
 
 若要執行此應用程式，請遵循下列步驟：
 
-1. 下載或安裝[GsonJAVA庫](https://github.com/google/gson)。 您也可以通過馬文獲得格森。
+1. 下載或安裝[Gson JAVA 程式庫](https://github.com/google/gson)。 您也可以透過 Maven 取得 Gson。
 2. 在您最愛的 IDE 或編輯器中建立新的 Java 專案。
 3. 在名為 `VisualSearch.java` 的檔案中新增提供的程式碼。
 4. 以您的訂用帳戶金鑰取代 `subscriptionKey` 值。
@@ -347,14 +347,14 @@ public class InsightsToken {
 }
 ```
 
-## <a name="use-with-nodejs"></a>與 Node.js 一起使用
+## <a name="use-with-nodejs"></a>搭配 node.js 使用
 
 ### <a name="nodejs-prerequisites"></a>Node.js 必要條件
 
-- 您必須具有[Node.js 6](https://nodejs.org/en/download/)才能運行此代碼。
-- 對於此快速入門，您可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)訂閱金鑰或付費訂閱金鑰。
+- 您必須有[node.js 6](https://nodejs.org/en/download/) ，才能執行此程式碼。
+- 在本快速入門中，您可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)訂用帳戶金鑰或付費訂用帳戶金鑰。
 
-## <a name="run-the-javascript-application"></a>運行 JavaScript 應用程式
+## <a name="run-the-javascript-application"></a>執行 JavaScript 應用程式
 
 若要執行此應用程式，請遵循下列步驟：
 
@@ -411,14 +411,14 @@ function requestCallback(err, res, body) {
 }
 ```
 
-## <a name="use-with-python"></a>與 Python 一起使用
+## <a name="use-with-python"></a>搭配 Python 使用
 
-### <a name="python-prerequisites"></a>Python 先決條件
+### <a name="python-prerequisites"></a>Python 必要條件
 
-- 您必須具有[Python 3](https://www.python.org/)才能運行此代碼。
+- 您必須有[Python 3](https://www.python.org/) ，才能執行此程式碼。
 - 在本快速入門中，您可以使用[免費試用](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)的訂用帳戶金鑰或付費的訂用帳戶金鑰。
 
-## <a name="run-the-python-application"></a>運行 Python 應用程式
+## <a name="run-the-python-application"></a>執行 Python 應用程式
 
 若要執行此應用程式，請遵循下列步驟：
 
@@ -477,7 +477,7 @@ if __name__ == '__main__':
 ## <a name="next-steps"></a>後續步驟
 
 [建立圖像式搜尋單頁 Web 應用程式](tutorial-bing-visual-search-single-page-app.md)  
-[什麼是必應視覺化搜索 API？](overview.md)  
+[什麼是 Bing 圖像式搜尋 API？](overview.md)  
 [試用認知服務](https://aka.ms/bingvisualsearchtryforfree)  
 [取得免費試用的存取金鑰](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[圖片 - 視覺搜索](https://aka.ms/bingvisualsearchreferencedoc)
+[映射-圖像式搜尋](https://aka.ms/bingvisualsearchreferencedoc)

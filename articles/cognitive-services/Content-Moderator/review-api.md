@@ -1,7 +1,7 @@
 ---
-title: 評論、工作流和作業概念 - 內容檢閱者
+title: 評論、工作流程和作業概念-內容仲裁
 titleSuffix: Azure Cognitive Services
-description: 在本文中，您將瞭解"審閱"工具的核心概念;評論、工作流和作業。
+description: 在本文中，您將瞭解審查工具的核心概念;評論、工作流程和工作。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,35 +11,35 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221539"
 ---
-# <a name="content-moderation-reviews-workflows-and-jobs"></a>內容審核審核、工作流和作業
+# <a name="content-moderation-reviews-workflows-and-jobs"></a>內容仲裁審查、工作流程和工作
 
-內容管理員將機器輔助審核與"迴圈中人"功能相結合，為實際方案創建最佳的審核過程。 它通過基於雲的[審閱工具](https://contentmoderator.cognitive.microsoft.com)來完成此情況。 在本指南中，您將瞭解"審閱"工具的核心概念：評論、工作流和作業。
+內容仲裁結合了機器輔助審核與人為迴圈的功能，為真實世界的案例建立最佳審核程式。 它會透過以雲端為基礎的[審查工具](https://contentmoderator.cognitive.microsoft.com)來執行此工作。 在本指南中，您將瞭解審查工具的核心概念：評論、工作流程和作業。
 
 ## <a name="reviews"></a>評論
 
-在審閱中，內容將上載到"審閱"工具，並顯示在 **"審閱**"選項卡下。從這裡，使用者可以更改應用的標記，並根據需要應用自己的自訂標記。 當使用者提交審核時，結果將發送到指定的回檔終結點，並且內容將從網站中刪除。
+在審查中，內容會上傳至審核工具，並出現在 [**審查**] 索引標籤底下。從這裡開始，使用者可以變更套用的標記，並視需要套用自己的自訂標記。 當使用者提交評論時，會將結果傳送至指定的回呼端點，並將內容從網站中移除。
 
-![在"審閱"選項卡上，在瀏覽器中打開的工具網站](./Review-Tool-user-Guide/images/image-workflow-review.png)
+![在瀏覽器的 [審核] 索引標籤中開啟審查工具網站](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-請參閱[Review 工具指南](./review-tool-user-guide/review-moderated-images.md)以開始創建評論，或查看[REST API 指南](./try-review-api-review.md)，瞭解如何以程式設計方式執行此操作。
+若要瞭解如何以程式設計方式執行，請參閱[審查工具指南](./review-tool-user-guide/review-moderated-images.md)以開始建立評論，或參閱[REST API 指南](./try-review-api-review.md)。
 
 ## <a name="workflows"></a>工作流程
 
-工作流是內容的基於雲的自訂篩選器。 工作流可以連接到各種服務，以不同的方式篩選內容，然後採取適當的操作。 使用內容檢閱者連接器，工作流可以自動應用審核標記並創建包含已提交內容的評論。
+工作流程是以雲端為基礎的自訂篩選器內容。 工作流程可以連接到各種服務，以不同的方式篩選內容，然後採取適當的動作。 透過內容仲裁連接器，工作流程可以自動套用審核標記，並使用已提交的內容建立評論。
 
-### <a name="view-workflows"></a>查看工作流
+### <a name="view-workflows"></a>查看工作流程
 
-要查看現有工作流，請轉到["審閱"工具](https://contentmoderator.cognitive.microsoft.com/)並選擇 **"設置** > **工作流**"。
+若要查看現有的工作流程，請移至[審核工具](https://contentmoderator.cognitive.microsoft.com/)，然後選取 [**設定** > ] [**工作流程**]。
 
 ![預設工作流程](images/default-workflow-listed.PNG)
 
-工作流可以完全描述為 JSON 字串，這使得它們可以通過程式設計方式訪問。 如果為工作流選擇 **"編輯"** 選項，然後選擇 **"JSON"** 選項卡，您將看到一個 JSON 運算式，如下所示：
+工作流程可以完整描述為 JSON 字串，讓它們可透過程式設計方式存取。 如果您選取工作流程的 [**編輯**] 選項，然後選取 [ **json** ] 索引標籤，您會看到如下所示的 json 運算式：
 
 ```json
 {
@@ -64,16 +64,16 @@ ms.locfileid: "79221539"
 }
 ```
 
-請參閱[Review 工具指南](./review-tool-user-guide/workflows.md)以開始創建和使用工作流，或者請參閱 REST [API 指南](./try-review-api-workflow.md)，瞭解如何以程式設計方式執行此操作。
+請參閱[審查工具指南](./review-tool-user-guide/workflows.md)，以開始建立和使用工作流程，或參閱[REST API 指南](./try-review-api-workflow.md)，以瞭解如何以程式設計方式執行此操作。
 
 ## <a name="jobs"></a>工作
 
-審核作業充當內容審核、工作流和審閱功能的包裝器。 作業使用內容檢閱者圖像審核 API 或文本審閱 API 掃描內容，然後根據指定的工作流進行檢查。 根據工作流結果，它可能會或可能不會為[審閱工具](./review-tool-user-guide/human-in-the-loop.md)中的內容創建審閱。 雖然可以使用各自的 API 創建和配置審核和工作流，但作業 API 允許您獲取整個過程的詳細報告（可發送到指定的回檔終結點）。
+審核作業可做為內容仲裁、工作流程和評論功能的一種包裝函式。 作業會使用內容仲裁影像審核 API 或文字仲裁 API 來掃描您的內容，然後針對指定的工作流程進行檢查。 根據工作流程結果，它不一定會在[審核工具](./review-tool-user-guide/human-in-the-loop.md)中建立內容的審查。 雖然評論和工作流程都可以使用其各自的 Api 來建立和設定，但作業 API 可讓您取得整個程式的詳細報告（可以傳送至指定的回呼端點）。
 
-請參閱[REST API 指南](./try-review-api-job.md)以開始使用作業。
+請參閱[REST API 指南](./try-review-api-job.md)，以開始使用作業。
 
 ## <a name="next-steps"></a>後續步驟
 
 * 試用[作業 API 主控台](try-review-api-job.md)，並使用 REST API 程式碼範例。 如果您已熟悉 Visual Studio 和 C#，也請參閱[作業 .NET 快速入門](moderation-jobs-quickstart-dotnet.md)。 
-* 若為檢閱者，請開始使用[檢閱 API 主控台](try-review-api-review.md)，並使用 REST API 程式碼範例。 然後查看[.NET 快速入門](dotnet-sdk-quickstart.md)的評論部分。
+* 若為檢閱者，請開始使用[檢閱 API 主控台](try-review-api-review.md)，並使用 REST API 程式碼範例。 然後參閱[.net 快速入門](dotnet-sdk-quickstart.md)的 [評論] 區段。
 * 若為影片檢閱者，請使用[影片檢閱快速入門](video-reviews-quickstart-dotnet.md)，並了解如何[在影片檢閱中新增文字記錄](video-transcript-reviews-quickstart-dotnet.md)。

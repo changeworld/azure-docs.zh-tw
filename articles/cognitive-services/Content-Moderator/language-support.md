@@ -1,7 +1,7 @@
 ---
 title: 語言支援 - 內容仲裁 API
 titleSuffix: Azure Cognitive Services
-description: 這是 Azure 認知服務內容審閱人 API 支援的自然語言的清單。
+description: 這是 Azure 認知服務內容仲裁 API 支援的自然語言清單。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 9574af31c881589668c462099cae46d9e83b454b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73744374"
 ---
 # <a name="language-support-for-content-moderator-api"></a>內容仲裁 API 的語言支援
@@ -40,7 +40,7 @@ ms.locfileid: "73744374"
 | 捷克文 |  白俄羅斯文 | 希臘文 (現代)         | 波蘭文 |
 | 迪培希文 | 波士尼亞文 - 斯拉夫 | 匈牙利文      | 葡萄牙文 |
 | 荷蘭文 | 波士尼亞文 - 拉丁 | 義大利文             | 羅馬尼亞文 |
-| 英語（克裡奧爾語） | 布列塔尼文 [非 GeoPol] | 日文  | 俄文 |
+| 英文（克裡奧爾文） | 布列塔尼文 [非 GeoPol] | 日文  | 俄文 |
 | 波斯文 | 保加利亞文 | 韓文                        | 斯洛伐克文 |
 | 法文 | 卡達隆尼亞文 | 挪威文                        | 西班牙文 |
 | 德文 | 中庫德文 | 波蘭文        | 土耳其文 |

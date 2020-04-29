@@ -1,16 +1,16 @@
 ---
-title: 快速入門:建立、培訓和發佈知識庫 - QnA 製造商
+title: 快速入門：建立、定型和發佈知識庫-QnA Maker
 description: 您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
 ms.topic: conceptual
 ms.date: 02/08/2020
 ms.openlocfilehash: 5a3cd4a66ae3a7148b517050c3d1a8c6c8e7a712
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80756817"
 ---
-# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門:創建、培訓和發佈 QnA Maker 知識庫
+# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入門：建立、訓練及發佈您的 QnA Maker 知識庫
 
 您可以從自己的內容 (例如常見問題集或產品手冊) 建立 QnA Maker 知識庫 (KB)。 本文包含從簡單的常見問題集網頁建立 QnA Maker 知識庫的範例，以回答問題 QnA Maker。
 
@@ -38,16 +38,16 @@ ms.locfileid: "80756817"
 
 1. 在 [步驟 3]**** 中，將知識庫命名為**我的範例 QnA KB**。
 
-1. 在 [步驟 4]**** 中，使用下表進行設定：
+1. 在 [步驟 4]  中，使用下表進行設定：
 
     |設定|值|
     |--|--|
     |**啟用從 URL、.pdf 或 .docx 檔案進行多回合擷取。**|已檢查|
     |**預設答案文字**| `Quickstart - default answer not found.`|
     |**+ 新增 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**閒聊**|選取 [Professional]****|
+    |**閒聊**|選取 [Professional] |
 
-1. 在 [步驟 5]**** 中，選取 [建立知識庫]****。
+1. 在**步驟 5**中，選取 [**建立您的 KB**]。
 
     擷取程序需要一點時間來讀取文件並找出問題和回答。
 
@@ -114,7 +114,7 @@ ms.locfileid: "80756817"
 
 1. Azure 入口網站會在新的瀏覽器索引標籤中開啟，其中會包含 Azure Bot 服務的建立頁面。 設定 Azure Bot 服務。 Bot 與 QnA Maker 可共用 Web 應用程式服務方案，但不能共用 Web 應用程式。 這表示 Bot 的**應用程式名稱**必須與 QnA Maker 服務的應用程式名稱不同。
 
-    * **做**
+    * **對**
         * 變更 Bot 控制代碼 - 如果不是唯一的。
         * 選取 SDK 語言。 建立 Bot 後，您可以將程式碼下載至您的本機開發環境，並繼續進行開發程序。
     * **避免事項**
@@ -124,7 +124,7 @@ ms.locfileid: "80756817"
 
 
 1. 建立 Bot 之後，請開啟 [Bot 服務]**** 資源。
-1. 在**機器人管理**下,選擇 **「網路聊天中的測試**」。。
+1. 在 [ **Bot 管理**] 底下，選取 [**在網路聊天中測試**]。
 1. 在 [輸入您的訊息]**** 聊天提示中，輸入：
 
     `Azure services?`
@@ -135,7 +135,7 @@ ms.locfileid: "80756817"
 
 ## <a name="what-did-you-accomplish"></a>您完成了哪些工作？
 
-您創建了一個新的知識庫,向知識庫添加了公共 URL,添加了您自己的 QnA 對、培訓、測試和發佈知識庫。
+您已建立新的知識庫、將公用 URL 加入至知識庫、加入您自己的 QnA 組、定型、測試和發佈知識庫。
 
 在發佈知識庫之後，您已建立 Bot 並測試 Bot。
 
@@ -150,7 +150,7 @@ ms.locfileid: "80756817"
 > [!div class="nextstepaction"]
 > [新增具有中繼資料的問題](add-question-metadata-portal.md)
 
-其他資訊：
+如需詳細資訊：
 
 * [ Markdown 格式](../reference-markdown-format.md)
 * QnA Maker [資料來源](../concepts/knowledge-base.md)。

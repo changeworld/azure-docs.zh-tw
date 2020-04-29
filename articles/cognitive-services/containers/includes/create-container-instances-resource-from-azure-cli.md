@@ -1,7 +1,7 @@
 ---
 title: 容器支援
 titleSuffix: Azure Cognitive Services
-description: 瞭解如何從 Azure CLI 創建 Azure 容器實例資源。
+description: 瞭解如何從 Azure CLI 建立 Azure 容器實例資源。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,15 +10,15 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: e3542b976921aa45794d62cad9517984c8348ce3
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80875100"
 ---
-## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>從 Azure CLI 建立 Azure 容器實體資源
+## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>從 Azure CLI 建立 Azure 容器實例資源
 
-下面的 YAML 定義 Azure 容器實例資源。 將內容複製並貼上到新檔案中,命名`my-aci.yaml`並替換註釋的值。 有關有效的 YAML,請參考[樣本格式][template-format]。 有關可用映像名稱及其儲存儲存函式庫,請參考[容器儲存函式庫及映像][repositories-and-images]。 有關容器實例的 YAML 引用的詳細資訊,請參閱[YAML 引用:Azure 容器實例][aci-yaml-ref]。
+下列 YAML 會定義 Azure 容器實例資源。 將內容複寫並貼到名`my-aci.yaml`為的新檔案，並以您自己的值取代加上批註的值。 如需有效的 YAML，請參閱[範本格式][template-format]。 請參閱[容器存放庫和映射][repositories-and-images]，以取得可用映射名稱及其對應的儲存機制。 如需容器實例之 YAML 參考的詳細資訊，請參閱[YAML 參考： Azure 容器實例][aci-yaml-ref]。
 
 ```YAML
 apiVersion: 2018-10-01
@@ -64,18 +64,18 @@ type: Microsoft.ContainerInstance/containerGroups
 ```
 
 > [!NOTE]
-> 並非所有位置都具有相同的 CPU 和記憶體可用性。 有關每個位置和作業系統的容器可用資源的清單,請參閱[位置和資源][location-to-resource]表。
+> 並非所有位置都具有相同的 CPU 和記憶體可用性。 如需每個位置和 OS 的容器可用資源清單，請參閱[location 和 resources][location-to-resource]資料表。
 
-我們將依賴於我們為[`az container create`][azure-container-create]命令創建的 YAML 檔。 從 Azure CLI`az container create``<resource-group>`中 ,執行 使用您自己的 取代的命令。 此外,為了在 YAML 部署中保護值,請參閱[安全值][secure-values]。
+我們會依賴我們為[`az container create`][azure-container-create]命令所建立的 YAML 檔案。 從 Azure CLI 執行`az container create`命令，並將取代為`<resource-group>`您自己的。 此外，為了保護 YAML 部署內的值，請參閱[安全的值][secure-values]。
 
 ```azurecli
 az container create -g <resource-group> -f my-aci.yaml
 ```
 
-該命令的輸出在`Running...`輸出更改為表示新創建的 ACI 資源的 JSON 字串後,如果有效。 容器映射很可能一段時間內不可用,但現在已部署資源。
+此命令的輸出會`Running...`在經過一段時間後，輸出變更為代表新建立之 ACI 資源的 JSON 字串。 容器映射的時間可能不會超過一段時間，但現在已部署資源。
 
 > [!TIP]
-> 密切關注公共預覽 Azure 認知服務產品的位置,因為 YAML 需要相應地進行調整以匹配該位置。
+> 請密切注意公開預覽 Azure 認知服務供應專案的位置，因為 YAML 需要適當地調整以符合該位置。
 
 [azure-container-create]: https://docs.microsoft.com/cli/azure/container?view=azure-cli-latest#az-container-create
 [template-format]: https://docs.microsoft.com/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format

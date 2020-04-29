@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
 ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "71257630"
 ---
 # <a name="customize-your-text-translations"></a>自訂文字翻譯
@@ -29,7 +29,7 @@ Microsoft 自訂翻譯工具是 Microsoft 翻譯工具服務的功能，可讓�
 
 ### <a name="how-does-it-work"></a>運作方式
 
-使用以前翻譯的文檔（傳單、網頁、文檔等）構建一個翻譯系統，反映您的域特定術語和風格，比標準翻譯系統更好。 使用者可以上傳 TMX、XLIFF、TXT、DOCX 和 XLSX 文件。  
+使用您先前翻譯的檔（傳單、網頁、檔等）來建立轉譯系統，以反映您領域專屬的術語和樣式，優於標準翻譯系統。 使用者可以上傳 TMX、XLIFF、TXT、DOCX 和 XLSX 文件。  
 
 系統也接受在文件層級上為平行處理、但在句子層級上尚未對齊的資料。 若使用者可以存取使用多種語言、但位於在不同文件中的相同內容版本，自訂翻譯工具就能夠自動比對文件之間的句子。  系統還可以使用其中一或二種語言的單語資料，補充平行訓練資料來改善翻譯。
 
@@ -43,11 +43,11 @@ Microsoft 自訂翻譯工具是 Microsoft 翻譯工具服務的功能，可讓�
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
 > [!NOTE]
-> 傳統的微軟翻譯中心將于2019年5月17日停用。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。  
+> 舊版 Microsoft Translator Hub 將于 2019 5 月17日淘汰。 [查看重要的遷移資訊和日期](https://www.microsoft.com/translator/business/hub/)。  
 
 ## <a name="custom-translator-versus-hub"></a>自訂翻譯工具與中樞
 
-|   | **樞紐** | **自訂轉換器**|
+|   | **中樞** | **自訂翻譯工具**|
 |:-----|:----:|:----:|
 |自訂功能狀態   | 正式運作  | 正式運作 |
 | 文字 API 版本  | 僅限第 2 版   | 僅限第 3 版 |

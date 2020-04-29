@@ -10,17 +10,17 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: 64f446c3b331c1aa6ddaae9081b7f61943f74ab2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595558"
 ---
 # <a name="view-model-details"></a>檢視模型詳細資料
 
 專案底下的 [模型] 索引標籤會顯示該專案中的所有模型。 針對該專案定型的所有模型，都會列在此索引標籤中。
 
-對於專案中的每個模型，將顯示這些詳細資訊。
+針對專案中的每個模型，會顯示這些詳細資料。
 
 1.  模型名稱：顯示指定模型的模型名稱。
 

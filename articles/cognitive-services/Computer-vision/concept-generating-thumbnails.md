@@ -1,5 +1,5 @@
 ---
-title: 智慧裁剪縮略圖 - 電腦視覺
+title: 智慧型裁剪縮圖-電腦視覺
 titleSuffix: Azure Cognitive Services
 description: 使用電腦視覺 API 產生影像縮圖的相關概念。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68945225"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>使用電腦視覺產生智慧裁剪的縮圖
@@ -24,7 +24,7 @@ ms.locfileid: "68945225"
 
 電腦視覺縮圖產生演算法的運作方式如下所示：
 
-1. 從圖像中刪除分散注意力的元素，並標識主物件出現的圖像區域_的感興趣_&mdash;區域。
+1. 從影像中移除雜亂的元素，並識別出現主要物件之影像區域的_感興趣_&mdash;區域。
 1. 根據所識別的「關注區域」__ 來裁剪影像。
 1. 變更外觀比例以符合目標縮圖尺寸。
 
@@ -38,15 +38,15 @@ ms.locfileid: "68945225"
 
 產生的縮圖可能大不相同，取決於您指定的高度、寬度及智慧裁剪方式，如下列影像所示。
 
-![各種裁剪配置旁邊的山圖像](./Images/thumbnail-demo.png)
+![各種裁剪設定旁邊的山地影像](./Images/thumbnail-demo.png)
 
 下表顯示的是電腦視覺針對範例影像所產生的典型縮圖。 這些是目標高度和寬度指定為 50 像素，並啟用智慧裁剪功能所產生的縮圖。
 
-| 映像 | 縮圖 |
+| Image | 縮圖 |
 |-------|-----------|
-|![日落時分的戶外山，與人的剪影](./Images/mountain_vista.png) | ![日落時分戶外山的縮略圖，帶有人的剪影](./Images/mountain_vista_thumbnail.png) |
+|![在日落的戶外山地，有一個人的剪影](./Images/mountain_vista.png) | ![室外山地的縮圖（具有個人的側面影像）](./Images/mountain_vista_thumbnail.png) |
 |![具有綠色背景的白色花卉](./Images/flower.png) | ![視覺分析花朵縮圖](./Images/flower_thumbnail.png) |
-|![公寓大樓屋頂上的女人](./Images/woman_roof.png) | ![公寓樓屋頂上一個女人的縮略圖](./Images/woman_roof_thumbnail.png) |
+|![公寓大樓屋頂上的女人](./Images/woman_roof.png) | ![公寓大樓的一位女性的縮圖](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>後續步驟
 

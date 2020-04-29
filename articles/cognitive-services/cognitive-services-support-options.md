@@ -1,7 +1,7 @@
 ---
 title: 支援和協助選項
 titleSuffix: Azure Cognitive Services
-description: 在創建與 Azure 認知服務整合的應用程式時,如何獲取對問題和問題和支援。
+description: 當您建立與 Azure 認知服務整合的應用程式時，如何取得問題和問題的說明及支援。
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
 ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81258418"
 ---
-# <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure 認知服務支援與回饋選項
+# <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure 認知服務支援和意見反應選項
 
-您是否剛剛開始探索 Azure 認知服務的功能? 也許您正在應用程式中實現一項新功能。 或者使用服務后,您有如何改進服務的建議嗎? 以下是您可以獲取支援、保持最新、提供反饋和報告認知服務 Bug 的選項。
+您剛開始探索 Azure 認知服務的功能嗎？ 也許您是在應用程式中執行新功能。 或者，在使用服務之後，您是否有關于如何改進的建議？ 這裡提供的選項可讓您取得支援、保持最新狀態、提供意見反應，以及報告認知服務的錯誤。
 
 ## <a name="get-support"></a>取得支援
 
@@ -39,17 +39,17 @@ ms.locfileid: "81258418"
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
 </div>
 
-要取得更快的結果,請對相關網站執行搜尋,如[堆疊溢出](https://stackoverflow.com/),[微軟文件](https://docs.microsoft.com/azure/cognitive-services/)或[GitHub 程式碼範例](https://github.com/azure-samples)。 在`site:`[您最喜愛的搜尋引擎](https://bing.com)中使用查詢表示法,例如:
+為獲得更快的結果，請搜尋相關網站，例如[Stack Overflow](https://stackoverflow.com/)、 [Microsoft](https://docs.microsoft.com/azure/cognitive-services/)檔或[GitHub 程式碼範例](https://github.com/azure-samples)。 在您`site:` [慣用的搜尋引擎](https://bing.com)中使用查詢標記法，例如：
 
 ```
 {search keywords} site:stackoverflow.com
 ```
 
-搜索`{search keywords}`的上下文在哪裡。 請考慮適當地使用這些作用域搜索:
+其中`{search keywords}`是您搜尋的內容。 請考慮適當地使用這些限定範圍的搜尋：
 
- - 堆疊溢出:`site:stackoverflow.com`
- - 微軟文件:`site:docs.microsoft.com`
- - GitHub 範例:`site:github.com/azure-samples`
+ - Stack Overflow：`site:stackoverflow.com`
+ - Microsoft Docs：`site:docs.microsoft.com`
+ - GitHub 範例：`site:github.com/azure-samples`
 
 ### <a name="post-a-question-on-stack-overflow"></a>在 Stack Overflow 張貼問題
 
@@ -57,18 +57,18 @@ ms.locfileid: "81258418"
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-如果找不到「堆疊溢出」上的搜索框問題的答案,請提交一個新問題。 Stack Overflow 是適用於開發相關問題的慣用管道。 堆疊溢出社區成員和Microsoft團隊成員直接參與説明您解決問題。
+如果 Stack Overflow 上的搜尋方塊找不到問題的解答，請提交新的問題。 Stack Overflow 是適用於開發相關問題的慣用管道。 Stack Overflow 社區成員和 Microsoft 小組成員直接參與以協助您解決問題。
 
-[在此處](https://go.microsoft.com/fwlink/?linkid=2126464)發佈問題。 為您的問題使用適當的標記,因此我們一定會看到問題。
+在[這裡](https://go.microsoft.com/fwlink/?linkid=2126464)張貼問題。 請為您的問題使用適當的標籤，我們一定會看到此問題。
 
 > [!TIP]
 > Stack Overflow 的下列貼文包含如何提出問題以及新增原始程式碼的提示。 遵循這些指導方針有助於增加社群成員快速評估並回應您問題的機會：
-> * [我該如何問一個好問題?](https://stackoverflow.com/help/how-to-ask)
-> * [如何創建最小、可重現的範例?](https://stackoverflow.com/help/minimal-reproducible-example)
+> * [如何? 問一個好問題嗎？](https://stackoverflow.com/help/how-to-ask)
+> * [如何建立最小、可重現的範例？](https://stackoverflow.com/help/minimal-reproducible-example)
 
 ## <a name="stay-informed"></a>掌握最新資訊
 
-隨時瞭解 Azure 部落格上的新版本或新聞中的功能,可説明您找到程式設計錯誤、服務錯誤或認知服務中尚不可用的功能之間的區別。
+持續掌握新版本中的功能或 Azure blog 的新聞，可協助您找出程式設計錯誤、服務錯誤或認知服務中尚未提供的功能之間的差異。
 
 ### <a name="release-notes"></a>版本資訊
 
@@ -76,7 +76,7 @@ ms.locfileid: "81258418"
     <img alt='Release notes' src='https://docs.microsoft.com/media/common/i_learn-about.svg'>
 </div>
 
-認知服務發行說明在提供新版本時更新。 這些說明包含有關新功能、改進和 Bug 修復的資訊。
+當有新版本可用時，就會更新認知服務版本資訊。 這些附注包含新功能、改進和 bug 修正的相關資訊。
 
  - [自訂視覺](custom-vision-service/release-notes.md)
  - [臉部](face/releasenotes.md)
@@ -92,7 +92,7 @@ ms.locfileid: "81258418"
     <img alt='Stay informed' src='https://docs.microsoft.com/media/common/i_blog.svg'>
 </div>
 
-有關認知服務的新聞在 Azure[博客](https://azure.microsoft.com/blog/topics/cognitive-services/)中共用。
+有關認知服務的新聞已在[Azure blog](https://azure.microsoft.com/blog/topics/cognitive-services/)中共用。
 
 ### <a name="reddit"></a>Reddit
 
@@ -100,7 +100,7 @@ ms.locfileid: "81258418"
     <img alt='Reddit' src='https://docs.microsoft.com/media/logos/logo_reddit.svg'>
 </div>
 
-Reddit 是一個社區驅動的討論網站,提供有關[Azure 認知服務](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1)新聞、説明、資訊、提示和技巧的最新對話。 註冊會員可以提交內容,其他人可以投票表決,這將有機地將最相關的內容提升到其源的頂部。
+Reddit 是一個由社區驅動的討論網站，提供關於[Azure 認知服務](https://www.reddit.com/r/AZURE/search/?q=Cognitive%20Services&restrict_sr=1)新聞、說明、資訊、秘訣和訣竅的最新交談。 註冊的成員可以提交內容，而其他人則可以對其進行投票，這成長會將最相關的內容提升到其摘要的頂端。
 
 ## <a name="give-feedback"></a>提供意見反應
 
@@ -110,16 +110,16 @@ Reddit 是一個社區驅動的討論網站,提供有關[Azure 認知服務](htt
     <img alt='UserVoice' src='https://docs.microsoft.com/media/logos/logo-uservoice.svg'>
 </div>
 
-要請求新功能,請在使用者語音上發佈它們。 分享您的想法,使認知服務及其 API 更好地適用於您開發的應用程式。 
+若要要求新功能，請在 UserVoice 上張貼。 分享您的想法，讓認知服務及其 Api 適用于您所開發的應用程式。 
 
 > [!NOTE]
-> 雖然這是一個公共論壇,不要指望微軟在這裡的支援,但確實喜歡討論你想在即將到來的認知服務版本中看到的新功能。
+> 雖然這是公開的論壇，但此處並不期待 Microsoft 提供支援，但要討論您想要在即將推出的認知服務版本中看到的新功能。
 
 
-| 服務                       | 認知服務使用者語音網址 |
+| Service                       | 認知服務 UserVoice URL |
 |-------------------------------|---------------|
 | 異常偵測器              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
-| 必應服務                 | https://cognitive.uservoice.com/forums/555907-bing-search |
+| Bing 服務                 | https://cognitive.uservoice.com/forums/555907-bing-search |
 | 電腦視覺               | https://cognitive.uservoice.com/forums/430309-computer-vision |
 | 內容仲裁             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | 自訂視覺                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
@@ -137,35 +137,35 @@ Reddit 是一個社區驅動的討論網站,提供有關[Azure 認知服務](htt
 
 ## <a name="report-bugs"></a>報告錯誤
 
-### <a name="create-a-github-issue-or-pull-request"></a>建立 GitHub 問題或拉取要求
+### <a name="create-a-github-issue-or-pull-request"></a>建立 GitHub 問題或提取要求
 
 <div class='icon is-large'>
     <img alt='GitHub' src='https://docs.microsoft.com/media/logos/logo_octokitty.svg'>
 </div>
 
-以下是開發人員可能發佈問題或創建拉取請求的三種類型的存儲庫。 要建立問題,請使用相應 GitHub 儲存庫中的 *「問題*」選項卡,然後選擇 *「新問題*」。 如果要建議更正,請直接編輯檔來提交拉取請求。 然後,拉取請求將位於 *「拉取請求*」選項卡下,直到存儲庫擁有者可以查看它。
+以下是三種類型的存放庫，開發人員可能會在其中張貼問題或建立提取要求。 若要建立問題，請使用個別 GitHub 存放庫中的 [*問題*] 索引標籤，然後選取 [*新增問題*]。 如果您想要建議更正，請直接編輯檔案以提交提取要求。 然後，提取要求會放在 [*提取要求*] 索引標籤下，直到存放庫擁有者可以查看為止。
 
 #### <a name="cognitive-services-samples"></a>認知服務範例
 
-樣本通常作為開源在公共存儲庫中找到。 快速入門示例有自己的儲存庫,並在 Microsoft 文檔中引用。 如果在代碼中發現錯誤,請建立問題或拉取請求。
+在公用存放庫中，通常會以開放原始碼的形式找到範例。 快速入門範例有自己的存放庫，並在 Microsoft 檔中加以參考。 如果您在程式碼中發現錯誤，請建立問題或提取要求。
 
-下面是認知服務快速入門和範例代碼的清單:
+以下是認知服務快速入門和範例程式碼的清單：
 
-* [Azure 範例 - 認知服務](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=)
+* [Azure 範例-認知服務](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=cognitive&type=&language=)
 * [認知服務快速入門](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
-* [認知服務:點網](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
-* [認知服務:去](https://github.com/Azure-Samples/azure-sdk-for-go-samples)
-* [認知服務:JAVA](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
-* [認知服務: Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
-* [認知服務:Python](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+* [認知服務： Dotnet](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+* [認知服務： Go](https://github.com/Azure-Samples/azure-sdk-for-go-samples)
+* [認知服務： JAVA](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+* [認知服務： node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+* [認知服務： Python](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
-#### <a name="cognitive-services-sdk-source-code"></a>認知服務 SDK 原始碼
+#### <a name="cognitive-services-sdk-source-code"></a>認知服務 SDK 原始程式碼
 
-SDK 的原始碼顯示了每個服務的 SDK 的一些基礎。 如果您發現 Bug 或想要建議更正,請提交問題或創建拉取請求。
+Sdk 的原始程式碼會針對每個服務顯示 SDK 的一些結構性支援。 如果您發現錯誤或想要建議更正，請提出問題或建立提取要求。
 
-下面是認知服務 SDK 原始碼清單(按語言):
+以下是依語言列出的認知服務 SDK 源代碼清單：
 
-* [Dotnet 的 Azure SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices)
+* [適用于 Dotnet 的 Azure SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices)
 * [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices)<br>
 * [Azure SDK for Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices)
 * [適用於 JavaScript 的 Azure SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices)
@@ -173,7 +173,7 @@ SDK 的原始碼顯示了每個服務的 SDK 的一些基礎。 如果您發現 
 
 #### <a name="azure-cognitive-services-documentation"></a>Azure 認知服務文件
 
-認知服務的文檔介紹了如何使用服務,並為開發人員提供了示例和資源。 如果您發現 Bug 或想要建議更正,請提交問題或創建拉取請求。
+認知服務的檔說明如何使用服務，並提供開發人員的範例和資源。 如果您發現錯誤或想要建議更正，請提出問題或建立提取要求。
 
 [MicrosoftDocs](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/cognitive-services)
 

@@ -1,13 +1,13 @@
 ---
-title: 檢視使用者話語 - LUIS
+title: 審查使用者語句-LUIS
 description: 使用主動式學習，您可檢閱端點語句中正確的意圖和實體。 LUIS 會選擇不確定的端點語句。
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 8d267fc441dc2cbf7f8ae3746486d5e7be55f135
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80546859"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>檢閱端點語句以啟用主動式學習的概念
@@ -22,20 +22,20 @@ ms.locfileid: "80546859"
 ## <a name="single-pool-for-utterances-per-app"></a>每個應用程式中適用於語句的單一集區
 **檢閱端點語句**清單不會根據版本來變更。 不論您正在編輯的語句版本為何，也不論在端點上發佈的應用程式版本為何，都只有一個要檢閱的語句集區。
 
-在[REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9)中,版本名稱是必需的,必須存在於應用程式中,但超出驗證之外不使用。 審核陳述適用於整個應用程式。 如果從一_個版本_中刪除話語,則所有版本都受到影響。
+在[REST API](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9)中，版本名稱是必要的，而且必須存在於應用程式中，但不會在該驗證之外使用。 審核語句適用于整個應用程式。 如果您從某個_版本_移除語句，所有版本都會受到影響。
 
 ## <a name="where-are-the-utterances-from"></a>語句來自何處
-終結點陳述取自對應用程式的 HTTP 終結點的最終用戶查詢。 如果您的應用程式並未發佈，或尚未接獲叫用，則表示您沒有任何要檢閱的語句。 如果未收到特定意圖或實體的端點叫用，則表示您沒有包含該意圖或實體而要檢閱的語句。
+端點語句是從應用程式的 HTTP 端點上的終端使用者查詢取得。 如果您的應用程式並未發佈，或尚未接獲叫用，則表示您沒有任何要檢閱的語句。 如果未收到特定意圖或實體的端點叫用，則表示您沒有包含該意圖或實體而要檢閱的語句。
 
 ## <a name="schedule-review-periodically"></a>定期排程檢閱
 檢閱建議的語句不需要每天進行，但應屬於 LUIS 定期維護的一部分。
 
 ## <a name="delete-review-items-programmatically"></a>以程式設計方式刪除檢閱項目
-使用**[刪除未標記的話語 API。](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9)** 先**[匯出記錄檔來備份這些語句](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)**，然後再進行刪除。
+使用 [**[刪除未標記的語句](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/58b6f32139e2bb139ce823c9)** API]。 先**[匯出記錄檔來備份這些語句](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36)**，然後再進行刪除。
 
-## <a name="enable-active-learning"></a>開啟主動學習
+## <a name="enable-active-learning"></a>啟用主動式學習
 
-要啟用活動學習,必須記錄用戶查詢。 這是透過查詢字串參數與值呼叫[終結點查詢](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)來實現的`log=true`。
+若要啟用主動式學習，您必須記錄使用者查詢。 這是藉由呼叫具有`log=true` querystring 參數和值的[端點查詢](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint)來完成。
 
 ## <a name="next-steps"></a>後續步驟
 

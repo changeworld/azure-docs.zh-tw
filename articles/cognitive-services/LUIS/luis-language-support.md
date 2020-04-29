@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
 ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
-ms.sourcegitcommit: bd5fee5c56f2cbe74aa8569a1a5bce12a3b3efa6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80744142"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 支援的語言與區域
@@ -30,10 +30,10 @@ LUIS 在服務內有各種不同的功能。 並非所有功能都有相同的�
 
 LUIS 可理解下列語言的語句：
 
-| Language |Locale  |  預建網域 | 預建實體 | 短語清單建議 | **[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
+| Language |Locale  |  預建網域 | 預建實體 | 片語清單建議 | **[文字分析](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)<br>(情感和<br>關鍵字)|
 |--|--|:--:|:--:|:--:|:--:|
 | 美式英文 |`en-US` | ✔ | ✔  |✔|✔|
-| 阿拉伯文 (預覽 - 現代標準阿拉伯語) |`ar-AR`|-|-|-|-|
+| 阿拉伯文（預覽-現代化標準阿拉伯文） |`ar-AR`|-|-|-|-|
 | *[中文](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | 荷蘭文 |`nl-NL` |✔|-|-|✔|
 | 法文 (法國) |`fr-FR` |✔| ✔ |✔ |✔|
@@ -107,19 +107,19 @@ LUIS 可理解下列語言的語句：
 |土耳其文|✔|||
 
 
-### <a name="custom-tokenizer-versions"></a>自訂標記器版本
+### <a name="custom-tokenizer-versions"></a>自訂 tokenizer 版本
 
-以下區域性具有自訂權碼器版本:
+下列文化特性具有自訂 tokenizer 版本：
 
 |文化特性|版本|目的|
 |--|--|--|
-|德文<br>`de-de`|1.0.0|使用基於機器學習的標記器將單詞拆分,嘗試將複合詞分解為單個元件,從而標記單詞。<br>如果使用者以話語身份`Ich fahre einen krankenwagen`輸入,則將其翻`Ich fahre einen kranken wagen`到 。 允許將和`wagen`單獨`kranken`標記為不同的實體。|
-|德文<br>`de-de`|1.0.2|通過在空格上拆分單詞來標記單詞。<br> 如果使用者以話語身份`Ich fahre einen krankenwagen`輸入,則它仍然是單個令牌。 因此`krankenwagen`,被標記為單個實體。 |
-|荷蘭文<br>`de-de`|1.0.0|使用基於機器學習的標記器將單詞拆分,嘗試將複合詞分解為單個元件,從而標記單詞。<br>如果使用者以話語身份`Ik ga naar de kleuterschool`輸入,則將其翻`Ik ga naar de kleuter school`到 。 允許將和`school`單獨`kleuter`標記為不同的實體。|
-|荷蘭文<br>`de-de`|1.0.1|通過在空格上拆分單詞來標記單詞。<br> 如果使用者以話語身份`Ik ga naar de kleuterschool`輸入,則它仍然是單個令牌。 因此`kleuterschool`,被標記為單個實體。 |
+|德文<br>`de-de`|1.0.0|使用以機器學習為基礎的 tokenizer 來分割它們，以嘗試將複合單字細分成單一元件，以 token 化單字。<br>如果使用者輸入`Ich fahre einen krankenwagen`做為語句，就會變成`Ich fahre einen kranken wagen`。 允許將`kranken`和`wagen`獨立標記為不同的實體。|
+|德文<br>`de-de`|1.0.2|藉由在空間上分割來 token 化單字。<br> 如果使用者輸入`Ich fahre einen krankenwagen`做為語句，它會保持為單一權杖。 因此`krankenwagen` ，會標示為單一實體。 |
+|荷蘭文<br>`de-de`|1.0.0|使用以機器學習為基礎的 tokenizer 來分割它們，以嘗試將複合單字細分成單一元件，以 token 化單字。<br>如果使用者輸入`Ik ga naar de kleuterschool`做為語句，就會變成`Ik ga naar de kleuter school`。 允許將`kleuter`和`school`獨立標記為不同的實體。|
+|荷蘭文<br>`de-de`|1.0.1|藉由在空間上分割來 token 化單字。<br> 如果使用者輸入`Ik ga naar de kleuterschool`做為語句，它會保持為單一權杖。 因此`kleuterschool` ，會標示為單一實體。 |
 
 
-### <a name="migrating-between-tokenizer-versions"></a>在標記器版本之間移轉
+### <a name="migrating-between-tokenizer-versions"></a>在 tokenizer 版本之間遷移
 <!--
 Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID.
 
@@ -222,6 +222,6 @@ Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersi
 ```
 -->
 
-令牌化發生在應用級別。 不支援版本級令牌化。
+Token 化會在應用層級發生。 不支援版本層級 token 化。
 
-[將文件導入為新應用](luis-how-to-start-new-app.md),而不是版本。 此操作意味著新應用具有不同的應用 ID,但使用檔中指定的標記器版本。
+將檔案匯[入為新的應用程式](luis-how-to-start-new-app.md)，而不是版本。 此動作表示新的應用程式具有不同的應用程式識別碼，但使用檔案中指定的 tokenizer 版本。

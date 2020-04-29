@@ -11,23 +11,23 @@ ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: aahi
 ms.openlocfilehash: 9425de6e75a9a46d71ff85ce49b0650c8e7a9a16
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68882680"
 ---
 # <a name="language-and-region-support-for-the-bing-web-search-api"></a>Bing Web 搜尋 API 支援的語言和區域
 
 Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有一個以上的語言。 使用查詢指定國家/地區，有助於根據該國家/地區的興趣，縮小搜尋結果範圍。 結果可能包含 Bing 的連結，而且這些連結可能會根據指定的國家/地區或語言，將 Bing 的使用者體驗當地語系化。
 
-您可以使用 `cc` 查詢參數指定國家/地區。 指定國家或地區時，必須使用[`Accept-Language`標頭](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)指定一個或多個語言代碼。 使用[市場資料表](#markets)取得每個市場所支援的語言清單。
+您可以使用 `cc` 查詢參數指定國家/地區。 指定國家或地區時，您必須使用[ `Accept-Language`標頭](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#headers)指定一或多個語言代碼。 使用[市場資料表](#markets)取得每個市場所支援的語言清單。
 
 或者，您也可以使用 `mkt` 查詢參數和**市場**資料表的代碼來指定市場。 指定市場同時會指定國家/地區和慣用的語言。 您可以使用 `setLang` 查詢參數明確設定語言。
 
 ## <a name="countriesregions"></a>國家/區域
 
-|國家/區域|程式碼|
+|國家/地區|程式碼|
 |-------|----|
 |阿根廷|AR|
 |澳大利亞|AU|
@@ -42,7 +42,7 @@ Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有�
 |德國|DE|
 |香港特別行政區|HK|
 |印度|IN|
-|印尼|ID|
+|印尼|識別碼|
 |義大利|IT|
 |日本|JP|
 |南韓|KR|
@@ -68,7 +68,7 @@ Bing Web 搜尋 API 支援三十多個國家/地區，許多國家/地區具有�
 
 ## <a name="markets"></a>市場
 
-|國家/區域|語言|市場代碼|
+|國家/地區|Language|市場代碼|
 |-------|--------|-----------|
 |阿根廷|西班牙文|es-AR|
 |澳大利亞|英文|en-AU|

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: erhopf
 ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74423936"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>驗證 Azure 認知服務要求
@@ -23,13 +23,13 @@ Azure 認知服務的每個要求必須包含驗證標頭。 此標頭會與訂�
 * [使用單一服務訂用帳戶金鑰進行驗證](#authenticate-with-a-single-service-subscription-key)
 * [使用多服務訂用帳戶金鑰進行驗證](#authenticate-with-a-multi-service-subscription-key)
 * [使用權杖進行驗證](#authenticate-with-an-authentication-token)
-* [使用 Azure 活動目錄 （AAD） 進行身份驗證](#authenticate-with-azure-active-directory)
+* [使用 Azure Active Directory （AAD）進行驗證](#authenticate-with-azure-active-directory)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-提出要求之前，您需要 Azure 帳戶和 Azure 認知服務訂用帳戶。 如果您已經有帳戶，請繼續進行並跳至下一節。 如果您沒有帳戶，我們有一個指南，讓您在幾分鐘內進行設置：[為 Azure 創建認知服務帳戶](cognitive-services-apis-create-account.md)。
+提出要求之前，您需要 Azure 帳戶和 Azure 認知服務訂用帳戶。 如果您已經有帳戶，請繼續進行並跳至下一節。 如果您沒有帳戶，我們會引導您在幾分鐘內完成設定：[建立 Azure 的認知服務帳戶](cognitive-services-apis-create-account.md)。
 
-創建帳戶或啟動[免費試用版](https://azure.microsoft.com/try/cognitive-services/my-apis)後，可以從[Azure 門戶](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)獲取訂閱金鑰。
+建立帳戶或啟用[免費試用版](https://azure.microsoft.com/try/cognitive-services/my-apis)之後，您可以從[Azure 入口網站](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)取得您的訂用帳戶金鑰。
 
 ## <a name="authentication-headers"></a>驗證標頭
 
@@ -66,17 +66,17 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>使用多服務訂用帳戶金鑰進行驗證
 
 >[!WARNING]
-> 此時，這些服務**不支援**多服務金鑰：QnA 製造商、語音服務、自訂視覺和異常檢測器。
+> 目前，這些服務**不**支援多服務金鑰： QnA Maker、語音服務、自訂視覺和異常偵測器。
 
 此選項也會使用訂用帳戶金鑰來驗證要求。 主要差異在於，訂用帳戶金鑰未繫結至特定服務，而是單一金鑰可用來驗證多個認知服務的要求。 如需區域可用性、支援功能和定價的詳細資訊，請參閱[認知服務定價](https://azure.microsoft.com/pricing/details/cognitive-services/)。
 
 在每個要求中，訂用帳戶金鑰提供作為 `Ocp-Apim-Subscription-Key` 標頭。
 
-[![認知服務的多服務訂閱金鑰演示](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
+[![認知服務的多服務訂用帳戶金鑰示範](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>支援區域
 
-當使用多服務訂用帳戶金鑰對 `api.cognitive.microsoft.com` 提出要求時，您必須在 URL 中包含區域。 例如：`westus.api.cognitive.microsoft.com`。
+當使用多服務訂用帳戶金鑰對 `api.cognitive.microsoft.com` 提出要求時，您必須在 URL 中包含區域。 例如： `westus.api.cognitive.microsoft.com` 。
 
 當搭配翻譯工具文字 API 使用多服務訂用帳戶金鑰時，您必須指定訂用帳戶區域與 `Ocp-Apim-Subscription-Region` 標頭。
 
@@ -115,11 +115,11 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 某些 Azure 認知服務接受驗證權杖，而在某些情況下更是需要驗證權杖。 目前，以下服務支援驗證權杖：
 
 * 文字翻譯 API
-* 語音服務：語音到文本 REST API
-* 語音服務：文本到語音 REST API
+* 語音服務：語音轉換文字 REST API
+* 語音服務：文字轉換語音 REST API
 
 >[!NOTE]
-> QnA Maker 也會使用授權標頭，但需要端點金鑰。 有關詳細資訊，請參閱[QnA 製造商：從知識庫獲取答案](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md)。
+> QnA Maker 也會使用授權標頭，但需要端點金鑰。 如需詳細資訊，請參閱[QnA Maker：從知識庫取得答案](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md)。
 
 >[!WARNING]
 > 支援驗證權杖的服務可能會隨著時間變更，請在使用此驗證方法之前，檢查服務的 API 參考。
@@ -161,8 +161,8 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 [!INCLUDE [](../../includes/cognitive-services-azure-active-directory-authentication.md)]
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [什麼是認知服務？](welcome.md)
 * [認知服務定價](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [自訂子域](cognitive-services-custom-subdomains.md)
+* [自訂子網域](cognitive-services-custom-subdomains.md)

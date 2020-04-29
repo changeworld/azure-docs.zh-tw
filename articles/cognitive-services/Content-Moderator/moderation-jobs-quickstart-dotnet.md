@@ -1,7 +1,7 @@
 ---
-title: 使用 .NET - 內容審閱人使用審核作業
+title: 使用 .NET 進行審核作業-內容仲裁
 titleSuffix: Azure Cognitive Services
-description: 使用內容檢閱者 .NET SDK 為 Azure 內容審閱人中的圖像或文本內容啟動端到端內容審閱作業。
+description: 使用內容仲裁 .NET SDK，針對 Azure 內容仲裁中的影像或文字內容起始端對端內容審核作業。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76294332"
 ---
-# <a name="define-and-use-moderation-jobs-net"></a>定義和使用審核作業 （.NET）
+# <a name="define-and-use-moderation-jobs-net"></a>定義和使用審核作業（.NET）
 
-審核作業充當內容審核、工作流和審閱功能的包裝器。 本指南提供資訊和代碼示例，以説明您開始使用[內容檢閱者 SDK 的 .NET：](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)
+審核作業可做為內容仲裁、工作流程和評論功能的一種包裝函式。 本指南提供資訊和程式碼範例，可協助您開始使用[內容仲裁 SDK for .net](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)來執行下列動作：
 
 - 啟動審核作業以掃描和建立人工審核者的檢閱
 - 取得擱置中檢閱的狀態
 - 追蹤並取得檢閱的最終狀態
-- 將審核結果提交到回檔 URL
+- 將審核結果提交至回呼 URL
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-- 在內容審閱人[審核工具](https://contentmoderator.cognitive.microsoft.com/)網站上登錄或創建帳戶。
+- 在內容仲裁[審查工具](https://contentmoderator.cognitive.microsoft.com/)網站上登入或建立帳戶。
 
 ## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>請確定您的 API 金鑰可呼叫審核 API 以建立審核項目
 
@@ -80,7 +80,7 @@ using System.Threading;
 新增下列程式碼，為您的訂用帳戶建立 Content Moderator 用戶端。
 
 > [!IMPORTANT]
-> 使用終結點 URL 和訂閱金鑰的值更新**Azure 終結點**和**CM 訂閱金鑰**欄位。
+> 使用您的端點 URL 和訂用帳戶金鑰值來更新**add-azureendpoint**和**CMSubscriptionKey**欄位。
 
 ```csharp
 /// <summary>
@@ -127,7 +127,7 @@ public static class Clients
 > 您可以將 TeamName 常數設定為建立 Content Moderator 訂用帳戶時所使用的名稱。 您可以從 Content Moderator 網站擷取 TeamName。
 > 登入後，請從 [設定]**** (齒輪) 功能表選取 [認證]****。
 >
-> 您的團隊名稱是**API**部分中的**Id**欄位的值。
+> 您的小組名稱是 [ **API** ] 區段中 [**識別碼**] 欄位的值。
 
 ```csharp
 /// <summary>

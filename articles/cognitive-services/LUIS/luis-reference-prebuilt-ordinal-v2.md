@@ -1,7 +1,7 @@
 ---
-title: 預構建實體 V2 - LUIS
+title: 序數 V2 預建實體-LUIS
 titleSuffix: Azure Cognitive Services
-description: 本文在語言理解 （LUIS） 中包含預構建的實體資訊。
+description: 本文包含 Language Understanding （LUIS）中的序數 V2 預建實體資訊。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -12,24 +12,24 @@ ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
 ms.openlocfilehash: 5e852313db75e598da647ea0f985e2ee18af16de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78270491"
 ---
-# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>用於 LUIS 應用的預構建實體
-Ordinal V2 編號[擴展了 Ordinal](luis-reference-prebuilt-ordinal.md)以提供`next`相對`last`引用，`previous`如 、和 。 這些不會使用預構建的實體提取。
+# <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的序數 V2 預建實體
+序數 V2 數位會展開[序數](luis-reference-prebuilt-ordinal.md)以提供相對參考`next`，例如`last`、和`previous`。 這些不會使用序數預建實體來解壓縮。
 
-## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>預構建的 Ddinal V2 實體的解析度
+## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>預先建立的序數 V2 實體解析
 
-為查詢返回以下實體物件：
+系統會針對查詢傳回下列實體物件：
 
 `what is the second to last choice in the list`
 
 #### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
-以下 JSON 的`verbose`參數設置為`false`：
+下列 JSON 是將`verbose`參數設定為： `false`
 
 ```json
 "entities": {
@@ -44,7 +44,7 @@ Ordinal V2 編號[擴展了 Ordinal](luis-reference-prebuilt-ordinal.md)以提�
 
 #### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
 
-以下 JSON 的`verbose`參數設置為`true`：
+下列 JSON 是將`verbose`參數設定為： `true`
 
 ```json
 "entities": {
@@ -73,7 +73,7 @@ Ordinal V2 編號[擴展了 Ordinal](luis-reference-prebuilt-ordinal.md)以提�
 ```
 #### <a name="v2-response"></a>[V2 回應](#tab/V2)
 
-下面的示例顯示了**內置.ordinalV2**實體的解析度。
+下列範例顯示**ordinalV2**實體的解決方式。
 
 ```json
 "entities": [

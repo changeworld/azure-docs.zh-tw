@@ -4,10 +4,10 @@ description: 使用 Language Understanding (LUIS) 來持續調整您的應用程
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.openlocfilehash: ba7e23a72cd308dd4393bf9a581571e2bc9f5fa0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221297"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>在 LUIS 入口網站中測試您的 LUIS 應用程式
@@ -22,20 +22,20 @@ ms.locfileid: "79221297"
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
-## <a name="train-before-testing"></a>測試前培訓
+## <a name="train-before-testing"></a>測試前訓練
 
-要針對活動應用的最新版本進行測試，請在測試前從頂部功能表中選擇 **"訓練**"。
+若要針對最新版本的作用中應用程式進行測試，請從頂端功能表中選取 [**訓練**]，然後再進行測試。
 
 ## <a name="test-an-utterance"></a>測試語句
 
-測試陳述不應與應用中的任何示例陳述完全相同。 測試陳述應包括您希望使用者的單詞選擇、短語長度和實體用法。
+測試語句不應該與應用程式中的任何範例語句完全相同。 測試語句應該包含您預期使用者的文字選擇、片語長度和實體使用方式。
 
 1. 在 [我的應用程式]**** 頁面上選取應用程式名稱，來存取應用程式。
 
-1. 要訪問 **"測試**滑出"面板，請在應用程式的頂部面板中選擇 **"測試**"。
+1. 若要存取 [**測試**] 滑出面板，請選取應用程式上方面板中的 [**測試**]。
 
     > [!div class="mx-imgBorder"]
-    > ![訓練&測試應用程式頁面](./media/luis-how-to-interactive-test/test.png)
+    > ![訓練 & 測試應用程式頁面](./media/luis-how-to-interactive-test/test.png)
 
 1. 在文字方塊中輸入語句，並選取 Enter。 您可以針對 [測試]**** 輸入任意數目的測試語句，但一次只能輸入一個語句。
 
@@ -45,13 +45,13 @@ ms.locfileid: "79221297"
 
 ## <a name="inspect-score"></a>檢查分數
 
-在 **"檢查"** 面板中檢查測試結果的詳細資訊。
+您會在 [**檢查**] 面板中檢查測試結果的詳細資料。
 
 1. [測試]**** 滑出面板開啟時，請針對您想要比較的語句選取 [檢查]****。
 
     ![選取 [檢查] 按鈕以查看測試結果的相關詳細資料](./media/luis-how-to-interactive-test/inspect.png)
 
-1. 將顯示 **"檢查**"面板。 該面板包含評分最高的意圖，以及任何已識別的實體。 該面板會顯示所選語句的結果。
+1. [**檢查**] 面板隨即出現。 該面板包含評分最高的意圖，以及任何已識別的實體。 該面板會顯示所選語句的結果。
 
     ![該面板包含評分最高的意圖，以及任何已識別的實體。 該面板會顯示所選語句的結果。](./media/luis-how-to-interactive-test/inspect-panel.png)
 

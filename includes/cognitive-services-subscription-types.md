@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: d5ed36700e2aea623fb259816e5baddff5215361
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70381779"
 ---
 <!-- > [!NOTE]
 > Subscription owners can disable the creation of Cognitive Services resources for resource groups and subscriptions by applying [Azure policy](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition), assigning a “Not allowed resource types” policy definition, and specifying **Microsoft.CognitiveServices/accounts** as the target resource type. -->
-您可以通過兩種不同的資源訪問 Azure 認知服務：多服務資源或單服務資源。
+您可以透過兩個不同的資源存取 Azure 認知服務：多服務資源或單一服務。
 
 * 多服務資源：
-    * 使用單個鍵和終結點訪問多個 Azure 認知服務。
-    * 從您使用的服務合併計費。
+    * 使用單一金鑰和端點存取多個 Azure 認知服務。
+    * 合併您所使用服務的帳單。
 * 單一服務資源：
-    * 使用為每個創建的服務使用唯一的金鑰和終結點訪問單個 Azure 認知服務。 
-    * 使用免費套餐試用該服務。   
+    * 針對每個建立的服務，使用唯一的金鑰和端點來存取單一 Azure 認知服務。 
+    * 使用免費層來試用服務。   

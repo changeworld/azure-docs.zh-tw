@@ -1,5 +1,5 @@
 ---
-title: 人名預構建實體 - LUIS
+title: PersonName 預先建立的實體-LUIS
 titleSuffix: Azure Cognitive Services
 description: 此文章包含 Language Understanding (LUIS) 中預先建置的 PersonName 實體資訊。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: reference
 ms.date: 05/07/2019
 ms.author: diberry
 ms.openlocfilehash: 768c719211e8a8f2133d3798343d076e795a3da0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273427"
 ---
 # <a name="personname-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的 PersonName 預先建置實體
@@ -23,7 +23,7 @@ ms.locfileid: "78273427"
 
 ## <a name="resolution-for-personname-entity"></a>personName 實體解析
 
-為查詢返回以下實體物件：
+系統會針對查詢傳回下列實體物件：
 
 `Is Jill Jones in Cairo?`
 
@@ -31,7 +31,7 @@ ms.locfileid: "78273427"
 #### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
 
-以下 JSON 的`verbose`參數設置為`false`：
+下列 JSON 是將`verbose`參數設定為： `false`
 
 ```json
 "entities": {
@@ -41,7 +41,7 @@ ms.locfileid: "78273427"
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
-以下 JSON 的`verbose`參數設置為`true`：
+下列 JSON 是將`verbose`參數設定為： `true`
 
 ```json
 "entities": {

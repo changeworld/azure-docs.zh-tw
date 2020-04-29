@@ -1,5 +1,5 @@
 ---
-title: 資料存儲 - LUIS
+title: 資料儲存體-LUIS
 titleSuffix: Azure Cognitive Services
 description: LUIS 會將資料以加密方式儲存在與金鑰所指定區域對應的 Azure 資料存放區中。
 services: cognitive-services
@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79221333"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUIS) 認知服務中的資料儲存和移除
@@ -26,27 +26,27 @@ LUIS 會將資料以加密方式儲存在與金鑰所指定區域對應的 Azure
 
 ## <a name="utterances"></a>表達方式
 
-可存儲在兩個不同的位置。 
+語句可以儲存在兩個不同的位置。 
 
-* **在創作過程中**，話語被創建並存儲在意圖中。 成功的 LUIS 應用需要意圖中的意圖。 發佈應用並在終結點接收查詢後，終結點請求的查詢字串`log=false`將確定終結點是否發出。 如果存儲終結點，它將成為門戶**的"生成**"部分（**在"審閱終結點陳述"** 部分中找到的活動學習話語）的一部分。 
-* 當您**查看終結點陳述**，並將陳述添加到意圖時，該陳述不再存儲為要審閱的終結點陳述的一部分。 它添加到應用的意圖。 
+* 在**撰寫過程**中，會建立語句並儲存在意圖中。 成功 LUIS 的應用程式需要語句的意圖。 一旦應用程式發佈並接收端點上的查詢，端點要求的 querystring， `log=false`會決定是否要儲存端點語句。 如果端點已儲存，它會成為入口網站的 [**組建**] 區段中，位於 [**審核端點語句**] 區段中的主動式學習語句的一部分。 
+* 當您**審查端點語句**，並將語句新增至意圖時，語句就不會再儲存為要檢查的端點語句的一部分。 它會加入至應用程式的意圖。 
 
 <a name="utterances-in-an-intent"></a>
 
-### <a name="delete-example-utterances-from-an-intent"></a>從意圖中刪除示例陳述
+### <a name="delete-example-utterances-from-an-intent"></a>刪除意圖中的範例語句
 
 刪除用於進行 [LUIS](luis-reference-regions.md) 定型的範例語句。 若您從 LUIS 應用程式刪除範例語句，則會從 LUIS Web 服務中予以移除，而且無法用於匯出。
 
 <a name="utterances-in-review"></a>
 
-### <a name="delete-utterances-in-review-from-active-learning"></a>從活動學習中刪除審閱中的話語
+### <a name="delete-utterances-in-review-from-active-learning"></a>從主動式學習刪除審查中的語句
 
 您可以在 [[Review endpoint utterances](luis-how-to-review-endpoint-utterances.md)****] \(檢閱端點語句\) 頁面中，從 LUIS 所建議的使用者語句清單中刪除語句。 從此清單中刪除語句可防止系統建議這些語句，但並不會從記錄中刪除它們。
 
-如果您不希望主動學習話語，可以[禁用活動學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 禁用活動學習也會禁用日誌記錄。
+如果您不想要主動式學習語句，可以[停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)。 停用主動式學習也會停用記錄。
 
-### <a name="disable-logging-utterances"></a>禁用日誌記錄陳述
-[禁用活動學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)將禁用日誌記錄。
+### <a name="disable-logging-utterances"></a>停用記錄語句
+[停用主動式學習](luis-how-to-review-endpoint-utterances.md#disable-active-learning)會停用記錄。
 
 
 <a name="accounts"></a>

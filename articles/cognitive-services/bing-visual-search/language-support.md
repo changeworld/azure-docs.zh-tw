@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68883556"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>Bing 圖像式搜尋 API 支援的語言和區域
@@ -36,7 +36,7 @@ Bing 圖像式搜尋 API 支援三十多個國家/地區，其中許多國家/�
 
 ## <a name="countriesregions"></a>國家/地區
 
-|國家/區域|程式碼|
+|國家/地區|程式碼|
 |-------|----|
 |阿根廷|AR|
 |澳大利亞|AU|
@@ -51,7 +51,7 @@ Bing 圖像式搜尋 API 支援三十多個國家/地區，其中許多國家/�
 |德國|DE|
 |香港特別行政區|HK|
 |印度|IN|
-|印尼|ID|
+|印尼|識別碼|
 |義大利|IT|
 |日本|JP|
 |南韓|KR|
@@ -78,7 +78,7 @@ Bing 圖像式搜尋 API 支援三十多個國家/地區，其中許多國家/�
 
 ## <a name="markets"></a>市場
 
-|國家/區域|語言|市場代碼|
+|國家/地區|Language|市場代碼|
 |-------|--------|-----------|
 |阿根廷|西班牙文|es-AR|
 |澳大利亞|英文|en-AU|

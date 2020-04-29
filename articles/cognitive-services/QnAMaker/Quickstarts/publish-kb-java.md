@@ -1,15 +1,15 @@
 ---
-title: 快速入門：發佈知識庫、REST、JAVA - QnA 製造商
+title: 快速入門：發佈知識庫、REST、JAVA-QnA Maker
 description: 這個以 Java REST 為基礎的快速入門會發佈您的知識庫，並建立可在應用程式或聊天機器人中呼叫的端點。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: 149d7963f29bf041cda75fffaac533e0a62ee7a6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78851961"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>快速入門：使用 Java 在 QnA Maker 中發佈知識庫
@@ -26,7 +26,7 @@ ms.locfileid: "78851961"
     * httpclient-4.5.3.jar
     * httpcore-4.4.6.jar
     * commons-logging-1.2.jar
-* [視覺工作室代碼](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/)
 * 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。
 * QnA Maker 知識庫 (KB) 識別碼可以在 `kbid` 查詢字串參數中的 URL 找到，如下所示。
 
@@ -35,7 +35,7 @@ ms.locfileid: "78851961"
     如果您還沒有知識庫，可以建立要用於本快速入門的範例知識庫：[建立新的知識庫](create-new-kb-csharp.md)。
 
 > [!NOTE]
-> 完整的解決方案檔可從[**Azure 示例/認知服務-qnamaker-java** GitHub 存儲庫](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base)中獲取。
+> 您可以從[ **Azure 範例/認知服務-qnamaker-java** GitHub 存放庫](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base)取得完整的解決方案檔案。
 
 ## <a name="create-a-java-file"></a>建立 Java 檔案
 
@@ -62,7 +62,7 @@ public class PublishKB {
 
 ## <a name="add-required-constants"></a>新增必要的常數
 
-在**主**方法中，添加訪問 QnA Maker 所需的常量。 使用您自己的值加以取代。
+在**main**方法中，新增必要的常數以存取 QnA Maker。 使用您自己的值加以取代。
 
 [!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=27-30 "Add the required constants")]
 

@@ -1,7 +1,7 @@
 ---
 title: 文字轉換語音常見問題集
 titleSuffix: Azure Cognitive Services
-description: 獲取有關"文本到語音服務"的常見問題的解答。
+description: 取得文字轉換語音服務相關常見問題的解答。
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
 ms.openlocfilehash: 19b8be83a3678164197ec0650b07091e941a04d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74110503"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>文字轉換語音常見問題集
@@ -29,7 +29,7 @@ ms.locfileid: "74110503"
 
 **問：如果我想要使用標準語音模型，該從何處著手？**
 
-**答**：透過 HTTP 要求可提供超過 45 種語言的 80 餘種標準語音模型。 首先，獲取[訂閱金鑰](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)。 若要對預先部署的語音模型進行 REST 呼叫，請參閱 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
+**答**：透過 HTTP 要求可提供超過 45 種語言的 80 餘種標準語音模型。 首先，取得訂用帳戶[金鑰](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)。 若要對預先部署的語音模型進行 REST 呼叫，請參閱 [REST API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis)。
 
 **問：如果我想要使用自訂語音模型，API 是否與標準語音所用的相同？**
 
@@ -41,7 +41,7 @@ ms.locfileid: "74110503"
 
 建立自訂語音模型需要有語音資料集合。 此集合包含一組語音錄製的音訊檔案，以及各音訊檔案文字記錄的文字檔。 數位語音的結果與定型資料的品質息息相關。 若要產生良好的文字轉換語音，請務必在備有高品質站立式麥克風的安靜房間內完成錄音。 一致的音量、讀出速率、讀出音調，甚至一致的語音表達方式是建立絕佳數位語音不可或缺的一部分。 強烈建議在錄音室錄製語音。
 
-目前我們不提供線上錄音支援，也沒有任何錄音室建議。 有關格式要求，請參閱[如何準備錄製和腳本](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice)。
+目前我們不提供線上錄音支援，也沒有任何錄音室建議。 如需格式需求，請參閱[如何準備錄音和文字記錄](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice-create-voice)。
 
 **問：我應該使用哪些腳本錄製語音資料以進行自訂語音定型？**
 

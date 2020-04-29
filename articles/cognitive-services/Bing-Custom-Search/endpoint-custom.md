@@ -1,7 +1,7 @@
 ---
 title: Bing 自訂搜尋端點
 titleSuffix: Azure Cognitive Services
-description: 為您關注的主題創建量身定制的搜索體驗。 使用者會看到根據他們關心的內容量身定制的搜尋結果。
+description: 為您關心的主題建立量身打造的搜尋體驗。 使用者會看到針對他們關心的內容量身打造的搜尋結果。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74072795"
 ---
 # <a name="custom-search"></a>自訂搜尋

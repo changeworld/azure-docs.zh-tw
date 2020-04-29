@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 16cfb6c15a4d17ff3fb4f7f41f59f9f80af1e9e7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75382118"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>使用 API 主控台中的自訂字詞清單進行審核
 
 Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內容審核需求。 不過，您可能會需要審查屬於您組織的特定字詞。 例如，您可能要標記競爭對手名稱以供進一步檢閱。 
 
-使用[清單管理 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) 可建立自訂字詞清單，以搭配文字審核 API 使用。 **"文本- 螢幕**"操作掃描文本的褻瀆行為，並將文本與自訂和共用阻止清單進行比較。
+使用[清單管理 API](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) 可建立自訂字詞清單，以搭配文字審核 API 使用。 此**文字畫面**作業會掃描您的文字是否不雅內容，並將文字與自訂和共用封鎖清單做比較。
 
 > [!NOTE]
 > 上限是 **5 個字詞清單**，其中每個清單**不可超過 10,000 個字詞**。
@@ -89,7 +89,7 @@ Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內�
 
    請以機碼值組形式新增清單中繼資料，而不要新增實際的字詞。
  
-6. 選擇 **"發送**"。 您的清單隨即建立。 請注意與新清單關聯的 [ID] \(識別碼\)**** 值。 您需要有此識別碼，才能進行其他字詞清單管理功能。
+6. 選取 [**傳送**]。 您的清單隨即建立。 請注意與新清單關聯的 [ID] \(識別碼\)**** 值。 您需要有此識別碼，才能進行其他字詞清單管理功能。
 
    ![[Term Lists - Create] \(字詞清單 - 建立\) 主控台的 [Response content] \(回應內容\) 方塊顯示清單識別碼](images/try-terms-list-create-2.png)
  
@@ -111,7 +111,7 @@ Azure Content Moderator 中的預設全域字詞清單已可滿足大部分內�
 
     [字詞 - 取得所有字詞]**** API 主控台隨即開啟。
 
-11. 在 [listId]**** 方塊中，輸入清單識別碼，然後輸入您的訂用帳戶金鑰。 選擇 **"發送**"。
+11. 在 [listId]**** 方塊中，輸入清單識別碼，然後輸入您的訂用帳戶金鑰。 選取 [**傳送**]。
 
 12. 在 [回應內容]**** 方塊中，確認您輸入的文字。
 

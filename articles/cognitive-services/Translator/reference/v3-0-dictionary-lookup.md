@@ -1,7 +1,7 @@
 ---
 title: 翻譯工具文字 API 字典查閱方法
 titleSuffix: Azure Cognitive Services
-description: 字典查找方法為單詞和少量慣用短語提供替代翻譯。
+description: 字典查閱方法提供單字和少量慣用片語的替代翻譯。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: bd27827441082698bb4e0b43e7dd22d5b7e66539
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "76548946"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>翻譯工具文字 API 3.0 字典查閱
@@ -35,7 +35,7 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 | 查詢參數  | 描述 |
 | ------ | ----------- |
-| api-version <img width=200/>   | 必要參數****。<br/>用戶端要求的 API 版本。 值必須為`3.0` |
+| api-version <img width=200/>   | 必要參數****。<br/>用戶端要求的 API 版本。 值必須是`3.0` |
 | 從 | 必要參數****。<br/>指定輸入文字的語言。 來源語言必須是 `dictionary` 範圍內包含的[支援語言](./v3-0-languages.md)之一。 |
 | to   | 必要參數****。<br/>指定輸出文字的語言。 目標語言必須是 `dictionary` 範圍內包含的[支援語言](v3-0-languages.md)之一。 |
 
@@ -44,12 +44,12 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 | headers  | 描述 |
 | ------ | ----------- |
-| 身份驗證標頭 <img width=200/>  | 必要的要求標頭****。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
+| 驗證標頭 <img width=200/>  | 必要的要求標頭****。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。 |
 | Content-Type | 必要的要求標頭****。<br/>指定承載的內容類型。 可能的值為：`application/json`。 |
 | Content-Length   | 必要的要求標頭****。<br/>要求本文的長度。 |
 | X-ClientTraceId   | **選擇項**。<br/>用於識別唯一要求的 GUID，由用戶端產生。 若您使用名為 `ClientTraceId` 的查詢參數在查詢字串中包含追蹤識別碼，您就可以省略此標頭。 |
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 
 要求的本文是 JSON 陣列。 每個陣列項目都是字串屬性名為 `Text` 的 JSON 物件，其表示要查閱的字詞。
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 6a197095d97e67f7548e60375148cff57e47b797
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595932"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用 Collaborative Translation Framework (CTF) 報告
@@ -22,7 +22,7 @@ ms.locfileid: "68595932"
 > [!NOTE]
 > 此方法已被取代。 Translator Text API V3.0 中不提供此功能。
 > 
-> 先前在 Translator Text API V2.0 中提供的 Collaborative Translations Framework (CTF) 自 2018 年 2 月 1 日起已被取代。 AddTranslation 和 AddTranslationArray 函式可讓使用者透過 Collaborative Translation Framework 啟用校正功能。 在 2018 年 1 月 31 日之後，這兩個函式便不接受新的句子提交，而使用者則會收到錯誤訊息。 這些功能已停用，不會替換。
+> 先前在 Translator Text API V2.0 中提供的 Collaborative Translations Framework (CTF) 自 2018 年 2 月 1 日起已被取代。 AddTranslation 和 AddTranslationArray 函式可讓使用者透過 Collaborative Translation Framework 啟用校正功能。 在 2018 年 1 月 31 日之後，這兩個函式便不接受新的句子提交，而使用者則會收到錯誤訊息。 這些函式已淘汰，將不會被取代。
 
 「Collaborative Translation Framework (CTF) 報告 API」會傳回統計資料和 CTF 存放區中的實際內容。 此 API 與 GetTranslations() 方法不同，因為它：
 * 只會從您的帳戶 (appId 或 Azure Marketplace 帳戶) 傳回翻譯後的內容及其總計數。
@@ -34,7 +34,7 @@ ms.locfileid: "68595932"
 
 
 ## <a name="methods"></a>方法
-| 名稱 |    描述|
+| 名稱 |    說明|
 |:---|:---|
 | GetUserTranslationCounts 方法 | 取得使用者所建立的翻譯計數。 |
 | GetUserTranslations 方法 | 擷取使用者所建立的翻譯。 |
@@ -96,14 +96,14 @@ ms.locfileid: "68595932"
 
 | 欄位 | 描述 |
 |:---|:---|
-| Count| 所擷取的結果數目|
+| 計數| 所擷取的結果數目|
 | 從 | 來源語言|
 | 評等| 提交者在 AddTranslation() 方法呼叫中套用的評分|
 | 至| 目標語言|
 | Uri| AddTranslation() 方法呼叫中套用的 URI|
 | User| 使用者名稱|
 
-**異常**
+**例外狀況**
 
 | 例外狀況 | 訊息 | 條件 |
 |:---|:---|:---|
@@ -116,7 +116,7 @@ ms.locfileid: "68595932"
 
 **檢視 GitHub 上的程式碼範例**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
-* [Php](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-php.md)
+* [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-php.md)
 
 ## <a name="getusertranslations-method"></a>GetUserTranslations 方法
 
@@ -151,7 +151,7 @@ ms.locfileid: "68595932"
 | to| **選擇性** 一個代表文字之目標翻譯語言代碼的字串。|
 | minRating| **選擇性** 一個代表翻譯後文字之品質評分下限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
 | maxRating| **選擇性** 一個代表翻譯後文字之品質評分上限的整數值。 有效值介於 -10 到 10 之間。 預設值為 1。|
-| user| **選。用於根據提交贊助者篩選結果的字串**|
+| user| **選擇性.用來根據提交的建立者來篩選結果的字串**|
 | category| **選擇性** 一個包含翻譯之分類或領域的字串。 此參數僅支援預設選項 general。|
 | minDateUtc| **選擇性** 您想要開始擷取翻譯的日期。 此日期必須是 UTC 格式。|
 | maxDateUtc| **選擇性** 您想要停止擷取翻譯的日期。 此日期必須是 UTC 格式。|
@@ -176,7 +176,7 @@ ms.locfileid: "68595932"
 |Uri|   AddTranslation() 方法呼叫中套用的 URI|
 |User   |使用者名稱|
 
-**異常**
+**例外狀況**
 
 | 例外狀況 | 訊息 | 條件 |
 |:---|:---|:---|
@@ -189,4 +189,4 @@ ms.locfileid: "68595932"
 
 **檢視 GitHub 上的程式碼範例**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
-* [Php](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
+* [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)

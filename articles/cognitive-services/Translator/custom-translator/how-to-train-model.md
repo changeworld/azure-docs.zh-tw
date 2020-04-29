@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: a875cc8f5e69be8b940f9d177d3b915bfaa2c973
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595692"
 ---
 # <a name="train-a-model"></a>將模型定型
@@ -34,9 +34,9 @@ ms.locfileid: "68595692"
 
     -  語言組：這會顯示專案的原始和目標語言。
 
-    -  源句子：顯示從原始檔案中提取的句子數。
+    -  來源句子：顯示從來源檔案解壓縮的句子數目。
 
-    -  目標句子：顯示從目的檔案中提取的句子數。
+    -  目標句子：顯示從目標檔案解壓縮的句子數目。
 
     ![定型模型](media/how-to/how-to-train-model.png)
 
@@ -53,7 +53,7 @@ ms.locfileid: "68595692"
     ![訓練模型頁面](media/how-to/how-to-train-model-3.png)
 
 >[!Note]
->自訂轉換器支援工作區內任意時間點的 10 個併發訓練。
+>自訂翻譯在任何時間點都支援工作區中的10個並行訓練。
 
 
 ## <a name="edit-a-model"></a>編輯模型

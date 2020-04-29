@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: wolfma
 ms.openlocfilehash: a1de313245e826511a7e9c864165ac44bcb48530
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80234165"
 ---
-### <a name="standard-and-neural-voices"></a>標準和神經語音
+### <a name="standard-and-neural-voices"></a>標準和類神經語音
 
-使用此表可按區域/終結點確定標準和神經語音的可用性：
+使用此表格來判斷標準和類神經語音的可用性（依區域/端點）：
 
-| 區域 | 端點 | 標準語音 | 神經聲音 |
+| 區域 | 端點 | 標準語音 | 類神經語音 |
 |--------|----------|-----------------|---------------|
 | 澳大利亞東部 | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 是 |
 | 巴西南部 | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1` | 是 | 否 |
@@ -40,7 +40,7 @@ ms.locfileid: "80234165"
 
 ### <a name="custom-voices"></a>自訂語音
 
-如果已創建自訂語音字體，請使用已創建的終結點。 您還可以使用下面列出的終結點，`{deploymentId}`將 替換為語音模型的部署 ID。
+如果您已建立自訂語音字型，請使用您所建立的端點。 您也可以使用下面所列的端點，將`{deploymentId}`取代為您的語音模型的部署識別碼。
 
 | 區域 | 端點 |
 |--------|----------|

@@ -1,5 +1,5 @@
 ---
-title: 發佈應用 - LUIS
+title: 發佈應用程式-LUIS
 titleSuffix: Azure Cognitive Services
 description: 當您完成作用中 LUIS 應用程式的建置和測試時，將它發佈至端點以供用戶端應用程式使用。
 services: cognitive-services
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
 ms.openlocfilehash: c91a3ca73d70dd5fd2848bed0f43f14a817087d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80053443"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>將作用中且經過訓練的應用程式發佈至預備或生產端點
 
-完成活動 LUIS 應用的構建、培訓和測試後，通過將應用發佈到終結點，使其可供用戶端應用程式使用。 
+當您完成建立、定型和測試使用中的 LUIS 應用程式時，請將它發佈至端點，讓用戶端應用程式可以使用它。 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -28,46 +28,46 @@ ms.locfileid: "80053443"
 
 1. 若要發佈至端點，請選取右側面板頂端的 [發佈]****。 
 
-    ![在頂部、右側巡覽列中發佈按鈕](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
+    ![右上流覽列中的 [發佈] 按鈕](./media/luis-how-to-publish-app/publish-top-nav-bar.png)
 
-1. 選擇已發佈預測終結點的設置，然後選擇 **"發佈**"。
+1. 選取已發佈預測端點的設定，然後選取 [**發佈**]。
 
-    ![選擇發佈設置，然後選擇"發佈"按鈕](./media/luis-how-to-publish-app/publish-pop-up.png)
+    ![選取 [發行設定]，然後選取 [發佈] 按鈕](./media/luis-how-to-publish-app/publish-pop-up.png)
 
-### <a name="publishing-slots"></a>發佈槽
+### <a name="publishing-slots"></a>發行位置
 
-快顯視窗顯示時選擇正確的插槽： 
+在快顯視窗顯示時選取正確的位置： 
 
-* 預備
+* 執行
 * Production 
 
-通過使用這兩個發佈槽，這允許您在已發佈的終結點上提供兩個不同版本的應用，或者在兩個不同的終結點上提供同一版本。 
+藉由使用這兩個發佈位置，可讓您在已發行的端點或相同版本的兩個不同端點上，使用應用程式的兩個不同版本。 
 
 ### <a name="publishing-regions"></a>發行區域
 
-應用將發佈到與從 **"管理** -> **[Azure 資源](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)**"頁添加到 LUIS 門戶中的 LUIS 預測終結點資源關聯的所有區域。 
+應用程式會發佈至與 LUIS 入口網站中新增的 LUIS 預測端點資源相關聯的所有區域，從 [**管理** -> **[Azure 資源](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)**] 頁面。 
 
-例如，對於在[www.luis.ai](https://www.luis.ai)上創建的應用，如果在兩個區域（Westus 和**Eastus）** 中創建 LUIS 資源，並將這些資源作為資源添加到應用，則應用將同時發佈在這兩個區域。 **eastus** 如需 LUIS 區域的相關資訊，請參閱[區域](luis-reference-regions.md)。
+例如，針對在[www.luis.ai](https://www.luis.ai)上建立的應用程式，如果您在兩個區域（ **westus**和**eastus**）中建立 luis 資源，並將其新增至應用程式做為資源，則會在這兩個區域中發佈應用程式。 如需 LUIS 區域的相關資訊，請參閱[區域](luis-reference-regions.md)。
 
 > [!TIP]
-> 有 3 個創作區域。 您必須在要發佈到的區域創作。 如果需要發佈到所有區域，則需要管理所有 3 個創作區域中的創作過程和生成的訓練模型。 
+> 有3個撰寫區域。 您必須在想要發佈的區域中撰寫。 如果您需要發行至所有區域，您必須在所有3個撰寫區域中管理您的撰寫流程和產生的定型模型。 
 
 
 ## <a name="configuring-publish-settings"></a>配置發佈設定
 
-選擇插槽後，為以下設置配置發佈設置：
+選取位置之後，請設定下列各內容的發佈設定：
 
 * 情感分析
-* 拼寫校正 - 僅 v2 預測終結點
+* 拼寫更正-僅限 v2 預測端點
 * 語音預備 
 
-發佈後，這些設置可從 **"管理**"部分的 **"發佈設置"** 頁查看。 您可以更改每次發佈中的設置。 如果取消發佈，則在發佈期間所做的任何更改也會被取消。 
+在您發佈之後，這些設定可從 [**管理**] 區段的 [**發行設定**] 頁面中進行審核。 您可以在每次發行時變更設定。 如果您取消發行，則在發行期間所做的任何變更也會一併取消。 
 
-### <a name="when-your-app-is-published"></a>發佈應用時
+### <a name="when-your-app-is-published"></a>當您的應用程式發佈時
 
-成功發佈應用後，瀏覽器頂部將顯示一條成功通知。 通知還包括指向終結點的連結。 
+當您的應用程式成功發佈時，瀏覽器頂端會出現成功通知。 通知也包含端點的連結。 
 
-如果您需要端點 URL，請選取此連結。 您還可以通過在頂部功能表中選擇 **"管理**"，然後在左側功能表中選擇**Azure 資源**來獲取終結點 URL。 
+如果您需要端點 URL，請選取此連結。 您也可以在頂端功能表中選取 [**管理**]，然後選取左側功能表中的 [ **Azure 資源**]，以取得端點 url。 
 
 ## <a name="sentiment-analysis"></a>情感分析
 
@@ -85,11 +85,11 @@ ms.locfileid: "80053443"
 
 [!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
-在 LUIS 使用者陳述預測之前對拼寫進行了更正。 您可以在回應中看到對原始陳述（包括拼寫）的任何更改。
+更正拼寫是在 LUIS 使用者語句預測之前進行。 在回應中，您可以看到原始語句的任何變更（包括拼寫）。
 
 ## <a name="speech-priming"></a>語音預備
 
-語音準備是在將文本轉換為語音之前將 LUIS 模型發送到語音服務的過程。 這允許語音服務為您的模型更準確地提供語音轉換。 這允許機器人語音和 LUIS 請求和回應在一次調用通過進行一個語音調用和返回 LUIS 回應。 它總體提供更少的延遲。
+語音預備是在將文字轉換成語音之前，使用將 LUIS 模型傳送至語音服務的程式。 這可讓語音服務更精確地為您的模型提供語音轉換。 這可讓 bot 語音和 LUIS 要求和回應呼叫一次，方法是進行一次語音通話並取回 LUIS 回應。 它提供的整體延遲較低。
 
 ## <a name="next-steps"></a>後續步驟
 

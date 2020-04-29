@@ -1,5 +1,5 @@
 ---
-title: 自訂和建議圖像搜索查詢 - 必應圖像搜索 API
+title: 自訂和建議影像搜尋查詢-Bing 影像搜尋 API
 titleSuffix: Azure Cognitive Services
 description: 了解如何自訂傳送至 Bing 影像搜尋 API 的搜尋查詢。
 services: cognitive-services
@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
 ms.openlocfilehash: d833b017004365e9dad7241e360f42ff41a55883
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67542747"
 ---
-# <a name="customize-and-suggest-image-search-queries"></a>自訂和建議圖像搜索查詢
+# <a name="customize-and-suggest-image-search-queries"></a>自訂和建議影像搜尋查詢
 
-使用本文瞭解如何自訂查詢，並建議將搜索詞發送到必應圖像搜索 API。
+您可以使用本文來瞭解如何自訂查詢，並建議要傳送至 Bing 影像搜尋 API 的搜尋字詞。
 
-## <a name="suggest-search-terms"></a>建議搜索詞
+## <a name="suggest-search-terms"></a>建議搜尋字詞
 
 如果您的應用程式有用來輸入搜尋字詞的搜尋方塊，您可以使用[Bing 自動建議 API](../../bing-autosuggest/get-suggested-search-terms.md) 來改善體驗。 API 會即時顯示建議的搜尋字詞。 API 會根據部分搜尋字詞和認知服務，傳回建議的查詢字串。
 

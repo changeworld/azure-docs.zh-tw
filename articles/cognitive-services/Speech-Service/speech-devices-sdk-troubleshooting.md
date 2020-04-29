@@ -1,7 +1,7 @@
 ---
-title: 解決語音設備 SDK - 語音服務故障
+title: 針對語音裝置 SDK-語音服務進行疑難排解
 titleSuffix: Azure Cognitive Services
-description: 本文提供的資訊可説明您解決在使用語音設備 SDK 時可能遇到的問題。
+description: 本文提供的資訊可協助您解決使用語音裝置 SDK 時可能會遇到的問題。
 services: cognitive-services
 author: mswellsi
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wellsi
 ms.openlocfilehash: c590e0972de289a36890a75b220eddbded701ea8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74815573"
 ---
 # <a name="troubleshoot-the-speech-devices-sdk"></a>針對語音裝置 SDK 進行疑難排解
 
-本文提供的資訊可説明您解決在使用語音設備 SDK 時可能遇到的問題。
+本文提供的資訊可協助您解決使用語音裝置 SDK 時可能會遇到的問題。
 
 ## <a name="certificate-failures"></a>憑證失敗
 
-如果在使用語音服務時出現證書失敗，請確保您的設備具有正確的日期和時間：
+如果您在使用語音服務時遇到憑證失敗，請確定您的裝置具有正確的日期和時間：
 
 1. 移至 [設定]****。 在 [System] \(系統\)**** 底下，選取 [Date & time] \(日期與時間\)****。
 

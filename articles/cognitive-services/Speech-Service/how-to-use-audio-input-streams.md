@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
 ms.openlocfilehash: 3039276a49e7bb41660d114e78ca047a3f77f279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74109945"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>關於語音 SDK 音訊輸入資料流 API
 
-語音 SDK 的**音訊輸入流**API 提供了一種將音訊資料流到識別器的方法，而不是使用麥克風或輸入檔 API。
+語音 SDK 的**音訊輸入資料流程**API 提供將音訊串流至辨識器的方式，而不是使用麥克風或輸入檔 api。
 
 使用音訊輸入資料流時，必須執行下列步驟：
 

@@ -1,18 +1,18 @@
 ---
-title: 快速入門：帶有 NODE.js REST API 的 QnA 製造商
+title: 快速入門：使用適用于 node.js 的 REST Api QnA Maker
 description: 本快速入門示範如何開始使用適用於 Node.js 的 QnA Maker REST API。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。  QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: conceptual
 ms.openlocfilehash: ecc3fb144fb4b4e27182567925199f841b1c4357
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78851959"
 ---
-# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入門：QnA 製造商 REST API node.js
+# <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入門： QnA Maker 適用于 node.js 的 REST Api
 
 開始使用適用於 Node.js 的 QnA Maker REST API。 請依照下列步驟試用基本工作的範例程式碼。  QnA Maker 可讓您加強常見問題集文件或 URL 及產品手冊等半結構化內容中的問題與解答服務。
 
@@ -25,14 +25,14 @@ ms.locfileid: "78851959"
 * 下載知識庫
 * 取得作業的狀態
 
-[參考文檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | [Node.js 示例](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[參考檔](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | node.js[範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
-* [Node.js](https://nodejs.org)的當前版本。
+* 最新版的 [Node.js](https://nodejs.org)。
 * 您必須有 [QnA Maker 服務](../How-To/set-up-qnamaker-service-azure.md)。 若要擷取您的金鑰和端點 (其中包含資源名稱)，請在 Azure 入口網站中選取資源的 [快速入門]****。
 
 ## <a name="setting-up"></a>設定
@@ -88,7 +88,7 @@ const request = require("requestretry");
 
 設定下列環境值：
 
-* `QNAMAKER_RESOURCE_KEY`-**該鍵**是一個 32 個字元的字串，在 **"快速啟動"** 頁上的"QnA Maker"資源上的 Azure 門戶中可用。 這與預測端點金鑰不同。
+* `QNAMAKER_RESOURCE_KEY`-**金鑰**是32字元字串，而且可以在 Azure 入口網站的 [**快速入門**] 頁面上的 [QnA Maker 資源] 上取得。 這與預測端點金鑰不同。
 * `QNAMAKER_AUTHORING_ENDPOINT` - 您的撰寫端點 (格式為 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`) 包含您的**資源名稱**。 這與用於查詢預測端點的 URL 不同。
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
@@ -162,7 +162,7 @@ node rest-apis.js
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
->[教程：創建並回答知識庫](../tutorials/create-publish-query-in-portal.md)
+>[教學課程：建立及回答知識庫](../tutorials/create-publish-query-in-portal.md)
 
 * [QnA Maker API 是什麼？](../Overview/overview.md)
 * [編輯知識庫](../how-to/edit-knowledge-base.md)

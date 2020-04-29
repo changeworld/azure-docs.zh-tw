@@ -1,28 +1,28 @@
 ---
-title: 資料更改 - LUIS
+title: 資料改變-LUIS
 description: 了解如何在於 Language Understanding (LUIS) 中進行預測之前變更資料
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: b3b36351a64a4e1a0bd13d5785a4e0609a80901d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80292070"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>預測之前或預測期間變更語句資料
-LUIS 提供可在預測之前或預測期間操作語句的方法。 其中包括[修復拼寫](luis-tutorial-bing-spellcheck.md)，以及修復預構建[日期時間V2](luis-reference-prebuilt-datetimev2.md)的時區問題。
+LUIS 提供可在預測之前或預測期間操作語句的方法。 其中包括[修正拼寫](luis-tutorial-bing-spellcheck.md)，以及修正預先建立之[datetimeV2](luis-reference-prebuilt-datetimev2.md)的時區問題。
 
 ## <a name="correct-spelling-errors-in-utterance"></a>校正語句中的拼字錯誤
 
 
-### <a name="v3-runtime"></a>V3 運行時
+### <a name="v3-runtime"></a>V3 執行時間
 
-在將陳述發送給 LUIS 之前，先處理拼寫更正的文本。 使用具有正確拼寫的示例陳述，以確保獲得正確的預測。
+在您將語句傳送至 LUIS 之前，預先處理文字以進行拼寫更正。 使用範例語句搭配正確的拼寫，以確保您得到正確的預測。
 
-在將文本發送到 LUIS 之前，請使用[必應拼寫檢查](../bing-spell-check/overview.md)更正文本。
+使用[Bing 拼寫檢查](../bing-spell-check/overview.md)來更正文字，然後再將它傳送至 LUIS。
 
-### <a name="prior-to-v3-runtime"></a>在 V3 運行時之前
+### <a name="prior-to-v3-runtime"></a>在 V3 執行時間之前
 
 LUIS 使用 [Bing 拼字檢查 API V7](../Bing-Spell-Check/overview.md) 來校正語句中的拼字錯誤。 LUIS 需要與該服務相關的金鑰。 請建立金鑰，然後在[端點](https://go.microsoft.com/fwlink/?linkid=2092356)新增該金鑰作為查詢字串參數。
 
@@ -70,10 +70,10 @@ LUIS 使用 [Bing 拼字檢查 API V7](../Bing-Spell-Check/overview.md) 來校�
 * * *
 
 ### <a name="list-of-allowed-words"></a>允許的單字清單
-LUIS 中使用的必應拼寫檢查 API 不支援在拼寫檢查更改期間忽略的單字清單。 如果需要允許單詞或首字母縮略詞清單，請先處理用戶端應用程式中的話語，然後再將陳述發送給 LUIS 進行意向預測。
+LUIS 中使用的 Bing 拼寫檢查 API 不支援在拼寫檢查改變期間忽略的字詞清單。 如果您需要允許單字或縮略字清單，請先處理用戶端應用程式中的語句，再將語句傳送至 LUIS 進行意圖預測。
 
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>變更預先建置 datetimeV2 實體的時區
-當 LUIS 應用使用預構建[的日期時間V2](luis-reference-prebuilt-datetimev2.md)實體時，可以在預測回應中返回日期時間值。 要求的時區會用來判斷要傳回的正確日期時間。 如果要求來自 Bot 或另一個集中式應用程式，請在其抵達 LUIS 之前，先更正 LUIS 使用的時區。
+當 LUIS 應用程式使用預先建立的[datetimeV2](luis-reference-prebuilt-datetimev2.md)實體時，可以在預測回應中傳回 datetime 值。 要求的時區會用來判斷要傳回的正確日期時間。 如果要求來自 Bot 或另一個集中式應用程式，請在其抵達 LUIS 之前，先更正 LUIS 使用的時區。
 
 ### <a name="endpoint-querystring-parameter"></a>端點查詢字串參數
 更正時區的方式是使用 `timezoneOffset` 參數將使用者時區新增至[端點](https://go.microsoft.com/fwlink/?linkid=2092356)。 `timezoneOffset` 的值應該是用以變更時間的正數或負數 (以分鐘為單位)。

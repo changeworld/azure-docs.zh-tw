@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68594903"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>如何使用 TransformText 方法
@@ -32,7 +32,7 @@ TransformText 方法是一個社交媒體的文字正規化函式，會傳回輸
 |:---|:---|
 | 驗證標頭 | **必要** 用來識別應用程式的 HTTP 標頭。 使用索引鍵：“Authorization” 和值："Bearer" + " " + 存取權杖。 如需詳細資料，請參閱這裡。|
 | 語言 | **必要** 一個代表語言代碼的字串。 此參數僅支援英文，以 **en** 作為語言名稱。|
-| category | **選擇性** 一個包含翻譯之分類或領域的字串。 此參數僅支援預設選項**常規**。|
+| category | **選擇性** 一個包含翻譯之分類或領域的字串。 此參數僅支援預設選項 **[一般**]。|
 | sentence | **必要** 您想要校正的句子。 |
 
 ## <a name="return-value"></a>傳回值

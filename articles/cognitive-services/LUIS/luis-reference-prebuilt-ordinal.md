@@ -1,5 +1,5 @@
 ---
-title: 預構建實體 - LUIS
+title: 序數預先建立的實體-LUIS
 titleSuffix: Azure Cognitive Services
 description: 本文包含 Language Understanding (LUIS) 中預先建置的 ordinal 實體資訊。
 services: cognitive-services
@@ -12,27 +12,27 @@ ms.topic: reference
 ms.date: 10/14/2019
 ms.author: diberry
 ms.openlocfilehash: bb3bb27db48255f534e873ed4e93ac62f07016af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78273451"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>LUIS 應用程式的序數預先建置實體
 序號是一組物件內的數值表示法：`first`、`second`、`third`。 因為此實體已經定型，所以您不需要將包含序數的範例語句加入應用程式意圖。 [多種文化特色](luis-reference-prebuilt-entities.md)都支援 ordinal 實體。
 
 ## <a name="types-of-ordinal"></a>序數類型
-Ordinal 由[識別器文本](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45)GitHub 存儲庫管理
+序數是從辨識器[文字](https://github.com/Microsoft/Recognizers-Text/blob/master/Patterns/English/English-Numbers.yaml#L45)的 GitHub 存放庫進行管理
 
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>解析預先建置的 ordinal 實體
 
-為查詢返回以下實體物件：
+系統會針對查詢傳回下列實體物件：
 
 `Order the second option`
 
 #### <a name="v3-response"></a>[V3 回應](#tab/V3)
 
-以下 JSON 的`verbose`參數設置為`false`：
+下列 JSON 是將`verbose`參數設定為： `false`
 
 ```json
 "entities": {
@@ -42,7 +42,7 @@ Ordinal 由[識別器文本](https://github.com/Microsoft/Recognizers-Text/blob/
 }
 ```
 #### <a name="v3-verbose-response"></a>[V3 詳細回應](#tab/V3-verbose)
-以下 JSON 的`verbose`參數設置為`true`：
+下列 JSON 是將`verbose`參數設定為： `true`
 
 ```json
 "entities": {
@@ -90,4 +90,4 @@ Ordinal 由[識別器文本](https://github.com/Microsoft/Recognizers-Text/blob/
 
 深入了解 [V3 預測端點](luis-migration-api-v3.md)。
 
-瞭解[奧地納爾V2，](luis-reference-prebuilt-ordinal-v2.md)[電話號碼](luis-reference-prebuilt-phonenumber.md)和[溫度](luis-reference-prebuilt-temperature.md)實體。
+瞭解[OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)、[電話號碼](luis-reference-prebuilt-phonenumber.md)和[溫度](luis-reference-prebuilt-temperature.md)實體。

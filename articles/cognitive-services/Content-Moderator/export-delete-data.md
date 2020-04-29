@@ -1,7 +1,7 @@
 ---
-title: 匯出或刪除使用者資料 - 內容檢閱者
+title: 匯出或刪除使用者資料-內容仲裁
 titleSuffix: Azure Cognitive Services
-description: 您可以完全控制資料。 瞭解如何在內容審閱人中查看、匯出或刪除資料。
+description: 您可以完全掌控您的資料。 瞭解如何在內容仲裁中查看、匯出或刪除您的資料。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
 ms.openlocfilehash: 81713bf8d424b9f272f6b1bccf3657810160d4cf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73744784"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>匯出或刪除 Content Moderator 中的使用者資料

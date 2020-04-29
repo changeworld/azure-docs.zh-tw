@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 8fd7f23235dbd94ee8d20aa693ec5b659cb6d64d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "77279568"
 ---
-協作者的貢獻管理取決於應用的目前狀態。
+來自共同作業者的貢獻管理取決於應用程式的目前狀態。
 
-**對於[創作資源遷移](../luis-migration-authoring.md)的應用**：_參與者_在 Azure 門戶中管理創作資源，使用**Access 控制項 （IAM）** 頁。 使用協作者的電子郵件地址和_參與者_角色添加使用者。
+**針對[撰寫資源遷移](../luis-migration-authoring.md)的應用程式**：使用 [**存取控制（IAM）** ] 頁面，可在撰寫資源的 Azure 入口網站中管理_參與者_。 使用共同作業者的電子郵件地址和_參與者_角色來新增使用者。
 
-**對於尚未遷移的應用**：所有_協作者_都在每個應用的管理 **->協作者**頁面的 LUIS 門戶中進行管理。 在此頁上，[添加使用者的電子郵件地址](../luis-how-to-collaborate.md)。 這僅提供對此應用的創作存取權限。
+**針對尚未遷移的應用程式**：所有共同作業者都是在 LUIS 入口網站_中，從_每個應用程式的 [**管理->** 共同作業者] 頁面進行管理。 在此頁面上，[新增使用者的電子郵件地址](../luis-how-to-collaborate.md)。 這只會提供此應用程式的撰寫存取權。
 
 

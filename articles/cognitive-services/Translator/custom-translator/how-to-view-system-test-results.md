@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f5e1a21f24fdd2458d4803d6ed1675455fa5037d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68595611"
 ---
 # <a name="view-system-test-results"></a>檢視系統測試結果
@@ -26,7 +26,7 @@ ms.locfileid: "68595611"
 
 測試索引標籤會顯示：
 
-1.  **系統測試結果：** 培訓中的測試過程的結果。 測試程序會產生 BLEU 分數。
+1.  **系統測試結果：** 定型中的測試程式結果。 測試程序會產生 BLEU 分數。
 
     **句子計數：** 在測試集中使用了多少個平行句子。
 
@@ -54,11 +54,11 @@ ms.locfileid: "68595611"
 
 這個下載的 ZIP 封存檔包含三個檔案。
 
-1.  **自訂.mt.txt：** 此檔包含由使用使用者資料訓練的模型執行的目的語言來源語言句子的電腦翻譯。
+1.  **自訂 mt .txt：** 此檔案包含來源語言句子的機器翻譯，其目的語言是以使用者資料定型的模型完成。
 
-2.  **ref.txt：** 此檔包含使用者提供的目的語言來源語言句子的翻譯。
+2.  **ref .txt：** 此檔案包含使用者在目的語言中提供之來源語言句子的翻譯。
 
-3.  **源.txt：** 此檔包含來源語言中的句子。
+3.  **來源 .txt：** 此檔案包含來源語言中的句子。
 
     ![下載系統測試結果](media/how-to/how-to-download-system-test.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "68595611"
 5.  您可以在 [狀態] 資料行中檢視模型的狀態。
 
 >[!Note]
->自訂轉換器支援工作區中任意時間點的 10 個已部署模型。
+>自訂翻譯在任何時間點都支援工作區中10個已部署的模型。
 
 ## <a name="update-deployment-settings"></a>更新部署設定
 
@@ -92,7 +92,7 @@ ms.locfileid: "68595611"
 
     ![部署模型](media/how-to/how-to-update-undeploy-model.png)
 
-3.  選擇 **"更新**"。
+3.  選取 [更新]  。
 4.  對您想要部署或解除部署模型的區域選取 [已部署]**** 或 [已解除部署]****，然後按一下 [儲存]****。
 
     ![部署模型](media/how-to/how-to-undeploy-model.png)

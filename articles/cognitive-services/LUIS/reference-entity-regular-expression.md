@@ -1,5 +1,5 @@
 ---
-title: 正則運算式實體類型 - LUIS
+title: 正則運算式實體類型-LUIS
 titleSuffix: Azure Cognitive Services
 description: 規則運算式最適用於未經處理的語句文字。 這會忽略大小寫並忽略文化特性變體。  在字元等級而非權杖等級的拼字檢查修改之後，才會套用規則運算式比對。
 services: cognitive-services
@@ -11,17 +11,17 @@ ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
 ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74841212"
 ---
 # <a name="regular-expression-entity"></a>規則運算式實體
 
-正則運算式實體基於您提供的正則運算式模式提取實體。
+正則運算式實體會根據您所提供的正則運算式模式來解壓縮實體。
 
-規則運算式最適用於未經處理的語句文字。 這會忽略大小寫並忽略文化特性變體。  在字元等級而非權杖等級的拼字檢查修改之後，才會套用規則運算式比對。 如果規則運算式太複雜 (例如使用許多方括號)，您便無法將運算式新增到模型中。 使用部分但不是所有[.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)庫。
+規則運算式最適用於未經處理的語句文字。 這會忽略大小寫並忽略文化特性變體。  在字元等級而非權杖等級的拼字檢查修改之後，才會套用規則運算式比對。 如果規則運算式太複雜 (例如使用許多方括號)，您便無法將運算式新增到模型中。 使用部分，但不是所有的[.Net Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)程式庫。
 
 **以下時機適用此實體：**
 
@@ -32,13 +32,13 @@ ms.locfileid: "74841212"
 
 ## <a name="usage-considerations"></a>使用考量
 
-正則運算式可能比您預期的匹配數更多。 例如，數位單詞匹配，`one`如 和`two`。 例如以下 RegEx，它匹配數位`one`和其他數位：
+正則運算式可能符合您預期的比對。 其中一個範例是數值字組比對`one` ，例如`two`和。 例如，下列 RegEx 會比對數位`one`和其他數位：
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
 ```
 
-此 RegEx 運算式還匹配以這些數位結尾的任何單詞，如`phone`。 為了修復這樣的問題，請確保正則運算式匹配考慮單詞邊界。 用於此示例的單詞邊界的正則運算式用於以下正則運算式：
+這個 RegEx 運算式也會比對以這些數位結尾的任何單字， `phone`例如。 若要修正這類問題，請確定 RegEx 相符專案會考慮單字界限。 在下列 RegEx 中，會使用此範例中使用字邊界的 RegEx：
 
 ```javascript
 \b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
@@ -46,7 +46,7 @@ ms.locfileid: "74841212"
 
 ### <a name="example-json"></a>範例 JSON
 
-當使用`kb[0-9]{6}`作為正則運算式實體定義時，以下 JSON 回應是查詢返回的正則運算式實體的示例陳述：
+當使用`kb[0-9]{6}`做為正則運算式實體定義時，下列 JSON 回應是一個範例語句，其中包含針對查詢所傳回的正則運算式實體：
 
 `When was kb123456 published?`:
 
@@ -67,7 +67,7 @@ ms.locfileid: "74841212"
 #### <a name="v3-prediction-endpoint-response"></a>[V3 預測端點回應](#tab/V3)
 
 
-如果在`verbose=false`查詢字串中設置，則這是 JSON：
+如果`verbose=false`是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -77,7 +77,7 @@ ms.locfileid: "74841212"
 }
 ```
 
-如果在`verbose=true`查詢字串中設置，則這是 JSON：
+如果`verbose=true`是在查詢字串中設定，則這是 JSON：
 
 ```json
 "entities": {
@@ -106,4 +106,4 @@ ms.locfileid: "74841212"
 
 ## <a name="next-steps"></a>後續步驟
 
-在[本教程中](tutorial-regex-entity.md)，創建一個應用，以便使用**正則運算式**實體從陳述中提取一致格式的資料。
+在本[教學](tutorial-regex-entity.md)課程中，您可以使用**正則運算式**實體來建立應用程式，以從語句中解壓縮一致格式的資料。

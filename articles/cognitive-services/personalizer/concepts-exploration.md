@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: diberry
 ms.openlocfilehash: 0b69c1fb070431ad61858322dce461f6496c35d7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73490814"
 ---
 # <a name="exploration-and-exploitation"></a>探索 (Exploration) 和利用 (Exploitation)
@@ -29,7 +29,7 @@ ms.locfileid: "73490814"
 
 ## <a name="choosing-an-exploration-setting"></a>選擇探索設定
 
-在 Azure 門戶的"個人化配置 **"** 頁中配置用於流覽的流量百分比。 此設定會決定執行探索的排名呼叫百分比。 
+您可以在個人化工具的 Azure 入口網站 [設定 **] 頁面中**，設定用於探索的流量百分比。 此設定會決定執行探索的排名呼叫百分比。 
 
 個人化工具會決定是否要探索或利用每個排名呼叫上的此機率。 這有別於某些 A/B 架構中的行為，也就是鎖定特定使用者識別碼上的處理方式。
 

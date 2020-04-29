@@ -1,7 +1,7 @@
 ---
 title: 改善您的分類器 - 自訂視覺服務
 titleSuffix: Azure Cognitive Services
-description: 在本文中，您將瞭解資料的數量、品質和多樣性如何提高自訂視覺服務中的分類器的品質。
+description: 在本文中，您將瞭解量、品質和各種資料如何在自訂視覺服務中改善分類器的品質。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: c2858d5f9bca662cbbcd48b2345a7dc2c7ae48b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73718539"
 ---
 # <a name="how-to-improve-your-classifier"></a>如何改善分類器
@@ -29,7 +29,7 @@ ms.locfileid: "73718539"
 1. 使用新影像來測試預測
 1. 根據預測結果修改現有的定型資料
 
-## <a name="prevent-overfitting"></a>防止過度學習
+## <a name="prevent-overfitting"></a>避免過度學習
 
 有時候，分類器會學習如何根據您影像共同的任意特性進行預測。 例如，如果您建立蘋果與柑橘的分類器，且已使用手拿蘋果與白盤裝柑橘的影像，分類器可能過度重視手與白盤，而不是蘋果與柑橘。
 
@@ -39,7 +39,7 @@ ms.locfileid: "73718539"
 
 ## <a name="data-quantity"></a>資料品質
 
-定型影像數目是最重要的因素。 我們建議每個標籤至少使用 50 個圖像作為起點。 使用較少影像，過度學習的風險比較高，雖然您的效能數字可能暗示品質良好，但您的模型可能在與真實世界的資料奮戰。 
+定型影像數目是最重要的因素。 我們建議每個標籤至少使用50個映射做為起點。 使用較少影像，過度學習的風險比較高，雖然您的效能數字可能暗示品質良好，但您的模型可能在與真實世界的資料奮戰。 
 
 ## <a name="data-balance"></a>資料平衡
 
@@ -53,15 +53,15 @@ ms.locfileid: "73718539"
 
 若要更正這個問題，請包含各種影像，以確保分類器可以妥善歸納。 以下一些方式可讓您的定型集更為多元：
 
-* __背景：__ 在不同背景前提供物件的圖像。 自然內容中的相片會將更多資訊提供給分類器，所以比放在中性背景前方的相片更好。
+* __背景：__ 提供物件在不同背景前方的影像。 自然內容中的相片會將更多資訊提供給分類器，所以比放在中性背景前方的相片更好。
 
     ![背景範例影像](./media/getting-started-improving-your-classifier/background.png)
 
-* __照明：__ 提供具有不同照明（即閃光燈拍攝、高曝光等）的圖像，特別是如果用於預測的圖像具有不同的光照。 對於使用具有各種飽和度、色調、亮度的影像也很有幫助。
+* __光源：__ 提供具有各種光源的影像（也就是使用閃光燈、高曝光等等），特別是當用於預測的影像有不同的光源時。 對於使用具有各種飽和度、色調、亮度的影像也很有幫助。
 
     ![光源範例影像](./media/getting-started-improving-your-classifier/lighting.png)
 
-* __物件大小：__ 提供物體大小和數量不同的圖像（例如，一束香蕉的照片和一個香蕉的特寫）。 不同的大小可協助分類器更適當地一般化。
+* __物件大小：__ 提供影像，其中物件的大小和數目各不相同（例如，多串香蕉的相片香蕉和特寫的單一香蕉）。 不同的大小可協助分類器更適當地一般化。
 
     ![大小範例影像](./media/getting-started-improving-your-classifier/size.png)
 
@@ -69,11 +69,11 @@ ms.locfileid: "73718539"
 
     ![角度範例影像](./media/getting-started-improving-your-classifier/angle.png)
 
-* __風格：__ 提供同一類不同樣式的圖像（例如，同一水果的不同品種）。 不過，如果您有樣式迥異的物件 (例如米老鼠與現實中的老鼠)，建議您分別標示為不同類別，更清楚地表示不同的特徵。
+* __樣式：__ 為相同類別的不同樣式提供影像（例如，不同的相同水果）。 不過，如果您有樣式迥異的物件 (例如米老鼠與現實中的老鼠)，建議您分別標示為不同類別，更清楚地表示不同的特徵。
 
     ![樣式範例影像](./media/getting-started-improving-your-classifier/style.png)
 
-## <a name="negative-images"></a>負面圖像
+## <a name="negative-images"></a>負面影像
 
 在專案中的某個時間點，您可能需要新增_負向範例_，協助分類器更精確。 負向範例是不符合其他任何標記的範例。 您上傳這些影像時，將特別的 [負向]**** 標籤套用於影像。
 
@@ -86,7 +86,7 @@ ms.locfileid: "73718539"
 
 當您藉由將影像送出到預測端點來使用或測試影像分類器時，自訂視覺服務會儲存這些影像。 您可以接著使用它們來改善模型。
 
-1. 要查看提交到分類器的圖像，請打開[自訂視覺網頁](https://customvision.ai)，轉到專案，然後選擇 __"預測"__ 選項卡。預設視圖顯示當前反覆運算中的圖像。 您可以使用 [反覆項目]____ 下拉式功能表欄位，來檢視在先前反覆項目期間送出的影像。
+1. 若要查看提交到分類器的影像，請開啟[自訂視覺網頁](https://customvision.ai)，移至您的專案，然後選取 [__預測__] 索引標籤。預設的視圖會顯示來自目前反復專案的影像。 您可以使用 [反覆項目]____ 下拉式功能表欄位，來檢視在先前反覆項目期間送出的影像。
 
     ![預測索引標籤的螢幕擷取畫面 (檢視中有影像)](./media/getting-started-improving-your-classifier/predictions.png)
 

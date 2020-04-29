@@ -1,7 +1,7 @@
 ---
-title: 對墨蹟識別器 API 的語言和地區支援
+title: 筆跡辨識器 API 的語言和區域支援
 titleSuffix: Azure Cognitive Services
-description: 墨蹟識別器 API 支援的自然語言清單。
+description: 筆跡辨識器 API 所支援的自然語言清單。
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: aahi
 ms.openlocfilehash: 36f2fa65f47f824ccc3544f5c13b5f5ee9afd21a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67721749"
 ---
-# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>對墨蹟識別器 API 的語言和地區支援
+# <a name="language-and-region-support-for-the-ink-recognizer-api"></a>筆跡辨識器 API 的語言和區域支援
 
-本文介紹墨蹟識別器 API 支援哪些語言。 使用以下語言編寫的數位筆跡內容可以由 API 解釋和處理。
+本文說明筆跡辨識器 API 支援哪些語言。 以下列語言撰寫的數位筆跡內容可以由 API 來解讀及處理。
 
 ## <a name="supported-languages"></a>支援的語言
 
-| 語言                                   | 語言代碼   |
+| Language                                   | 語言代碼   |
 |:-------------------------------------------|:---------------:|
 | 南非荷蘭文                                  |    `af-ZA`      |
 | 阿爾巴尼亞文                                   |     `sq-AL`     |
@@ -45,7 +45,7 @@ ms.locfileid: "67721749"
 | 芬蘭文                                    |     `fi-FI`     |
 | 法文 (法國)                            |     `fr-FR`     |
 | 加利西亞文                                   |     `gl-ES`     |
-| 德語（瑞士）                      |     `de-CH`     |
+| 德文（瑞士）                      |     `de-CH`     |
 | 德文 (德國)                           |     `de-DE`     |
 | 希臘文                                      |     `el-GR`     |
 | Hindi                                      |     `hi-IN`     |
@@ -71,10 +71,10 @@ ms.locfileid: "67721749"
 | 蘇格蘭蓋爾文                            |     `gd-GB`     |
 | 北索托文                           |    `nso-ZA`     |
 | 塞爾維亞文 (斯拉夫、波士尼亞及赫塞哥維納) |  `sr-Cyrl-BA`   |
-| 塞爾維亞文（西瑞爾語，黑山）             |  `sr-Cyrl-ME`   |
+| 塞爾維亞文（斯拉夫，黑山）             |  `sr-Cyrl-ME`   |
 | 塞爾維亞文 (斯拉夫，塞爾維亞)                 |  `sr-Cyrl-RS`   |
-| 塞爾維亞文（拉丁語、波士尼亞和黑塞哥維那）    |  `sr-Latn-BA`   |
-| 塞爾維亞文（拉丁語、黑山語）                |  `sr-Latn-ME`   |
+| 塞爾維亞文（拉丁、波士尼亞和黑塞哥維那）    |  `sr-Latn-BA`   |
+| 塞爾維亞文（拉丁，黑山）                |  `sr-Latn-ME`   |
 | 塞爾維亞文 (拉丁，塞爾維亞)                    |  `sr-Latn-RS`   |
 | 塞茲瓦納文 (南非)                    |     `tn-ZA`     |
 | 斯洛伐克文                                     |     `sk-SK`     |
@@ -89,7 +89,7 @@ ms.locfileid: "67721749"
 | 科薩文                                      |     `xh-ZA`     |
 | 祖魯文                                       |     `zu-ZA`     |
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [什麼是筆跡辨識器 API？](overview.md)
-* [將數位筆跡描邊發送到墨蹟識別器 API](concepts/send-ink-data.md)
+* [將數位筆跡筆劃傳送至筆跡辨識器 API](concepts/send-ink-data.md)

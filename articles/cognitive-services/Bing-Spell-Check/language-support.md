@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66390171"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Bing 拼字檢查 API 支援的語言和區域
@@ -23,7 +23,7 @@ Bing 拼字檢查 API 支援這些語言 (僅限 `spell` 模式)。
 
 請注意，若要使用 `en-US` 以外的任何其他語言，則應該如 [Spell Check API v7 reference](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference) (拼字檢查 API v7 參考) 中所述設定 `mkt`，且應該設定 `Accept-Language` 或 `setLang`
 
-| 語言    | 語言代碼 |
+| Language    | 語言代碼 |
 |:----------- |:-------------:|
 | 阿拉伯文      | `ar`          |
 | 中文 (中國)     | `zh-CN`          |
@@ -66,7 +66,7 @@ Bing 拼字檢查 API 支援這些語言 (僅限 `spell` 模式)。
 | 瑞典文     | `sv`          |
 | 土耳其文     | `tr`          |
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [認知服務文件頁面](https://docs.microsoft.com/azure/cognitive-services/)
 - [認知服務產品頁面](https://azure.microsoft.com/services/cognitive-services/)

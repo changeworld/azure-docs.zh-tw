@@ -1,7 +1,7 @@
 ---
 title: 翻譯工具文字 API 偵測方法
 titleSuffix: Azure Cognitive Services
-description: 使用 Azure 認知服務轉換器文本 API 檢測方法標識文本文本的語言。
+description: 使用 Azure 認知服務翻譯工具文字 API 偵測方法來識別一段文字的語言。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "73837303"
 ---
 # <a name="translator-text-api-30-detect"></a>翻譯工具文字 API 3.0：偵測
@@ -48,7 +48,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   <th width="20%">headers</th>
   <th>描述</th>
   <tr>
-    <td>身份驗證標頭</td>
+    <td>驗證標頭</td>
     <td>必要的要求標頭<em></em>。<br/>請參閱<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">可用的驗證選項</a>。</td>
   </tr>
   <tr>
@@ -65,7 +65,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
 </table> 
 
-## <a name="request-body"></a>Request body
+## <a name="request-body"></a>要求本文
 
 要求的本文是 JSON 陣列。 每個陣列項目都是具有字串屬性 `Text` 的 JSON 物件。 語言偵測會套用到 `Text` 屬性的值。 範例回應本文應如下所示：
 
@@ -158,7 +158,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   </tr>
   <tr>
     <td>429</td>
-    <td>伺服器拒絕請求，因為用戶端已超過請求限制。</td>
+    <td>伺服器已拒絕要求，因為用戶端已超過要求限制。</td>
   </tr>
   <tr>
     <td>500</td>
