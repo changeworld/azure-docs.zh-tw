@@ -1,6 +1,6 @@
 ---
-title: Azure MFA 伺服器和第三方 VPN - Azure 活動目錄
-description: Azure MFA 伺服器的分步配置指南,以便與思科、Citrix 和瞻聯網路集成。
+title: Azure MFA Server 和協力廠商 Vpn-Azure Active Directory
+description: Azure MFA Server 與 Cisco、Citrix 和刺柏整合的逐步設定指南。
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -12,37 +12,37 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 01decb99a9eb24ae60250f83f1f961b4c1690bc0
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80652854"
 ---
-# <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>使用 Azure MFA 伺服器和第三方 VPN 解決方案的進階機制
+# <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>使用 Azure MFA Server 和協力廠商 VPN 解決方案的先進案例
 
-Azure 多重身份驗證伺服器(Azure MFA 伺服器)可用於與各種第三方 VPN 解決方案無縫連接。 本文重點介紹 Cisco&reg; ASA VPN 設備、Citrix NetScaler SSL VPN 設備以及瞻博網路安全訪問/脈衝安全連接安全 SSL VPN 設備。 我們建立了解決這三種常見應用裝置的設定指南。 Azure MFA 伺服器還可以與大多數使用 RADIUS、LDAP、IIS 或基於聲明的 AD FS 身份驗證的其他系統集成。 您可以在[Azure MFA 伺服器配置中找到](howto-mfaserver-deploy.md#next-steps)更多詳細資訊。
+Azure 多因素驗證服務器（Azure MFA Server）可以用來與各種協力廠商 VPN 解決方案順暢地連接。 本文著重于 Cisco&reg; ASA VPN 應用裝置、CITRIX NETSCALER SSL VPN 應用裝置，以及網路安全存取/脈衝安全 CONNECT 安全 SSL VPN 設備。 我們建立了解決這三種常見應用裝置的設定指南。 Azure MFA Server 也可以與大部分其他使用 RADIUS、LDAP、IIS 或宣告式驗證的系統進行整合，以 AD FS。 您可以在[AZURE MFA Server](howto-mfaserver-deploy.md#next-steps)設定中找到更多詳細資料。
 
 > [!IMPORTANT]
-> 自 2019 年 7 月 1 日起,Microsoft 將不再為新部署提供 MFA 伺服器。 希望用戶進行多重身份驗證的新客戶應使用基於雲的 Azure 多重身份驗證。 在 7 月 1 日之前啟動 MFA 伺服器的現有客戶將能夠像往常一樣下載最新版本、將來的更新並生成啟動認證。
+> 從2019年7月1日起，Microsoft 將不再為新的部署提供 MFA 伺服器。 新客戶若想要從他們的使用者要求多重要素驗證，應該使用雲端式 Azure 多重要素驗證。 在7月1日前啟動 MFA Server 的現有客戶將能夠下載最新版本、未來的更新，並如往常般產生啟用認證。
 
-## <a name="cisco-asa-vpn-appliance-and-azure-mfa-server"></a>思科 ASA VPN 裝置和 Azure MFA 伺服器
-Azure MFA 伺服器與您的&reg;Cisco ASA VPN&reg;設備整合,為思科 AnyConnect VPN 登錄和門戶訪問提供額外的安全性。  您可以使用 LDAP 或 RADIUS 通訊協定。  選取下列其中一項以下載詳細的逐步組態指南。
+## <a name="cisco-asa-vpn-appliance-and-azure-mfa-server"></a>Cisco ASA VPN 應用裝置和 Azure MFA Server
+Azure MFA Server 會與您的&reg; CISCO ASA VPN 應用裝置整合，以提供 cisco&reg; AnyConnect vpn 登入和入口網站存取的額外安全性。  您可以使用 LDAP 或 RADIUS 通訊協定。  選取下列其中一項以下載詳細的逐步組態指南。
 
 | 組態指南 | 描述 |
 | --- | --- |
 | [Cisco ASA with Anyconnect VPN 與 Azure MFA Configuration for LDAP](https://download.microsoft.com/download/A/2/0/A201567C-C3DE-4227-AF89-4567A470899E/Cisco_ASA_Azure_MFA_LDAP.docx) | 使用 LDAP 整合 Cisco ASA VPN 應用裝置與 Azure MFA |
 | [Cisco ASA with Anyconnect VPN 與 Azure MFA Configuration for RADIUS](https://download.microsoft.com/download/4/5/7/4579C1CF-35B0-4FBE-8A1A-B49CB2CC0382/Cisco_ASA_Azure_MFA_RADIUS.docx) | 使用 RADIUS 整合 Cisco ASA VPN 應用裝置與 Azure MFA |
 
-## <a name="citrix-netscaler-ssl-vpn-and-azure-mfa-server"></a>Citrix NetScaler SSL VPN 與 Azure MFA 伺服器
-Azure MFA 伺服器與您的 Citrix NetScaler SSL VPN 裝置整合,為 Citrix NetScaler SSL VPN 登入和門戶造訪提供額外的安全性。  您可以使用 LDAP 或 RADIUS 通訊協定。  選取下列其中一項以下載詳細的逐步組態指南。
+## <a name="citrix-netscaler-ssl-vpn-and-azure-mfa-server"></a>Citrix NetScaler SSL VPN 與 Azure MFA Server
+Azure MFA Server 會與您的 Citrix NetScaler SSL VPN 應用裝置整合，以提供 Citrix NetScaler SSL VPN 登入和入口網站存取的額外安全性。  您可以使用 LDAP 或 RADIUS 通訊協定。  選取下列其中一項以下載詳細的逐步組態指南。
 
 | 組態指南 | 描述 |
 | --- | --- |
 | [Citrix NetScaler SSL VPN 與 Azure MFA Configuration for LDAP](https://download.microsoft.com/download/2/4/E/24E1E722-72DF-471F-A88A-D1338DB1AF83/Citrix_NS_Azure_MFA_LDAP.docx) | 使用 LDAP 整合 Citrix NetScaler SSL VPN 與 Azure MFA |
 | [Citrix NetScaler SSL VPN 與 Azure MFA Configuration for RADIUS](https://download.microsoft.com/download/1/A/4/1A482764-4A63-45C2-A5EC-2B673ACCDD12/Citrix_NS_Azure_MFA_RADIUS.docx) | 使用 RADIUS 整合 Citrix NetScaler SSL VPN 應用裝置與 Azure MFA |
 
-## <a name="juniperpulse-secure-ssl-vpn-appliance-and-azure-mfa-server"></a>瞻比器/脈衝安全 SSL VPN 裝置和 Azure MFA 伺服器
-Azure MFA 伺服器與您的瞻飛器/脈衝安全 SSL VPN 設備整合,為瞻飛器/脈衝安全 SSL VPN 登錄和門戶訪問提供額外的安全性。  您可以使用 LDAP 或 RADIUS 通訊協定。  選取下列其中一項以下載詳細的逐步組態指南。
+## <a name="juniperpulse-secure-ssl-vpn-appliance-and-azure-mfa-server"></a>刺柏/脈衝安全 SSL VPN 應用裝置和 Azure MFA Server
+Azure MFA Server 會與您的刺柏/脈衝安全 SSL VPN 應用裝置整合，以提供更高的安全，以進行刺柏/脈衝安全 SSL VPN 登入和入口網站存取。  您可以使用 LDAP 或 RADIUS 通訊協定。  選取下列其中一項以下載詳細的逐步組態指南。
 
 | 組態指南 | 描述 |
 | --- | --- |
@@ -53,4 +53,4 @@ Azure MFA 伺服器與您的瞻飛器/脈衝安全 SSL VPN 設備整合,為瞻�
 
 - [利用 Azure Multi-Factor Authentication 的 NPS 擴充功能強化現有的驗證基礎結構](howto-mfa-nps-extension.md)
 
-- [設定 Azure 多重身份驗證設定](howto-mfa-mfasettings.md)
+- [設定 Azure 多重要素驗證設定](howto-mfa-mfasettings.md)

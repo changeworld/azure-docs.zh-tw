@@ -9,18 +9,18 @@ ms.reviewer: klam, estfan
 ms.topic: article
 ms.date: 08/18/2016
 ms.openlocfilehash: e821036ff4ddb5a9786bc4f4537bb81539ab2c87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898482"
 ---
 # <a name="plans-and-billing-for-azure-scheduler"></a>Azure 排程器的方案與計費
 
 > [!IMPORTANT]
-> [Azure 邏輯應用](../logic-apps/logic-apps-overview.md)正在替換[正在停用](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 計畫程式。 要繼續處理在計畫程式中設置的作業，請儘快[遷移到 Azure 邏輯應用](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md)會取代即將[淘汰](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)的 Azure 排程器。 若要繼續使用您在排程器中設定的作業，請儘快[遷移至 Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) 。 
 >
-> 計畫程式在 Azure 門戶中不再可用，但[REST API](/rest/api/scheduler)和[Azure 計畫程式 PowerShell Cmdlet](scheduler-powershell-reference.md)此時仍然可用，以便您可以管理作業和作業集合。
+> 排程器已無法在 Azure 入口網站中使用，但[REST API](/rest/api/scheduler)和 Azure 排程器[PowerShell Cmdlet](scheduler-powershell-reference.md)目前仍可供使用，讓您可以管理您的作業和工作集合。
 
 ## <a name="job-collection-plans"></a>作業集合方案
 
@@ -28,7 +28,7 @@ ms.locfileid: "78898482"
 
 | 作業集合方案 | 每項集合作業數上限 | 週期上限 | 每個訂用帳戶的作業集合數上限 | 限制 | 
 |:--- |:--- |:--- |:--- |:--- |
-| **標準** | 每個集合 50 個作業數 | 每分鐘一次。 每分鐘無法執行一次以上的作業。 | 每個 Azure 訂用帳戶最多都可以有 100 個標準作業集合。 | 存取排程器的完整功能集 | 
+| **Standard** | 每個集合 50 個作業數 | 每分鐘一次。 每分鐘無法執行一次以上的作業。 | 每個 Azure 訂用帳戶最多都可以有 100 個標準作業集合。 | 存取排程器的完整功能集 | 
 | **P10 Premium** | 每個集合 50 個作業數 | 每分鐘一次。 每分鐘無法執行一次以上的作業。 | 每個 Azure 訂用帳戶最多都可以有 10,000 個 P10 的進階作業集合。 如需更多集合數，請<a href="mailto:wapteams@microsoft.com">與我們連絡</a>。 | 存取排程器的完整功能集 |
 | **P20 Premium** | 每個集合 1000 個作業數 | 每分鐘一次。 每分鐘無法執行一次以上的作業。 | 每個 Azure 訂用帳戶最多都可以有 5,000 個 P20 的進階作業集合。 如需更多集合數，請<a href="mailto:wapteams@microsoft.com">與我們連絡</a>。 | 存取排程器的完整功能集 |
 |||||| 

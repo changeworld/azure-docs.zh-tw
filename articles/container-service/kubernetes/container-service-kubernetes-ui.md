@@ -8,10 +8,10 @@ ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371132"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(已淘汰) 搭配 Azure Container Service 使用 Kubernetes Web UI
@@ -21,7 +21,7 @@ ms.locfileid: "79371132"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 本逐步解說假設您已[使用 Azure Container Service 建立 Kubernetes 叢集](container-service-kubernetes-walkthrough.md)。
 
 
@@ -65,7 +65,7 @@ az acs kubernetes browse -g [Resource Group] -n [Container service instance name
 
     隨即會開啟對話方塊，您可以在其中開始建立應用程式。
 
-2. 請為其指定 `hello-nginx` 名稱。 使用[`nginx`Docker 中的容器](https://hub.docker.com/_/nginx/)並部署此 Web 服務的三個副本。
+2. 請為其指定 `hello-nginx` 名稱。 使用[ `nginx` Docker 的容器](https://hub.docker.com/_/nginx/)，並部署此 web 服務的三個複本。
 
     ![Kubernetes Pod 建立對話方塊](./media/container-service-kubernetes-ui/nginx.png)
 

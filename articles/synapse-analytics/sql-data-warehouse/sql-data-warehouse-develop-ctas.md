@@ -1,6 +1,6 @@
 ---
 title: CREATE TABLE AS SELECT (CTAS)
-description: Synapse SQL 中用於開發解決方案的創建表作為 SELECT (CTAS) 語句的說明和示例。
+description: 在開發解決方案的 Synapse SQL 中，CREATE TABLE AS SELECT （CTAS）語句的說明和範例。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,25 +12,25 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seoapril2019, azure-synapse
 ms.openlocfilehash: 8e1b75dfc6a979956ff4a2868027bb769bf7c4ed
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633540"
 ---
 # <a name="create-table-as-select-ctas"></a>CREATE TABLE AS SELECT (CTAS)
 
-本文介紹了 Synapse SQL 中用於開發解決方案的創建表作為 SELECT (CTAS) T-SQL 語句。 此文章也提供程式碼範例。
+本文說明在 Synapse SQL 中用來開發解決方案的 CREATE TABLE AS SELECT （CTAS） T-sql 語句。 此文章也提供程式碼範例。
 
 ## <a name="create-table-as-select"></a>CREATE TABLE AS SELECT
 
-[創建表作為 SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (CTAS) 語句是可用的最重要的 T-SQL 功能之一。 CTAS 是一個並行操作,它基於 SELECT 語句的輸出創建新錶。 CTAS 是創建數據並將其插入具有單個命令的表中的最簡單、最快的方法。
+[CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) （CTAS）語句是最重要的其中一個可用的 t-sql 功能。 CTAS 是一種平行作業，會根據 SELECT 語句的輸出來建立新的資料表。 CTAS 是使用單一命令來建立資料並將其插入資料表的最簡單且最快速的方式。
 
-## <a name="selectinto-vs-ctas"></a>選擇。。。INTO 與 CTAS
+## <a name="selectinto-vs-ctas"></a>選取 .。。INTO 和 CTAS
 
-CTAS 是 SELECT 的一個可自訂的版本[...INTO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)聲明。
+CTAS 是更容易自訂的[SELECT .。。INTO](/sql/t-sql/queries/select-into-clause-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)語句。
 
-下面是一個簡單的選擇的範例...到:
+以下是簡單 SELECT ... 的範例登錄
 
 ```sql
 SELECT *
@@ -38,9 +38,9 @@ INTO    [dbo].[FactInternetSales_new]
 FROM    [dbo].[FactInternetSales]
 ```
 
-選擇。。。INTO 不允許在操作中更改分佈方法或索引類型。 通過使用預設`[dbo].[FactInternetSales_new]`分佈類型ROUND_ROBIN和"CLUSTERED"列科索引的默認表結構進行創建。
+選取 .。。INTO 不允許您變更散發方法或索引類型做為作業的一部分。 您可以`[dbo].[FactInternetSales_new]`使用 ROUND_ROBIN 的預設散發類型，以及叢集資料行存放區索引的預設資料表結構來建立。
 
-另一方面,使用 CTAS,您可以指定表數據的分佈以及表結構類型。 要將前面的範例轉換為 CTAS:
+另一方面，使用 CTAS，您可以同時指定資料表資料的分佈，以及資料表結構類型。 若要將上一個範例轉換為 CTAS：
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_new]
@@ -55,13 +55,13 @@ FROM    [dbo].[FactInternetSales];
 ```
 
 > [!NOTE]
-> 如果僅在 CTAS 操作中嘗試更改索引,並且源表是哈希分佈的,請維護相同的分佈列和數據類型。 這樣可以避免操作過程中的交叉分佈數據移動,這更有效率。
+> 如果您只想要在 CTAS 作業中變更索引，而且來源資料表是雜湊散發，請維護相同的散發資料行和資料類型。 這可避免在作業期間進行跨散發資料移動，這會更有效率。
 
 ## <a name="use-ctas-to-copy-a-table"></a>使用 CTAS 複製資料表
 
-CTAS 最常見的用途之一是創建表的副本以更改 DDL。 假設您最初將表創建為`ROUND_ROBIN`,現在希望將其更改為分佈在列上的表。 CTAS 是更改分配列的方式。 您還可以使用 CTAS 更改分區、索引或列類型。
+最常見的 CTAS 使用方式之一，就是建立資料表的複本，以便變更 DDL。 假設您最初已將資料表建立為`ROUND_ROBIN`，而現在想要將它變更為在資料行上散發的資料表。 CTAS 是變更散發資料行的方式。 您也可以使用 CTAS 來變更資料分割、索引或資料行類型。
 
-假設您使用 的預設分發類型 創建了`ROUND_ROBIN`此表 ,`CREATE TABLE`而不是指定 中的 分配列。
+假設您是使用的預設散發類型建立此資料表`ROUND_ROBIN`，而不是在中指定散發資料行。 `CREATE TABLE`
 
 ```sql
 CREATE TABLE FactInternetSales
@@ -91,7 +91,7 @@ CREATE TABLE FactInternetSales
     CustomerPONumber nvarchar(25));
 ```
 
-現在,您希望使用`Clustered Columnstore Index`創建此表的新副本,以便利用群集列儲存表的性能。 您還希望在上`ProductKey`分發此表,因為您預期此列上的聯接,並且希望避免在聯接期間在上`ProductKey`上 移動數據。 最後,您還希望在上`OrderDateKey`添加分區,以便可以通過刪除舊分區來快速刪除舊數據。 下面是 CTAS 語句,該語句將舊表複製到新表中。
+現在您想要使用`Clustered Columnstore Index`建立這個資料表的新複本，讓您可以利用叢集資料行存放區資料表的效能。 您也想要在上`ProductKey`散發此資料表，因為您預期會在此資料行上進行聯結，而且想要避免`ProductKey`在聯結期間的資料移動。 最後，您也想要在上`OrderDateKey`新增資料分割，因此您可以藉由卸載舊的磁碟分割來快速刪除舊的資料。 以下是 CTAS 語句，它會將您的舊資料表複製到新的資料表中。
 
 ```sql
 CREATE TABLE FactInternetSales_new
@@ -112,7 +112,7 @@ WITH
 AS SELECT * FROM FactInternetSales;
 ```
 
-最後,您可以重新命名表,在新表中交換,然後刪除舊表。
+最後，您可以重新命名您的資料表，以在新的資料表中交換，然後卸載舊的資料表。
 
 ```sql
 RENAME OBJECT FactInternetSales TO FactInternetSales_old;
@@ -121,20 +121,20 @@ RENAME OBJECT FactInternetSales_new TO FactInternetSales;
 DROP TABLE FactInternetSales_old;
 ```
 
-## <a name="use-ctas-to-work-around-unsupported-features"></a>使用 CTAS 解決不支援的功能
+## <a name="use-ctas-to-work-around-unsupported-features"></a>使用 CTAS 來解決不支援的功能
 
-您還可以使用 CTAS 解決下面列出的許多不支援的功能。 此方法通常可以證明是有説明的,因為不僅代碼符合要求,而且它通常會在 Synapse SQL 上運行得更快。 這種性能是其完全並行化設計的結果。 配置:
+您也可以使用 CTAS 來解決下列幾個不支援的功能。 這個方法通常很有用，因為您的程式碼不僅符合規範，而且在 Synapse SQL 上的執行速度通常較快。 這項效能是其完全平行化設計的結果。 案例包括：
 
 * ANSI JOINS on UPDATEs
 * ANSI JOINs on DELETEs
 * MERGE 陳述式
 
 > [!TIP]
-> 試著先想想"CTAS"。 使用 CTAS 解決問題通常是一種好方法,即使您因此寫入了更多數據也是如此。
+> 請嘗試考慮「先 CTAS」。 使用 CTAS 解決問題通常是很好的方法，即使您要撰寫更多資料亦然。
 
 ## <a name="ansi-join-replacement-for-update-statements"></a>更新陳述式的 ANSI 聯結取代
 
-您可能會發現您有一個複雜的更新。 使用 ANSI 聯接文法執行更新或刪除,更新將兩個以上表聯接在一起。
+您可能會發現您有複雜的更新。 此更新會使用 ANSI 聯結語法來執行更新或刪除，以結合兩個以上的資料表。
 
 想像您必須更新這個資料表：
 
@@ -150,7 +150,7 @@ WITH
 );
 ```
 
-原始查詢可能如下所示,示例如下所示:
+原始查詢可能看起來像這個範例：
 
 ```sql
 UPDATE    acs
@@ -174,9 +174,9 @@ ON    [acs].[EnglishProductCategoryName]    = [fis].[EnglishProductCategoryName]
 AND    [acs].[CalendarYear]                = [fis].[CalendarYear];
 ```
 
-Synapse SQL`FROM``UPDATE`不支援 語句子句中的 ANSI 聯接,因此如果不修改它,就不能使用前面的示例。
+Synapse SQL 在`FROM` `UPDATE`語句的子句中不支援 ANSI 聯結，因此您無法在不修改的情況下使用先前的範例。
 
-可以使用 CTAS 與隱式聯接的組合來取代前面的範例:
+您可以使用 CTAS 和隱含聯結的組合來取代先前的範例：
 
 ```sql
 -- Create an interim table
@@ -208,9 +208,9 @@ DROP TABLE CTAS_acs;
 
 ## <a name="ansi-join-replacement-for-delete-statements"></a>delete 陳述式的 ANSI 聯結取代
 
-有時,刪除數據的最佳方法是使用 CTAS,尤其是`DELETE`對於 使用 ANSI 聯接語法的語句。 這是因為 Synapse SQL 不支援`FROM``DELETE`ANSI 在 語句子句中的聯接。 選擇要保留的資料,而不是刪除資料。
+有時候刪除資料的最佳方法是使用 CTAS，特別是使用 ANSI `DELETE`聯結語法的語句。 這是因為 Synapse SQL 在`FROM` `DELETE`語句的子句中不支援 ANSI 聯結。 請選取您想要保留的資料，而不是刪除資料。
 
-下面是轉換`DELETE`敘述的範例:
+以下是已轉換`DELETE`的語句範例：
 
 ```sql
 CREATE TABLE dbo.DimProduct_upsert
@@ -232,9 +232,9 @@ RENAME OBJECT dbo.DimProduct_upsert TO DimProduct;
 
 ## <a name="replace-merge-statements"></a>取代 merge 陳述式
 
-可以使用 CTAS 替換合併文句(至少部分)。 可以將和`INSERT`合併`UPDATE`到單個語句中。 任何已刪除的記錄都應從語句中`SELECT`限制,以忽略結果。
+您可以使用 CTAS 來取代 merge 語句（至少在部分中）。 您可以將`INSERT`和合併`UPDATE`成單一語句。 所有已刪除的記錄都應該限制`SELECT`在語句中，以便從結果中省略。
 
-以下範例用於`UPSERT`:
+下列範例適用于`UPSERT`：
 
 ```sql
 CREATE TABLE dbo.[DimProduct_upsert]
@@ -266,7 +266,7 @@ RENAME OBJECT dbo.[DimProduct_upsert]  TO [DimProduct];
 
 ## <a name="explicitly-state-data-type-and-nullability-of-output"></a>明確陳述資料類型和輸出可為 null
 
-移動代碼時,您可能會發現您執行在這種類型的編碼模式中:
+在遷移程式碼時，您可能會發現，您可以在這種編碼模式中執行：
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
@@ -281,9 +281,9 @@ INSERT INTO result
 SELECT @d*@f;
 ```
 
-您可能認為應該將此代碼遷移到 CTAS,而且正確。 但是,這裡有一個隱藏的問題。
+您可能認為應該將此程式碼遷移至 CTAS，而且您是正確的。 不過，這裡有一個隱藏的問題。
 
-以下代碼不會產生相同的結果:
+下列程式碼不會產生相同的結果：
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
@@ -295,9 +295,9 @@ AS
 SELECT @d*@f as result;
 ```
 
-請注意，資料行 "result" 會帶有運算式的資料類型和可 Null 性。 如果不小心,將數據類型向前攜帶可能會導致值的細微差異。
+請注意，資料行 "result" 會帶有運算式的資料類型和可 Null 性。 如果您不小心，將資料類型轉送會導致值的細微差異。
 
-請嘗試此範例:
+請嘗試此範例：
 
 ```sql
 SELECT result,result*@d
@@ -307,18 +307,18 @@ SELECT result,result*@d
 from ctas_r;
 ```
 
-為結果而儲存的值不相同。 當結果列中的持久值用於其他表達式時,錯誤變得更加顯著。
+為結果而儲存的值不相同。 當結果資料行中的保存值用於其他運算式時，錯誤會變得更重要。
 
-![CTAS 結果的螢幕截圖](./media/sql-data-warehouse-develop-ctas/ctas-results.png)
+![CTAS 結果的螢幕擷取畫面](./media/sql-data-warehouse-develop-ctas/ctas-results.png)
 
-這對數據遷移非常重要。 儘管第二個查詢可以說是更準確的,但存在問題。 與源系統相比,數據會有所不同,從而導致遷移中的完整性問題。 這是罕見案例之一，也就是「錯誤」的答案實際上是正確的答案！
+這對資料移轉而言很重要。 雖然第二個查詢是比較精確的，但仍有問題。 相較于來源系統，資料會不同，這會導致遷移中的完整性問題。 這是罕見案例之一，也就是「錯誤」的答案實際上是正確的答案！
 
-我們看到兩個結果之間的差異的原因是隱式類型轉換。 在第一個示例中,表定義列定義。 插入行時,將發生隱式類型轉換。 在第二個示例中,沒有隱式類型轉換,因為表達式定義列的數據類型。
+我們在兩個結果之間看到差異的原因，是因為隱含的類型轉換。 在第一個範例中，資料表會定義資料行定義。 插入資料列時，會發生隱含類型轉換。 在第二個範例中，沒有隱含的類型轉換，因為運算式會定義資料行的資料類型。
 
-另請注意,第二個範例中的列已定義為 NULable 列,而在第一個範例中,該列沒有。 在第一個示例中創建表時,顯式定義了列空。 在第二個示例中,它留給運算式,默認情況下會導致 NULL 定義。
+另外也請注意，第二個範例中的資料行已定義為可為 Null 的資料行，而在第一個範例中則沒有。 在第一個範例中建立資料表時，已明確定義資料行 null 屬性。 在第二個範例中，它會留給運算式，而且預設會產生 Null 定義。
 
-要解決這些問題,必須在 CTAS 語句的 SELECT 部分中顯式設置類型轉換和空度。 不能在"創建表"中設置這些屬性。
-下面的範例展示如何修復碼:
+若要解決這些問題，您必須在 CTAS 語句的 SELECT 部分中明確設定類型轉換和可為 null 屬性。 您無法在 ' CREATE TABLE ' 中設定這些屬性。
+下列範例示範如何修正程式碼：
 
 ```sql
 DECLARE @d decimal(7,2) = 85.455
@@ -333,14 +333,14 @@ SELECT ISNULL(CAST(@d*@f AS DECIMAL(7,2)),0) as result
 請注意：
 
 * 您可以使用 CAST 或 CONVERT。
-* 使用 ISNULL,而不是「歐洲」來強制 NULL.。 請參閱以下註釋。
-* ISNULL 是最外層函數。
-* ISNULL 的第二部分是常量 0。
+* 使用 ISNull，而非聯合，強制 Null 屬性。 請參閱下列注意事項。
+* ISNull 是最外層的函式。
+* ISNull 的第二個部分是常數，0。
 
 > [!NOTE]
-> 要正確設置空值,使用 ISNULL 而不是 COALESCE 至關重要。 COALESCE不是一個確定性函數,因此表達式的結果永遠是可NULL的。 但 ISNULL 不同。 這是確定性的。 因此,當 ISNULL 函數的第二部分是常量或文本時,生成的值將不是 NULL。
+> 若要正確設定 null 屬性，請務必使用 ISNull，而不要聯合。 聯合不是具決定性的函數，因此運算式的結果一律可為 Null。 但 ISNULL 不同。 這是決定性的。 因此，當 ISNull 函式的第二個部分是常數或常值時，產生的值將不會是 Null。
 
-確保計算的完整性對於表分區切換也很重要。 假設您將此表定義為事實表:
+確保計算的完整性對於資料表分割切換也很重要。 假設您已將此資料表定義為事實資料表：
 
 ```sql
 CREATE TABLE [dbo].[Sales]
@@ -362,9 +362,9 @@ WITH
 );
 ```
 
-但是,量欄位是計算表達式。 它不是源數據的一部分。
+不過，[金額] 欄位是一個計算運算式。 它不是來源資料的一部分。
 
-要建立分割區資料集,可能需要使用以下代碼:
+若要建立分割的資料集，您可能會想要使用下列程式碼：
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
@@ -387,7 +387,7 @@ FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-查詢運行良好。 當您嘗試執行分區切換時,問題就出現了。 表定義不匹配。 要使表定義匹配,請修改 CTAS 以添加`ISNULL`函數 以保留列的 null 可屬性。
+查詢可以順利執行。 當您嘗試執行資料分割切換時，就會發生此問題。 資料表定義不相符。 若要讓資料表定義相符，請修改 CTAS 來加入`ISNULL`函數，以保留資料行的可為 null 屬性。
 
 ```sql
 CREATE TABLE [dbo].[Sales_in]
@@ -410,9 +410,9 @@ FROM [stg].[source]
 OPTION (LABEL = 'CTAS : Partition IN table : Create');
 ```
 
-您可以看到,類型一致性和維護 CTAS 上的空屬性是工程最佳實踐。 它有助於在計算中保持完整性,並確保分區切換成為可能。
+您可以看到 CTAS 上的類型一致性和維護可 null 性屬性是工程的最佳作法。 它有助於維護計算的完整性，同時也可確保能夠切換分割區。
 
-CTAS 是 SynapsE SQL 中最重要的語句之一。 請確定您已徹底了解。 請參考[CTAS 文件](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
+CTAS 是 Synapse SQL 中最重要的其中一個語句。 請確定您已徹底了解。 請參閱[CTAS 檔](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
 
 ## <a name="next-steps"></a>後續步驟
 

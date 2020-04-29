@@ -8,15 +8,15 @@ ms.date: 09/10/2019
 author: luisbosquez
 ms.author: lbosq
 ms.openlocfilehash: 4ed7e67ae0ef027b260d0e0f0407e4e05ed5a8f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "78898296"
 ---
 # <a name="system-document-properties"></a>系統文件屬性
 
-Azure Cosmos DB 具有[系統屬性](https://docs.microsoft.com/rest/api/cosmos-db/databases)，```_ts```如 、、、```_self``````_attachments``````_rid```和```_etag```/每個文檔。 此外，Gremlin 引擎會在邊緣上新增 ```inVPartition``` 和 ```outVPartition``` 屬性。 根據預設，這些屬性都可以周遊。 不過，可以在 Gremlin 周遊中納入特定屬性或所有屬性。
+Azure Cosmos DB 在每份檔上```_ts```都```_self```有```_attachments```[系統屬性](https://docs.microsoft.com/rest/api/cosmos-db/databases)， ```_etag```例如、、、 ```_rid```和。 此外，Gremlin 引擎會在邊緣上新增 ```inVPartition``` 和 ```outVPartition``` 屬性。 根據預設，這些屬性都可以周遊。 不過，可以在 Gremlin 周遊中納入特定屬性或所有屬性。
 
 ```
 g.withStrategies(ProjectionStrategy.build().IncludeSystemProperties('_ts').create())

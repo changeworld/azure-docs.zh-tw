@@ -8,10 +8,10 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 02d04076ccc41d243a493838667f5e8cc6bfa5ac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79371149"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(已淘汰) 使用 Log Analytics 監視 Azure Container Service 叢集
@@ -21,7 +21,7 @@ ms.locfileid: "79371149"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 本逐步解說假設您已[使用 Azure Container Service 建立 Kubernetes 叢集](container-service-kubernetes-walkthrough.md)。
 
 同時也假設您已經安裝 `az` Azure cli 和 `kubectl` 工具。
@@ -81,7 +81,7 @@ Log Analytics 是 Microsoft 的雲端型 IT 管理解決方案，可協助您管
 DaemonSet 是 Kubernetes 用來在叢集中每個主機上執行容器的單一執行個體。
 它們非常適合用來執行監視代理程式。
 
-這裡是[守護進程YAML檔](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)。 將它儲存到名為 `oms-daemonset.yaml` 的檔案，並將檔案中的 `WSID` 和 `KEY` 預留位置值取代為您的工作區識別碼和金鑰。
+以下是[DAEMONSET YAML](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)檔案。 將它儲存到名為 `oms-daemonset.yaml` 的檔案，並將檔案中的 `WSID` 和 `KEY` 預留位置值取代為您的工作區識別碼和金鑰。
 
 當您將工作區識別碼和金鑰新增至 DaemonSet 設定之後，就可以在您的叢集上使用 `kubectl` 命令列工具安裝 Log Analytics 代理程式：
 
@@ -92,7 +92,7 @@ kubectl create -f oms-daemonset.yaml
 ### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>使用 Kubernetes 秘密安裝 Log Analytics 代理程式
 若要保護您的 Log Analytics 工作區識別碼和金鑰，您可以使用 Kubernetes 秘密作為 DaemonSet YAML 檔案的一部分。
 
-- 複製腳本、機密範本檔和守護進程 YAML 檔（來自[存儲庫](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)），並確保它們位於同一目錄中。
+- 複製腳本、秘密範本檔案和 DaemonSet YAML 檔案（從存放[庫](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)），並確定它們位於相同的目錄中。
   - 秘密產生指令碼 - secret-gen.sh
   - 祕密範本 - secret-template.yaml
     - DaemonSet YAML 檔案 - omsagent-ds-secrets.yaml
@@ -132,11 +132,11 @@ kubectl create -f oms-daemonset.yaml
   KEY:    88 bytes
   ```
 
-  - 通過運行以下內容創建 omsagent 守護進程集：
+  - 執行下列程式來建立您的 omsagent daemon：
   
   ```console
   kubectl create -f omsagent-ds-secrets.yaml
   ```
 
 ### <a name="conclusion"></a>結論
-就這麼簡單！ 幾分鐘後，您應該可以看到資料流向您的 Log Analytics 儀表板。
+這樣就完成了！ 幾分鐘後，您應該可以看到資料流向您的 Log Analytics 儀表板。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: c06b0c79e01257eebf566b9752269cb88c072d8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79264722"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer 規格
@@ -144,7 +144,7 @@ Azure FXT Edge Filer 節點使用變速風扇，因此功率取決於溫度和�
 | 海拔                  | 最高可至 3048 公尺 (10,000 英呎)，會受到下面所述溫度額定下滑影響 | 最高可至 12,000 公尺 (39,370 英呎) |
 
 > [!NOTE] 
-> **海拔溫度降分：** 最高溫度降低 1°C/300 米（1°F/547 英尺），高於 950 米（3，117 英尺）。
+> **高度溫度解除評等：** 溫度上限會減少1° C/300 m （1° F/547 ft）以上 950 m （3117 ft）。
 
 ### <a name="airflow-shock-and-vibration"></a>氣流、震盪和震動 
 

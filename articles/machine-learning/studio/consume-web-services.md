@@ -1,7 +1,7 @@
 ---
 title: 取用 Web 服務
 titleSuffix: ML Studio (classic) - Azure
-description: 從 Azure 機器學習工作室(經典版)部署機器學習服務後,RESTFul Web 服務可以用作即時請求-回應服務或批處理執行服務。
+description: 從 Azure Machine Learning Studio （傳統）部署機器學習服務之後，就可以使用 RESTFul Web 服務作為即時要求-回應服務或批次執行服務。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,41 +11,41 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 06/02/2017
 ms.openlocfilehash: b97fe6e55e2c36b6f101071e702952f529146281
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631649"
 ---
-# <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>如何使用 Azure 機器學習工作室(經典)Web 服務
+# <a name="how-to-consume-an-azure-machine-learning-studio-classic-web-service"></a>如何使用 Azure Machine Learning Studio （傳統） web 服務
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-將 Azure 機器學習工作室(經典)預測模型部署為 Web 服務後,可以使用 REST API 發送數據並獲取預測。 您可以即時或以批次模式傳送資料。
+將 Azure Machine Learning Studio （傳統）預測模型部署為 Web 服務之後，您就可以使用 REST API 傳送資料並取得預測。 您可以即時或以批次模式傳送資料。
 
-您可以在此處找到有關如何使用機器學習工作室(經典)創建和部署機器學習 Web 服務的詳細資訊:
+您可以在這裡找到有關如何使用 Machine Learning Studio （傳統）建立和部署 Machine Learning Web 服務的詳細資訊：
 
-* 有關如何在機器學習工作室(經典)中創建實驗的教程,請參閱[創建第一個實驗](create-experiment.md)。
-* 有關如何部署 Web 服務的詳細資訊,請參閱[部署機器學習 Web 服務](deploy-a-machine-learning-web-service.md)。
+* 如需如何在 Machine Learning Studio （傳統）中建立實驗的教學課程，請參閱[建立您的第一個實驗](create-experiment.md)。
+* 如需如何部署 Web 服務的詳細資訊，請參閱[部署 Machine Learning Web 服務](deploy-a-machine-learning-web-service.md)。
 * 如需 Machine Learning 的一般詳細資訊，請參閱 [Machine Learning 文件中心](https://azure.microsoft.com/documentation/services/machine-learning/)。
 
 
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 使用 Azure Machine Learning Web 服務，外部應用程式會即時與機器學習服務工作流程計分模型通訊。 機器學習 Web 服務呼叫會將預測結果傳回外部應用程式。 若要進行機器學習 Web 服務呼叫，您可以傳遞部署預測時所建立的 API 金鑰。 機器學習服務 Web 服務以 REST 為基礎，這是一種常見的 Web 程式設計專案架構。
 
-Azure 機器學習工作室(經典)有兩種類型的服務:
+Azure Machine Learning Studio （傳統）有兩種類型的服務：
 
-* 請求-回應服務 (RRS) – 一種低延遲、高度可擴展的服務,提供從機器學習工作室創建和部署的無狀態模型的介面(經典)。
+* 要求-回應服務（RR）–這是一種低延遲、高擴充性的服務，可為從 Machine Learning Studio （傳統）建立和部署的無狀態模型提供介面。
 * 批次執行服務 (BES) – 這是一種非同步的服務，為一批資料記錄進行計分。
 
-有關機器學習 Web 服務的詳細資訊,請參閱[部署機器學習 Web 服務](deploy-a-machine-learning-web-service.md)。
+如需 Machine Learning Web 服務的詳細資訊，請參閱[部署 Machine Learning web 服務](deploy-a-machine-learning-web-service.md)。
 
 ## <a name="get-an-authorization-key"></a>取得授權金鑰
 當您部署實驗時，會為 Web 服務產生 API 金鑰。 您可以從數個位置擷取金鑰。
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>透過 Microsoft Azure Machine Learning Web 服務入口網站
-登錄到 Microsoft [Azure 機器學習 Web 服務](https://services.azureml.net)門戶。
+登入[Microsoft Azure Machine Learning Web 服務](https://services.azureml.net)入口網站。
 
 若要擷取新 Machine Learning Web 服務的 API 金鑰︰
 
@@ -63,16 +63,16 @@ Azure 機器學習工作室(經典)有兩種類型的服務:
 5. 複製並儲存 [主要金鑰] ****。
 
 ### <a name="classic-web-service"></a>傳統 Web 服務
- 您還可以從機器學習工作室(經典)檢索經典 Web 服務的密鑰。
+ 您也可以從 Machine Learning Studio （傳統）取得傳統 Web 服務的金鑰。
 
 #### <a name="machine-learning-studio-classic"></a>Machine Learning Studio (傳統)
-1. 在機器學習工作室(經典)中,按一下左側的**WEB 服務**。
+1. 在 [Machine Learning Studio （傳統）] 中，按一下左側的 [ **WEB 服務**]。
 2. 按一下某個 Web 服務。 [API 金鑰]**** 位於 [儀表板]**** 索引標籤上。
 
-## <a name="connect-to-a-machine-learning-web-service"></a><a id="connect"></a>連接到機器學習 Web 服務
+## <a name="connect-to-a-machine-learning-web-service"></a><a id="connect"></a>連接到 Machine Learning Web 服務
 您可以使用任何支援 HTTP 要求和回應的程式設計語言，連線到機器學習 Web 服務。 您可以從機器學習 Web 服務說明頁面檢視 C#、Python 和 R 的範例。
 
-**機器學習 API 說明**部署 Web 服務時,將創建機器學習 API 説明。 請參閱[教程 3:部署信用風險模型](tutorial-part3-credit-risk-deploy.md)。
+**MACHINE LEARNING API**說明當您部署 Web 服務時，會建立 Machine Learning API 說明。 請參閱[教學課程3：部署信用風險模型](tutorial-part3-credit-risk-deploy.md)。
 機器學習服務 API 說明包含有關預測 Web 服務的詳細資訊。
 
 1. 按一下您所使用的 Web 服務。
@@ -82,7 +82,7 @@ Azure 機器學習工作室(經典)有兩種類型的服務:
 
 **檢視新 Web 服務的機器學習 API 說明**
 
-在[Azure 機器學習 Web 服務門戶](https://services.azureml.net/)中 :
+在[Azure Machine Learning Web 服務入口網站](https://services.azureml.net/)中：
 
 1. 按一下頂端功能表上的 [Web 服務] **** 。
 2. 按一下您要擷取金鑰的 Web 服務。
@@ -92,20 +92,20 @@ Azure 機器學習工作室(經典)有兩種類型的服務:
 按一下 [Swagger API]**** 從提供的 URI，取得所呼叫 API 的 Swagger 相關文件。
 
 ### <a name="c-sample"></a>C# 範例
-要連接到機器學習 Web 服務,請使用**HttpClient**傳遞分數數據。 ScoreData 包含 FeatureVector，這是代表 ScoreData 的數值特徵 N 維向量。 您要使用 API 金鑰向機器學習服務驗證。
+若要連接到 Machine Learning Web 服務，請使用**HttpClient**傳遞 ScoreData。 ScoreData 包含 FeatureVector，這是代表 ScoreData 的數值特徵 N 維向量。 您要使用 API 金鑰向機器學習服務驗證。
 
-要連接到機器學習 Web 服務,必須安裝**Microsoft.AspNet.WebApi.用戶端**NuGet 包。
+若要連接到 Machine Learning Web 服務，必須安裝**WebApi 的用戶端**NuGet 套件。
 
-**安裝微軟.AspNet.WebApi.用戶端 NuGet 在可視化工作室**
+**在 Visual Studio 中安裝 WebApi 用戶端 NuGet**
 
 1. 發佈 Download dataset from UCI: Adult 2 class dataset 的 Web 服務。
-2. 點選**工具** > **NuGet 套件管理員** > **主控台**。
+2. 按一下 [**工具** > ] [**NuGet 套件管理員** > ] [**套件管理員主控台**]。
 3. 選擇 [ **Install-package Microsoft.AspNet.WebApi.Client**]。
 
 **執行程式碼範例**
 
 1. 發佈機器學習服務範例集合中的 "Sample 1: Download dataset from UCI: Adult 2 class dataset" 實驗。
-2. 使用來自 Web 服務的金鑰指派 apiKey。 請參考**取上面的授權金鑰**。
+2. 使用來自 Web 服務的金鑰指派 apiKey。 請參閱上述**的取得授權金鑰**。
 3. 使用要求 URI 指派 serviceUri。
 
 **以下是完整的要求內容。**
@@ -201,7 +201,7 @@ namespace CallRequestResponseService
 **執行程式碼範例**
 
 1. 部署機器學習服務範例集合中的 "Sample 1: Download dataset from UCI: Adult 2 class dataset" 實驗。
-2. 使用來自 Web 服務的金鑰指派 apiKey。 請參閱本文開頭附近的 **「獲取授權密鑰」** 部分。
+2. 使用來自 Web 服務的金鑰指派 apiKey。 請參閱本文開頭附近的**取得授權金鑰**一節。
 3. 使用要求 URI 指派 serviceUri。
 
 **以下是完整的要求內容。**

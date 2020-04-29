@@ -1,20 +1,20 @@
 ---
-title: 將資源移至新的訂閱或資源群組
+title: 將資源移到新的訂用帳戶或資源群組
 description: 使用 Azure Resource Manager 將資源移到新的資源群組或訂用帳戶。
 ms.topic: conceptual
 ms.date: 03/02/2020
 ms.openlocfilehash: ffb5f8be81d3628084d127db404ab994d4d5b938
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631511"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>將資源移至新的資源群組或訂用帳戶
 
 本文示範如何將 Azure 資源移至其他 Azure 訂用帳戶或相同訂用帳戶內的其他資源群組。 您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來移動資源。
 
-移動作業期間會同時鎖定來源群組和目標群組。 資源群組上的寫入和刪除作業將會封鎖，直到移動完成。 此鎖定意味著您無法新增、更新或刪除資源群組中的資源。 這並不意味著資源被凍結。 例如，如果您將 SQL Server 和其資料庫移至新的資源群組，使用該資料庫的應用程式不會發生停機時間。 它仍可對資料庫讀取和寫入。 鎖最多可以持續四個小時,但大多數移動在更短的時間內完成。
+移動作業期間會同時鎖定來源群組和目標群組。 資源群組上的寫入和刪除作業將會封鎖，直到移動完成。 此鎖定表示您無法新增、更新或刪除資源群組中的資源。 這並不表示資源已凍結。 例如，如果您將 SQL Server 和其資料庫移至新的資源群組，使用該資料庫的應用程式不會發生停機時間。 它仍可對資料庫讀取和寫入。 鎖定最多可以有四個小時，但大部分的移動會在較少的時間內完成。
 
 移動資源只會將它移到新的資源群組或訂用帳戶。 不會變更資源的位置。
 
@@ -22,16 +22,16 @@ ms.locfileid: "80631511"
 
 在移動資源之前，有幾個重要步驟需要進行。 藉由驗證這些條件，您可以避免錯誤。
 
-1. 要移動的資源必須支持移動操作。 有關資源支援移動的清單,請參閱[移動資源操作支援](move-support-resources.md)。
+1. 您想要移動的資源必須支援移動作業。 如需哪些資源支援移動的清單，請參閱[資源的移動作業支援](move-support-resources.md)。
 
-1. 某些服務在移動資源時具有特定的限制或要求。 如果要移動以下任何服務,請在移動之前檢查該指南。
+1. 某些服務在移動資源時有特定的限制或需求。 如果您要移動下列任何服務，請在移動前檢查該指引。
 
-   * [套用服務行動指南](./move-limitations/app-service-move-limitations.md)
-   * [Azure DevOps 服務移動指南](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
-   * [經典部署模型移動指南](./move-limitations/classic-model-move-limitations.md)- 經典計算、經典存儲、經典虛擬網路和雲端服務
-   * [網路移動指南](./move-limitations/networking-move-limitations.md)
-   * [修復服務移動指南](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
-   * [虛擬機器移動指南](./move-limitations/virtual-machines-move-limitations.md)
+   * [應用程式服務移動指引](./move-limitations/app-service-move-limitations.md)
+   * [Azure DevOps Services 移動指引](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
+   * [傳統部署模型移動指引](./move-limitations/classic-model-move-limitations.md)-傳統計算、傳統儲存體、傳統虛擬網路和雲端服務
+   * [網路移動指引](./move-limitations/networking-move-limitations.md)
+   * [復原服務移動指引](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
+   * [虛擬機器移動指引](./move-limitations/virtual-machines-move-limitations.md)
 
 1. 來源和目的地訂用帳戶必須為作用中。 如果您在啟用已停用的帳戶時遇到問題，請[建立 Azure 支援要求](../../azure-portal/supportability/how-to-create-azure-support-request.md)。 針對問題類型選取 [訂用帳戶管理]****。
 
@@ -54,7 +54,7 @@ ms.locfileid: "80631511"
    如果來源和目的地訂用帳戶的租用戶識別碼不相同，請使用下列方法來協調租用戶識別碼：
 
    * [將 Azure 訂用帳戶的擁有權轉移給另一個帳戶](../../billing/billing-subscription-transfer.md)
-   * [如何關聯 Azure 訂閱或將 Azure 訂閱新增到 Azure 活動目錄](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+   * [如何將 Azure 訂用帳戶關聯或新增至 Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 1. 必須針對要移動之資源的資源提供者註冊其目的地訂用帳戶。 否則，您會收到錯誤，指出 **未針對資源類型註冊訂用帳戶**。 將資源移至新的訂用帳戶時，可能會因為不曾以指定的資源類型使用過該訂用帳戶，因而出現此錯誤。
 
@@ -86,32 +86,32 @@ ms.locfileid: "80631511"
 
 1. 移動資源的帳戶至少必須有下列權限：
 
-   * **Microsoft.資源/訂閱/資源組/移動資源/對**源資源組的操作。
-   * **Microsoft.資源/訂閱/資源組/寫入**目標資源組。
+   * 來源資源群組上的 Resources/訂用帳戶 **/resourceGroups/moveResources/action** 。
+   * **Microsoft .resources/訂用帳戶/resourceGroups/寫入**目的地資源群組。
 
 1. 移動資源之前，請針對您要將資源移入的訂用帳戶，檢查其訂用帳戶配額。 如果移動資源表示訂用帳戶會超出限制，那麼您必須檢閱您是否可以要求增加配額。 如需限制清單和如何要求增加配額的資訊，請參閱 [Azure 訂用帳戶和服務限制、配額及條件約束](../../azure-resource-manager/management/azure-subscription-service-limits.md)。
 
-1. **要跨訂閱移動,資源及其從屬資源必須位於同一資源組中,並且必須一起移動這些資源。** 例如,具有託管磁碟的 VM 需要將 VM 和託管磁碟與其他從屬資源一起移動。
+1. **針對跨訂用帳戶移動，資源和其相依資源必須位於相同的資源群組中，而且必須一起移動。** 例如，具有受控磁片的 VM 需要將 VM 和受控磁片一起移動，以及其他相依資源。
 
-   如果要將資源移動到新訂閱,請檢查該資源是否有任何從屬資源,以及這些資源是否位於同一資源組中。 如果資源不在同一資源組中,請檢查資源是否可以合併到同一資源組中。 如果是這樣,請使用跨資源組的移動操作將所有這些資源放入同一資源組中。
+   如果您要將資源移到新的訂用帳戶，請查看資源是否有任何相依資源，以及它們是否位於相同的資源群組中。 如果資源不在相同的資源群組中，請檢查資源是否可以合併到相同的資源群組中。 若是如此，請在資源群組之間使用移動作業，將所有這些資源帶入相同的資源群組。
 
-   有關詳細資訊,請參閱[跨訂閱移動的方案](#scenario-for-move-across-subscriptions)。
+   如需詳細資訊，請參閱跨訂用帳戶[移動的案例](#scenario-for-move-across-subscriptions)。
 
 ## <a name="scenario-for-move-across-subscriptions"></a>在訂用帳戶之間移動的案例
 
-將資源從一個訂閱移動到另一個訂閱是一個三步過程:
+將資源從一個訂用帳戶移至另一個訂用帳戶是三個步驟的程式：
 
-![交叉訂閱行動方案](./media/move-resource-group-and-subscription/cross-subscription-move-scenario.png)
+![跨訂用帳戶移動案例](./media/move-resource-group-and-subscription/cross-subscription-move-scenario.png)
 
-為了便於說明,我們只有一個從屬資源。
+為了方便說明，我們只有一個相依資源。
 
-* 步驟 1:如果依賴資源分佈在不同的資源組中,則首先將它們移動到一個資源組中。
-* 步驟 2:將資源和從屬資源一起從源訂閱移動到目標訂閱。
-* 步驟 3:可選地將從屬資源重新分發到目標訂閱中的不同資源組。
+* 步驟1：如果相依資源分散到不同的資源群組，請先將它們移到一個資源群組中。
+* 步驟2：將資源和相依資源與來源訂用帳戶一起移至目標訂用帳戶。
+* 步驟3：選擇性地將相依資源重新散發至目標訂用帳戶中的不同資源群組。
 
 ## <a name="validate-move"></a>驗證移動
 
-[驗證移動作業](/rest/api/resources/resources/validatemoveresources)可讓您直接測試移動案例，而不需要實際移動資源。 使用此操作可檢查移動是否成功。 當您發送移動請求時,將自動呼叫驗證。 僅當需要預先確定結果時,才使用此操作。 若要執行這項作業，您需要：
+[驗證移動作業](/rest/api/resources/resources/validatemoveresources)可讓您直接測試移動案例，而不需要實際移動資源。 使用此作業來檢查移動是否成功。 當您傳送移動要求時，會自動呼叫驗證。 只有當您需要預先確定結果時，才使用此作業。 若要執行這項作業，您需要：
 
 * 來源資源群組的名稱
 * 目標資源群組的資源識別碼
@@ -182,7 +182,7 @@ Authorization: Bearer <access-token>
 
 ![顯示移動結果](./media/move-resource-group-and-subscription/show-result.png)
 
-如果收到錯誤,請參閱將[Azure 資源移至新資源群組或訂閱的疑難排解](troubleshoot-move.md)。
+如果您收到錯誤，請參閱針對[將 Azure 資源移至新的資源群組或訂用帳戶進行疑難排解](troubleshoot-move.md)。
 
 ## <a name="use-azure-powershell"></a>使用 Azure PowerShell
 
@@ -196,7 +196,7 @@ Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Resource
 
 若要移動到新的訂用帳戶，請包含 `DestinationSubscriptionId`參數的值。
 
-如果收到錯誤,請參閱將[Azure 資源移至新資源群組或訂閱的疑難排解](troubleshoot-move.md)。
+如果您收到錯誤，請參閱針對[將 Azure 資源移至新的資源群組或訂用帳戶進行疑難排解](troubleshoot-move.md)。
 
 ## <a name="use-azure-cli"></a>使用 Azure CLI
 
@@ -210,11 +210,11 @@ az resource move --destination-group newgroup --ids $webapp $plan
 
 若要移動到新的訂用帳戶，請提供 `--destination-subscription-id` 參數。
 
-如果收到錯誤,請參閱將[Azure 資源移至新資源群組或訂閱的疑難排解](troubleshoot-move.md)。
+如果您收到錯誤，請參閱針對[將 Azure 資源移至新的資源群組或訂用帳戶進行疑難排解](troubleshoot-move.md)。
 
 ## <a name="use-rest-api"></a>使用 REST API
 
-要將現有資源移動到其他資源組或訂閱,請使用[「移動資源](/rest/api/resources/Resources/MoveResources)」操作。
+若要將現有的資源移至另一個資源群組或訂用帳戶，請使用[移動資源](/rest/api/resources/Resources/MoveResources)作業。
 
 ```HTTP
 POST https://management.azure.com/subscriptions/{source-subscription-id}/resourcegroups/{source-resource-group-name}/moveResources?api-version={api-version}
@@ -229,35 +229,35 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 }
 ```
 
-如果收到錯誤,請參閱將[Azure 資源移至新資源群組或訂閱的疑難排解](troubleshoot-move.md)。
+如果您收到錯誤，請參閱針對[將 Azure 資源移至新的資源群組或訂用帳戶進行疑難排解](troubleshoot-move.md)。
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 
-**問:我的資源移動操作通常需要幾分鐘時間,已運行近一個小時。有什麼問題嗎?**
+**問題：我的資源移動作業（通常需要幾分鐘的時間）已執行一小時。是否有任何問題？**
 
-移動資源是具有不同階段的複雜操作。 它不僅僅涉及您嘗試移動的資源的資源提供程式。 由於資源提供程式之間的依賴關係,Azure 資源管理員允許 4 小時才能完成操作。 此時間段使資源提供程式有機會從暫時性問題中恢復。 如果移動請求在 4 小時內,操作將繼續嘗試完成,並且可能仍然成功。 在此期間,源和目標資源組將鎖定,以避免一致性問題。
+移動資源是一種複雜的作業，具有不同的階段。 它不只是您想要移動之資源的資源提供者。 由於資源提供者之間的相依性，Azure Resource Manager 允許4小時讓作業完成。 這段時間可讓資源提供者有機會從暫時性問題中復原。 如果您的移動要求在4小時內，則作業會繼續嘗試完成，而且可能仍會成功。 這段期間的來源和目的地資源群組都會鎖定，以避免發生一致性問題。
 
-**問:為什麼我的資源組在資源移動期間鎖定 4 小時?**
+**問題：在資源移動期間，我的資源群組為何會鎖定4小時？**
 
-4 小時視窗是資源移動允許的最大時間。 為了防止對要移動的資源進行修改,源資源組和目標資源組在資源移動期間都會鎖定。
+[4 小時] 視窗是資源移動所允許的最長時間。 為了防止修改所移動的資源，來源和目的地資源群組會在資源移動期間遭到鎖定。
 
-移動請求中有兩個階段。 在第一階段,將移動資源。 在第二階段,通知將發送到依賴於要移動的資源的其他資源提供程式。 當資源提供程式失敗任一階段時,可以在整個 4 小時視窗中鎖定資源組。 在允許的時間內,資源管理器重試失敗的步驟。
+移動要求中有兩個階段。 在第一個階段中，會移動資源。 在第二個階段中，通知會傳送給相依于所移動資源的其他資源提供者。 當資源提供者失敗任一階段時，可以針對整個4小時時間範圍鎖定資源群組。 在允許的時間內，Resource Manager 重試失敗的步驟。
 
-如果無法在 4 小時視窗中移動資源,資源管理器將解鎖兩個資源組。 已成功移動的資源位於目標資源組中。 無法移動的資源將留給源資源組。
+如果資源無法在4小時的時間範圍內移動，Resource Manager 會將這兩個資源群組解除鎖定。 已成功移動的資源會位於目的地資源群組中。 無法移動的資源會保留在來源資源群組中。
 
-**問:在資源移動期間鎖定源和目標資源組有何影響?**
+**問題：資源移動期間鎖定的來源和目的地資源群組有何影響？**
 
-該鎖阻止刪除任一資源組、在任一資源組中創建新資源或刪除移動中涉及的任何資源。
+此鎖定可防止您刪除任一資源群組、在任一資源群組中建立新的資源，或刪除與移動相關的任何資源。
 
-下圖顯示使用者嘗試刪除作為正在進行的移動一部分的資源組時來自 Azure 門戶的錯誤消息。
+當使用者嘗試刪除屬於進行中移動的資源群組時，下圖顯示來自 Azure 入口網站的錯誤訊息。
 
-![移動試著移除的錯誤訊息](./media/move-resource-group-and-subscription/move-error-delete.png)
+![移動嘗試刪除的錯誤訊息](./media/move-resource-group-and-subscription/move-error-delete.png)
 
-**問:錯誤代碼「缺失移動相關資源」是什麼意思?**
+**問題：錯誤碼 "MissingMoveDependentResources" 代表什麼意思？**
 
-移動資源時,其從屬資源必須存在於目標資源組或訂閱中,或者包含在移動請求中。 從從屬資源不符合此要求時,您將獲得缺失移動依賴資源錯誤代碼。 錯誤消息包含有關需要包含在移動請求中的從屬資源的詳細資訊。
+移動資源時，其相依資源必須存在於目的地資源群組或訂用帳戶中，或包含在移動要求中。 當相依資源不符合此需求時，您會收到 MissingMoveDependentResources 錯誤碼。 錯誤訊息具有需要包含在移動要求中之相依資源的詳細資料。
 
-例如,行動虛擬機可能需要使用三個不同的資源提供程式行動七種資源類型。 這些資源提供者與類型包括:
+例如，移動虛擬機器可能需要移動七個資源類型與三個不同的資源提供者。 這些資源提供者和類型如下：
 
 * Microsoft.Compute
 
@@ -271,12 +271,12 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 * Microsoft.Storage
   * storageAccounts
 
-另一個常見示例涉及移動虛擬網路。 您可能需要移動與該虛擬網路關聯的其他幾個資源。 移動請求可能需要行動公共IP位址、路由表、虛擬網路閘道、網路安全組等。
+另一個常見的範例牽涉到移動虛擬網路。 您可能必須移動數個與該虛擬網路相關聯的其他資源。 移動要求可能需要移動公用 IP 位址、路由表、虛擬網路閘道、網路安全性群組，以及其他專案。
 
-**問:為什麼無法在 Azure 中移動某些資源?**
+**問題：為什麼我無法在 Azure 中移動某些資源？**
 
-目前,Azure 支援中的所有資源都移動。 有關支援移動的資源清單,請參閱[移動資源操作支援](move-support-resources.md)。
+目前，並非中的所有資源都 Azure 支援移動。 如需支援移動的資源清單，請參閱[資源的移動作業支援](move-support-resources.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-有關資源支援移動的清單,請參閱[移動資源操作支援](move-support-resources.md)。
+如需哪些資源支援移動的清單，請參閱[資源的移動作業支援](move-support-resources.md)。

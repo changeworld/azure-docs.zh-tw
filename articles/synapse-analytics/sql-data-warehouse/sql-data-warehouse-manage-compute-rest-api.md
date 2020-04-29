@@ -1,6 +1,6 @@
 ---
-title: 使用 REST API 暫停、回復、縮放
-description: 通過 REST API 管理 Azure 突觸分析數據倉庫中的計算能力。
+title: 使用 REST Api 暫停、繼續、調整
+description: 透過 REST Api 管理 Azure Synapse Analytics 資料倉儲中的計算能力。
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -12,15 +12,15 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 4efd5c63af9f09d41733e8e172270410245977ec
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633210"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>適用於 Azure SQL 資料倉儲的 REST API
 
-用於在 Azure 同步分析資料主目錄中管理計算的 REST API。
+用來在 Azure Synapse 分析資料倉儲中管理計算的 REST Api。
 
 ## <a name="scale-compute"></a>調整計算
 
@@ -56,24 +56,24 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 ## <a name="check-database-state"></a>檢查資料庫狀態
 
 > [!NOTE]
-> 當前,在資料庫完成連線工作流時,檢查資料庫狀態可能會返回 ONLINE,從而導致連接錯誤。 如果要使用此 API 調用觸發連接嘗試,則可能需要在應用程式代碼中添加 2 到 3 分鐘的延遲。
+> 目前當資料庫正在完成線上工作流程時，檢查資料庫狀態可能會恢復上線，因而導致連接錯誤。 如果您使用此 API 呼叫來觸發連接嘗試，您可能需要在應用程式代碼中增加2到3分鐘的延遲。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}?api-version=2014-04-01 HTTP/1.1
 ```
 
-## <a name="get-maintenance-schedule"></a>取得維護計劃
+## <a name="get-maintenance-schedule"></a>取得維護排程
 
-檢查為數據倉庫設置的維護計劃。
+檢查已針對資料倉儲設定的維護排程。
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1
 
 ```
 
-## <a name="set-maintenance-schedule"></a>設定維護計劃
+## <a name="set-maintenance-schedule"></a>設定維護排程
 
-在現有數據倉庫上設置和更新維護計劃。
+設定和更新現有資料倉儲上的維護排程。
 
 ```
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/maintenanceWindows/current?maintenanceWindowName=current&api-version=2017-10-01-preview HTTP/1.1

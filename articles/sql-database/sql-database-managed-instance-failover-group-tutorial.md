@@ -1,6 +1,6 @@
 ---
-title: 教學:將託管實例新增到故障轉移群組
-description: 瞭解如何為 Azure SQL 資料庫託管實例配置故障轉移組。
+title: 教學課程：將受控實例新增至容錯移轉群組
+description: 瞭解如何為您的 Azure SQL Database 受控實例設定容錯移轉群組。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -13,71 +13,71 @@ ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
 ms.openlocfilehash: 0f1a56fa6ea38acd8061180407eb47fe416b61e9
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631705"
 ---
-# <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教學:將 SQL 資料庫託管實例新增到故障轉移群組
+# <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>教學課程：將 SQL Database 受控實例新增至容錯移轉群組
 
 將 SQL Database 受控執行個體新增至容錯移轉群組。 在本文中，您將了解如何：
 
 > [!div class="checklist"]
-> - 建立主託管實例
-> - 創建輔助託管實例作為[故障轉移組的](sql-database-auto-failover-group.md)一部分。 
+> - 建立主要受控實例
+> - 建立次要受控實例作為[容錯移轉群組](sql-database-auto-failover-group.md)的一部分。 
 > - 測試容錯移轉
 
   > [!NOTE]
-  > - 在學習本教學時,請確保設定資源時,具有[為託管實例設定故障轉移組的先決條件](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)。 
-  > - 創建託管實例可能需要大量時間。 因此,本教程可能需要幾個小時才能完成。 有關預先設定時間的詳細資訊,請參閱[託管實例管理 。](sql-database-managed-instance.md#managed-instance-management-operations) 
-  > - 參與故障轉移組的託管實例需要[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)或兩個連接的 VPN 閘道。 本教學提供了創建和連接 VPN 閘道的步驟。 如果您已經配置了 ExpressRoute,請跳過這些步驟。 
+  > - 進行本教學課程時，請確定您是使用[為受控實例設定容錯移轉群組的必要條件來設定](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)您的資源。 
+  > - 建立受控實例可能需要很長的時間。 因此，本教學課程可能需要數小時才能完成。 如需布建時間的詳細資訊，請參閱[受控實例管理作業](sql-database-managed-instance.md#managed-instance-management-operations)。 
+  > - 參與容錯移轉群組的受控實例需要[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)或兩個連線的 VPN 閘道。 本教學課程提供建立和連接 VPN 閘道的步驟。 如果您已設定 ExpressRoute，請略過這些步驟。 
 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 若要完成本教學課程，請確定您具有下列項目︰ 
 
-- Azure 訂用帳戶。 如果您尚未[一個免費帳戶,請建立一個免費帳戶](https://azure.microsoft.com/free/)。
+- Azure 訂用帳戶。 如果您還沒有帳戶，請[建立一個免費帳戶](https://azure.microsoft.com/free/)。
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-要完成本教程,請確保您有以下專案:
+若要完成本教學課程，請確定您有下列專案：
 
-- Azure 訂用帳戶。 如果您尚未[一個免費帳戶,請建立一個免費帳戶](https://azure.microsoft.com/free/)。
+- Azure 訂用帳戶。 如果您還沒有帳戶，請[建立一個免費帳戶](https://azure.microsoft.com/free/)。
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
 ---
 
 
-## <a name="1---create-resource-group-and-primary-managed-instance"></a>1 - 建立資源群組與主託管實式
-在此步驟中,您將使用 Azure 門戶或 PowerShell 為故障轉移組創建資源組和主託管實例。 
+## <a name="1---create-resource-group-and-primary-managed-instance"></a>1-建立資源群組和主要受控實例
+在此步驟中，您將使用 Azure 入口網站或 PowerShell，為您的容錯移轉群組建立資源群組和主要受控實例。 
 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal) 
 
-使用 Azure 門戶創建資源組和主要託管實例。 
+使用 Azure 入口網站建立資源群組和您的主要受控實例。 
 
 1. 在 Azure 入口網站的左側功能表中，選取 [Azure SQL]****。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
 1. 選取 [+ 新增]**** 以開啟 [選取 SQL 部署選項]**** 頁面。 您可以選取 [資料庫] 圖格上的 [顯示詳細資料]，以查看不同資料庫的其他資訊。
-1. 在 SQL**託管實例**磁貼上選擇 **"創建**"。 
+1. 選取 [ **SQL 受控實例**] 圖格上的 [**建立**]。 
 
-    ![選擇託管實式](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+    ![選取受控實例](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
 
-1. 在 **'建立 Azure SQL 資料庫託管實體範例**' 頁上,在 **「基礎知識」** 選項卡上
-    1. 在 **「項目詳細資訊**」下,從下拉清單中選擇**訂閱**,然後選擇 **「創建新**資源群組」。 鍵入資源群組的名稱,如`myResourceGroup`。 
-    1. 在 **「託管實例詳細資訊**」下,提供託管實例的名稱以及要部署託管實例的區域。 將**計算 + 儲存**保留為預設值。 
-    1. 在**管理員帳戶**下 ,提供管理員登錄`azureuser`名, 如 , 和複雜的管理員密碼。 
+1. 在 [**建立 Azure SQL Database 受控執行個體**] 頁面上的 [**基本**] 索引標籤
+    1. 在 [**專案詳細資料**] 下，從下拉式選單選取您的**訂**用帳戶，然後選擇 [**建立新**的資源群組]。 輸入資源群組的名稱，例如`myResourceGroup`。 
+    1. 在 [**受控執行個體詳細資料**] 下，提供受控實例的名稱，以及您想要部署受控實例的區域。 將 [**計算 + 儲存體**] 保留為 [預設值]。 
+    1. 在 [**系統管理員帳戶**] 下，提供管理員登`azureuser`入（例如），以及複雜的管理員密碼。 
 
-    ![建立主 MI](media/sql-database-managed-instance-failover-group-tutorial/primary-sql-mi-values.png)
+    ![建立主要 MI](media/sql-database-managed-instance-failover-group-tutorial/primary-sql-mi-values.png)
 
-1. 將其餘設定保留為預設值,然後選擇 **「查看 + 創建**」以查看託管實例設置。 
-1. 選擇 **「建立**」以建立主託管實例。 
+1. 將其餘設定保留為預設值，然後選取 [**審查 + 建立**] 來檢查您的受控實例設定。 
+1. 選取 [**建立**] 以建立您的主要受控實例。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 建立資源組和主託管實例。 
+使用 PowerShell 建立您的資源群組和主要受控實例。 
 
    ```powershell-interactive
    # Connect-AzAccount
@@ -380,7 +380,7 @@ ms.locfileid: "80631705"
    Write-host "Primary managed instance created successfully."
    ```
 
-本教學的這一部分使用以下 PowerShell cmdlet:
+本教學課程的這個部分會使用下列 PowerShell Cmdlet：
 
 | Command | 注意 |
 |---|---|
@@ -402,89 +402,89 @@ ms.locfileid: "80631705"
 
 ---
 
-## <a name="2---create-secondary-virtual-network"></a>2 - 建立輔助虛擬網路
-如果使用 Azure 門戶創建託管實例,則需要單獨創建虛擬網路,因為要求主託管實例和輔助託管實例的子網沒有重疊範圍。 如果您使用 PowerShell 配置託管實例,請跳到步驟 3。 
+## <a name="2---create-secondary-virtual-network"></a>2-建立次要虛擬網路
+如果您使用 Azure 入口網站建立受控實例，您必須另外建立虛擬網路，因為主要和次要受控實例的子網不會有重迭的範圍。 如果您使用 PowerShell 來設定受控實例，請跳至步驟3。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal) 
-要驗證主虛擬網路的子網範圍,請按照以下步驟操作:
-1. 在[Azure 門戶](https://portal.azure.com)中,導航到資源組並選擇主實例的虛擬網路。 
-1. 在 **「設定」** 選擇**子網**並記下**位址範圍**。 輔助託管實例的虛擬網路的子網位址範圍不能重疊。 
+若要確認主要虛擬網路的子網範圍，請遵循下列步驟：
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，流覽至您的資源群組，然後選取主要實例的虛擬網路。 
+1. 選取 [**設定**] 底下的 [**子網**]，並記下**位址範圍**。 次要受控實例之虛擬網路的子網位址範圍不能重迭。 
 
 
-   ![主子網](media/sql-database-managed-instance-failover-group-tutorial/verify-primary-subnet-range.png)
+   ![主要子網](media/sql-database-managed-instance-failover-group-tutorial/verify-primary-subnet-range.png)
 
-要建立虛擬網路,請按照以下步驟操作:
+若要建立虛擬網路，請遵循下列步驟：
 
-1. 在[Azure 門戶](https://portal.azure.com)中,選擇 **「創建資源並**搜尋*虛擬網路*」。 
-1. 選擇 Microsoft 發布**的虛擬網路**選項,然後在下一頁上選擇 **"創建**" 。 
-1. 填寫用於設定輔助託管實例的虛擬網路所需的欄位,然後選擇 **"創建**"。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，選取 [**建立資源**] 並搜尋 [*虛擬網路*]。 
+1. 選取 Microsoft 所發行的**虛擬網路**選項，然後在下一頁選取 [**建立**]。 
+1. 填寫必要欄位，為您的次要受控實例設定虛擬網路，然後選取 [**建立**]。 
 
-   下表顯示了輔助虛擬網路所需的值:
+   下表顯示次要虛擬網路所需的值：
 
     | **欄位** | 值 |
     | --- | --- |
-    | **名稱** |  輔助託管實例(如`vnet-sql-mi-secondary`) 使用的虛擬網路的名稱。 |
-    | **位址空間** | 虛擬網路的位址空間,如`10.128.0.0/16`。 | 
-    | **訂用帳戶** | 主託管實例和資源組所在的訂閱。 |
-    | **區域** | 將部署輔助託管實例的位置。 |
-    | **子** | 子網的名稱。 `default`默認情況下為您提供。 |
-    | **位址範圍**| 子網的地址範圍。 這必須不同於主託管實例的虛擬網路(如`10.128.0.0/24`)使用的子網位址範圍。  |
+    | **Name** |  次要受控實例所要使用之虛擬網路的名稱，例如`vnet-sql-mi-secondary`。 |
+    | **位址空間** | 虛擬網路的位址空間，例如`10.128.0.0/16`。 | 
+    | **訂用帳戶** | 主要受控實例和資源群組所在的訂用帳戶。 |
+    | **區域** | 您將部署次要受控實例的位置。 |
+    | **子網路** | 子網的名稱。 `default`預設會為您提供。 |
+    | **位址範圍**| 子網的位址範圍。 這必須與主要受控實例的虛擬網路所使用的子網位址範圍不同，例如`10.128.0.0/24`。  |
     | &nbsp; | &nbsp; |
 
-    ![輔助虛擬網路值](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
+    ![次要虛擬網路值](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-僅當使用 Azure 門戶部署託管實例時,才需要此步驟。 如果您使用的是 PowerShell,請先跳至步驟 3。 
+只有當您使用 Azure 入口網站來部署受控實例時，才需要執行此步驟。 如果您使用的是 PowerShell，請直接跳到步驟3。 
 
 ---
 
-## <a name="3---create-a-secondary-managed-instance"></a>3 - 建立輔助託管實體
-在此步驟中,您將在 Azure 門戶中創建輔助託管實例,該實例還將配置兩個託管實例之間的網路。 
+## <a name="3---create-a-secondary-managed-instance"></a>3-建立次要受控實例
+在此步驟中，您將在 Azure 入口網站中建立次要受控實例，這也會設定兩個受控實例之間的網路功能。 
 
-您的第二個託管實例必須:
-- 為空。 
-- 具有與主託管實例不同的子網和 IP 範圍。 
+您的第二個受控實例必須：
+- 是空的。 
+- 具有與主要受控實例不同的子網和 IP 範圍。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal) 
 
-使用 Azure 門戶創建輔助託管實例。 
+使用 Azure 入口網站建立次要受控實例。 
 
 1. 在 Azure 入口網站的左側功能表中，選取 [Azure SQL]****。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
 1. 選取 [+ 新增]**** 以開啟 [選取 SQL 部署選項]**** 頁面。 您可以選取 [資料庫] 圖格上的 [顯示詳細資料]，以查看不同資料庫的其他資訊。
-1. 在 SQL**託管實例**磁貼上選擇 **"創建**"。 
+1. 選取 [ **SQL 受控實例**] 圖格上的 [**建立**]。 
 
-    ![選擇託管實式](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+    ![選取受控實例](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
 
-1. 在 **「創建 Azure SQL 資料庫託管實例」** 頁上的 **「基本」** 選項卡上,填寫用於設定輔助託管實例所需的欄位。 
+1. 在 [**建立 Azure SQL Database 受控執行個體**] 頁面的 [**基本**] 索引標籤上，填寫必要的欄位以設定次要受控實例。 
 
-   下表顯示了輔助託管實例所需的值:
+   下表顯示次要受控實例所需的值：
  
     | **欄位** | 值 |
     | --- | --- |
-    | **訂用帳戶** |  主託管實例所在的訂閱。 |
-    | **資源群組**| 主託管實例所在的資源組。 |
-    | **受控執行個體名稱** | 新輔助託管實體的名稱,例如`sql-mi-secondary`  | 
-    | **區域**| 輔助託管實例的位置。  |
-    | **受控執行個體系統管理員登入** | 要用於新輔助託管實體的登入名,如`azureuser`。 |
-    | **密碼** | 管理員登錄到新的輔助託管實例將使用的複雜密碼。  |
+    | **訂用帳戶** |  您的主要受控實例所在的訂用帳戶。 |
+    | **資源群組**| 您的主要受控實例所在的資源群組。 |
+    | **受控執行個體名稱** | 新次要受控實例的名稱，例如`sql-mi-secondary`  | 
+    | **區域**| 次要受控實例的位置。  |
+    | **受控執行個體系統管理員登入** | 您想要用於新的次要受控實例的登入，例如`azureuser`。 |
+    | **密碼** | 新的次要受控實例的系統管理員登入所使用的複雜密碼。  |
     | &nbsp; | &nbsp; |
 
-1. 在「**網路**」選項卡下,對於**虛擬網路**,從下拉清單中選擇為輔助託管實例創建的虛擬網路。
+1. 在 [**網路**功能] 索引標籤下，針對 [**虛擬網路**，從下拉式選單選取您為次要受控實例所建立的虛擬網路。
 
-   ![輔助 MI 網路](media/sql-database-managed-instance-failover-group-tutorial/networking-settings-for-secondary-mi.png)
+   ![次要 MI 網路](media/sql-database-managed-instance-failover-group-tutorial/networking-settings-for-secondary-mi.png)
 
-1. 在'**附加設定選項**卡下,對於**異地複製**,選擇「**是**」_用錯移轉的輔助_。 從下拉清單中選擇主託管實例。 
-    1. 確保排序規則和時區與主託管實例的排序規則和時區匹配。 本教學中創建的主要託管實例使用預設的`SQL_Latin1_General_CP1_CI_AS`排序規則和`(UTC) Coordinated Universal Time`時區。 
+1. 在 [**其他設定**] 索引標籤下，針對 [**異地**複寫] 選擇 **[是]** ，_做為容錯移轉次要資料庫使用_。 從下拉式選單中選取 [主要受控實例]。 
+    1. 請確定定序和時區符合主要受控實例的範圍。 在本教學課程中建立的主要受控實例會使用`SQL_Latin1_General_CP1_CI_AS`定序和`(UTC) Coordinated Universal Time`時區的預設值。 
 
-   ![輔助 MI 網路](media/sql-database-managed-instance-failover-group-tutorial/secondary-mi-failover.png)
+   ![次要 MI 網路](media/sql-database-managed-instance-failover-group-tutorial/secondary-mi-failover.png)
 
-1. 選擇 **「查看 + 建立**」以檢視輔助託管實例的設定。 
-1. 選擇 **「建立**」以建立輔助託管實例。 
+1. 選取 [審核] [ **+ 建立**] 來檢查次要受控實例的設定。 
+1. 選取 [**建立**] 以建立次要受控實例。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 建立輔助託管實例。 
+使用 PowerShell 建立次要受控實例。 
 
    ```powershell-interactive
    # Configure secondary virtual network
@@ -706,7 +706,7 @@ ms.locfileid: "80631705"
    Write-host "Secondary managed instance created successfully."
    ```
 
-本教學的這一部分使用以下 PowerShell cmdlet:
+本教學課程的這個部分會使用下列 PowerShell Cmdlet：
 
 | Command | 注意 |
 |---|---|
@@ -728,54 +728,54 @@ ms.locfileid: "80631705"
 
 ---
 
-## <a name="4---create-primary-gateway"></a>4 - 建立主閘道 
-要參與故障轉移組的兩個託管實例,必須在兩個託管實例的虛擬網路之間配置 ExpressRoute 或閘道,以允許網路通訊。 如果選擇設定[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md)而不是連線兩個 VPN 閘道,請跳到[步驟 7](#7---create-a-failover-group)。  
+## <a name="4---create-primary-gateway"></a>4-建立主要閘道 
+若要讓兩個受控實例參與容錯移轉群組，必須在兩個受控實例的虛擬網路之間設定 ExpressRoute 或閘道，以允許網路通訊。 如果您選擇設定[ExpressRoute](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) ，而不是連接兩個 VPN 閘道，請直接跳至[步驟 7](#7---create-a-failover-group)。  
 
-本文提供了創建兩個 VPN 閘道並連接它們的步驟,但如果已配置 ExpressRoute,則可以跳過創建故障轉移組。 
+本文提供建立兩個 VPN 閘道並加以連線的步驟，但如果您已設定 ExpressRoute，可以直接跳到建立容錯移轉群組。 
 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 門戶為主託管實例的虛擬網路創建閘道。 
+使用 Azure 入口網站，為您的主要受控實例的虛擬網路建立閘道。 
 
 
-1. 在[Azure 門戶](https://portal.azure.com)中,轉到資源組並選擇主託管實例的**虛擬網路**資源。 
-1. 選擇**子****網路**,然後選擇新增**新的閘道 。** 保留預設值。 
+1. 在 [ [Azure 入口網站](https://portal.azure.com)中，移至您的資源群組，然後選取主要受控實例的**虛擬網路**資源。 
+1. 選取 [**設定**] 底下的 [**子網**]，然後選取以新增新的**閘道子網**。 保留預設值。 
 
-   ![新增主托管實體的閘道](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
+   ![為主要受控實例新增閘道](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. 建立子閘道後,選擇從左邊瀏覽窗格**建立資源**,然後在搜尋框`Virtual network gateway`中鍵入 。 選擇**微軟**發佈的**虛擬網路閘道**資源。 
+1. 建立子網閘道之後，從左側流覽窗格中選取 [**建立資源**]，然後`Virtual network gateway`在 [搜尋] 方塊中輸入。 選取**Microsoft**發佈的**虛擬網路閘道**資源。 
 
    ![建立新的虛擬網路閘道](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
-1. 填寫所需的欄位來配置主託管實例的閘道。 
+1. 填寫必要欄位，以設定您的主要受控實例閘道。 
 
-   下表顯示主託管實體的閘道所需的值:
+   下表顯示主要受控實例的閘道所需的值：
  
     | **欄位** | 值 |
     | --- | --- |
-    | **訂用帳戶** |  主託管實例所在的訂閱。 |
-    | **名稱** | 虛擬網路閘道的名稱,如`primary-mi-gateway`。 | 
-    | **區域** | 主託管實例所在的區域。 |
-    | **閘道類型** | 選擇**VPN**。 |
-    | **VPN 類型** | 選擇**基於路由** |
-    | **Sku**| 將 預設`VpnGw1`值 保留 。 |
-    | **位置**| 主託管實例和主虛擬網路的位置。   |
-    | **虛擬網路**| 選擇第二節建立的虛擬網路,如`vnet-sql-mi-primary`。 |
-    | **公共 IP 位址**| 選取 [建立新的]****。 |
-    | **公共 IP 位址名稱**| 輸入 IP 位址的名稱`primary-gateway-IP`,如 。 |
+    | **訂用帳戶** |  您的主要受控實例所在的訂用帳戶。 |
+    | **Name** | 虛擬網路閘道的名稱，例如`primary-mi-gateway`。 | 
+    | **區域** | 您的主要受控實例所在的區域。 |
+    | **閘道類型** | 選取 [ **VPN**]。 |
+    | **VPN 類型** | 選取以**路由為基礎的** |
+    | **SKU**| 保留預設值`VpnGw1`。 |
+    | **位置**| 您的主要受控實例和主要虛擬網路所在的位置。   |
+    | **虛擬網路**| 選取在第2節中建立的虛擬網路，例如`vnet-sql-mi-primary`。 |
+    | **公用 IP 位址**| 選取 [建立新的]  。 |
+    | **公用 IP 位址名稱**| 輸入 IP 位址的名稱，例如`primary-gateway-IP`。 |
     | &nbsp; | &nbsp; |
 
-1. 將其他值保留為預設值,然後選擇 **「查看 + 創建**」以查看虛擬網路閘道的設定。
+1. 將其他值保留為 [預設]，然後選取 [**檢查 + 建立**] 來檢查虛擬網路閘道的設定。
 
    ![主要閘道設定](media/sql-database-managed-instance-failover-group-tutorial/settings-for-primary-gateway.png)
 
-1. 選擇 **「建立**」 以建立新的虛擬網路閘道。 
+1. 選取 [**建立**] 以建立新的虛擬網路閘道。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 為主託管實例的虛擬網路創建閘道。 
+使用 PowerShell 為您的主要受控實例的虛擬網路建立閘道。 
 
    ```powershell-interactive
    # Create primary gateway
@@ -808,7 +808,7 @@ ms.locfileid: "80631705"
    $primaryGateway
    ```
 
-本教學的這一部分使用以下 PowerShell cmdlet:
+本教學課程的這個部分會使用下列 PowerShell Cmdlet：
 
 | Command | 注意 |
 |---|---|
@@ -824,28 +824,28 @@ ms.locfileid: "80631705"
 ---
 
 
-## <a name="5---create-secondary-gateway"></a>5 - 建立輔助閘道 
-在此步驟中,使用 Azure 門戶為輔助託管實例的虛擬網路創建閘道, 
+## <a name="5---create-secondary-gateway"></a>5-建立次要閘道 
+在此步驟中，請使用 Azure 入口網站，為次要受控實例的虛擬網路建立閘道。 
 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 門戶,重複上一節中的步驟,為輔助託管實例創建虛擬網路子網和閘道。 填寫所需的欄位來配置輔助託管實例的閘道。 
+使用 Azure 入口網站，重複上一節中的步驟，以建立次要受控實例的虛擬網路子網和閘道。 填寫必要欄位，為您的次要受控實例設定閘道。 
 
-   下表顯示了輔助託管實例的閘道所需的值:
+   下表顯示次要受控實例的閘道所需的值：
 
    | **欄位** | 值 |
    | --- | --- |
-   | **訂用帳戶** |  輔助託管實例所在的訂閱。 |
-   | **名稱** | 虛擬網路閘道的名稱,如`secondary-mi-gateway`。 | 
-   | **區域** | 輔助託管實例所在的區域。 |
-   | **閘道類型** | 選擇**VPN**。 |
-   | **VPN 類型** | 選擇**基於路由** |
-   | **Sku**| 將 預設`VpnGw1`值 保留 。 |
-   | **位置**| 輔助託管實例和輔助虛擬網路的位置。   |
-   | **虛擬網路**| 選擇第二節建立的虛擬網路,如`vnet-sql-mi-secondary`。 |
-   | **公共 IP 位址**| 選取 [建立新的]****。 |
-   | **公共 IP 位址名稱**| 輸入 IP 位址的名稱`secondary-gateway-IP`,如 。 |
+   | **訂用帳戶** |  次要受控實例所在的訂用帳戶。 |
+   | **Name** | 虛擬網路閘道的名稱，例如`secondary-mi-gateway`。 | 
+   | **區域** | 次要受控實例所在的區域。 |
+   | **閘道類型** | 選取 [ **VPN**]。 |
+   | **VPN 類型** | 選取以**路由為基礎的** |
+   | **SKU**| 保留預設值`VpnGw1`。 |
+   | **位置**| 次要受控實例和次要虛擬網路所在的位置。   |
+   | **虛擬網路**| 選取在第2節中建立的虛擬網路，例如`vnet-sql-mi-secondary`。 |
+   | **公用 IP 位址**| 選取 [建立新的]  。 |
+   | **公用 IP 位址名稱**| 輸入 IP 位址的名稱，例如`secondary-gateway-IP`。 |
    | &nbsp; | &nbsp; |
 
    ![次要閘道設定](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
@@ -853,7 +853,7 @@ ms.locfileid: "80631705"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 為輔助託管實例的虛擬網路創建閘道。 
+使用 PowerShell 為次要受控實例的虛擬網路建立閘道。 
 
    ```powershell-interactive
    # Create the secondary gateway
@@ -889,7 +889,7 @@ ms.locfileid: "80631705"
    $secondaryGateway
    ```
 
-本教學的這一部分使用以下 PowerShell cmdlet:
+本教學課程的這個部分會使用下列 PowerShell Cmdlet：
 
 | Command | 注意 |
 |---|---|
@@ -904,38 +904,38 @@ ms.locfileid: "80631705"
 ---
 
 
-## <a name="6---connect-the-gateways"></a>6 - 連線閘道
-在此步驟中,在兩個虛擬網路的兩個閘道之間創建雙向連接。 
+## <a name="6---connect-the-gateways"></a>6-連接閘道
+在此步驟中，請在兩個虛擬網路的兩個閘道之間建立雙向連線。 
 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 
-使用 Azure 門戶連接兩個閘道。 
+使用 Azure 入口網站來連接這兩個閘道。 
 
 
-1. 選擇[從 Azure 門戶](https://portal.azure.com)**建立資源**。
-1. 鍵入`connection`搜尋框,然後按 Enter 進行搜索,這將帶您訪問 Microsoft 發布**的 連接**資源。
-1. 選擇 **「建立**」 以建立連接。 
-1. 在 **「基本」** 選項卡上,選擇以下值,然後選擇 **「確定**」。 
-    1. 連線`VNet-to-VNet`**型態**選擇 。 
+1. 從 [ [Azure 入口網站](https://portal.azure.com)中選取 [**建立資源**]。
+1. 在`connection`搜尋方塊中輸入，然後按 enter 鍵進行搜尋，這會帶您前往 Microsoft 所發佈的**連線資源。**
+1. 選取 [**建立**] 以建立連接。 
+1. 在 [**基本**] 索引標籤上，選取下列值，然後選取 **[確定]**。 
+    1. 選取`VNet-to-VNet` [] 作為 [連線**類型**]。 
     1. 從下拉式清單中選取訂用帳戶。 
-    1. 在下拉清單中選擇託管實例的資源組。 
-    1. 從下拉清單中選擇主託管實例的位置 
-1. 在 **「設定」** 選項卡上,選擇或輸入以下值,然後選擇 **「確定**」 :
-    1. 選擇**第一個虛擬網路閘道的主網路閘道**,`Primary-Gateway`如 。  
-    1. 選擇**第二個虛擬網路閘道的輔助網路閘道**,`Secondary-Gateway`例如 。 
-    1. 選擇 **"建立雙向連接"** 旁邊的複選框。 
-    1. 保留預設主連線名稱,或將其重新命名為您選擇的值。 
-    1. 為連線提供**共享金鑰 (PSK),** 例如`mi1m2psk`。 
+    1. 在下拉式選單中，選取受控實例的資源群組。 
+    1. 從下拉式選單選取主要受控實例的位置 
+1. 在 [**設定**] 索引標籤上，選取或輸入下列值，然後選取 **[確定]**：
+    1. 選擇**第一個虛擬網路閘道**的主要網路閘道，例如`Primary-Gateway`。  
+    1. 選擇**第二個虛擬網路閘道**的 [次要網路閘道`Secondary-Gateway`]，例如。 
+    1. 選取 [**建立雙向連接**] 旁的核取方塊。 
+    1. 請保留預設的主要連線名稱，或將它重新命名為您選擇的值。 
+    1. 提供連接的**共用金鑰（PSK）** ，例如`mi1m2psk`。 
 
    ![建立閘道連線](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
-1. 在**摘要的設定**卡上,查看雙向連接的設定,然後選擇 **「確定」** 以建立連接。 
+1. 在 [**摘要**] 索引標籤上，檢查雙向連線的設定，然後選取 **[確定]** 以建立您的連線。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-使用 PowerShell 連接兩個閘道。 
+使用 PowerShell 來連接這兩個閘道。 
 
    ```powershell-interactive
    # Connect the primary to secondary gateway
@@ -954,7 +954,7 @@ ms.locfileid: "80631705"
    $secondaryGWConnection
    ```
 
-本教學的這一部分使用以下 PowerShell cmdlet:
+本教學課程的這個部分會使用下列 PowerShell Cmdlet：
 
 | Command | 注意 |
 |---|---|
@@ -963,29 +963,29 @@ ms.locfileid: "80631705"
 ---
 
 
-## <a name="7---create-a-failover-group"></a>7 - 建立容錯轉群組
-在此步驟中,您將創建故障轉移組,並將兩個託管實例添加到其中。 
+## <a name="7---create-a-failover-group"></a>7-建立容錯移轉群組
+在此步驟中，您將建立容錯移轉群組，並將這兩個受控實例新增至其中。 
 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-使用 Azure 門戶創建故障轉移組。 
+使用 Azure 入口網站建立容錯移轉群組。 
 
 
-1. 在[Azure 門戶](https://portal.azure.com)的左側功能表中選擇**Azure SQL。** 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
-1. 選擇在第一部分(如`sql-mi-primary`)中創建的主要託管實例。 
-1. 在 **「設定」** 下,導航到**實例故障轉移組**,然後選擇**添加組**以打開**實例故障轉移組**頁面。 
+1. 在[Azure 入口網站](https://portal.azure.com)的左側功能表中，選取 [ **Azure SQL** ]。 如果 **Azure SQL** 不在清單中，請選取 [所有服務]****，然後在搜尋方塊中輸入 Azure SQL。 (選用) 選取 **Azure SQL** 旁的星號將其設為最愛，並新增為左側導覽中的項目。 
+1. 選取您在第一節中建立的主要受控實例，例如`sql-mi-primary`。 
+1. 在 [**設定**] 下，流覽至 [**實例容錯移轉群組**]，然後選擇 [**新增群組**] 以開啟 [**實例容錯移轉群組**] 頁面。 
 
    ![新增容錯移轉群組](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)
 
-1. 在 **「實例故障轉移組」** 頁上,鍵入故障轉移組的名稱`failovergrouptutorial`,例如,然後從下拉清單中選擇輔助託管實例`sql-mi-secondary`。 選擇 **「建立**」以建立故障轉移群組。 
+1. 在 [**實例容錯移轉群組**] 頁面上，輸入容錯移轉群組的名稱（ `failovergrouptutorial`例如），然後選擇次要受控實例，例如`sql-mi-secondary`從下拉式選單。 選取 [**建立**] 以建立您的容錯移轉群組。 
 
    ![建立容錯移轉群組](media/sql-database-managed-instance-failover-group-tutorial/create-failover-group.png)
 
-1. 故障轉移組部署完成後,您將被帶回**故障轉移組**頁面。 
+1. 容錯移轉群組部署完成後，您會回到 [**容錯移轉群組**] 頁面。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-使用 PowerShell 建立故障轉移組。 
+使用 PowerShell 建立容錯移轉群組。 
 
    ```powershell-interactive
    Write-host "Creating the failover group..."
@@ -996,7 +996,7 @@ ms.locfileid: "80631705"
    $failoverGroup
    ```
 
-本教學的這一部分使用以下 PowerShell cmdlet:
+本教學課程的這個部分會使用下列 PowerShell Cmdlet：
 
 | Command | 注意 |
 |---|---|
@@ -1006,29 +1006,29 @@ ms.locfileid: "80631705"
 ---
 
 
-## <a name="8---test-failover"></a>8 - 測試容錯
-在此步驟中,您將故障轉移組故障轉移到輔助伺服器,然後使用 Azure 門戶失敗。 
+## <a name="8---test-failover"></a>8-測試容錯移轉
+在此步驟中，您會將容錯移轉群組容錯移轉到次要伺服器，然後使用 Azure 入口網站進行容錯回復。 
 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
-使用 Azure 門戶測試故障轉移。 
+使用 Azure 入口網站測試容錯移轉。 
 
 
-1. 瀏覽到[Azure 門戶](https://portal.azure.com)中的_協助_託管實體,並在設定下選擇**實體故障轉移群組**。 
-1. 查看哪個託管實例是主實例,哪個託管實例是輔助實例。 
-1. 選擇 **"故障轉移**",然後在有關 TDS 會話斷開連接的警告上選擇 **"是**"。 
+1. 流覽至[Azure 入口網站](https://portal.azure.com)內您的_次要_受控實例，然後選取 [設定] 底下的 [**實例容錯移轉群組**]。 
+1. 檢查哪個受控實例是主要複本，以及哪個受控實例是次要複本。 
+1. 選取 [**容錯移轉**]，然後在關於 TDS 會話中斷連線的警告上選取 **[是]** 。 
 
-   ![容錯移轉元件](media/sql-database-managed-instance-failover-group-tutorial/failover-mi-failover-group.png)
+   ![容錯移轉群組](media/sql-database-managed-instance-failover-group-tutorial/failover-mi-failover-group.png)
 
-1. 查看哪個 manged 實例是主實例,哪個實例是輔助實例。 如果故障轉移成功,則兩個實例應切換角色。 
+1. 檢查哪一個受控實例是主要複本，哪個實例是次要複本。 如果故障轉換成功，這兩個實例應該已切換角色。 
 
-   ![託管實例在故障轉移後切換角色](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
+   ![受控實例在容錯移轉後已切換角色](media/sql-database-managed-instance-failover-group-tutorial/mi-switched-after-failover.png)
 
-1. 轉到新的_輔助_託管實例,並再次選擇**故障轉移**,使主實例故障回主角色。 
+1. 移至新的_次要_受控實例，然後再次選取 [**容錯移轉**]，將主要實例容錯回復至主要角色。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-使用 PowerShell 測試故障轉移。 
+使用 PowerShell 測試容錯移轉。 
 
    ```powershell-interactive
     
@@ -1062,7 +1062,7 @@ ms.locfileid: "80631705"
        -Location $location -Name $failoverGroupName
    ```
 
-本教學的這一部分使用以下 PowerShell cmdlet:
+本教學課程的這個部分會使用下列 PowerShell Cmdlet：
 
 | Command | 注意 |
 |---|---|
@@ -1074,11 +1074,11 @@ ms.locfileid: "80631705"
 
 
 ## <a name="clean-up-resources"></a>清除資源
-首先刪除託管實例、虛擬群集、任何剩餘資源,最後刪除資源組來清理資源。 
+藉由先刪除受控實例、虛擬叢集、任何剩餘的資源，以及最後的資源群組來清除資源。 
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal)
 1. 瀏覽至您在 [Azure 入口網站](https://portal.azure.com)中的資源群組。 
-1. 選取受控執行個體，然後選取 [刪除]****。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]****。 此過程可能需要一些時間才能在後台完成,在結束之前,您將無法刪除*虛擬群集*或任何其他從屬資源。 監視 [活動] 索引標籤中的刪除，確認您的受控執行個體已刪除。 
+1. 選取受控執行個體，然後選取 [刪除]****。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]****。 此程式可能需要一些時間才能在背景中完成，而且在完成之前，您將無法刪除*虛擬叢集*或任何其他相依資源。 監視 [活動] 索引標籤中的刪除，確認您的受控執行個體已刪除。 
 1. 受控執行個體刪除後，請在資源群組中選取虛擬叢集**，然後選擇 [刪除]****，加以刪除。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]****。 
 1. 刪除任何剩餘的資源。 在文字方塊中輸入 `yes` 以確認您要刪除資源，然後選取 [刪除]****。 
 1. 選取 [刪除資源群組]****、輸入資源群組的名稱 `myResourceGroup`，然後選取 [刪除]****，以刪除資源群組。 
@@ -1094,7 +1094,7 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 Write-host "Removing residual resources and resouce group..."
 ```
 
-本教學的這一部分使用以下 PowerShell cmdlet:
+本教學課程的這個部分會使用下列 PowerShell Cmdlet：
 
 | Command | 注意 |
 |---|---|
@@ -1138,23 +1138,23 @@ Write-host "Removing residual resources and resouce group..."
 
 # <a name="portal"></a>[入口網站](#tab/azure-portal) 
 
-Azure 門戶沒有可用的腳本。
+沒有可供 Azure 入口網站使用的腳本。
 
 ---
 
 ## <a name="next-steps"></a>後續步驟
 
-在本教程中,您在兩個託管實例之間配置了故障轉移組。 您已了解如何︰
+在本教學課程中，您已設定兩個受控實例之間的容錯移轉群組。 您已了解如何︰
 
 > [!div class="checklist"]
-> - 建立主託管實例
-> - 創建輔助託管實例作為[故障轉移組的](sql-database-auto-failover-group.md)一部分。 
+> - 建立主要受控實例
+> - 建立次要受控實例作為[容錯移轉群組](sql-database-auto-failover-group.md)的一部分。 
 > - 測試容錯移轉
 
-如何連線到託管實例以及如何將資料庫還原到託管實例的下一個快速入門: 
+前往下一個快速入門，以瞭解如何連線到您的受控實例，以及如何將資料庫還原到您的受控實例： 
 
 > [!div class="nextstepaction"]
-> [連接到託管實體](sql-database-managed-instance-configure-vm.md)
-> [將資料庫還原到託管實例](sql-database-managed-instance-get-started-restore.md)
+> [連線到您的受控實例](sql-database-managed-instance-configure-vm.md)
+> 將[資料庫還原到受控實例](sql-database-managed-instance-get-started-restore.md)
 
 

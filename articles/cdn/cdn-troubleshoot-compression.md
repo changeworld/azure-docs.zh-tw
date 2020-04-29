@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: aff2dadee365fcdc7e14070714aa1d2cbba901ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79476418"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>CDN 檔案壓縮疑難排解
@@ -42,7 +42,7 @@ ms.locfileid: "79476418"
 * 要求的內容不適合進行壓縮。
 * 要求的檔案類型未啟用壓縮。
 * HTTP 要求未包含要求有效壓縮類型的標頭。
-* 源發送塊狀內容。
+* 來源正在傳送區塊的內容。
 
 ## <a name="troubleshooting-steps"></a>疑難排解步驟
 > [!TIP]

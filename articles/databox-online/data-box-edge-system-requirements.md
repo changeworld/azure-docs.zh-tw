@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
 ms.openlocfilehash: 458c062eef011363724cb894ce67ba75181ba8ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79260224"
 ---
-# <a name="azure-data-box-edge-system-requirements"></a>Azure 資料框邊緣系統要求
+# <a name="azure-data-box-edge-system-requirements"></a>Azure Data Box Edge 系統需求
 
 本文將針對 Microsoft Azure Data Box Edge 解決方案以及連線至 Azure Data Box Edge 的用戶端，說明其各自的重要系統需求。 我們建議您先仔細檢閱這些資訊，然後再部署您的 Data Box Edge。 您可以在部署和後續作業期間，視需要回來參考此資訊。
 
@@ -58,7 +58,7 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 
 針對裝載 Azure IoT Edge 執行階段的伺服器，使用下表來進行連接埠設定：
 
-| 連接埠號碼 | 內或外 | 連接埠範圍 | 必要 | 指引 |
+| 連接埠號碼 | 內或外 | 連接埠範圍 | 必要 | 指導 |
 |----------|-----------|------------|----------|----------|
 | TCP 443 (HTTPS)| 外       | WAN        | 是      | 開啟來佈建 IoT Edge 的輸出。 使用手動指令碼或 Azure IoT 裝置佈建服務 (DPS) 時，就需要此設定。|
 
@@ -86,51 +86,51 @@ Azure IoT Edge 允許使用支援的 IoT Hub 通訊協定，進行從內部部�
 | https://\*.azurecr.io                     | 個人和協力廠商容器登錄 (選擇性) | 
 | https://\*.azure-devices.net              | IoT 中樞存取權 (必要)                             | 
 
-### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure 政府閘道的 URL 模式
+### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure Government 閘道的 URL 模式
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 
-### <a name="url-patterns-for-compute-for-azure-government"></a>用於 Azure 政府計算的 URL 模式
+### <a name="url-patterns-for-compute-for-azure-government"></a>Azure Government 計算的 URL 模式
 
 | URL 模式                      | 元件或功能                     |  
 |----------------------------------|---------------------------------------------|
-| HTTPs：\//mcr.microsoft.com<br></br>HTTPs://\*.cdn.mscr.com | Microsoft 容器登錄 (必要)               |
-| HTTPs://\*.azure-devices.us              | IoT 中樞存取權 (必要)           |
-| HTTPs://\*.azurecr.us                    | 個人和協力廠商容器登錄 (選擇性) | 
+| HTTPs：\//mcr.microsoft.com<br></br>HTTPs://\*. cdn.mscr.com | Microsoft 容器登錄 (必要)               |
+| HTTPs://\*. azure-devices.us              | IoT 中樞存取權 (必要)           |
+| HTTPs://\*. azurecr.us                    | 個人和協力廠商容器登錄 (選擇性) | 
 
 ## <a name="internet-bandwidth"></a>網際網路頻寬
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="compute-sizing-considerations"></a>計算大小調整注意事項
+## <a name="compute-sizing-considerations"></a>計算大小考慮
 
-在開發和測試解決方案時使用您的體驗，以確保資料盒邊緣設備上有足夠的容量，並從設備獲得最佳性能。
+在開發和測試您的解決方案時使用您的體驗，以確保 Data Box Edge 裝置上有足夠的容量，並從您的裝置獲得最佳效能。
 
-應考慮的因素包括：
+您應該考慮的因素包括：
 
-- **容器細節**- 考慮以下事項。
+- **容器細節**-請考慮下列各項。
 
-    - 您的工作負載中有多少個容器？ 您可以有很多羽量級容器，而不是一些資源密集型容器。
-    - 分配給這些容器的資源與它們消耗的資源相比，哪些資源？
-    - 您的容器共用多少層？
-    - 是否有未使用的容器？ 已停止的容器仍佔用磁碟空間。
-    - 你的容器是用哪種語言寫的？
-- **處理的資料大小**- 您的容器將處理多少資料？ 此資料會佔用磁碟空間，還是資料將在記憶體中處理？
-- **預期性能**- 解決方案所需的性能特徵是什麼？ 
+    - 您的工作負載中有多少容器？ 您可以有很多輕量的容器，而不是需要大量資源的容器。
+    - 配置給這些容器的資源為何，以及它們耗用的資源為何？
+    - 您的容器共用多少層級？
+    - 是否有未使用的容器？ 已停止的容器仍會佔用磁碟空間。
+    - 您的容器會在哪種語言中撰寫？
+- 已**處理的資料大小**-您的容器會處理多少資料？ 這項資料會耗用磁碟空間，還是會在記憶體中處理資料？
+- **預期的效能**-您的解決方案所需的效能特性為何？ 
 
-要瞭解並優化解決方案的性能，可以使用：
+若要瞭解並精簡解決方案的效能，您可以使用：
 
-- Azure 門戶中可用的計算指標。 轉到資料框邊緣資源，然後轉到**監視>指標**。 查看**邊緣計算 - 記憶體使用方式**和**邊緣計算 - CPU 百分比**以瞭解可用資源以及如何消耗資源。
-- 可通過設備的 PowerShell 介面提供的監視命令，例如：
+- Azure 入口網站中可用的計算計量。 移至您的 Data Box Edge 資源，然後移至 [監視] [ **> 計量**]。 查看 [ **edge 計算-記憶體使用量**] 和 [ **EDGE 計算-CPU 百分比**] 以瞭解可用的資源，以及資源的使用方式。
+- 透過裝置的 PowerShell 介面提供的監視命令，例如：
 
-    - `dkrdbe stats`獲取容器資源使用方式統計資訊的即時流。 該命令支援 CPU、記憶體使用方式、記憶體限制和網路 IO 指標。
-    - `dkrdbe system df`獲取有關使用的磁碟空間量的資訊。 
-    - `dkrdbe image prune`清理未使用的圖像並釋放空間。
-    - `dkrdbe ps --size`以查看正在運行的容器的近似大小。 
+    - `dkrdbe stats`取得容器資源使用方式統計資料的即時串流。 命令支援 CPU、記憶體使用量、記憶體限制和網路 IO 計量。
+    - `dkrdbe system df`取得所用磁碟空間量的相關資訊。 
+    - `dkrdbe image prune`清除未使用的映射並釋出空間。
+    - `dkrdbe ps --size`以查看執行中容器的大約大小。 
 
-    有關可用命令的詳細資訊，請訪問[監視和排除計算模組的故障](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)。
+    如需可用命令的詳細資訊，請移至[監視和疑難排解計算模組](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)。
 
-最後，請確保在資料集中驗證解決方案，並在在生產中部署之前量化資料框邊緣的性能。
+最後，請確定您在資料集上驗證您的解決方案，並在生產環境中部署之前，先量化 Data Box Edge 的效能。
 
 
 ## <a name="next-step"></a>後續步驟

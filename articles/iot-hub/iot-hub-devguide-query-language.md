@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.openlocfilehash: bcc53322ac6942b52853be561bc3441e23fbf53b
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80632937"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>裝置與模組對應項、作業和訊息路由的 IoT 中樞查詢語言
 
-IoT 中心提供了一種強大的類似 SQL 的語言來檢索有關[設備孿生](iot-hub-devguide-device-twins.md)、[模組孿生](iot-hub-devguide-module-twins.md)、[作業](iot-hub-devguide-jobs.md)和[消息路由](iot-hub-devguide-messages-d2c.md)的資訊。 本文提供︰
+IoT 中樞提供功能強大的類似 SQL 的語言，以取得[裝置 twins](iot-hub-devguide-device-twins.md)、[模組 twins](iot-hub-devguide-module-twins.md)、[作業](iot-hub-devguide-jobs.md)和[訊息路由](iot-hub-devguide-messages-d2c.md)的相關資訊。 本文提供︰
 
 * IoT 中樞查詢語言主要功能的簡介，以及
 * 語言的詳細說明。 如需訊息路由查詢語言的詳細資訊，請參閱[訊息路由中的查詢](../iot-hub/iot-hub-devguide-routing-query-syntax.md)。
@@ -25,7 +25,7 @@ IoT 中心提供了一種強大的類似 SQL 的語言來檢索有關[設備孿�
 
 ## <a name="device-and-module-twin-queries"></a>裝置與模組對應項查詢
 
-[設備孿生](iot-hub-devguide-device-twins.md)和[模組孿生](iot-hub-devguide-module-twins.md)可以包含任意的 JSON 對象作為標記和屬性。 IoT 中樞可讓您以包含所有對應項資訊的單一 JSON 文件形式查詢裝置對應項與模組對應項。
+[裝置 twins](iot-hub-devguide-device-twins.md)和[模組 twins](iot-hub-devguide-module-twins.md)可以包含標籤和屬性形式的任意 JSON 物件。 IoT 中樞可讓您以包含所有對應項資訊的單一 JSON 文件形式查詢裝置對應項與模組對應項。
 
 例如，假設 IoT 中樞裝置對應項有下列結構 (模組對應項很類似，只是具有額外的 moduleId)：
 
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>模組對應項查詢
 
-對模組孿生進行查詢類似於對設備孿生進行查詢,但使用不同的集合/命名空間;而不是從**裝置**,你查詢**從裝置. 模組**:
+在模組 twins 上查詢類似于查詢裝置 twins，但使用不同的集合/命名空間;您可以從裝置查詢，而不是從**裝置** **。模組**：
 
 ```sql
 SELECT * FROM devices.modules
@@ -233,7 +233,7 @@ query 物件會根據查詢所需的還原序列化選項，公開多個 **Next*
 ### <a name="limitations"></a>限制
 
 > [!IMPORTANT]
-> 根據裝置對應項中的最新值，查詢結果可能會有數分鐘的延遲。 如果按 ID 查詢單個裝置孿生,請使用[獲取孿生 REST API](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)。 此 API 始終返回最新值,並且具有更高的限制限制。 可以直接發出 REST API,也可以在[Azure IoT 中心服務 SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)中使用等效功能。
+> 根據裝置對應項中的最新值，查詢結果可能會有數分鐘的延遲。 如果依識別碼查詢個別裝置 twins，請使用[取得](https://docs.microsoft.com/rest/api/iothub/service/twin/getdevicetwin)對應項 REST API。 此 API 一律會傳回最新的值，並具有較高的節流限制。 您可以直接發出 REST API，或在其中一個[Azure IoT 中樞服務 sdk](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks)中使用對等的功能。
 
 目前僅支援在基本類型 (沒有物件) 之間進行比較，例如 `... WHERE properties.desired.config = properties.reported.config` 只會在這些屬性具有基本值時才受到支援。
 
@@ -315,7 +315,7 @@ SELECT * FROM devices.jobs
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT 中樞查詢的基本概念
 
-每個「IoT 中樞」查詢都包含 SELECT 和 FROM 子句，以及選擇性的 WHERE 和 GROUP BY 子句。 每個查詢都會在 JSON 文件的集合上執行，例如裝置對應項。 FROM 子句指示要反覆運算的文件集合(**設備**、**設備.模組**或**devices.jobs)。** 然後，會套用 WHERE 子句中的篩選。 使用彙總時，此步驟的結果會依照 GROUP BY 子句中所指定的方式進行分組。 針對每個群組，會依照 SELECT 子句中所指定的方式產生一個資料列。
+每個「IoT 中樞」查詢都包含 SELECT 和 FROM 子句，以及選擇性的 WHERE 和 GROUP BY 子句。 每個查詢都會在 JSON 文件的集合上執行，例如裝置對應項。 FROM 子句會指出要反覆運算的檔集合（**裝置**、裝置、**模組**或**devices.jobs**）。 然後，會套用 WHERE 子句中的篩選。 使用彙總時，此步驟的結果會依照 GROUP BY 子句中所指定的方式進行分組。 針對每個群組，會依照 SELECT 子句中所指定的方式產生一個資料列。
 
 ```sql
 SELECT <select_list>
@@ -326,7 +326,7 @@ SELECT <select_list>
 
 ## <a name="from-clause"></a>FROM 子句
 
-**FROM <from_specification>** 子句只能假定三個值:**從設備**來查詢設備孿生 **,FROM 設備.模組**查詢模組孿生,或**FROM devices.jobs**查詢作業每個設備的詳細資訊。
+**From <from_specification>** 子句只能假設有三個值：**從裝置**到查詢裝置 twins、**從裝置**到查詢模組 twins，或**從 devices.jobs**到查詢作業的每一裝置詳細資料。
 
 ## <a name="where-clause"></a>WHERE 子句
 
@@ -440,7 +440,7 @@ GROUP BY <group_by_element>
 | binary_operator | [運算子](#operators)一節中所列的任何二元運算子。 |
 | function_name| [函式](#functions)一節中所列的任何函式。 |
 | decimal_literal |以小數點標記法表示的浮點數。 |
-| hexadecimal_literal |由字串"0x"表示的數位,後跟十六進位數字字串。 |
+| hexadecimal_literal |以字串 ' 0x ' 表示後面接著十六進位數位字串的數位。 |
 | string_literal |字串常值是由零個或多個 Unicode 字元序列或逸出序列所表示的 Unicode 字串。 字串常值會以單引號或雙引號括起來。 允許的逸出︰`\'`、`\"`、`\\`、`\uXXXX` (適用於由 4 個十六進位數字所定義的 Unicode 字元)。 |
 
 ### <a name="operators"></a>運算子
@@ -481,7 +481,7 @@ GROUP BY <group_by_element>
 | AS_NUMBER | 將輸入字串轉換為數字。 如果輸入是一個數字則為 `noop`；如果字串不是數字則為 `Undefined`。|
 | IS_ARRAY | 傳回布林值，表示指定之運算式的類型為陣列。 |
 | IS_BOOL | 傳回布林值，表示指定之運算式的類型為布林值。 |
-| IS_DEFINED | 傳回布林值，表示屬性是否已經指派值。 僅當值是基元類型時,才支援此選項。 基元型態包括字串、布林、數字`null`或 。 不支援日期時間、對象類型和陣列。 |
+| IS_DEFINED | 傳回布林值，表示屬性是否已經指派值。 只有當值是基本型別時，才支援這種情況。 基本類型包括字串、布林值、數值或`null`。 不支援 DateTime、物件類型和陣列。 |
 | IS_NULL | 傳回布林值，表示指定之運算式的類型為 null。 |
 | IS_NUMBER | 傳回布林值，表示指定之運算式的類型為數字。 |
 | IS_OBJECT | 傳回布林值，表示指定之運算式的類型為 JSON 物件。 |

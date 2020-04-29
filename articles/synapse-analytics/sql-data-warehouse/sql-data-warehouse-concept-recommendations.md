@@ -1,6 +1,6 @@
 ---
-title: 突觸 SQL 建議
-description: 使用 Synapse SQL 建議與產生方式
+title: Synapse SQL 建議
+description: 瞭解 Synapse SQL 建議及其產生方式
 services: synapse-analytics
 author: kevinvngo
 manager: craigg-msft
@@ -12,35 +12,35 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: 17877a1ef5d949fbbee080b6157844ac5b516fe7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633674"
 ---
-# <a name="synapse-sql-recommendations"></a>突觸 SQL 建議
+# <a name="synapse-sql-recommendations"></a>Synapse SQL 建議
 
-本文介紹了通過 Azure Advisor 提供的 Synapse SQL 建議。  
+本文說明透過 Azure Advisor 提供的 Synapse SQL 建議。  
 
-SQL Analytics 提供建議,以確保數據倉庫工作負載始終針對性能進行優化。 建議與 Azure [Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)緊密整合,直接在[Azure 門戶](https://aka.ms/Azureadvisor)中為您提供最佳做法。 SQL Analytics 以每日節奏收集活動工作負載的遙測和曲面建議。 下面概述了支持的建議方案以及如何應用建議的操作。
+SQL 分析會提供建議，以確保您的資料倉儲工作負載一致地針對效能進行優化。 建議與[Azure Advisor](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)緊密整合，以直接在[Azure 入口網站](https://aka.ms/Azureadvisor)內提供最佳作法。 SQL 分析會針對您的作用中工作負載，以每日步調收集遙測和呈現建議。 以下概述支援的建議案例，以及如何套用建議的動作。
 
-您可以[檢視您的建議](https://aka.ms/Azureadvisor)。 此功能目前僅適用於 Gen2 資料倉儲。
+您今天可以[檢查您的建議](https://aka.ms/Azureadvisor)！ 此功能目前僅適用於 Gen2 資料倉儲。
 
-## <a name="data-skew"></a>資料位斜
+## <a name="data-skew"></a>資料扭曲
 
 當執行工作負載時，資料扭曲可能會造成額外的資料移動或資源瓶頸。 下列文件說明如何識別資料扭曲，並透過選取最佳的散發索引鍵來防止發生資料扭曲。
 
 - [識別並移除扭曲](sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)
 
-## <a name="no-or-outdated-statistics"></a>無或過時的統計資訊
+## <a name="no-or-outdated-statistics"></a>沒有或過期的統計資料
 
-具有不理想的統計資訊會嚴重影響查詢性能,因為它可能導致 SQL 查詢優化器生成不理想的查詢計劃。 下列文件說明建立及更新統計資料的最佳做法：
+具有較佳的統計資料可能會嚴重影響查詢效能，因為它會導致 SQL 查詢最佳化工具產生次佳的查詢計劃。 下列文件說明建立及更新統計資料的最佳做法：
 
 - [建立及更新資料表統計資料](sql-data-warehouse-tables-statistics.md)
 
-要檢視這些建議影響表的清單,執行以下[T-SQL 文稿](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)。 Advisor 會持續執行相同的 T-SQL 指令碼，以產生這些建議。
+若要依照這些建議查看受影響的資料表清單，請執行下列[t-sql 腳本](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)。 Advisor 會持續執行相同的 T-SQL 指令碼，以產生這些建議。
 
-## <a name="replicate-tables"></a>複製表
+## <a name="replicate-tables"></a>複寫資料表
 
 針對複寫的資料表建議，Advisor 會根據下列實體特性偵測資料表候選項目：
 

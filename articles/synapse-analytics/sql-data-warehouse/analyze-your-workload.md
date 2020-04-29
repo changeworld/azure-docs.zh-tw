@@ -1,6 +1,6 @@
 ---
 title: 分析工作負載
-description: 在 Azure 同步分析中分析工作負荷的查詢優先順序的技術。
+description: 針對 Azure Synapse 分析中的工作負載分析查詢優先順序的技術。
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -12,19 +12,19 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 6a38fe65b4aedf4f594531f5e9cd8cf9b5dfaac7
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631245"
 ---
-# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure 突觸分析中分析工作負荷
+# <a name="analyze-your-workload-in-azure-synapse-analytics"></a>在 Azure Synapse 分析中分析您的工作負載
 
-在 Azure 突觸分析中分析 Synapse SQL 工作負荷的技術。
+在 Azure Synapse Analytics 中分析 Synapse SQL 工作負載的技術。
 
 ## <a name="resource-classes"></a>資源課程
 
-突觸 SQL 提供資源類,用於將系統資源分配給查詢。  有關資源類的詳細資訊,請參閱[資源類&工作負載管理](resource-classes-for-workload-management.md)。  如果分配給查詢的資源類需要的資源比當前可用資源多,則查詢將等待。
+Synapse SQL 提供資源類別，可將系統資源指派給查詢。  如需資源類別的詳細資訊，請參閱[資源類別 & 工作負載管理](resource-classes-for-workload-management.md)。  如果指派給查詢的資源類別所需的資源數量比目前可用的還多，查詢將會等候。
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>已排入佇列的查詢偵測和其他 DMV
 
@@ -63,12 +63,12 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-突觸 SQL 具有以下等待類型:
+Synapse SQL 具有下列等候類型：
 
 * **LocalQueriesConcurrencyResourceType**：位於並行存取插槽架構外部的查詢。 DMV 查詢及 `SELECT @@VERSION` 這類的系統函數是本機查詢的範例。
 * **UserConcurrencyResourceType**：位於並行存取插槽架構內部的查詢。 針對使用者資料表的查詢代表會使用此資源類型的範例。
 * **DmsConcurrencyResourceType**：資料移動作業所產生的等候。
-* **BackupConcurrencyResourceType**：此等候指出正在備份資料庫。 此資源類型的最大值為 1。 如果在同一時間要求多個備份，其他備份會排入佇列。 通常,我們建議在連續快照之間至少 10 分鐘。
+* **BackupConcurrencyResourceType**：此等候指出正在備份資料庫。 此資源類型的最大值為 1。 如果在同一時間要求多個備份，其他備份會排入佇列。 一般來說，我們建議在10分鐘連續快照之間的最短時間。
 
 `sys.dm_pdw_waits` DMV 可用來查看要求正在等待哪些資源。
 
@@ -107,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-`sys.dm_pdw_resource_waits` DMV 顯示給定查詢的等待資訊。 資源等待時間測量等待提供資源的時間。 信號等待時間是基礎 SQL 伺服器將查詢安排到 CPU 所需的時間。
+`sys.dm_pdw_resource_waits` DMV 會顯示給定查詢的等候資訊。 資源等候時間會測量等待提供資源的時間。 「等候時間」是基礎 SQL 伺服器將查詢排程到 CPU 所花費的時間。
 
 ```sql
 SELECT  [session_id]
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>後續步驟
 
-有關管理資料庫使用者和安全的詳細資訊,請參閱[在 Synapse SQL 中保護資料庫](sql-data-warehouse-overview-manage-security.md)。 如需較大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱 [重建索引以提升區段品質](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。
+如需管理資料庫使用者和安全性的詳細資訊，請參閱[在 SYNAPSE SQL 中保護資料庫](sql-data-warehouse-overview-manage-security.md)。 如需較大資源類別如何改善叢集資料行存放區索引品質的詳細資訊，請參閱 [重建索引以提升區段品質](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)。

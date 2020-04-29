@@ -1,6 +1,6 @@
 ---
-title: 配置變數
-description: 在本文中,您將找到在 SQL 池中分配 T-SQL 變數的基本提示。
+title: 指派變數
+description: 在本文中，您將瞭解在 SQL 集區中指派 T-sql 變數的重要秘訣。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,26 +12,26 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 2dcf706ea59657abc2718a69e59191604dc2849d
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633413"
 ---
-# <a name="assign-variables-in-synapse-sql-pool"></a>在 Synapse SQL 池中配置變數
+# <a name="assign-variables-in-synapse-sql-pool"></a>在 Synapse SQL 集區中指派變數
 
-在本文中,您將找到在 SQL 池中分配 T-SQL 變數的基本提示。
+在本文中，您將瞭解在 SQL 集區中指派 T-sql 變數的重要秘訣。
 
 ## <a name="set-variables-with-declare"></a>使用 DECLARE 設定變數
 
-SQL 池中的變數使用`DECLARE`語句`SET`或 語句進行設置。 使用 DECLARE 初始化變數是在 SQL 池中設置變數值的最靈活方法之一。
+SQL 集區中的`DECLARE`變數是使用語句或`SET`語句來設定。 使用 DECLARE 初始化變數是在 SQL 集區中設定變數值的其中一個最具彈性的方式。
 
 ```sql
 DECLARE @v  int = 0
 ;
 ```
 
-您也可以使用 DECLARE，一次設定一個以上的變數。 無法使用 SELECT 或更新執行以下操作:
+您也可以使用 DECLARE，一次設定一個以上的變數。 您無法使用 [選取] 或 [更新] 來執行下列動作：
 
 ```sql
 DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 'Smith')
@@ -39,7 +39,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-不能在同一 DECLARE 語句中初始化和使用變數。 為了說明這點，**不**允許下列範例，因為 @p1 已在相同的 DECLARE 陳述式中初始化和使用。 因此,以下範例給出錯誤:
+您無法在相同的 DECLARE 語句中初始化和使用變數。 為了說明這點，**不**允許下列範例，因為 @p1 已在相同的 DECLARE 陳述式中初始化和使用。 因此，下列範例會提供錯誤：
 
 ```sql
 DECLARE @p1 int = 0
@@ -64,7 +64,7 @@ SET     @v +=1;
 
 ## <a name="limitations"></a>限制
 
-不能將 UPDATE 用於變數分配。
+您不能使用 UPDATE 進行變數指派。
 
 ## <a name="next-steps"></a>後續步驟
 

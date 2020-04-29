@@ -1,22 +1,22 @@
 ---
-title: Azure Blob 儲存輸入繫結以 Azure 函式
-description: 瞭解如何向 Azure 函數提供 Azure Blob 存儲數據。
+title: 適用于 Azure Functions 的 Azure Blob 儲存體輸入系結
+description: 瞭解如何將 Azure Blob 儲存體資料提供給 Azure 函數。
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.openlocfilehash: 33db9a8d86e02db2076cdb85170d466697930b96
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633890"
 ---
-# <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Blob 儲存輸入繫結以 Azure 函式
+# <a name="azure-blob-storage-input-binding-for-azure-functions"></a>適用于 Azure Functions 的 Azure Blob 儲存體輸入系結
 
-輸入繫結允許您讀取 Blob 儲存資料作為 Azure 函數的輸入。
+輸入系結可讓您讀取 blob 儲存體資料，做為 Azure 函數的輸入。
 
-有關設定與設定詳細資訊的資訊,請參考[概述](./functions-bindings-storage-blob.md)。
+如需安裝和設定詳細資料的相關資訊，請參閱[總覽](./functions-bindings-storage-blob.md)。
 
 ## <a name="example"></a>範例
 
@@ -35,11 +35,11 @@ public static void Run(
 }
 ```
 
-# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
-下列範例所示範的是使用繫結之 function.json** 檔案，以及 [C# 指令碼 (.csx)](functions-reference-csharp.md) 程式碼中的 Blob 輸入和輸出繫結。 此函式會建立文字 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名為 *[原始 blobname] -複製*。
+下列範例所示範的是使用繫結之 function.json** 檔案，以及 [C# 指令碼 (.csx)](functions-reference-csharp.md) 程式碼中的 Blob 輸入和輸出繫結。 此函式會建立文字 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名稱為 *{originalblobname}-Copy*。
 
 在 *function.json* 檔案中，`queueTrigger` 中繼資料屬性用於指定 `path` 屬性中的 Blob 名稱：
 
@@ -88,7 +88,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 
 <!--Same example for input and output. -->
 
-下列範例所示範的是 *function.json* 檔案中的 blob 輸入和輸出繫結，以及使用該繫結的 [JavaScript 程式碼](functions-reference-node.md)。 此函式會建立 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名為 *[原始 blobname] -複製*。
+下列範例所示範的是 *function.json* 檔案中的 blob 輸入和輸出繫結，以及使用該繫結的 [JavaScript 程式碼](functions-reference-node.md)。 此函式會建立 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名稱為 *{originalblobname}-Copy*。
 
 在 *function.json* 檔案中，`queueTrigger` 中繼資料屬性用於指定 `path` 屬性中的 Blob 名稱：
 
@@ -137,7 +137,7 @@ module.exports = function(context) {
 
 <!--Same example for input and output. -->
 
-下列範例所示範的是使用繫結之 function.json** 檔案，以及 [Python 指令碼](functions-reference-python.md)程式碼中的 Blob 輸入和輸出繫結。 此函式會建立 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名為 *[原始 blobname] -複製*。
+下列範例所示範的是使用繫結之 function.json** 檔案，以及 [Python 指令碼](functions-reference-python.md)程式碼中的 Blob 輸入和輸出繫結。 此函式會建立 Blob 的複本。 此函式是由佇列訊息 (包含要複製的 Blob 名稱) 觸發。 新的 blob 名稱為 *{originalblobname}-Copy*。
 
 在 *function.json* 檔案中，`queueTrigger` 中繼資料屬性用於指定 `path` 屬性中的 Blob 名稱：
 
@@ -244,7 +244,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
 
 ---
 
-## <a name="attributes-and-annotations"></a>屬性與註解
+## <a name="attributes-and-annotations"></a>屬性和注釋
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -277,11 +277,11 @@ public static void Run(
 }
 ```
 
-您可以使用 `StorageAccount` 屬性來指定類別、方法或參數層級的儲存體帳戶。 有關詳細資訊,請參閱[觸發器屬性和註解](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)。
+您可以使用 `StorageAccount` 屬性來指定類別、方法或參數層級的儲存體帳戶。 如需詳細資訊，請參閱[觸發程式-屬性和注釋](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)。
 
-# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-C# 文稿不支援屬性。
+C # 腳本不支援屬性。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -293,50 +293,50 @@ Python 不支援屬性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-該`@BlobInput`屬性允許您訪問觸發函數的 blob。 如果使用有屬性的位元陣陣陣,則設定為`dataType``binary`。 有關詳細資訊,請參閱[輸入範例](#example)。
+`@BlobInput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將`dataType`設定`binary`為。 如需詳細資訊，請參閱[輸入範例](#example)。
 
 ---
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
-下表介紹了您在*函數.json*`Blob`檔和 屬性中設置的綁定配置屬性。
+下表說明您在*函數 json*檔案和`Blob`屬性中設定的系結設定屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-|**型別** | n/a | 必須設為 `blob`。 |
-|**direction** | n/a | 必須設為 `in`。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
-|**名稱** | n/a | 表示函式程式碼中 Blob 的變數名稱。|
+|**type** | n/a | 必須設為 `blob`。 |
+|**方向** | n/a | 必須設為 `in`。 例外狀況在[使用方式](#usage)一節中會加以說明。 |
+|**name** | n/a | 表示函式程式碼中 Blob 的變數名稱。|
 |**path** |**BlobPath** | blob 的路徑。 |
-|**連線** |**連線**| 包含要用於此繫定的[儲存連接字串](../storage/common/storage-configure-connection-string.md)的應用程式設定的名稱。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如,如果設置為`connection`「我的存儲」,函數運行時將查找名為「AzureWebJobsMyStorage」的應用設置。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須為一般用途的儲存體帳戶，不可為[僅限 Blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|**connection** |**建立**| 應用程式設定的名稱，其中包含要用於此系結的[儲存體連接字串](../storage/common/storage-configure-connection-string.md)。 如果應用程式設定名稱是以「AzureWebJobs」開頭，於此僅能指定名稱的其餘部分。 例如，如果您將設定`connection`為 "MyStorage"，函數執行時間會尋找名為 "AzureWebJobsMyStorage" 的應用程式設定。 如果您將 `connection` 保留空白，則函式執行階段會使用應用程式設定中名稱為 `AzureWebJobsStorage` 的預設儲存體連接字串。<br><br>連接字串必須為一般用途的儲存體帳戶，不可為[僅限 Blob 的儲存體帳戶](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 |n/a | **存取** | 指出您是否將讀取或寫入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用量
+## <a name="usage"></a>使用方式
 
 # <a name="c"></a>[C#](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-# <a name="c-script"></a>[C# 文稿](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-使用`context.bindings.<NAME>`與`<NAME>`*函數.json*中定義的值匹配的位置訪問 blob 數據。
+使用來`context.bindings.<NAME>`存取 blob 資料`<NAME>` ，其中會符合*函數. json*中所定義的值。
 
 # <a name="python"></a>[Python](#tab/python)
 
-通過鍵入為[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的參數存取 blob 資料。 有關詳細資訊,請參閱[輸入範例](#example)。
+透過輸入為[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的參數來存取 blob 資料。 如需詳細資訊，請參閱[輸入範例](#example)。
 
 # <a name="java"></a>[Java](#tab/java)
 
-該`@BlobInput`屬性允許您訪問觸發函數的 blob。 如果使用有屬性的位元陣陣陣,則設定為`dataType``binary`。 有關詳細資訊,請參閱[輸入範例](#example)。
+`@BlobInput`屬性可讓您存取觸發函數的 blob。 如果您使用具有屬性的位元組陣列，請將`dataType`設定`binary`為。 如需詳細資訊，請參閱[輸入範例](#example)。
 
 ---
 
 ## <a name="next-steps"></a>後續步驟
 
-- [Blob 儲存資料變更時執行函數](./functions-bindings-storage-blob-trigger.md)
-- [從函數寫入 blob 儲存資料](./functions-bindings-storage-blob-output.md)
+- [在 blob 儲存體資料變更時執行函式](./functions-bindings-storage-blob-trigger.md)
+- [從函數寫入 blob 儲存體資料](./functions-bindings-storage-blob-output.md)

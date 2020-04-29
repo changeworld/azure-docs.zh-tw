@@ -1,6 +1,6 @@
 ---
-title: 將 CoreOS VM 加入 Azure AD 域服務 |微軟文件
-description: 瞭解如何配置 CoreOS 虛擬機並將其加入 Azure AD 網域服務託管域。
+title: 將 CoreOS VM 加入 Azure AD Domain Services |Microsoft Docs
+description: 瞭解如何設定 CoreOS 虛擬機器並將其加入 Azure AD Domain Services 受控網域。
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,84 +12,84 @@ ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: iainfou
 ms.openlocfilehash: 63dfe39b986125abc9cacf6c1a6556876bbd3a99
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80655203"
 ---
-# <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>將 CoreOS 虛擬機器加入 Azure AD 網域服務託管域
+# <a name="join-a-coreos-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>將 CoreOS 虛擬機器加入 Azure AD Domain Services 受控網域
 
-要允許使用者使用一組認證登錄到 Azure 中的虛擬機器 (VM),可以將 VM 加入 Azure 活動目錄域服務 (AD DS) 託管域。 將 VM 加入 Azure AD DS 託管域時,可以使用網域中的使用者帳戶和認證登錄和管理伺服器。 Azure AD DS 託管域中的組成員身份也應用於允許您控制對 VM 上檔或服務的訪問。
+若要讓使用者能夠使用一組認證來登入 Azure 中的虛擬機器（Vm），您可以將 Vm 加入 Azure Active Directory Domain Services （AD DS）受控網域。 當您將 VM 加入 Azure AD DS 受控網域時，可以使用網域中的使用者帳戶和認證來登入和管理伺服器。 也會套用來自 Azure AD DS 受控網域的群組成員資格，讓您控制對 VM 上檔案或服務的存取。
 
-本文介紹如何將 CoreOS VM 加入 Azure AD DS 託管域。
+本文說明如何將 CoreOS VM 加入 Azure AD DS 受控網域。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 若要完成此教學課程，您需要下列資源和權限：
 
 * 有效的 Azure 訂用帳戶。
-    * 如果沒有 Azure 訂閱,[請建立帳號](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+    * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 與您的訂用帳戶相關聯的 Azure Active Directory 租用戶，可與內部部署目錄或僅限雲端的目錄同步。
     * 如果需要，請[建立 Azure Active Directory 租用戶][create-azure-ad-tenant]或[將 Azure 訂用帳戶與您的帳戶建立關聯][associate-azure-ad-tenant]。
 * 已在您的 Azure AD 租用戶中啟用並設定 Azure Active Directory Domain Services 受控網域。
     * 如有需要，第一個教學課程會引導您[建立並設定 Azure Active Directory Domain Services 執行個體][create-azure-ad-ds-instance]。
-* 屬於 Azure AD DS 託管域的使用者帳戶。
+* 屬於 Azure AD DS 受控網域一部分的使用者帳戶。
 
-## <a name="create-and-connect-to-a-coreos-linux-vm"></a>建立並連線到 CoreOS Linux VM
+## <a name="create-and-connect-to-a-coreos-linux-vm"></a>建立並聯機至 CoreOS Linux VM
 
-如果在 Azure 中具有現有的 CoreOS Linux VM,請使用 SSH 連線到它,然後繼續執行下一步[以開始配置 VM](#configure-the-hosts-file)。
+如果您在 Azure 中有現有的 CoreOS Linux VM，請使用 SSH 連接到它，然後繼續進行下一個步驟以[開始設定 VM](#configure-the-hosts-file)。
 
-如果需要創建 CoreOS Linux VM,或者想要建立用於本文的測試 VM,可以使用以下方法之一:
+如果您需要建立 CoreOS Linux VM，或想要建立要與本文搭配使用的測試 VM，您可以使用下列其中一種方法：
 
 * [Azure 入口網站](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-建立 VM 時,請注意虛擬網路設定,以確保 VM 能夠與 Azure AD DS 託管域通訊:
+當您建立 VM 時，請注意虛擬網路設定，以確保 VM 可以與 Azure AD DS 受控網域進行通訊：
 
-* 將 VM 部署到啟用 Azure AD 網域服務的相同或對等虛擬網路。
-* 將 VM 部署到與 Azure AD 網域服務實例不同的子網中。
+* 將 VM 部署到已啟用 Azure AD Domain Services 的相同或對等互連虛擬網路中。
+* 將 VM 部署到與您的 Azure AD Domain Services 實例不同的子網。
 
-部署 VM 後,按照步驟使用 SSH 連接到 VM。
+部署 VM 之後，請遵循使用 SSH 連接到 VM 的步驟。
 
 ## <a name="configure-the-hosts-file"></a>設定 hosts 檔案
 
-要確保為託管域正確設定 VM 主機名稱,請編輯 */etc/主機*檔案並設定主機名稱:
+為確保受控網域已正確設定 VM 主機名稱，請編輯 */etc/hosts*檔案，並設定主機名稱：
 
 ```console
 sudo vi /etc/hosts
 ```
 
-在*主機*檔案中,更新*本地主機*位址。 在下例中︰
+在*hosts*檔案中，更新*localhost*位址。 在下例中︰
 
-* *aaddscontoso.com*是 Azure AD DS 託管域的 DNS 功能變數名稱。
-* *coreos*是要加入託管域的 CoreOS VM 的主機名。
+* *aaddscontoso.com*是 Azure AD DS 受控網域的 DNS 功能變數名稱。
+* *coreos*是您要加入至受控網域之 coreos VM 的主機名稱。
 
-使用您自己的值更新這些名稱:
+使用您自己的值來更新這些名稱：
 
 ```console
 127.0.0.1 coreos coreos.aaddscontoso.com
 ```
 
-完成後,使用編輯器`:wq`的命令儲存並退出*主機*檔案。
+完成時，請使用編輯器的*hosts* `:wq`命令來儲存並結束 hosts 檔案。
 
 ## <a name="configure-the-sssd-service"></a>設定 SSSD 服務
 
-更新 */etc/ssd/ssd.conf* SSSD 配置。
+更新 */Etc/sssd/sssd.conf* sssd 設定。
 
 ```console
 sudo vi /etc/sssd/sssd.conf
 ```
 
-為以下參數指定您自己的 Azure AD DS 託管網域名稱:
+為下列參數指定您自己的 Azure AD DS 受控功能變數名稱：
 
-* 所有上部案例中的*網域*
-* *[網域/AADDS]* 其中 AADDS 位於所有上部案例中
+* 全大寫的*網域*
+* *[domain/AADDS]* ，其中 AADDS 為全大寫
 * *ldap_uri*
 * *ldap_search_base*
 * *krb5_server*
-* *所有*上部案例中的krb5_realm
+* 全大寫的*krb5_realm*
 
 ```console
 [sssd]
@@ -118,59 +118,59 @@ krb5_server = aaddscontoso.com
 krb5_realm = AADDSCONTOSO.COM
 ```
 
-## <a name="join-the-vm-to-the-managed-domain"></a>將 VM 加入託管域
+## <a name="join-the-vm-to-the-managed-domain"></a>將 VM 加入受控網域
 
-更新 SSSD 設定檔後,現在將虛擬機器加入託管域。
+更新 SSSD 設定檔之後，現在請將虛擬機器加入受控網域。
 
-1. 首先,使用`adcli info`命令驗證可以看到有關 Azure AD DS 託管域的資訊。 下面的範例獲取域*AADDSCONTOSO.COM*的資訊。 在「所有上寫」中指定您自己的 Azure AD DS 託管網域名稱:
+1. 首先，使用`adcli info`命令來確認您可以看到 Azure AD DS 受控網域的相關資訊。 下列範例會取得網域*AADDSCONTOSO.COM*的資訊。 以全部大寫指定您自己的 Azure AD DS 受控功能變數名稱：
 
     ```console
     sudo adcli info AADDSCONTOSO.COM
     ```
 
-   如果`adcli info`命令找不到 Azure AD DS 託管域,請查看以下故障排除步驟:
+   如果`adcli info`命令找不到您的 Azure AD DS 受控網域，請參閱下列疑難排解步驟：
 
-    * 確保可以從 VM 聯繫到域。 嘗試`ping aaddscontoso.com`查看是否返回了肯定的答覆。
-    * 檢查 VM 是否部署到 Azure AD DS 託管域可用的同一虛擬網路或對等虛擬網路。
-    * 確認虛擬網路的 DNS 伺服器設定已更新以指向 Azure AD DS 託管域的域控制器。
+    * 請確定可從 VM 連線到該網域。 請`ping aaddscontoso.com`嘗試查看是否傳回正面回復。
+    * 檢查 VM 是否已部署至相同或對等互連的虛擬網路，其中可使用 Azure AD DS 受控網域。
+    * 確認虛擬網路的 DNS 伺服器設定已更新，以指向 Azure AD DS 受控網域的網域控制站。
 
-1. 現在使用`adcli join`命令將 VM 加入 Azure AD DS 託管域。 指定屬於 Azure AD DS 託管域的使用者。 如果需要[,將使用者帳戶新增到 Azure AD 中的群組](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+1. 現在使用`adcli join`命令將 VM 加入 Azure AD DS 受控網域。 指定屬於 Azure AD DS 受控網域之一部分的使用者。 如有需要，請[將使用者帳戶新增至 Azure AD 中的群組](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
 
-    同樣,必須在所有上部操作中輸入 Azure AD DS 託管域名稱。 在下面的範例中,命名的`contosoadmin@aaddscontoso.com`帳戶用於初始化 Kerberos。 輸入屬於 Azure AD DS 託管域的使用者帳戶。
+    同樣地，必須以全部大寫輸入 Azure AD DS 受管理的功能變數名稱。 在下列範例中，會使用名`contosoadmin@aaddscontoso.com`為的帳戶來初始化 Kerberos。 輸入屬於 Azure AD DS 受控網域之一部分的您自己的使用者帳戶。
 
     ```console
     sudo adcli join -D AADDSCONTOSO.COM -U contosoadmin@AADDSCONTOSO.COM -K /etc/krb5.keytab -H coreos.aaddscontoso.com -N coreos
     ```
 
-    當`adcli join`VM 成功加入 Azure AD DS 託管域時,該命令不會返回任何資訊。
+    當`adcli join` VM 已成功加入 Azure AD DS 受控網域時，此命令不會傳回任何資訊。
 
-1. 要應用網域聯接設定,請啟動 SSSD 服務:
+1. 若要套用加入網域設定，請啟動 SSSD 服務：
   
     ```console
     sudo systemctl start sssd.service
     ```
 
-## <a name="sign-in-to-the-vm-using-a-domain-account"></a>使用網域帳號登入 VM
+## <a name="sign-in-to-the-vm-using-a-domain-account"></a>使用網域帳戶登入 VM
 
-要驗證 VM 已成功加入 Azure AD DS 託管域,請使用網域使用者帳戶啟動新的 SSH 連接。 確認已創建主目錄,並應用域中的組成員身份。
+若要確認 VM 已成功加入 Azure AD DS 受控網域，請使用網域使用者帳戶啟動新的 SSH 連線。 確認已建立主目錄，並已套用網域的群組成員資格。
 
-1. 從主控台創建新的 SSH 連接。 使用`ssh -l`指令使用屬於託管域的網域帳號,例如`contosoadmin@aaddscontoso.com`,然後輸入 VM 的位址,如*coreos.aaddscontoso.com*。 如果使用 Azure 雲外殼,請使用 VM 的公共 IP 位址,而不是內部 DNS 名稱。
+1. 從您的主控台建立新的 SSH 連線。 使用屬於受控網域`ssh -l`的網域帳戶（例如`contosoadmin@aaddscontoso.com` ），然後輸入您 VM 的位址，例如*coreos.aaddscontoso.com*。 如果您使用 Azure Cloud Shell，請使用 VM 的公用 IP 位址，而不是內部 DNS 名稱。
 
     ```console
     ssh -l contosoadmin@AADDSCONTOSO.com coreos.aaddscontoso.com
     ```
 
-1. 當檢查群組成員的身份是否得到正確解決:
+1. 現在檢查是否已正確解析群組成員資格：
 
     ```console
     id
     ```
 
-    您應該從 Azure AD DS 託管域中看到組成員身份。
+    您應該會看到來自 Azure AD DS 受控網域的群組成員資格。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果在將 VM 連接到 Azure AD DS 託管域或使用網域帳戶登入時遇到問題,請參閱[排除網域聯接問題](join-windows-vm.md#troubleshoot-domain-join-issues)。
+如果您在將 VM 連線到 Azure AD DS 受控網域時發生問題，或使用網域帳戶登入，請參閱針對[網域加入問題進行疑難排解](join-windows-vm.md#troubleshoot-domain-join-issues)。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

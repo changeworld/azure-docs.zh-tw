@@ -1,6 +1,6 @@
 ---
-title: 在 StorSimple 8000 系列設備上安裝更新 5.1 |微軟文件
-description: 說明如何在 StorSimple 8000 系列設備上安裝 StorSimple 8000 系列更新 5.1。
+title: 在 StorSimple 8000 系列裝置上安裝更新 5.1 |Microsoft Docs
+description: 說明如何在 StorSimple 8000 系列裝置上安裝 StorSimple 8000 系列更新5.1。
 services: storsimple
 documentationcenter: NA
 author: priestlg
@@ -13,25 +13,25 @@ ms.workload: TBD
 ms.date: 03/05/2020
 ms.author: v-grpr
 ms.openlocfilehash: b90f0f35f908d16b0746075e638fe66769939a64
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80658036"
 ---
-# <a name="install-update-51-on-your-storsimple-device"></a>在 StorSimple 裝置上安裝更新 5.1
+# <a name="install-update-51-on-your-storsimple-device"></a>在 StorSimple 裝置上安裝更新5。1
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
-本教程介紹如何在通過 Azure 門戶運行早期軟體版本的 StorSimple 設備上安裝 Update 5.1。 <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
+本教學課程說明如何透過 Azure 入口網站在執行舊軟體版本的 StorSimple 裝置上安裝更新5.1。 <!--The hotfix method is used when you are trying to install Update 5.1 on a device running pre-Update 3 versions. The hotfix method is also used when a gateway is configured on a network interface other than DATA 0 of the StorSimple device and you are trying to update from a pre-Update 1 software version.-->
 
-更新 5.1 包括無中斷的安全更新。 可透過 Azure 門戶應用無中斷更新或定期更新 <!--or by the hotfix method-->.
+更新5.1 包括非干擾性的安全性更新。 您可以透過 Azure 入口網站來套用非干擾性或定期更新 <!--or by the hotfix method-->.
 
 > [!IMPORTANT]
 >
-> * 更新 5.1 是必填更新,應立即安裝。 有關詳細資訊,請參閱更新[5.1 發行說明](storsimple-update51-release-notes.md)。
-> * 安裝前會執行一組手動和自動預先檢查，以根據硬體狀態和網路連線來判斷裝置健全狀況。 僅當從 Azure 門戶應用更新時,才會執行這些預檢查。
-> * 如果要使用修補程式方法安裝,請與[Microsoft 支援](mailto:support@microsoft.com)。
+> * 更新5.1 是強制更新，應立即安裝。 如需詳細資訊，請參閱[Update 5.1 版本](storsimple-update51-release-notes.md)資訊。
+> * 安裝前會執行一組手動和自動預先檢查，以根據硬體狀態和網路連線來判斷裝置健全狀況。 只有當您從 Azure 入口網站套用更新時，才會執行這些前置檢查。
+> * 如果您想要使用此修復方法來安裝，請聯絡[Microsoft 支援服務](mailto:support@microsoft.com)。
 
 <!--
 > * We strongly recommend that when updating a device running versions prior to Update 3, you install the updates using hotfix method. If you encounter any issues, [log a support ticket](storsimple-8000-contact-microsoft-support.md). 
@@ -45,9 +45,9 @@ ms.locfileid: "80658036"
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
-## <a name="install-update-51-through-the-azure-portal"></a>透過 Azure 門戶安裝更新 5.1
+## <a name="install-update-51-through-the-azure-portal"></a>透過 Azure 入口網站安裝更新5。1
 
-執行以下步驟將裝置更新為[更新 5.1](storsimple-update51-release-notes.md)。
+請執行下列步驟，將您的裝置更新為[更新 5.1](storsimple-update51-release-notes.md)。
 
 > [!NOTE]
 > Microsoft 會從裝置提取其他診斷資訊。 因此，當我們的作業小組識別有問題的裝置時，我們更有能力從裝置收集資訊並診斷問題。
@@ -58,7 +58,7 @@ ms.locfileid: "80658036"
 
     ![選取裝置](./media/storsimple-8000-install-update-51/update1.png)
 
-2. 瀏覽到**裝置設定** > **裝置更新**。
+2. 流覽至 [**裝置設定** > ] [**裝置更新**]。
 
     ![按一下 [裝置更新]](./media/storsimple-8000-install-update-51/update2.png)
 
@@ -95,7 +95,7 @@ ms.locfileid: "80658036"
 10. 作業完成後，瀏覽至 [裝置設定] > [裝置更新]****。 現在應該已更新軟體版本。
 
 
-驗證您的設備是否正在運行**StorSimple 8000 系列更新 5.1 (6.3.9600.17885)。** [上次更新日期]**** 應該已修改。
+確認您的裝置正在執行**StorSimple 8000 系列更新5.1 （6.3.9600.17885）**。 [上次更新日期]**** 應該已修改。
 <!-- 5.1 - KB 4542887-->
 
 <!--You will now see that the Maintenance mode updates are available (this message might continue to be displayed for up to 24 hours after you install the updates). The steps to install maintenance mode update are detailed in the next section.
@@ -168,4 +168,4 @@ Perform the following steps to download and install the hotfixes.
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解有關[更新 5.1 版本](storsimple-update51-release-notes.md)的詳細資訊。
+深入瞭解[更新5.1 版本](storsimple-update51-release-notes.md)。

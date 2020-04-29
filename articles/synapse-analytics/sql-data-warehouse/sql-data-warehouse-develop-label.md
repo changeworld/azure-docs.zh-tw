@@ -1,6 +1,6 @@
 ---
-title: 使用分頁偵測查詢
-description: 使用標籤在 Synapse SQL 池中檢測查詢以開發解決方案的提示。
+title: 使用標籤來檢測查詢
+description: 在 Synapse SQL 集區中使用標籤來檢測查詢以開發解決方案的秘訣。
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -12,21 +12,21 @@ ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 5e2cd03ae878e80139a7f7a8ba67cef15b24d571
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633500"
 ---
-# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>使用標籤在 Synapse SQL 池中偵測查詢
+# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>在 Synapse SQL 集區中使用標籤來檢測查詢
 
-本文包括使用標籤在 SQL 池中檢測查詢開發解決方案的提示。
+本文中所包含的秘訣，是用來開發使用標籤來檢測 SQL 集區中查詢的解決方案。
 
 在 Azure SQL 資料倉儲中使用標籤來檢測查詢以開發解決方案的秘訣。
 
 ## <a name="what-are-labels"></a>什麼是標籤？
 
-SQL 池支援一個稱為查詢標籤的概念。 繼續進行之前，讓我們看看一個範例：
+SQL 集區支援稱為「查詢標籤」的概念。 繼續進行之前，讓我們看看一個範例：
 
 ```sql
 SELECT *
@@ -35,13 +35,13 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-最後一行將字串 'My Query Label' 標記為查詢。 此標記很有用,因為標籤可通過 DMV 進行查詢。
+最後一行將字串 'My Query Label' 標記為查詢。 此標記很有説明，因為標籤可透過 Dmv 查詢。
 
 查詢標籤提供可找出問題查詢的機制，並可協助透過 ELT 執行識別進度。
 
-良好的命名慣例非常有幫助。 例如,使用 PROJECT、程式、聲明或註釋啟動標籤可唯一標識原始程式碼管理中的所有代碼之間的查詢。
+良好的命名慣例非常有幫助。 例如，以專案、程式、語句或批註開頭的標籤，可唯一識別原始檔控制中所有程式碼之間的查詢。
 
-以下查詢使用動態管理檢視按分頁進行搜尋:
+下列查詢會使用動態管理檢視依標籤進行搜尋：
 
 ```sql
 SELECT  *

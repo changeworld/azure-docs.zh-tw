@@ -1,5 +1,5 @@
 ---
-title: Linux 的 Azure VM 擴展和功能
+title: 適用于 Linux 的 Azure VM 延伸模組和功能
 description: 了解哪些擴充功能適用於 Azure 虛擬機器，並依它們提供或改善的內容來分組。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.openlocfilehash: 67df46742be52b03bd91af19654fbfac5df29646
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79250513"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>適用於 Linux 的虛擬機器擴充功能和功能
@@ -37,7 +37,7 @@ Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛�
 
 除了處理序特定擴充功能，自訂指令碼延伸模組適用於 Windows 和 Linux 虛擬機器。 適用於 Linux 的自訂指令碼擴充可讓任何 Bash 指令碼在虛擬機器上執行。 自訂指令碼對於設計需要超過原生 Azure 工具可提供之設定的 Azure 部署很有用。 如需詳細資訊，請參閱 [Linux VM 自訂指令碼延伸模組](custom-script-linux.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要處理虛擬機器上的擴充，您需要安裝 Azure Linux 代理程式。 某些個別的擴充會有先決條件，例如可存取資源或相依性。
 
@@ -45,7 +45,7 @@ Azure 虛擬機器 (VM) 擴充功能是小型的應用程式，可在 Azure 虛�
 
 Azure 虛擬機器代理程式可管理 Azure 虛擬機器與 Azure 網狀架構控制器之間的互動。 虛擬機器代理程式負責部署和管理 Azure 虛擬機器的許多功能層面，包括執行虛擬機器擴充功能。 Azure 虛擬機器代理程式會預先安裝在 Azure Marketplace 映像上，並可手動安裝在支援的作業系統上。 適用於 Linux 的 Azure 虛擬機器代理程式就是所謂的 Linux 代理程式。
 
-有關支援的作業系統和安裝說明的資訊，請參閱 Azure[虛擬機器代理](agent-linux.md)。
+如需有關支援的作業系統和安裝指示的詳細資訊，請參閱[Azure 虛擬機器代理程式](agent-linux.md)。
 
 #### <a name="supported-agent-versions"></a>支援的代理程式版本
 
@@ -71,7 +71,7 @@ Linux 代理程式必須有 Proxy 伺服器支援，才能重新導向代理程�
 
 ## <a name="discover-vm-extensions"></a>探索 VM 擴充功能
 
-有許多不同的虛擬機器擴充功能可與 Azure 虛擬機器搭配使用。 若要查看完整清單，請使用 [az vm extension image list](/cli/azure/vm/extension/image#az-vm-extension-image-list)。 下面的示例列出了*西部*位置的所有可用擴展：
+有許多不同的虛擬機器擴充功能可與 Azure 虛擬機器搭配使用。 若要查看完整清單，請使用 [az vm extension image list](/cli/azure/vm/extension/image#az-vm-extension-image-list)。 下列範例會列出*westus*位置中所有可用的擴充功能：
 
 ```azurecli
 az vm extension image list --location westus --output table
@@ -85,7 +85,7 @@ Azure 虛擬機器擴充功能可以在現有的虛擬機器上執行，這在�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure 虛擬機器擴充功能可以透過 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 命令，針對現有的虛擬機器執行。 下面的示例*針對名為*myVM 的資源組中名為*myVM*的 VM 運行自訂腳本擴展。 將要運行的示例資源組名稱、VM 名稱和腳本（HTTPs：\//raw.githubusercontent.com/me/project/hello.sh）替換為您自己的資訊。 
+Azure 虛擬機器擴充功能可以透過 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 命令，針對現有的虛擬機器執行。 下列範例會針對名為*myResourceGroup*的資源群組中名為*myVM*的 VM 執行自訂腳本延伸模組。 以您自己的資訊取代範例資源組名、VM 名稱和要執行\/的腳本（HTTPs：/raw.githubusercontent.com/me/project/hello.sh）。 
 
 ```azurecli
 az vm extension set `
@@ -336,7 +336,7 @@ INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Launch command:diagnost
 
 1. 若要查看 Linux 代理程式記錄，請在 */var/log/waagent.log* 中檢視您佈建擴充功能時的活動
 
-2. 在 */var/log/azure/\<副檔名中*查看實際擴展日誌以瞭解更多詳細資訊>
+2. 檢查實際的擴充記錄，以取得*\</var/log/azure/extensionName>* 中的詳細資料
 
 3. 在擴充功能特定的疑難排解章節中，查看錯誤碼、已知問題等。
 
@@ -403,12 +403,12 @@ az vm extension delete \
 
 ## <a name="common-vm-extension-reference"></a>常見的 VM 擴充功能參考
 
-| 擴充功能名稱 | 描述 | 詳細資訊 |
+| 擴充功能名稱 | 描述 | 更多資訊 |
 | --- | --- | --- |
-| Linux 的自訂指令碼擴充功能 |對「Azure 虛擬機器」執行指令碼 |[Linux 的自訂腳本擴展](custom-script-linux.md) |
-| VM 存取擴充功能 |重新取得對「Azure 虛擬機器」的存取權 |[VM 訪問擴展](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
-| Azure 診斷擴充功能 |管理「Azure 診斷」 |[Azure 診斷擴展](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Azure VM 存取擴充功能 |管理使用者和認證 |[Linux 的 VM 訪問擴展](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Linux 的自訂指令碼擴充功能 |對「Azure 虛擬機器」執行指令碼 |[適用于 Linux 的自訂腳本擴充功能](custom-script-linux.md) |
+| VM 存取擴充功能 |重新取得對「Azure 虛擬機器」的存取權 |[VM 存取擴充功能](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
+| Azure 診斷擴充功能 |管理「Azure 診斷」 |[Azure 診斷擴充功能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
+| Azure VM 存取擴充功能 |管理使用者和認證 |[適用于 Linux 的 VM 存取擴充功能](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>後續步驟
 

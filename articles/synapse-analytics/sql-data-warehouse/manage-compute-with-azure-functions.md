@@ -1,6 +1,6 @@
 ---
-title: 教學:使用 Azure 函式管理計算
-description: 如何使用 Azure 函數在 Azure 同步分析中管理 SQL 池的計算。
+title: 教學課程：使用 Azure Functions 管理計算
+description: 如何使用 Azure 函式來管理 Azure Synapse 分析中的 SQL 集區計算。
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,25 +12,25 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: aa2cff552b49bceeaf6fd46510bf78384f0e7bfb
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80631954"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure 函數管理 Azure 突觸分析 SQL 池中的計算資源
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-synapse-analytics-sql-pool"></a>使用 Azure Functions 來管理 Azure Synapse Analytics SQL 集區中的計算資源
 
-本教學使用 Azure 函數管理 Azure 突觸分析中 SQL 池的計算資源。
+本教學課程使用 Azure Functions 來管理 Azure Synapse Analytics 中 SQL 集區的計算資源。
 
-為了將 Azure 函數應用與 SQL 池一起使用,您必須創建一個[服務主體帳戶](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json),該帳戶在與 SQL 池實例相同的訂閱下具有參與者訪問許可權。
+若要搭配使用 Azure 函數應用程式與 SQL 集區，您必須在與 SQL 集區實例相同的訂用帳戶下，建立具有參與者存取權的[服務主體帳戶](../../active-directory/develop/howto-create-service-principal-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本部署以計時器為基礎的 Scaler
 
 部署此範本，您需要下列資訊：
 
-- SQL 函元物件中的資源群組名稱
-- SQL 池實體的邏輯伺服器名稱
-- SQL 池實體名稱
+- 您的 SQL 集區實例所在的資源組名
+- 您的 SQL 集區實例所在的邏輯伺服器名稱
+- SQL 集區實例的名稱
 - Azure Active Directory 的租用戶識別碼 (目錄識別碼)
 - 訂用帳戶識別碼
 - 服務主體的應用程式識別碼
@@ -97,7 +97,7 @@ ms.locfileid: "80631954"
 
 目前範本中只包含兩個調整函式。 使用這些函式，在一天當中，您只能相應減少一次和相應增加一次。 您必須新增另一個觸發程序，才能取得更細微的控制，例如每日相應減少多次或在週末有不同的調整行為。
 
-1. 建立新的空白函式。 選擇*+*「功能」 的按鈕以顯示功能樣本窗格。
+1. 建立新的空白函式。 選取 [ *+* 函數位置] 附近的按鈕，以顯示 [函式範本] 窗格。
 
    ![建立新的函式](./media/manage-compute-with-azure-functions/create-new-function.png)
 
@@ -171,4 +171,4 @@ ms.locfileid: "80631954"
 
 深入了解[計時器觸發程序](../../azure-functions/functions-create-scheduled-function.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) Azure Functions。
 
-簽出 SQL 函[式庫 。](https://github.com/Microsoft/sql-data-warehouse-samples)
+簽出 SQL 集區[範例存放庫](https://github.com/Microsoft/sql-data-warehouse-samples)。

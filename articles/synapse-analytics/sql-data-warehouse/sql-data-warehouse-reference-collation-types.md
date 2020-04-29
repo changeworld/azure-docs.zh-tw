@@ -1,6 +1,6 @@
 ---
-title: 資料倉儲排序規則類型
-description: Azure 同步分析 SQL 池中支援的排序規則類型。
+title: 資料倉儲定序類型
+description: Azure Synapse Analytics SQL 集區中支援的定序類型。
 services: synapse-analytics
 author: antvgski
 manager: igorstan
@@ -11,25 +11,25 @@ ms.author: anvang
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: 202bbaf4ea53dd6ba285e79dfa9e6ce782c0903e
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80633093"
 ---
-# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Azure 同步分析 SQL 池的資料庫排序規則支援
+# <a name="database-collation-support-for-azure-synapse-analytics-sql-pool"></a>Azure Synapse Analytics SQL 集區的資料庫定序支援
 
-創建新的 Azure Synapse SQL 池資料庫時,可以從 Azure 門戶更改預設資料庫排序規則。 此功能使得使用 3800 支援的資料庫排序規則之一創建新資料庫變得更加容易。
+當您建立新的 Azure Synapse SQL 集區資料庫時，您可以變更 Azure 入口網站的預設資料庫定序。 這項功能可讓您更輕鬆地使用3800支援的其中一個資料庫定序建立新的資料庫。
 
-排序規則為基於字元的數據類型提供區域設置、代碼頁、排序順序和字元敏感度規則。 選擇後,需要排序規則資訊的所有列和運算式都將從資料庫設置繼承所選排序規則。 可以通過顯式聲明基於字元的數據類型的不同排序規則來覆蓋預設繼承。
+定序提供以字元為基礎之資料類型的地區設定、字碼頁、排序次序和字元敏感度規則。 一旦選擇之後，所有需要定序資訊的資料行和運算式都會從資料庫設定繼承所選的定序。 您可以明確陳述以字元為基礎之資料類型的不同定序，來覆寫預設的繼承。
 
-## <a name="changing-collation"></a>變更排序規則
+## <a name="changing-collation"></a>變更定序
 
-要更改預設排序規則,請更新到預配體驗中的「拼貼」欄位。
+若要變更預設定序，請更新布建體驗中的定序欄位。
 
-例如,如果要將預設排序規則更改為區分大小寫,只需將排序規則從SQL_Latin1_General_CP1_CI_AS重命名為SQL_Latin1_General_CP1_CS_AS。
+例如，如果您想要將預設定序變更為區分大小寫，您只需要將定序從 SQL_Latin1_General_CP1_CI_AS 重新命名為 SQL_Latin1_General_CP1_CS_AS。
 
-## <a name="list-of-unsupported-collation-types"></a>不支援的排序規則類型清單
+## <a name="list-of-unsupported-collation-types"></a>不支援的定序類型清單
 
 * Japanese_Bushu_Kakusu_140_BIN
 * Japanese_Bushu_Kakusu_140_BIN2
@@ -102,12 +102,12 @@ ms.locfileid: "80633093"
 * SQL_EBCDIC1141_CP1_CS_AS
 * SQL_EBCDIC277_2_CP1_CS_AS
 
-## <a name="checking-the-current-collation"></a>檢查目前的排序規則
+## <a name="checking-the-current-collation"></a>檢查目前的定序
 
-要檢查資料庫的目前排序規則,可以執行以下 T-SQL 代碼段:
+若要檢查資料庫的目前定序，您可以執行下列 T-sql 程式碼片段：
 
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 ```
 
-當傳遞「排序規則」作為屬性參數時,Database PropertyEx 函數將返回指定的資料庫的當前排序規則。 有關詳細資訊,請參閱[資料庫屬性Ex。](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+當傳遞 ' 定序 ' 做為屬性參數時，DatabasePropertyEx 函數會傳回所指定資料庫的目前定序。 如需詳細資訊，請參閱[DatabasePropertyEx](/sql/t-sql/functions/databasepropertyex-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)。
