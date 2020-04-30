@@ -11,17 +11,17 @@ ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: d103b22338672f031fa4f91349a8376f86b703c8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81530961"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Microsoft 認知服務的自然語言支援
 
-Azure 認知服務使您能夠構建能夠查看、聽到、與使用者交談和理解使用者的應用程式。 這些服務共支援三十餘種語言，讓使用者能夠自然地與您的應用程式溝通。 使用以下連結按服務查看語言可用性。
+Azure 認知服務可讓您建立應用程式，以查看、聆聽、說話及瞭解您的使用者。 這些服務共支援三十餘種語言，讓使用者能夠自然地與您的應用程式溝通。 使用下列連結以依服務來觀看語言可用性。
 
-這些認知服務與語言無關,沒有基於人類語言的限制。
+這些認知服務與語言無關，而且沒有以人類語言為基礎的限制。
 
 * [異常偵測器 (預覽)](./anomaly-detector/index.yml)
 * [自訂視覺](./Custom-Vision-Service/index.yml)
@@ -63,7 +63,7 @@ Azure 認知服務使您能夠構建能夠查看、聽到、與使用者交談�
 
 * [內容仲裁](./content-moderator/text-moderation-api-languages.md)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
-* [什麼是認知服務?](welcome.md)
+* [認知服務是什麼？](welcome.md)
 * [建立帳戶](cognitive-services-apis-create-account.md)

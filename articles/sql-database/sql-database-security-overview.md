@@ -12,10 +12,10 @@ ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
 ms.openlocfilehash: 1d08770d81ade2d976142b2ce1fd94dae044cf32
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461390"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL Database 安全性功能的概觀
@@ -36,7 +36,7 @@ IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取�
 
 [虛擬網路服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)會透過 Azure 骨幹擴充您的虛擬網路連線能力，並且讓 Azure SQL Database 找出流量源自的虛擬網路子網路。 若要允許流量觸達 Azure SQL Database，請使用 SQL[服務標籤](../virtual-network/security-overview.md)，允許透過網路安全性群組輸出流量。
 
-[虛擬網路規則](sql-database-vnet-service-endpoint-rule-overview.md)使 Azure SQL 資料庫只能接受從虛擬網路中的選定子網發送的通信。
+[虛擬網路規則](sql-database-vnet-service-endpoint-rule-overview.md)可讓 Azure SQL Database 只接受虛擬網路內所選子網所傳送的通訊。
 
 > [!NOTE]
 > 控制防火牆規則的存取「不」** 適用於**受控執行個體**。 如需所需網路組態的詳細資訊，請參閱[連線到受控執行個體](sql-database-managed-instance-connect-app.md)
@@ -50,30 +50,30 @@ IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取�
 
 驗證是證明使用者宣告身分的程序。 Azure SQL Database 支援兩種驗證類型：
 
-- **SQL 認證**:
+- **SQL 驗證**：
 
     SQL 資料庫驗證是指使用者使用使用者名稱和密碼連線到 [Azure SQL Database](sql-database-technical-overview.md) 時的驗證。 在資料庫的資料庫伺服器建立期間，必須指定採取使用者名稱和密碼的「伺服器管理員」登入。 使用這些認證時，「伺服器管理員」能夠以資料庫擁有者身分向該資料庫伺服器上的任何資料庫進行驗證。 在那之後，伺服器管理員可以建立其他 SQL 登入和使用者，可讓使用者使用使用者名稱和密碼進行連線。
 
-- **Azure 的目錄身份認證**:
+- **Azure Active Directory 驗證**：
 
-    Azure 活動目錄身份驗證是一種透過使用 Azure 活動目錄 (Azure AD) 中的識別連接到[Azure SQL 資料庫](sql-database-technical-overview.md)和 SQL[資料倉儲](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的機制。 Azure AD 驗證可讓系統管理員在一個中央位置，集中管理資料庫使用者的身分識別和權限以及其他 Microsoft 服務。 這包括密碼儲存體的最小化，並啟用集中式密碼輪替原則。
+    Azure Active Directory 驗證是使用 Azure Active Directory （Azure AD）中的身分識別連接到[Azure SQL Database](sql-database-technical-overview.md)和[SQL 資料倉儲](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)的機制。 Azure AD 驗證可讓系統管理員在一個中央位置，集中管理資料庫使用者的身分識別和權限以及其他 Microsoft 服務。 這包括密碼儲存體的最小化，並啟用集中式密碼輪替原則。
 
      必須建立稱為 **Active Directory 系統管理員**的伺服器管理員，才能使用 Azure AD 驗證搭配 SQL Database。 如需詳細資訊，請參閱[使用 Azure Active Directory 驗證連線到 SQL Database](sql-database-aad-authentication.md)。 Azure AD 驗證支援受控和同盟帳戶。 同盟帳戶支援與 Azure AD 同盟的客戶網域的 Windows 使用者和群組。
 
     其他可用的 Azure AD 驗證選項為[適用於 SQL Server Management Studio 的 Active Directory 通用驗證](sql-database-ssms-mfa-authentication.md)連線，包括 [Multi-factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) 和[條件式存取](sql-database-conditional-access.md)。
 
 > [!IMPORTANT]
-> 在 Azure 內管理資料庫和伺服器，是由入口網站使用者帳戶的角色指派所控制。 如需有關此文章的詳細資訊，請參閱 [Azure 入口網站中的角色型存取控制](../role-based-access-control/overview.md)。 控制防火牆規則的存取「不」** 適用於**受控執行個體**。 有關所需網路配置的詳細資訊,請參閱以下有關[連接到託管實例](sql-database-managed-instance-connect-app.md)的文章。
+> 在 Azure 內管理資料庫和伺服器，是由入口網站使用者帳戶的角色指派所控制。 如需有關此文章的詳細資訊，請參閱 [Azure 入口網站中的角色型存取控制](../role-based-access-control/overview.md)。 控制防火牆規則的存取「不」** 適用於**受控執行個體**。 如需所需網路設定的詳細資訊，請參閱下列有關[連接到受控實例](sql-database-managed-instance-connect-app.md)的文章。
 
 ## <a name="authorization"></a>授權
 
-授權是指在 Azure SQL Database 內指派給使用者的權限，並可決定允許使用者執行的動作。 許可權是通過將使用者帳戶添加到[資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles)和向這些角色分配資料庫級許可權或通過向使用者授予某些[物件級許可權](/sql/relational-databases/security/permissions-database-engine)來控制的。 如需詳細資訊，請參閱[登入與使用者](sql-database-manage-logins.md)
+授權是指在 Azure SQL Database 內指派給使用者的權限，並可決定允許使用者執行的動作。 許可權的控制方式是將使用者帳戶新增至[資料庫角色](/sql/relational-databases/security/authentication-access/database-level-roles)，並將資料庫層級許可權指派給這些角色，或授與使用者特定的[物件層級許可權](/sql/relational-databases/security/permissions-database-engine)。 如需詳細資訊，請參閱[登入與使用者](sql-database-manage-logins.md)
 
-最佳做法是在需要時創建自定義角色。 將使用者添加到具有執行作業功能所需的最低許可權的角色。 不要直接向使用者分配許可權。 伺服器管理員帳戶是內建db_owner角色的成員,該角色具有廣泛的許可權,應僅授予少數具有管理職責的使用者。 此選項, 您可以在 Azure SQL 資料庫應用程式,請使用[EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql)指定被呼叫模組的執行上下文,或使用權限有限的[應用程式角色](/sql/relational-databases/security/authentication-access/application-roles)。 這種做法可確保連接到資料庫的應用程式具有應用程式所需的最少許可權。 遵循這些最佳做法也促進了職責的分離。
+最佳做法是在需要時建立自訂角色。 將使用者新增至具有執行其工作功能所需最低許可權的角色。 請勿將許可權直接指派給使用者。 伺服器系統管理員帳戶是內建 db_owner 角色的成員，其具有廣泛的許可權，而且只能授與少數具有系統管理職責的使用者。 針對 Azure SQL Database 應用程式，請使用[EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql)來指定所呼叫模組的執行內容，或使用有限許可權的[應用程式角色](/sql/relational-databases/security/authentication-access/application-roles)。 這種作法可確保連接至資料庫的應用程式具有應用程式所需的最低許可權。 遵循這些最佳作法也會促進職責的分離。
 
 ### <a name="row-level-security"></a>資料列層級安全性
 
-資料列層級安全性可讓客戶根據執行查詢的使用者特性 (例如群組成員資格或執行內容)，來控制對資料庫資料表中資料列的存取。 行級安全性還可用於實現基於標籤的自定義安全概念。 有關詳細資訊,請參閱[行級安全性](/sql/relational-databases/security/row-level-security)。
+資料列層級安全性可讓客戶根據執行查詢的使用者特性 (例如群組成員資格或執行內容)，來控制對資料庫資料表中資料列的存取。 資料列層級安全性也可以用來執行以自訂標籤為基礎的安全性概念。 如需詳細資訊，請參閱資料[列層級安全性](/sql/relational-databases/security/row-level-security)。
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
@@ -81,13 +81,13 @@ IP 防火牆規則會根據每個要求的來源 IP 位址授與資料庫存取�
 
 SQL Database 可藉由提供稽核和威脅偵測功能來保護客戶資料。
 
-### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>Azure 監視器紀錄與事件中心中的 SQL 稽核
+### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>Azure 監視器記錄和事件中樞中的 SQL 審核
 
-SQL Database 稽核會將資料庫事件記錄到客戶自有 Azure 儲存體帳戶中的稽核記錄，藉此追蹤資料庫活動並協助維護安全性標準的合規性。 稽核可讓使用者監視進行中的資料庫活動，以及分析和調查歷史活動，以找出潛在威脅或可疑的濫用和安全性違規。 有關詳細資訊,請參閱開始[SQL 資料庫審核](sql-database-auditing.md)。  
+SQL Database 稽核會將資料庫事件記錄到客戶自有 Azure 儲存體帳戶中的稽核記錄，藉此追蹤資料庫活動並協助維護安全性標準的合規性。 稽核可讓使用者監視進行中的資料庫活動，以及分析和調查歷史活動，以找出潛在威脅或可疑的濫用和安全性違規。 如需詳細資訊，請參閱開始使用[SQL Database 的審核](sql-database-auditing.md)。  
 
 ### <a name="advanced-threat-protection"></a>進階威脅防護
 
-高級威脅防護正在分析 SQL Server 日誌,以檢測訪問或利用資料庫的異常行為和潛在有害嘗試。 為可疑活動(如 SQL 注入、潛在數據滲透和暴力攻擊)或訪問模式中的異常創建警報,以捕獲特權升級和違反認證使用。 警報從[Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看,其中提供了可疑活動的詳細資訊,並提供了進一步調查的建議以及緩解威脅的行動。 每個伺服器可以啟用高級威脅防護,但需額外付費。 有關詳細資訊,請參閱[開始使用 SQL 資料庫進階威脅保護](sql-database-threat-detection.md)。
+先進的威脅防護會分析您的 SQL Server 記錄，以偵測不尋常的行為，以及可能有害的存取或攻擊資料庫嘗試。 系統會針對可疑的活動建立警示，例如 SQL 插入式攻擊、可能的資料滲透和暴力密碼破解攻擊，或存取模式中的異常狀況，以攔截許可權擴大和違反的認證使用。 系統會從[Azure 資訊安全中心](https://azure.microsoft.com/services/security-center/)查看警示，其中會提供可疑活動的詳細資料，以及指定進一步調查的建議，以及減輕威脅的動作。 每個伺服器可以啟用先進的威脅防護，以額外收費。 如需詳細資訊，請參閱[開始使用 SQL Database Advanced 威脅防護](sql-database-threat-detection.md)。
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
@@ -97,16 +97,16 @@ SQL Database 稽核會將資料庫事件記錄到客戶自有 Azure 儲存體帳
 
 SQL Database 可藉由使用[傳輸層安全性](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server)將移動中的資料加密來保護客戶資料。
 
-Sql Server 對所有連接的所有時間都強制實施加密 (SSL/TLS)。 這可確保在用戶端和伺服器之間"傳輸"所有資料,而不考慮連接字串中的**加密**或**TrustServer 證書**設置。
+Sql Server 會針對所有連線強制執行加密（SSL/TLS）。 這可確保所有資料都會在用戶端與伺服器之間「傳輸中」加密，而不論連接字串中的 [**加密**] 或 [ **TrustServerCertificate** ] 設定。
 
-最佳做法是,建議在應用程式的連接字串中指定加密連接,_**不要**_ 信任伺服器證書。 這將強制應用程式驗證伺服器證書,從而防止應用程式在中間類型攻擊中易受人的攻擊。
+最佳做法是，建議您在應用程式的連接字串中指定加密連接，而_**不**_ 信任伺服器憑證。 這會強制您的應用程式驗證伺服器憑證，進而防止您的應用程式容易遭受中間類型攻擊。
 
-例如,當使用ADO.NET驅動程式時,這是通過**加密_真實**和信任**伺服器證書_False**來完成的。 如果您從 Azure 入口網站取得連接字串，則它將具有正確的設定。
+例如，使用 ADO.NET 驅動程式時，會透過**Encrypt = True**和**TrustServerCertificate = False**來完成此作業。 如果您從 Azure 入口網站取得連接字串，則它將具有正確的設定。
 
 > [!IMPORTANT]
-> 請注意,某些非 Microsoft 驅動程式默認情況下可能不使用 TLS,或者依賴舊版本的 TLS(<1.2)來運行。 在這種情況下,SQL Server 仍然允許您連接到資料庫。 但是,我們建議您評估允許此類驅動程式和應用程式連接到 SQL 資料庫的安全風險,尤其是在存儲敏感數據時。
+> 請注意，某些非 Microsoft 驅動程式預設可能不會使用 TLS，或依賴舊版 TLS （<1.2）來運作。 在此情況下 SQL Server 仍可讓您連接到資料庫。 不過，我們建議您評估允許這類驅動程式和應用程式連接到 SQL Database 的安全性風險，特別是當您儲存敏感性資料時。
 >
-> 有關 TLS 和連線的詳細資訊,請參閱[TLS 注意事項](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
+> 如需 TLS 和連線能力的進一步資訊，請參閱[tls 考慮](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 
 ### <a name="transparent-data-encryption-encryption-at-rest"></a>透明資料加密 (待用資料加密)
 
@@ -146,12 +146,12 @@ SQL Database 動態資料遮罩可藉由遮罩處理，使不具權限的使用�
 
 如需詳細資訊，請參閱[開始使用資料探索與分類](sql-database-data-discovery-and-classification.md)。
 
-### <a name="compliance"></a>法規遵循
+### <a name="compliance"></a>合規性
 
-除了上述可協助您的應用程式符合各種安全性需求的特色和功能之外，Azure SQL Database 也定期參與稽核，並且經過認證符合許多法規標準。 有關詳細資訊,請參閱 Microsoft [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942),您可以在其中找到最新的 SQL 資料庫合規性認證清單。
+除了上述可協助您的應用程式符合各種安全性需求的特色和功能之外，Azure SQL Database 也定期參與稽核，並且經過認證符合許多法規標準。 如需詳細資訊，請參閱[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，您可以在此找到最新的 SQL Database 合規性認證清單。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 有關 SQL 資料庫登入、使用者帳戶、資料庫角色和權限的使用的討論,請參閱[管理登錄名和使用者帳戶](sql-database-manage-logins.md)。
+- 如需在 SQL Database 中使用登入、使用者帳戶、資料庫角色和許可權的討論，請參閱[管理登入和使用者帳戶](sql-database-manage-logins.md)。
 - 如需資料庫稽核的相關討論，請參閱 [SQL Database 稽核 (英文)](sql-database-auditing.md)。
 - 如需威脅偵測的相關討論，請參閱 [SQL Database 威脅偵測](sql-database-threat-detection.md)。

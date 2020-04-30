@@ -1,5 +1,5 @@
 ---
-title: 應用程式 HA 的路由流量 - Azure CLI - 流量管理員
+title: 適用于應用程式 HA 的路由流量-Azure CLI-流量管理員
 description: Azure CLI 指令碼範例：路由傳送流量以達到應用程式的高可用性
 services: traffic-manager
 documentationcenter: traffic-manager
@@ -15,10 +15,10 @@ ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: rohink
 ms.openlocfilehash: e108fbe54ce67d4eb354319450259fc410462c53
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81460608"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>使用 Azure CLI 路由傳送流量以達到應用程式的高可用性

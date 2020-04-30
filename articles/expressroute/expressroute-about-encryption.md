@@ -1,6 +1,6 @@
 ---
-title: Azure 快速路由:關於加密
-description: 瞭解快速路由加密。
+title: Azure ExpressRoute：關於加密
+description: 深入瞭解 ExpressRoute 加密。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,43 +8,43 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: cherylmc
 ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461458"
 ---
-# <a name="expressroute-encryption"></a>快速路由加密
+# <a name="expressroute-encryption"></a>ExpressRoute 加密
  
-ExpressRoute 支援一些加密技術,以確保網路和Microsoft網路之間遍曆數據的機密性和完整性。
+ExpressRoute 支援幾種加密技術，可確保您的網路與 Microsoft 網路之間資料的機密性和完整性。
 
-## <a name="point-to-point-encryption-by-macsec-faq"></a>由 MACsec 常見問題解答進行點對點加密
-MACsec 是[IEEE 標準](https://1.ieee802.org/security/802-1ae/)。 它在媒體存取控制 (MAC) 級別或網路層 2 加密數據。 當您透過[ExpressRoute Direct](expressroute-erdirect-about.md)連接到 Microsoft 時,您可以使用 MACsec 加密網路設備和微軟網路設備之間的物理連結。 默認情況下,在 ExpressRoute Direct 埠上禁用 MACsec。 您自帶 MACsec 金鑰進行加密,並將儲存[在 Azure 金鑰保存 。](../key-vault/general/overview.md) 您決定何時輪換金鑰。 請參閱下面的其他常見問題解答。
-### <a name="can-i-enable-macsec-on-my-expressroute-circuit-provisioned-by-an-expressroute-provider"></a>我能否在由快遞供應商預配的 ExpressRoute 電路上啟用 MACsec?
-否。 MACsec 使用一個實體(即客戶)擁有的密鑰對物理鏈路上的所有流量進行加密。 因此,它僅在 ExpressRoute Direct 上可用。
-### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>是否可以加密 ExpressRoute Direct 連接埠上的一些 ExpressRoute 電路,並在同一埠上保留其他電路未加密? 
-否。 啟用 MACsec 後,所有網路控制流量(例如,BGP 數據流量和客戶數據流量)將被加密。 
-### <a name="when-i-enabledisable-macsec-or-update-macsec-key-will-my-on-premises-network-lose-connectivity-to-microsoft-over-expressroute"></a>當我啟用/禁用 MACsec 或更新 MACsec 密鑰時,我的本地網路是否會通過 ExpressRoute 失去與 Microsoft 的連接?
-是。 對於 MACsec 設定,我們僅支援預共用金鑰模式。 這意味著您需要在您的設備和Microsoft上(透過我們的API)更新金鑰。 此更改不是原子的,因此當兩側存在關鍵不匹配時,您將失去連接。 我們強烈建議您為配置更改安排維護視窗。 為了盡量減少停機時間,我們建議您在將網路流量切換到另一個鏈路后,一次更新 ExpressRoute Direct 的一個鏈路上的配置。  
-### <a name="will-traffic-continue-to-flow-if-theres-a-mismatch-in-macsec-key-between-my-devices-and-microsofts"></a>如果我的設備與 Microsoft 的 MACsec 金鑰不匹配,流量是否會繼續流動?
-否。 如果 MACsec 已配置,並且發生密鑰不匹配,您將失去與 Microsoft 的連接。 換句話說,我們不會回到未加密的連接,公開您的數據。 
-### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>在 ExpressRoute Direct 上啟用 MACsec 是否會降低網路效能?
-MACsec 加密和解密發生在我們使用的路由器上的硬體中。 對我們這邊沒有性能影響。 但是,您應該與網路供應商聯繫您使用的設備,並查看 MACsec 是否有任何性能影響。
-### <a name="which-cipher-suites-are-supported-for-encryption"></a>加密支援哪些密碼套件?
+## <a name="point-to-point-encryption-by-macsec-faq"></a>依 MACsec 的點對點加密常見問題
+MACsec 是[IEEE 標準](https://1.ieee802.org/security/802-1ae/)。 它會將媒體存取控制（MAC）層級或網路層2上的資料加密。 當您透過[ExpressRoute Direct](expressroute-erdirect-about.md)連接到 microsoft 時，您可以使用 MACsec 來加密您的網路裝置與 microsoft 網路裝置之間的實體連結。 根據預設，ExpressRoute Direct 埠上的 MACsec 已停用。 您會攜帶自己的 MACsec 金鑰進行加密，並將它儲存在[Azure Key Vault](../key-vault/general/overview.md)中。 您決定何時要旋轉金鑰。 請參閱下面的其他常見問題。
+### <a name="can-i-enable-macsec-on-my-expressroute-circuit-provisioned-by-an-expressroute-provider"></a>我可以在 ExpressRoute 提供者布建的 ExpressRoute 線路上啟用 MACsec 嗎？
+否。 MACsec 會使用一個實體（也就是客戶）所擁有的金鑰，來加密實體連結上的所有流量。 因此，它僅適用于 ExpressRoute Direct。
+### <a name="can-i-encrypt-some-of-the-expressroute-circuits-on-my-expressroute-direct-ports-and-leave-other-circuits-on-the-same-ports-unencrypted"></a>我可以加密 ExpressRoute Direct 埠上的某些 ExpressRoute 線路，並在未加密的相同埠上保留其他線路嗎？ 
+否。 MACsec 啟用後，所有網路控制流量（例如，BGP 資料流量和客戶資料流量）都會加密。 
+### <a name="when-i-enabledisable-macsec-or-update-macsec-key-will-my-on-premises-network-lose-connectivity-to-microsoft-over-expressroute"></a>當我啟用/停用 MACsec 或更新 MACsec 金鑰時，我的內部部署網路會透過 ExpressRoute 失去與 Microsoft 的連線能力嗎？
+是。 針對 MACsec 設定，我們只支援預先共用金鑰模式。 這表示您需要在您的裝置和 Microsoft （透過我們的 API）上更新金鑰。 這項變更不是不可部分完成的，因此當兩端之間有索引鍵不相符時，您將會失去連線能力。 我們強烈建議您針對設定變更排程維護時段。 若要將停機時間降到最低，建議您在將網路流量切換至另一個連結之後，一次更新一個 ExpressRoute Direct 連結的設定。  
+### <a name="will-traffic-continue-to-flow-if-theres-a-mismatch-in-macsec-key-between-my-devices-and-microsofts"></a>如果我的裝置與 Microsoft 之間的 MACsec 金鑰不相符，流量是否會繼續流動？
+否。 如果 MACsec 已設定，而且發生金鑰不符的情況，您就會失去與 Microsoft 的連線能力。 換句話說，我們不會回復到未加密的連線，而是公開您的資料。 
+### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>啟用 ExpressRoute Direct 的 MACsec 會降低網路效能嗎？
+MACsec 加密和解密會發生在我們使用的路由器上的硬體中。 對我們的端不會有任何效能影響。 不過，您應該向網路廠商檢查您所使用的裝置，並查看 MACsec 是否有任何效能含意。
+### <a name="which-cipher-suites-are-supported-for-encryption"></a>支援加密的加密套件有哪些？
 我們支援 AES128 和 AES256。
 
-## <a name="end-to-end-encryption-by-ipsec-faq"></a>IPsec 常見問題解答的端到端加密
-IPsec 是[IETF 標準](https://tools.ietf.org/html/rfc6071)。 它在 Internet 協定 (IP) 級別或網路層 3 對數據進行加密。 可以使用 IPsec 加密本地網路和 Azure 上的虛擬網路 (VNET) 之間的端到端連接。 請參閱下面的其他常見問題解答。
-### <a name="can-i-enable-ipsec-in-addition-to-macsec-on-my-expressroute-direct-ports"></a>除了在快速路由直接埠上啟用 MACsec 之外,我是否可以啟用 IPsec?
-是。 MACsec 保護您和Microsoft之間的物理連接。 IPsec 保護您與 Azure 上的虛擬網路之間的端到端連接。 您可以獨立啟用它們。 
-### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>我能否使用 Azure VPN 閘道在本地網路和 Azure 虛擬網路之間設置 IPsec 隧道?
-是。 您可以在 ExpressRoute 電路的 Microsoft 對等互連上設置此 IPsec 隧道。 請遵循我們的[設定指南](site-to-site-vpn-over-microsoft-peering.md)。
-### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>我能否使用 Azure VPN 閘道在 Azure 專用對等互連上設置 IPsec 隧道?
-如果採用 Azure 虛擬 WAN,可以按照[以下步驟](../virtual-wan/vpn-over-expressroute.md)加密端到端連接。 如果您有常規的 Azure VNET,則可以在 VNET 中部署第三方 VPN 閘道,並在它和本地 VPN 閘道之間建立 IPsec 隧道。
-### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>在 ExpressRoute 連接上啟用 IPsec 後,您將獲得哪些輸送量?
-如果使用 Azure VPN 閘道,請[在此檢查效能編號](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 如果使用第三方 VPN 閘道,請與供應商聯繫以獲取性能編號。
+## <a name="end-to-end-encryption-by-ipsec-faq"></a>IPsec 常見問題的端對端加密
+IPsec 是一種[IETF 標準](https://tools.ietf.org/html/rfc6071)。 它會以網際網路通訊協定（IP）層級或網路層3來加密資料。 您可以使用 IPsec 來加密內部部署網路與 Azure 上的虛擬網路（VNET）之間的端對端連線。 請參閱下面的其他常見問題。
+### <a name="can-i-enable-ipsec-in-addition-to-macsec-on-my-expressroute-direct-ports"></a>除了 ExpressRoute Direct 埠上的 MACsec 之外，我還可以啟用 IPsec 嗎？
+是。 MACsec 可保護您與 Microsoft 之間的實體連接。 IPsec 會保護您與您的虛擬網路在 Azure 上的端對端連線。 您可以獨立啟用它們。 
+### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-between-my-on-premises-network-and-my-azure-virtual-network"></a>我可以使用 Azure VPN 閘道來設定我的內部部署網路與 Azure 虛擬網路之間的 IPsec 通道嗎？
+是。 您可以透過 ExpressRoute 線路的 Microsoft 對等互連來設定此 IPsec 通道。 遵循我們的設定[指南](site-to-site-vpn-over-microsoft-peering.md)。
+### <a name="can-i-use-azure-vpn-gateway-to-set-up-the-ipsec-tunnel-over-azure-private-peering"></a>我可以使用 Azure VPN 閘道，透過 Azure 私人對等互連來設定 IPsec 通道嗎？
+如果您採用 Azure 虛擬 WAN，您可以遵循[下列步驟](../virtual-wan/vpn-over-expressroute.md)來加密端對端連線。 如果您有一般的 Azure VNET，您可以在 VNET 中部署協力廠商 VPN 閘道，並在其與您的內部部署 VPN 閘道之間建立 IPsec 通道。
+### <a name="what-is-the-throughput-i-will-get-after-enabling-ipsec-on-my-expressroute-connection"></a>在 ExpressRoute 連線上啟用 IPsec 之後，我會得到什麼輸送量？
+如果使用 Azure VPN 閘道，請在[這裡檢查效能數位](../vpn-gateway/vpn-gateway-about-vpngateways.md)。 如果使用協力廠商 VPN 閘道，請洽詢廠商以取得效能資料。
 
 ## <a name="next-steps"></a>後續步驟
-有關 MACsec 配置的詳細資訊,請參閱[配置 MACsec。](expressroute-howto-macsec.md)
+如需 MACsec 設定的詳細資訊，請參閱[Configure MACsec](expressroute-howto-macsec.md) 。
 
-有關 IPsec 配置的詳細資訊,請參閱[配置 IPsec。](site-to-site-vpn-over-microsoft-peering.md)
+如需 IPsec 設定的詳細資訊，請參閱[Configure ipsec](site-to-site-vpn-over-microsoft-peering.md) 。

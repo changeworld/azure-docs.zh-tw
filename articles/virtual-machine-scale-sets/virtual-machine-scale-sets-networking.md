@@ -1,6 +1,6 @@
 ---
 title: Azure 虛擬機器擴展集的網路
-description: 如何為 Azure 虛擬機器縮放集配置一些更進階的網路屬性。
+description: 如何為 Azure 虛擬機器擴展集設定一些更先進的網路屬性。
 author: mimckitt
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mimckitt
 ms.openlocfilehash: efe3a39008361fdf76d80a0c8e7e2e30b061117d
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461341"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 虛擬機器擴展集的網路
@@ -41,27 +41,27 @@ Azure 加速網路可以對虛擬機器啟用 Single Root I/O Virtualization (SR
 }
 ```
 
-## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>Azure 虛擬機器使用 Azure 負載均衡器縮放集
+## <a name="azure-virtual-machine-scale-sets-with-azure-load-balancer"></a>具有 Azure Load Balancer 的 Azure 虛擬機器擴展集
 
-使用虛擬機秤集和負載均衡器時,應考慮以下事項:
+使用虛擬機器擴展集和負載平衡器時，應該考慮下列事項：
 
-* **多個虛擬機器規模集不能使用相同的負載均衡器**。
-* **連接埠轉寄與輸入的站 NAT 規則**:
-  * 每個虛擬機規模集必須具有入站 NAT 規則。
-  * 創建比例集後,無法為負載均衡器的運行狀況探測使用的負載平衡規則修改後埠。 要更改埠,可以通過更新 Azure 虛擬機縮放集、更新埠然後再次配置運行狀況探測來刪除運行狀況探測。
-  * 在負載均衡器的後端池中使用虛擬機器比例設置時,將自動創建預設入站 NAT 規則。
+* **多個虛擬機器擴展集不能使用相同的負載平衡器**。
+* **埠轉送和輸入 NAT 規則**：
+  * 每個虛擬機器擴展集都必須有輸入 NAT 規則。
+  * 建立擴展集之後，無法修改負載平衡器健全狀況探查所使用的負載平衡規則的後端埠。 若要變更埠，您可以藉由更新 Azure 虛擬機器擴展集來移除健康情況探查、更新埠，然後再次設定健康情況探查。
+  * 在負載平衡器的後端集區中使用虛擬機器擴展集時，會自動建立預設的輸入 NAT 規則。
 * **負載平衡規則**：
-  * 在負載均衡器的後端池中使用虛擬機比例設置時,將自動創建預設負載平衡規則。
-* **出站規則**:
-  *  要為負載平衡規則已引用的後端池建立出站規則,您需要在創建入站負載平衡規則時,首先在門戶中將 **「創建隱式出站規則」** 標記為 **「否**」 。
+  * 在負載平衡器後端集區中使用虛擬機器擴展集時，會自動建立預設的負載平衡規則。
+* **輸出規則**：
+  *  若要建立負載平衡規則已參考之後端集區的輸出規則，您必須先在建立輸入負載平衡規則時，將入口網站中的 **[建立隱含輸出規則]** 標示為 [**否**]。
 
-  :::image type="content" source="./media/vmsslb.png" alt-text="負載平衡規則建立" border="true":::
+  :::image type="content" source="./media/vmsslb.png" alt-text="建立負載平衡規則" border="true":::
 
-以下方法可用於部署具有現有 Azure 負載均衡器的虛擬機規模集。
+下列方法可用於部署具有現有 Azure 負載平衡器的虛擬機器擴展集。
 
-* [使用 Azure 門戶使用現有 Azure 負載均衡器設定虛擬機器規模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)。
-* [使用 Azure PowerShell 使用現有的 Azure 負載均衡器設定虛擬機器規模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)。
-* [使用 Azure CLI 設定具有現有 Azure 負載均衡器的虛擬機器規模集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)。
+* [使用 Azure 入口網站，設定具有現有 Azure Load Balancer 的虛擬機器擴展集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-portal)。
+* [使用 Azure PowerShell，設定具有現有 Azure Load Balancer 的虛擬機器擴展集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-powershell)。
+* [使用 Azure CLI，設定具有現有 Azure Load Balancer 的虛擬機器擴展集](https://docs.microsoft.com/azure/load-balancer/configure-vm-scale-set-cli)。
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>建立參考應用程式閘道的擴展集
 若要建立使用應用程式閘道的擴展集，請和此 ARM 範本設定中一樣，參考擴展集 ipConfigurations 區段中的應用程式閘道後端位址集區：

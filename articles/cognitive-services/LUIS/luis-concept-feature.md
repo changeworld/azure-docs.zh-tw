@@ -1,5 +1,5 @@
 ---
-title: 功能 - LUIS
+title: 功能-LUIS
 titleSuffix: Azure Cognitive Services
 description: 將特性新增至語言模型，以針對如何辨識您想要標示或分類的輸入，提供相關提示。
 services: cognitive-services
@@ -12,52 +12,52 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
 ms.openlocfilehash: 5b8257e24cf52d01be8065d97db17fd685aa316d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81531893"
 ---
-# <a name="machine-learned-features"></a>機器學習功能
+# <a name="machine-learned-features"></a>機器學習的功能
 
-在機器學習中,_功能_是系統觀察&學習的數據的特徵或屬性。 在語言理解 (LUIS) 中,一項功能描述並解釋了您的意圖和實體的重要意義。
+在機器學習中，_功能_是您的系統觀察 & 學習之資料的特性或屬性（attribute）。 在 Language Understanding （LUIS）中，功能會描述並說明您的意圖和實體有何意義。
 
-在[預覽 LUIS 門戶](https://preview.luis.ai)中,要素是_描述符,_ 因為它們用於_描述_意圖或實體。
+在[預覽 LUIS 入口網站](https://preview.luis.ai)中，功能是描述項 _，因為它們是用_來_說明_意圖或實體。
 
-## <a name="features-_descriptors_-in-language-understanding"></a>語言理解中的功能 (_描述子_)
+## <a name="features-_descriptors_-in-language-understanding"></a>Language Understanding 中的功能（_描述_項）
 
-功能(也稱為描述符)描述幫助語言理解識別示例陳述的線索。 功能包括：
+「功能」（也稱為「描述項」）描述可協助 Language Understanding 識別語句範例的線索。 功能包括：
 
-* 短語清單作為意圖或實體的功能
-* 實體作為意圖或實體的特徵
+* 片語清單做為意圖或實體的功能
+* 實體做為意圖或實體的特徵
 
-要素應被視為模型分解架構的必要部分。
+您應該將功能視為架構的必要部分，以進行模型分解。
 
-## <a name="what-is-a-phrase-list"></a>什麼是短語清單
+## <a name="what-is-a-phrase-list"></a>什麼是片語清單
 
-短語清單是單詞、短語、數位或其他字元的清單,可幫助確定您嘗試識別的概念。 該清單不區分大小寫。
+片語清單是單字、片語、數位或其他字元的清單，可協助您識別您嘗試識別的概念。 此清單不區分大小寫。
 
-## <a name="when-to-use-a-phrase-list"></a>何時使用短語清單
+## <a name="when-to-use-a-phrase-list"></a>使用片語清單的時機
 
-使用短語清單,LUIS 會考慮上下文並進行一般性化,以標識與文本匹配(但不是確切文本匹配)的專案。 如果您需要 LUIS 應用能夠概括和標識新專案,請使用短語清單。
+在片語清單中，LUIS 會考慮 coNtext 和一般化來識別類似的專案，但不是完全相符的文字。 如果您需要 LUIS 應用程式能夠將新專案一般化並加以識別，請使用片語清單。
 
-當希望能夠識別新實例(如應識別新聯繫人名稱的會議計劃程式)或應識別新產品的清單應用時,請從機器學習實體開始。 然後創建一個短語清單,説明 LUIS 尋找具有類似含義的單詞。 此短語清單通過為這些單詞的值添加其他重要性來指導 LUIS 識別示例。
+當您想要能夠辨識新的實例時（例如應該辨識新連絡人名稱的會議排程器），或應辨識新產品的清查應用程式，請從機器學習的實體開始。 然後建立片語清單，協助 LUIS 尋找具有類似意義的單字。 此片語清單會將額外的重要性新增至這些單字的值，以引導 LUIS 辨識範例。
 
 片語清單就像是網域專屬詞彙，有助於增強意圖和實體的理解品質。
 
-## <a name="considerations-when-using-a-phrase-list"></a>使用短語清單時的注意事項
+## <a name="considerations-when-using-a-phrase-list"></a>使用片語清單時的考慮
 
-預設情況下,短語清單將應用於應用中的所有模型。 這將適用於可以跨所有意圖和實體的短語清單。 對於可分解性,應僅將短語清單應用於與它相關的模型。
+根據預設，片語清單會套用至應用程式中的所有模型。 這適用于可跨所有意圖和實體的片語清單。 針對 decomposability，您應該只將片語清單套用到其相關的模型。
 
-如果創建短語清單(預設情況下創建全域),則稍後將其作為描述符(功能)應用於特定模型,則會將其從其他模型中刪除。 此刪除為應用於的模型的短語清單添加了相關性,有助於提高它在模型中提供的準確性。
+如果您建立片語清單（預設為全域建立），然後將它當做描述項（功能）套用至特定模型，則會從其他模型中移除它。 這項移除會為其所套用的模型新增與片語清單的相關性，以協助改善模型中所提供的精確度。
 
-標誌`enabledForAllModels`在 API 中控制此模型作用域。
+`enabledForAllModels`旗標會控制 API 中的此模型範圍。
 
 <a name="how-to-use-phrase-lists"></a>
 
-### <a name="how-to-use-a-phrase-list"></a>如何使用短語清單
+### <a name="how-to-use-a-phrase-list"></a>如何使用片語清單
 
-當您的意圖或實體具有重要的單字或短語時,[建立短語清單](luis-how-to-add-features.md),例如:
+當您的意圖或實體具有很重要的單字或片語時，請[建立片語清單](luis-how-to-add-features.md)，例如：
 
 * 業界術語
 * 俚語
@@ -66,30 +66,30 @@ ms.locfileid: "81531893"
 * 來自另一種語言但通常在您的應用程式中使用的語言
 * 範例表達中的關鍵字或片語
 
-**不要**添加所有可能的單詞或短語。 相反,一次添加幾個單詞或短語,然後重新訓練和發佈。 隨著清單隨時間的增長,您可能會發現某些術語具有許多窗體(同義詞)。 將這些清單分解為另一個清單。
+請勿**新增每**個可能的單字或片語。 相反地，一次新增幾個單字或片語，然後重新定型和發佈。 當清單隨著時間成長時，您可能會發現某些詞彙有許多形式（同義字）。 將這些分解成另一個清單。
 
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="when-to-use-an-entity-as-a-feature"></a>何時將實體用作特徵
+## <a name="when-to-use-an-entity-as-a-feature"></a>使用實體做為功能的時機
 
-可以在意圖或實體級別添加實體作為要素。
+實體可以做為意圖或實體層級的功能加入。
 
-### <a name="entity-as-a-feature-to-an-intent"></a>實體作為意圖的要素
+### <a name="entity-as-a-feature-to-an-intent"></a>實體做為意圖的功能
 
-當檢測到該實體對意圖很重要時,將實體作為描述符(功能)添加到意圖中。
+當實體的偵測對意圖而言很重要時，請將實體做為描述項（功能）新增至意圖。
 
-例如,如果意圖是預訂航班,而實體是機票資訊(如座位數、始發地和目的地),則查找機票資訊實體應為預訂航班意向的預測增加權重。
+例如，如果意圖是用來預約航班，而實體是票證資訊（例如基座數目、原點和目的地），則尋找票證資訊實體應該將權數新增至書籍航班意圖的預測。
 
-### <a name="entity-as-a-feature-to-another-entity"></a>實體作為另一個實體的要素
+### <a name="entity-as-a-feature-to-another-entity"></a>實體做為另一個實體的功能
 
-當該實體 (A) 的檢測對於預測實體 (B) 非常重要時,應將實體 (A) 作為特徵添加到另一個實體 (B)。
+當實體（A）的偵測對實體（B）的預測很重要時，應該將實體（A）當做功能加入另一個實體（B）。
 
-例如,如果檢測到街道位址實體 (A),則查找街道位址 (A) 會增加送貨地址實體 (B) 的預測權重。
+例如，如果偵測到街道位址實體（A），則尋找街道位址（A）會為出貨位址實體（B）的預測增加權數。
 
 ## <a name="best-practices"></a>最佳作法
 了解[最佳做法](luis-concept-best-practices.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [在](schema-change-prediction-runtime.md)預測執行時延伸應用模型
+* 在預測執行時間[擴充](schema-change-prediction-runtime.md)您的應用程式模型
 * 請參閱[新增功能](luis-how-to-add-features.md)，深入了解如何將功能新增至 LUIS 應用程式。
