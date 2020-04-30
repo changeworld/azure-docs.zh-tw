@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
 ms.openlocfilehash: a41c9dc888e85baf021712e3302da7ae6106db47
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81421959"
 ---
 若要完成意圖辨識快速入門，您必須使用 LUIS 預覽入口網站建立 LUIS 帳戶和專案。 本快速入門只需要 LUIS 訂用帳戶。 「不需要」  語音服務訂用帳戶。

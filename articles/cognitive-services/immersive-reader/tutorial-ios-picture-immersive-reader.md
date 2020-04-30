@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: 69ff58d6cdabe49000b00afecfc6b4ad1a3f2daa
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: f9bb8743f0b0852e46b440de22038e3f84272e93
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76841841"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561017"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>教學課程：建立以相片中的內容啟動沈浸式閱讀程式的 iOS 應用程式 (Swift)
 
@@ -53,7 +53,7 @@ ms.locfileid: "76841841"
   target 'picture-to-immersive-reader-swift' do
   use_frameworks!
   # Pods for picture-to-immersive-reader-swift
-  pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'
+  pod 'immersive-reader-sdk', :git => 'https://github.com/microsoft/immersive-reader-sdk.git'
   end
 ```
 4. 在終端機中，於 Xcode 專案的目錄中執行命令 `pod install`，以安裝沈浸式閱讀程式 SDK Pod。

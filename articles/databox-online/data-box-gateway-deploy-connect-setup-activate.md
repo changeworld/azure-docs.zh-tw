@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: b3cf4fd958202c28586b7c15932dc88a21d7c60f
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81686870"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561658"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>教學課程：連線、設定、啟動 Azure 資料箱閘道
 
@@ -65,7 +65,7 @@ ms.locfileid: "81686870"
    
 ![本機 Web UI 的 [儀表板] 頁面](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
-1. 在左側窗格中，選取 [裝置名稱]  ，然後為您的裝置輸入一個易記的名稱。 易記名稱必須包含 1 到 15 個字元，且包含字母、數字及連字號。
+1. 在左側窗格中，選取 [裝置名稱]  ，然後為您的裝置輸入一個易記的名稱。 易記名稱必須包含 1 到 15 個字元，且包含字母、數字及連字號。 
 
     ![本機 Web UI 的 [裝置名稱] 頁面](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 

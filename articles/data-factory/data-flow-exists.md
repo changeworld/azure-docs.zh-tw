@@ -1,6 +1,6 @@
 ---
-title: 映射資料流程中存在轉換
-description: 使用 Azure 資料工廠映射資料串記憶體中存在轉換檢查現有行
+title: 對應資料流程中的 Exists 轉換
+description: 使用 Azure Data Factory 對應資料流程中的 exists 轉換來檢查現有的資料列
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,39 +8,47 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: a303c8fa1e23460fb906232eedb6bfb1930b4bc9
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 9c43b141608e5a9051499fdfb2adb5d8b0b593df
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606473"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232460"
 ---
-# <a name="exists-transformation-in-mapping-data-flow"></a>映射資料流程中存在轉換
+# <a name="exists-transformation-in-mapping-data-flow"></a>對應資料流程中的 Exists 轉換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-存在轉換是一個行篩選轉換,用於檢查數據是否存在於其他源或流中。 輸出流包括左流中存在於右流中或不存在的所有行。 存在的轉換類似於```SQL WHERE EXISTS```與```SQL WHERE NOT EXISTS```。
+Exists 轉換是一個資料列篩選轉換，它會檢查您的資料是否存在於另一個來源或資料流程中。 輸出資料流程包含左側資料流程中的所有資料列，其存在或不存在於正確的資料流程中。 Exists 轉換類似于```SQL WHERE EXISTS```和。 ```SQL WHERE NOT EXISTS```
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
-1. 在**右流**下拉下下下下下選擇要檢查的是否存在的數據流。
-1. 指定要查找是否存在「**存在」 的類型**設定中是否存在的資料。
-1. 選擇是否要自訂**表示式**。
-1. 選擇要比較為存在條件的關鍵列。 默認情況下,數據流在每個流中查找一列之間的相等性。 要透過計算值, 請將滑鼠的移動在列下拉清單上, 然後選擇 **「計算」 欄位**。
+1. 在 [**正確資料流程**] 下拉式清單中，選擇您要檢查哪一個資料流程是否存在。
+1. 指定您要尋找的資料是否存在，或不存在於 [**存在類型**] 設定中。
+1. 選取您是否想要**自訂表格達式**。
+1. 選擇您想要比較哪一個索引鍵資料行做為現有的條件。 根據預設，資料流程會在每個資料流程中的一個資料行之間尋找是否相等。 若要透過計算值進行比較，請將滑鼠停留在資料行下拉式清單中，然後選取 [**計算資料行**]
 
-![存在設定](media/data-flow/exists.png "存在 1")
+![存在設定](media/data-flow/exists.png "存在1")
 
 ### <a name="multiple-exists-conditions"></a>多個存在條件
 
-要比較每個流中的多個列,請單擊現有行旁邊的加號圖示來添加新存在條件。 每個附加條件都由"和"語句聯接。 比較兩列與以下表示式相同:
+若要比較每個資料流程中的多個資料行，請按一下現有資料列旁的加號圖示，以加入新的 exists 條件。 每個額外的條件都是由 "and" 語句聯結。 比較兩個數據行與下列運算式相同：
 
 `source1@column1 == source2@column1 && source1@column2 == source2@column2`
 
-### <a name="custom-expression"></a>自訂表示式
+### <a name="custom-expression"></a>自訂表格達式
 
-要建立包含"和"和"等於'以外的運算元的自由格式運算式,請選擇 **「自訂運算式」** 欄位。 通過數據流表達式生成器通過按一下藍色框輸入自定義表達式。
+若要建立包含「and」和「equals to」以外之運算子的自由形式運算式，請選取 [**自訂表格達式**] 欄位。 在 [資料流程運算式產生器] 中按一下藍色方塊，以輸入自訂表格達式。
 
-![存在自訂設定](media/data-flow/exists1.png "存在自訂")
+![已存在自訂設定](media/data-flow/exists1.png "存在自訂")
+
+## <a name="broadcast-optimization"></a>廣播優化
+
+![廣播聯結](media/data-flow/broadcast.png "廣播聯結")
+
+在聯結、查閱和存在轉換中，如果其中一個或兩個數據流符合背景工作節點記憶體，您可以藉由啟用**廣播**來優化效能。 根據預設，spark 引擎會自動決定是否要廣播一邊。 若要手動選擇要廣播的端，請選取 [**固定**]。
+
+除非您的聯結遇到逾時錯誤，否則不建議使用 [**關閉**] 選項來停用廣播。
 
 ## <a name="data-flow-script"></a>資料流程指令碼
 
@@ -51,29 +59,29 @@ ms.locfileid: "81606473"
     exists(
         <conditionalExpression>,
         negate: { true | false },
-        broadcast: {'none' | 'left' | 'right' | 'both'}
+        broadcast: { 'auto' | 'left' | 'right' | 'both' | 'off' }
     ) ~> <existsTransformationName>
 ```
 
 ### <a name="example"></a>範例
 
-下面的範例是一個稱為「`checkForChanges`左流」`NameNorm2`和「`TypeConversions`右流 」 的存在的轉換。  如果存在條件,則在每個流`NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region``EMPID`中`Region`和 列都匹配時返回 true 的運算式。 當我們檢查存在時,`negate`是虛假的。 我們不啟用任何廣播在優化選項卡,所以`broadcast`有價值`'none'`。
+下列範例是名為`checkForChanges`的 exists 轉換，它會採用`NameNorm2`左邊的資料流程`TypeConversions`和正確的資料流程。  Exists 條件是當每個`NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region`資料流程中的`EMPID`和`Region`資料行都相符時，傳回 true 的運算式。 當我們要檢查是否存在時`negate` ，是 false。 我們不會在 [優化] 索引標籤`broadcast`中啟用`'none'`任何廣播，因此具有值。
 
-在資料工廠的一個數字的數字, 此轉換類似於下圖:
+在 Data Factory UX 中，這項轉換看起來如下圖所示：
 
-![存在範例](media/data-flow/exists-script.png "存在範例")
+![Exists 範例](media/data-flow/exists-script.png "Exists 範例")
 
-此轉換的資料串流文稿位於下面的代碼段中:
+此轉換的資料流程腳本位於下列程式碼片段中：
 
 ```
 NameNorm2, TypeConversions
     exists(
         NameNorm2@EmpID == TypeConversions@EmpID && NameNorm2@Region == DimEmployees@Region,
         negate:false,
-        broadcast: 'none'
+        broadcast: 'auto'
     ) ~> checkForChanges
 ```
 
 ## <a name="next-steps"></a>後續步驟
 
-類似的轉換是[尋找](data-flow-lookup.md)與[聯結](data-flow-join.md)。
+類似的轉換是[查閱](data-flow-lookup.md)和[聯結](data-flow-join.md)。

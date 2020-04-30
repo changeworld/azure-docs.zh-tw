@@ -1,19 +1,18 @@
 ---
 title: 管理 VNet 端點-Azure CLI-適用於 MySQL 的 Azure 資料庫
 description: 本文說明如何使用 Azure CLI 命令列，建立及管理適用於 MySQL 的 Azure 資料庫的 VNet 服務端點和規則。
-author: bolzmj
-ms.author: mbolz
-manager: jhubbard
+author: kummanish
+ms.author: manishku
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: c01f92f8144c8ebfce2d475f8b13ab1d70bca118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a859fea121296dc977d48712c35ea3dcff798f50
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063593"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509273"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>使用 Azure CLI 建立及管理適用於 MySQL 的 Azure 資料庫的 VNet 服務端點
 虛擬網路 (VNet) 服務端點和規則會將虛擬網路的私人位址空間延伸到您適用於 MySQL 的 Azure 資料庫伺服器。 您可以使用 Azure 命令列介面 (CLI) 命令，來建立、更新、刪除、列出及顯示 VNet 服務端點和規則，以管理您的伺服器。 如需適用於 MySQL 的 Azure 資料庫的 VNet 服務端點概觀 (包含限制)，請參閱[適用於 MySQL 的 Azure 資料庫伺服器的 VNet 服務端點](concepts-data-access-and-security-vnet.md)。 VNet 服務端點在「適用於 MySQL 的 Azure 資料庫」的所有支援區域皆可使用。

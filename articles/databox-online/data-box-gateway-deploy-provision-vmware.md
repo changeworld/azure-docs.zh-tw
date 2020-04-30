@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9cf012df65560a921f2c9f12f6c0362a033300be
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "60757460"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561646"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>教學課程：在 VMware 中佈建 Azure 資料箱閘道
 
@@ -21,7 +21,7 @@ ms.locfileid: "60757460"
 
 本教學課程說明如何在執行 VMware ESXi 6.0、6.5 或 6.7 的主機系統上佈建資料箱閘道。 
 
-您需要有系統管理員權限，才能佈建並連接至虛擬裝置。 佈建及初始安裝程序可能需要大約 10 分鐘的時間才能完成。
+您需要有系統管理員權限，才能佈建並連接至虛擬裝置。 佈建及初始安裝程序可能需要大約 10 分鐘的時間才能完成。 
 
 在本教學課程中，您會了解如何：
 

@@ -12,19 +12,19 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 04/14/2020
-ms.openlocfilehash: 2564fd0ffd980dae4ca1835f4211fee0a0cf040c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 1fedf889fa8d39a926067eb227b895d4fe1e3c39
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380924"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509341"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL Database 長期備份保留
 
 在 Azure SQL Database 中，您可以使用[長期備份保留](sql-database-long-term-retention.md)原則（LTR）來設定單一或集區資料庫，以自動將資料庫備份保留在不同的 Azure Blob 儲存體容器中長達10年。 然後，您可以使用 Azure 入口網站或 PowerShell 來復原資料庫。
 
 > [!IMPORTANT]
-> [AZURE SQL database 受控實例](sql-database-managed-instance.md)目前不支援長期備份保留。
+> 如需 Azure SQL database 受控實例，請參閱[受控實例的 LTR 支援](sql-database-long-term-retention.md#managed-instance-support)。
 
 ## <a name="using-azure-portal"></a>使用 Azure 入口網站
 

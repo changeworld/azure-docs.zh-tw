@@ -11,31 +11,31 @@ ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
 ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686184"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 進行 Azure Key Vault 的服務對服務驗證
 
-要對 Azure 金鑰保管庫進行身份驗證,需要 Azure 活動目錄 (Azure AD) 認證(共享金鑰或憑證)。
+若要驗證 Azure Key Vault，您需要一個 Azure Active Directory （Azure AD）認證，也就是共用密碼或憑證。
 
-管理此類憑據可能很困難。 通過將憑據包括在源或配置檔中,很容易將憑據捆綁到應用中。 .NET 程式庫的 `Microsoft.Azure.Services.AppAuthentication` 可簡化此問題。 它會使用開發人員的認證，在本機開發期間進行驗證。 當解決方案在稍後部署至 Azure 時，程式庫會自動切換至應用程式認證。 在本地開發期間使用開發人員憑據更安全,因為不需要在開發人員之間創建 Azure AD 認證和共用認證。
+管理這類認證可能很棘手。 藉由將認證納入來源或設定檔案，很容易就能將其組合到應用程式中。 .NET 程式庫的 `Microsoft.Azure.Services.AppAuthentication` 可簡化此問題。 它會使用開發人員的認證，在本機開發期間進行驗證。 當解決方案在稍後部署至 Azure 時，程式庫會自動切換至應用程式認證。 在本機開發期間使用開發人員認證會更安全，因為您不需要建立 Azure AD 認證，或在開發人員之間共用認證。
 
-庫`Microsoft.Azure.Services.AppAuthentication`自動管理身份驗證,這反過來又允許您專注於解決方案,而不是憑據。 它支援使用 Microsoft 視覺化工作室、Azure CLI 或 Azure AD 整合驗證進行本地開發。 如果部署到支援受控執行個體的 Azure 資源，程式庫會自動使用 [Azure 資源的受控識別](../../active-directory/msi-overview.md)。 不需要任何程式碼或設定變更。 當託管識別無法使用或無法在本地開發期間確定開發人員的安全上下文時,該庫還支援直接使用 Azure AD[客戶端認證](../../azure-resource-manager/resource-group-authenticate-service-principal.md)。
+連結`Microsoft.Azure.Services.AppAuthentication`庫會自動管理驗證，而這可讓您專注于您的解決方案，而不是您的認證。 它支援 Microsoft Visual Studio、Azure CLI 或 Azure AD 整合式驗證的本機開發。 如果部署到支援受控執行個體的 Azure 資源，程式庫會自動使用 [Azure 資源的受控識別](../../active-directory/msi-overview.md)。 不需要任何程式碼或設定變更。 當受控識別無法使用時，或在本機開發期間無法判斷開發人員的安全性內容時，程式庫也支援直接使用 Azure AD[用戶端認證](../../azure-resource-manager/resource-group-authenticate-service-principal.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-- [視覺工作室 2019](https://www.visualstudio.com/downloads/)或[視覺工作室 2017 v15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/).
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/)或[Visual Studio 2017 v 15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/)。
 
-- Visual Studio 的應用身份驗證擴展,作為 Visual Studio 2017 更新 5 的單獨擴展提供,並在更新 6 及更高版本中與產品捆綁在一起。 使用 Update 6 或更高版本,您可以透過在 Visual Studio 安裝程式中選擇 Azure 開發工具來驗證應用身份驗證擴展的安裝。
+- Visual Studio 的應用程式驗證延伸模組，可作為 Visual Studio 2017 Update 5 的個別延伸模組，並隨附于 Update 6 和更新版本中的產品。 使用 Update 6 或更新版本，您可以從 Visual Studio 安裝程式中選取 Azure 開發工具，以確認應用程式驗證延伸模組的安裝。
 
 ## <a name="using-the-library"></a>使用程式庫
 
 對於 .NET 應用程式，使用受控識別最簡單的方式是透過 `Microsoft.Azure.Services.AppAuthentication` 套件。 如何開始使用：
 
-1. 選擇**工具** > **NuGet 套件管理員** > **管理 NuGet 套件的解決方案**,以添加對[Microsoft.Azure.服務.App 身份驗證](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)和[Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 包到您的專案的引用。
+1. 選取 [**工具** > ] [**nuget 套件管理員** > ] [**管理方案的 nuget 套件**]，以將[AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)和[KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet 套件的參考新增至您的專案。
 
 1. 新增下列程式碼：
 
@@ -52,57 +52,57 @@ ms.locfileid: "81686184"
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-`AzureServiceTokenProvider` 類別會快取記憶體中的權杖，並在到期之前從 Azure AD 擷取權杖。 因此,在調用`GetAccessTokenAsync`方法之前,您不再需要檢查過期。 當您想要使用權杖時，可直接呼叫方法。
+`AzureServiceTokenProvider` 類別會快取記憶體中的權杖，並在到期之前從 Azure AD 擷取權杖。 因此，在呼叫`GetAccessTokenAsync`方法之前，您不再需要檢查到期日。 當您想要使用權杖時，可直接呼叫方法。
 
-`GetAccessTokenAsync` 方法需要資源識別碼。 要瞭解有關 Microsoft Azure 服務的更多內容,請參閱[Azure 資源的託管標識](../../active-directory/msi-overview.md)是什麼。
+`GetAccessTokenAsync` 方法需要資源識別碼。 若要深入瞭解 Microsoft Azure 服務，請參閱[什麼是適用于 Azure 資源的受控](../../active-directory/msi-overview.md)識別。
 
 ## <a name="local-development-authentication"></a>本機開發驗證
 
-對於本地開發,有兩種主要的身份驗證方案:[對 Azure 服務進行身份驗證](#authenticating-to-azure-services),另一[種是身份驗證到自訂服務](#authenticating-to-custom-services)。
+針對本機開發，有兩個主要的驗證案例：[向 Azure 服務進行驗證](#authenticating-to-azure-services)，以及[對自訂服務進行驗證](#authenticating-to-custom-services)。
 
 ### <a name="authenticating-to-azure-services"></a>向 Azure 服務驗證
 
-本地電腦不支援 Azure 資源的託管標識。 因此，`Microsoft.Azure.Services.AppAuthentication` 程式庫會使用您的開發人員認證，以在本機開發環境中執行。 當解決方案部署至 Azure 時，程式庫會使用受控識別切換至 OAuth 2.0 用戶端的認證授與流程。 此方法意味著您可以在本地和遠程測試相同的代碼,而不必擔心。
+本機電腦不支援 Azure 資源的受控識別。 因此，`Microsoft.Azure.Services.AppAuthentication` 程式庫會使用您的開發人員認證，以在本機開發環境中執行。 當解決方案部署至 Azure 時，程式庫會使用受控識別切換至 OAuth 2.0 用戶端的認證授與流程。 這種方法表示您可以在本機和遠端測試相同的程式碼，而不需要擔心。
 
 針對本機開發，`AzureServiceTokenProvider` 會使用 **Visual Studio**、**Azure 命令列介面** (CLI)，或 **Azure AD 整合式驗證**來擷取權杖。 會依序嘗試每個選項，而程式庫會使用第一個成功的選項。 如果沒有選項可用，`AzureServiceTokenProviderException` 會擲回包含詳細資訊的例外狀況。
 
 #### <a name="authenticating-with-visual-studio"></a>使用 Visual Studio 進行驗證
 
-要使用視覺化工作室進行身分驗證:
+若要使用 Visual Studio 進行驗證：
 
-1. 登入視覺化工作室並使用**工具**&nbsp;>&nbsp;**選項**開啟**選項**。
+1. 登入以 Visual Studio 並使用 [**工具**&nbsp;>&nbsp;]**選項**來開啟 [**選項**]。
 
-1. 選擇**Azure 服務身份驗證**,選擇本地開發帳戶,然後選擇 **"確定**"。
+1. 選取 [ **Azure 服務驗證**]，選擇本機開發的帳戶，然後選取 **[確定]**。
 
-如果使用 Visual Studio 遇到問題(例如涉及權杖提供程式檔的錯誤),請仔細查看上述步驟。
+如果您使用 Visual Studio 時遇到問題，例如涉及權杖提供者檔案的錯誤，請仔細檢查前面的步驟。
 
-您可能需要重新驗證開發人員權杖。 選擇此選項,請選擇 **「工具**&nbsp;>&nbsp;**選項**」,然後選擇**&nbsp;&nbsp;Azure 服務身份認證**。 在所選帳戶下查找**重新身份驗證**連結。 選取該項目並進行驗證。
+您可能需要重新驗證您的開發人員權杖。 若要這麼做，請選取 [**工具**&nbsp;>&nbsp;] [**選項**]，然後選取 [ ** &nbsp;Azure 服務&nbsp;驗證**]。 尋找所選帳戶底下的 [**重新驗證**] 連結。 選取該項目並進行驗證。
 
 #### <a name="authenticating-with-azure-cli"></a>使用 Azure CLI 進行驗證
 
-要將 Azure CLI 用於本地開發,請確保具有[Azure CLI v2.0.12](/cli/azure/install-azure-cli)版本或更高版本。
+若要使用 Azure CLI 進行本機開發，請確定您有[Azure CLI v 2.0.12](/cli/azure/install-azure-cli)或更新版本的版本。
 
-要使用 Azure CLI:
+若要使用 Azure CLI：
 
-1. 在 Windows 工作列搜尋 Azure CLI 以開啟**Microsoft Azure 命令提示符**。
+1. 在 Windows 工作列中搜尋 Azure CLI，以開啟**Microsoft Azure 命令提示**字元。
 
-1. 登錄到 Azure 門戶 *:az 登錄*以登錄到 Azure。
+1. 登入 Azure 入口網站： *az login 以登*入 Azure。
 
-1. 通過輸入*az 帳戶獲取訪問權杖 -資源 Hhhhs/vault.azure.net\/* 驗證存取。 如果收到錯誤,請檢查正確安裝了正確的 Azure CLI 版本。
+1. 輸入*az account get-\/----resource HTTPs：/vault.azure.net*來確認存取。 如果您收到錯誤，請檢查正確的 Azure CLI 版本是否已正確安裝。
 
-   如果未將 Azure CLI 安裝到預設目錄,`AzureServiceTokenProvider`則可能會收到 找不到 Azure CLI 路徑的錯誤報告。 使用**AzureCLIPath**環境變數定義 Azure CLI 安裝資料夾。 必要時，`AzureServiceTokenProvider` 會將 **AzureCLIPath** 環境變數中指定的目錄新增至**路徑**環境變數。
+   如果 Azure CLI 未安裝到預設目錄，您可能會收到錯誤報表，指出`AzureServiceTokenProvider`找不到 Azure CLI 的路徑。 使用**AzureCLIPath**環境變數來定義 Azure CLI 安裝資料夾。 必要時，`AzureServiceTokenProvider` 會將 **AzureCLIPath** 環境變數中指定的目錄新增至**路徑**環境變數。
 
-1. 如果您使用多個帳戶登錄到 Azure CLI,或者您的帳戶有權訪問多個訂閱,則需要指定要使用的訂閱。 輸入命令*az 帳號集 -- 訂閱<訂閱-id>*。
+1. 如果您已使用多個帳戶登入 Azure CLI，或您的帳戶可存取多個訂用帳戶，您必須指定要使用的訂閱。 輸入*az account set-訂 <訂用帳戶識別碼>* 命令。
 
-此命令只會在失敗時產生輸出。 要驗證目前帳戶設定,請輸入命令`az account list`。
+此命令只會在失敗時產生輸出。 若要確認目前的帳戶設定，請輸入`az account list`命令。
 
-#### <a name="authenticating-with-azure-ad-authentication"></a>使用 Azure AD 認證進行認證
+#### <a name="authenticating-with-azure-ad-authentication"></a>使用 Azure AD 驗證進行驗證
 
 若要使用 Azure AD 驗證，請確認下列事項：
 
-- 本地活動目錄同步到 Azure AD。 有關詳細資訊,請參閱什麼是[Azure 活動目錄的混合標識?](../../active-directory/connect/active-directory-aadconnect.md)
+- 您的內部部署 Active Directory 同步處理至 Azure AD。 如需詳細資訊，請參閱[什麼是混合式身分識別與 Azure Active Directory？](../../active-directory/connect/active-directory-aadconnect.md)。
 
-- 您的代碼在加入域的電腦上運行。
+- 您的程式碼正在已加入網域的電腦上執行。
 
 ### <a name="authenticating-to-custom-services"></a>向自訂服務驗證
 
@@ -114,7 +114,7 @@ ms.locfileid: "81686184"
 
     1. 建立服務主體。 如需詳細資訊，請參閱[使用 Azure CLI 建立 Azure 服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)。
 
-    1. 使用 Azure CLI 使用以下指令登入:
+    1. 使用 Azure CLI 以下列命令登入：
 
         ```azurecli
         az login --service-principal -u <principal-id> --password <password> --tenant <tenant-id> --allow-no-subscriptions
@@ -122,63 +122,63 @@ ms.locfileid: "81686184"
 
         因為服務主體可能無法存取訂用帳戶，所以使用 `--allow-no-subscriptions` 引數。
 
-- 使用環境變數來指定服務主體詳細資料。 有關詳細資訊,請參閱[使用服務主體執行應用程式](#running-the-application-using-a-service-principal)。
+- 使用環境變數來指定服務主體詳細資料。 如需詳細資訊，請參閱[使用服務主體執行應用程式](#running-the-application-using-a-service-principal)。
 
-登入 Azure`AzureServiceTokenProvider`後, 使用服務主體檢索本地開發權杖。
+在您登入 Azure 之後， `AzureServiceTokenProvider`會使用服務主體來抓取權杖以進行本機開發。
 
-這種方法僅適用於當地發展。 當您將解決方案部署至 Azure 時，程式庫會切換為以受控識別進行驗證。
+這種方法只適用于本機開發。 當您將解決方案部署至 Azure 時，程式庫會切換為以受控識別進行驗證。
 
-## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>使用託管識別或使用者配置的識別執行應用程式
+## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>使用受控識別或使用者指派的身分識別來執行應用程式
 
-當您在 Azure App Service 或啟用受控識別的 Azure VM 上執行程式碼時，程式庫會自動使用受控識別。 不需要更改代碼,但託管標識必須*具有*密鑰保管庫的許可權。 您可以通過金鑰保管庫的存取*策略*向託管標識*授予獲取*許可權。
+當您在 Azure App Service 或啟用受控識別的 Azure VM 上執行程式碼時，程式庫會自動使用受控識別。 不需要變更程式碼，但受控識別必須具有金鑰保存庫的*取得*許可權。 您可以透過金鑰保存庫的*存取原則*，授與受控識別*取得*許可權。
 
-或者,您可以使用使用者分配的標識進行身份驗證。 有關使用者分配標識的詳細資訊,請參閱有關 Azure[資源的託管標識](../../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)。 要使用使用者分配的標識進行身份驗證,需要在連接字串中指定使用者分配標識的用戶端 ID。 連接字串在[連接字串支援](#connection-string-support)中指定。
+或者，您可以使用使用者指派的身分識別來進行驗證。 如需使用者指派身分識別的詳細資訊，請參閱[關於 Azure 資源的受控](../../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work)識別。 若要使用使用者指派的身分識別進行驗證，您需要在連接字串中指定使用者指派之身分識別的用戶端識別碼。 連接字串是在[連接字串支援](#connection-string-support)中指定。
 
 ## <a name="running-the-application-using-a-service-principal"></a>使用服務主體執行應用程式
 
-這可能需要建立 Azure AD 用戶端認證，才可進行驗證。 這種情況可能發生在以下範例中:
+這可能需要建立 Azure AD 用戶端認證，才可進行驗證。 在下列範例中，可能會發生這種情況：
 
 - 您的程式碼在本機開發環境中執行，但不是在開發人員的身分識別下執行。 例如，Service Fabric 在本機開發上使用 [NetworkService 帳戶](../../service-fabric/service-fabric-application-secret-management.md)。
 
 - 您的程式碼在本機開發環境中執行，而且向自訂服務進行驗證，因此您無法使用您的開發人員身分識別。
 
-- 代碼在 Azure 計算資源上運行,該資源尚未支援 Azure 資源的託管標識,例如 Azure 批處理。
+- 您的程式碼正在 Azure 計算資源上執行，但尚未支援 Azure 資源的受控識別，例如 Azure Batch。
 
-使用服務主體運行應用程式有三種主要方法。 要使用其中任何一個,必須首先創建一個服務主體。 如需詳細資訊，請參閱[使用 Azure CLI 建立 Azure 服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)。
+使用服務主體來執行應用程式的主要方法有三種。 若要使用其中任何一項，您必須先建立服務主體。 如需詳細資訊，請參閱[使用 Azure CLI 建立 Azure 服務主體](/cli/azure/create-an-azure-service-principal-azure-cli)。
 
-### <a name="use-a-certificate-in-local-keystore-to-sign-into-azure-ad"></a>使用本地金鑰儲存的憑證登入 Azure AD
+### <a name="use-a-certificate-in-local-keystore-to-sign-into-azure-ad"></a>使用本機密鑰存放區中的憑證登入 Azure AD
 
-1. 使用 Azure CLI [az ad sp 創建 rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令建立服務主體證書。
+1. 使用 Azure CLI [az ad sp create-rbac 命令來](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)建立服務主體憑證。
 
     ```azurecli
     az ad sp create-for-rbac --create-cert
     ```
 
-    此命令建立儲存在主目錄中的 .pem 檔案(私鑰)。 將此證書部署到*本地電腦*或*當前使用者*儲存。
+    此命令會建立儲存在主目錄中的 pem 檔案（私密金鑰）。 請將此憑證部署至*LocalMachine*或*CurrentUser*存放區。
 
     > [!Important]
-    > CLI 命令生成 .pem 檔,但 Windows 僅提供對 PFX 證書的本機支援。 要產生 PFX 憑證,請使用此處顯示的 PowerShell 命令:[使用自簽署憑證建立服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)。 這些命令也自動部署證書。
+    > CLI 命令會產生一個 pem 檔案，但 Windows 只會提供 PFX 憑證的原生支援。 若要改為產生 PFX 憑證，請使用此處所示的 PowerShell 命令： [[使用自我簽署憑證建立服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)]。 這些命令也會自動部署憑證。
 
-1. 將名為 Azure**服務Auth連接字串**的環境變數設定為以下值:
+1. 將名為**AzureServicesAuthConnectionString**的環境變數設定為下列值：
 
     ```azurecli
     RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};
           CertificateStoreLocation={CertificateStore}
     ```
 
-    使用步驟 1 產生的值取代 *{AppId}*、*{TenantId}* 和 *{Thumbprint}*。 根據您的部署計畫將 *[證書存儲]* 替換為*本地電腦*或 *「當前使用者*」。
+    使用步驟 1 產生的值取代 *{AppId}*、*{TenantId}* 和 *{Thumbprint}*。 根據您的部署計畫，將 *{CertificateStore}* 取代為*LocalMachine*' 或*CurrentUser*。
 
 1. 執行應用程式。
 
-### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>使用分享金鑰認證到 Azure AD
+### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>使用共用密碼認證來登入 Azure AD
 
-1. 使用具有 --sdk-auth 參數的 Azure CLI [az ad sp 創建 rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令創建具有密碼的服務主體證書。
+1. 使用 Azure CLI [az ad sp create-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令搭配--sdk-auth 參數，建立具有密碼的服務主體憑證。
 
     ```azurecli
     az ad sp create-for-rbac --sdk-auth
     ```
 
-1. 將名為 Azure**服務Auth連接字串**的環境變數設定為以下值:
+1. 將名為**AzureServicesAuthConnectionString**的環境變數設定為下列值：
 
     ```azurecli
     RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}
@@ -190,33 +190,33 @@ ms.locfileid: "81686184"
 
 當所有項目都正確地設定之後，便不必再變更任何程式碼。 `AzureServiceTokenProvider` 會使用環境變數和憑證來向 Azure AD 進行驗證。
 
-### <a name="use-a-certificate-in-key-vault-to-sign-into-azure-ad"></a>使用金鑰保存的憑證登入 Azure AD
+### <a name="use-a-certificate-in-key-vault-to-sign-into-azure-ad"></a>使用 Key Vault 中的憑證登入 Azure AD
 
-此選項允許您在密鑰保管庫中存儲服務主體的用戶端證書,並將其用於服務主體身份驗證。 對以下機制,可以使用這個選項:
+此選項可讓您將服務主體的用戶端憑證儲存在 Key Vault 中，並用於服務主體驗證。 在下列案例中，您可以使用此選項：
 
-- 本地身份驗證,您希望使用顯式服務主體進行身份驗證,並希望將服務主體憑據安全地保存在密鑰保管庫中。 開發人員帳戶必須有權訪問密鑰保管庫。
+- 本機驗證，您想要使用明確的服務主體進行驗證，而且想要在金鑰保存庫中安全地保留服務主體認證。 開發人員帳戶必須擁有金鑰保存庫的存取權。
 
-- Azure 中的身份驗證,您希望使用顯式憑據,並希望將服務主體憑據安全地保存在密鑰保管庫中。 對於跨租戶方案,可以使用此選項。 託管標識必須有權訪問密鑰保管庫。
+- 從 Azure 驗證您想要使用明確認證，並想要在金鑰保存庫中安全地保留服務主體認證。 針對跨租使用者案例，您可以使用此選項。 受控識別必須具有金鑰保存庫的存取權。
 
-託管標識或開發人員標識必須具有從密鑰保管庫檢索用戶端證書的許可權。 應用身份驗證庫使用檢索到的證書作為服務主體的用戶端憑據。
+受控識別或您的開發人員身分識別必須具有從 Key Vault 取得用戶端憑證的許可權。 AppAuthentication 程式庫會使用抓取的憑證做為服務主體的用戶端認證。
 
-要將客戶端憑證用於服務主體身份驗證,請使用:
+若要使用用戶端憑證進行服務主體驗證：
 
-1. 創建服務主體證書並自動將其存儲在密鑰保管庫中。 使用 Azure CLI [az ad \<sp 建立 rbac\<- keyvault 金鑰 函式庫名稱> -- 憑證憑證名稱> -- 建立-證書 - 跳過分配](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)指令:
+1. 建立服務主體憑證，並自動將它儲存在您的 Key Vault 中。 使用 Azure CLI [az ad sp create-rbac--keyvault \<keyvaultname>--cert \<certificatename>--create-cert--skip-指派](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)命令：
 
     ```azurecli
     az ad sp create-for-rbac --keyvault <keyvaultname> --cert <certificatename> --create-cert --skip-assignment
     ```
 
-    憑證識別碼是格式中的網址`https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
+    憑證識別碼會是格式的 URL`https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
 
-1. 在此`{KeyVaultCertificateSecretIdentifier}`連線中用憑證識別符號字串:
+1. 在`{KeyVaultCertificateSecretIdentifier}`此連接字串中，以憑證識別碼取代：
 
     ```azurecli
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
     ```
 
-    例如,如果您的金鑰保管庫稱為*myKeyVault,* 並且您建立了名為*myCert 的*證書,則證書識別符將是:
+    比方說，如果您的金鑰保存庫稱為*myKeyVault* ，而您建立了名為*mycert.cer*的憑證，則憑證識別碼會是：
 
     ```azurecli
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier=https://myKeyVault.vault.azure.net/secrets/myCert
@@ -230,21 +230,21 @@ ms.locfileid: "81686184"
 
 支援下列選項：
 
-| 連接字串選項 | 狀況 | 註解|
+| 連接字串選項 | 案例 | 評價|
 |:--------------------------------|:------------------------|:----------------------------|
-| `RunAs=Developer; DeveloperTool=AzureCli` | 本機開發 | `AzureServiceTokenProvider`使用 AzureCli 獲取權杖。 |
-| `RunAs=Developer; DeveloperTool=VisualStudio` | 本機開發 | `AzureServiceTokenProvider`使用 Visual Studio 獲取權杖。 |
-| `RunAs=CurrentUser` | 本機開發 | `AzureServiceTokenProvider`使用 Azure AD 整合認證取得權杖。 |
-| `RunAs=App` | [適用於 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider`使用託管標識獲取權杖。 |
-| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Azure 資源的使用者分配識別](../../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | `AzureServiceTokenProvider`使用使用者分配的標識獲取權杖。 |
-| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | 自訂服務身份驗證 | `KeyVaultCertificateSecretIdentifier`是證書的秘密標識碼。 |
+| `RunAs=Developer; DeveloperTool=AzureCli` | 本機開發 | `AzureServiceTokenProvider`會使用 AzureCli 來取得權杖。 |
+| `RunAs=Developer; DeveloperTool=VisualStudio` | 本機開發 | `AzureServiceTokenProvider`會使用 Visual Studio 來取得權杖。 |
+| `RunAs=CurrentUser` | 本機開發 | `AzureServiceTokenProvider`使用 Azure AD 的整合式驗證來取得權杖。 |
+| `RunAs=App` | [適用於 Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider`使用受控識別來取得權杖。 |
+| `RunAs=App;AppId={ClientId of user-assigned identity}` | [適用于 Azure 資源的使用者指派身分識別](../../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | `AzureServiceTokenProvider`使用使用者指派的身分識別來取得權杖。 |
+| `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | 自訂服務驗證 | `KeyVaultCertificateSecretIdentifier`這是憑證的秘密識別碼。 |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| 服務主體 | `AzureServiceTokenProvider` 會使用憑證從 Azure AD 取得權杖。 |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | 服務主體 | `AzureServiceTokenProvider` 會使用憑證從 Azure AD 取得權杖|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | 服務主體 |`AzureServiceTokenProvider` 會使用密碼從 Azure AD 取得權杖。 |
 
 ## <a name="samples"></a>範例
 
-要查看庫`Microsoft.Azure.Services.AppAuthentication`的操作,請參閱以下代碼示例。
+若要查看`Microsoft.Azure.Services.AppAuthentication`作用中的程式庫，請參閱下列程式碼範例。
 
 - [在執行階段使用受控識別從 Azure Key Vault 擷取秘密](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)
 
@@ -252,44 +252,44 @@ ms.locfileid: "81686184"
 
 - [使用 .NET Core 範例和受控識別從 Azure Linux VM 呼叫 Azure 服務](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/)。
 
-## <a name="appauthentication-troubleshooting"></a>套用認證問題的檢查
+## <a name="appauthentication-troubleshooting"></a>AppAuthentication 疑難排解
 
-### <a name="common-issues-during-local-development"></a>地方發展過程中的常見問題
+### <a name="common-issues-during-local-development"></a>本機開發期間常見的問題
 
-#### <a name="azure-cli-is-not-installed-youre-not-logged-in-or-you-dont-have-the-latest-version"></a>未安裝 Azure CLI,您未登入,或者沒有最新版本
+#### <a name="azure-cli-is-not-installed-youre-not-logged-in-or-you-dont-have-the-latest-version"></a>未安裝 Azure CLI、您未登入，或您沒有最新版本
 
-執行*az 帳號取得存取權杖*以檢視 Azure CLI 是否為您顯示權杖。 如果說**找不到此類程式**,請安裝[最新版本的 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 系統會提示您登入。
+執行*az account get-存取權杖*，以查看 Azure CLI 是否會為您顯示權杖。 如果**找不到這類程式**，請安裝[最新版本的 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 系統會提示您登入。
 
-#### <a name="azureservicetokenprovider-cant-find-the-path-for-azure-cli"></a>AzureServiceToken 提供者找不到 Azure CLI 的路徑
+#### <a name="azureservicetokenprovider-cant-find-the-path-for-azure-cli"></a>Azureservicetokenprovider 會找不到 Azure CLI 的路徑
 
-AzureServiceToken 提供程式在其預設安裝位置查找 Azure CLI。 如果找不到 Azure CLI,則將環境變數**AzureCLIPath**設定為 Azure CLI 安裝資料夾。 AzureServiceToken 提供程式將環境變數添加到路徑環境變數。
+Azureservicetokenprovider 會會在其預設安裝位置尋找 Azure CLI。 如果找不到 Azure CLI，請將環境變數**AzureCLIPath**設定為 Azure CLI 安裝資料夾。 Azureservicetokenprovider 會會將環境變數加入 Path 環境變數中。
 
-#### <a name="youre-logged-into-azure-cli-using-multiple-accounts-the-same-account-has-access-to-subscriptions-in-multiple-tenants-or-you-get-an-access-denied-error-when-trying-to-make-calls-during-local-development"></a>您使用多個帳戶登入 Azure CLI,同一帳戶有權存取多個租戶中的訂閱,或者在本地開發期間嘗試進行通話時收到「訪問拒絕」錯誤
+#### <a name="youre-logged-into-azure-cli-using-multiple-accounts-the-same-account-has-access-to-subscriptions-in-multiple-tenants-or-you-get-an-access-denied-error-when-trying-to-make-calls-during-local-development"></a>您已使用多個帳戶登入 Azure CLI，相同的帳戶可存取多個租使用者中的訂用帳戶，或者您在本機開發期間嘗試進行呼叫時，收到拒絕存取的錯誤
 
-使用 Azure CLI,將預設訂閱設置為具有要使用的帳戶的訂閱。 訂閱必須與要存取的資源位於同一租戶 **:az 帳號集 -- 訂閱 [訂閱-id]**。 如果未看到輸出,則成功。 驗證正確的帳號現在是預設使用 az**帳號清單**。
+使用 Azure CLI，將預設訂用帳戶設定為具有您想要使用之帳戶的訂閱。 訂用帳戶必須與您想要存取的資源位於相同的租使用者中： **az account set--訂用帳戶 [訂用帳戶識別碼]**。 如果看不到任何輸出，則會成功。 使用**az account list**確認正確的帳戶現在是預設值。
 
 ### <a name="common-issues-across-environments"></a>跨環境的常見問題
 
-#### <a name="unauthorized-access-access-denied-forbidden-or-similar-error"></a>未經授權的存取、拒絕存取、禁止或類似錯誤
+#### <a name="unauthorized-access-access-denied-forbidden-or-similar-error"></a>未經授權的存取、拒絕存取、禁止或類似的錯誤
 
-使用的主體無法存取其嘗試存取的資源。 授予您的使用者帳戶或應用服務的 MSI"貢獻者"對資源的訪問許可權。 哪個取決於是在本地電腦上運行示例,還是在 Azure 中部署到應用服務。 某些資源(如金鑰保管庫)也有其自己的[訪問策略](https://docs.microsoft.com/azure/key-vault/secure-your-key-vault#data-plane-and-access-policies),您可以使用授予對主體(如使用者、應用和組)的訪問許可權。
+使用的主體無法存取其嘗試存取的資源。 授與您的使用者帳戶或 App Service 的 MSI 「參與者」對資源的存取權。 哪一個取決於您是在本機電腦上執行範例，還是在 Azure 中部署至您的 App Service。 有些資源（例如金鑰保存庫）也有自己的[存取](https://docs.microsoft.com/azure/key-vault/secure-your-key-vault#data-plane-and-access-policies)原則，您可以使用它們來授與存取權給主體，例如使用者、應用程式和群組。
 
-### <a name="common-issues-when-deployed-to-azure-app-service"></a>部署到 Azure 應用服務時的常見問題
+### <a name="common-issues-when-deployed-to-azure-app-service"></a>部署到 Azure App Service 時常見的問題
 
-#### <a name="managed-identity-isnt-set-up-on-the-app-service"></a>未在應用程式服務上設定託管識別
+#### <a name="managed-identity-isnt-set-up-on-the-app-service"></a>未在 App Service 上設定受控識別
 
-使用[Kudu 調試控制台](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)檢查MSI_ENDPOINT和MSI_SECRET存在的環境變數。 如果這些環境變數不存在,則應用服務上未啟用託管標識。
+檢查環境變數 MSI_ENDPOINT，並使用[Kudu debug 主控台](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)MSI_SECRET 存在。 如果這些環境變數不存在，就不會在 App Service 上啟用受控識別。
 
-### <a name="common-issues-when-deployed-locally-with-iis"></a>使用 IIS 在本地端時的常見問題
+### <a name="common-issues-when-deployed-locally-with-iis"></a>使用 IIS 在本機部署時的常見問題
 
-#### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>在 IIS 中除錯應用程式時無法檢查牌
+#### <a name="cant-retrieve-tokens-when-debugging-app-in-iis"></a>在 IIS 中偵測應用程式時，無法取得權杖
 
-默認情況下,AppAuth 在 IIS 中的其他使用者上下文中運行。 這就是為什麼它沒有使用開發人員標識檢索訪問權杖的訪問許可權。 您可以透過以下兩個步驟將 IIS 設定為與使用者上下文一起執行:
-- 將 Web 應用的應用程式池配置為當前使用者帳戶運行。 請在[這裡](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities)參閱詳細資訊
-- 將「設定設定檔環境」 設定為「真實」。 [在此處](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)查看更多資訊。 
+根據預設，AppAuth 會在 IIS 中的不同使用者內容中執行。 這就是為什麼它無法使用您的開發人員身分識別來抓取存取權杖。 您可以使用下列兩個步驟，將 IIS 設定為與您的使用者內容一起執行：
+- 設定應用程式集區，讓 web 應用程式以您目前的使用者帳戶身分執行。 請在[這裡](https://docs.microsoft.com/iis/manage/configuring-security/application-pool-identities#configuring-iis-application-pool-identities)參閱詳細資訊
+- 將 "setProfileEnvironment" 設定為 "True"。 請參閱[這裡](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)的詳細資訊。 
 
-    - 到 %windir%\System32_inetsrv_應用Host.config
-    - 搜索"設置配置檔環境"。 如果設置為"False",則將其更改為"True"。 如果不存在,則將其作為屬性添加到進程模型元素 (),/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment並將其設置為"True"。
+    - 前往%windir%\System32\inetsrv\config\applicationHost.config
+    - 搜尋 "setProfileEnvironment"。 如果設定為 "False"，請將它變更為 "True"。 如果不存在，請將它新增為 processModel 元素的屬性（/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment），並將它設定為 "True"。
 
 - 深入了解 [Azure 資源的受控識別](../../active-directory/managed-identities-azure-resources/index.yml)。
 - 深入了解 [Azure AD 驗證案例](../../active-directory/develop/active-directory-authentication-scenarios.md)。

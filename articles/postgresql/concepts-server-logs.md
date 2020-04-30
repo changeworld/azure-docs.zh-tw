@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: 70520b464bcb26ff8f1ea10f87bbf30537dc58a0
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82131226"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>適用於 PostgreSQL 的 Azure 資料庫-單一伺服器中的記錄
@@ -97,7 +97,7 @@ AzureDiagnostics
 
 下表描述**PostgreSQLLogs**類型的欄位。 視您選擇的輸出端點而定，所含欄位及其出現順序可能會有所不同。 
 
-|**欄位** | **描述** |
+|**欄位** | **說明** |
 |---|---|
 | TenantId | 您的租用戶識別碼 |
 | SourceSystem | `Azure` |
@@ -113,7 +113,7 @@ AzureDiagnostics
 | OperationName | `LogEvent` |
 | errorLevel | 記錄層級，範例：LOG、ERROR、NOTICE |
 | 訊息 | 主要記錄訊息 | 
-| 網域 | 伺服器版本，範例：postgres-10 |
+| Domain | 伺服器版本，範例：postgres-10 |
 | 詳細資料 | 次要記錄訊息 (如果適用) |
 | ColumnName | 資料行的名稱 (如果適用) |
 | SchemaName | 結構描述的名稱 (如果適用) |

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 82e42580f5d934af96b4fad57dde1573b9c30ef5
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: f4989f8dce32e2340357e30541548b3e7e9d8a44
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82098759"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508882"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights 中的取樣
 
@@ -310,7 +310,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 #### <a name="configuring-java-agent"></a>正在設定 JAVA 代理程式
 
-1. 下載[applicationinsights-agent-3.0.0-preview .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
+1. 下載[applicationinsights-agent-3.0.0-preview. 4 .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar)
 
 1. 若要啟用取樣，請將下列`ApplicationInsights.json`內容新增至您的檔案：
 

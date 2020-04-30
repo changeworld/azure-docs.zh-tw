@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.openlocfilehash: 40b57af95f9ea4d4212756634c721ddd55f85d7b
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82127759"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>使用資源記錄針對 Azure 串流分析進行疑難排解
@@ -94,7 +94,7 @@ Azure 串流分析會捕獲兩種資源記錄類別：
 
 所有記錄會儲存為 JSON 格式。 每個項目皆包含下列常見的字串欄位︰
 
-名稱 | 描述
+Name | 描述
 ------- | -------
 time | 記錄的時間戳記 (UTC 時間)。
 resourceId | 作業執行資源的識別碼 (大寫)。 其中包含訂用帳戶識別碼、資源群組，以及作業名稱。 例如，**/SUBSCRIPTIONS/6503D296-DAC1-4449-9B03-609A1F4A1C87/RESOURCEGROUPS/MY-RESOURCE-GROUP/PROVIDERS/MICROSOFT.STREAMANALYTICS/STREAMINGJOBS/MYSTREAMINGJOB**。
@@ -112,7 +112,7 @@ properties | 記錄項目特定詳細資料 (序列化為 JSON 字串)。 如需
 
 作業處理資料時發生的任何錯誤皆包含於此類記錄中。 這些記錄最常於資料讀取、序列化和寫入作業時建立。 這些記錄不包含連線錯誤。 連線錯誤視為一般事件。 您可以深入瞭解各種不同[輸入和輸出資料錯誤](https://docs.microsoft.com/azure/stream-analytics/data-errors)的原因。
 
-名稱 | 描述
+Name | 描述
 ------- | -------
 來源 | 發生錯誤的作業輸入或輸出名稱。
 訊息 | 與錯誤相關的訊息。
@@ -133,7 +133,7 @@ properties | 記錄項目特定詳細資料 (序列化為 JSON 字串)。 如需
 
 一般事件涵蓋所有其他事件。
 
-名稱 | 描述
+Name | 描述
 -------- | --------
 錯誤 | (選用) 錯誤資訊。 這通常是例外狀況資訊 (如果有的話)。
 訊息| 記錄訊息。

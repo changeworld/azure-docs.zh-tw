@@ -8,12 +8,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8d22e63be880c0cef0c4072e99ab85bf3250a1c
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: d036733c023417af3ef038bb9abc278ec91e665c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82114269"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508950"
 ---
 # <a name="manage-modules-in-azure-automation"></a>在 Azure 自動化中管理模組
 
@@ -21,8 +21,9 @@ Azure 自動化可讓您匯入 PowerShell 模組，以在 DSC 設定中啟用 ru
 
 * [Azure PowerShell Az. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 * [Azure PowerShell AzureRM](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)
-* 適用`Orchestrator.AssetManagement.Cmdlets`于 Windows 的 Log Analytics 代理程式的內部模組
 * 其他 PowerShell 模組
+* 內部`Orchestrator.AssetManagement.Cmdlets`模組
+* Python 2 模組
 * 您建立的自訂模組 
 
 當您建立自動化帳戶時，Azure 自動化預設會匯入一些模組。 請參閱[預設模組](#default-modules)。
@@ -33,7 +34,7 @@ Azure 自動化可讓您匯入 PowerShell 模組，以在 DSC 設定中啟用 ru
 >請務必只匯入您的 runbook 和 DSC 設定實際需要的模組。 我們不建議匯入根 Az 模組，因為它包含許多您可能不需要的其他模組，這可能會造成效能問題。 請改為匯入個別模組，例如 Az. Compute。
 
 >[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需混合式 Runbook 背景工作角色上的 Az module 安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](../automation-update-azure-modules.md)，將模組更新為最新版本。
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](../automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="default-modules"></a>預設模組
 
@@ -82,7 +83,7 @@ Azure 自動化不會自動將根 Az 模組匯入任何新的或現有的自動�
 >[!NOTE]
 >只有當您在 Azure 沙箱環境或 Windows 混合式 Runbook 背景工作角色上執行 runbook 時，才可以使用內部 Cmdlet。 
 
-|名稱|描述|
+|Name|描述|
 |---|---|
 |Get-AutomationCertificate|`Get-AutomationCertificate [-Name] <string> [<CommonParameters>]`|
 |Get-AutomationConnection|`Get-AutomationConnection [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]` |
@@ -96,9 +97,13 @@ Azure 自動化不會自動將根 Az 模組匯入任何新的或現有的自動�
 
 建議您使用 Az 或 AzureRM Cmdlet 來操作 runbook 內容以外的 Azure 自動化資源。 
 
-## <a name="module-supporting-get-automationpscredential"></a>支援 AutomationPSCredential 的模組
+## <a name="orchestratorassetmanagementcmdlets-module"></a>AssetManagement Cmdlet 模組
 
-此`Get-AutomationPSCredential` Cmdlet 是模組`Orchestrator.AssetManagement.Cmdlets`的一部分。 此 Cmdlet 會傳回`PSCredential`物件，這是大部分使用認證的 PowerShell Cmdlet 所預期的。 若要深入瞭解在 Azure 自動化中使用認證的詳細資訊，請參閱[Azure 自動化中的認證資產](credentials.md)。
+Azure 自動化支援適用于`Orchestrator.AssetManagement.Cmdlets` Windows 的 Log Analytics 代理程式的內部模組（預設為安裝）。 此`Get-AutomationPSCredential`模組中的 Cmdlet 常用於 runbook 來抓取`PSCredential`物件，這是大部分使用認證的 PowerShell Cmdlet 所預期的。 若要深入瞭解在 Azure 自動化中使用認證的詳細資訊，請參閱[Azure 自動化中的認證資產](credentials.md)。
+
+## <a name="python-modules"></a>Python 模組
+
+您可以在 Azure 自動化中建立 Python 2 runbook。 如需 Python 模組資訊，請參閱[管理 Azure 自動化中的 Python 2 套件](../python-packages.md)。
 
 ## <a name="migrating-to-az-modules"></a>遷移至 Az 模組
 
@@ -117,7 +122,7 @@ Azure 自動化不會自動將根 Az 模組匯入任何新的或現有的自動�
 * 當 runbook 從模組叫用 Cmdlet 時
 * 當 runbook 使用[import-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) Cmdlet 明確匯入模組時
 * 當 runbook 匯入另一個相依模組時
-    
+
 #### <a name="testing-for-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>在模組遷移之前測試您的 runbook 和 DSC 設定
 
 在遷移至 Az 模組之前，請務必謹慎地在個別的自動化帳戶中測試所有 runbook 和 DSC 設定。 
@@ -334,7 +339,7 @@ New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceG
 
 1. 移至https://www.powershellgallery.com並搜尋模組以進行匯入。
 2. 按一下 [**安裝選項**] 底下 [ **Azure 自動化**] 索引標籤上的 [**部署] Azure 自動化**。 此動作會開啟 [Azure 入口網站]。 
-3. 在 [匯入] 頁面上選取您的自動化帳戶，然後按一下 **[確定]**。
+3. 在 [匯入] 頁面上選取您的自動化帳戶，然後按一下 [確定]  。
 
 ![PowerShell 資源庫匯入模組](../media/modules/powershell-gallery.png)
 

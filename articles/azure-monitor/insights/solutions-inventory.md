@@ -6,17 +6,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 7b88d957bce45bf518fc77584f1691de8010459a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b87179c79489bf781619b70b19ca8982f2e38dff
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663124"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509477"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>在 Azure 中監視解決方案的清查和資料收集詳細資料
-[監視解決方案](solutions.md)會利用 Azure 中的服務，針對特定應用程式或服務的作業提供額外的深入解析。 監視解決方案通常會收集記錄資料，並提供查詢和檢視來分析所收集的資料。 您可以針對您使用的任何應用程式和服務，將監視解決方案新增至 Azure 監視器。 這些管理解決方案通常免費提供，但是會收集可能造成使用費用的資料。
+[監視解決方案](solutions.md)會使用 Azure 中的服務來取得特定應用程式或服務的作業知識。 監視解決方案通常會收集記錄資料，並提供查詢和檢視來分析所收集的資料。 您可以針對您使用的任何應用程式和服務，將監視解決方案新增至 Azure 監視器。 它們通常是免費提供的，但會收集可能會叫用使用費用的資料。
 
-本文包含 Microsoft 所提供的[montioring 解決方案](solutions.md)清單，其中包含其詳細檔的連結。  此外，還提供資料收集到 Azure 監視器中的方法和頻率相關資訊。  您可以使用本文中的資訊來識別不同的可用解決方案，以及瞭解不同監視解決方案的資料流程和連接需求。
+本文包含 Microsoft 提供的[監視解決方案](solutions.md)清單，並提供詳細檔的連結。  此外，還提供資料收集到 Azure 監視器中的方法和頻率相關資訊。  您可以使用本文中的資訊來識別不同的可用解決方案，以及瞭解不同監視解決方案的資料流程和連接需求。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -26,11 +26,11 @@ ms.locfileid: "77663124"
 
 各欄的說明如下所示：
 
-- **Microsoft monitoring agent** -Windows 和 Linux 上用來從 SCOM 執行管理套件，以及從 Azure 監視解決方案的代理程式。 在此組態中，代理程式會直接連線到 Azure 監視器，而不需連線至 Operations Manager 管理群組。 
+- **Microsoft monitoring agent** -用於 Windows 和 Linux 的代理程式，可從 Microsoft System Center-OPERATIONS MANAGER （OM）執行管理 pack，以及從 Azure 監視解決方案。 在此組態中，代理程式會直接連線到 Azure 監視器，而不需連線至 Operations Manager 管理群組。 
 - **Operations Manager** - 與 Microsoft Monitoring Agent 相同的代理程式。 在此組態中，它會[連線到 Operations Manager 管理群組](../platform/om-agents.md)，而該管理群組已連線到 Azure 監視器。 
--  **Azure 儲存體** - 解決方案會從 Azure 儲存體帳戶收集資料。 
+-  **Azure 儲存體**-解決方案會從 Azure 儲存體帳戶收集資料。 
 - **是否需要 Operations Manager？** -監視解決方案需要有連線的 Operations Manager 管理群組，才能進行資料收集。 
-- **透過管理群組傳送的 Operations Manager 代理程式資料** - 如果代理程式[已連線到 SCOM 管理群組](../platform/om-agents.md)，則會從管理伺服器將資料傳送到 Azure 監視器。 在此情況下，代理程式不需要直接連線到 Azure 監視器。 如果未選取此方塊，即使代理程式已連線到 SCOM 管理群組，也會從代理程式直接將資料傳送到 Azure 監視器。 它必須能夠透過 [Azure 監視器閘道](../platform/gateway.md)與 Log Analytics 通訊。
+- **Operations Manager 透過管理群組傳送的代理程式資料**-如果代理程式[連線到 OM 管理群組](../platform/om-agents.md)，則會從管理伺服器將資料傳送至 Azure 監視器。 在此情況下，代理程式不需要直接連線到 Azure 監視器。 如果未選取此方塊，即使代理程式已連接到 OM 管理群組，資料也會直接從代理程式傳送到 Azure 監視器。 它必須能夠透過 [Azure 監視器閘道](../platform/gateway.md)與 Log Analytics 通訊。
 - **收集頻率**-指定監視解決方案收集資料的頻率。 
 
 
@@ -53,8 +53,8 @@ ms.locfileid: "77663124"
 | [Azure SQL Analytics (預覽)](azure-sql.md) | Windows | | | | | | 1 分鐘 |
 | [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | 與通知同時 |
 | [容量與效能 (預覽)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |與抵達同時 |
-| [變更追蹤](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[差異](../../automation/change-tracking.md#change-tracking-data-collection-details) |
-| [變更追蹤](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[差異](../../automation/change-tracking.md#change-tracking-data-collection-details) |
+| [變更追蹤](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[差異](../../automation/change-tracking.md#change-tracking-and-inventory-data-collection) |
+| [變更追蹤](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[差異](../../automation/change-tracking.md#change-tracking-and-inventory-data-collection) |
 | [容器](containers.md) | Windows 與 Linux | &#8226; | &#8226; |  |  |  | 3 分鐘 |
 | [金鑰保存庫分析](azure-key-vault.md) |Windows | | | | | |與通知同時 |
 | [惡意程式碼評估](../../security-center/security-center-install-endpoint-protection.md) |Windows |&#8226; |&#8226; | | |&#8226; |每小時 |
@@ -66,7 +66,7 @@ ms.locfileid: "77663124"
 | [SQL 評估](sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 天 |
 | [SurfaceHub](surface-hubs.md) |Windows |&#8226; | | | | |與抵達同時 |
 | [System Center Operations Manager 評定 (預覽)](scom-assessment.md) | Windows | &#8226; | &#8226; |  |  | &#8226; | 7 天 |
-| [更新管理](../../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |安裝更新之後 15 分鐘，至少一天 2 次 |
+| [更新管理](../../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |安裝更新之後，每日至少有兩次和15分鐘 |
 | [更新整備小幫手](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 天 |
 | [VMware 監控 (已淘汰)](vmware.md) | Linux | &#8226; |  |  |  |  | 3 分鐘 |
 | [Wire Data 2.0 (預覽)](wire-data.md) |Windows (2012 R2/8.1 或更新版本) |&#8226; |&#8226; | | | | 1 分鐘 |

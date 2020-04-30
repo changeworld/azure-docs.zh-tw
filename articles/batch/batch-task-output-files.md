@@ -4,12 +4,12 @@ description: 瞭解如何使用 Batch 服務 API 將 Batch 工作和作業輸出
 ms.topic: article
 ms.date: 03/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5fbbf75defcfe976e59d38ae76341e71feee9f53
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: d9c6465a553e5652ecab5dcd167bb4058ff5cc08
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82116463"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234276"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>使用 Batch 服務 API 將工作資料保存到 Azure 儲存體
 
@@ -26,7 +26,7 @@ Azure Batch 提供多個方法來保存工作輸出。 使用 Batch 服務 API �
 - 您需要撰寫程式碼，以從用戶端應用程式內保存工作輸出，而不需要修改您工作正在執行的應用程式。
 - 您需要保存的輸出，是來自使用虛擬機器設定在集區中建立的 Batch 工作和作業管理員工作。
 - 您需要將輸出保存到具有任意名稱的 Azure 儲存體容器。
-- 您需要將輸出保存到根據 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions)命名的 Azure 儲存體容器。 
+- 您需要將輸出保存到根據 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files)命名的 Azure 儲存體容器。 
 
 如果您的情節與以上所列不同，可能需要考慮不同的方法。 例如，Batch 服務 API 目前不支援在工作執行時將輸出串流至 Azure 儲存體。 若要將輸出串流，請考慮使用適用於 .NET 的 Batch 檔案慣例程式庫。 針對其他語言，您必須實作自己的解決方案。 如需保存工作輸出之其他選項的詳細資訊，請參閱[將作業和工作輸出保存到 Azure 儲存體](batch-task-output.md)。
 
@@ -155,7 +155,7 @@ Message: One of the specified Azure container(s) was not found while attempting 
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>使用 Batch 服務 API 搭配 Batch 檔案慣例標準
 
-當您使用 Batch 服務 API 來保存工作輸出時，可以隨您所好命名您的目的地容器和 blob。 您也可以選擇根據 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) 將它們命名。 檔案慣例標準會以作業和工作名稱作為基礎，針對給定之輸出檔案，決定 Azure 儲存體中的目的地容器和 blob 的名稱。 如果您要針對命名輸出檔案使用檔案慣例標準，您的輸出檔案就可在 [Azure 入口網站](https://portal.azure.com)中檢視。
+當您使用 Batch 服務 API 來保存工作輸出時，可以隨您所好命名您的目的地容器和 blob。 您也可以選擇根據 [Batch 檔案慣例標準](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files) 將它們命名。 檔案慣例標準會以作業和工作名稱作為基礎，針對給定之輸出檔案，決定 Azure 儲存體中的目的地容器和 blob 的名稱。 如果您要針對命名輸出檔案使用檔案慣例標準，您的輸出檔案就可在 [Azure 入口網站](https://portal.azure.com)中檢視。
 
 如果您要以 C# 進行開發，可以使用[適用於 .NET 的 Batch 檔案慣例程式庫](https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files)的內建方法。 此程式庫會為您建立正確命名的容器和 blob 路徑。 例如，您可以作業名稱作為基礎呼叫 API，來取得容器的正確名稱：
 

@@ -9,12 +9,12 @@ ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: 02afa2cb36323e0c3c38c2451b1924b636f7faed
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 96d09de73e8b904a8e26eb4f365d34fab1401203
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81309101"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82137547"
 ---
 # <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>快速入門：使用應用程式組態和 Resource Manager 範本進行自動化 VM 部署
 
@@ -127,7 +127,7 @@ New-AzResourceGroup `
 
    ```azurepowershell
    New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" 
+       -ResourceGroupName "<your resource group>" `
        -TemplateFile "<path to prereq.azuredeploy.json>" `
        -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
    ```

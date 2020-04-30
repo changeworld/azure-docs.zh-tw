@@ -13,20 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: c32fdc67c74e100e0e31dad3afde128c05c356d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 219681351159de6ac6bb48ff979cc68aa4ee18d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335977"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233477"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API 管理常見問題集
 得到 Azure API 管理常見問題、模式和最佳作法的答案。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-## <a name="contact-us"></a>與我們連絡
-* [如何向 Microsoft Azure API 管理小組詢問問題？](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ## <a name="frequently-asked-questions"></a>常見問題集
 * [功能預覽中是什麼意思？](#what-does-it-mean-when-a-feature-is-in-preview)
@@ -40,30 +37,23 @@ ms.locfileid: "80335977"
 * [可以設定具有 AD FS 安全性的 OAUth 2.0 授權伺服器嗎？](#can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security)
 * [API 管理在部署到多個地理位置時使用何種路由方法？](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [可以使用 Azure Resource Manager 範本建立 API 管理服務執行個體嗎？](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
-* [是否可以將自簽名 TLS/SSL 憑證用於後端？](#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end)
-* [為什麼在嘗試克隆 GIT 存儲庫時出現身份驗證失敗？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
+* [我可以對後端使用自我簽署的 TLS/SSL 憑證嗎？](#can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end)
+* [為什麼我在嘗試複製 GIT 存放庫時收到驗證失敗？](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
 * [API 管理是否能搭配 Azure ExpressRoute 運作？](#does-api-management-work-with-azure-expressroute)
 * [為什麼將「API 管理」部署到 Resource Manager 樣式的 VNET 中時，我們需要在這些 VNET 中有一個專用子網路？](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
 * [將「API 管理」部署到 VNET 中時，所需的子網路大小下限是多少？](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
 * [可以將 API 管理服務從某一個訂用帳戶移至另一個嗎？](#can-i-move-an-api-management-service-from-one-subscription-to-another)
 * [匯入 API 有任何限制或已知的問題嗎？](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
-### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>如何向 Microsoft Azure API 管理小組詢問問題？
-您可以使用下列其中一個選項與我們連絡︰
-
-* 將問題張貼在我們的 [API 管理 MSDN 論壇](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt)。
-* 將電子郵件傳送至 <mailto:apimgmt@microsoft.com>。
-* 在 [Azure 意見反應論壇](https://feedback.azure.com/forums/248703-api-management)將功能要求傳送給我們。
-
 ### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>功能預覽中是什麼意思？
-當功能預覽中時，這表示我們正積極尋求您對於功能運作情況的意見反應。 預覽中的功能具備完整功能，但我們可能會進行中斷變更，以回應客戶的意見反應。 我們建議您不要依賴您生產環境中處於預覽狀態的功能。 如果您對於預覽功能有任何意見反應，請透過[如何向 Microsoft Azure API 管理小組詢問問題？](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)的其中一個連絡選項，讓我們知道。
+當功能預覽中時，這表示我們正積極尋求您對於功能運作情況的意見反應。 預覽中的功能具備完整功能，但我們可能會進行中斷變更，以回應客戶的意見反應。 我們建議您不要依賴您生產環境中處於預覽狀態的功能。
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>如何保護 API 管理閘道與後端服務之間的連線安全？
 您有幾個選項可以保護 API 管理閘道與後端服務之間的連線安全。 您可以：
 
 * 使用 HTTP 基本驗證。 如需詳細資訊，請參閱[匯入和發佈您的第一個 API](import-and-publish.md)。
-* 使用 TLS 相互身份驗證，[如如何在 Azure API 管理中使用用戶端憑證身份驗證來保護後端服務](api-management-howto-mutual-certificates.md)。
-* 在您的後端服務上使用 IP 允許清單。 在 API 管理的所有層中，除消耗層外，閘道的 IP 位址保持不變[，IP 文檔一文](api-management-howto-ip-addresses.md)仲介紹了一些注意事項。
+* 如[如何使用 AZURE API 管理中的用戶端憑證驗證來保護後端服務](api-management-howto-mutual-certificates.md)中所述，使用 TLS 相互驗證。
+* 在您的後端服務上使用 IP 允許清單。 在 API 管理的所有層中，除了使用層之外，閘道的 IP 位址會維持不變，並在[IP 檔一文](api-management-howto-ip-addresses.md)中說明一些值得注意的事項。
 * 將您的 API 管理執行個體連接至 Azure 虛擬網路。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>如何將我的 API 管理服務執行個體複製到新的執行個體？
@@ -83,9 +73,9 @@ ms.locfileid: "80335977"
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>如何將使用者新增至 Administrators 群組？
 將使用者新增至 Administrators 群組的步驟如下：
 
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 2. 移至包含您要更新之 API 管理執行個體的資源群組。
-3. 在 API 管理中，將**Api 管理服務參與者**角色指派給使用者。
+3. 在 [API 管理] 中，將 [ **Api 管理] 服務參與者**角色指派給使用者。
 
 新增的參與者現在即可使用 Azure PowerShell [Cmdlet](https://docs.microsoft.com/powershell/azure/overview)。 以系統管理員身分登入的步驟如下︰
 
@@ -113,13 +103,13 @@ ms.locfileid: "80335977"
 API 管理會在部署到多個地理位置時，使用[效能流量路由方法](../traffic-manager/traffic-manager-routing-methods.md#performance)。 連入流量會傳送至最接近的 API 閘道。 如果一個區域離線，則連入流量會自動路由傳送至下一個最接近的閘道。 深入了解[流量管理員路由方法](../traffic-manager/traffic-manager-routing-methods.md)中的路由方法。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>可以使用 Azure Resource Manager 範本建立 API 管理服務執行個體嗎？
-是。 請參閱[Azure API 管理服務](https://aka.ms/apimtemplate)快速入門範本。
+是。 請參閱[AZURE API 管理服務](https://aka.ms/apimtemplate)快速入門範本。
 
-### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>是否可以將自簽名 TLS/SSL 憑證用於後端？
+### <a name="can-i-use-a-self-signed-tlsssl-certificate-for-a-back-end"></a>我可以對後端使用自我簽署的 TLS/SSL 憑證嗎？
 是。 這可以透過 PowerShell 或直接提交至 API 來完成。 這將會停用信任鏈結驗證，在從 API 管理對後端服務進行通訊時，還可讓您使用自我簽署或私人簽署的憑證。
 
 #### <a name="powershell-method"></a>Powershell 方法 ####
-使用[`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend)（對於新的後端） 或[`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend)（對於現有後端） PowerShell Cmdlet`-SkipCertificateChainValidation`並將參數`True`設置為 。
+使用[`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) （適用于新的後端） [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend)或（適用于現有的後端） PowerShell Cmdlet `-SkipCertificateChainValidation` ，並`True`將參數設定為。
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'

@@ -1,17 +1,17 @@
 ---
 title: 先進的威脅防護-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
 description: 瞭解如何設定「先進的威脅防護」來偵測異常資料庫活動，指出資料庫有潛在的安全性威脅。
-author: bolzmj
-ms.author: mbolz
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8eec40006a280b69387e14a5841360da65616ca5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4936f765052d6993e5a372bde6336e00b19a24f6
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062347"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509256"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>適用於 MySQL 的 Azure SQL 資料庫進階威脅防護
 

@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.devlang: java
 ms.date: 3/18/2020
 ms.openlocfilehash: b5f1cbf2f822f350b1eeba032199676651364d84
-ms.sourcegitcommit: 7d8158fcdcc25107dfda98a355bf4ee6343c0f5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/09/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80983818"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>快速入門：使用 Java 來連線及查詢適用於 MySQL 的 Azure 資料庫中的資料

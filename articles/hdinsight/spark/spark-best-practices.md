@@ -1,22 +1,22 @@
 ---
-title: Azure HDInsight 上的 Apache Spark 最佳作法
-description: 瞭解在 Azure HDInsight 中使用 Apache Spark 的最佳做法。
+title: Azure HDInsight 的 Apache Spark 指導方針
+description: 瞭解在 Azure HDInsight 中使用 Apache Spark 的指導方針。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/18/2019
-ms.openlocfilehash: 20033e52e862f086d1491c06d38cdf4f2c57ba8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.date: 04/28/2020
+ms.openlocfilehash: 424a0cfd02cfce9fb87bc3e21d7b067740df8218
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71106121"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509409"
 ---
-# <a name="apache-spark-best-practices"></a>Apache Spark 最佳做法
+# <a name="apache-spark-guidelines"></a>Apache Spark 方針
 
-本文提供在 Azure HDInsight 上使用 Apache Spark 的各種最佳作法。
+本文提供在 Azure HDInsight 上使用 Apache Spark 的各種方針。
 
 ## <a name="how-do-i-run-or-submit-spark-jobs"></a>如何? 執行或提交 Spark 作業？
 
@@ -28,6 +28,10 @@ ms.locfileid: "71106121"
 | IntelliJ | [教學課程：使用 IntelliJ 為 HDInsight 中的 Apache Spark 建立 Scala Maven 應用程式](./apache-spark-create-standalone-application.md) |
 | Zeppelin Notebook | [在 Azure HDInsight 上搭配使用 Apache Zeppelin Notebook 和 Apache Spark 叢集](./apache-spark-zeppelin-notebook.md) |
 | 使用 Livy 提交遠端作業 | [使用 Apache Spark REST API 將遠端作業提交至 HDInsight Spark 叢集](./apache-spark-livy-rest-interface.md) |
+|[Apache Oozie](../hdinsight-use-oozie-linux-mac.md)|Oozie 是可管理 Hadoop 作業的工作流程和協調系統。|
+|[Apache Livy](./apache-spark-livy-rest-interface.md)|您可以使用 Livy 執行互動式 Spark 殼層，或提交要在 Spark 上執行的批次作業。|
+|[Apache Spark 的 Azure Data Factory](/../data-factory/transform-data-using-spark.md)|Data Factory 管線中的 Spark 活動會在您自己或 [隨選 HDInsight 叢集] 上執行 Spark 程式。|
+|[Apache Hive 的 Azure Data Factory](/../data-factory/transform-data-using-hadoop-hive.md)|Data Factory 管線中的 HDInsight Hive 活動會在您自己或隨選的 HDInsight 叢集上執行 Hive 查詢。|
 
 ## <a name="how-do-i-monitor-and-debug-spark-jobs"></a>如何? 監視和調試 Spark 作業？
 

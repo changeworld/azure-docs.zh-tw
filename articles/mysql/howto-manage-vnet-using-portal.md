@@ -1,17 +1,17 @@
 ---
 title: 管理 VNet 端點-Azure 入口網站-適用於 MySQL 的 Azure 資料庫
 description: 使用 Azure 入口網站建立及管理適用於 MySQL 的 Azure 資料庫的 VNet 服務端點和規則
-author: bolzmj
-ms.author: mbolz
+author: kummanish
+ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: fec85f7d87bbfe0039744b9ea63239083ff1c8a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba63c65c2b0d7abda089c3dfd315bfe499632cc0
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063541"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509222"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>使用 Azure 入口網站建立及管理適用於 MySQL 的 Azure 資料庫的 VNet 服務端點和 VNet 規則
 虛擬網路 (VNet) 服務端點和規則會將虛擬網路的私人位址空間延伸到您適用於 MySQL 的 Azure 資料庫伺服器。 如需適用於 MySQL 的 Azure 資料庫的 VNet 服務端點概觀 (包含限制)，請參閱[適用於 MySQL 的 Azure 資料庫伺服器的 VNet 服務端點](concepts-data-access-and-security-vnet.md)。 VNet 服務端點在「適用於 MySQL 的 Azure 資料庫」的所有支援區域皆可使用。
