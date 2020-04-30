@@ -1,7 +1,7 @@
 ---
-title: 透過雲端簡單管理 Azure VMware 解決方案的關鍵概念
+title: 管理 Azure VMware Solution by CloudSimple 的重要概念
 titleSuffix: Azure VMware Solution by CloudSimple
-description: 描述依雲端簡單管理 Azure VMware 解決方案的關鍵概念
+description: 說明透過 CloudSimple 管理 Azure VMware 解決方案的重要概念
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 04/24/2019
@@ -10,43 +10,43 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 410215550f728d6b11b02b3ef108d429481e42a0
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869018"
 ---
-# <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>透過雲端簡單管理 Azure VMware 解決方案的關鍵概念
+# <a name="key-concepts-for-administration-of-azure-vmware-solutions-by-cloudsimple"></a>透過 CloudSimple 管理 Azure VMware 解決方案的重要概念
 
-透過雲端簡單管理 Azure VMware 解決方案需要瞭解以下概念:
+透過 CloudSimple 管理 Azure VMware 解決方案需要瞭解下列概念：
 
-* 雲簡單服務,按雲端簡單顯示為 Azure VMware 解決方案 - 服務
-* 雲簡單節點,按雲端簡單顯示為 Azure VMware 解決方案 - 節點
-* 雲簡單私有雲
+* CloudSimple 服務，會顯示為 Azure VMware 解決方案 by CloudSimple-服務
+* CloudSimple 節點，以 CloudSimple 節點的形式顯示為 Azure VMware 解決方案
+* CloudSimple 私用雲端
 * 服務網路
-* 雲簡單虛擬機,它顯示為 Azure VMware 解決方案(由雲端簡單 - 虛擬機器)
+* CloudSimple 虛擬機器，其會顯示為 CloudSimple 的 Azure VMware 解決方案-虛擬機器
 
-## <a name="cloudsimple-service"></a>雲簡單服務
+## <a name="cloudsimple-service"></a>CloudSimple 服務
 
-借助 CloudSimple 服務,您可以透過雲端簡單建立和管理與 VMware 解決方案關聯的所有資源。這些資源來自 Azure 門戶。 在要使用該服務的每個區域創建服務資源。
+透過 CloudSimple 服務，您可以從 Azure 入口網站 CloudSimple，以建立及管理與 VMware 解決方案相關聯的所有資源。 在您想要使用服務的每個區域中建立服務資源。
 
-瞭解有關[雲簡單服務的詳細資訊](cloudsimple-service.md)。
+深入瞭解[CloudSimple 服務](cloudsimple-service.md)。
 
-## <a name="cloudsimple-node"></a>雲簡單節點
+## <a name="cloudsimple-node"></a>CloudSimple 節點
 
-CloudSimple 節點是一個專用的裸機超融合計算和存儲主機,其中部署了VMware ESXi虛擬機器管理程式。 然後,此節點將合併到 VMware vSphere、vCenter、vSAN 和 NSX 平臺中。 雲簡單網路服務和邊緣網路服務也已啟用。 每個節點都用作計算和儲存容量的儲存,您可以預配這些儲存儲存的[雲易私有雲](cloudsimple-private-cloud.md)。 在雲端簡單服務可用的區域中預配或保留節點。
+CloudSimple 節點是在其中部署 VMware ESXi 程式管理元件的專用、裸機、超大範圍計算和儲存體主機。 此節點接著會併入 VMware vSphere、vCenter、vSAN 和 NSX 平臺中。 CloudSimple 網路服務和 edge 網路服務也會一併啟用。 每個節點都可做為計算和儲存體容量的單位，以供您布建以建立[CloudSimple 私人](cloudsimple-private-cloud.md)雲端。 您在可用 CloudSimple 服務的區域中布建或保留節點。
 
-瞭解有關[雲簡單節點](cloudsimple-node.md)的更多。
+深入瞭解[CloudSimple 節點](cloudsimple-node.md)。
 
-## <a name="cloudsimple-private-cloud"></a>雲簡單私有雲
+## <a name="cloudsimple-private-cloud"></a>CloudSimple 私用雲端
 
-CloudSimple 私有雲是由 vCenter 伺服器在其自己的管理域中管理的隔離 VMware 堆疊環境。 VMware 堆疊包括 ESXi 主機、vSphere、vCenter、vSAN 和 NSX。 堆疊在專用節點(專用和隔離裸機硬體)上運行,用戶通過包括 vCenter 和 NSX 管理器的本機 VMware 工具使用。 專用節點部署在 Azure 位置,並由 Azure 管理。 通過使用網路服務(如 VLAN、子網和防火牆表)可以對每個私有雲進行分段和保護。 使用安全專用 VPN 和 Azure 快速路由連接創建到本地環境和 Azure 網路的連接。
+CloudSimple 私用雲端是一種隔離的 VMware 堆疊環境，受其本身管理網域中的 vCenter server 管理。 VMware 堆疊包含 ESXi 主機、vSphere、vCenter、vSAN 和 NSX。 堆疊會在專用節點（專用和隔離的裸機硬體）上執行，並由使用者透過包含 vCenter 和 NSX Manager 的原生 VMware 工具取用。 專用節點會部署在 Azure 位置，並由 Azure 管理。 您可以使用網路服務（例如 Vlan 和子網和防火牆表格）來分割和保護每個私人雲端。 您的內部部署環境與 Azure 網路的連線是使用安全、私人 VPN 和 Azure ExpressRoute 連線所建立。
 
-瞭解有關[雲簡單私有雲的更多。](cloudsimple-private-cloud.md)
+深入瞭解[CloudSimple 私用雲端](cloudsimple-private-cloud.md)。
 
 ## <a name="service-networking"></a>服務網路
 
-CloudSimple 服務提供部署雲簡單服務的每個區域的網路。 網路是單個 TCP 第 3 層位址空間,默認情況下啟用路由。 在此區域中創建的所有私有雲和子網相互通信,無需任何其他配置。 通過使用 VLAN 在 vCenter 上創建分散式埠組。 您可以使用以下網路功能在私有雲端中設定與保護工作負載資源:
+CloudSimple 服務會為您的 CloudSimple 服務部署所在的每個區域提供一個網路。 網路是單一的 TCP 第3層位址空間，預設會啟用路由。 在此區域中建立的所有私人雲端和子網不需要進行任何額外設定即可彼此通訊。 您可以使用 Vlan 在 vCenter 上建立分散式通訊埠群組。 您可以使用下列網路功能來設定和保護私人雲端中的工作負載資源：
 
 * [VLAN 和子網路](cloudsimple-vlans-subnets.md)
 * [防火牆資料表](cloudsimple-firewall-tables.md)
@@ -54,11 +54,11 @@ CloudSimple 服務提供部署雲簡單服務的每個區域的網路。 網路�
 * [公用 IP](cloudsimple-public-ip-address.md)
 * [Azure 網路連線](cloudsimple-azure-network-connection.md)
 
-## <a name="cloudsimple-virtual-machine"></a>雲簡單虛擬機器
+## <a name="cloudsimple-virtual-machine"></a>CloudSimple 虛擬機器
 
-使用 CloudSimple 服務,可以從 Azure 門戶管理 VMware 虛擬機器。 可以從 vSphere 環境中的一個或多個群集或資源池映射到創建服務的訂閱。
+您可以使用 CloudSimple 服務，從 Azure 入口網站管理 VMware 虛擬機器。 您 vSphere 環境中的一或多個叢集或資源集區，可以對應到建立服務所在的訂用帳戶。
 
 深入了解：
 
-* [雲簡單虛擬機器](cloudsimple-virtual-machines.md)
-* [Azure 訂閱映射](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)
+* [CloudSimple 虛擬機器](cloudsimple-virtual-machines.md)
+* [Azure 訂用帳戶對應](https://docs.microsoft.com/azure/vmware-cloudsimple/azure-subscription-mapping/)

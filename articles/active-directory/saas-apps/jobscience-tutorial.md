@@ -16,10 +16,10 @@ ms.date: 07/12/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 23d2694aa4936090367cf881379f81911ae70f9d
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870533"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>教學課程：Azure Active Directory 與 Jobscience 整合
@@ -32,9 +32,9 @@ Jobscience 與 Azure AD 整合提供下列優點：
 - 您可以讓使用者使用他們的 Azure AD 帳戶自動登入 Kantega SSO for FishEye/Crucible (單一登入)
 - 您可以在 Azure 入口網站中集中管理您的帳戶
 
-如果想知道有關 SaaS 應用程式與 Azure AD 整合的詳細資訊,請參考[什麼是應用程式存取和使用 Azure 的目錄的單一登入](../manage-apps/what-is-single-sign-on.md)。
+如果您想要瞭解有關 SaaS 應用程式與 Azure AD 整合的更多詳細資料，請參閱[什麼是搭配 Azure Active Directory 的應用程式存取和單一登入](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要設定 Azure AD 與 Jobscience 整合，您需要下列項目：
 
@@ -47,7 +47,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 若要測試本教學課程中的步驟，您應該遵循這些建議：
 
 - 除非必要，否則請勿使用生產環境。
-- 如果沒有 Azure AD 試用環境,可以在此處獲得為期一個月的試用版:[試用產品/服務](https://azure.microsoft.com/pricing/free-trial/)。
+- 如果您沒有 Azure AD 試用環境，您可以在這裡取得一個月試用：[試用版供應](https://azure.microsoft.com/pricing/free-trial/)專案。
 
 ## <a name="scenario-description"></a>案例描述
 在本教學課程中，您會在測試環境中測試 Azure AD 單一登入。 本教學課程中說明的案例由二項主要的基本工作組成：
@@ -89,11 +89,11 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 若要設定及測試與 Jobscience 搭配運作的 Azure AD 單一登入，您需要完成下列建置組塊：
 
-1. **[設定 Azure AD 單一登入](#configuring-azure-ad-single-sign-on)**- 使用戶能夠使用此功能。
-1. **[創建 Azure AD 測試使用者](#creating-an-azure-ad-test-user)**- 與布裡塔·西蒙一起測試 Azure AD 單一登錄。
+1. 設定**[Azure AD 單一登入](#configuring-azure-ad-single-sign-on)**-讓您的使用者能夠使用此功能。
+1. **[建立 Azure AD 測試使用者](#creating-an-azure-ad-test-user)**-使用 Britta Simon 來測試 Azure AD 單一登入。
 1. **[建立 Jobscience 測試使用者](#creating-a-jobscience-test-user)** - 使 Jobscience 中對應的 Britta Simon 連結到該使用者在 Azure AD 中的代表項目。
 1. **[指派 Azure AD 測試使用者](#assigning-the-azure-ad-test-user)** - 讓 Britta Simon 能夠使用 Azure AD 單一登入。
-1. **[測試單一登錄](#testing-single-sign-on)**- 以驗證配置是否有效。
+1. **[測試單一登入](#testing-single-sign-on)**-驗證設定是否正常運作。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>設定 Azure AD 單一登入
 
@@ -118,7 +118,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
     > [!NOTE] 
     > 這不是真實的值。 請使用實際的登入 URL 來更新此值。 從 [Jobscience 客戶支援小組](http://www.jobscience.com/support)或從您將建立的 SSO 設定檔 (本教學課程稍後會說明) 取得此值。 
  
-1. 在**SAML 簽署憑證**部份,按一下**憑證 (Base64),** 然後將憑證檔儲存到電腦上。
+1. 在 [ **SAML 簽署憑證**] 區段上，按一下 [**憑證（Base64）** ]，然後將憑證檔案儲存在您的電腦上。
 
     ![設定單一登入](./media/jobscience-tutorial/tutorial_jobscience_certificate.png) 
 
@@ -126,7 +126,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
     ![設定單一登入](./media/jobscience-tutorial/tutorial_general_400.png)
 
-1. 在 [Jobscience 組態]**** 區段上，按一下 [設定 Jobscience]**** 以開啟 [設定登入]**** 視窗。 從 **「快速參考」部分**複製**登出網址、SAML 實體 ID 和 SAML 單一登入服務 URL。**
+1. 在 [Jobscience 組態]**** 區段上，按一下 [設定 Jobscience]**** 以開啟 [設定登入]**** 視窗。 從 [**快速參考] 區段**中複製 [**登出 URL]、[saml 實體識別碼] 和 [Saml 單一登入服務 URL** ]。
 
     ![設定單一登入](./media/jobscience-tutorial/tutorial_jobscience_configure.png) 
 
@@ -134,15 +134,15 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 1. 移至 [設定]****。
    
-   ![安裝](./media/jobscience-tutorial/IC784358.png "Setup")
+   ![安裝](./media/jobscience-tutorial/IC784358.png "安裝程式")
 
 1. 在 [系統管理員]**** 區段的左方導覽窗格中，按一下 [網域管理]**** 展開相關的區段，然後按一下 [我的網域]**** 來開啟 [我的網域]**** 頁面。 
    
    ![我的網域](./media/jobscience-tutorial/ic767825.png "我的網域")
 
-1. 要驗證您的網域設定是否正確,請確保其位於「**已部署到使用者的步驟 4」** 中,並查看「**我的域設定**」 。
+1. 若要確認已正確設定您的網域，請確定它是在「**步驟4部署給使用者**」中，並檢查您的「**我的網域設定**」。
 
-    ![部署到使用者的網域](./media/jobscience-tutorial/ic784377.png "部署到使用者的網域")
+    ![已部署到使用者的網域](./media/jobscience-tutorial/ic784377.png "已部署到使用者的網域")
 
 1. 在 Jobscience 公司網站上，依序按一下 [安全性控制]**** 及 [單一登入設定]****。
     
@@ -176,7 +176,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
     h. 在 [識別提供者登出 URL]**** 文字方塊中，貼上您從 Azure 入口網站複製的 [登出 URL]**** 值。
 
-    i. 按一下 [檔案]  。
+    i. 按一下 **[儲存]** 。
 
 1. 在 [系統管理員]**** 區段的左方導覽窗格中，按一下 [網域管理]**** 展開相關的區段，然後按一下 [我的網域]**** 來開啟 [我的網域]**** 頁面。 
     
@@ -197,7 +197,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
     按一下您已經在上述步驟中建立的 SSO 設定檔。 此頁面會顯示您公司的單一登入 URL (例如 `https://companyname.my.salesforce.com?so=companyid`)。    
 
 > [!TIP]
-> 現在,您可以在設置應用時在[Azure 門戶](https://portal.azure.com)中閱讀這些說明的簡明版本!  從 [Active Directory] > [企業應用程式]**** 區段新增此應用程式之後，只要按一下 [單一登入]**** 索引標籤，即可透過底部的 [組態]**** 區段存取內嵌的文件。 您可以從以下連結閱讀更多有關內嵌文件功能的資訊：[Azure AD 內嵌文件]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 當您設定應用程式時，您現在可以在[Azure 入口網站](https://portal.azure.com)中閱讀這些指示的簡要版本！  從 [Active Directory] > [企業應用程式]**** 區段新增此應用程式之後，只要按一下 [單一登入]**** 索引標籤，即可透過底部的 [組態]**** 區段存取內嵌的文件。 您可以從以下連結閱讀更多有關內嵌文件功能的資訊：[Azure AD 內嵌文件]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>建立 Azure AD 測試使用者
@@ -211,7 +211,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
     ![建立 Azure AD 測試使用者](./media/jobscience-tutorial/create_aaduser_01.png) 
 
-1. 要顯示使用者清單,請轉到 **「使用者」和「群組」,** 然後單擊「**所有使用者**」。
+1. 若要顯示使用者清單，請移至 [**使用者和群組**]，然後按一下 [**所有使用者**]。
     
     ![建立 Azure AD 測試使用者](./media/jobscience-tutorial/create_aaduser_02.png) 
 
@@ -245,7 +245,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 1. 移到 [設定]。
    
-   ![安裝](./media/jobscience-tutorial/ic784358.png "Setup")
+   ![安裝](./media/jobscience-tutorial/ic784358.png "安裝程式")
 1. 移至 [管理使用者 \> 使用者]****。
    
    ![使用者](./media/jobscience-tutorial/ic784369.png "使用者")
@@ -282,7 +282,7 @@ Jobscience 與 Azure AD 整合提供下列優點：
 
 **若要將 Britta Simon 指派給 Jobscience，請執行下列步驟：**
 
-1. 在 Azure 門戶中,打開應用程式檢視,然後導航到目錄檢視,然後轉到**企業應用程式**,然後單擊 **"所有應用程式**"。
+1. 在 [Azure 入口網站中，開啟 [應用程式] 視圖，然後流覽至目錄檢視並移至 [**企業應用程式**]，然後按一下 [**所有應用程式**]。
 
     ![指派使用者][201] 
 

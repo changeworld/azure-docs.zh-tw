@@ -1,30 +1,30 @@
 ---
 title: 偵錯轉譯
-description: 伺服器端除錯呈現效果概述
+description: 伺服器端的調試轉譯效果總覽
 author: jumeder
 ms.author: jumeder
 ms.date: 04/09/2020
 ms.topic: article
 ms.openlocfilehash: f10c736cad9322752d5d552d29ef0c63635628a5
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81868166"
 ---
 # <a name="debug-rendering"></a>偵錯轉譯
 
-調試呈現 API 提供了一系列全域選項,用於使用不同的調試效果來更改伺服器端呈現。
+Debug 轉譯 API 提供範圍廣泛的全域選項，可使用不同的調試效果來改變伺服器端轉譯。
 
-## <a name="available-debug-rendering-effects"></a>可用的除錯呈現效果
+## <a name="available-debug-rendering-effects"></a>可用的調試轉譯效果
 
 |設定                          | 效果                               |
 |---------------------------------|:-------------------------------------|
-|框架計數器                    | 將文本疊加渲染到框架的左上角。 文本顯示當前伺服器端幀 ID,該 ID 隨著呈現過程而不斷遞增。 |
-|多邊形計數                    | 將文本疊加渲染到框架的左上角。 文字顯示目前呈現的多邊形量,與[伺服器端效能查詢](performance-queries.md)查詢的值相同| 
-|線框                        | 如果啟用,則伺服器上載入的所有物件幾何體都將線上框模式下呈現。 在此模式下,只有多邊形的邊緣才會柵格。 |
+|框架計數器                    | 將文字重迭呈現到框架的左上角。 此文字會顯示目前的伺服器端框架識別碼，這會在轉譯繼續時持續遞增。 |
+|多邊形計數                    | 將文字重迭呈現到框架的左上角。 此文字會顯示目前呈現的多邊形數量，與[伺服器端效能查詢](performance-queries.md)所查詢的值相同| 
+|線框                        | 啟用時，在伺服器上載入的所有物件幾何都會以線框模式呈現。 只有多邊形的邊緣會在此模式中進行柵格化。 |
 
-以下代碼支援以下調試效果:
+下列程式碼會啟用這些偵錯工具的效果：
 
 ``` cs
 void EnableDebugRenderingEffects(AzureSession session, bool highlight)
@@ -42,21 +42,21 @@ void EnableDebugRenderingEffects(AzureSession session, bool highlight)
 }
 ```
 
-![除錯渲染](./media/debug-rendering.png)
+![調試轉譯](./media/debug-rendering.png)
 
 > [!NOTE]
-> 所有調試呈現效果都是影響整個幀的全域設置。
+> 所有的偵錯工具轉譯效果都是影響整個框架的全域設定。
 
 ## <a name="use-cases"></a>使用案例
 
-除錯呈現 API 用於簡單的除錯任務,例如驗證服務連接實際正常執行。 文本呈現選項直接影響向的視頻幀。 啟用它們可驗證是否接收了新幀並正確解碼了視頻。
+Debug 轉譯 API 適用于簡單的偵錯工具工作，例如驗證服務連線確實已啟動並正常執行。 文字轉譯選項會直接影響縮小資料流程的影片畫面。 啟用它們會確認是否已接收新的畫面格，並正確地進行影片解碼。
 
-但是,所提供的效果不會對服務運行狀況進行任何詳細的反省。 建議為此使用伺服器[介面效能查詢](performance-queries.md)。
+不過，所提供的效果並不會對服務健康狀態提供任何詳細的自我檢查。 建議使用[伺服器端效能查詢](performance-queries.md)做為此使用案例。
 
 ## <a name="performance-considerations"></a>效能考量
 
-* 啟用文本疊加會產生很少或根本沒有性能開銷。
-* 啟用線框模式確實會產生非同尋常的性能開銷,但可能因場景而異。 對於複雜場景,此模式可能會導致幀速率降至 60 Hz 目標以下。
+* 啟用文字重迭幾乎不會產生任何效能負擔。
+* 啟用線框模式並不會產生非常簡單的效能負擔，不過它可能會因場景而有所不同。 針對複雜場景，此模式可能會導致畫面播放速率降到 60-Hz 目標以下。
 
 ## <a name="next-steps"></a>後續步驟
 

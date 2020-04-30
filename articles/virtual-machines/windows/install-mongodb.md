@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: a5ba7d7fce3f3eabd223956ca8d9cc824fbd0c5f
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869459"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>在 Azure 中的 Windows VM 上安裝及設定 MongoDB
 [MongoDB](https://www.mongodb.org) 是一個受歡迎的高效能開放原始碼 NoSQL 資料庫。 這篇文章會逐步引導您安裝和設定 Azure 中 Windows Server 2016 虛擬機器 (VM) 上的 MongoDB。 您也可以[在 Azure 中的 Linux VM 上安裝 MongoDB](../linux/install-mongodb.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 在安裝及設定 MongoDB 之前，您必須建立 VM，並且最好將資料磁碟新增至其中。 請參閱下列文章，以建立 VM 並且新增資料磁碟︰
 
 * 使用 [Azure 入口網站](quick-create-portal.md)或 [Azure PowerShell](quick-create-powershell.md) 建立 Windows Server VM。
@@ -54,13 +54,13 @@ ms.locfileid: "81869459"
 ## <a name="configure-the-vm-and-mongodb"></a>設定 VM 和 MongoDB
 1. 路徑變數不會被 MongoDB 安裝程式更新。 在您的路徑變數中沒有 MongoDB `bin` 位置，您必須在每次使用 MongoDB 可執行檔時指定完整路徑。 若要將位置新增至路徑變數︰
    
-   * 右鍵按下「**開始」** 選單,然後選擇 **「系統**」。
+   * 以滑鼠右鍵按一下 [**開始**] 功能表，然後選取 [**系統**]。
    * 按一下 [進階系統設定]****，然後按一下 [環境變數]****。
    * 在 [系統變數]**** 底下，選取 [路徑]****，然後按一下 [編輯]****。
      
      ![設定路徑變數](./media/install-mongodb/configure-path-variables.png)
      
-     將路徑新增至您的 MongoDB `bin` 資料夾。 MongoDB 通常安裝在*C:\程式檔\蒙戈DB*中。 請確認您的 VM 上的安裝路徑。 下列範例會將預設 MongoDB 安裝位置新增至 `PATH` 變數︰
+     將路徑新增至您的 MongoDB `bin` 資料夾。 MongoDB 通常會安裝在*C:\Program Files\MongoDB*中。 請確認您的 VM 上的安裝路徑。 下列範例會將預設 MongoDB 安裝位置新增至 `PATH` 變數︰
      
      ```
      ;C:\Program Files\MongoDB\Server\3.6\bin

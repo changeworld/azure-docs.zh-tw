@@ -1,7 +1,7 @@
 ---
-title: 升級私有雲權限
+title: 提升私用雲端許可權
 titleSuffix: Azure VMware Solution by CloudSimple
-description: 描述如何升級私有雲上的許可權,以用於 vCenter 中的管理功能
+description: 說明如何針對 vCenter 中的系統管理功能，在私人雲端上提升許可權
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 06/05/2019
@@ -10,20 +10,20 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 63dc18c522a1e2e3b03bdf806945e0be67774b18
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870463"
 ---
-# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>從雲簡單門戶升級私有雲 vCenter 許可權
+# <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>從 CloudSimple 入口網站提升私用雲端 vCenter 許可權
 
-要對私有雲 vCenter 進行管理訪問,您可以暫時升級雲簡單許可權。  使用提升的許可權,您可以安裝 VMware 解決方案、添加標識源和管理使用者。
+如需您私人雲端 vCenter 的系統管理存取權，您可以暫時提升 CloudSimple 許可權。  使用較高的許可權，您可以安裝 VMware 解決方案、新增身分識別來源，以及管理使用者。
 
-可以在 vCenter SSO 網域上創建新使用者,並授予對 vCenter 的訪問許可權。  創建新使用者時,請將它們添加到 CloudSimple 內建組中以訪問 vCenter。  有關詳細資訊,請參閱[VMware vCenter 的雲端簡單私有雲端許可權模型](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)。
+您可以在 vCenter SSO 網域上建立新的使用者，並取得 vCenter 的存取權。  當您建立新的使用者時，請將它們新增至 CloudSimple 的內建群組以存取 vCenter。  如需詳細資訊，請參閱[CloudSimple VMware vCenter 的私用雲端許可權模型](https://docs.microsoft.com/azure/vmware-cloudsimple/learn-private-cloud-permissions/)。
 
 > [!CAUTION]
-> 不要對管理元件進行任何配置更改。 在升級的特權狀態期間執行的操作可能會對您的系統產生負面影響,或可能導致您的系統不可用。
+> 請勿對管理元件進行任何設定變更。 在提高許可權的狀態期間採取的動作可能會對您的系統造成負面影響，或可能導致系統無法使用。
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
@@ -31,62 +31,62 @@ ms.locfileid: "81870463"
 
 ## <a name="escalate-privileges"></a>提升權限
 
-1. 存[取 雲簡單門戶](access-cloudsimple-portal.md)。
+1. 存取[CloudSimple 入口網站](access-cloudsimple-portal.md)。
 
-2. 打開 **「資源」** 頁面,選擇要為其升級權限的私有雲。
+2. 開啟 [**資源**] 頁面，選取您想要提升許可權的私人雲端。
 
-3. 在 **「更改 vSphere」許可權**下的「摘要」頁底部附近,按下「**升級**」 。
+3. 在 [**變更 vSphere 許可權**] 下的 [摘要] 頁面底部附近，按一下 [**呈報**]。
 
-    ![變更 vSphere 權限](media/escalate-private-cloud-privilege.png)
+    ![變更 vSphere 許可權](media/escalate-private-cloud-privilege.png)
 
-4. 選擇 vSphere 用戶類型。  只能`CloudOwner@cloudsimple.local`升級本地使用者。
+4. 選取 [vSphere] 使用者類型。  只有`CloudOwner@cloudsimple.local`本機使用者可以升級。
 
-5. 從下拉清單中選擇升級時間間隔。 選擇允許您完成任務的最短期限。
+5. 從下拉式選單中選取 [呈報時間間隔]。 選擇可讓您完成工作的最短時間。
 
-6. 選擇該複選框以確認您了解風險。
+6. 選取核取方塊以確認您瞭解風險。
 
-    ![升級權限對話框](media/escalate-private-cloud-privilege-dialog.png)
+    ![呈報許可權對話方塊](media/escalate-private-cloud-privilege-dialog.png)
 
 7. 按一下 [確定]  。
 
-8. 升級過程可能需要幾分鐘時間。 完成後,按一下 **「確定**」。
+8. 擴大程式可能需要幾分鐘的時間。 完成時，按一下 **[確定]**。
 
-許可權升級開始並持續到所選間隔的結束。  您可以登錄到私有雲 vCenter 以執行管理任務。
+許可權提升會開始，並持續到所選間隔結束為止。  您可以登入您的私用雲端 vCenter 來執行系統管理工作。
 
 > [!IMPORTANT]
-> 只有一個使用者可以具有升級的許可權。  必須先取消升級用戶的許可權,然後才能升級其他用戶的許可權。
+> 只有一位使用者可以有較高的權限。  您必須先取消呈報使用者的許可權，才能提升其他使用者的許可權。
 
 > [!CAUTION]
-> 新使用者只能添加到*雲擁有者組*、*雲-全球群集-管理員組*、*雲-全球-儲存-管理員組*、*雲-全球-網路-管理員群組*或*雲-全球-VM-管理員群組*。  新增到*管理員*群組的使用者將自動刪除。  只能將服務帳戶添加到*管理員*組,並且不得使用服務帳戶登錄到 vSphere Web UI。
+> 新使用者必須僅新增至*雲端擁有者群組*、*雲端全域叢集-管理群組*、雲端-全域*存放裝置-* 系統管理群組、雲端-全域*網路-* 系統管理群組或*雲端全域 VM-管理群組*。  新增至系統*管理員*群組的使用者將會自動移除。  只有服務帳戶必須新增至*Administrators*群組，而服務帳戶不能用來登入 VSPHERE web UI。
 
-## <a name="extend-privilege-escalation"></a>延伸權限升級
+## <a name="extend-privilege-escalation"></a>擴充許可權擴大
 
-如果您需要額外的時間來完成任務,可以延長許可權升級期。  選擇允許您完成管理任務的額外升級時間間隔。
+如果您需要額外的時間來完成您的工作，您可以擴充許可權擴大期間。  選擇可讓您完成系統管理工作的額外呈報時間間隔。
 
-1. 在 CloudSimple 門戶中的 **「資源** > **私有雲**」上,選擇要為其擴展許可權升級的私有雲。
+1. 在 CloudSimple 入口網站的 [**資源** > ] [**私人**雲端] 中，選取您要擴充許可權提升的私人雲端。
 
-2. 在「摘要」選項卡底部附近,按下 **「擴展許可權升級**」 。
+2. 按一下 [摘要] 索引標籤底部附近的 [**擴充許可權擴大**]。
 
-    ![延伸權限升級](media/de-escalate-private-cloud-privilege.png)
+    ![擴充許可權擴大](media/de-escalate-private-cloud-privilege.png)
 
-3. 從下拉清單中選擇升級時間間隔。 查看新的上報結束時間。
+3. 從下拉式選單中選取呈報時間間隔。 檢查新的擴大結束時間。
 
-4. 按下 **「保存**」以延長間隔。
+4. 按一下 [**儲存**] 以擴充間隔。
 
-## <a name="de-escalate-privileges"></a>降級特權
+## <a name="de-escalate-privileges"></a>取消提升許可權
 
-完成管理任務后,應取消降級許可權。  
+系統管理工作完成後，您應該解除許可權的升級。  
 
-1. 在 CloudSimple 門戶中的 **「資源** > **私有雲**」上,選擇要取消許可權的私有雲。
+1. 在 CloudSimple 入口網站的 [**資源** > ] [**私人**雲端] 中，選取您想要對其取消升級許可權的私人雲端。
 
-2. 按下 **「取消升級**」。
+2. 按一下 [**取消呈報**]。
 
 3. 按一下 [確定]  。
 
 > [!IMPORTANT]
-> 為避免任何錯誤,請註銷 vCenter,並在取消升級許可權後再次登錄。
+> 若要避免發生任何錯誤，請登出 vCenter，並在取消升級許可權後重新登入。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [設定 vCenter 識別來源以使用活動目錄](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
-* 將備份解決方案安裝到[備份工作負載虛擬機器](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)
+* [設定要使用的 vCenter 身分識別來源 Active Directory](https://docs.microsoft.com/azure/vmware-cloudsimple/set-vcenter-identity/)
+* 安裝備份解決方案以[備份工作負載虛擬機器](https://docs.microsoft.com/azure/vmware-cloudsimple/backup-workloads-veeam/)

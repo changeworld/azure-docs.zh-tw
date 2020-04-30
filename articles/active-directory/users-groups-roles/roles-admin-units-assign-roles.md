@@ -1,6 +1,6 @@
 ---
-title: 使用管理單位作用域(預覽)分配和列出角色 - Azure 活動目錄 |微軟文件
-description: 使用管理單位限制 Azure 活動目錄中的角色分配範圍
+title: 指派和列出具有系統管理單位範圍的角色（預覽）-Azure Active Directory |Microsoft Docs
+description: 使用管理單位來限制 Azure Active Directory 中的角色指派範圍
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,40 +15,40 @@ ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3af281846e2bd1a39e691d84e964d8a8f780a6f1
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81870423"
 ---
-# <a name="assign-scoped-roles-to-an-administrative-unit"></a>將範圍角色分配給管理單位
+# <a name="assign-scoped-roles-to-an-administrative-unit"></a>將限域角色指派給管理單位
 
-在 Azure 活動目錄 (Azure AD) 中,可以將使用者分配給範圍僅限於一個或多個管理單位 (A) 的 Azure AD 角色,以便進行更精細的管理控制。
+在 Azure Active Directory （Azure AD）中，您可以將使用者指派給範圍限制為一或多個管理單位（au）的 Azure AD 角色，以進行更細微的系統管理控制。
 
-有關準備使用 PowerShell 和 Microsoft 圖形進行管理單元管理的步驟,請參閱[入門](roles-admin-units-manage.md#get-started)。
+如需準備將 PowerShell 和 Microsoft Graph 用於管理單位管理的步驟，請參閱[開始](roles-admin-units-manage.md#get-started)使用。
 
-## <a name="roles-available"></a>可用角色
+## <a name="roles-available"></a>可用的角色
 
 角色  |  描述
 ----- |  -----------
-驗證系統管理員  |  只能查看、設置和重置分配管理單元中的任何非管理員使用者的任何非管理員使用者身份驗證方法資訊。
-組管理員  |  只能管理組和組設置的所有方面,如指定管理單元中的命名和過期策略。
-服務台系統管理員  |  只能重置分配管理單元中非管理員和幫助台管理員的密碼。
-授權管理員  |  只能在管理單位內分配、刪除和更新許可證分配。
-密碼管理員  |  只能重置分配管理單元中非管理員和密碼管理員的密碼。
-使用者管理員  |  可以管理使用者和組的所有方面,包括僅為分配的管理單元中的有限管理員重置密碼。
+驗證系統管理員  |  只有在指派的管理單位中，才有權查看、設定及重設任何非系統管理員使用者的驗證方法資訊。
+群組管理員  |  只能管理群組和群組設定的所有層面，例如指派的管理單位中的命名和到期原則。
+服務台系統管理員  |  只能在指派的管理單位中，重設非系統管理員和技術服務人員系統管理員的密碼。
+授權管理員  |  只能在管理單位中指派、移除及更新授權指派。
+密碼管理員  |  只能在指派的管理單位內重設非系統管理員和密碼管理員的密碼。
+使用者管理員  |  可管理使用者和群組的所有層面，包括僅在指派的管理單位內重設受限系統管理員的密碼。
 
-## <a name="assign-a-scoped-role"></a>配置範圍角色
+## <a name="assign-a-scoped-role"></a>指派已設定範圍的角色
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-跳到**Azure AD >门户中的管理单位**。 選擇要將角色分配給使用者的管理單位。 在左側窗格中,選擇角色和管理員以列出所有可用角色。
+在入口網站中移至**Azure AD > 管理單位**。 選取您要將角色指派給使用者的管理單位。 在左窗格中選取 [角色和系統管理員]，以列出所有可用的角色。
 
-![選擇管理單位來改變角色範圍](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
+![選取要變更角色範圍的管理單位](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
 
-選擇要分配的角色,然後選擇 **「添加分配**」 。 這將在右側滑動打開面板,您可以在其中選擇要分配給角色的一個或多個使用者。
+選取要指派的角色，然後選取 [**新增指派**]。 這會滑動開啟右側的面板，您可以在其中選取一或多個要指派給角色的使用者。
 
-![選擇要範圍的角色,然後選擇"添加分配"](./media/roles-admin-units-assign-roles/select-add-assignment.png)
+![選取要設定範圍的角色，然後選取 [新增指派]](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -57,7 +57,7 @@ ms.locfileid: "81870423"
     $uaRoleMemberInfo = New-Object -TypeName Microsoft.Open.AzureAD.Model.RoleMemberInfo -Property @{ObjectId = $AdminUser.ObjectId}
     Add-AzureADScopedRoleMembership -RoleObjectId $UserAdminRole.ObjectId -ObjectId $administrative unitObj.ObjectId -RoleMemberInfo  $uaRoleMemberInfo
 
-突出顯示的部分可以根據需要更改特定環境。
+反白顯示的區段可能會視特定環境的需要而變更。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -72,18 +72,18 @@ ms.locfileid: "81870423"
       }
     }
 
-## <a name="list-the-scoped-admins-on-an-au"></a>在 AU 上列出作用域管理員
+## <a name="list-the-scoped-admins-on-an-au"></a>列出 AU 上的限域系統管理員
 
 ### <a name="azure-portal"></a>Azure 入口網站
 
-使用管理單位作用域完成的所有角色分配都可以在 Azure AD[的管理單位部分](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)中查看。 跳到**Azure AD >门户中的管理单位**。 選擇要列出的角色分配的管理單位。 選擇**角色和管理員**並打開角色以查看管理單元中的分配。
+使用管理單位範圍完成的所有角色指派，都可以在 Azure AD 的 [[管理單位] 區段](https://ms.portal.azure.com/?microsoft_aad_iam_adminunitprivatepreview=true&microsoft_aad_iam_rbacv2=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/AdminUnit)中看到。 在入口網站中移至**Azure AD > 管理單位**。 選取您想要列出之角色指派的管理單位。 選取 [**角色和系統管理員**]，並開啟角色以在管理單位中查看指派。
 
 ### <a name="powershell"></a>PowerShell
 
     $administrative unitObj = Get-AzureADAdministrativeUnit -Filter "displayname eq 'Test administrative unit 2'"
     Get-AzureADScopedRoleMembership -ObjectId $administrative unitObj.ObjectId | fl *
 
-突出顯示的部分可以根據需要更改特定環境。
+反白顯示的區段可能會視特定環境的需要而變更。
 
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
@@ -94,4 +94,4 @@ ms.locfileid: "81870423"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [管理單位故障排除和常見問題解答](roles-admin-units-faq-troubleshoot.md)
+- [管理單位疑難排解和常見問題](roles-admin-units-faq-troubleshoot.md)

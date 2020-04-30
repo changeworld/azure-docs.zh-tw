@@ -1,6 +1,6 @@
 ---
-title: 在合作夥伴中心 - Azure 應用商店中創建諮詢服務產品
-description: 瞭解如何使用合作夥伴中心將諮詢服務產品發佈到 Azure 應用商店或 AppSource。
+title: 在合作夥伴中心建立諮詢服務供應專案-Azure Marketplace
+description: 瞭解如何使用合作夥伴中心，將諮詢服務供應專案發佈至 Azure Marketplace 或 AppSource。
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
@@ -8,221 +8,221 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: eff37750f0580a28c9644ee1ffb7fe4e95038709
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81869786"
 ---
-# <a name="create-a-consulting-service-offer"></a>建立諮詢服務產品
+# <a name="create-a-consulting-service-offer"></a>建立諮詢服務供應專案
 
 > [!IMPORTANT]
-> 我們將您的諮詢服務服務服務從雲合作夥伴門戶遷移到合作夥伴中心。 在遷移產品/服務之前,請按照 Azure[和 Dynamics 365 雲合作夥伴門戶諮詢服務產品提供](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)的說明進行管理產品/服務。
+> 我們正在將您諮詢服務供應專案的管理從 Cloud Partner 入口網站移至合作夥伴中心。 在您的供應專案遷移之前，請依照[Azure 和 Dynamics 365 諮詢服務供應](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)專案中的指示進行 Cloud Partner 入口網站，以管理您的供應專案。
 
-本文介紹如何將諮詢服務產品發佈到[Azure 應用商店](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/)。 基於微軟[動態365](https://dynamics.microsoft.com/)和AppSource上的電源平臺提供諮詢服務。 基於 Azure 應用商店上的 Microsoft Azure 的諮詢服務產品。
+本文說明如何將諮詢服務供應專案發佈至[Azure Marketplace](https://azuremarketplace.microsoft.com/)或[AppSource](https://appsource.microsoft.com/)。 根據 AppSource 上的 Microsoft [Dynamics 365](https://dynamics.microsoft.com/)和 Power 平臺，列出諮詢服務供應專案。 根據 Azure Marketplace 上的 Microsoft Azure 列出諮詢服務供應專案。
 
-要在 Azure 應用商店或 AppSource 諮詢服務中創建諮詢服務產品,您必須首先[在合作夥伴中心中擁有發行者帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account),並且必須在商業市場計劃中註冊您的帳戶。 在建立產品/服務之前,請查看[諮詢服務先決條件中的先決條件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)。
+若要在 Azure Marketplace 或 AppSource 諮詢服務中建立諮詢服務供應專案，您必須先[在合作夥伴中心擁有發行者帳戶](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)，而且必須在商業 Marketplace 方案中註冊您的帳戶。 建立供應專案之前，請先參閱[諮詢服務必要條件](https://docs.microsoft.com/azure/marketplace/partner-center-portal/consulting-service-prerequisites)中的必要條件。
 
 ## <a name="publishing-benefits"></a>發佈的優點
 
-發佈到商業市場的好處:
+發佈至商用 marketplace 的優點：
 
-- 使用 Microsoft 品牌推廣您的公司。
-- AppSource 上可能覆蓋超過 1 億個 Office 365 和 Dynamics 365 使用者,並通過 Azure 應用商店覆蓋 200,000 多個組織。
-- 從這些市場獲得高質量的潛在客戶。
-- 讓 Microsoft 現場和電話銷售團隊推廣您的服務
+- 使用 Microsoft 品牌來宣傳您的公司。
+- 透過 Azure Marketplace，有可能觸及超過100000000個 Office 365 和 Dynamics 365 AppSource 和超過200000個組織的使用者。
+- 從這些市場獲得高品質的潛在客戶。
+- 由 Microsoft 現場和電話銷售團隊推廣您的服務
 
 ## <a name="create-a-new-offer"></a>建立新的供應項目
 
-滿足上述要求后,請按照以下步驟創建諮詢服務產品。
+符合上述的需求之後，請遵循下列步驟來建立諮詢服務供應專案。
 
-1. 登錄到[合作夥伴中心](https://partner.microsoft.com),然後從頂部功能表中選擇 **「儀錶板**」。
-2. 在左導航欄中,選擇 **「商業市場**」,然後選擇 **「概述**」。
+1. 登入 [[合作夥伴中心](https://partner.microsoft.com)]，然後從頂端功能表中選取 [**儀表板**]。
+2. 在左側流覽列中，選取 [**商業 Marketplace**]，然後選取 **[總覽**]。
 
-    :::image type="content" source="media/cs-menu-overview.png" alt-text="說明商業市場的選單":::
+    :::image type="content" source="media/cs-menu-overview.png" alt-text="說明商用 marketplace 的功能表":::
 
-3. 選擇 **= 新優惠**,然後選擇**諮詢服務**。
+3. 選取 [ **+ 新增供應**專案]，然後選取 [**諮詢服務**]。
 
-    :::image type="content" source="media/cs-menu-newoffer.png" alt-text="說明創建新產品/服務/服務/服務按鈕。":::
+    :::image type="content" source="media/cs-menu-newoffer.png" alt-text="說明用來建立新供應專案的按鈕。":::
 
-4. 輸入**優惠代碼**。 這是您帳戶中每個產品/服務的唯一標識碼。
+4. 輸入**供應專案識別碼**。 這是您帳戶中每個供應專案的唯一識別碼。
 
-    - 此 ID 在市場產品/服務的網站位址中對客戶可見。
-    - 僅使用小寫字母、數位、破折號和下劃線,但不使用空格。 長度限制為 50 個字元。 例如,如果輸入**測試-產品/服務 -1,** 則產品`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`/服務網址將為 。
-    - 選擇 「**建立**」 後,&#39;无法更改优惠 ID。
+    - 在 marketplace 供應專案網址中，客戶可以看到此識別碼。
+    - 只能使用小寫字母、數位、連字號和底線，但不能有空格。 長度限制為50個字元。 例如，如果您輸入**測試-供應專案-1**，則供應專案 URL 會`https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`是。
+    - 在您選取 [**建立**] 之後，[供應專案識別碼] 可以&#39;t 變更。
 
-5. 輸入**產品/服務別名**。 這是用於指合作夥伴中心產品/服務的名稱。
+5. 輸入**供應專案別名**。 這是用來在合作夥伴中心參考供應專案的名稱。
 
-    - 此名稱&#39;在市場上不使用。 它&#39;與客戶顯示的要約名稱和其他值不同。 您可以使用此欄位為產品/服務分配更有用的名稱,該名稱對於內部標識產品/服務更有用;它不向客戶顯示。
-    - 選擇 「**建立**」後,&#39;无法更改产品/服務別名。
+    - 此名稱不會在 marketplace 中使用&#39;t。 它&#39;不同于供應專案名稱和其他向客戶顯示的值。 您可以使用此欄位，將名稱指派給提供給您的供應專案，以便在內部識別供應專案;不會向客戶顯示。
+    - 在您選取 [**建立**] 之後，[供應專案別名] 可以&#39;t 變更。
 
-輸入這兩個值後,選擇 **"創建**"以繼續到 **"產品/服務設置"** 頁。
+輸入這兩個值之後，請選取 [**建立**] 以繼續前往 [**供應專案設定**] 頁面。
 
-## <a name="offer-setup"></a>優惠設定
+## <a name="offer-setup"></a>供應專案設定
 
-輸入優惠 ID 和要約別名後,合作夥伴中心將創建草稿產品/服務並顯示 **「優惠設置**」頁面。 按照以下步驟設置您的產品/服務。
+輸入供應專案識別碼和供應專案別名之後，合作夥伴中心會建立草稿供應專案，並顯示 [**供應專案設定**] 頁面。 請遵循下列步驟來設定您的供應專案。
 
-### <a name="connect-lead-management"></a>連線潛在客戶管理
+### <a name="connect-lead-management"></a>連接潛在客戶管理
 
-使用合作夥伴中心向市場發佈產品/服務時,_必須_將其連接到客戶關係管理 (CRM) 或行銷自動化系統。 這樣,一旦有人對您的產品表示興趣或使用,您就會立即收到客戶聯繫資訊。
+當您使用合作夥伴中心將您的供應專案發佈至 marketplace 時，您_必須_將其連接到客戶關係管理（CRM）或行銷自動化系統。 這可讓您在有人對您的產品感興趣或使用時，立即收到客戶連絡人資訊。
 
-1. 選擇 **「連線」** 以指定您希望我們發送客戶潛在顧客的位置。 合作夥伴中心支援以下系統:
+1. 選取 **[連線]** ，指定您要讓我們傳送客戶潛在客戶的位置。 合作夥伴中心支援下列系統：
 
-    - [客戶互動的動態 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics)
+    - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) For Customer Engagement
     - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
     - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
     > [!NOTE]
-    > 如果 CRM 系統&#39;上面未列出,請使用[Azure 表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或[Hs 終結點](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)來儲存客戶潛在顧客資料,然後將資料匯出到 CRM 系統。
+    > 如果您的 CRM 系統未列于上列&#39;，請使用[Azure 資料表](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table)或[Https 端點](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https)來儲存客戶潛在客戶資料，然後將資料匯出至您的 CRM 系統。
 
-2. 在合作夥伴中心發佈時,請將您的產品/服務連接到潛在顧客目標。
-3. 確認與潛在顧客目標的連接配置正確。 在合作夥伴中心發佈後,我們將&#39;驗證連接並向您發送測試線索。 在產品/服務上線之前預覽產品/服務時,還可以嘗試在預覽環境中自行購買產品/服務,以測試潛在顧客連接。
-4. 確保與潛在顧客目標的連接保持更新,這樣您就不會丟失任何潛在顧客&#39;。
+2. 在合作夥伴中心發佈時，將您的供應專案連接到潛在客戶目的地。
+3. 確認已正確設定與潛在客戶目的地的連接。 在合作夥伴中心發佈之後，我們&#39;會驗證連線，並將測試潛在客戶傳送給您。 當您在供應專案上線前進行預覽時，您也可以嘗試在預覽環境中自行購買供應專案，藉此測試您的潛在客戶連線。
+4. 請確定潛在客戶目的地的連線持續更新，讓您不&#39;會失去任何潛在客戶。
 
-下面是一些額外的潛在客戶管理資源:
+以下是一些額外的潛在客戶管理資源：
 
-- [潛在客戶管理概述](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
+- [潛在客戶管理總覽](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [潛在客戶管理常見問題集](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
 - [常見潛在客戶設定錯誤](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [潛在客戶管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)PDF (確保彈出視窗封鎖程式關閉)
+- [潛在客戶管理總覽](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)PDF （請確定您的快顯封鎖程式已關閉）
 
-選擇 **"保存"草稿**,然後再繼續下一節"屬性"。
+選取 [**儲存草稿**]，然後繼續進行下一節的 [屬性]。
 
 ### <a name="properties"></a>屬性
 
-此頁面允許您設置諮詢服務提供的最佳封面的主要產品,設置諮詢服務類型,並選擇適用的產品。
+此頁面可讓您設定諮詢服務提供最佳涵蓋的主要產品、設定諮詢服務類型，以及選擇適用的產品。
 
-1. 從下拉清單中選擇**主要產品**。
-2. 從下拉清單中選擇**諮詢服務類型**:
+1. 從下拉式清單中選取**主要產品**。
+2. 從下拉式清單中選取**諮詢服務類型**：
 
-    - **評估**:評估客戶&#39;環境,以確定解決方案的適用性,並提供成本和時間的估計。
-    - **簡介**:使用框架、演示和客戶範例,介紹解決方案或諮詢服務,以吸引客戶的興趣。
-    - **實現**:一個完整的安裝,導致一個完全工作的解決方案。 限制在兩周或更短時間即可實施的解決方案。
-    - **概念證明**:確定解決方案是否符合客戶需求的有限範圍實現。
-    - **研討會**:在客戶&#39;的場所進行互動互動。 它可以包括基於客戶&#39;的數據或環境的培訓、簡報、評估或演示。
+    - **評**量：客戶&#39;s 環境的評估，以判斷解決方案的適用性，並提供成本和時間的估計。
+    - **簡報**：介紹解決方案或諮詢服務，使用架構、示範和客戶範例繪製客戶的關注。
+    - **執行**：會產生完全正常運作之解決方案的完整安裝。 限制可在兩周內執行的解決方案。
+    - **概念證明**：判斷解決方案是否符合客戶需求的有限範圍的執行。
+    - **研討會**：在客戶&#39;s 部署上進行互動。 它可以包含以客戶&#39;的資料或環境為基礎的訓練、簡報、評量或示範。
 
-1. 如果選擇**Azure**的主要產品,請選擇最多三個**解決方案區域**。 這些功能使 Azure 應用商店中的客戶更容易找到您的產品/服務。 如果未&#39;未選擇 Azure,請跳過此步驟。
-2. 如果選擇了 Azure_以外的_主要產品,請選擇最多三個**適用產品**。 這些使 AppSource 中的客戶更容易找到您的產品/服務。 有關詳細資訊,請參閱[Microsoft AppSource 諮詢服務列表指南](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)(PDF)。
-3. 最多選擇您優惠的六**個產業**。 這將使客戶更容易找到您的產品/服務。
-4. 將貴公司獲得的三**項能力**添加到諮詢服務產品清單中。 除了 Azure 專家 MSP&#39;和 Azure 網路 MSP&#39;, 至少需要一項能力。
+1. 如果您選取了**Azure**的主要產品，請選取最多三個**解決方案區域**。 這讓 Azure Marketplace 的客戶更容易找到您的供應專案。 如果您未選擇 [Azure]&#39;，請略過此步驟。
+2. 如果您選取了 Azure_以外_的主要產品，請選取最多三個**適用的產品**。 這讓 AppSource 中的客戶更容易找到您的供應專案。 如需詳細資訊，請參閱[Microsoft AppSource 諮詢服務清單指導方針](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409)（PDF）。
+3. 最多可選取您供應專案適用的六個**產業**。 這可讓客戶更輕鬆地找到您的供應專案。
+4. 最多可新增**三項**您的公司所獲的專長認證，以顯示在您的諮詢服務供應專案清單中。 除了 Azure 專家 MSP&#39;s 和 Azure 網路 MSP&#39;s 以外，至少需要一個專長認證。
 
-選擇 **"保存"草稿**,然後再繼續下一節"優惠清單"。
+選取 [**儲存草稿**]，然後繼續進行下一節的供應專案清單。
 
-## <a name="offer-listing"></a>優惠清單
+## <a name="offer-listing"></a>供應專案清單
 
-在這裡&#39;定義市場上顯示的報價詳細資訊。 這包括產品/服務名稱、說明、圖像等。 在配置此產品/服務時,請務必遵循[Microsoft&#39;策略页上](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services)詳細說明的策略。
+在這裡，您&#39;定義在 marketplace 中顯示的供應專案詳細資料。 這包括供應專案名稱、描述、影像等等。 設定此供應專案時，請務必遵循[Microsoft&#39;s 原則頁面](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services)上詳述的原則。
 
 > [!NOTE]
-> 如果要約說明以短語開頭,則報價詳細資訊&#39;不需要英文,&quot;此應用程式僅提供 [非英語語言]。&quot;提供有用連結&#39;提供與優惠清單詳細資訊中所用語言&#39;內容也沒關係。
+> 如果供應專案描述以片語開頭，則供應專案詳細資料不&#39;需要英文， &quot;此應用程式僅適用于 [非英文語言]。&quot;它&#39;也可以提供有用的連結，以不同于供應專案清單詳細資料所使用的&#39;語言來提供內容。
 
-### <a name="name"></a>名稱
+### <a name="name"></a>Name
 
-您在此處輸入的名稱顯示為產品的標題。 此欄位預先填充您在建立產品/服務時在 **「產品/服務」別名**框中輸入的文字。 您可以稍後變更此名稱。
+您在此處輸入的名稱會顯示為您供應專案的標題。 當您建立供應專案時，此欄位會預先填入您在 [**供應專案別名**] 方塊中輸入的文字。 您可以稍後變更此名稱。
 
-名稱:
+名稱：
 
-- 可以註冊商標(您可以包括商標或版權符號)。
-- 不能&#39;不超過50個字符長。
-- 不能&#39;不包括表情符號。
+- 可以是商標（您也可以包含商標或著作權符號）。
+- &#39;的長度不能超過50個字元。
+- 可以&#39;t 包含 emoji。
 
 ### <a name="search-results-summary"></a>搜尋結果摘要
 
-提供您的優惠的簡短說明。 這最多可達 100 個字元,並且用於市場搜尋結果。
+提供供應專案的簡短描述。 最多可有100個字元，並用於 marketplace 搜尋結果。
 
 ### <a name="description"></a>描述
 
-提供較長範圍的報價說明,最多 3,000 個字元。 這在市場清單概述中向客戶顯示。
+提供供應專案的較長描述，最多3000個字元。 這會在 marketplace 清單總覽中向客戶顯示。
 
-在描述中包括以下一項或多項:
+在您的描述中包含下列一或多項：
 
-- 您的產品提供的價值和關鍵優勢
-- 類別或行業協會,或兩者
-- 應用內購買機會
-- 任何必需的披露
+- 您的供應專案提供的價值與主要優點
+- 類別或產業關聯，或兩者
+- 應用程式內購買機會
+- 任何必要的公開
 
-以下是編寫說明的一些提示:
+以下是撰寫描述的一些秘訣：
 
-- 清楚地描述你描述前幾句的報價的價值。 包括以下專案:
+- 清楚描述您的供應專案在您的前幾個句子中的價值。 包含下列專案：
   - 供應項目的說明。
-  - 從產品/服務中受益的用戶類型。
-  - 客戶需求或發出產品/服務位址。
-- 請記住,搜尋結果中可能會顯示前幾個句子。
-- 不要&#39;依賴特性和功能來銷售您的產品。 相反,關注您的產品/服務提供的價值。
-- 嘗試使用行業特定的詞彙或基於利益的措辭。
+  - 受益于供應專案的使用者類型。
+  - 客戶需要或發行供應專案位址。
+- 請記住，前幾個句子可能會顯示在搜尋結果中。
+- Don&#39;t 依賴特性和功能來銷售您的產品。 相反地，請專注于您的供應專案提供的值。
+- 請嘗試使用產業專屬詞彙或以權益為基礎的用語。
 
-為了使您的描述更具吸引力,請使用豐富的文本編輯器來設置描述格式。 富文字編輯器允許您添加數位、專案符號、粗體、斜體和縮進,以使描述更具可讀性。
+若要讓您的描述更吸引人，請使用 rich 文字編輯器來格式化您的描述。 Rtf 編輯器可讓您新增數位、專案符號、粗體、斜體和縮排，讓您的描述更容易閱讀。
 
-:::image type="content" source="media/cs-rich-text-editor.png" alt-text="說明豐富的文本編輯器以編寫要約說明。" border="false":::
+:::image type="content" source="media/cs-rich-text-editor.png" alt-text="說明用來撰寫供應專案描述的 rich 文字編輯器。" border="false":::
 
 ### <a name="keywords"></a>關鍵字
 
-最多輸入三個與您的主要產品和諮詢服務相關的搜索關鍵字。 這些將更容易找到您的報價。
+輸入最多三個與您的主要產品和諮詢服務相關的搜尋關鍵字。 這些可讓您更輕鬆地找到您的供應專案。
 
 ### <a name="duration"></a>Duration
 
-設置與客戶的此參與的預期持續時間。
+設定此參與與客戶的預期持續時間。
 
 ### <a name="contact-information"></a>連絡資訊
 
-您必須提供**主要**和**次要連絡人**的名稱、電子郵件和電話號碼。 此資訊不會向客戶顯示&#39;。 它可供 Microsoft 使用,並可能提供給雲端解決方案供應商 (CSP) 合作夥伴。
+您必須提供**主要**和**次要連絡人**的名稱、電子郵件和電話號碼。 這種資訊不&#39;向客戶顯示。 可供 Microsoft 使用，並可提供給雲端解決方案提供者（CSP）合作夥伴。
 
-### <a name="supporting-documents"></a>證明檔案
+### <a name="supporting-documents"></a>支援檔
 
-為您的優惠添加最多三個(但至少一個)支援 PDF 文檔。
+最多可為您的供應專案新增三個（但至少一個）支援 PDF 檔。
 
-### <a name="marketplace-images"></a>市場映射
+### <a name="marketplace-images"></a>Marketplace 映射
 
-提供徽標和圖像,以便與您的產品配合使用。 所有圖像必須採用 .png 格式。 模糊圖像將被拒絕。
+提供要與您的供應專案搭配使用的標誌和影像。 所有影像都必須是 .png 格式。 模糊影像將會遭到拒絕。
 
 >[!Note]
->如果上傳文件出現問題,請確保本地網路不會阻止合作夥伴中心使用https://upload.xboxlive.com的服務。
+>如果您在上傳檔案時發生問題，請確定您的區域網路不會https://upload.xboxlive.com封鎖合作夥伴中心所使用的服務。
 
 #### <a name="store-logos"></a>Microsoft Store標誌。
 
-在以下每個像素大小中提供&#39;的 /png 產品/服務檔案的 :png 檔:
+請在下列每個圖元大小中提供供應專案的 .png 檔案&#39;s 標誌：
 
-- **小 (48 x 48)**
-- **大 (216 x 216)**
+- **小型（48 x 48）**
+- **大型（216 x 216）**
 
-所有徽標都是必需的,並且在市場清單中的不同位置使用。
+所有標誌都是必要的，並且會用於 marketplace 清單中的不同位置。
 
-#### <a name="screenshots-optional"></a>螢幕擷取(選擇性的)
+#### <a name="screenshots-optional"></a>螢幕擷取畫面（選擇性）
 
-最多添加五個屏幕截圖,顯示您的優惠如何工作。 每個圖元的大小和 .png 格式必須為 1280 x 720 圖元。
+新增最多五個螢幕擷取畫面，以顯示供應專案的運作方式。 每個都必須是 1280 x 720 圖元大小和 .png 格式。
 
-#### <a name="videos-optional"></a>視訊(選擇性的)
+#### <a name="videos-optional"></a>影片（選擇性）
 
-最多添加四個視頻,演示您的優惠。 輸入影片&#39;名稱、網址 (URL) 和影片的縮略圖 .png 圖像,大小為 1280 x 720 圖元。
+最多可新增四個示範您供應專案的影片。 以 1280 x 720 圖元的大小，輸入影片&#39;的名稱、其網址（URL）和縮圖的 png 影像。
 
-選擇 **"保存"草稿**,然後再繼續下一節"定價和可用性"。
+選取 [**儲存草稿**]，然後繼續進行下一節 [定價與可用性]。
 
 ## <a name="pricing-and-availability"></a>價格與可用性
 
-在這裡,您將定義定價、市場和私鑰等元素。
+在這裡，您將定義專案，例如價格、市場和私密金鑰。
 
-1. **市場**: 設定您的報價將可用的市場. 您只能根據報價選擇一個市場。
-    1. 對於美國或加拿大市場,選擇 **「編輯」州**(或**省**)以指定您的優惠可用位置。
-2. **預覽受眾**:設定用於為產品/服務設定私人受眾的**隱藏金鑰**。
-3. **定價**:指定您的優惠是**免費**還是**付費**優惠。
+1. **市場**：將提供您供應專案的市場。 您只能為每個供應專案選取一個市場。
+    1. 若為美國或加拿大市場，請選取 [**編輯州**（或**省**）] 來指定供應專案的可用位置。
+2. **預覽物件**：設定用來為您的供應專案設定私人物件的**隱藏金鑰**。
+3. **定價**：指定您的供應專案是**免費**或**付費**供應專案。
 
     > [!NOTE]
-    > 諮詢服務優惠僅適用於上市。 任何交易都將直接發生在商業市場之外。
+    > 諮詢服務供應專案僅適用于清單。 任何交易都會直接在商業 marketplace 外部發生。
 
-4. 對於已付要約,請指定**價格和貨幣**以及價格是**固定**價格還是**估計**。 如果"估計",則必須在說明中指定哪些因素會影響價格。
-5. 選擇 **「保存草稿**」。
+4. 若為付費供應專案，請指定**價格和貨幣**，以及價格是**固定**或**預估**。 若預估，您必須在描述中指定會影響價格的因素。
+5. 選取 [**儲存草稿**]。
 
-## <a name="review-and-publish"></a>稽核和發佈
+## <a name="review-and-publish"></a>審查和發行
 
-完成產品/服務所需的所有部分後,您可以提交報價以供審核和發佈。
+完成供應專案的所有必要區段之後，您可以提交供應專案來進行審查和發佈。
 
-1. 當您準備好發佈諮詢服務產品時,請按下 **「審閱」併發表**。
-2. 查看最終提交頁面上的詳細資訊。
-3. 如有必要,如果您認為產品/服務的任何詳細資訊需要解釋,請向認證團隊寫一份便條。
-4. 準備就緒后,選擇"**提交**"。
-5. **"產品/服務概述"** 頁顯示您的產品/服務處於哪些發佈階段。
+1. 當您準備好發佈諮詢服務供應專案時，請按一下 [**審查併發布**]。
+2. 請參閱最終提交頁面的詳細資料。
+3. 必要時，如果您認為您的供應專案有任何詳細資料需要說明，請將附注寫入認證小組。
+4. 當您準備好時，請選取 [**提交**]。
+5. [**供應專案總覽**] 頁面會顯示您的供應專案所在的發佈階段。
 
-有關您希望產品/服務在每個發佈階段的時間的詳細資訊,[請參閱檢查商業市場產品/服務的狀態](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)。
+如需您的供應專案在每個發佈階段中可預期時間長度的詳細資訊，請參閱[檢查商業 Marketplace 供應專案的發佈狀態](https://docs.microsoft.com/azure/marketplace/partner-center-portal/publishing-status)。
 
-## <a name="update-your-existing-consulting-service-offers"></a>更新您現有的諮詢服務優惠
+## <a name="update-your-existing-consulting-service-offers"></a>更新您現有的諮詢服務供應專案
 
-- [更新商業市場中的現有產品/服務](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)
+- [更新商用 marketplace 中的現有供應專案](https://docs.microsoft.com/azure/marketplace/partner-center-portal/update-existing-offer)

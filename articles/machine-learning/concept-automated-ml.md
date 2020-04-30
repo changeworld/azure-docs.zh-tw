@@ -1,7 +1,7 @@
 ---
-title: 什麼是自動 ML / 自動ML
+title: 什麼是自動化 ML/AutoML
 titleSuffix: Azure Machine Learning
-description: 瞭解 Azure 機器學習如何自動為您選擇演演演算法,並從中生成模型,以便使用提供的參數和條件為模型選擇最佳演演演算法來節省時間。
+description: 瞭解 Azure Machine Learning 如何自動為您挑選演算法，並使用您提供的參數和條件來為您的模型產生模型，以節省您的時間。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,91 +11,91 @@ author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
 ms.openlocfilehash: f592a7f5a4af38988bcf433f0adc89d9be7579cb
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82082004"
 ---
-# <a name="what-is-automated-machine-learning-automl"></a>什麼是自動機器學習 (自動ML)?
+# <a name="what-is-automated-machine-learning-automl"></a>何謂自動化機器學習（AutoML）？
 
-自動化機器學習,也稱為自動 ML 或 AutoML,是機器學習模型開發中耗時的反覆運算任務的自動化過程。 它允許數據科學家、分析師和開發人員在保持模型品質的同時,構建具有高規模、高效率和生產力的 ML 模型。 自動化ML是基於我們[微軟研究部門](https://arxiv.org/abs/1705.05355)的突破。
+自動化機器學習服務（也稱為自動化 ML 或 AutoML）是將機器學習模型開發的耗時、反復工作自動化的程式。 它可讓資料科學家、分析師和開發人員以高擴充性、效率和生產力來建立 ML 模型，同時維持模型品質。 自動化 ML 是以[Microsoft Research 部門](https://arxiv.org/abs/1705.05355)的突破性為基礎。
 
-傳統的機器學習模型開發是資源密集型的,需要大量的領域知識和時間來生成和比較數十種模型。 通過自動化機器學習,您可以輕鬆、高效地加快獲得生產就緒 ML 模型所需的時間。
+傳統機器學習模型的開發會耗用大量資源，因此需要大量的領域知識和時間來產生和比較數十種模型。 透過自動化機器學習，您可以加快取得生產環境就緒的 ML 模型所需的時間，並提供絕佳的輕鬆和效率。
 
-## <a name="when-to-use-automl-classify-regression--forecast"></a>何時使用自動ML:分類、回歸、&预测
+## <a name="when-to-use-automl-classify-regression--forecast"></a>使用 AutoML 的時機：分類、回歸、& 預測
 
-當您希望 Azure 機器學習使用指定的目標指標為您訓練和調整模型時,應用自動 ML。 自動化 ML 使機器學習模型開發過程民主化,並使用戶能夠識別端到端機器學習管道以找出任何問題,無論其數據科學專業知識如何。
+當您想要 Azure Machine Learning 使用您指定的目標度量來為您定型和調整模型時，請套用自動化 ML。 自動化 ML 會促進大眾化機器學習模型開發程式，並讓其使用者無論其資料科學專業知識，都能找出任何問題的端對端機器學習管線。
 
-跨行業的數據科學家、分析師和開發人員可以使用自動 ML:
-+ 無需豐富的程式設計知識即可實施 ML 解決方案
-+ 節省時間與資源
-+ 利用資料科學最佳實務
-+ 提供敏捷問題解決
+跨產業的資料科學家、分析師和開發人員可以使用自動化 ML 來執行下列動作：
++ 不需要豐富的程式設計知識即可執行 ML 解決方案
++ 節省時間和資源
++ 運用資料科學最佳做法
++ 提供敏捷式問題解決
 
 ### <a name="classification"></a>分類
 
-分類是一項常見的機器學習任務。 分類是一種監督學習,其中模型使用培訓數據學習,並將這些學習應用於新數據。 Azure 機器學習專門針對這些任務提供壯舉,例如用於分類的深層神經網路文本函數。 瞭解有關[壯舉選項](how-to-use-automated-ml-for-ml-models.md#featurization)的詳細資訊。 
+分類是一項常見的機器學習工作。 分類是一種監督式學習，其中的模型會學習使用定型資料，並將這些學習套用至新的資料。 Azure Machine Learning 特別針對這些工作提供 featurizations，例如分類的深度類神經網路文字有。 深入瞭解[特徵化選項](how-to-use-automated-ml-for-ml-models.md#featurization)。 
 
-分類模型的主要目標是根據培訓數據中的學習來預測新數據將屬於哪些類別。 常見的分類示例包括欺詐檢測、手寫識別和對象檢測。  瞭解更多資訊,並查看[自動機器學習的分類](tutorial-train-models-with-aml.md)範例。
+分類模型的主要目標是要根據學習的定型資料，預測哪些類別的新資料會落入何處。 常見的分類範例包括詐騙偵測、手寫辨識和物件偵測。  深入瞭解並查看[使用自動化機器學習進行分類](tutorial-train-models-with-aml.md)的範例。
 
-請參考 Python 筆記型電腦中的分類與自動機器學習範例:[詐騙偵](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)測、[行銷預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)和[新聞組資料類別](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
+請參閱下列 Python 筆記本中的分類和自動化機器學習的範例：[詐騙偵測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb)、[行銷預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)和[新聞群組資料分類](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)
 
 ### <a name="regression"></a>迴歸
-與分類類似,回歸任務也是一項常見的受監督學習任務。 Azure 機器學習[專為這些任務提供壯舉](how-to-use-automated-ml-for-ml-models.md#featurization)。
+與分類類似，回歸工作也是常見的監督式學習工作。 Azure Machine Learning 會[特別針對這些](how-to-use-automated-ml-for-ml-models.md#featurization)工作提供 featurizations。
 
-回歸模型不同於預測值為分類的分類,回歸模型基於獨立預測變數預測數值。 在回歸中,目標是通過估計一個變數如何影響其他變數來説明建立這些獨立預測變數之間的關係。 例如,汽車價格基於功能,如汽油里程,安全評級等。 瞭解更多,並查看[自動機器學習的回歸](tutorial-auto-train-models.md)示例。
+不同于預測輸出值為類別的分類，回歸模型會根據獨立的預測指標來預測數值輸出值。 在回歸中，其目標是要藉由評估一個變數對其他變數的影響，協助您建立這些獨立預測變數之間的關聯性。 例如，以諸如的功能、天然氣、安全性評等等特徵為依據的汽車價格。 深入瞭解並查看[自動化機器學習的回歸](tutorial-auto-train-models.md)範例。
 
-有關這些 Python 筆記本中的預測,請參閱回歸和自動機器學習的範例[:CPU 性能預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb), 
+請參閱下列 Python 筆記本中預測的回歸和自動化機器學習範例： [CPU 效能預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb)、 
 
 ### <a name="time-series-forecasting"></a>時間序列預測
 
-構建預測是任何業務不可或缺的一部分,無論是收入、庫存、銷售還是客戶需求。 您可以使用自動 ML 組合技術和方法,並獲得推薦的高品質時間序列預測。 通過此"手":[用於時間序列預測的自動機器學習](how-to-auto-train-forecast.md),瞭解更多資訊。 
+建立預測是任何企業不可或缺的一部分，不論是收入、庫存、銷售或客戶需求。 您可以使用自動化 ML 結合技術和方法，並取得建議的高品質時間序列預測。 深入瞭解如何：[自動化機器學習以進行時間序列預測](how-to-auto-train-forecast.md)。 
 
-自動時間序列實驗被視為多變數回歸問題。 過去的時間序列值被「透視」,成為回歸者與其他預測變數的其他維度。 與傳統的時間序列方法不同,這種方法具有在訓練期間自然地合併多個上下文變數及其相互關係的優點。 自動 ML 為資料集和預測視野中的所有項學習單個但通常是內部分支模型。 因此,有更多的數據可用於估計模型參數,並可以對看不見的系列進行概括。
+自動化的時間序列實驗會被視為多變數回歸問題。 過去的時間序列值會「切換」為回歸輸入變數的其他維度與其他預測指標。 與傳統時間序列方法不同的是，這種方法的優點是在定型期間自然結合多個內容變數及其關聯性。 自動化 ML 會針對資料集和預測視野中的所有專案學習單一但通常會在內部分支的模型。 因此，有更多的資料可用於估計模型參數，而一般化的數列則會變成可行的。
 
-進階預測設定包括:
-* 假日檢測和壯舉
-* 時間序列和 DNN 學員(自動 ARIMA、先知、預測TCN)
-* 許多模型透過分組支援
-* 捲動源交叉驗證
+先進的預測設定包括：
+* 假日偵測和特徵化
+* 時間序列和 DNN 學習工具（自動 ARIMA、Prophet、ForecastTCN）
+* 許多模型都支援透過群組
+* 復原原始的交叉驗證
 * 可設定延遲
-* 捲動視窗集合功能
+* 滾動視窗匯總功能
 
 
-有關這些 Python 筆記本中的預測,請參閱回歸和自動機器學習的範例:[銷售預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)、[需求預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)和[飲料生產預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
+請參閱下列 Python 筆記本中的預測回歸和自動化機器學習的範例：[銷售預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)、[需求預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)和[飲料生產預測](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-beer-remote/auto-ml-forecasting-beer-remote.ipynb)。
 
-## <a name="how-automl-works"></a>自動ML的工作原理
+## <a name="how-automl-works"></a>AutoML 的運作方式
 
-在培訓期間,Azure 機器學習會創建多個並行管道,嘗試不同的演演演算法和參數。 該服務通過 ML 演演演算法與要素選擇配對進行反覆運算,其中每個反覆運算生成具有訓練分數的模型。 分數越高,模型就越能"適合"您的數據。  一旦達到實驗中定義的退出條件,它將停止。 
+在定型期間，Azure Machine Learning 會以平行方式建立多個管線，以便為您嘗試不同的演算法和參數。 服務會逐一查看與特徵選取配對的 ML 演算法，其中每個反復專案都會產生具有定型分數的模型。 分數越高，模型就越能「配合」您的資料。  一旦達到實驗中定義的結束準則，它就會停止。 
 
-使用**Azure 機器學習**,可以使用以下步驟設計和運行自動 ML 培訓實驗:
+使用**Azure Machine Learning**，您可以使用下列步驟來設計和執行自動化 ML 訓練實驗：
 
-1. **確定**要解決的 ML 問題:分類、預測或回歸
+1. **找出要解決的 ML 問題**：分類、預測或回歸
 
-1. **選擇是使用 Python SDK 還是工作室 Web 體驗**:瞭解[Python SDK 和工作室 Web 體驗](#parity)之間的奇偶校驗。
+1. **選擇您想要使用 PYTHON sdk 還是 studio web 體驗**：瞭解[python sdk 與 studio web 體驗](#parity)之間的同位檢查。
 
-   * 要獲得有限或無代碼體驗,請嘗試 Azure 機器學習工作室 Web 體驗,[https://ml.azure.com](https://ml.azure.com/)  
-   * 對於 Python 開發人員,請檢視[Azure 機器學習 Python SDK](how-to-configure-auto-train.md) 
+   * 針對有限或無程式碼體驗，請嘗試 Azure Machine Learning studio web 體驗，網址為：[https://ml.azure.com](https://ml.azure.com/)  
+   * 針對 Python 開發人員，請參閱[Azure Machine Learning PYTHON SDK](how-to-configure-auto-train.md) 
 
     [!INCLUDE [aml-applies-to-enterprise-sku](../../includes/aml-applies-to-enterprise-sku-inline.md)]  
     
-1. **指定標記的訓練資料的來源與格式**:數位陣元或熊貓資料框
+1. **指定標示定型資料的來源和格式**： Numpy 陣列或 Pandas 資料框架
 
-1. **設定模型培訓的計算目標**,例如[本地電腦、Azure 機器學習計算、遠端 VM 或 Azure 資料塊](how-to-set-up-training-targets.md)。  瞭解[遠端資源的](how-to-auto-train-remote.md)自動培訓。
+1. **設定用於模型定型的計算目標**，例如[本機電腦、Azure Machine Learning 計算、遠端 vm 或 Azure Databricks](how-to-set-up-training-targets.md)。  瞭解[遠端資源](how-to-auto-train-remote.md)的自動化訓練。
 
-1. **設定自動機器學習參數**,以確定不同模型、超參數設置、高級預處理/預處理次數化的反覆運算次數,以及確定最佳模型時要查看的指標。  
-1. **提交培訓運行。**
+1. **設定自動化機器學習參數**，以決定在決定最佳模型時，要在不同模型、超參數設定、先進前置處理/特徵化，以及要查看的度量有多少次。  
+1. **提交定型回合。**
 
 1. **檢閱結果** 
 
 下圖說明此程序。 
-![自動機器學習](./media/concept-automated-ml/automl-concept-diagram2.png)
+![自動化機器學習服務](./media/concept-automated-ml/automl-concept-diagram2.png)
 
 
-您還可以檢查紀錄的執行資訊,其中包含在執行過程中收集的[指標](how-to-understand-automated-ml.md)。 訓練執行生成包含模型和數據預處理的`.pkl`Python 序列化物件(檔案)。
+您也可以檢查已記錄的執行資訊，其中包含執行期間所收集的[計量](how-to-understand-automated-ml.md)。 定型回合會產生 Python 序列化物件（`.pkl` file），其中包含模型和資料前置處理。
 
-雖然模型構建是自動化的,但您還可以瞭解生成的模型[的重要性或相關功能。](how-to-configure-auto-train.md#explain)
+雖然模型建立是自動化的，您也可以瞭解產生之模型的[重要或相關功能](how-to-configure-auto-train.md#explain)。
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
@@ -103,119 +103,119 @@ ms.locfileid: "82082004"
 
 ## <a name="preprocessing"></a>前置處理
 
-在每個自動機器學習實驗中,您的數據都使用預設方法進行預處理,並選擇性地通過高級預處理進行。
+在每個自動化機器學習實驗中，您的資料會使用預設方法進行前置處理，並選擇性地透過 advanced 前置處理。
 
 > [!NOTE]
 > 自動化機器學習前置處理步驟 (功能正規化、處理遺漏的資料、將文字轉換成數值等等) 會成為基礎模型的一部分。 使用模型進行預測時，定型期間所套用的相同前置處理步驟會自動套用至您的輸入資料。
 
-### <a name="automatic-preprocessing-standard"></a>自動預處理 (標準)
+### <a name="automatic-preprocessing-standard"></a>自動前置處理（標準）
 
-在每個自動機器學習實驗中,您的數據都會自動縮放或規範化,以説明演演演算法執行良好性能。  在模型培訓期間,以下縮放或規範化技術之一將應用於每個模型。
+在每個自動化機器學習實驗中，您的資料都會自動調整或正規化，以協助演算法執行得很好。  在模型定型期間，下列其中一個調整或正規化技術將會套用至每個模型。
 
-|&nbsp;&調整&nbsp;調整化| 描述 |
+|&nbsp; &調整&nbsp;正規化| 描述 |
 | ------------- | ------------- |
-| [標準尺規包裝器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | 以刪除均值並將縮放為單位方差來標準化要素  |
-| [明馬克斯斯卡拉爾](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | 通過縮放每個要素,按該列的最小和最大值來轉換要素  |
-| [馬克斯卡斯比例尺](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MaxAbsScaler.html#sklearn.preprocessing.MaxAbsScaler) |依其最大絕對值縮放每個要素 |
-| [堅固的斯卡爾](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html) |此縮放器按其分位數範圍進行功能 |
-| [PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) |線性維數降低使用奇異值分解資料並將其投影到較低維度空間 |
-| [截斷SVD包裝器](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |該變壓器通過截斷的單數值分解 (SVD) 實現線性維數降低。 與 PCA 相反,此估計器在計算奇異值分解之前不會將資料居中,這意味著它可以有效地使用 scipy.稀疏矩陣 |
-| [稀疏規範化器](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | 每個樣本(即資料矩陣的每一行)至少有一個非零分量,獨立於其他樣本重新縮放,以便其規範 (l1 或 l2) 等於一個 |
+| [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | 藉由移除平均值並調整為單位變異數，將功能標準化  |
+| [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | 藉由依該資料行的最小值和最大值調整每項功能來轉換功能  |
+| [MaxAbsScaler](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MaxAbsScaler.html#sklearn.preprocessing.MaxAbsScaler) |依最大絕對值來調整每個功能 |
+| [RobustScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.RobustScaler.html) |此 Scaler 功能的分量範圍 |
+| [PCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.PCA.html) |線性維度會使用資料的單一值分解，將其投影至較低的維度空間 |
+| [TruncatedSVDWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.TruncatedSVD.html) |這個轉換器會藉由截斷的單值分解（SVD）來執行線性維度縮減。 相對於 PCA，此估計工具不會在計算單數值分解之前，先將資料置中，這表示它可以有效率地使用 scipy. sparse 矩陣 |
+| [SparseNormalizer](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.Normalizer.html) | 具有至少一個非零元件的每個範例（也就是資料矩陣的每個資料列）重新調整獨立于其他範例，使其標準（l1 或 l2）等於一 |
 
-### <a name="advanced-preprocessing--featurization"></a>先進的預處理&壯舉
+### <a name="advanced-preprocessing--featurization"></a>Advanced 前置處理 & 特徵化
 
-還提供其他高級預處理和壯舉化,如數據護欄、編碼和轉換。 [詳細瞭解包含哪些壯舉](how-to-use-automated-ml-for-ml-models.md#featurization)。 使用:
+另外還提供額外的先進前置處理和特徵化，例如資料護欄、編碼和轉換。 [深入瞭解包含的特徵化](how-to-use-automated-ml-for-ml-models.md#featurization)。 啟用此設定的方式：
 
-+ Azure 機器學習工作室:[使用這些步驟](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)在 **'查看其他設定**' 部分中啟用**自動工作化**。
++ Azure Machine Learning studio：在 [ **View 其他**設定] 區段中[使用下列步驟](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment)啟用**自動特徵化**。
 
-+ Python SDK:`"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`為[`AutoMLConfig`類別](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)指定 。 
++ Python SDK：指定`"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` [ `AutoMLConfig`類別](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)的。 
 
 <a name="parity"></a>
 
-## <a name="the-studio-vs-sdk"></a>工作室與 SDK
+## <a name="the-studio-vs-sdk"></a>Studio vs SDK
 
-瞭解透過 Python SDK 提供的進階自動 ML 功能與 Azure 機器學習中的工作室之間的奇偶校驗和差異。 
+瞭解在 Azure Machine Learning 中透過 Python SDK 和 studio 提供的高階自動化 ML 功能之間的同位和差異。 
 
 ### <a name="experiment-settings"></a>實驗設定 
 
-以下設定允許您設定自動 ML 實驗。 
+下列設定可讓您設定自動化 ML 實驗。 
 
-| |Python SDK|工作室網路體驗|
+| |Python SDK|Studio web 體驗|
 ----|:----:|:----:
-將資料拆分為訓練/驗證集| ✓|✓
-支援 ML 工作:分類、回歸和預測| ✓| ✓
-基於主要指標進行最佳化| ✓| ✓
-支援 AML 計算為計算目標 | ✓|✓
-設定預測範圍、目標滯後&滾動視窗|✓|✓
-設定離開準則 |✓|✓ 
-設定並發反覆運算| ✓|✓
-刪除欄位| ✓|✓
-塊演演算法|✓|✓
+將資料分割成定型/驗證集| ✓|✓
+支援 ML 工作：分類、回歸和預測| ✓| ✓
+根據主要度量優化| ✓| ✓
+支援 AML 計算作為計算目標 | ✓|✓
+設定預測水準，目標延遲 & 滾動時間範圍|✓|✓
+設定結束準則 |✓|✓ 
+設定並行反覆運算| ✓|✓
+卸載資料行| ✓|✓
+封鎖演算法|✓|✓
 交叉驗證 |✓|✓
-支援 Azure 資料磚塊群集的培訓| ✓|
-檢視專案特徵名稱|✓|
-技術化摘要| ✓|
-假期的節制|✓|
-紀錄檔案詳細程度等級| ✓|
+支援在 Azure Databricks 叢集上進行訓練| ✓|
+查看設計的功能名稱|✓|
+特徵化摘要| ✓|
+假日的特徵化|✓|
+記錄檔詳細資訊層級| ✓|
 
-### <a name="model-settings"></a>型號設定
+### <a name="model-settings"></a>模型設定
 
-這些設置可以應用於最佳模型,這是自動 ML 實驗的結果。
+這些設定可套用至最佳模型，做為自動化 ML 實驗的結果。
 
-| |Python SDK|工作室網路體驗|
+| |Python SDK|Studio web 體驗|
 |----|:----:|:----:|
 |最佳模型註冊、部署、可解釋性| ✓|✓|
-|開啟投票群組&堆疊集合模型| ✓|✓|
-|基於非主指標顯示最佳模型|✓||
-|開啟/關閉 ONNX 模型相容性|✓||
+|啟用投票集團 & stack 集團模型| ✓|✓|
+|根據非主要度量顯示最佳模型|✓||
+|啟用/停用 ONNX 模型相容性|✓||
 |測試模型 | ✓| |
 
 ### <a name="run-control-settings"></a>執行控制設定
 
-這些設置允許您查看和控制實驗運行及其子運行。 
+這些設定可讓您審查及控制您的實驗執行及其子執行。 
 
-| |Python SDK|工作室網路體驗|
+| |Python SDK|Studio web 體驗|
 |----|:----:|:----:|
-|執行摘要表| ✓|✓|
-|取消執行&子執行| ✓|✓|
+|執行摘要資料表| ✓|✓|
+|取消執行 & 子執行| ✓|✓|
 |取得護欄| ✓|✓|
-|暫停&繼續執行| ✓| |
+|暫停 & 繼續執行| ✓| |
 
-## <a name="ensemble-models"></a><a name="ensemble"></a>組合模型
+## <a name="ensemble-models"></a><a name="ensemble"></a>集團模型
 
-自動機器學習支援默認情況下啟用的合奏模型。 與使用單一模型相比,組合學習通過組合多個模型來提高機器學習結果和預測性能。 集合反覆運算顯示為運行的最後反覆運算。 自動機器學習使用投票和堆疊組合方法組合模型:
+自動化機器學習支援預設會啟用的集團模型。 集團 learning 藉由結合多個模型來改善機器學習結果和預測效能，而不是使用單一模型。 集團反復專案會顯示為您執行的最後一次反覆運算。 自動化機器學習會使用投票和堆疊集團方法來結合模型：
 
-* **投票**:根據預測類概率(分類任務)或預測回歸目標的加權平均值(對於回歸任務)進行預測。
-* **堆疊**:堆疊結合了異構模型,並根據各個模型的輸出訓練元模型。 當前預設元模型是分類任務的"邏輯回歸"和"回歸/預測任務彈性網"
+* **投票**：根據預測類別機率（適用于分類工作）或預測回歸目標（用於回歸工作）的加權平均值進行預測。
+* **堆疊**：堆疊結合了異類模型，並根據個別模型的輸出來訓練中繼模型。 目前的預設中繼模型是針對分類工作和回歸/預測工作的 ElasticNet 而 LogisticRegression 的。
 
-[Caruana 組合選擇演演演算法](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)具有排序的集合初始化,用於決定在集合中使用哪些模型。 在高級別上,此演演演算法使用最多五個具有最佳個人分數的模型初始化了該集合,並驗證這些模型是否在最佳分數的 5% 閾值內,以避免初始集合不佳。 然後,對於每個集合反覆運算,將新模型添加到現有集合中,並計算結果分數。 如果新模型改進了現有的合奏分數,則將更新該集合以包括新模型。
+具有已排序集團初始化的[Caruana 集團選取演算法](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)會用來決定要在集團中使用的模型。 就高層級而言，此演算法會使用最多五個具有最佳個別分數的模型來初始化集團，並確認這些模型是在最佳分數的5% 臨界值內，以避免發生不佳的初始集團。 然後針對每個集團反復專案，將新的模型加入至現有的集團，並計算產生的分數。 如果新模型已改善現有的集團分數，集團會更新以包含新的模型。
 
-請參考自動機器學習中改變預設集合設定的[操作操作](how-to-configure-auto-train.md#ensemble)。
+請參閱[如何](how-to-configure-auto-train.md#ensemble)變更自動化機器學習服務中的預設集團設定。
 
 <a name="use-with-onnx"></a>
 
-## <a name="automl--onnx"></a>自動ML & ONNX
+## <a name="automl--onnx"></a>AutoML & ONNX
 
-使用 Azure 機器學習,可以使用自動 ML 構建 Python 模型並將其轉換為 ONNX 格式。 模型採用 ONNX 格式後,可以在各種平台和設備上運行。 瞭解有關使用[ONNX 加速 ML 模型](concept-onnx.md)的更多資訊。
+使用 Azure Machine Learning，您可以使用自動化 ML 來建立 Python 模型，並將它轉換成 ONNX 格式。 一旦模型採用 ONNX 格式，就可以在各種不同的平臺和裝置上執行。 深入瞭解[使用 ONNX 加速 ML 模型](concept-onnx.md)。
 
-讓您如何轉換到 ONNX 格式[在這個Jupyter 筆記的範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)。 瞭解[ONNX 中支援哪些演演算法](how-to-configure-auto-train.md#select-your-experiment-type)。
+請參閱[此 Jupyter 筆記本範例中](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)的如何轉換為 ONNX 格式。 瞭解[ONNX 中支援的演算法](how-to-configure-auto-train.md#select-your-experiment-type)。
 
-ONNX 執行時還支援 C#,因此您可以使用在 C# 應用中自動建構的模型,而無需重新編碼或 REST 終結點引入的任何網路延遲。 瞭解有關使用[ONNX 執行時 C# API 推斷 ONNX 模型](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)的更多資訊。 
+ONNX 執行時間也支援 c #，因此，您可以使用在 c # 應用程式中自動建立的模型，而不需要進行任何預先編碼或 REST 端點所引進的任何網路延遲。 深入瞭解[使用 ONNX Runtime c # API 推斷 ONNX 模型](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md)。 
 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-檢視範例並瞭解如何使用自動機器學習建構模型:
+請參閱範例，並瞭解如何使用自動化機器學習來建立模型：
 
-+ 遵循[教學:使用 Azure 機器學習自動訓練回歸模型](tutorial-auto-train-models.md)
++ 遵循[教學課程：使用 Azure Machine Learning 自動定型回歸模型](tutorial-auto-train-models.md)
 
-+ 設定自動訓練實驗的設定:
-  + 在 Azure 機器學習工作室中,[使用這些步驟](how-to-use-automated-ml-for-ml-models.md)。
-  + 使用 Python SDK,[請使用這些步驟](how-to-configure-auto-train.md)。
++ 設定自動訓練實驗的設定：
+  + 在 Azure Machine Learning studio 中，請[使用下列步驟](how-to-use-automated-ml-for-ml-models.md)。
+  + 透過 Python SDK，請[使用下列步驟](how-to-configure-auto-train.md)。
 
-+ 瞭解如何使用時間序列資料自動訓練,[請使用這些步驟](how-to-auto-train-forecast.md)。
++ 若要瞭解如何使用時間序列資料來自動定型，請[使用下列步驟](how-to-auto-train-forecast.md)。
 
-+ 嘗試[聚居筆記本示例,實現自動機器學習](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
++ 試用[自動化機器學習 Jupyter Notebook 範例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
 
-* 自動 ML 還可用於其他[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)Microsoft[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)解決方案,如[ML.NET、HDInsight、Power](../hdinsight/spark/apache-spark-run-machine-learning-automl.md) [BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)和 SQL 伺服器
+* 自動化 ML 也適用于其他 Microsoft 解決方案，例如[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)、 [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md)、 [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)和[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

@@ -1,5 +1,5 @@
 ---
-title: '使用 D:VM 驅動程式成為資料磁碟 '
+title: '將 VM 的 D：磁片磁碟機設為數據磁片 '
 description: '說明如何為 Windows VM 變更磁碟機代號，讓您能夠使用 D: 磁碟機做為資料磁碟機。'
 services: virtual-machines-windows
 author: cynthn
@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.openlocfilehash: 15df3178f2860fa066a82cb1429e0c1a6e5c2b08
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82083417"
 ---
 # <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>使用 D: 磁碟機作為 Windows VM 上的資料磁碟機
@@ -47,7 +47,7 @@ ms.locfileid: "82083417"
 6. 在 [磁碟機代號] 下方，選取磁碟機 **D**，然後按一下 [確定]****。 
 
 ## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>將 pagefile.sys 移回暫存磁碟機
-1. 右鍵按兩下 **"開始"** 功能表並選擇 **"系統"**
+1. 以滑鼠右鍵按一下 [**開始**] 功能表，然後選取 [**系統**]
 2. 在左側功能表中，選取 [進階系統設定] ****。
 3. 在 [效能]**** 區段中，選取 [設定]****。
 4. 選取 [進階] **** 索引標籤。
@@ -58,5 +58,5 @@ ms.locfileid: "82083417"
 9. 重新啟動虛擬機器。
 
 ## <a name="next-steps"></a>後續步驟
-* 您可以透過[額外資料磁碟](attach-managed-disk-portal.md)來增加虛擬機器可用的儲存。
+* 您可以藉由[附加額外的資料磁片](attach-managed-disk-portal.md)來增加虛擬機器可用的存放裝置。
 
