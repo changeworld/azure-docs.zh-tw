@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: diberry
 ms.openlocfilehash: 679073715588a4a81e69e3e7ba2d18341b1bab4b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82096617"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>遷移至 Azure 資源撰寫金鑰
@@ -82,7 +82,7 @@ Language Understanding （LUIS）編寫驗證從電子郵件帳戶變更為 Azur
 
 您可以在該資源的 [**存取控制（IAM）** ] 頁面上，從_Azure 入口網站_將參與者新增至撰寫資源。 如需詳細資訊，請參閱[新增參與者存取](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource)。
 
-|入口網站|用途|
+|入口網站|目的|
 |--|--|
 |[Azure](https://azure.microsoft.com/free/)|* 建立預測和撰寫資源。<br>* 指派參與者。|
 |[LUIS](https://www.luis.ai)|* 遷移至新的撰寫資源。<br>* 從 [**管理-> Azure 資源**] 頁面，指派或取消指派預測和撰寫資源給應用程式。|

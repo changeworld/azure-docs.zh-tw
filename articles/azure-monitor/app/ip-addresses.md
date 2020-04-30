@@ -6,10 +6,10 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 04/23/2020
 ms.openlocfilehash: 73147fe2e8c834fd4fc67c4c396bb095f616b6d8
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82105840"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights 和 Log Analytics 使用的 IP 位址
@@ -43,13 +43,13 @@ ms.locfileid: "82105840"
 
 | 目的 | URL | IP | 連接埠 |
 | --- | --- | --- | --- |
-| 組態 |`management.core.windows.net` | |`443` |
-| 組態 |`management.azure.com` | |`443` |
-| 組態 |`login.windows.net` | |`443` |
-| 組態 |`login.microsoftonline.com` | |`443` |
-| 組態 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
-| 組態 |`auth.gfx.ms` | |`443` |
-| 組態 |`login.live.com` | |`443` |
+| 設定 |`management.core.windows.net` | |`443` |
+| 設定 |`management.azure.com` | |`443` |
+| 設定 |`login.windows.net` | |`443` |
+| 設定 |`login.microsoftonline.com` | |`443` |
+| 設定 |`secure.aadcdn.microsoftonline-p.com` | |`443` |
+| 設定 |`auth.gfx.ms` | |`443` |
+| 設定 |`login.live.com` | |`443` |
 | 安裝 | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>可用性集合

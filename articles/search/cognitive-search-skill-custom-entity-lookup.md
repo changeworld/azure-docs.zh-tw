@@ -1,7 +1,7 @@
 ---
-title: 自訂實體搜尋認知搜尋技能
+title: 自訂實體查閱認知搜尋技能
 titleSuffix: Azure Cognitive Search
-description: 從 Azure 認知搜尋認知搜索管道中的文本中提取不同的自定義實體。 此技能當前處於公共預覽版中。
+description: 從 Azure 認知搜尋認知搜尋管線中的文字解壓縮不同的自訂實體。 此技能目前為公開預覽狀態。
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
@@ -9,28 +9,28 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: 3659070d4ffd4346a8827d2748e67db436fc15b3
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82085734"
 ---
-#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>自訂實體查找認知技能(預覽版)
+#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>自訂實體查閱認知技能（預覽）
 
 > [!IMPORTANT] 
-> 此技能當前處於公共預覽版中。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 當前沒有門戶或 .NET SDK 支援。
+> 此技能目前為公開預覽狀態。 預覽功能是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 目前沒有入口網站或 .NET SDK 支援。
 
-**自定義實體查找**技能從自定義、使用者定義的單詞和短語清單中尋找文本。 使用此清單,它將使用任何匹配的實體標記所有文檔。 該技能還支援一定程度的模糊匹配,可用於查找相似但不精確的匹配。  
+**自訂實體查閱**技能會從自訂、使用者定義的單字和片語清單中尋找文字。 使用這份清單，它會以任何相符的實體標記所有檔。 此技能也支援某種程度的模糊比對，可套用來尋找類似但不完全精確的相符專案。  
 
-此技能不綁定到認知服務 API,可在預覽期間免費使用。 但是,您仍應[附加認知服務資源](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services),以覆蓋每日擴充限制。 每日限制適用於通過 Azure 認知搜索訪問時對認知服務的自由訪問。
+此技能不會系結至認知服務 API，且在預覽期間可免費使用。 不過，您仍應[附加認知服務資源](https://docs.microsoft.com/azure/search/cognitive-search-attach-cognitive-services)，以覆寫每日擴充限制。 透過 Azure 認知搜尋存取時，每日限制適用于認知服務的免費存取。
 
 ## <a name="odatatype"></a>@odata.type  
-微軟.技能.文本.自定義實體查找技能 
+CustomEntityLookupSkill。 
 
 ## <a name="data-limits"></a>資料限制
-+ 支援的最大輸入記錄大小為 256 MB。 如果需要在將資料傳送到自訂實體尋找技能之前分割資料,請考慮使用[文字拆分技能](cognitive-search-skill-textsplit.md)。
-+ 如果使用*實體定義Uri*參數提供最大實體定義表,則支援的最大實體定義表為 10 MB。 
-+ 如果內聯定義實體,則使用*內聯實體定義*參數,則支援的最大大小為 10 KB。
++ 支援的輸入記錄大小上限為 256 MB。 如果您需要先分割資料，再將它傳送至自訂實體查閱技能，請考慮使用[文字分割技能](cognitive-search-skill-textsplit.md)。
++ 如果使用*entitiesDefinitionUri*參數來提供，則支援的最大實體定義資料表為 10 MB。 
++ 如果實體是以內嵌方式定義，則使用*inlineEntitiesDefinition*參數，支援的大小上限為 10 KB。
 
 ## <a name="skill-parameters"></a>技能參數
 
@@ -38,9 +38,9 @@ ms.locfileid: "82085734"
 
 | 參數名稱     | 描述 |
 |--------------------|-------------|
-| 實體定義Uri    | JSON 或 CSV 檔的路徑,其中包含要匹配的所有目標文本。 此實體定義在索引器運行開始時讀取;在索引器運行開始時,將讀取此實體定義。在運行中,此檔的任何更新在後續運行之前不會實現。 此配置必須通過 HTTPS 訪問。 有關預期的 CSV 或 JSON 架構,請參閱下面的[自定義實體定義](#custom-entity-definition-format)格式。|
-|內聯定義 | 內聯 JSON 實體定義。 如果存在,此參數將取代實體定義Uri 參數。 內聯配置不能超過 10 KB。 有關預期的 JSON 架構,請參閱下面的[自訂實體定義](#custom-entity-definition-format)。 |
-|defaultLanguageCode |    ( 選擇性的 )用於標記和描述輸入文本的輸入文本的語言代碼。 支援以下語言: `da, de, en, es, fi, fr, it, ko, pt`. 默認值為英語 ()。`en` 如果您傳遞的是 languagecode-countrycode 格式，則只會使用該格式的 languagecode 部分。  |
+| entitiesDefinitionUri    | JSON 或 CSV 檔案的路徑，其中包含要比對的所有目標文字。 此實體定義會在索引子執行的開頭讀取;在後續執行之前，將不會實現對此檔案執行的任何更新。 此設定必須可透過 HTTPS 存取。 請參閱下方的[自訂實體定義](#custom-entity-definition-format)格式，以取得預期的 CSV 或 JSON 架構。|
+|inlineEntitiesDefinition | 內嵌 JSON 實體定義。 此參數會取代 entitiesDefinitionUri 參數（如果有的話）。 不能以內嵌方式提供超過 10 KB 的設定。 請參閱下方的[自訂實體定義](#custom-entity-definition-format)，以取得預期的 JSON 架構。 |
+|defaultLanguageCode |    選擇性輸入文字的語言代碼，用來 token 化和描繪輸入文字。 支援下列語言： `da, de, en, es, fi, fr, it, ko, pt`。 預設值為 [英文`en`] （）。 如果您傳遞的是 languagecode-countrycode 格式，則只會使用該格式的 languagecode 部分。  |
 
 
 ## <a name="skill-inputs"></a>技能輸入
@@ -56,22 +56,22 @@ ms.locfileid: "82085734"
 
 | 輸出名稱      | 描述                   |
 |---------------|-------------------------------|
-| 實體 | 包含有關找到的匹配項的資訊和相關元數據的物件陣列。 識別每個實體可能包含以下欄位:  <ul> <li> *名稱*: 識別的頂級實體。 實體表示"規範化"窗體。 </li> <li> *id*:使用者在"自定義實體定義格式"中定義的實體的唯一標識符。</li> <li> *說明*:使用者在「自定義實體定義格式」中定義的實體描述。 </li> <li> *類型:* 由使用者在「自定義實體定義格式」中定義的實體類型。</li> <li> *子型態:* 由使用者在「自定義實體定義格式」中定義的實體子類型。</li>  <li> *符合*: 描述來源文字上該實體的每個符合項的集合。 每個符合將具有以下成員: </li> <ul> <li> *文字*: 原始文字與源文件匹配。 </li> <li> *偏移*:在文字中找到匹配的位置。 </li> <li> *長度*:匹配文字的長度。 </li> <li> *匹配距離*:此匹配的字元數與原始實體名稱或別名不同。  </li> </ul> </ul>
+| 實體 | 物件的陣列，其中包含找到之相符專案的相關資訊，以及相關的中繼資料。 識別的每個實體都可能包含下欄欄位：  <ul> <li> *名稱*：識別的最上層實體。 實體代表「正規化」表單。 </li> <li> *識別碼：使用者*在「自訂實體定義格式」中所定義之實體的唯一識別碼。</li> <li> *描述*：使用者在「自訂實體定義格式」中所定義的實體描述。 </li> <li> *類型：* 使用者在「自訂實體定義格式」中所定義的實體類型。</li> <li> *子類型：* 實體子類型，如使用者在「自訂實體定義格式」中所定義。</li>  <li> *符合*：描述來源文字上該實體之每個相符專案的集合。 每個相符項都將具有下列成員： </li> <ul> <li> *text*：來源文件中的原始文字相符。 </li> <li> *offset*：在文字中找到相符項的位置。 </li> <li> *長度*：相符文字的長度。 </li> <li> *matchDistance*：此比對與原始機構名稱或別名不同的字元數。  </li> </ul> </ul>
   |
 
 ## <a name="custom-entity-definition-format"></a>自訂實體定義格式
 
-有 3 種不同的方法向自定義實體查找技能提供自定義實體的清單。 您可以在中提供清單。CSV 檔, .JSON 檔或作為技能定義的內聯定義。  
+有3種不同的方式可將自訂實體清單提供給自訂實體查閱技能。 您可以在中提供清單。CSV 檔案，a。JSON 檔案或做為技能定義之一部分的內嵌定義。  
 
-如果定義檔案為 。CSV 或 。JSON 檔案,檔的路徑需要作為*實體定義Uri*參數的一部分提供。 在這種情況下,該檔在每個索引器運行開始時下載一次。 只要索引器打算運行,該文件必須是可訪問的。 此外,文件必須編碼 UTF-8。
+如果定義檔為，則為。CSV 或。JSON 檔案，必須提供檔案的路徑做為*entitiesDefinitionUri*參數的一部分。 在此情況下，檔案會在每個索引子執行開始時下載一次。 只要索引子打算執行，就必須能夠存取檔案。 此外，檔案必須以 UTF-8 編碼。
 
-如果定義是內聯提供的,則應與*內聯身份定義*技能參數的內容一樣提供內聯。 
+如果以內嵌方式提供定義，則應該將其當做內嵌提供，做為*inlineEntitiesDefinition*技能參數的內容。 
 
 ### <a name="csv-format"></a>CSV 格式
 
-通過提供檔的路徑並將其設置在*實體定義Uri*技能參數中,可以提供要在 Comma 分隔值 (CSV) 檔中尋找的自訂實體的定義。 路徑應位於 Htt。 定義檔的大小可達 10 MB。
+藉由提供檔案的路徑並在*entitiesDefinitionUri*技能參數中設定，您可以提供自訂實體的定義，以尋找逗號分隔值（CSV）檔案中的檔案。 路徑應位於 HTTPs 位置。 定義檔的大小最多可達 10 MB。
 
-CSV 格式很簡單。 每行表示一個唯一實體,如下所示:
+CSV 格式很簡單。 每一行代表一個唯一的實體，如下所示：
 
 ```
 Bill Gates, BillG, William H. Gates
@@ -79,15 +79,15 @@ Microsoft, MSFT
 Satya Nadella 
 ```
 
-在這種情況下,有三個實體可以作為找到的實體(比爾·蓋茨、薩蒂亞·納德拉、微軟)返回,但如果文本上匹配行中的任何術語(別名),則將標識它們。 例如,如果在文檔中找到字串「威廉·蓋茨」,則返回「比爾·蓋茨」實體的匹配項。
+在此情況下，有三個實體可在找到的實體（帳單閘道、Satya Nadella、Microsoft）中傳回，但如果該行（別名）上的任何詞彙符合文字，則會加以識別。 例如，如果在檔中找到字串 "William h.264"，則會傳回「帳單閘道」實體的相符專案。
 
 ### <a name="json-format"></a>JSON 格式
 
-也可以提供要在 JSON 檔中查找的自定義實體的定義。 JSON 格式為您提供了更大的靈活性,因為它允許您定義每個術語的匹配規則。 例如,您可以為每個術語指定模糊匹配距離(Damerau-Levenshtein 距離),或者匹配是否應區分大小寫。 
+您也可以提供自訂實體的定義，以便在 JSON 檔案中尋找。 JSON 格式提供更多的彈性，因為它可讓您定義每個詞彙的比對規則。 例如，您可以指定每個詞彙的模糊比對距離（Damerau-levenshtein-Levenshtein 距離），或比對是否應區分大小寫。 
 
- 與 CSV 檔一樣,您需要提供 JSON 檔的路徑並將其設置在*實體定義 Uri*技能參數中。 路徑應位於 Htt。 定義檔的大小可達 10 MB。
+ 就像 CSV 檔案一樣，您必須提供 JSON 檔案的路徑，並在*entitiesDefinitionUri*技能參數中加以設定。 路徑應位於 HTTPs 位置。 定義檔的大小最多可達 10 MB。
 
-最基本的 JSON 自訂實體清單定義可以是要符合的實體清單:
+最基本的 JSON 自訂實體清單定義可以是要符合的實體清單：
 
 ```json
 [ 
@@ -103,7 +103,7 @@ Satya Nadella
 ]
 ```
 
-JSON 定義的更複雜的範例可以選擇提供每個實體的 ID、描述、類型和子類型 ,以及其他*別名*。 如果匹配別名術語,則實體也將返回:
+JSON 定義的更複雜範例可以選擇性地提供每個實體的識別碼、描述、類型和子類型，以及其他*別名*。 如果別名字詞相符，實體也會傳回：
 
 ```json
 [ 
@@ -141,36 +141,36 @@ JSON 定義的更複雜的範例可以選擇提供每個實體的 ID、描述、
 ] 
 ```
 
-下表詳細介紹了在定義要符合的實體時可以設置的不同配置參數:
+下表詳細說明您在定義要比對的實體時可設定的不同設定參數：
 
 |  欄位名稱  |        描述  |
 |--------------|----------------------|
-| NAME | 頂級實體描述符。 技能輸出中的匹配項將按此名稱分組,並且它應表示正在找到的文本的"規範化"形式。  |
-| description  | ( 選擇性的 )此欄位可用作有關匹配文本的自定義元數據的傳遞。 此欄位的值將與其實體在技能輸出中的每個匹配項一起顯示。 |
-| type | ( 選擇性的 )此欄位可用作有關匹配文本的自定義元數據的傳遞。 此欄位的值將與其實體在技能輸出中的每個匹配項一起顯示。 |
-| subtype | ( 選擇性的 )此欄位可用作有關匹配文本的自定義元數據的傳遞。 此欄位的值將與其實體在技能輸出中的每個匹配項一起顯示。 |
-| id | ( 選擇性的 )此欄位可用作有關匹配文本的自定義元數據的傳遞。 此欄位的值將與其實體在技能輸出中的每個匹配項一起顯示。 |
-| 區分大小寫 | ( 選擇性的 )預設值為 false。 布爾值表示與實體名稱的比較是否應對字元大小寫敏感。 "微軟"的樣本大小寫不敏感匹配可以是:微軟、微軟、微軟 |
-| 模糊編輯距離 | ( 選擇性的 )默認值為 0。 最大值為 5。 表示仍構成與實體名稱匹配的可接受的發散字元數。 返回任何給定匹配中盡可能小的模糊性。  例如,如果編輯距離設置為 3,「Windows 10」仍將匹配「Windows」、「Windows10」和「視窗 7」。。 <br/> 當區分大小寫設置為 false 時,大小寫差異不會計入模糊容差,但並非如此。 |
-| 預設事件敏感 | ( 選擇性的 )更改此實體的預設區分大小寫值。 它用於更改所有別名的預設值區分值。 |
-| 預設模糊編輯距離 | ( 選擇性的 )更改此實體的預設模糊編輯距離值。 它可用於更改所有別名模糊編輯距離值的預設值。 |
-| 別名 | ( 選擇性的 )可用於指定根實體名稱的替代拼寫或同義詞的複雜物件的陣列。 |
+| NAME | 最上層實體描述元。 技能輸出中的相符專案會依此名稱分組，而且應該代表所要尋找之文字的「正規化」形式。  |
+| description  | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
+| type | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
+| subtype | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
+| id | 選擇性此欄位可以用來當做符合的文字之自訂中繼資料的傳遞。 此欄位的值會顯示在技能輸出中每個符合其實體的專案。 |
+| caseSensitive | 選擇性預設值為 false。 布林值，表示與機構名稱的比較是否應區分字元大小寫。 "Microsoft" 不區分大小寫的範例可能是： microsoft，microsoft，microsoft |
+| fuzzyEditDistance | 選擇性預設為0。 最大值為5。 表示可接受的分歧字元數，仍然會構成與機構名稱相符的專案。 會傳回任何指定之相符的最小可能值。  比方說，如果 [編輯距離] 設定為3，"Windows 10" 仍會符合 "Windows"、"Windows10" 和 "windows 7"。 <br/> 當區分大小寫設定為 false 時，不會將大小寫差異計入「不確定」容錯的範圍，但也會執行。 |
+| defaultCaseSensitive | 選擇性變更此實體的預設區分大小寫值。 它可用來變更所有別名 caseSensitive 值的預設值。 |
+| defaultFuzzyEditDistance | 選擇性變更此實體的預設模糊編輯距離值。 它可以用來變更所有別名 fuzzyEditDistance 值的預設值。 |
+| 別名 | 選擇性複雜物件的陣列，可以用來指定根機構名稱的替代拼寫或同義字。 |
 
 | 別名屬性 | 描述 |
 |------------------|-------------|
-| text  | 某些目標實體名稱的替代拼寫或表示形式。  |
-| 區分大小寫 | ( 選擇性的 )行為與上面的根實體"區分"參數相同,但僅適用於此別名。 |
-| 模糊編輯距離 | ( 選擇性的 )作用與上面的根實體"模糊編輯距離"參數相同,但僅適用於此別名。 |
+| text  | 某些目標機構名稱的替代拼寫或標記法。  |
+| caseSensitive | 選擇性作用與上述根實體 "caseSensitive" 參數相同，但僅適用于這個別名。 |
+| fuzzyEditDistance | 選擇性作用與上述根實體 "fuzzyEditDistance" 參數相同，但僅適用于這個別名。 |
 
 
-### <a name="inline-format"></a>內聯格式
+### <a name="inline-format"></a>內嵌格式
 
-在某些情況下,提供自定義實體清單以直接匹配到技能定義中可能更方便。 在這種情況下,您可以使用與上述格式類似的 JSON 格式,但它在技能定義中內聯。
-只能內聯定義大小小於 10 KB(序列化大小)的配置。 
+在某些情況下，提供自訂實體清單以直接對應至技能定義可能會比較方便。 在此情況下，您可以使用類似上述的 JSON 格式，但它會在技能定義中內嵌。
+只有小於 10 KB 大小（序列化大小）的設定可以用內嵌方式定義。 
 
 ##    <a name="sample-definition"></a>範例定義
 
-使用內聯格式的範例技能定義如下所示:
+使用內嵌格式的範例技能定義如下所示：
 
 ```json
   {
@@ -208,7 +208,7 @@ JSON 定義的更複雜的範例可以選擇提供每個實體的 ID、描述、
     ]
   }
 ```
-或者,如果您決定提供指向實體定義檔的指標,則下面將顯示使用實體定義庫格式的範例技能定義:
+或者，如果您決定提供實體定義檔的指標，使用 entitiesDefinitionUri 格式的範例技能定義如下所示：
 
 ```json
   {
@@ -298,12 +298,12 @@ JSON 定義的更複雜的範例可以選擇提供每個實體的 ID、描述、
 
 ## <a name="errors-and-warnings"></a>錯誤和警告
 
-### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>警告: 達到匹配的最大容量,跳過所有進一步的重複匹配項。
+### <a name="warning-reached-maximum-capacity-for-matches-skipping-all-further-duplicate-matches"></a>警告：已達到相符專案的最大容量，略過所有其他重複的相符專案。
 
-如果檢測到的匹配數大於允許的最大值,將發出此警告。 在這種情況下,我們將停止包括重複的匹配項。 如果您不能接受,請提交[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support),以便我們説明您處理您的個人使用案例。
+如果偵測到的相符專案數目大於允許的最大值，就會發出此警告。 在此情況下，我們將停止包含重複的相符專案。 如果您無法接受這種情況，請提出[支援票證](https://ms.portal.azure.com/#create/Microsoft.Support)，讓我們可以協助您使用個別的使用案例。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 + [內建技能](cognitive-search-predefined-skills.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)
-+ [實體識別技能(搜尋已知實體)](cognitive-search-skill-entity-recognition.md)
++ [實體辨識技能（用來搜尋已知的實體）](cognitive-search-skill-entity-recognition.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: rogarana
 ms.openlocfilehash: b2dd501344e1ea799db58ea749395aaed05d05f8
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106540"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>針對 Azure 檔案共用啟用透過 SMB 的內部部署 Active Directory Domain Services 驗證
@@ -40,7 +40,7 @@ ms.locfileid: "82106540"
 > - 以 Azure 檔案儲存體取代內部部署檔案伺服器（包括檔案和 AD 驗證的私人連結上的安裝程式）
 > - 使用 Azure 檔案儲存體做為 Windows 虛擬桌面的設定檔容器（包括 AD 驗證和 FsLogix 設定上的安裝程式）
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>先決條件 
 
 為 Azure 檔案共用啟用 AD DS 驗證之前，請確定您已完成下列必要條件： 
 

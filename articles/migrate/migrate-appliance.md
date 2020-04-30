@@ -4,10 +4,10 @@ description: 提供伺服器評估和遷移中所使用的 Azure Migrate 設備�
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.openlocfilehash: 71a17211a530b4cb55764f3b3ab84ff5a4d5f3e6
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106341"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate 設備
@@ -18,7 +18,7 @@ ms.locfileid: "82106341"
 
 在下列案例中會使用 Azure Migrate 設備。
 
-**案例** | **工具** | **用於** 
+**案例** | **工具** | **用途** 
 --- | --- | ---
 **VMware VM 評估** | Azure Migrate：伺服器評估 | 探索 VMware Vm<br/><br/> 探索機器應用程式和相依性<br/><br/> 收集機器中繼資料和效能中繼資料以進行評量。
 **VMware VM 無代理程式遷移** | Azure Migrate：伺服器遷移 | 探索 VMware Vm <br/><br/> 使用無代理程式遷移來複寫 VMware Vm。
@@ -176,7 +176,7 @@ IPv6 位址 | vm.Guest.Net
 讀取輸送量（每秒 MB） | net.received.average
 寫入輸送量（每秒 MB） | net.transmitted.average
 **清查路徑詳細資料** | 
-名稱 | container.GetType().Name
+Name | container.GetType().Name
 子物件的類型 | container.ChildType
 參考詳細資料 | container.MoRef
 父系詳細資料 | Container.Parent

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
 ms.openlocfilehash: f2e4f91dbc03853d6f1a5240f693ea8ff510e8c4
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82101071"
 ---
 # <a name="intents-in-your-luis-app"></a>LUIS 應用程式中的意圖
@@ -29,7 +29,7 @@ ms.locfileid: "82101071"
  BookFlight     |   「幫我預訂下週到里約的班機」 <br/> 「24 日讓我飛到里約」 <br/> 「我需要一張下週日到里約熱內盧的機票」    |
  Greeting     |   「嗨」 <br/>"Hello" <br/>「早安」  |
  CheckWeather | 「波士頓的天氣如何？」 <br/> 「顯示本週的預測」 |
- None         | 「給我餅乾食譜」<br>「湖人隊贏了嗎？」 |
+ 無         | 「給我餅乾食譜」<br>「湖人隊贏了嗎？」 |
 
 所有應用程式都有預先定義的意圖 "[None](#none-intent)"，這是回溯意圖。
 

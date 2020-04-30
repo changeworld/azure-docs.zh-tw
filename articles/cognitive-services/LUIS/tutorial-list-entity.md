@@ -3,12 +3,12 @@ title: 教學課程：清單實體 - LUIS
 description: 取得符合預先定義項目清單的資料。 清單上的每個項目可以擁有也完全相符的同義字
 ms.topic: tutorial
 ms.date: 03/12/2020
-ms.openlocfilehash: 1cfeccbd54e8ef8ec315d53fc7a766760c92a0d1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 9530719c43260751d64d7ccf446bc7941078d6e9
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79297402"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82101122"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>教學課程：使用清單實體從語句中取得文字完全相符的資料
 
@@ -33,7 +33,7 @@ ms.locfileid: "79297402"
 在下列情況下，清單實體是這類資料的好選擇：
 
 * 資料值是一組已知的值。
-* 此組合不會超過此實體類型的最大 LUIS [界限](luis-boundaries.md)。
+* 此組合不會超過此實體類型的最大 LUIS [界限](luis-limits.md)。
 * 語句中的文字是與同義字或正式名稱相符的項目 (不區分大小寫)。 LUIS 不會將清單用於相符項目以外的範圍。 詞幹分析、複數及其他變化無法僅透過清單實體來解析。 若要管理變化，請考慮使用[模式](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance)並搭配選擇性的文字語法。
 
 > [!CAUTION]

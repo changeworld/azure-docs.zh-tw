@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
 ms.openlocfilehash: 515ac034158b821968e2d7b2be9514a3f7c20866
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82099042"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：為您的 Azure AD 應用程式提供選擇性宣告
@@ -37,7 +37,7 @@ ms.locfileid: "82099042"
 
 | 帳戶類型               | v1.0 權杖 | v2.0 權杖 |
 |----------------------------|-------------|-------------|
-| 個人 Microsoft 帳戶 | N/A         | 支援   |
+| 個人 Microsoft 帳戶 | 不適用         | 支援   |
 | Azure AD 帳戶           | 支援   | 支援   |
 
 ## <a name="v10-and-v20-optional-claims-set"></a>v1.0 和 v2.0 選擇性宣告集
@@ -49,7 +49,7 @@ ms.locfileid: "82099042"
 
 **表2： v1.0 和 v2.0 選用宣告集**
 
-| 名稱                       |  描述   | 權杖類型 | 使用者類型 | 注意  |
+| Name                       |  描述   | 權杖類型 | 使用者類型 | 備忘錄  |
 |----------------------------|----------------|------------|-----------|--------|
 | `auth_time`                | 上次驗證使用者的時間。 請參閱 OpenID Connect 規格。| JWT        |           |  |
 | `tenant_region_scope`      | 資源租用戶的區域 | JWT        |           | |
@@ -78,7 +78,7 @@ ms.locfileid: "82099042"
 
 **表3：僅限 v2.0 的選擇性宣告**
 
-| JWT 宣告     | 名稱                            | 描述                                | 注意 |
+| JWT 宣告     | Name                            | 描述                                | 注意 |
 |---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | IP 位址                      | 用戶端的登入來源 IP 位址。   |       |
 | `onprem_sid`  | 內部部署安全性識別碼 |                                             |       |
@@ -367,7 +367,7 @@ ms.locfileid: "82099042"
 - 您可以使用**資訊清單**（請參閱下列範例）。 請先閱讀介紹資訊清單的[了解 Azure AD 應用程式資訊清單](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)文件。
 - 您也可以撰寫使用[MICROSOFT GRAPH API](https://docs.microsoft.com/graph/use-the-api?context=graph%2Fapi%2F1.0&view=graph-rest-1.0)的應用程式來更新您的應用程式。 Microsoft Graph API 參考指南中的[OptionalClaims](https://docs.microsoft.com/graph/api/resources/optionalclaims?view=graph-rest-1.0)類型可協助您設定選擇性宣告。
 
-**實例**
+**範例：**
 
 在下列範例中，您將使用**權杖**設定 UI 和**資訊清單**，將選擇性宣告新增至適用于您應用程式的存取、識別碼和 SAML 權杖。 應用程式可以接收的每一種權杖類型都會新增不同的選擇性宣告：
 

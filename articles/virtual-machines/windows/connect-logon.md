@@ -1,5 +1,5 @@
 ---
-title: 連接到 Windows 伺服器 VM
+title: 連接到 Windows Server VM
 description: 了解如何使用 Azure 入口網站和 Resource Manager 部署模型來連接和登入 Windows VM。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 92f7ba30e2a3c66218974ab65502c35139ab1f8c
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086210"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>如何連接和登入執行 Windows 的 Azure 虛擬機器
@@ -20,11 +20,11 @@ ms.locfileid: "82086210"
 若要從 Mac 連線到 Windows VM，您需要安裝適用於 Mac 的 RDP 用戶端，例如 [Microsoft 遠端桌面](https://aka.ms/rdmac)。
 
 ## <a name="connect-to-the-virtual-machine"></a>連接至虛擬機器
-1. 轉到[Azure 門戶](https://portal.azure.com/)以連接到 VM。 搜尋並選取 [虛擬機器]  。
+1. 移至 [ [Azure 入口網站](https://portal.azure.com/)] 以連線至 VM。 搜尋並選取 [虛擬機器]  。
 2. 然後從清單中選取虛擬機器。
-3. 在虛擬機頁面的開頭,選擇 **「連接**」。
-4. 在 **'連線到虛擬機器'** 頁上,選擇**RDP,** 然後選擇相關的**IP 位址**與**連接埠號**。 在大部分情況下，就應該使用預設 IP 位址和連接埠。 選取 [下載 RDP 檔案]  。 如果 VM 已設定 Just-In-Time 原則，您必須先選取 [要求存取]**** 按鈕來要求存取，才能下載 RDP 檔案。 如需 Just-In-Time 原則的詳細資訊，請參閱[使用 Just-In-Time 原則管理虛擬機器存取](../../security-center/security-center-just-in-time.md)。
-5. 開啟下載的 RDP 檔案，然後在出現提示時選取 [連線]****。 您會收到警告，表示 `.rdp` 檔案來自未知的發行者。 這是預期行為。 在 [遠端桌面連線]**** 視窗中，選取 [連線]**** 以繼續。
+3. 在 [虛擬機器] 頁面的開頭，選取 [連線 **]**。
+4. 在 [連線**至虛擬機器]** 頁面上，選取 [ **RDP**]，然後選取適當的**IP 位址**和**埠號碼**。 在大部分情況下，就應該使用預設 IP 位址和連接埠。 選取 [下載 RDP 檔案]  。 如果 VM 已設定 Just-In-Time 原則，您必須先選取 [要求存取]**** 按鈕來要求存取，才能下載 RDP 檔案。 如需 Just-In-Time 原則的詳細資訊，請參閱[使用 Just-In-Time 原則管理虛擬機器存取](../../security-center/security-center-just-in-time.md)。
+5. 開啟下載的 RDP 檔案，然後在出現提示時選取 [連線]****。 您會收到警告，表示 `.rdp` 檔案來自未知的發行者。 這是預期的結果。 在 [遠端桌面連線]**** 視窗中，選取 [連線]**** 以繼續。
    
     ![未知發行者相關警告的螢幕擷取畫面。](./media/connect-logon/rdp-warn.png)
 3. 在 [Windows 安全性]  視窗中，選取 [更多選擇]  ，然後選取 [使用不同的帳戶]  。 輸入虛擬機器上帳戶的認證，然後選取 [確定]****。
@@ -48,7 +48,7 @@ ms.locfileid: "82086210"
 
  
 
-如果您正在使用 PowerShell 並安裝了 Azure PowerShell`Get-AzRemoteDesktopFile`模組,也可以使用 cmdlet 進行連接,如下所示。
+如果您使用 PowerShell，並已安裝 Azure PowerShell 模組，您也可以使用`Get-AzRemoteDesktopFile` Cmdlet 來連接，如下所示。
 
 此範例會立即啟動 RDP 連線，帶您進行類似上面的提示。
 

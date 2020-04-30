@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 04/20/2017
 ms.author: labrenne
 ms.openlocfilehash: d28223c79f96f35a6ee11f98e0f09f21d7db4451
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115936"
 ---
 # <a name="pool-delete-complete-event"></a>集區刪除完成事件
@@ -27,7 +27,7 @@ ms.locfileid: "82115936"
 
 |元素|類型|注意|
 |-------------|----------|-----------|
-|`id`|String|集區的識別碼。|
+|`id`|字串|集區的識別碼。|
 |`startTime`|Datetime|集區刪除開始時間。|
 |`endTime`|Datetime|集區刪除完成時間。|
 

@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2df562d65ad064efb1be337e0b68cb8638536981
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82112757"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication 中的報告
 
 Azure Multi-Factor Authentication 提供數個報告，可供您和貴組織透過 Azure 入口網站使用。 下表列出可用的報告：
 
-| Report | 位置 | 說明 |
+| 報表 | 位置 | 描述 |
 |:--- |:--- |:--- |
 | 已封鎖的使用者歷程記錄 | Azure AD > 安全性 > MFA > 封鎖/解除封鎖使用者 | 顯示使用者封鎖或解除封鎖要求的歷程記錄。 |
 | 使用方式和詐騙警示 | Azure AD > 登入 | 提供整體使用量、使用者摘要和使用者詳細資料的相關資訊；以及在指定的日期範圍期間所提交的詐騙警示歷程記錄。 |
@@ -152,7 +152,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 下表可用於使用下載的多因素驗證活動報告版本進行多重要素驗證疑難排解。 它們不會直接出現在 Azure 入口網站中。
 
-| 呼叫結果 | 說明 | 廣泛描述 |
+| 呼叫結果 | 描述 | 廣泛描述 |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | 已輸入 PIN | 使用者已輸入 PIN。 如果驗證成功，表示使用者已輸入正確的 PIN。 如果驗證遭到拒絕，則他們輸入了不正確的 PIN，或使用者設定為標準模式。 |
 | SUCCESS_NO_PIN | 僅輸入 # | 如果使用者設定為 PIN 模式且驗證遭到拒絕，這表示使用者未輸入 PIN，只輸入 #。  如果使用者設定為標準模式且驗證成功，這表示使用者只輸入 #，而在標準模式下這是正確的動作。 |

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b3cd4ed280529efbde32fb89e6bac20640940fff
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: a50f203b8057dd4ea51eff1cf09fc97fb598cb3e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81419872"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82096430"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool"></a>快速入門：建立 Synapse SQL 集區
 
@@ -81,5 +81,5 @@ Azure Synapse Analytics 提供各種分析引擎，協助您內嵌、轉換、�
 
 ## <a name="next-steps"></a>後續步驟
 
-- 請參閱[快速入門：使用 Web 工具在 Synapse Studio 中建立 Apache Spark 集區](spark/apache-spark-notebook-create-spark-use-sql.md)。
+- 請參閱[快速入門：使用 Web 工具在 Synapse Studio 中建立 Apache Spark 集區](quickstart-apache-spark-notebook.md)。
 - 請參閱[快速入門：使用 Azure 入口網站建立 Apache Spark 集區](quickstart-create-apache-spark-pool.md)。

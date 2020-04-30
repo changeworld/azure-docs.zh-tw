@@ -5,10 +5,10 @@ author: diberry
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.openlocfilehash: 3cea4a46564210ad8c37fdeda68e24337091d0bb
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82100289"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>使用意圖和實體從語句文字解壓縮資料
@@ -75,7 +75,7 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 |資料物件|資料類型|資料位置|值|
 |--|--|--|--|
-|Intent|String|topScoringIntent.intent|"GetStoreInfo"|
+|Intent|字串|topScoringIntent.intent|"GetStoreInfo"|
 
 如果您的聊天機器人或 LUIS 呼叫應用程式根據一個以上的意圖分數進行決策，則會傳回所有意圖的分數。
 
@@ -137,8 +137,8 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 |資料物件|資料類型|資料位置|值|分數|
 |--|--|--|--|:--|
-|Intent|String|intents[0].intent|"GetStoreInfo"|0.984749258|
-|Intent|String|intents[1].intent|"None"|0.0168218873|
+|Intent|字串|intents[0].intent|"GetStoreInfo"|0.984749258|
+|Intent|字串|intents[1].intent|"None"|0.0168218873|
 
 如果您新增預先建置的定義域，則意圖名稱除了會指出意圖之外，也會指出該定義域，例如 `Utilties` 或 `Communication`：
 
@@ -196,11 +196,11 @@ LUIS 會從已發佈的[端點](luis-glossary.md#endpoint)提供資料。 **HTTP
 
 * * *
 
-|網域|資料物件|資料類型|資料位置|值|
+|Domain|資料物件|資料類型|資料位置|值|
 |--|--|--|--|--|
-|公用事業|Intent|String|intents[0].intent|"<b>Utilities</b>.ShowNext"|
-|通訊|Intent|String|intents[1].intent|<b>Communication</b>.StartOver"|
-||Intent|String|intents[2].intent|"None"|
+|公用事業|Intent|字串|intents[0].intent|"<b>Utilities</b>.ShowNext"|
+|通訊|Intent|字串|intents[1].intent|<b>Communication</b>.StartOver"|
+||Intent|字串|intents[2].intent|"None"|
 
 
 ## <a name="data-from-entities"></a>來自實體的資料

@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82112570"
 ---
-# <a name="continuous-access-evaluation"></a>連續存取評估
+# <a name="continuous-access-evaluation"></a>持續存取評估
 
 Microsoft 服務（如 Azure Active Directory （Azure AD）和 Office 365）使用開放式標準和通訊協定，將互通性最大化。 其中一個最重要的是 Open ID Connect （OIDC）。 當 Outlook 之類的用戶端應用程式連接到 Exchange Online 之類的服務時，API 要求會使用 OAuth 2.0 存取權杖進行授權。 根據預設，這些存取權杖的有效時間為一小時。 當它們過期時，用戶端會重新導向回到 Azure AD 以重新整理。 這也有機會重新評估使用者存取原則-我們可能因為條件式存取原則而選擇不要重新整理權杖，或因為該使用者已在目錄中停用。 
 

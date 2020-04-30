@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: f764b0d42e08e68b45d49a5aae8542f05707ccde
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82099354"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>常用詞彙和概念的語言理解詞彙
@@ -38,14 +38,14 @@ Language Understanding (LUIS) 詞彙說明使用 LUIS API Service 時可能遇�
 
 另請參閱：
 * [概念](luis-concept-batch-test.md)
-* [操作方式](luis-how-to-batch-test.md)
+* [如何](luis-how-to-batch-test.md)
 * [教學課程](luis-tutorial-batch-testing.md)
 
 ## <a name="collaborator"></a><a name="collaborator"></a>共同作業者
 
 共同作業者/參與者不是應用程式的[擁有](#owner)者，但具備新增、編輯和刪除意圖、實體、語句的相同許可權。
 
-## <a name="contributor"></a><a name="contributor"></a>參與者
+## <a name="contributor"></a><a name="contributor"></a>資料流程
 
 參與者與共同作業者是[相同的事。](#collaborator)
 
@@ -77,7 +77,7 @@ Language Understanding (LUIS) 詞彙說明使用 LUIS API Service 時可能遇�
 
 在[批次測試](luis-interactive-test.md#batch-testing)中，資料點代表您的應用程式不正確預測了存在目標意圖/實體的語句。
 
-## <a name="features"></a><a name="features"></a>特性
+## <a name="features"></a><a name="features"></a>功能
 
 在機器學習中，[特性](luis-concept-feature.md)是您的系統觀察到的資料特徵或屬性。
 
@@ -93,7 +93,7 @@ Language Understanding (LUIS) 詞彙說明使用 LUIS API Service 時可能遇�
 
 LUIS 應用程式是自然語言處理的語言模型集合，包括[意圖](#intent)、[實體](#entity)和標示的[語句](#utterance)。
 
-## <a name="owner"></a><a name="owner"></a>擁有者
+## <a name="owner"></a><a name="owner"></a>主人
 
 每個應用程式都有一個擁有者，這是建立應用程式的人員。 擁有者可以新增[共同作業者](#collaborator)。
 
@@ -119,7 +119,7 @@ LUIS 應用程式是自然語言處理的語言模型集合，包括[意圖](#in
 
 已重新命名為[編寫金鑰](#authoring-key)。
 
-## <a name="publish"></a><a name="publish"></a>發佈
+## <a name="publish"></a><a name="publish"></a>公佈
 
 發佈表示讓 LUIS 使用中版本在暫存或生產環境[端點](#endpoint)上可用。
 

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
 ms.openlocfilehash: 3efc4528863286da676fc7eb758176156c87a32a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115647"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances 中的容器群組
@@ -67,7 +67,7 @@ Azure 容器實例會藉由新增群組中實例的[資源要求][resource-reque
 
 * 如需容器群組中的資源**上限**，請參閱部署區域中 Azure 容器實例的[資源可用性][region-availability]。
 
-## <a name="networking"></a>網路
+## <a name="networking"></a>網路功能
 
 容器群組可以共用對外 IP 位址、該 IP 位址上的一或多個埠，以及具有完整功能變數名稱（FQDN）的 DNS 標籤。 若要讓外部用戶端能夠連線到該群組內的容器，您必須從該容器公開該 IP 位址上的連接埠。 因為群組中的容器會共用埠命名空間，所以不支援埠對應。 刪除容器群組時，將會釋放容器群組的 IP 位址和 FQDN。 
 

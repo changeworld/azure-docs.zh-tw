@@ -1,25 +1,19 @@
 ---
 title: 教學課程 - 在 Azure 中的 Windows VM 上安裝應用程式
 description: 在本教學課程中，您會了解如何使用自訂指令碼擴充功能執行指令碼，以及將應用程式部署至 Azure 中的 Windows 虛擬機器。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 66764781391a55df0ad903a81b86f62f954fcaf7
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: c576ac1f56a29fc73f92e2292b457262828c5046
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456119"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100459"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>教學課程 - 使用自訂指令碼擴充功能將應用程式部署至 Azure 中的 Windows 虛擬機器
 

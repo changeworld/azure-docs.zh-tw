@@ -11,10 +11,10 @@ ms.reviewer: vanto
 ms.date: 03/27/2020
 ms.custom: azure-synapse
 ms.openlocfilehash: 57c4b22dfe6ef6cf44be64a4b5c042403f64ccf2
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82096651"
 ---
 # <a name="azure-sql-auditing"></a>Azure SQL 稽核
@@ -91,7 +91,7 @@ Azure SQL Database 稽核會在稽核記錄中的字元欄位儲存 4000 個字�
    
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>對儲存體目的地的審核
 
-若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]****，然後開啟 [儲存體詳細資料]****。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 **[確定]**。 早于保留期限的記錄會遭到刪除。
+若要設定將稽核記錄寫入至儲存體帳戶，請選取 [儲存體]****，然後開啟 [儲存體詳細資料]****。 選取將儲存記錄的 Azure 儲存體帳戶，然後選取保留期間。 然後按一下 [ **確定**]。 早于保留期限的記錄會遭到刪除。
 
 - [保留週期] 的預設值為0（無限制保留）。 您可以變更此值，方法是在設定儲存體帳戶以進行審核時，將 [**保留（天數）** ] 滑杆移至 [**儲存體設定**]。
   - 如果您將保留期間從0（無限制的保留）變更為任何其他值，請注意保留期只會套用至保留值變更之後所寫入的記錄（保留設定為無限制的期間所寫入的記錄，即使已啟用保留期）。

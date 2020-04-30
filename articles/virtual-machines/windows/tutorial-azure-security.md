@@ -1,25 +1,20 @@
 ---
 title: 教學課程 - 針對 Azure 中的 Windows VM 使用 Azure 資訊安全中心
 description: 在本教學課程中，您會了解 Azure 資訊安全中心的功能，以協助保護 Azure 中的 Windows 虛擬機器。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8979206096896d30338af58387a312617144fd1f
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 7c84c705da99bd6f04a6737a1c781b905cbeaad6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81456221"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82100476"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>教學課程：使用 Azure 資訊安全中心來監視 Windows 虛擬機器
 

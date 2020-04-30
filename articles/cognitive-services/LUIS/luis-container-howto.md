@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 2df36d80aea34da1693cecde524d239abd2bb04a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82100238"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安裝和執行 LUIS Docker 容器
@@ -32,7 +32,7 @@ Language Understanding （LUIS）容器會載入您已定型或已發行的 Lang
 
 若要執行 LUIS 容器，請注意下列必要條件：
 
-|必要|用途|
+|必要|目的|
 |--|--|
 |Docker 引擎| 您必須在[主機電腦](#the-host-computer)上安裝 Docker 引擎。 Docker 提供可在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上設定 Docker 環境的套件。 如需 Docker 和容器基本概念的入門，請參閱 [Docker 概觀](https://docs.docker.com/engine/docker-overview/) \(英文\)。<br><br> Docker 必須設定為允許容器與 Azure 連線，以及傳送帳單資料至 Azure。 <br><br> **在 Windows 上**，也必須將 Docker 設定為支援 Linux 容器。<br><br>|
 |熟悉 Docker | 您應具備對 Docker 概念 (例如登錄、存放庫、容器和容器映像等) 的基本了解，以及基本 `docker` 命令的知識。|
@@ -252,7 +252,7 @@ ApiKey={API_KEY}
 
 查詢參數會設定傳回查詢回應的方式和內容：
 
-|查詢參數|類型|用途|
+|查詢參數|類型|目的|
 |--|--|--|
 |`query`|字串|使用者的語句。|
 |`verbose`|boolean|布林值，指出是否傳回預測模型的所有中繼資料。 預設值為 false。|
@@ -268,7 +268,7 @@ ApiKey={API_KEY}
 
 查詢參數會設定傳回查詢回應的方式和內容：
 
-|查詢參數|類型|用途|
+|查詢參數|類型|目的|
 |--|--|--|
 |`q`|字串|使用者的語句。|
 |`timezoneOffset`|number|TimezoneOffset 可讓您[變更時區](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) (預先建置的實體 datetimeV2 所使用的時區)。|
@@ -372,7 +372,7 @@ LUIS 容器會使用您 Azure 帳戶上的_認知服務_資源，將帳單資訊
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>[摘要]
 
 在本文中，您已了解下載、安裝及執行 Language Understanding (LUIS) 容器的概念和工作流程。 摘要說明：
 

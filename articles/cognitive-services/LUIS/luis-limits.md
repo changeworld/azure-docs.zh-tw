@@ -4,10 +4,10 @@ description: 本文包含 Azure 認知服務 Language Understanding (LUIS) 的�
 ms.topic: reference
 ms.date: 04/02/2020
 ms.openlocfilehash: 0a734091ad2c9812f079d77c97c22872717aa7c9
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82103694"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>LUIS 模型和金鑰的限制
@@ -110,7 +110,7 @@ LUIS 有數個限制區域。 第一個是[模型限制](#model-limits)，可控
 
 ## <a name="keyboard-controls"></a>鍵盤控制項
 
-|鍵盤輸入 | 說明 |
+|鍵盤輸入 | 描述 |
 |--|--|
 |Ctrl+E|在語句清單上的權杖和實體之間切換|
 

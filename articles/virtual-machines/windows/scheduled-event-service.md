@@ -8,10 +8,10 @@ ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
 ms.openlocfilehash: 3f3bf83d8155383757cc87749281c688bd281a4a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82099592"
 ---
 # <a name="monitoring-scheduled-events"></a>監視 Scheduled Events
@@ -29,7 +29,7 @@ Scheduled Events 是[azure Instance Metadata Service](instance-metadata-service.
 
 ![顯示事件生命週期的圖表](./media/notifications/events.png)
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 在此範例中，您將需要[在可用性設定組中建立 Windows 虛擬機器](tutorial-availability-sets.md)。 Scheduled Events 提供可能會影響可用性設定組、雲端服務、虛擬機器擴展集或獨立 Vm 中任何虛擬機器之變更的相關通知。 我們將執行一項[服務](https://github.com/microsoft/AzureScheduledEventsService)，以輪詢做為收集器的其中一個 vm 上已排程的事件，以取得可用性設定組中所有其他 vm 的事件。    
 

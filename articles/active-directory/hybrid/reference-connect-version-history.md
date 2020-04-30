@@ -13,10 +13,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82112196"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect︰版本發行歷程記錄
@@ -554,7 +554,7 @@ Azure AD Connect 1.1.654.0 版 (和更新版本) 已新增改進，以確保 Azu
 *   將特定物件上所有的 ACE 移除，除了 SELF 特有的 ACE 之外。 關於 SELF，我們需要將預設權限維持不變。
 *   指派這些特定權限：
 
-類型     | 名稱                          | 存取權               | 套用至
+類型     | Name                          | 存取權               | 套用至
 ---------|-------------------------------|----------------------|--------------|
 Allow    | 系統                        | 完全控制         | 此物件  |
 Allow    | Enterprise Admins             | 完全控制         | 此物件  |
@@ -579,7 +579,7 @@ Allow    | 驗證的使用者           | 讀取權限     | 此物件  |
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-其中 
+Where 
 
 **$ObjectDN** = 必須加強權限的 Active Directory 帳戶。
 
@@ -897,8 +897,8 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|選取|
-    |CertKeyAlgorithmParams|CertHashString|其中|
+    |CertVersion|CertSignatureAlgorithmOid|Select|
+    |CertKeyAlgorithmParams|CertHashString|Where|
     |||含有|
 
 * 已引進下列結構描述變更，以允許客戶建立自訂的同步處理規則來流動群組物件的 sAMAccountName、domainNetBios 和 domainFQDN，以及使用者物件的 distinguishedName：

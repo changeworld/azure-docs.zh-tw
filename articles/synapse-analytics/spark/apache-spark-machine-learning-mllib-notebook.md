@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.openlocfilehash: 25d11d2cf41f8653c5a54007f121c1251bb24b1f
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82096294"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>使用 Apache Spark MLlib 和 Azure Synapse 分析來建立機器學習應用程式
@@ -290,7 +290,7 @@ plt.show()
 
 當您完成執行應用程式後，請關閉此筆記本以釋放資源，方法是關閉索引標籤，或從筆記本底部的狀態面板中選取 [**結束會話**]。
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 - [總覽： Azure Synapse 分析的 Apache Spark](apache-spark-overview.md)
 

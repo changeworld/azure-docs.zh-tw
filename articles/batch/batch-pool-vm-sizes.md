@@ -6,10 +6,10 @@ ms.date: 09/12/2019
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: d33b97790d2ce9a276a552fd02fe28c796234b15
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115851"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>為 Azure Batch 集區中的運算節點選擇 VM 大小
@@ -32,8 +32,8 @@ ms.locfileid: "82115851"
 | 基本 A | 除了 Basic_A0 （A0）*以外*的所有大小 |
 | A | 除了 Standard_A0*以外*的所有大小 |
 | Av2 | 所有大小 |
-| B | None |
-| DC | None |
+| B | 無 |
+| DC | 無 |
 | Dv2、DSv2 | 所有大小 |
 | Dv3、Dsv3 | 所有大小 |
 | Dav4, Dasv4 | 無-尚未提供 |
@@ -57,8 +57,8 @@ ms.locfileid: "82115851"
 | NDv2<sup>1</sup> | 無-尚未提供 |
 | NV | 所有大小 |
 | NVv3<sup>1</sup> | 所有大小 |
-| NVv4 | None |
-| SAP HANA | None |
+| NVv4 | 無 |
+| SAP HANA | 無 |
 
 <sup>1</sup>這些 VM 大小可以在虛擬機器設定的 batch 集區中配置，但您必須建立新的 Batch 帳戶，並要求[增加](batch-quota-limit.md#increase-a-quota)特定的配額。 一旦 Batch 帳戶完全支援每個 VM 系列的 vCPU 配額，就會移除這項限制。
 

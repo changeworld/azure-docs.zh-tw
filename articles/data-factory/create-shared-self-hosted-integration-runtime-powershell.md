@@ -12,10 +12,10 @@ manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 10/31/2018
 ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106605"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>在 Azure Data Factory 中建立共用的自我裝載整合執行時間
@@ -99,7 +99,7 @@ ms.locfileid: "82106605"
 1. 建立資源群組和資料處理站。
 
     > [!NOTE]  
-    > 此為選用步驟。 如果您已經有資料處理站，請略過此步驟。 
+    > 這是選擇性步驟。 如果您已經有資料處理站，請略過此步驟。 
 
     使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 命令來建立 [Azure 資源群組](../azure-resource-manager/management/overview.md)。 資源群組是在其中以群組方式部署與管理 Azure 資源的邏輯容器。 下列範例會在 WestEurope 位置建立名為 `myResourceGroup` 的資源群組： 
 
@@ -118,7 +118,7 @@ ms.locfileid: "82106605"
 ### <a name="create-a-self-hosted-integration-runtime"></a>建立自我裝載整合執行階段
 
 > [!NOTE]  
-> 此為選用步驟。 如果您已經有要與其他資料處理站共用的自我裝載整合執行階段，請略過此步驟。
+> 這是選擇性步驟。 如果您已經有要與其他資料處理站共用的自我裝載整合執行階段，請略過此步驟。
 
 執行下列命令來建立自我裝載整合執行階段：
 
@@ -157,7 +157,7 @@ Get-AzDataFactoryV2IntegrationRuntimeKey `
 #### <a name="create-another-data-factory"></a>建立另一個資料處理站
 
 > [!NOTE]  
-> 此為選用步驟。 如果您已有要共用的資料處理站，請略過此步驟。
+> 這是選擇性步驟。 如果您已有要共用的資料處理站，請略過此步驟。
 
 ```powershell
 $factory = Set-AzDataFactoryV2 -ResourceGroupName $ResourceGroupName `

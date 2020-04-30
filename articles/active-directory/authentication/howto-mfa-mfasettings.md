@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9002447df44a1f0c87ec9de03e316d7d12d8a626
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82105653"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>設定 Azure Multi-Factor Authentication 設定
@@ -300,7 +300,7 @@ Azure AD 使用內部部署 Windows Server Active Directory Domain Services (AD 
 
 | Azure AD 租用戶類型 | 信任的 IP 功能選項 |
 |:--- |:--- |
-| 受控 |**特定 IP 位址的範圍**：對於從公司內部網路登入的使用者，管理員會指定允許略過雙步驟驗證的 IP 位址範圍。 最多可設定50個信任的 IP 範圍。|
+| 受管理 |**特定 IP 位址的範圍**：對於從公司內部網路登入的使用者，管理員會指定允許略過雙步驟驗證的 IP 位址範圍。 最多可設定50個信任的 IP 範圍。|
 | 同盟 |**所有同盟使用者**：所有從組織內登入的同盟使用者，都可略過雙步驟驗證。 使用者可使用 Active Directory Federation Services (AD FS) 所發出的宣告來略過驗證。<br/>**特定 IP 位址的範圍**：對於從公司內部網路登入的使用者，管理員會指定允許略過雙步驟驗證的 IP 位址範圍。 |
 
 信任的 IP 只會略過公司內部網路之內的工作。 如果您選取 [所有同盟使用者]**** 選項，且使用者從公司內部網路之外登入時，使用者必須使用雙步驟驗證來進行驗證。 即使使用者提供 AD FS 宣告，程序還是相同的。 
@@ -382,7 +382,7 @@ Azure AD 使用內部部署 Windows Server Active Directory Domain Services (AD 
 3. 選取 [**多重要素驗證**]。
 4. 在 [Multi-Factor Authentication] 下，選取 [服務設定]****。
 5. 在 [服務設定]**** 頁面的 [驗證選項]**** 下，選取/取消選取要提供給使用者的方法。
-6. 按一下 [檔案]  。
+6. 按一下 **[儲存]** 。
 
 其他的驗證方法使用方式詳細資料，可在[驗證的方法](concept-authentication-methods.md)一文中找到。
 

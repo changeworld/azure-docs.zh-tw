@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: memildin
 ms.openlocfilehash: 6e61571400930d4a781d6d67647bd662a7f2d350
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82106214"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 資訊安全中心的權限
@@ -41,7 +41,7 @@ Azure 資訊安全中心會使用[角色型存取控制 (RBAC)](../role-based-ac
 
 下表會顯示資訊安全中心的角色和允許的動作。
 
-| 角色 | 編輯安全性原則 | 針對資源套用安全性建議</br> （包含「快速修正！」） | 關閉警示和建議 | 檢視警示和建議 |
+| [角色] | 編輯安全性原則 | 針對資源套用安全性建議</br> （包含「快速修正！」） | 關閉警示和建議 | 檢視警示和建議 |
 |:--- |:---:|:---:|:---:|:---:|
 | 訂用帳戶擁有者 | ✔ | ✔ | ✔ | ✔ |
 | 訂用帳戶參與者 | -- | ✔ | ✔ | ✔ |

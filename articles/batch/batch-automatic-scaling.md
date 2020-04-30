@@ -6,10 +6,10 @@ ms.date: 10/24/2019
 ms.author: labrenne
 ms.custom: H1Hack27Feb2017,fasttrack-edit
 ms.openlocfilehash: b790ee286d9edd8cee04ef1db719be6395509be2
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82113556"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>建立自動公式以調整 Batch 集區中的計算節點
@@ -93,7 +93,7 @@ $NodeDeallocationOption = taskcompletion;
 
 您可以取得並設定這些這些服務定義的變數值，以管理集區中的計算節點：
 
-| 讀寫服務定義變數 | 說明 |
+| 讀寫服務定義變數 | 描述 |
 | --- | --- |
 | $TargetDedicatedNodes |集區之專用計算節點的目標數目。 專用節點數目被指定作為目標，因為集區不一定會達到想要的節點數目。 例如，如果在集區達到初始目標之前，自動調整評估修改目標專用節點數目，則集區可能未達到目標。 <br /><br /> 如果目標超過 Batch 帳戶節點或核心配額，以 Batch 服務設定建立之帳戶中的集區可能未達到其目標。 如果目標超過訂用帳戶的共用核心配額，以使用者訂用帳戶設定建立之帳戶中的集區可能未達到其目標。|
 | $TargetLowPriorityNodes |集區之低優先順序計算節點的目標數目。 低優先順序節點數目被指定作為目標，因為集區不一定會達到想要的節點數目。 例如，如果在集區達到初始目標之前，自動調整評估修改目標低優先順序節點數目，則集區可能未達到目標。 如果目標超過 Batch 帳戶節點或核心配額，則集區也可能未達到其目標。 <br /><br /> 如需低優先順序計算節點的詳細資訊，請參閱[使用低優先順序的 vm 搭配 Batch](batch-low-pri-vms.md)。 |
@@ -106,7 +106,7 @@ $NodeDeallocationOption = taskcompletion;
 
 您可以取得這些服務定義的變數值，以根據 Batch 服務提供的計量進行調整：
 
-| 唯讀服務定義變數 | 說明 |
+| 唯讀服務定義變數 | 描述 |
 | --- | --- |
 | $CPUPercent |CPU 使用量的平均百分比。 |
 | $WallClockSeconds |已耗用的秒數。 |
@@ -133,7 +133,7 @@ $NodeDeallocationOption = taskcompletion;
 >
 >
 
-## <a name="types"></a>類型
+## <a name="types"></a>型別
 
 公式中支援以下類型：
 
@@ -163,7 +163,7 @@ $NodeDeallocationOption = taskcompletion;
   * TimeInterval_Week
   * TimeInterval_Year
 
-## <a name="operations"></a>操作
+## <a name="operations"></a>作業
 
 上一節列出的類型允許這些作業。
 
@@ -191,7 +191,7 @@ $NodeDeallocationOption = taskcompletion;
 ## <a name="functions"></a>函式
 這些預先定義的 **函式** 可供您用來定義自動調整公式。
 
-| 函式 | 傳回類型 | 說明 |
+| 函式 | 傳回類型 | 描述 |
 | --- | --- | --- |
 | avg(doubleVecList) |double |傳回 doubleVecList 中所有值的平均值。 |
 | len(doubleVecList) |double |傳回 doubleVecList 建立的向量的長度。 |
@@ -286,7 +286,7 @@ $runningTasksSample = $RunningTasks.GetSample(60 * TimeInterval_Second, 120 * Ti
 <table>
   <tr>
     <th>計量</th>
-    <th>說明</th>
+    <th>描述</th>
   </tr>
   <tr>
     <td><b>Resource</b></td>

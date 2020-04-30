@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
 ms.openlocfilehash: 954e7a22ae6b242c6221119c688259e4ce629a2a
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82101054"
 ---
 # <a name="authoring-and-runtime-keys"></a>撰寫和執行階段金鑰
@@ -44,7 +44,7 @@ Language Understanding （LUIS）有兩個服務和 API 集：
 
 LUIS 允許三種類型的 Azure 資源：
 
-|Key|用途|認知服務`kind`|認知服務`type`|
+|Key|目的|認知服務`kind`|認知服務`type`|
 |--|--|--|--|
 |[授權金鑰](#programmatic-key)|使用撰寫、訓練、發行和測試來存取和管理應用程式的資料。 如果您想要以程式設計方式撰寫 LUIS 應用程式，請建立 LUIS 撰寫金鑰。<br><br>`LUIS.Authoring`金鑰的目的是要讓您能夠：<br>* 以程式設計方式管理 Language Understanding 應用程式和模型，包括定型和發佈<br> * 將人員指派給「[參與者」角色](#contributions-from-other-authors)，以控制撰寫資源的許可權。|`LUIS.Authoring`|`Cognitive Services`|
 |[預測金鑰](#prediction-endpoint-runtime-key)| 查詢預測端點要求。 在您的用戶端應用程式要求預測超過起始資源所提供的1000要求之前，請先建立 LUIS 預測金鑰。 |`LUIS`|`Cognitive Services`|
@@ -115,7 +115,7 @@ LUIS 執行時間端點接受兩種查詢樣式，兩者都使用預測端點執
 
 擁有者和所有參與者都有權撰寫應用程式。
 
-|撰寫存取權包括|注意|
+|撰寫存取權包括|備忘錄|
 |--|--|
 |新增或移除端點金鑰||
 |匯出版本||
@@ -123,7 +123,7 @@ LUIS 執行時間端點接受兩種查詢樣式，兩者都使用預測端點執
 |匯入版本||
 |將應用程式設定為公用|當應用程式為公用時，任何具有撰寫或端點金鑰的使用者都可查詢該應用程式。|
 |修改模型|
-|發佈|
+|發行|
 |檢閱用於[主動式學習](luis-how-to-review-endpoint-utterances.md)的端點語句|
 |定型|
 

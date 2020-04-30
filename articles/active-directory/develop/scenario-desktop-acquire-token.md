@@ -13,10 +13,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 24567461ee8a87fc9dbd1c5fb4eba5e34d458f7b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82097756"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>呼叫 web Api 的桌面應用程式：取得權杖
@@ -217,7 +217,7 @@ WithParentActivityOrWindow(object parent).
 
 類別會定義下列常數：
 
-- ``SelectAccount``強制 STS 呈現 [帳戶選取] 對話方塊，其中包含使用者具有會話的帳戶。 當應用程式開發人員想要讓使用者在不同的身分識別之間進行選擇時，這個選項很有用。 此選項會驅動 MSAL 以``prompt=select_account``傳送給識別提供者。 這個選項是預設值。 它會根據可用的資訊（例如使用者的會話帳戶和出現狀態），提供最佳的可能體驗。 除非您有充分的理由，否則請不要變更它。
+- ``SelectAccount``強制 STS 呈現 [帳戶選取] 對話方塊，其中包含使用者具有會話的帳戶。 當應用程式開發人員想要讓使用者在不同的身分識別之間進行選擇時，這個選項很有用。 此選項會驅動 MSAL 以``prompt=select_account``傳送給識別提供者。 此選項是預設值。 它會根據可用的資訊（例如使用者的會話帳戶和出現狀態），提供最佳的可能體驗。 除非您有充分的理由，否則請不要變更它。
 - ``Consent``可讓應用程式開發人員強制提示使用者同意，即使之前已授與同意亦然。 在此情況下，MSAL `prompt=consent`會將傳送至身分識別提供者。 此選項可用於某些以安全性為主的應用程式，其中組織治理會要求每次使用應用程式時，都會向使用者顯示同意對話方塊。
 - ``ForceLogin``可讓應用程式開發人員讓服務提示使用者提供認證，即使可能不需要此使用者提示也一樣。 如果取得權杖失敗，此選項可讓使用者再次登入。 在此情況下，MSAL `prompt=login`會將傳送至身分識別提供者。 有時候，它會用於以安全性為主的應用程式，組織治理會要求使用者在每次存取應用程式的特定部分時重新登入。
 - ``Never``（僅適用于 .NET 4.5 和 WinRT）不會提示使用者，而是會嘗試使用儲存在隱藏的內嵌 web 視圖中的 cookie。 如需詳細資訊，請參閱 MSAL.NET 中的 web views。 使用此選項可能會失敗。 在此情況下`AcquireTokenInteractive` ，會擲回例外狀況，以通知需要 UI 互動。 您必須使用另一個`Prompt`參數。
@@ -921,7 +921,7 @@ MSAL for macOS 不支援此流程。
 
 ## <a name="command-line-tool-without-a-web-browser"></a>不使用網頁瀏覽器的命令列工具
 
-### <a name="device-code-flow"></a>裝置程式碼流程
+### <a name="device-code-flow"></a>裝置代碼流程
 
 如果您要撰寫的命令列工具沒有 web 控制項，而且您不能或不想使用先前的流程，則需要使用裝置程式碼流程。
 

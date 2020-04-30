@@ -1,80 +1,80 @@
 ---
 title: 範本概觀
-description: 描述使用 Azure 資源管理器範本部署資源的好處。
+description: 說明使用 Azure Resource Manager 範本來部署資源的優點。
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.openlocfilehash: b3b5fb383ac89d0968a437f35aab656afa1913f0
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086329"
 ---
 # <a name="what-are-arm-templates"></a>什麼是 ARM 範本？
 
-隨著遷移到雲,許多團隊採用了敏捷開發方法。 這些團隊會迅速反覆運算。 他們需要反覆將解決方案部署到雲中,並知道他們的基礎架構處於可靠的狀態。 隨著基礎結構成為反覆運算過程的一部分,操作和發展之間的劃分已經消失。 團隊需要通過統一流程管理基礎結構和應用程式代碼。
+隨著移至雲端，許多小組都採用 agile 開發方法。 這些小組會快速地反復查看。 他們需要將其解決方案重複部署至雲端，並知道其基礎結構處於可靠的狀態。 由於基礎結構已成為反復程式的一部分，因此作業與開發之間的劃分已消失。 小組必須透過統一的程式來管理基礎結構和應用程式程式碼。
 
-為了應對這些挑戰,您可以自動部署並使用基礎結構作為代碼的做法。 在代碼中,定義需要部署的基礎結構。 基礎結構代碼將成為專案的一部分。 與應用程式代碼一樣,您將基礎結構代碼存儲在原始程式碼儲存庫中並對其進行版本控制。 團隊中的任何人都可以運行代碼並部署類似的環境。
+若要解決這些挑戰，您可以將部署自動化，並使用基礎結構即程式碼的做法。 在程式碼中，您可以定義需要部署的基礎結構。 基礎結構程式碼會成為專案的一部分。 就像應用程式程式碼一樣，您可以將基礎結構程式碼儲存在來源存放庫中，並將其版本。 小組中的任何人都可以執行程式碼，並部署類似的環境。
 
-要將基礎結構作為 Azure 解決方案的代碼來實現,請使用 Azure 資源管理員 (ARM) 範本。 該範本是一個 JavaScript 物件表示法 (JSON) 檔,用於定義專案的基礎結構和配置。 範本會使用宣告式語法，可讓您陳述您要部署的項目，而不需要撰寫一連串程式設計命令來加以建立。 在範本中,指定要部署的資源和這些資源的屬性。
+若要將基礎結構當做 Azure 解決方案的程式碼來執行，請使用 Azure Resource Manager （ARM）範本。 範本是 JavaScript 物件標記法（JSON）檔案，可定義專案的基礎結構和設定。 範本會使用宣告式語法，可讓您陳述您要部署的項目，而不需要撰寫一連串程式設計命令來加以建立。 在範本中，您可以指定要部署的資源，以及這些資源的屬性。
 
-## <a name="why-choose-arm-templates"></a>為什麼選擇 ARM 範本?
+## <a name="why-choose-arm-templates"></a>為何選擇 ARM 範本？
 
-如果您試著在將 ARM 樣本與其他基礎結構之一作為代碼服務之間確定,請考慮使用樣本的以下優點:
+如果您想要決定使用 ARM 範本和其中一個其他基礎結構作為程式碼服務，請考慮使用範本的下列優點：
 
-* **聲明性語法**:ARM 範本允許您創建和部署整個 Azure 基礎結構聲明性。 例如,您不僅可以部署虛擬機器,還可以部署網路基礎結構、儲存系統和您可能需要的任何其他資源。
+* **宣告式語法**： ARM 範本可讓您以宣告方式建立及部署整個 Azure 基礎結構。 例如，您不僅可以部署虛擬機器，也不能部署網路基礎結構、儲存系統，以及您可能需要的其他任何資源。
 
-* **可重複的結果**:在整個開發生命週期中反覆部署您的基礎架構,並確信您的資源以一致的方式部署。 範本是冪等的,這意味著您可以多次部署同一範本,並獲取相同的資源類型,處於相同的狀態。 您可以開發一個表示所需狀態的範本,而不是開發大量單獨的範本來表示更新。
+* 可**重複的結果**：在整個開發生命週期中重複部署您的基礎結構，並讓您確信以一致的方式部署您的資源。 範本具有等冪性，這表示您可以多次部署相同的範本，並取得相同狀態的相同資源類型。 您可以開發一個代表所需狀態的範本，而不是開發許多不同的範本來代表更新。
 
-* **業務流程**:您不必擔心排序操作的複雜性。 資源管理員協調相互依賴的資源的部署,以便按正確的順序創建這些資源。 如果可能,資源管理器並行部署資源,以便部署完成比串列部署更快。 通過一個命令而不是通過多個命令命令部署範本。
+* **協調流程**：您不需要擔心排序作業的複雜性。 Resource Manager 會協調相互相依資源的部署，使其以正確的順序建立。 可能的話，Resource Manager 以平行方式部署資源，讓您的部署比序列部署更快完成。 您可以透過一個命令來部署範本，而不是透過多個命令式命令。
 
-   ![樣本部署比較](./media/overview/template-processing.png)
+   ![範本部署比較](./media/overview/template-processing.png)
 
-* **模組化檔**:您可以將範本分解為更小、可重用的元件,並在部署時將它們連結在一起。 您還可以將一個範本嵌套在另一個範本中。
+* **模組化**檔案：您可以將範本分成較小且可重複使用的元件，並在部署期間將它們連結在一起。 您也可以在另一個範本內嵌套一個範本。
 
-* **創建任何 Azure 資源**:可以立即在範本中使用新的 Azure 服務和功能。 資源提供程式引入新資源后,即可通過範本部署這些資源。 在使用新服務之前,您不必等待工具或模組的更新。
+* **建立任何 azure 資源**：您可以立即在範本中使用新的 azure 服務和功能。 一旦資源提供者引進新資源，您就可以透過範本來部署這些資源。 您不需要等到工具或模組更新後，再使用新的服務。
 
-* **可擴充性**:使用[部署文稿](deployment-script-template.md),您可以將 PowerShell 或 Bash 文稿添加到範本中。 部署腳本擴展了在部署期間設置資源的能力。 腳本可以包含在範本中,也可以存儲在外部源中並在範本中引用。 部署腳稿使您能夠在單個 ARM 範本中完成端到端環境設置。
+* 擴充**性：您**可以使用[部署腳本](deployment-script-template.md)，將 PowerShell 或 Bash 腳本新增至您的範本。 部署腳本會擴充您在部署期間設定資源的能力。 腳本可以包含在範本中，或儲存在外部來源中，並在範本中參考。 部署腳本讓您能夠在單一 ARM 範本中完成端對端環境設定。
 
-* **測試**:您可以通過使用 ARM 範本工具套件(arm-ttk)測試範本,確保範本遵循建議的準則。 此測試套件是一個 PowerShell 腳本,可以從[GitHub](https://github.com/Azure/arm-ttk)下載。 通過該工具組,您可以更輕鬆地使用範本語言開發專業知識。
+* **測試**：您可以使用 arm 範本工具套件（arm-ttk）進行測試，以確定您的範本遵循建議的指導方針。 此測試套件是您可以從[GitHub](https://github.com/Azure/arm-ttk)下載的 PowerShell 腳本。 此工具套件可讓您更輕鬆地使用範本語言開發專業知識。
 
-* **預覽更改**:在部署範本之前,可以使用[「如果」操作](template-deploy-what-if.md)獲取更改的預覽。 使用"假設",您將看到將創建、更新或刪除哪些資源,以及任何將更改的資源屬性。 What-if 操作檢查環境的當前狀態,並無需管理狀態。
+* **預覽變更**：您可以在部署範本之前，使用「[假設](template-deploy-what-if.md)」作業來取得變更的預覽。 使用 [假設] 時，您會看到將會建立、更新或刪除哪些資源，以及任何將變更的資源屬性。 「假設」作業會檢查您環境的目前狀態，並不需要管理狀態。
 
-* **內置驗證**:您的範本僅在通過驗證後部署。 資源管理器在開始部署之前檢查範本,以確保部署成功。 部署不太可能以半成品狀態停止。
+* **內建驗證**：您的範本只有在通過驗證之後才會部署。 Resource Manager 在開始部署之前檢查範本，以確定部署將會成功。 您的部署較不可能以半完成狀態停止。
 
-* **追蹤的部署**:在 Azure 門戶中,您可以查看部署歷史記錄並獲取有關範本部署的資訊。 您可以看到已部署的範本、傳入的參數值以及任何輸出值。 其他基礎結構作為代碼服務不會通過門戶進行跟蹤。
+* **追蹤的部署**：在 Azure 入口網站中，您可以查看部署歷程記錄，並取得範本部署的相關資訊。 您可以看到已部署的範本、傳入的參數值，以及任何輸出值。 其他基礎結構即程式碼服務不會透過入口網站進行追蹤。
 
    ![部署歷程記錄](./media/overview/deployment-history.png)
 
-* **策略作為代碼**[:Azure 策略](../../governance/policy/overview.md)是一個策略,作為代碼框架來自動執行治理。 如果使用 Azure 策略,則透過樣本部署時對不合規的資源執行策略修正。
+* **原則即程式碼**： [Azure 原則](../../governance/policy/overview.md)是用來將治理自動化的原則，這是程式碼架構。 如果您使用 Azure 原則，則會在透過範本部署時，在不符合規範的資源上進行原則補救。
 
-* **部署藍圖**:您可以利用 Microsoft 提供的[藍圖](../../governance/blueprints/overview.md)來滿足法規和合規性標準。 這些藍圖包括各種體繫結構的預建構範本。
+* **部署藍圖**：您可以利用 Microsoft 提供的[藍圖](../../governance/blueprints/overview.md)來符合法規和合規性標準。 這些藍圖包括適用于各種架構的預先建立範本。
 
-* **CI/CD 整合**:您可以將範本整合到持續整合和持續部署 (CI/CD) 工具中,這些工具可以自動執行發佈管道,實現快速可靠的應用程式和基礎結構更新。 通過使用 Azure DevOps 和資源管理器範本任務,可以使用 Azure 管道持續生成和部署 ARM 範本專案。 要瞭解更多資訊,請參閱[包含導管](add-template-to-azure-pipelines.md)與教學的 VS 專案[:Azure 資源管理員樣本與 Azure 管道的持續整合](./deployment-tutorial-pipeline.md)。
+* **CI/cd 整合**：您可以將範本整合到持續整合和持續部署（CI/cd）工具中，這可以自動化您的發行管線，以進行快速且可靠的應用程式和基礎結構更新。 藉由使用 Azure DevOps 和 Resource Manager 範本工作，您可以使用 Azure Pipelines 來持續建立及部署 ARM 範本專案。 若要深入瞭解，請參閱[VS project 與管線](add-template-to-azure-pipelines.md)和[教學課程：使用 Azure Pipelines 持續整合 Azure Resource Manager 範本](./deployment-tutorial-pipeline.md)。
 
-* **可匯出代碼**:您可以通過匯出資源組的當前狀態或查看用於特定部署的範本來獲取現有資源組的範本。 查看[導出的範本](export-template-portal.md)是瞭解範本語法的有用方法。
+* 可匯出的程式**代碼**.. 您可以藉由匯出資源群組的目前狀態，或查看用於特定部署的範本，來取得現有資源群組的範本。 查看[匯出的範本](export-template-portal.md)是瞭解範本語法的實用方式。
 
-* **創作工具**:您可以使用[Visual Studio 代碼](use-vs-code-to-create-template.md)和範本工具擴展來創作範本。 您可以獲得感知、語法突出顯示、在線幫助和許多其他語言函數。 除了視覺工作室代碼,您還可以使用[視覺工作室](create-visual-studio-deployment-project.md)。
+* **撰寫工具**：您可以使用[Visual Studio Code](use-vs-code-to-create-template.md)和範本工具擴充功能來撰寫範本。 您可以取得 intellisense、語法反白顯示、內嵌說明，以及許多其他語言功能。 除了 Visual Studio 的程式碼之外，您也可以使用[Visual Studio](create-visual-studio-deployment-project.md)。
 
-## <a name="template-file"></a>樣本檔案
+## <a name="template-file"></a>範本檔案
 
-在樣本中,可以編寫擴展 JSON 功能的[樣本表示式](template-expressions.md)。 這些表示式使用資源管理員提供的[函數](template-functions.md)。
+在您的範本內，您可以撰寫可延伸 JSON 功能的[範本運算式](template-expressions.md)。 這些運算式會利用 Resource Manager 所[提供的](template-functions.md)函式。
 
-該樣本具有以下部分:
+此範本具有下列區段：
 
-* [參數](template-parameters.md)- 在部署期間提供允許將同一範本用於不同環境的值。
+* [參數](template-parameters.md)-在部署期間提供值，可讓相同的範本用於不同的環境。
 
-* [變數](template-variables.md)─ 定義在樣本中重複使用的值。 它們可以從參數值構造。
+* [變數](template-variables.md)-定義在您的範本中重複使用的值。 可以從參數值來進行。
 
-* [使用者定義的函數](template-user-defined-functions.md)- 創建簡化範本的自訂函數。
+* [使用者定義函數](template-user-defined-functions.md)-建立可簡化範本的自訂函式。
 
-* [資源](template-syntax.md#resources)- 指定要部署的資源。
+* [資源](template-syntax.md#resources)-指定要部署的資源。
 
-* [輸出](template-outputs.md)- 從已部署的資源返回值。
+* [輸出](template-outputs.md)-來自已部署資源的傳回值。
 
-## <a name="template-deployment-process"></a>樣本部署程序
+## <a name="template-deployment-process"></a>範本部署進程
 
-部署範本時,資源管理器會將範本轉換為 REST API 操作。 例如，當 Resource Manager 收到具有下列資源定義的範本︰
+當您部署範本時，Resource Manager 會將範本轉換成 REST API 作業。 例如，當 Resource Manager 收到具有下列資源定義的範本︰
 
 ```json
 "resources": [
@@ -108,7 +108,7 @@ REQUEST BODY
 }
 ```
 
-## <a name="template-design"></a>樣本設計
+## <a name="template-design"></a>範本設計
 
 範本和資源群組的定義方式全由您決定，方案的管理方式也是如此。 比方說，您可以透過單一範本在單一資源群組中部署三層式應用程式。
 
@@ -126,6 +126,6 @@ REQUEST BODY
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關指導您完成範本建立過程的分步教程,請參閱[教學:建立和部署第一個 ARM 樣本](template-tutorial-create-first-template.md)。
-* 有關樣本檔中的屬性的資訊,請參閱[瞭解 ARM 樣本的結構和語法](template-syntax.md)。
-* 要瞭解如何匯出樣本,請參閱[快速入門:使用 Azure 門戶建立和部署 ARM 範本](quickstart-create-templates-use-the-portal.md)。
+* 如需逐步教學課程，引導您完成建立範本的程式，請參閱[教學課程：建立及部署您的第一個 ARM 範本](template-tutorial-create-first-template.md)。
+* 如需範本檔案中屬性的相關資訊，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。
+* 若要瞭解如何匯出範本，請參閱[快速入門：使用 Azure 入口網站建立及部署 ARM 範本](quickstart-create-templates-use-the-portal.md)。
