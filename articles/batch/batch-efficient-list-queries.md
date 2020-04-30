@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: fea8efd4e4946b67754bad98589b728e8d696425
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116106"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>建立查詢以便有效率地列出 Batch 資源
@@ -63,7 +63,7 @@ IPagedEnumerable<CloudTask> completedTasks =
 * 多個運算式可以透過邏輯運算子 `and` 和 `or` 結合。
 * 此範例篩選字串只會列出執行中「轉譯」工作： `(state eq 'running') and startswith(id, 'renderTask')`。
 
-### <a name="select"></a>選取
+### <a name="select"></a>Select
 選取字串限制每個項目傳回的屬性值。 指定屬性名稱的清單，而且查詢結果中只有針對項目傳回的那些屬性值。
 
 * 選取字串由屬性名稱的逗號分隔清單組成。 您可以針對查詢的實體類型指定任何屬性。

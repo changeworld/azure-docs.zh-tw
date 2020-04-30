@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 04/20/2017
 ms.author: labrenne
 ms.openlocfilehash: 38e419e549006d3fde2f1694e0d40e620cd438e5
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115919"
 ---
 # <a name="pool-delete-start-event"></a>集區刪除開始事件
@@ -25,4 +25,4 @@ ms.locfileid: "82115919"
 
 |元素|類型|注意|
 |-------------|----------|-----------|
-|`id`|String|集區的識別碼。|
+|`id`|字串|集區的識別碼。|

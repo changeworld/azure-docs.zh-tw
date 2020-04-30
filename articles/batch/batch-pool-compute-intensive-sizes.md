@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: labrenne
 ms.openlocfilehash: 674ee6c5b96c7aaf2926b51824488d03fc56d0a6
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82115953"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>在 Batch 集區中使用 RDMA 或 GPU 執行個體
@@ -34,21 +34,21 @@ ms.locfileid: "82115953"
 
 ### <a name="linux-pools---virtual-machine-configuration"></a>Linux 集區 - 虛擬機器組態
 
-| 大小 | 功能 | 作業系統 | 必要的軟體 | 集區設定 |
+| Size | 功能 | 作業系統 | 必要的軟體 | 集區設定 |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS，或<br/>CentOS 型 HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux RDMA 驅動程式 | 啟用節點間通訊、停用並行工作執行 |
-| [NC、NCv2、NCv3、NDv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (依系列而有所不同) | Ubuntu 16.04 LTS，或<br/>CentOS 7.3 或 7.4<br/>(Azure Marketplace) | NVIDIA CUDA 或 CUDA Toolkit 驅動程式 | 不適用 | 
-| [NV、NVv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS，或<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID 驅動程式 | 不適用 |
+| [NC、NCv2、NCv3、NDv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (依系列而有所不同) | Ubuntu 16.04 LTS，或<br/>CentOS 7.3 或 7.4<br/>(Azure Marketplace) | NVIDIA CUDA 或 CUDA Toolkit 驅動程式 | N/A | 
+| [NV、NVv2 系列](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS，或<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID 驅動程式 | N/A |
 
 <sup>*</sup>具備 RDMA 功能的 N 系列大小也包含 NVIDIA Tesla Gpu
 
 ### <a name="windows-pools---virtual-machine-configuration"></a>Windows 集區 - 虛擬機器組態
 
-| 大小 | 功能 | 作業系統 | 必要的軟體 | 集區設定 |
+| Size | 功能 | 作業系統 | 必要的軟體 | 集區設定 |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r、NC24rs_v2、NC24rs_v3、ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016、2012 R2 或<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 或更新版本，或<br/> Intel MPI 5<br/><br/>Windows RDMA 驅動程式 | 啟用節點間通訊、停用並行工作執行 |
-| [NC、NCv2、NCv3、ND、NDv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (依系列而有所不同) | Windows Server 2016 或 <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA 或 CUDA Toolkit 驅動程式| 不適用 | 
-| [NV、NVv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID 驅動程式 | 不適用 |
+| [NC、NCv2、NCv3、ND、NDv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (依系列而有所不同) | Windows Server 2016 或 <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA 或 CUDA Toolkit 驅動程式| N/A | 
+| [NV、NVv2 系列](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 或<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID 驅動程式 | N/A |
 
 <sup>*</sup>具備 RDMA 功能的 N 系列大小也包含 NVIDIA Tesla Gpu
 
@@ -58,7 +58,7 @@ ms.locfileid: "82115953"
 > 具有雲端服務組態的 Batch 集區不支援 N 系列大小。
 >
 
-| 大小 | 功能 | 作業系統 | 必要的軟體 | 集區設定 |
+| Size | 功能 | 作業系統 | 必要的軟體 | 集區設定 |
 | -------- | ------- | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/sizes-hpc.md) | RDMA | Windows Server 2016、2012 R2、2012 或<br/>2008 R2 (客體作業系統系列) | Microsoft MPI 2012 R2 或更新版本，或<br/>Intel MPI 5<br/><br/>Windows RDMA 驅動程式 | 啟用節點間通訊、<br/> 停用並行工作執行 |
 

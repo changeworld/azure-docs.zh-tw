@@ -4,10 +4,10 @@ description: Batch 工作失敗事件的參考。 除了工作完成事件外，
 ms.topic: article
 ms.date: 08/15/2019
 ms.openlocfilehash: 0e973a7e0a2ab67300a0f6762c837336e12bae3b
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116446"
 ---
 # <a name="task-fail-event"></a>工作失敗事件
@@ -45,9 +45,9 @@ ms.locfileid: "82116446"
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|
-|`jobId`|String|包含工作之作業的識別碼。|
-|`id`|String|工作的識別碼。|
-|`taskType`|String|工作類型。 可以是 'JobManager'，表示這是作業管理員工作，或是 'User'，表示不是作業管理員工作。 對於作業準備工作、作業發行工作或開始工作。不會發出此事件。|
+|`jobId`|字串|包含工作之作業的識別碼。|
+|`id`|字串|工作的識別碼。|
+|`taskType`|字串|工作類型。 可以是 'JobManager'，表示這是作業管理員工作，或是 'User'，表示不是作業管理員工作。 對於作業準備工作、作業發行工作或開始工作。不會發出此事件。|
 |`systemTaskVersion`|Int32|這是作業上的內部重試計數器。 Batch 服務可在內部重試工作，以處理暫時性問題。 這些問題包含內部排程錯誤，或嘗試從不正常狀態的計算節點復原。|
 |[`nodeInfo`](#nodeInfo)|複雜類型|包含工作執行所在計算節點的相關資訊。|
 |[`multiInstanceSettings`](#multiInstanceSettings)|複雜類型|指定工作為需要多個計算節點的多重執行個體工作。  如[`multiInstanceSettings`](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task)需詳細資訊，請參閱。|
@@ -58,8 +58,8 @@ ms.locfileid: "82116446"
 
 |元素名稱|類型|注意|
 |------------------|----------|-----------|
-|`poolId`|String|工作執行所在集區的識別碼。|
-|`nodeId`|String|工作執行所在節點的識別碼。|
+|`poolId`|字串|工作執行所在集區的識別碼。|
+|`nodeId`|字串|工作執行所在節點的識別碼。|
 
 ###  <a name="multiinstancesettings"></a><a name="multiInstanceSettings"></a> multiInstanceSettings
 

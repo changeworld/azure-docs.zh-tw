@@ -7,10 +7,10 @@ ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 339b11664308962962c59b2e9386ff122681293a
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116208"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
@@ -195,7 +195,7 @@ Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
 
-### <a name="sms"></a>sms
+### <a name="sms"></a>SMS
 如需其他重要資訊，請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)和[SMS 警示行為](../../azure-monitor/platform/alerts-sms-behavior.md)。 
 
 動作群組中的 SMS 動作數目可能有限。
