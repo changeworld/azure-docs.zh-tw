@@ -40,7 +40,7 @@
               href: ./iot-edge-module.md
             - name: 諮詢服務
               href: ./consulting-services.md
-            - name: Office 365、Dynamics 365 和 Power BI 發佈指南
+            - name: Office 365、Dynamics 365 和 Power BI
               href: ./appsource-offer-publishing-guide.md
             - name: 使用 Azure Active Directory 來啟用 AppSource 和 Marketplace 清單
               href: ./enable-appsource-marketplace-using-azure-ad.md
@@ -559,6 +559,8 @@
       href: ./partner-center-portal/publishing-status.md
     - name: 更新現有供應項目
       href: ./partner-center-portal/update-existing-offer.md
+    - name: 啟動權益
+      href: ./partner-center-portal/marketplace-rewards.md
     - name: 支援選項
       href: ./partner-center-portal/support.md
     - name: 合作夥伴中心分析

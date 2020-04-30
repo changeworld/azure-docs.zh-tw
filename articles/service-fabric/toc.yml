@@ -138,6 +138,8 @@
           href: service-fabric-security-controls.md
         - name: Service Fabric 中的憑證型驗證
           href: cluster-security-certificates.md
+        - name: Service Fabric 中的憑證管理
+          href: cluster-security-certificate-management.md
     - name: 詞彙
       href: service-fabric-technical-overview.md
     - name: 建置應用程式

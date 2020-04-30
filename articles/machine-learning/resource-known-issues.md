@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 58fd9225298b4322567f4feb02629e3ad4e0f00d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127576"
+ms.locfileid: "82231963"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>已知問題和疑難排解 Azure Machine Learning
 
@@ -56,7 +56,23 @@ ms.locfileid: "82127576"
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-     
+
+* **Panda 錯誤：通常會在 AutoML 實驗期間看到：**
+   
+   使用 pip 手動設定 environmnet 時，您會注意到屬性錯誤（特別是來自 pandas），因為安裝的套件版本不受支援。 為了避免這類錯誤，[請使用 automl_setup 安裝 AUTOML SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md)：
+   
+    1. 開啟 Anaconda 提示，並複製一組範例筆記本的 GitHub 存放庫。
+
+    ```bash
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+    
+    2. cd 至使用方法，其中會解壓縮範例筆記本並加以執行的作法/自動化機器學習資料夾：
+    
+    ```bash
+    automl_setup
+    ```
+  
 * **錯誤訊息：無法解除安裝 'PyYAML'**
 
     適用于 Python 的 Azure Machine Learning SDK： PyYAML `distutils`是已安裝的專案。 因此，在有部分解決安裝的情況下，我們無法精確判斷哪些檔案屬於它。 若要繼續安裝 SDK，但略過此錯誤，請使用：

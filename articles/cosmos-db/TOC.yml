@@ -136,10 +136,10 @@
         - name: 在容器和資料庫中佈建輸送量
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: 佈建輸送量 - AutoPilot 模式
-          href: provision-throughput-autopilot.md
-        - name: Autopilot 常見問題集
-          href: autopilot-faq.md
+        - name: 佈建輸送量 - 自動調整模式
+          href: provision-throughput-autoscale.md
+        - name: 自動調整常見問題集
+          href: autoscale-faq.md
     - name: SQL 查詢 (SQL query)
       items:
         - name: 開始使用
@@ -518,6 +518,7 @@
         - name: 擁有權總成本 (TCO)
           href: total-cost-ownership.md
         - name: 了解您的帳單
+          displayName: free tier
           href: understand-your-bill.md
         - name: 最佳化已佈建的輸送量成本
           displayName: 'request units, RUs, RU'
@@ -531,6 +532,7 @@
         - name: 最佳化多區域成本
           href: optimize-cost-regions.md
         - name: 最佳化開發/測試成本
+          displayName: free tier
           href: optimize-dev-test.md
         - name: 使用保留容量最佳化成本
           href: cosmos-db-reserved-capacity.md

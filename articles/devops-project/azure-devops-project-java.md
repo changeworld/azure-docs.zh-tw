@@ -1,31 +1,28 @@
 ---
-title: 快速入門：建立適用於 Java 的 CI/CD 管線 - Azure DevOps Projects
-description: DevOps Projects 可讓您輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟，在您選擇的 Azure 服務上啟動應用程式。
+title: 快速入門：建立適用于 JAVA 的 CI/CD 管線-Azure DevOps Starter
+description: DevOps Starter 可以讓您輕鬆地開始使用 Azure。 它可協助您透過幾個簡單的步驟，在您選擇的 Azure 服務上啟動應用程式。
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
 manager: gwallace
-editor: ''
-ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 07/09/2018
+ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-monikerRange: vsts
-ms.openlocfilehash: 1a276770887bee39972ba8630fb13f52bcbe802d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 1afd9361149fbcaaf88a9cc10c62953d703f8204
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77049961"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232661"
 ---
-# <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>快速入門：使用 Azure DevOps Projects 設定適用於 Java 應用程式的 CI/CD 管線
+# <a name="set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-starter"></a>使用 Azure DevOps Starter 設定 JAVA 應用程式的 CI/CD 管線
 
-在本快速入門中，您會使用簡化的 Azure DevOps Projects 體驗，在 Azure Pipelines 中為 Java 應用程式設定持續整合 (CI) 與持續傳遞 (CD) 管線。 您可以使用 Azure DevOps Projects 來設定您在開發、部署及監控應用程式時所需的一切。 
+在本快速入門中，您將使用簡化的 Azure DevOps 入門體驗，在 Azure Pipelines 中為您的 JAVA 應用程式設定持續整合（CI）和持續傳遞（CD）管線。 您可以使用 Azure DevOps Starter 來設定開發、部署和監視應用程式所需的所有專案。 
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -34,22 +31,21 @@ ms.locfileid: "77049961"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
 
-DevOps Projects 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps Projects 也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源。
+DevOps Starter 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps Starter 也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com)，然後在左窗格中選取 [建立資源]  。 
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-   ![在 Azure 入口網站中建立 Azure 資源](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
+1. 在搜尋方塊中，輸入**DevOps Starter**，然後選取。 按一下 [**新增] 以建立**新的 [新增]。
 
-1. 搜尋並選取 [DevOps Projects]  ，然後選取 [建立]  。
+    ![DevOps 入門儀表板](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>選取應用程式範例和 Azure 服務
 
-1. 選取 Java 應用程式範例。  
-Java 範例包含數種應用程式架構的選擇。
+1. 選取 Java 應用程式範例。 Java 範例包含數種應用程式架構的選擇。
 
-1. 預設範例架構為 Spring。 保留預設設定，然後選取 [下一步]  。  適用於容器的 Web 應用程式是預設的部署目標。 您先前選擇的應用程式架構，會指出這裡可用的 Azure 服務部署目標類型。 
+1. 預設範例架構為 Spring。 保留預設設定，然後選取 [下一步]****。  適用於容器的 Web 應用程式是預設的部署目標。 您先前選擇的應用程式架構，會指出這裡可用的 Azure 服務部署目標類型。 
 
-2. 保留預設的服務，然後選取 [下一步]  。
+2. 保留預設的服務，然後選取 [下一步]****。
  
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>設定 Azure DevOps 與 Azure 訂用帳戶 
 
@@ -57,49 +53,44 @@ Java 範例包含數種應用程式架構的選擇。
    
    1. 選擇專案的名稱。 
    
-   1. 選取 Azure 訂用帳戶和位置、選擇應用程式名稱，然後選取 [完成]  。  
-   在幾分鐘後，Azure 入口網站中便會顯示 DevOps Projects 儀表板。 系統會在您 Azure DevOps 組織中的存放庫中設定範例應用程式、執行建置，然後將您的應用程式部署到 Azure。 此儀表板可顯示您的程式碼存放庫、CI/CD 管線，和您在 Azure 中的應用程式。
+   1. 選取 Azure 訂用帳戶和位置、選擇應用程式名稱，然後選取 [完成]****。  
+   幾分鐘後，[DevOps 入門儀表板] 就會顯示在 Azure 入口網站中。 系統會在您 Azure DevOps 組織中的存放庫中設定範例應用程式、執行建置，然後將您的應用程式部署到 Azure。 此儀表板可顯示您的程式碼存放庫、CI/CD 管線，和您在 Azure 中的應用程式。
    
-2. 選取 [瀏覽]  以檢視執行中應用程式。
+2. 選取 [瀏覽]**** 以檢視執行中應用程式。
    
    ![在 Azure 入口網站中檢視應用程式儀表板](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
 
-DevOps Projects 會自動設定 CI 建置和發行觸發程序。  您現在已準備好利用 CI/CD 程序與小組共同進行 Java 應用程式的作業，這個程序會自動將您的最新工作部署到網站上。
+DevOps Starter 會自動設定 CI 組建和發行觸發程式。  您現在已準備好利用 CI/CD 程序與小組共同進行 Java 應用程式的作業，這個程序會自動將您的最新工作部署到網站上。
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>認可程式碼變更並執行 CI/CD
 
-DevOps Projects 會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請執行下列作業：
+DevOps Starter 會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要檢視存放庫並變更您應用程式的程式碼，請執行下列作業：
 
-1. 在 DevOps Projects 儀表板的左側，選取您主要分支的連結。  
-此連結會開啟新建立 Git 存放庫的檢視。
+1. 在 DevOps 入門儀表板的左側，選取您主要分支的連結。 此連結會開啟新建立 Git 存放庫的檢視。
 
-1. 若要檢視存放庫複製 URL，請在瀏覽器右上方選取 [複製]  。   
-    您可以在最愛的 IDE 中複製 Git 存放庫。 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可主要分支的程式碼變更。
+1. 若要檢視存放庫複製 URL，請在瀏覽器右上方選取 [複製]****。 您可以在最愛的 IDE 中複製 Git 存放庫。 在接下來的幾個步驟中，您可以使用網頁瀏覽器，直接進行和認可主要分支的程式碼變更。
 
 1. 在瀏覽器的左側，移至 **src/main/webapp/index.html** 檔案。
 
-1. 選取 [編輯]  ，然後進行部分文字的變更。
+1. 選取 [編輯]****，然後進行部分文字的變更。
     例如，變更其中一個 div 標籤的部分文字。
 
-1. 選取 [認可]  ，然後儲存您的變更。
+1. 選取 [認可]****，然後儲存您的變更。
 
-1. 在瀏覽器中，移至 DevOps Projects 儀表板。   
+1. 在您的瀏覽器中，移至 DevOps 入門儀表板。   
 您現在應該會看到正在進行中的建置。 您剛才所做的變更會透過 CI/CD 管線自動建置及部署。
 
 ## <a name="examine-the-cicd-pipeline"></a>檢查 CI/CD 管線
 
- 在先前的步驟中，DevOps Projects 已自動設定完整的 CI/CD 管線。 瀏覽管線，並視需要進行自訂。 請採取下列步驟，讓您自己熟悉組建和發行管線。
+ 在上一個步驟中，DevOps Starter 已自動設定完整的 CI/CD 管線。 瀏覽管線，並視需要進行自訂。 請採取下列步驟，讓您自己熟悉組建和發行管線。
 
-1. 在 DevOps Projects 儀表板頂端選取 [建置管線]  。  
-此連結會開啟瀏覽器索引標籤和新專案的建置管線。
+1. 在 DevOps 入門儀表板頂端，選取 [**組建管線**]。 此連結會開啟瀏覽器索引標籤和新專案的建置管線。
 
-1. 指向 [狀態]  欄位，然後選取省略符號 (...)。  
-    此動作會開啟功能表，您可以用它來啟動數個活動，例如將新的建置排入佇列、暫停建置，以及編輯建置管線。
+1. 指向 [**狀態**] 欄位，然後選取省略號（...）。此動作會開啟功能表，您可以在其中啟動數個活動，例如將新的組建排入佇列、暫停組建，以及編輯組建管線。
 
 1. 選取 [編輯]  。
 
-1. 在此窗格中，您可以檢查建置管線的各種工作。  
-建置會執行各種工作，例如從 Git 存放庫擷取來源、還原相依性，以及發佈用來進行部署的輸出。
+1. 在此窗格中，您可以檢查建置管線的各種工作。 建置會執行各種工作，例如從 Git 存放庫擷取來源、還原相依性，以及發佈用來進行部署的輸出。
 
 1. 在建置管線的頂端，選取建置管線名稱。
 
@@ -108,42 +99,32 @@ DevOps Projects 會在 Azure Repos 或 GitHub 中建立 Git 存放庫。 若要�
 1. 在建置管線名稱下，選取 [記錄]  。   
 在 [記錄]  窗格中，您可以看到近期建置變更的稽核線索。  Azure Pipelines 會追蹤對建置管線進行的任何變更，且可讓您比較版本。
 
-1. 選取 [觸發程序]  。   
- DevOps Projects 已自動建立 CI 觸發程序，且每次對存放庫的認可都會啟動新的建置。  您可以選擇性地選擇要在 CI 程序中包含還是排除分支。
+1. 選取 [觸發程序]  。  DevOps Starter 會自動建立 CI 觸發程式，且每次對存放庫的認可都會啟動新的組建。  您可以選擇性地選擇要在 CI 程序中包含還是排除分支。
 
-1. 選取 [保留期]  。   
-根據案例，您可以指定原則來保留或移除特定數目的組建。
+1. 選取 [保留期]  。 根據案例，您可以指定原則來保留或移除特定數目的組建。
 
 1. 選取 [建置及發行]  ，然後選取 [版本]  。  
- DevOps Projects 會建立發行管線來管理 Azure 的部署。
+ DevOps Starter 會建立發行管線來管理 Azure 的部署。
 
-1. 從左側選取發行管線旁邊的省略符號 (...)，然後選取 [編輯]  。  
-發行管線中包含管線，用來定義發行程序。  
+1. 從左側選取發行管線旁邊的省略符號 (...)，然後選取 [編輯]  。 發行管線中包含管線，用來定義發行程序。  
     
-12. 在 [成品]  下，選取 [置放]  。  
-您在先前步驟中檢查的建置管線會產生用於成品的輸出。 
+12. 在 [成品]  下，選取 [置放]  。 您在先前步驟中檢查的建置管線會產生用於成品的輸出。 
 
-1. 在 [置放]  圖示旁邊，選取 [持續部署觸發程序]  。  
-這個發行管線已啟用 CD 觸發程序，每次有新的建置成品可用時，它就會執行部署。 您可以選擇性地停用觸發程序，因此需要手動執行部署。 
+1. 在 [置放]  圖示旁邊，選取 [持續部署觸發程序]  。 這個發行管線已啟用 CD 觸發程序，每次有新的建置成品可用時，它就會執行部署。 您可以選擇性地停用觸發程序，因此需要手動執行部署。 
 
-1. 從左側選取 [工作]  。   
-工作是您部署程序所執行的活動。 在此範例中，會建立一個工作來部署到 Azure App Service。
+1. 從左側選取 [工作]  。 工作是您部署程序所執行的活動。 在此範例中，會建立一個工作來部署到 Azure App Service。
 
-1. 從右側選取 [檢視版本]  。  
-此檢視會顯示版本的歷程記錄。
+1. 從右側選取 [檢視版本]  。 此檢視會顯示版本的歷程記錄。
 
-1. 選取其中一個版本旁的省略符號 (...)，然後選取 [開啟]  。  
-您可以瀏覽數個功能表，例如版本摘要、相關聯的工作項目及測試。
+1. 選取其中一個版本旁的省略符號 (...)，然後選取 [開啟]  。 您可以瀏覽數個功能表，例如版本摘要、相關聯的工作項目及測試。
 
-1. 選取 [認可]  。   
-此檢視會顯示與特定部署相關聯的程式碼認可。 
+1. 選取 [認可]  。 此檢視會顯示與特定部署相關聯的程式碼認可。 
 
-1. 選取 [記錄]  。  
-記錄包含關於部署程序的實用資訊。 您可以在部署期間和部署之後加以檢視。
+1. 選取 [記錄]  。 記錄包含關於部署程序的實用資訊。 您可以在部署期間和部署之後加以檢視。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您不再需要 Azure App Service 和其他相關的資源時，可將其刪除。 請使用 DevOps Projects 儀表板上的 [刪除]  功能。
+當您不再需要 Azure App Service 和其他相關的資源時，可將其刪除。 使用 DevOps 入門儀表板上的 [**刪除**] 功能。
 
 ## <a name="next-steps"></a>後續步驟
 

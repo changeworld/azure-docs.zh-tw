@@ -1,26 +1,25 @@
 ---
-title: 教學課程：使用 Azure DevOps Projects 將 ASP.NET 應用程式部署到 Azure Functions
-description: Azure DevOps Projects 可讓您輕鬆地開始使用 Azure。 透過 Azure DevOps Projects，您可以藉由幾個快速步驟將 ASP.NET 應用程式部署至 Azure Functions。
+title: 教學課程：使用 Azure DevOps Starter 將 ASP.NET 應用程式部署至 Azure Functions
+description: Azure DevOps Starter 可以讓您輕鬆地開始使用 Azure。 透過 DevOps Starter，您可以透過幾個快速步驟，將您的 ASP.NET 應用程式部署到 Azure Functions。
 ms.author: mlearned
 ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 03/24/2020
 author: mlearned
-monikerRange: vsts
-ms.openlocfilehash: 4e7e9428af86f131632650f18d45e7dd48f4b5cb
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: 6f68fede0257086cc3a23fe6f7a0a3cc9466ad1b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "71971565"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233144"
 ---
-# <a name="continuously-deploy-to-azure-functions-with-devops-projects"></a>使用 DevOps Projects 持續部署到 Azure Functions
+# <a name="deploy-to-azure-functions-with-devops-starter"></a>使用 DevOps Starter 部署至 Azure Functions
 
-Azure DevOps Projects 提供簡化的體驗，讓您可以自備現有程式碼和 Git 存放庫，或者選擇一個範例應用程式，在 Azure 中建立持續整合 (CI) 和持續傳遞 (CD) 管線。
+Azure DevOps Starter 提供簡化的體驗，讓您可以自備現有程式碼和 Git 存放庫，或選擇範例應用程式，在 Azure 中建立持續整合（CI）和持續傳遞（CD）管線。
 
-DevOps Projects 也可用於：
+DevOps Starter 也會：
 
 * 自動建立 Azure 資源，例如 Azure Functions
 
@@ -29,7 +28,7 @@ DevOps Projects 也可用於：
 在本教學課程中，您將：
 
 > [!div class="checklist"]
->* 使用 DevOps Projects 將 ASP.NET 應用程式部署到 Azure Function
+>* 使用 DevOps Starter 將 ASP.NET 應用程式部署至 Azure Function
 >* 設定 Azure DevOps 與 Azure 訂用帳戶
 >* 檢查 Azure Function
 >* 檢查 CI 管線
@@ -43,17 +42,15 @@ DevOps Projects 也可用於：
 
 * Azure 訂用帳戶。 您可以透過 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 取得免費的訂用帳戶
 
-## <a name="use-devops-projects-to-deploy-an-aspnet-app-to-azure-functions"></a>使用 DevOps Projects 將 ASP.NET 應用程式部署到 Azure Functions
+## <a name="use-devops-starter-to-deploy-an-aspnet-app-to-azure-functions"></a>使用 DevOps Starter 將 ASP.NET 應用程式部署至 Azure Functions
 
-DevOps Projects 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps Projects 也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源，例如 IoT 中樞。
+DevOps Starter 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps Projects 也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源，例如 IoT 中樞。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)
 
-1. 在左窗格中選取 [建立資源]  。
+1. 在搜尋方塊中，輸入**DevOps Starter**，然後選取。 按一下 [**新增] 以建立**新的 [新增]。
 
-1. 在搜尋方塊中，輸入 **DevOps Projects**，然後按一下 [新增]  。
-
-   ![DevOps Projects](_img/azure-devops-project-functions/devops-project.png)
+    ![DevOps 入門儀表板](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 1. 選取 [.NET]  ，然後選取 [下一步]  。 在 [選擇應用程式架構]  之下，選取 [ASP.NET]  ，然後按 [下一步]  。
 
@@ -67,23 +64,23 @@ DevOps Projects 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立
 
 1. 選取 Azure 訂用帳戶。
 
-1. 若要查看其他 Azure 組態設定及識別定價層和位置，請按一下 [其他設定]。 此窗格會顯示各種選項，可用來設定 Azure 服務的定價層和位置。
+1. 若要查看其他 Azure 設定值，以及識別定價層和位置，請按一下 [**其他設定**]。 此窗格會顯示各種選項，可用來設定 Azure 服務的定價層和位置。
 
-1. 退出 Azure 組態區域，然後選取 [完成]。
+1. 結束 [Azure 設定] 區域，然後選取 [**完成**]。
 
-1. 程序完成需要幾分鐘的時間。 系統會在 Azure DevOps 組織的 Git 存放庫中設定 ASP.NET 應用程式範例、建立函式應用程式和 Application Insights、執行 CI/CD 管線，然後將應用程式部署至 Azure。
+1. 幾分鐘後，進程就會完成。 系統會在 Azure DevOps 組織的 Git 存放庫中設定 ASP.NET 應用程式範例、建立函式應用程式和 Application Insights、執行 CI/CD 管線，然後將應用程式部署至 Azure。
 
-   當這些動作都完成後，Azure 入口網站中便會顯示 Azure DevOps Projects 儀表板。 您可以直接從 Azure 入口網站中的 [所有資源]  移至 DevOps Projects 儀表板。
+   完成所有作業之後，[Azure DevOps 入門儀表板] 就會顯示在 Azure 入口網站中。 您也可以直接從 Azure 入口網站中的 [**所有資源**] 移至 [DevOps] 入門儀表板。
 
    此儀表板會顯示您的 Azure DevOps 程式碼存放庫、CI/CD 管線和 Azure Function。 您可以在 Azure DevOps 管線中設定其他 CI/CD 選項。 從右側選取要檢視的 [函式應用程式]  。
 
 ## <a name="examine-the-function-app"></a>檢查函式應用程式
 
-DevOps Projects 會自動設定函式應用程式，且您可加以瀏覽和自訂。 若要了解函式應用程式，請執行下列動作：
+DevOps Starter 會自動設定函式應用程式，您可以探索及自訂此功能。 若要了解函式應用程式，請執行下列動作：
 
-1. 移至 DevOps Projects 儀表板。
+1. 移至 DevOps 入門儀表板。
 
-    ![DevOps Projects 儀表板](_img/azure-devops-project-functions/devops-projects-dashboard.png)
+    ![DevOps Projects 儀表板](_img/azure-devops-project-functions/fapp-dashboard.png)
 
 1. 從右側選取函式應用程式。 隨即會開啟函式應用程式的窗格。 在此檢視中，您可以執行各種動作，例如作業監視和搜尋記錄等等。
 
@@ -91,9 +88,9 @@ DevOps Projects 會自動設定函式應用程式，且您可加以瀏覽和自�
 
 ## <a name="examine-the-ci-pipeline"></a>檢查 CI 管線
 
-DevOps Projects 會在 Azure DevOps 組織中自動設定 CI/CD 管線。 您可以瀏覽及自訂管線。 若要讓您自己熟悉管線，請執行下列作業：
+DevOps Starter 會自動在您的 Azure DevOps 組織中設定 CI/CD 管線。 您可以瀏覽及自訂管線。 若要讓您自己熟悉管線，請執行下列作業：
 
-1. 移至 DevOps Projects 儀表板。
+1. 移至 DevOps 入門儀表板。
 
 1. 按一下 [建置]  底下的超連結。 瀏覽器索引標籤會顯示新專案的建置管線。
 
@@ -101,7 +98,7 @@ DevOps Projects 會在 Azure DevOps 組織中自動設定 CI/CD 管線。 您可
 
 1. 選取 [編輯]  。 在此窗格中，您可以檢查建置管線的各種工作。 建置會執行各種工作，例如從 Git 存放庫擷取來源程式碼、建置應用程式、執行單元測試，以及發佈用來進行部署的輸出。
 
-1. 選取 [觸發程序]  。 DevOps Projects 會自動建立 CI 觸發程序，且每次對存放庫的認可都會啟動新的建置。 您可以選擇性地選擇要在 CI 程序中包含還是排除分支。
+1. 選取 [觸發程序]  。 DevOps Starter 會自動建立 CI 觸發程式，且每次對存放庫的認可都會啟動新的組建。 您可以選擇性地選擇要在 CI 程序中包含還是排除分支。
 
 1. 選取 [保留期]  。 根據案例，您可以指定原則來保留或移除特定數目的組建。
 
@@ -113,7 +110,7 @@ DevOps Projects 會在 Azure DevOps 組織中自動設定 CI/CD 管線。 您可
 
 ## <a name="examine-the-cd-release-pipeline"></a>檢查 CD 發行管線
 
-DevOps Projects 會自動建立並設定必要的步驟，以從 Azure DevOps 組織部署至 Azure 訂用帳戶。 這些步驟包括設定 Azure 服務連線，以對 Azure 訂用帳戶驗證 Azure DevOps。 自動化也會建立發行管線，以將 CD 提供給 Azure。 若要深入了解發行管線，請執行下列動作：
+DevOps Starter 會自動建立並設定必要的步驟，以從您的 Azure DevOps 組織部署至您的 Azure 訂用帳戶。 這些步驟包括設定 Azure 服務連線，以對 Azure 訂用帳戶驗證 Azure DevOps。 自動化也會建立發行管線，以將 CD 提供給 Azure。 若要深入了解發行管線，請執行下列動作：
 
 1. 流覽至 [管線] | [發行]  。
 
@@ -142,26 +139,26 @@ DevOps Projects 會自動建立並設定必要的步驟，以從 Azure DevOps �
 
 1. 根據您在建立程序中所選擇的應用程式語言，存放庫已經包含名為 **SampleFunctionApp** 的程式碼。 開啟 **Application/SampleFunctionApp/Function1.cs** 檔案。
 
-1. 選取 [編輯]  ，並對**行號 31** 進行變更。 例如，您可以將其更新為**您好！歡迎搭配 DevOps Projects 使用 Azure Functions**
+1. 選取 [編輯]  ，並對**行號 31** 進行變更。 例如，您可以將它更新為**Hello！歡迎使用 DevOps Starter 的 Azure Functions**
 
 1. 在右上方選取 [認可]  ，然後再次選取 [認可]  來推送您的變更。
 
 1. 開啟 **Application/SampleFunctionApp.Test/Function1TestRunner.cs** 檔案。 
 
-1. 選取 [編輯]  ，並對**行號 21** 進行變更。 例如，您可以將其更新為**您好！歡迎搭配 Azure DevOps Projects 使用 Azure Functions**。
+1. 選取 [編輯]  ，並對**行號 21** 進行變更。 例如，您可以將它更新為**Hello！歡迎使用 Azure DevOps Starter 的 Azure Functions**。
 
-     不久之後，會在 Azure DevOps 中開始建置並執行發行以部署變更。 在 DevOps Projects 儀表板上或在瀏覽器中使用您的 Azure DevOps 組織監視建置狀態。
+     不久之後，會在 Azure DevOps 中開始建置並執行發行以部署變更。 在 DevOps 入門儀表板或瀏覽器中，使用您的 Azure DevOps 組織來監視組建狀態。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您不再需要所建立的相關資源時，可將其刪除。 請使用 DevOps Projects 儀表板上的 [刪除]  功能。
+當您不再需要所建立的相關資源時，可將其刪除。 使用 DevOps 入門儀表板上的 [**刪除**] 功能。
 
 ## <a name="next-steps"></a>後續步驟
 
 您可以選擇性地修改這些組建和發行管線，以符合小組的需求。 您也可以使用此 CI/CD 模式作為其他管線的範本。 在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
-> * 使用 DevOps Projects 將 ASP.NET Core 應用程式部署到 Azure Function
+> * 使用 DevOps Starter 將 ASP.NET Core 應用程式部署至 Azure Function
 > * 設定 Azure DevOps 與 Azure 訂用帳戶 
 > * 檢查 Azure Function
 > * 檢查 CI 管線

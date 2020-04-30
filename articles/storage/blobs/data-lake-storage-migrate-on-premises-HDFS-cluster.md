@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 資料框從上置 HDFS 存儲遷移到 Azure 存儲
-description: 將資料從本地 HDFS 存儲遷移到 Azure 存儲
+title: 使用 Azure 資料箱從內部內部部署 HDFS 存放區遷移至 Azure 儲存體
+description: 將資料從內部部署的 HDFS 存放區遷移至 Azure 儲存體
 author: normesta
 ms.service: storage
 ms.date: 02/14/2019
@@ -8,78 +8,78 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: c0c6a8637223727a9b0c88245d939605f6a8530e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7f7793016d2a408d6b286f417e3e89e7a22ca91
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78301995"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82232371"
 ---
-# <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>使用 Azure 資料框從上置 HDFS 存儲遷移到 Azure 存儲
+# <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>使用 Azure 資料箱從內部內部部署 HDFS 存放區遷移至 Azure 儲存體
 
-通過使用資料盒設備，可以從 Hadoop 群集的本地 HDFS 存儲將資料移轉到 Azure 存儲（Blob 存儲或資料存儲第 2 代）。 您可以從 80 TB 資料盒或 770 TB 資料盒中選擇重。
+您可以使用資料箱裝置，將資料從 Hadoop 叢集的內部部署 HDFS 存放區遷移至 Azure 儲存體（blob 儲存體或 Data Lake Storage Gen2）。 您可以選擇資料箱磁碟、80-TB 資料箱或 770 TB 的 Data Box Heavy。
 
-本文可説明您完成以下任務：
+本文可協助您完成下列工作：
 
 > [!div class="checklist"]
-> * 準備遷移資料。
-> * 將資料複製到資料盒或資料盒重設備。
-> * 將設備運回 Microsoft。
-> * 對檔和目錄應用存取權限（僅限資料存儲第 2 代）
+> * 準備遷移您的資料。
+> * 將您的資料複製到資料箱磁碟、資料箱或 Data Box Heavy 裝置。
+> * 將裝置寄回給 Microsoft。
+> * 將存取權限套用至檔案和目錄（僅限 Data Lake Storage Gen2）
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-您需要這些內容才能完成遷移。
+您需要這些專案才能完成遷移。
 
 * Azure 儲存體帳戶。
 
-* 包含來源資料的本地 Hadoop 群集。
+* 包含來源資料的內部部署 Hadoop 叢集。
 
-* [Azure 資料框設備](https://azure.microsoft.com/services/storage/databox/)。
+* [Azure 資料箱裝置](https://azure.microsoft.com/services/storage/databox/)。
 
-  * [訂購您的資料框](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered)或[資料框重](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 
+  * [訂購您的資料箱](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered)或[Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered)。 
 
-  * 將[資料盒](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)或[資料盒連接到](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up)本地網路。
+  * 將您的[資料箱](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up)或[Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up)連接到內部部署網路，並將其連線。
 
-如果你準備好了，我們開始吧。
+如果您已經準備好，讓我們開始吧。
 
-## <a name="copy-your-data-to-a-data-box-device"></a>將資料複製到資料盒設備
+## <a name="copy-your-data-to-a-data-box-device"></a>將您的資料複製到資料箱裝置
 
-如果資料適合單個資料盒設備，則將資料複製到資料盒設備。 
+如果您的資料符合單一資料箱裝置，則您會將資料複製到資料箱裝置。 
 
-如果資料大小超過資料盒設備的容量，請使用[可選過程跨多個資料盒設備拆分資料](#appendix-split-data-across-multiple-data-box-devices)，然後執行此步驟。 
+如果您的資料大小超過資料箱裝置的容量，則請使用[選擇性程式將資料分割到多個資料箱裝置](#appendix-split-data-across-multiple-data-box-devices)，然後執行此步驟。 
 
-要將資料從本地 HDFS 存儲複製到資料盒設備，您需要設置一些內容，然後使用[DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html)工具。
+若要將資料從您的內部部署 HDFS 存放區複製到資料箱裝置，您將設定一些專案，然後使用[DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html)工具。
 
-按照以下步驟將資料通過 Blob/物件存儲的 REST API 複製到資料盒設備。 REST API 介面將使設備顯示為群集的 HDFS 存儲。
+請遵循下列步驟，透過 Blob/物件儲存體的 REST Api 將資料複製到您的資料箱裝置。 REST API 介面會使裝置以 HDFS 存放區的形式顯示在您的叢集中。
 
-1. 在通過 REST 複製資料之前，請標識安全和連接基元以連接到資料盒或資料盒上的 REST 介面。 登錄到資料框的本地 Web UI，然後轉到 **"連接"和"複製**"頁。 針對設備的 Azure 存儲帳戶，在 **"訪問設置**"、"查找"下並選擇**REST**。
+1. 透過 REST 複製資料之前，請先找出安全性和連線基本類型，以連接到資料箱或 Data Box Heavy 上的 REST 介面。 登入資料箱的本機 web UI，然後移至 **[連線並複製]** 頁面。 針對您裝置的 Azure 儲存體帳戶，在 [**存取設定**] 下找出，然後選取 [ **REST**]。
 
-    !["連接和複製"頁面](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
+    ![[連線並複製] 頁面](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connect-rest.png)
 
-2. 在"訪問存儲帳戶和上載資料對話方塊中，複製**Blob 服務終結點**和**存儲帳戶金鑰**。 從 blob 服務終結點中，省略`https://`和尾隨斜杠。
+2. 在 [存取儲存體帳戶] 和 [上傳資料] 對話方塊中，複製 [ **Blob 服務端點**和**儲存體帳戶金鑰**。 從 blob 服務端點，省略`https://`和結尾的斜線。
 
-    在這種情況下，終結點為： `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`。 要使用的 URI 的主機部分是： `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`。 有關示例，請參閱如何通過[HTTP 連接到 REST。](/azure/databox/data-box-deploy-copy-data-via-rest) 
+    在此情況下，端點為： `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`。 您將使用的 URI 主機部分為： `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`。 如需範例，請參閱如何透過[Http 連接到 REST](/azure/databox/data-box-deploy-copy-data-via-rest)。 
 
-     !["訪問存儲帳戶和上傳資料"對話方塊](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
+     ![[存取儲存體帳戶並上傳資料] 對話方塊](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
-3. 在每個節點`/etc/hosts`上添加終結點和資料框或資料盒重節點 IP 位址。
+3. 將端點和資料箱或 Data Box Heavy 節點 IP 位址新增至`/etc/hosts`每個節點上的。
 
     ```    
     10.128.5.42  mystorageaccount.blob.mydataboxno.microsoftdatabox.com
     ```
 
-    如果您使用的是 DNS 的其他機制，則應確保可以解析資料框終結點。
+    如果您使用 DNS 的其他機制，您應該確定可以解析資料箱端點。
 
-4. 將 shell`azjars`變數設置為`hadoop-azure`和`azure-storage`jar 檔的位置。 您可以在 Hadoop 安裝目錄下找到這些檔。
+4. 將 shell 變數`azjars`設定為`hadoop-azure`和`azure-storage` jar 檔案的位置。 您可以在 Hadoop 安裝目錄底下找到這些檔案。
 
-    要確定這些檔是否存在，請使用以下命令： `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`。 將`<hadoop_install_dir>`預留位置替換為安裝 Hadoop 的目錄的路徑。 請務必使用完全限定的路徑。
+    若要判斷這些檔案是否存在，請使用下列命令`ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`：。 將`<hadoop_install_dir>`預留位置取代為您已安裝 Hadoop 的目錄路徑。 請務必使用完整路徑。
 
     範例：
 
     `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
-5. 創建要用於資料複製的存儲容器。 還應指定目標目錄作為此命令的一部分。 此時，這可能是虛擬目標目錄。
+5. 建立您要用於資料複製的儲存體容器。 您也應該指定目的地目錄做為此命令的一部分。 此時，這可能是虛擬的目的地目錄。
 
     ```
     hadoop fs -libjars $azjars \
@@ -88,15 +88,15 @@ ms.locfileid: "78301995"
     -mkdir -p  wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * 將`<blob_service_endpoint>`預留位置替換為 blob 服務終結點的名稱。
+    * 將`<blob_service_endpoint>`預留位置取代為您的 blob 服務端點名稱。
 
-    * 將`<account_key>`預留位置替換為帳戶的訪問金鑰。
+    * 以您`<account_key>`帳戶的存取金鑰取代預留位置。
 
-    * 將`<container-name>`預留位置替換為容器的名稱。
+    * 以您`<container-name>`的容器名稱取代預留位置。
 
-    * 將`<destination_directory>`預留位置替換為要將資料複製到的目錄的名稱。
+    * 以您`<destination_directory>`想要將資料複製到其中的目錄名稱取代預留位置。
 
-6. 運行清單命令以確保已創建容器和目錄。
+6. 執行 list 命令，以確保您的容器和目錄已建立。
 
     ```
     hadoop fs -libjars $azjars \
@@ -105,13 +105,13 @@ ms.locfileid: "78301995"
     -ls -R  wasb://<container_name>@<blob_service_endpoint>/
     ```
 
-   * 將`<blob_service_endpoint>`預留位置替換為 blob 服務終結點的名稱。
+   * 將`<blob_service_endpoint>`預留位置取代為您的 blob 服務端點名稱。
 
-   * 將`<account_key>`預留位置替換為帳戶的訪問金鑰。
+   * 以您`<account_key>`帳戶的存取金鑰取代預留位置。
 
-   * 將`<container-name>`預留位置替換為容器的名稱。
+   * 以您`<container-name>`的容器名稱取代預留位置。
 
-7. 將資料從 Hadoop HDFS 複製到資料盒 Blob 存儲中，複製到之前創建的容器中。 如果未找到要複製到的目錄，則命令會自動創建它。
+7. 將資料從 Hadoop HDFS 複製到資料箱 Blob 儲存體，放入您稍早建立的容器中。 如果找不到您要複製到的目錄，則命令會自動建立它。
 
     ```
     hadoop distcp \
@@ -123,21 +123,21 @@ ms.locfileid: "78301995"
            wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * 將`<blob_service_endpoint>`預留位置替換為 blob 服務終結點的名稱。
+    * 將`<blob_service_endpoint>`預留位置取代為您的 blob 服務端點名稱。
 
-    * 將`<account_key>`預留位置替換為帳戶的訪問金鑰。
+    * 以您`<account_key>`帳戶的存取金鑰取代預留位置。
 
-    * 將`<container-name>`預留位置替換為容器的名稱。
+    * 以您`<container-name>`的容器名稱取代預留位置。
 
-    * 將`<exlusion_filelist_file>`預留位置替換為包含檔排除清單的檔的名稱。
+    * 以包含`<exlusion_filelist_file>`檔案排除清單的檔案名取代預留位置。
 
-    * 將`<source_directory>`預留位置替換為包含要複製資料的目錄的名稱。
+    * 將`<source_directory>`預留位置取代為包含您要複製之資料的目錄名稱。
 
-    * 將`<destination_directory>`預留位置替換為要將資料複製到的目錄的名稱。
+    * 以您`<destination_directory>`想要將資料複製到其中的目錄名稱取代預留位置。
 
-    該`-libjars`選項用於使`hadoop-azure*.jar`和 從屬`azure-storage*.jar`檔可供`distcp`使用。 某些群集可能已發生這種情況。
+    `-libjars`選項是用來讓`hadoop-azure*.jar`和相依`azure-storage*.jar`檔案可供使用`distcp`。 某些叢集可能已經發生這種情況。
 
-    下面的示例演示如何使用命令`distcp`來複製資料。
+    下列範例顯示如何使用`distcp`命令來複製資料。
 
     ```
      hadoop distcp \
@@ -149,81 +149,81 @@ ms.locfileid: "78301995"
     wasb://hdfscontainer@mystorageaccount.blob.mydataboxno.microsoftdatabox.com/data
     ```
   
-    要提高複製速度，
+    若要改善複製速度：
 
-    * 嘗試更改映射器的數量。 （上述示例使用`m`= 4 個映射器。
+    * 請嘗試變更對應程式的數目。 （上述範例使用`m` = 4 對應程式）。
 
-    * 嘗試並行運行`distcp`多個。
+    * 請嘗試以`distcp`平行方式執行多個。
 
-    * 請記住，大型檔的性能優於小檔。
+    * 請記住，大型檔案的執行效果優於小型檔案。
 
-## <a name="ship-the-data-box-to-microsoft"></a>將資料框運送到微軟
+## <a name="ship-the-data-box-to-microsoft"></a>將資料箱寄送給 Microsoft
 
-按照以下步驟準備資料框設備並將其運送到 Microsoft。
+請遵循下列步驟來準備資料箱裝置並寄送到 Microsoft。
 
-1. 首先，[準備在資料箱或資料盒中發貨。](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)
+1. 首先，[在您的資料箱或 Data Box Heavy 上寄送準備](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)。
 
-2. 設備準備完成後，下載 BOM 檔。 稍後將使用這些物料清單或清單檔來驗證上載到 Azure 的資料。
+2. 完成裝置準備之後，請下載 BOM 檔案。 您稍後將使用這些 BOM 或資訊清單檔案來驗證上傳至 Azure 的資料。
 
-3. 關閉設備並卸下電纜。
+3. 關閉裝置並移除纜線。
 
 4. 與 UPS 排定取貨時間。
 
-    * 有關資料框設備，請參閱["運送資料框](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)"。
+    * 如資料箱裝置，請參閱[寄送資料箱](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up)。
 
-    * 有關資料盒重設備，請參閱[將資料框裝出重](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)。
+    * 如 Data Box Heavy 裝置，請參閱[寄送 Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up)。
 
-5. Microsoft 收到您的設備後，它將連接到資料中心網路，並將資料上載到您下設備訂單時指定的存儲帳戶。 根據 BOM 檔驗證所有資料是否上載到 Azure。 
+5. 當 Microsoft 收到您的裝置之後，它會連線到資料中心網路，並將資料上傳至您在放置裝置訂單時所指定的儲存體帳戶。 針對所有您的資料上傳至 Azure 的 BOM 檔案進行驗證。 
 
-## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>對檔和目錄應用存取權限（僅限資料存儲第 2 代）
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>將存取權限套用至檔案和目錄（僅限 Data Lake Storage Gen2）
 
-您已經將資料放入 Azure 存儲帳戶中。 現在，您將對檔和目錄應用存取權限。
+您的 Azure 儲存體帳戶中已經有資料。 現在您會將存取權限套用至檔案和目錄。
 
 > [!NOTE]
-> 僅當使用 Azure 資料湖存儲 Gen2 作為資料存儲時，才需要此步驟。 如果只使用沒有階層命名空間的 Blob 存儲帳戶作為資料存儲，則可以跳過此部分。
+> 只有當您使用 Azure Data Lake Storage Gen2 做為資料存放區時，才需要執行此步驟。 如果您只使用沒有階層命名空間的 blob 儲存體帳戶作為資料存放區，則可以略過本節。
 
-### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>為 Azure 資料湖存儲 Gen2 帳戶創建服務主體
+### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>建立 Azure Data Lake Storage Gen2 帳戶的服務主體
 
-要創建服務主體，請參閱[：使用門戶創建可以訪問資源的 Azure AD 應用程式和服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
+若要建立服務主體，請參閱[如何：使用入口網站建立可存取資源的 Azure AD 應用程式和服務主體](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)。
 
 * 在執行該文章的[將應用程式指派給角色](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application)一節中的步驟時，請確實將 [儲存體 Blob 資料參與者]**** 角色指派給服務主體。
 
-* 在"[獲取值"中的步驟進行文章的登錄時](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)，將應用程式 ID 和用戶端機密值保存到文字檔中。 您很快就會用到這些資料。
+* 執行文章的[取得值以進行登入](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)一節中的步驟時，請將應用程式識別碼和用戶端密碼值儲存到文字檔中。 您很快就會用到這些資料。
 
-### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>生成具有其許可權的複製檔的清單
+### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>產生已複製的檔案清單及其許可權
 
-從本地 Hadoop 群集運行此命令：
+從內部部署 Hadoop 叢集，執行下列命令：
 
 ```bash
 
 sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 ```
 
-此命令生成具有其許可權的複製檔的清單。
+此命令會產生已複製的檔案清單及其許可權。
 
 > [!NOTE]
-> 根據 HDFS 中的檔數，此命令可能需要很長時間才能運行。
+> 視 HDFS 中的檔案數目而定，此命令可能需要很長的時間才能執行。
 
-### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>生成識別欄位表並將其映射到 Azure 活動目錄 （ADD） 標識
+### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>產生身分識別的清單，並將其對應至 Azure Active Directory （新增）身分識別
 
-1. 下載`copy-acls.py`腳本。 請參閱[下載協助程式腳本並設置邊緣節點以運行](#download-helper-scripts)本文部分。
+1. 下載`copy-acls.py`腳本。 請參閱本文的[下載協助程式腳本，並設定您的邊緣節點來執行它們](#download-helper-scripts)一節。
 
-2. 運行此命令以生成唯一標識的清單。
+2. 執行此命令來產生唯一身分識別的清單。
 
    ```bash
    
    ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
    ```
 
-   此腳本生成一個名為`id_map.json`的檔，該檔包含需要映射到基於 ADD 的標識的標識。
+   此腳本會產生名為`id_map.json`的檔案，其中包含您需要對應至新增型識別的身分識別。
 
 3. 在文字編輯器中開啟 `id_map.json` 檔案。
 
-4. 對於檔中顯示的每個 JSON 物件，使用適當的映射`target`標識更新 AAD 使用者主體名稱 （UPN） 或 ObjectId （OID） 的屬性。 完成後，保存該檔。 在下一步中，您將需要此檔。
+4. 針對出現在檔案中的每個 JSON 物件，以`target`適當的對應身分識別更新 AAD 使用者主要名稱（UPN）或 OBJECTID （OID）的屬性。 完成後，請儲存檔案。 在下一個步驟中，您將需要此檔案。
 
-### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>應用複製檔的許可權並應用標識映射
+### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>將許可權套用至複製的檔案並套用識別對應
 
-運行此命令以將許可權應用於複製到資料存儲庫 Gen2 帳戶的資料：
+執行此命令，將許可權套用至您複製到 Data Lake Storage Gen2 帳戶的資料：
 
 ```bash
 ./copy-acls.py -s ./filelist.json -i ./id_map.json  -A <storage-account-name> -C <container-name> --dest-spn-id <application-id>  --dest-spn-secret <client-secret>
@@ -231,19 +231,19 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 * 使用您的儲存體帳戶名稱取代 `<storage-account-name>` 預留位置。
 
-* 將`<container-name>`預留位置替換為容器的名稱。
+* 以您`<container-name>`的容器名稱取代預留位置。
 
-* 將`<application-id>`和`<client-secret>`預留位置替換為創建服務主體時收集的應用程式 ID 和用戶端金鑰。
+* 將`<application-id>`和`<client-secret>`預留位置取代為您在建立服務主體時所收集的應用程式識別碼和用戶端密碼。
 
-## <a name="appendix-split-data-across-multiple-data-box-devices"></a>附錄：跨多個資料框設備拆分資料
+## <a name="appendix-split-data-across-multiple-data-box-devices"></a>附錄：將資料分割到多個資料箱裝置
 
-在將資料移動到資料盒設備之前，您需要下載一些協助程式腳本，確保將資料組織起來以適合資料盒設備，並排除任何不必要的檔。
+將資料移到資料箱裝置之前，您必須先下載一些協助程式腳本，確保您的資料已組織成符合資料箱裝置，並排除任何不必要的檔案。
 
 <a id="download-helper-scripts" />
 
-### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>下載協助程式腳本並設置邊緣節點以運行它們
+### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>下載協助程式腳本，並設定您的邊緣節點加以執行
 
-1. 從本地 Hadoop 群集的邊緣或頭節點運行此命令：
+1. 從您的內部部署 Hadoop 叢集的邊緣或前端節點，執行下列命令：
 
    ```bash
    
@@ -251,23 +251,23 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
    cd databox-adls-loader
    ```
 
-   此命令克隆包含説明器腳本的 GitHub 存儲庫。
+   此命令會複製包含 helper 腳本的 GitHub 存放庫。
 
-2. 確保本地電腦上安裝了[jq](https://stedolan.github.io/jq/)包。
+2. 請確定已在您的本機電腦上安裝[jq](https://stedolan.github.io/jq/)套件。
 
    ```bash
    
    sudo apt-get install jq
    ```
 
-3. 安裝[請求](https://2.python-requests.org/en/master/)python 包。
+3. 安裝[要求](https://2.python-requests.org/en/master/)python 封裝。
 
    ```bash
    
    pip install requests
    ```
 
-4. 設置對所需腳本執行許可權的許可權。
+4. 設定必要腳本的執行許可權。
 
    ```bash
    
@@ -275,15 +275,15 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
    ```
 
-### <a name="ensure-that-your-data-is-organized-to-fit-onto-a-data-box-device"></a>確保將資料組織起來以適合資料盒設備
+### <a name="ensure-that-your-data-is-organized-to-fit-onto-a-data-box-device"></a>確定您的資料已組織成適合放在資料箱裝置上
 
-如果資料的大小超過單個資料盒設備的大小，則可以將檔拆分為組，以便存儲到多個資料盒設備上。
+如果您的資料大小超過單一資料箱裝置的大小，您可以將檔案分割成可儲存到多個資料箱裝置的群組。
 
-如果資料不超過單個資料盒設備的大小，則可以繼續下一節。
+如果您的資料未超過單一資料箱裝置的大小，您可以繼續進行下一節。
 
-1. 使用較高的權限，請按照`generate-file-list`上一節中的指導運行下載的腳本。
+1. 使用較高的許可權， `generate-file-list`執行您依照上一節中的指導所下載的腳本。
 
-   下面是命令參數的說明：
+   以下是命令參數的描述：
 
    ```
    sudo -u hdfs ./generate-file-list.py [-h] [-s DATABOX_SIZE] [-b FILELIST_BASENAME]
@@ -311,19 +311,19 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
                         Level of log information to output. Default is 'INFO'.
    ```
 
-2. 將生成的檔案清單複製到 HDFS，以便[DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html)作業可以訪問它們。
+2. 將產生的檔案清單複製到 HDFS，讓[DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html)作業可以存取它們。
 
    ```
    hadoop fs -copyFromLocal {filelist_pattern} /[hdfs directory]
    ```
 
-### <a name="exclude-unnecessary-files"></a>排除不必要的檔
+### <a name="exclude-unnecessary-files"></a>排除不必要的檔案
 
-您需要從 DisCp 作業中排除某些目錄。 例如，排除包含使群集保持運行的狀態資訊的目錄。
+您必須從 DisCp 作業中排除某些目錄。 例如，排除包含保留叢集執行之狀態資訊的目錄。
 
-在計畫啟動 DistCp 作業的本地 Hadoop 群集上，創建一個檔，指定要排除的目錄清單。
+在您計畫起始 DistCp 作業的內部部署 Hadoop 叢集上，建立一個檔案，以指定您想要排除的目錄清單。
 
-以下是範例：
+範例如下：
 
 ```
 .*ranger/audit.*
@@ -332,4 +332,4 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解資料存儲第 2 代如何與 HDInsight 群集配合使用。 請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)。
+瞭解 Data Lake Storage Gen2 如何與 HDInsight 叢集搭配運作。 請參閱[搭配 Azure HDInsight 叢集使用 Data Lake Storage Gen2](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)。

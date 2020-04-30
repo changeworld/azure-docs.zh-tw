@@ -1,5 +1,5 @@
 ---
-title: 從 Azure 門戶中的專用 VHD 創建 Windows VM
+title: 從 Azure 入口網站中的特製化 VHD 建立 Windows VM
 description: 在 Azure 入口網站中從 VHD 建立新的 Windows VM。
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: cynthn
 ms.openlocfilehash: d360ac5a57fe72b092a6694721905c066527bba3
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82086448"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>使用 Azure 入口網站從 VHD 建立 VM
@@ -24,11 +24,11 @@ ms.locfileid: "82086448"
 
 - 採用傳統 VM 並使用 VHD 建立使用 Resource Manager 部署模型和受控磁碟的新 VM。 為了獲得最佳結果，請先在 Azure 入口網站**停止**傳統 VM 再建立快照集。
  
-- 上傳內部部署 VHD 並將它連結至新的 VM，即可從內部部署 VHD 建立 Azure VM。 您可使用 PowerShell 或其他工具，將 VHD 上傳至儲存體帳戶，然後從 VHD 建立受控磁碟。 有關詳細資訊,請參閱[上傳專用 VHD](create-vm-specialized.md#option-2-upload-a-specialized-vhd)。 
+- 上傳內部部署 VHD 並將它連結至新的 VM，即可從內部部署 VHD 建立 Azure VM。 您可使用 PowerShell 或其他工具，將 VHD 上傳至儲存體帳戶，然後從 VHD 建立受控磁碟。 如需詳細資訊，請參閱[上傳特製化 VHD](create-vm-specialized.md#option-2-upload-a-specialized-vhd)。 
 
 如果您想要建立多部 VM，請勿使用特製化磁碟。 然而，對於較大型的部署，請[建立映像](capture-image-resource.md)，然後[使用該映像來建立多個 VM](create-vm-generalized-managed.md)。
 
-我們建議您將單個快照或 VHD 的併發部署數限制為 20 個 VM。 
+我們建議您從單一快照集或 VHD 將並行部署數目限制為20個 Vm。 
 
 ## <a name="copy-a-disk"></a>複製磁碟
 
@@ -45,7 +45,7 @@ ms.locfileid: "82086448"
 9. 建立快照集之後，請選取左側功能表中的 [建立資源]****。
 10. 在搜尋方塊中輸入**受控磁碟**，然後從清單中選取 [受控磁碟]****。
 11. 在 [受控磁碟]**** 頁面上，選取 [建立]****。
-12. 輸入磁碟的 [名稱]****。
+12. 輸入磁片的 [**名稱**]。
 13. 選擇磁碟的 [資源群組]****。 您可以使用現有的資源群組，或建立一個新的群組。 此選取項目也會作為您從磁碟建立 VM 的資源群組。
 14. 針對 [帳戶類型]****，選擇 [標準 (HDD)]**** 或 [進階 (SSD)]**** 儲存體。
 15. 在 [來源類型]**** 中，確定已選取 [快照集]****。

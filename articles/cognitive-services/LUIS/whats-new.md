@@ -4,10 +4,10 @@ description: 本文會定期更新 Azure 認知服務 Language Understanding API
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82097722"
 ---
 # <a name="whats-new-in-language-understanding"></a>Language Understanding 的新功能
@@ -80,7 +80,7 @@ ms.locfileid: "82097722"
 
 [Bot Framework](https://blog.botframework.com/)
 
-## <a name="videos"></a>視訊
+## <a name="videos"></a>影片
 
 ### <a name="2019-ignite-videos"></a>2019 Ignite 影片
 
