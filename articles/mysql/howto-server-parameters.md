@@ -1,5 +1,5 @@
 ---
-title: 設定伺服器參數 ─ Azure 門戶 - MySQL 的 Azure 資料庫
+title: 設定伺服器參數-Azure 入口網站適用於 MySQL 的 Azure 資料庫
 description: 本文說明如何使用 Azure 入口網站，在適用於 MySQL 的 Azure 資料庫中設定 MySQL 伺服器參數。
 author: ajlam
 ms.author: andrela
@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/16/2020
 ms.openlocfilehash: bd0a867cce9b2a9ad793b491b9042034ef5810f5
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605161"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 入口網站，在適用於 MySQL 的 Azure 資料庫中設定伺服器參數
@@ -24,7 +24,7 @@ MySQL 的 Azure 資料庫支援某些伺服器參數的組態。 本文說明如
 ![Azure 入口網站伺服器參數頁面](./media/howto-server-parameters/auzre-portal-server-parameters.png)
 3. 找出您需要調整的任何設定。 檢閱 [描述]**** 資料行，以了解用途和允許的值。
 ![列舉下拉按鈕](./media/howto-server-parameters/3-toggle_parameter.png)
-4. 按下 **「儲存」** 以儲存變更。
+4. 按一下 [**儲存**] 以儲存變更。
 ![儲存或捨棄變更](./media/howto-server-parameters/4-save_parameters.png)
 5. 儲存新的參數值後，隨時可以選取 [全部重設為預設值]**** 回復為所有參數的預設值。
 ![全部重設為預設值](./media/howto-server-parameters/5-reset_parameters.png)
@@ -35,9 +35,9 @@ MySQL 的 Azure 資料庫支援某些伺服器參數的組態。 本文說明如
 
 ## <a name="non-configurable-server-parameters"></a>無法設定的伺服器參數
 
-InnoDB 緩衝區池大小不可設定,並綁定到[定價層](concepts-service-tiers.md)。
+InnoDB 緩衝集區大小無法設定並系結至您的[定價層](concepts-service-tiers.md)。
 
-|**定價層**|**虛擬核心**|**InnoDB 緩衝區池大小(MB)(<br>支援最多 4 TB 儲存的伺服器)**| **InnoDB 緩衝區池大小(MB)(<br>支援多達 16 TB 儲存的伺服器)**|
+|定價層 |**虛擬核心**|**InnoDB 緩衝集區大小（MB <br>）（最多支援 4 TB 儲存體的伺服器）**| **InnoDB 緩衝集區大小（MB <br>）（最多支援 16 TB 儲存體的伺服器）**|
 |:---|---:|---:|---:|
 |基本| 1| 832| |
 |基本| 2| 2560| |
@@ -79,7 +79,7 @@ CALL mysql.az_load_timezone();
 ```
 
 > [!IMPORTANT]
-> 應重新啟動伺服器以確保時區表已正確填充。 要重新啟動伺服器,請使用[Azure 門戶](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
+> 您應該重新開機伺服器，以確保正確填入時區資料表。 若要重新開機伺服器，請使用[Azure 入口網站](howto-restart-server-portal.md)或[CLI](howto-restart-server-cli.md)。
 
 若要檢視可用的時區值，請執行以下命令：
 
@@ -105,4 +105,4 @@ SET time_zone = 'US/Pacific';
 
 ## <a name="next-steps"></a>後續步驟
 
-- [MySQL Azure 資料庫的連線庫](concepts-connection-libraries.md)。
+- [適用於 MySQL 的 Azure 資料庫的連線程式庫](concepts-connection-libraries.md)。

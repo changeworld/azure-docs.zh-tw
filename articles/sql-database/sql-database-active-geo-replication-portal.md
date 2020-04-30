@@ -1,6 +1,6 @@
 ---
-title: 教程:門戶中的異地複製&故障轉移
-description: 使用 Azure 門戶為 Azure SQL 資料庫中的單個或池資料庫配置異地複製,並啟動故障轉移。
+title: 教學課程：在入口網站中進行異地複寫 & 容錯移轉
+description: 使用 Azure 入口網站在 Azure SQL Database 中設定單一或集區資料庫的異地複寫，並起始容錯移轉。
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,19 +12,19 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
 ms.openlocfilehash: 59616fb217b28a8c47d9a5d13e2f4c1b9a8f6bb3
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605215"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 入口網站中為 Azure SQL Database 設定主動式異地複寫，並起始容錯移轉
 
 本文說明您如何使用 [Azure 入口網站](https://portal.azure.com)在 Azure SQL Database 中為[獨立和集區資料庫設定主動式異地複寫](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)，並起始容錯移轉。
 
-如需單一和集區資料庫的自動容錯移轉群組的相關資訊，請參閱[使用容錯移轉群組搭配單一和集區資料庫的最佳作法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)。 有關具有託管實例的自動故障轉移組的資訊,請參閱[使用具有託管實例的故障轉移群組的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)。
+如需單一和集區資料庫的自動容錯移轉群組的相關資訊，請參閱[使用容錯移轉群組搭配單一和集區資料庫的最佳作法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)。 如需使用受控實例之自動容錯移轉群組的相關資訊，請參閱[使用容錯移轉群組搭配受控實例的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要使用 Azure 入口網站來設定作用中異地複寫，您需要下列資源：
 
@@ -66,13 +66,13 @@ ms.locfileid: "81605215"
 次要資料庫可被切換成為主要資料庫。  
 
 1. 在 [Azure 入口網站](https://portal.azure.com) 中，瀏覽至「異地複寫」合作關係中的主要資料庫。
-2. 在 SQL 資料庫邊列選項卡上,選擇 **「所有設定** > **」進行異地複製**。
-3. 在 **「秒法」** 清單中,選擇要成為新主資料庫的資料庫,然後單擊 **「強制故障轉移**」。
+2. 在 [SQL Database] 分頁上，選取 [**所有設定** > ] [**異地**複寫]。
+3. 在 [**次要**] 清單中，選取您想要成為新主要複本的資料庫，然後按一下 [**強制容錯移轉**]。
 
     ![failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. 按一下 [是] **** 即可開始容錯移轉。
 
-命令會立即將次要資料庫切換為主要角色。 此過程通常在 30 秒或更短時間內完成。
+命令會立即將次要資料庫切換為主要角色。 此程式通常會在30秒內完成或減少。
 
 切換角色時，會有一小段時間無法使用這兩個資料庫 (大約為 0 到 25 秒)。 如果主要資料庫有多個次要資料庫，此命令會自動重新設定其他次要複本以連接至新的主要複本。 在正常情況下，完成整個作業所需的時間應該少於一分鐘。
 
@@ -84,8 +84,8 @@ ms.locfileid: "81605215"
 此作業會永久終止對次要資料庫的複寫，並將次要資料庫的角色變更為一般讀寫資料庫。 如果與次要資料庫的連線中斷，命令將會成功，但次要資料庫必須等到連線恢復後才會變成讀寫資料庫。  
 
 1. 在 [Azure 入口網站](https://portal.azure.com) 中，瀏覽至「異地複寫」合作關係中的主要資料庫。
-2. 在 SQL 資料庫頁上,選擇**異地複製**。
-3. 在 **「秒法」** 清單中,選擇要從異地複製夥伴關係中刪除的資料庫。
+2. 在 [SQL database] 頁面上，選取 [**異地**複寫]。
+3. **在 [次要] 清單中**，選取您想要從「異地複寫」合作關係中移除的資料庫。
 4. 按一下 [ **停止複寫**]。
 
     ![移除次要](./media/sql-database-geo-replication-portal/remove-secondary.png)
@@ -93,6 +93,6 @@ ms.locfileid: "81605215"
 
 ## <a name="next-steps"></a>後續步驟
 
-* 要瞭解有關活動異地複製的更多詳細資訊,請參閱[活動異地複製](sql-database-active-geo-replication.md)。
-* 要瞭解自動容錯移轉群組,請參考[自動容錯的群組](sql-database-auto-failover-group.md)
-* 有關業務連續性概述和方案,請參閱[業務連續性概述](sql-database-business-continuity.md)。
+* 若要深入瞭解主動式異地複寫，請參閱[主動式異地](sql-database-active-geo-replication.md)複寫。
+* 若要深入瞭解自動容錯移轉群組，請參閱[自動容錯移轉群組](sql-database-auto-failover-group.md)
+* 如需商務持續性的總覽和案例，請參閱[商務持續性總覽](sql-database-business-continuity.md)。

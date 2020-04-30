@@ -1,6 +1,6 @@
 ---
-title: 映射資料串流的運算式產生器
-description: 使用表示式產生器映射 Azure 資料工廠中的資料流程產生運算式
+title: 對應資料流程中的運算式產生器
+description: 在 Azure Data Factory 中，使用運算式產生器在對應資料流程中建立運算式
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -8,63 +8,63 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81605368"
 ---
-# <a name="build-expressions-in-mapping-data-flow"></a>在映射資料流程產生式運算式
+# <a name="build-expressions-in-mapping-data-flow"></a>對應資料流程中的組建運算式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-在映射數據流時,許多轉換屬性作為表達式輸入。 這些運算式由列值、參數、函數、運算符和文本組成,這些列值在運行時計算為 Spark 數據類型。
+在對應資料流程中，許多轉換屬性都是以運算式的形式輸入。 這些運算式是由資料行值、參數、函數、運算子，以及在執行時間評估為 Spark 資料類型的常值所組成。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4tkur]
 
-## <a name="open-expression-builder"></a>開啟表示式產生器
+## <a name="open-expression-builder"></a>Open 運算式產生器
 
-Azure 資料工廠用戶體驗中的運算式編輯界面稱為運算式生成器。 輸入表示式邏輯時,數據工廠使用[IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019)代碼完成來突出顯示、語法檢查和自動完成。
+Azure Data Factory 使用者體驗中的運算式編輯介面稱為「運算式產生器」。 當您輸入運算式邏輯時，Data Factory 會使用[IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019)程式碼完成來進行反白顯示、語法檢查和自動完成。
 
 ![運算式產生器](media/data-flow/xpb1.png "運算式產生器")
 
-在派生列和篩選器等轉換(運算式是強制性的)中,通過選擇藍色表達式框打開表達式生成器。
+在 [衍生的資料行和篩選] 之類的轉換（其中運算式是強制的）中，選取 [藍色運算式] 方塊來開啟 [運算式產生器]。
 
-![藍色運算式框](media/data-flow/expressionbox.png "運算式產生器")
+![藍色運算式方塊](media/data-flow/expressionbox.png "運算式產生器")
 
-在匹配或按分組條件中引用列時,表達式可以從列中提取值。 要建立運算式,請選擇 **「計算列**」 。。
+當您參考相符或群組依據條件中的資料行時，運算式可以從資料行提取值。 若要建立運算式，請選取 [**計算資料行**]。
 
-![計算欄選項](media/data-flow/computedcolumn.png "運算式產生器")
+![計算資料行選項](media/data-flow/computedcolumn.png "運算式產生器")
 
-如果表示式或文字值是有效的輸入,請選擇 **「添加動態內容**」以生成計算到文本值的運算式。
+在運算式或常值是有效輸入的情況下，選取 [**新增動態內容**] 以建立評估為常值的運算式。
 
 ![新增動態內容選項](media/data-flow/add-dynamic-content.png "運算式產生器")
 
-## <a name="expression-language-reference"></a>運算為人
+## <a name="expression-language-reference"></a>運算式語言參考
 
-映射資料流具有內建函數和運算符,可用於運算式。 有關可用函數的清單,請參閱[映射資料串流中的運算式函數](data-flow-expression-functions.md)。
+對應的資料流程具有內建函數和運算子，可用於運算式中。 如需可用函數的清單，請參閱[對應資料流程中的運算式函數](data-flow-expression-functions.md)。
 
-## <a name="column-names-with-special-characters"></a>具有特殊字元的欄位名稱
+## <a name="column-names-with-special-characters"></a>含特殊字元的資料行名稱
 
-當具有包含特殊字元或空格的列名稱時,使用大括弧括括該名稱以在表達式中引用它們。
+當您有包含特殊字元或空格的資料行名稱時，請用大括弧括住名稱，以在運算式中參考它們。
 
 ```{[dbo].this_is my complex name$$$}```
 
-## <a name="preview-expression-results"></a>預覽表示式結果
+## <a name="preview-expression-results"></a>預覽運算式結果
 
-如果[調試模式](concepts-data-flow-debug-mode.md)已打開,則可以使用即時 Spark 群集查看表達式評估到的正在進行的預覽。 構建邏輯時,可以實時調試表達式。 
+如果已開啟 [[偵錯工具] 模式](concepts-data-flow-debug-mode.md)，您可以使用即時 Spark 叢集查看運算式評估結果的進行中預覽。 當您建立邏輯時，您可以即時地對運算式進行偵錯工具。 
 
-![正在進行的預覽](media/data-flow/exp4b.png "運算式資料預覽")
+![進行中預覽](media/data-flow/exp4b.png "運算式資料預覽")
 
-選擇 **「刷新」** 可根據源的即時範例更新表達式的結果。
+選取 **[** 重新整理]，以針對您的來源即時取樣來更新運算式的結果。
 
 ![重新整理按鈕](media/data-flow/exp5.png "運算式資料預覽")
 
 ## <a name="string-interpolation"></a>字串插補
 
-使用引號將文字字串文本與運算式一起括起來。 可以包括表達式函數、列和參數。 當參數包含在查詢字串中時,字串插值可用於避免大量使用字串串聯。 要使用表達式語法,請使用大括弧將其封閉,
+使用引號將常值字串文字與運算式一起括住。 您可以包含運算式函數、資料行和參數。 字串插補有助於避免在查詢字串中包含參數時，大量使用字串串連。 若要使用運算式語法，請將它括在大括弧中，
 
-字串插值的一些範例:
+字串插補的一些範例：
 
 * ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
 
@@ -72,13 +72,13 @@ Azure 資料工廠用戶體驗中的運算式編輯界面稱為運算式生成�
 
 * ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
 
-## <a name="comment-expressions"></a>註解表示式
+## <a name="comment-expressions"></a>批註運算式
 
-使用單行和多行註釋語法向表達式添加註釋。
+使用單行和多行批註語法，將批註新增至您的運算式。
 
-![單行和多行註解語法](media/data-flow/comments.png "註解")
+![單行和多行批註語法](media/data-flow/comments.png "評價")
 
-以下範例是有效的註解:
+下列範例是有效的批註：
 
 * ```/* This is my comment */```
 
@@ -87,53 +87,53 @@ Azure 資料工廠用戶體驗中的運算式編輯界面稱為運算式生成�
    
 * ```// This is a single line comment```
 
-如果將注釋放在表達式的頂部,則該註釋將顯示在轉換文本框中,以記錄轉換表達式。
+如果您將批註放在運算式的頂端，它會出現在 [轉換] 文字方塊中，以記錄轉換運算式。
 
-![轉換文字框的註解](media/data-flow/comments2.png "註解")
+![轉換文字方塊中的批註](media/data-flow/comments2.png "評價")
 
 ## <a name="regular-expressions"></a>規則運算式
 
-許多表達式語言函數使用正則表達式語法。 使用正則運算式函數時,表達式生成器會嘗試將反斜杠\\() 解釋為轉義字元序列。 在正則運算式中使用反斜杠時,請將整個正則表達式封閉在反斜杠中,\`或使用雙反斜杠。
+許多運算式語言函數使用正則運算式語法。 當您使用正則運算式函數時，運算式產生器會嘗試將\\反斜線（）解讀為 escape 字元序列。 當您在正則運算式中使用反斜線時，請以倒引號（\`）括住整個 RegEx，或使用雙反斜線。
 
-使用回記的範例:
+使用倒引號的範例：
 
 ```
 regex_replace('100 and 200', `(\d+)`, 'digits')
 ```
 
-使用雙斜杠的範例:
+使用雙斜線的範例：
 
 ```
 regex_replace('100 and 200', '(\\d+)', 'digits')
 ```
 
-## <a name="address-array-indexes"></a>地址陣列索引
+## <a name="address-array-indexes"></a>位址陣列索引
 
-使用返回陣列的運算式函數,請使用括弧 (*) 來處理返回陣列物件中的特定索引。 陣列基於這些陣列。
+如果運算式函式傳回陣列，請使用方括弧（[]）來定址傳回陣列物件內的特定索引。 陣列是以其為基礎。
 
-![運算式產生器陣組](media/data-flow/expb2.png "運算式資料預覽")
+![運算式產生器陣列](media/data-flow/expb2.png "運算式資料預覽")
 
 ## <a name="keyboard-shortcuts"></a>鍵盤快速鍵
 
-* Ctrl_K Ctrl_C:註釋整行。
-* Ctrl_K Ctrl_U:無註釋。
-* F1:提供編輯器説明命令。
-* Alt_向下箭頭鍵:向下移動當前線。
-* Alt_上箭頭鍵:向上移動當前線。
-* Ctrl_空格鍵:顯示上下文説明。
+* Ctrl + K Ctrl + C：批註整行。
+* Ctrl + K Ctrl + U：取消批註。
+* F1：提供編輯器說明命令。
+* Alt + 向下鍵：向下移動目前的行。
+* Alt + 向上鍵：向上移動目前的行。
+* Ctrl + 空格鍵：顯示內容說明。
 
-## <a name="convert-to-dates-or-timestamps"></a>轉換為日期或時間戳
+## <a name="convert-to-dates-or-timestamps"></a>轉換成日期或時間戳記
 
-要在時間戳輸出中包含字串文本,請在中```toString()```包裝轉換。
+若要在時間戳記輸出中包含字串常值，請```toString()```將轉換包裝在中。
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-要將毫秒從紀元轉換為日期或時間戳,請使用`toTimestamp(<number of milliseconds>)`。 如果時間以秒為單位,乘以 1,000。
+若要將毫秒從 epoch 轉換成日期或時間戳記`toTimestamp(<number of milliseconds>)`，請使用。 如果時間是以秒為單位，則乘以1000。
 
 ```toTimestamp(1574127407*1000l)```
 
-上一個表達式末尾的尾隨"l"表示轉換為長類型為內聯語法。
+前一個運算式結尾的尾端 "l" 表示轉換成 long 類型做為內嵌語法。
 
 ## <a name="next-steps"></a>後續步驟
 
-[開始編譯資料轉換表示式](data-flow-expression-functions.md)
+[開始建立資料轉換運算式](data-flow-expression-functions.md)
