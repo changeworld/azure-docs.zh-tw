@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272119"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>透過 Azure 虛擬網路連線到 HDInsight 上的 Apache Kafka
@@ -56,7 +56,7 @@ HDInsight 不允許透過公用網際網路直接連線至 Kafka。 Kafka 用戶
      > * 每個用戶端必須使用 VPN 軟體用戶端進行連線。
      > * VPN 用戶端不會將名稱解析要求傳遞至虛擬網路，因此您必須使用 IP 位址來與 Kafka 通訊。 IP 通訊需要 Kafka 叢集上的其他設定。
 
-有關在虛擬網路中使用 HDInsight 的詳細資訊，請參閱[為 Azure HDInsight 群集規劃虛擬網路](../hdinsight-plan-virtual-network-deployment.md)。
+如需在虛擬網路中使用 HDInsight 的詳細資訊，請參閱[規劃 Azure HDInsight 叢集的虛擬網路](../hdinsight-plan-virtual-network-deployment.md)。
 
 ## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a> 從內部部署網路連線到 Apache Kafka
 
@@ -85,7 +85,7 @@ HDInsight 不允許透過公用網際網路直接連線至 Kafka。 Kafka 用戶
 
 1. 遵循[使用點對站連線的自我簽署憑證](../../vpn-gateway/vpn-gateway-certificates-point-to-site.md)文件中的步驟執行。 這份文件會建立閘道所需的憑證。
 
-2. 打開 PowerShell 提示，並使用以下代碼登錄到 Azure 訂閱：
+2. 開啟 PowerShell 提示字元，並使用下列程式碼來登入您的 Azure 訂用帳戶：
 
     ```powershell
     Connect-AzAccount
@@ -242,7 +242,7 @@ HDInsight 不允許透過公用網際網路直接連線至 Kafka。 Kafka 用戶
 
 Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶端。 這個設定不會使用 VPN 軟體用戶端，因為它無法為虛擬網路中的實體使用名稱解析。 針對此設定，使用下列步驟來設定 Kafka 以公告 IP 位址而不是網域名稱：
 
-1. 使用網頁瀏覽器，移至 `https://CLUSTERNAME.azurehdinsight.net`。 替換為`CLUSTERNAME`HDInsight 群集上的 Kafka 的名稱。
+1. 使用網頁瀏覽器，移至 `https://CLUSTERNAME.azurehdinsight.net`。 以`CLUSTERNAME` Kafka on HDInsight 叢集的名稱取代。
 
     出現提示時，請使用叢集的 HTTPS 使用者名稱和密碼。 此時會顯示叢集的 Ambari Web UI。
 
@@ -252,7 +252,7 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
 
 3. 若要檢視 Kafka 組態，請從正上方選取 [Configs (設定)]____。
 
-    ![阿帕奇·安巴里服務配置](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    ![Apache Ambari services 設定](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. 若要找出 __kafka-env__ 組態，請在右上角的 [Filter (篩選)]____ 欄位中輸入 `kafka-env`。
 
@@ -274,7 +274,7 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
 
 8. 若要儲存組態變更，請使用 [Save (儲存)]____ 按鈕。 輸入描述變更的文字訊息。 儲存變更後，請選取 [OK (確定)]____。
 
-    ![阿帕奇·安巴里保存配置](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    ![Apache Ambari 儲存設定](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
 9. 若要避免重新啟動 Kafka 時發生錯誤，請使用 [Service Actions (服務動作)]____ 按鈕，然後選取 [Turn On Maintenance Mode (開啟維護模式)]____。 選取 [OK (確定)] 以完成此作業。
 
@@ -284,7 +284,7 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
 
     ![重新啟動按鈕，反白顯示重新啟動所有受影響項目](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
-11. 若要停用維護模式，請使用 [Service Actions (服務動作)]____ 按鈕，然後選取 [Turn Off Maintenance Mode (關閉維護模式)]____。 選擇 **"確定"** 以完成此操作。
+11. 若要停用維護模式，請使用 [Service Actions (服務動作)]____ 按鈕，然後選取 [Turn Off Maintenance Mode (關閉維護模式)]____。 選取 **[確定]** 以完成此操作。
 
 ### <a name="connect-to-the-vpn-gateway"></a>連線到 VPN 閘道
 
@@ -368,7 +368,7 @@ Apache Zookeeper 預設會將 Kafka 代理程式的網域名稱傳回給用戶�
 
 ## <a name="next-steps"></a>後續步驟
 
-有關將 HDInsight 與虛擬網路一起使用的詳細資訊，請參閱[為 Azure HDInsight 群集規劃虛擬網路部署](../hdinsight-plan-virtual-network-deployment.md)文檔。
+如需搭配虛擬網路使用 HDInsight 的詳細資訊，請參閱[規劃 Azure HDInsight 叢集的虛擬網路部署](../hdinsight-plan-virtual-network-deployment.md)檔。
 
 如需如何建立具點對站 VPN 閘道之 Azure 虛擬網路的詳細資訊，請參閱下列文件︰
 

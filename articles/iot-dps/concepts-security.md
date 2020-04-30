@@ -1,6 +1,6 @@
 ---
-title: Azure IoT 中心設備佈建服務 - 安全概念
-description: 描述使用設備佈建服務 （DPS） 和 IoT 中心特定于設備的安全預配概念
+title: Azure IoT 中樞裝置布建服務-安全性概念
+description: 說明具有裝置布建服務（DPS）和 IoT 中樞裝置特定的安全性布建概念
 author: nberdy
 ms.author: nberdy
 ms.date: 04/04/2019
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 3191e9886604af9b2a26b71a89cee699197585c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271560"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT 中樞裝置佈建服務的安全性概念 
@@ -78,7 +78,7 @@ TPM 證明是以 nonce 挑戰為基礎，會使用簽署和儲存根金鑰來出
 
 分葉憑證 (或終端實體憑證) 會識別憑證持有者。 它在其憑證鏈結中有根憑證，以及零或多個中繼憑證。 分葉憑證無法用來簽署其他任何憑證。 它會唯一識別裝置來佈建服務，且有時稱為裝置憑證。 在驗證期間，裝置會使用與此憑證相關聯的私密金鑰，回應以證明來自服務的持有挑戰。
 
-與[個人註冊](./concepts-service.md#individual-enrollment)條目一起使用的葉證書要求必須將**主題名稱**設置為個人註冊條目的註冊 ID。 與[註冊組](./concepts-service.md#enrollment-group)條目一起使用的葉證書應將**主題名稱**設置為所需的裝置識別碼，該 ID 將顯示在註冊組中已驗證設備的**註冊記錄中**。
+與[個別註冊](./concepts-service.md#individual-enrollment)專案搭配使用的分葉憑證，必須將 [**主體名稱**] 設定為個別註冊專案的 [註冊識別碼]。 與[註冊群組](./concepts-service.md#enrollment-group)專案搭配使用的分葉憑證應該將 [**主體名稱**] 設為所需的裝置識別碼，以顯示在註冊群組中已驗證裝置的**註冊記錄**中。
 
 若要深入了解，請參閱[驗證以 X.509 CA 憑證簽署的裝置](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)。
 

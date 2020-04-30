@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79270715"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中管理實驗室的所有原則
@@ -39,7 +39,7 @@ Azure DevTest Labs 讓您管理每個實驗室的原則 (設定)，以控制實�
 
 1. 如果啟用這個原則，請選取一或多個可在實驗室中建立的 VM 大小。
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 ## <a name="set-virtual-machines-per-user"></a>設定每位使用者的虛擬機器數目
 [每位使用者的虛擬機器數]**** 原則可讓您指定個別使用者可以建立的 VM 數目。 當達到使用者限制時，如果使用者嘗試建立或宣告 VM，就會顯示錯誤訊息，指出無法建立/宣告 VM。 
@@ -52,7 +52,7 @@ Azure DevTest Labs 讓您管理每個實驗室的原則 (設定)，以控制實�
 
 1. 選取 [是]****，以限制可使用 SSD (固態硬碟) 的 VM 數目。 如果不想限制可使用 SSD 的 VM 數目，請選取 [否]****。 如果您選取 [是]****，請輸入一個值，指出可使用 SSD 建立的 VM 數目。 
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 ## <a name="set-virtual-machines-per-lab"></a>設定每個實驗室的虛擬機器數目
 [每個實驗室的虛擬機器數]**** 原則可讓您指定可為目前實驗室建立的 VM 數目。 當達到實驗室限制時，如果使用者嘗試建立 VM，就會顯示錯誤訊息，指出無法建立 VM。 
@@ -65,7 +65,7 @@ Azure DevTest Labs 讓您管理每個實驗室的原則 (設定)，以控制實�
 
 1. 選取 [是]****，以限制可使用 SSD (固態硬碟) 的 VM 數目。 如果不想限制可使用 SSD 的 VM 數目，請選取 [否]****。 如果您選取 [是]****，請輸入一個值，指出可使用 SSD 建立的 VM 數目。 
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 ## <a name="set-auto-shutdown"></a>設定自動關機
 [自動關機] 原則有助於將實驗室的成本浪費降至最低，方式是讓您指定這個實驗室之 VM 的關機時間。
@@ -82,7 +82,7 @@ Azure DevTest Labs 讓您管理每個實驗室的原則 (設定)，以控制實�
 
    如需 webhook 的詳細資訊，請參閱[建立 webhook 或 API Azure 函式](../azure-functions/functions-create-a-web-hook-or-api-function.md)。 
 
-1. 選取 [儲存]****。
+1. 選取 [儲存]  。
 
 根據預設，這個原則一經啟用，就會套用到目前實驗室的所有 VM。 若要從特定的 VM 移除這項設定，請開啟 VM 的管理窗格並變更其 [自動關機]**** 設定。
 
@@ -121,7 +121,7 @@ Azure DevTest Labs 讓您管理每個實驗室的原則 (設定)，以控制實�
 
 3. 如果您啟用這個原則，請指定排定的啟動時間、時區和該時間適用於星期幾。 
 
-4. 選取 [儲存]****。
+4. 選取 [儲存]  。
 
 這個原則一經啟用，就不會自動套用到目前實驗室中的任何 VM。 若要將這項設定套用至特定的 VM，請開啟 VM 的管理窗格並變更其 [自動啟動]**** 設定。
 

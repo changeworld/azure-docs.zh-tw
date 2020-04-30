@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79272197"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>使用 Azure HDInsight 針對 Apache Hadoop YARN 問題進行疑難排解
@@ -34,24 +34,24 @@ ms.locfileid: "79272197"
 
 1. 選取 [Ambari 檢視]**** 圖示，然後選取格線模式。 接著，選取 [YARN 佇列管理員]****。
 
-    ![阿帕奇·安巴里儀表板 YARN 佇列管理器](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
-2. 選擇**預設**佇列。
+    ![Apache Ambari 儀表板 YARN 佇列管理員](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+2. 選取**預設**佇列。
 
-    ![阿帕奇·安巴里·亞亞爾選擇預設佇列](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    ![Apache Ambari YARN 選取預設佇列](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. 對於 [預設]**** 佇列，將 [容量]**** 從 50% 變更為 25%。 對於 [thriftsvr]**** 佇列，將 [容量]**** 變更為 25%。
 
     ![將預設和 thriftsvr 佇列的容量變更為 25%](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. 若要建立新的佇列，請選取 [新增佇列]****。
 
-    ![阿帕奇安巴里·亞裡儀表板添加佇列](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    ![Apache Ambari YARN 儀表板新增佇列](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. 命名新的佇列。
 
-    ![阿帕奇·安巴里·亞裡儀表板名稱 佇列](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    ![Apache Ambari YARN 儀表板名稱佇列](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. 將 [容量]**** 值保持在 50%，然後選取 [動作]**** 按鈕。
 
-    ![阿帕奇·安巴里·亞亞爾選擇動作](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    ![Apache Ambari YARN 選取動作](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. 選取 [Save and Refresh Queues] \(儲存並重新整理佇列)****。
 
     ![選取 [Save and Refresh Queues] \(儲存並重新整理佇列)。](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
@@ -132,14 +132,14 @@ ms.locfileid: "79272197"
 ### <a name="additional-reading"></a><a name="additional-reading-2"></a>其他閱讀資料
 
 - [使用 SSH 連線到 HDInsight (Apache Hadoop)](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
-- [阿帕奇哈多普YARN概念和應用](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
+- [Apache Hadoop YARN 概念與應用程式](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)
 
 ## <a name="next-steps"></a>後續步驟
 
 如果您沒有看到您的問題，或無法解決您的問題，請瀏覽下列其中一個管道以取得更多支援：
 
-- 通過[Azure 社區支援](https://azure.microsoft.com/support/community/)從 Azure 專家那裡獲得答案。
+- 透過[Azure 社區支援](https://azure.microsoft.com/support/community/)取得 azure 專家的解答。
 
-- 與[@AzureSupport](https://twitter.com/azuresupport)- 用於改善客戶體驗的官方 Microsoft Azure 帳戶連接。 將 Azure 社區連接到正確的資源：答案、支援和專家。
+- 連接[@AzureSupport](https://twitter.com/azuresupport) -官方 Microsoft Azure 帳戶，以改善客戶體驗。 將 Azure 社區連接到正確的資源：解答、支援和專家。
 
-- 如果需要更多説明，可以從[Azure 門戶](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援請求。 從功能表列中選擇 **"支援"** 或打開 **"説明 + 支援**中心"。 有關詳細資訊，請查看[如何創建 Azure 支援請求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 Microsoft Azure 訂閱中包含對訂閱管理和計費支援的訪問，並且通過[Azure 支援計畫](https://azure.microsoft.com/support/plans/)之一提供技術支援。
+- 如果您需要更多協助，您可以從[Azure 入口網站](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)提交支援要求。 從功能表列選取 [**支援**]，或開啟 [說明 **+ 支援**] 中樞。 如需詳細資訊，請參閱[如何建立 Azure 支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 您的 Microsoft Azure 訂用帳戶包含訂用帳戶管理和帳單支援的存取權，而技術支援則透過其中一項[Azure 支援方案](https://azure.microsoft.com/support/plans/)提供。

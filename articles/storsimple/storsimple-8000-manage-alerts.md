@@ -1,5 +1,5 @@
 ---
-title: 查看和管理 StorSimple 8000 系列設備的警報
+title: 查看和管理 StorSimple 8000 系列裝置的警示
 description: 描述 StorSimple 警示條件和嚴重性、如何設定警示通知，以及如何使用 StorSimple 裝置管理員服務管理警示。
 author: alkohli
 ms.service: storsimple
@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79267816"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>使用 StorSimple 裝置管理員服務來檢視和管理 StorSimple 警示
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 StorSimple 裝置管理員服務的 [警示]**** 刀鋒視窗可讓您即時檢閱並清除 StorSimple 裝置的相關警示。 從這個刀鋒視窗中，您可以集中監視 StorSimple 裝置和整個 Microsoft Azure StorSimple 解決方案的健康問題。
 
@@ -48,11 +48,11 @@ StorSimple 裝置會產生警示以回應各種不同的狀況。 以下是最�
 > [!NOTE]
 > 您可以對每一裝置輸入最多 20 個電子郵件地址。
 
-啟用裝置的電子郵件通知之後，每當發生重大警示時，通知清單的成員將會收到電子郵件訊息。 消息將從 *"簡單警報-無答覆\@mail.windowsazure.com*發送，並將描述警示準則。 收件者可以按一下 [取消訂閱]**** 從電子郵件通知清單將自己移除。
+啟用裝置的電子郵件通知之後，每當發生重大警示時，通知清單的成員將會收到電子郵件訊息。 訊息將會從*storsimple-alerts-\@noreply mail.windowsazure.com*傳送，並將描述警示條件。 收件者可以按一下 [取消訂閱]**** 從電子郵件通知清單將自己移除。
 
 #### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>啟用裝置的警示電子郵件通知
 1. 移至您的 StorSimple 裝置管理員服務。 從裝置清單中，選取並按一下您想要設定的裝置。
-2. 轉到設備的 **"** > **常規**設置"。
+2. 移至裝置的 [**設定** > ]**[一般**]。
 
    ![警示刀鋒視窗](./media/storsimple-8000-manage-alerts/configure-alerts-email2.png)
    
@@ -60,7 +60,7 @@ StorSimple 裝置會產生警示以回應各種不同的狀況。 以下是最�
    
    1. 在 [傳送電子郵件通知]**** 欄位中，選取 [是]****。
    2. 若要讓服務管理員和所有共同管理員收到警示通知，請在 [電子郵件服務管理員]**** 欄位中選取 [是]****。
-   3. 在 [其他電子郵件收件者] **** 欄位中，輸入應該收到警示通知的其他所有收件者的電子郵件地址。 輸入*某人\@somewhere.com*格式的名稱。 使用分號來分隔電子郵件地址。 您可以對每一裝置設定最多 20 個電子郵件地址。 
+   3. 在 [其他電子郵件收件者] **** 欄位中，輸入應該收到警示通知的其他所有收件者的電子郵件地址。 以 [*其他人\@] somewhere.com*的格式輸入名稱。 使用分號來分隔電子郵件地址。 您可以對每一裝置設定最多 20 個電子郵件地址。 
       
 3. 若要傳送測試電子郵件通知，請按一下 [傳送測試電子郵件]****。 StorSimple 裝置管理員服務在轉寄測試通知時會顯示狀態訊息。
 
@@ -118,7 +118,7 @@ StorSimple 裝置管理員服務的摘要刀鋒視窗，可讓您快速概覽裝
 * [固定在本機的磁碟區警示](#locally-pinned-volume-alerts)
 * [網路警示](#networking-alerts)
 * [效能警示](#performance-alerts)
-* [安全警報](#security-alerts)
+* [安全性警示](#security-alerts)
 * [支援封裝警示](#support-package-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>雲端連線能力警示
@@ -183,7 +183,7 @@ StorSimple 裝置管理員服務的摘要刀鋒視窗，可讓您快速概覽裝
 | 擴充本機磁碟區 <磁碟區名稱>** 失敗。 |磁碟區修改作業已失敗，原因是 <對應到失敗錯誤碼的錯誤訊息>**。 |連線問題可能導致磁碟區擴充作業無法順利完成。 已密集佈建固定在本機的磁碟區，而擴充現有空間的程序牽涉到將分層式磁碟區溢出至雲端。 如果連線沒有問題，則可能是您已用完裝置上的本機空間。 重試此作業前，請判斷裝置上是否有空間存在。 |
 | 轉換磁碟區 <磁碟區名稱>** 失敗。 |將磁碟區類型從固定在本機轉換為分層式的磁碟區轉換作業失敗。 |無法完成將類型從固定在本機轉換為分層式的磁碟區轉換工作。 確定沒有會導致作業無法順利完成的連線問題。 如需針對連線問題進行移難排解，請移至 [使用 Test-HcsmConnection Cmdlet 進行移難排解](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)。<br>原始固定在本機的磁碟區現在已標示為分層式磁碟區，因為固定在本機的磁碟區中的某些資料已在轉換期間溢出至雲端。 結果的分層式磁碟區仍佔用裝置的本機空間，無法為未來的本機磁碟區回收。<br>解決任何連線問題、清除警示以及將此磁碟區轉換回原始的本機固定磁碟區類型，以確保所有資料可以再次於本機上使用。 |
 | 轉換磁碟區 <磁碟區名稱>** 失敗。 |將磁碟區類型從分層式轉換為固定在本機的磁碟區轉換作業失敗。 |無法完成將類型從分層式轉換為固定在本機的磁碟區轉換工作。 確定沒有會導致作業無法順利完成的連線問題。 如需針對連線問題進行移難排解，請移至 [使用 Test-HcsmConnection Cmdlet 進行移難排解](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)。<br>原始分層式磁碟區現在會標示為在本機固定磁碟區，作為轉換程序的一部分，繼續讓資料放在雲端，而此磁碟區的裝置上完整佈建的空間無法再為未來的本機磁碟區回收。<br>解決任何連線問題、清除警示以及將此磁碟區轉換回原始分層式磁碟區類型，以確保裝置上完整佈建的本機空間可以回收。 |
-| <*卷組名稱*的本地快照的本地空間消耗接近> |備份原則的本機快照可能很快就會用完空間並且失效，以避免主機寫入失敗。 |在與此備份原則群組相關聯的磁碟區中，隨著高度資料變換頻繁地製作本機快照，會導致裝置上的本機空間快速地耗用。 刪除任何不再需要的本機快照。 此外，將此備份原則的本機快照排程更新為較不常製作本機快照，並確保定期製作雲端快照。 如果未採用這些動作，這些快照的本機空間可能很快就會耗盡，系統會自動刪除它們，以確保繼續順利處理主機寫入。 |
+| 接近 <*磁片區組名*的本機快照的本機空間耗用量> |備份原則的本機快照可能很快就會用完空間並且失效，以避免主機寫入失敗。 |在與此備份原則群組相關聯的磁碟區中，隨著高度資料變換頻繁地製作本機快照，會導致裝置上的本機空間快速地耗用。 刪除任何不再需要的本機快照。 此外，將此備份原則的本機快照排程更新為較不常製作本機快照，並確保定期製作雲端快照。 如果未採用這些動作，這些快照的本機空間可能很快就會耗盡，系統會自動刪除它們，以確保繼續順利處理主機寫入。 |
 | <磁碟區群組名稱>** 的本機快照已經無效。 |<磁碟區群組名稱>** 的本機快照已經無效並已刪除，因為其超出裝置上的本機空間。 |若要確保未來不會重複發生這種情形，請檢閱此備份原則的本機快照排程並刪除任何不再需要的本機快照。 在與此備份原則群組相關聯的磁碟區中，隨著高度資料變換頻繁地製作本機快照，可能會導致裝置上的本機空間快速地耗用。 |
 | 還原 <來源備份項目識別碼>** 失敗。 |還原作業失敗。 |如果此備份原則中有固定在本機或固定在本機與分層式磁碟機的混合，請重新整理備份清單，以確認備份仍然有效。 如果備份有效，則可能是雲端連線問題導致還原作業無法順利完成。 已還原為此快照群組的一部分之固定在本機的磁碟區，不需要將其所有資料下載到裝置，而如果此快照群組中有分層式和固定在本機磁碟區的混合，則兩者不會彼此同步。 若要順利完成還原作業，讓主機上此群組中的磁碟區離線，然後重試還原作業。 請注意，在還原程序期間所執行的磁碟區資料修改將會遺失。 |
 
@@ -192,9 +192,9 @@ StorSimple 裝置管理員服務的摘要刀鋒視窗，可讓您快速概覽裝
 | 警示文字 | 事件 | 詳細資訊 / 建議的動作 |
 |:--- |:--- |:--- |
 | 無法啟動 StorSimple 服務。 |資料路徑錯誤 |如果問題持續發生，請連絡 Microsoft 支援服務。 |
-| 偵測到 'Data0' 的 IP 位址重複。 | |系統已偵測到 IP 位址 '10.0.0.1' 衝突。 設備*\<設備上*的網路資源"Data0">處於離線狀態。 確定此網路中的其他任何實體並未使用此 IP 位址。 若要疑難排解網路問題，請移至 [Get-NetAdapter Cmdlet 疑難排解](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 請連絡網路系統管理員協助解決此問題。 如果問題持續發生，請連絡 Microsoft 支援服務。 |
-| 'Data0' 的 IPv4 (或 IPv6) 位址已離線。 | |網路資源 'Data0' 與 IP 位址 '10.0.0.1'。 設備設備上的前置長度*\<"22"1>* 處於離線狀態。 請確定此介面所連接的交換器連接埠運作正常。 若要疑難排解網路問題，請移至 [Get-NetAdapter Cmdlet 疑難排解](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 |
-| 無法連線到驗證服務。 |資料路徑錯誤 |無法連線到用來驗證的 URL。 請確定您的防火牆規則有包含為 StorSimple 裝置指定的 URL 模式。 有關 Azure 門戶中的 URL 模式的詳細資訊，請轉到\/HTTPs：/aka.ms/ss-8000-network-reqs。 如果使用 Azure 政府雲，請轉到 HTTPs 中的\/URL 模式：/aka.ms/ss8000-gov-network-reqs。|
+| 偵測到 'Data0' 的 IP 位址重複。 | |系統已偵測到 IP 位址 '10.0.0.1' 衝突。 裝置* \<device1>* 上的網路資源 ' Data0 ' 已離線。 確定此網路中的其他任何實體並未使用此 IP 位址。 若要疑難排解網路問題，請移至 [Get-NetAdapter Cmdlet 疑難排解](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 請連絡網路系統管理員協助解決此問題。 如果問題持續發生，請連絡 Microsoft 支援服務。 |
+| 'Data0' 的 IPv4 (或 IPv6) 位址已離線。 | |網路資源 'Data0' 與 IP 位址 '10.0.0.1'。 裝置* \<device1>* 的前置長度 ' 22 ' 已離線。 請確定此介面所連接的交換器連接埠運作正常。 若要疑難排解網路問題，請移至 [Get-NetAdapter Cmdlet 疑難排解](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)。 |
+| 無法連線到驗證服務。 |資料路徑錯誤 |無法連線到用來驗證的 URL。 請確定您的防火牆規則有包含為 StorSimple 裝置指定的 URL 模式。 如需 Azure 入口網站中 URL 模式的詳細資訊，請移至\/HTTPs：/aka.ms/ss-8000-network-reqs。 如果使用 Azure Government 雲端，請移至 HTTPs：\//aka.ms/ss8000-gov-network-reqs 中的 URL 模式。|
 
 ### <a name="performance-alerts"></a>效能警示
 
