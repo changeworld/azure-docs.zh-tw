@@ -11,17 +11,17 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 733a33881fe3acc962aeda4b05a1b01be4e148ca
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81680366"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**「依賴方」** 元素指定使用者旅程,以便強制執行當前對 Azure 活動目錄 B2C (Azure AD B2C) 的請求。 它也會指定信賴憑證者 (RP) 應用程式需要用來作為所發出權杖一部分的宣告清單。 RP 應用程式 (例如 Web、行動或傳統型應用程式) 會呼叫 RP 原則檔。 RP 原則檔會執行特定工作，例如登入、重設密碼或編輯設定檔。 多個應用程式可以使用相同的 RP 原則，而單一應用程式可以使用多個原則。 所有的 RP 應用程式都會透過宣告接收相同的權杖，而使用者會經歷相同的使用者旅程圖。
+**RelyingParty**元素會指定要對目前要求強制執行 Azure Active Directory B2C （Azure AD B2C）的使用者旅程圖。 它也會指定信賴憑證者 (RP) 應用程式需要用來作為所發出權杖一部分的宣告清單。 RP 應用程式 (例如 Web、行動或傳統型應用程式) 會呼叫 RP 原則檔。 RP 原則檔會執行特定工作，例如登入、重設密碼或編輯設定檔。 多個應用程式可以使用相同的 RP 原則，而單一應用程式可以使用多個原則。 所有的 RP 應用程式都會透過宣告接收相同的權杖，而使用者會經歷相同的使用者旅程圖。
 
 下列範例顯示 *B2C_1A_signup_signin* 原則檔中的 **RelyingParty** 元素：
 
@@ -117,7 +117,7 @@ ms.locfileid: "81680366"
 | SessionExpiryInSeconds | 0:1 | Azure AD B2C 工作階段 Cookie 的存留期，會以成功驗證時儲存於使用者瀏覽器上的整數來指定。 |
 | JourneyInsights | 0:1 | 要使用的 Azure Application Insights 檢測金鑰。 |
 | ContentDefinitionParameters | 0:1 | 要附加至內容定義負載 URI 的金鑰值組清單。 |
-|ScriptExecution| 0:1| 支援的[JavaScript](javascript-samples.md)執行模式。 可能的值:`Allow``Disallow`或 (預設值)。
+|ScriptExecution| 0:1| 支援的[JavaScript](javascript-samples.md)執行模式。 可能的值`Allow` ： `Disallow`或（預設）。
 
 ### <a name="singlesignon"></a>SingleSignOn
 
@@ -125,9 +125,9 @@ ms.locfileid: "81680366"
 
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| 影響範圍 | 是 | 單一登入行為的範圍。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 該`Suppressed`值指示行為被抑制,並且始終提示用戶選擇標識提供程式。  `Tenant` 值表示會將行為套用到租用戶中的所有原則。 例如，如果使用者瀏覽租用戶的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Application` 值表示會將行為套用到適用於提出要求之應用程式的所有原則。 例如，如果使用者瀏覽應用程式的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Policy` 值表示只會將行為套用到某個原則。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統會在該使用者於原則之間進行切換時提示其選取識別提供者。 |
+| 影響範圍 | 是 | 單一登入行為的範圍。 可能的值：`Suppressed`、`Tenant`、`Application` 或 `Policy`。 此`Suppressed`值表示會隱藏行為，而且一律會提示使用者選取識別提供者。  `Tenant` 值表示會將行為套用到租用戶中的所有原則。 例如，如果使用者瀏覽租用戶的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Application` 值表示會將行為套用到適用於提出要求之應用程式的所有原則。 例如，如果使用者瀏覽應用程式的兩個原則旅程圖，系統不會提示該使用者選取識別提供者。 `Policy` 值表示只會將行為套用到某個原則。 例如，如果使用者瀏覽信任架構的兩個原則旅程圖，系統會在該使用者於原則之間進行切換時提示其選取識別提供者。 |
 | KeepAliveInDays | 是 | 會控制使用者保持登入的時間長度。 將值設為 0 會關閉 KMSI 功能。 如需詳細資訊，請參閱[讓我保持登入](custom-policy-keep-me-signed-in.md)。 |
-|強制執行 IdTokenhintonLogout| 否|  強制將以前頒發的 ID 權碼傳遞給登出終結點,作為有關最終使用者當前與用戶端的身份驗證會話的提示。 可能的值：`false` (預設) 或 `true`。 關於詳細資訊,請參閱使用[OpenID 連線進行 Web 登入](openid-connect.md)。  |
+|EnforceIdTokenHintOnLogout| 否|  強制將先前發行的識別碼權杖傳遞至登出端點，以做為與用戶端目前已驗證的會話相關的提示。 可能的值：`false` (預設) 或 `true`。 如需詳細資訊，請參閱[使用 OpenID connect 的 Web 登入](openid-connect.md)。  |
 
 
 ## <a name="journeyinsights"></a>JourneyInsights
@@ -143,7 +143,7 @@ ms.locfileid: "81680366"
 | ServerEnabled | 是 | 可能的值：`true` 或 `false`。 如果是 `true`，則將現有的 UserJourneyRecorder JSON 當作自訂事件傳送至 Application Insights。 |
 | TelemetryVersion | 是 | 值必須是 `1.0.0`。 |
 
-有關詳細資訊,請參閱[收集日誌](troubleshoot-with-application-insights.md)
+如需詳細資訊，請參閱[收集記錄](troubleshoot-with-application-insights.md)
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
@@ -211,7 +211,7 @@ ms.locfileid: "81680366"
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 使用 **SubjectNameingInfo** 元素，您可以控制權杖主體的值：
-- **JWT 權杖**`sub`- 聲明。 這是權杖判斷資訊時所針對的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 它可用來執行安全的授權檢查，例如，將權杖用於存取資源時。 根據預設，主體宣告會填入目錄中使用者的物件識別碼。 如需詳細資訊，請參閱[權杖、工作階段及單一登入設定](session-behavior.md)。
+- **JWT 權杖**- `sub`宣告。 這是權杖判斷資訊時所針對的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 它可用來執行安全的授權檢查，例如，將權杖用於存取資源時。 根據預設，主體宣告會填入目錄中使用者的物件識別碼。 如需詳細資訊，請參閱[權杖、工作階段及單一登入設定](session-behavior.md)。
 - **SAML 權杖**：可識別主體元素的 `<Subject><NameID>` 元素。
 
 **SubjectNamingInfo** 元素包含下列屬性：
@@ -220,7 +220,7 @@ ms.locfileid: "81680366"
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 對輸出宣告之 **PartnerClaimType** 的參考。 輸出宣告必須定義於信賴憑證者原則 **OutputClaims** 集合中。 |
 
-下面的範例展示如何定義 OpenID 連接依賴方。 主體名稱資訊會設定為 `objectId`：
+下列範例顯示如何定義 OpenID Connect 信賴憑證者。 主體名稱資訊會設定為 `objectId`：
 
 ```XML
 <RelyingParty>

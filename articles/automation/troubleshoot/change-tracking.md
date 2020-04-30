@@ -1,6 +1,6 @@
 ---
-title: 解決變更追蹤及庫存問題
-description: 瞭解如何使用 Azure 自動化更改追蹤和清單解決方案解決問題。
+title: 針對變更追蹤和清查的問題進行疑難排解
+description: 瞭解如何疑難排解和解決 Azure 自動化變更追蹤和清查解決方案的問題。
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
@@ -10,39 +10,39 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 11c1fd05055922b07801c20d525d852d5360b069
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81679356"
 ---
-# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>解決變更追蹤及庫存問題
+# <a name="troubleshoot-change-tracking-and-inventory-issues"></a>針對變更追蹤和清查問題進行疑難排解
 
-本文介紹如何解決更改跟蹤和庫存問題。
+本文說明如何針對變更追蹤和清查問題進行疑難排解。
 
 >[!NOTE]
->本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 有關混合 Runbook 輔助角色上的 Az 模組安裝說明,請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 對於自動化帳戶,可以使用[「如何更新 Azure 自動化 中的 Azure PowerShell」模組](../automation-update-azure-modules.md)將模組更新到最新版本。
+>本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](../automation-update-azure-modules.md)，將模組更新為最新版本。
 
 ## <a name="windows"></a>Windows
 
-### <a name="scenario-change-tracking-and-inventory-records-arent-showing-for-windows-machines"></a><a name="records-not-showing-windows"></a>方案:未為 Windows 電腦顯示變更追蹤及庫存記錄
+### <a name="scenario-change-tracking-and-inventory-records-arent-showing-for-windows-machines"></a><a name="records-not-showing-windows"></a>案例：不會顯示 Windows 機器的變更追蹤和清查記錄
 
 #### <a name="issue"></a>問題
 
-您看不到已上載的 Windows 計算機的任何更改追蹤和清單結果。
+您看不到上架的 Windows 機器的任何變更追蹤和清查結果。
 
 #### <a name="cause"></a>原因
 
-錯誤可能有以下原因:
+此錯誤可能有下列原因：
 
-* Windows 的日誌分析代理未運行。
-* 回自動化帳戶的通信被阻止。
-* 不會下載更改追蹤和庫存管理包。
-* 正在裝載的 VM 可能來自未與安裝的 Windows 的日誌分析代理結合的克隆電腦。
+* 適用于 Windows 的 Log Analytics 代理程式不在執行中。
+* 已封鎖送回自動化帳戶的通訊。
+* 變更追蹤和清查管理元件不會下載。
+* 所上架的 VM 可能來自于已安裝適用于 Windows 的 Log Analytics 代理程式未執行過 sysprep 的複製電腦。
 
 #### <a name="resolution"></a>解決方案
 
-在紀錄分析代理電腦上,導航到**C:\程式檔案\Microsoft監視代理\代理\工具**並執行以下指令:
+在 Log Analytics 代理程式電腦上，流覽至**C:\Program Files\Microsoft Monitoring Agent\Agent\Tools** ，然後執行下列命令：
 
 ```cmd
 net stop healthservice
@@ -51,76 +51,76 @@ StartTracing.cmd VER
 net start healthservice
 ```
 
-如果仍需要説明,可以收集診斷資訊並聯繫支持人員。 
+如果您仍然需要協助，您可以收集診斷資訊和連絡人支援。 
 
 > [!NOTE]
-> 默認情況下,日誌分析代理支援錯誤跟蹤。 要啟用詳細錯誤訊息,如上例所示,請使用參數`VER`。 對於資訊追蹤，請在叫用 `StartTracing.cmd` 時使用 `INF`。
+> 記錄 Analyticss 代理程式預設會啟用錯誤追蹤。 若要啟用上述範例中的`VER`詳細資訊錯誤訊息，請使用參數。 對於資訊追蹤，請在叫用 `StartTracing.cmd` 時使用 `INF`。
 
-##### <a name="log-analytics-agent-for-windows-not-running"></a>未執行的 Windows 的紀錄分析代理
+##### <a name="log-analytics-agent-for-windows-not-running"></a>適用于 Windows 的 Log Analytics 代理程式未執行
 
-驗證 Windows 的日誌分析代理(**Health Service.exe**) 是否在電腦上運行。
+確認電腦上正在執行適用于 Windows 的 Log Analytics 代理程式（**HealthService .exe**）。
 
-##### <a name="communication-to-automation-account-blocked"></a>與自動化帳戶的通訊被阻止
+##### <a name="communication-to-automation-account-blocked"></a>已封鎖與自動化帳戶的通訊
 
 請檢查機器上的事件檢視器，並尋找其中有 `changetracking` 字組的任何事件。
 
-請參閱[使用混合 Runbook Worker 來自動執行資料中心或雲端中的資源](../automation-hybrid-runbook-worker.md#network-planning),以瞭解更改追蹤和清單正常工作必須允許的位址和埠。
+請參閱[使用混合式 Runbook 背景工作角色將資料中心或雲端中的資源自動化](../automation-hybrid-runbook-worker.md#network-planning)，以瞭解必須允許變更追蹤和清查工作的位址和埠。
 
-##### <a name="management-packs-not-downloaded"></a>未下載的管理套件
+##### <a name="management-packs-not-downloaded"></a>未下載管理元件
 
-驗證以下變更追蹤及庫存管理套件是否安裝在本地:
+確認下列變更追蹤和清查管理元件已安裝在本機：
 
 * `Microsoft.IntelligencePacks.ChangeTrackingDirectAgent.*`
 * `Microsoft.IntelligencePacks.InventoryChangeTracking.*`
 * `Microsoft.IntelligencePacks.SingletonInventoryCollection.*`
 
-##### <a name="vm-from-cloned-machine-that-has-not-been-sysprepped"></a>未進行壓縮的複製的 VM
+##### <a name="vm-from-cloned-machine-that-has-not-been-sysprepped"></a>尚未執行過 sysprep 的已複製電腦上的 VM
 
-如果使用複製檔,請先對映射進行系統準備,然後安裝 Windows 的日誌分析代理。
+如果使用複製的映射，請先對映射進行 sysprep，然後再安裝適用于 Windows 的 Log Analytics 代理程式。
 
 ## <a name="linux"></a>Linux
 
-### <a name="scenario-no-change-tracking-and-inventory-results-on-linux-machines"></a>方案:Linux 電腦上無變更追蹤和庫存結果
+### <a name="scenario-no-change-tracking-and-inventory-results-on-linux-machines"></a>案例： Linux 機器上沒有變更追蹤和清查結果
 
 #### <a name="issue"></a>問題
 
-您看不到為解決方案而加入的 Linux 電腦的任何庫存和更改追蹤結果。 
+針對解決方案上架的 Linux 機器，您看不到任何清查和變更追蹤結果。 
 
 #### <a name="cause"></a>原因
-以下是特定於此問題的可能原因:
-* Linux 的日誌分析代理未運行。
-* Linux 的日誌分析代理配置不正確。
-* 存在檔完整性監視 (FIM) 衝突。
+以下是此問題特定的可能原因：
+* 適用于 Linux 的 Log Analytics 代理程式未執行。
+* 適用于 Linux 的 Log Analytics 代理程式未正確設定。
+* 有檔案完整性監視（FIM）衝突。
 
 #### <a name="resolution"></a>解決方案 
 
-##### <a name="log-analytics-agent-for-linux-not-running"></a>Linux 未執行的紀錄分析代理
+##### <a name="log-analytics-agent-for-linux-not-running"></a>適用于 Linux 的 Log Analytics 代理程式未執行
 
-驗證 Linux**的日誌**分析代理的守護程式是否在您的電腦上運行。 在連結到自動化帳戶的日誌分析工作區中運行以下查詢。
+確認適用于 Linux 的 Log Analytics 代理程式（**omsagent**）的 daemon 正在您的電腦上執行。 在與您的自動化帳戶連結的 Log Analytics 工作區中，執行下列查詢。
 
 ```loganalytics Copy
 Heartbeat
 | summarize by Computer, Solutions
 ```
 
-如果在查詢結果中看不到計算機,則計算機最近未簽入。 可能存在本地設定問題,您應該重新安裝代理。 有關安裝與設定的資訊,請參閱[使用紀錄分析代理收集紀錄資料](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。 
+如果您在查詢結果中看不到您的電腦，它最近未簽入。 可能是本機設定問題，您應該重新安裝代理程式。 如需安裝和設定的相關資訊，請參閱[使用 Log Analytics 代理程式收集記錄資料](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。 
 
-如果電腦顯示在查詢結果中,請驗證範圍配置。 請參考[Azure 監視器 中的目標監視解決方案](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)。
+如果您的電腦顯示在查詢結果中，請確認範圍設定。 請參閱[Azure 監視器中的目標監視解決方案](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting)。
 
-有關此問題的更多故障排除,請參閱[問題:您沒有看到任何 Linux 資料](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data)。
+如需此問題的詳細疑難排解，請參閱[問題：您沒有看到任何 Linux 資料](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux-troubleshoot#issue-you-are-not-seeing-any-linux-data)。
 
-##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>Linux 的紀錄分析代理設定不正確
+##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>適用于 Linux 的 Log Analytics 代理程式未正確設定
 
-使用 OMS 日誌收集器工具,可能未正確配置 Linux 的日誌分析代理以用於日誌和命令行輸出集合。 請參考[追蹤器與清單' 的解決方案追蹤環境中的變更](../change-tracking.md)。
+適用于 Linux 的 Log Analytics 代理程式可能未正確設定，無法使用 OMS 記錄收集器工具進行記錄檔和命令列輸出收集。 請參閱[使用變更追蹤和清查解決方案來追蹤環境中的變更](../change-tracking.md)。
 
-##### <a name="fim-conflicts"></a>職能指令手冊衝突
+##### <a name="fim-conflicts"></a>FIM 衝突
 
-Azure 安全中心的 FIM 功能可能錯誤地驗證了 Linux 檔的完整性。 驗證 FIM 是否可操作並正確配置用於 Linux 檔案監視。 請參考[追蹤器與清單' 的解決方案追蹤環境中的變更](../change-tracking.md)。
+Azure 資訊安全中心的 FIM 功能可能不正確地驗證您 Linux 檔案的完整性。 確認 FIM 運作正常且已正確設定，以進行 Linux 檔案監視。 請參閱[使用變更追蹤和清查解決方案來追蹤環境中的變更](../change-tracking.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您在上面看不到問題或無法解決問題,請嘗試以下管道之一以獲取其他支援:
+如果您沒有看到上述問題或無法解決問題，請嘗試下列其中一個通道以取得其他支援：
 
-* 通過[Azure 論壇](https://azure.microsoft.com/support/forums/)從 Azure 專家那裡獲得答案。
-* 與[@AzureSupport](https://twitter.com/azuresupport)連接 ,官方 Microsoft Azure 帳戶通過將 Azure 社區連接到正確的資源(答案、支援和專家)來改善客戶體驗。
-* 提出 Azure 支援事件。 跳到[Azure 支援網站](https://azure.microsoft.com/support/options/)並選擇 **「取得支援**」。
+* 透過[Azure 論壇](https://azure.microsoft.com/support/forums/)取得 azure 專家的解答。
+* 與[@AzureSupport](https://twitter.com/azuresupport)官方 Microsoft Azure 帳戶交流，藉由將 Azure 社區連接至適當的資源來改善客戶體驗：解答、支援和專家。
+* 提出 Azure 支援事件。 移至 [ [Azure 支援] 網站](https://azure.microsoft.com/support/options/)，然後選取 [**取得支援**]。

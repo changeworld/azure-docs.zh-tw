@@ -1,7 +1,7 @@
 ---
 title: 語言支援 - 翻譯工具文字 API
 titleSuffix: Azure Cognitive Services
-description: 翻譯器文字 API 支援使用神經機翻譯 (NMT) 進行文本到文字翻譯的以下語言。
+description: 翻譯工具文字 API 支援下列使用類神經機器翻譯（NMT）之文字到文字翻譯的語言。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
 ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81684835"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>翻譯工具文字 API 支援的語言和區域
@@ -28,17 +28,17 @@ ms.locfileid: "81684835"
 **V2 Translator API**
 
 > [!NOTE]
-> V2 於 2018 年 4 月 30 日棄用。 請將應用程式遷移到 V3,以便利用 V3 中獨有功能。
+> V2 已于2018年4月30日淘汰。 請將您的應用程式遷移至 V3，以利用在 V3 中專門提供的新功能。
 
-* 僅統計:沒有神經網路可用於此語言。
-* 神經可用:有一個神經系統可用。 使用 `category=generalnn` 參數來存取類神經系統。
-* 神經預設值:神經是默認翻譯系統。 使用 `category=smt` 參數存取搭配 Microsoft Translator Hub 使用的統計系統。
-* 僅限神經:僅提供神經翻譯。
+* 僅限統計：此語言沒有可用的類神經系統。
+* 可用的類神經：可用的類神經系統。 使用 `category=generalnn` 參數來存取類神經系統。
+* 類神經預設值：類神經是預設的轉譯系統。 使用 `category=smt` 參數存取搭配 Microsoft Translator Hub 使用的統計系統。
+* 僅類神經：僅可使用類神經轉譯。
 
 **V3 Translator API** V3 Translator API 預設為類神經架構，而統計系統僅適用於沒有類神經系統存在時。
 
 > [!NOTE]
-> 目前,自定義翻譯器中提供了神經語言的子集,並且我們正在逐步添加其他語言。 [檢視目前在自訂翻譯器中提供的語言](#customization)。
+> 目前，類神經語言的子集可在自訂翻譯中使用，我們會逐漸新增其他類神經語言。 [觀看自訂翻譯中目前可用的語言](#customization)。
 
 |Language|  語言代碼|  V3 API|
 |:-----|:-----:|:-----|
@@ -116,7 +116,7 @@ ms.locfileid: "81684835"
 |猶加敦馬雅文|  `yua`   |   統計|
 
 > [!NOTE]
-> 語言代碼`pt`將預設`pt-br`為 葡萄牙文(巴西)。
+> 語言代碼`pt`會預設為`pt-br`，葡萄牙文（巴西）。
 
 ## <a name="transliteration"></a>轉換
 
@@ -204,7 +204,7 @@ ms.locfileid: "81684835"
 
 ## <a name="detect"></a>Detect
 
-翻譯文字 API 檢測所有可用於翻譯和音譯的語言。
+翻譯工具文字 API 會偵測所有可用於轉譯和音譯的語言。
 
 
 ## <a name="access-the-translator-text-api-language-list-programmatically"></a>以程式設計方式存取翻譯工具文字 API 的語言清單
@@ -215,7 +215,7 @@ ms.locfileid: "81684835"
 
 ## <a name="customization"></a>自訂
 
-以下語言可用於自訂[翻譯](https://aka.ms/CustomTranslator)器的英語或英語自定義。
+下列語言可使用[自訂翻譯](https://aka.ms/CustomTranslator)自訂或英文。
 
 | Language    | 語言代碼 |
 |:----------- |:-------------:|

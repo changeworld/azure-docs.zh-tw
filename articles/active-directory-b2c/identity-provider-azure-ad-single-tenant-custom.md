@@ -1,5 +1,5 @@
 ---
-title: 使用自訂政策使用 Azure AD 帳號設定登入
+title: 使用自訂原則來設定以 Azure AD 帳戶進行登入
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用自訂原則來設定以 Azure Active Directory 帳戶進行登入。
 services: active-directory-b2c
@@ -12,19 +12,19 @@ ms.date: 04/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: be3a7a3ce4ce3a06398436058ea5d4d935ef5a5c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678098"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Azure Active Directory 帳戶進行登入
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文演示如何使用 Azure 活動目錄 B2C (Azure AD B2C) 中的[自訂策略](custom-policy-overview.md)為 Azure 活動目錄 (Azure AD) 組織的使用者啟用登錄。
+本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，讓來自 Azure Active Directory （Azure AD）組織的使用者登入。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 
@@ -35,13 +35,13 @@ ms.locfileid: "81678098"
 
 您必須將所建立的應用程式金鑰儲存在 Azure AD B2C 租用戶中。
 
-1. 請確保使用的是包含 Azure AD B2C 租戶的目錄。 選擇頂部功能表中的**目錄 + 訂閱篩選器**,然後選擇包含 Azure AD B2C 租戶的目錄。
+1. 請確定您使用的是包含您 Azure AD B2C 租使用者的目錄。 在頂端功能表中選取 [**目錄 + 訂**用帳戶] 篩選，然後選擇包含您 Azure AD B2C 租使用者的目錄。
 1. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
-1. 在 **「政策」** 下,選擇**身份體驗框架**。
-1. 選擇**策略鍵**,然後選擇 **"添加**"。
+1. 在 [**原則**] 底下，選取 [ **Identity Experience Framework**]。
+1. 選取 [**原則金鑰**]，然後選取 [**新增**]。
 1. 針對 [選項]**** 選擇 `Manual`。
-1. 輸入原則金鑰的 [名稱]****。 例如： `ContosoAppSecret` 。  前置文字`B2C_1A_`在建立時會自動加入金鑰的名稱中,因此在下一個 XML 中的引言B2C_1A_ContosoAppSecret *。*
-1. 在 **「秘密**」中,輸入您之前記錄的客戶機密。
+1. 輸入原則金鑰的 [名稱]****。 例如： `ContosoAppSecret` 。  前置`B2C_1A_`詞會在建立時自動新增至金鑰的名稱，因此在下一節的 XML 中，其參考是*B2C_1A_ContosoAppSecret*。
+1. 在 [**秘密**] 中，輸入您先前記錄的用戶端密碼。
 1. 針對 [金鑰使用方法]****，選取 `Signature`。
 1. 選取 [建立]  。
 
@@ -103,13 +103,13 @@ ms.locfileid: "81678098"
 
 若要從 Azure AD 端點取得權杖，您需要定義 Azure AD B2C 應該用來與 Azure AD 進行通訊的通訊協定。 此作業可在 **ClaimsProvider** 的 **TechnicalProfile** 元素內完成。
 
-1. 更新 **TechnicalProfile** 元素的識別碼。 此 ID 用於引用策略其他部分`OIDC-Contoso`(例如 )。
+1. 更新 **TechnicalProfile** 元素的識別碼。 此識別碼是用來從原則的其他部分參考此技術設定檔，例如`OIDC-Contoso`。
 1. 更新 **DisplayName** 的值。 這個值會顯示在登入畫面的登入按鈕上。
 1. 更新 [描述]**** 的值。
 1. Azure AD 使用 OpenID Connect 通訊協定，因此請確定 [通訊協定]**** 的值為 `OpenIdConnect`。
 1. 將 **METADATA** 的值設定為 `https://login.microsoftonline.com/tenant-name.onmicrosoft.com/v2.0/.well-known/openid-configuration`，其中 `tenant-name` 是您的 Azure AD 租用戶名稱。 例如， `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`
 1. 將 **client_id** 設定為來自應用程式註冊的應用程式識別碼。
-1. 在 **「加密金鑰**」下,將**StorageReferenceId**的值更新為之前創建的策略金鑰的名稱。 例如： `B2C_1A_ContosoAppSecret` 。
+1. 在 [ **CryptographicKeys**] 底下，將 [ **StorageReferenceId** ] 的值更新為您稍早建立之原則金鑰的名稱。 例如： `B2C_1A_ContosoAppSecret` 。
 
 ### <a name="upload-the-extension-file-for-verification"></a>上傳擴充檔案準備驗證
 
@@ -121,7 +121,7 @@ ms.locfileid: "81678098"
 
 ## <a name="register-the-claims-provider"></a>註冊宣告提供者
 
-此時,標識提供程式已設置,但尚未在任何註冊/登錄頁中可用。 要使其可用,請建立現有樣本使用者旅程的重複項,然後對其進行修改,以便它還必須具有 Azure AD 識別提供者:
+此時，識別提供者已設定完成，但尚未在任何註冊/登入頁面中提供。 若要讓它可供使用，請建立現有範本使用者旅程圖的複本，然後修改它，讓它也具有 Azure AD 身分識別提供者：
 
 1. 從 Starter Pack 開啟 TrustFrameworkBase.xml** 檔案。
 1. 尋找並複製包含 `Id="SignUpOrSignIn"` 之 **UserJourney** 元素的整個內容。
@@ -131,9 +131,9 @@ ms.locfileid: "81678098"
 
 ### <a name="display-the-button"></a>顯示按鈕
 
-**聲明提供程式選擇**元素類似於註冊/登錄頁面上的標識提供程式按鈕。 如果您為 Azure AD 新增 **ClaimsProviderSelection** 元素，當使用者登陸頁面時，就會出現新按鈕。
+**ClaimsProviderSelection**元素類似于註冊/登入頁面上的識別提供者按鈕。 如果您為 Azure AD 新增 **ClaimsProviderSelection** 元素，當使用者登陸頁面時，就會出現新按鈕。
 
-1. 尋找在*TrustFramework 擴展.xml*中建立的使用者旅程`Order="1"`中包含的**業務流程步驟**元素。
+1. 在您于*TrustFrameworkExtensions*中建立`Order="1"`的使用者旅程圖中，尋找包含的**OrchestrationStep**元素。
 1. 在 **ClaimsProviderSelections** 底下新增下列元素。 將 **TargetClaimsExchangeId** 的值設定成適當的值，例如 `ContosoExchange`：
 
     ```XML
@@ -151,13 +151,13 @@ ms.locfileid: "81678098"
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="OIDC-Contoso" />
     ```
 
-    將**技術設定檔參考 Id**的值更新到您之前創建的技術設定檔的**ID。** 例如： `OIDC-Contoso` 。
+    將**TechnicalProfileReferenceId**的值更新為您稍早建立之技術設定檔的**識別碼**。 例如： `OIDC-Contoso` 。
 
 1. 儲存 TrustFrameworkExtensions.xml** 檔案，並再次上傳它以供驗證。
 
 ## <a name="create-an-azure-ad-b2c-application"></a>建立 Azure AD B2C 應用程式
 
-通過您在 B2C 租戶中註冊的應用程式與 Azure AD B2C 的通訊。 此節會列出您可以視需要完成以建立測試應用程式的步驟 (如果您尚未這麼做)。
+與 Azure AD B2C 的通訊會透過您在 B2C 租使用者中註冊的應用程式進行。 此節會列出您可以視需要完成以建立測試應用程式的步驟 (如果您尚未這麼做)。
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
@@ -168,17 +168,17 @@ ms.locfileid: "81678098"
 1. 在您的工作目錄中建立一份 SignUpOrSignIn.xml** 複本，並將它重新命名。 例如，將它重新命名為 *SignUpSignInContoso.xml*。
 1. 開啟新檔案，並將 **TrustFrameworkPolicy** 的 **PolicyId** 屬性更新成唯一值。 例如： `SignUpSignInContoso` 。
 1. 將 **PublicPolicyUri** 的值更新成原則的 URI。 例如： `http://contoso.com/B2C_1A_signup_signin_contoso` 。
-1. 更新**預設使用者旅程**中的**參考 Id**屬性的值,以匹配您之前創建的使用者旅程的 ID。 例如,*註冊登入 Contoso*。
+1. 更新**DefaultUserJourney**中**ReferenceId**屬性的值，以符合您稍早建立的使用者旅程圖的識別碼。 例如， *SignUpSignInContoso*。
 1. 儲存變更並上傳檔案。
-1. 在 **「自訂策略」** 下,在清單中選擇新策略。
-1. 在 **「選擇應用程式**下拉清單」中,選擇之前創建的 Azure AD B2C 應用程式。 例如 *,testapp1*。
-1. 立即複製 **「立即運行」終結點**並在專用瀏覽器視窗中打開它,例如,Google Chrome 中的隱身模式或 Microsoft Edge 中的 InPrivate 視窗。 通過在專用瀏覽器視窗中打開,您可以通過不使用任何當前緩存的 Azure AD 認證來測試完整的使用者旅程。
-1. 選擇 Azure AD 登入按鈕,例如*Contoso 員工*,然後在 Azure AD 組織租戶中輸入使用者的認證。 系統將要求您授權應用程式,然後輸入您的個人資料資訊。
+1. 在 [**自訂原則**] 底下，選取清單中的新原則。
+1. 在 [**選取應用程式**] 下拉式選單中，選取您稍早建立的 Azure AD B2C 應用程式。 例如， *testapp1*。
+1. 複製 [**立即執行] 端點**，並在私用瀏覽器視窗中開啟它，例如 Google Chrome 中的 Incognito 模式或 Microsoft Edge 中的 InPrivate 視窗。 在私用瀏覽器視窗中開啟，可讓您藉由不使用任何目前快取的 Azure AD 認證來測試完整的使用者旅程圖。
+1. 選取 [Azure AD 登入] 按鈕（例如*Contoso Employee*），然後在您的 Azure AD 組織租使用者中輸入使用者的認證。 系統會要求您授權應用程式，然後輸入您的設定檔資訊。
 
-如果登入過程成功,瀏覽器將重定向`https://jwt.ms`到 ,顯示 Azure AD B2C 返回的權杖的內容。
+如果登入程式成功，您的瀏覽器會重新導向`https://jwt.ms`至，其中會顯示 Azure AD B2C 所傳回之權杖的內容。
 
 ## <a name="next-steps"></a>後續步驟
 
-使用自定義策略時,有時在開發策略期間對策略進行故障排除時可能需要其他資訊。
+使用自訂原則時，您有時可能需要在其開發期間針對原則進行疑難排解時的其他資訊。
 
-為了幫助診斷問題,可以暫時將策略置於"開發人員模式",並使用 Azure 應用程式見解收集日誌。 瞭解如何在[Azure 活動目錄 B2C 中:收集紀錄](troubleshoot-with-application-insights.md)。
+若要協助診斷問題，您可以暫時讓原則進入「開發人員模式」，並收集具有 Azure 應用程式深入解析的記錄。 瞭解[Azure Active Directory B2C：收集記錄](troubleshoot-with-application-insights.md)檔。

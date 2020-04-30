@@ -1,7 +1,7 @@
 ---
-title: 分析並監控資料集上的資料漂移(預覽)
+title: 分析和監視資料集上的資料漂移（預覽）
 titleSuffix: Azure Machine Learning
-description: 創建 Azure 機器學習資料集監視器(預覽)、監視數據集中的數據漂移以及設置警報。
+description: 建立 Azure Machine Learning 資料集監視器（預覽）、監視資料集中的資料漂移，以及設定警示。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,73 +11,73 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
 ms.openlocfilehash: e49c621d92a8aa604b5f95291c5d80c0141f41dd
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682730"
 ---
-# <a name="detect-data-drift-preview-on-datasets"></a>偵測資料集上的資料漂移(預覽)
+# <a name="detect-data-drift-preview-on-datasets"></a>在資料集上偵測資料漂移（預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-在本文中,您將瞭解如何創建 Azure 機器學習數據集監視器(預覽)、監視數據漂移和數據集中的統計更改以及設置警報。
+在本文中，您將瞭解如何建立 Azure Machine Learning 資料集監視器（預覽）、監視資料集中的資料漂移和統計變更，以及設定警示。
 
-使用 Azure 機器學習資料集監視器,您可以:
-* **分析數據中的漂移**,瞭解數據隨時間的變化。
-* **監視模型數據**,以發現定型數據集和服務數據集之間的差異。
-* **監視新資料**,以發現任何基線數據集和目標數據集之間的差異。
-* **數據中的設定檔要素**,用於追蹤統計屬性隨時間的變化。
-* **設定資料漂移警報,** 以便對潛在問題發出早期警告。 
+有了 Azure Machine Learning 資料集監視器，您可以：
+* **分析資料中的漂移**，以瞭解它在一段時間內的變化。
+* **監視模型資料**，以瞭解定型和服務資料集之間的差異。
+* **監視新的資料**，以瞭解任何基準和目標資料集之間的差異。
+* **分析資料中的功能**，以追蹤統計屬性隨著時間變更的方式。
+* **設定資料漂移的警示**，以解決早期警告的潛在問題。 
 
-指標和見解可通過與 Azure 機器學習工作區關聯的[Azure 應用程式見解](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)資源獲得。
+計量和深入解析可透過與 Azure Machine Learning 工作區相關聯的[Azure 應用程式 insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)資源來取得。
 
 > [!Important]
-> 請注意,使用 SDK 監視數據漂移在所有版本中都可用,而通過網路工作室監視數據漂移僅是企業版。
+> 請注意，在所有版本中都可使用 SDK 的監視資料漂移，而透過 web 上的 studio 監視資料漂移則僅限 Enterprise edition。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-要建立與使用資料集監視器,您需要:
+若要建立及使用資料集監視器，您需要：
 * Azure 訂用帳戶。 如果您沒有 Azure 訂用帳戶，請在開始前先建立免費帳戶。 立即試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
-* [Azure 機器學習工作區](how-to-manage-workspace.md)。
-* [安裝的 Python 的 Azure 機器學習 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py),其中包括 azurem 資料集包。
-* 具有在檔案路徑、檔名或數據列中指定的時間戳的結構化(表格)數據。
+* [Azure Machine Learning 工作區](how-to-manage-workspace.md)。
+* [已安裝適用于 Python 的 AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包括 azureml 資料集封裝。
+* 結構化（表格式）資料，其中包含檔案路徑、檔案名或資料行中所指定的時間戳記。
 
-## <a name="what-is-data-drift"></a>什麼是數據漂移?
+## <a name="what-is-data-drift"></a>什麼是資料漂移？
 
-在機器學習上下文中,數據漂移是模型輸入數據的變化,導致模型性能下降。 它是模型精度隨時間而降低的主要原因之一,因此監視數據漂移有助於檢測模型性能問題。
+在機器學習環境中，資料漂移是模型輸入資料的變更，會導致模型效能降低。 這是一段時間的其中一個主要原因模型精確度下降，因此監視資料漂移有助於偵測模型效能問題。
 
-資料漂移的原因包括: 
+資料漂移的原因包括： 
 
-- 上游過程變化,例如更換感測器,將測量單位從英寸更改為釐米。 
-- 數據品質問題,例如感測器損壞時始終讀取 0。
-- 數據中的自然漂移,如平均氣溫隨季節變化而變化。
-- 特徵或協變數偏移之間的關係變化。 
+- 上游處理常式變更，例如即將更換的感應器，會將測量單位從英寸變更為釐米。 
+- 資料品質問題（例如，損壞的感應器）一律會讀取0。
+- 資料中的自然漂移，例如平均溫度變化與季節。
+- 變更功能之間的關聯性，或 covariate shift。 
 
-借助 Azure 機器學習資料集監視器,您可以設置警報,以便隨著時間的推移在數據集中幫助進行資料漂移檢測。 
+有了 Azure Machine Learning 資料集監視器，您可以設定警示，以協助資料集內的資料漂移偵測。 
 
 ### <a name="dataset-monitors"></a>資料集監視器 
 
-您可以創建資料集監視器來檢測和警報資料在資料集中的新資料漂移,分析歷史資料以進行漂移,並隨著時間的推移分析新資料。 數據漂移演演演算法提供了數據變化的總體度量,並指示哪些功能負責進一步調查。 數據集監視器通過分析`timeseries`數據集中的新數據生成許多其他指標。 可以通過[Azure 應用程式見解](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)對監視器生成的所有指標設置自定義警報。 數據集監視器可用於快速捕獲數據問題,並通過識別可能的原因來縮短調試問題的時間。  
+您可以建立資料集監視，以偵測資料集內的新資料並對其發出警示、分析歷程記錄資料，並在一段時間後分析新的資料。 資料漂移演算法提供資料變更的整體量值，並指出哪些功能會負責進一步調查。 資料集監視器會藉由分析`timeseries`資料集中的新資料來產生一些其他計量。 您可以透過[Azure 應用程式 Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)，在監視所產生的所有計量上設定自訂警示。 資料集監視器可用來快速攔截資料問題，並藉由找出可能的原因來縮短偵測問題的時間。  
 
-從概念上講,在 Azure 機器學習中設置數據集監視器有三種主要方案。
+在概念上，在 Azure Machine Learning 中設定資料集監視器的主要案例有三種。
 
 狀況 | 描述
 ---|---
-監視模型的服務資料,以便從模型的訓練資料中漂移 | 此方案的結果可以解釋為監視模型準確性的代理,因為如果服務數據從訓練數據漂移,則模型精度會降低。
-監視時間序列資料集,以尋找與上一時間段的漂移。 | 此方案更一般,可用於監視模型構建上游或下游的數據集。  目標資料集必須具有時間戳列,而基線數據集可以是具有與目標數據集共有要素的任何表格數據集。
-對過去的數據進行分析。 | 此方案可用於瞭解歷史數據,並在數據集監視器的設置中為決策提供資訊。
+監視模型的服務資料，使其與模型的定型資料漂移 | 此案例的結果可以解讀為監視模型精確度的 proxy，假設如果服務資料從定型資料偏離，模型的精確度會降低。
+監視時間序列資料集與上一個時間週期的漂移。 | 此案例較通用，而且可用來監視模型建立的上游或下游相關的資料集。  目標資料集必須具有時間戳記資料行，而基準資料集可以是具有與目標資料集共通之功能的任何表格式資料集。
+對過去的資料執行分析。 | 此案例可用於瞭解歷程記錄資料，並在資料集監視器的設定中通知決策。
 
-## <a name="how-dataset-can-monitor-data"></a>資料組如何監控資料
+## <a name="how-dataset-can-monitor-data"></a>資料集可以如何監視資料
 
-使用 Azure 機器學習,數據漂移通過數據集進行監視。 為了監視數據漂移,指定了基線數據集(通常是模型的訓練數據集)。 目標數據集(通常是模型輸入數據)會隨著時間的推移與基線數據集進行比較。 此比較意味著目標數據集必須指定時間戳列。
+藉由使用 Azure Machine Learning，資料漂移會透過資料集來監視。 若要監視資料漂移，基準資料集-通常會指定模型的訓練資料集。 目標資料集（通常是模型輸入資料）會隨著時間與基準資料集進行比較。 這種比較表示您的目標資料集必須指定 timestamp 資料行。
 
-### <a name="set-the-timeseries-trait-in-the-target-dataset"></a>在`timeseries`目標資料集中設定特徵
+### <a name="set-the-timeseries-trait-in-the-target-dataset"></a>設定目標`timeseries`資料集中的特性
 
-目標資料集需要通過指定數據中的`timeseries`列或從檔的路徑模式派生的虛擬列來設置其特徵。 這可以通過 Python SDK 或 Azure 機器學習工作室完成。 必須指定表示「細粒度」時間戳的列才能向數據集`timeseries`添加特徵。 如果數據被劃分為包含時間資訊(如"_yyy/MM/dd}")的資料夾結構,則可以通過路徑模式設置創建虛擬列,並將其設置為"粗粒"時間戳,以提高時間序列功能的重要性。 
+目標資料集`timeseries`必須在其上設定特性，方法是從資料中的資料行，或從檔案的路徑模式衍生的虛擬資料行中指定 timestamp 資料行。 這可以透過 Python SDK 或 Azure Machine Learning studio 來完成。 必須指定代表「細微程度」時間戳記的資料行，才能`timeseries`將特性加入至 dataset。 如果您的資料分割成具有時間資訊的資料夾結構（例如 ' {yyyy/MM/dd} '），您可以透過路徑模式設定建立虛擬資料行，並將它設定為「粗略細微性」時間戳記，以改善時間序列功能的重要性。 
 
 #### <a name="python-sdk"></a>Python SDK
 
-類[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)的方法[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)定義數據集的時間戳列。 
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)類別的[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)方法會定義資料集的時間戳記資料行。 
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -104,84 +104,84 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-有關使用資料集`timeseries`特徵的完整範例,請參考[範例的功能](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)或[資料集 SDK 文件](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)。
+如需使用`timeseries`資料集特性的完整範例，請參閱[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/timeseries-datasets/tabular-timeseries-dataset-filtering.ipynb)或[資料集 SDK 檔](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)。
 
 #### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-如果使用 Azure 機器學習工作室創建數據集,請確保數據的路徑包含時間戳資訊,包含包含數據的所有子資料夾,並設置分區格式。 
+如果您使用 Azure Machine Learning studio 建立資料集，請確定您的資料路徑包含時間戳記資訊、包含所有具有資料的子資料夾，以及設定分割區格式。 
 
-在下面的示例中,獲取子資料夾*NoaaIsdFlorida/2019*下的所有數據,分區格式指定時間戳的年份、月份和日。 
+在下列範例中，會採用子資料夾*NoaaIsdFlorida/2019*底下的所有資料，而分割區格式會指定時間戳記的年、月和日。 
 
-[![區塊格式](./media/how-to-monitor-datasets/partition-format.png)](media/how-to-monitor-datasets/partition-format-expand.png)
+[![資料分割格式](./media/how-to-monitor-datasets/partition-format.png)](media/how-to-monitor-datasets/partition-format-expand.png)
 
-在 **'架構'** 設定中,指定指定資料集中的虛擬列或實列的時間戳列:
+在 [**架構**設定] 中，從指定資料集的虛擬或實際資料行中，指定 timestamp 資料行：
 
 ![時間戳記](./media/how-to-monitor-datasets/timestamp.png)
 
-## <a name="dataset-monitor-settings"></a>資料集監視器設定
+## <a name="dataset-monitor-settings"></a>資料集監視設定
 
-使用指定的時間戳設置創建資料集後,即可配置數據集監視器。
+建立具有指定時間戳記設定的資料集之後，您就可以設定資料集監視器。
 
-各種資料集監視器設定分為三組:**基本資訊、監視器設定**與**回填設定**。
+各種資料集監視設定分成三個群組：**基本資訊、監視設定**和**回填設定**。
 
 ### <a name="basic-info"></a>基本資訊
 
-此表包含用於數據集監視器的基本設置。
+此資料表包含用於資料集監視器的基本設定。
 
 | 設定 | 描述 | 提示 | 可變動 | 
 | ------- | ----------- | ---- | ------- | 
-| 名稱 | 數據集監視器的名稱。 | | 否 |
-| 基線資料集 | 用作隨時間比較目標數據集的基線的表格數據集。 | 基線數據集必須具有與目標數據集共有的功能。 通常,基線應設置為模型的訓練數據集或目標數據集的切片。 | 否 |
-| 目標資料集 | 指定時間戳列的表格資料集,用於分析數據漂移。 | 目標數據集必須具有與基線數據集共有的功能,並且應該是一個`timeseries`數據集,新數據將追加到該數據集中。 可以分析目標數據集中的歷史數據,也可以監視新數據。 | 否 | 
-| 頻率 | 用於安排管道作業並分析運行回填時的歷史數據的頻率。 選項包括每日、每周或每月。 | 調整此設置以包括與基線相當的數據大小。 | 否 | 
-| 特性 | 將分析隨時間漂移的數據的要素清單。 | 設置為模型的輸出特徵,以測量概念漂移。 不要包含隨時間自然漂移的要素(月、年、指數等)。 調整要素清單后,可以回填和現有數據漂移監視器。 | 是 | 
-| 計算目標 | Azure 機器學習計算目標以運行數據集監視器作業。 | | 是 | 
+| Name | 資料集監視器的名稱。 | | 否 |
+| 基準資料集 | 表格式資料集，將用來做為一段時間的目標資料集比較基準。 | 基準資料集必須具有與目標資料集共通的功能。 一般來說，基準應該設定為模型的訓練資料集或目標資料集的配量。 | 否 |
+| 目標資料集 | 已指定時間戳記資料行的表格式資料集，將會分析資料漂移。 | 目標資料集必須具有與基準資料集共同的功能，而且應該是將`timeseries`新資料附加至其中的資料集。 可以分析目標資料集中的歷程記錄資料，或可以監視新的資料。 | 否 | 
+| 頻率 | 在執行回填時，用來排程管線作業和分析歷程記錄資料的頻率。 選項包括 [每日]、[每週] 或 [每月]。 | 調整這項設定以包含可比較的資料大小給基準。 | 否 | 
+| 功能 | 將分析一段時間內資料漂移的功能清單。 | 設定為模型的輸出功能，以測量概念漂移。 請勿包含在一段時間內自然漂移的功能（月、年、索引等等）。 調整功能清單之後，您可以回填和現有的資料漂移監視器。 | 是 | 
+| 計算目標 | Azure Machine Learning 計算目標來執行資料集監視作業。 | | 是 | 
 
-### <a name="monitor-settings"></a>監視器設定
+### <a name="monitor-settings"></a>監視設定
 
-這些設置用於將創建的計畫數據集監視器管道。 
+這些設定適用于將建立的排程資料集監視管線。 
 
 | 設定 | 描述 | 提示 | 可變動 | 
 | ------- | ----------- | ---- | ------- |
-| 啟用 | 在資料集監視器導管上啟用或關閉計畫 | 禁用計劃以使用回填設置分析歷史數據。 創建數據集監視器後,可以啟用它。 | 是 | 
-| Latency | 資料到達資料集所需的時間(以小時表示) 例如,如果數據到達數據集封裝的 SQL DB 需要三天時間,則將延遲設置為 72。 | 建立資料集監視器後無法變更 | 否 | 
-| 電子郵件地址 | 基於違反數據漂移百分比閾值的警報的電子郵寄地址。 | 電子郵件通過 Azure 監視器發送。 | 是 | 
-| 閾值 | 用於電子郵件警報的數據漂移百分比閾值。 | 可以在工作區關聯的應用程式見解資源中的許多其他指標上設置其他警報和事件。 | 是 | 
+| 啟用 | 啟用或停用資料集監視器管線上的排程 | 使用回填設定來停用排程來分析歷程記錄資料。 您可以在建立資料集監視器之後啟用它。 | 是 | 
+| Latency | 資料在資料集中抵達所需的時間（以小時為單位）。 例如，如果需要三天的時間，資料才會抵達 SQL DB （dataset 封裝），請將延遲設定為72。 | 建立資料集監視器之後無法變更 | 否 | 
+| 電子郵件地址 | 根據違反資料漂移百分比閾值而發出警示的電子郵件地址。 | 電子郵件是透過 Azure 監視器傳送。 | 是 | 
+| 閾值 | 電子郵件警示的資料漂移百分比閾值。 | 進一步的警示和事件可以在工作區相關聯 Application Insights 資源中的許多其他計量上設定。 | 是 | 
 
 ### <a name="backfill-settings"></a>回填設定
 
-這些設置用於對數據漂移指標的過去數據運行回填。
+這些設定是用來針對資料漂移計量的過去資料執行回填。
 
 | 設定 | 描述 | 提示 |
 | ------- | ----------- | ---- |
-| 開始日期 | 回填作業的開始日期。 | | 
-| 結束日期 | 回填作業的結束日期。 | 結束日期不能超過從開始日期開始的 31+頻率時間單位。 在現有數據集監視器上,可以回填指標以分析歷史數據或使用更新的設置替換指標。 |
+| 開始日期 | 回填工作的開始日期。 | | 
+| 結束日期 | 回填作業的結束日期。 | 結束日期不能超過 31 * 開始日期的頻率單位。 在現有的資料集監視器上，可以回填度量來分析歷程記錄資料，或以更新的設定取代計量。 |
 
 ## <a name="create-dataset-monitors"></a>建立資料集監視器 
 
-使用 Azure 機器學習工作室或 Python SDK 創建數據集監視器以檢測和警報新數據集上的數據漂移。 
+使用 Azure Machine Learning studio 或 Python SDK 來建立資料集監視器，以偵測新資料集的資料漂移併發出警示。 
 
 ### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]
 
-要在數據集監視器上設置警報,包含要為其創建監視器的數據集的工作區必須具有企業版功能。 
+若要在資料集監視器上設定警示，包含您想要建立監視之資料集的工作區必須具有 Enterprise edition 功能。 
 
-確認工作區功能后,導航到工作室的主頁,然後選擇左側的數據集選項卡。 選擇數據集監視器。
+確認工作區功能之後，流覽至 studio 的首頁，然後選取左側的 [資料集] 索引標籤。 選取 [資料集監視器]。
 
-![監視器清單](./media/how-to-monitor-datasets/monitor-list.png)
+![監看清單](./media/how-to-monitor-datasets/monitor-list.png)
 
-按下 **「建立監視器」** 按鈕,然後按**下「 下一步**」 繼續精靈。
+按一下 [ **+ 建立監視器**] 按鈕，然後按一下 **[下一步**] 繼續流覽嚮導。
 
 ![精靈](./media/how-to-monitor-datasets/wizard.png)
 
-生成的數據集監視器將顯示在清單中。 選擇它以轉到該監視器的詳細信息頁面。
+產生的資料集監視將會出現在清單中。 選取它以移至該監視的詳細資料頁面。
 
 ### <a name="from-python-sdk"></a>從 Python SDK
 
-有關詳細資訊,請參閱[有關資料漂移的 Python SDK 參考文件](/python/api/azureml-datadrift/azureml.datadrift)。 
+如需完整的詳細資訊，請參閱有關[資料漂移的 PYTHON SDK 參考檔](/python/api/azureml-datadrift/azureml.datadrift)。 
 
-下面的範例展示如何使用 Python SDK 建立資料集監視器
+下列範例說明如何使用 Python SDK 來建立資料集監視
 
 ```python
 from azureml.core import Workspace, Dataset
@@ -227,105 +227,105 @@ monitor = monitor.disable_schedule()
 monitor = monitor.enable_schedule()
 ```
 
-有關設定`timeseries`資料集和資料漂移偵測器的完整範例,請參閱我們的[範例筆記本](https://aka.ms/datadrift-notebook)。
+如需設定`timeseries`資料集和資料漂移偵測器的完整範例，請參閱我們的[範例筆記本](https://aka.ms/datadrift-notebook)。
 
 ## <a name="understanding-data-drift-results"></a>瞭解資料漂移結果
 
-數據監視器生成兩組結果:漂移概覽和功能詳細資訊。 以下動畫根據所選要素和指標顯示可用的漂移監視器圖表。 
+資料監視器會產生兩個結果群組：漂移總覽和功能詳細資料。 下列動畫會根據選取的功能和度量，顯示可用的漂移監視器圖表。 
 
-![簡報](./media/how-to-monitor-datasets/video.gif)
+![示範影片](./media/how-to-monitor-datasets/video.gif)
 
-### <a name="drift-overview"></a>漂移概述
+### <a name="drift-overview"></a>漂移總覽
 
-**漂移概述**部分包含有關數據漂移程度以及應進一步調查哪些要素的頂級見解。 
+**漂移總覽**一節包含資料漂移程度的最上層深入解析，以及應進一步調查哪些功能。 
 
 | 計量 | 描述 | 提示 | 
 | ------ | ----------- | ---- | 
-| 資料漂移幅度 | 給定為基線和目標數據集之間的百分比。 從 0 到 100,其中 0 表示相同的數據集,100 表示 Azure 機器學習數據漂移功能可以完全區分兩個數據集。 | 由於採用機器學習技術生成此量級,預計測量的雜訊值為精確百分比。 | 
-| 依特徵漂移貢獻 | 目標數據集中每個要素對測量漂移幅度的貢獻。 |  由於協變數偏移,要素的基礎分佈不一定需要更改才能具有相對較高的特徵重要性。 | 
+| 資料漂移量 | 指定為一段時間的基準和目標資料集之間的百分比。 範圍從0到100，其中0表示相同的資料集，而100表示 Azure Machine Learning 資料漂移功能可以完全分辨出兩個資料集。 | 因為使用機器學習技術來產生這種程度，所以預期測量的確切百分比中有雜訊。 | 
+| 依功能的漂移比重 | 目標資料集內每項功能在測量漂移程度上的比重。 |  由於 covariate 轉移的緣故，功能的基礎分佈不一定需要變更，才會有相當高的功能重要性。 | 
 
-下圖是 Azure 機器學習工作室中的**漂移概覽**結果中看到的圖表示例,該圖由[NOAA 集成曲面數據的](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)回填結果生成。 數據被採樣到`stationName contains 'FLORIDA'`,2019 年 1 月用作基準數據集,所有 2019 年的數據都用作目標。
+下圖是在 Azure Machine Learning studio 的**漂移總覽**結果中看到的圖表範例，這是由[NOAA 整合式表面資料](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/)的回填所產生。 已將資料取樣`stationName contains 'FLORIDA'`至，並使用2019年1月作為基準資料集，並將所有2019資料當做目標使用。
  
-![漂移概述](./media/how-to-monitor-datasets/drift-overview.png)
+![漂移總覽](./media/how-to-monitor-datasets/drift-overview.png)
 
-### <a name="feature-details"></a>功能詳細資訊
+### <a name="feature-details"></a>功能詳細資料
 
-功能**詳細資訊**「部分包含有關所選要素分佈變化的特徵級見解,以及隨著時間的推移進行的其他統計資訊。 
+[**功能詳細資料**] 區段包含一段時間內所選功能的散發和其他統計資料變更的功能層級深入解析。 
 
-目標數據集也會隨時間而分析。 每個要素的基線分佈之間的統計距離與目標數據集隨時間的分佈進行比較,這在概念上與數據漂移幅度相似,但此統計距離針對單個要素除外。 最小值、最大值和均值也可用。 
+目標資料集也會在一段時間內進行分析。 每項功能的基準分佈之間的統計距離會與目標資料集的一段時間進行比較，這在概念上類似于資料漂移的範圍，但此統計距離是針對個別功能所產生的例外狀況。 最小值、最大值和平均值也可供使用。 
 
-在 Azure 機器學習工作室中,如果單擊圖形中的數據點,則顯示的功能的分佈將相應地調整。 默認情況下,它顯示基線數據集的分佈和同一要素的最新運行分佈。 
+在 Azure Machine Learning studio 中，如果您按一下圖形中的資料點，則會據以調整所顯示的功能分佈。 根據預設，它會顯示基準資料集的散發，以及相同功能的最新執行散發。 
 
-這些指標也可以通過`get_metrics()``DataDriftDetector`物件上的方法在 Python SDK 中檢索。 
+您也可以透過`get_metrics()` `DataDriftDetector`物件上的方法，在 Python SDK 中抓取這些計量。 
 
-#### <a name="numeric-features"></a>數位特徵 
+#### <a name="numeric-features"></a>數值特徵 
 
-每個數據集監視器運行中都會分析數位要素。 以下功能在 Azure 機器學習工作室中公開。 顯示分佈的概率密度。
+數值功能會在每個資料集監視執行中進行分析。 下列會在 Azure Machine Learning studio 中公開。 機率密度會針對分佈顯示。
 
 | 計量 | 描述 |  
 | ------ | ----------- |  
-| 瓦瑟斯坦距離 | 將基線分佈轉換為目標分佈的最小工作量。 |
-| 平均值 | 要素的平均值。 |
-| 最小值 | 要素的最小值。 |
-| 最大值 | 要素的最大值。 |
+| Wasserstein 距離 | 將基準散發轉換成目標分佈的最低工作量。 |
+| 平均值 | 功能的平均值。 |
+| 最小值 | 功能的最小值。 |
+| 最大值 | 功能的最大值。 |
 
-![功能詳細資訊數字](./media/how-to-monitor-datasets/feature-details.png)
+![功能詳細資料數值](./media/how-to-monitor-datasets/feature-details.png)
 
 #### <a name="categorical-features"></a>類別功能 
 
-每個數據集監視器運行中都會分析數位要素。 以下功能在 Azure 機器學習工作室中公開。 顯示分佈的直方圖。
+數值功能會在每個資料集監視執行中進行分析。 下列會在 Azure Machine Learning studio 中公開。 隨即顯示分佈的長條圖。
 
 | 計量 | 描述 |  
 | ------ | ----------- |  
-| 歐克利迪亞距離 | 基線和目標分佈之間的幾何距離。 |
-| 唯一值 | 要素的唯一值(基數)數。 |
+| Euclidian 距離 | 基準與目標分佈之間的幾何距離。 |
+| 唯一值 | 功能的唯一值（基數）數目。 |
 
 
-![功能詳細資訊類別](./media/how-to-monitor-datasets/feature-details2.png)
+![功能詳細資料類別](./media/how-to-monitor-datasets/feature-details2.png)
 
-## <a name="metrics-alerts-and-events"></a>指標、警示和事件
+## <a name="metrics-alerts-and-events"></a>計量、警示和事件
 
-指標可以在與機器學習工作區關聯的[Azure 應用程式見解](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)資源中查詢。 它允許造訪應用程式見解的所有功能,包括為自訂警報規則設置操作組和操作組以觸發操作,例如電子郵件/SMS/Push/語音或 Azure 功能。 有關詳細資訊,請參閱完整的應用程式見解文檔。 
+您可以在與您的機器學習服務工作區相關聯的[Azure 應用程式 Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview)資源中查詢計量。 這可讓您存取 Application Insights 的所有功能，包括設定自訂警示規則和動作群組來觸發動作，例如電子郵件/SMS/推播/語音或 Azure 功能。 如需詳細資訊，請參閱完整的 Application Insights 檔。 
 
-要開始,請導航到 Azure 門戶並選擇工作區的 **「概述」** 頁。  關聯的應用程式見解資源位於最右側:
+若要開始使用，請流覽至 Azure 入口網站，然後選取工作區的 **[總覽**] 頁面。  相關聯的 Application Insights 資源位於最右邊：
 
 [![Azure 入口網站概觀](./media/how-to-monitor-datasets/ap-overview.png)](media/how-to-monitor-datasets/ap-overview-expanded.png)
 
-在左邊窗格的「監視」下選擇日誌(分析):
+在左窗格中，選取 [監視] 下的 [記錄（分析）]：
 
-![應用程式洞察概述](./media/how-to-monitor-datasets/ai-overview.png)
+![Application insights 總覽](./media/how-to-monitor-datasets/ai-overview.png)
 
-資料集監控器指標儲存為`customMetrics`。 您可以在設定資料集監視器以檢視查詢後編寫與執行查詢:
+資料集監視器計量會儲存為`customMetrics`。 您可以在設定資料集監視器之後撰寫並執行查詢來加以查看：
 
-[![紀錄分析查詢](./media/how-to-monitor-datasets/simple-query.png)](media/how-to-monitor-datasets/simple-query-expanded.png)
+[![Log analytics 查詢](./media/how-to-monitor-datasets/simple-query.png)](media/how-to-monitor-datasets/simple-query-expanded.png)
 
-確定設定警示規則的指標後,建立新的警報規則:
+在識別計量以設定警示規則之後，請建立新的警示規則：
 
 ![新增警示規則](./media/how-to-monitor-datasets/alert-rule.png)
 
-您可以使用現有操作群組,或建立新操作群組來定義滿足設定條件時要執行的操作:
+您可以使用現有的動作群組，或建立一個新的，以定義符合設定條件時所要採取的動作：
 
-![新操作群組](./media/how-to-monitor-datasets/action-group.png)
+![新增動作群組](./media/how-to-monitor-datasets/action-group.png)
 
 ## <a name="troubleshooting"></a>疑難排解
 
-限制並已知問題:
+限制與已知問題：
 
-* 回填作業的時間範圍限制為監視器頻率設置的 31 個間隔。 
-* 限制 200 個要素,除非未指定要素清單(使用的所有要素)。
-* 計算大小必須足夠大才能處理數據。 
-* 確保數據集在給定監視器運行的開始日期和結束日期內具有數據。
-* 數據集監視器將僅適用於包含 50 行或更多行的數據集。 
+* 回填作業的時間範圍限制為監視頻率設定的31個間隔。 
+* 200功能的限制，除非未指定功能清單（所有使用的功能）。
+* 計算大小必須夠大，才能處理資料。 
+* 請確定您的資料集在指定的監視執行的開始和結束日期內有資料。
+* 資料集監視器僅適用于包含50個或更多資料列的資料集。 
 
-數據集中的列或要素根據下表中的條件分類為分類或數位。 如果該功能不符合這些條件(例如,具有 >100 個唯一值的類型字串列),則該功能將從我們的資料漂移演演演算法中刪除,但仍被分析。 
+資料集中的資料行或功能會根據下表中的條件分類為類別或數值。 如果功能不符合這些條件（例如，具有 >100 唯一值之 string 類型的資料行），則會從我們的資料漂移演算法中卸載此功能，但仍會進行分析。 
 
-| 功能類型 | 資料類型 | 條件 | 限制 | 
+| 功能類型 | 資料類型 | 狀況 | 限制 | 
 | ------------ | --------- | --------- | ----------- |
-| 類別 | 字串, 布林, 布林, int, 浮動 | 要素中的唯一值數小於 100,小於行數的 5%。 | Null 被視為其自己的類別。 | 
-| 數值 | int, 浮動 | 要素中的值是數值數據類型,不符合分類要素的條件。 | 如果>15% 的值為空,則要素將被刪除。 | 
+| 類別 | string、bool、int、float | 此功能中的唯一值數目小於100，且小於5% 的資料列數目。 | Null 會被視為它自己的類別。 | 
+| 數值 | int、float | 功能中的值是數值資料類型，而且不符合類別功能的條件。 | 如果 >的15% 值為 null，則會卸載功能。 | 
 
 ## <a name="next-steps"></a>後續步驟
 
-* 前往[Azure 機器學習工作室](https://ml.azure.com)或[Python 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb)以設置數據集監視器。
-* 瞭解如何在[部署到 Azure 庫伯奈斯服務的模型](how-to-monitor-data-drift.md)上設置數據漂移。
-* 使用[事件網格](how-to-use-event-grid.md)設置數據集漂移監視器。 
+* 前往[Azure Machine Learning studio](https://ml.azure.com)或[Python 筆記本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datadrift-tutorial/datadrift-tutorial.ipynb)來設定資料集監視。
+* 瞭解如何在[部署至 Azure Kubernetes Service 的模型](how-to-monitor-data-drift.md)上設定資料漂移。
+* 使用[事件方格](how-to-use-event-grid.md)來設定資料集漂移監視器。 

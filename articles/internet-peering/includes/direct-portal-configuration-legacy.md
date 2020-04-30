@@ -9,45 +9,45 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 632490498b8dd13414657edb9518cd543ac07af6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678846"
 ---
-1. 在「**建立對等」** 頁上的 **「設定」** 選項卡上,填寫如下所示的框。
+1. 在 [**建立對等互連** **] 頁面**的 [設定] 索引標籤上，填寫方塊，如下所示。
 
     > [!div class="mx-imgBorder"]
-    > ![建立對等頁設定選項卡](../media/setup-direct-conf-tab.png)
+    > ![建立對等互連頁面設定索引標籤](../media/setup-direct-conf-tab.png)
 
-    * 對於**對等式**,選擇 **"直接**"。
-    * 對於**微軟網路**,請選擇**AS8075**。 不要選擇 ASN 8069。 它保留給特殊應用程序,並且只由[微軟對等互連](mailto:peering@microsoft.com)使用。
-    * 選擇**SKU**做**為基本免費**。 不要選擇"免費高級",因為它是為特殊應用程式保留的。
-    * 選擇要將對等互連轉換為 Azure 資源的**Metro**位置。 如果在選擇的**Metro**位置中具有未轉換為 Azure 資源的對等連接,則這些連接將列在 **「對等連接**」部分中,如圖所示。 現在,您可以將這些對等連接轉換為 Azure 資源。
+    * 針對 [對**等互連類型**]，選取 [**直接**]。
+    * 針對 [ **Microsoft 網路**]，選取 [ **AS8075**]。 請勿選取 [ASN 8069]。 它會保留給特殊應用程式，而且僅供[Microsoft 對等互連](mailto:peering@microsoft.com)使用。
+    * 選取 [ **SKU** ] 作為 [基本] [**免費**]。 請不要選取 [Premium Free]，因為它是保留給特殊應用程式。
+    * 選取您想要將對等互連轉換至 Azure 資源的**Metro**位置。 如果您在選取的**Metro**位置中有與 Microsoft 的對等互連未轉換成 Azure 資源，則這些連線會列在 [對**等互連**連線] 區段中，如下所示。 您現在可以將這些對等互連連線轉換成 Azure 資源。
 
         > [!div class="mx-imgBorder"]
-        > ![對等互連連線清單](../media/setup-directlegacy-conf-tab.png)
+        > ![對等互連連接清單](../media/setup-directlegacy-conf-tab.png)
 
-1. 如果需要更新頻寬,請選擇線路的編輯按鈕以修改連接設置。
+1. 如果您需要更新頻寬，請選取一行的 [編輯] 按鈕來修改連線設定。
 
     > [!div class="mx-imgBorder"]
     > ![[編輯] 按鈕](../media/setup-directlegacy-conf-tab-edit.png)
 
     > [!NOTE]
-    > 如果要在所選**的 Metro**位置添加與 Microsoft 的其他對等互連連接,請選擇「**創建新**」。 有關詳細資訊,請參閱[使用門戶 創建或修改直接對等互連](../howto-direct-portal.md)。
+    > 如果您想要在選取的**Metro**位置新增與 Microsoft 的其他對等互連連線，**請選取 [新建]**。 如需詳細資訊，請參閱[使用入口網站建立或修改直接對等互連](../howto-direct-portal.md)。
     >
 
-1. 選取 [檢閱 + 建立]  。 請注意,門戶運行您輸入的資訊的基本驗證。 頂部的功能區顯示消息 *「正在運行最終驗證..."*
+1. 選取 [檢閱 + 建立]  。 請注意，入口網站會對您所輸入的資訊執行基本驗證。 頂端的功能區會顯示執行*最終驗證*的訊息 ...。
 
     > [!div class="mx-imgBorder"]
-    > ![對等驗證選項卡](../media/setup-direct-review-tab-validation.png)
+    > ![對等驗證索引標籤](../media/setup-direct-review-tab-validation.png)
 
-1. 消息更改為*驗證后*,驗證您的資訊。 通過選擇 **「創建**」提交請求。 要修改請求,請選擇 **「上一步」** 並重複這些步驟。
-
-    > [!div class="mx-imgBorder"]
-    > ![對等提交](../media/setup-direct-review-tab-submit.png)
-
-1. 提交請求後,等待部署完成。 如果部署失敗,請與[微軟對等互連](mailto:peering@microsoft.com)。 成功部署如下所示。
+1. 當訊息變更為 [*通過驗證*] 之後，請確認您的資訊。 選取 [**建立**] 以提交要求。 若要修改您的要求，請選取 [**上一**步] 並重複步驟。
 
     > [!div class="mx-imgBorder"]
-    > ![窺視成功](../media/setup-direct-success.png)
+    > ![對等互連提交](../media/setup-direct-review-tab-submit.png)
+
+1. 提交要求之後，請等候部署完成。 如果部署失敗，請聯絡[Microsoft 對等互連](mailto:peering@microsoft.com)。 如這裡所示，成功的部署隨即出現。
+
+    > [!div class="mx-imgBorder"]
+    > ![對等互連成功](../media/setup-direct-success.png)

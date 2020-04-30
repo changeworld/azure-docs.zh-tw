@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 8e1aeaf105ce371e965b433ac78e2b257f4bc18b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682035"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>使用 Azure AD 驗證存取 Azure 媒體服務 API  
 
 > [!NOTE]
-> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>檢視版本,[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外,請參閱[從 v2 到 v3 的遷移指南](../latest/migrate-from-v2-to-v3.md)
+> 媒體服務 v2 不會再新增任何新的特性或功能。 <br/>請查看最新版本，[媒體服務 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另請參閱[從 v2 到 v3 的遷移指引](../latest/migrate-from-v2-to-v3.md)
 
 Azure 媒體服務 API 是一種 RESTful API。 您可以使用 REST API 或使用可用的用戶端 SDK 來執行媒體資源的作業。 Azure 媒體服務提供適用於 Microsoft .NET 的媒體服務用戶端 SDK。 在獲得存取媒體服務資源和媒體服務 API 的授權之前，您必須先進行驗證。 
 
@@ -32,7 +32,7 @@ Azure 媒體服務 API 是一種 RESTful API。 您可以使用 REST API 或使�
 本文件提供如何使用 REST 或 .NET API 來存取媒體服務 API 的概觀。
 
 > [!NOTE]
-> 2018 年 6 月 1 日棄用訪問控制授權。
+> 存取控制授權已于2018年6月1日淘汰。
 
 ## <a name="access-control"></a>存取控制
 
@@ -47,7 +47,7 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
 當您使用 Azure AD 驗證搭配 Azure 媒體服務 時，會有兩個驗證選項：
 
 - **使用者驗證**。 驗證使用應用程式與媒體服務資源互動的人員。 互動式應用程式應該會先提示使用者輸入使用者的認證。 例如，授權的使用者用來監控編碼工作或即時串流的管理主控台應用程式。 
-- **服務主體身份驗證**。 驗證服務。 通常使用這種驗證方法的應用程式有執行精靈服務、中介層服務或排程的工作的應用程式。 例如，Web 應用程式、函數應用程式、邏輯應用程式、API 或微服務。
+- **服務主體驗證**。 驗證服務。 通常使用這種驗證方法的應用程式有執行精靈服務、中介層服務或排程的工作的應用程式。 例如，Web 應用程式、函數應用程式、邏輯應用程式、API 或微服務。
 
 ### <a name="user-authentication"></a>使用者驗證 
 
@@ -79,7 +79,7 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
        租用戶資訊可從 Azure 入口網站擷取。 將游標放在右上角登入的使用者名稱上方。
    * 媒體服務資源 URI。 
 
-       對於位於同一 Azure 環境中的媒體服務帳戶(例如,Htttt/rest.media.azure.net),\/此 URI 相同。
+       相同 Azure 環境中媒體服務帳戶的這個 URI 都相同（例如，HTTPs：\//rest.media.azure.net）。
 
    * 媒體服務 (原生) 應用程式用戶端識別碼。
    * 媒體服務 (原生) 應用程式重新導向 URI。
@@ -121,7 +121,7 @@ Azure 媒體 REST 要求若要成功，呼叫的使用者必須擁有嘗試存�
        租用戶資訊可從 Azure 入口網站擷取。 將游標放在右上角登入的使用者名稱上方。
    * 媒體服務資源 URI。 
 
-       對於位於同一 Azure 環境中的媒體服務帳戶(例如,Htttt/rest.media.azure.net),\/此 URI 相同。
+       此 URI 與位於相同 Azure 環境中媒體服務帳戶相同（例如，HTTPs：\//rest.media.azure.net）。
 
    * REST 媒體服務的資源 URI。
 

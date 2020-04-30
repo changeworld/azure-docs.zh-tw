@@ -1,5 +1,5 @@
 ---
-title: 管理使用者配置的託管識別 - Azure CLI - Azure AD
+title: 管理使用者指派的受控識別-Azure CLI-Azure AD
 description: 如何使用 Azure CLI 建立、列出和刪除使用者指派之受控識別的逐步說明。
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.date: 04/17/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be5defb85547e8750dea9ceaa481217aa40a004e
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/18/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81639766"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-cli"></a>使用 Azure CLI 建立、列出和刪除使用者指派的受控識別
@@ -29,7 +29,7 @@ ms.locfileid: "81639766"
 
 在本文中，您會了解如何使用 Azure CLI 建立、列出和刪除使用者指派的受控識別。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 如果您不熟悉 Azure 資源的受控識別，請參閱[概觀一節](overview.md)。 **請務必檢閱[系統指派和使用者指派受控識別之間的差異](overview.md#how-does-the-managed-identities-for-azure-resources-work)**。
 - 如果您還沒有 Azure 帳戶，請先[註冊免費帳戶](https://azure.microsoft.com/free/)，再繼續進行。
@@ -40,7 +40,7 @@ ms.locfileid: "81639766"
 
 
 > [!NOTE]
-> 為了在使用 CLI 使用應用 servivce 主體時修改使用者許可權,您必須在 Azure AD 圖形 API 中提供服務主體附加許可權,因為 CLI 的一部分對圖形 API 執行 GET 請求。 否則,您可能會最終收到"完成操作的許可權不足"消息。 為此,您需要進入 Azure 活動目錄中的應用註冊,選擇應用、按一下 API 許可權、向下滾動並選擇 Azure 活動目錄圖。 在此處選擇應用程式許可權,然後添加相應的許可權。 
+> 若要在使用 CLI 的應用程式 servivce 主體時修改使用者權限，您必須在 Azure AD 圖形 API 中提供服務主體的其他許可權，做為 CLI 的某些部分，會針對圖形 API 執行 GET 要求。 否則，您最後可能會收到「許可權不足，無法完成作業」訊息。 若要這麼做，您必須移至 Azure Active Directory 中的應用程式註冊、選取您的應用程式、按一下 [API 許可權]、[向下]，然後選取 [Azure Active Directory 圖形]。 從該處選取 [應用程式許可權]，然後新增適當的許可權。 
 
 
 

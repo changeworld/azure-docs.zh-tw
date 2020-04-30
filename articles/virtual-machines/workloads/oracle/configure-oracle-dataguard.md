@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: 96528dc34305e77602634110a0153f7623a15c96
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81676759"
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上實作 Oracle Data Guard 
 
 Azure CLI 可用來從命令列或在指令碼中建立和管理 Azure 資源。 本文說明如何使用 Azure CLI，從 Azure Marketplace 映像部署 Oracle Database 12c 資料庫。 本文接著會為您逐步說明如何安裝及設定 Azure 虛擬機器 (VM) 上的 Data Guard。
 
-在開始之前，請確定您已安裝 Azure CLI。 有關詳細資訊,請參閱 Azure [CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在開始之前，請確定您已安裝 Azure CLI。 如需詳細資訊，請參閱[Azure CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>準備環境
 ### <a name="assumptions"></a>假設
@@ -282,7 +282,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-打開閃回(這使得恢復變得容易得多),並將"備用檔\_\_管理"設置為自動。之後退出 SQL+Plus。
+開啟重新開機（這可讓復原變得更簡單），\_並\_將待命檔案管理設定為 [自動]。結束 SQL * Plus。
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;
@@ -512,7 +512,7 @@ SQL> EXIT;
 
 ### <a name="configure-data-guard-broker-on-myvm1-primary"></a>在 myVM1 (主要) 上設定 Data Guard Broker
 
-啟動 Data Guard Manager，並使用 SYS 和密碼登入。 (不要使用作業系統身份驗證。執行以下操作:
+啟動 Data Guard Manager，並使用 SYS 和密碼登入。 （請勿使用作業系統驗證。）執行下列動作：
 
 ```bash
 $ dgmgrl sys/OraPasswd1@cdb1

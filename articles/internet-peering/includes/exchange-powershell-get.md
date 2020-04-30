@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 34a23ce76ed0e9285a686073e1cbeb95347f7b7d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81678628"
 ---
-要獲取對等互連清單,運行**獲取阿茲對流**命令。
+若要取得對等互連清單，請執行**AzPeering**命令。
 
 ```powershell
 Get-AzPeering ResourceGroupName "PeeringResourceGroup" -Name "SeattleExchangePeering"
 ```
 
-此示例回應顯示端到端預配成功完成時。
+當端對端布建成功完成時，就會顯示此範例回應。
 
 ```powershell
     Name                     : SeattleExchangePeering

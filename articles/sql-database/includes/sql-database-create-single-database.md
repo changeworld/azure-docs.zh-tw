@@ -7,10 +7,10 @@ ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
 ms.openlocfilehash: 563ac8748e9d4f8a254a151814491113b9c816e6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81685153"
 ---
 在此步驟中，您會建立 Azure SQL Database 伺服器，以及使用 AdventureWorksLT 範例資料的單一資料庫。 您可以使用 Azure 入口網站功能表和畫面，或在 Azure Cloud Shell 中使用 Azure CLI 或 PowerShell 指令碼來建立資料庫。

@@ -12,10 +12,10 @@ ms.custom:
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c49745b30d2c4acc115a72af095f3e941dc4d509
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81683996"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>使用 Protocol Buffers 將遙測資料序列化
@@ -34,7 +34,7 @@ Protocol Buffers (Protobuf) 是結構化資料的二進位序列化格式。 Pr
 1. 產生 Protobuf 類別
 1. 本機測試
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 若要遵循本操作指南中的步驟，您需要：
 
@@ -65,7 +65,7 @@ Protocol Buffers (Protobuf) 是結構化資料的二進位序列化格式。 Pr
 
 在 Visual Studio Code 中，開啟 **remote-monitoring-services-dotnet-master\storage-adapter** 資料夾。 按一下任何 [還原]**** 按鈕，以修正無法解決的相依性。
 
-打開 **.vscode/launch.json**檔案,並將您的 Cosmos DB 連接字串分配給**PCS\_儲存適配器\_DOCUMENTDB\_CONNSTRING**環境變數。
+開啟**vscode/啟動 json**檔案，並將您的 Cosmos DB 連接字串指派給**\_pc pcs storageadapter\_DOCUMENTDB\_CONNSTRING**環境變數。
 
 > [!NOTE]
 > 當您在本機電腦上執行微服務時，仍需要 Azure 中的 Cosmos DB 執行個體才能正常運作。
@@ -202,11 +202,11 @@ Visual Studio Code 中的 [終端機]**** 視窗會顯示執行中微服務的�
 * **PCS\_AZURE\_STORAGE\_ACCOUNT** 環境變數的儲存體帳戶連接字串。
 * **PCS\_STORAGEADAPTER\_DOCUMENTDB\_CONNSTRING** 環境變數的 Cosmos DB 連接字串。
 
-打開**WebService_appsettings.ini**檔並修改設定,如下所示:
+開啟**WebService\appsettings.ini**檔案並修改設定，如下所示：
 
 #### <a name="configure-the-solution-to-include-your-new-device-model-files"></a>設定解決方案以包含新的裝置型號檔案
 
-默認情況下,新設備型號 JSON 和 JS 檔不會複製到構建的解決方案中。 您需要明確地包含在內。
+根據預設，您的新裝置模型 JSON 和 JS 檔案不會複製到建立的方案中。 您需要明確地包含在內。
 
 針對您要包含的每個檔案在 **services\services.csproj** 檔案中新增一個項目。 例如：
 

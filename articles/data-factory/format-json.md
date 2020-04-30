@@ -1,6 +1,6 @@
 ---
-title: Azure 資料工廠中的 JSON 格式
-description: 本主題介紹如何在 Azure 數據工廠中處理 JSON 格式。
+title: Azure Data Factory 中的 JSON 格式
+description: 本主題描述如何在 Azure Data Factory 中處理 JSON 格式。
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,33 +10,33 @@ ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 7b554ea5c2868559574979c58697fd31f8d2a2c4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686272"
 ---
-# <a name="json-format-in-azure-data-factory"></a>Azure 資料工廠中的 JSON 格式
+# <a name="json-format-in-azure-data-factory"></a>Azure Data Factory 中的 JSON 格式
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-當您要**解析 JSON 檔或將資料寫入 JSON 格式時,** 請按照本文操作。 
+當您想要**剖析 json 檔案，或將資料寫入 json 格式**時，請遵循這篇文章。 
 
-JSON格式支援以下連接器:[亞馬遜S3,Azure](connector-amazon-simple-storage-service.md) [Blob,Azure數據存儲第1代](connector-azure-data-lake-store.md)[,Azure數據存儲第2代](connector-azure-data-lake-storage.md)[,Azure檔案存儲](connector-azure-file-storage.md),[檔案系統](connector-file-system.md)[,FTP,](connector-ftp.md)[Google雲存儲](connector-google-cloud-storage.md)[,HDFS,HTTP](connector-hdfs.md)和[SFTP。](connector-sftp.md) [Azure Blob](connector-azure-blob-storage.md) [HTTP](connector-http.md)
+下列連接器支援 JSON 格式： [Amazon S3](connector-amazon-simple-storage-service.md)、 [azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure 檔案儲存體](connector-azure-file-storage.md)、[檔案系統](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)和[SFTP](connector-sftp.md)。
 
 ## <a name="dataset-properties"></a>資料集屬性
 
-如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 JSON 數據集支援的屬性清單。
+如需可用來定義資料集的區段和屬性完整清單，請參閱[資料集](concepts-datasets-linked-services.md)一文。 本節提供 JSON 資料集所支援的屬性清單。
 
 | 屬性         | 描述                                                  | 必要 |
 | ---------------- | ------------------------------------------------------------ | -------- |
 | type             | 資料集的類型屬性必須設定為**Json**。 | 是      |
-| location         | 檔的位置設置。 每個基於檔的連接器都有自己的位置類型和受支援的屬性。 `location` **請參考連接器文章 ->数据集属性部分的详细信息**。 | 是      |
-| encodingName     | 用於讀取/寫入測試檔的編碼類型。 <br>Allowed values are as follows: "UTF-8", "UTF-16", "UTF-16BE", "UTF-32", "UTF-32BE", "US-ASCII", "UTF-7", "BIG5", "EUC-JP", "EUC-KR", "GB2312", "GB18030", "JOHAB", "SHIFT-JIS", "CP875", "CP866", "IBM00858", "IBM037", "IBM273", "IBM437", "IBM500", "IBM737", "IBM775", "IBM850", "IBM852", "IBM855", "IBM857", "IBM860", "IBM861", "IBM863", "IBM864", "IBM865", "IBM869", "IBM870", "IBM01140", "IBM01141", "IBM01142", "IBM01143", "IBM01144", "IBM01145", "IBM01146", "IBM01147", "IBM01148", "IBM01149", "ISO-2022-JP", "ISO-2022-KR", "ISO-8859-1", "ISO-8859-2", "ISO-8859-3", "ISO-8859-4", "ISO-8859-5", "ISO-8859-6", "ISO-8859-7", "ISO-8859-8", "ISO-8859-9", "ISO-8859-13","ISO-8859-15","WINDOWS-874","WINDOWS-1250","WINDOWS-1251","WINDOWS-1252","視窗-1253","視窗-1254","視窗-1255","視窗-1256","視窗-1257","視窗-1258"。| 否       |
-| compression | 用於配置檔壓縮的屬性群組。 如果要在活動執行期間執行壓縮/解壓縮,請配置此部分。 | 否 |
-| type | 用於讀取/寫入 JSON 檔的壓縮編解碼器。 <br>允許的值是 bzip2、gzip、deflate、ZipDeflate、snappy**ZipDeflate**或**lz4**。 **bzip2** **gzip** **deflate** **snappy** 保存檔時使用。 默認值不會壓縮。<br>**注意**目前複製活動不支援"快速"&"lz4",並且映射數據流不支援"ZipDeflate"。<br>**注意**使用複製活動來解壓縮 ZipDeflate 檔案並寫入檔案的接收器資料儲存時,檔案將擷取到`<path specified in dataset>/<folder named as source zip file>/`資料夾: 。 | 否。  |
-| 層級 | 壓縮比。 <br>允許的值是**最佳**值或**最快**值。<br>- **最快:** 壓縮操作應儘快完成,即使生成的檔未以最佳方式壓縮也是如此。<br>- **最佳**: 壓縮操作應以最佳方式壓縮,即使操作需要更長的時間才能完成。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
+| location         | 檔案的位置設定。 每個以檔案為基礎的連接器在下`location`都有自己的位置類型和支援的屬性。 **請參閱連接器文章-> 資料集屬性一節中的詳細資訊**。 | 是      |
+| encodingName     | 用來讀取/寫入測試檔案的編碼類型。 <br>允許的值如下： "UTF-8"、"UTF-16"、"UTF-UTF-16BE"、"UTF-32"、"32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"，"GB18030"，"JOHAB"，"SHIFT-JIS"，"CP875"，"CP866"，"IBM00858"，"IBM037"，"IBM273"，"IBM437"，"IBM500"，"IBM737"，"IBM775"，"IBM850"，"IBM852"，"IBM855"，"IBM857"，"IBM860"，"IBM861"，"IBM863"，"IBM864"，"IBM865"，"IBM869"，"IBM870"，"IBM01140"，"IBM01141"，"IBM01142"，"IBM01143"，"IBM01144"，"IBM01145"，"IBM01146"，"IBM01147"，"IBM01148"，"IBM01149"，"ISO-2022-JP"，"ISO-2022-KR"，"ISO-8859-1"，"ISO-8859-2"，"ISO-8859-3"，"ISO-8859-4"，"ISO-8859-5"，"ISO-8859-6"，"ISO-8859-7"，"iso-8859-8"，"iso-8859-9"，"ISO-8859-13"、「ISO-8859-15」、「WINDOWS-874」、「WINDOWS-1250」、「WINDOWS-1251」、「WINDOWS-1252」、「WINDOWS-1253」、「WINDOWS-1254」、「WINDOWS-1255」、「WINDOWS-1256」、「WINDOWS-1257」、「WINDOWS-1258」。| 否       |
+| compression | 用來設定檔案壓縮的屬性群組。 當您想要在活動執行期間執行壓縮/解壓縮時，請設定此區段。 | 否 |
+| type | 用來讀取/寫入 JSON 檔案的壓縮編解碼器。 <br>允許的值為**bzip2**、 **gzip**、 **deflate**、 **ZipDeflate**、 **snappy**或**lz4**。 表示在儲存檔案時使用。 預設值為 [未壓縮]。<br>**注意：** 目前的複製活動不支援 "snappy" & "lz4"，而且對應資料流程不支援 "ZipDeflate"。<br>**請注意**，使用複製活動將 ZipDeflate 檔案解壓縮並寫入以檔案為基礎的接收資料存放區時，檔案將會解壓縮到資料夾： `<path specified in dataset>/<folder named as source zip file>/`。 | 否。  |
+| 層級 | 壓縮比例。 <br>允許的值為**最佳**或**最快**。<br>- **最快速：** 即使產生的檔案未以最佳方式壓縮，壓縮作業也應該儘快完成。<br>- **最佳**：即使作業需要較長的時間才能完成，壓縮作業也應以最佳方式壓縮。 如需詳細資訊，請參閱 [壓縮層級](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) 主題。 | 否       |
 
-下面是 Azure Blob 儲存的 JSON 資料集的範例:
+以下是 Azure Blob 儲存體上的 JSON 資料集範例：
 
 ```json
 {
@@ -64,42 +64,42 @@ JSON格式支援以下連接器:[亞馬遜S3,Azure](connector-amazon-simple-stor
 
 ## <a name="copy-activity-properties"></a>複製活動屬性
 
-如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)一文。 本節提供 JSON 源和接收器支援的屬性清單。
+如需可用來定義活動的區段和屬性完整清單，請參閱[管線](concepts-pipelines-activities.md)一文。 本節提供 JSON 來源和接收所支援的屬性清單。
 
-### <a name="json-as-source"></a>JSON 作為源
+### <a name="json-as-source"></a>JSON 做為來源
 
-複製活動***\*\*源***部分支援以下屬性。
+複製活動*** \* \* ***的 [來源] 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 複製活動來源的類型屬性必須設定為**JSONSource**。 | 是      |
-| 商店設置 | 有關如何從數據存儲讀取數據的一組屬性。 每個基於檔的連接器在`storeSettings`下 都有自己的受支援的讀取設置。 **請參考連接器文章 -> 複製活動屬性部份的詳細資訊**。 | 否       |
+| storeSettings | 一組屬性，說明如何從資料存放區讀取資料。 每個以檔案為基礎的連接器在下`storeSettings`都有自己支援的讀取設定。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
 
-### <a name="json-as-sink"></a>JSON 當作接收器
+### <a name="json-as-sink"></a>JSON 做為接收
 
-複製活動***\*接收\*器***部分支援以下屬性。
+複製活動*** \* \* ***的 [接收] 區段支援下列屬性。
 
 | 屬性      | 描述                                                  | 必要 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | 複製活動來源類型屬性必須設定為**JSONSink**。 | 是      |
-| 格式設定 | 一組屬性。 請參閱下面的**JSON 寫入設置**表。 | 否       |
-| 商店設置 | 有關如何將數據寫入數據存儲的一組屬性。 每個基於檔的連接器在`storeSettings`下 都有自己的支援的寫入設置。 **請參考連接器文章 -> 複製活動屬性部份的詳細資訊**。 | 否       |
+| type          | 複製活動來源的類型屬性必須設定為**JSONSink**。 | 是      |
+| formatSettings | 屬性的群組。 請參閱下面的**JSON 寫入設定**表格。 | 否       |
+| storeSettings | 一組屬性，說明如何將資料寫入資料存放區。 每個以檔案為基礎的連接器在下`storeSettings`都有它自己的支援寫入設定。 **請參閱連接器中的詳細資料文章-> 複製活動屬性一節**。 | 否       |
 
-支援的**JSON 寫入設定**下`formatSettings`:
+支援的**JSON 寫入設定** `formatSettings`如下：
 
 | 屬性      | 描述                                                  | 必要                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | 格式類型設定必須設定為**JsonWriteSettings**。 | 是                                                   |
-| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為︰**setOfObjects** 和 **arrayOfObjects**。 **預設值**為**物件物件集**。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |否 |
+| type          | FormatSettings 的類型必須設定為**JsonWriteSettings**。 | 是                                                   |
+| filePattern |表示每個 JSON 檔案中儲存的資料模式。 允許的值為︰**setOfObjects** 和 **arrayOfObjects**。 **預設**值為**setOfObjects**。 關於這些模式的詳細資訊，請參閱 [JSON 檔案模式](#json-file-patterns)一節。 |否 |
 
 ### <a name="json-file-patterns"></a>JSON 檔案模式
 
-複製活動可以自動檢測和分析 JSON 檔的以下模式。 
+複製活動可以自動偵測並剖析下列 JSON 檔案模式。 
 
 - **類型 I：setOfObjects**
 
     每個檔案都會包含單一物件，或以行分隔/串連的多個物件。 
-    在複製活動接收器中選擇此選項時,複製活動將生成一個 JSON 檔,每行每個物件(行分隔)。
+    在複製活動接收中選擇此選項時，複製活動會產生單一 JSON 檔案，每行一個物件（以行分隔）。
 
     * **單一物件 JSON 範例**
 
@@ -186,25 +186,25 @@ JSON格式支援以下連接器:[亞馬遜S3,Azure](connector-amazon-simple-stor
 
 ## <a name="mapping-data-flow-properties"></a>對應資料流程屬性
 
-JSON 檔案類型可用作映射數據流的接收器和源。
+JSON 檔案類型可以當做接收和對應資料流程中的來源使用。
 
-### <a name="creating-json-structures-in-a-derived-column"></a>在衍生的列中建立 JSON 結構
+### <a name="creating-json-structures-in-a-derived-column"></a>在衍生的資料行中建立 JSON 結構
 
-您可以通過派生的列運算式產生器向資料流添加複雜列。 在派生列轉換中,添加新列,並通過單擊藍色框打開表達式生成器。 要使列變得複雜,可以手動輸入 JSON 結構或使用 UX 以交互方式添加子列。
+您可以透過衍生的資料行運算式產生器，將複雜的資料行加入至您的資料流程。 在 [衍生的資料行] 轉換中，加入新的資料行，然後按一下藍色方塊來開啟 [運算式產生器]。 若要讓資料行變得複雜，您可以手動輸入 JSON 結構，或使用 UX 以互動方式加入個子。
 
-#### <a name="using-the-expression-builder-ux"></a>使用表示式產生器 UX
+#### <a name="using-the-expression-builder-ux"></a>使用運算式產生器 UX
 
-在輸出架構側窗格中,將滑鼠懸停在列上,然後單擊加號圖示。 選擇 **「添加子列**」以使該列成為複雜類型。
+在輸出架構側邊窗格中，將滑鼠停留在資料行上，然後按一下加號圖示。 選取 [**加入 subcolumn** ]，將資料行設為複雜類型。
 
-![新增子欄](media/data-flow/addsubcolumn.png "新增子欄")
+![新增 subcolumn](media/data-flow/addsubcolumn.png "新增 Subcolumn")
 
-可以以同樣的方式添加其他列和子列。 對於每個非複雜欄位,可以在右側的運算式編輯器中添加運算式。
+您可以用相同的方式加入其他資料行和個子。 針對每個非複雜欄位，可以在右邊的運算式編輯器中加入運算式。
 
-![複雜欄](media/data-flow/complexcolumn.png "複雜欄")
+![複雜資料行](media/data-flow/complexcolumn.png "複雜資料行")
 
 #### <a name="entering-the-json-structure-manually"></a>手動輸入 JSON 結構
 
-要手動添加 JSON 結構,請添加新列並在編輯器中輸入表達式。 表示式遵循以下一般格式:
+若要手動加入 JSON 結構，請加入新的資料行，並在編輯器中輸入運算式。 運算式會遵循下列一般格式：
 
 ```
 @(
@@ -215,7 +215,7 @@ JSON 檔案類型可用作映射數據流的接收器和源。
 )
 ```
 
-如果為名為「複雜列」的列輸入此表示式,則它將以以下 JSON 一詞寫入接收器:
+如果已針對名為 "complexColumn" 的資料行輸入此運算式，則會將它寫入至接收，做為下列 JSON：
 
 ```
 {
@@ -228,7 +228,7 @@ JSON 檔案類型可用作映射數據流的接收器和源。
 }
 ```
 
-#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>完整的階層定義範例手動文稿
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>完整階層式定義的範例手動腳本
 ```
 @(
     title=Title,
@@ -256,13 +256,13 @@ JSON 檔案類型可用作映射數據流的接收器和源。
 
 ### <a name="source-format-options"></a>來源格式選項
 
-使用 JSON 數據集作為數據流中的來源,可以設置五個附加設置。 可在 **「源選項**」選項卡中的 **「JSON 設定**手風琴」下找到這些設置。  
+使用 JSON 資料集做為資料流程中的來源，可讓您設定五個額外的設定。 這些設定可以在 [**來源選項**] 索引標籤的 [ **JSON 設定**] [可折疊] 底下找到。  
 
 ![JSON 設定](media/data-flow/json-settings.png "JSON 設定")
 
-#### <a name="default"></a>預設
+#### <a name="default"></a>預設值
 
-默認情況下,JSON 數據以以下格式讀取。
+根據預設，JSON 資料會以下列格式讀取。
 
 ```
 { "json": "record 1" }
@@ -270,9 +270,9 @@ JSON 檔案類型可用作映射數據流的接收器和源。
 { "json": "record 3" }
 ```
 
-#### <a name="single-document"></a>單一文件
+#### <a name="single-document"></a>單一檔
 
-如果選擇了**單個文檔**,則映射數據流將讀取每個檔中的一個 JSON 文檔。 
+如果選取了 [**單一**檔]，則對應的資料流程會從每個檔案讀取一個 JSON 檔。 
 
 ``` json
 File1.json
@@ -289,11 +289,11 @@ File3.json
 }
 ```
 > [!NOTE]
-> 如果數據流在預覽 JSON 數據時引發錯誤,指出"corrupt_record",則數據可能包含 JSON 檔中的單個文檔。 設置「單個文檔」應清除該錯誤。
+> 如果資料流程在預覽 JSON 資料時擲回錯誤指出「corrupt_record」，則您的資料可能包含 JSON 檔案中的單一檔。 設定「單一檔」應該會清除該錯誤。
 
-#### <a name="unquoted-column-names"></a>未參考的欄名稱
+#### <a name="unquoted-column-names"></a>不具引號的資料行名稱
 
-如果選擇了**未引用的列名稱**,則映射數據流將讀取未由引號包圍的 JSON 列。 
+如果選取了不具引號的資料**行名稱**，則對應資料流程會讀取未以引號括住的 JSON 資料行。 
 
 ```
 { json: "record 1" }
@@ -301,9 +301,9 @@ File3.json
 { json: "record 3" }
 ```
 
-#### <a name="has-comments"></a>有評論
+#### <a name="has-comments"></a>有批註
 
-如果 JSON 數據具有 C 或 C++樣式註解,請選擇 **「有註釋**」。
+如果 JSON 資料具有 C 或 c + + 樣式批註，請選取 [**具有批註**]。
 
 ``` json
 { "json": /** comment **/ "record 1" }
@@ -311,9 +311,9 @@ File3.json
 { /** comment **/ "json": "record 3" }
 ```
 
-#### <a name="single-quoted"></a>單次報價
+#### <a name="single-quoted"></a>單引號
 
-如果 JSON 欄位和值使用單引號而不是雙引號,請選擇 **「單引號**」。
+如果 JSON 欄位和值使用單引號，而不是雙引號，請選取 [**單引號**]。
 
 ```
 { 'json': 'record 1' }
@@ -321,9 +321,9 @@ File3.json
 { 'json': 'record 3' }
 ```
 
-#### <a name="backslash-escaped"></a>反斜杠逃跑
+#### <a name="backslash-escaped"></a>反斜線已轉義
 
-如果背斜杠用於轉義 JSON 數據中的字元,請選擇 **「單引號**」。
+如果使用反斜線來轉義 JSON 資料中的字元，請選取 [**單引號**]。
 
 ```
 { "json": "record 1" }
@@ -333,7 +333,7 @@ File3.json
 
 ## <a name="next-steps"></a>後續步驟
 
-- [複製活動概述](copy-activity-overview.md)
-- [對應資料串流](concepts-data-flow-overview.md)
-- [尋找活動](control-flow-lookup-activity.md)
-- [取得中繼資料活動](control-flow-get-metadata-activity.md)
+- [複製活動總覽](copy-activity-overview.md)
+- [對應資料流程](concepts-data-flow-overview.md)
+- [查閱活動](control-flow-lookup-activity.md)
+- [GetMetadata 活動](control-flow-get-metadata-activity.md)

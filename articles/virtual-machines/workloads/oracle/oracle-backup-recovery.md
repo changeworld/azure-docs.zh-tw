@@ -15,17 +15,17 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: c5f02117d3af7fb411c75d783df82f6008d8104e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687009"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虛擬機器上備份及復原 Oracle Database 12c 資料庫
 
 您可以使用 Azure CLI 在命令提示字元或使用指令碼建立和管理 Azure 資源。 在本文中，我們會使用 Azure CLI 指令碼，從 Azure Marketplace 資源庫映像部署 Oracle Database 12c 資料庫。
 
-在開始之前，請確定您已安裝 Azure CLI。 有關詳細資訊,請參閱 Azure [CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+在開始之前，請確定您已安裝 Azure CLI。 如需詳細資訊，請參閱[Azure CLI 安裝指南](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
 ## <a name="prepare-the-environment"></a>準備環境
 
@@ -508,7 +508,7 @@ ms.locfileid: "81687009"
 
     ![公用 IP 位址的清單](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  在 [公用 IP 位址]**** 刀鋒視窗上，按一下 [新增]****。 在 [建立公用 IP 位址]**** 刀鋒視窗上，於 [名稱]**** 中選取公用 IP 名稱。 針對 [資源群組]****，選取 [使用現有的]****。 然後,按一下"**創建**。
+2.  在 [公用 IP 位址]**** 刀鋒視窗上，按一下 [新增]****。 在 [建立公用 IP 位址]**** 刀鋒視窗上，於 [名稱]**** 中選取公用 IP 名稱。 針對 [資源群組]****，選取 [使用現有的]****。 然後，按一下 [**建立**]。
 
     ![建立 IP 位址](./media/oracle-backup-recovery/create_ip_01.png)
 

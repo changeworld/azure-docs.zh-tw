@@ -1,7 +1,7 @@
 ---
-title: 使用 Azure 資源管理員樣本建立工作區
+title: 使用 Azure Resource Manager 範本建立工作區
 titleSuffix: Azure Machine Learning
-description: 瞭解如何使用 Azure 資源管理器範本創建新的 Azure 機器學習工作區。
+description: 瞭解如何使用 Azure Resource Manager 範本來建立新的 Azure Machine Learning 工作區。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,30 +11,30 @@ author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
 ms.openlocfilehash: b802a9c9df7e7f0c44ea66ee0061efb517b80050
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81682750"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 <br>
 
-# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 資源管理員樣本為 Azure 機器學習建立工作區
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure Resource Manager 範本來建立 Azure Machine Learning 的工作區
 
-在本文中,您將瞭解使用 Azure 資源管理器範本創建 Azure 機器學習工作區的多種方法。 Resource Manager 範本可讓您輕鬆地以單一、協調的作業建立資源。 範本是 JSON 文件，其定義部署所需的資源。 它也可以指定部署參數。 參數用來在使用範本時提供輸入值。
+在本文中，您將瞭解使用 Azure Resource Manager 範本建立 Azure Machine Learning 工作區的數種方式。 Resource Manager 範本可讓您輕鬆地以單一、協調的作業建立資源。 範本是 JSON 文件，其定義部署所需的資源。 它也可以指定部署參數。 參數用來在使用範本時提供輸入值。
 
 如需詳細資訊，請參閱 [使用 Azure Resource Manager 範本部署應用程式](../azure-resource-manager/templates/deploy-powershell.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* **Azure 訂閱**。 如果沒有,請嘗試[Azure 機器學習的免費或付費版本](https://aka.ms/AMLFree)。
+* **Azure 訂**用帳戶。 如果您沒有帳戶，請試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 
 * 若要從 CLI 使用範本，您需要 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) 或 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="resource-manager-template"></a>Resource Manager 範本
 
-以下資源管理員樣本可用於建立 Azure 機器學習工作區和關聯的 Azure 資源:
+下列 Resource Manager 範本可以用來建立 Azure Machine Learning 工作區和相關聯的 Azure 資源：
 
 [!code-json[create-azure-machine-learning-service-workspace](~/quickstart-templates/101-machine-learning-create/azuredeploy.json)]
 
@@ -63,9 +63,9 @@ ms.locfileid: "81682750"
     其他服務的名稱會隨機產生。
 
 > [!TIP]
-> 與本文件關聯的範本創建新的 Azure 容器註冊表時,還可以創建新工作區,而無需創建容器註冊表。 當您執行需要容器註冊表的操作時,將創建一個操作。 例如,訓練或部署模型。
+> 雖然與此檔相關聯的範本會建立新的 Azure Container Registry，但您也可以建立新的工作區，而不需要建立容器登錄。 當您執行需要 container registry 的作業時，將會建立一個。 例如，定型或部署模型。
 >
-> 您還可以在 Azure 資源管理器樣本中引用現有容器註冊表或儲存帳戶,而不是創建新容器註冊表或存儲帳戶。
+> 您也可以在 [Azure Resource Manager] 範本中參考現有的容器登錄或儲存體帳戶，而不是建立一個新的。
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
@@ -75,15 +75,15 @@ ms.locfileid: "81682750"
 * [使用 Azure Resource Manager 範本部署應用程式](../azure-resource-manager/templates/deploy-powershell.md)
 * [Microsoft.MachineLearningServices resource 類型](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
-### <a name="advanced-template"></a>進階範本
+### <a name="advanced-template"></a>Advanced 範本
 
-以下範例樣本展示如何建立具有三個設定的工作區:
+下列範例範本示範如何建立具有三個設定的工作區：
 
-* 為工作區啟用高機密性設定
-* 將工作區開啟加密
-* 使用現有的 Azure 金鑰保管庫檢索客戶管理的金鑰
+* 啟用工作區的高機密性設定
+* 啟用工作區的加密
+* 使用現有的 Azure Key Vault 來取出客戶管理的金鑰
 
-有關詳細資訊,請參閱[靜態加密](concept-enterprise-security.md#encryption-at-rest)。
+如需詳細資訊，請參閱[靜態加密](concept-enterprise-security.md#encryption-at-rest)。
 
 ```json
 {
@@ -265,7 +265,7 @@ ms.locfileid: "81682750"
 }
 ```
 
-要取得金鑰保存的 ID 以及此樣本所需的金鑰 URI,可以使用 Azure CLI。 以下命令取得金鑰保存庫代碼:
+若要取得 Key Vault 的識別碼，以及此範本所需的金鑰 URI，您可以使用 Azure CLI。 下列命令會取得 Key Vault 識別碼：
 
 ```azurecli-interactive
 az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
@@ -273,7 +273,7 @@ az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
 
 此命令會傳回如下值：`"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`。
 
-要取得客戶託管金鑰的 URI,請使用以下指令:
+若要取得客戶管理金鑰的 URI，請使用下列命令：
 
 ```azurecli-interactive
 az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
@@ -282,17 +282,17 @@ az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
 此命令會傳回如下值：`"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`。
 
 > [!IMPORTANT]
-> 建立工作區後,無法更改機密數據、加密、密鑰保管庫 ID 或密鑰標識符的設置。 要更改這些值,必須使用新值創建新工作區。
+> 建立工作區之後，您就無法變更機密資料、加密、金鑰保存庫識別碼或金鑰識別元的設定。 若要變更這些值，您必須使用新的值來建立新的工作區。
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
 1. 遵循[從自訂範本部署資源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)的步驟。 當您看見 [編輯範本]____ 畫面時，貼入此文件的範本。
 1. 選取 [儲存]____ 以使用範本。 提供下列資訊，並同意列出的條款及條件：
 
-   * 訂閱:選擇要用於這些資源的 Azure 訂閱。
-   * 資源組:選擇或創建資源組以包含服務。
-   * 工作區名稱:要用於要創建的 Azure 機器學習工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
-   * 位置:選擇將建立資源的位置。
+   * 訂用帳戶：選取要用於這些資源的 Azure 訂用帳戶。
+   * 資源群組：選取或建立包含服務的資源群組。
+   * 工作區名稱：要用於將建立之 Azure Machine Learning 工作區的名稱。 工作區名稱必須介於 3 到 33 個字元之間。 只能包含英數字元和 '-'。
+   * 位置：選取將建立資源的位置。
 
 如需詳細資訊，請參閱[從自訂範本部署資源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
@@ -326,31 +326,31 @@ az group deployment create \
 
 ## <a name="troubleshooting"></a>疑難排解
 
-### <a name="resource-provider-errors"></a>資源提供程式錯誤
+### <a name="resource-provider-errors"></a>資源提供者錯誤
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
 
-### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure 金鑰保存庫存取原則與 Azure 資源管理員樣本
+### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault 存取原則和 Azure Resource Manager 範本
 
-使用 Azure 資源管理器樣本建立工作區和相關資源(包括 Azure 密鑰保管庫)時,請多次使用。 例如,在持續整合和部署管道中多次使用具有相同參數的範本。
+當您使用 Azure Resource Manager 範本來建立工作區和相關聯的資源（包括 Azure Key Vault）時，會多次。 例如，使用範本多次，並以相同的參數作為持續整合和部署管線的一部分。
 
-通過範本創建資源的大多數操作都是冪等的,但每次使用範本時,密鑰保管庫都會清除訪問策略。 清除訪問策略會破壞對正在使用它的任何現有工作區的密鑰保管庫的訪問。 例如,停止/創建 Azure 筆記本 VM 的功能可能會失敗。  
+大部分透過範本的資源建立作業都是等冪的，但 Key Vault 會在每次使用範本時清除存取原則。 清除存取原則會中斷對使用它之任何現有工作區的 Key Vault 存取。 例如，Azure Notebooks VM 的停止/建立功能可能會失敗。  
 
-為了避免此問題,我們建議採用以下方法之一:
+若要避免這個問題，建議您採用下列其中一種方法：
 
-* 不要多次為相同的參數部署範本。 或者在使用範本重新創建現有資源之前刪除這些資源。
+* 不要針對相同的參數多次部署範本。 或刪除現有的資源，然後再使用此範本重新建立它們。
 
-* 檢查金鑰保管庫存取策略,然後使用這些策略設置範`accessPolicies`本的屬性。 要檢視存取原則,請使用以下 Azure CLI 命令:
+* 檢查 Key Vault 的存取原則，然後使用這些原則來設定範本`accessPolicies`的屬性。 若要查看存取原則，請使用下列 Azure CLI 命令：
 
     ```azurecli-interactive
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    有關使用樣本`accessPolicies`部分的詳細資訊,請參閱[AccessPolicyentry 物件參考](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
+    如需使用範本`accessPolicies`區段的詳細資訊，請參閱[AccessPolicyEntry 物件參考](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry)。
 
-* 檢查金鑰保管庫資源是否已存在。 如果是,請不要通過範本重新創建它。 例如,要使用現有的金鑰保管庫而不是創建新密鑰保管庫,請使用以下更改範本:
+* 檢查 Key Vault 資源是否已存在。 如果有，請不要透過範本重新建立它。 例如，若要使用現有的 Key Vault，而不是建立新的，請對範本進行下列變更：
 
-    * **新增**已接受現有金鑰保存庫資源的 ID 的參數:
+    * **新增**可接受現有 KEY VAULT 資源識別碼的參數：
 
         ```json
         "keyVaultId":{
@@ -361,7 +361,7 @@ az group deployment create \
         }
       ```
 
-    * **刪除**建立金鑰保存庫資源的部份:
+    * **移除**建立 Key Vault 資源的區段：
 
         ```json
         {
@@ -381,7 +381,7 @@ az group deployment create \
         },
         ```
 
-    * **Remove**從工作區`"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",``dependsOn`部分刪除行。 此外**Change**,變更`keyVault`工作區`properties`部份中的項目以引用參數`keyVaultId`:
+    * **Remove**從工作`"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",`區的`dependsOn`區段中移除該行。 此外**Change** ，也`keyVault`請變更工作`properties`區區段中的專案，以`keyVaultId`參考參數：
 
         ```json
         {
@@ -409,9 +409,9 @@ az group deployment create \
         }
         ```
 
-    進行這些變更後,您可以在執行範本時指定現有金鑰保管庫資源的 ID。 然後,範本將通過將工作區`keyVault`的屬性設置為其 ID 來重用密鑰保管庫。
+    這些變更之後，您可以在執行範本時指定現有 Key Vault 資源的識別碼。 然後範本會將工作區的`keyVault`屬性設為其識別碼，以重複使用 Key Vault。
 
-    要取得金鑰保存式識別的 ID,可以參考執行的原始樣本的輸出或使用 Azure CLI。 以下指令是使用 Azure CLI 取得金鑰保管庫資源 ID 的範例:
+    若要取得 Key Vault 的識別碼，您可以參考原始範本執行的輸出，或使用 Azure CLI。 下列命令是使用 Azure CLI 取得 Key Vault 資源識別碼的範例：
 
     ```azurecli-interactive
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query id
@@ -425,5 +425,5 @@ az group deployment create \
 
 ## <a name="next-steps"></a>後續步驟
 
-* [使用資源管理員樣本與資源管理員 REST API 部署資源](../azure-resource-manager/templates/deploy-rest.md)。
-* [以視覺化工作室建立與部署 Azure 資源群組](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。
+* [使用 Resource Manager 範本和 Resource Manager REST API 來部署資源](../azure-resource-manager/templates/deploy-rest.md)。
+* [透過 Visual Studio 建立和部署 Azure 資源群組](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)。
