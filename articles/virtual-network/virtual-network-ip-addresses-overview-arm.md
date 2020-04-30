@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2019
+ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 64940ee6451ef1a9e153ef4d699bdaed32d4030e
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: a698d0cc4653a7a9f938b8f013352d9b51e2e18c
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82146347"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203721"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure 中的 IP 位址類型及配置方法
 
@@ -59,6 +59,22 @@ ms.locfileid: "82146347"
 >[!IMPORTANT]
 > 負載平衡器和公用 IP 資源必須使用相符的 SKU。 您無法將基本 SKU 資源與標準 SKU 資源混用。 您無法將獨立虛擬機器、可用性設定組資源中的虛擬機器或虛擬機器擴展集資源同時連結到這兩個 SKU。  新的設計應該考慮使用標準 SKU 資源。  請檢閱[標準負載平衡器](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)以取得詳細資料。
 
+#### <a name="standard"></a>Standard
+
+標準 SKU 的公用 IP 位址有下列特性：
+
+- 一律使用靜態配置方法。
+- 讓可調整的輸入起源流量閒置逾時 4 到 30 分鐘 (預設值為 4 分鐘)，固定的輸出起源流量閒置逾時 4 分鐘。
+- 預設為保護狀態，且禁止輸入流量。 您必須透過[網路安全性群組](security-overview.md#network-security-groups)，明確地將允許的輸入流量列入允許清單。
+- 指派給網路介面、標準公用負載平衡器或應用程式閘道。 如需 Standard Load Balancer 的詳細資訊，請參閱 [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+- 可以是區域多餘或區域性（可以建立區域性並在特定可用性區域中保證）。 若要了解可用性區域，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[標準負載平衡器和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+ 
+> [!NOTE]
+> 在建立和關聯[網路安全性群組](security-overview.md#network-security-groups)並明確地允許所要輸入流量前，與標準 SKU 資源進行的輸入通訊會失敗。
+
+> [!NOTE]
+> 使用[實例中繼資料服務 IMDS](../virtual-machines/windows/instance-metadata-service.md)時，只會提供具有基本 SKU 的公用 IP 位址。 不支援標準 SKU。
+
 #### <a name="basic"></a>基本
 
 在 SKU 推出之前所建立的公用 IP 位址全都是基本 SKU 的公用 IP 位址。 SKU 推出後，您則可以選擇指定要讓公用 IP 位址成為哪種 SKU。 基本 SKU 的位址有下列特性：
@@ -68,22 +84,6 @@ ms.locfileid: "82146347"
 - 預設為開放狀態。  建議 (但不強制) 使用網路安全性群組來限制輸入或輸出流量。
 - 會指派給任何可以指派公用 IP 位址的 Azure 資源，例如網路介面、VPN 閘道、應用程式閘道和網際網路對應負載平衡器。
 - 不支援可用性區域案例。  您必須將標準 SKU 公用 IP 使用於可用性區域案例。 若要了解可用性區域，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[標準負載平衡器和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-
-#### <a name="standard"></a>Standard
-
-標準 SKU 的公用 IP 位址有下列特性：
-
-- 一律使用靜態配置方法。
-- 讓可調整的輸入起源流量閒置逾時 4 到 30 分鐘 (預設值為 4 分鐘)，固定的輸出起源流量閒置逾時 4 分鐘。
-- 預設為保護狀態，且禁止輸入流量。 您必須透過[網路安全性群組](security-overview.md#network-security-groups)，明確地將允許的輸入流量列入允許清單。
-- 指派給網路介面、標準公用負載平衡器或應用程式閘道。 如需 Standard Load Balancer 的詳細資訊，請參閱 [Azure Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
-- 預設為區域備援，也可為區域型 (可以建立為區域型，並保證在特定可用性區域中)。 若要了解可用性區域，請參閱[可用性區域概觀](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)和[標準負載平衡器和可用性區域](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
- 
-> [!NOTE]
-> 在建立和關聯[網路安全性群組](security-overview.md#network-security-groups)並明確地允許所要輸入流量前，與標準 SKU 資源進行的輸入通訊會失敗。
-
-> [!NOTE]
-> 使用[實例中繼資料服務 IMDS](../virtual-machines/windows/instance-metadata-service.md)時，只會提供具有基本 SKU 的公用 IP 位址。 不支援標準 SKU。
 
 ### <a name="allocation-method"></a>配置方法
 

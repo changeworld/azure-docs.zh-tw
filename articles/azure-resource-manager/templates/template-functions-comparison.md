@@ -3,22 +3,98 @@ title: 範本函數-比較
 description: 描述 Azure Resource Manager 範本中用來比較值的函式。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a9b7b32475695e5222b87c8fe75e8982f34ebb21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 15afc4d721c6577de9fe3e78483fdbfae5b493c6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192326"
+ms.locfileid: "82203772"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM 範本的比較函式
 
 Resource Manager 提供了數個函式，可在您的 Azure Resource Manager （ARM）範本中進行比較。
 
+* [接合](#coalesce)
 * [equals](#equals)
 * [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
 * [低](#less)
 * [lessOrEquals](#lessorequals)
+
+## <a name="coalesce"></a>coalesce
+
+`coalesce(arg1, arg2, arg3, ...)`
+
+從參數中傳回第一個非 null 值。 空白字串、空白陣列和空白物件不是 null。
+
+### <a name="parameters"></a>參數
+
+| 參數 | 必要 | 類型 | 描述 |
+|:--- |:--- |:--- |:--- |
+| arg1 |是 |整數、字串、陣列或物件 |要測試是否為 null 的第一個值。 |
+| 其他引數 |否 |整數、字串、陣列或物件 |要測試是否為 null 的其他值。 |
+
+### <a name="return-value"></a>傳回值
+
+第一個非 null 參數的值，此值可為字串、整數、陣列或物件。 如果所有參數都是 null，則傳回 null。
+
+### <a name="example"></a>範例
+
+下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json)顯示不同的聯合用法所得到的輸出。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "objectToTest": {
+            "type": "object",
+            "defaultValue": {
+                "null1": null,
+                "null2": null,
+                "string": "default",
+                "int": 1,
+                "object": {"first": "default"},
+                "array": [1]
+            }
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
+        },
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
+        }
+    }
+}
+```
+
+上述範例中具有預設值的輸出如下：
+
+| 名稱 | 類型 | 值 |
+| ---- | ---- | ----- |
+| stringOutput | 字串 | default |
+| intOutput | Int | 1 |
+| objectOutput | Object | {"first": "default"} |
+| arrayOutput | Array | [1] |
+| emptyOutput | Bool | True |
 
 ## <a name="equals"></a>equals
 

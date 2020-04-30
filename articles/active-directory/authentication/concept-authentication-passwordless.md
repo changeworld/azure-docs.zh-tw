@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe602972cb16bf24b1c35b2aadfe25c499bce69f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: f4de359f60b556390b8271b728580ef66ae53ffa
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181846"
+ms.locfileid: "82201715"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的無密碼 authentication 選項
 
@@ -119,7 +119,7 @@ FIDO2 安全性金鑰是一種以 unphishable 標準為基礎的無密碼驗證�
 | eWBM | [https://www.ewbm.com/support](https://www.ewbm.com/support) |
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 | Gemalto （Thales 群組） | [https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/](https://safenet.gemalto.com/multi-factor-authentication/authenticators/passwordless-authentication/) |
-| OneSpan Inc。 | [https://www.onespan.com/sites/default/files/2019-01/OneSpan-FIDO-Authentication.pdf](https://www.onespan.com/sites/default/files/2019-01/OneSpan-FIDO-Authentication.pdf) |
+| OneSpan Inc。 | [https://www.onespan.com/products/fido](https://www.onespan.com/products/fido) |
 | IDmelon 技術 Inc。 | [https://www.idmelon.com/#idmelon](https://www.idmelon.com/#idmelon) | 
 
 > [!NOTE]
@@ -152,7 +152,7 @@ FIDO2 安全性金鑰是一種以 unphishable 標準為基礎的無密碼驗證�
 
 使用下表來選擇哪些方法將支援您的需求和使用者。
 
-|生活|狀況|環境|無密碼技術|
+|生活|案例|環境|無密碼技術|
 |:-|:-|:-|:-|
 |**管理員**|保護裝置的存取權以進行管理工作|指派的 Windows 10 裝置|Windows Hello 企業版和（或） FIDO2 安全性金鑰|
 |**管理員**|非 Windows 裝置上的管理工作| 行動或非 windows 裝置|無密碼使用 Microsoft Authenticator 應用程式登入|

@@ -4,19 +4,19 @@ description: 瞭解如何將您的 Azure IoT Edge 解決方案從開發到生產
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/24/2020
+ms.date: 4/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6ec196408c047682be527ee21735ce809f5916e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 173e663b66eeca676e8120dd46e8eca8b0126a17
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191833"
+ms.locfileid: "82204197"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>準備在生產環境中部署 IoT Edge 解決方案
 
@@ -174,12 +174,22 @@ timeToLiveSecs 參數的預設值是 7200 秒，也就是兩小時。
 
 您知道如何將自訂程式碼模組的容器映射儲存在私人 Azure 登錄中，但您也可以使用它來儲存公用容器映射，例如適用于 edgeAgent 和 edgHub 執行時間模組。 如果您因為這些執行時間容器儲存在 Microsoft Container Registry （MCR）中，而有非常嚴格的防火牆限制，可能就需要這麼做。
 
-使用 Docker pull 命令來取得影像，以放在您的登錄中。 請注意，您必須使用 IoT Edge 執行時間的每個新版本來更新映射。
+取得具有 Docker pull 命令的映射，以放入您的私用登錄中。 請注意，您必須使用 IoT Edge 執行時間的每個新版本來更新映射。
 
 | IoT Edge 執行時間容器 | Docker pull 命令 |
 | --- | --- |
 | [Azure IoT Edge 代理程式](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge 中樞](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+
+接下來，請務必更新 edgeAgent 和 edgeHub 系統模組的 deployment. template. json 檔案中的映射參考。 以`mcr.microsoft.com`您的登錄名稱取代這兩個模組的伺服器。
+
+* EdgeAgent
+
+    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+
+* EdgeHub
+
+    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 
 ## <a name="networking"></a>網路功能
 
@@ -259,7 +269,7 @@ Azure IoT 中樞和 IoT Edge 之間的通訊通道一律會設定為輸出。 �
 
 將此資訊新增（或附加）至名`daemon.json`為的檔案，並將它放在您裝置平臺的正確位置。
 
-| 平台 | Location |
+| 平台 | 位置 |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby\config\` |

@@ -6,25 +6,25 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 471d07f4aa5abe7552ff33e767e8783239dd1989
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74083285"
+ms.locfileid: "82203874"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>在 Java 中建立 Apache Storm 拓撲
 
-了解如何為 [Apache Storm](https://storm.apache.org/) 建立以 Java 為基礎的拓撲。 在這裡，您會建立可執行字數統計應用程式的風暴拓撲。 您會使用 [Apache Maven](https://maven.apache.org/) 來建置和封裝專案。 然後，您會瞭解如何使用[Apache Storm Flux](https://storm.apache.org/releases/2.0.0/flux.html)架構來定義拓撲。
+了解如何為 Apache Storm 建立 Java 型拓撲。 您會建立可實作字數統計應用程式的 Storm 拓撲。 您會使用 Apache Maven 來建置和封裝專案。 然後，您會瞭解如何使用 Apache Storm Flux 架構來定義拓撲。
 
 完成這份文件中的步驟之後，您就可以將拓撲部署到 Apache Storm on HDInsight。
 
 > [!NOTE]  
 > 本檔中所建立之完整版的「風暴拓撲」範例可[https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount)于取得。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * [JAVA 開發人員套件（JDK）第8版](https://aka.ms/azure-jdks)
 
@@ -197,7 +197,7 @@ Maven 外掛程式可讓您自訂專案的建置階段。 例如，如何編譯�
 
 * **Apache Maven 編譯器外掛程式**
 
-    另一個有用的外掛程式是 [Apache Maven 編譯器外掛程式](https://maven.apache.org/plugins/maven-compiler-plugin/)，其可用來變更編譯選項。 針對應用程式的來源和目標，變更 Maven 所使用的 JAVA 版本。
+    另一個有用的[`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/)外掛程式是，用來變更編譯選項。 針對應用程式的來源和目標，變更 Maven 所使用的 JAVA 版本。
 
   * 針對 HDInsight __3.4 或更早版本__，請將資源和目標 Java 版本設為 __1.7__。
 
@@ -239,13 +239,13 @@ Java 型 Apache Storm 拓撲包含三個您必須編寫 (或參考) 為相依性
 
 * **Spout**：讀取來自外部來源的資料，並將資料流發出到拓撲。
 
-* **Bolt**：執行 Spout 或其他 Bolt 所發出資料流的處理，並發出一或多個資料流。
+* **螺栓**：處理由 spout 或其他螺栓發出的資料流程，併發出一或多個資料流程。
 
 * **拓撲**：定義如何排列 Spout 和 Bolt，並提供拓撲的進入點。
 
 ### <a name="create-the-spout"></a>建立 Spout
 
-若要減少設定外部資料來源的需求，下列 Spout 只會發出隨機的句子。 這是 spout 的修改版本，隨附于「[衝擊-入門」範例](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)。  雖然此拓撲只使用一個 Spout，但是其他拓撲可能會有將資料從不同來源送入拓撲的數個 Spout。
+若要減少設定外部資料來源的需求，下列 Spout 只會發出隨機的句子。 這是 spout 的修改版本，隨附于「[衝擊-入門」範例](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)。  雖然此拓撲使用一個 spout，但有些可能會有數個將不同來源的資料摘要到拓撲中`.`
 
 輸入下列命令以建立並開啟新檔案`RandomSentenceSpout.java`：
 
@@ -481,7 +481,7 @@ public class WordCount extends BaseBasicBolt {
 
 ### <a name="define-the-topology"></a>定義拓撲
 
-拓撲會將 Spout 和 Bolt 一起繫結至圖形，其中定義元件之間的資料流動方式。 它也會提供 Storm 在叢集內建立元件的執行個體時所使用的平行處理原則提示。
+拓撲會將 spout 和螺栓結合成圖形。 圖形會定義元件之間的資料流程動方式。 它也會提供 Storm 在叢集內建立元件的執行個體時所使用的平行處理原則提示。
 
 以下映像是此拓撲之元件圖的基本圖。
 
@@ -613,15 +613,15 @@ mvn compile exec:java -Dstorm.topology=com.microsoft.example.WordCountTopology
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-此範例記錄指出 '和' 這個字已發出 113 次。 只要拓撲還在執行，次數就會繼續增加，因為 Spout 會持續發出相同的句子。
+此範例記錄指出 '和' 這個字已發出 113 次。 只要拓撲執行，此計數就會繼續增加。 這會增加，因為 spout 會持續發出相同的句子。
 
 在發出單字和計數之間有5秒的間隔。 **WordCount** 元件設定為只在計時 Tuple 抵達時發出資訊。 它會要求計時 Tuple 每隔五秒才傳送。
 
 ## <a name="convert-the-topology-to-flux"></a>將拓撲轉換為 Flux
 
-[Flux](https://storm.apache.org/releases/2.0.0/flux.html) 是可在 Storm 0.10.0 和更新版本中使用的新架構，可讓您區隔設定與實作。 您的元件仍會以 Java 定義，但拓撲則會使用 YAML 檔案來定義。 您可以將預設拓撲定義與您的專案一起封裝，或在提交拓撲時使用獨立檔案。 將拓撲提交至 Storm 時，您可以使用環境變數或組態檔來填入 YAML 拓撲定義中的值。
+[Flux](https://storm.apache.org/releases/2.0.0/flux.html)是一種新的架構，可用於0.10.0 和更高的電流。 Flux 可讓您將設定與執行區分開。 您的元件仍會以 Java 定義，但拓撲則會使用 YAML 檔案來定義。 您可以將預設拓撲定義與您的專案一起封裝，或在提交拓撲時使用獨立檔案。 將拓撲提交至風暴時，請使用環境變數或設定檔來填入 YAML 拓撲定義值。
 
-YAML 檔案會定義要用於拓撲的元件以及其間的資料流程。 您可以包含 YAML 檔案作為 jar 檔案的一部分，或者您可以使用外部 YAML 檔案。
+YAML 檔案會定義要用於拓撲的元件以及其間的資料流程。 您可以將 YAML 檔案納入為 jar 檔案的一部分。 或者，您可以使用外部 YAML 檔案。
 
 如需有關 Flux 的詳細資訊，請參閱 [Flux 架構 (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html)。
 
@@ -818,7 +818,7 @@ YAML 檔案會定義要用於拓撲的元件以及其間的資料流程。 您�
 
 ## <a name="trident"></a>Trident
 
-[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) 是 Storm 提供的高階抽象概念。 它支援具狀態的處理。 Trident 的主要優點是它可以保證進入拓撲的每則訊息都只處理一次。 若未使用 Trident，您的拓撲只能保證至少處理一次訊息。 還有其他差異，例如可供使用的內建元件，而不是建立 Bolt。 事實上，較不一般的元件 (例如篩選、投影和函數) 會取代 Bolt。
+[Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) 是 Storm 提供的高階抽象概念。 它支援具狀態的處理。 Trident 的主要優點是它保證每個進入拓撲的訊息只會處理一次。 若未使用 Trident，您的拓撲只能保證至少處理一次訊息。 還有其他差異，例如可供使用的內建元件，而不是建立 Bolt。 螺栓會由較不一般的元件（例如篩選、投影和函數）所取代。
 
 可以使用 Maven 專案來建立 Trident 應用程式。 您使用與本文稍早所呈現的相同基本步驟—只有程式碼不同。 Trident 也不能（目前）與 Flux 架構搭配使用。
 
@@ -830,6 +830,6 @@ YAML 檔案會定義要用於拓撲的元件以及其間的資料流程。 您�
 
 * [部署和管理 HDInsight 上的 Apache Storm 拓撲](apache-storm-deploy-monitor-topology-linux.md)
 
-* [使用 Visual Studio 開發 Apache Storm on HDInsight 的 C# 拓撲](apache-storm-develop-csharp-visual-studio-topology.md)
+* [使用 Python 開發拓撲](apache-storm-develop-python-topology.md)
 
 您可透過瀏覽 [HDInsight 上 Apache Storm 的範例拓撲](apache-storm-example-topology.md)找到更多範例 Apache Storm 拓撲。

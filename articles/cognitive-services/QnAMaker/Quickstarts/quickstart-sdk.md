@@ -2,14 +2,14 @@
 title: 快速入門：使用 SDK 來建立和管理知識庫 - QnA Maker
 description: 本快速入門將說明如何使用用戶端 SDK 來建立和管理您的知識庫。
 ms.topic: quickstart
-ms.date: 01/13/2020
+ms.date: 04/27/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 065f88ce12037109773b7023972c151d968840a8
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 350020069edc2ae01f1716b1e6166da43054b24b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79221179"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204001"
 ---
 # <a name="quickstart-create-and-manage-knowledge-base"></a>快速入門：建立和管理知識庫
 

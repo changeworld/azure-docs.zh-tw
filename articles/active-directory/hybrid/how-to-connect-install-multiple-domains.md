@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18b5f19e3e994aa05fa99caf360d0c1be69ec7a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0775e717c0610e122bb31f752beecd2c97599053
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80049779"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201035"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>與 Azure AD 同盟的多網域支援
 下列文件提供與 Office 365 或 Azure AD 網域同盟時，如何使用多個頂層網域和子網域的指引。
@@ -137,7 +137,7 @@ ms.locfileid: "80049779"
 ## <a name="support-for-subdomains"></a>對於子網域的支援
 在加入子網域時，因為 Azure AD 處理網域的方式，子網域將會繼承父項的設定。  所以，IssuerUri 需要與父項相符。
 
-因此，假設我有 bmcontoso.com，並接著加入 corp.bmcontoso.com。  來自corp.bmcontoso.com的使用者的頒發者需要是**http://bmcontoso.com/adfs/services/trust。**  但是，上述為 Azure AD 實現的標準規則將生成一個頒發者**http://corp.bmcontoso.com/adfs/services/trust為 的權杖。**  的權杖，這與網域所需的值不符，因此驗證將會失敗。
+因此，假設我有 bmcontoso.com，並接著加入 corp.bmcontoso.com。  Corp.bmcontoso.com 使用者的 IssuerUri 必須是**`http://bmcontoso.com/adfs/services/trust`**。  不過，上述針對 Azure AD 所執行的標準規則會產生具有簽發者的權杖**`http://corp.bmcontoso.com/adfs/services/trust`** 做為。  的權杖，這與網域所需的值不符，因此驗證將會失敗。
 
 ### <a name="how-to-enable-support-for-subdomains"></a>如何啟用對於子網域的支援
 為了解決此行為，需要更新 Microsoft Online 的 AD FS 信賴憑證者信任。  若要這樣做，您必須設定自訂宣告規則，以使其在建構自訂簽發者值時能夠從使用者的 UPN 尾碼移除任何子網域。

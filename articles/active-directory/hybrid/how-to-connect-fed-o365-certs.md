@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89de1495dc6bb411d5d43986177f11abb016cf15
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "60244865"
+ms.locfileid: "82200882"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>更新 Office 365 和 Azure Active Directory 的同盟憑證
 ## <a name="overview"></a>概觀
@@ -120,7 +120,7 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
 其中`(your_FS_name)` ，會取代為您的組織使用的同盟服務主機名，例如 fs.contoso.com。  如果您能夠成功確認上述兩個設定，您就不必執行任何動作。  
 
-範例： https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
+範例：`https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml`
 ## <a name="renew-the-token-signing-certificate-manually"></a>手動更新權杖簽署憑證 <a name="manualrenew"></a>
 您可以選擇手動更新權杖簽署憑證。 例如，下列案例可能比較適合進行手動更新︰
 

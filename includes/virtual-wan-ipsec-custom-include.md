@@ -8,29 +8,29 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f7167cbb26e69941cade01ab8c0b8d9dc633f0d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2a950037aed2a8ded4d4e55920721285cbfc05c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72168410"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204623"
 ---
-使用自訂 IPsec 策略時，請記住以下要求：
+使用自訂 IPsec 原則時，請記住下列需求：
 
-* **IKE** - 對於 IKE，您可以從 IKE 加密中選擇任何參數，以及 IKE 完整性中的任何參數，以及 DH 組中的任何參數。
-* **IPsec** - 對於 IPsec，您可以從 IPsec 加密中選擇任何參數，以及 IPsec 完整性以及 PFS 中的任何參數。 如果 IPsec 加密或 IPsec 完整性的任何參數是 GCM，則這兩個設置的參數必須是 GCM。
+* **Ike** -若是 ike，您可以從 ike 加密選取任何參數，加上來自 ike 完整性的任何參數，再加上來自 DH 群組的任何參數。
+* **Ipsec** -若為 ipsec，您可以從 ipsec 加密中選取任何參數，再加上來自 ipsec 完整性的任何參數，加上 PFS。 如果 IPsec 加密或 IPsec 完整性的任何參數是 GCM，則這兩個設定的參數必須是 GCM。
 
 >[!NOTE]
-> 使用自訂 IPsec 策略時，沒有回應者和開始器的概念（與預設 IPsec 策略不同）。 兩側（本地和 Azure VPN 閘道）將為 IKE 階段 1 和 IKE 階段 2 使用相同的設置。 支援 IKEv1 和 IKEv2 協定。 不支援 Azure 僅作為回應程式。
+> 使用自訂 IPsec 原則時，回應者和啟動器沒有任何概念（不同于預設 IPsec 原則）。 兩端（內部部署和 Azure VPN 閘道）都會針對 IKE 階段1和 IKE 階段2使用相同的設定。 同時支援 IKEv1 和 IKEv2 通訊協定。 不支援 Azure 做為回應者。
 >
 
-**可用設置和參數**
+**可用的設定和參數**
 
 | 設定 | 參數 |
 |--- |--- |
-| IKE 加密 | AES256， AES192， AES128 |
-| IKE 誠信 | SHA384， SHA256， SHA1 |
-| DH 群組 | DHGroup24、 ECP384、 ECP256、 DHGroup14、 DHGroup2048、 DHGroup2 |
-| IPsec 加密 | GCMAES256， GCMAES192， GCMAES128， AES256， AES192， AES128 |
-| IPsec 完整性 | GCMASE256， GCMAES192， GCMAES128， SHA256， SHA1 |
-| PFS 群組 | PFS24、ECP384、ECP256、PFS2048、PFS2 |
+| IKE 加密 | GCMAES256、GCMAES128、AES256、AES128 |
+| IKE 完整性 | SHA384，SHA256 |
+| DH 群組 | ECP384、ECP256、DHGroup24、DHGroup14 |
+| IPsec 加密 | GCMAES256、GCMAES128、AES256、AES128、None |
+| IPsec 完整性 | GCMAES256、GCMAES128、SHA256 |
+| PFS 群組 | ECP384、ECP256、PFS24、PFS14、None |

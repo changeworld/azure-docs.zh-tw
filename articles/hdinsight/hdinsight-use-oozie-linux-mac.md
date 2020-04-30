@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 93eddcd8ed0dae6ac6f010dce2e138fc018a06fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/27/2020
+ms.openlocfilehash: 48b322f32bd6e8f2a2da0c5be8eb7b7987881f83
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190651"
+ms.locfileid: "82204112"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>在 Linux 型 Azure HDInsight 上搭配 Apache Hadoop 使用 Apache Oozie 來定義並執行工作流程
 
@@ -29,7 +29,7 @@ ms.locfileid: "82190651"
 > [!NOTE]  
 > 還有另一個選項可以定義與 HDInsight 搭配的工作流程，那就是 Azure Data Factory。 若要深入了解 Data Factory，請參閱 [將 Apache Pig 和 Apache Hive 與 Data Factory 搭配使用](../data-factory/transform-data.md)。 若要在使用企業安全性套件的叢集上使用 Oozie，請參閱[在具有企業安全性套件的 HDInsight Hadoop 叢集中執行 Apache Oozie](domain-joined/hdinsight-use-oozie-domain-joined-clusters.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * **HDInsight 上的 Hadoop**叢集。 請參閱[開始在 Linux 上使用 HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)。
 
@@ -644,67 +644,6 @@ Oozie Web UI 可讓您用網頁檢視叢集上 Oozie 作業的狀態。 透過 W
 
     ![[OOzie web 主控台作業資訊] 索引標籤](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
-## <a name="troubleshooting"></a>疑難排解
-
-透過 Oozie UI，您可以檢視 Oozie 記錄。 Oozie UI 也包含工作流程所啟動之 MapReduce 工作的 JobTracker 記錄連結。 疑難排解的模式應該是：
-
-   1. 在 Oozie Web UI 中檢視作業。
-
-   2. 如果發生錯誤或特定動作失敗，請選取動作，以查看**錯誤訊息**欄位是否提供失敗的詳細資訊。
-
-   3. 如果有提供，請使用動作的 URL 以檢視動作的更多詳細資料，例如 JobTracker 記錄。
-
-以下是您可能會遇到的特定錯誤，以及解決方法。
-
-### <a name="ja009-cant-initialize-cluster"></a>JA009：無法初始化叢集
-
-**徵兆**：作業狀態會變更為 **SUSPENDED**。 作業的詳細資料會將 `RunHiveScript` 狀態顯示為 **START_MANUAL**。 選取該動作會顯示下列錯誤訊息：
-
-    JA009: Cannot initialize Cluster. Please check your configuration for map
-
-**原因**：**job.xml** 檔案中使用的 Azure Blob 儲存體位址未包含儲存體容器或儲存體帳戶名稱。 Blob 儲存體位址的格式必須是 `wasbs://containername@storageaccountname.blob.core.windows.net`。
-
-**解決方法**：變更作業所使用的 Blob 儲存體位址。
-
-### <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002：不允許 Oozie 模擬&lt;使用者&gt;
-
-**徵兆**：作業狀態會變更為 **SUSPENDED**。 作業的詳細資料會將 `RunHiveScript` 狀態顯示為 **START_MANUAL**。 如果您選取該動作，它將會顯示下列錯誤訊息：
-
-    JA002: User: oozie is not allowed to impersonate <USER>
-
-**原因**：目前的權限設定不允許 Oozie 模擬指定的使用者帳戶。
-
-**解決**方式： Oozie 可以模擬群組中**`users`** 的使用者。 使用 `groups USERNAME` 查看使用者帳戶所屬的群組。 如果使用者不是**`users`** 群組的成員，請使用下列命令將使用者新增至群組：
-
-    sudo adduser USERNAME users
-
-> [!NOTE]  
-> 這可能需要幾分鐘，HDInsight 才能辨識出使用者已新增至該群組。
-
-### <a name="launcher-error-sqoop"></a>啟動器錯誤 (Sqoop)
-
-**徵兆**：作業狀態會變更為 **KILLED**。 作業的詳細資料會將 `RunSqoopExport` 狀態顯示為 **ERROR**。 如果您選取該動作，它將會顯示下列錯誤訊息：
-
-    Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
-
-**原因**：Sqoop 無法載入存取資料庫時所需的資料庫驅動程式。
-
-**解決方法**：當您從 Oozie 作業使用 Sqoop 時，您必須將資料庫驅動程式與作業所使用的其他資源 (例如 workflow.xml) 包含在一起。 此外，請從 workflow.xml 的 `<sqoop>...</sqoop>` 區段，參考含有資料庫驅動程式的封存。
-
-例如，您可以針對本文件中的工作使用下列步驟：
-
-1. `mssql-jdbc-7.0.0.jre8.jar`將檔案複製到 **/tutorials/useoozie**目錄：
-
-    ```bash
-    hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
-    ```
-
-2. 修改 `workflow.xml`，在 `</sqoop>` 上方新的一行上新增下列 XML：
-
-    ```xml
-    <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
-    ```
-
 ## <a name="next-steps"></a>後續步驟
 
 在本文中，您已瞭解如何定義 Oozie 工作流程，以及如何執行 Oozie 作業。 若要深入了解如何使用 HDInsight，請參閱下列文章：
@@ -712,3 +651,4 @@ Oozie Web UI 可讓您用網頁檢視叢集上 Oozie 作業的狀態。 透過 W
 * [在 HDInsight 中上傳 Apache Hadoop 作業的資料](hdinsight-upload-data.md)
 * [在 HDInsight 中將 Apache Sqoop 與 Apache Hadoop 搭配使用](hadoop/apache-hadoop-use-sqoop-mac-linux.md)
 * [在 HDInsight 上將 Apache Hive 與 Apache Hadoop 搭配使用](hadoop/hdinsight-use-hive.md)
+* [針對 Apache Oozie 進行疑難排解](./troubleshoot-oozie.md)

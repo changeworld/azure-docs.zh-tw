@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "65406960"
+ms.locfileid: "82202391"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>整合 Azure Active Directory 與 E Sales Manager Remix
 
@@ -158,7 +158,7 @@ ms.locfileid: "65406960"
     
     b. 在 [共同作業項目]**** 區段中，從下拉式清單中選取 [電子郵件]****。
 
-    c. 在 [共同作業項目]**** 方塊中，貼上您從 Azure 入口網站複製的宣告值，也就是 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**。
+    c. 在 [共同作業項目]**** 方塊中，貼上您從 Azure 入口網站複製的宣告值，也就是 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**。
 
     d. 在 [簽發者 (實體 ID)]**** 方塊中，貼上您之前從 Azure 入口網站的 [E Sales Manager Remix 網域和 URL]**** 區段中複製的識別碼值。
 

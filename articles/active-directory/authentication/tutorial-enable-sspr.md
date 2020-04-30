@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b9052f364dfbae205dd324ba69de9578ccc225
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c84aa99608a4fc2ac1842c617cca54e2afc3cdbe
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77026311"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201987"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>教學課程：讓使用者使用 Azure Active Directory 自助式密碼重設來解除鎖定其帳戶或重設密碼
 
@@ -104,7 +104,7 @@ Azure AD 可讓您針對 [無]  、[已選取]  或 [所有]  使用者啟用 SS
 如果使用者需要 SSPR 程序的其他協助，您可以自訂「連絡您的系統管理員」連結。 此連結會使用於 SSPR 註冊程序，以及當使用者解除鎖定其帳戶或重設其密碼時。 為了確保您的使用者獲得所需的支援，強烈建議您提供自訂的技術服務人員電子郵件或 URL。
 
 1. 在左側功能表的 [自訂]  頁面上，將 [自訂技術服務人員連結]  設定為 [是]  。
-1. 在 [自訂的技術服務人員電子郵件或 URL]  欄位中，提供可讓使用者從貴組織取得其他協助的電子郵件地址或網頁 URL，例如 *https://support.contoso.com/* 。
+1. 在 [自訂的技術服務人員電子郵件或 URL]  欄位中，提供可讓使用者從貴組織取得其他協助的電子郵件地址或網頁 URL，例如 *`https://support.contoso.com/`* 。
 1. 若要套用自訂連結，請選取 [儲存]  。
 
 ## <a name="test-self-service-password-reset"></a>測試自助式密碼重設

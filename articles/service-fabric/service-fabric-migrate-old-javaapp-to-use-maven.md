@@ -5,36 +5,40 @@ author: rapatchi
 ms.topic: conceptual
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e8154039dde3de571e7960b244ab1d43cc764c7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75609803"
+ms.locfileid: "82204282"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>更新先前的 Java Service Fabric 應用程式，以從 Maven 擷取 Java 程式庫
-我們最近已將 Service Fabric Java 二進位檔從 Service Fabric Java SDK 移至 Maven 主機。 您現在可以使用 **mavencentral** 擷取最新的 Service Fabric Java 相依性。 本快速入門可協助您更新要與以 Maven 為基礎的組建相容的現有 Java 應用程式，您稍早使用 Yeoman 範本或 Eclipse 建立這些應用程式，以便搭配 Service Fabric Java SDK 使用。
+Service Fabric JAVA 二進位檔已從 Service Fabric JAVA SDK 移至 Maven 裝載。 您可以使用**mavencentral**來提取最新的 Service Fabric JAVA 相依性。 本指南將協助您更新使用 Yeoman 範本或 Eclipse 為 Service Fabric JAVA SDK 所建立的現有 JAVA 應用程式，以與 Maven 為基礎的組建相容。
 
-## <a name="prerequisites"></a>Prerequisites
-1. 首先，您必須解除安裝現有的 Java SDK。
+## <a name="prerequisites"></a>先決條件
+
+1. 首先，卸載現有的 JAVA SDK。
 
    ```bash
    sudo dpkg -r servicefabricsdkjava
    ```
+
 2. 依照[這裡](service-fabric-cli.md)所述的步驟，安裝最新的 Service Fabric CLI。
 
-3. 若要建置和處理 Service Fabric Java 應用程式，您必須確定已安裝 JDK 1.8 和 Gradle。 如果尚未安裝，您可以執行下列命令來安裝 JDK 1.8 (openjdk-8-jdk) 和 Gradle -
+3. 若要建立及處理 Service Fabric JAVA 應用程式，請確定您已安裝 JDK 1.8 和 Gradle。 如果尚未安裝，您可以執行下列命令來安裝 JDK 1.8 (openjdk-8-jdk) 和 Gradle -
 
    ```bash
    sudo apt-get install openjdk-8-jdk-headless
    sudo apt-get install gradle
    ```
+
 4. 依照[這裡](service-fabric-application-lifecycle-sfctl.md)所述的步驟，更新您應用程式的安裝/解除安裝指令碼，以使用新的 Service Fabric CLI。 您可以參考我們的快速入門[範例](https://github.com/Azure-Samples/service-fabric-java-getting-started)以供參考。
 
 >[!TIP]
 > 解除安裝 Service Fabric Java SDK 之後，Yeoman 將無法運作。 依照[這裡](service-fabric-create-your-first-linux-application-with-java.md)所提及的必要條件，啟動並執行 Service Fabric Yeoman Java 範本產生器。
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Maven 上的 Service Fabric Java 程式庫
+
 Service Fabric Java 程式庫已裝載於 Maven 中。 您可以在專案的 ``pom.xml`` 或 ``build.gradle`` 中新增相依性，以從 **mavenCentral** 使用 Service Fabric Java 程式庫。
 
 ### <a name="actors"></a>動作項目
@@ -80,6 +84,7 @@ Service Fabric Java 程式庫已裝載於 Maven 中。 您可以在專案的 ``p
   ```
 
 ### <a name="others"></a>其他
+
 #### <a name="transport"></a>傳輸
 
 Service Fabric Java 應用程式的傳輸層支援。 除非您在傳輸層進行程式設計，否則不需要明確地將此相依性新增至 Reliable Actor 或服務應用程式。
@@ -122,11 +127,11 @@ Service Fabric 的系統層級支援，其可與原生 Service Fabric 執行階�
   }
   ```
 
-
 ## <a name="migrating-service-fabric-stateless-service"></a>移轉 Service Fabric 無狀態服務
 
 若要能夠使用從 Maven 提取的 Service Fabric 相依性，建立現有的 Service Fabric 無狀態 Java 服務，您需要更新服務內的 ``build.gradle`` 檔案。 它先前通常如下所示 -
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
     compile project(':Interface')
@@ -158,8 +163,10 @@ task copyDeps <<{
     }
 }
 ```
+
 現在，若要從 Maven 提取相依性，**已更新的 ** ``build.gradle`` 會有對應的組件，如下所示 -
-```
+
+```gradle
 repositories {
         mavenCentral()
 }
@@ -211,11 +218,13 @@ task copyDeps <<{
     }
 }
 ```
+
 一般而言，若要取得有關如何組建指令碼看起來像 Service Fabric 無狀態 Java 服務的整體概念，您可以參考我們的快速入門範例中的任何範例。 以下是 EchoServer 範例的 [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/reliable-services-actor-sample/build.gradle)。
 
 ## <a name="migrating-service-fabric-actor-service"></a>移轉 Service Fabric 動作項目服務
 
 若要能夠使用從 Maven 提取的 Service Fabric 相依性，建立現有的 Service Fabric 動作項目 Java 應用程式，您需要更新介面套件和服務套件內的 ``build.gradle`` 檔案。 如果您有 TestClient 套件，您需要一併更新。 因此，針對您的動作項目 ``Myactor``，以下是您需要更新的位置 -
+
 ```
 ./Myactor/build.gradle
 ./MyactorInterface/build.gradle
@@ -225,15 +234,18 @@ task copyDeps <<{
 #### <a name="updating-build-script-for-the-interface-project"></a>更新介面專案的組建指令碼
 
 它先前通常如下所示 -
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
 }
 .
 .
 ```
+
 現在，若要從 Maven 提取相依性，**已更新的 ** ``build.gradle`` 會有對應的組件，如下所示 -
-```
+
+```gradle
 repositories {
     mavenCentral()
 }
@@ -266,7 +278,8 @@ compileJava.dependsOn(explodeDeps)
 #### <a name="updating-build-script-for-the-actor-project"></a>更新動作項目專案的組建指令碼
 
 它先前通常如下所示 -
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
     compile project(':MyactorInterface')
@@ -304,8 +317,10 @@ task copyDeps<< {
     }
 }
 ```
+
 現在，若要從 Maven 提取相依性，**已更新的 ** ``build.gradle`` 會有對應的組件，如下所示 -
-```
+
+```gradle
 repositories {
     mavenCentral()
 }
@@ -365,7 +380,8 @@ task copyDeps<< {
 #### <a name="updating-build-script-for-the-test-client-project"></a>更新測試用戶端專案的組建指令碼
 
 此處的變更類似於上一節所討論的變更，也就是動作項目專案。 Gradle 指令碼先前通常如下所示 -
-```
+
+```gradle
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
       compile project(':MyactorInterface')
@@ -404,8 +420,10 @@ task copyDeps<< {
         }
 }
 ```
+
 現在，若要從 Maven 提取相依性，**已更新的 ** ``build.gradle`` 會有對應的組件，如下所示 -
-```
+
+```gradle
 repositories {
     mavenCentral()
 }

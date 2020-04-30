@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 04/28/2020
 ms.author: sstein
-ms.openlocfilehash: 27a62223970b0f697465ce9aa050f3fccbcae464
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: c3dc5b26435f6d876e5eaea943e359055018913b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106418"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82201307"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database 版本資訊
 
@@ -49,7 +49,7 @@ ms.locfileid: "82106418"
 | <a href="https://aka.ms/managed-instance-aadlogins">實例層級 Azure AD 伺服器主體（登入）</a> | 使用<a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a>語句來建立伺服器層級的登入。 |
 | [異動複寫](sql-database-managed-instance-transactional-replication.md) | 將資料表中的變更複寫到位於受控實例、單一資料庫或 SQL Server 實例上的其他資料庫，或在其他受控實例或 SQL Server 實例中變更某些資料列時，更新您的資料表。 如需相關資訊，請參閱[在 Azure SQL Database 受控實例資料庫中設定](replication-with-sql-database-managed-instance.md)複寫。 |
 | 威脅偵測 |如需相關資訊，請參閱[在 Azure SQL Database 受控實例中設定威脅偵測](sql-database-managed-instance-threat-detection.md)。|
-| 長期備份保留期 | 如需詳細資訊，請參閱[在 Azure SQL Database 受控實例中設定長期備份保留](sql-database-managed-instance-long-term-backup-retention-configure.md)。 | 
+| 長期備份保留期 | 如需相關資訊，請參閱在[Azure SQL Database 受控實例中設定長期備份保留](sql-database-managed-instance-long-term-backup-retention-configure.md)，其目前處於有限的公開預覽狀態。 | 
 
 ---
 
@@ -69,7 +69,7 @@ ms.locfileid: "82106418"
   - 對 <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 和 SharePoint 2019 </a> 以及 <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a> 的支援
   - 建立具有<a href="https://aka.ms/managed-instance-collation">伺服器層級定序</a>和您所選擇<a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">時區</a>的實例。
   - 受控實例現在會受到<a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">內建防火牆</a>的保護。
-  - 將實例設定為使用[公用端點](sql-database-managed-instance-public-endpoint-configure.md)、 [Proxy 覆寫](sql-database-connectivity-architecture.md#connection-policy)連線以取得更佳的網路效能、 <a href="https://aka.ms/four-cores-sql-mi-update">4 虛擬核心在第5代硬體產生</a>，或<a href="https://aka.ms/managed-instance-configurable-backup-retention">將備份保留設定為35天</a>以進行時間點還原。 長期備份保留期（最多10年）仍未啟用，因此您可以使用<a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">僅限複本備份</a>做為替代方案。
+  - 將實例設定為使用[公用端點](sql-database-managed-instance-public-endpoint-configure.md)、 [Proxy 覆寫](sql-database-connectivity-architecture.md#connection-policy)連線以取得更佳的網路效能、 <a href="https://aka.ms/four-cores-sql-mi-update">4 虛擬核心在第5代硬體產生</a>，或<a href="https://aka.ms/managed-instance-configurable-backup-retention">將備份保留設定為35天</a>以進行時間點還原。 [長期備份保留期](sql-database-long-term-retention.md#managed-instance-support)（最多10年）目前僅限公開預覽。  
   - 新功能可讓您<a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">使用 PowerShell 將資料庫異地還原至另一個資料中心</a>、[重新命名資料庫](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/)、[刪除虛擬叢集](sql-database-managed-instance-delete-virtual-cluster.md)。
   - 新的內建[實例參與者角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor)可讓責任區隔（SoD）符合安全性原則，並遵循企業標準。
   - 受控實例可在下列 Azure Government 區域中正式推出（US Gov 德克薩斯州、US Gov 亞利桑那州），以及中國北部2和中國東部2。 這也適用于下列公用區域：澳大利亞中部、澳大利亞中部2、巴西南部、法國南部、阿拉伯聯合大公國中部、阿拉伯聯合大公國北部、南非北部、南非西部。
@@ -81,7 +81,7 @@ ms.locfileid: "82106418"
 |[資源群組的許可權未套用至受控執行個體](#permissions-on-resource-group-not-applied-to-managed-instance)|2020年2月|有因應措施||
 |[透過入口網站針對容錯移轉群組進行手動容錯移轉的限制](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|有因應措施||
 |[SQL 代理程式角色需要非系統管理員（sysadmin）登入的明確執行許可權](#in-memory-oltp-memory-limits-are-not-applied)|12月2019|有因應措施||
-|[代理程式進程重新開機可能會中斷 SQL 代理程式作業](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|12月2019|無因應措施|Mar 2020|
+|[代理程式進程重新開機可能會中斷 SQL 代理程式作業](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|12月2019|已解決|Mar 2020|
 |[SSDT 中不支援 AAD 登入和使用者](#aad-logins-and-users-are-not-supported-in-ssdt)|2019年11月|無因應措施||
 |[記憶體內部 OLTP 記憶體限制不適用](#in-memory-oltp-memory-limits-are-not-applied)|2019年10月|有因應措施||
 |[嘗試移除不是空的檔案時傳回錯誤的錯誤](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|2019年10月|有因應措施||
@@ -96,7 +96,7 @@ ms.locfileid: "82106418"
 |[小型資料庫檔案造成儲存空間超出限制](#exceeding-storage-space-with-small-database-files)||有因應措施||
 |[顯示的 GUID 值，而不是資料庫名稱](#guid-values-shown-instead-of-database-names)||有因應措施||
 |[錯誤記錄檔不會保存](#error-logs-arent-persisted)||無因應措施||
-|[不支援相同實例內兩個資料庫的交易範圍](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||有因應措施|2020 年 3 月|
+|[不支援相同實例內兩個資料庫的交易範圍](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||有因應措施|Mar 2020|
 |[CLR 模組與連結的伺服器有時候無法參考本機 IP 位址](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||有因應措施||
 |從 Azure Blob 儲存體還原資料庫之後，未使用 DBCC CHECKDB 確認資料庫一致性。||已解決|2019年11月|
 |如果源資料庫包含記憶體內部 OLTP 物件，則從業務關鍵層到一般用途層的時間點資料庫還原將不會成功。||已解決|2019年10月|
@@ -133,7 +133,7 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="sql-agent-jobs-can-be-interrupted-by-agent-process-restart"></a>代理程式進程重新開機可能會中斷 SQL 代理程式作業
 
-SQL 代理程式會在每次作業啟動時建立新的會話，逐漸增加記憶體耗用量。 為了避免達到會封鎖執行排程工作的內部記憶體限制，Agent 進程會在其記憶體耗用量達到閾值後重新開機。 這可能會導致在重新開機時中斷執行的作業。
+**（2020年3月解決）** SQL 代理程式會在每次作業啟動時建立新的會話，逐漸增加記憶體耗用量。 為了避免達到會封鎖執行排程工作的內部記憶體限制，Agent 進程會在其記憶體耗用量達到閾值後重新開機。 這可能會導致在重新開機時中斷執行的作業。
 
 ### <a name="in-memory-oltp-memory-limits-are-not-applied"></a>記憶體內部 OLTP 記憶體限制不適用
 

@@ -1,36 +1,34 @@
 ---
-title: 範本函數 - 陣列和物件
-description: 描述 Azure Resource Manager 範本中用來使用陣列和物件的函式。
+title: 範本函式-陣列
+description: 描述要在 Azure Resource Manager 範本中用來處理陣列的函式。
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 0b4bb80f6d7a7cc20a8b2dcc71e890f2ada7c5be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: f34ba74847ac394e37e6ef33f859304128daacde
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156370"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203806"
 ---
-# <a name="array-and-object-functions-for-arm-templates"></a>ARM 範本的陣列和物件函數
+# <a name="array-functions-for-arm-templates"></a>ARM 範本的陣列函式
 
-資源管理器提供了多個功能，用於在 Azure 資源管理器 （ARM） 範本中處理陣列和物件。
+Resource Manager 提供數個函式，可在您的 Azure Resource Manager （ARM）範本中使用陣列。
 
-* [陣 列](#array)
-* [coalesce](#coalesce)
+* [array](#array)
 * [concat](#concat)
 * [包含](#contains)
-* [創建Array](#createarray)
-* [空](#empty)
-* [第一](#first)
-* [交叉 口](#intersection)
-* [Json](#json)
-* [最後](#last)
-* [長度](#length)
-* [麥克斯](#max)
+* [createArray](#createarray)
+* [empty](#empty)
+* [頭](#first)
+* [處](#intersection)
+* [次](#last)
+* [length](#length)
+* [max](#max)
 * [分鐘](#min)
-* [range](#range)
-* [跳](#skip)
+* [格或](#range)
+* [過](#skip)
 * [採取](#take)
-* [聯盟](#union)
+* [並](#union)
 
 若要取得以值分隔的字串值陣列，請參閱 [分割](template-functions-string.md#split)。
 
@@ -99,105 +97,6 @@ ms.locfileid: "80156370"
 | stringOutput | Array | ["efgh"] |
 | objectOutput | Array | [{"a": "b", "c": "d"}] |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
-```
-
-## <a name="coalesce"></a>coalesce
-
-`coalesce(arg1, arg2, arg3, ...)`
-
-從參數中傳回第一個非 null 值。 空白字串、空白陣列和空白物件不是 null。
-
-### <a name="parameters"></a>參數
-
-| 參數 | 必要 | 類型 | 描述 |
-|:--- |:--- |:--- |:--- |
-| arg1 |是 |整數、字串、陣列或物件 |要測試是否為 null 的第一個值。 |
-| 其他引數 |否 |整數、字串、陣列或物件 |要測試是否為 null 的其他值。 |
-
-### <a name="return-value"></a>傳回值
-
-第一個非 null 參數的值，此值可為字串、整數、陣列或物件。 如果所有參數都是 null，則傳回 null。
-
-### <a name="example"></a>範例
-
-下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json)顯示不同的聯合用法所得到的輸出。
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "objectToTest": {
-            "type": "object",
-            "defaultValue": {
-                "null1": null,
-                "null2": null,
-                "string": "default",
-                "int": 1,
-                "object": {"first": "default"},
-                "array": [1]
-            }
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "stringOutput": {
-            "type": "string",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
-        },
-        "intOutput": {
-            "type": "int",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
-        },
-        "objectOutput": {
-            "type": "object",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
-        },
-        "arrayOutput": {
-            "type": "array",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
-        },
-        "emptyOutput": {
-            "type": "bool",
-            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
-        }
-    }
-}
-```
-
-上述範例中具有預設值的輸出如下：
-
-| 名稱 | 類型 | 值 |
-| ---- | ---- | ----- |
-| stringOutput | String | default |
-| intOutput | Int | 1 |
-| objectOutput | Object | {"first": "default"} |
-| arrayOutput | Array | [1] |
-| emptyOutput | Bool | True |
-
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
-```
-
 ## <a name="concat"></a>concat
 
 `concat(arg1, arg2, arg3, ...)`
@@ -211,7 +110,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | arg1 |是 |陣列或字串 |串連的第一個陣列或字串。 |
 | 其他引數 |否 |陣列或字串 |串連的其他陣列或字串 (循序順序)。 |
 
-此函式可以接受任意數目的引數，並且可針對參數接受字串或陣列。 但是，不能同時為參數提供陣列和字串。 陣列僅與其他陣列串聯。
+此函式可以接受任意數目的引數，並且可針對參數接受字串或陣列。 不過，您無法同時為參數提供陣列和字串。 陣列只會與其他陣列串連。
 
 ### <a name="return-value"></a>傳回值
 
@@ -260,18 +159,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
-```
-
 下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json)顯示如何結合兩個字串值並傳回串連字串。
 
 ```json
@@ -298,19 +185,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| concatOutput | String | prefix-5yj4yjf5mbg72 |
-
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
-```
+| concatOutput | 字串 | prefix-5yj4yjf5mbg72 |
 
 ## <a name="contains"></a>contains
 
@@ -393,18 +268,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | arrayTrue | Bool | True |
 | arrayFalse | Bool | False |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
-```
-
 ## <a name="createarray"></a>createarray
 
 `createArray (arg1, arg2, arg3, ...)`
@@ -472,18 +335,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | objectArray | Array | [{"one": "a", "two": "b", "three": "c"}] |
 | arrayArray | Array | [["one", "two", "three"]] |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
-```
-
 ## <a name="empty"></a>empty
 
 `empty(itemToTest)`
@@ -549,18 +400,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | objectEmpty | Bool | True |
 | stringEmpty | Bool | True |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
-```
-
 ## <a name="first"></a>first
 
 `first(arg1)`
@@ -610,20 +449,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | one |
-| stringOutput | String | O |
-
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
-```
+| arrayOutput | 字串 | one |
+| stringOutput | 字串 | O |
 
 ## <a name="intersection"></a>交集
 
@@ -691,91 +518,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | objectOutput | Object | {"one": "a", "three": "c"} |
 | arrayOutput | Array | ["two", "three"] |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
-```
-
-## <a name="json"></a>json
-
-`json(arg1)`
-
-傳回 JSON 物件。
-
-### <a name="parameters"></a>參數
-
-| 參數 | 必要 | 類型 | 描述 |
-|:--- |:--- |:--- |:--- |
-| arg1 |是 |字串 |要轉換成 JSON 的值。 |
-
-### <a name="return-value"></a>傳回值
-
-來自指定字串的 JSON 物件，或指定 **null** 時為空物件。
-
-### <a name="remarks"></a>備註
-
-如果您需要在 JSON 物件中包含參數值或變數，請使用 [concat](template-functions-string.md#concat) 函式來建立傳遞給函式的字串。
-
-### <a name="example"></a>範例
-
-下列[範例範本](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json)顯示如何搭配使用 json 函式與陣列和物件︰
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "testValue": {
-            "type": "string",
-            "defaultValue": "demo value"
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "jsonOutput": {
-            "type": "object",
-            "value": "[json('{\"a\": \"b\"}')]"
-        },
-        "nullOutput": {
-            "type": "bool",
-            "value": "[empty(json('null'))]"
-        },
-        "paramOutput": {
-            "type": "object",
-            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
-        }
-    }
-}
-```
-
-上述範例中具有預設值的輸出如下：
-
-| 名稱 | 類型 | 值 |
-| ---- | ---- | ----- |
-| jsonOutput | Object | {"a": "b"} |
-| nullOutput | Boolean | True |
-| paramOutput | Object | {"a": "示範值"}
-
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
-```
-
 ## <a name="last"></a>last
 
 `last (arg1)`
@@ -825,32 +567,20 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| arrayOutput | String | three |
-| stringOutput | String | e |
-
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
-```
+| arrayOutput | 字串 | three |
+| stringOutput | 字串 | e |
 
 ## <a name="length"></a>長度
 
 `length(arg1)`
 
-返回陣列中的元素數、字串中的字元或物件中的根級屬性。
+傳回陣列中的元素數目、字串中的字元，或物件中的根層級屬性。
 
 ### <a name="parameters"></a>參數
 
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| arg1 |是 |陣列、字串或物件 |用於獲取元素數、用於獲取字元數的字串或用於獲取根級屬性數的物件的陣列。 |
+| arg1 |是 |陣列、字串或物件 |要用來取得元素數目的陣列、用來取得字元數的字串，或用來取得根層級屬性數目的物件。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -914,19 +644,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | ---- | ---- | ----- |
 | arrayLength | Int | 3 |
 | stringLength | Int | 13 |
-| 物件長度 | Int | 4 |
-
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
-```
+| objectLength | Int | 4 |
 
 建立資源時，您可在陣列中使用此函式指定反覆運算的數量。 下列範例中，參數 **siteNames** 會參考在建立網站時要使用的名稱陣列。
 
@@ -990,18 +708,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
-```
-
 ## <a name="min"></a>Min
 
 `min(arg1)`
@@ -1053,18 +759,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
-```
-
 ## <a name="range"></a>range
 
 `range(startIndex, count)`
@@ -1075,8 +769,8 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 | 參數 | 必要 | 類型 | 描述 |
 |:--- |:--- |:--- |:--- |
-| startIndex |是 |int |陣列中的第一個整數。 起始索引和計數的總和不能大於 2147483647。 |
-| count |是 |int |陣列中的整數數目。 必須為最高 10000 的無負整數。 |
+| startIndex |是 |int |陣列中的第一個整數。 StartIndex 和計數的總和不得大於2147483647。 |
+| count |是 |int |陣列中的整數數目。 必須是最多10000的非負整數。 |
 
 ### <a name="return-value"></a>傳回值
 
@@ -1115,18 +809,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | rangeOutput | Array | [5, 6, 7] |
-
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
-```
 
 ## <a name="skip"></a>skip
 
@@ -1194,19 +876,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
-| stringOutput | String | two three |
-
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
-```
+| stringOutput | 字串 | two three |
 
 ## <a name="take"></a>take
 
@@ -1274,19 +944,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
-| stringOutput | String | on |
-
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
-```
+| stringOutput | 字串 | on |
 
 ## <a name="union"></a>union
 
@@ -1354,22 +1012,6 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | objectOutput | Object | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | Array | ["one", "two", "three", "four"] |
 
-若要使用 Azure CLI 部署此範例範本，請使用：
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
-```
-
-若要使用 PowerShell 部署此範例範本，請使用：
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
-```
-
 ## <a name="next-steps"></a>後續步驟
 
-* 有關 Azure 資源管理器範本中部分的說明，請參閱[創作 Azure 資源管理器範本](template-syntax.md)。
-* 要合併多個範本，請參閱[使用 Azure 資源管理器使用連結範本](linked-templates.md)。
-* 要反覆運算創建資源類型時指定的次數，請參閱[在 Azure 資源管理器中創建多個資源實例](copy-resources.md)。
-* 要查看如何部署已創建的範本，請參閱使用 Azure[資源管理器範本部署應用程式](deploy-powershell.md)。
-
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。

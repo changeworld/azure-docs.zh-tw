@@ -1,31 +1,26 @@
 ---
-title: 使用 SCIM、Microsoft Graph 和 Azure AD 布建服務來布建使用者，並使用它所需的資料豐富您的應用程式 |Microsoft Docs
+title: 使用 SCIM、Microsoft Graph 和 Azure AD 來布建使用者和使用資料擴充應用程式
 description: 同時使用 SCIM 和 Microsoft Graph 來布建使用者，並利用所需的資料豐富您的應用程式。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/26/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ffe0474fcfeb28b49f5c2504ede86cd38459d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ceba22e9289e0a10211ee26a7758238a8b1f06c7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181829"
+ms.locfileid: "82201681"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>使用 SCIM 和 Microsoft Graph 一起布建使用者，並利用所需的資料豐富您的應用程式
 
-**目標物件：** 本檔的目標物件是建立應用程式以與 Azure AD 整合的開發人員。 如果其他人想要使用已經與 Azure AD 整合的應用程式（例如 Zoom、ServiceNow 和 DropBox），您可以略過此功能，並查看應用程式的特定[教學](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)課程，或查看布建[服務的運作方式](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)。
+**目標物件：** 本文的目標物件是建立與 Azure Active Directory （Azure AD）整合之應用程式的開發人員。 如果您想要使用已經與 Azure AD 整合的應用程式（例如 Zoom、ServiceNow 和 DropBox），您可以略過這篇文章，並查看應用程式的特定[教學](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)課程，或查看布建[服務的運作方式](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)。
 
 **常見案例**
 
@@ -46,7 +41,6 @@ Azure AD 提供現成可用的服務，可供布建和可擴充的平臺，以�
 **建議**： 
 * 如果您的客戶使用各種 Idp，而您不想要維護同步處理引擎來與每一個整合，則支援 SCIM 相容的[/Users](https://aka.ms/scimreferencecode)端點。 您的客戶將能夠輕鬆地使用此端點來與 Azure AD 布建服務整合，並在需要存取權時自動建立使用者帳戶。 您可以建立端點一次，而且它會與所有 Idp 相容。 請參閱下面的範例要求，以瞭解如何使用 SCIM 來建立使用者。
 * 如果您需要在 Azure AD 的使用者物件和 Microsoft 的其他資料中找到使用者資料，請考慮建立使用者布建的 SCIM 端點，並呼叫 Microsoft Graph 以取得其餘資料。 
-
 
 ```json
 POST /Users

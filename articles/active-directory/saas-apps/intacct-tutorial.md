@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b28390dba009226d493f5bfc6a5270b067f5bba0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 731ed4664d10d3957be160bf9e8001d5470a6f38
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73570490"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82201341"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>教學課程：整合 Sage Intacct 與 Azure Active Directory
 
@@ -94,7 +94,7 @@ ms.locfileid: "73570490"
     | ---------------| --------------- |
     | 公司名稱 | **Sage Intacct 公司識別碼** |
     | NAME | 此值應等同 Sage Intacct 的**使用者識別碼** (您在 [建立 Sage Intacct 測試使用者]  區段中輸入的值)，本教學課程稍後會說明 |
-    | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier | 此值應等同 Sage Intacct 的**同盟 SSO 使用者識別碼** (您在 [建立 Sage Intacct 測試使用者]**區段中輸入的值)** ，本教學課程稍後會說明 |
+    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | 此值應等同 Sage Intacct 的**同盟 SSO 使用者識別碼** (您在 [建立 Sage Intacct 測試使用者]**區段中輸入的值)** ，本教學課程稍後會說明 |
 
     a. 按一下 [新增宣告]  以開啟 [管理使用者宣告]  對話方塊。
 

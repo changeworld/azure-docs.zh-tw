@@ -1,18 +1,18 @@
 ---
-title: 範本功能 - 部署
+title: 範本函式-部署
 description: 描述 Azure Resource Manager 範本中用來擷取部署資訊的函式。
 ms.topic: conceptual
-ms.date: 11/27/2019
-ms.openlocfilehash: 86a1d3d7e05fedacd7a3c044ecab241ca9d059c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: a52b4eae9df4ad3fdf9e481ee0a40aac48f6665b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156322"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203789"
 ---
-# <a name="deployment-functions-for-arm-templates"></a>ARM 範本的部署功能 
+# <a name="deployment-functions-for-arm-templates"></a>ARM 範本的部署功能
 
-資源管理器提供以下功能，用於獲取與 Azure 資源管理器 （ARM） 範本的當前部署相關的值：
+Resource Manager 提供下列函數來取得與目前 Azure Resource Manager （ARM）範本部署相關的值：
 
 * [部署](#deployment)
 * [環境](#environment)
@@ -29,7 +29,12 @@ ms.locfileid: "80156322"
 
 ### <a name="return-value"></a>傳回值
 
-此函式會傳回部署期間所傳遞的物件。 視部署物件是以連結或內嵌物件形式傳遞，所傳回物件中的屬性將有所不同。 部署物件以內嵌形式傳遞時 (例如使用 Azure PowerShell 中的 **-TemplateFile** 參數指向本機檔案時)，所傳回的物件為下列格式：
+此函式會傳回部署期間所傳遞的物件。 傳回之物件中的屬性會根據您的是否為而有所不同：
+
+* 部署本機檔案的範本，或部署透過 URI 存取之遠端檔案的範本。
+* 部署至資源群組，或部署至其中一個其他範圍（[Azure 訂](deploy-to-subscription.md)用帳戶、[管理群組](deploy-to-management-group.md)或[租](deploy-to-tenant.md)使用者）。
+
+將本機範本部署至資源群組時：此函數會傳回下列格式：
 
 ```json
 {
@@ -44,6 +49,7 @@ ms.locfileid: "80156322"
             ],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -51,7 +57,7 @@ ms.locfileid: "80156322"
 }
 ```
 
-部署物件以連結形式傳遞時 (例如使用 **-TemplateUri** 參數指向遠端檔案時)，所傳回的物件為下列格式： 
+將遠端範本部署至資源群組時：此函數會傳回下列格式：
 
 ```json
 {
@@ -68,6 +74,7 @@ ms.locfileid: "80156322"
             "resources": [],
             "outputs": {}
         },
+        "templateHash": "",
         "parameters": {},
         "mode": "",
         "provisioningState": ""
@@ -75,7 +82,26 @@ ms.locfileid: "80156322"
 }
 ```
 
-當您[部署到 Azure 訂用帳戶](deploy-to-subscription.md)而不是資源群組時，傳回的物件包含 `location` 屬性。 部署本機範本或外部範本時，包含 location 屬性。
+當您部署至 Azure 訂用帳戶、管理群組或租使用者時，傳回物件會`location`包含屬性。 部署本機範本或外部範本時，包含 location 屬性。 其格式為：
+
+```json
+{
+    "name": "",
+    "location": "",
+    "properties": {
+        "template": {
+            "$schema": "",
+            "contentVersion": "",
+            "resources": [],
+            "outputs": {}
+        },
+        "templateHash": "",
+        "parameters": {},
+        "mode": "",
+        "provisioningState": ""
+    }
+}
+```
 
 ### <a name="remarks"></a>備註
 
@@ -99,7 +125,7 @@ ms.locfileid: "80156322"
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
             "value": "[deployment()]",
             "type" : "object"
         }
@@ -118,12 +144,13 @@ ms.locfileid: "80156322"
       "contentVersion": "1.0.0.0",
       "resources": [],
       "outputs": {
-        "subscriptionOutput": {
+        "deploymentOutput": {
           "type": "Object",
           "value": "[deployment()]"
         }
       }
     },
+    "templateHash": "13135986259522608210",
     "parameters": {},
     "mode": "Incremental",
     "provisioningState": "Accepted"
@@ -131,17 +158,15 @@ ms.locfileid: "80156322"
 }
 ```
 
-如需使用部署函式的訂用帳戶層級範本，請參閱[訂用帳戶部署函式](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)。 它會使用 `az deployment create` 或 `New-AzDeployment` 命令進行部署。
-
 ## <a name="environment"></a>Environment
 
 `environment()`
 
-返回有關用於部署的 Azure 環境的資訊。
+傳回用於部署之 Azure 環境的相關資訊。
 
 ### <a name="return-value"></a>傳回值
 
-此函數返回當前 Azure 環境的屬性。 下面的示例顯示了全域 Azure 的屬性。 主權雲可能返回略有不同的屬性。
+此函式會傳回目前 Azure 環境的屬性。 下列範例顯示全域 Azure 的屬性。 主權雲端可能會傳回稍微不同的屬性。
 
 ```json
 {
@@ -179,7 +204,7 @@ ms.locfileid: "80156322"
 
 ### <a name="example"></a>範例
 
-以下示例範本返回環境物件。
+下列範例範本會傳回環境物件。
 
 ```json
 {
@@ -195,7 +220,7 @@ ms.locfileid: "80156322"
 }
 ```
 
-上述示例在部署到全域 Azure 時返回以下物件：
+上述範例會在部署至全域 Azure 時傳回下列物件：
 
 ```json
 {
@@ -328,13 +353,13 @@ ms.locfileid: "80156322"
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| stringOutput | String | 選項 1 |
+| stringOutput | 字串 | 選項 1 |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"one": "a", "two": "b"} |
 | arrayOutput | Array | [1, 2, 3] |
-| crossOutput | String | 選項 1 |
+| crossOutput | 字串 | 選項 1 |
 
-有關使用參數的詳細資訊，請參閱 Azure[資源管理器範本中的參數](template-parameters.md)。
+如需使用參數的詳細資訊，請參閱[Azure Resource Manager 範本中的參數](template-parameters.md)。
 
 ## <a name="variables"></a>variables
 
@@ -420,16 +445,13 @@ ms.locfileid: "80156322"
 
 | 名稱 | 類型 | 值 |
 | ---- | ---- | ----- |
-| exampleOutput1 | String | myVariable |
+| exampleOutput1 | 字串 | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
-| exampleOutput3 | String | myVariable |
+| exampleOutput3 | 字串 | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-有關使用變數的詳細資訊，請參閱 Azure[資源管理器範本中的變數](template-variables.md)。
+如需使用變數的詳細資訊，請參閱[Azure Resource Manager 範本中的變數](template-variables.md)。
 
 ## <a name="next-steps"></a>後續步驟
-* 有關 Azure 資源管理器範本中部分的說明，請參閱[創作 Azure 資源管理器範本](template-syntax.md)。
-* 若要合併數個範本，請參閱[透過 Azure Resource Manager 使用連結的範本](linked-templates.md)。
-* 要反覆運算創建資源類型時指定的次數，請參閱[在 Azure 資源管理器中創建多個資源實例](copy-resources.md)。
-* 若要了解如何部署已建立的範本，請參閱[使用 Azure Resource Manager 範本部署應用程式](deploy-powershell.md)。
 
+* 如需 Azure Resource Manager 範本中各區段的說明，請參閱[瞭解 ARM 範本的結構和語法](template-syntax.md)。

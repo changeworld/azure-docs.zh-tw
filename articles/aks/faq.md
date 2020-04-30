@@ -3,12 +3,12 @@ title: Azure Kubernetes Service (AKS) 的常見問題集
 description: 尋找一些關於 Azure Kubernetes Service （AKS）常見問題的解答。
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: f91fe1c63430a0eac23cf9cbc184babb6dd5f7a4
-ms.sourcegitcommit: 354a302d67a499c36c11cca99cce79a257fe44b0
+ms.openlocfilehash: a58c3510d8937b209bf6c73d33237785ecab161d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82106079"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82206597"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -50,7 +50,7 @@ Azure 會在夜間排程自動將安全性修補程式套用至叢集中的 Linu
 
 ### <a name="windows-server-nodes"></a>Windows Server 節點
 
-對於 Windows Server 節點（目前在 AKS 中處於預覽狀態），Windows Update 不會自動執行並套用最新的更新。 依照 Windows Update 發行週期和您自己的驗證程式的定期排程，您應該在 AKS 叢集中的叢集和 Windows Server 節點集區上執行升級。 此升級程式會建立節點來執行最新的 Windows Server 映射和修補程式，然後移除較舊的節點。 如需此程式的詳細資訊，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
+對於 Windows Server 節點，Windows Update 不會自動執行並套用最新的更新。 依照 Windows Update 發行週期和您自己的驗證程式的定期排程，您應該在 AKS 叢集中的叢集和 Windows Server 節點集區上執行升級。 此升級程式會建立節點來執行最新的 Windows Server 映射和修補程式，然後移除較舊的節點。 如需此程式的詳細資訊，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
 
 ## <a name="why-are-two-resource-groups-created-with-aks"></a>為何會使用 AKS 建立兩個資源群組？
 
@@ -122,7 +122,7 @@ AKS 目前不會與 Azure Key Vault 整合。 不過，[適用于 Kubernetes 專
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>我是否可以在 AKS 上執行 Windows Server 容器？
 
-是，Windows Server 容器可供預覽。 若要在 AKS 中執行 Windows Server 容器，請建立執行 Windows Server 的節點集區做為虛擬作業系統。 Windows Server 容器只能使用 Windows Server 2019。 若要開始使用，請參閱[建立具有 Windows Server 節點集][aks-windows-cli]區的 AKS 叢集。
+是，Windows Server 容器可在 AKS 上取得。 若要在 AKS 中執行 Windows Server 容器，請建立執行 Windows Server 的節點集區做為虛擬作業系統。 Windows Server 容器只能使用 Windows Server 2019。 若要開始使用，請參閱[建立具有 Windows Server 節點集][aks-windows-cli]區的 AKS 叢集。
 
 適用于節點集區的 Windows Server 支援包含在 Kubernetes 專案中屬於上游 Windows Server 的一些限制。 如需這些限制的詳細資訊，請參閱[AKS 限制的 Windows Server 容器][aks-windows-limitations]。
 

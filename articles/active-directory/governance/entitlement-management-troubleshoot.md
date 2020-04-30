@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c38e1a61827da547bb39a699a0e92043e63466c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128465"
+ms.locfileid: "82207239"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>針對 Azure AD 權利管理進行疑難排解
 
@@ -87,13 +87,19 @@ ms.locfileid: "80128465"
 
     如果要求有任何傳遞錯誤，則要求狀態將會是 [**未傳遞] 或 [** **部分傳遞**]。
 
-    如果有任何傳遞錯誤，在要求的詳細資料窗格中，將會有傳遞錯誤的計數。
+    如果有任何傳遞錯誤，則會在要求的詳細資料窗格中顯示傳遞錯誤的計數。
 
 1. 按一下 [計數]，以查看所有要求的傳遞錯誤。
 
 ### <a name="reprocess-a-request"></a>重新處理要求
 
-如果要求遇到錯誤，您可以重新處理要求以再次嘗試。 您只能重新處理狀態為 [**傳遞失敗**] 或 [**部分傳遞**] 且完成日期不到一周的要求。
+如果在觸發存取封裝重新處理要求之後符合錯誤，您必須等候系統重新處理要求。 系統會多次嘗試重新處理數小時，因此您無法在這段時間內強制重新處理。 
+
+您只能重新處理狀態為 [**傳遞失敗**] 或 [**部分傳遞**] 且完成日期不到一周的要求。
+
+- 如果在試用期間修正錯誤，則要求狀態會變更為 [**傳遞**]。 要求會重新處理，而不需要使用者採取其他動作。
+
+- 如果在試用期間未修正錯誤，則要求狀態可能是 [**傳遞失敗**] 或 [**部分傳遞**]。 接著，您可以使用 **[重新**處理] 按鈕。 您將會有七天的時間來重新處理要求。
 
 **必要角色：** 全域管理員、使用者系統管理員、目錄擁有者或存取套件管理員
 

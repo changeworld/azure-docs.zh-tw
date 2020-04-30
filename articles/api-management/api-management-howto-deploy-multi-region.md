@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5c71f37741de06b8633e7eafaae2f29823214f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75442657"
+ms.locfileid: "82203143"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何將 Azure API 管理服務執行個體部署到多個 Azure 區域
 
@@ -31,36 +31,23 @@ Azure API 管理支援多區域部署，可讓 API 發行者跨任意數目的�
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="deploy-an-api-management-service-instance-to-a-new-region"></a><a name="add-region"> </a>部署 API 管理服務執行個體到新區域
+## <a name="deploy-api-management-service-to-a-new-region"></a><a name="add-region"> </a>將 API 管理服務部署到新的區域
 
 > [!NOTE]
 > 如果您尚未建立 API 管理服務執行個體，請參閱[建立 API 管理服務執行個體][create an api management service instance]。
 
-在 Azure 入口網站中，瀏覽至「API 管理」服務執行個體的 [級別與價格]**** 頁面。
+1. 在 [Azure 入口網站中，流覽至您的 API 管理服務，然後按一下功能表中的 [**位置**] 專案。
+2. 按一下頂端列中的 [ **+ 新增**]。
+3. 從下拉式清單中選取 [位置]，並使用滑杆設定單位數。
+4. 按一下 [**新增**] 按鈕以確認。
+5. 重複此程式，直到您設定所有位置為止。
+6. 按一下頂端列中的 [**儲存**] 以啟動部署程式。
 
-![調整索引標籤][api-management-scale-service]
+## <a name="delete-an-api-management-service-location"></a><a name="remove-region"> </a>刪除 API 管理服務位置
 
-若要部署新區域，請從工具列中按一下 [+加入區域]****。
-
-![加入區域][api-management-add-region]
-
-從下拉式清單中選取位置，然後使用滑桿設定單位數量。
-
-![指定單位][api-management-select-location-units]
-
-按一下 [加入]**** 以將您的選項放入 [位置] 表格中。
-
-重複此程序，直到設定好所有位置為止，然後從工具列中按一下 [儲存]**** 來開始部署程序。
-
-## <a name="delete-an-api-management-service-instance-from-a-location"></a><a name="remove-region"> </a>從區域中刪除 API 管理服務執行個體
-
-在 Azure 入口網站中，瀏覽至「API 管理」服務執行個體的 [級別與價格]**** 頁面。
-
-![調整索引標籤][api-management-scale-service]
-
-針對您想要移除的位置，使用表格最右邊的 [...]**** 按鈕來開啟操作功能表。 選取 [刪除]**** 選項。
-
-確認刪除，然後按一下 [儲存]**** 來套用變更。
+1. 在 [Azure 入口網站中，流覽至您的 API 管理服務，然後按一下功能表中的 [**位置**] 專案。
+2. 針對您想要移除的位置，使用表格最右邊的 [...]**** 按鈕來開啟操作功能表。 選取 [刪除]**** 選項。
+3. 確認刪除，然後按一下 [儲存]**** 來套用變更。
 
 ## <a name="route-api-calls-to-regional-backend-services"></a><a name="route-backend"> </a>將 API 呼叫路由至區域後端服務
 
@@ -119,11 +106,6 @@ API 管理會根據[最低延遲](../traffic-manager/traffic-manager-routing-met
 1. [在流量管理員中設定 API 管理區域狀態端點](../traffic-manager/traffic-manager-monitoring.md)。 例如`https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef` `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`，地區狀態端點會遵循的 URL 模式。
 1. 指定流量管理員的[路由方法](../traffic-manager/traffic-manager-routing-methods.md)。
 
-[api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
-[api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png
-[api-management-add-region]: ./media/api-management-howto-deploy-multi-region/api-management-add-region.png
-[api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
-[api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
 [create an api management service instance]: get-started-create-service-instance.md
 [get started with azure api management]: get-started-create-service-instance.md
 [deploy an api management service instance to a new region]: #add-region

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 45224625cfc828227708247d082a1aab1aef8469
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 1e41eb02f4b02078dbf4d42c46cab574cf8d0701
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82142651"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204061"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 儲存體分析記錄
 
@@ -86,7 +86,7 @@ ms.locfileid: "82142651"
 
  下表說明記錄檔名稱中的每個屬性：
 
-|屬性|說明|
+|屬性|描述|
 |---------------|-----------------|
 |`<service-name>`|儲存體服務的名稱。 例如：`blob`、`table` 或 `queue`|
 |`YYYY`|記錄檔的四位數年份。 例如：`2011`|
@@ -110,7 +110,7 @@ ms.locfileid: "82142651"
 
  所有的記錄檔 Blob 都會與中繼資料一同儲存，可用來識別 Blob 包含哪些記錄資料。 下表說明每個中繼資料屬性：
 
-|屬性|說明|
+|屬性|描述|
 |---------------|-----------------|
 |`LogType`|描述記錄檔是否包含關於讀取、寫入或刪除作業的資訊。 此值可包含一個類型或是所有這三種類型的組合 (以逗號分隔)。<br /><br /> 範例 1：`write`<br /><br /> 範例 2：`read,write`<br /><br /> 範例3：`read,write,delete`|
 |`StartTime`|記錄檔項目的最早記錄時間，格式為 `YYYY-MM-DDThh:mm:ssZ`。 例如：`2011-07-31T18:21:46Z`|
@@ -160,7 +160,7 @@ Set-AzureStorageServiceLoggingProperty -ServiceType Table -LoggingOperations non
 
 # <a name="net-v12-sdk"></a>[\.NET v12 SDK](#tab/dotnet)
 
-:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/diagnostic-logs-classic.cs" id="snippet_EnableDiagnosticLogs":::
+:::code language="csharp" source="~/azure-storage-snippets/queues/howto/dotnet/dotnet-v12/Monitoring.cs" id="snippet_EnableDiagnosticLogs":::
 
 # <a name="net-v11-sdk"></a>[\.NET v11 SDK](#tab/dotnet11)
 

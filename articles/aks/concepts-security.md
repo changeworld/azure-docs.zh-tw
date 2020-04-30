@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes Service (AKS) 中的安全性，包括主�
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 7238e6cd7ab3625e2953a4408c82802d43372256
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1960d18396f47b3dbdd51a50ec4241be5ebe4ff1
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595938"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82206624"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的應用程式和叢集的安全性概念
 
@@ -19,23 +19,23 @@ ms.locfileid: "77595938"
 
 - [主要元件安全性](#master-security)
 - [節點安全性](#node-security)
-- [群集升級](#cluster-upgrades)
-- [網路安全](#network-security)
+- [叢集升級](#cluster-upgrades)
+- [網路安全性](#network-security)
 - [Kubernetes 秘密](#kubernetes-secrets)
 
 ## <a name="master-security"></a>主要元件安全性
 
-在 AKS 中，Kubernetes 主要元件包含在 Microsoft 所提供的受控服務中。 每個 AKS 群集都有自己的單租戶專用 Kubernetes 主機，用於提供 API 伺服器、計畫程式等。此主機由 Microsoft 管理和維護。
+在 AKS 中，Kubernetes 主要元件包含在 Microsoft 所提供的受控服務中。 每個 AKS 叢集都有自己的單一租使用者專用 Kubernetes 主機，可提供 API 伺服器、排程器等。此主要是由 Microsoft 管理及維護。
 
-預設情況下，Kubernetes API 伺服器使用公共 IP 位址和完全限定的功能變數名稱 （FQDN）。 您可以使用 Kubernetes 角色型存取控制和 Azure Active Directory 來控制對 API 伺服器的存取。 如需詳細資訊，請參閱 [Azure AD 與 AKS 的整合][aks-aad]。
+根據預設，Kubernetes API 伺服器會使用公用 IP 位址和完整功能變數名稱（FQDN）。 您可以使用 Kubernetes 角色型存取控制和 Azure Active Directory 來控制對 API 伺服器的存取。 如需詳細資訊，請參閱 [Azure AD 與 AKS 的整合][aks-aad]。
 
 ## <a name="node-security"></a>節點安全性
 
-AKS 節點是您所管理和維護的 Azure 虛擬機器。 Linux 節點使用 Moby 容器運行時運行優化的 Ubuntu 發行版本。 Windows 伺服器節點（當前在 AKS 中處於預覽狀態）運行優化的 Windows Server 2019 版本，並使用 Moby 容器運行時。 當 AKS 叢集建立或相應增加時，節點將會自動以最新的 OS 安全性更新和設定進行部署。
+AKS 節點是您所管理和維護的 Azure 虛擬機器。 Linux 節點會使用 Moby 容器執行時間來執行優化的 Ubuntu 散發套件。 Windows Server 節點會執行優化的 Windows Server 2019 版本，同時也會使用 Moby 容器執行時間。 當 AKS 叢集建立或相應增加時，節點將會自動以最新的 OS 安全性更新和設定進行部署。
 
-Azure 平臺每晚自動將作業系統安全修補程式應用於 Linux 節點。 如果 Linux OS 安全更新需要主機重新開機，則不會自動執行重新開機。 您可以手動重新開機 Linux 節點，或者一種常見的方法是使用[Kured，][kured]這是 Kubernetes 的開源重啟守護程式。 Kured 會以 [DaemonSet][aks-daemonsets] 執行，並監視每個節點，查看是否有檔案指示需重新啟動。 系統會使用相同的 [cordon 和 drain 程序](#cordon-and-drain)作為叢集升級，跨叢集管理作業系統重新啟動。
+Azure 平臺會在夜間自動將 OS 安全性修補程式套用至 Linux 節點。 如果 Linux OS 安全性更新需要重新開機主機，則不會自動執行重新開機。 您可以手動重新開機 Linux 節點，或常見的方法是使用[Kured][kured]，這是 Kubernetes 的開放原始碼重新開機背景程式。 Kured 會以 [DaemonSet][aks-daemonsets] 執行，並監視每個節點，查看是否有檔案指示需重新啟動。 系統會使用相同的 [cordon 和 drain 程序](#cordon-and-drain)作為叢集升級，跨叢集管理作業系統重新啟動。
 
-對於 Windows 伺服器節點（當前在 AKS 中預覽），Windows 更新不會自動運行和應用最新更新。 在有關 Windows 更新發佈週期和您自己的驗證過程的定期計畫下，應在 AKS 群集中的 Windows Server 節點池上執行升級。 此升級過程創建運行最新 Windows Server 映射和修補程式的節點，然後刪除較舊的節點。 有關此過程的詳細資訊，請參閱[升級 AKS 中的節點池][nodepool-upgrade]。
+對於 Windows Server 節點，Windows Update 不會自動執行並套用最新的更新。 依照 Windows Update 發行週期和您自己的驗證程式的定期排程，您應該在 AKS 叢集中的 Windows Server 節點集區上執行升級。 此升級程式會建立節點來執行最新的 Windows Server 映射和修補程式，然後移除較舊的節點。 如需此程式的詳細資訊，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
 
 節點會部署至私人虛擬網路子網路中，且不會指派公用 IP 位址。 基於疑難排解和管理用途，依預設會啟用 SSH。 此 SSH 存取僅供內部 IP 位址使用。
 
@@ -45,16 +45,16 @@ Azure 平臺每晚自動將作業系統安全修補程式應用於 Linux 節點�
 
 ## <a name="cluster-upgrades"></a>叢集升級
 
-若要達到安全性與合規性，或是要使用最新功能，可以利用 Azure 提供用來協調 AKS 叢集和元件升級的工具。 此升級協調流程包含 Kubernetes 主要元件和代理程式元件。 您可以查看 AKS 群集[的可用庫伯奈斯版本的清單](supported-kubernetes-versions.md)。 若要開始執行升級程序，您必須指定其中一個可用版本。 然後，Azure 會安全地隔離和清空每個 AKS 節點，並執行升級。
+若要達到安全性與合規性，或是要使用最新功能，可以利用 Azure 提供用來協調 AKS 叢集和元件升級的工具。 此升級協調流程包含 Kubernetes 主要元件和代理程式元件。 您可以為您的 AKS 叢集查看[可用的 Kubernetes 版本清單](supported-kubernetes-versions.md)。 若要開始執行升級程序，您必須指定其中一個可用版本。 然後，Azure 會安全地隔離和清空每個 AKS 節點，並執行升級。
 
 ### <a name="cordon-and-drain"></a>隔離和清空
 
-在升級過程中，AKS 節點從群集中單獨設置，因此不會安排新的 pod。 這些節點接著會清空並升級，如下所示：
+在升級過程中，會從叢集個別地隔離 AKS 節點，因此不會對其排程新的 pod。 這些節點接著會清空並升級，如下所示：
 
-- 將新節點部署到節點池中。 此節點運行最新的作業系統映射和修補程式。
-- 已標識一個現有節點進行升級。 此節點上的 Pod 在節點池中的其他節點上正常終止和計畫。
-- 此現有節點將從 AKS 群集中刪除。
-- 群集中的下一個節點使用相同的過程進行隔離和排空，直到所有節點在升級過程中成功替換。
+- 新的節點會部署到節點集區。 此節點會執行最新的 OS 映射和修補程式。
+- 已識別其中一個現有的節點以進行升級。 此節點上的 pod 會在節點集區中的其他節點上正常終止和排程。
+- 這個現有的節點會從 AKS 叢集刪除。
+- 叢集中的下一個節點會使用相同的程式進行地隔離和清空，直到所有節點都成功取代為升級程式的一部分。
 
 如需詳細資訊，請參閱[升級 AKS 叢集][aks-upgrade-cluster]。
 
@@ -64,19 +64,19 @@ Azure 平臺每晚自動將作業系統安全修補程式應用於 Linux 節點�
 
 ### <a name="azure-network-security-groups"></a>Azure 網路安全性群組
 
-為了篩選虛擬網路中的流量，Azure 會使用網路安全性群組規則。 這些規則可定義允許或拒絕存取資源的來源和目的地 IP 範圍、連接埠和通訊協定。 創建預設規則以允許 TLS 流量到庫伯內斯 API 伺服器。 當您建立具有負載平衡器、連接埠對應或輸入路由的服務時，AKS 將會自動修改網路安全性群組，讓流量以適當方式傳輸。
+為了篩選虛擬網路中的流量，Azure 會使用網路安全性群組規則。 這些規則可定義允許或拒絕存取資源的來源和目的地 IP 範圍、連接埠和通訊協定。 系統會建立預設規則，以允許 Kubernetes API 伺服器的 TLS 流量。 當您建立具有負載平衡器、連接埠對應或輸入路由的服務時，AKS 將會自動修改網路安全性群組，讓流量以適當方式傳輸。
 
 ## <a name="kubernetes-secrets"></a>Kubernetes 秘密
 
 Kubernetes *祕密*可用來將敏感性資料插入 Pod 中，例如存取認證或金鑰。 首先，您必須使用 Kubernetes API 建立祕密。 您在定義 Pod 或部署時，系統可能會要求特定秘密。 對於有已排程的 Pod 需要秘密的節點，才會提供秘密，且秘密會儲存在 *tmpfs* 中，不會寫入至磁碟。 當節點上最後一個需要祕密的 Pod 遭刪除時，即會從該節點的 tmpfs 中刪除秘密。 祕密儲存在指定的命名空間內，且僅供相同命名空間中的 Pod 存取。
 
-使用祕密可減少在 Pod 或服務 YAML 資訊清單中定義的敏感性資訊。 秘密會以 YAML 資訊清單的形式儲存在 Kubernetes API 伺服器中，供您要求。 此方法僅可供特定 Pod 存取祕密。 請注意：原始機密清單檔包含基於 base64 格式的秘密資料（有關詳細資訊，請參閱[官方文檔][secret-risks]）。 因此，此檔應視為敏感資訊，並且永遠不會承諾原始程式碼管理。
+使用祕密可減少在 Pod 或服務 YAML 資訊清單中定義的敏感性資訊。 秘密會以 YAML 資訊清單的形式儲存在 Kubernetes API 伺服器中，供您要求。 此方法僅可供特定 Pod 存取祕密。 請注意：原始密碼資訊清單檔案包含 base64 格式的秘密資料（如需詳細資訊，請參閱[官方檔][secret-risks]）。 因此，這個檔案應該被視為機密資訊，而且永遠不會認可到原始檔控制。
 
 ## <a name="next-steps"></a>後續步驟
 
 若要開始保護您的 AKS 叢集，請參閱[升級 AKS 叢集][aks-upgrade-cluster]。
 
-有關相關的最佳實踐，請參閱[AKS 中群集安全和升級的最佳做法][operator-best-practices-cluster-security]和[AKS 中 pod 安全的最佳做法][developer-best-practices-pod-security]。
+如需相關的最佳作法，請參閱[AKS 中的叢集安全性和升級最佳做法][operator-best-practices-cluster-security]和[AKS 中的 pod 安全性最佳做法][developer-best-practices-pod-security]。
 
 如需關於 Kubernetes 及 AKS 核心概念的詳細資訊，請參閱下列文章：
 

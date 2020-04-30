@@ -3,12 +3,12 @@ title: 使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift
 description: 本文說明如何使用裝載于 Azure Red Hat OpenShift 第3版和更高版本上的 Azure 監視器來設定監視 Kubernetes 叢集。
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 98ac5752e047c4f5f6db63d228bec7c47271aa00
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
-ms.translationtype: HT
+ms.openlocfilehash: c39eda03fc5fb7521bcf08c52eaabc28d4cb1256
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82166288"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204129"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-azure-monitor-for-containers"></a>使用適用于容器的 Azure 監視器來設定 Azure Red Hat OpenShift v3
 
@@ -30,7 +30,7 @@ ms.locfileid: "82166288"
 - 即時資料（預覽）
 - 從叢集節點和 pod[收集計量](container-insights-update-metrics.md)，並將其儲存在 Azure 監視器計量資料庫中
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 若要啟用及存取容器 Azure 監視器中的功能，您至少必須是 Azure 訂用帳戶中 Azure*參與者*角色的成員，以及 log analytics 工作區的[*log analytics 參與者*](../platform/manage-access.md#manage-access-using-azure-permissions)角色的成員，其已設定為使用 Azure 監視器的容器。
 
@@ -38,7 +38,7 @@ ms.locfileid: "82166288"
 
 ## <a name="enable-for-a-new-cluster-using-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本為新叢集啟用
 
-執行下列步驟來部署已啟用監視的 Azure Red Hat OpenShift 叢集。 在繼續之前，請先參閱[建立 Azure Red Hat OpenShift](../../openshift/tutorial-create-cluster.md#prerequisites)叢集教學課程，以瞭解您需要設定的相依性，才能正確設定您的環境。
+執行下列步驟來部署已啟用監視的 Azure Red Hat OpenShift 叢集。 在繼續之前，請先參閱[建立 Azure Red Hat OpenShift](../../openshift/tutorial-create-cluster.md)叢集教學課程，以瞭解您需要設定的相依性，才能正確設定您的環境。
 
 此方法包含兩個 JSON 範本。 一個範本會指定要部署已啟用監視之叢集的設定，另一個則包含您設定來指定下列各項的參數值：
 

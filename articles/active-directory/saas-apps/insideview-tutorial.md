@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 2149b8410104b39652b176895a31b42e094265f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4278f00b1026fe4d1b95634540d6d035d43ca5ab
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100094"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202327"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>教學課程：Azure Active Directory 與 InsideView 整合
 
@@ -143,13 +143,13 @@ ms.locfileid: "67100094"
 
     1. 開啟您從 Azure 入口網站下載的原始憑證。 將憑證的內容複製到剪貼簿，再將該內容貼到 [STS 憑證]  方塊中。
 
-    1. 在 [Crm 使用者識別碼對應]  方塊中，輸入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 。
+    1. 在 [Crm 使用者識別碼對應]  方塊中，輸入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** 。
 
-    1. 在 [Crm 電子郵件對應]  方塊中，輸入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** 。
+    1. 在 [Crm 電子郵件對應]  方塊中，輸入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** 。
 
-    1. 在 [Crm 名字對應]  方塊中，輸入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** 。
+    1. 在 [Crm 名字對應]  方塊中，輸入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** 。
 
-    1. 在 [Crm 姓氏對應]  方塊中，輸入 **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** 。  
+    1. 在 [Crm 姓氏對應]  方塊中，輸入 **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** 。  
 
     1. 選取 [儲存]  。
 

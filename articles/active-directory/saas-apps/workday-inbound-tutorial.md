@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a816f2235fa5356f2300255ec9d2fb2b315acf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 0fa43eae906c918cad940b8f5efafeea07020098
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190311"
+ms.locfileid: "82201630"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教學課程︰設定 Workday 來自動佈建使用者
 
@@ -93,7 +93,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 * [與多個 Active Directory 網域整合](#integrating-with-multiple-active-directory-domains)
 * [規劃 Workday 至 Active Directory 的使用者屬性對應和轉換](#planning-workday-to-active-directory-user-attribute-mapping-and-transformations)
 
-### <a name="prerequisites"></a>Prerequisites
+### <a name="prerequisites"></a>先決條件
 
 本教學課程中說明的案例假設您已經具有下列項目：
 
@@ -153,8 +153,8 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 |   |   |
 | - | - |
-| 不可以。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
-| 不可以。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 1 |
+| 否。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
+| 否。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 1 |
 
   ![實例 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -164,8 +164,8 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 |   |   |
 | - | - |
-| 不可以。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
-| 不可以。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
+| 否。 內部部署環境部署的代理程式數目 | 3 (適用於高可用性和容錯移轉) |
+| 否。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
 
   ![案例 2](./media/workday-inbound-tutorial/dep_scenario2.png)
 
@@ -175,8 +175,8 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 |   |   |
 | - | - |
-| 不可以。 內部部署環境部署的代理程式數目 | 每一不相鄰的 AD 樹系 3 個 |
-| 不可以。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
+| 否。 內部部署環境部署的代理程式數目 | 每一不相鄰的 AD 樹系 3 個 |
+| 否。 Azure 入口網站中設定的「Workday 至 AD 使用者佈建應用程式」數目 | 每一子網域一個應用程式 |
 
   ![案例 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 
@@ -369,7 +369,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 **若要設定 Workday 至 Active Directory 佈建：**
 
-1. 移至 <https://portal.azure.com> 。
+1. 移至 <https://portal.azure.com>。
 
 2. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]****。
 
@@ -458,11 +458,11 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
    * **Workday 密碼–** 輸入 Workday 整合系統帳戶的密碼
 
-   * **Workday Web 服務 API URL –** 輸入租使用者 Workday web 服務端點的 URL。 此值應如下所示https://wd3-impl-services1.workday.com/ccx/service/contoso4：，其中*contoso4*會取代為您的正確租使用者名稱，而*wd3-impl-impl*會取代為正確的環境字串。
+   * **Workday Web 服務 API URL –** 輸入租使用者 Workday web 服務端點的 URL。 此值應如下所示`https://wd3-impl-services1.workday.com/ccx/service/contoso4`：，其中*contoso4*會取代為您的正確租使用者名稱，而*wd3-impl-impl*會取代為正確的環境字串。
 
      > [!NOTE]
      > 根據預設，如果 URL 中沒有指定任何版本資訊，則應用程式會使用 Workday Web 服務（WWS） v 21.1。 若要使用特定的 WWS API 版本，請使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > 範例：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0 <br>
+     > 範例：`https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0` <br>
      
      > [!NOTE]
      > 如果您使用 WWS API v 30.0 和更新版本，在開啟布建作業之前，請先更新 [屬性對應->] [設定] [選項] 下的 [ **XPATH API 運算式**]-請參閱[管理您](#managing-your-configuration)的設定和[workday 屬性參考](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)一節中的**Workday > 編輯屬性清單**。  
@@ -601,7 +601,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 **若要針對僅限雲端使用者設定 Workday 至 Azure Active Directory 佈建：**
 
-1. 移至 <https://portal.azure.com> 。
+1. 移至 <https://portal.azure.com>。
 
 2. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]****。
 
@@ -621,11 +621,11 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
    * **Workday 密碼–** 輸入 Workday 整合系統帳戶的密碼
 
-   * **Workday Web 服務 API URL –** 輸入租使用者 Workday web 服務端點的 URL。 此值應該看起來像這樣：https://wd3-impl-services1.workday.com/ccx/service/contoso4，其中會以您的正確租用戶名稱取代 *contoso4*，以及以正確的環境字串取代 *wd3-impl*。 如果不知道此 URL，請與您的 Workday 整合夥伴或支援代表合作，來判斷要使用的正確 URL。
+   * **Workday Web 服務 API URL –** 輸入租使用者 Workday web 服務端點的 URL。 此值應該看起來像這樣：`https://wd3-impl-services1.workday.com/ccx/service/contoso4`，其中會以您的正確租用戶名稱取代 *contoso4*，以及以正確的環境字串取代 *wd3-impl*。 如果不知道此 URL，請與您的 Workday 整合夥伴或支援代表合作，來判斷要使用的正確 URL。
 
      > [!NOTE]
      > 根據預設，如果 URL 中沒有指定任何版本資訊，則應用程式會使用 Workday Web 服務 v 21.1。 若要使用特定的 Workday Web 服務 API 版本，請使用 URL 格式：https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > 範例：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+     > 範例：`https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0`
 
 
    * **通知電子郵件–** 輸入您的電子郵件地址，然後勾選 [發生失敗時傳送電子郵件] 核取方塊。
@@ -703,7 +703,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 **設定 Workday 回寫連接器：**
 
-1. 移至 <https://portal.azure.com> 。
+1. 移至 <https://portal.azure.com>。
 
 2. 在 Azure 入口網站中，搜尋並選取 [Azure Active Directory]****。
 
@@ -723,7 +723,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
    * **管理員密碼** – 輸入 Workday 整合系統帳戶的密碼
 
-   * **租使用者 URL –** 輸入租使用者 Workday web 服務端點的 URL。 此值應該看起來像這樣：https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources，其中會以您的正確租用戶名稱取代 *contoso4*，以及以正確的環境字串取代 *wd3-impl* (如有必要)。
+   * **租使用者 URL –** 輸入租使用者 Workday web 服務端點的 URL。 此值應該看起來像這樣：`https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources`，其中會以您的正確租用戶名稱取代 *contoso4*，以及以正確的環境字串取代 *wd3-impl* (如有必要)。
 
    * **通知電子郵件–** 輸入您的電子郵件地址，然後勾選 [發生失敗時傳送電子郵件] 核取方塊。
 
@@ -752,7 +752,7 @@ Azure AD 使用者佈建服務支援的 Workday 使用者佈建工作流程，�
 
 1. 在 [佈建]**** 索引標籤中，將 [佈建狀態]**** 設定為 [開啟]****。
 
-2. 按一下 [檔案]  。
+2. 按一下 **[儲存]** 。
 
 3. 此作業會啟動初始同步，所需花費的時數會視 Workday 租用戶中的使用者人數而定。 
 
