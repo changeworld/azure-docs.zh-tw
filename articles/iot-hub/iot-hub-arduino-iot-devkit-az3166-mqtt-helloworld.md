@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure MQTT 用戶端函式庫將訊息傳送到 MQTT 伺服器
-description: 瞭解如何使用 MQTT 用戶端庫向 MQTT 代理發送消息。 還瞭解如何將 mXChip IoT 開發 Kit 設定為 MQTT 用戶端。
+title: 使用 Azure MQTT 用戶端程式庫將訊息傳送至 MQTT 伺服器
+description: 瞭解如何使用 MQTT 用戶端程式庫將訊息傳送到 MQTT broker。 另請瞭解如何將您的 mXChip IoT DevKit 設定為 MQTT 用戶端。
 author: liydu
 manager: jeffya
 ms.service: iot-hub
@@ -11,10 +11,10 @@ ms.date: 04/02/2018
 ms.author: liydu
 ms.custom: mqtt
 ms.openlocfilehash: 600e64ef5bc3329f0116359066bdcdaf42c13e2e
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733481"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>將訊息傳送至 MQTT 伺服器
@@ -81,7 +81,7 @@ ms.locfileid: "81733481"
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
-## <a name="see-also"></a>另請參閱
+## <a name="see-also"></a>請參閱
 
 * [將 IoT DevKit AZ3166 連線到雲端中的 Azure IoT 中樞](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 * [搖一搖以獲取推文](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)

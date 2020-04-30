@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.custom: amqp
 ms.openlocfilehash: 169d926e466559bc83ba64ce9e976e0d725f614d
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729994"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>從內建端點讀取裝置對雲端訊息
@@ -22,14 +22,14 @@ ms.locfileid: "81729994"
 
 | 屬性            | 描述 |
 | ------------------- | ----------- |
-| **分割區計數** | 在創建時設置此屬性以定義設備到雲端事件的[分區](../event-hubs/event-hubs-features.md#partitions)數。 |
+| **分割區計數** | 在建立時設定此屬性，以定義裝置到雲端事件[內嵌的分割](../event-hubs/event-hubs-features.md#partitions)區數目。 |
 | **保留時間**  | 此屬性可指定 IoT 中樞保留訊息的天數。 預設值是一天，但它可以增加到七天。 |
 
-IoT 中心允許在內置事件中心中保留數據最多 7 天。 您可以在創建 IoT 中心期間設置保留時間。 IoT 中心中的數據保留時間取決於 IoT 中心層和單位類型。 在大小方面,內置事件中心可以保留最大消息大小的消息,最長配額最多為 24 小時。 例如,對於 1 S1 單元 IoT 中心,它提供了足夠的儲存空間,可以保留每個郵件至少 4k 大小的 400K 消息。 如果您的設備發送的簡訊較小,則它們可能會保留更長時間(最多 7 天),具體取決於消耗的存儲量。 我們保證在指定的保留時間內保留數據。 郵件將過期,在保留時間過後無法訪問。 
+IoT 中樞允許在內建事件中樞中保留最多7天的資料。 您可以在建立 IoT 中樞期間設定保留時間。 IoT 中樞中的資料保留時間取決於您的 IoT 中樞層和單位類型。 就大小而言，內建的事件中樞可以保留最大訊息大小的訊息，最多可達24小時的配額。 例如，針對1個 S1 單位，IoT 中樞提供足夠的儲存空間，以保留至少每個4k 大小的400K 訊息。 如果您的裝置正在傳送較小的訊息，則會保留較長的時間（最多7天），視耗用的儲存體數量而定。 我們保證至少會保留指定保留時間的資料。 訊息將會過期，而且在超過保留時間之後將無法存取。 
 
-IoT 中樞也可讓您管理內建裝置對雲端接收端點上的取用者群組。 每個 IoT 中心最多只能有 20 個消費者組。
+IoT 中樞也可讓您管理內建裝置對雲端接收端點上的取用者群組。 每個 IoT 中樞最多可以有20個取用者群組。
 
-如果使用[消息路由](iot-hub-devguide-messages-d2c.md)並啟用[回退路由](iot-hub-devguide-messages-d2c.md#fallback-route),則與任何路由上的查詢不匹配的所有消息都將轉到內置終結點。 如果禁用此回退路由,將刪除與任何查詢不匹配的消息。
+如果您使用[訊息路由](iot-hub-devguide-messages-d2c.md)，且已啟用回溯[路由](iot-hub-devguide-messages-d2c.md#fallback-route)，則不符合任何路由上查詢的所有訊息都會移至內建端點。 如果您停用此回復路由，則會捨棄不符合任何查詢的訊息。
 
 您可以使用 [IoT 中樞資源提供者 REST API](/rest/api/iothub/iothubresource) 採取程式設計方式，或透過 [Azure 入口網站](https://portal.azure.com)來修改保留期時間。
 
@@ -37,45 +37,45 @@ IoT 中樞會公開您後端服務的 **messages/events** 內建端點，以讀�
 
 ## <a name="read-from-the-built-in-endpoint"></a>從內建端點讀取
 
-某些產品整合和事件中心 SDK 瞭解 IoT 中心,允許您使用 IoT 中心服務連接字串連接到內建終結點。
+某些產品整合和事件中樞 Sdk 會感知 IoT 中樞，並可讓您使用 IoT 中樞服務連接字串來連接到內建端點。
 
-當您使用不瞭解 IoT 中心的事件中心 SDK 或產品整合時,需要與事件中心相容的終結點和事件中心相容的名稱。 可以從門戶檢索這些值,如下所示:
+當您使用不知道 IoT 中樞的事件中樞 Sdk 或產品整合時，您需要與事件中樞相容的端點和事件中樞相容名稱。 您可以從入口網站取得這些值，如下所示：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)，然後瀏覽至 IoT 中樞。
 
 2. 按一下 [內建端點]****。
 
-3. **事件**「 部份包含以下值:**群組**」 ,**事件中心相容名稱**,**事件中心相容終結點**,**保留時間與****使用者群組**。
+3. [**事件**] 區段包含下列**值：資料**分割、**事件中樞相容名稱**、**事件中樞相容端點**、**保留時間**和取用**者群組**。
 
     ![裝置到雲端設定](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
-在門戶中,事件中心相容終結點欄位包含一個完整的事件中心連接字串,如下所示:**終結點_sb://abcd1234命名空間.服務總線.windows.net/;共用AccessKeyName_iothub擁有者;共享存取金鑰_金鑰金鑰鍵*;實體路徑_iothub-ehub-abcd-1234-123456**。 如果您使用的 SDK 需要其他值,則它們是:
+在入口網站中，[事件中樞相容端點] 欄位包含完整的事件中樞連接字串，如下所示：**端點 = sb：//abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName = iothubowner;SharedAccessKey = keykeykeykeykeykey =;EntityPath = iothub-ehub-abcd-1234-123456**。 如果您所使用的 SDK 需要其他值，則會是：
 
 | 名稱 | 值 |
 | ---- | ----- |
 | 端點 | sb://abcd1234namespace.servicebus.windows.net/ |
 | 主機名稱 | abcd1234namespace.servicebus.windows.net |
-| 命名空間 | abcd1234 命名空間 |
+| 命名空間 | abcd1234namespace |
 
 然後，您可以使用具有 **ServiceConnect** 權限的任何共用存取原則，連接至指定的事件中樞。
 
-可用於連接到 IoT 中心公開的內建事件中心相容終結點的 SDK 包括:
+您可以用來連線到 IoT 中樞公開之內建事件中樞相容端點的 Sdk 包括：
 
-| Language | SDK | 範例 | 注意 |
+| Language | SDK | 範例 | 備忘錄 |
 | -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [快速入門](quickstart-send-telemetry-dotnet.md) | 使用事件中心相容的資訊 |
- Java | https://github.com/Azure/azure-event-hubs-java | [快速入門](quickstart-send-telemetry-java.md) | 使用事件中心相容的資訊 |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [快速入門](quickstart-send-telemetry-node.md) | 使用 IoT 中心連接字串 |
-| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | 使用 IoT 中心連接字串 |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [快速入門](quickstart-send-telemetry-dotnet.md) | 使用事件中樞相容資訊 |
+ Java | https://github.com/Azure/azure-event-hubs-java | [快速入門](quickstart-send-telemetry-java.md) | 使用事件中樞相容資訊 |
+| Node.js | https://github.com/Azure/azure-event-hubs-node | [快速入門](quickstart-send-telemetry-node.md) | 使用 IoT 中樞連接字串 |
+| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | 使用 IoT 中樞連接字串 |
 
-與 IoT 中心公開的內建事件中心相容終結點的產品整合包括:
+您可以搭配 IoT 中樞公開之內建事件中樞相容端點使用的產品整合包括：
 
-* [Azure 函數](https://docs.microsoft.com/azure/azure-functions/)。 請參考[Azure 函數處理來自 IoT 中心的資料](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/)。
-* [Azure 串流分析](https://docs.microsoft.com/azure/stream-analytics/)。 請參考[串流資料 。](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub)
-* [時間序列的見解](https://docs.microsoft.com/azure/time-series-insights/)。 請參考[此工作的執行的資料來源到 IoT 中心事件來源](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md)。
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/)。 請參閱[使用 Azure Functions 處理來自 IoT 中樞的資料](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/)。
+* [Azure 串流分析](https://docs.microsoft.com/azure/stream-analytics/)。 請參閱將[資料當做輸入串流至串流分析](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub)。
+* [時間序列深入解析](https://docs.microsoft.com/azure/time-series-insights/)。 請參閱[將 IoT 中樞事件來源新增至您的時間序列深入解析環境](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md)。
 * [Apache Storm Spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md)。 您可以檢視 GitHub 上的 [Spout 原始檔](https://github.com/apache/storm/tree/master/external/storm-eventhubs) 。
 * [Apache Spark 整合](../hdinsight/spark/apache-spark-eventhub-streaming.md)。
-* [Azure 資料塊](https://docs.microsoft.com/azure/azure-databricks/)。
+* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/)。
 
 ## <a name="next-steps"></a>後續步驟
 

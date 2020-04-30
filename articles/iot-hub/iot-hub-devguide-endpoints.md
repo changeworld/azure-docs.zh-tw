@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 53660ad93ab2218d546ae6f363873c4d66872e2b
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730317"
 ---
 # <a name="reference---iot-hub-endpoints"></a>參考 - IoT 中樞端點
@@ -34,9 +34,9 @@ Azure IoT 中樞是一項多租用戶服務，可將其功能公開給各種動�
 
 下列清單說明這些端點：
 
-* **資源提供者**. IoT 中樞資源提供者會公開 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 介面。 此介面可讓 Azure 訂用帳戶擁有者建立和刪除 IoT 中樞，以及更新 IoT 中樞屬性。 IoT 中樞屬性用來管理[中樞層級的安全性原則](iot-hub-devguide-security.md#access-control-and-permissions) (相對於裝置層級的存取控制) 和雲端到裝置與裝置到雲端傳訊的功能選項。 IoT 中樞資源提供者也可讓您[匯出裝置身分識別](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)。
+* **資源提供者**。 IoT 中樞資源提供者會公開 [Azure Resource Manager](../azure-resource-manager/management/overview.md) 介面。 此介面可讓 Azure 訂用帳戶擁有者建立和刪除 IoT 中樞，以及更新 IoT 中樞屬性。 IoT 中樞屬性用來管理[中樞層級的安全性原則](iot-hub-devguide-security.md#access-control-and-permissions) (相對於裝置層級的存取控制) 和雲端到裝置與裝置到雲端傳訊的功能選項。 IoT 中樞資源提供者也可讓您[匯出裝置身分識別](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)。
 
-* **裝置身分識別管理**。 每個 IoT 中樞都會公開一組 HTTPS REST 端點，用來管理裝置身分識別 (建立、擷取、更新和刪除)。 [設備標識](iot-hub-devguide-identity-registry.md)用於設備身份驗證和訪問控制。
+* **裝置身分識別管理**。 每個 IoT 中樞都會公開一組 HTTPS REST 端點，用來管理裝置身分識別 (建立、擷取、更新和刪除)。 [裝置](iot-hub-devguide-identity-registry.md)身分識別用於裝置驗證和存取控制。
 
 * **裝置對應項管理**。 每個 IoT 中樞都會公開一組面向服務的 HTTPS REST 端點，用來查詢和更新[裝置對應項](iot-hub-devguide-device-twins.md) (更新標籤和屬性)。
 
@@ -44,11 +44,11 @@ Azure IoT 中樞是一項多租用戶服務，可將其功能公開給各種動�
 
 * **裝置端點**。 針對身分識別登錄中的每個裝置，IoT 中樞會公開一組端點：
 
-  * *傳送裝置到雲的訊息*。 裝置會使用這個端點來[傳送裝置到雲端的訊息](iot-hub-devguide-messages-d2c.md)。
+  * *傳送裝置到雲端的訊息*。 裝置會使用這個端點來[傳送裝置到雲端的訊息](iot-hub-devguide-messages-d2c.md)。
 
-  * 接收雲端到裝置的訊息**。 裝置使用此終結點接收目標[雲到裝置訊息](iot-hub-devguide-messages-c2d.md)。
+  * 接收雲端到裝置的訊息**。 裝置會使用此端點來接收目標[雲端到裝置訊息](iot-hub-devguide-messages-c2d.md)。
 
-  * *起始檔案上傳*。 裝置使用此終結點從 IoT 內端接收 Azure 儲存 SAS URI[來上傳檔案](iot-hub-devguide-file-upload.md)。
+  * *起始檔案上傳*。 裝置會使用此端點來接收來自 IoT 中樞的 Azure 儲存體 SAS URI，以[上傳](iot-hub-devguide-file-upload.md)檔案。
 
   * *擷取和更新裝置對應項的屬性*。 裝置使用此端點來存取其[裝置對應項](iot-hub-devguide-device-twins.md)的屬性。
 
@@ -56,9 +56,9 @@ Azure IoT 中樞是一項多租用戶服務，可將其功能公開給各種動�
 
     公開這些端點時，是使用 [MQTT v3.1.1](https://mqtt.org/)、HTTPS 1.1 及 [AMQP 1.0](https://www.amqp.org/) 通訊協定來公開。 您也可以透過連接埠 443 上的 [WebSockets](https://tools.ietf.org/html/rfc6455) 取得 AMQP。
 
-* **服務終結點**。 每個 IoT 中樞都會公開一組端點，供您的解決方案後端用來與您的裝置通訊。 但有一個例外狀況，這些端點只會在使用 [AMQP](https://www.amqp.org/) 通訊協定時公開。 方法引動過程端點會透過 HTTPS 通訊協定來公開。
+* **服務端點**。 每個 IoT 中樞都會公開一組端點，供您的解決方案後端用來與您的裝置通訊。 但有一個例外狀況，這些端點只會在使用 [AMQP](https://www.amqp.org/) 通訊協定時公開。 方法引動過程端點會透過 HTTPS 通訊協定來公開。
   
-  * *接收裝置到雲的消息*。 此端點與 [Azure 事件中樞](https://azure.microsoft.com/documentation/services/event-hubs/)相容。 後端服務可用它來讀取由您的裝置所傳送的[裝置到雲端訊息](iot-hub-devguide-messages-d2c.md)。 除了這個內建端點外，您可以在 IoT 中樞上建立自訂端點。
+  * *接收裝置到雲端的訊息*。 此端點與 [Azure 事件中樞](https://azure.microsoft.com/documentation/services/event-hubs/)相容。 後端服務可用它來讀取由您的裝置所傳送的[裝置到雲端訊息](iot-hub-devguide-messages-d2c.md)。 除了這個內建端點外，您可以在 IoT 中樞上建立自訂端點。
   
   * *傳送雲端到裝置的訊息及接收傳遞通知*。 這些端點可讓您的解決方案後端傳送可靠的[雲端到裝置訊息](iot-hub-devguide-messages-c2d.md)，以及接收相對應的傳遞或到期通知。
   
@@ -85,14 +85,14 @@ IoT 中樞目前支援下列 Azure 服務做為額外的端點︰
 
 如需您可以新增的端點數目限制，請參閱[配額和節流](iot-hub-devguide-quotas-throttling.md)。
 
-您可以使用 REST API[取得終結點執行狀況](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)來取得終結點的執行狀況。 我們建議使用與路由消息延遲相關的[IoT 中心指標](iot-hub-metrics.md)來識別和調試終結點運行狀況死或不正常的錯誤,因為我們預計當終結點處於這些狀態之一時,延遲會更高。
+您可以使用 REST API[取得端點健全狀況](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth)來取得端點的健全狀況狀態。 我們建議使用與路由訊息延遲相關的[IoT 中樞計量](iot-hub-metrics.md)，在端點健康狀態為 [無作用] 或 [狀況不良] 時識別和偵測錯誤，因為當端點處於其中一種狀態時，我們預期會有更高的延遲。
 
 |健康情況狀態|描述|
 |---|---|
-|healthy|終結點按預期接受消息。|
-|不良|終結點未按預期接受消息,IoT 中心正在重試將數據發送到此終結點。 當 IoT 中心建立了最終一致的運行狀況時,不正常終結點的狀態將更新為正常。|
-|未知|IoT 中心尚未與終結點建立連接。 未向此終結點傳遞或拒絕任何消息。|
-|死|在 IoT 中心重試為重審期間發送消息後,終結點不接受消息。|
+|healthy|端點會如預期般接受訊息。|
+|isapi|端點不會如預期般接受訊息，IoT 中樞會重試將資料傳送到此端點。 當 IoT 中樞已建立最終一致的健全狀況狀態時，狀態不良的端點就會更新為狀況良好。|
+|未知|IoT 中樞尚未與端點建立連接。 未將任何訊息傳遞至此端點或從中拒絕。|
+|損|在 IoT 中樞重試傳送 retrial 期間的訊息之後，端點不接受訊息。|
 
 ## <a name="field-gateways"></a>現場閘道器
 
@@ -107,4 +107,4 @@ IoT 中樞目前支援下列 Azure 服務做為額外的端點︰
 * [裝置對應項、作業和訊息路由的 IoT 中樞查詢語言](iot-hub-devguide-query-language.md)
 * [配額和節流](iot-hub-devguide-quotas-throttling.md)
 * [IoT 中樞的 MQTT 支援](iot-hub-mqtt-support.md)
-* [瞭解 IoT 中心 IP 位址](iot-hub-understand-ip-address.md)
+* [瞭解您的 IoT 中樞 IP 位址](iot-hub-understand-ip-address.md)

@@ -1,6 +1,6 @@
 ---
-title: 使用 S2S VPN 作為 Azure 快速路由專用對等互連的備份 |微軟文件
-description: 此頁提供使用 S2S VPN 備份 Azure ExpressRoute 專用對等互連的體系結構建議。
+title: 使用 S2S VPN 做為 Azure ExpressRoute 私用對等互連的備份 |Microsoft Docs
+description: 本頁面提供使用 S2S VPN 來備份 Azure ExpressRoute 私用對等互連的架構建議。
 services: networking
 author: rambk
 ms.service: expressroute
@@ -8,68 +8,68 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: rambala
 ms.openlocfilehash: a6a22b667bc66d6ee69bfbd7ad1db88f72d8df0e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687852"
 ---
-# <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>使用 S2S VPN 作為 ExpressRoute 專用對等互連的備份
+# <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>使用 S2S VPN 做為 ExpressRoute 私用對等互連的備份
 
-在題為「[使用 ExpressRoute 專用對等互連進行災難恢復設計][DR-PP]」的文章中,我們討論了為 ExpressRoute 專用對等互連連接提供備份連接解決方案的必要性,以及如何為此使用異地冗餘 ExpressRoute 電路。 在本文中,讓我們考慮如何利用和維護網站到網站 (S2S) VPN 作為 ExpressRoute 專用對等互連的背面。 
+在標題為[使用 expressroute 私用對等互連進行嚴重損壞修復設計][DR-PP]的文章中，我們已討論過 expressroute 私用對等互連連線的備份連線解決方案需求，以及如何針對目的使用異地多餘的 ExpressRoute 線路。 在本文中，讓我們考慮如何利用和維護站對站（S2S） VPN 作為 ExpressRoute 私用對等互連的背面。 
 
-與異地冗餘 ExpressRoute 電路不同,您只能在主動-被動模式下使用 ExpressRoute-VPN 災難恢復組合。 在被動模式下使用任何備份網路連接的一個主要挑戰是,被動連接通常與主連接同時失敗。 被動連接故障的常見原因是缺少主動維護。 因此,在本文中,讓我們重點介紹如何驗證並主動維護正在備份 ExpressRoute 專用對等互連的 S2S VPN 連接。
+不同于異地多餘的 ExpressRoute 線路，您只能在主動-被動模式中使用 ExpressRoute-VPN 嚴重損壞修復組合。 在被動模式中使用任何備份網路連線的主要挑戰是，被動連線通常會與主要連線一起失敗。 被動連線失敗的常見原因是缺少主動維護。 因此，在本文中，我們將焦點放在如何驗證和主動維護備份 ExpressRoute 私人對等互連的 S2S VPN 連線能力。
 
 >[!NOTE] 
->當通過 ExpressRoute 和 VPN 通告給定路由時,Azure 更喜歡路由而不是快速路由。  
+>當指定的路由透過 ExpressRoute 和 VPN 來公告時，Azure 會偏好透過 ExpressRoute 路由傳送。  
 >
 
-在本文中,讓我們看看如何從 Azure 角度和用戶端網路邊緣角度驗證連接。 無論是否管理與 Microsoft 網路實體對等的用戶端網路設備,從任一端進行驗證都會有所説明。 
+在本文中，我們將瞭解如何從 Azure 觀點和用戶端網路邊緣觀點來驗證連線能力。 無論您是否管理與 Microsoft 網路實體對等的用戶端網路裝置，都能從任一端進行驗證。 
 
 ## <a name="example-topology"></a>範例拓撲
 
-在我們的設置中,我們透過 ExpressRoute 電路和 S2S VPN 連接將本地網路連接到 Azure 集線器 VNet。 Azure 中心 VNet 依次與分支 VNet 對等互連,如下圖所示:
+在我們的設定中，我們有一個透過 ExpressRoute 線路和一個 S2S VPN 連線連接到 Azure 中樞 VNet 的內部部署網路。 Azure 中樞 VNet 接著會對等互連到輪輻 VNet，如下圖所示：
 
 ![1][1]
 
-在設置中,ExpressRoute 電路在本地的一對「客戶邊緣」(CE) 路由器上終止。 本地 LAN 透過一對在領導者跟隨模式下運行的防火牆連接到 CE 路由器。 S2S VPN 直接終止在防火牆上。
+在安裝程式中，ExpressRoute 線路會在內部部署的一對「客戶邊緣」（CE）路由器上終止。 內部部署 LAN 是透過一組防火牆（以領導人執行者模式運作）連接到 CE 路由器。 S2S VPN 會直接在防火牆上終止。
 
-下表列出了拓撲的關鍵 IP 首碼:
+下表列出拓撲的金鑰 IP 首碼：
 
-| **實體** | **前置詞** |
+| **本體** | **前置詞** |
 | --- | --- |
-| 本地區域網 | 10.1.11.0/25 |
-| Azure 中心 VNet | 10.17.11.0/25 |
-| Azure 分支 VNet | 10.17.11.128/26 |
-| 本機測試伺服器 | 10.1.11.10 |
-| 分支 VNet 測試 VM | 10.17.11.132 |
-| 快速路由主連線 p2p 子網路 | 192.168.11.16/30 |
-| 快速路由輔助連線 p2p 子網路 | 192.168.11.20/30 |
-| VPN 閘道主 BGP 對等 IP | 10.17.11.76 |
-| VPN 閘道輔助 BGP 對等 IP | 10.17.11.77 |
-| 本地防火牆 VPN BGP 對等 IP | 192.168.11.88 |
-| 主 CE 路由器 i/f 面向防火牆 IP | 192.168.11.0/31 |
-| 面向主 CE 路由器 IP 的防火牆 i/f | 192.168.11.1/31 |
-| 輔助 CE 路由器 i/f 面向防火牆 IP | 192.168.11.2/31 |
-| 適合 CE 路由器 IP 的防火牆 i/f | 192.168.11.3/31 |
+| 內部部署 LAN | 10.1.11.0/25 |
+| Azure 中樞 VNet | 10.17.11.0/25 |
+| Azure 輪輻 VNet | 10.17.11.128/26 |
+| 內部部署測試伺服器 | 10.1.11.10 |
+| 輪輻 VNet 測試 VM | 10.17.11.132 |
+| ExpressRoute 主要連接 p2p 子網 | 192.168.11.16/30 |
+| ExpressRoute 次要連接 p2p 子網 | 192.168.11.20/30 |
+| VPN 閘道主要 BGP 對等互連 IP | 10.17.11.76 |
+| VPN 閘道次要 BGP 對等互連 IP | 10.17.11.77 |
+| 內部部署防火牆 VPN BGP 對等互連 IP | 192.168.11.88 |
+| 通往防火牆 IP 的主要 CE 路由器 i/f | 192.168.11.0/31 |
+| 通往主要 CE 路由器 IP 的防火牆 i/f | 192.168.11.1/31 |
+| 針對防火牆 IP 的次要 CE 路由器 i/f | 192.168.11.2/31 |
+| 通往次要 CE 路由器 IP 的防火牆 i/f | 192.168.11.3/31 |
 
 
-下表列出了拓撲的 ASN:
+下表列出拓撲的 Asn：
 
-| **自主系統** | **ASN** |
+| **自發系統** | **ASN** |
 | --- | --- |
 | 內部部署 | 65020 |
-| 微軟企業邊緣 | 12076 |
-| 虛擬網路 GW (ExR) | 65515 |
-| 虛擬網路 GW (VPN) | 65515 |
+| Microsoft 企業邊緣 | 12076 |
+| 虛擬網路 GW （ExR） | 65515 |
+| 虛擬網路 GW （VPN） | 65515 |
 
-## <a name="high-availability-without-asymmetricity"></a>高可用性,無不對稱性
+## <a name="high-availability-without-asymmetricity"></a>沒有 asymmetricity 的高可用性
 
-### <a name="configuring-for-high-availability"></a>設定,提供高可用性
+### <a name="configuring-for-high-availability"></a>設定高可用性
 
-[配置 ExpressRoute 和網站到網站共存的連接][Conf-CoExist]討論如何配置共存的 ExpressRoute 電路和 S2S VPN 連接。 正如我們[在使用 ExpressRoute 設計高可用性][HA]時所討論的,為了提高 ExpressRoute 的高可用性,我們的設置一直保持網路冗餘(避免單點故障),一直保持到端點。 此外,ExpressRoute 電路的主連接和輔助連接配置為在主動-主動模式下運行,通過兩個連接以相同的方式通告本地前綴。 
+[設定 ExpressRoute 和站對站][Conf-CoExist]並存連線討論如何設定並存的 ExpressRoute 線路和 S2S VPN 連接。 如我們在[使用 Expressroute 設計高可用性][HA]中所討論，為了改善 expressroute 高可用性，我們的安裝程式會維護網路的冗余（避免單一失敗點），直到端點為止。 此外，ExpressRoute 線路的主要和次要連線都會設定為以主動-主動模式運作，方法是透過這兩個連線的相同方式來公告內部部署首碼。 
 
-透過 ExpressRoute 電路的主連線的主 CE 路由器的本地路由通告如下所示(Junos):
+透過 ExpressRoute 線路主要連線的主要 CE 路由器的內部部署路由通告如下所示（Junos 命令）：
 
     user@SEA-MX03-01> show route advertising-protocol bgp 192.168.11.18 
 
@@ -77,7 +77,7 @@ ms.locfileid: "81687852"
       Prefix                  Nexthop              MED     Lclpref    AS path
     * 10.1.11.0/25            Self                                    I
 
-透過 ExpressRoute 電路的連結,輔助 CE 路由器的本地路由通告如下所示(Junos):
+透過 ExpressRoute 線路的次要連線來進行次要 CE 路由器的內部部署路由通告，如下所示（Junos 命令）：
 
     user@SEA-MX03-02> show route advertising-protocol bgp 192.168.11.22 
 
@@ -85,11 +85,11 @@ ms.locfileid: "81687852"
       Prefix                  Nexthop              MED     Lclpref    AS path
     * 10.1.11.0/25            Self                                    I
 
-為了提高備份連接的高可用性,S2S VPN 也配置為主動-主動模式。 Azure VPN 閘道配置如下所示。 請注意,作為 VPN 配置 VPN 的一部分,還列出了閘道的 BGP 對等 IP 位址 -- 10.17.11.76 和 10.17.11.77。
+為了改善備份連接的高可用性，也會以主動-主動模式設定 S2S VPN。 Azure VPN 閘道設定如下所示。 注意：作為 VPN 設定 VPN 的一部分，也會列出閘道的 BGP 對等互連 IP 位址--10.17.11.76 和10.17.11.77。
 
 ![2][2]
 
-防火牆通告到 VPN 閘道的主資料庫和輔助 BGP 對等方的本地路由。 路由播發如下所示(Junos):
+內部部署路由會由防火牆公告至 VPN 閘道的主要和次要 BGP 對等互連。 路由公告如下所示（Junos）：
 
     user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.76 
 
@@ -105,16 +105,16 @@ ms.locfileid: "81687852"
     * 10.1.11.0/25            Self                                    I
 
 >[!NOTE] 
->在主動-主動模式下配置 S2S VPN 不僅為您的災難恢復備份網路連接提供高可用性,而且還為備份連接提供了更高的輸送量。 換句話說,建議在主動-主動模式下配置 S2S VPN,因為它強制創建多個基礎隧道。
+>設定主動-主動模式的 S2S VPN 不僅會提供嚴重損壞修復備份網路連線的高可用性，還能為備份連線提供較高的輸送量。 換句話說，建議您在主動-主動模式中設定 S2S VPN，因為它會強制建立多個基礎通道。
 >
 
-### <a name="configuring-for-symmetric-traffic-flow"></a>設定對稱流量串流
+### <a name="configuring-for-symmetric-traffic-flow"></a>設定對稱流量流程
 
-我們注意到,當通過 ExpressRoute 和 S2S VPN 通告給定的本地路由時,Azure 更喜歡 ExpressRoute 路徑。 要強制 Azure 首選 S2S VPN 路徑而不是共存的 ExpressRoute,您需要透過 VPN 連接通告更具體的路由(具有較大子網掩碼的較長首碼)。 我們在這裡的目標是只使用 VPN 連接作為返回。 因此,Azure 的預設路徑選擇行為符合我們的目標。 
+我們注意到，當指定的內部部署路由透過 ExpressRoute 和 S2S VPN 來公告時，Azure 會偏好使用 ExpressRoute 路徑。 若要強制 Azure 在並存的 ExpressRoute 上使用 S2S VPN 路徑，您需要透過 VPN 連線來公告更特定的路由（較大的子網路遮罩的前置詞）。 我們的目標是使用 VPN 連線作為「僅備份」。 因此，Azure 的預設路徑選取行為會隨著我們的目標而行。 
 
-我們有責任確保從本地發送到 Azure 的流量也更喜歡快速路由路徑,而不是 S2S VPN。 本地設定中 CE 路由器和防火牆的預設本階設定為 100。 因此,通過配置通過 ExpressRoute 專用對等互連接收的路由的本地首選項大於 100(例如 150),我們可以使發送到 Azure 的流量選擇處於穩定狀態的 ExpressRoute 電路。
+我們負責確保從內部部署目的地到 Azure 的流量也偏好透過 S2S VPN 的 ExpressRoute 路徑。 在我們的內部部署設定中，CE 路由器和防火牆的預設本機喜好設定為100。 因此，藉由設定透過 ExpressRoute 私用100對等互連（如150）所接收之路由的本機喜好設定，我們可以讓目的地為 Azure 的流量偏好處于穩定狀態的 ExpressRoute 線路。
 
-終止 ExpressRoute 電路主連接的主 CE 路由器的 BGP 配置如下所示。 請注意,在 iBGP 會話上通告的路由的本地首選項的值配置為 150。 同樣,我們需要確保終止 ExpressRoute 電路的輔助連接的輔助 CE 路由器的本地首選項也配置為 150。
+主要 CE 路由器的 BGP 設定會終止 ExpressRoute 線路的主要連線，如下所示。 請注意，透過 iBGP 會話公告之路由的本機喜好設定值，會設為150。 同樣地，我們必須確定第二部 CE 路由器的本機喜好設定終止 ExpressRoute 線路的次要連線也已設定為150。
 
     user@SEA-MX03-01> show configuration routing-instances Cust11 
     description "Customer 11 VRF";
@@ -139,7 +139,7 @@ ms.locfileid: "81687852"
       }
     }
 
-本地防火牆的路由表確認(如下所示),對於發往 Azure 的本地流量,首選路徑在穩定狀態下超過 ExpressRoute。
+內部部署防火牆的路由表會確認（如下所示），針對以 Azure 為目標的內部部署流量，慣用的路徑是在穩定狀態的 ExpressRoute 上。
 
     user@SEA-SRX42-01> show route table Cust11.inet.0 10.17.11.0/24    
 
@@ -177,11 +177,11 @@ ms.locfileid: "81687852"
                           AS path: 65515 I, validation-state: unverified
                         > via st0.119
 
-在上述路由表中,對於集線器和分支 VNet 路由 -10.17.11.0/25 和 10.17.11.128/26 -- 192.168.11.0 和 192.168.11.2 是面向 CE 路由器的防火牆介面上的 IP。
+在上述路由表中，針對中樞和輪輻 VNet 路由--10.17.11.0/25 和 10.17.11.128/26--我們看到 ExpressRoute 線路偏好高於 VPN 連線。 192.168.11.0 和192.168.11.2 是防火牆介面上的 Ip，可朝向 CE 路由器。
 
-## <a name="validation-of-route-exchange-over-s2s-vpn"></a>透過 S2S VPN 驗證路由交換
+## <a name="validation-of-route-exchange-over-s2s-vpn"></a>通過 S2S VPN 的路由交換驗證
 
-在本文前面,我們驗證了防火牆的本地路由播發到 VPN 閘道的主資料庫和輔助 BGP 對等體。 此外,讓我們確認防火牆從 VPN 閘道的主資料庫和輔助 BGP 對等體接收的 Azure 路由。
+稍早在本文中，我們已將防火牆的內部部署路由通告驗證至 VPN 閘道的主要和次要 BGP 對等互連。 此外，我們將確認防火牆從 VPN 閘道的主要和次要 BGP 對等互連收到的 Azure 路由。
 
     user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.76 table Cust11.inet.0 
 
@@ -198,7 +198,7 @@ ms.locfileid: "81687852"
       10.17.11.0/25           10.17.11.77                             65515 I
       10.17.11.128/26         10.17.11.77                             65515 I
 
-同樣,讓我們驗證 Azure VPN 閘道收到的本地網路路由前綴。 
+同樣地，讓我們來驗證 Azure VPN 閘道所收到的內部部署網路路由首碼。 
 
     PS C:\Users\user> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn | where {$_.Network -eq "10.1.11.0/25"} | select Network, NextHop, AsPath, Weight
 
@@ -213,9 +213,9 @@ ms.locfileid: "81687852"
     10.1.11.0/25 10.17.11.69   12076-65020  32769
     10.1.11.0/25 10.17.11.69   12076-65020  32769
 
-如上所述,VPN 閘道具有 VPN 閘道的主資料庫和輔助 BGP 對等方接收的路由。 它還可查看通過主和輔助 ExpressRoute 連接接收的路由(AS 路徑以 12076 預示的路線)。 要確認透過 VPN 連接接收的路由,我們需要瞭解連接的本地 BGP 對等 IP。 在所考慮的設置中,它是192.168.11.88,我們確實看到了從它接收的路線。
+如上所示，VPN 閘道具有 VPN 閘道的主要和次要 BGP 對等端所接收的路由。 它也可以看到透過主要和次要 ExpressRoute 連線接收到的路由（在12076前面加上 AS 路徑）。 若要確認透過 VPN 連線接收的路由，我們需要知道連線的內部部署 BGP 對等互連 IP。 在我們的安裝程式中，它是192.168.11.88，而我們會看到從它接收的路由。
 
-接下來,讓我們驗證 Azure VPN 閘道通告到本地防火牆 BGP 對等體 (192.168.11.88) 通告的路由。
+接下來，讓我們來驗證 Azure VPN 閘道向內部部署防火牆 BGP 對等（192.168.11.88）通告的路由。
 
     PS C:\Users\user> Get-AzVirtualNetworkGatewayAdvertisedRoute -Peer 192.168.11.88 -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn |  select Network, NextHop, AsPath, Weight
 
@@ -227,17 +227,17 @@ ms.locfileid: "81687852"
     10.17.11.128/26 10.17.11.77 65515       0
 
 
-看不到路由交換指示連接失敗。 請參閱[故障排除:Azure 網站到網站 VPN 連接無法連接並停止工作][VPN Troubleshoot]以尋求對 VPN 連接進行故障排除的説明。
+若無法查看路由交換，即表示連接失敗。 請參閱[疑難排解： Azure 站對站 VPN 連線無法連線並停止運作][VPN Troubleshoot]，以取得疑難排解 VPN 連接的協助。
 
 ## <a name="testing-failover"></a>測試容錯移轉
 
-現在,我們已經確認通過 VPN 連接(控制平面)成功路由交換,我們設置為將流量(數據平面)從 ExpressRoute 連接切換到 VPN 連接。 
+既然我們已透過 VPN 連線（控制平面）確認成功的路由交換，我們就會將流量（資料平面）從 ExpressRoute 連線切換到 VPN 連線能力。 
 
 >[!NOTE] 
->在生產環境中,故障轉移測試必須在計劃網路維護工作視窗期間完成,因為它可能會造成服務中斷。
+>在生產環境中，容錯移轉測試必須在排定的網路維護工作時間範圍內完成，因為這可能會造成服務中斷。
 >
 
-在進行流量切換之前,讓我們追蹤設置中的當前路徑從本地測試伺服器到分支 VNet 中的測試 VM。
+在執行流量切換之前，讓我們追蹤將設定中的目前路徑從內部部署測試伺服器路由至輪輻 VNet 中的測試 VM。
 
     C:\Users\PathLabUser>tracert 10.17.11.132
 
@@ -251,15 +251,15 @@ ms.locfileid: "81687852"
 
     Trace complete.
 
-我們設置的主和輔助 ExpressRoute 點對點連接子網分別為 192.168.11.16/30 和 192.168.11.20/30。 在上面的跟蹤路線中,在步驟 3 中,我們看到我們達到 192.168.11.18,這是主 MSEE 的介面 IP。 MSEE 介面的存在證實,正如預期的那樣,我們當前的路徑位於 ExpressRoute 上。
+我們的設定的主要和次要 ExpressRoute 點對點連線子網分別是 192.168.11.16/30 和 192.168.11.20/30。 在上述追蹤路由的步驟3中，我們看到我們遇到192.168.11.18，也就是主要 MSEE 的介面 IP。 出現 MSEE 介面時，確認我們目前的路徑是透過 ExpressRoute。
 
-如[重置 ExpressRoute 電路對等互連中][RST]所報告的那樣,讓我們使用以下電源殼命令來禁用 ExpressRoute 電路的主對等互連。
+如[重設 expressroute 線路對等互連][RST]中所報告，讓我們使用下列 powershell 命令來停用 ExpressRoute 線路的主要和次要對等互連。
 
     $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
     $ckt.Peerings[0].State = "Disabled"
     Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-故障轉移開關時間取決於 BGP 收斂時間。 在我們的設置中,故障轉移開關需要幾秒鐘(少於 10)。 切換後,追蹤路徑的重複顯示以下路徑:
+容錯移轉切換時間取決於 BGP 聚合時間。 在我們的設定中，容錯移轉參數需要幾秒鐘的時間（小於10）。 在切換之後，重複的追蹤路由會顯示下列路徑：
 
     C:\Users\PathLabUser>tracert 10.17.11.132
 
@@ -271,24 +271,24 @@ ms.locfileid: "81687852"
 
     Trace complete.
 
-跟蹤路由結果確認通過 S2S VPN 的備份連接處於活動狀態,並且如果主和輔助 ExpressRoute 連接都發生故障,則可以提供服務連續性。 要完成故障轉移測試,讓我們使用以下命令集重新啟用 ExpressRoute 連接並規範化流量流。
+追蹤路由結果會確認透過 S2S VPN 的備份連線為使用中狀態，而且如果主要和次要 ExpressRoute 連線失敗，則可以提供服務持續性。 若要完成容錯移轉測試，讓我們使用下列命令集來啟用 ExpressRoute 連線，並將流量標準化。
 
     $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
     $ckt.Peerings[0].State = "Enabled"
     Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-要確認流量已切換回 ExpressRoute,請重複追蹤路由並確保它通過 ExpressRoute 專用對等互連。
+若要確認流量已切換回 ExpressRoute，請重複追蹤路由，並確定它會通過 ExpressRoute 私用對等互連。
 
 ## <a name="next-steps"></a>後續步驟
 
-ExpressRoute 專為高可用性而設計,在 Microsoft 網路中沒有單點故障。 ExpressRoute 電路仍局限於單個地理區域和服務提供者。 S2S VPN 是快速路由電路的良好災難恢復被動備份解決方案。 對於可靠的被動備份連接解決方案,定期維護被動配置和定期驗證連接非常重要。 至關重要的是,不要讓 VPN 配置過時,並且定期(例如每個季度)在維護時段期間重複本文中描述的驗證和故障轉移測試步驟。
+ExpressRoute 是針對高可用性而設計的，在 Microsoft 網路內不會有單一失敗點。 仍然，ExpressRoute 線路僅限於單一地理區域和服務提供者。 S2S VPN 可能是 ExpressRoute 線路的良好嚴重損壞修復被動備份解決方案。 針對可靠的被動備份連線解決方案，定期維護被動設定和定期驗證連線非常重要。 請務必讓 VPN 設定變得過時，並定期（例如每季）在維護期間重複本文中所述的驗證和容錯移轉測試步驟。
 
-要基於 VPN 閘道指標啟用監視和警報,請參閱[在 VPN 閘道指標上設定警報][VPN-alerts]。
+若要啟用以 VPN 閘道計量為基礎的監視和警示，請參閱[設定 VPN 閘道計量的警示][VPN-alerts]。
 
-您可以快速路由故障後加快 BGP 收斂,[請透過 ExpressRoute 設定 BFD][BFD]。
+若要加速 ExpressRoute 失敗後的 BGP 聚合，請透過[Expressroute 設定 BFD][BFD]。
 
 <!--Image References-->
-[1]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/topology.png "正在考慮的拓撲"
+[1]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/topology.png "考慮的拓撲"
 [2]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/vpn-gw-config.png "VPN GW 設定"
 
 <!--Link References-->

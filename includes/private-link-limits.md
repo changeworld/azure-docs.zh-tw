@@ -9,21 +9,21 @@ ms.date: 04/21/2020
 ms.author: kumud
 ms.custom: include file
 ms.openlocfilehash: 1c790f10a310b6c4dea3aefd6cb02891b5bbcf9a
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768730"
 ---
- 以下限制適用於 Azure 專用連結:
+ 下列限制適用于 Azure 私用連結：
 
 |資源 |限制 |
 |---------|---------|
-|每個虛擬網路的專用終結點數     |  1000       |
-|每個訂閱的專用終結點數       |   64000       |
-|每個訂閱的專用連結服務數         |   800      |
-|專用連結服務上的 IP 組態數量     |  8 (此號碼適用於每個 PLS 使用的 NAT IP 位址)       |
-|同一個專用連結服務上的專用終結點數   |  1000       |
-|每個金鑰保存式保存點數 | 64 |
-|每個訂閱具有專用終結點的金鑰保管庫數 | 64 |
+|每個虛擬網路的私人端點數目     |  1000       |
+|每個訂用帳戶的私人端點數目       |   64000       |
+|每個訂用帳戶的私人連結服務數目         |   800      |
+|私人連結服務上的 IP 設定數目     |  8（此數位適用于每個另外所使用的 NAT IP 位址）       |
+|相同私人連結服務上的私用端點數目   |  1000       |
+|每個金鑰保存庫的私人端點數目 | 64 |
+|每個訂用帳戶具有私人端點的金鑰保存庫數目 | 64 |
 

@@ -13,54 +13,54 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: e16d0ed264f32746c11d89e88ea1e67f9383b773
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732522"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>使用 IoT 中樞傳送雲端到裝置訊息 (Java)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置和一個解決方案後端進行可靠且安全的雙向通訊。 將[遙測數據從設備發送到 IoT 中心](quickstart-send-telemetry-java.md)快速入門顯示如何創建 IoT 中心、在其中預配設備標識以及編寫發送設備到雲端訊息的模擬設備應用。
+Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置和一個解決方案後端進行可靠且安全的雙向通訊。 將[遙測資料從裝置傳送至 IoT 中樞](quickstart-send-telemetry-java.md)快速入門會示範如何建立 iot 中樞、在其中布建裝置身分識別，以及撰寫模擬裝置應用程式的程式碼，以傳送裝置到雲端的訊息。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-這個教學基於[將遙測資料從裝置傳送到 IoT 中心](quickstart-send-telemetry-java.md)。 其中說明如何執行下列動作：
+本教學課程是[以將遙測從裝置傳送至 IoT 中樞為](quickstart-send-telemetry-java.md)基礎。 其中說明如何執行下列動作：
 
 * 從您的解決方案後端，透過 IoT 中樞將雲端到裝置訊息傳送給單一裝置。
 
 * 接收裝置上的雲端到裝置訊息。
 
-* 從解決方案後端請求從 IoT 中心發送到設備的消息的傳遞確認 (*回饋*)。
+* 從您的解決方案後端，針對從 IoT 中樞傳送至裝置的訊息要求傳遞通知（*意見*反應）。
 
-您可以在[IoT 中心開發人員指南中找到有關雲端到設備訊息](iot-hub-devguide-messaging.md)的詳細資訊。
+如需有關[雲端到裝置訊息的](iot-hub-devguide-messaging.md)詳細資訊，請前往 IoT 中樞開發人員指南。
 
 在本教學課程結尾，您將執行兩個 Java 主控台應用程式：
 
-* **模擬設備**,在[將遙測數據從設備發送到 IoT 中心](quickstart-send-telemetry-java.md)中創建的應用程式的修改版本,該中心連接到 IoT 中心並接收雲端到設備的消息。
+* **模擬裝置**，這是在[將遙測從裝置傳送到 iot 中樞時](quickstart-send-telemetry-java.md)所建立的應用程式修改版本，可連線到您的 iot 中樞並接收雲端到裝置的訊息。
 
-* **發送 c2d 消息**,透過 IoT 中心向模擬裝置應用發送雲到設備的消息,然後接收其傳遞確認。
+* **c2d-訊息**會透過 IoT 中樞將雲端到裝置訊息傳送至模擬裝置應用程式，然後接收其傳遞通知。
 
 > [!NOTE]
-> IoT 中心透過 Azure IoT 裝置 SDK 對許多裝置平台和語言(包括 C、Java、Python 和 Javascript)具有 SDK 支援。 如需有關如何將您的裝置與本教學課程中的程式碼連接 (通常是連接到「Azure IoT 中樞」) 的逐步指示，請參閱 [Azure IoT 開發人員中樞](https://azure.microsoft.com/develop/iot)。
+> IoT 中樞透過 Azure IoT 裝置 Sdk，為許多裝置平臺和語言（包括 C、JAVA、Python 和 JAVAscript）提供 SDK 支援。 如需有關如何將您的裝置與本教學課程中的程式碼連接 (通常是連接到「Azure IoT 中樞」) 的逐步指示，請參閱 [Azure IoT 開發人員中樞](https://azure.microsoft.com/develop/iot)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-* 使用 IoT 中心教程[將遙測數據從設備發送到 IoT 中心](quickstart-send-telemetry-java.md)快速入門或[配置消息路由](tutorial-routing.md)的完整工作版本。
+* 將[遙測從裝置傳送至 IoT 中樞](quickstart-send-telemetry-java.md)快速入門或[使用 IoT 中樞設定訊息路由](tutorial-routing.md)教學課程的完整運作版本。
 
-* [Java SE 開發工具套件 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable). 請務必選取 [長期支援]**** 下的 [Java 8]****，以取得 JDK 8 的下載。
+* [JAVA SE 開發套件 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 請務必選取 [長期支援]**** 下的 [Java 8]****，以取得 JDK 8 的下載。
 
-* [馬文 3](https://maven.apache.org/download.cgi)
+* [Maven 3](https://maven.apache.org/download.cgi)
 
-* 使用中的 Azure 帳戶。 如果您沒有帳戶,只需幾分鐘即可建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+* 使用中的 Azure 帳戶。 如果您沒有帳戶，只需要幾分鐘的時間就可以建立[免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 
-* 請確定您的防火牆已開啟連接埠 8883。 本文中的設備示例使用 MQTT 協定,該協定通過埠 8883 進行通信。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
+* 請確定您的防火牆已開啟連接埠 8883。 本文中的裝置範例使用 MQTT 通訊協定，它會透過埠8883進行通訊。 某些公司和教育網路環境可能會封鎖此連接埠。 如需此問題的詳細資訊和解決方法，請參閱[連線至 IoT 中樞 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)。
 
 ## <a name="receive-messages-in-the-simulated-device-app"></a>在模擬的裝置應用程式中接收訊息
 
-在本節中,您將修改在[將遙測數據從設備發送到 IoT 中心](quickstart-send-telemetry-java.md)以接收來自 IoT 中心的雲端到設備訊息時創建的模擬設備應用。
+在本節中，您會修改在[將遙測資料從裝置傳送至 iot 中樞](quickstart-send-telemetry-java.md)中建立的模擬裝置應用程式，以接收來自 IoT 中樞的雲端到裝置訊息。
 
 1. 使用文字編輯器開啟 simulated-device\src\main\java\com\mycompany\app\App.java 檔案。
 
@@ -96,15 +96,15 @@ Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置�
     mvn clean package -DskipTests
     ```
 
-## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中心連接字串
+## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
 
-在本文中,您將創建一個後端服務,透過在[將遙測資料從裝置發送到 IoT 中心](quickstart-send-telemetry-java.md)中建立的 IoT 中心發送雲端到裝置訊息。 要發送雲到設備的消息,您的服務需要**服務連接**許可權。 默認情況下,每個 IoT 中心都使用授予此許可權的名為**服務的**共享存取策略創建。
+在本文中，您會建立後端服務，透過您在[將遙測從裝置傳送至 iot 中樞](quickstart-send-telemetry-java.md)中建立的 IoT 中樞傳送雲端到裝置訊息。 若要傳送雲端到裝置的訊息，您的服務需要**服務連接**許可權。 根據預設，每個 IoT 中樞都會使用名為**服務**的共用存取原則來建立，以授與此許可權。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
 ## <a name="send-a-cloud-to-device-message"></a>傳送雲端到裝置訊息
 
-在本節中，您會建立 Java 主控台應用程式，以將雲端到裝置訊息傳送給模擬裝置應用程式。 您需要在[「將遙測數據從設備發送到 IoT 中心](quickstart-send-telemetry-java.md)快速啟動」中添加的裝置的設備 ID。 您必須在[取得 IoT 中心連接字串中複製的 IoT 中心連接字串](#get-the-iot-hub-connection-string)。
+在本節中，您會建立 Java 主控台應用程式，以將雲端到裝置訊息傳送給模擬裝置應用程式。 您需要在將[遙測資料從裝置傳送至 IoT 中樞](quickstart-send-telemetry-java.md)快速入門中所新增裝置的裝置識別碼。 您也需要先前在[取得 iot 中樞連接字串](#get-the-iot-hub-connection-string)中所複製的 iot 中樞連接字串。
 
 1. 在命令提示字元中使用下列命令，建立名為 **send-c2d-messages** 的 Maven 專案。 注意，此命令是單一且非常長的命令：
 
@@ -139,7 +139,7 @@ Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置�
     import java.net.URISyntaxException;
     ```
 
-7. 將以下類別變數新增到**App**類別,將 **[您的hubconnectstring]** 和 **[您的裝置 id]** 取代為您前面指出的值:
+7. 將下列類別層級變數新增至**App**類別，並將 **{yourhubconnectionstring}** 和 **{yourdeviceid}** 取代為您先前記下的值：
 
     ```java
     private static final String connectionString = "{yourhubconnectionstring}";
@@ -148,7 +148,7 @@ Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置�
         IotHubServiceClientProtocol.AMQPS;
     ```
 
-8. 將**主**方法替換為以下代碼。 此程式碼會連線至 IoT 中樞，傳送訊息給您的裝置，然後等候裝置已接收並處理訊息的通知︰
+8. 將**main**方法取代為下列程式碼。 此程式碼會連線至 IoT 中樞，傳送訊息給您的裝置，然後等候裝置已接收並處理訊息的通知︰
 
     ```java
     public static void main(String[] args) throws IOException,
@@ -181,7 +181,7 @@ Azure IoT 中樞是一項完全受控的服務，有助於讓數百萬個裝置�
     ```
 
     > [!NOTE]
-    > 為簡單起見,本教程不實現任何重試策略。 在生產環境程式碼中，您應該如[暫時性錯誤處理](/azure/architecture/best-practices/transient-faults)文章所建議，實作重試原則 (例如指數型輪詢)。
+    > 為了簡單起見，本教學課程不會執行任何重試原則。 在生產環境程式碼中，您應該如[暫時性錯誤處理](/azure/architecture/best-practices/transient-faults)文章所建議，實作重試原則 (例如指數型輪詢)。
 
 9. 若要使用 Maven 建置 **simulated-device** 應用程式，請在命令提示字元中的 simulated-device 資料夾內執行下列命令：
 

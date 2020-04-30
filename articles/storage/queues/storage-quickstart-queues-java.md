@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.openlocfilehash: 013281db2821c99f6942edd1322f4978e100c144
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81729859"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>快速入門：適用於 Java 的 Azure 佇列儲存體用戶端程式庫 v12

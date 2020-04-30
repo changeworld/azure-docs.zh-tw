@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 建立分享影像庫
+title: 使用 Azure CLI 建立共用映射資源庫
 description: 在本文中，您將了解如何使用 Azure CLI，在 Azure 中建立 VM 的共用映像。
 author: cynthn
 ms.service: virtual-machines
@@ -10,10 +10,10 @@ ms.date: 05/06/2019
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: c75d33f8310cfd143bf201cdac861954d07baf0b
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758414"
 ---
 # <a name="create-a-shared-image-gallery-with-the-azure-cli"></a>使用 Azure CLI 建立共用映像資源庫
@@ -28,8 +28,8 @@ ms.locfileid: "81758414"
 
 | 資源 | 描述|
 |----------|------------|
-| **託管映像** | 這是基本映像，既可單獨使用，也可用來在映像庫中建立個**映像版本**。 受控映像是從一般化 VM 建立的。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
-| **影像庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
+| **受控映射** | 這是基本映像，既可單獨使用，也可用來在映像庫中建立個**映像版本**。 受控映像是從一般化 VM 建立的。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
+| **映射庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
 | **映像定義** | 映像會在資源庫內定義，並帶有映像資訊以及在內部使用時所需滿足的需求。 這包括映像是 Windows 還是 Linux、版本資訊以及最小和最大的記憶體需求。 這是映像類型的定義。 |
 | **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
 
@@ -39,7 +39,7 @@ ms.locfileid: "81758414"
 
 ## <a name="create-a-vm"></a>建立 VM
 
-使用[az vm 創建](/cli/azure/vm#az-vm-create)從最新映像版本創建 VM。
+使用[az VM create](/cli/azure/vm#az-vm-create)從最新的映射版本建立 VM。
 
 ```azurecli-interactive 
 az vm create\
@@ -49,16 +49,16 @@ az vm create\
    --generate-ssh-keys
 ```
 
-還可以使用`--image`參數的圖像版本 ID 來使用特定版本。 例如,要使用映像版本*1.0.0*類型`--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`: 。
+您也可以使用`--image`參數的映射版本識別碼來使用特定版本。 例如，若要使用 image *1.0.0*版的型`--image "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"`別：。
 
 [!INCLUDE [virtual-machines-common-gallery-list-cli](../../../includes/virtual-machines-common-gallery-list-cli.md)]
 
 [!INCLUDE [virtual-machines-common-shared-images-update-delete-cli](../../../includes/virtual-machines-common-shared-images-update-delete-cli.md)]
 
 ## <a name="next-steps"></a>後續步驟
-[Azure 映像產生器(預覽)](image-builder-overview.md)可以協助自動建立映像版本,您甚至可以使用它[從現有映像版本更新和建立新映像版本](image-builder-gallery-update-image-version.md)。 
+[Azure 映射產生器（預覽）](image-builder-overview.md)可協助自動建立映射版本，您甚至可以使用它來更新和[建立現有映射版本的新映射版本](image-builder-gallery-update-image-version.md)。 
 
-您還可以使用範本創建共用圖像庫資源。 有數個 Azure 快速入門範本可以使用： 
+您也可以使用範本建立共用映射庫資源。 有數個 Azure 快速入門範本可以使用： 
 
 - [建立共用映像庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [在共用映像資源庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)

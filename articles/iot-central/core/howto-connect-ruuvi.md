@@ -1,6 +1,6 @@
 ---
-title: 在 Azure IoT 中心連接 RuuviTag |微軟文件
-description: 瞭解如何將 RuuviTag 環境感測器連接到 IoT 中心應用。
+title: 連接 Azure IoT Central 中的 RuuviTag |Microsoft Docs
+description: 瞭解如何將 RuuviTag 環境感應器連線到 IoT Central 應用程式。
 services: iot-central
 ms.service: iot-central
 ms.topic: how-to
@@ -11,72 +11,72 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758949"
 ---
-# <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>將 RuuviTag 感應器連接到 Azure IoT 中心應用程式
+# <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>將 RuuviTag 感應器連線到您的 Azure IoT Central 應用程式
 
-*本文適用於解決方案生成器和設備開發人員。*
+*本文適用於解決方案建置人員和裝置開發人員。*
 
-本文介紹作為解決方案生成器,如何將 RuuviTag 感測器連接到 Microsoft Azure IoT 中心應用程式。
+本文說明如何以解決方案產生器的形式，將 RuuviTag 感應器連線至 Microsoft Azure IoT Central 應用程式。
 
-什麼是魯維標籤?
+什麼是 Ruuvi 標記？
 
-RuuviTag 是一個先進的開源感測器信標平臺,旨在滿足商業客戶、開發人員、製造商、學生和業餘愛好者的需求。 設備設置為在您從開箱即用後立即工作,並準備好在您需要的地方部署該設備。 它是一個藍牙LE信標,內置了環境感測器和加速度計。
+RuuviTag 是一個先進的開放原始碼感應器指標平臺，專為滿足企業客戶、開發人員、製造商、學生和業餘人士的需求而設計。 當您將裝置從其方塊中取出時，就會設定為可運作，並可讓您在需要的地方進行部署。 這是具有內建環境感應器和加速計的藍牙 LE 信號。
 
-RuuviTag 通過 BLE(藍牙低功耗)進行通信,並且需要網路設備才能與 Azure IoT 中心通訊。 請確保您有閘道裝置(如Rigado級聯500)設置,以使RuuviTag能夠連接到IoT中心。
+RuuviTag 會透過 BLE （藍牙低功耗）進行通訊，並要求閘道裝置與 Azure IoT Central 交談。 請確定您有閘道裝置，例如 Rigado Cascade 500，安裝程式可讓 RuuviTag 連線到 IoT Central。
 
-如果您想設置里加多級聯 500 閘道裝置,請按照[此處的說明](./howto-connect-rigado-cascade-500.md)操作。
+如果您想要設定 Rigado Cascade 500 閘道裝置，請遵循[這裡的指示](./howto-connect-rigado-cascade-500.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
-要連線 RuuviTag 感應器,您需要以下資源:
+若要連接 RuuviTag 感應器，您需要下列資源：
 
-* 魯維塔格感測器。 欲瞭解更多資訊,請造[訪 魯維塔格](https://ruuvi.com/)。
-* 里加多級聯 500 設備或其他 BLE 閘道。 欲瞭解更多資訊,請造[訪 里加多](https://www.rigado.com/)。
-* Azure IoT Central 應用程式。 有關詳細資訊,請參閱[建立新應用程式](./quick-deploy-iot-central.md)。
+* RuuviTag 感應器。 如需詳細資訊，請造訪[RuuviTag](https://ruuvi.com/)。
+* Rigado Cascade 500 裝置或其他 BLE 閘道。 如需詳細資訊，請造訪[Rigado](https://www.rigado.com/)。
+* Azure IoT Central 應用程式。 如需詳細資訊，請參閱[建立新的應用程式](./quick-deploy-iot-central.md)。
 
-## <a name="add-a-ruuvitag-device-template"></a>新增 RuuviTag 裝置樣本
+## <a name="add-a-ruuvitag-device-template"></a>新增 RuuviTag 裝置範本
 
-要將 RuuviTag 感測器連接到 Azure IoT 中央應用程式實例中,需要在應用程式中配置相應的設備範本。
+若要將 RuuviTag 感應器上線至您的 Azure IoT Central 應用程式實例，您必須在應用程式中設定對應的裝置範本。
 
-要新增 RuuviTag 裝置樣本:
+若要新增 RuuviTag 裝置範本：
 
-1. 瀏覽到左方視窗格中的 ***「裝置樣本***」選項卡 **+ New**,選擇![「新增 」...](./media/howto-connect-ruuvi/devicetemplate-new.png)建立新裝置範本 頁面為您提供***建立自訂樣本***或使用***預先設定裝置範本***選項
-1. 從預先設定的裝置樣本清單中選擇 RuuviTag 裝置樣本,如下所示![: 選擇 RuuviTag 裝置樣本](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
-1. 選擇 ***「下一步」:自定義***以繼續下一步。
-1. 在下一個螢幕上,選擇 ***「創建***」以將 C500 裝置樣本納入 IoT 中央應用程式。
+1. 流覽至左窗格中的 [***裝置範本***] 索引標籤，選取![[ **+ 新增**]](./media/howto-connect-ruuvi/devicetemplate-new.png) ： [建立新的裝置範本] 頁面可讓您選擇***建立自訂範本***，或***使用預先設定的裝置範本***
+1. 從預先設定的裝置範本清單中選取 [RuuviTag 裝置] 範本，如下![所示：選取 [RuuviTag] [裝置範本]](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. 選取 ***[下一步]： [自訂***] 繼續進行下一個步驟。
+1. 在下一個畫面上，選取 [***建立***]，將 C500 裝置範本上架到 IoT Central 應用程式中。
 
-## <a name="connect-a-ruuvitag-sensor"></a>連線 RuuviTag 感應器
+## <a name="connect-a-ruuvitag-sensor"></a>連接 RuuviTag 感應器
 
-如前所述,要將 RuuviTag 連接到 IoT 中央應用程式,您需要設置閘道裝置。 以下步驟假定您已設置了里加多級聯 500 閘道設備。  
+如先前所述，若要將 RuuviTag 與 IoT Central 應用程式連線，您需要設定閘道裝置。 下列步驟假設您已設定 Rigado Cascade 500 閘道裝置。  
 
-1. 開啟 Rigado 的 G- 500 裝置電源並將連線到網路連線(透過乙太網路或無線)
-1. 將 RuuviTag 的蓋彈出並拉取塑膠卡舌,以固定與電池的連接。
-1. 將 RuuviTag 放置在 IoT 中央應用程式中已配置的 Rigado 級聯 500 閘道附近。
-1. 幾秒鐘後,您的 RuuviTag 應顯示在 IoT Central 中的設備清單中。  
-    ![魯維塔格裝置清單](./media/howto-connect-ruuvi/ruuvi-devicelist.png)
+1. 開啟 Rigado Cascade 500 裝置的電源，並將它連線到您的網路連線（透過 Ethernet 或無線）
+1. 彈出 RuuviTag 的封面，並提取 [塑膠] 索引標籤，以保護與電池的連線。
+1. 將 RuuviTag 放在您的 IoT Central 應用程式中已設定的 Rigado Cascade 500 閘道附近。
+1. 只有幾秒鐘的時間，您的 RuuviTag 應該會出現在 IoT Central 內的裝置清單中。  
+    ![RuuviTag 裝置清單](./media/howto-connect-ruuvi/ruuvi-devicelist.png)
 
-您現在可以在 IoT 中央應用程式中使用此 RuuviTag。  
+您現在可以在 IoT Central 應用程式中使用此 RuuviTag。  
 
 ## <a name="create-a-simulated-ruuvitag"></a>建立模擬 RuuviTag
 
-如果沒有物理 RuuviTag 設備,則可以創建類比 RuuviTag 感測器,用於在 Azure IoT 中央應用程式中進行測試。
+如果您沒有實體 RuuviTag 裝置，您可以建立模擬 RuuviTag 感應器，以用於在 Azure IoT Central 應用程式內進行測試。
 
-要建立類比 RuuviTag:
+若要建立模擬 RuuviTag：
 
-1. 選擇 **「魯維塔格」 >设备**。
+1. 選取 [**裝置] > RuuviTag**。
 1. 選取 [+ 新增]  。
-1. 指定唯一**的裝置識別碼**與易易的**裝置名稱**。  
-1. 啟用**模擬**設置。
+1. 指定唯一的**裝置識別碼**和易記的**裝置名稱**。  
+1. 啟用**模擬**設定。
 1. 選取 [建立]  。  
 
 ## <a name="next-steps"></a>後續步驟
 
-如果您是設備開發人員,建議的後續步驟是:
+如果您是裝置開發人員，建議的後續步驟如下：
 
-- 閱讀[有關 Azure IoT 中心中的裝置連線](./concepts-get-connected.md)
-- 瞭解如何使用[Azure CLI 監視裝置連線](./howto-monitor-devices-azure-cli.md)
+- 閱讀[Azure IoT Central 中的裝置連線能力](./concepts-get-connected.md)
+- 瞭解如何[使用 Azure CLI 監視裝置連線能力](./howto-monitor-devices-azure-cli.md)

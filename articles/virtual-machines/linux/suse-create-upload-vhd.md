@@ -9,21 +9,21 @@ ms.topic: article
 ms.date: 03/12/2018
 ms.author: guybo
 ms.openlocfilehash: 032b49631c6adb30d4b25f8b82d35dab49ffd3a2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81757663"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>準備適用於 Azure 的 SLES 或 openSUSE 虛擬機器
 
 
-本文假設您已將 SUSE 或 openSUSE Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 有關說明,請參閱[安裝 Hyper-V 角色和設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
+本文假設您已將 SUSE 或 openSUSE Linux 作業系統安裝到虛擬硬碟。 有多個工具可用來建立 .vhd 檔案，例如，像是 Hyper-V 的虛擬化解決方案。 如需指示，請參閱[安裝 Hyper-v 角色和設定虛擬機器](https://technet.microsoft.com/library/hh846766.aspx)。
 
 ## <a name="sles--opensuse-installation-notes"></a>SLES / openSUSE 安裝注意事項
 * 如需有關準備 Azure 之 Linux 的更多秘訣，另請參閱 [一般 Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes) 。
 * Azure 不支援 VHDX 格式，只支援 **固定 VHD**。  您可以使用 Hyper-V 管理員或 convert-vhd Cmdlet，將磁碟轉換為 VHD 格式。
-* 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 如果願意,可以在數據磁碟上使用[LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)或[RAID。](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* 安裝 Linux 系統時，建議您使用標準磁碟分割而不是 LVM (常是許多安裝的預設設定)。 這可避免 LVM 與複製之虛擬機器的名稱衝突，特別是為了疑難排解而需要將作業系統磁碟連接至其他虛擬機器時。 如果慣用，您可以在資料磁片上使用[LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)或[RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 。
 * 請勿在作業系統磁碟上設定交換磁碟分割。 您可以設定 Linux 代理程式在暫存資源磁碟上建立交換檔。  您可以在以下步驟中找到與此有關的詳細資訊。
 * Azure 上的所有 VHD 必須具有與 1 MB 對應的虛擬大小。 從未經處理的磁碟轉換成 VHD 時，您必須確定未經處理的磁碟大小在轉換前是 1 MB 的倍數。 如需詳細資訊，請參閱 [Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)。
 
@@ -84,7 +84,7 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
 13. 確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。  這通常是預設值。
 14. 請勿在作業系統磁碟上建立交換空間。
     
-    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意,本地資源磁碟是*臨時*磁碟,在取消預配 VM 時可能會清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
+    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是*暫存*磁片，可能會在 VM 取消布建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
     
      ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## 注意：將此設為任何您需要的項目。
 15. 執行下列命令，以取消佈建虛擬機器，並準備將它佈建於 Azure 上：
@@ -92,7 +92,7 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-16. 按下 **「操作 ->在**超 V 管理器中關閉。 您現在可以將 Linux VHD 上傳至 Azure。
+16. 按一下 [動作]-在 [Hyper-v 管理員] 中 **> 關閉**]。 您現在可以將 Linux VHD 上傳至 Azure。
 
 ---
 ## <a name="prepare-opensuse-131"></a>準備執行 openSUSE 13.1+
@@ -145,7 +145,7 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
 9. 確定您已安裝 SSH 伺服器，並已設定為在開機時啟動。  這通常是預設值。
 10. 請勿在作業系統磁碟上建立交換空間。
     
-    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意,本地資源磁碟是*臨時*磁碟,在取消預配 VM 時可能會清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
+    Azure Linux 代理程式可在 VM 佈建於 Azure 後，使用附加至 VM 的本機資源磁碟自動設定交換空間。 請注意，本機資源磁片是*暫存*磁片，可能會在 VM 取消布建時清空。 安裝 Azure Linux 代理程式 (請參閱上一個步驟) 後，請在 /etc/waagent.conf 中適當修改下列參數：
     
      ResourceDisk.Format=y  ResourceDisk.Filesystem=ext4  ResourceDisk.MountPoint=/mnt/resource  ResourceDisk.EnableSwap=y  ResourceDisk.SwapSizeMB=2048    ## 注意：將此設為任何您需要的項目。
 11. 執行下列命令，以取消佈建虛擬機器，並準備將它佈建於 Azure 上：
@@ -156,7 +156,7 @@ SUSE 是建置您自己的 VHD 的替代選項，其也可在 [VMDepot](https://
 12. 確定 Azure Linux 代理程式會在啟動時執行：
     
         # sudo systemctl enable waagent.service
-13. 按下 **「操作 ->在**超 V 管理器中關閉。 您現在可以將 Linux VHD 上傳至 Azure。
+13. 按一下 [動作]-在 [Hyper-v 管理員] 中 **> 關閉**]。 您現在可以將 Linux VHD 上傳至 Azure。
 
 ## <a name="next-steps"></a>後續步驟
 您現在可以開始使用您的 SUSE Linux 虛擬硬碟在 Azure 建立新的虛擬機器。 如果您是第一次將 .vhd 檔案上傳至 Azure，請參閱[從自訂磁碟建立 Linux VM](upload-vhd.md#option-1-upload-a-vhd)。

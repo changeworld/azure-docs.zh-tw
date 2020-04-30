@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中部署 OpenShift 容器平臺 4.x
-description: 在 Azure 中部署 OpenShift 容器平臺 4.x。
+title: 在 Azure 中部署 OpenShift Container Platform 4。x
+description: 在 Azure 中部署 OpenShift Container Platform 4.x。
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -10,34 +10,34 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 14af110b5cf50f167d0c4961e26454bc33c6ed7d
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759487"
 ---
-# <a name="deploy-openshift-container-platform-4x-in-azure"></a>在 Azure 中部署 OpenShift 容器平臺 4.x
+# <a name="deploy-openshift-container-platform-4x-in-azure"></a>在 Azure 中部署 OpenShift Container Platform 4。x
 
-現在,Azure 中透過安裝程式配置基礎結構 (IPI) 模型支援部署 OpenShift 容器平臺 (OCP) 4.2。  試著 OpenShift 4 的著陸頁[try.openshift.com](https://try.openshift.com/)。 要在 Azure 中安裝 OCP 4.2,請造[訪紅帽 OpenShift 叢集管理器](https://cloud.redhat.com/openshift/install/azure/installer-provisioned)頁面。  訪問此站點需要紅帽憑據。
+Azure 現在透過安裝程式布建的基礎結構（IPI）模型，支援部署 OpenShift 容器平臺（OCP）4.2。  嘗試 OpenShift 4 的登陸頁面是[try.openshift.com](https://try.openshift.com/)。 若要在 Azure 中安裝 OCP 4.2，請造訪[Red Hat OpenShift Cluster Manager](https://cloud.redhat.com/openshift/install/azure/installer-provisioned)頁面。  需要有 Red Hat 認證才能存取此網站。
 
 
-## <a name="notes"></a>注意 
+## <a name="notes"></a>備忘錄 
 
- - 在 Azure 中安裝與執行 OCP 4.x 需要 Azure 活動目錄 (AAD) 服務主體 (SP)
-     - 必須設定式 API 權限 **。**
-     - AAD 租戶管理員必須授予管理員同意才能使此 API 生效
-     - 必須給訂閱**的參與者**與 **「使用者存取管理員」** 角色
- - OCP 4.x 的安裝模型與 3.x 不同,並且沒有可用於在 Azure 中部署 OCP 4.x 的 Azure 資源管理員範本
- - 如果在安裝過程中遇到問題,請聯繫相應的公司(微軟或紅帽)
+ - 需要有 Azure Active Directory （AAD）服務主體（SP）才能在 Azure 中安裝和執行 OCP 4。x
+     - SP 必須被授與**OwnedBy** For Azure Active Directory GRAPH 的 API 許可權
+     - AAD 租用戶系統管理員必須授與系統管理員同意，此 API 許可權才會生效
+     - SP 必須被授與**參與者**和**使用者存取系統管理員**角色給訂用帳戶
+ - OCP 4.x 的安裝模型與3.x 不同，而且沒有 Azure Resource Manager 範本可用於部署 Azure 中的 OCP 4。x
+ - 如果在安裝過程中遇到問題，請洽詢適當的公司（Microsoft 或 Red Hat）
 
-| 問題描述 | 連絡點 |
+| 問題描述 | 連絡人點 |
 |-------------------|---------------|
-| Azure 特定問題(AAD、SP、Azure 訂閱等)                              | Microsoft |
-| OpenShift 特定問題(安裝失敗/錯誤、紅帽訂閱等) |  Red Hat  |
+| Azure 特定問題（AAD、SP、Azure 訂用帳戶等）                              | Microsoft |
+| OpenShift 特有的問題（安裝失敗/錯誤、Red Hat 訂用帳戶等） |  Red Hat  |
 
 
 
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 OpenShift 容器平台入門](https://docs.openshift.com)
+- [開始使用 OpenShift 容器平臺](https://docs.openshift.com)

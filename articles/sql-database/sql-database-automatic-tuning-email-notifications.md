@@ -1,5 +1,5 @@
 ---
-title: 自動調整電子郵件通知如何指南
+title: 自動調整電子郵件通知的操作說明指南
 description: 啟用 Azure SQL Database 自動查詢調整的電子郵件通知。
 services: sql-database
 ms.service: sql-database
@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
 ms.openlocfilehash: b3b235833e794e48ae655d184bf938effc0d7ac0
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81768386"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>針對自動調整的電子郵件通知
@@ -26,7 +26,7 @@ SQL Database 的調整建議是由 Azure SQL Database [自動調整](sql-databas
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Azure SQL 資料庫仍然支援 PowerShell Azure 資源管理器模組,但所有後續開發都針對 Az.Sql 模組。 有關這些 cmdlet,請參閱[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的參數基本相同。
+> Azure SQL Database 仍然支援 PowerShell Azure Resource Manager 模組，但所有未來的開發都是針對 Az .Sql 模組。 如需這些 Cmdlet，請參閱[AzureRM](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模組和 AzureRm 模組中命令的引數本質上完全相同。
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>對自動調整建議的電子郵件通知進行自動化
 
@@ -39,16 +39,16 @@ SQL Database 的調整建議是由 Azure SQL Database [自動調整](sql-databas
 遵循下列步驟，以透過從 Marketplace 選取和設定自動化應用程式的方法來建立 Azure 自動化帳戶：
 
 1. 登入 Azure 入口網站。
-1. 按下左上角的 **「+ 創建資源**」。
-1. 搜索"**自動化**"(按Enter)。
-1. 按一下搜尋結果中的"自動化"應用。
+1. 按一下左上角的 [**+ 建立資源**]。
+1. 搜尋「**自動化**」（按 enter）。
+1. 在搜尋結果中按一下自動化應用程式。
 
     ![加入 Azure 自動化](./media/sql-database-automatic-tuning-email-notifications/howto-email-01.png)
 
-1. 進入"創建自動化帳戶"窗格後,按一下"**創建**"。
-1. 填充所需資訊:輸入此自動化帳戶的名稱,選擇要用於 PowerShell 腳本執行的 Azure 訂閱 ID 和 Azure 資源。
-1. 對於「**創建 Azure 執行作為帳戶**」選項,選擇 **「是**」以設定 PowerShell 文稿在 Azure 自動化的説明下運行的帳戶類型。 要瞭解有關帳戶類型的更多資訊,請參閱["以帳戶身份運行](https://docs.microsoft.com/azure/automation/automation-create-runas-account)"。
-1. 按下「**創建**」結束創建自動化帳戶。
+1. 在 [建立自動化帳戶] 窗格內，按一下 [**建立**]。
+1. 填入所需的資訊：輸入此自動化帳戶的名稱，並選取您的 Azure 訂用帳戶識別碼和要用於執行 PowerShell 腳本的 Azure 資源。
+1. 針對 [**建立 Azure 執行身分帳戶**] 選項，選取 [**是]** 以設定執行 PowerShell 腳本的帳戶類型，並提供 Azure 自動化的協助。 若要深入瞭解帳戶類型，請參閱[執行身分帳戶](https://docs.microsoft.com/azure/automation/automation-create-runas-account)。
+1. 藉由按一下 [**建立**]，結束建立自動化帳戶。
 
 > [!TIP]
 > 正確記錄 (例如複製並貼到 [記事本]) 建立自動化應用程式時所輸入的 Azure 自動化帳戶名稱、訂用帳戶識別碼和資源。 稍後會需要此資訊。
@@ -58,9 +58,9 @@ SQL Database 的調整建議是由 Azure SQL Database [自動調整](sql-databas
 
 ## <a name="update-azure-automation-modules"></a>更新 Azure 自動化模組
 
-用於檢索自動調優建議的 PowerShell 腳本使用[獲取-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource)和[Get-AzSqlDatabase 推薦操作](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction)命令,Azure 模組版本 4 及以上需要這些命令。
+用來抓取自動調整建議的 PowerShell 腳本會使用[get-azresource](https://docs.microsoft.com/powershell/module/az.Resources/Get-azResource)和[AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlDatabaseRecommendedAction)命令，其中需要 Azure 模組第4版和更新版本。
 
-- 如果 Azure 模組需要更新,請參閱[Azure 自動化 中的 Az 模組支援](../automation/shared-resources/modules.md)。
+- 如果您的 Azure 模組需要更新，請參閱[Azure 自動化中的 Az 模組支援](../automation/shared-resources/modules.md)。
 
 ## <a name="create-azure-automation-runbook"></a>建立 Azure 自動化 Runbook
 
@@ -68,22 +68,22 @@ SQL Database 的調整建議是由 Azure SQL Database [自動調整](sql-databas
 
 遵循下列步驟來建立新的 Azure 自動化 Runbook：
 
-1. 訪問您在上一步中創建的 Azure 自動化帳戶。
-1. 進入自動化帳戶窗格後,按一下左側的 **「Runbook」** 功能表項,使用 PowerShell 文本創建新的 Azure 自動化 Runbook。 若要深入了解建立自動化 Runbook，請參閱[建立新的 Runbook](../automation/manage-runbooks.md#creating-a-runbook)。
-1. 要添加新 Runbook,請按下 **「+添加 Runbook」** 選單選項,然後按下「**快速創建 + 創建新 Runbook」。。**
-1. 在 Runbook 窗格中,鍵入 Runbook 的名稱(為了此範例的目的,使用「**自動調諧電子郵件自動化**」,選擇 Runbook 的類型作為**PowerShell,** 並編寫此 Runbook 的說明來描述其用途。
-1. 按下「**建立**」 按鈕以完成建立新 Runbook。
+1. 存取您在上一個步驟中建立的 Azure 自動化帳戶。
+1. 在 [自動化帳戶] 窗格中，按一下左側的 [**runbook**] 功能表項目，以使用 PowerShell 腳本建立新的 Azure 自動化 runbook。 若要深入了解建立自動化 Runbook，請參閱[建立新的 Runbook](../automation/manage-runbooks.md#creating-a-runbook)。
+1. 若要加入新的 runbook，請按一下 [**+ 新增 runbook**] 功能表選項，然後按一下 [**快速建立-建立新的 runbook**]。
+1. 在 [Runbook] 窗格中，輸入您的 runbook 名稱（基於此範例的用途，使用 "**AutomaticTuningEmailAutomation**"），選取 runbook 類型做為**PowerShell** ，並撰寫此 runbook 的描述以描述其用途。
+1. 按一下 [**建立**] 按鈕以完成建立新的 runbook。
 
     ![加入 Azure 自動化 Runbook](./media/sql-database-automatic-tuning-email-notifications/howto-email-03.png)
 
 遵循下列步驟來將 PowerShell 指令碼載入已建立的 Runbook 中：
 
-1. 在「**編輯 PowerShell Runbook」** 窗格中,在選單樹中選擇 **「RUNBOOKS」** 並展開檢視,直到看到 Runbook 的名稱(在此範例中為「**自動調諧電子郵件自動化**」)。 選取此 Runbook。
-1. 在「編輯 PowerShell Runbook」的第一行(從數位 1 開始),複製貼上以下 PowerShell 文本程式碼。 這個 PowerShell 指令碼是依現狀提供，以協助您開始使用。 請修改指令碼以符合您的需求。
+1. 在 [**編輯 PowerShell Runbook**] 窗格中，選取功能表樹狀結構上的 [**runbook**] 並展開此流覽，直到您看到 Runbook 的名稱（在此範例中為 "**AutomaticTuningEmailAutomation**"）。 選取此 Runbook。
+1. 在「編輯 PowerShell Runbook」的第一行（從數位1開始），複製並貼上下列 PowerShell 腳本程式碼。 這個 PowerShell 指令碼是依現狀提供，以協助您開始使用。 請修改指令碼以符合您的需求。
 
 在提供的 PowerShell 指令碼標頭中，必須以您的 Azure 訂用帳戶識別碼取代 `<SUBSCRIPTION_ID_WITH_DATABASES>`。 若要深入了解如何擷取您的 Azure 訂用帳戶識別碼，請參閱[取得您的 Azure 訂用帳戶 GUID](https://blogs.msdn.microsoft.com/mschray/20../../getting-your-azure-subscription-guid-new-portal/) \(英文\)。
 
-如果有多個訂閱,則可以將它們添加為逗號,以表示分隔為腳本標題中的"$subscriptions"屬性。
+如果有數個訂用帳戶，您可以將它們以逗號分隔，加上腳本標頭中的 "$subscriptions" 屬性。
 
 ```powershell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
@@ -170,9 +170,9 @@ $table = $results | Format-List
 Write-Output $table
 ```
 
-按下右上角的「**儲存**」 按鈕以儲存文稿。 當您對腳本滿意時,按一下「**發布**」按鈕以發佈此 Runbook。
+按一下右上角的 [**儲存**] 按鈕來儲存腳本。 當您對腳本感到滿意時，請按一下 [**發佈**] 按鈕以發佈此 runbook。
 
-在主 Runbook 窗格中,您可以選擇單擊「**開始**」按鈕**來測試**文稿。 按**下輸出以**查看執行的腳本的結果。 此輸出將是您的電子郵件內容。 在下列螢幕擷取畫面中，可以看到指令碼的範例輸出。
+在主要 [runbook] 窗格中，您可以選擇按一下 [**啟動**] 按鈕來**測試**腳本。 按一下 [**輸出**] 以查看執行之腳本的結果。 此輸出將是您的電子郵件內容。 在下列螢幕擷取畫面中，可以看到指令碼的範例輸出。
 
 ![使用 Azure 自動化執行檢視自動調整建議](./media/sql-database-automatic-tuning-email-notifications/howto-email-04.png)
 
@@ -184,55 +184,55 @@ Write-Output $table
 
 若要完成此解決方案，最後一個步驟是在 Microsoft Flow 中建立包含三個動作 (工作) 的自動化流程：
 
- - "Azure**自動化 - 創建作業**" - 用於執行 PowerShell 腳本,以檢索 Azure 自動化執行簿中的自動調優建議。
- - "Azure**自動化 - 取得作業輸出**" - 用於從執行的 PowerShell 文本中檢索輸出。
- - "Office**365 Outlook = 發送電子郵件**" - 用於發送電子郵件。 電子郵件會使用建立流程之人員的 Office 365 帳戶傳送。
+ - 「**Azure 自動化建立作業**」–用來執行 PowerShell 腳本，以抓取 Azure 自動化 runbook 內的自動調整建議。
+ - 「**Azure 自動化取得作業輸出**」–用來從已執行的 PowerShell 腳本中抓取輸出。
+ - 「**Office 365 Outlook –傳送電子郵件**」–用來傳送電子郵件。 電子郵件會使用建立流程之人員的 Office 365 帳戶傳送。
 
 若要深入了解 Microsoft Flow 功能，請參閱[開始使用 Microsoft Flow](https://docs.microsoft.com/flow/getting-started)。
 
 此步驟的先決條件是註冊 [Microsoft Flow](https://flow.microsoft.com) 帳戶並登入。 一旦進入解決方案，請遵循下列步驟來設定**新的流程**：
 
-1. 存取**我的流**「選單項」。
-1. 在"我的流"中,選擇頁面頂部的"**從空白創建**"連結。
-1. 按一下頁面底部的連結「**搜尋數百個連接器和觸發器**」 。
-1. 在搜尋欄位型態「**重複**」 中,並從搜尋結果中選擇「**計畫 - 重複**」 以計畫執行電子郵件傳遞作業。
+1. 存取 [**我的流程**] 功能表項目。
+1. 在 [我的流程] 中，選取頁面頂端的 [**+ 從空白建立**] 連結。
+1. 按一下頁面底部的 [**搜尋數百個連接器和觸發程式**] 連結。
+1. 在搜尋欄位中輸入「**週期**」，然後從搜尋結果中選取 [**排程-週期**]，以排程要執行的電子郵件傳遞作業。
 1. 在 [頻率] 欄位的 [週期] 窗格中，選取執行此流程的排程頻率，例如以每分鐘、每小時、每天、每週等週期傳送自動化電子郵件。
 
 下一步是在新建立的週期性流程中加入三個工作 (建立、取得輸出和傳送電子郵件)。 若要將必要的工作加入流程，請遵循下列步驟：
 
 1. 建立動作來執行 PowerShell 指令碼，以擷取調整建議
 
-   - 選擇 **"_New 步驟**",然後選擇"**添加操作**"在"重複"流窗格中。
-   - 在搜索欄位中鍵入「**自動化**」,並從搜尋結果中選擇 **「Azure 自動化 + 創建作業**」 。
+   - 在 [週期] 流程窗格內，選取 [**+ 新增步驟**]，然後按一下 [**加入動作**]。
+   - 在搜尋欄位中輸入「**自動化**」，然後從搜尋結果中選取 [**Azure 自動化–建立作業**]。
    - 在 [建立工作] 窗格中，設定工作屬性。 針對此設定，您將需要先前在 ****[自動化帳戶]**** 窗格中記錄的 Azure 訂用帳戶識別碼、資源群組和自動化帳戶的詳細資料。 若要深入了解此區段所提供的選項，請參閱 [Azure 自動化 - 建立工作](https://docs.microsoft.com/connectors/azureautomation/#create-job) \(英文\)。
-   - 按下「**保存流**」完成此操作。
+   - 按一下 [**儲存流程**] 以完成建立此動作。
 
 2. 建立動作以從已執行的 PowerShell 指令碼擷取輸出
 
-   - 選擇 **"+新步驟**",後跟'**添加操作**" 在「 重複」 的元件窗格中
-   - 在搜尋歸檔類型「**自動化**」 中,並從搜尋結果中選擇 **「Azure 自動化 」 取得作業輸出**。 若要深入了解此區段所提供的選項，請參閱 [Azure 自動化 – 取得工作輸出](https://docs.microsoft.com/connectors/azureautomation/#get-job-output) \(英文\)。
-   - 填充所需的欄位(類似於建立上一個作業) - 填充 Azure 訂閱 ID、資源組和自動化帳戶(如在"自動化帳戶"窗格中輸入)。
-   - 按下「**工作 ID」** 欄位內顯示「**動態內容**」 功能表。 在此選單中,選擇「**工作 ID」** 選項。
-   - 按下「**保存流**」完成此操作。
+   - 在 [週期] 流程窗格內選取 [**+ 新增步驟**]，然後按一下 [**加入動作**]
+   - 在 [搜尋] 中，輸入「**自動化**」，然後從搜尋結果中選取 [**Azure 自動化–取得工作輸出**]。 若要深入了解此區段所提供的選項，請參閱 [Azure 自動化 – 取得工作輸出](https://docs.microsoft.com/connectors/azureautomation/#get-job-output) \(英文\)。
+   - 填入所需的欄位（類似于建立先前的工作）-填入您的 Azure 訂用帳戶識別碼、資源群組和自動化帳戶（如 [自動化帳戶] 窗格中所輸入）。
+   - 在 [**工作識別碼**] 欄位內按一下，以顯示 [**動態內容**] 功能表。 從這個功能表中，選取 [**作業識別碼**] 選項。
+   - 按一下 [**儲存流程**] 以完成建立此動作。
 
 3. 使用 Office 365 整合建立動作以傳送電子郵件
 
-   - 選擇 **"_New 步驟**",然後選擇"**添加操作**"在"重複"流窗格中。
-   - 在搜索提交類型寄**送電子郵件**,並從搜尋結果中選擇 **「Office 365 Outlook + 發送電子郵件**」。
-   - 在需要向其發送通知電子郵件的電子郵件位址中的 **「to」** 欄位鍵入。
-   - 在電子郵件主題**中的主題欄**位類型中,例如自動調優建議電子郵件通知。
-   - 按下欄位「**正文**」 以顯示動態**內容**功能選單。 在此選單中,在「**獲取作業輸出**」下,選擇「**內容**」 。
-   - 按下「**保存流**」完成此操作。
+   - 在 [週期] 流程窗格內，選取 [**+ 新增步驟**]，然後按一下 [**加入動作**]。
+   - 在 [搜尋] 中，輸入「**傳送電子郵件**」，然後從搜尋結果中選取 [**Office 365 Outlook –傳送電子郵件**]。
+   - 在 [**到**] 欄位中，輸入您需要傳送通知電子郵件的電子郵件地址。
+   - 在 **[主旨] 欄位**中輸入您的電子郵件主旨，例如「自動調整建議電子郵件通知」。
+   - 在 [**主體**] 欄位內按一下，以顯示 [**動態內容**] 功能表。 從這個功能表中的 [**取得作業輸出**] 底下，選取 [**內容**]。
+   - 按一下 [**儲存流程**] 以完成建立此動作。
 
 > [!TIP]
-> 若要傳送自動化電子郵件給不同的收件者，請建立個別流程。 在這些附加流中,更改"收件者"欄位中的收件者電子郵件位址和"主題"欄位中的電子郵件主題行。 使用自訂 PowerShell 指令碼 (例如變更 Azure 訂用帳戶識別碼) 在 Azure 自動化中建立新的 Runbook 可進一步自訂自動化案例，例如針對個別的訂用帳戶，傳送有關自動調整建議的電子郵件給個別的收件者。
+> 若要傳送自動化電子郵件給不同的收件者，請建立個別流程。 在這些額外的流程中，變更 [收件者] 欄位中的收件者電子郵件地址，以及 [主旨] 欄位中的電子郵件主旨行。 使用自訂 PowerShell 指令碼 (例如變更 Azure 訂用帳戶識別碼) 在 Azure 自動化中建立新的 Runbook 可進一步自訂自動化案例，例如針對個別的訂用帳戶，傳送有關自動調整建議的電子郵件給個別的收件者。
 >
 
 以上是設定電子郵件傳送工作之工作流程所需的步驟。 整個流程包含三個動作 (顯示於下圖)。
 
 ![檢視自動調整電子郵件通知流程](./media/sql-database-automatic-tuning-email-notifications/howto-email-05.png)
 
-要測試流,請單擊流窗格右上角的"**立即運行**"。
+若要測試流程，請按一下 [流程] 窗格內右上角的 [**立即執行**]。
 
 從 [流程分析] 窗格中可以看到執行自動化工作的統計資料 (顯示成功送出電子郵件通知)。
 

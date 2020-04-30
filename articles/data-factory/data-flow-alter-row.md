@@ -1,6 +1,6 @@
 ---
-title: 在映射資料串流中改變行轉換
-description: 如何在映射資料串態使用變更行轉換更新資料庫目標
+title: 對應資料流程中的 Alter row 轉換
+description: 如何使用對應資料流程中的 alter row 轉換來更新資料庫目標
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/20/2020
 ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729130"
 ---
-# <a name="alter-row-transformation-in-mapping-data-flow"></a>在映射資料串流中改變行轉換
+# <a name="alter-row-transformation-in-mapping-data-flow"></a>對應資料流程中的 Alter row 轉換
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-使用"更改列"轉換對行設置插入、刪除、更新和更新策略。 您可以將一對多條件添加為表達式。 這些條件應按優先順序順序指定,因為每行都將用與第一個匹配表達式對應的策略進行標記。 每個條件都可能導致插入、更新、刪除或向上更新行(或行)。 更改行可以針對資料庫生成 DDL & DML 操作。
+使用 Alter Row 轉換來設定資料列的 insert、delete、update 和 upsert 原則。 您可以新增一到多個條件做為運算式。 這些條件應依照優先順序來指定，因為每個資料列會以對應至第一個相符運算式的原則來標示。 每一個條件都會導致插入、更新、刪除或 upserted 資料列（或資料列）。 Alter Row 可以針對您的資料庫產生 DDL & DML 動作。
 
-![變更列設定](media/data-flow/alter-row1.png "變更列設定")
+![改變數據列設定](media/data-flow/alter-row1.png "改變數據列設定")
 
-更改行轉換將僅在資料流中的資料庫或 CosmosDB 接收器上運行。 在調試工作階段期間,不會執行分配給行的操作(插入、更新、刪除、向上更新)。 在管道中執行執行數據流活動,以在資料庫表上執行更改行策略。
+Alter Row 轉換只會在資料流程中的資料庫或 CosmosDB 接收上運作。 您指派給資料列的動作（insert、update、delete、upsert）不會在 debug 會話期間發生。 在管線中執行「執行資料流程」活動，以制定資料庫資料表的 alter row 原則。
 
-## <a name="specify-a-default-row-policy"></a>指定預設行原則
+## <a name="specify-a-default-row-policy"></a>指定預設資料列原則
 
-建立"更改行"轉換並指定條件為的`true()`行策略。 將為每個與以前定義的表達式不匹配的行進行標記。 預設情況下,與任何條件表示式不匹配的每行都將標記為`Insert`。
+建立 Alter Row 轉換，並指定條件為的`true()`資料列原則。 不符合任何先前定義之運算式的每個資料列都會標示為指定的資料列原則。 根據預設，每個不符合任何條件運算式的資料列都會標示`Insert`為。
 
-![變更列原則](media/data-flow/alter-row4.png "變更列原則")
-
-> [!NOTE]
-> 要用一個策略標記所有行,可以為該策略建立條件,並將條件指定為`true()`。
-
-## <a name="view-policies-in-data-preview"></a>在資料預覽中檢視策略
-
-使用[除錯模式](concepts-data-flow-debug-mode.md)在資料預覽窗格中查看更改行策略的結果。 更改行轉換的資料預覽不會針對目標生成 DDL 或 DML 操作。
-
-![變更列原則](media/data-flow/alter-row3.png "變更列原則")
-
-每個更改行策略都由一個圖示表示,該圖示指示是否將發生插入、更新、向上或已刪除的操作。 頂部標題顯示預覽中每個策略受影響的行數。
-
-## <a name="allow-alter-row-policies-in-sink"></a>允許在接收器中變更行原則
-
-要使更改行策略正常工作,資料流必須寫入資料庫或Cosmos接收器。 在接收器中的 **「設定」** 選項卡中,啟用允許該接收器更改行策略的。
-
-![變更列接收器](media/data-flow/alter-row2.png "變更列接收器")
-
-默認行為是只允許插入。 要允許更新、升級或刪除,請在接收器中選中與該條件對應的框。 如果啟用了更新、升級或刪除,則必須指定要匹配的接收器中的鍵列。
+![改變數據列原則](media/data-flow/alter-row4.png "改變數據列原則")
 
 > [!NOTE]
-> 如果插入、更新或 upserts 修改接收器中目標表的架構,資料流將失敗。 要修改資料庫中的目標架構,請選擇 **「重新建立表**」作為表操作。 這將刪除新的架構定義並重新創建表。
+> 若要使用一個原則標記所有資料列，您可以建立該原則的條件，並將條件`true()`指定為。
 
-接收器轉換需要單個鍵或一系列鍵來標識目標資料庫中的唯一行標識。 對於 SQL 接收器,在接收器設置選項卡中設置鍵。對於CosmosDB,在設置中設置分區鍵,並在接收器映射中設置CosmosDB系統欄位"id"。 對於CosmosDB,必須包括更新、更新和刪除的系統列"id"
+## <a name="view-policies-in-data-preview"></a>在資料預覽中查看原則
+
+在 [資料預覽] 窗格中，使用 [檢查[模式](concepts-data-flow-debug-mode.md)] 來查看 alter row 原則的結果。 Alter row 轉換的資料預覽不會針對您的目標產生 DDL 或 DML 動作。
+
+![改變數據列原則](media/data-flow/alter-row3.png "改變數據列原則")
+
+每個改變數據列原則都是以表示插入、更新、upsert 或刪除動作是否會發生的圖示來表示。 頂端標頭會顯示預覽中每個原則所影響的資料列數目。
+
+## <a name="allow-alter-row-policies-in-sink"></a>允許變更接收中的資料列原則
+
+若要讓 alter row 原則能夠正常執行，資料流程必須寫入資料庫或 Cosmos 接收。 在接收的 [**設定**] 索引標籤中，啟用該接收允許的 alter row 原則。
+
+![改變數據列接收](media/data-flow/alter-row2.png "改變數據列接收")
+
+預設行為是只允許插入。 若要允許更新、更新插入或刪除，請核取對應于該條件之接收器中的方塊。 如果已啟用更新、更新插入或、刪除，您必須指定要比對之接收中的索引鍵資料行。
+
+> [!NOTE]
+> 如果您的插入、更新或更新插入修改了接收中目標資料表的架構，資料流程將會失敗。 若要修改資料庫中的目標架構，請選擇 [**重新建立資料表**] 做為資料表動作。 這會卸載並重新建立您的資料表，並使用新的架構定義。
+
+在目標資料庫中，接收轉換需要單一索引鍵或一系列金鑰來進行唯一的資料列識別。 若是 SQL 接收器，請在 [接收設定] 索引標籤中設定索引鍵。若為 CosmosDB，請在設定中設定分割區索引鍵，並在您的接收對應中設定 CosmosDB 系統欄位 "id"。 針對 CosmosDB，必須包含 system 資料行 "id" 來進行更新、更新插入和刪除。
 
 ## <a name="data-flow-script"></a>資料流程指令碼
 
@@ -71,13 +71,13 @@ ms.locfileid: "81729130"
 
 ### <a name="example"></a>範例
 
-下面的範例是一個命名`CleanData`更改行轉換,該轉換採用傳`SpecifyUpsertConditions`入 流並創建三個更改行條件。 在上一個轉換中,將`alterRowCondition`計算一個命名的列,該列確定在資料庫中是否插入、更新或刪除行。 如果列的值具有與 alter 行規則匹配的字串值,則為其分配該策略。
+下列範例是名為`CleanData`的 alter row 轉換，它會接受傳入`SpecifyUpsertConditions`資料流程，並建立三個 alter row 條件。 在先前的轉換中，會計算`alterRowCondition`名為的資料行，以決定是否要在資料庫中插入、更新或刪除資料列。 如果資料行的值具有符合 alter row 規則的字串值，則會將該原則指派給該原則。
 
-在資料工廠的一個數字的數字, 此轉換類似於下圖:
+在 Data Factory UX 中，這項轉換看起來如下圖所示：
 
-![變更行範例](media/data-flow/alter-row4.png "變更行範例")
+![Alter row 範例](media/data-flow/alter-row4.png "Alter row 範例")
 
-此轉換的資料串流文稿位於下面的代碼段中:
+此轉換的資料流程腳本位於下列程式碼片段中：
 
 ```
 SpecifyUpsertConditions alterRow(insertIf(alterRowCondition == 'insert'),
@@ -87,4 +87,4 @@ SpecifyUpsertConditions alterRow(insertIf(alterRowCondition == 'insert'),
 
 ## <a name="next-steps"></a>後續步驟
 
-在 Alter Row 轉換後,您可能希望[將資料沉入目標資料儲存中](data-flow-sink.md)。
+在 Alter Row 轉換之後，您可能會想要將[資料接收到目的地資料存放區](data-flow-sink.md)。

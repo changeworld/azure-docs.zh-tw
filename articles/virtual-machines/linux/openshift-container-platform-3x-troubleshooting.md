@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 中排除 OpenShift 容器平臺 3.11 部署的疑難排解
-description: 在 Azure 中排除 OpenShift 容器平臺 3.11 部署的疑難排解。
+title: 針對 Azure 中的 OpenShift 容器平臺3.11 部署進行疑難排解
+description: 針對 Azure 中的 OpenShift 容器平臺3.11 部署進行疑難排解。
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -11,13 +11,13 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 90fd3680cfdc4ecd1dcb0ce33b63f8d76dd8bfae
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759477"
 ---
-# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>在 Azure 中排除 OpenShift 容器平臺 3.11 部署的疑難排解
+# <a name="troubleshoot-openshift-container-platform-311-deployment-in-azure"></a>針對 Azure 中的 OpenShift 容器平臺3.11 部署進行疑難排解
 
 如果 OpenShift 叢集部署不成功，則 Azure 入口網站會提供錯誤輸出。 輸出可能難以讀取，以致難以找出問題。 快速掃描此輸出中是否有結束代碼 3、4 或 5。 以下提供這三個結束代碼的資訊：
 
@@ -37,9 +37,9 @@ ms.locfileid: "81759477"
 
 ## <a name="log-files"></a>記錄檔
 
-主機準備腳本的日誌檔(斯特和斯特和斯特處理)位於所有主機`/var/lib/waagent/custom-script/download/0`上。 如果在準備主機期間發生錯誤，請檢視這些記錄檔以判斷錯誤。
+主機準備腳本的記錄檔（stderr 和 stdout）位於所有主機`/var/lib/waagent/custom-script/download/0`上。 如果在準備主機期間發生錯誤，請檢視這些記錄檔以判斷錯誤。
 
-如果準備文本成功運行,則需要檢查易存取操作手冊主`/var/lib/waagent/custom-script/download/1`機 目錄中的日誌檔。 如果在 OpenShift 實際安裝期間發生錯誤，則 stdout 檔案會顯示錯誤。 使用此資訊來連絡支援人員，以尋求進一步的協助。
+如果準備腳本順利執行，就必須檢查 ansible 腳本主機`/var/lib/waagent/custom-script/download/1`目錄中的記錄檔。 如果在 OpenShift 實際安裝期間發生錯誤，則 stdout 檔案會顯示錯誤。 使用此資訊來連絡支援人員，以尋求進一步的協助。
 
 範例輸出
 
@@ -88,11 +88,11 @@ Failure summary:
 
 ### <a name="private-key-has-a-passphrase"></a>私密金鑰具有複雜密碼
 
-您將看到一個錯誤,該錯誤是 ssh 的許可權被拒絕。 ssh 到可存取播放簿主機,以檢查私鑰上的密碼。
+您會看到 ssh 拒絕許可權的錯誤。 透過 ssh 連線到 ansible 腳本主機，以檢查私密金鑰上的複雜密碼。
 
 ### <a name="key-vault-secret-with-private-key-wasnt-created-correctly"></a>未正確建立具有私密金鑰的金鑰保存庫密碼
 
-私密金鑰被複製到可理解的玩法主機 -*/.ssh/id_rsa。 確認此檔案正確無誤。 從 Ansible 腳本主機，將 SSH 工作階段開啟至其中一個叢集節點進行測試。
+私密金鑰會複製到 ansible 腳本主機-~/.ssh/id_rsa。 確認此檔案正確無誤。 從 Ansible 腳本主機，將 SSH 工作階段開啟至其中一個叢集節點進行測試。
 
 ### <a name="service-principal-credentials-were-entered-incorrectly"></a>輸入的服務主體認證不正確
 
@@ -114,5 +114,5 @@ az group update -g <openshift resource group> --set tags.sptest=test
 
 對於某些錯誤，您也可以使用下列命令來取得詳細資訊：
 
-1. 系統狀態\<服務>
+1. systemctl 狀態\<服務>
 2. journalctl -xe

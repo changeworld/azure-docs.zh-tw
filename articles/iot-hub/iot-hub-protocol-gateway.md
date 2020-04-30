@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: bfd000e2b69f052e25f0ea6cd286b0ca3aef7519
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759717"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>讓 IoT 中樞支援其他通訊協定
@@ -48,4 +48,4 @@ MQTT 配接器也會示範程式設計模型，此模型可為其他通訊協定
 
 * [調整規格、高可用性和災害復原](iot-hub-scaling.md)
 
-* [IoT 中心開發人員指南](iot-hub-devguide.md)
+* [IoT 中樞開發人員指南](iot-hub-devguide.md)

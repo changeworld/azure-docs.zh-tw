@@ -1,50 +1,50 @@
 ---
-title: 在任何環境中監視 Java 應用程式 - Azure 監視器應用程式見解
-description: 應用程式效能監視,適用於在任何環境中運行的 Java 應用程式,而無需檢測應用程式。 分散式跟蹤和應用程式映射。
+title: 監視任何環境上的 JAVA 應用程式-Azure 監視器 Application Insights
+description: 應用程式效能監視，適用于在任何環境中執行的 JAVA 應用程式，不需檢測應用程式。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 03/29/2020
 ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687724"
 ---
-# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java 無程式應用程式監視 Azure 監視器應用程式見解 ─ 一般預覽
+# <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights-公開預覽
 
-Java 無程式應用程式監視是簡單性的 - 沒有代碼更改,JAva代理只能通過幾個配置更改來啟用。
+JAVA 無程式碼應用程式監視的重點在於簡單明瞭-不會變更程式碼，只要進行幾項設定變更，就可以啟用 JAVA 代理程式。
 
- Java 代理在任何環境中工作,並允許您監視所有 Java 應用程式。 換句話說,無論您是在 VM 上、本地還是 AKS、Windows、Linux 上運行 Java 應用,JAva 3.0 代理都將監視你的應用。
+ JAVA 代理程式適用于任何環境，並可讓您監視所有的 JAVA 應用程式。 換句話說，不論您是在內部部署的 Vm 上執行 JAVA 應用程式，在 AKS 中，在 Windows 上，Linux-您將它命名為，JAVA 3.0 代理程式會監視您的應用程式。
 
-不再需要將應用程式見解 Java SDK 添加到應用程式,因為 3.0 代理自行收集請求、依賴項和日誌。
+不再需要將 Application Insights JAVA SDK 新增至您的應用程式，因為3.0 代理程式會自行 autocollects 要求、相依性和記錄。
 
-您仍然可以從應用程式發送自定義遙測。 3.0 代理將追蹤它與所有自動收集的遙測數據並關聯。
+您仍然可以從您的應用程式傳送自訂遙測。 3.0 代理程式會追蹤並使其與所有實驗自動收集的遙測相互關聯。
 
 ## <a name="quickstart"></a>快速入門
 
 **1. 下載代理程式**
 
-下載[應用程式見解-代理-3.0.0-PREVIEW.3.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
+下載[applicationinsights-agent-3.0.0-preview .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
 
-**2. 將 JVM 指向代理**
+**2. 將 JVM 指向代理程式**
 
-新增到`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar`應用程式的 JVM args
+將`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar`新增至應用程式的 JVM 引數
 
-典型的 JVM args 包括`-Xmx512m`與`-XX:+UseG1GC`。 因此,如果您知道要在哪裡添加這些,那麼您已經知道在哪裡添加此。
+一般 JVM 引數`-Xmx512m`包括`-XX:+UseG1GC`和。 因此，如果您知道要將這些新增到何處，您就已經知道要將它加入何處。
 
-有關設定應用程式的 JVM args 的其他說明,請參閱[3.0 預覽:更新 JVM args 的提示](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)。
+如需設定應用程式 JVM 引數的其他協助，請參閱[3.0 Preview：更新 JVM 引數的秘訣](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments)。
 
-**3. 將代理指向您的應用程式見解資源**
+**3. 將代理程式指向您的 Application Insights 資源**
 
-如果還沒有應用程式見解資源,則可以按照[資源創建指南](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)中的步驟創建新的資源。
+如果您還沒有 Application Insights 資源，您可以遵循[資源建立指南](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)中的步驟來建立新的資源。
 
-透過設定環境變數,將代理指向您的應用程式見解資源:
+藉由設定環境變數，將代理程式指向您的 Application Insights 資源：
 
 ```
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-或建立名為的`ApplicationInsights.json`設定檔,並將其放置在`applicationinsights-agent-3.0.0-PREVIEW.3.jar`與的目錄中,包含以下內容:
+或者，藉由建立名為`ApplicationInsights.json`的設定檔，並將它放在`applicationinsights-agent-3.0.0-PREVIEW.3.jar`與相同的目錄中，並包含下列內容：
 
 ```json
 {
@@ -54,85 +54,85 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 }
 ```
 
-您可以在應用程式見解資源中找到連接字串:
+您可以在 Application Insights 資源中找到您的連接字串：
 
-:::image type="content" source="media/java-ipa/connection-string.png" alt-text="應用程式見解連線字串":::
+:::image type="content" source="media/java-ipa/connection-string.png" alt-text="Application Insights 連接字串":::
 
-**4. 就這個了!**
+**4. 這樣就大功告成了！**
 
-現在啟動應用程式,然後轉到 Azure 門戶中的應用程式見解資源以查看監視數據。
+現在啟動您的應用程式，並移至 Azure 入口網站中的 Application Insights 資源，以查看您的監視資料。
 
 > [!NOTE]
-> 監視數據可能需要幾分鐘才能顯示在門戶中。
+> 可能需要幾分鐘的時間，您的監視資料才會顯示在入口網站中。
 
 
 ## <a name="configuration-options"></a>設定選項
 
-在檔案中`ApplicationInsights.json`,您還可以另外設定:
+`ApplicationInsights.json`在檔案中，您可以另外設定：
 
-* 雲角色名稱
+* 雲端角色名稱
 * 雲端角色執行個體
-* 應用程式記錄擷取
-* JMX 指標
+* 應用程式記錄檔捕獲
+* JMX 計量
 * Micrometer
 * Heartbeat
 * 取樣
-* HTTP 代理
+* HTTP Proxy
 * 自我診斷
 
-請參考[3.0 公共預覽版的詳細資訊:設定選項](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)。
+請參閱[3.0 公開預覽：設定選項](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config)的詳細資料。
 
-## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>自動收集的請求、依賴項、日誌和指標
+## <a name="autocollected-requests-dependencies-logs-and-metrics"></a>實驗自動收集要求、相依性、記錄和計量
 
 ### <a name="requests"></a>Requests
 
-* JMS 消費者
-* 卡夫卡消費者
-* 淨/網路流
-* Servlet
-* 春季計劃
+* JMS 取用者
+* Kafka 取用者
+* Netty/WebFlux
+* Servlets
+* 春季排程
 
-### <a name="dependencies-with-distributed-trace-propagation"></a>具有分散式追蹤傳播的依賴項
+### <a name="dependencies-with-distributed-trace-propagation"></a>分散式追蹤傳播的相依性
 
-* 阿帕契 HTTPClient 和 HttpAsync 用戶端
+* Apache HttpClient 和 HttpAsyncClient
 * gRPC
-* java.net.HTTPURL連接
+* HttpURLConnection
 * JMS
 * Kafka
-* 淨用戶端
-* OkHTTP
+* Netty 用戶端
+* OkHttp
 
-### <a name="other-dependencies"></a>其他依賴項
+### <a name="other-dependencies"></a>其他相依性
 
 * Cassandra
 * JDBC
-* 蒙戈DB(非同步)
-* 雷迪斯(萊圖斯和絕地)
+* MongoDB （非同步和同步）
+* Redis （萵苣和 Jedis）
 
 ### <a name="logs"></a>記錄
 
-* java.util.日誌記錄
+* util。記錄
 * Log4j
-* SLF4J/紀錄
+* SLF4J/Logback
 
 ### <a name="metrics"></a>計量
 
 * Micrometer
-* JMX 指標
+* JMX 計量
 
-## <a name="sending-custom-telemetry-from-your-application"></a>從應用程式傳送自訂遙測
+## <a name="sending-custom-telemetry-from-your-application"></a>從您的應用程式傳送自訂遙測
 
-3.0+ 的目標是允許您使用標準 API 發送自定義遙測數據。
+我們在 3.0 + 的目標是要讓您使用標準 Api 來傳送自訂遙測。
 
-我們支援微數、開放遙測 API 和流行的日誌記錄框架。 應用程式見解 Java 3.0 將自動捕獲遙測數據,並將其與所有自動收集的遙測數據相關聯。
+我們支援 Micrometer、OpenTelemetry API 和熱門的記錄架構。 Application Insights JAVA 3.0 會自動捕捉遙測，並使其與所有實驗自動收集的遙測相互關聯。
 
-因此,我們不打算此時發佈具有應用程式見解 3.0 的 SDK。
+基於這個理由，我們目前不打算發行具有 Application Insights 3.0 的 SDK。
 
-應用程式見解 Java 3.0 已經在偵聽發送到應用程式見解 Java SDK 2.x 的遙測數據。 此功能是現有 2.x 用戶升級故事的重要組成部分,它填補了我們自定義遙測支援中的一個重要空白,直到 Open遙測 API 成為 GA。
+Application Insights JAVA 3.0 已在接聽傳送至 Application Insights JAVA SDK 2.x 的遙測。 這項功能是現有2.x 使用者升級案例的重要部分，而且在 OpenTelemetry API 正式運作之前，會在自訂遙測支援中填滿一個重要的差距。
 
-## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>使用應用程式見解 Java SDK 2.x 傳送自訂遙測
+## <a name="sending-custom-telemetry-using-application-insights-java-sdk-2x"></a>使用 Application Insights JAVA SDK 2.x 傳送自訂遙測
 
-新增到`applicationinsights-core-2.6.0.jar`應用程式(應用程式見解 Java 3.0 支援所有 2.x 版本,但如果您有選擇,則值得使用最新版本):
+將`applicationinsights-core-2.6.0.jar`新增至您的應用程式（Application Insights JAVA 3.0 支援所有2.x 版本，但如果您有選擇，則值得使用最新版本）：
 
 ```xml
   <dependency>
@@ -142,13 +142,13 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
   </dependency>
 ```
 
-建立遙測客戶端:
+建立 TelemetryClient：
 
   ```java
 private static final TelemetryClient telemetryClient = new TelemetryClient();
 ```
 
-並將其用於發送自定義遙測。
+並使用它來傳送自訂遙測。
 
 ### <a name="events"></a>事件
 
@@ -157,14 +157,14 @@ telemetryClient.trackEvent("WinGame");
 ```
 ### <a name="metrics"></a>計量
 
-您可以通過[縮數計](https://micrometer.io)傳送指標遙測 :
+您可以透過[Micrometer](https://micrometer.io)傳送計量遙測：
 
 ```java
   Counter counter = Metrics.counter("test_counter");
   counter.increment();
 ```
 
-或者您也可以使用應用程式見解 Java SDK 2.x:
+或者，您也可以使用 Application Insights JAVA SDK 2.x：
 
 ```java
   telemetryClient.trackMetric("queueLength", 42.0);
@@ -187,18 +187,18 @@ telemetryClient.trackEvent("WinGame");
 ```
 
 ### <a name="logs"></a>記錄
-您可以通過您最喜愛的日誌記錄框架發送自定義日誌遙測。
+您可以透過您最愛的記錄架構傳送自訂記錄檔遙測。
 
-或者您也可以使用應用程式見解 Java SDK 2.x:
+或者，您也可以使用 Application Insights JAVA SDK 2.x：
 
 ```java
   telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
 ### <a name="exceptions"></a>例外狀況
-您可以通過您最喜愛的日誌記錄框架發送自定義異常遙測。
+您可以透過您最愛的記錄架構傳送自訂的例外狀況遙測。
 
-或者您也可以使用應用程式見解 Java SDK 2.x:
+或者，您也可以使用 Application Insights JAVA SDK 2.x：
 
 ```java
   try {
@@ -208,9 +208,9 @@ telemetryClient.trackEvent("WinGame");
   }
 ```
 
-## <a name="upgrading-from-application-insights-java-sdk-2x"></a>從應用程式洞察 Java SDK 2.x 升級
+## <a name="upgrading-from-application-insights-java-sdk-2x"></a>從 Application Insights JAVA SDK 2.x 升級
 
-如果您已經在應用程式中使用應用程式見解 Java SDK 2.x,則無需將其刪除。 Java 3.0 代理將檢測它,並捕獲並關聯您透過 Java SDK 2.x 發送的任何自定義遙測數據,同時禁止 JAVA SDK 2.x 執行的任何自動集合以防止重複捕獲。
+如果您已在應用程式中使用 Application Insights JAVA SDK 2.x，則不需要將它移除。 JAVA 3.0 代理程式將會偵測到它，並捕捉您透過 JAVA SDK 2.x 傳送的任何自訂遙測，同時抑制 JAVA SDK 2.x 所執行的任何 autocollection，以防止重複的捕捉。
 
 > [!NOTE]
-> 注意:使用 3.0 代理時,將不會運行 Java SDK 2.x 遙測初始化器和遙測處理器。
+> 注意：使用3.0 代理程式時，將不會執行 JAVA SDK 2.x TelemetryInitializers 和 TelemetryProcessors。

@@ -1,6 +1,6 @@
 ---
-title: 以分散式追蹤將相關 IOT 訊息到相關資料(預)
-description: 瞭解如何使用分散式追蹤功能追蹤解決方案使用的 Azure 服務中的 IoT 消息。
+title: 將相互關聯識別碼新增至具有分散式追蹤的 IoT 訊息（預先）
+description: 瞭解如何使用分散式追蹤功能來追蹤解決方案所使用的 Azure 服務中的 IoT 訊息。
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2b1dc7873140f885ec3efac11dec5fbf6aab7aa9
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732567"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>透過分散式追蹤來追蹤 Azure IoT 裝置到雲端的訊息 (預覽)
@@ -33,7 +33,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 在本文中，您會使用 [適用於 C 的 Azure IoT 裝置 SDK](iot-hub-device-sdk-c-intro.md) 搭配分散式追蹤。 其他 SDK 的分散式追蹤支援仍在進行中。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 分散式追蹤的預覽版目前僅支援在下列區域建立的 IoT 中樞：
 
@@ -51,7 +51,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 在本節中，您會設定 IoT 中樞以記錄分散式追蹤屬性 (相互關聯識別碼和時間戳記)。
 
-1. 導航到[Azure 門戶](https://portal.azure.com/)中的 IoT 中心。
+1. 在[Azure 入口網站](https://portal.azure.com/)中，流覽至您的 IoT 中樞。
 
 1. 在 IoT 中樞的左窗格中，向下捲動至 [監視]**** 區段，然後按一下 [診斷設定]****。
 
@@ -61,9 +61,9 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 1. 選擇下列其中一個或多個選項，以決定記錄要傳送到哪裡：
 
-    - **存檔到存儲帳戶**:配置存儲帳戶以包含日誌記錄資訊。
-    - **流到事件中心**:配置事件中心以包含日誌記錄資訊。
-    - **發送到日誌分析**:配置日誌分析工作區以包含日誌記錄資訊。
+    - 封存**至儲存體帳戶**：設定儲存體帳戶以包含記錄資訊。
+    - **串流至事件中樞**：將事件中樞設定為包含記錄資訊。
+    - **傳送至 Log analytics**：將 Log analytics 工作區設定為包含記錄資訊。
 
 1. 在 [記錄]**** 區段中，選取您希望記錄資訊用於的作業。
 
@@ -91,11 +91,11 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 ### <a name="clone-the-source-code-and-initialize"></a>複製原始程式碼並初始化
 
-1. 為 Visual Studio 2019 安裝["具有 C++"工作負載的「桌面開發](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019)」。。 還支援 Visual Studio 2017 和 2015。
+1. 安裝 Visual Studio 2019 的「[使用 c + + 進行桌面開發」工作負載](https://docs.microsoft.com/cpp/build/vscpp-step-0-installation?view=vs-2019)。 也支援 Visual Studio 2017 和2015。
 
 1. 安裝 [CMake](https://cmake.org/)。 在命令提示字元中輸入 `cmake -version`，確定它位於您的 `PATH` 中。
 
-1. 開啟命令提示字元或 Git Bash 殼層。 執行以下指令以複製[版的 Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 儲存函式庫的最新版本:
+1. 開啟命令提示字元或 Git Bash 殼層。 執行下列命令，以複製最新版本的[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存放庫：
 
     ```cmd
     git clone -b public-preview https://github.com/Azure/azure-iot-sdk-c.git
@@ -177,14 +177,14 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 <!-- For a client app that can receive sampling decisions from the cloud, check out [this sample](https://aka.ms/iottracingCsample).  -->
 
-### <a name="workaround-for-third-party-clients"></a>第三方客戶端的解決方法
+### <a name="workaround-for-third-party-clients"></a>協力廠商用戶端的因應措施
 
-不使用 C SDK 預覽分散式追蹤功能**並非易事**。 因此,不建議使用此方法。
+不需要使用 C SDK，就**能**輕鬆預覽分散式追蹤功能。 因此，不建議使用此方法。
 
-首先,您必須按照開發指南[「創建並讀取 IoT 中心」消息](iot-hub-devguide-messages-construct.md),實現郵件中的所有 IoT 中心協定基元。 然後,編輯 MQTT/AMQP 訊息中的協定屬性`tracestate`以新增 為**系統屬性**。 具體而言，
+首先，您必須遵循開發指南[建立和讀取 IoT 中樞訊息](iot-hub-devguide-messages-construct.md)的方式，在您的訊息中執行所有 IoT 中樞的通訊協定基本專案。 然後，編輯 MQTT/AMQP 訊息中的通訊協定屬性，以`tracestate`新增為**系統屬性**。 具體而言，
 
-* 對於 MQTT,`%24.tracestate=timestamp%3d1539243209`添加到消息主題中`1539243209`,其中 應替換為 unix 時間戳格式的消息的創建時間。 例如,請參閱 C SDK[中的](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)實作
-* 對於`key("tracestate")`AMQP,`value("timestamp=1539243209")`添加 並作為消息註釋。 有關引用實現,請參閱[此處](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)。
+* 針對 MQTT，將`%24.tracestate=timestamp%3d1539243209`新增至訊息主題，其中`1539243209`應該以 unix 時間戳記格式的訊息建立時間來取代。 如需範例，請參閱[C SDK 中](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/iothubtransport_mqtt_common.c#L761)的實作為
+* 針對 AMQP，新增`key("tracestate")`和`value("timestamp=1539243209")`作為訊息注釋。 如需參考的執行方式，請參閱[這裡](https://github.com/Azure/azure-iot-sdk-c/blob/6633c5b18710febf1af7713cf1a336fd38f623ed/iothub_client/src/uamqp_messaging.c#L527)。
 
 若要控制包含此屬性的訊息百分比，請實作邏輯以接聽雲端起始的事件，例如對應項更新。
 
@@ -204,7 +204,7 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 1. 選擇介於 0%和 100%之間的 [取樣率]****。
 
-1. 按一下 [檔案]  。
+1. 按一下 **[儲存]** 。
 
 1. 等候幾秒鐘，然後按 [重新整理]****，如果由裝置成功認可，隨即出現具有核取記號的同步圖示。
 
@@ -214,15 +214,15 @@ IoT 中樞是其中一項最先支援分散式追蹤的 Azure 服務。 隨著�
 
 1. (選擇性) 將取樣率變更為不同的值，並觀察訊息在應用程式屬性中包含 `tracestate` 的頻率變更。
 
-### <a name="update-using-azure-iot-hub-for-vs-code"></a>使用 Azure IoT 中心更新 VS 代碼
+### <a name="update-using-azure-iot-hub-for-vs-code"></a>使用 VS Code 的 Azure IoT 中樞進行更新
 
-1. 安裝 VS 代碼,然後[從這裡](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)安裝最新版本的用於 VS 代碼的 Azure IoT 中心。
+1. 安裝 VS Code，然後從[這裡](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)安裝適用于 VS Code 的最新版本 Azure IoT 中樞。
 
 1. 開啟 VS Code 並[設定 IoT 中樞連接字串](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites)。
 
 1. 展開裝置並尋找 [分散式追蹤設定 (預覽)]****。 在其下方，按一下子節點的 [更新分散式追蹤設定 (預覽)]****。
 
-    ![在 Azure IoT 中心延伸中啟用分散式追蹤](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
+    ![啟用 Azure IoT 中樞延伸模組中的分散式追蹤](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
 1. 在快顯視窗中，選取 [啟用]****，然後按 Enter 以確認取樣率為 100。
 
@@ -311,8 +311,8 @@ Log Analytics 所顯示的範例記錄：
 1. IoT 裝置會將此訊息傳送至 IoT 中樞。
 1. 訊息抵達 IoT 中樞閘道。
 1. IoT 中樞會在訊息應用程式屬性中尋找 `tracestate`，並查看它是否為正確格式。
-1. 如果是這樣,IoT 中心將生成消息`trace-id`的 全域唯一消息,a`span-id`表示「躍點」,並將其記錄`DiagnosticIoTHubD2C`到操作 下的 Azure 監視器診斷日誌。
-1. 消息處理完成後,IoT 中心將生成另`span-id`一個,並將其與`trace-id``DiagnosticIoTHubIngress`操作 下的現有中心一起記錄。
+1. 若是如此，IoT 中樞會為訊息產生`trace-id`全域唯一的， `span-id`針對「躍點」，則會將其記錄到作業下 Azure 監視器診斷記錄`DiagnosticIoTHubD2C`中。
+1. 訊息處理完成之後，IoT 中樞會產生另一個`span-id` ，並將它與現有`trace-id`的作業一起記錄`DiagnosticIoTHubIngress`在一起。
 1. 如果啟用訊息的路由功能，IoT 中樞將訊息寫入到自訂端點，並將另一個 `span-id` 與相同的 `trace-id` 記錄在 `DiagnosticIoTHubEgress` 類別之下。
 1. 上述步驟會針對所產生的每則訊息重複執行。
 

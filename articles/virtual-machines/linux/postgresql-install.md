@@ -1,5 +1,5 @@
 ---
-title: Linux VM 上設定 PostgreSQL
+title: 在 Linux VM 上設定于 postgresql
 description: 了解如何在 Azure 中的 Linux 虛擬機器上安裝和設定 PostgreSQL
 author: cynthn
 ms.service: virtual-machines-linux
@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
 ms.openlocfilehash: d86e42dcc16d108cc82c9d245c7919145cef365f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759342"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>安裝和設定 Azure 上的 PostgreSQL
@@ -58,7 +58,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. 如果要建譯可以建構所有內容,包括文件(HTML 和人頁)和其他模組`contrib`(), 請改為執行以下指令:
+5. 如果您想要建立可建立的所有專案，包括檔（HTML 和 man 頁面）和其他模組（`contrib`），請改為執行下列命令：
    
         # gmake install-world
    
@@ -225,7 +225,7 @@ PostgreSQL 是與 Oracle 和 DB2 類似的進階開放原始碼資料庫。 它�
 ![image](./media/postgresql-install/no8.png)
 
 ### <a name="update-data-in-a-table"></a>更新資料表中的資料
-使用下列命令更新資料表中的資料。 對於這一個,桑迪已經確認他們參加,所以我們將RSVP從「N」更改為「Y」:
+使用下列命令更新資料表中的資料。 在此情況下，Sandy 已確認他們正在參與，所以我們會將 RSVP 從 "N" 變更為 "Y"：
 
      UPDATE potluck set confirmed = 'Y' WHERE name = 'Sandy';
 

@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 2ef259bf76815fdf8672b696d2260fe6a143b798
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730180"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中樞的身分識別登錄
@@ -82,7 +82,7 @@ IoT 方案通常具有不同的方案專屬存放區，其中包含應用程式�
 
 如需有關匯入和匯出 API 的詳細資訊，請參閱 [IoT 中樞資源提供者 REST API](/rest/api/iothub/iothubresource)。 若要深入了解如何執行匯入和匯出作業，請參閱[大量管理 IoT 中樞的裝置身分識別](iot-hub-bulk-identity-mgmt.md)。
 
-裝置識別也可以透過[REST API](/rest/api/iothub/service/jobclient/createimportexportjob)或 IoT 中心服務 SDK 之一透過服務 API 從 IoT 中心中心匯[出及匯入](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)。
+裝置身分識別也可以透過服務 API 從 IoT 中樞匯出和匯入，方法是透過[REST API](/rest/api/iothub/service/jobclient/createimportexportjob)或其中一個 IoT 中樞[服務 sdk](/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-service-sdks)。
 
 ## <a name="device-provisioning"></a>裝置佈建
 
@@ -190,10 +190,10 @@ iothub-message-schema | moduleLifecycleNotification |
 | --- | --- | --- |
 | deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , = @ $ '`。 |
 | generationId |必要，唯讀 |IoT 中樞產生的區分大小寫字串，最長為 128 個字元。 此值可用來在刪除並重建裝置時，區分具有相同 **deviceId** 的裝置。 |
-| etag |必要，唯讀 |表示設備識別的弱 ETag 的字串,如[RFC7232](https://tools.ietf.org/html/rfc7232)。 |
+| etag |必要，唯讀 |字串，代表裝置身分識別的弱式 ETag，依據[依據 rfc7232](https://tools.ietf.org/html/rfc7232)。 |
 | auth |選用 |包含驗證資訊和安全性資料的複合物件。 |
 | auth.symkey |選用 |包含主要和次要金鑰 (以 base64 格式儲存) 的複合物件。 |
-| status |required |存取指示器。 可以是 [已啟用]**** 或 [已停用]****。 如果為 [已啟用] ****，則允許連接裝置。 如果為 [已停用] ****，此裝置無法存取任何裝置面向的端點。 |
+| status |必要 |存取指示器。 可以是 [已啟用]**** 或 [已停用]****。 如果為 [已啟用] ****，則允許連接裝置。 如果為 [已停用] ****，此裝置無法存取任何裝置面向的端點。 |
 | statusReason |選用 |長度為 128 個字元的字串，用來儲存裝置身分識別狀態的原因。 允許所有 UTF-8 字元。 |
 | statusUpdateTime |唯讀 |暫時指示器，顯示上次狀態更新的日期和時間。 |
 | connectionState |唯讀 |指出連線狀態的欄位︰**已連線**或**已中斷連線**。 這個欄位代表裝置連線狀態的 IoT 中樞檢視。 **重要事項**：此欄位只應用於開發/偵錯用途。 只有針對使用 MQTT 或 AMQP 的裝置才會更新連線狀態。 此外，它是以通訊協定層級的偵測 (MQTT 偵測或 AMQP 偵測) 為基礎，而且最多只能有 5 分鐘的延遲。 基於這些理由，其中可能會有誤判的情形，例如將裝置回報為已連線，但卻已中斷連線。 |
@@ -215,10 +215,10 @@ iothub-message-schema | moduleLifecycleNotification |
 | deviceId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , = @ $ '`。 |
 | moduleId |必要，只能讀取更新 |區分大小寫的字串，最長為 128 個字元，可使用 ASCII 7 位元英數字元和某些特殊字元：`- . + % _ # * ? ! ( ) , = @ $ '`。 |
 | generationId |必要，唯讀 |IoT 中樞產生的區分大小寫字串，最長為 128 個字元。 此值可用來在刪除並重建裝置時，區分具有相同 **deviceId** 的裝置。 |
-| etag |必要，唯讀 |表示設備識別的弱 ETag 的字串,如[RFC7232](https://tools.ietf.org/html/rfc7232)。 |
+| etag |必要，唯讀 |字串，代表裝置身分識別的弱式 ETag，依據[依據 rfc7232](https://tools.ietf.org/html/rfc7232)。 |
 | auth |選用 |包含驗證資訊和安全性資料的複合物件。 |
 | auth.symkey |選用 |包含主要和次要金鑰 (以 base64 格式儲存) 的複合物件。 |
-| status |required |存取指示器。 可以是 [已啟用]**** 或 [已停用]****。 如果為 [已啟用] ****，則允許連接裝置。 如果為 [已停用] ****，此裝置無法存取任何裝置面向的端點。 |
+| status |必要 |存取指示器。 可以是 [已啟用]**** 或 [已停用]****。 如果為 [已啟用] ****，則允許連接裝置。 如果為 [已停用] ****，此裝置無法存取任何裝置面向的端點。 |
 | statusReason |選用 |長度為 128 個字元的字串，用來儲存裝置身分識別狀態的原因。 允許所有 UTF-8 字元。 |
 | statusUpdateTime |唯讀 |暫時指示器，顯示上次狀態更新的日期和時間。 |
 | connectionState |唯讀 |指出連線狀態的欄位︰**已連線**或**已中斷連線**。 這個欄位代表裝置連線狀態的 IoT 中樞檢視。 **重要事項**：此欄位只應用於開發/偵錯用途。 只有針對使用 MQTT 或 AMQP 的裝置才會更新連線狀態。 此外，它是以通訊協定層級的偵測 (MQTT 偵測或 AMQP 偵測) 為基礎，而且最多只能有 5 分鐘的延遲。 基於這些理由，其中可能會有誤判的情形，例如將裝置回報為已連線，但卻已中斷連線。 |
@@ -232,7 +232,7 @@ iothub-message-schema | moduleLifecycleNotification |
 
 IoT 中樞開發人員指南中的其他參考主題包括︰
 
-* [IoT 中心終結點](iot-hub-devguide-endpoints.md)描述每個 IoT 中心為運行時和管理操作公開的各種終結點。
+* [IoT 中樞端點](iot-hub-devguide-endpoints.md)說明每個 IoT 中樞針對執行時間和管理作業所公開的各種端點。
 
 * [節流和配額](iot-hub-devguide-quotas-throttling.md)描述適用於 IoT 中樞服務的配額和節流行為。
 
@@ -256,7 +256,7 @@ IoT 中樞開發人員指南中的其他參考主題包括︰
 
 若要嘗試本文所述的一些概念，請參閱下列「IoT 中樞」教學課程：
 
-* [開始使用 Azure IoT 中心](quickstart-send-telemetry-dotnet.md)
+* [開始使用 Azure IoT 中樞](quickstart-send-telemetry-dotnet.md)
 
 若要探索使用 IoT 中樞裝置佈建服務進行 Just-In-Time 自動佈建，請參閱： 
 

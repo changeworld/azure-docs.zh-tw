@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729122"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>參考 - 選擇通訊協定
@@ -42,7 +42,7 @@ ms.locfileid: "81729122"
 
 * **雲端到裝置的模式**。 HTTPS 沒有可實作伺服器推送的有效方式。 因此，當您使用 HTTPS 時，裝置會輪詢「IoT 中樞」來了解是否有雲端到裝置的訊息。 這對於裝置和 IoT 中樞而言都沒有效率。 在目前的 HTTPS 指導方針中，每個裝置應該每隔 25 分鐘 (或更久) 進行一次訊息輪詢。 MQTT 和 AMQP 則支援在收到雲端到裝置訊息時進行伺服器推送。 它們能夠將訊息立即從 IoT 中樞推送到裝置。 如果傳遞延遲是一大考量，最好是使用 MQTT 或 AMQP 通訊協定。 針對很少連接的裝置，也適用 HTTPS。
 
-* **欄位閘道**。 MQTT 和 HTTPS 僅支援每個 TLS 連接的單個設備識別(設備 ID 加上認證)。 因此,這些協定不支援用於需要跨單個或到 IoT 中心的上行連接池中使用多個設備識別的多路複用消息[的欄位閘道方案](iot-hub-devguide-endpoints.md#field-gateways)。 此類閘道可以使用支援每個連接的多個設備標識的協定(如 AMQP)進行上游流量。
+* **現場閘道**。 MQTT 和 HTTPS 僅針對每個 TLS 連線支援單一裝置身分識別（裝置識別碼加認證）。 基於這個理由，這些通訊協定不支援[欄位閘道案例](iot-hub-devguide-endpoints.md#field-gateways)，需要在單一或上游連線集區中使用多個裝置身分識別，才能 IoT 中樞的訊息。 這類閘道可以使用針對其上游流量，針對每個連線（例如 AMQP）支援多個裝置身分識別的通訊協定。
 
 * **低資源裝置**。 MQTT 和 HTTPS 程式庫的磁碟使用量比 AMQP 程式庫小。 因此，如果裝置的資源有限 (例如 RAM 小於 1 MB)，這些通訊協定可能會是唯一可用的通訊協定實作。
 
@@ -51,7 +51,7 @@ ms.locfileid: "81729122"
 * **承載大小**。 MQTT 和 AMQP 是二進位通訊協定，這使得其承載比 HTTPS 更精簡。
 
 > [!WARNING]
-> 使用 HTTPS 時,每個設備應輪詢雲到設備的消息,每 25 分鐘輪詢一次。 在開發中,如果需要,每個設備都可以更頻繁地輪詢。
+> 使用 HTTPS 時，每個裝置應該每隔25分鐘輪詢一次雲端到裝置訊息。 在開發期間，每個裝置可以視需要更頻繁地進行輪詢。
 
 ## <a name="port-numbers"></a>連接埠號碼
 

@@ -1,5 +1,5 @@
 ---
-title: 開始使用 Azure IoT 中心模組識別&模組孿生 (C)
+title: 開始使用 Azure IoT 中樞模組識別 & 模組對應項（C）
 description: 了解如何使用適用於 C 的 SDK，建立模組身分識別及更新模組對應項。
 author: chrissie926
 ms.service: iot-hub
@@ -12,18 +12,18 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 3cd4277603b96dd1aa07682dd01a6d0e9c61bd82
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733447"
 ---
-# <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>開始使用 IoT 中心模組識別和模組孿生 (C)
+# <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>開始使用 IoT 中樞模組身分識別和模組對應項（C）
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [模組身分識別與模組對應項](iot-hub-devguide-module-twins.md)類似於 Azure IoT 中樞裝置身分識別與裝置對應項，但提供更精細的細微性。 當 Azure IoT 中心設備識別和設備孿生使後端應用程式能夠配置設備並提供設備條件的可見性時,模組標識和模組孿生為設備的單個元件提供這些功能。 在具備多個元件的可用裝置 (例如以作業系統為基礎的裝置或韌體裝置) 上，它允許每個元件有獨立的組態和狀況。
+> [模組身分識別與模組對應項](iot-hub-devguide-module-twins.md)類似於 Azure IoT 中樞裝置身分識別與裝置對應項，但提供更精細的細微性。 雖然 Azure IoT 中樞裝置身分識別和裝置對應項可讓後端應用程式設定裝置，並提供裝置狀況的可見度，但模組身分識別和模組對應項會為裝置的個別元件提供這些功能。 在具備多個元件的可用裝置 (例如以作業系統為基礎的裝置或韌體裝置) 上，它允許每個元件有獨立的組態和狀況。
 
 在本教學課程結尾，您將會有兩個 C 應用程式：
 
@@ -34,7 +34,7 @@ ms.locfileid: "81733447"
 > [!NOTE]
 > 如需可用來建置兩個應用程式，以在裝置與您的解決方案後端執行的 Azure IoT SDK 相關資訊，請參閱 [Azure IoT SDK](iot-hub-devguide-sdks.md)。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 * 使用中的 Azure 帳戶。 (如果您沒有帳戶，只需要幾分鐘的時間就可以建立 [Azure 免費帳戶](https://azure.microsoft.com/pricing/free-trial/))。
 
@@ -44,7 +44,7 @@ ms.locfileid: "81733447"
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中心連接字串
+## <a name="get-the-iot-hub-connection-string"></a>取得 IoT 中樞連接字串
 
 [!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
 
@@ -52,7 +52,7 @@ ms.locfileid: "81733447"
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>在 IoT 中樞中建立裝置身分識別與模組身分識別
 
-在本節中，您會建立 C 應用程式，它會在 IoT 中樞的身分識別登錄中建立裝置身分識別和模組身分識別。 裝置或模組無法連線到 IoT 中樞，除非它在身分識別登錄中具有項目。 有關詳細資訊,請參閱[IoT 中心開發人員指南](iot-hub-devguide-identity-registry.md)的**標識註冊表**部分。 當您執行此主控台應用程式時，它會針對裝置和模組產生唯一的識別碼和金鑰。 當裝置和模組將裝置到雲端的訊息傳送給 IoT 中樞時，裝置和模組會使用這些值來識別自己。 識別碼會區分大小寫。
+在本節中，您會建立 C 應用程式，它會在 IoT 中樞的身分識別登錄中建立裝置身分識別和模組身分識別。 裝置或模組無法連線到 IoT 中樞，除非它在身分識別登錄中具有項目。 如需詳細資訊，請參閱[IoT 中樞開發人員指南](iot-hub-devguide-identity-registry.md)的身分**識別**登錄一節。 當您執行此主控台應用程式時，它會針對裝置和模組產生唯一的識別碼和金鑰。 當裝置和模組將裝置到雲端的訊息傳送給 IoT 中樞時，裝置和模組會使用這些值來識別自己。 識別碼會區分大小寫。
 
 將下列程式碼新增至 C 檔案：
 
@@ -180,7 +180,7 @@ int main(void)
 }
 ```
 
-此應用程式會在 **myFirstDevice** 裝置下方建立識別碼為 **myFirstDevice** 的裝置身分識別，以及識別碼為 **myFirstModule** 的模組身分識別。 (如果標識註冊表中已存在該模組 ID,則代碼只需檢索現有模組資訊。然後,應用將顯示該標識的主鍵。 您會在模擬模組應用程式中使用此金鑰來連線到您的 IoT 中樞。
+此應用程式會在 **myFirstDevice** 裝置下方建立識別碼為 **myFirstDevice** 的裝置身分識別，以及識別碼為 **myFirstModule** 的模組身分識別。 （如果該模組識別碼已經存在身分識別登錄中，程式碼就會直接抓取現有的模組資訊）。應用程式接著會顯示該身分識別的主要金鑰。 您會在模擬模組應用程式中使用此金鑰來連線到您的 IoT 中樞。
 
 > [!NOTE]
 > IoT 中樞身分識別登錄只會儲存裝置和模組身分識別，以啟用對 IoT 中樞的安全存取。 身分識別登錄會儲存裝置識別碼和金鑰，以作為安全性認證使用。 身分識別登錄也會儲存每個裝置的已啟用/已停用旗標，以便您用來停用該裝置的存取權。 如果您的應用程式需要儲存其他裝置特定的中繼資料，它應該使用應用程式專用的存放區。 模組身分識別沒有啟用/停用旗標。 如需詳細資訊，請參閱 [IoT 中樞開發人員指南](iot-hub-devguide-identity-registry.md)。
@@ -193,9 +193,9 @@ int main(void)
 
     ![Azure 入口網站模組詳細資料](./media/iot-hub-c-c-module-twin-getstarted/module-detail.png)
 
-2. **建立更新模組雙生報告屬性應用**
+2. **建立 UpdateModuleTwinReportedProperties 應用程式**
    
-   將以下內容加入您的 C 檔案:
+   將下列內容新增至您的 C 檔案：
 
     ```C
     #include <stdio.h>

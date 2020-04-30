@@ -1,6 +1,6 @@
 ---
-title: 使用樣本部署 Azure Spot VM
-description: 瞭解如何使用範本部署 Spot VM 以節省成本。
+title: 使用範本部署 Azure 點 Vm
+description: 瞭解如何使用範本來部署點 Vm，以節省成本。
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -9,24 +9,24 @@ ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.openlocfilehash: 2d546e9154352ec90aa1b1a457eb5320979239d2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758358"
 ---
-# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>使用資源管理員樣本部署 Spot VM
+# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>使用 Resource Manager 範本部署點 Vm
 
-使用[Spot VM](spot-vms.md)使您能夠利用我們未使用的容量,從而顯著節省成本。 在 Azure 需要返回容量的任何時間點,Azure 基礎結構將驅逐 Spot VM。 因此,Spot VM 非常適合處理批次處理作業、開發/測試環境、大型計算工作負載等中斷的工作負載。
+使用「[點 vm](spot-vms.md) 」可讓您以可觀的成本節約，利用我們未使用的容量。 Azure 基礎結構會在任何時間點回復，以找出虛擬機器的功能。 因此，針對可處理中斷的工作負載（例如批次處理作業、開發/測試環境、大型計算工作負載等），找出 Vm 很棒。
 
-現貨 VM 的定價基於區域和 SKU 是可變的。 有關詳細資訊,請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定價。
+點 Vm 的定價是以區域和 SKU 為依據的變數。 如需詳細資訊，請參閱[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定價。
 
-您可以選擇為 VM 設置您願意每小時支付的最高價格。 Spot VM 的最高價格可以用美元 (USD) 設置,最多使用 5 個小數位。 例如,該值`0.98765`將是每小時 0.98765 美元的最高價格。 如果將最高價格設置為`-1`,則 VM 不會根據價格被逐出。 VM 的價格將是 Spot 的當前價格或標準 VM 的價格,只要容量和配額可用,標準 VM 的價格就更少了。 有關設置最高價格的詳細資訊,請參閱[現貨 VM - 定價](spot-vms.md#pricing)。
+您可以選擇為 VM 設定您願意支付的最大價格（每小時）。 您可以使用最多5個小數位數，以美元（USD）來設定點 VM 的最大價格。 例如，此值`0.98765`是每小時 $0.98765 美元的最大價格。 如果您將最大價格設為`-1`，則不會根據價格來收回 VM。 VM 的價格將會是標準 VM 的目前價格或價格（這是較少的），只要有可用的容量和配額。 如需設定最大價格的詳細資訊，請參閱[找出 vm-定價](spot-vms.md#pricing)。
 
 
 ## <a name="use-a-template"></a>使用範本
 
-對於 Spot 範本`"apiVersion": "2019-03-01"`部署, 請使用或更高版本。 `priority``billingProfile`新增與`evictionPolicy`屬性:
+針對點範本部署，請`"apiVersion": "2019-03-01"`使用或更新版本。 在您`priority`的`evictionPolicy`範本`billingProfile`中，將、和屬性新增至：
 
 ```json
 "priority": "Spot",
@@ -36,7 +36,7 @@ ms.locfileid: "81758358"
 }
 ```
 
-下面是一個範例範本,其中包含 Spot VM 的添加屬性。 將資源名稱取代為您自己的資源名稱,`<password>`並在 VM 上用本地管理員帳戶的密碼替換資源名稱。
+以下是一個範例範本，其中包含適用于點 VM 的已新增屬性。 將資源名稱取代為您自己的`<password>` ，並以 VM 上本機系統管理員帳戶的密碼取代。
 
 ```json
 {
@@ -175,6 +175,6 @@ ms.locfileid: "81758358"
 
 ## <a name="next-steps"></a>後續步驟
 
-您還可以使用[Azure PowerShell](../windows/spot-powershell.md)或[Azure CLI](spot-cli.md)創建 Spot VM。
+您也可以使用[Azure PowerShell](../windows/spot-powershell.md)或[Azure CLI](spot-cli.md)來建立點 VM。
 
-如果遇到錯誤,請參閱[錯誤代碼](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如果您遇到錯誤，請參閱[錯誤碼](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。

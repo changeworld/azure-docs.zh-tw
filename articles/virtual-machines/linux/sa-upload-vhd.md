@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure CLI 上傳自訂 Linux 磁碟
+title: 上傳具有 Azure CLI 的自訂 Linux 磁片
 description: 使用 Resource Manager 部署模型和 Azure CLI 來建立虛擬硬碟 (VHD) 並上傳至 Azure
 author: cynthn
 ms.service: virtual-machines-linux
@@ -9,10 +9,10 @@ ms.date: 07/10/2017
 ms.author: cynthn
 ms.custom: storage accounts
 ms.openlocfilehash: 7ec9b670f8b2eb1731511deb1d01cfc7db55054f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758565"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>使用 Azure CLI 從自訂磁碟上傳並建立 Linux VM
@@ -72,7 +72,7 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-目的地儲存體帳戶必須與您上傳虛擬磁碟的目的地帳戶相同。 您也需要指定或依據提示回答 **az vm create** 命令所需的所有其他參數，例如虛擬網路、公用 IP 位址、使用者名稱及 SSH 金鑰。 您可以閱讀有關[可用 CLI 資源管理員參數的更多資訊](../azure-cli-arm-commands.md#virtual-machines)。
+目的地儲存體帳戶必須與您上傳虛擬磁碟的目的地帳戶相同。 您也需要指定或依據提示回答 **az vm create** 命令所需的所有其他參數，例如虛擬網路、公用 IP 位址、使用者名稱及 SSH 金鑰。 您可以深入瞭解可用的[傳統 CLI Resource Manager 參數](../azure-cli-arm-commands.md#virtual-machines)。
 
 ## <a name="requirements"></a>需求
 若要完成下列步驟，您需要：
@@ -82,7 +82,7 @@ az vm create --resource-group myResourceGroup --location westus \
   * 您也可以在 [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) 或 [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx) 上使用 Hyper-V。
 
 > [!NOTE]
-> Azure 不支援較新的 VHDX 格式。 當您建立 VM 時，請指定 VHD 做為格式。 如果需要,您可以使用[`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)[`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx)或 PowerShell cmdlet 將 VHDX 磁碟轉換為 VHD。 此外，Azure 不支援上傳動態 VHD，因此您必須將此類磁碟轉換成靜態 VHD 再上傳。 您可以在上傳至 Azure 的期間使用 [適用於 GO 的 Azure VHD 公用程式](https://github.com/Microsoft/azure-vhd-utils-for-go) 之類的工具來轉換動態磁碟。
+> Azure 不支援較新的 VHDX 格式。 當您建立 VM 時，請指定 VHD 做為格式。 如有需要，您可以使用[`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)或[`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx) PowerShell Cmdlet 將 VHDX 磁片轉換為 VHD。 此外，Azure 不支援上傳動態 VHD，因此您必須將此類磁碟轉換成靜態 VHD 再上傳。 您可以在上傳至 Azure 的期間使用 [適用於 GO 的 Azure VHD 公用程式](https://github.com/Microsoft/azure-vhd-utils-for-go) 之類的工具來轉換動態磁碟。
 > 
 > 
 
@@ -99,18 +99,18 @@ az vm create --resource-group myResourceGroup --location westus \
 ## <a name="prepare-the-disk-to-be-uploaded"></a>準備要上傳的磁碟
 Azure 支援各種 Linux 散發套件 (請參閱 [背書的散發套件](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json))。 下列文章會逐步引導您了解如何準備 Azure 上支援的各種 Linux 散發套件：
 
-* **[基於 CentOS 的分佈](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[CentOS 為基礎的散發套件](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[SLES & 開啟SUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
-* **[其他 - 非認可發行](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
+* **[其他-非背書發行版本](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
 如需有關為 Azure 準備 Linux 映像的更多一般秘訣，另請參閱 **[Linux 安裝注意事項](create-upload-generic.md#general-linux-installation-notes)**。
 
 > [!NOTE]
-> [Azure 平臺 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)僅適用於運行 Linux 的 VM,只有當其中一個認可的發行版與[在 Azure 認可的發行版上的 Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的「支援版本」下指定的配置詳細資訊一起使用時。
+> 只有在使用其中一個背書散發套件搭配經[Azure 背書之 Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中的「支援的版本」下所指定的設定詳細資料時， [azure 平臺 SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)才適用于執行 Linux 的 vm。
 > 
 > 
 
@@ -135,7 +135,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>列出儲存體帳戶金鑰
-Azure 會為每個儲存體帳戶產生兩個 512 位元的存取金鑰。 對儲存體帳戶進行驗證時 (例如為了執行寫入作業)，就會使用這些存取金鑰。 關於儲存帳戶存取金鑰的詳細資訊,請參考[管理儲存帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。 您使用 [az storage account keys list](/cli/azure/storage/account/keys) 來檢視存取金鑰。
+Azure 會為每個儲存體帳戶產生兩個 512 位元的存取金鑰。 對儲存體帳戶進行驗證時 (例如為了執行寫入作業)，就會使用這些存取金鑰。 如需儲存體帳戶存取金鑰的詳細資訊，請參閱[管理儲存體帳戶存取金鑰](../../storage/common/storage-account-keys-manage.md)。 您使用 [az storage account keys list](/cli/azure/storage/account/keys) 來檢視存取金鑰。
 
 檢視您所建立儲存體帳戶的存取金鑰：
 

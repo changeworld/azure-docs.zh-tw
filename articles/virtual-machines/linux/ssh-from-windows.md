@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.openlocfilehash: cdf901ca56c150cfed6ba3d462ce493d40bd2488
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758002"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上搭配 Windows 使用 SSH 金鑰
@@ -26,22 +26,22 @@ ms.locfileid: "81758002"
 ## <a name="windows-packages-and-ssh-clients"></a>Windows 套件和 SSH 用戶端
 您可使用 *SSH 用戶端*來連線及管理 Azure 中的 Linux VM。 執行 Linux 或 macOS 的電腦通常有一組 SSH 命令，可用來產生和管理 SSH 金鑰以及建立 SSH 連線。 
 
-Windows 電腦不一定會安裝類似的 SSH 命令。 最新版本的 Windows 10 提供[OpenSSH 用戶端命令](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/),用於建立和管理 SSH 密鑰,並從命令提示符建立 SSH 連接。 最的 Windows 10 新版本也包含 [Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/about)，可在 Bash 殼層內以原生方式執行和存取公用程式 (例如 SSH 用戶端)。 
+Windows 電腦不一定會安裝類似的 SSH 命令。 最新版本的 Windows 10 提供[OpenSSH 用戶端命令](https://blogs.msdn.microsoft.com/commandline/2018/03/07/windows10v1803/)，以建立和管理 ssh 金鑰，並從命令提示字元進行 ssh 連線。 最的 Windows 10 新版本也包含 [Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/about)，可在 Bash 殼層內以原生方式執行和存取公用程式 (例如 SSH 用戶端)。 
 
 您可以在本機安裝的其他常見 Windows SSH 用戶端包含在下列套件中：
 
 * [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
-* [將視窗的 Git](https://git-for-windows.github.io/)
+* [適用于 Windows 的 Git](https://git-for-windows.github.io/)
 * [MobaXterm](https://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
 您也可以使用從 [Azure Cloud Shell](../../cloud-shell/overview.md) Bash 獲得的 SSH 公用程式。 
 
-* 在 Azure[https://shell.azure.com](https://shell.azure.com)[門戶](https://portal.azure.com)的 Web 瀏覽器中訪問雲外殼。 
+* 在您的網頁瀏覽器中[https://shell.azure.com](https://shell.azure.com) ，或在[Azure 入口網站](https://portal.azure.com)中存取 Cloud Shell。 
 * 安裝 [Azure 帳戶延伸模組](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)，從 Visual Studio Code 內將 Cloud Shell 當作終端機來存取。
 
 ## <a name="create-an-ssh-key-pair"></a>建立 SSH 金鑰組
-下列各節描述在 Windows 上建立 SSH 金鑰組的兩個選項。 您可以使用殼層命令 (`ssh-keygen`) 或 GUI 工具 (PuTTYgen)。 另請注意,當使用 Powershell 創建金鑰時,請將公開金鑰上載為 ssh.com (SECSH) 格式。 使用 CLI 時,在上傳之前將金鑰轉換為 OpenSSH 格式。 
+下列各節描述在 Windows 上建立 SSH 金鑰組的兩個選項。 您可以使用殼層命令 (`ssh-keygen`) 或 GUI 工具 (PuTTYgen)。 另請注意，使用 Powershell 建立金鑰時，請將公開金鑰上傳為 ssh .com （SECSH）格式。 使用 CLI 時，請在上傳之前，將金鑰轉換為 OpenSSH 格式。 
 
 ### <a name="create-ssh-keys-with-ssh-keygen"></a>利用 ssh-keygen 建立 SSH 金鑰
 
@@ -75,7 +75,7 @@ ssh-keygen -t rsa -b 2048
 
     ![儲存 PuTTY 私密金鑰檔案](./media/ssh-from-windows/save-ppk-file.png)
 
-    如果要以 OpenSSH 格式(許多 SSH 用戶端使用的私密鑰格式)保存私鑰,請選擇 **『轉換** > **匯出 OpenSSH金鑰**』。
+    如果您想要將私密金鑰儲存為 OpenSSH 格式（許多 SSH 用戶端所使用的私密金鑰格式），請選取 [**轉換** > ] [**匯出 OpenSSH 金鑰**]。
 
 ## <a name="provide-an-ssh-public-key-when-deploying-a-vm"></a>部署 VM 時，提供 SSH 公開金鑰
 
@@ -111,7 +111,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
     ![開啟新的 PuTTY 連線](./media/ssh-from-windows/putty-new-connection.png)
 
-3. 選擇**連接** > **SSH** > **Auth**類別。 瀏覽至您的 PuTTY 私密金鑰 (.ppk 檔案) 並加以選取︰
+3. 選取 [ ** **  > 連線**SSH** > **驗證**] 類別。 瀏覽至您的 PuTTY 私密金鑰 (.ppk 檔案) 並加以選取︰
 
     ![選取您的 PuTTY 私密金鑰進行驗證](./media/ssh-from-windows/putty-auth-dialog.png)
 
@@ -119,7 +119,7 @@ ssh azureuser@myvm.westus.cloudapp.azure.com
 
 ## <a name="next-steps"></a>後續步驟
 
-* 有關使用 SSH 鍵的詳細步驟、選項和進階範例,請參閱[建立 SSH 金鑰對的詳細步驟](create-ssh-keys-detailed.md)。
+* 如需使用 SSH 金鑰的詳細步驟、選項和 advanced 範例，請參閱[建立 ssh 金鑰組的詳細步驟](create-ssh-keys-detailed.md)。
 
 * 您也可以在 Azure Cloud Shell 使用 PowerShell 來產生 SSH 金鑰，並建立 Linux VM 的 SSH 連線。 請參閱 [PowerShell 快速入門](../../cloud-shell/quickstart-powershell.md#ssh)。
 

@@ -4,35 +4,35 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 438e3166e27511780dd871b5076a7b28ebade052
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e055f2d7b98df9357ecdee5e044305e35935682e
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589710"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81791641"
 ---
-使用函數觸發器回應發送到事件中心事件流的事件。 您必須具有對基礎事件中心的讀取存取許可權才能設置觸發器。 觸發函數時，傳遞給函數的消息將作為字串鍵入。
+使用函數觸發程式來回應傳送至事件中樞事件資料流程的事件。 您必須擁有基礎事件中樞的讀取存取權，才能設定觸發程式。 觸發函式時，傳遞至函數的訊息會以字串的形式輸入。
 
 ## <a name="scaling"></a>調整大小
 
-事件觸發函數的每個實例都由單個[事件處理器Host](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例備份。 觸發器（由事件中心供電）可確保只有一個[事件處理器Host](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例可以在給定的分區上獲取租約。
+事件所觸發之函式的每個實例都是由單一[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例所支援。 觸發程式（由事件中樞提供技術支援）可確保只有一個[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例可以在指定的分割區上取得租用。
 
 例如，請考慮以下事件中樞：
 
-* 10 個分區
-* 1，000 個事件在所有分區之間均勻分佈，每個分區中包含 100 條消息
+* 10個磁碟分割
+* 1000個事件會平均分散到所有分割區，每個分割區中有100個訊息
 
-當您的函式首次啟用時，只會有 1 個該函式的執行個體。 讓我們調用第一個函數實例`Function_0`。 該`Function_0`函數具有[事件處理器Host](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)的單個實例，該實例對所有 10 個分區都持有租約。 此執行個體會從分割區 0-9 讀取事件。 從這裡開始，會發生下列其中一件事：
+當您的函式首次啟用時，只會有 1 個該函式的執行個體。 讓我們呼叫第一個函式`Function_0`實例。 此`Function_0`函式具有單一[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例，可保存所有十個數據分割的租用。 此執行個體會從分割區 0-9 讀取事件。 從這裡開始，會發生下列其中一件事：
 
-* **不需要新的函數實例**：`Function_0`能夠在函數縮放邏輯生效之前處理所有 1，000 個事件。 在這種情況下，所有 1，000 條消息都由 處理`Function_0`。
+* **不需要新的**函式實例`Function_0` ：能夠在函數調整邏輯生效之前處理所有1000事件。 在此情況下，所有1000訊息都會由`Function_0`處理。
 
-* **添加了一個額外的函數實例**：如果函數縮放邏輯確定`Function_0`其消息數超過其處理時間，則將創建新的函數應用實例 （`Function_1`） 。 此新功能還具有[事件處理器Host](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)的關聯實例。 當基礎事件中心檢測到新的主機實例正在嘗試讀取消息時，它將跨主機實例的分區進行負載平衡。 例如，分割區 0-4 可能會指派給 `Function_0`，分割區 5-9 則指派給 `Function_1`。
+* **加入額外的函式實例**：如果函式調整邏輯判斷`Function_0`具有比它可以處理的更多訊息，則會建立新的`Function_1`函數應用程式實例（）。 這個新函數也有相關聯的[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例。 當基礎事件中樞偵測到新的主控制項實例正在嘗試讀取訊息時，它會在主控制項實例之間進行分割區的負載平衡。 例如，分割區 0-4 可能會指派給 `Function_0`，分割區 5-9 則指派給 `Function_1`。
 
-* **添加了 N 個函數實例**：如果函數縮放邏輯確定兩者兼`Function_0``Function_1`包含的消息數超過其處理時間，則創建新`Functions_N`的函數應用實例。  應用創建到大於事件中心分區`N`數的點。 在本例中，事件中樞同樣會將分割區負載平衡，在此案例中，會跨執行個體 `Function_0`...`Functions_9` 來進行。
+* **新增多個**函式實例：如果函式調整邏輯判斷`Function_0`和`Function_1`所擁有的訊息數目超過其可處理的數量`Functions_N` ，則會建立新的函式應用程式實例。  應用程式會建立到大於事件`N`中樞分割區數目的點。 在本例中，事件中樞同樣會將分割區負載平衡，在此案例中，會跨執行個體 `Function_0`...`Functions_9` 來進行。
 
-當進行縮放時`N`，實例的數量大於事件中心分區的數量。 此模式用於確保[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例可用於獲取分區上的鎖，因為它們從其他實例變為可用。 僅對函數實例執行時使用的資源收費。 換句話說，您不會為此過度調配付費。
+進行調整時， `N`實例是大於事件中樞分割區數目的數位。 此模式是用來確保[EventProcessorHost](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.processor)實例可用來取得資料分割的鎖定，因為它們可以從其他實例使用。 您只需針對函式實例執行時所使用的資源付費。 換句話說，您不需支付此過度布建費用。
 
-當所有函式執行完成時 (不論有無錯誤)，系統就會在相關聯的儲存體帳戶中新增檢查點。 當檢查點成功時，所有 1，000 條消息永遠不會再次檢索。
+當所有函式執行完成時 (不論有無錯誤)，系統就會在相關聯的儲存體帳戶中新增檢查點。 當檢查指標成功時，永遠不會再次抓取所有1000訊息。
 
 <a id="example" name="example"></a>
 
@@ -88,13 +88,13 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
 下列範例示範 function.json** 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [C# 指令碼函式](../articles/azure-functions/functions-reference-csharp.md)。 此函式會記錄事件中樞觸發程序的訊息本文。
 
 下列範例顯示 *function.json* 檔案中的事件中樞繫結資料。
 
-### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
+### <a name="version-2x-and-higher"></a>2.x 版和更新版本
 
 ```json
 {
@@ -169,13 +169,13 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 下列範例示範 function.json** 檔案中的事件中樞觸發程序繫結，以及使用此繫結的 [JavaScript 函式](../articles/azure-functions/functions-reference-node.md)。 此函式會讀取[事件中繼資料](#event-metadata)和記錄訊息。
 
 下列範例顯示 *function.json* 檔案中的事件中樞繫結資料。
 
-### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
+### <a name="version-2x-and-higher"></a>2.x 版和更新版本
 
 ```json
 {
@@ -214,7 +214,7 @@ module.exports = function (context, myEventHubMessage) {
 
 若要批次接收事件，請在 *function.json* 檔案中將 `cardinality` 設定為 `many`，如下列範例所示。
 
-### <a name="version-2x-and-higher"></a>版本 2.x 及更高版本
+### <a name="version-2x-and-higher"></a>2.x 版和更新版本
 
 ```json
 {
@@ -287,9 +287,9 @@ def main(event: func.EventHubEvent):
     logging.info('  Offset =', event.offset)
 ```
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-下面的示例顯示了一個事件中心觸發器綁定，該綁定記錄事件中心觸發器的郵件內文。
+下列範例顯示事件中樞觸發程式系結，它會記錄事件中樞觸發程式的訊息本文。
 
 ```java
 @FunctionName("ehprocessor")
@@ -325,11 +325,11 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 如需完整範例，請參閱[觸發程序 - C# 範例](#example)。
 
-# <a name="c-script"></a>[C# 腳本](#tab/csharp-script)
+# <a name="c-script"></a>[C # 腳本](#tab/csharp-script)
 
-C# 腳本不支援屬性。
+C # 腳本不支援屬性。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript 不支援屬性。
 
@@ -337,34 +337,34 @@ JavaScript 不支援屬性。
 
 Python 不支援屬性。
 
-# <a name="java"></a>[JAVA](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-從 JAVA[函數運行時庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)，對值來自事件中心的參數使用[EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger)注釋。 具有這些附註的參數會使得函式在事件抵達時執行。 此註釋可以搭配原生 Java 類型、POJO 或使用 `Optional<T>` 的可為 Null 值使用。
+從 JAVA 函式執行時間連結[庫](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)，在其值會來自事件中樞的參數上使用[EventHubTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhubtrigger)注釋。 具有這些附註的參數會使得函式在事件抵達時執行。 此註釋可以搭配原生 Java 類型、POJO 或使用 `Optional<T>` 的可為 Null 值使用。
 
 ---
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
-下表介紹了您在*函數.json*檔和`EventHubTrigger`屬性中設置的綁定配置屬性。
+下表說明您在*函數 json*檔案和`EventHubTrigger`屬性中設定的系結設定屬性。
 
 |function.json 屬性 | 屬性內容 |描述|
 |---------|---------|----------------------|
-|**型別** | n/a | 必須設為 `eventHubTrigger`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
-|**direction** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
-|**名稱** | n/a | 代表函式程式碼中事件項目的變數名稱。 |
-|**路徑** |**事件中心名稱** | 僅限 Functions 1.x。 事件中樞的名稱。 當事件中樞名稱也呈現於連接字串時，該值會在執行階段覆寫這個屬性。 |
-|**eventHubName** |**事件中心名稱** | 功能 2.x 及以上。 事件中樞的名稱。 當事件中樞名稱也呈現於連接字串時，該值會在執行階段覆寫這個屬性。 可通過應用設置引用 %事件HubName% |
-|**消費者群體** |**消費者群體** | 選擇性屬性，可設定用來訂閱中樞內事件的[取用者群組](../articles/event-hubs/event-hubs-features.md#event-consumers)。 如果省略，則會使用 `$Default` 取用者群組。 |
-|**基數** | n/a | 適用於 JavaScript。 設定為 `many` 才能啟用批次處理。  如果省略或設置為`one`，將傳遞單個消息到函數。 |
-|**連接** |**連接** | 應用程式設定的名稱，其中包含事件中樞命名空間的連接字串。 通過按一下[命名空間](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)（而不是事件中心本身）**的連接資訊**按鈕複製此連接字串。 此連接字串至少必須具備讀取權限，才能啟動觸發程序。|
+|**type** | n/a | 必須設為 `eventHubTrigger`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。|
+|**方向** | n/a | 必須設為 `in`。 當您在 Azure 入口網站中建立觸發程序時，會自動設定此屬性。 |
+|**name** | n/a | 代表函式程式碼中事件項目的變數名稱。 |
+|**path** |**EventHubName** | 僅限 Functions 1.x。 事件中樞的名稱。 當事件中樞名稱也呈現於連接字串時，該值會在執行階段覆寫這個屬性。 |
+|**eventHubName** |**EventHubName** | 函數2.x 和更新版本。 事件中樞的名稱。 當事件中樞名稱也呈現於連接字串時，該值會在執行階段覆寫這個屬性。 可以透過應用程式設定% eventHubName% 來參考 |
+|**consumerGroup** |**ConsumerGroup** | 選擇性屬性，可設定用來訂閱中樞內事件的[取用者群組](../articles/event-hubs/event-hubs-features.md#event-consumers)。 如果省略，則會使用 `$Default` 取用者群組。 |
+|**基數** | n/a | 適用于 JavaScript。 設定為 `many` 才能啟用批次處理。  如果省略或設為`one`，則會將單一訊息傳遞至函數。 |
+|**connection** |**建立** | 應用程式設定的名稱，其中包含事件中樞命名空間的連接字串。 按一下[命名空間](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)的 [**連接資訊**] 按鈕（而不是事件中樞本身），來複製此連接字串。 此連接字串至少必須具備讀取權限，才能啟動觸發程序。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
 ## <a name="event-metadata"></a>事件中繼資料
 
-事件中樞觸發程序提供數個[中繼資料屬性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 中繼資料屬性可用作其他綁定中的綁定運算式的一部分或代碼中的參數。 屬性來自[事件資料](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata)類。
+事件中樞觸發程序提供數個[中繼資料屬性](../articles/azure-functions/./functions-bindings-expressions-patterns.md)。 中繼資料屬性可作為其他系結中系結運算式的一部分，或當做程式碼中的參數使用。 屬性來自于[EventData](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventdata)類別。
 
-|屬性|類型|描述|
+|屬性|類型|說明|
 |--------|----|-----------|
 |`PartitionContext`|[PartitionContext](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.partitioncontext)|`PartitionContext` 執行個體。|
 |`EnqueuedTimeUtc`|`DateTime`|加入佇列的時間 (UTC)。|
@@ -376,8 +376,9 @@ Python 不支援屬性。
 
 請參閱稍早在本文中使用這些屬性的[程式碼範例](#example)。
 
-## <a name="hostjson-properties"></a>host.json 屬性
+## <a name="hostjson-properties"></a>host. json 屬性
+<a name="host-json"></a>
 
-[host.json](../articles/azure-functions/functions-host-json.md#eventhub) 檔案包含可控制事件中樞觸發程序行為的設定。
+[host.json](../articles/azure-functions/functions-host-json.md#eventhub) 檔案包含可控制事件中樞觸發程序行為的設定。 視 Azure Functions 版本而定，設定會有所不同。
 
 [!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

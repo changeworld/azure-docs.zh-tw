@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 中 Linux VM 上的策略強制實施安全性
+title: 在 Azure 中使用 Linux Vm 上的原則強制執行安全性
 description: 如何將原則套用至 Azure Resource Manager Linux 虛擬機器
 author: mimckitt
 ms.service: virtual-machines-linux
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
 ms.openlocfilehash: 6eb571ccc8c996a06d3bdf2dda25860df4dc930f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759374"
 ---
 # <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>使用 Azure Resource Manager 將原則套用至 Linux VM
