@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/13/2020
 ms.author: v-grpr
 ms.openlocfilehash: 526f0ae21ac0c49d8c5fd984b09b7a2252afb606
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82129348"
 ---
 # <a name="azure-stack-edge-and-azure-data-box-gateway-1911-release-notes"></a>Azure Stack Edge 和 Azure 資料箱 Gateway 1911 版本資訊
@@ -29,7 +29,7 @@ ms.locfileid: "82129348"
 > [!NOTE]
 > 更新1911只能套用至所有執行軟體或更新版本之公開上市（GA）版本的裝置。
 
-## <a name="whats-new"></a>新功能
+## <a name="whats-new"></a>新增功能
 
 1911版本中沒有任何新功能，只有 bug 修正。
 

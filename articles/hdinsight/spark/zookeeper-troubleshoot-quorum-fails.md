@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/20/2019
 ms.openlocfilehash: 41ac109e5c5379e6085dd57a3fcd8119915558fb
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133279"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper server 無法在 Azure HDInsight 中形成仲裁
@@ -38,7 +38,7 @@ java.nio.channels.CancelledKeyException
 
 當快照集檔案的數量很大或快照集檔案損毀時，ZooKeeper 伺服器將無法形成仲裁，這會導致 ZooKeeper 相關的服務狀況不良。 ZooKeeper 伺服器不會從其資料目錄中移除舊的快照集檔案，而是定期執行的工作，供使用者維護 ZooKeeper 的資料軌。 如需詳細資訊，請參閱[ZooKeeper 的優點與限制](https://zookeeper.apache.org/doc/r3.3.5/zookeeperAdmin.html#sc_strengthsAndLimitations)。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
 檢查 ZooKeeper 資料目錄`/hadoop/zookeeper/version-2` ， `/hadoop/hdinsight-zookeeper/version-2`並找出快照集檔案大小是否龐大。 如果有大型快照集，請採取下列步驟：
 

@@ -5,10 +5,10 @@ ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: 4089815f8f76d9868f8fa56f8b2eab3de89541d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128180"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>在 Resource Manager 部署中備份 Windows 系統狀態
@@ -46,7 +46,7 @@ ms.locfileid: "82128180"
 6. 在 [資源群組]**** 區段中︰
 
     * 如果您想建立新的資源群組，請選取 [新建]****。
-    Or
+    或者
     * 選取 [使用現有的]****﹐然後按一下下拉式功能表，以查看可用的資源群組清單。
 
    如需資源群組的完整資訊，請參閱 [Azure Resource Manager 概觀](../azure-resource-manager/management/overview.md)。

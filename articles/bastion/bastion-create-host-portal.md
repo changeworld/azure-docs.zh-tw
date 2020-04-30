@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: 1fa4b6a33b055f2042c9bf941a33ae03ead6ebde
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82148345"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>使用入口網站建立 Azure 防禦主機
@@ -20,7 +20,7 @@ ms.locfileid: "82148345"
 
 您可以在入口網站中建立新的防禦主機資源，方法是手動指定所有設定，或使用與現有 VM 對應的設定。 若要使用 VM 設定來建立防禦主機，請參閱[快速入門](quickstart-host-portal.md)文章。 （選擇性）您可以使用[Azure PowerShell](bastion-create-host-powershell.md)來建立 Azure 防禦主機。
 
-## <a name="before-you-begin"></a>在您開始前
+## <a name="before-you-begin"></a>開始之前
 
 防禦功能適用于下列 Azure 公用區域：
 

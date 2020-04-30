@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730112"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>排程多個裝置上的作業
@@ -69,7 +69,7 @@ Content-Type: application/json; charset=utf-8
 
 [IoT 中樞查詢語言](iot-hub-devguide-query-language.md)涵蓋了IoT 中樞查詢語言的其他詳細資料。
 
-以下代碼段顯示計劃呼叫 contoso-hub-1 上所有裝置上名為 testMethod 的直接方法的作業的請求和回應:
+下列程式碼片段顯示已排定在 contoso--1 上的所有裝置上呼叫名為 testMethod 之直接方法的作業要求和回應：
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job01?api-version=2018-06-30 HTTP/1.1
@@ -122,9 +122,9 @@ Content-Type: application/json; charset=utf-8
 ```
 
 > [!NOTE]
-> *updateTwin*屬性需要有效的 etag 匹配;例如, `etag="*"`.
+> *UpdateTwin*屬性需要有效的 etag 相符;例如， `etag="*"`。
 
-以下代碼段顯示計劃更新 contoso-hub-1 上測試設備的設備孿生屬性的作業的請求和回應:
+下列程式碼片段顯示排程在 contoso--1 上更新測試裝置之裝置對應項屬性的作業的要求和回應：
 
 ```
 PUT https://contoso-hub-1.azure-devices.net/jobs/v2/job02?api-version=2018-06-30 HTTP/1.1
@@ -180,13 +180,13 @@ ContinuationToken 會從回應來提供。
 
 | 屬性 | 描述 |
 | --- | --- |
-| **工作Id** |應用程式所提供的作業識別碼。 |
-| **開始時間** |應用程式所提供的作業開始時間 (ISO-8601)。 |
-| **結束時間** |IoT 中樞所提供的作業完成日期 (ISO-8601)。 在作業到達「已完成」狀態後才有效。 |
+| **jobId** |應用程式所提供的作業識別碼。 |
+| **時間** |應用程式所提供的作業開始時間 (ISO-8601)。 |
+| **endTime** |IoT 中樞所提供的作業完成日期 (ISO-8601)。 在作業到達「已完成」狀態後才有效。 |
 | **type** |作業類型： |
-| | **計劃更新孿生**:用於更新一組所需屬性或標記的作業。 |
-| | **計劃DeviceMethod:** 用於調用一組設備孿生上的設備方法的作業。 |
-| **狀態** |作業的目前狀態。 狀態的可能值︰ |
+| | **scheduleUpdateTwin**：用來更新一組所需屬性或標記的作業。 |
+| | **scheduleDeviceMethod**：用來在一組裝置 twins 上叫用裝置方法的作業。 |
+| **status** |作業的目前狀態。 狀態的可能值︰ |
 | | **pending**︰已排定並等候作業服務執行。 |
 | | **scheduled**︰已排定未來時間。 |
 | | **running**︰目前作用中的作業。 |
@@ -194,7 +194,7 @@ ContinuationToken 會從回應來提供。
 | | **failed**：作業失敗。 |
 | | **completed**作業完成。 |
 | **deviceJobStatistics** |作業執行的相關統計資料。 |
-| | **裝置作業統計資訊**屬性: |
+| | **deviceJobStatistics**屬性： |
 | | **deviceJobStatistics.deviceCount**：作業中的裝置數目。 |
 | | **deviceJobStatistics.failedCount**：作業失敗的裝置數目。 |
 | | **deviceJobStatistics.succeededCount**：作業成功的裝置數目。 |
@@ -205,7 +205,7 @@ ContinuationToken 會從回應來提供。
 
 IoT 中樞開發人員指南中的其他參考主題包括︰
 
-* [IoT 中心終結點](iot-hub-devguide-endpoints.md)描述每個 IoT 中心為運行時和管理操作公開的各種終結點。
+* [IoT 中樞端點](iot-hub-devguide-endpoints.md)說明每個 IoT 中樞針對執行時間和管理作業所公開的各種端點。
 
 * [節流和配額](iot-hub-devguide-quotas-throttling.md)說明適用於 IoT 中樞服務的配額，和使用服務時所預期的節流行為。
 

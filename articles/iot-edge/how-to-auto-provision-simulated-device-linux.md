@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 82bdc71a123a263fffd842a04f4837b34aaa8685
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82131073"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>在 Linux 虛擬機器上使用虛擬 TPM 建立及布建 IoT Edge 裝置
@@ -31,7 +31,7 @@ ms.locfileid: "82131073"
 >
 > 如果您使用實體裝置，您可以直接跳至本文中的[從實體裝置取出](#retrieve-provisioning-information-from-a-physical-device)布建資訊一節。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * [已啟用 Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) 的 Windows 開發機器。 本文使用執行 Ubuntu Server VM 的 Windows 10。
 * 使用中的 IoT 中樞。
@@ -123,7 +123,7 @@ ms.locfileid: "82131073"
 
 1. 使用 Visual Studio，開啟在`cmake`名為`azure_iot_sdks.sln`的目錄中產生的方案，然後使用 [**建立**] 功能表上的 [**建立方案**] 命令來建立解決方案。
 
-1. 在 Visual Studio 的 [方案總管]**** 窗格中，瀏覽至 **Provision\_Tools** 資料夾。 以滑鼠右鍵按一下 **tpm_device_provision** 專案，然後選取 [設為起始專案]****。
+1. 在 Visual Studio 的 [方案總管]**** 窗格中，瀏覽至 **Provision\_Tools** 資料夾。 以滑鼠右鍵按一下 **tpm_device_provision** 專案，然後選取 [設為起始專案]  。
 
 1. 使用 [**調試**] 功能表上的任一 [**啟動**] 命令來執行方案。 [輸出] 視窗會顯示 TPM 模擬器的**註冊識別碼**和**簽署金鑰**，當您在中建立裝置的個別註冊時，您可以將其複製以供稍後使用。您可以關閉此視窗（使用註冊識別碼和簽署金鑰），但讓 TPM 模擬器視窗保持執行狀態。
 

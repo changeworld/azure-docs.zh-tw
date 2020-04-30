@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5fe73770dbe8dfe6d69cb08e1fbf44d42bff9e54
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117364"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>使用 Azure CLI 管理 Batch 資源
@@ -141,7 +141,7 @@ az batch task list --job-id job001
 
 下表描述 Batch 服務所支援的 OData 子句︰
 
-| 子句 | 說明 |
+| 子句 | 描述 |
 |---|---|
 | `--select-clause [select-clause]` | 傳回每個實體的屬性子集。 |
 | `--filter-clause [filter-clause]` | 傳回符合指定之 OData 運算式的實體。 |

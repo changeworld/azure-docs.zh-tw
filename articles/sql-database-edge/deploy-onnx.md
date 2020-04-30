@@ -10,10 +10,10 @@ author: dphansen
 ms.author: davidph
 ms.date: 04/23/2020
 ms.openlocfilehash: aa2bf5473bf5bd76cfdad39310ce793ab3921652
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82129283"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-in-sql-database-edge-preview"></a>在 SQL Database Edge 預覽中使用 ONNX 模型部署和進行預測
@@ -22,7 +22,7 @@ ms.locfileid: "82129283"
 
 本快速入門是以**scikit-learn**為基礎，學習並使用[波士頓機架資料集](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_boston.html)。
 
-## <a name="before-you-begin"></a>在您開始前
+## <a name="before-you-begin"></a>開始之前
 
 * 如果您尚未部署 Azure SQL Database Edge 模組，請遵循[使用 Azure 入口網站部署 SQL Database Edge 預覽](deploy-portal.md)的步驟。
 

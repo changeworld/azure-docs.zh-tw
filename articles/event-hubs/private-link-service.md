@@ -8,10 +8,10 @@ ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
 ms.openlocfilehash: fb8fc93174345d0bdb09e4308a4206a65ed2270a
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82148210"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link-preview"></a>整合 Azure 事件中樞與 Azure 私人連結（預覽）
@@ -67,7 +67,7 @@ Azure 私用連結服務可讓您透過虛擬網路中的**私人端點**，存�
 5. 選取頁面頂端的 [**私人端點連接（預覽）** ] 索引標籤。 如果您不是使用專用層的事件中樞，您會看到訊息：**只有在專用叢集底下建立的命名空間才支援事件中樞上的私人端點**連線。
 6. 選取頁面頂端的 [ **+ 私用端點**] 按鈕。
 
-    ![映像](./media/private-link-service/private-link-service-3.png)
+    ![Image](./media/private-link-service/private-link-service-3.png)
 7. 在 [**基本**] 頁面上，依照下列步驟執行： 
     1. 選取您要在其中建立私人端點的**Azure 訂**用帳戶。 
     2. 選取私人端點資源的**資源群組**。
@@ -220,7 +220,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 2. 選取您想要核准的**私人端點**
 3. 選取 [**核准**] 按鈕。
 
-    ![映像](./media/private-link-service/approve-private-endpoint.png)
+    ![Image](./media/private-link-service/approve-private-endpoint.png)
 4. 在 [**核准連接**] 頁面上，新增批註（選擇性），然後選取 **[是]**。 如果您選取 [否]，則**不**會發生任何事。 
 5. 您應該會在清單中看到私人端點連接的狀態已變更為 [**已核准**]。 
 
@@ -228,7 +228,7 @@ foreach ($ipconfig in $networkInterface.properties.ipConfigurations) {
 
 1. 如果您想要拒絕任何私人端點連線，不論是擱置中的要求或現有的連線，請選取連接，然後按一下 [**拒絕**] 按鈕。
 
-    ![映像](./media/private-link-service/private-endpoint-reject-button.png)
+    ![Image](./media/private-link-service/private-endpoint-reject-button.png)
 2. 在 [**拒絕連接**] 頁面上，輸入批註（選擇性），然後選取 **[是]**。 如果您選取 [否]，則**不**會發生任何事。 
 3. 您應該會在清單中看到私人端點連接的狀態已變更為 [已**拒絕**]。 
 

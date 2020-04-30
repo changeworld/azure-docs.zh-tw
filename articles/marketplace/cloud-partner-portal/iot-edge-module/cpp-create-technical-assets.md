@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: 1a523872bb15981958eeb1678caa1d911a9cbbba
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142398"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>準備 IoT Edge 模組的技術資產
@@ -61,7 +61,7 @@ IoT Edge 模組是專門設計在 IoT Edge 裝置上執行的 Docker 相容容�
     <p><u>Minimum hardware requirements:</u> Linux x64 and arm32  OS, 1GB of RAM, 500 Mb of storage</p>
   ```
 
-### <a name="configuration"></a>組態
+### <a name="configuration"></a>設定
 
 也包含預設的組態設定，盡可能以簡單明瞭的方式來部署 IoT Edge 裝置。 容器還可以包含 IoT Edge 模組 SDK，以啟用與 edgeHub 和 IoT 中樞的通訊。
 

@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: c664d4859a306387b4eafa2f19ab5877ccf6eb1b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686949"
 ---
 # <a name="run-opc-publisher"></a>執行 OPC 發行者
@@ -372,7 +372,7 @@ OPC 發行者可以直接作為 [Azure IoT Edge](https://docs.microsoft.com/azur
 若要將 OPC 發行者作為模組加入您的 IoT Edge 部署，請移至您在 Azure 入口網站中的 IoT 中樞設定，並完成下列步驟：
 
 1. 移至 [IoT Edge]**** 並建立或選取您的 IoT Edge 裝置。
-1. 選擇**設定模組**。
+1. 選取 [**設定模組**]。
 1. 選取 [部署模組]**** 底下的 [新增]****，然後選取 [IoT Edge 模組]****。
 1. 在 [名稱]**** 欄位中，輸入 **publisher**。
 1. 在 [映像 URI]**** 欄位中，輸入 `mcr.microsoft.com/iotedge/opc-publisher:<tag>`
@@ -690,7 +690,7 @@ current working set in MB: 90
 
 若要對應用程式進行偵錯，請使用 Visual Studio 開啟 **opcpublisher.sln** 解決方案檔案，並使用 Visual Studio 偵錯工具。
 
-如果您需要在 OPC 發行者中存取 OPC UA 伺服器，請確定您的防火牆已允許存取伺服器所聆聽的連接埠。 默認埠為:62222。
+如果您需要在 OPC 發行者中存取 OPC UA 伺服器，請確定您的防火牆已允許存取伺服器所聆聽的連接埠。 預設通訊埠為：62222。
 
 ## <a name="control-the-application-remotely"></a>遠端控制應用程式
 
