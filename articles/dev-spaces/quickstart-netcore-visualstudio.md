@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5d0d1541600f4c10b021d5d7f7f435f1aa5ae589
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e6fa490285582c827b8704496fb7a20a7eb9cfbc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80239711"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82166014"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>快速入門：在 Kubernetes 上偵錯和逐一查看：Visual Studio 和 .NET Core - Azure Dev Spaces
 
@@ -89,12 +89,12 @@ Built container image in 39s
 Waiting for container...
 36s
 
-Service 'webfrontend' port 'http' is available at http://default.webfrontend.1234567890abcdef1234.eus.azds.io/
+Service 'webfrontend' port 'http' is available at `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/`
 Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-在上述範例中，公用 URL 是 http://default.webfrontend.1234567890abcdef1234.eus.azds.io/ 。 
+在上述範例中，公用 URL 是 `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/` 。 
 
 選取 [偵錯]  ，然後**開始偵錯**。 幾秒鐘之後，您的服務就會啟動，而 Visual Studio 將會以服務的公用 URL 開啟瀏覽器。 如果瀏覽器未自動開啟，請在瀏覽器中流覽至您服務的公用 URL，並與在開發人員空間中執行的服務互動。
 

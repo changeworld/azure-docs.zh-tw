@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 5219af0ec343a6e7f87a07e4a7280ac5f4e85cd3
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 920d3d6c1cfc928efa5daa2d6c0aa3a6b4e81375
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619118"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82161120"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -28,7 +28,7 @@ ms.locfileid: "80619118"
 - Azure 儲存體帳戶。 [建立儲存體帳戶](../common/storage-account-create.md)。
 - 本機 Web 伺服器。 本文使用 [Node.js](https://nodejs.org) 來開啟基本伺服器。
 - [Visual Studio Code](https://code.visualstudio.com) \(英文\)。
-- 用於瀏覽器偵錯的 VS Code 延伸模組，例如 [Chrome 偵錯工具](vscode:extension/msjsdiag.debugger-for-chrome)或 [Microsoft Edge 偵錯工具](vscode:extension/msjsdiag.debugger-for-edge)。
+- 用於瀏覽器偵錯的 VS Code 延伸模組，例如 [Chrome 偵錯工具](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)或 [Microsoft Edge 偵錯工具](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-edge)。
 
 ## <a name="setting-up-storage-account-cors-rules"></a>設定儲存體帳戶 CORS 規則
 
@@ -94,7 +94,7 @@ az storage account generate-sas \
 
 ## <a name="implement-the-html-page"></a>實作 HTML 網頁
 
-在本節中，您會建立基本網頁，以及設定 VS Code 來啟動頁面並進行偵錯。 但是，啟動之前，您必須在瀏覽器有要求時，使用 Node.js 來啟動本機 Web 伺服器並提供頁面。 接下來，您會新增 JavaScript 程式碼來呼叫各種 Blob 儲存體 API，並在網頁中顯示結果。 您也可以在 [Azure 入口網站](https://portal.azure.com)、[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer)和 VS Code 的 [Azure 儲存體擴充功能](vscode:extension/ms-azuretools.vscode-azurestorage)中查看這些呼叫的結果。
+在本節中，您會建立基本網頁，以及設定 VS Code 來啟動頁面並進行偵錯。 但是，啟動之前，您必須在瀏覽器有要求時，使用 Node.js 來啟動本機 Web 伺服器並提供頁面。 接下來，您會新增 JavaScript 程式碼來呼叫各種 Blob 儲存體 API，並在網頁中顯示結果。 您也可以在 [Azure 入口網站](https://portal.azure.com)、[Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer)和 VS Code 的 [Azure 儲存體擴充功能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)中查看這些呼叫的結果。
 
 ### <a name="set-up-the-web-application"></a>設定 Web 應用程式
 

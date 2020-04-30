@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 29f5a48feaaafee64a20745b3cdf09726a6372ac
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 4b9dac92f0cff213622f0087b281814251f06ffd
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81533832"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181608"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>將「登入到 Microsoft」新增至 ASP.NET Web 應用程式
 
@@ -70,10 +70,8 @@ ms.locfileid: "81533832"
     Install-Package Microsoft.Owin.Host.SystemWeb
     ```
 
-<!--start-collapse-->
-> ### <a name="about-these-libraries"></a>關於這些程式庫
-> 這些程式庫可透過 Cookie 型驗證，使用 OpenID Connect 啟用單一登入 (SSO)。 完成驗證並將代表使用者的權杖傳送至您的應用程式之後，OWIN 中介軟體就會建立工作階段 Cookie。 接著瀏覽器會在後續要求中使用此 Cookie，因此使用者不需要重新輸入密碼，也不需要進行其他驗證。
-<!--end-collapse-->
+### <a name="about-these-libraries"></a>關於這些程式庫
+這些程式庫可透過 Cookie 型驗證，使用 OpenID Connect 啟用單一登入 (SSO)。 完成驗證並將代表使用者的權杖傳送至您的應用程式之後，OWIN 中介軟體就會建立工作階段 Cookie。 接著瀏覽器會在後續要求中使用此 Cookie，因此使用者不需要重新輸入密碼，也不需要進行其他驗證。
 
 ## <a name="configure-the-authentication-pipeline"></a>設定驗證管線
 
@@ -171,10 +169,9 @@ ms.locfileid: "81533832"
 > 設定 `ValidateIssuer = false` 可簡化此快速入門。 在實際的應用程式中，您需要驗證簽發者。
 > 請參閱範例以了解如何執行該動作。
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>詳細資訊
-> 您在 *OpenIDConnectAuthenticationOptions* 中提供的參數會作為應用程式與 Microsoft 身分識別平台進行通訊的座標。 因為 OpenID Connect 中介軟體會在背景中使用 Cookie，所以您也必須設定在上述程式碼顯示時進行 Cookie 驗證。 ValidateIssuer  值會告知 OpenIdConnect 不要針對某一特定組織限制存取。
-<!--end-collapse-->
+### <a name="more-information"></a>詳細資訊
+
+您在 *OpenIDConnectAuthenticationOptions* 中提供的參數會作為應用程式與 Microsoft 身分識別平台進行通訊的座標。 因為 OpenID Connect 中介軟體會在背景中使用 Cookie，所以您也必須設定在上述程式碼顯示時進行 Cookie 驗證。 ValidateIssuer  值會告知 OpenIdConnect 不要針對某一特定組織限制存取。
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>新增控制器以處理登入和登出要求
 
@@ -266,10 +263,8 @@ ms.locfileid: "81533832"
     </html>
     ```
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>詳細資訊
-> 此頁面會以 SVG 格式新增一個具有黑色背景的登入按鈕：<br/>![使用 Microsoft 登入](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 如需了解更多登入按鈕，請前往[商標指導方針](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "商標方針")。
-<!--end-collapse-->
+### <a name="more-information"></a>詳細資訊
+此頁面會以 SVG 格式新增一個具有黑色背景的登入按鈕：<br/>![使用 Microsoft 登入](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 如需了解更多登入按鈕，請前往[商標指導方針](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "商標方針")。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>新增控制器來顯示使用者的宣告
 此控制器示範如何使用 `[Authorize]` 屬性來保護控制器。 此屬性會設定限制，只允許經過驗證的使用者存取控制器。 下列程式碼會利用屬性來顯示在登入過程中擷取的使用者宣告：
@@ -309,10 +304,8 @@ ms.locfileid: "81533832"
     }
     ```
 
-<!--start-collapse-->
-> ### <a name="more-information"></a>詳細資訊
-> 因為使用了 `[Authorize]` 屬性，所以此控制器的所有方法都只能在使用者已通過驗證的情況下才能執行。 如果使用者未通過驗證而嘗試存取控制器，OWIN 就會起始驗證挑戰並強制使用者進行驗證。 前述程式碼會查看宣告清單，尋找使用者識別碼權杖中所包含的特定使用者屬性。 這些屬性包括使用者的完整名稱和使用者名稱，以及全域使用者識別元主體。 它也包含「租用戶識別碼」  ，這代表使用者所屬組織的識別碼。
-<!--end-collapse-->
+### <a name="more-information"></a>詳細資訊
+因為使用了 `[Authorize]` 屬性，所以此控制器的所有方法都只能在使用者已通過驗證的情況下才能執行。 如果使用者未通過驗證而嘗試存取控制器，OWIN 就會起始驗證挑戰並強制使用者進行驗證。 前述程式碼會查看宣告清單，尋找使用者識別碼權杖中所包含的特定使用者屬性。 這些屬性包括使用者的完整名稱和使用者名稱，以及全域使用者識別元主體。 它也包含「租用戶識別碼」  ，這代表使用者所屬組織的識別碼。
 
 ## <a name="create-a-view-to-display-the-users-claims"></a>建立檢視來顯示使用者的宣告
 
@@ -403,16 +396,16 @@ ms.locfileid: "81533832"
 <br/><br/>
 ![登入您的 Microsoft 帳戶](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-<!--start-collapse-->
-> ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
->  與 Microsoft 身分識別平台整合的應用程式，會遵循可讓使用者和系統管理員控制資料存取方式的授權模型。 使用者向 Microsoft 身分識別平台進行驗證以存取此應用程式之後，系統會提示他們同意應用程式所要求的權限 (「檢視您的基本設定檔」和「持續存取您允許存取的資料」)。 接受這些權限之後，使用者會繼續處理應用程式的結果。 不過，如果發生下列其中一種情況，使用者可能會看到**需要管理員同意**的頁面：
->  > - 應用程式開發人員新增任何其他需要**管理員同意**的權限。
->  > - 或租用戶經過設定 (在 [企業應用程式] -> [使用者設定]  中)，使得使用者無法自行同意應用程式存取公司資料。
->
-> 如需詳細資訊，請參閱 [Microsoft 身分識別平台端點中的權限和同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)。
-<!--end-collapse-->
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft 身分識別平台端點中的權限和同意
 
-#### <a name="view-application-results"></a>檢視應用程式結果
+與 Microsoft 身分識別平台整合的應用程式，會遵循可讓使用者和系統管理員控制資料存取方式的授權模型。 使用者向 Microsoft 身分識別平台進行驗證以存取此應用程式之後，系統會提示他們同意應用程式所要求的權限 (「檢視您的基本設定檔」和「持續存取您允許存取的資料」)。 接受這些權限之後，使用者會繼續處理應用程式的結果。 不過，如果發生下列其中一種情況，使用者可能會看到**需要管理員同意**的頁面：
+
+- 應用程式開發人員新增任何其他需要**管理員同意**的權限。
+- 或租用戶經過設定 (在 [企業應用程式] -> [使用者設定]  中)，使得使用者無法自行同意應用程式存取公司資料。
+
+如需詳細資訊，請參閱 [Microsoft 身分識別平台端點中的權限和同意](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)。
+
+### <a name="view-application-results"></a>檢視應用程式結果
 
 登入之後，系統會將使用者重新導向至您網站的首頁。 首頁就是您在 Microsoft 應用程式註冊入口網站的應用程式註冊資訊中指定的 HTTPS URL。 首頁包含歡迎訊息「\<使用者>，您好」  、登出連結，以及用來檢視使用者宣告的連結。 使用者宣告的連結會連接至您稍早建立的「宣告」控制器。
 
@@ -446,14 +439,13 @@ ms.locfileid: "81533832"
 
 ## <a name="advanced-options"></a>進階選項
 
-<!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>保護您的整個網站
+
 若要保護整個網站，請在 **Global.asax** 檔案中，將 `AuthorizeAttribute` 屬性新增至 `Application_Start` 方法中的 `GlobalFilters` 篩選：
 
 ```csharp
 GlobalFilters.Filters.Add(new AuthorizeAttribute());
 ```
-<!--end-collapse-->
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>限制誰可以登入您的應用程式
 

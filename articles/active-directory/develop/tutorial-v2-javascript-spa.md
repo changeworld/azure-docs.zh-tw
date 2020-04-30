@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 52b7c582848dd24f6d9963a9d37c8f12c5db6149
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 6f0253490d39e69d491dd5fd3ab0d0d0a32d47bb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678017"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181557"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>登入使用者並從 JavaScript 單頁應用程式 (SPA) 呼叫 Microsoft 圖形 API
 
@@ -32,14 +32,10 @@ ms.locfileid: "81678017"
 
 ![示範本教學課程所產生的應用程式範例如何運作](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-<!--start-collapse-->
 ### <a name="more-information"></a>詳細資訊
 
 此指南建立的範例應用程式可讓 JavaScript SPA 查詢 Microsoft Graph API，或查詢可接受來自 Microsoft 身分識別平台端點之權杖的 Web API。 在此案例中，當使用者登入之後，系統會透過授權標頭要求一個存取權杖，並將其新增到 HTTP 要求。 系統會使用此權杖以透過 **MS 圖形 API** 來取得使用者的設定檔和郵件。 權杖取得和更新作業是由**適用於 JavaScript 的 Microsoft Authentication Library (MSAL)** 負責處理的。
 
-<!--end-collapse-->
-
-<!--start-collapse-->
 ### <a name="libraries"></a>程式庫
 
 本指南使用下列程式庫：
@@ -47,8 +43,6 @@ ms.locfileid: "81678017"
 |程式庫|描述|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|適用於 JavaScript 的 Microsoft Authentication Library|
-
-<!--end-collapse-->
 
 ## <a name="set-up-your-web-server-or-project"></a>設定您的網頁伺服器或專案
 
@@ -400,7 +394,6 @@ ms.locfileid: "81678017"
    }
    ```
 
-<!--start-collapse-->
 ### <a name="more-information"></a>詳細資訊
 
 在使用者第一次選取 [登入]  按鈕之後，`signIn` 方法會呼叫 `loginPopup` 以將使用者登入。 這個方法會開啟「Microsoft 身分識別平台端點」  的快顯視窗，以提示及驗證使用者的認證。 成功登入之後，使用者會重新導回到原本的 index.html  頁面。 系統會收到權杖 (由 `msal.js` 進行處理)，並快取權杖中包含的資訊。 此權杖也稱為「ID 權杖」  且包含使用者的基本資訊，例如使用者顯示名稱。 如果您打算將此權杖所提供的任何資料用於任何目的，您必須確定後端伺服器已驗證此權杖，以保證權杖是發給您應用程式的有效使用者。
@@ -427,7 +420,6 @@ ms.locfileid: "81678017"
 
 > [!NOTE]
 > 本快速入門預設會使用 `loginPopup` 和 `acquireTokenPopup` 方法。 如果您使用 Internet Explorer 作為瀏覽器，建議您使用 `loginRedirect` 和 `acquireTokenRedirect` 方法，這是因為有與 Internet Explorer 處理快顯視窗的方式相關的[已知問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)。 如果您想要了解如何使用 `Redirect methods` 來達到相同結果，請[參閱](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js)。
-<!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-acquired"></a>使用您剛剛取得的權杖呼叫 Microsoft Graph API
 
@@ -466,13 +458,9 @@ ms.locfileid: "81678017"
    }
    ```
 
-<!--start-collapse-->
-
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>針對受保護 API 進行 REST 呼叫的相關詳細資訊
 
 在使用此指南建立的範例應用程式中，使用 `callMSGraph()` 方法對需要權杖的受保護資源提出 HTTP `GET` 要求。 然後，該要求會將內容傳回給呼叫端。 此方法會在「HTTP 授權標頭」  中加入取得的權杖。 對於本指南建立的範例應用程式，資源為 Microsoft Graph API 的 me  端點，其會顯示使用者的設定檔資訊。
-
-<!--end-collapse-->
 
 ## <a name="test-your-code"></a>測試您的程式碼
 
@@ -502,7 +490,6 @@ ms.locfileid: "81678017"
 
 ![Microsoft Graph API 呼叫的結果](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
 
-<!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>與範圍和委派的權限有關的詳細資訊
 
 Microsoft Graph API 需要 user.read  範圍才能讀取使用者的設定檔。 根據預設，在註冊入口網站上註冊的每個應用程式中，都會自動新增此範圍。 Microsoft Graph 的其他 API 與您後端伺服器的自訂 API 一樣，需要其他範圍。 例如，Microsoft Graph API 需要 Mail.Read  範圍才能列出使用者的郵件。
@@ -511,7 +498,5 @@ Microsoft Graph API 需要 user.read  範圍才能讀取使用者的設定檔。
 > 系統可能會在您增加範圍數目時，提示使用者同意其他事項。
 
 如果後端 API 不需要範圍 (不建議)，您可以在呼叫中使用 clientId  作為範圍以取得權杖。
-
-<!--end-collapse-->
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

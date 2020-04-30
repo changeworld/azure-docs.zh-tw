@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c3c12f78118734c31641b90e6fcb8469ddda30b0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81678015"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181591"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>教學課程：讓使用者登入並從 Angular 單頁應用程式呼叫 Microsoft Graph API
 
@@ -36,16 +36,12 @@ ms.locfileid: "81678015"
 
 ![此圖顯示本教學課程中的範例應用程式如何產生](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-<!--start-collapse-->
 ### <a name="more-information"></a>詳細資訊
 
 此教學課程中建立的範例應用程式可讓 Angular SPA 查詢 Microsoft Graph API，或查詢可接受來自 Microsoft 身分識別平台端點之權杖的 Web API。 Angular 程式庫的 MSAL 是核心 MSAL.js 程式庫的包裝函式。 其可讓 Angular (6+) 應用程式使用 Microsoft Azure Active Directory (AAD)、Microsoft 帳戶使用者和社交身分識別使用者 (例如 Facebook、Google、LinkedIn 等等) 來驗證企業使用者， 程式庫也可啟用應用程式，並取得 Microsoft 雲端服務或 Microsoft Graph 的存取權。
 
 在此案例中，當使用者登入之後，系統會透過授權標頭要求一個存取權杖，並將其新增到 HTTP 要求。 MSAL 會處理權杖取得和續約事項。
 
-<!--end-collapse-->
-
-<!--start-collapse-->
 ### <a name="libraries"></a>程式庫
 
 本教學課程會使用下列程式庫：
@@ -55,9 +51,6 @@ ms.locfileid: "81678015"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|適用於 Angular 包裝函式的 Microsoft Authentication Library|
 
 您可以在 GitHub 上的 [AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) 存放庫中找到適用於 MSAL.js 程式庫的原始程式碼。
-
-<!--end-collapse-->
-
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -335,10 +328,7 @@ logout() {
 
 ![[要求的權限] 視窗](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
-
-
-<!--start-collapse-->
-### <a name="add-scopes-and-delegated-permissions"></a>新增範圍與委派的權限
+## <a name="add-scopes-and-delegated-permissions"></a>新增範圍與委派的權限
 
 Microsoft Graph API 需要 user.read  範圍才能讀取使用者的設定檔。 根據預設，在註冊入口網站上註冊的每個應用程式中，都會自動新增此範圍。 Microsoft Graph 的其他 API 與您後端伺服器的自訂 API 一樣，需要其他範圍。 例如，Microsoft Graph API 需要 Calendars.Read  範圍才能列出使用者的行事曆。
 
@@ -348,8 +338,6 @@ Microsoft Graph API 需要 user.read  範圍才能讀取使用者的設定檔。
 >系統可能會在您增加範圍數目時，提示使用者同意其他事項。
 
 如果後端 API 不需要範圍 (不建議)，您可以在呼叫中使用 clientId  作為範圍以取得權杖。
-
-<!--end-collapse-->
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

@@ -10,14 +10,8 @@
   items:
     - name: 在 Web 上試用 Content Moderator
       href: quick-start.md
-    - name: 使用用戶端 SDK
-      items:
-        - name: 使用 .NET SDK
-          href: dotnet-sdk-quickstart.md
-        - name: 使用 Python SDK
-          href: python-sdk-quickstart.md
-        - name: 使用 Java SDK
-          href: java-sdk-quickstart.md
+    - name: 使用用戶端程式庫
+      href: client-libraries.md
 - name: 教學課程
   items:
     - name: 中度的電子商務映像
@@ -126,7 +120,7 @@
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
     - name: 語言支援
       href: language-support.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: 區域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
