@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: dc11d26c73c52b5e6c4d8e05cc27dd6ebce0c5d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb3db23189cbfd07362b1bd5be9aaa181064a2d6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399828"
+ms.locfileid: "82583216"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>使用語音合成標記語言（SSML）改善合成
 
@@ -274,7 +274,7 @@ speechConfig!.setPropertyTo(
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
+    <voice name="en-US-AriaNeural">
         Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
     </voice>
 </speak>
@@ -469,7 +469,7 @@ Could you help leave a message to Robert Benigni for me?
 | 屬性 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `pitch` | 表示文字的基準間距。 您可以用下列方式表達音調：<ul><li>絕對值，以數位表示，後面接著 "Hz" （赫茲）。 例如，600 Hz。</li><li>以數位表示的相對值，前面加上 "+" 或 "-"，後面接著 "Hz" 或 "st"，以指定要變更音調的數量。 例如： + 80 Hz 或-2st。 "St" 表示變更單位是 semitone，這是標準 diatonic 尺規上的一半色調（半步驟）。</li><li>常數值：<ul><li>x-低</li><li>low</li><li>中</li><li>high</li><li>x-高</li><li>default</li></ul></li></ul>. | 選擇性 |
-| `contour` | 類神經語音不支援等高線。 等高線代表音調中的變更。 這些變更會在語音輸出中的指定時間位置以目標陣列表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要增加或減少音調的數量，使用相對值或用於音調的列舉值（請參閱`pitch`）。 | 選擇性 |
+| `contour` |等高線現在支援類神經和標準語音。 等高線代表音調中的變更。 這些變更會在語音輸出中的指定時間位置以目標陣列表示。 每個目標都是由一組參數配對所定義。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每一組參數中的第一個值會指定音調變更的位置，以文字持續時間的百分比表示。 第二個值指定要增加或減少音調的數量，使用相對值或用於音調的列舉值（請參閱`pitch`）。 | 選擇性 |
 | `range` | 值，表示文字的音調範圍。 您可以使用`range`相同的絕對值、相對值或用來描述`pitch`的列舉值來表示。 | 選擇性 |
 | `rate` | 表示文字的說話速率。 您可以表達`rate`如下：<ul><li>相對值，以做為預設值之乘數的數位來表示。 例如，值*1*會導致速率不會變更。 *0.5*的值會產生速率的減半。 值為*3*會產生速率的增加三倍。</li><li>常數值：<ul><li>x-慢</li><li>slow</li><li>中</li><li>快速</li><li>x-快速</li><li>default</li></ul></li></ul> | 選擇性 |
 | `duration` | 語音合成（TTS）服務讀取文字（以秒或毫秒為單位）時所經過的時間長度。 例如，2*秒*或*1800ms*。 | 選擇性 |
@@ -477,13 +477,13 @@ Could you help leave a message to Robert Benigni for me?
 
 ### <a name="change-speaking-rate"></a>改變說話速度
 
-說話速率可以在單字或句子層級套用至標準語音。 而說話的速率只能套用至句子層級的類神經語音。
+說話率可以套用至單字或句子層級的類神經語音和標準語音。 
 
 **範例**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Guy24kRUS">
+    <voice name="en-US-GuyNeural">
         <prosody rate="+30.00%">
             Welcome to Microsoft Cognitive Services Text-to-Speech API.
         </prosody>
@@ -524,15 +524,15 @@ Could you help leave a message to Robert Benigni for me?
 ### <a name="change-pitch-contour"></a>變更音高結構
 
 > [!IMPORTANT]
-> 類神經語音不支援音調輪廓變更。
+> 類神經語音現在支援音調輪廓變更。
 
 **範例**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-AriaRUS">
-        <prosody contour="(80%,+20%) (90%,+30%)" >
-            Good morning.
+    <voice name="en-US-AriaNeural">
+        <prosody contour="(60%,-60%) (100%,+80%)" >
+            Were you the only person in the room? 
         </prosody>
     </voice>
 </speak>

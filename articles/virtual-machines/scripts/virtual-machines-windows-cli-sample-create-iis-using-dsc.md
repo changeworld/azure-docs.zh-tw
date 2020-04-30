@@ -16,10 +16,10 @@ ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
 ms.openlocfilehash: ac0c895f471a6d201c51e2c75ba938dc3b15c3a8
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81459550"
 ---
 # <a name="create-a-vm-with-iis-using-dsc"></a>使用 DSC 建立具有 IIS 的 VM

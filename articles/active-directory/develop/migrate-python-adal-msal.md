@@ -15,10 +15,10 @@ ms.author: rayluo
 ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
 ms.openlocfilehash: a3f95383979fd47b3baaec946f724533461729b8
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128052"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>適用于 Python 的 MSAL 遷移指南的 ADAL
@@ -59,17 +59,17 @@ ADAL Python 會取得資源的權杖，但 MSAL Python 會取得範圍的權杖�
 | 適用于 Python API 的 ADAL  | 適用于 Python API 的 MSAL |
 | ------------------- | ---------------------------------- |
 | [AuthenticationCoNtext](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext)  | [PublicClientApplication 或 ConfidentialClientApplication](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.__init__)  |
-| 不適用  | [get_authorization_request_url （）](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.get_authorization_request_url)  |
+| N/A  | [get_authorization_request_url （）](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.get_authorization_request_url)  |
 | [acquire_token_with_authorization_code （）](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_authorization_code) | [acquire_token_by_authorization_code （）](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_by_authorization_code) |
 | [acquire_token （）](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token) | [acquire_token_silent （）](https://msal-python.readthedocs.io/en/latest/#msal.ClientApplication.acquire_token_silent) |
-| [acquire_token_with_refresh_token （）](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_refresh_token) | 不適用 |
+| [acquire_token_with_refresh_token （）](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_refresh_token) | N/A |
 | [acquire_user_code （）](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_user_code) | [initiate_device_flow （）](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.initiate_device_flow) |
 | [acquire_token_with_device_code （）](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_device_code)和[cancel_request_to_get_token_with_device_code （）](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.cancel_request_to_get_token_with_device_code) | [acquire_token_by_device_flow （）](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_device_flow) |
 | [acquire_token_with_username_password （）](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_username_password) | [acquire_token_by_username_password （）](https://msal-python.readthedocs.io/en/latest/#msal.PublicClientApplication.acquire_token_by_username_password) |
 | [acquire_token_with_client_credentials （）](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_credentials)和[acquire_token_with_client_certificate （）](https://adal-python.readthedocs.io/en/latest/#adal.AuthenticationContext.acquire_token_with_client_certificate) | [acquire_token_for_client （）](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client) |
-| 不適用 | [acquire_token_on_behalf_of （）](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) |
+| N/A | [acquire_token_on_behalf_of （）](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) |
 | [TokenCache （）](https://adal-python.readthedocs.io/en/latest/#adal.TokenCache) | [SerializableTokenCache()](https://msal-python.readthedocs.io/en/latest/#msal.SerializableTokenCache) |
-| 不適用 | 具有持續性的快取，可從[MSAL 擴充](https://github.com/marstr/original-microsoft-authentication-extensions-for-python)功能取得 |
+| N/A | 具有持續性的快取，可從[MSAL 擴充](https://github.com/marstr/original-microsoft-authentication-extensions-for-python)功能取得 |
 
 ## <a name="migrate-existing-refresh-tokens-for-msal-python"></a>遷移 MSAL Python 的現有重新整理權杖
 

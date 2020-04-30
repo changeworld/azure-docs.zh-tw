@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: f4de4c25cea251ea0db72bcb435ceb63eb308ff0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81409219"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>使用 PowerShell 以累加方式將資料從 Azure SQL 資料庫載入到 Azure Blob 儲存體

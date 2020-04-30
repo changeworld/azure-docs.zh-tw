@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
 ms.openlocfilehash: df29ecf0a4ddb30aea1c1ab9ceed44a93fc61eb8
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81400085"
 ---
 在本快速入門中，您將了解如何使用適用於 Windows 的語音裝置 SDK 建置具備語音功能的產品，或使用它作為[交談轉譯](../conversation-transcription-service.md)裝置。 針對對話轉譯，只支援 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)。 針對其他語音，支援使用提供麥克風陣列幾何的線性麥克風陣列。

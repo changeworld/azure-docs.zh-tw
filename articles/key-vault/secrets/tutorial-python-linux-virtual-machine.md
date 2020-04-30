@@ -11,10 +11,10 @@ ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
 ms.openlocfilehash: df089f0338a177c08f4d9e88d55b501fd12f88f2
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81426357"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>教學課程：使用 Linux VM 和 Python 應用程式將這些秘密儲存在 Azure Key Vault 中

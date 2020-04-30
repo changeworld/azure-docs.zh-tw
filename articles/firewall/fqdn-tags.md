@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 04/24/2020
 ms.author: victorh
-ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4fcadb6d930f7863c733dad105432a64127b59b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74169043"
+ms.locfileid: "82232644"
 ---
 # <a name="fqdn-tags-overview"></a>FQDN 標籤概觀
 
@@ -36,6 +36,7 @@ FQDN 標籤代表一群與知名 Microsoft 服務相關聯的完整網域名稱 
 |App Service Environment (ASE)|允許對 ASE 平台流量進行輸出存取。 此標籤未涵蓋客戶專屬的儲存體和 ASE 所建立的 SQL 端點。 這些項目應該透過[服務端點](../virtual-network/tutorial-restrict-network-access-to-resources.md)來啟用，或以手動方式新增。<br><br>如需將 Azure 防火牆與 ASE 整合的詳細資訊，請參閱[鎖定 App Service 環境](../app-service/environment/firewall-integration.md#configuring-azure-firewall-with-your-ase)。|
 |Azure 備份|允許對 Azure 備份服務進行輸出存取。|
 |Azure HDInsight|允許 HDInsight 平臺流量的輸出存取。 此標記不會涵蓋來自 HDInsight 的客戶專屬儲存體或 SQL 流量。 使用[服務端點](../virtual-network/tutorial-restrict-network-access-to-resources.md)或手動新增它們來啟用這些專案。|
+|WindowsVirtualDesktop (WVD)|允許輸出 Windows 虛擬桌面平臺流量。 此標記不涵蓋部署特定的儲存體，以及 WVD 所建立服務匯流排端點。 此外，也需要 DNS 和 KMS 網路規則。 如需整合 Azure 防火牆與 WVD 的詳細資訊，請參閱[使用 Azure 防火牆來保護 Windows 虛擬桌面部署](protect-windows-virtual-desktop.md)。 
 
 > [!NOTE]
 > 選取應用程式規則中的 FQDN 標籤時，[通訊協定:連接埠] 欄位必須設定為 [https]****。

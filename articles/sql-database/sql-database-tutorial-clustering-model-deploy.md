@@ -15,10 +15,10 @@ manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: ef478246108d40a0c97d7dab03ecf1e5b474410b
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81452888"
 ---
 # <a name="tutorial-deploy-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>教學課程：使用 Azure SQL Database 機器學習服務 (預覽) 在 R 中部署群集模型

@@ -4,14 +4,14 @@ description: 瞭解如何在 Azure Cosmos DB 中設定和變更自動編制索�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: 930f156ebec76be860e7af02d41540ce67982f92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f010ec46c41c2302cc9c99a631fd18b1af9661eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80292079"
+ms.locfileid: "82232065"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引編製原則
 
@@ -97,6 +97,26 @@ Azure Cosmos DB 支援兩種編制索引模式：
 
 如需包含和排除路徑的索引編制原則範例，請參閱[這一節](how-to-manage-indexing-policy.md#indexing-policy-examples)。
 
+## <a name="includeexclude-precedence"></a>包含/排除優先順序
+
+如果包含的路徑和排除的路徑發生衝突，則會優先使用更精確的路徑。
+
+範例如下：
+
+**包含的路徑**：`/food/ingredients/nutrition/*`
+
+**排除的路徑**：`/food/ingredients/*`
+
+在此情況下，包含的路徑會優先于排除的路徑，因為它比較精確。 根據這些路徑， `food/ingredients`路徑中或內建的任何資料都會從索引中排除。 例外狀況會是包含的路徑內的資料`/food/ingredients/nutrition/*`：，這會編制索引。
+
+以下是 Azure Cosmos DB 中包含和排除路徑優先順序的一些規則：
+
+- 更深層的路徑比較窄的路徑更精確。 例如： `/a/b/?`比`/a/?`更精確。
+
+- `/?`比`/*`更精確。 `/a/?`例如，比`/a/*`起優先`/a/?`使用更精確。
+
+- 路徑`/*`必須是包含的路徑或排除的路徑。
+
 ## <a name="spatial-indexes"></a>空間索引
 
 當您在索引編制原則中定義空間路徑時，您應該定義應該```type```將哪一個索引套用至該路徑。 空間索引的可能類型包括：
@@ -114,6 +134,8 @@ Azure Cosmos DB 預設不會建立任何空間索引。 如果您想要使用空
 ## <a name="composite-indexes"></a>複合索引
 
 具有具有二或`ORDER BY`多個屬性之子句的查詢，需要複合索引。 您也可以定義複合索引，以改善許多相等和範圍查詢的效能。 根據預設，不會定義任何複合索引，因此您應該視需要[加入複合索引](how-to-manage-indexing-policy.md#composite-indexing-policy-examples)。
+
+不同于包含或排除的路徑，您無法使用`/*`萬用字元建立路徑。 每個複合路徑在您`/?`不需要指定的路徑結尾都有隱含的。 複合路徑會導致純量值，這是包含在複合索引中的唯一值。
 
 定義複合索引時，您可以指定：
 

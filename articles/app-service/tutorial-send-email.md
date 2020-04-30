@@ -4,12 +4,12 @@ description: 了解如何從您的 App Service 應用程式叫用商務流程。
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
-ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: a8b94d626916b00d75eea3fea0567fa33df3382c
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81604842"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562299"
 ---
 # <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>教學課程：傳送電子郵件並從 App Service 叫用其他商務流程
 
@@ -26,27 +26,27 @@ ms.locfileid: "81604842"
 
 將採用您所選語言架構的應用程式部署至 App Service。 若要遵循教學課程來部署範例應用程式，請參閱以下內容：
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 [教學課程：在 Azure 中搭配 SQL Database 來建置 ASP.NET 應用程式](app-service-web-tutorial-dotnet-sqldatabase.md)
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 [教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](app-service-web-tutorial-dotnetcore-sqldb.md)
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 [教學課程：在 Azure 中建置 Node.js 和 MongoDB 應用程式](app-service-web-tutorial-nodejs-mongodb-app.md)
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 [教學課程：在 Azure 中建置 PHP 和 MySQL 應用程式](app-service-web-tutorial-php-mysql.md)
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 [教學課程：在 Azure App Service 中透過 PostgreSQL 執行 Python (Django) Web 應用程式](containers/tutorial-python-postgresql-app.md)
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 [在 Linux 上的 Azure App Service 中建置 Ruby 和 Postgres 應用程式](containers/tutorial-ruby-postgres-app.md)
 
@@ -150,7 +150,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 按一下底下慣用的語言/架構索引標籤，以查看範例。
 
-# <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
+### <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
 在 ASP.NET 中，您可以使用 [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) 類別傳送 HTTP Post。 例如：
 
@@ -175,7 +175,7 @@ var statusCode = result.StatusCode.ToString();
 
 如果您要在[教學課程：在 Azure 中使用 SQL Database 建置 ASP.NET 應用程式](app-service-web-tutorial-dotnet-sqldatabase.md)的範例應用程式上測試此程式碼，可以在新增 `Todo` 項目之後，使用此程式碼在 [Create 動作](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)中傳送電子郵件確認。 若要使用上述的非同步程式碼，請將 Create 動作轉換為非同步。
 
-# <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
+### <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
 在 ASP.NET Core 中，您可以使用 [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) 類別傳送 HTTP Post。 例如：
 
@@ -203,7 +203,7 @@ var statusCode = result.StatusCode.ToString();
 
 如果您要在[教學課程：在 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式](app-service-web-tutorial-dotnetcore-sqldb.md)的範例應用程式上測試此程式碼，可以在新增 `Todo` 項目之後，使用此程式碼在 [Create 動作](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)中傳送電子郵件確認。
 
-# <a name="nodejs"></a>[Node.js](#tab/node)
+### <a name="nodejs"></a>[Node.js](#tab/node)
 
 在 Node.js 中，您可以使用 [axios](https://www.npmjs.com/package/axios) 之類的 npm 套件輕鬆地傳送 HTTP Post。 例如：
 
@@ -230,7 +230,7 @@ var jsonData = {
 
 如果您要在[教學課程：在 Azure 中建置 ASP.NET Core 和 MongoDB 應用程式](app-service-web-tutorial-nodejs-mongodb-app.md)的範例應用程式上測試此程式碼，可以在[順利儲存本文](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)之後，使用此程式碼在 [Create 動作](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)中傳送電子郵件確認。
 
-# <a name="php"></a>[PHP](#tab/php)
+### <a name="php"></a>[PHP](#tab/php)
 
 在 PHP 中，您可以使用 [Guzzle](http://docs.guzzlephp.org/en/stable/index.html) 輕鬆地傳送 HTTP Post。 例如：
 
@@ -262,7 +262,7 @@ Log::info(print_r($response, TRUE));
 
 如果您要在[教學課程：在 Azure 中建置 PHP 和 MySQL 應用程式](app-service-web-tutorial-php-mysql.md)的範例應用程式上測試此程式碼，可以使用此程式碼在 [Route::post 函式](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)中 (就在 return 陳述式之前) 中傳送電子郵件確認。
 
-# <a name="python"></a>[Python](#tab/python)
+### <a name="python"></a>[Python](#tab/python)
 
 在 Python 中，您可以使用 [requests](https://pypi.org/project/requests/) 輕鬆地傳送 HTTP Post。 例如：
 
@@ -293,7 +293,7 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
 
 如果您要在[教學課程：在 Azure App Service 中使用 PostgreSQL 執行 Python (Django) Web 應用程式](containers/tutorial-python-postgresql-app.md)的範例應用程式上測試此程式碼，可以使用此程式碼在 [Route::post 函式](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)中 (就在 return 陳述式之前) 傳送電子郵件確認。
 
-# <a name="ruby"></a>[Ruby](#tab/ruby)
+### <a name="ruby"></a>[Ruby](#tab/ruby)
 
 在 Ruby 中，您可以使用 [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient) 輕鬆地傳送 HTTP Post。 例如：
 
@@ -312,7 +312,7 @@ connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 
 ---
 
-# <a name="more-resources"></a>其他資源
+## <a name="more-resources"></a>其他資源
 
 [教學課程：在 Azure App Service 中裝載具有 CORS 支援的 RESTful API](app-service-web-tutorial-rest-api.md)  
 [Logic Apps 的 HTTP 要求/回應參考](../connectors/connectors-native-reqres.md)  

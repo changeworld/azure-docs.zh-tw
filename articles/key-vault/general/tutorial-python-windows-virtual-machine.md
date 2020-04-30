@@ -11,10 +11,10 @@ ms.date: 09/05/2018
 ms.author: mbaldwin
 ms.custom: mvc
 ms.openlocfilehash: 85dc751909f61eff40ad57868bafa7ea2019ed89
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81425767"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-python"></a>教學課程：在 Python 中搭配使用 Azure Key Vault 與 Windows 虛擬機器
