@@ -1,26 +1,25 @@
 ---
-title: 教學課程：使用 Azure DevOps Projects 部署由 Azure Cosmos DB 所提供的 Node.js 應用程式
-description: Azure DevOps Projects 可讓您輕鬆地開始使用 Azure。 您可以使用 DevOps Projects，透過幾個步驟快速地將由 Azure Cosmos DB 所提供的 Node.js 應用程式部署至 Windows Web 應用程式。
+title: 教學課程：使用 Azure DevOps Starter 部署 Azure Cosmos DB 支援的 node.js 應用程式
+description: Azure DevOps Starter 可以讓您輕鬆地開始使用 Azure。 使用 DevOps Starter 時，您可以透過幾個快速步驟，將支援的 node.js 應用程式部署 Azure Cosmos DB 至 Windows Web 應用程式。
 ms.author: mlearned
 ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 03/24/2020
 author: mlearned
-monikerRange: vsts
-ms.openlocfilehash: 229b4b9f53ea3866dce1169645f6d6da20827271
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
-ms.translationtype: HT
+ms.openlocfilehash: 07579cf22738e195e3e4ae7a2aa18ffeb885bbe2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73888895"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233229"
 ---
-# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-projects"></a>使用 DevOps Projects 部署由 Azure Cosmos DB 所提供的 Node.js 應用程式
+# <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>部署使用 DevOps Starter Azure Cosmos DB 支援的 node.js 應用程式
 
-Azure DevOps Projects 提供簡化的體驗，讓您可以在 Azure 中建立持續整合 (CI) 和持續部署 (CD) 管線。 若要這麼做，您可以使用現有的程式碼和 Git 存放庫，或選取範例應用程式。
+Azure DevOps Starter 提供簡化的體驗，可讓您在 Azure 中建立持續整合（CI）和持續部署（CD）管線。 若要這麼做，您可以使用現有的程式碼和 Git 存放庫，或選取範例應用程式。
 
-DevOps Projects 也可用於：
+DevOps Starter 也會：
 
 * 自動建立 Azure 資源，例如 Azure Cosmos DB、Azure Application Insights、Azure App Service 和 App Service 方案
 
@@ -29,7 +28,7 @@ DevOps Projects 也可用於：
 在本教學課程中，您將：
 
 > [!div class="checklist"]
-> * 使用 DevOps Projects 部署由 Azure Cosmos DB 所提供的 Node.js 應用程式
+> * 使用 DevOps Starter 部署支援的 node.js 應用程式 Azure Cosmos DB
 > * 設定 Azure DevOps 與 Azure 訂用帳戶
 > * 檢查 Azure Cosmos DB
 > * 檢查 CI 管線
@@ -41,17 +40,15 @@ DevOps Projects 也可用於：
 
 您需要 Azure 訂用帳戶；您可以透過 [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) 免費取得。
 
-## <a name="use-devops-projects-to-deploy-nodejs-app"></a>使用 DevOps Projects 來部署 Node.js 應用程式
+## <a name="use-devops-starter-to-deploy-nodejs-app"></a>使用 DevOps Starter 部署 node.js 應用程式
 
-DevOps Projects 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps Projects 也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源，例如 Azure Cosmos DB、Application Insights、App Service 和 App Service 方案。
+DevOps Starter 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立新的 Azure DevOps 組織或使用現有組織。 DevOps Starter 也會在您選擇的 Azure 訂用帳戶中建立 Azure 資源，例如 Azure Cosmos DB、Application Insights、App Service 和 App Service 方案。
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。
 
-1. 在左窗格中選取 [建立資源]  。
+1. 在搜尋方塊中，輸入**DevOps Starter**，然後選取。 按一下 [**新增] 以建立**新的 [新增]。
 
-1. 在 [搜尋] 方塊中輸入 **DevOps Projects**，然後選取 [新增]  。
-
-   ![DevOps Projects 窗格](_img/azure-devops-project-cosmos-db/devops-project.png)
+    ![DevOps 入門儀表板](_img/azure-devops-starter-aks/search-devops-starter.png)
 
 1. 選取 [Node.js]  作為執行階段，然後選取 [下一步]  。 在 [選擇應用程式架構]  之下，選取 [Express.js]  。
 
@@ -59,7 +56,7 @@ DevOps Projects 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立
 
     ![新增資料庫](_img/azure-devops-project-cosmos-db/add-database.png)
 
-    Azure DevOps Projects 支援多種不同的應用程式架構，例如 **Express.js**、**範例 Node.js 應用程式**和 **Sail.js**。 在本教學課程中，我們使用 **Express.js**。
+    Azure DevOps Starter 支援各種應用程式架構，例如**Express .js**、**範例 node.js 應用程式**和**Sail**。 在本教學課程中，我們使用 **Express.js**。
 
 1. 選取 Azure 服務以部署應用程式，然後選取 [下一步]  。 您的選項包括 Windows Web 應用程式、Azure Kubernetes Service 和用於容器的 Web App。 在本教學課程中，我們使用 **Windows Web App**。
 
@@ -77,17 +74,17 @@ DevOps Projects 會在 Azure Pipelines 中建立 CI/CD 管線。 您可以建立
 
 1. 此程序會在幾分鐘後完成。 範例 Node.js 應用程式會設定於 Azure DevOps 組織的 Git 存放庫中。 接著會建立 Azure Cosmos DB、App Service、App Service 方案和 Application Insights 資源，以及 CI/CD 管線。 然後，您的應用程式會部署至 Azure。
 
-   這些程序都完成後，Azure 入口網站中便會顯示 Azure DevOps Projects 儀表板。 您可以直接從 Azure 入口網站中的 [所有資源]  移至 DevOps Projects 儀表板。
+   在所有這些程式完成之後，Azure DevOps 入門儀表板會顯示在 Azure 入口網站中。 您也可以直接從 Azure 入口網站中的 [**所有資源**] 移至 [DevOps] 入門儀表板。
 
    此儀表板會顯示您的 Azure DevOps 程式碼存放庫、CI/CD 管線和 Azure Cosmos DB 資料庫。 您可以在 Azure DevOps 管線中設定其他 CI/CD 選項。 在儀表板右側選取 [Azure Cosmos DB]  ，以檢視這些選項。
 
 ## <a name="examine-azure-cosmos-db"></a>檢查 Azure Cosmos DB
 
-DevOps Projects 會自動設定 Azure Cosmos DB，您可加以瀏覽和自訂。 若要熟悉 Azure Cosmos DB，請執行下列作業：
+DevOps Starter 會自動設定 Azure Cosmos DB，您可以在其中流覽和自訂。 若要熟悉 Azure Cosmos DB，請執行下列作業：
 
-1. 移至 DevOps Projects 儀表板。
+1. 移至 DevOps 入門儀表板。
 
-    ![DevOps Projects 儀表板](_img/azure-devops-project-cosmos-db/devops-project-dashboard.png)
+    ![DevOps Projects 儀表板](_img/azure-devops-project-cosmos-db/devops-starter-dashboard.png)
 
 1. 在右側選取 Azure Cosmos DB。 Azure Cosmos DB 的窗格隨即開啟。 在此檢視中，您可以執行各種動作，例如監視作業和搜尋記錄。
 
@@ -95,9 +92,9 @@ DevOps Projects 會自動設定 Azure Cosmos DB，您可加以瀏覽和自訂。
 
 ## <a name="examine-the-ci-pipeline"></a>檢查 CI 管線
 
-DevOps Projects 會在 Azure DevOps 組織中自動設定 CI/CD 管線。 您可以瀏覽及自訂管線。 若要讓您自己熟悉管線，請執行下列作業：
+DevOps Starter 會自動在您的 Azure DevOps 組織中設定 CI/CD 管線。 您可以瀏覽及自訂管線。 若要讓您自己熟悉管線，請執行下列作業：
 
-1. 移至 DevOps Projects 儀表板。
+1. 移至 DevOps 入門儀表板。
 
 1. 選取 [建置]  下方的超連結。 瀏覽器索引標籤會顯示新專案的建置管線。
 
@@ -105,7 +102,7 @@ DevOps Projects 會在 Azure DevOps 組織中自動設定 CI/CD 管線。 您可
 
 1. 選取 [編輯]  。 在此窗格中，您可以檢查建置管線的各種工作。 建置會執行各種工作，例如從 Git 存放庫擷取來源程式碼、建置應用程式、執行單元測試，以及發佈用來進行部署的輸出。
 
-1. 選取 [觸發程序]  。 DevOps Projects 會自動建立 CI 觸發程序，且每次對存放庫的認可都會啟動新的建置。 您可以選擇要在 CI 程序中包含還是排除分支。
+1. 選取 [觸發程序]  。 DevOps Starter 會自動建立 CI 觸發程式，且每次對存放庫的認可都會啟動新的組建。 您可以選擇要在 CI 程序中包含還是排除分支。
 
 1. 選取 [保留期]  。 根據案例，您可以指定原則來保留或移除特定數目的組建。
 
@@ -117,7 +114,7 @@ DevOps Projects 會在 Azure DevOps 組織中自動設定 CI/CD 管線。 您可
 
 ## <a name="examine-the-cd-release-pipeline"></a>檢查 CD 發行管線
 
-DevOps Projects 會自動建立並設定必要的步驟，以從 Azure DevOps 組織部署至 Azure 訂用帳戶。 這些步驟包括設定 Azure 服務連線，以對 Azure 訂用帳戶驗證 Azure DevOps。 自動化也會建立發行管線，以將 CD 提供給 Azure。 若要深入了解發行管線，請執行下列動作：
+DevOps Starter 會自動建立並設定必要的步驟，以從您的 Azure DevOps 組織部署至您的 Azure 訂用帳戶。 這些步驟包括設定 Azure 服務連線，以對 Azure 訂用帳戶驗證 Azure DevOps。 自動化也會建立發行管線，以將 CD 提供給 Azure。 若要深入了解發行管線，請執行下列動作：
 
 1. 移至 [管線]  ，然後選取 [發行]  。
 
@@ -150,18 +147,18 @@ DevOps Projects 會自動建立並設定必要的步驟，以從 Azure DevOps �
 
 1. 在右上角選取 [認可]  ，然後再次選取 [認可]  以推送您的變更。
 
-     不久之後，就會在 Azure DevOps 中開始建置，並執行發行以部署變更。 在 DevOps Projects 儀表板上或在瀏覽器中使用您的 Azure DevOps 組織監視建置狀態。
+     不久之後，就會在 Azure DevOps 中開始建置，並執行發行以部署變更。 在 DevOps 入門儀表板或瀏覽器中，使用您的 Azure DevOps 組織來監視組建狀態。
 
 ## <a name="clean-up-resources"></a>清除資源
 
-當您不再需要所建立的相關資源時，請將其刪除。 請使用 DevOps Projects 儀表板上的 [刪除]  功能。
+當您不再需要所建立的相關資源時，請將其刪除。 使用 DevOps 入門儀表板上的 [**刪除**] 功能。
 
 ## <a name="next-steps"></a>後續步驟
 
 您可以修改這些建置和發行管線，以符合小組的需求。 您也可以使用此 CI/CD 模式作為其他管線的範本。 在本教學課程中，您已了解如何：
 
 > [!div class="checklist"]
-> * 使用 DevOps Projects 部署由 Azure Cosmos DB 所提供的 Node.js 應用程式
+> * 使用 DevOps Starter 部署支援的 node.js 應用程式 Azure Cosmos DB
 > * 設定 Azure DevOps 與 Azure 訂用帳戶 
 > * 檢查 Azure Cosmos DB
 > * 檢查 CI 管線
