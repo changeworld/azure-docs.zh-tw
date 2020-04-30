@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
 ms.openlocfilehash: 720496c56cdae69e3b7415ac4d4d05d5796fbff9
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146359"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>建立、變更或刪除公用 IP 位址首碼
 
 了解公用 IP 位址首碼，以及如何建立、變更和刪除公用 IP 位址首碼。 公用 IP 位址首碼是根據您所指定之公用 IP 位址數目的連續位址範圍。 這些位址會指派給您的訂用帳戶。 當您建立公用 IP 位址資源時，您可以從前置詞指派靜態公用 IP 位址，並將該位址與虛擬機器、負載平衡器或其他資源建立關聯，以啟用網際網路連線能力。 如果您不熟悉公用 IP 位址首碼，請參閱[公用 IP 位址首碼概觀](public-ip-address-prefix.md)
 
-## <a name="before-you-begin"></a>在您開始前
+## <a name="before-you-begin"></a>開始之前
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -46,7 +46,7 @@ ms.locfileid: "82146359"
 3. 在 [公用 IP 位址首碼]**** 下方，選取 [建立]****。
 4. 在 [建立公用 IP 位址首碼]**** 下方，輸入或選取下列設定的值，然後選取 [建立]****：
 
-   |設定|必要項？|詳細資料|
+   |設定|必要？|詳細資料|
    |---|---|---|
    |訂用帳戶|是|所在的[訂用帳戶](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)必須與您想要與公用 IP 位址建立關聯的資源相同。|
    |資源群組|是|所在的[資源群組](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)可以與您想要與公用 IP 位址建立關聯的資源相同或不同。|
@@ -56,7 +56,7 @@ ms.locfileid: "82146359"
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
 |PowerShell|[新增-AzPublicIpPrefix](/powershell/module/az.network/new-azpublicipprefix)|
@@ -69,7 +69,7 @@ ms.locfileid: "82146359"
 3. 當它出現在搜尋結果時，請選取它，然後按一下 [概觀] 區段中的 [+ 新增 IP 位址]****。
 4. 在 [建立公用 IP 位址]**** 下方，輸入或選取下列設定的值。 由於首碼適用於標準 SKU、IPv4 和靜態，因此您只需要提供下列資訊：
 
-   |設定|必要項？|詳細資料|
+   |設定|必要？|詳細資料|
    |---|---|---|
    |Name|是|公用 IP 位址名稱在您選取的資源群組中必須是唯一。|
    |閒置逾時 (分鐘)|否|不需依賴用戶端傳送保持連線訊息，讓 TCP 或 HTTP 連線保持開啟的分鐘數。 |
@@ -77,7 +77,7 @@ ms.locfileid: "82146359"
 
 或者，您可以使用下列 CLI 和 PS 命令搭配--public-ip 首碼（CLI）和-PublicIpPrefix （PS）參數，以建立公用 IP 位址資源。 
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create)|
 |PowerShell|[New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=azps-2.0.0)|
@@ -92,7 +92,7 @@ ms.locfileid: "82146359"
 
 **命令**
 
-|工具|命令|
+|工具|Command|
 |---|---|
 |CLI|[az network public-ip prefix list](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-list) 可列出公用 IP 位址、[az network public-ip prefix show](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show) 可顯示設定；[az network public-ip prefix update](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-update) 可進行更新；[az network public-ip prefix delete](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-delete) 可進行刪除|
 |PowerShell|[AzPublicIpPrefix](/powershell/module/az.network/get-azpublicipprefix)以取出公用 IP 位址物件，並查看其設定， [AzPublicIpPrefix](/powershell/module/az.network/set-azpublicipprefix)以更新設定;[移除-AzPublicIpPrefix](/powershell/module/az.network/remove-azpublicipprefix)以刪除|

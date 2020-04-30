@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
 ms.openlocfilehash: e469a38f4730eb0f9d8debe71bde9a56dd152028
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146405"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure Data Factory 在 Azure Synapse Analytics （先前稱為 Azure SQL 資料倉儲）中複製和轉換資料 
@@ -60,9 +60,9 @@ ms.locfileid: "82146405"
 
 以下是針對 Azure Synapse Analytics 已連結服務支援的屬性：
 
-| 屬性            | 說明                                                  | 必要                                                     |
+| 屬性            | 描述                                                  | 必要                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 型別                | 類型屬性必須設為 **AzureSqlDW**。             | 是                                                          |
+| type                | 類型屬性必須設為 **AzureSqlDW**。             | 是                                                          |
 | connectionString    | 針對**connectionString**屬性指定連接到 Azure Synapse 分析實例所需的資訊。 <br/>將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中。 您也可以將密碼/服務主體金鑰放在 Azure Key Vault 中，而且，如果這是 SQL 驗證，則會從連接字串中提取 `password` 組態。 請參閱表格下方的 JSON 範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文深入了解詳細資料。 | 是                                                          |
 | servicePrincipalId  | 指定應用程式的用戶端識別碼。                         | 當您搭配服務主體使用 Azure AD 驗證時為是。 |
 | servicePrincipalKey | 指定應用程式的金鑰。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 當您搭配服務主體使用 Azure AD 驗證時為是。 |
@@ -221,9 +221,9 @@ ms.locfileid: "82146405"
 
 以下是針對 Azure Synapse 分析資料集支援的屬性：
 
-| 屬性  | 說明                                                  | 必要                    |
+| 屬性  | 描述                                                  | 必要                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| 型別      | 資料集的**類型**屬性必須設定為**AzureSqlDWTable**。 | 是                         |
+| type      | 資料集的**類型**屬性必須設定為**AzureSqlDWTable**。 | 是                         |
 | 結構描述 | 結構描述的名稱。 |否 (來源)；是 (接收)  |
 | 資料表 | 資料表/視圖的名稱。 |否 (來源)；是 (接收)  |
 | tableName | 具有架構的資料表/視圖名稱。 此屬性支援回溯相容性。 針對新的工作負載`schema` ， `table`請使用和。 | 否 (來源)；是 (接收) |
@@ -257,9 +257,9 @@ ms.locfileid: "82146405"
 
 若要從 Azure Synapse 分析複製資料，請將複製活動來源中的**type**屬性設定為**SqlDWSource**。 複製活動的 [**來源**] 區段支援下列屬性：
 
-| 屬性                     | 說明                                                  | 必要 |
+| 屬性                     | 描述                                                  | 必要 |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| 型別                         | 複製活動來源的**類型**屬性必須設定為**SqlDWSource**。 | 是      |
+| type                         | 複製活動來源的**類型**屬性必須設定為**SqlDWSource**。 | 是      |
 | sqlReaderQuery               | 使用自訂 SQL 查詢來讀取資料。 範例： `select * from MyTable`. | 否       |
 | sqlReaderStoredProcedureName | 從來源資料表讀取資料的預存程序名稱。 最後一個 SQL 陳述式必須是預存程序中的 SELECT 陳述式。 | 否       |
 | storedProcedureParameters    | 預存程序的參數。<br/>允許的值為名稱或值組。 參數的名稱和大小寫必須符合預存程序參數的名稱和大小寫。 | 否       |
@@ -366,15 +366,15 @@ Azure Data Factory 支援三種將資料載入 SQL 資料倉儲的方式。
 
 若要將資料複製到「Azure SQL 資料倉儲」，請將複製活動中的接收類型設定為 **SqlDWSink**。 複製活動的 [**接收**] 區段支援下列屬性：
 
-| 屬性          | 說明                                                  | 必要                                      |
+| 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| 型別              | 複製活動接收器的**type**屬性必須設定為**SqlDWSink**。 | 是                                           |
-| allowPolyBase     | 指出是否要使用 PolyBase 將資料載入 SQL 資料倉儲。 `allowCopyCommand`和`allowPolyBase`不能同時為 true。 <br/><br/>請參閱 [使用 PolyBase 將資料載入 Azure SQL 資料倉儲](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 一節中的條件約束和詳細資料。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 不可以。<br/>適用于使用 PolyBase 時。     |
-| polyBaseSettings  | 當`allowPolybase`屬性設定為**true**時，可指定的一組屬性。 | 不可以。<br/>適用于使用 PolyBase 時。 |
-| allowCopyCommand | 指出是否要使用[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)（預覽）將資料載入 SQL 資料倉儲。 `allowCopyCommand`和`allowPolyBase`不能同時為 true。 <br/><br/>如需條件約束和詳細資訊，請參閱[使用 COPY 語句將資料載入 Azure SQL 資料倉儲](#use-copy-statement)一節。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 不可以。<br>使用複製時套用。 |
-| copyCommandSettings | 當屬性設定為 TRUE 時`allowCopyCommand` ，可以指定的屬性群組。 | 不可以。<br/>使用複製時套用。 |
-| writeBatchSize    | 要插入 SQL 資料表中**每個批次**的資料列數目。<br/><br/>允許的值為**整數** (資料列數目)。 根據預設，Data Factory 會依據資料列大小，以動態方式決定適當的批次大小。 | 不可以。<br/>在使用 bulk insert 時套用。     |
-| writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/><br/>允許的值為**timespan**。 範例："00:30:00" (30 分鐘)。 | 不可以。<br/>在使用 bulk insert 時套用。        |
+| type              | 複製活動接收器的**type**屬性必須設定為**SqlDWSink**。 | 是                                           |
+| allowPolyBase     | 指出是否要使用 PolyBase 將資料載入 SQL 資料倉儲。 `allowCopyCommand`和`allowPolyBase`不能同時為 true。 <br/><br/>請參閱 [使用 PolyBase 將資料載入 Azure SQL 資料倉儲](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 一節中的條件約束和詳細資料。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br/>適用于使用 PolyBase 時。     |
+| polyBaseSettings  | 當`allowPolybase`屬性設定為**true**時，可指定的一組屬性。 | 否。<br/>適用于使用 PolyBase 時。 |
+| allowCopyCommand | 指出是否要使用[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)（預覽）將資料載入 SQL 資料倉儲。 `allowCopyCommand`和`allowPolyBase`不能同時為 true。 <br/><br/>如需條件約束和詳細資訊，請參閱[使用 COPY 語句將資料載入 Azure SQL 資料倉儲](#use-copy-statement)一節。<br/><br/>允許的值為 **True** 和 **False** (預設值)。 | 否。<br>使用複製時套用。 |
+| copyCommandSettings | 當屬性設定為 TRUE 時`allowCopyCommand` ，可以指定的屬性群組。 | 否。<br/>使用複製時套用。 |
+| writeBatchSize    | 要插入 SQL 資料表中**每個批次**的資料列數目。<br/><br/>允許的值為**整數** (資料列數目)。 根據預設，Data Factory 會依據資料列大小，以動態方式決定適當的批次大小。 | 否。<br/>在使用 bulk insert 時套用。     |
+| writeBatchTimeout | 在逾時前等待批次插入作業完成的時間。<br/><br/>允許的值為**timespan**。 範例："00:30:00" (30 分鐘)。 | 否。<br/>在使用 bulk insert 時套用。        |
 | preCopyScript     | 指定一個供「複製活動」在每次執行時將資料寫入到「Azure SQL 資料倉儲」前執行的 SQL 查詢。 使用此屬性來清除預先載入的資料。 | 否                                            |
 | tableOption | 指定是否要根據來源架構，自動建立接收資料表（如果不存在）。 在複製活動中設定分段複製時，不支援自動建立資料表。 允許的值為`none` ：（預設值`autoCreate`）、。 |否 |
 | disableMetricsCollection | Data Factory 會收集計量，例如複製效能優化和建議的 SQL 資料倉儲 Dwu。 如果您擔心此行為，請指定`true`將它關閉。 | 否 (預設值為 `false`) |
@@ -407,7 +407,7 @@ Azure Data Factory 支援三種將資料載入 SQL 資料倉儲的方式。
 
 複製活動中的下`polyBaseSettings`支援下列 PolyBase 設定：
 
-| 屬性          | 說明                                                  | 必要                                      |
+| 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | rejectValue       | 指定在查詢失敗前可以拒絕的資料列數目或百分比。<br/><br/>在[CREATE EXTERNAL TABLE （transact-sql）](https://msdn.microsoft.com/library/dn935021.aspx)的引數區段中，深入瞭解 PolyBase 的拒絕選項。 <br/><br/>允許的值為 0 (預設值)、1、2 等其他值。 | 否                                            |
 | rejectType        | 指定 **rejectValue** 選項為常值或百分比。<br/><br/>允許的值為**Value** （預設值）和**百分比**。 | 否                                            |
@@ -630,7 +630,7 @@ SQL 資料倉儲[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/co
 
 複製活動中的下`allowCopyCommand`支援下列 copy 語句設定：
 
-| 屬性          | 說明                                                  | 必要                                      |
+| 屬性          | 描述                                                  | 必要                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | 預設 | 指定 SQL DW 中每個目標資料行的預設值。  屬性中的預設值會覆寫資料倉儲中設定的預設條件約束，而且識別欄位不能有預設值。 | 否 |
 | additionalOptions | 在[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest)的 "With" 子句中，會直接傳遞至 SQL DW 複製語句的其他選項。 視需要將值加上引號，以配合 COPY 語句需求。 | 否 |
@@ -748,7 +748,7 @@ SQL 資料倉儲[COPY 語句](https://docs.microsoft.com/sql/t-sql/statements/co
 | :------------------------------------ | :----------------------------- |
 | BIGINT                                | Int64                          |
 | BINARY                                | Byte[]                         |
-| bit                                   | Boolean                        |
+| bit                                   | 布林值                        |
 | char                                  | String, Char[]                 |
 | date                                  | Datetime                       |
 | Datetime                              | Datetime                       |

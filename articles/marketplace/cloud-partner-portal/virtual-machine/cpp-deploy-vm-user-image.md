@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: dsindona
 ms.openlocfilehash: e3bad2dc63f6a75f52c537aabfa6e85d1846ef15
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82147924"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>從使用者 VHD 部署 Azure VM
@@ -27,7 +27,7 @@ ms.locfileid: "82147924"
 
 將適用於 [VHD 部署](cpp-deploy-json-template.md)的 Azure Resource Manager 範本複製到名為 `VHDtoImage.json` 的本機檔案。  編輯此檔案以提供下列參數值。 
 
-|  **參數**             |   **描述**                                                              |
+|  **參數**             |   **說明**                                                              |
 |  -------------             |   ---------------                                                              |
 | resourceGroupName          | 現有的 Azure 資源群組名稱。  通常會使用與您金鑰保存庫相關聯的相同 RG  |
 | TemplateFile               | 檔案 `VHDtoImage.json` 的完整路徑名稱                                    |

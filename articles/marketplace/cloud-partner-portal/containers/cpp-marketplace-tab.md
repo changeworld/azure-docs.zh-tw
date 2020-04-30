@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: dsindona
 ms.openlocfilehash: 724c2ffebd34b838c19f3296363c38c83e142b96
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82148243"
 ---
 # <a name="container-marketplace-tab"></a>容器 Marketplace 索引標籤
@@ -31,10 +31,10 @@ ms.locfileid: "82148243"
 
 |    欄位                  |       描述                                                            |
 |  ---------                |     ---------------                                                          |
-| **標題\***                 | 供應項目的標題。 此標題會在 Marketplace 中醒目顯示。  長度上限是 50 個字元。 |
-| **摘要\***               | 供應項目的簡短摘要。 長度上限是 100 個字元。 |
+| **主題\***                 | 供應項目的標題。 此標題會在 Marketplace 中醒目顯示。  長度上限是 50 個字元。 |
+| **[摘要]\***               | 供應項目的簡短摘要。 長度上限是 100 個字元。 |
 | **完整摘要\***          | 供應項目的完整摘要 (雖然可能與**摘要**相同)。  長度上限是 256 個字元。 |
-| **說明\***           | 供應項目的說明。  長度上限是 3000 個字元，支援簡單的 HTML 格式。
+| **描述\***           | 供應項目的說明。  長度上限是 3000 個字元，支援簡單的 HTML 格式。
 | **行銷識別碼**  | 與本供應項目相關聯的唯一 URL，通常會包含您的組織與解決方案名稱。 長度上限是 50 個字元。   |
 | **預覽訂用帳戶識別碼\*** | 可新增 1 到 100 個預覽使用者的訂閱帳戶識別碼。 這些列入允許清單的訂閱帳戶，待供應項目一發佈，即能在供應項目上線前先行存取。 |
 |  |  |

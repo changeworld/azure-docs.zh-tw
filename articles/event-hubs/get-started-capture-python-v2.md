@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 34583ef49b2f919391af3fe5700a558b2dc40700
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 191a2246afdc60953d8c353f9ccdc2339130f910
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77187232"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82159330"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>使用 Python 擷取及讀取 Azure 儲存體中的事件中樞資料 (azure-eventhub 第 5 版)
 
@@ -46,7 +46,7 @@ ms.locfileid: "77187232"
 - Azure 儲存體帳戶、儲存體帳戶中的 Blob 容器，以及儲存體帳戶的連接字串。 如果您沒有這些項目，請執行下列動作：  
     1. [建立 Azure 儲存體帳戶](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)  
     1. [在儲存體帳戶中建立 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
-    1. [取得儲存體帳戶的連接字串](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string)
+    1. [取得儲存體帳戶的連接字串](../storage/common/storage-configure-connection-string.md)
 
     請務必記下連接字串和容器名稱，以便稍後在本快速入門中使用。  
 - 啟用事件中樞的擷取功能。 若要這麼做，請依照[使用 Azure 入口網站啟用事件中樞擷取功能](event-hubs-capture-enable-through-portal.md)中的指示。 選取您在先前步驟中建立的儲存體帳戶和 Blob 容器。 您也可以在建立事件中樞時啟用此功能。  

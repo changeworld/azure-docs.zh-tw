@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: 9fd1330e0ca0a49556e79044570173adaf458e13
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82148154"
 ---
 # <a name="storefront-details-tab"></a>電子店面詳細資料索引標籤
@@ -172,7 +172,7 @@ Microsoft 僅著重於固定範圍、固定期間、估計或固定價格 (或�
 
 選擇您的諮詢服務供應項目最適用的產業。
 
-**期限**
+**Duration**
 
 在 [持續時間]**** 底下選取數字 (如 3 或 4)，然後選取 [小時]****、[天]****、或 [週]****。
 

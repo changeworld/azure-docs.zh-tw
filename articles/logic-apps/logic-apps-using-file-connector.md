@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
 ms.openlocfilehash: b1f4feab9587fb77089be265801c71f5b23b26ab
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146784"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>透過 Azure Logic Apps 連線到內部部署檔案系統
@@ -68,7 +68,7 @@ ms.locfileid: "82146784"
 
    ![建立連線](media/logic-apps-using-file-connector/file-system-connection.png)
 
-   | 屬性 | 必要 | 值 | 說明 |
+   | 屬性 | 必要 | 值 | 描述 |
    | -------- | -------- | ----- | ----------- |
    | **連線名稱** | 是 | <*連接名稱*> | 您想要的連線名稱 |
    | **根資料夾** | 是 | <*根資料夾-名稱*> | 您檔案系統的根資料夾，例如，如果您已安裝內部部署的資料閘道，則為內部部署資料閘道安裝所在電腦上的本機資料夾，或電腦可以存取的網路共用資料夾。 <p>例如：`\\PublicShare\\DropboxFiles` <p>根資料夾是主要的父資料夾，會作為所有檔案相關動作的相對路徑。 |

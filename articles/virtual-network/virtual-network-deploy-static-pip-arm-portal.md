@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
 ms.openlocfilehash: 0de28fc75d5eb1b0867e4ba6d8eda9f0f42c8498
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82148011"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>使用 Azure 入口網站建立具有靜態公用 IP 位址的虛擬機器
@@ -37,7 +37,7 @@ ms.locfileid: "82148011"
     |設定|值|
     |---|---|
     |名稱|myVM|
-    |[使用者名稱]| 輸入您選擇的使用者名稱。|
+    |使用者名稱| 輸入您選擇的使用者名稱。|
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |訂用帳戶| 選取您的訂用帳戶。|
     |資源群組| 選取 [使用現有項目]****，然後選取 [myResourceGroup]****。|

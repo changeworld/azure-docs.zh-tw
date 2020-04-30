@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
 ms.openlocfilehash: 68db606c9a01c4b1122f9b0cce620762485ca40a
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82148269"
 ---
 # <a name="prepare-your-container-technical-assets"></a>準備容器技術資產
@@ -21,7 +21,7 @@ ms.locfileid: "82148269"
 
 本文說明設定 Azure Marketplace 容器供應項目的步驟和需求。
 
-## <a name="before-you-begin"></a>在您開始前
+## <a name="before-you-begin"></a>開始之前
 
 檢閱 [Azure 容器執行個體](https://docs.microsoft.com/azure/container-instances)文件，其中提供快速入門、教學課程和範例。
 

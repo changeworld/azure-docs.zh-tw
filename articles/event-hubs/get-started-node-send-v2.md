@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 42c58a84c71b6573814e82517373db6900a83658
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 71c50e8efdf26f2a7d3f270a774b08e49c92faa7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82025011"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82159415"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>使用 JavaScript (azure/event-hubs 第 5 版) 將事件傳送至事件中樞或從中接收事件
 本快速入門說明如何使用 **azure/event-hubs 第 5 版** JavaScript 套件，來傳送事件至事件中樞和從事件中樞接收事件。 
@@ -119,7 +119,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 1. [建立 Azure 儲存體帳戶](../storage/common/storage-account-create.md?tabs=azure-portal)  
 2. [在儲存體帳戶中建立 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)  
-3. [取得儲存體帳戶的連接字串](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
+3. [取得儲存體帳戶的連接字串](../storage/common/storage-configure-connection-string.md)
 
 請務必記下連接字串和容器名稱，以便稍後在接收程式碼中使用。
 

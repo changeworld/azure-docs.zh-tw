@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: d8f4300f45fc626c104055f987d123301ba8f39d
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82148073"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>使用 Cloud Partner 入口網站建立新 IoT Edge 模組供應項目
@@ -21,7 +21,7 @@ ms.locfileid: "82148073"
 
 本文說明如何建立及發佈 Microsoft Azure Marketplace 的 IoT Edge 模組供應項目。 每個供應項目在 Microsoft Azure Marketplace 中皆為獨立實體，會與一或多個 SKU 相關聯。  IoT Edge 模組供應項目是由下列資產群組和支援服務所組成：
 
-|  **資產群組**   |  **描述**  |
+|  **資產群組**   |  **說明**  |
 |  ---------------   |  ---------------  |
 |    SKU            |  供應項目的最小佈署單位。 單一供應項目 (產品類別) 可有多個相關聯的 SKU。 您可以使用 SKU 來區分不同支援功能和計費模式。 |
 |  Marketplace       | 包含行銷、法律及潛在客戶管理的資產和規格。  <ul><li> 行銷資產包括供應項目名稱、說明和標誌</li> <li> 法律資產包括隱私權原則、使用條款及其他法律文件</li>  <li> 潛在客戶管理原則可指定於 Microsoft Azure Marketplace 使用者入口網站管理潛在客戶的方式。</li> </ul> |

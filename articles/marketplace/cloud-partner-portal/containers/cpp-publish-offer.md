@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: dsindona
 ms.openlocfilehash: 58e096a3b25b16e54cf2f18935dcf4a2d44cd767
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146220"
 ---
 # <a name="publish-container-offer"></a>發佈容器供應項目
@@ -30,7 +30,7 @@ ms.locfileid: "82146220"
 下表說明每個發佈步驟。 也會提供完成每個步驟的預估時間。
 
 
-|  **發行步驟**           | **時間**    | **描述**                                                            |
+|  **發行步驟**           | **階段**    | **說明**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | 檢查必要條件         | 15 分鐘   | 檢查供應項目資訊和供應項目設定。                        |
 | 認證                  | 1 週 | Azure 認證團隊會分析供應項目。 掃描供應項目中是否有病毒、惡意程式碼、安全合規性和安全性問題。 檢查供應項目以查看它是否符合所有資格條件。 如需詳細資訊，請參閱[先決條件](./cpp-prerequisites.md)和[準備您的技術資產](./cpp-create-technical-assets.md)。 若發現問題，將提供意見反應。 |

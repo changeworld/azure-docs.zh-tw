@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
 ms.openlocfilehash: 97d78b5bc77fef30bf7e3ad082a70f16a2ec74d1
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146601"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>使用 Azure 入口網站將多個 IP 位址指派給虛擬機器
@@ -53,7 +53,7 @@ ms.locfileid: "82146601"
 完成下列步驟，以新增私人 IP 位址：
 
 1. 完成本文的[核心步驟](#coreadd)一節中的步驟。
-2. 按一下 **[新增]** 。 在所顯示的 [新增 IP 設定]**** 窗格中，建立名為 *IPConfig-4* 並以 *10.0.0.7* 作為「靜態」** 私人 IP 位址的 IP 組態，然後按一下 [確定]****。
+2. 按一下 [加入]  。 在所顯示的 [新增 IP 設定]**** 窗格中，建立名為 *IPConfig-4* 並以 *10.0.0.7* 作為「靜態」** 私人 IP 位址的 IP 組態，然後按一下 [確定]****。
 
     > [!NOTE]
     > 新增靜態 IP 位址時，您必須在 NIC 所連接的子網路上指定未使用的有效位址。 如果您選取的位址無法使用，入口網站會針對 IP 位址顯示 X，而您必須選取不同的位址。
@@ -85,7 +85,7 @@ ms.locfileid: "82146601"
 #### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>將公用 IP 位址資源與新的 IP 組態產生關聯
 
 1. 完成本文的[核心步驟](#coreadd)一節中的步驟。
-2. 按一下 **[新增]** 。 在顯示的 [新增 IP 組態]**** 窗格中，建立名為 IPConfig-4** 的 IP 組態。 啟用 [公用 IP 位址]****，然後從顯示的 [選擇公用 IP 位址]**** 窗格中，選取現有的可用公用 IP 位址資源。
+2. 按一下 [加入]  。 在顯示的 [新增 IP 組態]**** 窗格中，建立名為 IPConfig-4** 的 IP 組態。 啟用 [公用 IP 位址]****，然後從顯示的 [選擇公用 IP 位址]**** 窗格中，選取現有的可用公用 IP 位址資源。
 
     選取公用 IP 位址資源後，請按一下 [確定]****，窗格便會關閉。 如果您沒有現有的公用 IP 位址，您可以完成[建立公用 IP 位址資源](#create-public-ip)一節中的步驟，加以建立。 
 

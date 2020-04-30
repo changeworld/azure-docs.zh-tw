@@ -4,10 +4,10 @@ description: 目前和未來的 Azure 服務問題和維修如何影響 Azure �
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.openlocfilehash: 2d98a909a45c9dd00b3174f495a15cd18ced11f9
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82146934"
 ---
 # <a name="service-health-overview"></a>服務健康狀態總覽

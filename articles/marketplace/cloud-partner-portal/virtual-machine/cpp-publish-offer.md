@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: dsindona
 ms.openlocfilehash: f66ce0c15e976898d5022bf5705a82fe0969ec07
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82147665"
 ---
 # <a name="publish-a-virtual-machine-offer"></a>發佈虛擬機器供應項目
@@ -27,7 +27,7 @@ ms.locfileid: "82147665"
 <!-- we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
 
 
-|  **發行步驟**           | **時間**    | **描述**                                                            |
+|  **發行步驟**           | **階段**    | **說明**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | 檢查必要條件         | 15 分鐘   | 檢查供應項目資訊和供應項目設定。                        |
 | 檢查試用產品 (選擇性) | 2 小時 | 如果已選取啟用試用產品，Microsoft 會透過選取區域，檢查試用產品設定、部署及複寫作業。 |

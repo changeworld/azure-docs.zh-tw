@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/11/2020
+ms.date: 04/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 40d291ee17f1fdaf819d70daade735e152df8f71
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: fd4b41cc2fe97ad0c2f075884e21f4f2ffc01561
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548527"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82159449"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>將事件傳送至 Azure 事件中樞及從中接收事件 - .NET Core (Azure.Messaging.EventHubs) 
 本快速入門說明如何使用 **Azure.Messaging.EventHubs** .NET Core 程式庫，將事件傳送至事件中樞，以及從中接收事件。 
@@ -126,7 +126,7 @@ ms.locfileid: "80548527"
 
 1. [建立 Azure 儲存體帳戶](/azure/storage/common/storage-account-create?tabs=azure-portal)
 2. [建立 Blob 容器](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
-3. [取得儲存體帳戶的連接字串](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
+3. [取得儲存體帳戶的連接字串](../storage/common/storage-configure-connection-string.md)
 
     記下連接字串和容器名稱。 您會在接收程式碼中用到這些項目。 
 
@@ -202,11 +202,13 @@ ms.locfileid: "80548527"
 1. 現在，將下列事件和錯誤處理常式方法新增至類別。 
 
     ```csharp
-        static Task ProcessEventHandler(ProcessEventArgs eventArgs)
-        { 
+        static async Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
             // Write the body of the event to the console window
-            Console.WriteLine("\tReceived event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray())); 
-            return Task.CompletedTask; 
+            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+
+            // Update checkpoint in the blob storage so that the app receives only new events the next time it's run
+            await eventArgs.UpdateCheckpointAsync(eventArgs.CancellationToken);
         }
 
         static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)
