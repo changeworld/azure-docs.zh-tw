@@ -3,12 +3,12 @@ title: 監視任何環境上的 JAVA 應用程式-Azure 監視器 Application In
 description: 應用程式效能監視，適用于在任何環境中執行的 JAVA 應用程式，不需檢測應用程式。 分散式追蹤和應用程式對應。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: b9c1a52051e63beee9a784714a7bb1a6a79e8759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 591cfad0f4719595835f212b9205354aad7cb9e8
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687724"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508066"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>JAVA 無程式碼應用程式監視 Azure 監視器 Application Insights-公開預覽
 
@@ -24,11 +24,11 @@ JAVA 無程式碼應用程式監視的重點在於簡單明瞭-不會變更程�
 
 **1. 下載代理程式**
 
-下載[applicationinsights-agent-3.0.0-preview .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.3/applicationinsights-agent-3.0.0-PREVIEW.3.jar)
+下載[applicationinsights-agent-3.0.0-preview. 4 .jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.4/applicationinsights-agent-3.0.0-PREVIEW.4.jar)
 
 **2. 將 JVM 指向代理程式**
 
-將`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.3.jar`新增至應用程式的 JVM 引數
+將`-javaagent:path/to/applicationinsights-agent-3.0.0-PREVIEW.4.jar`新增至應用程式的 JVM 引數
 
 一般 JVM 引數`-Xmx512m`包括`-XX:+UseG1GC`和。 因此，如果您知道要將這些新增到何處，您就已經知道要將它加入何處。
 
@@ -44,7 +44,7 @@ JAVA 無程式碼應用程式監視的重點在於簡單明瞭-不會變更程�
 APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000-000000000000
 ```
 
-或者，藉由建立名為`ApplicationInsights.json`的設定檔，並將它放在`applicationinsights-agent-3.0.0-PREVIEW.3.jar`與相同的目錄中，並包含下列內容：
+或者，藉由建立名為`ApplicationInsights.json`的設定檔，並將它放在`applicationinsights-agent-3.0.0-PREVIEW.4.jar`與相同的目錄中，並包含下列內容：
 
 ```json
 {
@@ -117,7 +117,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 ### <a name="metrics"></a>計量
 
-* Micrometer
+* Micrometer （包括春季開機傳動標準）
 * JMX 計量
 
 ## <a name="sending-custom-telemetry-from-your-application"></a>從您的應用程式傳送自訂遙測

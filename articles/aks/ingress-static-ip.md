@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中，使用�
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 27b80b1f0b6728b5ad69edae51f0d42bfac351d0
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
-ms.translationtype: MT
+ms.openlocfilehash: f0a8f1f1e1b724745e69aef30e2e6404ff6a5484
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82145506"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82207355"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用靜態公用 IP 位址建立輸入控制器
 
@@ -25,7 +25,7 @@ ms.locfileid: "82145506"
 - [建立使用自有 TLS 憑證的輸入控制器][aks-ingress-own-tls]
 - [建立輸入控制器，其使用 Let's Encrypt 自動產生具有動態公用 IP 的 TLS 憑證][aks-ingress-tls]
 
-## <a name="before-you-begin"></a>在您開始前
+## <a name="before-you-begin"></a>開始之前
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
@@ -56,7 +56,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 1. 新增`--set controller.service.loadBalancerIP`參數。 指定您自己在上一個步驟中建立的公用 IP 位址。
 1. 新增`--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"`參數。 指定要套用至在上一個步驟中建立之公用 IP 位址的 DNS 名稱標籤。
 
-輸入控制器也需要在 Linux 節點上排程。 Windows Server 節點（目前在 AKS 中處於預覽狀態）不應執行輸入控制器。 您可以使用 `--set nodeSelector` 參數來指定節點選取器，以告知 Kubernetes 排程器在 Linux 式節點上執行 NGINX 輸入控制器。
+輸入控制器也需要在 Linux 節點上排程。 Windows Server 節點不應執行輸入控制器。 您可以使用 `--set nodeSelector` 參數來指定節點選取器，以告知 Kubernetes 排程器在 Linux 式節點上執行 NGINX 輸入控制器。
 
 > [!TIP]
 > 下列範例會建立名為「輸入 *-基本*」的輸入資源的 Kubernetes 命名空間。 視需要指定您自己環境的命名空間。 如果您的 AKS 叢集未啟用 RBAC，請`--set rbac.create=false`將新增至 Helm 命令。
@@ -285,7 +285,7 @@ certificate.cert-manager.io/tls-secret created
 
 ## <a name="test-the-ingress-configuration"></a>測試輸入組態
 
-將網頁瀏覽器開啟至 Kubernetes 輸入控制器的 FQDN，例如*https://demo-aks-ingress.eastus.cloudapp.azure.com*。
+將網頁瀏覽器開啟至 Kubernetes 輸入控制器的 FQDN，例如*`https://demo-aks-ingress.eastus.cloudapp.azure.com`*。
 
 如這些範例所`letsencrypt-staging`使用，所發出的 TLS/SSL 憑證不受瀏覽器的信任。 接受警告提示以繼續您的應用程式。 憑證資訊顯示這個 *Fake LE Intermediate X1* 憑證是由 Let's Encrypt 所簽發的。 這個假憑證表示 `cert-manager` 已正確處理要求並接收來自提供者的憑證：
 
@@ -299,7 +299,7 @@ certificate.cert-manager.io/tls-secret created
 
 ![應用程式範例一](media/ingress/app-one.png)
 
-現在，將 */hello-world-two* 路徑新增至 FQDN，例如 *https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two*。 即會顯示第二個具有自訂標題的示範應用程式：
+現在，將 */hello-world-two* 路徑新增至 FQDN，例如 *`https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two`*。 即會顯示第二個具有自訂標題的示範應用程式：
 
 ![應用程式範例二](media/ingress/app-two.png)
 

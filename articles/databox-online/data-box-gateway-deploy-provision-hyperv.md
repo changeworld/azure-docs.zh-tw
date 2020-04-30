@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 63d88f1b9903eaad7ed4f57f59ca2a49445e3d40
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b3616a338666dbb10fe7500bad8c1e8239fd2c92
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77365315"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561626"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>教學課程：在 Hyper-V 中佈建 Azure 資料箱閘道
 
@@ -21,7 +21,7 @@ ms.locfileid: "77365315"
 
 本教學課程說明如何在 Windows Server 2016、Windows Server 2012 R2 或 Windows Server 2012 上對執行 Hyper-V 的主機系統佈建資料箱閘道。
 
-您需要有系統管理員權限，才能佈建及設定虛擬裝置。 佈建及初始安裝程序可能需要大約 10 分鐘的時間才能完成。
+您需要有系統管理員權限，才能佈建及設定虛擬裝置。 佈建及初始安裝程序可能需要大約 10 分鐘的時間才能完成。 
 
 在本教學課程中，您會了解如何：
 

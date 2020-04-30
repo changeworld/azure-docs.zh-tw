@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2403faf23294afbba539c7240e842f928fed83dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8033122601077945790005e23ec728911c3a4e1f
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181285"
+ms.locfileid: "82207525"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的系統管理員角色權限
 
@@ -1823,12 +1823,12 @@ CRM 服務管理員 | Dynamics 365 管理員 | 44367163-eba1-44c3-98af-f5787879f
 客戶 LockBox 存取核准者 | 客戶加密箱存取核准者 | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 電腦分析系統管理員 | 電腦分析系統管理員 | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 裝置系統管理員 | 裝置系統管理員 | 9f06204d-73c1-4d4c-880a-6edb90606fd8
-加入裝置 | 裝置加入 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
-裝置管理員 | 裝置管理員 | 2b499bcd-da44-4968-8aec-78e1674fa64d
-裝置使用者 | 裝置使用者 | d405c6df-0af8-4e3b-95e4-4d06e542189e
+加入裝置 | 已被取代 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
+裝置管理員 | 已被取代 | 2b499bcd-da44-4968-8aec-78e1674fa64d
+裝置使用者 | 已被取代 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 目錄讀取器 | 目錄讀取器 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
-目錄同步處理帳戶 | 目錄同步處理帳戶 | d29b2b05-8046-44ba-8758-1e26182fcf32
-目錄撰寫者 | 目錄寫入器 | 9360feb5-f418-4baa-8175-e2a00bac4301
+目錄同步處理帳戶 | 未顯示，因為不應使用 | d29b2b05-8046-44ba-8758-1e26182fcf32
+目錄撰寫者 | 未顯示，因為不應使用 | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange 服務管理員 | Exchange 系統管理員 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部識別提供者系統管理員 | 外部識別提供者系統管理員 | be2f45a1-457d-42af-a067-6ec1fa63bc45
 全域讀者 | 全域讀者 | f2ef992c-3afb-46b9-b7cf-a126ee74c451
@@ -1844,8 +1844,8 @@ Lync 服務管理員 | 商務用 Skype 的管理員 | 75941009-915a-4869-abe7-69
 訊息中心讀取者 | 訊息中心讀者 | 790c1fb9-7f7d-4f88-86a1-ef1f95c05c1b
 網路系統管理員 | 網路系統管理員 | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office 應用程式系統管理員 | Office 應用程式系統管理員 | 2b745bdf-0803-4d80-aa65-822c4493daac
-合作夥伴第 1 層支援 | 合作夥伴第 1 層支援 | 4ba39ca4-527c-499a-b93d-d9b492c50246
-合作夥伴第 2 層支援 | 合作夥伴第 2 層支援 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
+合作夥伴第 1 層支援 | 未顯示，因為不應使用 | 4ba39ca4-527c-499a-b93d-d9b492c50246
+合作夥伴第 2 層支援 | 未顯示，因為不應使用 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 密碼管理員 | 密碼管理員 | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI 服務管理員 | Power BI 系統管理員 | a9ea8996-122f-4c74-9520-8edcd192826c
 Power 平臺系統管理員 | Power 平臺系統管理員 | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
@@ -1865,9 +1865,9 @@ Microsoft Teams 通訊系統管理員 | Microsoft Teams 通訊系統管理員 | 
 Microsoft Teams 通訊支援工程師 | Microsoft Teams 通訊支援工程師 | f70938a0-fc10-4177-9e90-2178f8765737
 Microsoft Teams 通訊支援專家 | Microsoft Teams 通訊支援專家 | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Microsoft Teams 服務管理員 | Microsoft Teams 服務管理員 | 69091246-20e8-4a56-aa4d-066075b2a7a8
-User | User | a0b1b346-4d3e-4e8b-98f8-753987be4970
+User | 未顯示，因為無法使用 | a0b1b346-4d3e-4e8b-98f8-753987be4970
 使用者帳戶管理員 | 使用者管理員 | fe930be7-5e62-47db-91af-98c3a49a38b1
-加入工作場所裝置 | 工作場所裝置加入 | c34f683f-4d5a-4403-affd-6615e00e3a7f
+加入工作場所裝置 | 已被取代 | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>已被取代的角色
 
@@ -1885,7 +1885,7 @@ User | User | a0b1b346-4d3e-4e8b-98f8-753987be4970
 
 並非 PowerShell 或 MS 圖形 API 所傳回的每個角色都可以在 Azure 入口網站中看到。 下表將組織這些差異。
 
-API 名稱 | Azure 入口網站名稱 | 注意
+API 名稱 | Azure 入口網站名稱 | 備忘錄
 -------- | ------------------- | -------------
 公司系統管理員 | 全域管理員 | [名稱已變更，以提供更好的清晰度](directory-assign-admin-roles.md#role-template-ids)
 CRM 服務管理員 | Dynamics 365 管理員 | [反映目前的產品品牌](directory-assign-admin-roles.md#role-template-ids)

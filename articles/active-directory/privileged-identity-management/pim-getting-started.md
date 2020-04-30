@@ -14,12 +14,12 @@ ms.date: 04/23/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46f6c77916c7be62247c69b12dff1982e5781aff
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.openlocfilehash: 1f8d41fb3e6233d319725cac924c0c0ed41b7ce4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82112213"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82234293"
 ---
 # <a name="start-using-privileged-identity-management"></a>開始使用 Privileged Identity Management
 
@@ -63,14 +63,14 @@ ms.locfileid: "82112213"
 
 ![Privileged Identity Management 中的導覽視窗，其中顯示工作和管理選項](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| 工作 + 管理 | 說明 |
+| 工作 + 管理 | 描述 |
 | --- | --- |
 | **我的角色**  | 顯示一個清單，列出已指派給您的合格和使用中角色。 您可以在這裡啟動任何指派的合格角色。 |
 | **我的要求** | 顯示您啟動合格角色指派的任何擱置要求。 |
 | **核准要求** | 顯示一個清單，列出您目錄中的使用者為了啟動合格角色所提出的要求，而此目錄是指定給您以進行核准的目錄。 |
 | **檢閱存取** | 列出指派給您完成的使用中存取權檢閱 (無論您是在檢閱自己還是他人的存取權)。 |
-| **Azure AD 角色** | 顯示儀表板和設定，讓特殊許可權角色管理員管理 Azure AD 角色指派。 對於任何不是特殊權限角色管理員的人員，系統會停用此儀表板。 這些使用者可以存取標題為 [我的檢視] 的特殊儀表板。 [我的檢視] 儀表板只會顯示存取儀表板的使用者，而非整個租用戶的相關資訊。 |
-| **Azure 資源** | 顯示儀表板和設定，讓特殊許可權角色管理員可以管理 Azure 資源角色指派。 對於任何不是特殊權限角色管理員的人員，系統會停用此儀表板。 這些使用者可以存取標題為 [我的檢視] 的特殊儀表板。 [我的檢視] 儀表板只會顯示存取儀表板的使用者，而非整個租用戶的相關資訊。 |
+| **Azure AD 角色** | 顯示儀表板和設定，讓特殊許可權角色管理員管理 Azure AD 角色指派。 對於任何不是特殊權限角色管理員的人員，系統會停用此儀表板。 這些使用者可以存取標題為 [我的檢視] 的特殊儀表板。 [我的視圖] 儀表板只會顯示存取儀表板的使用者相關資訊，而不是整個組織。 |
+| **Azure 資源** | 顯示儀表板和設定，讓特殊許可權角色管理員可以管理 Azure 資源角色指派。 對於任何不是特殊權限角色管理員的人員，系統會停用此儀表板。 這些使用者可以存取標題為 [我的檢視] 的特殊儀表板。 [我的視圖] 儀表板只會顯示存取儀表板的使用者相關資訊，而不是整個組織。 |
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>將 PIM 圖格新增至儀表板
 

@@ -6,13 +6,13 @@ author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 03/01/2020
-ms.openlocfilehash: f6723992ac3335e6abdd78f2008130dfe136f7df
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
-ms.translationtype: HT
+ms.date: 04/09/2020
+ms.openlocfilehash: 6c553580bc3f2c9cb1aac321bea3c86b04b2ba56
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80873883"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231215"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>建立資料標記專案和匯出標籤 
 
@@ -22,9 +22,9 @@ ms.locfileid: "80873883"
  
 [Azure Machine Learning](https://ml.azure.com/) 可讓您在集中的位置建立、管理及監視標籤專案 (公開預覽)。 您可以用它來協調資料、標籤和小組成員，以有效管理標籤工作。 機器學習服務支援影像分類 (多標籤或多類別)，以及搭配使用週框方塊的物體識別。
 
-Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列。 標籤者不需要擁有 Azure 帳戶就能參與工作。 在使用您的 Microsoft 帳戶或 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) 加以驗證後，標籤者即可在時間允許的範圍內加上相應數量的標籤。
+Azure Machine Learning 會追蹤進度，並維護未完成標記工作的佇列。
 
-您可以啟動和停止專案、新增和移除標籤者和小組，以及監視標記進度。 您可以匯出已加上標籤的資料，無論是以 COCO 格式或 Azure ML 資料集的形式均可。
+您可以啟動和停止專案，並監視標記進度。 您可以匯出已加上標籤的資料，無論是以 COCO 格式或 Azure ML 資料集的形式均可。
 
 > [!Important]
 > 目前僅支援影像分類和物件識別標記專案。 此外，資料影像必須可於 Azure Blob 資料存放區中取得。 (如果您沒有現有的資料存放區，則可以在建立專案期間上傳影像)。
@@ -34,7 +34,6 @@ Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列。 �
 > [!div class="checklist"]
 > * 建立專案
 > * 指定專案的資料和結構
-> * 管理處理專案的小組和人員
 > * 執行和監視專案
 > * 匯出標籤
 
@@ -50,7 +49,7 @@ Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列。 �
 
 ## <a name="create-a-labeling-project"></a>建立加上標籤專案
 
-標籤專案可從 Azure Machine Learning 進行管理。 您可以使用 [標籤專案]  頁面來管理專案和人員。 專案中會指派一或多個小組，而小組中會指派一或多個人員。
+標籤專案可從 Azure Machine Learning 進行管理。 您可以使用 [**標記專案**] 頁面來管理專案。
 
 如果您的資料已儲存在 Azure Blob 儲存體中，您應先使其成為可用的資料存放區，然後才建立標籤專案。 如需使用資料存放區的範例，請參閱[教學課程：建立您的第一個影像分類標籤專案](tutorial-labeling.md)。
 
@@ -168,23 +167,11 @@ Machine Learning 會追蹤進度，並維護未完成標籤工作的佇列。 �
 
 在標籤專案初始化後，專案的某些層面將是不可變的。 您無法變更工作類型或資料集。 您*可以*修改標籤，以及工作描述的 URL。 在建立專案之前，請仔細檢閱設定。 提交專案之後，您就會回到 [資料標記]  首頁，此處會將專案顯示為 [正在初始化]  。 此頁面不會自動重新整理。 因此，在暫停之後，請手動重新整理頁面，以確認專案的狀態是否為 [已建立]  。
 
-## <a name="manage-teams-and-people"></a>管理小組和人員
-
-根據預設，您所建立的每個標籤專案都會有將您納入為成員的新小組。 但小組也可在專案之間共用。 而且，專案可能會有多個小組。 若要建立小組，請在 [小組]  頁面上選取 [新增小組]  。 
-
-您可以在 [標籤者]  頁面上管理人員。 您可以透過電子郵件地址來新增和移除人員。 如果您使用 Microsoft 帳戶或 Azure Active Directory，則每個標籤者都必須透過該途徑進行驗證。  
-
-新增人員後，您可以將其指派給一或多個小組：移至 [小組]  頁面，選取小組，然後選取 [指派人員]  或 [移除人員]  。
-
-若要傳送電子郵件給小組，請選取小組以檢視 [小組詳細資料]  頁面。 在此頁面上，選取 [傳送電子郵件給小組]  以開啟電子郵件草稿，其中包含小組中每個人的地址。
-
 ## <a name="run-and-monitor-the-project"></a>執行和監視專案
 
 在您初始化專案後，Azure 就會開始執行該專案。 選取主要 [資料標記]  頁面上的專案，以移至 [專案詳細資料]  。 [儀表板]  索引標籤會顯示標籤工作的進度。
 
 在 [資料]  索引標籤上，您可以查看資料集並檢閱已加上標籤的資料。 如果您看到標籤不正確的資料，請選取該資料，然後選擇 [拒絕]  ，以移除標籤並將資料放回未加上標籤的佇列中。
-
-使用 [小組]  索引標籤，對專案指派或取消指派小組。
 
 若要暫停或重新啟動專案，請選取 [暫停]  /[啟動]  按鈕。 只有在專案執行時，您才可以為資料加上標籤。
 

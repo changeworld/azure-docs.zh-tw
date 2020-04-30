@@ -5,12 +5,12 @@ description: 了解叢集操作員在 Azure Kubernetes Service (AKS) 中使用�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
-ms.openlocfilehash: d887f084ae329be30579b3400b4dc6cfb22c64ca
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 560a832821f5e5ff2fbbc2d66252945951d69511
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82145447"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208052"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的網路連線和安全性最佳做法
 
@@ -45,7 +45,7 @@ ms.locfileid: "82145447"
 
 如需有關 AKS 服務主體委派的詳細資訊，請參閱[委派其他 Azure 資源的存取權][sp-delegation]。 您也可以使用系統指派的受控識別來取得許可權，而不是服務主體。 如需詳細資訊，請參閱[使用受控識別](use-managed-identity.md)。
 
-當每個節點和 Pod 收到自己的 IP 位址時，請規劃 AKS 子網路的位址範圍。 子網路必須夠大，才能為您部署的每個節點、Pod 和網路資源提供 IP 位址。 每個 AKS 叢集必須放在自己的子網路中。 若要在 Azure 中允許對內部部署或對等互連網路進行連線，請不要使用與現有網路資源重疊的 IP 位址範圍。 Kubenet 和 Azure CNI 網路功能都有預設每個節點可執行的 Pod 數目限制。 若要處理相應放大事件或叢集升級，您也需要可在指派的子網中使用的其他 IP 位址。 如果您使用 Windows Server 容器（目前在 AKS 中處於預覽狀態），則此額外的位址空間特別重要，因為這些節點集區需要升級才能套用最新的安全性修補程式。 如需 Windows Server 節點的詳細資訊，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
+當每個節點和 Pod 收到自己的 IP 位址時，請規劃 AKS 子網路的位址範圍。 子網路必須夠大，才能為您部署的每個節點、Pod 和網路資源提供 IP 位址。 每個 AKS 叢集必須放在自己的子網路中。 若要在 Azure 中允許對內部部署或對等互連網路進行連線，請不要使用與現有網路資源重疊的 IP 位址範圍。 Kubenet 和 Azure CNI 網路功能都有預設每個節點可執行的 Pod 數目限制。 若要處理相應放大事件或叢集升級，您也需要可在指派的子網中使用的其他 IP 位址。 如果您使用 Windows Server 容器，此額外的位址空間特別重要，因為這些節點集區需要升級才能套用最新的安全性修補程式。 如需 Windows Server 節點的詳細資訊，請參閱[升級 AKS 中的節點集][nodepool-upgrade]區。
 
 若要計算所需的 IP 位址，請參閱[在 AKS 中設定 Azure CNI 網路功能][advanced-networking]。
 
@@ -99,7 +99,7 @@ spec:
 
 輸入控制器是在 AKS 節點上執行的精靈，可監控傳入要求。 接著，流量會根據輸入資源中所定義的規則來分配。 最常見的輸入控制器是以 [NGINX] 為基礎。 AKS 不會限制您使用特定控制器，因此您可以使用 [Contour][contour]、[HAProxy][haproxy] 或 [Traefik][traefik] 等其他控制器。
 
-必須在 Linux 節點上排程輸入控制器。 Windows Server 節點（目前在 AKS 中處於預覽狀態）不應執行輸入控制器。 在您的 YAML 資訊清單或 Helm 圖表部署中使用節點選取器，以指出資源應該在以 Linux 為基礎的節點上執行。 如需詳細資訊，請參閱[使用節點選取器來控制 AKS 中的 pod 排程位置][concepts-node-selectors]。
+必須在 Linux 節點上排程輸入控制器。 Windows Server 節點不應執行輸入控制器。 在您的 YAML 資訊清單或 Helm 圖表部署中使用節點選取器，以指出資源應該在以 Linux 為基礎的節點上執行。 如需詳細資訊，請參閱[使用節點選取器來控制 AKS 中的 pod 排程位置][concepts-node-selectors]。
 
 有許多適用輸入的案例，包括下列的使用說明指南：
 

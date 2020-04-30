@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 04/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 471c2d45e28e634adde78c2d96d407ec219be68c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80408706"
+ms.locfileid: "82229658"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中自訂原則的開發人員注意事項
 
@@ -62,7 +62,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="protocols-and-authorization-flows"></a>通訊協定和授權流程
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 部署 | 預覽 | GA | 備忘錄 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2 授權碼](authorization-code-flow.md) |  |  | X |  |
 | 使用 PKCE OAuth2 授權碼 |  |  | X | 僅限行動應用程式  |
@@ -75,18 +75,18 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="identify-providers-federation"></a>識別提供者同盟 
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 部署 | 預覽 | GA | 備忘錄 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | 例如，Google +。  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | 例如，Facebook。  |
 | [OAuth1](oauth1-technical-profile.md) |  | X |  | 例如，Twitter。 |
-| [SAML2](saml-technical-profile.md) |  |   | X | 例如，Salesforce、ADFS。 |
+| [SAML2](saml-identity-provider-technical-profile.md) |  |   | X | 例如，Salesforce、ADFS。 |
 | WSFED| X |  |  |  |
 
 
 ### <a name="rest-api-integration"></a>REST API 整合
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 部署 | 預覽 | GA | 備忘錄 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [使用基本驗證的 REST API](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
 | [使用用戶端憑證驗證 REST API](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
@@ -94,7 +94,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="component-support"></a>元件支援
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 部署 | 預覽 | GA | 備忘錄 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [電話要素驗證](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure MFA 驗證](multi-factor-auth-technical-profile.md) |  | X |  |  |
@@ -109,7 +109,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="page-layout-versions"></a>頁面配置版本
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 部署 | 預覽 | GA | 備忘錄 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [2.0.0](page-layout.md#200) |  | X |  |  |
 | [1.2.0](page-layout.md#120) |  | X |  |  |
@@ -119,7 +119,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="app-ief-integration"></a>App-IEF 整合
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 部署 | 預覽 | GA | 備忘錄 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | 查詢字串參數`domain_hint` |  |  | X | 可以宣告的形式提供給 IDP。 |
 | 查詢字串參數`login_hint` |  |  | X | 可以宣告的形式提供給 IDP。 |
@@ -129,16 +129,17 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="session-management"></a>工作階段管理
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 部署 | 預覽 | GA | 備忘錄 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [預設 SSO 會話提供者](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
 | [外部登入會話提供者](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
 | [SAML SSO 會話提供者](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
-
+| [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider)  |  | X |  |  |
+| [單一登出](session-overview.md#sign-out)  |  | X |  |  |
 
 ### <a name="security"></a>安全性
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 部署 | 預覽 | GA | 備忘錄 |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | 原則機碼產生，手動上傳 |  |  | X |  |
 | 原則機碼 - RSA/憑證，密碼 |  |  | X |  |
@@ -146,7 +147,7 @@ Azure Active Directory B2C 中的自訂原則設定現已正式推出。 這種�
 
 ### <a name="developer-interface"></a>開發人員介面
 
-| 功能 | 部署 | 預覽 | GA | 注意 |
+| 功能 | 部署 | 預覽 | GA | 備忘錄 |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure 入口網站 IEF UX |  |  | X |  |
 | 原則上傳 |  |  | X |  |

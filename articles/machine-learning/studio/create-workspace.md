@@ -1,7 +1,7 @@
 ---
 title: 建立工作區
 titleSuffix: ML Studio (classic) - Azure
-description: 要使用 Azure 機器學習工作室（經典），需要有機器學習工作室（經典）工作區。 此工作區包含您建立、管理及發行實驗所需的工具。
+description: 若要使用 Azure Machine Learning Studio （傳統），您需要有 Machine Learning Studio （傳統）工作區。 此工作區包含您建立、管理及發行實驗所需的工具。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,48 +10,53 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 1a391a7a061d1382b5e07b45625c44fc0f5dec54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7b01e7667392d475bcab70dcd3dfaad2c3956e8f
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204455"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208528"
 ---
-# <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>創建和共用 Azure 機器學習工作室（經典）工作區
+# <a name="create-and-share-an-azure-machine-learning-studio-classic-workspace"></a>建立和共用 Azure Machine Learning Studio （傳統）工作區
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-要使用 Azure 機器學習工作室（經典），需要有機器學習工作室（經典）工作區。 此工作區包含您建立、管理及發行實驗所需的工具。
+若要使用 Azure Machine Learning Studio （傳統），您需要有 Machine Learning Studio （傳統）工作區。 此工作區包含您建立、管理及發行實驗所需的工具。
 
-## <a name="create-a-studio-classic-workspace"></a>創建工作室（經典）工作區
+## <a name="create-a-studio-classic-workspace"></a>建立 Studio （傳統）工作區
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)
+若要在 Machine Learning Studio （傳統）中開啟工作區，您必須登入您用來建立工作區的 Microsoft 帳戶，或者您需要收到來自擁有者的邀請，才能加入工作區。 您可以從 Azure 入口網站管理工作區，其中包括設定存取的能力。
+
+1. 登入 [Azure 入口網站](https://portal.azure.com/)
 
     > [!NOTE]
-    > 要登錄並創建 Studio（經典）工作區，您需要是 Azure 訂閱管理員。 
+    > 若要登入並建立 Studio （傳統）工作區，您必須是 Azure 訂用帳戶管理員。 
     >
     > 
 
-2. 按一下 **"新建"**
+2. 按一下 [ **+ 新增**]
 
-3. 在搜索框中，鍵入**機器學習工作室（經典）工作區**並選擇匹配項。 然後按一下頁面底部的 [建立]****。
+3. 在搜尋方塊中，輸入**Machine Learning Studio （傳統）工作區**，然後選取相符的專案。 然後按一下頁面底部的 [建立]****。
 
 4. 輸入您的工作區資訊：
 
    - 工作區名稱** 可能最多 260 個字元，結尾不可為空格。 名稱不能包含下列字元︰`< > * % & : \ ? + /`
    - 會使用您選擇 (或建立) 的 Web 服務方案**，以及您選取的相關聯定價層**，如果您從此工作區中部署 web 服務。
 
-     ![創建新的 Studio（經典）工作區](./media/create-workspace/create-new-workspace.png)
+     ![建立新的 Studio （傳統）工作區](./media/create-workspace/create-new-workspace.png)
 
-5. 按一下 **[建立]**。
+5. 按一下 [建立]  。
+
+   機器學習服務目前可用於數量有限的區域。 如果您的訂用帳戶不包含其中一個區域，您可能會看到錯誤訊息「您在允許的區域中沒有任何訂用帳戶。」  為了要求將區域新增至您的訂用帳戶，請從 Azure 入口網站中建立新的 Microsoft 支援要求，選取 [計費]**** 做為問題類型，並遵照提示來提交您的要求。
+
 
 > [!NOTE]
-> 機器學習工作室（經典版）依賴于在執行其工作流時提供的 Azure 存儲帳戶以保存中間資料。 建立工作區之後，如果儲存體帳戶遭到刪除，或存取金鑰變更，工作區會停止運作，並且該工作區中的所有實驗將會失敗。
+> Machine Learning Studio （傳統）依賴您提供的 Azure 儲存體帳戶，以在執行工作流程時儲存中繼資料。 建立工作區之後，如果儲存體帳戶遭到刪除，或存取金鑰變更，工作區會停止運作，並且該工作區中的所有實驗將會失敗。
 如果您不小心刪除儲存體帳戶，請使用與所刪除儲存體帳戶相同的區域中的相同名稱來重新建立儲存體帳戶並重新同步存取金鑰。 如果您變更了儲存體帳戶存取金鑰，請使用 Azure 入口網站在工作區中重新同步處理存取金鑰。
 
-部署工作區後，您可以在機器學習工作室（經典）中打開它。
+部署工作區之後，您就可以在 Machine Learning Studio （傳統）中開啟它。
 
-1. 流覽到機器學習工作室（經典）在[https://studio.azureml.net/](https://studio.azureml.net/)。
+1. 流覽至 Machine Learning Studio （傳統）， [https://studio.azureml.net/](https://studio.azureml.net/)網址為。
 
 2. 選取您右上角的工作區。
 
@@ -61,12 +66,12 @@ ms.locfileid: "79204455"
 
     ![開啟實驗](./media/create-workspace/my-experiments.png)
 
-有關管理工作室（經典）工作區的資訊，請參閱管理[Azure 機器學習工作室（經典）工作區](manage-workspace.md)。
-如果您在創建工作區時遇到問題，請參閱[故障排除指南：創建並連接到機器學習工作室（經典）工作區](troubleshooting-creating-ml-workspace.md)。
+如需管理 Studio （傳統）工作區的相關資訊，請參閱[管理 Azure Machine Learning Studio （傳統）工作區](manage-workspace.md)。
+如果您在建立工作區時遇到問題，請參閱[疑難排解指南：建立及連接到 Machine Learning Studio （傳統）工作區](troubleshooting-creating-ml-workspace.md)。
 
 
-## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>共用 Azure 機器學習工作室（經典）工作區
-創建機器學習工作室（經典）工作區後，您可以邀請使用者到工作區共用對工作區及其所有實驗、資料集、筆記本等的存取權限。您可以在兩個角色之一中添加使用者：
+## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>共用 Azure Machine Learning Studio （傳統）工作區
+建立 Machine Learning Studio （傳統）工作區之後，您就可以邀請使用者加入您的工作區，以共用您的工作區和其所有實驗、資料集、筆記本等的存取權。您可以新增兩個角色其中之一的使用者：
 
 * **使用者** - 工作區使用者可以在工作區中建立、開啟、修改和刪除實驗、資料集等。
 * **擁有者** - 除了使用者可以執行的動作以外，擁有者可以邀請和移除工作區中的使用者。
@@ -76,13 +81,13 @@ ms.locfileid: "79204455"
 > 
 > 
 
-### <a name="to-share-a-studio-classic-workspace"></a>共用工作室（經典）工作區
+### <a name="to-share-a-studio-classic-workspace"></a>共用 Studio （傳統）工作區
 
-1. 登錄機器學習工作室（經典）[https://studio.azureml.net/Home](https://studio.azureml.net/Home)
+1. 登入 Machine Learning Studio （傳統），網址為[https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
 2. 按一下左面板中的 [設定]****
 
-3. 按一下 **"使用者"** 選項卡
+3. 按一下 [**使用者**] 索引標籤
 
 4. 按一下頁面底部的 [邀請更多使用者]****
 
@@ -99,5 +104,32 @@ ms.locfileid: "79204455"
 > [!NOTE]
 > 若要讓使用者能夠部署或管理此工作區中的 web 服務，它們必須為參與者或 Azure 訂用帳戶中的系統管理員。 
 
+## <a name="troubleshoot-storage-accounts"></a>針對儲存體帳戶進行疑難排解
 
 
+機器學習服務需要儲存體帳戶來儲存資料。 您可以使用現有的儲存體帳戶，也可以在建立新的 Machine Learning Studio （傳統）工作區時建立新的儲存體帳戶（如果您有建立新儲存體帳戶的配額）。
+
+建立新的 Machine Learning Studio （傳統）工作區之後，您可以使用您用來建立工作區的 Microsoft 帳戶登入 Machine Learning Studio （傳統）。 如果您遇到錯誤訊息「找不到工作區」（類似下列螢幕擷取畫面），請使用下列步驟來刪除您的瀏覽器 cookie。
+
+![找不到工作區](media/troubleshooting-creating-ml-workspace/screen3.png)
+
+**刪除瀏覽器 Cookie**
+
+1. 如果您是使用 Internet Explorer，請按一下右上角的 [工具]**** 按鈕，然後選取 [網際網路選項]****。  
+
+   ![網際網路選項](media/troubleshooting-creating-ml-workspace/screen4.png)
+
+2. 在 [一般]**** 索引標籤下，按一下 [刪除...]****
+
+   ![一般索引標籤](media/troubleshooting-creating-ml-workspace/screen5.png)
+
+3. 在 [刪除瀏覽歷程記錄]**** 對話方塊中，確定已選取 [Cookie 與網站資料]****，然後按一下 [刪除]****。
+
+   ![刪除 cookie](media/troubleshooting-creating-ml-workspace/screen6.png)
+
+刪除 cookie 之後，請重新開機瀏覽器，然後移至 [ [Microsoft Azure Machine Learning Studio （傳統）](https://studio.azureml.net) ] 頁面。 出現輸入使用者名稱和密碼的提示時，請輸入建立工作區所使用的同一個 Microsoft 帳戶。
+
+
+## <a name="next-steps"></a>後續步驟
+
+如需管理工作區的詳細資訊，請參閱[管理 Azure Machine Learning Studio （傳統）工作區](manage-workspace.md)。

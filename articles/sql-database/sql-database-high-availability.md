@@ -11,75 +11,75 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: 1c4ed77112e8c06db1946d756239e02cb187f3ef
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: b8958d9a035c3cc502384e2f378bf428d517a1fc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618450"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208698"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL Database
 
-Azure SQL 資料庫中的高可用性體系結構的目標是保證資料庫啟動並運行至少 99.99% 的時間(有關不同層的特定 SLA 的詳細資訊,請參閱[Azure SQL 資料庫的 SLA),](https://azure.microsoft.com/support/legal/sla/sql-database/)而不必擔心維護操作和中斷的影響。 Azure 會自動處理關鍵服務任務,如修補、備份、Windows 和 SQL 升級,以及計劃外事件(如基礎硬體、軟體或網路故障)。  修補基礎 SQL 實例或失敗時,如果在應用中[使用重試邏輯](sql-database-develop-overview.md#resiliency),停機時間不會明顯。 即使在最關鍵的情況下，Azure SQL Database 也可以快速復原，確保您的資料隨時可用。
+Azure SQL Database 中高可用性架構的目標，是要保證您的資料庫已啟動並執行最短99.99% 的時間（如需有關不同階層之特定 SLA 的詳細資訊，請參閱[Azure SQL Database 的 sla](https://azure.microsoft.com/support/legal/sla/sql-database/)），而不需擔心維護作業和中斷的影響。 Azure 會自動處理重要的服務工作，例如修補、備份、Windows 和 SQL 升級，以及未計畫的事件，例如基礎硬體、軟體或網路失敗。  當基礎 SQL 實例修補或故障時，如果您在應用程式中[採用重試邏輯](sql-database-develop-overview.md#resiliency)，停機時間就不明顯。 即使在最關鍵的情況下，Azure SQL Database 也可以快速復原，確保您的資料隨時可用。
 
-高可用性解決方案旨在確保提交的數據永遠不會因故障而丟失,維護操作不會影響您的工作負載,並且資料庫不會成為軟體體系結構中的單個故障點。 在升級或維護資料庫時，不會有維護視窗或停機時間要求您停止工作負載。 
+高可用性解決方案的設計，是為了確保認可的資料永遠不會因為失敗而遺失，維護作業不會影響您的工作負載，而且資料庫不會是您軟體架構中的單一失敗點。 在升級或維護資料庫時，不會有維護視窗或停機時間要求您停止工作負載。 
 
-Azure SQL 資料庫中使用兩種高可用性體系結構模型:
+Azure SQL Database 中使用了兩種高可用性架構模型：
 
-- 基於計算和存儲分離的標準可用性模型。  它依賴於遠端存儲層的高可用性和可靠性。 此體系結構面向面向預算的業務應用程式,這些應用程式可以容忍維護活動期間的某些性能下降。
-- 基於資料庫引擎進程群集的高級可用性模型。 它依賴於一個事實,即始終存在可用的資料庫引擎節點的仲裁。 此體系結構面向具有高 IO 性能、高事務速率的任務關鍵型應用程式,並保證在維護活動期間對工作負載的性能影響最小。
+- 以計算和儲存體分隔為基礎的標準可用性模型。  它依賴遠端儲存層的高可用性和可靠性。 此架構的目標是以預算為導向的商務應用程式，可容忍維護活動期間的效能降低。
+- 以資料庫引擎進程叢集為基礎的 Premium 可用性模型。 這是因為一律有可用資料庫引擎節點的仲裁。 此架構以高 IO 效能、高交易率為目標的任務關鍵性應用程式，並保證在維護活動期間對工作負載的效能影響降至最低。
 
-Azure SQL 資料庫在最新的穩定版本的 SQL Server 資料庫引擎和 Windows 作業系統上運行,大多數使用者不會注意到升級是連續執行的。
+Azure SQL Database 會在 SQL Server 資料庫引擎和 Windows OS 的最新穩定版本上執行，大部分的使用者都不會注意到會持續執行升級。
 
 ## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>基本、標準和一般目的服務層級可用性
 
-這些服務層利用標準可用性體系結構。 下圖顯示了四個不同的節點,這些節點具有分離的計算層和存儲層。
+「基本」、「標準」和「一般用途」服務層級會針對無伺服器和已布建的計算運用標準可用性架構。 下圖顯示四個具有分隔計算和儲存層的不同節點。
 
 ![分隔計算與儲存體](media/sql-database-high-availability/general-purpose-service-tier.png)
 
-標準可用性模型包括兩層:
+標準可用性模型包含兩個層級：
 
-- 運行`sqlservr.exe`進程的無狀態計算層,僅包含瞬態和緩存數據,如 TempDB、附加 SSD 上的模型資料庫以及規劃記憶體中的緩存、緩衝池和列存儲池。 此無狀態節點由 Azure Service Fabric 操作,`sqlservr.exe`該結構初始化、控制節點的運行狀況,並在必要時執行故障轉移到另一個節點。
-- 儲存在 Azure Blob 儲存中的資料庫檔案 (.mdf/.ldf) 的有狀態資料層。 Azure Blob 儲存具有內置的數據可用性和冗餘功能。 它保證即使 SQL Server 進程崩潰,數據檔中的日誌檔或頁面中的每個記錄都會保留。
+- 無狀態計算層，會執行`sqlservr.exe`進程並僅包含暫時性和快取的資料，例如 TempDB、附加 SSD 上的模型資料庫，以及記憶體中的計畫快取、緩衝集區和資料行存放區集區。 此無狀態節點由 Azure Service Fabric 操作，可`sqlservr.exe`初始化、控制節點的健全狀況，並在必要時執行容錯移轉至另一個節點。
+- 具狀態資料層，其中包含儲存在 Azure Blob 儲存體中的資料庫檔案（.mdf/.ldf）。 Azure blob 儲存體具有內建的資料可用性和冗余功能。 它保證即使 SQL Server 進程損毀，也會保留資料檔案中記錄檔或頁面中的每筆記錄。
 
-每當升級資料庫引擎或作業系統或檢測到故障時,Azure Service Fabric 都會將無狀態 SQL Server 進程移動到具有足夠可用容量的另一個無狀態計算節點。 Azure Blob 儲存中的數據不受移動的影響,並且資料/日誌檔將附加到新初始化的 SQL Server 進程。 此過程保證 99.99% 的可用性,但由於新的 SQL Server 實例從冷緩存開始,繁重的工作負載在轉換期間可能會遇到一些性能下降。
+每當資料庫引擎或作業系統升級，或偵測到失敗時，Azure Service Fabric 會將無狀態 SQL Server 進程移至具有足夠可用容量的另一個無狀態計算節點。 移動時不會影響 Azure Blob 儲存體中的資料，而且資料/記錄檔會附加到新初始化的 SQL Server 進程。 此程式保證99.99% 的可用性，但繁重的工作負載可能會在轉換期間遇到效能降低的情況，因為新的 SQL Server 實例是以冷快取開始。
 
 ## <a name="premium-and-business-critical-service-tier-availability"></a>進階與商務關鍵性服務層級可用性
 
-高級和業務關鍵型服務層利用進階可用性模型,該模型將計算資源(SQL Server資料庫引擎進程)和儲存(本地附加的 SSD)整合在單個節點上。 通過將計算和儲存複製到創建三到四節點群集的其他節點來實現高可用性。 
+高階和商務關鍵服務層級會利用高階可用性模型，它會整合單一節點上的計算資源（SQL Server 資料庫引擎程式）和儲存體（本機連接的 SSD）。 藉由將計算和儲存體複寫至建立三到四個節點叢集的其他節點，即可達到高可用性。 
 
 ![資料庫引擎節點的叢集](media/sql-database-high-availability/business-critical-service-tier.png)
 
-基礎資料庫檔案 (.mdf/.ldf) 放置在附加的 SSD 儲存上,以便為您的工作負載提供非常低的延遲 IO。 高可用性使用類似於 SQL Server[始終在可用性組的技術](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)實現。 叢集包括可供讀寫客戶工作負載存取的單個主副本(SQL Server進程),以及最多三個包含數據複本的輔助副本(計算和存儲)。 主節點會按順序將更改推送到輔助節點,並確保在提交每個事務之前將數據同步到至少一個輔助副本。 此過程保證,如果主節點由於任何原因崩潰,則始終有一個完全同步的節點要故障轉移到。 故障轉移由 Azure 服務結構啟動。 輔助副本成為新的主節點后,將創建另一個輔助副本,以確保群集具有足夠的節點(仲裁集)。 故障轉移完成後,SQL 連接將自動重定向到新的主節點。
+基礎資料庫檔案（.mdf/.ldf）會放在附加的 SSD 儲存體上，以提供非常低的延遲 IO 給您的工作負載。 高可用性會使用類似于 SQL Server [Always On 可用性群組](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)的技術來執行。 叢集包含可供讀寫客戶工作負載存取的單一主要複本（SQL Server 進程），以及最多三個包含資料複本的次要複本（計算和儲存體）。 主要節點會依序持續將變更推送至次要節點，並確保資料至少會同步處理至一個次要複本，然後才認可每個交易。 此程式可確保如果主要節點因為任何原因而損毀，則一律會有完全同步處理的節點來進行故障切換。 容錯移轉是由 Azure Service Fabric 起始。 一旦次要複本成為新的主要節點，就會建立另一個次要複本，以確保叢集擁有足夠的節點（仲裁集）。 一旦容錯移轉完成後，SQL 連線會自動重新導向至新的主要節點。
 
-作為額外的好處,高級可用性模型包括能夠將唯讀 SQL 連接重定向到輔助副本之一。 此功能稱為[讀取橫向擴充](sql-database-read-scale-out.md)。它為從主副本卸載唯讀操作(如分析工作負載)提供 100% 的額外計算容量,無需額外付費。
+額外的好處是，premium 可用性模型包含將唯讀 SQL 連線重新導向至其中一個次要複本的能力。 這項功能稱為[讀取相應](sql-database-read-scale-out.md)放大。它提供100% 額外的計算容量，不需要額外費用即可從主要複本關閉載入唯讀作業，例如分析工作負載。
 
-## <a name="hyperscale-service-tier-availability"></a>超大規模服務層可用性
+## <a name="hyperscale-service-tier-availability"></a>超大規模資料庫服務層級可用性
 
-超大規模服務層體系結構在[分散式函數體系結構](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture)中描述。 
+超大規模資料庫服務層架構會在[分散式函數架構](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#distributed-functions-architecture)中說明。 
 
-![超大規模功能架構](./media/sql-database-hyperscale/hyperscale-architecture.png)
+![超大規模資料庫功能架構](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
-超大規模中的可用性模型包括四個層:
+超大規模資料庫中的可用性模型包含四個層級：
 
-- 運行`sqlservr.exe`進程的無狀態計算層,僅包含瞬態和緩存數據,例如附加 SSD 上的非覆蓋 RBPEX 緩存、TempDB、模型資料庫等,並在記憶體中規劃緩存、緩衝池和列存儲池。 此無狀態層包括主計算副本,以及可選的一些輔助計算副本,這些副本可用作故障轉移目標。
-- 由頁面伺服器組成的無狀態存儲層。 此層是計算副本上運行`sqlservr.exe`的進程的分散式存儲引擎。 每個頁面伺服器僅包含瞬態和緩存數據,例如覆蓋附加 SSD 上的 RBPEX 快取,以及緩存在記憶體中的數據頁。 每個頁面伺服器都有一個活動-主動配置的配對頁面伺服器,可提供負載平衡、冗餘和高可用性。
-- 運行日誌服務流程的計算節點、事務日誌登錄區域和事務日誌長期存儲形成的有狀態事務日誌存儲層。 著陸區和長期存儲使用 Azure 存儲,它為事務日誌提供可用性和[冗餘](https://docs.microsoft.com/azure/storage/common/storage-redundancy),確保提交事務的數據持久性。
-- 包含存儲在 Azure 儲存中的資料庫檔案 (.mdf/.ndf) 並由頁面伺服器更新的有狀態數據儲存層。 此層使用 Azure 儲存的數據可用性和[冗餘](https://docs.microsoft.com/azure/storage/common/storage-redundancy)功能。 它保證數據檔中的每一頁都會保留,即使其他超大規模體系結構層中的進程崩潰,或者計算節點發生故障。
+- 無狀態計算層，會執行`sqlservr.exe`進程並僅包含暫時性和快取的資料，例如在連接的 SSD 上的非涵蓋 RBPEX 快取、TempDB、模型資料庫等，以及在記憶體中規劃快取、緩衝集區和資料行存放區集區。 此無狀態層包含主要計算複本，以及選擇性的一些次要計算複本，可作為容錯移轉目標。
+- 頁面伺服器所組成的無狀態儲存層。 這一層是在計算複本上執行`sqlservr.exe`之處理常式的分散式儲存引擎。 每個頁面伺服器僅包含暫時性和快取的資料，例如在連接的 SSD 上涵蓋 RBPEX 快取，以及在記憶體中快取的資料頁。 每一頁伺服器在主動-主動設定中都有配對的頁面伺服器，以提供負載平衡、冗余和高可用性。
+- 執行記錄服務處理常式、交易記錄登陸區域和交易記錄長期儲存的計算節點所形成的具狀態交易記錄儲存層。 登陸區域和長期儲存空間使用 Azure 儲存體，為交易記錄提供可用性和[冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)，確保認可交易的資料持久性。
+- 具有資料庫檔案（.mdf/. ndf）的具狀態資料儲存層，儲存在 Azure 儲存體中，並由頁面伺服器更新。 這一層會使用 Azure 儲存體的資料可用性和[冗余](https://docs.microsoft.com/azure/storage/common/storage-redundancy)功能。 它保證即使超大規模資料庫架構的其他層級中的進程損毀，或計算節點失敗，資料檔中的每個頁面仍會保留。
 
-所有超大規模層中的計算節點都在 Azure Service Fabric 上運行,該結構控制每個節點的運行狀況,並在必要時對可用的正常節點執行故障轉移。
+所有超大規模資料庫層中的計算節點都會在 Azure Service Fabric 上執行，以控制每個節點的健全狀況，並視需要執行容錯移轉至可用的狀況良好節點。
 
-有關超大規模中高可用性的詳細資訊,請參閱[超大規模中的資料庫高可用性](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale)。
+如需超大規模資料庫中高可用性的詳細資訊，請參閱[超大規模資料庫中的資料庫高可用性](https://docs.microsoft.com/azure/sql-database/sql-database-service-tier-hyperscale#database-high-availability-in-hyperscale)。
 
 ## <a name="zone-redundant-configuration"></a>區域備援設定
 
-默認情況下,高級可用性模型的節點群集在同一資料中心中創建。 引入 Azure[可用性區域](../availability-zones/az-overview.md)後,SQL 資料庫可以將業務關鍵型資料庫的不同副本放置到同一區域中的不同可用性區域。 為了避免發生單點失敗，系統也會跨多個區域將控制環複寫成三個閘道環 (GW)。 [Azure 流量管理員](../traffic-manager/traffic-manager-overview.md) (ATM) 會控制特定閘道的路由。 由於高級或業務關鍵型服務層中的區域冗餘配置不會創建額外的資料庫冗餘,因此可以不花費額外費用啟用它。 通過選擇區域冗餘配置,可以使高級資料庫或業務關鍵型資料庫能夠抵禦更大的故障集,包括災難性的數據中心中斷,而無需對應用程式邏輯進行任何更改。 您也可以將任何現有的進階或業務關鍵資料庫或彈性集區轉換成區域備援組態。
+根據預設，premium 可用性模型的節點叢集會建立在相同的資料中心內。 隨著[Azure 可用性區域](../availability-zones/az-overview.md)的引進，SQL Database 可以將商務關鍵性資料庫的不同複本放到相同區域中的不同可用性區域。 為了避免發生單點失敗，系統也會跨多個區域將控制環複寫成三個閘道環 (GW)。 [Azure 流量管理員](../traffic-manager/traffic-manager-overview.md) (ATM) 會控制特定閘道的路由。 由於 Premium 或業務關鍵服務層級中的區域冗余設定並不會建立額外的資料庫冗余，因此您可以不需要額外成本來加以啟用。 藉由選取區域多餘的設定，您可以讓 Premium 或業務關鍵資料庫彈性地復原到較大的一組失敗，包括嚴重的資料中心中斷，而不需要變更應用程式邏輯。 您也可以將任何現有的進階或業務關鍵資料庫或彈性集區轉換成區域備援組態。
 
-由於區域冗餘資料庫在不同的資料中心中具有副本,它們之間具有一定距離,因此增加的網路延遲可能會增加提交時間,從而影響某些 OLTP 工作負載的性能。 您一律可以停用區域備援設定來回到單一區域設定。 此過程是類似於常規服務層升級的在線操作。 在此程序結束時，資料庫或集區會從區域備援環移轉成單一區域環，或反之亦然。
+由於區域的冗余資料庫在不同的資料中心內有複本，而它們之間有一些距離，因此增加的網路延遲可能會增加認可時間，因而影響某些 OLTP 工作負載的效能。 您一律可以停用區域備援設定來回到單一區域設定。 此程式是與一般服務層級升級類似的線上作業。 在此程序結束時，資料庫或集區會從區域備援環移轉成單一區域環，或反之亦然。
 
 > [!IMPORTANT]
-> 區域冗餘資料庫和彈性池目前僅在選定區域的高級和業務關鍵型服務層中支援。 使用"業務關鍵型"層時,區域冗餘配置僅在選擇Gen5計算硬體時可用。 有關支援區域冗餘資料庫的區域的最新資訊,請參閱[按區域劃分的服務支援](../availability-zones/az-overview.md#services-support-by-region)。  
-> 此功能在託管實例中不可用。
+> 目前只有在選取區域的 Premium 和商務關鍵服務層級中才支援區域多餘的資料庫和彈性集區。 使用業務關鍵層時，只有在選取第5代計算硬體時，才可以使用區域冗余設定。 如需有關支援區域多餘資料庫之區域的最新資訊，請參閱[依區域的服務支援](../availability-zones/az-region.md)。  
+> 此功能無法在受控實例中使用。
 
 下圖說明區域備援版的高可用性架構：
 
@@ -87,24 +87,24 @@ Azure SQL 資料庫在最新的穩定版本的 SQL Server 資料庫引擎和 Win
 
 ## <a name="accelerated-database-recovery-adr"></a>加速資料庫復原 (ADR)
 
-[加速資料庫恢復 (ADR)](sql-database-accelerated-database-recovery.md)是一種新的 SQL 資料庫引擎功能,可大大提高資料庫可用性,尤其是在存在長時間運行的事務的情況下。 ADR 目前適用於單一資料庫、彈性集區和 Azure SQL 資料倉儲。
+[加速資料庫復原（ADR）](sql-database-accelerated-database-recovery.md)是新的 SQL Database 引擎功能，可大幅提升資料庫的可用性，特別是在有長時間執行的交易存在時。 ADR 目前適用於單一資料庫、彈性集區和 Azure SQL 資料倉儲。
 
-## <a name="testing-application-fault-resiliency"></a>測試應用程式故障復原能力
+## <a name="testing-application-fault-resiliency"></a>測試應用程式錯誤復原
 
-高可用性是 Azure SQL 資料庫平臺的基本部分,該平臺可透明地適用於資料庫應用程式。 但是,我們認識到,在將應用程式部署到生產階段之前,您可能需要測試在計劃或計劃外事件期間啟動的自動故障轉移操作對應用程式的影響。 您可以調用特殊 API 來重新啟動資料庫或彈性池,這反過來將引發故障轉移。 在區域冗餘資料庫或彈性池中,API 調用將導致將用戶端連接重定向到可用性區域中的新主資料庫,而可用性區域不同於舊主資料庫的可用性區域。 因此,除了測試故障轉移如何影響現有資料庫會話外,還可以驗證故障轉移是否由於網路延遲的變化而更改端到端性能。 由於重新啟動操作具有侵入性,並且大量操作可能會給平台帶來壓力,因此每個資料庫或彈性池每 30 分鐘只允許進行一次故障轉移調用。 
+高可用性是在您的資料庫應用程式中以透明方式運作的 Azure SQL Database 平臺的基本部分。 不過，我們瞭解您可能會想要測試在計畫或未規劃的事件期間起始的自動容錯移轉作業如何影響應用程式，然後再將它部署到生產環境。 您可以呼叫特殊的 API 來重新開機資料庫或彈性集區，這樣會接著觸發容錯移轉。 在區域冗余資料庫或彈性集區的情況下，API 呼叫會導致將用戶端連線重新導向至可用性區域中與舊主要複本可用性區域不同的新主要複本。 因此，除了測試容錯移轉如何影響現有的資料庫會話以外，您也可以確認它是否會因為網路延遲的變更而變更端對端效能。 因為重新開機作業是侵入式的，而且有大量的使用者可能會造成平臺壓力，每個資料庫或彈性集區只允許一個容錯移轉呼叫每30分鐘一次。 
 
-可以使用 REST API 或 PowerShell 啟動故障轉移。 有關 REST API,請參考[資料庫故障轉移](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover)與[彈性池故障轉移](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)。 有關 PowerShell,請參閱[呼叫-AzSql資料庫故障轉移](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)與[呼叫-AzSql彈性池故障轉移](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)。 REST API 呼叫也可以使用[az rest](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest)命令從 Azure CLI 進行。
+您可以使用 REST API 或 PowerShell 來起始容錯移轉。 如 REST API，請參閱[資料庫容錯移轉](https://docs.microsoft.com/rest/api/sql/databases(failover)/failover)和[彈性集區容錯移轉](https://docs.microsoft.com/rest/api/sql/elasticpools(failover)/failover)。 針對 PowerShell，請參閱[AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)和[invoke-AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)。 您也可以使用[az REST](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-rest)命令，從 Azure CLI 進行 REST API 呼叫。
 
 > [!IMPORTANT]
-> 故障轉移命令當前在超大規模服務層和託管實例中不可用。
+> 超大規模資料庫服務層級和受控執行個體目前無法使用容錯移轉命令。
 
 ## <a name="conclusion"></a>結論
 
-Azure SQL 資料庫具有內建的高可用性解決方案,該解決方案與 Azure 平臺深度整合。 它依賴於服務結構進行故障檢測和恢復,依賴於 Azure Blob 儲存進行數據保護,並且取決於可用性區域,以便提高容錯能力。 此外,Azure SQL 資料庫利用 SQL Server 的「始終打開可用性組」技術進行複製和故障轉移。 這些技術的結合使應用程式能夠充分實現混合存儲模型的優勢,並支援要求最高的 SL。
+Azure SQL Database 具備內建的高可用性解決方案，與 Azure 平臺緊密整合。 這取決於失敗偵測和復原的 Service Fabric、用於資料保護的 Azure Blob 儲存體，以及在可用性區域上，以提供更高的容錯能力。 此外，Azure SQL database 會利用 SQL Server 的 Always On 可用性群組技術來進行複寫和容錯移轉。 這些技術的結合可讓應用程式完全實現混合儲存體模型的優點，並支援最嚴苛的 Sla。
 
 ## <a name="next-steps"></a>後續步驟
 
 - 了解 [Azure 可用性區域](../availability-zones/az-overview.md)
-- 瞭解[服務結構](../service-fabric/service-fabric-overview.md)
+- 深入瞭解[Service Fabric](../service-fabric/service-fabric-overview.md)
 - 了解 [Azure 流量管理員](../traffic-manager/traffic-manager-overview.md)
 - 如需其他高可用性和災害復原的選項，請參閱[商務持續性](sql-database-business-continuity.md)

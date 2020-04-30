@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: e740a65d453a69a987e938a5170ae8e04c7bfe40
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dcb151c8be0ab3a2393d0659b75985a92ac60507
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78249871"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82207882"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>教學課程：使用入口網站在 Azure Load Balancer 中設定連接埠轉送
 
@@ -60,7 +60,7 @@ ms.locfileid: "78249871"
     |可用性區域| 選取 [區域備援]  。    |
      
     >[!NOTE]
-     >務必在支援可用性區域的位置中建立您的 Load Balancer 和其所有資源。 如需詳細資訊，請參閱[支援可用性區域的區域](../availability-zones/az-overview.md#services-support-by-region)。 
+     >務必在支援可用性區域的位置中建立您的 Load Balancer 和其所有資源。 如需詳細資訊，請參閱[支援可用性區域的區域](../availability-zones/az-region.md)。 
 
 3. 在 [檢閱 + 建立]  索引標籤中，按一下 [建立]  。  
   

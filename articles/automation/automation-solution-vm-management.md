@@ -3,14 +3,14 @@ title: 在下班時間解決方案中啟動/停止 Vm
 description: 此 VM 管理解決方案會依排程啟動和停止您的 Azure 虛擬機器，並從 Azure 監視器記錄中主動進行監視。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c9b37cf1fec0d39c3c362c6bc303a576d6b7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7e30fd0d53af7ee61d919b56e9ffcd1f1b6bd36
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187325"
+ms.locfileid: "82207593"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>在 Azure 自動化中的離峰時間啟動/停止 Vm 解決方案
 
@@ -19,7 +19,7 @@ ms.locfileid: "82187325"
 此解決方案會使用[new-azurermvm](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) Cmdlet 來啟動 vm。 它會使用[停止 new-azurermvm](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0)來停止 vm。
 
 > [!NOTE]
-> [**在離峰期間啟動/停止 vm** ] 解決方案已更新，可支援可用的最新 Azure 模組版本。
+> [**在離峰期間啟動/停止 vm** ] 解決方案已更新，可支援可用的最新 Azure 模組版本。 此解決方案的更新版本（可在 Marketplace 中取得）不支援 AzureRM 模組，因為我們已從 AzureRM 遷移至 Az 模組。
 
 解決方案為想要優化其 VM 成本的使用者，提供非集中式低成本的自動化選項。 使用此解決方案，您可以：
 
@@ -108,7 +108,7 @@ ms.locfileid: "82187325"
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 從父系 Runbook 呼叫。 此 runbook 會針對自動停止案例，以每個資源為基礎建立警示。|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf：True 或 False  | 在目標訂用帳戶或資源群組中的 VM 上建立或更新 Azure 警示規則。 <br> `VMList`是以逗號分隔的 Vm 清單。 例如： `vm1, vm2, vm3` 。<br> `WhatIf`啟用 runbook 邏輯的驗證，而不執行。|
-|AutoStop_Disable | None | 停用自動停止警示和預設排程。|
+|AutoStop_Disable | 無 | 停用自動停止警示和預設排程。|
 |AutoStop_VM_Child | WebHookData | 從父系 Runbook 呼叫。 警示規則會呼叫此 runbook 以停止傳統 VM。|
 |AutoStop_VM_Child_ARM | WebHookData |從父系 Runbook 呼叫。 警示規則會呼叫此 runbook 來停止 VM。  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> 動作：啟動或停止<br> VMList  | 藉由雲端服務，在傳統 VM 群組中執行動作開始或停止。 |

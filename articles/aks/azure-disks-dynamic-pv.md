@@ -1,16 +1,16 @@
 ---
-title: 動態建立 Azure 磁碟卷
+title: 以動態方式建立 Azure 磁片區
 titleSuffix: Azure Kubernetes Service
-description: 瞭解如何在 Azure 庫伯奈斯服務 (AKS) 中使用 Azure 磁碟動態創建持久卷
+description: 瞭解如何在 Azure Kubernetes Service （AKS）中以動態方式建立具有 Azure 磁片的永久性磁片區
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 0ed58ef86dcd93ff2bd5588c8479195443bc292d
-ms.sourcegitcommit: 6397c1774a1358c79138976071989287f4a81a83
+ms.openlocfilehash: 9ac41b1738d1691f6547f508d1a38dec89b0bb79
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/07/2020
-ms.locfileid: "80803546"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82208137"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中以動態方式建立和使用 Azure 磁碟的永續性磁碟區
 
@@ -19,26 +19,26 @@ ms.locfileid: "80803546"
 > [!NOTE]
 > 您只能使用*存取模式*類型 *ReadWriteOnce* 來掛接 Azure 磁碟，以讓它僅供 AKS 中單一 Pod 使用。 如果您需要在多個 Pod 之間共用永續性磁碟區，請使用 [Azure 檔案服務][azure-files-pvc]。
 
-有關 Kubernets 卷的詳細資訊,請參閱[AKS 中應用程式的儲存選項][concepts-storage]。
+如需有關 Kubernetes 磁片區的詳細資訊，請參閱[AKS 中應用程式的儲存體選項][concepts-storage]。
 
 ## <a name="before-you-begin"></a>開始之前
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-您還需要 Azure CLI 版本 2.0.59 或更高版本安裝和配置。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
+您也需要安裝並設定 Azure CLI 版本2.0.59 或更新版本。 執行  `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱 [安裝 Azure CLI][install-azure-cli]。
 
-## <a name="built-in-storage-classes"></a>內建儲存類
+## <a name="built-in-storage-classes"></a>內建的儲存類別
 
 儲存體類別可用來定義如何搭配永續性磁碟區動態建立儲存體單位。 如需有關 Kubernetes 儲存體類別的詳細資訊，請參閱 [Kubernetes 儲存體類別][kubernetes-storage-classes]。
 
 每個 AKS 叢集都包含兩個預先建立的儲存體類別，而且這兩個類別都設定為可搭配 Azure 磁碟使用：
 
 * *default* 儲存體類別會佈建標準 Azure 磁碟。
-    * 標準存儲由 HDD 支援,在仍可執行的同時提供經濟高效的存儲。 標準磁碟是經濟高效的開發工作和測試工作負載的理想選擇。
+    * 標準儲存體是以 Hdd 為後盾，可提供符合成本效益的儲存體，同時仍能發揮效能。 標準磁片適用于符合成本效益的開發和測試工作負載。
 * *managed-premium* 儲存體類別會佈建進階 Azure 磁碟。
     * 進階磁碟是以 SSD 為基礎的高效能、低延遲磁碟為後盾。 最適合用於執行生產工作負載的 VM。 如果您叢集內的 AKS 節點使用進階儲存體，請選取 *managed-premium* 類別。
     
-這些預設存儲類不允許在創建後更新卷大小。 要啟用此功能,請將*allowVolume 擴展:true*行添加到預設儲存類之一,或創建自己的自定義存儲類。 可以使用 指令編輯現有儲存`kubectl edit sc`類別 。 有關儲存類和創建自己的類的詳細資訊,請參閱[AKS 中應用程式的儲存選項][storage-class-concepts]。
+這些預設儲存類別不允許您在建立之後更新磁片區大小。 若要啟用這項功能，請將*allowVolumeExpansion： true*行新增至其中一個預設儲存類別，或建立您自己的自訂儲存類別。 您可以使用`kubectl edit sc`命令來編輯現有的儲存類別。 如需儲存體類別和自己建立的詳細資訊，請參閱[AKS 中應用程式的儲存體選項][storage-class-concepts]。
 
 使用 [kubectl get sc][kubectl-get] 命令來查看預先建立的儲存體類別。 以下範例顯示 AKS 叢集中可用的預先建立儲存體類別：
 
@@ -51,7 +51,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 ```
 
 > [!NOTE]
-> GiB 中會指定持續性磁碟區宣告，但 SKU 會針對特定的大小向 Azure 受控磁碟收費。 這些 SKU 範圍從 S4 或 P4 磁碟的 32GiB 到 S80 或 P80 磁碟的 32TiB(預覽版)。 進階受控磁碟的輸送量和 IOPS 效能，取決於 SKU 和 AKS 叢集中節點的執行個體大小。 如需詳細資訊，請參閱[受控磁碟的定價和效能][managed-disk-pricing-performance]。
+> GiB 中會指定持續性磁碟區宣告，但 SKU 會針對特定的大小向 Azure 受控磁碟收費。 這些 Sku 的範圍從32Gib 到 for S4 或 P4 磁片到 32TiB for S80 或 P80 磁片（預覽版）。 進階受控磁碟的輸送量和 IOPS 效能，取決於 SKU 和 AKS 叢集中節點的執行個體大小。 如需詳細資訊，請參閱[受控磁碟的定價和效能][managed-disk-pricing-performance]。
 
 ## <a name="create-a-persistent-volume-claim"></a>建立永續性磁碟區宣告
 
@@ -86,7 +86,7 @@ persistentvolumeclaim/azure-managed-disk created
 
 ## <a name="use-the-persistent-volume"></a>使用永續性磁碟區
 
-建立永續性磁碟區宣告，並成功佈建磁碟之後，就能建立可存取磁碟的 Pod。 下列資訊清單所建立的基本 NGINX Pod，會使用名為 *azure-managed-disk* 的永續性磁碟區宣告，在 `/mnt/azure` 路徑上掛接 Azure 磁碟。 對於 Windows 伺服器容器(目前在 AKS 中預覽),使用 Windows 路徑約定(如 *"D:")* 指定*載入路徑*。
+建立永續性磁碟區宣告，並成功佈建磁碟之後，就能建立可存取磁碟的 Pod。 下列資訊清單所建立的基本 NGINX Pod，會使用名為 *azure-managed-disk* 的永續性磁碟區宣告，在 `/mnt/azure` 路徑上掛接 Azure 磁碟。 若是 Windows Server 容器，請使用 Windows 路徑慣例來指定*mountPath* ，例如 *： '*。
 
 建立名為 `azure-pvc-disk.yaml` 的檔案，然後將下列資訊清單複製進來。
 
@@ -251,12 +251,12 @@ Volumes:
 
 ## <a name="next-steps"></a>後續步驟
 
-有關相關的最佳實務,請參閱[AKS 中儲存和備份的最佳做法][operator-best-practices-storage]。
+如需相關的最佳作法，請參閱[AKS 中儲存和備份的最佳作法][operator-best-practices-storage]。
 
 深入了解使用 Azure 磁碟的 Kubernetes 永續性磁碟區。
 
 > [!div class="nextstepaction"]
-> [Azure 磁碟的庫伯內斯外掛程式][azure-disk-volume]
+> [適用于 Azure 磁片的 Kubernetes 外掛程式][azure-disk-volume]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes

@@ -1,17 +1,17 @@
 ---
 title: 管理 Azure Cosmos DB 中的索引編製原則
-description: 瞭解如何管理索引策略、從索引中包括或排除屬性、如何使用不同的 Azure Cosmos DB SDK 定義索引
-author: ThomasWeiss
+description: 瞭解如何管理索引編制原則、包含或排除索引中的屬性、如何使用不同的 Azure Cosmos DB Sdk 定義索引編制
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.author: thweiss
-ms.openlocfilehash: 58a1ee13afa76b152723cb71d4037f9c31cc8d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/28/2020
+ms.author: tisande
+ms.openlocfilehash: bdd5d986752e9d80d2967a8f5fd32491154fa236
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79252073"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82233917"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>管理 Azure Cosmos DB 中的索引編製原則
 
@@ -19,7 +19,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
 
 ## <a name="indexing-policy-examples"></a>索引編製原則範例
 
-下面是一些以[JSON 格式](index-policy.md#include-exclude-paths)顯示的索引策略示例，這是它們在 Azure 門戶上公開的方式。 透過 Azure CLI 或任何 SDK 也可以設定相同的參數。
+以下是一些以[JSON 格式](index-policy.md#include-exclude-paths)顯示的索引編制原則範例，也就是它們在 Azure 入口網站上的公開方式。 透過 Azure CLI 或任何 SDK 也可以設定相同的參數。
 
 ### <a name="opt-out-policy-to-selectively-exclude-some-property-paths"></a>可選擇性地排除一些屬性路徑的退出原則
 
@@ -42,7 +42,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
     }
 ```
 
-此索引策略等效于下面手動設置```kind``````dataType```的策略及其```precision```預設值。 不再需要這些屬性來顯式設置，您可以完全從索引策略中省略它們（如上例所示）。
+此編制索引原則等同于以下的設定，其會```kind```以```dataType```手動方式```precision```將、和設為其預設值。 這些屬性不再需要明確設定，而且您可以完全從索引編制原則中省略它們（如上述範例所示）。
 
 ```json
     {
@@ -96,7 +96,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
     }
 ```
 
-此索引策略等效于下面手動設置```kind``````dataType```的策略及其```precision```預設值。 不再需要這些屬性來顯式設置，您可以完全從索引策略中省略它們（如上例所示）。
+此編制索引原則等同于以下的設定，其會```kind```以```dataType```手動方式```precision```將、和設為其預設值。 這些屬性不再需要明確設定，而且您可以完全從索引編制原則中省略它們（如上述範例所示）。
 
 ```json
     {
@@ -137,7 +137,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
     }
 ```
 
-> [!NOTE] 
+> [!NOTE]
 > 一般會建議您使用**退出**索引編製原則來讓 Azure Cosmos DB 主動地對可能會新增至模型的新屬性編製索引。
 
 ### <a name="using-a-spatial-index-on-a-specific-property-path-only"></a>僅對特定屬性路徑使用空間索引
@@ -172,7 +172,10 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
 
 ## <a name="composite-indexing-policy-examples"></a>複合式索引編製原則範例
 
-除了包含或排除個別屬性的路徑以外，您也可以指定複合式索引。 如果您要為多個屬性執行具有 `ORDER BY` 子句的查詢，則必須要有這些屬性的[複合式索引](index-policy.md#composite-indexes)。 此外，複合索引對於具有篩選器並在不同屬性上具有 ORDER BY 子句的查詢具有性能優勢。
+除了包含或排除個別屬性的路徑以外，您也可以指定複合式索引。 如果您要為多個屬性執行具有 `ORDER BY` 子句的查詢，則必須要有這些屬性的[複合式索引](index-policy.md#composite-indexes)。 此外，對於具有篩選的查詢，以及在不同屬性上具有 ORDER BY 子句的查詢，複合索引將有效能上的好處。
+
+> [!NOTE]
+> 複合路徑具有隱含`/?`的，因為只有該路徑上的純量值會編制索引。 複合`/*`路徑中不支援萬用字元。 您不應該`/?`在`/*`複合路徑中指定或。
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>針對 (name asc, age desc) 定義的複合式索引：
 
@@ -201,7 +204,7 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
     }
 ```
 
-查詢#1和查詢#2需要上述名稱和年齡的複合索引：
+查詢 #1 和查詢 #2 需要上述的複合索引（名稱和年齡）：
 
 查詢 1：
 
@@ -219,9 +222,9 @@ Azure Cosmos DB 會遵循針對每個容器所定義的[索引編製原則](inde
     ORDER BY c.name DESC, c.age ASC
 ```
 
-此複合索引將有利於查詢#3和查詢#4並優化篩選器：
+這個複合索引將受益于查詢 #3 並查詢 #4 並將篩選優化：
 
-查詢#3：
+查詢 #3：
 
 ```sql
 SELECT *
@@ -230,7 +233,7 @@ WHERE c.name = "Tim"
 ORDER BY c.name DESC, c.age ASC
 ```
 
-查詢#4：
+查詢 #4：
 
 ```sql
 SELECT *
@@ -238,7 +241,7 @@ FROM c
 WHERE c.name = "Tim" AND c.age > 18
 ```
 
-### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>為（名稱 ASC、年齡 ASC） 和（名稱 ASC，年齡 DESC）定義的複合索引：
+### <a name="composite-index-defined-for-name-asc-age-asc-and-name-asc-age-desc"></a>針對（name ASC，age ASC）和（name ASC，age DESC）定義的複合索引：
 
 您可以在相同的索引編製原則內定義多個不同的複合式索引。
 
@@ -277,7 +280,7 @@ WHERE c.name = "Tim" AND c.age > 18
     }
 ```
 
-### <a name="composite-index-defined-for-name-asc-age-asc"></a>為 （名稱 ASC， 年齡 ASC） 定義的複合索引：
+### <a name="composite-index-defined-for-name-asc-age-asc"></a>針對（name ASC，age ASC）定義的複合索引：
 
 指定順序是選擇性動作。 若未指定，將採用遞增順序。
 
@@ -320,7 +323,7 @@ WHERE c.name = "Tim" AND c.age > 18
 
 ### <a name="no-indexing"></a>無索引編製
 
-此策略將關閉索引。 如果`indexingMode`設置為`none`，則無法在容器上設置 TTL。
+此原則將會關閉索引編制。 如果`indexingMode`設定為`none`，您就無法在容器上設定 TTL。
 
 ```json
     {
@@ -328,9 +331,9 @@ WHERE c.name = "Tim" AND c.age > 18
     }
 ```
 
-## <a name="updating-indexing-policy"></a>更新索引策略
+## <a name="updating-indexing-policy"></a>正在更新索引編制原則
 
-在 Azure Cosmos DB 中，可以使用以下任何方法更新索引策略：
+在 Azure Cosmos DB 中，您可以使用下列任何方法來更新索引編制原則：
 
 - 從 Azure 入口網站
 - 使用 Azure CLI
@@ -340,13 +343,13 @@ WHERE c.name = "Tim" AND c.age > 18
 [更新索引編製原則](index-policy.md#modifying-the-indexing-policy)將會觸發索引的轉換。 您也可以從 SDK 追蹤此轉換的進度。
 
 > [!NOTE]
-> 更新索引策略時，寫入 Azure Cosmos DB 將不間斷。 在重新索引期間，查詢可能會在更新索引時返回部分結果。
+> 更新索引編制原則時，寫入 Azure Cosmos DB 將會中斷。 在重新編制索引期間，查詢可能會在索引更新時傳回部分結果。
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 入口網站
 
 Azure Cosmos 容器會將其索引編製原則儲存為 JSON 文件，並可從 Azure 入口網站直接進行編輯。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 
 1. 建立新的 Azure Cosmos 帳戶，或選取現有帳戶。
 
@@ -362,15 +365,15 @@ Azure Cosmos 容器會將其索引編製原則儲存為 JSON 文件，並可從 
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-要使用自訂索引策略創建容器，請參閱[使用 CLI 使用自訂索引策略創建容器](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
+若要建立具有自訂索引編制原則的容器，請參閱[使用 CLI 建立具有自訂索引原則的容器](manage-with-cli.md#create-a-container-with-a-custom-index-policy)
 
 ## <a name="use-powershell"></a>使用 PowerShell
 
-要使用自訂索引策略創建容器，請參閱[使用 Powershell 使用自訂索引策略創建容器](manage-with-powershell.md#create-container-custom-index)
+若要建立具有自訂索引編制原則的容器，請參閱[使用 Powershell 建立具有自訂索引原則的容器](manage-with-powershell.md#create-container-custom-index)
 
 ## <a name="use-the-net-sdk-v2"></a>使用 .NET SDK V2
 
-`DocumentCollection` [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)中的物件公開一`IndexingPolicy`個屬性，該屬性允許您`IndexingMode`更改 和`IncludedPaths`添加`ExcludedPaths`或刪除 和 。
+`DocumentCollection` [.Net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)中的物件會公開`IndexingPolicy`屬性，可讓您變更`IndexingMode`和新增或移除`IncludedPaths`和。 `ExcludedPaths`
 
 ```csharp
 // Retrieve the container's details
@@ -400,7 +403,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 ## <a name="use-the-net-sdk-v3"></a>使用 .NET SDK V3
 
-`ContainerProperties` [.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)中的物件（請參閱有關其用法[的此快速入門](create-sql-api-dotnet.md)）`IndexingPolicy`公開一個屬性，允許您`IndexingMode`更改 和`IncludedPaths`添加`ExcludedPaths`或刪除 和 。
+來自`ContainerProperties` [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)的物件（請參閱[本快速入門](create-sql-api-dotnet.md)中有關其使用方式`IndexingPolicy`的資訊）會公開一個`IndexingMode`屬性，讓您`IncludedPaths`變更`ExcludedPaths`和新增或移除和。
 
 ```csharp
 // Retrieve the container's details
@@ -424,7 +427,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-若要跟蹤索引轉換`RequestOptions`進度，將`PopulateQuotaInfo`屬性集到`true`的物件傳遞，然後從`x-ms-documentdb-collection-index-transformation-progress`回應標頭中檢索該值。
+若要追蹤索引轉換進度，請傳遞`RequestOptions`將`PopulateQuotaInfo`屬性設定為`true`的物件，然後從`x-ms-documentdb-collection-index-transformation-progress`回應標頭取出值。
 
 ```csharp
 // retrieve the container's details
@@ -433,7 +436,7 @@ ContainerResponse containerResponse = await client.GetContainer("database", "con
 long indexTransformationProgress = long.Parse(containerResponse.Headers["x-ms-documentdb-collection-index-transformation-progress"]);
 ```
 
-在創建新容器時定義自訂索引策略時，SDK V3 的流暢 API 允許您以簡潔高效的方式編寫此定義：
+在建立新容器時定義自訂索引編制原則時，SDK V3's Fluent API 可讓您以簡潔且有效率的方式撰寫此定義：
 
 ```csharp
 await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
@@ -541,19 +544,19 @@ containerResponse.subscribe(result -> {
 
 [Node.js SDK](https://www.npmjs.com/package/@azure/cosmos) 中的 `ContainerDefinition` 介面 (請參閱關於其使用方式的[這個快速入門](create-sql-api-nodejs.md)) 會公開 `indexingPolicy` 屬性，以供您變更 `indexingMode` 以及新增或移除 `includedPaths` 和 `excludedPaths`。
 
-檢索容器的詳細資訊
+取得容器的詳細資料
 
 ```javascript
 const containerResponse = await client.database('database').container('container').read();
 ```
 
-將索引模式設置為一致
+將索引編制模式設定為一致
 
 ```javascript
 containerResponse.body.indexingPolicy.indexingMode = "consistent";
 ```
 
-添加包含的路徑，包括空間索引
+新增內含的路徑，包括空間索引
 
 ```javascript
 containerResponse.body.indexingPolicy.includedPaths.push({
@@ -584,13 +587,13 @@ containerResponse.body.indexingPolicy.includedPaths.push({
   });
 ```
 
-添加排除的路徑
+新增排除的路徑
 
 ```javascript
 containerResponse.body.indexingPolicy.excludedPaths.push({ path: '/name/*' });
 ```
 
-使用更改更新容器
+使用變更來更新容器
 
 ```javascript
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
@@ -609,22 +612,22 @@ const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-col
 
 ## <a name="use-the-python-sdk-v3"></a>使用 Python SDK V3
 
-使用[Python SDK V3](https://pypi.org/project/azure-cosmos/)時（請參閱有關其用法[的此快速入門](create-sql-api-python.md)），容器配置作為字典進行管理。 您可以從這個字典存取索引編製原則和其所有屬性。
+使用[PYTHON SDK V3](https://pypi.org/project/azure-cosmos/)時（請參閱[本快速入門](create-sql-api-python.md)中有關其使用方式的資訊），容器設定會當做字典來管理。 您可以從這個字典存取索引編製原則和其所有屬性。
 
-檢索容器的詳細資訊
+取得容器的詳細資料
 
 ```python
 containerPath = 'dbs/database/colls/collection'
 container = client.ReadContainer(containerPath)
 ```
 
-將索引模式設置為一致
+將索引編制模式設定為一致
 
 ```python
 container['indexingPolicy']['indexingMode'] = 'consistent'
 ```
 
-使用包含的路徑和空間索引定義索引策略
+定義包含路徑和空間索引的索引編制原則
 
 ```python
 container["indexingPolicy"] = {
@@ -638,7 +641,7 @@ container["indexingPolicy"] = {
 }
 ```
 
-使用排除路徑定義索引策略
+定義具有排除路徑的索引編制原則
 
 ```python
 container["indexingPolicy"] = {
@@ -648,7 +651,7 @@ container["indexingPolicy"] = {
 }
 ```
 
-添加複合索引
+加入複合索引
 
 ```python
 container['indexingPolicy']['compositeIndexes'] = [
@@ -665,7 +668,7 @@ container['indexingPolicy']['compositeIndexes'] = [
                 ]
 ```
 
-使用更改更新容器
+使用變更來更新容器
 
 ```python
 response = client.ReplaceContainer(containerPath, container)
@@ -673,9 +676,9 @@ response = client.ReplaceContainer(containerPath, container)
 
 ## <a name="use-the-python-sdk-v4"></a>使用 Python SDK V4
 
-使用[Python SDK V4](https://pypi.org/project/azure-cosmos/)時，容器配置作為字典進行管理。 您可以從這個字典存取索引編製原則和其所有屬性。
+使用[PYTHON SDK V4](https://pypi.org/project/azure-cosmos/)時，容器設定會當做字典來管理。 您可以從這個字典存取索引編製原則和其所有屬性。
 
-檢索容器的詳細資訊
+取得容器的詳細資料
 
 ```python
 database_client = cosmos_client.get_database_client('database')
@@ -683,7 +686,7 @@ container_client = database_client.get_container_client('container')
 container = container_client.read()
 ```
 
-將索引模式設置為一致
+將索引編制模式設定為一致
 
 ```python
 indexingPolicy = {
@@ -691,7 +694,7 @@ indexingPolicy = {
 }
 ```
 
-使用包含的路徑和空間索引定義索引策略
+定義包含路徑和空間索引的索引編制原則
 
 ```python
 indexingPolicy = {
@@ -704,7 +707,7 @@ indexingPolicy = {
 }
 ```
 
-使用排除路徑定義索引策略
+定義具有排除路徑的索引編制原則
 
 ```python
 indexingPolicy = {
@@ -714,7 +717,7 @@ indexingPolicy = {
 }
 ```
 
-添加複合索引
+加入複合索引
 
 ```python
 indexingPolicy['compositeIndexes'] = [
@@ -731,7 +734,7 @@ indexingPolicy['compositeIndexes'] = [
 ]
 ```
 
-使用更改更新容器
+使用變更來更新容器
 
 ```python
 response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
@@ -741,5 +744,5 @@ response = database_client.replace_container(container_client, container['partit
 
 在下列文章中深入了解編製索引：
 
-- [索引編製概觀](index-overview.md)
+- [編製索引概觀](index-overview.md)
 - [編製索引原則](index-policy.md)

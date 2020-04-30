@@ -8,12 +8,12 @@ ms.author: magoedte
 ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8d22e63be880c0cef0c4072e99ab85bf3250a1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: d036733c023417af3ef038bb9abc278ec91e665c
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114269"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508950"
 ---
 # <a name="manage-modules-in-azure-automation"></a>在 Azure 自動化中管理模組
 
@@ -21,8 +21,9 @@ Azure 自動化可讓您匯入 PowerShell 模組，以在 DSC 設定中啟用 ru
 
 * [Azure PowerShell Az. Automation](/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
 * [Azure PowerShell AzureRM](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-6.13.0)
-* 適用`Orchestrator.AssetManagement.Cmdlets`于 Windows 的 Log Analytics 代理程式的內部模組
 * 其他 PowerShell 模組
+* 內部`Orchestrator.AssetManagement.Cmdlets`模組
+* Python 2 模組
 * 您建立的自訂模組 
 
 當您建立自動化帳戶時，Azure 自動化預設會匯入一些模組。 請參閱[預設模組](#default-modules)。
@@ -96,9 +97,13 @@ Azure 自動化不會自動將根 Az 模組匯入任何新的或現有的自動�
 
 建議您使用 Az 或 AzureRM Cmdlet 來操作 runbook 內容以外的 Azure 自動化資源。 
 
-## <a name="module-supporting-get-automationpscredential"></a>支援 AutomationPSCredential 的模組
+## <a name="orchestratorassetmanagementcmdlets-module"></a>AssetManagement Cmdlet 模組
 
-此`Get-AutomationPSCredential` Cmdlet 是模組`Orchestrator.AssetManagement.Cmdlets`的一部分。 此 Cmdlet 會傳回`PSCredential`物件，這是大部分使用認證的 PowerShell Cmdlet 所預期的。 若要深入瞭解在 Azure 自動化中使用認證的詳細資訊，請參閱[Azure 自動化中的認證資產](credentials.md)。
+Azure 自動化支援適用于`Orchestrator.AssetManagement.Cmdlets` Windows 的 Log Analytics 代理程式的內部模組（預設為安裝）。 此`Get-AutomationPSCredential`模組中的 Cmdlet 常用於 runbook 來抓取`PSCredential`物件，這是大部分使用認證的 PowerShell Cmdlet 所預期的。 若要深入瞭解在 Azure 自動化中使用認證的詳細資訊，請參閱[Azure 自動化中的認證資產](credentials.md)。
+
+## <a name="python-modules"></a>Python 模組
+
+您可以在 Azure 自動化中建立 Python 2 runbook。 如需 Python 模組資訊，請參閱[管理 Azure 自動化中的 Python 2 套件](../python-packages.md)。
 
 ## <a name="migrating-to-az-modules"></a>遷移至 Az 模組
 
@@ -117,7 +122,7 @@ Azure 自動化不會自動將根 Az 模組匯入任何新的或現有的自動�
 * 當 runbook 從模組叫用 Cmdlet 時
 * 當 runbook 使用[import-module](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/import-module?view=powershell-7) Cmdlet 明確匯入模組時
 * 當 runbook 匯入另一個相依模組時
-    
+
 #### <a name="testing-for-your-runbooks-and-dsc-configurations-prior-to-module-migration"></a>在模組遷移之前測試您的 runbook 和 DSC 設定
 
 在遷移至 Az 模組之前，請務必謹慎地在個別的自動化帳戶中測試所有 runbook 和 DSC 設定。 

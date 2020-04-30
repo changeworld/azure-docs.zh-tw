@@ -1,5 +1,5 @@
 ---
-title: Azure AD 直通身份驗證 - 快速入門 |微軟文件
+title: Azure AD 傳遞驗證-快速入門 |Microsoft Docs
 description: 本文說明如何開始使用 Azure Active Directory (Azure AD) 傳遞驗證。
 services: active-directory
 keywords: Azure AD Connect 傳遞驗證, 安裝 Active Directory, Azure AD 的必要元件, SSO, 單一登入
@@ -16,14 +16,14 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18ffb48b2e7978831155afaf2e675bb720e57544
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: ca425c7c5739785f3463086d89b4796f09bf45b4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082198"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229811"
 ---
-# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure 活動目錄傳遞認證:快速入門
+# <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory 傳遞驗證：快速入門
 
 ## <a name="deploy-azure-ad-pass-through-authentication"></a>部署 Azure AD 傳遞驗證
 
@@ -32,6 +32,9 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 >[!IMPORTANT]
 >如果您要從 AD FS (或其他同盟技術) 遷移至傳遞驗證，強烈建議您遵循我們在[此處](https://aka.ms/adfstoPTADPDownload) \(英文\) 發佈的詳細部署指南。
 
+>[!NOTE]
+>如果您使用 Azure Government 雲端部署傳遞驗證，請參閱[Azure Government 的混合式身分識別考慮](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-government-cloud)。
+
 請依照下列指示，在您的租用戶上部署傳遞驗證：
 
 ## <a name="step-1-check-the-prerequisites"></a>步驟 1：檢查必要條件
@@ -39,7 +42,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 請確保已具備下列必要條件。
 
 >[!IMPORTANT]
->從安全角度來看,管理員應該將運行 PTA 代理的伺服器視為域控制器。  PTA 代理伺服器應按照[保護域控制器免受攻擊](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)時概述的相同思路進行強化
+>從安全性的觀點來看，系統管理員應該將執行 PTA 代理程式的伺服器視為網域控制站。  PTA 代理程式伺服器應該與[保護網域控制站免于遭受攻擊](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack)時所述的同一行一起強化
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>於 Azure Active Directory 管理中心
 
@@ -69,14 +72,14 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
      | **8080** (選擇性) | 如果無法使用連接埠 443，則驗證代理程式會透過連接埠 8080 每隔十分鐘報告其狀態。 此狀態會顯示在 Azure 入口網站上。 連接埠 8080 「不」__ 會用於使用者登入。 |
      
      如果您的防火牆會根據原始使用者強制執行規則，請開啟這些連接埠，讓來自以網路服務形式執行之 Windows 服務的流量得以通行。
-   - 如果您的防火牆或代理允許 DNS 白名單,請向**\*.msappproxy.net**和**\*.servicebus.windows.net**添加連接。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
+   - 如果您的防火牆或 proxy 允許 DNS 允許清單，請將連線新增至** \*msappproxy.net**和** \*servicebus.windows.net**。 如果不允許建立，請允許存取每週更新的 [Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。
    - 您的驗證代理程式必須存取 **login.windows.net** 與 **login.microsoftonline.com**才能進行初始註冊， 因此也請針對這些 URL 開啟您的防火牆。
    - 為了驗證憑證，請解除封鎖以下 URL：**mscrl.microsoft.com:80**、**crl.microsoft.com:80**、**ocsp.msocsp.com:80** 和 **www\.microsoft.com:80**。 由於這些 URL 會用於其他 Microsoft 產品的憑證驗證，因此您可能已將這些 URL 解除封鎖。
 
-### <a name="azure-government-cloud-prerequisite"></a>Azure 政府雲先決條件
-在透過 Azure AD 連接步驟 2 啟用直通身份驗證之前,請從 Azure 入口下載最新版本的 PTA 代理。  您需要確保代理是**x.x.xxx.x**或更高版本的代理。  要驗證代理,請參閱[升級身份驗證代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)
+### <a name="azure-government-cloud-prerequisite"></a>Azure Government 雲端必要條件
+透過步驟2的 Azure AD Connect 啟用傳遞驗證之前，請先從 Azure 入口網站下載最新版本的 PTA 代理程式。  您必須確保代理程式的版本是**1.5.1742.0。** 或更新版本。  若要驗證您的代理程式，請參閱[升級驗證代理](how-to-connect-pta-upgrade-preview-authentication-agents.md)程式
 
-下載代理的最新版本後,繼續執行以下說明,通過 Azure AD 連接配置直通身份驗證。
+下載最新版本的代理程式之後，請繼續進行下列指示，透過 Azure AD Connect 設定傳遞驗證。
 
 ## <a name="step-2-enable-the-feature"></a>步驟 2︰啟用功能
 
@@ -119,15 +122,15 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 >[!IMPORTANT]
 >在生產環境中，我們建議至少要有 3 個驗證代理程式在您的租用戶上執行。 系統限制每個租用戶只能有 40 個驗證代理程式。 因此，最佳做法是將執行驗證代理程式的所有伺服器視為階層 0 的系統 (請參閱[參考](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) \(機器翻譯\))。
 
-安裝多個直通身份驗證代理可確保身份驗證代理之間的高可用性,但不是確定性負載平衡。 要確定租戶需要多少身份驗證代理,請考慮您希望在租戶上看到的登錄請求的峰值和平均負載。 在標準的 4 核心 CPU、16-GB RAM 伺服器上，單一驗證代理程式每秒可處理 300 到 400 次驗證，乃是效能評定的基準。
+安裝多個傳遞驗證代理程式可確保高可用性，但不會在驗證代理程式之間進行具決定性的負載平衡。 若要判斷您的租使用者需要多少個驗證代理程式，請考慮您預期會在租使用者上看到的登入要求尖峰和平均負載。 在標準的 4 核心 CPU、16-GB RAM 伺服器上，單一驗證代理程式每秒可處理 300 到 400 次驗證，乃是效能評定的基準。
 
 若要估計網路流量，請使用下列調整大小指導方針：
-- 每個請求的有效負載大小為 (0.5K = 1K = num_of_agents) 位元組,即從 Azure AD 到身份驗證代理的數據。 在這裡，"num_of_agents" 表示已在您的租用戶上註冊的驗證代理程式數目。
-- 每個回應的有效負載大小為 1K 位元組,即從身份驗證代理到 Azure AD 的數據。
+- 每個要求的承載大小為（0.5 K + 1K * num_of_agents）個位元組，也就是從 Azure AD 到驗證代理程式的資料。 在這裡，"num_of_agents" 表示已在您的租用戶上註冊的驗證代理程式數目。
+- 每個回應都有 1 kb 位元組的承載大小，也就是來自驗證代理程式的資料，以 Azure AD。
 
-對於大多數客戶,三個身份驗證代理總共足以實現高可用性和容量。 應在靠近網域控制站的地方安裝驗證代理程式，以改善登入的延遲情形。
+對於大部分的客戶而言，總共有三個驗證代理程式就足以應付高可用性和容量。 應在靠近網域控制站的地方安裝驗證代理程式，以改善登入的延遲情形。
 
-首先,請按照以下說明下載身份驗證代理軟體:
+若要開始，請遵循下列指示來下載驗證代理程式軟體：
 
 1. 若要下載最新版「驗證代理程式」(1.5.193.0 版或更新版本)，請使用您租用戶的全域管理員認證來登入 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 2. 在左窗格中，選取 [Azure Active Directory]****。
@@ -139,7 +142,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 ![Azure Active Directory 管理中心：下載代理程式窗格](./media/how-to-connect-pta-quick-start/pta10.png)
 
 >[!NOTE]
->您也可以直接[下載驗證代理程式軟體](https://aka.ms/getauthagent)。 在安裝身份驗證代理[的服務條款](https://aka.ms/authagenteula)_之前_,請查看並接受它。
+>您也可以直接[下載驗證代理程式軟體](https://aka.ms/getauthagent)。 _在安裝之前_，請先審查並接受驗證代理程式的[服務條款](https://aka.ms/authagenteula)。
 
 部署獨立「驗證代理程式」的方式有兩種：
 
@@ -148,7 +151,7 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
 第二種，您可以建立並執行自動部署指令碼。 當您想要一次部署多個「驗證代理程式」，或是在未啟用使用者介面或您無法使用「遠端桌面」來存取的 Windows 伺服器上安裝「驗證代理程式」時，這會相當有用。 以下是有關如何使用此方法的指示：
 
 1. 執行下列命令來安裝「驗證代理程式」：`AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q`。
-2. 您可以使用 Windows PowerShell 來向我們的服務註冊「驗證代理程式」。 建立 PowerShell 認證物件 `$cred`，其中含有租用戶的全域管理員使用者名稱和密碼。 執行以下指令,取代*\<\>使用者名稱與密碼*: * \< \> *
+2. 您可以使用 Windows PowerShell 來向我們的服務註冊「驗證代理程式」。 建立 PowerShell 認證物件 `$cred`，其中含有租用戶的全域管理員使用者名稱和密碼。 執行下列命令，並取代* \<使用者\>名稱*和* \<密碼\>*：
 
         $User = "<username>"
         $PlainPassword = '<password>'
@@ -159,11 +162,11 @@ Azure Active Directory (Azure AD) 傳遞驗證可讓您的使用者以相同密�
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "PassthroughAuthPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 >[!IMPORTANT]
->如果虛擬機上安裝了身份驗證代理,則無法克隆虛擬機以設置另一個身份驗證代理。 此方法**不支援**。
+>如果在虛擬機器上安裝驗證代理程式，您就無法複製虛擬機器來設定另一個驗證代理程式。 不**支援**這個方法。
 
-## <a name="step-5-configure-smart-lockout-capability"></a>第 5 步:設定智慧鎖定功能
+## <a name="step-5-configure-smart-lockout-capability"></a>步驟5：設定智慧鎖定功能
 
-智慧鎖定有助於鎖定那些試圖猜測使用者密碼或使用暴力方法進入的不良行為者。 通過在 Azure AD 中配置智慧鎖定設定和/或本地活動目錄中的適當鎖定設置,可以在攻擊到達活動目錄之前篩選出來。 閱讀[本文](../authentication/howto-password-smart-lockout.md),詳細瞭解如何配置租戶上的智慧鎖定設置以保護使用者帳戶。
+智慧鎖定可協助鎖定嘗試猜測使用者密碼或使用暴力方法取得的不良執行者。 藉由在內部部署 Active Directory 的 Azure AD 和（或）適當的鎖定設定中設定智慧型鎖定設定，攻擊可以先篩選掉，然後才會進入 Active Directory。 請[閱讀本文](../authentication/howto-password-smart-lockout.md)，以深入瞭解如何在您的租使用者上設定智慧鎖定設定，以保護您的使用者帳戶。
 
 ## <a name="next-steps"></a>後續步驟
 - [從 AD FS 遷移到傳遞驗證](https://aka.ms/adfstoptadp) \(英文\) - 從 AD FS (或其他同盟技術) 遷移到傳遞驗證的詳細指南。

@@ -8,13 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: timlt
-ms.openlocfilehash: 38152889ad43b41aeb345f59963cbfb869964b98
-ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+ms.openlocfilehash: 05d73ae09d95879c37e86f5f3e73e35ed4607296
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "82025232"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82560963"
 ---
 # <a name="what-is-azure-iot-central"></a>何謂 Azure IoT 中心？
 
@@ -157,11 +156,11 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 
 內建[儀表板](./howto-set-up-template.md#generate-default-views)提供了可自訂的 UI 供您監視裝置的健康情況和遙測。 從[應用程式範本](howto-use-app-templates.md)中預先建置的儀表板來開始，或建立自己的儀表板以專門因應操作員的需要。 您可以與應用程式中的所有使用者共用儀表板，或讓儀表板保持私用狀態。
 
-### <a name="rules-and-actions"></a>執行和動作 
+### <a name="rules-and-actions"></a>執行和動作
 
 根據裝置狀態和遙測來建立[自訂規則](tutorial-create-telemetry-rules.md)，以識別需要注意的裝置。 設定動作以通知適當人員，並確保能及時採取更正措施。
 
-### <a name="jobs"></a>工作 
+### <a name="jobs"></a>工作
 
 [作業](howto-run-a-job.md)可讓您藉由設定屬性或呼叫命令，將單一或大量更新套用至裝置。 
 

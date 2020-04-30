@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1398169c44dadcd11ad037e4e3a1cc0132e21f13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024688"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509511"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線至 Azure IoT Central
 
@@ -42,7 +42,7 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 - [使用 x.509 憑證大規模連接裝置](#connect-devices-using-x509-certificates)-適用于生產環境的建議方法。
 - [連接裝置而不先進行註冊](#connect-without-registering-devices)
 - [連接使用 DPS 個別註冊的裝置](#individual-enrollment-based-device-connectivity)
-- [使用 IoT 隨插即用（預覽）功能來連接裝置](#connect-devices-with-iot-plug-and-play-preview)
+- [自動將裝置與裝置範本建立關聯](#automatically-associate-with-a-device-template)
 
 ## <a name="connect-a-single-device"></a>將單一裝置連線
 
@@ -139,7 +139,7 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
     在 [系統**管理] > [裝置**連線] 頁面上，[**自動核准**] 選項會控制您是否需要手動核准裝置，才能開始傳送資料。
 
     > [!NOTE]
-    > 若要瞭解如何自動將裝置與裝置範本建立關聯，請參閱[使用 IoT 隨插即用來連接裝置（預覽）](#connect-devices-with-iot-plug-and-play-preview)。
+    > 若要瞭解如何自動將裝置與裝置範本建立關聯，請參閱[自動將裝置與裝置範本建立關聯](#automatically-associate-with-a-device-template)。
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>連接使用 x.509 憑證但不註冊的裝置
 
@@ -156,7 +156,7 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
     在 [系統**管理] > [裝置**連線] 頁面上，[**自動核准**] 選項會控制您是否需要手動核准裝置，才能開始傳送資料。
 
     > [!NOTE]
-    > 若要瞭解如何自動將裝置與裝置範本建立關聯，請參閱[使用 IoT 隨插即用來連接裝置（預覽）](#connect-devices-with-iot-plug-and-play-preview)。
+    > 若要瞭解如何自動將裝置與裝置範本建立關聯，請參閱[自動將裝置與裝置範本建立關聯](#automatically-associate-with-a-device-template)。
 
 ## <a name="individual-enrollment-based-device-connectivity"></a>以個人註冊為基礎的裝置連線能力
 
@@ -165,7 +165,7 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 > [!NOTE]
 > 當您建立裝置的個別註冊時，其優先順序會高於 IoT Central 應用程式中的預設群組註冊選項。
 
-### <a name="creating-individual-enrollments"></a>建立個別註冊
+### <a name="create-individual-enrollments"></a>建立個別註冊
 
 IoT Central 支援個別註冊的下列證明機制：
 
@@ -181,14 +181,22 @@ IoT Central 支援個別註冊的下列證明機制：
 
 - **信賴平臺模組（TPM）證明：**[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)是一種硬體安全性模組。 使用 TPM 是連接裝置的其中一個最安全的方式。 本文假設您使用的是獨立、固件或整合的 TPM。 軟體模擬 Tpm 非常適合用於原型設計或測試，但不提供與離散、固件或整合式 Tpm 相同層級的安全性。 請勿在生產環境中使用軟體 Tpm。 若要建立使用 TPM 的個別註冊，請開啟 [**裝置**連線] 頁面，選取 [**個別註冊**] 做為 [連線方法]，將 [ **TPM** ] 做為機制。 輸入 TPM 簽署金鑰並儲存裝置連接資訊。
 
-## <a name="connect-devices-with-iot-plug-and-play-preview"></a>使用 IoT 隨插即用連接裝置（預覽）
+## <a name="automatically-associate-with-a-device-template"></a>自動與裝置範本產生關聯
 
-IoT 隨插即用（預覽）與 IoT Central 的其中一個重要功能，就是能夠在裝置連線上自動建立裝置範本的關聯。 除了裝置認證，裝置現在可以在裝置註冊呼叫中傳送**CapabilityModelId** 。 這項功能可讓 IoT Central 探索裝置範本，並將其與裝置產生關聯。 探索程式的運作方式如下：
+IoT Central 的主要功能之一，就是能夠在裝置連線上自動建立裝置範本的關聯。 除了裝置認證之外，裝置也可以在裝置註冊呼叫中傳送**CapabilityModelId** 。 **CapabilityModelID**是一種 URN，可識別裝置所執行的功能模型。 IoT Central 應用程式可以使用**CapabilityModelID**來識別要使用的裝置範本，然後自動將裝置與裝置範本產生關聯。 探索程式的運作方式如下：
 
-1. 與裝置範本相關聯（如果已在 IoT Central 應用程式中發佈）。
-1. 從已發行和已認證功能模型的公用存放庫提取。
+1. 如果裝置範本已在 IoT Central 應用程式中發佈，則裝置會與裝置範本相關聯。
+1. 針對預先認證的 IoT 隨插即用裝置，如果尚未在 IoT Central 應用程式中發佈裝置範本，則會從公用存放庫提取裝置範本。
 
-以下是裝置會在 DPS 註冊呼叫期間傳送的其他承載格式
+下列程式碼片段顯示裝置必須在 DPS 註冊呼叫期間傳送的其他承載格式，才能讓自動關聯正常執行。
+
+這是使用已正式運作的裝置 SDK （不支援 IoT 隨插即用）之裝置的格式：
+
+```javascript
+    iotcModelId: '< this is the URN for the capability model>';
+```
+
+這是使用公開預覽裝置 SDK （支援 IoT 隨插即用）之裝置的格式：
 
 ```javascript
 '__iot:interfaces': {
@@ -197,7 +205,7 @@ IoT 隨插即用（預覽）與 IoT Central 的其中一個重要功能，就是
 ```
 
 > [!NOTE]
-> 請注意，系統**管理 > 裝置**連線上的 [**自動核准**] 選項必須啟用，裝置才能自動連線、探索裝置範本，以及開始傳送資料。
+> 系統**管理 > 裝置**連線上的 [**自動核准**] 選項必須啟用，裝置才能自動連線、探索裝置範本，以及開始傳送資料。
 
 ## <a name="device-status-values"></a>裝置狀態值
 

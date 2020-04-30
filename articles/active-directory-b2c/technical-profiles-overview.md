@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5d89d123fe757b0502f4c6b3a0d33c185b25224b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 125d89301e9d2cc3fc863bffb9b9e6c41e0c129e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80057303"
+ms.locfileid: "82229930"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>關於 Azure Active Directory B2C 自訂原則中的技術設定檔
 
@@ -39,7 +39,7 @@ ms.locfileid: "80057303"
 - [Openid connect](openid-connect-technical-profile.md) -與任何 OpenID connect 通訊協定識別提供者的同盟。
 - [電話要素](phone-factor-technical-profile.md)-支援註冊及驗證電話號碼。
 - [RESTful 提供者](restful-technical-profile.md)-呼叫 REST API 服務，例如驗證使用者輸入、擴充使用者資料，或與企業營運應用程式整合。
-- [SAML2](saml-technical-profile.md) - 與任何 SAML 通訊協定識別提供者建立同盟。
+- [Saml 身分識別提供者](saml-identity-provider-technical-profile.md)-與任何 SAML 通訊協定識別提供者同盟。
 - [Saml 權杖簽發者](saml-issuer-technical-profile.md)-發出傳回給信賴憑證者應用程式的 saml 權杖。
 - [自我判斷](self-asserted-technical-profile.md) - 與使用者進行互動。 例如，收集使用者的認證以進行登入、呈現註冊頁面或密碼重設。
 - [工作階段管理](custom-policy-reference-sso.md) - 處理各種不同類型的工作階段。

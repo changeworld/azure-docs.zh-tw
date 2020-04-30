@@ -4,12 +4,12 @@ description: 瞭解在 Azure Kubernetes Service （AKS）中控制輸出流量�
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: daf17ee4d6518de63dc642fd64acd6b4c5be7d2f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d723f7b1e7331e65d17dca5873b891ec46d76c0e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183920"
+ms.locfileid: "82207168"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>控制 Azure Kubernetes Service 中叢集節點的輸出流量（AKS）
 
@@ -165,19 +165,15 @@ AKS 叢集需要下列輸出埠/網路規則：
 | *. gk。\<location\>. azmk8s.io | HTTPS：443    | Azure 原則附加元件，其會與在主伺服器中執行的閘道管理員 audit 端點交談，以取得審核結果。 |
 | dc.services.visualstudio.com | HTTPS：443 | Azure 原則附加元件，可將遙測資料傳送至 application insights 端點。 |
 
-## <a name="required-by-windows-server-based-nodes-in-public-preview-enabled"></a>已啟用 Windows Server 架構節點的必要項（公開預覽）
+## <a name="required-by-windows-server-based-nodes-enabled"></a>已啟用 Windows Server 節點的必要項
 
-> [!CAUTION]
-> 下列部分功能目前為預覽狀態。  本文中的建議可能會隨著功能移至公開預覽和未來的發行階段而改變。
-
-以 Windows Server 為基礎的 AKS 叢集需要下列 FQDN/應用程式規則：
+使用以 Windows Server 為基礎的節點集區時，需要下列 FQDN/應用程式規則：
 
 | FQDN                                    | 連接埠      | 使用      |
 |-----------------------------------------|-----------|----------|
 | onegetcdn.azureedge.net、winlayers.blob.core.windows.net、winlayers.cdn.mscr.io、go.microsoft.com | HTTPS：443 | 安裝與 windows 相關的二進位檔 |
 | mp.microsoft.com、www<span></span>. msftconnecttest.com、ctldl.windowsupdate.com | HTTP：80 | 安裝與 windows 相關的二進位檔 |
 | kms.core.windows.net | TCP：1688 | 安裝與 windows 相關的二進位檔 |
-
 
 ## <a name="next-steps"></a>後續步驟
 

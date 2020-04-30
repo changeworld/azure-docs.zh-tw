@@ -1,35 +1,35 @@
 ---
-title: REST API 錯誤代碼 - Azure 機器學習工作室（經典） |微軟文檔
+title: REST API 錯誤碼
+titleSuffix: ML Studio (classic) - Azure
 description: Azure Machine Learning Web 服務上的作業可以傳回這些錯誤碼。
 keywords: ''
 services: machine-learning
-author: xiaoharper
-ms.custom: seodec18
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: reference
 ms.date: 11/16/2016
-ms.openlocfilehash: 9e25f2fbc10eb07cc71f2a7bd34247c0191f61b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a47550771180411277d21f7acf47ad0a28b6fb9e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79217766"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209514"
 ---
-# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure 機器學習工作室（經典）REST API 錯誤代碼
+# <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio （傳統） REST API 錯誤代碼
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
  
-以下錯誤代碼可以通過 Azure 機器學習工作室（經典）Web 服務上的操作返回。
+Azure Machine Learning Studio （傳統） web 服務上的作業可能會傳回下列錯誤碼。
  
 ## <a name="badargument-http-status-code-400"></a>BadArgument (HTTP 狀態碼 400)
  
 提供的引數無效。
  
-此類錯誤表示某處提供的引數無效。 對於傳遞至 web 服務的項目而言，這可能是 Azure 儲存體的認證或位置。 請查看"詳細資訊"部分中的錯誤"代碼"欄位，以診斷哪個特定參數無效。
+此類錯誤表示某處提供的引數無效。 對於傳遞至 web 服務的項目而言，這可能是 Azure 儲存體的認證或位置。 請查看 [詳細資料] 區段中的「程式碼」欄位，以診斷哪些特定引數無效。
  
 | 錯誤碼 | 使用者訊息 |
 | ---------- |--------------|
@@ -67,7 +67,7 @@ ms.locfileid: "79217766"
 | MissingWebServicePackage | 未提供 Web 服務套件。 提供有效的 Web 服務套件，然後再試一次。 |
 | MissingWorkspaceId | 未提供工作區識別碼。 提供有效的工作區識別碼，然後再試一次。 |
 | ModelConfigurationInvalid | 模型套件中的模型組態無效。 確定模型組態包含輸出端點定義、標準錯誤端點和標準輸出端點，然後再試一次。 |
-| ModelPackageIdInvalid | 不正確模型包 ID.驗證模型包 ID 是否正確，然後重試。 |
+| ModelPackageIdInvalid | 模型套件識別碼無效。請確認模型套件識別碼是否正確，然後再試一次。 |
 | RequestBodyInvalid | 未提供要求本文，或在還原序列化要求本文時發生錯誤。 |
 | RequestIsEmpty | 未提供要求。 提供有效的要求，然後再試一次。 |
 | UnexpectedParameter | 提供的參數並非預期。 確認所有參數名稱的拼寫都正確無誤，只傳遞預期的參數，然後再試一次。 |

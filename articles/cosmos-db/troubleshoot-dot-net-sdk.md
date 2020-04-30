@@ -8,18 +8,18 @@ ms.author: jawilley
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 5f92d98630c6fb875babeb907f92732b0c24bb52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e015c1ee335cbdfed7964d63b1f4600bc6a4cb77
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137949"
+ms.locfileid: "82208732"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>診斷在使用 Azure Cosmos DB .NET SDK 時的問題並進行疑難排解
 本文涵蓋使用[.NET SDK](sql-api-sdk-dotnet.md)搭配 AZURE COSMOS DB SQL API 帳戶時的常見問題、因應措施、診斷步驟和工具。
 .NET SDK 提供用戶端邏輯標記法來存取 Azure Cosmos DB SQL API。 此文章所說明的工具和方法，可以在您遇到任何問題時提供協助。
 
-## <a name="checklist-for-troubleshooting-issues"></a>疑難排解問題的檢查清單：
+## <a name="checklist-for-troubleshooting-issues"></a>疑難排解問題的檢查清單
 將應用程式移至生產環境之前，請考慮下列檢查清單。 使用檢查清單可防止您可能會看到的幾個常見問題。 您也可以在發生問題時快速診斷：
 
 *    使用最新的[SDK](sql-api-sdk-dotnet-standard.md)。 預覽 Sdk 不應用於生產環境。 這將導致無法達到已修正的已知問題。
@@ -101,6 +101,30 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 * 如果後端查詢會快速傳回，而在用戶端上花了很長的時間，請檢查電腦上的負載。 可能是資源不足，而且 SDK 正在等候資源可用來處理回應。
 * 如果後端查詢速度緩慢，請嘗試[優化查詢](optimize-cost-queries.md)，並查看目前的[編制索引原則](index-overview.md) 
 
+### <a name="http-401-the-mac-signature-found-in-the-http-request-is-not-the-same-as-the-computed-signature"></a>HTTP 401：在 HTTP 要求中找到的 MAC 簽章與計算的簽章不同
+如果您收到下列401錯誤訊息：「在 HTTP 要求中找到的 MAC 簽章與計算的簽章不同」。 這可能是由下列案例所造成。
+
+1. 金鑰已輪替，且未遵循[最佳作法](secure-access-to-data.md#key-rotation)。 這通常是這種情況。 視 Cosmos DB 帳戶大小而定，Cosmos DB 帳戶金鑰輪替可能需要幾秒鐘到數秒的時間。
+   1. 401在金鑰輪替後不久就會看到 MAC 簽章，而且最終會在沒有任何變更的情況下停止。 
+2. 應用程式上的金鑰設定錯誤，因此金鑰與帳戶不相符。
+   1. 401 MAC 簽章問題會一致，並會在所有呼叫時發生
+3. 建立容器時有競爭條件。 應用程式實例在完成容器建立之前，嘗試存取容器。 當應用程式正在執行時，最常見的案例是在應用程式執行時，刪除並重新建立具有相同名稱的容器。 SDK 會嘗試使用新的容器，但容器建立仍在進行中，因此沒有金鑰。
+   1. 401建立容器之後，很快就會出現 MAC 簽章問題，而且只有在完成容器建立後才會發生。
+ 
+ ### <a name="http-error-400-the-size-of-the-request-headers-is-too-long"></a>HTTP 錯誤400。 要求標頭的大小太長。
+ 標頭的大小已增加至大，且超過允許的大小上限。 建議您一律使用最新的 SDK。 請務必使用[至少版本 3.x](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/changelog.md)或2.x，這會在例外狀況[訊息中加入](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/changelog.md)標頭大小追蹤。
+
+都會
+ 1. 會話權杖成長過大。 會話權杖會隨著容器中增加的分割區數目成長。
+ 2. 接續 token 已成長為大型。 不同的查詢會有不同的接續 token 大小。
+ 3. 這是由會話權杖和接續 token 的組合所造成。
+
+解決方案：
+   1. 遵循[效能秘訣](performance-tips.md)，並將應用程式轉換成 DIRECT + TCP 連線模式。 Direct + TCP 沒有標頭大小限制，例如 HTTP 會避免這個問題。
+   2. 如果會話權杖是原因，則暫時的緩和措施是重新開機應用程式。 重新開機應用程式實例將會重設會話權杖。 如果例外狀況在重新開機後停止，則會確認會話權杖是原因。 最後，它會變回會造成例外狀況的大小。
+   3. 如果應用程式無法轉換成 Direct + TCP，而會話權杖是原因，則可以藉由變更用戶端[一致性層級](consistency-levels.md)來進行緩和。 會話權杖僅用於會話一致性，這是 Cosmos DB 的預設值。 任何其他一致性層級都不會使用會話權杖。 
+   4. 如果應用程式無法轉換成 Direct + TCP，而接續 token 是原因，請嘗試設定 ResponseContinuationTokenLimitInKb 選項。 您可以在 FeedOptions for v2 或 v3 中的 QueryRequestOptions 找到選項。
+
  <!--Anchors-->
 [Common issues and workarounds]: #common-issues-workarounds
 [Enable client SDK logging]: #logging
@@ -108,5 +132,3 @@ ResponseTime: 2020-03-09T22:44:49.9279906Z, StoreResult: StorePhysicalAddress: r
 [Request Timeouts]: #request-timeouts
 [Azure SNAT (PAT) port exhaustion]: #snat
 [Production check list]: #production-check-list
-
-

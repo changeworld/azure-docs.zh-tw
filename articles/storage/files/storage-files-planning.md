@@ -7,69 +7,69 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: d5bf3a6df9d7292c18a93737fb7dea5d8c91f984
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 1fffb3eb10b7d3cbb3360a03112c3b4d7db8d109
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536472"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209480"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
-[Azure 檔案](storage-files-introduction.md)可透過兩種主要方式進行部署:直接安裝無伺服器 Azure 檔案共享或使用 Azure 檔同步在本地緩存 Azure 檔共享。您選擇的部署選項會更改在規劃部署時需要考慮的事項。 
+[Azure 檔案儲存體](storage-files-introduction.md)可以透過兩種主要方式來部署：直接裝載無伺服器 Azure 檔案共用，或使用 Azure 檔案同步快取內部部署的 Azure 檔案共用。您所選擇的部署選項會變更規劃部署時所需考慮的事項。 
 
-- **Azure 檔案共用的直接裝載**:由於 Azure 檔提供 SMB 訪問,因此可以使用 Windows、macOS 和 Linux 中可用的標準 SMB 用戶端在本地或雲端中裝載 Azure 檔共用。 由於 Azure 檔案共享是無伺服器的,因此為生產方案部署不需要管理文件伺服器或 NAS 設備。 這意味著您不必應用軟體修補程式或交換物理磁碟。 
+- **直接掛接 Azure 檔案共用**：因為 Azure 檔案儲存體會提供 SMB 存取，所以您可以使用 Windows、MacOS 和 Linux 中提供的標準 SMB 用戶端，在內部部署或雲端中掛接 azure 檔案共用。 由於 Azure 檔案共用是無伺服器的，因此針對生產案例進行部署並不需要管理檔案伺服器或 NAS 裝置。 這表示您不需要套用軟體修補程式或交換實體磁片。 
 
-- **使用 Azure 檔案同步在本地快取 Azure 檔案共享**:Azure 檔案同步使您能夠在 Azure 檔中集中組織的檔案共享,同時保持本地檔案伺服器的靈活性、性能和相容性。 Azure 檔案同步將本地(或雲端)Windows 伺服器轉換為 Azure 檔案共用的快速快取。 
+- **使用 Azure 檔案同步**來快取內部部署的 Azure 檔案共用： Azure 檔案同步可讓您將組織的檔案共用集中在 Azure 檔案儲存體，同時保有內部部署檔案伺服器的彈性、效能及相容性。 Azure 檔案同步將內部部署（或雲端） Windows Server 轉換成 Azure 檔案共用的快速快取。 
 
-本文主要討論部署由本地或雲端用戶端直接裝載的 Azure 檔共享的部署注意事項。 要規劃 Azure 檔同步部署,請參閱[規劃 Azure 檔同步部署](storage-sync-files-planning.md)。
+本文主要針對部署 Azure 檔案共用以直接由內部部署或雲端用戶端掛接的部署考慮。 若要規劃 Azure 檔案同步部署，請參閱[規劃 Azure 檔案同步部署](storage-sync-files-planning.md)。
 
 ## <a name="management-concepts"></a>管理概念
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
 
-將 Azure 檔案共享部署到儲存帳戶時,我們建議:
+將 Azure 檔案共用部署到儲存體帳戶時，我們建議：
 
-- 僅將 Azure 檔共享部署到具有其他 Azure 檔案共享的儲存帳戶中。 儘管 GPv2 儲存帳戶允許您具有混合用途存儲帳戶,但由於存儲資源(如 Azure 檔共享和 Blob 容器)共用存儲帳戶的限制,因此將資源混合在一起可能會使以後解決性能問題變得更加困難。 
+- 僅將 Azure 檔案共用部署到具有其他 Azure 檔案共用的儲存體帳戶。 雖然 GPv2 儲存體帳戶可讓您擁有混合用途的儲存體帳戶，但 Azure 檔案共用和 blob 容器之類的儲存體資源會共用儲存體帳戶的限制，因此將資源混合在一起，可能會讓您更難在稍後針對效能問題進行疑難排解。 
 
-- 在部署 Azure 檔共享時,注意儲存帳戶的 IOPS 限制。 理想情況下,您將檔共用 1:1 映射到存儲帳戶,但由於組織與 Azure 的各種限制和限制,這並不總是可能的。 如果不可能在一個存儲帳戶中只部署一個檔共用,請考慮哪些共用將高度活躍,哪些共用將不太活躍,以確保最熱門的檔共享不會放在同一個存儲帳戶中。
+- 部署 Azure 檔案共用時，請注意儲存體帳戶的 IOPS 限制。 在理想的情況下，您會使用儲存體帳戶對應檔案共用1:1，不過，這可能不一定是因為您的組織和 Azure 有各種限制和限制。 當一個儲存體帳戶中不可能只部署一個檔案共用時，請考慮哪些共用會高度使用，哪些共用會較不活躍，以確保最熱門的檔案共用不會放在同一個儲存體帳戶中。
 
-- 僅在環境中找到 GPv2 和檔案存儲帳戶並升級 GPv1 和經典存儲帳戶。 
+- 只有當您在環境中找到 GPv2 和 FileStorage 帳戶，並升級 GPv1 和傳統儲存體帳戶時，才可將其部署。 
 
 ## <a name="identity"></a>身分識別
-要造訪 Azure 檔共享,必須對檔案共用的使用者進行身份驗證並具有存取共享的授權。 這是基於訪問檔共享的用戶的標識完成的。 Azure 檔案與三個主要識別提供者整合:
-- **本地活動目錄域服務(AD DS 或本地 AD DS)(預覽):Azure**儲存帳戶可以加入客戶擁有的活動目錄域服務,就像 Windows 伺服器檔伺服器或 NAS 設備一樣。 您可以在本地、Azure VM 中部署網域控制器,甚至可以在另一個雲端提供程式中部署 VM;Azure 檔案與域控制器的託管位置無關。 加入存儲帳戶後,最終使用者就可以將文件共用與登錄到其 PC 中的使用者帳戶一起裝載。 基於 AD 的身份驗證使用 Kerberos 身份驗證協定。
-- **Azure 活動目錄域服務 (Azure AD DS):** Azure AD DS 提供 Microsoft 管理的網域控制器,可用於 Azure 資源。 將儲存帳戶加入 Azure AD DS 的域與將儲存帳戶加入客戶擁有的 Active Directory 的域提供了類似的好處。 此部署選項對於需要基於 AD 的許可權的應用程式升降和移位方案最有用。 由於 Azure AD DS 提供基於 AD 的身份驗證,此選項還使用 Kerberos 身份驗證協定。
-- **Azure 儲存帳戶金鑰**:Azure 檔案共用也可以裝載 Azure 儲存帳戶金鑰。 要以這種方式裝載檔共享,存儲帳戶名稱用作使用者名,存儲帳戶密鑰用作密碼。 使用儲存帳戶金鑰裝載 Azure 檔共享實際上是管理員操作,因為裝載的檔共用將對共用上的所有檔案和資料夾具有完全許可權,即使它們具有 ACL。 當使用儲存帳戶金鑰裝載到 SMB 上時,將使用 NTLMv2 身份驗證協定。
+若要存取 Azure 檔案共用，檔案共用的使用者必須經過驗證，並具有存取共用的授權。 這是根據存取檔案共用之使用者的身分識別來完成。 Azure 檔案儲存體整合了三個主要身分識別提供者：
+- 內部**部署 Active Directory Domain Services （AD DS 或內部部署 AD DS）** （預覽）： Azure 儲存體帳戶可以加入至客戶擁有的 Active Directory Domain Services，就像 Windows Server 檔案伺服器或 NAS 裝置一樣。 您可以在內部部署、在 Azure VM 中，或甚至是另一個雲端提供者中的 VM 來部署網域控制站;Azure 檔案儲存體與您的網域控制站裝載所在的位置無關。 一旦儲存體帳戶加入網域之後，使用者就可以使用登入其電腦的使用者帳戶來掛接檔案共用。 以 AD 為基礎的驗證會使用 Kerberos 驗證通訊協定。
+- **Azure Active Directory Domain Services （AZURE AD ds）**： Azure AD DS 提供 Microsoft 管理的網域控制站，可用於 Azure 資源。 將您的儲存體帳戶加入至 Azure AD DS 的網域，可提供將其加入至客戶所擁有之 Active Directory 的類似優點。 此部署選項最適合需要以 AD 為基礎之許可權的應用程式隨即轉移案例。 由於 Azure AD DS 提供以 AD 為基礎的驗證，因此此選項也會使用 Kerberos 驗證通訊協定。
+- **Azure 儲存體帳戶金鑰**： azure 檔案共用可能也會使用 azure 儲存體帳戶金鑰來裝載。 為了以這種方式掛接檔案共用，會使用儲存體帳戶名稱做為使用者名稱，並使用儲存體帳戶金鑰作為密碼。 使用儲存體帳戶金鑰來裝載 Azure 檔案共用實際上是系統管理員作業，因為掛接的檔案共用將擁有共用上所有檔案和資料夾的完整許可權，即使他們有 Acl 也一樣。 使用儲存體帳戶金鑰透過 SMB 掛接時，會使用 NTLMv2 驗證通訊協定。
 
-對於從本地檔案伺服器遷移的客戶,或在 Azure 檔案中創建新的檔案共用,以像 Windows 檔伺服器或 NAS 裝置一樣,建議選擇將儲存帳戶加入**客戶擁有的 Active Directory 的**網域。 要瞭解有關網域將儲存帳戶加入客戶擁有的活動目錄的詳細資訊,請參閱[Azure 檔案活動目錄概述](storage-files-active-directory-overview.md)。
+針對從內部部署檔案伺服器進行遷移，或在 Azure 檔案儲存體中建立新的檔案共用，以作為 Windows 檔案伺服器或 NAS 應用裝置的行為，建議您將儲存體帳戶加入至**客戶擁有的 Active Directory**網域。 若要深入瞭解將您的儲存體帳戶加入至客戶擁有之 Active Directory 的網域，請參閱[Azure 檔案儲存體 Active Directory 總覽](storage-files-active-directory-overview.md)。
 
-如果要使用存儲帳戶金鑰訪問 Azure 檔案共享,我們建議使用[「網路](#networking)」部分中所述的服務終結點。
+如果您想要使用儲存體帳戶金鑰來存取 Azure 檔案共用，建議使用「[網路](#networking)功能」一節中所述的服務端點。
 
 ## <a name="networking"></a>網路功能
-Azure 檔案共用可通過存儲帳戶的公共終結點從任何位置訪問。 這意味著經過身份驗證的請求(如使用者登錄標識授權的請求)可以安全地源自 Azure 的內部和外部。 在許多客戶環境中,即使 Azure VM 的裝載成功,本地工作站上 Azure 檔共享的初始裝載也會失敗。 原因是許多組織和 Internet 服務提供者 (ISP) 阻止 SMB 用於通訊的埠埠埠 445。 若要查看 ISP 是否允許從連接埠 445 進行存取的摘要，請參閱 [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) \(英文\)。
+您可以透過儲存體帳戶的公用端點，從任何地方存取 Azure 檔案共用。 這表示已驗證的要求（例如使用者登入身分識別所授權的要求）可以從 Azure 內部或外部安全地產生。 在許多客戶環境中，Azure 檔案共用在內部部署工作站上的初始掛接將會失敗，即使 Azure Vm 的裝載成功也一樣。 這是因為許多組織和網際網路服務提供者（Isp）會封鎖 SMB 用來通訊的埠（埠445）。 若要查看 ISP 是否允許從連接埠 445 進行存取的摘要，請參閱 [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) \(英文\)。
 
-要取消封鎖對 Azure 檔案共享的存取,有兩個主要選項:
+若要解除封鎖 Azure 檔案共用的存取，您有兩個主要選項：
 
-- 為組織的本地網路取消阻止埠 445。 Azure 檔案共用只能通過公共終結點使用 Internet 安全協定(如 SMB 3.0 和 FileREST API)進行外部存取。 這是從本地訪問 Azure 檔共享的最簡單方法,因為它除了更改組織的出站埠規則外不需要高級網路配置,但是,我們建議您刪除 SMB 協定的舊版本和棄用版本,即 SMB 1.0。 要瞭解如何執行此操作,請參閱[保護 Windows/Windows 伺服器](storage-how-to-use-files-windows.md#securing-windowswindows-server)和保護[Linux](storage-how-to-use-files-linux.md#securing-linux)。
+- 為組織的內部部署網路解除封鎖埠445。 Azure 檔案共用只能透過公用端點，使用 SMB 3.0 和 FileREST API 等網際網路安全通訊協定從外部存取。 這是從內部部署存取 Azure 檔案共用的最簡單方式，因為它不需要額外的網路設定，而只是變更您組織的輸出連接埠規則，但我們建議您移除舊版和過時的 SMB 通訊協定版本，亦即 SMB 1.0。 若要瞭解如何執行此操作，請參閱[保護 Windows/Windows Server](storage-how-to-use-files-windows.md#securing-windowswindows-server)和[保護 Linux](storage-how-to-use-files-linux.md#securing-linux)。
 
-- 通過 ExpressRoute 或 VPN 連接訪問 Azure 檔案共用。 通過網路隧道訪問 Azure 檔共享時,可以像本地檔共用一樣裝載 Azure 檔共享,因為 SMB 流量不會遍歷組織邊界。   
+- 透過 ExpressRoute 或 VPN 連線存取 Azure 檔案共用。 當您透過網路通道存取 Azure 檔案共用時，您可以掛接 Azure 檔案共用，例如內部部署檔案共用，因為 SMB 流量不會跨越您的組織界限。   
 
-儘管從技術角度來說,通過公共終結點裝載 Azure 檔共享要容易得多,但我們預計大多數客戶將選擇透過 ExpressRoute 或 VPN 連接裝載其 Azure 檔共用。 此功能,您需要為環境設定以下內容:  
+雖然從技術觀點來看，透過公用端點掛接 Azure 檔案共用會變得更容易，我們預期大部分的客戶會選擇透過 ExpressRoute 或 VPN 連線來掛接其 Azure 檔案共用。 若要這樣做，您必須為您的環境設定下列各項：  
 
-- **使用 ExpressRoute、網站到網站或點到網站 VPN**的網路隧道:隧道到虛擬網路允許從本地訪問 Azure 檔共用,即使埠 445 被阻止也是如此。
-- **專用終結點**:專用終結點從虛擬網路的位址空間內為您的存儲帳戶提供專用 IP 位址。 這支援網路隧道,而無需打開本地網路,最多滿足 Azure 儲存叢集擁有的所有 IP 位址範圍。 
-- **DNS 轉發**:配置本地 DNS 以解析儲存帳戶的`storageaccount.file.core.windows.net`名稱(即公共雲區域),以解析為專用終結點的 IP 位址。
+- **使用 ExpressRoute、站對站或點對站 VPN 的網路通道**：在虛擬網路中的通道可讓您從內部部署存取 Azure 檔案共用，即使已封鎖埠445也一樣。
+- **私人端點**：私人端點會從虛擬網路的位址空間中，為您的儲存體帳戶提供專用的 IP 位址。 這會啟用網路通道，而不需要開啟 Azure 儲存體叢集所擁有的所有 IP 位址範圍的內部部署網路。 
+- **DNS 轉送**：設定您的內部部署 DNS 來解析您的儲存體帳戶名稱（ `storageaccount.file.core.windows.net`也就是公用雲端區域），以解析為私人端點的 IP 位址。
 
-要規劃與部署 Azure 檔案分享關聯的網路,請參閱[Azure 檔案網路注意事項](storage-files-networking-overview.md)。
+若要規劃與部署 Azure 檔案共用相關聯的網路功能，請參閱[Azure 檔案儲存體的網路功能考慮](storage-files-networking-overview.md)。
 
 ## <a name="encryption"></a>加密
-Azure 檔案支援兩種不同類型的加密:傳輸中的加密(與裝載/存取 Azure 檔案共享時使用的加密相關)和靜態加密,與數據存儲在磁碟上時數據的加密方式有關。 
+Azure 檔案儲存體支援兩種不同的加密類型：傳輸中的加密，與掛接/存取 Azure 檔案共用時所使用的加密相關，以及待用加密（與資料儲存在磁片上時的加密方式相關）。 
 
 ### <a name="encryption-in-transit"></a>傳輸中加密
 根據預設，所有 Azure 儲存體帳戶都會啟用傳輸中加密。 這表示當您透過 SMB 掛接檔案共用或透過 FileREST 通訊協定 (例如，透過 Azure 入口網站、PowerShell/CLI 或 Azure SDK) 來存取檔案共用時，Azure 檔案儲存體只會在使用了 SMB 3.0 以上 (有加密功能) 或 HTTPS 來進行連線時，才會允許您建立連線。 不支援 SMB 3.0 的用戶端，或雖支援 SMB 3.0 但不支援 SMB 加密的用戶端，將無法在啟用了傳輸中加密的情況下掛接 Azure 檔案共用。 如需哪些作業系統支援 SMB 3.0 (有加密功能) 的詳細資訊，請參閱適用於 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 和 [Linux](storage-how-to-use-files-linux.md) 的詳細文件。 所有目前版本的 PowerShell、CLI 和 SDK 都支援 HTTPS。  
 
-您可以為 Azure 儲存體帳戶停用傳輸中加密。 禁用加密後,Azure 檔還將允許 SMB 2.1、SMB 3.0 不加密,以及通過 HTTP 進行未加密的檔案 REST API 呼叫。 會停用傳輸中加密的主要原因，是為了支援必須在舊版作業系統上執行的繼承應用程式，例如 Windows Server 2008 R2 或舊版 Linux 散發套件。 Azure 檔案儲存體只會在與 Azure 檔案共用相同的 Azure 區域內允許 SMB 2.1 連線；Azure 檔案共用所在的 Azure 區域外 (例如，內部部署或不同 Azure 區域) 的 SMB 2.1 用戶端，則無法存取檔案共用。
+您可以為 Azure 儲存體帳戶停用傳輸中加密。 停用加密時，Azure 檔案儲存體也會允許 SMB 2.1、沒有加密的 SMB 3.0，以及透過 HTTP 的未加密 FileREST API 呼叫。 會停用傳輸中加密的主要原因，是為了支援必須在舊版作業系統上執行的繼承應用程式，例如 Windows Server 2008 R2 或舊版 Linux 散發套件。 Azure 檔案儲存體只會在與 Azure 檔案共用相同的 Azure 區域內允許 SMB 2.1 連線；Azure 檔案共用所在的 Azure 區域外 (例如，內部部署或不同 Azure 區域) 的 SMB 2.1 用戶端，則無法存取檔案共用。
 
-我們強烈建議確保啟用傳輸中數據的加密。
+我們強烈建議您確保在傳輸中的資料加密已啟用。
 
 如需傳輸中加密的詳細資訊，請參閱[在 Azure 儲存體中需要安全傳輸](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
@@ -79,78 +79,78 @@ Azure 檔案支援兩種不同類型的加密:傳輸中的加密(與裝載/存�
 ## <a name="storage-tiers"></a>儲存層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-通常,Azure 檔功能與其他服務的互通性在高級檔共享和標準檔案共享之間是相同的,但是有一些重要區別:
+一般來說，高階檔案共用和標準檔案共用之間 Azure 檔案儲存體功能和與其他服務的互通性，不過有幾個重要的差異：
 - **計費模式**
-    - 高級檔共用使用預配計費模型計費,這意味著您需要為預配的存儲量而不是實際要求多少存儲付費。 
-    - 標準檔共用使用即用即付模型計費,該模型包括實際消耗的存儲量的基本存儲成本,然後根據您如何使用共用來支付額外的事務成本。 使用標準檔共享時,如果使用 Azure 檔共用更多內容,則帳單將增加。
-- **冗餘選項**
-    - 進階檔案共用僅適用於本地冗餘 (LRS) 和區域冗餘 (ZRS) 儲存。 
-    - 標準檔案共用可用於本地冗餘、區域冗餘、地理冗餘 (GRS) 和地理區域冗餘 (GZRS) 儲存。
-- **檔案共用的最大大小**
-    - 高級文件共用可以預配多達 100 TiB,而無需任何其他工作。
-    - 默認情況下,標準檔共用只能跨越 5 TiB,儘管通過選擇進入*大型檔共用*存儲帳戶功能標誌,共用限制可以增加到 100 TiB。 對於本地冗餘或區域冗餘存儲帳戶,標準檔共用可能最多只能跨越 100 TiB。 有關增加檔案共享大小的詳細資訊,請參閱[啟用與建立大型檔案共享](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)。
+    - Premium 檔案共用會使用已布建的計費模型來計費，這表示您需支付所布建的儲存體數量，而不是您實際要求的儲存體數量。 
+    - 標準檔案共用會使用隨用隨付模型來計費，其中包括您實際取用多少儲存體的基本儲存體成本，還有額外的交易成本（根據您使用該共用的方式而定）。 使用標準檔案共用時，如果您使用（讀取/寫入/掛接） Azure 檔案共用，您的帳單將會增加。
+- **冗余選項**
+    - Premium 檔案共用僅適用于本機多餘（LRS）和區域冗余（ZRS）儲存體。 
+    - 標準檔案共用適用于本機多餘、區域冗余、異地冗余（GRS）和異地區域冗余（切換）儲存體。
+- **檔案共用的大小上限**
+    - Premium 檔案共用最多可以布建到 100 TiB，而不需要任何額外的工作。
+    - 根據預設，標準檔案共用最多隻能跨越5個 TiB，不過，藉由選擇 [*大型檔案共用*儲存體帳戶] 功能旗標，可以將共用限制增加到 100 TiB。 標準檔案共用最多隻能跨越 100 TiB，用於本機多餘或區域的多餘儲存體帳戶。 如需增加檔案共用大小的詳細資訊，請參閱[啟用和建立大型檔案共用](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)。
 - **區域可用性**
-    - 高級文件共用並非在每個區域都可用,區域冗餘支援在較小的區域子集中可用。 要瞭解您所在地區當前是否提供高級文件共用,請參閱 Azure 按[區域可用的產品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)頁面。 要瞭解哪些區域支援 ZRS,請參考[Azure 可用性區域支援區域](../../availability-zones/az-overview.md#services-support-by-region)。 為了幫助我們確定新區域和高級層功能的優先順序,請填寫此[調查](https://aka.ms/pfsfeedback)。
-    - 標準檔共用在每個 Azure 區域中都可用。
-- Azure 庫伯奈斯服務 (AKS) 支援版本 1.13 及更高版本中的高級文件共用。
+    - Premium 檔案共用無法在每個區域中使用，且區域的多餘支援可在較小的區域子集中使用。 若要找出您的區域目前是否有 premium 檔案共用，請參閱 Azure 的[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=storage)頁面。 若要瞭解哪些區域支援 ZRS，請參閱[依區域的 Azure 可用性區域支援](../../availability-zones/az-region.md)。 為協助我們設定新區域和進階層功能的優先順序，請填寫這[份問卷](https://aka.ms/pfsfeedback)。
+    - 每個 Azure 區域中都有提供標準檔案共用。
+- Azure Kubernetes Service （AKS）支援1.13 版和更新版本中的 premium 檔案共用。
 
-一旦檔案共用創建為先進檔案共用或標準檔案共用,則無法自動將其轉換為其他層。 如果要切換到其他層,則必須在該層中創建新的文件共用,並手動將數據從原始共用複製到您創建的新共用。 我們建議使用`robocopy`Windows`rsync`或 macOS 和 Linux 來執行該副本。
+一旦將檔案共用建立為 premium 或 standard 檔案共用，您就無法自動將它轉換成另一層。 如果您想要切換至另一層，您必須在該階層中建立新的檔案共用，並手動將資料從原始共用複製到您建立的新共用。 建議您針對`robocopy` Windows 或`rsync` macOS 和 Linux 使用，以執行該複本。
 
-### <a name="understanding-provisioning-for-premium-file-shares"></a>讓進階檔案分享的預先
+### <a name="understanding-provisioning-for-premium-file-shares"></a>瞭解 premium 檔案共用的布建
 進階檔案共用會以固定的 GiB/IOPS/輸送量比例為基礎佈建。 對於每個佈建的 GiB，共用將會發出一個 IOPS 和 0.1 MiB/秒輸送量，直到每個共用的上限為止。 允許佈建的最小值為 100 GiB 與最小 IOPS/輸送量。
 
 在盡可能達成的基礎上，每個佈建之儲存體 Gib 的所有共用都可高載至最多三個 IOPS，並持續 60 分鐘或更久的時間 (視共用大小而定)。 新的共用一開始有以佈建容量為基礎的完整高載額度。
 
-必須以 1 GiB 增量預配股票。 最小尺寸為 100 GiB,下一個大小為 101 GiB 等。
+共用必須以 1 GiB 遞增的方式布建。 大小下限為 100 GiB，下一個大小為 101 GiB 等等。
 
 > [!TIP]
-> 基線 IOPS = 1 = 預配 GiB。 (最多 100,000 IOPS)。
+> 基準 IOPS = 1 * 已布建的 GiB。 （最多 100000 IOPS）。
 >
-> 突發限制 = 3 = 基線 IOPS。 (最多 100,000 IOPS)。
+> 高載限制 = 3 * 基準 IOPS。 （最多 100000 IOPS）。
 >
-> 出位率 = 60 MiB/s = 0.06 = 預配 GiB
+> 輸出速率 = 60 MiB/秒 + 0.06 * 已布建的 GiB
 >
-> 入口速率 = 40 MiB/s = 0.04 = 預配 GiB
+> 輸入速率 = 40 MiB/秒 + 0.04 * 已布建的 GiB
 
-預配的共用大小由共用配額指定。 股票配額可以隨時增加,但自上次增加后 24 小時內才能減少。 等待 24 小時後,無需增加配額,您可以根據需要多次減少份額配額,直到再次增加份額。 IOPS/輸送量規模更改將在大小更改后的幾分鐘內生效。
+布建的共用大小是由共用配額指定。 共用配額可以隨時增加，但只能在上一次增加後的24小時內減少。 等待24小時後，如果沒有增加配額，您可以視需要多次減少共用配額，直到您再次增加為止。 IOPS/輸送量調整變更將于大小變更後的幾分鐘內生效。
 
-可以減小預配份額的大小,低於已使用的 GiB。 如果這樣做,您不會丟失資料,但您仍將按使用的大小計費,並接收預配共用的性能(基線 IOPS、輸送量和突發 IOPS),而不是使用的大小。
+您可以將布建的共用大小減少到您使用的 GiB 下方。 如果您這樣做，您將不會遺失資料，但仍會向您收取所用大小的費用，並接收已布建共用的效能（基準 IOPS、輸送量和高載 IOPS），而不是使用的大小。
 
-下表演示了預配共享大小的這些公式的幾個範例:
+下表說明這些 homebrew 公式針對布建共用大小所提供的幾個範例：
 
-|容量 (GiB) | 基準 IOPS | 突發 IOPS | 出口(米B/s) | 進入(米B/s) |
+|容量（GiB） | 基準 IOPS | 高載 IOPS | 輸出（MiB/秒） | 輸入（MiB/秒） |
 |---------|---------|---------|---------|---------|
 |100         | 100     | 最多 300     | 66   | 44   |
-|500         | 500     | 高達 1,500   | 90   | 60   |
-|1,024       | 1,024   | 高達 3,072   | 122   | 81   |
-|5,120       | 5,120   | 高達 15,360  | 368   | 245   |
-|10,240      | 10,240  | 高達 30,720  | 675 | 450   |
-|33,792      | 33,792  | 高達 100,000 | 2,088 | 1,392   |
-|51,200      | 51,200  | 高達 100,000 | 3,132 | 2,088   |
-|102,400     | 100,000 | 高達 100,000 | 6,204 | 4,136   |
+|500         | 500     | 最多1500   | 90   | 60   |
+|1,024       | 1,024   | 最多3072   | 122   | 81   |
+|5,120       | 5,120   | 最多15360  | 368   | 245   |
+|10240      | 10240  | 最多30720  | 675 | 450   |
+|33792      | 33792  | 最多100000 | 2088 | 1392   |
+|51200      | 51200  | 最多100000 | 3,132 | 2088   |
+|102400     | 100,000 | 最多100000 | 6204 | 4136   |
 
 > [!NOTE]
-> 檔共用性能受計算機網路限制、可用網路頻寬、IO 大小、並行性等諸多因素影響。 例如,基於具有 8 個 KiB 讀/寫 IO 大小的內部測試,單個 Windows 虛擬機器 *「標準F16s_v2」* 連接到 SMB 上的進階檔案共用可以實現 20K 讀取 IOPS 和 15K 寫入 IOPS。 使用 512 MiB 讀取/寫入 IO 大小,相同的 VM 可實現 1.1 GiB/s 出口和 370 MiB/s 入口輸送量。 要實現最大的性能擴展,可以將負載分散到多個 VM 上。 有關一些常見的性能問題和解決方法,請參閱[故障排除指南](storage-troubleshooting-files-performance.md)。
+> 檔案共用效能受限於機器網路限制、可用的網路頻寬、IO 大小、平行處理，還有許多其他因素。 例如，根據具有8個 KiB 讀取/寫入 IO 大小的內部測試，透過 SMB 連線到 premium 檔案共用的單一 Windows 虛擬機器*標準 F16s_v2*，可以達到20K 的讀取 IOPS 和15K 寫入 iops。 使用 512 MiB 讀取/寫入 IO 大小，相同的 VM 可以達到 1.1 GiB/s 輸出，以及 370 MiB/s 輸入輸送量。 若要達到最大效能等級，請將負載分散到多個 Vm。 請參閱[疑難排解指南](storage-troubleshooting-files-performance.md)，以瞭解一些常見的效能問題和因應措施。
 
-#### <a name="bursting"></a>爆破
-高級文件共用可以突發其IOPS最多達三倍。 爆破是自動化的,並且基於信用系統運行。 爆破工作在盡力的基礎上,突發限制不是保證,文件共用可以爆裂*到*極限。
+#### <a name="bursting"></a>負載平衡
+高階檔案共用可以將其 IOPS 高載至三倍。 高載會自動化，並根據信用系統運作。 高載會以最大的方式運作，而且高載限制並不保證，檔案共用*最多可達*限制。
 
-每當檔案共用的流量低於基線 IOPS 時,積分都會在突發存儲桶中累積。 例如,100 GiB 共用具有 100 個基線 IOPS。 如果共用上的實際流量為 40 IOPS,則為特定 1 秒間隔,則 60 個未使用的 IOPS 將記入突發記憶體桶。 然後,當操作超過基準 IIP 時,這些積分將隨後使用。
+當您檔案共用的流量低於基準 IOPS 時，點數會累積在高載值區中。 例如，100 GiB 共用具有100基準 IOPS。 如果共用上的實際流量為特定1秒間隔的 40 IOPS，則會將60未使用的 IOPS 貸到高載值區。 之後，當作業會超過基準 IOPs 時，就會使用這些信用額度。
 
 > [!TIP]
-> 突發儲存桶的大小 = 基線 IOPS = 2 = 3600。
+> 高載 bucket 的大小 = 基準 IOPS * 2 * 3600。
 
-每當共享超過基線 IOPS 並在突發存儲桶中具有積分時,它將突發。 只要剩餘積分,股票可以繼續爆發,但低於 50 TiB 的股票將僅停留在破發限制下長達一小時。 大於 50 TiB 的股票在技術上可以超過此一小時限制,最多兩小時,但是,這是基於累積的突發積分數。 超出基準 IOPS 的每個 IO 消耗一個積分,一旦用完所有積分,該份額將返回到基準 IOPS。
+每當共用超過基準 IOPS，而且在高載 bucket 中有信用額度時，就會進行高載。 只要剩餘信用額度，共用就可以繼續高載，但是小於 50 TiB 的共用則只會保持高載限制達一小時。 在技術上，大於 50 TiB 的共用可能會超過此一小時的限制，最多兩個小時，但這是根據所累積的高載點數數目。 除了基準 IOPS 以外的每個 IO 都會取用一個點數，一旦取用所有信用額度，該共用就會回到基準 IOPS。
 
-共用積分有三種狀態:
+共用信用額度有三種狀態：
 
-- 當檔共用使用小於基線 IOPS 時,應計。
-- 當檔共享崩潰時,拒絕。
-- 保持不變,當沒有積分或基線 IOPS 正在使用時。
+- 當檔案共用使用低於基準 IOPS 時產生。
+- 在檔案共用進行高載時拒絕。
+- 當沒有任何點數或基準 IOPS 正在使用時，剩餘的常數。
 
-新的文件共用從突發存儲桶中的全部積分開始。 如果由於伺服器限制而共用IOPS低於基準IOPS,則不會累積突發積分。
+新的檔案共用會從其高載值區中的完整點數開始。 如果由於伺服器進行節流，所以共用 IOPS 低於基準 IOPS 時，將不會產生高載點數。
 
-### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>讓標準檔案分享跨越多達 100 TiB
+### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>啟用標準檔案共用以跨越最多 100 TiB
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]
 
 #### <a name="limitations"></a>限制
@@ -160,14 +160,14 @@ Azure 檔案支援兩種不同類型的加密:傳輸中的加密(與裝載/存�
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
 ## <a name="migration"></a>遷移
-在許多情況下,您不會為組織建立淨新檔共用,而是將現有檔共用從本地檔案伺服器或 NAS 設備遷移到 Azure 檔。 有許多工具(由 Microsoft 和第三方提供)用於對檔共用進行遷移,但它們大致可以分為兩類:
+在許多情況下，您將不會為您的組織建立網路新的檔案共用，而是改為將現有的檔案共用從內部部署檔案伺服器或 NAS 裝置遷移到 Azure 檔案儲存體。 Microsoft 和協力廠商都有提供許多工具，可進行檔案共用的遷移，但大致上可以分成兩個類別：
 
-- **維護檔案系統屬性(如 ACL 與時間戳)的工具**:
-    - **[Azure 檔案同步](storage-sync-files-planning.md)**:Azure 檔案同步可用作將數據引入 Azure 檔案共用的方法,即使所需的結束部署不是維護本地狀態也是如此。 Azure 檔案同步可以安裝在現有的 Windows 伺服器 2012 R2、Windows 伺服器 2016 和 Windows 伺服器 2019 部署上。 使用 Azure 檔同步作為引入機制的一個優點是,最終使用者可以繼續使用現有的檔共用;在後台完成所有資料上載後,可能會將共用到 Azure 文件共用。
-    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: Robocopy 是一個眾所周知的複製工具,隨 Windows 和 Windows 伺服器一起提供。 Robocopy 可在本機掛接檔案共用，然後將掛接位置作為 Robocopy 命令中的目的地使用，以將資料傳輸到 Azure 檔案服務中。
+- **維護檔案系統屬性的工具，例如 acl 和時間戳記**：
+    - **[Azure 檔案同步](storage-sync-files-planning.md)**： Azure 檔案同步可用來做為將資料內嵌至 Azure 檔案共用的方法，即使所需的結束部署不會維持內部部署的狀態也一樣。 Azure 檔案同步可以就地安裝在現有的 Windows Server 2012 R2、Windows Server 2016 和 Windows Server 2019 部署上。 使用 Azure 檔案同步做為內嵌機制的優點是，使用者可以繼續就地使用現有的檔案共用;當所有資料都在背景上傳完成後，就可以切換到 Azure 檔案共用。
+    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**： robocopy 是隨附于 Windows 和 windows Server 的知名複製工具。 Robocopy 可在本機掛接檔案共用，然後將掛接位置作為 Robocopy 命令中的目的地使用，以將資料傳輸到 Azure 檔案服務中。
 
-- **不維護檔案系統屬性的工具**:
-    - **數據框**:資料框提供離線資料傳輸機制,將資料發送到 Azure。 此方法旨在增加輸送量和節省頻寬,但當前不支援文件系統屬性(如時間戳和 ACL)。
+- **不會維護檔案系統屬性的工具**：
+    - **資料箱**：資料箱提供離線資料傳輸機制，讓實體將資料傳送到 Azure。 這個方法是設計來增加輸送量並節省頻寬，但目前不支援時間戳記和 Acl 等檔案系統屬性。
     - **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**：AzCopy 是命令列公用程式，設計為使用最佳效能的簡單命令，將資料複製到 Azure 檔案服務與 Azure Blob 儲存體，以及從其中複製資料。
 
 ## <a name="next-steps"></a>後續步驟
