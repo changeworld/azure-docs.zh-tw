@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ff6bb9e4d4e40c02b52f35bd56bf065a8804a43a
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82134373"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>使用 Azure CLI 大規模部署與監視 IoT Edge 模組
@@ -197,9 +197,9 @@ Deployment create 命令會採用下列參數：
 * **--content** - 部署資訊清單 JSON 的檔案名稱。 必要參數。
 * **--hub-name** - 將在其中建立部署的 IoT 中樞名稱。 中樞必須在目前訂用帳戶中。 使用`az account set -s [subscription name]`命令變更您目前的訂用帳戶。
 * **--labels** - 新增標籤，以協助追蹤您的部署。 標籤是成對的「名稱, 值」組合，可描述您的部署。 標籤會採用 JSON 格式的名稱和值。 例如， `{"HostPlatform":"Linux", "Version:"3.0.1"}`
-* **--target-condition** - 輸入目標條件來判斷這個部署會將哪些裝置設為目標。條件會以裝置對應項標籤或裝置對應項報告屬性為基礎，且應符合運算式格式。例如，`tags.environment='test' and properties.reported.devicemodel='4000x'`。
+* **--target-condition** - 輸入目標條件來判斷這個部署會將哪些裝置設為目標。條件會以裝置對應項標籤或裝置對應項報告屬性為基礎，且應符合運算式格式。例如： `tags.environment='test' and properties.reported.devicemodel='4000x'` 。
 * **--priority** -正整數。 如果兩個以上部署的目標為相同的裝置，則將會套用 [優先順序] 數值最高的部署。
-* **--計量**-建立查詢 edgeHub 報告屬性的計量，以追蹤部署的狀態。 計量會接受 JSON 輸入或 filepath。 例如，`'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`。
+* **--計量**-建立查詢 edgeHub 報告屬性的計量，以追蹤部署的狀態。 計量會接受 JSON 輸入或 filepath。 例如： `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'` 。
 
 若要使用 Azure CLI 來監視部署，請參閱[監視 IoT Edge 部署](how-to-monitor-iot-edge-deployments.md#monitor-a-deployment-with-azure-cli)。
 

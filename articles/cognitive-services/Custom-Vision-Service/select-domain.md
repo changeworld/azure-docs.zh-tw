@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
 ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82127764"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>選取自訂視覺專案的網域
@@ -23,7 +23,7 @@ ms.locfileid: "82127764"
 
 ## <a name="image-classification"></a>影像分類
 
-|網域|用途|
+|Domain|目的|
 |---|---|
 |__泛型__| 已針對廣泛的影像分類工作進行最佳化。 如果沒有其他適用的領域，或您不確定要選擇哪一個領域，請選取「泛型」領域。|
 |__Food__|已針對菜餚相片進行最佳化，如同您在餐廳菜單上看見的一樣。 如果您想要將個別水果或蔬菜的相片分類，請使用「食物」領域。|
@@ -33,7 +33,7 @@ ms.locfileid: "82127764"
 
 ## <a name="object-detection"></a>物件偵測
 
-|網域|用途|
+|Domain|目的|
 |---|---|
 |__一般__| 已針對廣泛的物件偵測工作進行最佳化。 如果沒有其他適用的領域，或您不確定要選擇哪一個領域，請選取「泛型」領域。|
 |__標誌__|已針對尋找影像中的品牌標誌進行最佳化。|
@@ -47,7 +47,7 @@ ms.locfileid: "82127764"
 > [!NOTE]
 > 這些數位不包括前置處理和後處理時間。
 
-|工作|網域|模型大小|CPU 推斷時間|GPU 推斷時間|
+|工作|Domain|模型大小|CPU 推斷時間|GPU 推斷時間|
 |---|---|---|---|---|
 |分類|一般 (精簡)|5 MB|13 毫秒|5 毫秒|
 |物件偵測|一般 (精簡)|45 MB|35毫秒|5 毫秒|

@@ -11,17 +11,17 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.openlocfilehash: 327174974affb3b2511eac60755aa1bf047b3b5e
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133457"
 ---
 # <a name="monitor-workload---azure-portal"></a>監視工作負載-Azure 入口網站
 
 本文說明如何使用 Azure 入口網站來監視您的工作負載。 這包括使用適用于[SYNAPSE SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)的 log analytics，設定 Azure 監視器記錄來調查查詢執行和工作負載趨勢。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 - Azure 訂用帳戶：如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/)。
 - SQL 集區：我們將會收集 SQL 集區的記錄檔。 如果您尚未布建 SQL 集區，請參閱[建立 sql 集](load-data-from-azure-blob-storage-using-polybase.md)區中的指示。

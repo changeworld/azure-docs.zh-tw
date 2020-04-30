@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1224aef044c558147f4c7234f6514d0de2f09e0c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82143985"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>針對自助式密碼重設進行疑難排解
@@ -97,7 +97,7 @@ ms.locfileid: "82143985"
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>如果事件來源是 ADSync
 
-| 程式碼 | 名稱或訊息 | 說明 |
+| 程式碼 | 名稱或訊息 | 描述 |
 | --- | --- | --- |
 | 6329 | BAIL: MMS(4924) 0x80230619：「有一項限制讓密碼無法變更為目前指定的密碼。」 | 當「密碼回寫」服務嘗試在本機目錄上設定不符合密碼有效期、歷程記錄、複雜度或網域篩選需求的密碼時，就會發生此事件。 <br> <br> 如果您有最短的密碼使用期限，且最近在該時段內變更過密碼，就必須在到達網域中指定的使用期限後，才能再次變更密碼。 若要進行測試，最短使用期限應該設定為 0。 <br> <br> 如果您已啟用密碼歷程記錄需求，則必須選取最近*n*次未使用的密碼，其中*n*是密碼歷程記錄設定。 如果您選取過去*N*次使用過的密碼，則在此情況下您會看到失敗。 若要進行測試，密碼歷程記錄應該設定為 0。 <br> <br> 如果您有密碼複雜度需求，則會在使用者嘗試變更或重設密碼時強制執行這些需求。 <br> <br> 如果您啟用密碼篩選功能，當使用者選取的密碼不符合篩選準則時，重設或變更作業就會失敗。 |
 | 6329 | MMS(3040): admaexport.cpp(2837): 伺服器未包含 LDAP 密碼原則控制項。 | 如果未在 DC 上啟用 LDAP_SERVER_POLICY_HINTS_OID 控制項 (1.2.840.113556.1.4.2066)，就會發生此問題。 若要使用密碼回寫功能，您必須啟用該控制項。 若要這樣做，Dc 必須在 Windows Server 2008R2 或更新版本上。 |
@@ -105,7 +105,7 @@ ms.locfileid: "82143985"
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>如果事件來源為 PasswordResetService
 
-| 程式碼 | 名稱或訊息 | 說明 |
+| 程式碼 | 名稱或訊息 | 描述 |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | 這個事件表示內部部署服務偵測到源自雲端、針對同盟、傳遞驗證或密碼雜湊同步使用者所提出的密碼重設要求。 這個事件是每個密碼重設回寫作業的第一個事件。 |
 | 31002 | PasswordResetSuccess | 這個事件表示使用者在密碼重設作業期間選取了新的密碼。 我們認為這個密碼符合公司的密碼需求。 密碼已成功地寫回至本機的 Active Directory 環境。 |

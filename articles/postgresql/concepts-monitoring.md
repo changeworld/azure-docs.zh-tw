@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.openlocfilehash: 99c8d4e7e5263b8a7caf30833a899976d3cc829b
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133694"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>監視和調整「適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器」
@@ -22,7 +22,7 @@ ms.locfileid: "82133694"
 ### <a name="list-of-metrics"></a>計量清單
 這些計量可供適用於 PostgreSQL 的 Azure 資料庫使用：
 
-|計量|計量顯示名稱|單位|說明|
+|計量|計量顯示名稱|單位|描述|
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用中的 CPU 百分比。|
 |memory_percent|記憶體百分比|百分比|使用中記憶體的百分比。|
@@ -33,8 +33,8 @@ ms.locfileid: "82133694"
 |serverlog_storage_percent|伺服器記錄儲存體百分比|百分比|使用的伺服器記錄儲存體佔伺服器記錄儲存體上限的百分比。|
 |serverlog_storage_usage|使用的伺服器記錄儲存體|位元組|使用中的伺服器記錄儲存體數量。|
 |serverlog_storage_limit|伺服器記錄儲存體限制|位元組|此伺服器的伺服器記錄儲存體上限。|
-|active_connections|作用中的連線|Count|伺服器的使用中連線數量。|
-|connections_failed|失敗的連線|Count|伺服器的失敗連線數量。|
+|active_connections|作用中的連線|計數|伺服器的使用中連線數量。|
+|connections_failed|失敗的連線|計數|伺服器的失敗連線數量。|
 |network_bytes_egress|Network Out|位元組|跨作用中連線的網路輸出。|
 |network_bytes_ingress|Network In|位元組|跨作用中連線的網路輸入。|
 |backup_storage_used|已使用的備份儲存體|位元組|已使用的備份儲存體數量。|

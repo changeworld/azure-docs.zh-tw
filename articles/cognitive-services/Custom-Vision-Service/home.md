@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: bdb2b31ee3abb30e6e7339f641b778ff5dc522b0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 79ecb801e1b4d0fa96ca7ae06223fc231cbf12e6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81403799"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82129879"
 ---
 # <a name="what-is-custom-vision"></a>什麼是自訂視覺服務？
 
@@ -49,4 +49,4 @@ Azure 自訂視覺是一項認知服務，可讓您建置、部署和改善自�
 
 ## <a name="next-steps"></a>後續步驟
 
-請依照[建置分類器](getting-started-build-a-classifier.md)指南在 Web 上開始使用自訂視覺，或完成[影像分類教學課程](csharp-tutorial.md)以使用程式碼實作基本案例。
+請依照[建置分類器](getting-started-build-a-classifier.md)指南在 Web 上開始使用自訂視覺，或完成[影像分類教學課程](quickstarts/image-classification.md)以使用程式碼實作基本案例。

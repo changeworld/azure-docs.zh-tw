@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/01/2020
 ms.author: victorh
 ms.openlocfilehash: 8acf04d26d0c69c426eb86f8a26a9f243c6f5ad2
-ms.sourcegitcommit: 1ed0230c48656d0e5c72a502bfb4f53b8a774ef1
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82136629"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>關於應用程式閘道的常見問題
@@ -112,7 +112,7 @@ Azure 應用程式閘道會以服務形式提供應用程式傳遞控制器（AD
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>我可以使用 Exchange Server 做為應用程式閘道的後端嗎？
 
-不可以。 應用程式閘道不支援電子郵件通訊協定，例如 SMTP、IMAP 和 POP3。
+否。 應用程式閘道不支援電子郵件通訊協定，例如 SMTP、IMAP 和 POP3。
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>是否有可從 v1 SKU 遷移至 v2 SKU 的指導方針？
 
@@ -124,7 +124,7 @@ Azure 應用程式閘道會以服務形式提供應用程式傳遞控制器（AD
 
 ### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>應用程式閘道 V2 是否支援使用 NTLM 驗證來 proxy 處理要求？
 
-不可以。 應用程式閘道 V2 尚不支援使用 NTLM 驗證的 proxy 處理要求。
+否。 應用程式閘道 V2 尚不支援使用 NTLM 驗證的 proxy 處理要求。
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>應用程式閘道親和性 cookie 是否支援 SameSite 屬性？
 是， [Chromium browser](https://www.chromium.org/Home) [V80 update](https://chromiumdash.appspot.com/schedule)在 HTTP cookie 上引進了強制，而不會將 SameSite 屬性視為 SameSite = 不嚴格。 這表示在協力廠商內容中，瀏覽器不會傳送應用程式閘道親和性 cookie。 
@@ -149,7 +149,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>手動或自動相應增加或相應減少會造成停機時間嗎？
 
-不可以。 執行個體已分散於升級網域和容錯網域。
+否。 執行個體已分散於升級網域和容錯網域。
 
 ### <a name="does-application-gateway-support-connection-draining"></a>應用程式閘道是否支援連線清空？
 
@@ -159,7 +159,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 是。
 
-## <a name="configuration"></a>組態
+## <a name="configuration"></a>設定
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>應用程式閘道一律部署在虛擬網路中？
 
@@ -171,7 +171,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>是否可以在應用程式閘道子網路中部署其他任何項目？
 
-不可以。 但是，您可以在子網中部署其他應用程式閘道。
+否。 但是，您可以在子網中部署其他應用程式閘道。
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>應用程式閘道子網是否支援網路安全性群組？
 
@@ -203,7 +203,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>自訂探查在回應資料上是否支援萬用字元或 RegEx？
 
-不可以。 
+否。 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>應用程式閘道中的路由規則如何處理？
 
@@ -219,7 +219,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>公用和私用的接聽程式是否可以使用相同的埠？
 
-不可以。
+否。
 
 ### <a name="does-application-gateway-support-ipv6"></a>應用程式閘道是否支援 IPv6？
 
@@ -342,7 +342,7 @@ v2 SKU 會自動確保將新執行個體分散在各個容錯網域和更新網�
 
 ### <a name="does-detection-mode-block-traffic"></a>偵測模式是否會封鎖流量？
 
-不可以。 偵測模式只會記錄觸發 WAF 規則的流量。
+否。 偵測模式只會記錄觸發 WAF 規則的流量。
 
 ### <a name="can-i-customize-waf-rules"></a>我可以自訂 WAF 規則嗎？
 

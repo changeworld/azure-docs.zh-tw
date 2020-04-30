@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 8278d9f2129ab8b213cf1b561f4b82b56dffc8da
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82131028"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>在 Windows 上使用虛擬 TPM 建立及布建模擬的 IoT Edge 裝置
@@ -31,7 +31,7 @@ DPS 支援在個別註冊和群組註冊中 IoT Edge 裝置的對稱金鑰證明
 > [!TIP]
 > 本文說明如何在虛擬裝置上使用 TPM 證明來測試自動布建，但大部分的功能也適用于使用實體 TPM 硬體時。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * Windows 開發機器。 本文使用 Windows 10。
 * 使用中的 IoT 中樞。

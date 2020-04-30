@@ -5,10 +5,10 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
 ms.openlocfilehash: 7183c0b268342d08fe7c0ed79c7fa589e3e28afe
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82128476"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>適用于 Azure 資源記錄的支援服務、架構和類別
@@ -22,24 +22,24 @@ ms.locfileid: "82128476"
 
 ## <a name="top-level-resource-logs-schema"></a>最上層資源記錄架構
 
-| 名稱 | 必要/選用 | 說明 |
+| Name | 必要/選用 | 說明 |
 |---|---|---|
 | time | 必要 | 事件的時間戳記 (UTC)。 |
 | resourceId | 必要 | 發出事件之資源的資源識別碼。 對於租用戶服務，這是 /tenants/tenant-id/providers/provider-name 的格式。 |
 | tenantId | 租用戶記錄所需的 | 此事件所繫結 Active Directory 租用戶的租用戶識別碼。 這個屬性只能用於租用戶層級記錄，並不會出現在資源層級記錄中。 |
 | operationName | 必要 | 此事件所代表的作業名稱。 如果事件代表 RBAC 作業，則這是 RBAC 作業名稱 (例如 Microsoft.Storage/storageAccounts/BlobServices/Blobs/Read)。 通常以 Resource Manager 作業形式建模，即使它們不是實際記載的 Resource Manager 作業也是一樣 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
-| operationVersion | 選用 | 與作業建立關聯的 api-version，如果使用 API 執行 operationName (例如 `http://myservice.windowsazure.net/object?api-version=2016-06-01`). 如果沒有對應至此作業的 API，則版本代表該作業的版本，以防與作業建立關聯的屬性在未來變更。 |
+| operationVersion | 選擇性 | 與作業建立關聯的 api-version，如果使用 API 執行 operationName (例如 `http://myservice.windowsazure.net/object?api-version=2016-06-01`). 如果沒有對應至此作業的 API，則版本代表該作業的版本，以防與作業建立關聯的屬性在未來變更。 |
 | category | 必要 | 事件的記錄類別。 類別是您可在特定資源上啟用或停用記錄的資料粒度。 事件之屬性 Blob 內顯示的屬性，會與特定記錄類別和資源類型內的屬性相同。 一般記錄類別是「Audit」「作業」「執行」和「要求」。 |
-| resultType | 選用 | 事件的狀態。 一般值包括︰「已啟動」、「進行中」、「成功」、「失敗」、「作用中」和「已解決」。 |
-| resultSignature | 選用 | 事件的子狀態。 如果此作業對應至 REST API 呼叫，則這是對應 REST 呼叫的 HTTP 狀態碼。 |
-| resultDescription | 選用 | 此作業的靜態文字描述，例如 「取得儲存體檔案」。 |
-| durationMs | 選用 | 作業的持續時間 (以毫秒為單位)。 |
-| callerIpAddress | 選用 | 呼叫端 IP 位址，如果作業對應至來自具有公開可用 IP 位址之實體的 API 呼叫。 |
-| correlationId | 選用 | 用來將一組相關事件群組在一起的 GUID。 一般而言，如果兩個事件具有相同 operationName 但具有兩個不同狀態 (例如 「已啟動」和「成功」），它們共用相同的相互關聯識別碼。 這也可能代表事件之間的其他關聯性。 |
-| 身分識別 | 選用 | JSON Blob，描述已執行作業之使用者或應用程式的身分識別。 這通常包括來自 Active Directory 的授權和宣告/JWT 權杖。 |
-| 層級 | 選用 | 事件的嚴重性層級。 必須是「資訊」、「警告」、「錯誤」或「嚴重」中的其中一個。 |
-| location | 選用 | 發出事件之資源的區域，例如 「美國東部」或「法國南部」 |
-| properties | 選用 | 任何與此特定事件類別相關的擴充屬性。 所有自訂/唯一屬性都必須放在架構的此「部分 B」內。 |
+| resultType | 選擇性 | 事件的狀態。 一般值包括︰「已啟動」、「進行中」、「成功」、「失敗」、「作用中」和「已解決」。 |
+| resultSignature | 選擇性 | 事件的子狀態。 如果此作業對應至 REST API 呼叫，則這是對應 REST 呼叫的 HTTP 狀態碼。 |
+| resultDescription | 選擇性 | 此作業的靜態文字描述，例如 「取得儲存體檔案」。 |
+| durationMs | 選擇性 | 作業的持續時間 (以毫秒為單位)。 |
+| callerIpAddress | 選擇性 | 呼叫端 IP 位址，如果作業對應至來自具有公開可用 IP 位址之實體的 API 呼叫。 |
+| correlationId | 選擇性 | 用來將一組相關事件群組在一起的 GUID。 一般而言，如果兩個事件具有相同 operationName 但具有兩個不同狀態 (例如 「已啟動」和「成功」），它們共用相同的相互關聯識別碼。 這也可能代表事件之間的其他關聯性。 |
+| 身分識別 | 選擇性 | JSON Blob，描述已執行作業之使用者或應用程式的身分識別。 這通常包括來自 Active Directory 的授權和宣告/JWT 權杖。 |
+| 層級 | 選擇性 | 事件的嚴重性層級。 必須是「資訊」、「警告」、「錯誤」或「嚴重」中的其中一個。 |
+| location | 選擇性 | 發出事件之資源的區域，例如 「美國東部」或「法國南部」 |
+| properties | 選擇性 | 任何與此特定事件類別相關的擴充屬性。 所有自訂/唯一屬性都必須放在架構的此「部分 B」內。 |
 
 ## <a name="service-specific-schemas-for-resource-logs"></a>資源記錄的服務特定架構
 資源診斷記錄的結構描述會根據資源和記錄類別而有所不同。 這份清單會顯示所有提供可用資源記錄檔的服務，以及可使用的服務和類別特定架構的連結。
@@ -60,7 +60,7 @@ ms.locfileid: "82128476"
 | 內容傳遞網路 | [適用于 CDN 的 Azure 記錄](../../cdn/cdn-azure-diagnostic-logs.md) |
 | CosmosDB | [Azure Cosmos DB 記錄](../../cosmos-db/logging.md) |
 | Data Factory | [使用 Azure 監視器監視 Data factory](../../data-factory/monitor-using-azure-monitor.md) |
-| Data Lake Analytics |[存取 Azure Data Lake Analytics 的記錄](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
+| 資料湖分析 |[存取 Azure Data Lake Analytics 的記錄](../../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[存取 Azure Data Lake 存放區的記錄](../../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | 事件中樞 |[Azure 事件中樞記錄](../../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | 無法使用結構描述。 |
@@ -124,7 +124,7 @@ ms.locfileid: "82128476"
 |Microsoft.ContainerService/managedClusters|cluster-autoscaler|Kubernetes 叢集自動調整程式|
 |Databricks/工作區|dbfs|Databricks 檔案系統|
 |Databricks/工作區|clusters|Databricks 叢集|
-|Databricks/工作區|accounts|Databricks 帳戶|
+|Databricks/工作區|帳戶|Databricks 帳戶|
 |Databricks/工作區|jobs|Databricks 作業|
 |Databricks/工作區|notebook|Databricks Notebook|
 |Databricks/工作區|ssh|Databricks SSH|
@@ -154,14 +154,14 @@ ms.locfileid: "82128476"
 |DBforPostgreSQL/serversv2|QueryStoreWaitStatistics|于 postgresql 查詢存放區等候統計資料|
 |DesktopVirtualization/工作區|Checkpoint|Checkpoint|
 |DesktopVirtualization/工作區|錯誤|錯誤|
-|DesktopVirtualization/工作區|管理|管理|
+|DesktopVirtualization/工作區|管理性|管理性|
 |DesktopVirtualization/工作區|摘要|摘要|
 |DesktopVirtualization/applicationGroups|Checkpoint|Checkpoint|
 |DesktopVirtualization/applicationGroups|錯誤|錯誤|
-|DesktopVirtualization/applicationGroups|管理|管理|
+|DesktopVirtualization/applicationGroups|管理性|管理性|
 |DesktopVirtualization/hostPools|Checkpoint|Checkpoint|
 |DesktopVirtualization/hostPools|錯誤|錯誤|
-|DesktopVirtualization/hostPools|管理|管理|
+|DesktopVirtualization/hostPools|管理性|管理性|
 |DesktopVirtualization/hostPools|Connection|Connection|
 |DesktopVirtualization/hostPools|HostRegistration|HostRegistration|
 |Microsoft.Devices/IotHubs|連接|連接|
@@ -176,7 +176,7 @@ ms.locfileid: "82128476"
 |Microsoft.Devices/IotHubs|JobsOperations|作業的操作|
 |Microsoft.Devices/IotHubs|DirectMethods|直接方法|
 |Microsoft.Devices/IotHubs|DistributedTracing|分散式追蹤 (預覽)|
-|Microsoft.Devices/IotHubs|組態|組態|
+|Microsoft.Devices/IotHubs|設定|設定|
 |Microsoft.Devices/IotHubs|DeviceStreams|裝置串流（預覽）|
 |Microsoft.Devices/provisioningServices|DeviceOperations|裝置作業|
 |Microsoft.Devices/provisioningServices|ServiceOperations|服務作業|
@@ -199,7 +199,7 @@ ms.locfileid: "82128476"
 |Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|自動調整評估|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|自動調整的調整動作|
 |Microsoft.IoTSpaces/Graph|追蹤|追蹤|
-|Microsoft.IoTSpaces/Graph|運作|運作|
+|Microsoft.IoTSpaces/Graph|作業|作業|
 |Microsoft.IoTSpaces/Graph|稽核|稽核|
 |Microsoft.IoTSpaces/Graph|UserDefinedFunction|UserDefinedFunction|
 |Microsoft.IoTSpaces/Graph|輸入|輸入|

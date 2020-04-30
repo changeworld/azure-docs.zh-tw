@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: labrenne
 ms.openlocfilehash: dd30444585cb1adaaf2b42cebdfa04683b12ecfc
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117330"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch 執行時間環境變數
@@ -37,7 +37,7 @@ ms.locfileid: "82117330"
 
 ## <a name="environment-variables"></a>環境變數
 
-| 變數名稱                     | 說明                                                              | 可用性 | 範例 |
+| 變數名稱                     | 描述                                                              | 可用性 | 範例 |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | 工作所屬之批次帳戶的名稱。                  | 所有工作。   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Batch 帳戶的 URL。 | 所有工作。 | `https://myaccount.westus.batch.azure.com` |

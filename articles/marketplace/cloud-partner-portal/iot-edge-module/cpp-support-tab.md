@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: 59469aaa0a63cd56debe6af84d48bafa727df88c
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142304"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge 模組支援索引標籤
@@ -27,14 +27,14 @@ ms.locfileid: "82142304"
 
 下表說明表單中各欄位以及應填內容。 必要欄位由星號 (*) 標示。
 
-|  **欄位**                |     **描述**                                                          |
+|  **欄位**                |     **說明**                                                          |
 |  ---------                |     ---------------                                                          |
 | ***工程連絡人***  |  *Microsoft 與貴組織的技術連絡人* | 
-| **Name\***                  | 負責技術/工程支援的人員或群組名稱     |
+| **檔案名\***                  | 負責技術/工程支援的人員或群組名稱     |
 | **電子郵件\***                 | 此技術連絡人的電子郵件地址                                      |
 | **來電\***                 | 此技術連絡人的電話號碼                                           |
 | ***客戶支援***  | *接收客戶在 Azure 中開啟的支援票證* |
-| **Name\***                  | 負責客戶支援的人員或群組名稱                  |
+| **檔案名\***                  | 負責客戶支援的人員或群組名稱                  |
 | **電子郵件\***                 | 客戶支援部門的電子郵件地址                                            |
 | **來電\***                 | 客戶支援部門的電話號碼                                            |
 | ***支援 URL***  | *當您的客戶建立支援票證時，Microsoft 會使用這些支援網站* |

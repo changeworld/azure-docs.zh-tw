@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: dsindona
 ms.openlocfilehash: ef73956b1b0d3e7bed6e91cde0b92bcc3e432795
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82141851"
 ---
 # <a name="publish-iot-edge-module-offer"></a>發佈 IoT Edge 模組供應項目
@@ -31,7 +31,7 @@ ms.locfileid: "82141851"
 <!-- P2: we need to tell them that if an offer seems stuck in a step, to know that they should file a support ticket (link to support ticket doc) -->
 
 
-|  **發行步驟**           | **時間**    | **描述**                                                            |
+|  **發行步驟**           | **階段**    | **說明**                                                            |
 |  -------------------           | --------    | ---------------                                                            |
 | 檢查必要條件         | 15 分鐘   | 檢查供應項目資訊和供應項目設定。                        |
 | 認證                  | 2 週 | Azure 認證團隊會分析供應項目。 此步驟會掃描病毒、惡意程式碼，並檢查安全合規性和安全性問題。 它也會確認此 IoT Edge 模組供應項目是否符合所有的資格條件 (請參閱[先決條件](./cpp-prerequisites.md)及[準備您的技術資產](./cpp-create-technical-assets.md))。 若發現問題，將提供意見反應。 |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: dsindona
 ms.openlocfilehash: 9f16d26fa95254282e453cd7bf35d85f8b81ed73
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82143202"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>建立用來預先驗證 Azure 虛擬機器映像的自我測試用戶端
@@ -271,7 +271,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 
     ![為應用程式啟用 API 存取](./media/stclient-enable-api-access.png)
 
-14. 按一下 [選取]。 
+14. 按一下 [選取]  。
 15. 選取 [完成]  。
 16. 在 [設定]**** 下方，選取 [屬性]****。
 17. 在 [屬性]**** 下方，向下捲動至 [多租用戶]****。 選取 [是]  。

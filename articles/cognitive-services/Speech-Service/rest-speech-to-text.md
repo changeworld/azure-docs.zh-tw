@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: yinhew
 ms.openlocfilehash: 005824b0953be741f47c027d121dbe073adca3ba
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82131290"
 ---
 # <a name="speech-to-text-rest-api"></a>語音轉換文字 REST API
@@ -52,10 +52,10 @@ REST 要求的查詢字串中可能包括這些參數。
 | 參數 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | `language` | 識別正在辨識的口說語言。 請參閱[支援的語言](language-support.md#speech-to-text)。 | 必要 |
-| `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包含多個具有信賴值的結果和四個不同的表示法。 預設值是 `simple`。 | 選用 |
-| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值`masked`為，以星號`removed`取代不雅內容，這會移除結果中的所有不`raw`雅內容，或（包含結果中的不雅內容）。 預設值是 `masked`。 | 選用 |
-| `pronunciationScoreParams` | 指定用來在辨識結果中顯示發音分數的參數，其會評估語音輸入的發音品質，以及精確度、順暢、完整性等等的指示器。此參數是 base64 編碼的 json，其中包含多個詳細參數。 如需如何建立此參數的詳細說明，請參閱[發音評估參數](#pronunciation-assessment-parameters)。 | 選用 |
-| `cid` | 使用[自訂語音入口網站](how-to-custom-speech.md)建立自訂模型時，您可以透過 [**部署**] 頁面上找到的**端點識別碼**來使用自訂模型。 使用**端點識別碼**作為`cid`查詢字串參數的引數。 | 選用 |
+| `format` | 指定結果格式。 接受的值為 `simple` 和 `detailed`。 簡單的結果包含 `RecognitionStatus`、`DisplayText`、`Offset` 和 `Duration`。 詳細的回應包含多個具有信賴值的結果和四個不同的表示法。 預設值是 `simple`。 | 選擇性 |
+| `profanity` | 指定如何處理辨識結果中的不雅內容。 接受的值`masked`為，以星號`removed`取代不雅內容，這會移除結果中的所有不`raw`雅內容，或（包含結果中的不雅內容）。 預設值是 `masked`。 | 選擇性 |
+| `pronunciationScoreParams` | 指定用來在辨識結果中顯示發音分數的參數，其會評估語音輸入的發音品質，以及精確度、順暢、完整性等等的指示器。此參數是 base64 編碼的 json，其中包含多個詳細參數。 如需如何建立此參數的詳細說明，請參閱[發音評估參數](#pronunciation-assessment-parameters)。 | 選擇性 |
+| `cid` | 使用[自訂語音入口網站](how-to-custom-speech.md)建立自訂模型時，您可以透過 [**部署**] 頁面上找到的**端點識別碼**來使用自訂模型。 使用**端點識別碼**作為`cid`查詢字串參數的引數。 | 選擇性 |
 
 ## <a name="request-headers"></a>要求標頭
 
@@ -66,7 +66,7 @@ REST 要求的查詢字串中可能包括這些參數。
 | `Ocp-Apim-Subscription-Key` | 您的語音服務訂用帳戶金鑰。 | 必須有此標頭或 `Authorization`。 |
 | `Authorization` | 前面加入 `Bearer` 這個字的授權權杖。 如需詳細資訊，請參閱[驗證](#authentication)。 | 必須有此標頭或 `Ocp-Apim-Subscription-Key`。 |
 | `Content-type` | 描述所提供音訊資料的格式和轉碼器。 接受的值為 `audio/wav; codecs=audio/pcm; samplerate=16000` 和 `audio/ogg; codecs=opus`。 | 必要 |
-| `Transfer-Encoding` | 指定正在傳送的音訊資料區塊，而不是單一檔案。 只有在以區塊處理音訊資料時，才能使用此標頭。 | 選用 |
+| `Transfer-Encoding` | 指定正在傳送的音訊資料區塊，而不是單一檔案。 只有在以區塊處理音訊資料時，才能使用此標頭。 | 選擇性 |
 | `Expect` | 如果使用區塊傳輸，請傳送 `Expect: 100-continue`。 語音服務會確認初始要求並等候其他資料。| 如果傳送的是音訊資料區塊，則為必要。 |
 | `Accept` | 如果提供，則必須是 `application/json`。 語音服務會以 JSON 提供結果。 某些要求架構會提供不相容的預設值。 最佳做法是一律包含`Accept`。 | 此為選用步驟，但建議執行。 |
 
@@ -74,7 +74,7 @@ REST 要求的查詢字串中可能包括這些參數。
 
 音訊是在 HTTP `POST` 要求的主體中傳送。 它必須是此表格中的格式之一：
 
-| [格式] | 轉碼器 | Bitrate | 採樣速率  |
+| 格式 | 轉碼器 | Bitrate | 採樣速率  |
 |--------|-------|---------|--------------|
 | WAV    | PCM   | 16 位元  | 16 kHz，單聲道 |
 | OGG    | OPUS  | 16 位元  | 16 kHz，單聲道 |
@@ -89,11 +89,11 @@ REST 要求的查詢字串中可能包括這些參數。
 | 參數 | 描述 | 必要/選用 |
 |-----------|-------------|---------------------|
 | ReferenceText | 要針對發音進行評估的文字。 | 必要 |
-| GradingSystem | 用於評分校正的點系統。 接受的值為 `FivePoint` 和 `HundredMark`。 預設值是 `FivePoint`。 | 選用 |
-| 細微度 | 評估資料細微性。 接受的值`Phoneme`為，它會顯示全文檢索單字和音素層級`Word`的分數，這會顯示全文檢索和字層級`FullText`的分數，這只會顯示全文檢索層級的分數。 預設值是 `Phoneme`。 | 選用 |
-| 維度 | 定義輸出準則。 接受的值`Basic`為（僅顯示精確度分數）， `Comprehensive`會顯示更多維度的分數（例如，在全文檢索層級上順暢分數和完整性分數，word 層級的錯誤類型）。 請檢查[回應參數](#response-parameters)，以查看不同分數維度和 word 錯誤類型的定義。 預設值是 `Basic`。 | 選用 |
-| EnableMiscue | 啟用 miscue 計算。 啟用此功能時，發音會與參考文字進行比較，而且會根據比較來標示省略/插入。 接受的值為 `False` 和 `True`。 預設值是 `False`。 | 選用 |
-| ScenarioId | 指出自訂點系統的 GUID。 | 選用 |
+| GradingSystem | 用於評分校正的點系統。 接受的值為 `FivePoint` 和 `HundredMark`。 預設值是 `FivePoint`。 | 選擇性 |
+| 細微度 | 評估資料細微性。 接受的值`Phoneme`為，它會顯示全文檢索單字和音素層級`Word`的分數，這會顯示全文檢索和字層級`FullText`的分數，這只會顯示全文檢索層級的分數。 預設值是 `Phoneme`。 | 選擇性 |
+| 維度 | 定義輸出準則。 接受的值`Basic`為（僅顯示精確度分數）， `Comprehensive`會顯示更多維度的分數（例如，在全文檢索層級上順暢分數和完整性分數，word 層級的錯誤類型）。 請檢查[回應參數](#response-parameters)，以查看不同分數維度和 word 錯誤類型的定義。 預設值是 `Basic`。 | 選擇性 |
+| EnableMiscue | 啟用 miscue 計算。 啟用此功能時，發音會與參考文字進行比較，而且會根據比較來標示省略/插入。 接受的值為 `False` 和 `True`。 預設值是 `False`。 | 選擇性 |
+| ScenarioId | 指出自訂點系統的 GUID。 | 選擇性 |
 
 以下是包含發音評估參數的 JSON 範例：
 

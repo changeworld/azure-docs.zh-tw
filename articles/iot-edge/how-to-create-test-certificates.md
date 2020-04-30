@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 9540913cd86b74fd51e96aa9d1d1dd34c5d60631
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82129801"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>建立示範憑證來測試 IoT Edge 裝置功能
@@ -36,7 +36,7 @@ IoT Edge 裝置需要在執行時間、模組和任何下游裝置之間進行�
    * [建立 IoT Edge 裝置 CA 憑證](#create-iot-edge-device-ca-certificates)，以測試生產案例或閘道案例。
    * [建立下游裝置憑證](#create-downstream-device-certificates)來測試驗證下游裝置，以在閘道案例中 IoT 中樞。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 已安裝 Git 的開發電腦。
 

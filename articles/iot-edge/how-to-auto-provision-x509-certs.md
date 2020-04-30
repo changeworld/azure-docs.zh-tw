@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ccd8d383db265826d8644ee89d7300128fc3a350
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82131314"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-x509-certificates"></a>使用 x.509 憑證建立和布建 IoT Edge 裝置
@@ -28,7 +28,7 @@ ms.locfileid: "82131314"
 
 使用 X.509 憑證作為證明機制是調整生產環境並簡化裝置佈建的絕佳方式。 一般來說，x.509 憑證會以信任鏈的方式排列。 從自我簽署或受信任的根憑證開始，連鎖中的每個憑證都會簽署下一個較低的憑證。 此模式會從根憑證向下到裝置上安裝的最終「分葉」憑證，建立委派的信任鏈。
 
-## <a name="prerequisites"></a>必要條件
+## <a name="prerequisites"></a>先決條件
 
 * 使用中的 IoT 中樞。
 * 做為 IoT Edge 裝置的實體或虛擬裝置。

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: 4bc2aa055c40fb33edade8f7815311e392633885
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133870"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web 應用程式防火牆的資源記錄
@@ -87,7 +87,7 @@ ms.locfileid: "82133870"
 
 只有當您如上述步驟所述，在每個應用程式閘道上啟用存取記錄，才會產生存取記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 應用程式閘道的每個存取都會以 JSON 格式記錄，如下列 v1 範例所示：
 
-|值  |說明  |
+|值  |描述  |
 |---------|---------|
 |instanceId     | 處理要求的應用程式閘道執行個體。        |
 |clientIP     | 要求的原始 IP。        |
@@ -131,7 +131,7 @@ ms.locfileid: "82133870"
 ```
 對於應用程式閘道和 WAF v2，記錄檔會顯示更多詳細資訊：
 
-|值  |說明  |
+|值  |描述  |
 |---------|---------|
 |instanceId     | 處理要求的應用程式閘道執行個體。        |
 |clientIP     | 要求的原始 IP。        |
@@ -185,7 +185,7 @@ ms.locfileid: "82133870"
 只有當您如上述步驟所述，在每個應用程式閘道上啟用效能記錄，才會產生效能記錄。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 產生效能記錄資料的時間間隔為 1 分鐘。 它僅適用于 v1 SKU。 針對 v2 SKU，請使用效能資料的[計量](../../application-gateway/application-gateway-metrics.md)。 會記錄下列資料：
 
 
-|值  |說明  |
+|值  |描述  |
 |---------|---------|
 |instanceId     |  將產生此應用程式閘道執行個體的效能資料。 應用程式閘道若有多個執行個體，則是一個執行個體一行資料。        |
 |healthyHostCount     | 後端集區中狀況良好主機的數目。        |
@@ -222,7 +222,7 @@ ms.locfileid: "82133870"
 只有當您如上述步驟所述，在每個應用程式閘道上啟用防火牆記錄，才會產生防火牆記錄。 此記錄也需要在應用程式閘道上設定該 Web 應用程式防火牆。 資料會儲存在您啟用記錄功能時指定的儲存體帳戶中。 會記錄下列資料：
 
 
-|值  |說明  |
+|值  |描述  |
 |---------|---------|
 |instanceId     | 將產生此應用程式閘道執行個體的防火牆資料。 應用程式閘道若有多個執行個體，則是一個執行個體一行資料。         |
 |clientIp     |   要求的原始 IP。      |

@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 02/27/2017
 ms.custom: seodec18
 ms.openlocfilehash: 8e8d5be4a9f0fb5482ba6c86a8766a25e5713c09
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82117517"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 專案範本快速啟動 Batch 解決方案
@@ -358,7 +358,7 @@ Run() 實作具有下列項目的存取權︰
 
 使用工作處理器範本實作的工作處理器工作會傳回三個可能的結束代碼︰
 
-| 程式碼 | 說明 |
+| 程式碼 | 描述 |
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |工作處理器已執行完成。 請注意，這並非表示您叫用的程式已成功，只表示工作處理器已成功叫用程式並執行任何後置處理，而沒有例外狀況。 結束代碼的意義取決於所叫用的程式，一般來說，結束代碼 0 表示程式已成功，任何其他結束代碼則表示程式失敗。 |
 | 1 |工作處理器失敗，且程式的「預期」部分有例外狀況。 例外狀況已轉譯成 `TaskProcessorException` 與診斷資訊，如有可能，也會提供可解決失敗的建議。 |

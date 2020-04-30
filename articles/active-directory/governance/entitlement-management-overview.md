@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7f4ce292ad507eb0208633db7743b881508a8e58
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82144441"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>什麼是 Azure AD 權利管理？
@@ -114,7 +114,7 @@ Azure AD 權利管理有助於解決這些挑戰。  若要深入瞭解客戶如
 
 若要進一步瞭解權利管理及其檔，您可以參考下列條款清單。
 
-| 詞彙 | 說明 |
+| 詞彙 | 描述 |
 | --- | --- |
 | 存取套件 | 小組或專案所需且受原則規範的資源組合。 存取套件一律包含在目錄中。 在使用者需要要求存取權的案例中，您會建立新的存取封裝。  |
 | 存取要求 | 存取存取套件中資源的要求。 要求通常會經過核准工作流程。  若已核准，要求的使用者會收到存取套件指派。 |

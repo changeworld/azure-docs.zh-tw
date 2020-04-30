@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: dsindona
 ms.openlocfilehash: 934be24d07c01c76c8caf5e16af4b765df79c964
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82142909"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>更新 Azure Marketplace 中的現有虛擬機器供應項目

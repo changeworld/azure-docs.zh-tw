@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: e55d3f704c76d2783c3e442a90c829448129a4d0
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82134412"
 ---
 # <a name="deploy-iot-edge-modules-at-scale-using-the-azure-portal"></a>使用 Azure 入口網站大規模部署 IoT Edge 模組
@@ -176,7 +176,7 @@ IoT Edge 提供兩種不同類型的自動部署，您可以用來自訂您的�
 * 目標條件
 * 自訂度量
 * 標籤
-* 標記
+* Tags
 * 所需屬性
 
 ### <a name="modify-target-conditions-custom-metrics-and-labels"></a>修改目標條件、自訂度量和標籤

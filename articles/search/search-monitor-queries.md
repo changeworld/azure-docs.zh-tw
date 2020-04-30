@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: da7a47bf61453c30f5c735b1282ae93d2442598c
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82127686"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>監視 Azure 認知搜尋中的查詢要求
@@ -36,10 +36,10 @@ ms.locfileid: "82127686"
 
 查詢通常是以毫秒執行，因此只有測量為秒的查詢才會出現在計量中。
 
-| 彙總類型 | 說明 |
+| 彙總類型 | 描述 |
 |------------------|-------------|
 | Average | 在一分鐘內發生查詢執行的平均秒數。|
-| Count | 一分鐘內發出至記錄的計量數目。 |
+| 計數 | 一分鐘內發出至記錄的計量數目。 |
 | 最大值 | 一分鐘內註冊的每秒搜尋查詢最高數目。 |
 | 最小值 | 一分鐘內註冊的每秒搜尋查詢最小數目。  |
 | Sum | 分鐘內執行之所有查詢的總和。  |
@@ -57,7 +57,7 @@ ms.locfileid: "82127686"
 | 彙總類型 | Latency | 
 |------------------|---------|
 | Average | 平均查詢持續時間（以毫秒為單位）。 | 
-| Count | 一分鐘內發出至記錄的計量數目。 |
+| 計數 | 一分鐘內發出至記錄的計量數目。 |
 | 最大值 | 範例中執行時間最長的查詢。 | 
 | 最小值 | 範例中最短的執行查詢。  | 
 | 總計 | 範例中所有查詢的總執行時間，在間隔內執行（一分鐘）。  |
@@ -85,7 +85,7 @@ ms.locfileid: "82127686"
 | 彙總類型 | 節流 |
 |------------------|-----------|
 | Average | 在間隔內捨棄的查詢百分比。 |
-| Count | 一分鐘內發出至記錄的計量數目。 |
+| 計數 | 一分鐘內發出至記錄的計量數目。 |
 | 最大值 | 在間隔內捨棄的查詢百分比。|
 | 最小值 | 在間隔內捨棄的查詢百分比。 |
 | 總計 | 在間隔內捨棄的查詢百分比。 |

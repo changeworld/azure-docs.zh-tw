@@ -1,22 +1,16 @@
 ---
 title: 使用 Azure Batch 執行平行 R 模擬
 description: 教學課程 - 使用 R doAzureParallel 套件在 Azure Batch 中執行 Monte Carlo 財務模擬的逐步指示
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.assetid: ''
-ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: 64daede5de4f2d1bbc69c65f88fe5b5875a0a5b8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c9708360df4a7fb711a3d57b39f33c576c75a0d5
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77025838"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117092"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>教學課程：使用 Azure Batch 執行平行 R 模擬 
 

@@ -9,10 +9,10 @@ ms.date: 04/08/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 81ee07eb41df6d8d663510913572b829feffd995
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133786"
 ---
 # <a name="introduction-to-the-core-azure-storage-services"></a>核心 Azure 儲存體服務簡介
@@ -22,7 +22,7 @@ Azure 儲存體平臺是適用于新式資料儲存案例的 Microsoft 雲端儲
 - **持久與高可用性。** 備援功能可在發生暫時性硬體失敗時，確保您的資料安全無虞。 您也可以選擇在資料中心或地理區域間複寫資料，以便在發生地方性災難或天然災害時獲得額外保護。 以此方式複寫資料，可在發生未預期的中斷事件時保持高可用性。
 - **加密.** 所有寫入至 Azure 儲存體帳戶的資料都會由服務加密。 Azure 儲存體在存取您資料的人員控管上，提供更細微的控制。
 - **可調整.** Azure 儲存體設計為可大幅調整，以符合現今應用程式的資料儲存和效能需求。
-- **受控。** Azure 會為您處理硬體維護、更新和重大問題。
+- **受控.** Azure 會為您處理硬體維護、更新和重大問題。
 - **可存取。** 您可以從世界各地透過 HTTP 或 HTTPS 存取 Azure 儲存體中的資料。 Microsoft 提供各種語言的 Azure 儲存體用戶端程式庫，包括 .NET、JAVA、node.js、Python、PHP、Ruby、Go 等，以及成熟的 REST API。 Azure 儲存體支援在 Azure PowerShell 或 Azure CLI 中使用指令碼。 而且在使用資料方面，Azure 入口網站和 Azure 儲存體總管提供簡易的視覺式解決方案。  
 
 ## <a name="core-storage-services"></a>核心儲存體服務
@@ -91,7 +91,7 @@ Azure 佇列服務用來儲存及擷取訊息。 佇列訊息的大小上限為 
 
 如需 Azure 佇列的詳細資訊，請參閱[佇列簡介](../queues/storage-queues-introduction.md)。
 
-## <a name="table-storage"></a>表格儲存體
+## <a name="table-storage"></a>資料表儲存體
 
 Azure 資料表儲存體現在屬於 Azure Cosmos DB。 若要查看 Azure 資料表儲存體文件，請參閱 [Azure 資料表儲存體概觀](../tables/table-storage-overview.md)。 除了現有的 Azure 資料表儲存體服務，有新的 Azure Cosmos DB 資料表 API 供應項目，可提供輸送量最佳化的資料表、全域發佈，以及自動次要索引。 若要深入瞭解並試用新的 premium 體驗，請參閱[Azure Cosmos DB 資料表 API](https://aka.ms/premiumtables)。
 

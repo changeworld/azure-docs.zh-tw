@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
 ms.openlocfilehash: 6f0e7c514835227fafd439803107531fbc62285c
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82133841"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>設定 Azure 儲存體防火牆和虛擬網路
@@ -386,7 +386,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 
 如果您明確地[將 RBAC 角色指派](storage-auth-aad.md#assign-rbac-roles-for-access-rights)給該資源實例的[系統指派受控識別](../../active-directory/managed-identities-azure-resources/overview.md)，[**允許受信任的 Microsoft 服務**] 設定也會允許下列服務的特定實例存取儲存體帳戶。 在此情況下，實例的存取範圍會對應至指派給受控識別的 RBAC 角色。
 
-| Service                        | 資源提供者名稱                 | 用途            |
+| Service                        | 資源提供者名稱                 | 目的            |
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azue 認知搜尋         | Microsoft.Search/searchServices        | 可讓認知搜尋服務存取儲存體帳戶以進行索引、處理和查詢。 |
 | Azure Container Registry 工作 | Microsoft.ContainerRegistry/registries | 建立容器映射時，ACR 工作可以存取儲存體帳戶。 |
@@ -395,7 +395,7 @@ Azure 儲存體提供分層的安全性模型。 此模型可讓您根據所使�
 | Azure Logic Apps               | Microsoft.Logic/workflows              | 讓邏輯應用程式能夠存取儲存體帳戶。 [深入了解](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity)。 |
 | Azure Machine Learning 服務 | Microsoft.MachineLearningServices      | 已授權的 Azure Machine Learning 工作區會將實驗輸出、模型和記錄寫入 Blob 儲存體，並讀取資料。 [深入了解](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace)。 | 
 | Azure SQL 資料倉儲       | Microsoft.Sql                          | 允許使用 PolyBase 從特定的 SQL Database 實例匯入和匯出資料。 [深入了解](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)。 |
-| Azure 串流分析         | Microsoft.StreamAnalytics             | 允許將串流作業中的資料寫入 Blob 儲存體。 此功能目前為預覽狀態。 [深入了解](/azure/stream-analytics/blob-output-managed-identity)。 |
+| Azure 串流分析         | Microsoft.StreamAnalytics             | 允許將串流作業中的資料寫入 Blob 儲存體。 這項功能目前為預覽狀態。 [深入了解](/azure/stream-analytics/blob-output-managed-identity)。 |
 | Azure Synapse Analytics        | Synapse/工作區          | 可讓您從 Synapse 分析存取 Azure 儲存體中的資料。 |
 
 

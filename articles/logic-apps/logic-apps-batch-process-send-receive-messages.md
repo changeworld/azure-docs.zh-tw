@@ -9,10 +9,10 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: d44d5a8eeba749572980f79a90bcf5893a9c1fbf
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82144346"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure Logic Apps 中傳送、接收及批次處理訊息
@@ -57,7 +57,7 @@ ms.locfileid: "82144346"
 
 3. 設定批次接收者的屬性： 
 
-   | 屬性 | 說明 | 
+   | 屬性 | 描述 | 
    |----------|-------------|
    | **批次模式** | - **內嵌**：用來定義批次觸發程序內的發行準則 <br>- **整合帳戶**：透過[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，可定義多個發行準則組態。 透過整合帳戶，您可以在同一個地方維護上述所有組態，而不是在個別的邏輯應用程式中進行維護。 | 
    | **批次名稱** | 您的批次名稱 (在此範例中為 "TestBatch")，只適用於 [內嵌]**** 批次模式 |  
@@ -168,7 +168,7 @@ ms.locfileid: "82144346"
 
 3. 設定批次傳送者的屬性：
 
-   | 屬性 | 說明 | 
+   | 屬性 | 描述 | 
    |----------|-------------| 
    | **批次名稱** | 接收者邏輯應用程式所定義的批次名稱，在本例中為 "TestBatch" <p>**重要**：批次名稱會在執行階段驗證，而且必須符合接收者邏輯應用程式所指定的名稱。 變更批次名稱會導致批次傳送者失敗。 | 
    | **訊息內容** | 您要傳送的訊息內容 | 
@@ -186,7 +186,7 @@ ms.locfileid: "82144346"
 
 4. 現在設定批次的資料分割。 在 "BatchReceiver" 動作中，選擇 [顯示進階選項]**** 並設定下列屬性：
 
-   | 屬性 | 說明 | 
+   | 屬性 | 描述 | 
    |----------|-------------| 
    | **分割區名稱** | 選擇性的唯一分割索引鍵，可用於將目標批次分割誠邏輯子集，以及根據該索引鍵收集訊息 | 
    | **訊息識別碼** | 選擇性的訊息識別碼，空白時是一個產生的 全域唯一識別碼 (GUID) | 
