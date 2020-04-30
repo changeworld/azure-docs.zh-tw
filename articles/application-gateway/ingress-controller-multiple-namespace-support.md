@@ -1,6 +1,6 @@
 ---
-title: 為應用程式閘道入口控制器啟用多個命名空間支援
-description: 本文提供有關如何在具有應用程式閘道入口控制器的 Kubernetes 群集中啟用多個命名空間支援的資訊。
+title: 啟用應用程式閘道輸入控制器的多個命名空間支援
+description: 本文提供有關如何在具有應用程式閘道輸入控制器的 Kubernetes 叢集中啟用多個命名空間支援的資訊。
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,43 +8,43 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 83650e7cf46ec1dede5f25e32114d6469bab24be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79279919"
 ---
-# <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>使用應用程式閘道入口控制器在 AKS 群集中啟用多個命名空間支援
+# <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>在具有應用程式閘道輸入控制器的 AKS 叢集中啟用多個命名空間支援
 
 ## <a name="motivation"></a>動機
-庫伯內斯[命名空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)使 Kubernetes 群集得以分區並分配給較大團隊的子組。 然後，這些子團隊可以通過更精細的資源、安全性、配置等控制來部署和管理基礎結構。庫伯奈斯允許在每個命名空間內獨立定義一個或多個入口資源。
+Kubernetes[命名空間](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)可以分割 Kubernetes 叢集，並將其配置給較大型小組的子群組。 這些子小組接著可以透過更精細的資源、安全性、設定等控制來部署和管理基礎結構。Kubernetes 可讓您在每個命名空間內獨立定義一或多個輸入資源。
 
-從版本 0.7 [Azure 應用程式閘道 Kubernets 入口控制器](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/README.md)（AGIC） 中引入事件並觀察多個命名空間。 如果 AKS 管理員決定使用[應用閘道](https://azure.microsoft.com/services/application-gateway/)作為入口，則所有命名空間都將使用相同的應用程式閘道實例。 入口控制器的單個安裝將監視可訪問的命名空間，並將配置它與之關聯的應用程式閘道。
+從0.7 版開始[Azure 應用程式閘道 Kubernetes IngressController](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/README.md) （AGIC）可以內嵌事件，並觀察多個命名空間。 如果 AKS 系統管理員決定使用[應用程式閘道](https://azure.microsoft.com/services/application-gateway/)做為輸入，則所有命名空間都會使用相同的應用程式閘道實例。 輸入控制器的單一安裝會監視可存取的命名空間，並設定與它相關聯的應用程式閘道。
 
-AGIC 的版本 0.7 將繼續專門觀察`default`命名空間，除非在 Helm 配置中顯式更改為一個或多個不同的命名空間（請參閱下面的部分）。
+0.7 版的 AGIC 會繼續以獨佔方式觀察`default`命名空間，除非這會明確變更為 Helm 設定中的一或多個不同的命名空間（請參閱下一節）。
 
 ## <a name="enable-multiple-namespace-support"></a>啟用多個命名空間支援
-要啟用多個命名空間支援：
-1. 以下列方式之一修改[helm-config.yaml](#sample-helm-config-file)檔：
-   - 完全從`watchNamespace`[掌舵-config.yaml](#sample-helm-config-file)中刪除金鑰 - AGIC 將觀察所有命名空間
-   - 設置為`watchNamespace`空字串 - AGIC 將觀察所有命名空間
-   - 添加用逗號分隔的多個命名空間`watchNamespace: default,secondNamespace`（ ） - AGIC 將專門觀察這些命名空間
-2. 應用 Helm 範本更改：`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
+若要啟用多個命名空間支援：
+1. 以下列其中一種方式修改[helm-config yaml](#sample-helm-config-file)檔案：
+   - 完全從`watchNamespace` [helm-config 刪除金鑰。 yaml](#sample-helm-config-file) -AGIC 將會觀察所有的命名空間
+   - 設定`watchNamespace`為空字串-AGIC 會觀察所有的命名空間
+   - 新增多個以逗號分隔的命名`watchNamespace: default,secondNamespace`空間（）-AGIC 會以獨佔方式觀察這些命名空間
+2. 套用 Helm 範本變更：`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
 
-部署後能夠觀察多個命名空間，AGIC 將：
-  - 列出來自所有可訪問命名空間的入口資源
-  - 篩選器以入口資源進行帶`kubernetes.io/ingress.class: azure/application-gateway`
-  - 組合[應用程式閘道配置](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744)
-  - 通過[ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)將配置應用於關聯的應用程式閘道
+一旦部署並具有觀察多個命名空間的功能之後，AGIC 將會：
+  - 列出所有可存取的命名空間中的輸入資源
+  - 篩選至以標注的輸入資源`kubernetes.io/ingress.class: azure/application-gateway`
+  - 撰寫結合[應用程式閘道 config](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744)
+  - 透過[ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)將設定套用至相關聯的應用程式閘道
 
-## <a name="conflicting-configurations"></a>衝突配置
-多個名稱節奏[的入口資源](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)可以指示 AGIC 為單個應用程式閘道創建衝突配置。 （例如，兩個聲明同一域的入口。
+## <a name="conflicting-configurations"></a>衝突的設定
+多個命名空間輸入[資源](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource)可能會指示 AGIC 建立單一應用程式閘道的衝突設定。 （實例有兩個宣告相同網域的會輸入）。
 
-在層次結構的頂部 -**攔截器**（IP 位址、埠和主機）和**路由規則**（綁定攔截器、後端池和 HTTP 設置）可以由多個命名空間/入口創建和共用。
+階層的頂端-接聽**程式（IP**位址、埠和主機）和**路由規則**（系結接聽程式、後端集區和 HTTP 設定）可由多個命名空間/會輸入建立及共用。
 
-另一方面 ， 路徑、後端池、HTTP 設置和 TLS 證書只能由一個命名空間創建，並且重複項將被刪除。
+另一方面，只有一個命名空間可以建立後端集區、HTTP 設定和 TLS 憑證，而且將會移除重複的專案。
 
-例如，請考慮定義命名空間和`staging``production`的以下重複入口資源： `www.contoso.com`
+例如，請考慮下列重複的輸入`staging` `production` `www.contoso.com`資源定義的命名空間和：
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -81,26 +81,26 @@ spec:
               servicePort: 80
 ```
 
-儘管兩個入口資源要求將流量`www.contoso.com`路由到相應的 Kubernetes 命名空間，但只有一個後端可以為流量提供服務。 AGIC 將在"先到先得"的基礎上為其中一個資源創建配置。 如果同時創建兩個入口資源，則字母表中較早的一個將優先。 從上面的示例中，我們只能為`production`入口創建設置。 應用程式閘道將配置以下資源：
+雖然兩個輸入`www.contoso.com`資源會要求將流量路由傳送至各自的 Kubernetes 命名空間，但是只有一個後端可以服務流量。 AGIC 會針對其中一個資源，在「第一次提供」的基礎上建立設定。 如果同時建立兩個會輸入資源，則會優先使用字母中較早的一項。 在上述範例中，我們只能夠建立輸入`production`的設定。 將會使用下列資源來設定應用程式閘道：
 
-  - 聽眾：`fl-www.contoso.com-80`
+  - 聽眾`fl-www.contoso.com-80`
   - 路由規則：`rr-www.contoso.com-80`
-  - 後端池：`pool-production-contoso-web-service-80-bp-80`
-  - HTTP 設置：`bp-production-contoso-web-service-80-80-websocket-ingress`
-  - 健康探測：`pb-production-contoso-web-service-80-websocket-ingress`
+  - 後端集區：`pool-production-contoso-web-service-80-bp-80`
+  - HTTP 設定：`bp-production-contoso-web-service-80-80-websocket-ingress`
+  - 健康情況探查：`pb-production-contoso-web-service-80-websocket-ingress`
 
-請注意，除了*攔截器*和*路由規則*之外，創建的應用程式閘道資源包括為其創建它們的命名空間`production`（） 的名稱。
+請注意，除了接聽*程式和**路由規則*以外，所建立的應用程式閘道資源會包含所建立`production`之命名空間（）的名稱。
 
-如果兩個入口資源在不同時間點引入 AKS 群集，則 AGIC 可能會最終處於一個方案，即它重新配置應用程式閘道並將流量從`namespace-B`重新路由到`namespace-A`。
+如果這兩個輸入資源在不同的時間點引進 AKS 叢集，則 AGIC 可能會在其重新設定應用程式閘道，並將流量從`namespace-B`重新路由至`namespace-A`的情況下結束。
 
-例如，如果首先添加`staging`，AGIC 將配置應用程式閘道以將流量路由到暫存後端池。 在稍後階段，引入`production`入口將導致 AGIC 重新程式設計應用程式閘道，這將開始將流量路由到`production`後端池。
+例如，如果您先`staging`新增，AGIC 會設定應用程式閘道以將流量路由傳送至暫存後端集區。 在稍後的階段中， `production`引入輸入會導致 AGIC mk-reprogram 應用程式閘道，這會開始將流量路由至`production`後端集區。
 
-## <a name="restrict-access-to-namespaces"></a>限制對命名空間的訪問
-預設情況下，AGIC 將根據任何命名空間中的帶名入口配置應用程式閘道。 如果要限制此行為，您有以下選項：
-  - 限制命名空間，通過顯式定義命名空間 AGIC 應通過`watchNamespace`[helm-config.yaml](#sample-helm-config-file)中的 YAML 鍵進行觀察
-  - 使用[角色/角色綁定](https://docs.microsoft.com/azure/aks/azure-ad-rbac)將 AGIC 限制為特定命名空間
+## <a name="restrict-access-to-namespaces"></a>限制對命名空間的存取
+根據預設，AGIC 會根據任何命名空間內標注的輸入來設定應用程式閘道。 如果您想要限制這種行為，您可以使用下列選項：
+  - 藉由明確定義命名空間來限制命名空間，AGIC 應該`watchNamespace`透過 helm 中的 YAML 索引鍵來觀察[YAML](#sample-helm-config-file)
+  - 使用[Role/接著](https://docs.microsoft.com/azure/aks/azure-ad-rbac)將 AGIC 限制為特定的命名空間
 
-## <a name="sample-helm-config-file"></a>示例頭盔設定檔
+## <a name="sample-helm-config-file"></a>Helm 設定檔範例
 ```yaml
     # This file contains the essential configs for the ingress controller helm chart
 

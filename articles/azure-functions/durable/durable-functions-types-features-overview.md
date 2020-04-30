@@ -1,67 +1,67 @@
 ---
-title: Azure 持久函數中的函數類型
-description: 瞭解在 Azure 函數中的持久函數業務流程中支援函數到函數通信的函數和角色類型。
+title: Azure Durable Functions 中的函數類型
+description: 深入瞭解在 Azure Functions 的 Durable Functions 協調流程中，支援函式對函式通訊的函數和角色類型。
 author: cgillum
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 35ef9d8731e169e890f5985ce01215fec5d6e3de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277878"
 ---
-# <a name="durable-functions-types-and-features"></a>耐用的功能類型和功能
+# <a name="durable-functions-types-and-features"></a>Durable Functions 類型和功能
 
-Durable Functions 是 [Azure Functions](../functions-overview.md) 的擴充功能。 您可以使用持久函數進行有狀態的函數執行業務流程。 持久函數應用是由不同的 Azure 函陣列成的解決方案。 函數可以在持久函數業務流程中扮演不同的角色。 
+Durable Functions 是 [Azure Functions](../functions-overview.md) 的擴充功能。 您可以使用 Durable Functions 來執行函式的具狀態協調流程。 長期函數應用程式是由不同 Azure 函式所組成的解決方案。 函數可以在長期函式協調流程中扮演不同的角色。 
 
-Azure 函數中當前有四種持久函數類型：活動、協調器、實體和用戶端。 本節的其餘部分將詳細介紹業務流程中涉及的函數類型。
+Azure Functions 中目前有四個長期函式類型： activity、orchestrator、entity 和 client。 本節的其餘部分將詳細說明協調流程中涉及的函數類型。
 
 ## <a name="orchestrator-functions"></a>協調器函式
 
-協調器函數描述操作的執行方式和執行操作的順序。 協調器函數描述代碼（C# 或 JavaScript）中的業務流程，如[持久函數應用程式模式](durable-functions-overview.md#application-patterns)所示。 業務流程可以具有許多不同類型的操作，包括[活動函數](#activity-functions)、[子業務流程](durable-functions-orchestrations.md#sub-orchestrations)、[等待外來事件](durable-functions-orchestrations.md#external-events)[、HTTP](durable-functions-http-features.md)和[計時器](durable-functions-orchestrations.md#durable-timers)。 協調器函數還可以與[實體函數](#entity-functions)進行交互。
+協調器函式會描述動作的執行方式，以及執行動作的順序。 協調器函式會以程式碼（c # 或 JavaScript）來描述協調流程，如[Durable Functions 應用程式模式](durable-functions-overview.md#application-patterns)所示。 協調流程可以有許多不同類型的動作，包括[活動](#activity-functions)函[式、子協調流程](durable-functions-orchestrations.md#sub-orchestrations)、[等待外來事件](durable-functions-orchestrations.md#external-events)、 [HTTP](durable-functions-http-features.md)和[計時器](durable-functions-orchestrations.md#durable-timers)。 協調器函式也可以與[實體](#entity-functions)函式互動。
 
 > [!NOTE]
-> 協調器函數是使用普通代碼編寫的，但對於如何編寫代碼有嚴格的要求。 具體而言，協調器函數代碼必須是*確定性*的 。 不遵守這些確定性要求可能會導致協調器函數無法正確運行。 有關這些要求的詳細資訊以及如何解決這些問題，請參閱[代碼約束](durable-functions-code-constraints.md)主題。
+> 協調器函式是使用一般程式碼撰寫的，但對於撰寫程式碼的方式有嚴格的要求。 具體而言，協調器函式程式碼必須具*決定性*。 若無法遵循這些確定性需求，可能會導致協調器功能無法正常執行。 如需這些需求的詳細資訊以及如何解決這些問題，請參閱程式[代碼條件約束](durable-functions-code-constraints.md)主題。
 
-有關協調器函數及其功能的更多詳細資訊，請參閱[持久業務流程一](durable-functions-orchestrations.md)文。
+如需有關 orchestrator 函式及其功能的詳細資訊，請參閱長期協調[流程](durable-functions-orchestrations.md)一文。
 
 ## <a name="activity-functions"></a>活動函式
 
-活動函數是持久函數編排中的基本工作單元。 活動函數是流程中編排的函數和任務。 例如，您可以創建協調器函數來處理訂單。 這些任務包括檢查庫存、向客戶收費和創建貨件。 每個任務將是一個單獨的活動函數。 這些活動函數可以串列、並存執行或兩者的某種組合執行。
+活動函數是長期函式協調流程中的基本工作單位。 活動函式是在進程中協調的函式和工作。 例如，您可以建立協調器函式來處理訂單。 這些工作牽涉到檢查清查、向客戶收費，以及建立出貨。 每個工作都是個別的活動函式。 這些活動函數可能會以平行方式或兩者的某種組合執行。
 
-與協調器函數不同，活動函數不受可在其中執行的工作類型的限制。 活動函數通常用於進行網路調用或運行 CPU 密集型操作。 活動函數還可以將資料返回給協調器函數。 持久任務框架保證每個調用的活動函數在業務流程執行期間至少執行一*次*。
-
-> [!NOTE]
-> 由於活動函數僅保證*至少執行一次*，因此我們建議您盡可能使活動函數邏輯*具有冪等作用*。
-
-使用[活動觸發器](durable-functions-bindings.md#activity-trigger)定義活動函數。 .NET 函數作為`DurableActivityContext`參數接收 。 您還可以將觸發器綁定到任何其他可觸發的 JSON 可序列化物件，以將輸入傳遞到函數。 在 JavaScript 中，您可以通過[`context.bindings`物件](../functions-reference-node.md#bindings)上的`<activity trigger binding name>`屬性訪問輸入。 活動函數只能將單個值傳遞給它們。 要傳遞多個值，必須使用元組、陣列或複雜類型。
+不同于協調器函式，活動函式不會限制在您可以在其中執行的工作類型。 活動函數經常用來進行網路呼叫或執行需要大量 CPU 的作業。 活動函數也可以將資料傳回給協調器函式。 長期工作架構保證每個被呼叫的活動函數在協調流程執行期間至少會執行*一次*。
 
 > [!NOTE]
-> 只能從協調器函數觸發活動函數。
+> 由於活動功能只保證*至少一次*執行，因此建議您盡可能讓活動函式邏輯為*等冪*。
+
+使用[活動觸發](durable-functions-bindings.md#activity-trigger)程式來定義活動函數。 .NET 函數會接收`DurableActivityContext`做為參數。 您也可以將觸發程式系結到任何其他的 JSON 可序列化物件，以將輸入傳遞至函式。 在 JavaScript 中，您可以透過[ `context.bindings`物件](../functions-reference-node.md#bindings)上的`<activity trigger binding name>`屬性來存取輸入。 活動函式只能傳遞一個值給它們。 若要傳遞多個值，您必須使用元組、陣列或複雜類型。
+
+> [!NOTE]
+> 您只能從協調器函式觸發活動函數。
 
 ## <a name="entity-functions"></a>實體函式
 
-實體函式定義用於讀取和更新小段狀態的操作。 我們經常將這些有狀態的實體稱為*持久實體*。 和協調器函式一樣，實體函式也是具有特殊觸發程序類型 (「實體觸發程序」**) 的函式。 也可以從用戶端函數或協調器函式呼叫它們。 與協調器函數不同，實體函數沒有任何特定的代碼約束。 實體函式也會明確管理狀態，而不是透過控制流程來隱含表示狀態。
+實體函式會定義讀取和更新較小部分狀態的作業。 我們通常會將這些具狀態實體稱為「*持久實體*」。 和協調器函式一樣，實體函式也是具有特殊觸發程序類型 (「實體觸發程序」**) 的函式。 您也可以從用戶端函式或協調器函式來叫用這些功能。 與協調器函式不同的是，實體函式沒有任何特定的程式碼條件約束。 實體函式也會明確管理狀態，而不是透過控制流程來隱含表示狀態。
 
 > [!NOTE]
 > 只有 Durable Functions 2.0 和更新版本有提供實體函式和相關功能。
 
-有關實體函數的詳細資訊，請參閱[持久實體](durable-functions-entities.md)一文。
+如需實體函式的詳細資訊，請參閱[持久實體](durable-functions-entities.md)一文。
 
 ## <a name="client-functions"></a>用戶端函式
 
-協調器函數由[業務流程觸發器綁定](durable-functions-bindings.md#orchestration-trigger)觸發，實體函數由[實體觸發器綁定](durable-functions-bindings.md#entity-trigger)觸發。 這兩個觸發器都通過回應排隊到[任務中心](durable-functions-task-hubs.md)的消息來工作。 傳遞這些消息的主要方法是使用[業務流程中的協調器用戶端綁定](durable-functions-bindings.md#orchestration-client)或[實體用戶端綁定](durable-functions-bindings.md#entity-client)*。* 任何非協調器函數都可以是*用戶端函數*。 例如，可以從 HTTP 觸發的函數、Azure 事件中心觸發函數等觸發協調器。使函數成為*用戶端函數*的是使用持久用戶端輸出綁定。
+[協調流程觸發](durable-functions-bindings.md#orchestration-trigger)程式系結會觸發協調器函式，而實體函式是由[實體觸發](durable-functions-bindings.md#entity-trigger)程式系結所觸發。 這兩個觸發程式都是透過回應加入工作[中樞](durable-functions-task-hubs.md)的訊息來執行。 傳遞這些訊息的主要方式是從*用戶端*函式中使用[orchestrator 用戶端](durable-functions-bindings.md#orchestration-client)系結或[實體用戶端](durable-functions-bindings.md#entity-client)系結。 任何非協調器函數都可以是*用戶端*函式。 例如，您可以從 HTTP 觸發的函式、Azure 事件中樞觸發的函式等觸發協調器。函式可讓函式成為*用戶端*函式，其使用持久性用戶端輸出系結。
 
 > [!NOTE]
-> 與其他函數類型不同，協調器和實體函數不能直接使用 Azure 門戶中的按鈕觸發。 如果要在 Azure 門戶中測試協調器或實體函數，則必須運行*用戶端函數，該用戶端函數*將啟動協調器或實體函數作為其實現的一部分。 對於最簡單的測試體驗，建議使用*手動觸發*功能。
+> 不同于其他函式類型，無法使用 Azure 入口網站中的按鈕直接觸發 orchestrator 和 entity 函數。 如果您想要在 Azure 入口網站中測試 orchestrator 或 entity 函式，您必須改為執行*用戶端*函式，以啟動協調器或實體功能作為其執行的一部分。 為了獲得最簡單的測試經驗，建議使用*手動觸發*程式函式。
 
-除了觸發協調器或實體函數外，*持久用戶端*綁定還可用於與正在運行的業務流程和實體進行交互。 例如，可以查詢、終止業務流程，也可以將事件引發到它們。 有關管理業務流程和實體的詳細資訊，請參閱[實例管理](durable-functions-instance-management.md)一文。
+除了觸發協調器或實體函式，長期*用戶端*系結也可以用來與執行中的協調流程和實體進行互動。 例如，您可以查詢、終止協調流程，而且可以將事件引發給它們。 如需管理協調流程和實體的詳細資訊，請參閱[實例管理](durable-functions-instance-management.md)一文。
 
 ## <a name="next-steps"></a>後續步驟
 
-要開始，請用[C#](durable-functions-create-first-csharp.md)或[JavaScript](quickstart-js-vscode.md)創建第一個持久函數。
+若要開始使用，請使用[c #](durable-functions-create-first-csharp.md)或[JavaScript](quickstart-js-vscode.md)建立您的第一個持久性函式。
 
 > [!div class="nextstepaction"]
-> [閱讀有關持久函數業務流程的更多內容](durable-functions-orchestrations.md)
+> [深入瞭解 Durable Functions 協調流程](durable-functions-orchestrations.md)

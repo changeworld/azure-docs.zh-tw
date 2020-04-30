@@ -1,21 +1,21 @@
 ---
-title: 使用邏輯應用自動執行 Azure 應用程式見解過程
+title: 使用 Logic Apps 自動化 Azure 應用程式 Insights 進程
 description: 了解如何透過將 Application Insights Connector 新增到您的邏輯應用程式，快速自動執行重複程序。
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: 4a0944e661932d86fac75f78c4faf5be751806c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79473161"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>使用 Logic Apps 自動執行 Application Insights 程序
 
-您是否發現自己在遙測資料上不斷重複地執行相同查詢，以檢查服務是否正常運作？ 想要將此類查詢自動化以尋找趨勢和異常，然後針對它們建立您自己的工作流程嗎？ 邏輯應用的 Azure 應用程式見解連接器是用於此目的的正確工具。
+您是否發現自己在遙測資料上不斷重複地執行相同查詢，以檢查服務是否正常運作？ 想要將此類查詢自動化以尋找趨勢和異常，然後針對它們建立您自己的工作流程嗎？ 適用于 Logic Apps 的 Azure 應用程式 Insights connector 是適合此用途的工具。
 
 > [!NOTE]
-> Azure 應用程式見解連接器已替換為與 Azure 活動目錄集成的[Azure 監視器連接器](../platform/logicapp-flow-connector.md)，而不是需要 API 金鑰，還允許您從日誌分析工作區檢索資料。
+> Azure 應用程式 Insights 連接器已取代為與 Azure Active Directory 整合的[Azure 監視器連接器](../platform/logicapp-flow-connector.md)，而不需要 API 金鑰，也可讓您從 Log Analytics 工作區中取出資料。
 
 有了此整合，您就能自動執行許多流程，而不需撰寫任何一行程式碼。 您可以使用 Application Insights Connector 建立邏輯應用程式，以快速自動執行任何 Application Insights 程序。 
 
@@ -26,7 +26,7 @@ ms.locfileid: "79473161"
 在本教學課程中，您會學習如何建立一個邏輯應用程式，該程式會使用 Analytics 自動叢集演算法將 Web 應用程式資料中的屬性分類。 此流程會以電子郵件自動傳送結果，這只是如何將 Application Insights Analytics 與 Logic Apps 一起使用的一個範例。 
 
 ### <a name="step-1-create-a-logic-app"></a>步驟 1：建立邏輯應用程式
-1. 登錄到 Azure[門戶](https://portal.azure.com)。
+1. 登入 [Azure 入口網站](https://portal.azure.com)。
 1. 按一下 [建立資源]****，選取 [Web + 行動]****，然後選取 [邏輯應用程式]****。
 
     ![新增邏輯應用程式視窗](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -36,16 +36,16 @@ ms.locfileid: "79473161"
 
     ![邏輯應用程式設計工具視窗](./media/automate-with-logic-apps/2logicappdesigner.png)
 
-1. 在 **"間隔"** 框中，鍵入**1，** 然後鍵入 **"頻率"** 框，選擇 **"天**"。
+1. 在 [**間隔**] 方塊中，輸入**1** ，然後在 [**頻率**] 方塊中選取 [**天**]。
 
     ![邏輯應用程式設計工具 [參考] 視窗](./media/automate-with-logic-apps/3recurrence.png)
 
 ### <a name="step-3-add-an-application-insights-action"></a>步驟 3：新增 Application Insights 動作
-1. 按一下 **"新步驟**"。
+1. 按一下 [**新增步驟**]。
 
 1. 在 [選擇動作]**** 搜尋方塊中，輸入 **Azure Application Insights**。
 
-1. 在 **"操作"** 下，按一下**Azure 應用程式見解 - 視覺化分析查詢**。
+1. 在 [**動作**] 底下，按一下 [ **Azure 應用程式 Insights-視覺化分析查詢**]。
 
     ![邏輯應用程式設計工具的「選擇動作」視窗](./media/automate-with-logic-apps/4visualize.png)
 
@@ -85,11 +85,11 @@ ms.locfileid: "79473161"
 
 ### <a name="step-6-configure-the-logic-app-to-send-email"></a>步驟 6：設定邏輯應用程式以傳送電子郵件
 
-1. 按一下 **"新步驟**"。
+1. 按一下 [**新增步驟**]。
 
 1. 在搜尋方塊中，輸入**Office 365 Outlook**。
 
-1. 按一下**Office 365 Outlook - 發送電子郵件**。
+1. 按一下 [ **Office 365 Outlook-傳送電子郵件**]。
 
     ![Office 365 Outlook 選項](./media/automate-with-logic-apps/9sendemail.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "79473161"
 
    c. 按一下 [內文]**** 方塊中的任意處，然後在右方開啟的動態內容功能表上，選取 [內文]****。
     
-   d. 按一下"**添加新參數**"下拉，然後選擇"附件"和"是 HTML"。
+   d. 按一下 [**加入新的參數**] 下拉式選，然後選取 [附件] 和 [HTML]。
 
       ![Office 365 Outlook 設定](./media/automate-with-logic-apps/10emailbody.png)
 
@@ -131,7 +131,7 @@ ms.locfileid: "79473161"
 ## <a name="next-steps"></a>後續步驟
 
 - 深入了解建立 [Analytics 查詢](../../azure-monitor/log-query/get-started-queries.md)。
-- 瞭解有關[邏輯應用](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)的更多資訊。
+- 深入瞭解[Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)。
 
 
 

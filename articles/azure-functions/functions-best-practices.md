@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277774"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>將 Azure Functions 效能和可靠性最佳化
@@ -22,18 +22,18 @@ ms.locfileid: "79277774"
 
 ### <a name="avoid-long-running-functions"></a>避免長時間執行的函式
 
-大型長時間執行的函式可能會造成非預期的逾時問題。 要瞭解有關給定託管計畫的超時數的更多，請參閱[函數應用超時持續時間](functions-scale.md#timeout)。 
+大型長時間執行的函式可能會造成非預期的逾時問題。 若要深入瞭解特定主控方案的超時時間，請參閱[函數應用程式超時期間](functions-scale.md#timeout)。 
 
-由於許多 Node.js 依賴項，函數可能會變大。 匯入相依性也可能會造成載入時間增加，而導致未預期的逾時。 系統會以明確和隱含方式載入相依性。 您的程式碼載入的單一模組可能會載入其本身的其他模組。 
+函式可能會因為許多 node.js 相依性而變大。 匯入相依性也可能會造成載入時間增加，而導致未預期的逾時。 系統會以明確和隱含方式載入相依性。 您的程式碼載入的單一模組可能會載入其本身的其他模組。 
 
-在可能時，將大型函式重構為較小的函式集，共用運作並快速傳回回應。 例如，Webhook 或 HTTP 觸發器函數可能需要在特定時間限制內做出確認回應;網鉤通常需要立即回應。" 您可以將 HTTP 觸發程序承載傳遞到要由佇列觸發程序函式處理的佇列中。 此方法允許您推遲實際工作並返回即時回應。
+在可能時，將大型函式重構為較小的函式集，共用運作並快速傳回回應。 例如，webhook 或 HTTP 觸發程式函數可能需要特定時間限制內的通知回應;webhook 通常需要立即回應。 您可以將 HTTP 觸發程序承載傳遞到要由佇列觸發程序函式處理的佇列中。 這種方法可讓您延遲實際的工作，並傳回立即的回應。
 
 
 ### <a name="cross-function-communication"></a>跨函式通訊
 
 [Durable Functions](durable/durable-functions-overview.md) 和 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) 均建置用來管理多個函式之間的狀態轉換和通訊。
 
-如果不使用持久函數或邏輯應用與多個函數集成，最好使用存儲佇列進行跨功能通信。 主要原因是存儲佇列比其他存儲選項更便宜且更易於預配。 
+如果未使用 Durable Functions 或 Logic Apps 來與多個函式整合，最好使用儲存體佇列進行跨函式通訊。 主要的原因是儲存體佇列較便宜，而且比其他儲存體選項更容易布建。 
 
 儲存體佇列中個別訊息大小限制在 64 KB。 如果您需要在函式之間傳遞更大型的訊息，Azure 服務匯流排佇列可用來支援標準層中大小上限為 256 KB 的訊息，以及進階層中上限為 1 MB 的訊息。
 
@@ -46,19 +46,19 @@ ms.locfileid: "79277774"
 
 若可能，Functions 應該是無狀態和具有等冪性。 將任何必要的狀態資訊與您的資料產生關聯。 例如，正在處理訂單就可能具有相關聯的 `state` 成員。 函式本身保持無狀態時，函式可以依據該狀態處理訂單。 
 
-特別建議計時器觸發程序使用等冪函式。 例如，如果您有絕對必須每天運行一次的內容，請編寫它，以便它在白天隨時以相同的結果運行。 當特定一天沒有工作時，函數可以退出。 如果先前的執行無法完成，下一次執行應該會定停止的位置開始。
+特別建議計時器觸發程序使用等冪函式。 例如，如果您有一定要一天執行一次的專案，請撰寫它，讓它可以在一天內以相同的結果執行。 當特定一天沒有任何工作時，此函式就會結束。 如果先前的執行無法完成，下一次執行應該會定停止的位置開始。
 
 
 ### <a name="write-defensive-functions"></a>編寫防禦性函式
 
 假設您的函式可能隨時會遇到例外狀況。 設計您的函式，使得它能夠在下一次執行期間從先前的失敗點繼續執行。 假設需要執行下列動作的案例︰
 
-1. 查詢資料庫中的 10，000 行。
+1. 查詢資料庫中的10000資料列。
 2. 對每個資料列建立佇列訊息，來進一步處理向下一行。
  
-根據系統的複雜性，您可能有：涉及的下游服務行為不端、網路中斷或達到配額限制等。所有這些都可以隨時影響您的功能。 您必須設計您的函式，以對其做好準備。
+視系統的複雜程度而定，您可能會有：涉及下游服務的行為不正確、網路中斷或達到配額限制等等。所有這些功能都可能隨時影響您的函式。 您必須設計您的函式，以對其做好準備。
 
-如果在插入這些項目中的 5,000 個至佇列以進行處理之後發生失敗，您的程式碼如何因應？ 追蹤集合中您已完成的項目。 否則，您可能下一次又將它們插入。 這種雙重插入會對您的工作流程產生嚴重影響，因此[，使您的功能具有冪等性](functions-idempotent.md)。 
+如果在插入這些項目中的 5,000 個至佇列以進行處理之後發生失敗，您的程式碼如何因應？ 追蹤集合中您已完成的項目。 否則，您可能下一次又將它們插入。 這種雙重插入可能會對您的工作流程造成嚴重影響，因此讓您的函式[成為等冪](functions-idempotent.md)。 
 
 如果佇列項目已經過處理，請讓您的函式成為無作業。
 
@@ -66,15 +66,15 @@ ms.locfileid: "79277774"
 
 ## <a name="scalability-best-practices"></a>延展性最佳做法
 
-有許多因素會影響函數應用實例的縮放方式。 [函式調整](functions-scale.md)文件中會提供詳細資料。  以下是一些最佳做法，可確保函式應用程式的最佳延展性。
+有數個因素會影響函式應用程式的實例調整方式。 [函式調整](functions-scale.md)文件中會提供詳細資料。  以下是一些最佳做法，可確保函式應用程式的最佳延展性。
 
 ### <a name="share-and-manage-connections"></a>共用及管理連線
 
-盡可能重用與外部資源的連接。 請參閱[如何管理 Azure Functions 中的連線](./manage-connections.md)。
+盡可能重複使用外部資源的連接。 請參閱[如何管理 Azure Functions 中的連線](./manage-connections.md)。
 
-### <a name="avoid-sharing-storage-accounts"></a>避免共用存儲帳戶
+### <a name="avoid-sharing-storage-accounts"></a>避免共用儲存體帳戶
 
-創建函數應用時，必須將其與存儲帳戶關聯。 存儲帳戶連接在[AzureWeb作業存儲應用程式設定](./functions-app-settings.md#azurewebjobsstorage)中維護。 
+當您建立函數應用程式時，您必須將它與儲存體帳戶產生關聯。 儲存體帳戶連線會保留在[AzureWebJobsStorage 應用程式設定](./functions-app-settings.md#azurewebjobsstorage)中。 
 
 [!INCLUDE [functions-shared-storage](../../includes/functions-shared-storage.md)]
 
@@ -84,37 +84,37 @@ ms.locfileid: "79277774"
 
 對於在實際執行函式應用程式中載入的項目，請務必小心。 記憶體會在應用程式中的每個函式間平均分配。
 
-如果在多個 .NET 函數中引用了共用組件，則將其放在公共共用資料夾中。 否則，可能會意外部署同一二進位檔案的多個版本，這些版本在函數之間的行為不同。
+如果您有多個 .NET 函式中參考的共用元件，請將它放在通用共用資料夾中。 否則，您可能會不小心部署相同二進位檔的多個版本，其行為不同。
 
-不要在生產代碼中使用詳細的日誌記錄，這會對性能產生負面影響。
+請勿在實際執行的程式碼中使用詳細資訊記錄，這會對效能造成負面影響。
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>使用非同步程式碼但避免封鎖呼叫
 
-非同步程式設計是推薦的最佳做法，尤其是在涉及阻止 I/O 操作時。
+非同步程式設計是建議的最佳作法，特別是在涉及封鎖 i/o 作業時。
 
-在 C# 中，始終避免`Result`引用`Task`實例上的`Wait`屬性或調用方法。 這個方法可能會導致執行緒耗盡。
+在 c # 中，請一律`Result`避免參考`Task`實例`Wait`上的屬性或呼叫方法。 這個方法可能會導致執行緒耗盡。
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-### <a name="use-multiple-worker-processes"></a>使用多個輔助角色進程
+### <a name="use-multiple-worker-processes"></a>使用多個背景工作進程
 
-預設情況下，函數的任何主機實例都使用單個輔助進程。 為了提高性能（尤其是使用 Python 等單線程運行時），請使用[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count)來增加每個主機的輔助進程數（最多 10 個）。 然後，Azure 函數嘗試在這些輔助人員之間均勻地分配同時調用函數。 
+根據預設，函式的任何主控制項實例都會使用單一背景工作進程。 若要改善效能，尤其是使用像是 Python 的單一執行緒執行時間，請使用[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count)來增加每一主機的工作者進程數（最多10個）。 Azure Functions 接著會嘗試在這些背景工作中平均散發並行函式呼叫。 
 
-FUNCTIONS_WORKER_PROCESS_COUNT適用于函數在擴展應用程式以滿足需求時創建的每個主機。 
+FUNCTIONS_WORKER_PROCESS_COUNT 適用于在相應放大應用程式以符合需求時所建立的每個主機。 
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>儘可能分批接收訊息
 
 某些觸發程序 (如事件中樞) 能夠在單一引動過程中接收一批訊息。  分批處理訊息的效能比較好。  如 [host.json 參考文件](functions-host-json.md)所述，您可以在 `host.json` 檔案中設定批次大小上限。
 
-對於 C# 函數，可以將類型更改為強型別陣列。  例如，方法簽章可能是 `EventData[] sensorEvent`，而不是 `EventData sensorEvent`。  對於其他語言，您需要顯式將 中的`function.json``many`基數屬性設置為 ，以便啟用批次處理[，如下所示](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)。
+針對 c # 函式，您可以將型別變更為強型別陣列。  例如，方法簽章可能是 `EventData[] sensorEvent`，而不是 `EventData sensorEvent`。  針對其他語言，您必須明確地將中的基數屬性設定`function.json`為`many` ，才能啟用批次處理，[如下所示](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)。
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>設定主機的行為，更妥善處理並行作業
 
 函式應用程式中的 `host.json` 檔案能夠設定主機執行階段和觸發程序行為。  除了批次處理行為，您可以管理數個觸發程序的並行作業。 經常調整這些選項中的值，可協助每個執行個體針對所叫用函式的需求進行適當調整。
 
-host.json 檔中的設置應用於應用中的所有功能，在函數的*單個實例*中。 例如，如果您有一個功能應用，其中兩個 HTTP[`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings)函數和請求設置為 25，則對任一 HTTP 觸發器的請求將計入共用的 25 個併發請求。  當該函數應用縮放為 10 個實例時，這兩個函數實際上允許 250 個併發請求（每個實例 10 個實例 = 25 個併發請求）。 
+Host. json 檔案中的設定會套用至單一函式*實例*中應用程式內的所有函式。 例如，如果您的函式應用程式有兩個 HTTP 函[`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings)式，而要求設定為25，則 HTTP 觸發程式的要求會算在共用25個並行要求。  當該函式應用程式調整為10個實例時，這兩個函式可有效地允許250個並行要求（每個實例10個實例 * 25 個並行要求）。 
 
-其他主機配置選項見[主機.json 配置文章](functions-host-json.md)。
+如有其他主機設定選項，請參閱[host. json](functions-host-json.md)設定一文。
 
 ## <a name="next-steps"></a>後續步驟
 

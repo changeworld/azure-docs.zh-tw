@@ -5,19 +5,19 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 447b3dcf5040835f5a853beff68bde794ece51f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79277852"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>在 Durable Functions (Azure Functions) 中處理錯誤
 
-持久函數業務流程在代碼中實現，可以使用程式設計語言的內置錯誤處理功能。 實際上，不需要學習任何新概念，以將錯誤處理和補償添加到業務流程中。 不過，有一些行為值得注意。
+長期函式協調流程會在程式碼中執行，而且可以使用程式設計語言的內建錯誤處理功能。 在協調流程中加入錯誤處理和補償，並不需要學習任何新的概念。 不過，有一些行為值得注意。
 
 ## <a name="errors-in-activity-functions"></a>活動函式中的錯誤
 
-在活動函數中引發的任何異常將重新封送回協調器函數，並作為 引發作為`FunctionFailedException`。 您可以在協調器函式中撰寫符合需求的錯誤處理和補償程式碼。
+在活動函式中擲回的任何例外狀況會封送處理回到協調器函式`FunctionFailedException`，並以的形式擲回。 您可以在協調器函式中撰寫符合需求的錯誤處理和補償程式碼。
 
 例如，假設有下列協調器函式會從一個帳戶轉帳到另一個帳戶：
 
@@ -60,9 +60,9 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> 前面的 C# 示例適用于持久函數 2.x。 對於持久函數 1.x，必須使用`DurableOrchestrationContext`而不是`IDurableOrchestrationContext`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
+> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用`DurableOrchestrationContext` ，而不是`IDurableOrchestrationContext`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -100,7 +100,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-如果第一個**CreditAccount**函式呼叫失敗，協調器功能通過將資金貸記回源帳戶來進行補償。
+如果第一個**CreditAccount**函式呼叫失敗，協調器函式會藉由將資金貸回來源帳戶來補償。
 
 ## <a name="automatic-retry-on-failure"></a>失敗時自動重試
 
@@ -123,9 +123,9 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 ```
 
 > [!NOTE]
-> 前面的 C# 示例適用于持久函數 2.x。 對於持久函數 1.x，必須使用`DurableOrchestrationContext`而不是`IDurableOrchestrationContext`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
+> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用`DurableOrchestrationContext` ，而不是`IDurableOrchestrationContext`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -145,18 +145,18 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-上例中的活動函式呼叫採用用於配置自動重試策略的參數。 自訂自動重試策略有多種選項：
+上一個範例中的活動函數呼叫會採用參數來設定自動重試原則。 有數個選項可自訂自動重試原則：
 
 * **嘗試次數上限**：重試嘗試次數上限。
 * **第一次重試間隔**：第一次重試嘗試之前等候的時間量。
 * **輪詢係數**：用來決定輪詢增加速率的係數。 預設值為 1。
 * **最大重試間隔**：重試嘗試之間等候的最大時間量。
 * **重試逾時**：花費在重試的最大時間量。 預設行為是無限期地重試。
-* **控制碼**：可以指定使用者定義的回檔，以確定是否應重試函數。
+* **控制碼**：可以指定使用者定義的回呼，以決定是否應該重試函數。
 
 ## <a name="function-timeouts"></a>函式逾時
 
-如果業務流程函數需要很長時間才能完成，則可能需要放棄函式呼叫。 目前，適當的做法是使用 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript) 搭配 `Task.WhenAny` (.NET) 或 `context.df.Task.any` (JavaScript) 來建立[持久性計時器](durable-functions-timers.md)，如下列範例所示：
+如果協調器函式中的函式呼叫花費太多時間來完成，您可能會想要放棄它。 目前，適當的做法是使用 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript) 搭配 `Task.WhenAny` (.NET) 或 `context.df.Task.any` (JavaScript) 來建立[持久性計時器](durable-functions-timers.md)，如下列範例所示：
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -189,9 +189,9 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 ```
 
 > [!NOTE]
-> 前面的 C# 示例適用于持久函數 2.x。 對於持久函數 1.x，必須使用`DurableOrchestrationContext`而不是`IDurableOrchestrationContext`。 有關不同版本之間的差異的詳細資訊，請參閱[持久函數版本](durable-functions-versions.md)一文。
+> 先前的 c # 範例適用于 Durable Functions 2.x。 針對 Durable Functions 1.x，您必須使用`DurableOrchestrationContext` ，而不是`IDurableOrchestrationContext`。 如需版本之間差異的詳細資訊，請參閱[Durable Functions 版本](durable-functions-versions.md)一文。
 
-# <a name="javascript"></a>[JAVAscript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -227,7 +227,7 @@ module.exports = df.orchestrator(function*(context) {
 ## <a name="next-steps"></a>後續步驟
 
 > [!div class="nextstepaction"]
-> [瞭解永恆的編排](durable-functions-eternal-orchestrations.md)
+> [瞭解永久性協調流程](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
 > [了解如何診斷問題](durable-functions-diagnostics.md)
