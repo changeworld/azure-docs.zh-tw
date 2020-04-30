@@ -4,12 +4,12 @@ description: 從開發觀點了解 Batch 服務的功能及其 API。
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: fdc04c49521c9d91ef836c4d1dba76091db8f16a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 590ce6d6804c25ea9a3c1104f8fea2ea00c66356
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115375"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509188"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 開發大規模的平行運算解決方案
 
@@ -429,7 +429,7 @@ Batch 可處理使用 Azure 儲存體將應用程式封裝儲存及部署到計�
 * **資源度量** 是以 CPU 使用量、頻寬使用量、記憶體使用量和節點的數目為基礎。
 * **工作計量**是以工作狀態為基礎，例如 [作用中]** \(已排入佇列)、[執行中]** 或 [已完成]**。
 
-當自動調整減少集區中的計算節點數目時，您必須考量如何處理在減少作業時正在執行的工作。 為了配合這一點，Batch 會提供您可以納入公式中的「節點解除配置選項」 ** 。 例如，您可以指定執行中的工作立即停止，然後重新排入佇列以便在另一個節點上執行，或允許先完成再從集區中移除節點。
+當自動調整減少集區中的計算節點數目時，您必須考量如何處理在減少作業時正在執行的工作。 為了配合此，Batch 提供了一個[*節點解除配置選項*](https://docs.microsoft.com/rest/api/batchservice/pool/removenodes#computenodedeallocationoption)，您可以將它包含在公式中。 例如，您可以指定執行中的工作立即停止，然後重新排入佇列以便在另一個節點上執行，或允許先完成再從集區中移除節點。 請注意，將節點解除配置選項`taskcompletion`設定`retaineddata`為或將會防止集區調整大小作業，直到所有工作都完成，或所有工作保留期間都已過期為止。
 
 如需關於自動調整應用程式的詳細資訊，請參閱 [自動調整 Azure Batch 集區中的計算節點](batch-automatic-scaling.md)。
 

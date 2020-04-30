@@ -1,10 +1,10 @@
 ---
-title: Web 服務參數 - Azure 機器學習工作室（經典） |微軟文檔
+title: Web 服務參數
+titleSuffix: ML Studio (classic) - Azure
 description: 如何使用 Azure Machine Learning Web 服務參數來修改模型在 Web 服務受到存取時的行為。
 services: machine-learning
-author: xiaoharper
-ms.custom: seodec18
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
@@ -12,14 +12,14 @@ ms.subservice: studio
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/12/2017
-ms.openlocfilehash: d6ddd9603f22bd3820d18be020b9c620cf06aa42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1308f658b6ae7c8f46b989f8205568fa195fb4aa
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204404"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209344"
 ---
-# <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure 機器學習工作室（經典）Web 服務參數
+# <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>使用 Azure Machine Learning Studio （傳統） web 服務參數
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -41,14 +41,14 @@ ms.locfileid: "79204404"
 Web 服務的 API 文件會包含 Web 服務使用者在存取 Web 服務時，如何以程式設計方式指定 Web 服務參數的資訊。
 
 > [!NOTE]
-> 經典 Web 服務的 API 文檔通過機器學習工作室中的 Web 服務**DASHBOARD**中的**API 説明頁面**連結（經典）提供。 新的 Web 服務的 API 文件則是透過 [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart) 入口網站中 Web 服務的 [取用]**** 和 [Swagger API]**** 頁面提供。
+> 傳統 web 服務的 API 檔是透過 Machine Learning Studio （傳統）中 web 服務**儀表板**中的 [ **api 說明頁面**] 連結來提供。 新的 Web 服務的 API 文件則是透過 [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart) 入口網站中 Web 服務的 [取用]**** 和 [Swagger API]**** 頁面提供。
 > 
 > 
 
 ## <a name="example"></a>範例
 舉例來說，假設我們有一個[匯出資料][writer]模組實驗，該模組會傳送資訊給 Azure Blob 儲存體。 我們將會定義名為 Blob path 的 Web 服務參數，以在服務被存取時允許 Web 服務使用者將路徑變更至 Blob 儲存體。
 
-1. 在機器學習工作室（經典版）中，按一下["匯出資料][writer]"模組以選擇它。 其屬性會顯示在試驗畫布右邊的 [屬性] 窗格中。
+1. 在 [Machine Learning Studio （傳統）] 中，按一下 [[匯出資料][writer]] 模組來選取它。 其屬性會顯示在試驗畫布右邊的 [屬性] 窗格中。
 2. 指定儲存體類型：
    
    * 在 **[請指定資料目的地]** 底下，選取 [Azure Blob 儲存體]。
@@ -66,15 +66,15 @@ Web 服務的 API 文件會包含 Web 服務使用者在存取 Web 服務時，�
 5. 若要為 Web 服務參數提供預設值，請按一下名稱右邊的圖示，選取 [提供預設值]，輸入值 (例如 container1/output1.csv)，然後按 **Enter** 鍵。
    
    ![Web 服務參數](./media/web-service-parameters/parameter.png)
-6. 按一下 [執行]****。 
+6. 按一下 **[執行]** 。 
 7. 按一下 [部署 Web 服務]****，然後選取 [部署 Web 服務 [傳統]]**** 或 [部署 Web 服務 [新]]**** 可部署 Web 服務。
 
 > [!NOTE] 
-> 若要部署新的 Web 服務，您必須在要部署 Web 服務的訂用帳戶中具備足夠的權限。 有關詳細資訊，請參閱[使用 Azure 機器學習 Web 服務門戶管理 Web 服務](manage-new-webservice.md)。 
+> 若要部署新的 Web 服務，您必須在要部署 Web 服務的訂用帳戶中具備足夠的權限。 如需詳細資訊，請參閱[使用 Azure Machine Learning Web 服務入口網站管理 Web 服務](manage-new-webservice.md)。 
 
 Web 服務的使用者現在即可在存取 Web 服務時，為[匯出資料][writer]模組指定新的目的地。
 
-## <a name="more-information"></a>詳細資訊
+## <a name="more-information"></a>更多資訊
 如需更詳細的範例，請參閱 [Machine Learning Blog](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) 中的 [Web 服務參數](https://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx)項目。
 
 有關存取 Machine Learning Web 服務的詳細資訊，請參閱[如何使用 Azure Machine Learning Web 服務](consume-web-services.md)。

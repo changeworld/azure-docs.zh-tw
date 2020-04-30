@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
-ms.date: 02/04/2020
+ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d3d1b9af0b26fa775beb78b313937890cb9287b3
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 99c64e703158c40c2cc110a18be7b8c8d3800ff0
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633765"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82207797"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>快速入門：使用 T-SQL 設定工作負載隔離
 
@@ -30,10 +30,6 @@ ms.locfileid: "80633765"
 ## <a name="prerequisites"></a>Prerequisites
 
 本快速入門假設您已有 Azure Synapse 中的 SQL 分析執行個體，且已有 CONTROL DATABASE 權限。 若您需要建立 SQL 資料倉儲，請使用[建立與連線 - 入口網站](create-data-warehouse-portal.md)來建立稱為 **mySampleDataWarehouse** 的資料倉儲。
-
-## <a name="sign-in-to-the-azure-portal"></a>登入 Azure 入口網站
-
-登入 [Azure 入口網站](https://portal.azure.com/)。
 
 ## <a name="create-login-for-dataloads"></a>建立 DataLoads 的登入
 
@@ -111,20 +107,6 @@ DROP USER [ELTLogin]
 
 - 如果您需要將資料保留在儲存體中，可以在您不使用 SQL 集區時暫停計算。 暫停計算，您只需支付資料儲存體的費用。 當您準備好使用資料時，會繼續計算。
 - 如果您需要移除未來的費用，可以將資料倉儲刪除。
-
-遵循下列步驟清除資源。
-
-1. 登入 [Azure 入口網站](https://portal.azure.com)，選取您的資料倉儲。
-
-    ![清除資源](./media/quickstart-configure-workload-isolation-tsql/clean-up-resources.png)
-
-2. 若要暫停計算，請選取 [暫停]  按鈕。 資料倉儲暫停時，您會看到 [啟動]  按鈕。  若要繼續計算，請選取 [啟動]  。
-
-3. 若要移除資料倉儲，而不再支付計算或儲存體的費用，請選取 [刪除]  。
-
-4. 若要移除您所建立的 SQL Server，請選取先前映像中的 [mynewserver 20180430.database.windows.net]  ，然後選取 [刪除]  。  請謹慎使用刪除，因為刪除伺服器也會刪除所有指派給伺服器的資料庫。
-
-5. 若要移除此資源群組，請選取 [myResourceGroup]  ，然後選取 [刪除資源群組]  。
 
 ## <a name="next-steps"></a>後續步驟
 

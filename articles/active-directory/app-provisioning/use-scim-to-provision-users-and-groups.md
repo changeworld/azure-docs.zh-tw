@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0507989ec25db595a85b89f15d8ff7d056a970f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a54bc3cfa67330fb0056ccd1898d9ab3de2b0ab2
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297670"
+ms.locfileid: "82229913"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>建立 SCIM 端點，並使用 Azure Active Directory （Azure AD）來設定使用者布建
 
@@ -810,7 +810,7 @@ SCIM 服務必須具有 HTTP 位址和伺服器驗證憑證，其根憑證授權
 
 在權杖中，簽發者是由 iss 宣告所識別，例如`"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/"`。 在此範例中，宣告值`https://sts.windows.net`的基底位址會將 Azure Active Directory 識別為簽發者，而相對位址區段_cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 則_則是發出權杖之 Azure Active Directory 租使用者的唯一識別碼。
 
-權杖的物件是應用程式在資源庫中的應用程式範本識別碼，在單一租使用者中註冊的每個應用程式都可能會收到`iss`與 SCIM 要求相同的宣告。 資源庫中每個應用程式的應用程式範本識別碼會有所不同[ProvisioningFeedback@microsoft.com](mailto:ProvisioningFeedback@microsoft.com) ，請與資源庫應用程式的應用程式範本識別碼相關的問題。 所有自訂應用程式的應用程式範本識別碼都是_8adf8e6e-67b2-4cf2-a259-e3dc5476c621_。
+權杖的物件是應用程式在資源庫中的應用程式範本識別碼，在單一租使用者中註冊的每個應用程式都可能會收到`iss`與 SCIM 要求相同的宣告。 所有自訂應用程式的應用程式範本識別碼都是_8adf8e6e-67b2-4cf2-a259-e3dc5476c621_。 Azure AD 布建服務所產生的權杖僅供測試之用。 不應在生產環境中使用。
 
 在範例程式碼中，要求是使用 Microsoft.aspnetcore.authentication.jwtbearer 套件進行驗證。 下列程式碼會使用 Azure Active Directory 針對指定的租使用者所發出的持有人權杖，強制對任何服務端點的要求進行驗證：
 
@@ -1144,7 +1144,7 @@ Azure AD 可以設定為將已指派的使用者和群組自動布建至應用�
    ![範例：應用程式在 Azure 入口網站中的布建頁面](media/use-scim-to-provision-users-and-groups/scim-figure-2b.png)<br/>
    *在 Azure 入口網站中設定布建*
 
-7. 在 [租用戶 URL]**** 欄位中，輸入應用程式 SCIM 端點的 URL。 範例： `https://api.contoso.com/scim/`
+7. 在 [租用戶 URL]**** 欄位中，輸入應用程式 SCIM 端點的 URL。 範例：`https://api.contoso.com/scim/`
 8. 如果 SCIM 端點需要來自非 Azure AD 簽發者的 OAuth 持有人權杖，那麼便將所需的 OAuth 持有人權杖複製到選擇性 [祕密權杖]**** 欄位。 如果此欄位保留空白，Azure AD 包括從 Azure AD 發出的 OAuth 持有人權杖與每個要求。 應用程式若使用 Azure AD 作為識別提供者，便可以驗證此 Azure AD 簽發的權杖。 
    > [!NOTE]
    > ***不***建議將此欄位保留空白，並且依賴 Azure AD 所產生的權杖。 此選項主要是供測試之用。

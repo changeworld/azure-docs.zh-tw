@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 04/27/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6640ab1660e6499a97a8c990a0001d5fbae4e997
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 314d7ebe9cc363b4186b81d8eda5f892710d71c8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264384"
+ms.locfileid: "82229981"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中利用 OpenID Connect 的 Web 登入
 
@@ -45,7 +45,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| 參數 | 必要 | 說明 |
+| 參數 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 出租 | 是 | Azure AD B2C 租使用者的名稱 |
 | 策略 | 是 | 要執行的使用者流程。 指定您在 Azure AD B2C 租使用者中建立的使用者流程名稱。 例如： `b2c_1_sign_in`、 `b2c_1_sign_up`或。 `b2c_1_edit_profile` |
@@ -71,7 +71,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --------- | ----------- |
 | id_token | 應用程式所要求的識別碼權杖。 您可以使用識別碼權杖來確認使用者的身分識別，然後開始與使用者的工作階段。 |
 | code | 如果您使用`response_type=code+id_token`，則為應用程式要求的授權碼。 應用程式可以使用授權碼來要求目標資源的存取權杖。 授權碼通常會在大約10分鐘後到期。 |
@@ -86,7 +86,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --------- | ----------- |
 | error | 可以用來分類所發生錯誤類型的程式碼。 |
 | error_description | 可協助識別驗證錯誤根本原因的特定錯誤訊息。 |
@@ -144,12 +144,12 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 參數 | 必要 | 說明 |
+| 參數 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 出租 | 是 | Azure AD B2C 租使用者的名稱 |
 | 策略 | 是 | 用來取得授權碼的使用者流程。 您無法在此要求中使用不同的使用者流程。 將此參數新增至查詢字串，而不是 POST 主體。 |
 | client_id | 是 | [Azure 入口網站](https://portal.azure.com/)指派給應用程式的應用程式識別碼。 |
-| client_secret | 是，在 Web Apps | 在[Azure 入口網站](https://portal.azure.com/)中產生的應用程式密碼。 在此流程中，用戶端密碼會用於 Web 應用程式案例，讓用戶端可以安全地儲存用戶端密碼。 針對原生應用程式（公用用戶端）案例，無法安全地儲存用戶端密碼，此流程上未使用 threfore。 如果使用用戶端密碼，請定期進行變更。 |
+| client_secret | 是，在 Web Apps | 在[Azure 入口網站](https://portal.azure.com/)中產生的應用程式密碼。 在此流程中，用戶端密碼會用於 Web 應用程式案例，讓用戶端可以安全地儲存用戶端密碼。 針對原生應用程式（公用用戶端）案例，無法安全地儲存用戶端密碼，因此不會在此流程中使用。 如果使用用戶端密碼，請定期進行變更。 |
 | code | 是 | 您在使用者流程開頭取得的授權碼。 |
 | grant_type | 是 | 授與的類型，針對授權碼流程來說，必須是 `authorization_code` 。 |
 | redirect_uri | 是 | 應用程式的 `redirect_uri` 參數，您會在此處收到授權碼。 |
@@ -168,7 +168,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --------- | ----------- |
 | not_before | 權杖生效的時間 (以新紀元 (Epoch) 時間表示)。 |
 | token_type | 權杖類型值。 `Bearer`是唯一支援的類型。 |
@@ -186,7 +186,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --------- | ----------- |
 | error | 可以用來分類發生的錯誤類型的程式碼。 |
 | error_description | 可協助識別驗證錯誤根本原因的訊息。 |
@@ -213,12 +213,12 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| 參數 | 必要 | 說明 |
+| 參數 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 出租 | 是 | Azure AD B2C 租使用者的名稱 |
 | 策略 | 是 | 用來取得原始重新整理權杖的使用者流程。 您無法在此要求中使用不同的使用者流程。 將此參數新增至查詢字串，而不是 POST 主體。 |
 | client_id | 是 | [Azure 入口網站](https://portal.azure.com/)指派給應用程式的應用程式識別碼。 |
-| client_secret | 是，在 Web Apps | 在[Azure 入口網站](https://portal.azure.com/)中產生的應用程式密碼。 在此流程中，用戶端密碼會用於 Web 應用程式案例，讓用戶端可以安全地儲存用戶端密碼。 針對原生應用程式（公用用戶端）案例，無法安全地儲存用戶端密碼，threfore 不會用於此呼叫。 如果使用用戶端密碼，請定期進行變更。 |
+| client_secret | 是，在 Web Apps | 在[Azure 入口網站](https://portal.azure.com/)中產生的應用程式密碼。 在此流程中，用戶端密碼會用於 Web 應用程式案例，讓用戶端可以安全地儲存用戶端密碼。 針對原生應用程式（公用用戶端）案例，無法安全地儲存用戶端密碼，因此不會在此呼叫中使用。 如果使用用戶端密碼，請定期進行變更。 |
 | grant_type | 是 | 授與的類型，必須是授權碼流程中這個部分的重新整理權杖。 |
 | refresh_token | 是 | 在流程的第二個部分中取得的原始重新整理權杖。 必須`offline_access`同時在授權和權杖要求中使用範圍，才能接收重新整理權杖。 |
 | redirect_uri | 否 | 應用程式的 `redirect_uri` 參數，您會在此處收到授權碼。 |
@@ -237,7 +237,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 }
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --------- | ----------- |
 | not_before | 權杖生效的時間 (以新紀元 (Epoch) 時間表示)。 |
 | token_type | 權杖類型值。 `Bearer`是唯一支援的類型。 |
@@ -255,14 +255,14 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 }
 ```
 
-| 參數 | 說明 |
+| 參數 | 描述 |
 | --------- | ----------- |
 | error | 可以用來分類發生的錯誤類型的程式碼。 |
 | error_description | 可協助識別驗證錯誤根本原因的訊息。 |
 
 ## <a name="send-a-sign-out-request"></a>傳送登出要求
 
-當您想要將使用者登出應用程式時，並不足以清除應用程式的 cookie 或結束使用者的會話。 將使用者重新導向至 Azure AD B2C 進行登出。如果您無法這麼做，使用者可能可以重新驗證您的應用程式，而不需要再次輸入其認證。
+當您想要將使用者登出應用程式時，並不足以清除應用程式的 cookie 或結束使用者的會話。 將使用者重新導向至 Azure AD B2C 進行登出。如果您無法這麼做，使用者可能可以重新驗證您的應用程式，而不需要再次輸入其認證。 如需詳細資訊，請參閱[Azure AD B2C 會話](session-overview.md)。
 
 若要登出使用者，請將使用者重新導向至`end_session`先前所述的 OpenID connect 元資料檔案中所列的端點：
 
@@ -270,7 +270,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
 ```
 
-| 參數 | 必要 | 說明 |
+| 參數 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | 出租 | 是 | Azure AD B2C 租使用者的名稱 |
 | 策略 | 是 | 您想要用來將使用者登出應用程式的使用者流程。 |
@@ -283,6 +283,4 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 
 登出之後，使用者會被重新導向至`post_logout_redirect_uri`參數中指定的 URI，而不論已為應用程式指定的回復 url。 不過，如果傳遞有效`id_token_hint`的，Azure AD B2C 會在執行重新導向之前`post_logout_redirect_uri` ，驗證的值是否符合其中一個應用程式設定的重新導向 uri。 如果沒有為應用程式設定相符的回復 URL，則會顯示錯誤訊息，而且不會重新導向使用者。
 
-### <a name="external-identity-provider-sign-out"></a>外部識別提供者登出
 
-將使用者導向至`end_session`端點會使用 Azure AD B2C 來清除部分使用者的單一登入狀態，但不會將使用者登出其社交識別提供者（IDP）會話。 如果使用者在後續登入時選取相同的 IDP，則會重新驗證，而不需要輸入其認證。 如果使用者想要登出應用程式，則不一定表示他們想要登出其 Facebook 帳戶。 不過，如果使用本機帳戶，使用者的會話就會正確結束。

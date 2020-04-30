@@ -1,5 +1,5 @@
 ---
-title: 使用自訂策略使用 Salesforce SAML 提供程式設置登錄
+title: 使用自訂原則來設定使用 Salesforce SAML 提供者進行登入
 titleSuffix: Azure AD B2C
 description: 在 Azure Active Directory B2C 中使用自訂原則註冊並登入 Salesforce SAML 提供者。
 services: active-directory-b2c
@@ -11,24 +11,24 @@ ms.topic: conceptual
 ms.date: 02/27/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67fe9ef4ad2b025d11f88976973658c9cd8ae693
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 183fe1604cc363a9121d5eef3737751c54e9bdf1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187945"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82229709"
 ---
 # <a name="set-up-sign-in-with-a-salesforce-saml-provider-by-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則註冊並登入 Salesforce SAML 提供者
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-本文介紹如何使用 Azure 活動目錄 B2C （Azure AD B2C） 中的[自訂策略](custom-policy-overview.md)為 Salesforce 組織的使用者啟用登錄。 將 [SAML 技術設定檔](saml-technical-profile.md)新增至自訂原則，以啟用登入。
+本文說明如何使用 Azure Active Directory B2C （Azure AD B2C）中的[自訂原則](custom-policy-overview.md)，讓 Salesforce 組織的使用者登入。 您可以藉由將[SAML 識別提供者技術設定檔](saml-identity-provider-technical-profile.md)新增至自訂原則來啟用登入。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 
 - 完成在 [Azure Active Directory B2C 中開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 如果您還沒有這麼做，請註冊[免費的開發人員版本帳戶](https://developer.salesforce.com/signup)。 這篇文章會運用 [Salesforce Lightning 經驗](https://developer.salesforce.com/page/Lightning_Experience_FAQ)。
-- 為銷售人員組織[設置"我的域](https://help.salesforce.com/articleView?id=domain_name_setup.htm&language=en_US&type=0)"。
+- 為您的 Salesforce 組織[設定 [我的網域](https://help.salesforce.com/articleView?id=domain_name_setup.htm&language=en_US&type=0)]。
 
 ### <a name="set-up-salesforce-as-an-identity-provider"></a>將 Salesforce 設定為識別提供者
 
@@ -36,11 +36,11 @@ ms.locfileid: "78187945"
 2. 在左側功能表的 [設定]**** 下，展開 [身分識別]****，然後選取 [識別提供者]****。
 3. 選取 [啟用識別提供者]****。
 4. 在 [選取憑證]**** 下，選取您想要讓 Salesforce 在與 Azure AD B2C 通訊時使用的憑證。 您可以使用預設憑證。
-5. 按一下 [儲存]****。
+5. 按一下 **[儲存]** 。
 
 ### <a name="create-a-connected-app-in-salesforce"></a>在 Salesforce 中建立連線應用程式
 
-1. 在 **"身份供應商"** 頁上，**現在通過"已連接的應用"創建"服務提供者"。點擊這裡。**
+1. 在 [**識別提供者**] 頁面上，選取 [**現在透過連線應用程式建立服務提供者]。按一下這裡。**
 2. 在 [基本資訊]**** 下，為連線應用程式輸入必要值。
 3. 在 [Web 應用程式設定]**** 下，核取 [啟用 SAML]**** 方塊。
 4. 在 [實體識別碼]**** 欄位中，輸入下列 URL。 請確保使用 Azure AD B2C 租戶的名稱替換 `your-tenant` 的值。
@@ -88,22 +88,22 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 
 您必須將所建立的憑證儲存在 Azure AD B2C 租用戶中。
 
-1. 登錄到 Azure[門戶](https://portal.azure.com/)。
-2. 選取頂端功能表中的 [目錄 + 訂用帳戶]**** 篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
+1. 登入 [Azure 入口網站](https://portal.azure.com/)。
+2. 選取頂端功能表中的 [目錄 + 訂用帳戶]  篩選，然後選擇包含您租用戶的目錄，以確定您使用的是包含 Azure AD B2C 租用戶的目錄。
 3. 選擇 Azure 入口網站左上角的 [所有服務]****，然後搜尋並選取 [Azure AD B2C]****。
 4. 在 [概觀] 頁面上，選取 [識別體驗架構]****。
 5. 選取 [原則金鑰]****，然後選取 [新增]****。
 6. 針對 [選項]**** 選擇 `Upload`。
 7. 輸入原則的 [名稱]****。 例如，SAMLSigningCert。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 瀏覽並選取您所建立的 B2CSigningCert.pfx 憑證。
-9. 輸入憑證的 [密碼]****。
-3. 按一下 **[建立]**。
+9. 輸入憑證的**密碼**。
+3. 按一下 [建立]  。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 
 如果想要讓使用者使用 Salesforce 帳戶進行登入，您必須將該帳戶定義為 Azure AD B2C 能夠透過端點與之通訊的宣告提供者。 此端點會提供一組宣告，由 Azure AD B2C 用來確認特定使用者已驗證。
 
-您可以藉由將 Salesforce 帳戶新增至原則擴充檔中的 **ClaimsProviders** 元素，將其定義成宣告提供者。 有關詳細資訊，請參閱定義[SAML 技術設定檔](saml-technical-profile.md)。
+您可以藉由將 Salesforce 帳戶新增至原則擴充檔中的 **ClaimsProviders** 元素，將其定義成宣告提供者。 如需詳細資訊，請參閱[定義 SAML 識別提供者技術設定檔](saml-identity-provider-technical-profile.md)。
 
 1. 開啟 *TrustFrameworkExtensions.xml*。
 1. 尋找 **ClaimsProviders** 元素。 如果不存在，請在根元素下新增。
@@ -150,7 +150,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 
 1. 使用您稍早複製的 Salesforce 中繼資料 URL 更新 **PartnerEntity** 的值。
 1. 將 **StorageReferenceId** 兩個執行個體的值，更新至簽章憑證金鑰的名稱。 例如，B2C_1A_SAMLSigningCert。
-1. 找到該`<ClaimsProviders>`部分並添加以下 XML 程式碼片段。 如果策略已包含技術設定檔，`SM-Saml-idp`請跳到下一步。 有關詳細資訊，請參閱[單一登入會話管理](custom-policy-reference-sso.md)。
+1. 找出`<ClaimsProviders>`區段並加入下列 XML 程式碼片段。 如果您的`SM-Saml-idp`原則已包含技術設定檔，請跳至下一個步驟。 如需詳細資訊，請參閱[單一登入會話管理](custom-policy-reference-sso.md)。
 
     ```XML
     <ClaimsProvider>
@@ -175,7 +175,7 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 
 1. 在 Azure AD B2C 租用戶的 [自訂原則]**** 頁面上，選取 [上傳原則]****。
 2. 啟用 [覆寫現有的原則]****，然後瀏覽並選取 *TrustFrameworkExtensions.xml* 檔案。
-3. 按一下 [上傳]****。
+3. 按一下 [上傳]  。
 
 ## <a name="register-the-claims-provider"></a>註冊宣告提供者
 
@@ -203,19 +203,19 @@ Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
 現在已備妥按鈕，您需要將它連結至動作。 在此案例中，動作是讓 Azure AD B2C 與 Salesforce 帳戶通訊以接收權杖。
 
 1. 在使用者旅程圖中，尋找包含 `Order="2"` 的 **OrchestrationStep**。
-2. 新增下列 **ClaimsExchange** 元素，請確定用於 **Id** 的值與用於 **TargetClaimsExchangeId** 的值相同：
+2. 新增下列**ClaimsExchange**元素，確保您針對用於**TargetClaimsExchangeId**的**識別碼**使用相同的值：
 
     ```XML
     <ClaimsExchange Id="SalesforceExchange" TechnicalProfileReferenceId="salesforce" />
     ```
 
-    將**技術設定檔參考 Id**的值更新到您之前創建的技術設定檔的**ID。** 例如： `LinkedIn-OAUTH` 。
+    將**TechnicalProfileReferenceId**的值更新為您稍早建立之技術設定檔的**識別碼**。 例如： `LinkedIn-OAUTH` 。
 
 3. 儲存 TrustFrameworkExtensions.xml** 檔案，並再次上傳它以供驗證。
 
 ## <a name="create-an-azure-ad-b2c-application"></a>建立 Azure AD B2C 應用程式
 
-通過您在 B2C 租戶中註冊的應用程式與 Azure AD B2C 的通信。 此節會列出您可以視需要完成以建立測試應用程式的步驟 (如果您尚未這麼做)。
+與 Azure AD B2C 的通訊會透過您在 B2C 租使用者中註冊的應用程式進行。 此節會列出您可以視需要完成以建立測試應用程式的步驟 (如果您尚未這麼做)。
 
 [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 

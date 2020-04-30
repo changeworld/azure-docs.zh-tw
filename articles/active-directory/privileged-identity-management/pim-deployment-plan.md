@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 02/04/2020
+ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8c77b3454026aa309d979bd938674e7c3ae7b6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "77025991"
+ms.locfileid: "82233528"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -99,7 +99,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>專案關係人： Azure AD 角色的 Privileged Identity Management
 
-| 名稱 | [角色] | 動作 |
+| Name | [角色] | 動作 |
 | --- | --- | --- |
 | 名稱和電子郵件 | **身分識別架構設計師或 Azure 全域系統管理員**<br/>身分識別管理小組所推派的代表人員，負責定義這項變更要如何與組織的核心身分識別管理基礎結構相配合。 | SO/R/I |
 | 名稱和電子郵件 | **服務擁有者/部門經理**<br/>單一或一組服務的 IT 擁有者所推派的代表人員。 它們是做出決策並協助為其小組推出 Privileged Identity Management 的關鍵。 | SO/R/I |
@@ -109,7 +109,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>專案關係人：適用于 Azure 資源角色的 Privileged Identity Management
 
-| 名稱 | [角色] | 動作 |
+| Name | [角色] | 動作 |
 | --- | --- | --- |
 | 名稱和電子郵件 | **訂用帳戶/資源擁有者**<br/>您想要部署的每個訂用帳戶或資源的 IT 擁有者的代表，Privileged Identity Management | SO/R/I |
 | 名稱和電子郵件 | **安全性擁有者**<br/>安全性團隊所推派的代表人員，可簽字同意該規劃符合組織的安全性需求。 | SO/R |
@@ -243,16 +243,16 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 | [角色] | 需要 MFA | 通知 | 事件票證 | 需要核准 | 核准者 | 啟動持續時間 | 永久性系統管理員 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 全域管理員 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 其他全域系統管理員 | 1 小時 | 緊急存取帳戶 |
-| Exchange 系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | None | 2 小時 | None |
-| 服務台系統管理員 | :x: | :x: | :heavy_check_mark: | :x: | None | 8 小時 | None |
+| Exchange 系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | 無 | 2 小時 | 無 |
+| 服務台系統管理員 | :x: | :x: | :heavy_check_mark: | :x: | 無 | 8 小時 | 無 |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>適用于 Azure 資源角色的 Privileged Identity Management 設定
 
 | [角色] | 需要 MFA | 通知 | 需要核准 | 核准者 | 啟動持續時間 | 有效系統管理員 | 有效到期日 | 合格到期日 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 重要訂用帳戶的擁有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 訂用帳戶的其他擁有者 | 1 小時 | None | n/a | 3 個月 |
-| 較不重要訂用帳戶的使用者存取系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | None | 1 小時 | None | n/a | 3 個月 |
-| 虛擬機器參與者 | :x: | :heavy_check_mark: | :x: | None | 3 小時 | None | n/a | 6 個月 |
+| 重要訂用帳戶的擁有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 訂用帳戶的其他擁有者 | 1 小時 | 無 | n/a | 3 個月 |
+| 較不重要訂用帳戶的使用者存取系統管理員 | :heavy_check_mark: | :heavy_check_mark: | :x: | 無 | 1 小時 | 無 | n/a | 3 個月 |
+| 虛擬機器參與者 | :x: | :heavy_check_mark: | :x: | 無 | 3 小時 | 無 | n/a | 6 個月 |
 
 下表說明每個設定。
 
@@ -325,7 +325,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 ### <a name="communicate-privileged-identity-management-to-affected-stakeholders"></a>與受影響的專案關係人溝通 Privileged Identity Management
 
-部署 Privileged Identity Management 將會為特殊許可權角色的使用者引進額外的步驟。 雖然 Privileged Identity Management 可大幅減少與特殊許可權身分識別相關聯的安全性問題，但在整個租使用者部署之前，變更必須有效地進行通訊。 根據受影響的系統管理員數目，組織通常會選擇建立關於此變更的內部文件、影片或電子郵件。 這些溝通內容中經常包含：
+部署 Privileged Identity Management 將會為特殊許可權角色的使用者引進額外的步驟。 雖然 Privileged Identity Management 會大幅減少與特殊許可權身分識別相關的安全性問題，但在整個組織部署之前，必須有效地傳達變更。 根據受影響的系統管理員數目，組織通常會選擇建立關於此變更的內部文件、影片或電子郵件。 這些溝通內容中經常包含：
 
 - 何謂 PIM
 - 對組織有何好處
@@ -371,7 +371,7 @@ Azure AD Privileged Identity Management 可協助您管理跨 Azure AD、Azure �
 
 ### <a name="use-privileged-identity-management-alerts-to-safeguard-your-privileged-access"></a>使用 Privileged Identity Management 警示來保護您的特殊許可權存取
 
-您應該使用 Privileged Identity Management 的內建警示功能，以更妥善保護您的租使用者。 如需詳細資訊，請參閱[安全性警訊](pim-how-to-configure-security-alerts.md#security-alerts)。 這些警示包括：系統管理員未使用特殊許可權角色、在 Privileged Identity Management 外部指派角色、角色的執行頻率太高及更多。 若要完整保護組織，請定期瀏覽警示清單並修正問題。 您可以透過下列方式檢視和修正警示：
+您應該使用 Privileged Identity Management 的內建警示功能，以更妥善保護您的組織。 如需詳細資訊，請參閱[安全性警訊](pim-how-to-configure-security-alerts.md#security-alerts)。 這些警示包括：系統管理員未使用特殊許可權角色、在 Privileged Identity Management 外部指派角色、角色的執行頻率太高及更多。 若要完整保護組織，請定期瀏覽警示清單並修正問題。 您可以透過下列方式檢視和修正警示：
 
 1. 登入 [Azure 入口網站](https://portal.azure.com/)。
 1. 開啟**Azure AD Privileged Identity Management**。

@@ -10,19 +10,22 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
-ms.date: 01/25/2019
-ms.openlocfilehash: f28269b067ee98d69a97799911fd2d84a7f91e34
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.date: 04/28/2020
+ms.openlocfilehash: 49be53febc1783edfa16fd019a094a7e80e1cdf7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81381155"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82231640"
 ---
 # <a name="replication-to-sql-database-single-and-pooled-databases"></a>複寫至 SQL Database 單一資料庫與集區資料庫
 
 可以將 SQL Server 複寫設定為 Azure SQL Database 中 [SQL Database 伺服器](sql-database-servers.md)上的單一資料庫與集區資料庫。  
 
-## <a name="supported-configurations"></a>**支援的設定：**
+> [!NOTE]
+> 本文描述如何在 Azure SQL Database 中使用[異動複寫](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它與[主動式異地](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication)複寫無關，這是一項 Azure SQL Database 的功能，可讓您建立個別資料庫的完整可讀取複本。
+
+## <a name="supported-configurations"></a>支援的組態
   
 - SQL Server 可以是在內部部署執行的 SQL Server 執行個體，或是在雲端 Azure 虛擬機器中執行的 SQL Server 執行個體。 如需詳細資訊，請參閱 [Azure 虛擬機器上的 SQL Server 概觀](https://azure.microsoft.com/documentation/articles/virtual-machines-sql-server-infrastructure-services/)。  
 - Azure SQL 資料庫必須是 SQL Server 發行者的發送訂閱者。  
@@ -32,14 +35,14 @@ ms.locfileid: "81381155"
 
 ## <a name="versions"></a>版本  
 
-本地 SQL Server 發行者和分發伺服器必須使用以下版本之一(至少):  
+內部部署 SQL Server 發行者和散發者至少必須使用下列其中一個版本：  
 
-- SQL 伺服器 2016 及更高
-- SQL 伺服器 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014)或[SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
-- SQL 伺服器 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2)或[SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+- SQL Server 2016 和更新版本
+- SQL Server 2014 [RTM CU10 （12.0.4427.24）](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014)或[SP1 CU3 （12.0.2556.4）](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL Server 2012 [SP2 CU8 （11.0.5634.1）](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2)或[SP3 （11.0.6020.0）](https://www.microsoft.com/download/details.aspx?id=49996)
 
 > [!NOTE]
-> 嘗試使用不支援的版本配置複製可能會導致錯誤編號MSSQL_REPL20084(進程無法連接到訂閱伺服器)和MSSQL_REPL40532(無法打開>登錄請求的伺服器\<名稱。 登入失敗。)。  
+> 嘗試使用不支援的版本設定複寫可能會導致錯誤號碼 MSSQL_REPL20084 （進程無法連線到訂閱者。）和 MSSQL_REPL40532 （無法開啟登入\<所要求> 的伺服器名稱。 登入失敗。)。  
 
 若要使用 Azure SQL Database 的所有功能，您必須使用最新版的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。  
 
@@ -106,14 +109,14 @@ Azure SQL Database 訂閱不支援下列選項：
 
 ## <a name="examples"></a>範例
 
-建立發行集和發送訂閱。 如需詳細資訊，請參閱
+建立發行集和發送訂閱。 如需詳細資訊，請參閱：
   
 - [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)，方法是使用 Azure SQL Database 伺服器名稱作為訂閱者 (例如 **N'azuresqldbdns.database.windows.net'**)，並使用 Azure SQL 資料庫名稱作為目的地資料庫 (例如 **AdventureWorks**)。  
 
 ## <a name="see-also"></a>另請參閱  
 
-- [交易複製](sql-database-managed-instance-transactional-replication.md)
+- [異動複寫](sql-database-managed-instance-transactional-replication.md)
 - [建立發行集](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [建立發送訂閱](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
 - [複寫類型](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)

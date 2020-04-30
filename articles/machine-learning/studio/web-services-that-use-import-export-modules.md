@@ -1,25 +1,24 @@
 ---
-title: Web 服務中的導入/匯出資料
+title: 匯入/匯出 web 服務中的資料
 titleSuffix: ML Studio (classic) - Azure
 description: 了解如何使用「匯入資料」及「匯出資料」模組來傳送和接收 Web 服務的資料。
 services: machine-learning
-author: xiaoharper
-ms.custom: seodec18
-ms.author: amlstudiodocs
+author: likebupt
+ms.author: keli19
 editor: cgronlun
 ms.assetid: 3a7ac351-ebd3-43a1-8c5d-18223903d08e
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 144a3bc0d9e0499a238e4033d37d5e4d3fa61e05
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3275a372e496b79da2c9f31258f557389c5b1ee1
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79204048"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209361"
 ---
-# <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用資料導入和資料匯出模組的 Azure 機器學習工作室（經典）Web 服務
+# <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>部署使用資料匯入和資料匯出模組 Azure Machine Learning Studio （傳統） web 服務
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
@@ -61,7 +60,7 @@ ms.locfileid: "79204048"
         [native-country],
         [income]
      from dbo.censusdata;
-8. 在實驗畫布的底部，按一下"**運行**"。
+8. 在實驗畫布底部，按一下 [**執行**]。
 
 ## <a name="create-the-predictive-experiment"></a>建立預測性實驗
 接著，您要設定用來部署 Web 服務的預測性實驗。
@@ -77,7 +76,7 @@ ms.locfileid: "79204048"
 9. 在 [資料表名稱] **** 欄位中，輸入 dbo.ScoredLabels。 如果資料表不存在，則在執行實驗或呼叫 Web 服務時會建立資料表。
 10. 在 [資料表資料行的逗號分隔清單] **** 欄位中，輸入 ScoredLabels。
 
-當您撰寫的應用程式呼叫最後一個 Web 服務時，您可能要在執行階段指定不同的輸入查詢或目的地資料表。 若要設定這些輸入和輸出，請使用 Web 服務參數功能設來定「匯入資料」** 模組的「資料來源」** 屬性以及「匯出資料」** 模式資料目的地屬性。  有關 Web 服務參數的詳細資訊，請參閱 Cortana 智慧和機器學習博客上的[Azure 機器學習工作室 Web 服務參數條目](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/)。
+當您撰寫的應用程式呼叫最後一個 Web 服務時，您可能要在執行階段指定不同的輸入查詢或目的地資料表。 若要設定這些輸入和輸出，請使用 Web 服務參數功能設來定「匯入資料」** 模組的「資料來源」** 屬性以及「匯出資料」** 模式資料目的地屬性。  如需有關 Web 服務參數的詳細資訊，請參閱 Cortana 智慧和 Machine Learning Blog 上的[Azure Machine Learning Studio Web 服務參數專案](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/)。
 
 設定匯入查詢和目的地資料表的 Web 服務參數︰
 
@@ -102,7 +101,7 @@ ms.locfileid: "79204048"
 2. 執行完成時，按一下 [部署 Web 服務]****，然後選取 [部署 Web 服務 [傳統]]****。
 3. 在 Web 服務儀表板上，找出您的 API 金鑰。 複製並儲存起來供日後使用。
 4. 在 [預設端點]**** 資料表中，按一下 [批次執行]**** 連結以開啟 [API 說明頁面]。
-5. 在視覺化工作室中，創建一個 C# 主控台應用程式：**新專案** > **Project** > **視覺化 C#** > **Windows 經典桌面** > **主控台應用程式 （.NET 框架）。**
+5. 在 Visual Studio 中，建立 c # 主控台應用程式：**新增** > **專案** > **Visual c #** > **Windows 傳統桌面** > **主控台應用程式（.NET Framework）**。
 6. 在 [API 說明頁面] 的頁面底部找到 [範例程式碼] **** 區段。
 7. 將 C# 範例程式碼複製並貼入 Program.cs 檔案，然後移除 Blob 儲存體的所有參考。
 8. 使用先前儲存的 API 金鑰更新 *apiKey* 變數的值。
@@ -126,12 +125,12 @@ ms.locfileid: "79204048"
 
 部署為新的 Web 服務，並建立應用程式取用它︰
 
-1. 在實驗畫布的底部，按一下"**運行**"。
+1. 在實驗畫布底部，按一下 [**執行**]。
 2. 執行完成時，按一下 [部署 Web 服務]****，然後選取 [部署 Web 服務 [新]]****。
 3. 在 [部署實驗] 頁面上，輸入您 Web 服務的名稱並選取定價方案，然後按一下 [部署]****。
 4. 在 [快速入門]**** 頁面上，按一下 [取用]****。
 5. 在 [範例程式碼]**** 區段中，按一下 [批次]****。
-6. 在視覺化工作室中，創建一個 C# 主控台應用程式：**新專案** > **Project** > **視覺化 C#** > **Windows 經典桌面** > **主控台應用程式 （.NET 框架）。**
+6. 在 Visual Studio 中，建立 c # 主控台應用程式：**新增** > **專案** > **Visual c #** > **Windows 傳統桌面** > **主控台應用程式（.NET Framework）**。
 7. 將 C# 範例程式碼複製並貼入 Program.cs 檔案。
 8. 使用位於 [基本取用資訊]**** 區段中的 [主索引鍵]**** 更新 *apiKey* 變數的值。
 9. 找出 *scoreRequest* 宣告並更新傳入「匯入資料」** 和「匯出資料」** 模組的 Web 服務參數值。 在此情況下，您會使用原始的查詢，但定義新的資料表名稱。

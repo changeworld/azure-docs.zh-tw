@@ -1,28 +1,28 @@
 ---
 title: 取得支援和訓練
 titleSuffix: ML Studio (classic) - Azure
-description: 獲取支援和培訓,併為 Azure 機器學習工作室提供反饋(經典)
+description: 取得 Azure Machine Learning Studio 的支援和訓練並提供意見反應（傳統）
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 author: peterclu
-ms.author: amlstudiodocs
+ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: d330235815b746a5bbdc7682622c0e238a3ab0ea
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: cd48e97f642402d1c7ff2ff71e7cee67be17f91d
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81411912"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82209429"
 ---
-# <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>獲得 Azure 機器學習工作室的支援和培訓(經典)
+# <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>取得 Azure Machine Learning Studio 的支援和訓練（傳統）
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-本文提供有關如何瞭解有關 Azure 機器學習工作室(經典)的詳細資訊,以及如何獲得對問題和問題的支援。
+本文提供有關如何深入瞭解 Azure Machine Learning Studio （傳統），以及取得問題和問題支援的資訊。
 
-## <a name="learn-more-about-studio-classic"></a>瞭解有關工作室的更多資訊(經典)
+## <a name="learn-more-about-studio-classic"></a>深入瞭解 Studio （傳統）
 
 請參閱我們的學習資源：
 + [教學課程及操作說明文章](../studio/index.yml) 
@@ -36,9 +36,9 @@ ms.locfileid: "81411912"
 
 查看這些支援資源：
 
-+ **對 Azure 客戶的技術支援**:透過 Azure 入口[使用者 提交與管理支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
++ **Azure 客戶的技術支援**：透過 Azure 入口網站[提交及管理支援要求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
-+ **使用者論壇**:在[MSDN 上的 Azure 機器學習工作室(經典)支援論壇](https://aka.ms/aml-forum-studio)中提出問題、回答問題並與其他用戶聯繫。
++ **使用者論壇**：在[MSDN 上的 Azure Machine Learning Studio （傳統）支援論壇](https://aka.ms/aml-forum-studio)中提出問題、回答問題，以及與其他使用者聯繫。
 
 + **Stack Overflow**：造訪 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上標籤為 "Azure-Machine-Learning" 的 Azure Machine Learning 社群。
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/06/2020
+ms.date: 04/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c23648d70192607b2a5b977dcdd445931e995154
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 676b54e1d22712ac41534b67206e6d6931bcc9b9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "78671794"
+ms.locfileid: "82229692"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自訂原則中定義 JWT 權杖簽發者的技術設定檔
 
@@ -35,7 +35,16 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
   <DisplayName>JWT Issuer</DisplayName>
   <Protocol Name="None" />
   <OutputTokenFormat>JWT</OutputTokenFormat>
-  ...
+  <Metadata>
+    <Item Key="client_id">{service:te}</Item>
+    <Item Key="issuer_refresh_token_user_identity_claim_type">objectId</Item>
+    <Item Key="SendTokenResponseBodyWithJsonNumbers">true</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+    <Key Id="issuer_refresh_token_key" StorageReferenceId="B2C_1A_TokenEncryptionKeyContainer" />
+  </CryptographicKeys>
+  <UseTechnicalProfileForSessionManagement ReferenceId="SM-jwt-issuer" />
 </TechnicalProfile>
 ```
 
@@ -45,7 +54,7 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
 
 ## <a name="metadata"></a>中繼資料
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | issuer_refresh_token_user_identity_claim_type | 是 | 應在 OAuth2 授權碼和重新整理權杖內作為使用者識別宣告的宣告。 根據預設，您應將其設定為 `objectId`，除非您指定不同的 SubjectNamingInfo 宣告類型。 |
 | SendTokenResponseBodyWithJsonNumbers | 否 | 一律設定為 `true`。 針對以字串形式指定數值 (而非 JSON 數字) 的舊版格式，請設定為 `false`。 用戶端只要相依於以字串形式傳回這類屬性的舊有實作，就需要此屬性。 |
@@ -62,10 +71,14 @@ Azure Active Directory B2C (Azure AD B2C) 會在處理每個驗證流程時發�
 
 CryptographicKeys 元素包含下列屬性：
 
-| 屬性 | 必要 | 說明 |
+| 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
-| issuer_secret | 是 | 用來簽署 JWT 權杖的 X509 憑證 (RSA 金鑰組)。 這是您在[開始使用自訂原則](custom-policy-get-started.md)中設定的 `B2C_1A_TokenSigningKeyContainer` 金鑰。 |
+| issuer_secret | 是 | 用來簽署 JWT 權杖的 X509 憑證 (RSA 金鑰組)。 這是您`B2C_1A_TokenSigningKeyContainer`在[開始使用自訂原則](custom-policy-get-started.md)中設定的金鑰。 |
 | issuer_refresh_token_key | 是 | 用來加密重新整理權杖的 X509 憑證 (RSA 金鑰組)。 您已在[開始使用自訂原則](custom-policy-get-started.md)中設定 `B2C_1A_TokenEncryptionKeyContainer` 金鑰 |
+
+## <a name="session-management"></a>工作階段管理
+
+若要設定 Azure AD B2C 和信賴憑證者應用程式之間的 Azure AD B2C 會話，請在`UseTechnicalProfileForSessionManagement`元素的屬性中新增[OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider) SSO 會話的參考。
 
 
 
