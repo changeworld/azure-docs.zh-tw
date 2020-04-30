@@ -9,20 +9,20 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 4ea97e2dbee87f7ab129c4295276c9024c0212c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80117073"
 ---
-Windows 10 VPN 用戶端的一項新功能"始終打開"是維護 VPN 連接的能力。 使用"始終打開"時，活動 VPN 設定檔可以根據觸發器（如使用者登錄、網路狀態更改或設備螢幕處於活動狀態）自動連接並保持連接。
+Windows 10 VPN 用戶端 Always On 的新功能，就是維護 VPN 連線的能力。 使用 Always On 時，作用中的 VPN 設定檔可以根據觸發程式自動連線並保持連接狀態，例如使用者登入、網路狀態變更或裝置螢幕作用中。
 
-您可以將 Windows 10 始終打開的閘道建立到 Azure 的持久使用者隧道和設備隧道。 本文可説明您配置始終位於 VPN 的使用者隧道。
+您可以使用具有 Windows 10 Always On 的閘道，為 Azure 建立持續的使用者通道和裝置通道。 本文可協助您設定 Always On VPN 使用者通道。
 
-始終在 VPN 連接包括兩種類型的隧道之一：
+Always On VPN 連線包含兩種通道類型之一：
 
-* **設備隧道**：在使用者登錄到設備之前連接到指定的 VPN 伺服器。 預登錄連接方案和裝置管理使用設備隧道。
+* **裝置**通道：在使用者登入裝置之前，會連線到指定的 VPN 伺服器。 登入前的連線案例和裝置管理使用裝置通道。
 
-* **使用者隧道**：僅在使用者登錄到設備後連接。 通過使用使用者隧道，您可以通過 VPN 伺服器訪問組織資源。
+* **使用者**通道：只有在使用者登入裝置之後，才會連線。 藉由使用使用者通道，您可以透過 VPN 伺服器存取組織資源。
 
-設備隧道和使用者隧道獨立于其 VPN 設定檔運行。 它們可以同時連接，並且可以根據需要使用不同的身份驗證方法和其他 VPN 配置設置。
+裝置通道和使用者通道的運作與它們的 VPN 設定檔無關。 它們可以同時連接，而且可以適當地使用不同的驗證方法和其他 VPN 設定。
