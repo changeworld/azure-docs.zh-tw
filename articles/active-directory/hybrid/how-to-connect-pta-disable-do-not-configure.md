@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure AD 連線時關閉 PTA「不設定」 |微軟文件
-description: 本文介紹如何使用 Azure AD 連接"不配置"功能禁用 PTA。
+title: 使用 Azure AD Connect 「不要設定」時停用 PTA |Microsoft Docs
+description: 本文說明如何使用 Azure AD Connect 「不要設定」功能來停用 PTA。
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,45 +12,45 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa1046dc64fed3edb6c9d04f76a96f488769ff42
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81726796"
 ---
-# <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>使用 Azure AD 連接時禁用 PTA"不配置"
+# <a name="disable-pta-when-using-azure-ad-connect-do-not-configure"></a>使用 Azure AD Connect [不要設定] 時停用 PTA
 
-如果使用 Azure AD Connect 的直通身份驗證並將其設置為「不設定」,則可以禁用它。 禁用 PTA 可以使用以下 cmdlet 完成。 
+如果您使用傳遞驗證與 Azure AD Connect，而且您已將它設定為 [不要設定]，您可以將它停用。 您可以使用下列 Cmdlet 來停用 PTA。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>先決條件
 需要下列必要條件：
-- 安裝了 PTA 代理的任何視窗電腦。 
-- 代理必須位於版本 1.5.1742.0 或更高版本。 
-- Azure 全域管理員帳戶,以便運行 PowerShell cmdlet 以禁用 PTA。
+- 已安裝 PTA 代理程式的任何 windows 電腦。 
+- 代理程式必須是1.5.1742.0 或更新版本。 
+- Azure 全域管理員帳戶，以便執行 PowerShell Cmdlet 以停用 PTA。
 
 >[!NOTE]
-> 如果您的代理較舊,則可能沒有完成此操作所需的 cmdlet。 可以從 Azure 門戶獲取新代理,將其安裝在任何視窗電腦上並提供管理員認證。 (安裝代理不會影響雲端的 PTA 狀態)
+> 如果您的代理程式較舊，則可能沒有完成此操作所需的 Cmdlet。 您可以從 Azure 入口網站取得新的代理程式，將它安裝在任何 windows 電腦上，並提供系統管理員認證。 （安裝代理程式不會影響雲端中的 PTA 狀態）
 
 > [!IMPORTANT]
-> 如果使用 Azure 政府雲,則必須使用以下值傳遞環境名稱參數。 
+> 如果您使用 Azure Government 雲端，則必須傳入具有下列值的 ENVIRONMENTNAME 參數。 
 >
 >| 環境名稱 | 雲端 |
 >| - | - |
 >| AzureUSGovernment | US Gov|
 
 
-## <a name="to-disable-pta"></a>關閉 PTA
-在 PowerShell 工作階段中,使用以下內容關閉 PTA:
-1. PS C:\程式檔案\微軟 Azure AD 連線身份驗證代理>`Import-Module .\Modules\PassthroughAuthPSModule`
+## <a name="to-disable-pta"></a>若要停用 PTA
+從 PowerShell 會話中，使用下列各項來停用 PTA：
+1. PS C:\Program Files\Microsoft Azure AD Connect Authentication 代理程式>`Import-Module .\Modules\PassthroughAuthPSModule`
 2. `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth` 或 `Get-PassthroughAuthenticationEnablementStatus -Feature PassthroughAuth -EnvironmentName <identifier>`
 3. `Disable-PassthroughAuthentication  -Feature PassthroughAuth` 或 `Disable-PassthroughAuthentication -Feature PassthroughAuth -EnvironmentName <identifier>`
 
-## <a name="if-you-dont-have-access-to-an-agent"></a>如果您無法存取代理程式
+## <a name="if-you-dont-have-access-to-an-agent"></a>如果您沒有代理程式的存取權
 
-如果沒有代理電腦,則可以使用以下命令安裝代理。
+如果您沒有代理程式電腦，可以使用下列命令來安裝代理程式。
 
-1. 從portal.azure.com下載最新的 Auth 代理。
-2. 安裝功能:`.\AADConnectAuthAgentSetup.exe`或`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
+1. 從 portal.azure.com 下載最新的驗證代理程式。
+2. 安裝功能： `.\AADConnectAuthAgentSetup.exe`或`.\AADConnectAuthAgentSetup.exe ENVIRONMENTNAME=<identifier>`
 
 
 ## <a name="next-steps"></a>後續步驟

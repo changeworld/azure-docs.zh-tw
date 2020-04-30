@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 526d8a6a103e7623bac459004bf9ac79e4927541
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686968"
 ---
-1. 查看所選直接對等互連上的連接。
+1. 在選取的直接對等互連上查看連接。
     ```powershell
     $directPeering.Connections
 
@@ -31,7 +31,7 @@ ms.locfileid: "81686968"
     SessionStateV6              : None
     ConnectionState             : Active
     ```
-1. 選擇要為對等互連服務啟用的連接。 在此示例中,我們將使用唯一可用的連接。
+1. 選取您想要啟用對等互連服務的連線。 在此範例中，我們將使用唯一可用的連接。
     ```powershell
     $directPeering.Connections[1] = $directPeering.Connections[1] | Set-AzPeeringDirectConnectionObject -UseForPeeringService $true
 
@@ -47,12 +47,12 @@ ms.locfileid: "81686968"
     SessionStateV6              : None
     ConnectionState             : Active
     ```
-1. 現在,使用以下命令儲存對 Direct 對等互連所做的變更:
+1. 現在使用下列命令來儲存對對等互連所做的變更：
     ```powershell
     $directPeering | Update-AzPeering
     ```
     
-    下面是一個範例輸出:
+    以下是範例輸出：
     
     ```powershell
         Name                 : SeattleDirectPeering

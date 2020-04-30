@@ -1,34 +1,34 @@
 ---
-title: Azure 媒體播放器 API 方法
-description: Azure 媒體播放器 API 允許您透過 JavaScript 與影片進行互動,無論瀏覽器是透過 HTML5 影片、Flash、Silverlight 或任何其他受支援的播放技術播放影片。
+title: Azure 媒體播放機 API 方法
+description: Azure 媒體播放機 API 可讓您透過 JavaScript 與影片互動，不論瀏覽器是透過 HTML5 影片、Flash、Silverlight 或任何其他支援的播放技術來播放影片。
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727264"
 ---
 # <a name="api"></a>API #
 
-Azure 媒體播放器 API 允許您透過 JavaScript 與影片進行互動,無論瀏覽器是透過 HTML5 影片、Flash、Silverlight 或任何其他受支援的播放技術播放影片。
+Azure 媒體播放機 API 可讓您透過 JavaScript 與影片互動，不論瀏覽器是透過 HTML5 影片、Flash、Silverlight 或任何其他支援的播放技術來播放影片。
 
-## <a name="referencing-the-player"></a>參考播放器 ##
+## <a name="referencing-the-player"></a>參照播放機 ##
 
-要使用 API 函數,您需要存取播放器物件。 幸運的是,這是很容易得到。 您只需確保您的影片標籤具有 ID。 範例嵌入代碼的識別碼`vid1`。 如果一個頁面上有多個視頻,請確保每個視頻標記都具有唯一的 ID。
+若要使用 API 函式，您需要有 player 物件的存取權。 幸運的是，很容易就能取得。 您只需要確定您的影片標記具有識別碼。 範例內嵌程式碼的識別碼為`vid1`。 如果您在單一頁面上有多個影片，請確定每個 video 標記都有唯一的識別碼。
 
 `var myPlayer = amp('vid1');`
 
 > [!NOTE]
-> 如果玩家尚未通過數據設置屬性或其他方法初始化,這也將初始化該播放機。
+> 如果播放程式尚未透過資料安裝屬性或其他方法進行初始化，這也會初始化播放程式。
 
-## <a name="wait-until-the-player-is-ready"></a>等待玩家準備就緒 ##
+## <a name="wait-until-the-player-is-ready"></a>等到玩家準備就緒 ##
 
-設置視頻和 API 所需的時間因正在使用的播放技術而異。 HTML5 的載入速度通常比快閃記憶體或銀光快得多。 因此,玩家的「就緒」功能應用於觸發任何需要玩家 API 的代碼。
+設定影片和 API 所 Azure 媒體播放機需的時間，會根據所使用的播放技術而有所不同。 HTML5 的載入速度通常會比 Flash 或 Silverlight 快很多。 基於這個理由，應該使用播放程式的「就緒」功能來觸發任何需要播放程式 API 的程式碼。
 
 ```javacript
     amp("vid_1").ready(function(){
@@ -39,7 +39,7 @@ Azure 媒體播放器 API 允許您透過 JavaScript 與影片進行互動,無�
     });
 ```
 
-OR
+或者
 
 ```javacript
     var myPlayer = amp("vid_1", myOptions, function(){
@@ -49,7 +49,7 @@ OR
 
 ## <a name="api-methods"></a>API 方法 ##
 
-現在,您可以訪問現成的播放機,您可以控制視頻、獲取值或回應視頻事件。 Azure 媒體播放器 API 函式名稱試著遵循[HTML5 媒體 API](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html)。 主要區別是 getter/setter 函數用於視頻屬性。
+現在您可以存取就緒的播放程式，您可以控制影片、取得值或回應影片事件。 Azure 媒體播放機 API 函數名稱會嘗試遵循[HTML5 媒體 API](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html)。 主要差異在於 getter/setter 函式會用於影片屬性。
 
 ```javacript
     // setting a property on a bare HTML5 video element
@@ -59,8 +59,8 @@ OR
     myPlayer.currentTime(120);
 ```
 
-## <a name="registering-for-events"></a>註冊活動 ##
-事件應在首次初始化播放器后直接註冊,以確保所有事件都適當地報告給應用程式,並且應在就緒事件之外完成。
+## <a name="registering-for-events"></a>註冊事件 ##
+事件應該在第一次初始化播放程式之後直接註冊，以確保所有事件都會適當地回報給應用程式，而且應該在「就緒」事件以外完成。
 
 ```javacript
     var myPlayer = amp("vid_1", myOptions, function(){

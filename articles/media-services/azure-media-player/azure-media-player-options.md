@@ -1,109 +1,109 @@
 ---
-title: Azure 媒體播放器選項
-description: Azure 媒體播放器嵌入代碼只是一個 HTML5 視訊標記,因此對於許多選項,您可以使用標準標記屬性來設置選項。
+title: Azure 媒體播放機選項
+description: Azure 媒體播放機內嵌程式碼只是 HTML5 video 標記，因此針對許多選項，您可以使用標準標記屬性來設定選項。
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727160"
 ---
 # <a name="options"></a>選項 #
 
 ## <a name="setting-options"></a>設定選項 ##
 
-Azure 媒體播放器嵌入代碼只是一個 HTML5 視訊標記,因此對於許多選項,您可以使用標準標記屬性來設置選項。
+Azure 媒體播放機內嵌程式碼只是 HTML5 video 標記，因此針對許多選項，您可以使用標準標記屬性來設定選項。
 
 `<video controls autoplay ...>`
 
-或者,您可以使用數據設置屬性以[JSON](http://json.org/example.html)格式提供選項。 這也是如何設置不標準到視頻標記的選項。
+或者，您可以使用資料安裝屬性，以[JSON](http://json.org/example.html)格式提供選項。 這也是您如何設定影片標記不標準的選項。
 
 `<video data-setup='{ "controls": true, "autoplay": false }'...>`
 
-最後,如果您不使用數據設置屬性來觸發播放機設置,則可以將具有播放器選項的物件作為 JAVAScript 設定函數中的第二個參數傳遞。
+最後，如果您未使用資料安裝程式屬性來觸發播放程式設定，您可以在 JavaScript 安裝函式的第二個引數中傳入具有播放機選項的物件。
 
 `amp("vid1", { "controls": true, "autoplay": false });`
 
 > [!NOTE]
-> 建構函數中的選項僅在設置源之前在第一個初始化上設置。  如果要修改同一初始化 Azure 媒體播放器元素上的選項,則必須在更改源之前更新這些選項。 您可以使用 更新 JavaScript`myPlayer.options({/*updated options*/});`中的選項 。 請注意,只有更改的選項才會受到影響,所有其他以前設置的選項將保持不變。
+> 在設定來源之前，只會在第一次初始化時設定此函數中的選項。  如果您想要修改相同已初始化 Azure 媒體播放機專案上的選項，您必須先更新選項，然後再變更來源。 您可以使用`myPlayer.options({/*updated options*/});`來更新 JavaScript 中的選項。 請注意，只有變更的選項會受到影響，所有其他先前設定的選項將會保存。
 
-## <a name="individual-options"></a>單個選項 ##
+## <a name="individual-options"></a>個別選項 ##
 
 > [!NOTE]
->視頻標記屬性只能是真或假(布林),您只需包括屬性(無等於符號)來打開它,或排除它來將其關閉。 例如,打開控制項:錯誤`<video controls="true" ...>``<video controls ...>`正確 遇到的最大問題是,使用 false 作為值(例如控制項="false")將這些值設定為 false,該值實際上執行相反操作並將值設定為 true,因為屬性仍包含在內。
+>影片標籤屬性只能是 true 或 false （布林值），您只需要包含屬性（不帶正負號）即可開啟，或將其排除以將它關閉。 例如，若要將控制項開啟：錯誤`<video controls="true" ...>`的`<video controls ...>`正確處在于有人嘗試將這些值設定為 false，並使用 false 作為值（例如 controls = "false"），這實際上會執行相反的動作，並將值設定為 true，因為仍然包含該屬性。
 
 ### <a name="controls"></a>controls ###
 
-控制項選項設定播放器是否具有使用者可以與之互動的控制項。 如果沒有控制項,啟動影片播放的唯一方法是使用自動播放屬性或透過 API。
+Controls 選項會設定播放程式是否具有可與使用者互動的控制項。 如果沒有控制項，啟動播放影片的唯一方式是使用 [自動播放] 屬性或透過 API。
 
 `<video controls ...>` 或 `{ "controls": true }`
 
 ### <a name="autoplay"></a>autoplay ###
 
-如果自動播放為 true,則視訊將在載入頁面後立即開始播放(無需用戶進行任何互動)。
+如果 [自動播放] 為 true，影片會在頁面載入時立即開始播放（不需要使用者進行任何互動）。
 
 > [!NOTE]
-> Windows 手機、Apple iOS 和 Android 等行動裝置不支援此選項。 移動設備阻止自動播放功能,以防止消費者每月數據計劃過度使用(通常成本高昂)。 在這種情況下,需要使用者觸摸/單擊才能啟動視頻。
+> 行動裝置（例如 Windows Phone、Apple iOS 和 Android）不支援此選項。 行動裝置會封鎖自動播放功能，以防止取用者的每月通話方案使用（通常昂貴）。 在此情況下，需要使用者觸控/按一下才能啟動影片。
 
 `<video autoplay ...>`或`{ "autoplay": true }`
 
 ### <a name="poster"></a>海報 ###
-海報屬性設置在視頻開始播放之前顯示的圖像。 這通常是視頻或自定義標題螢幕的框架。 使用者一點擊播放,圖像就會消失。
+海報屬性會設定在影片開始播放之前顯示的影像。 這通常是影片的框架或自訂標題畫面。 一旦使用者按一下 [播放]，影像就會消失。
 
 `<video poster="myPoster.jpg" ...>` 或 `{ "poster": "myPoster.jpg" }`
 
 ### <a name="width"></a>width ###
 
-寬度屬性設置視頻的顯示寬度。
+Width 屬性會設定影片的顯示寬度。
 
 `<video width="640" ...>` 或 `{ "width": 640 }`
 
 ### <a name="height"></a>height ###
 
-高度屬性設置視頻的顯示高度。
+Height 屬性會設定影片的顯示高度。
 
 `<video height="480" ...>` 或 `{ "height": 480 }`
 
 ### <a name="plugins"></a>外掛程式 ###
 
-外掛程式 JSON 確定哪些外掛程式載入 AMP 實體,允許您設定外掛程式可能具有的任何選項。
+外掛程式 JSON 會決定要載入該 AMP 實例的外掛程式，可讓您設定外掛程式可能擁有的任何選項。
 
    `<video... data-setup='{plugins: { "contentTitle": {"name": "Azure Medi Services Overview"}}}'...>`
 
-有關外掛程式開發和使用的詳細資訊,請參閱[編寫外掛程式](azure-media-player-writing-plugins.md)
+如需外掛程式開發和使用方式的詳細資訊，請參閱[撰寫外掛程式](azure-media-player-writing-plugins.md)
 
 ### <a name="other-options"></a>其他選項 ###
 
-可以使用採用 JSON`<video>``data-setup`的 參數在標記上設置其他選項。
+您可以使用接受 JSON 的`<video>` `data-setup`參數，在標記上設定其他選項。
 `<video ... data-setup='{"nativeControlsForTouch": false}'>`
 
-#### <a name="nativecontrolsfortouch"></a>本機控制ForTouch ####
+#### <a name="nativecontrolsfortouch"></a>nativeControlsForTouch ####
 
-這顯式設置為 false。 通過將設置為 false,它將允許跨平台呈現 Azure 媒體播放器外觀。  此外,與名稱相反,仍可啟用觸摸。
+這會明確設定為 false。 將設定為 false，可讓 Azure 媒體播放機面板在不同的平臺上呈現相同的外觀。  此外，相對於名稱，仍然會啟用觸控。
 
-### <a name="fluid"></a>流體 ###
+### <a name="fluid"></a>分離器 ###
 
-通過將此選項設置為 true 視頻元素,將採用父容器的完整寬度,並且高度將進行調整,以適應具有標準 16:9 縱橫比的視頻。
+藉由將此選項設定為 true video 元素，將會填滿父系容器的寬度，而且高度會調整為符合具有標準16:9 外觀比例的影片。
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`選項覆蓋顯式`width`和`height`設置。 此選項僅在 Azure 媒體播放`2.0.0`器版本和更高版本中可用。
+`fluid`選項會覆`width`寫`height`明確和設定。 此選項僅適用于 Azure 媒體播放機版本和`2.0.0`更新版本。
 
-### <a name="playbackspeed"></a>播放速度 ###
+### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`選項控制播放速度控制和一組可供使用者使用的播放速度設置。 `playbackSpeed`獲取物件。 為了在控制列上啟用播放速度控制,需要將物件的`enabled`屬性設置為 true。 在標記中開啟播放速度的範例:
+`playbackSpeed`選項控制使用者可用的 playbackSpeed 控制項和播放速度設定集。 `playbackSpeed`取得物件。 若要在控制列上啟用 [播放速度控制]， `enabled`必須將物件的屬性設定為 [true]。 在標記中啟用播放速度的範例：
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-`playbackSpeed`設置的其他屬性由[PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions)物件提供。
+`playbackSpeed`設定的其他屬性是由[PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions)物件所提供。
 
-在 JavaScript 中設定播放速度選項的範例:
+在 JavaScript 中設定播放速度選項的範例：
 
 ```javascript
     var myPlayer = amp('vid1', {
@@ -126,15 +126,15 @@ Azure 媒體播放器嵌入代碼只是一個 HTML5 視訊標記,因此對於許
     });
 ```
 
-此選項僅在 Azure 媒體播放器版本 2.0.0 及更高版本中可用。
+此選項僅適用于 Azure 媒體播放機版本2.0.0 和更新版本。
 
-### <a name="staledatatimelimitinsec"></a>陳舊的資料時間限值 ###
+### <a name="staledatatimelimitinsec"></a>staleDataTimeLimitInSec ###
 
-該`staleDataTimeLimitInSec`選項是一個優化,允許您設定要在 mediaSource 緩衝區中保留多少秒的過時數據。 此選項預設為停用狀態。
+此`staleDataTimeLimitInSec`選項是一種優化，可讓您設定要在 mediaSource 緩衝區中保留多少秒的過時資料。 此選項預設為停用狀態。
 
-### <a name="cea708captionssettings"></a>cea708 標題設定 ###
+### <a name="cea708captionssettings"></a>cea708CaptionsSettings ###
 
-啟用為 true 的設定允許您在即時串流和即時存檔中顯示即時 CEA 字幕。 標籤屬性不是必需的,如果未包含,播放機將回退到預設標籤。
+將 [已啟用] 設定為 [true]，可讓您在即時串流和即時封存中顯示即時 CEA 字幕。 標籤屬性不是必要的，如果不包含，播放機將會切換回預設標籤。
 
 ```javascript
      cea708CaptionsSettings: {
@@ -144,7 +144,7 @@ Azure 媒體播放器嵌入代碼只是一個 HTML5 視訊標記,因此對於許
             }
 ```
 
-此選項僅在 Azure 媒體播放器版本 2.1.1 及更高版本中可用。
+此選項僅適用于 Azure 媒體播放機2.1.1 版和更新版本。
 
 ## <a name="next-steps"></a>後續步驟 ##
 
