@@ -1,6 +1,6 @@
 ---
 title: Azure 公用雲端中的隔離 | Microsoft Docs
-description: 瞭解 Azure 如何針對惡意和非惡意使用者提供隔離，並為架構師提供各種隔離選擇。
+description: 瞭解 Azure 如何為惡意和非惡意使用者提供隔離，並為架構設計人員提供各種隔離選項。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79280309"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公用雲端中的隔離
-Azure 允許您在共用物理基礎結構上運行應用程式和虛擬機器 （VM）。 在雲端環境中執行應用程式的主要經濟動機之一是，能夠將共用資源的成本分散到多位客戶。 這種多重租用的作法會以低成本在不同客戶間進行資源的多工處理來提升效率。 不幸的是，它也會導致下列風險：共用實體伺服器和其他基礎結構資源來執行您的機密應用程式和 VM，而它們或許隸屬於可能惡意的任意使用者。
+Azure 可讓您在共用實體基礎結構上執行應用程式和虛擬機器（Vm）。 在雲端環境中執行應用程式的主要經濟動機之一是，能夠將共用資源的成本分散到多位客戶。 這種多重租用的作法會以低成本在不同客戶間進行資源的多工處理來提升效率。 不幸的是，它也會導致下列風險：共用實體伺服器和其他基礎結構資源來執行您的機密應用程式和 VM，而它們或許隸屬於可能惡意的任意使用者。
 
-本文概述了 Azure 如何針對惡意和非惡意使用者提供隔離，並通過向架構師提供各種隔離選擇，作為構建雲解決方案的指南。
+本文概述 Azure 如何為惡意和非惡意使用者提供隔離，並藉由為架構設計人員提供各種隔離選項，做為架構雲端解決方案的指南。
 
 ## <a name="tenant-level-isolation"></a>租用戶層級隔離
 雲端運算主要優點之一是同時在許多客戶間共用之通用基礎結構的概念，從而導致規模經濟。 這個概念稱為多重租用。 Microsoft 會持續努力，以確保 Microsoft Cloud Azure 的多租用戶架構支援安全性、機密性、隱私權、完整性和可用性標準。
@@ -52,7 +52,7 @@ Azure 租用 (Azure 訂用帳戶) 是指「客戶/計費」關聯性，以及 [A
 
 - Azure AD 使用者無法存取實體資產或位置，因此，不可能略過以下所述的邏輯 RBAC 原則檢查。
 
-針對診斷與維護需求，必須使用採用 Just-In-Time 權限提高系統的作業模型。 Azure AD 特權標識管理 （PIM） 引入了符合條件的管理員的概念。[符合條件的管理員](../../active-directory/privileged-identity-management/pim-configure.md)應該是時不時地需要特權訪問的使用者，但不是每天都需要特權訪問的使用者。 在使用者需要存取權之前，角色會處於非作用中狀態，然後使用者須完成啟用程序，才能在一段預定的時間內成為作用中的系統管理員。
+針對診斷與維護需求，必須使用採用 Just-In-Time 權限提高系統的作業模型。 Azure AD Privileged Identity Management （PIM）引進了合格管理員的概念。[符合資格](../../active-directory/privileged-identity-management/pim-configure.md)的系統管理員應該是現在需要特殊許可權存取的使用者，而不是每天。 在使用者需要存取權之前，角色會處於非作用中狀態，然後使用者須完成啟用程序，才能在一段預定的時間內成為作用中的系統管理員。
 
 ![Azure AD 特殊權限身分識別管理](./media/isolation-choices/azure-isolation-fig2.png)
 
@@ -67,9 +67,9 @@ Azure Active Directory 會透過租用戶單獨擁有且管理之容器內的原
 
 Azure RBAC 有適用於所有資源類型的三個基本角色：
 
-- **擁有者**可以完全訪問所有資源，包括將存取權限委派給其他人的權利。
+- **擁有**者具有所有資源的完整存取權，包括將存取權委派給其他人的許可權。
 
-- **參與者**可以創建和管理所有類型的 Azure 資源，但不能向其他人授予存取權限。
+- **參與者**可以建立和管理所有類型的 Azure 資源，但無法將存取權授與其他人。
 
 - **讀者** 可以檢視現有的 Azure 資源。
 
@@ -80,7 +80,7 @@ Azure 中其餘的 RBAC 角色可以管理特定 Azure 資源。 例如，「虛
 [RBAC 內建角色](../../role-based-access-control/built-in-roles.md)會列出 Azure 中可用的角色。 它會指定每個內建角色授與使用者的作業和範圍。 如果您想要定義自己的角色，獲得更進一步控制，請參閱如何建立 [Azure RBAC 中的自訂角色](../../role-based-access-control/custom-roles.md)。
 
 Azure Active Directory 的一些其他功能包括：
-- Azure AD 會啟用 SaaS 應用程式的 SSO，而無論應用程式裝載於何處。 有些應用程式會與 Azure AD 同盟，有些則使用密碼 SSO。 同盟應用程式還可以支援使用者預配和[密碼保管](https://www.techopedia.com/definition/31415/password-vault)。
+- Azure AD 會啟用 SaaS 應用程式的 SSO，而無論應用程式裝載於何處。 有些應用程式會與 Azure AD 同盟，有些則使用密碼 SSO。 同盟應用程式也可以支援使用者布建和[密碼](https://www.techopedia.com/definition/31415/password-vault)保存庫。
 
 - 對 [Azure 儲存體](https://azure.microsoft.com/services/storage/)的資料存取可透過驗證來控制。 每個儲存體帳戶都有主要金鑰 ([儲存體帳戶金鑰](../../storage/common/storage-create-storage-account.md)，或稱 SAK) 和次要金鑰 (共用存取簽章，或稱 SAS)。
 
@@ -113,7 +113,7 @@ Microsoft Azure 提供各種雲端式計算服務，其中包含各式各樣的�
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
 ### <a name="dedicated-hosts"></a>專用主機
-除了上一節中描述的獨立主機外，Azure 還提供專用主機。 Azure 中的專用主機是一種服務，它提供物理伺服器，這些伺服器可以承載一個或多個虛擬機器，並且這些伺服器專用於單個 Azure 訂閱。 專用主機在物理伺服器級別提供硬體隔離。 主機上不會放置其他 VM。 專用主機部署在同一資料中心中，並與其他非隔離主機共用相同的網路和基礎存儲基礎結構。 有關詳細資訊，請參閱[Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)的詳細概述。
+除了上一節所述的隔離主機以外，Azure 也提供專用主機。 Azure 中的專用主機是一項服務，可提供實體伺服器來裝載一或多部虛擬機器，並專門用於單一 Azure 訂用帳戶。 專用主機會在實體伺服器層級提供硬體隔離。 主機上不會放置其他 Vm。 專用主機會部署在相同的資料中心，並與其他非隔離的主機共用相同的網路和基礎儲存體基礎結構。 如需詳細資訊，請參閱[Azure 專用主機](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)的詳細總覽。
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>根 VM 與客體 VM 之間的 Hyper-V 和根 OS 隔離
 Azure 的計算平台會以機器虛擬化為基礎，這表示所有客戶程式碼都會在 Hyper-V 虛擬機器中執行。 在每個 Azure 節點 (或網路端點) 上，都有一個 Hypervisor 會直接在硬體上執行，並將節點分成不同數量的客體虛擬機器 (VM)。
@@ -160,9 +160,9 @@ Hypervisor 與主機 OS 提供網路封包 - 篩選器，以協助保證不受�
 
 以下為要進行程式設計的兩種規則：
 
--   **機器配置或基礎結構規則：** 預設情況下，所有通信都被阻止。 有部分例外狀況可允許虛擬機器傳送與接收 DHCP 和 DNS 流量。 虛擬機器也可以將流量傳送至「公用」網際網路，以及將流量傳送至同一個 Azure 虛擬網路和 OS 啟用伺服器內的其他虛擬機器。 虛擬機器允許的連出目的地清單不包含 Azure 路由器子網路、Azure 管理和其他 Microsoft 屬性。
+-   **電腦設定或基礎結構規則：** 預設會封鎖所有通訊。 有部分例外狀況可允許虛擬機器傳送與接收 DHCP 和 DNS 流量。 虛擬機器也可以將流量傳送至「公用」網際網路，以及將流量傳送至同一個 Azure 虛擬網路和 OS 啟用伺服器內的其他虛擬機器。 虛擬機器允許的連出目的地清單不包含 Azure 路由器子網路、Azure 管理和其他 Microsoft 屬性。
 
--   **角色設定檔：** 這將基於租戶的服務模型定義入站存取控制清單 （ACL）。
+-   **角色設定檔案：** 這會根據租使用者的服務模型定義輸入存取控制清單（Acl）。
 
 ### <a name="vlan-isolation"></a>VLAN 隔離
 每個叢集中有三個 VLAN：
@@ -206,18 +206,18 @@ Azure 提供下列加密類型來保護資料：
 #### <a name="encryption-in-transit"></a>傳輸中加密
 傳輸中加密是透過網路傳輸資料時用來保護資料的機制。 透過 Azure 儲存體，您可以使用下列各項來保護資料：
 
--   [傳輸級加密](../../storage/blobs/security-recommendations.md)，例如將資料傳輸到 Azure 存儲或傳輸到 Azure 存儲時 HTTPS。
+-   [傳輸層級加密](../../storage/blobs/security-recommendations.md)，例如當您將資料移入或移出 Azure 儲存體時的 HTTPS。
 
--   [線加密](../../storage/blobs/security-recommendations.md)，如 Azure 檔共用的 SMB 3.0 加密。
+-   [有線加密](../../storage/blobs/security-recommendations.md)，例如 Azure 檔案共用的 SMB 3.0 加密。
 
--   [用戶端加密](../../storage/blobs/security-recommendations.md)，在將資料傳輸到存儲之前對其進行加密，並在資料從存儲中轉移出去後解密資料。
+-   [用戶端加密](../../storage/blobs/security-recommendations.md)，以在將資料傳輸至儲存體之前進行加密，並在從儲存體傳出後解密資料。
 
 #### <a name="encryption-at-rest"></a>待用加密
-對於許多組織來說，[靜態資料加密](isolation-choices.md)是實現資料隱私、合規性和資料主權的必修步驟。 有三個 Azure 功能可提供「待用」資料的加密。
+對於許多組織而言，待用[資料加密是達到](isolation-choices.md)資料隱私權、合規性和資料主權的必要步驟。 有三個 Azure 功能可提供「待用」資料的加密。
 
 -   [儲存體服務加密](../../storage/blobs/security-recommendations.md) 可讓您要求儲存體服務在將資料寫入 Azure 儲存體時自動加密資料。
 
--   [用戶端加密](../../storage/blobs/security-recommendations.md)還提供靜態加密功能。
+-   [用戶端加密](../../storage/blobs/security-recommendations.md)也會提供待用加密的功能。
 
 -   [Azure 磁碟加密](../azure-security-disk-encryption-overview.md) 允許您加密 IaaS 虛擬機器所使用的作業系統磁碟和資料磁碟。
 
@@ -310,19 +310,19 @@ SQL Azure 伺服器不是實體或 VM 執行個體，而是資料庫、共用管
 做為安全性防範措施，後端系統通常不會輸出通訊至其他系統。 這會保留給前端 (閘道) 層中的系統。 閘道層的機器在後端機器上的權限有限，可做為深度防禦機制來將攻擊面降至最低。
 
 ### <a name="isolation-by-machine-function-and-access"></a>透過機器功能與存取進行隔離
-SQL Azure 是由在不同機器功能上執行之服務組成的。 SQL Azure 分為"後端"雲資料庫和"前端"（閘道/管理）環境，流量的一般原則僅進入後端，而不是退出。前端環境可以與其他服務與外界通信，通常後端的許可權有限（足以調用需要調用的進入點）。
+SQL Azure 是由在不同機器功能上執行之服務組成的。 SQL Azure 會分成「後端」雲端資料庫和「前端」（閘道/管理）環境，其中流量的一般原則只會進入後端而不是輸出。前端環境可以與其他服務的外部通訊，而且通常在後端只有有限的許可權（足以呼叫它必須叫用的進入點）。
 
 ## <a name="networking-isolation"></a>網路隔離
 Azure 部署具有多層網路隔離。 下圖顯示 Azure 提供給客戶的各種網路隔離層級。 這些層級既是 Azure 平台本身的原生功能，也是客戶定義的功能。 從網際網路往內，Azure DDoS 會針對 Azure 進行的大規模攻擊提供隔離。 下一個隔離層級是客戶定義的公用 IP 位址 (端點)，用來判斷哪種流量可通過雲端服務進入虛擬網路。 原生 Azure 虛擬網路隔離可確保與其他所有網路完全隔離，而且流量只能流經使用者設定的路徑和方法。 這些路徑和方法就是下一層，可利用 NSG、UDR 和網路虛擬設備來建立隔離界限，以保護受保護網路中的應用程式部署。
 
 ![網路隔離](./media/isolation-choices/azure-isolation-fig13.png)
 
-**流量隔離：**[虛擬網路](../../virtual-network/virtual-networks-overview.md)是 Azure 平臺上的流量隔離邊界。 一個虛擬網路中的虛擬機器 (VM) 無法與不同虛擬網路中的 VM 直接通訊，即使兩個虛擬網路是由同一位客戶所建立也一樣。 隔離是很重要的屬性，可確保客戶 VM 和通訊仍然隱蔽於虛擬網路內。
+**流量隔離：**[虛擬網路](../../virtual-network/virtual-networks-overview.md)是 Azure 平臺上的流量隔離界限。 一個虛擬網路中的虛擬機器 (VM) 無法與不同虛擬網路中的 VM 直接通訊，即使兩個虛擬網路是由同一位客戶所建立也一樣。 隔離是很重要的屬性，可確保客戶 VM 和通訊仍然隱蔽於虛擬網路內。
 
 [子網路](../../virtual-network/virtual-networks-overview.md)使用以 IP 範圍為基礎的虛擬網路，來提供額外的隔離層級。 虛擬網路中的 IP 位址，您可以將虛擬網路分成多個子網路以便進行組織和獲得安全性。 部署至 VNet 內 (相同或不同) 子網路的 VM 和 PaaS 角色執行個體不需要進行額外設定就可以彼此通訊。 您也可以設定[網路安全性群組 (NSG)](../../virtual-network/virtual-networks-overview.md)，根據 NSG 之存取控制清單 (ACL) 中設定的規則，來允許或拒絕移至 VM 執行個體的網路流量。 NSG 可與子網路或該子網路內的個別 VM 執行個體相關聯。 當 NSG 與子網路相關聯時，ACL 規則便會套用至該子網路中的所有 VM 執行個體。
 
 ## <a name="next-steps"></a>後續步驟
 
-- 瞭解[Windows Azure 虛擬網路中電腦的網路隔離選項](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)。 這包括典型的前端和後端方案，其中特定後端網路或子網路中的電腦可能只允許某些用戶端或其他電腦基於允許的 IP 位址清單連接到特定終結點。
+- 瞭解[Windows Azure 虛擬網路中電腦的網路隔離選項](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)。 這包括傳統的前端和後端案例，其中特定後端網路或子網中的機器可能只允許特定的用戶端或其他電腦根據允許的 IP 位址清單來連線到特定端點。
 
-- 瞭解[Azure 中的虛擬機器隔離](../../virtual-machines/windows/isolation.md)。 Azure 計算提供獨立于特定硬體類型並專用於單個客戶的虛擬機器大小。
+- 瞭解[Azure 中的虛擬機器隔離](../../virtual-machines/windows/isolation.md)。 Azure 計算提供的虛擬機器大小會隔離到特定的硬體類型，並專供單一客戶使用。
