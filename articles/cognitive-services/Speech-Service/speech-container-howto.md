@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: d5283051de50b84ea87c0f02a391652854067168
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 53110875596830f63a946c1263bdbff3711366bf
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610731"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82653145"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>安裝和執行語音服務容器（預覽）
 
 容器可讓您在自己的環境中執行某些語音服務 Api。 容器非常適合用於特定的安全性和資料控管需求。 在本文中，您將瞭解如何下載、安裝及執行語音容器。
 
-語音容器可讓客戶建立已針對健全的雲端功能和邊緣位置優化的語音應用程式架構。 有四個不同的容器可供使用。 這兩個標準容器是**語音轉換文字**和**文字轉換語音**。 這兩個自訂容器是**自訂的語音轉換文字**和**自訂文字轉換語音**。
+語音容器可讓客戶建立已針對健全的雲端功能和邊緣位置優化的語音應用程式架構。 有四個不同的容器可供使用。 這兩個標準容器是**語音轉換文字**和**文字轉換語音**。 這兩個自訂容器是**自訂的語音轉換文字**和**自訂文字轉換語音**。 語音容器與雲端式 Azure 語音服務具有相同的[定價](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
 > [!IMPORTANT]
 > 所有語音容器目前都是[公開「閘道」預覽](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)的一部分。 當語音容器進行公開上市（GA）時，將會發出公告。

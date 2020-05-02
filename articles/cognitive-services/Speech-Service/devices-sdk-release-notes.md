@@ -10,16 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 29dcb3c0e74482fd6670d1a0983e751043379d6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dbbbbb18bf81d70ed7955530db7c603594c16d0
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80371608"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652729"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>版本資訊：語音裝置 SDK
 
 下列各節列出最新版本中的變更。
+
+## <a name="speech-devices-sdk-1110"></a>語音裝置 SDK 1.11.0：
+
+- 支援[URBETTER DDK](http://www.urbetter.com/products_56/278.html)。
+- [語音助理範例](https://aka.ms/sdsdk-speaker)中使用的[GGEC 說話者](https://aka.ms/sdsdk-download-speaker)已發行的二進位檔。
+- 適用于 Raspberry Pi 和類似裝置的[LINUX ARM32](https://aka.ms/sdsdk-download-linux-arm32)和[linux ARM 64](https://aka.ms/sdsdk-download-linux-arm64)已發行二進位檔。
+- 已將[語音 SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference)元件更新為版本1.11.0。 如需詳細資訊，請參閱其[版本資訊](https://aka.ms/csspeech/whatsnew)。
 
 ## <a name="speech-devices-sdk-190"></a>語音裝置 SDK 1.9.0：
 

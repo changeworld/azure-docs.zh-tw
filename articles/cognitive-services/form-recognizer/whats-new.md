@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 5f8c66db491b93278fedf1378d3df86e7ce5fdbf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2b67989cbffb03eb182b4de2bf471a02ee33e7b
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81531077"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627988"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表單辨識器的新功能
 
@@ -22,6 +22,23 @@ ms.locfileid: "81531077"
 
 > [!NOTE]
 > 表單辨識器的快速入門和指南一律會使用 API 的最新版本，除非有指定。
+
+## <a name="april-2020"></a>2020 年 4 月
+
+### <a name="new-features"></a>新功能
+* **表單辨識器 API V2.0 公開預覽的 SDK 支援**本月份我們已擴充服務支援，以包含適用于表單辨識器 v2.0 （預覽）版本的預覽 SDK。 使用下列連結以開始使用您選擇的語言： 
+   * [.NET SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer)
+   * [Java SDK](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
+   * [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer)
+   * [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer)
+
+
+  新的 SDK 支援適用于表單辨識器的 v2.0 REST API 的所有功能。 例如，您可以將具有或不含標籤的模型定型，並從表單中解壓縮文字、索引鍵值組和資料表、使用預先建立的回條服務從回條解壓縮資料，以及使用您的檔中的版面佈建服務來解壓縮文字和資料表。 您可以透過[Sdk 意見反應表單](https://aka.ms/FR_SDK_v1_feedback)，在 sdk 上分享您的意見反應。
+ 
+* **複製自訂模型**您現在可以使用新的「複製自訂模型」功能，在區域與訂用帳戶之間複製模型。 叫用複製自訂模型 API 之前，您必須先針對目標資源端點呼叫複製授權作業，以取得要複製到目標資源的授權。
+   * [產生複製授權](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModelAuthorization)REST API
+   * [複製自訂模型](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/CopyCustomFormModel)REST API 
+
 
 ## <a name="march-2020"></a>2020 年 3 月 
 
