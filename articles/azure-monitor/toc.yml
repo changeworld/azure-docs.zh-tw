@@ -214,6 +214,7 @@
             - name: 網頁
               items:
                 - name: 用戶端 JavaScript
+                  displayname: 'SPA, Single Page Applications, React, JS, Angular'
                   href: app/javascript.md
                 - name: JavaScript 的來源對應
                   href: app/source-map-support.md
@@ -243,11 +244,13 @@
             - name: 獨立 - 任何環境
               items:
                 - name: Java (預覽)
-                  href: app/java-in-process-agent.md
-                - name: Java JVM 組態
-                  href: app/java-standalone-arguments.md
-                - name: Java 組態選項
-                  href: app/java-standalone-config.md
+                  items:
+                    - name: 概觀
+                      href: app/java-in-process-agent.md
+                    - name: 設定選項
+                      href: app/java-standalone-config.md
+                    - name: JVM 引數設定
+                      href: app/java-standalone-arguments.md
             - name: 內部部署伺服器
               items:
                 - name: ASP.NET
@@ -439,6 +442,11 @@
               href: app/custom-data-correlation.md
             - name: 連接字串
               href: app/sdk-connection-string.md
+            - name: 連接字串
+              href: app/sdk-connection-string.md
+            - name: GetMetric
+              displayname: 'get metric, custom metrics, metrics, TrackMetric'
+              href: app/get-metric.md
             - name: 特殊主題
               items:
                 - name: 深入診斷 Web Apps 和服務
@@ -690,8 +698,10 @@
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: 針對混合式叢集啟用
                   href: insights/container-insights-hybrid-setup.md
-                - name: 針對 Azure Red Hat OpenShift 啟用
+                - name: 針對 Azure Red Hat OpenShift v3 啟用
                   href: insights/container-insights-azure-redhat-setup.md
+                - name: 針對 Azure Red Hat OpenShift v4 啟用
+                  href: insights/container-insights-azure-redhat4-setup.md
                 - name: 區域對應
                   href: insights/container-insights-region-mapping.md
             - name: 監視效能
@@ -724,10 +734,16 @@
               href: insights/container-insights-update-metrics.md
             - name: 健康情況監視組態
               href: insights/container-insights-health-monitors-config.md
-            - name: 停用監視 AKS
-              href: insights/container-insights-optout.md
-            - name: 停用監視 Red Hat OpenShift
-              href: insights/container-insights-optout-openshift.md
+            - name: 停用監視
+              items:
+                - name: 停用監視 AKS
+                  href: insights/container-insights-optout.md
+                - name: 停用監視 Red Hat OpenShift v3
+                  href: insights/container-insights-optout-openshift-v3.md
+                - name: 停用監視 Red Hat OpenShift v4
+                  href: insights/container-insights-optout-openshift-v4.md
+                - name: 停用監視混合式叢集
+                  href: insights/container-insights-optout-hybrid.md
             - name: 疑難排解
               href: insights/container-insights-troubleshoot.md
         - name: Docker 和 Windows 容器監視

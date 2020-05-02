@@ -109,7 +109,7 @@
           href: ../virtual-machines/windows/sizes-gpu.md
           maintainContext: true
           items:
-            - name: 設定 GPU 驅動程式
+            - name: 設定 NVIDIA GPU 驅動程式
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: 高效能計算
@@ -315,5 +315,5 @@
           href: 'https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-vm-scale-set'

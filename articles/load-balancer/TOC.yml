@@ -36,8 +36,12 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: 元件與限制
-      href: concepts-limitations.md
+    - name: 元件
+      href: components.md
+    - name: 概念
+      href: concepts.md
+    - name: 類型
+      href: types.md
     - name: 健康狀況監視
       items:
         - name: 健康狀態探查
@@ -133,6 +137,8 @@
       items:
         - name: 針對 Azure Load Balancer 進行疑難排解
           href: load-balancer-troubleshoot.md
+        - name: 針對一般部署錯誤進行疑難排解
+          href: load-balancer-common-deployment-errors.md
 - name: 參考
   items:
     - name: 程式碼範例

@@ -786,22 +786,6 @@
               href: ../data-factory/how-to-create-tumbling-window-trigger.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 建立輪轉視窗觸發程序相依性
               href: ../data-factory/tumbling-window-trigger-dependency.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: 範本
-          items:
-            - name: 範本的概觀
-              href: ../data-factory/solution-templates-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 從多個容器複製檔案
-              href: ../data-factory/solution-template-copy-files-multiple-containers.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 依 LastModifiedDate 複製新檔案
-              href: ../data-factory/solution-template-copy-new-files-lastmodifieddate.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 從資料庫進行大量複製
-              href: ../data-factory/solution-template-bulk-copy-with-control-table.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 從資料庫進行差異複製
-              href: ../data-factory/solution-template-delta-copy-with-control-table.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 移動檔案
-              href: ../data-factory/solution-template-move-files.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: 使用 Databricks 轉換資料
-              href: ../data-factory/solution-template-databricks-notebook.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 疑難排解指南
           items:
             - name: 活動疑難排解
