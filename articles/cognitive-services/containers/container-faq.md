@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876501"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690830"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure 認知服務容器的常見問題（FAQ）
 
@@ -76,7 +76,11 @@ ms.locfileid: "80876501"
 
 **問：如何在 IoT 裝置上執行認知服務容器？**
 
-您是否沒有可靠的網際網路連線，或想要節省頻寬成本。 或者，如果具有低延遲需求，或正在處理需要在網站上分析的機密資料，[使用認知服務容器 Azure IoT Edge](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/)可讓您與雲端保持一致。
+**答：** 您是否沒有可靠的網際網路連線，或想要節省頻寬成本。 或者，如果具有低延遲需求，或正在處理需要在網站上分析的機密資料，[使用認知服務容器 Azure IoT Edge](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/)可讓您與雲端保持一致。
+
+**問：這些容器是否與 OpenShift 相容？** 
+
+我們不會使用 OpenShift 來測試容器，但一般來說，認知服務容器應該在支援 Docker 映射的任何平臺上執行。 如果您使用的是 OpenShift，建議您將容器當做`root-user`來執行。
 
 **問：如何? 提供產品意見反應和功能建議嗎？**
 

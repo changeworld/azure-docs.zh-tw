@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: a4c90ed12c8023e0b9ebc509b20d8d9224b49f1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c829579f3ad9922c8c621b6dbfa966b69a2497d1
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221359"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690805"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>辨識印刷和手寫文字
 
@@ -26,10 +26,10 @@ ms.locfileid: "79221359"
 
 讀取 API 會使用我們最新的辨識模型來偵測影像中的文字內容，並將識別的文字轉換成電腦可讀取的字元資料流。 它最適合用於文字繁重的影像（例如已進行數位掃描的檔），以及適用于具有許多視覺雜訊的影像。 它會決定要針對每一行文字使用哪一個辨識模型，同時支援具有印刷和手寫文字的影像。 讀取 API 會以非同步方式執行，因為較大的檔可能需要幾分鐘的時間才會傳回結果。
 
-讀取作業會維護其輸出中已辨識單字的原始行分組。 每一行都有周框方塊座標，而且線條內的每個單字也有自己的座標。 如果已辨識出具有低信心的單字，則也會傳達該資訊。 若要深入瞭解，請參閱[讀取 api 參考](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)檔和[閱讀 api 預覽參考](https://go.microsoft.com/fwlink/?linkid=2118322)檔。
+讀取作業會維護其輸出中已辨識單字的原始行分組。 每一行都有周框方塊座標，而且線條內的每個單字也有自己的座標。 如果已辨識出具有低信心的單字，則也會傳達該資訊。 若要深入瞭解，請參閱[讀取 api v2.0 參考](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb)檔或[閱讀 api v3.0 預覽參考](https://go.microsoft.com/fwlink/?linkid=2118322)檔。
 
 > [!NOTE]
-> 這項功能僅適用于英文和西班牙文（預覽）文字。
+> 這項功能僅適用于英文和西班牙文（v3.0 預覽）文字。
 
 ### <a name="image-requirements"></a>影像需求
 
