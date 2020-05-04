@@ -40,8 +40,6 @@
       href: components.md
     - name: 概念
       href: concepts.md
-    - name: 類型
-      href: types.md
     - name: 健康狀況監視
       items:
         - name: 健康狀態探查
