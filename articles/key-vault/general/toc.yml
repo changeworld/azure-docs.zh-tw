@@ -48,6 +48,8 @@
       href: authentication-requests-and-responses.md
     - name: Azure Key Vault 節流指導方針
       href: overview-throttling.md
+    - name: Azure 金鑰保存庫的可用性與備援
+      href: disaster-recovery-guidance.md
     - name: Azure Key Vault 的虛擬網路服務端點 - Azure Key Vault
       href: overview-vnet-service-endpoints.md
 - name: 操作指南
@@ -92,6 +94,10 @@
           href: soft-delete-cli.md
         - name: 搭配 PowerShell 使用虛刪除
           href: soft-delete-powershell.md
+    - name: 移動金鑰保存庫
+      items:
+        - name: 將金鑰保存庫移至另一個區域
+          href: keyvault-moveregion.md
     - name: 疑難排解
       items:
         - name: 在訂用帳戶移動之後變更金鑰保存庫租用戶識別碼

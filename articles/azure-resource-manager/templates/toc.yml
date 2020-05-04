@@ -16,7 +16,7 @@
           href: ../../aks/kubernetes-walkthrough-rm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 應用程式閘道
           href: ../../application-gateway/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Backup
+        - name: 'Backup '
           href: ../../backup/quick-backup-vm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Cosmos DB
           href: ../../cosmos-db/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
@@ -291,7 +291,7 @@
       items:
         - name: 所有函式
           href: template-functions.md
-        - name: 陣列和物件函式
+        - name: 陣列函數
           href: template-functions-array.md
         - name: 比較函式
           href: template-functions-comparison.md
@@ -303,6 +303,8 @@
           href: template-functions-logical.md
         - name: 數值函數
           href: template-functions-numeric.md
+        - name: 物件函式
+          href: template-functions-object.md
         - name: 資源函式
           href: template-functions-resource.md
         - name: 字串函數
@@ -327,7 +329,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'

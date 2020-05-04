@@ -1,30 +1,30 @@
 ### YamlMime:Landing
-title: Azure DevOps Projects 文件
-summary: Azure DevOps Projects 提供簡化的體驗，讓您可以自備現有程式碼和 Git 存放庫，或者從其中一個範例應用程式中進行選擇，以在 Azure 中建立持續整合 (CI) 和持續傳遞 (CD) 管線。
+title: Azure DevOps 入門版文件
+summary: Azure DevOps 入門版提供簡化的體驗，讓您可以自備現有程式碼和 Git 存放庫，或者從其中一個範例應用程式中進行選擇，以在 Azure 中建立持續整合 (CI) 和持續傳遞 (CD) 管線。
 metadata:
-  title: Azure DevOps Projects 文件
+  title: Azure DevOps 入門版文件
   description: 攜帶您現有的程式碼和 Git 存放庫，或選擇應用程式範例來建立目的地為 Azure 的持續整合 (CI) 和持續傳遞 (CD) 管線。
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
-  ms.date: 03/05/2020
-  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 461d088f85f6845dfb9204381209b477b384a0be
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78942459"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82231456"
 landingContent:
-- title: 關於 Azure DevOps Projects
+- title: 關於 Azure DevOps 入門版
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure DevOps Projects 是什麼？
+    - text: 什麼是 Azure DevOps 入門版？
       url: overview.md
   - linkListType: video
     links:
-    - text: 透過 DevOps Projects 影片建立 CI/CD (8:53)
+    - text: 透過 DevOps 入門版影片建立 CI/CD (8:53)
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
 - title: 建立 CI/CD 管線
   linkLists:

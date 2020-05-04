@@ -6,57 +6,67 @@
       href: intro-openshift.md
 - name: 教學課程
   items:
-    - name: 建立和管理 Azure Red Hat OpenShift 叢集
-      items:
-        - name: 1 - 建立 Azure Red Hat OpenShift 叢集
-          href: tutorial-create-cluster.md
-        - name: 2 - 調整 Azure Red Hat OpenShift 叢集
-          href: tutorial-scale-cluster.md
-        - name: 3 - 刪除 Azure Red Hat OpenShift 叢集
-          href: tutorial-delete-cluster.md
-- name: 叢集管理
-  items:
-    - name: Azure Red Hat OpenShift 叢集管理
-      items:
-        - name: 1 - Azure Red Hat OpenShift 叢集管理員角色
-          href: cluster-administration-cluster-admin-role.md
-        - name: 2 - 管理資訊安全內容條件約束
-          href: cluster-administration-security-context-constraints.md
+    - name: 1 - 建立 Azure Red Hat OpenShift 4 叢集
+      href: tutorial-create-cluster.md
+    - name: 2 - 連線至 Azure Red Hat OpenShift 4 叢集
+      href: tutorial-connect-cluster.md
+    - name: 3 - 刪除 Azure Red Hat OpenShift 4 叢集
+      href: tutorial-delete-cluster.md
 - name: 操作指南
   expanded: true
   items:
-    - name: 設定您的 Azure Red Hat OpenShift 開發環境
-      href: howto-setup-environment.md
-      expanded: true
+    - name: 建立私人 Azure Red Hat OpenShift 4 叢集
+      href: create-private-cluster.md
+    - name: 設定 Azure Red Hat OpenShift 4 叢集的 DNS 轉送
+      href: dns-forwarding.md
+    - name: 設定 Azure Red Hat OpenShift 4 叢集的 Azure Active Directory 驗證
       items:
-        - name: 建立 Azure AD 租用戶
-          href: howto-create-tenant.md
-        - name: 建立 Azure AD 應用程式物件和使用者
-          href: howto-aad-app-configuration.md
-    - name: Azure Red Hat OpenShift 4.3 (預覽)
+        - name: 設定 Azure Active Directory 驗證 (CLI)
+          href: configure-azure-ad-cli.md
+        - name: 設定 Azure Active Directory 驗證 (入口網站)
+          href: configure-azure-ad-ui.md
+    - name: Azure Red Hat OpenShift 4 的監視和記錄
       items:
-        - name: 建立 Azure Red Hat OpenShift 4.3 叢集
-          href: howto-using-azure-redhat-openshift.md
-        - name: 設定適用於 Azure Red Hat OpenShift 4.3 的 Azure 監視器
-          href: howto-azure-monitor-v4.md
-    - name: 在 Azure Red Hat OpenShift 叢集中部署獨立 Prometheus
-      href: howto-deploy-prometheus.md
-    - name: 管理 Azure Red Hat OpenShift 叢集中的專案
-      href: howto-manage-projects.md
-    - name: 建立私人 Azure Red Hat OpenShift 叢集
-      href: howto-create-private-cluster.md
-    - name: 監視和記錄
-      items:
-        - name: 適用於容器的 Azure 監視器 (預覽)
+        - name: 適用於 Azure Red Hat OpenShift 4 (預覽) 中容器的 Azure 監視器
           items:
-            - name: 設定適用於容器的 Azure 監視器
-              href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
-              maintainContext: true
-            - name: 停用適用於容器的 Azure 監視器
-              href: ../azure-monitor/insights/container-insights-optout-openshift.md
-              maintainContext: true
-    - name: 在 Azure Red Hat OpenShift 叢集中執行具特殊權限的容器
-      href: howto-run-privileged-containers.md
+            - name: 針對適 Azure Red Hat OpenShift 4 (預覽) 中的容器設定 Azure 監視器
+              href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
+            - name: 針對 Azure Red Hat OpenShift 3.11 (預覽) 中的容器停用 Azure 監視器
+              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Azure Red Hat OpenShift 3.11
+      items:
+        - name: 針對 Azure Red Hat OpenShift 3.11 設定您的 Azure Red Hat OpenShift 開發環境
+          href: howto-setup-environment.md
+          expanded: true
+          items:
+            - name: 建立 Azure AD 租用戶
+              href: howto-create-tenant.md
+            - name: 建立 Azure AD 應用程式物件和使用者
+              href: howto-aad-app-configuration.md
+        - name: 在 Azure Red Hat OpenShift 3.11 叢集中部署獨立 Prometheus
+          href: howto-deploy-prometheus.md
+        - name: 管理 Azure Red Hat OpenShift 3.11 叢集中的專案
+          href: howto-manage-projects.md
+        - name: 建立私人 Azure Red Hat OpenShift 3.11 叢集
+          href: howto-create-private-cluster.md
+        - name: Azure Red Hat OpenShift 3.11 的監視和記錄
+          items:
+            - name: 適用於 Azure Red Hat OpenShift 3.11 (預覽) 中容器的 Azure 監視器
+              items:
+                - name: 針對 Azure Red Hat OpenShift 3.11 中的容器設定 Azure 監視器
+                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  maintainContext: true
+                - name: 針對 Azure Red Hat OpenShift 3.11 中的容器停用 Azure 監視器
+                  href: ../azure-monitor/insights/container-insights-optout-openshift.md
+                  maintainContext: true
+        - name: 在 Azure Red Hat OpenShift 3.11 中執行具特殊權限的容器
+          href: howto-run-privileged-containers.md
+        - name: Azure Red Hat OpenShift 3.11 中的叢集管理
+          items:
+            - name: 1 - Azure Red Hat OpenShift 3.11 叢集管理員角色
+              href: cluster-administration-cluster-admin-role.md
+            - name: 2 - 管理 Azure Red Hat OpenShift 3.11 中的安全性內容條件約束
+              href: cluster-administration-security-context-constraints.md
 - name: 參考
   items:
     - name: Azure Red Hat OpenShift CLI
@@ -69,8 +79,10 @@
       href: openshift-faq.md
     - name: 疑難排解
       href: troubleshoot.md
-    - name: 支援的資源
+    - name: Azure Red Hat OpenShift 3.11 支援的資源
       href: supported-resources.md
+    - name: Azure Red Hat OpenShift 4.3 支援的資源
+      href: support-policies-v4.md
     - name: 區域可用性
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Red Hat OpenShift 文件

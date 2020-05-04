@@ -8,10 +8,12 @@
   items:
     - name: Azure 應用程式的高可用性
       href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: 區域和可用性區域
+      href: az-overview.md
     - name: 可用性區域文件
       items:
-        - name: 什麼是可用性區域？
-          href: az-overview.md
+        - name: 支援可用性區域的地區
+          href: az-region.md
         - name: 虛擬機器
           items:
             - name: 使用 CLI 在可用性區域中建立 Linux VM

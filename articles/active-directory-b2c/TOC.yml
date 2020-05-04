@@ -76,6 +76,8 @@
       href: user-overview.md
     - name: 使用者設定檔屬性
       href: user-profile-attributes.md
+    - name: SSO 工作階段
+      href: session-overview.md
 - name: 操作指南
   items:
     - name: 應用程式整合
@@ -275,7 +277,7 @@
                       href: date-transformations.md
                     - name: 一般
                       href: general-transformations.md
-                    - name: 整數
+                    - name: '整數 '
                       href: integer-transformations.md
                     - name: JSON
                       href: json-transformations.md
@@ -335,8 +337,8 @@
                       href: phone-factor-technical-profile.md
                     - name: REST
                       href: restful-technical-profile.md
-                    - name: SAML
-                      href: saml-technical-profile.md
+                    - name: SAML 識別提供者
+                      href: saml-identity-provider-technical-profile.md
                     - name: SAML 權杖簽發者
                       href: saml-issuer-technical-profile.md
                     - name: 自我判斷
@@ -433,7 +435,7 @@
       href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
     - name: 解決方案與訓練
       href: solution-articles.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
     - name: 支援
       href: support-options.md

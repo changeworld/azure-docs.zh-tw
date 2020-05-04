@@ -17,6 +17,9 @@
     - name: 執行您的第一個查詢 - PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
+    - name: 部署共用查詢 - ARM 範本
+      displayName: 'resource manager, queries'
+      href: shared-query-template.md
 - name: 教學課程
   items:
     - name: 在 Azure 入口網站中建立和共用查詢
@@ -78,6 +81,8 @@
       href: /rest/api/azure-resourcegraph/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01'
+    - name: Resource Manager 範本
+      href: /azure/templates/microsoft.resourcegraph/allversions
     - name: Resource Graph 資料表和資源類型
       href: ./reference/supported-tables-resources.md
 - name: 資源

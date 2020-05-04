@@ -167,6 +167,10 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: 設定 SSL
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: 業務持續性
+          items:
+            - name: 備份與還原
+              href: concepts-hyperscale-backup.md
         - name: 監視與微調
           items:
             - name: 監視與微調
@@ -273,6 +277,8 @@
               href: howto-data-encryption-portal.md
             - name: Azure CLI
               href: howto-data-encryption-cli.md
+            - name: 資料加密驗證
+              href: howto-data-encryption-validation.md
         - name: 重新啟動伺服器
           items:
             - name: Azure 入口網站
@@ -329,7 +335,7 @@
       href: 'https://azure.microsoft.com/pricing/details/postgresql/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: 影片
       items:

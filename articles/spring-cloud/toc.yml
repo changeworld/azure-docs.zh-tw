@@ -8,36 +8,44 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 使用入口網站啟動您的 Spring Cloud 應用程式
+    - name: 使用入口網站啟動 Spring Cloud 應用程式
       href: spring-cloud-quickstart-launch-app-portal.md
-    - name: 使用 Azure CLI 啟動您的 Spring Cloud 應用程式
+    - name: 使用 Azure CLI 啟動 Spring Cloud 應用程式
       href: spring-cloud-quickstart-launch-app-cli.md
-    - name: 從來源啟動您的 Spring Cloud 應用程式
+    - name: 從來源啟動 Spring Cloud 應用程式
       href: spring-cloud-launch-from-source.md
-    - name: 使用 Maven 啟動您的 Spring Cloud 應用程式
+    - name: 使用 Maven 啟動 Spring Cloud 應用程式
       href: spring-cloud-quickstart-launch-app-maven.md
 - name: 教學課程
   items:
-    - name: 設定您的組態伺服器
+    - name: 設定 Config Server
       href: spring-cloud-tutorial-config-server.md
-    - name: 手動調整您的應用程式
+    - name: 手動調整應用程式
       href: spring-cloud-tutorial-scale-manual.md
-    - name: 使用分散式追蹤和 App Insights 監視您的應用程式
+    - name: 使用分散式追蹤和 App Insights 監視應用程式
       href: spring-cloud-tutorial-distributed-tracing.md
     - name: 使用警示和動作群組監視 Spring 雲端資源
       href: spring-cloud-tutorial-alerts-action-groups.md
-    - name: 將您的應用程式繫結至 Azure CosmosDB
+    - name: 將應用程式繫結至 Azure CosmosDB
       href: spring-cloud-tutorial-bind-cosmos.md
-    - name: 使用 Azure Cache for Redis 繫結您的應用程式
+    - name: 使用 Azure Cache for Redis 繫結應用程式
       href: spring-cloud-tutorial-bind-redis.md
-    - name: 將您的應用程式繫結至 Azure MySQL
+    - name: 將應用程式繫結至 Azure MySQL
       href: spring-cloud-tutorial-bind-mysql.md
+    - name: 將自訂 DNS 名稱對應至 Azure Spring Cloud
+      href: spring-cloud-tutorial-custom-domain.md
+    - name: 使用 IntelliJ 部署 Azure Spring Cloud 應用程式
+      href: spring-cloud-tutorial-intellij-deploy-apps.md
 - name: 概念
   items:
     - name: 了解 Azure Spring Cloud 的配額和限制
       href: spring-cloud-quotas.md
     - name: 了解 Azure Spring Cloud 中的計量
       href: spring-cloud-concept-metrics.md
+    - name: Azure Spring Cloud 服務的安全性控制
+      href: spring-cloud-concept-security-controls.md
+    - name: 了解 Azure Spring Cloud 中的應用程式狀態
+      href: spring-cloud-concept-app-status.md
     - name: 規劃災害復原
       href: disaster-recovery.md
 - name: 操作指南
@@ -56,6 +64,9 @@
       href: spring-cloud-howto-log-streaming.md
     - name: 在 Azure Spring Cloud 中使用持續性儲存體
       href: spring-cloud-howto-persistent-storage.md
+    - name: 對 Azure Spring Cloud 進行 DevOps 部署
+    - name: 整合 Azure Spring Cloud 與 Azure 負載平衡解決方案
+      href: spring-cloud-howto-integrate-azure-load-balancers.md
 - name: 對 Azure Spring Cloud 進行 DevOps 部署
   items:
     - name: 使用 Azure DevOps 的 CI/CD
