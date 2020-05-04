@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: b2c119f6552773bce7bb93a503c22324278ac0bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb016ec490dc14cbde1a1cb3f34caf39e4740961
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399466"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732366"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教學課程：使用語音 SDK 為您的 bot 啟用語音
 
@@ -50,7 +50,7 @@ ms.locfileid: "81399466"
 > * 新增自訂關鍵字啟用
 > * 瞭解如何變更可辨識和說話語音的語言
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 以下是完成本教學課程所需的事項：
 
@@ -71,7 +71,7 @@ ms.locfileid: "81399466"
    * 輸入**資源群組**的名稱。 我們建議**SpeechEchoBotTutorial-ResourceGroup**。
    * 從 [**區域**] 下拉式選單中，選取 [**美國西部**]。
 1. 按一下 [檢閱及建立]****。 您應該會看到已通過讀取**驗證**的橫幅。
-1. 按一下 [建立]  。 可能需要幾分鐘的時間來建立資源群組。
+1. 按一下頁面底部的 [新增]  。 可能需要幾分鐘的時間來建立資源群組。
 1. 就像您稍後在本教學課程中所建立的資源一樣，將此資源群組釘選到儀表板以方便存取，是個不錯的主意。 如果您想要釘選此資源群組，請按一下儀表板右上方的釘選圖示。
 
 ### <a name="choosing-an-azure-region"></a>選擇 Azure 區域
@@ -121,7 +121,7 @@ ms.locfileid: "81399466"
    * 針對 [**地區**]，選取 [**美國西部**]。
    * 針對 [**定價層**]，請確定已選取 [**標準 S1** ]。 這應該是預設值。 如果不是，請確定您已將**作業系統**設定為**Windows** ，如上所述。
 5. 按一下 [檢閱及建立]****。 您應該會看到已通過讀取**驗證**的橫幅。
-6. 按一下 [建立]  。 可能需要幾分鐘的時間來建立資源群組。
+6. 按一下頁面底部的 [新增]  。 可能需要幾分鐘的時間來建立資源群組。
 
 此時，請檢查您的資源群組（**SpeechEchoBotTutorial-ResourceGroup**）有兩個資源：
 
@@ -178,7 +178,7 @@ ms.locfileid: "81399466"
 下一個步驟是將 Echo Bot 部署至 Azure。 有幾種方式可以部署 bot，但在本教學課程中，我們將著重于直接從 Visual Studio 發佈。
 
 > [!NOTE]
-> 或者，您可以使用[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli)和[部署範本](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/directline-speech/csharp_dotnetcore/02.echo-bot/DeploymentTemplates)來部署 bot。
+> 或者，您可以使用[Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli)和[部署範本](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore/04.core-bot/deploymentTemplates)來部署 bot。
 
 1. 從 Visual Studio，開啟已設定為與 Direct Line 語音通道搭配使用的 Echo Bot：
 
@@ -221,7 +221,7 @@ ms.locfileid: "81399466"
 2. 在**Azure 服務**流覽的 [設定] 底下，**按一下 [****設定**]。
 3. 選取 [**一般設定**] 索引標籤。
 4. 找出**Web 通訊端**的切換，並將其設定為 [**開啟**]。
-5. 按一下 **[儲存]** 。
+5. 按一下 [檔案]  。
 
 > [!TIP]
 > 您可以使用 Azure App Service 頁面頂端的控制項來停止或重新開機服務。 進行疑難排解時，這可能會很有用。
@@ -267,11 +267,11 @@ ms.locfileid: "81399466"
    * 尋找**更多頻道**，找出並按一下 [ **Direct Line 語音**]。
    * 檢查標題為 [**設定 Direct Line Speech**] 頁面上的文字，然後展開標示為 [認知服務帳戶] 的下拉式功能表。
    * 從功能表中選取您稍早建立的語音資源（例如， **SpeechEchoBotTutorial-speech**），以將您的 bot 與您的語音訂用帳戶金鑰建立關聯。
-   * 按一下 **[儲存]** 。
+   * 按一下 [檔案]  。
 
 1. 從**Bot 管理**導覽中，按一下 [**設定**]。
    * 選取標示為 [**啟用串流端點**] 的方塊。 這是為了讓您的 bot 與 Direct Line Speech 通道之間的 web 通訊端建立通訊協定所需。
-   * 按一下 **[儲存]** 。
+   * 按一下 [檔案]  。
 
 > [!TIP]
 > 如果您想要深入瞭解，請參閱[將 bot 連線至 Direct Line 語音](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech?view=azure-bot-service-4.0)。 此頁面包含其他資訊和已知問題。
@@ -444,7 +444,7 @@ Windows 語音助理用戶端會使用[CognitiveServices](https://www.nuget.org/
 > [!div class="nextstepaction"]
 > [使用語音 SDK 建立您自己的用戶端應用程式](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * 部署到[您附近的 Azure 區域](https://azure.microsoft.com/global-infrastructure/locations/)，以查看 bot 回應時間改進
 * 部署至[支援高品質神經 TTS 語音的 Azure 區域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)
