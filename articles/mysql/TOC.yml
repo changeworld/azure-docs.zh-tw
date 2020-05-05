@@ -9,12 +9,19 @@
 - name: 快速入門
   expanded: true
   items:
-    - name: 建立 DB - 入口網站
-      href: quickstart-create-mysql-server-database-using-azure-portal.md
-    - name: 建立 DB - Azure CLI
-      href: quickstart-create-mysql-server-database-using-azure-cli.md
-    - name: 建立 DB - Azure CLI up 命令
-      href: quickstart-create-server-up-azure-cli.md
+    - name: 建立 DB
+      items:
+        - name: 建立 DB - 入口網站
+          href: quickstart-create-mysql-server-database-using-azure-portal.md
+        - name: 建立 DB - Azure CLI
+          href: quickstart-create-mysql-server-database-using-azure-cli.md
+        - name: 建立 DB - Azure CLI up 命令
+          href: quickstart-create-server-up-azure-cli.md
+        - name: 建立 DB - Azure PowerShell
+          href: quickstart-create-mysql-server-database-using-azure-powershell.md
+        - name: 建立 DB - ARM 範本
+          href: quickstart-create-mysql-server-database-using-arm-template.md
+          displayName: deploy azure resource manager template
     - name: 連線和查詢
       items:
         - name: PHP
@@ -43,6 +50,8 @@
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-using-cli.md
+        - name: Azure PowerShell
+          href: tutorial-design-database-using-powershell.md
         - name: Azure Resource Manager 範本
           href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
     - name: 2 - 建立 Web 應用程式
@@ -160,6 +169,8 @@
           href: howto-restore-server-portal.md
         - name: Azure CLI
           href: howto-restore-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restore-server-powershell.md
     - name: 移轉資料庫
       items:
         - name: 傾印和還原
@@ -186,12 +197,16 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
+        - name: Azure PowerShell
+          href: howto-configure-server-parameters-using-powershell.md
     - name: 自動成長的儲存體
       items:
         - name: Azure 入口網站
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+        - name: Azure PowerShell
+          href: howto-auto-grow-storage-powershell.md
     - name: 存取伺服器記錄
       items:
         - name: 慢速查詢記錄
@@ -218,6 +233,8 @@
           href: howto-read-replicas-portal.md
         - name: 建立讀取複本 Azure CLI，REST API
           href: howto-read-replicas-cli.md
+        - name: 在 Azure PowerShell 中建立讀取複本
+          href: howto-read-replicas-powershell.md
     - name: 疑難排解
       items:
         - name: 針對連線問題進行疑難排解
@@ -250,6 +267,8 @@
           href: howto-data-encryption-portal.md
         - name: Azure CLI
           href: howto-data-encryption-cli.md
+        - name: 資料加密驗證
+          href: howto-data-encryption-validation.md
     - name: Azure AD 整合
       items:
         - name: 設定 Azure AD 整合
@@ -264,6 +283,8 @@
           href: howto-restart-server-portal.md
         - name: Azure CLI
           href: howto-restart-server-cli.md
+        - name: Azure PowerShell
+          href: howto-restart-server-powershell.md
 - name: 參考
   items:
     - name: Azure CLI
@@ -284,7 +305,7 @@
       href: 'https://azure.microsoft.com/pricing/details/mysql/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDatabaseforMySQL'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
     - name: 影片
       items:

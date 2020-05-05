@@ -162,7 +162,7 @@
               href: troubleshoot/desired-state-configuration.md
             - name: Azure DSC 延伸模組版本歷程記錄
               href: automation-dsc-extension-history.md
-        - name: 變更追蹤與詳細目錄
+        - name: 變更追蹤和清查
           items:
             - name: 概觀
               href: change-tracking.md
@@ -178,7 +178,7 @@
                   href: automation-onboard-solutions-from-automation-account.md
                 - name: 從自動化 Runbook
                   href: automation-onboard-solutions.md
-            - name: 檢視追蹤檔案的內容
+            - name: 管理變更追蹤和清查
               href: change-tracking-file-contents.md
             - name: 從虛擬機器管理清查集合
               href: automation-vm-inventory.md

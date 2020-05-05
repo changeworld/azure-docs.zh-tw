@@ -87,6 +87,9 @@
       href: cli-samples.md
     - name: Azure Resource Manager
       href: resource-manager-samples.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: NoSQL 與關聯式資料庫
@@ -1051,22 +1054,26 @@
       items:
         - name: 監視 Cosmos DB
           href: monitor-cosmos-db.md
-        - name: 監視伺服器端延遲
-          href: monitor-server-side-latency.md
-        - name: 監視要求單位使用量
-          href: monitor-request-unit-usage.md
-        - name: 使用診斷記錄進行監視
-          href: cosmosdb-monitor-resource-logs.md
-        - name: 稽核控制平面記錄
-          href: audit-control-plane-logs.md
-        - name: 適用於 Cosmos 的 Azure 監視器 (預覽)
-          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: 使用 Azure 監視器計量
+          items:
+            - name: 適用於 Cosmos 的 Azure 監視器 (預覽)
+              href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: 監視伺服器端延遲
+              href: monitor-server-side-latency.md
+            - name: 監視要求單位使用量
+              href: monitor-request-unit-usage.md
+        - name: 使用診斷記錄
+          items:
+            - name: 使用診斷記錄進行監視
+              href: cosmosdb-monitor-resource-logs.md
+            - name: 稽核控制平面記錄
+              href: audit-control-plane-logs.md
         - name: 從 Cosmos DB 帳戶檢視計量
           href: use-metrics.md
-        - name: 使用 Logic Apps 進行應用程式記錄
-          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: 監視資料參考
           href: monitor-cosmos-db-reference.md
+        - name: 使用 Logic Apps 進行應用程式記錄
+          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: 本機開發
       items:
         - name: 使用模擬器

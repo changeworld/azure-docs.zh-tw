@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: RBAC for Azure 資源文件
-summary: 角色型存取控制 (RBAC) 是提供 Azure 資源更細緻存取權管理的系統。 RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。
+title: Azure RBAC 文件
+summary: Azure 角色型存取控制 (Azure RBAC) 是提供 Azure 資源更細緻存取權管理的系統。 Azure RBAC 可讓您區隔小組內的職責，而僅授與使用者執行作業所需的存取權。
 metadata:
-  title: Azure 資源中的角色型存取控制 (RBAC) 文件
-  description: 了解角色型存取控制 (RBAC) 以管理可存取 Azure 資源的人員、這些人員如何使用資源，以及他們存取的區域。
+  title: Azure RBAC 文件
+  description: 了解 Azure 角色型存取控制 (Azure RBAC) 以管理可存取 Azure 資源的人員、這些人員如何使用資源，以及他們存取的區域。
   services: role-based-access-control
   ms.service: role-based-access-control
   ms.subservice: na
@@ -11,19 +11,19 @@ metadata:
   ms.collection: na
   author: rolyon
   ms.author: rolyon
-  ms.date: 08/26/2019
-  ms.openlocfilehash: e947b1ab685bcc1da5d3895e49c07d1ff56c0937
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/30/2020
+  ms.openlocfilehash: b2661936d82f8d167ec2ef466effcd84d0a972dd
+  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70968320"
+  ms.lasthandoff: 05/03/2020
+  ms.locfileid: "82733476"
 landingContent:
-- title: 關於適用於 Azure 資源的 RBAC
+- title: 關於 Azure RBAC
   linkLists:
   - linkListType: overview
     links:
-    - text: 什麼是 RBAC？
+    - text: 什麼是 Azure RBAC？
       url: overview.md
     - text: 了解不同的角色
       url: rbac-and-directory-admin-roles.md
@@ -45,7 +45,7 @@ landingContent:
       url: tutorial-role-assignments-group-powershell.md
   - linkListType: learn
     links:
-    - text: 透過 RBAC 保護 Azure 資源
+    - text: 透過 Azure RBAC 保護 Azure 資源
       url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
 - title: 管理存取權
   linkLists:
@@ -63,12 +63,16 @@ landingContent:
       url: role-assignments-rest.md
     - text: '[範本]'
       url: role-assignments-template.md
-- title: 建立自訂角色
+- title: 建立或更新自訂角色
   linkLists:
   - linkListType: overview
     links:
     - text: 自訂角色
       url: custom-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: 建立自訂角色 - 入口網站
+      url: custom-roles-portal.md
   - linkListType: tutorial
     links:
     - text: 建立自訂角色 - PowerShell

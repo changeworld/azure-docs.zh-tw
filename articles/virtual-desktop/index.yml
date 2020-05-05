@@ -11,12 +11,12 @@ metadata:
   author: Heidilohr
   ms.author: helohr
   ms.date: 03/06/2020
-  ms.openlocfilehash: f37b0cd68c62813dd4c642d9e45a20a91d08c31c
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 2f00d7b0b1c0bdf78a4908e945dd0f8a890ded1b
+  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78898661"
+  ms.lasthandoff: 04/30/2020
+  ms.locfileid: "82611512"
 landingContent:
 - title: 關於 Windows 虛擬桌面
   linkLists:
@@ -24,18 +24,30 @@ landingContent:
     links:
     - text: 什麼是 Windows 虛擬桌面？
       url: overview.md
-- title: 開始使用
+- title: 開始使用 Windows 虛擬桌面 2020 年春季版本
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 透過 Azure Marketplace 建立主機集區
+      url: create-host-pools-azure-marketplace.md
+    - text: 管理 Windows 虛擬桌面的應用程式群組
+      url: manage-app-groups.md
+    - text: 建立主機集區以驗證服務更新
+      url: create-validation-host-pool.md
+    - text: 設定服務警示
+      url: set-up-service-alerts.md
+- title: 開始使用 Windows 虛擬桌面 2019 年秋季版本
   linkLists:
   - linkListType: tutorial
     links:
     - text: 在 Windows 虛擬桌面中建立租用戶
-      url: tenant-setup-azure-active-directory.md
+      url: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
     - text: 透過 Azure Marketplace 建立主機集區
       url: create-host-pools-azure-marketplace.md
     - text: 管理 Windows 虛擬桌面的應用程式群組
       url: manage-app-groups.md
     - text: 使用 PowerShell 建立服務主體和角色指派
-      url: create-service-principal-role-powershell.md
+      url: ./virtual-desktop-fall-2019/create-service-principal-role-powershell.md
 - title: 連線至 Windows 虛擬桌面
   linkLists:
   - linkListType: how-to-guide

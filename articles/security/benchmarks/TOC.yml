@@ -3,8 +3,9 @@
 - name: 簡介
   href: introduction.md
 - name: 安全性控制
+  expanded: true
   items:
-    - name: Azure 資訊安全中心控管概觀
+    - name: Azure 資訊安全性控制概觀
       href: overview.md
     - name: 網路安全性
       href: security-control-network-security.md
@@ -28,7 +29,7 @@
       href: security-control-incident-response.md
     - name: 滲透測試和 Red Team 練習
       href: security-control-penetration-tests-red-team-exercises.md
-- name: 安全性基準
+- name: Azure 的安全性基準
   items:
     - name: Azure 安全性基準概觀
       href: security-baselines-overview.md

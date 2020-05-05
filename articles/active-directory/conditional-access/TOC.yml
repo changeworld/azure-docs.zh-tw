@@ -35,6 +35,8 @@
           href: concept-conditional-access-grant.md
         - name: 工作階段
           href: concept-conditional-access-session.md
+    - name: 深入解析和報告
+      href: howto-conditional-access-insights-reporting.md
     - name: 僅限報告模式
       href: concept-conditional-access-report-only.md
     - name: 服務相依性
@@ -110,7 +112,7 @@
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服務更新
       href: ../fundamentals/whats-new.md
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

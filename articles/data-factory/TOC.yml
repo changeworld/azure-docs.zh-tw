@@ -675,6 +675,8 @@
           href: how-to-fixed-width.md
         - name: 處理資料列時發生錯誤
           href: how-to-data-flow-error-rows.md
+        - name: Azure SQL DB 至 CosmosDB
+          href: how-to-sqldb-to-cosmosdb.md
     - name: 從內部部署進行 SSIS 移轉
       items:
         - name: SSIS 移轉概觀

@@ -221,14 +221,18 @@
               href: ./hdinsight-hadoop-oms-log-analytics-use-queries.md
             - name: 監視叢集效能
               href: ./hdinsight-key-scenarios-to-monitor.md
-            - name: 使用 Ambari 和 Azure 監視器記錄監視叢集可用性
+            - name: 叢集可用性 - Apache Ambari
               href: ./hdinsight-cluster-availability.md
+            - name: 叢集可用性 - Azure 監視器記錄
+              href: ./cluster-availability-monitor-logs.md
         - name: 疑難排解
           items:
             - name: 針對指令碼動作進行疑難排解
               href: ./troubleshoot-script-action.md
             - name: 資源建立失敗
               href: ./troubleshoot-resource-creation-fails.md
+            - name: Apache Oozie 疑難排解
+              href: ./troubleshoot-oozie.md
     - name: 參考
       items:
         - name: Azure PowerShell
@@ -699,6 +703,8 @@
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
             - name: Apache HBase 疑難排解
               href: ./hbase/apache-troubleshoot-hbase.md
+            - name: 用於查詢 Apache HBase 的 REST API
+              href: ./hbase/troubleshoot-rest-api.md
 - name: 互動式查詢
   items:
     - name: 概觀
@@ -901,6 +907,8 @@
           href: ./transport-layer-security.md
         - name: 規劃適用於 HDInsight 的 VNET
           href: ./hdinsight-plan-virtual-network-deployment.md
+        - name: 控制網路流量
+          href: ./control-network-traffic.md
         - name: NSG 和 UDR 必要的 IP 位址
           href: ./hdinsight-management-ip-addresses.md
         - name: Azure 防火牆服務標籤

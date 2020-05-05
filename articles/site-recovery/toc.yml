@@ -165,8 +165,6 @@
               href: azure-to-azure-about-networking.md
             - name: 自訂目標 Azure 虛擬機器的網路設定
               href: azure-to-azure-customize-networking.md
-            - name: 設定行動服務 Proxy 設定
-              href: configure-mobility-service-proxy-settings.md
             - name: 設定網路對應，並在容錯移轉之後保留 IP 位址
               href: azure-to-azure-network-mapping.md
             - name: 在容錯移轉之後保留 IP 位址的範例
@@ -191,6 +189,8 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: 移轉至 Azure 之後，設定 Azure VM 的災害復原
               href: azure-to-azure-replicate-after-migration.md
+            - name: 啟用區域對區域災害復原
+              href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: 管理
           items:
             - name: 更新 Azure VM 行動服務
@@ -241,7 +241,7 @@
               href: vmware-azure-set-up-replication.md
             - name: 部署行動服務
               items:
-                - name: 關於行動服務安裝
+                - name: 行動服務概觀和安裝
                   href: vmware-physical-mobility-service-overview.md
                 - name: 準備推入安裝
                   href: vmware-azure-install-mobility-service.md

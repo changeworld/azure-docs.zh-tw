@@ -1,22 +1,20 @@
-- name: Windows 虛擬桌面
+- name: Windows 虛擬桌面 2020 年春季版本
   href: index.yml
 - name: 概觀
   items:
     - name: 什麼是 Windows 虛擬桌面？
       href: overview.md
+    - name: 2019 年秋季版本文件
+      href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: 教學課程
   items:
-    - name: 1. 在 Windows 虛擬桌面中建立租用戶
-      href: tenant-setup-azure-active-directory.md
-    - name: 2. 使用 PowerShell 建立服務主體和角色指派
-      href: create-service-principal-role-powershell.md
-    - name: 3. 使用 Azure Marketplace 建立主機集區
+    - name: 1. 透過 Azure 入口網站建立主機集區
       href: create-host-pools-azure-marketplace.md
-    - name: 4. 管理應用程式群組
+    - name: 2. 管理應用程式群組
       href: manage-app-groups.md
-    - name: 5. 建立主機集區以驗證服務更新
+    - name: 3. 建立主機集區以驗證服務更新
       href: create-validation-host-pool.md
-    - name: 6. 設定服務警示
+    - name: 4. 設定服務警示
       href: set-up-service-alerts.md
 - name: 操作方式
   items:
@@ -32,18 +30,18 @@
           href: connect-macos.md
         - name: 與 iOS 用戶端連線
           href: connect-ios.md
+    - name: 設定 PowerShell 模組
+      href: powershell-module.md
     - name: 建立主機集區和工作階段主機
       items:
-        - name: Azure Resource Manager 範本
-          href: create-host-pools-arm-template.md
         - name: PowerShell
           href: create-host-pools-powershell.md
-        - name: 部署 Windows 7 虛擬機器
-          href: deploy-windows-7-virtual-machine.md
         - name: 部署 GPU 型工作階段主機
           href: configure-vm-gpu.md
         - name: 擴充現有的主機集區
           href: expand-existing-host-pool.md
+        - name: 使用 PowerShell 管理應用程式群組
+          href: manage-app-groups-powershell.md
     - name: 建立設定檔容器
       items:
         - name: 使用 VM 型檔案共用
@@ -68,20 +66,10 @@
           href: set-up-customize-master-image.md
         - name: 在主要 VHD 映像上安裝 Office
           href: install-office-on-wvd-master-image.md
-    - name: 自動調整工作階段主機
-      href: set-up-scaling-script.md
     - name: 自訂摘要
       href: customize-feed-for-virtual-desktop-users.md
-    - name: 部署管理工具
-      items:
-        - name: Azure Resource Manager 範本
-          href: manage-resources-using-ui.md
-        - name: PowerShell
-          href: manage-resources-using-ui-powershell.md
     - name: 使用服務診斷
       items:
-        - name: 部署診斷工具
-          href: deploy-diagnostics.md
         - name: 使用診斷搭配 Log Analytics
           href: diagnostics-log-analytics.md
     - name: 發佈內建應用程式
@@ -124,10 +112,6 @@
       href: troubleshoot-set-up-issues.md
     - name: 設定工作階段主機虛擬機器
       href: troubleshoot-vm-configuration.md
-    - name: Windows 虛擬桌面的 Windows 7 虛擬機器問題疑難排解
-      href: troubleshoot-windows-7-vm.md
-    - name: Windows 虛擬桌面管理工具疑難排解
-      href: troubleshoot-management-tool.md
     - name: 遠端桌面服務連線
       href: troubleshoot-service-connection.md
     - name: 遠端桌面用戶端問題
@@ -140,10 +124,6 @@
   items:
     - name: Linux 支援
       href: linux-overview.md
-    - name: PowerShell
-      href: /powershell/windows-virtual-desktop/overview
-    - name: REST API
-      href: /rest/api/virtual-desktop/
     - name: 支援的 RDP 檔案設定
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
     - name: 網路指導方針

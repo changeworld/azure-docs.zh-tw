@@ -4,6 +4,11 @@
   items:
     - name: 什麼是適用於伺服器的 Azure Arc？
       href: ./servers/overview.md
+- name: 範例
+  items:
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./servers/policy-samples.md
 - name: 操作指南
   items:
     - name: 連線至 Azure Arc

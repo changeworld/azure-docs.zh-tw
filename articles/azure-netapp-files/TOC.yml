@@ -23,10 +23,10 @@
       items:
         - name: 適用於 Azure NetApp Files 的效能考量
           href: azure-netapp-files-performance-considerations.md
-        - name: 適用於Azure NetApp Files 的效能基準測試結果
-          href: azure-netapp-files-performance-benchmarks.md
         - name: 適用於Azure NetApp Files 的效能基準測試建議
           href: azure-netapp-files-performance-metrics-volumes.md
+        - name: Linux 的效能評定
+          href: performance-benchmarks-linux.md
         - name: 與 SMB 效能相關的常見問題集
           href: azure-netapp-files-smb-performance.md
     - name: 適用於Azure NetApp Files 的成本模型
@@ -37,10 +37,12 @@
       items:
         - name: 使用 Azure NetApp Files 的方案架構
           href: azure-netapp-files-solution-architectures.md
-        - name: 使用 Azure NetApp Files 搭配 Oracle Database 的優點
-          href: solutions-benefits-azure-netapp-files-oracle-database.md
-        - name: 使用 Azure NetApp Files 進行電子設計自動化的優點
-          href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+        - name: 特定解決方案
+          items:
+            - name: 使用 Azure NetApp Files 搭配 Oracle Database 的優點
+              href: solutions-benefits-azure-netapp-files-oracle-database.md
+            - name: 使用 Azure NetApp Files 進行電子設計自動化的優點
+              href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
     - name: 關於 Azure NetApp 檔案的常見問題集
       href: azure-netapp-files-faqs.md
 - name: 操作指南
