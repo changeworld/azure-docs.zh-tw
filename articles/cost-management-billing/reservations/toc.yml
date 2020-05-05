@@ -36,6 +36,12 @@
           href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: SQL Database
           href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 適用於 PostgreSQL 的 Azure 資料庫
+          href: ../../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 適用於 MySQL 的 Azure 資料庫
+          href: ../../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 適用於 MariaDB 的 Azure 資料庫
+          href: ../../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Azure Synapse Analytics
           href: prepay-sql-data-warehouse-charges.md
         - name: 虛擬機器
