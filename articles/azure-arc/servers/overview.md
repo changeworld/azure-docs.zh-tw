@@ -10,10 +10,10 @@ keywords: azure 自動化, DSC, powershell, Desired State Configuration, 更新�
 ms.date: 03/24/2020
 ms.topic: overview
 ms.openlocfilehash: 5fa39028f1041a063bab295adabf8145a8b46ae4
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81308777"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什麼是適用於伺服器的 Azure Arc (預覽)

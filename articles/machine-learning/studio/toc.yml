@@ -52,8 +52,6 @@
           href: create-workspace.md
         - name: 管理
           href: manage-workspace.md
-        - name: 疑難排解
-          href: troubleshooting-creating-ml-workspace.md
         - name: 使用 ARM 部署
           href: deploy-with-resource-manager-template.md
     - name: 匯入訓練資料
@@ -84,8 +82,6 @@
               href: algorithm-parameters-optimize.md
             - name: 解譯結果
               href: interpret-model-results.md
-            - name: 偵錯
-              href: debug-models.md
         - name: 重新定型模型
           items:
             - name: 「新型」Web 服務
@@ -96,19 +92,12 @@
           items:
             - name: 透過 R 開始使用
               href: r-get-started.md
-            - name: 執行 R 指令碼
-              href: extend-your-experiment-with-r.md
             - name: 撰寫自訂 R 模組
               href: custom-r-modules.md
             - name: 執行 Python 指令碼
               href: execute-python-scripts.md
     - name: 選取演算法
-      items:
-        - name: 選擇演算法
-          href: algorithm-choice.md
-        - name: 演算法範例
-          displayName: 'infographic, studio basics'
-          href: basics-infographic-with-algorithm-examples.md
+      href: algorithm-choice.md
     - name: 部署模型
       items:
         - name: 部署 Web 服務
@@ -143,14 +132,6 @@
           href: consuming-from-excel.md
         - name: 使用 Excel 增益集
           href: excel-add-in-for-web-services.md
-    - name: 使用案例
-      items:
-        - name: 客戶流失
-          href: azure-ml-customer-churn-scenario.md
-        - name: 情感分析
-          href: text-analytics-module-tutorial.md
-        - name: 將分析從 Excel 遷移至 Studio (傳統)
-          href: use-case-excel-studio.md
     - name: 刪除和匯出客戶資料
       items:
         - name: Studio (傳統) 資料

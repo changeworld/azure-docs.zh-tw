@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: 2de836a63eed79b7d166db220218e0c11ef11e70
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: d59f2ef564da710d084dc027950bc983a88143de
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81399725"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204620"
 ---
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -83,7 +83,7 @@ SpeechRecognizer recognizer = new SpeechRecognizer(config, audioConfig);
 「適用於 Java 的語音 SDK」的[辨識器類別](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer?view=azure-java-stable)會公開一些可供您用於語音辨識的方法。
 
 * 一次性辨識 (非同步) -在非封鎖 (非同步) 模式下執行辨識。 這將會辨識單一語句。 單一語句的結尾會藉由聽取結束時的靜默來決定，或是在處理音訊達 15 秒的上限時結束。
-* 連續辨識 (非同步) - 以非同步方式起始連續辨識作業。 如果您想要提供音訊檔案而不使用麥克風，您仍然需要提供。 若要停止非同步連續辨識，請呼叫 [stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync)。
+* 連續辨識 (非同步) - 以非同步方式起始連續辨識作業。 如果您想要提供音訊檔案而不使用麥克風，您仍然需要提供 `audioConfig`。 若要停止非同步連續辨識，請呼叫 [stopContinuousRecognitionAsync](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechrecognizer.stopcontinuousrecognitionasync)。
 
 > [!NOTE]
 > 深入了解如何[選擇語音辨識模式](../../../how-to-choose-recognition-mode.md)。

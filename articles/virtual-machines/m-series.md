@@ -7,16 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 0e7d61516b0b7fb9bab9aa0444a123ac932aaa56
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 7b84537693b3ffc3f7398c6eb84615a96bf8e7df
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509171"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744691"
 ---
 # <a name="m-series"></a>M 系列
 
-M 系列提供高 vCPU 計數（最多128個 vcpu）和海量儲存體（最多 3.8 TiB）。 這也適用于極大的資料庫或其他受益于高 vCPU 計數和海量儲存體的應用程式。 Intel&reg; 8280M 的&reg; CPU E7-8890 v3 @ 2.50 g h z 和 intel&reg; &reg;白金 2.7 ghz （Cascade Lake）皆支援 M 系列大小。
+M 系列提供高 vCPU 計數（最多128個 vcpu）和海量儲存體（最多 3.8 TiB）。 這也適用于極大的資料庫或其他受益于高 vCPU 計數和海量儲存體的應用程式。 Intel&reg; 8280M 的&reg; CPU E7-8890 v3 @ 2.50 g h z 和 intel&reg; &reg;白金（Cascade Lake）上都支援 M 系列大小。
 
 M 系列 VM 的功能 Intel&reg;超執行緒技術。
 
@@ -32,7 +32,7 @@ ACU：160-180
 
 寫入加速器：[支援](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
-| Size | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大未快取的磁片輸送量： IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
+| 大小 | vCPU | 記憶體：GiB | 暫存儲存體 (SSD) GiB | 最大資料磁碟 | 最大快取和暫存儲存體輸送量： IOPS/MBps （GiB 中的快取大小） | 最大未快取的磁片輸送量： IOPS/MBps | 最大 Nic/預期的網路頻寬（Mbps） |
 |---|---|---|---|---|---|---|---|
 | Standard_M8ms                    | 8   | 218.75 | 256   | 8  | 10000/100 （793）     | 5000/125   | 4/2000  |
 | Standard_M16ms                   | 16  | 437.5  | 512   | 16 | 20000/200 （1587）    | 10000/250  | 8/4000  |

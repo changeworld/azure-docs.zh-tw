@@ -1,19 +1,19 @@
 ---
 title: 在 Azure 中使用共用 VM 映射建立擴展集
 description: 了解如何使用 Azure PowerShell 來建立共用 VM 映像，以用來在 Azure 中部署虛擬機器擴展集。
-author: axayjo
-tags: azure-resource-manager
+author: cynthn
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: akjosh
-ms.reviewer: cynthn
-ms.openlocfilehash: 5f4eca88614a98f0caf87d04847029328042edd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.subservice: imaging
+ms.topic: how-to
+ms.date: 05/04/2020
+ms.author: cynthn
+ms.reviewer: akjosh
+ms.openlocfilehash: d0912958aaa897e4f8bc18aa88e0c41078d375a8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368730"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792780"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>使用 Azure PowerShell 為虛擬機器擴展集建立及使用共用映像
 
@@ -23,18 +23,11 @@ ms.locfileid: "77368730"
 
 資源庫是一種頂層資源，可提供完整的角色型存取控制 (RBAC)。 可建立映像版本，並且您可以選擇將每個映像版本複寫到不同的 Azure 區域集合。 資源庫僅適用於受控映像。 
 
-共用映像庫具有多個資源類型。 我們將在這篇文章中使用或建置這些資源類型：
+共用映像庫具有多個資源類型。 
 
-| 資源 | 描述|
-|----------|------------|
-| **受控映射** | 這是基本映像，既可單獨使用，也可用來在映像庫中建立個**映像版本**。 受控映像是從一般化 VM 建立的。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
-| **映射庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
-| **映像定義** | 映像會在資源庫內定義，並帶有映像資訊以及在內部使用時所需滿足的需求。 這包括映像是 Windows 還是 Linux、版本資訊以及最小和最大的記憶體需求。 這是映像類型的定義。 |
-| **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
 
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) 。
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
-[!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>開始之前
 
@@ -47,114 +40,7 @@ ms.locfileid: "77368730"
 
 [!INCLUDE [virtual-machines-common-shared-images-ps](../../includes/virtual-machines-common-shared-images-powershell.md)]
 
-## <a name="create-a-scale-set-from-the-shared-image-version"></a>從共用映像版本建立擴展集
 
-使用 [New-AzVmss](/powershell/module/az.compute/new-azvmss) 建立虛擬機器擴展集。 下列範例會從*美國中南部*資料中心的新映射版本建立擴展集。 出現提示時，請為擴展集中的 VM 執行個體設定自己的系統管理認證：
-
-
-```azurepowershell-interactive
-# Define variables
-$resourceGroupName = "myVMSSRG"
-$scaleSetName = "myScaleSet"
-$location = "South Central US"
-$cred = Get-Credential
-
-# Create a resource group
-New-AzResourceGroup -ResourceGroupName $resourceGroupName -Location $location
-
-# Create a netowrking pieces
-$subnet = New-AzVirtualNetworkSubnetConfig `
-  -Name "mySubnet" `
-  -AddressPrefix 10.0.0.0/24
-$vnet = New-AzVirtualNetwork `
-  -ResourceGroupName $resourceGroupName `
-  -Name "myVnet" `
-  -Location $location `
-  -AddressPrefix 10.0.0.0/16 `
-  -Subnet $subnet
-$publicIP = New-AzPublicIpAddress `
-  -ResourceGroupName $resourceGroupName `
-  -Location $location `
-  -AllocationMethod Static `
-  -Name "myPublicIP"
-$frontendIP = New-AzLoadBalancerFrontendIpConfig `
-  -Name "myFrontEndPool" `
-  -PublicIpAddress $publicIP
-$backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
-$inboundNATPool = New-AzLoadBalancerInboundNatPoolConfig `
-  -Name "myRDPRule" `
-  -FrontendIpConfigurationId $frontendIP.Id `
-  -Protocol TCP `
-  -FrontendPortRangeStart 50001 `
-  -FrontendPortRangeEnd 50010 `
-  -BackendPort 3389
-# Create the load balancer and health probe
-$lb = New-AzLoadBalancer `
-  -ResourceGroupName $resourceGroupName `
-  -Name "myLoadBalancer" `
-  -Location $location `
-  -FrontendIpConfiguration $frontendIP `
-  -BackendAddressPool $backendPool `
-  -InboundNatPool $inboundNATPool
-Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
-  -LoadBalancer $lb `
-  -Protocol TCP `
-  -Port 80 `
-  -IntervalInSeconds 15 `
-  -ProbeCount 2
-Add-AzLoadBalancerRuleConfig `
-  -Name "myLoadBalancerRule" `
-  -LoadBalancer $lb `
-  -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
-  -BackendAddressPool $lb.BackendAddressPools[0] `
-  -Protocol TCP `
-  -FrontendPort 80 `
-  -BackendPort 80 `
-  -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb)
-Set-AzLoadBalancer -LoadBalancer $lb
-
-# Create IP address configurations
-$ipConfig = New-AzVmssIpConfig `
-  -Name "myIPConfig" `
-  -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
-  -LoadBalancerInboundNatPoolsId $inboundNATPool.Id `
-  -SubnetId $vnet.Subnets[0].Id
-
-# Create a configuration 
-$vmssConfig = New-AzVmssConfig `
-    -Location $location `
-    -SkuCapacity 2 `
-    -SkuName "Standard_DS2" `
-    -UpgradePolicyMode "Automatic"
-
-# Reference the image version
-Set-AzVmssStorageProfile $vmssConfig `
-  -OsDiskCreateOption "FromImage" `
-  -ImageReferenceId $imageVersion.Id
-
-# Complete the configuration
-Set-AzVmssOsProfile $vmssConfig `
-  -AdminUsername $cred.UserName `
-  -AdminPassword $cred.Password `
-  -ComputerNamePrefix "myVM"
-Add-AzVmssNetworkInterfaceConfiguration `
-  -VirtualMachineScaleSet $vmssConfig `
-  -Name "network-config" `
-  -Primary $true `
-  -IPConfiguration $ipConfig
-
-# Create the scale set 
-New-AzVmss `
-  -ResourceGroupName $resourceGroupName `
-  -Name $scaleSetName `
-  -VirtualMachineScaleSet $vmssConfig
-```
-
-建立及設定所有擴展集資源和 VM 需要幾分鐘的時間。
-
-[!INCLUDE [virtual-machines-common-gallery-list-ps](../../includes/virtual-machines-common-gallery-list-ps.md)]
-
-[!INCLUDE [virtual-machines-common-shared-images-update-delete-ps](../../includes/virtual-machines-common-shared-images-update-delete-ps.md)]
 
 
 ## <a name="next-steps"></a>後續步驟

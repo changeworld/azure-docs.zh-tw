@@ -4,10 +4,10 @@ description: 了解 Azure 藍圖服務如何讓您在 Azure 環境中建立、�
 ms.date: 11/21/2019
 ms.topic: overview
 ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/06/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80677404"
 ---
 # <a name="what-is-azure-blueprints"></a>什麼是 Azure 藍圖？
@@ -57,7 +57,7 @@ Azure 藍圖服務由散佈於世界各地的 [Azure Cosmos DB](../../cosmos-db/
 
 ### <a name="blueprint-definition-locations"></a>藍圖定義位置
 
-建立藍圖定義時，您將定義藍圖的儲存位置。 藍圖可以儲存到您有其**參與者**權限的[管理群組](../management-groups/overview.md)或訂用帳戶。 如果該位置是管理群組，則可將藍圖指派給該管理群組的任何子訂用帳戶。
+建立藍圖定義時，您將定義藍圖的儲存位置。 藍圖可以儲存到您有其[參與者](../management-groups/overview.md)權限的**管理群組**或訂用帳戶。 如果該位置是管理群組，則可將藍圖指派給該管理群組的任何子訂用帳戶。
 
 ### <a name="blueprint-parameters"></a>藍圖參數
 

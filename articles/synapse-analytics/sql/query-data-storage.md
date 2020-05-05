@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: cdad95b1a910a45629e85bcc716218b272afd9de
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: e18fc765385e6d703e735a1ca15c539c32f36e93
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421292"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82116242"
 ---
 # <a name="overview-query-data-in-storage"></a>概觀：查詢儲存體中的資料
 
@@ -72,9 +72,6 @@ CREATE DATABASE mydbname;
 > SQL 隨選一律預設使用 AAD 傳遞。
 
 如需如何管理儲存體存取控制的詳細資訊，請查看此[連結](develop-storage-files-storage-access-control.md)。
-
-> [!WARNING]
-> 您必須為位於端點區域中的儲存體帳戶建立認證。 雖然 SQL 隨選可存取來自不同區域的儲存體，但讓儲存體和端點位於相同區域將會提供較佳的效能體驗。
 
 若要建立 CSV、JSON 和 Parquet 容器的認證，請執行下列程式碼：
 

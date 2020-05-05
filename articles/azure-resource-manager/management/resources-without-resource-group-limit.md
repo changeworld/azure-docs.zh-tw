@@ -2,20 +2,21 @@
 title: 沒有800計數限制的資源
 description: 列出資源群組中可有超過800個實例的 Azure 資源類型。
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 8644bec1a68acebff18cf83d17acb014784dc964
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: davidsmatlak
+ms.author: v-dasmat
+ms.date: 05/04/2020
+ms.openlocfilehash: 892b59b3d3e980abfcdb9cd692c2598ceb1284ad
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804770"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780924"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>每個資源群組的資源不限於800實例
 
 根據預設，您可以在每個資源群組中部署最多800個資源類型的實例。 不過，某些資源類型會豁免800實例的限制。 本文列出在資源群組中可以有超過800個實例的 Azure 資源類型。 所有其他資源類型的限制為800實例。
 
 針對某些資源類型，您必須聯絡支援人員以移除800實例的限制。 這篇文章中注明了這些資源類型。
-
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 

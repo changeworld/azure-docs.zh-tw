@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c822e8af076f74e1bccc46b7a71717d9631de0a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e978a5e7e76c8ddc9b7e6b80ec7170c45baa2cae
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461944"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82784107"
 ---
 ### <a name="azure-regions-within-a-geopolitical-region"></a>地緣政治區域內的 Azure 區域
 
-站對站 VPN 連線能力和虛擬 WAN 架構適用于下欄區域：
+虛擬 WAN 適用于下欄區域：
 
 |地緣政治區域 | Azure 區域|
 |---|---|
@@ -37,7 +37,7 @@ ms.locfileid: "81461944"
 
 ### <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>適用于國家雲端的 Azure 區域和地緣政治界限
 
-站對站 VPN 連線能力和虛擬 WAN 架構適用于下欄區域：
+虛擬 WAN 適用于下欄區域：
 
 |地緣政治區域 | Azure 區域|
 |---|---|
