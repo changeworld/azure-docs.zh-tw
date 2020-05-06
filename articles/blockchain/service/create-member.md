@@ -4,18 +4,22 @@ description: 使用 Azure 入口網站建立區塊鏈聯盟的 Azure 區塊鏈�
 ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 7d29382cdedf7e35d186c73c9d32547e10fb10d6
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 9fb013960da5b7cb8ba44f129eab73565f5b5362
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460268"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82115239"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure 區塊鏈服務的區塊鏈成員
 
 在本快速入門中，您會使用 Azure 入口網站在 Azure 區塊鏈服務中部署新的區塊鏈成員和聯盟。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="prerequisites"></a>Prerequisites
+
+無。
 
 ## <a name="create-a-blockchain-member"></a>建立區塊鏈成員
 

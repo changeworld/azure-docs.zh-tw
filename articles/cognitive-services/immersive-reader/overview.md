@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
 ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "80052373"
 ---
 # <a name="what-is-immersive-reader"></a>什麼是沈浸式閱讀程式？

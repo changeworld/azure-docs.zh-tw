@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3113f01341d2a1ec6160cfea3eb9d12d18b8495c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 49a94b8877d46cf95ec8701f470d87e187713f69
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687176"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583306"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>將下游裝置連線到 Azure IoT Edge 閘道
 
@@ -36,7 +36,7 @@ ms.locfileid: "81687176"
 
 在本文中，*閘道*和 *IoT Edge 閘道*這兩個詞是指設定為透明閘道的 IoT Edge 裝置。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 在 [設定 IoT Edge 裝置] 中產生的 [ **azure-iot-test-only.root.ca.cert.pem** ] 憑證檔案，以作為下游裝置上可用[的透明閘道](how-to-create-transparent-gateway.md)。 您的下游裝置會使用此憑證來驗證閘道裝置的身分識別。
 * 具有指向閘道裝置的已修改連接字串，如[驗證下游裝置以 Azure IoT 中樞](how-to-authenticate-downstream-device.md)中所述。
@@ -185,9 +185,9 @@ var options = {
 
 本節介紹將 Azure IoT Python 裝置用戶端連線到 IoT Edge 閘道的範例應用程式。
 
-1. 從[適用于 Python 的 Azure IoT 裝置 SDK 範例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)取得**send_message**的範例。
-2. 請確定您是在 IoT Edge 容器中執行，或在偵錯工具案例中，已設定`EdgeHubConnectionString`和`EdgeModuleCACertificateFile`環境變數。
-3. 如需如何在裝置上執行此範例的指示，請參閱 SDK 文件。
+1. 從[適用于 Python 的 Azure IoT 裝置 SDK 範例](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)取得**send_message_downstream**的範例。
+2. 如 Python `IOTHUB_DEVICE_CONNECTION_STRING`腳本`IOTEDGE_ROOT_CA_CERT_PATH`批註中所指定，設定和環境變數。
+3. 如需有關如何在您的裝置上執行此範例的任何其他指示，請參閱 SDK 檔。
 
 ## <a name="test-the-gateway-connection"></a>測試閘道連線
 

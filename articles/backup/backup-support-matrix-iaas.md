@@ -3,12 +3,12 @@ title: Azure VM 備份的支援矩陣
 description: 摘要說明使用 Azure 備份服務來備份 Azure VM 時的支援設定和限制。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: d86ce94c62ec9f25b364e9fdc963e3043b274722
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86141532e0db80f75c6e79277b36060ecb939a53
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80389285"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801428"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 備份的支援矩陣
 
@@ -81,7 +81,7 @@ Azure 備份不支援 32 位元作業系統。
 
 ## <a name="operating-system-support-linux"></a>作業系統支援 (Linux)
 
-針對 Azure VM Linux 備份，Azure 備份支援 [Azure 所背書的 Linux 散發套件清單](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。 請注意：
+針對 Azure VM Linux 備份，Azure 備份支援 [Azure 所背書的 Linux 散發套件清單](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。 注意下列事項：
 
 - Azure 備份不支援 Core OS Linux。
 - Azure 備份不支援 32 位元作業系統。
@@ -158,7 +158,7 @@ Gen2 Vm | 支援 <br> Azure 備份支援[Gen2 vm](https://azure.microsoft.com/up
 
 **元件** | **支援**
 --- | ---
-Azure VM 資料磁碟 | 備份具有16個或更少資料磁片的 VM。<BR> 若要註冊具有 16 個以上磁碟 (最多 32 個磁碟) 的 VM 私人預覽版，請利用 AskAzureBackupTeam@microsoft.com 寫信給我們
+Azure VM 資料磁碟 | 備份具有16個或更少資料磁片的 VM。<BR> 若要註冊具有16個磁片的有限預覽 Vm （最多32個磁片），請將寫入我們的AskAzureBackupTeam@microsoft.com
 資料磁碟大小 | 針對 VM 中的所有磁片，個別磁片大小最高可達 32 TB，最大為 256 TB。
 儲存體類型 | 標準 HDD、標準 SSD 進階 SSD。
 受控磁碟 | 支援。
@@ -217,7 +217,7 @@ Azure VM | ![是][green] | ![是][green]
 
 ## <a name="vm-compression-support"></a>VM 壓縮支援
 
-備份支援壓縮備份流量，如下表摘要所示。 請注意：
+備份支援壓縮備份流量，如下表摘要所示。 注意下列事項：
 
 - 針對 Azure Vm，VM 擴充功能會透過儲存體網路直接從 Azure 儲存體帳戶讀取資料。 不需要壓縮此流量。
 - 如果您使用的是 DPM 或 MABS，您可以在備份至 DPM/MABS 之前壓縮資料，藉以節省頻寬。

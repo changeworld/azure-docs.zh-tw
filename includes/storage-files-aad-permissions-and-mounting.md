@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 47bd550bbd8d75a06d38babe88b5a95f3790af50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106539"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792969"
 ---
-## <a name="2-assign-access-permissions-to-an-identity"></a>2. 將存取權限指派給身分識別
+## <a name="2-assign-access-permissions-to-an-identity"></a>2指派身分識別的存取權限
 
 若要使用以身分識別為基礎的驗證來存取 Azure 檔案儲存體資源，身分識別（使用者、群組或服務主體）必須具有共用層級的必要許可權。 此程式類似于指定 Windows 共用許可權，您可以在其中指定特定使用者對檔案共用的存取類型。 本節中的指引示範如何將檔案共用的讀取、寫入或刪除權限指派給身分識別。 
 
@@ -28,7 +28,7 @@ ms.locfileid: "82106539"
 > [!IMPORTANT]
 > 檔案共用的完整系統管理控制權，包括取得檔案擁有權的能力，需要使用儲存體帳戶金鑰。 Azure AD 認證不支援管理控制。
 
-您可以使用 Azure 入口網站、PowerShell 或 Azure CLI，將內建角色指派給使用者的 Azure AD 身分識別，以授與共享層級許可權。
+您可以使用 Azure 入口網站、PowerShell 或 Azure CLI，將內建角色指派給使用者的 Azure AD 身分識別，以授與共享層級許可權。 請注意，共用層級 RBAC 角色指派可能需要一些時間才會生效。 
 
 > [!NOTE]
 > 如果您打算使用內部部署 AD DS 進行驗證，請記得將[AD DS 認證同步到 Azure AD](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) 。 從 AD DS 到 Azure AD 的密碼雜湊同步處理是選擇性的。 系統會將共用層級許可權授與從內部部署 AD DS 同步的 Azure AD 身分識別。
@@ -70,7 +70,7 @@ New-AzRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $File
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="3-configure-ntfs-permissions-over-smb"></a>3. 透過 SMB 設定 NTFS 許可權 
+## <a name="3-configure-ntfs-permissions-over-smb"></a>3透過 SMB 設定 NTFS 許可權 
 使用 RBAC 指派共用層級權限之後，必須在根、目錄或檔案層級指派適當的 NTFS 權限。 將共用層級的許可權視為用來決定使用者是否可以存取共用的高階閘道管理員。 NTFS 許可權會以更細微的層級來決定使用者可以在目錄或檔案層級執行哪些作業。
 
 Azure 檔案支援全套 NTFS 基本和進階權限。 您可以藉由掛接共用，然後使用 Windows 檔案瀏覽器或執行 Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)或[Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl)命令，來查看和設定 Azure 檔案共用中目錄和檔案的 NTFS 許可權。 
@@ -119,7 +119,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 如需有關如何使用 icacls 設定 NTFS 許可權和不同類型的支援許可權的詳細資訊，請參閱[icacls 的命令列參考](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)。
 
-## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. 從已加入網域的 VM 掛接檔案共用
+## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4從已加入網域的 VM 掛接檔案共用
 
 下列程式會確認您的檔案共用和存取權限已正確設定，而且您可以從已加入網域的 VM 存取 Azure 檔案共用。 請注意，共用層級 RBAC 角色指派可能需要一些時間才會生效。 
 

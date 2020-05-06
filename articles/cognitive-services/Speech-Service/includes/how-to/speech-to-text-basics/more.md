@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 03/13/2020
 ms.author: trbye
 ms.openlocfilehash: e475a58c56a16e984d15f2cc8d06f73268868852
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81399560"
 ---
 ## <a name="additional-language-and-platform-support"></a>其他語言和平台支援
@@ -20,7 +20,7 @@ ms.locfileid: "81399560"
 | C#          | [.NET Framework][csharp-netframework]、[.NET Core][csharp-netcore]、[UWP][csharp-uwp]、[Unity][csharp-unity]、[Xamarin][csharp-xamarin] |
 | C++         | [快速入門][cpp-quickstarts]，[範例][cpp-samples]                                                                                  |
 | Java        | [Android][java-android]、[JRE][java-jre]                                                                                                |
-| JavaScript  | [瀏覽器][js-browser]                                                                                                                   |
+| JavaScript  | [[瀏覽器]][js-browser]                                                                                                                   |
 | Node.js     | [Windows、Linux、macOS][node-js]                                                                                                        |
 | Objective-C | [iOS][objective-c-ios]、[macOS][objective-c-macos]                                                                                      |
 | Python      | [Windows、Linux、macOS][python]                                                                                                         |

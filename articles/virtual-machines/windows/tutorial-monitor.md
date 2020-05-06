@@ -1,26 +1,21 @@
 ---
 title: 教學課程 - 在 Azure 中監視 Windows 虛擬機器
 description: 在本教學課程中，您將了解如何監視在 Windows 虛擬機器上執行的效能和探索到的應用程式元件。
-services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: mgoedtel
 manager: carmonm
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: monitoring
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 9e807927a10399b02c2c89359c2ffffaf87ba57b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a021675632a093d41e2565f63f8bb4e844213628
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74112481"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82101615"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>教學課程：在 Azure 中監視 Windows 虛擬機器
 

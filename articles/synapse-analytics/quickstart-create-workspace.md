@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1ccfb1b008a7e3e48f56b1af62087d303522ed73
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 49bd251b7f76a844a0d3fd1b1a09f7e15c5e7ddb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81676735"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792202"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>快速入門：建立 Azure Synapse Analytics 工作區 (預覽)
 
@@ -41,7 +41,7 @@ ms.locfileid: "81676735"
     | 設定 | 建議的值 | 描述 |
     | :------ | :-------------- | :---------- |
     | **訂用帳戶** | *您的訂用帳戶* | 如需訂用帳戶的詳細資訊，請參閱[訂用帳戶](https://account.windowsazure.com/Subscriptions)。 |
-    | **資源群組** | *任何資源群組* | 如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。 |
+    | **資源群組** | *任何資源群組* | 如需有效的資源群組名稱，請參閱[命名規則和限制](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)。 |
     | **工作區名稱** | mysampleworkspace | 指定工作區的名稱，此名稱也會用於連線端點。|
     | **區域** | 美國東部 2 | 指定工作區的位置。|
     | **Data Lake Storage Gen2** | 帳戶：`storage account name` </br> 檔案系統：`root file system to use` | 指定要當作主要儲存體使用的 ADLS Gen2 儲存體帳戶名稱，以及要使用的檔案系統。|

@@ -4,12 +4,12 @@ description: 在本文中，您會找到有關使用 Azure 備份服務來備份
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: a6746944e34b8bd2fbb115baaabece96ee93dd1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190090"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800646"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常見問題-備份 Azure Vm
 
@@ -59,11 +59,11 @@ ms.locfileid: "82190090"
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>我的 VM 關閉了。 隨選或排程的備份工作會運作嗎？
 
-是。 備份會在機器關機時執行。 復原點會標示為「當機時保持一致」。
+可以。 備份會在機器關機時執行。 復原點會標示為「當機時保持一致」。
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>我是否可以取消進行中的備份作業？
 
-是。 您可以在**拍攝快照**集狀態中取消備份作業。 如果正在從快照集傳輸資料，則無法取消作業。
+可以。 您可以在**拍攝快照**集狀態中取消備份作業。 如果正在從快照集傳輸資料，則無法取消作業。
 
 ### <a name="i-enabled-a-lock-on-the-resource-group-created-by-azure-backup-service-for-example-azurebackuprg_geo_number-will-my-backups-continue-to-work"></a>我啟用了 Azure 備份服務所建立之資源群組的鎖定（例如`AzureBackupRG_<geo>_<number>`）。 我的備份是否會繼續運作？
 
@@ -131,7 +131,7 @@ Azure 備份現在支援使用 Azure 虛擬機器備份解決方案進行選擇�
 
 ### <a name="can-i-restore-the-vm-thats-been-deleted"></a>我可以還原已刪除的 VM 嗎？
 
-是。 即使您刪除 VM，您也可以移至保存庫中對應的備份專案，並從復原點還原。
+可以。 即使您刪除 VM，您也可以移至保存庫中對應的備份專案，並從復原點還原。
 
 ### <a name="how-do-i-restore-a-vm-to-the-same-availability-sets"></a>如何? 將 VM 還原至相同的可用性設定組？
 
@@ -176,6 +176,14 @@ VM 會使用已修改或新的原則中的排程和保留期設定來備份。
 4. 繼續備份。
 
 您可以從移動作業之前所建立的可用還原點來還原 VM。
+
+### <a name="what-happens-after-i-move-a-vm-to-a-different-resource-group"></a>將 VM 移至不同的資源群組之後，會發生什麼事？
+
+一旦將 VM 移至不同的資源群組，就會是新的 VM，就 Azure 備份而言。
+
+將 VM 移至新的資源群組之後，您可以在相同的保存庫或不同的保存庫中重新保護 VM。 由於這是 Azure 備份的新 VM，因此您將會個別計費。
+
+如果需要，舊版 VM 的還原點將可供還原。 如果您不需要此備份資料，您可以使用 [刪除資料] 來停止保護舊的 VM。
 
 ### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>可以與相同備份原則建立關聯的 Vm 數目是否有限制？
 
