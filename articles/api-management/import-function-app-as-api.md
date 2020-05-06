@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/28/2019
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: c393ba081b480408373ed6867624ac6278c1674e
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 6f4626a8c42f3a50fa273c55099158750241bfee
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260950"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202915"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>在 Azure API 管理中匯入 Azure 函式應用程式作為 API
 
@@ -46,7 +46,7 @@ Azure API 管理支援將 Azure 函式應用程式匯入為新的 API，或將�
 
 請依照下列步驟從 Azure 函式應用程式建立新的 API。
 
-1. 在您的 **Azure API 管理**服務執行個體中，從左側的功能表中選取 [API]  。
+1. 在 Azure 入口網站中，瀏覽至您的 APIM 服務，然後從功能表中選取 [API]  。
 
 2. 在 [新增 API]  清單中，選取 [函式應用程式]  。
 
@@ -71,10 +71,7 @@ Azure API 管理支援將 Azure 函式應用程式匯入為新的 API，或將�
     > [!NOTE]
     > 您只能匯入設有 HTTP 觸發程序、且授權層級設定設為 [匿名]  或 [函式]  的函式。
 
-7. 切換至 [完整]  檢視，然後將 [產品]  指派給您的新 API。 視需要編輯其他預先填入的欄位。
-
-    ![從函式應用程式新增](./media/import-function-app-as-api/add-06.png)
-
+7. 切換至 [完整]  檢視，然後將 [產品]  指派給您的新 API。 如有需要，請在建立期間指定其他欄位，或稍後前往 [設定]  索引標籤來進行設定。這些設定會在[匯入和發佈您的第一個 API](import-and-publish.md#-import-and-publish-a-backend-api) 教學課程中說明。
 8. 按一下頁面底部的 [新增]  。
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a>將 Azure 函式應用程式附加至現有的 API
@@ -118,7 +115,7 @@ Azure API 管理支援將 Azure 函式應用程式匯入為新的 API，或將�
 * 位於函式應用程式內、名為 apim-{*您的 Azure API 管理服務執行個體名稱*} 的主機金鑰、
 * 位於 Azure API 管理執行個體內、名稱為 {*您的 Azure 函式應用程式執行個體名稱*}-key 的具名值，其中包含建立的主機金鑰。
 
-對於在 2019 年 4 月 4 日之後建立的 API，主機金鑰會從 API 管理隨著 HTTP 要求傳至標頭中的函式應用程式。 舊版的 API 會以[查詢參數](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)的形式傳遞主機金鑰。 此行為可透過與函式應用程式相關聯的`PATCH Backend`後端[實體上的 ](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract)*REST API 呼叫*來變更。
+對於在 2019 年 4 月 4 日之後建立的 API，主機金鑰會從 API 管理隨著 HTTP 要求傳至標頭中的函式應用程式。 舊版的 API 會以[查詢參數](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization)的形式傳遞主機金鑰。 此行為可透過與函式應用程式相關聯的*後端*實體上的 `PATCH Backend`[REST API 呼叫](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract)來變更。
 
 > [!WARNING]
 > 移除或變更 Azure 函式應用程式主機金鑰的值或 Azure API 管理具名值，將會中斷服務之間的通訊。 這些值不會自動同步。

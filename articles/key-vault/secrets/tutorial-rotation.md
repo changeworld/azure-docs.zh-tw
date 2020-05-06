@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 70eb2449c5c54750831c30ff7d5c948173a38594
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 8f9c0dca29d173eb2c7893a20b2ab41dd31522e1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81426347"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82183206"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-single-usersingle-password-authentication"></a>針對使用單一使用者/單一密碼驗證的資源，將秘密的輪替自動化
 
@@ -263,7 +263,7 @@ Web 應用程式需要以下元件：
  
 ![選取 URL](../media/rotate10.png)
 
-您應該會看到產生的祕密值，且資料庫連線值為 True。
+當應用程式在瀏覽器中開啟時，您會看到 [產生的密碼值]  以及值為 *true* 的 [資料庫已連線]  。
 
 ## <a name="learn-more"></a>深入了解
 

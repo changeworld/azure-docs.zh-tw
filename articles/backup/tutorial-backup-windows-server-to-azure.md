@@ -4,11 +4,11 @@ description: 本教學會詳細說明如何將內部部署 Windows Server 備份
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79222465"
 ---
 # <a name="back-up-windows-server-to-azure"></a>將 Windows Server 備份到 Azure
@@ -23,7 +23,7 @@ ms.locfileid: "79222465"
 
 ## <a name="sign-in-to-azure"></a>登入 Azure
 
-在 https://portal.azure.com 登入 Azure 入口網站。
+在 <https://portal.azure.com.> 登入 Azure 入口網站
 
 ## <a name="create-a-recovery-services-vault"></a>建立復原服務保存庫
 

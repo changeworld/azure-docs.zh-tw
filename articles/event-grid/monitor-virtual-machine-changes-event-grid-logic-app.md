@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.date: 10/11/2019
-ms.openlocfilehash: f5aac7fe63b2afc997ff69e5d976c755440c1bea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 045f6d50846092820014ccc7f11a81f1e2234311
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75982577"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82144087"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教學課程：使用 Azure 事件方格和 Logic Apps 監視虛擬機器的變更
 
@@ -48,6 +48,9 @@ ms.locfileid: "75982577"
 * 來自 Logic Apps 所支援電子郵件提供者的電子郵件帳戶，例如 Office 365 Outlook、Outlook.com 或 Gmail。 對於其他提供者，請[檢閱這裡的連接器清單](/connectors/)。
 
   本教學課程會使用 Office 365 Outlook 帳戶。 如果您使用不同的電子郵件帳戶，整體步驟將維持不變，但您的 UI 外觀可能會略有不同。
+
+  > [!IMPORTANT]
+  > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 * 獨立於自己 Azure 資源群組中的[虛擬機器](https://azure.microsoft.com/services/virtual-machines)。 如果您尚未這樣做，請透過[建立 VM 教學課程](../virtual-machines/windows/quick-create-portal.md)來建立虛擬機器。 若要讓虛擬機器發佈事件，您[不需要執行任何其他作業](../event-grid/overview.md)。
 

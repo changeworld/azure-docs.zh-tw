@@ -3,14 +3,14 @@ title: 教學課程：使用受控識別存取資料
 description: 了解如何使用受控識別，讓資料庫連線更加安全，以及如何將此受控服務識別套用到其他 Azure 服務。
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/18/2019
+ms.date: 04/27/2020
 ms.custom: mvc, cli-validate
-ms.openlocfilehash: b66874cf95ed29d9be0a2d1ea397704131c7b21d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 142cd2611e0dcf3227474efadded7bac88a4390a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085427"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82207627"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教學課程：使用受控識別保護來自 App Service 的 Azure SQL Database 連線
 
@@ -24,8 +24,8 @@ ms.locfileid: "82085427"
 > [!NOTE]
 > 本教學課程所涵蓋的步驟支援下列版本：
 > 
-> - .NET Framework 4.7.2
-> - .NET Core 2.2
+> - .NET Framework 4.7.2 和更新版本
+> - .NET Core 2.2 和更新版本
 >
 
 您將了解：
@@ -104,7 +104,7 @@ az login --allow-no-subscriptions
 在 Visual Studio 中，開啟套件管理員主控台，並新增 NuGet 套件 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)：
 
 ```powershell
-Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
+Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
 在 Web.config  中，從檔案頂端開始處理，並進行下列變更：
@@ -139,7 +139,7 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
 在 Visual Studio 中，開啟套件管理員主控台，並新增 NuGet 套件 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)：
 
 ```powershell
-Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
+Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.4.0
 ```
 
 在 [ASP.NET Core 和 SQL Database 教學課程](app-service-web-tutorial-dotnetcore-sqldb.md)中完全不會使用連接字串 `MyDbConnection`，因為本機開發環境會使用 Sqlite 資料庫檔案，Azure 生產環境則會使用來自 App Service 的連接字串。 在使用 Active Directory 驗證時，您會希望這兩個環境使用相同的連接字串。 在 appsettings.json  中，將 `MyDbConnection` 連接字串的值取代為：
@@ -148,33 +148,10 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
 "Server=tcp:<server-name>.database.windows.net,1433;Database=<database-name>;"
 ```
 
-在 Startup.cs  中，移除您先前新增的程式碼區段：
-
-```csharp
-// Use SQL Database if in Azure, otherwise, use SQLite
-if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-    services.AddDbContext<MyDatabaseContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
-else
-    services.AddDbContext<MyDatabaseContext>(options =>
-            options.UseSqlite("Data Source=localdatabase.db"));
-
-// Automatically perform database migration
-services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
-```
-
-然後將其取代為下列程式碼：
-
-```csharp
-services.AddDbContext<MyDatabaseContext>(options => {
-    options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection"));
-});
-```
-
 接下來，您要提供 Entity Framework 資料庫內容，以及 SQL Database 的存取權杖。 在 Data\MyDatabaseContext.cs  中，將下列程式碼新增至空白 `MyDatabaseContext (DbContextOptions<MyDatabaseContext> options)` 建構函式的大括弧內：
 
 ```csharp
-var conn = (System.Data.SqlClient.SqlConnection)Database.GetDbConnection();
+var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();
 conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
 ```
 
@@ -233,7 +210,7 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
-在您所需資料庫的 SQL 提示字元中執行下列命令，以新增 AD 群組，並授與您的應用程式所需的權限。 例如， 
+在您所需資料庫的 SQL 提示字元中執行下列命令，以授與您應用程式所需的權限。 例如， 
 
 ```sql
 CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;

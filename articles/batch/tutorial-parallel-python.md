@@ -1,21 +1,16 @@
 ---
-title: 執行平行工作負載 - Azure Batch Python
+title: 執行平行工作負載
 description: 教學課程 - 使用 Batch Python 用戶端程式庫透過 Azure Batch 中的 ffmpeg 平行處理媒體檔案
-services: batch
-author: LauraBrenner
-manager: evansma
-ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: labrenne
 ms.custom: mvc
-ms.openlocfilehash: d4277e383a5cb69ef5395cb6dc477d888abd1d0d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 32e42fe04ad8ce55bbbbb90e5aca6356fd1c6f22
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77023084"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82117109"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>教學課程：使用 Python API 透過 Azure Batch 執行平行工作負載
 
@@ -213,7 +208,7 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>建立工作
 
-應用程式會藉由呼叫 `add_tasks` 在作業中建立工作。 這個已定義的函式會使用 [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) 類別建立工作物件清單。 每項工作都會執行 ffmpeg，以使用 `resource_files` 參數來處理輸入 `command_line` 物件。 ffmpeg 已在先前建立集區時安裝於每個節點上。 在此，命令列會執行 ffmpeg，將每個輸入 MP4 (影片) 檔案轉換為 MP3 (音訊) 檔案。
+應用程式會藉由呼叫 `add_tasks` 在作業中建立工作。 這個已定義的函式會使用 [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) 類別建立工作物件清單。 每項工作都會執行 ffmpeg，以使用 `command_line` 參數來處理輸入 `resource_files` 物件。 ffmpeg 已在先前建立集區時安裝於每個節點上。 在此，命令列會執行 ffmpeg，將每個輸入 MP4 (影片) 檔案轉換為 MP3 (音訊) 檔案。
 
 此範例會在執行命令列之後，為 MP3 檔案建立 [OutputFile](/python/api/azure-batch/azure.batch.models.outputfile) 物件。 每項工作的輸出檔案 (在此例中只有一個輸出檔案) 都會使用工作的 `output_files` 屬性，上傳至所連結儲存體帳戶中的容器。
 

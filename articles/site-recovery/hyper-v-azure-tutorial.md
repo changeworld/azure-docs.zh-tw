@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 741d4718b5e6140f4ddd2bb22e1a2ec830763176
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9a2bb636ba749cae50195cefeb8e7237d382fb99
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79224035"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82182339"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>設定 Hyper-V VM 至 Azure 的災害復原
 
@@ -127,7 +127,7 @@ Site Recovery 會檢查您是否有一或多個相容的 Azure 儲存體帳戶�
 2. 在 [建立及關聯原則]  中指定原則名稱。 我們使用的是 **ContosoReplicationPolicy**。
 3. 在本教學課程中，我們將保留預設設定：
     - [複製頻率]  指出差異資料 (在初始複寫後) 的複寫頻率。 預設頻率為每五分鐘一次。
-    - [復原點保留]  指定復原點會保留兩小時。
+    - [復原點保留]  指定復原點會保留兩小時。 保護裝載在 Hyper-V 主機上的虛擬機器時，允許的保留值上限為 24 小時。
     - [應用程式一致快照頻率]  指出將會每小時建立一次包含應用程式一致快照集的復原點。
     - [初始複寫開始時間]  指出初始複寫將會立即開始。
 4. 原則建立後，請選取 [確定]  。 當您建立新的原則時，該原則會自動與指定的 Hyper-V 網站產生關聯。 在本教學課程中，該網站為 **ContosoHyperVSite**。

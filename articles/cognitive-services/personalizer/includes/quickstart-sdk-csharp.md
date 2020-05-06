@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
-ms.date: 01/15/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 7fd63841cabd91d46dd311f571fd100bbcfdd0fe
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 0b09f15eb05a94bb62f4484ac362467fbdb0af8b
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76122813"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188843"
 ---
 [參考文件](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [套件 (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [範例](https://github.com/Azure-Samples/cognitive-services-personalizer-samples)
 
@@ -112,7 +112,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Personalizer --version 0.8.
 
 ## <a name="get-food-items-as-rankable-actions"></a>取得食物項目作為可排名的動作
 
-動作代表您要個人化工具從中選取最佳內容項目的內容選擇。 將下列方法新增至 Program 類別，以代表動作及其特性的組合。
+動作代表您要個人化工具從中選取最佳內容項目的內容選擇。 將下列方法新增至 Program 類別，以代表動作及其特性的組合。 
 
 [!code-csharp[Food items as actions](~/samples-personalizer/quickstarts/csharp/PersonalizerExample/Program.cs?name=createAction)]
 

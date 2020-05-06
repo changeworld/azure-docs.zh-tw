@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c32d42de5290bff63a897e7b9d5c8a2b1bf04ce4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113169"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786966"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全球傳輸網路架構和虛擬 WAN
 
@@ -98,6 +98,9 @@ ExpressRoute Global 觸及是 ExpressRoute 的附加元件功能。 有了全球
 您可以使用 ExpressRoute 線路和/或站對站 VPN 連線，將分支連接到 Azure 虛擬 WAN 中樞。 您可以將分支連接到最接近分支區域中的虛擬 WAN 中樞。
 
 此選項可讓企業利用 Azure 骨幹來連接分支。 不過，即使這項功能可供使用，您還是應該衡量透過 Azure 虛擬 WAN 連接分支的優點，與使用私人 WAN。  
+
+> [!NOTE]
+> 停用虛擬 WAN 中的分支對分支連線-虛擬 WAN 可以設定為停用分支對分支連線能力。 此組態將會封鎖 VPN （S2S 和 P2S）與 Express Route 連線網站之間的路由傳播。 此設定不會影響分支對 Vnet 和 Vnet 對 Vnet 路由傳播和連線能力。 使用 Azure 入口網站設定此設定：在 [虛擬 WAN 設定] 功能表底下，選擇 [設定：分支至分支-已停用]。 
 
 ### <a name="remote-user-to-vnet-c"></a>遠端使用者對 VNet （c）
 

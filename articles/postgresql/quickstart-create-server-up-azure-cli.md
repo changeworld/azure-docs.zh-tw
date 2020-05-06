@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: fe15c02286223ec0829b31664811b7f589cf16aa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1dd20d94737df3e799876323d2aeb555dcb9a381
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74774827"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146801"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>快速入門：使用 Azure CLI 命令 az postgres up (預覽) 建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -63,7 +63,7 @@ sku-name | GP_Gen5_2 | SKU 的名稱。 遵循簡短形式的慣例 {pricing tie
 backup-retention | 7 | 保留備份的時間長度。 單位為天。
 geo-redundant-backup | 已停用 | 是否應針對此伺服器啟用異地備援備份。
 location | westus2 | 伺服器的 Azure 位置。
-ssl-enforcement | 已停用 | 是否應針對此伺服器啟用 SSL。
+ssl-enforcement | 已停用 | 是否應針對此伺服器啟用 TLS/SSL。
 storage-size | 5120 | 伺服器的儲存體容量 (單位為 MB)。
 version | 10 | PostgreSQL 主要版本。
 admin-user | 由系統產生 | 系統管理員的使用者名稱。

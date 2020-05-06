@@ -7,12 +7,12 @@ ms.tgt_pltfrm: linux
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 349aa4652ae9f52641b5865e48dcd4c113ca7f9d
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 1eeb5bbd4b10ef660a50f40d6c1300b0ca214561
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82086280"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82206660"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>在 Linux 上的 App Service 中建立 ASP.NET Core 應用程式
 
@@ -33,7 +33,7 @@ ms.locfileid: "82086280"
 若要完成本快速入門：
 
 * <a href="https://git-scm.com/" target="_blank">安裝 Git</a>
-* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安裝最新的 .NET Core SDK 3.1</a>
+* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">安裝最新的 .NET Core 3.1 SDK</a>
 
 ## <a name="create-the-app-locally"></a>在本機建立應用程式
 

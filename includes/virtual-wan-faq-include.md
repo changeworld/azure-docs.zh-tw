@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2b30c176cf3c9dd31ae3efa85d308b3f89bd4dbe
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 5d2d33dc2ef135fde0955336a40f851d6ed4e0e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81734688"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204537"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>使用者是否需要具有 SD-WAN/VPN 裝置的中樞與輪輻才能使用 Azure 虛擬 WAN？
 
@@ -49,7 +49,7 @@ ms.locfileid: "81734688"
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>使用者 VPN (點對站) 可支援多少用戶端？
 
-每個使用者 VPN P2S 閘道都有兩個執行個體，而每個執行個體都可隨著縮放單位變更來支援特定使用者數目。 縮放單位 1-3 支援 500 個連線、縮放單位 4-6 支援 1000 個連線、縮放單位 7-10 支援 5000 個連線、縮放單位 11+ 支援最多 10,000 個連線。 例如，我們假設使用者選擇 1 作為縮放單位。 每個縮放單位表示已部署的主動-主動閘道，而每個執行個體 (在此案例中為 2 個) 會支援最多 500 個連線。 因此，每個閘道可以有 500 * 2 個連線，但不表示您要為此縮放單位規劃 1000 個連線 (而不是 500 個)，因為如果您超過建議的連線計數，額外 500 個連線的連線能力可能會中斷，進而造成執行個體需要支援。
+每個使用者 VPN P2S 閘道都有兩個執行個體，而每個執行個體都可隨著縮放單位變更來支援特定使用者數目。 縮放單位 1-3 支援 500 個連線、縮放單位 4-6 支援 1000 個連線、縮放單位 7-12 支援 5000 個連線、縮放單位 13-20 支援最多 10,000 個連線。 例如，我們假設使用者選擇 1 作為縮放單位。 每個縮放單位表示已部署的主動-主動閘道，而每個執行個體 (在此案例中為 2 個) 會支援最多 500 個連線。 因此，每個閘道可以有 500 * 2 個連線，但不表示您要為此縮放單位規劃 1000 個連線 (而不是 500 個)，因為如果您超過建議的連線計數，額外 500 個連線的連線能力可能會中斷，進而造成執行個體需要支援。
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Azure 虛擬網路閘道 (VPN 閘道) 與 Azure 虛擬 WAN VPN 閘道之間有何差異？
 
@@ -215,6 +215,10 @@ Azure 虛擬 WAN 中樞最多可同時支援 1,000 個 S2S 連線、10,000 個 P
 1) 路由來源 a) 網路路由 - 從虛擬中樞閘道所直接學到的 VNET 前置碼 b) 中樞 RouteTable (靜態設定的路由) c) BGP d) InterHub 路由
 2)  路由計量：虛擬 WAN 偏好透過 VPN 的 ExpressRoute。 相較於 VPN 同儕節點，ExpressRoute 同儕節點具有更高的權重
 3)  AS 路徑長度
+
+### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>虛擬 WAN 中是否支援 IPv6？
+
+虛擬 WAN 中樞和其閘道不支援 IPv6。如果您的 VNET 具有 IPv6 支援，並且想要將 VNET 連線至虛擬 WAN，則此情況也不受支援。 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>虛擬 WAN 類型 (基本和標準) 之間有何差異？
 
