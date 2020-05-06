@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 039879cb725c20af3c40698947ea9abe189d08ad
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271140"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731758"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(已淘汰) 使用 Draft 搭配 Azure Container Service 與 Azure Container Registry，可將應用程式建置及部署至 Kubernetes
 
@@ -102,7 +102,7 @@ waiting for AAD role to propagate.done
 
 
 1. 在 https://github.com/Azure/draft/releases \(英文\) 下載適用於您環境的 Draft ，並將它安裝到 PATH 中以使用該命令。
-2. 在 https://github.com/kubernetes/helm/releases \(英文\) 下載適用於您環境的 Helm，並將它[安裝到 PATH 中以使用該命令](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client) \(英文\)。
+2. 在 https://github.com/kubernetes/helm/releases \(英文\) 下載適用於您環境的 Helm，並將它[安裝到 PATH 中以使用該命令](https://helm.sh/docs/intro/quickstart#install-helm) \(英文\)。
 3. 設定 Draft 以使用您的登錄，並針對它所建立的每個 Helm 圖表建立子網域。 若要設定 Draft，您需要：
    - 您的 Azure Container Registry 名稱 (在此範例中為 `draftacsdemo`)
    - 您的登錄機碼或密碼，從 `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`。

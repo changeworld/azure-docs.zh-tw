@@ -7,10 +7,10 @@ description: 了解 Azure Dev Spaces 可為 Azure Kubernetes Service 叢集中�
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: 8b22181bcddda9e4156c0e0dbe61d7d813498d96
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80529718"
 ---
 # <a name="what-is-azure-dev-spaces"></a>什麼是 Azure Dev Spaces？
