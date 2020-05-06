@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: e5dcb39430158db1ee9a18524d0214335a2bbbba
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b65e8f470b36ab1642e9144e081253a577dabc3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80045384"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202497"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>教學課程：使用 Linux 上的 Azure App Service 和 Azure Cosmos DB 建置 Java Spring Boot Web 應用程式
 
@@ -165,7 +165,7 @@ bash-3.2$ mvn package spring-boot:run
 [INFO] TodoApplication - Started TodoApplication in 45.573 seconds (JVM running for 76.534)
 ```
 
-Spring TODO 應用程式啟動之後，您可以使用以下連結從本機存取應用程式：[http://localhost:8080/](http://localhost:8080/)。
+Spring TODO 應用程式啟動之後，您可以使用以下連結從本機存取應用程式：`http://localhost:8080/`。
 
  ![在本機存取 Spring TODO 應用程式](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 

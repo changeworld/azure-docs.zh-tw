@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
-ms.date: 04/02/2020
-ms.openlocfilehash: fa33861d86ff8bee3e2a34fb3d93032ac6180880
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/09/2020
+ms.openlocfilehash: d960c8225cbb22c221ecaec1b7c49b5bb20c1429
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879620"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203636"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>教學課程：建立多類別影像分類的標記專案 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -75,18 +75,6 @@ Azure Machine Learning 資料存放區用來儲存連線資訊，例如您的訂
 
 1. 選取 [建立]  以建立資料存放區。
 
-### <a name="add-labelers-to-workspace"></a>將標記人員新增至工作區
-
-設定您的工作區，以包含將為任何專案標記資料的所有人員。  稍後您會將這些標記人員新增至您特定的標記專案。
-
-1. 在左側，選取 [資料標記]  。
-
-1. 在頁面頂端選取 [標記人員]  。
-
-1. 選取 [新增標記人員]  以新增標記人員的電子郵件地址。
-
-1. 繼續新增更多標記人員，直到完成為止。
-
 ### <a name="create-a-labeling-project"></a>建立加上標籤專案
 
 您現在已有標記人員清單，並可存取您想要標記的資料，請建立您的標記專案。
@@ -142,51 +130,21 @@ Azure Machine Learning 資料存放區用來儲存連線資訊，例如您的訂
 
 此頁面不會自動重新整理。 在暫停之後，手動重新整理頁面，直到專案的狀態並更為 [已建立]  。
 
-### <a name="add-labelers-to-your-project"></a>將標記人員新增至您的專案
-
-將部分或所有標記人員新增至此專案。
-
-1. 選取專案名稱以開啟專案。  
-
-1. 在頁面頂端選取 [小組]  。
-
-1. 選取 [labeling_tutorial 預設小組]  連結。
-
-1. 現在使用 [指派標記人員]  ，新增您想要參與此專案的標記人員。 
-
-1. 從您稍早建立的標記人員清單中選取。  選取您想要使用的所有標記人員之後，選取 [指派標記人員]  將其新增至您的預設專案小組。
-
 ## <a name="start-labeling"></a>開始標記
 
 您現在已設定 Azure 資源，並已設定資料標記專案。 現在可以將標籤新增至您的資料。
 
-### <a name="notify-labelers"></a>通知標記人員
+### <a name="tag-the-images"></a>標記影像
 
-如果您有許多要標記的影像，希望您也有許多標記人員可以完成這項工作。  您現在想要傳送指示給他們，讓他們可以存取資料並開始標記。
+在本教學課程的這個部分，您的角色將會從「專案管理員」  切換至「標記人員」  。  具有您工作區參與者存取權的任何人都可以成為標記人員。
 
 1. 在 [Machine Learning Studio](https://ml.azure.com) 中，選取左側的 [資料標記]  以尋找您的專案。  
 
-1. 選取專案名稱連結。
+1. 選取清單中的專案名稱。
 
-1. 在頁面頂端選取 [詳細資料]  。  您會看到專案的摘要。
+1. 在專案名稱底下，選取 [標籤資料]  。
 
-    ![專案詳細資料](media/tutorial-labeling/project-details.png)
-
-1. 複製 [標記入口網站 URL]  連結以傳送給您的標記人員。
-
-1. 現在選取頂端的 [小組]  以尋找您的標記小組。  
-
-1. 選取小組名稱連結。
-
-1. 在頁面頂端，選取 [電子郵件小組]  以啟動您的電子郵件。  貼上您剛才複製的標記入口網站 URL。  
-
-每次標記人員移至入口網站 URL 時，就會顯示更多要標記的影像，直到佇列是空的為止。  
-
-### <a name="tag-the-images"></a>標記影像
-
-在本教學課程的這個部分，您的角色將會從「專案管理員」  切換至「標記人員」  。  使用您傳送給小組的 URL。  此 URL 會帶您前往專案的標記入口網站。  如果您已新增指示，則會在抵達頁面時看到這些指示。
-
-1. 在頁面頂端，選取 [工作]  以開始標記。
+1. 閱讀指示，然後選取 [工作]  。
 
 1. 選取右邊的縮圖影像，以顯示您想要一舉標記的影像數目。 您必須先標記所有影像，才能繼續進行。 只有在處理全新而未標記的資料頁面時，才可切換版面配置。 切換版面配置會清除頁面上進行中的標記工作。
 

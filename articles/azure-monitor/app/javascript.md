@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 5414a70180a82be8253dace7d800c90c1ae6a9bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: daea761d027341eaf8f6c0d137f3049c45e82924
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276071"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836609"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -76,7 +76,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
     - 提出要求之使用者的識別碼（如果有的話）
     - 提出要求的相互關聯內容（如果有的話）
 - **使用者資訊**（例如，位置、網路、IP）
-- **裝置資訊**（例如瀏覽器、OS、版本、語言、解析度、模型）
+- **裝置資訊**（例如，瀏覽器、OS、版本、語言、型號）
 - **會話資訊**
 
 ### <a name="telemetry-initializers"></a>遙測初始化運算式
@@ -96,7 +96,7 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 大部分設定欄位的名稱都是，讓它們可以預設為 false。 除了以外，所有欄位都`instrumentationKey`是選擇性的。
 
 | Name | 預設 | 描述 |
@@ -149,10 +149,10 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 ## <a name="react-extensions"></a>回應延伸模組
 
-| Extensions |
+| 延伸模組 |
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md) \(英文\)|
+| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
 
 ## <a name="explore-browserclient-side-data"></a>探索瀏覽器/用戶端資料
 

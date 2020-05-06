@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083520"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838717"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>選擇時間序列識別碼的最佳做法
 
@@ -27,6 +27,7 @@ ms.locfileid: "77083520"
 
 > [!IMPORTANT]
 > 時間序列識別碼如下：
+>
 > * 區分*大小寫*的屬性：在搜尋、比較、更新及進行分割時，會使用字母和字元轉換。
 > * *不可變*的屬性：一旦建立之後，就無法變更。
 
@@ -56,7 +57,7 @@ ms.locfileid: "77083520"
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>範例2：具有複合索引鍵的時間序列識別碼
 
-* 您需要讓同一資產群內的多個特性都必須是唯一的。 
+* 您需要讓同一資產群內的多個特性都必須是唯一的。
 * 您是智慧型建築的製造商，並在每個房間部署感應器。 在每個空間中，您通常會有相同的**sensorId**值。 範例包括**sensor1**、 **sensor2**和**sensor3**。
 * 您的大樓在屬性**flrRm**中的各個網站之間有重迭的樓層和房間號碼。 這些數位具有**1a**、 **2b**和**3a**之類的值。
 * 您有一個屬性（ **location**），其中包含**Redmond**、**巴塞羅納**和**東京**等值。 若要建立唯一性，您可以指定下列三個屬性做為時間序列識別碼索引鍵： **sensorId**、 **flrRm**和**location**。
@@ -72,7 +73,7 @@ ms.locfileid: "77083520"
 }
 ```
 
-在 Azure 入口網站中，您可以接著輸入複合索引鍵，如下所示： 
+在 Azure 入口網站中，您可以接著輸入複合索引鍵，如下所示：
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]

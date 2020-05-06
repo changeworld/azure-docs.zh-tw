@@ -2,13 +2,13 @@
 title: 快速入門：適用於 Node.js 的 QnA Maker 用戶端程式庫
 description: 本快速入門示範如何開始使用適用於 Node.js 的 QnA Maker 用戶端程式庫。
 ms.topic: quickstart
-ms.date: 01/13/2020
-ms.openlocfilehash: 05e6d2c77a351c22c73f0bdb54daeaf0e03f4a9d
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.date: 04/27/2020
+ms.openlocfilehash: 48038c8e7e8250190d79aba7901567e18881e912
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76020911"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203999"
 ---
 使用適用於 Node.js 的 QnA Maker 用戶端程式庫來：
 
@@ -27,6 +27,9 @@ ms.locfileid: "76020911"
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * 最新版的 [Node.js](https://nodejs.org)。
+* 擁有 Azure 訂用帳戶之後，請在 Azure 入口網站中建立 [QnA Maker 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以取得您的撰寫金鑰和端點。 在其部署後，選取 [前往資源]  。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 QnA Maker API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
 

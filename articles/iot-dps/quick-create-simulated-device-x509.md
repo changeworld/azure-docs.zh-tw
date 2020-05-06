@@ -3,17 +3,17 @@ title: 使用 C 將模擬 X.509 裝置佈建到 Azure IoT 中樞
 description: 本快速入門使用個別註冊。 在此快速入門中，您將使用適用於 Azure IoT 中樞裝置佈建服務 (DPS) 的 C 裝置 SDK 來建立及佈建模擬 X.509 裝置。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 04/26/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f0c95e495e222cc72f0a6fc432404fcbaa47df65
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 882d62c088fa51153ca496231beccd4bfd5af0cb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79216346"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82190347"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>快速入門：使用 Azure IoT C SDK 佈建 X.509 模擬裝置
 
@@ -172,7 +172,7 @@ Azure IoT 裝置佈建服務支援兩種類型的註冊：
 
 7. 在入口網站中，瀏覽到連結至您佈建服務的 IoT 中樞並選取 [IoT 裝置]  索引標籤。X.509 模擬裝置成功佈建到 IoT 中樞時，其裝置識別碼會出現在 [IoT 裝置]  刀鋒視窗上，且 [狀態]  顯示為 [已啟用]  。 您可能需要按頂端的 [重新整理]  按鈕。 
 
-    ![已向 IoT 中樞註冊裝置](./media/quick-create-simulated-device/hub-registration.png) 
+    ![已向 IoT 中樞註冊裝置](./media/quick-create-simulated-device-x509/hub-registration.png) 
 
 ## <a name="clean-up-resources"></a>清除資源
 

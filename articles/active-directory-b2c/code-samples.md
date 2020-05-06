@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ed593cb3f53878ceb1d4913a9244369ff4600371
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5c16173fb46144be7c44664c45e917ec0a886313
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78397570"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82181153"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C 程式碼範例
 
@@ -47,3 +47,9 @@ ms.locfileid: "78397570"
 | 範例 | 描述 |
 |--------| ----------- |
 | [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | 呼叫 Web API 的單頁應用程式 (SPA)。 運用 MSAL.js 完成 Azure AD B2C 驗證。 |
+
+## <a name="saml-test-application"></a>SAML 測試應用程式
+
+| 範例 | 描述 |
+|--------| ----------- |
+| [saml-sp-tester](https://github.com/azure-ad-b2c/saml-sp-tester/tree/master/source-code) | SAML 測試應用程式，用來測試設定為 SAML 識別提供者的 Azure AD B2C。 |

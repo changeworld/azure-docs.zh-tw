@@ -4,10 +4,10 @@ description: 媒體藍圖範例的控制項對應。 每個控制項都會對應
 ms.date: 02/24/2020
 ms.topic: sample
 ms.openlocfilehash: bdc4ef65c6d61a9d4217d7873bb29bd787842e71
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78201735"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>媒體藍圖範例的控制項對應

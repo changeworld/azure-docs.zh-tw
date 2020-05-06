@@ -4,16 +4,16 @@ description: 了解如何藉由連線至 SQL Database，讓資料驅動的 Linux
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 08/06/2019
+ms.date: 04/23/2020
 ms.custom: mvc, cli-validate, seodec18
-ms.openlocfilehash: 7eed76a6d5272b6e4411497ad4e1d5dbc62b6252
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 5bd20f98b10989da0a66acbf45b99d724664cf5d
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085889"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82208120"
 ---
-# <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>在 Linux 上的 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式
+# <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>教學課程：在 Linux 上的 Azure App Service 中建置 ASP.NET Core 和 SQL Database 應用程式
 
 > [!NOTE]
 > 本文會將應用程式部署至 Linux 上的 App Service。 若要在 _Windows_ 上部署至 App Service，請參閱[在 Azure App Service 中建置 .NET Core 和 SQL Database 應用程式](../app-service-web-tutorial-dotnetcore-sqldb.md)。
@@ -64,7 +64,7 @@ cd dotnetcore-sqldb-tutorial
 執行下列命令以安裝必要的套件、執行資料庫移轉，然後啟動應用程式。
 
 ```bash
-dotnet restore
+dotnet tool install -g dotnet-ef
 dotnet ef database update
 dotnet run
 ```
@@ -91,7 +91,7 @@ dotnet run
 
 在 Cloud Shell 中，使用 [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) 命令建立 SQL Database 邏輯伺服器。
 
-將 *\<server-name>* 預留位置取代為唯一的 SQL Database 名稱。 這個名稱會用來作為 SQL Database 端點 `<server-name>.database.windows.net` 的一部分，因此，這個名稱在 Azure 中的所有邏輯伺服器必須是唯一的。 名稱只能包含小寫字母、數字及連字號 (-) 字元，且長度必須為 3 到 50 個字元。 此外，將 *\<db-username>* 和 *\<db-password>* 取代為您選擇的使用者名稱和密碼。 
+將 \<server-name>  預留位置取代為「唯一」  的 SQL Database 名稱。 這個名稱會用來做為全域唯一 SQL Database 端點 (`<server-name>.database.windows.net`) 的一部分。 有效字元為 `a`-`z`、`0`-`9`、`-`。 此外，將 *\<db-username>* 和 *\<db-password>* 取代為您選擇的使用者名稱和密碼。 
 
 
 ```azurecli-interactive
@@ -102,7 +102,7 @@ az sql server create --name <server-name> --resource-group myResourceGroup --loc
 
 <pre>
 {
-  "administratorLogin": "sqladmin",
+  "administratorLogin": "&lt;db-username&gt;",
   "administratorLoginPassword": null,
   "fullyQualifiedDomainName": "&lt;server-name&gt;.database.windows.net",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Sql/servers/&lt;server-name&gt;",
@@ -126,6 +126,16 @@ az sql server create --name <server-name> --resource-group myResourceGroup --loc
 az sql server firewall-rule create --resource-group myResourceGroup --server <server-name> --name AllowAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
 ```
 
+> [!TIP] 
+> [僅使用您的應用程式所用的輸出 IP 位址](../overview-inbound-outbound-ips.md#find-outbound-ips)，讓您的防火牆規則更具限制性。
+>
+
+在 Cloud Shell 中，將 *\<您的 IP 位址>* 取代為[您的本機 IPv4 IP 位址](https://www.whatsmyip.org/)並再次執行命令，以允許從您的本機電腦進行存取。
+
+```azurecli-interactive
+az sql server firewall-rule create --name AllowLocalClient --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address=<your-ip-address> --end-ip-address=<your-ip-address>
+```
+
 ### <a name="create-a-database"></a>建立資料庫
 
 使用 [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) 命令在伺服器中建立具有 [S0 效能等級](../../sql-database/sql-database-service-tiers-dtu.md)的資料庫。
@@ -136,13 +146,78 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 
 ### <a name="create-connection-string"></a>建立連接字串
 
-將下列字串取代為您稍早使用的 *\<server-name>* 、 *\<db-username>* 和 *\<db-password>* 。
+使用 [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) 命令來取得連接字串。
 
+```azurecli-interactive
+az sql db show-connection-string --client ado.net --server cephalin-core --name coreDB
 ```
-Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-username>;Password=<db-password>;Encrypt=true;Connection Timeout=30;
-```
+
+在命令輸出中，以您稍早使用的資料庫管理員認證取代 \<username>  及 \<password>  。
 
 此為您 .NET Core 應用程式的連接字串。 複製它以供稍後使用。
+
+### <a name="configure-app-to-connect-to-production-database"></a>設定應用程式以連線到生產資料庫
+
+在您的本機存放庫中，開啟 Startup.cs 並且尋找下列程式碼：
+
+```csharp
+services.AddDbContext<MyDatabaseContext>(options =>
+        options.UseSqlite("Data Source=localdatabase.db"));
+```
+
+將其取代為下列程式碼。
+
+```csharp
+services.AddDbContext<MyDatabaseContext>(options =>
+        options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+```
+
+> [!IMPORTANT]
+> 對於需要擴增的生產應用程式，請遵循[在生產環境中套用移轉](/aspnet/core/data/ef-rp/migrations#applying-migrations-in-production)中的最佳做法。
+> 
+
+### <a name="run-database-migrations-to-the-production-database"></a>對生產資料庫執行資料庫移轉
+
+您的應用程式目前會連線到本機 Sqlite 資料庫。 現在，您已設定了 Azure SQL Database，接下來請重新建立初始移轉，以將其設為目標。 
+
+從存放庫根路徑中，執行下列命令。 以您稍早建立的連接字串取代 \<connection-string>  。
+
+```
+# Delete old migrations
+rm Migrations -r
+# Recreate migrations
+dotnet ef migrations add InitialCreate
+
+# Set connection string to production database
+# PowerShell
+$env:ConnectionStrings:MyDbConnection="<connection-string>"
+# CMD (no quotes)
+set ConnectionStrings:MyDbConnection=<connection-string>
+# Bash
+export ConnectionStrings__MyDbConnection="<connection-string>"
+
+# Run migrations
+dotnet ef database update
+```
+
+### <a name="run-app-with-new-configuration"></a>使用新組態執行應用程式
+
+現在，資料庫移轉會在生產資料庫上執行，請執行下列程式來測試您的應用程式：
+
+```
+dotnet run
+```
+
+在瀏覽器中，瀏覽至 `http://localhost:5000` 。 選取 [新建]  連結，並且建立幾個 [待辦事項]  項目。 您的應用程式現在正在讀取及寫入資料至生產資料庫。
+
+認可本機變更，然後將變更認可至 Git 存放庫中。 
+
+```bash
+git add .
+git commit -m "connect to SQLDB in Azure"
+```
+
+您現在已可開始部署您的程式碼。
 
 ## <a name="deploy-app-to-azure"></a>將應用程式部署到 Azure
 
@@ -165,86 +240,41 @@ Server=tcp:<server-name>.database.windows.net,1433;Database=coreDB;User ID=<db-u
 若要設定 Azure 應用程式的連接字串，請在 Cloud Shell 中使用 [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) 命令。 在下列命令中，將 *\<app-name>* 以及 *\<connection-string>* 參數取代為您稍早建立的連接字串。
 
 ```azurecli-interactive
-az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLServer
+az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
 ```
 
 在 ASP.NET Core 中，您可以使用標準模式的這個具名連接字串 (`MyDbConnection`)，例如 appsettings.json  中指定的任何連接字串。 在此情況下，`MyDbConnection` 也會定義在 appsettings.json  中。 在 App Service 中執行時，App Service 中所定義的連接字串會優先於 appsettings.json  中所定義的連接字串。 程式碼會在本機開發期間使用 appsettings.json  ，而且相同的程式碼會在部署時使用 App Service 值。
 
-若要了解如何在程式碼中參考連接字串，請參閱[在生產環境中連線到 SQL Database](#connect-to-sql-database-in-production)。
-
-### <a name="configure-environment-variable"></a>設定環境變數
-
-接下來，將 `ASPNETCORE_ENVIRONMENT` 應用程式設定設為_生產_。 此設定可讓您知道您是否正在 Azure 中執行，因為您針對本機開發環境使用 SQLite，針對 Azure 環境使用 SQL Database。
-
-下列範例會在 Azure 應用程式中設定 `ASPNETCORE_ENVIRONMENT` 應用程式設定。 取代 *\<app-name>* 預留位置。
-
-```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings ASPNETCORE_ENVIRONMENT="Production"
-```
-
-若要了解如何在程式碼中參考環境變數，請參閱[在生產環境中連線到 SQL Database](#connect-to-sql-database-in-production)。
-
-### <a name="connect-to-sql-database-in-production"></a>在生產環境中連線到 SQL Database
-
-在您的本機存放庫中，開啟 Startup.cs 並且尋找下列程式碼：
-
-```csharp
-services.AddDbContext<MyDatabaseContext>(options =>
-        options.UseSqlite("Data Source=localdatabase.db"));
-```
-
-將它取代為下列程式碼，該程式碼使用您先前設定的環境變數。
-
-```csharp
-// Use SQL Database if in Azure, otherwise, use SQLite
-if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-    services.AddDbContext<MyDatabaseContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
-else
-    services.AddDbContext<MyDatabaseContext>(options =>
-            options.UseSqlite("Data Source=MvcMovie.db"));
-
-// Automatically perform database migration
-services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
-```
-
-如果此程式碼偵測到正在生產環境 (表示 Azure 環境) 中執行，則它會使用您設定的連接字串，連線到 SQL Database。 如需有關如何在您程式碼中存取這些應用程式設定的詳細資訊，請參閱[存取環境變數](configure-language-dotnetcore.md#access-environment-variables)。
-
-`Database.Migrate()` 呼叫可在於 Azure 中執行時協助您，因為它會根據其移轉設定，自動建立您的 .NET Core 應用程式需要的資料庫。
-
-儲存變更，然後將變更認可至 Git 存放庫中。
-
-```bash
-git add .
-git commit -m "connect to SQLDB in Azure"
-```
+若要了解如何在程式碼中參考連接字串，請參閱[設定應用程式以連線到生產資料庫](#configure-app-to-connect-to-production-database)。
 
 ### <a name="push-to-azure-from-git"></a>從 Git 推送至 Azure
 
-[!INCLUDE [app-service-plan-no-h](../../../includes/app-service-web-git-push-to-azure-no-h.md)]
+[!INCLUDE [push-to-azure-no-h](../../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
 <pre>
-Counting objects: 98, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (92/92), done.
-Writing objects: 100% (98/98), 524.98 KiB | 5.58 MiB/s, done.
-Total 98 (delta 8), reused 0 (delta 0)
+Enumerating objects: 273, done.
+Counting objects: 100% (273/273), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (175/175), done.
+Writing objects: 100% (273/273), 1.19 MiB | 1.85 MiB/s, done.
+Total 273 (delta 96), reused 259 (delta 88)
+remote: Resolving deltas: 100% (96/96), done.
+remote: Deploy Async
 remote: Updating branch 'master'.
-remote: .
 remote: Updating submodules.
-remote: Preparing deployment for commit id '0c497633b8'.
-remote: Generating deployment script.
-remote: Project file path: ./DotNetCoreSqlDb.csproj
-remote: Generated deployment script files
-remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment.
+remote: Preparing deployment for commit id 'cccecf86c5'.
+remote: Repository path is /home/site/repository
+remote: Running oryx build...
+remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
+remote: You can report issues at https://github.com/Microsoft/Oryx/issues
 remote: .
 remote: .
 remote: .
-remote: Finished successfully.
+remote: Done.
 remote: Running post deployment command(s)...
+remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
+remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/cccecf86c56493ffa594e76ea1deb3abb3702d89/log'
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
  * [new branch]      master -> master
 </pre>
@@ -269,23 +299,18 @@ http://<app-name>.azurewebsites.net
 
 ### <a name="update-your-data-model"></a>更新資料模型
 
-在程式碼編輯器中開啟 _Models\Todo.cs_。 將下列屬性加入至 `ToDo` 類別：
+在程式碼編輯器中開啟 _Models/Todo.cs_。 將下列屬性加入至 `ToDo` 類別：
 
 ```csharp
 public bool Done { get; set; }
 ```
 
-### <a name="run-code-first-migrations-locally"></a>在本機執行 Code First 移轉
+### <a name="rerun-database-migrations"></a>重新執行資料庫移轉
 
-執行數個命令以進行本機資料庫的更新。
+執行幾個命令來更新生產資料庫。
 
 ```bash
 dotnet ef migrations add AddProperty
-```
-
-更新本機資料庫：
-
-```bash
 dotnet ef database update
 ```
 
@@ -293,15 +318,15 @@ dotnet ef database update
 
 在您的程式碼中進行一些變更以使用 `Done` 屬性。 為了簡單起見，在本教學課程中，您僅需變更 `Index` 和 `Create` 檢視，以查看作用中的屬性。
 
-開啟 _Controllers\TodosController.cs_。
+開啟 _Controllers/TodosController.cs_。
 
-尋找 `Create()` 方法，並將 `Done` 加入至 `Bind` 屬性 (Attribute) 中的屬性 (Property) 清單。 完成時，您的 `Create()` 方法簽章應該如以下程式碼所示：
+尋找 `Create([Bind("ID,Description,CreatedDate")] Todo todo)` 方法，並將 `Done` 加入至 `Bind` 屬性 (Attribute) 中的屬性 (Property) 清單。 完成時，您的 `Create()` 方法簽章應該如以下程式碼所示：
 
 ```csharp
 public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")] Todo todo)
 ```
 
-開啟 _Views\Todos\Create.cshtml_。
+開啟 _Views/Todos/Create.cshtml_。
 
 在 Razor 程式碼中，您應該會看到 `Description` 的 `<div class="form-group">` 元素，然後是另一個 `CreatedDate` 的 `<div class="form-group">` 元素。 在這兩個元素的正後方，新增另一個 `Done` 的 `<div class="form-group">` 元素：
 
@@ -315,7 +340,7 @@ public async Task<IActionResult> Create([Bind("ID,Description,CreatedDate,Done")
 </div>
 ```
 
-開啟 _Views\Todos\Index.cshtml_。
+開啟 _Views/Todos/Index.cshtml_。
 
 搜尋空白的 `<th></th>` 元素。 在此元素的正上方，新增下列 Razor 程式碼：
 
@@ -353,24 +378,40 @@ git commit -m "added done field"
 git push azure master
 ```
 
-完成 `git push` 之後，巡覽至 Azure 應用程式，然後嘗試執行新功能。
+`git push` 完成之後，瀏覽至 App Service 應用程式並嘗試新增待辦事項，然後核取 [完成]  。
 
 ![Code First 移轉之後的 Azure 應用程式](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
-仍會顯示您現有的所有待辦事項項目。 當您重新發佈 .NET Core 應用程式時，您 SQL Database 中現有的資料不會遺失。 此外，Entity Framework Code 移轉只會變更資料結構描述，並讓現有的資料保持不變。
+仍會顯示您現有的所有待辦事項項目。 當您重新發佈 ASP.NET Core 應用程式時，您 SQL Database 中現有的資料不會遺失。 此外，Entity Framework Code 移轉只會變更資料結構描述，並讓現有的資料保持不變。
 
 ## <a name="stream-diagnostic-logs"></a>資料流診斷記錄
+
+當 ASP.NET Core 應用程式在 Azure App Service 中執行時，您可以透過管道將主控台記錄傳送至 Cloud Shell。 這樣一來，您就能取得相同的診斷訊息，以協助您偵錯應用程式錯誤。
 
 範例專案已遵循 [Azure 中的 ASP.NET Core 記錄](https://docs.microsoft.com/aspnet/core/fundamentals/logging#azure-app-service-provider)指引，其中有兩項組態變更：
 
 - 在 *DotNetCoreSqlDb.csproj* 中包含 `Microsoft.Extensions.Logging.AzureAppServices` 的參考。
-- 在 Startup.cs  中呼叫 `loggerFactory.AddAzureWebAppDiagnostics()`。
+- 在 Program.cs  中呼叫 `loggerFactory.AddAzureWebAppDiagnostics()`。
+
+若要將 App Service 中的 ASP.NET Core [記錄層級](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-level)從預設層級 `Error` 設定為 `Information`，請在 Cloud Shell 中使用 [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) 命令。
+
+```azurecli-interactive
+az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging true --level information
+```
 
 > [!NOTE]
-> 專案的記錄層級在 appsettings.json  中設定為 `Information`。
->
+> 專案的記錄層級已經在 appsettings.json  中設定為 `Information`。
+> 
 
-[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+若要開始記錄資料流，請在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) 命令。
+
+```azurecli-interactive
+az webapp log tail --name <app-name> --resource-group myResourceGroup
+```
+
+開始記錄資料流之後，重新整理瀏覽器中的 Azure 應用程式，以取得部分 Web 流量。 您現在會看到使用管線傳送到終端機的主控台記錄。 如果您沒有立即看到主控台記錄，請在 30 秒後再查看。
+
+若要隨時停止記錄資料流，請輸入 `Ctrl`+`C`。
 
 如需自訂 ASP.NET Core 記錄的詳細資訊，請參閱[登入 ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)。
 

@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/27/2018
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70072709"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203254"
 ---
 # <a name="add-an-api-manually"></a>手動新增 API
 
@@ -35,21 +35,11 @@ ms.locfileid: "70072709"
 
 ## <a name="create-an-api"></a>建立 API
 
-1. 選取 [API 管理]  下方的 [API]  。
+1. 在 Azure 入口網站中，瀏覽至您的 APIM 服務，然後從功能表中選取 [API]  。
 2. 從左側功能表中選取 [+ 新增 API]  。
-3. 從清單選取 [空白 API]  。
-
-    ![空白 API](media/add-api-manually/blank-api.png)
-4. 輸入 API 的設定。
-
-    |**名稱**|**ReplTest1**|**說明**|
-    |---|---|---|
-    |**顯示名稱**|*空白 API*|此名稱會顯示於開發人員入口網站中。|
-    |**名稱**|*blank-api*|為 API 提供唯一的名稱。|
-    |**Web 服務 URL** (選擇性)|*https://httpbin.org*| 如果您想要模擬 API，您可以不輸入任何項目。 <br/>在此案例中，我們會輸入 [https://httpbin.org](https://httpbin.org)。這是公用的測試服務。 <br/>如果您想要匯入會自動對應至後端的 API，請參閱[相關主題](#related-topics)一節中的其中一個主題。|
-    |**URL 配置**|*HTTPS*|在此案例中，即使後端有不安全的 HTTP 存取，我們還是會指定安全的 HTTPS APIM 存取給後端。 <br/>這種狀況 (HTTPS 至 HTTP) 稱為 HTTPS 終止。 如果您的 API 存在於虛擬網路中 (而您知道存取是安全的，即使不使用 HTTPS)，您就可以這麼做。 <br/>您可以使用「HTTPS 終止」來減少一些 CPU 循環。|
-    |**URL 尾碼**|*hbin*| 此尾碼是用來在這個 APIM 執行個體中識別此特定 API 的名稱。 它在這個 APIM 執行個體中必須是唯一的。|
-    |**產品**|*無限制*|透過將 API 關聯至某個產品來發佈 API。 如果您想要發佈 API 以供開發人員使用，請將它新增至產品。 您可以在 API 建立期間執行此動作，或稍後設定它。<br/><br/>產品是一或多個 API 的關聯。 您可以包括數個 API，並透過開發人員入口網站將它們提供給開發人員。 <br/>開發人員必須先訂閱產品，才能取得 API 的存取權。 當他們訂閱時，就能取得適用於該產品中任何 API 的中訂用帳戶金鑰。 如果您建立了 APIM 執行個體，您就已經是系統管理員，因此根據預設，您已訂閱每一個產品。<br/><br/> 依預設，每個 API 管理執行個體會隨附兩個範例產品：[入門]  和 [無限制]  。| 
+3. 從清單選取 [空白 API]  。  
+    ![空白 API](media/add-api-manually/blank-api.png)  
+4. 輸入 API 的設定。 這些設定會在 [匯入和發佈您的第一個 API](import-and-publish.md#-import-and-publish-a-backend-api) 教學課程中說明。
 5. 選取 [建立]  。
 
 此時，APIM 中沒有對應至後端 API 中任何作業的作業。 如果您呼叫透過後端公開的作業，而不是呼叫透過 APIM 公開的作業，您會收到 **404**。

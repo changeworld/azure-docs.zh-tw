@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/26/2019
 ms.custom: mvc
-ms.openlocfilehash: ef46b86186d1f5e26360de891b3a090ab0ece66b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 9aa19dfa0626ff0726911815addbb03945ee36f1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78894822"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82144856"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>開始監視 ASP.NET Core Web 應用程式
 
@@ -99,11 +99,6 @@ Application Insights 可以從任何連上網際網路的應用程式收集遙�
 5. 在左側按一下 [計量]  。 使用計量瀏覽器來調查資源的健康情況和使用量。 您可以按一下 [新增新的圖表]  來建立額外的自訂檢視，或選取 [編輯]  來修改現有圖表的類型、高度、調色盤、群組和計量。 例如，您可以製作圖表來顯示平均瀏覽器頁面載入時間，方法是從 [計量] 下拉式清單選取 [瀏覽器頁面載入時間] 並從 [彙總] 選取 [平均]。 若要深入了解 Azure 計量瀏覽器，請瀏覽[開始使用 Azure 計量瀏覽器](../../azure-monitor/platform/metrics-getting-started.md)。
 
      ![[計量] 索引標籤：瀏覽器頁面的平均載入時間圖表](./media/dotnetcore-quick-start/8metrics.png)
-
-## <a name="video"></a>影片
-
-- 關於如何從頭開始[使用 .NET Core 和 Visual Studio 設定 Application Insights](https://www.youtube.com/watch?v=NoS9UhcR4gA&t) 的外部逐步說明影片。
-- 關於如何從頭開始[使用 .NET Core 和 Visual Studio Code 設定 Application Insights](https://youtu.be/ygGt84GDync) 的外部逐步說明影片。
 
 ## <a name="clean-up-resources"></a>清除資源
 當您完成測試時，您可以刪除資源群組和所有相關資源。 若要這樣做，請依照下列步驟執行。

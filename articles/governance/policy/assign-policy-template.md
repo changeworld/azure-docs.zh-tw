@@ -4,12 +4,12 @@ description: 在本快速入門中，使用 Resource Manager 範本建立原則�
 ms.date: 03/16/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: ae6b2d151baaa904215639276c7fb74766810c6a
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: 646e2e064618e70fd9e9e747926f0886d85fde26
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606609"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82187778"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>快速入門：使用 Resource Manager 建立原則指派以識別不相容資源
 
@@ -70,7 +70,7 @@ ms.locfileid: "81606609"
 
 選取頁面左側的 [合規性]  。 接著，找出您所建立的 [稽核未使用受控磁碟的虛擬機器]  原則指派。
 
-![原則合規性概觀頁面](./media/assign-policy-template/policy-compliance.png)
+:::image type="content" source="./media/assign-policy-template/policy-compliance.png" alt-text="原則合規性概觀頁面" border="false":::
 
 如果有任何現有資源不符合這個新指派的規範，它們會顯示在 [不符合規範的資源]  下。
 
@@ -84,7 +84,7 @@ ms.locfileid: "81606609"
 
 1. 以滑鼠右鍵按一下 [稽核不是使用受控磁碟的 VM]  原則指派，並選取 [刪除指派]  。
 
-   ![從合規性概觀頁面刪除指派](./media/assign-policy-template/delete-assignment.png)
+   :::image type="content" source="./media/assign-policy-template/delete-assignment.png" alt-text="從合規性概觀頁面刪除指派" border="false":::
 
 ## <a name="next-steps"></a>後續步驟
 

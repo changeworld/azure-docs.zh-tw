@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 30b66414e87f642bc72b8723ebff57f2e9009f17
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: 737e8a247a232278db73de716647fc5bb890fe39
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "80239241"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184991"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>教學課程：對 ARM 範本部署進行疑難排解
 
@@ -26,20 +26,18 @@ ms.locfileid: "80239241"
 本教學課程涵蓋下列工作：
 
 > [!div class="checklist"]
-> * 建立有問題的範本
-> * 對驗證錯誤進行疑難排解
-> * 針對部署錯誤進行疑難排解
-> * 清除資源
+> - 建立有問題的範本
+> - 對驗證錯誤進行疑難排解
+> - 針對部署錯誤進行疑難排解
+> - 清除資源
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Prerequisites
 
 若要完成本文，您需要：
 
-* Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 ARM 範本](use-vs-code-to-create-template.md)。
+- Visual Studio Code 搭配 Resource Manager Tools 擴充功能。 請參閱[使用 Visual Studio Code 建立 ARM 範本](use-vs-code-to-create-template.md)。
 
 ## <a name="create-a-problematic-template"></a>建立有問題的範本
 
@@ -51,12 +49,14 @@ ms.locfileid: "80239241"
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
+
 3. 選取 [開啟]  以開啟檔案。
 4. 將 **apiVersion** 行變更為以下這一行：
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
+
     - **apiVersion1** 是無效的元素名稱。 這是驗證錯誤。
     - API 版本應為 "2018-07-01"。  這是部署錯誤。
 
@@ -64,7 +64,7 @@ ms.locfileid: "80239241"
 
 ## <a name="troubleshoot-the-validation-error"></a>對驗證錯誤進行疑難排解
 
-請參閱[部署範本](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)一節，以部署範本。
+請參閱[部署範本](template-tutorial-create-multiple-instances.md#deploy-the-template)一節，以部署範本。
 
 殼層應該會出現如下的錯誤：
 
@@ -78,7 +78,7 @@ New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; 
 
 ## <a name="troubleshoot-the-deployment-error"></a>對部署錯誤進行疑難排解
 
-請參閱[部署範本](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)一節，以部署範本。
+請參閱[部署範本](template-tutorial-create-multiple-instances.md#deploy-the-template)一節，以部署範本。
 
 殼層應該會出現如下的錯誤：
 

@@ -1,27 +1,31 @@
 ---
-title: 針對 Azure 註冊進行移難排解
+title: 針對在 Azure 入口網站或 Azure 帳戶中心註冊新帳戶時所發生的問題進行疑難排解
 description: 解決在 Microsoft Azure 入口網站的帳戶中心註冊新帳戶時，可能會遇到某些問題。
+services: cost-management-billing
 author: v-miegge
-ms.reviewer: dcscontentpm
+manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 540cb5b4ca8f78c734fbc7dcd16358be8eb391c0
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409462"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133174"
 ---
-# <a name="troubleshoot-azure-sign-up"></a>針對 Azure 註冊進行移難排解
+# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>針對在 Azure 入口網站或 Azure 帳戶中心註冊新帳戶時所發生的問題進行疑難排解
 
 您嘗試在 Microsoft Azure 入口網站或 Azure 帳戶中心註冊新帳戶時，可能會遇到某些問題。 在進行問題的疑難排解之前，請先確認下列事項：
 
 - 您為 Azure 帳戶設定檔 (包括連絡人電子郵件、地址和電話號碼) 提供的資訊正確無誤。
 - 信用卡資訊正確。
 - 您沒有具有相同資訊的 Microsoft 帳戶。
+
+> [!NOTE]
+> 如果您已經有現有的帳戶，而且正在尋找針對登入問題進行疑難排解的指引，請參閱[針對 Azure 訂用帳戶登入問題進行疑難排解](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue)。
 
 ## <a name="resolutions"></a>解決方式
 

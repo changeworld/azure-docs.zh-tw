@@ -2,16 +2,16 @@
 title: 使用範本參考
 description: 使用 Azure Resource Manager 範本參考來建立範本。
 author: mumian
-ms.date: 03/27/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: b713d508a5e28291778d3727c15e12972eea3a77
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 12990238455046d837b175318225bb4f3d317706
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878477"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82185042"
 ---
 # <a name="tutorial-utilize-the-resource-manager-template-reference"></a>教學課程：利用 Resource Manager 範本參考
 
@@ -102,21 +102,42 @@ ms.locfileid: "80878477"
 
 ## <a name="deploy-the-template"></a>部署範本
 
-請參閱 Visual Studio Code 快速入門中的[部署範本](quickstart-create-templates-use-visual-studio-code.md#deploy-the-template)一節，以取得部署程序。 當您部署範本時，請使用新增的值來指定 **storageAccountType** 參數，例如 **Premium_ZRS**。 如果您使用原始快速入門範本，部署將會失敗，因為 **Premium_ZRS** 不是允許的值。  若要傳遞參數值，請將下列切換新增至部署命令：
+1. 登入 [Azure Cloud Shell](https://shell.azure.com)
 
-# <a name="cli"></a>[CLI](#tab/CLI)
+1. 藉由選取左上角的 **PowerShell** 或 **Bash** (適用於 CLI) 來選擇您慣用的環境。  切換時必須重新啟動殼層。
 
-```azurecli
---parameters storageAccountType='Premium_ZRS'
-```
+    ![Azure 入口網站的 Cloud Shell 上傳檔案](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+1. 選取 [上傳/下載檔案]  ，然後選取 [上傳]  。 請參閱上一個螢幕擷取畫面。 選取您在前一節中儲存的檔案。 上傳檔案之後，您可以使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
 
-```azurepowershell
--storageAccountType "Premium_ZRS"
-```
+1. 從 Cloud Shell 執行下列命令。 選取要顯示 PowerShell 程式碼或 CLI 程式碼的索引標籤。
 
----
+    # <a name="cli"></a>[CLI](#tab/CLI)
+
+    ```azurecli
+    echo "Enter a project name that is used to generate resource group name:" &&
+    read projectName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    resourceGroupName="${projectName}rg" &&
+    az group create --name $resourceGroupName --location "$location" &&
+    az deployment group create --resource-group $resourceGroupName --template-file "$HOME/azuredeploy.json" --parameters storageAccountType='Standard_RAGRS'
+    ```
+
+    # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+
+    New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -storageAccountType "Standard_RAGRS"
+    ```
+
+    ---
+
+ 當您部署範本時，請使用新增的值來指定 **storageAccountType** 參數，例如 **Standard_RAGRS**。 如果您使用原始快速入門範本，部署將會失敗，因為 **Standard_RAGRS** 不是允許的值。
 
 ## <a name="clean-up-resources"></a>清除資源
 

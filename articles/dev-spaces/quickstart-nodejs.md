@@ -7,10 +7,10 @@ description: 本快速入門說明如何使用 Azure Dev Spaces 和 Visual Studi
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: 18171a2f8d13bfcf3df76b1453c39c59cab89d7c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80240190"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>快速入門：使用 Visual Studio Code 和 Node.js 在 Kubernetes 上偵錯和逐一查看 - Azure Dev Spaces

@@ -3,7 +3,7 @@ title: 快速入門：部署 Azure Kubernetes Service 叢集
 description: 了解如何使用 Azure CLI 快速建立 Kubernetes 叢集、部署應用程式，以及監視 Azure Kubernetes Service (AKS) 的效能。
 services: container-service
 ms.topic: quickstart
-ms.date: 09/13/2019
+ms.date: 04/28/2020
 ms.custom:
 - H1Hack27Feb2017
 - mvc
@@ -11,18 +11,18 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: 369e0da49064197524ee20bb8a0050c00c242260
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.openlocfilehash: 2b45154a0198fe0845649167d0fa35aabfd0625e
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81392767"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82207389"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入門：使用 Azure CLI 部署 Azure Kubernetes Service 叢集
 
 在此快速入門中，您將使用 Azure CLI 部署 Azure Kubernetes Service (AKS) 叢集。 AKS 是受控 Kubernetes 服務，可讓您快速部署及管理叢集。 在叢集上執行包含 Web 前端和 Redis 執行個體的多容器應用程式。 然後，您會了解如何監視叢集的健康情況和執行您應用程式的 Pod。
 
-如果您想要使用 Windows Server 容器 (目前在 AKS 中為預覽版本)，請參閱[建立支援 Windows Server 容器的 AKS 叢集][windows-container-cli]。
+若要深入了解如何建立 Windows Server 節點集區，請參閱[建立支援 Windows Server 容器的 AKS 叢集][windows-container-cli]。
 
 ![Azure Kubernetes Service 中部署的投票應用程式](./media/container-service-kubernetes-walkthrough/voting-app-deployed-in-azure-kubernetes-service.png)
 

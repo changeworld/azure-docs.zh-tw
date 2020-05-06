@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: 3912d55b13f3977818e8d898efa651ffeb1a798a
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76046488"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82195616"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>教學課程：整合多個沈浸式閱讀程式資源
 
@@ -258,7 +258,7 @@ module.exports = router;
     npm start
     ```
 
-4. 開啟瀏覽器並巡覽至 [http://localhost:3000](http://localhost:3000)。 在頁面上您應看到上述內容。 按一下 [EastUS 沉浸式閱讀程式]  按鈕或 [WestUS 沉浸式閱讀程式]  按鈕，以使用這些個別的資源來啟動沈浸式閱讀程式。
+4. 開啟瀏覽器並巡覽至 `http://localhost:3000`。 在頁面上您應看到上述內容。 按一下 [EastUS 沉浸式閱讀程式]  按鈕或 [WestUS 沉浸式閱讀程式]  按鈕，以使用這些個別的資源來啟動沈浸式閱讀程式。
 
 ## <a name="next-steps"></a>後續步驟
 

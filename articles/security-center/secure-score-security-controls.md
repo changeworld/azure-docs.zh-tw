@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/10/2020
 ms.author: memildin
-ms.openlocfilehash: d7eea9cd83e72b6ffeaae319a8e87c065015e6b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a777b7474ddda529d4f183aafbccda86ea3ca41
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79415807"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801497"
 ---
 # <a name="enhanced-secure-score-preview-in-azure-security-center"></a>Azure 資訊安全中心中增強的安全分數（預覽）
 
@@ -93,13 +93,13 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 
 |安全性控制|最大安全分數點|建議|
 |----------------|:-------------------:|---------------|
-|**啟用 MFA**|10|-應在訂用帳戶上具有擁有者許可權的帳戶上啟用 MFA<br>-MFA 應在訂用帳戶上具有讀取權限的帳戶上啟用<br>-MFA 應為您訂用帳戶上具有寫入權限的帳戶啟用|
+|**啟用 MFA**|10|-應在訂用帳戶上具有擁有者許可權的帳戶上啟用 MFA<br>-MFA 應為您訂用帳戶上具有寫入權限的帳戶啟用|
 |**保護管理埠**|8|-即時網路存取控制應套用在虛擬機器上<br>-虛擬機器應該與網路安全性群組相關聯<br>-管理埠應在您的虛擬機器上關閉|
 |**套用系統更新**|6|-監視代理程式健康情況問題應在您的電腦上解決<br>-監視代理程式應該安裝在虛擬機器擴展集上<br>-監視代理程式應該安裝在您的電腦上<br>-應針對您的雲端服務角色更新 OS 版本<br>-應安裝虛擬機器擴展集上的系統更新<br>-系統更新應該安裝在您的電腦上<br>-應重新開機您的電腦以套用系統更新<br>-Kubernetes 服務應該升級為不容易受攻擊的 Kubernetes 版本<br>-監視代理程式應該安裝在您的虛擬機器上|
 |**修復弱點**|6|-應在您的 SQL server 上啟用 Advanced data security<br>-應補救 Azure Container Registry 映射中的弱點<br>-應補救 SQL 資料庫上的弱點<br>-弱點評估解決方案應補救弱點<br>-應在您的 SQL 受控實例上啟用弱點評估<br>-應在您的 SQL server 上啟用弱點評估<br>-弱點評估解決方案應該安裝在您的虛擬機器上|
 |**啟用待用加密**|4|-應在虛擬機器上套用磁片加密<br>-應啟用 SQL 資料庫上的透明資料加密<br>-自動化帳戶變數應加密<br>-Service Fabric 叢集應將 ClusterProtectionLevel 屬性設定為 EncryptAndSign<br>-應使用您自己的金鑰來加密 SQL server TDE 保護裝置|
 |**加密傳輸中的資料**|4|-API 應用程式應該只能透過 HTTPS 存取<br>-函數應用程式只能透過 HTTPS 存取<br>-只應啟用 Redis 快取的安全連線<br>-應啟用儲存體帳戶的安全傳輸<br>-Web 應用程式應該只能透過 HTTPS 存取|
-|**管理存取權和許可權**|4|-應為您的訂用帳戶指定最多3位擁有者<br>-應從您的訂用帳戶移除已淘汰的帳戶（預覽）<br>-應從您的訂用帳戶移除具有擁有者許可權的已淘汰帳戶（預覽）<br>-應從您的訂用帳戶中移除具有擁有者許可權的外部帳戶（預覽）<br>-應從您的訂用帳戶移除具有讀取權限的外部帳戶<br>-應從您的訂用帳戶中移除具有寫入權限的外部帳戶（預覽）<br>-應將一個以上的擁有者指派給您的訂用帳戶<br>-以角色為基礎的存取控制（RBAC）應用於 Kubernetes 服務（預覽）<br>-Service Fabric 叢集應該只使用 Azure Active Directory 進行用戶端驗證|
+|**管理存取權和許可權**|4|-應從您的訂用帳戶移除已淘汰的帳戶（預覽）<br>-應從您的訂用帳戶移除具有擁有者許可權的已淘汰帳戶（預覽）<br>-應從您的訂用帳戶中移除具有擁有者許可權的外部帳戶（預覽）<br>-應從您的訂用帳戶中移除具有寫入權限的外部帳戶（預覽）<br>-應將一個以上的擁有者指派給您的訂用帳戶<br>-以角色為基礎的存取控制（RBAC）應用於 Kubernetes 服務（預覽）<br>-Service Fabric 叢集應該只使用 Azure Active Directory 進行用戶端驗證|
 |**補救安全性設定**|4|-Pod 安全性原則應定義于 Kubernetes 服務上<br>-應補救容器安全性設定中的弱點<br>-應補救您電腦上安全性設定中的弱點<br>-應補救虛擬機器擴展集上安全性設定中的弱點<br>-監視代理程式應該安裝在您的虛擬機器上<br>-監視代理程式應該安裝在您的電腦上<br>-監視代理程式應該安裝在虛擬機器擴展集上<br>-監視代理程式健康情況問題應在您的電腦上解決|
 |**限制未經授權的網路存取**|4|-您的虛擬機器上的 IP 轉送應停用<br>-已授權的 IP 範圍應定義于 Kubernetes Services （預覽）<br>-（已淘汰）應限制應用程式服務的存取（預覽）<br>-（已淘汰）應強化 IaaS Nsg 上 web 應用程式的規則<br>-虛擬機器應該與網路安全性群組相關聯<br>-CORS 不應允許每個資源存取您的 API 應用程式<br>-CORS 不應允許每個資源存取您的函數應用程式<br>-CORS 不應允許每個資源存取您的 Web 應用程式<br>-API 應用程式的遠端偵測應關閉<br>-應關閉函數應用程式的遠端偵錯程式<br>-應關閉 Web 應用程式的遠端偵錯程式<br>-應限制與網際網路對向 Vm 的寬鬆網路安全性群組<br>-應強化網際網路面向虛擬機器的網路安全性群組規則|
 |**套用適應性應用程式控制**|3|-應在虛擬機器上啟用彈性應用程式控制<br>-監視代理程式應該安裝在您的虛擬機器上<br>-監視代理程式應該安裝在您的電腦上<br>-監視代理程式健康情況問題應在您的電腦上解決|
@@ -107,7 +107,7 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 |**保護應用程式免于遭受 DDoS 攻擊**|2|-應啟用 DDoS 保護標準|
 |**啟用 endpoint protection**|2|-應在虛擬機器擴展集上補救端點保護健康情況失敗<br>-應在您的電腦上解決端點保護健康情況問題<br>-端點保護解決方案應該安裝在虛擬機器擴展集上<br>-在虛擬機器上安裝端點保護解決方案<br>-監視代理程式健康情況問題應在您的電腦上解決<br>-監視代理程式應該安裝在虛擬機器擴展集上<br>-監視代理程式應該安裝在您的電腦上<br>-監視代理程式應該安裝在您的虛擬機器上<br>-在您的電腦上安裝 endpoint protection 解決方案|
 |**啟用審核和記錄**|1|-應啟用 SQL server 上的審核<br>-應啟用應用程式服務中的診斷記錄<br>-應啟用 Azure Data Lake 存放區中的診斷記錄<br>-應啟用 Azure 串流分析中的診斷記錄<br>-應啟用 Batch 帳戶中的診斷記錄<br>-應啟用 Data Lake Analytics 中的診斷記錄<br>-應啟用事件中樞的診斷記錄<br>-應啟用 IoT 中樞中的診斷記錄<br>-應啟用 Key Vault 中的診斷記錄<br>-應啟用 Logic Apps 中的診斷記錄<br>-搜尋服務中的診斷記錄應該啟用<br>-應啟用服務匯流排中的診斷記錄<br>-應啟用虛擬機器擴展集中的診斷記錄<br>-應設定 Batch 帳戶上的計量警示規則<br>-SQL 審核設定應設定動作群組來捕獲重要活動<br>-SQL server 應設定為超過90天的審核保留天數。|
-|**實行安全性最佳做法**|0|-應限制具有防火牆和虛擬網路設定的儲存體帳戶存取權<br>-應該從事件中樞命名空間移除 RootManageSharedAccessKey 以外的所有授權規則<br>-應針對 SQL server 布建 Azure Active Directory 系統管理員<br>-應定義事件中樞實例上的授權規則<br>-儲存體帳戶應遷移至新的 Azure Resource Manager 資源<br>-虛擬機器應該遷移至新的 Azure Resource Manager 資源<br>-SQL server 的 Advanced data security 設定應該包含用來接收安全性警示的電子郵件地址<br>-您應該在受控實例上啟用 Advanced data security<br>-所有先進的威脅防護類型都應該在 SQL 受控實例的 advanced data security 設定中啟用<br>-系統管理員和訂用帳戶擁有者的電子郵件通知應該在 SQL server advanced data security 設定中啟用<br>-SQL server Advanced Data Security 設定中的 [先進的威脅防護類型] 應該設定為 [全部]<br>-子網應與網路安全性群組相關聯<br>-所有先進的威脅防護類型都應該在 SQL server advanced data security 設定中啟用|
+|**實行安全性最佳做法**|0|-應為您的訂用帳戶指定最多3位擁有者<br>-應從您的訂用帳戶移除具有讀取權限的外部帳戶<br>-MFA 應在訂用帳戶上具有讀取權限的帳戶上啟用<br>-應限制具有防火牆和虛擬網路設定的儲存體帳戶存取權<br>-應該從事件中樞命名空間移除 RootManageSharedAccessKey 以外的所有授權規則<br>-應針對 SQL server 布建 Azure Active Directory 系統管理員<br>-應定義事件中樞實例上的授權規則<br>-儲存體帳戶應遷移至新的 Azure Resource Manager 資源<br>-虛擬機器應該遷移至新的 Azure Resource Manager 資源<br>-SQL server 的 Advanced data security 設定應該包含用來接收安全性警示的電子郵件地址<br>-您應該在受控實例上啟用 Advanced data security<br>-所有先進的威脅防護類型都應該在 SQL 受控實例的 advanced data security 設定中啟用<br>-系統管理員和訂用帳戶擁有者的電子郵件通知應該在 SQL server advanced data security 設定中啟用<br>-SQL server Advanced Data Security 設定中的 [先進的威脅防護類型] 應該設定為 [全部]<br>-子網應與網路安全性群組相關聯<br>-所有先進的威脅防護類型都應該在 SQL server advanced data security 設定中啟用|
 ||||
 
 ## <a name="secure-score-faq"></a>安全分數常見問題
@@ -116,13 +116,13 @@ Azure 資訊安全中心有兩個主要目標：協助您瞭解目前的安全�
 資訊安全中心已切換為增強的安全分數（目前處於預覽狀態），其中包括計算分數方式的變更。 現在，您必須解決資源對接收點的所有建議。 分數也會變更為0-10 的比例。
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>如果我只在安全性控制中處理四個建議中的三個，我的安全分數是否會改變？
-否。 在您修復單一資源的所有建議之前，它不會變更。 若要取得控制項的最大分數，您必須針對所有資源補救所有建議。
+不可以。 在您修復單一資源的所有建議之前，它不會變更。 若要取得控制項的最大分數，您必須針對所有資源補救所有建議。
 
 ### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>先前的安全分數使用經驗是否仍然可用？ 
-是。 一段時間，它們會並存執行以減輕轉換。 預期先前的模型會以時間為階段。 
+可以。 一段時間，它們會並存執行以減輕轉換。 預期先前的模型會以時間為階段。 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果建議不適用於我，而我在原則中將它停用，我的安全性控制是否會完成，而且我的安全分數也會更新？
-是。 建議您在環境中不適用時停用建議。 如需有關如何停用特定建議的指示，請參閱[停用安全性原則](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。
+可以。 建議您在環境中不適用時停用建議。 如需有關如何停用特定建議的指示，請參閱[停用安全性原則](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。
 
 ### <a name="if-a-security-control-offers-me-zero-points-towards-my-secure-score-should-i-ignore-it"></a>如果安全性控制提供給我安全分數的零點，我應該忽略它嗎？
 在某些情況下，您會看到控制項的最大分數大於零，但影響是零。 當修正資源的累加分數可以忽略時，會四捨五入為零。 請勿忽略這些建議，因為它們仍然會帶來安全性改進。 唯一的例外是「其他最佳作法」控制項。 補救這些建議並不會增加您的分數，但它會增強您的整體安全性。

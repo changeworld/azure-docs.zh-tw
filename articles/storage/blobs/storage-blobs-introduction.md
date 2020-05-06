@@ -1,5 +1,6 @@
 ---
-title: Blob (物件) 儲存體簡介 - Azure 儲存體
+title: Blob (物件) 儲存體簡介
+titleSuffix: Azure Storage
 description: Azure Blob 儲存體可儲存大量的非結構化物件資料，例如文字或二進位資料。 Azure Blob 儲存體具有高度擴充性與可用性。 用戶端可從 PowerShell 或 Azure CLI、以程式設計方式透過 Azure 儲存體用戶端程式庫，或使用 REST 來存取 Blob 儲存體中的資料物件。
 services: storage
 author: tamram
@@ -8,12 +9,12 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f7d1967c8a9585fbf5131da986595761030f0e5f
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: 084b364f4a1414febb7b6f11c9cf70958ee823c4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80632004"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82176664"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 儲存體簡介
 
@@ -74,4 +75,4 @@ Azure 儲存體支援三種 blob 類型：
 ## <a name="next-steps"></a>後續步驟
 
 - [建立儲存體帳戶](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [Blob 儲存體的可擴縮性和效能目標](scalability-targets.md)
+- [Blob 儲存體的延展性和效能目標](scalability-targets.md)

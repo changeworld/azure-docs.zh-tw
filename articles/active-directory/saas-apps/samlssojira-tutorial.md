@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 957fee48397bc0b23737157dec0e74cf6505fab5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6f6cb87cf7628c48ce6adf12336c4b712dc0ff9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160123"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202548"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>教學課程：Azure Active Directory 與 SAML SSO for Jira by resolution GmbH 整合
 
@@ -291,7 +291,7 @@ SAML SSO for Jira by resolution GmbH 與 Azure AD 整合提供下列優點：
 
 當您按一下 [存取面板] 中的 [SAML SSO for Jira by resolution GmbH] 圖格時，應該會自動登入您已設定 SSO 的 SAML SSO for Jira by resolution GmbH。 如需「存取面板」的詳細資訊，請參閱[存取面板簡介](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)。
 
-如果您瀏覽至 [https://\<server-base-url>/plugins/servlet/samlsso](https://\<server-base-url>/plugins/servlet/samlsso)，也可以測試單一登入。 以您 Jira 執行個體的基底 URL 取代 **\<server-base-url>** 。
+如果您瀏覽至 `https://<server-base-url>/plugins/servlet/samlsso`，也可以測試單一登入。 以您 Jira 執行個體的基底 URL 取代 **\<server-base-url>** 。
 
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>為 Jira 啟用單一登入重新導向
@@ -311,7 +311,7 @@ SAML SSO for Jira by resolution GmbH 與 Azure AD 整合提供下列優點：
 
 1. 按下右上角的 [儲存設定]  按鈕。
 
-啟用此選項之後，如果已選取 [啟用 nosso]  選項，就仍可透過瀏覽至 [https://\<server-base-url>/login.jsp?nosso](https://\<server-base-url>/login.jsp?nosso) 來取得使用者名稱/密碼提示。 像之前一樣，使用您的基底 URL 取代 **\<server-base-url>** 。
+啟用此選項之後，如果已選取 [啟用 nosso]  選項，就仍可透過瀏覽至 `https://\<server-base-url>/login.jsp?nosso` 來取得使用者名稱/密碼提示。 像之前一樣，使用您的基底 URL 取代 **\<server-base-url>** 。
 
 
 ## <a name="additional-resources"></a>其他資源

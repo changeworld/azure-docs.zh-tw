@@ -2,16 +2,16 @@
 title: 使用範本中的 Azure Key Vault
 description: 了解如何使用 Azure Key Vault 在 Resource Manager 範本部署期間傳遞安全的參數值
 author: mumian
-ms.date: 04/16/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: c33ad17927dae701e4201e76b7a75690c59dc374
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 7fd84fc2e98578772c806f358cb8d6c400e0d994
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536689"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82185008"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>教學課程：在 ARM 範本部署中整合 Azure Key Vault
 
@@ -161,22 +161,30 @@ Azure 快速入門範本是 ARM 範本的存放庫。 您可以尋找範例範�
 
 ## <a name="deploy-the-template"></a>部署範本
 
-請遵循[部署範本](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)中的指示。 將 *azuredeploy.json* 與 *azuredeploy.parameters.json* 上傳到 Cloud Shell，然後使用下列 PowerShell 指令碼來部署範本：
+1. 登入 [Azure Cloud Shell](https://shell.azure.com)
 
-```azurepowershell
-$projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
-$location = Read-Host -Prompt "Enter the same location that is used for creating the key vault (i.e. centralus)"
-$resourceGroupName = "${projectName}rg"
+1. 藉由選取左上角的 **PowerShell** 或 **Bash** (適用於 CLI) 來選擇您慣用的環境。  切換時必須重新啟動殼層。
 
-New-AzResourceGroupDeployment `
-    -ResourceGroupName $resourceGroupName `
-    -TemplateFile "$HOME/azuredeploy.json" `
-    -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
+    ![Azure 入口網站的 Cloud Shell 上傳檔案](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-Write-Host "Press [ENTER] to continue ..."
-```
+1. 選取 [上傳/下載檔案]  ，然後選取 [上傳]  。 將 azuredeploy.json  和 azuredeploy.parameters.json  上傳至 Cloud Shell。 上傳檔案之後，您可以使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
 
-部署範本時，請使用您在金鑰保存庫中使用的同一資源群組。 此方法可讓您更輕鬆地清除資源，因為您只需要刪除一個資源群組，而非兩個。
+1. 然後執行下列 PowerShell 指令碼來部署範本。
+
+    ```azurepowershell
+    $projectName = Read-Host -Prompt "Enter the same project name that is used for creating the key vault"
+    $location = Read-Host -Prompt "Enter the same location that is used for creating the key vault (i.e. centralus)"
+    $resourceGroupName = "${projectName}rg"
+
+    New-AzResourceGroupDeployment `
+        -ResourceGroupName $resourceGroupName `
+        -TemplateFile "$HOME/azuredeploy.json" `
+        -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
+
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+    部署範本時，請使用您在金鑰保存庫中使用的同一資源群組。 此方法可讓您更輕鬆地清除資源，因為您只需要刪除一個資源群組，而非兩個。
 
 ## <a name="validate-the-deployment"></a>驗證部署
 

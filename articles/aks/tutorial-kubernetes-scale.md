@@ -5,14 +5,14 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 5c1cbebd671568d200321615ad34f52cb636c6c8
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: f830d42ef09a60b1f9ced43250b24a68003d1e87
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80878080"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82128989"
 ---
-# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教學課程：在 Azure Kubernetes Service (AKS) 中調整應用程式
+# <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>教學課程：調整 Azure Kubernetes Service (AKS) 中的應用程式
 
 如果您已依照教學課程操作，就會在 AKS 中有一個正常運作的 Kubernetes 叢集，並已部署範例 Azure 投票應用程式。 在本教學課程中 (七個章節的第五部分)，您會將應用程式中的 Pod 擴增，然後嘗試進行 Pod 自動調整。 您也會了解如何調整 Azure VM 節點的數目，以變更叢集裝載工作負載的容量。 您會了解如何：
 
@@ -74,11 +74,11 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> 如果您的 AKS 叢集低於 1.10  ，則不會自動安裝計量伺服器。 若要安裝，請複製 `metrics-server` GitHub 存放庫並安裝範例資源定義。 若要檢視這些 YAML 定義的內容，請參閱[Kuberenetes 1.8+ 的計量伺服器][metrics-server-github]。
+> 如果您的 AKS 叢集低於 1.10  ，則不會自動安裝計量伺服器。 計量伺服器安裝資訊清單可作為計量伺服器版本上的 `components.yaml` 資產，這表示您可以透過 URL 進行安裝。 若要深入了解這些 YAML 定義，請參閱讀我檔案的＜[部署][metrics-server-github]＞一節。
 > 
+> 安裝範例：
 > ```console
-> git clone https://github.com/kubernetes-incubator/metrics-server.git
-> kubectl create -f metrics-server/deploy/1.8+/
+> kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 > ```
 
 若要使用自動調整程式，必須為您 Pod 中所有容器和 Pod 定義 CPU 要求和限制。 在 `azure-vote-front` 部署中，前端容器已經要求 0.25 個 CPU，限制為 0.5 個 CPU。 這些資源要求和限制定義如下列範例程式碼片段所示：
@@ -192,7 +192,7 @@ az aks scale --resource-group myResourceGroup --name myAKSCluster --node-count 3
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubectl-scale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale
 [kubernetes-hpa]: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
-[metrics-server-github]: https://github.com/kubernetes-incubator/metrics-server/tree/master/deploy/1.8%2B
+[metrics-server-github]: https://github.com/kubernetes-sigs/metrics-server/blob/master/README.md#deployment
 [metrics-server]: https://kubernetes.io/docs/tasks/debug-application-cluster/resource-metrics-pipeline/#metrics-server
 
 <!-- LINKS - internal -->

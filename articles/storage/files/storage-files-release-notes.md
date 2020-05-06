@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/16/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 82d8c8ca94f3d0f4289902ae40928ff507e2d1ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cb5a3d471aa3131d3233841cd6450f0a968dfe7
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460659"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800969"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure 檔案同步代理程式的版本資訊
 Azure 檔案同步可讓您將組織的檔案共用集中在「Azure 檔案服務」中，而不需要犧牲內部部署檔案伺服器的靈活度、效能及相容性。 您的 Windows Server 安裝會轉換成 Azure 檔案共用的快速快取。 您可以使用 Windows Server 上可用的任何通訊協定來從本機存取資料 (包括 SMB、NFS 和 FTPS)。 您可以視需要存取多個散佈於世界各地的快取。
@@ -25,7 +25,7 @@ Azure 檔案同步代理程式支援下列版本：
 
 | 里程碑 | 代理程式版本號碼 | 發行日期 | 狀態 |
 |----|----------------------|--------------|------------------|
-| V10 版本- [KB4522359](https://support.microsoft.com/en-us/help/4522409/azure-file-sync-agent-v10-release-march-2020)| 10.0.0.0 | 2020年4月9日 | 進行中 |
+| V10 版本- [4522409](https://support.microsoft.com/en-us/help/4522409)| 10.0.0.0 | 2020年4月9日 | 進行中 |
 | 2019年12月更新彙總套件- [KB4522360](https://support.microsoft.com/help/4522360)| 9.1.0.0 | 2019 年 12 月 12 日 | 支援 |
 | V9 版本- [KB4522359](https://support.microsoft.com/help/4522359)| 9.0.0.0 | 2019年12月2日 | 支援 |
 | V8 版本- [KB4511224](https://support.microsoft.com/help/4511224)| 8.0.0.0 | 2019 年 10 月 8 日 | 支援 |

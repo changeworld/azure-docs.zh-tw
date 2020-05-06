@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 04/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd218c61114c1e15009ace5a9a9bd7a536996e86
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b58abede48c0e096f3f54989d783b1e455f8e4d4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72968661"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82169637"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contentful"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Contentful 整合
 
@@ -46,6 +46,7 @@ ms.locfileid: "72968661"
 
 * Contentful 支援由 **SP 和 IDP** 起始的 SSO
 * Contentful 支援 **Just In Time** 使用者佈建
+* 設定 Contentful 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 > [!NOTE]
 > 此應用程式的識別碼都是固定字串值。 在一個租用戶中只能設定一個執行個體。
@@ -94,6 +95,16 @@ ms.locfileid: "72968661"
 
     > [!NOTE]
     > 這些都不是真正的值。 請從 Contentful 的 SSO 設定頁面複製 ACS (判斷提示取用者服務) URL，使用實際的回覆 URL 和登入 URL 來更新這些值。
+
+1. Contentful 應用程式需要特定格式的 SAML 判斷提示，需要您加入自訂屬性對應到您的 SAML 權杖屬性設定。 以下螢幕擷取畫面顯示預設屬性清單。
+
+    ![image](common/default-attributes.png)
+
+1. 除了上述屬性外，Contentful 應用程式還需要在 SAML 回應中多傳回幾個屬性，如下所示。 這些屬性也會預先填入，但您可以根據您的需求來檢閱這些屬性。
+    
+    | 名稱 |  來源屬性|
+    | --------------- | --------- |
+    | 電子郵件 | user.userprincipalname |
 
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 

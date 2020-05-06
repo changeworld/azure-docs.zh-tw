@@ -1,17 +1,23 @@
 ---
-ms.openlocfilehash: 13dcdec4eff72f97e1af8ecb26e32c0ef5f881fd
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+title: 快速入門：適用於 Python 的 QnA Maker 用戶端程式庫
+description: 本快速入門示範如何開始使用適用於 Python 的 QnA Maker 用戶端程式庫。
+ms.topic: include
+ms.date: 04/27/2020
+ms.openlocfilehash: ccd046ad8e511517abd9f45072781e736f0e79b9
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81637055"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204000"
 ---
-
 使用適用於 Python 的 QnA Maker 用戶端程式庫來：
 
 * 建立知識庫
-* 管理知識庫
+* 更新知識庫
 * 發佈知識庫
+* 取得已發佈的端點金鑰
+* 等候長時間執行的工作
+* 刪除知識庫
 
 [參考文件](https://docs.microsoft.com/python/api/azure-cognitiveservices-knowledge-qnamaker/azure.cognitiveservices.knowledge.qnamaker?view=azure-python) | [程式庫來源程式碼](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-knowledge-qnamaker) | [套件 (pypi)](https://pypi.org/project/azure-cognitiveservices-knowledge-qnamaker/) | [Python 範例](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.py)
 
@@ -21,6 +27,9 @@ ms.locfileid: "81637055"
 
 * Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
+* 擁有 Azure 訂用帳戶之後，請在 Azure 入口網站中建立 [QnA Maker 資源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)，以取得您的撰寫金鑰和端點。 在其部署後，選取 [前往資源]  。
+    * 您需要來自所建立資源的金鑰和端點，以將應用程式連線至 QnA Maker API。 您稍後會在快速入門中將金鑰和端點貼到下列程式碼中。
+    * 您可以使用免費定價層 (`F0`) 來試用服務，之後可升級至付費層以用於實際執行環境。
 
 ## <a name="setting-up"></a>設定
 

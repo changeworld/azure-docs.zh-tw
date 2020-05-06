@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: overview
 ms.date: 04/15/2020
 ms.author: v-erkel
-ms.openlocfilehash: 084c33874b474fc1789df93e088d3cec4263eac9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 02013abe7050f7f193b6aeb1a441e70f46a5df48
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536636"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82106452"
 ---
 # <a name="what-is-azure-hpc-cache"></a>什麼是 Azure HPC Cache？
 
@@ -63,6 +63,12 @@ Azure HPC Cache 可在下列 Azure 區域使用：
 * 美國西部 2
 
 如需最新的可用性資訊 ，請查看 [Azure HPC Cache 產品頁面](https://azure.microsoft.com/services/hpc-cache)。
+
+## <a name="service-availability"></a>服務可用性
+
+您必須針對每個將與 Azure HPC Cache 搭配使用的訂用帳戶要求存取權。 此限制有助於確保服務品質。
+
+填寫[這份表單](https://aka.ms/onboard-hpc-cache)以要求存取權。 將訂用帳戶新增至存取清單之後，即可建立快取。
 
 ## <a name="next-steps"></a>後續步驟
 

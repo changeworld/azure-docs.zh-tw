@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 3c50e82647b22a18edee92f47abc1d136670cacc
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 18af9b395aac24608c0a1383b5abdfeb062f58c1
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519663"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184872"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>教學課程：使用 JavaScript SDK 建置 Node.js Web 應用程式來管理 Azure Cosmos DB 中的 SQL API 帳戶 
 
@@ -437,7 +437,7 @@ ms.locfileid: "80519663"
 
 現在，應用程式已建立，您可以使用下列步驟在本機執行此應用程式：  
 
-1. 若要在本機電腦上測試應用程式，請在終端機中執行 `npm start` 以啟動應用程式，然後重新整理 [http://localhost:3000](http://localhost:3000) 瀏覽器頁面。 頁面此時應如下列螢幕擷取畫面所示：
+1. 若要在本機電腦上測試應用程式，請在終端機中執行 `npm start` 以啟動應用程式，然後重新整理 `http://localhost:3000` 瀏覽器頁面。 頁面此時應如下列螢幕擷取畫面所示：
    
     ![[我的待辦事項清單] 應用程式在瀏覽器視窗中的螢幕擷取畫面](./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png)
 

@@ -4,10 +4,10 @@ description: CAF Foundation 藍圖範例的部署步驟，其中包括藍圖成�
 ms.date: 08/20/2019
 ms.topic: sample
 ms.openlocfilehash: df17f8c3f539e25635ea4718be9d51d5e5e3f708
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74545528"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>部署適用於 Azure 的 Microsoft 雲端採用架構的基礎藍圖範例

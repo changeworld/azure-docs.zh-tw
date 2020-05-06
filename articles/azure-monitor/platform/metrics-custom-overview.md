@@ -1,5 +1,5 @@
 ---
-title: Azure 監視器中的自訂計量
+title: Azure 監視器中的自訂計量（預覽）
 description: 了解 Azure 監視器中的自訂計量，以及如何予以模型化。
 author: ancav
 ms.author: ancav
@@ -7,17 +7,20 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.subservice: metrics
-ms.openlocfilehash: 4286910c926cd6bd3b21acfd145e4e69548319ce
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 4891d7272516caf4944219907d81ee4fb89e0189
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204299"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837306"
 ---
-# <a name="custom-metrics-in-azure-monitor"></a>Azure 監視器中的自訂計量
+# <a name="custom-metrics-in-azure-monitor-preview"></a>Azure 監視器中的自訂計量（預覽）
 
-在 Azure 中部署資源與應用程式時，您會想要開始收集遙測，以取得其效能與健康情況的深入解析。 Azure 會提供一些現成的計量。 這些計量稱為「[標準」或「平臺](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)」。 不過，這些計量本質上有限制。 您可能想要收集一些自訂的效能指標或特定的商務計量，以提供更深入的見解。
-您可以透過應用程式遙測、在 Azure 資源上執行的代理程式，或甚至是由外到內的監視系統，收集這些**自訂**計量，然後直接提交給 Azure 監視器。 發佈至 Azure 監視器之後，您可以和 Azure 所發出的標準計量並排瀏覽、查詢 Azure 資源與應用程式的自訂計量，以及對其發出警示。
+在 Azure 中部署資源與應用程式時，您會想要開始收集遙測，以取得其效能與健康情況的深入解析。 Azure 會提供一些現成的計量。 這些計量稱為「[標準」或「平臺](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)」。 不過，這些計量本質上有限制。 
+
+您可能想要收集一些自訂的效能指標或特定的商務計量，以提供更深入的見解。 您可以透過應用程式遙測、在 Azure 資源上執行的代理程式，或甚至是由外到內的監視系統，收集這些**自訂**計量，然後直接提交給 Azure 監視器。 發佈至 Azure 監視器之後，您可以和 Azure 所發出的標準計量並排瀏覽、查詢 Azure 資源與應用程式的自訂計量，以及對其發出警示。
+
+Azure 監視器自訂計量目前處於公開預覽狀態。 
 
 ## <a name="methods-to-send-custom-metrics"></a>傳送自訂計量的方法
 
@@ -27,19 +30,15 @@ ms.locfileid: "82204299"
 - 將 [InfluxData Telegraf 代理程式](collect-custom-metrics-linux-telegraf.md)安裝在 Azure Linux VM，並使用 Azure 監視器輸出外掛程式傳送計量。
 - 將自訂計量[直接傳送至 Azure 監視器 REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md)， `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
 
-## <a name="pricing-model"></a>定價模式
+## <a name="pricing-model-and-rentention"></a>計價模式和保留
 
-將標準計量（平臺計量）內嵌至 Azure 監視器計量存放區並不會產生任何成本。 內嵌至 Azure 監視器計量存放區的自訂計量會以每個 Mb 計費，其中每個自訂度量點的大小會視為8個位元組。 所有內嵌的計量都會保留90天。
+如需針對自訂計量和計量查詢啟用計費的詳細資訊，請參閱[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。 此頁面提供所有計量的特定價格詳細資料，包括自訂計量和度量查詢。 總而言之，將標準計量（平臺計量）內嵌至 Azure 監視器計量存放區不會產生任何成本，但自訂計量會在進入正式運作時 incurr 成本。 計量 API 查詢會 incurr 成本。
 
-計量查詢會根據標準 API 呼叫的數目向您收費。 標準 API 呼叫是分析1440資料點的呼叫（1440也是每個計量每天可儲存的總資料點數）。 如果 API 呼叫分析1440個以上的資料點，則會計算為多個標準 API 呼叫。 如果 API 呼叫分析的資料點小於1440，則會計算為少於一個 API 呼叫。 標準 API 呼叫的數目會每天計算，做為每天分析的資料點總數除以1440。
-
-您可以在[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)上取得自訂度量和計量查詢的特定價格詳細資料。
+自訂計量會保留為與[平臺計量相同的時間量](data-platform-metrics.md#retention-of-metrics)。 
 
 > [!NOTE]  
-> 透過 Application Insights SDK 傳送至 Azure 監視器的計量會以內嵌記錄資料的形式計費，而且只有在已選取 [Application Insights] 功能 [[啟用自訂計量維度的警示](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)] 時，才會產生額外的度量費用。 深入瞭解[您所在地區](https://azure.microsoft.com/pricing/details/monitor/)的[Application Insights 計價模式](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)和價格。
+> 透過 Application Insights SDK 傳送至 Azure 監視器的計量會以內嵌記錄資料的形式計費。 只有在已選取 [Application Insights] 功能[啟用自訂計量維度的警示](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation)時，才會產生額外的度量費用。 此核取方塊會使用自訂計量 API 將資料傳送至 Azure 監視器計量資料庫，以允許更複雜的警示。  深入瞭解[您所在地區](https://azure.microsoft.com/pricing/details/monitor/)的[Application Insights 計價模式](https://docs.microsoft.com/azure/azure-monitor/app/pricing#pricing-model)和價格。
 
-> [!NOTE]  
-> 如需針對自訂計量和計量查詢啟用計費的詳細資訊，請參閱[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)。 
 
 ## <a name="how-to-send-custom-metrics"></a>如何傳送自訂計量
 
@@ -204,7 +203,7 @@ Azure 監視器會儲存一分鐘資料粒度間隔內的所有計量。 我們�
 |法國中部 | HTTPs：\//francecentral.monitoring.azure.com |
 | **非洲** | |
 |南非北部 | HTTPs：\//southafricanorth.monitoring.azure.com
-| **Asia** | |
+| **亞洲** | |
 |印度中部 | HTTPs：\//centralindia.monitoring.azure.com
 |澳大利亞東部 | HTTPs：\//australiaeast.monitoring.azure.com
 |日本東部 | HTTPs：\//japaneast.monitoring.azure.com

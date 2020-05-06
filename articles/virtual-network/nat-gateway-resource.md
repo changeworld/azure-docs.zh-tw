@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/09/2020
+ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 4095b0b48e86b0aafcc86d74ca1fa25bacddf0ec
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 6bb53539c105cda99c842b6b0fa236f0e18a85ea
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81011713"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82182475"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 閘道資源設計虛擬網路
 
-NAT 閘道資源是[虛擬網路 NAT](nat-overview.md) 的一部分，可為虛擬網路的一或多個子網提供輸出網際網路連線能力。 虛擬網路的子網路會指出將使用哪個 NAT 閘道。 NAT 會為子網路提供來源網路位址轉譯 (SNAT)。  NAT 閘道資源會指定虛擬機器在建立輸出流量時所使用的靜態 IP 位址。 靜態 IP 位址來自公用 IP 位址資源、公用 IP 前置詞資源或兩者。 NAT 閘道資源最多可以使用來自任一資源的 16 個靜態 IP 位址。
+NAT 閘道資源是[虛擬網路 NAT](nat-overview.md) 的一部分，可為虛擬網路的一或多個子網提供輸出網際網路連線能力。 虛擬網路的子網路會指出將使用哪個 NAT 閘道。 NAT 會為子網路提供來源網路位址轉譯 (SNAT)。  NAT 閘道資源會指定虛擬機器在建立輸出流量時所使用的靜態 IP 位址。 靜態 IP 位址來自公用 IP 位址資源、公用 IP 前置詞資源或兩者。 如果使用公用 IP 首碼資源，則 NAT 閘道資源會使用整個公用 IP 首碼資源的所有 IP 位址。 NAT 閘道資源最多可以使用來自任一資源的 16 個靜態 IP 位址。
 
 
 <p align="center">
@@ -60,7 +60,8 @@ NAT 閘道資源：
 
 除非您有特定的[集區型負載平衡器輸出連線](../load-balancer/load-balancer-outbound-connections.md)相依性，否則建議對大部分的工作負載使用 NAT。  
 
-您可以從標準負載平衡器案例 (包括[輸出規則](../load-balancer/load-balancer-outbound-rules-overview.md)) 遷移到 NAT 閘道。 若要遷移，請將公用 IP 和公用 IP 前置詞資源從負載平衡器前端移到 NAT 閘道。 不需要 NAT 閘道的新 IP 位址。 只要總計不超過 16 個 IP 位址，就可以重複使用標準公用 IP 和前置詞。 在轉換期間，請針對已考量服務中斷情形的移轉進行規劃。  您可藉由程序自動化將中斷情形降至最低。 先在預備環境中測試移轉。  在轉換期間，源自的輸入流量不受影響。
+您可以從標準負載平衡器案例 (包括[輸出規則](../load-balancer/load-balancer-outbound-rules-overview.md)) 遷移到 NAT 閘道。 若要遷移，請將公用 IP 和公用 IP 前置詞資源從負載平衡器前端移到 NAT 閘道。 不需要 NAT 閘道的新 IP 位址。 只要總計不超過 16 個 IP 位址，就可以重複使用標準公用 IP 資源和公用 IP 首碼資源。 在轉換期間，請針對已考量服務中斷情形的移轉進行規劃。  您可藉由程序自動化將中斷情形降至最低。 先在預備環境中測試移轉。  在轉換期間，源自的輸入流量不受影響。
+
 
 下列範例是來自 Azure Resource Manager 範本的程式碼片段。  此範本會部署數個資源，包括 NAT 閘道。  此範本在此範例中具有下列參數：
 
@@ -225,6 +226,12 @@ NAT 閘道的優先順序高於子網路的輸出案例。 基本負載平衡器
 >[!NOTE] 
 >如果未指定任何區域，IP 位址本身不支援區域備援。  如果未在特定區域中建立 IP 位址，則[標準負載平衡器的前端支援區域備援](../load-balancer/load-balancer-standard-availability-zones.md#frontend)。  這不適用於 NAT。  僅支援地區性或區域隔離。
 
+## <a name="performance"></a>效能
+
+每個 NAT 閘道資源最多可提供 50 Gbps 的輸送量。 您可以將部署分割成多個子網路，並為每個子網路或子網路群組分派 NAT 閘道以進行擴增。
+
+每個 NAT 閘道都可為每個指派的輸出 IP 位址支援 64,000 個連線。  如需詳細資訊，請參閱下一節的來源網路位址轉譯 (SNAT)，以及參閱[疑難排解文章](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat)來了解特定問題的解決指導方針。
+
 ## <a name="source-network-address-translation"></a>來源網路位址轉譯
 
 來源網路位址轉譯 (SNAT) 會將流量來源重寫為源自不同的 IP 位址。  NAT 閘道資源會使用 SNAT 的變體，通常稱為連接埠位址轉換 (PAT)。 PAT 會重寫來源位址和來源連接埠。 使用 SNAT，私人位址數與其轉譯的公用位址數之間沒有固定的關聯性。  
@@ -277,7 +284,10 @@ SNAT 連接埠一旦發行，即可供透過 NAT 設定的子網路上的任何�
 
 ### <a name="scaling"></a>調整大小
 
-調整 NAT 主要是一項管理共用、可用 SNAT 連接埠庫存的功能。 NAT 必須要有足夠的 SNAT 連接埠庫存，才能解決連結到 NAT 閘道資源的所有子網路尖峰輸出流量。  您可以使用公用 IP 位址資源、公用 IP 前置詞資源或兩者來建立 SNAT 連接埠庫存。
+調整 NAT 主要是一項管理共用、可用 SNAT 連接埠庫存的功能。 NAT 必須要有足夠的 SNAT 連接埠庫存，才能解決連結到 NAT 閘道資源的所有子網路尖峰輸出流量。  您可以使用公用 IP 位址資源、公用 IP 前置詞資源或兩者來建立 SNAT 連接埠庫存。  
+
+>[!NOTE]
+>如果您要指派公用 IP 首碼資源，則會使用整個公用 IP 首碼。  您無法在指派公用 IP 首碼資源之後，再細分個別 IP 位址來指派給其他資源。  如果您想要從公用 IP 首碼中的個別 IP 位址指派給多個資源，您必須從公用 IP 首碼資源中建立個別的公用 IP 位址，並視需要指派這些位址，而不是指派公用 IP 首碼資源本身。
 
 SNAT 會將私人位址對應至一或多個公用 IP 位址，並重寫流程中的來源位址和來源連接埠。 NAT 閘道資源會針對此轉譯，針對每個設定的公用 IP 位址使用 64,000 個連接埠 (SNAT 連接埠)。 NAT 閘道資源可以擴大至 16 個 IP 位址和 1 百萬個 SNAT 連接埠。 如果提供了公用 IP 前置詞資源，則前置詞中的每個 IP 位址都會提供 SNAT 連接埠庫存。 新增更多公用 IP 位址會增加可用的庫存 SNAT 連接埠。 TCP 和 UDP 是不同的 SNAT 連接埠清查而且不相關。
 
