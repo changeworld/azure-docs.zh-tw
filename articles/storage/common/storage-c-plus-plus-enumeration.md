@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29ce845fa3239dd48ff2ff0480beff08cf704b30
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74269456"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591679"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>以 C++ 列出 Azure 儲存體資源
 
@@ -62,7 +62,7 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 * *_segment*，其中包含針對列表 API 的單一呼叫所傳回的結果集。
 * continuation_token**，其會傳遞給下一個呼叫，以便取得下一頁的結果。 沒有可傳回的結果時，接續 Token 為 null。
 
-例如，列出容器中所有 Blob 的典型呼叫可能如下列程式碼片段所示。 此程式碼可在我們的 [範例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)中取得：
+例如，列出容器中所有 Blob 的典型呼叫可能如下列程式碼片段所示。 此程式碼可在我們的 [範例](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)中取得：
 
 ```cpp
 // List blobs in the blob container
@@ -185,7 +185,7 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 ## <a name="conclusion"></a>結論
 
-在本文中，我們針對 Storage Client Library for C++ 中的各種物件，討論了列表 API 的不同多載。 總結：
+在本文中，我們針對 Storage Client Library for C++ 中的各種物件，討論了列表 API 的不同多載。 總括來說：
 
 * 在多個執行緒的案例中，強烈建議使用非同步 API。
 * 在大部分的案例中，建議使用分段列表。

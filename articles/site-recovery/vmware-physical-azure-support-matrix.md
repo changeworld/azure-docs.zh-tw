@@ -3,12 +3,12 @@ title: Azure Site Recovery 中 VMware/實體嚴重損壞修復的支援矩陣
 description: 摘要說明使用 Azure Site Recovery 對 VMware Vm 和實體伺服器至 Azure 的嚴重損壞修復支援。
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: eb78f6073d2bcb7289f13d5c994cff8c13f9a6e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8e7b2f8f6483d462f781d95011ef7b972e83b87
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185790"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801785"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>從 VMware VM 和實體伺服器至 Azure 之災害復原的支援矩陣
 
@@ -26,7 +26,7 @@ VMware Vm 的嚴重損壞修復 | 將內部部署 VMware 虛擬機器複寫至 A
 
 ## <a name="on-premises-virtualization-servers"></a>內部部署虛擬化伺服器
 
-**伺服器** | **Requirements** | **詳細資料**
+**伺服器** | **需求** | **詳細資料**
 --- | --- | ---
 vCenter Server | 6.7、6.5、6.0 或5.5 版 | 我們建議您在嚴重損壞修復部署中使用 vCenter server。
 vSphere 主機 | 6.7、6.5、6.0 或5.5 版 | 我們建議 vSphere 主機與 vCenter 伺服器應位於和處理序伺服器相同的網路中。 根據預設，進程伺服器會在設定伺服器上執行。 [深入了解](vmware-physical-azure-config-process-server-overview.md)。
@@ -39,7 +39,7 @@ vSphere 主機 | 6.7、6.5、6.0 或5.5 版 | 我們建議 vSphere 主機與 vCe
 - 針對 VMware Vm，您可以藉由下載 OVF 範本來設定伺服器，以建立 VMware VM。
 - 針對實體伺服器，您可以手動設定設定伺服器電腦。
 
-**元件** | **Requirements**
+**元件** | **需求**
 --- |---
 CPU 核心 | 8
 RAM | 16 GB
@@ -128,7 +128,9 @@ SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4） | [9.25][9.25 UR] | 
 
 **版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 和 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | 支援所有股票 SUSE 15 和15核心。 </br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure
+SUSE Linux Enterprise Server 15 和 15 SP1 | [9.32](https://support.microsoft.com/help/4550047/) | 根據預設，支援所有[股票 SUSE 15 和 15](https://www.suse.com/support/kb/doc/?id=000019587)核心。 </br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure
+
+
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux 檔案系統/客體儲存體
 
@@ -159,15 +161,15 @@ BTRFS | 從[更新彙總套件 34](https://support.microsoft.com/help/4490016) �
 **元件** | **支援**
 --- | ---
 主機網路 NIC 小組 | 支援 VMware VM。 <br/><br/>不支援實體機器複寫。
-主機網路 VLAN | 是。
-主機網路 IPv4 | 是。
+主機網路 VLAN | 可以。
+主機網路 IPv4 | 可以。
 主機網路 IPv6 | 不可以。
 客體/伺服器網路 NIC 小組 | 不可以。
-客體/伺服器網路 IPv4 | 是。
+客體/伺服器網路 IPv4 | 可以。
 客體/伺服器網路 IPv6 | 不可以。
-客體/伺服器網路靜態 IP (Windows) | 是。
-客體/伺服器網路靜態 IP (Linux) | 是。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
-客體/伺服器網路多重 NIC | 是。
+客體/伺服器網路靜態 IP (Windows) | 可以。
+客體/伺服器網路靜態 IP (Linux) | 可以。 <br/><br/>VM 設定為在容錯回復時使用 DHCP。
+客體/伺服器網路多重 NIC | 可以。
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM 網路 (容錯移轉後)
@@ -237,7 +239,7 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 待用加密（CMK）| 是（透過 PowerShell Az 3.3.0 module 開始）
 進階儲存體 | 是
 匯入/匯出服務 | 否
-適用于 Vnet 的 Azure 儲存體防火牆 | 是。<br/> 設定于目標儲存體/快取儲存體帳戶（用來儲存複寫資料）。
+適用于 Vnet 的 Azure 儲存體防火牆 | 可以。<br/> 設定于目標儲存體/快取儲存體帳戶（用來儲存複寫資料）。
 一般用途 v2 儲存體帳戶（經常性存取和非經常性存取層） | 是（相較于 V1，V2 的交易成本會大幅提高）
 
 ## <a name="azure-compute"></a>Azure 計算
@@ -253,7 +255,7 @@ ReFS | 行動服務9.23 版或更高版本支援復原檔案系統
 
 複寫至 Azure 的內部部署 Vm 必須符合此表中摘要說明的 Azure VM 需求。 當 Site Recovery 執行複寫的必要條件檢查時，如果不符合某些需求，此檢查將會失敗。
 
-**元件** | **Requirements** | **詳細資料**
+**元件** | **需求** | **詳細資料**
 --- | --- | ---
 客體作業系統 | 驗證複寫的機器[所支援的作業系統](#replicated-machines)。 | 若不支援，則檢查會失敗。
 客體作業系統架構 | 64 位元。 | 若不支援，則檢查會失敗。

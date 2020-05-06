@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f936b62349a534e6193a3c628c66c49d1a58b681
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678928"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790825"
 ---
 # <a name="troubleshoot-issues-with-the-update-management-solution"></a>針對更新管理解決方案的問題進行疑難排解
 
@@ -49,13 +49,13 @@ Error details: Failed to enable the Update solution
 
 * 執行[Windows](update-agent-issues.md#troubleshoot-offline)或[Linux](update-agent-issues-linux.md#troubleshoot-offline)的疑難排解員，視作業系統而定。
 
-* 請前往[網路規劃](../automation-hybrid-runbook-worker.md#network-planning)，瞭解必須允許哪些位址和埠，更新管理才能正常執行。  
+* 請移至 [[網路](../automation-hybrid-runbook-worker.md#network-planning)設定]，以瞭解必須允許哪些位址和埠，更新管理才能正常執行。  
 
-* 請移至[網路規劃](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)，瞭解必須允許哪些位址和埠，Log Analytics 代理程式才能正常執行。
+* 請移至[網路](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)設定，以瞭解 Log Analytics 代理程式必須允許哪些位址和埠才能正常執行。
 
 * 檢查範圍設定問題。 [範圍](../automation-onboard-solutions-from-automation-account.md#scope-configuration)設定會決定哪些機器會針對解決方案進行設定。 如果您的電腦顯示在您的工作區中，但不在 * * 更新管理入口網站中，您必須將範圍設定設為以電腦為目標。 若要瞭解範圍設定，請參閱在[工作區中將電腦上架](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)。
 
-* 遵循[刪除混合式 runbook 背景工作角色](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)中的步驟來移除背景工作設定。 
+* 遵循[移除 Windows 混合式 runbook 背景工作](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker)角色或[移除 Linux 混合式 Runbook 背景工作角色](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)中的步驟來移除背景工作設定。 
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>案例：已取代的更新在更新管理中指出遺失
 
@@ -351,7 +351,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 ### <a name="resolution"></a>解決方案
 
-使用下列因應措施可讓這些專案排程。 您可以使用[AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) Cmdlet 搭配`ForUpdateConfiguration`參數來建立排程。 然後，使用[AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) Cmdlet，並將另一個租使用者中的機器傳遞給`NonAzureComputer`參數。 下列範例示範如何執行：
+使用下列因應措施可讓這些專案排程。 您可以使用 [New-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/az.automation/new-azautomationschedule?view=azps-3.7.0) Cmdlet 搭配 `ForUpdateConfiguration` 參數來建立排程。 然後，使用[AzAutomationSoftwareUpdateConfiguration](https://docs.microsoft.com/powershell/module/Az.Automation/New-AzAutomationSoftwareUpdateConfiguration?view=azps-3.7.0) Cmdlet，並將另一個租使用者中的機器傳遞給`NonAzureComputer`參數。 下列範例示範如何執行：
 
 ```azurepowershell-interactive
 $nonAzurecomputers = @("server-01", "server-02")
@@ -448,7 +448,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 ### <a name="resolution"></a>解決方案
 
 1. 依照 [更新管理] 底下的 [[機器不會顯示在入口網站中](#nologs)] 底下的步驟，確認機器已回報至正確的工作區。
-2. 藉由[刪除混合式 runbook 群組](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)來清除電腦上的成品，然後再試一次。
+2. 藉由[刪除混合式 runbook 群組](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group)來清除電腦上的成品，然後再試一次。
 
 ## <a name="scenario-machine-cant-communicate-with-the-service"></a><a name="machine-unable-to-communicate"></a>案例：電腦無法與服務通訊
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61d7d2a52f58162d288b1155f9724c7912e451f3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74951508"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780091"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>將內部部署 Apache Hadoop 叢集遷移到 Azure HDInsight - 基礎結構最佳做法
 
@@ -109,7 +109,7 @@ HDInsight 提供預先撰寫的指令碼以在 HDInsight 叢集上安裝下列�
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>使用 Bootstrap 自訂 HDInsight 設定
 
-您可以使用 Bootstrap 針對設定檔 (例如 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml`) 中的設定進行變更。 下列腳本是使用 Powershell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) Cmdlet [AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)的範例：
+您可以使用 Bootstrap 針對設定檔 (例如 `core-site.xml`、`hive-site.xml` 和 `oozie-env.xml`) 中的設定進行變更。 下列腳本是使用 PowerShell [AZ module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) Cmdlet [AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)的範例：
 
 ```powershell
 # hive-site.xml configuration
@@ -152,7 +152,7 @@ New—AzHDInsightCluster `
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>使用叢集的相應增加和相應減少功能
 
-HDInsight 具有彈性，可讓您選擇相應增加和相應減少叢集中的背景工作節點數。 此功能可讓您在下班時間或是週末縮小叢集，並於業務需求達到高峰的期間擴大叢集。 如需詳細資訊，請參閱：
+HDInsight 具有彈性，可讓您選擇相應增加和相應減少叢集中的背景工作節點數。 此功能可讓您在下班時間或是週末縮小叢集，並於業務需求達到高峰的期間擴大叢集。 如需詳細資訊，請參閱
 
 * [調整 HDInsight](../hdinsight-scaling-best-practices.md)叢集。
 * [調整叢集規模](../hdinsight-administer-use-portal-linux.md#scale-clusters)。
@@ -167,7 +167,7 @@ Azure 虛擬網路透過篩選和路由傳送網路流量，讓 Azure 資源 (�
 - 將 HDInsight 連線至 Azure 虛擬網路中的資料存放區。
 - 直接存取無法透過網際網路公開使用的 Hadoop 服務。 例如，Kafka API 或 HBase Java API。
 
-HDInsight 可以新增到新的或現有的 Azure 虛擬網路。 如果 HDInsight 已新增到現有的虛擬網路，則需要更新現有的網路安全性群組和使用者定義的路由，以允許對 Azure 資料中心內的[數個 IP 位址](../hdinsight-management-ip-addresses.md)進行不受限制的存取。 此外，請確定不會封鎖對 HDInsight 服務所使用之[埠](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)的流量。
+HDInsight 可以新增到新的或現有的 Azure 虛擬網路。 如果 HDInsight 已新增到現有的虛擬網路，則需要更新現有的網路安全性群組和使用者定義的路由，以允許對 Azure 資料中心內的[數個 IP 位址](../hdinsight-management-ip-addresses.md)進行不受限制的存取。 此外，請確定不會封鎖對 HDInsight 服務所使用之[埠](../control-network-traffic.md#required-ports)的流量。
 
 > [!Note]  
 > HDInsight 目前不支援強制通道。 強制通道是一種子網路設定，可強制裝置的輸出網際網路流量以進行檢查和記錄。 先移除強制通道，再將 HDInsight 安裝至子網路，或建立 HDInsight 的新子網路。 HDInsight 也不支援限制輸出網路連線。

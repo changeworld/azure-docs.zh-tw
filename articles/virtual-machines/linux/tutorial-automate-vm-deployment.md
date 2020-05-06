@@ -15,10 +15,10 @@ ms.date: 09/12/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: d2a6568b0d62c880a688160cf981fb33083ae02e
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81461475"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>教學課程 - 如何使用 cloud-init 在首次開機時於 Azure 中自訂 Linux 虛擬機器

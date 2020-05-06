@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 339b11664308962962c59b2e9386ff122681293a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c8808450f8baa6d395ee9c24dbc59dfa919b66d
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116208"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801003"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>在 Azure 入口網站中建立和管理動作群組
 動作群組是 Azure 訂用帳戶擁有者定義的通知喜好設定集合。 Azure 監視器和服務健康狀態警示使用動作群組來通知使用者警示已被觸發。 根據使用者的需求而定，不同的警示可能使用相同的動作群組或不同的動作群組。 一個訂用帳戶中最多可設定 2,000 個動作群組。
@@ -200,16 +200,21 @@ Write-Host $myApp.AppRoles
 
 動作群組中的 SMS 動作數目可能有限。
 
-如果 [Azure 入口網站動作群組] 使用者介面無法讓您選取您的國家/地區代碼，則您的國家/地區不支援 SMS。 支援國家/地區的價格會列在[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)中。 如果您的國家/地區代碼無法使用，您可以投票，將您的國家/地區新增至[使用者心聲](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)。  
+> [!NOTE]
+> 如果 [Azure 入口網站動作群組] 使用者介面無法讓您選取您的國家/地區代碼，則您的國家/地區不支援 SMS。  如果您的國家/地區代碼無法使用，您可以投票，將您的國家/地區新增至[使用者心聲](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)。 在此同時，有個解決方法是讓您的動作群組向協力廠商 SMS 提供者呼叫 webhook，並在您的國家/地區支援。  
 
+支援國家/地區的價格會列在[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)中。
   
 
 ### <a name="voice"></a>語音
-請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
+如需其他重要行為，請參閱[速率限制資訊](./../../azure-monitor/platform/alerts-rate-limiting.md)一文。
 
 動作群組中的語音動作數目可能有限。
 
-如果 [Azure 入口網站動作群組] 使用者介面無法讓您選取您的國家/地區代碼，則您的國家/地區不支援語音通話。 支援國家/地區的價格會列在[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)中。 如果您的國家/地區代碼無法使用，您可以投票，將您的國家/地區新增至[使用者心聲](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)。  
+> [!NOTE]
+> 如果 [Azure 入口網站動作群組] 使用者介面無法讓您選取您的國家/地區代碼，則您的國家/地區不支援語音通話。 如果您的國家/地區代碼無法使用，您可以投票，將您的國家/地區新增至[使用者心聲](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)。  在此同時，有個解決方法是讓您的動作群組向協力廠商語音通話提供者呼叫 webhook，並在您的國家/地區中提供支援。  
+
+支援國家/地區的價格會列在[Azure 監視器定價頁面](https://azure.microsoft.com/pricing/details/monitor/)中。
 
 ### <a name="webhook"></a>Webhook
 Webhook 會使用下列規則來重試。 傳回下列 HTTP 狀態碼時，最多會重試2次 webhook 呼叫：408、429、503、504或 HTTP 端點沒有回應。 第一次重試會在 10 秒後執行。 第二次重試會在 100 秒後執行。 兩次失敗後，沒有任何動作群組會呼叫端點30分鐘。 

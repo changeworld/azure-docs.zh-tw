@@ -4,10 +4,10 @@ description: NIST SP 800-53 R4 藍圖範例的部署步驟，其中包括藍圖�
 ms.date: 11/18/2019
 ms.topic: sample
 ms.openlocfilehash: db8c2302a6c2311e096be2cdc78935bdab2ef9c7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74546598"
 ---
 # <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>部署 NIST SP 800-53 R4 藍圖範例

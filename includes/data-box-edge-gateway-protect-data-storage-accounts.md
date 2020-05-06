@@ -4,16 +4,16 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 8840e6649058837207c75dbdf7baa5c0b11ef387
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ac9865afe37916f1777d92eab8637884eba0c08
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75468672"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562114"
 ---
 您的裝置會與儲存體帳戶相關聯，以作為您在 Azure 中的資料目的地使用。 儲存體帳戶的存取權是由訂用帳戶和與該儲存體帳戶相關聯的 2 512 位儲存體存取金鑰所控制。
 
-當 Data Box Edge 裝置存取儲存體帳戶時，會使用其中一個金鑰來進行驗證。 另一個金鑰是保留的，因此您可以定期輪替金鑰。
+當 Azure Stack Edge 裝置存取儲存體帳戶時，會使用其中一個金鑰來進行驗證。 另一個金鑰是保留的，因此您可以定期輪替金鑰。
 
 基於安全性理由，許多資料中心都需要金鑰輪替。 建議您按照這些最佳作法進行金鑰輪替：
 

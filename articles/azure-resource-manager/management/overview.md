@@ -4,10 +4,10 @@ description: 描述如何使用 Azure Resource Manager 在 Azure 上進行資源
 ms.topic: overview
 ms.date: 04/21/2020
 ms.openlocfilehash: 253fc2f296fa764a6c22fa1331221df60ca21bb5
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81870480"
 ---
 # <a name="what-is-azure-resource-manager"></a>什麼是 Azure Resource Manager？

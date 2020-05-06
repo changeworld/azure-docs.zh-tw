@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/24/2020
 ms.openlocfilehash: 475f89fc5b33948864fd83c39ee8058ab6908cad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80247192"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure 認知搜尋的新功能
@@ -45,7 +45,7 @@ Azure 搜尋服務現在已重新命名為 **Azure 認知搜尋**，以反映核
 
 + 搜尋服務的私人存取會透過兩種機制提供，目前均已納入預覽版中：
 
-  + 您可以使用管理 REST API `api-version=2019-10-01-Preview` 來建立服務，以限制對特定 IP 位址的存取。 預覽 API 在 [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 中有新的 **IpRule** 和 **NetworkRuleSet** 屬性。 此預覽功能可在幾個區域中使用。 如需詳細資訊，請參閱[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+  + 您可以使用管理 REST API `api-version=2019-10-01-Preview` 來建立服務，以限制對特定 IP 位址的存取。 預覽 API 在 **CreateOrUpdate API** 中有新的 **IpRule** 和 [NetworkRuleSet](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service) 屬性。 此預覽功能可在幾個區域中使用。 如需詳細資訊，請參閱[如何使用管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 
   + 目前透過限制存取預覽提供，您可以針對來自相同虛擬網路上用戶端的連線，佈建支援 Azure 私人端點的 Azure 搜尋服務服務。 如需詳細資訊，請參閱[建立安全連線的私人端點](service-create-private-endpoint.md)。
 

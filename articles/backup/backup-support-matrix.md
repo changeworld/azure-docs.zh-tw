@@ -3,12 +3,12 @@ title: Azure 備份支援矩陣
 description: 摘要說明 Azure 備份服務的支援設定和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537316"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801258"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 備份的支援矩陣
 
@@ -56,7 +56,7 @@ Azure 備份使用復原服務保存庫來協調和管理備份。 它也會使�
 
 **限制** | **詳細資料**
 --- | ---
-**Azure VM 資料磁碟** | 16的限制 <br> 若要註冊具有 16 個以上磁碟 (最多 32 個磁碟) 的 VM 私人預覽版，請利用 AskAzureBackupTeam@microsoft.com 寫信給我們
+**Azure VM 資料磁碟** | 16的限制 <br> 若要註冊具有16個磁片的有限預覽 Vm （最多32個磁片），請將寫入我們的AskAzureBackupTeam@microsoft.com
 **Azure VM 資料磁碟大小** | 針對 VM 中的所有磁片，個別磁片大小最高可達 32 TB，最大為 256 TB。
 
 ### <a name="azure-vm-backup-options"></a>Azure VM 備份選項
@@ -151,7 +151,7 @@ Azure 備份已新增跨區域還原功能，以加強資料可用性和復原�
 
 | 備份管理類型 | 支援                                                    | 支援的區域 |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | 是。   支援的加密 Vm 和具有低於 4 TB 磁片的 Vm | 所有 Azure 公用區域。  |
+| Azure VM               | 可以。   支援的加密 Vm 和具有低於 4 TB 磁片的 Vm | 所有 Azure 公用區域。  |
 | MARS 代理程式/內部部署 | 否                                                           | N/A               |
 | SQL/SAP HANA          | 否                                                           | N/A               |
 | AFS                    | 否                                                           | N/A               |

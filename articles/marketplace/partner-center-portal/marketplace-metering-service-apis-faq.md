@@ -6,17 +6,17 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 6e5b691a41ef283449f9eeeb90e9d01a91616146
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/13/2020
+ms.openlocfilehash: 9a1493790969c4d34d7d41572dff6e15d16d2a19
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275776"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735448"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Marketplace 計量服務 API - 常見問題集
 
-一旦 Azure 使用者訂閱包含計量付費計費的 SaaS 服務，您將會追蹤客戶所使用之每個計費維度的耗用量。 如果耗用量超過客戶所選取之詞彙的已包含數量，您的服務將會向 Microsoft 發出使用事件。
+當 Azure 使用者訂閱包含計量付費計費的 SaaS 服務時，您將會追蹤客戶所使用之每個計費維度的耗用量。 如果耗用量超過客戶所選取之詞彙的已包含數量，您的服務將會向 Microsoft 發出使用事件。
 
 ## <a name="emit-usage-events"></a>發出使用事件
 
@@ -35,7 +35,7 @@ ms.locfileid: "80275776"
 
 在理想情況下，每小時會針對過去一小時發生的事件發出 usage 事件。 不過，預期會有延遲。 允許的延遲上限為24小時，之後將不接受使用事件。
 
-例如，如果在一天的下午1點發生使用事件，您在下一天有 1 PM 的時間會發出與此事件相關聯的使用事件。 這表示在系統發出使用狀況的情況下，它可以復原，然後傳送使用事件的時間間隔，而不會失去精確度。
+例如，如果在一天的下午1點發生使用事件，您在下一天有 1 PM 的時間會發出與此事件相關聯的使用事件。 當系統發出的使用量有停機時間時，它將會復原，然後傳送使用量事件（在此情況下會發生使用方式），而不會失去精確度。
 
 ### <a name="what-happens-when-you-send-more-than-one-usage-event-on-the-same-hour"></a>當您在同一個小時傳送一個以上的使用方式事件時，會發生什麼事？
 
@@ -49,6 +49,12 @@ ms.locfileid: "80275776"
 
 是，當您呼叫`GET /saas/subscriptions` API 時，它會包含所有 SaaS 訂閱的清單。 每個 SaaS 訂閱的回應中的 [狀態] 欄位都會捕捉訂用帳戶為作用中或取消訂閱。 列出訂用帳戶的呼叫會在當時傳回最多100個訂閱。
 
+### <a name="what-happens-if-the-marketplace-metering-service-has-an-outage"></a>Marketplace 計量服務中斷時，會發生什麼事？
+
+如果 ISV 傳送自訂計量並收到錯誤，則 ISV 應該等待然後再試一次。
+
+若錯誤持續發生，請將該自訂計量重新提交到下一個小時（累積數量）。 繼續此程式，直到收到非錯誤回應為止。
+
 ## <a name="next-steps"></a>後續步驟
 
-- 如需詳細資訊，請參閱[Marketplace 計量服務 api](./marketplace-metering-service-apis.md) 。
+- 如需詳細資訊，請參閱[Marketplace 計量服務 api](./marketplace-metering-service-apis.md)。

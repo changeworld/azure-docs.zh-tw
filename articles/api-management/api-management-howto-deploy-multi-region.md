@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203143"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790474"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何將 Azure API 管理服務執行個體部署到多個 Azure 區域
 
 Azure API 管理支援多區域部署，可讓 API 發行者跨任意數目的支援 Azure 區域散發單一 Azure API 管理服務。 多重區域功能有助於減少地理位置分散的 API 取用者所觀察到的要求延遲，並在某個區域離線時改善服務可用性。
 
-新的 Azure API 管理服務一開始只會在單一 Azure 區域（主要區域）中包含一個[單位][unit]。 您可以將其他區域新增至主要或次要區域。 API 管理閘道元件會部署到每個選取的主要和次要區域。 傳入的 API 要求會自動導向至最接近的區域。 如果區域離線，API 要求將會自動路由至失敗的區域，直到下一個最接近的閘道。
+新的 Azure API 管理服務一開始只會在單一 Azure 區域（主要區域）中包含一個[單位][unit]。 可以將額外的單位新增至主要或次要區域。 API 管理閘道元件會部署到每個選取的主要和次要區域。 傳入的 API 要求會自動導向至最接近的區域。 如果區域離線，API 要求將會自動路由至失敗的區域，直到下一個最接近的閘道。
 
 > [!NOTE]
 > 只有 API 管理的閘道元件會部署到所有區域。 服務管理元件和開發人員入口網站僅裝載于主要區域。 因此，在主要區域中斷的情況下，存取開發人員入口網站和變更設定的能力（例如新增 Api、套用原則）將會受到影響，直到主要區域恢復上線為止。 當主要區域離線時，次要區域將會繼續使用最新的可用設定來提供 API 流量。

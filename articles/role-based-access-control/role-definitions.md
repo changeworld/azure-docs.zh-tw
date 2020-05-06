@@ -1,6 +1,6 @@
 ---
-title: 了解適用於 Azure 資源之 RBAC 中的角色定義 | Microsoft Docs
-description: 了解角色型存取控制 (RBAC) 中的角色定義，以對 Azure 資源的存取管理進行微調。
+title: 瞭解 Azure 角色定義-Azure RBAC
+description: 瞭解 azure 角色型存取控制（Azure RBAC）中的 Azure 角色定義，以對 Azure 資源進行更細緻的存取管理。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 777ea7cc29679a3819e94d39913f167ea1cb3453
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03edb8e5c58f0fe746921d50ab3f657f291d16da
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641387"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735533"
 ---
-# <a name="understand-role-definitions-for-azure-resources"></a>了解適用於 Azure 資源的角色定義
+# <a name="understand-azure-role-definitions"></a>瞭解 Azure 角色定義
 
-如果您想要嘗試了解角色的運作方式，或是想要自行建立[適用於 Azure 資源的自訂角色](custom-roles.md)，了解角色的定義方式將會很有幫助。 本文詳細描述角色定義並提供一些範例。
+如果您想要瞭解 Azure 角色的運作方式，或是您要建立自己的[azure 自訂角色](custom-roles.md)，則瞭解如何定義角色會很有説明。 本文詳細描述角色定義並提供一些範例。
 
 ## <a name="role-definition"></a>角色定義
 
@@ -170,7 +170,7 @@ Bob 的許可權僅限於`Actions` [儲存體 Blob 資料參與者](built-in-rol
 
 如需適用於儲存體之管理及資料平面安全性的詳細資訊，請參閱 [Azure 儲存體安全性指南](../storage/blobs/security-recommendations.md)。
 
-### <a name="what-tools-support-using-rbac-for-data-operations"></a>哪些工具支援對資料作業使用 RBAC？
+### <a name="what-tools-support-using-azure-roles-for-data-operations"></a>哪些工具支援使用 Azure 角色進行資料作業？
 
 若要檢視及使用資料作業，您必須有正確版本的工具或 SDK：
 
@@ -245,10 +245,10 @@ Bob 的許可權僅限於`Actions` [儲存體 Blob 資料參與者](built-in-rol
 > | 管理群組和訂用帳戶 | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
 > | 所有範圍（僅適用于內建角色） | `"/"` |
 
-如需適用於自訂角色之 `AssignableScopes` 的相關資訊，請參閱[適用於 Azure 資源的自訂角色](custom-roles.md)。
+如需有關`AssignableScopes`自訂角色的詳細資訊，請參閱[Azure 自訂角色](custom-roles.md)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* [適用於 Azure 資源的內建角色](built-in-roles.md)
-* [適用於 Azure 資源的自訂角色](custom-roles.md)
+* [Azure 內建角色](built-in-roles.md)
+* [Azure 自訂角色](custom-roles.md)
 * [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)

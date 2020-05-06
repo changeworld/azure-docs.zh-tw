@@ -3,12 +3,12 @@ title: 適用於 Azure Functions 的 Python 開發人員參考
 description: 了解如何使用 Python 開發函式
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 936d6455f448e0243c7d4de2b9f1b88673a32798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea128fc7c68b49fc14d796e9a3b91a9dbddd9b26
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185977"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780040"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 開發人員指南
 
@@ -22,7 +22,7 @@ Azure Functions 預期函式在 Python 腳本中是可處理輸入並產生輸�
 
 來自觸發程式和系結的資料會使用函式*json*檔案中`name`定義的屬性，透過方法屬性系結至函式。 例如，下面的_函數. json_說明由 HTTP 要求所觸發的簡單函式`req`：
 
-:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
+:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
 根據這個定義，包含函`__init__.py`式程式碼的檔案可能會如下列範例所示：
 
@@ -77,6 +77,7 @@ Python 函式專案的建議資料夾結構如下列範例所示：
  | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
+ | - Dockerfile
  tests
 ```
 主要\_\_專案資料夾（應用程式\_\_）可以包含下列檔案：
@@ -86,6 +87,7 @@ Python 函式專案的建議資料夾結構如下列範例所示：
 * *host. json*：包含會影響函數應用程式中所有函式的全域設定選項。 此檔案會發行至 Azure。 在本機執行時，不支援所有選項。 若要深入瞭解，請參閱[host. json](functions-host-json.md)。
 * *funcignore*：（選擇性）宣告不應發行至 Azure 的檔案。
 * *.gitignore*：（選擇性）宣告從 git 存放庫排除的檔案，例如 local. settings. json。
+* *Dockerfile*：（選擇性）在[自訂容器](functions-create-function-linux-custom-image.md)中發佈您的專案時使用。
 
 每個函式都具有本身的程式碼檔案和繫結設定檔 (function.json)。 
 
@@ -330,7 +332,7 @@ def main():
 
 FUNCTIONS_WORKER_PROCESS_COUNT 適用于在相應放大應用程式以符合需求時所建立的每個主機。 
 
-## <a name="context"></a>Context
+## <a name="context"></a>內容
 
 若要在執行期間取得函數的調用內容，請在[`context`](/python/api/azure-functions/azure.functions.context?view=azure-python)其簽章中包含引數。 
 
