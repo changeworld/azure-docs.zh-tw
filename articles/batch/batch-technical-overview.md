@@ -1,25 +1,14 @@
 ---
-title: Azure Batch 在雲端中執行大規模平行作業 | Microsoft Docs
-description: 了解如何將 Azure Batch 服務用於大規模的平行工作負載和 HPC 工作負載
-services: batch
-documentationcenter: ''
-author: mscurrell
-manager: evansma
-editor: ''
-ms.assetid: ''
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
+title: Azure Batch 在雲端中執行大規模平行作業
+description: '了解如何將 Azure Batch 服務用於大規模的平行工作負載和 HPC 工作負載 '
 ms.topic: overview
 ms.date: 01/19/2018
-ms.author: markscu
-ms.custom: mvc
-ms.openlocfilehash: 7ca2a5e91a0ec0d765e106baca20f135996bc26e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f2bdaeec47b50b715920b27d6adf6e078a354964
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77022795"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82116344"
 ---
 # <a name="what-is-azure-batch"></a>什麼是 Azure Batch？
 

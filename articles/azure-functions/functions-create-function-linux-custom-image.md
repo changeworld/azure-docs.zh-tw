@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 80881d96d713f3dc4127c94fd324e925e3c68792
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: fee4e16bd77664e541eeb36cb807a77d13191899
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382938"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82165717"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自訂容器建立函式
 
@@ -150,7 +150,7 @@ mvn clean package
 mvn azure-functions:run
 ```
 ::: zone-end
-一旦看到 `HttpExample` 端點出現在輸出中，請瀏覽至 [`http://localhost:7071/api/HttpExample?name=Functions`](http://localhost:7071/api/HttpExample?name=Functions)。 瀏覽器應該會顯示 "hello" 訊息，回應 `Functions`，這是提供給 `name` 查詢參數的值。
+一旦看到 `HttpExample` 端點出現在輸出中，請瀏覽至 `http://localhost:7071/api/HttpExample?name=Functions`。 瀏覽器應該會顯示 "hello" 訊息，回應 `Functions`，這是提供給 `name` 查詢參數的值。
 
 使用 **Ctrl**-**C** 將主機停止。
 
@@ -179,7 +179,7 @@ docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 
 ::: zone-end
 ::: zone pivot="programming-language-java"  
-映像一旦在本機容器中執行，請瀏覽至 [`http://localhost:8080/api/HttpExample?name=Functions`](http://localhost:8080/api/HttpExample?name=Functions)，這應會顯示如之前所示的相同 "hello" 訊息。 由於 Maven 原型會產生使用匿名授權的 HTTP 觸發函式，因此即使函式正在容器中執行，您仍然可以呼叫函式。 
+映像一旦在本機容器中執行，請瀏覽至 `http://localhost:8080/api/HttpExample?name=Functions`，這應會顯示如之前所示的相同 "hello" 訊息。 由於 Maven 原型會產生使用匿名授權的 HTTP 觸發函式，因此即使函式正在容器中執行，您仍然可以呼叫函式。 
 ::: zone-end  
 
 在容器中驗證過函式應用程式容器之後，請利用 **Ctrl**+**C**停止 Docker。

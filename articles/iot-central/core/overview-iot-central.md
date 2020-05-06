@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 05d73ae09d95879c37e86f5f3e73e35ed4607296
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 409ba6cd192f65c73aba6bd6eb11a26ec1f820fa
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82560963"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790876"
 ---
 # <a name="what-is-azure-iot-central"></a>何謂 Azure IoT 中心？
 
@@ -29,19 +29,6 @@ Web UI 可讓您監視裝置狀況、建立規則，以及在數百萬個裝置�
 - 如何管理您的應用程式。
 - IoT Central 中的 Azure IoT Edge 功能。
 - 如何將採用 Azure IoT Edge 執行階段的裝置連線至您的應用程式。
-
-## <a name="known-issues"></a>已知問題
-
-- 連續資料匯出不支援 Avro 格式 (不相容)。
-- 目前不支援 GeoJSON。
-- 目前不支援地圖底圖。
-- 作業不支援複雜類型。
-- 不支援陣列結構描述類型。
-- 僅支援 C 裝置 SDK 和 Node.js 裝置與服務 SDK。
-- IoT Central 目前適用於美國、歐洲、亞太地區、澳大利亞、英國及日本地區。
-- 您無法在英國和日本地區中使用**自訂應用程式 (舊版)** 的應用程式範本。
-- 裝置功能模型必須具有在相同檔案中以內嵌方式定義的所有介面。
-- [IoT 隨插即用](../../iot-pnp/overview-iot-plug-and-play.md) 為預覽版本，僅在數個區域中支援。
 
 ## <a name="personas"></a>角色
 
@@ -152,7 +139,7 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 
 在使用專為大規模運作而設計的 IoT 解決方案時，結構化的裝置管理方法便顯得重要。 只是將裝置連線至雲端並不夠，您還必須讓裝置能夠保持連線且狀況良好。 操作員可以使用下列 IoT Central 功能，在整個應用程式生命週期中管理裝置：
 
-### <a name="dashboards"></a>儀表板 
+### <a name="dashboards"></a>儀表板
 
 內建[儀表板](./howto-set-up-template.md#generate-default-views)提供了可自訂的 UI 供您監視裝置的健康情況和遙測。 從[應用程式範本](howto-use-app-templates.md)中預先建置的儀表板來開始，或建立自己的儀表板以專門因應操作員的需要。 您可以與應用程式中的所有使用者共用儀表板，或讓儀表板保持私用狀態。
 
@@ -193,6 +180,18 @@ IoT Central 應用程式完全由 Microsoft 裝載，可降低管理您的應用
 ## <a name="quotas"></a>配額
 
 每個 Azure 訂用帳戶都有預設配額，而此配額會對 IoT 解決方案的範圍造成影響。 目前，IoT Central 會將您可在訂用帳戶中部署的應用程式數目限制為 10 個。 如果您需要提高此限制，請連絡 [Microsoft 支援服務](https://azure.microsoft.com/support/options/)。
+
+## <a name="known-issues"></a>已知問題
+
+- 連續資料匯出不支援 Avro 格式 (不相容)。
+- 目前不支援 GeoJSON。
+- 目前不支援地圖底圖。
+- 不支援陣列結構描述類型。
+- 僅支援 C 裝置 SDK 和 Node.js 裝置與服務 SDK。
+- IoT Central 目前適用於美國、歐洲、亞太地區、澳大利亞、英國及日本地區。
+- 您無法在英國和日本地區中使用**自訂應用程式 (舊版)** 的應用程式範本。
+- 裝置功能模型必須具有在相同檔案中以內嵌方式定義的所有介面。
+- [IoT 隨插即用](../../iot-pnp/overview-iot-plug-and-play.md) 為預覽版本，僅在數個區域中支援。
 
 ## <a name="next-steps"></a>後續步驟
 

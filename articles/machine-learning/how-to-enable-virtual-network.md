@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: 6cf89790ee125d8d09d9bdead2f6e34dcb73e8f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e4f811d39c75742f11c52de5c178fbf4063000d
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188118"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864635"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>在 Azure 虛擬網路中保護 Azure ML 實驗和推斷作業
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Azure Machine Learning 依賴其他 Azure 服務來計算資源。 計算資源�
 > [!WARNING]
 > 如果基礎儲存體已啟用虛擬網路，Microsoft 不支援使用自動化 ML、資料集、Datalabeling、設計工具和筆記本等 Azure Machine Learning Studio 功能。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 + Azure Machine Learning[工作區](how-to-manage-workspace.md)。
 
@@ -150,7 +150,7 @@ Azure Machine Learning 會使用與工作區相關聯的金鑰保存庫實例來
 > 這些資源會被訂用帳戶的[資源配額](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)所限制。
 
 
-### <a name="required-ports"></a><a id="mlcports"></a> 所需連接埠
+### <a name="required-ports"></a><a id="mlcports"></a>必要的埠
 
 Machine Learning Compute 目前使用 Azure Batch 服務將 VM 佈建在指定的虛擬網路中。 子網路必須允許來自 Batch 服務的輸入通訊。 您可以使用此通訊來排程 Machine Learning Compute 節點上的執行，以及與 Azure 儲存體和其他資源進行通訊。 Batch 服務會在連接至 Vm 的網路介面（Nic）層級新增網路安全性群組（Nsg）。 這些 NSG 會自動設定輸入和輸出規則，以允許下列流量：
 
@@ -359,7 +359,7 @@ except ComputeTargetException:
 若要將虛擬網路中的 AKS 新增至您的工作區，請使用下列步驟：
 
 > [!IMPORTANT]
-> 開始下列程式之前，請遵循在[Azure Kubernetes Service 中設定 advanced 網路中的必要條件（AKS）](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites)作法和規劃叢集的 IP 位址。
+> 開始下列程式之前，請遵循在[Azure Kubernetes Service 中設定 advanced 網路中的必要條件（AKS）](https://docs.microsoft.com/azure/aks/configure-azure-cni#prerequisites)作法和規劃叢集的 IP 位址。
 >
 > AKS 實例和 Azure 虛擬網路必須位於相同的區域。 如果您保護虛擬網路中的工作區所使用的 Azure 儲存體帳戶，它們必須位於與 AKS 實例相同的虛擬網路中。
 
@@ -557,7 +557,7 @@ az rest --method put --uri https://management.azure.com"/subscriptions/<subscrip
     
     如需詳細資訊，請參閱[update （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-)方法參考。
 
-1. 如果您使用 Azure Machine Learning 工作區的私人連結，並將工作區的 Azure Container Registry 放在虛擬網路中，您也必須套用下列 Azure Resource Manager 範本。 此範本可讓您的工作區透過私用連結與 ACR 進行通訊。
+1. 您必須套用下列 Azure Resource Manager 範本。 此範本可讓您的工作區與 ACR 通訊。
 
     ```json
     {

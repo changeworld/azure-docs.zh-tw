@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: 0c39ffe40a490ee23ac65f892c46fba2578bce74
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 103545225b15a74d8c2ea0be5e88caa18f3c31cc
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441093"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184770"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 適用於 MongoDB 的 API 建立 Angular 應用程式 - 將 CRUD 函式新增至應用程式
 
@@ -36,9 +36,9 @@ ms.locfileid: "75441093"
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>將 Post 函式新增至 Hero 服務
 
-1. 在 Visual Studio Code 中，按 [分割編輯器]  按鈕**Visual Studio 中的分割編輯器按鈕**，並排開啟 **routes.js** 和 ![hero.service.js](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)。
+1. 在 Visual Studio Code 中，按 [分割編輯器]  按鈕![Visual Studio 中的分割編輯器按鈕](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)，並排開啟 **routes.js** 和 **hero.service.js**。
 
-    您會看到 routes.js 第 7 行正在呼叫 `getHeroes`hero.service.js**中第 5 行上的** 函式。  我們需要針對 post、put 和 delete 函式建立此相同配對。 
+    您會看到 routes.js 第 7 行正在呼叫 **hero.service.js** 中第 5 行上的 `getHeroes` 函式。  我們需要針對 post、put 和 delete 函式建立此相同配對。 
 
     ![Visual Studio Code 中的 routes.js 和 hero.service.js](./media/tutorial-develop-mongodb-nodejs-part6/routes-heroservicejs.png)
     
@@ -76,7 +76,7 @@ ms.locfileid: "75441093"
     };
     ```
 
-4. 在 **routes.js** 中，在 `post` 路由器之後為 `get` 函式新增路由器。 此路由器會一次張貼一個 Hero。 以這種方式建構路由器檔案，可清楚顯示所有可用的 API 端點並離開的實際工作**hero.service.js**檔案。
+4. 在 **routes.js** 中，在 `get` 路由器之後為 `post` 函式新增路由器。 此路由器會一次張貼一個 Hero。 以這種方式建構路由器檔案，可清楚顯示所有可用的 API 端點並離開的實際工作**hero.service.js**檔案。
 
     ```javascript
     router.post('/hero', (req, res) => {
@@ -86,7 +86,7 @@ ms.locfileid: "75441093"
 
 5. 執行應用程式，檢查一切是否運作正常。 在 Visual Studio Code 中儲存您所有的變更，選取左側的 [偵錯]  按鈕 ![Visual Studio Code 中的偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然後選取 [開始偵錯]  按鈕 ![Visual Studio Code 中的開始偵錯圖示](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
 
-6. 現在返回您的網際網路瀏覽器，並且按 F12 (在大部分的機器上) 開啟開發人員工具 [網路] 索引標籤。 瀏覽至 [http://localhost:3000](http://localhost:3000) 以監看透過網路撥打的電話。
+6. 現在返回您的網際網路瀏覽器，並且按 F12 (在大部分的機器上) 開啟開發人員工具 [網路] 索引標籤。 瀏覽至 `http://localhost:3000` 以監看透過網路撥打的電話。
 
     ![Chrome 中的 [網路] 索引標籤會顯示網路活動](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 

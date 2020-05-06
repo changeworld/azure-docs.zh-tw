@@ -4,12 +4,12 @@ description: 了解如何從您的本機電腦部署 Azure Resource Manager 範�
 ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c8e3eb62fa52caeaa63808b6b9ea199bdff5c4da
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7f134bb836d05d006ef2e474ea48382a671957fe
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80081817"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82188819"
 ---
 # <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>教學課程：部署本機 Azure Resource Manager 範本
 
@@ -37,9 +37,7 @@ ms.locfileid: "80081817"
 
 ## <a name="review-template"></a>檢閱範本
 
-本教學課程中使用的範本與[有關快速入門範本的教學課程](template-tutorial-quickstart-template.md)中所使用的範本相仿。 如果您想要建立範本，可以參考該教學課程。 但這並非完成本教學課程的必要條件。
-
-範本會部署儲存體帳戶、App Service 方案和 Web 應用程式。
+範本會部署儲存體帳戶、App Service 方案和 Web 應用程式。 如果您想要建立範本，則可以瀏覽[關於快速入門範本的教學課程](template-tutorial-quickstart-template.md)。 但這並非完成本教學課程的必要條件。
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 

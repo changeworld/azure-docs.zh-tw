@@ -4,12 +4,12 @@ description: 摘要說明使用 Azure Site Recovery 對次要區域進行 Azure 
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: 73160a6bf416722021d76da21a32a1cd1ee04386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea0b6763f4438033a8a5a1a4044479fc00f8456c
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111720"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864567"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 嚴重損壞修復支援矩陣
 
@@ -45,7 +45,7 @@ ms.locfileid: "82111720"
 -- | --
 America | 加拿大東部、加拿大中部、美國中南部、美國中西部、美國東部、美國東部 2、美國西部、美國西部 2、美國中部、美國中北部
 歐洲 | 英國西部、英國南部、歐洲北部、西歐、南非西部、南非北部、挪威東部、挪威西部
-Asia | 印度南部、印度中部、印度西部、東南亞、東亞、日本東部、日本西部、韓國中部、南韓南部
+亞洲 | 印度南部、印度中部、印度西部、東南亞、東亞、日本東部、日本西部、韓國中部、南韓南部
 澳大利亞    | 澳大利亞東部、澳大利亞東南部、澳大利亞中部、澳大利亞中部 2
 Azure Government    | US Gov 維吉尼亞州、US Gov 愛荷華州、US Gov 亞利桑那州、US Gov 德克薩斯州、US DoD 東部、US DoD 中部
 德國    | 德國中部、德國東北部
@@ -154,7 +154,8 @@ SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4） | 9.29 | 支援所�
 
 **版本** | **行動服務版本** | **核心版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 支援所有股票 SUSE 15 和15核心。</br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure |
+SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 根據預設，支援所有[股票 SUSE 15 和 15](https://www.suse.com/support/kb/doc/?id=000019587)核心。</br></br> 4.12.14-5.5-azure 至 4.12.14-8.22-azure |
+
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>複寫機器 - Linux 檔案系統/客體儲存體
 
@@ -167,7 +168,7 @@ SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 支援所有股票 SUSE 15 �
 
 **設定** | **支援** | **詳細資料**
 --- | --- | ---
-Size | 至少 2 顆 CPU 核心和 1 GB RAM 的任何 Azure VM 大小 | 確認 [Azure 虛擬機器大小](../virtual-machines/windows/sizes.md)。
+大小 | 至少 2 顆 CPU 核心和 1 GB RAM 的任何 Azure VM 大小 | 確認 [Azure 虛擬機器大小](../virtual-machines/windows/sizes.md)。
 可用性設定組 | 支援 | 如果您使用預設選項來啟用 Azure VM 的複寫，則會根據來源區域設定自動建立可用性設定組。 您可以修改這些設定。
 可用性區域 | 支援 |
 Hybrid Use Benefit (HUB) | 支援 | 如果來源 VM 已啟用 HUB 授權，測試容錯移轉或容錯移轉 VM 也會使用 HUB 授權。
@@ -178,6 +179,8 @@ Azure 資源庫映像 - 第三方發行 | 支援 | 只要 VM 在支援的作業�
 使用 Site Recovery 移轉 VM | 支援 | 如果使用 Site Recovery 將 VMware VM 或實體機器遷移到 Azure，您需要將機器上執行的舊版行動服務解除安裝，然後重新啟動機器，再複寫到另一個 Azure 區域。
 RBAC 原則 | 不支援 | Vm 上以角色為基礎的存取控制（RBAC）原則不會複寫至目的地區域中的容錯移轉 VM。
 延伸模組 | 不支援 | 延伸模組不會複寫至目的地區域中的容錯移轉 VM。 您必須在容錯移轉之後手動安裝它。
+鄰近放置群組 | 不支援 | 位於鄰近位置群組內部的虛擬機器無法使用 Site Recovery 保護。
+
 
 ## <a name="replicated-machines---disk-actions"></a>複寫的機器 - 磁碟動作
 
@@ -217,7 +220,7 @@ OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/windows/
 熱新增    | 支援 | 針對使用受控磁片的 Vm，支援為您新增至複寫 Azure VM 的資料磁片啟用複寫。
 熱移除磁片    | 不支援 | 如果您移除 VM 上的資料磁片，您必須停用複寫，然後再次為 VM 啟用複寫。
 排除磁碟 | 支援。 您必須使用[PowerShell](azure-to-azure-exclude-disks.md)來設定。 |    預設會排除暫存磁片。
-儲存空間 Direct  | 支援損毀一致復原點。 不支援應用程式一致復原點。 |
+儲存空間直接存取  | 支援損毀一致復原點。 不支援應用程式一致復原點。 |
 向外延展檔案伺服器  | 支援損毀一致復原點。 不支援應用程式一致復原點。 |
 DRBD | 不支援屬於 DRBD 設定的磁片。 |
 LRS | 支援 |
