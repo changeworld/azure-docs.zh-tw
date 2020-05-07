@@ -2,14 +2,14 @@
 title: 快速入門：使用 SDK 建立和使用學習迴圈 - 個人化工具
 description: 本快速入門將說明如何使用用戶端 SDK 來建立和管理您的知識庫。
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 04/27/2020
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 7ebe22227b4323b2e6b1c3fc9ca31e171d1d97cd
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: c65be6c68372ffe92ffd942bf71d2b635ec2fd16
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77524864"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82188842"
 ---
 # <a name="quickstart-personalizer-client-library"></a>快速入門：個人化工具用戶端程式庫
 
@@ -17,7 +17,7 @@ ms.locfileid: "77524864"
 
 開始使用個人化工具用戶端程式庫。 請遵循下列步驟來安裝套件，並試用基本工作的程式碼範例。
 
- * 排名 API - 根據您就內容和關係提供的相關即時資訊，從內容項目中選取最佳項目。
+ * 排名 API - 根據您就內容和關係提供的相關即時資訊，從動作中選取最佳項目。
  * 獎勵 API - 您可以根據您的業務需求決定獎勵分數，然後使用此 API 將其傳送到個人化工具。 該分數可以是單一值，例如 1 表示良好、0 表示不良，或根據您的業務需求建立的演算法。
 
 ::: zone pivot="programming-language-csharp"

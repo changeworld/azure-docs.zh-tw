@@ -2,25 +2,21 @@
 title: 為多租使用者應用程式啟用自動使用者布建-Azure AD
 description: 適用于啟用自動布建的獨立軟體廠商指南
 services: active-directory
-documentationcenter: azure
 author: BarbaraSelden
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
-ms.collection: active-directory
-ms.openlocfilehash: 93e1d879f69a95fe7472ce530e0e9f38f3480f39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3713b7a191c5c7c90e0e76bde25d1b1b3bf3700b
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522388"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593585"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>為您的多租使用者應用程式啟用自動使用者布建
 

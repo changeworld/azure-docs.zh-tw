@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 2ebf5d574b4d185953ab0f7984648c440d6f107e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: fa8d8ccef7d6ad6e1b5d9f19de61e45ee8c439fa
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678694"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82587802"
 ---
 PowerShell Cmdlet **AzPeeringLocation**會傳回具有必要參數`Kind`的對等互連位置清單，在稍後的步驟中將會用到。
 
@@ -30,7 +30,7 @@ Get-AzPeeringLocation -Kind "Exchange"
 * MicrosoftIPv4Address
 * MicrosoftIPv6Address
 
-藉由參考[PeeringDB](https://wwww.peeringdb.com)，驗證您是否存在於所需的對等設備上。
+藉由參考[PeeringDB](https://www.peeringdb.com)，驗證您是否存在於所需的對等設備上。
 
 這個範例示範如何使用西雅圖做為對等互連位置來建立對等互連。
 

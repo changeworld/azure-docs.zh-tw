@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/21/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01f969c3bc6f546025b3bbe5826181efdfa69be0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b827c2e949502ad8bd19378a84ea89947929459d
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76983607"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509358"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 DocuSign 整合
 
@@ -45,7 +45,7 @@ ms.locfileid: "76983607"
 
 * DocuSign 支援服務提供者 (SP) 起始的 SSO。
 
-* DocuSign 支援 *just-in-time* 使用者佈建。
+* DocuSign 支援 **just-in-time** 使用者佈建。
 
 * DocuSign 支援[自動使用者佈建](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)。
 * 設定 DocuSign 後，您可以強制執行工作階段控制項，以即時防止組織的敏感資料遭到外洩和滲透。 工作階段控制項會從條件式存取延伸。 [了解如何使用 Microsoft Cloud App Security 來強制執行工作階段控制項](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
@@ -87,12 +87,20 @@ ms.locfileid: "76983607"
 
 1. 在 [基本 SAML 組態]  區段中，遵循下列步驟：
 
-    a. 在 [登入 URL]  方塊中，使用下列模式輸入 URL：`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
+    a. 在 [登入 URL]  文字方塊中，使用下列模式輸入 URL：
 
-    b. 在 [識別碼 (實體識別碼)]  方塊中，使用下列模式輸入 URL：`https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
+
+    b. 在 [識別碼 (實體識別碼)]  文字方塊中，使用下列模式輸入 URL：
+
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
+
+    c. 在 [回覆 URL]  文字方塊中，以下列模式輸入 URL：
+    
+    `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login`
 
     > [!NOTE]
-    > 這些加上括弧的值都是預留位置。 使用實際登入 URL 及識別碼的值來取代這些值。 本教學課程稍後的「檢視 SAML 2.0 端點」一節會說明這些詳細資料。
+    > 這些加上括弧的值都是預留位置。 使用實際登入 URL、識別碼及回覆 URL 的值來取代這些值。 本教學課程稍後的「檢視 SAML 2.0 端點」一節會說明這些詳細資料。
 
 1. 在 [以 SAML 設定單一登入]  頁面上的 [SAML 簽署憑證]  區段中，尋找 [憑證 (Base64)]  。 選取 [下載]  以下載憑證，並將其儲存在您的電腦上。
 
@@ -206,20 +214,23 @@ ms.locfileid: "76983607"
        ![識別提供者/端點][59]
 
     l. 在 DocuSign 系統管理入口網站的 [檢視 SAML 2.0 端點]  區段中，執行下列步驟：
-       1. 複製 [服務提供者簽發者 URL]  ，並將其貼到 Azure 入口網站上的 [基本 SAML 設定]  區段的 [識別碼]  方塊中。
-
-       1. 複製 [服務提供者登入 URL]  ，並將其貼到 Azure 入口網站上的 [基本 SAML 設定]  區段的 [登入 URL]  方塊中。
-
-       1. 選取 [關閉]  。
 
        ![檢視 SAML 2.0 端點][60]
+       
+       1. 複製 [服務提供者簽發者 URL]  ，並將其貼到 Azure 入口網站上的 [基本 SAML 設定]  區段的 [識別碼]  方塊中。
+       
+       1. 複製 [服務提供者判斷提示取用者服務 URL]  ，並將其貼到 Azure 入口網站上 [基本 SAML 設定]  區段的 [回覆 URL]  方塊中。
+       
+       1. 複製 [服務提供者登入 URL]  ，並將其貼到 Azure 入口網站上的 [基本 SAML 設定]  區段的 [登入 URL]  方塊中。 您會在**服務提供者登入 URL**取得 IDPID 值。
+
+       1. 選取 [關閉]  。
 
 ### <a name="create-docusign-test-user"></a>建立 DocuSign 測試使用者
 
 本節會在 DocuSign 中建立名為 B.Simon 的使用者。 DocuSign 支援依預設啟用的 Just-In-Time 使用者佈建。 在這一節沒有您需要進行的動作項目。 如果 DocuSign 中還沒有使用者存在，在驗證之後就會建立新的使用者。
 
->[!Note]
->如果您需要手動建立使用者，請連絡 [DocuSign 支援小組](https://support.docusign.com/)。
+> [!Note]
+> 如果您需要手動建立使用者，請連絡 [DocuSign 支援小組](https://support.docusign.com/)。
 
 ## <a name="test-sso"></a>測試 SSO 
 

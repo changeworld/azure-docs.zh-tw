@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 04/07/2020
+ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f369eb54dc92a29ba122a8a645262dc085b1ed36
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 2b4b94c05b39dddcef83644638a105d5b6c75118
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "80930041"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82184974"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>教學課程：使用部署指令碼建立自我簽署憑證 (預覽)
 
@@ -284,35 +284,43 @@ ms.locfileid: "80930041"
 
 ## <a name="deploy-the-template"></a>部署範本
 
-請參閱 Visual Studio Code 快速入門中的[部署範本](./quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template)一節，以開啟 Cloud Shell，並將範本檔案上傳至殼層。 接著，請執行下列 PowerShell 指令碼：
+1. 登入 [Azure Cloud Shell](https://shell.azure.com)
 
-```azurepowershell-interactive
-$projectName = Read-Host -Prompt "Enter a project name that is used to generate resource names"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
-$identityId = Read-Host -Prompt "Enter the user-assigned managed identity ID"
+1. 藉由選取左上角的 **PowerShell** 或 **Bash** (適用於 CLI) 來選擇您慣用的環境。  切換時必須重新啟動殼層。
 
-$adUserId = (Get-AzADUser -UserPrincipalName $upn).Id
-$resourceGroupName = "${projectName}rg"
-$keyVaultName = "${projectName}kv"
+    ![Azure 入口網站的 Cloud Shell 上傳檔案](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+1. 選取 [上傳/下載檔案]  ，然後選取 [上傳]  。 請參閱上一個螢幕擷取畫面。  選取您在前一節中儲存的檔案。 上傳檔案之後，您可以使用 **ls** 命令和 **cat** 命令來確認檔案是否已成功上傳。
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -identityId $identityId -keyVaultName $keyVaultName -objectId $adUserId
+1. 然後執行下列 PowerShell 指令碼來部署範本。
 
-Write-Host "Press [ENTER] to continue ..."
-```
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource names"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    $upn = Read-Host -Prompt "Enter your email address used to sign in to Azure"
+    $identityId = Read-Host -Prompt "Enter the user-assigned managed identity ID"
 
-部署指令碼服務必須建立其他部署指令碼資源，以執行指令碼。 除了實際的指令碼執行時間以外，準備和清除程序最多可能需要一分鐘才能完成。
+    $adUserId = (Get-AzADUser -UserPrincipalName $upn).Id
+    $resourceGroupName = "${projectName}rg"
+    $keyVaultName = "${projectName}kv"
 
-部署失敗，因為在指令碼中使用的命令 **Output1** 無效。 您應該會收到錯誤，指出：
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-```error
-The term 'Write-Output1' is not recognized as the name of a cmdlet, function, script file, or operable
-program.\nCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.\n
-```
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$HOME/azuredeploy.json" -identityId $identityId -keyVaultName $keyVaultName -objectId $adUserId
 
-部署指令碼的執行結果會儲存在部署指令碼資源中，以供疑難排解之用。
+    Write-Host "Press [ENTER] to continue ..."
+    ```
+
+    部署指令碼服務必須建立其他部署指令碼資源，以執行指令碼。 除了實際的指令碼執行時間以外，準備和清除程序最多可能需要一分鐘才能完成。
+
+    部署失敗，因為在指令碼中使用的命令 **Output1** 無效。 您應該會收到錯誤，指出：
+
+    ```error
+    The term 'Write-Output1' is not recognized as the name of a cmdlet, function, script file, or operable
+    program.\nCheck the spelling of the name, or if a path was included, verify that the path is correct and try again.\n
+    ```
+
+    部署指令碼的執行結果會儲存在部署指令碼資源中，以供疑難排解之用。
 
 ## <a name="debug-the-failed-script"></a>對失敗的指令碼進行偵錯
 

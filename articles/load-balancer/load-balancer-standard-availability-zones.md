@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2019
+ms.date: 04/30/2020
 ms.author: allensu
-ms.openlocfilehash: 5a65982c5c13eb4e4273efcfd8d14910b0f35572
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ecfbc610bfa62f723e0a02b8cdeb52cd33fb5cd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78197142"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853449"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>標準 Load Balancer 和可用性區域
 
@@ -26,20 +26,20 @@ Azure Standard Load Balancer 支援[可用性區域](../availability-zones/az-ov
 
 ## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a>適用於 Load Balancer 的可用性區域概念
 
-Load Balancer 資源本身是區域的，且絕不具區域性。 您可以設定的資料細微性會受到前端、規則和後端集區定義的每個設定所限制。
-在可用性區域的內容中，Load Balancer 規則的行為和屬性會描述為區域多餘或區域性。  區域備援和區域性說明屬性的區域性。  在 Load Balancer 的內容中，區域冗余一律表示*多個區域*，而區域性則表示將服務隔離至*單一區域*。
-公用和內部的 Load Balancer 均支援區域備援和區域性案例，且兩者都可視需要在區域之間進行流量導向 (「跨區域負載平衡」**)。 
+Load Balancer 資源本身會從其元件繼承區域設定：前端、規則和後端集區定義。
+在可用性區域的內容中，Load Balancer 規則的行為和屬性會描述為區域多餘或區域性。  在 Load Balancer 的內容中，區域冗余一律表示*多個區域*，而區域性則表示將服務隔離至*單一區域*。
+這兩種類型（公用、內部） Load Balancer 支援區域冗余和區域性案例，且兩者都可以視需要將流量導向區域。
 
-### <a name="frontend"></a>前端
+## <a name="frontend"></a>前端
 
 Load Balancer 前端是一種前端 IP 設定，它會參考虛擬網路資源子網內的公用 IP 位址資源或私人 IP 位址。  它會構成服務公開所在的負載平衡端點。
 Load Balancer 資源可以包含同時具有區域性和區域冗余前端的規則。 當公用 IP 資源或私人 IP 位址已保證為區域時，區域性（或缺乏）無法變動。  如果您想要變更或省略公用 IP 或私人 IP 位址前端的區域性，您必須在適當的區域中重新建立公用 IP。  可用性區域不會變更多個前端的條件約束，請參閱[Load Balancer 的多個前端](load-balancer-multivip-overview.md)，以取得這項功能的詳細資料。
 
-#### <a name="zone-redundant"></a>區域備援 
+### <a name="zone-redundant"></a>區域備援 
 
 在具有可用性區域的區域中，Standard Load Balancer 前端可以是區域多餘的。  區域冗余表示區域中的多個可用性區域，會同時使用單一 IP 位址來提供所有的輸入或輸出流量。 您不需要進行 DNS 備援配置。 單一前端 IP 位址可能會存活區域失敗，而且可以用來觸及所有（不受影響的）後端集區成員，而不論該區域。 一或多個可用性區域可能會失敗，而且只要區域中的一個區域維持良好狀況，資料路徑就會不受。 前端的單一 IP 位址會由多個可用性區域中的多個獨立基礎結構部署同時提供服務。  這並不表示表示資料路徑，但任何重試或重新建立作業將會在不受區域失敗影響的其他區域中成功。   
 
-#### <a name="optional-zone-isolation"></a>選擇性區域隔離
+### <a name="zonal"></a>區域性
 
 您可以選擇讓某個前端保證屬於單一區域，我們稱之為*區域性前端*。  這表示任何輸入或輸出流量都會由區域中的單一區域提供服務。  您的前端會具有與區域相同的健康情況。  非保證區域中的失敗皆不會對資料路徑造成影響。 您可以使用區域性前端來公開每個可用性區域的 IP 位址。  
 
@@ -51,13 +51,7 @@ Load Balancer 資源可以包含同時具有區域性和區域冗余前端的規
 
 對於內部 Load Balancer 前端，請將*區域*參數新增至內部 Load Balancer 前端 IP 組態。 區域性前端會使 Load Balancer 保證子網路中的某個 IP 位址屬於特定區域。
 
-### <a name="cross-zone-load-balancing"></a>跨區域負載平衡
-
-跨區域負載平衡是 Load Balancer 可觸達任何區域中的後端端點，並與前端及其區域性無關的能力。  任何負載平衡規則都可以將任何可用性區域或區域實例中的後端實例作為目標。
-
-您必須小心以表示可用性區域概念的方式來建立您的案例。 例如，您需要保證單一區域或多個區域內的虛擬機器部署，並將區域性前端和區域性後端資源對應至相同區域。  如果您的跨可用性區域僅具有區域性資源，則此案例將可運作，但可能不會有與可用性區域相關的明確失敗模式。 
-
-### <a name="backend"></a>後端
+## <a name="backend"></a>後端
 
 Load Balancer 適用于虛擬機器實例。  這些可以是獨立、可用性設定組或虛擬機器擴展集。  單一虛擬網路中的任何虛擬機器實例都可以是後端集區的一部分，而不論其是否保證為區域或保證的區域。
 
@@ -65,13 +59,13 @@ Load Balancer 適用于虛擬機器實例。  這些可以是獨立、可用性�
 
 如果您想要跨多個區域處理虛擬機器，只要將虛擬機器從多個區域放入相同的後端集區即可。  使用虛擬機器擴展集時，您可以將一或多個虛擬機器擴展集放入相同的後端集區中。  而且，每個虛擬機器擴展集可位於單一或多個區域中。
 
-### <a name="outbound-connections"></a>輸出連線
+## <a name="outbound-connections"></a>輸出連線
 
 相同的區域冗余和區域性屬性會套用至[輸出](load-balancer-outbound-connections.md)連線。  用於輸出連線的區域多餘公用 IP 位址是由所有區域提供服務。 區域公用 IP 位址只能由其保證所在的區域提供。  輸出連線 SNAT 埠配置會存活區域失敗，而如果不受區域失敗影響，您的案例將會繼續提供輸出 SNAT 連線能力。  如果流程是由受影響的區域所服務，這可能需要傳輸或針對區域冗余案例重新建立連接。  在受影響區域以外的區域中的流程不會受到影響。
 
 SNAT 埠預先配置演算法與或不含可用性區域相同。
 
-### <a name="health-probes"></a>健康狀態探查
+## <a name="health-probes"></a>健康狀態探查
 
 您現有的健康情況探查定義會維持不變，但不含可用性區域。  不過，我們已在基礎結構層級擴充健康情況模型。 
 

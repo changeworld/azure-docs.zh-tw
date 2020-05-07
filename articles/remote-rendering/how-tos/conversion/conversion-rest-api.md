@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
-ms.openlocfilehash: 38116efc9e87eca8e2514a0a84045a69b8d42326
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a0feb6b638cb6e3a74fcd30baea5e8a04375699
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887039"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857798"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>使用模型轉換 REST API
 
@@ -51,7 +51,7 @@ ms.locfileid: "80887039"
 
 傳回進行中轉換的識別碼，包裝在 JSON 檔中。 功能變數名稱為 "conversionId"。
 
-#### <a name="request-body"></a>要求本文
+#### <a name="request-body"></a>Request body
 
 
 ```json
@@ -81,7 +81,7 @@ ms.locfileid: "80887039"
 
 傳回進行中轉換的識別碼，包裝在 JSON 檔中。 功能變數名稱為 "conversionId"。
 
-#### <a name="request-body"></a>要求本文
+#### <a name="request-body"></a>Request body
 
 要求主體與上述的建立 REST 呼叫中的相同，但輸入和輸出包含*共用存取簽章（SAS）權杖*。 這些權杖可讓您存取儲存體帳戶以讀取輸入和寫入轉換結果。
 
@@ -120,6 +120,7 @@ ms.locfileid: "80887039"
 
 傳回具有 "status" 欄位且具有下列值的 JSON 檔：
 
+- 已
 - 運行
 - "Success"
 - 出

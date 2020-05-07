@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 09122581a3ade4e741a29996b7202ce0f96d074b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 053a506ad28978404a147e0604fe731f0b474225
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145536"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855732"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure 自動化中的 Runbook 執行
 
@@ -33,20 +33,54 @@ Azure 自動化指派背景工作角色，以在 runbook 執行期間執行每�
 >[!NOTE]
 >本文已更新為使用新的 Azure PowerShell Az 模組。 AzureRM 模組在至少 2020 年 12 月之前都還會持續收到錯誤 (Bug) 修正，因此您仍然可以持續使用。 若要深入了解新的 Az 模組和 AzureRM 的相容性，請參閱[新的 Azure PowerShell Az 模組簡介](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0)。 如需有關混合式 Runbook 背景工作角色的 Az 模組安裝指示，請參閱[安裝 Azure PowerShell 模組](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)。 針對您的自動化帳戶，您可以使用[如何更新 Azure 自動化中的 Azure PowerShell 模組](automation-update-azure-modules.md)，將模組更新為最新版本。
 
-## <a name="where-to-run-your-runbooks"></a>在何處執行您的 Runbook
+## <a name="security"></a>安全性
 
-Azure 自動化中的 runbook 可以在 Azure 沙箱或[混合式 Runbook 背景工作角色](automation-hybrid-runbook-worker.md)上執行。 當 runbook 設計用來對 Azure 中的資源進行驗證和執行時，它們會在 Azure 沙箱中執行，這是多個工作可以使用的共用環境。 使用相同沙箱的作業均受限於該沙箱的資源限制。
+Azure 自動化使用[Azure 資訊安全中心（ASC）](https://docs.microsoft.com/azure/security-center/security-center-introAzure)來為您的資源提供安全性，並在 Linux 系統中偵測到危害。 無論資源是否在 Azure 中，都能在您的工作負載中提供安全性。 請參閱[Azure 自動化中的驗證簡介](https://docs.microsoft.com/azure/automation/automation-security-overview)。
+
+ASC 會對可在 VM 上執行任何腳本（已簽署或未簽署）的使用者施加條件約束。 如果您是具有 VM 根存取權的使用者，您必須使用數位簽章明確設定電腦，或將它關閉。 否則，您只能在建立自動化帳戶並啟用適當功能之後，執行腳本以套用作業系統更新。
+
+## <a name="subscriptions"></a>訂用帳戶
+
+Azure[訂](https://docs.microsoft.com/office365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings)用帳戶是 Microsoft 的合約，可讓您使用一或多個以雲端為基礎的服務，您需支付費用。 針對 Azure 自動化，每個訂用帳戶都會連結到 Azure 自動化帳戶，而您可以在帳戶中[建立多個訂閱](manage-runbooks.md#work-with-multiple-subscriptions)。
+
+## <a name="azure-monitor"></a>Azure 監視器
+
+Azure 自動化利用[Azure 監視器](https://docs.microsoft.com/azure/azure-monitor/overview)來監視其機器作業。 作業需要 Log Analytics 工作區和[Log analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)程式。
+
+### <a name="log-analytics-agent-for-windows"></a>適用於 Windows 的 Log Analytics 代理程式
+
+適用于[windows 的 Log Analytics 代理程式](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windowsmonitor)適用于管理 windows vm 和實體電腦的 Azure 監視器。 這些機器可以在 Azure 中或非 Azure 環境中執行，例如本機資料中心。 您必須將代理程式設定為向一或多個 Log Analytics 工作區報告。
 
 >[!NOTE]
->Azure 沙箱環境不支援互動式作業。 它也需要針對進行 Win32 呼叫的 runbook 使用本機 MOF 檔案。
+>適用于 Windows 的 Log Analytics 代理程式先前稱為 Microsoft Monitoring Agent （MMA）。
 
-您可以使用混合式 Runbook 背景工作角色，直接在裝載角色的電腦上，以及針對環境中的本機資源執行 runbook。 Azure 自動化會儲存並管理 runbook，然後將其傳遞至一或多個指派的電腦。
+### <a name="log-analytics-agent-for-linux"></a>Log Analytics Linux 代理程式
+
+[Log Analytics linux 代理程式](https://docs.microsoft.com/azure/azure-monitor/platform/agent-linux)的運作方式類似于 Windows 的代理程式，但會將 Linux 電腦連接到 Azure 監視器。 代理程式會以**nxautomation**使用者帳戶安裝，允許執行需要根許可權的命令，例如在混合式 Runbook 背景工作角色上。 **Nxautomation**帳戶是不需要密碼的系統帳戶。 
+
+在[Linux 混合式 Runbook 背景工作角色安裝](automation-linux-hrw-install.md)期間，必須要有具有對應 sudo 許可權的**nxautomation**帳戶。 如果您嘗試安裝背景工作，但帳戶不存在或沒有適當的許可權，則安裝會失敗。
+
+Log Analytics 代理程式和**nxautomation**帳戶可用的記錄如下：
+
+* /var/opt/microsoft/omsagent/log/omsagent.log-Log Analytics 代理程式記錄檔 
+* /var/opt/microsoft/omsagent/run/automationworker/worker.log-自動化背景工作記錄檔
+
+## <a name="runbook-execution-environment"></a>Runbook 執行環境
+
+Azure 自動化中的 runbook 可以在 Azure 沙箱或[混合式 Runbook 背景工作角色](automation-hybrid-runbook-worker.md)上執行。 
+
+當 runbook 設計用來對 Azure 中的資源進行驗證和執行時，它們會在 Azure 沙箱中執行，這是多個工作可以使用的共用環境。 使用相同沙箱的作業均受限於該沙箱的資源限制。 Azure 沙箱環境不支援互動式作業。 它會防止存取所有跨進程的 COM 伺服器。 它也需要針對進行 Win32 呼叫的 runbook 使用本機 MOF 檔案。
+
+您也可以使用[混合式 Runbook 背景工作](automation-hybrid-runbook-worker.md)角色，直接在裝載角色的電腦上，以及針對環境中的本機資源執行 runbook。 Azure 自動化會儲存並管理 runbook，然後將其傳遞至一或多個指派的電腦。
+
+>[!NOTE]
+>若要在 Linux 混合式 Runbook 背景工作角色上執行，您的腳本必須經過簽署，並據以設定背景工作角色。 或者，簽章[驗證必須關閉](https://docs.microsoft.com/azure/automation/automation-linux-hrw-install#turn-off-signature-validation)。 
 
 下表列出一些 runbook 執行工作，其中列出每個的建議執行環境。
 
 |工作|建議|備忘錄|
 |---|---|---|
-|與 Azure 資源整合|Azure 沙箱|在 Azure 中託管，驗證會比較簡單。 如果您在 Azure VM 上使用混合式 Runbook 背景工作角色，您可以使用[azure 資源的受控](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)識別。|
+|與 Azure 資源整合|Azure 沙箱|在 Azure 中託管，驗證會比較簡單。 如果您在 Azure VM 上使用混合式 Runbook 背景工作角色，您可以[使用 Runbook 驗證搭配受控](automation-hrw-run-runbooks.md#runbook-auth-managed-identities)識別。|
 |取得最佳效能來管理 Azure 資源|Azure 沙箱|腳本會在相同的環境中執行，但延遲較少。|
 |將營運成本最小化|Azure 沙箱|沒有任何計算額外負荷，也不需要 VM。|
 |執行長時間執行的腳本|Hybrid Runbook Worker|Azure 沙箱具有[資源限制](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)。|
@@ -60,102 +94,65 @@ Azure 自動化中的 runbook 可以在 Azure 沙箱或[混合式 Runbook 背景
 |執行需要提高許可權的腳本|Hybrid Runbook Worker|沙箱不允許提高許可權。 使用混合式 Runbook 背景工作角色時，您可以關閉 UAC，並在執行需要提高許可權的命令時使用[Invoke 命令](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)。|
 |執行需要存取 Windows Management Instrumentation （WMI）的腳本|Hybrid Runbook Worker|在雲端沙箱中執行的作業無法存取 WMI 提供者。 |
 
-## <a name="using-modules-in-your-runbooks"></a>在 runbook 中使用模組
+## <a name="resources"></a>資源
+
+您的 runbook 必須包含邏輯來處理資源，例如 Vm、網路和網路上的資源。 資源會系結至 Azure 訂用帳戶，而 runbook 需要適當的認證才能存取任何資源。 請參閱[資源](https://docs.microsoft.com/rest/api/resources/resources)。 如需在 runbook 中處理資源的範例，請參閱[處理資源](manage-runbooks.md#handle-resources)。 
+
+## <a name="credentials"></a>認證
+
+Runbook 需要適當的[認證](shared-resources/credentials.md)，才能存取任何資源，不論是針對 Azure 或協力廠商系統。 這些認證會儲存在 Azure 自動化、Key Vault 等。  
+
+## <a name="runbook-permissions"></a>Runbook 權限
+
+Runbook 需要透過認證向 Azure 進行驗證的許可權。 您可以使用來提供認證：
+
+- 存取本機資源的本機使用者帳戶
+- Azure[資源的受控](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)識別，適用于在 azure 上執行的 vm
+- 自動化執行身分帳戶，可讓您在 VM 上存取自動化帳戶的憑證，並在本機使用它們進行驗證
+
+## <a name="modules"></a>單元
 
 Azure 自動化支援數個預設模組，包括 AzureRM 模組（AzureRM）和包含數個內部 Cmdlet 的模組。 也支援可安裝的模組，包括 Az 模組（Az. Automation），目前正用於 AzureRM 模組的喜好設定。 如需 runbook 和 DSC 設定可用模組的詳細資訊，請參閱[管理 Azure 自動化中的模組](shared-resources/modules.md)。
 
-## <a name="creating-resources"></a>建立資源
+## <a name="certificates"></a>憑證
 
-如果您的 runbook 會建立資源，腳本應該檢查該資源是否已存在，然後再嘗試建立它。 以下是基本的範例。
+Azure 自動化使用[憑證](shared-resources/certificates.md)向 azure 進行驗證，或將它們新增至 azure 或協力廠商資源。 憑證會安全地儲存，以供 runbook 和 DSC 設定存取。 
 
-```powershell
-$vmName = "WindowsVM1"
-$resourceGroupName = "myResourceGroup"
-$myCred = Get-AutomationPSCredential "MyCredential"
-$vmExists = Get-AzResource -Name $vmName -ResourceGroupName $resourceGroupName
+您的 runbook 可以使用自我簽署憑證，而不是由憑證授權單位單位（CA）簽署。 請參閱[建立新的憑證](shared-resources/certificates.md#create-a-new-certificate)。
 
-if(!$vmExists)
-    {
-    Write-Output "VM $vmName does not exist, creating"
-    New-AzVM -Name $vmName -ResourceGroupName $resourceGroupName -Credential $myCred
-    }
-else
-    {
-    Write-Output "VM $vmName already exists, skipping"
-    }
-```
+## <a name="jobs"></a>工作
 
-## <a name="supporting-time-dependent-scripts"></a>支援時間相依的腳本
+Azure 自動化支援環境，以從相同的自動化帳戶執行作業。 單一 Runbook 一次可以執行許多工作。 同時執行的作業越多，越常會分派到相同的沙箱。 
 
-您的 runbook 必須是健全且能夠處理暫時性錯誤，使其無法重新開機或失敗。 如果 runbook 失敗，Azure 自動化重試。
+在相同沙箱進程中執行的作業可能會互相影響。 其中一個範例是執行[Disconnect-disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0) Cmdlet。 執行此 Cmdlet 會中斷共用沙箱進程中的每個 runbook 工作。 如需詳細資訊，請參閱[預防並行作業](manage-runbooks.md#prevent-concurrent-jobs)。
 
-如果您的 runbook 通常會在時間條件約束中執行，請讓腳本執行邏輯來檢查執行時間。 這項檢查可確保在特定時間執行的作業（例如啟動、關機或相應放大）。
+>[!NOTE]
+>從在 Azure 沙箱中執行的 runbook 啟動的 PowerShell 工作可能無法以完整[PowerShell 語言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes)執行。 
 
-> [!NOTE]
-> Azure 沙箱進程的當地時間會設定為 UTC。 您的 runbook 中的日期和時間計算必須考慮這一點。
+### <a name="job-statuses"></a>工作狀態
 
-## <a name="tracking-progress"></a>追蹤進度
+下表描述作業可能的狀態。 您可以在 Azure 入口網站中查看所有 runbook 作業的狀態摘要，或深入瞭解特定 runbook 作業的詳細資料。 您也可以設定與 Log Analytics 工作區的整合，以轉送 Runbook 作業狀態和作業串流。 如需與 Azure 監視器記錄整合的詳細資訊，請參閱[從自動化將作業狀態和作業串流轉送到 Azure 監視器記錄](automation-manage-send-joblogs-log-analytics.md)。 如需在 runbook 中使用狀態的範例，另請參閱[取得作業狀態](manage-runbooks.md#obtain-job-statuses)。
 
-最好的作法是將您的 runbook 撰寫為模組化，並使用可輕鬆重複使用並重新啟動的邏輯。 在 runbook 中追蹤進度是確保 runbook 邏輯在發生問題時正確執行的好方法。 您可以使用外部來源（例如儲存體帳戶、資料庫或共用檔案）來追蹤 runbook 的進度。 您可以在 runbook 中建立邏輯，先檢查所採取的最後一個動作的狀態。 然後，根據檢查的結果，邏輯可以略過或繼續 runbook 中的特定工作。
+| 狀態 | 描述 |
+|:--- |:--- |
+| Completed |工作已成功完成。 |
+| Failed |無法編譯圖形化或 PowerShell 工作流程 runbook。 PowerShell 腳本 runbook 無法啟動，或作業發生例外狀況。 請參閱[Azure 自動化的 runbook 類型](automation-runbook-types.md)。|
+| 處理失敗，正在等候資源 |工作失敗，因為其達到 [公平共用](#fair-share) 的三次上限，且每次從相同的檢查點或啟動 Runbook 開始。 |
+| 已排入佇列 |作業正在等候自動化背景工作角色上的資源變成可用，以便可以啟動它。 |
+| 啟動中 |此作業已指派給背景工作角色，並且系統正在進行啟動。 |
+| 繼續中 |工作暫停後，系統正在繼續工作。 |
+| 執行中 |工作正在執行。 |
+| 執行中，正在等候資源 |工作已卸載，因為已達到 公平共用 上限。 工作會很快地從其上一個檢查點繼續。 |
+| 已停止 |工作完成之前已由使用者停止。 |
+| 停止中 |系統正在停止作業。 |
+| 暫止 |僅適用于[圖形化和 PowerShell 工作流程 runbook](automation-runbook-types.md) 。 工作已由使用者、系統或 Runbook 中的命令暫停。 如果 runbook 沒有檢查點，則會從頭開始。 如果它有檢查點，則可重新啟動並從其最後一個檢查點繼續。 只有在發生例外狀況時，系統才會暫停 runbook。 根據預設， `ErrorActionPreference`變數會設定為 [繼續]，表示作業會在發生錯誤時持續執行。 如果喜好設定變數設為 [停止]，則作業會在發生錯誤時暫停。  |
+| Suspending |僅適用于[圖形化和 PowerShell 工作流程 runbook](automation-runbook-types.md) 。 因使用者要求，系統正在嘗試暫停工作。 Runbook 必須達到其下一個檢查點才能暫停。 如果它已經通過其最後一個檢查點，它就會在暫停之前完成。 |
 
-## <a name="preventing-concurrent-jobs"></a>防止並行作業
+## <a name="activity-logging"></a>活動記錄
 
-如果某些 runbook 同時在多個作業中執行，則會奇怪其行為。 在此情況下，runbook 必須執行邏輯來判斷是否已有執行中的作業。 以下是基本的範例。
+在 Azure 自動化中執行 runbook 會在自動化帳戶的活動記錄檔中寫入詳細資料。 如需使用記錄的詳細資訊，請參閱[從活動記錄抓取詳細資料](manage-runbooks.md#retrieve-details-from-activity-log)。 
 
-```powershell
-# Authenticate to Azure
-$connection = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
--ApplicationId $connection.ApplicationID -CertificateThumbprint $connection.CertificateThumbprint
-
-$AzContext = Select-AzSubscription -SubscriptionId $connection.SubscriptionID
-
-# Check for already running or new runbooks
-$runbookName = "<RunbookName>"
-$rgName = "<ResourceGroupName>"
-$aaName = "<AutomationAccountName>"
-$jobs = Get-AzAutomationJob -ResourceGroupName $rgName -AutomationAccountName $aaName -RunbookName $runbookName -AzContext $AzureContext
-
-# Check to see if it is already running
-$runningCount = ($jobs | ? {$_.Status -eq "Running"}).count
-
-If (($jobs.status -contains "Running" -And $runningCount -gt 1 ) -Or ($jobs.Status -eq "New")) {
-    # Exit code
-    Write-Output "Runbook is already running"
-    Exit 1
-} else {
-    # Insert Your code here
-}
-```
-
-## <a name="working-with-multiple-subscriptions"></a>使用多個訂用帳戶
-
-若要處理多個訂用帳戶，您的 runbook 必須使用[AzCoNtextAutosave](https://docs.microsoft.com/powershell/module/Az.Accounts/Disable-AzContextAutosave?view=azps-3.5.0) Cmdlet。 此 Cmdlet 可確保不會從相同沙箱中執行的另一個 runbook 抓取驗證內容。 Runbook 也會在 Az`AzContext` module Cmdlet 上使用參數，並傳遞適當的內容給它。
-
-```powershell
-# Ensures that you do not inherit an AzContext in your runbook
-Disable-AzContextAutosave –Scope Process
-
-$Conn = Get-AutomationConnection -Name AzureRunAsConnection
-Connect-AzAccount -ServicePrincipal `
--Tenant $Conn.TenantID `
--ApplicationId $Conn.ApplicationID `
--CertificateThumbprint $Conn.CertificateThumbprint
-
-$context = Get-AzContext
-
-$ChildRunbookName = 'ChildRunbookDemo'
-$AutomationAccountName = 'myAutomationAccount'
-$ResourceGroupName = 'myResourceGroup'
-
-Start-AzAutomationRunbook `
-    -ResourceGroupName $ResourceGroupName `
-    -AutomationAccountName $AutomationAccountName `
-    -Name $ChildRunbookName `
-    -DefaultProfile $context
-```
-
-## <a name="handling-exceptions"></a>處理例外狀況
+## <a name="exceptions"></a>例外狀況
 
 本節說明在您的 runbook 中處理例外狀況或間歇性問題的一些方式。 例如 WebSocket 例外狀況。 正確的例外狀況處理可防止暫時性的網路失敗，而導致您的 runbook 失敗。 
 
@@ -203,147 +200,27 @@ function Get-ContosoFiles
 }
 ```
 
-## <a name="using-executables-or-calling-processes"></a>使用可執行檔或呼叫處理序
+## <a name="errors"></a>Errors
 
-在 Azure 沙箱中執行的 runbook 不支援呼叫進程，例如可執行檔（**.exe**檔）或子流程。 這是因為 Azure 沙箱是在容器中執行的共用進程，可能無法存取所有基礎 Api。 對於需要協力廠商軟體或呼叫子流程的案例，您應該在[混合式 runbook 背景工作角色](automation-hybrid-runbook-worker.md)上執行 runbook。
+您的 runbook 必須處理錯誤。 Azure 自動化支援兩種類型的 PowerShell 錯誤，終止和非終止。 
 
-## <a name="accessing-device-and-application-characteristics"></a>存取裝置和應用程式特性
-
-在 Azure 沙箱中執行的 Runbook 作業無法存取任何裝置或應用程式特性。 最常用來查詢 Windows 效能計量的 API 是 WMI，其中一些常見的計量是記憶體和 CPU 使用量。 不過，使用什麼 API 並不重要，因為在雲端中執行的工作無法存取 Microsoft 的 Web 架構企業管理（WBEM）。 此平臺是以通用訊息模型（CIM）為基礎，提供定義裝置和應用程式特性的業界標準。
-
-## <a name="handling-errors"></a>處理錯誤
-
-您的 runbook 必須能夠處理錯誤。 PowerShell 有兩種類型的錯誤，終止和非終止。 終止錯誤發生時，會停止 runbook 執行。 Runbook 停止，作業狀態為 [失敗]。
+終止錯誤發生時，會停止 runbook 執行。 Runbook 停止，作業狀態為 [失敗]。
 
 非終止錯誤可讓腳本在執行後仍繼續。 非終止錯誤的範例之一，就是當 runbook 使用`Get-ChildItem` Cmdlet 時所發生的路徑不存在。 PowerShell 發現路徑不存在，則會擲回錯誤，並繼續下一步資料夾。 在此情況下，此錯誤不會將 runbook 作業狀態設定為 [失敗]，甚至可能會完成作業。 若要強制 Runbook 在非終止錯誤時停止，您可以在 Cmdlet 上使用 `ErrorAction Stop`。
 
-## <a name="handling-jobs"></a>處理作業
+## <a name="executables-or-calling-processes"></a>可執行檔或呼叫進程
 
-您可以針對相同自動化帳戶中的作業重複使用執行環境。 單一 Runbook 一次可以執行許多工作。 同時執行的作業越多，越常會分派到相同的沙箱。
+在 Azure 沙箱中執行的 runbook 不支援呼叫進程，例如可執行檔（**.exe**檔）或子流程。 這是因為 Azure 沙箱是在容器中執行的共用進程，可能無法存取所有基礎 Api。 對於需要協力廠商軟體或呼叫子流程的案例，您應該在[混合式 runbook 背景工作角色](automation-hybrid-runbook-worker.md)上執行 runbook。
 
-在相同沙箱進程中執行的作業可能會互相影響。 其中一個範例是執行[Disconnect-disconnect-azaccount](https://docs.microsoft.com/powershell/module/az.accounts/disconnect-azaccount?view=azps-3.7.0) Cmdlet。 執行此 Cmdlet 會中斷共用沙箱進程中的每個 runbook 工作。
+## <a name="access-to-device-and-application-characteristics"></a>存取裝置和應用程式特性
 
-從在 Azure 沙箱中執行的 runbook 啟動的 PowerShell 工作可能無法以完整[PowerShell 語言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes)執行。 如需有關 Azure 自動化中的作業互動的詳細資訊，請參閱[使用 PowerShell 來抓取作業狀態](#retrieving-job-status-using-powershell)。
+在 Azure 沙箱中執行的 Runbook 作業無法存取任何裝置或應用程式特性。 最常用來查詢 Windows 效能計量的 API 是 WMI，其中一些常見的計量是記憶體和 CPU 使用量。 不過，使用什麼 API 並不重要，因為在雲端中執行的工作無法存取 Microsoft 的 Web 架構企業管理（WBEM）。 此平臺是以通用訊息模型（CIM）為基礎，提供定義裝置和應用程式特性的業界標準。
 
-### <a name="job-statuses"></a>工作狀態
+## <a name="webhooks"></a>Webhook
 
-下表描述作業可能的狀態。
+外部服務（例如 Azure DevOps Services 和 GitHub）可以在 Azure 自動化中啟動 runbook。 為了執行這種類型的啟動，服務會透過單一 HTTP 要求來使用[webhook](automation-webhooks.md) 。 使用 webhook 可讓 runbook 啟動，而不需要執行完整的 Azure 自動化解決方案。 
 
-| 狀態 | 描述 |
-|:--- |:--- |
-| Completed |工作已成功完成。 |
-| Failed |無法編譯圖形化或 PowerShell 工作流程 runbook。 PowerShell 腳本 runbook 無法啟動，或作業發生例外狀況。 請參閱[Azure 自動化的 runbook 類型](automation-runbook-types.md)。|
-| 處理失敗，正在等候資源 |工作失敗，因為其達到 [公平共用](#fair-share) 的三次上限，且每次從相同的檢查點或啟動 Runbook 開始。 |
-| 已排入佇列 |作業正在等候自動化背景工作角色上的資源變成可用，以便可以啟動它。 |
-| 啟動中 |此作業已指派給背景工作角色，並且系統正在進行啟動。 |
-| 繼續中 |工作暫停後，系統正在繼續工作。 |
-| 執行中 |工作正在執行。 |
-| 執行中，正在等候資源 |工作已卸載，因為已達到 公平共用 上限。 工作會很快地從其上一個檢查點繼續。 |
-| 已停止 |工作完成之前已由使用者停止。 |
-| 停止中 |系統正在停止作業。 |
-| 暫止 |僅適用于[圖形化和 PowerShell 工作流程 runbook](automation-runbook-types.md) 。 工作已由使用者、系統或 Runbook 中的命令暫停。 如果 runbook 沒有檢查點，則會從頭開始。 如果它有檢查點，則可重新啟動並從其最後一個檢查點繼續。 只有在發生例外狀況時，系統才會暫停 runbook。 根據預設， `ErrorActionPreference`變數會設定為 [繼續]，表示作業會在發生錯誤時持續執行。 如果喜好設定變數設為 [停止]，則作業會在發生錯誤時暫停。  |
-| Suspending |僅適用于[圖形化和 PowerShell 工作流程 runbook](automation-runbook-types.md) 。 因使用者要求，系統正在嘗試暫停工作。 Runbook 必須達到其下一個檢查點才能暫停。 如果它已經通過其最後一個檢查點，它就會在暫停之前完成。 |
-
-### <a name="viewing-job-status-from-the-azure-portal"></a>從 Azure 入口網站檢視作業狀態
-
-您可以在 Azure 入口網站中查看所有 runbook 作業的狀態摘要，或深入瞭解特定 runbook 作業的詳細資料。 您也可以設定與 Log Analytics 工作區的整合，以轉送 Runbook 作業狀態和作業串流。 如需與 Azure 監視器記錄整合的詳細資訊，請參閱[從自動化將作業狀態和作業串流轉送到 Azure 監視器記錄](automation-manage-send-joblogs-log-analytics.md)。
-
-在所選自動化帳戶的右邊，您可以在 [**作業統計資料]** 圖格底下看到所有 runbook 作業的摘要。
-
-![[作業統計資料] 圖格](./media/automation-runbook-execution/automation-account-job-status-summary.png)
-
-此磚會針對每個執行的作業顯示作業狀態的計數和圖形表示。
-
-按一下圖格，即會顯示 [作業] 頁面，其中包含所有已執行作業的摘要清單。 此頁面會顯示每個作業的狀態、runbook 名稱、開始時間和完成時間。
-
-![自動化帳戶的 [作業] 頁面](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
-
-您可以選取 [**篩選作業**] 來篩選工作清單。 篩選特定的 runbook、作業狀態，或從下拉式清單中選擇，並提供搜尋的時間範圍。
-
-![篩選作業狀態](./media/automation-runbook-execution/automation-account-jobs-filter.png)
-
-或者，您可以從自動化帳戶中的 [Runbook] 頁面選取該 runbook，然後選取 [**作業**] 圖格，以查看特定 runbook 的作業摘要詳細資料。 此動作會顯示 [作業] 頁面。 您可以從這裡按一下作業記錄，以查看其詳細資料和輸出。
-
-![自動化帳戶的 [作業] 頁面](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
-
-### <a name="viewing-the-job-summary"></a>查看作業摘要
-
-以上所述的作業摘要可讓您查看已針對特定 runbook 建立的所有作業清單，以及其最近的狀態。 若要查看作業的詳細資訊和輸出，請在清單中按一下其名稱。 作業的詳細觀點包括已提供給該工作的 runbook 參數值。
-
-您可以使用下列步驟來檢視 Runbook 工作。
-
-1. 在 Azure 入口網站中，選取 [自動化]****，然後選取自動化帳戶的名稱。
-2. 從中樞選取 [**進程自動化**] 底下的 [ **runbook** ]。
-3. 在 [Runbook] 頁面上，從清單中選取 runbook。
-3. 在已選取 Runbook 的頁面上，按一下 [作業]**** 圖格。
-4. 按一下清單中的其中一個工作，並在 [runbook 作業詳細資料] 頁面上查看其詳細資料和輸出。
-
-### <a name="retrieving-job-status-using-powershell"></a>使用 PowerShell 來抓取作業狀態
-
-使用[AzAutomationJob 指令程式](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0)來抓取為 runbook 建立的作業，以及特定作業的詳細資料。 如果您使用`Start-AzAutomationRunbook`PowerShell 來啟動 runbook，它會傳回產生的作業。 使用[AzAutomationJobOutput](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationJobOutput?view=azps-3.5.0)來取出作業輸出。
-
-下列範例會取得範例 runbook 的最後一個作業，並顯示其狀態、針對 runbook 參數提供的值，以及作業輸出。
-
-```azurepowershell-interactive
-$job = (Get-AzAutomationJob –AutomationAccountName "MyAutomationAccount" `
-–RunbookName "Test-Runbook" -ResourceGroupName "ResourceGroup01" | sort LastModifiedDate –desc)[0]
-$job.Status
-$job.JobParameters
-Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-–AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
-```
-
-下列範例會抓取特定作業的輸出，並傳回每一筆記錄。 如果其中一個記錄發生例外狀況，腳本會寫入例外狀況，而不是值。 這種行為很有用，因為例外狀況可以提供輸出期間可能不會正常記錄的其他資訊。
-
-```azurepowershell-interactive
-$output = Get-AzAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
-foreach($item in $output)
-{
-    $fullRecord = Get-AzAutomationJobOutputRecord -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -JobId <jobID> -Id $item.StreamRecordId
-    if ($fullRecord.Type -eq "Error")
-    {
-        $fullRecord.Value.Exception
-    }
-    else
-    {
-    $fullRecord.Value
-    }
-}
-```
-
-## <a name="getting-details-from-the-activity-log"></a>從活動記錄中取得詳細資料
-
-您可以從自動化帳戶的活動記錄中，抓取 runbook 詳細資料（例如啟動 runbook 的人員或帳戶）。 下列 PowerShell 範例會提供最後一個執行指定 runbook 的使用者。
-
-```powershell-interactive
-$SubID = "00000000-0000-0000-0000-000000000000"
-$AutomationResourceGroupName = "MyResourceGroup"
-$AutomationAccountName = "MyAutomationAccount"
-$RunbookName = "MyRunbook"
-$StartTime = (Get-Date).AddDays(-1)
-$JobActivityLogs = Get-AzLog -ResourceGroupName $AutomationResourceGroupName -StartTime $StartTime `
-                                | Where-Object {$_.Authorization.Action -eq "Microsoft.Automation/automationAccounts/jobs/write"}
-
-$JobInfo = @{}
-foreach ($log in $JobActivityLogs)
-{
-    # Get job resource
-    $JobResource = Get-AzResource -ResourceId $log.ResourceId
-
-    if ($JobInfo[$log.SubmissionTimestamp] -eq $null -and $JobResource.Properties.runbook.name -eq $RunbookName)
-    {
-        # Get runbook
-        $Runbook = Get-AzAutomationJob -ResourceGroupName $AutomationResourceGroupName -AutomationAccountName $AutomationAccountName `
-                                            -Id $JobResource.Properties.jobId | ? {$_.RunbookName -eq $RunbookName}
-
-        # Add job information to hashtable
-        $JobInfo.Add($log.SubmissionTimestamp, @($Runbook.RunbookName,$Log.Caller, $JobResource.Properties.jobId))
-    }
-}
-$JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
-```
-
-## <a name="sharing-resources-among-runbooks"></a><a name="fair-share"></a>在 runbook 之間共用資源
+## <a name="shared-resources-among-runbooks"></a><a name="fair-share"></a>Runbook 之間的共用資源
 
 若要在雲端中的所有 runbook 之間共用資源，Azure 自動化暫時卸載或停止已執行超過三小時的任何工作。 [PowerShell runbook](automation-runbook-types.md#powershell-runbooks)和[Python runbook](automation-runbook-types.md#python-runbooks)的作業會停止且不會重新開機，且作業狀態會變成 [已停止]。
 

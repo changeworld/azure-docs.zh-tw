@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 59541c568c1d5341375236f9f074b7f82e1a6f94
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75980289"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858745"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>使用 Azure Site Recovery 保護檔案伺服器 
 
@@ -30,7 +30,7 @@ ms.locfileid: "75980289"
 DFSR 使用名為「遠端差異壓縮 (RDC)」的壓縮演算法，可用來在頻寬有限的網路上有效率地更新檔案。 它可在檔案中的資料遭到插入、移除與重新排列時偵測出來。 啟用的 DFSR 只會在檔案更新時複寫已變更的檔案區塊。 另外還有檔案伺服器環境，在非尖峰時間才進行每日備份，可因應發生災害時的需求。 此時不會實作 DFSR。
 
 下圖說明實作 DFSR 的檔案伺服器環境。
-                
+        
 ![DFSR 架構](media/site-recovery-file-server/dfsr-architecture.JPG)
 
 在上圖中，有多個名為成員的檔案伺服器主動參與整個複寫群組中的檔案複寫。 即使一個成員離線，向其中一個成員傳送要求的所有用戶端還是可以取得複寫資料夾的內容。
@@ -57,19 +57,19 @@ DFSR 使用名為「遠端差異壓縮 (RDC)」的壓縮演算法，可用來在
 |環境  |建議  |考慮事項 |
 |---------|---------|---------|
 |有或沒有 DFSR 的檔案伺服器環境|   [使用 Site Recovery 進行複寫](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery 不支援共用磁碟叢集或網路連接儲存裝置 (NAS)。 如果您的環境使用這些組態，請在適當時使用任何其他方法。 <br> Site Recovery 不支援 SMB 3.0。 只有在對檔案所做的變更已在檔案的原始位置中更新時，複寫的 VM 才會納入變更。<br>  Site Recovery 提供近乎同步的資料複寫程式，因此在發生未規劃的容錯移轉案例時，可能會遺失資料，而且可能會造成 USN 不相符的問題。
-|有 DFSR 的檔案伺服器環境     |  [將 DFSR 延伸到 Azure IaaS 虛擬機器](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      DFSR 適用於頻寬極端變換的環境。 要使用此方法，Azure VM 必須隨時處於啟動並執行中的狀態。 您必須在規劃時計算 VM 的成本。         |
+|有 DFSR 的檔案伺服器環境     |  [將 DFSR 延伸到 Azure IaaS 虛擬機器](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |    DFSR 適用於頻寬極端變換的環境。 要使用此方法，Azure VM 必須隨時處於啟動並執行中的狀態。 您必須在規劃時計算 VM 的成本。         |
 |Azure IaaS VM     |     檔案同步    |     如果您在災害復原案例中使用檔案同步，在容錯移轉期間，您必須手動執行動作，以確保用戶端機器可以透明的方式存取檔案共用。 要使用「檔案同步」，必須從用戶端機器開啟連接埠 445。     |
 
 
 ### <a name="site-recovery-support"></a>Site Recovery 支援
 由於 Site Recovery 複寫無法以應用程式驗證，下列建議應該適用於下列案例。
 
-| 來源    |至次要網站    |至 Azure
+| 來源  |至次要網站  |至 Azure
 |---------|---------|---------|
-|Azure| -|是|
-|Hyper-V|   是 |是
-|VMware |是|   是
-|實體伺服器|   是 |是
+|Azure|  -|是|
+|Hyper-V|  是  |是
+|VMware  |是|  是
+|實體伺服器|  是  |是
  
 
 > [!IMPORTANT]
@@ -97,7 +97,7 @@ Azure 檔案服務可用來完全取代或補充傳統內部部署檔案伺服�
 
 下列各節將簡短說明如何使用檔案同步：
 
-1. [在 Azure 中建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果您為儲存體帳戶選擇了讀取權限異地備援儲存體，則會獲得在發生災害時從次要區域讀取資料的權限。 如需詳細資訊，請參閱 [Azure 儲存體中的災害復原和強制容錯移轉 (預覽)](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
+1. [在 Azure 中建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果您為儲存體帳戶選擇了讀取權限異地備援儲存體，則會獲得在發生災害時從次要區域讀取資料的權限。 如需詳細資訊，請參閱嚴重損壞[修復和儲存體帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
 2. [建立檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 3. 在 Azure 檔案伺服器上[啟動檔案同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)。
 4. 建立同步群組。 同步群組內的端點會與彼此保持同步。 同步群組必須包含至少一個雲端端點，代表 Azure 檔案共用。 同步群組也必須包含一個伺服器端點，代表 Windows 伺服器上的路徑。
@@ -146,7 +146,7 @@ Azure 檔案服務可用來完全取代或補充傳統內部部署檔案伺服�
 
 請依照下列步驟使用檔案同步：
 
-1. [在 Azure 中建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果您為儲存體帳戶選擇了「讀取權限異地備援儲存體」(建議)，在發生災害時，您將可從次要區域讀取資料。 如需詳細資訊，請參閱[Azure 儲存體中的嚴重損壞修復和強制容錯移轉（預覽）](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
+1. [在 Azure 中建立儲存體帳戶](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。 如果您為儲存體帳戶選擇了「讀取權限異地備援儲存體」(建議)，在發生災害時，您將可從次要區域讀取資料。 如需詳細資訊，請參閱嚴重損壞[修復和儲存體帳戶容錯移轉](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)。
 2. [建立檔案共用](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)。
 3. 在您在內部部署檔案伺服器中[部署檔案同步](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)。
 4. 建立同步群組。 同步群組內的端點會與彼此保持同步。 同步群組必須包含至少一個雲端端點，代表 Azure 檔案共用。 同步群組也必須包含一個伺服器端點，代表內部部署 Windows 伺服器上的路徑。
