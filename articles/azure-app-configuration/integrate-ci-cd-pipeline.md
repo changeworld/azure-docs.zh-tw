@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: lcozzens
-ms.openlocfilehash: c744557471a9b37bd620bb9195bdb709c24649ab
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4b1b9e2360f4ae1cf428133006ed08327b10cdef
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77047278"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790757"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>與 CI/CD 管線整合
 
@@ -96,4 +96,4 @@ ms.locfileid: "77047278"
 在本教學課程中，您已匯出要在部署管線中使用的 Azure 應用程式組態資料。 若要深入了解「應用程式組態」的使用方式，請繼續進行 Azure CLI 範例。
 
 > [!div class="nextstepaction"]
-> [受控識別整合](./howto-integrate-azure-managed-service-identity.md)
+> [Azure CLI](https://docs.microsoft.com/cli/azure/appconfig?view=azure-cli-latest)

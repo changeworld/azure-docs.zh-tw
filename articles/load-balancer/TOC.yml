@@ -4,6 +4,8 @@
   items:
     - name: 什麼是 Azure Load Balancer？
       href: load-balancer-overview.md
+    - name: 常見問題集
+      href: load-balancer-faqs.md
 - name: 快速入門
   items:
     - name: 建立 Load Balancer - 入口網站
@@ -40,6 +42,8 @@
       href: components.md
     - name: 概念
       href: concepts.md
+    - name: SKU
+      href: skus.md
     - name: 健康狀況監視
       items:
         - name: 健康狀態探查

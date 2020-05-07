@@ -1,20 +1,20 @@
 ---
-title: 合作夥伴中心的商業 marketplace 分析
-description: 瞭解如何存取分析報表來監視銷售、評估效能，以及優化您的 marketplace 供應專案。
+title: 合作夥伴中心的 Microsoft 商業 marketplace 分析
+description: 瞭解如何在 Microsoft 合作夥伴中心存取分析報表來監視銷售、評估效能，以及優化您的 marketplace 供應專案。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 41b9c5244ce9d468d9bf0fb7bafa719b4e6f55ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c406efd30e891c8ca69481299801e7309cdff81
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262276"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744915"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>合作夥伴中心的商業 marketplace 分析
+# <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>在合作夥伴中心存取商業 marketplace 的分析報告
 
 瞭解如何在 Microsoft 合作夥伴中心存取分析報告，以監視銷售、評估效能，以及在 marketplace 中優化您的供應專案。 身為合作夥伴，您可以使用合作夥伴中心所支援的資料視覺效果和深入解析圖形來監視您的供應專案清單，並尋找最大化銷售的方法。 改良的分析工具可讓您對效能結果採取行動，並與客戶和轉銷商保持更好的關係。
 
