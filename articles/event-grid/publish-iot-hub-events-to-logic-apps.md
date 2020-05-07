@@ -7,12 +7,12 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 11/21/2019
 ms.author: robinsh
-ms.openlocfilehash: 334b7b2c59b328e8eff3c7c2b9c3ed46bffc3442
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 889c5e68759a94682150ac88970b7123ad0fc412
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74706443"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82201732"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教學課程：使用 Logic Apps 和 Logic Apps 來傳送 Azure IoT 中樞事件的相關電子郵件通知
 
@@ -22,9 +22,14 @@ Azure Event Grid 可讓您在下游商務應用程式中觸發動作，進而回
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure Logic Apps 支援的任何電子郵件提供者 (如 Office 365 Outlook、Outlook.com 或 Gmail) 所提供的電子郵件帳戶。 這個電子郵件帳戶用來傳送事件通知。 如需支援的完整邏輯應用程式連接器清單，請參閱[連接器概觀](https://docs.microsoft.com/connectors/)
-* 使用中的 Azure 帳戶。 如果您沒有帳戶，您可以[建立免費帳戶](https://azure.microsoft.com/pricing/free-trial/)。
-* Azure 中的 IoT 中樞。 若尚未建立，請參閱[開始使用 IoT 中樞](../iot-hub/iot-hub-csharp-csharp-getstarted.md)的逐步解說。 
+* 有效的 Azure 訂用帳戶。 如果您沒有訂用帳戶，則可以建立[免費的 Azure 帳戶](https://azure.microsoft.com/pricing/free-trial/)。
+
+* Azure Logic Apps 支援的任何電子郵件提供者 (如 Office 365 Outlook、Outlook.com 或 Gmail) 所提供的電子郵件帳戶。 這個電子郵件帳戶用來傳送事件通知。 如需支援的完整邏輯應用程式連接器清單，請參閱[連接器概觀](https://docs.microsoft.com/connectors/)。
+
+  > [!IMPORTANT]
+  > 使用 Gmail 之前，請先檢查您是否擁有 G-Suite 商務帳戶 (搭配自訂網域的電子郵件地址) 或 Gmail 取用者帳戶 (搭配 @gmail.com 或 @googlemail.com 的電子郵件地址)。 只有 G-Suite 商務帳戶可以在邏輯應用程式中搭配其他連接器使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用 Gmail 連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
+
+* Azure 中的 IoT 中樞。 若尚未建立，請參閱[開始使用 IoT 中樞](../iot-hub/iot-hub-csharp-csharp-getstarted.md)的逐步解說。
 
 ## <a name="create-a-logic-app"></a>建立邏輯應用程式
 

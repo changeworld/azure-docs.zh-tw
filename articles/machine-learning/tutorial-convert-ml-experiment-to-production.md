@@ -1,20 +1,22 @@
 ---
-title: 將機器學習實驗程式碼轉換為實際執行程式碼
+title: 將筆記本程式碼轉換成 Python 指令碼
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 MLOpsPython 程式碼範本，將機器學習實驗性程式碼轉換為實際執行程式碼。
+description: 使用 MLOpsPython 程式碼範本，將您的機器學習實驗筆記本轉換成生產環境可用的程式碼。 然後，您可以測試、部署和自動化該程式碼。
 author: bjcmit
 ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 03/13/2020
-ms.openlocfilehash: e3c9b16ae3d2b06ec19ecd29d15762a065c0c1ae
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/30/2020
+ms.openlocfilehash: a0b66f233de9e1bfdc6d011b65489884a1049a12
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521431"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559671"
 ---
-# <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>教學課程：將 ML 實驗性程式碼轉換為實際執行程式碼
+# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>教學課程：將 ML 實驗轉換為生產環境的 Python 程式碼
+
+在本教學課程中，您將了解如何將 Juptyer 筆記本轉換成 Python 指令碼，以使用 MLOpsPython 程式碼範本和 Azure Machine Learning 讓其便於進行測試和自動化。 一般來說，此程序會用來從 Juptyer 筆記本取得實驗/訓練程式碼，並將其轉換成 Python 指令碼。 然後這些指令碼就可以用來在您的生產環境中進行測試和 CI/CD 自動化。 
 
 機器學習專案需要實驗，其中的假設會透過敏捷式工具 (例如 Jupyter Notebook) 使用實際資料集進行測試。 模型準備好用於生產後，應該將模型程式碼放入實際執行程式碼存放庫。 在某些情況下，必須將模型程式碼轉換成 Python 指令碼，才能放入實際執行程式碼存放庫。 本教學課程涵蓋如何將實驗程式碼匯出至 Python 指令碼的建議方法。
 

@@ -1,20 +1,17 @@
 ---
-title: 保留折扣如何套用至適用於 MySQL 的 Azure 資料庫
-description: 保留折扣如何套用至適用於 MySQL 的 Azure 資料庫
+title: 了解保留折扣 - 適用於 MySQL 的 Azure 資料庫
+description: 了解保留折扣如何套用至適用於 MySQL 的 Azure 資料庫伺服器。
 author: kummanish
 ms.author: manishku
 ms.service: cost-management-billing
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/13/2020
-ms.openlocfilehash: ed067e4bbde737cb08afe7c9429854e54e2ef3d9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e47153b24234480ee52847f07e723c02fabb3113
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199308"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509426"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-database-for-mysql"></a>保留折扣如何套用至適用於 MySQL 的 Azure 資料庫
 
@@ -44,5 +41,6 @@ ms.locfileid: "77199308"
 
 若要在計費使用量報告中了解及檢視 Azure Reservations 的應用，請參閱[了解 Azure 保留使用量](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea)。
 
-## <a name="need-help-contact-us"></a>需要協助嗎？ 與我們連絡
+## <a name="next-steps"></a>後續步驟
+
 如果您有問題或需要協助，請[建立支援要求](https://go.microsoft.com/fwlink/?linkid=2083458)。

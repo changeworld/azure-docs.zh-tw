@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/30/2020
+ms.date: 04/28/2020
 ms.author: allensu
-ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: c9b5aaefeb8ab21eed850f5bf291d38981239aab
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80396098"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82508423"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>針對 Azure 虛擬網路 NAT 連線進行疑難排解
 
@@ -101,6 +101,7 @@ _**解決方案：**_ 相反地，請使用 TCP 連線測試 (例如「TCP Ping�
 
 [虛擬網路 NAT](nat-overview.md) 的連線問題，可能是因為幾個不同的問題而產生：
 
+* 因設定錯誤而造成的永久失敗。
 * NAT 閘道暫時性或持續性的 [SNAT 耗盡](#snat-exhaustion)，
 * Azure 基礎結構中的暫時性失敗， 
 * Azure 和公用網際網路目的地之間的路徑發生暫時性失敗， 
@@ -112,6 +113,13 @@ _**解決方案：**_ 相反地，請使用 TCP 連線測試 (例如「TCP Ping�
 |---|---|---|---|
 | Linux | nc (一般連線測試) | curl (TCP 應用程式層測試) | 應用程式特有 |
 | Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | 應用程式特有 |
+
+#### <a name="configuration"></a>組態
+
+請進行下列檢查：
+1. NAT 閘道資源是否至少有一個公用 IP 資源或一個公用 IP 首碼資源？ 您必須至少有一個與 NAT 閘道相關聯的 IP 位址，才能提供輸出連線能力。
+2. 虛擬網路的子網路是否已設定為使用 NAT 閘道？
+3. 您是否使用 UDR (使用者定義的路由)，以及是否要覆寫目的地？  NAT 閘道資源會成為已設定子網路上的預設路由 (0/0)。
 
 #### <a name="snat-exhaustion"></a>SNAT 耗盡
 
