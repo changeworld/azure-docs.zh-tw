@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e419ac5c3d292b7e630d1ebb3d3b9f59ef7b8a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4253f5bd702abd061cf1cddd4badd68c9cd5d475
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74026941"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582830"
 ---
 # <a name="quickstart-naming-policy-for-groups-in-azure-active-directory"></a>快速入門：Azure Active Directory 中的群組命名原則
 
-在本快速入門中，您將在 Azure Active Directory (Azure AD) 租用戶中為使用者建立的 Office 365 群組設定命名原則，以利排序和搜尋租用戶的群組。 例如，您可以使用命名原則來：
+在本快速入門中，您將在 Azure Active Directory (Azure AD) 組織中為使用者建立的 Office 365 群組設定命名原則，以利排序和搜尋組織的群組。 例如，您可以使用命名原則來：
 
 * 傳達群組的功能、成員資格、地理區域或群組的建立者。
 * 將通訊錄中的群組分類。
@@ -31,7 +31,7 @@ ms.locfileid: "74026941"
 
 如果您沒有 Azure 訂用帳戶，請在開始之前先[建立免費帳戶](https://azure.microsoft.com/free/)。
 
-## <a name="configure-the-group-naming-policy-for-a-tenant-using-azure-portal"></a>使用 Azure 入口網站設定租用戶的群組命名原則
+## <a name="configure-the-group-naming-policy-in-the-azure-portal"></a>在 Azure 入口網站中設定群組命名原則
 
 1. 使用使用者管理員帳戶登入 [Azure AD 系統管理中心](https://aad.portal.azure.com)。
 1. 選取 [群組]  ，然後選取 [命名原則]  以開啟 [命名原則] 頁面。

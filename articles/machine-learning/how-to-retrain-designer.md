@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77c1cc6ef5a7353d246958d1b047f054d5f49890
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80810370"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837153"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具 (預覽) 重新定型模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -29,16 +29,10 @@ ms.locfileid: "80810370"
 > * 發佈您的訓練管線。
 > * 使用新的參數重新定型您的模型。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 具備 Enterprise SKU 的 Azure Machine Learning 工作區。
-* 設計工具可存取的資料集。 這可以是下列項目之一：
-   * Azure Machine Learning 註冊的資料集
-    
-     **或**
-   * 儲存在 Azure Machine Learning 資料存放區中的資料檔案。
-   
-如需使用設計工具進行資料存取的詳細資訊，請參閱[如何將資料匯入設計](how-to-designer-import-data.md)工具。
+* 完成本 how-to 系列的第1部分：[在設計工具中轉換資料](how-to-designer-transform-data.md)。
 
 本文也假設您已具備在設計工具中建立管線的基本知識。 如需引導式簡介，請完成[教學](tutorial-designer-automobile-price-train-score.md)課程。 
 

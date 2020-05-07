@@ -426,6 +426,8 @@
               href: faq-voice-assistants.md
     - name: 自訂關鍵字
       items:
+        - name: 自訂關鍵字概觀
+          href: custom-keyword-overview.md
         - name: 自訂關鍵字命名方針
           href: speech-devices-sdk-kws-guidelines.md
         - name: 找出自訂關鍵字
@@ -519,6 +521,10 @@
           href: speech-devices-sdk-roobo-v1.md
         - name: Roobo v2 詳細資料
           href: speech-devices-sdk-roobo-v2.md
+    - name: 操作指南
+      items:
+        - name: 如何設定麥克風陣列
+          href: how-to-devices-microphone-array-configuration.md
     - name: 快速入門
       items:
         - name: 使用語音裝置 SDK

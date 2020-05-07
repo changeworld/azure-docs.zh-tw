@@ -1010,6 +1010,8 @@
         - name: 安全性概觀
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: 安全性基準
+          href: security-baseline.md
         - name: 存取控制
           items:
             - name: 存取控制概觀

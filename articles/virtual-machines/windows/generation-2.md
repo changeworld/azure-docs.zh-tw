@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 07bf03096cbe5ec8e0fe9619519fdddb91cde984
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf690ad3ad38632834a92c4a743b1cb584beaf65
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231657"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838819"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure 上第2代 Vm 的支援
 
@@ -38,6 +38,7 @@ Azure 中的所有 VM 大小都支援第1代 Vm （Mv2 系列 Vm 除外）。 Az
 * [HB 系列](../hb-series.md)
 * [HC 系列](../hc-series.md)
 * [Ls 系列](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)和[Lsv2 系列](../lsv2-series.md)
+* [M 系列](../m-series.md)
 * [Mv2 系列](../mv2-series.md)<sup>1</sup>
 * [NCv2 系列](../ncv2-series.md)和[NCv3 系列](../ncv3-series.md)
 * [ND 系列](../nd-series.md)
@@ -70,7 +71,7 @@ Azure 目前不支援內部部署 Hyper-v 針對第2代 Vm 所支援的部分功
 | 安全開機                         | :heavy_check_mark:  | :x:   |
 | 受防護的 VM                         | :heavy_check_mark:  | :x:   |
 | vTPM                                | :heavy_check_mark:  | :x:   |
-| 虛擬化安全性 (VBS) | :heavy_check_mark:  | :x:   |
+| 以虛擬化為基礎的安全性（VBS） | :heavy_check_mark:  | :x:   |
 | VHDX 格式                         | :heavy_check_mark:  | :x:   |
 
 ## <a name="features-and-capabilities"></a>特色與功能
@@ -153,7 +154,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 * **第2代 Vm 可以在所有 Azure 區域中使用嗎？**  
-    是。 但並非所有層[代 2 VM 大小](#generation-2-vm-sizes)都可以在每個區域中使用。 第2代 VM 的可用性取決於 VM 大小的可用性。
+    可以。 但並非所有層[代 2 VM 大小](#generation-2-vm-sizes)都可以在每個區域中使用。 第2代 VM 的可用性取決於 VM 大小的可用性。
 
 * **第1代和第2代 Vm 之間是否有價格差異？**  
    否。
@@ -187,13 +188,13 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
   對於大於 2 TB 的 OS 磁片，您可能會看到警告。 此警告不適用於第2代 Vm。 不過，*不建議*大於 4 TB 的 OS 磁片大小。
 
 * **第2代 Vm 是否支援加速網路？**  
-    是。 如需詳細資訊，請參閱[建立具有加速網路的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
+    可以。 如需詳細資訊，請參閱[建立具有加速網路的 VM](../../virtual-network/create-vm-accelerated-networking-cli.md)。
 
 * **第2代支援 VHDX 嗎？**  
     否，第2代 Vm 僅支援 VHD。
 
 * **第2代 Vm 是否支援 Azure Ultra 磁碟儲存體？**  
-    是。
+    可以。
 
 * **我可以將 VM 從第1代遷移到第2代嗎？**  
     否，您無法在建立 VM 之後變更其產生。 如果您需要在 VM 層代之間切換，請建立不同世代的新 VM。
