@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 04/07/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 4ef0420eab8064343b54f2c0bf15a692b8bc038c
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 6b01253d12b67c327bc67416ca569ccb7ee469ae
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382821"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780635"
 ---
 # <a name="buy-a-reservation"></a>購買保留項目
 
@@ -73,7 +73,10 @@ Enterprise 合約 (EA) 客戶可藉由在 EA 入口網站中停用 [新增保留
 - [軟體方案](../../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Storage](../../storage/blobs/storage-blob-reserved-capacity.md)
 - [SQL Database](../../sql-database/sql-database-reserved-capacity.md)
-- [SQL 資料倉儲](prepay-sql-data-warehouse-charges.md)
+- [適用於 PostgreSQL 的 Azure 資料庫](../../postgresql/concept-reserved-pricing.md)
+- [適用於 MySQL 的 Azure 資料庫](../../mysql/concept-reserved-pricing.md)
+- [適用於 MariaDB 的 Azure 資料庫](../../mariadb/concept-reserved-pricing.md)
+- [Azure Synapse Analytics](prepay-sql-data-warehouse-charges.md)
 - [虛擬機器](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
 
 ## <a name="buy-reservations-with-monthly-payments"></a>購買或每月付款的 Azure 保留

@@ -4,12 +4,12 @@ description: 在本教學課程中，您將了解如何在 Azure 中相應放大
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78251803"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788816"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>教學課程：在 Azure 中調整 Service Fabric 叢集
 
@@ -84,7 +84,7 @@ ms.locfileid: "78251803"
 
 因此，您可以藉由更新 *nt1InstanceCount* 的值，來變更第二個節點類型中的節點數目。  請記住，您無法將節點類型相應放大為 100 個以上的節點。  執行具狀態生產工作負載的非主要節點類型，應一律具有五個以上的節點。 執行無狀態生產工作負載的非主要節點類型，應一律具有兩個以上的節點。
 
-如果您要將銅級[持久性層級][durability]的節點類型相應縮小 (從中移除節點)，則必須[手動移除那些節點的狀態](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)。  如果是銀級和金級持久性層級，這些步驟就會由平台自動完成。
+如果您要將銅級[持久性層級][durability]的節點類型相應縮小 (從中移除節點)，則必須[手動移除那些節點的狀態](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)。  如果是銀級和金級持久性層級，這些步驟就會由平台自動完成。
 
 ### <a name="deploy-the-updated-template"></a>部署更新的範本
 將所有變更儲存到 *template.json* 和 *parameters.json* 檔案。  若要部署更新的範本，請執行下列命令：

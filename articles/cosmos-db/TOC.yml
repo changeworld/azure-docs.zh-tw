@@ -139,7 +139,7 @@
         - name: 在容器和資料庫中佈建輸送量
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: 佈建輸送量 - 自動調整模式
+        - name: 佈建輸送量 - 自動調整
           href: provision-throughput-autoscale.md
         - name: 自動調整常見問題集
           href: autoscale-faq.md
@@ -916,6 +916,8 @@
           href: how-to-manage-consistency.md
         - name: 設定衝突解決原則
           href: how-to-manage-conflicts.md
+        - name: 轉換工作階段權杖格式
+          href: how-to-convert-session-token.md
     - name: 佈建的輸送量
       items:
         - name: 佈建容器的輸送量
@@ -1062,7 +1064,7 @@
               href: monitor-server-side-latency.md
             - name: 監視要求單位使用量
               href: monitor-request-unit-usage.md
-        - name: 使用診斷記錄
+        - name: 使用 Azure 監視器記錄
           items:
             - name: 使用診斷記錄進行監視
               href: cosmosdb-monitor-resource-logs.md

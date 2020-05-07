@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 382f3b59142aee7ddfbec4aceb153a174874ac1a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7ee5fa52f59ea2ef3332fe66c81c24ff44c64e81
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74027099"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582885"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>教學課程：自動新增或移除群組成員
 
-在 Azure Active Directory (Azure AD) 中，您可以自動新增或移除安全性群組或 Office 365 群組的使用者，而無須一直以手動方式處理。 每當使用者或裝置的任何屬性有所變更時，Azure AD 就會評估您租用戶中的所有動態群組規則，以查看變更是否會新增或移除成員。
+在 Azure Active Directory (Azure AD) 中，您可以自動新增或移除安全性群組或 Office 365 群組的使用者，而無須一直以手動方式處理。 每當使用者或裝置的任何屬性有所變更時，Azure AD 就會評估您 Azure AD 組織中的所有動態群組規則，以查看變更是否會新增或移除成員。
 
 在本教學課程中，您會了解如何：
 > [!div class="checklist"]
@@ -35,15 +35,15 @@ ms.locfileid: "74027099"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-您必須是租用戶的全域管理員，且具有一個 Azure AD Premium 授權，才能使用此功能。 如果您沒有授權，請在 Azure AD 中選取 [授權]   > [產品]   > [試用/購買]  。
+您必須是組織的全域管理員，且具有一個 Azure AD Premium 授權，才能使用此功能。 如果您沒有授權，請在 Azure AD 中選取 [授權]   > [產品]   > [試用/購買]  。
 
-您不需要為使用者指派授權，他們即會成為動態群組的成員。 只要您在租用戶中具有最低數量的可用 Azure AD Premium P1 授權，即可涵蓋所有這類的使用者。 
+您不需要為使用者指派授權，他們即會成為動態群組的成員。 只要您在組織中具有最低數量的可用 Azure AD Premium P1 授權，即可涵蓋所有這類的使用者。 
 
 ## <a name="create-a-group-of-guest-users"></a>建立來賓使用者的群組
 
 首先，您將為全部來自單一合作夥伴公司的來賓使用者建立一個群組。 他們需要特殊的授權，因此，針對此用途建立一個群組通常會較有效率。
 
-1. 使用具備租用戶全域管理員身分的帳戶來登入 Azure 入口網站 (https://portal.azure.com) 。
+1. 使用具備組織全域管理員身分的帳戶來登入 Azure 入口網站 (https://portal.azure.com) 。
 2. 選取 [Azure Active Directory]   > [群組]   > [新增群組]  。
    ![選取命令來開始一個新的群組](./media/groups-dynamic-tutorial/new-group.png)
 3. 在 [群組]  刀鋒視窗上：
@@ -80,7 +80,7 @@ ms.locfileid: "74027099"
 
 ## <a name="remove-guests-from-all-users-group"></a>從所有使用者群組中移除來賓
 
-您最終的管理計劃可能是要依公司將所有的來賓使用者指派給其本身的群組。 現在您也可以變更**所有使用者**群組，使其保留給租用戶中的成員使用者專用。 然後，您可以使用它來指派您的主要組織專屬的應用程式和授權。
+您最終的管理計劃可能是要依公司將所有的來賓使用者指派給其本身的群組。 現在您也可以變更**所有使用者**群組，使其保留給組織中的成員使用者專用。 然後，您可以使用它來指派您的主要組織專屬的應用程式和授權。
 
    ![將所有使用者群組變更為僅限成員](./media/groups-dynamic-tutorial/all-users-edit.png)
 
@@ -88,7 +88,7 @@ ms.locfileid: "74027099"
 
 **移除來賓使用者群組**
 
-1. 使用具備租用戶全域管理員身分的帳戶來登入 [Azure 入口網站](https://portal.azure.com)。
+1. 使用具備組織全域管理員身分的帳戶來登入 [Azure 入口網站](https://portal.azure.com)。
 2. 選取 [Azure Active Directory]   > [群組]  。 依序選取 [來賓使用者 Contoso]  群組、省略符號 (...) 和 [刪除]  。 當您刪除群組時，任何已指派的授權都會移除。
 
 **還原所有使用者群組**

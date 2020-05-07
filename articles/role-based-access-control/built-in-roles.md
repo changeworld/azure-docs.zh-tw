@@ -1,6 +1,6 @@
 ---
-title: 適用于 Azure RBAC 的 azure 內建角色
-description: 本文說明 azure 角色型存取控制（RBAC）的 Azure 內建角色。 它會列出 Actions、NotActions、DataActions 和 NotDataActions。
+title: Azure 內建角色-Azure RBAC
+description: 本文說明 azure 角色型存取控制（Azure RBAC）的 Azure 內建角色。 它會列出 Actions、NotActions、DataActions 和 NotDataActions。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,30 +11,30 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/15/2020
+ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 78e5c219d83198f3bf4c329c33018caad2b0cc62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b6587ca113319c266d2335c9cbb154e0ecc4afa1
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194919"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838734"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
-[Azure 角色型存取控制（RBAC）](overview.md)具有數個 azure 內建角色，可供您指派給使用者、群組、服務主體和受控識別。 角色指派是您控制 Azure 資源存取權的方式。 如果內建角色不符合您組織的特定需求，您可以建立自己的[Azure 自訂角色](custom-roles.md)。
+[Azure 角色型存取控制（AZURE RBAC）](overview.md)具有數個 azure 內建角色，可供您指派給使用者、群組、服務主體和受控識別。 角色指派是您控制 Azure 資源存取權的方式。 如果內建角色不符合您組織的特定需求，您可以建立自己的[Azure 自訂角色](custom-roles.md)。
 
-本文章列出適用於 Azure 資源的內建角色，這些角色總是不斷更新。 若要取得最新角色，請使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 如果您要尋找 Azure Active Directory （Azure AD）的系統管理員角色，請參閱[Azure Active Directory 中的系統管理員角色許可權](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
+本文列出 Azure 內建角色，這些角色一律不斷進化。 若要取得最新角色，請使用 [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) 或 [az role definition list](/cli/azure/role/definition#az-role-definition-list)。 如果您要尋找 Azure Active Directory （Azure AD）的系統管理員角色，請參閱[Azure Active Directory 中的系統管理員角色許可權](../active-directory/users-groups-roles/directory-assign-admin-roles.md)。
 
 ## <a name="all"></a>全部
 
-下表提供每個內建角色的簡短描述和唯一識別碼。 選取 [角色`Actions`名稱]，以查看每個`NotActions`角色`DataActions`的、 `NotDataActions` 、和清單。 如需這些動作的意義以及它們如何套用在管理和資料平面的相關資訊，請參閱[了解 Azure 資源的角色定義](role-definitions.md)。
+下表提供每個內建角色的簡短描述和唯一識別碼。 選取 [角色`Actions`名稱]，以查看每個`NotActions`角色`DataActions`的、 `NotDataActions` 、和清單。 如需這些動作的意義，以及如何將它們套用至管理和資料平面的詳細資訊，請參閱[瞭解 Azure 角色定義](role-definitions.md)。
 
 
 > [!div class="mx-tableFixed"]
-> | 內建角色 | 描述 | 識別碼 |
+> | 內建角色 | 說明 | 識別碼 |
 > | --- | --- | --- |
 > | **一般** |  |  |
 > | [參與者](#contributor) | 除了授與資源的存取權之外，還可讓您管理所有專案。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -55,7 +55,7 @@ ms.locfileid: "82194919"
 > | [DNS 區域參與者](#dns-zone-contributor) | 可讓您管理 Azure DNS 中的 DNS 區域與記錄集，但無法讓您控制誰可存取它們。 | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | [網路參與者](#network-contributor) | 可讓您管理網路，但無法存取它們。 | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | [流量管理員參與者](#traffic-manager-contributor) | 可讓您管理「流量管理員」設定檔，但無法控制誰可以存取它們。 | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
-> | **儲存體** |  |  |
+> | **Storage** |  |  |
 > | [Avere 參與者](#avere-contributor) | 可以建立和管理 Avere vFXT 叢集。 | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | [Avere 運算子](#avere-operator) | 由 Avere vFXT 叢集用來管理叢集 | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
 > | [備份參與者](#backup-contributor) | 可讓您管理備份服務，但無法建立保存庫並將存取權授與其他人 | 5e467623-bb1f-42f4-a55d-6e525e11384b |
@@ -81,7 +81,7 @@ ms.locfileid: "82194919"
 > | [儲存體佇列資料訊息寄件者](#storage-queue-data-message-sender) | 將訊息新增至 Azure 儲存體的佇列。 若要瞭解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的許可權](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [儲存體佇列資料讀取器](#storage-queue-data-reader) | 讀取和列出 Azure 儲存體的佇列和佇列訊息。 若要瞭解特定資料作業所需的動作，請參閱[呼叫 blob 和佇列資料作業的許可權](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。 | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Web** |  |  |
-> | [Azure 地圖服務資料讀者 (預覽)](#azure-maps-data-reader-preview) | 授與從 Azure 地圖服務帳戶讀取對應相關資料的存取權。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | [Azure 地圖服務資料讀取器](#azure-maps-data-reader) | 授與從 Azure 地圖服務帳戶讀取對應相關資料的存取權。 | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [搜尋服務參與者](#search-service-contributor) | 可讓您管理「搜尋」服務，但無法存取它們。 | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [Web 方案參與者](#web-plan-contributor) | 可讓您管理網站的 Web 方案，但無法存取它們。 | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [網站參與者](#website-contributor) | 可讓您管理網站 (非 Web 方案)，但無法存取它們。 | de139f84-1756-47ae-9be6-808fbbe84772 |
@@ -147,10 +147,10 @@ ms.locfileid: "82194919"
 > | [Azure Sentinel 讀取器](#azure-sentinel-reader) | Azure Sentinel 讀取器 | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel 回應程式](#azure-sentinel-responder) | Azure Sentinel 回應程式 | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Key Vault 參與者](#key-vault-contributor) | 可讓您管理金鑰保存庫，但無法存取它們。 | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [安全性系統管理員](#security-admin) | 可檢視安全性原則、檢視安全性狀態、編輯安全性原則、檢視警示和建議、關閉警示和建議。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [安全性系統管理員](#security-admin) | 資訊安全中心的 View 和 update 許可權。 與「安全性讀取者」角色相同的許可權也可以更新安全性原則，並關閉警示和建議。 | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [安全性評定參與者](#security-assessment-contributor) | 可讓您將評量推送至資訊安全中心 | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [安全性管理員 (舊版)](#security-manager-legacy) | 此為舊版角色。 請改用安全性系統管理員。 | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [安全性讀取者](#security-reader) | 可以查看建議和警示、查看安全性原則、查看安全性狀態，但無法進行變更。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [安全性讀取者](#security-reader) | 資訊安全中心的 View 許可權。 可以查看建議、警示、安全性原則和安全性狀態，但無法進行變更。 | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **DevOps** |  |  |
 > | [DevTest Labs 使用者](#devtest-labs-user) | 可讓您連線、啟動、重新啟及關閉您 Azure DevTest Labs 中的虛擬機器。 | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | [實驗室建立者](#lab-creator) | 可讓您在「Azure 實驗室帳戶」下建立、管理、刪除您的受控實驗室。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
@@ -2543,7 +2543,7 @@ ms.locfileid: "82194919"
 ## <a name="web"></a>Web
 
 
-### <a name="azure-maps-data-reader-preview"></a>Azure 地圖服務資料讀者 (預覽)
+### <a name="azure-maps-data-reader"></a>Azure 地圖服務資料讀取器
 
 授與從 Azure 地圖服務帳戶讀取對應相關資料的存取權。
 
@@ -2555,7 +2555,7 @@ ms.locfileid: "82194919"
 > | **NotActions** |  |
 > | *無* |  |
 > | **DataActions** |  |
-> | Microsoft.Maps/accounts/data/read | 將資料讀取權限授與地圖服務帳戶。 |
+> | Microsoft. Maps/accounts/*/read |  |
 > | **NotDataActions** |  |
 > | *無* |  |
 
@@ -2572,12 +2572,12 @@ ms.locfileid: "82194919"
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.Maps/accounts/data/read"
+        "Microsoft.Maps/accounts/*/read"
       ],
       "notDataActions": []
     }
   ],
-  "roleName": "Azure Maps Data Reader (Preview)",
+  "roleName": "Azure Maps Data Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -5710,7 +5710,7 @@ Azure Sentinel 回應程式
 
 ### <a name="security-admin"></a>安全性系統管理員
 
-可檢視安全性原則、檢視安全性狀態、編輯安全性原則、檢視警示和建議、關閉警示和建議。
+資訊安全中心的 View 和 update 許可權。 與「安全性讀取者」角色相同的許可權也可以更新安全性原則，並關閉警示和建議。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5868,7 +5868,7 @@ Azure Sentinel 回應程式
 
 ### <a name="security-reader"></a>安全性讀取者
 
-可以查看建議和警示、查看安全性原則、查看安全性狀態，但無法進行變更。
+資訊安全中心的 View 許可權。 可以查看建議、警示、安全性原則和安全性狀態，但無法進行變更。
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6217,6 +6217,9 @@ Azure Sentinel 回應程式
 > | Microsoft.Insights/scheduledqueryrules/* |  |
 > | Microsoft.Insights/webtests/* | 建立和管理 Insights web 測試 |
 > | Microsoft Insights/活頁簿/* |  |
+> | Microsoft Insights/privateLinkScopes/* |  |
+> | Microsoft Insights/privateLinkScopeOperationStatuses/* |  |
+> | Microsoft.OperationalInsights/workspaces/write | 建立新的工作區，或藉由提供來自現有工作區的客戶識別碼來連結至現有工作區。 |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | 讀取/寫入/刪除 log analytics 解決方案套件。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | 讀取/寫入/刪除 log analytics 儲存的搜尋。 |
 > | Microsoft.OperationalInsights/workspaces/search/action | 執行搜尋查詢 |
@@ -6263,6 +6266,9 @@ Azure Sentinel 回應程式
         "Microsoft.Insights/scheduledqueryrules/*",
         "Microsoft.Insights/webtests/*",
         "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/privateLinkScopes/*",
+        "Microsoft.Insights/privateLinkScopeOperationStatuses/*",
+        "Microsoft.OperationalInsights/workspaces/write",
         "Microsoft.OperationalInsights/workspaces/intelligencepacks/*",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationalInsights/workspaces/search/action",

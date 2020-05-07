@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 5c5b2a0c6e27f83e94b8f6a0ba3bb09ed1831680
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5f9e50f0d4969e10d3c01496ea29652712a407c5
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73471575"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592380"
 ---
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -19,4 +19,4 @@ ms.locfileid: "73471575"
 
 在 [myResourceGroup]  頁面上，確定所列出的資源是您想要刪除的項目。
 
-選取 [刪除]  ，在文字方塊中輸入 **myResourceGroup**，然後再選取 [刪除]  。
+選取 [刪除資源群組]  ，在文字方塊中輸入 **myResourceGroup**，然後選取 [刪除]  。

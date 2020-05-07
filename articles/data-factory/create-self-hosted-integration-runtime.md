@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 6bc0f002c6927cfd9a314797663e1dabbac392b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416631"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857682"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>建立和設定自我裝載整合執行階段
 
@@ -67,7 +67,7 @@ ms.locfileid: "81416631"
 1. 在 [**整合執行時間設定**] 頁面上，選取 [ **Azure]、[自我**裝載]，然後選取 [**繼續**]。 
 
 1. 在下列頁面上，選取 [**自我**裝載] 以建立自我裝載 IR，然後選取 [**繼續**]。
-   ![建立 selfhosted IR](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
+   ![建立 selfhosted IR](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
 1. 輸入 IR 的 [名稱]，然後選取 [**建立**]。
 
@@ -153,7 +153,7 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 - 即使資料存放區位於 Azure 基礎結構即服務（IaaS）虛擬機器上的雲端，也請使用自我裝載整合執行時間。
 - 在已啟用 FIPS 相容加密的 Windows server 上安裝的自我裝載整合執行時間中，工作可能會失敗。 若要解決此問題，請在伺服器上停用符合 FIPS 規範的加密。 若要停用符合 FIPS 規範的加密，請將下列登錄子機碼的值從1（已啟用） `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`變更為0（已停用）：。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 支援的 Windows 版本包括：
   + Windows 7 Service Pack 1

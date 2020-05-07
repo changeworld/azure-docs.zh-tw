@@ -9,12 +9,12 @@ metadata:
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 25cff0d0ea007bdd55131ab334a5813344991d0e
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 29baead8dbb41b004a9ace8576029c9bd8af3290
+  ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
   ms.translationtype: HT
   ms.contentlocale: zh-TW
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78672136"
+  ms.lasthandoff: 05/05/2020
+  ms.locfileid: "82790774"
 landingContent:
 - title: 關於 Azure 應用程式組態
   linkLists:
@@ -76,6 +76,8 @@ landingContent:
     links:
     - text: 與 CI/CD 管線整合
       url: integrate-ci-cd-pipeline.md
+    - text: 使用 Helm 與 Kubernetes 部署整合
+      url: integrate-kubernetes-deployment-helm.md
   - linkListType: tutorial
     links:
     - text: 在 ASP.NET Core 應用程式中使用 Key Vault 參考

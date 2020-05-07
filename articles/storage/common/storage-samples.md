@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: f4d8eabdba32eaa0a2c04e6b330fbd4c8d3a563e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 900fb5120b1674397c248fd7d090660c7a813705
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80061128"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594180"
 ---
 # <a name="azure-storage-samples"></a>Azure 儲存體範例
 
@@ -50,9 +50,9 @@ ms.locfileid: "80061128"
 
 若要瀏覽 C++ 範例，請從 NuGet 下載 [C++ 儲存體用戶端程式庫](https://www.nuget.org/packages/wastorage/)。
 
-* [開始使用 Blob](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted)
-* [開始使用資料表](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted)
-* [開始使用佇列](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted)
+* [開始使用 Blob](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)
+* [開始使用資料表](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted.cpp)
+* [開始使用佇列](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted.cpp)
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -68,7 +68,7 @@ ms.locfileid: "80061128"
 |----------|---------------|-------------|
 | .NET | [.NET 用戶端程式庫參考](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [.NET 儲存體用戶端程式庫的原始程式碼](https://github.com/Azure/azure-storage-net) |
 | Java | [Java 用戶端程式庫參考](https://docs.microsoft.com/java/api/overview/azure/storage) | [Java 儲存體用戶端程式庫的原始程式碼](https://github.com/azure/azure-storage-java) |
-| Python | [Python 用戶端程式庫參考](https://azure-storage.readthedocs.io/) \(英文\) | [Python 儲存體用戶端程式庫的原始程式碼](https://github.com/Azure/azure-storage-p[ython]) \(英文\) |
+| Python | [Python 用戶端程式庫參考](https://azure-storage.readthedocs.io/) \(英文\) | [Python 儲存體用戶端程式庫的原始程式碼](https://github.com/Azure/azure-storage-python) \(英文\) |
 | Node.js | [Node.js 用戶端程式庫參考](https://azure.github.io/azure-storage-node) | [Node.js 儲存體用戶端程式庫的原始程式碼](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++ 用戶端程式庫參考](https://azure.github.io/azure-storage-cpp/) | [C++ 儲存體用戶端程式庫的原始程式碼](https://github.com/Azure/azure-storage-cpp)|
 | Azure CLI | [Azure CLI 程式庫參考](/cli/azure/storage) | [Azure CLI 儲存體用戶端程式庫的原始程式碼](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage) \(英文\)

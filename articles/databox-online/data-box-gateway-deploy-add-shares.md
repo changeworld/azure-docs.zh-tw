@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 32466cc0a1ab9b86fc2fb8eb791c232ae13f1c01
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4817db0ce9723f46ceac4f4720915a9bfddcf915
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79213565"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561746"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>教學課程：使用 Azure Data Box Gateway 轉送資料
 
@@ -115,7 +115,7 @@ ms.locfileid: "79213565"
 
 ### <a name="connect-to-an-nfs-share"></a>連線到 NFS 共用
 
-在連線到 Data Box Edge 裝置的 Linux 用戶端上，執行下列程序：
+在連線到 Azure Stack Edge 裝置的 Linux 用戶端上，執行下列程序：
 
 1. 確定用戶端已安裝 NFSv4 用戶端。 若要安裝 NFS 用戶端，請使用下列命令：
 
