@@ -5,21 +5,20 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: jgao
-ms.openlocfilehash: 99db4ec61a515301224691d7c2e4e3c905fee1c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 14663e71126d8c201015996e3e4dc76976128bcc
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188904"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610797"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>在範本中使用部署腳本（預覽）
 
 瞭解如何在 Azure 資源範本中使用部署腳本。 使用者可以使用名`Microsoft.Resources/deploymentScripts`為的新資源類型，在範本部署中執行部署腳本，並檢查執行結果。 這些腳本可以用來執行自訂步驟，例如：
 
 - 將使用者新增至目錄
-- 建立應用程式註冊
 - 執行資料平面作業，例如複製 blob 或種子資料庫
 - 查詢和驗證授權金鑰
 - 建立自我簽署憑證
@@ -37,14 +36,14 @@ ms.locfileid: "82188904"
 部署腳本資源僅適用于可使用 Azure 容器實例的區域。  請參閱 azure[區域中 Azure 容器實例的資源可用性](../../container-instances/container-instances-region-availability.md)。
 
 > [!IMPORTANT]
-> 系統會在相同的資源群組中建立兩個部署指令碼資源 (儲存體帳戶和容器執行個體)，用以執行指令碼和疑難排解。 當部署腳本在終端機狀態中執行時，腳本服務通常會刪除這些資源。 在資源刪除之前，您需支付資源費用。 若要深入瞭解，請參閱[清理部署腳本資源](#clean-up-deployment-script-resources)。
+> 執行腳本和疑難排解時，需要儲存體帳戶和容器實例。 您可以選擇指定現有的儲存體帳戶，否則腳本服務會自動建立儲存體帳戶和容器實例。 當部署腳本在終端機狀態中執行時，腳本服務通常會刪除這兩個自動建立的資源。 在資源刪除之前，您需支付資源費用。 若要深入瞭解，請參閱[清理部署腳本資源](#clean-up-deployment-script-resources)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 - **使用者指派的受控識別，具有對目標資源群組的參與者角色**。 此身分識別會用來執行部署指令碼。 若要在資源群組外部執行作業，您必須授與其他許可權。 例如，如果您想要建立新的資源群組，請將身分識別指派給訂用帳戶層級。
 
   > [!NOTE]
-  > 部署腳本引擎會在背景中建立儲存體帳戶和容器實例。  如果訂用帳戶尚未註冊 Azure 儲存體帳戶（Microsoft 儲存體）和 Azure 容器實例（Microsoft.containerinstance）資源提供者，則需要使用者指派的受控識別（在訂用帳戶層級具有參與者的角色）。
+  > 腳本服務會建立儲存體帳戶（除非您指定現有的儲存體帳戶）和背景中的容器實例。  如果訂用帳戶尚未註冊 Azure 儲存體帳戶（Microsoft 儲存體）和 Azure 容器實例（Microsoft.containerinstance）資源提供者，則需要使用者指派的受控識別（在訂用帳戶層級具有參與者的角色）。
 
   若要建立身分識別，請參閱使用 Azure 入口網站或[使用 Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)[建立使用者指派的受控識別](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)，或使用[Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)。 您在部署範本時將需要身分識別的識別碼。 此身分識別的格式為：
 
@@ -101,6 +100,13 @@ ms.locfileid: "82188904"
   },
   "properties": {
     "forceUpdateTag": 1,
+    "containerSettings": {
+      "containerGroupName": "mycustomaci"
+    },
+    "storageAccountSettings": {
+      "storageAccountName": "myStorageAccount",
+      "storageAccountKey": "myKey"
+    },
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "environmentVariables": [
@@ -132,6 +138,8 @@ ms.locfileid: "82188904"
 - 身分**識別**：部署腳本服務會使用使用者指派的受控識別來執行腳本。 目前只支援使用者指派的受控識別。
 - **kind**：指定指令碼的類型。 目前，Azure PowerShell 和 Azure CLI 腳本都是支援的。 值為**azurepowershell 來**和**AzureCLI**。
 - **forceUpdateTag**：在範本部署之間變更此值會強制部署腳本重新執行。 使用需要設定為參數之 defaultValue 的 newGuid （）或 utcNow （）函數。 若要深入了解，請參閱[執行指令碼多次](#run-script-more-than-once)。
+- **containerSettings**：指定自訂 Azure 容器實例的設定。  **containerGroupName**是用來指定容器組名。  如果未指定，則會自動產生組名。
+- **storageAccountSettings**：指定要使用現有儲存體帳戶的設定。 如果未指定，則會自動建立儲存體帳戶。 請參閱[使用現有的儲存體帳戶](#use-an-existing-storage-account)。
 - **azPowerShellVersion**/**azCliVersion**：指定要使用的模組版本。 如需支援的 PowerShell 和 CLI 版本清單，請參閱[必要條件](#prerequisites)。
 - **arguments**：指定參數值。 多個值應以空格分隔。
 - **environmentVariables**：指定要傳遞至腳本的環境變數。 如需詳細資訊，請參閱[開發部署腳本](#develop-deployment-scripts)。
@@ -241,7 +249,7 @@ reference('<ResourceName>').output.text
 ### <a name="handle-non-terminating-errors"></a>處理非終止錯誤
 
 您可以使用部署腳本中的[**$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-)變數，控制 PowerShell 如何回應非終止錯誤。 部署腳本引擎不會設定/變更此值。  儘管您為 $ErrorActionPreference 設定的值，部署腳本會在腳本遇到錯誤時，將資源布建狀態設定為 [*失敗*]。
+)變數，控制 PowerShell 如何回應非終止錯誤。 腳本服務不會設定/變更此值。  儘管您為 $ErrorActionPreference 設定的值，部署腳本會在腳本遇到錯誤時，將資源布建狀態設定為 [*失敗*]。
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>將安全的字串傳遞至部署腳本
 
@@ -249,7 +257,7 @@ reference('<ResourceName>').output.text
 
 ## <a name="debug-deployment-scripts"></a>Debug 部署腳本
 
-腳本服務會建立[儲存體帳戶](../../storage/common/storage-account-overview.md)和用於執行腳本的[容器實例](../../container-instances/container-instances-overview.md)。 這兩個資源在資源名稱中都有**azscripts**尾碼。
+腳本服務會建立[儲存體帳戶](../../storage/common/storage-account-overview.md)（除非您指定現有的儲存體帳戶）和用於執行腳本的[容器實例](../../container-instances/container-instances-overview.md)。 如果這些資源是由腳本服務自動建立，則這兩個資源在資源名稱中會有**azscripts**尾碼。
 
 ![Resource Manager 範本部署腳本資源名稱](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
@@ -292,17 +300,38 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 
 ![Resource Manager 範本部署腳本、顯示隱藏的類型、入口網站](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
+## <a name="use-an-existing-storage-account"></a>使用現有儲存體帳戶
+
+執行腳本和疑難排解時，需要儲存體帳戶和容器實例。 您可以選擇指定現有的儲存體帳戶，否則腳本服務會自動建立儲存體帳戶和容器實例。 使用現有儲存體帳戶的需求：
+
+- 支援的儲存體帳戶種類包括：一般用途 v2 帳戶、一般用途 v1 帳戶和 fileStorage 帳戶。 如需詳細資訊，請參閱[儲存體帳戶的類型](../../storage/common/storage-account-overview.md)。
+- 必須關閉儲存體帳戶防火牆規則。 請參閱[設定 Azure 儲存體防火牆和虛擬網路](../../storage/common/storage-network-security.md)
+- 部署腳本的使用者指派受控識別必須具有管理儲存體帳戶的許可權，其中包括讀取、建立、刪除檔案共用。
+
+若要指定現有的儲存體帳戶，請將下列 json 新增至的屬性`Microsoft.Resources/deploymentScripts`元素：
+
+```json
+"storageAccountSettings": {
+  "storageAccountName": "myStorageAccount",
+  "storageAccountKey": "myKey"
+},
+```
+
+如需完整`Microsoft.Resources/deploymentScripts`的定義範例，請參閱[範例範本](#sample-templates)。
+
+使用現有的儲存體帳戶時，腳本服務會建立具有唯一名稱的檔案共用。 如需腳本服務如何清除檔案共用的詳細說明，請參閱[清除部署腳本資源](#clean-up-deployment-script-resources)。
+
 ## <a name="clean-up-deployment-script-resources"></a>清除部署腳本資源
 
-部署腳本會建立儲存體帳戶和容器實例，用來執行部署腳本和儲存偵錯工具資訊。 這兩個資源會建立在與已布建資源相同的資源群組中，而腳本會在腳本到期時將其刪除。 您可以控制這些資源的生命週期。  在刪除之前，您需支付這兩個資源的費用。 如需價格資訊，請參閱[容器實例定價](https://azure.microsoft.com/pricing/details/container-instances/)和[Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。
+執行腳本和疑難排解時，需要儲存體帳戶和容器實例。 您可以選擇指定現有的儲存體帳戶，否則腳本服務會自動建立儲存體帳戶和容器實例。 當部署腳本在終端機狀態中執行時，腳本服務會刪除這兩個自動建立的資源。 在資源刪除之前，您需支付資源費用。 如需價格資訊，請參閱[容器實例定價](https://azure.microsoft.com/pricing/details/container-instances/)和[Azure 儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。
 
 這些資源的生命週期是由範本中的下列屬性所控制：
 
-- **cleanupPreference**：在腳本執行于結束狀態時清除喜好設定。  支援的值為：
+- **cleanupPreference**：在腳本執行于結束狀態時清除喜好設定。 支援的值為：
 
-  - **Always**：一旦腳本執行進入結束狀態，即刪除資源。 由於 deploymentScripts 資源在清除資源之後可能仍存在，因此系統腳本會在刪除資源之前，將腳本執行結果（例如，stdout、輸出、傳回值等等）複製到資料庫。
-  - **OnSuccess**：只有在腳本執行成功時，才刪除資源。 您仍然可以存取資源來尋找 debug 資訊。
-  - **OnExpiration**：只有在**retentionInterval**設定過期時，才刪除資源。 這個屬性目前已停用。
+  - **Always**：一旦腳本執行進入結束狀態，即刪除自動建立的資源。 如果使用現有的儲存體帳戶，腳本服務會刪除在儲存體帳戶中建立的檔案共用。 由於 deploymentScripts 資源可能會在資源清除後仍存在，因此腳本服務會在刪除資源之前保存腳本執行結果，例如 stdout、輸出、傳回值等等。
+  - **OnSuccess**：只有在腳本執行成功時，才刪除自動建立的資源。 如果使用現有的儲存體帳戶，腳本服務只會在腳本執行成功時，才會移除檔案共用。 您仍然可以存取資源來尋找 debug 資訊。
+  - **OnExpiration**：只有在**retentionInterval**設定過期時，才刪除自動資源。 如果使用現有的儲存體帳戶，腳本服務會移除檔案共用，但會保留儲存體帳戶。
 
 - **retentionInterval**：指定將保留腳本資源的時間間隔，之後將會過期和刪除。
 

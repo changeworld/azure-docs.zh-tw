@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 REST API 列出角色指派
-description: 瞭解如何使用 Azure 角色型存取控制（RBAC）和 REST API，判斷哪些資源的使用者、群組、服務主體或受控識別可以存取。
+title: 使用 REST API 列出 Azure 角色指派-Azure RBAC
+description: 瞭解如何使用 REST API 和 Azure 角色型存取控制（Azure RBAC）來判斷哪些資源的使用者、群組、服務主體或受控識別可以存取。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 043c91e5c1ecd86951ac3f9423558a3ab369d506
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062163"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735669"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>使用 Azure RBAC 和 REST API 列出角色指派
+# <a name="list-azure-role-assignments-using-the-rest-api"></a>使用 REST API 列出 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]本文說明如何使用 REST API 列出角色指派。
 
@@ -31,7 +31,7 @@ ms.locfileid: "80062163"
 
 ## <a name="list-role-assignments"></a>列出角色指派
 
-在 RBAC 中，若要列出存取權，您可以列出角色指派。 若要列出角色指派，請使用其中一個[角色指派 - 列出](/rest/api/authorization/roleassignments/list) REST API。 若要精簡您的結果，請指定範圍和選擇性篩選條件。
+在 Azure RBAC 中，若要列出存取權，您可以列出角色指派。 若要列出角色指派，請使用其中一個[角色指派 - 列出](/rest/api/authorization/roleassignments/list) REST API。 若要精簡您的結果，請指定範圍和選擇性篩選條件。
 
 1. 從下列要求著手：
 
@@ -63,5 +63,5 @@ ms.locfileid: "80062163"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure RBAC 和 REST API 新增或移除角色指派](role-assignments-rest.md)
+- [使用 REST API 新增或移除 Azure 角色指派](role-assignments-rest.md)
 - [Azure REST API 參考](/rest/api/azure/)

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d94f557ddd946d20020825e2bbb6babbd67d3af3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769877"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734326"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>教學課程：搭配 IoT 裝置使用自訂視覺來回報視覺狀態。
 
@@ -62,7 +62,7 @@ IoT Visual Alerts 應用程式會以連續迴圈的方式執行，並視需要�
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) \(英文\) | 此程式碼會控制 XAML UI 的行為。 它包含狀態電腦的處理程式碼。|
 | [CustomVision\CustomVisionServiceWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionServiceWrapper.cs) \(英文\) | 此類別是處理與自訂視覺服務之間整合的包裝函式。|
 | [CustomVision\CustomVisionONNXModel.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionONNXModel.cs) \(英文\) | 此類別是處理與 Windows ML 之間的整合，以載入 ONNX 模型並針對它將影像評分的包裝函式。|
-| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IotHubWrapper.cs) \(英文\) | 此類別是處理與 IoT 中樞之間的整合，以將評分結果上傳到 Azure 的包裝函式。|
+| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IoTHubWrapper.cs) \(英文\) | 此類別是處理與 IoT 中樞之間的整合，以將評分結果上傳到 Azure 的包裝函式。|
 
 ## <a name="set-up-the-visual-alerts-app"></a>設定 Visual Alerts 應用程式
 
@@ -90,7 +90,7 @@ IoT Visual Alerts 應用程式會以連續迴圈的方式執行，並視需要�
 
 若要設定模型，您必須將應用程式置於 **Capturing Training Images** \(擷取定型影像\) 狀態。 採取下列其中一個步驟：
 * 如果您是在電腦上執行應用程式，請使用 UI 右上角的按鈕。
-* 如果您是在 IoT 裝置上執行應用程式，請透過 IoT 中樞在裝置上呼叫 `EnterLearningMode` 方法。 您可以透過 Azure 入口網站上 IoT 中樞功能表中的裝置項目，或是使用類似 [IoT 中樞 Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) \(英文\) 的工具來呼叫它。
+* 如果您是在 IoT 裝置上執行應用程式，請透過 IoT 中樞在裝置上呼叫 `EnterLearningMode` 方法。 您可以透過 Azure 入口網站上 IoT 中樞功能表中的裝置項目，或是使用類似 [IoT 中樞 Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp) \(英文\) 的工具來呼叫它。
  
 當應用程式進入 **Capturing Training Images** \(擷取定型影像\) 狀態時，它每秒將會擷取約兩個影像，直到抵達目標影像數目為止。 根據預設，目標是 30 個影像，但您可以將所需數目以引數的方式傳遞至 `EnterLearningMode` IoT 中樞方法來設定此參數。 
 

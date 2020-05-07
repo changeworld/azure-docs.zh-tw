@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 728c8605dca183d8eb733b5e674868592d920d03
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637778"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732031"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure 監視器常見問題
 
@@ -36,7 +36,7 @@ Azure 監視器會在您建立新的 Azure 訂用帳戶時啟用，而且會自�
 從 Azure 入口網站的 [**監視**] 功能表中，存取所有 Azure 監視器功能和資料。 不同 Azure 服務功能表的 [**監視**] 區段，可讓您存取與篩選至特定資源的資料相同的工具。 使用 CLI、PowerShell 和 REST API 的各種案例也可以存取 Azure 監視器資料。
 
 ### <a name="is-there-an-on-premises-version-of-azure-monitor"></a>是否有 Azure 監視器的內部部署版本？
-否。 Azure 監視器是可調整的雲端服務，可處理並儲存大量資料，但 Azure 監視器可以監視內部部署和其他雲端中的資源。
+不可以。 Azure 監視器是可調整的雲端服務，可處理並儲存大量資料，但 Azure 監視器可以監視內部部署和其他雲端中的資源。
 
 ### <a name="can-azure-monitor-monitor-on-premises-resources"></a>Azure 監視器可以監視內部部署資源嗎？
 是的，除了從 Azure 資源收集監視資料之外，Azure 監視器還可以從其他雲端和內部部署中的虛擬機器和應用程式收集資料。 如需 Azure 監視器，請參閱[監視資料的來源](platform/data-sources.md)。
@@ -226,7 +226,7 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 
 [請參閱定價方案](https://azure.microsoft.com/pricing/details/application-insights/)。
 
-### <a name="how-much-does-it-cost"></a>費用是多少？
+### <a name="how-much-does-it-cost"></a>費用多少？
 
 * 在 Application Insights 資源中開啟 [使用量和估計成本]**** 頁面。 系統會顯示一張最近使用量的圖表。 您可以視需要設定資料量上限。
 * 開啟 [Azure 帳單刀鋒視窗](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)以查看您所有資源的帳單。
@@ -254,6 +254,10 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>如何變更我的專案將資料傳送到哪一個 Azure 資源？
 在 [方案總管] 中，以滑鼠右鍵按一下 `ApplicationInsights.config` ，然後選擇 [ **更新 Application Insights**]。 您可以將資料傳送至 Azure 中的現有資源或新資源。 更新精靈會變更 ApplicationInsights.config 中的檢測金鑰，這決定伺服器 SDK 將您的資料送往何處。 除非您取消選取 [全部更新]，否則也會變更金鑰出現在您網頁中的位置。
+
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>我可以在`providers('Microsoft.Insights', 'components').apiVersions[0]`我的 Azure Resource Manager 部署中使用嗎？
+
+我們不建議使用此方法來填入 API 版本。 最新版本可以代表可能包含重大變更的預覽版本。 即使使用較新的非預覽版本，API 版本也不一定會與現有的範本回溯相容，或者在某些情況下，API 版本可能無法供所有訂用帳戶使用。
 
 ### <a name="what-is-status-monitor"></a>什麼是狀態監視器？
 
@@ -333,7 +337,7 @@ View Designer 僅適用于在 Log Analytics 工作區中獲派「參與者」許
 
 您可以：
 
-* 針對用戶端和伺服器資料，請使用兩個個別的檢測金鑰（個別的 Application Insights 資源）。 或者
+* 針對用戶端和伺服器資料，請使用兩個個別的檢測金鑰（個別的 Application Insights 資源）。 Or
 * 撰寫一個在您伺服器中執行的 Proxy，並讓 Web 用戶端透過該 Proxy 傳送資料。
 
 ### <a name="how-do-i-see-post-data-in-diagnostic-search"></a><a name="post"></a>如何在診斷搜尋中查看 POST 資料？
@@ -412,7 +416,7 @@ Azure 警示僅針對計量。 請建立一個會在每次事件發生時超出�
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>我是否可以將遙測資料傳送給 Application Insights 入口網站？
 
-建議您使用我們的 SDK 和使用 [SDK API](app/api-custom-events-metrics.md)。 SDK 有適用於各種[平台](app/platforms.md)的各種變體。 這些 SDK 可處理緩衝、壓縮、節流、重試等。 不過，[擷取結構描述](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema)和[端點通訊協定](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)是公用的。
+建議您使用我們的 SDK 和使用 [SDK API](app/api-custom-events-metrics.md)。 SDK 有適用於各種[平台](app/platforms.md)的各種變體。 這些 SDK 可處理緩衝、壓縮、節流、重試等。 不過，[擷取結構描述](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema)和[端點通訊協定](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md)是公用的。
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>我是否可以監視內部網路 Web 伺服器？
 
