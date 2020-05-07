@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77559228"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582962"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>管理 Azure Active Directory 中的自訂網域名稱
 
@@ -41,7 +41,7 @@ ms.locfileid: "77559228"
 
 您可以將目錄的主要網域名稱變更為任何已驗證的非同盟自訂網域。 變更目錄的主要網域時，並不會變更任何現有使用者的使用者名稱。
 
-## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>為 Azure AD 租用戶新增自訂網域名稱
+## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>將自訂功能變數名稱新增至您的 Azure AD 組織
 
 您最多可以新增 900 個受控網域名稱。 如果您要設定所有網域與內部部署 Active Directory 建立同盟，則最多可以在每個目錄中新增 450 個網域名稱。
 
@@ -72,7 +72,7 @@ ms.locfileid: "77559228"
 若要在 Azure 入口網站呼叫 **ForceDelete**，您必須確保網域名稱擁有低於 1000 個參考，且必須更新或移除 [Exchange 管理中心](https://outlook.office365.com/ecp/)的所有以 Exchange 作為佈建服務的參考。 這包括 Exchange 已啟用郵件的安全性群組和分散式清單；如需詳細資訊，請參閱[移除已啟用郵件的安全性群組](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)。 此外，如果下列任一項為真，**ForceDelete** 作業就會失敗：
 
 * 您透過 Office 365 網域訂用帳戶服務購買網域
-* 您是合作夥伴，代表其他客戶租用戶進行管理
+* 您是代表另一個客戶組織管理的合作夥伴
 
 下列動作為執行 **ForceDelete** 作業的一部分：
 

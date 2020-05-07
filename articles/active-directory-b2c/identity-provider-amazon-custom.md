@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/05/2018
+ms.date: 05/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 059c43b24ddc9f319eac4f2783cfc203bed8c7f1
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188506"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900426"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自訂原則來設定以 Amazon 帳戶進行登入
 
@@ -29,17 +29,16 @@ ms.locfileid: "78188506"
 - 完成[開始使用自訂原則](custom-policy-get-started.md)中的步驟。
 - 如果您還沒有 Amazon 帳戶，請在[https://www.amazon.com/](https://www.amazon.com/)建立一個。
 
-## <a name="register-the-application"></a>註冊應用程式
+## <a name="create-an-app-in-the-amazon-developer-console"></a>在 Amazon 開發人員主控台中建立應用程式
 
-若要讓使用者能夠從 Amazon 帳戶登入，您必須建立 Amazon 應用程式。
+若要在 Azure Active Directory B2C （Azure AD B2C）中使用 Amazon 帳戶作為同盟身分識別提供者，您必須在[Amazon 開發人員服務和技術](https://developer.amazon.com)中建立應用程式。 如果您還沒有 Amazon 帳戶，可以在[https://www.amazon.com/](https://www.amazon.com/)註冊。
 
-1. 以您的 Amazon 帳戶認證登入 [Amazon Developer Center (Amazon 開發人員中心)](https://login.amazon.com/)。
-2. 若您尚未執行此動作，請按一下 [註冊] ****、遵循開發人員註冊步驟，並接受原則。
-3. 選取 [註冊新應用程式]****。
-4. 請輸入 [名稱]****、[描述]****，以及 [隱私權注意事項 URL]****，然後按一下 [儲存]****。 隱私權注意事項是您要提供給使用者之隱私權資訊的管理頁面。
-5. 在 [Web 設定]**** 區段中，複製 [用戶端識別碼]**** 的值。 選取 [顯示密碼]**** 以取得用戶端密碼，然後複製該密碼。 您必須使用這兩個值，將 Amazon 帳戶設為租用戶中的識別提供者。 **用戶端密碼**是重要的安全性認證。
-6. 在 [Web 設定]**** 區段中，選取 [編輯]****，然後在 [允許的 JavaScript 原始來源]**** 中，輸入 `https://your-tenant-name.b2clogin.com`，並在 [允許的傳回 URL]**** 中，輸入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 以您的租用戶名稱取代 `your-tenant-name`。 即使租用戶在 Azure AD B2C 中是使用大寫字母來定義的，仍請在輸入租用戶名稱時，全部使用小寫字母。
-7. 按一下 [檔案]  。
+> [!NOTE]  
+> 在下面的**步驟 8**中使用下列 url， `your-tenant-name`並將取代為您的租使用者名稱。 輸入您的租使用者名稱時，請使用所有小寫字母，即使租使用者在 Azure AD B2C 中是以大寫字母定義。
+> - 針對 [**允許的來源**]，輸入`https://your-tenant-name.b2clogin.com` 
+> - 針對**允許**的傳回 url，輸入`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
+
+[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
 
 ## <a name="create-a-policy-key"></a>建立原則金鑰
 
@@ -54,7 +53,7 @@ ms.locfileid: "78188506"
 7. 輸入原則金鑰的 [名稱]****。 例如： `AmazonSecret` 。 金鑰名稱前面會自動新增前置詞 `B2C_1A_`。
 8. 在 [祕密]**** 中，輸入您先前記錄的用戶端密碼。
 9. 針對 [金鑰使用方法]****，選取 `Signature`。
-10. 按一下頁面底部的 [新增]  。
+10. 按一下 [建立]  。
 
 ## <a name="add-a-claims-provider"></a>新增宣告提供者
 

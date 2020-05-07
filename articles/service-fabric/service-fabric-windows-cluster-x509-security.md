@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 5a18f957dfb7143f403d5ac30ea184023021f12c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf7d418d8bca8f690acf29ba701fdc54ced1ca6c
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75613919"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561993"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>使用 X.509 憑證保護 Windows 上的獨立叢集
 本文說明如何保護獨立 Windows 叢集的不同節點之間的通訊。 此外，也會說明如何藉由使用 X.509 憑證，驗證連線到此叢集的用戶端。 驗證可確保只有已獲授權的使用者可以存取叢集和已部署的應用程式，以及執行管理工作。 憑證安全性應在叢集建立之時先在叢集上啟用。  
@@ -309,7 +309,7 @@ ms.locfileid: "75613919"
     $cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object -FilterScript { $PSItem.ThumbPrint -eq $pfxThumbPrint; }
    
     # Specify the user, the permissions, and the permission type
-    $permission = "$($serviceAccount)","FullControl","Allow"
+    $permission = "$($serviceAccount)","FullControl","Allow" # "NT AUTHORITY\NetworkService" is the service account
     $accessRule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $permission
    
     # Location of the machine-related keys

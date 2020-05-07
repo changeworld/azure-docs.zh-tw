@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 18490ec7c3cfde33cef186b753e2adc809f854c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6821e3de3bfec891d98e9291a479cbb7537364ca
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641359"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733649"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提高存取權以管理所有 Azure 訂用帳戶和管理群組
 
@@ -84,7 +84,7 @@ Azure AD 和 Azure 資源會獨立地受到保護。 也就是說，Azure AD 角
 
 1. 執行您需要以更高存取權執行的變更。
 
-    如需有關指派角色的資訊，請參閱[使用 RBAC 和 Azure 入口網站來管理存取權](role-assignments-portal.md)。 如果您使用 Azure AD Privileged Identity Management (PIM)，請參閱[在 PIM 中探索要管理的 Azure 資源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[在 PIM 中指派 Azure 資源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
+    如需指派角色的相關資訊，請參閱[使用 Azure 入口網站新增或移除 Azure 角色指派](role-assignments-portal.md)。 如果您使用 Azure AD Privileged Identity Management (PIM)，請參閱[在 PIM 中探索要管理的 Azure 資源](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md)或[在 PIM 中指派 Azure 資源角色](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)。
 
 ### <a name="remove-elevated-access"></a>移除已提高的存取權
 
@@ -321,5 +321,5 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [了解 Azure 中的不同角色](rbac-and-directory-admin-roles.md)
-- [使用 RBAC 和 REST API 管理對 Azure 資源的存取](role-assignments-rest.md)
+- [了解不同的角色](rbac-and-directory-admin-roles.md)
+- [使用 REST API 新增或移除 Azure 角色指派](role-assignments-rest.md)

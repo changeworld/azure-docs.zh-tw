@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77022676"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562376"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway 的使用案例
 
@@ -77,7 +77,7 @@ Data Box Gateway 的主要優點之一是能夠持續將資料嵌入裝置，然
 
 ### <a name="ongoing-feed-with-data-box-gateway"></a>使用 Data Box Gateway 進行持續饋送
 
-請依照下列步驟使用 Data Box Gateway 進行持續擷取。
+請依照下列步驟使用 Data Box Gateway 進行持續擷取。 
 
 1. 在 Data Box Gateway 上建立雲端共用。 此共用會自動將任何資料上傳至 Azure 儲存體帳戶。 移至 Data Box Gateway 資源中的 [共用]****，然後按一下 [+ 新增共用]****。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 621aff0a6571714ad8dad587c2385e6081c2d0f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1eef510e6389b551e128877ffde723955a1084d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181659"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734632"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>登入使用者的 Web 應用程式：程式碼設定
 
@@ -298,7 +298,7 @@ JAVA 範例會使用春季架構。 應用程式會受到保護，因為您會�
 
 當回應抵達（包含授權碼）時，它會使用 MSAL JAVA 取得權杖。 當它最後從權杖端點（在重新導向 URI 上）收到權杖時，使用者就已登入。
 
-如需詳細資訊， `doFilter()`請參閱[AuthFilter](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)中的方法。
+如需詳細資訊， `doFilter()`請參閱[AuthFilter](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)中的方法。
 
 > [!NOTE]
 > 的`doFilter()`程式碼會以稍有不同的順序撰寫，但是流程就是其中所述。

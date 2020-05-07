@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 89f981fcda8f40daff49ebdf796b896d90ce1754
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2476cf360909374f711564fb5fad5c9e0706083d
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69900609"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562469"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure 資料箱閘道安全性和資料保護
 
@@ -39,7 +39,7 @@ ms.locfileid: "69900609"
 
 資料箱閘道裝置是在您提供的內部部署系統的虛擬機器中布建的虛擬裝置。 裝置可協助將資料傳送至 Azure。 您的裝置：
 
-- 需要啟用金鑰才能存取 Data Box Edge/Data Box Gateway 服務。
+- 需要啟用金鑰才能存取 Azure Stack Edge/資料箱閘道服務。
 - 會受到裝置密碼的任何時間保護。
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->

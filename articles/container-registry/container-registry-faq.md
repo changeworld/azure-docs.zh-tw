@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 7452b5dd3c952a13a28566914d2fe513689d4751
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39b543c5f886b22d488198873b75cf76555692fa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80618802"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731639"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>關於 Azure Container Registry 的常見問題
 
@@ -28,11 +28,11 @@ ms.locfileid: "80618802"
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>我可以使用 Resource Manager 範本建立 Azure Container Registry 嗎？
 
-是。 以下是您可以用來建立登錄的[範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)。
+可以。 以下是您可以用來建立登錄的[範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)。
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 中的映射是否有安全性弱點掃描？
 
-是。 請參閱[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)、 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)和[淺綠色](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)的檔。
+可以。 請參閱[Azure 資訊安全中心](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration)、 [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/)和[淺綠色](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry)的檔。
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>如何? 使用 Azure Container Registry 設定 Kubernetes 嗎？
 
@@ -441,7 +441,7 @@ curl $redirect_url
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>如何? 在 Windows 上收集 HTTP 追蹤？
 
-#### <a name="prerequisites"></a>先決條件
+#### <a name="prerequisites"></a>Prerequisites
 
 - 在 fiddler 中啟用解密 HTTPs：<https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - 啟用 Docker 以透過 Docker ui 使用 proxy：<https://docs.docker.com/docker-for-windows/#proxies>
@@ -493,10 +493,10 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 | Git 服務 | 來源內容 | 手動組建 | 透過認可觸發程式自動建立 |
 |---|---|---|---|
-| GitHub | https://github.com/user/myapp-repo.git#mybranch:myfolder | 是 | 是 |
-| Azure Repos | https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder | 是 | 是 |
-| GitLab | https://gitlab.com/user/myapp-repo.git#mybranch:myfolder | 是 | 否 |
-| BitBucket | https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder | 是 | 否 |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 是 |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | 是 | 是 |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 否 |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | 是 | 否 |
 
 ## <a name="run-error-message-troubleshooting"></a>執行錯誤訊息的疑難排解
 

@@ -4,12 +4,12 @@ description: 瞭解 Azure 容器實例中的容器群組，這是共用生命週
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 3efc4528863286da676fc7eb758176156c87a32a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: b5f4f834d44294d846495a59af2fb65b231e4820
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115647"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583830"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances 中的容器群組
 
@@ -69,7 +69,7 @@ Azure 容器實例會藉由新增群組中實例的[資源要求][resource-reque
 
 ## <a name="networking"></a>網路功能
 
-容器群組可以共用對外 IP 位址、該 IP 位址上的一或多個埠，以及具有完整功能變數名稱（FQDN）的 DNS 標籤。 若要讓外部用戶端能夠連線到該群組內的容器，您必須從該容器公開該 IP 位址上的連接埠。 因為群組中的容器會共用埠命名空間，所以不支援埠對應。 刪除容器群組時，將會釋放容器群組的 IP 位址和 FQDN。 
+容器群組可以共用對外 IP 位址、該 IP 位址上的一或多個埠，以及具有完整功能變數名稱（FQDN）的 DNS 標籤。 若要讓外部用戶端能夠連線到該群組內的容器，您必須從該容器公開該 IP 位址上的連接埠。 刪除容器群組時，會釋放容器群組的 IP 位址和 FQDN。 
 
 在容器群組內，容器實例可以透過任何埠上的 localhost 彼此連線，即使這些埠並未在群組的 IP 位址或來自容器的外部公開。
 
@@ -118,7 +118,7 @@ Azure 容器實例會藉由新增群組中實例的[資源要求][resource-reque
 [resource-limits]: /rest/api/container-instances/containergroups/createorupdate#resourcelimits
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
-[virtual-network]: container-instances-vnet.md
+[virtual-network]: container-instances-virtual-network-concepts.md
 [secret]: container-instances-volume-secret.md
 [volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md

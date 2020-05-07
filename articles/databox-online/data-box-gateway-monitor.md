@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 61da2454d6a72d43a7b4600d7ea85e6a3f82958f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 886bff3f57f101229c04e91cfa4cf85051f8b1c6
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60754909"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561209"
 ---
 # <a name="monitor-your-azure-data-box-gateway"></a>監視您的 Azure Data Box Gateway
 
-本文描述如何監視您的 Azure Data Box Gateway。 若要監視您的裝置，您可以使用 Azure 入口網站或本機 Web UI。 使用 Azure 入口網站來檢視裝置事件、設定及管理警示和檢視計量。
+本文描述如何監視您的 Azure Data Box Gateway。 若要監視您的裝置，您可以使用 Azure 入口網站或本機 Web UI。 使用 Azure 入口網站來檢視裝置事件、設定及管理警示和檢視計量。 
 
 在本文中，您將學會如何：
 

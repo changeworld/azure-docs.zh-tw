@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, estfan, logicappspm
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: b1f4feab9587fb77089be265801c71f5b23b26ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 79c99a8ba2712fe69ec6d3b9b9d32ddf6aa081cb
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146784"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580644"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>透過 Azure Logic Apps 連線到內部部署檔案系統
 
@@ -71,11 +71,11 @@ ms.locfileid: "82146784"
    | 屬性 | 必要 | 值 | 描述 |
    | -------- | -------- | ----- | ----------- |
    | **連線名稱** | 是 | <*連接名稱*> | 您想要的連線名稱 |
-   | **根資料夾** | 是 | <*根資料夾-名稱*> | 您檔案系統的根資料夾，例如，如果您已安裝內部部署的資料閘道，則為內部部署資料閘道安裝所在電腦上的本機資料夾，或電腦可以存取的網路共用資料夾。 <p>例如：`\\PublicShare\\DropboxFiles` <p>根資料夾是主要的父資料夾，會作為所有檔案相關動作的相對路徑。 |
+   | **根資料夾** | 是 | <*根資料夾-名稱*> | 您檔案系統的根資料夾，例如，如果您已安裝內部部署的資料閘道，則為內部部署資料閘道安裝所在電腦上的本機資料夾，或電腦可以存取的網路共用資料夾。 <p>例如： `\\PublicShare\\DropboxFiles` <p>根資料夾是主要的父資料夾，會作為所有檔案相關動作的相對路徑。 |
    | **驗證類型** | 否 | <*驗證類型*> | 您的檔案系統所使用的驗證類型： **Windows** |
-   | **使用者名稱** | 是 | <*domain* >網域<*username*使用者\\名稱> | 您的檔案系統所在電腦的使用者名稱 |
+   | **使用者名稱** | 是 | <*domain* >網域<*username*使用者\\名稱> <p>-或- <p><*本機*>\\電腦<使用者*名稱*> | 您的檔系統資料夾所在之電腦的使用者名稱。 <p>如果您的檔系統資料夾位於與內部部署資料閘道相同的電腦上，您可以使用 <*本機電腦*>\\<的使用者*名稱*>。 |
    | **密碼** | 是 | <*您的密碼*> | 您的檔案系統所在電腦的密碼 |
-   | **關機** | 是 | <*已安裝-閘道-名稱*> | 先前所安裝閘道的名稱 |
+   | **gateway** | 是 | <*已安裝-閘道-名稱*> | 先前所安裝閘道的名稱 |
    |||||
 
 1. 完成之後，請選擇 [建立]****。

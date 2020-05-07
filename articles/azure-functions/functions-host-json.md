@@ -2,13 +2,13 @@
 title: 適用於 Azure Functions 2.x 的 host.json 參考
 description: Azure Functions host.json 檔案與 v2 執行階段的參考文件。
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/28/2020
+ms.openlocfilehash: 39e6ce5d6807a554cc1714a3970bed8303c31ce8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758846"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690893"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x 和更新版本的 host. json 參考 
 
@@ -24,6 +24,8 @@ ms.locfileid: "81758846"
 其他函數應用程式設定選項會在您的[應用程式設定](functions-app-settings.md)中管理（適用于已部署的應用程式）或您的[本機. 設定 json](functions-run-local.md#local-settings-file)檔案（用於本機開發）。
 
 與系結相關的 json 設定會平均套用至函數應用程式中的每個函式。 
+
+您也可以使用應用程式設定來覆[寫或套用每個環境的設定](#override-hostjson-values)。
 
 ## <a name="sample-hostjson-file"></a>範例 host.json 檔案
 
@@ -375,7 +377,7 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 |lockAcquisitionTimeout|00:01:00|執行階段將嘗試取得鎖定的時間量上限。| 
 |lockAcquisitionPollingInterval|n/a|鎖定取得嘗試之間的間隔。| 
 
-## <a name="version"></a>版本
+## <a name="version"></a>version
 
 此值表示 host. json 的架構版本。 以 v2 運行`"version": "2.0"`時間或更新版本為目標的函式應用程式需要版本字串。 V2 和 v3 之間沒有任何主機。 json 架構變更。
 
@@ -386,6 +388,23 @@ Singleton 鎖定行為的組態設定。 如需詳細資訊，請參閱[單一�
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="override-hostjson-values"></a>覆寫 host. json 值
+
+在某些情況下，您可能會想要在特定環境的 host json 檔案中設定或修改特定的設定，而不需要變更主機的 json 檔案本身。  您可以覆寫特定的主機。 json 值會建立對等的值做為應用程式設定。 當執行時間找到格式`AzureFunctionsJobHost__path__to__setting`的應用程式設定時，它會覆寫位於 json `path.to.setting`中的對等的 host. json 設定。 以應用程式設定表示時，用來表示`.`JSON 階層的點（）會由雙底線（`__`）取代。 
+
+例如，假設您想要在本機執行時停用應用程式深入解析取樣。 如果您變更了本機主機. json 檔案以停用 Application Insights，此變更可能會在部署期間推送至您的生產環境應用程式。 若要這麼做，更安全的方法是改為`"AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"`在檔案中`local.settings.json`建立應用程式設定。 您可以在下列`local.settings.json`不會發行的檔案中看到這種情況：
+
+```json
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "{storage-account-connection-string}",
+        "FUNCTIONS_WORKER_RUNTIME": "{language-runtime}",
+        "AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"
+    }
 }
 ```
 

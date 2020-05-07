@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: e9155104905ae3e686a01b90cbcad2610b6f4c91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0ec6cbc4cea926dfc50cdae247aea5d765c20ca
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086414"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691213"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Interpretability：自動化機器學習中的模型說明
 
@@ -30,7 +30,7 @@ ms.locfileid: "82086414"
 - 啟用視覺效果，協助您查看資料和說明中的模式。
 - 在推斷或評分期間，執行 interpretability。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Interpretability 功能。 執行`pip install azureml-interpret azureml-contrib-interpret`以取得必要的套件。
 - 建立自動化 ML 實驗的知識。 如需如何使用 Azure Machine Learning SDK 的詳細資訊，請完成此[回歸模型教學](tutorial-auto-train-models.md)課程，或查看如何[設定自動化 ML 實驗](how-to-configure-auto-train.md)。
@@ -85,20 +85,21 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
 
 - 說明安裝物件
 - 您的工作區
-- LightGBM 模型，可作為`fitted_model`自動化 ML 模型的代理
+- 用來說明`fitted_model`自動化 ML 模型的代理模型
 
 MimicWrapper 也會使用`automl_run`物件，將會在其中上傳工程用的說明。
 
 ```python
-from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
 from azureml.explain.model.mimic_wrapper import MimicWrapper
 
 # Initialize the Mimic Explainer
-explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMExplainableModel, 
+explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
+                         explainable_model=automl_explainer_setup_obj.surrogate_model, 
                          init_dataset=automl_explainer_setup_obj.X_transform, run=automl_run,
                          features=automl_explainer_setup_obj.engineered_feature_names, 
                          feature_maps=[automl_explainer_setup_obj.feature_map],
-                         classes=automl_explainer_setup_obj.classes)
+                         classes=automl_explainer_setup_obj.classes,
+                         explainer_kwargs=automl_explainer_setup_obj.surrogate_model_params)
 ```
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>使用 MimicExplainer 進行運算，並以視覺化方式設計功能重要性

@@ -2,13 +2,13 @@
 title: 部署資源的多個實例
 description: 使用 Azure Resource Manager 範本中的複製作業和陣列，多次部署資源類型。
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153313"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583394"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM 範本中的資源反復專案
 
@@ -18,7 +18,7 @@ ms.locfileid: "80153313"
 
 若需要指定是否要部署資源，請參閱[條件元素](conditional-resource-deployment.md)。
 
-## <a name="resource-iteration"></a>資源反覆項目
+## <a name="syntax"></a>語法
 
 Copy 元素具有下列一般格式：
 
@@ -34,6 +34,23 @@ Copy 元素具有下列一般格式：
 **Name**屬性是識別迴圈的任何值。 **Count**屬性會指定您想要用於資源類型的反覆運算次數。
 
 使用**mode**和**batchSize**屬性來指定以平行方式或順序部署資源。 這些屬性會以[序列或平行](#serial-or-parallel)方式加以描述。
+
+## <a name="copy-limits"></a>複製限制
+
+計數不能超過800。
+
+計數不可為負數。 如果您使用最新版本的 Azure CLI、PowerShell 或 REST API 來部署範本，則可以是零。 具體而言，您必須使用：
+
+* Azure PowerShell **2.6**或更新版本
+* Azure CLI **2.0.74**或更新版本
+* REST API **2019-05-10**版或更新版本
+* [連結的部署](linked-templates.md)必須使用 API **2019-05-10**版或更新版本作為部署資源類型
+
+舊版的 PowerShell、CLI 和 REST API 不支援 count 的零。
+
+請小心使用[完整模式部署](deployment-modes.md)搭配 copy。 如果您使用完整模式重新部署至資源群組，則會刪除在解析複製迴圈後未在範本中指定的任何資源。
+
+## <a name="resource-iteration"></a>資源反覆項目
 
 下列範例會建立**storageCount**參數中指定的儲存體帳戶數目。
 
@@ -257,14 +274,6 @@ mode 屬性也接受**平行**，這是預設值。
   ...
 }]
 ```
-
-## <a name="copy-limits"></a>複製限制
-
-計數不能超過800。
-
-計數不可為負數。 如果您部署具有 Azure PowerShell 2.6 或更新版本的範本、Azure CLI 2.0.74 或更新版本，或 REST API **2019-05-10**版或更新版本，您可以將 count 設定為零。 舊版的 PowerShell、CLI 和 REST API 不支援 count 的零。
-
-請小心使用[完整模式部署](deployment-modes.md)搭配 copy。 如果您使用完整模式重新部署至資源群組，則會刪除在解析複製迴圈後未在範本中指定的任何資源。
 
 ## <a name="example-templates"></a>範本的範例
 

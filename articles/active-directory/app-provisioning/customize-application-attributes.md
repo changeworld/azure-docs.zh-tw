@@ -2,24 +2,20 @@
 title: 自訂 Azure AD 屬性對應 |Microsoft Docs
 description: 了解 Azure Active Directory 中 SaaS 應用程式有哪些屬性對應，以及如何修改屬性對應來應付業務需求。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11eddf0e5f9f950373e222a8007cabf7aa0720bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4abfdd94c57064c86e533234d78f774c45ba8e4a
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82142276"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593857"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>在 Azure Active Directory 中自訂 SaaS 應用程式的使用者布建屬性對應
 
@@ -129,7 +125,7 @@ Azure AD 布建服務可以部署在「greenfield」案例中（使用者不會�
   - *參考* - 屬性包含對目標應用程式中的另一個資料表所儲存的值進行參考的識別碼。
   - *字串* - 屬性包含文字字串。
 - **主要金鑰？** -在目標物件的架構中，是否將屬性定義為主要索引鍵欄位。
-- **必要？** -屬性是否必須填入目標應用程式或系統中。
+- **必填？** -屬性是否必須填入目標應用程式或系統中。
 - **多重值？** -屬性是否支援多個值。
 - **大小寫完全相符嗎？** -屬性值是否會以區分大小寫的方式進行評估。
 - **API 運算式**-請勿使用，除非是由特定布建連接器的檔（例如 Workday）指示。

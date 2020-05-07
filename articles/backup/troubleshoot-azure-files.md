@@ -3,12 +3,12 @@ title: Azure 檔案共用備份的移難排解
 description: 本文說明如何排解您在保護 Azure 檔案共用時所發生的問題。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a6ce613b8c0fe8a7a5df6397ba2f1eb508d61aae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100051"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562078"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>針對備份 Azure 檔案共用時的問題進行疑難排解
 
@@ -25,6 +25,7 @@ ms.locfileid: "82100051"
   >一個儲存體帳戶中的所有檔案共用只能在一個復原服務保存庫之下加以保護。 您可以使用[此腳本](scripts/backup-powershell-script-find-recovery-services-vault.md)來尋找您的儲存體帳戶註冊所在的復原服務保存庫。
 
 - 請確定檔案共用不存在於任何不受支援的儲存體帳戶中。 您可以參閱 Azure 檔案[共用備份的支援矩陣](azure-file-share-support-matrix.md)，以尋找支援的儲存體帳戶。
+- 檢查儲存體帳戶的防火牆設定，確定已啟用 [允許信任的 Microsoft 服務存取儲存體帳戶] 選項。
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>入口網站中的錯誤指出儲存體帳戶探索失敗
 

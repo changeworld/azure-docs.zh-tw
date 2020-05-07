@@ -4,12 +4,12 @@ description: 在本文中，您將瞭解如何使用 REST API 來更新保存庫
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252359"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744571"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 復原服務保存庫設定
 
@@ -21,7 +21,7 @@ ms.locfileid: "79252359"
 
 但在某些情況下，這項功能並不是必要的。 如果 Azure 復原服務保存庫中有備份專案，甚至虛刪除了它，就無法刪除。 如果需要立即刪除保存庫，這可能會造成問題。 例如：部署作業通常會在同一個工作流程中清除已建立的資源。 部署可以建立保存庫、設定專案的備份、執行測試還原，然後繼續刪除備份專案和保存庫。 如果保存庫刪除失敗，則整個部署可能會失敗。 停用虛刪除是保證立即刪除的唯一方法。
 
-因此，客戶必須謹慎地根據案例，選擇是否要停用特定保存庫的虛刪除。 如需詳細資訊，請參閱虛[刪除文章](backup-azure-security-feature-cloud.md#soft-delete)。
+因此，客戶必須謹慎地根據案例，選擇是否要停用特定保存庫的虛刪除。 如需詳細資訊，請參閱虛[刪除文章](backup-azure-security-feature-cloud.md)。
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>使用 REST API 提取虛刪除狀態
 
@@ -83,10 +83,10 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 
 如需詳細資訊，請參閱[REST API 檔](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body)
 
-|Name  |必要  |類型  |描述  |
+|名稱  |必要  |類型  |描述  |
 |---------|---------|---------|---------|
-|etag     |         |   字串      |  選擇性 eTag       |
-|location     |  true       |字串         |   資源位置      |
+|etag     |         |   String      |  選擇性 eTag       |
+|location     |  true       |String         |   資源位置      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  保存庫的屬性       |
 |tags     |         | Object        |     資源標籤    |
 

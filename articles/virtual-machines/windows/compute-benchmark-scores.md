@@ -6,22 +6,23 @@ ms.service: virtual-machines-windows
 ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 04/09/2018
+ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: ea6bca1367d4b34aa54b65e92e7cbfdd02642f4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3e0fdc398d3b0b851c6f548119858e6c41a5a19
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086227"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583913"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 的計算基準測試分數
 下列 SPECInt 基準測試分數顯示執行 Windows Server 之選取 Azure Vm 的計算效能。 也有 [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)的計算基準測試分數。
 
 
 ## <a name="av2---general-compute"></a>Av2 - 一般計算
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_A1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 12 | 14.2 | 0.3 | 
 | Standard_A1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 9 | 13.2 | 0.6 | 
@@ -45,10 +46,15 @@ ms.locfileid: "82086227"
 | Standard_A8m_v2 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 10 | 104.5 | 5.1 | 
 | Standard_A8m_v2 | 8 | 2 | Intel(R) Xeon(R) CPU E5-2660 0 @ 2.20GHz | 13 | 111.6 | 2.3 | 
 
-注意： Av2 系列 Vm 可以部署在各種不同的硬體類型和處理器上（如上所示）。 Av2 系列 Vm 的 CPU 效能和記憶體設定最適合用於進入層級的工作負載，例如開發和測試。 大小會進行節流，為執行中的實例提供相對一致的處理器效能，而不論其部署所在的硬體為何;不過，利用特定較新處理器優化的軟體，可能會在處理器類型上看到更顯著的變化。
+
+> [!NOTE]
+> Av2 系列 Vm 可以部署在各種不同的硬體類型和處理器上（如上所示）。 Av2 系列 Vm 的 CPU 效能和記憶體設定最適合用於進入層級的工作負載，例如開發和測試。 大小會進行節流，為執行中的實例提供相對一致的處理器效能，而不論其部署所在的硬體為何;不過，利用特定較新處理器優化的軟體，可能會在處理器類型上看到更顯著的變化。
 
 ## <a name="b---burstable"></a>B-高載
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+（已更新2019-10-23 至 2019-11-03 PBI：5604451）
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_B1ms | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 9 | 6.3 | 0.2 | 
 | Standard_B1ms | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 47 | 6.4 | 0.2 | 
@@ -59,13 +65,21 @@ ms.locfileid: "82086227"
 | Standard_B4ms | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 43 | 28.3 | 0.7 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 3 | 42.0 | 0.0 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 25 | 41.4 | 0.9 | 
+| Standard_B12ms | 12 | 1 | Intel （R）強式（R） CPU E5-2673 v3 或 v4 | 19 | 58.9 | 2.3 |
+| Standard_B16ms | 16 | 1 | Intel （R）強式（R） CPU E5-2673 v3 或 v4 | 18 | 75.4 | 2.1 |
+| Standard_B20ms | 20 | 1 | Intel （R）強式（R） CPU E5-2673 v3 或 v4| 2 | 90.6 | 1.3 |
 
-注意： B 系列 Vm 適用于具有高載效能需求的工作負載。 VM 實例使用低於其基準時，會累積點數。 當 VM 累積點數時，VM 可以使用最多100% 來達到較短的 CPU 高載需求，高載高於基準。 高載時間取決於可用的點數，也就是 VM 大小和時間的功能。  
 
-SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數。  因此，上述數位會接近 VM 的基準效能（雖然它們可能會反映執行之間累積的一些激增時間）。  對於簡短的暴增，工作負載（一般是在 B 系列上）效能通常會比 Ds v3 系列更接近。
+>[!NOTE]
+> B 系列 Vm 適用于具有高載效能需求的工作負載。 VM 實例使用低於其基準時，會累積點數。 當 VM 累積點數時，VM 可以使用最多100% 來達到較短的 CPU 高載需求，高載高於基準。 高載時間取決於可用的點數，也就是 VM 大小和時間的功能。  
+>
+> SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數。  因此，上述數位會接近 VM 的基準效能（雖然它們可能會反映執行之間累積的一些激增時間）。  對於簡短的暴增，工作負載（一般是在 B 系列上）效能通常會比 Ds v3 系列更接近。
 
 ## <a name="dsv3---general-compute--premium-storage"></a>DSv3 - 一般計算 + 進階儲存體
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+（已更新2019-10-23 至 2019-11-03 PBI：5604451）
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D2s_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 | 40.8 | 2.3 | 
 | Standard_D2s_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 52 | 43.3 | 2.1 | 
@@ -77,10 +91,18 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_D16s_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 38 | 298.2 | 4.4 | 
 | Standard_D32s_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 24 | 545.8 | 10.5 | 
 | Standard_D32s_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 9 | 535.6 | 12.6 | 
+| Standard_D32-8s_v3 | 8 |  | Intel （R）強式（R） CPU E5-2673 v3 或 v4 | 6 | 166.0 | 8.8 |
+| Standard_D32-16s_v3 | 16 |  | Intel （R）強式（R） CPU E5-2673 v3 或 v4 | 4 | 300.8 | 6.4 |
+| Standard_D48s_v3 | 48 | 2 | Intel （R）強式（R） CPU E5-2673 v3 或 v4 | 1 | 838.0 | 0.0 |
 | Standard_D64s_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 35 | 1070.6 | 2.4 | 
+| Standard_D64-16s_v3 | 16 |  | Intel （R）強式（R） CPU E5-2673 v3 或 v4 | 4 | 340.0 | 21.4 |
+| Standard_D64-32s_v3 | 32 |  | Intel （R）強式（R） CPU E5-2673 v3 或 v4 | 3 | 592.3 | 1.5 |
 
 ## <a name="dv3---general-compute"></a>Dv3 - 一般計算
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+（已更新2019-10-23 至 2019-11-03 PBI：5604451）
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D2_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 10 | 38.6 | 1.8 | 
 | Standard_D2_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 24 | 41.8 | 3.3 | 
@@ -92,10 +114,12 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_D16_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 300.7 | 8.8 | 
 | Standard_D32_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 24 | 549.3 | 11.1 | 
 | Standard_D32_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 7 | 538.6 | 9.4 | 
+| Standard_D48_v3 | 48 |  |  Intel （R）強式（R） CPU E5-2673 v3 或 v4 | 3 | 839.7 | 14.4 |
 | Standard_D64_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 32 | 1070.6 | 12.4 | 
 
 ## <a name="dsv2---storage-optimized"></a>DSv2 - 儲存體最佳化
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_DS1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 12 | 33.0 | 1.1 | 
 | Standard_DS1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 37 | 33.8 | 2.5 | 
@@ -132,7 +156,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_DS15_v2 | 20 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 45 | 546.1 | 10.5 | 
 
 ## <a name="dv2---general-compute"></a>Dv2 - 一般計算
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_D1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 30 | 33.5 | 1.7 | 
 | Standard_D1_v2 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 31 | 34.7 | 2.5 | 
@@ -156,7 +181,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_D15_v2 | 20 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 37 | 558.8 | 8.4 | 
 
 ## <a name="esv3---memory-optimized--premium-storage"></a>Esv3 - 記憶體最佳化 + 進階儲存體
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E2s_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 39 | 42.5 | 2.2 | 
 | Standard_E4s_v3 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 28 | 81.4 | 3.3 | 
@@ -176,12 +202,14 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_E64-32s_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 4 | 592.5 | 4.4 | 
 
 ## <a name="eisv3---memory-opt--premium-storage-isolated"></a>Eisv3-記憶體選擇 + 進階儲存體（獨立模式）
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E64is_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 28 | 1073.9 | 5.7 | 
 
 ## <a name="ev3---memory-optimized"></a>Ev3 - 記憶體最佳化
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E2_v3 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 41 | 41.2 | 2.4 | 
 | Standard_E4_v3 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 43 | 81.4 | 5.3 | 
@@ -192,12 +220,14 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_E64_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 31 | 1080.0 | 11.3 | 
 
 ## <a name="eiv3---memory-optimized-isolated"></a>Eiv3-記憶體優化（獨立模式）
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_E64i_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 28 | 1081.4 | 11.1 | 
 
 ## <a name="fsv2---compute--storage-optimized"></a>Fsv2 - 計算 + 儲存體最佳化
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F2s_v2 | 2 | 1 | Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz | 46 | 56.5 | 2.4 | 
 | Standard_F4s_v2 | 4 | 1 | Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz | 60 | 110.2 | 4.7 | 
@@ -208,7 +238,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_F72s_v2 | 72 | 2 | Intel(R) Xeon(R) Platinum 8168 CPU @ 2.70GHz | 29 | 1372.1 | 8.2 | 
 
 ## <a name="fs---compute-and-storage-optimized"></a>Fs - 計算與儲存體最佳化
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F1s | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 31 | 33.2 | 1.0 | 
 | Standard_F1s | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 41 | 35.1 | 2.0 | 
@@ -222,7 +253,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_F16s | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 36 | 471.8 | 7.5 | 
 
 ## <a name="f---compute-optimized"></a>F - 計算最佳化
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_F1 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 15 | 32.8 | 1.8 | 
 | Standard_F1 | 1 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 @ 2.30GHz | 13 | 33.3 | 2.0 | 
@@ -237,7 +269,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_F16 | 16 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz | 6 | 472.3 | 13.2 | 
 
 ## <a name="gs---storage-optimized"></a>GS - 儲存體最佳化
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_GS1 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 29 | 63.6 | 4.7 | 
 | Standard_GS2 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 29 | 122.3 | 6.9 | 
@@ -250,7 +283,7 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_GS5-16 | 16 | 2 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 31 | 447.9 | 4.0 | 
 
 ## <a name="g---compute-optimized"></a>G - 計算最佳化
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_G1 | 2 | 1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 29 | 64.7 | 9.2 | 
 | Standard_G2 | 4 | 1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 30 | 127.9 | 12.2 | 
@@ -259,7 +292,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_G5 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 31 | 774.1 | 4.1 | 
 
 ## <a name="h---high-performance-compute-hpc"></a>H - 高效能計算 (HPC)
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_H8 | 8 | 1 | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 31 | 296.1 | 1.4 | 
 | Standard_H8m | 8 | 1 | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 34 | 295.1 | 1.5 | 
@@ -269,7 +303,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_H16r | 16 | 2 | Intel(R) Xeon(R) CPU E5-2667 v3 @ 3.20GHz | 17 | 562.2 | 4.2 | 
 
 ## <a name="ls---storage-optimized"></a>Ls - 儲存體最佳化
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_L4s | 4 | 1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 29 | 122.7 | 6.6 | 
 | Standard_L8s | 8 | 1 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 30 | 223.3 | 7.5 | 
@@ -277,7 +312,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_L32s | 32 | 2 | Intel(R) Xeon(R) CPU E5-2698B v3 @ 2.00GHz | 31 | 766.1 | 3.5 | 
 
 ## <a name="m---memory-optimized"></a>M - 記憶體最佳化
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_M8-2ms | 2 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 15 | 42.1 | 2.1 | 
 | Standard_M8-4ms | 4 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 13 | 81.6 | 2.9 | 
@@ -306,7 +342,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_M8ms | 8 | 1 | Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz | 13 | 158.2 | 5.5 | 
 
 ## <a name="ncsv3---gpu-enabled"></a>NCSv3-已啟用 GPU
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6s_v3 | 6 | 1 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 6 | 230.2 | 1.6 | 
 | Standard_NC12s_v3 | 12 | 1 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 7 | 425.0 | 3.6 | 
@@ -314,7 +351,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_NC24s_v3 | 24 | 2 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 3 | 809.3 | 2.3 | 
 
 ## <a name="ncsv2---gpu-enabled"></a>NCSv2-已啟用 GPU
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6s_v2 | 6 | 1 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 11 | 227.0 | 6.2 | 
 | Standard_NC12s_v2 | 12 | 1 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 9 | 427.3 | 1.3 | 
@@ -322,7 +360,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_NC24s_v2 | 24 | 2 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 11 | 811.5 | 4.4 | 
 
 ## <a name="nc---gpu-enabled"></a>NC-已啟用 GPU
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NC6 | 6 | 1 | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 27 | 209.6 | 4.4 | 
 | Standard_NC12 | 12 | 1 | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 28 | 394.4 | 3.8 | 
@@ -330,7 +369,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_NC24r | 24 | 2 | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 27 | 752.9 | 3.4 | 
 
 ## <a name="nds--gpu-enabled"></a>NDs-已啟用 GPU
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_ND6s | 6 | 1 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 8 | 230.1 | 1.2 | 
 | Standard_ND12s | 12 | 1 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 11 | 426.5 | 1.4 | 
@@ -338,7 +378,8 @@ SPEC Int 是相當長的執行中測試，通常會耗盡可用的高載點數�
 | Standard_ND24s | 24 | 2 | Intel （R）強式（R） CPU E5-2690 v4 @ 2.60 GHz | 11 | 812.6 | 4.4 | 
 
 ## <a name="nv---gpu-enabled"></a>NV-已啟用 GPU
-| Size | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
+
+| 大小 | vCPU | NUMA 節點 | CPU | 執行 | 平均基本費率 | StdDev | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
 | Standard_NV6 | 6 | 1 | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 28 | 210.5 | 6.1 | 
 | Standard_NV12 | 12 | 1 | Intel （R）強式（R） CPU E5-2690 v3 @ 2.60 GHz | 28 | 394.5 | 2.3 | 

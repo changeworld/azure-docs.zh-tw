@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfc964ffc394b3f79c9d279158003f383b7331
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943433"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690496"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主領域探索原則為應用程式設定 Azure Active Directory 登入行為
 
@@ -150,7 +150,7 @@ ms.locfileid: "78943433"
 - 列出已設定原則的應用程式。
 
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 在下列範例中，您將建立、更新、連結和刪除 Azure AD 中應用程式服務主體上的原則。
 
 1.  若要開始，請下載最新的 Azure AD PowerShell Cmdlet 預覽版。 
@@ -168,7 +168,7 @@ ms.locfileid: "78943433"
 
 如果沒有傳回任何內容，表示您的租用戶中未建立任何原則。
 
-### <a name="example-set-hrd-policy-for-an-application"></a>範例：為應用程式設定 HRD 原則 
+### <a name="example-set-an-hrd-policy-for-an-application"></a>範例：設定應用程式的 HRD 原則 
 
 在此範例中，您建立的原則若指派給應用程式可執行以下功能： 
 - 如果您的租用戶中有單一網域，則使用者在登入應用程式時能自動加速前往 AD FS 登入畫面。 
@@ -251,7 +251,7 @@ Get-AzureADPolicy
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>範例：移除應用程式的 HRD 原則
+### <a name="example-remove-an-hrd-policy-from-an-application"></a>範例：從應用程式中移除 HRD 原則
 #### <a name="step-1-get-the-objectid"></a>步驟 1：取得 ObjectID
 使用前一個範例來取得原則的 ObjectId，以及要移除該原則之應用程式服務主體的 **ObjectID**。 
 

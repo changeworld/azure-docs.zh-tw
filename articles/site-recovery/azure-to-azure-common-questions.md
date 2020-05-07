@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547880"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738043"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>常見問題： Azure 到 Azure 的嚴重損壞修復
 
@@ -28,7 +28,7 @@ ms.locfileid: "80547880"
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>在這前 31 天，我是否須負擔任何其他 Azure 費用？
 
-是。 雖然在受保護實例的前31天內 Azure Site Recovery 免費，但您可能會產生 Azure 儲存體、儲存體交易和資料傳輸的費用。 復原的虛擬機器也可能會產生 Azure 計算費用。 取得定價[Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery)定價的完整詳細資料。
+可以。 雖然在受保護實例的前31天內 Azure Site Recovery 免費，但您可能會產生 Azure 儲存體、儲存體交易和資料傳輸的費用。 復原的虛擬機器也可能會產生 Azure 計算費用。 取得定價[Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery)定價的完整詳細資料。
 
 ### <a name="what-are-the-best-practices-for-azure-virtual-machines-disaster-recovery"></a>Azure 虛擬機器嚴重損壞修復的最佳做法為何？
 
@@ -46,7 +46,7 @@ Site Recovery 小組和 Azure 容量管理小組會規劃足夠的基礎結構�
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>我可以複寫透過 Azure 磁碟加密啟用的 VM 嗎？
 
-是。 Site Recovery 支援已啟用 Azure 磁碟加密之 Vm 的嚴重損壞修復。 當您啟用複寫時，Azure 會將所有必要的磁片加密金鑰和秘密從來源區域複製到使用者內容中的目的地區域。 如果您沒有適當的許可權，您的安全性系統管理員可以使用腳本來複製金鑰和密碼。
+可以。 Site Recovery 支援已啟用 Azure 磁碟加密之 Vm 的嚴重損壞修復。 當您啟用複寫時，Azure 會將所有必要的磁片加密金鑰和秘密從來源區域複製到使用者內容中的目的地區域。 如果您沒有適當的許可權，您的安全性系統管理員可以使用腳本來複製金鑰和密碼。
 
 - Site Recovery 支援執行 Windows 之 Azure Vm 的 Azure 磁碟加密。
 - Site Recovery 支援 Azure 磁碟加密版本0.1，其具有需要 Azure Active Directory （Azure AD）的架構。 Site Recovery 也支援1.1 版，這不需要 Azure AD。 [深入瞭解 Azure 磁片加密的延伸模組架構](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema)。
@@ -194,10 +194,10 @@ Site Recovery 提供**多 VM 一致性**選項，它會建立所有機器的複�
 由於多部 VM 一致性會耗用大量 CPU，因此可能會影響工作負載效能。 只有當機器執行相同的工作負載，而且您需要跨多部電腦的一致性時，才使用多部 VM 一致性。 例如，如果您在應用程式中有兩個 SQL Server 實例和兩個 web 伺服器，則只有 SQL Server 實例的多部 VM 一致性。
 
 ### <a name="can-you-add-an-already-replicating-vm-to-a-replication-group"></a>是否可以將已複寫的 VM 新增至複寫群組？
-
 啟用複寫時，您可以將 VM 新增至新的複寫群組。 您也可以在啟用複寫的情況下，將 VM 新增至現有的複寫群組。 不過，您無法將已複寫的 VM 新增至新的複寫群組或現有的複寫群組。
-
+ 
 ## <a name="failover"></a>容錯移轉
+
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>如何在 Azure Vm 的目的地區域中確保容量？
 
@@ -230,7 +230,7 @@ Site Recovery 會在容錯移轉時嘗試提供 IP 位址。 如果另一部虛�
 
 ### <a name="do-latest-lowest-rpo-recovery-points-have-an-impact-on-failover-rto"></a>**最新 (最低 RPO)** 復原點對容錯移轉 RTO 是否有影響？
 
-是。 Site Recovery 會在容錯移轉之前處理所有擱置中的資料，因此相較于其他選項，此選項的復原時間目標（RTO）更高。
+可以。 Site Recovery 會在容錯移轉之前處理所有擱置中的資料，因此相較于其他選項，此選項的復原時間目標（RTO）更高。
 
 ### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>復原點中的**最新處理**選項是什麼意思？
 
@@ -275,7 +275,7 @@ Site Recovery 中的復原方案會協調 VM 的容錯移轉復原。 這有助�
 
 ### <a name="i-failed-over-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>我已從主要區域故障復原到嚴重損壞修復區域。 DR 區域中的 Vm 是否會自動受到保護？
 
-否。 當您將 Azure VM 從一個區域[容錯移轉](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)至另一個區域時，VM 會在 DR 區域中以未受保護的狀態啟動。 若要將 VM 容錯回復到到主要區域，您必須[重新保護](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)次要區域中的 VM。
+不需要。 當您將 Azure VM 從一個區域[容錯移轉](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)至另一個區域時，VM 會在 DR 區域中以未受保護的狀態啟動。 若要將 VM 容錯回復到到主要區域，您必須[重新保護](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)次要區域中的 VM。
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>進行重新保護時，Site Recovery 是否會從次要區域將完整的資料複寫到主要區域？
 

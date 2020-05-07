@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329727"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582944"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>在 Azure Active Directory 中將敏感度標籤指派給 Office 365 群組（預覽）
 
@@ -112,10 +112,10 @@ Azure Active Directory （Azure AD）支援將[Microsoft 365 合規性中心](ht
 
 只有在符合下列所有條件時，才會顯示群組的 [敏感度標籤] 選項：
 
-1. 標籤會在此租使用者的 Microsoft 365 合規性中心發佈。
+1. 標籤會在此 Azure AD 組織的 Microsoft 365 合規性中心發佈。
 1. 已啟用此功能，PowerShell 中的 EnableMIPLabels 會設定為 True。
 1. 此群組是 Office 365 群組。
-1. 租使用者具有 active Azure Active Directory Premium P1 授權。
+1. 組織具有 active Azure Active Directory Premium P1 授權。
 1. 目前已登入的使用者有足夠的許可權可指派標籤。 使用者必須是全域管理員、群組管理員或群組擁有者。
 
 請確定符合所有條件，才能將標籤指派給群組。

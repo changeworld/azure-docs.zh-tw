@@ -13,22 +13,22 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71213185"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592004"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中樞和 Node.js 傳送推播通知
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 > [!IMPORTANT]
 > 若要完成此教學課程，您必須具備有效的 Azure 帳戶。 如果沒有帳戶，您可以透過 [Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs)，在幾分鐘內建立一個免費試用帳戶。
@@ -83,7 +83,7 @@ var notificationHubService = azure.createNotificationHubService('hubname','conne
 
 1. 在左導覽窗格中，按一下 [瀏覽] ****。
 2. 選取 [通知中樞] ****，然後尋找您要用於範例的中樞。 如果您需要建立新通知中樞的協助，您可以參閱[Windows Store 消費者入門教學](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)課程。
-3. 選取 [設定]****。
+3. 選取 [設定]  。
 4. 按一下 [存取原則] ****。 您會看到兩個共用和完整存取連接字串。
 
 ![Azure 入口網站 - 通知中樞](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
@@ -133,7 +133,7 @@ notificationHubService.gcm.send(null, payload, function(error){
 - **Payload** - 訊息的 JSON 或字串承載。
 - **Callback** - 回呼函數。
 
-如需有關承載格式的詳細資訊，請參閱 **Local and Push Notification Programming Guide (本機與推播通知程式設計指南)** 文件的 [Notification Payload (通知承載)](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) 一節。
+如需裝載格式的詳細資訊，請參閱[UserNotifications 指南](https://developer.apple.com/documentation/usernotifications)的**通知內容**一節。
 
 下列程式碼使用 `NotificationHubService` 所公開的 `ApnsService` 執行個體，傳送警示訊息至所有用戶端：
 

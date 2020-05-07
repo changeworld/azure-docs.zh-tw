@@ -2,13 +2,15 @@
 title: Azure 訂用帳戶限制與配額
 description: 提供通用的 Azure 訂用帳戶和服務限制、配額和條件約束的清單。 本文包含如何增加限制和最大值的資訊。
 ms.topic: conceptual
+author: davidsmatlak
+ms.author: v-dasmat
 ms.date: 04/21/2020
-ms.openlocfilehash: 00bd85febe34a7bd9b4e993d5697fa810347711b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 865c39ea9a48f9f5e0fbf04dea629b6886cf7ae4
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768762"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584074"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 訂用帳戶和服務限制、配額與限制
 
@@ -409,7 +411,7 @@ ms.locfileid: "81768762"
 
 [!INCLUDE [virtual-machine-scale-sets-limits](../../../includes/azure-virtual-machine-scale-sets-limits.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 * [瞭解 Azure 限制和增加](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Azure 的虛擬機器和雲端服務大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d56bb7c30a8289fe7f261979dca6a4ffe2bfe99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b50118dcd4bf0fafa3e25399cf7d82558b7c776c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048147"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582802"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>設定群組設定的 Azure Active Directory Cmdlet
 
@@ -160,7 +160,7 @@ Cmdlet 是 Azure Active Directory PowerShell V2 模組的一部分。 如需有�
 |  <ul><li>AllowGuestsToBeGroupOwner<li>類型：布林值<li> 預設值︰False | 布林值，表示來賓使用者是否可以是群組的擁有者。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>類型：布林值<li> 預設值︰True | 用以指出來賓使用者是否可存取 Office 365 內容的布林值。  此設定不需要 Azure Active Directory Premium P1 授權。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>類型：字串<li>預設值： "" | 來賓使用指導方針的連結 url。 |
-|  <ul><li>AllowToAddGuests<li>類型：布林值<li> 預設值︰True | 布林值表示是否允許將來賓新增至此目錄。 <br>如果*EnableMIPLabels*設定為*True* ，而且來賓原則與指派給群組的敏感度標籤相關聯，則此設定可能會遭到覆寫，而且會變成隻讀。<br>如果 AllowToAddGuests 設定在租使用者層級設定為 False，則會忽略群組層級的任何 AllowToAddGuests 設定。 如果您只想要針對少數群組啟用來賓存取，您必須在租使用者層級將 AllowToAddGuests 設定為 true，然後針對特定群組選擇性地停用它。 |
+|  <ul><li>AllowToAddGuests<li>類型：布林值<li> 預設值︰True | 布林值表示是否允許將來賓新增至此目錄。 <br>如果*EnableMIPLabels*設定為*True* ，而且來賓原則與指派給群組的敏感度標籤相關聯，則此設定可能會遭到覆寫，而且會變成隻讀。<br>如果 AllowToAddGuests 設定在組織層級設定為 False，則會忽略群組層級的任何 AllowToAddGuests 設定。 如果您只想要針對少數群組啟用來賓存取，您必須在組織層級將 AllowToAddGuests 設定為 true，然後針對特定群組選擇性地停用它。 |
 |  <ul><li>ClassificationList<li>類型：字串<li>預設值： "" | 可套用至 Office 365 群組、以逗號分隔的有效分類值清單。 <br>當 EnableMIPLabels = = True 時，此設定不適用。|
 |  <ul><li>EnableMIPLabels<li>類型：布林值<li>預設值： "False" |此旗標指出是否可以將 Microsoft 365 合規性中心發佈的敏感度標籤套用至 Office 365 群組。 如需詳細資訊，請參閱[指派 Office 365 群組的敏感度標籤](groups-assign-sensitivity-labels.md)。 |
 

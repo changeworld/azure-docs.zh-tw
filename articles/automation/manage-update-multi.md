@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a878ecf4519a852a9798b320bda26cd490487a4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676436"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731963"
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>管理多部 Azure 虛擬機器的更新
 
@@ -21,9 +21,9 @@ ms.locfileid: "81676436"
 - 排程必要更新的安裝。
 - 檢查部署結果，以確認更新已成功套用至已啟用更新管理的所有虛擬機器。
 
-若要瞭解更新管理的系統需求，請參閱[更新管理用戶端需求](automation-update-management.md#clients)。
+若要瞭解更新管理的系統需求，請參閱[更新管理用戶端需求](automation-update-management.md#client-requirements)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 已安裝其中一個支援作業系統的虛擬機器或電腦。
 * 存取 Linux Vm 的更新存放庫上架至更新管理。

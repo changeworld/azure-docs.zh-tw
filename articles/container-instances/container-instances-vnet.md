@@ -1,87 +1,31 @@
 ---
 title: 將容器群組部署至 Azure 虛擬網路
-description: 了解如何將容器群組部署至新的或現有的 Azure 虛擬網路。
+description: 瞭解如何使用 Azure 命令列介面，將容器群組部署至新的或現有的 Azure 虛擬網路。
 ms.topic: article
-ms.date: 01/06/2020
+ms.date: 04/29/2020
 ms.author: danlep
-ms.openlocfilehash: 318576e9b5c5b32bbc993ea16494c938b74bd2f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e54690efc7955eaaa88ca87a6f7a086dd3e19a4
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77200056"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583648"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>將容器執行個體部署至 Azure 虛擬網路
 
 [Azure 虛擬網路](../virtual-network/virtual-networks-overview.md)為您的 azure 和內部部署資源提供安全的私用網路。 透過將容器群組部署至 Azure 虛擬網路，您的容器可在虛擬網路中安全地與其他資源通訊。
 
-部署至 Azure 虛擬網路的容器群組可供您進行下列案例：
+本文說明如何使用 Azure CLI 中的[az container create][az-container-create]命令，將容器群組部署至新的虛擬網路或現有的虛擬網路。 
 
-* 直接在同一個子網路中的容器群組間通訊
-* 在虛擬網路中，將[以工作為基礎](container-instances-restart-policy.md)的工作負載輸出從容器執行個體傳送至資料庫
-* 從虛擬網路中的[服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)為容器執行個體擷取內容
-* 容器可在虛擬網路中與虛擬機器通訊
-* 容器可透過 [VPN 閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md) 與內部部署資源通訊
+如需網路案例和限制，請參閱[Azure 容器實例的虛擬網路案例和資源](container-instances-virtual-network-concepts.md)。
 
 > [!IMPORTANT]
-> 虛擬網路的容器群組部署，通常僅適用于下欄區域中的生產工作負載：**美國東部、美國中南部和美國西部 2**。 在可使用此功能的其他區域中，虛擬網路部署目前為預覽狀態，並在不久的未來規劃一般可用性。 若您同意[補充的使用規定][terms-of-use]即可取得預覽。 
+> 在大部分可使用 Azure 容器實例的區域中，對虛擬網路的容器群組部署已正式推出。 如需詳細資訊，請參閱[區域和資源可用性](container-instances-virtual-network-concepts.md#where-to-deploy)。 
+
+本文中的範例會針對 Bash shell 進行格式化。 如果您慣用其他殼層，例如 PowerShell 或命令提示字元，請相應調整行接續字元。
 
 
-## <a name="virtual-network-deployment-limitations"></a>虛擬網路部署限制
-
-當您將容器群組部署至虛擬網路時，會有特定限制。
-
-* 若要將容器群組部署至子網路，該子網路不能包含任何其他資源類型。 在將容器群組部署至子網路之前，請先將所有現有資源從現有的子網路移除，或是建立新的子網路。
-* 您無法在部署至虛擬網路的容器群組中使用[受控識別](container-instances-managed-identity.md)。
-* 您無法在部署至虛擬網路的容器群組中啟用[活動探查](container-instances-liveness-probe.md)或[準備探查](container-instances-readiness-probe.md)。
-* 由於牽涉到額外的網路資源，將容器群組部署至虛擬網路的速度通常會比部署標準容器實例慢。
-
-[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
-
-容器資源限制會隨著這些區域中非網路的容器執行個體其限制不同而異。 目前僅支援 Linux 容器的這項功能。 已計劃支援 Windows。
-
-### <a name="unsupported-networking-scenarios"></a>不支援的網路案例 
-
-* 不支援將 Azure Load Balancer 放在網路容器群組中的容器實例之前**Azure Load Balancer**
-* **虛擬網路對等互連**
-  * 如果 ACI VNet 對等互連的網路使用公用 IP 空間，則 VNet 對等互連將無法用於 ACI。 對等互連網路需要 RFC 1918 私人 IP 空間，才能讓 VNet 對等互連正常執行。 
-  * 您只能將 VNet 對等互連至另一個 VNet
-* **虛擬網路流量路由**-無法在公用 ip 周圍設定自訂路由。 可以在部署 ACI 資源的委派子網的私人 IP 空間內設定路由 
-* **網路安全性群組**-nsg 中套用至委派給 Azure 容器實例之子網的輸出安全性規則目前不會強制執行 
-* **公用 ip 或 DNS 標籤**-部署至虛擬網路的容器群組目前不支援使用公用 IP 位址或完整功能變數名稱將容器直接公開到網際網路
-* **內部名稱解析**-不支援透過內部 Azure DNS 在虛擬網路中的 Azure 資源名稱解析
-
-當您將容器群組部署至虛擬網路後，便需要[其他步驟](#delete-network-resources)來**刪除網路資源**。
-
-## <a name="required-network-resources"></a>必要的網路資源
-
-將容器群組部署至虛擬網路需要三項 Azure 虛擬網路資源：[虛擬網路](#virtual-network)本身、虛擬網路中的[委派子網路](#subnet-delegated)及[網路設定檔](#network-profile)。 
-
-### <a name="virtual-network"></a>虛擬網路
-
-虛擬網路可定義您建立一或多個子網路所在的位址空間。 接著，您可以將 Azure 資源 (例如容器群組) 部署到虛擬網路中的子網路。
-
-### <a name="subnet-delegated"></a>子網路 (委派)
-
-子網路會將虛擬網路分割成位址空間，供放在其中的 Azure 資源使用。 您可以在虛擬網路中建立一或多個子網路。
-
-您用於容器群組的子網路只能包含容器群組。 當您首次將容器群組部署至子網路時，Azure 會將該子網路委派至 Azure 容器執行個體。 委派之後，子網路只能用於容器群組。 如果您嘗試將容器群組以外的資源部署至委派子網路，該作業會失敗。
-
-### <a name="network-profile"></a>網路設定檔
-
-網路設定檔是 Azure 資源的網路設定範本。 其會為資源指定特定的網路屬性，例如應該部署該資源的子網路。 當您首次使用 [az container create][az-container-create] 命令將容器群組部署至子網路 (也因此部署至虛擬網路) 時，Azure 會為您建立網路設定檔。 然後您可以在日後部署至子網路時，使用該網路設定檔。 
-
-若要使用 Resource Manager 範本、YAML 檔案或程式設計方法將容器群組部署至子網路，您必須提供網路設定檔的完整 Resource Manager 資源識別碼。 您可以使用先前使用 [az container create][az-container-create] 建立的設定檔，或使用 Resource Manager 範本來建立設定檔 (請參閱[範本範例](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet)及[參考](https://docs.microsoft.com/azure/templates/microsoft.network/networkprofiles))。 若要取得先前所建設定檔的識別碼，請使用 [az network profile list][az-network-profile-list] 命令。 
-
-在下圖中，多個容器群組已部署到委派至 Azure 容器執行個體的子網路。 當您將一個容器群組部署至子網路後，就可立即指定相同的網路設定檔來部署其他容器群組。
-
-![虛擬網路中的容器群組][aci-vnet-01]
-
-## <a name="deployment-scenarios"></a>部署案例
-
-您可以使用 [az container create][az-container-create] 將容器群組部署至新的虛擬網路，並允許 Azure 為您建立必要的網路資源，或是部署至現有的虛擬網路。 
-
-### <a name="new-virtual-network"></a>新的虛擬網路
+## <a name="deploy-to-new-virtual-network"></a>部署至新的虛擬網路
 
 若要部署至新的虛擬網路並讓 Azure 自動為您建立網路資源，請在執行 [az container create][az-container-create] 時指定下列項目：
 
@@ -94,7 +38,24 @@ ms.locfileid: "77200056"
 
 當您利用此方法部署了第一個容器群組後，就可以透過指定虛擬網路及子網路名稱，或是 Azure 自動為您建立的網路設定檔，來部署至同一個子網路。 因為 Azure 將該子網路委派至 Azure 容器執行個體，所以您「只」** 能將容器群組部署至子網路。
 
-### <a name="existing-virtual-network"></a>現有的虛擬網路
+### <a name="example"></a>範例
+
+下列[az container create][az-container-create]命令會指定新的虛擬網路和子網的設定。 提供在虛擬網路中的容器群組部署[可供使用](container-instances-region-availability.md#availability---virtual-network-deployment)的區域中所建立的資源組名。 此命令會部署公用 Microsoft [aci-helloworld][aci-helloworld]容器，其會執行小型 node.js web 伺服器以提供靜態網頁。 在下一節中，您會對同一個子網路部署第二個容器群組，並測試兩個容器執行個體之間的通訊。
+
+```azurecli
+az container create \
+  --name appcontainer \
+  --resource-group myResourceGroup \
+  --image mcr.microsoft.com/azuredocs/aci-helloworld \
+  --vnet aci-vnet \
+  --vnet-address-prefix 10.0.0.0/16 \
+  --subnet aci-subnet \
+  --subnet-address-prefix 10.0.0.0/24
+```
+
+當您使用此方法部署至新的虛擬網路時，部署可能會花費幾分鐘建立網路資源。 初始部署之後，對相同子網的其他容器群組部署會更快速完成。
+
+## <a name="deploy-to-existing-virtual-network"></a>部署至現有的虛擬網路
 
 將容器群組部署至現有的虛擬網路：
 
@@ -104,61 +65,37 @@ ms.locfileid: "77200056"
    * 虛擬網路資源識別碼與子網路資源識別碼，其允許使用不同資源群組中的虛擬網路
    * 網路設定檔名稱或識別碼，您可使用 [az network profile list][az-network-profile-list] 取得
 
-當您將第一個容器群組部署至現有的子網路後，Azure 會將該子網路委派至 Azure 容器執行個體。 除了容器群組之外，您不可再將其他資源部署至該子網路。
+### <a name="example"></a>範例
 
-## <a name="deployment-examples"></a>部署範例
-
-下列章節說明如何利用 Azure CLI 將容器群組部署至虛擬網路。 該命令範例已處理成 **Bash** 殼層格式。 如果您慣用其他殼層，例如 PowerShell 或命令提示字元，請相應調整行接續字元。
-
-### <a name="deploy-to-a-new-virtual-network"></a>部署至新的虛擬網路
-
-首先，部署容器群組，並為新的虛擬網路及子網路指定參數。 當您指定這些參數時，Azure 會建立虛擬網路及子網路，將子網路委派至 Azure 容器執行個體，以及建立網路設定檔。 當您建立這些資源後，您的容器群組就會部署至子網路。
-
-請執行下列 [az container create][az-container-create] 命令，為新的虛擬網路及子網路指定設定。 您必須提供在虛擬網路中的容器群組部署[可供使用](#virtual-network-deployment-limitations)的區域中所建立的資源組名。 此命令會部署公用 Microsoft [aci-helloworld][aci-helloworld]容器，其會執行小型 node.js web 伺服器以提供靜態網頁。 在下一節中，您會對同一個子網路部署第二個容器群組，並測試兩個容器執行個體之間的通訊。
-
-```azurecli
-az container create \
-    --name appcontainer \
-    --resource-group myResourceGroup \
-    --image mcr.microsoft.com/azuredocs/aci-helloworld \
-    --vnet aci-vnet \
-    --vnet-address-prefix 10.0.0.0/16 \
-    --subnet aci-subnet \
-    --subnet-address-prefix 10.0.0.0/24
-```
-
-當您使用此方法部署至新的虛擬網路時，部署可能會花費幾分鐘建立網路資源。 經過初始部署後，其他容器群組部署會更快完成。
-
-### <a name="deploy-to-existing-virtual-network"></a>部署至現有的虛擬網路
-
-既然您已將一個容器群組部署至新的虛擬網路，請再對同一個子網路部署第二個容器群組，然後驗證這兩個容器執行個體之間的通訊。
+下列範例會將第二個容器群組部署至先前建立的相同子網，並驗證兩個容器實例之間的通訊。
 
 首先，取得您部署的第一個容器群組 IP 位址 *appcontainer*：
 
 ```azurecli
-az container show --resource-group myResourceGroup --name appcontainer --query ipAddress.ip --output tsv
+az container show --resource-group myResourceGroup \
+  --name appcontainer \
+  --query ipAddress.ip --output tsv
 ```
 
-輸出應會顯示私人子網路中容器群組的 IP 位址：
+輸出會顯示私人子網中容器群組的 IP 位址。 例如：
 
 ```console
-$ az container show --resource-group myResourceGroup --name appcontainer --query ipAddress.ip --output tsv
 10.0.0.4
 ```
 
 現在，將 `CONTAINER_GROUP_IP` 設定為您用 `az container show` 命令擷取的 IP，然後執行下列 `az container create` 命令。 第二個容器 *commchecker*會執行以 Alpine Linux 為基礎的映像，並對第一個容器群組的私人子網路 IP 位址執行 `wget`。
 
 ```azurecli
-CONTAINER_GROUP_IP=<container-group-IP-here>
+CONTAINER_GROUP_IP=<container-group-IP-address>
 
 az container create \
-    --resource-group myResourceGroup \
-    --name commchecker \
-    --image alpine:3.5 \
-    --command-line "wget $CONTAINER_GROUP_IP" \
-    --restart-policy never \
-    --vnet aci-vnet \
-    --subnet aci-subnet
+  --resource-group myResourceGroup \
+  --name commchecker \
+  --image alpine:3.5 \
+  --command-line "wget $CONTAINER_GROUP_IP" \
+  --restart-policy never \
+  --vnet aci-vnet \
+  --subnet aci-subnet
 ```
 
 當第二個容器部署完成之後，請提取其記錄，您便可以看見其執行的 `wget` 命令輸出：
@@ -167,43 +104,45 @@ az container create \
 az container logs --resource-group myResourceGroup --name commchecker
 ```
 
-如果第二個容器已成功與第一個容器通訊，輸出應會如下所示：
+如果第二個容器成功與第一個容器通訊，輸出類似于：
 
 ```console
-$ az container logs --resource-group myResourceGroup --name commchecker
 Connecting to 10.0.0.4 (10.0.0.4:80)
 index.html           100% |*******************************|  1663   0:00:00 ETA
 ```
 
 記錄輸出應會顯示，`wget` 可以使用其區域子網路的私人 IP 位址從第一個容器連線及下載索引檔案。 兩個容器群組之間的網路流量會保留在虛擬網路中。
 
-### <a name="deploy-to-existing-virtual-network---yaml"></a>部署至現有的虛擬網路 - YAML
+### <a name="example---yaml"></a>範例-YAML
 
-您也可以使用 YAML 檔案、Resource Manager 範本或其他程式設計方法（例如 Python SDK），將容器群組部署至現有的虛擬網路。 若要部署至虛擬網路中的子網路，您要在 YAML 中額外指定幾項屬性：
+您也可以使用 YAML 檔案、 [Resource Manager 範本](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+)或其他程式設計方法（例如 Python SDK），將容器群組部署至現有的虛擬網路。 
 
-* `ipAddress`：容器群組的 IP 位址設定。
+例如，使用 YAML 檔案時，您可以部署至具有委派給 Azure 容器實例之子網的虛擬網路。 指定下列屬性：
+
+* `ipAddress`：容器群組的私人 IP 位址設定。
   * `ports`：要開啟的連接埠 (如果有)。
   * `protocol`：已開啟連接埠的通訊協定 (TCP 或 UDP)。
-* `networkProfile`：為 Azure 資源指定網路設定，像是虛擬網路及子網路。
+* `networkProfile`：虛擬網路和子網的網路設定。
   * `id`：`networkProfile` 的完整 Resource Manager 資源識別碼。
 
-若要使用 YAML 檔案將容器群組部署至虛擬網路，您需要先取得網路設定檔的識別碼。 請執行 [az network profile list][az-network-profile-list] 命令，指定包含您虛擬網路及委派子網路的資源群組名稱。
+若要取得網路設定檔的識別碼，請執行[az network profile list][az-network-profile-list]命令，並指定包含您的虛擬網路和委派子網的資源組名。
 
 ``` azurecli
-az network profile list --resource-group myResourceGroup --query [0].id --output tsv
+az network profile list --resource-group myResourceGroup \
+  --query [0].id --output tsv
 ```
 
-命令的輸出會顯示完整的網路設定檔識別碼：
+範例輸出：
 
 ```console
-$ az network profile list --resource-group myResourceGroup --query [0].id --output tsv
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
 當您取得網路設定檔識別碼後，請將下列 YAML 複製到名為 *vnet-deploy-aci.yaml* 的新檔案。 在 `networkProfile` 之下，用您剛擷取的識別碼來取代 `id` 值，然後儲存檔案。 此 YAML 會在虛擬網路中建立名為 *appcontaineryaml* 的容器群組。
 
 ```YAML
-apiVersion: '2018-09-01'
+apiVersion: '2018-10-01'
 location: westus
 name: appcontaineryaml
 properties:
@@ -234,13 +173,13 @@ type: Microsoft.ContainerInstance/containerGroups
 使用 [az container create][az-container-create] 命令來部署容器群組，並為 `--file` 參數指定 YAML 檔案名稱：
 
 ```azurecli
-az container create --resource-group myResourceGroup --file vnet-deploy-aci.yaml
+az container create --resource-group myResourceGroup \
+  --file vnet-deploy-aci.yaml
 ```
 
-部署完成後，請執行 [az container show][az-container-show] 命令來顯示其狀態：
+部署完成後，請執行[az container show][az-container-show]命令來顯示其狀態。 範例輸出：
 
 ```console
-$ az container show --resource-group myResourceGroup --name appcontaineryaml --output table
 Name              ResourceGroup    Status    Image                                       IP:ports     Network    CPU/Memory       OsType    Location
 ----------------  ---------------  --------  ------------------------------------------  -----------  ---------  ---------------  --------  ----------
 appcontaineryaml  myResourceGroup  Running   mcr.microsoft.com/azuredocs/aci-helloworld  10.0.0.5:80  Private    1.0 core/1.5 gb  Linux     westus
@@ -288,20 +227,11 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 若要使用 Resource Manager 範本部署新的虛擬網路、子網路、網路設定檔及容器群組，請參閱 [Create an Azure container group with VNet](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 ) (使用 VNet 建立 Azure 容器群組)。
 
-雖然本文簡短，但仍討論了幾項虛擬網路資源及功能。 Azure 虛擬網路文件涵蓋這些主題的詳細說明：
-
-* [虛擬網路](../virtual-network/manage-virtual-network.md)
-* [子網路](../virtual-network/virtual-network-manage-subnet.md)
-* [服務端點](../virtual-network/virtual-network-service-endpoints-overview.md)
-* [VPN 閘道](../vpn-gateway/vpn-gateway-about-vpngateways.md)
-* [ExpressRoute](../expressroute/expressroute-introduction.md)
-
 <!-- IMAGES -->
 [aci-vnet-01]: ./media/container-instances-vnet/aci-vnet-01.png
 
 <!-- LINKS - External -->
 [aci-helloworld]: https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

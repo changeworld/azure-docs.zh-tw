@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc12e571ca955a0ddc47e1c1dd73c2717161df4b
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74233105"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739308"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>適用於群組管理的 Azure Active Directory 第 2 版 Cmdlet
 
@@ -52,6 +52,10 @@ ms.locfileid: "74233105"
 
 現在您可以開始在模組中使用 Cmdlet。 如需有關 Azure AD 模組中各式 Cmdlet 的完整描述，請參閱 [Azure Active Directory PowerShell 第 2 版](/powershell/azure/install-adv2?view=azureadps-2.0)的線上參考文件。
 
+> [!NOTE]
+> Azure AD PowerShell Cmdlet 無法與新的 Powershell 7 搭配使用，因為它是以 .net Core 為基礎。 我們知道這是正在進行更新的過程中。 從現在開始，我們建議使用 Windows Powershell 5.x 模組，以用於 Azure AD Powershell 作業。 
+
+
 ## <a name="connect-to-the-directory"></a>連線至目錄
 
 使用 Azure AD PowerShell Cmdlet 開始管理群組之前，您必須先將 PowerShell 工作階段連線至想要管理的目錄。 使用下列命令：
@@ -63,8 +67,8 @@ ms.locfileid: "74233105"
 Cmdlet 會提示您輸入需要用來存取目錄的認證。 在此範例中，我們會使用 karen@drumkit.onmicrosoft.com 存取示範目錄。 Cmdlet 將會傳回確認，表示工作階段已成功連線到目錄︰
 
 ```powershell
-    Account                       Environment Tenant
-    -------                       ----------- ------
+    Account                       Environment Tenant ID
+    -------                       ----------- ---------
     Karen@drumkit.onmicrosoft.com AzureCloud  85b5ff1e-0402-400c-9e3c-0f…
 ```
 
@@ -318,7 +322,7 @@ Cmdlet 將會傳回所連線目錄中的所有群組。
 * postmaster
 * root
 * secure
-* security
+* 安全性
 * ssl-admin
 * webmaster
 

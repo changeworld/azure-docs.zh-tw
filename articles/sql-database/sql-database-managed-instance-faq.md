@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 393d67b200a4f8d44cb001b3a7e2e491209e9d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99fbda6f6d5e8fc88f9f4f34c6e194412a120057
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80364164"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598482"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database 受控實例的常見問題（FAQ）
 
@@ -94,7 +94,13 @@ ms.locfileid: "80364164"
 
 這是長時間執行的作業，因為新的受控實例將會在背景中布建，且資料庫會在程式結束時，自動在舊實例和新實例之間傳輸，並進行快速容錯移轉。 
 
+**如果同一個區域中不支援這兩個硬體層代，該怎麼辦？**
+
 如果相同區域中不支援這兩種硬體層代，則可以變更硬體世代，但必須手動完成。 這會要求您在需要產生硬體的區域中布建新的實例，並在舊的和新的實例之間手動備份和還原資料。
+
+**如果沒有足夠的 IP 位址可執行更新作業，該怎麼辦？**
+
+如果您的受控實例布建所在的子網中沒有足夠的 IP 位址，您就必須在其中建立新的子網和新的受控實例。 我們也建議您以更多 IP 位址建立新的子網 alocated，讓未來的更新作業可以避免類似的情況（針對 propper 子網大小，檢查[如何判斷 vnet 子網的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 布建新的實例之後，您可以在舊的和新的實例之間手動備份和還原資料，或執行跨實例的[時間點還原](sql-database-managed-instance-point-in-time-restore.md?tabs=azure-powershell)。 
 
 
 ## <a name="tune-performance"></a>微調效能

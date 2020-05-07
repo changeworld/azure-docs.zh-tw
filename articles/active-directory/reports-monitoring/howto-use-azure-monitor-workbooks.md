@@ -14,12 +14,12 @@ ms.subservice: report-monitor
 ms.date: 10/30/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2e94d9f56a865999f9169650f621a6af892c27ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 094939ee62046c72f07ac46f0781e687034f731f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74014369"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690620"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>如何使用 Azure Active Directory 報表 Azure 監視器活頁簿
 
@@ -42,7 +42,7 @@ ms.locfileid: "74014369"
 
 - 針對登入記錄查詢取得更深入的見解，活頁簿會報告有多少使用者被授與或拒絕存取，以及在存取資源時，有多少使用者略過條件式存取原則。
 
-- 為了協助您解決這些問題，Active Directory 提供用於監視的活頁簿。 [Azure 監視器活頁簿](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)將文字、分析查詢、計量和參數結合成豐富的互動式報表。
+- 為了協助您解決這些問題，Azure Active Directory 提供用於監視的活頁簿。 [Azure 監視器活頁簿](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks)將文字、分析查詢、計量和參數結合成豐富的互動式報表。
 
 
 
@@ -58,7 +58,7 @@ ms.locfileid: "74014369"
 
 若要使用監視器活頁簿，您需要：
 
-- 具有 premium （P1 或 P2）授權的 Active Directory 租使用者。 瞭解如何[取得 premium 授權](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)。
+- 具有 premium （P1 或 P2）授權的 Azure Active Directory 租使用者。 瞭解如何[取得 premium 授權](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)。
 
 - [Log Analytics 工作區](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)。
 
@@ -97,7 +97,7 @@ ms.locfileid: "74014369"
 
 - 所有登入
 
-- 成功
+- Success
 
 - 暫止使用者動作
 
@@ -107,7 +107,7 @@ ms.locfileid: "74014369"
 
 - 時間範圍
 
-- 應用程式
+- [App]
 
 - 使用者
 
@@ -134,14 +134,14 @@ ms.locfileid: "74014369"
 
 - 所有登入
 
-- 成功
+- Success
 
 
 您可以依下列類別篩選每個趨勢：
 
 - 時間範圍
 
-- 應用程式
+- [App]
 
 - 使用者
 
@@ -165,7 +165,7 @@ ms.locfileid: "74014369"
 
 - 時間範圍
 
-- 應用程式
+- [App]
 
 - 使用者
 
@@ -179,7 +179,7 @@ ms.locfileid: "74014369"
 
 ## <a name="conditional-access-insights"></a>條件式存取深入解析
 
-### <a name="overview"></a>概觀
+### <a name="overview"></a>總覽
 
 活頁簿包含登入記錄查詢，可協助 IT 系統管理員監視其租使用者中條件式存取原則的影響。 您能夠報告已授與或拒絕存取的使用者人數。 此活頁簿包含在登入時，有多少使用者會根據這些使用者的屬性略過條件式存取原則的見解。 其中包含每個條件的詳細資料，以便每個條件都可以內容相關原則的影響，包括裝置平臺、裝置狀態、用戶端應用程式、登入風險、位置和應用程式。
 
@@ -203,7 +203,7 @@ ms.locfileid: "74014369"
 
 此活頁簿也會顯示所選原則的影響，並依六個條件細分： 
 - **裝置狀態**
-- **裝置平臺**
+- **裝置平台**
 - **用戶端應用程式**
 - **登入風險**
 - **位置**
@@ -238,7 +238,7 @@ ms.locfileid: "74014369"
 
 - 時間範圍
 
-- 應用程式
+- [App]
 
 - 使用者
 
@@ -267,7 +267,7 @@ ms.locfileid: "74014369"
 
 - 所有登入
 
-- 成功
+- Success
 
 - 暫止動作
 
@@ -278,7 +278,7 @@ ms.locfileid: "74014369"
 
 - 時間範圍
 
-- 應用程式
+- [App]
 
 - 使用者
 

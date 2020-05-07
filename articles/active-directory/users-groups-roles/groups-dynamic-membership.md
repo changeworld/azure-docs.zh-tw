@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/27/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114732"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582898"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中群組的動態成員資格規則
 
@@ -31,7 +31,7 @@ ms.locfileid: "81114732"
 - 您無法根據裝置擁有者的屬性來建立裝置群組。 裝置成員資格規則只能參考裝置屬性。
 
 > [!NOTE]
-> 此功能需要一或多個動態群組成員中每個唯一使用者的 Azure AD Premium P1 授權。 您不需要將授權指派給使用者，使用者就能成為動態群組成員，但是您必須在租用戶中有最小數量的授權，才能涵蓋所有這類使用者。 例如，如果您租用戶中的所有動態群組總計有 1,000 位唯一使用者，則需要至少有 Azure AD Premium P1 的 1,000 個授權，才符合授權需求。
+> 此功能需要一或多個動態群組成員中每個唯一使用者的 Azure AD Premium P1 授權。 您不需要將授權指派給使用者，讓他們成為動態群組的成員，但您必須擁有 Azure AD 組織中的最小授權數，才能涵蓋所有這類使用者。 例如，如果您組織中的所有動態群組共有1000個唯一使用者，則需要至少1000個 Azure AD Premium P1 的授權，才能符合授權需求。
 > 屬於動態裝置群組成員的裝置不需要任何授權。
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Azure 入口網站中的規則產生器
@@ -78,22 +78,22 @@ user.department -eq "Sales"
 
 有三種類型的屬性可用來建構成員資格規則。
 
-- 布林值
-- 字串
+- Boolean
+- String
 - 字串集合
 
 以下是您可用來建立單一運算式的使用者屬性。
 
 ### <a name="properties-of-type-boolean"></a>布林型別的屬性
 
-| 屬性 | 允許的值 | 使用方式 |
+| 屬性 | 允許的值 | 使用狀況 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>字串類型的屬性
 
-| 屬性 | 允許的值 | 使用方式 |
+| 屬性 | 允許的值 | 使用狀況 |
 | --- | --- | --- |
 | city |任何字串值或*null* |(user.city -eq "value") |
 | country |任何字串值或*null* |(user.country -eq "value") |
@@ -124,7 +124,7 @@ user.department -eq "Sales"
 
 ### <a name="properties-of-type-string-collection"></a>字串集合類型的屬性
 
-| 屬性 | 允許的值 | 使用方式 |
+| 屬性 | 允許的值 | 使用狀況 |
 | --- | --- | --- |
 | otherMails |任何字串值 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
@@ -249,7 +249,7 @@ David 會評估為 true，Da 則會評估為 false。
 
 多重值屬性是相同類型之物件的集合。 它們可以用來建立使用 -any 和 -all 邏輯運算子的成員資格規則。
 
-| 屬性 | 值 | 使用方式 |
+| 屬性 | 值 | 使用狀況 |
 | --- | --- | --- |
 | assignedPlans | 集合中的每個物件都會公開下列字串屬性：capabilityStatus、service、servicePlanId |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 | proxyAddresses| SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -any (\_ -contains "contoso")) |
@@ -310,20 +310,20 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 下列秘訣可協助您正確使用此規則。
 
 - [經理識別碼]**** 是經理的物件識別碼。 在經理的**設定檔**可找到它。
-- 若要讓規則得以運作，請確定已對您租用戶中的使用者正確設定 [經理]**** 屬性。 您可以在使用者的 [設定檔]**** 中檢查目前值。
+- 若要讓規則正常運作，請確定您組織中的使用者已正確設定 [**管理員**] 屬性。 您可以在使用者的 [設定檔]**** 中檢查目前值。
 - 此規則僅支援經理的直屬員工。 換句話說，您建立的群組無法「同時」** 包含經理的直屬員工及其員工。
 - 此規則無法與任何其他成員資格規則結合。
 
 ### <a name="create-an-all-users-rule"></a>建立「所有使用者」規則
 
-您建立的群組可以包含使用成員資格規則的租用戶內的所有使用者。 未來在租用戶中新增或移除使用者時，系統會自動調整群組的成員資格。
+您可以使用成員資格規則來建立一個群組，其中包含組織內的所有使用者。 未來在組織中新增或移除使用者時，會自動調整群組的成員資格。
 
 「所有使用者」規則是使用使用-ne 運算子和 null 值的單一運算式來建立的。 此規則會將 B2B 來賓使用者，以及成員使用者新增到群組。
 
 ```
 user.objectId -ne null
 ```
-如果您想要讓群組排除來賓使用者，而且只包含租使用者的成員，您可以使用下列語法：
+如果您想要讓群組排除來賓使用者，而且只包含組織的成員，您可以使用下列語法：
 
 ```
 (user.objectId -ne null) -and (user.userType -eq "Member")
@@ -331,7 +331,7 @@ user.objectId -ne null
 
 ### <a name="create-an-all-devices-rule"></a>建立「所有裝置」規則
 
-您建立的群組可以包含使用成員資格規則的租用戶內的所有裝置。 未來在租用戶中新增或移除裝置時，系統會自動調整群組的成員資格。
+您可以使用成員資格規則，建立包含組織內所有裝置的群組。 未來在組織中新增或移除裝置時，系統會自動調整群組的成員資格。
 
 「所有裝置」規則是使用單一運算式來建立，並使用-ne 運算子和 null 值：
 

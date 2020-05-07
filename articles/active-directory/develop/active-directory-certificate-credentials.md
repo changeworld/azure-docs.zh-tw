@@ -3,7 +3,7 @@ title: Microsoft 身分識別平臺憑證認證
 titleSuffix: Microsoft identity platform
 description: 本文討論如何註冊和使用憑證認證進行應用程式驗證。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 12/18/2019
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d834d37f686279facf0052e3c8f4da3c8d259e0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 47a35f70251622674205a28af9b7cc64132d0530
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309683"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690274"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 身分識別平臺應用程式驗證憑證認證
 
@@ -48,7 +48,7 @@ Microsoft 身分識別平臺若要計算判斷提示，您可以使用您選擇�
 | `nbf` | 生效時間：無法在此日期之前使用權杖。 時間會表示為從 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 到權杖發出時間的秒數。 |
 | `sub` | 主旨：對於 `iss`，應該是 client_id (用戶端服務的應用程式識別碼) |
 
-### <a name="signature"></a>簽章
+### <a name="signature"></a>簽名
 
 簽章是使用 [JSON Web 權杖 RFC7519 規格](https://tools.ietf.org/html/rfc7519) 中所述的憑證計算的
 
@@ -94,7 +94,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 在用戶端應用程式的 Azure 應用程式註冊中：
 1. 選取 [憑證和秘密]****。
 2. 按一下 [上**傳憑證**]，然後選取要上傳的憑證檔案。
-3. 按一下 **[新增]** 。
+3. 按一下 [新增]  。
   憑證上傳之後，即會顯示 [指紋]、[開始日期] 和 [到期] 值。
 
 ### <a name="updating-the-application-manifest"></a>更新應用程式資訊清單

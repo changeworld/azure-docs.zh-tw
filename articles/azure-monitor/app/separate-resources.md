@@ -2,13 +2,13 @@
 title: 在 Azure 應用程式深入解析中分隔遙測
 description: 將遙測導向開發、測試和生產戳記的不同資源。
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/29/2020
+ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536772"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562146"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>區分開發、測試及生產環境的遙測
 
@@ -20,13 +20,24 @@ ms.locfileid: "81536772"
 
 在為 Web 應用程式設定 Application Insights 監視時，您會在 Microsoft Azure 中建立 Application Insights 資源**。 您可以在 Azure 入口網站開啟此資源，以便查看並分析從應用程式中收集到的遙測資料。 透過「檢測金鑰」**(iKey) 即可識別資源。 當您安裝 Application Insights 套件來監視應用程式時，您必須為它設定檢測金鑰，以便讓它知道要將遙測資料傳送到哪裡。
 
-在不同情況下，您一般可以選擇使用不同資源或單一的共用資源︰
+每個 Application Insights 資源都隨附現成可用的計量。 如果完全不同的元件會回報給相同的 Application Insights 資源，這些計量對的儀表板/警示可能沒有意義。
 
-* 獨立的不同應用程式 - 為每個應用程式使用不同的資源和 ikey。
-* 單一商務應用程式的多個元件或角色 - 為所有元件應用程式使用[單一的共用資源](../../azure-monitor/app/app-map.md)。 透過 cloud_RoleName 屬性即可篩選或區隔遙測。
-* 開發、測試和發行 - 在生產「戳記」或階段，為各個系統版本使用不同的資源和 ikey。
-* A | B 測試 - 使用單一資源。 建立 TelemetryInitializer 即可在遙測中新增屬性來識別變體。
+### <a name="use-a-single-application-insights-resource"></a>使用單一 Application Insights 資源
 
+-   適用于一起部署的應用程式元件。 通常由一組相同的 DevOps/ITOps 使用者所管理的單一小組所開發。
+-   如果在預設情況下匯總關鍵效能指標（Kpi）（例如回應持續時間、儀表板中的失敗率等等），則會在所有這些指標（您可以選擇依角色名稱分割計量瀏覽器體驗）。
+-   如果不需要在應用程式元件之間以不同的方式管理以角色為基礎的存取控制（RBAC）。
+-   如果您不需要不同元件之間的計量警示準則。
+-   如果您不需要在元件之間以不同的方式管理連續匯出。
+-   如果您不需要在元件之間以不同的方式管理計費/配額。
+-   如果可以讓 API 金鑰具有與所有元件中的資料相同的存取權。 而10個 API 金鑰就足以滿足其所有需求。
+-   如果可以在所有角色之間擁有相同的智慧偵測和工作專案整合設定。
+
+### <a name="other-things-to-keep-in-mind"></a>要記住的其他事項
+
+-   您可能需要加入自訂程式碼，以確保有意義的值會設定為[Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name)屬性。 若未針對此屬性設定有意義的值，則不會有*任何*入口網站體驗可供使用。
+- 針對 Service Fabric 應用程式和傳統雲端服務，SDK 會自動從 Azure 角色環境讀取並設定這些。 對於所有其他類型的應用程式，您可能需要明確地設定。
+-   即時計量體驗不支援依角色名稱分割。
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動態檢測金鑰
 
@@ -47,7 +58,7 @@ ms.locfileid: "81536772"
 在此範例中，不同資源的 ikeys 會放置在不同版本的 Web 組態檔中。 交換 Web 組態檔 (您可以在發行指令碼中進行) 將會交換目標資源。
 
 ### <a name="web-pages"></a>網頁
-在您的應用程式網頁中，此 iKey 也會用於[您從快速入門](../../azure-monitor/app/javascript.md)分頁所得到的腳本中。 不要按其原義編寫至指令碼，請從伺服器狀態產生。 例如，在 ASP.NET 應用程式中：
+IKey 也會用於您的應用程式網頁中，[從 [快速入門] 窗格所得到的腳本](../../azure-monitor/app/javascript.md)。 不要按其原義編寫至指令碼，請從伺服器狀態產生。 例如，在 ASP.NET 應用程式中：
 
 *Razor 中的 JavaScript*
 
@@ -63,26 +74,11 @@ ms.locfileid: "81536772"
 
 
 ## <a name="create-additional-application-insights-resources"></a>建立其他 Application Insights 資源
-若要區分不同應用程式元件的遙測，或區分相同元件的不同戳記 (開發/測試/生產) 的遙測，則必須建立新的 Application Insights 資源。
 
-在 [portal.azure.com](https://portal.azure.com)中新增 Application Insights 資源：
-
-![按一下 [新增]，然後按一下 [Application Insights]](./media/separate-resources/01-new.png)
-
-* **應用程式類型**會影響您在 [概觀] 刀鋒視窗中看到的內容，以及[計量瀏覽器](../../azure-monitor/platform/metrics-charts.md)中提供的屬性。 如果沒有看到您的應用程式類型，請針對網頁選擇其中一個 Web 類型。
-* **資源群組**是管理[存取控制](../../azure-monitor/app/resources-roles-access-control.md)等屬性的便利。 您可以對開發、測試和生產環境使用不同的資源群組。
-* **訂用帳戶** 是您在 Azure 中的付款帳戶。
-* **位置** 是我們保留您資料的地方。 目前無法變更位置。 
-* **新增至儀表板** 可在 Azure 首頁上放置資源的快速存取圖格。 
-
-建立資源需要幾秒鐘。 完成時，您會看到警示。
-
-（您可以撰寫[PowerShell 腳本](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)來自動建立資源）。
+若要建立 Application Insights 資源，請遵循[資源建立指南](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource)。
 
 ### <a name="getting-the-instrumentation-key"></a>取得檢測金鑰
-檢測金鑰會識別您所建立的資源。 
-
-![按一下 [基本功能]，按一下 [檢測金鑰]，CTRL+C](./media/separate-resources/02-props.png)
+檢測金鑰會識別您所建立的資源。
 
 您將需要您的應用程式會將資料傳送至其中的所有資源的檢測金鑰。
 
@@ -90,8 +86,6 @@ ms.locfileid: "81536772"
 當您發佈新的 App 版本時，希望能夠將不同組建的遙測分開。
 
 您可以設定 [應用程式版本] 屬性，如此便能篩選[搜尋](../../azure-monitor/app/diagnostic-search.md)和[計量總管](../../azure-monitor/platform/metrics-charts.md)的結果。
-
-![針對屬性進行篩選](./media/separate-resources/050-filter.png)
 
 設定 [應用程式版本] 屬性有幾種不同的方法。
 
@@ -146,7 +140,6 @@ ms.locfileid: "81536772"
 ### <a name="release-annotations"></a>版本註解
 如果您使用 Azure DevOps，您可以[取得註解標記](../../azure-monitor/app/annotations.md) (每當發行新版本時，此標記就會新增至您的圖表)。 下圖顯示此標記的顯示方式。
 
-![圖表上版本註解範例的螢幕擷取畫面](media/separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>後續步驟
 
 * [多個角色的共用資源](../../azure-monitor/app/app-map.md)

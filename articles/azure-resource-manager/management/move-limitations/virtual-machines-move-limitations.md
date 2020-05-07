@@ -3,12 +3,12 @@ title: 將 Azure Vm 移至新的訂用帳戶或資源群組
 description: 使用 Azure Resource Manager 將虛擬機器移至新的資源群組或訂用帳戶。
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 144888c4a66ef68448ae8bc863f6aef0923dfb69
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160114"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744644"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>適用于虛擬機器的移動指引
 
@@ -29,7 +29,7 @@ ms.locfileid: "82160114"
 
 若要移動以 Azure 備份設定的虛擬機器，您必須從保存庫中刪除還原點。
 
-如果您的虛擬機器已啟用虛[刪除](../../../backup/backup-azure-security-feature-cloud.md)，則在保留這些還原點時，您無法移動虛擬機器。 刪除還原點之後，請停用虛[刪除](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete)或等待14天。
+如果您的虛擬機器已啟用虛[刪除](../../../backup/backup-azure-security-feature-cloud.md)，則在保留這些還原點時，您無法移動虛擬機器。 刪除還原點之後，請停用虛[刪除](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete)或等待14天。
 
 ### <a name="portal"></a>入口網站
 

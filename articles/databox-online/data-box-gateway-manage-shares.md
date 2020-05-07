@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: e5463a32e299d9d4d151049ab5afffd4975d5182
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3df7ca90b81b697c72ba8f36bfff56c70cc090f2
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265437"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561324"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 入口網站來管理 Azure 資料箱閘道上的共用 
 
@@ -37,7 +37,7 @@ ms.locfileid: "79265437"
 請在 Azure 入口網站中執行下列步驟來建立共用。
 
 1. 在 Azure 入口網站中，移至您的資料箱閘道資源，然後瀏覽至 [概觀]****。 按一下命令列上的 [+ 新增共用]****。
-2. 在 [新增共用]**** 中，指定共用設定。 為共用提供唯一的名稱。
+2. 在 [新增共用]**** 中，指定共用設定。 為共用提供唯一的名稱。 
 
     ![按一下 [新增共用]](media/data-box-gateway-manage-shares/add-share-1.png)
 

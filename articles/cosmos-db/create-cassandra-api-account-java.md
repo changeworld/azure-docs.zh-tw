@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
 Customer intent: As a developer, I want to build a Java application to access and manage Azure Cosmos DB resources so that customers can store key/value data and utilize the global distribution, elastic scaling, multi-master, and other capabilities offered by Azure Cosmos DB.
-ms.openlocfilehash: 971f705099ffec22599af83323e5e15d604c4bca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 472e74f7c25404a2446109ae66867a43b07294c8
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80983002"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731775"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>教學課程：使用 Java 應用程式在 Azure Cosmos DB 中建立 Cassandra API 帳戶，用以儲存索引鍵/值資料
 
@@ -92,21 +92,21 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
  
 2. 找到 `cassandra-demo` 資料夾。 使用文字編輯器，開啟產生的 `pom.xml` 檔案。 
 
-   新增 Cassandra 相依性，並建置專案所需的外掛程式，如 [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/pom.xml) 檔案中所示。  
+   新增 Cassandra 相依性，並建置專案所需的外掛程式，如 [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) 檔案中所示。  
 
 3. 在 `cassandra-demo\src\main` 資料夾下方，建立名為 `resources` 的新資料夾。  在資源資料夾下方，新增 config.properties 和 log4j.properties 檔案：
 
-   - [Config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/config.properties) 檔案會儲存 Cassandra API 帳戶的連線端點和索引鍵值。 
+   - [Config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/config.properties) 檔案會儲存 Cassandra API 帳戶的連線端點和索引鍵值。 
    
-   - [Log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/resources/log4j.properties) 檔案會定義與 Cassandra API 互動所需的記錄層級。  
+   - [Log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/log4j.properties) 檔案會定義與 Cassandra API 互動所需的記錄層級。  
 
 4. 瀏覽至 `src/main/java/com/azure/cosmosdb/cassandra/` 資料夾。 在 Cassandra 資料夾內，建立名為 `utils` 的另一個資料夾。 新資料夾會儲存連線至 Cassandra API 帳戶時所需的公用程式類別。 
 
-   新增 [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) 類別來建立叢集，以及開啟和關閉 Cassandra 工作階段。 叢集會連線至 Azure Cosmos DB 中的 Cassandra API，並傳回要存取的工作階段。 使用 [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) 類別來讀取 config.properties 檔案中的連接字串資訊。 
+   新增 [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) 類別來建立叢集，以及開啟和關閉 Cassandra 工作階段。 叢集會連線至 Azure Cosmos DB 中的 Cassandra API，並傳回要存取的工作階段。 使用 [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) 類別來讀取 config.properties 檔案中的連接字串資訊。 
 
 5. Java 範例會以使用者的資訊 (例如使用者名稱、使用者識別碼、使用者所在城市) 來建立資料庫。 您需要定義 get 和 set 方法，以在main 函式中存取使用者詳細資料。
  
-   使用 get 和 set 方法，在 `src/main/java/com/azure/cosmosdb/cassandra/` 資料下方建立 [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/src/main/java/com/azure/cosmosdb/cassandra/User.java) 類別。 
+   使用 get 和 set 方法，在 `src/main/java/com/azure/cosmosdb/cassandra/` 資料下方建立 [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) 類別。 
 
 ## <a name="add-a-database-and-a-table"></a>新增資料庫和資料表  
 

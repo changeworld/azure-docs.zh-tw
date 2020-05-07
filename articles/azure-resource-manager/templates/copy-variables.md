@@ -3,12 +3,12 @@ title: 定義變數的多個實例
 description: 在 Azure Resource Manager 範本中使用複製作業，在建立變數時反復執行多次。
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fbe392e8a0fb477b6986fc9c7584291590eb4e7
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153296"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583381"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM 範本中的變數反復專案
 
@@ -16,7 +16,7 @@ ms.locfileid: "80153296"
 
 您也可以使用 [複製[資源](copy-resources.md)]、[資源中的屬性](copy-properties.md)和 [[輸出](copy-outputs.md)]。
 
-## <a name="variable-iteration"></a>變數反覆項目
+## <a name="syntax"></a>語法
 
 Copy 元素具有下列一般格式：
 
@@ -33,6 +33,21 @@ Copy 元素具有下列一般格式：
 **Name**屬性是識別迴圈的任何值。 **Count**屬性會指定您想要用於變數的反覆運算次數。
 
 **輸入**屬性會指定您想要重複的屬性。 您會建立從**輸入**屬性中的值所構造的元素陣列。 它可以是單一屬性（例如字串）或具有數個屬性的物件。
+
+## <a name="copy-limits"></a>複製限制
+
+計數不能超過800。
+
+計數不可為負數。 如果您使用最新版本的 Azure CLI、PowerShell 或 REST API 來部署範本，則可以是零。 具體而言，您必須使用：
+
+* Azure PowerShell **2.6**或更新版本
+* Azure CLI **2.0.74**或更新版本
+* REST API **2019-05-10**版或更新版本
+* [連結的部署](linked-templates.md)必須使用 API **2019-05-10**版或更新版本作為部署資源類型
+
+舊版的 PowerShell、CLI 和 REST API 不支援 count 的零。
+
+## <a name="variable-iteration"></a>變數反覆項目
 
 下列範例顯示如何建立字串值的陣列：
 
@@ -294,12 +309,6 @@ Copy 元素具有下列一般格式：
   }
 }
 ```
-
-## <a name="copy-limits"></a>複製限制
-
-計數不能超過800。
-
-計數不可為負數。 如果您部署具有 Azure PowerShell 2.6 或更新版本的範本、Azure CLI 2.0.74 或更新版本，或 REST API **2019-05-10**版或更新版本，您可以將 count 設定為零。 舊版的 PowerShell、CLI 和 REST API 不支援 count 的零。
 
 ## <a name="example-templates"></a>範本的範例
 

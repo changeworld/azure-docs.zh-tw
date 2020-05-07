@@ -2,7 +2,7 @@
 title: Microsoft 身分識別平臺和 OAuth 2.0 代理者流程 |Azure
 description: 本文說明如何使用 HTTP 訊息，以利用 OAuth2.0 代理者流程實作服務對服務驗證。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.date: 1/3/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f33350dd076d0386c7518c91b77da59c3b09d0dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57497c7bd8cd1d0b46c40b6977079f4a6a2d876f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181506"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689559"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 代理者流程
 

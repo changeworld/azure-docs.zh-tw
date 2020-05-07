@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
-ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94c132421f1e113b667341b094acad8047e5f465
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67174439"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561770"
 ---
 1. [連接到 PowerShell 介面](#connect-to-the-powershell-interface)。
 2. 使用`Get-HcsApplianceInfo`來取得裝置的資訊。
@@ -45,11 +45,11 @@ ms.locfileid: "67174439"
 
     以下資料表摘要說明一些重要的裝置資訊：
     
-    | 參數                             | 說明                                                                                                                                                  |   |
+    | 參數                             | 描述                                                                                                                                                  |   |
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
     | FriendlyName                   | 裝置的易記名稱，如裝置部署期間透過本機 web UI 所設定。 預設的易記名稱是裝置序號。  |   |
     | SerialNumber                   | 裝置序號是在工廠指派的唯一編號。                                                                             |   |
-    | 型號                          | Data Box Edge 或資料箱閘道裝置的模型。 模型是資料箱閘道的虛擬，而實體則適用于 Data Box Edge。                   |   |
+    | 型號                          | Azure Stack Edge 或資料箱閘道裝置的模型。 模型是 Azure Stack 邊緣的實體，資料箱閘道的虛擬。                   |   |
     | FriendlySoftwareVersion        | 對應至裝置軟體版本的易記字串。 針對執行預覽的系統，易記的軟體版本會是 Data Box Edge 1902。 |   |
     | HcsVersion                     | 裝置上執行的 HCS 軟體版本。 例如，對應至 Data Box Edge 1902 的 HCS 軟體版本是1.4.771.324。            |   |
     | LocalCapacityInMb              | 裝置的本機容量總計（以 Mb 為單位）。                                                                                                        |   |

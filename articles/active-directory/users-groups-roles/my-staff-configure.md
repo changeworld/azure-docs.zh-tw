@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/01/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 282946a023e4e79ee79b05cc2a317efc5a4056e4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b88f4aad650d77fea12677e61d3f249a77367e6f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165855"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690696"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>使用我的員工管理您的使用者（預覽）
 
@@ -26,9 +26,28 @@ ms.locfileid: "82165855"
 
 在為您的組織設定「我的員工」之前，建議您先參閱這份檔以及[使用者檔](../user-help/my-staff-team-manager.md)，以確保您瞭解這項功能對使用者的功能和影響。 您可以利用使用者檔來訓練並準備您的使用者，以取得新的體驗，並協助確保成功的推出。
 
+[以 SMS 為基礎的使用者驗證] 是 Azure Active Directory 的公開預覽功能。 如需有關預覽的詳細資訊，請參閱[Microsoft Azure 預覽的補充使用](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)規定
+
 ## <a name="how-my-staff-works"></a>我的員工如何運作
 
 我的員工是以管理單位（au）為基礎，這是資源的容器，可用來限制角色指派的系統管理控制範圍。 在我的員工中，au 是用來定義組織使用者的子集，例如商店或部門。 例如，小組經理可以指派給範圍為一或多個 au 的角色。 在下列範例中，使用者已被授與驗證系統管理角色，而三個 au 是角色的範圍。 如需管理單位的詳細資訊，請參閱[Azure Active Directory 中的系統管理單位管理](directory-administrative-units.md)。
+
+## <a name="before-you-begin"></a>開始之前
+
+若要完成本文，您需要下列資源和許可權：
+
+* 有效的 Azure 訂用帳戶。
+
+  * 如果您沒有 Azure 訂用帳戶，請先[建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 與您的訂用帳戶相關聯的 Azure Active Directory 租使用者。
+
+  * 如果需要，請[建立 Azure Active Directory 租用戶](../fundamentals/sign-up-organization.md)或[將 Azure 訂用帳戶與您的帳戶建立關聯](../fundamentals/active-directory-how-subscriptions-associated-directory.md)。
+* 您需要 Azure AD 租使用者中的*全域管理員*許可權，才能啟用以 SMS 為基礎的驗證。
+* 在文字訊息驗證方法原則中啟用的每個使用者都必須獲得授權，即使它們未使用。 每個啟用的使用者都必須具有下列其中一項 Azure AD 或 Microsoft 365 授權：
+
+  * [Azure AD Premium P1 或 P2](https://azure.microsoft.com/pricing/details/active-directory/)
+  * [Microsoft 365 （M365） F1 或 F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [Enterprise Mobility + Security （EMS） e3 或 e5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing)或[Microsoft 365 （M365） e3 或 e5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>如何啟用我的員工
 
@@ -47,7 +66,7 @@ ms.locfileid: "82165855"
 
 我們強烈建議您使用[Azure AD 條件式存取原則](https://docs.microsoft.com/azure/active-directory/conditional-access/)來保護我的員工。 若要將條件式存取原則套用至「我的員工」，您必須使用 PowerShell 手動建立「我的員工」服務主體。
 
-### <a name="apply-a-----conditional-access-policy-to-my-staff"></a>將條件式存取原則套用至我的員工
+### <a name="apply-a-conditional-access-policy-to-my-staff"></a>將條件式存取原則套用至我的員工
 
 1. 安裝 Microsoft Graph 搶鮮[版（Beta） PowerShell Cmdlet](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1)。
 1. 執行下列命令：
@@ -62,13 +81,6 @@ ms.locfileid: "82165855"
 ## <a name="using-my-staff"></a>使用我的員工
 
 當使用者前往 [我的員工] 時，會顯示其具有系統管理許可權的系統[管理單位](directory-administrative-units.md)名稱。 在 [[我的員工] 使用者檔](../user-help/my-staff-team-manager.md)中，我們使用「位置」一詞來參照管理單位。 如果系統管理員的許可權沒有 AU 範圍，這些許可權會套用到整個組織。 啟用 [我的員工] 之後，已啟用並獲派系統管理角色的使用者可以透過[https://mystaff.microsoft.com](https://mystaff.microsoft.com)來存取。 他們可以選取 AU 來查看該 AU 中的使用者，並選取要開啟其設定檔的使用者。
-
-## <a name="licenses"></a>授權
-
-在「我的員工」中啟用的每個使用者都必須獲得授權，即使他們沒有使用「我的員工」入口網站也一樣。 每個啟用的使用者都必須具有下列其中一項 Azure AD 或 Microsoft 365 授權：
-
-- Azure AD Premium P1 或 P2
-- Microsoft 365 F1 或 F3
 
 ## <a name="reset-a-users-password"></a>重設使用者的密碼
 
