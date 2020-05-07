@@ -8,18 +8,18 @@ ms.date: 03/27/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 6813206aebe67e4e6d2afd0d9c78d03f0c20c952
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c32915617d3149eee42bfdfd03d22f9ce5799ef2
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420955"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580221"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>將 VHD 上傳至 Azure，或將受控磁碟複製到另一個區域-Azure CLI
 
 [!INCLUDE [disks-upload-vhd-to-disk-intro](../../../includes/disks-upload-vhd-to-disk-intro.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 下載最新[版本的 AzCopy v10](../../storage/common/storage-use-azcopy-v10.md#download-and-install-azcopy)。
 - [安裝 Azure CLI](/cli/azure/install-azure-cli)。
@@ -108,7 +108,7 @@ targetDiskName = <targetDiskNameHere>
 targetRG = <targetResourceGroupHere>
 targetLocale = <yourTargetLocationHere>
 
-sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[uniqueId]' -o tsv)
+sourceDiskSizeBytes= $(az disk show -g $sourceRG -n $sourceDiskName --query '[diskSizeBytes]' -o tsv)
 
 az disk create -g $targetRG -n $targetDiskName -l $targetLocale --for-upload --upload-size-bytes $(($sourceDiskSizeBytes+512)) --sku standard_lrs
 

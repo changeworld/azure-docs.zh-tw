@@ -3,17 +3,17 @@ title: 教學課程 - 建立和管理 Azure 預算
 description: 此教學課程可協助規劃和說明您取用之 Azure 服務的成本。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/03/2020
+ms.date: 04/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 655194a1335ae258e27dff2c75a370578253794a
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: e8afa19b6d79ce915ca41f7b0e6b4a203d7daa1b
+ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81605878"
+ms.lasthandoff: 04/23/2020
+ms.locfileid: "82101751"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教學課程：建立和管理 Azure 預算
 
@@ -156,7 +156,7 @@ ms.locfileid: "81605878"
 EA 客戶可以使用 Azure PowerShell 模組，以程式設計方式建立和編輯預算。  若要下載最新版 Azure PowerShell，請執行下列命令：
 
 ```azurepowershell-interactive
-install-module -name AzureRm
+install-module -name Az
 ```
 
 下列範例命令會建立預算。
@@ -164,31 +164,24 @@ install-module -name AzureRm
 ```azurepowershell-interactive
 #Sign into Azure Powershell with your account
 
-Connect-AzureRmAccount
+Connect-AzAccount
 
 #Select a subscription to to monitor with a budget
 
-select-AzureRmSubscription -Subscription "Your Subscription"
+select-AzSubscription -Subscription "Your Subscription"
 
 #Create an action group email receiver and corresponding action group
 
-$email1 = New-AzureRmActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
-$ActionGroupId = (Set-AzureRmActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
+$email1 = New-AzActionGroupReceiver -EmailAddress test@test.com -Name EmailReceiver1
+$ActionGroupId = (Set-AzActionGroup -ResourceGroupName YourResourceGroup -Name TestAG -ShortName TestAG -Receiver $email1).Id
 
 #Create a monthly budget that sends an email and triggers an Action Group to send a second email. Make sure the StartDate for your monthly budget is set to the first day of the current month. Note that Action Groups can also be used to trigger automation such as Azure Functions or Webhooks.
 
-New-AzureRmConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
+New-AzConsumptionBudget -Amount 100 -Name TestPSBudget -Category Cost -StartDate 2020-02-01 -TimeGrain Monthly -EndDate 2022-12-31 -ContactEmail test@test.com -NotificationKey Key1 -NotificationThreshold 0.8 -NotificationEnabled -ContactGroup $ActionGroupId
 ```
 ## <a name="create-a-budget-with-an-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本建立預算
 
-您可以使用 Azure Resource Manager 範本建立預算。 此範本可協助您在資源群組下建立預算。 
-
-選取以下影像來登入 Azure 入口網站並開啟範本：
-
-[![將建立預算範本部署至 Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fcreate-budget%2fazuredeploy.json)
-
-若要檢視所有範本參數的清單及其描述，請參閱 [建立預算](https://azure.microsoft.com/resources/templates/create-budget/)範本。
-
+您可以使用 Azure Resource Manager 範本建立預算。 若要使用範本，請參閱[使用 Azure Resource Manager 範本建立預算](quick-create-budget-template.md)。
 
 ## <a name="next-steps"></a>後續步驟
 

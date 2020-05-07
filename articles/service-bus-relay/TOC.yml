@@ -8,11 +8,11 @@
   items:
     - name: 混合式連線
       items:
-        - name: 傳送和接收訊息 - .NET Websocket
+        - name: 傳送和接收訊息 - .NET WebSocket
           href: relay-hybrid-connections-dotnet-get-started.md
         - name: 傳送和接收訊息 - .NET HTTP
           href: relay-hybrid-connections-http-requests-dotnet-get-started.md
-        - name: 傳送和接收訊息 - Node Websocket
+        - name: 傳送和接收訊息 - Node WebSocket
           href: relay-hybrid-connections-node-get-started.md
         - name: 傳送和接收訊息 - Node HTTP
           href: relay-hybrid-connections-http-requests-node-get-started.md
@@ -59,10 +59,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: 節點
               href: relay-hybrid-connections-node-ws-api-overview.md
-    - name: 管理
+    - name: 管理和監視
       items:
         - name: 透過 Azure 監視器監視 Azure 轉送
           href: relay-metrics-azure-monitor.md
+        - name: 設定診斷記錄
+          href: diagnostic-logs.md
 - name: 參考
   items:
     - name: .NET
@@ -83,11 +85,11 @@
       href: relay-faq.md
     - name: 部落格
       href: 'https://blogs.msdn.microsoft.com/servicebus/'
-    - name: 價格
+    - name: 定價
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: 定價計算機
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 範例
       href: 'https://github.com/azure/azure-relay/tree/master/samples'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

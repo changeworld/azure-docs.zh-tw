@@ -3,12 +3,12 @@ title: 儲存 Helm 圖表
 description: 瞭解如何在 Azure Container Registry 中使用存放庫來儲存 Kubernetes 應用程式的 Helm 圖表
 ms.topic: article
 ms.date: 03/20/2020
-ms.openlocfilehash: 3f1a68258b758380a66b63e3c3137f1d460d288c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04ba3aaf312188ab77c04a97ab960cf9b9af078f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399382"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857602"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>將 Helm 圖表推送並提取到 Azure container registry
 
@@ -31,12 +31,12 @@ ms.locfileid: "81399382"
 ### <a name="additional-information"></a>其他資訊
 
 * 在大部分情況下，建議使用 Helm 3 工作流程搭配原`helm chart`生命令，將圖表當做 OCI 成品來管理。
-* 您可以使用舊版[az acr helm][az-acr-helm] Azure CLI 命令和工作流程搭配 helm 3 用戶端和圖表。 不過，某些命令（例如`az acr helm list` ）與 Helm 3 圖表並不相容。
-* 從 Helm 3 起， [az acr Helm][az-acr-helm]命令的支援主要是為了與 Helm 2 用戶端和圖表格式相容。 目前尚未規劃這些命令的未來開發。
+* 從 Helm 3，支援[az acr Helm][az-acr-helm]命令與 Helm 2 用戶端和圖表格式相容。 目前尚未規劃這些命令的未來開發。 請參閱[產品藍圖](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga)。
+* Helm 2 圖表無法使用 Azure 入口網站來查看或管理。
 
 ## <a name="use-the-helm-3-client"></a>使用 Helm 3 用戶端
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶中**的 azure container registry** 。 如有需要，請使用[Azure 入口網站](container-registry-get-started-portal.md)或[Azure CLI](container-registry-get-started-azure-cli.md)來建立登錄。
 - **Helm 用戶端版本3.1.0 或更新**版本`helm version` -執行以尋找您目前的版本。 如需有關如何安裝及升級 Helm 的詳細資訊，請參閱[安裝 Helm][helm-install]。
@@ -281,7 +281,7 @@ az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 
 ## <a name="use-the-helm-2-client"></a>使用 Helm 2 用戶端
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>必要條件
 
 - Azure 訂用帳戶中**的 azure container registry** 。 如有需要，請使用[Azure 入口網站](container-registry-get-started-portal.md)或[Azure CLI](container-registry-get-started-azure-cli.md)來建立登錄。
 - **Helm 用戶端 2.11.0 版 (不是 RC 版本) 或更新版本** - 執行 `helm version` 以找出您目前的版本。 此外，您還需要一部在 Kubernetes 叢集內初始化的 Helm 伺服器 (Tiller)。 如有需要，請建立[Azure Kubernetes Service][aks-quickstart]叢集。 如需有關如何安裝及升級 Helm 的詳細資訊，請參閱[安裝 Helm][helm-install-v2]。

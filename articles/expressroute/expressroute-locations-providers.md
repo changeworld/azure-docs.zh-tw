@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: fdcfc448134b7725b3fe5cb50f6b8c4df8817585
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 19457dc7324c509f54a58a2cdaa39561bfc71b4d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82739393"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853336"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -42,9 +42,9 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **地緣政治區域** | **Azure 區域** | **ExpressRoute 位置** |
 | --- | --- | --- |
 | **澳洲政府** | 澳大利亞中部、澳大利亞中部 2 |坎培拉、坎培拉 2 |
-| **歐洲** | 法國中部、法國南部、德國北部、德國中西部、北歐、挪威東部、挪威西部、瑞士北部、瑞士西部、英國西部、英國南部、西歐 |阿姆斯特丹、阿姆斯特丹2、哥本哈根、都柏林、法蘭克福、Geneva、倫敦、倫敦2、馬賽、米蘭、慕尼克、紐波特（威爾士）、Oslo、巴黎、Stavanger、斯德哥爾摩、蘇黎世、慕尼克 |
+| **歐洲** | 法國中部、法國南部、德國北部、德國中西部、北歐、挪威東部、挪威西部、瑞士北部、瑞士西部、英國西部、英國南部、西歐 |阿姆斯特丹，阿姆斯特丹2，柏林，哥本哈根，都柏林，法蘭克福，Geneva，倫敦，倫敦2，馬賽，米蘭，慕尼克，紐波特（威爾士），Oslo，巴黎，Stavanger，斯德哥爾摩，蘇黎世，慕尼克 |
 | **北美洲** | 美國東部、美國西部、美國東部 2、美國西部 2、美國中部、美國中南部、美國中北部、美國中西部、加拿大中部、加拿大東部 |亞特蘭大、芝加哥、達拉斯、丹佛、內華達州、洛杉磯、邁阿密、紐約、San Antonio、西雅圖、矽谷、矽 Valley2、華盛頓特區、華盛頓特區、蒙特利爾、魁北克市、多倫多、范 |
-| **Asia** | 東亞、東南亞 | 曼谷，香港特別行政區，香港 Kong2，雅加達，吉隆坡，新加坡，新加坡2，臺北 |
+| **亞洲** | 東亞、東南亞 | 曼谷，香港特別行政區，香港 Kong2，雅加達，吉隆坡，新加坡，新加坡2，臺北 |
 | **印度** | 印度西部、印度中部、印度南部 |辰內、辰內 2、孟買、孟買 2 |
 | **日本** | 日本西部、日本東部 |大阪，東京，Tokyo2 |
 | **大洋洲** | 澳大利亞東南部、澳大利亞東部 |奧克蘭，墨爾本，Sydney2，悉尼， | 
@@ -138,7 +138,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **東京** | [Equinix TY4](https://www.equinix.com/locations/asia-colocation/japan-colocation/tokyo-data-centers/ty4/) | 2 | 日本東部 | 10G、100G | Aryaka networks 網路，位於&T NetBond、BBIX、英屬電信、CenturyLink Cloud Connect、Colt、Equinix、網際網路方案日本 Inc.-IIJ、Megaport、NTT 通訊、NTT 東部、橙色、Softbank、Verizon |
 | **Tokyo2** | [東京](https://www.attokyo.com/) | 2 | 日本東部 | 10G、100G | 東京 |
 | **多倫多** | [Cologix TOR1](https://www.cologix.com/data-centers/toronto/tor1/) | 1 | 加拿大中部 | 10G、100G | 在&T NetBond，鐘加拿大，CenturyLink Cloud Connect，Cologix，Equinix，IX 觸及 Megaport，Telus，Verizon，Zayo |
-| **溫哥華** | [Cologix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | Cologix | 10G、100G | |
+| **溫哥華** | [Cologix VAN1](https://www.cologix.com/data-centers/vancouver/van1/) | 1 | n/a | 10G | Cologix |
 | **華盛頓** | [Equinix DC2](https://www.equinix.com/locations/americas-colocation/united-states-colocation/washington-dc-data-centers/dc2/) | 1 | 美國東部、美國東部2 | 10G、100G | Aryaka networks 網路，位於&T NetBond、英屬電信、CenturyLink Cloud Connect、Cologix、Colt、Comcast、Coresite、Equinix、Internet2、InterCloud、IX 觸及、Level 3 通訊、Megaport、Neutrona 網路、NTT 通訊、橙色、PacketFabric、SES、短期衝刺、Tata 通訊、Telia 電訊、Verizon、Zayo |
 | **華盛頓特區2** | [Coresite Reston](https://www.coresite.com/data-centers/locations/northern-virginia-washington-dc/reston-campus) | 1 | 美國東部、美國東部2 | 10G、100G | CenturyLink Cloud Connect、Coresite、Intelsat、Viasat、Zayo | 
 | **蘇黎世** | [Interxion ZUR2](https://www.interxion.com/Locations/zurich/) | 1 | 瑞士北部 | 10G、100G | Intercloud、Interxion、Megaport、Swisscom |
@@ -238,7 +238,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 
 | **Continent** | **系統整合者** |
 | --- | --- |
-| **Asia** |Avanade Inc.、OneAs1a |
+| **亞洲** |Avanade Inc.、OneAs1a |
 | **澳大利亞** | Ensyst、IT Consultancy、MOQdigital、Vigilant.IT |
 | **歐洲** |Avanade Inc.、Altogee、Bright Skies GmbH、Inframon、MSG Services、New Signature、Nelite、Orange Networks、sol-tec |
 | **北美洲** |Avanade Inc.、Equinix Professional Services、FlexManage、Lightstream、Perficient、Presidio |

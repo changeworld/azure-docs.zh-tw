@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255401"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853491"
 ---
 # <a name="create-an-azure-storage-account"></a>建立 Azure 儲存體帳戶
 
@@ -152,8 +152,8 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
 |區域備援儲存體 (ZRS)     |Standard_ZRS         |
 |異地備援儲存體 (GRS)     |Standard_GRS         |
 |讀取權限異地備援儲存體 (GRS)     |Standard_RAGRS         |
-|異地區域-多餘儲存體（切換）（預覽）    |Standard_GZRS         |
-|讀取權限異地區域-多餘儲存體（RA-切換）（預覽）    |Standard_RAGZRS         |
+|異地區域備援儲存體 (GZRS)    |Standard_GZRS         |
+|讀取權限異地區域-多餘儲存體（RA-切換）    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -195,12 +195,12 @@ az storage account create \
 |區域備援儲存體 (ZRS)     |Standard_ZRS         |
 |異地備援儲存體 (GRS)     |Standard_GRS         |
 |讀取權限異地備援儲存體 (GRS)     |Standard_RAGRS         |
-|異地區域-多餘儲存體（切換）（預覽）    |Standard_GZRS         |
-|讀取權限異地區域-多餘儲存體（RA-切換）（預覽）    |Standard_RAGZRS         |
+|異地區域備援儲存體 (GZRS)    |Standard_GZRS         |
+|讀取權限異地區域-多餘儲存體（RA-切換）    |Standard_RAGZRS         |
 
 # <a name="template"></a>[範本](#tab/template)
 
-您可以使用 Azure PowerShell 或 Azure CLI 來部署 Resource Manager 範本以建立儲存體帳戶。 本操作說明文章中使用的範本是來自[Azure Resource Manager 快速入門範本](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要執行指令碼，請選取 [試試看]**** 開啟 Azure Cloud shell。 若要貼上指令碼，請以滑鼠右鍵按一下 Shell，然後選取 [貼上]  。
+您可以使用 Azure PowerShell 或 Azure CLI 來部署 Resource Manager 範本，以建立儲存體帳戶。 本操作說明文章中使用的範本是來自[Azure Resource Manager 快速入門範本](https://azure.microsoft.com/resources/templates/101-storage-account-create/)。 若要執行腳本，請選取 [**試試看**] 以開啟 Azure Cloud Shell。 若要貼上指令碼，請以滑鼠右鍵按一下 Shell，然後選取 [貼上]  。
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

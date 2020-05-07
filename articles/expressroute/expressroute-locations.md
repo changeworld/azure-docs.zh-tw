@@ -6,14 +6,14 @@ author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 04/14/2020
+ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: b825ed513f530733d7552e32206c12422a956b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 63226089a0a87660f0796cdfef2b729070ca01e3
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81766934"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837850"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作夥伴和對等互連位置
 
@@ -43,9 +43,9 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **地緣政治區域** | **Azure 區域** | **ExpressRoute 位置** |
 | --- | --- | --- |
 | **澳洲政府** |澳大利亞中部、澳大利亞中部 2 |坎培拉、坎培拉 2 |
-| **歐洲** | 法國中部、法國南部、德國北部、德國中西部、北歐、挪威東部、挪威西部、瑞士北部、瑞士西部、英國西部、英國南部、西歐 |阿姆斯特丹、阿姆斯特丹2、哥本哈根、都柏林、法蘭克福、Geneva、倫敦、倫敦2、馬賽、米蘭、慕尼克、紐波特（威爾士）、Oslo、巴黎、Stavanger、斯德哥爾摩、蘇黎世 |
+| **歐洲** | 法國中部、法國南部、德國北部、德國中西部、北歐、挪威東部、挪威西部、瑞士北部、瑞士西部、英國西部、英國南部、西歐 |阿姆斯特丹、阿姆斯特丹2、柏林、哥本哈根、都柏林、法蘭克福、Geneva、倫敦、倫敦2、馬賽、米蘭、慕尼克、紐波特（威爾士）、Oslo、巴黎、Stavanger、斯德哥爾摩、蘇黎世 |
 | **北美洲** |美國東部、美國西部、美國東部 2、美國西部 2、美國中部、美國中南部、美國中北部、美國中西部、加拿大中部、加拿大東部 |亞特蘭大、芝加哥、達拉斯、丹佛、內華達州、洛杉磯、邁阿密、紐約、San Antonio、西雅圖、矽谷、矽 Valley2、華盛頓特區、華盛頓特區、蒙特利爾、魁北克市、多倫多、范 |
-| **Asia** | 東亞、東南亞 | 曼谷，香港特別行政區，香港 Kong2，雅加達，吉隆坡，新加坡，新加坡2，臺北 |
+| **亞洲** | 東亞、東南亞 | 曼谷，香港特別行政區，香港 Kong2，雅加達，吉隆坡，新加坡，新加坡2，臺北 |
 | **印度** | 印度西部、印度中部、印度南部 |辰內、辰內 2、孟買、孟買 2 |
 | **日本** | 日本西部、日本東部 |大阪，東京，Tokyo2 |
 | **大洋洲** | 澳大利亞東南部、澳大利亞東部 |奧克蘭，墨爾本，Sydney2，悉尼， |
@@ -94,6 +94,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **中國 Mobile 國際** |支援 |支援 | 新加坡 |
 | **China Telecom Global** |支援 |支援 |香港 |
 | **中國 Unicom Global** |支援 |支援 | 新加坡 2 |
+| **[Chunghwa 電信](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |支援 |支援 |台北 |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |支援 |支援 |芝加哥、達拉斯、蒙特利爾、多倫多、范和華盛頓特區 |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |支援 |支援 |阿姆斯特丹、阿姆斯特丹2、芝加哥、都柏林、法蘭克福、倫敦、倫敦2、紐波特、紐約、大阪、巴黎、矽谷、矽 Valley2、新加坡2、東京、華盛頓特區 |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |支援 |支援 |芝加哥、矽谷、華盛頓特區 |
@@ -132,6 +133,7 @@ ExpressRoute 位置（有時稱為「對等位置」或「符合我的位置」�
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |支援 |支援 |墨爾本、通過、悉尼、Sydney2 |
 | **[NTT 通訊](https://www.ntt.com/en/services/network/virtual-private-network.html)** |支援 |支援 |阿姆斯特丹、香港特別行政區、倫敦、洛杉磯、大阪、新加坡、悉尼、東京、華盛頓特區 |
 | **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |支援 |支援 |東京 |
+| **[NTT 全球資料中心 EMEA](https://www.ntt.com/en/services/data-center.html)** |支援 |支援 |柏林 |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |支援 |支援 |大阪 |
 | **[Ooredoo Cloud Connect](https://www.ooredoo.qa/portal/OoredooQatar/cloud-connect-expressroute)** |支援 |支援 |馬賽 |
 | **[Optus](https://www.optus.com.au/enterprise/)** |支援 |支援 |墨爾本、雪梨 |
@@ -188,7 +190,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 | **服務提供者** | **Microsoft Azure** | **Office 365** | **位置** |
 | --- | --- | --- | --- |
 | **China Telecom** |支援 |不支援 |北京，北京2，上海，上海2 |
-| **中國 Unicom** | 支援 | 不支援 | 北京 2 |
+| **中國 Unicom** | 支援 | 不支援 | 北京 2、上海 2 |
 | **[GDS](http://www.gds-services.com/en/about_2.html)** |支援 |不支援 |北京 2、上海 2 |
 
 若要深入了解，請參閱 [ExpressRoute (中國)](http://www.windowsazure.cn/home/features/expressroute/)。
@@ -211,6 +213,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 * 請洽詢您的連線提供者，以了解他們是否連線到上方表格中列出的任何 Exchange 提供者。 您可以檢查下列連結，以收集 Exchange 提供者所提供之服務的相關詳細資訊。 已有數個連線提供者連線到乙太網路 Exchange。
   * [Cologix](https://www.cologix.com/)
   * [CoreSite](https://www.coresite.com/)
+  * [取消 CIX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange)
   * [Equinix Cloud Exchange](https://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
   * [Interxion](https://www.interxion.com/products/interconnection/cloud-connect/)
   * [IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)
@@ -336,7 +339,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 | **[Altogee](https://altogee.be/diensten/express-route/)** | 歐洲 |
 | **[Avanade Inc.](https://www.avanade.com/)** | 亞洲、歐洲、北美洲、南美洲 |
 | **[Bright Skies GmbH](https://bskies.io/expressroute)** | 歐洲
-| **[Ensyst](https://www.ensyst.com.au)** | Asia
+| **[Ensyst](https://www.ensyst.com.au)** | 亞洲
 | **[Equinix Professional Services](https://www.equinix.com/services/consulting/)** | 北美洲 |
 | **[FlexManage](https://www.flexmanage.com/cloud)** | 北美洲 |
 | **[Lightstream](https://www.lightstream.tech/partners/microsoft-azure/)** | 北美洲 |
@@ -345,7 +348,7 @@ Azure 國家/地區雲端彼此隔離，而不是全球商業 Azure。 一個 Az
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | 歐洲 (德國) |
 | **[Nelite](https://www.exakis-nelite.com/offres/)** | 歐洲 |
 | **[新增簽名](https://newsignature.com/technologies/express-route/)** | 歐洲 |
-| **[OneAs1a](https://www.oneas1a.com/connectivity.html)** | Asia |
+| **[OneAs1a](https://www.oneas1a.com/connectivity.html)** | 亞洲 |
 | **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | 歐洲 |
 | **[Perficient](https://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 北美洲 |
 | **[Presidio](https://info.presidio.com/microsoft-azure-expressroute)** | 北美洲 |

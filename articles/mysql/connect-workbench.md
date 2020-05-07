@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.openlocfilehash: 95a3c9e81bfc1d3b010027e628204666c472d1da
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/30/2020
 ms.locfileid: "81731881"
 ---
 # <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>適用於 MySQL 的 Azure 資料庫：使用 MySQL Workbench 連線並查詢資料

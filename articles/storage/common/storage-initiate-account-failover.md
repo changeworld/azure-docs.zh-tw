@@ -1,47 +1,43 @@
 ---
-title: 起始儲存體帳戶容錯移轉 (預覽) - Azure 儲存體
+title: 起始儲存體帳戶容錯移轉
+titleSuffix: Azure Storage
 description: 了解如何在儲存體帳戶的主要端點無法使用時起始帳戶容錯移轉。 容錯移轉會更新次要區域，使其成為您儲存體帳戶的主要區域。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0c619224201d6225d5e5c127b342f71f2f7fced9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8de5290c41e6213e61b7b5b09cffba1f4638df30
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535347"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857034"
 ---
-# <a name="initiate-a-storage-account-failover-preview"></a>起始儲存體帳戶容錯移轉 (預覽)
+# <a name="initiate-a-storage-account-failover"></a>起始儲存體帳戶容錯移轉
 
-當您異地備援儲存體帳戶的主要端點因故無法使用時，您可以起始帳戶容錯移轉 (預覽)。 帳戶容錯移轉會更新次要端點，使其成為您儲存體帳戶的主要端點。 容錯移轉完成後，用戶端便可以開始寫入到新的主要區域。 強制容錯移轉可讓您維護應用程式的高可用性。
+如果異地多餘儲存體帳戶的主要端點因為任何原因而變成無法使用，您可以起始帳戶容錯移轉。 帳戶容錯移轉會更新次要端點，使其成為您儲存體帳戶的主要端點。 容錯移轉完成後，用戶端便可以開始寫入到新的主要區域。 強制容錯移轉可讓您維護應用程式的高可用性。
 
-本文說明如何使用 Azure 入口網站、PowerShell 或 Azure CLI 為您的儲存體帳戶起始帳戶容錯移轉。 若要深入了解帳戶容錯移轉，請參閱 [Azure 儲存體中的災害復原和帳戶容錯移轉 (預覽)](storage-disaster-recovery-guidance.md)。
+本文說明如何使用 Azure 入口網站、PowerShell 或 Azure CLI 為您的儲存體帳戶起始帳戶容錯移轉。 若要深入瞭解帳戶容錯移轉，請參閱嚴重損壞[修復和儲存體帳戶容錯移轉](storage-disaster-recovery-guidance.md)。
 
 > [!WARNING]
 > 帳戶容錯移轉通常會導致一些資料遺失。 若要了解帳戶容錯移轉的影響並預先因應資料遺失，請檢閱[了解帳戶容錯移轉程序](storage-disaster-recovery-guidance.md#understand-the-account-failover-process)。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
-在您的儲存體帳戶上執行帳戶容錯移轉之前，請確定您已執行下列步驟：
+在您的儲存體帳戶上執行帳戶容錯移轉之前，請確定您的儲存體帳戶已設定為進行異地複寫。 您的儲存體帳戶可以使用下列任何一個冗余選項：
 
-- 確定您的儲存體帳戶已設定為使用異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS)。 如需有關異地多餘儲存體的詳細資訊，請參閱[Azure 儲存體冗余](storage-redundancy.md)。
+- 異地多餘儲存體（GRS）或讀取權限異地冗余儲存體（RA-GRS）
+- 異地區域-多餘儲存體（切換）或讀取權限異地區域-多餘儲存體（RA-切換）
 
-## <a name="important-implications-of-account-failover"></a>帳戶容錯移轉的重要影響
+如需 Azure 儲存體冗余的詳細資訊，請參閱[Azure 儲存體冗余](storage-redundancy.md)。
 
-當您為儲存體帳戶起始帳戶容錯移轉時，次要端點的 DNS 記錄將會更新，使次要端點成為主要端點。 在起始容錯移轉之前，請確實了解儲存體帳戶可能會受到的影響。
-
-若要在起始容錯移轉之前評估可能的資料遺失程度，請使用 `Get-AzStorageAccount` PowerShell Cmdlet 並搭配 `-IncludeGeoReplicationStats` 參數，以查看 [上次同步時間]**** 屬性。 然後，查看帳戶的 `GeoReplicationStats` 屬性。 \
-
-容錯移轉之後，您的儲存體帳戶類型在新的主要區域中會自動轉換為本地備援儲存體 (LRS)。 您可以為帳戶重新啟用異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS)。 請注意，從 LRS 轉換為 GRS 或 RA-GRS 時，會產生額外的費用。 如需詳細資訊，請參閱[頻寬定價詳細資料](https://azure.microsoft.com/pricing/details/bandwidth/)。
-
-為您的儲存體帳戶重新啟用 GRS 之後，Microsoft 會開始將您帳戶中的資料複寫到新的次要區域。 複寫時間取決於複寫的資料量。  
+## <a name="initiate-the-failover"></a>起始容錯移轉
 
 ## <a name="portal"></a>[入口網站](#tab/azure-portal)
 
@@ -54,14 +50,14 @@ ms.locfileid: "79535347"
 
 3. 確認您的儲存體帳戶已進行異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS) 的設定。 若未設定，請選取 [設定]**** 下方的 [組態]****，將您的帳戶更新為異地備援。 
 4. [上次同步時間]**** 屬性會指出次要複本與主要複本相差了多久的時間。 [上次同步時間]**** 可讓您預估在容錯移轉完成後發生資料遺失的程度。
-5. 選取 [準備容錯移轉 (預覽)]****。 
+5. 選取 [**準備容錯移轉**]。
 6. 檢閱確認對話方塊。 在您準備就緒後，輸入**是**加以確認，並起始容錯移轉。
 
     ![顯示帳戶容錯移轉的確認對話方塊的螢幕擷取畫面](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要使用 PowerShell 起始帳戶容錯移轉，您必須先安裝 6.0.1 預覽模組。 請依照下列步驟安裝此模組：
+帳戶容錯移轉功能已正式推出，但仍依賴 PowerShell 的預覽模組。 若要使用 PowerShell 來起始帳戶容錯移轉，您必須先安裝 Az. Storage [1.1.1-preview](https://www.powershellgallery.com/packages/Az.Storage/1.1.1-preview)模組。 請依照下列步驟安裝此模組：
 
 1. 解除安裝任何先前安裝的 Azure PowerShell：
 
@@ -74,7 +70,7 @@ ms.locfileid: "79535347"
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
 
-1. 在安裝完 PowerShellGet 之後，關閉並重新開啟 PowerShell 視窗。 
+1. 在安裝完 PowerShellGet 之後，關閉並重新開啟 PowerShell 視窗。
 
 1. 安裝最新版的 Azure PowerShell：
 
@@ -85,15 +81,13 @@ ms.locfileid: "79535347"
 1. 安裝支援帳戶容錯移轉的 Azure 儲存體預覽模組：
 
     ```powershell
-    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
+    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
     ```
 
-1. 關閉並重新開啟 PowerShell 視窗。
- 
 若要從 PowerShell 起始帳戶容錯移轉，請執行下列命令：
 
 ```powershell
-Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
+Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name>
 ```
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -107,8 +101,18 @@ az storage account failover \ --name accountName
 
 ---
 
+## <a name="important-implications-of-account-failover"></a>帳戶容錯移轉的重要影響
+
+當您為儲存體帳戶起始帳戶容錯移轉時，次要端點的 DNS 記錄將會更新，使次要端點成為主要端點。 在起始容錯移轉之前，請確實了解儲存體帳戶可能會受到的影響。
+
+若要在起始容錯移轉之前評估可能的資料遺失程度，請使用 `Get-AzStorageAccount` PowerShell Cmdlet 並搭配 `-IncludeGeoReplicationStats` 參數，以查看 [上次同步時間]**** 屬性。 然後，查看帳戶的 `GeoReplicationStats` 屬性。
+
+容錯移轉之後，您的儲存體帳戶類型在新的主要區域中會自動轉換為本地備援儲存體 (LRS)。 您可以為帳戶重新啟用異地備援儲存體 (GRS) 或讀取權限異地備援儲存體 (RA-GRS)。 請注意，從 LRS 轉換為 GRS 或 RA-GRS 時，會產生額外的費用。 如需詳細資訊，請參閱[頻寬定價詳細資料](https://azure.microsoft.com/pricing/details/bandwidth/)。
+
+為您的儲存體帳戶重新啟用 GRS 之後，Microsoft 會開始將您帳戶中的資料複寫到新的次要區域。 複寫時間取決於複寫的資料量。  
+
 ## <a name="next-steps"></a>後續步驟
 
-- [Azure 儲存體中的災害復原和帳戶容錯移轉 (預覽)](storage-disaster-recovery-guidance.md)
-- [使用 RA 設計高可用性應用程式-GRS](storage-designing-ha-apps-with-ragrs.md)
-- [教學課程：建立具有 Blob 儲存體的高可用性應用程式](../blobs/storage-create-geo-redundant-storage.md) 
+- [嚴重損壞修復和儲存體帳戶容錯移轉](storage-disaster-recovery-guidance.md)
+- [使用異地冗余來設計高可用性應用程式](geo-redundant-design.md)
+- [教學課程：建立具有 Blob 儲存體的高可用性應用程式](../blobs/storage-create-geo-redundant-storage.md)

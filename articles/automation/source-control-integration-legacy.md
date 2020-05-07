@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dcadfcb4c2f8e6bc371b0a70b917c8c1e218fba9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b990db39ffe0623b50a2cfc728da61bc51bdd4da
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679503"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855354"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Azure 自動化中的原始檔控制整合 - 舊版
 
@@ -38,7 +38,7 @@ ms.locfileid: "81679503"
 
 2. [原始檔控制] 分頁隨即開啟，您可以在其中設定您的 GitHub 帳戶詳細資料。 以下是要設定的參數清單：  
 
-   | **參數** | **說明** |
+   | **參數** | **描述** |
    |:--- |:--- |
    | 選擇原始檔 |選取原始檔。 目前只支援 **GitHub** 。 |
    | 授權 |按一下 [授權] **** 按鈕，授與 GitHub 儲存機制的 Azure 自動化存取權。 如果您已在不同的視窗中登入您的 GitHub 帳戶，則會使用該帳戶的認證。 授權成功後，頁面會在 [**授權屬性**] 之下顯示您的 GitHub 使用者名稱。 |
@@ -63,7 +63,7 @@ ms.locfileid: "81679503"
      | **參數** | **ReplTest1** |
      |:--- |:--- |
      | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
-     | `Type`  |字串 |
+     | `Type`  |String |
      | `Value` |{"Branch":\<您的分支名稱**>,"RunbookFolderPath":\<Runbook 資料夾路徑**>,"ProviderType":\<GitHub 的值為 1**>,"Repository":\<您的儲存機制名稱**>,"Username":\<您的 GitHub 使用者名稱**>} |
 
    * **Microsoft.Azure.Automation.SourceControl.OauthToken**變數包含 OAuthToken 的安全加密值。  
@@ -102,7 +102,7 @@ Runbook 簽入可讓您將對 Azure 自動化中的 Runbook 所做的變更推�
    > [!NOTE]
    > 原始檔控制 Runbook 是特殊的自動化 Runbook，無法檢視或編輯。 雖然它們不會出現在 Runbook 清單上，但您會看到同步處理作業顯示在您的工作清單。
 
-5. 修改過的 Runbook 名稱會當作輸入參數傳送至簽入 Runbook。 您可以藉由展開 [存放庫同步處理] 頁面上的 [runbook] 來[查看作業詳細資料](automation-runbook-execution.md#viewing-job-status-from-the-azure-portal)。  
+5. 修改過的 Runbook 名稱會當作輸入參數傳送至簽入 Runbook。 您可以藉由展開 [存放庫同步處理] 頁面上的 [runbook] 來[查看作業詳細資料](automation-runbook-execution.md#job-statuses)。  
 
     ![顯示同步作業輸入的視窗](media/source-control-integration-legacy/automation-CheckinInput.png)
 6. 在工作完成時重新整理您的 GitHub 儲存機制，即可檢視變更。  您的存放庫中應該會有認可訊息：**已更新 Azure 自動化中的*Runbook 名稱*。**  
