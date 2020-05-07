@@ -1,23 +1,17 @@
 ---
-title: 使用 Azure 範本建立搭配 Azure Data Lake Storage Gen1 的 HDInsight | Microsoft Docs
-description: 使用 Azure Resource Manager 範本來建立和使用搭配 Azure Data Lake Storage Gen1 的 HDInsight 叢集
-services: data-lake-store,hdinsight
-documentationcenter: ''
+title: 範本-具有 Data Lake Storage Gen1 的 HDInsight 叢集
+description: 使用 Azure Resource Manager 範本來建立和使用 Azure HDInsight 叢集搭配 Azure Data Lake Storage Gen1。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 8ef8152f-2121-461e-956c-51c55144919d
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 486809201db45e0f5bbeed870e24b1f63770e319
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66161377"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692035"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>使用 Azure Resource Manager 範本來建立搭配 Azure Data Lake Storage Gen1 的 HDInsight 叢集
 > [!div class="op_single_selector"]
@@ -30,7 +24,7 @@ ms.locfileid: "66161377"
 
 了解如何使用 Azure PowerShell 設定搭配 Azure Data Lake Storage Gen1 **作為額外儲存體**的 HDInsight 叢集。
 
-對於支援的叢集類型，Data Lake Storage Gen1 可做為預設儲存體或額外儲存體帳戶。 當 Data Lake Storage Gen1 作為額外儲存體使用時，叢集的預設儲存體帳戶仍然會是 Azure 儲存體 Blob (WASB)，且叢集相關的檔案 (例如記錄等) 仍然會寫入預設儲存體，而您想要處理的資料則可儲存在 Data Lake Storage Gen1 帳戶中。 使用 Data Lake Storage Gen1 作為額外儲存體帳戶將不會影響效能或從叢集讀取/寫入至儲存體的能力。
+針對支援的叢集類型，Data Lake Storage Gen1 可以做為預設儲存體或額外的儲存體帳戶使用。 當 Data Lake Storage Gen1 作為額外儲存體使用時，叢集的預設儲存體帳戶仍然會是 Azure 儲存體 Blob (WASB)，且叢集相關的檔案 (例如記錄等) 仍然會寫入預設儲存體，而您想要處理的資料則可儲存在 Data Lake Storage Gen1 帳戶中。 使用 Data Lake Storage Gen1 作為額外儲存體帳戶將不會影響效能或從叢集讀取/寫入至儲存體的能力。
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>將 Data Lake Storage Gen1 作為 HDInsight 叢集儲存體使用
 
@@ -40,7 +34,7 @@ ms.locfileid: "66161377"
 
 * HDInsight 3.2、3.4、3.5 和 3.6 版能提供建立可存取 Data Lake Storage Gen1 作為額外儲存體之 HDInsight 叢集的選項。
 
-在本文中，我們佈建 Hadoop 叢集與 Data Lake Storage Gen1 做為額外的儲存體。 如需如何建立以 Data Lake Storage Gen1 做為預設儲存體之 Hadoop 叢集的指示，請參閱[使用 Azure 入口網站建立搭配 Data Lake Storage Gen1 的 HDInsight 叢集](data-lake-store-hdinsight-hadoop-use-portal.md)。
+在本文中，我們佈建 Hadoop 叢集與 Data Lake Storage Gen1 做為額外的儲存體。 如需有關如何使用 Data Lake Storage Gen1 做為預設儲存體來建立 Hadoop 叢集的指示，請參閱[使用 Azure 入口網站建立具有 Data Lake Storage Gen1 的 HDInsight](data-lake-store-hdinsight-hadoop-use-portal.md)叢集。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -88,7 +82,7 @@ Resource Manager 範本會建立一個新的 Data Lake Storage Gen1 帳戶並將
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>在 HDInsight 叢集上執行測試作業以使用 Data Lake Storage Gen1
 設定 HDInsight 叢集之後，可以在叢集上執行測試作業，以測試 HDInsight 叢集是否可以存取 Data Lake Storage Gen1。 為了完成這個操作，我們將會執行範例 Hive 作業，該作業會使用您稍早上傳至 Data Lake Storage Gen1 帳戶的範例資料來建立資料表。
 
-在這一節中，您會透過 SSH 連線到 HDInsight Linux 叢集並執行範例 Hive 查詢。 如果您使用 Windows 用戶端，建議您使用 **PuTTY** (可從 [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)下載)。
+在本節中，您會透過 SSH 連線到 HDInsight Linux 叢集並執行範例 Hive 查詢。 如果您使用 Windows 用戶端，建議您使用 **PuTTY** (可從 [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)下載)。
 
 如需有關使用 PuTTY 的詳細資訊，請參閱 [從 Windows 在 HDInsight 上搭配使用 SSH 與以 Linux 為基礎的 Hadoop](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)。
 
@@ -105,7 +99,7 @@ Resource Manager 範本會建立一個新的 Data Lake Storage Gen1 帳戶並將
    SELECT * FROM vehicles LIMIT 10;
    ```
 
-   您應該會看到如下所示的輸出：
+   您應該會看到類似以下的輸出：
 
    ```
    1,1,2014-09-14 00:00:03,46.81006,-92.08174,51,S,1
