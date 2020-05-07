@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 27f86a3fa34f8029e59d11066de9ea5a25a8c5ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2a2ee7a2806a753ffd159c91ed782634e74c704
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147986"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838641"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>適用於 Azure Logic Apps 的連接器
 
@@ -192,10 +192,11 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 
 |   |   |   |   |   |
 |---|---|---|---|---|
-[![API 圖示][as2-icon]<br>**AS2**][as2-doc] | [![API 圖示][azure-blob-storage-icon]<br>**Azure Blob<br>儲存體**][azure-blob-storage-doc] | [![API 圖示][azure-cosmos-db-icon]<br>**Azure Cosmos <br> DB**][azure-cosmos-db-doc] | [![API 圖示][azure-event-hubs-icon]<br>**Azure 事件<br>中樞**][azure-event-hubs-doc] | [![API 圖示][azure-file-storage-icon]<br>**Azure 檔案<br>儲存體**][azure-file-storage-doc] |
-| [![API 圖示][azure-service-bus-icon]<br>**Azure 服務<br>匯流排**][azure-service-bus-doc] | [![API 圖示][azure-sql-data-warehouse-icon]<br>**Azure SQL 資料<br>倉儲**][azure-sql-data-warehouse-doc] | [![API 圖示][azure-table-storage-icon]<br>**Azure 資料表<br>儲存體**][azure-table-storage-doc] | [![API 圖示][azure-queues-icon]<br>**Azure <br>佇列**][azure-queues-doc] | [![API 圖示][edifact-icon]<br>**EDIFACT**][edifact-doc] |
-| [![API 圖示][file-system-icon]<br>**檔<br>系統**][file-system-doc] | [![API 圖示][ftp-icon]<br>**FTP**][ftp-doc] | [![API 圖示][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc] | [![API 圖示][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc] | [![API 圖示][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc] |
-| [![API 圖示][sap-icon]<br>**SAP**][sap-connector-doc] | [![API 圖示][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | [![API 圖示][smtp-icon]<br>**SMTP**][smtp-doc] | [![API 圖示][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc] | [![API 圖示][x12-icon]<br>**X12**][x12-doc] |
+[![API 圖示][as2-icon]<br>**AS2**][as2-doc] | [![API 圖示][azure-automation-icon]<br>**Azure <br>自動化**][azure-automation-doc] | [![API 圖示][azure-blob-storage-icon]<br>**Azure Blob<br>儲存體**][azure-blob-storage-doc] | [![API 圖示][azure-cosmos-db-icon]<br>**Azure Cosmos <br> DB**][azure-cosmos-db-doc] | [![API 圖示][azure-event-hubs-icon]<br>**Azure 事件<br>中樞**][azure-event-hubs-doc] |
+[![API 圖示][azure-event-grid-icon]<br>**Azure 事件<br>方格**][azure-event-grid-doc] | [![API 圖示][azure-file-storage-icon]<br>**Azure 檔案<br>儲存體**][azure-file-storage-doc] | [![API 圖示][azure-key-vault-icon]<br>**Azure Key <br>Vault**][azure-key-vault-doc] | [![API 圖示][azure-monitor-logs-icon]<br>**Azure 監視器<br>記錄**][azure-monitor-logs-doc] | [![API 圖示][azure-service-bus-icon]<br>**Azure 服務<br>匯流排**][azure-service-bus-doc] |
+| [![API 圖示][azure-sql-data-warehouse-icon]<br>**Azure SQL 資料<br>倉儲**][azure-sql-data-warehouse-doc] | [![API 圖示][azure-table-storage-icon]<br>**Azure 資料表<br>儲存體**][azure-table-storage-doc] | [![API 圖示][azure-queues-icon]<br>**Azure <br>佇列**][azure-queues-doc] | [![API 圖示][edifact-icon]<br>**EDIFACT**][edifact-doc] | [![API 圖示][file-system-icon]<br>**檔<br>系統**][file-system-doc] |
+| [![API 圖示][ftp-icon]<br>**FTP**][ftp-doc] | [![API 圖示][ibm-3270-icon]<br>**IBM 3270**][ibm-3270-doc] | [![API 圖示][ibm-db2-icon]<br>**IBM DB2**][ibm-db2-doc] | [![API 圖示][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc] | [![API 圖示][sap-icon]<br>**SAP**][sap-connector-doc] |
+| [![API 圖示][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | [![API 圖示][smtp-icon]<br>**SMTP**][smtp-doc] | [![API 圖示][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc] | [![API 圖示][x12-icon]<br>**X12**][x12-doc] |
 ||||||
 
 如需詳細資訊，請參閱下列主題：
@@ -250,106 +251,6 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 * [建立邏輯應用程式的自訂連接器](https://docs.microsoft.com/connectors/custom-connectors/)
 * [建立適用於邏輯應用程式的自訂 API](../logic-apps/logic-apps-create-api-app.md)
 
-<!--Misc doc links-->
-[gateway-doc]: ../logic-apps/logic-apps-gateway-connection.md "使用內部部署資料閘道從邏輯應用程式連線至內部部署資料來源"
-
-<!--Built-in doc links-->
-[azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "建立 Azure API 管理服務執行個體以便管理和發佈您的 API"
-[azure-app-services-doc]: ../logic-apps/logic-apps-custom-hosted-api.md "整合邏輯應用程式與 App Service API Apps"
-[azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "整合邏輯應用程式與 Azure Functions"
-[batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "以群組或批次方式處理訊息"
-[condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "評估條件，並根據條件為 true 或 false 來執行不同的動作"
-[for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "針對陣列中的每個專案執行相同的動作"
-[http-doc]: ./connectors-native-http.md "從邏輯應用程式呼叫 HTTP 或 HTTPS 端點"
-[http-request-doc]: ./connectors-native-reqres.md "在您的邏輯應用程式中接收 HTTP 要求"
-[http-response-doc]: ./connectors-native-reqres.md "回應來自邏輯應用程式的 HTTP 要求"
-[http-swagger-doc]: ./connectors-native-http-swagger.md "從邏輯應用程式呼叫 REST 端點"
-[http-webhook-doc]: ./connectors-native-webhook.md "等候來自 HTTP 或 HTTPS 端點的特定事件"
-[nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "整合邏輯應用程式與巢狀工作流程"
-[query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "透過查詢動作選取和篩選陣列"
-[schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "根據排程執行邏輯應用程式"
-[schedule-delay-doc]: ./connectors-native-delay.md "順延強制下一個動作"
-[schedule-delay-until-doc]: ./connectors-native-delay.md "順延強制下一個動作"
-[schedule-recurrence-doc]:  ./connectors-native-recurrence.md "依週期性排程執行邏輯應用程式"
-[schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "執行需要在連續區塊中處理資料的邏輯應用程式"
-[scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "將動作組織成群組，這些群組會在群組中的動作執行完成後取得自己的狀態"
-[switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "將動作組織成案例，這些案例會獲派唯一的值。僅執行其值符合運算式、物件或 token 之結果的大小寫。如果沒有相符專案存在，請執行預設案例"
-[terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "停止或取消邏輯應用程式正在執行中的工作流程"
-[until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "重複動作直到指定的條件為 true 或某些狀態已變更"
-[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "執行如篩選陣列或建立 CSV 和 HTML 資料表等的資料作業"
-[variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "執行變數相關作業，例如初始化、設定、遞增、遞減及附加至字串或陣列變數"
-
-<!--Managed connector doc links-->
-[azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "使用 Azure Blob 儲存體連接器管理 Blob 容器中的檔案"
-[azure-cosmos-db-doc]: https://docs.microsoft.com/connectors/documentdb/ "連接到 Azure Cosmos DB，讓您可以存取檔和預存程式"
-[azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md "監視事件方格所發佈的事件（例如，當 Azure 資源或協力廠商資源變更時）"
-[azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "連接到 Azure 事件中樞，讓您可以在邏輯應用程式與事件中樞之間接收和傳送事件"
-[azure-file-storage-doc]: https://docs.microsoft.com/connectors/azurefile/ "連接到您的 Azure 儲存體帳戶，讓您可以建立、更新、取得和刪除檔案"
-[azure-queues-doc]: https://docs.microsoft.com/connectors/azurequeues/ "連接到您的 Azure 儲存體帳戶，以便建立和管理佇列和訊息"
-[azure-service-bus-doc]: ./connectors-create-api-servicebus.md "從「服務匯流排佇列和主題」傳送訊息，並接收來自「服務匯流排佇列和訂用帳戶」的訊息"
-[azure-sql-data-warehouse-doc]: https://docs.microsoft.com/connectors/sqldw/ "連接到 Azure SQL 資料倉儲，讓您可以查看您的資料"
-[azure-table-storage-doc]: https://docs.microsoft.com/connectors/azuretables/ "連接到您的 Azure 儲存體帳戶，讓您可以建立、更新及查詢資料表等"
-[biztalk-server-doc]: https://docs.microsoft.com/connectors/biztalk/ "連接到您的 BizTalk Server，讓您可以並存執行 BizTalk 應用程式與 Azure Logic Apps"
-[box-doc]: ./connectors-create-api-box.md "[連接到 Box]。上傳、取得、刪除、列出您的檔案等等"
-[dropbox-doc]: ./connectors-create-api-dropbox.md "連接到 Dropbox。上傳、取得、刪除、列出您的檔案等等"
-[dynamics-365-doc]: ./connectors-create-api-crmonline.md "連接至 Dynamics CRM Online，讓您可以使用 CRM Online 資料"
-[facebook-doc]: ./connectors-create-api-facebook.md "連接到 Facebook。張貼至時間軸、取得頁面摘要等等"
-[file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "連線至內部部署檔案系統"
-[ftp-doc]: ./connectors-create-api-ftp.md "連線至 FTP / FTPS 伺服器以便執行 FTP 工作，像是上傳、取得、刪除檔案等等"
-[github-doc]: ./connectors-create-api-github.md "連線至 GitHub 並追蹤問題"
-[google-calendar-doc]: ./connectors-create-api-googlecalendar.md "連接到 Google Calendar 並可管理行事曆"
-[google-drive-doc]: ./connectors-create-api-googledrive.md "連接到 GoogleDrive，讓您可以使用資料"
-[google-sheets-doc]: ./connectors-create-api-googlesheet.md "連線至 Google 試算表，讓您可以修改您的工作表"
-[google-tasks-doc]: ./connectors-create-api-googletasks.md "連接到 Google 工作，讓您可以管理您的作業"
-[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "連接到 IBM 大型主機上的3270應用程式"
-[ibm-db2-doc]: ./connectors-create-api-db2.md "連接到雲端或內部部署中的 IBM DB2。更新資料列、取得資料表等等"
-[ibm-informix-doc]: ./connectors-create-api-informix.md "連接到雲端或內部部署中的 Informix。讀取資料列、列出資料表等等"
-[ibm-mq-doc]: ./connectors-create-api-mq.md "連線到 IBM MQ 內部部署或 Azure 以傳送及接收訊息"
-[instagram-doc]: ./connectors-create-api-instagram.md "連接到 Instagram。觸發事件或採取動作"
-[mailchimp-doc]: ./connectors-create-api-mailchimp.md "連接到您的 MailChimp 帳戶。管理和自動化郵件"
-[mandrill-doc]: ./connectors-create-api-mandrill.md "連線至 Mandrill 進行通訊"
-[mysql-doc]: https://docs.microsoft.com/connectors/mysql/ "連接到您的內部部署 MySQL 資料庫，以便您可以讀取和寫入資料"
-[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "連接到您的 Office 365 帳戶，讓您可以傳送和接收電子郵件、管理您的行事曆和連絡人等等"
-[office-365-users-doc]: ./connectors-create-api-office365-users.md
-[onedrive-doc]: ./connectors-create-api-onedrive.md "連接到您的個人 Microsoft OneDrive，讓您可以上傳、刪除、列出檔案等等"
-[onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "連接到您的商務 Microsoft OneDrive，讓您可以上傳、刪除、列出您的檔案等等"
-[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "連接到 Oracle 資料庫，讓您可以加入、插入、刪除資料列等"
-[outlook.com-doc]: ./connectors-create-api-outlook.md "連接到您的 Outlook 信箱，讓您可以管理您的電子郵件、行事曆、連絡人等等"
-[postgre-sql-doc]: https://docs.microsoft.com/connectors/postgresql/ "連接到您的于 postgresql 資料庫，讓您可以從資料表讀取資料"
-[project-online-doc]: ./connectors-create-api-projectonline.md "連接到 Microsoft Project Online，讓您可以管理您的專案、工作、資源和其他作業"
-[rss-doc]: ./connectors-create-api-rss.md "發行和抓取摘要專案，將新的專案發行至 RSS 摘要時觸發作業"
-[salesforce-doc]: ./connectors-create-api-salesforce.md "連接到您的 Salesforce 帳戶。管理帳戶、潛在客戶、機會等等"
-[sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "連線至內部部署 SAP 系統"
-[sendgrid-doc]: ./connectors-create-api-sendgrid.md "連接到 SendGrid。傳送電子郵件及管理收件者清單"
-[sftp-ssh-doc]: ./connectors-sftp-ssh.md "使用 SSH 連接到您的 SFTP 帳戶。上傳、取得、刪除檔案等等"
-[sharepoint-server-doc]: ./connectors-create-api-sharepointserver.md "連接到 SharePoint 內部部署伺服器。管理檔、清單專案等等"
-[sharepoint-online-doc]: ./connectors-create-api-sharepointonline.md "連接到 SharePoint Online。管理檔、清單專案等等"
-[slack-doc]: ./connectors-create-api-slack.md "連接到時差並將訊息張貼至寬限時間頻道"
-[smtp-doc]: ./connectors-create-api-smtp.md "連線至 SMTP 伺服器，以及傳送帶有附件的電子郵件"
-[sparkpost-doc]: ./connectors-create-api-sparkpost.md "連線至 SparkPost 進行通訊"
-[sql-server-doc]: ./connectors-create-api-sqlazure.md "連接到 Azure SQL Database 或 SQL Server。建立、更新、取得和刪除 SQL 資料庫資料表中的專案"
-[teradata-doc]: https://docs.microsoft.com/connectors/teradata/ "連接到您的 Teradata 資料庫以從資料表讀取資料"
-[trello-doc]: ./connectors-create-api-trello.md "連接到 Trello。管理您的專案，並與任何人一起組織"
-[twilio-doc]: ./connectors-create-api-twilio.md "連接到 Twilio。傳送及取得訊息、取得可用的號碼、管理撥入電話號碼等等"
-[twitter-doc]: ./connectors-create-api-twitter.md "連接到 Twitter。取得時間軸、張貼推文等等"
-[yammer-doc]: ./connectors-create-api-yammer.md "連接至 Yammer。張貼訊息、取得新訊息等等"
-[youtube-doc]: ./connectors-create-api-youtube.md "連接到 YouTube。管理您的影片和頻道"
-
-<!--Enterprise Intregation Pack doc links-->
-[as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "編碼和解碼使用 AS2 通訊協定的訊息"
-[edifact-doc]: ../logic-apps/logic-apps-enterprise-integration-edifact.md "編碼和解碼使用 EDIFACT 通訊協定的訊息"
-[edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "解碼使用 EDIFACT 通訊協定的訊息"
-[edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "編碼使用 EDIFACT 通訊協定的訊息"
-[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "瞭解企業整合一般檔案"
-[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "瞭解企業整合一般檔案"
-[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "管理整合帳戶構件的中繼資料"
-[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "轉換具有液體範本的 JSON"
-[x12-doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "編碼和解碼使用 X12 通訊協定的訊息"
-[x12-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "解碼使用 X12 通訊協定的訊息"
-[x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "編碼使用 X12 通訊協定的訊息"
-[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "轉換 XML 訊息"
-[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "驗證 XML 訊息"
-
 <!-- Built-ins icons -->
 [azure-api-management-icon]: ./media/apis-list/azure-api-management.png
 [azure-app-services-icon]: ./media/apis-list/azure-app-services.png
@@ -386,7 +287,9 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [azure-event-grid-publish-icon]: ./media/apis-list/azure-event-grid-publish.png
 [azure-event-hubs-icon]: ./media/apis-list/azure-event-hubs.png
 [azure-file-storage-icon]: ./media/apis-list/azure-file-storage.png
+[azure-key-vault-icon]: ./media/apis-list/azure-key-vault.png
 [azure-ml-icon]: ./media/apis-list/azure-ml.png
+[azure-monitor-logs-icon]: ./media/apis-list/azure-monitor-logs.png
 [azure-queues-icon]: ./media/apis-list/azure-queues.png
 [azure-resource-manager-icon]: ./media/apis-list/azure-resource-manager.png
 [azure-service-bus-icon]: ./media/apis-list/azure-service-bus.png
@@ -469,3 +372,107 @@ Logic Apps 提供這些企業連接器來存取企業系統，例如 SAP 和 IBM
 [x12-icon]: ./media/apis-list/x12.png
 [xml-validate-icon]: ./media/apis-list/xml-validation.png
 [xml-transform-icon]: ./media/apis-list/xsl-transform.png
+
+<!--Other doc links-->
+[gateway-doc]: ../logic-apps/logic-apps-gateway-connection.md "使用內部部署資料閘道從邏輯應用程式連線至內部部署資料來源"
+
+<!--Built-in doc links-->
+[azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "建立 Azure API 管理服務執行個體以便管理和發佈您的 API"
+[azure-app-services-doc]: ../logic-apps/logic-apps-custom-hosted-api.md "整合邏輯應用程式與 App Service API Apps"
+[azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "整合邏輯應用程式與 Azure Functions"
+[batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "以群組或批次方式處理訊息"
+[condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "評估條件，並根據條件為 true 或 false 來執行不同的動作"
+[for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "針對陣列中的每個專案執行相同的動作"
+[http-doc]: ./connectors-native-http.md "從邏輯應用程式呼叫 HTTP 或 HTTPS 端點"
+[http-request-doc]: ./connectors-native-reqres.md "在您的邏輯應用程式中接收 HTTP 要求"
+[http-response-doc]: ./connectors-native-reqres.md "回應來自邏輯應用程式的 HTTP 要求"
+[http-swagger-doc]: ./connectors-native-http-swagger.md "從邏輯應用程式呼叫 REST 端點"
+[http-webhook-doc]: ./connectors-native-webhook.md "等候來自 HTTP 或 HTTPS 端點的特定事件"
+[nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "整合邏輯應用程式與巢狀工作流程"
+[query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "透過查詢動作選取和篩選陣列"
+[schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "根據排程執行邏輯應用程式"
+[schedule-delay-doc]: ./connectors-native-delay.md "順延強制下一個動作"
+[schedule-delay-until-doc]: ./connectors-native-delay.md "順延強制下一個動作"
+[schedule-recurrence-doc]:  ./connectors-native-recurrence.md "依週期性排程執行邏輯應用程式"
+[schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "執行需要在連續區塊中處理資料的邏輯應用程式"
+[scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "將動作組織成群組，這些群組會在群組中的動作執行完成後取得自己的狀態"
+[switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "將動作組織成案例，這些案例會獲派唯一的值。僅執行其值符合運算式、物件或 token 之結果的大小寫。如果沒有相符專案存在，請執行預設案例"
+[terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "停止或取消邏輯應用程式正在執行中的工作流程"
+[until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "重複動作直到指定的條件為 true 或某些狀態已變更"
+[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "執行如篩選陣列或建立 CSV 和 HTML 資料表等的資料作業"
+[variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "執行變數相關作業，例如初始化、設定、遞增、遞減及附加至字串或陣列變數"
+
+<!--Managed connector doc links-->
+[azure-automation-doc]: https://docs.microsoft.com/connectors/azureautomation/ "建立和管理您的雲端和內部部署基礎結構的自動化作業"
+[azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "使用 Azure Blob 儲存體連接器管理 Blob 容器中的檔案"
+[azure-cosmos-db-doc]: https://docs.microsoft.com/connectors/documentdb/ "連接到 Azure Cosmos DB，讓您可以存取檔和預存程式"
+[azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md "監視事件方格所發佈的事件（例如，當 Azure 資源或協力廠商資源變更時）"
+[azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "連接到 Azure 事件中樞，讓您可以在邏輯應用程式與事件中樞之間接收和傳送事件"
+[azure-file-storage-doc]: https://docs.microsoft.com/connectors/azurefile/ "連接到您的 Azure 儲存體帳戶，讓您可以建立、更新、取得和刪除檔案"
+[azure-key-vault-doc]: https://docs.microsoft.com/connectors/keyvault/ "連線到您的 Azure Key Vault，讓您可以管理您的秘密和金鑰"
+[azure-monitor-logs-doc]: https://docs.microsoft.com/connectors/azuremonitorlogs/ "針對跨 Log Analytics 工作區和 Application Insights 元件 Azure 監視器記錄執行查詢"
+[azure-queues-doc]: https://docs.microsoft.com/connectors/azurequeues/ "連接到您的 Azure 儲存體帳戶，以便建立和管理佇列和訊息"
+[azure-service-bus-doc]: ./connectors-create-api-servicebus.md "從「服務匯流排佇列和主題」傳送訊息，並接收來自「服務匯流排佇列和訂用帳戶」的訊息"
+[azure-sql-data-warehouse-doc]: https://docs.microsoft.com/connectors/sqldw/ "連接到 Azure SQL 資料倉儲，讓您可以查看您的資料"
+[azure-table-storage-doc]: https://docs.microsoft.com/connectors/azuretables/ "連接到您的 Azure 儲存體帳戶，讓您可以建立、更新及查詢資料表等"
+[biztalk-server-doc]: https://docs.microsoft.com/connectors/biztalk/ "連接到您的 BizTalk Server，讓您可以並存執行 BizTalk 應用程式與 Azure Logic Apps"
+[box-doc]: ./connectors-create-api-box.md "[連接到 Box]。上傳、取得、刪除、列出您的檔案等等"
+[dropbox-doc]: ./connectors-create-api-dropbox.md "連接到 Dropbox。上傳、取得、刪除、列出您的檔案等等"
+[dynamics-365-doc]: ./connectors-create-api-crmonline.md "連接至 Dynamics CRM Online，讓您可以使用 CRM Online 資料"
+[facebook-doc]: ./connectors-create-api-facebook.md "連接到 Facebook。張貼至時間軸、取得頁面摘要等等"
+[file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "連線至內部部署檔案系統"
+[ftp-doc]: ./connectors-create-api-ftp.md "連線至 FTP / FTPS 伺服器以便執行 FTP 工作，像是上傳、取得、刪除檔案等等"
+[github-doc]: ./connectors-create-api-github.md "連線至 GitHub 並追蹤問題"
+[google-calendar-doc]: ./connectors-create-api-googlecalendar.md "連接到 Google Calendar 並可管理行事曆"
+[google-drive-doc]: ./connectors-create-api-googledrive.md "連接到 GoogleDrive，讓您可以使用資料"
+[google-sheets-doc]: ./connectors-create-api-googlesheet.md "連線至 Google 試算表，讓您可以修改您的工作表"
+[google-tasks-doc]: ./connectors-create-api-googletasks.md "連接到 Google 工作，讓您可以管理您的作業"
+[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "連接到 IBM 大型主機上的3270應用程式"
+[ibm-db2-doc]: ./connectors-create-api-db2.md "連接到雲端或內部部署中的 IBM DB2。更新資料列、取得資料表等等"
+[ibm-informix-doc]: ./connectors-create-api-informix.md "連接到雲端或內部部署中的 Informix。讀取資料列、列出資料表等等"
+[ibm-mq-doc]: ./connectors-create-api-mq.md "連線到 IBM MQ 內部部署或 Azure 以傳送及接收訊息"
+[instagram-doc]: ./connectors-create-api-instagram.md "連接到 Instagram。觸發事件或採取動作"
+[mailchimp-doc]: ./connectors-create-api-mailchimp.md "連接到您的 MailChimp 帳戶。管理和自動化郵件"
+[mandrill-doc]: ./connectors-create-api-mandrill.md "連線至 Mandrill 進行通訊"
+[mysql-doc]: https://docs.microsoft.com/connectors/mysql/ "連接到您的內部部署 MySQL 資料庫，以便您可以讀取和寫入資料"
+[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "連接到您的 Office 365 帳戶，讓您可以傳送和接收電子郵件、管理您的行事曆和連絡人等等"
+[office-365-users-doc]: ./connectors-create-api-office365-users.md
+[onedrive-doc]: ./connectors-create-api-onedrive.md "連接到您的個人 Microsoft OneDrive，讓您可以上傳、刪除、列出檔案等等"
+[onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "連接到您的商務 Microsoft OneDrive，讓您可以上傳、刪除、列出您的檔案等等"
+[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "連接到 Oracle 資料庫，讓您可以加入、插入、刪除資料列等"
+[outlook.com-doc]: ./connectors-create-api-outlook.md "連接到您的 Outlook 信箱，讓您可以管理您的電子郵件、行事曆、連絡人等等"
+[postgre-sql-doc]: https://docs.microsoft.com/connectors/postgresql/ "連接到您的于 postgresql 資料庫，讓您可以從資料表讀取資料"
+[project-online-doc]: ./connectors-create-api-projectonline.md "連接到 Microsoft Project Online，讓您可以管理您的專案、工作、資源和其他作業"
+[rss-doc]: ./connectors-create-api-rss.md "發行和抓取摘要專案，將新的專案發行至 RSS 摘要時觸發作業"
+[salesforce-doc]: ./connectors-create-api-salesforce.md "連接到您的 Salesforce 帳戶。管理帳戶、潛在客戶、機會等等"
+[sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "連線至內部部署 SAP 系統"
+[sendgrid-doc]: ./connectors-create-api-sendgrid.md "連接到 SendGrid。傳送電子郵件及管理收件者清單"
+[sftp-ssh-doc]: ./connectors-sftp-ssh.md "使用 SSH 連接到您的 SFTP 帳戶。上傳、取得、刪除檔案等等"
+[sharepoint-server-doc]: ./connectors-create-api-sharepointserver.md "連接到 SharePoint 內部部署伺服器。管理檔、清單專案等等"
+[sharepoint-online-doc]: ./connectors-create-api-sharepointonline.md "連接到 SharePoint Online。管理檔、清單專案等等"
+[slack-doc]: ./connectors-create-api-slack.md "連接到時差並將訊息張貼至寬限時間頻道"
+[smtp-doc]: ./connectors-create-api-smtp.md "連線至 SMTP 伺服器，以及傳送帶有附件的電子郵件"
+[sparkpost-doc]: ./connectors-create-api-sparkpost.md "連線至 SparkPost 進行通訊"
+[sql-server-doc]: ./connectors-create-api-sqlazure.md "連接到 Azure SQL Database 或 SQL Server。建立、更新、取得和刪除 SQL 資料庫資料表中的專案"
+[teradata-doc]: https://docs.microsoft.com/connectors/teradata/ "連接到您的 Teradata 資料庫以從資料表讀取資料"
+[trello-doc]: ./connectors-create-api-trello.md "連接到 Trello。管理您的專案，並與任何人一起組織"
+[twilio-doc]: ./connectors-create-api-twilio.md "連接到 Twilio。傳送及取得訊息、取得可用的號碼、管理撥入電話號碼等等"
+[twitter-doc]: ./connectors-create-api-twitter.md "連接到 Twitter。取得時間軸、張貼推文等等"
+[yammer-doc]: ./connectors-create-api-yammer.md "連接至 Yammer。張貼訊息、取得新訊息等等"
+[youtube-doc]: ./connectors-create-api-youtube.md "連接到 YouTube。管理您的影片和頻道"
+
+<!--Enterprise Intregation Pack doc links-->
+[as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "編碼和解碼使用 AS2 通訊協定的訊息"
+[edifact-doc]: ../logic-apps/logic-apps-enterprise-integration-edifact.md "編碼和解碼使用 EDIFACT 通訊協定的訊息"
+[edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "解碼使用 EDIFACT 通訊協定的訊息"
+[edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "編碼使用 EDIFACT 通訊協定的訊息"
+[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "瞭解企業整合一般檔案"
+[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "瞭解企業整合一般檔案"
+[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "管理整合帳戶構件的中繼資料"
+[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "轉換具有液體範本的 JSON"
+[x12-doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "編碼和解碼使用 X12 通訊協定的訊息"
+[x12-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "解碼使用 X12 通訊協定的訊息"
+[x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "編碼使用 X12 通訊協定的訊息"
+[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "轉換 XML 訊息"
+[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "驗證 XML 訊息"
+
