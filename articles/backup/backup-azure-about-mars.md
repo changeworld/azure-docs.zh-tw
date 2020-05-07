@@ -4,12 +4,12 @@ description: 瞭解 MARS 代理程式如何支援備份案例
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2cc8e32152f6930c9c250e2811668cc2c924616
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5656c113a6823a1708854a547b199bd16c521b04
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78673284"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611478"
 ---
 # <a name="about-the-microsoft-azure-recovery-services-mars-agent"></a>關於 Microsoft Azure 復原服務（MARS）代理程式
 
@@ -39,19 +39,21 @@ MARS 代理程式支援下列還原案例：
 
 ## <a name="backup-process"></a>備份程序
 
-1. 從 Azure 入口網站建立復原服務保存[庫](install-mars-agent.md#create-a-recovery-services-vault)，並從備份目標選擇檔案、資料夾和系統狀態。
+1. 從 Azure 入口網站建立復原服務保存[庫](install-mars-agent.md#create-a-recovery-services-vault)，並從**備份目標**選擇檔案、資料夾和系統狀態。
 2. 將復原[服務保存庫認證和代理程式安裝程式下載](https://docs.microsoft.com/azure/backup/install-mars-agent#download-the-mars-agent)到內部部署機器。
 
-    若要保護內部部署機器，請選取 [備份] 選項，選擇 [檔案]、[資料夾] 和 [系統狀態]，然後下載 MARS 代理程式。
-
-3. 準備基礎結構：
-
-    a. 執行安裝程式以[安裝代理程式](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)。
-
-    b. 使用您已下載的保存庫認證，將機器註冊到復原服務保存庫。
-4. 從用戶端上的代理程式主控台，[設定備份](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy)。 指定備份資料的保留原則，以開始保護它。
+3. [安裝代理程式](https://docs.microsoft.com/azure/backup/install-mars-agent#install-and-register-the-agent)，並使用已下載的保存庫認證，將機器註冊到復原服務保存庫。
+4. 從用戶端上的代理程式主控台，[設定備份](https://docs.microsoft.com/azure/backup/backup-windows-with-mars-agent#create-a-backup-policy)來指定要備份的內容、何時備份（排程）、備份應保留在 Azure 中多久（保留原則）並開始保護。
 
 ![Azure 備份代理程式圖表](./media/backup-try-azure-backup-in-10-mins/backup-process.png)
+
+### <a name="additional-information"></a>其他資訊
+
+- **初始備份**（第一次備份）會根據您的備份設定來執行。  MARS 代理程式會使用 VSS 來取得所選備份磁片區的時間點快照集。 代理程式只會使用 Windows 系統寫入器作業來捕捉快照集。 它不會使用任何應用程式 VSS 寫入器，也不會捕捉應用程式一致的快照集。 使用 VSS 建立快照集之後，MARS 代理程式會在您設定備份時所指定的快取資料夾中建立虛擬硬碟（VHD）。 代理程式也會儲存每個資料區塊的總和檢查碼。
+
+- **增量備份**（後續備份）會根據您指定的排程執行。 在增量備份期間，系統會識別已變更的檔案，並建立新的 VHD。 VHD 會經過壓縮和加密，然後傳送到保存庫。 增量備份完成之後，新的 VHD 會與初始複寫後建立的 VHD 合併。 這個合併的 VHD 會提供最新的狀態，以用於進行中的備份比較。
+
+- MARS 代理程式**可以使用 USN** （更新序號）變更日誌，或在未**優化模式下**執行備份作業，方法是透過掃描整個磁片區來檢查目錄或檔案中的變更。 未優化的模式速度較慢，因為代理程式必須掃描磁片區上的每個檔案，並將它與中繼資料進行比較，以判斷變更的檔案。  **初始備份**一律會以未優化的模式執行。 如果先前的備份失敗，則下一個排定的備份工作將會以未優化的模式執行。
 
 ### <a name="additional-scenarios"></a>其他案例
 

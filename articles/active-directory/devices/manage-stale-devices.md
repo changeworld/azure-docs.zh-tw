@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fdc011a39c5526e6a2577ab1b21567bbe64ffcc6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672311"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788870"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>如何：管理 Azure AD 中的過時裝置
 
@@ -151,7 +151,7 @@ $dt = [datetime]’2017/01/01’
 Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, DeviceId, DisplayName, DeviceTrustType, ApproximateLastLogonTimestamp | export-csv devicelist-olderthan-Jan-1-2017-summary.csv
 ```
 
-## <a name="what-you-should-know"></a>您應該知道的事情
+## <a name="what-you-should-know"></a>您應該知道的事項
 
 ### <a name="why-is-the-timestamp-not-updated-more-frequently"></a>時間戳記為什麼不更頻繁地更新？
 
@@ -176,7 +176,7 @@ Get-MsolDevice -all -LogonTimeBefore $dt | select-object -Property Enabled, Devi
 
 任何使用裝置對 Azure AD 進行驗證的驗證都會遭到拒絕。 常見範例包括：
 
-- **加入混合式 Azure AD 的裝置** - 使用者可能會使用裝置登入其內部部署網域。 不過，他們無法存取 Azure AD 資源，例如 Office 365。
+- **混合式 Azure AD 加入的裝置**-使用者可能可以使用裝置來登入其內部部署網域。 不過，他們無法存取 Azure AD 資源，例如 Office 365。
 - **加入 Azure AD 的裝置** - 使用者不能使用裝置來登入。 
 - **行動裝置** - 使用者無法存取 Azure AD 資源，例如 Office 365。 
 

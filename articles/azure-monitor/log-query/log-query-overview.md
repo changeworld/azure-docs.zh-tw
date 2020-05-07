@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670112"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591647"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>Azure 監視器中的記錄查詢總覽
 記錄查詢可協助您充分利用[Azure 監視器記錄](../platform/data-platform-logs.md)中收集的資料值。 功能強大的查詢語言可讓您聯結多個資料表的資料、匯總大型資料集，以及使用最少的程式碼來執行複雜的作業。 只要收集到支援的資料，就可以解決任何問題並執行分析，而且您會瞭解如何建立正確的查詢。
@@ -81,7 +81,7 @@ Log Analytics 是 Azure 入口網站中用來撰寫記錄查詢和以互動方�
 您可以從 Azure 入口網站中的數個位置啟動 Log Analytics。 可供 Log Analytics 使用的資料範圍取決於您啟動它的方式。 如需詳細資訊，請參閱[查詢範圍](scope.md)。
 
 - 從 [ **Azure 監視器**] 功能表或 [ **Log Analytics 工作區**] 功能表中選取 [**記錄**]。
-- 從 Application Insights 應用程式的 [**總覽**] 頁面選取 [**分析**]。
+- 從 Application Insights 應用程式的 [**總覽**] 頁面中選取 [**記錄**]。
 - 從 Azure 資源的功能表中選取 [**記錄**]。
 
 ![Log Analytics](media/log-query-overview/log-analytics.png)

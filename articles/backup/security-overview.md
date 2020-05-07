@@ -3,12 +3,12 @@ title: 安全性功能總覽
 description: 瞭解 Azure 備份中的安全性功能，協助您保護您的備份資料，並符合您企業的安全性需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 688573b571c6ce4473f06d4c194795a38a33244b
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585825"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743647"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 備份中的安全性功能總覽
 
@@ -16,9 +16,9 @@ ms.locfileid: "80585825"
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>身分識別和使用者存取的管理與控制
 
-Azure 備份可讓您使用[Azure 角色型存取控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)來管理更細緻的存取權。 RBAC 可讓您區隔小組內的職責，僅授與使用者執行其工作所需的存取權數量。
+復原服務保存庫所使用的儲存體帳戶會被隔離，而且使用者無法存取以因應任何惡意用途。 只有 Azure 備份管理作業（例如 restore）允許存取。 Azure 備份可讓您使用[Azure 角色型存取控制（RBAC）](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)，透過更細緻的存取來控制受控作業。 RBAC 可讓您區隔小組內的職責，僅授與使用者執行其工作所需的存取權數量。
 
-Azure 備份提供三個內建角色來控制備份管理作業：
+Azure 備份提供三個[內建角色](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)來控制備份管理作業：
 
 * 備份參與者-建立和管理備份，但刪除復原服務保存庫並將存取權授與其他人
 * Backup Operator-參與者除了移除備份和管理備份原則以外的所有專案
@@ -47,13 +47,13 @@ Azure Vm 的備份需要將資料從虛擬機器的磁片移至復原服務保�
 
 加密可保護您的資料，並協助您符合組織的安全性和合規性承諾。 在 Azure 中，Azure 儲存體與保存庫之間傳輸中的資料會受到 HTTPS 保護。 此資料會保持在 Azure 中樞網路上。
 
-* 備份資料會使用 Microsoft 管理的金鑰自動加密。 您也可以使用儲存在 Azure Key Vault 中的[客戶管理金鑰](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys)，加密復原服務保存庫中已備份的受控磁片 vm。 您不需要採取任何明確的動作，即可啟用此加密。 其適用于備份到復原服務保存庫的所有工作負載。
+* 備份資料會使用 Microsoft 管理的金鑰自動加密。 您也可以使用儲存在 Azure Key Vault 中的[客戶管理金鑰](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)，加密復原服務保存庫中已備份的受控磁片 vm。 您不需要採取任何明確的動作，即可啟用此加密。 其適用于備份到復原服務保存庫的所有工作負載。
 
 * Azure 備份支援備份和還原已使用 Azure 磁碟加密（ADE）加密其 OS/資料磁片的 Azure Vm。 [深入瞭解加密的 Azure vm 和 Azure 備份](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)。
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>保護不小心刪除的備份資料
 
-Azure 備份提供安全性功能，可在刪除之後協助保護備份資料。 使用虛刪除時，如果使用者刪除 VM 的備份，備份資料會保留14個額外的天數，以便在不遺失資料的情況下復原該備份專案。 在「虛刪除」狀態中，備份資料的額外14天保留期不會對客戶產生任何費用。 [深入瞭解虛刪除](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)。
+Azure 備份提供安全性功能，可在刪除之後協助保護備份資料。 使用虛刪除時，如果使用者刪除 VM 的備份，備份資料會保留14個額外的天數，以便在不遺失資料的情況下復原該備份專案。 在「虛刪除」狀態中，備份資料的額外14天保留期不會對客戶產生任何費用。 [深入瞭解虛刪除](backup-azure-security-feature-cloud.md)。
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>可疑活動的監視與警示
 

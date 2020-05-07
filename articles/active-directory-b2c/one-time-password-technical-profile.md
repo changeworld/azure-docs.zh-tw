@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5fed45332c73c633db1137bdc23aea66fd3403
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35497f978a1819f09411487e4bbc7eb1d05cc80d
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332771"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900386"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>在 Azure AD B2C 自訂原則中定義一次性密碼技術設定檔
 
@@ -74,11 +74,11 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | 屬性 | 必要 | 描述 |
 | --------- | -------- | ----------- |
 | CodeExpirationInSeconds | 否 | 程式碼到期前的時間，以秒為單位。 最小`60`值：;最大`1200`值：;預設值`600`：。 |
-| CodeLength | 否 | 程式碼的長度。 預設值是 `6`。 |
-| CharacterSet | 否 | 針對在正則運算式中使用的程式碼所設定的字元集。 例如： `a-z0-9A-Z` 。 預設值是 `0-9`。 字元集必須在指定的集合中包含至少10個不同的字元。 |
-| NumRetryAttempts | 否 | 將程式碼視為無效之前的驗證嘗試次數。 預設值是 `5`。 |
+| CodeLength | 否 | 程式碼的長度。 預設值為 `6`。 |
+| CharacterSet | 否 | 針對在正則運算式中使用的程式碼所設定的字元集。 例如： `a-z0-9A-Z` 。 預設值為 `0-9`。 字元集必須在指定的集合中包含至少10個不同的字元。 |
+| NumRetryAttempts | 否 | 將程式碼視為無效之前的驗證嘗試次數。 預設值為 `5`。 |
 | 作業 | 是 | 要執行的作業。 可能的值`GenerateCode`：。 |
-| ReuseSameCode | 否 | 是否應指定重複的程式碼，而不是在指定的程式碼尚未過期且仍然有效時產生新的程式碼。 預設值是 `false`。 |
+| ReuseSameCode | 否 | 是否應指定重複的程式碼，而不是在指定的程式碼尚未過期且仍然有效時產生新的程式碼。 預設值為 `false`。 |
 
 ### <a name="example"></a>範例
 
@@ -144,6 +144,7 @@ Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.
 | UserMessageIfSessionDoesNotExist | 否 | 如果程式碼驗證會話已過期，要向使用者顯示的訊息。 這可能是程式碼已過期，或從未針對指定的識別碼產生程式碼。 |
 | UserMessageIfMaxRetryAttempted | 否 | 當使用者已超過允許的驗證嘗試次數上限時，要對其顯示的訊息。 |
 | UserMessageIfInvalidCode | 否 | 如果提供了不正確程式碼，要向使用者顯示的訊息。 |
+| UserMessageIfVerificationFailedRetryAllowed | 否 | 如果使用者提供了不正確程式碼，就會向使用者顯示訊息，且允許使用者提供正確的程式碼。  |
 |UserMessageIfSessionConflict|否| 如果無法驗證程式代碼，要向使用者顯示的訊息。|
 
 ### <a name="example"></a>範例

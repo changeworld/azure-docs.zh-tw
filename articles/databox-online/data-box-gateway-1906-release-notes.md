@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 69c905176a5beb1c7d442cd5f1a69161cd520c5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f4633a3fcafcb2b3151270715036e7940eb1c91
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71099482"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561838"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1906-release-notes"></a>Azure Data Box Edge 和 Azure 資料箱閘道1906版本資訊
 
-下列版本資訊會針對 Azure Data Box Edge 和 Azure 資料箱閘道的1906版本，識別重大的未解決問題和已解決的問題。
+下列版本資訊會針對 Azure Data Box Edge 和 Azure 資料箱閘道的1906版本，識別重大的未解決問題和已解決的問題。 
 
 版本資訊會持續更新，並在發現需要提出因應措施的重大問題時有所增補。 在您部署 Data Box Edge/Data Box Gateway 之前，請仔細檢查版本資訊中包含的資訊。
 
@@ -31,8 +31,8 @@ ms.locfileid: "71099482"
 
 ## <a name="whats-new"></a>新功能
 
-- **修正修復金鑰管理工作流程中的錯誤**-在舊版中，有一個 bug 原因，未套用修復金鑰。 此版本已經修正這個錯誤。 我們強烈建議您套用此更新，因為修復金鑰可讓您在裝置無法開機的事件中復原裝置上的資料。 如需詳細資訊，請參閱[在部署 Data Box Edge 或資料箱閘道時，如何儲存修復金鑰](data-box-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device)。
-- 現場可程式化網**關陣列（FPGA）記錄改進**-開始進行1905版本、記錄和與 FPGA 相關的警示增強功能。 如果您使用 Edge 計算功能搭配 FPGA，這會繼續成為 Data Box Edge 的必要更新。 如需詳細資訊，請參閱如何[在您的 Data Box Edge 上使用 Edge 計算來轉換資料](data-box-edge-deploy-configure-compute-advanced.md)。
+- **修正修復金鑰管理工作流程中的錯誤**-在舊版中，有一個 bug 原因，未套用修復金鑰。 此版本已經修正這個錯誤。 我們強烈建議您套用此更新，因為修復金鑰可讓您在裝置無法開機的事件中復原裝置上的資料。 如需詳細資訊，請參閱[在部署 Data Box Edge 或資料箱閘道時，如何儲存修復金鑰](azure-stack-edge-deploy-connect-setup-activate.md#set-up-and-activate-the-physical-device)。
+- 現場可程式化網**關陣列（FPGA）記錄改進**-開始進行1905版本、記錄和與 FPGA 相關的警示增強功能。 如果您使用 Edge 計算功能搭配 FPGA，這會繼續成為 Data Box Edge 的必要更新。 如需詳細資訊，請參閱如何[在您的 Data Box Edge 上使用 Edge 計算來轉換資料](azure-stack-edge-deploy-configure-compute-advanced.md)。
 
 ## <a name="known-issues-in-ga-release"></a>GA 版本中的已知問題
 
@@ -42,4 +42,4 @@ ms.locfileid: "71099482"
 ## <a name="next-steps"></a>後續步驟
 
 - [準備部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
-- [準備部署 Azure Data Box Edge](data-box-edge-deploy-prep.md)
+- [準備部署 Azure Data Box Edge](azure-stack-edge-deploy-prep.md)

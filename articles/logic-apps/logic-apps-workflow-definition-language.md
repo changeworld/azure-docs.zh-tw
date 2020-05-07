@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9eefc40f7bca3f0bc21510a2d8a3d3fe76711b0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283858"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611410"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps 中工作流程定義語言的架構參考指南
 
@@ -178,7 +178,7 @@ HTTP 動作會傳回內部`HTTP0` `staticResults`定義中的輸出。 在此範
 "rainbowColorsCount": 7
 ```
 
-您也可以擁有在執行階段才存在的值。 若要表示這些值，您可以使用會在執行階段評估的「運算式」**。 運算式是一個序列，可包含一或多個[函式](#functions)[運算子](#operators)、變數、明確值或常數。 在工作流程定義中，您可以在運算式前面加上 (\@) 符號，以便在 JSON 字串值中的任何地方使用運算式。 在評估代表 JSON 值的運算式時，移除 \@ 字元即可擷取運算式主體，而且一律會產生其他 JSON 值。
+您也可以擁有在執行階段才存在的值。 若要表示這些值，您可以使用會在執行階段評估的「運算式」**。 運算式是一個序列，可以包含一或多個[函數](#functions)、[運算子](#operators)、[變數](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-variables-store-values)、明確值或常數。 在工作流程定義中，您可以在運算式前面加上 (\@) 符號，以便在 JSON 字串值中的任何地方使用運算式。 在評估代表 JSON 值的運算式時，移除 \@ 字元即可擷取運算式主體，而且一律會產生其他 JSON 值。
 
 例如，對於先前定義的 `customerName` 屬性，您可以在運算式中使用 [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) 函式來取得此屬性值，並將該值指派給 `accountName` 屬性：
 
@@ -286,11 +286,11 @@ HTTP 動作會傳回內部`HTTP0` `staticResults`定義中的輸出。 在此範
 
 <a name="operators"></a>
 
-## <a name="operators"></a>運算子
+## <a name="operators"></a>操作員
 
 在[運算式](#expressions)和[函式](#functions)中，運算子會執行特定工作，例如參考屬性或陣列中的值。
 
-| 運算子 | 工作 |
+| 運算子 | Task |
 |----------|------|
 | ' | 若要將字串常值作為輸入或使用於運算式和函式中，只用單引號圍住此字串，例如 `'<myString>'`。 請勿使用雙引號 ("")，這會與整個運算式的 JSON 格式設定發生衝突。 例如： <p>**是**：length('Hello') </br>**否**：length("Hello") <p>當您傳遞陣列或數字時，您不需要包圍標點符號。 例如： <p>**是**：length([1, 2, 3]) </br>**否**：length("[1, 2, 3]") |
 | [] | 若要參考陣列中特定位置 (索引) 的值，請使用方括號。 例如，若要取得陣列中的第二個項目： <p>`myArray[1]` |

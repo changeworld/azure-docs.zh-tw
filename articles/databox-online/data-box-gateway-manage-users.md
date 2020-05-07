@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 60fd5476d687d9f44aec885cdf888572e8e523a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 137531ab0d96c24a3ce19e429a5765d6e4a13c93
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78946126"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561232"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>使用 Azure 入口網站來管理 Azure 資料箱閘道上的使用者。
 
-本文說明如何管理 Azure 資料箱閘道上的使用者。 您可以透過 Azure 入口網站或本機 Web UI 來管理 Azure 資料箱閘道。 使用 Azure 入口網站來新增、修改或刪除使用者。
+本文說明如何管理 Azure 資料箱閘道上的使用者。 您可以透過 Azure 入口網站或本機 Web UI 來管理 Azure 資料箱閘道。 使用 Azure 入口網站來新增、修改或刪除使用者。 
 
 在本文中，您將學會如何：
 

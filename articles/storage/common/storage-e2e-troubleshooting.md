@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76314754"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610967"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 儲存體計量和記錄、AzCopy 和 Message Analyzer 進行端對端疑難排解
 
@@ -161,7 +161,7 @@ Message Analyzer 包含 Azure 儲存體資產，可協助您分析伺服器、�
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>下載並安裝 Message Analyzer 和 Azure 儲存體資產
 
-1. 從 Microsoft 下載中心下載 [Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) ，並執行安裝程式。
+1. 下載[Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer)。
 2. 啟動 Message Analyzer。
 3. 從 [工具]**** 功能表，選取 [資產管理員]****。 在 [資產管理員]**** 對話方塊中，選取 [下載]****，然後依據 [Azure 儲存體]**** 篩選。 您會看到 Azure 儲存體資產，如下圖所示。
 4. 按一下 [同步處理所有顯示的項目] **** 以安裝 Azure 儲存體資產。 可用的資產包括：
@@ -308,21 +308,21 @@ Message Analyzer 會找出並選取搜尋準則符合用戶端要求識別碼的
 
 | 若要調查... | 使用篩選運算式… | 運算式套用到記錄檔 (用戶端、伺服器、網路、全部) |
 | --- | --- | --- |
-| 佇列上未預期的訊息傳遞延遲 |AzureStorageClientDotNetV4.Description 包含「正在重試失敗的作業」。 |Client |
+| 佇列上未預期的訊息傳遞延遲 |AzureStorageClientDotNetV4.Description 包含「正在重試失敗的作業」。 |用戶端 |
 | PercentThrottlingError 的 HTTP 增加 |HTTP.Response.StatusCode   == 500 &#124;&#124; HTTP.Response.StatusCode == 503 |網路 |
 | PercentTimeoutError 增加 |HTTP.Response.StatusCode   == 500 |網路 |
 | PercentTimeoutError 增加 (全部) |*StatusCode   == 500 |全部 |
-| PercentNetworkError 增加 |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |Client |
+| PercentNetworkError 增加 |AzureStorageClientDotNetV4.EventLogEntry.Level   < 2 |用戶端 |
 | HTTP 403 (禁止) 訊息 |HTTP.Response.StatusCode   == 403 |網路 |
 | HTTP 404 (找不到) 訊息 |HTTP.Response.StatusCode   == 404 |網路 |
 | 404 (全部) |*StatusCode   == 404 |全部 |
 | 共用存取簽章 (SAS) 授權問題 |AzureStorageLog.RequestStatus ==  "SASAuthorizationError" |網路 |
 | HTTP 409 (衝突) 訊息 |HTTP.Response.StatusCode   == 409 |網路 |
 | 409 (全部) |*StatusCode   == 409 |全部 |
-| 低 PercentSuccess，或是分析記錄項目內含具有 ClientOtherErrors 交易狀態的作業 |AzureStorageLog.RequestStatus ==   "ClientOtherError" |Server (伺服器) |
-| Nagle 警告 |((AzureStorageLog.EndToEndLatencyMS   - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS *   1.5)) 和 (AzureStorageLog.RequestPacketSize <1460) 和 (AzureStorageLog.EndToEndLatencyMS -   AzureStorageLog.ServerLatencyMS >= 200) |Server (伺服器) |
+| 低 PercentSuccess，或是分析記錄項目內含具有 ClientOtherErrors 交易狀態的作業 |AzureStorageLog.RequestStatus ==   "ClientOtherError" |伺服器 |
+| Nagle 警告 |((AzureStorageLog.EndToEndLatencyMS   - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS *   1.5)) 和 (AzureStorageLog.RequestPacketSize <1460) 和 (AzureStorageLog.EndToEndLatencyMS -   AzureStorageLog.ServerLatencyMS >= 200) |伺服器 |
 | 伺服器和網路記錄中的時間範圍 |#Timestamp   >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 |伺服器、網路 |
-| 伺服器記錄中的時間範圍 |AzureStorageLog.Timestamp   >= 2014-10-20T16:36:38 和 AzureStorageLog.Timestamp <=   2014-10-20T16:36:39 |Server (伺服器) |
+| 伺服器記錄中的時間範圍 |AzureStorageLog.Timestamp   >= 2014-10-20T16:36:38 和 AzureStorageLog.Timestamp <=   2014-10-20T16:36:39 |伺服器 |
 
 ## <a name="next-steps"></a>後續步驟
 

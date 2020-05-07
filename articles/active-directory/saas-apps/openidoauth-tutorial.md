@@ -16,18 +16,19 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: has-adal-ref
+ms.openlocfilehash: 13c3a7f8376d4c852a74be75e323c6bb042b5407
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048423"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610984"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>從 Azure AD 應用程式資源庫設定 OpenID/OAuth 應用程式
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>從資源庫新增 OpenID 應用程式的程序
 
-1. 在 [Azure 入口網站](https://portal.azure.com)的左側窗格中，選取 [Azure Active Directory]  。 
+1. 在 [Azure 入口網站](https://portal.azure.com)的左側窗格中，選取 [Azure Active Directory]  。
 
     ![Azure Active Directory 按鈕](common/select-azuread.png))
 
@@ -61,17 +62,17 @@ ms.locfileid: "80048423"
 
 ![使用 OpenID Connect 驗證流程](./media/openidoauth-tutorial/authenticationflow.png)
 
-### <a name="multitenant-application"></a>多租用戶應用程式 
-多租用戶應用程式可供許多組織使用，而不限單一組織。 這些通常是由獨立軟體廠商 (ISV) 撰寫的軟體即服務 (SaaS) 應用程式。 
+### <a name="multitenant-application"></a>多租用戶應用程式
+多租用戶應用程式可供許多組織使用，而不限單一組織。 這些通常是由獨立軟體廠商 (ISV) 撰寫的軟體即服務 (SaaS) 應用程式。
 
-每個要使用多租用戶應用程式的目錄中，都須佈建多租用戶應用程式。 這些應用程式需要使用者或系統管理員同意才能加以註冊。 當應用程式目錄中已在目錄中註冊並獲權存取 Graph API 或其他 Web API 時，此同意程序會啟動。 當不同組織的使用者或系統管理員註冊來使用應用程式時，對話方塊會顯示應用程式需要的權限。 
+每個要使用多租用戶應用程式的目錄中，都須佈建多租用戶應用程式。 這些應用程式需要使用者或系統管理員同意才能加以註冊。 當應用程式目錄中已在目錄中註冊並獲權存取 Graph API 或其他 Web API 時，此同意程序會啟動。 當不同組織的使用者或系統管理員註冊來使用應用程式時，對話方塊會顯示應用程式需要的權限。
 
 然後，使用者或系統管理員可以對應用程式表示同意。 同意後即可讓應用程式存取所述的資料，而最終目的是在目錄中註冊應用程式。
 
 > [!NOTE]
 > 如果要讓您的應用程式可供多個目錄中的使用者使用，則需要有機制來判斷使用者所在的租用戶。 單一租用戶應用程式只須查看其本身目錄的使用者。 多租用戶應用程式需要從 Azure AD 的所有目錄中識別特定使用者。
-> 
-> 為了完成這項工作，Azure AD 提供一個共同驗證端點，供任何多租用戶應用程式引導登入要求，而非提供租用戶特定的端點。 此端點是 `https://login.microsoftonline.com/common`，適用於 Azure AD 中的所有目錄。 租用戶專屬端點可能是 `https://login.microsoftonline.com/contoso.onmicrosoft.com`。 
+>
+> 為了完成這項工作，Azure AD 提供一個共同驗證端點，供任何多租用戶應用程式引導登入要求，而非提供租用戶特定的端點。 此端點是 `https://login.microsoftonline.com/common`，適用於 Azure AD 中的所有目錄。 租用戶專屬端點可能是 `https://login.microsoftonline.com/contoso.onmicrosoft.com`。
 >
 > 常用端點是您開發應用程式時必須納入考量的重點。 您將需要必要邏輯來處理多租用戶的登入、登出和權杖驗證。
 
@@ -80,9 +81,9 @@ ms.locfileid: "80048423"
 ## <a name="consent-framework"></a>同意架構
 
 您可以使用 Azure AD 同意架構來開發多租用戶的 Web 應用程式和原生用戶端應用程式。 這些應用程式允許與應用程式註冊所在的租用戶不同之 Azure AD 租用戶的使用者帳戶登入。 應用程式可能也需要存取 Web API，例如：
-- Microsoft Graph API，以便存取 Azure AD、Intune 和 Office 365 中的服務。 
+- Microsoft Graph API，以便存取 Azure AD、Intune 和 Office 365 中的服務。
 - 其他 Microsoft 服務的 API。
-- 您自己的 Web API。 
+- 您自己的 Web API。
 
 此架構以使用者或系統管理員為根據，他們可同意讓應用程式在他們的目錄中註冊。 註冊可能包含存取目錄資料。 取得同意之後，用戶端應用程式將能代表使用者呼叫 Microsoft Graph API，並視需要使用資訊。
 
@@ -146,7 +147,7 @@ Graph API 也會提供 Azure AD 中的使用者和群組存取權，以及多個
 
 僅限應用程式的權限一律需要租用戶系統管理員的同意。 如果您的應用程式要求僅限應用程式的權限，當使用者嘗試登入應用程式時，將會出現錯誤訊息。 訊息會指出該使用者無法同意。
 
-如果您的應用程式使用需要系統管理員同意的權限，您就必須要有相關的表示，例如可供系統管理員開始動作的按鈕或連結。 您的應用程式針對此動作傳送的要求是一個一般的 OAuth2/OpenID Connect 授權要求。 此要求包含 prompt=admin_consent  查詢字串參數。 
+如果您的應用程式使用需要系統管理員同意的權限，您就必須要有相關的表示，例如可供系統管理員開始動作的按鈕或連結。 您的應用程式針對此動作傳送的要求是一個一般的 OAuth2/OpenID Connect 授權要求。 此要求包含 prompt=admin_consent  查詢字串參數。
 
 在系統管理員同意且系統在客戶的租用戶中建立服務主體之後，後續的登入要求就不需要 prompt=admin_consent  參數。 由於系統管理員已決定可接受要求的權限，因此從該時間點之後，就不會再提示租用戶中的任何其他使用者行使同意權。
 

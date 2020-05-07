@@ -4,12 +4,12 @@ description: 瞭解如何建立私用 Azure Kubernetes Service （AKS）叢集
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f0d702a213c4c34024c043edc50d25e6696cbc1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398060"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610933"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>建立私用 Azure Kubernetes Service 叢集
 
@@ -17,7 +17,7 @@ ms.locfileid: "80398060"
 
 控制平面或 API 伺服器位於 Azure Kubernetes Service （AKS）管理的 Azure 訂用帳戶中。 客戶的叢集或節點集區位於客戶的訂用帳戶中。 伺服器和叢集或節點集區可以透過 API 伺服器虛擬網路中的[Azure 私人連結服務][private-link-service]，以及在客戶 AKS 叢集的子網中公開的私用端點，彼此通訊。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure CLI 版2.2.0 或更新版本
 
@@ -101,7 +101,7 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您必
 ## <a name="limitations"></a>限制 
 * IP 授權範圍無法套用至私用 api 伺服器端點，它們只適用于公用 API 伺服器
 * 可用性區域目前支援特定地區，請參閱本檔的開頭 
-* [Azure 私人連結服務限制][private-link-service]適用于私人叢集、azure 私人端點和虛擬網路服務端點，但目前在相同的虛擬網路中並不支援。
+* [Azure 私人連結服務限制][private-link-service]適用于私人叢集。
 * 不支援私人叢集中的虛擬節點來微調私人 Azure 虛擬網路中的私人 Azure 容器實例（ACI）
 * 不支援使用私人叢集的現成 Azure DevOps 整合
 * 對於需要啟用 Azure Container Registry 以使用私用 AKS 的客戶，必須使用代理程式叢集虛擬網路來對等互連 Container Registry 虛擬網路。
@@ -116,7 +116,7 @@ API 伺服器端點沒有公用 IP 位址。 若要管理 API 伺服器，您必
 [az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[private-link-service]: /azure/private-link/private-link-service-overview
+[private-link-service]: /azure/private-link/private-link-service-overview#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
 [express-route-or-vpn]: ../expressroute/expressroute-about-virtual-network-gateways.md

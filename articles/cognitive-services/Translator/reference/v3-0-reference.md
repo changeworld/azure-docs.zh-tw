@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/2/2020
+ms.date: 4/17/2020
 ms.author: swmachan
-ms.openlocfilehash: fcbaabac0961f1269a929fb4a56f81ac282bae29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf7701055c8c325f02c0daca1755806f3ca17b76
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80619153"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857306"
 ---
 # <a name="translator-text-api-v30"></a>Microsoft Translator Text API v3.0
 
@@ -147,7 +147,7 @@ Authorization: Bearer <Base64-access_token>
 
 ## <a name="virtual-network-support"></a>虛擬網路支援
 
-Translator 服務現已提供有限區域`WestUS2`（、 `EastUS`、 `SouthCentralUS`、 `WestUS`、 `Central US EUAP`、 `global`）中的虛擬網路功能。 若要啟用虛擬網路，請參閱設定[Azure 認知服務虛擬網路](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
+Translator 服務現已提供有限區域`WestUS2`（、 `EastUS`、 `SouthCentralUS`、 `WestUS`、 `CentralUSEUAP`、 `global`）中的虛擬網路功能。 若要啟用虛擬網路，請參閱設定[Azure 認知服務虛擬網路](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)。 
 
 一旦您開啟這項功能，就必須使用自訂端點來呼叫 Translator API。 您不能使用全域 translator 端點（"api.cognitive.microsofttranslator.com"），也無法使用存取權杖進行驗證。
 

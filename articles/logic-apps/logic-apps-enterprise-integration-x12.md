@@ -1,308 +1,391 @@
 ---
-title: 適用于 B2B 整合的 X12 訊息
-description: 在採用 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 X12 訊息 (採用 EDI 格式)
+title: 傳送和接收 B2B 的 X12 訊息
+description: 使用 Azure Logic Apps 搭配企業整合套件來交換 B2B 企業整合案例的 X12 訊息
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 01/31/2017
-ms.openlocfilehash: 12a1cd3c170fd7444362d1eabba1541cefb37d1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 8ec20e03544ba54b83130ae41244dcdb186252d0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115545"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613007"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在採用 Enterprise Integration Pack 的 Azure Logic Apps 中交換適用於 B2B 企業整合的 X12 訊息
 
-您必須先建立 X12 合約並將該合約儲存在您的整合帳戶中，才可以交換 X12 訊息。 以下是如何建立 X12 合約的步驟。
+若要在 Azure Logic Apps 中使用 X12 訊息，您可以使用 X12 連接器，它會提供用來管理 X12 通訊的觸發程式和動作。 如需有關 EDIFACT 訊息的詳細資訊，請參閱[EXCHANGE edifact 訊息](logic-apps-enterprise-integration-edifact.md)。
 
-> [!NOTE]
-> 本頁涵蓋 Azure Logic Apps 的 X12 功能。 如需詳細資訊，請參閱 [EDIFACT](logic-apps-enterprise-integration-edifact.md)。
+## <a name="prerequisites"></a>Prerequisites
 
-## <a name="before-you-start"></a>在您開始使用 Intune 之前
+* Azure 訂用帳戶。 如果您還沒有 Azure 訂用帳戶，請先[註冊免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-以下是您所需的項目︰
+* 您想要使用 X12 連接器的邏輯應用程式，以及啟動邏輯應用程式工作流程的觸發程式。 X12 連接器只提供動作，而非觸發程式。 如果您還不熟悉邏輯應用程式，請檢閱[什麼是 Azure Logic Apps？](../logic-apps/logic-apps-overview.md)和[快速入門：建立第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-* 已經定義並與 Azure 訂用帳戶相關聯的[整合帳戶](logic-apps-enterprise-integration-create-integration-account.md)
-* 至少已在整合帳戶中定義兩個[夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)，以及在 [企業身分識別]**** 之下設定 X12 識別碼    
-* 您可以上傳到整合帳戶的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)
+* 與您的 Azure 訂用帳戶相關聯的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)，並連結至您打算使用 X12 連接器的邏輯應用程式。 您的邏輯應用程式和整合帳戶必須存在於相同的位置或 Azure 區域中。
 
-在您[建立整合帳戶](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)、[新增夥伴](logic-apps-enterprise-integration-partners.md)，以及具有您有使用的[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)之後，您可以依照下列步驟建立 X12 合約。
+* 至少有兩個您已在整合帳戶中使用 X12 識別辨識符號定義的[交易夥伴](../logic-apps/logic-apps-enterprise-integration-partners.md)。
 
-## <a name="create-an-x12-agreement"></a>建立 X12 合約
+* 您已新增至整合帳戶的 XML 驗證所使用的[架構](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 如果您使用的是健康保險流通與責任法案（HIPAA）架構，請參閱[HIPAA 架構](#hipaa-schemas)。
 
-1. 登入 [Azure 入口網站](https://portal.azure.com "Azure 入口網站")。 
+* 您必須先建立交易夥伴之間的 X12[合約](../logic-apps/logic-apps-enterprise-integration-agreements.md)，並將該合約儲存在您的整合帳戶中，才可以使用 X12 連接器。 如果您使用的是健康保險流通與責任法案（HIPAA）架構，則需要在您的`schemaReferences`合約中新增一節。 如需詳細資訊，請參閱[HIPAA 架構](#hipaa-schemas)。
 
-2. 從主要 Azure 功能表中選取 [所有服務]****。 
-   在搜尋方塊中輸入「整合」，然後選取 [整合帳戶]****。  
+<a name="receive-settings"></a>
 
-   ![尋找您的整合帳戶](./media/logic-apps-enterprise-integration-x12/account-1.png)
+## <a name="receive-settings"></a>接收設定
 
-   > [!TIP]
-   > 如果 [所有服務]**** 未出現，您可能必須先展開功能表。 在摺疊功能表的頂端，選取 [顯示功能表]****。
+設定協定屬性之後，您可以設定此合約如何識別及處理您透過此合約從合作夥伴收到的輸入訊息。
 
-3. 在 [整合帳戶]**** 底下，選取要在其中新增合約的整合帳戶。
+1. 在 [新增]**** 之下，選取 [接收設定]****。
 
-   ![選取您要在其中建立合約的整合帳戶](./media/logic-apps-enterprise-integration-x12/account-3.png)
+1. 根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 **接收設定**會組織成下列各節：
 
-4. 選取 [概觀]****，然後選取 [合約]**** 圖格。 
-   如果您沒有 [合約] 圖格，請先新增圖格。 
+   * [識別碼](#inbound-identifiers)
+   * [通知](#inbound-acknowledgement)
+   * [結構描述](#inbound-schemas)
+   * [信封](#inbound-envelopes)
+   * [控制編號](#inbound-control-numbers)
+   * [Validations](#inbound-validations)
+   * [內部設定](#inbound-internal-settings)
 
-   ![選擇 [合約] 圖格](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
+   如需屬性說明，請參閱本節中的資料表。
 
-5. 在 [合約]**** 之下，選擇 [新增]****。
+1. 當您完成時，請務必選取 **[確定]** 來儲存您的設定。
 
-   ![選擇 [新增]](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
+<a name="inbound-identifiers"></a>
 
-6. 在 [新增]**** 之下，輸入合約的 [名稱]****。 
-   針對 [合約類型]，選取 **X12**。 
-   選取合約的 [主機夥伴]****、[主機身分識別]****、[來賓夥伴]**** 和 [來賓身分識別]****。 
-   如需更多屬性詳細資訊，請參閱此步驟中的資料表。
+### <a name="receive-settings---identifiers"></a>接收設定-識別碼
 
-    ![提供合約詳細資料](./media/logic-apps-enterprise-integration-x12/x12-1.png)  
-
-    | 屬性 | 描述 |
-    | --- | --- |
-    | 名稱 |合約的名稱 |
-    | 合約類型 | 應該是 X12 |
-    | 主控夥伴 |合約需要主控夥伴和來賓夥伴。 主機夥伴代表設定合約的組織。 |
-    | 主控身分識別 |主控夥伴的識別碼 |
-    | 來賓夥伴 |合約需要主控夥伴和來賓夥伴。 來賓夥伴代表與主控夥伴有生意往來的組織。 |
-    | 來賓身分識別 |來賓合作夥伴的識別碼 |
-    | 接收設定 |這些屬性會套用到合約所接收的所有訊息。 |
-    | 傳送設定 |這些屬性會套用到合約所傳送的所有訊息。 |  
-
-   > [!NOTE]
-   > X12 合約的解析取決於比對合作夥伴與內送郵件中定義的傳送者辨識符號與識別碼，以及接收者辨識符號與識別碼。 如果您夥伴的這些值變更，請同時更新合約。
-
-## <a name="configure-how-your-agreement-handles-received-messages"></a>設定合約處理所收到訊息的方式
-
-您現在已經設定合約屬性，您可以設定此合約如何識別及處理您透過此合約從夥伴接收的內送訊息。
-
-1.  在 [新增]**** 之下，選取 [接收設定]****。
-根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 如需屬性說明，請參閱本節中的資料表。
-
-    [接收設定]**** 分成下列各區段：識別碼、通知、結構描述、信封、控制編號、驗證和內部設定。
-
-2. 完成後，請務必選擇 [確定]**** 以儲存設定。
-
-您的合約現在已準備好處理符合您所選設定的內送訊息。
-
-### <a name="identifiers"></a>識別碼
-
-![設定識別碼屬性](./media/logic-apps-enterprise-integration-x12/x12-2.png)  
+![輸入訊息的識別碼屬性](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-identifiers.png)
 
 | 屬性 | 描述 |
-| --- | --- |
-| ISA1 (授權辨識符號) |從下拉式清單中選取授權辨識符號值。 |
-| ISA2 |選擇性。 輸入授權資訊值。 如果您為 ISA1 輸入的值是 00 以外的值，請最少輸入 1 個，最多 10 個英數字元。 |
-| ISA3 (安全性辨識符號) |從下拉式清單中選取安全性辨識符號值。 |
-| ISA4 |選擇性。 輸入安全性資訊值。 如果您為 ISA3 輸入的值是 00 以外的值，請最少輸入 1 個，最多 10 個英數字元。 |
+|----------|-------------|
+| **ISA1 (授權辨識符號)** | 您想要使用的授權辨識符號值。 預設值為 [ **00-沒有授權資訊**]。 <p>**注意**：如果您選取其他值，請指定**ISA2**屬性的值。 |
+| **ISA2** | 當**ISA1**屬性不是00時，所要使用的授權資訊值 **（不存在授權資訊）**。 此屬性值必須至少有一個英數位元，最多10個字元。 |
+| **ISA3 (安全性辨識符號)** | 您想要使用的安全性辨識符號值。 預設值為 [ **00-沒有安全性資訊**]。 <p>**注意**：如果您選取其他值，請指定**ISA4**屬性的值。 |
+| **ISA4** | 當**ISA3**屬性不是**00-沒有安全性資訊**時，所要使用的安全性資訊值。 此屬性值必須至少有一個英數位元，最多10個字元。 |
+|||
 
-### <a name="acknowledgment"></a>通知
+<a name="inbound-acknowledgement"></a>
 
-![設定通知屬性](./media/logic-apps-enterprise-integration-x12/x12-3.png) 
+### <a name="receive-settings---acknowledgement"></a>接收設定-通知
 
-| 屬性 | 描述 |
-| --- | --- |
-| 預期 TA1 |將技術通知傳回給交換傳送者 |
-| 預期 FA |將功能通知傳回給交換傳送者。 接著，根據結構描述版本，選取您想要 997 或 999 通知 |
-| 包含 AK2/IK2 迴圈 |在功能通知中針對已接受的交易集啟用 AK2 迴圈的產生 |
-
-### <a name="schemas"></a>結構描述
-
-選取每個交易類型 (ST1) 和傳送者應用程式 (GS2) 的結構描述。 接收管線會比對內送訊息中 ST1 和 GS2 的值與您在此處設定的值，以及比對內送訊息的結構描述與您在此處設定的結構描述，來解譯內送訊息。
-
-![選取結構描述](./media/logic-apps-enterprise-integration-x12/x12-33.png) 
+![輸入訊息的確認](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-acknowledgement.png)
 
 | 屬性 | 描述 |
-| --- | --- |
-| 版本 |選取 X12 版本 |
-| 交易類型 (ST01) |選取交易類型 |
-| 傳送者應用程式 (GS02) |選取傳送者應用程式 |
-| 結構描述 |選取您要使用的結構描述檔案。 結構描述已新增到您的整合帳戶。 |
+|----------|-------------|
+| **預期的 TA1** | 將技術通知 (TA1) 傳回給交換傳送者。 |
+| **預期的 FA** | 將功能通知 (FA) 傳回給交換傳送者。 <p>針對 [ **FA 版本**] 屬性，根據架構版本，選取997或999通知。 <p>若要在功能通知中針對已接受的交易集啟用產生 AK2 迴圈，請選取 [**包含 AK2/IK2 迴圈**]。 |
+||||
 
-> [!NOTE]
-> 設定要上傳到[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。
+<a name="inbound-schemas"></a>
 
-### <a name="envelopes"></a>信封
+### <a name="receive-settings---schemas"></a>接收設定-架構
 
-![指定交易集中的分隔符號︰選擇 [標準識別碼] 或 [重複分隔符號]](./media/logic-apps-enterprise-integration-x12/x12-34.png)
+![輸入訊息的架構](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-schemas.png)
 
-| 屬性 | 描述 |
-| --- | --- |
-| ISA11 使用方法 |指定要用於交易集中的分隔符號︰ <p>選取 [標準識別碼]**** 以使用句號 (.) 做為小數點標記，而不是 EDI 接收管線中內送文件的小數點標記。 <p>選取 [**重複分隔符號**] 以指定重複出現的簡單資料元素或重複資料結構的分隔符號。 例如，插入號 (^) 通常會做為重複分隔符號。 針對 HIPAA 結構描述，您只能使用插入號。 |
-
-### <a name="control-numbers"></a>控制編號
-
-![選取如何處理控制編號重複項目](./media/logic-apps-enterprise-integration-x12/x12-35.png) 
+在此區段中，請針對每個交易類型（ST01）和傳送者應用程式（GS02），從您的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)中選取[架構](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 EDI 接收管線會將您在此區段中設定的值和架構與內送訊息中的 ST01 和 GS02 值，以及傳入訊息的架構進行比對，以反組譯傳入訊息。 當您完成每個資料列之後，就會自動顯示新的空白資料列。
 
 | 屬性 | 描述 |
-| --- | --- |
-| 不允許交換控制編號重複 |封鎖重複的交換。 檢查已接收之交換控制編號的交換控制編號 (ISA13)。 如果偵測到相符項目，接收管線就不會處理交換。 您可以提供 [檢查 ISA13 是否重複的天數間隔]** 的值，以指定執行檢查的天數。 |
-| 不允許群組控制編號重複 |封鎖有重複群組控制編號的交換。 |
-| 不允許交易集控制編號重複 |封鎖有重複交易集控制編號的交換。 |
+|----------|-------------|
+| **版本** | 架構的 X12 版本 |
+| **交易類型 (ST01)** | 交易類型 |
+| **傳送者應用程式 (GS02)** | 寄件者應用程式 |
+| **Schema** | 您想要使用的架構檔案 |
+|||
 
-### <a name="validation"></a>驗證
+<a name="inbound-envelopes"></a>
 
-![設定已接收訊息的驗證屬性](./media/logic-apps-enterprise-integration-x12/x12-36.png) 
+### <a name="receive-settings---envelopes"></a>接收設定-信封
 
-當您完成每個驗證資料列時，將會自動新增另一個驗證資料列。 如果您未指定任何規則，則驗證會使用「預設」資料列。
-
-| 屬性 | 描述 |
-| --- | --- |
-| 訊息類型 |選取 EDI 訊息類型。 |
-| EDI 驗證 |依照結構描述的 EDI 屬性、長度限制、空白資料元素和尾端分隔符號定義，在資料類型上執行 EDI 驗證。 |
-| 擴充驗證 |如果資料類型不是 EDI，則在資料元素要求時才進行驗證，且允許重複、列舉和資料元素長度驗證 (最小/最大)。 |
-| 允許前置/尾端零 |保留任何額外的前置或尾端零及空格字元。 請勿移除這些字元。 |
-| 修剪前置/尾端零 |移除前置或尾端零及空格字元。 |
-| 尾端分隔符號原則 |產生尾端分隔符號。 <p>選取 [不允許]****，禁止在已接收的交換中使用尾端分隔符號。 如果交換具有尾端分隔符號，則會被宣告為無效。 <p>選取 [選用]**** 以接受具有或不具有結尾分隔字元的交換。 <p>如果交換必須具備尾端分隔符號，請選取 [強制性]****。 |
-
-### <a name="internal-settings"></a>內部設定
-
-![選取內部設定](./media/logic-apps-enterprise-integration-x12/x12-37.png) 
+![用於輸入訊息之交易集的分隔符號](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-envelopes.png)
 
 | 屬性 | 描述 |
-| --- | --- |
-| 將隱含的小數格式 "Nn" 轉換為 10 進制數值 |將使用 "Nn" 格式指定的 EDI 數字轉換為 10 進制數值 |
-| 如果允許尾端分隔符號，則建立空的 XML 標籤 |選取此核取方塊，讓交換傳送者在尾端分隔符號包含空的 XML 標籤。 |
-| 將交換分割為交易集 - 發生錯誤時暫停交易集|套用適當的信封至交易集，將交換中每個交易集剖析為個別的 XML 文件。 只暫停驗證失敗的交易。 |
-| 將交換分割為交易集 - 發生錯誤時暫停交換|套用適當的信封，將交換中每個交易集剖析為個別的 XML 文件。 如果交換中有一或多個交易集無法通過驗證，則會暫停整個交換。 | 
-| 保留交換 - 發生錯誤時暫停交易集 |讓交換維持不變，建立整個批次交換的 XML 文件。 只暫停未通過驗證的交易集，而繼續處理所有其他交易集。 |
-| 保留交換 - 發生錯誤時暫停交換 |讓交換維持不變，建立整個批次交換的 XML 文件。 如果交換中有一或多個交易集無法通過驗證，則會暫停整個交換。 |
+|----------|-------------|
+| **ISA11 使用方法** | 要在交易集中使用的分隔符號： <p>- **標準識別碼**：使用句號（.）作為十進位標記法，而不是 EDI 接收管線中傳入檔的十進位標記法。 <p>- **重複分隔符號**：指定重複出現的簡單資料元素或重複資料結構的分隔符號。 例如，插入號 (^) 通常會做為重複分隔符號。 針對 HIPAA 結構描述，您只能使用插入號。 |
+|||
 
-## <a name="configure-how-your-agreement-sends-messages"></a>設定合約傳送訊息的方式
+<a name="inbound-control-numbers"></a>
 
-您可以設定此合約如何識別及處理您透過此合約傳送給夥伴的外寄訊息。
+### <a name="receive-settings---control-numbers"></a>接收設定-控制編號
 
-1.  在 [新增]**** 之下，選取 [傳送設定]****。
-根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 如需屬性說明，請參閱本節中的資料表。
-
-    [傳送設定]**** 分成下列各區段：識別碼、通知、結構描述、信封、字元集和分隔符號、控制編號以及驗證。
-
-2. 完成後，請務必選擇 [確定]**** 以儲存設定。
-
-您的合約現在已準備好處理符合您所選設定的外寄訊息。
-
-### <a name="identifiers"></a>識別碼
-
-![設定識別碼屬性](./media/logic-apps-enterprise-integration-x12/x12-4.png)  
+![處理輸入訊息的控制編號重複](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-control-numbers.png) 
 
 | 屬性 | 描述 |
-| --- | --- |
-| 授權辨識符號 (ISA1) |從下拉式清單中選取授權辨識符號值。 |
-| ISA2 |輸入授權資訊值。 如果此值不是 00，則請最少輸入 1 個，最多 10 個英數字元。 |
-| 安全性辨識符號 (ISA3) |從下拉式清單中選取安全性辨識符號值。 |
-| ISA4 |輸入安全性資訊值。 如果此值不是 00，則在 [值 (ISA4)] 文字方塊中，請最少輸入 1 個，最多 10 個英數字元值。 |
+|----------|-------------|
+| **不允許交換控制編號重複** | 封鎖重複的交換。 檢查已接收之交換控制編號的交換控制編號（ISA13）。 如果偵測到相符的，EDI 接收管線就不會處理交換。 <p><p>若要指定執行檢查的天數，請輸入 [**檢查重複的 ISA13 間隔（天）** ] 屬性的值。 |
+| **不允許群組控制編號重複** | 封鎖有重複群組控制編號的交換。 |
+| **不允許交易集控制編號重複** | 封鎖具有重複交易集控制編號的交換。 |
+|||
 
-### <a name="acknowledgment"></a>通知
+<a name="inbound-validations"></a>
 
-![設定通知屬性](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+### <a name="receive-settings---validations"></a>接收設定-驗證
 
-| 屬性 | 描述 |
-| --- | --- |
-| 預期 TA1 |將技術通知 (TA1) 傳回給交換傳送者。 此設定指定傳送訊息的主控夥伴向合約中的來賓合作夥伴要求通知。 主控夥伴根據合約的「接收設定」，預期有這些通知。 |
-| 預期 FA |將功能通知 (FA) 傳回給交換傳送者。 根據您正在使用的結構描述版本，選取您想要 997 或 999 通知。 主控夥伴根據合約的「接收設定」，預期有這些通知。 |
-| FA 版本 |選取 FA 版本 |
+![驗證輸入訊息](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-validations.png)
 
-### <a name="schemas"></a>結構描述
-
-![選取要使用的結構描述](./media/logic-apps-enterprise-integration-x12/x12-5.png)  
+**預設**的資料列會顯示用於 EDI 訊息類型的驗證規則。 如果您想要定義不同的規則，請選取您要將規則設定為**true**的每個方塊。 當您完成每個資料列之後，就會自動顯示新的空白資料列。
 
 | 屬性 | 描述 |
-| --- | --- |
-| 版本 |選取 X12 版本 |
-| 交易類型 (ST01) |選取交易類型 |
-| SCHEMA |選取要使用的結構描述。 結構描述位於您的整合帳戶中。 若先選取結構描述，它會自動設定版本與交易類型  |
+|----------|-------------|
+| **訊息類型** | EDI 訊息類型 |
+| **EDI 驗證** | 依照結構描述的 EDI 屬性、長度限制、空白資料元素和尾端分隔符號定義，在資料類型上執行 EDI 驗證。 |
+| **擴充驗證** | 如果資料類型不是 EDI，則會在資料元素需求上進行驗證，並允許進行重複、列舉和資料元素長度驗證（最小或最大）。 |
+| **允許前置/尾端零** | 保留任何額外的前置或尾端零和空白字元。 請勿移除這些字元。 |
+| **修剪前置/尾端零** | 移除任何開頭或尾端的零和空白字元。 |
+| **尾端分隔符號原則** | 產生尾端分隔符號。 <p>- **不允許**：禁止輸入交換中的尾端分隔符號和分隔符號。 如果交換具有尾端分隔符號，則會被宣告為無效。 <p>- **選擇性**：接受包含或不含尾端分隔符號的交換。 <p>- **強制**：輸入交換必須有尾端分隔符號和分隔符號。 |
+|||
 
-> [!NOTE]
-> 設定要上傳到[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)的必要[結構描述](../logic-apps/logic-apps-enterprise-integration-schemas.md)。
+<a name="inbound-internal-settings"></a>
 
-### <a name="envelopes"></a>信封
+### <a name="receive-settings---internal-settings"></a>接收設定-內部設定
 
-![指定交易集中的分隔符號︰選擇 [標準識別碼] 或 [重複分隔符號]](./media/logic-apps-enterprise-integration-x12/x12-6.png) 
-
-| 屬性 | 描述 |
-| --- | --- |
-| ISA11 使用方法 |指定要用於交易集中的分隔符號︰ <p>選取 [標準識別碼]**** 以使用句號 (.) 做為小數點標記，而不是 EDI 接收管線中內送文件的小數點標記。 <p>選取 [**重複分隔符號**] 以指定重複出現的簡單資料元素或重複資料結構的分隔符號。 例如，插入號 (^) 通常會做為重複分隔符號。 針對 HIPAA 結構描述，您只能使用插入號。 |
-
-### <a name="control-numbers"></a>控制編號
-
-![指定控制編號屬性](./media/logic-apps-enterprise-integration-x12/x12-8.png) 
+![輸入訊息的內部設定](./media/logic-apps-enterprise-integration-x12/x12-receive-settings-internal-settings.png)
 
 | 屬性 | 描述 |
-| --- | --- |
-| 控制版本編號 (ISA12) |選取 X12 標準的版本 |
-| 使用狀況指示符號 (ISA15) |選取交換的內容。  值是資訊、生產資料或測試資料 |
-| 結構描述 |產生 X12 編碼交換的 GS 和 ST 區段，它會將這些區段傳送至「傳送管線」 |
-| GS1 |選擇性，請從下拉式清單選取功能代碼的值 |
-| GS2 |選擇性，應用程式寄件者 |
-| GS3 |選擇性，應用程式接收者 |
-| GS4 |選擇性，請選取 CCYYMMDD 或 YYMMDD |
-| GS5 |選擇性，請選取 HHMM、HHMMSS 或 HHMMSSdd |
-| GS7 |選擇性，請從下拉式清單選取負責單位的值 |
-| GS8 |選擇性，文件的版本 |
-| 交換控制編號 (ISA13) |必要，輸入交換控制編號的值範圍。 請輸入最小為 1，最大為 999999999 的數值 |
-| 群組控制編號 (GS06) |必要，請輸入群組控制編號的數字範圍。 請輸入最小為 1，最大為 999999999 的數值 |
-| 交易集控制編號 (ST02) |必要，請輸入交易集控制編號的數字範圍。 請輸入最小為 1，最大為 999999999 的數值範圍 |
-| 前置詞 |選擇性，針對在通知中使用的交易集控制編號範圍指定。 在中間的兩個欄位輸入數值，在前置詞和尾碼欄位輸入英數字元值 (如有需要)。 中間欄位是必要欄位，而且包含控制編號的最小值和最大值 |
-| 後置詞 |選擇性，針對在通知中使用的交易集控制編號範圍指定。 在中間的兩個欄位輸入數值，在前置詞和尾碼欄位輸入英數字元值 (如有需要)。 中間欄位是必要欄位，而且包含控制編號的最小值和最大值 |
+|----------|-------------|
+| **將隱含的小數格式 Nn 轉換為10進制數值** | 將以 "Nn" 格式指定的 EDI 數位轉換成以10為基底的數值。 |
+| **如果允許尾端分隔符號，則建立空的 XML 標籤** | 讓交換傳送者為尾端分隔符號包含空的 XML 標記。 |
+| **將交換分割為交易集 - 發生錯誤時暫停交易集** | 藉由將適當的信封套用至交易集，將交換中的每個交易集剖析為個別的 XML 檔。 僅暫停驗證失敗的交易。 |
+| **將交換分割為交易集 - 發生錯誤時暫停交換** | 藉由套用適當的信封，將交換中的每個交易集剖析為個別的 XML 檔。 如果交換中有一或多個交易集無法通過驗證，則暫停整個交換。 |
+| **保留交換 - 發生錯誤時暫停交易集** | 將交換保持不變，並建立整個批次交換的 XML 檔。 只暫停驗證失敗的交易集，但繼續處理所有其他交易集。 |
+| **保留交換 - 發生錯誤時暫停交換** |讓交換維持不變，建立整個批次交換的 XML 文件。 如果交換中有一或多個交易集無法通過驗證，則會暫停整個交換。 |
+|||
 
-### <a name="character-sets-and-separators"></a>字元集和分隔符號
+<a name="send-settings"></a>
 
-除了字元集，您還可以為每個訊息類型輸入一組不同的分隔符號。 如果指定的訊息結構描述未指定字元集，則會使用預設字元集。
+## <a name="send-settings"></a>傳送設定
 
-![指定不同訊息類型的分隔符號](./media/logic-apps-enterprise-integration-x12/x12-9.png) 
+設定協定屬性之後，您可以設定此合約如何識別及處理您透過此合約傳送給夥伴的輸出訊息。
+
+1. 在 [新增]**** 之下，選取 [傳送設定]****。
+
+1. 根據您與其交換訊息之夥伴所簽署的合約，設定這些屬性。 如需屬性說明，請參閱本節中的資料表。
+
+   **傳送設定**會組織成下列各節：
+
+   * [識別碼](#outbound-identifiers)
+   * [通知](#outbound-acknowledgement)
+   * [結構描述](#outbound-schemas)
+   * [信封](#outbound-envelopes)
+   * [控制版本號碼](#outbound-control-version-number)
+   * [控制編號](#outbound-control-numbers)
+   * [字元集和分隔符號](#outbound-character-sets-separators)
+   * [驗證](#outbound-validation)
+
+1. 當您完成時，請務必選取 **[確定]** 來儲存您的設定。
+
+<a name="outbound-identifiers"></a>
+
+### <a name="send-settings---identifiers"></a>傳送設定-識別碼
+
+![輸出訊息的識別碼屬性](./media/logic-apps-enterprise-integration-x12/x12-send-settings-identifiers.png)
 
 | 屬性 | 描述 |
-| --- | --- |
-| 要使用的字元集 |若要驗證屬性，請選取 X12 字元集。 選項包括 [基本]、[延伸] 和 [UTF8]。 |
-| 結構描述 |從下拉式清單中選取結構描述。 在您完成每個資料列時，便會自動新增一個資料列。 針對選取的結構描述，根據下面的分隔符號說明，選取您要使用的分隔符號集。 |
-| 輸入類型 |從下拉式清單中選取輸入類型。 |
-| 元件分隔符號 |若要分隔複合的資料元素，請輸入單一字元。 |
-| 資料元素分隔符號 |若要分隔複合資料元素內的簡單資料元素，請輸入單一字元。 |
-| 取代字元 |輸入在產生輸出 X12 訊息時，用於取代承載資料中所有分隔符號字元的取代字元。 |
-| 區段結束字元 |若要指出 EDI 區段的結尾，請輸入單一字元。 |
-| 後置詞 |選取與區段識別項一起使用的字元。 如果指定尾碼，則區段結束字元資料元素可以空白。 如果區段結束字元留空，則必須指定尾碼。 |
+|----------|-------------|
+| **ISA1 (授權辨識符號)** | 您想要使用的授權辨識符號值。 預設值為 [ **00-沒有授權資訊**]。 <p>**注意**：如果您選取其他值，請指定**ISA2**屬性的值。 |
+| **ISA2** | 當**ISA1**屬性不是00時，所要使用的授權資訊值 **（不存在授權資訊）**。 此屬性值必須至少有一個英數位元，最多10個字元。 |
+| **ISA3 (安全性辨識符號)** | 您想要使用的安全性辨識符號值。 預設值為 [ **00-沒有安全性資訊**]。 <p>**注意**：如果您選取其他值，請指定**ISA4**屬性的值。 |
+| **ISA4** | 當**ISA3**屬性不是**00-沒有安全性資訊**時，所要使用的安全性資訊值。 此屬性值必須至少有一個英數位元，最多10個字元。 |
+|||
+
+<a name="outbound-acknowledgement"></a>
+
+### <a name="send-settings---acknowledgement"></a>傳送設定-通知
+
+![輸出訊息的通知屬性](./media/logic-apps-enterprise-integration-x12/x12-send-settings-acknowledgement.png)
+
+| 屬性 | 描述 |
+|----------|-------------|
+| **預期的 TA1** | 將技術通知 (TA1) 傳回給交換傳送者。 <p>此設定指定傳送訊息的主夥伴會向合約中的來賓夥伴要求通知。 根據合約的 [接收設定]，主機合作夥伴應該會收到這些通知。 |
+| **預期的 FA** | 將功能通知 (FA) 傳回給交換傳送者。 針對 [ **FA 版本**] 屬性，根據架構版本，選取997或999通知。 <p>這項設定會指定傳送訊息的主夥伴在合約中要求來自來賓夥伴的確認。 根據合約的 [接收設定]，主機合作夥伴應該會收到這些通知。 |
+|||
+
+<a name="outbound-schemas"></a>
+
+### <a name="send-settings---schemas"></a>傳送設定-架構
+
+![輸出訊息的架構](./media/logic-apps-enterprise-integration-x12/x12-send-settings-schemas.png)
+
+在此區段中，請從您的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)中，為每個交易類型（ST01）選取一個[架構](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 當您完成每個資料列之後，就會自動顯示新的空白資料列。
+
+| 屬性 | 描述 |
+|----------|-------------|
+| **版本** | 架構的 X12 版本 |
+| **交易類型 (ST01)** | 架構的交易類型 |
+| **Schema** | 您想要使用的架構檔案。 如果您先選取架構，則會自動設定版本和交易類型。 |
+|||
+
+<a name="outbound-envelopes"></a>
+
+### <a name="send-settings---envelopes"></a>傳送設定-信封
+
+![要用於輸出訊息的交易集中的分隔符號](./media/logic-apps-enterprise-integration-x12/x12-send-settings-envelopes.png)
+
+| 屬性 | 描述 |
+|----------|-------------|
+| **ISA11 使用方法** | 要在交易集中使用的分隔符號： <p>- **標準識別碼**：在 EDI 傳送管線中，使用句號（.）作為十進位標記法，而不是輸出檔案的十進位標記法。 <p>- **重複分隔符號**：指定重複出現的簡單資料元素或重複資料結構的分隔符號。 例如，插入號 (^) 通常會做為重複分隔符號。 針對 HIPAA 結構描述，您只能使用插入號。 |
+|||
+
+<a name="outbound-control-version-number"></a>
+
+### <a name="send-settings---control-version-number"></a>傳送設定-控制版本號碼
+
+![輸出訊息的控制版本號碼](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-version-number.png)
+
+在此區段中，請從您的[整合帳戶](../logic-apps/logic-apps-enterprise-integration-accounts.md)中選取每個交換的[架構](../logic-apps/logic-apps-enterprise-integration-schemas.md)。 當您完成每個資料列之後，就會自動顯示新的空白資料列。
+
+| 屬性 | 描述 |
+|----------|-------------|
+| **控制版本編號 (ISA12)** | X12 標準的版本 |
+| **使用狀況指示符號 (ISA15)** | 交換的內容，也就是**測試**資料、**資訊**資料或**實際**執行資料 |
+| **Schema** | 要用來針對傳送至 EDI 傳送管線的 X12 編碼交換產生 GS 和 ST 區段的架構。 |
+| **GS1** | （選擇性）選取功能程式碼。 |
+| **GS2** | （選擇性）指定應用程式寄件者。 |
+| **GS3** | （選擇性）指定應用程式接收者。 |
+| **GS4** | （選擇性）選取 [ **CCYYMMDD** ] 或 [ **YYMMDD**]。 |
+| **GS5** | 選擇性，選取 [ **HHMM**]、[ **HHMMSS**] 或 [ **HHMMSSdd**]。 |
+| **GS7** | （選擇性）選取負責機關的值。 |
+| **GS8** | 選擇性，指定架構檔版本。 |
+|||
+
+<a name="outbound-control-numbers"></a>
+
+### <a name="send-settings---control-numbers"></a>傳送設定-控制編號
+
+![輸出訊息的控制編號](./media/logic-apps-enterprise-integration-x12/x12-send-settings-control-numbers.png)
+
+| 屬性 | 描述 |
+|----------|-------------|
+| **交換控制編號 (ISA13)** | 交換控制編號的值範圍，其最小值為1，最大值為999999999 |
+| **群組控制編號 (GS06)** | 群組控制編號的值範圍，其最小值為1，最大值為999999999 |
+| **交易集控制編號 (ST02)** | 交易集控制編號的值範圍，其最小值為1，最大值為999999999 <p>- **Prefix**：選擇性，英數位元值 <br>- **尾碼**：選擇性，英數位元值 |
+|||
+
+<a name="outbound-character-sets-separators"></a>
+
+### <a name="send-settings---character-sets-and-separators"></a>傳送設定-字元集和分隔符號
+
+![輸出訊息中訊息類型的分隔符號](./media/logic-apps-enterprise-integration-x12/x12-send-settings-character-sets-separators.png)
+
+**預設**的資料列會顯示用來做為訊息架構分隔符號的字元集。 如果您不想要使用**預設**字元集，可以針對每種訊息類型輸入一組不同的分隔符號。 當您完成每個資料列之後，就會自動顯示新的空白資料列。
 
 > [!TIP]
 > 若要提供特殊字元值，請將合約編輯為 JSON，並為特殊字元提供 ASCII 值。
 
-### <a name="validation"></a>驗證
+| 屬性 | 描述 |
+|----------|-------------|
+| **要使用的字元集** | X12 字元集，也就是**基本**、**擴充**或**UTF8**。 |
+| **Schema** | 您想要使用的架構。 選取架構之後，請根據下面的分隔符號描述，選取您想要使用的字元集。 |
+| **輸入類型** | 字元集的輸入類型 |
+| **元件分隔符號** | 分隔複合資料元素的單一字元 |
+| **資料元素分隔符號** | 分隔複合資料中簡單資料元素的單一字元 |
+| **取代字元分隔符號** | 當產生輸出 X12 訊息時，取代裝載資料中所有分隔字元的取代字元 |
+| **區段結束字元** | 單一字元，表示 EDI 區段的結尾 |
+| **尾碼** | 要與區段識別碼一起使用的字元。 如果您指定尾碼，區段結束字元資料元素可以是空的。 如果區段結束字元為空白，您就必須指定尾碼。 |
+|||
 
-![設定傳送訊息的驗證屬性](./media/logic-apps-enterprise-integration-x12/x12-10.png) 
+<a name="outbound-validation"></a>
 
-當您完成每個驗證資料列時，將會自動新增另一個驗證資料列。 如果您未指定任何規則，則驗證會使用「預設」資料列。
+### <a name="send-settings---validation"></a>傳送設定-驗證
+
+![輸出訊息的驗證屬性](./media/logic-apps-enterprise-integration-x12/x12-send-settings-validation.png) 
+
+**預設**的資料列會顯示用於 EDI 訊息類型的驗證規則。 如果您想要定義不同的規則，請選取您要將規則設定為**true**的每個方塊。 當您完成每個資料列之後，就會自動顯示新的空白資料列。
 
 | 屬性 | 描述 |
-| --- | --- |
-| 訊息類型 |選取 EDI 訊息類型。 |
-| EDI 驗證 |依照結構描述的 EDI 屬性、長度限制、空白資料元素和尾端分隔符號定義，在資料類型上執行 EDI 驗證。 |
-| 擴充驗證 |如果資料類型不是 EDI，則在資料元素要求時才進行驗證，且允許重複、列舉和資料元素長度驗證 (最小/最大)。 |
-| 允許前置/尾端零 |保留任何額外的前置或尾端零及空格字元。 請勿移除這些字元。 |
-| 修剪前置/尾端零 |移除前置或尾端零字元。 |
-| 尾端分隔符號原則 |產生尾端分隔符號。 <p>選取 [不允許]****，禁止在已傳送的交換中使用尾端分隔符號。 如果交換具有尾端分隔符號，則會被宣告為無效。 <p>選取 [選擇性]**** 以傳送包含或不含尾端分隔符號的交換。 <p>如果傳送的交換必須具備尾端分隔符號，請選取 [強制性]****。 |
+|----------|-------------|
+| **訊息類型** | EDI 訊息類型 |
+| **EDI 驗證** | 依照結構描述的 EDI 屬性、長度限制、空白資料元素和尾端分隔符號定義，在資料類型上執行 EDI 驗證。 |
+| **擴充驗證** | 如果資料類型不是 EDI，則會在資料元素需求上進行驗證，並允許進行重複、列舉和資料元素長度驗證（最小或最大）。 |
+| **允許前置/尾端零** | 保留任何額外的前置或尾端零和空白字元。 請勿移除這些字元。 |
+| **修剪前置/尾端零** | 移除任何開頭或尾端的零和空白字元。 |
+| **尾端分隔符號原則** | 產生尾端分隔符號。 <p>- **不允許**：禁止輸出交換中的尾端分隔符號和分隔符號。 如果交換具有尾端分隔符號，則會被宣告為無效。 <p>- **選擇性**：傳送具有或不含尾端分隔符號的交換。 <p>- **必要**：輸出交換必須有尾端分隔符號。 |
+|||
 
-## <a name="find-your-created-agreement"></a>尋找您建立的合約
+<a name="hipaa-schemas"></a>
 
-1.  完成所有合約屬性的設定之後，請在 [新增]**** 頁面中選擇 [確定]****，以完成合約建立並回到整合帳戶。
+## <a name="hipaa-schemas-and-message-types"></a>HIPAA 架構和訊息類型
 
-    您新增的合約現在顯示於您的 [合約]**** 清單中。
+當您使用 HIPAA 架構和277或837訊息類型時，您需要執行一些額外的步驟。 這些訊息類型的[檔版本號碼（GS8）](#outbound-control-version-number)有9個以上的字元，例如 "005010X222A1"。 此外，某些檔版本號碼會對應到 variant 訊息類型。 如果您未在架構中參考正確的訊息類型，且您的合約中出現下列錯誤訊息：
 
-2.  您也可以在整合帳戶概觀中檢視您的合約。 在整合帳戶功能表上，選擇 [概觀]****，然後選取 [合約]**** 圖格。
+`"The message has an unknown document type and did not resolve to any of the existing schemas configured in the agreement."`
 
-    ![選擇 [合約] 圖格](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
+下表列出受影響的訊息類型、任何變體，以及對應至這些訊息類型的檔版本號碼：
+
+| 訊息類型或變體 |  描述 | 檔版本號碼（GS8） |
+|-------------------------|--------------|-------------------------------|
+| 277 | 醫療保健資訊狀態通知 | 005010X212 |
+| 837_I | 醫療保健索賠牙科 | 004010X096A1 <br>005010X223A1 <br>005010X223A2 |
+| 837_D | 醫療保健索賠機構 | 004010X097A1 <br>005010X224A1 <br>005010X224A2 |
+| 837_P | 醫療保健索賠專業人員 | 004010X098A1 <br>005010X222 <br>005010X222A1 |
+|||
+
+當您使用這些檔版本號碼時，您也需要停用 EDI 驗證，因為它們會導致字元長度不正確錯誤。
+
+若要指定這些檔版本號碼和訊息類型，請遵循下列步驟：
+
+1. 在您的 HIPAA 架構中，將目前的訊息類型取代為您要使用之檔版本號碼的 variant 訊息類型。
+
+   例如，假設您想要使用具有`005010X222A1` `837`訊息類型的檔版本號碼。 在您的架構中， `"X12_00501_837"`改為以`"X12_00501_837_P"`值取代每個值。
+
+   若要更新您的架構，請遵循下列步驟：
+
+   1. 在 Azure 入口網站中，移至您的整合帳戶。 尋找並下載您的架構。 取代訊息類型並重新命名架構檔案，然後將修訂過的架構上傳至您的整合帳戶。 如需詳細資訊，請參閱[編輯架構](../logic-apps/logic-apps-enterprise-integration-schemas.md#edit-schemas)。
+
+   1. 在 [您是合約的訊息設定] 中，選取修改過的架構。
+
+1. 在您的`schemaReferences`合約物件中，加入另一個專案，以指定與您的檔版本號碼相符的 variant 訊息類型。
+
+   例如，假設您想要使用`005010X222A1` `837`訊息類型的檔版本號碼。 您的合約具有`schemaReferences`下列屬性和值的區段：
+
+   ```json
+   "schemaReferences": [
+      {
+         "messageId": "837",
+         "schemaVersion": "00501",
+         "schemaName": "X12_00501_837"
+      }
+   ]
+   ```
+
+   在`schemaReferences`本節中，新增具有下列值的另一個專案：
+
+   * `"messageId": "837_P"`
+   * `"schemaVersion": "00501"`
+   * `"schemaName": "X12_00501_837_P"`
+
+   當您完成時，您`schemaReferences`的區段看起來會像這樣：
+
+   ```json
+   "schemaReferences": [
+      {
+         "messageId": "837",
+         "schemaVersion": "00501",
+         "schemaName": "X12_00501_837"
+      },
+      {
+         "messageId": "837_P",
+         "schemaVersion": "00501",
+         "schemaName": "X12_00501_837_P"
+      }
+   ]
+   ```
+
+1. 在合約的訊息設定中，如果您使用**預設**值，請清除每個訊息類型或所有訊息類型的 [ **edi 驗證**] 核取方塊，以停用 edi 驗證。
+
+   ![停用所有訊息類型或每種訊息類型的驗證](./media/logic-apps-enterprise-integration-x12/x12-disable-validation.png) 
 
 ## <a name="connector-reference"></a>連接器參考
 
-如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/x12/)。 
+如需此連接器的其他技術詳細資料，例如連接器的 Swagger 檔案所述的動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/x12/)。
 
 > [!NOTE]
 > 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[適用于 ISE 的 B2B 訊息限制](../logic-apps/logic-apps-limits-and-config.md#b2b-protocol-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 
-* 了解其他 [Logic Apps 連接器](../connectors/apis-list.md)
+* 深入瞭解[Logic Apps 的其他連接器](../connectors/apis-list.md)

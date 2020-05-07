@@ -3,12 +3,12 @@ title: 利用 Azure Advisor 改善 Azure 應用程式的效能
 description: 使用 Advisor 將 Azure 部署的效能最佳化。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 405ec395feeb33b8511b9b915151b2ed9503c371
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443064"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787935"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>利用 Azure Advisor 改善 Azure 應用程式的效能
 
@@ -28,6 +28,10 @@ Azure Advisor 會識別設定較長 TTL 的流量管理員設定檔，並且建�
 > 若要取得建議，資料庫必須持續使用一週，而且那一週之內必須有一些一致的活動。 相較於隨機蹦出的活動，一致的查詢模式更有利於 SQL Database Advisor 最佳化。
 
 如需 SQL Database Advisor 的詳細資訊，請參閱[SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/)。
+
+## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>將您的儲存體用戶端程式庫更新為最新版本以提供更可靠的服務和效能
+
+針對客戶回報的問題以及由我們的 QA 流程主動找出的問題，最新版本的儲存體用戶端程式庫/ SDK 均提供了可解決上述問題的修正程式。 除了各項新功能，最新版本也提供了更高的可靠性及最佳化效能，能改善您使用 Azure 儲存體的整體經驗。 如果您使用的是過時版本，建議程式會提供您升級至最新版本 SDK 的建議和步驟。 這些建議適用于支援的語言-c + + 和 .Net。
 
 ## <a name="improve-app-service-performance-and-reliability"></a>改善 App Service 的效能和可靠性
 
@@ -73,6 +77,26 @@ Advisor 會識別不是複寫資料表、但可因轉換而受益的資料表，
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>設計您的儲存體帳戶，以避免達到最大訂用帳戶限制
 
 Azure 區域每個訂用帳戶最多可支援250個儲存體帳戶。 達到限制之後，您將無法在該區域/訂用帳戶組合中建立其他任何儲存體帳戶。 Advisor 將會檢查您的訂用帳戶和呈現建議，讓您針對任何接近達到上限的儲存體帳戶進行設計。
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>請考慮增加 VNet 閘道 SKU 的大小，以使用高 P2S 的位址
+
+每個閘道 SKU 只能支援指定的並行 P2S 連接計數。 如果您的連線計數接近閘道限制，則其他連線嘗試可能會失敗。 增加閘道的大小可讓您支援更多並行的 P2S 使用者。Advisor 會針對此提供建議和採取的步驟。
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>請考慮增加 VNet 閘道 SKU 的大小，以解決高 CPU
+
+在高流量負載之下，VPN 閘道可能會因為高 CPU 而捨棄封包。 您應該考慮升級 VPN 閘道 SKU，因為您的 VPN 一直都是在執行。增加 VPN 閘道的大小可確保連線不會因為高 CPU 而中斷。 Advisor provdes 建議，以主動解決此問題。 
+
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>載入時增加批次大小，以最大化負載輸送量、資料壓縮和查詢效能
+
+Advisor 可以藉由在載入資料庫時增加批次大小，偵測到您可以增加負載效能和輸送量。 您可以考慮使用 COPY 語句。 如果您無法使用 COPY 語句，請考慮在使用載入公用程式（例如 SQLBulkCopy API 或 BCP）時增加批次大小，這是一個很好的經驗法則，這是批次大小介於100K 到1M 個數據列之間。 這會增加負載輸送量、資料壓縮和查詢效能。
+
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>共置在相同區域內的儲存體帳戶，以在載入時將延遲降至最低
+
+Advisor 可以偵測到您從不同于 SQL 集區的區域載入。 您應該考慮從與 SQL 集區位於相同區域內的儲存體帳戶進行載入，以將載入資料時的延遲降至最低。 這有助於將延遲降到最低並增加負載效能。
+
+## <a name="unsupported-kubernetes-version-is-detected"></a>偵測到不支援的 Kubernetes 版本
+
+Advisor 可以偵測是否偵測到不支援的 Kubernetes 版本。 建議可協助確保 Kubernetes 叢集以支援的版本執行。
 
 ## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>將 Azure MySQL、Azure 于 postgresql 和 Azure 適用于 mariadb server 的效能優化 
 

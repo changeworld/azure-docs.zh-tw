@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: bf228e17ca24df9833f96f0c6fd3ef232cdf7ae6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be0f0a48e2fd334e2000c8a4b8c2e0101b291cef
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258989"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791862"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric 的容量規劃和調整
 
@@ -68,13 +68,13 @@ Resource Manager 範本的下列程式碼片段顯示您將宣告的屬性。 �
 1. 從 PowerShell，以`Disable-ServiceFabricNode`意圖`RemoveNode`執行，以停用您要移除的節點。 移除具有最高編號的節點類型。 例如，如果您有六個節點的叢集，請移除「MyNodeType_5」虛擬機器實例。
 2. 執行 `Get-ServiceFabricNode` 以確保節點已轉換為停用狀態。 如果沒有，請等到節點停用。 這可能需要幾個小時的時間才能執行每個節點。 請等到節點已轉換為停用狀態後，再繼續操作。
 3. 將 Vm 的數目減少為該節點類型的其中一個。 此時將會移除最高的 VM 執行個體。
-4. 視需要重複步驟 1 到 3，但是請永遠不要將主要節點類型的執行個體數目相應減少到少於可靠性層級所需的數目。 如需建議的行個體清單，請參閱[規劃 Service Fabric 叢集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
+4. 視需要重複步驟1到3，但永遠不會相應縮小主要節點類型中的實例數目，而不是可靠性層級所保證的大小。 如需建議的行個體清單，請參閱[規劃 Service Fabric 叢集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
 5. 一旦所有 Vm 都消失（以「向下」表示），fabric：/System/InfrastructureService/[node name] 就會顯示錯誤狀態。 然後，您可以更新叢集資源來移除節點類型。 您可以使用 ARM 範本部署，或透過[Azure resource manager](https://resources.azure.com)來編輯叢集資源。 這會啟動叢集升級，這會移除處於錯誤狀態的 fabric：/System/InfrastructureService/[node type] 服務。
  6. 在這之後，您可以選擇性地刪除 VMScaleSet，但您仍會看到 Service Fabric Explorer view 中的節點為「關閉」。 最後一個步驟是使用`Remove-ServiceFabricNodeState`命令來清除它們。
 
 ## <a name="horizontal-scaling"></a>水平調整
 
-您可以[手動](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down)或透過程式設計[方式](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling)進行水準調整。
+您可以[手動](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out)或透過程式設計[方式](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-programmatic-scaling)進行水準調整。
 
 > [!NOTE]
 > 如果您要調整具有銀級或金級耐久性的節點類型，則調整速度會變慢。
@@ -103,7 +103,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 相應放大所需的擴充功能需要更多考慮。例如：
 
-* Service Fabric 系統服務會在叢集中的主要節點類型中執行。 切勿關閉該節點類型的執行個體，或將其數目相應減少到低於可靠性層級保證所需的執行個體數目。 
+* Service Fabric 系統服務會在叢集中的主要節點類型中執行。 請勿關閉或相應縮小該節點類型的實例數目，讓您的實例數量少於可靠性層級所需的大小。 
 * 針對具狀態服務，您需要一定數目的節點，這些節點一律會維持可用性並保留服務的狀態。 您至少需要數個節點，其等於分割區或服務的目標複本集計數。
 
 若要手動相應縮小，請遵循下列步驟︰
@@ -111,7 +111,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 1. 從 PowerShell，以`Disable-ServiceFabricNode`意圖`RemoveNode`執行，以停用您要移除的節點。 移除具有最高編號的節點類型。 例如，如果您有六個節點的叢集，請移除「MyNodeType_5」虛擬機器實例。
 2. 執行 `Get-ServiceFabricNode` 以確保節點已轉換為停用狀態。 如果沒有，請等到節點停用。 這可能需要幾個小時的時間才能執行每個節點。 請等到節點已轉換為停用狀態後，再繼續操作。
 3. 將 Vm 的數目減少為該節點類型的其中一個。 此時將會移除最高的 VM 執行個體。
-4. 視需要重複步驟1到3，直到您布建所需的容量為止。 切勿將主要節點類型的執行個體數目相應減少到低於可靠性層級保證所需的數目。 如需建議的行個體清單，請參閱[規劃 Service Fabric 叢集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
+4. 視需要重複步驟1到3，直到您布建所需的容量為止。 請勿將主要節點類型的實例數目相應縮小為小於可靠性層級所保證的大小。 如需建議的行個體清單，請參閱[規劃 Service Fabric 叢集容量](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity)。
 
 若要手動相應縮小，請在所需的[虛擬機器擴展集](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate#virtualmachinescalesetosprofile)資源的 SKU 屬性中更新容量。
 
@@ -166,7 +166,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 ```
 
 > [!NOTE]
-> 當您相應減少叢集時，您會看到已移除的節點/VM 實例在 Service Fabric Explorer 中顯示為狀況不良狀態。 如需此行為的說明，請參閱[您可能會在 Service Fabric Explorer 中觀察](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#behaviors-you-may-observe-in-service-fabric-explorer)到的行為。 您可以：
+> 當您在叢集中進行調整時，您會看到已移除的節點/VM 實例在 Service Fabric Explorer 中顯示為狀況不良狀態。 如需此行為的說明，請參閱[您可能會在 Service Fabric Explorer 中觀察](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#behaviors-you-may-observe-in-service-fabric-explorer)到的行為。 您可以：
 > * 以適當的節點名稱呼叫[remove-servicefabricnodestate 命令](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps)。
 > * 在您的叢集中部署[Service Fabric 自動調整 helper 應用程式](https://github.com/Azure/service-fabric-autoscale-helper/)。 此應用程式可確保從 Service Fabric Explorer 清除相應減少的節點。
 

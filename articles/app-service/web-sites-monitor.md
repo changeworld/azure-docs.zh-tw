@@ -4,15 +4,15 @@ description: 了解如何使用 Azure 入口網站來監視 Azure App Service �
 author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 8baefcbfa1eb34bc6cd37e4325d9a9bfc11e2d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181217"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738094"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>監視 Azure App Service 中的應用程式
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)為[Azure 入口網站](https://portal.azure.com)中的 web 應用程式、行動裝置和 API 應用程式提供內建的監視功能。
@@ -49,7 +49,7 @@ App Service 中裝載的應用程式都必須遵守其可用資源的某些「�
 
 ![403 錯誤訊息][http403]
 
-如果超出應用程式的記憶體配額，則應用程式會重新啟動。
+如果超過應用程式記憶體配額，則會暫時停止應用程式。
 
 如果超過檔案系統配額時，任何寫入作業都將會失敗。 寫入作業失敗包括記錄的任何寫入。
 
@@ -131,8 +131,7 @@ App Service 中裝載的應用程式都必須遵守其可用資源的某些「�
 **CPU 百分比**：適用于基本、標準和高階方案中裝載的應用程式，因為它們可以相應放大。CPU 百分比是所有實例整體使用量的良好指示。
 
 ## <a name="metrics-granularity-and-retention-policy"></a>計量資料細微性和保留原則
-
-服務會記錄和匯總應用程式和 app service 方案的計量。 計量會保留90天。
+服務會記錄和匯總應用程式和 app service 方案的計量，並[根據這些規則來保留](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)。
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>在 Azure 入口網站中監視配額和計量
 若要檢閱影響應用程式的各種配額和計量狀態，請前往 [Azure 入口網站](https://portal.azure.com)。

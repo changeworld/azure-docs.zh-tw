@@ -1,18 +1,17 @@
 ---
-title: Pod 安全性最佳做法
-titleSuffix: Azure Kubernetes Service
+title: 開發人員最佳做法 - Azure Kubernetes Services (AKS) 中的 Pod 安全性
 description: 了解如何在 Azure Kubernetes Services (AKS) 中保護 Pod 的開發人員最佳做法
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1f093b5276ee7ab334043e57f97a108267c32c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d97ae5692a4cdc328833ce4c01a8114506a960a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804379"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779057"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) 中的 Pod 安全性最佳做法
 
@@ -75,7 +74,7 @@ spec:
 下列[相關聯的 AKS 開放原始碼專案][aks-associated-projects]可讓您自動驗證 pod，或從數位保存庫要求認證和金鑰：
 
 * Azure 資源的受控身分識別，以及
-* Azure Key Vault FlexVol 驅動程式
+* [為秘密存放區 CSI 驅動程式 Azure Key Vault 提供者](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
 
 Azure 技術支援不支援相關聯的 AKS 開放原始碼專案。 其提供用來從我們的社區收集意見反應和 bug。 不建議在生產環境中使用這些專案。
 
@@ -89,28 +88,28 @@ Azure 技術支援不支援相關聯的 AKS 開放原始碼專案。 其提供�
 
 如需 pod 身分識別的詳細資訊，請參閱[設定 AKS 叢集以使用 pod 受控識別和應用程式][aad-pod-identity]
 
-### <a name="use-azure-key-vault-with-flexvol"></a>搭配使用 Azure Key Vault 與 FlexVol
+### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>搭配使用 Azure Key Vault 與秘密存放區 CSI 驅動程式
 
-受控 Pod 身分識別非常適合用來向支援的 Azure 服務進行驗證。 您自己的服務或應用程式若沒有Azure 資源的受控身分識別，仍可使用認證或金鑰來進行驗證。 數位保存庫可用來儲存這些認證。
+使用 pod 身分識別專案可針對支援的 Azure 服務進行驗證。 如果您自己的服務或應用程式沒有適用于 Azure 資源的受控識別，您仍然可以使用認證或金鑰進行驗證。 數位保存庫可以用來儲存這些秘密內容。
 
-當應用程式需要認證時會與數位保存庫通訊，擷取最新的認證，然後再連線到所需的服務。 這個數位保存庫可以是 Azure Key Vault。 下圖顯示使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程：
+當應用程式需要認證時，他們會與數位保存庫通訊、抓取最新的秘密內容，然後連接到所需的服務。 這個數位保存庫可以是 Azure Key Vault。 下圖顯示使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程：
 
-![使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
+![使用 Pod 受控身分識別從 Azure Key Vault 擷取認證的簡化工作流程](media/developer-best-practices-pod-security/basic-key-vault.png)
 
-有了 Key Vault，您就可以儲存並定期輪替使用祕密，例如認證、儲存體帳戶金鑰或憑證。 您可以使用 FlexVolum 整合 Azure Key Vault 與 AKS 叢集。 FlexVolume 驅動程式可讓 AKS 叢集從 Key Vault 原生擷取認證，並只會將認證安全地提供給提出要求的 Pod。 請和叢集操作員一起將 Key Vault FlexVol 驅動程式部署到 AKS 節點。 您可以使用 Pod 受控身分識別向 Key Vault 要求存取權，並透過 FlexVolume 驅動程式擷取所需的認證。
+有了 Key Vault，您就可以儲存並定期輪替使用祕密，例如認證、儲存體帳戶金鑰或憑證。 您可以使用[秘密存放區 CSI 驅動程式的 Azure Key Vault 提供者](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)，將 AZURE KEY VAULT 與 AKS 叢集整合。 秘密存放區 CSI 驅動程式可讓 AKS 叢集以原生方式從 Key Vault 取出秘密內容，並安全地將其提供給要求的 pod。 請與您的叢集操作員合作，將密碼存放區 CSI 驅動程式部署至 AKS 背景工作節點。 您可以使用 pod 受控身分識別來要求存取 Key Vault，並透過秘密存放區 CSI 驅動程式抓取所需的秘密內容。
 
-使用 FlexVol 的 Azure Key Vault 適用于在 Linux pod 和節點上執行的應用程式和服務。
+具有秘密存放區 CSI 驅動程式的 Azure Key Vault，可用於需要1.16 或更高版本之 Kubernetes 版本的 Linux 節點和 pod。 針對 Windows 節點和 pod，必須要有1.18 或更高的 Kubernetes 版本。
 
 ## <a name="next-steps"></a>後續步驟
 
 本文著重在如何保護您的 Pod。 若要實作這些部分的一些內容，請參閱下列文章：
 
 * [搭配使用 Azure 資源的受控識別與 AKS][aad-pod-identity]
-* [整合 Azure Key Vault 與 AKS][aks-keyvault-flexvol]
+* [整合 Azure Key Vault 與 AKS][aks-keyvault-csi-driver]
 
 <!-- EXTERNAL LINKS -->
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo
-[aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
+[aks-keyvault-csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
 [aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects

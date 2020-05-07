@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04c6444723180c34f6605810260f5f865dff2d12
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368572"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790910"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric 護欄 
 部署 Service Fabric 叢集時，會將護欄置中，這將會在叢集設定無效時，使 Azure Resource Manager 部署失敗。 下列各節提供常見叢集設定問題的總覽，以及減輕這些問題所需的步驟。 
@@ -79,7 +79,7 @@ Service Fabric 叢集具有 [[可靠性層級](https://docs.microsoft.com/azure/
 請確定您的主要節點類型有足夠的虛擬機器，以滿足您叢集上所指定的可靠性。 如果虛擬機器會將虛擬機器擴展集帶入指定之可靠性層級的最小節點數目，您將無法將其移除。
 * 如果已正確指定可靠性層級，請確定您的主要節點類型中有足夠的節點，以確保可靠性層級的需求。 
 * 如果可靠性層級不正確，在起始任何虛擬機器擴展集作業之前，先在 Service Fabric 資源上起始變更，以降低可靠性層級，並等候它完成。
-* 如果可靠性層級為銅，請遵循下列[步驟](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)，正常地相應減少叢集。
+* 如果可靠性層級為銅，請遵循下列[步驟](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#manually-remove-vms-from-a-node-typevirtual-machine-scale-set)，正常地在您的叢集中進行調整。
 
 ## <a name="next-steps"></a>後續步驟
 * 在執行 Windows Server 的 VM 或電腦上建立叢集： [建立適用於 Windows Server 的 Service Fabric 叢集](service-fabric-cluster-creation-for-windows-server.md)

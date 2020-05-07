@@ -5,12 +5,13 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 5b50906fac613a4e7470b0e13d6f068c3872f625
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3833b27e9f90cbffa2320c84877d4eb5bb6520f7
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136901"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613263"
 ---
 # <a name="ingest-historical-telemetry-data"></a>內嵌歷程記錄遙測資料
 
@@ -58,7 +59,7 @@ ms.locfileid: "82136901"
 5. 移至您的主目錄。
 
     ```azurepowershell-interactive 
-    cd  
+    cd
     ```
 
 6. 執行下列命令。 這會將腳本下載至您的主目錄。
@@ -73,7 +74,7 @@ ms.locfileid: "82136901"
 
     ```azurepowershell-interactive 
 
-    ./generatePartnerCredentials.ps1   
+    ./generatePartnerCredentials.ps1
 
     ```
 
@@ -92,7 +93,7 @@ ms.locfileid: "82136901"
 - /**Devicemodel 傳遞**： devicemodel 傳遞對應至裝置的中繼資料，例如製造商和裝置類型，也就是閘道或節點。
 - /**裝置**：裝置對應至存在於伺服器陣列上的實體裝置。
 - /**SensorModel**： SensorModel 對應于感應器的中繼資料，例如製造商、感應器類型，也就是類比或數位，以及感應器測量，例如環境溫度和壓力。
-- /**感應器**：感應器會對應到記錄值的實體感應器。 感應器通常會連接到裝置識別碼為的裝置。  
+- /**感應器**：感應器會對應到記錄值的實體感應器。 感應器通常會連接到裝置識別碼為的裝置。
 
 
 |        DeviceModel   |  建議   |
@@ -101,16 +102,16 @@ ms.locfileid: "82136901"
 |          製造商            |         製造商的名稱    |
 |  ProductCode                    |  裝置產品代碼或型號名稱或數位。 例如，EnviroMonitor # 6800。  |
 |            連接埠          |     埠名稱和類型，也就是數位或類比。
-|     Name                 |  用來識別資源的名稱。 例如，模型名稱或產品名稱。
+|     名稱                 |  用來識別資源的名稱。 例如，模型名稱或產品名稱。
       描述     | 提供模型的有意義描述。
 |    屬性          |    製造商提供的其他屬性。   |
 |    **裝置**             |                      |
 |   DeviceModelId     |     相關聯裝置型號的識別碼。  |
 |  HardwareId          | 裝置的唯一識別碼，例如 MAC 位址。
 |  ReportingInterval        |   報告間隔（以秒為單位）。
-|  位置            |  裝置緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。   
+|  Location            |  裝置緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。
 |ParentDeviceId       |    此裝置所連接之父裝置的識別碼。 例如，連接到閘道的節點。 節點已 parentDeviceId 為閘道。  |
-|    Name            | 用來識別資源的名稱。 裝置合作夥伴必須傳送與合作夥伴端上的裝置名稱一致的名稱。 如果合作夥伴裝置名稱是 [使用者定義]，則相同的使用者定義名稱應傳播至 FarmBeats。|
+|    名稱            | 用來識別資源的名稱。 裝置合作夥伴必須傳送與合作夥伴端上的裝置名稱一致的名稱。 如果合作夥伴裝置名稱是 [使用者定義]，則相同的使用者定義名稱應傳播至 FarmBeats。|
 |     描述       |      提供有意義的描述。 |
 |     屬性    |  製造商提供的其他屬性。
 |     **SensorModel**        |          |
@@ -122,16 +123,16 @@ ms.locfileid: "82136901"
 |    SensorMeasures > 類型    |感應器遙測資料的測量類型。 系統定義的類型為 AmbientTemperature、CO2、Depth、ElectricalConductivity、LeafWetness、Length、LiquidLevel、Nitrate、O2、PH、Phosphate、PointInTime、Potassium、壓力、RainGauge、RelativeHumidity、Salinity、SoilMoisture、SoilTemperature、SolarRadiation、State、TimeDuration、UVRadiation、UVIndex、Volume、WindDirection、WindRun、WindSpeed、Evapotranspiration、PAR。 若要新增更多，請參閱/ExtendedType API。|
 |        SensorMeasures > 單位              | 感應器遙測資料的單位。 系統定義的單位為 NoUnit、攝氏、華氏、開氏、Rankine、Pascal、水星、PSI、毫米、釐米、量表、英寸、英尺、英里、公里、MilesPerHour、MilesPerSecond、KMPerHour、KMPerSecond、MetersPerHour、MetersPerSecond、度數、WattsPerSquareMeter、KiloWattsPerSquareMeter、MilliWattsPerSquareCentiMeter、MilliJoulesPerSquareCentiMeter、VolumetricWaterContent、百分比、PartsPerMillion、MicroMol、MicroMolesPerLiter、SiemensPerSquareMeterPerMole、MilliSiemensPerCentiMeter、Centibar、DeciSiemensPerMeter、KiloPascal、VolumetricIonContent、升、MilliLiter、Seconds、UnixTimestamp、MicroMolPerMeterSquaredPerSecond、InchesPerHour，以及新增更多應用|
 |    SensorMeasures > AggregationType    |  值可以是 none、average、maximum、下限或 StandardDeviation。  |
-|          Name            | 用來識別資源的名稱。 例如，模型名稱或產品名稱。  |
+|          名稱            | 用來識別資源的名稱。 例如，模型名稱或產品名稱。  |
 |    描述        | 提供模型的有意義描述。|
 |   屬性       |  製造商提供的其他屬性。|
 |    **感應器**      |          |
 | HardwareId          |   製造商所設定之感應器的唯一識別碼。|
 |  SensorModelId     |    相關聯感應器型號的識別碼。|
-| 位置          |  感應器緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。|
+| Location          |  感應器緯度（-90 到 + 90）、經度（-180 到180）和提高許可權（以計量計）。|
 |   埠 > 名稱        |  裝置上感應器連線的埠名稱和類型。 這必須與裝置模型中所定義的名稱相同。|
 |    裝置識別碼  |    感應器所連接之裝置的識別碼。 |
-| Name            |   用來識別資源的名稱。 例如，感應器名稱或產品名稱，以及型號或產品代碼。|
+| 名稱            |   用來識別資源的名稱。 例如，感應器名稱或產品名稱，以及型號或產品代碼。|
 |    描述      | 提供有意義的描述。|
 |    屬性        |製造商提供的其他屬性。|
 
@@ -139,7 +140,7 @@ ms.locfileid: "82136901"
 
 ### <a name="api-request-to-create-metadata"></a>建立中繼資料的 API 要求
 
-若要提出 API 要求，請將 HTTP （POST）方法、API 服務的 URL，以及用來查詢、提交資料至、建立或刪除要求的資源的 URI 結合在一起。 然後，您可以新增一或多個 HTTP 要求標頭。 API 服務的 URL 是 API 端點，也就是 Datahub URL （HTTPs://\<yourdatahub>. azurewebsites.net）。  
+若要提出 API 要求，請將 HTTP （POST）方法、API 服務的 URL，以及用來查詢、提交資料至、建立或刪除要求的資源的 URI 結合在一起。 然後，您可以新增一或多個 HTTP 要求標頭。 API 服務的 URL 是 API 端點，也就是 Datahub URL （HTTPs://\<yourdatahub>. azurewebsites.net）。
 
 ### <a name="authentication"></a>驗證
 
@@ -297,10 +298,10 @@ SensorModel
 下列範例要求會建立裝置。 此要求具有輸入 JSON 做為要求主體的承載。
 
 ```bash
-curl -X POST "https://<datahub>.azurewebsites.net/Device" -H  
+curl -X POST "https://<datahub>.azurewebsites.net/Device" -H
 "accept: application/json" -H  "Content-Type: application/json" -H
-"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  
-\"reportingInterval\": 900,  \"name\": \"Device123\",  
+"Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",
+\"reportingInterval\": 900,  \"name\": \"Device123\",
 \"description\": \"Test Device 123\"}" *
 ```
 

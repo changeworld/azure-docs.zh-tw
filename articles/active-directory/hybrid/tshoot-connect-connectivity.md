@@ -16,12 +16,13 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72dbb404d1b4d3618909e0233f332d2f98b51516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: f55f291575aea40cba8551a5fec535f63a90150c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049724"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610440"
 ---
 # <a name="troubleshoot-azure-ad-connectivity"></a>Azure AD 連線能力疑難排解
 這篇文章說明 Azure AD Connect 與 Azure AD 之間的連線的運作方式，以及如何疑難排解連線問題。 這些問題最有可能出現在具有 Proxy 伺服器的環境中。
@@ -31,7 +32,7 @@ Azure AD Connect 使用「新式驗證」(使用 ADAL 程式庫) 來進行驗證
 
 在本文中，我們將說明 Fabrikam 如何透過其 Proxy 連接至 Azure AD。 Proxy 伺服器名為 fabrikamproxy，並且正在使用連接埠 8080。
 
-首先，我們必須確定已正確設定 [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) 。  
+首先，我們必須確定已正確設定 [**machine.config**](how-to-connect-install-prerequisites.md#connectivity) 。
 ![machineconfig](./media/tshoot-connect-connectivity/machineconfig.png)
 
 > [!NOTE]
@@ -58,25 +59,24 @@ Proxy 伺服器也必須開啟必要的 URL。 如需官方清單，請參閱 [O
 下列問題是您會在安裝精靈中遇到的最常見錯誤。
 
 ### <a name="the-installation-wizard-has-not-been-correctly-configured"></a>安裝精靈未正確設定
-當精靈本身無法連線到 Proxy 時，就會出現此錯誤。  
+當精靈本身無法連線到 Proxy 時，就會出現此錯誤。
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomachineconfig.png)
 
 * 如果您看到此錯誤，請確認是否已經正確設定 [machine.config](how-to-connect-install-prerequisites.md#connectivity) 。
 * 如果看起來正確，請依照 [確認 Proxy 連線](#verify-proxy-connectivity) 中的步驟，查看問題是否也出現在精靈以外的地方。
 
 ### <a name="a-microsoft-account-is-used"></a>使用了 Microsoft 帳戶
-如果您使用 **Microsoft 帳戶**而不是**學校或組織帳戶**，就會看到一個一般錯誤。  
+如果您使用 **Microsoft 帳戶**而不是**學校或組織帳戶**，就會看到一個一般錯誤。
 ![使用了 Microsoft 帳戶](./media/tshoot-connect-connectivity/unknownerror.png)
 
 ### <a name="the-mfa-endpoint-cannot-be-reached"></a>無法連線 MFA 端點
-如果無法連線到端點**https://secure.aadcdn.microsoftonline-p.com** ，而且您的全域系統管理員已啟用 MFA，就會出現此錯誤。  
+如果無法連線到端點**https://secure.aadcdn.microsoftonline-p.com** ，而且您的全域系統管理員已啟用 MFA，就會出現此錯誤。
 ![nomachineconfig](./media/tshoot-connect-connectivity/nomicrosoftonlinep.png)
 
 * 如果您看到此錯誤，請確認是否已將 **secure.aadcdn.microsoftonline-p.com** 端點新增到 Proxy。
 
 ### <a name="the-password-cannot-be-verified"></a>無法驗證密碼
-如果安裝精靈成功連線到 Azure AD，但密碼本身無法獲得驗證，您就會看到此錯誤：  
-![密碼錯誤。](./media/tshoot-connect-connectivity/badpassword.png)
+如果安裝精靈成功連接到 Azure AD，但無法驗證密碼本身，您會看到此錯誤： ![密碼不正確。](./media/tshoot-connect-connectivity/badpassword.png)
 
 * 密碼是暫時密碼，而且必須變更嗎？ 實際上是正確的密碼嗎？ 嘗試登入 `https://login.microsoftonline.com` (在 Azure AD Connect 伺服器以外的另一部電腦上)，並確認該帳戶是否可使用。
 
@@ -113,7 +113,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 
 **連接至 Azure AD**
 
-| 時間 | URL |
+| Time | URL |
 | --- | --- |
 | 1/11/2016 8:31 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:31 |connect://adminwebservice.microsoftonline.com:443 |
@@ -124,7 +124,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 
 **設定**
 
-| 時間 | URL |
+| Time | URL |
 | --- | --- |
 | 1/11/2016 8:43 |connect://login.microsoftonline.com:443 |
 | 1/11/2016 8:43 |connect://*bba800-anchor*.microsoftonline.com:443 |
@@ -140,7 +140,7 @@ PowerShell 會使用 machine.config 中的組態來連絡 Proxy。 winhttp/netsh
 
 **初始同步處理**
 
-| 時間 | URL |
+| Time | URL |
 | --- | --- |
 | 1/11/2016 8:48 |connect://login.windows.net:443 |
 | 1/11/2016 8:49 |connect://adminwebservice.microsoftonline.com:443 |
@@ -186,7 +186,7 @@ Azure AD 目錄找不到或無法解析。 可能是您嘗試以未驗證網域�
 </div>
 
 ### <a name="azure-ad-global-admin-role-needed"></a>需要 Azure AD 全域系統管理員角色
-已成功驗證使用者。 不過，未對使用者指派全域系統管理員角色。 這是對使用者[指派全域系統管理員角色的方式](../users-groups-roles/directory-assign-admin-roles.md)。 
+已成功驗證使用者。 不過，未對使用者指派全域系統管理員角色。 這是對使用者[指派全域系統管理員角色的方式](../users-groups-roles/directory-assign-admin-roles.md)。
 
 <div id="privileged-identity-management">
 <!--
@@ -224,7 +224,7 @@ Azure AD 目錄找不到或無法解析。 可能是您嘗試以未驗證網域�
 ## <a name="troubleshooting-steps-for-previous-releases"></a>舊版的疑難排解步驟
 從組建編號 1.1.105.0 (於 2016 年 2 月發行) 版本開始即已淘汰登入小幫手。 應該已不再需要本節及組態設定，但仍保留供參考之用。
 
-若要讓登入小幫手能夠運作，必須設定 winhttp。 透過 [**netsh**](how-to-connect-install-prerequisites.md#connectivity)，即可完成這項設定。  
+若要讓登入小幫手能夠運作，必須設定 winhttp。 透過 [**netsh**](how-to-connect-install-prerequisites.md#connectivity)，即可完成這項設定。
 ![netsh](./media/tshoot-connect-connectivity/netsh.png)
 
 ### <a name="the-sign-in-assistant-has-not-been-correctly-configured"></a>登入小幫手未正確設定

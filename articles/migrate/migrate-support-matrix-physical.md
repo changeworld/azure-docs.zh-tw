@@ -3,12 +3,12 @@ title: Azure Migrate 中的實體伺服器評量支援
 description: 瞭解 Azure Migrate Server 評估的實體伺服器評量支援
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: ae76a6b570ec58e71a8a1728a2a601728030f58c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f21ec149aa6f85c0a1f33e91dacf9de48ff72bbb
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538149"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744524"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>實體伺服器評估的支援矩陣 
 
@@ -34,16 +34,18 @@ ms.locfileid: "81538149"
 | **支援**                | **詳細資料**               
 | :-------------------       | :------------------- |
 | **實體伺服器部署**       | 實體伺服器可以是獨立的，或部署在叢集中。 |
-| **權限**           | **Windows：** 您在所有想要探索的 Windows 伺服器上都需要本機或網域使用者帳戶。 使用者帳戶應新增至下列群組： [遠端桌面使用者]、[效能監視器使用者] 和 [效能記錄檔使用者]。 <br/><br/> **Linux：** 您在要探索的 Linux 伺服器上必須要有根帳戶。 |
-| **作業系統** | Azure 支援的所有[windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)作業系統，但 WINDOWS Server 2003 和 SUSE Linux 除外。|
+| **權限**           | **Windows：** 您必須是網域系統管理員，或您想要探索的所有 Windows 伺服器上的本機系統管理員。 使用者帳戶應新增至下列群組：遠端系統管理使用者、效能監視器使用者和效能記錄使用者。 <br/><br/> **Linux：** 您在要探索的 Linux 伺服器上必須要有根帳戶。 |
+| **作業系統** | Azure 支援的所有[windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)和[Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)伺服器作業系統，但 WINDOWS Server 2003 和 SUSE Linux 除外。<br/><br/> Windows 10 和 Windows 8 用戶端作業系統。 |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate 設備需求
 
-Azure Migrate 會使用[Azure Migrate 設備](migrate-appliance.md)來進行探索和評量。 實體伺服器的設備可以在 VM 或實體機器上執行。 您可以使用從 Azure 入口網站下載的 PowerShell 腳本來設定設備。
+Azure Migrate 會使用[Azure Migrate 設備](migrate-appliance.md)來進行探索和評量。 實體伺服器的設備可以在 VM 或實體機器上執行。 
 
 - 瞭解實體伺服器的[設備需求](migrate-appliance.md#appliance---physical)。
 - 瞭解設備在[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端中存取所需的 url。
+- 您可以使用從 Azure 入口網站下載的[PowerShell 腳本](how-to-set-up-appliance-physical.md)來設定設備。
+在 Azure Government 中，[使用此腳本](deploy-appliance-script-government.md)部署應用裝置。
 
 ## <a name="port-access"></a>埠存取
 

@@ -3,12 +3,12 @@ title: Azure Migrate 中的探索、評估和相依性分析的相關問題
 description: 取得 Azure Migrate 中探索、評估和相依性分析的常見問題解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 868755bb8926ffe218fdab76714c9970f26bb0a9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681909"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744578"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>探索、評估和相依性分析-常見問題
 
@@ -101,16 +101,21 @@ Azure Migrate 設備會持續收集內部部署環境的相關資訊。  評量�
 --- | --- | ---
 支援 | 此選項目前為預覽狀態，且僅適用于 VMware Vm。 [檢查](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)支援的作業系統。 | 正式運作（GA）。
 代理程式 | 不需要在您要交叉檢查的電腦上安裝代理程式。 | 要在每個您想要分析的內部部署機器上安裝的代理[程式： Microsoft Monitoring agent （MMA）](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)和[Dependency agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent)。 
-先決條件 | 請[參閱](concepts-dependency-visualization.md#agentless-analysis)必要條件和部署需求。 | 請[參閱](concepts-dependency-visualization.md#agent-based-analysis)必要條件和部署需求。
+Prerequisites | 請[參閱](concepts-dependency-visualization.md#agentless-analysis)必要條件和部署需求。 | 請[參閱](concepts-dependency-visualization.md#agent-based-analysis)必要條件和部署需求。
 Log Analytics | 不需要。 | Azure Migrate 使用[Azure 監視器記錄](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)中的[服務對應](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map)解決方案來進行相依性視覺效果。 [深入了解](concepts-dependency-visualization.md#agent-based-analysis)。
 運作方式 | 會在啟用相依性視覺效果的電腦上，捕獲 TCP 連線資料。 探索之後，它會以五分鐘的間隔收集資料。 | 安裝在電腦上的服務對應代理程式會收集有關 TCP 進程的資料，以及每個進程的輸入/輸出連接。
 資料 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。 | 來源電腦伺服器名稱、進程、應用程式名稱。<br/><br/> 目的地電腦伺服器名稱、進程、應用程式名稱和埠。<br/><br/> 系統會收集連線、延遲和資料傳輸資訊的數目，並可供 Log Analytics 查詢使用。 
 視覺效果 | 單一伺服器的相依性對應可以在一小時到30天的期間內查看。 | 單一伺服器的相依性對應。<br/><br/> 只能在一小時內查看對應。<br/><br/> 伺服器群組的相依性對應。<br/><br/> 從地圖視圖新增和移除群組中的伺服器。
 資料匯出 | 目前無法以表格式格式下載。 | 您可以使用 Log Analytics 來查詢資料。
 
+
+## <a name="do-i-need-to-deploy-the-appliance-for-agentless-dependency-analysis"></a>我是否需要部署設備以進行無代理程式相依性分析？
+
+是，必須部署[Azure Migrate 設備](migrate-appliance.md)。
+
 ## <a name="do-i-pay-for-dependency-visualization"></a>我要支付相依性視覺效果嗎？
 
-否。 深入瞭解[Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
+不需要。 深入瞭解[Azure Migrate 定價](https://azure.microsoft.com/pricing/details/azure-migrate/)。
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>針對代理程式相依性視覺效果，我要安裝什麼？
 

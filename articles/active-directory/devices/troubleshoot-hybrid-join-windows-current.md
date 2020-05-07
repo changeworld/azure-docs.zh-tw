@@ -11,14 +11,15 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e52930211611673b6fe2309e2dca067a91ebc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 08f083fe60076c80b5b7d60f555daac499974254
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80331778"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611308"
 ---
-# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>針對混合式 Azure Active Directory 已加入裝置進行疑難排解 
+# <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>針對混合式 Azure Active Directory 已加入裝置進行疑難排解
 
 本文內容適用于執行 Windows 10 或 Windows Server 2016 的裝置。
 
@@ -30,13 +31,13 @@ ms.locfileid: "80331778"
 - [設定的企業漫遊](../active-directory-windows-enterprise-state-roaming-overview.md)
 - [Windows Hello 企業版](../active-directory-azureadjoin-passport-deployment.md)
 
-本檔提供解決潛在問題的疑難排解指引。 
+本檔提供解決潛在問題的疑難排解指引。
 
 對於 Windows 10 和 Windows Server 2016，混合式 Azure Active Directory 會加入對 Windows 10 2015 年 11 月更新 (含) 以上版本的支援。
 
 ## <a name="troubleshoot-join-failures"></a>針對聯結失敗進行疑難排解
 
-### <a name="step-1-retrieve-the-join-status"></a>步驟 1：擷取加入狀態 
+### <a name="step-1-retrieve-the-join-status"></a>步驟 1：擷取加入狀態
 
 **若要擷取加入狀態：**
 
@@ -88,22 +89,22 @@ WamDefaultAuthority: organizations
          AzureAdPrt: YES
 ```
 
-### <a name="step-2-evaluate-the-join-status"></a>步驟 2：評估加入狀態 
+### <a name="step-2-evaluate-the-join-status"></a>步驟 2：評估加入狀態
 
 請檢閱下列欄位，並確定它們具有預期的值：
 
-#### <a name="domainjoined--yes"></a>DomainJoined : YES  
+#### <a name="domainjoined--yes"></a>DomainJoined : YES
 
-此欄位指出裝置是否已加入內部部署 Active Directory。 如果值為 **NO**，則裝置無法執行混合式 Azure AD 加入。  
+此欄位指出裝置是否已加入內部部署 Active Directory。 如果值為 **NO**，則裝置無法執行混合式 Azure AD 加入。
 
-#### <a name="workplacejoined--no"></a>WorkplaceJoined : NO  
+#### <a name="workplacejoined--no"></a>WorkplaceJoined : NO
 
 此欄位指出裝置是否已向 Azure AD 註冊為個人裝置 (標示為「已加入工作場所」**)。 如果已加入網域的電腦同時加入混合式 Azure AD，此值應為 **NO**。 如果值為 **YES**，則在完成混合式 Azure AD 加入之前已新增工作或學校帳戶。 在此情況下，使用年度更新版的 Windows 10 (1607) 時會忽略該帳戶。
 
-#### <a name="azureadjoined--yes"></a>AzureAdJoined : YES  
+#### <a name="azureadjoined--yes"></a>AzureAdJoined : YES
 
 此欄位指出裝置是否已加入。 如果裝置是已加入 Azure AD 的裝置或混合式 Azure AD 裝置，此值會是 **[是]** 。
-如果值為 **NO**，則尚未完成加入 Azure AD。 
+如果值為 **NO**，則尚未完成加入 Azure AD。
 
 繼續進行後續步驟，以進行進一步的疑難排解。
 
@@ -155,7 +156,7 @@ WamDefaultAuthority: organizations
    - 在裝置所屬的 AD 樹系中，必須有有效的 SCP 物件，指向 Azure AD 中已驗證的功能變數名稱。
    - 如需詳細資訊，請參閱[設定服務連接點](hybrid-azuread-join-federated-domains.md#configure-hybrid-azure-ad-join)一節。
 - 無法連線至探索端點並從中提取探索中繼資料。
-   - 裝置應該能夠存取`https://enterpriseregistration.windows.net`系統內容中的，以探索註冊和授權端點。 
+   - 裝置應該能夠存取`https://enterpriseregistration.windows.net`系統內容中的，以探索註冊和授權端點。
    - 如果內部部署環境需要輸出 proxy，IT 系統管理員必須確定裝置的電腦帳戶能夠探索並以無訊息方式向輸出 proxy 進行驗證。
 - 無法連線到使用者領域端點，並執行領域探索。 （僅限 Windows 10 1809 版和更新版本）
    - 裝置應該能夠存取`https://login.microsoftonline.com`系統內容中的，以執行已驗證網域的領域探索，並決定網欄位型別（受管理/同盟）。
@@ -173,7 +174,7 @@ WamDefaultAuthority: organizations
    - 原因：執行探索時發生作業超時。
    - 解決方式：確定`https://enterpriseregistration.windows.net`可以在系統內容中存取。 如需詳細資訊，請參閱[網路連線需求](hybrid-azuread-join-managed-domains.md#prerequisites)一節。
 - **DSREG_AUTOJOIN_USERREALM_DISCOVERY_FAILED** （0x801c0021/-2145648611）
-   - 原因：一般領域探索失敗。 無法從 STS 判斷網欄位型別（受管理/同盟）。 
+   - 原因：一般領域探索失敗。 無法從 STS 判斷網欄位型別（受管理/同盟）。
    - 解決方式：若要進一步調查，請尋找下面的將。
 
 **通用將碼：**
@@ -260,7 +261,7 @@ WamDefaultAuthority: organizations
 
 - **ERROR_ADAL_PROTOCOL_NOT_SUPPORTED** （0xcaa90017/-894894057）
    - 原因：驗證通訊協定不是 WS-TRUST。
-   - 解決方式：內部部署身分識別提供者必須支援 WS-TRUST 
+   - 解決方式：內部部署身分識別提供者必須支援 WS-TRUST
 - **ERROR_ADAL_FAILED_TO_PARSE_XML** （0xcaa9002c/-894894036）
    - 原因：內部部署 federation service 未傳回 XML 回應。
    - 解決方式：確定 MEX 端點傳回有效的 XML。 請確定 proxy 未干擾並傳回非 xml 回應。
@@ -278,7 +279,7 @@ WamDefaultAuthority: organizations
    - 解決方式：在一段時間後重試，或嘗試從替代穩定的網路位置進行聯結。
 - **ERROR_ADAL_INTERNET_SECURE_FAILURE** （0xcaa82f8f/-894947441）
    - 原因：傳輸層安全性（TLS）（先前稱為安全通訊端層（SSL））無法驗證服務器所傳送的憑證。
-   - 解決方式：檢查用戶端時間誤差。 請在一段時間後重試，或嘗試從替代穩定的網路位置進行聯結。 
+   - 解決方式：檢查用戶端時間誤差。 請在一段時間後重試，或嘗試從替代穩定的網路位置進行聯結。
 - **ERROR_ADAL_INTERNET_CANNOT_CONNECT** （0xcaa82efd/-894947587）
    - 原因：嘗試連接`https://login.microsoftonline.com`失敗。
    - 解決方式：檢查與`https://login.microsoftonline.com`的網路連接。
@@ -293,11 +294,11 @@ WamDefaultAuthority: organizations
    - 解決方式：檢查同盟伺服器設定。 在驗證記錄中尋找伺服器錯誤碼。
 - **ERROR_ADAL_WSTRUST_TOKEN_REQUEST_FAIL** （0xcaa90006/-894894074）
    - 原因：嘗試從權杖端點取得存取權杖時收到錯誤。
-   - 解決方式：尋找 ADAL 記錄檔中的基礎錯誤。 
+   - 解決方式：尋找 ADAL 記錄檔中的基礎錯誤。
 - **ERROR_ADAL_OPERATION_PENDING** （0xcaa1002d/-895418323）
    - 原因：一般 ADAL 失敗
    - 解決方式：從驗證記錄尋找將碼或伺服器錯誤碼。
-    
+
 #### <a name="join-phase"></a>聯結階段
 
 失敗的原因：
@@ -337,7 +338,7 @@ WamDefaultAuthority: organizations
    - 原因：已收到來自 DRS 的錯誤回應，錯誤碼： "DirectoryError"
    - 解決方式：如需可能的原因和解決方法，請參閱伺服器錯誤碼。
 - **DSREG_E_DEVICE_AUTHENTICATION_ERROR** （0x801c0002/-2145648638）
-   - 原因：已收到來自 DRS 的錯誤回應，錯誤碼： "AuthenticationError"，而 ErrorSubCode 不是 "DeviceNotFound"。 
+   - 原因：已收到來自 DRS 的錯誤回應，錯誤碼： "AuthenticationError"，而 ErrorSubCode 不是 "DeviceNotFound"。
    - 解決方式：如需可能的原因和解決方法，請參閱伺服器錯誤碼。
 - **DSREG_E_DEVICE_INTERNALSERVICE_ERROR** （0x801c0006/-2145648634）
    - 原因：已收到來自 DRS 的錯誤回應，錯誤碼： "DirectoryError"
@@ -349,7 +350,7 @@ WamDefaultAuthority: organizations
    - 原因： TPM 操作失敗或無效
    - 解決方式：可能是因為 sysprep 映射錯誤。 確定建立 sysprep 映射的電腦未 Azure AD 聯結、混合式 Azure AD 聯結，或 Azure AD 註冊。
 - **TPM_E_PCP_INTERNAL_ERROR** （0x80290407/-2144795641）
-   - 原因：一般 TPM 錯誤。 
+   - 原因：一般 TPM 錯誤。
    - 解決方式：在發生此錯誤的裝置上停用 TPM。 Windows 10 1809 版和更新版本會自動偵測 TPM 失敗，並在不使用 TPM 的情況下完成混合式 Azure AD 聯結。
 - **TPM_E_NOTFIPS** （0x80280036/-2144862154）
    - 原因：目前不支援 FIPS 模式中的 TPM。
@@ -372,13 +373,13 @@ WamDefaultAuthority: organizations
 
 ##### <a name="federated-join-server-errors"></a>聯合聯結伺服器錯誤
 
-| 伺服器錯誤碼 | 伺服器錯誤訊息 | 可能的原因 | 解決方法 |
+| 伺服器錯誤碼 | 伺服器錯誤訊息 | 可能的原因 | 解決方案 |
 | --- | --- | --- | --- |
 | DirectoryError | 您的要求暫時受到節流。 請在300秒後再試一次。 | 預期的錯誤。 可能是因為快速地連續建立多個註冊要求。 | 在 cooldown 期間之後重試聯結 |
 
 ##### <a name="sync-join-server-errors"></a>同步聯結伺服器錯誤
 
-| 伺服器錯誤碼 | 伺服器錯誤訊息 | 可能的原因 | 解決方法 |
+| 伺服器錯誤碼 | 伺服器錯誤訊息 | 可能的原因 | 解決方案 |
 | --- | --- | --- | --- |
 | DirectoryError | AADSTS90002：找<UUID>不到租使用者。 如果沒有作用中的租使用者訂用帳戶，可能會發生此錯誤。 請洽詢您的訂用帳戶管理員。 | SCP 物件中的租使用者識別碼不正確 | 請確定已使用正確的 Azure AD 租使用者識別碼和作用中的訂用帳戶來設定 SCP 物件，並出現在租使用者中。 |
 | DirectoryError | 找不到指定之識別碼的裝置物件。 | 同步聯結的預期錯誤。 裝置物件尚未從 AD 同步至 Azure AD | 等待 Azure AD Connect 同步完成，並在同步完成後的下一次聯結嘗試解決問題 |
@@ -386,28 +387,32 @@ WamDefaultAuthority: organizations
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>步驟5：收集記錄和連絡人 Microsoft 支援服務
 
-在這裡取得公用腳本： [ https://1drv.ms/u/s！AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ]( https://1drv.ms/u/s!AkyTjQ17vtfagYkZ6VJzPg78e3o7PQ)
+從下載檔案 Auth .zip[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH)
 
-1. 開啟系統管理命令提示字元， `start_ngc_tracing_public.cmd`然後執行。
-2. 執行重現問題的步驟。
-3. 藉由執行來停止執行`stop_ngc_tracing_public.cmd`記錄腳本。
-4. Zip 並傳送下`%SYSTEMDRIVE%\TraceDJPP\*`的記錄以進行分析。
+1. 解壓縮檔案，並將包含的檔案**start-auth**和**stop-auth**重新命名為**start-auth .cmd**和**stop-auth。**
+1. 從提高許可權的命令提示字元中，執行**start-auth。**
+1. 使用 [切換帳戶] 切換至具有問題使用者的其他會話。
+1. 重現問題。
+1. 使用 [切換帳戶] 切換回執行追蹤的管理會話。
+1. 從提高許可權的命令提示字元中，執行**stop-auth。**
+1. 從執行腳本的資料夾中壓縮並傳送**Authlogs**資料夾。
 
 ## <a name="troubleshoot-post-join-issues"></a>針對後續聯結問題進行疑難排解
 
-### <a name="retrieve-the-join-status"></a>擷取加入狀態 
+### <a name="retrieve-the-join-status"></a>擷取加入狀態
 
 #### <a name="wamdefaultset-yes-and-azureadprt-yes"></a>WamDefaultSet： YES 和 AzureADPrt： YES
-  
-這些欄位指出使用者在登入裝置時，是否已順利向 Azure AD 進行驗證。 如果值為 **NO**，可能是因為：
+
+這些欄位指出使用者在登入裝置時，是否已順利向 Azure AD 進行驗證。
+如果值為 **NO**，可能是因為：
 
 - 註冊時，與裝置相關聯的 TPM 中有錯誤的儲存體金鑰（以提高許可權執行時檢查 KeySignTest）。
 - 替代登入識別碼
 - 找不到 HTTP Proxy
 
 ## <a name="known-issues"></a>已知問題
-- 在 [設定-> 帳戶] 下 > [存取公司或學校]，混合式 Azure AD 加入的裝置可能會顯示兩個不同的帳戶，一個用於 Azure AD，另一個用於內部部署 AD，連線到行動裝置或外部 WiFi 網路時。 這只是 UI 問題，不會對功能造成任何影響。 
- 
+- 在 [設定-> 帳戶] 下 > [存取公司或學校]，混合式 Azure AD 加入的裝置可能會顯示兩個不同的帳戶，一個用於 Azure AD，另一個用於內部部署 AD，連線到行動裝置或外部 WiFi 網路時。 這只是 UI 問題，不會對功能造成任何影響。
+
 ## <a name="next-steps"></a>後續步驟
 
 [使用 dsregcmd.exe 命令繼續疑難排解裝置](troubleshoot-device-dsregcmd.md)

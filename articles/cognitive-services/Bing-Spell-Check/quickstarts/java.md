@@ -10,16 +10,16 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: 43c528a1e9e46a67e895679b1a0fd04fef8900a7
-ms.sourcegitcommit: fe6c9a35e75da8a0ec8cea979f9dec81ce308c0e
+ms.openlocfilehash: 491481156f026e9887244064297d0790a965158e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75382953"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735108"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>快速入門：使用 Bing 拼字檢查 REST API 和 Java 進行拼字檢查
 
-使用本快速入門，第一次呼叫 Bing 拼字檢查 REST API。 這個簡單的 Java 應用程式會將要求傳送至 API，並傳回建議的更正清單。 雖然此應用程式是以 Java 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java) 上找到此應用程式的原始程式碼。
+使用本快速入門，第一次呼叫 Bing 拼字檢查 REST API。 這個簡單的 Java 應用程式會將要求傳送至 API，並傳回建議的更正清單。 雖然此應用程式是以 Java 撰寫的，但 API 是一種與大多數程式設計語言都相容的 RESTful Web 服務。 您可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheck.java) 上找到此應用程式的原始程式碼。
 
 ## <a name="prerequisites"></a>Prerequisites
 

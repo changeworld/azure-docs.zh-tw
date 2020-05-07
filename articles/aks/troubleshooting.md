@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 7bdabf2ec109fe96c28185bd1a2a680ce19c2650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8460f4f2a66a1f545bea767cccf3aa77c9d3bff3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79368327"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778952"
 ---
 # <a name="aks-troubleshooting"></a>AKS 疑難排解
 
@@ -58,7 +58,7 @@ ms.locfileid: "79368327"
 
 ## <a name="i-cant-connect-to-the-dashboard-what-should-i-do"></a>我無法連線到儀表板。 我該怎麼辦？
 
-存取叢集外部服務的最簡單方法是執行 `kubectl proxy`，它會將傳送至 localhost 連接埠 8001 的要求 Proxy 到 Kubernetes API 伺服器。 API 伺服器可以從該處 Proxy 到您的服務：`http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/node?namespace=default`。
+存取叢集外部服務的最簡單方法是執行 `kubectl proxy`，它會將傳送至 localhost 連接埠 8001 的要求 Proxy 到 Kubernetes API 伺服器。 API 伺服器可以從該處 Proxy 到您的服務：`http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/`。
 
 如果您沒有看到 Kubernetes 儀表板，請檢查`kube-proxy` pod 是否正在`kube-system`命名空間中執行。 如果它並未處於執行中狀態，請刪除該 Pod，而它會重新啟動。
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: f68f973882af28d80b3a27bc4591c5ee932404a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c9ad45ac1cf59f05454cba0babff8c3b7368f72
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443610"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839108"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure 串流分析輸出至 Azure SQL Database
 
@@ -24,7 +24,7 @@ Azure 串流分析中的 SQL 輸出支援平行寫入作為選項。 此選項�
 
 ## <a name="azure-stream-analytics"></a>Azure 串流分析
 
-- **繼承資料分割** – 此 SQL 輸出設定選項可繼承您先前查詢步驟或輸入的資料分割配置。 啟用此選項時，寫入磁碟式資料表及針對您的作業採用[完全平行](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)拓撲，可預期取得更佳的輸送量。 此資料分割已會針對許多其他[輸出](stream-analytics-parallelization.md#partitions-in-sources-and-sinks)自動進行。 使用此選項進行的大量插入 (Bulk Insert) 也會停用資料表鎖定 (TABLOCK)。
+- **繼承資料分割** – 此 SQL 輸出設定選項可繼承您先前查詢步驟或輸入的資料分割配置。 啟用此選項時，寫入磁碟式資料表及針對您的作業採用[完全平行](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)拓撲，可預期取得更佳的輸送量。 此資料分割已會針對許多其他[輸出](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs)自動進行。 使用此選項進行的大量插入 (Bulk Insert) 也會停用資料表鎖定 (TABLOCK)。
 
 > [!NOTE] 
 > 當輸入資料分割超過 8 個時，繼承輸入資料分割配置可能不會是適當的選擇。 此上限可在擁有單一識別欄位和叢集索引的資料表上觀察到。 在此情況下，請考慮在您的查詢中使用[INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8，以明確指定輸出寫入器的數目。 根據您的結構描述和選擇的索引，您的觀察結果可能會有所不同。

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
-ms.openlocfilehash: a73e1e9f7a9c017dd29b627a24c25ae2e064c0a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cf4859d3bf4c34fff4cb076eec11bcd2d81e4ab
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75894136"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780771"
 ---
 # <a name="scenario-invalidnetworksecuritygroupsecurityrules---cluster-creation-fails-in-azure-hdinsight"></a>案例：出現 invalidnetworksecuritygroupsecurityrules-叢集建立在 Azure HDInsight 中失敗
 
@@ -26,9 +26,9 @@ ms.locfileid: "75894136"
 
 您的叢集所設定的輸入[網路安全性群組](../../virtual-network/virtual-network-vnet-plan-design-arm.md)規則可能發生問題。
 
-## <a name="resolution"></a>解決方法
+## <a name="resolution"></a>解決方案
 
-移至 [Azure 入口網站]，並找出與部署叢集的子網相關聯的 NSG。 在 [**輸入安全性規則**] 區段中，請確定規則允許在[此處](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip)所述的 IP 位址對埠443進行輸入存取。
+移至 [Azure 入口網站]，並找出與部署叢集的子網相關聯的 NSG。 在 [**輸入安全性規則**] 區段中，請確定規則允許在[此處](../control-network-traffic.md)所述的 IP 位址對埠443進行輸入存取。
 
 ## <a name="next-steps"></a>後續步驟
 

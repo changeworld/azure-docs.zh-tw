@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes Service (AKS) 叢集中，使用靜態公用 IP 位址來安裝及設定 NGINX 輸入控制器。
 services: container-service
 ms.topic: article
-ms.date: 05/24/2019
-ms.openlocfilehash: f0a8f1f1e1b724745e69aef30e2e6404ff6a5484
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.date: 04/27/2020
+ms.openlocfilehash: a44a41806af30479f06ec4daba936c7aa71ef5d7
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207355"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561908"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service (AKS) 中使用靜態公用 IP 位址建立輸入控制器
 
@@ -29,7 +29,7 @@ ms.locfileid: "82207355"
 
 此文章假設您目前具有 AKS 叢集。 如果您需要 AKS 叢集，請參閱[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 入口網站][aks-quickstart-portal]的 AKS 快速入門。
 
-本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器、cert 管理員和範例 web 應用程式。 請確定您使用的是 Helm 的最新版本。 如需升級指示，請參閱[Helm 安裝][helm-install]檔。如需設定和使用 Helm 的詳細資訊，請參閱[在 Azure Kubernetes Service （AKS）中使用 Helm 安裝應用程式][use-helm]。
+本文使用[Helm 3][helm]來安裝 NGINX 輸入控制器和 cert 管理員。 請確定您使用的是 Helm 的最新版本。 如需升級指示，請參閱[Helm 安裝][helm-install]檔。如需設定和使用 Helm 的詳細資訊，請參閱[在 Azure Kubernetes Service （AKS）中使用 Helm 安裝應用程式][use-helm]。
 
 本文也會要求您執行 Azure CLI 版本2.0.64 或更新版本。 執行 `az --version` 以尋找版本。 如果您需要安裝或升級，請參閱[安裝 Azure CLI][azure-cli-install]。
 
@@ -76,7 +76,7 @@ helm install nginx-ingress stable/nginx-ingress \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set controller.service.loadBalancerIP="40.121.63.72"
+    --set controller.service.loadBalancerIP="STATIC_IP" \
     --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="demo-aks-ingress"
 ```
 
@@ -86,7 +86,7 @@ helm install nginx-ingress stable/nginx-ingress \
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
 
 NAME                                        TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)                      AGE
-nginx-ingress-controller                    LoadBalancer   10.0.232.56   40.121.63.72   80:31978/TCP,443:32037/TCP   3m
+nginx-ingress-controller                    LoadBalancer   10.0.232.56   STATIC_IP      80:31978/TCP,443:32037/TCP   3m
 nginx-ingress-default-backend               ClusterIP      10.0.95.248   <none>         80/TCP                       3m
 ```
 
@@ -95,8 +95,7 @@ nginx-ingress-default-backend               ClusterIP      10.0.95.248   <none> 
 您可以查詢公用 IP 位址上的 FQDN，以確認 DNS 名稱標籤已套用，如下所示：
 
 ```azurecli-interactive
-#!/bin/bash
-az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query $("[?name=='myAKSPublicIP'].[dnsSettings.fqdn]") -o tsv
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?name=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
 ```
 
 輸入控制器現在可以透過 IP 位址或 FQDN 來存取。
@@ -168,25 +167,89 @@ clusterissuer.cert-manager.io/letsencrypt-staging created
 
 輸入控制器和憑證管理解決方案皆已設定。 現在讓我們在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，會使用 Helm 來部署簡單 'Hello world' 應用程式的兩個執行個體。
 
-在您可以安裝範例 Helm 圖表之前，先將 Azure 範例存放庫新增至您的 Helm 環境，如下所示：
+若要查看作用中的輸入控制器，請在您的 AKS 叢集中執行兩個示範應用程式。 在此範例中，您`kubectl apply`會使用來部署簡單*Hello world*應用程式的兩個實例。
 
-```console
-helm repo add azure-samples https://azure-samples.github.io/helm-charts/
+建立*aks-helloworld yaml*檔案，並複製下列範例 yaml：
+
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld
+    spec:
+      containers:
+      - name: aks-helloworld
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld
 ```
 
-使用下列命令，從 Helm 圖表建立第一個示範應用程式：
+建立*yaml*檔案，並複製下列範例 yaml：
 
-```console
-helm install aks-helloworld azure-samples/aks-helloworld --namespace ingress-basic
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingress-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingress-demo
+  template:
+    metadata:
+      labels:
+        app: ingress-demo
+    spec:
+      containers:
+      - name: ingress-demo
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "AKS Ingress Demo"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-demo
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: ingress-demo
 ```
 
-現在，請安裝示範應用程式的第二個執行個體。 對第二個執行個體指定新的標題，以便在視覺上區分這兩個應用程式。 您也要指定唯一的服務名稱：
+使用`kubectl apply`執行兩個示範應用程式：
 
 ```console
-helm install aks-helloworld-2 azure-samples/aks-helloworld \
-    --namespace ingress-basic \
-    --set title="AKS Ingress Demo" \
-    --set serviceName="ingress-demo"
+kubectl apply -f aks-helloworld.yaml --namespace ingress-basic
+kubectl apply -f ingress-demo.yaml --namespace ingress-basic
 ```
 
 ## <a name="create-an-ingress-route"></a>建立輸入路由
@@ -315,12 +378,6 @@ certificate.cert-manager.io/tls-secret created
 kubectl delete namespace ingress-basic
 ```
 
-然後，移除 AKS hello world 應用程式的 Helm 存放庫：
-
-```console
-helm repo remove azure-samples
-```
-
 ### <a name="delete-resources-individually"></a>個別刪除資源
 
 或者，更細微的方法是刪除所建立的個別資源。 首先，移除憑證資源：
@@ -330,33 +387,30 @@ kubectl delete -f certificates.yaml
 kubectl delete -f cluster-issuer.yaml
 ```
 
-現在使用 `helm list` 命令，列出 Helm 版本。 尋找名為 nginx-ingress**、cert-manager** 和 aks-helloworld** 的圖表，如下列範例輸出所示：
+現在使用 `helm list` 命令，列出 Helm 版本。 尋找名為*nginx 的*圖表和*cert 管理員*，如下列範例輸出所示：
 
 ```
 $ helm list --all-namespaces
 
 NAME                    NAMESPACE       REVISION        UPDATED                        STATUS          CHART                   APP VERSION
-aks-helloworld          ingress-basic   1               2020-01-11 15:02:21.51172346   deployed        aks-helloworld-0.1.0
-aks-helloworld-2        ingress-basic   1               2020-01-11 15:03:10.533465598  deployed        aks-helloworld-0.1.0
 nginx-ingress           ingress-basic   1               2020-01-11 14:51:03.454165006  deployed        nginx-ingress-1.28.2    0.26.2
-cert-manager            ingress-basic    1               2020-01-06 21:19:03.866212286  deployed        cert-manager-v0.13.0    v0.13.0
+cert-manager            ingress-basic   1               2020-01-06 21:19:03.866212286  deployed        cert-manager-v0.13.0    v0.13.0
 ```
 
-使用 `helm uninstall` 命令刪除版本。 下列範例會刪除 NGINX 輸入部署、憑證管理員以及兩個範例 AKS hello world 應用程式。
+使用`helm uninstall`命令卸載發行。 下列範例會卸載 NGINX 輸入部署和憑證管理員部署。
 
 ```
-$ helm uninstall aks-helloworld aks-helloworld-2 nginx-ingress cert-manager -n ingress-basic
+$ helm uninstall nginx-ingress cert-manager -n ingress-basic
 
-release "aks-helloworld" deleted
-release "aks-helloworld-2" deleted
 release "nginx-ingress" deleted
 release "cert-manager" deleted
 ```
 
-接下來，移除 AKS hello world 應用程式的 Helm 存放庫：
+接下來，移除兩個範例應用程式：
 
 ```console
-helm repo remove azure-samples
+kubectl delete -f aks-helloworld.yaml --namespace ingress-basic
+kubectl delete -f ingress-demo.yaml --namespace ingress-basic
 ```
 
 刪除本身的命名空間。 使用`kubectl delete`命令，並指定您的命名空間名稱：

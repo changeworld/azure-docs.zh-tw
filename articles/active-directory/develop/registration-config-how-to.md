@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 28d85736019a6fea6d977d813fdc1c9be6429748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 043dc4f6e57620f58a1cf5f76db755703421800f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883265"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778731"
 ---
 # <a name="how-to-configure-endpoints"></a>如何設定端點
 
@@ -31,6 +31,8 @@ ms.locfileid: "80883265"
 -   這樣會開啟 [端點]**** 頁面，其中列出您租用戶的所有驗證端點。
 
 -   使用您所使用之驗證通訊協定特定的端點搭配應用程式識別碼，來製作您應用程式的特定驗證要求。
+
+**國家**雲端（例如 Azure AD 中國、德國和美國政府）有自己的應用程式註冊入口網站和 Azure AD 驗證端點。 若要深入瞭解，請[流覽國家](authentication-national-cloud.md)雲端。
 
 ## <a name="next-steps"></a>後續步驟
 [Azure Active Directory 開發人員指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

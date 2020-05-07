@@ -3,12 +3,12 @@ title: 深入瞭解 Azure Service Fabric
 description: 了解 Azure Service Fabric 的核心概念和主要領域。 提供 Service Fabric 及如何建立微服務的延伸概觀。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 4e6e21f5f9ebfeddb5292e00dc8a929341e77372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458158"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791845"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>您想要了解 Service Fabric 嗎？
 Azure Service Fabric 是分散式系統平台，可讓您輕鬆封裝、部署及管理可調整和可信賴的微服務。  Service Fabric 有相當大的介面區，不過，要了解的方面很多。  本文提供 Service Fabric 的概述，並描述核心概念、程式設計模型、應用程式生命週期、測試、叢集及健康情況監視。 如需相關簡介及了解如何使用 Service Fabric 來建立微服務，請參閱[概觀](service-fabric-overview.md)和[什麼是微服務？](service-fabric-overview-microservices.md)。 本文並未包含完整的內容清單，但有連結到 Service Fabric 每個領域的概觀與入門文章。 
@@ -136,7 +136,7 @@ Service Fabric 提供安裝套件，可讓您在內部部署環境或任何雲�
 如需詳細資訊，請參閱[保護叢集](service-fabric-cluster-security.md)。
 
 ### <a name="scaling"></a>調整大小
-若您新增節點至叢集，則 Service Fabric 會重新平衡全體增加節點數的資料分割複本和執行個體。 整體應用程式效能會有所改善，改善，並減少爭用記憶體的存取權。 若未有效率地使用叢集中的節點，您可減少叢集中的節點數目。 Service Fabric 會再次重新平衡全體減少節點數的資料分割複本和執行個體，以善加使用每個節點上的硬體。 您可透過[手動](service-fabric-cluster-scale-up-down.md)或[程式設計方式](service-fabric-cluster-programmatic-scaling.md)，調整 Azure 上叢集的規模。 您可[手動](service-fabric-cluster-windows-server-add-remove-nodes.md)調整獨立叢集的規模。
+若您新增節點至叢集，則 Service Fabric 會重新平衡全體增加節點數的資料分割複本和執行個體。 整體應用程式效能會有所改善，改善，並減少爭用記憶體的存取權。 若未有效率地使用叢集中的節點，您可減少叢集中的節點數目。 Service Fabric 會再次重新平衡全體減少節點數的資料分割複本和執行個體，以善加使用每個節點上的硬體。 您可透過[手動](service-fabric-cluster-scale-in-out.md)或[程式設計方式](service-fabric-cluster-programmatic-scaling.md)，調整 Azure 上叢集的規模。 您可[手動](service-fabric-cluster-windows-server-add-remove-nodes.md)調整獨立叢集的規模。
 
 ### <a name="cluster-upgrades"></a>叢集升級
 新版本的 Service Fabric 執行階段會定期發行。 在叢集上執行執行階段或網狀架構升級，以確保一律執行[支援的版本](service-fabric-support.md)。 除了網狀架構升級，您亦可更新憑證或應用程式連接埠等叢集組態。

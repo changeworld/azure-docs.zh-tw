@@ -4,12 +4,12 @@ description: 了解 Azure Service Fabric 叢集的相應縮小、相應放大、
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a21182c974d6141264c8ca0c36bfc8f6a366d6f3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258690"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793171"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>調整 Azure Service Fabric 叢集
 Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用來將您的微服務部署到其中並進行管理。 屬於叢集一部分的機器或 VM 都稱為節點。 叢集有可能包含數千個節點。 在建立 Service Fabric 叢集之後，您可以水平調整叢集 (變更節點數目)，或以垂直方式調整 (變更節點的資源)。  您可以隨時調整叢集，即使正在叢集上執行工作負載，也是如此。  在叢集進行調整時，您的應用程式也會自動調整。
@@ -29,13 +29,13 @@ Service Fabric 叢集是一組由網路連接的虛擬或實體機器，可用�
 - 執行具狀態生產工作負載的非主要節點類型，應一律具有五個或更多節點。
 - 執行無狀態生產工作負載的非主要節點類型，應一律具有兩個或更多節點。
 - 任何具有金級或銀級[持久性層級](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)的節點類型，應一律具有五個或更多節點。
-- 請勿從節點類型中移除隨機 VM 執行個體/節點，而應一律使用虛擬機器擴展集的相應減少功能。 刪除隨機 VM 執行個體可能會對系統進行負載平衡的能力造成負面影響。
+- 請勿從節點類型中移除隨機 VM 實例/節點，請一律使用虛擬機器擴展集相應縮小功能。 刪除隨機 VM 執行個體可能會對系統進行負載平衡的能力造成負面影響。
 - 如果使用自動調整規則，請適當設定規則，使系統逐一對節點進行相應縮小 (移除 VM 執行個體)。 一次相應減少超過一個執行個體並不安全。
 
-由於叢集中的 Service Fabric 節點類型是由後端的虛擬機器擴展集所組成，因此您可以[設定自動調整規則或手動調整](service-fabric-cluster-scale-up-down.md)每個節點類型/虛擬機器擴展集。
+由於叢集中的 Service Fabric 節點類型是由後端的虛擬機器擴展集所組成，因此您可以[設定自動調整規則或手動調整](service-fabric-cluster-scale-in-out.md)每個節點類型/虛擬機器擴展集。
 
 ### <a name="programmatic-scaling"></a>以程式設計方式調整
-在許多案例中，[以手動方式或透過自動調整規則調整叢集](service-fabric-cluster-scale-up-down.md)都是不錯的解決方案。 但在更為進階的案例中，可能就不適用。 這些方法的可能缺點包括︰
+在許多案例中，[以手動方式或透過自動調整規則調整叢集](service-fabric-cluster-scale-in-out.md)都是不錯的解決方案。 但在更為進階的案例中，可能就不適用。 這些方法的可能缺點包括︰
 
 - 手動調整會要求您登入並明確要求調整規模作業。 如果調整作業需要經常進行或難以預料會在何時進行，這個方法可能就不是合適的解決方案。
 - 自動調整規則在從虛擬機器擴展集內移除執行個體時，並不會自動從相關聯的 Service Fabric 叢集移除對於該節點的認識，除非該節點類型的持久性等級為銀級或金級。 自動調整規則會作用在擴展集層級 (而非 Service Fabric 層級)，所以自動調整規則會直接移除 Service Fabric 節點，而未將其正常關閉。 以這種方式粗糙地移除節點，會在相應縮小作業完成後留下「準刪除」的 Service Fabric 節點狀態。 個人 (或服務) 必須定期清除 Service Fabric 叢集中的已移除節點狀態。

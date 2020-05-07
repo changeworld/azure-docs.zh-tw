@@ -1,23 +1,23 @@
 ---
-title: Azure 資料箱閘道裝置存取、電源和連線模式
-description: 說明如何針對有助於將資料傳輸至 Azure 的 Azure 資料箱閘道裝置管理存取、電源和連線模式
+title: Azure Stack Edge 裝置存取、電源和連線模式 |Microsoft Docs
+description: 說明如何管理可協助將資料傳輸至 Azure 之 Azure Stack Edge 裝置的存取、電源和連線模式
 services: databox
 author: alkohli
 ms.service: databox
-ms.subservice: gateway
+ms.subservice: edge
 ms.topic: article
-ms.date: 06/03/2019
+ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: c4043702bd27bb9a37fca70475ef254bbd1f7372
+ms.openlocfilehash: 939296b1cf606401a801dd72eccbad23da766018
 ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561353"
+ms.locfileid: "82569611"
 ---
-# <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>管理 Azure 資料箱閘道的存取、電源和連線模式
+# <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>管理 Azure Stack 邊緣的存取、電源和連線模式
 
-本文說明如何管理 Azure 資料箱閘道的存取、電源和連線模式。 這些作業都是透過本機 Web UI 或 Azure 入口網站執行。 
+本文說明如何管理 Azure Stack 邊緣的存取、電源和連線模式。 這些作業都是透過本機 Web UI 或 Azure 入口網站執行。
 
 在本文中，您將學會如何：
 
@@ -26,9 +26,10 @@ ms.locfileid: "82561353"
 > * 管理連線模式
 > * 管理電源
 
+
 ## <a name="manage-device-access"></a>管理裝置存取
 
-您的資料箱閘道裝置的存取權是由裝置密碼的使用所控制。 您可以透過本機 web UI 變更密碼。 您也可以在 Azure 入口網站中重設裝置密碼。
+您的 Azure Stack Edge 裝置的存取權是由裝置密碼的使用所控制。 您可以透過本機 web UI 變更密碼。 您也可以在 Azure 入口網站中重設裝置密碼。
 
 ### <a name="change-device-password"></a>變更裝置密碼
 
@@ -37,9 +38,9 @@ ms.locfileid: "82561353"
 1. 在本機 Web UI 中，移至 [維護] > [密碼變更]****。
 2. 輸入目前的密碼，然後輸入新密碼。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 確認新的密碼。
 
-    ![變更密碼](media/data-box-gateway-manage-access-power-connectivity-mode/change-password-1.png)
+    ![變更密碼](media/azure-stack-edge-manage-access-power-connectivity-mode/change-password-1.png)
 
-3. 按一下 [變更密碼]****。
+3. 選取 [變更密碼] ****。
  
 ### <a name="reset-device-password"></a>重設裝置密碼
 
@@ -47,25 +48,25 @@ ms.locfileid: "82561353"
 
 1. 在 Azure 入口網站中，移至 [概觀] > [重設管理員密碼]****。
 
-    ![重設密碼](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![重設密碼](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
 
- 
-2. 輸入新密碼並加以確認。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 按一下 [重設]****。
 
-    ![重設密碼](media/data-box-gateway-manage-access-power-connectivity-mode/reset-password-2.png)
+2. 輸入新密碼並加以確認。 所提供的密碼必須介於 8 到 16 個字元。 此密碼必須有下列其中 3 種字元：大寫、小寫、數字和特殊字元。 選取 [重設]****。
+
+    ![重設密碼](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-2.png)
 
 ## <a name="manage-resource-access"></a>管理資源存取
 
-若要建立 Azure Stack Edge/資料箱閘道、IoT 中樞和 Azure 儲存體資源，您需要在資源群組層級上作為參與者或更高許可權。 您也需要註冊對應的資源提供者。 對於涉及啟用金鑰和認證的任何作業，也需要 Azure Active Directory 圖形 API 的許可權。 下列各節將說明這些情況。
+若要建立 Azure Stack Edge/資料箱閘道、IoT 中樞和 Azure 儲存體資源，您需要在資源群組層級上作為參與者或更高許可權。 您也需要註冊對應的資源提供者。 對於涉及啟用金鑰和認證的任何作業，也需要 Microsoft Graph API 的許可權。 下列各節將說明這些情況。 
 
 ### <a name="manage-microsoft-graph-api-permissions"></a>管理 Microsoft Graph API 許可權
 
-產生 Azure Stack Edge 裝置的啟用金鑰，或執行任何需要認證的作業時，您需要 Microsoft Graph API 的許可權。 需要認證的作業可以是：
+產生 Azure Stack Edge 裝置的啟用金鑰，或執行任何需要認證的作業時，您需要 Azure Active Directory 圖形 API 的許可權。 需要認證的作業可以是：
 
 -  使用相關聯的儲存體帳戶建立共用。
 -  建立可存取裝置上共用的使用者。
 
-您應該擁有 Active Directory `User`租使用者的存取權，如您所需`Read all directory objects`。 您不能是來賓使用者，因為他們沒有的許可權`Read all directory objects`。 如果您是來賓，則產生啟用金鑰的作業（在 Azure Stack Edge 裝置上建立共用）將會失敗。
+您應該擁有 Active Directory `User`租使用者的存取權，如您所需`Read all directory objects`。 您不能是來賓使用者，因為他們沒有的許可權`Read all directory objects`。 如果您是來賓，則產生啟用金鑰的作業、在 Azure Stack Edge 裝置上建立共用、建立使用者、Edge 計算角色設定、重設裝置密碼都會失敗。
 
 如需有關如何提供使用者存取權給 Microsoft Graph API 的詳細資訊，請參閱[Microsoft Graph 許可權參考](https://docs.microsoft.com/graph/permissions-reference)。
 
@@ -98,9 +99,11 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 ## <a name="manage-connectivity-mode"></a>管理連線模式
 
-除了預設標準模式，您的裝置也可以在已部分中斷連線或已中斷連線的模式中執行。 每種模式的說明如下：
+除了預設的完全連線模式以外，您的裝置也可以在部分連線或完全離線的模式下執行。 每種模式的說明如下：
 
-- **已部分中斷連線** – 在此模式中，裝置無法將任何資料上傳到共用，不過可透過 Azure 入口網站加以管理。
+- **完全連接**-這是裝置運作的一般預設模式。 雲端上傳和下載的資料都會在此模式中啟用。 您可以使用 Azure 入口網站或本機 web UI 來管理裝置。
+
+- **部分中斷**連線–在此模式中，裝置無法上傳或下載任何共用資料，不過可以透過 Azure 入口網站來管理。
 
     此模式通常使用於計量付費的衛星網路，其目標在於減少網路頻寬使用量。 裝置監視作業仍可能需要最低網路使用量。
 
@@ -111,25 +114,24 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 若要變更裝置模式，請遵循下列步驟：
 
 1. 在裝置的本機 Web UI 中，移至 [組態] > [雲端設定]****。
-2. 停用 [雲端上傳和下載連結]****。
-3. 若要在已部分中斷連線的模式中執行裝置，請啟用 [Azure 入口網站管理]****。
+2. 從下拉式清單中，選取您想要在其中操作裝置的模式。 您可以選取 [**完全連接**]、[**部分連線**] 和 [**完全中斷**連線]。 若要在已部分中斷連線的模式中執行裝置，請啟用 [Azure 入口網站管理]****。
 
-    ![連線模式](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-1.png)
+    ![連線模式](media/azure-stack-edge-manage-access-power-connectivity-mode/connectivity-mode.png)
  
-4. 若要在已中斷連線的模式中執行裝置，請停用 [Azure 入口網站管理]****。 裝置現在只能透過本機 Web UI 管理。
-
-    ![連線模式](media/data-box-gateway-manage-access-power-connectivity-mode/connectivity-mode-2.png)
-
 ## <a name="manage-power"></a>管理電源
 
-您可以使用本機 Web UI 關閉或重新啟動您的虛擬裝置。 我們建議在重新開機之前，先讓主機上的共用離線，然後再讓裝置離線。 此動作可讓資料損毀的可能性降至最低。
+您可以使用本機 web UI 關閉或重新開機您的實體裝置。 建議您在重新開機之前，先將資料伺服器上的共用離線，然後再讓裝置離線。 此動作可讓資料損毀的可能性降至最低。
 
 1. 在本機 Web UI 中，移至 [維護] > [電源設定]****。
-2. 視您想要進行的動作而定，按一下 [關機]**** 或 [重新啟動]****。
+2. 選取 [**關機**] 或 [**重新開機**]，視您想要執行的動作而定。
 
-    ![電源設定](media/data-box-gateway-manage-access-power-connectivity-mode/shut-down-restart-1.png)
+    ![電源設定](media/azure-stack-edge-manage-access-power-connectivity-mode/shut-down-restart-1.png)
 
-3. 系統提示您進行確認時，按一下 [是]**** 以繼續。
+3. 當系統提示您確認時，請選取 **[是]** 繼續進行。
 
 > [!NOTE]
-> 如果您關閉虛擬裝置，則必須透過 Hypervisor 管理來啟動裝置。
+> 如果您關閉實體裝置，就必須按下裝置上的電源按鈕來開啟它。
+
+## <a name="next-steps"></a>後續步驟
+
+- 了解如何[管理共用](azure-stack-edge-manage-shares.md)。

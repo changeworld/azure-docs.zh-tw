@@ -5,16 +5,16 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458278"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787102"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以程式設計方式調整 Service Fabric 叢集 
 
-在 Azure 中執行的 Service Fabric 叢集是建立在虛擬機器擴展集之上。  [叢集調整](./service-fabric-cluster-scale-up-down.md)描述可如何以手動方式或使用自動調整規則來調整 Service Fabric 叢集。 本文描述如何使用 Fluent Azure 計算 SDK 來管理認證及相應縮小或相應放大叢集，這是更進階的案例。 如需概觀，請閱讀[以程式設計方式協調 Azure 調整作業](service-fabric-cluster-scaling.md#programmatic-scaling)。 
+在 Azure 中執行的 Service Fabric 叢集是建立在虛擬機器擴展集之上。  [叢集調整](./service-fabric-cluster-scale-in-out.md)描述可如何以手動方式或使用自動調整規則來調整 Service Fabric 叢集。 本文描述如何使用 Fluent Azure 計算 SDK 來管理認證及相應縮小或相應放大叢集，這是更進階的案例。 如需概觀，請閱讀[以程式設計方式協調 Azure 調整作業](service-fabric-cluster-scaling.md#programmatic-scaling)。 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -119,6 +119,6 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 若要開始實作您自己的自動調整邏輯，請先熟悉下列概念和實用的 API：
 
-- [以手動方式或透過自動調整規則進行調整](./service-fabric-cluster-scale-up-down.md)
+- [以手動方式或透過自動調整規則進行調整](./service-fabric-cluster-scale-in-out.md)
 - [適用於 .NET 的 Fluent Azure 管理程式庫](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (適用於與 Service Fabric 叢集的基礎虛擬機器擴展集互動)
 - [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (適用於與 Service Fabric 叢集及其節點互動)

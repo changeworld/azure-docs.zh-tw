@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1208e08f7b85e893ba754bdbdf71a2da4f68c90a
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509055"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787170"
 ---
 # <a name="overview-of-change-tracking-and-inventory"></a>變更追蹤和清查的總覽
 
@@ -23,10 +23,15 @@ ms.locfileid: "82509055"
 - Microsoft 服務
 - Linux 精靈
 
-變更追蹤和清查會從雲端中的 Azure 監視器服務取得其資料。 Azure 會將受監視伺服器上已安裝的軟體、Microsoft 服務、Windows 登錄和檔案以及 Linux 守護程式的變更傳送到 Azure 監視器進行處理。 雲端服務會將邏輯套用至接收的資料、加以記錄並使其可供使用。 
-
 > [!NOTE]
 > 若要追蹤 Azure Resource Manager 的屬性變更，請參閱 Azure Resource Graph[變更歷程記錄](../governance/resource-graph/how-to/get-resource-changes.md)。
+
+變更追蹤和清查會從 Azure 監視器取得其資料。 連線至 Log Analytics 工作區的虛擬機器會使用 Log Analytics 代理程式，來收集已安裝軟體、Microsoft 服務、Windows 登錄和檔案，以及受監視伺服器上任何 Linux 守護程式變更的相關資料。 當資料可供使用時，代理程式會將它傳送至 Azure 監視器進行處理。 Azure 監視器會將邏輯套用至接收的資料、加以記錄並使其可供使用。 
+
+變更追蹤和清查功能會在 Azure 自動化中啟用變更追蹤和清查功能區域。 由於這兩個區域都使用相同的 Log Analytics 代理程式，因此在任一功能區域中新增 VM 的程式都相同。 
+
+> [!NOTE]
+> 若要使用變更追蹤和清查功能，您必須在自動化帳戶的相同訂用帳戶和區域中找出所有的 Vm。
 
 變更追蹤和清查目前不支援下列專案：
 
@@ -38,7 +43,7 @@ ms.locfileid: "82509055"
 其他限制：
 
 * [最大檔案大小]**** 資料行和值未用於目前實作中。
-* 如果您在30分鐘的收集週期內收集超過2500個檔案，解決方案效能可能會降低。
+* 如果您在30分鐘的收集週期內收集超過2500個檔案，變更追蹤和清查效能可能會降低。
 * 當網路流量很高時，變更記錄最多可能需要六個小時才會顯示。
 * 如果您在電腦關閉時修改設定，則電腦可能會公佈屬於先前設定的變更。
 
@@ -49,33 +54,7 @@ ms.locfileid: "82509055"
 
 ## <a name="supported-operating-systems"></a>支援的作業系統
 
-Windows 和 Linux 作業系統都支援變更追蹤和清查和 Azure 監視器 Log Analytics 代理程式。
-
-### <a name="windows-operating-systems"></a>Windows 作業系統
-
-正式支援的 Windows 作業系統版本為 Windows Server 2008 R2 或更新版本。
-
-### <a name="linux-operating-systems"></a>Linux 作業系統
-
-以下所討論的 Linux 散發套件已正式支援適用于 Linux 的 Log Analytics 代理程式。 不過，Linux 代理程式也可能在未列出的其他散發套件上執行。 除非另有說明，列出的每個主要版本都支援所有次要版本。
-
-#### <a name="64-bit-linux-operating-systems"></a>64位 Linux 作業系統
-
-* CentOS 6 和 7
-* Amazon Linux 2017.09
-* Oracle Linux 6 和 7
-* Red Hat Enterprise Linux Server 6 和 7
-* Debian GNU/Linux 8 和 9
-* Ubuntu Linux 14.04 LTS、16.04 LTS 和 18.04 LTS
-* SUSE Linux Enterprise Server 12
-
-#### <a name="32-bit-linux-operating-systems"></a>32位 Linux 作業系統
-
-* CentOS 6
-* Oracle Linux 6
-* Red Hat Enterprise Linux Server 6
-* Debian GNU/Linux 8 和 9
-* Ubuntu Linux 14.04 LTS 和 16.04 LTS
+所有符合 Log Analytics 代理程式需求的作業系統都支援變更追蹤和清查。 正式支援的 Windows 作業系統版本為 Windows Server 2008 SP1 或更新版本，以及 Windows 7 SP1 或更新版本。 此外，也支援一些 Linux 作業系統。 請參閱[Log Analytics 代理程式總覽](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)。 
 
 ## <a name="network-requirements"></a>網路需求
 
@@ -83,14 +62,14 @@ Windows 和 Linux 作業系統都支援變更追蹤和清查和 Azure 監視器 
 
 |Azure 公用  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
+|*.ods.opinsights.azure.com    | *.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*.azure-automation.us|
+|*.blob.core.windows.net | *.blob.core.usgovcloudapi.net|
+|*.azure-automation.net | *.azure-automation.us|
 
 ## <a name="change-tracking-and-inventory-user-interface"></a>變更追蹤和清查使用者介面
 
-使用 Azure 入口網站中的變更追蹤和清查，來查看受監視電腦的變更摘要。 在您的自動化帳戶中選取 [設定**管理**] 底下的 [**變更追蹤**]，即可使用此功能。 
+使用 Azure 入口網站中的變更追蹤和清查，來查看受監視電腦的變更摘要。 在您的自動化帳戶中，選取 [設定**管理**] 下 [**變更追蹤**] 或 [**清查**] 的其中一個 [新增 vm] 選項，即可使用此功能。  
 
 ![變更追蹤儀表板](./media/change-tracking/change-tracking-dash01.png)
 
@@ -186,7 +165,7 @@ Windows 和 Linux 作業系統都支援變更追蹤和清查和 Azure 監視器 
 |服務|250|
 |精靈|250|
 
-使用變更追蹤和清查之機器的平均 Log Analytics 資料使用量大約為每月 40 MB。 這只是近似值，它會根據您的環境而變更。 建議您監視您的環境，查看您的實際使用量。
+使用變更追蹤和清查之機器的平均 Log Analytics 資料使用量大約為每月 40 MB，視您的環境而定。 使用 Log Analytics 工作區的 [使用量和估計成本] 功能，您可以在使用量圖表中變更追蹤和清查來查看資料內嵌。 您可以使用此資料檢視來評估您的資料使用量，並判斷其對帳單的影響。 請參閱[瞭解您的使用量和估計成本](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs)。  
 
 ### <a name="microsoft-service-data"></a>Microsoft 服務資料
 

@@ -78,7 +78,12 @@
       href: ../azure-databricks/databricks-stream-from-eventhubs.md
       maintainContext: true
 - name: 範例
-  href: event-hubs-samples.md
+  items:
+    - name: 程式碼範例
+      href: event-hubs-samples.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 事件中樞詞彙
@@ -282,7 +287,7 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 服務更新
       href: 'https://azure.microsoft.com/updates/?product=event-hubs'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-eventhub'
     - name: 影片
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=event-hubs'

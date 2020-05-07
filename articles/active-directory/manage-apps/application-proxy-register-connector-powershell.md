@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 01/24/2020
 ms.author: mimart
 ms.reviewer: japere
-ms.custom: it-pro
+ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b43d2de0a366d7e69a025b2e4e2998dccda2038e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ae3cd491db03fd036869a8d86aeb646e3175b59
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756206"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609964"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>建立 Azure AD 應用程式 Proxy 連接器的自動安裝指令碼
 
@@ -36,14 +36,14 @@ ms.locfileid: "76756206"
 
 若要讓[應用程式 Proxy 連接器](application-proxy-connectors.md)能夠正常執行，必須使用應用程式系統管理員和密碼向您的 Azure AD 目錄註冊。 通常，此資訊是在連接器安裝期間於一個快顯對話方塊中輸入的，但是您可以改用 PowerShell 使此程序自動進行。
 
-自動安裝有兩個步驟。 首先，安裝連接器。 其次，向 Azure AD 註冊連接器。 
+自動安裝有兩個步驟。 首先，安裝連接器。 其次，向 Azure AD 註冊連接器。
 
 ## <a name="install-the-connector"></a>安裝連接器
 使用下列步驟安裝連接器而不註冊連接器：
 
 1. 開啟命令提示字元。
 2. 執行下列命令，/q 代表無訊息安裝。 無訊息安裝不會提示您接受《使用者授權合約》。
-   
+
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
 ## <a name="register-the-connector-with-azure-ad"></a>向 Azure AD 註冊連接器
@@ -54,13 +54,13 @@ ms.locfileid: "76756206"
 
 ### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>使用 Windows PowerShell 認證物件註冊連接器
 1. 建立 Windows PowerShell 認證物件 `$cred`，其中含有目錄的系統管理使用者名稱和密碼。 執行下列命令，並取代* \<使用者\>名稱*和* \<密碼\>*：
-   
+
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
 2. 移至 **C:\Program Files\Microsoft AAD App Proxy Connector**，然後使用您建立的 `$cred` 物件來執行下列指令碼：
-   
+
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
 ### <a name="register-the-connector-using-a-token-created-offline"></a>使用離線時建立的權杖註冊連接器
@@ -128,38 +128,38 @@ ms.locfileid: "76756206"
         $AADPoshPath = (Get-InstalledModule -Name AzureAD).InstalledLocation
         # Set Location for ADAL Helper Library
         $ADALPath = $(Get-ChildItem -Path $($AADPoshPath) -Filter Microsoft.IdentityModel.Clients.ActiveDirectory.dll -Recurse ).FullName | Select-Object -Last 1
-        
+
         # Add ADAL Helper Library
         Add-Type -Path $ADALPath
-        
+
         #region constants
-        
+
         # The AAD authentication endpoint uri
-        [uri]$AadAuthenticationEndpoint = "https://login.microsoftonline.com/common/oauth2/token?api-version=1.0/" 
-        
+        [uri]$AadAuthenticationEndpoint = "https://login.microsoftonline.com/common/oauth2/token?api-version=1.0/"
+
         # The application ID of the connector in AAD
         [string]$ConnectorAppId = "55747057-9b5d-4bd4-b387-abf52a8bd489"
-        
+
         # The reply address of the connector application in AAD
-        [uri]$ConnectorRedirectAddress = "urn:ietf:wg:oauth:2.0:oob" 
-        
+        [uri]$ConnectorRedirectAddress = "urn:ietf:wg:oauth:2.0:oob"
+
         # The AppIdUri of the registration service in AAD
         [uri]$RegistrationServiceAppIdUri = "https://proxy.cloudwebappproxy.net/registerapp"
-        
+
         #endregion
-        
+
         #region GetAuthenticationToken
-        
+
         # Set AuthN context
         $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $AadAuthenticationEndpoint
-        
+
         # Build platform parameters
         $promptBehavior = [Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior]::Always
         $platformParam = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList $promptBehavior
-        
+
         # Do AuthN and get token
         $authResult = $authContext.AcquireTokenAsync($RegistrationServiceAppIdUri.AbsoluteUri, $ConnectorAppId, $ConnectorRedirectAddress, $platformParam).Result
-        
+
         # Check AuthN result
         If (($authResult) -and ($authResult.AccessToken) -and ($authResult.TenantId) ) {
         $token = $authResult.AccessToken
@@ -168,7 +168,7 @@ ms.locfileid: "76756206"
         Else {
         Write-Output "Authentication result, token or tenant id returned are null"
         }
-        
+
         #endregion
 
 2. 建立權杖後，請使用該權杖建立一個 SecureString：
@@ -179,9 +179,7 @@ ms.locfileid: "76756206"
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 
-## <a name="next-steps"></a>後續步驟 
+## <a name="next-steps"></a>後續步驟
 * [使用您自己的網域名稱發行應用程式](application-proxy-configure-custom-domain.md)
 * [啟用單一登入](application-proxy-configure-single-sign-on-with-kcd.md)
 * [使用應用程式 Proxy 疑難排解您遇到的問題](application-proxy-troubleshoot.md)
-
-

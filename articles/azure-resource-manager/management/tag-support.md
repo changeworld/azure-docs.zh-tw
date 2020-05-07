@@ -3,12 +3,12 @@ title: 資源的標記支援
 description: 顯示哪些 Azure 資源類型支援標記。 提供所有 Azure 服務的詳細資料。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c035f4f9ce6b7c842caeab3b705394417d15ba0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255021"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609284"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 資源的標記支援
 本文將說明資源類型是否支援[標記](tag-resources.md)。 標記為 [**支援標記**] 的資料行指出資源類型是否有標記的屬性。 [**成本報表] 中**標示為 [標記] 的資料行指出該資源類型是否會將標記傳遞至成本報表。 您可以在 [[成本管理成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options)] 和 [ [Azure 帳單發票] 和 [每日使用量] 資料](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)中依標記來查看成本。
@@ -1551,6 +1551,7 @@ ms.locfileid: "81255021"
 > | virtualHubs | 是 | 是 |
 > | virtualNetworkGateways | 是 | 是 |
 > | virtualNetworks | 是 | 是 |
+> | virtualNetworks/子網 | 否 | 否 |
 > | virtualNetworkTaps | 是 | 是 |
 > | virtualWans | 是 | 否 |
 > | vpnGateways | 是 | 是 |

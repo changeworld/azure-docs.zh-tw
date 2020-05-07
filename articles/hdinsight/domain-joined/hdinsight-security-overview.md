@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 492c248b9a68b39b37984b978944b4f7ef34d756
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190107"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780074"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight 中的企業安全性概觀
 
@@ -87,7 +87,7 @@ Azure 合規性供應項目是以各種類型的保證為基礎，包括正式�
 | 作業系統安全性 | 使用最新安全基底映射建立叢集 | 客戶 |
 |  | 確保定期進行 [OS 修補](../hdinsight-os-patching.md) | 客戶 |
 | 網路安全性 | 設定[虛擬網路](../hdinsight-plan-virtual-network-deployment.md) |
-|  | 設定[輸入網路安全性群組 (NSG) 規則](../hdinsight-plan-virtual-network-deployment.md#networktraffic) | 客戶 |
+|  | 設定[輸入網路安全性群組 (NSG) 規則](../control-network-traffic.md) | 客戶 |
 |  | 使用防火牆來設定[輸出流量限制](../hdinsight-restrict-outbound-traffic.md) | 客戶 |
 | 虛擬化基礎結構 | N/A | HDInsight (雲端提供者) |
 | 實體基礎結構安全性 | N/A | HDInsight (雲端提供者) |

@@ -2,26 +2,21 @@
 title: 設定 Azure AD 資源庫應用程式的使用者布建時發生問題
 description: 如何對在為已經列於 Azure AD 應用程式庫中的應用程式設定使用者佈建時所面臨的常見問題進行疑難排解
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3955b96e4a7edfc79a229d927523bdd4473409d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6fb5fbecc9b2917f4fde2d1ccb76d6962a0af18
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522759"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593959"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>設定 Azure AD 資源庫應用程式的使用者佈建時遇到的問題
 

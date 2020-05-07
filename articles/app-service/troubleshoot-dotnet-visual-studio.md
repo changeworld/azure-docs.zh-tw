@@ -6,15 +6,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: 3305cfb81980984574961b2a84a056f5d1879ead
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb68860af56914acede6c9cbf04d3e8ad3edbe04
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280049"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891062"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 針對 Azure App Service 中的應用程式進行疑難排解
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 本教學課程示範如何使用 Visual Studio 工具，協助針對 [App Service](https://go.microsoft.com/fwlink/?LinkId=529714) 中的應用程式進行偵錯，方法是以[偵錯模式](https://docs.microsoft.com/visualstudio/debugger/)從遠端執行，或者檢視應用程式記錄與 Web 伺服器記錄。
 
 您將了解：
@@ -614,7 +614,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
 如需在 Azure App Service 中疑難排解應用程式的詳細資訊，請參閱下列資源：
 
 * [如何監視應用程式](web-sites-monitor.md)
-* [使用 Visual Studio 2013 調查 Azure App Service 中的記憶體流失](https://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx)。 Microsoft ALM 部落格文章，討論 Visual Studio 中分析受控記憶體問題的功能。
+* [使用 Visual Studio 2013 調查 Azure App Service 中的記憶體流失](https://devblogs.microsoft.com/devops/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013/)。 Microsoft ALM 部落格文章，討論 Visual Studio 中分析受控記憶體問題的功能。
 * [您應該了解的 Azure App Service 線上工具](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/)。 取自 Amit Apple 的部落格文章。
 
 如需特定疑難排解問題的說明，請在下列任一個論壇中開啟一段討論串：
@@ -678,7 +678,7 @@ App Service 應用程式會使用 IIS 7.0 及更新版本所提供的相同失�
   用於檢視 Web 伺服器記錄 (*.log* 檔案) 中資料的工具。
 * [針對 IIS 效能問題或使用 LogParser 的應用程式錯誤進行疑難排解](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
    此篇介紹可以用來分析 Web 伺服器記錄的 Log Parser 工具。
-* [Robert McMurray 關於使用 LogParser 的部落格文章](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [Robert McMurray 關於使用 LogParser 的部落格文章](https://docs.microsoft.com/archive/blogs/robert_mcmurray/using-logparser-with-ftp-7-x-sessions)<br/>
 * [IIS 7.0、IIS 7.5 與 IIS 8.0 中的 HTTP 狀態碼](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>分析失敗要求追蹤記錄

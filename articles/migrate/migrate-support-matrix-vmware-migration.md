@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 遷移支援
 description: 深入瞭解 Azure Migrate 中的 VMware VM 遷移支援。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: eee16b244ae4f9d517bdd42a0b7f37b1494ac480
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 666fcc3771dfd4adadeab30fa5d1ec51da5bc038
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538132"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743674"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 遷移的支援矩陣
 
@@ -69,7 +69,7 @@ ms.locfileid: "81538132"
 
 - 瞭解 VMware 的[設備需求](migrate-appliance.md#appliance---vmware)。
 - 瞭解設備在[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端中存取所需的 url。
-- 在 Azure Government 中，您必須使用腳本來部署應用裝置。
+- 在 Azure Government 中，您必須[使用腳本](deploy-appliance-script-government.md)來部署應用裝置。
 
 ## <a name="agentless-ports"></a>無代理程式-埠
 
@@ -140,7 +140,7 @@ VM | 在 Vm 上執行的行動服務會與埠 HTTPS 443 輸入上的內部部署
 
 複寫至 Azure 的所有內部部署 Vm 都必須符合此表中摘要說明的 Azure VM 需求。 當 Site Recovery 執行複寫的必要條件檢查時，如果不符合某些需求，此檢查將會失敗。
 
-**元件** | **Requirements** | **詳細資料**
+**元件** | **需求** | **詳細資料**
 --- | --- | ---
 客體作業系統 | 驗證支援的 VMware VM 作業系統以進行遷移。<br/> 您可以遷移在支援的作業系統上執行的任何工作負載。 | 若不支援，則檢查會失敗。
 客體作業系統架構 | 64 位元。 | 若不支援，則檢查會失敗。

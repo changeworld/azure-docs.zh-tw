@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: 45e766c624ee96f7faa06fb07d00349e620a4c0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133473"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598363"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Azure 串流分析中的使用者定義函數
 
@@ -47,6 +47,9 @@ Azure 串流分析不會保留所有函式呼叫和傳回結果的記錄。 為�
 
 任何執行階段錯誤都會被視為嚴重的，而且會透過活動和資源記錄來呈現。 建議您的函式處理所有例外狀況和錯誤，並將有效的結果傳回給您的查詢。 這會導致您的作業[無法進入失敗狀態](job-states.md)。  
 
+## <a name="exception-handling"></a>例外狀況處理
+
+使用 Azure 串流分析中的資料時，資料處理期間的任何例外狀況都會被視為災難性的失敗。 使用者定義函式有更高的可能性，可以擲回例外狀況並導致處理停止。 若要避免這個問題，請在 JavaScript 或 c # 中使用*try-catch*區塊，以在程式碼執行期間攔截例外狀況。 可以記錄和處理攔截到的例外狀況，而不會造成系統失敗。 建議您一律將自訂程式碼包裝在*try-catch*區塊中，以避免在處理引擎中擲回非預期的例外狀況。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -54,4 +57,3 @@ Azure 串流分析不會保留所有函式呼叫和傳回結果的記錄。 為�
 * [Azure 串流分析 JavaScript 使用者定義匯總](stream-analytics-javascript-user-defined-aggregates.md)
 * [為 Azure 串流分析作業開發 .NET Standard 的使用者定義函數](stream-analytics-edge-csharp-udf-methods.md)
 * [將 Azure 串流分析與 Azure Machine Learning 整合](machine-learning-udf.md)
-

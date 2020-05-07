@@ -4,12 +4,12 @@ description: Service Fabric 叢集容量規劃考量。 Nodetypes、Operations�
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f011dee94e135ba40f8d3c87240e905e4a2739ec
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258911"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793052"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 叢集容量規劃考量
 對於任何生產部署而言，容量規劃都是一個很重要的步驟。 以下是一些您在該程序中必須考量的項目。
@@ -104,7 +104,7 @@ Service Fabric 系統服務 (例如，叢集管理員服務或映像存放區服
 
 - 針對所有啟用 Gold 或 Silver 持久性的虛擬機器擴展集維持至少五個節點。
 - 持久性層級為 Silver 或 Gold 的每個虛擬機器擴展集，都必須對應到它自己在 Service Fabric 叢集中的節點類型。 將多個虛擬機器擴展集對應到單一節點類型，將會使 Service Fabric 叢集與 Azure 基礎結構之間的協調無法正常運作。
-- 請勿隨機刪除 VM 執行個體，而一律使用虛擬機器擴展集的相應減少功能。 刪除隨機的 VM 執行個體可能會在 UD 和 FD 上的 VM 執行個體中產生不平衡。 此不平衡可能會嚴重影響系統對服務執行個體/服務複本正確進行負載平衡的能力。
+- 請勿刪除隨機 VM 實例，請一律使用虛擬機器擴展集相應縮小功能。 刪除隨機的 VM 執行個體可能會在 UD 和 FD 上的 VM 執行個體中產生不平衡。 此不平衡可能會嚴重影響系統對服務執行個體/服務複本正確進行負載平衡的能力。
 - 如果您使用自動調整功能，則請設定規則使系統一次只會針對一個節點進行相應縮小 (移除 VM 執行個體)。 一次相應減少超過一個執行個體並不安全。
 - 如果刪除或取消配置主要節點類型上的 VM，絕對不能將已配置的 VM 計數減少至可靠性層級所需數量以下。 在持久性層級為 Silver 或 Gold 的擴展集中，這些作業將會無限期地遭到封鎖。
 

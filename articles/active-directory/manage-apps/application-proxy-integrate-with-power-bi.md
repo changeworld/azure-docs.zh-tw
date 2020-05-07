@@ -14,24 +14,24 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.custom: it-pro
+ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a6fab618280f1383e3840c67d85136edc095b9a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77111583"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610083"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>使用 Azure AD 應用程式 Proxy 啟用 Power BI 行動版的遠端存取
 
-本文討論如何使用 Azure AD 應用程式 Proxy，讓 Power BI 行動應用程式連接到 Power BI 報表伺服器（PBIRS）和 SQL Server Reporting Services （SSRS）2016和更新版本。 透過這項整合，離開公司網路的使用者可以從 Power BI 的行動應用程式存取其 Power BI 報告，並受到 Azure AD 驗證的保護。 這種保護包括條件式存取和多重要素驗證等[安全性優點](application-proxy-security.md#security-benefits)。  
+本文討論如何使用 Azure AD 應用程式 Proxy，讓 Power BI 行動應用程式連接到 Power BI 報表伺服器（PBIRS）和 SQL Server Reporting Services （SSRS）2016和更新版本。 透過這項整合，離開公司網路的使用者可以從 Power BI 的行動應用程式存取其 Power BI 報告，並受到 Azure AD 驗證的保護。 這種保護包括條件式存取和多重要素驗證等[安全性優點](application-proxy-security.md#security-benefits)。
 
 ## <a name="prerequisites"></a>Prerequisites
 
 本文假設您已部署報表服務並[啟用應用程式 Proxy](application-proxy-add-on-premises-application.md)。
 
-- 啟用應用程式 Proxy 需要在 Windows server 上安裝連接器，並完成[必要條件](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)，讓連接器可以與 Azure AD 服務進行通訊。  
+- 啟用應用程式 Proxy 需要在 Windows server 上安裝連接器，並完成[必要條件](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)，讓連接器可以與 Azure AD 服務進行通訊。
 - 發佈 Power BI 時，建議您使用相同的內部和外部網域。 若要深入瞭解自訂網域，請參閱[在應用程式 Proxy 中使用自訂網域](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)。
 - 此整合適用于**Power BI 行動版 iOS 和 Android**應用程式。
 
@@ -68,7 +68,7 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
 若要設定 KCD，請針對每個連接器電腦重複執行下列步驟：
 
 1. 以網域系統管理員身分登入網域控制站，然後開啟**Active Directory 使用者和電腦**]。
-2. 尋找連接器執行所在的電腦。  
+2. 尋找連接器執行所在的電腦。
 3. 按兩下該電腦，然後選取 [**委派**] 索引標籤。
 4. 將 [委派設定] 設定為 [**信任這台電腦，但只委派指定的服務**]。 然後，選取 [使用任何驗證通訊協定]****。
 5. 選取 [**新增**]，然後選取 [**使用者或電腦**]。
@@ -95,7 +95,7 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
 
    b. 針對 [**單一登入模式]**，選取 [**整合式 Windows 驗證**]。
 
-   c. 將 [**內部應用程式 SPN** ] 設定為您稍早設定的值。  
+   c. 將 [**內部應用程式 SPN** ] 設定為您稍早設定的值。
 
    d. 針對要代表使用者使用的連接器選擇 [委派的登入身分識別]****。 如需詳細資訊，請參閱[使用不同的內部部署和雲端](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)身分識別。
 
@@ -105,7 +105,7 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
 
 ## <a name="step-3-modify-the-reply-uris-for-the-application"></a>步驟3：修改應用程式的回復 URI
 
-在 Power BI 的行動應用程式可以連接和存取報表服務之前，您必須先設定在步驟2中為您自動建立的應用程式註冊。 
+在 Power BI 的行動應用程式可以連接和存取報表服務之前，您必須先設定在步驟2中為您自動建立的應用程式註冊。
 
 1. 在 [Azure Active Directory**總覽**] 頁面上，選取 [**應用程式註冊**]。
 2. 在 [**所有應用程式**] 索引標籤底下，搜尋您在步驟2中建立的應用程式。
@@ -117,11 +117,11 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
-   
+
    為 Power BI 行動版**Android**設定應用程式時，請新增下列類型的重新導向 Uri：公用用戶端（行動 & 桌面）：
    - `urn:ietf:wg:oauth:2.0:oob`
    - `mspbi-adal://com.microsoft.powerbimobile`
-   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D` 
+   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D`
    - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
@@ -144,7 +144,7 @@ SPN 是使用 Kerberos 驗證之服務的唯一識別碼。 您必須確定您�
 1. 前往 [ **Azure Active Directory** ]，然後移至 [**應用程式註冊**]。
 2. 在註冊您的原生用戶端應用程式時，選取在步驟3中設定的應用程式。
 3. 在應用程式的頁面上，選取 [ **API 許可權**]。
-4. 按一下 [**新增許可權**]。 
+4. 按一下 [**新增許可權**]。
 5. 在 [**我的組織使用的 api**] 底下，搜尋「Microsoft 行動應用程式管理」並加以選取。
 6. 將**DeviceManagementManagedApps**許可權新增至應用程式
 7. 按一下 [授與系統**管理員同意**]，授與應用程式的存取權。

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: b707d67c88eb550d397134b2294c1c5b0e1f7f7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ff4647682f5f4d688f3b581b96715e01976a387
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80528206"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891161"
 ---
 # <a name="in-memory-sample"></a>記憶體內部範例
 
@@ -24,7 +24,7 @@ Azure SQL Database 中的記憶體內部技術可讓您改善應用程式的效�
 
 在本文中，您會看到兩個範例，分別示範如何在 Azure SQL Database 中使用記憶體內部 OLTP 以及資料行存放區索引。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 - [記憶體內部 OLTP 概觀和使用案例](https://msdn.microsoft.com/library/mt774593.aspx) (包括客戶案例研究參考和入門資訊)
 - [記憶體內部 OLTP 的文件](https://msdn.microsoft.com/library/dn133186.aspx)
 - [資料行存放區索引指南](https://msdn.microsoft.com/library/gg492088.aspx)
@@ -179,10 +179,10 @@ end
 
 在 VM 上或你選擇的任何主機上，安裝 Replay Markup Language (RML) 公用程式。 這些公用程式包括 ostress.exe。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 - [記憶體內部 OLTP 的範例資料庫](https://msdn.microsoft.com/library/mt465764.aspx)中的 ostress.exe 討論。
 - [記憶體內部 OLTP 的範例資料庫](https://msdn.microsoft.com/library/mt465764.aspx)。
-- [安裝 ostress.exe 的部落格](https://blogs.msdn.com/b/psssql/archive/20../../cumulative-update-2-to-the-rml-utilities-for-microsoft-sql-server-released.aspx)。
+- [安裝 ostress.exe 的部落格](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910)。
 
 
 

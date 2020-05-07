@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 87a962709638391887eaa275f059bf4ceae9218b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec1e7e9aa84c01cd62836f3c09f22cdb143817a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406980"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611325"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 驗證和授權錯誤碼
 
@@ -72,9 +72,9 @@ ms.locfileid: "81406980"
 | `temporarily_unavailable` | 伺服器暫時過於忙碌而無法處理要求。 | 重試要求。 用戶端應用程式可能會向使用者解釋，其回應因為暫時性狀況而延遲。 |
 
 ## <a name="lookup-current-error-code-information"></a>查閱目前的錯誤碼資訊
-錯誤碼和訊息可能會變更。  如需最新資訊，請查看`https://login.microsoftonline.com/error`頁面以尋找 AADSTS 錯誤描述、修正和一些建議的解決方法。  
+錯誤碼和訊息可能會變更。  如需最新資訊，請查看[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error)頁面以尋找 AADSTS 錯誤描述、修正和一些建議的解決方法。  
 
-搜尋傳回錯誤碼的數值部分。  例如，如果您收到錯誤碼 "AADSTS16000"，請在中`https://login.microsoftonline.com/error`搜尋 "16000"。  您也可以將錯誤碼號碼新增至 URL，直接連結到特定的錯誤： `https://login.microsoftonline.com/error?code=16000`。
+搜尋傳回錯誤碼的數值部分。  例如，如果您收到錯誤碼 "AADSTS16000"，請在中[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error)搜尋 "16000"。  您也可以將錯誤碼號碼新增至 URL，直接連結到特定的錯誤： [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000)。
 
 ## <a name="aadsts-error-codes"></a>AADSTS 錯誤碼
 
@@ -189,6 +189,7 @@ ms.locfileid: "81406980"
 | AADSTS65001 | DelegationDoesNotExist - 使用者或系統管理員尚未同意使用識別碼為 X 的應用程式。針對此使用者和資源傳送互動式授權要求。 |
 | AADSTS65004 | UserDeclinedConsent - 使用者不同意存取應用程式。 讓使用者重試登入，並同意應用程式|
 | AADSTS65005 | MisconfiguredApplication - 應用程式所需資源存取清單不包含資源可探索的應用程式，或用戶端應用程式已要求存取未在其所需資源存取清單中指定的資源，或 Graph 服務傳回不正確的要求或找不到資源。 如果應用程式支援 SAML，則可能是您在設定應用程式時所使用的識別碼 (實體) 不正確。 使用下列連結，試用針對 SAML 所列出的解決方式：[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS650052 | 應用程式需要存取您的組織`(\"{name}\")` `\"{organization}\"`尚未訂閱或啟用的服務。 請洽詢您的 IT 系統管理員，以檢查您的服務訂閱設定。 |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 驗證失敗。 重新整理權杖無效。 錯誤原因如下：<ul><li>權杖繫結標頭是空的</li><li>權杖繫結雜湊不相符</li></ul> |
 | AADSTS70001 | UnauthorizedClient - 應用程式已停用。 |
@@ -206,6 +207,7 @@ ms.locfileid: "81406980"
 | AADSTS75001 | BindingSerializationError - SAML 訊息繫結期間發生錯誤。 |
 | AADSTS75003 | UnsupportedBindingError - 應用程式傳回了與未支援繫結相關的錯誤 (無法透過 HTTP POST 以外的繫結傳送 SAML 通訊協定回應)。 |
 | AADSTS75005 | Saml2MessageInvalid - Azure AD 不支援應用程式針對 SSO 傳送的 SAML 要求。 |
+| AADSTS7500514 | 找不到支援的 SAML 回應類型。 支援的回應類型為 ' Response ' （在 XML 命名空間 ' urn： oasis： names： tc： SAML：2.0： protocol '）或 ' Assertion ' 中（XML 命名空間 ' urn： oasis： names： tc： SAML：2.0：判斷提示 '）。 應用程式錯誤-開發人員將會處理此錯誤。|
 | AADSTS75008 | RequestDeniedError - 應用程式所提出的要求遭拒，因為 SAML 要求有未預期的目的地。 |
 | AADSTS75011 | NoMatchedAuthnContextInOutputClaims - 使用者用來向服務進行驗證的驗證方法，與所要求的驗證方法不符。 |
 | AADSTS75016 | Saml2AuthenticationRequestInvalidNameIDPolicy - SAML2 驗證要求所具有的 NameIdPolicy 無效。 |
@@ -311,6 +313,7 @@ ms.locfileid: "81406980"
 | AADSTS700020 | InteractionRequired - 存取權授與需要互動。 |
 | AADSTS700022 | InvalidMultipleResourcesScope - 所提供的輸入參數範圍值無效，因為它包含多個資源。 |
 | AADSTS700023 | InvalidResourcelessScope - 要求存取權杖時，所提供的輸入參數範圍值無效。 |
+| AADSTS7000215 | 提供的用戶端祕密無效。 開發人員錯誤-應用程式嘗試在沒有必要或正確驗證參數的情況下登入。|
 | AADSTS7000222| InvalidClientSecretExpiredKeysProvided-提供的用戶端秘密金鑰已過期。 請造訪 Azure 入口網站，為您的應用程式建立新的金鑰，或考慮使用憑證認證來增加安全性：https://aka.ms/certCreds |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant 提供的授權碼旨在針對其他租使用者使用，因此會遭到拒絕。 OAuth2 授權碼必須針對取得的相同租使用者兌換（/common 或/{tenant-ID} 適當） |
 | AADSTS1000000 | UserNotBoundError - 繫結 API 需要 Azure AD 使用者也向外部 IDP 進行驗證，但尚未發生。 |

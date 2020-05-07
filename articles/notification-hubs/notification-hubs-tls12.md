@@ -10,20 +10,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a87f3563b995081de8e7cbb4b4499718f77b02ff
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885747"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583259"
 ---
 # <a name="transport-layer-security-tls"></a>傳輸層安全性 (TLS)
 
-為確保較高層級的安全性，通知中樞將會停用 TLS 1.0 和1.1 的支援（5月31日2020（從2020年4月30日延長）。 這些較舊的通訊協定提供弱式密碼編譯，而且容易遭受 BEAST 和貴賓攻擊。 部署到執行 Android 第5版或更新版本之裝置的應用程式（或 iOS 第5版或更新版本）不會受到這項變更的影響，因為這些作業系統支援 TLS 1.2，而且用戶端和伺服器會在連線時協調通訊協定的最高支援版本。
+為確保更高的安全性等級，通知中樞將會在**2020 年12月 31**日（從2020年4月30日延伸），停用 TLS 1.0 和1.1 的支援。 這些較舊的通訊協定提供弱式密碼編譯，而且容易遭受 BEAST 和貴賓攻擊。 部署到執行 Android 第5版或更新版本之裝置的應用程式（或 iOS 第5版或更新版本）不會受到這項變更的影響，因為這些作業系統支援 TLS 1.2，而且用戶端和伺服器會在連線時協調通訊協定的最高支援版本。
 
 我們建議您查看所有使用 Azure 通知中樞的應用程式，以確保其使用最適用的程式庫和支援 TLS 1.2 的 TLS 堆疊。
 

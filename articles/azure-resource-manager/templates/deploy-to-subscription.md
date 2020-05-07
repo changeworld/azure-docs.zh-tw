@@ -2,13 +2,13 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 6bec29a07653ff5ad7d1e2f8317246049e127c8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 80fe451f696480ec24b3d8eced64941de9492fef
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604998"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610814"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在訂用帳戶層級建立資源群組和資源
 
@@ -20,6 +20,7 @@ ms.locfileid: "81604998"
 
 您可以在訂用帳戶層級部署下列資源類型：
 
+* [藍圖](/azure/templates/microsoft.blueprint/blueprints)
 * [對應](/azure/templates/microsoft.consumption/budgets)
 * [部署](/azure/templates/microsoft.resources/deployments)-適用于部署至資源群組的嵌套範本。
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
@@ -244,11 +245,11 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-## <a name="create-policies"></a>建立原則
+## <a name="azure-policy"></a>Azure 原則
 
-### <a name="assign-policy"></a>指派原則
+### <a name="assign-policy-definition"></a>指派原則定義
 
-下列範例會將現有原則定義指派給訂用帳戶。 如果此原則採用參數，請以物件形式提供參數。 如果此原則不採用參數，請使用預設空白物件。
+下列範例會將現有原則定義指派給訂用帳戶。 如果原則定義接受參數，請提供它們做為物件。 如果原則定義不接受參數，請使用預設的空白物件。
 
 ```json
 {
@@ -285,7 +286,7 @@ New-AzSubscriptionDeployment `
 若要使用 Azure CLI 部署此範本，請使用：
 
 ```azurecli-interactive
-# Built-in policy that accepts parameters
+# Built-in policy definition that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
 az deployment sub create \
@@ -312,9 +313,9 @@ New-AzSubscriptionDeployment `
   -policyParameters $policyParams
 ```
 
-### <a name="define-and-assign-policy"></a>定義及指派原則
+### <a name="create-and-assign-policy-definitions"></a>建立並指派原則定義
 
-您可以在相同的範本[定義](../../governance/policy/concepts/definition-structure.md)和指派原則。
+您可以在相同的範本中[定義](../../governance/policy/concepts/definition-structure.md)和指派原則定義。
 
 ```json
 {
@@ -357,7 +358,7 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-若要在訂用帳戶中建立原則定義，並將它套用至訂用帳戶，請使用下列 CLI 命令：
+若要在您的訂用帳戶中建立原則定義，並將它指派給訂用帳戶，請使用下列 CLI 命令：
 
 ```azurecli
 az deployment sub create \
@@ -373,6 +374,32 @@ New-AzSubscriptionDeployment `
   -Name definePolicy `
   -Location centralus `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
+```
+
+## <a name="azure-blueprints"></a>Azure 藍圖
+
+### <a name="create-blueprint-definition"></a>建立藍圖定義
+
+您可以從範本[建立](../../governance/blueprints/tutorials/create-from-sample.md)藍圖定義。
+
+:::code language="json" source="~/quickstart-templates/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json":::
+
+若要在您的訂用帳戶中建立藍圖定義，請使用下列 CLI 命令：
+
+```azurecli
+az deployment sub create \
+  --name demoDeployment \
+  --location centralus \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+```
+
+若要使用 PowerShell 部署此範本，請使用：
+
+```azurepowershell
+New-AzSubscriptionDeployment `
+  -Name demoDeployment `
+  -Location centralus `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 ## <a name="template-samples"></a>範本範例

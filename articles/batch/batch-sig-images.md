@@ -3,12 +3,12 @@ title: 使用共用映射資源庫來建立自訂集區
 description: 使用共用映射資源庫建立 Batch 集區，以將自訂映射布建到包含應用程式所需軟體和資料的計算節點。 自訂映像是設定計算節點以執行 Batch 工作負載的有效方式。
 ms.topic: article
 ms.date: 08/28/2019
-ms.openlocfilehash: 45f721dbdf11e0a6f58da71c644acf687dfadd49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a26aaecc5da0ef348b720919b04d86f8fcfbc70
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116514"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743567"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>使用共用映射資源庫來建立自訂集區
 
@@ -32,7 +32,7 @@ ms.locfileid: "82116514"
 * **比自訂映射更好的效能。** 使用共用映射，集區達到穩定狀態所花費的時間，最快可達25%，且 VM 閒置延遲最高可達30%。
 * **映射版本設定和群組，以方便管理。** 映射群組定義包含建立映射的原因、作業系統的目標，以及使用映射的相關資訊。 群組影像可讓您更輕鬆地管理映射。 如需詳細資訊，請參閱[影像定義](../virtual-machines/windows/shared-image-galleries.md#image-definitions)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 > [!NOTE]
 > 您需要使用 Azure AD 進行驗證。 如果您使用共用金鑰驗證，則會收到驗證錯誤。  
@@ -128,6 +128,71 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
     }
     ...
 }
+```
+
+## <a name="create-a-pool-from-a-shared-image-using-python"></a>使用 Python 從共用映射建立集區
+
+您也可以使用 Python SDK，從共用映射建立集區： 
+
+```python
+# Import the required modules from the
+# Azure Batch Client Library for Python
+import azure.batch as batch
+import azure.batch.models as batchmodels
+from azure.common.credentials import ServicePrincipalCredentials
+
+# Specify Batch account and service principal account credentials
+account = "{batch-account-name}"
+batch_url = "{batch-account-url}"
+ad_client_id = "{sp-client-id}"
+ad_tenant = "{tenant-id}"
+ad_secret = "{sp-secret}"
+
+# Pool settings
+pool_id = "LinuxNodesSamplePoolPython"
+vm_size = "STANDARD_D2_V3"
+node_count = 1
+
+# Initialize the Batch client with Azure AD authentication
+creds = ServicePrincipalCredentials(
+    client_id=ad_client_id,
+    secret=ad_secret,
+    tenant=ad_tenant,
+    resource="https://batch.core.windows.net/"
+)
+client = batch.BatchServiceClient(creds, batch_url)
+
+# Configure the start task for the pool
+start_task = batchmodels.StartTask(
+    command_line="printenv AZ_BATCH_NODE_STARTUP_DIR"
+)
+start_task.run_elevated = True
+
+# Create an ImageReference which specifies the image from
+# Shared Image Gallery to install on the nodes.
+ir = batchmodels.ImageReference(
+    virtual_machine_image_id="/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/galleries/{gallery name}/images/{image definition name}/versions/{version id}"
+)
+
+# Create the VirtualMachineConfiguration, specifying
+# the VM image reference and the Batch node agent to
+# be installed on the node.
+vmc = batchmodels.VirtualMachineConfiguration(
+    image_reference=ir,
+    node_agent_sku_id="batch.node.ubuntu 18.04"
+)
+
+# Create the unbound pool
+new_pool = batchmodels.PoolAddParameter(
+    id=pool_id,
+    vm_size=vm_size,
+    target_dedicated_nodes=node_count,
+    virtual_machine_configuration=vmc,
+    start_task=start_task
+)
+
+# Create pool in the Batch service
+client.pool.add(new_pool)
 ```
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>使用 Azure 入口網站從共用映射建立集區

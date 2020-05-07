@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service （AKS）中建立及管�
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7e767f1a7b0c657c744c96b308160393e3f326
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259080"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610916"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes Service （AKS）中建立及管理叢集的多個節點集區
 
@@ -722,22 +722,65 @@ az group deployment create \
 
 視您在 Resource Manager 範本中定義的節點集區設定和作業而定，可能需要幾分鐘的時間來更新 AKS 叢集。
 
-## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>為節點集區的每個節點指派一個公用 IP （預覽）
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>為節點集區指派每個節點的公用 IP （預覽）
 
 > [!WARNING]
-> 在針對每個節點指派公用 IP 的預覽期間，因為可能會有負載平衡器規則與 VM 布建衝突，所以無法*在 AKS 中與 STANDARD LOAD BALANCER SKU*搭配使用。 由於這項限制，此預覽功能不支援 Windows 代理程式組件區。 在預覽期間，如果您需要為每個節點指派一個公用 IP，則必須使用*基本 LOAD BALANCER SKU* 。
+> 您必須安裝 CLI preview 延伸模組0.4.43 或更新版本，才能使用每個節點的公用 IP 功能。
 
-AKS 節點不需要自己的公用 IP 位址進行通訊。 不過，案例可能會要求節點集區中的節點接收其專屬的公用 IP 位址。 常見的案例是針對遊戲工作負載，主控台需要直接連線到雲端虛擬機器，以將躍點降到最低。 藉由註冊預覽功能、節點公用 IP （預覽），即可在 AKS 上達成此案例。
+AKS 節點不需要自己的公用 IP 位址進行通訊。 不過，案例可能會要求節點集區中的節點接收其專屬的公用 IP 位址。 常見的案例是針對遊戲工作負載，其中主控台需要直接連線到雲端虛擬機器，以將躍點降到最低。 藉由註冊預覽功能、節點公用 IP （預覽），即可在 AKS 上達成此案例。
 
-發出下列 Azure CLI 命令，以註冊節點公用 IP 功能。
+若要安裝並更新最新的 aks-preview 延伸模組，請使用下列 Azure CLI 命令：
+
+```azurecli
+az extension add --name aks-preview
+az extension update --name aks-preview
+az extension list
+```
+
+使用下列 Azure CLI 命令來註冊 Node 公用 IP 功能：
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
+註冊功能可能需要幾分鐘的時間。  您可以使用下列命令來檢查狀態：
 
-成功註冊之後，請遵循[上述](#manage-node-pools-using-a-resource-manager-template)相同指示部署 Azure Resource Manager 範本，並將布林值屬性`enableNodePublicIP`新增至 agentPoolProfiles。 根據預設，將`true`值設定為，設定為`false` [未指定]。 
+```azurecli-interactive
+ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
+```
 
-此屬性是僅限建立時間的屬性，而且需要最低 API 版本2019-06-01。 這可同時套用至 Linux 和 Windows 節點集區。
+成功註冊之後，請建立新的資源群組。
+
+```azurecli-interactive
+az group create --name myResourceGroup2 --location eastus
+```
+
+建立新的 AKS 叢集，並為您的節點附加公用 IP。 節點集區中的每個節點都會收到唯一的公用 IP。 您可以查看虛擬機器擴展集實例來確認這一點。
+
+```azurecli-interactive
+az aks create -g MyResourceGroup2 -n MyManagedCluster -l eastus  --enable-node-public-ip
+```
+
+針對現有的 AKS 叢集，您也可以新增節點集區，並為您的節點附加公用 IP。
+
+```azurecli-interactive
+az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
+```
+
+> [!Important]
+> 在預覽期間，Azure Instance Metadata Service 目前不支援標準層 VM SKU 的公用 IP 位址抓取。 由於這項限制，您無法使用 kubectl 命令來顯示指派給節點的公用 Ip。 不過，系統會將 Ip 指派給並依預期運作。 您節點的公用 Ip 會附加至虛擬機器擴展集中的實例。
+
+您可以透過各種方式找出節點的公用 Ip：
+
+* 使用 Azure CLI 命令[az vmss list-instance-public-ip][az-list-ips]
+* 使用[PowerShell 或 Bash 命令][vmss-commands]。 
+* 您也可以查看虛擬機器擴展集中的實例，以在 Azure 入口網站中查看公用 Ip。
+
+> [!Important]
+> [節點資源群組][node-resource-group]包含節點和其公用 ip。 執行命令時，請使用 node 資源群組來尋找節點的公用 Ip。
+
+```azurecli
+az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
+```
 
 ## <a name="clean-up-resources"></a>清除資源
 
@@ -753,6 +796,12 @@ az aks nodepool delete -g myResourceGroup --cluster-name myAKSCluster --name gpu
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
+```
+
+您也可以刪除您為 [節點集區的公用 IP] 案例所建立的其他叢集。
+
+```azurecli-interactive
+az group delete --name myResourceGroup2 --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>後續步驟
@@ -795,3 +844,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md
+[ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
+[node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
+[vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips
