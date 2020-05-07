@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 05/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 200ede6b4c5565a8eab95b0398abaa1c056c612f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77120121"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853098"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection 通知
 
@@ -50,12 +50,11 @@ Azure AD Identity Protection 會傳送兩種類型的自動化通知電子郵件
 每週摘要電子郵件包含新風險偵測的摘要。  
 其中包括：
 
-- 有風險的使用者
-- 可疑的活動
-- 偵測到的弱點
+- 偵測到新的具風險使用者
+- 偵測到新的具風險登入（即時）
 - Identity Protection 中相關報告的連結
 
-![每週精選文章電子郵件](./media/howto-identity-protection-configure-notifications/400.png)
+![每週精選文章電子郵件](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
 根據預設，收件者包含所有全域管理員。 「全域管理員」也可以新增其他「全域管理員」、「安全性管理員」、「安全性讀取者」作為收件者。
 

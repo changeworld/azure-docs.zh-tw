@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1fffb3eb10b7d3cbb3360a03112c3b4d7db8d109
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209480"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856876"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>規劃 Azure 檔案服務部署
 [Azure 檔案儲存體](storage-files-introduction.md)可以透過兩種主要方式來部署：直接裝載無伺服器 Azure 檔案共用，或使用 Azure 檔案同步快取內部部署的 Azure 檔案共用。您所選擇的部署選項會變更規劃部署時所需考慮的事項。 
@@ -84,7 +84,7 @@ Azure 檔案儲存體支援兩種不同的加密類型：傳輸中的加密，�
     - Premium 檔案共用會使用已布建的計費模型來計費，這表示您需支付所布建的儲存體數量，而不是您實際要求的儲存體數量。 
     - 標準檔案共用會使用隨用隨付模型來計費，其中包括您實際取用多少儲存體的基本儲存體成本，還有額外的交易成本（根據您使用該共用的方式而定）。 使用標準檔案共用時，如果您使用（讀取/寫入/掛接） Azure 檔案共用，您的帳單將會增加。
 - **冗余選項**
-    - Premium 檔案共用僅適用于本機多餘（LRS）和區域冗余（ZRS）儲存體。 
+    - Premium 檔案共用僅適用于本機多餘（LRS）和區域冗余（ZRS）儲存體。
     - 標準檔案共用適用于本機多餘、區域冗余、異地冗余（GRS）和異地區域冗余（切換）儲存體。
 - **檔案共用的大小上限**
     - Premium 檔案共用最多可以布建到 100 TiB，而不需要任何額外的工作。
@@ -159,7 +159,7 @@ Azure 檔案儲存體支援兩種不同的加密類型：傳輸中的加密，�
 ## <a name="redundancy"></a>備援性
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
-## <a name="migration"></a>遷移
+## <a name="migration"></a>移轉
 在許多情況下，您將不會為您的組織建立網路新的檔案共用，而是改為將現有的檔案共用從內部部署檔案伺服器或 NAS 裝置遷移到 Azure 檔案儲存體。 Microsoft 和協力廠商都有提供許多工具，可進行檔案共用的遷移，但大致上可以分成兩個類別：
 
 - **維護檔案系統屬性的工具，例如 acl 和時間戳記**：

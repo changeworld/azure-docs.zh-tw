@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986c2783f3d130114da93406bfaf70d5c038d5ed
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647827"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856142"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>透過 Hortonworks 沙箱使用 HDInsight Tools for IntelliJ
 
@@ -22,7 +22,7 @@ ms.locfileid: "75647827"
 
 [IntelliJ IDEA](https://www.jetbrains.com/idea/) 是 Java 整合式開發環境 (IDE)，可用來開發電腦軟體。 在 Hortonworks 沙箱上開發並測試應用程式之後，您可以將應用程式移至 [Azure HDInsight](apache-hadoop-introduction.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 開始閱讀本文之前，您必須有下列各項：
 
@@ -32,7 +32,7 @@ ms.locfileid: "75647827"
 
 - [Java Developer Kit (JDK) 1.8 版或更新版本](https://aka.ms/azure-jdks)。 Azure Toolkit for IntelliJ 需有 JDT。
 
-- [IntelliJ IDEA community 版本](https://www.jetbrains.com/idea/download)搭配使用 [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) 外掛程式與 [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij) 外掛程式。 HDInsight Tools for IntelliJ 是 Azure Toolkit for IntelliJ 的一部分。 
+- [IntelliJ IDEA community 版本](https://www.jetbrains.com/idea/download)搭配使用 [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) 外掛程式與 [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) 外掛程式。 HDInsight Tools for IntelliJ 是 Azure Toolkit for IntelliJ 的一部分。
 
 若要安裝外掛程式：
 

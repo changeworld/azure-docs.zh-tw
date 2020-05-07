@@ -9,12 +9,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: 本教學課程說明如何使用 Azure Dev Spaces 和 Visual Studio，在 Azure Kubernetes Service 中 .NET Core 應用程式上進行小組開發
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, 容器, Helm, 服務網格, 服務網格路由傳送, kubectl, k8s '
-ms.openlocfilehash: b4520ce35807fb022fa39ae9b00347a27e192380
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78245058"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82166031"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>在 Azure Dev Spaces 中使用 .NET Core 和 Visual Studio 進行小組開發
 
@@ -63,8 +63,8 @@ ms.locfileid: "78245058"
 1. 以滑鼠右鍵按一下 [方案總管]  中的專案，然後選取 [屬性]  。
 1. 選取位於左側的 [偵錯]  索引標籤，以顯示 [Azure 開發人員空間] 設定。
 1. 選取 [變更]  來建立空間，以供您在對服務按下 F5 或 Ctrl+F5 時使用。
-1. 在 [空間] 下拉式清單中，選取 [**建立新空間...\<]\>** 。
-1. 確定父空間設定為 [**無\<]\>** ，然後輸入空間名稱 **dev**。 按一下 [確定]。
+1. 在 [空間] 下拉式清單中，選取 [\<建立新空間...\>]  。
+1. 確定父空間設定為 [\<無\>]  ，然後輸入空間名稱 **dev**。 按一下 [確定]。
 1. 按 Ctrl+F5，以執行 mywebapi  而不連結偵錯工具。
 1. 切換至含有 webfrontend  專案的 Visual Studio 視窗，同時按 Ctrl+F5 加以執行。
 
@@ -81,14 +81,14 @@ ms.locfileid: "78245058"
 開啟公用 URL 並瀏覽至 Web 應用程式的任何人，都會叫用您先前撰寫、會透過兩項服務使用預設 dev  空間執行的程式碼路徑。 現在，假設您想要繼續開發 mywebapi  - 當您這麼做的時候，要如何才能不影響到其他使用開發人員空間的開發人員？ 為此，您應設定自己的空間。
 
 ### <a name="create-a-new-dev-space"></a>建立新的開發人員空間
-在 Visual Studio 中，您可以建立對服務執行 F5 或 Ctrl+F5 時所將使用的額外空間。 您可以任意為空間命名，並且可靈活地賦予其意義 (例如 sprint4  或 demo  )。
+在 Visual Studio 中，您可以建立對服務執行 F5 或 Ctrl+F5 時所將使用的額外空間。 您可以任意為空間命名，並且可靈活地賦予其意義 (例如  sprint4  或 demo  )。
 
 若要建立新的空間，請執行下列動作：
 1. 切換至含有 mywebapi  專案的 Visual Studio 視窗。
 2. 以滑鼠右鍵按一下 [方案總管]  中的專案，然後選取 [屬性]  。
 3. 選取位於左側的 [偵錯]  索引標籤，以顯示 [Azure 開發人員空間] 設定。
 4. 從此處，您可以變更或建立您按 F5 或 Ctrl+F5 時所將使用的叢集和/或空間。 *請確定已選取您稍早建立的 Azure 開發人員空間*。
-5. 在 [空間] 下拉式清單中，選取 [**建立新空間...\<]\>** 。
+5. 在 [空間] 下拉式清單中，選取 [\<建立新空間...\>]  。
 
     ![](media/get-started-netcore-visualstudio/Settings.png)
 
@@ -102,7 +102,7 @@ ms.locfileid: "78245058"
 
 ### <a name="update-code-for-mywebapi"></a>更新 *mywebapi* 的程式碼
 
-1. 在 mywebapi  專案中，對檔案 `string Get(int id)` 中的 `Controllers/ValuesController.cs` 方法進行程式碼變更，如下所示：
+1. 在 mywebapi  專案中，對檔案 `Controllers/ValuesController.cs` 中的 `string Get(int id)` 方法進行程式碼變更，如下所示：
  
     ```csharp
     [HttpGet("{id}")]
@@ -122,9 +122,9 @@ ms.locfileid: "78245058"
 Azure 開發人員空間的這個內建功能，可讓您在共用環境中端對端測試程式碼，而不需要每位開發人員在其空間中重新建立服務的完整堆疊。 使用此路由時，您必須在應用程式的程式碼中轉送傳播標頭，如本指南的上一個步驟所說明。
 
 ### <a name="test-code-running-in-the-_devscott_-space"></a>測試在 dev/scott  空間中執行的程式碼
-若要搭配 webfrontend  來測試新版的 mywebapi  ，請在瀏覽器中開啟到 webfrontend  的公用存取點 URL (例如， http://dev.webfrontend.123456abcdef.eus.azds.io) )，然後移至 [關於] 頁面。 您應該會看到原始訊息「來自 webfrontend 的 Hello 和來自 mywebapi 的 Hello」。
+若要搭配 webfrontend  來測試新版的 mywebapi  ，請在瀏覽器中開啟到 webfrontend  的公用存取點 URL (例如，`http://dev.webfrontend.123456abcdef.eus.azds.io`)，然後移至 [關於] 頁面。 您應該會看到原始訊息「來自 webfrontend 的 Hello 和來自 mywebapi 的 Hello」。
 
-現在，請將 "scott.s." 部分新增到 URL，讓它成為 http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io，並重新整理瀏覽器。 系統應會叫用您在 mywebapi  專案中設定的中斷點。 請按 f5 繼續作業，而您此時應會在瀏覽器中看到新的訊息「來自 webfrontend 和 mywebapi 的 Hello 現在顯示了新的內容。」 這是因為您已更新的程式碼在 mywebapi  中的路徑執行於 dev/scott  空間中。
+現在，請將 "scott.s."  部分新增到 URL，讓它成為 http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io，並重新整理瀏覽器。 系統應會叫用您在 mywebapi  專案中設定的中斷點。 請按 f5 繼續作業，而您此時應會在瀏覽器中看到新的訊息「來自 webfrontend 和 mywebapi 的 Hello 現在顯示了新的內容。」 這是因為您已更新的程式碼在 mywebapi  中的路徑執行於 dev/scott  空間中。
 
 一旦您擁有的 dev  空間一定會包含最新的變更，而且如果您應用程式的設計目的是要利用 DevSpace 的空間型路由 (如本教學課程這一節所述)，您應該就能輕鬆地發現，Dev Spaces 會對在較大的應用程式內容中測試新功能大有助益。 您不必在私用空間中部署所有  服務，而是可以建立衍生自 dev  的私用空間，並只「啟動」您實際使用的服務。 Dev Spaces 的路由基礎結構會處理其餘工作，其會盡可能使用所有可以從私用空間找到的服務，同時將其預設回到 dev  空間中所執行的最新版本。 更棒的是，多個  開發人員可以同時在自己的空間積極開發不同的服務，卻又不會干擾到彼此。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72299668"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857874"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>使用 Azure Data Lake Storage Gen2 的最佳做法
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen2 支援開啟防火牆，以及限制僅有 Azure 服務�
 
 ### <a name="high-availability-and-disaster-recovery"></a>高可用性和災害復原
 
-高可用性 (HA) 和災害復原 (DR) 有時可以結合在一起，雖然彼此有稍微不同的策略，特別是用在資料的時候。 為不受到本機硬體失敗的影響，Data Lake Storage Gen2 已在幕後執行 3 倍複寫。 此外，其他複寫選項（例如 ZRS 或切換（預覽））會改善 HA，而 GRS & RA-GRS 會改善 DR。 針對 HA 建置方案時，如果是發生服務中斷的情況，工作負載必須藉由切換至本機或新區域中各別複寫的執行個體，來盡快取得最新資料。
+高可用性 (HA) 和災害復原 (DR) 有時可以結合在一起，雖然彼此有稍微不同的策略，特別是用在資料的時候。 為不受到本機硬體失敗的影響，Data Lake Storage Gen2 已在幕後執行 3 倍複寫。 此外，其他複寫選項（例如 ZRS 或切換）會改善 HA，而 GRS & RA-GRS 會改善 DR。 針對 HA 建置方案時，如果是發生服務中斷的情況，工作負載必須藉由切換至本機或新區域中各別複寫的執行個體，來盡快取得最新資料。
 
 在 DR 策略中，為了能應付罕見的區域性嚴重失敗事件，使用 GRS 或 RA-GRS 複寫將資料複寫至不同區域也是很重要的。 您也必須考量到資料損毀這類邊緣案例的需求，您可以建立定期的快照集，以便藉此進行回復。 視資料的大小和重要性而定，您可以依據風險承受度，考慮輪流執行 1、6 和 24 小時週期的差異快照集。
 

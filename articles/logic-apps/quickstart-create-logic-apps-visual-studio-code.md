@@ -7,12 +7,12 @@ ms.reviewer: klam, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
-ms.openlocfilehash: 819a60887743f39d3c2ffab3c955b2980cee2725
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3dccb596be2d97dd0f38d680537913a76ce09e93
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "74784828"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82147071"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入門：使用 Visual Studio Code 來建立及管理邏輯應用程式工作流程定義
 
@@ -131,6 +131,10 @@ ms.locfileid: "74784828"
 
    > [!IMPORTANT]
    > 如果您想要重複使用此範例邏輯應用程式定義，您必須要有 Office 365 組織帳戶，例如 @fabrikam.com。 請務必將虛構的電子郵件地址取代為您自己的電子郵件地址。 若要使用不同的電子郵件連接器 (例如 Outlook.com 或 Gmail)，請將 `Send_an_email_action` 動作取代為 [Azure Logic Apps 支援的電子郵件連接器](../connectors/apis-list.md)所提供的類似動作。
+   >
+   > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 
+   > 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 
+   > 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
    ```json
    {

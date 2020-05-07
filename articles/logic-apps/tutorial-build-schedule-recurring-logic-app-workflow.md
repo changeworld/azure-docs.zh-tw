@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 17802228c8f08e3c8f1533296e2d39080f6f8b7a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5d4990fd806aed75d9b5e5ddd3e9a615631d9d65
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75456622"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146514"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>教學課程：使用 Azure Logic Apps 建立以排程為基礎的週期性自動化工作流程
 
@@ -37,6 +37,9 @@ ms.locfileid: "75456622"
 * Azure 訂用帳戶。 如果沒有訂用帳戶，請在開始前，先[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
 * Logic Apps 支援的任何電子郵件提供者 (例如 Office 365 Outlook、Outlook.com 或 Gmail) 所提供的電子郵件帳戶。 對於其他提供者，請[檢閱這裡的連接器清單](https://docs.microsoft.com/connectors/)。 本快速入門會使用 Office 365 Outlook 帳戶。 如果您使用不同的電子郵件帳戶，整體步驟將維持不變，但您的 UI 可能略有不同。
+
+  > [!IMPORTANT]
+  > 如果您想要使用 Gmail 連接器，只有 G-Suite 商務帳戶可以在邏輯應用程式中使用此連接器，而不受限制。 如果您有 Gmail 取用者帳戶，您只能使用此連接器搭配特定的 Google 核准服務，或者您可以[建立 Google 用戶端應用程式，以用來向 Gmail 連接器進行驗證](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 如需詳細資訊，請參閱 [Azure Logic Apps 中 Google 連接器的資料安全性和隱私權原則](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 * 若要取得路線的行進時間，您需要 Bing 地圖服務 API 的存取金鑰。 若要取得此金鑰，請遵循[如何取得 Bing 地圖服務金鑰](https://docs.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)的步驟。
 
@@ -192,7 +195,7 @@ ms.locfileid: "75456622"
    | 屬性 | 必要 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **名稱** | 是 | travelTime | 您的變數名稱。 此範例使用 "travelTime"。 |
-   | **型別** | 是 | 整數 | 您的變數資料類型 |
+   | **型別** | 是 | 整數  | 您的變數資料類型 |
    | **ReplTest1** | 否| 可將目前行進時間從秒數轉換為分鐘數的運算式 (請參閱此表格底下的步驟)。 | 您的變數初始值 |
    ||||
 

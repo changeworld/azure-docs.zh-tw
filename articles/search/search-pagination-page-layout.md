@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641610"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801768"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>如何在 Azure 認知搜尋中使用搜尋結果
 
@@ -92,9 +92,15 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 
 ## <a name="hit-highlighting"></a>搜尋結果醒目提示
 
-搜尋反白顯示是指套用至結果中比對詞彙的文字格式設定（例如粗體或黃色反白顯示），讓您更容易找到相符的內容。 [查詢要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上會提供搜尋反白顯示指示。 搜尋引擎會將比對詞彙括在標記`highlightPreTag`中`highlightPostTag`、和，而且您的程式碼會處理回應（例如，套用粗體字型）。
+[搜尋反白顯示] 是指套用至結果中相符詞彙的文字格式設定（例如粗體或黃色反白顯示），讓您更容易找到相符的內容。 [查詢要求](https://docs.microsoft.com/rest/api/searchservice/search-documents)上會提供搜尋反白顯示指示。 
 
-將格式套用至整個詞彙查詢。 在下列範例中，在 [描述] 欄位中找到的 "sandy"、"海灘"、"海灘"、"浮水" 詞彙會標記為反白顯示。 在引擎中觸發查詢展開的查詢（例如模糊和萬用字元搜尋）對搜尋反白顯示的支援有限。
+若要啟用搜尋醒目提示`highlight=[comma-delimited list of string fields]` ，請新增來指定哪些欄位將使用反白顯示。 反白顯示適用于較長的內容欄位，例如 [描述] 欄位，其中比對不會立即明顯符合。 只有屬性為可搜尋的欄位**定義符合搜尋**醒目提示的資格。
+
+根據預設，Azure 認知搜尋會針對每個欄位傳回最多五個重點。 您可以在欄位後面加上一個整數來調整這個數位。 例如，在`highlight=Description-10` [描述] 欄位中，最多會針對相符的內容傳回10個重點。
+
+將格式套用至整個詞彙查詢。 格式的類型取決於標記、 `highlightPreTag`和`highlightPostTag`，而且您的程式碼會處理回應（例如，套用粗體字型或黃色背景）。
+
+在下列範例中，在 [描述] 欄位中找到的 "sandy"、"海灘"、"海灘"、"浮水" 詞彙會標記為反白顯示。 在引擎中觸發查詢展開的查詢（例如模糊和萬用字元搜尋）對搜尋反白顯示的支援有限。
 
 ```http
 GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 

@@ -10,12 +10,12 @@ ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414070"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858024"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>如何建立和設定 Azure 整合執行階段
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,10 +59,10 @@ Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -N
 1. 在 [**整合執行時間設定**] 頁面上，選取 [ **Azure]、[自我**裝載]，然後選取 [**繼續**]。 
 
 1. 在下列頁面上，選取 [ **Azure** ] 以建立 Azure IR，然後選取 [**繼續**]。
-   ![建立整合執行階段](media/create-azure-integration-runtime/new-azure-ir.png)
+   ![建立整合執行階段](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
 1. 輸入 Azure IR 的名稱，然後選取 [**建立**]。
-   ![建立 Azure IR](media/create-azure-integration-runtime/create-azure-ir.png)
+   ![建立 Azure IR](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. 建立完成時，您會看到快顯通知。 在 [**整合運行**時間] 頁面上，確認您在清單中看到新建立的 IR。
 

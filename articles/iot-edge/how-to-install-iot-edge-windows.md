@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: 61b382f1c286209a12d0be39a81e6817806d3251
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e95f68610f8469a829255d6a16115dcf728ef612
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113468"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856744"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安裝 Azure IoT Edge 執行階段
 
@@ -33,7 +33,7 @@ Azure IoT Edge 執行階段可將裝置變成 IoT Edge 裝置。 此執行階段
 
 如需最新 IoT Edge 版本中所包含內容的詳細資訊，請參閱[Azure IoT Edge 版本](https://github.com/Azure/azure-iotedge/releases)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 使用此區段可以檢閱 Windows 裝置是否可支援 IoT Edge，以及在安裝之前為容器引擎做好準備。
 
@@ -193,17 +193,21 @@ Get-Service iotedge
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-執行自動檢查最常見的設定和網路錯誤。
+執行[疑難排解工具](troubleshoot.md#run-the-check-command)來檢查最常見的設定和網路錯誤。
 
 ```powershell
 iotedge check
 ```
 
-列出執行中的模組。 在新的安裝之後，您應該會看到執行的唯一模組是**edgeAgent**。 當您第一次[部署 IoT Edge 模組](how-to-deploy-modules-portal.md)之後，另一個系統模組**edgeHub**也會在裝置上啟動。
+在您將第一個模組部署至裝置上的 IoT Edge 之前， **$edgeHub**系統模組不會部署到裝置。 因此，自動檢查會針對`Edge Hub can bind to ports on host`連線檢查傳回錯誤。 除非將模組部署至裝置之後，才會忽略此錯誤。
+
+最後，列出執行中的模組：
 
 ```powershell
 iotedge list
 ```
+
+在新的安裝之後，您應該會看到執行的唯一模組是**edgeAgent**。 當您第一次[部署 IoT Edge 模組](how-to-deploy-modules-portal.md)之後，另一個系統模組**edgeHub**也會在裝置上啟動。
 
 ## <a name="manage-module-containers"></a>管理模組容器
 
@@ -264,7 +268,7 @@ Get-AuthenticodeSignature "C:\<path>\IotEdgeSecurityDaemon.ps1"
 
 IoTEdge 命令會下載並部署 IoT Edge 安全性守護程式及其相依性。 [部署] 命令會接受這些一般參數，還有其他參數。 如需完整清單，請使用命令`Get-Help Deploy-IoTEdge -full`。  
 
-| 參數 | 接受的值 | 評價 |
+| 參數 | 接受的值 | 註解 |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows**或**Linux** | 如果未指定容器作業系統，Windows 就是預設值。<br><br>針對 Windows 容器，IoT Edge 會使用安裝中所包含的 moby 容器引擎。 對於 Linux 容器，您需要先安裝容器引擎，再開始安裝。 |
 | **Proxy** | Proxy URL | 如果您的裝置需要通過 Proxy 伺服器連線網際網路，請包含此參數。 如需詳細資訊，請參閱[設定 IoT Edge 裝置以透過 Proxy 伺服器進行通訊](how-to-configure-proxy-support.md)。 |
@@ -276,7 +280,7 @@ IoTEdge 命令會下載並部署 IoT Edge 安全性守護程式及其相依性�
 
 IoTEdge 命令會使用您的裝置連接字串和操作詳細資料來設定 IoT Edge。 此命令所產生的大部分資訊都會儲存在 iotedge\config.yaml 檔案中。 初始化命令會接受這些一般參數，還有其他參數。 如需完整清單，請使用命令`Get-Help Initialize-IoTEdge -full`。
 
-| 參數 | 接受的值 | 評價 |
+| 參數 | 接受的值 | 註解 |
 | --------- | --------------- | -------- |
 | **手動** | 無 | **切換參數**。 如果未指定布建類型，則手動為預設值。<br><br>宣告您將提供裝置連接字串以手動佈建裝置 |
 | **Dps** | 無 | **切換參數**。 如果未指定布建類型，則手動為預設值。<br><br>宣告您將提供裝置佈建服務 (DPS) 的範圍識別碼，以及透過 DPS 佈建的裝置註冊識別碼。  |
@@ -294,7 +298,7 @@ IoTEdge 命令會使用您的裝置連接字串和操作詳細資料來設定 Io
 
 ### <a name="update-iotedge"></a>更新-IoTEdge
 
-| 參數 | 接受的值 | 評價 |
+| 參數 | 接受的值 | 註解 |
 | --------- | --------------- | -------- |
 | **ContainerOs** | **Windows**或**Linux** | 如果未指定容器 OS，Windows 就是預設值。 對於 Windows 容器，安裝中將包含容器引擎。 對於 Linux 容器，您需要先安裝容器引擎，再開始安裝。 |
 | **Proxy** | Proxy URL | 如果您的裝置需要通過 Proxy 伺服器連線網際網路，請包含此參數。 如需詳細資訊，請參閱[設定 IoT Edge 裝置以透過 Proxy 伺服器進行通訊](how-to-configure-proxy-support.md)。 |
@@ -304,7 +308,7 @@ IoTEdge 命令會使用您的裝置連接字串和操作詳細資料來設定 Io
 
 ### <a name="uninstall-iotedge"></a>卸載-IoTEdge
 
-| 參數 | 接受的值 | 評價 |
+| 參數 | 接受的值 | 註解 |
 | --------- | --------------- | -------- |
 | **使** | 無 | 如果先前的卸載嘗試失敗，此旗標會強制卸載。
 | **RestartIfNeeded** | 無 | 必要時，此旗標可讓卸載腳本重新開機電腦，而不需要提示。 |

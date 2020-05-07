@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 04/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7902112c1694bacfeb45b5f20db80d5136642169
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4d2681c09030ff0f36938d7a09e1d1b2e9aa645c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77047940"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82166305"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 Azure AD SAML Toolkit 整合
 
@@ -89,6 +88,9 @@ ms.locfileid: "77047940"
 
     c. 在 [回覆 URL]  文字方塊中，鍵入 URL：`https://samltoolkit.azurewebsites.net/SAML/Consume`
 
+    > [!NOTE]
+    > 這些都不是真正的值。 請使用實際的登入 URL、識別碼及回覆 URL 值來更新這些值 (本教學課程稍後會說明)。
+
 1. 在 [以 SAML 設定單一登入]  頁面的 [SAML 簽署憑證]  區段中，尋找 [憑證 (原始)]  並選取 [下載]  ，以下載憑證並將其儲存在電腦上。
 
     ![憑證下載連結](common/certificateraw.png)
@@ -154,6 +156,8 @@ ms.locfileid: "77047940"
     1. 按一下 [選擇檔案]  及上傳您從 Azure 入口網站下載的**憑證 (原始)** 檔案。
 
     1. 按一下頁面底部的 [新增]  。
+
+    1. 在 SAML 工具組的 SSO 設定頁面上複製 [登入 URL]、[識別碼] 和 [ACS URL] 值，並貼到 Azure 入口網站中 [基本 SAML 設定]  區段的個別文字方塊。
 
 ### <a name="create-azure-ad-saml-toolkit-test-user"></a>建立 Azure AD SAML Toolkit 測試使用者
 

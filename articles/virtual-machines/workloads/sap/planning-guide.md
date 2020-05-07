@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/11/2020
+ms.date: 05/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7ddcc5165f5588ff9015d7fafbc2b822268ffea7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2e3219cebcc5e989059c02fec86ba242e1c31cc
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337172"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853867"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虛擬機器規劃和實作指南
 
@@ -319,7 +319,7 @@ Microsoft Azure 可讓公司在最短的時間內取得計算和儲存體資源�
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 雲端運算這個廣泛使用的名詞已日益受到 IT 產業的重視，不論是小型公司、大型公司還是跨國企業都是如此。
 
 Microsoft Azure 是 Microsoft 所推出的雲端服務平台，可提供各式各樣的新契機。 客戶現在既能將應用程式快速佈建為雲端服務，也能快速取消佈建，因此不會再受到技術或預算所限制。 與其在硬體基礎結構投入時間和預算，公司寧可專注於應用程式、商業流程及其帶給客戶和使用者的優點。
@@ -487,7 +487,7 @@ Microsoft Azure 平臺是多租使用者平臺。 因此，裝載 Azure Vm 的�
 
 網站[Linux 虛擬機器定價](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows 虛擬機器定價](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)，各有不同的服務提供不同的供應專案價格。 如需一年期和三年期保留實例的詳細資訊和彈性，請參閱下列文章：
 
-- [什麼是 Azure 保留專案？](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [什麼是 Azure 保留項目？](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
 - [利用保留 VM 執行個體獲得虛擬機器大小彈性](https://docs.microsoft.com/azure/virtual-machines/windows/reserved-vm-instance-size-flexibility)
 - [Azure 保留折扣如何套用至虛擬機器](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-vm-reservation-charges) 
 
@@ -503,9 +503,50 @@ Microsoft 的程式管理者能夠處理兩個不同的虛擬機器層代。 這
  
 不可能將現有的 VM 從一個世代移至另一個世代。 若要變更虛擬機器的世代，您需要部署所需世代的新 VM，並重新安裝您在世代的虛擬機器中執行的軟體。 這只會影響 VM 的基本 VHD 映射，而且不會影響資料磁片或連接的 NFS 或 SMB 共用。 原本已指派給第1代 VM 的資料磁片、NFS 或 SMB 共用
 
-目前，您會遇到此問題，尤其是在 Azure M 系列 Vm 和 Mv2 系列 Vm 之間。 由於第1代 VM 格式的限制，Mv2 系列的大型 Vm 無法以第1代格式提供，但必須僅在層代2中提供。 另一方面，M 系列 VM 系列尚未啟用，無法部署在第2代。 因此，在 M 系列和 Mv2 系列虛擬機器之間重新調整大小，需要在以另一個 VM 系列為目標的虛擬機器上重新安裝軟體。 Microsoft 正努力讓您針對第2代部署部署 M 系列 Vm。 未來將 M 系列 Vm 部署為第2代 Vm，可讓您在 M 系列和 Mv2 系列虛擬機器之間進行現象的重新調整。 在這兩個方向中，從 M 系列調整為較大的 Mv2 系列虛擬機器，或從較大的 Mv2 系列 Vm 向下調整為較小的 M 系列 Vm。 只要 M 系列 Vm 可以部署為第2代 Vm，檔就會立即更新。    
+> [!NOTE]
+> 從2020版開始，您可以將 Mv1 VM 系列 Vm 部署為第2代 vm。 在這種情況下，Mv1 與 Mv2 系列 Vm 之間的現象會比較少和縮減。
 
- 
+
+#### <a name="quotas-in-azure-virtual-machine-services"></a>Azure 虛擬機器服務中的配額
+在 Azure 基礎結構中執行各種服務的 Vm 之間，會共用 azure 儲存體和網路基礎結構。 就像在您自己的資料中心一樣，對某些基礎結構資源的布建也會在某種程度上進行。 Microsoft Azure 平台使用磁碟、CPU、網路和其他配額來限制資源耗用量，並保持一致且具決定性的效能。 不同的 VM 類型和系列（E32s_v3、D64s_v3 等）對於磁片、CPU、RAM 和網路數目有不同的配額。
+
+> [!NOTE]
+> 主機節點上會預先配置 SAP 支援之 VM 類型的 CPU 和記憶體資源。 這表示一旦部署 VM，就會如 VM 類型所定義來提供主機上的資源。
+
+
+在 Azure 解決方案上規劃 SAP 及調整其大小時，必須考慮每部虛擬機器的大小配額。 如需 VM 配額的說明，請參閱[這裡 (Linux)][virtual-machines-sizes-linux] 和[這裡 (Windows)][virtual-machines-sizes-windows]。 
+
+除了 CPU 和記憶體資源配額以外，針對 VM Sku 定義的其他配額與：
+
+- VM 的網路流量輸送量
+- 儲存體流量的 IOPS
+- 網路流量的輸送量
+
+已定義儲存網路的輸送量限制，因此，有雜訊的鄰近效果可以保持為絕對最小值。 VM 的儲存體相關配額會覆寫所連接累積磁片的配額（請參閱稍後在儲存體元件中）。 換句話說，如果您掛接累積的儲存體磁片會超過 VM 的輸送量和 IOPS 配額，則 VM 配額限制會優先使用。
+
+#### <a name="rough-sizing-of-vms-for-sap"></a>針對 SAP 調整 Vm 的大小 
+
+您可以使用下列決策樹，作為在判斷 SAP 系統是否符合 Azure 虛擬機器服務及其功能，或是現有的系統是否必須以不同方式設定才能在 Azure 上部署系統時的大致決策樹︰
+
+![決定能否將 SAP 部署在 Azure 的決策樹][planning-guide-figure-700]
+
+**步驟 1**︰若要開始著手進行，最重要的資訊就是所指定 SAP 系統的 SAPS 需求。 您必須將 SAPS 需求分為 DBMS 部分和 SAP 應用程式部分，即使 SAP 系統已在 2 層組態中內部部署亦然。 若是現有的系統，通常可根據現有的 SAP 基準來判斷或評估與使用中硬體相關的 SAPS。 您可以在下列網頁找到結果：<https://sap.com/about/benchmark.html> \(英文\)。
+若是新部署的 SAP 系統，您應該已經完成調整大小練習，而能判斷系統的 SAPS 需求。
+另請參閱此部落格及附加文件，以了解如何在 Azure 上調整 SAP 大小：<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx> \(英文\)
+
+**步驟 2**︰若為現有的系統，應該測量 DBMS 伺服器上的每秒 I/O 量和 I/O 作業數。 若為新規劃的系統，新系統的調整大小練習也應該讓您大致了解 DBMS 端的 I/O 需求。 如果不確定，您最終還是需要進行概念證明。
+
+**步驟 3**︰將 DBMS 伺服器的 SAPS 需求，與不同的 Azure VM 類型可提供的 SAPS 進行比較。 如需有關不同 Azure VM 類型的 SAPS 資訊，請參閱 SAP 附註 [1928533]。 重點應該先放在 DBMS VM，因為資料庫層是大多數部署中不會向外延展的 SAP NetWeaver 系統層級。 相反地，您可以相應放大 SAP 應用層。如果 SAP 支援的任何 Azure VM 類型都無法提供所需的 sap，則無法在 Azure 上執行規劃之 SAP 系統的工作負載。 您必須在內部部署系統，或必須變更系統的工作負載。
+
+**步驟 4**︰如[這裡 (Linux)][virtual-machines-sizes-linux] 和[這裡 (Windows)][virtual-machines-sizes-windows] 所述，不論您使用的是「標準儲存體」還是「進階儲存體」，Azure 都會針對每個磁碟強制執行 IOPS 配額。 可掛接的資料磁碟數目會因 VM 類型而異。 因此，您可以計算每個不同的 VM 類型可達到的 IOPS 數目上限。 您可以根據資料庫檔案配置，將磁碟等量劃分成客體 OS 中的一個磁碟區。 不過，如果所部署 SAP 系統的目前 IOPS 磁碟區超過最大 Azure VM 類型的計算限制，而且沒有機會可以補償更多記憶體，則會嚴重影響 SAP 系統的工作負載。 在此情況下，您可能不應該在 Azure 上部署系統。
+
+**步驟 5**︰特別是在於 2 層組態中內部部署的 SAP 系統中，有可能必須在一個 3 層組態的 Azure 上設定系統。 在此步驟中，您必須檢查 SAP 應用程式層中是否有元件無法向外延展，而且不符合不同 Azure VM 類型所提供的 CPU 和記憶體資源限制。 如果確實有此元件，則無法將 SAP 系統及其工作負載部署到 Azure。 但是，如果您可以將 SAP 應用程式元件向外延展到多個 Azure VM，則可以將系統部署到 Azure。
+
+**步驟 6**︰如果可以在 Azure VM 中執行 DBMS 和 SAP 應用程式層元件，則必須定義與下列各項相關的組態︰
+
+* Azure VM 數目
+* 個別元件的 VM 類型
+* DBMS VM 中可提供足夠 IOPS 的 VHD 數目 
 
 ### <a name="storage-microsoft-azure-storage-and-data-disks"></a><a name="a72afa26-4bf4-4a25-8cf7-855d6032157f"></a>儲存體： Microsoft Azure 儲存體和資料磁片
 Microsoft Azure 虛擬機器使用不同的儲存體類型。 在 Azure 虛擬機器服務上實作 SAP 時，請務必了解下列兩種主要儲存體類型之間的差異：
@@ -725,39 +766,6 @@ ExpressRoute 強制通道會透過 ExpressRoute BGP 對等互連工作階段廣�
 * 若要設定站對站或點對站連線，您必須先建立 Azure 虛擬網路
 * 一旦部署虛擬機器，就無法再變更指派給 VM 的虛擬網路
 
-### <a name="quotas-in-azure-virtual-machine-services"></a>Azure 虛擬機器服務中的配額
-我們必須清楚了解在 Azure 基礎結構中執行各種服務的 VM 之間，會共用儲存體和網路基礎結構。 就像是客戶自己的資料中心，在某種程度上，也會發生過度佈建一些基礎結構資源的情況。 Microsoft Azure 平台使用磁碟、CPU、網路和其他配額來限制資源耗用量，並保持一致且具決定性的效能。  不同的 VM 類型 (A5、A6 等) 會有不同的磁碟數、CPU、RAM 和網路配額。
-
-> [!NOTE]
-> 主機節點上會預先配置 SAP 支援之 VM 類型的 CPU 和記憶體資源。 這表示一旦部署 VM，就會如 VM 類型所定義來提供主機上的資源。
->
->
-
-在 Azure 解決方案上規劃 SAP 及調整其大小時，必須考慮每部虛擬機器的大小配額。 如需 VM 配額的說明，請參閱[這裡 (Linux)][virtual-machines-sizes-linux] 和[這裡 (Windows)][virtual-machines-sizes-windows]。
-
-所述配額代表理論上的最大值。  小型 IO (8 KB) 可達到每個磁碟的 IOPS 限制，但大型 IO (1 MB) 則可能無法達到。  IOPS 限制會在單一磁碟的資料粒度上強制執行。
-
-您可以使用下列決策樹，作為在判斷 SAP 系統是否符合 Azure 虛擬機器服務及其功能，或是現有的系統是否必須以不同方式設定才能在 Azure 上部署系統時的大致決策樹︰
-
-![決定能否將 SAP 部署在 Azure 的決策樹][planning-guide-figure-700]
-
-**步驟 1**︰若要開始著手進行，最重要的資訊就是所指定 SAP 系統的 SAPS 需求。 您必須將 SAPS 需求分為 DBMS 部分和 SAP 應用程式部分，即使 SAP 系統已在 2 層組態中內部部署亦然。 若是現有的系統，通常可根據現有的 SAP 基準來判斷或評估與使用中硬體相關的 SAPS。 您可以在下列網頁找到結果：<https://sap.com/about/benchmark.html> \(英文\)。
-若是新部署的 SAP 系統，您應該已經完成調整大小練習，而能判斷系統的 SAPS 需求。
-另請參閱此部落格及附加文件，以了解如何在 Azure 上調整 SAP 大小：<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx> \(英文\)
-
-**步驟 2**︰若為現有的系統，應該測量 DBMS 伺服器上的每秒 I/O 量和 I/O 作業數。 若為新規劃的系統，新系統的調整大小練習也應該讓您大致了解 DBMS 端的 I/O 需求。 如果不確定，您最終還是需要進行概念證明。
-
-**步驟 3**︰將 DBMS 伺服器的 SAPS 需求，與不同的 Azure VM 類型可提供的 SAPS 進行比較。 如需有關不同 Azure VM 類型的 SAPS 資訊，請參閱 SAP 附註 [1928533]。 重點應該先放在 DBMS VM，因為資料庫層是大多數部署中不會向外延展的 SAP NetWeaver 系統層級。 相反地，您可以相應放大 SAP 應用層。如果 SAP 支援的任何 Azure VM 類型都無法提供所需的 sap，則無法在 Azure 上執行規劃之 SAP 系統的工作負載。 您必須在內部部署系統，或必須變更系統的工作負載。
-
-**步驟 4**︰如[這裡 (Linux)][virtual-machines-sizes-linux] 和[這裡 (Windows)][virtual-machines-sizes-windows] 所述，不論您使用的是「標準儲存體」還是「進階儲存體」，Azure 都會針對每個磁碟強制執行 IOPS 配額。 可掛接的資料磁碟數目會因 VM 類型而異。 因此，您可以計算每個不同的 VM 類型可達到的 IOPS 數目上限。 您可以根據資料庫檔案配置，將磁碟等量劃分成客體 OS 中的一個磁碟區。 不過，如果所部署 SAP 系統的目前 IOPS 磁碟區超過最大 Azure VM 類型的計算限制，而且沒有機會可以補償更多記憶體，則會嚴重影響 SAP 系統的工作負載。 在此情況下，您可能不應該在 Azure 上部署系統。
-
-**步驟 5**︰特別是在於 2 層組態中內部部署的 SAP 系統中，有可能必須在一個 3 層組態的 Azure 上設定系統。 在此步驟中，您必須檢查 SAP 應用程式層中是否有元件無法向外延展，而且不符合不同 Azure VM 類型所提供的 CPU 和記憶體資源限制。 如果確實有此元件，則無法將 SAP 系統及其工作負載部署到 Azure。 但是，如果您可以將 SAP 應用程式元件向外延展到多個 Azure VM，則可以將系統部署到 Azure。
-
-**步驟 6**︰如果可以在 Azure VM 中執行 DBMS 和 SAP 應用程式層元件，則必須定義與下列各項相關的組態︰
-
-* Azure VM 數目
-* 個別元件的 VM 類型
-* DBMS VM 中可提供足夠 IOPS 的 VHD 數目
 
 ## <a name="managing-azure-assets"></a>管理 Azure 資產
 
@@ -1277,7 +1285,7 @@ Azure 儲存體帳戶不會針對 i/o 量、IOPS 及資料量提供無限的資�
 
 另一個與儲存體帳戶相關的主題為：是否要對儲存體帳戶中的 VHD 進行異地複寫。 [異地複寫] 會在在儲存體帳戶層級 (而不是 VM 層級) 啟用或停用。 如果啟用 [異地複寫]，則會將儲存體帳戶中的 VHD 複寫至相同區域中的其他 Azure 資料中心。 在做這個決定之前，您應該考慮下列限制︰
 
-Azure 異地複寫可在 VM 中的每個 VHD 上本機運作，而且不會依時間先後順序在 VM 中的多個 VHD 之間複寫 IO。 因此，代表基底 VM 的 VHD 和連接到 VM 的任何其他 VHD 會彼此獨立複寫。 這表示不會同步處理不同 VHD 的變更。 由於複寫 IO 的順序與寫入的順序無關，這表示異地複寫的值不是針對其資料庫已分散至多個 VHD 的資料庫伺服器。 除了 DBMS 之外，也可能會有其他應用程式，其中的處理序會在不同的 VHD 中寫入或處理資料，而且必須保持變更順序。 如果這是必要條件，則不應該在 Azure 中啟用 [異地複寫]。 根據您是否需要或想要對一組 VM 進行異地複寫，但不對另一組進行異地複寫，您可能已將 VM 及其相關的 VHD 分類到已啟用或停用 [異地複寫] 的不同儲存體帳戶。
+Azure 異地複寫會在 VM 中的每個 VHD 上以本機方式運作，而且不會依時間順序將 i/o 複寫到 VM 中的多個 Vhd。 因此，代表基底 VM 的 VHD 和連接到 VM 的任何其他 VHD 會彼此獨立複寫。 這表示不會同步處理不同 VHD 的變更。 因為 i/o 是以其撰寫順序獨立進行複寫，所以其資料庫分散在多個 Vhd 的資料庫伺服器的地理複寫並不是價值。 除了 DBMS 之外，也可能會有其他應用程式，其中的處理序會在不同的 VHD 中寫入或處理資料，而且必須保持變更順序。 如果這是必要條件，則不應該在 Azure 中啟用 [異地複寫]。 根據您是否需要或想要對一組 VM 進行異地複寫，但不對另一組進行異地複寫，您可能已將 VM 及其相關的 VHD 分類到已啟用或停用 [異地複寫] 的不同儲存體帳戶。
 
 #### <a name="setting-automount-for-attached-disks"></a><a name="17e0d543-7e8c-4160-a7da-dd7117a1ad9d"></a>為連接的磁碟設定自動掛接
 ---
@@ -1289,7 +1297,7 @@ Azure 異地複寫可在 VM 中的每個 VHD 上本機運作，而且不會依�
 > 若要設定自動掛接，請參閱命令列可執行檔 diskpart.exe 的文件：
 >
 > * [DiskPart 命令列選項](https://technet.microsoft.com/library/bb490893.aspx)
-> * [Automount (自動掛接)](https://technet.microsoft.com/library/cc753703.aspx)
+> * [裝載](https://technet.microsoft.com/library/cc753703.aspx)
 >
 > 您應該以系統管理員身分開啟 Windows 命令列視窗。
 >
@@ -1630,7 +1638,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 <!-- sapms is prefix of a SAP service name and not a spelling error -->
 
-| Service | 連接埠名稱 | 範例 `<nn`> = 01 | 預設範圍 (最小值-最大值) | 註解 |
+| 服務 | 連接埠名稱 | 範例 `<nn`> = 01 | 預設範圍 (最小值-最大值) | 註解 |
 | --- | --- | --- | --- | --- |
 | 發送器 |sapdp`<nn>` 請參閱 * |3201 |3200 - 3299 |SAP 發送器，供 Windows 和 Java 的 SAP GUI 使用 |
 | 訊息伺服器 |sapms`<sid`> 請參閱 ** |3600 |任意 sapms`<anySID`> |sid = SAP 系統 ID |
@@ -2015,7 +2023,7 @@ SAP 提供可在啟動 VM 內的 OS 之後立即啟動 SAP 執行個體的功能
 根據所選擇的 SAP 組態 (2 層或 3 層)，可能需要進行備份。 您必須備份 VM 本身的內容及資料庫。 DBMS 相關的備份必須使用資料庫方法來進行。 如需不同資料庫的詳細說明，請參閱 [DBMS 指南][dbms-guide]。 另一方面，SAP 資料可如本節所述進行離線備份 (同時包含資料庫內容)，或是如下一節所述進行線上備份。
 
 離線備份基本上需要透過 Azure 入口網站關閉 VM，並將基底 VM 磁碟及所有連接的磁碟複製到 VM。 這會保留 VM 及其相關聯磁碟的某個時間點映像。 建議將備份複製到不同的 Azure 儲存體帳戶。 因此，本文件的[在 Azure 儲存體帳戶之間複製磁碟][planning-guide-5.4.2]一章所述的程序會適用。
-除了使用 Azure 入口網站進行關機之外，也可以透過 Powershell 或 CLI 來執行此動作，如下列網頁所述：<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
+除了使用 Azure 入口網站關閉以外，您也可以透過 PowerShell 或 CLI 來執行此動作，如下所述：<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
 
 還原該狀態需要刪除基底 VM 及基底 VM 的原始磁碟和已掛接的磁碟、將儲存的磁碟複製回原始儲存體帳戶，或受控磁碟的資源群組，然後重新部署此系統。
 本文說明如何在 PowerShell 中撰寫此程式腳本的範例：<http://www.westerndevs.com/azure-snapshots/>
@@ -2052,7 +2060,7 @@ SAP 系統內的其他 VM 可以使用 Azure 虛擬機器備份功能進行備�
 
 如需詳細說明如何部署此解決方案的部落格，請參閱：<https://blogs.msdn.com/b/saponsqlserver/archive/2014/11/19/protecting-sap-solutions-with-azure-site-recovery.aspx> \(英文\)。
 
-## <a name="summary"></a>[摘要]
+## <a name="summary"></a>摘要
 
 Azure 中 SAP 系統的高可用性重點如下：
 

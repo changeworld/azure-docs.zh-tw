@@ -1,14 +1,14 @@
 ---
 title: 了解藍圖生命週期
 description: 瞭解藍圖定義所經歷的生命週期，以及每個階段的詳細資料，包括更新和移除藍圖指派。
-ms.date: 07/30/2019
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc024c0e6643420d26bdc92e47fabe647c55ae7b
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677375"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864023"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>了解 Azure 藍圖生命週期
 

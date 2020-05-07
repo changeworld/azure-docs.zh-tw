@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 11/15/2018
 ms.author: genli
-ms.openlocfilehash: fd38f646b8dfc58839cd2645f7fadf7332693854
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 820fe016d630e63660368c9065acbcda9b514921
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605994"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858606"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>針對 Azure Windows 虛擬機器啟用問題進行疑難排解
 
@@ -102,7 +102,7 @@ Azure 會根據 VM 所在的雲端區域，針對 KMS （金鑰管理服務）�
   
     此外，請確定 VM 中的防火牆不會封鎖對具有1688埠之 KMS 端點的輸出網路流量。
 
-5. 請確認[網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)使用下一個躍點類型從有問題的 VM 到目的地 IP 23.102.135.246 （適用于 kms.core.windows.net），或適用于您的區域之適當 kms 端點的 IP 為**網際網路**。  如果結果為 VirtualAppliance 或 VirtualNetworkGateway，則有可能是預設路由存在。  請洽詢您的網路系統管理員，並與他們合作，以判斷正確的動作。  如果該解決方案與您組織的原則一致，這可能是[自訂路由](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation)。
+5. 請確認[網路監看員](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)使用下一個躍點類型從有問題的 VM 到目的地 IP 23.102.135.246 （適用于 kms.core.windows.net），或適用于您的區域之適當 kms 端點的 IP 為**網際網路**。  如果結果為 VirtualAppliance 或 VirtualNetworkGateway，則有可能是預設路由存在。  請洽詢您的網路系統管理員，並使用它們來判斷正確的動作。  如果該解決方案與您組織的原則一致，這可能是[自訂路由](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/custom-routes-enable-kms-activation)。
 
 6. 在您確認可成功連線到 kms.core.windows.net 之後，請在該提升權限的 Windows PowerShell 提示中執行下列命令。 此命令會多次嘗試啟用。
 
@@ -119,12 +119,12 @@ Azure 會根據 VM 所在的雲端區域，針對 KMS （金鑰管理服務）�
 ### <a name="i-created-the-windows-server-2016-from-azure-marketplace-do-i-need-to-configure-kms-key-for-activating-the-windows-server-2016"></a>我從 Azure Marketplace 建立了 Windows Server 2016。 我是否需要設定 KMS 金鑰來啟用 Windows Server 2016？ 
 
  
-否。 Azure Marketplace 中的映像已設定適當的 KMS 用戶端安裝識別碼。 
+不需要。 Azure Marketplace 中的映像已設定適當的 KMS 用戶端安裝識別碼。 
 
 ### <a name="does-windows-activation-work-the-same-way-regardless-if-the-vm-is-using-azure-hybrid-use-benefit-hub-or-not"></a>是否不論 VM 是否使用 Azure Hybrid Use Benefit (HUB)，Windows 啟用的運作方式都相同？ 
 
  
-是。 
+可以。 
  
 
 ### <a name="what-happens-if-windows-activation-period-expires"></a>如果 Windows 啟用期間已到期，會發生什麼情況？ 

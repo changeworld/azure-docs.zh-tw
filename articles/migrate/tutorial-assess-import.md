@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 2a30222902fd8797908202562a04018209842af2
-ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81115051"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82114559"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>使用匯入的資料來評估伺服器
 
@@ -68,7 +68,7 @@ ms.locfileid: "81115051"
 5. 在 [Migrate 專案]  中選取您的 Azure 訂用帳戶，並建立資源群組 (如果您還沒有的話)。
 6. 在 [專案詳細資料]  中，指定專案名稱以及要在其中建立專案的地理位置。 其他資訊：
 
-    - 檢閱[支援的地理位置](migrate-support-matrix.md#supported-geographies)。 專案地理區域只會用來儲存從內部部署 VM 收集到的中繼資料。
+    - 請檢閱[公用](migrate-support-matrix.md#supported-geographies-public-cloud)和[政府雲端](migrate-support-matrix.md#supported-geographies-azure-government)支援的地理位置。
     - 當您執行移轉時，可以選取任何目的地區域。
 
     ![建立 Azure Migrate 專案](./media/tutorial-assess-import/migrate-project.png)
@@ -248,6 +248,8 @@ ms.locfileid: "81115051"
 > 信賴評等不會指派給使用 CSV 匯入至伺服器評量的伺服器評量。
 
 ## <a name="supported-operating-system-names"></a>支援的作業系統名稱
+
+CSV 中提供的作業系統名稱必須符合或包含此清單中的名稱。 這是必要的，如此評量才能將指定名稱辨識為有效的名稱。
 
 <!-- BEGIN A - H -->
 

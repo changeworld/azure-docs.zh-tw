@@ -2,13 +2,13 @@
 title: Azure Kubernetes Service (AKS) 的常見問題集
 description: 尋找一些關於 Azure Kubernetes Service （AKS）常見問題的解答。
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: a58c3510d8937b209bf6c73d33237785ecab161d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/04/2020
+ms.openlocfilehash: 112060e72f36bfe5d11a997fc4161e26c36259ff
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206597"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854252"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 的常見問題集
 
@@ -18,21 +18,20 @@ ms.locfileid: "82206597"
 
 如需可用區域的完整清單，請參閱[AKS 區域和可用性][aks-regions]。
 
-## <a name="does-aks-support-node-autoscaling"></a>AKS 是否支援節點自動調整？
+## <a name="can-i-spread-an-aks-cluster-across-regions"></a>我可以跨區域散佈 AKS 叢集嗎？
 
-是，在 AKS 中，以水準方式自動調整代理程式節點的功能目前僅供預覽。 如需相關指示，請參閱[在 AKS 中自動調整叢集以符合應用程式需求][aks-cluster-autoscaler]。 AKS 自動調整是以[Kubernetes 自動調整程式][auto-scaler]為基礎。
+不需要。 AKS 叢集是區域性資源，無法跨區域。 如需如何建立包含多個區域之架構的指引，請參閱[商務持續性和嚴重損壞修復的最佳做法][bcdr-bestpractices]。
 
-## <a name="can-i-deploy-aks-into-my-existing-virtual-network"></a>可以將 AKS 部署到我現有的虛擬網路嗎？
+## <a name="can-i-spread-an-aks-cluster-across-availability-zones"></a>我可以將 AKS 叢集分散到多個可用性區域嗎？
 
-是，您可以使用[advanced network 功能][aks-advanced-networking]，將 AKS 叢集部署到現有的虛擬網路中。
+可以。 您可以在[支援的區域][az-regions]中，跨一或多個[可用性區域][availability-zones]部署 AKS 叢集。
 
 ## <a name="can-i-limit-who-has-access-to-the-kubernetes-api-server"></a>我可以限制能夠存取 Kubernetes API 伺服器的人員嗎？
 
-是，您可以使用[API 伺服器授權的 IP 範圍][api-server-authorized-ip-ranges]來限制 Kubernetes API 伺服器的存取權。
+可以。 有兩個選項可限制對 API 伺服器的存取：
 
-## <a name="can-i-make-the-kubernetes-api-server-accessible-only-within-my-virtual-network"></a>我可以讓 Kubernetes API 伺服器只在我的虛擬網路中存取嗎？
-
-目前尚不這麼做，但已進行規劃。 您可以在[AKS GitHub][private-clusters-github-issue]存放庫上追蹤進度。
+- 如果您想要維護 API 伺服器的公用端點，但限制存取一組信任的 IP 範圍，請使用[API 伺服器授權的 IP 範圍][api-server-authorized-ip-ranges]。
+- 如果您想要將 API 伺服器限制為*只能*從您的虛擬網路中存取，請使用[私人][private-clusters]叢集。
 
 ## <a name="can-i-have-different-vm-sizes-in-a-single-cluster"></a>單一叢集中是否可以有不同的 VM 大小？
 
@@ -63,7 +62,7 @@ AKS 建基於一些 Azure 基礎結構資源，包括虛擬機器擴展集、虛
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>我可以為 AKS 節點資源群組提供自己的名稱嗎？
 
-是。 根據預設，AKS 會將節點資源群組命名為*MC_resourcegroupname_clustername_location*，但您也可以提供您自己的名稱。
+可以。 根據預設，AKS 會將節點資源群組命名為*MC_resourcegroupname_clustername_location*，但您也可以提供您自己的名稱。
 
 若要指定您自己的資源組名，請安裝[aks-preview][aks-preview-cli] Azure CLI 延伸模組版本*0.3.2*或更新版本。 當您使用[az AKS create][az-aks-create]命令建立 AKS 叢集時，請使用 *--node--群組*參數並指定資源群組的名稱。 如果您[使用 Azure Resource Manager 範本][aks-rm-template]來部署 AKS 叢集，您可以使用*nodeResourceGroup*屬性來定義資源組名。
 
@@ -118,7 +117,7 @@ namespaceSelector:
 
 ## <a name="is-azure-key-vault-integrated-with-aks"></a>Azure Key Vault 是否會與 AKS 整合？
 
-AKS 目前不會與 Azure Key Vault 整合。 不過，[適用于 Kubernetes 專案的 Azure Key Vault FlexVolume][keyvault-flexvolume]可讓您從 Kubernetes pod 直接整合到 Key Vault 的秘密。
+AKS 目前不會與 Azure Key Vault 整合。 不過，[適用于 CSI 秘密存放區的 Azure Key Vault 提供者][csi-driver]可讓您從 Kubernetes pod 直接整合到 Key Vault 的秘密。
 
 ## <a name="can-i-run-windows-server-containers-on-aks"></a>我是否可以在 AKS 上執行 Windows Server 容器？
 
@@ -131,19 +130,6 @@ AKS 目前不會與 Azure Key Vault 整合。 不過，[適用于 Kubernetes 專
 在服務等級協定（SLA）中，如果未符合已發佈的服務層級，則提供者會同意補償客戶的服務成本。 由於 AKS 是免費的，因此不會有任何費用可補償，因此 AKS 沒有正式的 SLA。 不過，AKS 會尋求維護至少99.5% 的 Kubernetes API 伺服器可用性。
 
 請務必辨識 AKS 服務可用性之間的區別，這是指 Kubernetes 控制平面的執行時間，以及在 Azure 虛擬機器上執行的特定工作負載可用性。 雖然控制平面可能無法使用，但如果沒有就緒，則在 Azure Vm 上執行的叢集工作負載仍然可以運作。 假設 Azure Vm 是付費資源，其受金融 SLA 支援。 如需 Azure VM SLA 的詳細資訊，以及如何使用[可用性區域][availability-zones]之類的功能增加該可用性，請參閱[這裡](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)。
-
-## <a name="why-cant-i-set-maxpods-below-30"></a>為什麼我無法將 maxPods 設定為30以下？
-
-在 AKS 中，您可以使用`maxPods` [Azure CLI] 和 [Azure Resource Manager] 範本來設定建立叢集時的值。 不過，Kubenet 和 Azure CNI 都需要*最小值*（在建立時進行驗證）：
-
-| 網路功能 | 最小值 | 最大值 |
-| -- | :--: | :--: |
-| Azure CNI | 30 | 250 |
-| Kubenet | 30 | 110 |
-
-因為 AKS 是受控服務，所以我們會部署和管理附加元件和 pod，做為叢集的一部分。 在過去，使用者可以將`maxPods`值定義為低於所需的受控 pod 執行的值（例如，30）。 AKS 現在會使用下列公式來計算最小 pod 數目：（（maxPods 或（maxPods * vm_count）） > 受管理的附加元件最少。
-
-使用者無法覆寫最低`maxPods`驗證。
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>我可以將 Azure 保留折扣套用至我的 AKS 代理程式節點嗎？
 
@@ -181,7 +167,7 @@ AKS 代理程式節點會以標準 Azure 虛擬機器計費，因此如果您已
 
 請確認您的服務主體未過期。  請參閱： [AKS 服務主體](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)和[AKS 更新認證](https://docs.microsoft.com/azure/aks/update-credentials)。
 
-## <a name="my-cluster-was-working-but-suddenly-can-not-provision-loadbalancers-mount-pvcs-etc"></a>我的叢集已正常運作，但突然無法布建 LoadBalancers、掛接 Pvc 等專案？ 
+## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>我的叢集已正常運作，但突然無法布建 LoadBalancers、掛接 Pvc 等專案？ 
 
 請確認您的服務主體未過期。  請參閱： [AKS 服務主體](https://docs.microsoft.com/azure/aks/kubernetes-service-principal)和[AKS 更新認證](https://docs.microsoft.com/azure/aks/update-credentials)。
 
@@ -219,12 +205,15 @@ AKS 不是受控服務，且不支援操作 IaaS 資源。 安裝自訂群組件
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
 [availability-zones]: ./availability-zones.md
+[private-clusters]: ./private-clusters.md
+[bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
+[availability-zones]: ./availability-zones.md
+[az-regions]: ../availability-zones/az-region.md
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [auto-scaler]: https://github.com/kubernetes/autoscaler
 [cordon-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
-[hexadite]: https://github.com/Hexadite/acs-keyvault-agent
 [admission-controllers]: https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/
-[keyvault-flexvolume]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [private-clusters-github-issue]: https://github.com/Azure/AKS/issues/948
+[csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure

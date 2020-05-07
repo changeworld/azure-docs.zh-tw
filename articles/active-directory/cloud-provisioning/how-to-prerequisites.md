@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45648170f69d513b15e79cdd76f56e66bbc88bfa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 553ecc971235b5ba7d55a2dcb6963200919a3480
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332074"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853455"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect 雲端布建的必要條件
 本文提供如何選擇及使用 Azure Active Directory （Azure AD）連接雲端布建作為身分識別解決方案的指引。
@@ -47,6 +47,8 @@ ms.locfileid: "80332074"
 ### <a name="in-your-on-premises-environment"></a>在內部部署環境中
 
 1. 識別執行 Windows Server 2012 R2 或更新版本的已加入網域主機伺服器，至少要有 4 GB RAM 和 .NET 4.7.1 + 執行時間。
+
+1. 本機伺服器上的 PowerShell 執行原則必須設定為 [未定義] 或 [RemoteSigned]。
 
 1. 如果您的伺服器與 Azure AD 之間有防火牆，請設定下列專案：
    - 確定代理程式可透過下列連接埠對 Azure AD 提出*輸出*要求：

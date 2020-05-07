@@ -4,17 +4,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 7c1ad2581d025a9259c5cb2a84e4237f938fc892
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.openlocfilehash: a2083de1ddf400b368815877725d3b8dd446156b
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81637140"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82844547"
 ---
 若要以一致的方式大規模建立並管理 Azure 虛擬機器 (VM)，通常需要某種形式的自動化。 有許多工具和解決方案可讓您將完整的 Azure 基礎結構部署及管理生命週期自動化。 本文介紹的一些基礎結構自動化工具可供您在 Azure 中使用。 這些工具通常符合下列其中一種方法：
 
 - 自動設定 VM
-    - 工具包括[易置](#ansible)[、Chef、](#chef)[人偶](#puppet)與[Azure 資源管理員樣本](#azure-resource-manager-template)。
+    - 工具組括[Ansible](#ansible)、 [Chef](#chef)、 [Puppet](#puppet)和[Azure Resource Manager 範本](#azure-resource-manager-template)。
     - VM 自訂的特定工具包括 [cloud-init](#cloud-init) (適用於 Linux VM)、[PowerShell 預期狀態設定 (DSC)](#powershell-dsc)，和 [Azure 自訂指令碼擴充功能](#azure-custom-script-extension) (適用於所有 Azure VM)。
 
 - 將基礎結構管理自動化
@@ -52,7 +52,7 @@ ms.locfileid: "81637140"
 
 
 ## <a name="cloud-init"></a>Cloud-init
-[雲init](https://cloudinit.readthedocs.io)是一種廣泛使用的方法,用於自定義 Linux VM,因為它第一次啟動。 您可以使用 cloud-init 來安裝封裝和寫入檔案，或者設定使用者和安全性。 因為在初次開機程序期間時會呼叫 Cloud-init，因此不需要使用任何額外的步驟或必要的代理程式，就可以套用您的設定。  如需如何正確地設定 `#cloud-config` 檔案格式的詳細資訊，請參閱 [cloud-init 文件網站](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data) \(英文\)。  `#cloud-config` 檔案是以 base64 編碼的文字檔。
+[Cloud-init (英文)](https://cloudinit.readthedocs.io) 是在 Linux VM 初次開機時，廣泛用來自訂它們的方法。 您可以使用 cloud-init 來安裝封裝和寫入檔案，或者設定使用者和安全性。 因為在初次開機程序期間時會呼叫 Cloud-init，因此不需要使用任何額外的步驟或必要的代理程式，就可以套用您的設定。  如需如何正確地設定 `#cloud-config` 檔案格式的詳細資訊，請參閱 [cloud-init 文件網站](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data) \(英文\)。  `#cloud-config` 檔案是以 base64 編碼的文字檔。
 
 Cloud-init 也適用於散發套件。 例如，您不使用 **apt-get install** 或 **yum install** 來安裝套件。 您可以改為定義要安裝的套件清單。 Cloud-init 會針對您選取的散發套件自動使用原生的套件管理工具。
 
@@ -100,8 +100,8 @@ DSC 設定會定義要在電腦上安裝的項目，以及設定主機的方式�
 
 了解如何：
 
-- [使用 Azure 安裝及設定 Terraform](../articles/terraform/terraform-install-configure.md)。
-- [使用 Terraform 建立 Azure 基礎結構](../articles/terraform/terraform-create-complete-vm.md)。
+- [使用 Azure 安裝及設定 Terraform](/azure/developer/terraform/install-configure)。
+- [使用 Terraform 建立 Azure 基礎結構](/azure/developer/terraform/create-linux-virtual-machine-with-infrastructure)。
 
 
 ## <a name="azure-automation"></a>Azure 自動化
@@ -111,7 +111,7 @@ Azure 自動化也會提供預期狀態設定 (DSC) 服務，可讓您建立一�
 
 了解如何：
 
-- [建立 PowerShell 執行簿](../articles/automation/automation-first-runbook-textual-powershell.md)。
+- [建立 PowerShell runbook](../articles/automation/automation-first-runbook-textual-powershell.md)。
 - [使用混合式 Runbook 背景工作角色來管理內部部署資源](../articles/automation/automation-hybrid-runbook-worker.md)。
 - [使用 Azure Automation DSC](../articles/automation/automation-dsc-getting-started.md)。
 
@@ -133,15 +133,15 @@ Azure 自動化也會提供預期狀態設定 (DSC) 服務，可讓您建立一�
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 範本
-[Azure 資源管理員](../articles/azure-resource-manager/templates/overview.md)是 Azure 的部署和管理服務。 其提供管理層，可讓您建立、更新和刪除您 Azure 訂用帳戶中的資源。 您可以使用存取控制、鎖定和標記等管理功能，在部署後保護及組織您的資源。
+[Azure Resource Manager](../articles/azure-resource-manager/templates/overview.md)是 Azure 的部署和管理服務。 其提供管理層，可讓您建立、更新和刪除您 Azure 訂用帳戶中的資源。 您可以使用存取控制、鎖定和標記等管理功能，在部署後保護及組織您的資源。
 
 了解如何：
 
-- [使用資源管理器範本部署 Spot VM。](../articles/virtual-machines/linux/spot-template.md)
-- [使用 C# 與資源管理員樣本部署 Azure 虛擬機器](../articles/virtual-machines/windows/csharp-template.md)。
-- [從資源管理員樣本建立 Windows 虛擬機器](../articles/virtual-machines/windows/ps-template.md)。
-- [下載 VM 的樣本](../articles/virtual-machines/windows/download-template.md)。
-- [建立 Azure 映像產生器樣本](../articles/virtual-machines/linux/image-builder-json.md)。
+- [使用 Resource Manager 範本部署點 vm](../articles/virtual-machines/linux/spot-template.md)。
+- [使用 c # 和 Resource Manager 範本來部署 Azure 虛擬機器](../articles/virtual-machines/windows/csharp-template.md)。
+- [從 Resource Manager 範本建立 Windows 虛擬機器](../articles/virtual-machines/windows/ps-template.md)。
+- [下載 VM 的範本](../articles/virtual-machines/windows/download-template.md)。
+- [建立 Azure 映射產生器範本](../articles/virtual-machines/linux/image-builder-json.md)。
 
 ## <a name="next-steps"></a>後續步驟
 有許多不同的選項可供您在 Azure 中使用基礎結構自動化工具。 您可以自由使用最適合您需求和環境的解決方案。 若要開始使用並嘗試一些內建於 Azure 的工具，請參閱如何將自訂 [Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) 或 [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) VM 自動化。

@@ -1,14 +1,14 @@
 ---
 title: 如何使用 PowerShell 管理指派
 description: 瞭解如何使用官方 Azure 藍圖 PowerShell 模組 Az. 藍圖來管理藍圖指派。
-ms.date: 09/30/2019
+ms.date: 05/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 0868e5e207202511c1981a930870bfdc68a77a8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa0f89df79c4ae1c5b66998089f04575bd53ea37
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677433"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863972"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何使用 PowerShell 管理指派
 
@@ -205,8 +205,7 @@ ResourceGroups    : ResourceGroup
 
 ### <a name="example-2-use-a-json-assignment-definition-file"></a>範例2：使用 JSON 指派定義檔
 
-下列範例會建立與[範例 1](#example-1-provide-parameters)幾乎相同的指派。
-範例不會將參數傳遞給 Cmdlet，而是會顯示 JSON 指派定義檔和**AssignmentFile**參數的用法。 此外， **excludedPrincipals**屬性會設定為**鎖定**的一部分。 沒有適用于**excludedPrincipals**的 PowerShell 參數，而且只能透過 JSON 指派定義檔來設定屬性。
+下列範例會建立與[範例 1](#example-1-provide-parameters)幾乎相同的指派。 範例不會將參數傳遞給 Cmdlet，而是會顯示 JSON 指派定義檔和**AssignmentFile**參數的用法。 此外， **excludedPrincipals**屬性會設定為**鎖定**的一部分。 沒有適用于**excludedPrincipals**的 PowerShell 參數，而且只能透過 JSON 指派定義檔來設定屬性。
 
 ```json
 {
@@ -335,7 +334,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>端對端程式碼範例
+## <a name="code-example"></a>程式碼範例
 
 將所有步驟結合在一起，下列範例會取得藍圖定義，然後建立、更新和移除特定訂用帳戶中的藍圖指派，表示`{subId}`為：
 

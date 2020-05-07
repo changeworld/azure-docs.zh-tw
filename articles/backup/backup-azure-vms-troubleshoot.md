@@ -4,18 +4,18 @@ description: 在本文中，您將瞭解如何針對 Azure 虛擬機器備份和
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd199bc0245ab1daa090f88b1e92216c714042ee
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677347"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864440"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>針對 Azure 虛擬機器上的備份失敗進行疑難排解
 
 您可以針對使用 Azure 備份時所遇到的錯誤進行疑難排解，並提供下列資訊：
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Backup 
 
 本節涵蓋 Azure 虛擬機器的備份作業失敗。
 
@@ -97,6 +97,14 @@ ms.locfileid: "81677347"
 
 * ```net stop serviceName```
 * ```net start serviceName```
+
+另一個可協助的程式是，從提升許可權的命令提示字元（以系統管理員身分）執行下列命令。
+
+```CMD
+REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
+```
+
+新增此登錄機碼將導致不會針對 blob 快照集建立執行緒，並防止超時。
 
 ## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure-剖析備份延伸模組的設定失敗
 

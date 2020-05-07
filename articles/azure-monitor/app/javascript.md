@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: daea761d027341eaf8f6c0d137f3049c45e82924
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: HT
+ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836609"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854976"
 ---
 # <a name="application-insights-for-web-pages"></a>適用於網頁的 Application Insights
 
@@ -99,7 +99,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>組態
 大部分設定欄位的名稱都是，讓它們可以預設為 false。 除了以外，所有欄位都`instrumentationKey`是選擇性的。
 
-| Name | 預設 | 描述 |
+| 名稱 | 預設 | 描述 |
 |------|---------|-------------|
 | instrumentationKey | null | **必要**<br>從 Azure 入口網站取得的檢測金鑰。 |
 | accountId | null | 選擇性的帳戶識別碼，如果您的應用程式將使用者群組為帳戶。 不含空格、逗號、分號、等於或分隔號 |
@@ -146,6 +146,13 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 根據預設，此 SDK**不**會處理在單一頁面應用程式中發生的狀態型路由變更。 若要為您的單一頁面應用程式啟用自動路由變更追蹤， `enableAutoRouteTracking: true`您可以將新增到您的安裝程式設定。
 
 目前，我們提供了個別的[回應外掛程式](#react-extensions)，您可以使用這個 SDK 來初始化。 它也會為您完成路由變更追蹤，並收集[其他回應特定的遙測](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)。
+
+> [!NOTE]
+> 只有`enableAutoRouteTracking: true`在您**未**使用「回應」外掛程式時，才使用。 這兩者都能夠在路由變更時傳送新的 PageViews。 如果兩者都已啟用，可能會傳送重複的 PageViews。
+
+## <a name="configuration-autotrackpagevisittime"></a>設定： autoTrackPageVisitTime
+
+藉由`autoTrackPageVisitTime: true`設定，會追蹤使用者在每個頁面上花費的時間。 在每個新的 PageView 上，使用者花費在*上一頁*的持續時間會當做名`PageVisitTime`為的[自訂](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview)計量傳送。 此自訂計量可在[計量瀏覽器](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)中看到為「記錄式計量」。
 
 ## <a name="react-extensions"></a>回應延伸模組
 

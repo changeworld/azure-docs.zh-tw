@@ -8,16 +8,16 @@ ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
 ms.author: rohink
-ms.openlocfilehash: 26e5386f1c9730f1600e59a002ea7845b82ffe06
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b34b45cba805d748dcc8a0c31340cd8116e1c80
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76937122"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82160761"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>快速入門：使用 Azure 入口網站建立 Azure DNS 區域和記錄
 
-您可以設定 Azure DNS 以解析您公用網域中的主機名稱。 例如，如果您向網域名稱註冊機構購買了 *contoso.xyz* 網域名稱，您可以設定 Azure DNS 以裝載 *contoso.xyz* 網域，並將 *www.contoso.xyz* 解析為您的 Web 伺服器或 Web 應用程式的 IP 位址。
+您可以設定 Azure DNS 以解析您公用網域中的主機名稱。 例如，如果您向網域名稱註冊機構購買了 *contoso.xyz* 網域名稱，您可以設定 Azure DNS 以裝載 *contoso.xyz* 網域，並將 *`www.contoso.xyz`* 解析為您的 Web 伺服器或 Web 應用程式的 IP 位址。
 
 在本快速入門中，您將建立一個測試網域，然後建立將 *www* 解析為 IP 位址 *10.10.10.10* 的位址記錄。
 

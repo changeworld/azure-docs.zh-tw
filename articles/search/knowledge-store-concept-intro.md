@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 0ad780c04954c09ddfd432b3c7de3dc65f0841bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: 20819bc6ec091eddf5d65b1c0d7aa57c821b2fc1
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942988"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858807"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Azure 認知搜尋中的知識存放區簡介
 
@@ -25,6 +25,10 @@ ms.locfileid: "78942988"
 如果您過去曾使用過認知技能，您已經知道*技能集*透過一連串的擴充來移動檔。 其結果可能會產生搜尋索引，或 (此預覽版中的新功能) 知識存放區中的投射。 這兩個輸出（搜尋索引和知識存放區）是相同管線的產品;衍生自相同的輸入，但會產生結構化、儲存的輸出，並以非常不同的方式使用。
 
 實際上，知識存放區是 [Azure 儲存體](https://docs.microsoft.com/azure/storage/common/storage-account-overview)，可能會以 Azure 資料表儲存體和 (或) Azure Blob 儲存體的形式存在。 任何可連線至 Azure 儲存體的工具或程序都可以取用知識存放區的內容。
+
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=235&end=426]
+
 
 ![管線圖表中的知識存放區](./media/knowledge-store-concept-intro/knowledge-store-concept-intro.svg "管線圖表中的知識存放區")
 
@@ -46,6 +50,10 @@ ms.locfileid: "78942988"
 > AI 擴充和認知技能的新手嗎？ Azure 認知搜尋可與認知服務視覺和語言功能整合，以使用光學字元辨識 (OCR)，透過影像檔、實體辨識以及文字檔中的關鍵片語擷取等等，來擷取並擴充來源資料。 如需詳細資訊，請參閱 [Azure 認知搜尋中的 AI 擴充](cognitive-search-concept-intro.md)。
 
 ## <a name="physical-storage"></a>實體儲存體
+
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=455&end=542]
+
 
 知識存放區的實體運算式是透過技能集中`projections` `knowledgeStore`定義的元素來表達。 投射會定義輸出的結構，使其符合您的預期用途。
 
@@ -131,7 +139,7 @@ ms.locfileid: "78942988"
 
 <a name="kstore-rest-api"></a>
 
-## <a name="api-reference"></a>應用程式開發介面參考
+## <a name="api-reference"></a>API 參考資料
 
 REST API 版本`2019-05-06-Preview`會透過技能集上的其他定義來提供知識存放區。 除了參考以外，請參閱[使用 Postman 建立知識存放區](knowledge-store-create-rest.md)，以取得如何呼叫 api 的詳細資料。
 

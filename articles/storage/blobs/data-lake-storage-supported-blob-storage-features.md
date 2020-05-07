@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b270ce3cd15dbd1e8dd53bd60376a87d6e08f75c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfc7e12efb0e5e4613bb4cc5f2f9a35383f37546
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637206"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857249"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 儲存體功能
 
@@ -38,9 +38,9 @@ Blob 儲存體功能（例如[診斷記錄](../common/storage-analytics-logging.
 |Blob 儲存體 API|正式推出|[快速入門：適用于 .NET 的 Azure Blob 儲存體用戶端程式庫 v12](storage-quickstart-blobs-dotnet.md)<br>[快速入門：使用 JAVA v12 SDK 管理 blob](storage-quickstart-blobs-java.md)<br>[快速入門：使用 Python v12 SDK 管理 blob](storage-quickstart-blobs-python.md)<br>[快速入門：使用 node.js 中的 JavaScript v12 SDK 來管理 blob](storage-quickstart-blobs-nodejs.md)|
 |封存存取層|預覽|[Azure Blob 儲存體︰經常性存取、非經常性存取和封存存取層](storage-blob-storage-tiers.md)|
 |生命週期管理原則|預覽|[管理 Azure Blob 儲存體生命週期](storage-lifecycle-management-concepts.md)|
-|診斷記錄|正式推出|[Azure 儲存體分析記錄](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|診斷記錄|正式推出|[Azure 儲存體分析記錄](../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (部分機器翻譯)|
 |變更摘要|尚不支援|[Azure Blob 儲存體中的變更摘要支援](storage-blob-change-feed.md)|
-|帳戶容錯移轉|尚不支援|[嚴重損壞修復和帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|帳戶容錯移轉|尚不支援|[嚴重損壞修復和儲存體帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob 容器 ACL|尚不支援|[Set Container ACL (設定容器 ACL)](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |自訂網域|尚不支援|[將自訂網域對應至 Azure Blob 儲存體端點](storage-custom-domain-name.md)|
 |不可變的儲存體|尚不支援|[使用不可變的儲存體儲存業務關鍵的 blob 資料](storage-blob-immutable-storage.md)|

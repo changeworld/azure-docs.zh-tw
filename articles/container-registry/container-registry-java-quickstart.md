@@ -5,12 +5,12 @@ author: KarlErickson
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 62d63b24baab204cb029565b109ea2de768e1d80
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fa64ec526ab85e412b407da8566ac6f802ca2d20
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78165084"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82195276"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>快速入門：建置 Java 容器映像並將其推送至 Azure Container Registry
 
@@ -94,6 +94,9 @@ ms.locfileid: "78165084"
 
 最後，您將更新您的專案組態，並使用命令提示字元來建置和部署您的映像。
 
+> [!NOTE]
+> 若要登入您剛建立的 Azure Container Registry，您必須執行 Docker 精靈。 若要在電腦上安裝 Docker，[這裡是官方的 Docker 文件](https://docs.docker.com/install/)。
+
 1. 使用下列命令，從 Azure CLI 登入您的 Azure Container Registry。 請務必將以自己的登錄名稱取代預留位置。
 
    ```azurecli
@@ -105,13 +108,13 @@ ms.locfileid: "78165084"
 
 1. 巡覽至 Spring Boot 應用程式已完成的專案目錄 (例如，"*C:\SpringBoot\gs-spring-boot-docker\complete*" 或 " */users/robert/SpringBoot/gs-spring-boot-docker/complete*")，並使用文字編輯器開啟 *pom.xml* 檔案。
 
-1. 以下列 XML 更新 *pom.xml* 檔案中的 `<properties>` 集合。 以您的登錄名稱取代預留位置，並使用最新版的 [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)更新 `<jib-maven-plugin.version>` 值。
+1. 以下列 XML 更新 *pom.xml* 檔案中的 `<properties>` 集合。 請以您的登錄名稱取代預留位置，並新增值為 `2.2.0` 的 `<jib-maven-plugin.version>` 屬性，或新增較新版的 [jib-maven-plugin](https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin)。
 
    ```xml
    <properties>
       <docker.image.prefix><your registry name>.azurecr.io</docker.image.prefix>
-      <jib-maven-plugin.version>1.8.0</jib-maven-plugin.version>
       <java.version>1.8</java.version>
+      <jib-maven-plugin.version>2.2.0</jib-maven-plugin.version>
    </properties>
    ```
 
@@ -136,7 +139,7 @@ ms.locfileid: "78165084"
 1. 瀏覽至 Spring Boot 應用程式已完成的專案目錄，然後執行下列命令來建置映像，並將映像推送到登錄：
 
    ```bash
-   mvn compile jib:build
+   az acr login && mvn compile jib:build
    ```
 
 > [!NOTE]
@@ -163,7 +166,7 @@ docker pull <your registry name>.azurecr.io/gs-spring-boot-docker:v1
 若要深入了解 Spring 和 Azure，請繼續閱讀「Azure 上的 Spring」文件中心中的資訊。
 
 > [!div class="nextstepaction"]
-> [Azure 上的 Spring](/azure/java/spring-framework)
+> [Azure 上的 Spring](/azure/developer/java/spring-framework)
 
 ### <a name="additional-resources"></a>其他資源
 
@@ -173,5 +176,5 @@ docker pull <your registry name>.azurecr.io/gs-spring-boot-docker:v1
 * [使用 Azure DevOps 和 Java](/azure/devops/java)
 * [Spring Boot on Docker Getting Started](https://spring.io/guides/gs/spring-boot-docker)
 * [Spring Initializr](https://start.spring.io)
-* [將 Spring Boot 應用程式部署到 Azure App Service](/azure/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
+* [將 Spring Boot 應用程式部署到 Azure App Service](/azure/developer/java/spring-framework/deploy-spring-boot-java-app-from-container-registry-using-maven-plugin)
 * [針對 Linux 上的 Azure Web 應用程式使用自訂 Docker 映像](/azure/app-service-web/app-service-linux-using-custom-docker-image)

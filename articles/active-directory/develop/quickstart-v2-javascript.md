@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 1d22f66ad5f7adf5bb8196c3e72a2a343f4558b0
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: aad830ba7c7198077fe6073d6351c72ac9a8e662
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81536092"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82144401"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入門：登入使用者並取得 JavaScript SPA 中的存取權杖
 
@@ -25,7 +25,7 @@ ms.locfileid: "81536092"
 
 ## <a name="prerequisites"></a>Prerequisites
 
-* Azure 訂用帳戶 - [建立免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure 訂用帳戶 - [免費建立 Azure 訂用帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/)
 * [Visual Studio Code](https://code.visualstudio.com/download) (用以編輯專案檔)
 
@@ -165,7 +165,7 @@ ms.locfileid: "81536092"
 
 ### <a name="how-the-sample-works"></a>此範例的運作方式
 
-![本快速入門中的範例應用程式的運作方式](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+![JavaScript SPA 範例的運作方式：1. SPA 起始登入。 2. SPA 從 Microsoft 身分識別平台取得識別碼權杖。 3. SPA 呼叫取得權杖。 4. Microsoft 身分識別平台將存取權杖傳回給 SPA。 5. SPA 使用存取權杖向 Microsoft Graph API 提出 HTTP GET 要求。 6. 圖形 API 傳回 HTTP 回應給 SPA。](media/quickstart-v2-javascript/javascriptspa-intro.svg)
 
 ### <a name="msaljs"></a>msal.js
 

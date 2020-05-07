@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 05/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf8c797edec143d09739272917b5781a239280ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bb1dba32ed2e913268a9fc37f37ab8cec360c5de
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147735"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858432"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 來裝載和執行 SAP 工作負載案例
 
@@ -111,6 +111,7 @@ Azure 上的 SAP 工作負載區段中的檔變更會列在本文結尾。 變�
 
 ## <a name="change-log"></a>變更記錄
 
+- 05/05/2020： [Azure 虛擬機器規劃和實作為 SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)的變更，以表示 Gen2 部署適用于 Mv1 VM 系列
 - 04/24/2020：在具有[及 ON sles](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)的 azure vm 上具有待命節點的 SAP Hana 向外延展的變更，SAP Hana 位於具有[及 on rhel](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)的 azure vm 上使用待命節點的相應放大、[高可用性適用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)于在 rhel 上的 Azure vm 上搭配及和[高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)（含 NetWeaver 的 azure vm 上的 sap 及），以新增說明及磁片區的 IP 位址已自動指派
 - 04/22/2020：在[SLES 上的 Azure vm 上 SAP Hana 的高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)變更，以從`is-managed`指示中移除中繼屬性，因為它與將叢集置於或離開維護模式相衝突
 - 04/21/2020：已將 SQL Azure DB 新增為 SAP （Hybris） Commerce Platform 1811 的支援 DBMS，並在文章中加入[了哪些 sap 軟體支援用於 Azure 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure)，以及在[Microsoft Azure 上執行的 sap 認證和](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-certifications)設定

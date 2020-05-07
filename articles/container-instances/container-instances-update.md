@@ -3,12 +3,12 @@ title: 更新容器群組
 description: 了解如何在 Azure 容器執行個體的容器群組中更新執行中的容器。
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: d64590c553f4ae4ef462d4468fade68861db31c3
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: dc10e38aa6be9473f89df6f7fa10a72f63d9ada8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160097"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854441"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>在 Azure 容器執行個體中更新容器
 
@@ -28,7 +28,7 @@ ms.locfileid: "82160097"
 * 使用您先前提供的值來設定其他屬性。 如果您未設定屬性的值，它會還原為其預設值。
 
 > [!TIP]
-> [YAML](/container-instances-container-groups.md#deployment)檔案可協助維護容器群組的部署設定，並提供部署已更新群組的起點。 如果您使用不同的方法來建立群組，您可以使用[az container export][az-container-export]將設定匯出至 YAML， 
+> [YAML](container-instances-container-groups.md#deployment)檔案可協助維護容器群組的部署設定，並提供部署已更新群組的起點。 如果您使用不同的方法來建立群組，您可以使用[az container export][az-container-export]將設定匯出至 YAML， 
 
 ### <a name="example"></a>範例
 

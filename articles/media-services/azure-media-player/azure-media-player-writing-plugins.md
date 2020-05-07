@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: b7aac80b19a7c30d994f3c14e19047583d5334ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727108"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857399"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>撰寫 Azure 媒體播放機的外掛程式 #
 
@@ -87,7 +87,7 @@ ms.locfileid: "81727108"
 
 ### <a name="plugin-gallery"></a>外掛程式庫 ###
 
-[外掛程式資源庫](http//:aka.ms/ampplugins)有數個外掛程式已針對諸如時間表標記、縮放、分析等功能提供。 此頁面會提供外掛程式的存取權，以及如何設定它的指示，以及顯示作用中外掛程式的示範。 如果您建立了想要包含在資源庫中的非經常性存取外掛程式，請隨意提交，讓我們可以將它簽出。
+[外掛程式資源庫](https://aka.ms/ampplugins)有數個外掛程式已針對諸如時間表標記、縮放、分析等功能提供。 此頁面會提供外掛程式的存取權，以及如何設定它的指示，以及顯示作用中外掛程式的示範。 如果您建立了想要包含在資源庫中的非經常性存取外掛程式，請隨意提交，讓我們可以將它簽出。
 
 ## <a name="next-steps"></a>後續步驟 ##
 

@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: a3eedb5440711c7a45a13dcd53dd489c490588fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 4f87f2de3747f55562d3f683e1738595624940dd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677417"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854642"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>針對 Azure 備份失敗進行疑難排解：與代理程式或延伸模組相關的問題
 
@@ -200,7 +200,7 @@ VM 代理程式可能已損毀，或服務可能已停止。 重新安裝 VM 代
 
 ### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>未設定 VM 代理程式設定選項（適用于 Linux Vm）
 
-組態檔 (/etc/waagent.conf) 控制 waagent 的動作。 設定檔案選項**延伸模組。啟用**和布建 **。代理程式**應設定為**y** ，備份才能正常執行。
+組態檔 (/etc/waagent.conf) 控制 waagent 的動作。 設定檔案選項**延伸。 [啟用**] 應設定為 [ **y** ] 和 [布建] **。代理程式**應設定為 [**自動**]，備份才能正常執行。
 如需 VM 代理程式設定檔案選項的完整清單，請參閱<https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>無法擷取快照集狀態或無法取得快照集

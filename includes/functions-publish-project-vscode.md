@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 01/12/2020
 ms.author: glenga
-ms.openlocfilehash: d8665b4cec3357baee5d6c1b77b5719645575419
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 41dfb809cdab00f4f9bee335d92522f37a438c68
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81112850"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82109604"
 ---
 ## <a name="publish-the-project-to-azure"></a>將專案發佈到 Azure
 
@@ -24,6 +24,8 @@ ms.locfileid: "81112850"
     ![將專案發佈至 Azure](media/functions-publish-project-vscode/function-app-publish-project.png)
 
 1. 依照提示提供下列資訊：
+
+    + **選取資料夾**：從您的工作區選擇資料夾，或瀏覽至其中一個包含您函式應用程式的資料夾。 如果您已經開啟有效的函式應用程式，您就不會看到此提示。
 
     + **選取訂用帳戶**：選擇要使用的訂用帳戶。 如果您只有一個訂用帳戶，就不會看見此選項。
 
