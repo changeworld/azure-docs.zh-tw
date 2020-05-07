@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2019
 ms.custom: mvc
-ms.openlocfilehash: ed78d3dd4e6fbde10c69403cc3dcff24072dc676
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: de46eeb20f3c99eb7a459965d17e2dd55728a9db
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75358022"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82146650"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>快速入門：使用 Azure CLI 建立適用於 PostgreSQL 的 Azure 資料庫 - 單一伺服器
 
@@ -58,7 +58,7 @@ sku-name | GP_Gen5_2 | SKU 的名稱。 遵循簡短形式的慣例 {pricing tie
 backup-retention | 7 | 備份應保留的時間長度。 單位為天。 範圍為 7-35 天。 
 geo-redundant-backup | 已停用 | 是否應針對此伺服器啟用異地備援備份。 允許的值：Enabled、Disabled。
 location | westus | 伺服器的 Azure 位置。
-ssl-enforcement | 啟用 | 是否應針對此伺服器啟用 SSL。 允許的值：Enabled、Disabled。
+ssl-enforcement | 啟用 | 是否應針對此伺服器啟用 TLS/SSL。 允許的值：Enabled、Disabled。
 storage-size | 51200 | 伺服器的儲存體容量 (單位為 MB)。 有效 storage-size 的最小值為 5120 MB，並以 1024 MB 的增量增加。 如需儲存體大小限制的詳細資訊，請參閱[定價層](./concepts-pricing-tiers.md)文件。 
 version | 9.6 | PostgreSQL 主要版本。
 admin-user | myadmin | 適用於系統管理員登入的使用者名稱。 此名稱不得為 **azure_superuser**、**admin**、**administrator**、**root**、**guest** 或 **public**。
@@ -186,7 +186,7 @@ pgAdmin 是搭配 PostgreSQL 使用的開放原始碼工具。 您可以從 [pgA
     使用者名稱 | 伺服器管理員登入名稱 | 您稍早建立 Azure Database for PostgreSQL 時所提供的伺服器管理員登入使用者名稱。 如果您不記得使用者名稱，請依照上一節中的步驟執行，以取得連線資訊。 格式是 *username\@servername*。
     密碼 | 您的系統管理員密碼 | 您在本快速入門稍早建立伺服器時所選擇的密碼。
     角色 | 保留空白 | 此時不需要提供角色名稱。 將欄位保留空白。
-    SSL 模式 | *必要* | 您可以在 pgAdmin 的 [SSL] 索引標籤中設定 SSL 模式。根據預設，所有適用於 PostgreSQL 的 Azure 資料庫伺服器建立時都會開啟強制執行 SSL。 若要關閉強制執行 SSL，請參閱[強制執行 SSL](./concepts-ssl-connection-security.md)。
+    SSL 模式 | *必要* | 您可以在 pgAdmin 的 [SSL] 索引標籤中設定 TLS/SSL 模式。根據預設，所有適用於 PostgreSQL 的 Azure 資料庫伺服器建立時都會開啟強制執行 TLS。 若要關閉強制執行 TLS，請參閱[設定 TLS 的強制執行](./concepts-ssl-connection-security.md#configure-enforcement-of-tls)。
     
 5. 選取 [儲存]  。
 

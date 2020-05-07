@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 02/26/2020
+ms.date: 04/23/2020
 ms.author: tamram
-ms.openlocfilehash: 2e1b1ac2ea315759b18dc882b98837bca0a84d46
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 333d9f12ff817a5264183666cd1b858075a93077
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061448"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82176680"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>快速入門：使用 Azure CLI 上傳、下載及列出 Blob
 
@@ -72,7 +72,7 @@ az storage account create \
     --resource-group <resource-group> \
     --location <location> \
     --sku Standard_ZRS \
-    --encryption blob
+    --encryption-services blob
 ```
 
 ## <a name="create-a-container"></a>建立容器
@@ -163,7 +163,7 @@ az group delete \
 
 ## <a name="next-steps"></a>後續步驟
 
-在本快速入門中，您已經了解如何在本機檔案系統和 Azure Blob 儲存體中的容器之間傳輸檔案。 若要深入了解在 Azure 儲存體中使用 Blob，請繼續進行使用 Azure Blob 儲存體的教學課程。
+在本快速入門中，您已經了解如何在本機檔案系統和 Azure Blob 儲存體中的容器之間傳輸檔案。 若要深入了解如何透過 Azure CLI 來使用 Blob 儲存體，請探索 Blob 儲存體的 Azure CLI 範例。
 
 > [!div class="nextstepaction"]
-> [操作說明：使用 Azure CLI 的 Blob 儲存體作業](storage-how-to-use-blobs-cli.md)
+> [適用於 Blob 儲存體的 Azure CLI 範例](/azure/storage/blobs/storage-samples-blobs-cli?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 3/19/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cc487e8def180735606aa010651dde40ef93908e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8ee9ddbd8a2d0ecbe8e2f13e6421cec177c7ce69
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80069561"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594197"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>設定 Azure 檔案儲存體網路端點
 Azure 檔案儲存體提供兩種主要的端點類型來存取 Azure 檔案共用： 
@@ -218,7 +218,7 @@ New-AzPrivateDnsRecordSet `
 如果您的虛擬網路內有虛擬機器，或已依照[此處](storage-files-networking-dns.md)所述的方式設定 DNS 轉送，您可以透過下列命令來測試您的私人端點是否已正確設定：
 
 ```PowerShell
-$storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.File) | `
+$storageAccountHostName = [System.Uri]::new($storageAccount.PrimaryEndpoints.file) | `
     Select-Object -ExpandProperty Host
 
 Resolve-DnsName -Name $storageAccountHostName
@@ -393,7 +393,7 @@ az network private-dns record-set a add-record \
 httpEndpoint=$(az storage account show \
         --resource-group $storageAccountResourceGroupName \
         --name $storageAccountName \
-        --query "primaryEndpoints.File" | \
+        --query "primaryEndpoints.file" | \
     tr -d '"')
 
 hostName=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint) | tr -d "/")

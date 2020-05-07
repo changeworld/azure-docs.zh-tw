@@ -3,12 +3,12 @@ title: 使用 PowerShell 將 Windows Server 備份至 Azure
 description: 在本文中，您將瞭解如何使用 PowerShell 來設定 Windows Server 或 Windows 用戶端上的 Azure 備份，以及管理備份和復原。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 3b9bcf8e777244cec11383619d145e3a99ff46d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fde81aba5a2b74ce25c8f3cd70dc24df6f566420
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193015"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597972"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 用戶端的 Azure 備份
 
@@ -209,7 +209,12 @@ Server properties updated successfully.
 
 傳送至 Azure 備份的備份資料會進行加密來保護資料的機密性。 加密複雜密碼是在還原時用來解密資料的「密碼」。
 
-您必須在 Azure 入口網站的 [復原**服務保存庫**] 區段的 [**設定** > ] [**屬性** > ] [**安全性 pin** ] 底下，選取 [**產生**] 來產生安全性 pin 碼。 然後， `generatedPIN`在命令中使用此：
+您必須在 Azure 入口網站的 [復原**服務保存庫**] 區段的 [**設定** > ] [**屬性** > ] [**安全性 pin** ] 底下，選取 [**產生**] 來產生安全性 pin 碼。 
+
+>[!NOTE]
+> 安全性 PIN 碼只能透過 Azure 入口網站產生。
+
+然後， `generatedPIN`在命令中使用此：
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force

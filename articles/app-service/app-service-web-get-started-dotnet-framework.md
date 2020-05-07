@@ -5,12 +5,12 @@ ms.assetid: 04a1becf-7756-4d4e-92d8-d9471c263d23
 ms.topic: quickstart
 ms.date: 04/21/2020
 ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 47a5cf2586b8146a68772962c60dc0dbdbb7e2fe
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: 056c96807fed7d5acca85635440c8fe4d989c933
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81768835"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592381"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>在 Azure 中建立 ASP.NET Framework Web 應用程式
 
@@ -138,6 +138,8 @@ ms.locfileid: "81768835"
    ![Azure 入口網站中的 App Service 概觀](./media/app-service-web-get-started-dotnet-framework/web-app-general-framework-vs2019.png)
 
    左側功能表提供不同的頁面來設定您的應用程式。
+
+[!INCLUDE [Clean-up section](../../includes/clean-up-section-portal.md)]
 
 ## <a name="next-steps"></a>後續步驟
 

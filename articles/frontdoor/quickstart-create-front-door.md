@@ -1,6 +1,6 @@
 ---
-title: 快速入門：建立 Front Door 設定檔以達到應用程式的高可用性
-description: 本快速入門文章將說明如何建立 Front Door，以供高可用性且高效能的全域 Web 應用程式使用。
+title: 快速入門：使用 Azure Front Door 服務設定高可用性
+description: 本快速入門將說明如何使用 Azure Front Door 來實現高可用性且高效能的全域 Web 應用程式。
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,106 +11,159 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/31/2018
+ms.date: 04/27/2020
 ms.author: sharadag
-ms.openlocfilehash: 2b44c0cdbe2d955efe20a5f9473a29bc9f500a07
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: c1ce34bb7fc851d3f763241c9e92371b43ed1861
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521458"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82133351"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>快速入門：為高可用性的全球 Web 應用程式建立 Front Door
 
-本快速入門將說明如何建立 Front Door 設定檔，以便為您的全域 Web 應用程式提供高可用性和高效能。 
+您可以透過 Azure 入口網站來開始使用 Azure Front Door，並為 Web 應用程式設定高可用性。
 
-本快速入門所述的案例包含兩個在不同 Azure 區域中執行的 Web 應用程式執行個體。 根據相等的[加權和相同優先順序的後端](front-door-routing-methods.md)來建立 Front Door 設定，有助於將使用者流量導向至正在執行應用程式的網站後端中最接近的一組。 Front Door 會持續監視 Web 應用程式，並在最接近的網站無法使用時，自動容錯移轉至下一個可用的後端。
-
-如果您沒有 Azure 訂用帳戶，請在開始前建立[免費帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
-## <a name="sign-in-to-azure"></a>登入 Azure 
-在 https://portal.azure.com 登入 Azure 入口網站。
+在本快速入門中，Azure Front Door 會集中兩個在不同 Azure 區域中執行的 Web 應用程式執行個體。 您可以根據相同加權和相同優先順序的後端來建立 Front Door 組態。 此組態會將流量導向執行應用程式且最接近的網站。 Azure Front Door 會持續監視 Web 應用程式。 當最近的網站無法使用時，服務會提供自動容錯移轉至下一個可用網站的功能。
 
 ## <a name="prerequisites"></a>Prerequisites
-要進行本快速入門，您必須部署兩個在不同 Azure 區域 (美國東部  和西歐  ) 中執行的 Web 應用程式執行個體。 這兩個 Web 應用程式執行個體都會以主動/主動模式執行，也就是，不同於主動/待命設定會將其中一個用來作為容錯移轉，它們其中任一個隨時都能接受流量。
 
-1. 在畫面左上方，選取 [建立資源]   > [Web]   > [Web 應用程式]  。
-2. 在 [Web 應用程式]  中，輸入或選取下列資訊，然後在未指定任何值的地方輸入預設設定：
+- 具有有效訂用帳戶的 Azure 帳戶。 [免費建立帳戶](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-     | 設定         | 值     |
-     | ---              | ---  |
-     | 資源群組          | 選取 [新增]  ，然後輸入 *myResourceGroupFD1* |
-     | 名稱           | 輸入 Web 應用程式的唯一名稱  |
-     | 執行階段堆疊          | 選取應用程式執行階段堆疊 |
-     |      區域  |   美國西部        |
-     | App Service 方案/位置         | 選取 [ **新增**]。  在 App Service 方案中，輸入「myAppServicePlanEastUS」  ，然後選取 [確定]  。| 
-     |SKU 和大小  | 選取 [變更大小]  選取 [標準 S1 100 總 ACU，1.75 GB 記憶體]  |
-     
-3. 選取 [檢閱 + 建立]  。
-4. 檢閱 Web 應用程式摘要資訊。 選取 [建立]  。
-5. 大約 5 分鐘之後，在成功部署 Web 應用程式時，預設網站便已建立完成。
-6. 使用下列設定重複步驟 1 至 3，在不同 Azure 區域中建立第二個網站：
+## <a name="create-two-instances-of-a-web-app"></a>建立 Web 應用程式的兩個執行個體
 
-     | 設定         | 值     |
-     | ---              | ---  |
-     | 資源群組          | 選取 [新增]  ，然後輸入 *myResourceGroupFD2* |
-     | 名稱           | 輸入 Web 應用程式的唯一名稱  |
-     | 執行階段堆疊          | 選取應用程式執行階段堆疊 |
-     |      區域  |   西歐      |
-     | App Service 方案/位置         | 選取 [ **新增**]。  在 App Service 方案中，輸入「myAppServicePlanWestEurope」  ，然後選取 [確定]  。|   
-     |SKU 和大小  | 選取 [變更大小]  選取 [標準 S1 100 總 ACU，1.75 GB 記憶體]  |
-    
+本快速入門需要兩個在不同 Azure 區域中執行的 Web 應用程式執行個體。 這兩個 Web 應用程式執行個體都會以「主動/主動」  模式執行，因此其中任一個都可以接受流量。 此組態不同於「主動/待命」  組態，也就是其中一個執行個體會用來作為容錯移轉。
+
+如果您還沒有 Web 應用程式，請使用下列步驟來設定 Web 應用程式範例。
+
+1. 在 https://portal.azure.com 登入 Azure 入口網站。
+
+1. 從首頁或 Azure 功能表選取 [建立資源]  。
+
+1. 選取 [Web]   > [Web 應用程式]  。
+
+   ![在 Azure 入口網站中建立 Web 應用程式](media/quickstart-create-front-door/create-web-app-azure-front-door.png)
+
+1. 在 [Web 應用程式]  中選取要使用的**訂用帳戶**。
+
+1. 在 [資源群組]  中，選取 [新建]  。 輸入 FrontDoorQS_rg1  作為 [名稱]  ，然後選取 [確定]  。
+
+1. 在 [執行個體詳細資料]  底下，為您的 Web 應用程式輸入唯一的**名稱**。 此範例會使用 WebAppContoso-1  。
+
+1. 選取**執行階段堆疊**，在此範例中，請選取 [.NET Core 2.1 (LTS)]  。
+
+1. 選取區域，例如 [美國中部]  。
+
+1. 在 [Windows 方案]  中，選取 [新建]  。 輸入 myAppServicePlanCentralUS  作為 [名稱]  ，然後選取 [確定]  。
+
+1. 請確定 [SKU 和大小]  是 [標準 S1 100 總 ACU，1.75 GB 記憶體]  。
+
+1. 選取 [檢閱 + 建立]  ，檢閱**摘要**，然後選取 [建立]  。 可能需要數分鐘的時間，部署才會完成。
+
+   ![檢閱 Web 應用程式的摘要](media/quickstart-create-front-door/web-app-summary-azure-front-door.png)
+
+部署完成之後，請建立第二個 Web 應用程式。 請使用相同的程序及相同的值，但下列值除外：
+
+| 設定          | 值     |
+| ---              | ---  |
+| **資源群組**   | 選取 [新建]  並輸入 *FrontDoorQS_rg2* |
+| **名稱**             | 為您的 Web 應用程式輸入唯一的名稱，在此範例中為 *WebAppContoso-2*  |
+| **區域**           | 使用不同的區域，在此範例中為 [美國中南部]  |
+| [App Service 方案]   > [Windows 方案]          | 選取 [新建]  並輸入 myAppServicePlanSouthCentralUS  ，然後選取 [確定]  |
+
 ## <a name="create-a-front-door-for-your-application"></a>為您的應用程式建立 Front Door
-### <a name="a-add-a-frontend-host-for-front-door"></a>A. 新增適用於 Front Door 的前端主機
-建立 Front Door 設定，根據兩個後端之間的最低延遲來引導使用者流量。
 
-1. 在畫面的左上方，選取 [建立資源]   > [網路]   > [Front Door]  。
-2. 在 [建立 Front Door]  中，輸入或選取下列資訊，然後在未指定任何值的地方輸入預設設定：
+設定 Azure Front Door 以根據兩個 Web 應用程式伺服器之間的最低延遲來引導使用者流量。 若要開始，請新增 Azure Front Door 的前端主機。
 
-     | 設定         | 值     |
-     | ---              | ---  |
-     |訂用帳戶  | 選取您要在其中建立 Front Door 的訂用帳戶。|
-     | 資源群組          | 選取 [新增]  ，然後輸入 myResourceGroupFD0  |
-     | 資源群組位置  |   美國中部        |
-     
-     > [!NOTE]
-     > 您不需要建立新的資源群組，即可部署 Front Door。  您也可以選取現有的資源群組。
-     
-3. 按一下 **[下一步**組態]。
-4. 按一下前端/網域卡片上的 [+] 圖示。  在 [主機名稱]  中輸入 `<Your Initials>frontend`。 此主機名稱必須是全域唯一的，Front Door 會負責驗證。
-5. 按一下 [新增]  。
+1. 從首頁或 Azure 功能表選取 [建立資源]  。 選取 [網路]   > [Front Door]  。
 
-### <a name="b-add-application-backend-and-backend-pools"></a>B. 新增應用程式後端和後端集區
+1. 在 [建立 Front Door]  中選取**訂用帳戶**。
 
-接下來，您需要在後端集區中設定前端/和應用程式後端，讓 Front Door 知道您應用程式的所在位置。 
+1. 針對 [資源群組]  ，請選取 [新增]  ，然後輸入 FrontDoorQS_rg0  並選取 [確定]  。  您也可以使用現有的資源群組。
 
-1. 按一下後端集區卡片上的 [+] 圖示，為您的後端集區新增**名稱**，然後輸入 `myBackendPool`。
-2. 接下來，按一下 [新增後端]  以新增您稍早建立的網站。
-3. 選取 [後端主機類型]  作為「應用程式服務」、選取您用來建立網站的訂用帳戶，然後從 [後端主機名稱]  下拉式清單中選擇第一個網站。
-4. 目前依現狀保留其餘欄位，然後按一下 [新增]  。
-5. 選取 [後端主機類型]  作為「應用程式服務」、選取您用來建立網站的訂用帳戶，然後從 [後端主機名稱]  下拉式清單選擇中第**二**個網站。
-6. 目前依現狀保留其餘欄位，然後按一下 [新增]  。
-7. 您可以選擇性地選擇更新後端集區的健康情況探查和負載平衡設定，但預設值應該也能運作。 在任一種情況下，按一下 [新增]  。
+1. 如果您已建立資源群組，請選取**資源群組位置**，然後選取 [下一步：  設定]。
 
+1. 在 [前端/網域]  中，選取 [ **+** ] 以開啟 [新增前端主機]  。
 
-### <a name="c-add-a-routing-rule"></a>C. 新增路由規則
-1. 最後，按一下路由規則卡上的 [+] 圖示以設定路由規則。 這需要將您的前端主機對應到後端集區，如果要求會傳入 `myappfrontend.azurefd.net`，基本上就需要設定此對應，然後再將它轉送到後端集區 `myBackendPool`。 
-2. 在 [名稱]  中輸入 'LocationRule'。
-3. 按一下 [新增]  ，為您的 Front Door 新增路由規則。 
-4. 按一下 [檢閱及建立]  。
-5. 檢閱 Front Door 建立的設定。 按一下 [建立] 
+1. 在 [主機名稱]  中，輸入全域唯一的主機名稱。 此範例使用 contoso-frontend  。 選取 [新增]  。
 
->[!WARNING]
-> 您**必須**確保 Front Door 中的每部前端主機都具有一個路由規則，其中含有與其相關聯的預設路徑 ('/\*')。 也就是說，在您的所有路由規則中，至少必須有一個適用於您每個前端主機的路由規則，這類主機會以預設路徑 ('/\*') 來定義。 無法執行這項操作，可能導致您的使用者流量無法被正確路由傳送。
+   ![新增 Azure Front Door 的前端主機](media/quickstart-create-front-door/add-frontend-host-azure-front-door.png)
 
-## <a name="view-front-door-in-action"></a>檢視動作中的 Front Door
-一旦建立 Front Door 之後，將需要幾分鐘的時間，才能在世界各地部署該設定。 完成後，存取您所建立的前端主機，也就是前往網頁瀏覽器並點擊 URL `myappfrontend.azurefd.net`。 您的要求將會從後端集區中指定的後端，自動路由傳送到最接近您的後端。 
+接下來，建立包含兩個 Web 應用程式的後端集區。
 
-### <a name="view-front-door-handle-application-failover"></a>檢視 Front Door 處理應用程式容錯移轉
-如果您想要測試 Front Door 動作中的即時全域容錯移轉，可以前往您所建立的其中一個網站並停止它。 根據針對後端集區所定義的健康情況探查設定，我們會立即將流量容錯移轉至另一個網站部署。 您也可以藉由在 Front Door 的後端集區設定中停用後端來測試行為。 
+1. 繼續在 [建立 Front Door]  的 [後端集區]  中，選取 [ **+** ] 以開啟 [新增後端集區]  。
+
+1. 在 [名稱]  中，輸入 myBackendPool  。
+
+1. 選取 [新增後端]  。 針對 [後端主機類型]  ，請選取 [App Service]  。
+
+1. 選取您的訂用帳戶，然後選擇您從 [後端主機名稱]  中選擇您建立的第一個 Web 應用程式。 在此範例中，此 Web 應用程式為 WebAppContoso-1  。 選取 [新增]  。
+
+1. 再次選取 [新增後端]  。 針對 [後端主機類型]  ，請選取 [App Service]  。
+
+1. 選取您的訂用帳戶，然後再次從 [後端主機名稱]  中選擇您建立的第二個 Web 應用程式。 選取 [新增]  。
+
+   ![將後端主機新增至您的 Front Door](media/quickstart-create-front-door/add-backend-host-pool-azure-front-door.png)
+
+最後，新增路由規則。 路由規則會將您的前端主機對應至後端集區。 此規則會將 `contoso-frontend.azurefd.net` 的要求轉送至 **myBackendPool**。
+
+1. 繼續在 [建立 Front Door]  的 [路由規則]  中，選取 [ **+** ] 來設定路由規則。
+
+1. 在 [新增規則]  的 [名稱]  中，請輸入 LocationRule  。 接受所有預設值，然後選取 [新增]  來新增路由規則。
+
+   >[!WARNING]
+   > 您**必須**確保 Front Door 中的每部前端主機都具有一個路由規則，其中含有與其相關聯的預設路徑 (`\*`)。 也就是說，在您的所有路由規則中，至少必須有一個適用於您每個前端主機的路由規則，這類主機會以預設路徑 (`\*`) 來定義。 無法執行這項操作，可能導致您的使用者流量無法被正確路由傳送。
+
+1. 選取 [檢閱 + 建立]  ，然後選取 [建立]  。
+
+   ![已設定的 Azure Front Door](media/quickstart-create-front-door/configuration-azure-front-door.png)
+
+## <a name="view-azure-front-door-in-action"></a>檢視 Azure Front Door 的實際運作
+
+建立 Front Door 之後，將需要幾分鐘的時間，才能全域性部署該組態。 完成後，請存取您所建立的前端主機。 在瀏覽器中移至 `contoso-frontend.azurefd.net`。 您的要求將會從後端集區中指定的伺服器，自動路由到最離您最近的伺服器。
+
+如果您已在本快速入門中建立這些應用程式，您會看到資訊頁面。
+
+若要測試即時全域容錯移轉的運作，請嘗試下列步驟：
+
+1. 如上面所述開啟瀏覽器，然後移至前端位址：`contoso-frontend.azurefd.net`。
+
+1. 在 Azure 入口網站中，搜尋並選取「應用程式服務」  。 向下捲動以尋找您的其中一個 Web 應用程式，在此範例中為 **WebAppContoso-1**。
+
+1. 選取您的 Web 應用程式，然後依序選取 [停止]  及 [是]  來進行驗證。
+
+1. 重新整理您的瀏覽器。 您應該會看到相同的資訊頁面。
+
+   >[!TIP]
+   >這些動作會有一些延遲。 您可能需要再次重新整理。
+
+1. 尋找其他 Web 應用程式，並將其停止。
+
+1. 重新整理您的瀏覽器。 此時，您應該會看到一則錯誤訊息。
+
+   ![Web 應用程式的兩個執行個體都已停止](media/quickstart-create-front-door/web-app-stopped-message.png)
 
 ## <a name="clean-up-resources"></a>清除資源
-若不再需要，請刪除 **myResourceGroupFD1**、**myResourceGroupFD2** 和 **myResourceGroupFD0** 資源群組：
+
+完成之後，您可以移除您建立的所有項目。 刪除資源群組也會刪除其內容。 如果您不打算使用此 Front Door，則應移除資源以避免不必要的費用。
+
+1. 在 Azure 入口網站中，搜尋並選取**資源群組**，或從 Azure 入口網站功能表選取**資源群組**。
+
+1. 篩選或向下捲動以尋找資源群組，例如 **FrontDoorQS_rg0**。
+
+1. 選取資源群組，然後選取 [刪除資源群組]  。
+
+   >[!WARNING]
+   >此動作無法復原。
+
+1. 輸入資源群組名稱以確認，然後選取 [刪除]  。
+
+針對其他兩個群組重複此程序。
 
 ## <a name="next-steps"></a>後續步驟
-在本快速入門中，您建立了 Front Door，讓您能夠針對需要高可用性和最大效能的 Web 應用程式引導使用者流量。 若要深入了解如何路由傳送流量，請閱讀 Front Door 所使用的[路由方法](front-door-routing-methods.md)。
+
+前往下一篇文章，以了解如何將自訂網域新增至您的 Front Door。
+> [!div class="nextstepaction"]
+> [新增自訂網域](front-door-custom-domain.md)
+
+若要深入了解如何路由流量，請參閱 [路由方法](front-door-routing-methods.md)。

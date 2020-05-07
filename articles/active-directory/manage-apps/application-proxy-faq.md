@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80990900"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583076"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory （Azure AD）應用程式 Proxy 的常見問題
 
@@ -96,6 +96,10 @@ ms.locfileid: "80990900"
 如果連接器伺服器和 web 應用程式服務帳戶位於不同的網域，則會使用以資源為基礎的委派。 委派許可權是在目標 web 伺服器和 web 應用程式服務帳戶上設定。 這種限制委派的方法相當新。 這個方法是在 Windows Server 2012 中引進，它可讓資源（web 服務）擁有者控制哪些機器和服務帳戶可以委派給它，藉此支援跨網域委派。 沒有任何 UI 可協助此設定，因此您必須使用 PowerShell。
 如需詳細資訊，請參閱白皮書[瞭解使用應用程式 Proxy 的 Kerberos 限制委派](https://aka.ms/kcdpaper)。
 
+### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>NTLM 驗證是否可與 Azure AD 應用程式 Proxy 搭配使用？
+
+NTLM 驗證無法用來做為預先驗證或單一登入方法。 NTLM 驗證只能在用戶端與已發佈的 web 應用程式之間直接進行協商時使用。 使用 NTLM 驗證通常會導致在瀏覽器中出現登入提示。
+
 ## <a name="pass-through-authentication"></a>傳遞驗證
 
 ### <a name="can-i-use-conditional-access-policies-for-applications-published-with-pass-through-authentication"></a>我可以針對使用傳遞驗證發佈的應用程式使用條件式存取原則嗎？
@@ -156,7 +160,7 @@ Windows Admin Center （WAC）或遠端桌面 Web 用戶端（HTML5）中的功�
 
 ### <a name="does-using-link-translation-affect-performance"></a>使用連結轉譯會影響效能嗎？
 
-是。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中是否有硬式編碼的連結，並將它們取代為其各自的已發佈外部 Url，然後才呈現給使用者。 
+可以。 連結轉譯會影響效能。 應用程式 Proxy 服務會掃描應用程式中是否有硬式編碼的連結，並將它們取代為其各自的已發佈外部 Url，然後才呈現給使用者。 
 
 為了達到最佳效能，我們建議您藉由設定[自訂網域](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)來使用相同的內部和外部 url。 如果無法使用自訂網域，您可以在行動裝置上使用我的應用程式安全登入延伸模組或 Microsoft Edge 瀏覽器來改善連結轉譯效能。 請參閱重新[導向使用 Azure AD 應用程式 Proxy 發佈之應用程式的硬式編碼連結](application-proxy-configure-hard-coded-link-translation.md)。
 

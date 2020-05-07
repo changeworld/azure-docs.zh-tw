@@ -63,6 +63,8 @@
           href: ./ag/policy-overview.md
         - name: Bot 保護概觀
           href: ./ag/bot-protection-overview.md
+        - name: 常見問題集
+          href: ./ag/application-gateway-waf-faq.md
     - name: Front Door
       items:
         - name: 自訂規則
