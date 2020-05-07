@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a653d13137a3067bfaf51c64c09454a08783e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131403"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561022"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge 的持續整合與持續部署
 
@@ -28,7 +28,7 @@ ms.locfileid: "82131403"
 * **Azure IoT Edge-產生部署資訊清單**會接受 deployment. template json 檔案和變數，然後產生最後的 IoT Edge 部署資訊清單檔案。
 * **Azure IoT Edge 部署至 IoT Edge 裝置**有助於建立單一/多個 IoT Edge 裝置的 IoT Edge 部署。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure Repos 存放庫。 如果您沒有存放庫，可以[在專案中建立新的 Git 存放庫](https://docs.microsoft.com/azure/devops/repos/git/create-new-repo?view=vsts&tabs=new-nav) \(英文\)。
 * 已認可並推送至您存放庫的 IoT Edge 解決方案。 若要建立用於測試本文的新範例解決方案，請遵循[在 Visual Studio Code 中針對模組進行開發與偵錯](how-to-vs-code-develop-module.md)，或[在 Visual Studio Code 中對 C# 模組進行開發與偵錯](how-to-visual-studio-develop-csharp-module.md)中的步驟。
@@ -54,7 +54,7 @@ ms.locfileid: "82131403"
 >
 >如需詳細資訊，請參閱[建立建置管線](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline) \(英文\)。
 
-1. 登入您的 Azure DevOps 組織（**HTTPs\/：/dev.azure.com/{your 組織}/**），然後開啟包含您 IoT Edge 解決方案存放庫的專案。
+1. 登入您的 Azure DevOps 組織（**HTTPs：\//dev.azure.com/{your 組織}/**），然後開啟包含您 IoT Edge 解決方案存放庫的專案。
 
    針對本文，我們建立了名為 **IoTEdgeRepo** 的存放庫。 該存放庫包含 **IoTEdgeSolution**，其中包含名為 **filtermodule** 的模組的程式碼。
 
@@ -100,6 +100,13 @@ ms.locfileid: "82131403"
    * **預設平臺**：根據您的目標 IoT Edge 裝置，為您的模組選取適當的平臺。
    * **輸出變數**：輸出變數包含參考名稱，可讓您用來設定將產生部署 json 檔案的檔案路徑。 將參考名稱設定為易記的名稱，例如 **edge**。
 
+
+   這些設定會使用檔案中`module.json`定義的映射存放庫和標籤來命名及標記模組映射。 **組建模組映射**也有助於將變數取代為您在檔案中`module.json`定義的確切值。 在 Visual Studio 或 Visual Studio Code 中，您會在檔案中指定實際`.env`的值。 在 Azure Pipelines 中，您可以在 [**管線變數**] 索引標籤上設定值。請選取 [**變數**] 索引標籤，並依照下列方式設定名稱和值：
+
+    * **ACR_ADDRESS**：您的 Azure Container Registry 位址。 
+
+    如果您的專案中有其他變數，您可以在此索引標籤上指定名稱和值。**組建模組映射**只會辨識`${VARIABLE}`格式為的變數。 請確定您在檔案中`**/module.json`使用此格式。
+    
 7. 選取第二個 [Azure IoT Edge]**** 工作來編輯它。 此工作會將所有模組映像推送到您選取的容器登錄。
 
    * **顯示名稱**：當動作欄位變更時，顯示名稱會自動更新。

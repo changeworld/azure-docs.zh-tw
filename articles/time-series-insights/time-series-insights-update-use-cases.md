@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 04/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 50ac2a728750c6b01dfc57fa7e20df25c856395a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93813dfaecf40fcb5cab0856d013fb890118886c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77087385"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580673"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure 時間序列深入解析預覽版使用案例
 
@@ -42,13 +42,13 @@ Azure 時間序列深入解析是端對端的平臺即服務供應專案。 它�
 
 大部分的客戶都同意取得深入解析所需的最短時間量是時間序列深入解析的最顯著功能之一：
 
-* 時間序列深入解析不必事先準備資料。 
-* 只要幾分鐘的時間，就能快速將您連接到 Azure IoT 中樞或 Azure 事件中樞實例中的數十億個事件。 
+* 時間序列深入解析不必事先準備資料。
+* 只要幾分鐘的時間，就能快速將您連接到 Azure IoT 中樞或 Azure 事件中樞實例中的數十億個事件。
 * 一旦連線，您就可以視覺化與分析數十億個事件，並找出異常行為及發掘資料背後隱藏的趨勢。
 
 時間序列深入解析直觀且容易使用。 您不需撰寫任何一行程式碼，即可與您的資料互動。 您也不需要學習任何新語言，雖然時間序列深入解析針對熟悉 SQL 的先進使用者提供更精細的文字查詢語言。 它還為新手提供了選取及點選探索。
 
-客戶可以利用速度快速地診斷資產相關問題。 他們可以執行 DevOps 分析，以取得 IoT 解決方案中 bug 的根本原因。 它們也可以識別要做為其資料科學計畫一部分進行進一步調查的區域。 
+客戶可以利用速度快速地診斷資產相關問題。 他們可以執行 DevOps 分析，以取得 IoT 解決方案中 bug 的根本原因。 它們也可以識別要做為其資料科學計畫一部分進行進一步調查的區域。
 
 與時間序列深入解析中儲存的資料進行互動有三種主要方式：
 

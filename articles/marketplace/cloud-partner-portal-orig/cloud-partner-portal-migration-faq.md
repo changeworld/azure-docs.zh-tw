@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mingshen
 ms.openlocfilehash: 672153eba4aa2b739b67694f939c4796b39ac4c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 05/05/2020
 ms.locfileid: "81274376"
 ---
 # <a name="frequently-asked-questions-for-migrating-from-the-cloud-partner-portal-to-partner-center"></a>從 Cloud Partner 入口網站遷移至合作夥伴中心的常見問題
@@ -56,7 +56,7 @@ ms.locfileid: "81274376"
 
 ## <a name="do-i-need-to-create-a-new-account-to-manage-offers-in-partner-center"></a>我是否需要在合作夥伴中心內建立新的帳戶來管理供應專案？
 
-否。 您的基礎帳戶將會保留，而且您應該已經在合作夥伴中心進行管理。 這表示如果您是現有的合作夥伴，您可以使用現有的 Cloud Partner 入口網站帳號憑證來登入合作夥伴中心後置遷移。 只有供應專案和相關聯的管理體驗會從 Cloud Partner 入口網站移至合作夥伴中心。 我們要求您不要建立任何新帳戶，因為您的供應專案將不會與新帳戶相關聯。
+不需要。 您的基礎帳戶將會保留，而且您應該已經在合作夥伴中心進行管理。 這表示如果您是現有的合作夥伴，您可以使用現有的 Cloud Partner 入口網站帳號憑證來登入合作夥伴中心後置遷移。 只有供應專案和相關聯的管理體驗會從 Cloud Partner 入口網站移至合作夥伴中心。 我們要求您不要建立任何新帳戶，因為您的供應專案將不會與新帳戶相關聯。
 
 ## <a name="i-see-a-message-in-the-cloud-partner-portal-to-activate-my-account-what-does-this-mean"></a>我在 Cloud Partner 入口網站中看到一則用來啟用我的帳戶的訊息，這代表什麼意思？
 

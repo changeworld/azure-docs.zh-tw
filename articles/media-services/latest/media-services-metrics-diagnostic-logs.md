@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 75363212684bb09e84a4bc4881af26e6d2a8e7e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585280"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559537"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>透過 Azure 監視器監視媒體服務計量和診斷記錄
 
@@ -63,7 +63,7 @@ ms.locfileid: "80585280"
 |度量名稱|顯示名稱|描述|
 |---|---|---|
 |Requests|Requests|提供串流端點所服務的 HTTP 要求總數。|
-|輸出|輸出|輸出位元組總數。 例如，串流端點資料流程處理的位元組。|
+|輸出|輸出|每個串流端點的輸出位元組總計（每分鐘）。|
 |SuccessE2ELatency|成功的端對端延遲|當送出回應的最後一個位元組時，從串流端點收到要求的持續時間。|
 
 ### <a name="why-would-i-want-to-use-metrics"></a>為什麼要使用計量？
@@ -92,7 +92,7 @@ ms.locfileid: "80585280"
 
 ### <a name="key-delivery"></a>金鑰傳遞
 
-|Name|描述|
+|名稱|描述|
 |---|---|
 |金鑰傳遞服務要求|顯示金鑰傳遞服務要求資訊的記錄檔。 如需詳細資訊，請參閱[架構](media-services-diagnostic-logs-schema.md)。|
 

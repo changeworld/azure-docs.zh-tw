@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df6d7943a5344b4288dfe369dcce9087b894984f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166317"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580583"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>使用 Azure 自動化 runbook 來啟動實驗室中的虛擬機器
 DevTest Labs 的[自動啟動](devtest-lab-set-lab-policy.md#set-autostart)功能可讓您將 vm 設定為在指定的時間自動啟動。 不過，這項功能不支援以特定順序啟動電腦。 在許多情況下，這種類型的自動化會很有用。  其中一個案例是，實驗室中的 Jumpbox VM 必須先在其他 Vm 之前先啟動，因為 Jumpbox 是用來作為其他 Vm 的存取點。  本文說明如何使用執行腳本的 PowerShell runbook 來設定 Azure 自動化帳戶。 此腳本會在實驗室中的 Vm 上使用標記，讓您控制啟動順序，而不需要變更腳本。
@@ -133,7 +133,7 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>建立排程
-若要讓此腳本每天執行，請在自動化帳戶中[建立排程](../automation/shared-resources/schedules.md#creating-a-schedule)。 建立排程之後，請將[它連結至 runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook)。 
+若要讓此腳本每天執行，請在自動化帳戶中[建立排程](../automation/shared-resources/schedules.md#create-a-schedule)。 建立排程之後，請將[它連結至 runbook](../automation/shared-resources/schedules.md#link-a-schedule-to-a-runbook)。 
 
 在具有多個實驗室的多個訂用帳戶的大規模情況下，請將參數資訊儲存在不同實驗室的檔案中，並將檔案傳遞至腳本，而不是個別參數。 腳本需要修改，但核心執行會相同。 雖然此範例會使用 Azure 自動化來執行 PowerShell 腳本，但還有其他選項，例如在組建/發行管線中使用工作。
 

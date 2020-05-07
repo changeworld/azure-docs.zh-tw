@@ -10,23 +10,23 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253061"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582702"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>依據 Azure Active Directory 中的群組成員資格將授權指派給使用者
 
 本文會逐步引導您將產品授權指派給一群使用者，並確認他們已在 Azure Active Directory （Azure AD）中正確授權。
 
-在本範例中，租用戶包含名為「人力資源部門」**** 的安全性群組。 這個群組包括人力資源部門的所有成員 (大約是 1,000 位使用者)。 您想要將 Office 365 Enterprise E3 授權指派給整個部門。 產品中包含的 Yammer Enterprise 服務需要暫時停用，直到部門準備好要開始使用它為止。 您也要將 Enterprise Mobility + Security 授權部署到相同群組的使用者。
+在此範例中，Azure AD 組織包含一個稱為「**人力資源部門**」的安全性群組。 這個群組包括人力資源部門的所有成員 (大約是 1,000 位使用者)。 您想要將 Office 365 Enterprise E3 授權指派給整個部門。 產品中包含的 Yammer Enterprise 服務需要暫時停用，直到部門準備好要開始使用它為止。 您也要將 Enterprise Mobility + Security 授權部署到相同群組的使用者。
 
 > [!NOTE]
 > 並非所有位置都可使用某些 Microsoft 服務。 系統管理員必須指定使用者的使用位置屬性，才能將授權指派給使用者。
@@ -37,7 +37,7 @@ ms.locfileid: "79253061"
 
 1. 使用許可證管理員帳戶登入[**Azure AD 系統管理中心**](https://aad.portal.azure.com)。 若要管理授權，帳戶必須是授權管理員、使用者系統管理員或全域管理員。
 
-1. 選取 [**授權**] 以開啟頁面，您可以在其中查看及管理租使用者中的所有可授權產品。
+1. 選取 [**授權**] 以開啟頁面，您可以在其中查看及管理組織中的所有授權產品。
 
 1. 在 [**所有產品**] 底下，選取產品名稱，以選取 [Office 365 Enterprise E5] 和 [Enterprise Mobility + Security E3]。 若要開始指派，請選取頁面頂端的 [**指派**]。
 

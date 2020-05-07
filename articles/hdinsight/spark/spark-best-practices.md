@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 424a0cfd02cfce9fb87bc3e21d7b067740df8218
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: HT
+ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509409"
+ms.locfileid: "82562333"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark 方針
 
@@ -30,8 +30,8 @@ ms.locfileid: "82509409"
 | 使用 Livy 提交遠端作業 | [使用 Apache Spark REST API 將遠端作業提交至 HDInsight Spark 叢集](./apache-spark-livy-rest-interface.md) |
 |[Apache Oozie](../hdinsight-use-oozie-linux-mac.md)|Oozie 是可管理 Hadoop 作業的工作流程和協調系統。|
 |[Apache Livy](./apache-spark-livy-rest-interface.md)|您可以使用 Livy 執行互動式 Spark 殼層，或提交要在 Spark 上執行的批次作業。|
-|[Apache Spark 的 Azure Data Factory](/../data-factory/transform-data-using-spark.md)|Data Factory 管線中的 Spark 活動會在您自己或 [隨選 HDInsight 叢集] 上執行 Spark 程式。|
-|[Apache Hive 的 Azure Data Factory](/../data-factory/transform-data-using-hadoop-hive.md)|Data Factory 管線中的 HDInsight Hive 活動會在您自己或隨選的 HDInsight 叢集上執行 Hive 查詢。|
+|[Apache Spark 的 Azure Data Factory](../../data-factory/transform-data-using-spark.md)|Data Factory 管線中的 Spark 活動會在您自己或 [隨選 HDInsight 叢集] 上執行 Spark 程式。|
+|[Apache Hive 的 Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md)|Data Factory 管線中的 HDInsight Hive 活動會在您自己或隨選的 HDInsight 叢集上執行 Hive 查詢。|
 
 ## <a name="how-do-i-monitor-and-debug-spark-jobs"></a>如何? 監視和調試 Spark 作業？
 
