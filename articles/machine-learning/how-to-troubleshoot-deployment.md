@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78399677"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929242"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>針對 Azure Machine Learning Azure Kubernetes Service 和 Azure 容器實例部署進行疑難排解
 
@@ -24,19 +24,19 @@ ms.locfileid: "78399677"
 
 在 Azure Machine Learning 中部署模型時，系統會執行許多工。
 
-模型部署的建議和最新方法是透過 Model。使用[環境](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)物件做為輸入參數來[部署（）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API。 在此情況下，我們的服務會在部署階段為您建立基底 docker 映射，並在一次呼叫中掛接所需的模型。 基本部署工作包括：
+模型部署的建議和最新方法是透過 Model。使用[環境](how-to-use-environments.md)物件做為輸入參數來[部署（）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API。 在此情況下，我們的服務會在部署階段為您建立基底 docker 映射，並在一次呼叫中掛接所需的模型。 基本部署工作包括：
 
 1. 在工作區模型登錄中註冊模型。
 
 2. 定義推斷設定：
-    1. 根據您在環境 yaml 檔中指定的相依性，建立[環境](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)物件，或使用我們的其中一個採購環境。
+    1. 根據您在環境 yaml 檔中指定的相依性，建立[環境](how-to-use-environments.md)物件，或使用我們的其中一個採購環境。
     2. 根據環境和評分腳本建立推斷設定（InferenceConfig 物件）。
 
 3. 將模型部署至 Azure 容器實例（ACI）服務或 Azure Kubernetes Service （AKS）。
 
 在[模型管理](concept-model-management-and-deployment.md)簡介中深入了解此程序。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂**用帳戶。 如果您沒有帳戶，請試用[免費或付費版本的 Azure Machine Learning](https://aka.ms/AMLFree)。
 * [AZURE MACHINE LEARNING SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。
@@ -50,7 +50,7 @@ ms.locfileid: "78399677"
 
 如果您遇到任何問題時，首先要做的事就是將部署工作 (先前所述) 分成個別步驟，以將問題隔離。
 
-假設您透過[Model. deploy （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 使用新的/建議部署方法做為輸入[Environment](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments)參數，您的程式碼可以分成三個主要步驟：
+假設您透過[Model. deploy （）](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API 使用新的/建議部署方法做為輸入[Environment](how-to-use-environments.md)參數，您的程式碼可以分成三個主要步驟：
 
 1. 註冊模型。 以下是一些範例程式碼：
 

@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: d0fd9999abc4a67ded0f66977e1a3ba5310c87be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 466c47492de9c2fc86f309f4cb74df1ff5411dcb
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383038"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929293"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 概觀
 
@@ -94,7 +94,11 @@ Apache Oozie 4.3.1 隨附於 HDI 4.0，並包含下列變更：
 * HDInsight 4.0 中已不再提供 Hive 檢視。
 * Spark 和互動式查詢叢集不支援 Apache Zeppelin 中的 Shell 解譯器。
 * 您不能「停用」** Spark-LLAP 叢集上的 LLAP。 您只能關閉 LLAP。
-* Azure Data Lake Storage Gen2 無法將 Jupyter 的筆記本儲存在 Spark 叢集中。
+* Azure Data Lake Storage Gen2 無法在 Spark 叢集中儲存 Juypter Notebook。
+* Apache pig 預設會在 Tez 上執行，不過您可以將它變更為 Mapreduce
+* 資料列和資料行安全性的 Spark SQL Ranger 整合已被取代
+* Spark 2.4 和 Kafka 2.1 可在 HDInsight 4.0 中取得，因此不再支援 Spark 2.3 和 Kafka 1.1。 我們建議您在 HDInsight 4.0 中使用 Spark 2.4 & Kafka 2.3 和更新版本。
+
 
 ## <a name="next-steps"></a>後續步驟
 

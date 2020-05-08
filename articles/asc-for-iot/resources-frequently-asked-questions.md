@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 02736b63b900600c51eda8666aff0117b9307824
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aeab1a7dcdf2b12efc268ed0d47834b24d34b87
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310775"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734972"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>適用於 IoT 的 Azure 資訊安全中心的常見問題集
 
@@ -48,7 +48,7 @@ Azure 提供整合式視圖，可透過 Azure 資訊安全中心，在整體安�
 
 ## <a name="do-i-have-to-be-an-azure-iot-customer"></a>我必須是 Azure IoT 客戶嗎？
 
-是。 IoT 的 Azure 資訊安全中心依賴 Azure IoT 連線能力和基礎結構。
+可以。 IoT 的 Azure 資訊安全中心依賴 Azure IoT 連線能力和基礎結構。
 
 ## <a name="do-i-have-to-install-an-agent"></a>我必須安裝代理程式嗎？
 
@@ -66,7 +66,7 @@ IoT 代理程式的 Azure 資訊安全中心可為裝置設定、行為和存取
 
 ## <a name="where-can-i-get-the-azure-security-center-for-iot-security-agent"></a>我可以在哪裡取得 IoT 安全性代理程式的 Azure 資訊安全中心？
 
-IoT 安全性代理程式的 Azure 資訊安全中心是開放原始碼，並可在32位和64位 Windows 和 Linux 版本的 GitHub https://github.com/Azure/Azure-Security-IoT上取得：。
+IoT 安全性代理程式的 Azure 資訊安全中心是開放原始碼，並可在32位和64位 Windows 和 Linux 版本的 GitHub https://github.com/Azure/Azure-IoT-Security上取得：。
 
 ## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>IoT 代理程式的 Azure 資訊安全中心安裝在哪裡？
 
@@ -90,7 +90,7 @@ IoT 安全性代理程式的 Azure 資訊安全中心是開放原始碼，並可
 
 ## <a name="do-agent-messages-use-up-quota-from-iot-hub"></a>代理程式訊息是否會使用 IoT 中樞的配額？
 
-是。 代理程式傳輸的資料會在您的 IoT 中樞配額中計算。
+可以。 代理程式傳輸的資料會在您的 IoT 中樞配額中計算。
 
 ## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>接下來呢？ 我已安裝代理程式，但看不到任何活動或記錄 .。。
 
@@ -126,7 +126,7 @@ IoT 安全性代理程式的 Azure 資訊安全中心是開放原始碼，並可
 
 ## <a name="can-i-create-my-own-alerts"></a>我可以建立自己的警示嗎？
 
-是。 您可以在一組預先決定的行為（例如 IP 位址和開啟埠）上設定自訂警示。 若要深入瞭解自訂警示及如何進行，請參閱[建立自訂警示](quickstart-create-custom-alerts.md)。
+可以。 您可以在一組預先決定的行為（例如 IP 位址和開啟埠）上設定自訂警示。 若要深入瞭解自訂警示及如何進行，請參閱[建立自訂警示](quickstart-create-custom-alerts.md)。
 
 ## <a name="where-can-i-see-logs-can-i-customize-logs"></a>我可以在哪裡看到記錄檔？ 我可以自訂記錄嗎？
 

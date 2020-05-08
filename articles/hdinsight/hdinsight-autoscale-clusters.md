@@ -7,43 +7,30 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/07/2020
-ms.openlocfilehash: 7d741e2fc787c057ebfcdeceeab2ea096df3f9ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: f41a15fb52698eaa17d6f76b991cbd31a56ba14f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195208"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731968"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自動調整 Azure HDInsight 叢集規模
 
-> [!Important]
-> Azure HDInsight 自動調整功能已于2019年11月7日發行，適用于 Spark 和 Hadoop 叢集，且包含功能預覽版本中未提供的改善。 如果您在2019年11月7日之前建立 Spark 叢集，並想要在叢集上使用自動調整功能，建議的路徑是建立新的叢集，並在新叢集上啟用自動調整。
->
-> 互動式查詢（LLAP）和 HBase 叢集的自動調整仍處於預覽狀態。 自動調整僅適用于 Spark、Hadoop、互動式查詢和 HBase 叢集。
-
-Azure HDInsight 的叢集自動調整功能會自動相應增加和減少叢集中的背景工作節點數目。 目前無法調整叢集中的其他節點類型。  在建立新的 HDInsight 叢集時，可以設定最小和最大的背景工作節點數目。 自動調整會監視分析負載的資源需求，並相應增加或減少背景工作角色節點的數目。 這項功能不需額外付費。
-
-## <a name="cluster-compatibility"></a>叢集相容性
-
-下表描述與自動調整功能相容的叢集類型和版本。
-
-| 版本 | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
-|---|---|---|---|---|---|---|---|
-| 不含 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 不含 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 使用 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-| 使用 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
-
-\*HBase 叢集只能針對以排程為基礎的調整進行設定，而非以載入為基礎。
+Azure HDInsight 的免費自動調整功能可以根據先前設定的準則，自動增加或減少叢集中的背景工作節點數目。 您可以在叢集建立期間設定最小和最大節點數目、使用日期時間排程或特定效能計量來建立調整準則，而 HDInsight 平臺會執行其餘工作。
 
 ## <a name="how-it-works"></a>運作方式
 
-您可以為您的 HDInsight 叢集選擇以負載為基礎的調整或以排程為基礎的調整。 以負載為基礎的調整會在您設定的範圍內變更叢集中的節點數目，以確保最佳的 CPU 使用量並將執行成本降至最低。
+自動調整功能使用兩種類型的條件來觸發調整事件：各種叢集效能標準（稱為以*負載為*基礎的調整）和以時間為基礎的觸發程式（稱為以*排程為基礎的調整*）的臨界值。 以負載為基礎的調整會在您設定的範圍內變更叢集中的節點數目，以確保最佳的 CPU 使用量並將執行成本降至最低。 以排程為基礎的調整會根據您與特定日期和時間相關聯的作業，變更叢集中的節點數目。
 
-以排程為基礎的調整會根據在特定時間生效的條件來變更叢集中的節點數目。 這些條件會將叢集調整為所需的節點數目。
+### <a name="choosing-load-based-or-schedule-based-scaling"></a>選擇以負載為基礎或以排程為基礎的調整
 
-### <a name="metrics-monitoring"></a>計量監視
+選擇調整類型時，請考慮下列因素：
+
+* 負載變異數：叢集的負載是否會在特定時間的特定時間遵循一致的模式？ 如果沒有，以負載為基礎的排程是較好的選擇。
+* SLA 需求：自動調整規模是回應性，而不是預測。 負載開始增加的時間和叢集必須處於其目標大小之間是否有足夠的延遲？ 如果有嚴格的 SLA 需求，而負載是固定的已知模式，則 [以排程為基礎] 是較好的選擇。
+
+### <a name="cluster-metrics"></a>叢集計量
 
 自動調整會持續監視叢集，並收集下列計量：
 
@@ -56,7 +43,7 @@ Azure HDInsight 的叢集自動調整功能會自動相應增加和減少叢集�
 |每個節點的已使用記憶體|背景工作節點上的負載。 已使用 10 GB 記憶體的背景工作節點會被視為所承受的負載高於已使用 2 GB 記憶體的背景工作節點。|
 |每個節點的應用程式主機數目|背景工作節點上執行的應用程式主機 (AM) 容器數目。 裝載兩個 AM 容器的背景工作節點會被視為比裝載 zero AM 容器的背景工作節點更重要。|
 
-系統每隔 60 秒就會檢查上述計量。 自動調整會根據這些計量做出決策。
+系統每隔 60 秒就會檢查上述計量。 您可以使用任何一種計量來設定叢集的調整作業。
 
 ### <a name="load-based-scale-conditions"></a>以負載為基礎的調整規模條件
 
@@ -70,6 +57,24 @@ Azure HDInsight 的叢集自動調整功能會自動相應增加和減少叢集�
 針對相應增加，自動調整會發出相應增加要求，以新增所需的節點數目。 相應增加是根據所需的新背景工作節點數目，以符合目前的 CPU 和記憶體需求。
 
 針對相應減少，自動調整會發出移除特定節點數目的要求。 相應減少是以每個節點的 AM 容器數目為依據。 以及目前的 CPU 和記憶體需求。 服務也會根據目前的作業執行，偵測哪些節點是候選項目。 相應減少作業會先會 add-on 節點，然後將它們從叢集中移除。
+
+### <a name="cluster-compatibility"></a>叢集相容性
+
+> [!Important]
+> Azure HDInsight 自動調整功能已于2019年11月7日發行，適用于 Spark 和 Hadoop 叢集，且包含功能預覽版本中未提供的改善。 如果您在2019年11月7日之前建立 Spark 叢集，並想要在叢集上使用自動調整功能，建議的路徑是建立新的叢集，並在新叢集上啟用自動調整。
+>
+> 互動式查詢（LLAP）和 HBase 叢集的自動調整仍處於預覽狀態。 自動調整僅適用于 Spark、Hadoop、互動式查詢和 HBase 叢集。
+
+下表描述與自動調整功能相容的叢集類型和版本。
+
+| 版本 | Spark | Hive | LLAP | hbase | Kafka | Storm | ML |
+|---|---|---|---|---|---|---|---|
+| 不含 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 不含 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 使用 ESP 的 HDInsight 3。6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+| 使用 ESP 的 HDInsight 4。0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
+
+\*HBase 叢集只能針對以排程為基礎的調整進行設定，而非以載入為基礎。
 
 ## <a name="get-started"></a>開始使用
 
@@ -205,16 +210,35 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 
 請參閱上一節關於[啟用以負載為基礎的自動](#load-based-autoscaling)調整，以取得所有裝載參數的完整描述。
 
-## <a name="guidelines"></a>指導方針
+## <a name="monitoring-autoscale-activities"></a>監視自動調整活動
 
-### <a name="choosing-load-based-or-schedule-based-scaling"></a>選擇以負載為基礎或以排程為基礎的調整
+### <a name="cluster-status"></a>叢集狀態
 
-在決定要選擇哪一種模式之前，請先考慮下列因素：
+Azure 入口網站中所列的叢集狀態可協助您監視自動調整活動。
 
-* 在叢集建立期間啟用自動調整。
-* 節點數目下限至少應為三個。
-* 負載變異數：叢集的負載會在特定時間以一致的模式遵循指定的日期。 如果沒有，以負載為基礎的排程是較好的選擇。
-* SLA 需求：自動調整規模是回應性，而不是預測。 負載開始增加的時間和叢集必須處於其目標大小之間是否有足夠的延遲？ 如果有嚴格的 SLA 需求，而負載是固定的已知模式，則 [以排程為基礎] 是較好的選擇。
+![啟用背景工作節點負載型自動調整叢集狀態](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+
+下列清單會說明您可能會看到的所有叢集狀態訊息。
+
+| 叢集狀態 | 描述 |
+|---|---|
+| 執行中 | 叢集正常運作。 所有先前的自動調整活動都已順利完成。 |
+| 更新  | 正在更新叢集自動調整設定。  |
+| HDInsight 設定  | 叢集擴充或相應減少作業進行中。  |
+| 更新錯誤  | HDInsight 在自動調整設定更新期間遇到問題。 客戶可以選擇重試更新或停用自動調整。  |
+| 錯誤  | 叢集發生問題，因此無法使用。 刪除此叢集並建立一個新叢集。  |
+
+若要查看您叢集中目前的節點數目，請移至您叢集的 [**總覽**] 頁面上的 [叢集**大小**] 圖表。 或選取 [**設定**] 底下的 [叢集**大小**]。
+
+### <a name="operation-history"></a>作業歷程記錄
+
+您可以將叢集相應增加和相應減少歷程記錄視為叢集計量的一部分來查看。 您也可以列出過去一天、一周或其他一段時間的所有調整動作。
+
+選取 [**監視**] 下的 [**計量**]。 然後**從 [計量**] 下拉式清單方塊中選取 [**新增**計量和作用中背景**工作的數目**]。 選取右上方的按鈕以變更時間範圍。
+
+![啟用以背景工作節點排程為基礎的自動調整度量](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+
+## <a name="other-considerations"></a>其他考量
 
 ### <a name="consider-the-latency-of-scale-up-or-scale-down-operations"></a>考慮相應增加或相應減少作業的延遲
 
@@ -229,34 +253,6 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 ### <a name="minimum-cluster-size"></a>最小叢集大小
 
 請不要將叢集調整為少於三個節點。 將您的叢集調整至少於三個節點，可能會導致它因為檔案複寫不完整而停滯于安全模式。  如需詳細資訊，請參閱[在安全模式中停滯](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)。
-
-## <a name="monitoring"></a>監視
-
-### <a name="cluster-status"></a>叢集狀態
-
-Azure 入口網站中所列的叢集狀態可協助您監視自動調整活動。
-
-![啟用背景工作節點負載型自動調整叢集狀態](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
-
-下列清單會說明您可能會看到的所有叢集狀態訊息。
-
-| 叢集狀態 | 描述 |
-|---|---|
-| 執行中 | 叢集正常運作。 所有先前的自動調整活動都已順利完成。 |
-| Updating  | 正在更新叢集自動調整設定。  |
-| HDInsight 設定  | 叢集擴充或相應減少作業進行中。  |
-| 更新錯誤  | HDInsight 在自動調整設定更新期間遇到問題。 客戶可以選擇重試更新或停用自動調整。  |
-| 錯誤  | 叢集發生問題，因此無法使用。 刪除此叢集並建立一個新叢集。  |
-
-若要查看您叢集中目前的節點數目，請移至您叢集的 [**總覽**] 頁面上的 [叢集**大小**] 圖表。 或選取 [**設定**] 底下的 [叢集**大小**]。
-
-### <a name="operation-history"></a>作業歷程記錄
-
-您可以將叢集相應增加和相應減少歷程記錄視為叢集計量的一部分來查看。 您也可以列出過去一天、一周或其他一段時間的所有調整動作。
-
-選取 [**監視**] 下的 [**計量**]。 然後**從 [計量**] 下拉式清單方塊中選取 [**新增**計量和作用中背景**工作的數目**]。 選取右上方的按鈕以變更時間範圍。
-
-![啟用以背景工作節點排程為基礎的自動調整度量](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 ## <a name="next-steps"></a>後續步驟
 

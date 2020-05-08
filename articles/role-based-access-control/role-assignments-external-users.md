@@ -1,6 +1,6 @@
 ---
-title: 新增或移除具有 RBAC 和 Azure 入口網站之外部使用者的角色指派
-description: 瞭解如何使用 Azure 角色型存取控制（RBAC），為組織外部的使用者授與 Azure 資源的存取權。
+title: 使用 Azure 入口網站為外部使用者新增或移除 Azure 角色指派-Azure RBAC
+description: 瞭解如何使用 Azure 入口網站和 Azure 角色型存取控制（Azure RBAC），為組織外部的使用者授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,18 +16,18 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245638"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735754"
 ---
-# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 入口網站新增或移除外部來賓使用者的角色指派
+# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>使用 Azure 入口網站為外部來賓使用者新增或移除 Azure 角色指派
 
-[Azure 角色型存取控制（RBAC）](overview.md)可讓大型組織以及適用于外部共同作業者、廠商或需要存取您環境中特定資源，但不一定是整個基礎結構或任何計費相關範圍的小型和中型企業，進行更好的安全性管理。 您可以使用[AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)中的功能，與外部來賓使用者共同作業，而且您可以使用 RBAC 僅授與來賓使用者在您的環境中所需的許可權。
+[Azure 角色型存取控制（AZURE RBAC）](overview.md)可讓大型組織及小型和中型企業使用需要存取您環境中特定資源，但不一定是整個基礎結構或任何計費相關範圍的中小型企業進行更好的安全性管理。 您可以使用[AZURE ACTIVE DIRECTORY B2B](../active-directory/b2b/what-is-b2b.md)中的功能，與外部來賓使用者共同作業，而且您可以使用 Azure RBAC 僅授與來賓使用者在您的環境中所需的許可權。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要新增或移除角色指派，您必須具有：
 
@@ -69,7 +69,7 @@ ms.locfileid: "79245638"
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>新增來賓使用者的角色指派
 
-在 RBAC 中，若要授與存取權，您必須指派角色。 若要新增來賓使用者的角色指派，請遵循與成員使用者、群組、服務主體或受控識別[相同的步驟](role-assignments-portal.md#add-a-role-assignment)。 請遵循下列步驟，為不同範圍的來賓使用者新增角色指派。
+在 Azure RBAC 中，若要授與存取權，請指派角色。 若要新增來賓使用者的角色指派，請遵循與成員使用者、群組、服務主體或受控識別[相同的步驟](role-assignments-portal.md#add-a-role-assignment)。 請遵循下列步驟，為不同範圍的來賓使用者新增角色指派。
 
 1. 在 [Azure 入口網站中，按一下 [**所有服務**]。
 

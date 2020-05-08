@@ -1,7 +1,7 @@
 ---
 title: Azure 轉送 API 概觀 | Microsoft Docs
 description: 本文提供可用 Azure 轉送 Api （.NET Standard、.NET Framework、node.js 等）的總覽。
-services: event-hubs
+services: service-bus-relay
 documentationcenter: na
 author: spelluru
 manager: timlt
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad7226b5c5badfddf9f436a1229a48f729485821
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76513961"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983120"
 ---
 # <a name="available-relay-apis"></a>可用的轉送 API
 
@@ -43,13 +43,13 @@ ms.locfileid: "76513961"
 
 .NET Framework 程式庫只支援 WCF 程式設計模型，並且會依賴 WCF `net.tcp` 傳輸型的專屬二進位通訊協定。 此通訊協定和程式庫會保有適用於現有應用程式的回溯相容性。
 
-.NET Standard 程式庫是以開放式通訊協定定義為基礎，該定義為根據 HTTP 和 WebSocket 所建置的混合式連線轉送所有。 此程式庫支援透過 Websocket 的資料流抽取，以及用於回應 HTTP 要求的簡單要求-回應 API 手勢。 [Web API](https://github.com/Azure/azure-relay-dotnet) 範例會說明如何整合混合式連線與適用於 Web 服務的 ASP.NET Core。
+.NET Standard 程式庫是以開放式通訊協定定義為基礎，該定義為根據 HTTP 和 WebSocket 所建置的混合式連線轉送所有。 此程式庫支援透過 Websocket 的資料流程抽象概念，以及用於回應 HTTP 要求的簡單要求-回應 API 手勢。 [Web API](https://github.com/Azure/azure-relay-dotnet) 範例會說明如何整合混合式連線與適用於 Web 服務的 ASP.NET Core。
 
 #### <a name="nodejs"></a>Node.js
 
 上表所列出的混合式連線模組，會以接聽 Azure 轉送服務而非本機網路堆疊的替代實作，來取代或修改現有的 Node.js 模組。
 
-`hyco-https` 模組會修改並局部覆寫核心的 Node.js 模組 `http` 和 `https`，提供可與許多依賴這些核心模組的現有 Node.js 模組和應用程式相容的 HTTPS 接聽程式實作。
+`hyco-https`模組會 amends 並部分覆寫核心 node.js 模組`http`和，並`https`提供與許多依賴這些核心模組的現有 node.js 模組和應用程式相容的 HTTPS 接聽程式執行。
 
 `hyco-ws` 和 `hyco-websocket` 模組會修改熱門的 Node.js `ws` 和 `websocket` 模組，提供可讓模組和依賴任一模組的應用程式在混合式連線轉送背後運作的替代接聽程式實作。
 

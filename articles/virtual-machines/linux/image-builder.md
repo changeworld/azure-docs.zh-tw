@@ -1,30 +1,28 @@
 ---
-title: 使用 Azure 映射產生器建立 Linux VM （預覽）
-description: 使用 Azure 映射產生器建立 Linux VM。
+title: 使用 Azure 映射產生器搭配適用于 Linux Vm 的映射庫（預覽）
+description: 使用 Azure 映射產生器和共用映射資源庫建立 Linux VM 映射。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/02/2019
+ms.date: 05/05/2019
 ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-ms.openlocfilehash: b50b2a9bfca99e1868c083759cce26bb176789f4
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: HT
+ms.reviewer: danis
+ms.openlocfilehash: 9774d7765906d07c974ca19ce6a0f4807898c3a0
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792406"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928324"
 ---
-# <a name="preview-create-a-linux-vm-with-azure-image-builder"></a>預覽：使用 Azure 映射產生器建立 Linux VM
+# <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>預覽：建立 Linux 映射並將其發佈至共用映射資源庫 
 
-本文說明如何使用 Azure 映射產生器和 Azure CLI 來建立自訂的 Linux 映射。 本文中的範例會使用三個[不同的](image-builder-json.md#properties-customize)自訂程式來自訂映射：
+本文說明如何使用 Azure 映射產生器和 Azure CLI，在[共用映射資源庫](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries)中建立映射版本，然後全域散發映射。 您也可以使用[Azure PowerShell](../windows/image-builder-gallery.md)來執行此動作。
 
-- Shell （ScriptUri）-下載並執行[shell 腳本](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript.sh)。
-- Shell （內嵌）-執行特定的命令。 在此範例中，內嵌命令包括建立目錄和更新 OS。
-- File-將檔案[從 GitHub](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html)複製到 VM 上的目錄。
 
-您也可以指定`buildTimeoutInMinutes`。 預設值是240分鐘，您可以增加組建時間以允許較長的執行中組建。
+我們將使用範例. json 範本來設定映射。 我們所使用的. json 檔案位於這裡： [helloImageTemplateforSIG。](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json) 
 
-我們將使用範例. json 範本來設定映射。 我們所使用的. json 檔案位於這裡： [helloImageTemplateLinux。](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json) 
+若要將映射發佈到共用映射資源庫，範本會使用[sharedImage](image-builder-json.md#distribute-sharedimage)作為範本`distribute`區段的值。
 
 > [!IMPORTANT]
 > Azure 映射產生器目前為公開預覽版。
@@ -47,7 +45,8 @@ az feature show --namespace Microsoft.VirtualMachineImages --name VirtualMachine
 
 ```azurecli-interactive
 az provider show -n Microsoft.VirtualMachineImages | grep registrationState
-
+az provider show -n Microsoft.KeyVault | grep registrationState
+az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
 ```
 
@@ -55,147 +54,172 @@ az provider show -n Microsoft.Storage | grep registrationState
 
 ```azurecli-interactive
 az provider register -n Microsoft.VirtualMachineImages
-
+az provider register -n Microsoft.Compute
+az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
 ```
 
-## <a name="setup-example-variables"></a>設定範例變數
+## <a name="set-variables-and-permissions"></a>設定變數和許可權 
 
 我們會重複使用一些資訊，因此我們將建立一些變數來儲存該資訊。
 
+針對預覽，映射產生器僅支援在與來源受控映射相同的資源群組中建立自訂映射。 將此範例中的資源組名更新為與來源受控映射相同的資源群組。
 
-```console
-# Resource group name - we are using myImageBuilderRG in this example
-imageResourceGroup=myImageBuilerRGLinux
+```azurecli-interactive
+# Resource group name - we are using ibLinuxGalleryRG in this example
+sigResourceGroup=ibLinuxGalleryRG
 # Datacenter location - we are using West US 2 in this example
-location=WestUS2
-# Name for the image - we are using myBuilderImage in this example
-imageName=myBuilderImage
-# Run output name
-runOutputName=aibLinux
+location=westus2
+# Additional region to replicate the image to - we are using East US in this example
+additionalregion=eastus
+# name of the shared image gallery - in this example we are using myGallery
+sigName=myIbGallery
+# name of the image definition to be created - in this example we are using myImageDef
+imageDefName=myIbImageDef
+# image distribution metadata reference name
+runOutputName=aibLinuxSIG
 ```
 
 建立訂用帳戶識別碼的變數。 您可以使用`az account show | grep id`來取得。
 
-```console
-subscriptionID=<Your subscription ID>
+```azurecli-interactive
+subscriptionID=<Subscription ID>
 ```
 
-## <a name="create-the-resource-group"></a>建立資源群組。
-這是用來儲存影像設定範本成品和映射。
+建立資源群組。
 
 ```azurecli-interactive
-az group create -n $imageResourceGroup -l $location
+az group create -n $sigResourceGroup -l $location
 ```
 
-## <a name="set-permissions-on-the-resource-group"></a>設定資源群組的許可權
-提供映射產生器的「參與者」許可權，以在資源群組中建立映射。 如果沒有適當的許可權，映射組建將會失敗。 
+## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>建立使用者指派的身分識別，並設定資源群組的許可權
+影像產生器將會使用提供的[使用者身分識別](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)，將映射插入 Azure 共用映射庫（SIG）。 在此範例中，您將建立一個 Azure 角色定義，其具有細微動作可執行將映射散發至 SIG。 角色定義接著會指派給使用者身分識別。
 
-`--assignee`值是映射產生器服務的應用程式註冊識別碼。 
+```bash
+# create user assigned identity for image builder to access the storage account where the script is located
+idenityName=aibBuiUserId$(date +'%s')
+az identity create -g $sigResourceGroup -n $idenityName
 
-```azurecli-interactive
+# get identity id
+imgBuilderCliId=$(az identity show -g $sigResourceGroup -n $idenityName | grep "clientId" | cut -c16- | tr -d '",')
+
+# get the user identity URI, needed for the template
+imgBuilderId=/subscriptions/$subscriptionID/resourcegroups/$sigResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/$idenityName
+
+# this command will download a Azure Role Definition template, and update the template with the parameters specified earlier.
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json -o aibRoleImageCreation.json
+
+imageRoleDefName="Azure Image Builder Image Def"$(date +'%s')
+
+# update the definition
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" aibRoleImageCreation.json
+sed -i -e "s/<rgName>/$sigResourceGroup/g" aibRoleImageCreation.json
+sed -i -e "s/Azure Image Builder Service Image Creation Role/$imageRoleDefName/g" aibRoleImageCreation.json
+
+# create role definitions
+az role definition create --role-definition ./aibRoleImageCreation.json
+
+# grant role definition to the user assigned identity
 az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/$imageResourceGroup
+    --assignee $imgBuilderCliId \
+    --role $imageRoleDefName \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
 ```
 
-## <a name="download-the-template-example"></a>下載範本範例
 
-已建立參數化範例影像設定範本供您使用。 下載範例 json 檔案，並使用您稍早設定的變數加以設定。
+## <a name="create-an-image-definition-and-gallery"></a>建立映射定義和圖庫
 
-```bash
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/0_Creating_a_Custom_Linux_Managed_Image/helloImageTemplateLinux.json -o helloImageTemplateLinux.json
+若要將影像產生器與共享映射庫搭配使用，您需要有現有的映射庫和映射定義。 影像產生器不會為您建立映射庫和映射定義。
 
-sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateLinux.json
-sed -i -e "s/<rgName>/$imageResourceGroup/g" helloImageTemplateLinux.json
-sed -i -e "s/<region>/$location/g" helloImageTemplateLinux.json
-sed -i -e "s/<imageName>/$imageName/g" helloImageTemplateLinux.json
-sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateLinux.json
+如果您還沒有資源庫和映射定義可供使用，請先加以建立。 首先，建立映射庫。
+
+```azurecli-interactive
+az sig create \
+    -g $sigResourceGroup \
+    --gallery-name $sigName
 ```
 
-您可以視需要修改此範例. json。 例如，您可以增加的值， `buildTimeoutInMinutes`以允許較長的執行中組建。 您可以使用像`vi`是的文字編輯器，在 Cloud Shell 中編輯檔案。
+然後，建立映射定義。
 
-```bash
-vi helloImageTemplateLinux.json
+```azurecli-interactive
+az sig image-definition create \
+   -g $sigResourceGroup \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --publisher myIbPublisher \
+   --offer myOffer \
+   --sku 18.04-LTS \
+   --os-type Linux
 ```
 
-> [!NOTE]
-> 針對 [來源映射]，您必須一律[指定版本](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-version-failure)，而不`latest`能使用。
->
-> 如果您新增或變更要發佈映射的資源群組，您必須確定[已針對資源群組設定許可權](#set-permissions-on-the-resource-group)。
 
+## <a name="download-and-configure-the-json"></a>下載並設定 json
 
-## <a name="submit-the-image-configuration"></a>提交映射設定
-將映射設定提交至 VM 映射產生器服務
+下載 json 範本，並以您的變數加以設定。
+
+```azurecli-interactive
+curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json -o helloImageTemplateforSIG.json
+sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforSIG.json
+sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforSIG.json
+sed -i -e "s/<imageDefName>/$imageDefName/g" helloImageTemplateforSIG.json
+sed -i -e "s/<sharedImageGalName>/$sigName/g" helloImageTemplateforSIG.json
+sed -i -e "s/<region1>/$location/g" helloImageTemplateforSIG.json
+sed -i -e "s/<region2>/$additionalregion/g" helloImageTemplateforSIG.json
+sed -i -e "s/<runOutputName>/$runOutputName/g" helloImageTemplateforSIG.json
+sed -i -e "s%<imgBuilderId>%$imgBuilderId%g" helloImageTemplateforSIG.json
+```
+
+## <a name="create-the-image-version"></a>建立映射版本
+
+下一個部分將會在資源庫中建立映射版本。 
+
+將映射設定提交至 Azure 映射產生器服務。
 
 ```azurecli-interactive
 az resource create \
-    --resource-group $imageResourceGroup \
-    --properties @helloImageTemplateLinux.json \
+    --resource-group $sigResourceGroup \
+    --properties @helloImageTemplateforSIG.json \
     --is-full-object \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateLinux01
+    -n helloImageTemplateforSIG01
 ```
-
-如果成功完成，它會傳回成功訊息，並在 $imageResourceGroup 中建立映射產生器設定範本成品。 如果您啟用「顯示隱藏的類型」，您可以在入口網站中看到資源群組。
-
-此外，在背景中，「映射產生器」會在您的訂用帳戶中建立預備資源群組。 映射產生器會使用暫存資源群組來建立映射。 資源群組的名稱會採用下列格式： `IT_<DestinationResourceGroup>_<TemplateName>`。
-
-> [!IMPORTANT]
-> 請勿直接刪除暫存資源群組。 如果您刪除映射範本成品，它會自動刪除暫存資源群組。 如需詳細資訊，請參閱本文結尾的[清理](#clean-up)一節。
-
-如果服務在映射設定範本提交期間報告失敗，請參閱[疑難排解](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#template-submission-errors--troubleshooting)步驟。 您也必須先刪除範本，然後再重試提交組建。 若要刪除範本：
-
-```azurecli-interactive
-az resource delete \
-    --resource-group $imageResourceGroup \
-    --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateLinux01
-```
-
-## <a name="start-the-image-build"></a>啟動映射組建
 
 啟動映射組建。
 
-
 ```azurecli-interactive
 az resource invoke-action \
-     --resource-group $imageResourceGroup \
+     --resource-group $sigResourceGroup \
      --resource-type  Microsoft.VirtualMachineImages/imageTemplates \
-     -n helloImageTemplateLinux01 \
+     -n helloImageTemplateforSIG01 \
      --action Run 
 ```
 
-等到組建完成後，在此範例中，可能需要10-15 分鐘的時間。
-
-如果您遇到任何錯誤，請參閱這些[疑難排解](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#image-build-errors--troubleshooting)步驟。
+建立映射並將它複寫到這兩個區域可能需要一段時間。 等到此部分完成後，再繼續建立 VM。
 
 
 ## <a name="create-the-vm"></a>建立 VM
 
-使用您建立的映射建立 VM。
+從 Azure 映射產生器所建立的映射版本建立 VM。
 
 ```azurecli-interactive
 az vm create \
-  --resource-group $imageResourceGroup \
-  --name myVM \
-  --admin-username azureuser \
-  --image $imageName \
+  --resource-group $sigResourceGroup \
+  --name myAibGalleryVM \
+  --admin-username aibuser \
   --location $location \
+  --image "/subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup/providers/Microsoft.Compute/galleries/$sigName/images/$imageDefName/versions/latest" \
   --generate-ssh-keys
 ```
 
-從建立 VM 的輸出中取得 IP 位址，並使用它來透過 SSH 連線到 VM。
+透過 SSH 連線到 VM。
 
-```bash
-ssh azureuser@<pubIp>
+```azurecli-interactive
+ssh aibuser@<publicIpAddress>
 ```
 
-您應該會在建立 SSH 連線後，看到該映射已自訂一天的訊息！
+您應該會在建立 SSH 連線後，看到該映射已自訂一*天的訊息*！
 
-```output
-
+```console
 *******************************************************
 **            This VM was built from the:            **
 **      !! AZURE VM IMAGE BUILDER Custom Image !!    **
@@ -203,38 +227,75 @@ ssh azureuser@<pubIp>
 *******************************************************
 ```
 
-當`exit`您完成關閉 SSH 連線時，請輸入。
+## <a name="clean-up-resources"></a>清除資源
 
-## <a name="check-the-source"></a>檢查來源
+如果您想要立即嘗試重新自訂映射版本，以建立相同映射的新版本，請略過後續步驟，並繼續[使用 Azure 映射產生器來建立另一個映射版本](image-builder-gallery-update-image-version.md)。
 
-在 [映射產生器] 範本的 [屬性] 中，您會看到來源影像、其執行的自訂腳本，以及其散發位置。
 
-```bash
-cat helloImageTemplateLinux.json
-```
+這會刪除已建立的映射，以及其他所有資源檔。 請先確定您已完成此部署，再刪除資源。
 
-如需有關此 json 檔案的詳細資訊，請參閱影像產生器[範本參考](image-builder-json.md)
-
-## <a name="clean-up"></a>清除
-
-當您完成時，您可以刪除資源。
+刪除映射庫資源時，您必須先刪除所有映射版本，才能刪除用來建立它們的映射定義。 若要刪除資源庫，您必須先刪除資源庫中的所有映射定義。
 
 刪除映射產生器範本。
 
 ```azurecli-interactive
 az resource delete \
-    --resource-group $imageResourceGroup \
+    --resource-group $sigResourceGroup \
     --resource-type Microsoft.VirtualMachineImages/imageTemplates \
-    -n helloImageTemplateLinux01
+    -n helloImageTemplateforSIG01
 ```
 
-刪除映射資源群組。
+刪除許可權指派、角色和身分識別
+```azurecli-interactive
+az role assignment delete \
+    --assignee $imgBuilderCliId \
+    --role "$imageRoleDefName" \
+    --scope /subscriptions/$subscriptionID/resourceGroups/$sigResourceGroup
 
-```azurecli
-az group delete -n $imageResourceGroup
+az role definition delete --name "$imageRoleDefName"
+
+az identity delete --ids $imgBuilderId
 ```
 
+取得映射產生器所建立的映射版本，這一律以`0.`開頭，然後刪除映射版本
+
+```azurecli-interactive
+sigDefImgVersion=$(az sig image-version list \
+   -g $sigResourceGroup \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --subscription $subscriptionID --query [].'name' -o json | grep 0. | tr -d '"')
+az sig image-version delete \
+   -g $sigResourceGroup \
+   --gallery-image-version $sigDefImgVersion \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --subscription $subscriptionID
+```   
+
+
+刪除映射定義。
+
+```azurecli-interactive
+az sig image-definition delete \
+   -g $sigResourceGroup \
+   --gallery-name $sigName \
+   --gallery-image-definition $imageDefName \
+   --subscription $subscriptionID
+```
+
+刪除資源庫。
+
+```azurecli-interactive
+az sig delete -r $sigName -g $sigResourceGroup
+```
+
+刪除資源群組。
+
+```azurecli-interactive
+az group delete -n $sigResourceGroup -y
+```
 
 ## <a name="next-steps"></a>後續步驟
 
-若要深入瞭解本文中所使用之 json 檔案的元件，請參閱影像產生器[範本參考](image-builder-json.md)。
+深入瞭解[Azure 共用映射資源庫](shared-image-galleries.md)。
