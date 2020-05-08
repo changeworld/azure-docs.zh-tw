@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: d2fe231dce26311268e578a495fb2ba7076651e0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 2cf1ab2b9ec7e1094a0afa34973db3441c22ee5b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608025"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982763"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>使用 Azure 儲存體總管處理資料
 
@@ -273,7 +273,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 ### <a name="httphttps-proxy-issue"></a>Http/Https Proxy 的問題
 
-在 ASE 中設定 Http/Https Proxy 時，無法在左側樹狀目錄中列出 Azure Cosmos DB 節點。 這是已知問題，並將在下一個版本中修正。 目前您可以使用 Azure 入口網站中的 Azure Cosmos DB 資料總管解決此問題。
+在 ASE 中設定 Http/Https Proxy 時，無法在左側樹狀目錄中列出 Azure Cosmos DB 節點。 目前您可以使用 Azure 入口網站中的 Azure Cosmos DB 資料總管解決此問題。
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>「本機與已連結」節點下的「開發」節點問題
 

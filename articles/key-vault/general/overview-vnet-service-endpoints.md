@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 2a68a50a5d15b9f38407c19494a39a14abfa0a5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd67c3b7eed6b3ce3730bd48cda69d85aa276df4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81432069"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930585"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虛擬網路服務端點
 
@@ -79,6 +79,7 @@ Azure Key Vault 的虛擬網路服務端點可讓您將存取權限制為指定�
 |Azure 事件中心|[針對客戶管理的金鑰案例，允許存取金鑰保存庫](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure 服務匯流排|[針對客戶管理的金鑰案例，允許存取金鑰保存庫](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure 匯入/匯出| [在匯入/匯出服務的 Azure Key Vault 中使用客戶管理的金鑰](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
+|Azure Container Registry|[使用客戶管理的金鑰進行登錄加密](../../container-registry/container-registry-customer-managed-keys.md)
 
 > [!NOTE]
 > 您必須將相關 Key Vault 存取原則設定為允許對應的服務取得 Key Vault 的存取權。

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 05/07/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049802"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982032"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>將商標新增至組織的 Azure Active Directory 登入頁面
 使用您組織的標誌和自訂色彩配置，在 Azure Active Directory (Azure AD) 登入頁面上展現一致的外觀與風格。 當使用者登入貴組織的 Web 應用程式 (如 Office 365)，且該應用程式使用 Azure AD 做為識別提供者時，即會顯示您的登入頁面。
@@ -52,9 +52,9 @@ ms.locfileid: "80049802"
 
         - **語言.** 語言會自動設為預設值，而且無法變更。
         
-        - **登入頁面背景影像。** 請選取要做為登入頁面背景的 .png 或 .jpg 影像檔案。 
+        - **登入頁面背景影像。** 請選取要做為登入頁面背景的 .png 或 .jpg 影像檔案。 影像將錨定至瀏覽器的中央，並會調整為可見空間的大小。 您無法選取大於1920x1080 圖元大小或檔案大小超過 300 KB 的影像。
         
-            影像大小不可超過 1920 x 1080 像素，且檔案大小必須小於 300 KB。
+            建議您在沒有強式主旨焦點的情況下使用影像，例如，螢幕中央會出現不透明的白色方塊，而且可以根據可見空間的尺寸來涵蓋影像的任何部分。
 
         - **橫幅標誌。** 請選取 .png 或 .jpg 格式的標誌，標誌會在使用輸入使用者名稱後出現在登入頁面上，也會出現在 **My Apps** 入口網站頁面上。
             
@@ -62,7 +62,7 @@ ms.locfileid: "80049802"
 
         - **使用者名稱提示。** 輸入使用者忘記使用者名稱時，就會向使用者顯示的提示文字。 此文字必須是 Unicode，不可含有任何連結或程式碼，而且不可超過 64 個字元。 如果來賓是登入您的應用程式，建議不要加入此提示。
 
-        - **登入頁面文字。** 請輸入會在登入頁面底部出現的文字。 您可以使用此文字來提供其他資訊，例如技術支援中心的電話號碼或法律聲明。 此文字必須是 Unicode，而且不可超過 256 個字元。 也建議不包含連結或 HTML 標記。
+        - **登入頁面文字。** 請輸入會在登入頁面底部出現的文字。 您可以使用此文字來提供其他資訊，例如技術支援中心的電話號碼或法律聲明。 此文字必須是 Unicode，而且不可超過 256 個字元。
 
     - **Advanced 設定**
             

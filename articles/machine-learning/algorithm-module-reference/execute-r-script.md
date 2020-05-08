@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 7b72d83740e0e2b02ef9d2ea3cd1cbf04a4c99cc
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684719"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983562"
 ---
 # <a name="execute-r-script"></a>執行 R 指令碼
 
@@ -42,6 +42,8 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=dataframe1, dataset2=dataframe2))
 }
 ```
+> [!NOTE]
+> 如果您的管線包含多個執行 R 腳本模組，而且需要的套件不在預先安裝的清單中，請分別在每個模組中安裝套件。 
 
 ## <a name="installing-r-packages"></a>安裝 R 套件
 若要安裝其他 R 套件，請`install.packages()`使用方法。 封裝會針對每個**執行 r 腳本**模組安裝，而且不會在其他**執行 r 腳本**模組之間共用。
@@ -140,7 +142,7 @@ azureml_main <- function(dataframe1, dataframe2){
 1. 在 [ **R 腳本**] 文字方塊中，輸入或貼上有效的 R 腳本。
 
     > [!NOTE]
-    > 撰寫腳本時請務必小心，並確定沒有任何語法錯誤，例如使用未宣告的變數或未匯入的模組或函數。 此外，也請支付此檔結尾的預先安裝套件清單的額外注意事項。 若要使用未列出的套件，請將它們安裝在您的腳本中，例如`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    > 撰寫腳本時請務必小心，並確定沒有任何語法錯誤，例如使用未宣告的變數或未匯入的模組或函數。 此外，也請特別注意本檔結尾的預先安裝套件清單。 若要使用未列出的套件，請將它們安裝在您的腳本中，例如`install.packages("zoo",repos = "http://cran.us.r-project.org")`
     
     > [!NOTE]
     > 因為尚未預先安裝 X11 程式庫，所以不支援相依于 X11 程式庫（例如「View」）的函式。
@@ -327,7 +329,7 @@ azureml_main <- function(dataframe1, dataframe2){
 
 |              |            | 
 |--------------|------------| 
-| 套件      | 版本    | 
+| 封裝      | 版本    | 
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 

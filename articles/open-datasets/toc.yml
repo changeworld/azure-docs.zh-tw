@@ -9,9 +9,9 @@
 - name: 教學課程
   items:
     - name: 使用自動化機器學習進行迴歸
-      href: /azure/machine-learning/service/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: /azure/machine-learning/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
     - name: 擴充影像分類模型
-      href: /azure/machine-learning/service/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: /azure/machine-learning/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
 - name: 操作指南
   items:
     - name: Azure Machine Learning 中的資料集

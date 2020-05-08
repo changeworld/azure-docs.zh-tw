@@ -2,13 +2,13 @@
 title: 將資源部署至訂用帳戶
 description: 描述如何在 Azure Resource Manager 範本中建立資源群組。 此外也會說明如何將資源部署到 Azure 訂用帳戶範圍。
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: 80fe451f696480ec24b3d8eced64941de9492fef
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 05/07/2020
+ms.openlocfilehash: a48bc2fd4efb383b42fd0889df079c9a6f700dda
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610814"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929055"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在訂用帳戶層級建立資源群組和資源
 
@@ -35,6 +35,7 @@ ms.locfileid: "82610814"
 * [scopeAssignments](/azure/templates/microsoft.managednetwork/scopeassignments)
 * [supportPlanTypes](/azure/templates/microsoft.addons/supportproviders/supportplantypes)
 * [標記](/azure/templates/microsoft.resources/tags)
+* [workspacesettings](/azure/templates/microsoft.security/workspacesettings)
 
 ### <a name="schema"></a>結構描述
 
@@ -96,11 +97,11 @@ New-AzSubscriptionDeployment `
 * 使用[subscriptionResourceId （）](template-functions-resource.md#subscriptionresourceid)函數來取得在訂用帳戶層級部署之資源的資源識別碼。
 
   例如，若要取得原則定義的資源識別碼，請使用：
-  
+
   ```json
   subscriptionResourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))
   ```
-  
+
   傳回的資源識別碼具有下列格式：
 
   ```json

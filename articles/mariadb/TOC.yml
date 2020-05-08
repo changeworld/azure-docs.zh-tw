@@ -29,6 +29,9 @@
   items:
     - name: Azure CLI
       href: sample-scripts-azure-cli.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: DB 和伺服器
@@ -218,7 +221,7 @@
       href: 'https://azure.microsoft.com/pricing/details/mariadb/'
     - name: MSDN 論壇
       href: 'https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
     - name: 要求功能
       href: 'https://feedback.azure.com/forums/915439-azure-database-for-mariadb'

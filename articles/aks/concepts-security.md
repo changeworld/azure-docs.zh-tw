@@ -3,13 +3,13 @@ title: 概念 - Azure Kubernetes Service (AKS) 中的安全性
 description: 了解 Azure Kubernetes Service (AKS) 中的安全性，包括主要和節點的通訊、網路原則和 Kubernetes 祕密。
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 1960d18396f47b3dbdd51a50ec4241be5ebe4ff1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/08/2020
+ms.openlocfilehash: f3c4fd922ef0e4243344b34dd90f7e48f903abcd
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206624"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981386"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 中的應用程式和叢集的安全性概念
 
@@ -27,7 +27,9 @@ ms.locfileid: "82206624"
 
 在 AKS 中，Kubernetes 主要元件包含在 Microsoft 所提供的受控服務中。 每個 AKS 叢集都有自己的單一租使用者專用 Kubernetes 主機，可提供 API 伺服器、排程器等。此主要是由 Microsoft 管理及維護。
 
-根據預設，Kubernetes API 伺服器會使用公用 IP 位址和完整功能變數名稱（FQDN）。 您可以使用 Kubernetes 角色型存取控制和 Azure Active Directory 來控制對 API 伺服器的存取。 如需詳細資訊，請參閱 [Azure AD 與 AKS 的整合][aks-aad]。
+根據預設，Kubernetes API 伺服器會使用公用 IP 位址和完整功能變數名稱（FQDN）。 您可以使用[授權的 IP 範圍][authorized-ip-ranges]來限制對 API 伺服器端點的存取。 您也可以建立完全[私人][private-clusters]的叢集，以限制 API 伺服器存取您的虛擬網路。
+
+您可以使用 Kubernetes 角色型存取控制和 Azure Active Directory 來控制對 API 伺服器的存取。 如需詳細資訊，請參閱 [Azure AD 與 AKS 的整合][aks-aad]。
 
 ## <a name="node-security"></a>節點安全性
 
@@ -65,6 +67,10 @@ Azure 平臺會在夜間自動將 OS 安全性修補程式套用至 Linux 節點
 ### <a name="azure-network-security-groups"></a>Azure 網路安全性群組
 
 為了篩選虛擬網路中的流量，Azure 會使用網路安全性群組規則。 這些規則可定義允許或拒絕存取資源的來源和目的地 IP 範圍、連接埠和通訊協定。 系統會建立預設規則，以允許 Kubernetes API 伺服器的 TLS 流量。 當您建立具有負載平衡器、連接埠對應或輸入路由的服務時，AKS 將會自動修改網路安全性群組，讓流量以適當方式傳輸。
+
+### <a name="kubernetes-network-policy"></a>Kubernetes 網路原則
+
+為了限制叢集中 pod 之間的網路流量，AKS 提供[Kubernetes 網路原則][network-policy]的支援。 使用網路原則時，您可以根據命名空間和標籤選取器，選擇允許或拒絕叢集中的特定網路路徑。
 
 ## <a name="kubernetes-secrets"></a>Kubernetes 秘密
 
@@ -104,3 +110,6 @@ Kubernetes *祕密*可用來將敏感性資料插入 Pod 中，例如存取認�
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[authorized-ip-ranges]: api-server-authorized-ip-ranges.md
+[private-clusters]: private-clusters.md
+[network-policy]: use-network-policies.md

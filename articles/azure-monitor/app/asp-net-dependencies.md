@@ -3,12 +3,12 @@ title: Azure Application Insights 中的相依性追蹤 | Microsoft Docs
 description: 使用 Application Insights 監視來自內部部署或 Microsoft Azure web 應用程式的相依性呼叫。
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b7a20731fa5eae8313adcf07d877626fcaa4dce
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731500"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980842"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure 應用程式深入解析中的相依性追蹤 
 
@@ -92,14 +92,14 @@ ms.locfileid: "81731500"
 
 對於 ASP.NET Core 的應用程式，取得完整的 SQL 查詢並不需要額外的步驟。
 
-針對 ASP.NET 應用程式，會收集完整的 SQL 查詢，並提供需要檢測引擎的位元組程式碼檢測的協助。 需要其他平臺特定的步驟，如下所述。
+針對 ASP.NET 應用程式，系統會收集完整的 SQL 查詢，並提供位元組程式碼檢測的協助，這需要使用檢測引擎，或使用[SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 封裝，而不是 SqlClient 程式庫。 需要其他平臺特定的步驟，如下所述。
 
 | 平台 | 取得完整 SQL 查詢所需的步驟 |
 | --- | --- |
 | Azure Web 應用程式 |在您的 web 應用程式控制台中，[開啟 [Application Insights](../../azure-monitor/app/azure-web-apps.md) ] 分頁，並在 .net 底下啟用 SQL 命令 |
-| IIS 伺服器（Azure VM、內部內部部署等等）。 | 使用狀態監視器 PowerShell 模組來[安裝檢測引擎](../../azure-monitor/app/status-monitor-v2-api-reference.md)並重新啟動 IIS。 |
+| IIS 伺服器（Azure VM、內部內部部署等等）。 | 請使用[SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 套件，或使用狀態監視器 PowerShell 模組來[安裝檢測引擎](../../azure-monitor/app/status-monitor-v2-api-reference.md)並重新啟動 IIS。 |
 | Azure 雲端服務 | 新增[啟動工作以安裝 StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> 您的應用程式應該在組建階段上架至 ApplicationInsights SDK，方法是安裝[ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)或[ASP.NET Core 應用程式](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)的 NuGet 套件 |
-| IIS Express | 不支援
+| IIS Express | 使用[SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet 套件
 
 在上述情況下，驗證所收集`DependencyTelemetry`的 SDK 版本是 ' rddp '，正確地驗證檢測引擎已正確安裝。 ' rdddsd ' 或 ' rddf ' 表示相依性是透過 DiagnosticSource 或 EventSource 回呼來收集，因此不會捕捉完整的 SQL 查詢。
 

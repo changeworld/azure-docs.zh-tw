@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 28abf6fca0933158b067dda7ab54af93dac4b7d9
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872412"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930483"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>連線至 Azure IoT Central
 
@@ -146,11 +146,11 @@ IoT Central 使用[Azure IoT 中樞裝置布建服務（DPS）](../../iot-dps/ab
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>連接使用 x.509 憑證但不註冊的裝置
 
-1. 在 IoT Central 應用程式中[新增並驗證根或中繼的 x.509 憑證](#connect-devices-using-x509-certificates)。（#connect 裝置-使用-x509-憑證）
+1. 在 IoT Central 應用程式中[新增並驗證根或中繼的 x.509 憑證](#connect-devices-using-x509-certificates)。
 
 1. 使用您新增至 IoT Central 應用程式的根或中繼憑證，為您的裝置產生分葉憑證。 使用與分葉憑證中的`CNAME`小寫裝置識別碼。
 
-1. OEM 會使用裝置識別碼、產生的左 x.509 憑證和應用程式**識別碼範圍**值來閃爍每個裝置。
+1. OEM 會使用裝置識別碼、產生的分葉 x.509 憑證和應用程式**識別碼範圍**值來閃爍每個裝置。
 
 1. 當您在裝置上切換時，它會先連線到 DPS 以取得其 IoT Central 的註冊資訊。
 

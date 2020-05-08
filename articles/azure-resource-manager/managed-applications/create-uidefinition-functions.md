@@ -5,17 +5,17 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a93f4ff2ddc0737692de9e5619cf7a7521936224
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248446"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980808"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函式
 本節包含 CreateUiDefinition 所有支援的函式的簽章。
 
-若要使用函式，請使用方括弧括住宣告。 例如：
+若要使用函式，請使用方括弧括住調用。 例如：
 
 ```json
 "[function()]"
@@ -461,7 +461,7 @@ ms.locfileid: "79248446"
 "[or(equals(0, 0), greater(1, 2))]"
 ```
 
-### <a name="not"></a>否
+### <a name="not"></a>not
 如果參數評估為 `false`，則傳回 `true`。 此函式只支援布林值類型的參數。
 
 下列範例會傳回 `true`：
@@ -484,6 +484,45 @@ ms.locfileid: "79248446"
 ```json
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
+
+此函式在頁面載入後因使用者動作而發生的選擇性調用內容中特別有用。 例如，如果條件約束放在 UI 中的一個欄位上，則取決於另一個**初始非可見**欄位的目前選取值。 在此情況下`coalesce()` ，可以用來在頁面載入時讓函式在語法上有效，同時在使用者與欄位互動時產生所要的效果。
+
+請考慮`DropDown`這一點，這可讓使用者從數種不同的資料庫類型中進行選擇：
+
+```
+{
+    "name": "databaseType",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Choose database type",
+    "toolTip": "Choose database type",
+    "defaultValue": "Oracle Database",
+    "visible": "[bool(steps('section_database').connectToDatabase)]"
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Azure Database for PostgreSQL",
+                "value": "postgresql"
+            },
+            {
+                "label": "Oracle Database",
+                "value": "oracle"
+            },
+            {
+                "label": "Azure SQL",
+                "value": "sqlserver"
+            }
+        ],
+        "required": true
+    },
+```
+
+若要在此欄位的目前選擇值上條件下另一個欄位的動作`coalesce()`，請使用，如下所示：
+
+```
+"regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
+```
+
+這是必要的`databaseType` ，因為最初不會顯示，因此不會有值。 這會導致整個運算式無法正確評估。
 
 ## <a name="conversion-functions"></a>轉換函數
 這些函式可用來轉換 JSON 資料類型與編碼之間的值。

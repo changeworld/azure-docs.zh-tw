@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83cb62efd98615b7eda7f52ebafe95dedc282355
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74978708"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930449"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>使用更新資源活動更新 Azure Machine Learning 模型
 
@@ -44,7 +44,7 @@ ms.locfileid: "74978708"
 1. 在[Azure Machine Learning Studio （傳統）](https://studio.azureml.net)中建立實驗。
 2. 當您對模型感到滿意時，請使用 Azure Machine Learning Studio （傳統）來發佈**訓練實驗**和評分/**預測實驗**的 web 服務。
 
-下表說明本範例中使用的 Web 服務。  如需詳細資訊，請參閱 [以程式設計方式重新定型機器學習服務模型](../../machine-learning/machine-learning-retrain-models-programmatically.md) 。
+下表說明本範例中使用的 Web 服務。  如需詳細資訊，請參閱以程式設計方式重新定型[Machine Learning Studio （傳統）模型](../../machine-learning/studio/retrain-machine-learning-model.md)。
 
 - **訓練 Web 服務** - 接收訓練資料並產生已訓練的模型。 重新訓練的輸出是 Azure Blob 儲存體中的 .ilearner 檔案。 當您將訓練實驗發佈為 Web 服務時，系統會自動為您建立 **預設端點** 。 您可以建立多個端點，但此範例僅使用預設端點。
 - **評分 Web 服務** - 接收未標記的資料範例並進行預測。 預測的輸出可能有各種形式，例如 .csv 檔案或 Azure SQL 資料庫中的資料列 (視實驗的組態而定)。 當您將預測實驗發佈為 Web 服務時，系統會自動為您建立預設端點。 
