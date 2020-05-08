@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3fb5f1df0eb4473483c9298cdbf36909b75065e7
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79370639"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927202"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>什麼是語音裝置 SDK？
 
@@ -49,7 +49,7 @@ ms.locfileid: "79370639"
 針對 Linux，範例應用程式會以跨平臺 JAVA 應用程式的形式提供。 下載最新版的[JRE 語音裝置 SDK](https://aka.ms/sdsdk-download-JRE)。
 應用程式是使用語音 SDK 套件，以及64位 Linux （Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 8、CentOS 8）上的 Eclipse JAVA IDE （v4）所建立。 它會在 64 位元 Java 8 Runtime Environment (JRE) 上執行。
 
-另外還提供其他二進位檔，以支援即將推出的裝置、 [Roobo V2 DDK](https://aka.ms/sdsdk-download-roobov2)、 [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)和[GGEC 喇叭](https://aka.ms/sdsdk-download-speaker)。
+另外還提供其他二進位檔，以支援即將推出的裝置、 [Roobo V2 DDK](https://aka.ms/sdsdk-download-roobov2)、 [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)、 [GGEC 喇叭](https://aka.ms/sdsdk-download-speaker)、 [linux ARM32](https://aka.ms/sdsdk-download-linux-arm32)和[linux ARM64](https://aka.ms/sdsdk-download-linux-arm64)。
 
 ## <a name="next-steps"></a>後續步驟
 

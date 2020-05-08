@@ -2,25 +2,21 @@
 title: 向 SaaS 應用程式報告自動使用者帳戶布建
 description: 了解如何檢查使用者帳戶自動佈建作業的狀態，以及如何針對個別使用者的佈建進行疑難排解。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19d76f69669ffa13d1d55ffa807e6c4818b8840c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 102a0b60c917d5ee24177ac4b52e97fe72c343e7
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282183"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593874"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教學課程︰關於使用者帳戶自動佈建的報告
 
@@ -28,7 +24,7 @@ Azure Active Directory （Azure AD）包含[使用者帳戶](user-provisioning.m
 
 本文會說明如何在佈建作業設定好之後檢查其狀態，以及如何針對個別使用者和群組的佈建進行疑難排解。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 我們會使用 [Azure 入口網站](https://portal.azure.com)，依照針對支援之應用程式[所提供的文件](../saas-apps/tutorial-list.md)來設定佈建連接器。 在設定好並開始執行之後，您就可以使用下列兩種方法的其中一種來獲得佈建作業的報告：
 

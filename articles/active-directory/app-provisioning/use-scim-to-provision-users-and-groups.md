@@ -2,28 +2,23 @@
 title: 開發 SCIM 端點，以從 Azure AD 將使用者布建至應用程式
 description: 跨網域身分識別管理（SCIM）的系統會標準化自動使用者布建。 瞭解如何開發 SCIM 端點、整合您的 SCIM API 與 Azure Active Directory，並開始自動將使用者和群組布建到您的雲端應用程式。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a54bc3cfa67330fb0056ccd1898d9ab3de2b0ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65bbb35d041a48e68d01a50e88e42fbeb73f2ea6
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229913"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864278"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>建立 SCIM 端點，並使用 Azure Active Directory （Azure AD）來設定使用者布建
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>建立 SCIM 端點，並使用 Azure AD 設定使用者布建
 
 身為應用程式開發人員，您可以使用跨網域身分識別管理（SCIM）使用者管理 API 的系統，在您的應用程式與 Azure AD 之間，自動布建使用者和群組。 本文說明如何建立 SCIM 端點，並與 Azure AD 布建服務整合。 SCIM 規格提供一般使用者架構來進行布建。 搭配 SAML 或 OpenID Connect 等同盟標準使用時，SCIM 會為系統管理員提供端對端且以標準為基礎的存取管理解決方案。
 
@@ -1200,8 +1195,8 @@ SCIM 規格不會定義驗證和授權的 SCIM 特定配置。 它依賴現有�
 [!NOTE] 不建議您在 Azure AD 布建設定自訂應用程式 UI 中，將 [權杖] 欄位保留空白。 產生的權杖主要適用于測試用途。
 
 **OAuth 授權碼授與流程：** 布建服務支援[授權碼授](https://tools.ietf.org/html/rfc6749#page-24)與。 提交您在資源庫中發佈應用程式的要求之後，我們的小組會與您一起收集下列資訊：
-*  授權 URL：用戶端用來透過使用者代理程式重新導向取得資源擁有者授權的 URL。 使用者會重新導向至此 URL 以授與存取權。 
-*  權杖交換 URL：用戶端的 URL，用來交換存取權杖的授權授與，通常是透過用戶端驗證。
+*  授權 URL：用戶端用來透過使用者代理程式重新導向取得資源擁有者授權的 URL。 使用者會重新導向至此 URL 以授與存取權。 請注意，此 URL 目前無法針對每個租使用者進行設定。
+*  權杖交換 URL：用戶端的 URL，用來交換存取權杖的授權授與，通常是透過用戶端驗證。 請注意，此 URL 目前無法針對每個租使用者進行設定。
 *  用戶端識別碼：授權伺服器會向已註冊的用戶端發出用戶端識別碼，這是代表用戶端所提供之註冊資訊的唯一字串。  用戶端識別碼不是秘密;它會公開給資源擁有者，而且**不得**單獨用於用戶端驗證。  
 *  用戶端密碼：用戶端密碼是由授權伺服器產生的秘密。 它應該是只有授權伺服器才知道的唯一值。 
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: f010ec46c41c2302cc9c99a631fd18b1af9661eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68adfb8b4cfb7c665a8e8b162b4698a095bb671e
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232065"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869932"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引編製原則
 
@@ -27,7 +27,7 @@ ms.locfileid: "82232065"
 Azure Cosmos DB 支援兩種編制索引模式：
 
 - **一致**：當您建立、更新或刪除專案時，會同步更新索引。 這表示讀取查詢的一致性會是[為帳戶設定的一致性](consistency-levels.md)。
-- **無**：在容器上停用索引。 當容器當做單純的索引鍵-值存放區使用，而不需要次要索引時，通常會使用此參數。 它也可以用來改善大量作業的效能。 完成大量作業之後，可以將索引模式設定為一致，然後使用[IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2)進行監視，直到完成為止。
+- **無**：在容器上停用索引。 當容器當做單純的索引鍵-值存放區使用，而不需要次要索引時，通常會使用此參數。 它也可以用來改善大量作業的效能。 完成大量作業之後，可以將索引模式設定為一致，然後使用[IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk)進行監視，直到完成為止。
 
 > [!NOTE]
 > Azure Cosmos DB 也支援延遲索引編制模式。 當引擎不執行任何其他工作時，延遲索引會以較低的優先權層級執行索引的更新。 這可能會導致**不一致或不完整**的查詢結果。 如果您打算查詢 Cosmos 容器，則不應該選取 [延遲索引]。
@@ -101,7 +101,7 @@ Azure Cosmos DB 支援兩種編制索引模式：
 
 如果包含的路徑和排除的路徑發生衝突，則會優先使用更精確的路徑。
 
-範例如下：
+以下是範例：
 
 **包含的路徑**：`/food/ingredients/nutrition/*`
 

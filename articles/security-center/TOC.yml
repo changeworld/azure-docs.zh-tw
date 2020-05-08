@@ -37,6 +37,11 @@
       href: tutorial-security-incident.md
     - name: 改善法規合規性
       href: security-center-compliance-dashboard.md
+- name: 範例
+  items:
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 安全分數
@@ -107,7 +112,7 @@
           href: custom-security-policies.md
         - name: 使用 Azure 原則 REST API 來管理原則
           href: configure-security-policy-azure-policy.md
-    - name: 新增動態合規性套件
+    - name: 選擇合規性儀表板的標準
       href: update-regulatory-compliance-packages.md
     - name: 自訂資訊保護原則
       href: security-center-info-protection-policy.md

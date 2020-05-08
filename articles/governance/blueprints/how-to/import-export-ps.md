@@ -1,14 +1,14 @@
 ---
 title: 使用 PowerShell 匯入和匯出藍圖
 description: 瞭解如何使用您的藍圖定義做為程式碼。 共用、原始檔控制，並使用 export 和 import 命令來管理它們。
-ms.date: 09/03/2019
+ms.date: 05/06/2020
 ms.topic: how-to
-ms.openlocfilehash: dcdf48f8941198591b39d6cf89ec5e6dac7ba94c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cc6bc241dc6b7b4baa669e64a0d5e43641a55b8
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686844"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864040"
 ---
 # <a name="import-and-export-blueprint-definitions-with-powershell"></a>使用 PowerShell 匯入和匯出藍圖定義
 
@@ -23,7 +23,7 @@ Azure 藍圖可以透過 Azure 入口網站完全管理。 隨著組織繼續使
 
 無論您的原因為何，以程式碼來管理您的藍圖定義都有其優點。 本文說明如何在[Az. 藍圖](https://powershellgallery.com/packages/Az.Blueprint/)模組`Export-AzBlueprintWithArtifact`中使用`Import-AzBlueprintWithArtifact`和命令。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 本文假設您對 Azure 藍圖進行了中等程度的工作知識。 如果您尚未這麼做，請執行下列文章：
 

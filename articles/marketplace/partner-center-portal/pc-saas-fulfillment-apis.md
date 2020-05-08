@@ -1,26 +1,25 @@
 ---
-title: SaaS 履行 Api |Azure Marketplace
-description: 引進了可讓您整合 SaaS 供應專案與 Azure Marketplace 的履行 Api 版本。
+title: Microsoft 商業 marketplace 中的 SaaS 履行 Api
+description: 「履行 Api」的簡介，可讓您在 Microsoft AppSource 和 Azure Marketplace 中整合您的 SaaS 供應專案。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 92b1c52457fa92709381124480c05a5f636167f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba1b158bc529b148a8e3138d122c13ead19e073e
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275725"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858081"
 ---
-# <a name="saas-fulfillment-apis"></a>SaaS 履行 API
+# <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的 SaaS 履行 Api
 
-SaaS 履行 Api 可讓獨立軟體廠商（Isv）整合其 SaaS 應用程式與 Azure Marketplace。 這些 Api 可讓 ISV 應用程式參與所有啟用商務的管道：直接、合作夥伴導向（轉銷商）和現場 led。  它們是在 Azure Marketplace 上列出 transactable SaaS 供應專案的必要條件。
+SaaS 履行 Api 可讓獨立軟體廠商（Isv）在 Microsoft AppSource 和 Azure Marketplace 中整合其 SaaS 應用程式。 這些 Api 可讓 ISV 應用程式參與所有啟用商務功能的管道：直接、合作夥伴導向（轉銷商）和現場 led。 他們必須列出 Microsoft AppSource 和 Azure Marketplace 中的 transactable SaaS 供應專案。
 
 > [!WARNING]
 > 此 API 的目前版本是第2版，應用於所有新的 SaaS 供應專案。  API 第1版已被取代，並加以維護以支援現有的供應專案。
-
 
 ## <a name="business-model-support"></a>商務模型支援
 

@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 7908b168adcaa00819990d7ced04ba4888d67d63
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572361"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871312"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自動化重新整理
 
@@ -105,7 +105,7 @@ Runbook 可以設定為根據排程觸發 Azure Analysis Services 模型重新�
 
     ![設定排程](./media/analysis-services-refresh-azure-automation/15.png)
 
-3. 按一下頁面底部的 [新增]  。
+3. 按一下 [建立]  。
 
 4. 填入排程的參數。 這會在每次 Runbook 觸發時使用。 透過排程執行時， **WEBHOOKDATA**參數應保留空白。
 
@@ -173,7 +173,7 @@ Runbook 可以設定為根據排程觸發 Azure Analysis Services 模型重新�
 > [!IMPORTANT]
 > 確定虛擬機器公用 IP 位址已設定為 [靜態]。
 >
->若要深入瞭解如何設定 Azure 自動化混合式背景工作角色，請參閱[使用混合式 Runbook 背景工作角色將資料中心或雲端中的資源自動化](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker)。
+>若要深入瞭解如何設定 Azure 自動化混合式背景工作角色，請參閱[混合式 Runbook 背景工作安裝](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation)。
 
 設定混合式背景工作角色之後，請[依照使用與 Data Factory](#consume-with-data-factory)一節中所述的方式建立 Webhook。  這裡唯一的差異是在設定 Webhook 時，選取 [在混合式背景 > **工作角色****上執行**] 選項。
 

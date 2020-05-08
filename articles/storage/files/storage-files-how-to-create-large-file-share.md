@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: add2805d9a360d3d9cd45ab54f476a6852fb7bd5
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537673"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858574"
 ---
 # <a name="enable-and-create-large-file-shares"></a>啟用並建立大型檔案共用
 
@@ -26,8 +26,9 @@ ms.locfileid: "81537673"
 
 ## <a name="restrictions"></a>限制
 
-目前，您只能在已啟用大型檔案共用的帳戶上使用本機-多餘儲存體（LRS）或區域冗余儲存體（ZRS）。 您不能使用異地區域冗余儲存體（切換）、異地多餘儲存體（GRS）或讀取權限異地多餘儲存體（RA-GRS）。
-在帳戶上啟用大型檔案共用是無法復原的程式。 啟用之後，您將無法將帳戶轉換成切換、GRS 或 RA-GRS。
+目前，您只能在已啟用大型檔案共用的帳戶上使用本機-多餘儲存體（LRS）或區域冗余儲存體（ZRS）。 您不能使用異地區域冗余儲存體（切換）、異地多餘儲存體（GRS）、讀取權限異地多餘儲存體（RA-GRS）或讀取權限異地區域冗余儲存體（RA-切換）。
+
+在帳戶上啟用大型檔案共用是無法復原的程式。 啟用之後，您將無法將帳戶轉換成切換、GRS、RA-GRS 或 RA-切換。
 
 ## <a name="create-a-new-storage-account"></a>建立新的儲存體帳戶
 
@@ -50,7 +51,7 @@ ms.locfileid: "81537673"
    |欄位  |值  |
    |---------|---------|
    |部署模型     |Resource Manager         |
-   |效能     |Standard         |
+   |效能     |標準         |
    |帳戶類型     |StorageV2 (一般用途 v2)         |
    |存取層     |經常性存取         |
 
@@ -68,7 +69,7 @@ ms.locfileid: "81537673"
 若要建立已啟用大型檔案共用的儲存體帳戶，請使用下列命令。 將`<yourStorageAccountName>`、 `<yourResourceGroup>`和`<yourDesiredRegion>`取代為您的資訊。
 
 ```azurecli-interactive
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 az storage account create --name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> --sku Standard_LRS --kind StorageV2 --enable-large-file-share
 ```
 
@@ -79,13 +80,13 @@ az storage account create --name <yourStorageAccountName> -g <yourResourceGroup>
 若要建立已啟用大型檔案共用的儲存體帳戶，請使用下列命令。 將`<yourStorageAccountName>`、 `<yourResourceGroup>`和`<yourDesiredRegion>`取代為您的資訊。
 
 ```powershell
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
 
 ## <a name="enable-large-files-shares-on-an-existing-account"></a>在現有的帳戶上啟用大型檔案共用
 
-您也可以在現有的帳戶上啟用大型檔案共用。 如果您啟用大型檔案共用，您將無法轉換成切換、GRS 或 RA-GRS。 在此儲存體帳戶上啟用大型檔案共用無法復原。
+您也可以在現有的帳戶上啟用大型檔案共用。 如果您啟用大型檔案共用，您將無法轉換成切換、GRS、RA-GRS 或 RA-切換。 在此儲存體帳戶上啟用大型檔案共用無法復原。
 
 ### <a name="portal"></a>入口網站
 

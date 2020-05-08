@@ -226,7 +226,9 @@
         - name: 權杖和工作階段管理
           items:
             - name: 自訂權杖
-              href: custom-policy-manage-sso-and-token-config.md
+              href: configure-tokens-custom-policy.md
+            - name: 設定工作階段行為
+              href: session-behavior-custom-policy.md
         - name: 傳遞外部 IdP 權杖
           href: idp-pass-through-custom.md
         - name: 調適型體驗

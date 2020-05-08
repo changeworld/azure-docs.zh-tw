@@ -4,16 +4,16 @@ ms.service: databox
 ms.topic: include
 ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 92ec0cd0c39a515b15da88bb7c638edba2f57714
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: caba2cd99a29cab43e0bffb84243f45ccdcdfaba
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67174423"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561806"
 ---
 |    URL 模式                                                                                                                                                                                                                                                                                                                                                                                                                                                      |    元件或功能                                                                           |
 |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-|    https://\*.databoxedge.azure.com/\*<br>https://\*.servicebus.windows.net/\*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                                                                           |    Azure Data Box Edge 服務<br>Azure 服務匯流排<br>驗證服務                           |
+|    https://\*.databoxedge.azure.com/\*<br>https://\*.servicebus.windows.net/\*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                                                                           |    Azure Stack Edge/資料箱閘道服務<br>Azure 服務匯流排<br>驗證服務                           |
 |    http://\*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                                |    裝置啟用                                                                                    |
 |    HTTP：\//crl.microsoft.com/pki/\*<br>HTTP：\//www.microsoft.com/pki/\*                                                                                                                                                                                                                                                                                                                                                                                                  |    憑證撤銷                                                                               |
 |    https://\*.core.windows.net/\*<br>https://\*.data.microsoft.com<br>http://\*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                            |    Azure 儲存體帳戶和監視                                                                |

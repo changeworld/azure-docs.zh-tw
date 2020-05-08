@@ -4,14 +4,14 @@ description: 使用 Azure Cosmos DB 為空間資料編制索引
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137898"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839195"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 為地理空間資料編制索引
 
@@ -28,11 +28,17 @@ ms.locfileid: "79137898"
 
 ## <a name="modifying-geospatial-data-type"></a>修改地理空間資料類型
 
-在您的`geospatialConfig`容器中，會指定地理空間資料的編制索引方式。 您應該為每`geospatialConfig`個容器指定一個： geography 或 geometry。 如果未指定，則`geospatialConfig`會預設為 geography 資料類型。 當您修改時`geospatialConfig`，容器中所有現有的地理空間資料都將會重新建立索引。
+在您的容器中，**地理空間**設定會指定空間資料的編制索引方式。 為每個容器指定一個**地理空間**設定： geography 或 geometry。
 
-> [!NOTE]
-> Azure Cosmos DB 目前僅支援在3.6 和更新版本中修改 .NET SDK 中的 geospatialConfig。
->
+您可以在 Azure 入口網站的 [ **geography** ] 和 [ **geometry** ] 空間類型之間切換。 請務必先建立具有周框方塊的[有效空間幾何索引編制原則](#geometry-data-indexing-examples)，再切換至 geometry 空間類型。
+
+以下說明如何在 Azure 入口網站的**資料總管**中設定**地理空間**設定：
+
+![設定地理空間設定](./media/sql-query-geospatial-index/geospatial-configuration.png)
+
+您也可以在 .NET `geospatialConfig` SDK 中修改，以調整**地理空間**設定：
+
+如果未指定，則`geospatialConfig`會預設為 geography 資料類型。 當您修改時`geospatialConfig`，容器中所有現有的地理空間資料都將會重新建立索引。
 
 以下是藉由設定`geometry` `geospatialConfig`屬性和新增**boundingBox**，將地理空間資料類型修改為的範例：
 
@@ -112,7 +118,7 @@ ms.locfileid: "79137898"
 
 周框方塊是必要的，因為幾何資料佔用的平面可能是無限的。 不過，空間索引需要有限的空間。 對於**geography**資料類型，地球是界限，您不需要設定周框方塊。
 
-您應該建立包含所有（或大部分）資料的周框方塊。 只有在完全位於周框方塊內的物件上計算的作業，才能夠利用空間索引。 您不應該讓周框方塊明顯大於必要，因為這會對查詢效能造成負面影響。
+建立包含所有（或大部分）資料的周框方塊。 只有在完全位於周框方塊內的物件上計算的作業，才能夠利用空間索引。 使周框方塊大於必要會對查詢效能造成負面影響。
 
 以下是索引編制原則的範例，其會將**幾何**資料與`geometry` **geospatialConfig**設定為：
 

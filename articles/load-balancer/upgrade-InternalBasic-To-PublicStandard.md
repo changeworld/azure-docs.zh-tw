@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770408"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858405"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>升級 Azure 內部 Load Balancer-需要輸出連線
-[Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。 由於 Standard Internal Load Balancer 並不提供輸出連線，因此我們提供了一個解決方案，改為建立標準的公用 Load Balancer。
+[Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。 由於 Standard Internal Load Balancer 並不提供輸出連線，因此我們提供了一個解決方案，改為建立標準的公用 Load Balancer。
 
 升級有四個階段：
 
@@ -124,11 +124,11 @@ ms.locfileid: "81770408"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell 腳本是否有任何限制，可將設定從 v1 遷移至 v2？
 
-是。 請參閱[警告/限制](#caveatslimitations)。
+可以。 請參閱[警告/限制](#caveatslimitations)。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否也會將來自我的基本 Load Balancer 的流量切換到新建立的 Standard Load Balancer？
 
-否。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
+不需要。 Azure PowerShell 腳本只會遷移設定。 實際的流量遷移是您在控制中的責任。
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>我在使用此腳本時遇到一些問題。 如何取得協助？
   
