@@ -3,12 +3,12 @@ title: 原則定義結構的詳細資料
 description: 說明如何使用原則定義來建立組織中 Azure 資源的慣例。
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5d4a86f4d9f74cf17229467f19a3afa8bebcf40f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f396f46fa77f75452ac8ac3cd98bccd58fe0dfe4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187761"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613297"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure 原則定義結構
 
@@ -73,14 +73,14 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 
 **Mode** 決定原則要評估哪些資源類型。 支援的模式如下：
 
-- `all`：評估資源群組和所有資源類型
+- `all`：評估資源群組、訂用帳戶和所有資源類型
 - `indexed`：只評估支援標記和位置的資源類型
 
 例如，資源`Microsoft.Network/routeTables`支援標記和位置，並在這兩種模式中進行評估。 不過，無法`Microsoft.Network/routeTables/routes`標記資源，也無法在模式`Indexed`中進行評估。
 
 我們建議您在大部分的情況下都將 **mode** 設定為 `all`。 透過入口網站使用 `all` 模式建立的所有原則定義。 如果您是使用 PowerShell 或 Azure CLI，則可手動指定 **mode** 參數。 如果原則定義未包含 **mode** 值，則在 Azure PowerShell 中會預設為 `all`，而在 Azure CLI 中會預設為 `null`。 `null` 模式與使用 `indexed` 來支援回溯相容性相同。
 
-建立會強制執行標籤或位置的原則時，應該使用 `indexed`。 雖然並非必要，但它可防止不支援標籤和位置的資源在合規性結果中顯示為不符合規範。 有一個例外，就是**資源群組**。 原則如果會在資源群組上強制執行位置或標籤，就應該將 **mode** 設定為 `all`，並明確地以 `Microsoft.Resources/subscriptions/resourceGroups` 類型作為目標。 如需範例，請參閱[強制執行資源群組標籤](../samples/enforce-tag-rg.md)。 如需支援標記的資源清單，請參閱[Azure 資源的標記支援](../../../azure-resource-manager/management/tag-support.md)。
+建立會強制執行標籤或位置的原則時，應該使用 `indexed`。 雖然並非必要，但它可防止不支援標籤和位置的資源在合規性結果中顯示為不符合規範。 例外狀況是**資源群組**和**訂**用帳戶。 在資源群組或訂用帳戶上強制執行位置或標記的**mode**原則， `all`應該將模式設定`Microsoft.Resources/subscriptions/resourceGroups`為`Microsoft.Resources/subscriptions` ，並特別以或類型為目標。 如需範例，請參閱[強制執行資源群組標籤](../samples/enforce-tag-rg.md)。 如需支援標記的資源清單，請參閱[Azure 資源的標記支援](../../../azure-resource-manager/management/tag-support.md)。
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />資源提供者模式（預覽）
 
@@ -410,7 +410,7 @@ Azure 原則會建立資源的慣例。 原則定義會描述資源合規性[條
 
 使用修改過的原則規則`if()` ，會先檢查**名稱**的長度，再嘗試`substring()`取得少於三個字元的值。 如果**名稱**太短，則會改為傳回值「不是以 abc 開頭」，並與**abc**比較。 簡短名稱不是**abc**開頭的資源仍會失敗原則規則，但在評估期間不會再造成錯誤。
 
-### <a name="count"></a>Count
+### <a name="count"></a>計數
 
 計算資源裝載中陣列成員數目符合條件運算式的條件，可以使用**計數**運算式來形成。 常見的案例是檢查「至少其中一個」、「全部」、「全部」或「無」陣列成員是否符合條件。 **count**會評估條件運算式的每個[ \[ \* \]別名](#understanding-the--alias)陣列成員，並加總_true_結果，然後再與運算式運算子進行比較。 最多可將3倍的**計數**運算式新增至單一**policyRule**定義。
 

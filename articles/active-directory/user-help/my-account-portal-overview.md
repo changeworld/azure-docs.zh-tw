@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 04/20/2020
 ms.author: curtand
-ms.openlocfilehash: 4c9d421fd9ac8305c27dfa798f2869e59a04f9fb
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: fd22f3b9d365bfee543712f680d504bb134f24d7
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77062450"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625692"
 ---
 # <a name="what-is-the-my-account-portal"></a>什麼是「我的帳戶」入口網站？
 
 [我的帳戶]  (預覽) 入口網站可藉由設定和管理安全性資訊、管理已連線的組織和裝置，以及檢視組織使用資料的方式，協助您管理公司或學校帳戶。
 
-您可以從下列任何瀏覽器目前的版本前往 [我的帳戶]  入口網站 (https://myprofile.microsoft.com) )：
+您可以從下列任何瀏覽器目前的版本前往 [我的帳戶]  入口網站 (https://myaccount.microsoft.com) )：
 
 - Chrome
 - Microsoft Edge

@@ -8,20 +8,20 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: bfbe311d9768923eee8c1b0cc4f3b4ec1a7ad69a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed93ba937a843618f36bac6e88b15ff77355ca75
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186300"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610695"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比較與 Azure HDInsight 叢集搭配使用的儲存體選項
 
 建立 HDInsight 叢集時，您可以在幾個不同的 Azure 儲存體服務之間進行選擇：
 
 * [Azure 儲存體](./overview-azure-storage.md)
-* [Azure Data Lake Storage Gen2](./overview-data-lake-storage-gen1.md) \(部分機器翻譯\)
-* [Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen2.md)
+* [Azure Data Lake Storage Gen2](./overview-data-lake-storage-gen2.md) \(部分機器翻譯\)
+* [Azure Data Lake Storage Gen1](./overview-data-lake-storage-gen1.md)
 
 本文提供了這些儲存體類型和其獨特功能的概觀。
 
@@ -31,10 +31,10 @@ ms.locfileid: "82186300"
 
 | 儲存體服務 | 帳戶類型 | 命名空間類型 | 支援的服務 | 支援的效能層級 | 支援的存取層 | HDInsight 版本 | 叢集類型 |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| 一般用途 V2 | 階層式（filesystem） | Blob | Standard | 經常性存取、非經常性存取、封存 | 3.6+ | 除了 Spark 2.1 和2.2 以外的所有|
-|Azure 儲存體| 一般用途 V2 | Object | Blob | Standard | 經常性存取、非經常性存取、封存 | 3.6+ | 全部 |
-|Azure 儲存體| 一般用途 V1 | Object | Blob | Standard | N/A | 全部 | 全部 |
-|Azure 儲存體| Blob 儲存體 * * | Object | 區塊 Blob | Standard | 經常性存取、非經常性存取、封存 | 全部 | 全部 |
+|Azure Data Lake Storage Gen2| 一般用途 V2 | 階層式（filesystem） | Blob | 標準 | 經常性存取、非經常性存取、封存 | 3.6+ | 除了 Spark 2.1 和2.2 以外的所有|
+|Azure 儲存體| 一般用途 V2 | Object | Blob | 標準 | 經常性存取、非經常性存取、封存 | 3.6+ | 全部 |
+|Azure 儲存體| 一般用途 V1 | Object | Blob | 標準 | N/A | 全部 | 全部 |
+|Azure 儲存體| Blob 儲存體 * * | Object | 區塊 Blob | 標準 | 經常性存取、非經常性存取、封存 | 全部 | 全部 |
 |Azure Data Lake Storage Gen1| N/A | 階層式（filesystem） | N/A | N/A | N/A | 僅限3。6 | HBase 以外的所有 |
 
 * * 對於 HDInsight 叢集，只有次要儲存體帳戶可以屬於類型 BlobStorage，而分頁 Blob 則不是支援的儲存體選項。

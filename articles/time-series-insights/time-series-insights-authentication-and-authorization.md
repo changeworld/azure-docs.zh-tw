@@ -11,13 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: beefad41a270233336bb9134268c98341e81a7cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: bf959a7ac8c1038c4306a45ba4519374c5d85f29
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380815"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612277"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API 的驗證和授權
 
@@ -93,7 +93,7 @@ Azure Active Directory 應用程式註冊流程牽涉到三個主要步驟。
 
    1. 當應用程式呼叫 Time Series Insights API 時，此權杖即可傳入 `Authorization` 標頭。
 
-* 或者，開發人員可以選擇使用 MSAL 進行驗證。 閱讀有關[遷移至 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)的資訊，並參閱我們的[使用 c # 管理 AZURE 時間序列深入解析環境的 GA 參考資料](time-series-insights-manage-reference-data-csharp.md)文章以深入瞭解。 
+* 或者，開發人員可以選擇使用 MSAL 進行驗證。 閱讀有關[遷移至 MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration)的資訊，並參閱我們的[使用 c # 管理 AZURE 時間序列深入解析環境的 GA 參考資料](time-series-insights-manage-reference-data-csharp.md)文章以深入瞭解。
 
 ## <a name="common-headers-and-parameters"></a>一般標頭和參數
 
@@ -104,7 +104,7 @@ Azure Active Directory 應用程式註冊流程牽涉到三個主要步驟。
 
 ### <a name="authentication"></a>驗證
 
-若要對[時間序列深入解析 REST api](https://docs.microsoft.com/rest/api/time-series-insights/)執行已驗證的查詢，必須使用您選擇的 REST 用戶端（Postman、JavaScript、c #），在[授權標頭](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)中傳遞有效的 OAuth 2.0 持有人權杖。 
+若要對[時間序列深入解析 REST api](https://docs.microsoft.com/rest/api/time-series-insights/)執行已驗證的查詢，必須使用您選擇的 REST 用戶端（Postman、JavaScript、c #），在[授權標頭](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate)中傳遞有效的 OAuth 2.0 持有人權杖。
 
 > [!TIP]
 > 閱讀裝載的 Azure 時間序列深入解析[用戶端 sdk 範例視覺效果](https://tsiclientsample.azurewebsites.net/)，以瞭解如何使用[JAVASCRIPT 用戶端 SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)搭配圖表和圖形，以程式設計方式驗證時間序列深入解析 api。
@@ -115,7 +115,7 @@ Azure Active Directory 應用程式註冊流程牽涉到三個主要步驟。
 
 | 必要的要求標頭 | 描述 |
 | --- | --- |
-| 授權 | 若要使用時間序列深入解析進行驗證，必須在**Authorization**標頭中傳遞有效的 OAuth 2.0 持有人權杖。 | 
+| 授權 | 若要使用時間序列深入解析進行驗證，必須在**Authorization**標頭中傳遞有效的 OAuth 2.0 持有人權杖。 |
 
 > [!IMPORTANT]
 > 權杖必須完全發行至`https://api.timeseries.azure.com/`資源（也稱為權杖的「物件」）。

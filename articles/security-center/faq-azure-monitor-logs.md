@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f6384c1e9e14e38b4c44c5ac79a674839b43b4ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436157"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612821"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>已使用 Azure 監視器記錄之客戶的常見問題<a name="existingloganalyticscust"></a>
 
@@ -42,7 +42,7 @@ ms.locfileid: "80436157"
 ## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>我的環境中已經有工作區，我是否能使用這些工作區來收集安全性資料？
 如果 VM 已將 Log Analytics 代理程式安裝為 Azure 擴充功能，資訊安全中心會使用現有已連線的工作區。 資訊安全中心解決方案若尚未安裝，此時會安裝至工作區，且透過[解決方案目標設定](../operations-management-suite/operations-management-suite-solution-targeting.md)，此解決方案只會套用至相關的虛擬機器。
 
-當資訊安全中心在 Vm 上安裝 Log Analytics 代理程式時，它會使用資訊安全中心所建立的預設工作區。
+當資訊安全中心在 Vm 上安裝 Log Analytics 代理程式時，如果資訊安全中心未指向現有的工作區，它會使用資訊安全中心所建立的預設工作區。
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>我的工作區上已經有安全性解決方案。 這會對計費造成什麼影響？
 安全性 & Audit 解決方案可用來啟用 Azure Vm 的資訊安全中心標準層功能。 如果工作區已經安裝有 Security & Audit 解決方案，資訊安全中心會使用現有的解決方案。 收費不會改變。

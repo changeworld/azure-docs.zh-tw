@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 600167e529e1ff8cfa65eeb3d0fb6fe26e9466bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137513"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738060"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保護已容錯移轉到主要區域的 Azure VM
 
@@ -22,7 +22,7 @@ ms.locfileid: "82137513"
 1. 重新保護次要區域中的 VM，好讓它們開始複寫到主要區域。
 1. 在重新保護完成並複寫 Vm 之後，您可以從次要區域故障切換到主要區域。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 必須認可從主要到次要區域的 VM 容錯移轉。
 - 主要目標網站應該可供使用，而且您應該能夠存取或建立該區域中的資源。
@@ -95,6 +95,10 @@ ms.locfileid: "82137513"
 |來源區域有1個具有 1 TB premium 磁片的 VM。<br/>僅使用 20 GB 資料，而磁片的其餘部分是空的。<br/>磁片類型是具有 200 MBps 輸送量的 premium。<br/>容錯移轉後立即在磁片上的初始資料為 15 GB。 容錯移轉之後，有 5 GB 的資料變更。 因此，填入的資料總數為 20 GB| 大約時間：30-45 分鐘。<br/>因為磁片中填入的資料小於磁片大小的10%，所以我們會執行完整的初始複寫。<br/>傳送速率大約是輸送量或32MBps 的16%。 因此，傳輸時間以套用 20 GB 的變更，也就是 20 GB/32 MBps，約11分鐘。<br/>Site Recovery 需要一些額外的時間才能自動調整，大約20-30 分鐘 |
 
 當 VM 在容錯回復到主要區域之後重新受到保護（也就是，如果 VM 從主要區域重新保護到 DR 區域），則會刪除目標 VM 和相關聯的 NIC。
+
+當 VM 從 DR 區域重新保護到主要區域時，我們不會刪除先前主要 VM 和相關聯的 NIC。
+
+當 VM 在容錯回復到主要區域之後重新受到保護（也就是，如果 VM 從主要區域重新保護到 DR 區域），則會刪除目標 VM 和相關聯的 NIC。 
 
 當 VM 從 DR 區域重新保護到主要區域時，我們不會刪除先前主要 VM 和相關聯的 NIC。
 
