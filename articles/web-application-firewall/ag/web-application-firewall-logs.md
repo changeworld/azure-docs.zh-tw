@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: 4bc2aa055c40fb33edade8f7815311e392633885
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4bca41effc4e9834f8c76308556facb0681717cd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133870"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888883"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Azure Web 應用程式防火牆的資源記錄
 
@@ -305,7 +305,7 @@ ms.locfileid: "82133870"
 ## <a name="next-steps"></a>後續步驟
 
 * 利用 [Azure 監視器記錄](../../azure-monitor/insights/azure-networking-analytics.md)將計數器和事件記錄視覺化。
-* [以 Power BI 的 blog 文章將您的 Azure 活動記錄視覺化](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)。
+* [以 Power BI 的 blog 文章將您的 Azure 活動記錄視覺化](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/)。
 * [在 Power BI 和其他工具中檢視和分析 Azure 活動記錄](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)部落格文章。
 
 [1]: ../media/web-application-firewall-logs/figure1.png

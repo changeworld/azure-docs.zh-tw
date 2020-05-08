@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 04/22/2020
 ms.author: jingwang
-ms.openlocfilehash: da5c53f8953960c382070be658add2877fff3f8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71b05d8607c174dbe9298a1c02f4927ed2218374
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416885"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891425"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>使用 Azure Data Factory 從 ODBC 資料存放區複製資料及將資料複製到處
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -35,9 +35,9 @@ ms.locfileid: "81416885"
 
 您可以將資料從 ODBC 來源複製到任何支援的接收資料存放區，或從任何支援的來源資料存放區複製到 ODBC 接收器。 如需複製活動所支援作為來源/接收器的資料存放區清單，請參閱[支援的資料存放區](copy-activity-overview.md#supported-data-stores-and-formats)表格。
 
-具體而言，這個 ODBC 連接器支援使用 **Basic** (基本) 或 **Anonymous** (匿名) 驗證，從**任何 ODBC 相容的資料存放區**複製資料或將資料複製到該處。 需要**64 位的 ODBC 驅動程式**。
+具體而言，這個 ODBC 連接器支援使用 **Basic** (基本) 或 **Anonymous** (匿名) 驗證，從**任何 ODBC 相容的資料存放區**複製資料或將資料複製到該處。 需要**64 位的 ODBC 驅動程式**。 若為 ODBC 接收器，ADF 支援 ODBC 2.0 standard 版。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要使用這個 ODBC 連接器，您必須：
 
@@ -60,7 +60,7 @@ ms.locfileid: "81416885"
 | connectionString | 不包含認證部分的連接字串。 您可以用 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` 模式指定連接字串，或使用您在 Integration Runtime 電腦上以 `"DSN=<name of the DSN on IR machine>;"` 設定的系統 DSN (資料來源名稱) (仍需要據此指定連結的服務中的認證部分)。<br>您也可以將密碼放在 Azure Key Vault 中，並 `password` 從連接字串中提取設定。如需詳細資訊，請參閱  [在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)。| 是 |
 | authenticationType | 用來連接到 ODBC 資料存放區的驗證類型。<br/>允許的值為：**Basic** (基本) 和 **Anonymous** (匿名)。 | 是 |
 | userName | 如果您要使用 Basic 驗證，請指定使用者名稱。 | 否 |
-| password | 指定您為 userName 指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 否 |
+| 密碼 | 指定您為 userName 指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 | 否 |
 | 認證 (credential) | 以驅動程式特定「屬性-值」格式指定之連接字串的存取認證部分。 範例： `"RefreshToken=<secret refresh token>;"`. 請將此欄位標示為 SecureString。 | 否 |
 | connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 如[必要條件](#prerequisites)所述，必須要有一個「自我裝載 Integration Runtime」。 |是 |
 
@@ -236,48 +236,9 @@ ms.locfileid: "81416885"
 ]
 ```
 
-## <a name="sap-hana-sink"></a>SAP HANA 接收器
-
->[!NOTE]
->若要從 SAP HANA 資料存放區複製資料，請參考原生 [SAP HANA 連接器](connector-sap-hana.md)。 若要將資料複製到 SAP HANA，請依照此指示來使用 ODBC 連接器。 請注意，SAP HANA 連接器和 ODBC 連接器的已連接服務具有不同的類型，因此無法重複使用。
->
-
-您可以使用一般的 ODBC 連接器從 IBM Informix 資料庫複製資料。
-
-請在電腦上設定一個能夠存取您資料存放區的「自我裝載 Integration Runtime」。 此 Integration Runtime 會使用 SAP HANA 的 ODBC 驅動程式來連線到資料存放區。 因此，如果尚未在該相同電腦上安裝該驅動程式，請安裝該驅動程式。 如需詳細資料，請參閱[必要條件](#prerequisites)一節。
-
-在 Data Factory 解決方案中使用 SAP HANA 接收之前，請先依照[針對連線問題進行疑難排解](#troubleshoot-connectivity-issues)一節中的指示，確認 Integration Runtime 是否能夠連線到資料存放區。
-
-建立 ODBC 已連結的服務來將 SAP HANA 資料存放區連線至 Azure Data Factory，如以下範例所示︰
-
-```json
-{
-    "name": "SAPHANAViaODBCLinkedService",
-    "properties": {
-        "type": "Odbc",
-        "typeProperties": {
-            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
-            "authenticationType": "Basic",
-            "userName": "<username>",
-            "password": {
-                "type": "SecureString",
-                "value": "<password>"
-            }
-        },
-        "connectVia": {
-            "referenceName": "<name of Integration Runtime>",
-            "type": "IntegrationRuntimeReference"
-        }
-    }
-}
-```
-
-如需在複製作業中使用 ODBC 資料存放區作為來源/接收資料存放區的詳細概觀，請從頭閱讀本文。
-
 ## <a name="lookup-activity-properties"></a>查閱活動屬性
 
 若要瞭解屬性的詳細資料，請檢查[查閱活動](control-flow-lookup-activity.md)。
-
 
 ## <a name="troubleshoot-connectivity-issues"></a>疑難排解連線問題
 

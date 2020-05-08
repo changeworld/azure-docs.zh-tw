@@ -2,16 +2,15 @@
 title: Azure Application Insights - 相依性自動收集 | Microsoft Docs
 description: Application Insights 會自動收集相依項目，並將其視覺化
 ms.topic: reference
-author: nikmd23
-ms.author: nimolnar
-ms.date: 04/29/2019
-ms.reviewer: mbullwin
-ms.openlocfilehash: eaafe19f5112b433d50a34aa551aa84d196726a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/06/2020
+ms.openlocfilehash: 21e98ee9dc59e7520fb715f1146e492b9198f883
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665811"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891603"
 ---
 # <a name="dependency-auto-collection"></a>相依性自動收集
 
@@ -28,10 +27,15 @@ ms.locfileid: "77665811"
 | <b> 通訊程式庫</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5+、.NET Core 1.1+ |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0+、NuGet 4.3.0 |
+| [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0-最新的穩定版本。 （請參閱下面的附注）。
 | [EventHubs 用戶端 SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 |
 | [ServiceBus 用戶端 SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>儲存體用戶端</b>|  |
 | ADO.NET | 4.5+ |
+
+> [!NOTE]
+> 較舊版本的 SqlClient 有[已知問題](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1347)。 我們建議使用1.1.0 或更新版本來減輕這個問題。 Entity Framework Core 不一定會隨附 SqlClient 的最新穩定版本，因此我們建議您確認至少已有1.1.0，以避免發生此問題。   
+
 
 ## <a name="java"></a>Java
 | 應用程式伺服器 | 版本 |

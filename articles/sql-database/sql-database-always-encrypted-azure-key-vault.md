@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: f1d08581c5d29fc41fb33541d766af7cece88cdc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c171c1bab99e4e3748267308745ee66631ed08d
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81451664"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888968"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>一律加密：保護機密資料，並將加密金鑰儲存在 Azure Key Vault 中
 
@@ -35,7 +35,7 @@ ms.locfileid: "81451664"
 - 建立資料庫資料表並將資料行加密。
 - 建立可插入、選取及顯示加密資料行資料的應用程式。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 針對本教學課程，您將需要：
 
@@ -192,11 +192,11 @@ SSMS 提供一個精靈，可為您設定資料行主要金鑰、資料行加密
 
 您現在可以加密資料行，或儲存為 PowerShell 指令碼以供日後執行。 針對這個教學課程，請選取 [繼續以立即完成]****，然後按 [下一步]****。
 
-### <a name="summary"></a>[摘要]
+### <a name="summary"></a>摘要
 
 確認設定全都正確，然後按一下 [完成] **** 以完成 [一律加密] 的設定。
 
-![[摘要]](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
+![摘要](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>確認精靈的動作
 
@@ -621,4 +621,4 @@ SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 - [透明資料加密](https://msdn.microsoft.com/library/bb934049.aspx)
 - [SQL Server 加密](https://msdn.microsoft.com/library/bb510663.aspx)
 - [Always Encrypted wizard](https://msdn.microsoft.com/library/mt459280.aspx)
-- [永遠加密部落格](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+- [永遠加密部落格](https://docs.microsoft.com/archive/blogs/sqlsecurity/always-encrypted-key-metadata)

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2027629e1e9e297c97cbf40485ebe7dc2e3e6c0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4673bcb71fc2f45c3b02f8fe5e463184395e8ef8
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277722"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891285"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>適用于 Azure Functions 的 Azure 事件方格觸發程式
 
@@ -313,7 +313,7 @@ Python 不支援屬性。
 | **方向** | 必要項目 - 必須設定為 `in`。 |
 | **name** | 必要項目 - 函式程式碼中用於接收事件資料之參數的變數名稱。 |
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用狀況
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -570,4 +570,4 @@ Event Grid 觸發程序函式會執行並顯示類似於下列範例的記錄：
 
 ## <a name="next-steps"></a>後續步驟
 
-* [分派事件方格事件](./functions-bindings-event-grid-trigger.md)
+* [分派事件方格事件](./functions-bindings-event-grid-output.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 630be1676d73410f1b0d376b163a8599299ddbe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b6451d29a3a874e09d74cbe664662a395b647f9
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883146"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890471"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>如何設定應用程式的單一登入
 
@@ -40,6 +40,6 @@ ms.locfileid: "80883146"
 
 [將應用程式整合到 AzureAD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
 
-[適用於 AzureAD v2.0 交集應用程式的同意與權限](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Microsoft 身分識別平台端點中的權限和同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 
 [AzureAD StackOverflow (英文)](https://stackoverflow.com/questions/tagged/azure-active-directory)

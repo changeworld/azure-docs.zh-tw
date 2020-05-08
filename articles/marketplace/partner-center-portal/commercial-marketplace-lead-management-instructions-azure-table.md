@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure 資料表設定 Microsoft 商業 marketplace 潛在客戶管理
-description: 瞭解如何使用 Azure 資料表來管理來自 Microsoft AppSource 和 Azure Marketplace 的潛在客戶。
+title: 使用 Azure 資料表儲存體進行潛在客戶管理-Microsoft 商業 marketplace
+description: 瞭解如何使用 Azure 資料表儲存體來設定潛在客戶的 Microsoft AppSource 和 Azure Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9814b03e348fc807c04364afbf027369f917670a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131134"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791012"
 ---
-# <a name="configure-lead-management-by-using-an-azure-table"></a>使用 Azure 資料表來設定潛在客戶管理
+# <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure 表格儲存體來管理商業 marketplace 潛在客戶
 
-如果合作夥伴中心未明確支援您的客戶關係管理（CRM）系統來接收 Microsoft AppSource 和 Azure Marketplace 潛在客戶，您可以使用 Azure 資料表來處理這些潛在客戶。 然後您可以選擇匯出資料，並將它匯入到您的 CRM 系統。 本文中的指示會引導您完成在該帳戶下建立 Azure 儲存體帳戶和 Azure 資料表的程式。 此外，您可以使用 [電源自動化] 來建立新的流程，以在您的供應專案收到潛在客戶時傳送電子郵件通知。
+如果合作夥伴中心未明確支援您的客戶關係管理（CRM）系統來接收 Microsoft AppSource 和 Azure Marketplace 潛在客戶，您可以使用 Azure 資料表儲存體來處理這些潛在客戶。 然後您可以選擇匯出資料，並將它匯入到您的 CRM 系統。 本文說明如何在該帳戶下建立 Azure 儲存體帳戶和資料表。 此外，您可以使用 [電源自動化] 來建立新的流程，以在您的供應專案收到潛在客戶時傳送電子郵件通知。
 
-## <a name="configure-an-azure-table"></a>設定 Azure 資料表
+## <a name="configure-an-azure-storage-account"></a>設定 Azure 儲存體帳戶
 
 1. 如果您沒有 Azure 帳戶，您可以[建立免費的試用帳戶](https://azure.microsoft.com/pricing/free-trial/)。
 1. 當您的 Azure 帳戶處於作用中狀態時，請登入[Azure 入口網站](https://portal.azure.com)。
@@ -32,7 +32,11 @@ ms.locfileid: "82131134"
 
         如需儲存體帳戶的詳細資訊，請參閱[快速入門教學](https://docs.microsoft.com/azure/storage/)課程。 如需儲存體價格的詳細資訊，請參閱[儲存體定價](https://azure.microsoft.com/pricing/details/storage/)。
 
-1. 等到您的儲存體帳戶布建完成。 此程式通常需要幾分鐘的時間。 然後選取 [**查看您的所有資源**]，從 Azure 入口網站的**首頁**存取您的儲存體帳戶。 您也可以從 Azure 入口網站的左側功能表列中選取 [**所有資源**]。
+1. 等到您的儲存體帳戶布建完成。 此程式通常需要幾分鐘的時間。 
+
+## <a name="create-a-table-in-your-storage-account"></a>在您的儲存體帳戶中建立資料表
+
+1. 從 [Azure 入口網站] 的 **[首頁] 頁面中**，選取 [**查看您的所有資源**以存取您的儲存體帳戶]。 您也可以從 Azure 入口網站的左側功能表列中選取 [**所有資源**]。
 
     ![存取您的 Azure 儲存體帳戶](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
 
@@ -52,13 +56,13 @@ ms.locfileid: "82131134"
 
     您可以使用[Azure 儲存體總管](https://archive.codeplex.com/?p=azurestorageexplorer)或任何其他工具來查看儲存體資料表中的資料。 您也可以匯出 Azure 資料表中的資料。 
 
-## <a name="optional-use-power-automate-with-an-azure-table"></a>選擇性使用 Azure 資料表的電源自動化 
+## <a name="optional-use-power-automate-to-get-lead-notifications"></a>選擇性使用電源自動化以取得潛在客戶通知
 
-您可以使用 [[電源自動化](https://docs.microsoft.com/flow/)]，在每次將潛在客戶新增至 Azure 資料表時自動執行通知。 如果您沒有帳戶，您可以[註冊免費帳戶](https://flow.microsoft.com/)。
+您可以使用 [[電源自動化](https://docs.microsoft.com/flow/)]，在每次將潛在客戶新增至 Azure 儲存體資料表時自動執行通知。 如果您沒有帳戶，您可以[註冊免費帳戶](https://flow.microsoft.com/)。
 
 ### <a name="lead-notification-example"></a>潛在客戶通知範例
 
-使用此範例作為指南，以建立簡單的流程，在新的潛在客戶新增至 Azure 資料表時，自動傳送電子郵件通知。 這個範例會設定當資料表儲存體已更新時，每小時傳送潛在客戶資訊的週期。
+此範例會建立一個流程，在將新的潛在客戶新增至 Azure 資料表儲存體時，自動傳送電子郵件通知。 這個範例會設定當資料表儲存體已更新時，每小時傳送潛在客戶資訊的週期。
 
 1. 登入您的 Power 自動化帳戶。
 1. 在左側工具列上，選取 [**我的流程**]。
@@ -89,21 +93,21 @@ ms.locfileid: "82131134"
    >[!TIP] 
    >您可以隨時檢查您的流程，以確認每個步驟都已正確設定。 若要檢查您的流程，請從 [**流程**] 功能表列選取 [ **flow 檢查**程式]。
 
-   在下一組步驟中，您將連接到 Azure 資料表，並設定處理邏輯來處理新的潛在客戶。
+   在下一組步驟中，您將連接到您的資料表，並設定處理邏輯來處理新的潛在客戶。
 
-1. 在步驟8之後，選取 [ **+ 新增步驟**]。 然後在 [**選擇動作**] 視窗中搜尋 [**取得實體**]。
+1. 選取 [+ 新步驟] ****。 然後在 [**選擇動作**] 視窗中搜尋 [**取得實體**]。
 1. 在 [**動作**] 底下，選取 **[取得實體（Azure 表格儲存體）**]。
 1. 在 [ **Azure 表格儲存體**] 視窗中，提供下列方塊的資訊，然後選取 [**建立**]：
 
-    * 連線**名稱**：為您在此流程和 Azure 資料表之間建立的連接提供有意義的名稱。
-    * **儲存體帳戶名稱**：提供 Azure 資料表的儲存體帳戶名稱。 您可以在儲存體帳戶的 [**存取金鑰**] 頁面上找到此名稱。
-    * **共用儲存體金鑰**：為您的 Azure 資料表的存放區帳戶提供金鑰值。 您可以在儲存體帳戶的 [**存取金鑰**] 頁面上找到此值。
+    * **連接名稱**：為您在此流程與資料表之間建立的連接提供有意義的名稱。
+    * **儲存體帳戶名稱**：提供資料表的儲存體帳戶名稱。 您可以在儲存體帳戶的 [**存取金鑰**] 頁面上找到此名稱。
+    * **共用儲存體金鑰**：為您的資料表提供存放區帳戶的金鑰值。 您可以在儲存體帳戶的 [**存取金鑰**] 頁面上找到此值。
 
       ![Azure 表格儲存體視窗](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
    選取 [**建立**] 之後，[**取得實體**] 視窗隨即出現。 在這裡，選取 [顯示] [ **advanced options**]，並提供下列方塊的資訊：
 
-   * **資料表**：選取您的 Azure 資料表儲存體名稱（從「設定 Azure 資料表」一節中指示的步驟6）。 下圖顯示針對此範例選取 "marketplaceleads" 資料表時的提示。
+   * **資料表**：選取資料表的名稱（從 [[建立資料表](#create-a-table-in-your-storage-account)]）。 下圖顯示針對此範例選取 "marketplaceleads" 資料表時的提示。
 
      ![取得實體視窗](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -177,9 +181,18 @@ ms.locfileid: "82131134"
 當您準備好在發佈入口網站中為您的供應專案設定潛在客戶管理資訊時，請遵循下列步驟。
 
 1. 移至供應專案的**供應專案設定**頁面。
+
 1. 選取 [**潛在客戶管理**] 區段下的 **[連接]** 。
-1. 在 [連線**詳細資料**] 快顯視窗中，選取 [ **Azure 資料表**] 作為 [**潛在客戶目的地**]。 在 [**儲存體帳戶連接字串**] 方塊中遵循先前的步驟，從您建立的 Azure 儲存體帳戶貼上連接字串。
+     ![潛在客戶管理](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+
+1. 在 [連線**詳細資料**] 快顯視窗中，選取 [ **Azure 資料表**] 作為 [**潛在客戶目的地**]。 
+     ![潛在客戶管理，連線詳細資料](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
+
+1. 在 [**儲存體帳戶連接字串**] 方塊中遵循先前的步驟，從您建立的 Azure 儲存體帳戶貼上連接字串。
+     ![潛在客戶管理，連線詳細資料儲存體帳戶](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
+
 1. **連絡人電子郵件**：為公司中的人員提供電子郵件，當收到新的潛在客戶時，應該會收到電子郵件通知。 您可以提供多個電子郵件，方法是以分號分隔。
+
 1. 選取 [確定]  。
 
 若要確定您已成功連接到潛在客戶目的地，請選取 [**驗證**] 按鈕。 如果成功，您會在潛在客戶目的地中擁有測試潛在客戶。
@@ -188,10 +201,3 @@ ms.locfileid: "82131134"
 >您必須先完成供應專案的其餘部分設定並加以發佈，才能接收供應專案的潛在客戶。
 
 當產生潛在客戶時，Microsoft 會將潛在客戶傳送至 Azure 資料表。 如果您已設定流程，電子郵件也會傳送至您所設定的電子郵件地址。
-
-![潛在客戶管理](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
-
-![潛在客戶管理，連線詳細資料](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
-
-![潛在客戶管理，連線詳細資料儲存體帳戶](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
-

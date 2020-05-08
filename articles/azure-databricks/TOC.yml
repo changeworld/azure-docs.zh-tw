@@ -1027,7 +1027,7 @@
               href: /azure/databricks/security/access-control/pool-acl
               maintainContext: true
             - name: 作業存取控制
-              href: /azure/databricks/security/access-control/job-acl
+              href: /azure/databricks/security/access-control/jobs-acl
               maintainContext: true
             - name: 資料表存取控制
               items:
@@ -1666,7 +1666,7 @@
                 - name: SCIM API (使用者)
                   href: /azure/databricks/dev-tools/api/latest/scim/scim-users
                 - name: SCIM API (群組)
-                  href: /azure/databricks/dev-tools/api/latest/scim/scim-group
+                  href: /azure/databricks/dev-tools/api/latest/scim/scim-groups
               maintainContext: true
             - name: 密碼
               href: /azure/databricks/dev-tools/api/latest/secrets

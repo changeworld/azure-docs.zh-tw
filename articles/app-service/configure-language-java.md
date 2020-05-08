@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cebe5564767ee345c1aea96b6ac54b9398c3e9a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1e42096e7ab950e5d8046ec6140c01b24643cb87
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733037"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891476"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>設定適用于 Azure App Service 的 Windows JAVA 應用程式
 
@@ -24,7 +24,7 @@ Azure App Service 可讓 JAVA 開發人員在完全受控的 Windows 服務上�
 
 ## <a name="deploying-your-app"></a>部署應用程式
 
-您可以使用[適用于 Maven 的 Azure Web 應用程式外掛程式](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)來部署您的 war 檔案。 [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij)或[Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse)也支援使用熱門 ide 進行部署。
+您可以使用[適用于 Maven 的 Azure Web 應用程式外掛程式](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)來部署您的 war 檔案。 [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/)或[Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse)也支援使用熱門 ide 進行部署。
 
 否則，您的部署方法將取決於您的封存類型：
 
@@ -72,7 +72,7 @@ jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename=
 
 Azure App Service 支援透過 Azure 入口網站和 CLI 進行的微調和自訂。 請參閱下列文章，以瞭解非 JAVA 特定的 web 應用程式設定：
 
-- [進行應用程式設定](configure-common.md#configure-app-settings)
+- [設定應用程式設定](configure-common.md#configure-app-settings)
 - [設定自訂網域](app-service-web-tutorial-custom-domain.md)
 - [設定 TLS 系結](configure-ssl-bindings.md)
 - [新增 CDN](../cdn/cdn-add-to-web-app.md)

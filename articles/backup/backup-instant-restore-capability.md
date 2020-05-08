@@ -4,12 +4,12 @@ description: Azure 立即還原功能和 VM 備份堆疊、Azure Resource Manage
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7cf437c6b20ea6b688e8e93e401cf71ef0260888
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc29d1ac4c2e4c22ce6e6f8356927e768dc274e3
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76705423"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597649"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>透過 Azure 備份的立即還原功能取得改良的備份和還原效能
 
@@ -24,7 +24,7 @@ ms.locfileid: "76705423"
 * 支援的磁片大小上限為 32 TB。 Azure 備份不建議調整磁片大小。
 * 支援標準 SSD 磁片以及標準 HDD 磁片和進階 SSD 磁片。
 * 在還原時，能夠使用非受控 Vm 的原始儲存體帳戶（每一磁片）。 即使 VM 的磁碟分散於多個儲存體帳戶，仍然具有此功能。 它能夠針對各種不同的 VM 設定，加快還原作業的速度。
-* 若要備份使用高階儲存體的 Vm，請使用立即還原，建議您配置*50%* 的可用空間（已配置的儲存空間總計，只有在第一次備份時**才**需要）。 第一次備份完成後，備份不需要50% 的可用空間。
+* 如需在儲存體帳戶中使用非受控 premium 磁片的 Vm 備份，請使用立即還原，建議您配置*50%* 的可用空間（已配置的儲存空間總計，只有在第一次備份時**才**需要）。 第一次備份完成後，備份不需要50% 的可用空間。
 
 ## <a name="whats-new-in-this-feature"></a>這項功能有什麼新增功能？
 
