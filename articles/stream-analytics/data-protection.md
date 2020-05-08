@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 1b3bdad0125b5bddbba20c8d807924fc3ea87e32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d201beb2ff4aba815749b12a506d2292779cb82
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299391"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857279"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure 中的資料保護串流分析 
 
@@ -52,7 +52,7 @@ Azure 串流分析是完全受控的平臺即服務，可讓您建立即時分�
 
 * 您已撰寫的查詢及其相關設定  
 
-* 使用者定義的函式 
+* 使用者自訂函數 
 
 * 串流分析執行時間所需的檢查點
 
@@ -61,6 +61,9 @@ Azure 串流分析是完全受控的平臺即服務，可讓您建立即時分�
 您的資源的連線詳細資料（由您的串流分析作業所使用）也會一併儲存。 將您的儲存體帳戶加密，以保護您的所有資料。 
 
 為了協助您符合任何受管制產業或環境中的合規性義務，您可以閱讀更多有關[Microsoft 合規性供應](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)專案的資訊。 
+
+## <a name="known-issues"></a>已知問題
+有一個已知的問題，在使用受控識別向任何輸入或輸出進行驗證時，使用客戶管理的金鑰的作業會失敗。 此問題的修正正在進行中，並且會在不久的未來推出。 
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -3,17 +3,26 @@ title: 在 Azure Migrate 中新增評量/遷移工具
 description: 說明如何建立 Azure Migrate 專案，以及新增評量/遷移工具。
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537724"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901206"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>第一次使用請新增評量/移轉工具
 
 本文說明如何在第一次將評估或遷移工具加入至[Azure Migrate](migrate-overview.md)專案。  
 Azure Migrate 提供中央中樞，以追蹤內部部署應用程式和工作負載的探索、評估和遷移，以及私人/公用雲端 Vm 至 Azure。 中樞提供評估和遷移的 Azure Migrate 工具，以及其他工具和獨立軟體廠商（ISV）[產品](migrate-services-overview.md#isv-integration)。 
+
+## <a name="check-permissions-to-create-project"></a>檢查許可權以建立專案
+
+如果您尚未建立 Azure Migrate 專案，請檢查您是否擁有正確的許可權。
+
+1. 在 Azure 入口網站中開啟訂用帳戶，然後選取 [存取控制 (IAM)]  。
+2. 在 [檢查存取權]  中，尋找相關的帳戶，然後按一下以查看權限。 您應該會具有「參與者」  或「擁有者」  權限。
+    - 如果您剛建立免費的 Azure 帳戶，您就是訂用帳戶的擁有者。
+    - 如果您不是訂用帳戶擁有者，請與擁有者合作以指派角色。
 
 ## <a name="create-a-project-and-add-a-tool"></a>建立專案並新增工具
 
@@ -66,4 +75,6 @@ Azure Migrate 提供中央中樞，以追蹤內部部署應用程式和工作負
 
 ## <a name="next-steps"></a>後續步驟
 
-瞭解如何新增其他[評估](how-to-assess.md)和[遷移](how-to-migrate.md)工具。 
+- 開始使用[Azure Migrate：伺服器評估](migrate-services-overview.md#azure-migrate-server-assessment-tool)或[Azure Migrate：伺服器遷移](migrate-services-overview.md#azure-migrate-server-migration-tool)。
+- 如果您已新增 ISV 工具或 Movere，請[參閱](prepare-isv-movere.md)準備連結工具以 Azure Migrate 的步驟。
+- 瞭解如何新增其他[評估](how-to-assess.md)和[遷移](how-to-migrate.md)工具。 

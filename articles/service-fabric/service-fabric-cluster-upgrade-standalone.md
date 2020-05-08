@@ -3,12 +3,12 @@ title: 升級 Azure Service Fabric 獨立叢集
 description: 了解如何升級 Service Fabric 獨立叢集的版本或組態。  T
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451832"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790638"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>升級和更新 Service Fabric 獨立叢集
 
@@ -38,7 +38,7 @@ ms.locfileid: "75451832"
 
 ## <a name="next-steps"></a>後續步驟
 * 瞭解如何自訂一些[service fabric 叢集網狀架構設定](service-fabric-cluster-fabric-settings.md)
-* 了解如何 [相應放大和相應縮小叢集](service-fabric-cluster-scale-up-down.md)
+* 了解如何 [相應放大和相應縮小叢集](service-fabric-cluster-scale-in-out.md)
 * 瞭解[應用程式升級](service-fabric-application-upgrade.md)
 
 <!--Image references-->

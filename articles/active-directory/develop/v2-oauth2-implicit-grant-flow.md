@@ -2,7 +2,7 @@
 title: OAuth 2.0 隱含授與流程-Microsoft 身分識別平臺 |Azure
 description: 使用 Microsoft 身分識別平臺隱含流程保護單一頁面應用程式。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 89ae088b9cbb3bb3c593cfcbbfb4ce619baccfa8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34ae87859b20895598611d25eb069fd05c24d262
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868417"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900424"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 身分識別平臺和隱含授與流程
 
@@ -97,11 +97,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | 參數 |  | 描述 |
 | --- | --- | --- |
-| `tenant` | 必要 |要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。 |
-| `client_id` | 必要 | 指派給您應用程式的[Azure 入口網站應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面的應用程式（用戶端）識別碼。 |
-| `response_type` | 必要 |必須包含 OpenID Connect 登入的 `id_token` 。 它也可能包含 response_type `token`。 這裡使用 `token` ，讓您的應用程式能夠立即從授權端點接收存取權杖，而不需要向授權端點進行第二次要求。 如果您使用`token` response_type， `scope`參數必須包含範圍，以指出要對哪個資源發出權杖（例如，使用者. 讀取 Microsoft Graph 上的）。  |
+| `tenant` | required |要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。 |
+| `client_id` | required | 指派給您應用程式的[Azure 入口網站應用程式註冊](https://go.microsoft.com/fwlink/?linkid=2083908)頁面的應用程式（用戶端）識別碼。 |
+| `response_type` | required |必須包含 OpenID Connect 登入的 `id_token` 。 它也可能包含 response_type `token`。 這裡使用 `token` ，讓您的應用程式能夠立即從授權端點接收存取權杖，而不需要向授權端點進行第二次要求。 如果您使用`token` response_type， `scope`參數必須包含範圍，以指出要對哪個資源發出權杖（例如，使用者. 讀取 Microsoft Graph 上的）。  |
 | `redirect_uri` | 建議使用 |應用程式的 redirect_uri，您的應用程式可以從中傳送及接收驗證回應。 其必須完全符合您在入口網站中註冊的其中一個 redirect_uris，不然就必須得是編碼的 url。 |
-| `scope` | 必要 |以空格分隔的[範圍](v2-permissions-and-consent.md)清單。 針對 OpenID Connect （id_tokens），它必須包含範圍`openid`，這會轉譯為同意 UI 中的「登入」許可權。 （選擇性）您也可以包含`email`和`profile`範圍，以取得其他使用者資料的存取權。 如果要求存取權杖，您也可以在此要求中包含其他範圍，要求同意各種資源。 |
+| `scope` | required |以空格分隔的[範圍](v2-permissions-and-consent.md)清單。 針對 OpenID Connect （id_tokens），它必須包含範圍`openid`，這會轉譯為同意 UI 中的「登入」許可權。 （選擇性）您也可以包含`email`和`profile`範圍，以取得其他使用者資料的存取權。 如果要求存取權杖，您也可以在此要求中包含其他範圍，要求同意各種資源。 |
 | `response_mode` | 選用 |指定應該用來將所產生權杖傳回給應用程式的方法。 預設為僅查詢存取權杖，但如果要求包含 id_token，則為片段。 |
 | `state` | 建議使用 |包含在要求中的值，也會在權杖回應中傳回。 其可以是任何內容的字串。 隨機產生的唯一值通常用於[防止跨網站偽造要求攻擊](https://tools.ietf.org/html/rfc6749#section-10.12)。 此狀態也可用來在驗證要求發生之前，將使用者狀態的相關資訊編碼，例如他們所在的頁面或檢視。 |
 | `nonce` | 必要 |包含在要求中的值 (由應用程式產生)，該值將會以宣告的形式包含在產生的 id_token 中。 然後，應用程式可以驗證此值，以減輕權杖重新執行所造成的攻擊。 此值通常是隨機的唯一字串，可以用來識別要求的來源。 只有在要求 id_token 時才需要。 |
@@ -233,9 +233,12 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/logout?post_logout_redire
 
 | 參數 |  | 描述 |
 | --- | --- | --- |
-| `tenant` |必要 |要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。 |
+| `tenant` |required |要求路徑中的 `{tenant}` 值可用來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需更多詳細資訊，請參閱 [通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。 |
 | `post_logout_redirect_uri` | 建議使用 | 使用者在完成登出之後應該要返回的 URL。 這個值必須符合為應用程式註冊的其中一個重新導向 URI。 如果未包含，則會由 Microsoft 身分識別平臺端點向使用者顯示一般訊息。 |
 
 ## <a name="next-steps"></a>後續步驟
 
 * 瀏覽所有 [MSAL JS 範例](sample-v2-code.md)以開始撰寫程式碼。
+
+[OAuth2-Spec-Implicit-Misuse]: https://tools.ietf.org/html/rfc6749#section-10.16
+[OAuth2-Threat-Model-And-Security-Implications]: https://tools.ietf.org/html/rfc6819

@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 01b2bd464db51e255930fe83a3f4321687322275
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77151086"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792355"
 ---
-# <a name="receive-and-send-b2b-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure Logic Apps 和企業整合套件來接收和傳送 B2B 訊息
+# <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure Logic Apps 和企業整合套件來接收和確認 B2B AS2 訊息
 
 當您擁有定義交易夥伴和協定的整合帳戶時，您可以使用[Azure Logic Apps](../logic-apps/logic-apps-overview.md)與[企業整合套件](../logic-apps/logic-apps-enterprise-integration-overview.md)，建立自動化的企業對企業（B2B）工作流程，以交換交易夥伴之間的訊息。 Azure Logic Apps 適用于支援 AS2、X12、EDIFACT 和 RosettaNet 產業標準通訊協定的連接器。 您也可以將這些連接器與[Logic Apps 中可用](../connectors/apis-list.md)的其他連接器結合，例如 Salesforce 和 Office 365 Outlook。
 

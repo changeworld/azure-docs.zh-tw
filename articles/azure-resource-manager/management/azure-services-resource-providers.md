@@ -3,12 +3,12 @@ title: Azure 服務的資源提供者
 description: 列出 Azure Resource Manager 的所有資源提供者命名空間，並顯示該命名空間的 Azure 服務。
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 55fbe4ae383e5275d185e2a03224e77660a01ef5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 9bb8d91d141997a7dd466d247ddcb0bd364e1c80
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382499"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559865"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure 服務的資源提供者
 
@@ -61,13 +61,13 @@ ms.locfileid: "81382499"
 | CustomerLockbox | Microsoft Azure 的客戶加密箱 |
 | CustomProviders | [Azure 自訂提供者](../custom-providers/overview.md) |
 | Microsoft.DataBox | [Azure 資料箱](/azure/databox-family/) |
-| Microsoft.DataBoxEdge | [Azure Stack Edge](../../databox-online/data-box-edge-overview.md) |
+| Microsoft.DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |
 | Microsoft.Databricks | [Azure Databricks](/azure/azure-databricks/) |
 | Microsoft.DataCatalog | [資料目錄](/azure/data-catalog/) |
 | Microsoft.DataFactory | [Data Factory](/azure/data-factory/) |
 | Microsoft.DataLakeAnalytics | [資料湖分析](/azure/data-lake-analytics/) |
 | Microsoft.DataLakeStore | [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) \(部分機器翻譯\) |
-| Microsoft.DataMigration | [Azure Database Migration Service](/azure/dms/) |
+| Microsoft.DataMigration | [Azure 資料庫移轉服務](/azure/dms/) |
 | DataShare | [Azure Data Share](/azure/data-share/) |
 | Microsoft.DBforMariaDB | [適用於 MariaDB 的 Azure 資料庫](/azure/mariadb/) |
 | Microsoft.DBforMySQL | [適用於 MySQL 的 Azure 資料庫](/azure/mysql/) |
@@ -145,9 +145,9 @@ ms.locfileid: "81382499"
 | Microsoft.Solutions | [Azure 受控應用程式](../managed-applications/index.yml) |
 | Microsoft.Sql | [Azure SQL Database](../../sql-database/index.yml)<br />[Azure Synapse Analytics](/azure/sql-data-warehouse/) |
 | Microsoft.SqlVirtualMachine | [Azure 虛擬機器上的 SQL Server](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md) |
-| Microsoft.Storage | [儲存體](../../storage/index.yml) |
+| Microsoft.Storage | [Storage](../../storage/index.yml) |
 | StorageCache | [Azure HPC Cache](/azure/hpc-cache/) |
-| Microsoft.StorageSync | [儲存體](../../storage/index.yml) |
+| Microsoft.StorageSync | [Storage](../../storage/index.yml) |
 | Microsoft.StorSimple | [StorSimple](/azure/storsimple/) |
 | Microsoft.StreamAnalytics | [Azure 串流分析](../../stream-analytics/index.yml) |
 | Microsoft.Subscription | core |

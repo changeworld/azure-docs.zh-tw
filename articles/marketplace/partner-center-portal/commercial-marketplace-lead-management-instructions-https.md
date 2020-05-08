@@ -1,25 +1,27 @@
 ---
-title: 使用 HTTPS 的 Microsoft 商業 marketplace 潛在客戶管理
-description: 設定 HTTPS 端點的 Microsoft 商業 marketplace 潛在客戶管理。
+title: 使用 HTTPS 端點進行潛在客戶管理-Microsoft 商業 marketplace
+description: 瞭解如何使用電源自動化和 HTTPS 端點來管理來自 Microsoft AppSource 和 Azure Marketplace 的潛在客戶。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 1c3337e970fdbb22cb1ed88f105d5e7798a68f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133743"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790978"
 ---
-# <a name="configure-lead-management-by-using-an-https-endpoint"></a>使用 HTTPS 端點來設定潛在客戶管理
+# <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>使用 HTTPS 端點來管理商業 marketplace 潛在客戶
+
+如果合作夥伴中心未明確支援您的客戶關係管理（CRM）系統來接收 Microsoft AppSource 和 Azure Marketplace 潛在客戶，您可以使用[電源自動化](https://powerapps.microsoft.com/automate-processes/)中的 HTTPS 端點來處理這些潛在客戶。 有了 HTTPS 端點，商業 marketplace 潛在客戶就可以電子郵件通知的形式送出，或者可以將它們寫入支援電源自動化的 CRM 系統。
+
+本文說明如何在電源自動化中建立新的流程，以產生您將用來在合作夥伴中心設定潛在客戶的 HTTP POST URL。 它也包含使用[Postman](https://www.getpostman.com/downloads/)測試流程的步驟。
 
 >[!NOTE]
->這些指示中使用的「電源自動化」連接器需要付費的訂用帳戶，才能自動進行電源自動化。 依照本文中的指示進行之前，請確定您已考慮這一點。
-
-如果合作夥伴中心未明確支援您的客戶關係管理（CRM）系統來接收 Microsoft AppSource 和 Azure Marketplace 潛在客戶，您可以使用電源自動化中的 HTTPS 端點來處理這些潛在客戶。 有了 HTTPS 端點，這些潛在客戶可以用電子郵件通知的形式送出，或者可以寫入支援電源自動化的 CRM 系統。 本文中的指示會逐步引導您完成基本程式，以使用電源自動化來建立新流程，這會產生您將在發佈入口網站中針對 [**潛在客戶管理** > ] [**HTTPS 端點 URL** ] 欄位輸入的 HTTP POST url。 另外也包含如何使用稱為[Postman](https://www.getpostman.com/downloads/)的工具來測試流程的指示（可從線上取得）。
+>這些指示中使用的「電源自動化」連接器需要付費的訂用帳戶，才能自動進行電源自動化。 設定此流程之前，請確定您已考慮此情況。
 
 ## <a name="create-a-flow-by-using-power-automate"></a>使用電源自動化建立流程
 
@@ -27,22 +29,24 @@ ms.locfileid: "82133743"
 
 1. 登入，然後選取功能表中的 [**我的流程**]。
 
-1. 選取 [ **+ 自動化--從空白**]。
+    ![登入我的流程](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-    ![我的流程 + 自動化--從空白](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
+1. 在 [ **+ 新增**] 底下，選取 [ **+ 立即-從空白**]。
 
-1. 在 [**組建自動化流程**] 視窗中，選取 [**略過**]。 
+    ![我的流程 + 自動化--從空白](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-    ![建立自動化流程視窗 [略過] 按鈕](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
+1. 為您的流程命名，然後在 **[選擇觸發此流程的方式**] 底下，選取 [**收到 HTTP 要求時**]。
 
-1. 在 [**搜尋連接器和觸發**程式] 欄位中，輸入尋找要求連接器的**要求**。
-1. 在 [觸發程序]**** 底下，選取 [收到 HTTP 要求時]****。 
+    ![建立自動化流程視窗 [略過] 按鈕](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-    ![觸發程式功能表](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
+1. 按一下 [流程] 步驟，將它展開。
 
-1. 在 [**收到 HTTP 要求時**] 視窗中，將下列 JSON 架構複製並貼到 [**要求本文 json 架構**] 文字方塊中。 Microsoft 會使用此架構來包含您的潛在客戶資料。
+    ![展開流程步驟](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
 
-    ![要求主體 JSON 架構文字方塊](./media/commercial-marketplace-lead-management-instructions-https/https-request-received.png)
+1. 使用下列其中一種方法來設定**要求主體 JSON 架構**：
+
+    - 將 JSON 架構複製到 [**要求本文 Json 架構**] 文字方塊中。
+    - 選取 [使用範例承載來產生結構描述]****。 在 [**輸入或貼上範例 json**承載] 文字方塊中，貼上 json 範例。 選取 [完成]**** 以建立結構描述。
 
     **JSON 結構描述**
 
@@ -103,6 +107,26 @@ ms.locfileid: "82133743"
     }
     ```
 
+    **JSON 範例**
+    
+    ```json
+    {
+      "UserDetails": {
+        "FirstName": "Some",
+        "LastName": "One",
+        "Email": "someone@contoso.com",
+        "Phone": "16175555555",
+        "Country": "USA",
+        "Company": "Contoso",
+        "Title": "Esquire"
+     },
+      "LeadSource": "AzureMarketplace",
+      "ActionCode": "INS",
+      "OfferTitle": "Test Microsoft",
+      "Description": "Test run through Power Automate"
+    }
+    ```
+
 >[!NOTE]
 >此時在設定中，您可以選擇 [連線到 CRM 系統] 或 [設定電子郵件通知]。 根據您的選擇，遵循其餘的指示。
 
@@ -157,7 +181,7 @@ ms.locfileid: "82133743"
 
 ### <a name="testing"></a>測試
 
-您可以使用稱為[Postman](https://app.getpostman.com/app/download/win64)的工具（可在線上下載），測試所有專案是否如預期般運作。 此工具適用于 Windows。 
+您可以使用[Postman](https://app.getpostman.com/app/download/win64)來測試您的設定。 線上下載 Postman 適用于 Windows。 
 
 1. 啟動 Postman，然後選取 [**新增** > **要求**] 以設定您的測試控管。 
 
@@ -201,10 +225,18 @@ ms.locfileid: "82133743"
 
 當您準備好在發佈入口網站中為您的供應專案設定潛在客戶管理資訊時，請遵循下列步驟。
 
-1. 移至供應專案的**供應專案設定**頁面。
-1. 選取 [**潛在客戶管理**] 區段下的 **[連接]** 。
+1. 登入[合作夥伴中心](https://partner.microsoft.com/dashboard/home)。
+
+1. 選取您的供應專案，然後移至 [**供應專案設定**] 索引標籤。
+
+1. 在 [**潛在客戶管理**] 區段下，選取 **[連線]**。 
+    ![潛在客戶管理連接按鈕](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+
 1. 在 [連線**詳細資料**] 快顯視窗中，選取 [ **HTTPS 端點**] 作為 [**潛在客戶目的地**]。 將您先前步驟所建立的流程中的 HTTP POST URL 貼入 [ **HTTPS 端點 URL** ] 欄位。
+    ![連接詳細資料連絡人電子郵件](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
+
 1. 在 [**連絡人電子郵件**] 底下，輸入公司人員在收到新的潛在客戶時應接收電子郵件通知的電子郵件地址。 您可以提供多個電子郵件，方法是以分號分隔。
+
 1. 選取 [確定]  。
 
 若要確定您已成功連接到潛在客戶目的地，請選取 [**驗證**] 按鈕。 如果成功，您會在潛在客戶目的地中擁有測試潛在客戶。
@@ -213,10 +245,3 @@ ms.locfileid: "82133743"
 >您必須先完成供應專案的其餘部分設定並加以發佈，才能接收供應專案的潛在客戶。
 
 當產生潛在客戶時，Microsoft 會將潛在客戶傳送至流程。 潛在客戶會路由傳送至您所設定的 CRM 系統或電子郵件地址。
-
-![潛在客戶管理連接按鈕](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
-
-![連接詳細資料的潛在客戶目的地](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
-
-![連接詳細資料連絡人電子郵件](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
-

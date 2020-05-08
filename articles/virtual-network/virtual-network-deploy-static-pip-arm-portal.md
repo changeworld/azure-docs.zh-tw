@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: allensu
-ms.openlocfilehash: 0de28fc75d5eb1b0867e4ba6d8eda9f0f42c8498
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ef96c83b460346ba49051f6f5c4fd0dd5df34ab
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82148011"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790162"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>使用 Azure 入口網站建立具有靜態公用 IP 位址的虛擬機器
 
@@ -37,11 +37,11 @@ ms.locfileid: "82148011"
     |設定|值|
     |---|---|
     |名稱|myVM|
-    |使用者名稱| 輸入您選擇的使用者名稱。|
+    |[使用者名稱]| 輸入您選擇的使用者名稱。|
     |密碼| 輸入您選擇的密碼。 密碼長度至少必須有 12 個字元，而且符合[定義的複雜度需求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |訂用帳戶| 選取您的訂用帳戶。|
     |資源群組| 選取 [使用現有項目]****，然後選取 [myResourceGroup]****。|
-    |位置| 選取 [**美國東部**]|
+    |Location| 選取 [**美國東部**]|
 
 4. 選取 VM 的大小，然後選取 [選取]****。
 5. 在 [設定]**** 之下，選取 [公用 IP 位址]****。
@@ -49,7 +49,7 @@ ms.locfileid: "82148011"
 
    ![選取靜態](./media/virtual-network-deploy-static-pip-arm-portal/select-static.png)
 
-   如果公用 IP 位址必須是標準 SKU，請在 [SKU]**** 之下選取 [標準]****。 深入了解[公用 IP 位址 SKU](virtual-network-ip-addresses-overview-arm.md#sku)。 如果虛擬機器將會新增至公用 Azure Load Balancer 的後端集區，則虛擬機器公用 IP 位址的 SKU 必須符合負載平衡器公用 IP 位址的 SKU。 如需詳細資訊，請參閱 [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus)。
+   如果公用 IP 位址必須是標準 SKU，請在 [SKU]**** 之下選取 [標準]****。 深入了解[公用 IP 位址 SKU](virtual-network-ip-addresses-overview-arm.md#sku)。 如果虛擬機器將會新增至公用 Azure Load Balancer 的後端集區，則虛擬機器公用 IP 位址的 SKU 必須符合負載平衡器公用 IP 位址的 SKU。 如需詳細資訊，請參閱 [Azure Load Balancer](../load-balancer/skus.md)。
 
 6. 在 [選取公用輸入連接埠]**** 下選取一個連接埠，或不選取任何連接埠。 選取了連接埠 3389，就能夠從網際網路遠端存取 Windows Server 虛擬機器。 對於生產工作負載，不建議從網際網路開啟連接埠 3389。
 

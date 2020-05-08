@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 04a900c98311f4e7dcccbfca93ea41e212308759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 777f3de8f2872e378fe30cc50ee0a5eb3823a625
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80882092"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900318"
 ---
 # <a name="single-page-application-move-to-production"></a>單一頁面應用程式：移至生產環境
 
@@ -40,7 +40,7 @@ ms.locfileid: "80882092"
 示範如何使用 MSAL 取得您自己後端 Web API 權杖的範例：
 
 > [!div class="nextstepaction"]
-> [具有 ASP.NET 後端的 SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+> [具有 ASP.NET 後端的 SPA](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi)
 
 範例示範如何使用 MSAL，在向 Azure Active Directory B2C （Azure AD B2C）註冊的應用程式中登入使用者：
 

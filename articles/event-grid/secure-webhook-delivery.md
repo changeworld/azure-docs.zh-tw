@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 4cb8168cd6d1c19cc797a7cd5454b96131fa35be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86d647ebfcf6e4c1ea8d05f58dd1f559d6e30cfc
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106612"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900463"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>將事件發佈至 Azure Active Directory 受保護的端點
 
@@ -31,8 +31,8 @@ ms.locfileid: "82106612"
 
 請使用下列 PowerShell 腳本，在您的 Azure AD 應用程式中建立角色和服務主體。 您將需要 Azure AD 應用程式中的租使用者識別碼和物件識別碼：
 
-    > [!NOTE]
-    > You must be a member of the [Azure AD Application Administrator role](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) to execute this script.
+   > [!NOTE]
+   > 您必須是[Azure AD 應用程式系統管理員角色](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles)的成員，才能執行此腳本。
     
 1. 修改 PowerShell 腳本的 $myTenantId，以使用您的 Azure AD 租使用者識別碼。
 1. 修改 PowerShell 腳本的 $myAzureADApplicationObjectId，以使用您 Azure AD 應用程式的物件識別碼

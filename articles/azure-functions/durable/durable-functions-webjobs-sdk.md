@@ -4,12 +4,12 @@ description: 了解如何使用 WebJobs SDK，對 Durable Functions 進行編碼
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d8dd0c86fbc520d0bd3ef6034891bd9871774b4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74232731"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733408"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>如何以 Webjob 的形式執行 Durable Functions
 
@@ -19,7 +19,7 @@ ms.locfileid: "74232731"
 
 在2.x 版的 Webjob SDK 中，主機是的`IHost`執行，而在2.x 版中，您使用`JobHost`物件。
 
-您可以在 Webjob SDK 2.x 版中取得連結 Durable Functions 範例：下載或複製[Durable Functions 存放庫](https://github.com/azure/azure-functions-durable-extension/)，然後移至*\\範例 webjobssdk\\連結*資料夾。
+您可以在 Webjob SDK 2.x 版中取得連結 Durable Functions 範例：下載或複製[Durable Functions 存放庫](https://github.com/azure/azure-functions-durable-extension/)，並簽出*v1*分支並移至*\\範例 webjobssdk\\連結*資料夾。
 
 ## <a name="prerequisites"></a>Prerequisites
 
@@ -184,7 +184,7 @@ while (true)
 
 您已 Durable Functions 設定成以 WebJob 的形式執行，而且您現在已經瞭解這與以獨立 Azure Functions 的形式執行 Durable Functions 有何不同。 此時，查看範例中的工作可能會很有説明。
 
-本節概述如何執行[範例專案](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining)。 如需會說明如何在本機執行 WebJobs SDK 專案並將其部署至 Azure WebJob 的詳細指示，請參閱[開始使用 WebJobs SDK](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)。
+本節概述如何執行[範例專案](https://github.com/Azure/azure-functions-durable-extension/tree/v1/samples/webjobssdk/chaining)。 如需會說明如何在本機執行 WebJobs SDK 專案並將其部署至 Azure WebJob 的詳細指示，請參閱[開始使用 WebJobs SDK](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob)。
 
 ### <a name="run-locally"></a>在本機執行
 

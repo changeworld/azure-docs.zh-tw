@@ -1,22 +1,22 @@
 ---
-title: SaaS 履行 API v2 |Azure Marketplace
-description: 本文說明如何使用相關聯的履行 v2 Api，在 AppSource 和 Azure Marketplace 上建立和管理 SaaS 供應專案。
+title: Microsoft 商業 marketplace 中的 SaaS 履行 Api v2
+description: 瞭解如何使用履行 Api 第2版來建立和管理 Microsoft AppSource 和 Azure Marketplace 上的 SaaS 供應專案。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: dsindona
-ms.openlocfilehash: ca49418013357ecaae62ea5e91374eaa1cbde59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f452349c0d636bc74a3722e2526623c955093f7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275759"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854201"
 ---
-# <a name="saas-fulfillment-apis-version-2"></a>SaaS 履行 API 第 2 版 
+# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的 SaaS 履行 Api 第2版
 
-本文詳細說明可讓合作夥伴在 AppSource marketplace 和 Azure Marketplace 中銷售其 SaaS 應用程式的 Api。 這些 Api 是在 AppSource 和 Azure Marketplace 上 transactable SaaS 供應專案的必要條件。
+本文詳細說明履行 Api，讓合作夥伴能夠在 Microsoft AppSource 和 Azure Marketplace 中銷售其 SaaS 應用程式。 Transactable SaaS 供應專案需要這些 Api。
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>管理 SaaS 訂閱生命週期
 
@@ -70,7 +70,7 @@ Azure SaaS 會管理 SaaS 訂閱購買的整個生命週期。 它使用履行 A
 訂閱會達到此狀態，以回應明確的客戶要求或因為未付款。 合作夥伴預期的是，客戶的資料會保留在要求的特定天數內進行復原，然後予以刪除。 
 
 
-## <a name="api-reference"></a>應用程式開發介面參考
+## <a name="api-reference"></a>API 參考資料
 
 本節記載 SaaS 訂用帳戶*api*和*作業 api*。  第2版 Api `api-version`的參數值為`2018-08-31`。  
 
@@ -861,7 +861,7 @@ Response body:
  - **InProgress** <br>
 - **已成功** <br>
 - **Failed** <br>
-- **衝突** <br>
+- **合併** <br>
 
 在 webhook 通知中，可操作的狀態會是 [**成功**] 和 [**失敗**]。 作業的生命週期是從**NotStarted**到終端機狀態，例如 [**成功**]、[**失敗**] 或 [**衝突**]。 如果您收到**NotStarted**或**InProgress**，請繼續透過 GET API 要求狀態，直到作業達到結束狀態，再採取動作。 
 

@@ -4,12 +4,12 @@ description: 取得計量警示有何用途以及其在 Azure 監視器中如何
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397982"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855051"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解計量警示在 Azure 監視器中的運作方式
 
@@ -26,7 +26,7 @@ Azure 監視器中的計量警示以多維度計量為基礎運作。 這些計�
 - 目標資源 (您要監視的 Azure 資源)：myVM
 - 計量：CPU 百分比
 - 條件類型：靜態
-- 時間彙總 (針對未經處理的計量值執行的統計資料。 支援的時間匯總為最小值、最大值、平均、總計、計數）：平均
+- 時間彙總 (針對未經處理的計量值執行的統計資料。 [支援的時間](metrics-charts.md#changing-aggregation)匯總為最小值、最大值、平均、總計、計數）：平均
 - 期間（檢查計量值的 [回顧] 視窗）：過去5分鐘內
 - 頻率（計量警示檢查條件是否符合的頻率）：1分鐘
 - 運算子：大於
@@ -43,7 +43,7 @@ Azure 監視器中的計量警示以多維度計量為基礎運作。 這些計�
 - 目標資源 (您要監視的 Azure 資源)：myVM
 - 計量：CPU 百分比
 - 條件類型：動態
-- 時間彙總 (針對未經處理的計量值執行的統計資料。 支援的時間匯總為最小值、最大值、平均、總計、計數）：平均
+- 時間彙總 (針對未經處理的計量值執行的統計資料。 [支援的時間](metrics-charts.md#changing-aggregation)匯總為最小值、最大值、平均、總計、計數）：平均
 - 期間（檢查計量值的 [回顧] 視窗）：過去5分鐘內
 - 頻率（計量警示檢查條件是否符合的頻率）：1分鐘
 - 運算子：大於
@@ -126,7 +126,7 @@ Azure 監視器中的計量警示也支援以一個規則監視多個維度值�
 
 這項功能目前支援下列 Azure 雲端中下列服務的平臺計量（非自訂計量）：
 
-| Service | 公用 Azure | 政府 | 中國 |
+| 服務 | 公用 Azure | 政府 | 中國 |
 |:--------|:--------|:--------|:--------|
 | 虛擬機器  | **是** | 否 | 否 |
 | SQL server 資料庫 | **是** | **是** | 否 |

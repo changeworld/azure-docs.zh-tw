@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/04/2020
 ms.author: b-juche
-ms.openlocfilehash: b83f530549ffa43789963fd0c95b4982f5289356
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f36e40091ada27f411adc2ffa78b6d4a58f8cca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80054470"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791403"
 ---
 # <a name="delegate-a-subnet-to-azure-netapp-files"></a>將子網路委派至 Azure NetApp Files 
 
@@ -28,7 +28,8 @@ ms.locfileid: "80054470"
 ## <a name="considerations"></a>考量
 * 新建子網路的精靈會預設為 /24 網路遮罩，供 251 個可用的 IP 位址使用。 使用 /28 網路遮罩供 16 個可用的 IP 位址使用，對服務而言就已足夠。
 * 在每個 Azure 虛擬網路 (VNet) 中，都只有一個子網路可委派給 Azure NetApp Files。   
-   Azure 可讓您在 VNet 中建立多個委派的子網。  不過，如果您使用一個以上的委派子網，嘗試建立新的磁片區將會失敗。
+   Azure 可讓您在 VNet 中建立多個委派的子網。  不過，如果您使用一個以上的委派子網，嘗試建立新的磁片區將會失敗。  
+   VNet 中只能有一個委派的子網。 NetApp 帳戶可以將磁片區部署到多個 Vnet，每個都有自己的委派子網。  
 * 您無法在已委派的子網路中指定網路安全性群組或服務端點。 這樣做會導致子網路委派失敗。
 * 目前不支援從全域對等互連的虛擬網路存取磁片區。
 * 不支援在已委派給 Azure NetApp Files 的子網中，于具有位址首碼（目的地）的 VM 子網上建立[使用者定義的自訂路由](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#custom-routes)。 這麼做會影響 VM 連線能力。
