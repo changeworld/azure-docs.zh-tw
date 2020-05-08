@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: d7fafdd5830ec2825771d4d611a5f4bd5d87260a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7635d98bb48543dd07f05f34ea854af870876cc3
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393625"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927440"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>藉由使用 SSH 和 Azure Logic Apps 來監視、建立及管理 SFTP 檔案
 
@@ -34,7 +34,7 @@ ms.locfileid: "81393625"
 * SFTP-支援[區塊](../logic-apps/logic-apps-handle-large-messages.md)化的 ssh 動作可以處理最多 1 GB 的檔案，而不支援區塊化的 sftp ssh 動作則可以處理最多 50 MB 的檔案。 雖然預設的區塊大小是 15 MB，但此大小可以根據網路延遲、伺服器回應時間等等的因素，從 5 MB 開始，逐漸增加到 50 MB 的最大值。
 
   > [!NOTE]
-  > 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+  > 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ISE 標記版本需要區塊化，才能改用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
   當您指定要改用[的常數區塊大小時](#change-chunk-size)，可以覆寫此彈性行為。 此大小的範圍可從 5 MB 到 50 MB。 例如，假設您有 45 MB 的檔案，以及可支援該檔案大小但沒有延遲的網路。 調適型區塊會產生數個呼叫，而不會呼叫一次。 若要減少呼叫次數，您可以嘗試設定 50 MB 的區塊大小。 在不同的案例中，如果您的邏輯應用程式計時，例如使用 15 MB 的區塊，您可以嘗試將大小縮減為 5 MB。
 
@@ -248,7 +248,7 @@ SFTP-SSH 觸發程式的作用是輪詢 SFTP 檔案系統，並尋找自上次�
 如需此連接器的更多技術詳細資料，例如連接器的 Swagger 檔案所描述的觸發程式、動作和限制，請參閱[連接器的參考頁面](https://docs.microsoft.com/connectors/sftpwithssh/)。
 
 > [!NOTE]
-> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ise 標記版本會使用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
+> 對於[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中的邏輯應用程式，此連接器的 ISE 標記版本需要區塊化，才能改用[ISE 訊息限制](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)。
 
 ## <a name="next-steps"></a>後續步驟
 
