@@ -1,22 +1,22 @@
 ---
-title: 私用供應專案 |Azure Marketplace
-description: Azure Marketplace 中適用於應用程式和服務發行者的私人供應項目。
+title: Microsoft 商業 marketplace 中的私用優惠
+description: Microsoft 商業 marketplace 中適用于應用程式和服務發行者的私人供應專案。
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: dsindona
-ms.openlocfilehash: efda9fb66a65f1f2cd40de8bf32a8a3fa99aea7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e449f65ca65a679aa6c6823938fa561b84e38368
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681439"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872388"
 ---
-# <a name="private-offers"></a>私人供應項目
+# <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 中的私人優惠
 
-[Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) 上的私人供應項目可讓發行者建立僅向目標客戶顯示的 SKU。
+[Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/)中的私用供應專案可讓發行者建立只有目標客戶才看得見的方案。 在本文中，您將瞭解私用供應專案的選項和優點。
 
 ## <a name="unlock-enterprise-deals-with-private-offers"></a>使用私人供應專案解除鎖定企業交易
 

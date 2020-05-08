@@ -6,20 +6,21 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: ed8574133eafe751699e90ea8cae832ee649fb00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: legacy
+ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969589"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792219"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>使用 Azure CLI 和受控磁碟來建立 Azure Linux VM 的複本
 
-此文章說明如何使用 Azure CLI 與 Azure Resource Manager 部署模型，建立執行 Linux 之 Azure 虛擬機器 (VM) 的複本。 
+本文說明如何使用 Azure CLI 來建立執行 Linux 的 Azure 虛擬機器（VM）複本。 若要大規模複製、建立、儲存及共用 VM 映射，請參閱[共用映射資源庫](shared-images.md)。
 
 您也可以[上傳 VHD 並從中建立 VM](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 -   安裝[Azure CLI](/cli/azure/install-az-cli2)。
 

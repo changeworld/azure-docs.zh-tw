@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fa3c6bf39dbef601fe64e125999f519f725f2e2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 87f5b1ec02400c5cd9d26cc324ddbafdf8d76537
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67083780"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582598"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>在 Azure Active Directory 中委派系統管理
 
@@ -100,7 +100,7 @@ Azure AD 提供一份廣泛的指南來規劃和執行關於您 Azure AD 系統�
 
 ## <a name="secure-your-administrator-roles"></a>保護您的系統管理員角色
 
-取得具特殊權限帳戶控制權的攻擊者可以造成極大的傷害，因此，首要之務是使用[最低權限存取原則](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/) \(英文\) 來保護這些帳戶，該原則預設適用於所有 Azure AD 租用戶 (處於公開預覽狀態)。 該原則會針對具特殊權限的 Azure AD 帳戶強制執行多重要素驗證。 Azure AD 基準原則涵蓋下列 Azure AD 角色：
+控制特殊許可權帳戶的攻擊者可能會造成重大損害，因此請先使用預設適用于所有 Azure AD 組織的[基準存取原則](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/22/baseline-security-policy-for-azure-ad-admin-accounts-in-public-preview/)來保護這些帳戶（公開預覽）。 該原則會針對具特殊權限的 Azure AD 帳戶強制執行多重要素驗證。 Azure AD 基準原則涵蓋下列 Azure AD 角色：
 
 * 全域管理員
 * SharePoint 管理員

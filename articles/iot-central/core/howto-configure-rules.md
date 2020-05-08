@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 509f9557a8128df12353ad02a7c7db02b7b42631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6e85ba5aafaad973d28f799a251b6f3aae548e3
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158439"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871949"
 ---
 # <a name="configure-rules"></a>設定規則
-
-
 
 *本文適用於操作員、建置員及系統管理員。*
 
@@ -36,6 +34,12 @@ IoT Central 中的規則是可自訂的回應工具，它會觸發來自已連�
 在下列螢幕擷取畫面中，當溫度大於 70&deg; F，且濕度小於10時，條件會進行檢查。 當這兩個語句都是 true 時，規則會評估為 true 並觸發動作。
 
 ![條件](media/howto-configure-rules/conditions.png)
+
+### <a name="use-a-cloud-property-in-a-value-field"></a>在值欄位中使用雲端屬性
+
+在條件的 [**值**] 欄位中，您可以從裝置範本參考雲端屬性。 雲端屬性和遙測值必須具有類似的類型。 例如，如果**溫度**是雙精度浮點數，則只有 double 類型的雲端屬性會顯示為 [**值**] 下拉式選單中的選項。
+
+如果您選擇事件種類遙測值，[**值**] 下拉式會包含選項 [**任何**]。 [ **Any** ] 選項表示當您的應用程式收到該類型的事件時，會引發此規則，無論裝載為何。
 
 ## <a name="use-aggregate-windowing"></a>使用匯總視窗
 

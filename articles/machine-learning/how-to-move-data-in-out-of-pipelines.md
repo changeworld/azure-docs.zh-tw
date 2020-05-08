@@ -1,7 +1,7 @@
 ---
-title: 來自 ML 管線的輸入和輸出資料
+title: 移動 ML 管線中的資料
 titleSuffix: Azure Machine Learning
-description: 準備、使用和產生 Azure Machine Learning 管線中的資料
+description: 瞭解 Azure Machine Learning 管線中資料的輸入 & 輸出。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,18 +9,19 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.openlocfilehash: 3dd1a82bf7fad1f201f5c0f52af944ef44a3fdf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 233361fb238342cde3c692174e85fb57f69979b1
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879761"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858463"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>將資料匯入 ML 管線步驟並在其中來回移動 (Python)
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-資料是機器學習管線的核心。 本文提供在 Azure Machine Learning 管線中的步驟之間匯入、轉換和移動資料的程式碼。 如需資料在 Azure Machine Learning 中運作方式的總覽，請參閱[存取 Azure 儲存體服務中的資料](how-to-access-data.md)。 如需 Azure Machine Learning 管線的優點和結構，請參閱[什麼是 Azure Machine Learning 管線？](concept-ml-pipelines.md)。
+本文提供在 Azure Machine Learning 管線中的步驟之間匯入、轉換和移動資料的程式碼。 如需資料在 Azure Machine Learning 中運作方式的總覽，請參閱[存取 Azure 儲存體服務中的資料](how-to-access-data.md)。 如需 Azure Machine Learning 管線的優點和結構，請參閱[什麼是 Azure Machine Learning 管線？](concept-ml-pipelines.md)。
 
 此文將示範如何：
 

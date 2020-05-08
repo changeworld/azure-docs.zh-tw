@@ -1,17 +1,17 @@
 ---
-title: 服務對服務驗證-Data Lake Storage Gen1-REST API
+title: REST-服務對服務驗證-Data Lake Storage Gen1-Azure
 description: 瞭解如何使用 REST API 以 Azure Data Lake Storage Gen1 和 Azure Active Directory 完成服務對服務驗證。
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 59d0bf20b16beda47d76e6a9940ac9fa4436da3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7d0ec39e9f0f294324eb18337f4234ddaa63e2c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904518"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688148"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 向 Azure Data Lake Storage Gen1 進行服務對服務驗證
 > [!div class="op_single_selector"]

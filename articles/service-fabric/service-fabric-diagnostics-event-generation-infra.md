@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75376931"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791811"
 ---
 # <a name="monitoring-the-cluster"></a>監視叢集
 
@@ -74,7 +74,7 @@ Service Fabric 有自己的健全狀況模型，詳述於下列文件：
 
 ## <a name="measuring-performance"></a>測量效能
 
-叢集的測量效能將協助您了解如何處理負載，以及進行調整叢集的決策 (請深入查看調整 [Azure 上](service-fabric-cluster-scale-up-down.md)或[內部部署](service-fabric-cluster-windows-server-add-remove-nodes.md)上的叢集)。 相較於您或應用程式和服務可能已採取的動作，在未來分析記錄時，效能資料也十分有用。 
+叢集的測量效能將協助您了解如何處理負載，以及進行調整叢集的決策 (請深入查看調整 [Azure 上](service-fabric-cluster-scale-in-out.md)或[內部部署](service-fabric-cluster-windows-server-add-remove-nodes.md)上的叢集)。 相較於您或應用程式和服務可能已採取的動作，在未來分析記錄時，效能資料也十分有用。 
 
 如需使用 Service Fabric 時要收集的效能計數器清單，請參閱 [Service Fabric 中的效能計數器](service-fabric-diagnostics-event-generation-perf.md)。
 

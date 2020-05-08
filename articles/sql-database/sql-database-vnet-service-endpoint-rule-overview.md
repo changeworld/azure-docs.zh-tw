@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e7e1f91cd4b647472e1899c3485d038f25b5b24
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414402"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651809"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>對資料庫伺服器使用虛擬網路服務端點和規則
 
-「虛擬網路規則」** 是一個防火牆安全性功能，可控制適用於 Azure [SQL Database](sql-database-technical-overview.md) 中單一資料庫和彈性集區的資料庫伺服器，或是適用於 [SQL 資料倉儲](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中資料庫的資料庫伺服器，是否會接受虛擬網路中特定子網路所傳來的通訊。 本文說明為何虛擬網路規則功能有時是讓 Azure SQL Database 和 SQL 資料倉儲安全地接受通訊的最佳選項。
+*虛擬網路規則*是一項防火牆安全性功能，可控制 azure 中的單一資料庫和彈性集區的資料庫伺服器[SQL Database](sql-database-technical-overview.md)或[azure Synapse 分析](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)中的資料庫是否接受從虛擬網路中的特定子網傳送的通訊。 本文說明為何虛擬網路規則功能有時是讓您安全地允許 Azure SQL Database 與 Azure Synapse 分析通訊的最佳選項。
 
 > [!IMPORTANT]
-> 本文適用於 Azure SQL Server，以及在 Azure SQL Server 上建立的 SQL Database 和 SQL 資料倉儲資料庫。 為了簡單起見，參考 SQL Database 和 SQL 資料倉儲時都會使用 SQL Database。 本文「不」** 適用 Azure SQL Database 中的**受控執行個體**部署，因為它沒有相關聯的服務端點。
+> 本文適用于 Azure SQL server，以及在 Azure SQL server 上建立 SQL Database 和 Azure Synapse 分析資料庫。 為了簡單起見，在同時參考 SQL Database 和 Azure Synapse 分析時，會使用 SQL Database。 本文「不」** 適用 Azure SQL Database 中的**受控執行個體**部署，因為它沒有相關聯的服務端點。
 
 若要建立虛擬網路規則，必須先有[虛擬網路服務端點][vm-virtual-network-service-endpoints-overview-649d]規則可供參考。
 
@@ -105,13 +105,13 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>使用 VNet 服務端點搭配 Azure 儲存體的影響
 
-Azure 儲存體已實作功能，可讓您限制連線至 Azure 儲存體帳戶的連線。 如果您選擇使用這項功能，並使用 Azure SQL Server 正在使用的 Azure 儲存體帳戶，可能會遇到問題。 接下來是受此影響的 Azure SQL Database 和 Azure SQL 資料倉儲功能清單和討論。
+Azure 儲存體已實作功能，可讓您限制連線至 Azure 儲存體帳戶的連線。 如果您選擇使用這項功能，並使用 Azure SQL Server 正在使用的 Azure 儲存體帳戶，可能會遇到問題。 接下來是受此影響的 Azure SQL Database 和 Azure Synapse 分析功能的清單和討論。
 
-### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL 資料倉儲 PolyBase
+### <a name="azure-synapse-analytics-polybase"></a>Azure Synapse 分析 PolyBase
 
-PolyBase 通常用於將資料從 Azure 儲存體帳戶載入 Azure SQL 資料倉儲。 如果您正在載入資料的來源 Azure 儲存體帳戶限制只能存取一組 VNet 子網路，從 PolyBase 到帳戶的連線會中斷。 如需透過連線至固定到 VNet 的 Azure 儲存體的 Azure SQL 資料倉儲來啟用 PolyBase 匯入和匯出案例，請按照下列所示的步驟進行：
+PolyBase 通常用來從 Azure 儲存體帳戶將資料載入至 Azure Synapse 分析。 如果您正在載入資料的來源 Azure 儲存體帳戶限制只能存取一組 VNet 子網路，從 PolyBase 到帳戶的連線會中斷。 若要同時使用 Azure Synapse Analytics 來啟用 PolyBase 匯入和匯出案例，以連線至受保護至 VNet 的 Azure 儲存體，請遵循下列所示的步驟：
 
-#### <a name="prerequisites"></a>先決條件
+#### <a name="prerequisites"></a>Prerequisites
 
 - 使用此[指南](https://docs.microsoft.com/powershell/azure/install-az-ps)安裝 Azure PowerShell。
 - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)先升級至一般用途 v2。
@@ -122,7 +122,7 @@ PolyBase 通常用於將資料從 Azure 儲存體帳戶載入 Azure SQL 資料�
 
 #### <a name="steps"></a>步驟
 
-1. 在 PowerShell 中，使用 Azure Active Directory （AAD）**註冊您的 Azure SQL Server**裝載您的 Azure SQL 資料倉儲實例：
+1. 在 PowerShell 中，向 Azure Active Directory （AAD）註冊裝載 Azure Synapse 分析實例的**azure SQL Server** ：
 
    ```powershell
    Connect-AzAccount
@@ -135,11 +135,11 @@ PolyBase 通常用於將資料從 Azure 儲存體帳戶載入 Azure SQL 資料�
    > [!NOTE]
    > - 如果您有一般用途 v1 或 Blob 儲存體帳戶，您必須先使用此 [指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)**升級至 v2**。
    > - 關於 Azure Data Lake Storage Gen2 的已知問題，請參閱此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
-
-1. 請瀏覽至您儲存體帳戶之下的 [存取控制 \(IAM\)]****，然後按一下 [新增角色指派]****。 將**儲存體 Blob 資料參與者**RBAC 角色指派給您的 Azure SQL Server 裝載您已向 AZURE ACTIVE DIRECTORY （AAD）註冊的 Azure SQL 資料倉儲，如步驟 # 1 所示。
+    
+1. 在您的儲存體帳戶底下，流覽至 **[存取控制（IAM）**]，然後選取 [**新增角色指派**]。 從下拉式選中選取 [**儲存體 Blob 資料參與者**] RBAC 角色。 針對 [**指派存取**權] **，選取 Azure AD 使用者、群組或服務主體**。 針對 [**選取**]，輸入您在步驟1中向 AZURE ACTIVE DIRECTORY （AAD）註冊的 azure SQL Server （Azure Synapse Analytics 資料倉儲的邏輯伺服器）的伺服器名稱。 只使用伺服器名稱，而不是完整的 DNS 名稱（不含. database.windows.net 的**servername** ）
 
    > [!NOTE]
-   > 僅有具備「擁有者」權限的成員才能執行此步驟。 關於 Azure 資源的各種內建角色，請參閱此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+   > 只有在儲存體帳戶上具有擁有者許可權的成員，才能夠執行此步驟。 關於 Azure 資源的各種內建角色，請參閱此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
   
 1. **Polybase 連線至 Azure 儲存體帳戶：**
 
@@ -225,7 +225,7 @@ SQL VNet 動作的 PowerShell cmdlet 會在內部呼叫 REST API。 您可以直
 
 - [虛擬網路規則：作業][rest-api-virtual-network-rules-operations-862r]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 您必須已有一個子網路是以 Azure SQL Database 相關的特定虛擬網路服務端點「類型名稱」** 所標記。
 

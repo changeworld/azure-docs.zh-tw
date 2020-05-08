@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: c3dc5b26435f6d876e5eaea943e359055018913b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: aa8d1634c015f338053a4d167db34ef0b5a83505
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201307"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801683"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database 版本資訊
 
@@ -78,30 +78,35 @@ ms.locfileid: "82201307"
 
 |問題  |探索日期  |狀態  |解決日期  |
 |---------|---------|---------|---------|
-|[資源群組的許可權未套用至受控執行個體](#permissions-on-resource-group-not-applied-to-managed-instance)|2020年2月|有因應措施||
-|[透過入口網站針對容錯移轉群組進行手動容錯移轉的限制](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|有因應措施||
-|[SQL 代理程式角色需要非系統管理員（sysadmin）登入的明確執行許可權](#in-memory-oltp-memory-limits-are-not-applied)|12月2019|有因應措施||
+|[代理程式在修改、停用或啟用現有作業時變得沒有回應](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|5月2020|自動緩和| |
+|[資源群組的許可權未套用至受控執行個體](#permissions-on-resource-group-not-applied-to-managed-instance)|2020年2月|有因應措施| |
+|[透過入口網站針對容錯移轉群組進行手動容錯移轉的限制](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|有因應措施| |
+|[SQL 代理程式角色需要非系統管理員（sysadmin）登入的明確執行許可權](#in-memory-oltp-memory-limits-are-not-applied)|12月2019|有因應措施| |
 |[代理程式進程重新開機可能會中斷 SQL 代理程式作業](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|12月2019|已解決|Mar 2020|
-|[SSDT 中不支援 AAD 登入和使用者](#aad-logins-and-users-are-not-supported-in-ssdt)|2019年11月|無因應措施||
-|[記憶體內部 OLTP 記憶體限制不適用](#in-memory-oltp-memory-limits-are-not-applied)|2019年10月|有因應措施||
-|[嘗試移除不是空的檔案時傳回錯誤的錯誤](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|2019年10月|有因應措施||
-|[進行中的資料庫還原會封鎖變更服務層級和建立實例作業](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|Sep 2019|有因應措施||
-|[業務關鍵服務層級上的 Resource Governor 可能需要在容錯移轉之後重新設定](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Sep 2019|有因應措施||
-|[服務層升級之後，必須重新初始化跨資料庫 Service Broker 對話方塊](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|2019年8月|有因應措施||
-|[不支援 Azure AD 登入類型的 Impersonification](#impersonification-of-azure-ad-login-types-is-not-supported)|2019年7月|無因應措施||
-|[@querysp_send_db_mail 中不支援參數](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|無因應措施||
-|[必須在異地容錯移轉之後重新設定異動複寫](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mar 2019|無因應措施||
-|[還原作業期間會使用暫存資料庫](#temporary-database-is-used-during-restore-operation)||有因應措施||
-|[已重新建立 TEMPDB 結構和內容](#tempdb-structure-and-content-is-re-created)||無因應措施||
-|[小型資料庫檔案造成儲存空間超出限制](#exceeding-storage-space-with-small-database-files)||有因應措施||
-|[顯示的 GUID 值，而不是資料庫名稱](#guid-values-shown-instead-of-database-names)||有因應措施||
-|[錯誤記錄檔不會保存](#error-logs-arent-persisted)||無因應措施||
+|[SSDT 中不支援 AAD 登入和使用者](#aad-logins-and-users-are-not-supported-in-ssdt)|2019年11月|無因應措施| |
+|[記憶體內部 OLTP 記憶體限制不適用](#in-memory-oltp-memory-limits-are-not-applied)|2019年10月|有因應措施| |
+|[嘗試移除不是空的檔案時傳回錯誤的錯誤](#wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty)|2019年10月|有因應措施| |
+|[進行中的資料庫還原會封鎖變更服務層級和建立實例作業](#change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore)|Sep 2019|有因應措施| |
+|[業務關鍵服務層級上的 Resource Governor 可能需要在容錯移轉之後重新設定](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|Sep 2019|有因應措施| |
+|[服務層升級之後，必須重新初始化跨資料庫 Service Broker 對話方塊](#cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade)|2019年8月|有因應措施| |
+|[不支援 Azure AD 登入類型的 Impersonification](#impersonification-of-azure-ad-login-types-is-not-supported)|2019年7月|無因應措施| |
+|[@querysp_send_db_mail 中不支援參數](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|無因應措施| |
+|[必須在異地容錯移轉之後重新設定異動複寫](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mar 2019|無因應措施| |
+|[還原作業期間會使用暫存資料庫](#temporary-database-is-used-during-restore-operation)||有因應措施| |
+|[已重新建立 TEMPDB 結構和內容](#tempdb-structure-and-content-is-re-created)||無因應措施| |
+|[小型資料庫檔案造成儲存空間超出限制](#exceeding-storage-space-with-small-database-files)||有因應措施| |
+|[顯示的 GUID 值，而不是資料庫名稱](#guid-values-shown-instead-of-database-names)||有因應措施| |
+|[錯誤記錄檔不會保存](#error-logs-arent-persisted)||無因應措施| |
 |[不支援相同實例內兩個資料庫的交易範圍](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||有因應措施|Mar 2020|
-|[CLR 模組與連結的伺服器有時候無法參考本機 IP 位址](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||有因應措施||
-|從 Azure Blob 儲存體還原資料庫之後，未使用 DBCC CHECKDB 確認資料庫一致性。||已解決|2019年11月|
-|如果源資料庫包含記憶體內部 OLTP 物件，則從業務關鍵層到一般用途層的時間點資料庫還原將不會成功。||已解決|2019年10月|
-|使用安全連線的外部（非 Azure）郵件伺服器 Database Mail 功能||已解決|2019年10月|
-|受控實例中不支援自主資料庫||已解決|2019年8月|
+|[CLR 模組與連結的伺服器有時候無法參考本機 IP 位址](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||有因應措施| |
+|從 Azure Blob 儲存體還原資料庫之後，未使用 DBCC CHECKDB 確認資料庫一致性。| |已解決|2019年11月|
+|如果源資料庫包含記憶體內部 OLTP 物件，則從業務關鍵層到一般用途層的時間點資料庫還原將不會成功。| |已解決|2019年10月|
+|使用安全連線的外部（非 Azure）郵件伺服器 Database Mail 功能| |已解決|2019年10月|
+|受控實例中不支援自主資料庫| |已解決|2019年8月|
+
+### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>代理程式在修改、停用或啟用現有作業時變得沒有回應
+
+在某些情況下，修改現有作業、停用或啟用它可能會導致代理程式變成沒有回應。 此問題會在偵測導致代理程式進程重新開機時自動降低。
 
 ### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>資源群組的許可權未套用至受控實例
 

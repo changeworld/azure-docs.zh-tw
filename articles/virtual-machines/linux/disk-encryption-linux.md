@@ -8,17 +8,17 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b60ccc7a635e4b6071b43d7ff75e182aa96cd08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74a4c13197863d0d41e183826cafd64976b44431
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313617"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792576"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM 上的 Azure 磁碟加密案例
 
 
-Linux 虛擬機器（Vm）的 Azure 磁碟加密會使用 Linux 的 DM Crypt 功能，提供 OS 磁片和資料磁片的完整磁片加密。 此外，它會在使用 EncryptFormatAll 功能時，提供暫時資源磁片的加密。
+Linux 虛擬機器（Vm）的 Azure 磁碟加密會使用 Linux 的 DM Crypt 功能，提供 OS 磁片和資料磁片的完整磁片加密。 此外，它也會在使用 EncryptFormatAll 功能時提供暫存磁片的加密。
 
 Azure 磁碟加密已[與 Azure Key Vault 整合](disk-encryption-key-vault.md)，協助您控制及管理磁片加密金鑰和密碼。 如需服務的總覽，請參閱[Linux vm 的 Azure 磁碟加密](disk-encryption-overview.md)。
 
@@ -209,9 +209,9 @@ key-encryption-key 參數值的語法為 KEK 的完整 URI：https://[keyvault-n
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>針對 Linux Vm 上的資料磁片使用 EncryptFormatAll 功能
 
-**EncryptFormatAll** 參數會減少加密 Linux 資料磁碟的時間。 符合特定準則的分割區將會格式化（使用其目前的檔案系統），然後重新掛接回到命令執行之前的位置。 如果想要排除符合準則的資料磁碟，您可以在執行命令前將它取消掛接。
+**EncryptFormatAll** 參數會減少加密 Linux 資料磁碟的時間。 符合特定準則的分割區將會格式化，連同其目前的檔案系統，然後重新掛接回執行命令之前的位置。 如果想要排除符合準則的資料磁碟，您可以在執行命令前將它取消掛接。
 
- 執行此命令之後，先前掛接的任何磁片磁碟機將會格式化，而加密層則會在現在的空磁片磁碟機上啟動。 選取此選項後，也會加密連結至 VM 的暫時資源磁碟。 如果重設暫時磁碟機，則 Azure 磁碟加密解決方案會為 VM 將它重新格式化並重新加密。 當資源磁片加密之後， [Microsoft Azure Linux 代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)將無法管理資源磁片並啟用該分頁檔，但您可以手動設定該分頁檔。
+ 執行此命令之後，先前掛接的任何磁片磁碟機將會格式化，而加密層則會在現在的空磁片磁碟機上啟動。 選取此選項時，連接至 VM 的暫存磁片也會一併加密。 如果暫存磁片已重設，Azure 磁碟加密解決方案會在下一次的機會重新格式化虛擬機器。 當資源磁片加密之後， [Microsoft Azure Linux 代理程式](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)將無法管理資源磁片並啟用該分頁檔，但您可以手動設定該分頁檔。
 
 >[!WARNING]
 > VM 的資料磁碟區有所需的資料時，不應該使用 EncryptFormatAll。 您可將磁碟取消掛接，將它們排除在加密之外。 您應該先在測試 VM 上試用 EncryptFormatAll，了解功能參數和其含意，然後在生產 VM 上試用。 EncryptFormatAll 選項會將資料磁碟格式化，而其上的所有資料都將遺失。 繼續之前，確認您想要排除的磁碟已正確卸載。 </br></br>
@@ -320,7 +320,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 
  如果 VM 先前是以「全部」加密，則--磁片區類型參數應維持為「全部」。 全部包含作業系統與資料磁碟。 如果 VM 先前是以「OS」磁片區類型加密，則--磁片區類型參數應變更為「全部」，以便同時包含 OS 和新的資料磁片。 若虛擬機器僅使用「Data」磁碟區類型加密，則可以如下所示，保留參數值為「Data」。 要準備進行加密，僅是新增及附加新資料磁碟至虛擬機器是不夠的。 啟用加密之前，新附加的磁碟必須經過格式化，並正確裝載於虛擬機器中。 在 Linux 上磁碟必須裝載於 /etc/fstab，且必須有[一致的區塊裝置名稱](troubleshoot-device-names-problems.md)。  
 
-在啟用加密時，與 Powershell 語法不同，CLI 不需要使用者提供唯一的序列版本。 CLI 為自動產生並使用其唯一序列版本的值。
+與 PowerShell 語法不同的是，CLI 不會要求使用者在啟用加密時提供唯一的序列版本。 CLI 為自動產生並使用其唯一序列版本的值。
 
 -  **加密執行中虛擬機器的資料磁碟：**
 
@@ -335,7 +335,7 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
      ```
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>透過 Azure PowerShell 在新增的磁碟上啟用加密
- 使用 Powershell 來加密 Linux 的新磁碟時，必須指定新的序列版本。 序列版本必須是唯一的。 下列指令碼會產生序列版本的 GUID。 在磁片加密之前，請建立[快照](snapshot-copy-managed-disk.md)集和/或使用[Azure 備份](../../backup/backup-azure-vms-encryption.md)備份 VM。 已在 PowerShell 腳本中指定-skipVmBackup 參數，以加密新增的資料磁片。
+ 使用 PowerShell 為 Linux 的新磁片加密時，必須指定新的序列版本。 序列版本必須是唯一的。 下列指令碼會產生序列版本的 GUID。 在磁片加密之前，請建立[快照](snapshot-copy-managed-disk.md)集和/或使用[Azure 備份](../../backup/backup-azure-vms-encryption.md)備份 VM。 已在 PowerShell 腳本中指定-skipVmBackup 參數，以加密新增的資料磁片。
  
 
 -  **加密執行中 VM 的資料磁片區：** 下列腳本會初始化您的變數，並執行 AzVMDiskEncryptionExtension 指令程式。 資源群組、VM 和金鑰保存庫應該已經建立為必要條件。 將 MyVirtualMachineResourceGroup、MySecureVM 和 MySecureVault 取代為您的值。 VolumeType 參數可使用之值有 All、OS 及 Data。 如果 VM 先前是以「OS」或「全部」的磁片區類型加密，則-VolumeType 參數應變更為「全部」，以便同時包含 OS 和新的資料磁片。
@@ -408,9 +408,10 @@ Azure 磁碟加密不適用於下列 Linux 案例、功能和技術：
 - 共用/分散式檔案系統的加密，例如（但不限於）： DFS、GFS、DRDB 和 CephFS。
 - 將已加密的 VM 移到另一個訂用帳戶。
 - 核心損毀傾印（kdump）。
-- Oracle ACFS （ASM 叢集檔案系統）
-- Gen2 Vm （請參閱：[在 Azure 上支援第2代 vm](generation-2.md#generation-1-vs-generation-2-capabilities)）
-- Lsv2 系列 Vm （請參閱： [Lsv2 系列](../lsv2-series.md)）
+- Oracle ACFS （ASM 叢集檔案系統）。
+- Gen2 Vm （請參閱： [Azure 上第2代 vm 的支援](generation-2.md#generation-1-vs-generation-2-capabilities)）。
+- Lsv2 系列 Vm （請參閱： [Lsv2 系列](../lsv2-series.md)）。
+- 具有「嵌套掛接點」的 VM;也就是單一路徑中的多個掛接點（例如 "/1stmountpoint/data/2stmountpoint"）。
 
 ## <a name="next-steps"></a>後續步驟
 

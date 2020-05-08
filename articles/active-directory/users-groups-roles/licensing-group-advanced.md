@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266282"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582770"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>使用群組來管理 Azure Active Directory 授權的案例、限制及已知問題
 
@@ -100,7 +100,7 @@ ms.locfileid: "79266282"
 
 ## <a name="managing-new-services-added-to-products"></a>管理新增至產品的新服務
 
-當 Microsoft 將新的服務新增至產品授權方案時，預設會在您已指派產品授權的所有群組中啟用。 您租用戶中訂閱產品變更相關通知的使用者會事先收到電子郵件，通知他們即將新增服務。
+當 Microsoft 將新的服務新增至產品授權方案時，預設會在您已指派產品授權的所有群組中啟用。 貴組織中訂閱產品變更通知的使用者，會提早收到電子郵件，通知他們即將推出的服務新增。
 
 身為系統管理員，您可以檢閱受變更影響的所有群組，並採取動作，例如停用每個群組中的新服務。 例如，如果您建立的群組只要以用於部署的特定服務為目標，您可以返回這些群組，並確定已停用所有新增的服務。
 
@@ -108,7 +108,7 @@ ms.locfileid: "79266282"
 
 1. 您一開始將 *Office 365 企業版 E5* 產品指派給數個群組。 其中一個群組稱為「O365 E5 - 僅 Exchange」**，設計成只會為其成員啟用 [Exchange Online (方案 2)]** 服務。
 
-2. 您收到來自 Microsoft 的通知，指出 E5 產品將透過新服務 *Microsoft Stream* 擴充。 當此服務在您的租用戶中可供使用時，您可以執行下列動作：
+2. 您收到來自 Microsoft 的通知，指出 E5 產品將透過新服務 *Microsoft Stream* 擴充。 當服務在您的組織中變成可用時，您可以執行下列動作：
 
 3. 移至 [[Azure Active Directory] > [授權] > [所有產品]****](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) 刀鋒視窗並選取 [Office 365 企業版 E5]**，然後選取 [經過授權的群組]**** 以檢視該產品的所有群組清單。
 
@@ -128,9 +128,9 @@ ms.locfileid: "79266282"
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>使用 PowerShell 查看誰具有繼承和直接授權
 您可以使用 PowerShell 指令碼，來檢查使用者是否有直接指派或繼承自群組的授權。
 
-1. 執行 `connect-msolservice` Cmdlet 來驗證並連線至您的租用戶。
+1. 執行`connect-msolservice` Cmdlet 來驗證並聯機到您的組織。
 
-2. `Get-MsolAccountSku` 可用於探索租用戶中佈建的所有產品授權。
+2. `Get-MsolAccountSku`可以用來探索 Azure AD 組織中所有已布建的產品授權。
 
    ![Get-Msolaccountsku Cmdlet 的螢幕擷取畫面](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 

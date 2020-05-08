@@ -1,23 +1,20 @@
 ---
 title: 使用共用資源庫共用 VM 映射
 description: 了解如何使用共用映像資源庫，跨組織共用 VM 映像。
-documentationcenter: virtual-machine-scale-sets
-author: axayjo
-tags: azure-resource-manager
+author: cynthn
 ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
 ms.topic: conceptual
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 05/06/2019
-ms.author: akjosh
-ms.reviewer: cynthn
-ms.custom: ''
-ms.openlocfilehash: 38b8738a383d2953d89677f76e6395035b83181f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.author: cynthn
+ms.reviewer: akjosh
+ms.openlocfilehash: 130fe0cc4813c764ceacec0fc7c800fc38f88741
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76276351"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792815"
 ---
 # <a name="shared-image-galleries-overview"></a>共用映像資源庫概觀
 

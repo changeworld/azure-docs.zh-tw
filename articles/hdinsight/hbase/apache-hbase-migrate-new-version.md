@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 30cda7a83feddaeb41385252a61d1dc68a881a47
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7fb7b6b409a4e24be97ee61fc7ba1f0c0a93202
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646501"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792627"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>將 Apache HBase 叢集移轉至新的版本
 
@@ -220,4 +220,4 @@ ms.locfileid: "75646501"
 * [將 HDInsight 叢集升級為更新的版本](../hdinsight-upgrade-cluster.md)
 * [使用 Apache Ambari Web UI 監視和管理 Azure HDInsight](../hdinsight-hadoop-manage-ambari.md)
 * [Apache Hadoop 元件和版本](../hdinsight-component-versioning.md)
-* [使用 Apache Ambari 將組態最佳化](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)
+* [將 Apache HBase 優化](../optimize-hbase-ambari.md)

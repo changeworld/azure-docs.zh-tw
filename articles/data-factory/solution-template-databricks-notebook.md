@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: 65b89a13637f5a4e1712995a6ac58d88b4421806
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414856"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857637"
 ---
 # <a name="transformation-with-azure-databricks"></a>使用 Azure Databricks 進行轉換
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 在本教學課程中，您會建立端對端管線，其中包含 Azure Data Factory 中的**驗證**、**複製資料**和**筆記本**活動。
 
@@ -34,7 +34,7 @@ ms.locfileid: "81414856"
 
 ![管線的圖表](media/solution-template-Databricks-notebook/pipeline-example.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>必要條件
 
 - 具有名`sinkdata`為之容器的 Azure Blob 儲存體帳戶，可做為接收器使用。
 
@@ -153,6 +153,9 @@ ms.locfileid: "81414856"
 1. 確認**管線參數**符合下列螢幕擷取畫面中顯示的內容： ![管線參數](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. 連接到您的資料集。
+
+    >[!NOTE]
+    >在下列資料集中，已自動在範本中指定檔案路徑。 如果需要進行任何變更，請務必指定**容器**和**目錄**的路徑，以防發生任何連接錯誤。
 
    - **SourceAvailabilityDataset** -檢查來源資料是否可用。
 

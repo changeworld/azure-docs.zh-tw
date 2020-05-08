@@ -1,44 +1,41 @@
 ---
-title: 合作夥伴中心的商業 marketplace 分析中的評等和評論儀表板
-description: 瞭解如何在 Azure Marketplace 和 AppSource 上，針對您的供應專案存取客戶意見反應的匯總視圖。
+title: 合作夥伴中心內的評等 & 審查分析儀表板
+description: 瞭解如何在 Microsoft AppSource 和 Azure Marketplace 上，針對您的供應專案存取客戶意見反應的匯總視圖。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 405ba37fd10fa48bf45f1031d2e9b5b17620ea0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262412"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792916"
 ---
-# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>商業 marketplace 分析中的評等和評論儀表板
+# <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>合作夥伴中心內的評等 & 審查分析儀表板
 
-本文提供合作夥伴中心的評等 & 評論儀表板的相關資訊。 此儀表板會針對 Azure Marketplace 和 AppSource 上的供應專案，顯示客戶意見反應的匯總視圖。
+本文提供合作夥伴中心的評等 & 評論儀表板的相關資訊。 此儀表板會針對 Microsoft AppSource 和 Azure Marketplace 上的供應專案，顯示客戶意見反應的匯總視圖。 當客戶在這兩個 marketplace 中流覽、搜尋和購買供應專案時，他們可以針對他們取得的供應專案留下評等和評論。
 
-若要存取合作夥伴中心分析工具中 **& 審查] 儀表板的分級**，請在 [商業 Marketplace] 下開啟 [**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**] 儀表板。
+- 客戶可以提交新的評等，或審查和更新或刪除現有的評等或評論其已提交。 客戶只能對其所擁有的評等和評論進行變更。  
+- 評論會張貼在 Azure Marketplace 或 AppSource 供應專案產品顯示頁面的 [評論] 索引標籤上。 客戶可以匿名包含其名稱或 post。  
 
 >[!NOTE]
 > 如需分析術語的詳細定義，請參閱[商業 marketplace 分析的常見問題和術語](./faq-terminology.md)。
 
-## <a name="ratings--reviews"></a>評等 & 評論
+## <a name="access-the-dashboard"></a>存取儀表板
 
-當客戶在這兩個 marketplace 中流覽、搜尋和購買供應專案時，他們可以針對他們取得的供應專案留下評等和評論。
+在合作夥伴中心的 [[商業 Marketplace] 儀表板](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)中，展開 [**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**] 區段，然後選取 [**分級] & 評論**。
 
-- 客戶可以提交新的評等，或審查和更新或刪除現有的評等或評論其已提交。 客戶只能對其所擁有的評等和評論進行變更。  
-- 評論會張貼在 Azure marketplace 或 AppSource 供應專案產品顯示頁面的 [評論] 索引標籤上。 客戶可以匿名包含其名稱或 post。  
-
-**評量 & [審查] 儀表板**會顯示客戶的此活動的趨勢和深入解析。 您可以查看下列專案的圖形表示：
+儀表板會顯示下列客戶活動的圖形表示：
 
 - 評等 & 評論  
 - 審查批註
 
-**Marketplace 店面**索引標籤可讓發行者分別在 [AppSource & Azure Marketplace] 索引標籤中查看其供應專案計量。 若要查看特定的供應專案計量，請從 [供應專案] 下拉式清單中選取供應專案。
+使用 [ **Marketplace 店面**] 索引標籤來查看您的供應專案 Microsoft AppSource 並分別 Azure Marketplace 計量。 若要查看特定的供應專案計量，請從 [供應專案] 下拉式清單中選取供應專案。
 
-
-### <a name="ratings-and-reviews-summary"></a>評等和評論摘要
+### <a name="ratings--reviews-summary"></a>評等 & 評論摘要
 
 [評等] & [評論摘要] 區段會顯示下列所選日期範圍的度量：
 

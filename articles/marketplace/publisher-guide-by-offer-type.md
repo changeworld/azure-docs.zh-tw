@@ -1,5 +1,5 @@
 ---
-title: Microsoft 商業 marketplace 發行指南（依供應專案類型）
+title: 依供應專案類型的發行指南-Microsoft 商業 marketplace
 description: 本文說明 Microsoft 商業 marketplace 中提供的供應專案類型。
 author: dsindona
 ms.service: marketplace
@@ -7,22 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6521f19ea566719fee39c238adda8e3a068e2c25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39bc4e3cc653589686be539da127279b3db41be6
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419284"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872344"
 ---
 # <a name="publishing-guide-by-offer-type"></a>依供應項目類型的發行指南
 
-一旦您[決定發佈選項](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)，您就可以選取要用來呈現供應專案的供應專案類型。
+本文說明商用 marketplace 中可用的供應專案類型。 「供應項目類型」** 會定義供應項目結構 (包括用來在市集中展示供應項目的中繼資料、成品和其他內容)。
 
- 「供應項目類型」** 會定義供應項目結構 (包括用來在市集中展示供應項目的中繼資料、成品和其他內容)。
+在您可以建立供應專案之前，以及[決定發佈選項](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)之後，您必須選擇將用來呈現供應專案的供應專案類型。 供應項目類型會對應至您想要發佈的解決方案、應用程式服務供應項目類型，以及對等的 Microsoft 產品和服務。
 
-您必須先選擇供應項目類型，才能建立供應項目。 供應項目類型會對應至您想要發佈的解決方案、應用程式服務供應項目類型，以及對等的 Microsoft 產品和服務。
-
-單一供應專案類型可透過不同的方式進行設定，以啟用不同的發佈選項、行動動作、布建或定價。 發佈選項和供應項目類型的組態，也會符合供應項目資格和技術需求。
+您可以使用不同的方式來設定單一供應專案類型，以啟用不同的發佈選項、呼叫動作、布建或定價。 發佈選項和供應項目類型的組態，也會符合供應項目資格和技術需求。
 
 在您建立供應項目之前，請務必檢閱店面和供應項目類型資格需求，以及技術發佈需求。
 

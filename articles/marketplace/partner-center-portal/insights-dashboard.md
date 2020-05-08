@@ -1,22 +1,22 @@
 ---
-title: 合作夥伴中心的商業 marketplace 分析中的 Marketplace 深入解析儀表板
-description: 存取 marketplace web 分析的摘要，讓發行者能夠在 AppSource 和 Azure Marketplace 店面中測量客戶參與度。
+title: Marketplace 深入解析-Microsoft 商業 marketplace
+description: 存取 marketplace web 分析的摘要，可讓您在 Microsoft AppSource 和 Azure Marketplace 中測量客戶參與度。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cecff7347189c5e5b964e10439297bce405810b7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251702"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857917"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>商業 marketplace 分析中的 Marketplace 深入解析儀表板
+# <a name="marketplace-insights-dashboard-in-partner-center"></a>合作夥伴中心的 Marketplace 深入解析儀表板
 
-本文提供合作夥伴中心內 Marketplace 深入解析儀表板的相關資訊。 此儀表板會顯示 marketplace web 分析的摘要，讓發行者能夠針對其在 marketplace 店面： AppSource 和 Azure Marketplace 上所列的個別產品詳細資料頁面，測量客戶參與。
+本文提供合作夥伴中心內 Marketplace 深入解析儀表板的相關資訊。 此儀表板會顯示 marketplace web 分析的摘要，可讓發行者針對 marketplace 店面： Microsoft AppSource 和 Azure Marketplace 上所列的個別產品詳細資料頁面，測量客戶參與。
 
 ## <a name="marketplace-insights-dashboard"></a>Marketplace 見解儀表板
 

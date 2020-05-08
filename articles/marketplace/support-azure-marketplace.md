@@ -1,24 +1,22 @@
 ---
-title: 支援商用 marketplace |Azure Marketplace
-description: Azure Marketplace 和 AppSource 的支援資訊和連結
+title: Microsoft 商業 marketplace 支援-Azure Marketplace
+description: 合作夥伴中心內 Azure Marketplace 和 AppSource 的支援資訊和連結
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 3871ef232d9a2315ece632f6f764f8377a8435c5
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 9dacbbac1caad33a6ab2f5f09d3f6c9d31c32bb7
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159910"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871544"
 ---
-# <a name="support-for-the-marketplace"></a>Marketplace 的支援
+# <a name="support-for-microsoft-commercial-marketplace"></a>支援 Microsoft 商業 marketplace
 
-以下是 Marketplace 的支援選項清單。  
-
-此外，您可以在 [C + AI 社群論壇的 Marketplace 頻道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)取得許多問題的解答。  
+您有關于開始使用 Microsoft 商業 marketplace 發行者的問題嗎？ 以下是商用 marketplace 的支援選項清單。 除了下列資源之外，您也可以在[C + AI 社區論壇的 Marketplace 通道](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)中，獲得許多問題的解答。  
 
 ## <a name="onboarding"></a>登入
 
@@ -30,7 +28,7 @@ ms.locfileid: "82159910"
 |:--- |:--- |:--- |  
 | 如需協助，請瀏覽位於 [Marketplace 支援服務](https://partner.microsoft.com/support/v2/?stage=1) \(英文\) 的「建立事件」頁面</li> </ul> | 合作夥伴中心的支援。 | 平日24小時提供支援。 |  
 
-## <a name="technical"></a>技術需求  
+## <a name="technical"></a>技術  
 
 | 支援通道 | 描述 |  
 |:--- |:--- |  

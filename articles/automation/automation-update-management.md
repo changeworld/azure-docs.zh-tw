@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 24befd6e5d90c7c3fffd2049bae3bee392e6e0e0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: ca5d8c35aea06143e058aade473282a038212605
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855679"
+ms.locfileid: "82872159"
 ---
 # <a name="update-management-in-azure-automation"></a>Azure 自動化中的更新管理
 
@@ -197,7 +197,7 @@ Windows 代理程式必須設定為與 WSUS 伺服器通訊，或需要存取 Mi
 
 對於 Red Hat Linux 電腦，請參閱必要端點[的 RHUI 內容傳遞伺服器的 ip](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) 。 如需其他 Linux 發行版本，請參閱您的提供者檔。
 
-如需混合式 Runbook 背景工作角色所需埠的詳細資訊，請參閱混合式背景[工作角色埠](automation-hybrid-runbook-worker.md#hybrid-worker-role)。
+如需混合式 Runbook 背景工作角色所需埠的詳細資訊，請參閱[混合式 runbook 背景工作角色的更新管理位址](automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker)。
 
 我們建議您在定義例外狀況時使用所列的位址。 針對 IP 位址，您可以下載[Microsoft Azure 資料中心 IP 範圍](https://www.microsoft.com/download/details.aspx?id=41653)。 此檔案會每週更新，並反映目前已部署的範圍及任何即將進行的 IP 範圍變更。
 

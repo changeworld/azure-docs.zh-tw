@@ -1,31 +1,31 @@
 ---
-title: 合作夥伴中心的商業 marketplace 分析使用量儀表板
-description: 瞭解如何存取所有 VM 提供使用量和計量付費計量。
+title: Microsoft 商業 marketplace 分析中的使用方式儀表板
+description: 瞭解如何存取所有 VM 提供使用量和計量付費計量。 前往 [商業 Marketplace] 底下的 [合作夥伴中心] 中的 [使用量] 儀表板。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 33762540d14ea51e8325abe9a466007cd7cca748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89a0a782b4a18b71f7be8bcdd3728fd008c24d5a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262174"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793001"
 ---
-# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>商業 marketplace 分析中的使用量儀表板
+# <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft 商業 marketplace 分析中的使用方式儀表板
 
 本文提供合作夥伴中心內 [使用量] 儀表板的相關資訊。 此儀表板會在兩個不同的索引標籤中顯示所有 VM 提供使用量和計量付費計量： VM 使用量和計量付費使用量。
 
-若要存取使用量儀表板，請開啟 [商業 Marketplace] 底下的 [**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**] 儀表板。
+若要存取使用量儀表板，請開啟 [**商業 Marketplace**] 底下的 [**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**] 儀表板。
 
 >[!NOTE]
 > 如需分析術語的詳細定義，請參閱[商業 marketplace 分析的常見問題和術語](./faq-terminology.md)。
 
 ## <a name="usage-dashboard"></a>使用量儀表板
 
-[使用量] 儀表板代表所有虛擬機器（VM）提供使用量和計量付費使用量的計量。 這些可在兩個不同的索引標籤中找到： VM 使用量和計量付費使用量。
+[使用量] 儀表板代表所有虛擬機器（VM）提供使用量和計量付費使用量的計量。 這些度量可在兩個不同的索引標籤中找到： VM 使用量和計量付費使用量。
 
 在 [VM 使用量] 索引標籤中，有下列專案的圖形表示：
 
@@ -46,7 +46,7 @@ ms.locfileid: "81262174"
 [使用量摘要] 表格會顯示他們已購買之所有供應專案的客戶使用時數。
 
 - 標準化的使用時數會定義為以正規化的使用時數，以考慮 VM 核心數目（[VM 核心數目] x [小時的原始使用量]）。 指定為 "SHAREDCORE" 的 Vm 會使用1/6 （或0.1666）作為 [VM 核心數目] 乘數。
-- 已將原始使用量小時定義為 Vm 以小時為單位執行的時間量。
+- 原始使用時數會定義為 Vm 在數小時內執行的時間。
 - 百分比值代表所選日期範圍的使用量成長變更（[上個月使用量–第一個月使用量]）/第一個月使用量）。
 - 向上指的綠色三角形表示成長變更。
 - 指向向下的紅色三角形表示相對於上一個月的負面成長變更。
@@ -58,7 +58,7 @@ ms.locfileid: "81262174"
 
 ### <a name="usage-by-offers"></a>使用方式（依優惠）
 
-- [依供應專案的**正規化使用量**] 圓形圖會根據選取的日期範圍，顯示依供應專案的正規化使用時數細目。 前5個供應專案會顯示在 graph 中，其餘部分則會在「全部 rest」類別中分組。
+- [依供應專案的**正規化使用量**] 圓形圖會根據選取的日期範圍，顯示依供應專案的正規化使用時數細目。 前五個供應專案會顯示在 graph 中，其餘部分則會群組在 [ **rest 全部**] 類別中。
 - 橫條圖會描述所選日期範圍的每月成長趨勢。 月份資料行代表供應專案的使用時數，以及個別月份的最高使用時數。 折線圖會描述在次要 Y 軸上繪製的成長百分比趨勢。
 - 使用圖表頂端的滑杆，沿著 X 軸和/或專注于特定資料點的向右滾動。
 
@@ -91,17 +91,17 @@ ms.locfileid: "81262174"
 
 - 方格中的每個資料行都是可排序的。
 - 如果記錄計數小於1000，則可以將資料解壓縮至 CSV 檔案。
-- 如果記錄計數超過1000，則匯出資料會以非同步方式放置在下載頁面中，這會在未來30天內提供。
+- 如果記錄計數超過1000，則匯出資料會以非同步方式放置在 [下載] 頁面中，接下來的30天內將會提供。
 - 篩選器可以套用至**詳細的使用量資料**，只顯示您感興趣的資料。 資料可以依國家/地區、銷售通路、Marketplace 授權類型、使用類型、供應專案名稱、供應專案類型、免費試用、Marketplace 訂用帳戶識別碼、客戶識別碼和公司名稱進行篩選。
 
 > [!NOTE]
 > 選取 [頁面篩選] 中的 [**使用類型**]，在 [正規化視圖] 或 [原始視圖] 中查看頁面上的圖表。 這些圖表的預設視圖為「正規化視圖」。
 
-[**使用量] 頁面篩選**會在頁面層級套用。 您可以選取多個篩選器來呈現您選擇要查看的準則圖表，以及要顯示在 [詳細使用量資料] 方格/匯出中的資料。 篩選準則會套用至已針對您在 [訂單] 頁面右上角選取的資料範圍所解壓縮的資料上。
+[**使用量] 頁面篩選**會在頁面層級套用。 您可以選取多個篩選器來呈現您選擇要查看的準則圖表，以及要顯示在 [詳細使用量資料] 方格/匯出中的資料。 篩選會針對您在 [訂單] 頁面右上角選取的資料範圍，套用到解壓縮的資料上。
 
 - **供應專案類型**和**供應專案名稱**只會針對您在選取的日期範圍內取得的優惠列出。 清單中的供應專案名稱會顯示在清單中選取的供應專案類型。
 - 針對每個篩選選項，預設選項為 [全部]，但 [**使用類型**] 除外。 [**使用類型**] 的預設選取專案為 [正規化使用方式]。 若要在圖表中顯示原始使用量，請選取 [原始使用量]。
-- [套用的篩選] 會針對所做的篩選準則顯示選取的計數。 預設選項不會顯示套用的篩選。
+- [套用的篩選] 會顯示已進行的篩選選取專案計數。 預設選項不會顯示套用的篩選。
 
 > [!NOTE]
 > 「詳細訂單資料」方格中的每個欄位的詳細定義、頁面篩選和所有可能的選取專案都定義于[常見問題和術語](link needed)文章的資料字典一節中。
@@ -123,5 +123,5 @@ ms.locfileid: "81262174"
 - 如需以圖形化和可下載格式顯示訂單的相關資訊，請參閱[商用 marketplace 分析中的訂單儀表板](./orders-dashboard.md)。
 - 如需客戶的詳細資訊，包括成長趨勢，請參閱[商業 marketplace 分析中的客戶儀表板](./customer-dashboard.md)。
 - 如需過去30天內的下載要求清單，請參閱[商用 marketplace 分析中的下載儀表板](./downloads-dashboard.md)。
-- 若要查看有關 Azure Marketplace 和 AppSource 供應專案的客戶意見反應的匯總觀點，請參閱[商業 Marketplace 分析中的評等和評論儀表板](./ratings-reviews.md)。
+- 若要查看有關 Microsoft AppSource 和 Azure Marketplace 上的客戶意見反應的匯總視圖，請參閱[商業 Marketplace 分析中的評等和評論儀表板](./ratings-reviews.md)。
 - 如需有關商業 marketplace 分析的常見問題，以及完整的資料詞彙字典，請參閱[商業 marketplace 分析的常見問題和術語](./faq-terminology.md)。

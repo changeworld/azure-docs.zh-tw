@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: anhoang
-ms.openlocfilehash: b0ecbc4dc030fa8e7fbe362c1304c3c97278bdf5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2b9b4d51e89975d988ed94bf85695bd8a1cc770
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75462381"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872454"
 ---
 # <a name="quickstart-use-custom-commands-with-custom-voice-preview"></a>快速入門：使用自訂命令搭配自訂語音（預覽）
 
@@ -35,7 +35,8 @@ ms.locfileid: "75462381"
 > ![含有參數的範例句子](media/custom-speech-commands/select-custom-voice.png)
 
 > [!NOTE]
-> 您可以從 [自訂語音專案] 頁面建立自訂語音。 選取 [**語音 Studio** ] 連結，然後選取 [**自訂語音**] 以開始使用。
+> - 對於**公用語音**，**類神經類型**僅適用于特定區域。 若要檢查可用性，請參閱[依區域/端點的標準和類神經語音](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)。
+> - 針對**自訂**語音，您可以從 [自訂語音專案] 頁面建立它們。 請參閱[開始使用自訂語音](./how-to-custom-voice.md)。
 
 應用程式現在會以選取的語音回應，而不是預設的語音。
 

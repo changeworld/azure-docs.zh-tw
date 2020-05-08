@@ -7,13 +7,13 @@ ms.date: 03/24/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 ms.subservice: imaging
-manager: gwallace
-ms.openlocfilehash: e1f1bc09406c34836c13deb805fa399ab4751d41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: cynthn
+ms.openlocfilehash: c13ace67f18b619d5ad86106ecb648db722be9fa
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80246784"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792440"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>預覽：建立 Azure 映射產生器範本 
 
@@ -61,7 +61,7 @@ Azure 映射產生器會使用 json 檔案，將資訊傳遞至映射產生器�
     "apiVersion": "2019-05-01-preview",
 ```
 
-## <a name="location"></a>位置
+## <a name="location"></a>Location
 
 位置是將建立自訂映射的區域。 針對影像產生器預覽，支援下欄區域：
 

@@ -1,22 +1,22 @@
 ---
-title: 標準合約 |Azure Marketplace
-description: Azure Marketplace 和 AppSource 的標準合約
+title: Microsoft 商業 marketplace 的標準合約
+description: 合作夥伴中心內 Azure Marketplace 和 AppSource 的標準合約
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3886b29a47edcfb36114cedf8b8edb3799e0c345
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681454"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871426"
 ---
-# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 的標準合約
+# <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Microsoft 商業 marketplace 的標準合約
 
-為了簡化客戶的採購程式，並降低軟體廠商的法律複雜度，Microsoft 為 Microsoft 商業 marketplace 提供了標準合約，以便協助在 marketplace 中進行交易。 商業 marketplace 發行者可以選擇在標準合約下提供其軟體，而不是製作自訂的條款及條件，而客戶只需要審查並接受一次。 您可以在以下位置找到標準合約[https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178)：。
+Microsoft 提供 Microsoft 商業 marketplace 的標準合約。 這有助於簡化客戶的採購程式、降低軟體廠商的法律複雜度，並促進 marketplace 中的交易。 除了將自訂條款及條件製作為商業 marketplace 發行者，您可以選擇在[標準合約](https://go.microsoft.com/fwlink/?linkid=2041178)下提供軟體，而客戶只需要審查並接受一次。
 
 供應專案的條款及條件是在合作夥伴中心建立供應專案時所定義。 您可以選擇使用 Microsoft 商業 marketplace 的標準合約，而不是提供您自己的自訂條款及條件。
 
@@ -40,7 +40,7 @@ ms.locfileid: "81681454"
 
 ## <a name="customer-experience"></a>客戶體驗
 
-在 Azure marketplace 或 AppSource 的探索體驗期間，客戶將能夠看到與供應專案相關聯的條款，做為 Microsoft 商業 marketplace 的標準合約和任何通用修訂。
+在 Azure Marketplace 或 AppSource 的探索體驗期間，客戶將能夠看到與供應專案相關聯的條款，做為 Microsoft 商業 Marketplace 的標準合約和任何通用修訂。
 
 ![Azure 入口網站客戶探索體驗。](media/marketplace-publishers-guide/azure-discovery-process.png)
 

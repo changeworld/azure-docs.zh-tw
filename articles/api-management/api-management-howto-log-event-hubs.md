@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260933"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871268"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何將事件記錄到 Azure API 管理中的 Azure 事件中樞
 事件中樞是可高度調整的資料輸入服務，每秒可擷取數百萬個事件，可讓您處理和分析連接的裝置和應用程式所產生的大量資料。 事件中樞能做為事件管線的「大門」，一旦收集的資料進入事件中樞，它可以使用任何即時分析提供者或批次/儲存配接器轉換及儲存資料。 事件中樞能分隔事件串流的生產與這些事件的使用，讓事件消費者依照自己的排程存取事件。
@@ -34,9 +34,9 @@ ms.locfileid: "81260933"
 
 可使用 [API 管理 REST API](https://aka.ms/apimapi)來設定 API 管理記錄器。 如需詳細的要求範例，請參閱[如何建立記錄器](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate)。
 
-## <a name="configure-log-to-eventhubs-policies"></a>設定 log-to-eventhubs 原則
+## <a name="configure-log-to-eventhub-policies"></a>設定登入 eventhub 原則
 
-您在 API 管理中設定好記錄器後，便可設定 log-to-eventhubs 原則來記錄所需的事件。 log-to-eventhubs 原則可用於輸入原則區段或輸出原則區段。
+在 API 管理中設定您的記錄器之後，您可以設定您的記錄檔對 eventhub 原則來記錄所需的事件。 登入 eventhub 原則可以用於輸入原則區段或輸出原則區段。
 
 1. 瀏覽至您的 APIM 執行個體。
 2. 選取 [API] 索引標籤。
@@ -49,15 +49,32 @@ ms.locfileid: "81260933"
 9. 在右側視窗中，選取 [ **Advanced 原則** > ] [**Log to EventHub**]。 這會插入 `log-to-eventhub` 原則陳述式範本。
 
 ```xml
-<log-to-eventhub logger-id ='logger-id'>
-  @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
+<log-to-eventhub logger-id="logger-id">
+    @{
+        return new JObject(
+            new JProperty("EventTime", DateTime.UtcNow.ToString()),
+            new JProperty("ServiceName", context.Deployment.ServiceName),
+            new JProperty("RequestId", context.RequestId),
+            new JProperty("RequestIp", context.Request.IpAddress),
+            new JProperty("OperationName", context.Operation.Name)
+        ).ToString();
+    }
 </log-to-eventhub>
 ```
-將 `logger-id` 取代為在前一步驟中用於 URL `{new logger name}` 的值 (建立記錄器)。
+將`logger-id`取代為您`{loggerId}`在上一個步驟中用來建立記錄器的要求 URL 中所使用的值。
 
-您可以使用任何能傳回字串做為 `log-to-eventhub` 項目之值的運算式。 在此範例中，將記錄包含日期和時間、服務名稱、要求識別碼、要求 IP 位址和作業名稱的字串。
+您可以使用任何能傳回字串做為 `log-to-eventhub` 項目之值的運算式。 在此範例中，會記錄 JSON 格式的字串，其中包含日期和時間、服務名稱、要求識別碼、要求 ip 位址和作業名稱。
 
 按一下 [儲存] **** ，儲存更新的原則組態。 儲存完成後，原則便會啟用，事件會記錄至指定的事件中樞。
+
+## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>使用 Azure 串流分析預覽登入事件中樞
+
+您可以使用[Azure 串流分析查詢](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics)，在事件中樞中預覽登入。 
+
+1. 在 [Azure 入口網站中，流覽至記錄器將事件傳送至其中的事件中樞。 
+2. 在 [**功能**] 底下，選取 [**處理資料**] 索引標籤。
+3. 在 [**啟用事件的即時深入**解析] 卡片上，選取 [**流覽**]。
+4. 您應該能夠在 [**輸入預覽**] 索引標籤上預覽記錄檔。如果顯示的資料不是最新的，**請選取 [** 重新整理] 以查看最新的事件。
 
 ## <a name="next-steps"></a>後續步驟
 * 深入了解 Azure 事件中樞

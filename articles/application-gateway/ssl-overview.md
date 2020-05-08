@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: ae80b49c3bfb40743665768622d3f4a8a6990c12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 286c9329be38055808571d8d32c724d27a61cbf3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311855"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855869"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>使用應用程式閘道的 TLS 終止和端對端 TLS 總覽
 
@@ -28,6 +28,10 @@ ms.locfileid: "81311855"
 - **憑證管理**–憑證只需要在應用程式閘道上購買並安裝，而不是所有後端伺服器。 這可節省時間和金錢。
 
 若要設定 TLS 終止，必須將 TLS/SSL 憑證新增至接聽程式，讓應用程式閘道能夠根據 TLS/SSL 通訊協定規格來衍生對稱金鑰。 接著會使用對稱金鑰來加密和解密傳送至閘道的流量。 TLS/SSL 憑證必須採用「個人資訊交換」（PFX）格式。 此檔案格式可允許將私密金鑰匯出，而應用程式閘道需要這個匯出的金鑰來執行流量的加密和解密。
+
+> [!IMPORTANT] 
+> 請注意，接聽程式上的憑證需要上傳整個憑證鏈。 
+
 
 > [!NOTE] 
 >

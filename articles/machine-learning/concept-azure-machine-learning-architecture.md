@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/17/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 9f1d23f11cf73680a8861c9f1ac6cbd40ad497a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e70401bbaa97920163f3c7e76e32b9b9be2f5e72
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257329"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871487"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning 的運作方式：架構和概念
 
@@ -60,7 +60,7 @@ ms.locfileid: "81257329"
     * [實驗](#experiments)
         * [進行](#runs) 
             * [回合組態](#run-configurations)
-            * [快照式](#snapshots)
+            * [快照集](#snapshots)
             * [Git 追蹤](#github-tracking-and-integration)
             * [記錄](#logging)
     * [ML 管線](#ml-pipelines)
@@ -119,7 +119,7 @@ Azure Machine Learning 會記錄所有執行，並在實驗中儲存下列資訊
 提交回合時，Azure Machine Learning 會將包含指令碼的目錄壓縮成 zip 檔案，然後傳送至計算目標。 接著會將 zip 檔案解壓縮並在該處執行指令碼。 Azure Machine Learning 也會將 zip 檔案以快照方式儲存在回合記錄中。 任何擁有工作區存取權的人都能瀏覽回合記錄並下載快照集。
 
 > [!NOTE]
-> 為避免不必要的檔案包含在快照中，請略過檔案（. .gitignore 或. amlignore）。 將此檔案放在快照集目錄中，然後在其中新增要忽略的檔案名。 Amlignore 檔案會使用與 .gitignore 檔案相同的[語法和模式](https://git-scm.com/docs/gitignore)。 如果這兩個檔案都存在，則會優先使用 amlignore 檔案。
+> [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 
 ### <a name="github-tracking-and-integration"></a>GitHub 追蹤與整合
 
@@ -224,7 +224,7 @@ Azure IoT Edge 會確保模組正在執行，並監視裝載模組的裝置。
 
 資料集提供使用常用格式的資料（例如使用`from_delimited_files()`或`to_pandas_dataframe()`）的方法。
 
-如需詳細資訊，請參閱[建立和註冊 Azure Machine Learning 資料集](how-to-create-register-datasets.md)。  如需使用資料集的更多範例，請參閱[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)。
+如需詳細資訊，請參閱[建立和註冊 Azure Machine Learning 資料集](how-to-create-register-datasets.md)。  如需使用資料集的更多範例，請參閱[範例筆記本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial)。
 
 **資料**存放區是 Azure 儲存體帳戶的儲存體抽象概念。 資料存放區可以使用 Azure Blob 容器或 Azure 檔案共用作為後端儲存體。 每個工作區都有預設資料存放區，而且您可以註冊額外的資料存放區。 使用 Python SDK API 或 Azure Machine Learning CLI 在資料存放區中儲存及擷取檔案。
 

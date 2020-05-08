@@ -1,17 +1,17 @@
 ---
-Description: 若要從商業 marketplace 中的供應專案銷售額獲得費用，您必須設定您的付款帳戶，並填寫必要的稅務形式。
-title: 設定您的付款帳戶和稅務表單 |Azure Marketplace
+title: 設定付款帳戶 & 稅務表單-Microsoft 商業 marketplace
+Description: 若要從商業 marketplace 中的供應專案銷售額獲得 money，請瞭解如何設定您的付款帳戶，並填寫必要的稅務形式。
 ms.date: 12/10/2019
 ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: fb0caa64feb7cb024b684a2e94937aec8893bb5e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 627f6f01a17fc8cabb4f1883306baeb0e2d77e70
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80281301"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792882"
 ---
 # <a name="set-up-your-payout-account-and-tax-forms"></a>設定支出帳戶和稅賦形式
 
@@ -32,7 +32,7 @@ ms.locfileid: "80281301"
 
 ## <a name="tax-forms"></a>納稅申報表
 
-### <a name="filling-out-your-tax-forms"></a>填寫您的稅務表單
+### <a name="fill-out-your-tax-forms"></a>填寫您的納稅申報表
 
 首先，您必須建立稅務設定檔，並將它指派給您參與的程式。 您可以完成下列步驟，以建立商業 marketplace 的*稅務設定檔*：
 
@@ -45,18 +45,21 @@ ms.locfileid: "80281301"
 > 不同國家和地區的稅金要求不同。 您必須支付的確切金額取決於您銷售供應專案的國家和地區。 請參閱[Microsoft Azure Marketplace 發行者合約](https://go.microsoft.com/fwlink/p/?LinkID=699560)，以瞭解 Microsoft 免除銷售並代表您使用稅金的國家/地區。 在其他國家/地區，視您註冊的位置而定，您可能需要將您的供應專案銷售的銷售和使用稅金直接寄給當地的稅務機關。 此外，您收到的應用程式銷售收入可能會列為應稅收入。 我們強烈建議您洽詢您所在國家或地區的相關授權單位，其最能協助您判斷您的商業 marketplace 活動的正確稅務資訊。
 
 1. 在 [[合作夥伴中心](https://partner.microsoft.com/dashboard)] 中，選取右上角的 [**帳戶設定**] 圖示，然後選取 [**開發人員設定**]。
+
 2. 在左側導覽功能表中，選取 [付款**和稅金**]，然後選取 [付款**和稅務指派**]。
 
 3. 選取您要設定其稅務資訊的 [程式] 和 [賣方識別碼] 組合。
 
 4. 如果您想要使用現有的稅務設定檔，請從下拉式清單中選取它。 否則，請選取 [**建立新設定檔**]，然後按 [**提交**]。 您將會進入 [稅務設定檔] 頁面。
+
 5. 按一下 [**編輯**] 按鈕以編輯您的稅務資訊。
+
 6. 選取適當的選項按鈕，然後在出現提示時，選取您的國家/地區。 此步驟會決定用來在您的帳戶上進行支出的 Microsoft 商務實體。
 
 7. 視您在步驟6中的選擇而定，系統會提示您提供您國家/地區所需的稅務資訊。
 
-> [!NOTE]
-> 無論您居住的國家/地區或公民，都必須填寫美國稅務表單，才能透過商業 marketplace 銷售任何供應專案或附加元件。 符合特定美國常駐需求的發行者必須填寫一個 IRS 的英國表單。 美國以外的其他發行者必須填寫 IRS 的8個表單。 完成稅金設定檔之後，您就可以在線上填寫這些表單。
+   > [!NOTE]
+   > 無論您居住的國家/地區或公民，都必須填寫美國稅務表單，才能透過商業 marketplace 銷售任何供應專案或附加元件。 符合特定美國常駐需求的發行者必須填寫一個 IRS 的英國表單。 美國以外的其他發行者必須填寫 IRS 的8個表單。 完成稅金設定檔之後，您就可以在線上填寫這些表單。
 
 ### <a name="withholding-rates"></a>扣繳率
 
@@ -108,8 +111,8 @@ ms.locfileid: "80281301"
 
 6. 按一下 [提交] 以儲存變更。
 
-> [!NOTE]
-> Microsoft 最多可能需要48小時的時間來驗證您的設定檔中的資訊。 當此程式完成時，*驗證狀態*會顯示為 [**完成**]
+   > [!NOTE]
+   > Microsoft 最多可能需要48小時的時間來驗證您的設定檔中的資訊。 當此程式完成時，*驗證狀態*會顯示為 [**完成**]
 
 為確保您的支出成功，請務必：
 
@@ -122,7 +125,9 @@ ms.locfileid: "80281301"
 如果您需要進行變更或更正任何不正確的資訊，您可以編輯現有的付款設定檔。
 
 1. 在 [[合作夥伴中心](https://partner.microsoft.com/dashboard)] 中，選取右上角的 [**設定**] 齒輪圖示，然後選取 [**開發人員設定**]。
+
 2. 在 [*支出] 和 [稅務*] 標題底下，選取 [付款**和稅務設定檔**]。
+
 3. 您的付款設定檔會連同其狀態一起列出。 尋找您要編輯的設定檔，然後按一下最右側的 [**編輯**]
 
 > [!IMPORTANT]
@@ -138,9 +143,13 @@ ms.locfileid: "80281301"
 使用 PayPal 做為付款方式的常見問題：
 
 - **我需要設定哪些 PayPal 設定才能接收付款？** 請確定您的 PayPal 帳戶不會封鎖 eCheck 付款。 您可以在 PayPal 的 Payment Receiving Preferences \(付款接收喜好設定\) 頁面管理此設定。 如需詳細資訊，請參閱 [PayPal 的帳戶設定頁面](https://go.microsoft.com/fwlink/p/?linkid=513139)。
+
 - **我的國家/地區是否受支援？** 請參閱[付款臨界值、方法和](payment-thresholds-methods-timeframes.md)時間範圍，以瞭解 PayPal 是支援的付款方法。
-- **我的 PayPal 帳戶是否必須在與合作夥伴中心帳戶相同的國家/地區中註冊？** 否。 當您設定 PayPal 帳戶時，您可以接受預設設定。 接收來自其他國家/地區與其他貨幣的付款時，應該不會有問題，除非您已封鎖使用某些貨幣付款。 您可以在 PayPal 的 Payment Receiving Preferences \(付款接收喜好設定\) 頁面管理此設定。
-- **我是否必須手動接受 PayPal 付款？** 否。 PayPal 帳戶的預設設定會要求使用者手動接受付款，這表示若您未在 30 天內接受付款，該款項將被退回。 您可以在 PayPal 的 \[More Settings\] \(更多設定\) 頁面關閉 \[Ask Me\] \(詢問我\) 來變更此設定。
+
+- **我的 PayPal 帳戶是否必須在與合作夥伴中心帳戶相同的國家/地區中註冊？** 不需要。 當您設定 PayPal 帳戶時，您可以接受預設設定。 接收來自其他國家/地區與其他貨幣的付款時，應該不會有問題，除非您已封鎖使用某些貨幣付款。 您可以在 PayPal 的 Payment Receiving Preferences \(付款接收喜好設定\) 頁面管理此設定。
+
+- **我是否必須手動接受 PayPal 付款？** 不需要。 PayPal 帳戶的預設設定會要求使用者手動接受付款，這表示若您未在 30 天內接受付款，該款項將被退回。 您可以在 PayPal 的 \[More Settings\] \(更多設定\) 頁面關閉 \[Ask Me\] \(詢問我\) 來變更此設定。
+
 - **PayPal 支援哪些貨幣？** 請參閱[PayPal 的支援頁面](https://developer.paypal.com/docs/classic/api/currency-codes/#paypal)，以取得目前的清單
 
 ### <a name="specific-requirements-for-certain-countriesregions"></a>某些國家/地區的特定需求
@@ -193,3 +202,7 @@ R 表格 (Form-R) 是巴基斯坦的金融規範需求。 它用於指示從海�
 4. 回到 [*設定檔指派*] 頁面，選取您想要我們在發出支出時使用的貨幣。
 5. 您將需要為您參與的每個程式選取付款設定檔，但您可以對多個程式使用相同的設定檔。
 6. 按一下 [提交] 以儲存變更。
+
+## <a name="next-steps"></a>後續步驟
+
+[商業市集計費](billing-details.md)

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4deae235ed15d02874ab5cb3470c62e934324364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 389dea74f5002cb09d7683947356d236ea8d338b
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234301"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858700"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure 儲存體 Blob 的虛刪除
 
@@ -192,7 +192,7 @@ Copy a snapshot over the base blob:
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -326,7 +326,7 @@ blockBlob.StartCopy(copySource);
 
 ### <a name="can-i-use-the-set-blob-tier-api-to-tier-blobs-with-soft-deleted-snapshots"></a>是否可以使用「設定 Blob 層 API」將具有虛刪除快照集的 Blob 分層？
 
-是。 已虛刪除的快照集會留在原始階層，但基底 Blob 會移到新階層。 
+可以。 已虛刪除的快照集會留在原始階層，但基底 Blob 會移到新階層。 
 
 ### <a name="premium-storage-accounts-have-a-per-blob-snapshot-limit-of-100-do-soft-deleted-snapshots-count-toward-this-limit"></a>進階儲存體帳戶有每個 Blob 100 個快照集的限制。 虛刪除快照集是否會計入這項限制中？
 
@@ -371,5 +371,5 @@ Azure 虛擬機器會使用**Put 頁面**的呼叫寫入非受控磁片，因此
 * [.NET 範例程式碼](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
 * [Blob 服務 REST API](/rest/api/storageservices/blob-service-rest-api)
 * [Azure 儲存體複寫](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [使用 RA-GRS 設計高可用性應用程式](../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Azure 儲存體中的災害復原和儲存體帳戶容錯移轉 (預覽)](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [使用異地冗余來設計高可用性應用程式](../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [嚴重損壞修復和儲存體帳戶容錯移轉](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

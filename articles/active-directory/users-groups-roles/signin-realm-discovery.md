@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1f27c7b91a78da8944c23fd353d3b6791b3e015
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74024257"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582564"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory 登入頁面的主領域探索
 
@@ -28,7 +28,7 @@ ms.locfileid: "74024257"
 
 在過去，主領域探索是由在登入時提供的網域，或由一些繼承應用程式的主領域探索原則所控管。 例如，在我們的探索行為中，Azure Active Directory 使用者可能會錯誤地輸入使用者名稱，但仍會抵達組織的認證集合畫面。 當使用者正確提供組織的功能變數名稱 "contoso.com" 時，就會發生這種情況。 這種行為不允許資料細微性自訂個別使用者的體驗。
 
-為了支援更廣泛的認證並增加可用性，在登入程式期間，Azure Active Directory 的使用者名稱查閱行為會立即更新。 新的行為會根據登入頁面上輸入的使用者名稱，來讀取租使用者和使用者層級設定，以做出明智的決策。 若要這麼做，Azure Active Directory 將會檢查登入頁面上所輸入的使用者名稱是否存在於其指定的網域中，或將使用者重新導向以提供其認證。
+為了支援更廣泛的認證並增加可用性，在登入程式期間，Azure Active Directory 的使用者名稱查閱行為會立即更新。 新的行為會根據登入頁面上輸入的使用者名稱，來讀取組織層級和使用者層級的設定，以做出明智的決策。 若要這麼做，Azure Active Directory 將會檢查登入頁面上所輸入的使用者名稱是否存在於其指定的網域中，或將使用者重新導向以提供其認證。
 
 這項工作的另一個優點是改善了錯誤訊息。 以下是在登入僅支援 Azure Active Directory 使用者的應用程式時，改善的錯誤訊息範例。
 

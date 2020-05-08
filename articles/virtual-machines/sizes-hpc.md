@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: df22c857571e51bb886ff1d25db185a306999540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420862"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839057"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高效能計算 VM 大小
 
@@ -39,7 +39,7 @@ Azure H 系列虛擬機器（Vm）的設計目的是針對各種實際的 HPC �
 
 ## <a name="rdma-capable-instances"></a>支援 RDMA 的執行個體
 
-大部分 HPC VM 大小（HBv2、HB、HC、H16r、H16mr、A8 和 A9）的功能都是遠端直接記憶體存取（RDMA）連線的網路介面。 選取的 [N 系列] （https://docs.microsoft.com/azure/virtual-machines/nc-series)以 ' r ' 指定的大小，例如 NC24rs 設定（NC24rs_v3、NC24rs_v2 和 NC24r）也是支援 RDMA 的。 除了其他 VM 大小中可用的標準 Azure 網路介面以外，此介面也是。
+大部分 HPC VM 大小（HBv2、HB、HC、H16r、H16mr、A8 和 A9）的功能都是遠端直接記憶體存取（RDMA）連線的網路介面。 使用 ' r ' （如 NC24rs 設定（NC24rs_v3、NC24rs_v2 和 NC24r）指定的[N 系列](https://docs.microsoft.com/azure/virtual-machines/nc-series)大小也是支援 RDMA 的。 除了其他 VM 大小中可用的標準 Azure 網路介面以外，此介面也是。
 
 此介面可讓支援 RDMA 的實例透過「未使用」（IB）網路進行通訊，以 HBv2 的 HDR 速率操作、HB 的 EDR 費率、HC、H16r、H16mr 和具備 RDMA 功能的 N 系列虛擬機器，以及適用于 A8 和 A9 Vm 的 QDR 速率。 這些 RDMA 功能可以提高特定訊息傳遞介面 (MPI) 應用程式的延展性和效能。 如需速度的詳細資訊，請參閱此頁面上的表格中的詳細資料。
 
@@ -92,7 +92,7 @@ Azure 提供數個選項來建立 Windows HPC VM 的叢集，而這些 VM 可以
 
 - **虛擬機器**-在相同的擴展集或可用性設定組中部署支援 RDMA 的 HPC vm （當您使用 Azure Resource Manager 部署模型時）。 如果您使用傳統部署模型，請將 VM 部署在相同的雲端服務中。
 
-- **虛擬機器擴展集**-在虛擬機器擴展集（VMSS）中，請確定您將部署限制為單一放置群組。 例如，在 Resource Manager 範本中，將 `singlePlacementGroup` 屬性設定為 `true`。 請注意，根據預設，可由`singlePlacementGroup`屬性啟動的最大 VMSS `true`大小上限為 100 vm。 如果您的 HPC 作業級別需求高於單一 VMSS 租使用者中的 100 Vm，您可以要求增加、免費[開啟線上客戶支援要求](../azure-supportability/how-to-create-azure-support-request.md)。
+- **虛擬機器擴展集**-在虛擬機器擴展集（VMSS）中，請確定您將部署限制為單一放置群組，以便在 VMSS 內進行不確定的通訊。 例如，在 Resource Manager 範本中，將 `singlePlacementGroup` 屬性設定為 `true`。 請注意，根據預設，可由`singlePlacementGroup`屬性啟動的最大 VMSS `true`大小上限為 100 vm。 如果您的 HPC 作業級別需求高於單一 VMSS 租使用者中的 100 Vm，您可以要求增加、免費[開啟線上客戶支援要求](../azure-supportability/how-to-create-azure-support-request.md)。 單一 VMSS 中的 Vm 數目限制可以增加至300。 請注意，使用可用性設定組部署 Vm 時，最大限制是每個可用性設定組200個 Vm。
 
 - 虛擬機器之間的**MPI** -如果虛擬機器（vm）之間需要 RDMA （例如使用 MPI 通訊），請確定 vm 位於相同的虛擬機器擴展集或可用性設定組中。
 
@@ -129,6 +129,6 @@ Azure 提供數個選項來建立 Windows HPC VM 的叢集，而這些 VM 可以
 
 ## <a name="next-steps"></a>後續步驟
 
-- 深入瞭解如何將 Azure 的 HPC 應用程式優化，以及一些範例： [HPC 工作負載] （https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
+- 深入瞭解如何將 Azure 的 HPC 應用程式優化，以及[Hpc 工作負載](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview)的一些範例 
 
 - 深入了解 [Azure 計算單位 (ACU)](acu.md) 如何協助您比較各個 Azure SKU 的計算效能。

@@ -4,15 +4,15 @@ description: 本文說明如何從 Azure Analysis Services 資料庫備份和還
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2866ec860cbc9037aa6b57389b35f17ec71a7c9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145440"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871289"
 ---
 # <a name="backup-and-restore"></a>備份與還原
 
@@ -24,7 +24,7 @@ ms.locfileid: "82145440"
 > 
 
 > [!NOTE]
-> 如果儲存體帳戶位於不同的區域，則必須將防火牆設定設定為允許來自**所有網路**的存取。 不支援針對選取的網路使用允許清單的 IP 位址，並允許受信任的 Microsoft 服務例外狀況所設定的防火牆設定。
+> 如果儲存體帳戶位於不同的區域，請設定儲存體帳戶防火牆設定，以允許來自**所選網路**的存取。 在 [防火牆**位址範圍**] 中，指定 Analysis Services 伺服器所在區域的 IP 位址範圍。 支援將儲存體帳戶防火牆設定為允許從所有網路進行存取，但最好是選擇選取的網路並指定 IP 位址範圍。 若要深入瞭解，請參閱[網路連線常見問題](analysis-services-network-faq.md#backup-and-restore)。
 
 備份會以 .abf 副檔名儲存。 針對記憶體內表格式模型，會同時儲存模型資料和中繼資料。 針對 DirectQuery 表格式模型，則只會儲存模型中繼資料。 視您選擇的選項而定，可以將備份壓縮和加密。
 
@@ -52,7 +52,7 @@ ms.locfileid: "82145440"
 
     ![儲存備份設定](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Backup 
 
 ### <a name="to-backup-by-using-ssms"></a>使用 SSMS 來進行備份
 
@@ -107,5 +107,5 @@ ms.locfileid: "82145440"
 ## <a name="related-information"></a>相關資訊
 
 [Azure 儲存體帳戶](../storage/common/storage-create-storage-account.md)  
-[高可用性](analysis-services-bcdr.md)     
-[管理 Azure Analysis Services](analysis-services-manage.md)
+[高可用性](analysis-services-bcdr.md)      
+[Analysis Services 網路連線常見問題](analysis-services-network-faq.md)

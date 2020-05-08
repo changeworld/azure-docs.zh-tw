@@ -4,14 +4,15 @@ description: 調整伺服器群組記憶體、磁片和 CPU 資源，以處理�
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 3/16/2020
-ms.openlocfilehash: fa48ca287c248155a0271b5134be782d8db1c785
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8e8e1672f754e843a3bd1c75d496599d31e5f11
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063106"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584010"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>調整超大規模資料庫（Citus）伺服器群組
 
@@ -41,7 +42,7 @@ SELECT rebalance_table_shards('distributed_table_name');
 ## <a name="increase-or-decrease-vcores-on-nodes"></a>增加或減少節點上的虛擬核心
 
 > [!NOTE]
-> 這項功能目前為預覽狀態。 若要針對伺服器群組中的節點要求變更虛擬核心，請[洽詢 Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
+> 此功能目前為預覽狀態。 若要針對伺服器群組中的節點要求變更虛擬核心，請[洽詢 Azure 支援](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
 除了新增節點之外，您還可以增加現有節點的功能。 向上和向下調整計算容量，對於效能實驗以及對流量需求的短期或長期變更都很有用。
 

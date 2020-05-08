@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 05/04/2020
 ms.author: rogarana
-ms.openlocfilehash: b2dd501344e1ea799db58ea749395aaed05d05f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6309219b31c22f1f1d090cc9de9931609e3423f7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106540"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792970"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>針對 Azure 檔案共用啟用透過 SMB 的內部部署 Active Directory Domain Services 驗證
 
@@ -40,7 +40,7 @@ ms.locfileid: "82106540"
 > - 以 Azure 檔案儲存體取代內部部署檔案伺服器（包括檔案和 AD 驗證的私人連結上的安裝程式）
 > - 使用 Azure 檔案儲存體做為 Windows 虛擬桌面的設定檔容器（包括 AD 驗證和 FsLogix 設定上的安裝程式）
 
-## <a name="prerequisites"></a>先決條件 
+## <a name="prerequisites"></a>Prerequisites 
 
 為 Azure 檔案共用啟用 AD DS 驗證之前，請確定您已完成下列必要條件： 
 
@@ -54,13 +54,11 @@ ms.locfileid: "82106540"
 
     若要從電腦或 VM 使用 AD 認證來存取檔案共用，您的裝置必須已加入網域，才能 AD DS。 如需如何加入網域的相關資訊，請參閱將[電腦加入網域](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain)。 
 
-- 在[支援的區域](#regional-availability)中，選取或建立 Azure 儲存體帳戶。 
+- 選取或建立 Azure 儲存體帳戶。  為了達到最佳效能，我們建議您將儲存體帳戶部署在您打算用來存取共用的 VM 所在的相同區域中。
 
     請確定尚未設定包含檔案共用的儲存體帳戶進行 Azure AD DS 驗證。 如果 Azure 檔案儲存體在儲存體帳戶上啟用 Azure AD DS 驗證，則必須先將其停用，才能變更為使用內部部署 AD DS。 這表示在 Azure AD DS 環境中設定的現有 Acl 必須重新設定，才能強制執行適當的許可權。
     
     如需建立新檔案共用的相關資訊，請參閱 [在 Azure 檔案儲存體中建立檔案共用](storage-how-to-create-file-share.md)。
-    
-    為了達到最佳效能，我們建議您將儲存體帳戶部署在您打算用來存取共用的 VM 所在的相同區域中。 
 
 - 使用您的儲存體帳戶金鑰來掛接 Azure 檔案共用，以驗證連線能力。 
 
@@ -70,23 +68,23 @@ ms.locfileid: "82106540"
 
 [所有公用區域和 Azure Gov 區域](https://azure.microsoft.com/global-infrastructure/locations/)都提供使用 AD DS 的 Azure 檔案儲存體驗證（預覽）。
 
-## <a name="workflow-overview"></a>工作流程概觀
-
-針對 Azure 檔案共用啟用透過 SMB 進行 AD DS 驗證之前，建議您先閱讀並完成 [必要條件一節](#prerequisites)。 必要條件會驗證您的 AD、Azure AD 和 Azure 儲存體環境是否已正確設定。 
+## <a name="overview"></a>總覽
 
 如果您打算在檔案共用上啟用任何網路設定，建議您先評估[網路考慮](https://docs.microsoft.com/azure/storage/files/storage-files-networking-overview)，並先完成相關設定，再啟用 AD DS 驗證。
 
-接下來，請遵循下列步驟來設定 AD 驗證的 Azure 檔案儲存體： 
+針對您的 Azure 檔案共用啟用 AD DS 驗證，可讓您使用內部內部部署 AD DS 認證向 Azure 檔案共用進行驗證。 此外，它可讓您更有效地管理您的許可權，以允許細微的存取控制。 若要這麼做，您必須將內部內部部署 AD DS 的身分識別，與 AD connect Azure AD 同步處理。 您可以使用同步處理到 Azure AD 的身分識別來控制共用層級存取，同時使用內部內部部署 AD DS 認證來管理檔案/共用層級存取。
 
-1. 在您的儲存體帳戶上啟用 Azure 檔案儲存體 AD DS 驗證。 
+接下來，請遵循下列步驟來設定 AD DS Authentication 的 Azure 檔案儲存體： 
 
-2. 將共用的存取權限指派給與目標 AD 身分識別同步的 Azure AD 身分識別（使用者、群組或服務主體）。 
+1. [在您的儲存體帳戶上啟用 Azure 檔案儲存體 AD DS 驗證](#1-enable-ad-ds-authentication-for-your-account)
 
-3. 透過 SMB 設定目錄和檔案的 Acl。 
+1. [將共用的存取權限指派給與目標 AD 身分識別同步的 Azure AD 身分識別（使用者、群組或服務主體）](#2-assign-access-permissions-to-an-identity)
+
+1. [透過 SMB 設定目錄和檔案的 Acl](#3-configure-ntfs-permissions-over-smb)
  
-4. 將 Azure 檔案共用掛接至已加入您的 AD DS 的 VM。 
+1. [將 Azure 檔案共用掛接至已加入您的 AD DS 的 VM](#4-mount-a-file-share-from-a-domain-joined-vm)
 
-5. 在 AD DS 中，更新儲存體帳戶身分識別的密碼。
+1. [在 AD DS 中更新儲存體帳戶身分識別的密碼](#5-update-the-password-of-your-storage-account-identity-in-ad-ds)
 
 下圖說明針對 Azure 檔案共用啟用透過 SMB 進行 Azure AD 驗證的端對端工作流程。 
 
@@ -95,9 +93,9 @@ ms.locfileid: "82106540"
 > [!NOTE]
 > 只有在比 Windows 7 或 Windows Server 2008 R2 更新的作業系統版本上執行的電腦或 Vm，才支援透過 SMB 對 Azure 檔案共用進行 AD DS 驗證。 
 
-## <a name="1-enable-ad-authentication-for-your-account"></a>1. 為您的帳戶啟用 AD 驗證 
+## <a name="1-enable-ad-ds-authentication-for-your-account"></a>1為您的帳戶啟用 AD DS 驗證 
 
-若要針對 Azure 檔案共用啟用透過 SMB 進行 AD DS 驗證，您必須先向 AD DS 註冊您的儲存體帳戶，然後在儲存體帳戶上設定所需的網域屬性。 在儲存體帳戶上啟用此功能時，它會套用至帳戶中所有新的和現有的檔案共用。 使用`join-AzStorageAccountForAuth`來啟用此功能。 您可以在本節內的腳本中找到端對端工作流程的詳細描述。 
+若要針對 Azure 檔案共用啟用透過 SMB 進行 AD DS 驗證，您必須先向 AD DS 註冊您的儲存體帳戶，然後在儲存體帳戶上設定所需的網域屬性。 在儲存體帳戶上啟用此功能時，它會套用至帳戶中所有新的和現有的檔案共用。 下載 AzFilesHybrid Powershell 模組，並使用`join-AzStorageAccountForAuth`來啟用此功能。 您可以在本節內的腳本中找到端對端工作流程的詳細描述。 
 
 > [!IMPORTANT]
 > Cmdlet `Join-AzStorageAccountForAuth`會對您的 AD 環境進行修改。 閱讀下列說明，以進一步瞭解其用途，以確保您擁有執行命令的適當許可權，而且套用的變更會符合合規性和安全性原則。 
@@ -118,7 +116,7 @@ ms.locfileid: "82106540"
 在 PowerShell 中執行之前，請記得使用您自己的參數來取代預留位置值。
 > [!IMPORTANT]
 > 網域加入 Cmdlet 會建立 AD 帳戶來代表 AD 中的儲存體帳戶（檔案共用）。 您可以選擇將註冊為電腦帳戶或服務登入帳戶，請參閱[常見問題](https://docs.microsoft.com/azure/storage/files/storage-files-faq#security-authentication-and-access-control)以取得詳細資料。 針對電腦帳戶，AD 中的預設密碼到期時間設定為30天。 同樣地，服務登入帳戶可能會在 AD 網域或組織單位（OU）上設定預設密碼到期時間。
-> 對於這兩種帳戶類型，我們強烈建議您檢查 AD 環境中設定的密碼到期期限，並規劃在密碼最長使用期限之前，在 ad 帳戶的[ad 中更新儲存體帳戶身分識別的密碼](#5-update-the-password-of-your-storage-account-identity-in-ad-ds)。 在存取 Azure 檔案共用時，無法更新 AD 帳戶密碼會導致驗證失敗。 您可以考慮[在 AD 中建立新的 Ad 組織單位（OU）](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) ，並據以停用[電腦帳戶](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN)或服務登入帳戶的密碼到期原則。 
+> 對於這兩種帳戶類型，我們強烈建議您檢查 AD 環境中設定的密碼到期期限，並規劃在密碼最長使用期限之前，在 ad 帳戶的[ad 中更新儲存體帳戶身分識別的密碼](#5-update-the-password-of-your-storage-account-identity-in-ad-ds)。 您可以考慮[在 AD 中建立新的 Ad 組織單位（OU）](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps) ，並據以停用[電腦帳戶](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)?redirectedfrom=MSDN)或服務登入帳戶的密碼到期原則。 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -144,12 +142,12 @@ Select-AzSubscription -SubscriptionId $SubscriptionId
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
 # You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName. You can choose to provide one of the two names to specify the target OU.
 # You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
-#You can run Get-Help Join-AzStorageAccountForAuth to find more details on this cmdlet.
+# You can run Get-Help Join-AzStorageAccountForAuth to find more details on this cmdlet.
 
 Join-AzStorageAccountForAuth `
         -ResourceGroupName $ResourceGroupName `
         -Name $StorageAccountName `
-        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" ` #Default set to "ComputerAccount"
+        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" ` # Default set to "ComputerAccount" if this parameter is not provided
         -OrganizationalUnitName "<ou-name-here>" #You can also use -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" instead. If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
 
 #You can run the Debug-AzStorageAccountAuth cmdlet to conduct a set of basic checks on your AD configuration with the logged on AD user. This cmdlet is supported on AzFilesHybrid v0.1.2+ version. For more details on the checks performed in this cmdlet, go to Azure Files FAQ.
@@ -218,7 +216,7 @@ $storageAccount.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties
 
 您現在已成功啟用透過 SMB 的 AD DS 驗證，並已指派自訂角色，可讓您存取具有 AD DS 身分識別的 Azure 檔案共用。 若要將檔案共用的存取權授與其他使用者，請遵循[指派存取權限](#2-assign-access-permissions-to-an-identity)以使用身分識別和透過[SMB 設定 NTFS 許可權](#3-configure-ntfs-permissions-over-smb)一節中的指示。
 
-## <a name="5-update-the-password-of-your-storage-account-identity-in-ad-ds"></a>5. 在 AD DS 中更新儲存體帳戶身分識別的密碼
+## <a name="5-update-the-password-of-your-storage-account-identity-in-ad-ds"></a>5在 AD DS 中更新儲存體帳戶身分識別的密碼
 
 如果您已在強制執行密碼到期時間的 OU 下，註冊代表儲存體帳戶的 AD DS 身分識別/帳戶，您必須在密碼最長使用期限前輪替密碼。 無法更新 AD DS 帳戶的密碼會導致驗證失敗，因此無法存取 Azure 檔案共用。  
 

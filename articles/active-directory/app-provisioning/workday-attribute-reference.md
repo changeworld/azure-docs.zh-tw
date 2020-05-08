@@ -1,27 +1,25 @@
 ---
-title: Workday 屬性參考 |Microsoft Docs
+title: Workday 索引屬性参考
 description: 瞭解 SuccessFactors-HR 驅動布建支援來自 SuccessFactors 的屬性
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/19/2020
 ms.author: chmutali
-ms.openlocfilehash: 61f374c3fbc15e78784fe30c4e66ea109537727d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: b0acb058e7e58656257d55f82f5dd02a8ae7d9c3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112876"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593058"
 ---
 # <a name="workday-attribute-reference"></a>Workday 索引屬性参考
+
 本節提供您可以使用 XPATH 查詢從 Workday 提取的屬性清單。 根據您打算使用的 Workday Web 服務 API 版本，請參閱適當的一節。 
 
 ## <a name="xpath-values-for-workday-web-services-wws-api-v211"></a>Workday Web 服務（WWS） API v 21.1 的 XPATH 值
@@ -29,7 +27,7 @@ ms.locfileid: "82112876"
 
 下表會使用 Workday 輸入布建應用程式連接器，捕捉現成隨附的 Workday 屬性和對應的 XPATH 運算式清單。 
 
-| \# | Name                                  | Workday API 運算式                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | 名稱                                  | Workday API 運算式                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Active                                | wd： Worker/wd： Worker\_data/Wd：雇用\_資料/wd： Worker\_狀態\_資料/wd： Active/text\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | wd： worker/wd： worker\_data/wd：雇用\_資料/wd：位置\_資料/wd：商務\_網站\_摘要\_資料/wd：位址\_資料/wd：位址\_行\_資料\[@wd:Type= ' 位址\_行\_2 '\]/text\(\)                                                                                                                                                                                                                             |
@@ -62,7 +60,7 @@ ms.locfileid: "82112876"
 | 29 | LocationIdentifier                    | wd： worker/wd： worker\_data/wd：雇用\_資料/wd：位置\_資料/wd：商務\_網站\_摘要\_資料/wd：位置\_參考/wd：識別碼\[@wd:type= ' 位置\_識別碼 '\]/text\(\)                                                                                                                                                                                                                                            |
 | 30 | ManagerReference                      | wd： worker/wd： worker\_Data/wd：管理\_鏈\_資料/wd：工作者\_監督\_管理\_鏈\_資料\[位置\(\)= 1\]/wd：管理\_鏈\_資料\[最後\(\)= 位置\(\)\]/wd：管理員\_參考/wd：識別碼\[@wd:type= ' WID '\]/text\(\)                                                                                                                                                                            |
 | 31 | MiddleName                            | wd： Worker/wd： Worker\_data/Wd： Personal\_Data/wd： name\_data/wd：合法\_名稱\_Data/wd： name\_Detail\_data/wd：中間\_名/文字\(\)                                                                                                                                                                                                                                                                                |
-| 32 | 行動電話                                | wd： worker/wd： worker\_data/wd：個人\_資料/wd： Contact\_data/wd： phone\_資料\[轉譯\(字串\(wd： phone\_裝置\_類型\_Reference/@wd:Descriptor\)，' abcdefghijklmnopqrstuvwxyz '，' abcdefghijklmnopqrstuvwxyz '\)= ' MOBILE '，翻譯\(字串\(wd：使用量\_資料/wd：類型\_資料/wd：類型\_Reference/@wd:Descriptor\)，' abcdefghijklmnopqrstuvwxyz '，' abcdefghijklmnopqrstuvwxyz '\)= ' WORK '\]/@wd:Formatted\_電話    |
+| 32 | 行動                                | wd： worker/wd： worker\_data/wd：個人\_資料/wd： Contact\_data/wd： phone\_資料\[轉譯\(字串\(wd： phone\_裝置\_類型\_Reference/@wd:Descriptor\)，' abcdefghijklmnopqrstuvwxyz '，' abcdefghijklmnopqrstuvwxyz '\)= ' MOBILE '，翻譯\(字串\(wd：使用量\_資料/wd：類型\_資料/wd：類型\_Reference/@wd:Descriptor\)，' abcdefghijklmnopqrstuvwxyz '，' abcdefghijklmnopqrstuvwxyz '\)= ' WORK '\]/@wd:Formatted\_電話    |
 | 33 | Municipality                          | wd： Worker/wd： Worker\_data/Wd：雇用\_資料/wd：位置\_資料/wd：商務\_網站\_摘要\_資料/wd：位址\_資料/wd： Municipality/text\(\)                                                                                                                                                                                                                                                                   |
 | 34 | PositionID                            | wd： Worker/wd： Worker\_data/Wd：雇用\_資料/wd：位置\_資料/wd：位置\_ID/文字\(\)                                                                                                                                                                                                                                                                                                                     |
 | 35 | PositionTitle                         | wd： Worker/wd： Worker\_data/Wd：雇用\_資料/wd：位置\_資料/wd：位置\_標題/文字\(\)                                                                                                                                                                                                                                                                                                                  |
@@ -117,7 +115,7 @@ ms.locfileid: "82112876"
 如果您使用 WWS API v 30.0 和更新版本，在開啟布建作業之前，請先更新 [屬性對應->] [選項] 下的 [ **XPATH API 運算式**]-[ **> 編輯 Workday 的屬性清單**]，以使用以下列出的值。 若要設定其他 Xpath，請參閱[教學課程：管理您](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)的設定一節。 
 
 
-| \# | Name                                  | Workday XPATH API 運算式                                                                                                                                                                                                                                                                                                                                                |
+| \# | 名稱                                  | Workday XPATH API 運算式                                                                                                                                                                                                                                                                                                                                                |
 |----|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Active                                | wd： Worker/wd： Worker\_data/Wd：雇用\_資料/wd： Worker\_狀態\_資料/wd： Active/text\(\)                                                                                                                                                                                                                                                                                               |
 | 2  | AddressLine2Data                      | wd： worker/wd： worker\_data/wd：雇用\_資料/wd： worker\_作業\_資料\[@wd:Primary\_作業 = 1\]/wd：位置\_資料/wd：商務\_網站\_摘要\_資料/wd：位址\_資料/wd：位址\_行\_資料\[@wd:Type= ' 位址\_行\_2 '\]/text\(\)                                                                                                                                                            |
@@ -150,7 +148,7 @@ ms.locfileid: "82112876"
 | 29 | LocationIdentifier                    | wd： worker/wd： worker\_data/wd：雇用\_資料/wd： worker\_作業\_資料\[@wd:Primary\_作業 = 1\]/wd：位置\_資料/wd：商務\_網站\_摘要\_資料/wd：位置\_參考/wd：識別碼\[@wd:type= ' 位置\_識別碼 '\]/text\(\)                                                                                                                                                                           |
 | 30 | ManagerReference                      | wd： worker/wd： worker\_Data/wd：管理\_鏈\_資料/wd：工作者\_監督\_管理\_鏈\_資料\[位置\(\)= 1\]/wd：管理\_鏈\_資料\[最後\(\)= 位置\(\)\]/wd：管理員\_參考/wd：識別碼\[@wd:type= ' WID '\]/text\(\)                                                                                                                                                      |
 | 31 | MiddleName                            | wd： Worker/wd： Worker\_data/Wd： Personal\_Data/wd： name\_data/wd：合法\_名稱\_Data/wd： name\_Detail\_data/wd：中間\_名/文字\(\)                                                                                                                                                                                                                                                          |
-| 32 | 行動電話                                | wd： worker/wd： worker\_Data/wd：個人\_資料/wd：連絡人\_資料/wd：電話\_資料\[wd：使用\_Data/@wd:Public方式 = ' 1 ' 和\(字串 wd：\_使用方式資料/wd\_：類型資料/wd\_：類型參考/wd\[@wd:type：識別碼 =\_'\_通訊\_使用類型\]\)識別碼 ' = ' 工作 '\(和字串 wd\_：\_電話\_裝置類型參考/wd\[@wd:type：識別碼 =\_'\_手機\_裝置類型\]\)識別碼 ' = '\]/@wd:Workday\_行動\_'\_傳統格式化電話   |
+| 32 | 行動                                | wd： worker/wd： worker\_Data/wd：個人\_資料/wd：連絡人\_資料/wd：電話\_資料\[wd：使用\_Data/@wd:Public方式 = ' 1 ' 和\(字串 wd：\_使用方式資料/wd\_：類型資料/wd\_：類型參考/wd\[@wd:type：識別碼 =\_'\_通訊\_使用類型\]\)識別碼 ' = ' 工作 '\(和字串 wd\_：\_電話\_裝置類型參考/wd\[@wd:type：識別碼 =\_'\_手機\_裝置類型\]\)識別碼 ' = '\]/@wd:Workday\_行動\_'\_傳統格式化電話   |
 | 33 | Municipality                          | wd： worker/wd： worker\_data/wd：雇用\_資料/wd： worker\_作業\_資料\[@wd:Primary\_作業 = 1\]/wd：位置\_資料/wd：商務\_網站\_摘要\_資料/wd：位址\_資料/wd： Municipality/text\(\)                                                                                                                                                                                                  |
 | 34 | PositionID                            | wd： worker/wd： worker\_data/wd：雇用\_資料/wd： worker\_作業\_資料\[@wd:Primary\_作業 = 1\]/wd：位置\_資料/wd：位置\_ID/文字\(\)                                                                                                                                                                                                                                                    |
 | 35 | PositionTitle                         | wd： worker/wd： worker\_data/wd：雇用\_資料/wd： worker\_作業\_資料\[@wd:Primary\_作業 = 1\]/wd：位置\_資料/wd：位置\_標題/文字\(\)                                                                                                                                                                                                                                                 |

@@ -1,23 +1,21 @@
 ---
 title: Azure Service Fabric 反向 proxy 安全通訊
 description: 設定反向 proxy，以在 Azure Service Fabric 應用程式中啟用安全的端對端通訊。
-author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.author: kavyako
-ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617119"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858521"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>安全服務與反向 Proxy 的連線
 
 本文說明如何建立反向 Proxy 和服務之間的安全連線，以確保端對端的安全通道。 若要深入了解反向 Proxy，請參閱 [Azure Service Fabric 中的反向 Proxy](service-fabric-reverseproxy.md)
 
-僅有將反向 Proxy 設為接聽 HTTPS 時，才支援安全的服務連線。 此文章是以此情況作為前提。
-若要在 Service Fabric 中設定反向 Proxy，請參閱[在 Azure Service Fabric 中設定反向 Proxy](service-fabric-reverseproxy-setup.md)。
+> [!IMPORTANT]
+> 僅有將反向 Proxy 設為接聽 HTTPS 時，才支援安全的服務連線。 此文章是以此情況作為前提。 若要在 Service Fabric 中設定反向 Proxy，請參閱[在 Azure Service Fabric 中設定反向 Proxy](service-fabric-reverseproxy-setup.md)。
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>建立反向 Proxy 與服務之間的安全連線 
 
@@ -180,10 +178,10 @@ TLS 終止會發生在反向 proxy，而且所有用戶端憑證資料都會遺�
 
 2. 當**如果 forwardclientcertificate**設定為**true**時，反向 proxy 會在與用戶端的 TLS 交握期間要求用戶端的憑證。
 接著，它會使用名為 **X-Client-Certificate** 的自訂 HTTP 標頭來轉送用戶端憑證資料。 標頭值是用戶端憑證的 PEM 格式字串 (base64 編碼)。 檢查憑證資料之後，服務或許能成功完成要求，也可能無法完成要求，並顯示適當的狀態碼。
-如果用戶端未出示憑證，反向 Proxy 會轉送空白標頭，以讓服務處理這種情況。
+如果用戶端未出示憑證，反向 proxy 會轉送空白標頭，並讓服務處理案例。
 
 > [!NOTE]
-> 反向 Proxy 只是個轉寄站。 它不會執行任何用戶端憑證的驗證。
+> 反向 proxy 僅做為轉送服務。 它不會執行任何用戶端憑證的驗證。
 
 
 ## <a name="next-steps"></a>後續步驟

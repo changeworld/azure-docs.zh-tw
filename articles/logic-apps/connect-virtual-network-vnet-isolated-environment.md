@@ -3,15 +3,15 @@ title: 使用 ISE 連接到 Azure 虛擬網路
 description: 建立可從 Azure Logic Apps 存取 Azure 虛擬網路（Vnet）的整合服務環境（ISE）
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/12/2020
-ms.openlocfilehash: fa63380a8e27dcc8f4de414c483f8d8ed2323e7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/05/2020
+ms.openlocfilehash: 8fab8c51655c860bc63715a5313c18ac72d4b0cd
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234108"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871612"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>透過使用整合服務環境 (ISE) 從 Azure Logic Apps 連線至 Azure 虛擬網路
 
@@ -80,42 +80,49 @@ ISE 已增加執行持續時間、儲存體保留期、輸送量、HTTP 要求�
 
 * 如果您建立新的 Azure 虛擬網路和子網，但沒有任何限制，您就不需要在虛擬網路中設定[網路安全性群組（nsg）](../virtual-network/security-overview.md#network-security-groups)來控制子網之間的流量。
 
-* 在現有的虛擬網路上，您可以藉由[篩選跨子網的網路流量](../virtual-network/tutorial-filter-network-traffic.md)，*選擇性地*設定 nsg。 如果您想要前往此路由，或如果您已經在使用 Nsg，請確定您在已 Nsg 或想要設定 Nsg 的虛擬網路上，[開啟此資料表中的埠](#network-ports-for-ise)。
+* 針對現有的虛擬網路，您可以*選擇性地*設定[網路安全性群組（nsg）](../virtual-network/security-overview.md#network-security-groups) ，以[篩選子網之間的網路流量](../virtual-network/tutorial-filter-network-traffic.md)。 如果您想要前往此路由，或如果您已經在使用 Nsg，請確定您已針對這些 Nsg[開啟此表格中所述的埠](#network-ports-for-ise)。
 
-  > [!NOTE]
-  > 如果您使用[NSG 安全性規則](../virtual-network/security-overview.md#security-rules)，則必須*同時*使用 TCP 和 UDP 通訊協定。 NSG 安全性規則會描述您必須針對需要存取這些埠的 IP 位址開啟的埠。 請確定在這些端點之間存在的任何防火牆、路由器或其他專案，也會讓這些埠可以存取這些 IP 位址。
+  當您設定[NSG 安全性規則](../virtual-network/security-overview.md#security-rules)時，您必須*同時*使用**TCP**和**UDP**通訊協定，或者您也可以選取 [**任何**]，而不需要為每個通訊協定建立個別的規則。 NSG 安全性規則會描述您必須針對需要存取這些埠的 IP 位址開啟的埠。 請確定在這些端點之間存在的任何防火牆、路由器或其他專案，也會讓這些埠可以存取這些 IP 位址。
 
 <a name="network-ports-for-ise"></a>
 
 ### <a name="network-ports-used-by-your-ise"></a>ISE 使用的網路埠
 
-下表描述您的 ISE 使用的 Azure 虛擬網路中的埠，以及這些埠的使用位置。 為了協助降低建立安全性規則時的複雜性，表格中的[服務標記](../virtual-network/service-tags-overview.md)代表特定 Azure 服務的 IP 位址首碼群組。
+下表描述您的 ISE 需要存取的埠，以及這些埠的用途。 為了協助降低設定安全性規則時的複雜性，資料表會使用[服務](../virtual-network/service-tags-overview.md)標籤來代表特定 Azure 服務的 IP 位址首碼群組。 請注意，*內部 ise*和*外部 ise*會參考在[ISE 建立期間選取的存取端點](connect-virtual-network-vnet-isolated-environment.md#create-environment)。 如需詳細資訊，請參閱[端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。
 
 > [!IMPORTANT]
-> 來源埠是暫時的，因此請確定您已將所有`*`規則都設定為。 請注意，內部 ISE 和外部 ISE[會參考在 ISE 建立時選取的端點](connect-virtual-network-vnet-isolated-environment.md#create-environment)。 如需詳細資訊，請參閱[端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
+> 針對所有規則，請確定您已將來源埠設定`*`為，因為來源埠是暫時的。
 
-| 目的 | 方向 | 目的地連接埠 | 來源服務標籤 | 目的地服務標記 | 備忘錄 |
-|---------|-----------|-------------------|--------------------|-------------------------|-------|
-| 虛擬網路內的 Intersubnet 通訊 | 輸入和輸出 | * | 具有 ISE 子網之虛擬網路的位址空間 | 具有 ISE 子網之虛擬網路的位址空間 | 在虛擬網路中的子網*之間*流動的流量所需。 <p><p>**重要**事項：若要在每個子網中的*元件*之間流動流量，請確定您已開啟每個子網內的所有埠。 |
-| 與邏輯應用程式的通訊 | 輸入 | 443 | 內部 ISE： <br>VirtualNetwork <p><p>外部 ISE： <br>Internet <br>（請參閱**附注**資料行） | VirtualNetwork | 您可以不使用**網際網路**服務標籤來指定電腦或服務的來源 IP 位址，以呼叫邏輯應用程式中的任何要求觸發程式或 webhook。 <p><p>**重要**：關閉或封鎖此埠可防止 HTTP 呼叫具有要求觸發程式的邏輯應用程式。 |
-| 邏輯應用程式執行歷程記錄 | 輸入 | 443 | 內部 ISE： <br>VirtualNetwork <p><p>外部 ISE： <br>Internet <br>（請參閱**附注**資料行） | VirtualNetwork | 您可以指定您想要在其中查看邏輯應用程式執行歷程記錄的電腦或服務的來源 IP 位址，而不是使用 [**網際網路**服務] 標籤。 <p><p>**重要**：雖然關閉或封鎖此埠並不會讓您無法查看執行歷程記錄，但您無法在該執行歷程記錄中查看每個步驟的輸入和輸出。 |
-| Logic Apps 設計工具 - 動態屬性 | 輸入 | 454 | LogicAppsManagement | VirtualNetwork | 要求來自該區域的 Logic Apps 存取端點[輸入](../logic-apps/logic-apps-limits-and-config.md#inbound)IP 位址。 |
-| 連接器部署 | 輸入 | 454 | AzureConnectors | VirtualNetwork | 部署和更新連接器時的必要。 關閉或封鎖此埠會導致 ISE 部署失敗，並防止連接器更新或修正。 |
-| 網路健全狀況檢查 | 輸入 | 454 | LogicApps | VirtualNetwork | 要求來自該區域的[輸入](../logic-apps/logic-apps-limits-and-config.md#inbound)和[輸出](../logic-apps/logic-apps-limits-and-config.md#outbound)IP 位址的 Logic Apps 存取端點。 |
-| App Service 管理相依性 | 輸入 | 454、455 | AppServiceManagement | VirtualNetwork | |
-| 從 Azure 流量管理員的通訊 | 輸入 | 內部 ISE：454 <p><p>外部 ISE：443 | AzureTrafficManager | VirtualNetwork | |
-| API 管理 - 管理端點 | 輸入 | 3443 | APIManagement | VirtualNetwork | |
-| 連接器原則部署 | 輸入 | 3443 | APIManagement | VirtualNetwork | 部署和更新連接器時的必要。 關閉或封鎖此埠會導致 ISE 部署失敗，並防止連接器更新或修正。 |
-| 從邏輯應用程式進行通訊 | 輸出 | 80、443 | VirtualNetwork | 根據目的地而有所不同 | 邏輯應用程式需要與其通訊之外部服務的端點。 |
-| Azure Active Directory | 輸出 | 80、443 | VirtualNetwork | AzureActiveDirectory | |
-| 連線管理 | 輸出 | 443 | VirtualNetwork  | AppService | |
-| 發佈診斷記錄和計量 | 輸出 | 443 | VirtualNetwork  | AzureMonitor | |
-| Azure 儲存體相依性 | 輸出 | 80、443、445 | VirtualNetwork | 儲存體 | |
-| Azure SQL 相依性 | 輸出 | 1433 | VirtualNetwork | SQL | |
-| Azure 資源健康狀態 | 輸出 | 1886 | VirtualNetwork | AzureMonitor | 將健全狀況狀態發佈至資源健康狀態時的必要 |
-| 「記錄到事件中樞」原則和監視代理程式的相依性 | 輸出 | 5672 | VirtualNetwork | EventHub | |
-| 針對角色執行個體之間的 Redis 執行個體存取 Azure 快取 | 輸入 <br>輸出 | 6379-6383 | VirtualNetwork | VirtualNetwork | 此外，若要讓 ISE 使用 Azure Cache for Redis，您必須開啟[Azure cache For REDIS 常見問題中所述的這些輸出和輸入埠](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
-||||||
+#### <a name="inbound-security-rules"></a>輸入安全性規則
+
+| 目的 | 來源服務標記或 IP 位址 | 來源連接埠 | 目的地服務標記或 IP 位址 | 目的地連接埠 | 備忘錄 |
+|---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
+| 虛擬網路內的 Intersubnet 通訊 | 使用 ISE 子網的虛擬網路位址空間 | * | 使用 ISE 子網的虛擬網路位址空間 | * | 在虛擬網路中的子網*之間*流動的流量所需。 <p><p>**重要**事項：若要在每個子網中的*元件*之間流動流量，請確定您已開啟每個子網內的所有埠。 |
+| Both (兩者)： <p>與邏輯應用程式的通訊 <p><p>執行邏輯應用程式的歷程記錄| 內部 ISE： <br>**VirtualNetwork** <p><p>外部 ISE：**網際網路**或查看**附注** | * | **VirtualNetwork** | 443 | 您可以指定這些專案的來源 IP 位址，而不是使用**網際網路**服務標籤： <p><p>-呼叫邏輯應用程式中任何要求觸發程式或 webhook 的電腦或服務 <p>-您想要存取邏輯應用程式執行歷程記錄的電腦或服務 <p><p>**重要**：關閉或封鎖此埠可防止呼叫具有要求觸發程式或 webhook 的邏輯應用程式。 您也無法在 [執行歷程記錄] 中存取每個步驟的輸入和輸出。 不過，您不會無法存取邏輯應用程式執行歷程記錄。|
+| Logic Apps 設計工具-動態屬性 | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | 要求來自該區域的 Logic Apps 存取端點的[輸入 IP 位址](../logic-apps/logic-apps-limits-and-config.md#inbound)。 |
+| 連接器部署 | **AzureConnectors** | * | **VirtualNetwork** | 454 | 部署和更新連接器時的必要。 關閉或封鎖此埠會導致 ISE 部署失敗，並防止連接器更新和修正程式。 |
+| 網路健全狀況檢查 | **LogicApps** | * | **VirtualNetwork** | 454 | 要求來自 Logic Apps 存取端點的[輸入 ip 位址](../logic-apps/logic-apps-limits-and-config.md#inbound)，以及該區域的[輸出 ip 位址](../logic-apps/logic-apps-limits-and-config.md#outbound)。 |
+| App Service 管理相依性 | **AppServiceManagement** | * | **VirtualNetwork** | 454、455 ||
+| 從 Azure 流量管理員的通訊 | **AzureTrafficManager** | * | **VirtualNetwork** | 內部 ISE：454 <p><p>外部 ISE：443 ||
+| Both (兩者)： <p>連接器原則部署 <p>API 管理 - 管理端點 | **APIManagement** | * | **VirtualNetwork** | 3443 | 針對連接器原則部署，需要端口存取以部署和更新連接器。 關閉或封鎖此埠會導致 ISE 部署失敗，並防止連接器更新和修正程式。 |
+| 針對角色執行個體之間的 Redis 執行個體存取 Azure 快取 | **VirtualNetwork** | * | **VirtualNetwork** | 6379-6383，加上查看**附注**| 若要讓 ISE 使用 Azure Cache for Redis，您必須開啟[Azure cache For Redis 所述的這些輸出和輸入埠常見問題](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
+|||||||
+
+#### <a name="outbound-security-rules"></a>輸出安全性規則
+
+| 目的 | 來源服務標記或 IP 位址 | 來源連接埠 | 目的地服務標記或 IP 位址 | 目的地連接埠 | 備忘錄 |
+|---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
+| 虛擬網路內的 Intersubnet 通訊 | 使用 ISE 子網的虛擬網路位址空間 | * | 使用 ISE 子網的虛擬網路位址空間 | * | 在虛擬網路中的子網*之間*流動的流量所需。 <p><p>**重要**事項：若要在每個子網中的*元件*之間流動流量，請確定您已開啟每個子網內的所有埠。 |
+| 從邏輯應用程式進行通訊 | **VirtualNetwork** | * | 根據目的地而有所不同 | 80、443 | 目的地會根據邏輯應用程式需要通訊之外部服務的端點而有所不同。 |
+| Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80、443 ||
+| Azure 儲存體相依性 | **VirtualNetwork** | * | **Storage** | 80、443、445 ||
+| 連線管理 | **VirtualNetwork** | * | **AppService** | 443 ||
+| & 計量發佈診斷記錄 | **VirtualNetwork** | * | **AzureMonitor** | 443 ||
+| Azure SQL 相依性 | **VirtualNetwork** | * | **SQL** | 1433 ||
+| Azure 資源健康狀態 | **VirtualNetwork** | * | **AzureMonitor** | 1886 | 將健康狀態發佈至資源健康狀態時的必要。 |
+| 「記錄到事件中樞」原則和監視代理程式的相依性 | **VirtualNetwork** | * | **EventHub** | 5672 ||
+| 針對角色執行個體之間的 Redis 執行個體存取 Azure 快取 | **VirtualNetwork** | * | **VirtualNetwork** | 6379-6383，加上查看**附注**| 若要讓 ISE 使用 Azure Cache for Redis，您必須開啟[Azure cache For Redis 所述的這些輸出和輸入埠常見問題](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
+|||||||
 
 <a name="create-environment"></a>
 
@@ -141,7 +148,7 @@ ISE 已增加執行持續時間、儲存體保留期、輸送量、HTTP 要求�
    | **位置** | 是 | <*Azure-datacenter-地區*> | 要用來部署環境的 Azure 資料中心區域 |
    | **SKU** | 是 | **Premium**或**DEVELOPER （無 SLA）** | 要建立及使用的 ISE SKU。 如需這些 Sku 之間的差異，請參閱[ISE sku](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)。 <p><p>**重要**事項：只有在 ISE 建立時才可使用此選項，且稍後無法變更。 |
    | **額外容量** | 進階： <br>是 <p><p>員 <br>不適用 | 進階： <br>0到10 <p><p>員 <br>不適用 | 要用於此 ISE 資源的額外處理單位數。 若要在建立後新增容量，請參閱[新增 ISE 容量](../logic-apps/ise-manage-integration-service-environment.md#add-capacity)。 |
-   | **存取端點** | 是 | **內部**或**外部** | 要用於 ISE 的存取端點類型。 這些端點會判斷 ISE 中的邏輯應用程式上的要求或 webhook 觸發程式是否可以接收來自您虛擬網路外部的呼叫。 <p><p>您的選擇也會影響您可以在邏輯應用程式執行歷程記錄中查看和存取輸入和輸出的方式。 如需詳細資訊，請參閱[ISE 端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要**事項：只有在 ISE 建立時才可使用此選項，且稍後無法變更。 |
+   | **存取端點** | 是 | **內部**或**外部** | 要用於 ISE 的存取端點類型。 這些端點會判斷 ISE 中的邏輯應用程式上的要求或 webhook 觸發程式是否可以接收來自您虛擬網路外部的呼叫。 <p><p>您的選擇也會影響您可以在邏輯應用程式執行歷程記錄中查看和存取輸入和輸出的方式。 如需詳細資訊，請參閱[ISE 端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 <p><p>**重要**：您只能在 ISE 建立期間選取存取端點，而且稍後無法變更此選項。 |
    | **虛擬網路** | 是 | <*Azure-虛擬網路-名稱*> | 要插入環境的 Azure 虛擬網路，讓該環境中的邏輯應用程式可以存取虛擬網路。 如果您沒有網路，請[先建立 Azure 虛擬網路](../virtual-network/quick-create-portal.md)。 <p><p>**重要**：您*只能*在建立 ISE 時執行此插入。 |
    | **子網路** | 是 | <*子網-資源清單*> | ISE 需要四個*空*的子網，才能在您的環境中建立及部署資源。 若要建立每個子網路，[請遵循此表格底下的步驟](#create-subnet)。 |
    |||||

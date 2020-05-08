@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72a6f97f45ec1adaa42d1f17a1916af137845392
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77167318"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82560000"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 準備觸發程式
 
@@ -240,7 +240,7 @@ JAVA 中不支援準備觸發程式做為屬性。
 ## <a name="trigger---limits"></a>觸發程序的 - 限制
 
 * 準備觸發程式僅適用于高階[方案](./functions-premium-plan.md)上執行的應用程式。
-* 只有在相應增加作業期間才會呼叫準備觸發程式，而不是在重新開機或其他非規模的新創公司。 您必須確保邏輯可以載入所有必要的相依性，而不需使用準備觸發程式。 消極式載入是達成此目標的良好模式。
+* 只有在向外延展作業期間才會呼叫準備觸發程式，而不是在重新開機或其他非規模的新創公司。 您必須確保邏輯可以載入所有必要的相依性，而不需使用準備觸發程式。 消極式載入是達成此目標的良好模式。
 * 一旦實例已經在執行中，就無法叫用準備觸發程式。
 * 每個函式應用程式只能有一個預熱觸發函式。
 
