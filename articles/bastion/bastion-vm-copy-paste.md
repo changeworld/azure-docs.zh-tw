@@ -5,20 +5,24 @@ services: bastion
 author: charwen
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 02/03/2020
+ms.date: 05/04/2020
 ms.author: charwen
-ms.openlocfilehash: 0af0fdfa1b0bcbb06d9424390e7ca8c8f406bcb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8580b7e28c8a4860739efa0763ebb7c20a80585e
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619311"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780278"
 ---
 # <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>複製並貼到虛擬機器： Azure 防禦
 
 本文可協助您在使用 Azure 防禦時，從虛擬機器複製和貼上文字。 使用 VM 之前，請確定您已遵循[建立防禦主機](bastion-create-host-portal.md)的步驟。 然後，使用[RDP](bastion-connect-vm-rdp.md)或[SSH](bastion-connect-vm-ssh.md)連接到您想要使用的 VM。
 
 針對支援先進剪貼簿 API 存取的瀏覽器，您可以使用在本機裝置上的應用程式之間複製和貼上的相同方式，在本機裝置和遠端會話之間複製並貼上文字。 若為其他瀏覽器，您可以使用防禦剪貼簿存取工具選擇區。
+
+>[!NOTE]
+>目前僅支援文字複製/貼上。
+>
 
    ![允許剪貼簿](./media/bastion-vm-manage/allow.png)
 

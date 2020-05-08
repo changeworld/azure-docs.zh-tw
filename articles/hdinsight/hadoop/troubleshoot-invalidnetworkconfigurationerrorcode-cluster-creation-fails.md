@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 6dd4db999cb130c9816ad023888a4333e968c224
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720379"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780431"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>叢集建立因 Azure HDInsight 中的 InvalidNetworkConfigurationErrorCode 而失敗
 
@@ -54,7 +54,7 @@ ms.locfileid: "76720379"
 
 ### <a name="cause"></a>原因
 
-Azure 儲存體和 SQL 沒有固定的 IP 位址，所以我們需要允許所有 Ip 的輸出連線，以允許存取這些服務。 確切的解決步驟取決於您是否已設定網路安全性群組（NSG）或使用者定義的規則（UDR）。 請參閱[使用網路安全性群組和使用者定義的路由來控制 HDInsight 的網路流量](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ip)一節，以取得這些設定的詳細資料。
+Azure 儲存體和 SQL 沒有固定的 IP 位址，所以我們需要允許所有 Ip 的輸出連線，以允許存取這些服務。 確切的解決步驟取決於您是否已設定網路安全性群組（NSG）或使用者定義的規則（UDR）。 請參閱[使用網路安全性群組和使用者定義的路由來控制 HDInsight 的網路流量](../control-network-traffic.md)一節，以取得這些設定的詳細資料。
 
 ### <a name="resolution"></a>解決方案
 
@@ -113,10 +113,10 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 #### <a name="1686312916-is-not-in-this-list"></a>168.63.129.16 不在此清單中
 
-**選項1**  
+**選項 1**  
 使用[規劃用於 Azure HDInsight 的虛擬網路](../hdinsight-plan-virtual-network-deployment.md)中所述的步驟，將168.63.129.16 新增為虛擬網路的第一個自訂 DNS。 只有當您的自訂 DNS 伺服器在 Linux 上執行時，這些步驟才適用。
 
-**選項2**  
+**選項 2**  
 部署虛擬網路的 DNS 伺服器 VM。 請執行下列步驟：
 
 * 在虛擬網路中建立 VM，其會設定為 DNS 轉寄站（可以是 Linux 或 windows VM）。

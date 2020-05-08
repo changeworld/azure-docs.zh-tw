@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e6bd55fbb73113dfbcd01e94753c4fb21219c14
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756021"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780873"
 ---
 # <a name="get-started-with-azcopy"></a>開始使用 AzCopy
 
@@ -84,7 +84,7 @@ AzCopy 是命令列公用程式，可讓您在儲存體帳戶之間複製 blob �
 
 如果您想要上傳檔案，請確認其中一個角色已指派給您的安全性主體：
 
-- [儲存體 Blob 資料參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
+- [儲存體 Blob 資料參與者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
 - [儲存體 Blob 資料擁有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 這些角色可以指派給任何範圍內的安全性主體：
@@ -273,8 +273,8 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 | 作業系統  | Command |
 |--------|-----------|
-| **Linux** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
-| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
+| **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
+| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
 
 > [!NOTE]
 > 針對 Linux， `--strip-components=1`在`tar`命令上會移除包含版本名稱的最上層資料夾，並改為直接將二進位檔解壓縮至目前的資料夾。 如此一來，只要更新`azcopy` `wget` URL，就能以新版本更新腳本。

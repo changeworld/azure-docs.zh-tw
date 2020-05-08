@@ -3,12 +3,12 @@ title: 使用適用于容器的 Azure 監視器來觀看即時資料（預覽）
 description: 本文說明 Kubernetes 記錄、事件和 pod 計量的即時觀點，而不在容器的 Azure 監視器中使用 kubectl。
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38615acf079c33c49e27394bfdb9b8104e5a68ac
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79216558"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872105"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>如何即時查看 Kubernetes 記錄、事件和 pod 計量
 
@@ -42,7 +42,7 @@ ms.locfileid: "79216558"
 >建議您在針對問題進行疑難排解時，只暫停或暫停 autoscroll 一小段時間。 這些要求可能會影響叢集上 Kubernetes API 的可用性和節流。 
 
 >[!IMPORTANT]
->在此功能的操作期間，不會永久儲存任何資料。 當您關閉瀏覽器或從中流覽時，會刪除會話期間所捕捉到的所有資訊。 只有在度量功能的五分鐘時間範圍內，視覺效果才會顯示資料;超過五分鐘的任何度量也會一併刪除。 即時資料（預覽）緩衝區會在合理的記憶體使用量限制內進行查詢（在這裡需要更具體的，這是合理的？）。 
+>在此功能的操作期間，不會永久儲存任何資料。 當您關閉瀏覽器或從中流覽時，會刪除會話期間所捕捉到的所有資訊。 只有在度量功能的五分鐘時間範圍內，視覺效果才會顯示資料;超過五分鐘的任何度量也會一併刪除。 即時資料（預覽）緩衝區會在合理的記憶體使用量限制內進行查詢。
 
 ## <a name="view-logs"></a>檢視記錄
 

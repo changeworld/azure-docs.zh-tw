@@ -1,5 +1,5 @@
 ---
-title: 什麼是影片索引子？
+title: 什麼是 Azure 媒體服務影片索引器？
 titleSuffix: Azure Media Services
 description: 本文提供 Azure 媒體服務影片索引子服務的總覽。
 services: media-services
@@ -10,14 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 1c7156da171a101f04db9f83df587f5b8bc71e8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08dcee28c234183aa2b125d82d046d31d4b50e47
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687106"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788848"
 ---
-# <a name="what-is-video-indexer"></a>什麼是影片索引子？
+# <a name="what-is-azure-media-services-video-indexer"></a>什麼是 Azure 媒體服務影片索引器？
 
 影片索引子（VI）是 Azure 媒體服務 AI 解決方案和 Azure 認知服務品牌的一部分。 影片索引子可讓您使用以多個通道（語音、人聲、視覺效果）為基礎的機器學習模型，來解壓縮深入解析（而不需要資料分析或編碼技能）。 您可以進一步自訂和定型模型。 此服務可進行深入搜尋、降低營運成本、提供新的營收商機，以及在大型的影片封存上建立新的使用者體驗（具有低進入障礙）。
 
@@ -47,7 +47,7 @@ ms.locfileid: "81687106"
 * *內容仲裁*：使用文字和視覺內容仲裁模型，讓您的使用者安全地免于不當的內容，並驗證您發佈的內容是否符合您組織的值。 您可以自動封鎖特定影片，或通知使用者內容的相關資訊。
 * *建議*：您可以藉由反白顯示使用者的相關影片，來改善使用者互動的影片深入解析。 藉由使用額外的元資料標記每個影片，您可以建議使用者最相關的影片，並反白顯示符合其需求的影片部分。
 
-## <a name="features"></a>功能
+## <a name="features"></a>特性
 
 下列清單顯示您可以使用影片索引子的影片和音訊模型，從影片中取出的深入解析：
 

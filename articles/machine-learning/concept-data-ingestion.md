@@ -1,5 +1,5 @@
 ---
-title: 資料內嵌選項
+title: 資料內嵌 & 自動化
 titleSuffix: Azure Machine Learning
 description: 瞭解用來定型機器學習模型的資料內嵌選項。
 services: machine-learning
@@ -10,25 +10,27 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 475c4fd6b34996c83035c4f7ef93b9fa02ded11f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086885"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789856"
 ---
-# <a name="data-ingestion-in-azure-machine-learning"></a>Azure Machine Learning 中的資料內嵌
+# <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Azure Machine Learning 工作流程的資料內嵌選項
 
-在本文中，您將瞭解 Azure Machine Learning 所提供的下列資料內嵌選項的優缺點。 
+在本文中，您將瞭解 Azure Machine Learning 所提供的資料內嵌選項的優缺點。 
 
-1. [Azure Data Factory](#use-azure-data-factory)管線
-2. [Azure Machine Learning Python SDK](#use-the-python-sdk)
+從下列選項進行選擇：
++ [Azure Data Factory](#azure-data-factory)管線，特別是建立來解壓縮、載入和轉換資料
+
++ [Azure Machine Learning PYTHON SDK](#azure-machine-learning-python-sdk)，提供基本資料內嵌工作的自訂程式碼解決方案。
+
++ 兩者的組合
 
 資料內嵌是從一或多個來源解壓縮非結構化資料，然後準備好定型機器學習模型的程式。 這也需要很長的時間，特別是手動完成時，如果您有多個來源的大量資料，則更是如此。 自動化此工作可釋出資源，並確保您的模型使用最新且適用的資料。
 
-Azure Data Factory （ADF）是特別為了解壓縮、載入和轉換資料而建立的，不過，Python SDK 可讓您針對基本資料內嵌工作開發自訂程式碼解決方案。 如果兩者都不符合您的需求，您也可以同時使用 ADF 和 Python SDK 來建立整體資料內嵌工作流程，以滿足您的需求。 
-
-## <a name="use-azure-data-factory"></a>使用 Azure Data Factory
+## <a name="azure-data-factory"></a>Azure Data Factory
 
 [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction)為數據內嵌管線的資料來源監視和觸發程式提供原生支援。  
 
@@ -55,7 +57,7 @@ Azure Data Factory 資料流程的內嵌資料歷程功能|
     
 瞭解如何使用[Azure Data Factory](how-to-data-ingest-adf.md)建立 Machine Learning 的資料內嵌管線。
 
-## <a name="use-the-python-sdk"></a>使用 Python SDK 
+## <a name="azure-machine-learning-python-sdk"></a>Azure Machine Learning Python SDK 
 
 使用[PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml)，您可以將資料內嵌工作納入 Azure Machine Learning 的[管線](how-to-create-your-first-pipeline.md)步驟中。
 
@@ -73,5 +75,7 @@ Azure Data Factory 資料流程的內嵌資料歷程功能|
 
 ## <a name="next-steps"></a>後續步驟
 
-* 瞭解如何使用[Azure Data Factory](how-to-data-ingest-adf.md)建立 Machine Learning 的資料內嵌管線
-* 瞭解如何使用[Azure Pipelines](how-to-cicd-data-ingestion.md)來自動化和管理資料內嵌管線的開發週期。
+遵循下列操作說明文章：
+* [使用 Azure Data Factory 建立資料內嵌管線](how-to-data-ingest-adf.md)
+
+* [使用 Azure Pipelines 自動化和管理資料內嵌管線](how-to-cicd-data-ingestion.md)。

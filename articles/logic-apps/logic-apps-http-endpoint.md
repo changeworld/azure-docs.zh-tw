@@ -1,30 +1,30 @@
 ---
 title: 呼叫、觸發或巢狀邏輯應用程式
-description: 設定 HTTP 端點，以在 Azure Logic Apps 中呼叫、觸發或嵌套邏輯應用程式工作流程
+description: 在 Azure Logic Apps 中設定 HTTPS 端點以呼叫、觸發或嵌套邏輯應用程式工作流程
 services: logic-apps
 ms.workload: integration
-ms.reviewer: klam, jehollan, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 11/04/2019
-ms.openlocfilehash: d5b5a69c7927d07c0ae6b3b56ec97b6551e5d46b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 734ddcacf46804db8d9aac091b0a9ac0ca512e18
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191340"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983703"
 ---
-# <a name="call-trigger-or-nest-logic-apps-by-using-http-endpoints-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用 HTTP 端點呼叫、觸發或嵌套邏輯應用程式
+# <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>在 Azure Logic Apps 中使用 HTTPS 端點來呼叫、觸發或嵌套邏輯應用程式
 
-若要讓邏輯應用程式可透過 URL 呼叫，讓邏輯應用程式可以接收來自其他服務的連入要求，您可以在該邏輯應用程式上以原生方式公開同步 HTTP 端點作為觸發程式。 當您設定這項功能時，您也可以將邏輯應用程式放在其他邏輯應用程式中，這可讓您建立可呼叫端點的模式。
+若要讓邏輯應用程式可透過 URL 呼叫，讓邏輯應用程式可以接收來自其他服務的連入要求，您可以在該邏輯應用程式上，以原生方式公開同步 HTTPS 端點作為觸發程式。 當您設定這項功能時，您也可以將邏輯應用程式放在其他邏輯應用程式中，這可讓您建立可呼叫端點的模式。
 
-若要設定 HTTP 端點，您可以使用任何一種觸發程式類型，讓邏輯應用程式接收傳入要求：
+若要設定可呼叫的端點，您可以使用任何一種觸發程式類型，讓邏輯應用程式接收連入要求：
 
 * [要求](../connectors/connectors-native-reqres.md)
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
-* 具有[ApiConnectionWebhook 類型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)並可接收傳入 HTTP 要求的受管理連接器觸發程式
+* 具有[ApiConnectionWebhook 類型](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger)並可接收傳入 HTTPS 要求的受管理連接器觸發程式
 
 > [!NOTE]
-> 這些範例會使用要求觸發程式，但您可以使用上一個清單中任何以 HTTP 要求為基礎的觸發程式。 所有原則都同樣適用于這些其他觸發程式類型。
+> 這些範例會使用要求觸發程式，但您可以使用上一個清單中任何以 HTTPS 要求為基礎的觸發程式。 所有原則都同樣適用于這些其他觸發程式類型。
 
 如果您不熟悉邏輯應用程式，請參閱[什麼是 Azure Logic Apps](../logic-apps/logic-apps-overview.md)和[快速入門：建立您的第一個邏輯應用程式](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
@@ -32,13 +32,13 @@ ms.locfileid: "77191340"
 
 * Azure 訂用帳戶。 如果您沒有訂用帳戶，請[註冊一個免費的 Azure 帳戶](https://azure.microsoft.com/free/)。
 
-* 您想要將 HTTP 端點設定為觸發程式的邏輯應用程式。 您可以從空白邏輯應用程式或您想要取代目前觸發程式的現有邏輯應用程式開始。 這個範例會從空白邏輯應用程式開始。
+* 邏輯應用程式，您想要在其中使用觸發程式來建立可呼叫的端點。 您可以從空白邏輯應用程式或您想要取代目前觸發程式的現有邏輯應用程式開始。 這個範例會從空白邏輯應用程式開始。
 
 ## <a name="create-a-callable-endpoint"></a>建立可呼叫的端點
 
 1. 登入 [Azure 入口網站](https://portal.azure.com)。 在邏輯應用程式設計工具中建立並開啟空白邏輯應用程式。
 
-   這個範例會使用要求觸發程式，但是您可以使用任何可接收傳入 HTTP 要求的觸發程式。 所有原則都相同，適用于這些觸發程式。 如需要求觸發程式的詳細資訊，請參閱[使用 Azure Logic Apps 接收和回應連入的 HTTPS 呼叫](../connectors/connectors-native-reqres.md)。
+   這個範例會使用要求觸發程式，但您可以使用任何可接收傳入 HTTPS 要求的觸發程式。 所有原則都相同，適用于這些觸發程式。 如需要求觸發程式的詳細資訊，請參閱[使用 Azure Logic Apps 接收和回應輸入 HTTPS 呼叫](../connectors/connectors-native-reqres.md)。
 
 1. 在 [搜尋] 方塊中，選取 [**內建**]。 在搜尋方塊中，輸入 `request` 作為篩選條件。 從觸發程式清單中，選取 [**收到 HTTP 要求時**]。
 
@@ -100,91 +100,165 @@ ms.locfileid: "77191340"
 
 1. 儲存您的邏輯應用程式。
 
-   [**此 URL 的 HTTP POST** ] 方塊現在會顯示產生的回呼 URL，供其他服務用來呼叫和觸發邏輯應用程式。 此 URL 在查詢參數中包含用於驗證的共用存取簽章（SAS）金鑰，例如：
+   [ **HTTP POST url** ] 方塊現在會顯示產生的回呼 URL，供其他服務用來呼叫和觸發邏輯應用程式。 此 URL 包含查詢參數，可指定用於驗證的共用存取簽章（SAS）金鑰。
 
    ![為端點產生的回呼 URL](./media/logic-apps-http-endpoint/generated-endpoint-url.png)
 
-   您也可以從邏輯應用程式的 **[總覽**] 窗格取得 HTTP 端點 URL。
+1. 若要複製回呼 URL，您可以使用下列選項：
 
-   1. 在邏輯應用程式的功能表上，選取 **[總覽**]。
+   * 在 [ **HTTP POST url** ] 方塊的右邊，選取 [**複製 URL** ] （複製檔案圖示）。
 
-   1. 在 [**摘要**] 區段中，選取 [**查看觸發**程式歷程記錄]。
+   * 進行此 POST 呼叫：
 
-      ![從 Azure 入口網站取得 HTTP 端點 URL](./media/logic-apps-http-endpoint/find-manual-trigger-url.png)
+     `POST https://management.azure.com/{logic-app-resource-ID}/triggers/{endpoint-trigger-name}/listCallbackURL?api-version=2016-06-01`
 
-   1. 在 **[回呼 url [POST]]** 底下，複製 url：
+   * 從邏輯應用程式的 **[總覽**] 窗格複製 [回呼 URL]。
 
-      ![從 Azure 入口網站複製 HTTP 端點 URL](./media/logic-apps-http-endpoint/copy-manual-trigger-callback-url.png)
+     1. 在邏輯應用程式的功能表上，選取 **[總覽**]。
 
-      或者，您可以進行這個呼叫來取得 URL：
+     1. 在 [**摘要**] 區段中，選取 [**查看觸發**程式歷程記錄]。
 
-      ```http
-      POST https://management.azure.com/{logic-app-resource-ID}/triggers/{endpoint-trigger-name}/listCallbackURL?api-version=2016-06-01
-      ```
+        ![從 Azure 入口網站取得端點 URL](./media/logic-apps-http-endpoint/find-manual-trigger-url.png)
 
-<a name="set-method"></a>
+     1. 在 **[回呼 url [POST]]** 底下，複製 url：
 
-## <a name="set-expected-http-method"></a>設定預期的 HTTP 方法
+        ![從 Azure 入口網站複製端點 URL](./media/logic-apps-http-endpoint/copy-manual-trigger-callback-url-post.png)
 
-根據預設，要求觸發程序會預期 HTTP POST 要求。 不過，您可以指定不同的方法來預期，但只有一種方法。
+<a name="select-method"></a>
+
+## <a name="select-expected-request-method"></a>選取預期的要求方法
+
+根據預設，要求觸發程式會預期 POST 要求。 您可以指定不同的方法來預期，但只能使用單一方法。
 
 1. 在要求觸發程式中，開啟 [**加入新的參數**] 清單，然後選取 [**方法**]，這會將此屬性新增至觸發程式。
 
    ![將 "Method" 屬性新增至觸發程式](./media/logic-apps-http-endpoint/select-add-new-parameter-for-method.png)
 
-1. 從 [**方法**] 清單中，選取觸發程式所預期的另一個方法。 或者，您也可以指定自訂的方法。
+1. 從 [**方法**] 清單中，選取觸發程式應改為預期的方法。 或者，您也可以指定自訂的方法。
 
-   例如，選取**GET**方法，讓您稍後可以測試 HTTP 端點的 URL。
+   例如，選取**GET**方法，讓您稍後可以測試端點的 URL。
 
-   ![選取要用於觸發程式的 HTTP 方法](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
+   ![觸發程式預期的選取要求方法](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
 ## <a name="accept-parameters-in-endpoint-url"></a>接受端點 URL 中的參數
 
-當您想要端點 URL 接受參數時，請指定觸發程式中的相對路徑。 您也需要明確設定 HTTP 要求所預期[的方法](#set-method)。
+當您想要端點 URL 透過端點的 URL 接受參數值時，您有下列選項：
+
+* [透過 GET 參數](#get-parameters)或 URL 參數接受值。
+
+  將要求傳送至端點的 URL 時，這些值會當做名稱/值組傳遞。 針對此選項，您必須在要求觸發程式中使用 GET 方法。 在後續動作中，您可以使用運算式中的`triggerOutputs()`函數，將參數值當做觸發程式輸出來取得。
+
+* 透過要求觸發程式中參數的[相對路徑來接受值](#relative-path)。
+
+  將要求傳送至端點的 URL 時，會傳遞這些值。 您也必須明確地選取觸發程式預期[的方法](#select-method)。 在後續動作中，您可以直接參考這些輸出，取得參數值作為觸發程式輸出。
+
+<a name="get-parameters"></a>
+
+### <a name="accept-values-through-get-parameters"></a>透過 GET 參數接受值
+
+1. 在要求觸發程式中，開啟 [**加入新的參數] 清單**，將 [**方法**] 屬性加入至觸發程式，然後選取**GET**方法。
+
+   如需詳細資訊，請參閱[選取預期的要求方法](#select-method)。
+
+1. 在要求觸發程式底下，新增您想要使用參數值的動作。 在此範例中，請新增 [**回應**] 動作。
+
+   1. 在要求觸發程式下，選取 [**新增步驟** > ] [新增**動作**]。
+   
+   1. 在 [選擇動作]**** 底下的搜尋方塊中，輸入 `response` 作為篩選條件。 從 [動作] 清單中，選取 [**回應**] 動作。
+
+1. 若要建立`triggerOutputs()`可抓取參數值的運算式，請遵循下列步驟：
+
+   1. 在回應動作的 [**主體**] 屬性內按一下，以顯示動態內容清單，然後選取 [**運算式**]。
+
+   1. 在 [**運算式**] 方塊中，輸入此運算式`parameter-name` ，並將取代為您的參數名稱，然後選取 **[確定]**。
+
+      `triggerOutputs()['queries']['parameter-name']`
+
+      ![將 "triggerOutputs （）" 運算式新增至觸發程式](./media/logic-apps-http-endpoint/trigger-outputs-expression.png)
+
+      在**Body**屬性中，運算式會解析為`triggerOutputs()` token。
+
+      ![已解析 "triggerOutputs （）" 運算式](./media/logic-apps-http-endpoint/trigger-outputs-expression-token.png)
+
+      如果您儲存邏輯應用程式，請離開設計工具，然後回到設計工具，權杖會顯示您所指定的參數名稱，例如：
+
+      ![參數名稱的已解析運算式](./media/logic-apps-http-endpoint/resolved-expression-parameter-token.png)
+
+      在程式碼視圖中，[**主體**] 屬性會出現在回應動作的定義中，如下所示：
+
+      `"body": "@{triggerOutputs()['queries']['parameter-name']}",`
+
+      例如，假設您想要傳遞名`postalCode`為之參數的值。 **Body**屬性會指定字串， `Postal Code: `其中包含尾端空格，後面接著對應的運算式：
+
+      ![將範例 "triggerOutputs （）" 運算式新增至觸發程式](./media/logic-apps-http-endpoint/trigger-outputs-expression-postal-code.png)
+
+1. 若要測試可呼叫的端點，請複製要求觸發程式中的回呼 URL，然後將 URL 貼入另一個瀏覽器視窗。 在 URL 中，將問號（`?`）後面的參數名稱和值新增至下列格式的 url，然後按 enter 鍵。
+
+   `...?{parameter-name=parameter-value}&api-version=2016-10-01...`
+
+   `https://prod-07.westus.logic.azure.com:433/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke?{parameter-name=parameter-value}&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
+
+   瀏覽器會傳回包含下列文字的回應：`Postal Code: 123456`
+
+   ![將要求傳送至回呼 URL 的回應](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
+
+1. 若要將參數名稱和值放在 URL 內的不同位置，請務必使用連字號（`&`）做為前置詞，例如：
+
+   `...?api-version=2016-10-01&{parameter-name=parameter-value}&...`
+
+   這個範例會以 URL 中不同位置的範例參數名稱和`postalCode=123456`值來顯示回呼 URL：
+
+   * 第1個位置：`https://prod-07.westus.logic.azure.com:433/workflows/XXXXXXXXXXXXXXXXXXXXXX/triggers/manual/paths/invoke?postalCode=123456&api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZZZZZZZZZZZZZZZZZZZZZZZZ`
+
+   * 第2個位置：`https://prod-07.westus.logic.azure.com:433/workflows/XXXXXXXXXXXXXXXXXXXXXX/triggers/manual/paths/invoke?api-version=2016-10-01&postalCode=123456&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=ZZZZZZZZZZZZZZZZZZZZZZZZ`
+
+<a name="relative-path"></a>
+
+### <a name="accept-values-through-a-relative-path"></a>透過相對路徑接受值
 
 1. 在要求觸發程式中，開啟 [**加入新的參數**] 清單，然後選取 [**相對路徑**]，這會將此屬性新增至觸發程式。
 
    ![將 [相對路徑] 屬性新增至觸發程式](./media/logic-apps-http-endpoint/select-add-new-parameter-for-relative-path.png)
 
-1. 在 [**相對路徑**] 屬性中，指定您要讓 URL 接受之 JSON 架構中參數的相對路徑，例如`address/{postalCode}`。
+1. 在 [**相對路徑**] 屬性中，指定您要讓 URL 接受之 JSON 架構中參數的相對路徑，例如`/address/{postalCode}`。
 
    ![指定參數的相對路徑](./media/logic-apps-http-endpoint/relative-path-url-value.png)
 
-1. 若要使用參數，請尋找並將**回應**動作新增至邏輯應用程式。
+1. 在要求觸發程式底下，新增您想要使用參數值的動作。 在此範例中，請新增 [**回應**] 動作。
 
    1. 在要求觸發程式下，選取 [**新增步驟** > ] [新增**動作**]。
 
-   1. 在 [選擇動作]**** 底下的搜尋方塊中，輸入 `response` 作為篩選條件。
-
-   1. 從 [動作] 清單中，選取 [**回應**] 動作。
+   1. 在 [選擇動作]**** 底下的搜尋方塊中，輸入 `response` 作為篩選條件。 從 [動作] 清單中，選取 [**回應**] 動作。
 
 1. 在 [回應] 動作的 [**主體**] 屬性中，包含代表您在觸發程式相對路徑中指定之參數的 token。
 
    例如，假設您想要傳迴響應動作`Postal Code: {postalCode}`。
 
-   在 [ **Body** ] 屬性中`Postal Code: ` ，輸入尾端空格。 從顯示的動態內容清單中，選取 [**郵遞區號**] token。
+   1. 在 [ **Body** ] 屬性中`Postal Code: ` ，輸入尾端空格。 將游標保持在編輯方塊內部，讓動態內容清單保持開啟。
 
-   ![將指定的參數新增至回應主體](./media/logic-apps-http-endpoint/relative-url-with-parameter-token.png)
+   1. 在動態內容清單中，從 [**收到 HTTP 要求時**] 區段中，選取 [**郵遞區號**] token。
 
-   **Body**屬性現在包含選取的參數：
+      ![將指定的參數新增至回應主體](./media/logic-apps-http-endpoint/relative-url-with-parameter-token.png)
 
-   ![具有參數的範例回應主體](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
+      **Body**屬性現在包含選取的參數：
+
+      ![具有參數的範例回應主體](./media/logic-apps-http-endpoint/relative-url-with-parameter.png)
 
 1. 儲存您的邏輯應用程式。
 
-    HTTP 端點 URL 現在包括相對路徑，例如︰
+   在要求觸發程式中，回呼 URL 已更新，現在包含相對路徑，例如：
 
-    ```http
-    https://prod-25.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}
-    ```
+   `https://prod-07.westus.logic.azure.com/workflows/{logic-app-resource-ID}/triggers/manual/paths/invoke/address/{postalCode}?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig={shared-access-signature}`
 
-1. 若要測試 HTTP 端點，請複製更新過的 URL，並將其貼入另一個瀏覽器視窗中，但將 `{postalCode}` 取代為 `123456`，然後按 Enter 鍵。
+1. 若要測試可呼叫的端點，請從要求觸發程式複製更新的回呼 URL，將 URL 貼到另一個`{postalCode}`瀏覽器視窗中`123456`，將 url 中的取代為，然後按 enter 鍵。
 
-   您的瀏覽器會顯示下列文字：`Postal Code: 123456`
+   瀏覽器會傳回包含下列文字的回應：`Postal Code: 123456`
 
-## <a name="call-logic-app-through-http-endpoint"></a>透過 HTTP 端點呼叫邏輯應用程式
+   ![將要求傳送至回呼 URL 的回應](./media/logic-apps-http-endpoint/callback-url-returned-response.png)
 
-建立 HTTP 端點之後，您可以藉由將 HTTP `POST`要求傳送至端點的完整 URL 來觸發邏輯應用程式。 邏輯應用程式具有直接存取端點的內建支援。
+## <a name="call-logic-app-through-endpoint-url"></a>透過端點 URL 呼叫邏輯應用程式
+
+建立端點之後，您可以藉由將 HTTPS `POST`要求傳送至端點的完整 URL 來觸發邏輯應用程式。 邏輯應用程式具有直接存取端點的內建支援。
 
 <a name="generated-tokens"></a>
 
@@ -261,7 +335,7 @@ ms.locfileid: "77191340"
 
 ## <a name="respond-to-requests"></a>回應要求
 
-有時候您會想要透過將內容傳回給呼叫者，來回應觸發邏輯應用程式的特定要求。 若要針對您的回應來建立狀態碼、標頭和本文，請使用 [回應] 動作。 這個動作可以出現在邏輯應用程式的任何位置，而不只是工作流程的結尾。 如果您的邏輯應用程式不包含回應動作，HTTP 端點會*立即*以**202 已接受**的狀態回應。
+有時候您會想要透過將內容傳回給呼叫者，來回應觸發邏輯應用程式的特定要求。 若要針對您的回應來建立狀態碼、標頭和本文，請使用 [回應] 動作。 這個動作可以出現在邏輯應用程式的任何位置，而不只是工作流程的結尾。 如果您的邏輯應用程式不包含回應動作，則端點會*立即*以「 **202 已接受**」狀態回應。
 
 為了讓原始呼叫者成功取得回應，除非已觸發的邏輯應用程式被呼叫為嵌套邏輯應用程式，否則回應的所有必要步驟都必須在[要求超時限制](./logic-apps-limits-and-config.md)內完成。 如果在此限制內未傳回任何回應，傳入的要求會超時，並接收**408 用戶端超時**回應。
 
@@ -271,14 +345,14 @@ ms.locfileid: "77191340"
 
 在回應主體中，您可以包含多個標頭和任何類型的內容。 例如，此回應的標頭指定回應的內容類型為`application/json` ，而主體包含`town`和`postalCode`屬性的值（根據本主題中稍早針對要求觸發程式所述的 JSON 架構）。
 
-![提供 HTTP 回應動作的回應內容](./media/logic-apps-http-endpoint/content-for-response-action.png)
+![提供 HTTPS 回應動作的回應內容](./media/logic-apps-http-endpoint/content-for-response-action.png)
 
 回應具有下列屬性：
 
 | 屬性（顯示） | Property (JSON) | 描述 |
 |--------------------|-----------------|-------------|
-| **狀態碼** | `statusCode` | 要在傳入要求的回應中使用的 HTTP 狀態碼。 此代碼可以是任何以 2xx、4xx 或 5xx 開頭的有效狀態碼。 但是，不允許 3xx 狀態碼。 |
-| **headers** | `headers` | 要包含在回應中的一個或多個標頭 |
+| **狀態碼** | `statusCode` | 要在傳入要求的回應中使用的 HTTPS 狀態碼。 此代碼可以是任何以 2xx、4xx 或 5xx 開頭的有效狀態碼。 但是，不允許 3xx 狀態碼。 |
+| **標題** | `headers` | 要包含在回應中的一個或多個標頭 |
 | **人體** | `body` | Body 物件，可以是字串、JSON 物件，甚至是上一個步驟所參考的二進位內容。 |
 ||||
 
@@ -314,9 +388,9 @@ ms.locfileid: "77191340"
 > * URL 中出現共用存取金鑰。
 > * 因為跨 Azure Logic Apps 客戶的共用網域，所以無法管理安全性內容原則。
 
-#### <a name="q-can-i-configure-http-endpoints-further"></a>問︰我可以進一步設定 HTTP 端點嗎？
+#### <a name="q-can-i-configure-callable-endpoints-further"></a>問：我可以進一步設定可呼叫的端點嗎？
 
-**答**：是，HTTP 端點透過[Azure API 管理](../api-management/api-management-key-concepts.md)來支援更多的設定。 此服務也可讓您透過一致的方式管理所有 API，包括邏輯應用程式、設定自訂網域名稱、使用其他驗證方法等等，例如︰
+**答**：是，HTTPS 端點透過[Azure API 管理](../api-management/api-management-key-concepts.md)來支援更多的設定。 此服務也可讓您透過一致的方式管理所有 API，包括邏輯應用程式、設定自訂網域名稱、使用其他驗證方法等等，例如︰
 
 * [變更要求方法](../api-management/api-management-advanced-policies.md#SetRequestMethod)
 * [變更要求的 URL 區段](../api-management/api-management-transformation-policies.md#RewriteURL)
