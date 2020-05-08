@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: b25d35ce467786c402c56c8a7d19a305381db94f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6b6e261b5cdfee00a9346338b6eb5d7e1f2a2a0
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137785"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982100"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure 受控磁片的伺服器端加密
 
@@ -79,7 +79,7 @@ Azure 受控磁片會使用[信封加密](../../storage/common/storage-client-si
 - 與客戶管理的金鑰相關的所有資源（Azure 金鑰保存庫、磁片加密集、Vm、磁片和快照）必須位於相同的訂用帳戶和區域中。
 - 使用客戶管理的金鑰加密的磁片、快照集和映射無法移至另一個訂用帳戶。
 - 如果您使用 Azure 入口網站建立磁片加密集，則目前無法使用快照。
-- 使用客戶管理的金鑰加密的受控磁片，也無法使用 Azure 磁碟加密進行加密。
+- 使用伺服器端加密與客戶管理的金鑰加密的受控磁片，也不能以 Azure 磁碟加密加密，反之亦然
 
 ### <a name="powershell"></a>PowerShell
 

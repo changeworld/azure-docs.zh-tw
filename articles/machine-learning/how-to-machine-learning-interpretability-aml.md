@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769812"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983630"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>使用 interpretability 套件來說明 Python 中 & 預測的 ML 模型
 
@@ -238,10 +238,10 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 * 使用遠端`ExplanationClient`執行中的來上傳 interpretability 內容。
 * 稍後在本機環境中下載內容。
 
-1. 安裝`azureml-interpret`和`azureml-interpret-contrib`套件。
+1. 安裝`azureml-interpret`和`azureml-contrib-interpret`套件。
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 1. 在本機 Jupyter Notebook 中建立定型指令碼。 例如： `train_explain.py` 。
 

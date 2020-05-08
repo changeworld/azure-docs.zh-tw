@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 8159ef45dee8a2f9ace69c2a5b66a29e4948d82c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60381190"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981998"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 參考
 以下文件提供 Azure AD Connect 所隨附 ADSyncConfig.psm1 PowerShell 模組的參考資訊。
@@ -59,25 +59,24 @@ Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] 
 ### <a name="examples"></a>範例
 
 #### <a name="example-1"></a>範例 1
+在 ' Contoso ' 網域中尋找已停用繼承的物件（根據預設，只會傳回 ' organizationalUnit ' 物件）
 ```
-Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
+```
 
 #### <a name="example-2"></a>範例 2
+在 ' Contoso ' 網域中尋找已停用繼承的「使用者」物件
 ```
-Find 'user' objects with disabled inheritance in 'Contoso' domain
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
+```
 
 #### <a name="example-3"></a>範例 3
+在 OU 中尋找已停用繼承的所有物件類型
 ```
-Find all types of objects with disabled inheritance in a OU
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
+
 
 ### <a name="parameters"></a>PARAMETERS
 

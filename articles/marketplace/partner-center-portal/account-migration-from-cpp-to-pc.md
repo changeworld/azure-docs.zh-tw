@@ -1,20 +1,20 @@
 ---
-title: 帳戶從 Cloud Partner 入口網站遷移至合作夥伴中心-適用于 Azure 的商業 marketplace
-description: 如何將您的帳戶從 CPP 遷移至合作夥伴中心-適用于 Azure 的商業 marketplace
+title: 將帳戶從 Cloud Partner 入口網站遷移至 Microsoft 商業 marketplace
+description: 瞭解如何將您的帳戶從 Microsoft 商業 marketplace 中的 Cloud Partner 入口網站遷移至合作夥伴中心（適用于 Azure）
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 49fb2da05b7284fff10e6271de177551000995ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 033b603630fc219fc378556a2ccbaef4eae524e4
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024416"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743538"
 ---
-# <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>將帳戶從 Cloud Partner 入口網站移轉到合作夥伴中心
+# <a name="how-to-migrate-your-account-from-cloud-partner-portal-to-partner-center"></a>如何將您的帳戶從 Cloud Partner 入口網站遷移至合作夥伴中心
 
 如果您有現有的 Cloud Partner 入口網站（CPP）帳戶，您的帳戶設定必須遷移至合作夥伴中心。
 

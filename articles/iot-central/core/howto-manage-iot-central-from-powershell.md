@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 03/27/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 42d853c9cf53c1c6921fbd1816ec2298c9c3583e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ca1c8f4a8e92babf65ec049b3784882bd3af689
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80365547"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744983"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>從 Azure PowerShell 管理 IoT Central
 
@@ -60,7 +60,7 @@ New-AzResourceGroup -ResourceGroupName "MyIoTCentralResourceGroup" `
 # Create an IoT Central application
 New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -Name "myiotcentralapp" -Subdomain "mysubdomain" `
-  -Sku "ST1" -Template "iotc-pnp-preview@1.0.0" `
+  -Sku "ST1" -Template "iotc-pnp-preview" `
   -DisplayName "My Custom Display Name"
 ```
 
@@ -69,8 +69,8 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 |參數         |描述 |
 |------------------|------------|
 |resourceGroupName |包含應用程式的資源群組。 此資源群組必須已經存在於您的訂用帳戶中。 |
-|位置 |根據預設，此 Cmdlet 會使用來自資源群組的位置。 目前，您可以在**澳大利亞**、**亞太地區**、**歐洲**、**美國**、**英國**和**日本**地區建立 IoT Central 應用程式。 |
-|Name              |應用程式在 Azure 入口網站中的名稱。 |
+|Location |根據預設，此 Cmdlet 會使用來自資源群組的位置。 目前，您可以在**澳大利亞**、**亞太地區**、**歐洲**、**美國**、**英國**和**日本**地區建立 IoT Central 應用程式。 |
+|名稱              |應用程式在 Azure 入口網站中的名稱。 |
 |子網域         |應用程式 URL 中的子網域。 在範例中，應用程式 URL 是 `https://mysubdomain.azureiotcentral.com`。 |
 |SKU               |目前，您可以使用**ST1**或**ST2**。 請參閱 [Azure IoT Central 價格](https://azure.microsoft.com/pricing/details/iot-central/)。 |
 |[範本]          | 要使用的應用程式範本。 如需詳細資訊，請參閱下列表格。 |

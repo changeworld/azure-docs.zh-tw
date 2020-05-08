@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: yelevin
-ms.openlocfilehash: e7629a53190433c6c331ce372476b0ed768fc5eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e1b1a4786670974a40b22d44fc219c6be5d97a3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587170"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744754"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的許可權
 
@@ -44,7 +44,7 @@ Azure Sentinel 使用以 [角色為基礎的存取控制（RBAC）](../role-bas
 > Log Analytics 角色也會授與所有 Azure 資源的讀取權限，但只會指派 Log Analytics 資源的寫入權限。
 
 
-例如，使用**Azure Sentinel 讀取器**和**Azure 參與者**（而非**Azure Sentinel 參與者**）角色指派的使用者，將能夠編輯 Azure Sentinel 中的資料，不過他們只有**Sentinel 讀取器**許可權。 因此，如果您只想要在 Azure Sentinel 中授與的許可權，您應該仔細移除這位使用者的先前許可權，以確保您不會中斷另一項資源所需的任何許可權角色。
+例如，使用**Azure Sentinel 讀取器**和**Azure 參與者**（而非**Azure Sentinel 參與者**）角色指派的使用者，將能夠編輯 Azure Sentinel 中的資料，不過他們只有**Sentinel 讀取器**許可權。 因此，如果您只想要在 Azure Sentinel 中授與許可權給使用者，您應該謹慎移除這位使用者的先前許可權，以確保您不會中斷另一項資源所需的任何許可權角色。
 
 > [!NOTE]
 >- Azure Sentinel 會使用自動化威脅回應的腳本。 腳本會利用 Azure Logic Apps，而且是個別的 Azure 資源。 您可能想要指派安全性作業小組的特定成員，並選擇使用 Logic Apps 進行安全性協調流程、自動化和回應（攀升情況）作業。 您可以使用[邏輯應用程式參與者](../role-based-access-control/built-in-roles.md#logic-app-contributor)角色或[邏輯應用程式操作員](../role-based-access-control/built-in-roles.md#logic-app-operator)角色來指派明確的許可權，以使用操作手冊。

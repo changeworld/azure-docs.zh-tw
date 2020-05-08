@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 160898f8535d3dad4811af016ebca779b7ef43a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2b9cc0c69f0c559c9561a02de4192974ee7f521
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189612"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926182"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中設定權杖
 
@@ -25,7 +25,7 @@ ms.locfileid: "78189612"
 
 [建立使用者流程](tutorial-create-user-flows.md)，讓使用者註冊並登入您的應用程式。
 
-## <a name="configure-token-lifetime"></a>設定權杖存留期
+## <a name="configure-jwt-token-lifetime"></a>設定 JWT 權杖存留期
 
 您可以在任何使用者流程上設定權杖存留期。
 
@@ -41,7 +41,7 @@ ms.locfileid: "78189612"
 
 8. 按一下 [檔案]  。
 
-## <a name="configure-token-compatibility"></a>設定權杖相容性
+## <a name="configure-jwt-token-compatibility"></a>設定 JWT 權杖相容性
 
 1. 選取 **[使用者流程（原則）**]。
 2. 開啟您先前建立的使用者流程。

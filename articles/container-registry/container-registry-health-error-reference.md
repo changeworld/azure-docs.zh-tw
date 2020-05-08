@@ -3,12 +3,12 @@ title: 健全狀況檢查的錯誤參考
 description: 在 Azure Container Registry 中執行 az acr check-health 診斷命令所發現問題的錯誤碼和可能的解決方案
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: 971b28b2bf8d9ac22cec0efe979837886762cf17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a23b95ea0eaffc053c47b70107c95d2b1cdc0645
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289136"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978309"
 ---
 # <a name="health-check-error-reference"></a>健全狀況檢查錯誤參考
 
@@ -58,7 +58,7 @@ ms.locfileid: "80289136"
 
 ## <a name="connectivity_forbidden_error"></a>CONNECTIVITY_FORBIDDEN_ERROR
 
-此錯誤表示指定登錄的挑戰端點回應了403禁止的 HTTP 狀態。 此錯誤表示使用者無法存取登錄，很可能是因為虛擬網路設定。 若要查看目前設定的防火牆規則， `az acr show --query networkRuleSet --name <registry>`請執行。
+此錯誤表示指定登錄的挑戰端點回應了403禁止的 HTTP 狀態。 此錯誤表示使用者無法存取登錄，很可能是因為虛擬網路設定，或因為不允許存取登錄的公用端點。 若要查看目前設定的防火牆規則， `az acr show --query networkRuleSet --name <registry>`請執行。
 
 *可能的解決方案*：移除虛擬網路規則，或將目前的用戶端 IP 位址新增至允許清單。
 

@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 848fd89444281d82d6d0d1bfc4df15d499c09ee0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57ba59288cbf65c1ef588302965d480ee357ea4d
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370486"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779972"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure 儲存體中的靜態網站代管
 
@@ -41,8 +41,8 @@ ms.locfileid: "79370486"
 您可以使用這些工具中的任何一項，將內容上傳至 **$web**容器：
 
 > [!div class="checklist"]
-> * [Azure CLI](storage-blob-static-website-how-to.md#cli)
-> * [Azure PowerShell 模組](storage-blob-static-website-how-to.md#powershell)
+> * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
+> * [Azure PowerShell 模組](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure 儲存體總管](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
@@ -52,7 +52,7 @@ ms.locfileid: "79370486"
 
 使用者可以使用網站的公用 URL，從瀏覽器中查看網站內容。 您可以使用 Azure 入口網站、Azure CLI 或 PowerShell 來尋找 URL。 請使用下表作為指南。
 
-|工具| 指導 |
+|工具| 指引 |
 |----|----|
 |**Azure 入口網站** | [使用 Azure 入口網站來尋找網站 URL](storage-blob-static-website-how-to.md#portal-find-url) |
 |**Azure CLI** | [使用 Azure CLI 來尋找網站 URL](storage-blob-static-website-how-to.md#cli-find-url) |

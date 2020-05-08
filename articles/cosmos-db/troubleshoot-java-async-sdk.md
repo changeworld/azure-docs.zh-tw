@@ -1,22 +1,35 @@
 ---
-title: 診斷 Azure Cosmos DB Java Async SDK 並進行疑難排解
-description: 使用像是用戶端記錄的功能及其他協力廠商工具，針對 Azure Cosmos DB 問題進行識別、診斷及疑難排解。
-author: moderakh
+title: 診斷和疑難排解 Azure Cosmos DB 非同步 JAVA SDK v2
+description: 使用用戶端記錄和其他協力廠商工具等功能，來識別、診斷和疑難排解非同步 JAVA SDK v2 中的 Azure Cosmos DB 問題。
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 04/30/2019
-ms.author: moderakh
+ms.date: 05/08/2020
+ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 04fa8d65ffb822fcd37f6da1bf3074a4e6a1d088
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "65519988"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982610"
 ---
-# <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>針對搭配 Azure Cosmos DB SQL API 帳戶使用 Java Async SDK 時所發生的問題進行疑難排解
+# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>針對使用 Azure Cosmos DB 非同步 JAVA SDK v2 搭配 SQL API 帳戶的問題進行疑難排解
+
+> [!div class="op_single_selector"]
+> * [JAVA SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [非同步 Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [.NET](troubleshoot-dot-net-sdk.md)
+> 
+
+> [!IMPORTANT]
+> 這*不*是最新的 JAVA SDK for Azure Cosmos DB！ 請考慮為您的專案使用 Azure Cosmos DB JAVA SDK v4。 遵循[遷移至 Azure Cosmos DB JAVA SDK v4](migrate-java-v4-sdk.md)指南和[Reactor vs RxJAVA](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md)指南中的指示進行升級。 
+>
+> 本文僅涵蓋 Azure Cosmos DB 非同步 JAVA SDK v2 的疑難排解。 如需詳細資訊，請參閱 Azure Cosmos DB 非同步 JAVA SDK v2[版本](sql-api-sdk-async-java.md)資訊、 [Maven 存放庫](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)和[效能秘訣](performance-tips-async-java.md)。
+>
+
 本文涵蓋當您搭配 Azure Cosmos DB SQL API 帳戶使用[JAVA ASYNC SDK](sql-api-sdk-async-java.md)時的常見問題、因應措施、診斷步驟和工具。
 Java Async SDK 提供用戶端邏輯表示法來存取 Azure Cosmos DB SQL API。 此文章所說明的工具和方法，可以在您遇到任何問題時提供協助。
 
@@ -80,6 +93,9 @@ SDK 會使用 [Netty](https://netty.io/) IO 程式庫來與 Azure Cosmos DB 通�
 Netty IO 執行緒僅適用於非封鎖的 Netty IO 工作。 SDK 會將其中一個 Netty IO 執行緒上的 API 引動過程結果傳回給應用程式的程式碼。 如果應用程式於 Netty 執行緒上收到結果之後，執行長時間持續的作業，SDK 可能沒有足夠的 IO 執行緒可執行其內部 IO 工作。 這類應用程式的程式碼編寫可能導致低輸送量、高延遲及 `io.netty.handler.timeout.ReadTimeoutException` 失敗。 因應措施是在您知道作業將很費時之後切換執行緒。
 
 例如，讓我們看看下列程式碼片段。 您可能在 Netty 執行緒上執行需要超過幾毫秒的長時間持續性工作。 若是如此，您最終會進入以下狀態：沒有任何可處理 IO 工作的 Netty IO 執行緒。 因此，您會收到 ReadTimeoutException 失敗。
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-readtimeout"></a>非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）
+
 ```java
 @Test
 public void badCodeWithReadTimeoutException() throws Exception {
@@ -131,13 +147,19 @@ public void badCodeWithReadTimeoutException() throws Exception {
     assertThat(failureCount.get()).isGreaterThan(0);
 }
 ```
-   因應措施是變更要在其上執行費時工作的執行緒。 為您的應用程式定義排程器的單一執行個體。
-   ```java
+因應措施是變更要在其上執行費時工作的執行緒。 為您的應用程式定義排程器的單一執行個體。
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）
+
+```java
 // Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
-   ```
-   您可能需要執行費時的工作，比方說，耗用大量運算資源的工作或封鎖 IO。 在此情況下，使用 `.observeOn(customScheduler)` API，將執行緒切換至 `customScheduler` 所提供的背景工作角色。
+```
+您可能需要執行費時的工作，比方說，耗用大量運算資源的工作或封鎖 IO。 在此情況下，使用 `.observeOn(customScheduler)` API，將執行緒切換至 `customScheduler` 所提供的背景工作角色。
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>非同步 JAVA SDK V2 （Maven .com. azure：： azure-cosmosdb）
+
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -169,7 +191,7 @@ Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()
 
 上述例外狀況會建議您相依于舊版的 RxJAVA lib （例如1.2.2）。 我們的 SDK 依賴 RxJAVA 1.3.8，其具有舊版 RxJAVA 無法使用的 Api。 
 
-這類 issuses 的因應措施是識別 RxJAVA-1.2.2 中的其他相依性，並排除 RxJAVA-1.2.2 的可轉移相依性，並允許 CosmosDB SDK 帶入較新的版本。
+這類問題的因應措施是識別哪些其他相依性會帶入 RxJAVA-1.2.2，並在 RxJAVA 1.2.2 上排除可轉移的相依性，並允許 CosmosDB SDK 引進較新的版本。
 
 若要識別哪一個程式庫會帶入 RxJAVA-1.2.2，請在您的專案 pom .xml 檔案旁執行下列命令：
 ```bash

@@ -7,24 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6f93e00cb9f840b27578eb9a5b0c6a2cab1ac525
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160540"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789839"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>商用 marketplace 的潛在客戶管理
 
-
 客戶是所有優秀企業的核心。 在今日產品收購的轉換中，行銷人員必須專注于直接與客戶聯繫，並建立關聯性。 這也是為什麼產生高品質潛在客戶，對您的銷售循環而言是一個相當關鍵的工具。 在[合作夥伴中心](https://partner.microsoft.com/)列出您的供應專案之後，有一些工具可讓您在客戶提出興趣或在 marketplace 中部署您的產品之後，以程式設計方式立即接收客戶連絡人資訊。 
-
-
 
 ## <a name="what-are-leads-in-the-marketplace"></a>什麼是市集中的潛在客戶？
 
 潛在客戶是對您在 Marketplace 中的產品有興趣，或從 Marketplace 部署您產品的客戶。 無論您的產品是列在 Azure Marketplace 或 AppSource 上，當客戶從您的 CRM 正確設定為合作夥伴中心的清單之後，您就可以收到潛在客戶。 
-
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>如何將您的 CRM 系統與合作夥伴中心連線
 
@@ -48,7 +44,7 @@ ms.locfileid: "82160540"
 
 技術設定就緒之後，您應該將這些潛在客戶納入目前的銷售 & 行銷策略和營運程式中。 我們有興趣進一步了解您的整體銷售流程，並想與您密切合作，為您提供高品質潛在客戶及足夠的資料，讓您獲致成功。 我們歡迎您針對我們如何能最佳化及改善我們傳送給您的潛在客戶，及提供額外資料協助這些客戶達成您的成就，提出您的意見反應。 請讓我們知道您是否有興趣提供意見反應和建議，讓您的銷售小組能夠更成功地使用 Marketplace 潛在客戶。
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a>在合作夥伴中心發佈期間常見的潛在客戶設定錯誤
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>在合作夥伴中心發佈期間常見的潛在客戶設定錯誤
 
 **無法將潛在客戶儲存至 Dynamics CRM。檢查 Dynamics CRM 帳戶設定。LastCRMError：無法登入 Dynamics CRM，LastCRMException：** 
 
