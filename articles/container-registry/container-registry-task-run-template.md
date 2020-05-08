@@ -3,12 +3,12 @@ title: 使用範本執行快速工作
 description: 將 ACR 工作執行排入佇列，以使用 Azure Resource Manager 範本建立映射
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 6e85e4a3d10ea34d71efde959aa7d179eba69e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196526"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927763"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>使用 Resource Manager 範本執行 ACR 工作
 
@@ -139,7 +139,7 @@ az acr task logs \
 
 ### <a name="create-new-dockerfile"></a>建立新的 Dockerfile
 
-建立從基底登錄提取基底映射的 Dockerfile。 在 GitHub 存放庫的本機分支中執行下列步驟，例如https://github.com/myGitHubID/acr-build-helloworld-node.git*。
+建立從基底登錄提取基底映射的 Dockerfile。 在 GitHub 存放庫的本機分支中執行下列步驟，例如`https://github.com/myGitHubID/acr-build-helloworld-node.git`。
 
 1. 在 GitHub UI 中，選取 [**建立新**檔案]。
 1. 將您的檔案命名*為 Dockerfile-test* ，並貼上下列內容。 以您的登錄名稱取代*mybaseregistry*。

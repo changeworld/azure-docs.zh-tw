@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/16/2019
-ms.openlocfilehash: 9c43b141608e5a9051499fdfb2adb5d8b0b593df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/07/2020
+ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232460"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982627"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>對應資料流程中的 Exists 轉換
 
@@ -21,7 +21,9 @@ ms.locfileid: "82232460"
 
 Exists 轉換是一個資料列篩選轉換，它會檢查您的資料是否存在於另一個來源或資料流程中。 輸出資料流程包含左側資料流程中的所有資料列，其存在或不存在於正確的資料流程中。 Exists 轉換類似于```SQL WHERE EXISTS```和。 ```SQL WHERE NOT EXISTS```
 
-## <a name="configuration"></a>設定
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vZKz]
+
+## <a name="configuration"></a>組態
 
 1. 在 [**正確資料流程**] 下拉式清單中，選擇您要檢查哪一個資料流程是否存在。
 1. 指定您要尋找的資料是否存在，或不存在於 [**存在類型**] 設定中。

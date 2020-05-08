@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 04/03/2019
-ms.openlocfilehash: c0012b61cf43d01afd5e7f5f52948310b5eb8420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34e9b40b0b6989edacd72eb23d357e2a84b6f8d8
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73828065"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891069"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 超過 1433 以外的連接埠
 
@@ -72,9 +72,9 @@ ms.locfileid: "73828065"
 
 ## <a name="related-links"></a>相關連結
 
-* ADO.NET 4.6 於 2015 年 7 月 20 日發行。 您可以在 [這裡](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx)查看 .NET 小組的部落格公告。
-* ADO.NET 4.5 於 2012 年 8 月 15 日發行。 您可以在 [這裡](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)查看 .NET 小組的部落格公告。
-  * 您可以在 [這裡](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-net-framework-4-5-1-preview.aspx)查看有關 ADO.NET 4.5.1 的部落格文章。
+* ADO.NET 4.6 於 2015 年 7 月 20 日發行。 您可以在 [這裡](https://devblogs.microsoft.com/dotnet/announcing-net-framework-4-6/)查看 .NET 小組的部落格公告。
+* ADO.NET 4.5 於 2012 年 8 月 15 日發行。 您可以在 [這裡](https://devblogs.microsoft.com/dotnet/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/)查看 .NET 小組的部落格公告。
+  * 您可以在 [這裡](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-5-1-preview/)查看有關 ADO.NET 4.5.1 的部落格文章。
 
 * Microsoft® ODBC Driver 17 for SQL Server® - Windows、Linux 和 macOS https://www.microsoft.com/download/details.aspx?id=56567
 

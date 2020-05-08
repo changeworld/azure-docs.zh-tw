@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 6376d858ae5113996bf7c93a8b3054797151c6b3
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: 5d047aa3c5c937e3b84b8fa672101bc801221067
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858678"
+ms.locfileid: "82871359"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>變更儲存體帳戶的複寫方式
 
@@ -40,10 +40,11 @@ Azure 儲存體提供下列類型的複寫：
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
 | <b>...從 LRS</b> | N/A | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1</sup> | 執行手動遷移 <br /><br />要求即時移轉 | 執行手動遷移 <br /><br /> OR <br /><br /> 先切換至 GRS/RA-GRS，然後再要求即時移轉<sup>1</sup> |
 | <b>...from GRS/RA-GRS</b> | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | N/A | 執行手動遷移 <br /><br /> OR <br /><br /> 先切換至 LRS，然後再要求即時移轉 | 執行手動遷移 <br /><br /> 要求即時移轉 |
-| <b>...從 ZRS</b> | 執行手動遷移 | 執行手動遷移 | N/A | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1</sup> |
+| <b>...從 ZRS</b> | 執行手動遷移 | 執行手動遷移 | N/A | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1、2</sup> |
 | <b>...from 切換/RA-切換</b> | 執行手動遷移 | 執行手動遷移 | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | N/A |
 
-<sup>1</sup>會產生一次性的出口費用。
+<sup>1</sup>會產生一次性的出口費用。<br />
+<sup>2</sup>下欄區域不支援從 ZRS 到切換/RA-切換或反之亦然的轉換：美國東部2、美國東部、西歐。
 
 > [!CAUTION]
 > 如果您為（RA-） GRS 或（RA-）切換帳戶執行[帳戶容錯移轉](storage-disaster-recovery-guidance.md)，則在容錯移轉之後，帳戶會在新的主要區域中以本機方式重複。 不支援針對容錯移轉所產生的 LRS 帳戶進行即時移轉至 ZRS 或切換。 您必須[手動將遷移](#perform-a-manual-migration-to-zrs)至 ZRS 或切換。
@@ -191,7 +192,7 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 > [!IMPORTANT]
 > 如果您將儲存體帳戶從 GRS 到 GRS 或 LRS 遷移，則該帳戶會以 RA-GRS 計費，超過其轉換日期的30天。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Azure 儲存體的冗余](storage-redundancy.md)
 - [檢查儲存體帳戶的上次同步處理時間屬性](last-sync-time-get.md)

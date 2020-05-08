@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/17/2020
+ms.date: 05/07/2020
 ms.author: jingwang
-ms.openlocfilehash: 2c2071e4b2a3daa528c7d01f64e38247b063e6f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9f705a0a56975860cf07d8a9b09de9999a923501
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417423"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891427"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>使用 Azure Data Factory 從 DB2 複製資料
 > [!div class="op_single_selector" title1="選取您目前使用的 Data Factory 服務版本："]
@@ -51,7 +51,7 @@ ms.locfileid: "81417423"
 >[!TIP]
 >DB2 連接器是以 Microsoft OLE DB Provider for DB2 為基礎。 若要針對 DB2 連接器錯誤進行疑難排解，請參閱[Data Provider 錯誤碼](https://docs.microsoft.com/host-integration-server/db2oledbv/data-provider-error-codes#drda-protocol-errors)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
@@ -70,19 +70,70 @@ ms.locfileid: "81417423"
 | 屬性 | 描述 | 必要 |
 |:--- |:--- |:--- |
 | type | 類型屬性必須設為：**DB2** | 是 |
+| connectionString | 指定連接到 DB2 實例所需的資訊。<br/> 您也可以將密碼放在 Azure Key Vault 中，並從連接字串中提取 `password` 組態。 請參閱下列範例和[在 Azure Key Vault 中儲存認證](store-credentials-in-key-vault.md)一文中的更多詳細資料。 | 是 |
+| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
+
+連接字串內的一般屬性：
+
+| 屬性 | 描述 | 必要 |
+|:--- |:--- |:--- |
 | 伺服器 |DB2 伺服器的名稱。 您可以指定在伺服器名稱後面加上以冒號隔開的連接埠號碼，例如 `server:port`。 |是 |
 | [資料庫] |DB2 資料庫的名稱。 |是 |
 | authenticationType |用來連接到 DB2 資料庫的驗證類型。<br/>允許的值為**基本**。 |是 |
 | username |指定要連線到 DB2 資料庫的使用者名稱。 |是 |
-| password |指定您為使用者名稱所指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
+| 密碼 |指定您為使用者名稱所指定之使用者帳戶的密碼。 將此欄位標記為 SecureString，將它安全地儲存在 Data Factory 中，或[參考 Azure Key Vault 中儲存的祕密](store-credentials-in-key-vault.md)。 |是 |
 | packageCollection | 指定在查詢資料庫時，ADF 自動建立所需套件的位置。 | 否 |
 | certificateCommonName | 當您使用安全通訊端層（SSL）或傳輸層安全性（TLS）加密時，您必須輸入 [憑證一般名稱] 的值。 | 否 |
-| connectVia | 用來連線到資料存放區的 [Integration Runtime](concepts-integration-runtime.md)。 深入瞭解[必要條件](#prerequisites)一節。 如果未指定，就會使用預設的 Azure Integration Runtime。 |否 |
 
 > [!TIP]
 > 如果您收到說明`The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`的錯誤訊息，原因是不會為使用者建立所需的套件。 根據預設，ADF 會嘗試以您用來連線到 DB2 的使用者身分，在集合下建立名為的套件。 指定 [封裝集合] 屬性，以指出在查詢資料庫時，ADF 要建立所需套件的位置。
 
 **範例：**
+
+```json
+{
+    "name": "Db2LinkedService",
+    "properties": {
+        "type": "Db2",
+        "typeProperties": {
+            "connectionString": "server=<server:port>; database=<database>; authenticationType=Basic;username=<username>; password=<password>; packageCollection=<packagecollection>;certificateCommonName=<certname>;"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+**範例：在 Azure Key Vault 中儲存密碼**
+
+```json
+{
+    "name": "Db2LinkedService",
+    "properties": {
+        "type": "Db2",
+        "typeProperties": {
+            "connectionString": "server=<server:port>; database=<database>; authenticationType=Basic;username=<username>; packageCollection=<packagecollection>;certificateCommonName=<certname>;",
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+如果您使用具有下列承載的 DB2 連結服務，它仍會受到支援，但建議您繼續使用新的。
+
+**先前的承載：**
 
 ```json
 {
@@ -196,28 +247,28 @@ ms.locfileid: "81417423"
 | BigInt |Int64 |
 | Binary |Byte[] |
 | Blob |Byte[] |
-| Char |字串 |
-| Clob |字串 |
-| Date |Datetime |
-| DB2DynArray |字串 |
-| DbClob |字串 |
+| Char |String |
+| Clob |String |
+| 日期 |Datetime |
+| DB2DynArray |String |
+| DbClob |String |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
-| Graphic |字串 |
+| Graphic |String |
 | 整數 |Int32 |
 | LongVarBinary |Byte[] |
-| LongVarChar |字串 |
-| LongVarGraphic |字串 |
+| LongVarChar |String |
+| LongVarGraphic |String |
 | 數值 |Decimal |
 | Real |Single |
 | SmallInt |Int16 |
-| 時間 |TimeSpan |
+| Time |TimeSpan |
 | 時間戳記 |Datetime |
 | VarBinary |Byte[] |
-| VarChar |字串 |
-| VarGraphic |字串 |
+| VarChar |String |
+| VarGraphic |String |
 | Xml |Byte[] |
 
 ## <a name="lookup-activity-properties"></a>查閱活動屬性

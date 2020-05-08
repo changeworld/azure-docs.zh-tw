@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: d3e456d57d98b796fb1aea2e82de51f9fae40c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733169"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982723"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>瞭解 Azure IoT Edge 如何使用憑證
 
@@ -36,7 +36,7 @@ ms.locfileid: "81733169"
 
 ### <a name="root-ca-certificate"></a>根 CA 憑證
 
-根 CA 憑證是整個程序的信任根憑證。 在生產環境中，通常是向信任的商業憑證授權單位 (例如 Baltimore、Verisign、DigiCert) 購買這個 CA 憑證。 至於連線到您 IoT Edge 裝置的裝置，如果您有完整控制權，就可以使用公司層級的憑證授權單位。 在上述任一情況下，IoT Edge 中樞註冊的整個信任鏈結會積存至中樞，因此分葉 IoT 裝置必須信任根憑證。 您可以將根 CA 憑證儲存在信任的根憑證授權單位存放區中，也可以在您的程式碼中提供憑證詳細資料。
+根 CA 憑證是整個程序的信任根憑證。 在生產環境中，通常是向信任的商業憑證授權單位 (例如 Baltimore、Verisign、DigiCert) 購買這個 CA 憑證。 至於連線到您 IoT Edge 裝置的裝置，如果您有完整控制權，就可以使用公司層級的憑證授權單位。 在任一事件中，來自 IoT Edge 中樞的整個憑證鏈都會擲回它，因此分葉 IoT 裝置必須信任根憑證。 您可以將根 CA 憑證儲存在信任的根憑證授權單位存放區中，也可以在您的程式碼中提供憑證詳細資料。
 
 ### <a name="intermediate-certificates"></a>中繼憑證
 

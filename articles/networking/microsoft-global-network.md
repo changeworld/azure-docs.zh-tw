@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75453062"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982797"
 ---
 # <a name="microsoft-global-network"></a>Microsoft 全域網路
 
-Microsoft 擁有並操作世界上最大的骨幹網路之一。 這種全球和精密的架構，跨越超過100000英里，連接了我們的資料中心和客戶。 
+Microsoft 擁有並操作世界上最大的骨幹網路之一。 這種全球和精密的架構，跨越超過160000英里，連接了我們的資料中心和客戶。 
  
 世界各地的客戶每天都會連線並將要求數兆個給 Microsoft Azure、Bing、Dynamics 365、Office 365、XBox 等等。 不論何種類型，客戶都希望能夠立即提供服務的可靠性和回應能力。 
  
@@ -32,7 +32,7 @@ Microsoft 擁有並操作世界上最大的骨幹網路之一。 這種全球和
  
 ## <a name="get-the-premium-cloud-network"></a>取得 premium 雲端網路
  
-當您使用 Microsoft cloud 時，選擇[最適合的體驗](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/)就很簡單。 從客戶流量進入我們的全球網路，透過我們策略性放置的邊緣節點，您的資料會以接近光線速度的最佳路線來傳輸。 這可確保最佳的延遲，以達到最佳效能。 這些邊緣節點，全都透過超過145個位置的上千個連線，連接到超過3500個獨特的網際網路合作夥伴（對等），以提供互連策略的基礎。 
+當您使用 Microsoft cloud 時，選擇[最適合的體驗](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/)就很簡單。 從客戶流量進入我們的全球網路，透過我們策略性放置的邊緣節點，您的資料會以接近光線速度的最佳路線來傳輸。 這可確保最佳的延遲，以達到最佳效能。 這些邊緣節點，全都透過超過165個位置的上千個連線，連接到超過3500個獨特的網際網路合作夥伴（對等），以提供互連策略的基礎。 
  
 無論是從倫敦連線到東京，或從華盛頓特區連接到洛杉磯，網路效能都是量化的，而且會受到延遲、抖動、封包遺失和輸送量等專案的影響。  在 Microsoft，我們偏好並使用直接互連，而不是傳輸連結，這會使回應流量保持對稱，並協助將躍點、對等互連方和路徑保持簡短且簡單。 
 

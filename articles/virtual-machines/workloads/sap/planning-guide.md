@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2e3219cebcc5e989059c02fec86ba242e1c31cc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b8f6691eab7da42c1f82952b3a20df95ab28d97b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853867"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891579"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虛擬機器規劃和實作指南
 
@@ -487,7 +487,7 @@ Microsoft Azure 平臺是多租使用者平臺。 因此，裝載 Azure Vm 的�
 
 網站[Linux 虛擬機器定價](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows 虛擬機器定價](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)，各有不同的服務提供不同的供應專案價格。 如需一年期和三年期保留實例的詳細資訊和彈性，請參閱下列文章：
 
-- [什麼是 Azure 保留項目？](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [什麼是 Azure 保留專案？](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
 - [利用保留 VM 執行個體獲得虛擬機器大小彈性](https://docs.microsoft.com/azure/virtual-machines/windows/reserved-vm-instance-size-flexibility)
 - [Azure 保留折扣如何套用至虛擬機器](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-vm-reservation-charges) 
 
@@ -1240,7 +1240,7 @@ sudo service waagent restart
 >
 > * [在 Linux 上設定軟體 RAID][virtual-machines-linux-configure-raid]
 > * [在 Azure 中的 Linux VM 上設定 LVM][virtual-machines-linux-configure-lvm]
-> * [Azure 儲存體密碼和 Linux I/O 最佳化](https://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
+> * [Azure 儲存體密碼和 Linux I/O 最佳化](https://docs.microsoft.com/archive/blogs/igorpag/azure-storage-secrets-and-linux-io-optimizations)
 >
 >
 
