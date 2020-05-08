@@ -1,6 +1,6 @@
 ---
-title: 使用 RBAC 和 Azure Resource Manager 範本新增角色指派
-description: 瞭解如何使用 Azure 角色型存取控制（RBAC）和 Azure Resource Manager 範本，為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
+title: 使用 Azure Resource Manager 範本新增 Azure 角色指派-Azure RBAC
+description: 瞭解如何使用 Azure Resource Manager 範本和 Azure 角色型存取控制（Azure RBAC），為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9f817880f938f5d03024e3aacd9b84817a5ac721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 777d11a129f02d1a2f5c796dea0af438ca81ba8c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77138293"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735618"
 ---
-# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>使用 Azure RBAC 和 Azure Resource Manager 範本新增角色指派
+# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本新增 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]除了使用 Azure PowerShell 或 Azure CLI 之外，您還可以使用[Azure Resource Manager 範本](../azure-resource-manager/templates/template-syntax.md)來指派角色。 如果您需要以一致性和重複的方式來部署資源，範本可以派上用場。 本文說明如何使用範本指派角色。
 
@@ -52,7 +52,7 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 ```
 
-### <a name="application"></a>Application
+### <a name="application"></a>應用程式
 
 若要取得服務主體（應用程式所使用的身分識別）的識別碼，您可以使用[new-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)或[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list)命令。 針對服務主體，請使用物件識別碼，而**不**是應用程式識別碼。
 
@@ -66,7 +66,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 ## <a name="add-a-role-assignment"></a>新增角色指派
 
-在 RBAC 中，若要授與存取權，您可以新增角色指派。
+在 Azure RBAC 中，若要授與存取權，您可以新增角色指派。
 
 ### <a name="resource-group-without-parameters"></a>資源群組（不含參數）
 

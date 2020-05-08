@@ -9,14 +9,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 392329d254615406204d67a4e135b6857e13a57d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a69cb83492fabc692886fe6966a147de3bcbb04
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192547"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780839"
 ---
-# <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常見問題
+# <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight：常見問題集
 
 本文提供有關如何執行[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)的一些常見問題的解答。
 
@@ -48,7 +48,7 @@ ms.locfileid: "82192547"
 
 ### <a name="can-i-install-additional-components-on-my-cluster"></a>我可以在叢集上安裝其他元件嗎？
 
-是。 若要安裝其他元件或自訂叢集設定，請使用：
+可以。 若要安裝其他元件或自訂叢集設定，請使用：
 
 - 在建立期間或之後的腳本。 腳本是透過[腳本動作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)叫用。 [腳本動作] 是您可以從 Azure 入口網站、HDInsight Windows PowerShell Cmdlet 或 HDInsight .NET SDK 使用的設定選項。 此設定選項可以從 Azure 入口網站、HDInsight Windows PowerShell Cmdlet 或 HDInsight .NET SDK 使用。
 
@@ -133,7 +133,7 @@ Hive 中繼存放區用來儲存 Hive 伺服器所使用之資料來源的中繼
 
 - 邊緣節點：您可以將另一個邊緣節點新增至叢集，如在[HDInsight 中的 Apache Hadoop 叢集上使用空白邊緣節點](hdinsight-apps-use-edge-node.md)中所述。
 
-- 獨立節點 .. 您可以將獨立虛擬機器新增到相同的子網，並使用私用端點從該虛擬機器存取叢集`https://<CLUSTERNAME>-int.azurehdinsight.net`。 如需詳細資訊，請參閱[控制網路流量](hdinsight-plan-virtual-network-deployment.md#networktraffic)。
+- 獨立節點 .. 您可以將獨立虛擬機器新增到相同的子網，並使用私用端點從該虛擬機器存取叢集`https://<CLUSTERNAME>-int.azurehdinsight.net`。 如需詳細資訊，請參閱[控制網路流量](./control-network-traffic.md)。
 
 ### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>我應該將資料儲存在邊緣節點的本機磁片上嗎？
 
@@ -170,7 +170,7 @@ ktutil: q
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>我可以在 AAD DS 安全 LDAP 安裝程式中使用自我簽署憑證，並布建 ESP 叢集嗎？
 
-建議使用由憑證授權單位單位所發行的憑證。 但是，ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱：
+建議使用由憑證授權單位單位所發行的憑證。 但是，ESP 也支援使用自我簽署憑證。 如需詳細資訊，請參閱
 
 - [啟用 Azure Active Directory Domain Services](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -247,14 +247,14 @@ done
 
 目前，blob 儲存體和 Azure Data Lake Storage Gen1 或 Gen2 不存在任何 Ranger 外掛程式。 針對 ESP 叢集，您應該使用 Azure Data Lake Storage。 您至少可以使用 HDFS 工具，以手動方式在檔案系統層級設定細微許可權。 此外，使用 Azure Data Lake Storage 時，ESP 叢集會使用叢集層級的 Azure Active Directory 來執行一些檔案系統存取控制。 
 
-您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱：
+您可以使用 Azure 儲存體總管，將資料存取原則指派給使用者的安全性群組。 如需詳細資訊，請參閱
 
 - [如何? 將 Azure AD 使用者的許可權設定為使用 Hive 或其他服務來查詢 Data Lake Storage Gen2 中的資料嗎？](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [搭配 Azure Data Lake Storage Gen2 使用 Azure 儲存體總管設定檔案和目錄等級使用權限](/azure/storage/blobs/data-lake-storage-how-to-set-permissions-storage-explorer)
 
 ### <a name="can-i-increase-hdfs-storage-on-a-cluster-without-increasing-the-disk-size-of-worker-nodes"></a>我可以在叢集上增加 HDFS 儲存體，而不需要增加背景工作節點的磁片大小嗎？
 
-不可以。 您無法增加任何背景工作角色節點的磁片大小。 因此，增加磁片大小的唯一方法就是卸載叢集，然後使用較大的背景工作 Vm 重新建立叢集。 請不要使用 HDFS 來儲存任何 HDInsight 資料，因為如果刪除叢集，就會刪除資料。 相反地，請將您的資料儲存在 Azure 中。 相應增加叢集也可以將額外的容量新增至您的 HDInsight 叢集。
+不需要。 您無法增加任何背景工作角色節點的磁片大小。 因此，增加磁片大小的唯一方法就是卸載叢集，然後使用較大的背景工作 Vm 重新建立叢集。 請不要使用 HDFS 來儲存任何 HDInsight 資料，因為如果刪除叢集，就會刪除資料。 相反地，請將您的資料儲存在 Azure 中。 相應增加叢集也可以將額外的容量新增至您的 HDInsight 叢集。
 
 ## <a name="edge-nodes"></a>邊緣節點
 

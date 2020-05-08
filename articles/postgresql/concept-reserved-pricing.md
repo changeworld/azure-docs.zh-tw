@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 66d7228e78f03196da0b26249e7f1f86e79d79fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/02/2020
+ms.openlocfilehash: 7f671e2a77a0a00fd1cc4338e29c14f7b8fca4f2
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159008"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734717"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>預付以保留容量適用於 PostgreSQL 的 Azure 資料庫計算資源
 
@@ -22,7 +22,7 @@ ms.locfileid: "80159008"
 > [!IMPORTANT]
 > 保留容量定價僅適用于適用於 PostgreSQL 的 Azure 資料庫[單一伺服器](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)部署，不適用於[超大規模資料庫 Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus)部署。
 
-您可以在[Azure 入口網站](https://portal.azure.com/)中購買適用於 PostgreSQL 的 Azure 資料庫保留容量。 若要購買保留容量：
+您可以在[Azure 入口網站](https://portal.azure.com/)中購買適用於 PostgreSQL 的 Azure 資料庫保留容量。 保留的付款方式可為[預先付款或每月付款](../cost-management-billing/reservations/monthly-payments-reservations.md)。 若要購買保留容量：
 
 * 您至少必須是一個企業或個別訂用帳戶的擁有者角色，且具有隨用隨付費率。
 * 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用**新增保留執行個體**。 或者，如果該設定已停用，則您必須是訂用帳戶上的 EA 系統管理員。

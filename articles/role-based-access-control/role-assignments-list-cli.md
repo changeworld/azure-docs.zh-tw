@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 Azure CLI 列出角色指派
-description: 瞭解如何使用 Azure 角色型存取控制（RBAC）和 Azure CLI，判斷使用者、群組、服務主體或受控識別可以存取哪些資源。
+title: 使用 Azure CLI 列出 Azure 角色指派-Azure RBAC
+description: 瞭解如何使用 Azure CLI 和 Azure 角色型存取控制（Azure RBAC）來判斷哪些資源的使用者、群組、服務主體或受控識別可以存取。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,21 +14,21 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5716e7bb89d017866bd1575256e2d119bb7acbe5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4b635d6867c36b8b0f385320e3720bea41b54d1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385056"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735737"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-azure-cli"></a>使用 Azure RBAC 和 Azure CLI 列出角色指派
+# <a name="list-azure-role-assignments-using-azure-cli"></a>使用 Azure CLI 列出 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]本文說明如何使用 Azure CLI 列出角色指派。
 
 > [!NOTE]
 > 如果您的組織具有外包管理功能給使用[Azure 委派資源管理](../lighthouse/concepts/azure-delegated-resource-management.md)的服務提供者，該服務提供者所授權的角色指派將不會顯示在這裡。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - Azure Cloud Shell 或[Azure CLI](/cli/azure) [中的 Bash](/azure/cloud-shell/overview)
 
@@ -144,4 +144,4 @@ az role assignment list --scope /providers/Microsoft.Management/managementGroups
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure RBAC 和 Azure CLI 新增或移除角色指派](role-assignments-cli.md)
+- [使用 Azure CLI 新增或移除 Azure 角色指派](role-assignments-cli.md)

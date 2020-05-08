@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 79a4e423f7a2b6570234c958ac833cdf5c6a75e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a5a38ea32d927f50fb9ddbebe3e1c3533e6fcc0
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79297912"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625318"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>從 Azure 儲存體在 Linux 上的 App Service 中提供內容
 
@@ -20,7 +20,7 @@ ms.locfileid: "79297912"
 
 本指南說明如何將 Azure 儲存體附加至 Linux 上的 App Service。 優點包括安全內容、內容可攜性、持續儲存、存取多個應用程式，以及多個傳輸方法。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Azure CLI](/cli/azure/install-azure-cli) (2.0.46 或更新版本)。
 - 現有的[Linux 上的 App Service 應用程式](https://docs.microsoft.com/azure/app-service/containers/)。
@@ -45,7 +45,7 @@ ms.locfileid: "79297912"
 
 建立[Azure 儲存體帳戶、檔案共用和目錄](#prerequisites)之後，您現在可以使用 Azure 儲存體來設定您的應用程式。
 
-若要將儲存體帳戶掛接到 App Service 應用程式中的目錄，請使用[`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add)命令。 儲存體類型可以是 AzureBlob 或 AzureFiles。 在此範例中會使用 AzureFiles。
+若要將儲存體帳戶掛接到 App Service 應用程式中的目錄，請使用[`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add)命令。 儲存體類型可以是 AzureBlob 或 AzureFiles。 在此範例中會使用 AzureFiles。 [掛接路徑] 設定會對應至您想要從 Azure 儲存體掛接的資料夾。 將它設定為 '/' 會裝載整個 Azure 儲存體。
 
 
 > [!CAUTION]

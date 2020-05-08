@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 5c8f770855dd8d19a9d313f1b79f9bf8da4b2393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 258fc30f3e4a4ba374ada89c03b824ff5e27718e
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75771490"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612260"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>複製或備份 Azure 串流分析作業
 
-您可以使用 Visual Studio Code 或 Visual Studio 來複製或備份已部署的 Azure 串流分析作業。 
+您可以使用 Visual Studio Code 或 Visual Studio 來複製或備份已部署的 Azure 串流分析作業。 將作業複製到另一個區域時，並不會複製上次的輸出時間。 因此，啟動複製的作業時，您無法使用 [[**上次停止時**](https://docs.microsoft.com/azure/stream-analytics/start-job#start-options)] 選項。
 
 ## <a name="before-you-begin"></a>開始之前
 * 如果您沒有 Azure 訂用帳戶，請建立[免費帳戶](https://azure.microsoft.com/free/)。
