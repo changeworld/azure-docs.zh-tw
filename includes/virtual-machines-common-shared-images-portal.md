@@ -8,37 +8,31 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 729e757c69887bbdce324e2d8383c970995dc94a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d5947f669b600b544cd7e5265e2cce8de118374
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73903647"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788977"
 ---
-## <a name="sign-in-to-azure"></a>登入 Azure 
-
-在 https://portal.azure.com 登入 Azure 入口網站。
-
-> [!NOTE]
-> 如果您在預覽期間註冊使用共用映射資源庫，您可能需要重新註冊`Microsoft.Compute`提供者。 開啟[Cloud Shell](https://shell.azure.com/bash)並輸入：`az provider register -n Microsoft.Compute`
-
 ## <a name="create-an-image-gallery"></a>建立映像資源庫
 
 映像資源庫是用於啟用映像共用的主要資源。 資源庫名稱允許的字元為大寫或小寫字母、數字、點和句點。 圖庫名稱不能包含連字號。  資源庫名稱在您的訂用帳戶內必須是唯一的。 
 
 下列範例會在 *myGalleryRG* 資源群組中建立名為 *myGallery* 的資源庫。
 
-1. 選取 Azure 入口網站左上角的 [建立資源]  。
+1. 在 https://portal.azure.com 登入 Azure 入口網站。
 1. 使用 [搜尋] 方塊中的 [類型**共用映射資源庫**]，然後選取結果中的 [**共用映射資源庫**]。
-1. 在 [**共用映射庫**] 頁面中，按一下 [**建立**]。
-1. 選取正確的訂用帳戶。
+1. 在 [**共用映射庫**] 頁面中，按一下 [**新增**]。
+1. 在 [**建立共用映射資源庫**] 頁面上，選取正確的訂用帳戶。
 1. 在 [**資源群組**] 中，選取 [**建立新**的]，然後輸入*myGalleryRG*作為 [名稱]。
 1. 在 [**名稱**] 中，輸入*myGallery*做為圖庫的名稱。
 1. 保留 [**區域**] 的預設值。
 1. 您可以輸入資源庫的簡短描述，例如*用於測試的映射庫。* 然後按一下 [**審查 + 建立**]。
 1. 通過驗證之後，請選取 [**建立**]。
 1. 當部署完成時，選取 [**移至資源**]。
-   
+
+
 ## <a name="create-an-image-definition"></a>建立映像定義 
 
 映射定義會建立影像的邏輯群組。 它們可用來管理在其中建立之映射版本的相關資訊。 影像定義名稱可以由大寫或小寫字母、數位、點、虛線和句號組成。 如需您可以為映射定義指定之值的詳細資訊，請參閱[影像定義](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions)。
@@ -46,8 +40,9 @@ ms.locfileid: "73903647"
 在您的資源庫內部建立資源庫映射定義。 在此範例中，圖庫影像名為*myImageDefinition*。
 
 1. 在新映射庫的頁面上，選取頁面頂端的 [**新增映射定義**]。 
+1. 在 [**將新的映射定義新增至共用映射資源庫**] 的 [**區域**] 中，選取 [*美國東部*]。
 1. 在 [**映射定義名稱**] 中，輸入*myImageDefinition*。
-1. 針對 [**作業系統**]，根據您的來源 VM 選取正確的選項。
+1. 針對 [**作業系統**]，根據您的來源 VM 選取正確的選項。  
 1. 針對 [ **VM 產生**]，請根據您的來源 VM 來選取選項。 在大部分情況下，這會是*Gen 1*。 如需詳細資訊，請參閱[第2代 vm 的支援](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)。
 1. 針對 [**作業系統狀態**]，根據您的來源 VM 來選取選項。 如需詳細資訊，請參閱[一般化和特製](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)化。
 1. 針對 **[發行者]**，輸入*myPublisher*。 

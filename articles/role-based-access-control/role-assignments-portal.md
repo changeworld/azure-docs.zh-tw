@@ -1,6 +1,6 @@
 ---
-title: 使用 RBAC 和 Azure 入口網站新增或移除角色指派
-description: 瞭解如何使用 Azure 角色型存取控制（RBAC）和 Azure 入口網站，為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
+title: 使用 Azure 入口網站新增或移除 Azure 角色指派-Azure RBAC
+description: 瞭解如何使用 Azure 入口網站和 Azure 角色型存取控制（Azure RBAC），為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,20 +14,20 @@ ms.workload: identity
 ms.date: 01/25/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e2458b07602bca3b6f12b2f486b509c11d705461
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88cb1e9893e0ca058e57ce12f00747a59248fb19
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246353"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735686"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 入口網站新增或移除角色指派
+# <a name="add-or-remove-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 入口網站新增或移除 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]本文說明如何使用 Azure 入口網站指派角色。
 
 如果您需要在 Azure Active Directory 中指派系統管理員角色，請參閱[在 Azure Active Directory 中查看和指派系統管理員角色](../active-directory/users-groups-roles/directory-manage-roles-portal.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要新增或移除角色指派，您必須具有：
 
@@ -143,7 +143,7 @@ ms.locfileid: "79246353"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure RBAC 和 Azure 入口網站列出角色指派](role-assignments-list-portal.md)
-- [教學課程：使用 RBAC 和 Azure 入口網站為使用者授與 Azure 資源的存取權](quickstart-assign-role-user-portal.md)
-- [針對適用於 Azure 資源的 RBAC 進行疑難排解](troubleshooting.md)
+- [使用 Azure 入口網站列出 Azure 角色指派](role-assignments-list-portal.md)
+- [教學課程：使用 Azure 入口網站將 Azure 資源的存取權授與使用者](quickstart-assign-role-user-portal.md)
+- [針對 Azure RBAC 進行疑難排解](troubleshooting.md)
 - [使用 Azure 管理群組來組織資源](../governance/management-groups/overview.md)

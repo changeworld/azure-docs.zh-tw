@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 109bb6dd29ea9c4239e0abcfc668f1185f7e9783
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d3dbaad18f6acbe1ddf17d81f54e4232c838dd7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114525"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787408"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure 自動化中的驗證簡介
 
@@ -25,7 +25,7 @@ Azure 自動化可讓您針對 Azure、內部部署以及其他雲端提供者 (
 
 每個自動化帳戶的自動化資源都會與單一 Azure 區域相關聯，但自動化帳戶可管理訂用帳戶中的所有資源。 在不同區域建立自動化帳戶的主要原因會是，若您擁有需要區隔資料和資源到特定區域的原則時。
 
-在 Azure 自動化中使用 Azure Resource Manager 和 Azure Cmdlet 針對資源所執行的工作，皆必須使用 Azure Active Directory 組織身分識別的認證型驗證向 Azure 進行驗證。 中的執行身分帳戶 Azure 自動化提供使用 Azure Cmdlet 在 Azure 中管理資源的驗證。 當您建立執行身分帳戶時，它會在 Azure Active Directory （AD）中建立新的服務主體使用者，並在訂用帳戶層級將參與者角色指派給此使用者。 對於在 Azure 虛擬機器上使用混合式 Runbook 背景工作角色的 Runbook，您可以使用 [Azure 資源的受控識別](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources)來向 Azure 資源進行驗證，而非使用執行身分帳戶。
+在 Azure 自動化中使用 Azure Resource Manager 和 Azure Cmdlet 針對資源所執行的工作，皆必須使用 Azure Active Directory 組織身分識別的認證型驗證向 Azure 進行驗證。 中的執行身分帳戶 Azure 自動化提供使用 Azure Cmdlet 在 Azure 中管理資源的驗證。 當您建立執行身分帳戶時，它會在 Azure Active Directory （AD）中建立新的服務主體使用者，並在訂用帳戶層級將參與者角色指派給此使用者。 針對在 Azure 虛擬機器上使用混合式 Runbook 背景工作角色的 runbook，您可以使用[Runbook 驗證搭配受控](automation-hrw-run-runbooks.md#runbook-auth-managed-identities)識別，而不是執行身分帳戶來驗證您的 Azure 資源。
 
 執行身分帳戶的服務主體預設沒有讀取 Azure AD 的許可權。 如果您想要新增讀取或管理 Azure AD 的許可權，您必須在 [ **API 許可權**] 下授與服務主體的許可權。 若要深入瞭解，請參閱[新增存取 Web api 的許可權](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
 

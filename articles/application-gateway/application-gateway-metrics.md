@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: ebbdda39f019f374f8e5abe951d0180c0dd453f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4770b3ae7c52b9a05ff704915a3e9f401fd1741
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457870"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889618"
 ---
 # <a name="metrics-for-application-gateway"></a>應用程式閘道的計量
 
@@ -237,7 +237,7 @@ ms.locfileid: "81457870"
 ## <a name="next-steps"></a>後續步驟
 
 * 利用 [Azure 監視器記錄](../azure-monitor/insights/azure-networking-analytics.md)將計數器和事件記錄視覺化。
-* [以 Power BI 的 blog 文章將您的 Azure 活動記錄視覺化](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)。
+* [以 Power BI 的 blog 文章將您的 Azure 活動記錄視覺化](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/)。
 * [在 Power BI 和其他工具中檢視和分析 Azure 活動記錄](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)部落格文章。
 
 [1]: ./media/application-gateway-diagnostics/figure1.png

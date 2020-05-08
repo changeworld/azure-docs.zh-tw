@@ -5,22 +5,32 @@ services: virtual-desktop
 author: HeidiLohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 41b24a94d36b21fe5d5f539e056abb535bda433a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8451dc14a7ed42aa92f9adbd5ad050936949e302
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128280"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612413"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>設定個人桌面主機集區指派類型
+
+>[!IMPORTANT]
+>此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/configure-host-pool-personal-desktop-assignment-type-2019.md)。
+>
+> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您可以設定個人桌面主機集區的指派類型，以調整您的 Windows 虛擬桌面環境，使其更符合您的需求。 在本主題中，我們將示範如何為您的使用者設定自動或直接指派。
 
 >[!NOTE]
 > 本文中的指示僅適用于個人桌面主機集區，而非集區主機集區，因為集區主機集區中的使用者不會指派給特定的工作階段主機。
+
+## <a name="prerequisites"></a>Prerequisites
+
+本文假設您已下載並安裝 Windows 虛擬桌面 PowerShell 模組。 如果您尚未這麼做，請依照[設定 PowerShell 模組](powershell-module.md)中的指示進行。
 
 ## <a name="configure-automatic-assignment"></a>設定自動指派
 
@@ -28,27 +38,16 @@ ms.locfileid: "79128280"
 
 若要自動指派使用者，請先將它們指派給個人桌面主機集區，讓他們可以在其摘要中看見桌面。 當指派的使用者在其摘要中啟動桌面時，如果已連線到主機集區（完成指派程式），則會宣告可用的工作階段主機。
 
-開始之前，請先[下載並匯入 Windows 虛擬桌面 PowerShell 模組](/powershell/windows-virtual-desktop/overview/)（如果尚未這麼做）。 
-
-> [!NOTE]
-> 遵循這些指示之前，請確定您已安裝 Windows 虛擬桌面 PowerShell 模組1.0.1534.2001 或更新版本。
-
-之後，請執行下列 Cmdlet 來登入您的帳戶：
-
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
-
 若要將主機集區設定為自動將使用者指派給 Vm，請執行下列 PowerShell Cmdlet：
 
 ```powershell
-Set-RdsHostPool <tenantname> <hostpoolname> -AssignmentType Automatic
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -PersonalDesktopAssignmentType Automatic
 ```
 
 若要將使用者指派給個人桌面主機集區，請執行下列 PowerShell Cmdlet：
 
 ```powershell
-Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 ## <a name="configure-direct-assignment"></a>設定直接指派
@@ -58,19 +57,19 @@ Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -Use
 若要設定主機集區以要求將使用者直接指派給工作階段主機，請執行下列 PowerShell Cmdlet：
 
 ```powershell
-Set-RdsHostPool <tenantname> <hostpoolname> -AssignmentType Direct
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -PersonalDesktopAssignmentType Direct
 ```
 
 若要將使用者指派給個人桌面主機集區，請執行下列 PowerShell Cmdlet：
 
 ```powershell
-Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 若要將使用者指派給特定的工作階段主機，請執行下列 PowerShell Cmdlet：
 
 ```powershell
-Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -AssignedUser <userupn>
+Update-AzWvdSessionHost -HostPoolName <hostpoolname> -Name <sessionhostname> -ResourceGroupName <resourcegroupname> -AssignedUser <userupn>
 ```
 
 ## <a name="next-steps"></a>後續步驟
@@ -79,3 +78,6 @@ Set-RdsSessionHost <tenantname> <hostpoolname> -Name <sessionhostname> -Assigned
 
 - [與 Windows 桌面用戶端連線](connect-windows-7-and-10.md)
 - [與 Web 用戶端連線](connect-web.md)
+- [與 Android 用戶端連線](connect-android.md)
+- [與 iOS 用戶端連線](connect-ios.md)
+- [與 macOS 用戶端連線](connect-macos.md)

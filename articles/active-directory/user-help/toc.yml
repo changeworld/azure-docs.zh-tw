@@ -46,6 +46,8 @@
           href: user-help-auth-app-add-account-manual.md
     - name: 使用 Microsoft Authenticator 應用程式登入
       href: user-help-auth-app-sign-in.md
+    - name: Android 在中國的限制
+      href: auth-app-android-china.md
     - name: 備份和復原您的帳戶
       href: user-help-auth-app-backup-recovery.md
     - name: 常見問題集

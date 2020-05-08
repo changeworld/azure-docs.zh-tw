@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: d0e90d9278ede97de04ad8efeaa59d94a4567f66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1531d9b70860f498a3e38305f26eb862c9513f3
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76756261"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901508"
 ---
 # <a name="service-bus-management-libraries"></a>服務匯流排管理程式庫
 
@@ -32,7 +32,7 @@ Azure 服務匯流排管理程式庫可以動態佈建服務匯流排命名空�
 * 建立、更新、刪除主題
 * 建立、更新、刪除訂用帳戶
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要開始使用服務匯流排管理程式庫，您必須使用 Azure Active Directory (Azure AD) 服務來驗證。 Azure AD 會要求您以提供 Azure 資源存取權的服務主體來進行驗證。 如需建立服務主體的詳細資訊，請參閱以下其中一篇文章：  
 
@@ -40,7 +40,7 @@ Azure 服務匯流排管理程式庫可以動態佈建服務匯流排命名空�
 * [使用 Azure PowerShell 建立用來存取資源的服務主體](/azure/azure-resource-manager/resource-group-authenticate-service-principal)
 * [使用 Azure CLI 建立用來存取資源的服務主體](/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
 
-這些教學課程會提供您 `AppId` (用戶端識別碼)、`TenantId` 和 `ClientSecret` (驗證金鑰)，全部由管理程式庫用於驗證。 針對您想要執行的資源群組，您必須具備「擁有者」**** 權限。
+這些教學課程會提供您 `AppId` (用戶端識別碼)、`TenantId` 和 `ClientSecret` (驗證金鑰)，全部由管理程式庫用於驗證。 對於您想要執行的資源群組，您必須至少擁有[**Azure 服務匯流排資料擁有**](/azure/role-based-access-control/built-in-roles#azure-service-bus-data-owner)者或[**參與者**](/azure/role-based-access-control/built-in-roles#contributor)許可權。
 
 ## <a name="programming-pattern"></a>程式設計模式
 

@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/14/2020
-ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 7ed01a57a4c2a55d777907a6cc14b111fb2086e3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80395777"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731895"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>刪除並復原 Azure Log Analytics 工作區
 
@@ -59,14 +59,13 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 ### <a name="troubleshooting"></a>疑難排解
 
-您必須擁有「Log Analytics 參與者」許可權，才能刪除 Log Analytics 工作區。<br>
-如果您在建立工作區時收到「*此工作區名稱已在使用中*」錯誤訊息，可能是因為：
+您必須至少擁有*Log Analytics 參與者*許可權，才能刪除工作區。<br>
+如果您收到錯誤訊息，則在建立工作區時，*此工作區名稱已在使用中*或*衝突*，可能是因為：
 * 工作區名稱無法供貴組織中的人員或其他客戶使用。
-* 工作區已在過去14天內刪除，其名稱保留供虛刪除期間保留。 若要覆寫虛刪除並立即刪除您的工作區，並使用相同的名稱建立新的工作區，請遵循下列步驟來先復原工作區，然後執行永久刪除：<br>
+* 工作區已在過去14天內刪除，其名稱保留供虛刪除期間保留。 若要覆寫虛刪除並永久刪除您的工作區，以建立具有相同名稱的新工作區，請遵循下列步驟來先復原工作區，然後執行永久刪除：<br>
    1. [復原](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)您的工作區。
    2. [永久刪除](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)您的工作區。
    3. 使用相同的工作區名稱建立新的工作區。
-
 
 ## <a name="permanent-workspace-delete"></a>永久刪除工作區
 在某些情況下，虛刪除方法可能無法納入，例如開發和測試，您需要使用相同的設定和工作區名稱來重複部署。 在這種情況下，您可以永久刪除您的工作區，並「覆寫」虛刪除期間。 永久的工作區刪除作業會釋出工作區名稱，而您可以使用相同的名稱來建立新的工作區。
@@ -96,12 +95,7 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 如果您對訂用帳戶和資源群組具有在虛刪除作業之前相關聯的參與者許可權，您可以在其虛刪除期間進行復原，包括其資料、設定和連接的代理程式。 在虛刪除期間之後，工作區無法復原，而且會被指派永久刪除。 已刪除的工作區名稱會在虛刪除期間保留，而且在嘗試建立新的工作區時無法使用。  
 
-您可以使用下列工作區建立方法來重新建立工作區： [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace)或[REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate)只要以已刪除的工作區詳細資料填入下列屬性即可：
-
-* 訂用帳戶識別碼
-* 資源群組名稱
-* 工作區名稱
-* 區域
+您可以使用已刪除之工作區的詳細資料來建立工作區來復原工作區，包括訂用帳戶*識別碼*、*資源組名*、*工作區名稱*和*區域*。 如果您的資源群組也已刪除且不存在，請建立一個資源群組，其名稱與刪除前所使用的相同，然後使用下列任何一種方法來建立工作區： [Azure 入口網站](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)、 [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace)或[REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate)。
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

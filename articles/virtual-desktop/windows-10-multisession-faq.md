@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d7ea99e2ee8e2882c211ee17acec70222dc058a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 143410f0bf0659161427f4b5391124f53f712972
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637089"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611988"
 ---
-# <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 企業版的多重工作階段常見問題集
+# <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 企業版多工作階段常見問題集
 
 本文提供常見問題的解答，並說明 Windows 10 企業版多會話的最佳作法。
  
@@ -104,4 +104,4 @@ Windows 10 企業版的多重會話（1809和更新版本）受到支援，並�
 
 - 閱讀我們的[Windows 虛擬桌面預覽檔](overview.md)
 - 造訪我們的[Windows 虛擬桌面 TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)
-- 使用[Windows 虛擬桌面教學](tenant-setup-azure-active-directory.md)課程來設定您的 Windows 虛擬桌面部署
+- 使用[Windows 虛擬桌面教學](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)課程來設定您的 Windows 虛擬桌面部署

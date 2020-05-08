@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/28/2020
-ms.openlocfilehash: 09431a6690be751324bb796415d308d3b7727dad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c8a19fe338af14f97e0eb191d7b57e840c71e400
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254092"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612719"
 ---
-# <a name="auto-grow-storage-in-azure-database-for-mysql-storage-using-powershell"></a>使用 PowerShell 在適用於 MySQL 的 Azure 資料庫儲存體中自動增加儲存體
+# <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>使用 PowerShell 在適用於 MySQL 的 Azure 資料庫伺服器中自動增加儲存體
 
 本文說明如何在不影響工作負載的情況下，將適用於 MySQL 的 Azure 資料庫伺服器存放裝置設定為可成長。
 
@@ -22,7 +22,7 @@ ms.locfileid: "82254092"
 > [!IMPORTANT]
 > 請記住，儲存體只能相應增加，而不能相應縮小。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要完成本操作說明指南，您需要：
 
@@ -52,4 +52,5 @@ New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_
 
 ## <a name="next-steps"></a>後續步驟
 
-深入瞭解[如何建立計量的警示](howto-alert-on-metric.md)。
+> [!div class="nextstepaction"]
+> [如何使用 PowerShell 建立和管理適用於 MySQL 的 Azure 資料庫中的讀取複本](howto-read-replicas-powershell.md)。

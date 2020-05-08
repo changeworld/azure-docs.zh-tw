@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/20/2020
-ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 0a8864555798d3b64d675c70728ab97d191be81f
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729130"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891382"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>對應資料流程中的 Alter row 轉換
 
@@ -24,6 +24,8 @@ ms.locfileid: "81729130"
 ![改變數據列設定](media/data-flow/alter-row1.png "改變數據列設定")
 
 Alter Row 轉換只會在資料流程中的資料庫或 CosmosDB 接收上運作。 您指派給資料列的動作（insert、update、delete、upsert）不會在 debug 會話期間發生。 在管線中執行「執行資料流程」活動，以制定資料庫資料表的 alter row 原則。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vJYc]
 
 ## <a name="specify-a-default-row-policy"></a>指定預設資料列原則
 
@@ -54,6 +56,18 @@ Alter Row 轉換只會在資料流程中的資料庫或 CosmosDB 接收上運作
 > 如果您的插入、更新或更新插入修改了接收中目標資料表的架構，資料流程將會失敗。 若要修改資料庫中的目標架構，請選擇 [**重新建立資料表**] 做為資料表動作。 這會卸載並重新建立您的資料表，並使用新的架構定義。
 
 在目標資料庫中，接收轉換需要單一索引鍵或一系列金鑰來進行唯一的資料列識別。 若是 SQL 接收器，請在 [接收設定] 索引標籤中設定索引鍵。若為 CosmosDB，請在設定中設定分割區索引鍵，並在您的接收對應中設定 CosmosDB 系統欄位 "id"。 針對 CosmosDB，必須包含 system 資料行 "id" 來進行更新、更新插入和刪除。
+
+## <a name="merges-and-upserts-with-azure-sql-database-and-synapse"></a>使用 Azure SQL Database 和 Synapse 進行合併和更新插入
+
+ADF 資料流程支援使用 upsert 選項，針對 Azure SQL Database 和 Synapse 資料庫集區（資料倉儲）進行合併。
+
+不過，您可能會遇到目標資料庫架構使用索引鍵資料行之 identity 屬性的案例。 ADF 會要求您識別要用來比對更新和更新插入之資料列值的金鑰。 但是，如果目標資料行已設定 identity 屬性，而且您使用 upsert 原則，則目標資料庫將不會允許您寫入資料行。
+
+您有兩個選擇：
+
+1. 使用接收轉換前置處理 SQL 選項： ```SET IDENTITY_INSERT tbl_content ON```。 然後，使用後置處理 SQL 屬性將它關閉： ```SET IDENTITY_INSERT tbl_content OFF```。
+
+2. 請改用「條件式分割」轉換來切換邏輯，以將更新條件與插入條件分開，而不是使用 upsert。 如此一來，您可以在更新路徑上設定對應，以忽略索引鍵資料行對應。
 
 ## <a name="data-flow-script"></a>資料流程指令碼
 

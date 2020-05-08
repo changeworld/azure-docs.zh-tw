@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: terrylan
 manager: rkarlin
 ms.date: 11/04/2019
-ms.openlocfilehash: abc16ae7f7ab8bf15173248a6e7668e689e127de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5330c751aaa3fcbd5c7fc268e4a4de08d336d474
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77561964"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735431"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 的客戶加密箱
 
@@ -49,7 +49,7 @@ Microsoft Azure 的客戶加密箱會提供介面，讓客戶審查及核准或�
 
     要求現在會在**客戶通知**狀態，等待客戶的核准，然後再授與存取權。
 
-7. 在客戶組織中，具有 Azure 訂用帳戶擁有者[角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)的使用者會收到來自 Microsoft 的電子郵件，通知他們有擱置的存取要求。 對於客戶加密箱要求，此人員是指定的核准者。
+7. 在客戶組織中，具有 Azure 訂用帳戶擁有者[角色](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)的使用者會收到來自 Microsoft 的電子郵件，通知他們有擱置的存取要求。 對於客戶加密箱要求，此人員是指定的核准者。
 
     範例電子郵件：
 
