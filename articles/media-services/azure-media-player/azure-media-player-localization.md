@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: 34805c4eaae5d969fc2338c24f9f92404e065d15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca4dc888af414ede270118eff72652f098d3306c
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727173"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779037"
 ---
 # <a name="localization"></a>當地語系化 #
 
@@ -44,7 +44,7 @@ Azure 媒體播放機目前支援下列語言及其對應的語言代碼：
 | 法文              | fr   | 挪威文 - 耐諾斯克     | nn     | 中文-簡體    | zh-hans      |
 | 加利西亞文            | gl   | 波蘭文                  | pl     | 中文-繁體   | zh-hant      |
 | Hebrew              | he   | 葡萄牙文 - 巴西     | pt-br  |                         |              |
-| Hindi               | hu   | 葡萄牙文 - 葡萄牙   | pt-pt  |                         |              |
+| Hindi               | hi   | 葡萄牙文 - 葡萄牙   | pt-pt  |                         |              |
 
 
 > [!NOTE]

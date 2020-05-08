@@ -1,23 +1,17 @@
 ---
-title: REST API：Azure Data Lake Storage Gen1 上的帳戶管理作業 | Microsoft Docs
-description: 使用 Azure Data Lake Storage Gen1 與 WebHDFS REST API 在 Data Lake Storage Gen1 中執行帳戶管理作業
-services: data-lake-store
-documentationcenter: ''
+title: 使用 REST 管理 Azure Data Lake Storage Gen1 帳戶
+description: 使用 WebHDFS REST API 來執行 Azure Data Lake Storage Gen1 帳戶的帳戶管理作業。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 57ac6501-cb71-4f75-82c2-acc07c562889
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 97fe33309f36cd7545f8c9d6c2d34671641caa1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a106b55fb90f320b90c81216a205dd10a9bf934
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60877099"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692083"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 對 Azure Data Lake Storage Gen1 進行帳戶管理作業
 > [!div class="op_single_selector"]

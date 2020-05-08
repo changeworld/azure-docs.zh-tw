@@ -6,16 +6,16 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e7f1b70aca50b4e42d056beb0b17795430091c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273556"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690713"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions 的 Azure 服務匯流排觸發程式
 
-使用服務匯流排觸發程序來回應來自服務匯流排佇列或主題的訊息。
+使用服務匯流排觸發程序來回應來自服務匯流排佇列或主題的訊息。 從擴充功能版本3.1.0 開始，您可以在啟用會話的佇列或主題上觸發。
 
 如需安裝和設定詳細資料的相關資訊，請參閱[總覽](functions-bindings-service-bus-output.md)。
 
@@ -222,7 +222,7 @@ def main(msg: func.ServiceBusMessage):
   }
   ```
 
-  您可以設定`Connection`屬性來指定應用程式設定的名稱，其中包含要使用的服務匯流排連接字串，如下列範例所示：
+  因為未`Connection`定義屬性，所以函式會尋找名為`AzureWebJobsServiceBus`的應用程式設定，這是服務匯流排連接字串的預設名稱。 您也可以設定`Connection`屬性，以指定包含要使用之服務匯流排連接字串的應用程式設定名稱，如下列範例所示：
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -302,7 +302,7 @@ Python 不支援屬性。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="usage"></a>使用方式
+## <a name="usage"></a>使用狀況
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -354,21 +354,24 @@ Functions 執行階段會在 [PeekLock 模式](../service-bus-messaging/service-
 
 ## <a name="message-metadata"></a>訊息中繼資料
 
-服務匯流排觸發程序提供數個[中繼資料屬性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 這些屬性可作為其他繫結中繫結運算式的一部分或程式碼中的參數使用。 這些屬性是[BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)類別的成員。
+服務匯流排觸發程序提供數個[中繼資料屬性](./functions-bindings-expressions-patterns.md#trigger-metadata)。 這些屬性可作為其他繫結中繫結運算式的一部分或程式碼中的參數使用。 這些屬性是[Message](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet)類別的成員。
 
-|屬性|類型|說明|
+|屬性|類型|描述|
 |--------|----|-----------|
-|`DeliveryCount`|`Int32`|傳遞數目。|
-|`DeadLetterSource`|`string`|無效信件來源。|
-|`ExpiresAtUtc`|`DateTime`|到期時間 (UTC)。|
-|`EnqueuedTimeUtc`|`DateTime`|加入佇列的時間 (UTC)。|
-|`MessageId`|`string`|服務匯流排可用來識別重複訊息的使用者定義值 (如果已啟用)。|
 |`ContentType`|`string`|傳送者和接收者針對應用程式特定邏輯使用的內容類型識別碼。|
-|`ReplyTo`|`string`|回覆佇列位址。|
-|`SequenceNumber`|`Int64`|由服務匯流排指派給訊息的唯一編號。|
-|`To`|`string`|傳送位址。|
-|`Label`|`string`|應用程式特定的標籤。|
 |`CorrelationId`|`string`|相互關連識別碼。|
+|`DeadLetterSource`|`string`|無效信件來源。|
+|`DeliveryCount`|`Int32`|傳遞數目。|
+|`EnqueuedTimeUtc`|`DateTime`|加入佇列的時間 (UTC)。|
+|`ExpiresAtUtc`|`DateTime`|到期時間 (UTC)。|
+|`Label`|`string`|應用程式特定的標籤。|
+|`MessageId`|`string`|服務匯流排可用來識別重複訊息的使用者定義值 (如果已啟用)。|
+|`MessageReceiver`|`MessageReceiver`|服務匯流排訊息接收者。 可以用來放棄、完成或 deadletter 訊息。|
+|`MessageSession`|`MessageSession`|專門用於已啟用會話之佇列和主題的訊息接收器。|
+|`ReplyTo`|`string`|回覆佇列位址。|
+|`SequenceNumber`|`long`|由服務匯流排指派給訊息的唯一編號。|
+|`To`|`string`|傳送位址。|
+|`UserProperties`|`IDictionary<string, object>`|寄件者所設定的屬性。|
 
 請參閱稍早在本文中使用這些屬性的[程式碼範例](#example)。
 

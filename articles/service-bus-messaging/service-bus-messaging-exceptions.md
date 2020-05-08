@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: d04902a8d53397b7e7d9712a1c75ce44cc7aa7ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1a4caf6ffd5740b4227aff2f38d9cb709c77b48
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80880783"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739342"
 ---
 # <a name="service-bus-messaging-exceptions"></a>服務匯流排傳訊例外狀況
 本文列出 .NET Framework Api 所產生的 .NET 例外狀況。 
@@ -46,8 +46,6 @@ ms.locfileid: "80880783"
 | [MessageNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagenotfoundexception) |嘗試接收具有特定序號的訊息。 找不到此訊息。 |請確定尚未收到訊息。 檢查寄不出信件佇列，查看訊息是否已停止傳送。 |[重試] 不會有説明。 |
 | [MessagingCommunicationException](/dotnet/api/microsoft.servicebus.messaging.messagingcommunicationexception) |用戶端無法建立與服務匯流排的連接。 |確定提供的主機名稱正確，且主機可以連線。 |如果有間歇性的連線問題，重試也許有幫助。 |
 | [ServerBusyException](/dotnet/api/microsoft.azure.servicebus.serverbusyexception) |服務目前無法處理要求。 |用戶端可以等待一段時間，然後再重試作業。 |用戶端可以在特定間隔後重試。 如果重試產生不同的例外狀況，請檢查該例外狀況的重試行為。 |
-| [MessageLockLostException](/dotnet/api/microsoft.azure.servicebus.messagelocklostexception) |與訊息相關聯的鎖定權杖已過期，或找不到鎖定 token。 |處置訊息。 |[重試] 不會有説明。 |
-| [SessionLockLostException](/dotnet/api/microsoft.azure.servicebus.sessionlocklostexception) |與此工作階段相關聯的鎖定遺失。 |中止 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 物件。 |[重試] 不會有説明。 |
 | [MessagingException](/dotnet/api/microsoft.servicebus.messaging.messagingexception) |可能會在下列情況中擲回的一般傳訊例外狀況：<p>利用屬於不同實體類型 (例如主題) 的名稱或路徑嘗試建立 [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) 。</p><p>嘗試傳送大於 256 KB 的訊息。 </p>處理要求時伺服器或服務發生錯誤。 如需詳細資訊，請參閱例外狀況訊息。 這通常是暫時性例外狀況。</p><p>要求已終止，因為實體正在進行節流。 錯誤碼：50001、50002、50008。 </p> | 查看程式碼，並確定訊息內文只使用可序列化的物件 (或使用自訂序列化程式)。 <p>查看文件來了解支援的屬性值類型，並且只使用支援的類型。</p><p> 查看 [IsTransient](/dotnet/api/microsoft.servicebus.messaging.messagingexception) 屬性。 如果是**true**，您可以重試此作業。 </p>| 如果例外狀況是因為節流所造成，請等候幾秒鐘，然後再次嘗試操作。 重試行為未定義，在其他情況下可能不會有説明。|
 | [MessagingEntityAlreadyExistsException](/dotnet/api/microsoft.servicebus.messaging.messagingentityalreadyexistsexception) |嘗試在該服務命名空間中以另一個實體已在使用的名稱建立實體。 |刪除現有的實體，或選擇不同的名稱來建立實體。 |[重試] 不會有説明。 |
 | [QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) |傳訊實體已達到允許的大小上限，或已超過命名空間的連線數目上限。 |從實體或其子佇列接收訊息，在實體中建立空間。 請參閱 [QuotaExceededException](#quotaexceededexception)。 |如果在此同時已移除訊息，重試可能會有幫助。 |
@@ -102,6 +100,96 @@ ConnectionsQuotaExceeded for namespace xxx.
 
 ### <a name="queues-and-topics"></a>佇列和主題
 佇列和主題的逾時是在 [MessagingFactorySettings.OperationTimeout](/dotnet/api/microsoft.servicebus.messaging.messagingfactorysettings) 屬性中指定，作為連接字串的一部分，或透過 [ServiceBusConnectionStringBuilder](/dotnet/api/microsoft.azure.servicebus.servicebusconnectionstringbuilder) 指定。 錯誤訊息本身可能不盡相同，但它一定會包含目前作業的指定逾時值。 
+
+## <a name="messagelocklostexception"></a>MessageLockLostException
+
+### <a name="cause"></a>原因
+
+當使用[PeekLock](message-transfers-locks-settlement.md#peeklock)接收模式接收訊息，而且用戶端所持有的鎖定在服務端過期時，就會擲回**microsoft.servicebus.messaging.messagelocklostexception** 。
+
+訊息的鎖定可能會因為各種原因而過期- 
+
+  * 在用戶端應用程式更新之前，鎖定計時器已過期。
+  * 用戶端應用程式已取得鎖定，並將其儲存至持續性存放區，然後重新開機。 重新開機之後，用戶端應用程式會查看傳遞訊息，並嘗試完成這些工作。
+
+### <a name="resolution"></a>解決方案
+
+當**microsoft.servicebus.messaging.messagelocklostexception**時，用戶端應用程式無法再處理訊息。 用戶端應用程式可以選擇性地考慮記錄例外狀況以進行分析，但是用戶端*必須*處置訊息。
+
+因為訊息上的鎖定已過期，所以它會回到佇列（或訂用帳戶），並可由呼叫 receive 的下一個用戶端應用程式來處理。
+
+如果已超過**MaxDeliveryCount** ，則訊息可能會移至**DeadLetterQueue**。
+
+## <a name="sessionlocklostexception"></a>SessionLockLostException
+
+### <a name="cause"></a>原因
+
+當接受會話，而且用戶端所持有的鎖定在服務端過期時，就會擲回 **、microsoft.servicebus.messaging.sessionlocklostexception** 。
+
+會話的鎖定可能會因為各種原因而過期- 
+
+  * 在用戶端應用程式更新之前，鎖定計時器已過期。
+  * 用戶端應用程式已取得鎖定，並將其儲存至持續性存放區，然後重新開機。 一旦重新開機之後，用戶端應用程式會查看傳遞會話，並嘗試處理這些會話中的訊息。
+
+### <a name="resolution"></a>解決方案
+
+當 **、microsoft.servicebus.messaging.sessionlocklostexception**時，用戶端應用程式無法再處理會話上的訊息。 用戶端應用程式可能會考慮記錄例外狀況以進行分析，但是用戶端*必須*處置訊息。
+
+由於會話的鎖定已過期，因此它會回到佇列（或訂用帳戶），並可由接受會話的下一個用戶端應用程式鎖定。 由於會話鎖定是由單一用戶端應用程式在任何指定時間持有，因此會保證依序處理。
+
+## <a name="socketexception"></a>SocketException
+
+### <a name="cause"></a>原因
+
+在下列案例中會擲回**SocketException** -
+   * 當連接嘗試失敗時，因為主機在指定的時間之後未正確回應（TCP 錯誤碼10060）。
+   * 已建立的連接失敗，因為連線的主機無法回應。
+   * 處理訊息時發生錯誤，或遠端主機超過超時。
+   * 基礎網路資源問題。
+
+### <a name="resolution"></a>解決方案
+
+**SocketException**錯誤指出裝載應用程式的 VM 無法將名稱`<mynamespace>.servicebus.windows.net`轉換成對應的 IP 位址。 
+
+檢查下列命令是否成功對應到 IP 位址。
+
+```Powershell
+PS C:\> nslookup <mynamespace>.servicebus.windows.net
+```
+
+應提供輸出，如下所示
+
+```bash
+Name:    <cloudappinstance>.cloudapp.net
+Address:  XX.XX.XXX.240
+Aliases:  <mynamespace>.servicebus.windows.net
+```
+
+如果上述名稱**未解析**為 IP 和命名空間別名，請檢查網路系統管理員以進一步調查。 名稱解析是透過 DNS 伺服器來完成，通常是客戶網路中的資源。 如果 DNS 解析是由 Azure DNS 完成，請洽詢 Azure 支援。
+
+如果名稱解析**如預期般運作**，請在[這裡](service-bus-troubleshooting-guide.md#connectivity-certificate-or-timeout-issues)檢查是否允許 Azure 服務匯流排連線
+
+
+## <a name="messagingexception"></a>MessagingException
+
+### <a name="cause"></a>原因
+
+**MessagingException**是可能因各種原因而擲回的一般例外狀況。 其中一些原因如下所示。
+
+   * 嘗試在**主題**或**訂**用帳戶上建立**QueueClient** 。
+   * 傳送的訊息大小大於指定層的限制。 閱讀更多有關服務匯流排[配額和限制](service-bus-quotas.md)的資訊。
+   * 特定資料平面要求（傳送、接收、完成、放棄）因節流而終止。
+   * 因服務升級和重新開機所造成的暫時性問題。
+
+> [!NOTE]
+> 上述例外狀況清單並不完整。
+
+### <a name="resolution"></a>解決方案
+
+解決步驟取決於導致擲回**MessagingException**的原因。
+
+   * 針對**暫時性問題**（其中***isTransient***設定為***true***）或針對**節流問題**，重試作業可能會解決此問題。 您可以利用 SDK 上的預設重試原則來進行此操作。
+   * 對於其他問題，例外狀況中的詳細資料表示可以從相同的推斷出問題和解決步驟。
 
 ## <a name="next-steps"></a>後續步驟
 如需完整的服務匯流排 .NET API 參考資料，請參閱 [Azure .NET API 參考資料](/dotnet/api/overview/azure/service-bus)。

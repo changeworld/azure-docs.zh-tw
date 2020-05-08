@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: e5f9762533dc2ad47f855714822ba39c645bf847
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79fc74cc946578ffe91629065ddd03e43aa76957
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76045464"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629468"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>開始使用 PowerShell 在 Resource Manager 中建立配置有 IPv6 的網際網路面向負載平衡器
 
@@ -61,7 +61,7 @@ Azure 負載平衡器是第 4 層 (TCP、UDP) 負載平衡器。 此負載平衡
 * 輸入 NAT 規則 - 包含將負載平衡器上的公用連接埠對應至後端位址集區中特定虛擬機器之連接埠的規則。
 * 探查 - 包含用來檢查後端位址集區中虛擬機器執行個體可用性的健全狀態探查。
 
-如需詳細資訊，請參閱[Azure Load Balancer 元件](./concepts-limitations.md#load-balancer-components)。
+如需詳細資訊，請參閱[Azure Load Balancer 元件](./components.md)。
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>設定 PowerShell 以使用 Resource Manager
 

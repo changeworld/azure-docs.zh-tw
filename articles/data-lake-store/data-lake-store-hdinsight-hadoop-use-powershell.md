@@ -1,23 +1,17 @@
 ---
-title: PowerShell：Azure HDInsight 叢集搭配 Azure Data Lake Storage Gen1 作為附加儲存體 | Microsoft Docs
+title: PowerShell-具有 Data Lake Storage Gen1 附加元件儲存體的 HDInsight-Azure
 description: 瞭解如何使用 Azure PowerShell 設定以 Azure Data Lake Storage Gen1 作為額外儲存體的 HDInsight 叢集。
-services: data-lake-store,hdinsight
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 4cd61619e0417ab1db8d8413872b2dff1c904fc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb4ab1cdb60fff40effc1ff2f12f8600ba263d23
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970131"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692055"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>使用 Azure PowerShell 建立搭配 Azure Data Lake Storage Gen1 (作為附加儲存體) 的 HDInsight 叢集
 
@@ -50,7 +44,7 @@ ms.locfileid: "78970131"
 * 建立具有針對 Data Lake Storage Gen1 之驗證的 HDInsight 叢集
 * 在叢集上執行測試工作
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

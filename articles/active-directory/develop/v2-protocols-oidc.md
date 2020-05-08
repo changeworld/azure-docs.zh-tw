@@ -2,7 +2,7 @@
 title: OpenID Connect 通訊協定-Microsoft 身分識別平臺 |Azure
 description: 使用 OpenID Connect 驗證通訊協定的 Microsoft 身分識別平臺執行來建立 web 應用程式。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.date: 04/12/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 161f97dc99ce5ce16d7c40126b95a769c4b79621
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: be24c4cfd255b33a38acc1e62763350d3d7e989b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868325"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688221"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft 身分識別平臺和 OpenID Connect 通訊協定
 
@@ -102,7 +102,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 請按一下以下連結來執行此要求。 登入之後，您的瀏覽器將會重新導向至 `https://localhost/myapp/`，網址列中會有識別碼權杖。 請注意，此要求會使用 `response_mode=fragment` (僅限用於示範)。 建議您使用 `response_mode=form_post`。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
 
-| 參數 | 狀況 | 說明 |
+| 參數 | 狀況 | 描述 |
 | --- | --- | --- |
 | `tenant` | 必要 | 您可以要求路徑中使用 `{tenant}` 值來控制可登入應用程式的人員。 允許的值為 `common`、`organizations`、`consumers` 及租用戶識別碼。 如需詳細資訊，請參閱[通訊協定基本概念](active-directory-v2-protocols.md#endpoints)。 |
 | `client_id` | 必要 | **應用程式（用戶端）識別碼**， [Azure 入口網站](https://go.microsoft.com/fwlink/?linkid=2083908)指派給您應用程式的應用程式註冊體驗。 |
@@ -112,9 +112,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `nonce` | 必要 | 一個由應用程式產生且包含在要求中的值，此值會以宣告方式包含在產生的 id_token 中。 應用程式可以確認此值來減輕權杖重新執行攻擊的影響。 此值通常是一個隨機的唯一字串，可用來識別要求的來源。 |
 | `response_mode` | 建議 | 指定將產生的授權碼傳回到應用程式所應該使用的方法。 可以是 `form_post` 或 `fragment`。 針對 Web 應用程式，建議使用 `response_mode=form_post`，以確保會以最安全的方式將權杖傳輸至您的應用程式。 |
 | `state` | 建議 | 一個包含在要求中而將一併在權杖回應中傳回的值。 它可以是您想要的任何內容的字串。 通常會使用一個隨機產生的唯一值來[防止跨站台偽造要求攻擊](https://tools.ietf.org/html/rfc6749#section-10.12)。 此狀態也用來在驗證要求出現之前，於應用程式中將使用者狀態的相關資訊 (例如使用者所在的網頁或檢視) 編碼。 |
-| `prompt` | 選擇性 | 表示必要的使用者互動類型。 此時唯有 `login`、`none` 及 `consent` 是有效值。 `prompt=login` 宣告會強制使用者在該要求上輸入其認證，亦即取消單一登入。 `prompt=none` 宣告則相反。 此宣告可確保使用者在時不會看到任何互動式提示。 如果要求無法透過單一登入以無訊息方式完成，Microsoft 身分識別平臺端點會傳回錯誤。 `prompt=consent` 宣告會在使用者登入之後觸發 OAuth 同意對話方塊。 該對話方塊會請使用者將權限授與應用程式。 |
-| `login_hint` | 選擇性 | 如果您事先知道使用者名稱，便可使用此參數為使用者預先填入登入頁面的使用者名稱和電子郵件地址欄位。 通常應用程式會在重新驗證期間，在已經使用 `preferred_username` 宣告從稍早的登入中擷取使用者名稱之後，使用此參數。 |
-| `domain_hint` | 選擇性 | 同盟目錄中使用者的領域。  這會略過使用者在登入頁面上經歷的以電子郵件為基礎的探索程式，以提供稍微簡化的使用者體驗。 對於透過內部部署目錄（例如 AD FS）同盟的租使用者，這通常會因為現有的登入會話而導致無縫式登入。 |
+| `prompt` | 選用 | 表示必要的使用者互動類型。 此時唯有 `login`、`none` 及 `consent` 是有效值。 `prompt=login` 宣告會強制使用者在該要求上輸入其認證，亦即取消單一登入。 `prompt=none` 宣告則相反。 此宣告可確保使用者在時不會看到任何互動式提示。 如果要求無法透過單一登入以無訊息方式完成，Microsoft 身分識別平臺端點會傳回錯誤。 `prompt=consent` 宣告會在使用者登入之後觸發 OAuth 同意對話方塊。 該對話方塊會請使用者將權限授與應用程式。 |
+| `login_hint` | 選用 | 如果您事先知道使用者名稱，便可使用此參數為使用者預先填入登入頁面的使用者名稱和電子郵件地址欄位。 通常應用程式會在重新驗證期間，在已經使用 `preferred_username` 宣告從稍早的登入中擷取使用者名稱之後，使用此參數。 |
+| `domain_hint` | 選用 | 同盟目錄中使用者的領域。  這會略過使用者在登入頁面上經歷的以電子郵件為基礎的探索程式，以提供稍微簡化的使用者體驗。 對於透過內部部署目錄（例如 AD FS）同盟的租使用者，這通常會因為現有的登入會話而導致無縫式登入。 |
 
 此時，系統會要求使用者輸入其認證並完成驗證。 Microsoft 身分識別平臺端點會確認使用者已同意`scope`查詢參數中指出的許可權。 如果使用者未同意這些許可權的任何一項，Microsoft 身分識別平臺端點會提示使用者同意所需的許可權。 您可以深入瞭解[許可權、同意及多租使用者應用程式](v2-permissions-and-consent.md)。
 

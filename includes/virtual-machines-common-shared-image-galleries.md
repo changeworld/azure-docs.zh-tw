@@ -1,42 +1,41 @@
 ---
 title: 包含檔案
 description: 包含檔案
-services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: a477114bda7d138a6860d21f2fad75e27d968833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80116925"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789026"
 ---
 共用映射資源庫是一種服務，可協助您在受控映射周圍建立結構和組織。 共用映射資源庫提供：
 
 - 受管理的映射全域複寫。
 - 為映射進行版本控制和群組，以方便管理。
 - 在支援可用性區域的區域中，具有區域冗余儲存體（ZRS）帳戶的高可用性映射。 ZRS 針對區域性失敗提供更佳的復原能力。
+- Premium 儲存體支援（Premium_LRS）。
 - 使用 RBAC 在訂用帳戶之間共用，甚至是在 Active Directory （AD）租使用者之間共用。
 - 使用每個區域中的映射複本來調整您的部署。
 
 使用共用映像庫，即可在組織內對於不同的使用者、服務主體或 AD 群組共用您的映像。 共用映像可以複寫至多個區域，以更快速調整您的部署。
 
-根據映像的建立方式，受控映像可能是完整 VM (包括任何連結的資料磁碟) 或僅含 OS 磁碟的複本。 當您從映像建立 VM 時，映像中 VHD 的複本可用來建立新 VM 的磁碟。 受控映像會保留在儲存體中，而且可以一再用來建立新的 VM。
+映射是完整 VM （包括任何連結的資料磁片）或只是 OS 磁片的複本，視建立的方式而定。 當您從映像建立 VM 時，映像中 VHD 的複本可用來建立新 VM 的磁碟。 映射會保留在儲存體中，並可重複使用，以建立新的 Vm。
 
-如果您有大量需要維護的受控映射，而且想要讓它們可供整個公司使用，您可以使用共用映射庫做為存放庫，讓您輕鬆共用您的映射。 
+如果您有大量需要維護的映射，而且想要讓它們可供整個公司使用，您可以將共用映射庫當做存放庫。 
 
 共用映像庫具有多個資源類型：
 
 | 資源 | 描述|
 |----------|------------|
-| **受控映射** | 可以單獨使用或用來在映射庫中建立**映射版本**的基本映射。 系統會從[一般化](#generalized-and-specialized-images)vm 建立受控映射。 受控映像是一種特殊的 VHD 類型，可用來產生多個 VM，現在可以用來建立共用映像版本。 |
-| **快照式** | 可以用來建立**映射版本**的 VHD 複本。 您可以從[特製](#generalized-and-specialized-images)化 VM （尚未一般化的虛擬機器）取得快照集，然後單獨使用或搭配資料磁片的快照集，以建立特製化的映射版本。
+| **影像來源** | 這是可在映射庫中用來建立**映射版本**的資源。 映射來源可以是已[一般化或特製](#generalized-and-specialized-images)化的現有 Azure VM、受控映射、快照集，或另一個映射庫中的映射版本。 |
 | **映射庫** | 和 Azure Marketplace 一樣，**映像庫**是用於管理和共用映像的存放庫，但您可以控制哪些使用者能夠存取。 |
-| **映像定義** | 映射會定義于資源庫中，並包含影像的相關資訊，以及在您的組織內使用它的需求。 您可以包含類似映射是一般化或特製化、作業系統、最小和最大記憶體需求，以及版本資訊等資訊。 這是映像類型的定義。 |
+| **映像定義** | 映射定義會建立在資源庫內，並包含影像的相關資訊，以及在內部使用它的需求。 這包括映像是 Windows 還是 Linux、版本資訊以及最小和最大的記憶體需求。 這是映像類型的定義。 |
 | **映像版本** | **映像版本**是在使用資源庫時用來建立 VM 的項目。 您可以視需要為環境準備多個映像版本。 和受控映像一樣，當您使用**映像版本**來建立 VM 時，系統會使用映像版本來建立 VM 的新磁碟。 映像版本可以使用多次。 |
 
 <br>
@@ -45,7 +44,7 @@ ms.locfileid: "80116925"
 
 ## <a name="image-definitions"></a>映射定義
 
-映射定義是映射版本的邏輯群組。 映射定義包含建立映射的原因、作業系統的目標，以及使用映射的相關資訊。 映射定義就像是關於建立特定映射的所有詳細資料的計畫。 您不會從映射定義部署 VM，而是從定義所建立的映射版本。
+映射定義是映射版本的邏輯群組。 映射定義包含建立映射的原因、作業系統的目標，以及其他有關使用映射的資訊。 映射定義就像是關於建立特定映射的所有詳細資料的計畫。 您不會從映射定義部署 VM，而是從定義所建立的映射版本。
 
 每個映射定義都有三個參數，用於組合-**發行者**、**供應**專案和**SKU**。 這些是用來尋找特定的映射定義。 不同的映像版本之間可以擁有一或兩個相同的值，但不能三個值都相同。  例如，以下是三個映像定義和其值：
 
@@ -68,23 +67,18 @@ ms.locfileid: "80116925"
 * 標記-您可以在建立映射定義時新增標記。 如需標記的詳細資訊，請參閱[使用標記來組織您的資源](../articles/azure-resource-manager/management/tag-resources.md)
 * 最小和最大 vCPU 和記憶體建議-如果您的映射有 vCPU 和記憶體建議，您可以將該資訊附加至映射定義。
 * 不允許的磁片類型-您可以提供 VM 儲存體需求的相關資訊。 例如，如果映射不適合標準 HDD 磁片，您可以將它們新增至不允許清單。
+* Hyper-v 產生-您可以指定映射是從 gen 1 或 gen 2 Hyper-v VHD 建立的。
 
 ## <a name="generalized-and-specialized-images"></a>一般化和特製化映射
 
 共用映射資源庫支援兩種作業系統狀態。 映射通常會要求用來建立映射的 VM 已一般化，然後才接受映射。 一般化是從 VM 中移除機器和使用者特定資訊的程式。 若是 Windows，則會使用 Sysprep。 針對 Linux，您可以使用[waagent](https://github.com/Azure/WALinuxAgent) `-deprovision`或`-deprovision+user`參數。
 
-特製化 Vm 尚未經過處理，無法移除電腦的特定資訊和帳戶。 此外，從特製化映射建立的 Vm 並沒有`osProfile`相關聯的。 這表示特製化映射會有一些限制。
+特製化 Vm 尚未經過處理，無法移除電腦的特定資訊和帳戶。 此外，從特製化映射建立的 Vm 並沒有`osProfile`相關聯的。 這表示除了一些優點以外，特製化映射也會有一些限制。
 
+- 從特製化映射建立的 Vm 和擴展集，可以更快速地啟動並執行。 因為它們是從已通過第一次開機的來源所建立，所以從這些映射建立的 Vm 會更快速開機。
 - 可以用來登入 VM 的帳戶也可用於使用從該 VM 建立的特製化映射所建立的任何 VM。
 - Vm 將會擁有從中取得映射之 VM 的**電腦名稱稱**。 您應該變更電腦名稱稱以避免發生衝突。
 - `osProfile`是使用`secrets`將一些機密資訊傳遞至 VM 的方式。 這可能會導致使用 KeyVault、WinRM 和在中使用`secrets`的其他功能`osProfile`時發生問題。 在某些情況下，您可以使用受控服務識別（MSI）來解決這些限制。
-
-> [!IMPORTANT]
-> 特製化映射目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
->
-> **已知的預覽限制**只能使用入口網站或 API，從特製化映射建立 Vm。 不是預覽版的 CLI 或 PowerShell 支援。
-
 
 ## <a name="regional-support"></a>區域支援
 
@@ -113,6 +107,7 @@ ms.locfileid: "80116925"
 - 100共用映射資源庫，每個訂用帳戶，每個區域
 - 1000每個區域每個訂用帳戶的映射定義
 - 10000映射版本，每個訂用帳戶，每個區域
+- 每個區域每個訂用帳戶10個映射版本複本
 - 連接至映射的任何磁片都必須小於或等於1TB 大小
 
 如需詳細資訊，請參閱根據[限制檢查資源使用狀況](https://docs.microsoft.com/azure/networking/check-usage-against-limits)，以取得如何檢查目前使用量的範例。
@@ -144,7 +139,7 @@ ms.locfileid: "80116925"
 
 ![圖形：顯示如何複寫映像](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>存取權
+## <a name="access"></a>存取
 
 由於共用映射庫、映射定義和映射版本都是資源，因此可以使用內建的原生 Azure RBAC 控制項來共用。 使用 RBAC，您可以將這些資源與其他使用者、服務主體和群組共用。 您甚至可以在其建立所在的租使用者外，共用其個人的存取權。 一旦使用者擁有共用映射版本的存取權，他們就可以部署 VM 或虛擬機器擴展集。  以下共用矩陣可協助您了解使用者有權存取的項目：
 
@@ -167,12 +162,12 @@ ms.locfileid: "80116925"
 建立之後，您就可以對映射庫資源進行一些變更。 這些限制為：
  
 共用映像庫：
-- 說明
+- 描述
 
 映像定義：
 - 建議的 vCPU
 - 建議的記憶體
-- 說明
+- 描述
 - 生命週期結束日期
 
 映像版本：
@@ -196,8 +191,8 @@ ms.locfileid: "80116925"
 您可以使用範本建立共用映像庫資源。 有數個 Azure 快速入門範本可以使用： 
 
 - [建立共用映像庫](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [在共用映像資源庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [在共用映像資源庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [在共用映像庫中建立映像定義](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [在共用映像庫中建立映像版本](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 - [從映像版本建立 VM](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>常見問題集 
@@ -217,31 +212,32 @@ ms.locfileid: "80116925"
 * [使用共用映像庫需要哪些費用？](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [我應該使用哪個 API 版本來建立共用映射庫和映射定義和映射版本？](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [我應該使用哪個 API 版本來建立映射版本的共用 VM 或虛擬機器擴展集？](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+* [我可以將使用受控映射建立的虛擬機器擴展集更新為使用共用映射庫映射嗎？]
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>如何列出訂用帳戶之間的所有共用映像庫資源？
 
 若要列出您在 Azure 入口網站上可存取的訂用帳戶之間的所有共用映射庫資源，請遵循下列步驟：
 
 1. 開啟 [Azure 入口網站](https://portal.azure.com)。
-1. 移至 [所有資源]****。
+1. 向下流覽頁面，然後選取 [**所有資源**]。
 1. 選取所有要列出其內含全部資源的訂用帳戶。
-1. 尋找類型為 [私用資源庫]**** 的資源。
- 
-   若要查看映像定義和映像版本，您還應該選取 [顯示隱藏的類型]****。
- 
-   若要列出您有權存取之所有訂用帳戶的共用映像庫資源，請在 Azure CLI 中使用下列命令：
+1. 尋找「**共用映射庫**」類型的資源。
+  
+若要列出您有權存取之所有訂用帳戶的共用映像庫資源，請在 Azure CLI 中使用下列命令：
 
-   ```azurecli
+```azurecli
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
-   ```
+```
+
+如需詳細資訊，請參閱使用[Azure CLI](../articles/virtual-machines/update-image-resources-cli.md)或[PowerShell](../articles/virtual-machines/update-image-resources-powershell.md)來**管理資源庫資源**。
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>是否可以將現有映像移至共用映像庫？
  
-是。 根據您可能擁有的映像類型，案例共有 3 種。
+可以。 根據您可能擁有的映像類型，案例共有 3 種。
 
- 案例1：如果您在與 SIG 相同的訂用帳戶中有受控映射，則可以從它建立映射定義和映射版本。
+ 案例 1：如果您擁有受控映像，則可以透過該映像建立映像定義和映像版本。 如需詳細資訊，請參閱使用[Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md)或[PowerShell](../articles/virtual-machines/image-version-managed-image-powershell.md)**從受控映射遷移至映射版本**。
 
- 案例2：如果您在與 SIG 相同的訂用帳戶中有非受控映射，您可以從它建立受控映射，然後從它建立映射定義和映射版本。 
+ 案例2：如果您有非受控映射，您可以從它建立受控映射，然後從它建立映射定義和映射版本。 
 
  案例3：如果您的本機檔案系統中有 VHD，則您需要將 VHD 上傳至受控映射，然後您可以從它建立映射定義和映射版本。
 
@@ -250,11 +246,17 @@ ms.locfileid: "80116925"
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>是否可以從特製化磁碟建立映像版本？
 
-是，支援以映射形式提供的特製化磁片處於預覽狀態。 您只能使用入口網站（[Windows](../articles/virtual-machines/linux/shared-images-portal.md)或[LINUX](../articles/virtual-machines/linux/shared-images-portal.md)）和 API，從特製化映射建立 VM。 沒有適用于預覽的 PowerShell 支援。
+是，支援以映射形式提供的特製化磁片處於預覽狀態。 您只能使用入口網站、PowerShell 或 API，從特製化映射建立 VM。 
+
+
+使用[PowerShell 來建立特製化 VM 的映射](../articles/virtual-machines/image-version-vm-powershell.md)。
+
+使用入口網站來建立[Windows](../articles/virtual-machines/linux/shared-images-portal.md)或 [Linux] （。/articles/virtual-machines/linux/shared-images-portal.md）影像。 
+
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>我可以在建立共用映射庫資源之後，將它移至不同的訂用帳戶嗎？
 
-否，無法將共用映像庫資源移至不同訂用帳戶。 不過如有需要，可將資源庫中的映像版本複寫到其他區域。
+否，您無法將共用映射庫資源移至不同的訂用帳戶。 您可以使用[Azure CLI](../articles/virtual-machines/image-version-another-gallery-cli.md)或[PowerShell](../articles/virtual-machines/image-version-another-gallery-powershell.md)，將資源庫中的映射版本複寫到其他區域，或從另一個資源庫複製映射。
 
 ### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>我可以跨雲端（例如 Azure 中國世紀或 Azure 德國或 Azure Government Cloud）複寫我的映射版本嗎？
 
@@ -308,3 +310,7 @@ ms.locfileid: "80116925"
 ### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>我應該使用哪個 API 版本來建立映射版本的共用 VM 或虛擬機器擴展集？
 
 對於使用映像版本來部署 VM 和虛擬機器擴展集，建議您使用 API 版本 2018-04-01 或更高版本。
+
+### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>我是否可以將使用受控映射所建立的虛擬機器擴展集更新為使用共用映射庫映射？
+
+是，您可以將擴展集映射參考從受控映射更新為共用映射庫映射，只要 OS 類型、Hyper-v 產生和資料磁片版面配置符合映射即可。 

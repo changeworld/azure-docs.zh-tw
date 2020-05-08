@@ -1,6 +1,6 @@
 ---
-title: 使用 RBAC 和 Azure PowerShell 新增或移除角色指派
-description: 瞭解如何使用 Azure 角色型存取控制（RBAC）和 Azure PowerShell，為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
+title: 使用 Azure PowerShell 新增或移除 Azure 角色指派-Azure RBAC
+description: 瞭解如何使用 Azure PowerShell 和 Azure 角色型存取控制（Azure RBAC），為使用者、群組、服務主體或受控識別授與 Azure 資源的存取權。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,20 +14,20 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 68a73f622dc69b70870ddc1db16edcf406b63800
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db6b38f142254fa1812f34674e6a870629713d7e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283208"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735652"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>使用 Azure RBAC 和 Azure PowerShell 新增或移除角色指派
+# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>使用 Azure PowerShell 新增或移除 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]本文說明如何使用 Azure PowerShell 指派角色。
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要新增或移除角色指派，您必須具有：
 
@@ -56,7 +56,7 @@ Get-AzADGroup -SearchString <group_name_in_quotes>
 (Get-AzADGroup -DisplayName <group_name_in_quotes>).id
 ```
 
-### <a name="application"></a>Application
+### <a name="application"></a>應用程式
 
 若要取得 Azure AD 服務主體（應用程式所使用的身分識別）的物件識別碼，您可以使用[new-azadserviceprincipal](/powershell/module/az.resources/get-azadserviceprincipal)。 針對服務主體，請使用物件識別碼，而**不**是應用程式識別碼。
 
@@ -67,7 +67,7 @@ Get-AzADServicePrincipal -SearchString <service_name_in_quotes>
 
 ## <a name="add-a-role-assignment"></a>新增角色指派
 
-在 RBAC 中，若要授與存取權，您可以新增角色指派。
+在 Azure RBAC 中，若要授與存取權，您可以新增角色指派。
 
 ### <a name="user-at-a-resource-group-scope"></a>資源群組範圍中的使用者
 
@@ -112,7 +112,7 @@ CanDelegate        : False
 New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionId <role_id> -ResourceGroupName <resource_group_name>
 ```
 
-下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍中的*\@alain example.com* user。 若要取得唯一角色識別碼，您可以使用[get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)或查看[適用于 Azure 資源的內建角色](built-in-roles.md)。
+下列範例會將「[虛擬機器參與者](built-in-roles.md#virtual-machine-contributor)」角色指派給*醫藥-sales*資源群組範圍中的*\@alain example.com* user。 若要取得唯一的角色識別碼，您可以使用[get-azroledefinition](/powershell/module/az.resources/get-azroledefinition)或查看[Azure 內建角色](built-in-roles.md)。
 
 ```Example
 PS C:\> New-AzRoleAssignment -ObjectId 44444444-4444-4444-4444-444444444444 -RoleDefinitionId 9980e02c-c2be-4d73-94e8-173b1dc7cf3c -Scope /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales
@@ -205,7 +205,7 @@ CanDelegate        : False
 
 ## <a name="remove-a-role-assignment"></a>移除角色指派
 
-在 RBAC 中，若要移除存取權，您需使用 [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) 來移除角色指派。
+在 Azure RBAC 中，若要移除存取權，您可以使用[new-azroleassignment](/powershell/module/az.resources/remove-azroleassignment)移除角色指派。
 
 下列範例會從*醫藥-sales*資源群組上的*\@Alain Example.com*使用者移除「*虛擬機器參與者*」角色指派：
 
@@ -225,11 +225,11 @@ Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -S
 Remove-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName <role_name> -Scope /providers/Microsoft.Management/managementGroups/<group_id>
 ```
 
-如果您收到錯誤訊息：「提供的資訊未對應至角色指派」，請確定您也指定了`-Scope`或`-ResourceGroupName`參數。 如需詳細資訊，請參閱[針對 Azure 資源的 RBAC 進行疑難排解](troubleshooting.md#role-assignments-with-unknown-security-principal)。
+如果您收到錯誤訊息：「提供的資訊未對應至角色指派」，請確定您也指定了`-Scope`或`-ResourceGroupName`參數。 如需詳細資訊，請參閱針對[AZURE RBAC 進行疑難排解](troubleshooting.md#role-assignments-with-identity-not-found)。
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure RBAC 和 Azure PowerShell 列出角色指派](role-assignments-list-powershell.md)
-- [教學課程：使用 RBAC 和 Azure PowerShell 為群組授與 Azure 資源的存取權](tutorial-role-assignments-group-powershell.md)
-- [教學課程：使用 Azure PowerShell 建立適用于 Azure 資源的自訂角色](tutorial-custom-role-powershell.md)
+- [使用 Azure PowerShell 列出 Azure 角色指派](role-assignments-list-powershell.md)
+- [教學課程：使用 Azure PowerShell 為群組授與 Azure 資源的存取權](tutorial-role-assignments-group-powershell.md)
+- [教學課程：使用 Azure PowerShell 建立 Azure 自訂角色](tutorial-custom-role-powershell.md)
 - [使用 Azure PowerShell 管理資源](../azure-resource-manager/management/manage-resources-powershell.md)

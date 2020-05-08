@@ -9,12 +9,12 @@ ms.custom: subject-moving-resources
 ms.date: 04/14/2020
 ms.author: spelluru
 ms.reviewer: shvija
-ms.openlocfilehash: 2dfc9c517605bbb48bee0b306fb275464cfebe39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b96bf1c538b3c5589a1993a0353292fadd0936d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606804"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690478"
 ---
 # <a name="move-an-azure-event-hubs-namespace-to-another-region"></a>將 Azure 事件中樞命名空間移至另一個區域
 在許多情況下，您會想要將現有的事件中樞命名空間移至另一個區域。 例如，您可能會想要使用相同的設定來建立命名空間來進行測試。 您可能也會想要在其他區域中建立次要命名空間，做為嚴重損壞[修復計畫](event-hubs-geo-dr.md#setup-and-failover-flow)的一部分。
@@ -22,12 +22,12 @@ ms.locfileid: "81606804"
 > [!NOTE]
 > 本文說明如何匯出現有事件中樞命名空間的 Azure Resource Manager 範本，然後使用範本，在另一個區域中建立具有相同設定的命名空間。 不過，此進程不會移動尚未處理的事件。 您必須先處理原始命名空間中的事件，然後再刪除它。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - 確定目的地區域中支援您的帳戶所使用的服務和功能。
 - 針對預覽功能，請確定您的訂用帳戶已列入目的地區域的允許清單中。
 - 如果您已為命名空間中的事件中樞啟用**capture 功能**，請在移動事件中樞命名空間之前，先移動[Azure 儲存體或 Azure Data Lake 存放區 gen 2](../storage/common/storage-account-move.md)或[Azure Data Lake 存放區 gen 1](../data-lake-store/data-lake-store-migration-cross-region.md)帳戶。 您也可以遵循這篇文章中所述的步驟，將包含儲存體和事件中樞命名空間的資源群組移至另一個區域。 
-- 如果事件中樞命名空間位於**事件中樞**叢集中，請在執行本文中的步驟之前，先在**目的地區域**中[建立專用的](event-hubs-dedicated-cluster-create-portal.md)叢集。 
+- 如果事件中樞命名空間位於**事件中樞**叢集中，請在執行本文中的步驟之前，先在**目的地區域**中[建立專用的](event-hubs-dedicated-cluster-create-portal.md)叢集。 您也可以使用[GitHub 上的快速入門範本](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-cluster-namespace-eventhub/)來建立事件中樞叢集。 在範本中，移除 JSON 的命名空間部分，只建立叢集。 
 
 ## <a name="prepare"></a>準備
 若要開始使用，請匯出 Resource Manager 範本。 此範本包含描述事件中樞命名空間的設定。

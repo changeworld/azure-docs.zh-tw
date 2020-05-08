@@ -139,7 +139,7 @@ ms.locfileid: "82858807"
 
 <a name="kstore-rest-api"></a>
 
-## <a name="api-reference"></a>API 參考資料
+## <a name="api-reference"></a>應用程式開發介面參考
 
 REST API 版本`2019-05-06-Preview`會透過技能集上的其他定義來提供知識存放區。 除了參考以外，請參閱[使用 Postman 建立知識存放區](knowledge-store-create-rest.md)，以取得如何呼叫 api 的詳細資料。
 

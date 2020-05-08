@@ -2,13 +2,13 @@
 title: 使用 Azure Pipelines 和 Azure 應用程式 Insights 持續監視您的 DevOps 發行管線 |Microsoft Docs
 description: 提供使用 Application Insights 快速設定持續監視的指示
 ms.topic: conceptual
-ms.date: 07/16/2019
-ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655390"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652758"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>將連續監視新增至您的發行管線
 
@@ -51,17 +51,19 @@ Azure Pipelines 與 Azure 應用程式 Insights 整合，以允許在整個軟�
 
 若要修改警示規則設定：
 
-1. 在 [發行管線] 頁面的左窗格中，選取 [**設定 Application Insights 警示**]。
+在 [發行管線] 頁面的左窗格中，選取 [**設定 Application Insights 警示**]。
 
-1. 在 [ **Azure 監視器警示**] 窗格中，選取 [**警示規則**] 旁的省略號 **...** 。
-   
-1. 在 [**警示規則**] 對話方塊中，選取警示規則旁的下拉式符號，例如 [**可用性**]。 
-   
-1. 修改**閾值**和其他設定，以符合您的需求。
-   
-   ![修改警示](media/continuous-monitoring/003.png)
-   
-1. 選取 **[確定]**，然後在 [Azure DevOps] 視窗中選取右上方的 [**儲存**]。 輸入描述性批註，然後選取 **[確定]**。
+這四個預設警示規則是透過內嵌腳本所建立：
+
+```bash
+$subscription = az account show --query "id";$subscription.Trim("`"");$resource="/subscriptions/$subscription/resourcegroups/"+"$(Parameters.AppInsightsResourceGroupName)"+"/providers/microsoft.insights/components/" + "$(Parameters.ApplicationInsightsResourceName)";
+az monitor metrics alert create -n 'Availability_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg availabilityResults/availabilityPercentage < 99' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'FailedRequests_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count requests/failed > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerResponseTime_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg requests/duration > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerExceptions_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count exceptions/server > 5' --description "created from Azure DevOps";
+```
+
+您可以修改腳本並新增其他警示規則、修改警示條件，或移除對部署用途沒有意義的警示規則。
 
 ## <a name="add-deployment-conditions"></a>新增部署條件
 

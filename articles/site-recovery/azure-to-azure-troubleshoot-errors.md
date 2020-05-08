@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390406"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738111"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>針對 Azure 至 Azure VM 複寫錯誤進行疑難排解
 
@@ -172,8 +172,6 @@ Site Recovery configuration failed.
 ## <a name="outbound-urls-or-ip-ranges-error-code-151037-or-151072"></a>輸出 Url 或 IP 範圍（錯誤碼151037或151072）
 
 若要讓 Site Recovery 複寫能夠正常執行，VM 必須要有特定 Url 的輸出連線能力。 如果您的 VM 位於防火牆後方，或使用網路安全性群組 (NSG) 規則控制輸出連線能力，您可能會遇到下列其中一個問題。 雖然我們會繼續支援透過 Url 進行的輸出存取，但不再支援使用 IP 範圍的允許清單。
-
-### <a name="issue-1-failed-to-register-azure-vm-with-site-recovery-151195"></a>問題1：無法向 Site Recovery 註冊 Azure VM （151195）
 
 #### <a name="possible-causes"></a>可能的原因
 

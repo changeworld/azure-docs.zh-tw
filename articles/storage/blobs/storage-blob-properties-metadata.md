@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: b4abd7e29dec67ddc1be50a2a6703da2a25551d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74c023c06e7b28183a53772be6798419c91dd37a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137657"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692455"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>使用 .NET 管理 blob 屬性和中繼資料
 
@@ -24,6 +24,11 @@ ms.locfileid: "79137657"
 - **系統屬性**：系統屬性存在於每個 Blob 儲存體資源上。 其中有些系統屬性可以讀取或設定，有些則是唯讀的。 實際上，有些系統屬性會對應至特定的標準 HTTP 標頭。 適用于 .NET 的 Azure 儲存體用戶端程式庫會為您維護這些屬性。
 
 - **使用者定義的中繼資料**：使用者定義的中繼資料是由您為 Blob 儲存體資源指定的一或多個名稱/值配對所組成。 您可以使用中繼資料來儲存資源的額外值。 中繼資料值僅供您自己的用途，不會影響資源的運作方式。
+
+> [!NOTE]
+> Blob 索引標籤也可讓您將任意使用者定義的索引鍵/值屬性與 Blob 儲存體資源一起儲存。 雖然類似于中繼資料，但只有 Blob 索引標記會自動編制索引，並由原生 Blob 服務進行查詢。 中繼資料無法以原生方式編制索引和查詢，除非您使用不同的服務，例如 Azure 搜尋服務。
+>
+> 若要深入瞭解這項功能，請參閱[使用 Blob 索引來管理和尋找 Azure Blob 儲存體上的資料（預覽）](storage-manage-find-blobs.md)。
 
 抓取 Blob 儲存體資源的中繼資料和屬性值是兩個步驟的程式。 在您可以讀取這些值之前，您必須呼叫`FetchAttributes`或`FetchAttributesAsync`方法明確地提取它們。 此規則的例外狀況是`Exists`和`ExistsAsync`方法會在幕後呼叫適當`FetchAttributes`的方法。 當您呼叫其中一種方法時，您也不需要呼叫`FetchAttributes`。
 
@@ -158,7 +163,7 @@ public static async Task ReadBlobMetadataAsync(CloudBlob blob)
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [設定 Blob 屬性作業](/rest/api/storageservices/set-blob-properties)
 - [取得 Blob 屬性作業](/rest/api/storageservices/get-blob-properties)

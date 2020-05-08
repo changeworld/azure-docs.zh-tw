@@ -7,18 +7,18 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.openlocfilehash: 8f354152c23dd7ad0413f27585d724f8070ca003
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a254465d9055fcf1cf10a2a1d6eb82b2afc16f0b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75551517"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692275"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>適用於Azure NetApp Files 的效能基準測試建議
 
 本文針對使用 Azure NetApp Files 的磁片區效能和計量，提供基準測試的測試建議。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 
 若要瞭解 Azure NetApp Files 磁片區的效能特性，您可以使用開放原始碼工具[FIO](https://github.com/axboe/fio)來執行一系列的基準測試，以模擬各種不同的工作負載。 FIO 可以安裝在 Linux 和 Windows 作業系統上。  這是取得磁片區的 IOPS 和輸送量快速快照集的絕佳工具。
 
@@ -124,4 +124,4 @@ Azure NetApp Files 效能資料可透過 Azure 監視器計數器取得。 您�
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure NetApp Files 的服務等級](azure-netapp-files-service-levels.md)
-- [適用於 Azure NetApp Files 的效能基準測試](azure-netapp-files-performance-benchmarks.md)
+- [Linux 的效能評定](performance-benchmarks-linux.md)

@@ -1,22 +1,17 @@
 ---
-title: 搭配使用 REST API 與 Azure Active Directory 向 Azure Data Lake Storage Gen1 進行終端使用者驗證 | Microsoft Docs
+title: 使用者驗證-使用 Data Lake Storage Gen1 的 REST-Azure
 description: 了解如何使用 REST API，搭配使用 Azure Active Directory 與 Azure Data Lake Storage Gen1 以完成終端使用者驗證
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac06c9ef355eeba489d2006c435a48b7efcfd7f0
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60877817"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688069"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 向 Azure Data Lake Storage Gen1 驗證終端使用者
 > [!div class="op_single_selector"]

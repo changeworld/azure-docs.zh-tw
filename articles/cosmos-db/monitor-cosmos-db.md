@@ -8,18 +8,19 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: ec0894818c0c246223749e1efcf7ea9e5ebee463
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eef6ece115afc41fd30d77747eb3e368cf95719c
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194528"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780176"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>監視 Azure Cosmos DB
+
 當您的重要應用程式和商務程式依賴 Azure 資源時，您會想要監視這些資源的可用性、效能和操作。 本文說明 Azure Cosmos 資料庫所產生的監視資料，以及您可以如何使用 Azure 監視器的功能來分析此資料併發出警示。
 
 ## <a name="what-is-azure-monitor"></a>Azure 監視器是什麼？
-Azure Cosmos DB 會使用[Azure 監視器](../azure-monitor/overview.md)建立監視資料，這是 Azure 中的完整堆疊監視服務，除了其他雲端和內部部署的資源之外，還提供一組完整的功能來監視您的 Azure 資源。 
+Azure Cosmos DB 會使用[Azure 監視器](../azure-monitor/overview.md)建立監視資料，這是 Azure 中的完整堆疊監視服務，除了其他雲端和內部部署的資源之外，還提供一組完整的功能來監視您的 Azure 資源。
 
 如果您還不熟悉監視 Azure 服務，請從[使用 Azure 監視器來監視 azure 資源](../azure-monitor/insights/monitor-azure-resource.md)一文開始，其描述如下：
 
@@ -32,9 +33,8 @@ Azure Cosmos DB 會使用[Azure 監視器](../azure-monitor/overview.md)建立�
 下列各節將描述從 Azure Cosmos DB 收集的特定資料，並提供使用 Azure 工具來設定資料收集和分析此資料的範例，以建立于本文中。
 
 ## <a name="azure-monitor-for-cosmos-db-preview"></a>Cosmos DB 的 Azure 監視器（預覽）
-[Azure Cosmos DB 的 Azure 監視器是以](../azure-monitor/insights/cosmosdb-insights-overview.md)Azure 監視器的活頁[簿功能](../azure-monitor/app/usage-workbooks.md)為基礎，並使用針對下列各節所述的 Cosmos DB 所收集的相同監視資料。 使用此工具來查看所有 Azure Cosmos DB 資源的整體效能、失敗、容量和操作健全狀況，並以統一的互動體驗來進行，並利用 Azure 監視器的其他功能來進行詳細的分析和警示。 
 
-![Cosmos DB 的 Azure 監視器](media/monitor-cosmos-db/azure-monitor-cosmos-db.png)
+Azure Cosmos DB 的 Azure 監視器是以 Azure 監視器的活頁[簿功能](../azure-monitor/app/usage-workbooks.md)為基礎，並使用針對下列各節所述的 Cosmos DB 所收集的相同監視資料。 您可在統一的互動式體驗中，使用 Azure 監視器來查看所有 Azure Cosmos DB 資源的整體效能、失敗、容量和操作健全狀況，並利用 Azure 監視器的其他功能來進行詳細的分析和警示。 若要深入瞭解，請參閱 Azure Cosmos DB 文章的[探索 Azure 監視器](../azure-monitor/insights/cosmosdb-insights-overview.md)。
 
 > [!NOTE]
 > 建立容器時，請確定您不會建立兩個名稱相同但大小寫不同的容器。 這是因為 Azure 平臺的某些部分不會區分大小寫，而這可能導致在具有這類名稱的容器上進行遙測和動作的混淆/衝突。
@@ -87,7 +87,6 @@ Azure Cosmos DB 提供使用計量的自訂體驗。 如需使用此體驗和分
 - 區域
 - StatusCode
 
-
 ## <a name="analyzing-log-data"></a>分析記錄資料
 Azure 監視器記錄檔中的資料會儲存在資料表中，每個資料表都有一組專屬的唯一屬性。 Azure Cosmos DB 會將資料儲存在下列資料表中。
 
@@ -110,31 +109,15 @@ Azure 監視器記錄檔中的資料會儲存在資料表中，每個資料表�
 
     ```Kusto
     AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
+    | where ResourceProvider=="Microsoft.DocumentDb" and Category=="DataPlaneRequests"
 
-    ```
-
-* 若要查詢 10 個最近記錄的事件：
-
-    ```Kusto
-    AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-    | limit 10
-    ```
-
-* 若要查詢所有作業 (依作業類型分組)：
-
-    ```Kusto
-    AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-    | summarize count() by OperationName
     ```
 
 * 若要查詢所有作業（依資源分組）：
 
     ```Kusto
     AzureActivity 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | where ResourceProvider=="Microsoft.DocumentDb" and Category=="DataPlaneRequests" 
     | summarize count() by Resource
 
     ```
@@ -143,62 +126,16 @@ Azure 監視器記錄檔中的資料會儲存在資料表中，每個資料表�
 
     ```Kusto
     AzureActivity 
-    | where Caller == "test@company.com" and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | where Caller == "test@company.com" and ResourceProvider=="Microsoft.DocumentDb" and Category=="DataPlaneRequests" 
     | summarize count() by Resource
-    ```
-* 取得大於 100 ru 的所有查詢，並與**DataPlaneRequests**和**QueryRunTimeStatistics**中的資料聯結。
-
-    ```Kusto
-    AzureDiagnostics
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" and todouble(requestCharge_s) > 100.0
-    | project activityId_g, requestCharge_s
-    | join kind= inner (
-           AzureDiagnostics
-           | where ResourceProvider =="MICROSOFT.DOCUMENTDB" and Category == "QueryRuntimeStatistics"
-           | project activityId_g, querytext_s
-    ) on $left.activityId_g == $right.activityId_g
-    | order by requestCharge_s desc
-    | limit 100
-    ```
-
-* 若要查詢哪些作業費時超過 3 毫秒：
-
-    ```Kusto
-    AzureDiagnostics 
-    | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-    | summarize count() by clientIpAddress_s, TimeGenerated
-    ```
-
-* 若要查詢哪些代理程式正在執行此作業：
-
-    ```Kusto
-    AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-    | summarize count() by OperationName, userAgent_s
-    ```
-
-* 若要查詢長時間執行的作業於何時執行：
-
-    ```Kusto
-    AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-    | project TimeGenerated , duration_s 
-    | summarize count() by bin(TimeGenerated, 5s)
-    | render timechart
-    ```
-    
-* 若要取得分割區索引鍵統計資料，以評估資料庫帳戶的前3個磁碟分割的扭曲：
-
-    ```Kusto
-    AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-    | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
     ```
 
 ## <a name="monitor-azure-cosmos-db-programmatically"></a>以程式設計方式監視 Azure Cosmos DB
+
 可在入口網站中取得的帳戶層級計量 (例如，帳戶儲存體使用量和要求總數) 無法透過 SQL API 取得。 不過，您可以使用 SQL API 來擷取集合層級的使用量資料。 若要擷取集合層級的資料，請執行下列動作：
 
 * 若要使用 REST API，請 [在集合上執行 GET](https://msdn.microsoft.com/library/mt489073.aspx)。 集合的配額和使用量資訊會在回應的 x-ms-resource-quota 和 x-ms-resource-usage 標頭中傳回。
+
 * 若要使用 .NET SDK，請使用 [DocumentClient.ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) 方法，此方法會傳回包含 **CollectionSizeUsage**、**DatabaseUsage**、**DocumentUsage** 等幾個使用量屬性的 [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx)。
 
 若要存取其他度量，請使用 [Azure 監視器 SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights)。 您可以呼叫下列程式碼來擷取可用的度量定義：

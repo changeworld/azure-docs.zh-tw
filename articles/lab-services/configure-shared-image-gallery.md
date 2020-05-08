@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 9593d60f76802cd515ca85616bce028cf3aa0d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7591f22286f9ac451a15dd926adab0212adb190e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77589312"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691293"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure DevTest Labs 中設定共用映像庫
 DevTest Labs 現在支援[共用映射庫](../virtual-machines/windows/shared-image-galleries.md)功能。 它可讓實驗室使用者在建立實驗室資源時，從共用位置存取影像。 它也可協助您根據自訂管理的 VM 映射來建立結構和組織。 共用映射庫功能支援：
@@ -54,7 +54,7 @@ DevTest Labs 現在支援[共用映射庫](../virtual-machines/windows/shared-im
     ![共用映射資源庫功能表](./media/configure-shared-image-gallery/shared-image-galleries-menu.png)
 1. 按一下 [**附加**] 按鈕，然後在下拉式清單中選取您的資源庫，以將現有的共用映射資源庫連結至您的實驗室。
 
-    ![附加](./media/configure-shared-image-gallery/attach-options.png)
+    ![連結](./media/configure-shared-image-gallery/attach-options.png)
 1. 移至連結的資源庫，並設定您的資源庫，以**啟用或停**用建立 VM 的共用映射。 從清單中選取映射庫來加以設定。 
 
     根據預設，[**允許所有映射使用] 作為 [虛擬機器基底**] 設定為 **[是]**。 這表示在建立新的實驗室 VM 時，實驗室使用者可以使用附加的共用映射資源庫中的所有可用映射。 如果必須限制對特定映射的存取，請將 [**允許所有映射作為虛擬機器基底**] 變更為 [**否**]，然後選取您想要在建立 vm 時允許的映射，然後選取 [**儲存**] 按鈕。
@@ -91,9 +91,21 @@ DevTest Labs 現在支援[共用映射庫](../virtual-machines/windows/shared-im
 
 如需完整的 Resource Manager 範本範例，請參閱我們的公用 GitHub 存放庫中的下列 Resource Manager 範本範例：[建立實驗室時設定共用映射資源庫](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured)。
 
-## <a name="use-api"></a>使用 API
+## <a name="use-rest-api"></a>使用 REST API
 
-### <a name="shared-image-galleries---create-or-update"></a>共用映射資源庫-建立或更新
+### <a name="get-a-list-of-labs"></a>取得實驗室清單 
+
+```rest
+GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs?api-version= 2018-10-15-preview
+```
+
+### <a name="get-the-list-of-shared-image-galleries-associated-with-a-lab"></a>取得與實驗室相關聯的共用映射資源庫清單
+
+```rest
+GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries?api-version= 2018-10-15-preview
+   ```
+
+### <a name="create-or-update-shared-image-gallery"></a>建立或更新共用映射資源庫
 
 ```rest
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}?api-version= 2018-10-15-preview
@@ -107,12 +119,11 @@ Body:
 
 ```
 
-### <a name="shared-image-galleries-images---list"></a>共用映射庫影像-清單 
+### <a name="list-images-in-a-shared-image-gallery"></a>列出共用映射庫中的映射
 
 ```rest
 GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}/sharedimages?api-version= 2018-10-15-preview
 ```
-
 
 
 

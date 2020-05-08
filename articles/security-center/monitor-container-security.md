@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 900398a701659bff593df042db16890792e5cffd
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919527"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744734"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>監視容器的安全性
 
@@ -131,7 +131,9 @@ Azure 資訊安全中心涵蓋容器安全性的下列三個層面：
 
     [![Log Analytics 動作](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
 
-1. 調整查詢參數，並在您確定它已準備好可供您的主機時，選取 [**執行**]。 
+1. 視需要調整查詢參數。
+
+1. 當您確定命令適用且可供您的主機時，請選取 [**執行**]。
 
 
 

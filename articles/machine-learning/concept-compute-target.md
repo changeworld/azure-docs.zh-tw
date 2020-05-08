@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/30/2020
-ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398189"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780108"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning 中的計算目標是什麼？ 
 
@@ -68,7 +68,33 @@ Azure Machine Learning 在不同的計算資源上有不同的支援。  您也�
 * 自動叢集管理和作業排程 
 * 同時支援 CPU 和 GPU 資源
 
+### <a name="supported-vm-series-and-sizes"></a>支援的 VM 系列和大小
 
+當您在 Azure Machine Learning 中選取受控計算資源的節點大小時，您可以從 Azure 中可用的選取 VM 大小中選擇。 Azure 針對不同的工作負載提供適用于 Linux 和 Windows 的各種大小。 請參閱這裡以深入瞭解不同的[VM 類型和大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)。
+
+選擇 VM 大小時有幾個例外狀況和限制：
+* Azure Machine Learning 中不支援某些 VM 系列。
+* 有些 VM 系列受到限制。 若要使用受限制的系列，請聯絡支援人員，並要求增加此系列的配額。 如需有關聯繫支援的詳細資訊，請參閱[Azure 支援選項](https://azure.microsoft.com/support/options/)
+
+若要深入瞭解支援的系列和限制，請參閱下表。 
+
+| **支援的 VM 系列**  | **限制** |
+|------------|------------|
+| D | 無 |
+| Dv2 | 無 |  
+| DSv2 | 無 |  
+| FSv2 | 無 |  
+| M | 需要核准 |
+| NC | 無 |    
+| NCsv2 | 需要核准 |
+| NCsv3 | 需要核准 |  
+| NDs | 需要核准 |
+| NDv2 | 需要核准 |
+| NV | 無 |
+| NVv3 | 需要核准 | 
+
+
+雖然 Azure Machine Learning 支援這些 VM 系列，但它們可能無法在所有 Azure 區域中使用。 您可以在這裡查看是否有可用的 VM 系列：[依區域提供的產品](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)。
 
 ## <a name="unmanaged-compute"></a>非受控計算
 

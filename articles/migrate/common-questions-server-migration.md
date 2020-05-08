@@ -1,14 +1,14 @@
 ---
-title: Azure Migrate Server 遷移常見問題
+title: Azure Migrate Server 遷移的常見問題
 description: 取得有關使用 Azure Migrate 伺服器遷移來遷移電腦的常見問題的解答。
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 8d4d83791366e153f0fa8b81ae120ca3fd33be2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146041"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744333"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate Server 遷移：常見的問題
 
@@ -57,11 +57,11 @@ ms.locfileid: "82146041"
 
 ## <a name="can-i-do-agentless-migration-of-uefi-vms-to-azure-gen-2"></a>我可以對 Azure Gen 2 進行無代理程式的 UEFI Vm 遷移嗎？
 
-否。 使用 Azure Site Recovery 將這些 Vm 遷移至 Gen 2 Azure Vm。 
+不需要。 使用 Azure Site Recovery 將這些 Vm 遷移至 Gen 2 Azure Vm。 
 
 ## <a name="can-i-pin-vms-to-azure-availability-zones-when-i-migrate"></a>我可以在遷移時將 Vm 釘選到 Azure 可用性區域嗎？
 
-否。 Azure 可用性區域不支援 Azure Migrate 遷移。
+不需要。 Azure 可用性區域不支援 Azure Migrate 遷移。
 
 ## <a name="what-transport-protocol-does-azure-migrate-use-during-replication"></a>Azure Migrate 在複寫期間使用哪種傳輸通訊協定？
 
@@ -73,7 +73,7 @@ Azure Migrate 使用網路封鎖裝置（NBD）通訊協定搭配 TLS 加密。
 
 ## <a name="can-customers-migrate-their-vms-to-unmanaged-disks"></a>客戶可以將其 Vm 遷移至非受控磁片嗎？
 
-否。 Azure Migrate 僅支援將遷移至受控磁片（標準 HDD、進階 SSD）。
+不需要。 Azure Migrate 僅支援將遷移至受控磁片（標準 HDD、進階 SSD）。
 
 ## <a name="how-many-vms-can-i-replicate-at-one-time-by-using-agentless-migration"></a>我可以使用無代理程式遷移一次複寫多少部 Vm？
 
@@ -86,6 +86,10 @@ Azure Migrate 使用網路封鎖裝置（NBD）通訊協定搭配 TLS 加密。
 要在 New-netqospolicy 中使用的 AppNamePrefix 是 "GatewayWindowsService"。 您可以在 Azure Migrate 設備上建立原則，藉由建立如下所示的原則來節流設備的複寫流量：
  
 New-netqospolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService"-ThrottleRateActionBitsPerSecond 1MB
+
+## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>我可以將已複寫的 Vm 遷移至 Azure 嗎？ 
+
+如果 Vm 已透過其他方式複寫至 Azure，您就無法使用 Azure Migrate Server 遷移，將這些機器遷移為 Vm。 因應措施是將 Vm 視為實體伺服器，並根據[支援的實體伺服器遷移](migrate-support-matrix-physical-migration.md)來進行遷移。
 
 ## <a name="when-do-i-migrate-machines-as-physical-servers"></a>何時將機器遷移為實體伺服器？
 

@@ -2,17 +2,17 @@
 title: 部署至 Azure 按鈕
 description: 使用按鈕，從 GitHub 存放庫部署 Azure Resource Manager 範本。
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 88436eac970b252d7b0bc7bccee4131e06e9e0cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: e403d095f7419ed13742dcfa8e8407a92ad10be0
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77109041"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744100"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>使用 [部署] 按鈕來部署 GitHub 存放庫中的範本
 
-本文說明如何使用 [**部署至 Azure** ] 按鈕，從 GitHub 存放庫部署範本。 您可以將按鈕直接新增至 GitHub 存放庫中的 README.md 檔案，或加入至參考存放庫的網頁。
+本文說明如何使用 [**部署至 Azure** ] 按鈕，從 GitHub 存放庫部署範本。 您可以將按鈕直接新增至 GitHub 存放庫中的 README.md 檔案，或加入至參考存放庫的網頁。 這個方法只支援資源群組層級部署。
 
 ## <a name="use-common-image"></a>使用通用映射
 

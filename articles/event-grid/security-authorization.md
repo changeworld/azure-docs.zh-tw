@@ -8,15 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f8b0a779e6cb70537d126c251e1e065892934a9
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78899278"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629502"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>授權存取事件方格資源
 Azure Event Grid 讓您能控制給予不同使用者進行各種管理作業的存取層級，這些作業包含列出事件訂閱、建立新訂閱及產生金鑰等等。 事件格線會使用 Azure 的角色型存取控制 (RBAC)。
+
 
 ## <a name="operation-types"></a>作業類型
 
@@ -182,6 +183,23 @@ Azure Event Grid 讓您能控制給予不同使用者進行各種管理作業的
 ### <a name="encryption-at-rest"></a>待用加密
 
 由「事件方格」服務寫入磁片的所有事件或資料都會由 Microsoft 管理的金鑰加密，以確保它會在待用時加密。 此外，事件或資料保留的最長時間為24小時，遵循[事件方格重試原則](delivery-and-retry.md)。 事件方格會在24小時或事件存留時間之後自動刪除所有事件或資料，以較少者為准。
+
+## <a name="permissions-for-event-subscriptions"></a>事件訂閱的許可權
+如果您使用的事件處理常式不是 WebHook (例如事件中樞或佇列儲存體)，您將需要該資源的寫入存取權。 此權限檢查可防止未經授權的使用者將事件傳送至您的資源。
+
+您在作為事件來源的資源上必須擁有 **Microsoft.EventGrid/EventSubscriptions/Write** 權限。 因為您要在該資源的範圍下寫入新的訂用帳戶，所以需要授權。 依您訂閱的是系統主題或自訂主題而定，所需資源會有所不同。 本節會說明這兩種類型。
+
+### <a name="system-topics-azure-service-publishers"></a>系統主題 (Azure 服務發行者)
+若您訂閱的是系統主題，您需要取得在資源發佈範圍下寫入新事件訂閱的權限。 資源的格式為：`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+
+舉例來說，若要訂閱名為 **myacct** 之儲存體帳戶上的事件，您需要 Microsoft.EventGrid/EventSubscriptions/Write 授予您此權限：`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+
+### <a name="custom-topics"></a>自訂主題
+若是自訂主題，您需要取得在 Event Grid 主題範圍下寫入新事件訂用帳戶的權限。 資源的格式為：`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+
+舉例來說，若要訂閱名為**mytopic** 之自訂主題，您需要 Microsoft.EventGrid/EventSubscriptions/Write 授予您此權限：`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+
+
 
 ## <a name="next-steps"></a>後續步驟
 

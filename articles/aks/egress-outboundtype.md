@@ -4,12 +4,12 @@ description: 瞭解如何在 Azure Kubernetes Service 中定義自訂輸出路�
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80676496"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733493"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>使用使用者定義的路由自訂叢集輸出（預覽）
 
@@ -23,7 +23,7 @@ ms.locfileid: "80676496"
 > * [AKS 支援原則](support-policies.md)
 > * [Azure 支援常見問題集](faq.md)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 * Azure CLI 2.0.81 或更高版本
 * Azure CLI 的預覽延伸模組版本0.4.28 或更高
 * 或更高`2020-01-01`的 API 版本
@@ -73,7 +73,7 @@ az extension update --name aks-preview
 
 如果`userDefinedRouting`設定，AKS 將不會自動設定輸出路徑。 **使用者**應該會完成下列作業。
 
-叢集必須部署到已設定子網的現有虛擬網路中。 具有輸出連線能力的子網上必須有有效的使用者定義路由（UDR）。
+AKS 叢集必須部署到已設定子網的現有虛擬網路中。 使用標準負載平衡器（SLB）架構時，您必須建立明確的輸出。 這需要將輸出要求傳送至應用裝置，例如防火牆、閘道、內部內部部署，或允許透過指派給標準負載平衡器或給定節點的公用 IP 來完成輸出。
 
 AKS 資源提供者會部署標準負載平衡器（SLB）。 負載平衡器不會設定任何規則，而且在[放置規則之前](https://azure.microsoft.com/pricing/details/load-balancer/)，不會產生任何費用。 AKS**不**會自動布建 SLB 前端的公用 IP 位址。 AKS**不**會自動設定負載平衡器後端集區。
 

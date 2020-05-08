@@ -1,28 +1,23 @@
 ---
-title: 從事件中樞擷取資料並放入 Azure Data Lake Storage Gen1 | Microsoft Docs
-description: 使用 Azure Data Lake Storage Gen1 從事件中樞擷取資料
-services: data-lake-store
-documentationcenter: ''
+title: 從事件中樞捕獲資料至 Azure Data Lake Storage Gen1
+description: 使用 Azure Data Lake Storage Gen1 來捕捉 Azure 事件中樞所收到的資料。
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cbcdc5cb9713432be5b52898d956506d80d6ea0
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265658"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690678"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 從事件中樞擷取資料
 
 了解如何使用 Azure Data Lake Storage Gen1 來擷取 Azure 事件中樞所收到的資料。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -122,6 +117,6 @@ ms.locfileid: "79265658"
 一旦資料位於 Data Lake Storage Gen1，您就可以執行分析作業來處理資料並進行大量運算。 請參閱 [USQL Avro 範例](https://github.com/Azure/usql/tree/master/Examples/AvroExamples)，以了解如何使用 Azure Data Lake Analytics 來執行此動作。
   
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 * [保護 Data Lake Storage Gen1 中的資料](data-lake-store-secure-data.md)
 * [將資料從 Azure 儲存體 Blob 複製到 Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)

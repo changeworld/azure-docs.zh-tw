@@ -7,18 +7,18 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d62fa84711bd8cba57d07f3464c21344bc5c32c6
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658399"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731727"
 ---
 # <a name="programmatically-manage-workbooks"></a>以程式設計方式管理活頁簿
 
-資源擁有者可以選擇透過 Resource Manager 範本，以程式設計方式建立和管理其活頁簿。 
+資源擁有者可以選擇透過 Resource Manager 範本，以程式設計方式建立和管理其活頁簿。
 
 這適用于下列案例：
 * 部署組織或網域特定的分析報表以及資源部署。 例如，您可以針對新的應用程式或虛擬機器，部署組織特定的效能和失敗活頁簿。
@@ -26,7 +26,98 @@ ms.locfileid: "77658399"
 
 活頁簿將會建立在所需的子/資源群組中，並使用 Resource Manager 範本中指定的內容。
 
-## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>用於部署活頁簿 Azure Resource Manager 範本
+有兩種類型的活頁簿資源可透過程式設計方式進行管理：
+* [活頁簿範本](#azure-resource-manager-template-for-deploying-a-workbook-template)
+* [活頁簿實例](#azure-resource-manager-template-for-deploying-a-workbook-instance)
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-template"></a>用於部署活頁簿範本的 Azure Resource Manager 範本
+
+1. 開啟您想要以程式設計方式部署的活頁簿。
+2. 按一下 [_編輯_] 工具列專案，將活頁簿切換至編輯模式。
+3. 使用工具列_Advanced Editor_上的_</>_ 按鈕開啟 [進階編輯器]。
+4. 請確定您位於 [_圖庫範本_] 索引標籤上。
+
+    ![圖庫範本索引標籤](./media/workbooks-automate/gallery-template.png)
+1. 將資源庫範本中的 JSON 複製到剪貼簿。
+2. 以下是將活頁簿範本部署至 Azure 監視器活頁簿圖庫的範例 Azure Resource Manager 範本。 貼上您所複製的 JSON 來`<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`取代。 您可以在[這裡](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)找到建立活頁簿範本的參考 Azure Resource Manager 範本。
+
+    ```json
+          {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "resourceName": {
+                "type": "string",
+                "defaultValue": "my-workbook-template",
+                "metadata": {
+                    "description": "The unique name for this workbook template instance"
+                }
+            }
+        },
+        "resources": [
+            {
+                "name": "[parameters('resourceName')]",
+                "type": "microsoft.insights/workbooktemplates",
+                "location": "[resourceGroup().location]",
+                "apiVersion": "2019-10-17-preview",
+                "dependsOn": [],
+                "properties": {
+                    "galleries": [
+                        {
+                            "name": "A Workbook Template",
+                            "category": "Deployed Templates",
+                            "order": 100,
+                            "type": "workbook",
+                            "resourceType": "Azure Monitor"
+                        }
+                    ],
+                    "templateData": <PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>
+                }
+            }
+        ]
+    }
+    ```
+1. 在`galleries`物件中填入`name`和索引鍵`category` ，並加上您的值。 深入瞭解下一節中的[參數](#parameters)。
+2. 使用[Azure 入口網站](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template)、[命令列介面](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)、 [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)等部署此 Azure Resource Manager 範本。
+3. 開啟 Azure 入口網站，然後流覽至 [Azure Resource Manager] 範本中所選擇的活頁簿圖庫。 在範例範本中，流覽至 Azure 監視器活頁簿圖庫：
+    1. 開啟 Azure 入口網站，然後流覽至 Azure 監視器
+    2. 從`Workbooks`目錄中開啟
+    3. 在 [類別`Deployed Templates` ] 下的資源庫中尋找您的範本（會是其中一個紫色專案）。
+
+### <a name="parameters"></a>參數
+
+|參數                |說明                                                                                             |
+|:-------------------------|:-------------------------------------------------------------------------------------------------------|
+| `name`                   | Azure Resource Manager 中的活頁簿範本資源名稱。                                  |
+|`type`                    | 一律為 microsoft insights/workbooktemplates                                                            |
+| `location`               | 將在其中建立活頁簿的 Azure 位置。                                               |
+| `apiVersion`             | 2019-10-17 預覽                                                                                     |
+| `type`                   | 一律為 microsoft insights/workbooktemplates                                                            |
+| `galleries`              | 要在其中顯示此活頁簿範本的一組圖庫。                                                |
+| `gallery.name`           | 圖庫中活頁簿範本的易記名稱。                                             |
+| `gallery.category`       | 要放置範本之資源庫中的群組。                                                     |
+| `gallery.order`          | 決定要在資源庫中的類別內顯示範本之順序的數位。 較低的順序表示較高的優先順序。 |
+| `gallery.resourceType`   | 對應至圖庫的資源類型。 這通常是對應至資源的資源類型字串（例如，microsoft.operationalinsights/工作區）。 |
+|`gallery.type`            | 稱為活頁簿類型，這是在資源類型中區分圖庫的唯一索引鍵。 例如，Application Insights 具有類型`workbook` ，並`tsg`對應至不同的活頁簿資源庫。 |
+
+### <a name="galleries"></a>資源庫
+
+| 主機庫                                        | 資源類型                                      | 活頁簿類型 |
+| :--------------------------------------------- |:---------------------------------------------------|:--------------|
+| Azure 監視器中的活頁簿                     | `Azure Monitor`                                    | `workbook`    |
+| Azure 監視器中的 VM 深入解析                   | `Azure Monitor`                                    | `vm-insights` |
+| Log analytics 工作區中的活頁簿           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
+| Application Insights 中的活頁簿              | `microsoft.insights/component`                     | `workbook`    |
+| Application Insights 中的疑難排解指南 | `microsoft.insights/component`                     | `tsg`         |
+| Application Insights 中的使用方式                  | `microsoft.insights/component`                     | `usage`       |
+| Kubernetes 服務中的活頁簿                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
+| 資源群組中的活頁簿                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
+| Azure Active Directory 中的活頁簿            | `microsoft.aadiam/tenant`                          | `workbook`    |
+| 虛擬機器中的 VM 深入解析                | `microsoft.compute/virtualmachines`                | `insights`    |
+| 虛擬機器擴展集中的 VM 深入解析                   | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>用於部署活頁簿實例 Azure Resource Manager 範本
+
 1. 開啟您想要以程式設計方式部署的活頁簿。
 2. 按一下 [_編輯_] 工具列專案，將活頁簿切換至編輯模式。
 3. 使用工具列_Advanced Editor_上的_</>_ 按鈕開啟 [進階編輯器]。
@@ -124,4 +215,3 @@ ms.locfileid: "77658399"
 ## <a name="next-steps"></a>後續步驟
 
 探索如何使用活頁簿來為[儲存體驗提供](../insights/storage-insights-overview.md)新的 Azure 監視器功能。
-

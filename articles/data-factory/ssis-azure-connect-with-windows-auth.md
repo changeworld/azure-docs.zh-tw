@@ -10,14 +10,16 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 0c4cdc3481fb58efd8eaa4cd83e1d6167f203a4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f2983b375e3eeb73a0372e123d4d2763b3c65ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81760182"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629383"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>在 Azure 中從 SSIS 套件使用 Windows 驗證來存取資料存放區和檔案共用
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 您可以使用 Windows 驗證從 Azure Data Factory (ADF) 中 Azure-SSIS Integration Runtime (IR) 上執行的 SSIS 套件存取資料存放區，例如 SQL 伺服器、檔案共用、Azure 檔案等。 您的資料存放區可以是內部部署、裝載在 Azure 虛擬機器 (VM)上，也可以作為受控服務在 Azure 中執行。 如果它們是在內部部署環境，您必須將您的 Azure SSIS IR 加入連線到內部部署網路的虛擬網路（Microsoft Azure 虛擬網路），請參閱將[AZURE SSIS Ir 加入至 Microsoft Azure 虛擬網路](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)。 從 Azure-SSIS IR 上執行的 SSIS 套件中使用 Windows 驗證存取資料存放區有四種方法：
 

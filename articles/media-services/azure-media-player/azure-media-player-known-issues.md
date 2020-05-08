@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ff8dc58b9122e5173a9a6065e2efdbc5697be0d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727212"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692250"
 ---
 # <a name="known-issues"></a>已知問題 #
 
@@ -46,9 +46,10 @@ ms.locfileid: "81727212"
 
 - 在即時內容的 DVR 視窗中，當內容完成時，時間軸會繼續成長，直到搜尋到該區域或到達簡報結尾為止。
 - Firefox 中已啟用 MSE 的即時簡報有一些問題
-- 只有音訊或影片的資產不會透過 AzureHtml5JS 技術播放。
-  - 如果您想要播放沒有音訊或影片的資產，可以使用[Azure 媒體服務 Explorer 工具](https://aka.ms/amse)插入空白音訊或影片來執行這項操作。
-    - 您可以在[這裡](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)找到如何插入無訊息音訊的指示。
+
+- 僅限音訊的資產不會透過 AzureHtml5JS 技術播放。
+  - 如果您想要播放沒有音訊的資產，您可以使用[Azure 媒體服務 Explorer 工具](https://aka.ms/amse)插入空白音訊來完成這項操作。
+  - 您可以在[這裡](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio)找到如何插入無訊息音訊的指示。
 
 ## <a name="flash"></a>閃爍 ##
 

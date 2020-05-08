@@ -3,15 +3,15 @@ title: 存取 Azure 虛擬網路
 description: 關於整合服務環境（Ise）如何協助邏輯應用程式存取 Azure 虛擬網路（Vnet）的總覽
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
-ms.topic: article
-ms.date: 03/12/2020
-ms.openlocfilehash: 9d5e0c088fe773f16e1fc57f292ca812906aa09c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
+ms.date: 05/01/2020
+ms.openlocfilehash: d74303df74a1e877645b333fa0726a68055c819b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127258"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734906"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>透過整合服務環境 (ISE) 從 Azure Logic Apps 存取 Azure 虛擬網路資源
 
@@ -111,16 +111,18 @@ ms.locfileid: "79127258"
 
 ## <a name="ise-endpoint-access"></a>ISE 端點存取
 
-當您建立 ISE 時，您可以選擇使用內部或外部存取端點。 您的選擇會決定 ISE 中的邏輯應用程式上的要求或 webhook 觸發程式是否可以接收來自虛擬網路外部的呼叫。
-
-這些端點也會影響您可以在邏輯應用程式的執行歷程記錄中存取輸入和輸出的方式。
-
-* **內部**：允許在您的 ISE 中呼叫邏輯應用程式的私用端點，您可以在其中查看及存取邏輯應用程式的輸入，並*只從虛擬網路內*的執行歷程記錄中輸出
-
-* **External**：允許呼叫您 ISE 中邏輯應用程式的公用端點，您可以在其中*從虛擬網路外部*查看並存取邏輯應用程式的輸入和輸出。 如果您使用網路安全性群組（Nsg），請確定它們已設定輸入規則，以允許存取執行歷程記錄的輸入和輸出。 如需詳細資訊，請參閱[啟用 ISE 的存取權](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)。
+當您建立 ISE 時，您可以選擇使用內部或外部存取端點。 您的選擇會決定 ISE 中的邏輯應用程式上的要求或 webhook 觸發程式是否可以接收來自虛擬網路外部的呼叫。 這些端點也會影響您可以從邏輯應用程式的執行歷程記錄存取輸入和輸出的方式。
 
 > [!IMPORTANT]
-> [存取端點] 選項僅適用于 ISE 建立，且稍後無法變更。
+> 您只能在 ISE 建立期間選取存取端點，而且稍後無法變更此選項。
+
+* **內部**：私人端點允許呼叫您 ISE 中的邏輯應用程式，您可以在其中從邏輯應用程式的執行歷程記錄，*只從虛擬網路內部*查看和存取輸入和輸出。 請確定您在私人端點和您想要存取其執行歷程記錄的電腦之間具有網路連線能力。 例如，您的用戶端電腦可以存在於 ISE 的虛擬網路內，或位於連線到 ISE 虛擬網路的虛擬網路內部，例如透過對等互連或虛擬私人網路。
+
+* **外部**：公用端點允許呼叫您 ISE 中的邏輯應用程式，您可以從*虛擬網路外部*查看並存取邏輯應用程式的執行歷程記錄中的輸入和輸出。 如果您使用網路安全性群組（Nsg），請確定它們已設定輸入規則，以允許存取執行歷程記錄的輸入和輸出。 如需詳細資訊，請參閱[啟用 ISE 的存取權](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access)。
+
+若要判斷您的 ISE 是否使用內部或外部存取端點，請在 ISE 功能表的 [**設定**] 底下，選取 [**屬性**]，然後尋找 [**存取端點**] 屬性：
+
+![尋找 ISE 存取端點](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 
 <a name="create-integration-account-environment"></a>
 

@@ -1,28 +1,22 @@
 ---
-title: 使用 Power BI 分析 Azure Data Lake Storage Gen1 中的資料 | Microsoft Docs
-description: 使用 Power BI 分析儲存在 Azure Data Lake Storage Gen1 的資料
-services: data-lake-store
-documentationcenter: ''
+title: 在 Azure Data Lake Storage Gen1 Power BI 中分析資料
+description: 使用 Power BI 來分析 Azure Data Lake Storage Gen1 中儲存的資料。
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 952be68a1675732857969f875cd2b39c2feab674
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "65603204"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691662"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>使用 Power BI 分析 Azure Data Lake Storage Gen1 中的資料
-在本文中，您將了解如何使用 Power BI Desktop 分析儲存在 Azure Data Lake Storage Gen1 的資料並加以視覺化。
+在本文中，您將瞭解如何使用 Power BI Desktop 來分析 Azure Data Lake Storage Gen1 中儲存的資料並加以視覺化。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 開始進行本教學課程之前，您必須具備下列條件：
 
 * **Azure 訂**用帳戶。 請參閱[取得 Azure 免費試用](https://azure.microsoft.com/pricing/free-trial/)。
@@ -38,7 +32,7 @@ ms.locfileid: "65603204"
 4. 在 [Azure Data Lake Store]**** 對話方塊中，提供 Data Lake Storage Gen1 帳戶的 URL，然後按一下 [確定]****。
    
     ![Data Lake Storage Gen1 的 URL](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "Data Lake Storage Gen1 的 URL")
-5. 在下一個對話方塊中，按一下 [登入]**** 登入 Data Lake Storage Gen1 帳戶。 您將會被重新導向至組織的登入頁面。 遵循提示登入此帳戶。
+5. 在下一個對話方塊中，按一下 [登入]**** 登入 Data Lake Storage Gen1 帳戶。 系統會將您重新導向至組織的登入頁面。 遵循提示登入此帳戶。
    
     ![登入 Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "登入 Data Lake Storage Gen1")
 6. 順利登入之後，請按一下 [連線] ****。

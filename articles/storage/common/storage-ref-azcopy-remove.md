@@ -4,16 +4,16 @@ description: 本文提供 azcopy remove 命令的參考資訊。
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 05/04/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: abce1acb88e920c0de7bbb6447ec9d838f10486c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f76489f384f233f65eb8fcca3a8359cd5b67c20a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74033988"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780720"
 ---
 # <a name="azcopy-remove"></a>azcopy 移除
 
@@ -89,9 +89,13 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>選項
 
-**--排除-路徑字串**     移除時，請排除這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞。 例如： myFolder; myFolder/subDirName/file .pdf。
+**--delete-快照**集字串根據預設，如果 blob 有快照集，刪除作業就會失敗。 指定 ' include ' 以移除根 blob 及其所有快照集;或者，指定 ' only ' 只移除快照集，但保留根 blob。
+
+**--exclude-** 移除時，請排除這些路徑。 此選項不支援萬用字元（*）。 檢查相對路徑前置詞。 例如： myFolder; myFolder/subDirName/file .pdf。
 
 **--排除-模式**字串排除名稱符合模式清單的檔案。 例如： *.jpg;*。pdf; exactName
+
+**--force-if-唯讀**   刪除 Azure 檔案儲存體的檔案或資料夾時，即使現有的物件已設定唯讀屬性，仍強制刪除作業
 
 **-h、--** 適用于移除的協助說明
 
@@ -111,6 +115,7 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 |---|---|
 |--cap-mbps uint32|上限（以每秒 mb 為單位）傳輸速率。 時間點的輸送量可能會與端點略有不同。 如果此選項設定為零或省略，則輸送量不會限制。|
 |--output-類型字串|命令輸出的格式。 選項包括： text、json。 預設值為 "text"。|
+|--trusted-microsoft-尾碼字串   | 指定可在其中傳送 Azure Active Directory 登入權杖的其他網域尾碼。  預設值為 '*. core.windows.net;*。core.chinacloudapi.cn;*. core.cloudapi.de;*。core.usgovcloudapi.net '。 此處列出的任何內容都會新增至預設值。 基於安全性，您應該只將 Microsoft Azure 網域放在這裡。 以分號分隔多個專案。|
 
 ## <a name="see-also"></a>另請參閱
 
