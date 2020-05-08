@@ -7,16 +7,16 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 71df574602518fdc252d9d86859ed772a17be443
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b8632eaf7662d705235adaad7cd03d2e7e4904b
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408993"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626866"
 ---
 # <a name="what-are-wrangling-data-flows"></a>什麼是整頓的資料流程？
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 組織需要進行資料準備和整頓，以精確分析每日持續成長的複雜資料。 需要進行資料準備，讓組織可以使用各種商務程式中的資料，並縮短價值的時間。
 
@@ -42,7 +42,7 @@ Azure Data Factory 中的整頓資料流程可讓您以雲端規模反復執行�
 
 ## <a name="supported-sources"></a>支援的來源
 
-| 連接子 | 資料格式 | 驗證類型 |
+| 連接器 | 資料格式 | 驗證類型 |
 | -- | -- | --|
 | [Azure Blob 儲存體](connector-azure-blob-storage.md) | CSV、Parquet | 帳戶金鑰 |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | 服務主體 |

@@ -1,28 +1,27 @@
 ---
 title: IP 防火牆規則
-description: 設定 SQL database 或 SQL 資料倉儲防火牆的伺服器層級 IP 防火牆規則。 管理單一或集區資料庫的存取和設定資料庫層級 IP 防火牆規則。
+description: 設定 SQL database 或 Azure Synapse Analytics 防火牆的伺服器層級 IP 防火牆規則。 管理單一或集區資料庫的存取和設定資料庫層級 IP 防火牆規則。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
-ms.custom: ''
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe0881a7e6c624ea1104d1ebace307e6cf4e337
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606100"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629230"
 ---
-# <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database 和 Azure SQL 資料倉儲 IP 防火牆規則
+# <a name="azure-sql-database-and-azure-synapse-analytics-ip-firewall-rules"></a>Azure SQL Database 和 Azure Synapse 分析 IP 防火牆規則
 
 > [!NOTE]
-> 本文適用于 Azure SQL 伺服器，以及在 Azure SQL server 上的 Azure SQL Database 和 Azure SQL 資料倉儲資料庫。 為了簡單起見， *SQL Database*用來參考 SQL Database 和 SQL 資料倉儲。
+> 本文適用于 Azure SQL 伺服器，以及在 Azure SQL server 上 Azure SQL Database 和 Azure Synapse 分析資料庫。 為了簡單起見， *SQL Database*用來參考 SQL Database 和 Azure Synapse。
 
 > [!IMPORTANT]
 > 本文「不」** 適用於 *Azure SQL Database 受控執行個體*。 如需網路設定的相關資訊，請參閱[將您的應用程式連線到 Azure SQL Database 受控執行個體](sql-database-managed-instance-connect-app.md)。
@@ -30,7 +29,7 @@ ms.locfileid: "81606100"
 例如，當您建立名為*mysqlserver*的新 Azure SQL server 時，SQL Database 防火牆會封鎖對伺服器之公用端點的所有存取（可在*mysqlserver.database.windows.net*存取）。
 
 > [!IMPORTANT]
-> SQL 資料倉儲只支援伺服器層級 IP 防火牆規則。 它不支援資料庫層級 IP 防火牆規則。
+> Azure Synapse 只支援伺服器層級 IP 防火牆規則。 它不支援資料庫層級 IP 防火牆規則。
 
 ## <a name="how-the-firewall-works"></a>防火牆的運作方式
 來自網際網路和 Azure 的連接嘗試必須通過防火牆，才能到達您的 SQL server 或 SQL database，如下圖所示。
@@ -86,7 +85,7 @@ ms.locfileid: "81606100"
 
 *是否可以混合使用伺服器層級和資料庫層級的 IP 防火牆規則？*
 
-是。 某些使用者（例如系統管理員）可能需要伺服器層級 IP 防火牆規則。 其他使用者 (例如資料庫應用程式的使用者) 可能需要資料庫層級 IP 防火牆規則。
+可以。 某些使用者（例如系統管理員）可能需要伺服器層級 IP 防火牆規則。 其他使用者 (例如資料庫應用程式的使用者) 可能需要資料庫層級 IP 防火牆規則。
 
 ### <a name="connections-from-the-internet"></a>從網際網路的連接
 
@@ -149,9 +148,9 @@ ms.locfileid: "81606100"
 
 | 目錄檢視或預存程式 | 層級 | 描述 |
 | --- | --- | --- |
-| [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Server (伺服器) |顯示目前的伺服器層級 IP 防火牆規則 |
-| [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Server (伺服器) |建立或更新伺服器層級 IP 防火牆規則 |
-| [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |Server (伺服器) |移除伺服器層級 IP 防火牆規則 |
+| [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |伺服器 |顯示目前的伺服器層級 IP 防火牆規則 |
+| [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |伺服器 |建立或更新伺服器層級 IP 防火牆規則 |
+| [sp_delete_firewall_rule](https://msdn.microsoft.com/library/dn270024.aspx) |伺服器 |移除伺服器層級 IP 防火牆規則 |
 | [sys.database_firewall_rules](https://msdn.microsoft.com/library/dn269982.aspx) |資料庫 |顯示目前的伺服器層級 IP 防火牆規則 |
 | [sp_set_database_firewall_rule](https://msdn.microsoft.com/library/dn270010.aspx) |資料庫 |建立或更新伺服器層級 IP 防火牆規則 |
 | [sp_delete_database_firewall_rule](https://msdn.microsoft.com/library/dn270030.aspx) |資料庫 |移除資料庫層級 IP 防火牆規則 |
@@ -183,10 +182,10 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 
 | Cmdlet | 層級 | 描述 |
 | --- | --- | --- |
-| [New-azsqlserverfirewallrule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |Server (伺服器) |返回目前的伺服器層級防火牆規則 |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |Server (伺服器) |建立新的伺服器層級防火牆規則 |
-| [設定-New-azsqlserverfirewallrule](/powershell/module/az.sql/set-azsqlserverfirewallrule) |Server (伺服器) |更新現有伺服器層級防火牆規則的屬性 |
-| [移除-New-azsqlserverfirewallrule](/powershell/module/az.sql/remove-azsqlserverfirewallrule) |Server (伺服器) |移除伺服器層級防火牆規則 |
+| [New-azsqlserverfirewallrule](/powershell/module/az.sql/get-azsqlserverfirewallrule) |伺服器 |返回目前的伺服器層級防火牆規則 |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) |伺服器 |建立新的伺服器層級防火牆規則 |
+| [設定-New-azsqlserverfirewallrule](/powershell/module/az.sql/set-azsqlserverfirewallrule) |伺服器 |更新現有伺服器層級防火牆規則的屬性 |
+| [移除-New-azsqlserverfirewallrule](/powershell/module/az.sql/remove-azsqlserverfirewallrule) |伺服器 |移除伺服器層級防火牆規則 |
 
 下列範例會使用 PowerShell 來設定伺服器層級 IP 防火牆規則：
 
@@ -205,11 +204,11 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 
 | Cmdlet | 層級 | 描述 |
 | --- | --- | --- |
-|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Server (伺服器)|建立伺服器 IP 防火牆規則|
-|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Server (伺服器)|列出伺服器上的 IP 防火牆規則|
-|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Server (伺服器)|顯示 IP 防火牆規則的詳細資料|
-|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Server (伺服器)|更新 IP 防火牆規則|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Server (伺服器)|刪除 IP 防火牆規則|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|伺服器|建立伺服器 IP 防火牆規則|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|伺服器|列出伺服器上的 IP 防火牆規則|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|伺服器|顯示 IP 防火牆規則的詳細資料|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|伺服器|更新 IP 防火牆規則|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|伺服器|刪除 IP 防火牆規則|
 
 下列範例會使用 CLI 來設定伺服器層級 IP 防火牆規則：
 
@@ -227,10 +226,10 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 | API | 層級 | 描述 |
 | --- | --- | --- |
-| [列出防火牆規則](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |Server (伺服器) |顯示目前的伺服器層級 IP 防火牆規則 |
-| [建立或更新防火牆規則](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |Server (伺服器) |建立或更新伺服器層級 IP 防火牆規則 |
-| [刪除防火牆規則](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Server (伺服器) |移除伺服器層級 IP 防火牆規則 |
-| [取得防火牆規則](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Server (伺服器) | 取得伺服器層級 IP 防火牆規則 |
+| [列出防火牆規則](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver) |伺服器 |顯示目前的伺服器層級 IP 防火牆規則 |
+| [建立或更新防火牆規則](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate) |伺服器 |建立或更新伺服器層級 IP 防火牆規則 |
+| [刪除防火牆規則](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |伺服器 |移除伺服器層級 IP 防火牆規則 |
+| [取得防火牆規則](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | 伺服器 | 取得伺服器層級 IP 防火牆規則 |
 
 ## <a name="troubleshoot-the-database-firewall"></a>針對資料庫防火牆進行疑難排解
 
@@ -253,7 +252,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
 - **登入未獲授權，或使用了不正確的密碼：**
 
-  如果登入沒有 SQL Database 伺服器的許可權，或密碼不正確，則會拒絕與伺服器的連接。 建立防火牆設定只會讓用戶端有*機會*嘗試連接到您的伺服器。 用戶端仍然必須提供必要的安全性認證。 如需準備登入的詳細資訊，請參閱[控制和授與 SQL Database 和 SQL 資料倉儲的資料庫存取權](sql-database-manage-logins.md)。
+  如果登入沒有 SQL Database 伺服器的許可權，或密碼不正確，則會拒絕與伺服器的連接。 建立防火牆設定只會讓用戶端有*機會*嘗試連接到您的伺服器。 用戶端仍然必須提供必要的安全性認證。 如需有關準備登入的詳細資訊，請參閱[控制和授與 SQL Database 和 Azure Synapse 的資料庫存取權](sql-database-manage-logins.md)。
 
 - **動態 IP 位址：**
 

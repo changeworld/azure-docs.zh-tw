@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: e273a44c1cbc5a6a6161f059038c7e87973a33d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d43b2bd5912375c3bb2010f0f2ae75a119512f03
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062484"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625828"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>從 [裝置] 頁面管理已連線的裝置
 
@@ -31,7 +31,7 @@ ms.locfileid: "77062484"
 
 ## <a name="view-your-connected-devices"></a>檢視已連線裝置
 
-1. 登入您的公司或學校帳戶，然後移至**我的帳戶**（https://myprofile.microsoft.com/)頁面。
+1. 登入您的公司或學校帳戶，然後移至**我的帳戶**（https://myaccount.microsoft.com/)頁面。
 
 2. 從左側瀏覽窗格選取 [裝置]****，或從 [裝置]**** 區塊選取 [管理裝置]**** 連結。
 

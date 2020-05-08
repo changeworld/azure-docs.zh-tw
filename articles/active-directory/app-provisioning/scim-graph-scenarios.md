@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: mimart
-ms.reviewer: arvinh
-ms.openlocfilehash: ceba22e9289e0a10211ee26a7758238a8b1f06c7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.reviewer: arvinh, celested
+ms.openlocfilehash: 0b2c8e6bb71e00ccb6eda33ecb1b087d09ce5de7
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201681"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626185"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>使用 SCIM 和 Microsoft Graph 一起布建使用者，並利用所需的資料豐富您的應用程式
 
@@ -103,8 +103,8 @@ DELETE /Users/5171a35d82074e068ce2 HTTP/1.1
 我必須能夠追蹤對小組和 Outlook 訊息的變更，並即時對他們做出反應。 如何將這些變更推送至我的應用程式？
 
 **建議：** Microsoft Graph 提供各種資源的[變更通知](https://docs.microsoft.com/graph/webhooks)和[變更追蹤](https://docs.microsoft.com/graph/delta-query-overview)。 請注意變更通知的下列限制：
-- 如果事件接收器確認事件，但因任何原因而無法採取動作，事件可能會遺失
-- 如果事件接收器確認事件，但因任何原因而無法採取動作，事件可能會遺失
+- 如果事件接收器確認事件，但因任何原因而無法採取動作，事件可能會遺失。
+- 接收變更的順序不一定會有時間。
 - 基於上述原因，變更通知不一定會包含[資源資料](https://docs.microsoft.com/graph/webhooks-with-resource-data)，開發人員通常會使用變更通知以及針對同步處理案例的變更追蹤。 
 
 ## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>案例6：在 Azure AD 中布建使用者和群組

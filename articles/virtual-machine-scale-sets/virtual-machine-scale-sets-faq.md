@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870223"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611393"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虛擬機器擴展集常見問題集
 
@@ -27,7 +27,7 @@ ms.locfileid: "81870223"
 
 ### <a name="are-data-disks-supported-within-scale-sets"></a>在擴展集內是否支援資料磁碟？
 
-是。 擴展集可以定義套用至集合中所有 VM 的連結資料磁碟組態。 如需詳細資訊，請參閱 [Azure 擴展集和連結的資料磁碟](virtual-machine-scale-sets-attached-disks.md)。 其他用於儲存資料的選項包括：
+可以。 擴展集可以定義套用至集合中所有 VM 的連結資料磁碟組態。 如需詳細資訊，請參閱 [Azure 擴展集和連結的資料磁碟](virtual-machine-scale-sets-attached-disks.md)。 其他用於儲存資料的選項包括：
 
 * Azure 檔案 (SMB 共用磁碟機)
 * OS 磁碟機
@@ -45,11 +45,13 @@ ms.locfileid: "81870223"
 
 ### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>如果我將擴展集容量從 20 減少為 15，哪些 VM 會被移除？
 
-虛擬機器會跨更新網域和容錯網域從擴展集平均地移除，以達到最大的可用性。 系統會先移除具有最高識別碼的 VM。
+根據預設，會將虛擬機器從擴展集平均地從「可用性區域」（如果擴展集部署在區域設定中）和容錯網域中移除，以達到最大的可用性。 系統會先移除具有最高識別碼的 VM。
+
+您可以藉由指定擴展集的相應[縮小原則](virtual-machine-scale-sets-scale-in-policy.md)，變更虛擬機器移除的順序。
 
 ### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>如果我後續又將容量從 15 增加到 18 呢？
 
-如果您將容量增加到 18，則會建立 3 個新的 VM。 每次 VM 執行個體識別碼都會從上一個最高值遞增 (例如 20、21、22)。 VM 會平衡分散到容錯網域和更新網域。
+如果您將容量增加到 18，則會建立 3 個新的 VM。 每次 VM 執行個體識別碼都會從上一個最高值遞增 (例如 20、21、22)。 Vm 會在容錯網域之間取得平衡。
 
 ### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>在擴展集內使用多個延伸模組時，是否可以強制執行「執行順序」？
 
@@ -76,7 +78,7 @@ ms.locfileid: "81870223"
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>是否有任何根據 Azure 服務匯流排主題和佇列長度自動調整的範例？
 
-是。 如需根據 Azure 服務匯流排主題和佇列長度自動調整的範例，請參閱 [Azure 監視器的自動調整常用計量](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
+可以。 如需根據 Azure 服務匯流排主題和佇列長度自動調整的範例，請參閱 [Azure 監視器的自動調整常用計量](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
 
 如需服務匯流排佇列，請使用下列 JSON：
 
@@ -126,7 +128,7 @@ ms.locfileid: "81870223"
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>如果我已停止 (已取消配置) VM，該 VM 是否在自動調整作業中啟動？
 
-否。 如果自動調整規則需有額外的 VM 執行個體作為擴展集的一部分，則會建立新的 VM 執行個體。 已停止 (已取消配置) 的 VM 執行個體不會在自動調整事件中啟動。 不過，這些已停止 (已取消配置) 的 VM 可能會在執行個體數目相應縮小的自動調整事件中遭到刪除，同樣地系統可以根據 VM 執行個體識別碼的順序刪除任何 VM 執行個體。
+不需要。 如果自動調整規則需有額外的 VM 執行個體作為擴展集的一部分，則會建立新的 VM 執行個體。 已停止 (已取消配置) 的 VM 執行個體不會在自動調整事件中啟動。 不過，這些已停止 (已取消配置) 的 VM 可能會在執行個體數目相應縮小的自動調整事件中遭到刪除，同樣地系統可以根據 VM 執行個體識別碼的順序刪除任何 VM 執行個體。
 
 
 
@@ -170,7 +172,7 @@ az sf cluster create -h
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>是否可指定 SSH 金鑰組以便透過 Resource Manager 範本中的 Linux 虛擬機器擴展集來進行 SSH 驗證？
 
-是。 **osProfile** 的 REST API 類似於標準 VM REST API。
+可以。 **osProfile** 的 REST API 類似於標準 VM REST API。
 
 在您的範本中包含 **osProfile**︰
 
@@ -333,15 +335,15 @@ CRP 元件不會保存客戶密碼。 如果您對虛擬機器擴展集中的所
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-virtual-machine-scale-sets"></a>[Azure 資源的受控識別](https://docs.microsoft.com/azure/active-directory/msi-overview)是否可以與虛擬機器擴展集搭配運作？
 
-是。 您可以在適用于[Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)和[Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)的 Azure 快速入門範本中看到一些範例 MSI 範本。
+可以。 您可以在適用于[Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)和[Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)的 Azure 快速入門範本中看到一些範例 MSI 範本。
 
-## <a name="deleting"></a>刪除中 
+## <a name="deleting"></a>刪除中
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>刪除實例時，是否會遵守我在虛擬機器擴展集實例上設定的鎖定？
 
-在 Azure 入口網站中，您可以藉由選取多個實例來刪除個別實例或大量刪除。 如果您嘗試刪除已鎖定的單一實例，則會遵守鎖定，而且您將無法刪除該實例。 不過，如果您大量選取多個實例，而且其中任何一個實例都已鎖定，將不會遵守鎖定，而且所有選取的實例也會被刪除。 
- 
-在 Azure CLI 中，您只有刪除個別實例的能力。 如果您嘗試刪除已有鎖定的單一實例，則會遵守鎖定，而且您將無法刪除該實例。 
+在 Azure 入口網站中，您可以藉由選取多個實例來刪除個別實例或大量刪除。 如果您嘗試刪除已鎖定的單一實例，則會遵守鎖定，而且您將無法刪除該實例。 不過，如果您大量選取多個實例，而且其中任何一個實例都已鎖定，將不會遵守鎖定，而且所有選取的實例也會被刪除。
+
+在 Azure CLI 中，您只有刪除個別實例的能力。 如果您嘗試刪除已有鎖定的單一實例，則會遵守鎖定，而且您將無法刪除該實例。
 
 ## <a name="extensions"></a>延伸模組
 
@@ -466,7 +468,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>是否可以將「網路安全性群組」(NSG) 指派給擴展集，以便將它套用至擴展集中的所有 VM NIC？
 
-是。 您可以透過在網路設定檔的 networkInterfaceConfigurations 區段中參考「網路安全性群組」，將它直接套用至擴展集。 範例：
+可以。 您可以透過在網路設定檔的 networkInterfaceConfigurations 區段中參考「網路安全性群組」，將它直接套用至擴展集。 範例：
 
 ```json
 "networkProfile": {
@@ -520,7 +522,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>我可以搭配加速的網路使用擴展集嗎？
 
-是。 若要使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將enableAcceleratedNetworking 設為 true。 例如
+可以。 若要使用加速的網路，請在擴展集的 networkInterfaceConfigurations 設定中，將enableAcceleratedNetworking 設為 true。 例如：
 
 ```json
 "networkProfile": {
@@ -563,7 +565,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>我可以設定擴展集以搭配多個應用程式閘道使用嗎？
 
-是。 您可以將多個應用程式閘道後端位址集區的資源識別碼新增至擴展集網路設定檔的 [ _ipconfiguration_ ] 區段中的 [ _applicationGatewayBackendAddressPools_ ] 清單。
+可以。 您可以將多個應用程式閘道後端位址集區的資源識別碼新增至擴展集網路設定檔的 [ _ipconfiguration_ ] 區段中的 [ _applicationGatewayBackendAddressPools_ ] 清單。
 
 ## <a name="scale"></a>調整
 
@@ -668,7 +670,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 }
 ```
 
-建立新的 VM 時，VM 的 InstanceView 會顯示螢幕擷取畫面等的詳細資料。 範例如下：
+建立新的 VM 時，VM 的 InstanceView 會顯示螢幕擷取畫面等的詳細資料。 以下是範例：
 
 ```json
 "bootDiagnostics": {

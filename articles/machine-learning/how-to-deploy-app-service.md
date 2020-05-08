@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 3e6cfde20d9f4d56af836e06b0c9a84010dea47b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 646254238f83166c53fe94a1821c68ff4dac8f04
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282812"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651918"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>將機器學習模型部署到 Azure App Service （預覽）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "80282812"
 > [!IMPORTANT]
 > 如果您需要記錄已部署模型所使用之計分資料的功能，或評分的結果，您應該改為部署到 Azure Kubernetes Service。 如需詳細資訊，請參閱[收集生產環境模型的資料](how-to-enable-data-collection.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * Azure Machine Learning 工作區。 如需詳細資訊，請參閱[建立工作區](how-to-manage-workspace.md)文章。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
@@ -114,14 +114,14 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-若`show_output=True`為，則會顯示 Docker 組建進程的輸出。 程式完成後，就會在您工作區的 Azure Container Registry 中建立映射。 建立映射之後，就會顯示 Azure Container Registry 中的位置。 傳回的位置格式`<acrinstance>.azurecr.io/package:<imagename>`為。 例如： `myml08024f78fd10.azurecr.io/package:20190827151241` 。
+若`show_output=True`為，則會顯示 Docker 組建進程的輸出。 程式完成後，就會在您工作區的 Azure Container Registry 中建立映射。 建立映射之後，就會顯示 Azure Container Registry 中的位置。 傳回的位置格式`<acrinstance>.azurecr.io/package@sha256:<imagename>`為。 例如： `myml08024f78fd10.azurecr.io/package@sha256:20190827151241` 。
 
 > [!IMPORTANT]
 > 儲存位置資訊，因為它會在部署映射時使用。
 
 ## <a name="deploy-image-as-a-web-app"></a>將映射部署為 web 應用程式
 
-1. 使用下列命令來取得包含映射之 Azure Container Registry 的登入認證。 取代`<acrinstance>`為先前從傳回的`package.location`第 e 個值：
+1. 使用下列命令來取得包含映射之 Azure Container Registry 的登入認證。 將`<acrinstance>`取代為先前從`package.location`傳回的值：
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -162,7 +162,7 @@ print(package.location)
 1. 若要建立 web 應用程式，請使用下列命令。 取代`<app-name>`為您要使用的名稱。 將`<acrinstance>`和`<imagename>`取代為先前傳回`package.location`的值：
 
     ```azurecli-interactive
-    az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
+    az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package@sha256:<imagename>
     ```
 
     此命令會傳回與下列 JSON 檔類似的資訊：
@@ -191,7 +191,7 @@ print(package.location)
 1. 若要為 web 應用程式提供存取 container registry 所需的認證，請使用下列命令。 取代`<app-name>`為您要使用的名稱。 將`<acrinstance>`和`<imagename>`取代為先前傳回`package.location`的值。 將`<username>`和`<password>`取代為先前抓取的 ACR 登入資訊：
 
     ```azurecli-interactive
-    az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
+    az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package@sha256:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
     ```
 
     此命令會傳回與下列 JSON 檔類似的資訊：
@@ -220,7 +220,7 @@ print(package.location)
     },
     {
         "name": "DOCKER_CUSTOM_IMAGE_NAME",
-        "value": "DOCKER|myml08024f78fd10.azurecr.io/package:20190827195524"
+        "value": "DOCKER|myml08024f78fd10.azurecr.io/package@sha256:20190827195524"
     }
     ]
     ```
