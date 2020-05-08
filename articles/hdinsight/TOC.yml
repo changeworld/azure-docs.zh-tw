@@ -155,8 +155,16 @@
           items:
             - name: 使用 Apache Ambari web UI 管理叢集
               href: ./hdinsight-hadoop-manage-ambari.md
-            - name: 使用 Apache Ambari web UI 最佳化叢集
-              href: ./hdinsight-changing-configs-via-ambari.md
+            - name: 使用 Apache Ambari 進行最佳化
+              items:
+                - name: 將叢集最佳化
+                  href: ./hdinsight-changing-configs-via-ambari.md
+                - name: 將 Apache HBase 最佳化
+                  href: ./optimize-hbase-ambari.md
+                - name: 將 Apache Hive 最佳化
+                  href: ./optimize-hive-ambari.md
+                - name: 將 Apache Pig 最佳化
+                  href: ./optimize-pig-ambari.md
             - name: 使用 Apache Ambari REST API
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: 刪除叢集
@@ -939,6 +947,8 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: 使用防火牆限制輸出流量
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: 設定網路虛擬設備
+          href: ./network-virtual-appliance.md
         - name: 疑難排解
           items:
             - name: ESP 驗證問題

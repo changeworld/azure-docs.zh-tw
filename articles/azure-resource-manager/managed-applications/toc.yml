@@ -25,6 +25,9 @@
       href: powershell-samples.md
     - name: 受控應用程式解決方案
       href: sample-projects.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 檢視定義成品
@@ -134,5 +137,5 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: Resource Manager 範本最佳做法
       href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
-    - name: 堆疊溢位
+    - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'

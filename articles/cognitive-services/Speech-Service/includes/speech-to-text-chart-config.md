@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 05/05/2020
 ms.author: trbye
-ms.openlocfilehash: 267c2fb72b38053429019746a573c740d812c38c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 85c4e0641e1989ddea6c8aa8b8a8895a966a5ddb
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608367"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82875989"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>語音轉換文字（子圖表：圖表/speechToText）
 
@@ -43,9 +43,9 @@ ms.locfileid: "82608367"
 
 #### <a name="sentiment-analysis-sub-chart-chartsspeechtotext"></a>情感分析（子圖表：圖表/speechToText）
 
-從語音轉換文字容器的 v 2.2.0 開始，下列參數可用於使用文字分析 API 進行情感分析。
+從開始2.2.0 語音轉換文字容器和 Helm 圖表的 v 0.2.0，使用文字分析 API 將下列參數用於情感分析。
 
-|參數|說明|值|預設|
+|參數|說明|值|預設值|
 | --- | --- | --- | --- |
 |`textanalytics.enabled`| **文字分析**服務是否已啟用| true/false| `false`|
 |`textanalytics.image.registry`| **文字分析**docker 映射登錄| 有效的 docker 映射登錄| |

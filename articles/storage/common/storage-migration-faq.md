@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 39f1137638f9cd4926b712bdd18e681d90adcdc4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b020cbd15ba17609b7a476ccda9b1e814405341e
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668557"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858791"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>關於 Azure 儲存體移轉的常見問題集
 
@@ -38,7 +38,7 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 
 **有兩個檔案共用，位在相同區域的相同儲存體帳戶上，在這兩者間複製資料是否收取費用？**
 
-否。 此流程不會收取費用。
+不需要。 此流程不會收取費用。
 
 **如何從 Azure 入口網站下載 1-2 TB 的資料？**
 
@@ -215,7 +215,7 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 - 從儲存體帳戶內的共用複製到 Blob 容器，或複製到不同的儲存體帳戶。
 
 如需詳細資訊，請參閱[使用 AzCopy on Windows 傳送資料](storage-use-azcopy.md)。
-## <a name="configuration"></a>設定
+## <a name="configuration"></a>組態
 
 **如何將儲存體帳戶的次要位置變更為歐洲地區？**
 
@@ -237,7 +237,7 @@ AzCopy 使用[複製 Blob API](https://docs.microsoft.com/rest/api/storageservic
 
 **將儲存體帳戶的複寫從異地備援儲存體變更為本地備援儲存體是否有任何必要條件？**
 
-否。
+不需要。
 
 **如何將檔案共用轉換至 Azure 進階儲存體？**
 
@@ -284,7 +284,7 @@ Azure 檔案共用不允許使用進階儲存體。
 
 **對於複寫的儲存體帳戶 (例如，區域備援儲存體、異地備援儲存體或讀取權限異地備援儲存體)，如何存取儲存在次要區域的資料？**
 
--   如果您使用的是區域備援儲存體或異地備援儲存體，除非您起始以該區域為目的地的容錯移轉，否則無法從次要區域存取資料。 如需容錯移轉程序的詳細資訊，請參閱 [Azure 儲存體的災害復原和儲存體帳戶容錯移轉 (預覽)](storage-disaster-recovery-guidance.md)。
+-   如果您使用的是區域備援儲存體或異地備援儲存體，除非您起始以該區域為目的地的容錯移轉，否則無法從次要區域存取資料。 如需容錯移轉程式的詳細資訊，請參閱嚴重損壞[修復和儲存體帳戶容錯移轉](storage-disaster-recovery-guidance.md)。
 
 -   如果您使用的是讀取權限異地備援儲存體，可以隨時存取次要區域中的資料。 請使用下列其中一個方法：  
 

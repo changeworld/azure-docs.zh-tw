@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411438"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864244"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>優化 Azure 監視器中的記錄查詢
 Azure 監視器記錄會使用[Azure 資料總管（ADX）](/azure/data-explorer/)來儲存記錄資料，並執行查詢來分析該資料。 它會為您建立、管理及維護 ADX 叢集，並針對您的記錄分析工作負載將它們優化。 當您執行查詢時，它會進行優化，並路由傳送至適當的 ADX 叢集，以儲存工作區資料。 Azure 監視器記錄和 Azure 資料總管都使用許多自動查詢優化機制。 雖然自動優化提供顯著的提升，但在某些情況下，您可以大幅提升查詢效能。 這篇文章說明效能考慮，以及解決這些問題的數種技術。
@@ -108,7 +108,7 @@ Heartbeat
 | summarize count() by Computer
 ```
 
-### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>在摘要和聯結中使用有效的匯總命令和 dimmentions
+### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>在摘要和聯結中使用有效的匯總命令和維度
 
 雖然某些匯總命令（例如[max （）](/azure/kusto/query/max-aggfunction)、 [sum （）](/azure/kusto/query/sum-aggfunction)、 [count （）](/azure/kusto/query/count-aggfunction)和[avg （））](/azure/kusto/query/avg-aggfunction)對其邏輯造成的 CPU 影響很低，但其他則較為複雜，包括啟發學習法和估計值，讓它們可以有效率地執行。 例如， [dcount （）](/azure/kusto/query/dcount-aggfunction)會使用 HyperLogLog 演算法，針對大型資料集的相異計數提供接近的估計，而不會實際計算每個值;百分位數函數使用最接近的排名百分位數演算法執行類似的近似值。 有數個命令包含可減少其影響的選擇性參數。 例如， [makeset （）](/azure/kusto/query/makeset-aggfunction)函式具有選擇性的參數，可定義最大的集合大小，這會大幅影響 CPU 和記憶體。
 

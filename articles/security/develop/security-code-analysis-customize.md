@@ -2,7 +2,7 @@
 title: 自訂 Microsoft 安全性程式碼分析工作
 titleSuffix: Azure
 description: 本文說明如何自訂 Microsoft 安全性程式碼分析延伸模組中的工作
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77499995"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871880"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>設定和自訂群組建工作
 
@@ -41,7 +41,7 @@ Windows Defender 會使用 Windows Update 用戶端來下載和安裝簽章。 �
 
 如需有關 Windows Update 錯誤及其緩和措施的詳細資訊，請參閱[依元件 Windows Update 錯誤碼](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference)和 TechNet 文章[Windows Update 代理程式錯誤代碼](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx)。
 
-如需這項工作之 YAML 設定的相關資訊，請參閱我們的[反惡意程式碼 YAML 選項](yaml-configuration.md#anti-malware-scanner-task)
+如需這項工作之 YAML 設定的相關資訊，請查看我們的[反惡意程式碼 YAML 選項](yaml-configuration.md#anti-malware-scanner-task)
 
 ## <a name="binskim-task"></a>BinSkim 工作
 
@@ -91,7 +91,8 @@ Windows Defender 會使用 Windows Update 用戶端來下載和安裝簽章。 �
 ![設定認證掃描器組建工作](./media/security-tools/3-taskdetails.png)
 
 可用的選項包括：
-
+  - **顯示名稱**： Azure DevOps 工作的名稱。 預設值為執行認證掃描器
+  - **工具主要版本**：可用的值包括**CredScan V2**、 **CredScan V1**。 我們建議客戶使用**CredScan V2**版本。
   - **輸出格式**：可用的值包括**TSV**、 **CSV**、 **SARIF**和**PREfast**。
   - **工具版本**：建議您選取 [**最新**]。
   - **掃描資料夾**：要掃描的存放庫資料夾。
@@ -105,7 +106,7 @@ Windows Defender 會使用 Windows Update 用戶端來下載和安裝簽章。 �
   - **控制選項** > **執行此**工作：指定工作將執行的時間。 選取 [**自訂條件**] 以指定更複雜的條件。
   - **版本**： Azure DevOps 內的組建工作版本。 此選項不常使用。
 
-如需這項工作之 YAML 設定的相關資訊，請參閱[認證掃描器 YAML 選項](yaml-configuration.md#credential-scanner-task)
+如需這項工作之 YAML 設定的相關資訊，請查看[認證掃描器 YAML 選項](yaml-configuration.md#credential-scanner-task)
 
 ## <a name="microsoft-security-risk-detection-task"></a>Microsoft 安全性風險偵測工作
 
@@ -172,7 +173,7 @@ Windows Defender 會使用 Windows Update 用戶端來下載和安裝簽章。 �
 
 您可以在[CodeAnalysis FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers)的 NuGet 頁面上找到此組建工作所安裝和使用的分析器套件。
 
-如需這項工作之 YAML 設定的相關資訊，請參閱我們的[Roslyn 分析器 YAML 選項](yaml-configuration.md#roslyn-analyzers-task)
+如需這項工作之 YAML 設定的相關資訊，請參閱[Roslyn 分析器 YAML 選項](yaml-configuration.md#roslyn-analyzers-task)
 
 ## <a name="tslint-task"></a>TSLint 工作
 

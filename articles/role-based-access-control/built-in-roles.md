@@ -15,12 +15,12 @@ ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b6587ca113319c266d2335c9cbb154e0ecc4afa1
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: HT
+ms.openlocfilehash: b5ba4b84fcd9c1722e8ab2f4031ec1551357e406
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838734"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869986"
 ---
 # <a name="azure-built-in-roles"></a>Azure 內建角色
 
@@ -34,7 +34,7 @@ ms.locfileid: "82838734"
 
 
 > [!div class="mx-tableFixed"]
-> | 內建角色 | 說明 | 識別碼 |
+> | 內建角色 | 描述 | 識別碼 |
 > | --- | --- | --- |
 > | **一般** |  |  |
 > | [參與者](#contributor) | 除了授與資源的存取權之外，還可讓您管理所有專案。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -156,7 +156,7 @@ ms.locfileid: "82838734"
 > | [實驗室建立者](#lab-creator) | 可讓您在「Azure 實驗室帳戶」下建立、管理、刪除您的受控實驗室。 | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **監視** |  |  |
 > | [Application Insights 元件參與者](#application-insights-component-contributor) | 可以管理 Application Insights 元件 | ae349356-3a1b-4a5e-921d-050484c6347e |
-> | [Application Insights 快照集偵錯工具](#application-insights-snapshot-debugger) | 給予使用者權限，以便檢視及下載使用 Application Insights 快照偵錯工具所收集的偵錯快照。 請注意，[擁有者](#owner)或[參與者](#contributor)角色未包含這些權限。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
+> | [Application Insights 快照集偵錯工具](#application-insights-snapshot-debugger) | 給予使用者權限，以便檢視及下載使用 Application Insights 快照偵錯工具所收集的偵錯快照。 請注意，[擁有者](#owner)或[參與者](#contributor)角色未包含這些權限。 將 Application Insights 快照偵錯工具角色給使用者時，您必須直接將角色授與使用者。 新增至自訂角色時，無法辨識角色。 | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [監視參與者](#monitoring-contributor) | 可以讀取所有監視資料並編輯監視設定。 請參閱[開始使用 Azure 監視器的角色、權限和安全性](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [監視計量發行者](#monitoring-metrics-publisher) | 針對 Azure 資源啟用發佈計量 | 3913510d-42f4-4e42-8a64-420c390055eb |
 > | [監視讀取器](#monitoring-reader) | 可以讀取所有監視資料 (計量、記錄等等)。 請參閱[開始使用 Azure 監視器的角色、權限和安全性](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles)。 | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
@@ -6144,7 +6144,7 @@ Azure Sentinel 回應程式
 
 ### <a name="application-insights-snapshot-debugger"></a>Application Insights 快照集偵錯工具
 
-給予使用者權限，以便檢視及下載使用 Application Insights 快照偵錯工具所收集的偵錯快照。 請注意，[擁有者](#owner)或[參與者](#contributor)角色未包含這些權限。
+給予使用者權限，以便檢視及下載使用 Application Insights 快照偵錯工具所收集的偵錯快照。 請注意，[擁有者](#owner)或[參與者](#contributor)角色未包含這些權限。 將 Application Insights 快照偵錯工具角色給使用者時，您必須直接將角色授與使用者。 新增至自訂角色時，無法辨識角色。 
 
 > [!div class="mx-tableFixed"]
 > |  |  |

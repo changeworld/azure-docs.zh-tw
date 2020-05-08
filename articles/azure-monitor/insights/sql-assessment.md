@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/28/2019
-ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662479"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871253"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>使用 Azure 監視器中的 SQL Server 健康情況檢查解決方案來優化您的 SQL 環境
 
@@ -31,11 +31,11 @@ ms.locfileid: "77662479"
 
 ![SQL 健康情況檢查儀表板的影像](./media/sql-assessment/sql-healthcheck-dashboard-01.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * SQL 健康情況檢查解決方案需要在安裝 Microsoft Monitoring Agent （MMA）的每部電腦上安裝支援的 .NET Framework 4.6.2 版本。  System Center 2016 - Operations Manager 和 Operations Manager 2012 R2，以及 Azure 監視器都使用 MMA 代理程式。  
-* 方案支援 SQL Server 2012、2014 和 2016 版本。
-* Log Analytics 工作區，可以從 Azure 入口網站中的 Azure 市集將 SQL 健康情況檢查方案新增至此。  若要安裝方案，您必須是 Azure 訂用帳戶中的系統管理員或參與者。
+* 此解決方案支援2012、2014、2016、2017和 2019 SQL Server 版本。
+* Log Analytics 工作區，可以從 Azure 入口網站中的 Azure 市集將 SQL 健康情況檢查方案新增至此。 若要安裝方案，您必須是 Azure 訂用帳戶中的系統管理員或參與者。
 
   > [!NOTE]
   > 您加入方案之後，AdvisorAssessment.exe 檔案會以代理程式加入伺服器中。 系統會讀取設定資料，然後傳送到在雲端的 Azure 監視器以進行處理。 會將邏輯套用至接收的資料，且雲端服務會記錄資料。
@@ -85,7 +85,7 @@ Log Analytics 會使用 Operations Manager 代理程式及管理群組來收集�
    > 執行身分帳戶類型必須是 Windows。 執行身分帳戶也必須屬於裝載 SQL Server 執行個體的所有 Windows 伺服器上的本機系統管理員群組。
    >
    >
-5. 按一下 **[儲存]** 。
+5. 按一下 [檔案]  。
 6. 修改，然後在每個 SQL Server 執行個體上執行下列 T-SQL 範例，授與執行身分帳戶所需的最小權限以執行 SQL 健康情況檢查。 不過，如果執行身分帳戶已是 SQL Server 執行個體上 sysadmin 伺服器角色的一部分，您就不需要這樣做。
 
 ```

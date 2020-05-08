@@ -2,13 +2,13 @@
 title: 標記邏輯組織的資源、資源群組和訂用帳戶
 description: 示範如何套用標籤以針對計費及管理來組織 Azure 資源。
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: 2f437682a2ac415ce8478b09a44bff044bd9511b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255119"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864482"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>使用標記來組織您的 Azure 資源和管理階層
 
@@ -591,7 +591,9 @@ az deployment sub create --name tagresourcegroup --location westus2 --template-u
 * 標記名稱不得包含這些字元：`<`、`>`、`%`、`&`、`\`、`?`、`/`
 
    > [!NOTE]
-   > 目前 Azure DNS 區域和流量管理員服務也不允許在標記中使用空格。
+   > 目前，Azure DNS 區域和流量管理員服務也不允許在標記中使用空格。
+   >
+   > Azure Front 門板不支援`#`在標記名稱中使用。
 
 ## <a name="next-steps"></a>後續步驟
 

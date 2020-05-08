@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: acc8ceaa96f6fddafdbf4aa74ab9e43a1a60714a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68453341defd2d359e69e0ecf8a821464fead0d3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195667"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744036"
 ---
 # <a name="azure-security-baseline-for-backup"></a>適用于備份的 Azure 安全性基準
 
@@ -460,7 +460,7 @@ Microsoft 會管理 Azure 備份的基礎結構，並已實行嚴格的控制，
 
 **指引**：從伺服器到復原服務保存庫的備份流量會透過安全的 HTTPS 連結傳輸，並在儲存于保存庫時使用進階加密標準（AES）256加密。
 
-- [瞭解 Azure 備份中的待用加密](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [瞭解 Azure 備份中的待用加密](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -508,7 +508,7 @@ Azure 備份提供三個內建角色來控制備份管理作業：「備份參�
 
 當使用 MARS 代理程式進行備份，或使用以客戶管理的金鑰加密的復原服務保存庫時，只有您可以存取加密金鑰。 Microsoft 絕不會持有金鑰複本，也沒有存取金鑰的權限。 如果金鑰遺失，Microsoft 將無法復原備份資料。
 
-- [瞭解 Azure 備份的待用加密](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [瞭解 Azure 備份的待用加密](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Azure 資訊安全中心監視**：不適用
 
@@ -902,7 +902,7 @@ Microsoft 所掃描和修補的基礎平臺。 查看可供 Azure 備份的安�
 
 - [如何在 Azure 中備份金鑰保存庫金鑰](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [瞭解 Azure 備份中的加密](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys)
+- [瞭解 Azure 備份中的加密](https://docs.microsoft.com/azure/backup/backup-encryption#encryption-of-backup-data-using-customer-managed-keys)
 
 **Azure 資訊安全中心監視**：不適用
 

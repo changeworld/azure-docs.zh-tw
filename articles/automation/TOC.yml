@@ -24,6 +24,11 @@
       href: learn/automation-tutorial-runbook-textual.md
     - name: 建立 Python Runbook
       href: learn/automation-tutorial-runbook-textual-python2.md
+- name: 範例
+  items:
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 自動化帳戶驗證總覽

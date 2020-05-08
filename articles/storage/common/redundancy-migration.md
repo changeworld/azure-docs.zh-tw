@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5c37dbdc34138faab8adae6ad18252c18a75cad4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 6376d858ae5113996bf7c93a8b3054797151c6b3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337082"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858678"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>變更儲存體帳戶的複寫方式
 
@@ -26,7 +26,7 @@ Azure 儲存體提供下列類型的複寫：
 - 本機備援儲存體 (LRS)
 - 區域備援儲存體 (ZRS)
 - 異地多餘儲存體（GRS）或讀取權限異地冗余儲存體（RA-GRS）
-- 異地區域-多餘儲存體（切換）或讀取權限異地區域-多餘儲存體（RA-切換）（預覽）
+- 異地區域-多餘儲存體（切換）或讀取權限異地區域-多餘儲存體（RA-切換）
 
 如需每個選項的總覽，請參閱[Azure 儲存體冗余](storage-redundancy.md)。
 
@@ -38,15 +38,15 @@ Azure 儲存體提供下列類型的複寫：
 
 | 交換器 | ...至 LRS | ...to GRS/RA-GRS | ...至 ZRS | ...to 切換/RA-切換 |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>...從 LRS</b> | N/A | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1</sup> | 執行手動遷移 <br /><br />要求即時移轉 | 執行手動遷移 <br /><br /> 或者 <br /><br /> 先切換至 GRS/RA-GRS，然後再要求即時移轉<sup>1</sup> |
-| <b>...from GRS/RA-GRS</b> | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | N/A | 執行手動遷移 <br /><br /> 或者 <br /><br /> 先切換至 LRS，然後再要求即時移轉 | 執行手動遷移 <br /><br /> 要求即時移轉 |
+| <b>...從 LRS</b> | N/A | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1</sup> | 執行手動遷移 <br /><br />要求即時移轉 | 執行手動遷移 <br /><br /> OR <br /><br /> 先切換至 GRS/RA-GRS，然後再要求即時移轉<sup>1</sup> |
+| <b>...from GRS/RA-GRS</b> | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | N/A | 執行手動遷移 <br /><br /> OR <br /><br /> 先切換至 LRS，然後再要求即時移轉 | 執行手動遷移 <br /><br /> 要求即時移轉 |
 | <b>...從 ZRS</b> | 執行手動遷移 | 執行手動遷移 | N/A | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定<sup>1</sup> |
 | <b>...from 切換/RA-切換</b> | 執行手動遷移 | 執行手動遷移 | 使用 Azure 入口網站、PowerShell 或 CLI 來變更複寫設定 | N/A |
 
 <sup>1</sup>會產生一次性的出口費用。
 
 > [!CAUTION]
-> 如果您為（RA-） GRS 或（RA-）切換帳戶執行[帳戶容錯移轉](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance)，則會將它設定為在新的主要區域中以本機方式重複。 不支援對這類 LRS 帳戶進行即時移轉至 ZRS 或切換。 您將需要執行[手動遷移](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs)。
+> 如果您為（RA-） GRS 或（RA-）切換帳戶執行[帳戶容錯移轉](storage-disaster-recovery-guidance.md)，則在容錯移轉之後，帳戶會在新的主要區域中以本機方式重複。 不支援針對容錯移轉所產生的 LRS 帳戶進行即時移轉至 ZRS 或切換。 您必須[手動將遷移](#perform-a-manual-migration-to-zrs)至 ZRS 或切換。
 
 ## <a name="change-the-replication-setting"></a>變更複寫設定
 
@@ -195,4 +195,4 @@ az storage account update -g <resource_group> -n <storage_account> --set kind=St
 
 - [Azure 儲存體的冗余](storage-redundancy.md)
 - [檢查儲存體帳戶的上次同步處理時間屬性](last-sync-time-get.md)
-- [使用讀取權限異地多餘儲存體設計高可用性應用程式](storage-designing-ha-apps-with-ragrs.md)
+- [使用異地冗余來設計高可用性應用程式](geo-redundant-design.md)

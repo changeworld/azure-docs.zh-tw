@@ -28,9 +28,9 @@
           items:
             - name: 虛擬機器
               href: ./marketplace-virtual-machines.md
-            - name: Azure 應用程式：解決方案範本
+            - name: Azure 應用程式解決方案範本
               href: ./marketplace-solution-templates.md
-            - name: Azure 應用程式：受控應用程式
+            - name: Azure 應用程式受控應用程式
               href: ./marketplace-managed-apps.md
             - name: SaaS 應用程式
               href: ./marketplace-saas-applications-technical-publishing-guide.md
@@ -42,7 +42,7 @@
               href: ./consulting-services.md
             - name: Office 365、Dynamics 365 和 Power BI
               href: ./appsource-offer-publishing-guide.md
-            - name: 使用 Azure Active Directory 來啟用 AppSource 和 Marketplace 清單
+            - name: 使用 Azure AD 啟用供應項目驗證
               href: ./enable-appsource-marketplace-using-azure-ad.md
             - name: 整合式解決方案
               href: ./integrated-solutions-for-publishers.md
@@ -51,7 +51,7 @@
           items:
             - name: 陳列供應項目的最佳做法
               href: ./gtm-offer-listing-best-practices.md
-            - name: 如何取得精選項目
+            - name: 取得精選項目
               href: ./gtm-how-to-get-featured.md
             - name: Marketplace 內容驗證
               href: ./marketplace-criteria-content-validation.md
@@ -69,7 +69,7 @@
         - name: 支援商業市集
           href: ./support-azure-marketplace.md
           items:
-            - name: Marketplace 常見問題集
+            - name: 商業市集常見問題集
               href: ./marketplace-faq-publisher-guide.md
             - name: 各地區上市情況和貨幣
               href: ./marketplace-geo-availability-currencies.md
@@ -289,49 +289,9 @@
             - name: 說明 Wiki
               href: ./cloud-partner-portal-orig/help-wiki.md
         - name: IoT Edge 模組供應項目
-          href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
-          items:
-            - name: Prerequisites
-              href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
-            - name: 建立 IoT Edge 模組供應項目
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
-              items:
-                - name: 供應項目設定索引標籤
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-offer-settings-tab.md
-                - name: SKU 索引標籤
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-skus-tab.md
-                - name: Marketplace 索引標籤
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-marketplace-tab.md
-                - name: 支援索引標籤
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-support-tab.md
-            - name: 建立 IoT Edge 模組技術資產
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md
-            - name: 發佈 IoT Edge 模組供應項目
-              href: ./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md
-            - name: 更新現有供應項目
-              href: ./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md
+          href: ./cloud-partner-portal/iot-edge-module/iot-edge-module-offer.md
         - name: Power BI 應用程式供應項目
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
-          items:
-            - name: Prerequisites
-              href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
-            - name: 建立 Power BI 應用程式供應項目
-              href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
-              items:
-                - name: 供應項目設定索引標籤
-                  href: ./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md
-                - name: '[技術資訊] 索引標籤'
-                  href: ./cloud-partner-portal/power-bi/cpp-technical-info-tab.md
-                - name: 電子店面詳細資料索引標籤
-                  href: ./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md
-                - name: 連絡人索引標籤
-                  href: ./cloud-partner-portal/power-bi/cpp-contacts-tab.md
-            - name: 建立 Power BI 應用程式技術資產
-              href: ./cloud-partner-portal/power-bi/cpp-create-technical-assets.md
-            - name: 發佈 Power BI 應用程式供應項目
-              href: ./cloud-partner-portal/power-bi/cpp-publish-offer.md
-            - name: 更新現有供應項目
-              href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: SaaS 應用程式供應項目
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: 虛擬機器供應項目
@@ -495,10 +455,10 @@
               href: ./partner-center-portal/create-new-business-central-offer.md
         - name: IoT Edge 模組供應項目
           items:
-            - name: 預備 IoT Edge 模組技術資產
-              href: ./partner-center-portal/create-iot-edge-module-asset.md
             - name: 建立 IoT Edge 模組供應項目
               href: ./partner-center-portal/azure-iot-edge-module-creation.md
+            - name: 預備 IoT Edge 模組技術資產
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
         - name: 受控服務供應項目
           items:
             - name: 建立受控服務供應項目

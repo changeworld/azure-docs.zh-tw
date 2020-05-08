@@ -63,6 +63,9 @@
       href: samples-powershell.md
     - name: Resource Manager 範本
       href: samples-resource-manager-templates.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: App Service 方案

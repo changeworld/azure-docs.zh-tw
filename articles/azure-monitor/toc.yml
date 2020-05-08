@@ -62,6 +62,9 @@
   items:
     - name: Azure PowerShell
       href: platform/powershell-samples.md
+    - name: Azure 原則內建
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: 概念
   items:
     - name: 您可以監視哪些內容？
@@ -442,8 +445,6 @@
               href: app/custom-data-correlation.md
             - name: 連接字串
               href: app/sdk-connection-string.md
-            - name: 連接字串
-              href: app/sdk-connection-string.md
             - name: GetMetric
               displayname: 'get metric, custom metrics, metrics, TrackMetric'
               href: app/get-metric.md
@@ -750,8 +751,6 @@
           href: insights/containers.md
     - name: 監視其他資源
       items:
-        - name: Key Vault
-          href: insights/key-vault-insights-overview.md
         - name: 儲存體
           items:
             - name: 適用於儲存體的 Azure 監視器
@@ -927,6 +926,10 @@
               href: platform/workbooks-data-sources.md
             - name: 使用 Azure Resource Manager 進行部署
               href: platform/workbooks-automate.md
+            - name: 群組
+              href: platform/workbooks-groups.md
+            - name: 使用 JSONPath 轉換 JSON 資料
+              href: platform/workbooks-jsonpath.md
             - name: 組態
               items:
                 - name: 存取控制
