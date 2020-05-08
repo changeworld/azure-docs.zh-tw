@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/06/2020
-ms.openlocfilehash: 0a8864555798d3b64d675c70728ab97d191be81f
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891382"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982644"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>對應資料流程中的 Alter row 轉換
 
@@ -61,13 +61,15 @@ Alter Row 轉換只會在資料流程中的資料庫或 CosmosDB 接收上運作
 
 ADF 資料流程支援使用 upsert 選項，針對 Azure SQL Database 和 Synapse 資料庫集區（資料倉儲）進行合併。
 
-不過，您可能會遇到目標資料庫架構使用索引鍵資料行之 identity 屬性的案例。 ADF 會要求您識別要用來比對更新和更新插入之資料列值的金鑰。 但是，如果目標資料行已設定 identity 屬性，而且您使用 upsert 原則，則目標資料庫將不會允許您寫入資料行。
+不過，您可能會遇到目標資料庫架構使用索引鍵資料行之 identity 屬性的案例。 ADF 會要求您識別要用來比對更新和更新插入之資料列值的金鑰。 但是，如果目標資料行已設定 identity 屬性，而且您使用 upsert 原則，則目標資料庫將不會允許您寫入資料行。 當您嘗試針對分散式資料表的散發資料行進行 upsert 時，可能也會遇到錯誤。
 
-您有兩個選擇：
+以下是修正此問題的方法：
 
-1. 使用接收轉換前置處理 SQL 選項： ```SET IDENTITY_INSERT tbl_content ON```。 然後，使用後置處理 SQL 屬性將它關閉： ```SET IDENTITY_INSERT tbl_content OFF```。
+1. 移至 [接收轉換設定]，並設定 [略過寫入索引鍵資料行]。 這會告訴 ADF 不要將您選取的資料行寫入為對應的金鑰值。
 
-2. 請改用「條件式分割」轉換來切換邏輯，以將更新條件與插入條件分開，而不是使用 upsert。 如此一來，您可以在更新路徑上設定對應，以忽略索引鍵資料行對應。
+2. 如果該索引鍵資料行不是造成識別欄位之問題的資料行，則您可以使用接收轉換前置處理 SQL 選項： ```SET IDENTITY_INSERT tbl_content ON```。 然後，使用後置處理 SQL 屬性將它關閉： ```SET IDENTITY_INSERT tbl_content OFF```。
+
+3. 針對身分識別案例和散發資料行案例，您可以使用個別的更新條件，並使用條件式分割轉換，將邏輯從 Upsert 切換至不同的插入條件。 如此一來，您可以在更新路徑上設定對應，以忽略索引鍵資料行對應。
 
 ## <a name="data-flow-script"></a>資料流程指令碼
 

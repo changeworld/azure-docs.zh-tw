@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 426ba4c0ac84799b4d0e6bf9330508f928437fd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5494b1a7590e87bac9f8ffeaeef8f1da791fd6e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060183"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791131"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>教學課程：以手動方式在 Azure SQL Server VM 上設定可用性群組
 
@@ -32,7 +32,7 @@ ms.locfileid: "80060183"
 
 ![可用性群組](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/00-EndstateSampleNoELB.png)
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 本教學課程假設您對「SQL Server Always On 可用性群組」有基本的了解。 如需詳細資訊，請參閱 [AlwaysOn 可用性群組概觀 (SQL Server)](https://msdn.microsoft.com/library/ff877884.aspx)。
 
@@ -348,7 +348,7 @@ Repeat these steps on the second SQL Server.
 
 在 Azure 虛擬機器上，「SQL Server 可用性群組」需要負載平衡器。 負載平衡器會保有可用性群組接聽程式以及 Windows Server 容錯移轉叢集的 IP 位址。 本節摘要說明如何在 Azure 入口網站中建立負載平衡器。
 
-Azure Load Balancer 可以是標準負載平衡器，也可以是基本負載平衡器。 標準負載平衡器的功能比基本負載平衡器多。 對於可用性群組，如果您使用「可用性區域」(而非「可用性設定組」)，則需要標準負載平衡器。 如需負載平衡器類型有何不同的詳細資訊，請參閱 [Load Balancer SKU comparison](../../../load-balancer/concepts-limitations.md#skus)。
+Azure Load Balancer 可以是標準負載平衡器，也可以是基本負載平衡器。 標準負載平衡器的功能比基本負載平衡器多。 對於可用性群組，如果您使用「可用性區域」(而非「可用性設定組」)，則需要標準負載平衡器。 如需負載平衡器 Sku 之間差異的詳細資訊，請參閱[LOAD BALANCER SKU 比較](../../../load-balancer/skus.md)。
 
 1. 在 Azure 入口網站中，移至您 SQL Server 所在的資源群組，然後按一下 [+ 加入]****。
 1. 搜尋**Load Balancer**。 選擇 Microsoft 所發行的負載平衡器。
@@ -360,8 +360,8 @@ Azure Load Balancer 可以是標準負載平衡器，也可以是基本負載平
 
    | 設定 | 欄位 |
    | --- | --- |
-   | **Name** |使用負載平衡器的文字名稱，例如 **sqlLB**。 |
-   | **類型** |內部 |
+   | **名稱** |使用負載平衡器的文字名稱，例如 **sqlLB**。 |
+   | **型別** |內部 |
    | **虛擬網路** |使用 Azure 虛擬網路的名稱。 |
    | **子網路** |使用虛擬機器所在子網路的名稱。  |
    | **IP 位址指派** |靜態 |
@@ -404,7 +404,7 @@ Azure Load Balancer 可以是標準負載平衡器，也可以是基本負載平
 
    | 設定 | 描述 | 範例
    | --- | --- |---
-   | **Name** | Text | SQLAlwaysOnEndPointProbe |
+   | **名稱** | Text | SQLAlwaysOnEndPointProbe |
    | **通訊協定** | 選擇 [TCP] | TCP |
    | **通訊埠** | 任何未使用的連接埠 | 59999 |
    | **期間**  | 探查嘗試間隔的時間長度 (秒) |5 |
@@ -420,14 +420,14 @@ Azure Load Balancer 可以是標準負載平衡器，也可以是基本負載平
 
    | 設定 | 描述 | 範例
    | --- | --- |---
-   | **Name** | Text | SQLAlwaysOnEndPointListener |
+   | **名稱** | Text | SQLAlwaysOnEndPointListener |
    | **前端 IP 位址** | 選擇一個位址 |使用您建立負載平衡器時所建立的位址。 |
    | **通訊協定** | 選擇 [TCP] |TCP |
    | **通訊埠** | 使用可用性群組接聽程式的連接埠 | 1433 |
    | **後端連接埠** | 如果已為伺服器直接回傳設定「浮動 IP」，便不會使用此欄位。 | 1433 |
    | **探查** |您為探查指定的名稱 | SQLAlwaysOnEndPointProbe |
    | **會話持續性** | 下拉式清單 | **無** |
-   | **閒置超時** | 讓 TCP 連線保持開啟的分鐘數 | 4 |
+   | **閒置逾時** | 讓 TCP 連線保持開啟的分鐘數 | 4 |
    | **浮動 IP (伺服器直接回傳)** | |啟用 |
 
    > [!WARNING]
@@ -447,7 +447,7 @@ WSFC IP 位址也必須位於負載平衡器上。
 
    | 設定 | 描述 | 範例
    | --- | --- |---
-   | **Name** | Text | WSFCEndPointProbe |
+   | **名稱** | Text | WSFCEndPointProbe |
    | **通訊協定** | 選擇 [TCP] | TCP |
    | **通訊埠** | 任何未使用的連接埠 | 58888 |
    | **期間**  | 探查嘗試間隔的時間長度 (秒) |5 |
@@ -461,14 +461,14 @@ WSFC IP 位址也必須位於負載平衡器上。
 
    | 設定 | 描述 | 範例
    | --- | --- |---
-   | **Name** | Text | WSFCEndPoint |
+   | **名稱** | Text | WSFCEndPoint |
    | **前端 IP 位址** | 選擇一個位址 |使用您在設定 WSFC IP 位址時所建立的位址。 這與接聽程式 IP 位址不同 |
    | **通訊協定** | 選擇 [TCP] |TCP |
    | **通訊埠** | 使用叢集 IP 位址的連接埠。 這個可用的連接埠不用於接聽程式探查連接埠。 | 58888 |
    | **後端連接埠** | 如果已為伺服器直接回傳設定「浮動 IP」，便不會使用此欄位。 | 58888 |
    | **探查** |您為探查指定的名稱 | WSFCEndPointProbe |
    | **會話持續性** | 下拉式清單 | **無** |
-   | **閒置超時** | 讓 TCP 連線保持開啟的分鐘數 | 4 |
+   | **閒置逾時** | 讓 TCP 連線保持開啟的分鐘數 | 4 |
    | **浮動 IP (伺服器直接回傳)** | |啟用 |
 
    > [!WARNING]

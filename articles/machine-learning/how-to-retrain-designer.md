@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 77c1cc6ef5a7353d246958d1b047f054d5f49890
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: fb0122833dabe4030232efb3ca07557ce1826aff
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837153"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981896"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>使用 Azure Machine Learning 設計工具 (預覽) 重新定型模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,7 +38,7 @@ ms.locfileid: "82837153"
 
 ### <a name="sample-pipeline"></a>範例管線
 
-本文中使用的管線是[範例3：收入預測](samples-designer.md#classification-samples)的變更版本。 管線會使用匯[入資料](algorithm-module-reference/import-data.md)模組，而不是範例資料集，來示範如何使用您自己的資料來定型模型。
+本文中使用的管線是[範例3：收入預測](samples-designer.md#classification)的變更版本。 管線會使用匯[入資料](algorithm-module-reference/import-data.md)模組，而不是範例資料集，來示範如何使用您自己的資料來定型模型。
 
 ![顯示已修改之範例管線的螢幕擷取畫面，其中含有反白顯示 [匯入資料] 模組的方塊](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 

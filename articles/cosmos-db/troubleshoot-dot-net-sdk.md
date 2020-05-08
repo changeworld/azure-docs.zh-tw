@@ -1,21 +1,28 @@
 ---
 title: 診斷在使用 Azure Cosmos DB .NET SDK 時的問題並進行疑難排解
 description: 使用用戶端記錄和其他協力廠商工具等功能，來識別、診斷及疑難排解使用 .NET SDK 時的 Azure Cosmos DB 問題。
-author: j82w
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 03/11/2020
-ms.author: jawilley
+ms.date: 05/06/2020
+ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e015c1ee335cbdfed7964d63b1f4600bc6a4cb77
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e389df7cfe0e228030d2d0f730fc5e671ad4c052
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208732"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927627"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>診斷在使用 Azure Cosmos DB .NET SDK 時的問題並進行疑難排解
+
+> [!div class="op_single_selector"]
+> * [JAVA SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [非同步 Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [.NET](troubleshoot-dot-net-sdk.md)
+> 
+
 本文涵蓋使用[.NET SDK](sql-api-sdk-dotnet.md)搭配 AZURE COSMOS DB SQL API 帳戶時的常見問題、因應措施、診斷步驟和工具。
 .NET SDK 提供用戶端邏輯標記法來存取 Azure Cosmos DB SQL API。 此文章所說明的工具和方法，可以在您遇到任何問題時提供協助。
 

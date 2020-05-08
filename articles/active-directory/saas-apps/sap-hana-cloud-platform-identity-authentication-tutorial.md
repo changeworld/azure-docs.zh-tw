@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e92cba923bc197d82083973b3fac476ab93117ad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: db852254d7f6ec9c0cb76151fa23e58e2d97bd2c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231368"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981726"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>教學課程：Azure Active Directory 單一登入 (SSO) 與 SAP Cloud Platform Identity Authentication 整合
 
@@ -176,7 +176,7 @@ SAP Cloud Platform Identity Authentication 目前作為 SAP 應用程式的領�
 
 ## <a name="configure-sap-cloud-platform-identity-authentication-sso"></a>設定 SAP Cloud Platform Identity Authentication SSO
 
-1. 若要為您的應用程式設定 SSO，請移至 SAP Cloud Platform Identity Authentication 管理主控台。 URL 具有下列模式：`https://<tenant-id>.accounts.ondemand.com/admin`。 然後參閱位於[與 Microsoft Azure AD 整合](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/626b17331b4d4014b8790d3aea70b240.html)的 SAP Cloud Platform Identity Authentication 相關文件。
+1. 若要為您的應用程式設定 SSO，請移至 SAP Cloud Platform Identity Authentication 管理主控台。 URL 具有下列模式：`https://<tenant-id>.accounts.ondemand.com/admin`。 然後參閱位於[與 Microsoft Azure AD 整合](https://developers.sap.com/tutorials/cp-ias-azure-ad.html)的 SAP Cloud Platform Identity Authentication 相關文件。
 
 2. 在 Azure 入口網站中，選取 [儲存]  按鈕。
 
@@ -199,7 +199,7 @@ SAP Cloud Platform Identity Authentication 支援 [識別身分同盟] 選項。
 
 [識別身分同盟] 選項預設為停用。 如果已啟用 [識別身分同盟]，則只有匯入 SAP Cloud Platform Identity Authentication 的使用者可以存取應用程式。
 
-如需如何啟用或停用與 SAP Cloud Platform Identity Authentication 之識別身分同盟的詳細資訊，請參閱[設定與 SAP Cloud Platform Identity Authentication 之使用者存放區的識別身分同盟](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/en-US/c029bbbaefbf4350af15115396ba14e2.html)中的＜啟用與 SAP Cloud Platform Identity Authentication 的識別身分同盟＞。
+如需如何啟用或停用與 SAP Cloud Platform Identity Authentication 之識別身分同盟的詳細資訊，請參閱[設定與 SAP Cloud Platform Identity Authentication 之使用者存放區的識別身分同盟](https://help.sap.com/viewer/6d6d63354d1242d185ab4830fc04feb1/Cloud/c029bbbaefbf4350af15115396ba14e2.html)中的＜啟用與 SAP Cloud Platform Identity Authentication 的識別身分同盟＞。
 
 ## <a name="test-sso"></a>測試 SSO 
 

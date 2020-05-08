@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 04/30/2020
 ms.author: b-juche
-ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668011"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625513"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>建立適用於 Azure NetApp Files 的 SMB 磁碟區
 
@@ -40,7 +40,7 @@ Azure NetApp Files 支援 NFS 和 SMBv3 磁片區。 磁碟區的容量耗用量
 * 適當的埠必須在適用的 Windows Active Directory （AD）伺服器上開啟。  
     必要的埠如下所示： 
 
-    |     Service           |     連接埠     |     通訊協定     |
+    |     服務           |     連接埠     |     通訊協定     |
     |-----------------------|--------------|------------------|
     |    AD Web 服務    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
@@ -222,6 +222,23 @@ Azure NetApp Files 支援 AD 連線的[Active Directory Domain Services](https:/
     您所建立的磁片區會出現在 [磁片區] 頁面中。 
  
     磁碟區會從其容量集區繼承訂用帳戶、資源群組、位置屬性。 若要監視磁碟區部署狀態，您可以使用 [通知] 索引標籤。
+
+## <a name="control-access-to-an-smb-volume"></a>控制對 SMB 磁片區的存取  
+
+SMB 磁片區的存取權是透過許可權來管理。  
+
+### <a name="share-permissions"></a>共用權限  
+
+根據預設，新的磁片區具有 [**所有人]/[完全控制**] 共用許可權。 Domain Admins 群組的成員可以在用於 Azure NetApp Files 磁片區的電腦帳戶上，使用 [電腦管理] 來變更共用許可權。
+
+![SMB 掛接路徑](../media/azure-netapp-files/smb-mount-path.png) 
+![設定共用許可權](../media/azure-netapp-files/set-share-permissions.png) 
+
+### <a name="ntfs-file-and-folder-permissions"></a>NTFS 檔案和資料夾許可權  
+
+您可以使用 Windows SMB 用戶端中物件屬性的 [**安全性**] 索引標籤，設定檔案或資料夾的許可權。
+ 
+![設定檔案和資料夾許可權](../media/azure-netapp-files/set-file-folder-permissions.png) 
 
 ## <a name="next-steps"></a>後續步驟  
 

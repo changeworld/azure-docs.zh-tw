@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: ff6ae0de0bbd8c47b81fa5066a97eb0b3e0cf6bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 29852eb0920f7bb32464d91e0be65c7dcb03325c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204387"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627954"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio （傳統） Web 服務：部署和耗用量
 
@@ -68,7 +68,7 @@ Web 服務的 Azure Machine Learning Studio （傳統）資源提供者可讓您
 
 將它們新增至 JSON 範本做為 *Properties* 節點的子系，與 *MachineLearningWorkspace* 節點位於相同層級。
 
-範例如下：
+以下是範例：
 
     "StorageAccount": {
             "name": "YourStorageAccountName",
@@ -81,7 +81,6 @@ Web 服務的 Azure Machine Learning Studio （傳統）資源提供者可讓您
 如需更詳細的資訊，請參閱下列文章和範例程式碼：
 
 * MSDN 上的[Azure Machine Learning Studio （傳統） Cmdlet](https://docs.microsoft.com/powershell/module/az.machinelearning)參考
-* GitHub 上的範例 [逐步解說](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt)
 
 ## <a name="consume-the-web-services"></a>取用 Web 服務
 

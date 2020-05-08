@@ -7,15 +7,17 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: 78f5f6eda28bed164668445b5671dad92f8dedd7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 7a1a2aa92549bcab35532120c4af5bd0b6904f58
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77500260"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891253"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>如何將自訂技能新增至 Azure 認知搜尋擴充管線
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=172&end=221]
 
 Azure 認知搜尋中的[擴充管線](cognitive-search-concept-intro.md)可以從[內建認知技能](cognitive-search-predefined-skills.md)，以及您個人建立並新增至管線的[自訂技能](cognitive-search-custom-skill-web-api.md)來組合。 在本文中，您將瞭解如何建立自訂技能，以公開介面，讓它包含在 AI 擴充管線中。 
 
@@ -39,6 +41,10 @@ Azure 認知搜尋中的[擴充管線](cognitive-search-concept-intro.md)可以�
 目前與自訂技能互動的唯一機制是透過 Web API 介面。 Web API 的需求必須符合本節所描述的需求。
 
 ### <a name="1--web-api-input-format"></a>1. Web API 輸入格式
+
+
+> [!VIDEO https://www.youtube.com/embed/fHLCE-NZeb4?version=3&start=294&end=340]
+
 
 Web API 必須接受要處理的記錄陣列。 每一筆記錄都必須包含「屬性包」，也就是提供給 Web API 的輸入。 
 
@@ -158,6 +164,7 @@ Web API 必須接受要處理的記錄陣列。 每一筆記錄都必須包含�
 
 本文涵蓋將自訂技能整合到技能集所需的介面需求。 若要深入瞭解自訂技能和技能集組合，請按一下下列連結。
 
++ [觀看我們關於自訂技能的影片](https://youtu.be/fHLCE-NZeb4)
 + [電力技能：自訂技能的存放庫](https://github.com/Azure-Samples/azure-search-power-skills)
 + [範例：建立 AI 擴充的自訂技能](cognitive-search-create-custom-skill-example.md)
 + [如何定義技能集](cognitive-search-defining-skillset.md) (英文)

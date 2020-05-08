@@ -7,18 +7,20 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131260"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983069"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>針對 Azure 應用程式閘道的 Web 應用程式防火牆（WAF）進行疑難排解
 
 如果您要通過 Web 應用程式防火牆（WAF）的要求遭到封鎖，您可以執行幾項工作。
 
 首先，請確定您已閱讀[WAF 總覽](ag-overview.md)和[WAF](application-gateway-waf-configuration.md)設定檔。 此外，請確定您已啟用[WAF 監視](../../application-gateway/application-gateway-diagnostics.md)，這些文章會說明 WAF 的功能、WAF 規則設定的運作方式，以及如何存取 WAF 記錄。
+
+OWASP 規則集的設計是非常嚴格的現成，並使用 WAF 進行微調，以符合應用程式或組織的特定需求。 在許多情況下，它是完全正常的，而且實際上是預期的，以建立排除專案、自訂規則，甚至停用可能導致問題或誤報的規則。 「每個網站」和「每個 URI」原則允許這些變更只會影響特定的網站/Uri，因此任何變更都不會影響其他可能不會遇到相同問題的網站。 
 
 ## <a name="understanding-waf-logs"></a>瞭解 WAF 記錄
 

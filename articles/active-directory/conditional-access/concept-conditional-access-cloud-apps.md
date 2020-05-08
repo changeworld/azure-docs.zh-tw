@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b15b022726c09ccbaf9674775d114c8dd1916e1d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 022c6360b97c7c27887ff5d2f6460f69cb8126c6
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457292"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778459"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>條件式存取：雲端應用程式或動作
 
@@ -71,7 +71,7 @@ ms.locfileid: "81457292"
 
 Office 365 提供以雲端為基礎的生產力和共同作業服務，例如 Exchange、SharePoint 和 Microsoft 團隊。 Office 365 雲端服務已緊密整合，以確保順暢且共同作業的體驗。 這項整合可能會在建立原則時造成混淆，因為某些應用程式（例如 Microsoft 小組）與其他人（例如 SharePoint 或 Exchange）有相依性。
 
-Office 365 （預覽）應用程式可讓您一次將這些服務設為目標。 我們建議使用新的 Office 365 （預覽）應用程式，而不是以個別雲端應用程式為目標。 以此應用程式群組為目標，有助於避免因原則和相依性不一致而可能發生的問題。
+Office 365 （預覽）應用程式可讓您一次將這些服務設為目標。 我們建議使用新的 Office 365 （預覽）應用程式，而不是以個別雲端應用程式為目標，以避免[服務](service-dependencies.md)相依性的問題。 以此應用程式群組為目標，有助於避免因原則和相依性不一致而可能發生的問題。
 
 如果您想要加入 Office 365 （預覽）應用程式，並排除其在原則中選擇的特定應用程式，系統管理員可以選擇從原則中排除特定應用程式。
 

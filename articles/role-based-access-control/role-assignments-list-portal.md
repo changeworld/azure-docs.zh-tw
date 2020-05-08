@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure RBAC 和 Azure 入口網站列出角色指派
-description: 瞭解如何使用 Azure 角色型存取控制（RBAC）和 Azure 入口網站，判斷哪些資源的使用者、群組、服務主體或受控識別可以存取。
+title: 使用 Azure 入口網站列出 Azure 角色指派-Azure RBAC
+description: 瞭解如何使用 Azure 入口網站和 Azure 角色型存取控制（Azure RBAC）來判斷哪些資源的使用者、群組、服務主體或受控識別可以存取。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed7f2b57df97a99a73ad191e45fb900a04f8021f
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062234"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983018"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>使用 Azure RBAC 和 Azure 入口網站列出角色指派
+# <a name="list-azure-role-assignments-using-the-azure-portal"></a>使用 Azure 入口網站列出 Azure 角色指派
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]本文說明如何使用 Azure 入口網站列出角色指派。
 
@@ -32,7 +32,9 @@ ms.locfileid: "80062234"
 
 若要查看指派給訂用帳戶中使用者或群組的角色，最簡單的方式是使用 [ **Azure 資源**] 窗格。
 
-1. 在 [Azure 入口網站中，按一下 [**所有服務**]，然後選取 [**使用者**或**群組**]。
+1. 在 [Azure 入口網站中，從 [Azure 入口網站] 功能表中選取 [**所有服務**]。
+
+1. 選取 [ **Azure Active Directory** ]，然後選取 [**使用者**或**群組**]。
 
 1. 按一下您要列出角色指派的使用者或群組。
 
@@ -138,5 +140,5 @@ ms.locfileid: "80062234"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [使用 Azure RBAC 和 Azure 入口網站新增或移除角色指派](role-assignments-portal.md)
-- [針對適用於 Azure 資源的 RBAC 進行疑難排解](troubleshooting.md)
+- [使用 Azure 入口網站新增或移除 Azure 角色指派](role-assignments-portal.md)
+- [針對 Azure RBAC 進行疑難排解](troubleshooting.md)

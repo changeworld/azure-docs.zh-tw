@@ -1,20 +1,20 @@
 ---
-title: 在商業 Marketplace 中將 Azure 應用程式的 API 上架
-description: 在 Microsoft 合作夥伴中心的商業 marketplace 中，Azure 應用程式的 API 必要條件。
+title: 在 Microsoft 商業 marketplace 中將 Azure 應用程式上架的合作夥伴中心提交 API
+description: 瞭解在 Microsoft 合作夥伴中心的商業 marketplace 中使用適用于 Azure 應用程式的合作夥伴中心提交 API 的必要條件。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279754"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744885"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>在合作夥伴中心將 Azure 應用程式上架的 API
+# <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>合作夥伴中心提交 API 以在合作夥伴中心內架 Azure 應用程式
 
 使用*合作夥伴中心提交 API*以程式設計方式查詢、建立提交，併發布 Azure 供應專案。  如果您的帳戶管理許多供應專案，而您想要將這些供應專案的提交程式自動化並優化，此 API 會很有用。
 
@@ -70,3 +70,8 @@ grant_type=client_credentials
 擁有 Azure AD 的存取權杖之後，您可以在合作夥伴中心提交 API 中呼叫方法。 若要建立或更新提交，您通常會以特定順序在合作夥伴中心提交 API 中呼叫多個方法。 如需每個案例的詳細資訊和每個方法的語法，請參閱內嵌 API swagger。
 
 https://apidocs.microsoft.com/services/partneringestion/
+
+## <a name="next-steps"></a>後續步驟
+
+* 瞭解如何建立[AZURE VM 技術資產](create-azure-container-technical-assets.md)
+* 瞭解 hoe 以建立[Azure 容器供應](create-azure-container-offer.md)專案

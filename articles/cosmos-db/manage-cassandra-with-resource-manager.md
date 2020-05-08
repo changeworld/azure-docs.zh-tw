@@ -4,243 +4,54 @@ description: 使用 Azure Resource Manager 範本來建立和設定 Azure Cosmos
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: ff75597bece386635195a84572a9f07b04d9c60f
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: f16dec74b15f4945b54fe1423835fd8f5c8d96f1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200800"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791267"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>使用 Azure Resource Manager 範本管理 Azure Cosmos DB Cassandra API 資源
 
-本文說明如何使用 Azure Resource Manager 範本來執行不同的作業，以自動化管理您的 Azure Cosmos DB 帳戶、資料庫和容器。 本文僅提供 Cassandra API 帳戶的範例，若要尋找其他 API 類型帳戶的範例，請參閱：搭配使用 Azure Resource Manager 範本與適用于[SQL](manage-sql-with-resource-manager.md)的 Azure Cosmos DB API、 [Gremlin](manage-gremlin-with-resource-manager.md)、 [MongoDB](manage-mongodb-with-resource-manager.md)、[資料表](manage-table-with-resource-manager.md)發行項。
+在本文中，您將瞭解如何使用 Azure Resource Manager 範本來協助部署和管理您的 Azure Cosmos DB 帳戶、keyspace 和資料表。
 
-## <a name="create-azure-cosmos-account-keyspace-and-table"></a>建立 Azure Cosmos 帳戶、keyspace 和資料表<a id="create-resource"></a>
+本文僅提供 Cassandra API 帳戶的範例，若要尋找其他 API 類型帳戶的範例，請參閱：搭配使用 Azure Resource Manager 範本與適用于[SQL](manage-sql-with-resource-manager.md)的 Azure Cosmos DB API、 [Gremlin](manage-gremlin-with-resource-manager.md)、 [MongoDB](manage-mongodb-with-resource-manager.md)、[資料表](manage-table-with-resource-manager.md)發行項。
 
-使用 Azure Resource Manager 範本建立 Azure Cosmos DB 資源。 此範本會為 Cassandra API 建立 Azure Cosmos 帳戶，其中包含兩個數據表，在 keyspace 層級共用 400 RU/秒的輸送量。 複製範本並如下所示部署，或造訪[Azure 快速入門資源庫](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/)，並從 Azure 入口網站進行部署。 您也可以將範本下載到本機電腦，或使用`--template-file`參數來建立新的範本，並指定本機路徑。
+> [!IMPORTANT]
+>
+> * 帳戶名稱限制為44個字元，全部小寫。
+> * 若要變更輸送量值，請使用已更新的 RU/秒來重新部署範本。
+> * 當您新增或移除 Azure Cosmos 帳戶的位置時，您無法同時修改其他屬性。 這些作業必須分別執行。
 
-> [!NOTE]
-> 帳戶名稱必須是小寫、44或較少的字元。
-> 若要更新 RU/秒，請重新提交具有已更新輸送量屬性值的範本。
+若要建立下列任何 Azure Cosmos DB 資源，請將下列範例範本複製到新的 json 檔案中。 當您使用不同的名稱和值來部署相同資源的多個實例時，可以選擇性地建立參數 json 檔案以供使用。 有許多方式可以部署 Azure Resource Manager 範本，包括、 [Azure 入口網站](../azure-resource-manager/templates/deploy-portal.md)、 [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)、 [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)和[GitHub](../azure-resource-manager/templates/deploy-to-azure-button.md)。
 
-```json
-{
-"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-"contentVersion": "1.0.0.0",
-"parameters": {
-    "accountName": {
-        "type": "string",
-        "defaultValue": "",
-        "metadata": {
-            "description": "Cosmos DB account name, max length 44 characters"
-        }
-    },
-    "location": {
-        "type": "string",
-        "defaultValue": "[resourceGroup().location]",
-        "metadata": {
-            "description": "Location for the Cosmos DB account."
-        }
-    },
-    "primaryRegion":{
-        "type":"string",
-        "metadata": {
-            "description": "The primary replica region for the Cosmos DB account."
-        }
-    },
-    "secondaryRegion":{
-        "type":"string",
-        "metadata": {
-          "description": "The secondary replica region for the Cosmos DB account."
-      }
-    },
-    "defaultConsistencyLevel": {
-        "type": "string",
-        "defaultValue": "Session",
-        "allowedValues": [ "Eventual", "ConsistentPrefix", "Session", "BoundedStaleness", "Strong" ],
-        "metadata": {
-            "description": "The default consistency level of the Cosmos DB account."
-        }
-    },
-    "maxStalenessPrefix": {
-        "type": "int",
-        "defaultValue": 100000,
-        "minValue": 10,
-        "maxValue": 1000000,
-        "metadata": {
-            "description": "Max stale requests. Required for BoundedStaleness. Valid ranges, Single Region: 10 to 1000000. Multi Region: 100000 to 1000000."
-        }
-    },
-    "maxIntervalInSeconds": {
-        "type": "int",
-        "defaultValue": 300,
-        "minValue": 5,
-        "maxValue": 86400,
-        "metadata": {
-            "description": "Max lag time (seconds). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
-        }
-    },
-    "automaticFailover": {
-        "type": "bool",
-        "defaultValue": true,
-        "allowedValues": [ true, false ],
-        "metadata": {
-            "description": "Enable automatic failover for regions"
-        }
-    },
-    "keyspaceName": {
-        "type": "string",
-        "defaultValue": "Keyspace1",
-        "metadata": {
-            "description": "The name for the Cassandra Keyspace"
-        }
-    },
-    "tableName": {
-        "type": "string",
-        "defaultValue": "Table1",
-        "metadata": {
-            "description": "The name for the Cassandra table"
-        }
-    },
-    "throughput": {
-        "type": "int",
-        "defaultValue": 400,
-        "minValue": 400,
-        "maxValue": 1000000,
-        "metadata": {
-            "description": "The throughput for the Cassandra table"
-        }
-    }
-},
-"variables": {
-    "accountName": "[toLower(parameters('accountName'))]",
-    "consistencyPolicy": {
-        "Eventual": {
-            "defaultConsistencyLevel": "Eventual"
-        },
-        "ConsistentPrefix": {
-            "defaultConsistencyLevel": "ConsistentPrefix"
-        },
-        "Session": {
-            "defaultConsistencyLevel": "Session"
-        },
-        "BoundedStaleness": {
-            "defaultConsistencyLevel": "BoundedStaleness",
-            "maxStalenessPrefix": "[parameters('maxStalenessPrefix')]",
-            "maxIntervalInSeconds": "[parameters('maxIntervalInSeconds')]"
-        },
-        "Strong": {
-            "defaultConsistencyLevel": "Strong"
-        }
-    },
-    "locations":
-    [
-        {
-            "locationName": "[parameters('primaryRegion')]",
-            "failoverPriority": 0,
-            "isZoneRedundant": false
-        },
-        {
-            "locationName": "[parameters('secondaryRegion')]",
-            "failoverPriority": 1,
-            "isZoneRedundant": false
-        }
-    ]
-},
-"resources":
-[
-    {
-        "type": "Microsoft.DocumentDB/databaseAccounts",
-        "name": "[variables('accountName')]",
-        "apiVersion": "2020-03-01",
-        "location": "[parameters('location')]",
-        "kind": "GlobalDocumentDB",
-        "properties": {
-            "capabilities": [{ "name": "EnableCassandra" }],
-            "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
-            "locations": "[variables('locations')]",
-            "databaseAccountOfferType": "Standard",
-            "enableAutomaticFailover": "[parameters('automaticFailover')]"
-        }
-    },
-    {
-        "type": "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces",
-        "name": "[concat(variables('accountName'), '/', parameters('keyspaceName'))]",
-        "apiVersion": "2020-03-01",
-        "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/', variables('accountName'))]" ],
-        "properties":{
-            "resource":{
-                "id": "[parameters('keyspaceName')]"
-            }
-        }
-    },
-    {
-        "type": "Microsoft.DocumentDb/databaseAccounts/cassandraKeyspaces/tables",
-        "name": "[concat(variables('accountName'), '/', parameters('keyspaceName'), '/', parameters('tableName'))]",
-        "apiVersion": "2020-03-01",
-        "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces', variables('accountName'), parameters('keyspaceName'))]" ],
-        "properties":
-        {
-            "resource":{
-                "id":  "[parameters('tableName')]",
-                "schema": {
-                    "columns": [
-                        { "name": "loadid", "type": "uuid" },
-                        { "name": "machine", "type": "uuid" },
-                        { "name": "cpu", "type": "int" },
-                        { "name": "mtime", "type": "int" },
-                        { "name": "load", "type": "float" }
-                    ],
-                    "partitionKeys": [
-                        { "name": "machine" },
-                        { "name": "cpu" },
-                        { "name": "mtime" }
-                    ],
-                    "clusterKeys": [
-                        { "name": "loadid", "orderBy": "asc" }
-                    ]
-                },
-                "options": { "throughput": "[parameters('throughput')]" }
-            }
-        }
-    }
-]
-}
-```
+<a id="create-autoscale"></a>
 
-## <a name="deploy-with-the-azure-cli"></a>使用 Azure CLI 部署
+## <a name="azure-cosmos-account-for-cassandra-with-autoscale-provisioned-throughput"></a>適用于 Cassandra 的 Azure Cosmos 帳戶，具有自動調整布建的輸送量
 
-若要使用 Azure CLI 部署 Azure Resource Manager 範本，請**複製**腳本，然後選取 [**試試看**] 以開啟 Azure Cloud Shell。 若要貼上腳本，請以滑鼠右鍵按一下 shell，然後選取 [**貼**上]：
+此範本會在兩個區域中建立 Azure Cosmos 帳戶，其中包含一致性和容錯移轉的選項，並已針對自動調整輸送量設定 keyspace 和資料表。 此範本也適用于從 Azure 快速入門範本資源庫中按一下 [部署]。
 
-```azurecli-interactive
+[![部署至 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra-autosscale%2Fazuredeploy.json)
 
-read -p 'Enter the Resource Group name: ' resourceGroupName
-read -p 'Enter the location (i.e. westus2): ' location
-read -p 'Enter the account name: ' accountName
-read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
-read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
-read -p 'Enter the keyspace name: ' keyspaceName
-read -p 'Enter the table name: ' tableName
-read -p 'Enter the throughput: ' throughput
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra-autoscale/azuredeploy.json":::
 
-az group create --name $resourceGroupName --location $location
-az group deployment create --resource-group $resourceGroupName \
-   --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-cassandra/azuredeploy.json \
-   --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion keyspaceName=$keyspaceName \
-   tableName=$tableName throughput=$throughput
+<a id="create-manual"></a>
 
-az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
-```
+## <a name="azure-cosmos-account-for-cassandra-with-standard-manual-provisioned-throughput"></a>適用于 Cassandra 的 Azure Cosmos 帳戶，具有標準（手動）布建的輸送量
 
-此`az cosmosdb show`命令會在布建完成後，顯示新建立的 Azure Cosmos 帳戶。 如果您選擇使用本機安裝的 Azure CLI 版本，而不是使用 Cloud Shell，請參閱[Azure CLI](/cli/azure/)文章。
+此範本會在兩個區域中建立 Azure Cosmos 帳戶，其中包含一致性和容錯移轉的選項，並已針對標準輸送量設定 keyspace 和資料表。 此範本也適用于從 Azure 快速入門範本資源庫中按一下 [部署]。
+
+[![部署至 Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra%2Fazuredeploy.json)
+
+:::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json":::
 
 ## <a name="next-steps"></a>後續步驟
 
 以下是一些其他資源：
 
-- [Azure Resource Manager 文件](/azure/azure-resource-manager/)
-- [Azure Cosmos DB 資源提供者架構](/azure/templates/microsoft.documentdb/allversions)
-- [Azure Cosmos DB 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [針對常見 Azure Resource Manager 部署錯誤進行疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)
+* [Azure Resource Manager 文件](/azure/azure-resource-manager/)
+* [Azure Cosmos DB 資源提供者架構](/azure/templates/microsoft.documentdb/allversions)
+* [Azure Cosmos DB 快速入門範本](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+* [針對常見 Azure Resource Manager 部署錯誤進行疑難排解](../azure-resource-manager/templates/common-deployment-errors.md)

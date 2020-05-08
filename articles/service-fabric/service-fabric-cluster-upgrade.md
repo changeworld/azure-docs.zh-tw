@@ -4,12 +4,12 @@ description: 瞭解如何升級 Azure Service Fabric 叢集的版本或設定：
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.custom: sfrev
-ms.openlocfilehash: 6897854820339fc78dd9083c82147dce95ab68b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d92ac90e0e41d534231bafbe991a05764dbee07d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258651"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789550"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>升級和更新 Azure Service Fabric 叢集
 
@@ -105,7 +105,7 @@ Service Fabric 會使用您建立叢集時指定的 [X.509 伺服器憑證](serv
 ## <a name="next-steps"></a>後續步驟
 
 * 瞭解如何自訂一些[service fabric 叢集網狀架構設定](service-fabric-cluster-fabric-settings.md)
-* 了解如何 [相應放大和相應縮小叢集](service-fabric-cluster-scale-up-down.md)
+* 了解如何 [相應放大和相應縮小叢集](service-fabric-cluster-scale-in-out.md)
 * 瞭解[應用程式升級](service-fabric-application-upgrade.md)
 
 <!--Image references-->
