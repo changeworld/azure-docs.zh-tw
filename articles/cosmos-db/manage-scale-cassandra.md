@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 94cdeff36553268d691fc968036c5264e77fddc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13d7e0bfd3c7061d9dec68a1d14ff2a5e2c05fcd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188802"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791250"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>彈性調整 Azure Cosmos DB Cassandra API 帳戶
 
@@ -58,9 +58,9 @@ Azure Cosmos DB 的 Cassandra API 可讓您使用各種控制平面功能，以�
 
 這種方法的優點是，它可讓您以符合您應用程式的自訂方式，動態回應規模需求。 使用這種方法，您仍然可以利用標準 RU/秒的費用和費率。 如果您的系統規模需求大多是可預測的（大約70% 或以上），使用 SDK 搭配 CQL 可能會比使用自動調整更符合成本效益的方式來進行自動調整。 這種方法的缺點是，在速率限制的情況下執行重試，可能會增加延遲。
 
-## <a name="use-autoscale"></a><a id="use-autoscale"></a>使用自動調整
+## <a name="use-autoscale-provisioned-throughput"></a><a id="use-autoscale"></a>使用自動調整布建輸送量
 
-除了手動或以程式設計方式布建輸送量，您也可以在自動調整模式中設定 Azure cosmos 容器。 自動調整模式會在所指定的 RU 範圍內自動且立即擴充為您的耗用量需求，而不會影響 Sla。 若要深入瞭解，請參閱在[自動調整模式中建立 Azure Cosmos 容器和資料庫](provision-throughput-autoscale.md)一文。
+除了標準（手動）或以程式設計方式布建輸送量以外，您也可以在自動調整布建的輸送量中設定 Azure cosmos 容器。 自動調整會自動並立即在指定的 RU 範圍內，以滿足您的耗用量需求，而不會影響 Sla。 若要深入瞭解，請參閱在[自動調整中建立 Azure Cosmos 容器和資料庫](provision-throughput-autoscale.md)一文。
 
 這種方法的優點是，它是在您的系統中管理調整需求的最簡單方式。 它保證不會**在設定的 RU 範圍內**套用速率限制。 缺點是，如果您的系統中的調整需求是可預測的，則自動調整規模可能會比使用上述的定制控制平面或 SDK 層級方法更符合成本效益的方式來處理縮放需求。
 

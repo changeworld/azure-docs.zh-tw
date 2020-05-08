@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 17a96479b80410cbfcb2a6061904491f95c45f10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5820856f7d4c51e41162f01a9687304cb223088
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116259"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791913"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 認知搜尋索引子的欄位對應和轉換
 
@@ -28,7 +28,7 @@ ms.locfileid: "82116259"
 * 您必須以 Base64 格式編碼或解碼資料。 欄位對應支援數個 **對應函式**，包括 Base64 編碼和解碼的函式。
 
 > [!NOTE]
-> 索引子中的欄位對應是一個簡單的方式，可將資料欄位對應至索引欄位，並提供一些輕量資料轉換的功能。 較複雜的資料可能需要預先處理，才能將其重新調整為採用遭利用編制索引的表單。 您可以考慮的其中一個選項是[Azure Data Factory](https://docs.microsoft.com/zure/data-factory/)。
+> 索引子中的欄位對應是一個簡單的方式，可將資料欄位對應至索引欄位，並提供一些輕量資料轉換的功能。 較複雜的資料可能需要預先處理，才能將其重新調整為採用遭利用編制索引的表單。 您可以考慮的其中一個選項是[Azure Data Factory](https://docs.microsoft.com/azure/data-factory/)。
 
 ## <a name="set-up-field-mappings"></a>設定欄位對應
 

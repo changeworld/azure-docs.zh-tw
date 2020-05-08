@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef8196cebfbdda72f98fee0e9c75bcb80172a55e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416079"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791454"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics （先前稱為 SQL DW）常見問題
 
@@ -23,11 +23,11 @@ ms.locfileid: "81416079"
 
 Q. 什麼是 Azure Synapse？
 
-A. Azure Synapse 是一種無限制的分析服務，可將資料倉儲與海量資料分析整合在一起。 它可讓您自由地使用無伺服器隨選或布建的資源大規模來查詢您的資料。 Azure Synapse 會將這兩個世界結合在一起，透過整合的經驗擷取、準備、管理和處理資料，以滿足立即的 BI 和機器學習需求。 如需詳細資訊，請參閱[什麼是 Azure Synapse 分析](sql-data-warehouse-overview-what-is.md)。
+A. Azure Synapse 是一種分析服務，可將資料倉儲與海量資料分析整合在一起。 Azure Synapse 將這兩個世界結合在一起，以整合、準備、管理和提供資料，以滿足 BI 和機器學習需求。 如需詳細資訊，請參閱[什麼是 Azure Synapse 分析](sql-data-warehouse-overview-what-is.md)。
 
 Q. Azure SQL 資料倉儲發生什麼事？
 
-A. Azure Synapse 已演變 Azure SQL 資料倉儲（SQL DW）。 我們已將相同業界領先的資料倉儲帶到全新層級的效能和功能。 您可以使用 Azure Synapse 繼續在生產環境中執行現有的資料倉儲工作負載，並自動受益于目前處於預覽狀態的新功能。 如需詳細資訊，請參閱[什麼是 Azure Synapse 分析](sql-data-warehouse-overview-what-is.md)。
+A. Azure Synapse 已演變 Azure SQL 資料倉儲（SQL DW）。 我們已將相同業界領先的資料倉儲帶到全新層級的效能和功能。 您可以使用 Azure Synapse 繼續在生產環境中執行現有的資料倉儲工作負載。 如需詳細資訊，請參閱[什麼是 Azure Synapse 分析](sql-data-warehouse-overview-what-is.md)。
 
 Q. 什麼是 Synapse SQL 集區？
 
@@ -43,8 +43,7 @@ A. Azure Synapse 提供數個解決方案來保護資料，例如 TDE 和審核�
 
 Q. 哪裡可以找到 Azure Synapse 符合的法律或商業標準？
 
-A. 請造訪 [Microsoft 合規性](https://www.microsoft.com/trustcenter/compliance/complianceofferings)頁面，依產品取得不同的合規性供應項目，例如 SOC 和 ISO。
-首先，選擇 [依合規性標題]。 然後在頁面右側的 [Microsoft 內部範圍雲端服務] 區段中展開 [Azure]，以查看哪些服務符合 Azure Synapse 規範。
+A. 請造訪 [Microsoft 合規性](https://www.microsoft.com/trustcenter/compliance/complianceofferings)頁面，依產品取得不同的合規性供應項目，例如 SOC 和 ISO。 首先，選擇 [依合規性標題]。 然後在頁面右側的 [Microsoft 內部範圍雲端服務] 區段中展開 [Azure]，以查看哪些服務符合 Azure Synapse 規範。
 
 Q. 我可以連接 Power BI 嗎？
 
@@ -86,7 +85,7 @@ A. 支援許多功能。 不支援的功能可以在不支援的[資料表功能
 
 Q. Synapse SQL 集區是否支援 REST Api？
 
-A. 是。 可搭配 SQL Database 使用的大部分 REST 功能也適用于 Synapse SQL 集區。 您可以在 REST 檔頁面或[資料庫](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中找到 API 資訊。
+A. 可以。 可搭配 SQL Database 使用的大部分 REST 功能也適用于 Synapse SQL 集區。 您可以在 REST 檔頁面或[資料庫](/rest/api/sql/databases?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)中找到 API 資訊。
 
 ## <a name="loading"></a>載入
 

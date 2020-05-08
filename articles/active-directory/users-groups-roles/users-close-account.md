@@ -1,5 +1,5 @@
 ---
-title: 關閉非受控 Azure AD 目錄中的工作或學校帳戶
+title: 關閉非受控 Azure AD 組織中的工作或學校帳戶
 description: 如何在非受控 Azure Active Directory 中關閉您的公司或學校帳戶。
 services: active-directory
 author: rolyon
@@ -13,18 +13,18 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 11c337f4838279771523a1f375b7349387d68f45
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73815729"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582544"
 ---
-# <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>關閉非受控目錄中的工作或學校帳戶
+# <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>關閉非受控 Azure AD 組織中的公司或學校帳戶
 
-如果您是非受控 Azure Active Directory （Azure AD）組織中的使用者，且不再需要使用該組織的應用程式或維護其任何關聯，您可以隨時關閉您的帳戶。 非受控目錄沒有全域管理員。 非受控目錄中的使用者可以自行關閉其帳戶，而不需要洽詢系統管理員。
+如果您是非受控 Azure Active 組織（Azure AD）組織中的使用者，而且您不再需要使用該組織的應用程式或維護其任何關聯，您可以隨時關閉您的帳戶。 未受管理的組織沒有全域管理員。 非受控組織中的使用者可以自行關閉其帳戶，而不需要洽詢系統管理員。
 
-在自助式註冊期間，通常會建立非受控目錄中的使用者。 其中一個範例可能是註冊免費服務之組織中的資訊工作者。 如需自助式註冊的詳細資訊，請參閱[什麼是適用于 Azure Active Directory 的自助式註冊？](directory-self-service-signup.md)。
+在自助式註冊期間，通常會建立非受控組織中的使用者。 其中一個範例可能是註冊免費服務之組織中的資訊工作者。 如需自助式註冊的詳細資訊，請參閱[什麼是適用于 Azure Active Directory 的自助式註冊？](directory-self-service-signup.md)。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -32,7 +32,7 @@ ms.locfileid: "73815729"
 
 在關閉帳戶之前，您應該確認下列專案：
 
-* 請確定您是非受控 Azure AD 目錄的使用者。 如果您屬於受控目錄，就無法關閉您的帳戶。 如果您屬於受控目錄，而且想要關閉您的帳戶，您必須洽詢您的系統管理員。 如需如何判斷您是否屬於非受控目錄的詳細資訊，請參閱[從非受控租使用者中刪除使用者](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)。
+* 請確定您是非受控 Azure AD 組織的使用者。 如果您屬於受管理的組織，就無法關閉您的帳戶。 如果您屬於受管理的組織，而且想要關閉帳戶，您必須洽詢您的系統管理員。 如需如何判斷您是否屬於非受控組織的相關資訊，請參閱[從非受控租使用者刪除使用者](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant)。
 
 * 儲存您想要保留的任何資料。 如需如何提交匯出要求的相關資訊，請參閱[存取和匯出非受控租使用者的系統產生記錄](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants)檔。
 

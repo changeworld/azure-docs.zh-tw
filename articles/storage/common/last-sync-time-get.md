@@ -1,27 +1,27 @@
 ---
 title: 檢查儲存體帳戶的上次同步處理時間屬性
 titleSuffix: Azure Storage
-description: 瞭解如何檢查異地複寫儲存體帳戶的 [**上次同步時間**] 屬性。 [**上次同步時間**] 屬性會指出上次從主要區域寫入到次要區域的時間。
+description: 瞭解如何檢查異地複寫儲存體帳戶的 [上次同步時間] 屬性。 [上次同步時間] 屬性會指出上次從主要區域寫入到次要區域的時間。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/16/2019
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3a406ce6db060b9ff5be7bcadecb6c7ff7e65a1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afcadd55e87579b25f03176fa3227024863b90fb
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77165484"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858516"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>檢查儲存體帳戶的上次同步處理時間屬性
 
 當您設定儲存體帳戶時，您可以指定將資料複製到與主要區域相距數百英里的次要地區。 異地複寫可在主要區域發生重大中斷（例如自然災害）時，為您的資料提供持久性。 如果您另外啟用次要區域的讀取權限，當主要區域變成無法使用時，您的資料仍可供讀取作業使用。 如果主要區域沒有回應，您可以將應用程式設計成從次要區域順暢地切換，以進行讀取。
 
-異地多餘儲存體（GRS）和異地區域冗余儲存體（切換）（預覽）都會以非同步方式將您的資料複寫至次要區域。 如需次要區域的讀取權限，請啟用讀取權限異地多餘儲存體（RA-GRS）或讀取權限異地區域-多餘儲存體（RA-切換）。 如需 Azure 儲存體所提供的各種冗余選項的詳細資訊，請參閱[Azure 儲存體冗余](storage-redundancy.md)。
+異地冗余儲存體（GRS）和異地區域冗余儲存體（切換）都會以非同步方式將您的資料複寫至次要區域。 如需次要區域的讀取權限，請啟用讀取權限異地多餘儲存體（RA-GRS）或讀取權限異地區域-多餘儲存體（RA-切換）。 如需 Azure 儲存體所提供的各種冗余選項的詳細資訊，請參閱[Azure 儲存體冗余](storage-redundancy.md)。
 
 本文說明如何檢查儲存體帳戶的 [**上次同步時間**] 屬性，讓您可以評估主要和次要區域之間的任何差異。
 
@@ -37,10 +37,10 @@ ms.locfileid: "77165484"
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-若要使用 PowerShell 取得儲存體帳戶的上次同步處理時間，請安裝支援取得異地複寫統計資料的 Azure 儲存體預覽模組。例如：
+若要使用 PowerShell 取得儲存體帳戶的上次同步處理時間，請安裝支援取得異地複寫統計資料的 Az. Storage 模組版本。例如：
 
 ```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
+Install-Module Az.Storage –Repository PSGallery -RequiredVersion ??? –AllowPrerelease –AllowClobber –Force
 ```
 
 然後檢查儲存體帳戶的**GeoReplicationStats. LastSyncTime**屬性。 請記得使用您自己的值來取代預留位置值：
@@ -70,4 +70,4 @@ $lastSyncTime=$(az storage account show \
 
 - [Azure 儲存體的冗余](storage-redundancy.md)
 - [變更儲存體帳戶的冗余選項](redundancy-migration.md)
-- [使用讀取權限異地多餘儲存體設計高可用性應用程式](storage-designing-ha-apps-with-ragrs.md)
+- [使用異地冗余來設計高可用性應用程式](geo-redundant-design.md)

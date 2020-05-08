@@ -6,52 +6,48 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 3e400f62ed4afcb40d5d68aeb357d47083445802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad5ed2b45a182c1f33f33ca1f6d4e3212c61b6a2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76988170"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791726"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL 移轉和應用程式開發合作夥伴
 
 要從 NoSQL 移轉到應用程式開發，您有各式各樣資深的系統整合者合作夥伴和工具可以選擇，以支援您 Azure Cosmos DB 的解決方案。 
 
-## <a name="migration-tools"></a>移轉工具
-
-|**合作夥伴**  |**功能和體驗**  |**支援的國家/區域**  |**Contact**  |
-|---------|---------|---------|---------|
-|![Striim][2]    |  從各種資料來源[將即時資料移至 Azure Cosmos DB](https://www.striim.com/striim-for-azure-cosmos-db/)。 <br/> Striim 可簡化從各種內部部署來源（包括企業檔和關係資料庫、感應器和記錄檔）到 Azure Cosmos DB 的即時收集和移動資料。 |   USA   |  [網站](https://www.striim.com/)       |
-
 ## <a name="systems-integrator-partners"></a>系統整合者合作夥伴
 
-|**合作夥伴**  |**功能和體驗**  |**支援的國家/區域**  |**Contact**  |
-|---------|---------|---------|---------|
-| ![10thMagnitude][13] | NoSQL 移轉；新的應用程式開發 | USA | [網站](https://www.10thmagnitude.com/)|
-|![Altoros 開發 LLC][3]    |  NoSQL 移轉、 <br/> 應用程式創新 (現有的應用程式)、 <br/> 新的應用程式開發 |   美國、挪威、芬蘭、白俄羅斯、阿根廷 |  [網站](https://www.altoros.com/)     |
-|![Attunix Redapt][4]     |   NoSQL 移轉、 <br/> 應用程式創新 (現有的應用程式)、 <br/> 新的應用程式開發      |    USA     |  [網站](https://www.attunix.com/)       |
-| ![Avanade][26] | 新的應用程式開發， <br/> 應用程式創新 (現有的應用程式) | 奧地利、德國、瑞士、義大利、挪威、西班牙、英國 | [網站](https://www.avanade.com/)
-|![Bluemetal Architects][5]     |  NoSQL 移轉、 <br/> 應用程式創新 (現有的應用程式)、 <br/> 新的應用程式開發       |    北美洲、亞太地區     |  [網站](https://www.bluemetal.com/)       |
-|![Capax Global LLC][6]     |  NoSQL 移轉、 <br/> 應用程式創新 (現有的應用程式)、 <br/> 新的應用程式開發       |    USA     |  [網站](https://www.capaxglobal.com/)       |
-| ![Capgemini][14] | NoSQL 移轉；應用程式創新 (現有的應用程式)；新的應用程式開發 | 美國、法國、英國、荷蘭、芬蘭  | [網站](https://www.capgemini.com/) | 
-|![Coeo][7]     |   應用程式創新 (現有的應用程式)、 <br/> 新的應用程式開發 |    英國     |  [網站](https://www.coeo.com/)       |
-| ![Cognizant][15] | NoSQL 移轉 |美國、加拿大、英國、丹麥、荷蘭、瑞士、澳洲、日本 | [網站](https://www.cognizant.com/)|
-|![Infosys][8]     |  NoSQL 移轉       |    全域     |  [網站](https://www.infosys.com/)       |
-| ![Lagash][16] | NoSQL 移轉、 <br/> 新的應用程式開發 | 阿根廷、智利、哥倫比亞、墨西哥| [網站](https://www.lagash.com/)|
-| ![Lambda3 Informatics][17] | NoSQL 移轉、 <br/> 新的應用程式開發 | 巴西| [網站](https://www.lambda3.com.br/)|
-|![Neal Analytics][9]     |     新增發展 (新的應用程式)    |    USA     |  [網站](https://www.nealanalytics.com/)       |
-|![Pragmatic Works Software Inc][10]    |   NoSQL 移轉      |   USA      |  [網站](https://www.pragmaticworks.com/)       |
-| ![Ricoh Global][18] | NoSQL 移轉、 <br/> 應用程式創新 (現有的應用程式)| 英國  | [網站](https://www.ricoh.com/)|
-| ![SNP Technologies][19] | NoSQL 移轉| US | [網站](https://www.snp.com/)|
-| ![Solidsoft Reply][20] | NoSQL 移轉 | 克羅埃西亞、瑞典、丹麥、愛爾蘭、保加利亞、斯洛維尼亞、賽普勒斯、馬爾他、立陶宛、捷克共和國、冰島、瑞士和列支敦斯登| [網站](https://www.reply.com/solidsoft-reply/)|
-| ![西班牙文點技術][21] | NoSQL 移轉| 愛爾蘭| [網站](https://www.spanishpoint.ie/)|
-| ![Syone][22] | NoSQL 移轉| 葡萄牙| [網站](https://www.syone.com/)|
-|![Tallan][11]    |  NoSQL 移轉、 <br/> 應用程式創新 (現有的應用程式)、 <br/> 新的應用程式開發       |    USA     |  [網站](https://www.tallan.com/)       |
-| ![TCS][23] | 應用程式創新 (現有的應用程式)、 <br/> 新的應用程式開發 | 美國、英國、法國、馬來西亞、丹麥、挪威、瑞典| [網站](https://www.tcs.com/)|
-|![VTeamLabs][12]    | NoSQL 移轉       |  USA      | [網站](https://www.vteamlabs.com/)       |
-| ![White Duck][24] |NoSQL 移轉、 <br/> 新的應用程式開發 | 德國 | [網站](https://whiteducksoftware.com/)|
-| ![Xpand IT][25] | 新的應用程式開發 | 葡萄牙、英國| [網站](https://www.xpand-it.com/)|
-
+|**Partner**  |**功能和體驗**  |**支援的國家/區域**  |
+|---------|---------|---------|
+|[Striim](https://www.striim.com/)    |  連續的即時資料移動，資料移轉|   USA   |
+| [10thMagnitude](https://www.10thmagnitude.com/) | IoT，零售（清查），操作分析（Spark），無伺服器架構，應用程式開發 | USA |
+|[Altoros 開發 LLC](https://www.altoros.com/)  |  IoT，個人化零售（清查），無伺服器架構 NoSQL 遷移，應用程式開發|   USA |
+|[Avanade](https://www.avanade.com/) | IoT，零售（清查），無伺服器架構，應用程式開發 | 奧地利、德國、瑞士、義大利、挪威、西班牙、英國、加拿大 |
+|[Accenture](https://www.accenture.com/) | IoT，零售（清查），無伺服器架構，應用程式開發 |全域|
+|[Bluemetal](https://www.bluemetal.com/)     |  IoT，個人化零售（清查），適用于 Enterprise & SMC 的作業分析，AI 影像注釋，資產控制，NoSQL 遷移，應用程式開發     |    北美洲、亞太地區     |
+|[Capax Global LLC](https://www.capaxglobal.com/) | IoT，個人化，零售（清查），操作分析（Spark），無伺服器架構，應用程式開發|    USA     |  
+| [Capgemini](https://www.capgemini.com/) | 零售（清查），IoT，操作分析（Spark），應用程式開發 | 美國、法國、英國、荷蘭、芬蘭  |
+| [Cognizant](https://www.cognizant.com/) | IoT，個人化，零售（清查），營運分析（Spark），應用程式開發 |美國、加拿大、英國、丹麥、荷蘭、瑞士、澳大利亞、日本 |
+|[Infosys](https://www.infosys.com/)     | 應用程式開發      |    USA    |  
+| [Lagash 系統](https://www.lagash.com/) | IoT，無伺服器架構，應用程式開發 | 阿根廷、智利、哥倫比亞、墨西哥|
+| [Lambda3 Informatics](https://www.lambda3.com.br/) | 即時個人化，零售庫存，應用程式開發 | 巴西|
+|[Neal Analytics](https://www.nealanalytics.com/)    |     個人化，零售（清查），作業分析（Spark），應用程式開發  |    USA     |  
+|[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL 移轉      |   USA      |
+| [Ricoh 數位服務](https://www.ricoh.com/) | IoT，即時個人化，零售清查，NoSQL 遷移 | 英國  |
+|[SNP Technologies](https://www.snp.com/) | NoSQL 移轉| USA |
+| [Solidsoft Reply](https://www.reply.com/solidsoft-reply/) | NoSQL 移轉 | 克羅地亞、瑞典、丹麥、愛爾蘭、保加利亞、斯洛維尼亞、賽普勒斯、馬爾他、立陶宛、捷克共和國、冰島、瑞士和列支敦斯登|
+| [西班牙文點技術](https://www.spanishpoint.ie/) | NoSQL 移轉| 愛爾蘭|
+| [Syone](https://www.syone.com/) | NoSQL 移轉| 葡萄牙|
+|[Tallan](https://www.tallan.com/)    |  應用程式開發      |    USA     |
+| [TCS](https://www.tcs.com/) | 應用程式開發 | 美國、英國、法國、馬來西亞、丹麥、挪威、瑞典|
+|[VTeamLabs](https://www.vteamlabs.com/)    | 個人化，零售（清查），IoT，遊戲，操作分析（Spark），無伺服器架構，NoSQL 遷移，應用程式開發       |  USA      |  
+| [白色 GmbH](https://whiteducksoftware.com/) |新的應用程式開發、應用程式後端、以檔為基礎的資料儲存體| 德國 |
+| [Xpand IT](https://www.xpand-it.com/) | 新的應用程式開發 | 葡萄牙、英國|
+| [Hanu](https://hanu.com/) | IoT，應用程式開發 | USA|
+| [Incycle 軟體](https://www.incyclesoftware.com/) | NoSQL 遷移，無伺服器架構，應用程式開發| USA|
+| [Orion](https://www.orioninc.com/) | 個人化，零售（清查），操作分析（Spark），IoT，應用程式開發| 美國、加拿大|
 
 ## <a name="next-steps"></a>後續步驟
 

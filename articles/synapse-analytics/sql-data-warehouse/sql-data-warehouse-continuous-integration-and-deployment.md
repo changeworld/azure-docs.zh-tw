@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: ddd24eb510405d49465ca4e0e0f326f7260e2ed1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14c3dde4a86e36a4015a319e608ab8543302932f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416234"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791284"
 ---
 # <a name="continuous-integration-and-deployment-for-data-warehousing"></a>資料倉儲的持續整合與部署
 
@@ -46,7 +46,7 @@ ms.locfileid: "81416234"
 
 ## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>使用 Azure SQL 資料倉儲 (或資料庫) 部署工作進行持續部署
 
-1. 使用 [Azure SQL Database 部署工作](/devops/pipelines/targets/azure-sqldb?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)加入新的工作，並填寫必要欄位，即可連線到您的目標資料倉儲。 當此工作執行時，從先前建置程序產生的 DACPAC 就會部署到目標資料倉儲。 您也可以使用 [Azure SQL 倉儲部署工作](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)。
+1. 使用 [Azure SQL Database 部署工作](/azure/devops/pipelines/targets/azure-sqldb)加入新的工作，並填寫必要欄位，即可連線到您的目標資料倉儲。 當此工作執行時，從先前建置程序產生的 DACPAC 就會部署到目標資料倉儲。 您也可以使用 [Azure SQL 倉儲部署工作](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment)。
 
       ![部署工作](./media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "部署工作")
 

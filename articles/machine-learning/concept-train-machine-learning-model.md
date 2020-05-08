@@ -1,5 +1,5 @@
 ---
-title: 模型定型方法
+title: 組建 & 訓練模型
 titleSuffix: Azure Machine Learning
 description: 瞭解您可以用來將模型定型 Azure Machine Learning 的不同方法。 估算器提供簡單的方式來使用熱門的架構，例如 Scikit-learn、學習、TensorFlow、Keras、PyTorch 和 Chainer。 Machine Learning 管線可讓您輕鬆地排程自動執行、使用異類計算環境，以及重複使用工作流程的各部分。 和執行設定可讓您更精確地控制定型進程執行所在的計算目標。
 services: machine-learning
@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 68ad9cc47d68f7bc3ae952f7e458781cdc1c4ab2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c75c41012928b7bffb61a00a73f314e4c372b154
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79129762"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792338"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure Machine Learning 將模型定型
 
@@ -22,7 +22,7 @@ Azure Machine Learning 提供數種方式來定型您的模型，從程式碼優
 
 + [適用于 python 的 AZURE MACHINE LEARNING SDK](#python-sdk)： python SDK 提供數種方式來定型模型，各有不同的功能。
 
-    | 訓練方法 | 說明 |
+    | 訓練方法 | 描述 |
     | ----- | ----- |
     | [回合組態](#run-configuration) | 將**模型定型的一般方法**是使用定型腳本並執行設定。 回合設定會提供必要的資訊，以設定用來定型模型的定型環境。 您可以執行「執行設定」、「訓練腳本」和「計算目標」（訓練環境），並執行訓練作業。 |
     | [自動化機器學習](#automated-machine-learning) | 自動化機器學習可讓您將**模型定型，而不需要大量的資料科學或程式設計知識**。 針對具有資料科學和程式設計背景的人員，它提供了一種方式，可透過自動化演算法選取和超參數微調來節省時間和資源。 使用自動化機器學習時，您不需要擔心定義執行設定。 |

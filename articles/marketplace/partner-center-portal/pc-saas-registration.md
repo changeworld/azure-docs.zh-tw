@@ -1,23 +1,22 @@
 ---
-title: 註冊 SaaS 應用程式 |Azure Marketplace
-description: 說明如何使用 Azure 入口網站註冊 SaaS 應用程式。
+title: 註冊 SaaS 應用程式-Azure Marketplace
+description: 瞭解如何使用 Azure 入口網站來註冊 SaaS 應用程式，並接收 Azure Active Directory 的安全性權杖。
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 9c20fe34e108de95a34aabea56390e8a6f0d858f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3c20d25917d66cba8ae3d811eddaa6455b87722
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275708"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792950"
 ---
 # <a name="register-a-saas-application"></a>註冊 SaaS 應用程式
 
 本文說明如何使用 Microsoft [Azure 入口網站](https://portal.azure.com/)註冊 SaaS 應用程式。  成功註冊之後，您會收到可用來存取 SaaS 履行 Api 的 Azure Active Directory （Azure AD）安全性權杖。  如需 Azure AD 的詳細資訊，請參閱[什麼是驗證？](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
-
 
 ## <a name="service-to-service-authentication-flow"></a>服務對服務驗證流程
 
@@ -26,7 +25,6 @@ ms.locfileid: "80275708"
 ![SaaS 供應項目的 API 流程](./media/saas-offer-publish-api-flow-v1.png)
 
 Azure 不會對 SaaS 服務向終端使用者顯示的驗證施加任何限制式。 不過，使用 SaaS 履行 Api 進行驗證時，會使用 Azure AD 的安全性權杖來執行，通常是透過 Azure 入口網站註冊 SaaS 應用程式來取得。 
-
 
 ## <a name="register-an-azure-ad-secured-app"></a>註冊 Azure AD 保護的應用程式
 
@@ -55,7 +53,6 @@ Azure 不會對 SaaS 服務向終端使用者顯示的驗證施加任何限制�
 
 >[!Note]
 >根據預設，新註冊的應用程式會設定為只允許相同租用戶的使用者登入您的應用程式。
-
 
 ## <a name="using-the-azure-ad-security-token"></a>使用 Azure AD 安全性權杖
 
@@ -86,7 +83,7 @@ HTTP 方法
 
 |  **標頭名稱**  | **必要** |  **說明**                                   |
 |  --------------   | ------------ |  ------------------------------------------------- |
-|  Content-Type     | True         | 與要求相關聯的內容類型。 預設值是 `application/x-www-form-urlencoded`。  |
+|  Content-Type     | True         | 與要求相關聯的內容類型。 預設值為 `application/x-www-form-urlencoded`。  |
 |  |  |  |
 
 
@@ -94,16 +91,16 @@ HTTP 方法
 
 | **屬性名稱**   | **必要** |  **說明**                                                          |
 | -----------------   | -----------  | ------------------------------------------------------------------------- |
-|  Grant_type         | True         | 授與類型。 預設值是 `client_credentials`。                    |
+|  Grant_type         | True         | 授與類型。 預設值為 `client_credentials`。                    |
 |  Client_id          | True         |  與 Azure AD 應用程式相關聯的用戶端/應用程式識別碼。                  |
 |  client_secret      | True         |  與 Azure AD 應用程式相關聯的密碼。                               |
-|  資源           | True         |  要求權杖的目標資源。 預設值是 `62d94f6c-d599-489b-a797-3e10e42fbe22`。 |
+|  資源           | True         |  要求權杖的目標資源。 預設值為 `62d94f6c-d599-489b-a797-3e10e42fbe22`。 |
 |  |  |  |
 
 
 *回應*
 
-|  **Name**  | **類型**       |  **說明**    |
+|  **名稱**  | **型別**       |  **說明**    |
 | ---------- | -------------  | ------------------- |
 | 200 確定    | TokenResponse  | 要求成功   |
 |  |  |  |
@@ -123,7 +120,6 @@ HTTP 方法
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
   }               
 ```
-
 
 ## <a name="next-steps"></a>後續步驟
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 47f686f810f62fe03a9b0217677c436f3b91782b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/4/2020
+ms.openlocfilehash: cb82b3223d50c66b4d6c176a274d5ccf8d510911
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767880"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792100"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>讀取「適用於 MySQL 的 Azure 資料庫」中的複本
 
@@ -56,7 +56,6 @@ ms.locfileid: "81767880"
     
 * 單向配對：某些 Azure 區域只會以單一方向配對。 這些區域包括印度西部、巴西南部和 US Gov 維吉尼亞州。 
    這表示印度西部的主伺服器可以在印度南部中建立複本。 不過，印度南部中的主伺服器無法在印度西部建立複本。 這是因為印度西部的次要地區印度南部，但印度南部的次要地區並非印度西部。
-
 
 ## <a name="create-a-replica"></a>建立複本
 
@@ -146,6 +145,8 @@ mysql -h myreplica.mysql.database.azure.com -u myadmin@myreplica -p
 - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators)
 
 已[`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler)在複本伺服器上鎖定參數。 
+
+若要更新主伺服器上的上述其中一個參數，請刪除複本伺服器、更新主要主機上的參數值，然後重新建立複本。
 
 ### <a name="other"></a>其他
 

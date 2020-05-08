@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: lbosq
-ms.openlocfilehash: 9e867a544de8904274286cb68fc047f3f4b93e0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89cd1de3658c16fccdb70567641a68f5c1575507
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183308"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791743"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>將資料從 MongoDB 遷移至 Azure Cosmos DB 的 MongoDB 版 API 的預先遷移步驟
 
@@ -30,7 +30,7 @@ ms.locfileid: "82183308"
 
 以下是有關 Azure Cosmos DB 適用于 MongoDB 的 API 的特定特性：
 
-- **容量模型**： Azure Cosmos DB 上的資料庫容量是以輸送量為基礎的模型為基礎。 此模型是以[每秒的要求單位](request-units.md)為基礎，這是一個單位，代表可針對集合以每秒為基礎執行的資料庫作業數目。 此容量可以在[資料庫或集合層級](set-throughput.md)配置，也可以在配置模型上布建，或使用[自動調整模型](provision-throughput-autoscale.md)。
+- **容量模型**： Azure Cosmos DB 上的資料庫容量是以輸送量為基礎的模型為基礎。 此模型是以[每秒的要求單位](request-units.md)為基礎，這是一個單位，代表可針對集合以每秒為基礎執行的資料庫作業數目。 此容量可以在[資料庫或集合層級](set-throughput.md)配置，也可以布建在配置模型上，或使用自動調整布[建的輸送量](provision-throughput-autoscale.md)。
 
 - **要求單位**：每個資料庫作業在 Azure Cosmos DB 中都有相關聯的要求單位（ru）成本。 執行時，會從指定秒的可用要求單位層級中減去這種情況。 如果要求所需的 RU 數超過目前配置的 RU/秒，則有兩個選項可解決此問題-增加 ru 的數量，或等到下一秒啟動後再重試一次作業。
 

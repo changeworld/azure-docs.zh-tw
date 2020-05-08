@@ -1,32 +1,36 @@
 ---
-title: 商業 marketplace 方案中的 Azure 資料表 |Azure Marketplace
-description: 設定 Azure Blob 的潛在客戶管理
+title: 使用 Azure Blob 儲存體進行潛在客戶管理-Microsoft 商業 marketplace
+description: 瞭解如何使用 Azure Blob 來設定潛在客戶的 Microsoft AppSource 和 Azure Marketplace
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 7/30/2019
+ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 062252b007e22fcd2644c8b647fc0ecc2f5938cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 076edc62a467701eaf0de23f280cdaf2abd945de
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80285243"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792712"
 ---
-# <a name="lead-management-instructions-for-azure-blob"></a>Azure Blob 的潛在客戶管理指示
+# <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>使用 Azure Blob 儲存體來管理商業 marketplace 潛在客戶
 
 >[!Caution]
->用來處理來自 marketplace 供應專案之潛在客戶的 Azure Blob 選項已淘汰。 如果您目前有使用 Azure Blob 潛在客戶管理設定發佈的供應專案，您就不會再收到潛在客戶。 請將您的潛在客戶管理設定更新為任何其他潛在客戶管理選項。 瞭解 [[潛在客戶管理] 登陸頁面](./commercial-marketplace-get-customer-leads.md)上的其他選項。
+>Azure Blob 儲存體的商業 marketplace 支援已被取代，不再是處理您供應專案之潛在客戶的選項。 如果您目前有已針對 Azure Blob 設定潛在客戶管理的商業 marketplace 供應專案，您就不會再收到潛在客戶。 請將您的潛在客戶管理設定更新為任何其他潛在客戶管理選項。 瞭解 [[潛在客戶管理] 登陸頁面](./commercial-marketplace-get-customer-leads.md)上的其他選項。
 
-如果合作夥伴中心未明確支援您的客戶關係管理（CRM）系統來接收 Azure Marketplace 和 AppSource 潛在客戶，您可以使用 Azure Blob 來處理這些潛在客戶。 然後您可以選擇匯出資料，並將它匯入到您的 CRM 系統。 本文中的指示將提供您建立 Azure 儲存體帳戶的程式，以及該帳戶下的 Azure Blob。 此外，您可以使用 Microsoft Flow 建立新的流程，以在您的供應專案收到潛在客戶時傳送電子郵件通知。
+ 如果合作夥伴中心未明確支援您的客戶關係管理（CRM）系統來接收 Microsoft AppSource 和 Azure Marketplace 潛在客戶，您可以使用 Azure Blob 儲存體。 然後您可以選擇匯出資料，並將它匯入到您的 CRM 系統。 本文中的指示將提供您建立 Azure 儲存體帳戶的程式，以及該帳戶下的 blob。 此外，您可以使用 [電源自動化] 建立新的流程，以在您的供應專案收到潛在客戶時傳送電子郵件通知。
 
+>[!NOTE]
+>這些指示中使用的「電源自動化」連接器需要付費的訂用帳戶，才能自動進行電源自動化。 依照本文中的指示進行之前，請確定您已考慮這一點。
 
-## <a name="how-to-configure-azure-blob"></a>如何設定 Azure Blob
+## <a name="configure-azure-blob-storage"></a>設定 Azure Blob 儲存體
 
 1. 如果您沒有 Azure 帳戶，您可以[建立免費的試用帳戶](https://azure.microsoft.com/pricing/free-trial/)。
-1. 當您的 Azure 帳戶處於作用中狀態時，請登入[Azure 入口網站](https://portal.azure.com)。
-1. 在 Azure 入口網站中，使用下列程式來建立儲存體帳戶。  
+
+2. 當您的 Azure 帳戶處於作用中狀態時，請登入[Azure 入口網站](https://portal.azure.com)。
+
+3. 在 Azure 入口網站中，使用下列程式來建立儲存體帳戶。  
     1. 選取左側功能表列中的 [ **+ 建立資源**]。  **新**的窗格（blade）就會顯示在右邊。
     2. 在 [**新增**] 窗格中選取 [**儲存體**]。  **精選**清單會顯示在右側。
     3. 選取要開始帳戶建立的**儲存體帳戶**。  遵循[建立儲存體帳戶一](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)文中的指示。
@@ -65,7 +69,7 @@ ms.locfileid: "80285243"
 
     ![新增容器](./media/commercial-marketplace-lead-management-instructions-azure-blob/new-container.png)
 
-## <a name="configure-your-offer-to-send-leads-to-the-azure-blob"></a>設定您的供應專案以將潛在客戶傳送至 Azure Blob
+## <a name="configure-your-offer-to-send-leads-to-azure-blob-storage"></a>設定您的供應專案以將潛在客戶傳送至 Azure Blob 儲存體
 
 當您準備好在發佈入口網站中為您的供應專案設定潛在客戶管理資訊時，請遵循下列步驟：
 

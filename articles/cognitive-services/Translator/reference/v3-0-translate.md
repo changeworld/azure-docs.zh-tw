@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14d1f042240fd045925afe1725b32ddade490dfe
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052400"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858552"
 ---
 # <a name="translator-text-api-30-translate"></a>翻譯工具文字 API 3.0 翻譯
 
@@ -123,7 +123,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
 </table> 
 
-## <a name="request-body"></a>要求本文
+## <a name="request-body"></a>Request body
 
 要求的本文是 JSON 陣列。 每個陣列項目都是字串屬性名為 `Text` 的 JSON 物件，其代表要翻譯的字串。
 
@@ -138,7 +138,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 * 陣列最多可以有 100 個項目。
 * 要求中包含的完整文字不能超過 5,000 個字元，包括空格。
 
-## <a name="response-body"></a>Response body
+## <a name="response-body"></a>回應本文
 
 成功的回應是輸入陣列的每個字串各有一個結果的 JSON 陣列。 結果物件包含下列屬性：
 
@@ -206,7 +206,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>400</td>
-    <td>缺少其中一個查詢參數，或查詢參數無效。 請先修正要求參數再重試。</td>
+    <td>其中一個查詢參數遺失或無效。 請先修正要求參數再重試。</td>
   </tr>
   <tr>
     <td>401</td>
@@ -454,6 +454,14 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="obtain-alignment-information"></a>取得對齊方式資訊
 
+系統會以下列格式的字串值，傳回來源每個單字的對齊方式。 每個單字的資訊會以空格分隔，包括中文這類非以空格分隔的語言 (指令碼)：
+
+[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
+
+範例對齊方式字串："0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21"。
+
+換句話說，冒號會分隔開始與結束索引、虛線會分隔語言，而空格則分隔單字。 一個單字可能會與另一種語言中的零個、一個或多個單字對齊，而對齊的單字可能不連續。 沒有對齊方式資訊可用時，Alignment 元素便會空白。 在該情況下，方法不會傳回任何錯誤。
+
 若要收到對齊方式資訊，請在查詢字串上指定 `includeAlignment=true`。
 
 ```curl
@@ -483,9 +491,10 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 * HTML 格式的文字無法使用對齊方式，例如，textType = html
 * 只會傳回一部分語言組的對齊方式：
-  - 從英文到任何其他語言；
-  - 從任何其他語言到英文，但從簡體中文、繁體中文和拉脫維亞文到英文除外；
+  - 英文（繁體中文、廣東話（繁體）或塞爾維亞文（斯拉夫）除外）的任何其他語言。
   - 從日文到韓文，或從韓文到日文。
+  - 從日文到簡體中文、簡體中文到日文。 
+  - 從簡體中文到繁體中文和繁體中文，也就是簡體中文。 
 * 若句子是已定義的翻譯，則您收不到對齊方式。 已定義的翻譯範例是 "This is a test"、"I love you" 和其他高頻率出現句子。
 * 當您套用任何方法來避免轉譯時，無法使用對齊方式，如[這裡](../prevent-translation.md)所述
 
@@ -515,7 +524,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 ### <a name="translate-with-dynamic-dictionary"></a>使用動態字典翻譯
 
-如果已經知道想要套用至單字或片語的翻譯，則可以在要求內以標記來提供。 動態字典僅適用於專有名稱和產品名稱這類複合名詞。
+如果已經知道想要套用至單字或片語的翻譯，則可以在要求內以標記來提供。 動態字典僅適用于適當名詞，例如個人名稱和產品名稱。
 
 要提供的標記會使用下列語法。
 

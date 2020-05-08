@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 239dc0f3133a5adf59a23d333131c91d3a655597
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe9ae8997e05e4ab99dba66de88976342fbabe56
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770378"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858360"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>升級 Azure 內部 Load Balancer-不需要輸出連線
-[Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)。
+[Azure Standard Load Balancer](load-balancer-overview.md)透過區域冗余提供了一組豐富的功能和高可用性。 若要深入瞭解 Load Balancer SKU，請參閱[比較表](https://docs.microsoft.com/azure/load-balancer/skus#skus)。
 
 本文介紹 PowerShell 腳本，它會使用與基本 Load Balancer 相同的設定來建立 Standard Load Balancer，並將來自基本 Load Balancer 的流量遷移到 Standard Load Balancer。
 
@@ -33,6 +33,17 @@ ms.locfileid: "81770378"
 * 腳本只支援內部 Load Balancer 升級，而不需要任何輸出連接。 如果您的部分 Vm 需要[輸出](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)連線，請參閱此[頁面](upgrade-InternalBasic-To-PublicStandard.md)以取得相關指示。 
 * 如果在不同的區域中建立標準負載平衡器，您將無法將舊區域中現有的 Vm 與新建立的 Standard Load Balancer 建立關聯。 若要解決這項限制，請務必在新的區域中建立新的 VM。
 * 如果您的 Load Balancer 沒有任何前端 IP 設定或後端集區，您可能會遇到執行腳本的錯誤。 請確定它們不是空的。
+
+## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>針對前端 IP 設定將 IP 配置方法變更為靜態（如果它已經是靜態，請忽略此步驟）
+
+1. 選取左側功能表中的 [**所有服務**]，選取 [**所有資源**]，然後從 [資源] 清單中選取您的基本 Load Balancer。
+
+2. 在 [**設定**] 底下，選取 [**前端 ip**設定]，然後選取第一個前端 ip 設定。 
+
+3. 針對 [**指派**]，選取 [**靜態**]
+
+4. 針對基本 Load Balancer 的所有前端 IP 設定重複步驟3。
+
 
 ## <a name="download-the-script"></a>下載腳本
 
@@ -84,7 +95,7 @@ ms.locfileid: "81770378"
 
 ### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell 腳本是否有任何限制，可將設定從 v1 遷移至 v2？
 
-是。 請參閱[警告/限制](#caveatslimitations)。
+可以。 請參閱[警告/限制](#caveatslimitations)。
 
 ### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell 腳本是否也會將來自我的基本 Load Balancer 的流量切換到新建立的 Standard Load Balancer？
 

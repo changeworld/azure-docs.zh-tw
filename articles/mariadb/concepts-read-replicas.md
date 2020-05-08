@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 9129cb308a364a3ed0654055f8afe9dd8c89010a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/4/2020
+ms.openlocfilehash: 6b738fc96a51893d8c0a0e75c5551007da60bdd2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024620"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793188"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>「適用於 MariaDB 的 Azure 資料庫」中的讀取複本
 
@@ -146,6 +146,8 @@ mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
 已[`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler)在複本伺服器上鎖定參數。
+
+若要更新主伺服器上的上述其中一個參數，請刪除複本伺服器、更新主要主機上的參數值，然後重新建立複本。
 
 ### <a name="other"></a>其他
 

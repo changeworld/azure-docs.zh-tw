@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6dcda58652abe51d360748222263f30f337a2251
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4d578596471153e4fc0e37d3ca093685326ecc7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182730"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791760"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB 服務配額
 
@@ -138,9 +138,9 @@ Cosmos DB 使用 HMAC 進行授權。 您可以使用主要金鑰或[資源權�
 
 Cosmos DB 支援在寫入期間執行觸發程式。 服務最多支援一個預先觸發程式，以及一個每個寫入作業的後續觸發程式。 
 
-## <a name="autoscale-mode-limits"></a>自動調整模式限制
+## <a name="limits-for-autoscale-provisioned-throughput"></a>自動調整布建輸送量的限制
 
-如需自動調整模式中的輸送量和儲存體限制，請參閱[自動](provision-throughput-autoscale.md#autoscale-limits)調整文章。
+如需輸送量和儲存體限制的自動調整功能，請[參閱自動調整文章。](provision-throughput-autoscale.md#autoscale-limits)
 
 ## <a name="sql-query-limits"></a>SQL 查詢限制
 

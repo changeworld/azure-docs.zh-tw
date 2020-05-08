@@ -1,7 +1,7 @@
 ---
 title: Azure 媒體服務即時事件錯誤代碼 |Microsoft Docs
 description: 本文列出即時事件錯誤碼。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2020
-ms.author: juliako
-ms.openlocfilehash: f9067562f67190b8bc04392f33078d4d3262f986
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/4/2020
+ms.author: inhenkel
+ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77654574"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791046"
 ---
 # <a name="media-services-live-event-error-codes"></a>媒體服務即時事件錯誤代碼
 
@@ -40,6 +40,7 @@ ms.locfileid: "77654574"
 | MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | 來自 RTMP 編碼器的視訊或音訊 FLVTag 時間戳記無效。 |
 | MPE_INGEST_FRAMERATE_EXCEEDED | 包含 framerates 的傳入編碼器內嵌串流超過允許的30fps 編碼即時事件/通道的上限。|
 | MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED | 內送編碼器內嵌串流超過下列允許的解決方式：用於編碼即時事件/通道的1920x1088，以及用於傳遞即時事件/通道的 4096 x 2160。|
+| MPE_INGEST_RTMP_TOO_LARGE_UNPROCESSED_FLV | 實況活動已收到大量的音訊資料，或大量的影片資料，而沒有任何主要畫面格。 我們已中斷編碼器的連線，讓它有機會使用正確的資料重試。 |
 
 ## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
@@ -53,7 +54,7 @@ ms.locfileid: "77654574"
 |未知的錯誤代碼|這些錯誤碼的範圍從記憶體錯誤到雜湊對應中有重複項目。|
 
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 [串流端點（原點）錯誤碼](streaming-endpoint-error-codes.md)
 

@@ -3,46 +3,45 @@ title: 適用於 Azure 客體 OS 的更新清單 | Microsoft Docs
 description: 適用於 Azure 客體作業系統版次的更新清單
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: yohaddad
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/17/2020
-ms.author: raiye
-ms.openlocfilehash: a271eca3c3b6e7cd364f2bc87f2e15006874fa08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/4/2020
+ms.author: yohaddad
+ms.openlocfilehash: e74bccbd7465a8f0e0d2da0a672a88c7d70d666f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617694"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791556"
 ---
 # <a name="azure-guest-os"></a>Azure 客體作業系統
 下表為適用於 Azure 客體作業系統的 Microsoft Security Response Center (MSRC) 更新。 請搜尋本文章以判斷特定更新是否適用於您使用的客體作業系統。 已引進更新的特定[系列][family-explain]會持續推出更新。
 
 ## <a name="april-2020-guest-os"></a>2020年4月的客體作業系統
 
->[!NOTE]
->4月的客體作業系統目前正推出至已設定自動更新的雲端服務 Vm。 推展完成時，我們會透過 Azure 入口網站和組態檔來提供此版本，以便您可以手動更新。 下列修補套裝程式含在4月的客體作業系統中。 此清單會隨時變動。
 
 | 產品類別 | 上層知識庫文章 | 弱點說明 | 客體作業系統 | 首次引進日期 |
 | --- | --- | --- | --- | --- |
-|  Rel 20-04  |  [4550965]  |  Windows 安全性  | 2.97 | 2020年4月14日 |
-|  Rel 20-04  |  [4550905]  |  Internet Explorer  | 2.97、3.84、4.77 | 2020年4月14日 |
-|  Rel 20-04  |  [4550971]  |  Windows 安全性  | 3.84 | 2020年4月14日 |
-|  Rel 20-04  |  [4550970]  |  Windows 安全性  | 4.77 | 2020年4月14日 |
-|  Rel 20-04  |  [4550929]  |  最新累積更新（LCU）  | 5.42 | 2020年4月14日 |
-|  Rel 20-04  |  [4549949]  |  最新累積更新（LCU）  | 6.18 | 2020年4月14日 |
-|  Rel 20-04  |  [4540688]  |  每月匯總套件  | 2.97 | 3月10日，2020 |
-|  Rel 20-04  |  [4550735]  |  服務堆疊更新  | 2.97 | 3月10日，2020 |
-|  Rel 20-04  |  [4540726]  |  服務堆疊更新  | 3.84 | 3月10日，2020 |
-|  Rel 20-04  |  [4541510]  |  每月匯總套件  | 3.84 | 3月10日，2020 |
-|  Rel 20-04  |  [4541509]  |  每月匯總套件  | 4.77 | 3月10日，2020 |
-|  Rel 20-04  |  [4540725]  |  服務堆疊更新  | 4.77 | 3月10日，2020 |
-|  Rel 20-04  |  [4540723]  |  服務堆疊更新  | 5.42 | 3月10日，2020 |
-|  Rel 20-04  |  [4539571]  |  服務堆疊更新  | 6.18 | 3月10日，2020 |
+|  Rel 20-04   |  [4550965]  |  Windows 安全性   |  [2.97]  |  2020年4月14日  |
+|  Rel 20-04   |  [4550905]  |  Internet Explorer   |  [2.97]、 [3.84]、 [4.77]  |  2020年4月14日  |
+|  Rel 20-04   |  [4550971]  |  Windows 安全性   |  [3.84]  |  2020年4月14日  |
+|  Rel 20-04   |  [4550970]  |  Windows 安全性   |  [4.77]  |  2020年4月14日  |
+|  Rel 20-04   |  [4550929]  |  最新累積更新（LCU）   |  [5.42]  |  2020年4月14日  |
+|  Rel 20-04   |  [4549949]  |  最新累積更新（LCU）   |  [6.18]  |  2020年4月14日  |
+|  Rel 20-04   |  [4540688]  |  每月匯總套件   |  [2.97]  |  3月10日，2020  |
+|  Rel 20-04   |  [4550735]  |  服務堆疊更新   |  [2.97]  |  3月10日，2020  |
+|  Rel 20-04   |  [4540726]  |  服務堆疊更新   |  [3.84]  |  3月10日，2020  |
+|  Rel 20-04   |  [4541510]  |  每月匯總套件   |  [3.84]  |  3月10日，2020  |
+|  Rel 20-04   |  [4541509]  |  每月匯總套件   |  [4.77]  |  3月10日，2020  |
+|  Rel 20-04   |  [4540725]  |  服務堆疊更新   |  [4.77]  |  3月10日，2020  |
+|  Rel 20-04   |  [4540723]  |  服務堆疊更新   |  [5.42]  |  3月10日，2020  |
+|  Rel 20-04   |  [4539571]  |  服務堆疊更新   |  [6.18]  |  3月10日，2020  |
+
 
 [4550965]: https://support.microsoft.com/kb/4550965
 [4550905]: https://support.microsoft.com/kb/4550905
@@ -58,6 +57,11 @@ ms.locfileid: "81617694"
 [4540725]: https://support.microsoft.com/kb/4540725
 [4540723]: https://support.microsoft.com/kb/4540723
 [4539571]: https://support.microsoft.com/kb/4539571
+[2.97]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[3.84]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[4.77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[5.42]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[6.18]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
 
 
 ## <a name="march-2020-guest-os"></a>2020年3月的客體作業系統

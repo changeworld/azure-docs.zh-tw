@@ -8,18 +8,18 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: 713b790c432f0e416392243262aed4b0fcda8892
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 050848b0bff65b19e2b17bd170e1d3e9ff0176f1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81274571"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791998"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>範例：建立表單辨識器自訂技能
 
 在此 Azure 認知搜尋技能集範例中，您將瞭解如何使用 c # 和 Visual Studio 來建立表單辨識器自訂技能。 表單辨識器會分析檔，並解壓縮索引鍵/值組和資料表資料。 藉由將表單辨識器包裝到[自訂技能介面](cognitive-search-custom-skill-interface.md)中，您可以將此功能新增為端對端擴充管線中的一個步驟。 接著，管線就可以載入檔並進行其他轉換。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (任何版本)。
 - 至少有五種相同類型的表單。 您可以使用本指南所提供的範例資料。
@@ -59,7 +59,7 @@ ms.locfileid: "81274571"
 POST https://localhost:7071/api/analyze-form
 ```
 
-### <a name="request-body"></a>要求本文
+### <a name="request-body"></a>Request body
 
 從下面的要求本文範本開始。
 
@@ -164,8 +164,8 @@ POST https://localhost:7071/api/analyze-form
 
 在本指南中，您已從 Azure 表單辨識器服務建立自訂技能。 若要深入瞭解自訂技能，請參閱下列資源。 
 
-* [Azure 搜尋服務動力技能：自訂技能的存放庫](https://github.com/*zure-Samples/azure-search-power-skills)
+* [Azure 搜尋服務動力技能：自訂技能的存放庫](https://github.com/Azure-Samples/azure-search-power-skills)
 * [將自訂技能新增至 AI 擴充管線](cognitive-search-custom-skill-interface.md)
 * [定義技能集](cognitive-search-defining-skillset.md)
-* [建立技能集（REST）](https://docs.microsoft.com/rest/api/*earchservice/create-skillset)
+* [建立技能集（REST）](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 * [對應擴充的欄位](cognitive-search-output-field-mapping.md)

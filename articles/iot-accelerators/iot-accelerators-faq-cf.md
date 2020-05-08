@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313593"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792372"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>連線處理站解決方案加速器的常見問題集
 
@@ -111,7 +111,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-您可以使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) 或 [Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension)工具，檢查哪些裝置已向解決方案正在使用的 IoT 中樞註冊。 若要使用裝置總管，將需要您部署中 IoT 中樞的連接字串。 若要使用 Azure CLI 的 IoT 擴充功能，您需要 IoT 中樞名稱。
+您可以使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/) 或 [Azure CLI 的 IoT 擴充功能](https://github.com/Azure/azure-iot-cli-extension)工具，檢查哪些裝置已向解決方案正在使用的 IoT 中樞註冊。 若要使用裝置總管，將需要您部署中 IoT 中樞的連接字串。 若要使用 Azure CLI 的 IoT 擴充功能，您需要 IoT 中樞名稱。
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>如何從模擬元件取得記錄資料？
 
@@ -125,7 +125,7 @@ Microsoft 選擇 OPC UA 的原因是它是一種開放式、非專屬、與平�
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>如何檢查模擬是否傳送資料至雲端？
 
-使用 [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) \(英文\) 或 [Azure IoT CLI Extension monitor-events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) \(英文\) 命令，您可以檢查從特定裝置傳送至 IoT 中樞的資料。 若要使用這些工具，您需要了解部署中 IoT 中樞的連接字串。 請參閱[如何找出我的解決方案所使用之 IoT 中樞的連接字串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+使用[Azure Iot Explorer](https://github.com/Azure/azure-iot-explorer)或[Azure iot CLI 擴充功能監視事件](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events)命令，您可以檢查從特定裝置傳送至 IoT 中樞的資料。 若要使用這些工具，您需要了解部署中 IoT 中樞的連接字串。 請參閱[如何找出我的解決方案所使用之 IoT 中樞的連接字串？](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 檢查由其中一個發行工具裝置傳送的資料：
 

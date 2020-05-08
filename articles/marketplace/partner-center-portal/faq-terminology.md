@@ -1,26 +1,24 @@
 ---
-title: 合作夥伴中心內商業 marketplace 分析的常見問題和術語
-description: 瞭解如何處理商業 marketplace 分析的相關常見問題。 包含適用于分析術語的資料字典。
+title: 商業 marketplace 分析常見問題 & 詞彙-合作夥伴中心
+description: 取得合作夥伴中心的商業 marketplace 分析常見問題的解答。 本文包含適用于分析術語的資料字典。
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251821"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791471"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>商業 marketplace 分析的常見問題與術語
+# <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>商業 marketplace 分析的術語和常見問題
 
 本文說明合作夥伴中心分析訊息的常見問題，同時也提供分析術語的字典。
 
-## <a name="frequently-asked-questions"></a>常見問題集
-
-本節針對合作夥伴中心內**沒有可用的分析**訊息，提供常見問題的解答。
+## <a name="common-questions"></a>常見問題
 
 **我無法在合作夥伴中心觀看分析資料。當我存取這些頁面時，會看到下列訊息。為什麼要這麼做？**
 
