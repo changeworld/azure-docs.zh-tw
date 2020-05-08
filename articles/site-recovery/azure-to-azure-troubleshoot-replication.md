@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 8cba02d3c7d1e649853570b199b646b1c4dcce2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667407"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901344"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>針對 Azure VM 嚴重損壞修復中的複寫進行疑難排解
 
@@ -41,7 +41,7 @@ Error ID: 153007
 
 下表提供 Azure Site Recovery 限制。 這些限制是以我們的測試為基礎，但無法涵蓋所有可能的應用程式輸入輸出（i/o）組合。 實際的結果會隨著您的應用程式 I/O 混合而有所不同。
 
-有兩個要考慮的限制：每個磁片的資料變換和每部虛擬機器的資料變換。 讓我們查看下表中的高階 P20 磁片，以取得範例。 對於單一 VM，Site Recovery 可以處理每個磁片 5 MB/秒的變換率，且最多五個這類磁片。 Site Recovery 的限制為每個 VM 有 25 MB/秒的流失總計。
+有兩個要考慮的限制：每個磁片的資料變換和每部虛擬機器的資料變換。 讓我們查看下表中的高階 P20 磁片，以取得範例。 對於單一 VM，Site Recovery 可以處理每個磁片 5 MB/秒的變換率，且最多五個這類磁片。 Site Recovery 的限制為每個 VM 的總流失 54 MB/秒。
 
 **複寫儲存體目標** | **來源磁碟的平均 I/O 大小** |**來源磁碟的平均資料變換率** | **來源磁碟資料的每日整體資料變換率**
 ---|---|---|---

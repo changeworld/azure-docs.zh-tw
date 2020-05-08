@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/23/2020
-ms.openlocfilehash: af4e33e2653aebe5d1c979aa314463e4beb7b0d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233392"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594314"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>對應資料流程中的查閱轉換
 
@@ -33,7 +33,7 @@ ms.locfileid: "82233392"
 
 **符合多個資料列：** 如果啟用，在主要資料流程中具有多個相符專案的資料列會傳回多個資料列。 否則，只會根據「相符」條件傳回單一資料列。
 
-**符合：** 只有在已啟用 [符合多個資料列] 時才會顯示。 選擇要在任何資料列、第一個比對或最後一個相符項上進行比對。 建議使用任何資料列，因為它執行速度最快。 如果選取了 [第一個資料列] 或 [最後一個資料列]，您將需要指定排序條件。
+**符合：** 只有在未選取 [符合多個資料列] 時才會顯示。 選擇要在任何資料列、第一個比對或最後一個相符項上進行比對。 建議使用任何資料列，因為它執行速度最快。 如果選取了 [第一個資料列] 或 [最後一個資料列]，您將需要指定排序條件。
 
 **查閱條件：** 選擇要比對的資料行。 如果符合相等條件，則會將資料列視為相符。 將滑鼠暫留並選取 [計算資料行]，以使用[資料流程運算式語言](data-flow-expression-functions.md)將值解壓縮。
 

@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 569e8d769d56acbb4c7fb4258952ec19e44b58e4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72244638"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607821"
 ---
-# <a name="security-frame-authentication--mitigations"></a>安全框架︰驗證 | 緩和措施 
+# <a name="security-frame-authentication--mitigations"></a>安全框架︰驗證 | 緩和措施
 
 | 產品/服務 | 發行項 |
 | --------------- | ------- |
@@ -44,8 +45,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Web 應用程式 | 
-| **SDL 階段**               | Build |  
+| **元件**               | Web 應用程式 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -55,8 +56,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Web 應用程式 | 
-| **SDL 階段**               | Build |  
+| **元件**               | Web 應用程式 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -66,8 +67,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Web 應用程式 | 
-| **SDL 階段**               | Build |  
+| **元件**               | Web 應用程式 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -77,8 +78,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Web 應用程式 | 
-| **SDL 階段**               | Build |  
+| **元件**               | Web 應用程式 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -88,8 +89,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Web 應用程式 | 
-| **SDL 階段**               | Build |  
+| **元件**               | Web 應用程式 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -99,8 +100,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Web 應用程式 | 
-| **SDL 階段**               | Build |  
+| **元件**               | Web 應用程式 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -110,8 +111,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Web 應用程式 | 
-| **SDL 階段**               | Build |  
+| **元件**               | Web 應用程式 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -121,8 +122,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | 資料庫 | 
-| **SDL 階段**               | Build |  
+| **元件**               | 資料庫 |
+| **SDL 階段**               | Build |
 | **適用的技術** | OnPrem |
 | **屬性**              | SQL 版本 - 全部 |
 | **參考**              | [SQL Server - 選擇驗證模式](https://msdn.microsoft.com/library/ms144284.aspx) |
@@ -132,8 +133,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | 資料庫 | 
-| **SDL 階段**               | Build |  
+| **元件**               | 資料庫 |
+| **SDL 階段**               | Build |
 | **適用的技術** | SQL Azure |
 | **屬性**              | SQL 版本 - V12 |
 | **參考**              | [使用 Azure Active Directory 驗證連線到 SQL 資料庫](https://azure.microsoft.com/documentation/articles/sql-database-aad-authentication/) |
@@ -143,8 +144,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | 資料庫 | 
-| **SDL 階段**               | Build |  
+| **元件**               | 資料庫 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [SQL Server 密碼原則](https://technet.microsoft.com/library/ms161959(v=sql.110).aspx) |
@@ -154,8 +155,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | 資料庫 | 
-| **SDL 階段**               | Build |  
+| **元件**               | 資料庫 |
+| **SDL 階段**               | Build |
 | **適用的技術** | Sql Azure、OnPrem |
 | **屬性**              | SQL 版本 - MSSQL2012、SQL 版本 - V12 |
 | **參考**              | [自主資料庫的安全性最佳做法](https://msdn.microsoft.com/library/ff929055.aspx) |
@@ -165,8 +166,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Azure 事件中樞 | 
-| **SDL 階段**               | Build |  
+| **元件**               | Azure 事件中樞 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [事件中樞驗證和安全性模型概觀](https://azure.microsoft.com/documentation/articles/event-hubs-authentication-and-security-model-overview/) |
@@ -176,8 +177,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Azure 信任邊界 | 
-| **SDL 階段**               | 部署 |  
+| **元件**               | Azure 信任邊界 |
+| **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [什麼是 Azure Multi-Factor Authentication？](https://azure.microsoft.com/documentation/articles/multi-factor-authentication/) |
@@ -187,8 +188,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Service Fabric 信任邊界 | 
-| **SDL 階段**               | 部署 |  
+| **元件**               | Service Fabric 信任邊界 |
+| **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | 環境 - Azure  |
 | **參考**              | [Service Fabric 叢集安全性案例](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security) |
@@ -198,8 +199,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Service Fabric 信任邊界 | 
-| **SDL 階段**               | 部署 |  
+| **元件**               | Service Fabric 信任邊界 |
+| **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | 環境 - Azure、環境 - 獨立 |
 | **參考**              | [Service Fabric 用戶端對節點憑證安全性](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#_client-to-node-certificate-security)、[使用用戶端憑證連線到安全的叢集](https://azure.microsoft.com/documentation/articles/service-fabric-connect-to-secure-cluster/) |
@@ -209,8 +210,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Service Fabric 信任邊界 | 
-| **SDL 階段**               | 部署 |  
+| **元件**               | Service Fabric 信任邊界 |
+| **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | 環境 - Azure |
 | **參考**              | [叢集安全性案例 - 安全性建議](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#security-recommendations) |
@@ -220,8 +221,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Service Fabric 信任邊界 | 
-| **SDL 階段**               | 部署 |  
+| **元件**               | Service Fabric 信任邊界 |
+| **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | 環境 - Azure |
 | **參考**              | [X.509 憑證和 Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/#x509-certificates-and-service-fabric) |
@@ -231,8 +232,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | 身分識別伺服器 | 
-| **SDL 階段**               | Build |  
+| **元件**               | 身分識別伺服器 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [IdentityServer3 - 概觀](https://identityserver.github.io/Documentation/docsv2/overview/bigPicture.html) |
@@ -242,8 +243,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | 身分識別伺服器 | 
-| **SDL 階段**               | 部署 |  
+| **元件**               | 身分識別伺服器 |
+| **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [Identity Server 部署 - 快取](https://identityserver.github.io/Documentation/docsv2/advanced/deployment.html) |
@@ -253,8 +254,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | 電腦信任邊界 | 
-| **SDL 階段**               | 部署 |  
+| **元件**               | 電腦信任邊界 |
+| **SDL 階段**               | 部署 |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -264,8 +265,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | WCF | 
-| **SDL 階段**               | Build |  
+| **元件**               | WCF |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型、NET Framework 3 |
 | **屬性**              | N/A |
 | **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx) |
@@ -304,8 +305,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | WCF | 
-| **SDL 階段**               | Build |  
+| **元件**               | WCF |
+| **SDL 階段**               | Build |
 | **適用的技術** | .NET Framework 3 |
 | **屬性**              | 用戶端認證類型 - None |
 | **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -320,8 +321,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | WCF | 
-| **SDL 階段**               | Build |  
+| **元件**               | WCF |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型、.NET Framework 3 |
 | **屬性**              | 用戶端認證類型 - None |
 | **參考**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
@@ -336,8 +337,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Web API | 
-| **SDL 階段**               | Build |  
+| **元件**               | Web API |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [ASP.NET Web API 中的驗證和授權](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api)、[外部驗證服務與 ASP.NET Web API (C#)](https://www.asp.net/web-api/overview/security/external-authentication-services) |
@@ -347,8 +348,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Azure AD | 
-| **SDL 階段**               | Build |  
+| **元件**               | Azure AD |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [Azure AD 的驗證案例](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)、[Azure Active Directory 程式碼範例](https://azure.microsoft.com/documentation/articles/active-directory-code-samples/)、[Azure Active Directory 開發人員指南](https://azure.microsoft.com/documentation/articles/active-directory-developers-guide/) |
@@ -358,8 +359,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Azure AD | 
-| **SDL 階段**               | Build |  
+| **元件**               | Azure AD |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [Modern Authentication with Azure Active Directory for Web Applications](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/)、[使用 Redis 作為 ADAL 權杖快取](https://blogs.msdn.microsoft.com/mrochon/2016/09/19/using-redis-as-adal-token-cache/)  |
@@ -369,8 +370,8 @@ ms.locfileid: "72244638"
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Azure AD | 
-| **SDL 階段**               | Build |  
+| **元件**               | Azure AD |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [Modern Authentication with Azure Active Directory for Web Applications](https://blogs.msdn.microsoft.com/microsoft_press/2016/01/04/new-book-modern-authentication-with-azure-active-directory-for-web-applications/) |
@@ -430,8 +431,8 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Azure AD | 
-| **SDL 階段**               | Build |  
+| **元件**               | Azure AD |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | [ADAL](https://azure.microsoft.com/documentation/articles/active-directory-authentication-libraries/) |
@@ -441,8 +442,8 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | IoT 現場閘道 | 
-| **SDL 階段**               | Build |  
+| **元件**               | IoT 現場閘道 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A  |
 | **參考**              | N/A  |
@@ -452,11 +453,11 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | IoT 雲端閘道 | 
-| **SDL 階段**               | Build |  
+| **元件**               | IoT 雲端閘道 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型、C#、Node.JS  |
 | **屬性**              | N/A、閘道選擇 - Azure IoT 中樞 |
-| **參考**              | N/A、[具有 .net 的 Azure IoT 中樞](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、[與 Iot 中樞和 Node JS 消費者入門](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)，[使用 SAS 和憑證來保護 IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)， [Git 存放庫](https://github.com/Azure/azure-iot-sdks/tree/master/node) |
+| **參考**              | N/A、[具有 .net 的 Azure IoT 中樞](https://azure.microsoft.com/documentation/articles/iot-hub-csharp-csharp-getstarted/)、[與 Iot 中樞和 Node JS 消費者入門](https://azure.microsoft.com/documentation/articles/iot-hub-node-node-getstarted)，[使用 SAS 和憑證來保護 IoT](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/)， [Git 存放庫](https://github.com/Azure/azure-iot-sdks/) |
 | **步驟** | <ul><li>**泛型︰** 使用傳輸層安全性 (TLS) 或 IPSec 來驗證裝置。 如果裝置無法處理完整的非對稱密碼編譯，則基礎結構應該支援在這些裝置上使用預先共用金鑰 (PSK)。 利用 Azure AD、Oauth。</li><li>**C#：** 建立 DeviceClient 執行個體時，Create 方法預設會建立一個使用 AMQP 通訊協定來與 IoT 中樞通訊的 DeviceClient 執行個體。 若要使用 HTTPS 通訊協定，請使用可讓您指定通訊協定的 Create 方法的覆寫。 若您使用 HTTPS 通訊協定，您也應該將 `Microsoft.AspNet.WebApi.Client` Nuget 套件新增至您的專案，以包含 `System.Net.Http.Formatting` 命名空間。</li></ul>|
 
 ### <a name="example"></a>範例
@@ -512,9 +513,9 @@ await deviceClient.SendEventAsync(message);
     if (policyName) token += "&skn="+policyName;
     return token;
     ```
-* 使用 SAS 權杖進行連線︰ 
+* 使用 SAS 權杖進行連線︰
     ```javascript
-    Client.fromSharedAccessSignature(sas, Http); 
+    Client.fromSharedAccessSignature(sas, Http);
     ```
   #### <a name="certificates"></a>憑證
 * 使用任何工具 (例如 OpenSSL) 產生自我簽署的 X509 憑證，以產生 .cert 和 .key 檔案來分別儲存憑證和金鑰
@@ -541,7 +542,7 @@ await deviceClient.SendEventAsync(message);
     var options = {
         key: fs.readFileSync('./key.pem', 'utf8'),
         cert: fs.readFileSync('./server.crt', 'utf8')
-    }; 
+    };
     // Calling setOptions with the x509 certificate and key (and optionally, passphrase) will configure the client //transport to use x509 when connecting to IoT Hub
     client.setOptions(options);
     //call fn to execute after the connection is set up
@@ -552,8 +553,8 @@ await deviceClient.SendEventAsync(message);
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | IoT 雲端閘道  | 
-| **SDL 階段**               | Build |  
+| **元件**               | IoT 雲端閘道  |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | 閘道選擇 - Azure IoT 中樞 |
 | **參考**              | [Azure IoT 中樞安全性權杖](https://azure.microsoft.com/documentation/articles/iot-hub-sas-tokens/) |
@@ -563,8 +564,8 @@ await deviceClient.SendEventAsync(message);
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Azure 儲存體 | 
-| **SDL 階段**               | Build |  
+| **元件**               | Azure 儲存體 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | StorageType - Blob |
 | **參考**              | [管理對容器與 Blob 的匿名讀取權限](https://azure.microsoft.com/documentation/articles/storage-manage-access-to-resources/)、[共用存取簽章，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/) |
@@ -574,8 +575,8 @@ await deviceClient.SendEventAsync(message);
 
 | 標題                   | 詳細資料      |
 | ----------------------- | ------------ |
-| **元件**               | Azure 儲存體 | 
-| **SDL 階段**               | Build |  
+| **元件**               | Azure 儲存體 |
+| **SDL 階段**               | Build |
 | **適用的技術** | 泛型 |
 | **屬性**              | N/A |
 | **參考**              | [共用存取簽章，第 1 部分：了解 SAS 模型](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)、[共用存取簽章，第 2 部分：透過 Blob 儲存體建立及使用 SAS](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-2/)、[如何使用共用存取簽章和預存存取原則將存取權委派給帳戶中的物件](https://azure.microsoft.com/documentation/articles/storage-security-guide/#_how-to-delegate-access-to-objects-in-your-account-using-shared-access-signatures-and-stored-access-policies) |

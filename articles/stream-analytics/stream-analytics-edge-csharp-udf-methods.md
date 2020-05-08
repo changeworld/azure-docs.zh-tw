@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c15f16692e92c4d25d8194aaf93a3da907ae0e67
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426305"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598142"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>開發適用于 Azure 串流分析作業的 .NET Standard 使用者定義函式（預覽）
 
@@ -28,7 +28,7 @@ Azure 串流分析提供類似 SQL 的查詢語言，以對事件資料的串流
 
 如果您想要在任何其他區域中使用這項功能，您可以[要求存取權](https://aka.ms/ccodereqregion)。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 Azure 串流分析的 Visual Studio 工具可讓您輕鬆地撰寫 UDF、在本機 (甚至離線) 測試工作，並將串流分析工作發佈至 Azure。 發佈至 Azure 後，您便可使用 IoT 中樞將工作發佈至 IoT 裝置。
 
 有三種方式可以實作 UDF：
@@ -42,17 +42,29 @@ Azure 串流分析的 Visual Studio 工具可讓您輕鬆地撰寫 UDF、在本�
 任何 UDF 封裝格式的路徑皆為 `/UserCustomCode/CLR/*`。 動態連結程式庫 (DLL) 與資源會複製到 `/UserCustomCode/CLR/*` 資料夾下方，這可幫助將使用者 DLL 與系統和 Azure 串流分析 DLL 隔離。 此套件路徑用於所有函式，而不論用來運用它們的方法為何。
 
 ## <a name="supported-types-and-mapping"></a>支援的型別與對應
+針對要在 c # 中使用的 Azure 串流分析值，必須從某個環境封送處理至另一個環境。 UDF 的所有輸入參數會進行封送處理。 每個 Azure 串流分析類型在 c # 中都有對應的類型，如下表所示：
 
-|**UDF 型別 (C#)**  |**Azure 串流分析型別**  |
+|**Azure 串流分析型別** |**C # 類型** |
+|---------|---------|
+|BIGINT | long |
+|FLOAT | double |
+|nvarchar(max) | 字串 |
+|Datetime | Datetime |
+|Record | 字典\<字串，物件> |
+|Array | 陣列\<物件> |
+
+當資料需要從 c # 封送處理至 Azure 串流分析（在 UDF 的輸出值上發生）時，也是如此。 下表顯示支援的類型：
+
+|**C # 類型**  |**Azure 串流分析型別**  |
 |---------|---------|
 |long  |  BIGINT   |
-|double  |  double   |
+|double  |  FLOAT   |
 |字串  |  nvarchar(max)   |
-|dateTime  |  dateTime   |
-|struct  |  IRecord   |
-|物件  |  IRecord   |
-|陣列\<物件>  |  IArray   |
-|dictionary<string, object>  |  IRecord   |
+|Datetime  |  dateTime   |
+|struct  |  Record   |
+|物件 (object)  |  Record   |
+|陣列\<物件>  |  Array   |
+|字典\<字串，物件>  |  Record   |
 
 ## <a name="codebehind"></a>CodeBehind
 您可以使用 **Script.asql** CodeBehind 撰寫使用者定義的函式。 Visual Studio 工具會自動將 CodeBehind 檔案編譯成組件檔。 組件會封裝為 zip 檔案，並在您將工作提交到 Azure 時上傳到您的儲存體帳戶。 您可以遵循 [針對 Azure 串流分析 Edge 作業撰寫 C# UDF](stream-analytics-edge-csharp-udf.md) 教學課程，了解如何使用 CodeBehind 撰寫 C# UDF。 

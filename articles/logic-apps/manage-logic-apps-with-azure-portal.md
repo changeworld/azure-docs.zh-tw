@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: lauradolan
 ms.author: ladolan
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 04/13/2020
-ms.openlocfilehash: f726ca90c215c4aff3734bd8022bbc1ad4dc5f87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: d80972cd200b8f85e14d316c4c06a38f88ac81b5
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416002"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598159"
 ---
 # <a name="manage-logic-apps-in-the-azure-portal"></a>管理 Azure 入口網站中的邏輯應用程式
 
@@ -54,11 +54,11 @@ ms.locfileid: "81416002"
 
 1. 在 [**屬性**] 窗格上，您可以查看並複製邏輯應用程式的下列相關資訊：
 
-   * **Name**
+   * **名稱**
    * **資源識別碼**
    * **資源群組**
    * **位置**
-   * **類型** 
+   * **型別** 
    * **訂用帳戶名稱**
    * **訂用帳戶識別碼**
    * **存取端點**
@@ -145,6 +145,10 @@ ms.locfileid: "81416002"
 * 所有進行中和暫止的執行都會繼續執行，直到完成為止。 視這些執行的數目而定，此程式可能需要一些時間。
 
 * Logic Apps 引擎不會建立或執行新的工作流程實例。
+
+> [!NOTE]
+> 如果您刪除並重新建立子邏輯應用程式，您必須重新儲存父系邏輯應用程式。 重新建立的子應用程式將會有不同的中繼資料。
+> 如果您不在重新建立父邏輯應用程式之後重新儲存其子系，您對子邏輯應用程式的呼叫將會失敗，並出現「未經授權」錯誤。 這種行為適用于父子式邏輯應用程式，例如，使用整合帳戶中的成品或呼叫 Azure 函式的專案。
 
 <a name="delete-single-logic-app"></a>
 

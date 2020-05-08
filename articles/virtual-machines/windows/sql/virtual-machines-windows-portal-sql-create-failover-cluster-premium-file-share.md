@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09dd4ea3cd039bcb91acc877e51fee7e40168ac3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303217"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612753"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>在 Azure 虛擬機器上使用 premium 檔案共用設定 SQL Server 容錯移轉叢集實例
 
@@ -47,7 +47,7 @@ ms.locfileid: "78303217"
 > [!IMPORTANT]
 > 目前，只有[SQL Server IaaS 代理程式擴充](virtual-machines-windows-sql-server-agent-extension.md)功能的[輕量管理模式](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes)才支援 Azure 虛擬機器上的 SQL Server 容錯移轉叢集實例。 若要從完整延伸模式變更為輕量，請刪除對應 Vm 的**Sql 虛擬機器**資源，然後在輕量模式中向 sql VM 資源提供者註冊。 使用 Azure 入口網站刪除**SQL 虛擬機器**資源時，請**清除正確虛擬機器旁的核取方塊**。 完整延伸模組支援自動備份、修補和先進入口網站管理等功能。 在輕量管理模式中重新安裝代理程式之後，這些功能將無法在 SQL Vm 上使用。
 
-Premium 檔案共用可提供 IOPS 和整個容量，以符合許多工作負載的需求。 針對需要大量 IO 的工作負載，請考慮根據受控 premium 磁片或 ultra 磁片，[使用儲存空間直接存取來 SQL Server 容錯移轉叢集實例](virtual-machines-windows-portal-sql-create-failover-cluster.md)。  
+Premium 檔案共用提供 IOPS 和輸送量容量，以符合許多工作負載的需求。 針對需要大量 IO 的工作負載，請考慮根據受控 premium 磁片或 ultra 磁片，[使用儲存空間直接存取來 SQL Server 容錯移轉叢集實例](virtual-machines-windows-portal-sql-create-failover-cluster.md)。  
 
 檢查您環境的 IOPS 活動，並確認 premium 檔案共用會在您開始部署或遷移之前，提供您所需的 IOPS。 使用 Windows 效能監視器磁片計數器來監視 SQL Server 資料、記錄檔和暫存資料庫檔案所需的總 IOPS （磁片傳輸/秒）和輸送量（磁片位元組/秒）。
 
@@ -71,7 +71,7 @@ Premium 檔案共用可提供 IOPS 和整個容量，以符合許多工作負載
 
 具有 premium 檔案共用的容錯移轉叢集不支援 Filestream。 若要使用 filestream，請使用[儲存空間直接存取](virtual-machines-windows-portal-sql-create-failover-cluster.md)來部署您的叢集。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 在完成本文中的步驟之前，您應該已經具備：
 
@@ -465,7 +465,7 @@ Azure 虛擬機器支援 Windows Server 2019 上的 Microsoft 分散式交易協
 - 叢集 MSDTC 資源無法設定為使用共用存放裝置。 在 Windows Server 2016 上，如果您建立 MSDTC 資源，它不會顯示任何可供使用的共用存放裝置，即使有可用的存放裝置也一樣。 Windows Server 2019 中已修正此問題。
 - 基本負載平衡器不會處理 RPC 埠。
 
-## <a name="see-also"></a>請參閱
+## <a name="see-also"></a>另請參閱
 
 - [Windows 叢集技術](/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server 容錯移轉叢集實例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

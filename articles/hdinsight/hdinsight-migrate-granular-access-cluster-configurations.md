@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/20/2020
+ms.openlocfilehash: 058300dca3e7eae41b7d8010e1ca5ee7d4cdcf3a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546343"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598465"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>移轉至叢集組態中以角色為基礎的細微存取
 
@@ -24,14 +24,14 @@ ms.locfileid: "80546343"
 
 從2019年9月3日開始，存取這些密碼將`Microsoft.HDInsight/clusters/configurations/action`需要許可權，這表示使用者無法再以「讀取者」角色來存取它們。 具有此許可權的角色是「參與者」、「擁有者」和「新的 HDInsight 叢集操作員」角色（如下所示）。
 
-我們也引進了新的[HDInsight 叢集操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)角色，將能夠在不被授與參與者或擁有者的系統管理許可權的情況下，取得密碼。 總結：
+我們也引進了新的[HDInsight 叢集操作員](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator)角色，將能夠在不被授與參與者或擁有者的系統管理許可權的情況下，取得密碼。 總括來說：
 
 | [角色]                                  | 先前是                                                                                        | 往後       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| 讀取者                                | -讀取權限，包括秘密                                                                   | -讀取權限，不**包括**秘密 |           |   |   |
+| 讀取者                                | -讀取權限，包括秘密。                                                                   | -讀取權限，不**包括**秘密 |           |   |   |
 | HDInsight 叢集操作員<br>（新角色） | N/A                                                                                              | -讀取/寫入存取權，包括秘密         |   |   |
-| 參與者                           | -讀取/寫入存取權，包括秘密<br>-建立和管理所有類型的 Azure 資源。     | 沒有變更 |
-| 擁有者                                 | -讀取/寫入存取權，包括秘密<br>-所有資源的完整存取權<br>-將存取權委派給其他人 | 沒有變更 |
+| 參與者                           | -讀取/寫入存取權，包括秘密。<br>-建立和管理所有類型的 Azure 資源。<br>-執行腳本動作。     | 沒有變更 |
+| 擁有者                                 | -包含秘密的讀取/寫入存取權。<br>-所有資源的完整存取權<br>-將存取權委派給其他人。<br>-執行腳本動作。 | 沒有變更 |
 
 如需如何將 HDInsight 叢集操作員角色指派新增至使用者以授與對叢集密碼之讀取/寫入存取權的詳細資訊，請參閱下一節[將 hdinsight 叢集操作員角色指派新增至使用者](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user)。
 

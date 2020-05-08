@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: ff7f8bc27d358c667b10c0bd3383e78b20494303
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02cc2ddc793906ff79cbb8619a43d54d696b42ed
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "64680125"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594078"
 ---
 # <a name="use-powershell-to-create-an-azure-ad-app-to-use-with-the-azure-media-services-api"></a>使用 PowerShell 建立 Azure AD 應用程式，以搭配 Azure 媒體服務 API 使用
 
@@ -62,7 +62,7 @@ $Retries = 0;While ($NewRole -eq $null -and $Retries -le 6)
 
 - [使用 Azure PowerShell 建立用來存取資源的服務主體](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 - [使用 Azure PowerShell 管理角色型存取控制](../../role-based-access-control/role-assignments-powershell.md)
-- [如何使用憑證手動設定精靈應用程式](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/Manual-Configuration-Steps.md#add-the-certificate-as-a-key-for-the-todolistdaemonwithcert-application-in-azure-ad) \(英文\)
+- [如何使用憑證手動設定精靈應用程式](https://github.com/azure-samples/active-directory-dotnetcore-daemon-v2) \(英文\)
 
 ## <a name="next-steps"></a>後續步驟
 

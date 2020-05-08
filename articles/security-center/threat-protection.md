@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 79638f584f1c65b33f23a68f01dbe82878460cc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234072"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606886"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 資訊安全中心內的威脅防護
 
@@ -34,7 +34,9 @@ Azure 資訊安全中心的威脅防護為您的環境提供全面的防護：
 > [!TIP]
 > 若要啟用資訊安全中心的威脅防護功能，您必須將標準定價層套用至包含適用工作負載的訂用帳戶。
 >
-> 針對儲存體帳戶和 PaaS SQL/MySQL/PG 伺服器資訊安全中心的威脅防護，是目前只能在資源層級啟用以保護個別儲存體/SQL 工作負載的工作負載。
+> 您可以在訂用帳戶層級或資源層級，啟用**Azure 儲存體帳戶**的威脅防護。
+> 您可以在訂用帳戶層級或資源層級，為**AZURE SQL DATABASE SQL 伺服器**啟用威脅防護。
+> 您只能在資源層級啟用**適用於 MariaDB 的 Azure 資料庫/MySQL/于 postgresql**的威脅防護。
 
 
 
@@ -155,7 +157,7 @@ Azure SQL Database 的先進威脅防護會偵測異常活動，指出不尋常�
 
 適用于 Azure SQL Database 和 SQL 的先進威脅防護屬於先進的 SQL 安全性功能的[先進資料安全性（ADS）](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)整合套件，涵蓋 Azure SQL 資料庫、Azure SQL Database 受控實例、Azure SQL 資料倉儲資料庫和 azure 虛擬機器上的 SQL server。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [如何為 Azure SQL Database 啟用先進的威脅防護](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [如何為 Azure 上的 SQL server 啟用先進的威脅防護虛擬機器](security-center-iaas-advanced-data.md)
@@ -173,7 +175,7 @@ Azure 儲存體的先進威脅防護目前僅適用于[Blob 儲存體](https://a
 
 如需定價詳細資料，包括免費的30天試用版，請參閱[Azure 資訊安全中心定價頁面](https://azure.microsoft.com/pricing/details/security-center/)。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [如何為 Azure 儲存體啟用先進的威脅防護](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)
 * [Azure 儲存體的威脅防護警示清單](alerts-reference.md#alerts-azurestorage)
@@ -188,7 +190,7 @@ Azure 儲存體的先進威脅防護目前僅適用于[Blob 儲存體](https://a
 
 Azure Cosmos DB 警示是由不尋常且可能有害的嘗試存取或惡意探索 Azure Cosmos DB 帳戶所產生。
 
-如需詳細資訊，請參閱：
+如需詳細資訊，請參閱
 
 * [Azure Cosmos DB 的先進威脅防護（預覽）](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [Azure Cosmos DB 的威脅防護警示清單（預覽）](alerts-reference.md#alerts-azurecosmos)

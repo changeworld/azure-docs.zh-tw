@@ -180,6 +180,9 @@
     - name: Azure NetApp Files
       tocHref: /azure/azure-netapp-files/
       topicHref: /azure/azure-netapp-files/
+    - name: Azure VMware 解決方案
+      tocHref: /azure/azure-vmware/
+      topicHref: /azure/azure-vmware/
     - name: 由 CloudSimple 提供的 Azure VMware 解決方案
       tocHref: /azure/vmware-cloudsimple/
       topicHref: /azure/vmware-cloudsimple/
@@ -258,7 +261,7 @@
     - name: Azure Stack 使用者
       tocHref: /azure/azure-stack/user/
       topicHref: /azure/azure-stack/user/
-    - name: Backup
+    - name: 'Backup '
       tocHref: /azure/backup/
       topicHref: /azure/backup/
     - name: Batch

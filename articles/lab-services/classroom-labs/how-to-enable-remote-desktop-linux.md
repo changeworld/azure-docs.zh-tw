@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 04/30/2020
 ms.author: spelluru
-ms.openlocfilehash: cb9a3e2b9ddcd0f74bfa4978f0bc3f4eb0688257
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dfd16d0977504e598492225238d29c83fcb7a028
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270858"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598057"
 ---
 # <a name="enable-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>在 Azure 實驗室服務的實驗室中啟用 Linux 虛擬機器的遠端桌面
 本文說明如何執行下列工作：
@@ -36,7 +36,7 @@ ms.locfileid: "79270858"
 ![啟用 Linux 映射的遠端桌面連線](../media/how-to-enable-remote-desktop-linux/enabling-remote-desktop-connection-dialog.png)
 
 > [!IMPORTANT] 
-> 啟用「**遠端桌面**連線」只會開啟 Linux 電腦上的**RDP**埠。 如果已在虛擬機器映射上安裝並設定 RDP （例如： Ubuntu 資料科學虛擬機器映射），您/學生可以透過 RDP 連線到 Vm，而不需遵循任何額外步驟。
+> 啟用「**遠端桌面**連線」只會開啟 Linux 電腦上的**RDP**埠。 如果已在虛擬機器映射上安裝並設定 RDP，您/學生可以透過 RDP 連線到 Vm，而不需要執行任何額外的步驟。
 > 
 > 如果 VM 映射未安裝和設定 RDP，您必須在第一次使用 SSH 連線到 Linux 機器，並安裝 RDP 和 GUI 套件，讓您/學生可以稍後再使用 RDP 連線到 Linux 電腦。 如需詳細資訊，請參閱[安裝和設定遠端桌面以連接至 Azure 中的 LINUX VM](../../virtual-machines/linux/use-remote-desktop.md)。 然後，您可以發行映射，讓學生可以透過 RDP 連線到學生的 Linux Vm。 
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 REST API 列出 Azure 資源的拒絕指派
-description: 瞭解如何使用 Azure 資源的角色型存取控制（RBAC）和 REST API，列出使用者、群組和應用程式的拒絕指派。
+title: 使用 REST API 列出 Azure 拒絕指派-Azure RBAC
+description: 瞭解如何使用 REST API 和 Azure 角色型存取控制（Azure RBAC），列出使用者、群組和應用程式的 Azure 拒絕指派。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,25 +15,25 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0f648405a3d71bf27c64dacbb3fd78f3e9801137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae0352566e6cb4f8ed1384ca12213e2aaa07f9d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063021"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733865"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>使用 REST API 列出 Azure 資源的拒絕指派
+# <a name="list-azure-deny-assignments-using-the-rest-api"></a>使用 REST API 列出 Azure 拒絕指派
 
-[拒絕指派](deny-assignments.md)會封鎖使用者執行特定的 Azure 資源動作，即使角色指派授與他們存取權也一樣。 本文說明如何使用 REST API 列出拒絕指派。
+[Azure 拒絕指派](deny-assignments.md)會封鎖使用者執行特定的 Azure 資源動作，即使角色指派授與他們存取權也一樣。 本文說明如何使用 REST API 列出拒絕指派。
 
 > [!NOTE]
-> 您無法直接建立自己的拒絕指派。 如需如何建立拒絕指派的相關資訊，請參閱[拒絕指派](deny-assignments.md)。
+> 您無法直接建立自己的拒絕指派。 如需如何建立拒絕指派的相關資訊，請參閱[Azure 拒絕指派](deny-assignments.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要取得拒絕指派的相關資訊，您必須具有：
 
-- `Microsoft.Authorization/denyAssignments/read`許可權，包含在[Azure 資源的大部分內建角色](built-in-roles.md)中。
+- `Microsoft.Authorization/denyAssignments/read`許可權，包含在大多數的[Azure 內建角色](built-in-roles.md)中。
 
 ## <a name="list-a-single-deny-assignment"></a>列出單一拒絕指派
 
@@ -91,7 +91,7 @@ ms.locfileid: "80063021"
 
 ## <a name="list-deny-assignments-at-the-root-scope-"></a>列出根範圍 (/) 內的拒絕指派
 
-1. 以[提高 Azure Active Directory 中全域管理員的存取權](elevate-access-global-admin.md)中所述的方式來提高您的存取權。
+1. 依照提高存取權[以管理所有 Azure 訂用帳戶和管理群組](elevate-access-global-admin.md)中所述，提升您的存取權。
 
 1. 使用下列要求：
 
@@ -111,6 +111,6 @@ ms.locfileid: "80063021"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [了解 Azure 資源的拒絕指派](deny-assignments.md)
-- [提升 Azure Active Directory 中全域管理員的存取權](elevate-access-global-admin.md)
+- [瞭解 Azure 拒絕指派](deny-assignments.md)
+- [提高存取權以管理所有 Azure 訂用帳戶和管理群組](elevate-access-global-admin.md)
 - [Azure REST API 參考](/rest/api/azure/)

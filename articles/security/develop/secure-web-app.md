@@ -16,12 +16,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.openlocfilehash: 730e478622da8cd90af1c559e4d0c6fd04151cca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 690cb37df4a5d195bfce6ee792f7565a6f7f1768
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686800"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612770"
 ---
 # <a name="develop-a-secure-web-app"></a>開發安全的 Web 應用程式
 
@@ -139,7 +140,7 @@ ms.locfileid: "81686800"
 
 ## <a name="deploy-the-solution"></a>部署解決方案
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 
 若要讓應用程式啟動並執行，您需要安裝下列工具：
 

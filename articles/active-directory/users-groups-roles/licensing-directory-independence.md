@@ -1,7 +1,7 @@
 ---
 title: 多個租使用者互動的特性-Azure AD |Microsoft Docs
-description: 瞭解您的 Azure Active Directory 租使用者，做為完全獨立的組織
-services: active-tenant
+description: 瞭解 Azure Active Directory 組織的資料獨立性
+services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbe7b0211775e59504443d30fa253cfa14af13b1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878114"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582751"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>瞭解多個 Azure Active Directory 組織如何互動
 
-在 Azure Active Directory （Azure AD）中，每個租使用者都是完全獨立的組織：邏輯上獨立于您所管理之其他 Azure AD 組織的對等。 組織之間的這種獨立性包括資源獨立性、系統管理獨立性和同步處理獨立性。 組織之間沒有父子式關聯性。
+在 Azure Active Directory （Azure AD）中，每個 Azure AD 組織都完全獨立：邏輯上獨立于您所管理之其他 Azure AD 組織的對等。 組織之間的這種獨立性包括資源獨立性、系統管理獨立性和同步處理獨立性。 組織之間沒有父子式關聯性。
 
 ## <a name="resource-independence"></a>資源獨立性
 

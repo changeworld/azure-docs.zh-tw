@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ef355361516264db95a333dde8a117819ca1a661
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 92529c2d60b32e9c8b57b897008b5333adc2a4d4
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203687"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594962"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift 常見問題
 
@@ -23,7 +23,7 @@ ms.locfileid: "82203687"
 
 ## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>我可以將叢集部署到現有的虛擬網路嗎？
 
-否。 但是，您可以透過對等互連將 Azure Red Hat OpenShift 叢集連線到現有的虛擬網路。 如需詳細資訊，請參閱[將叢集的虛擬網路連線到現有的虛擬網路](tutorial-create-cluster.md#create-the-cluster)。
+不需要。 但是，您可以透過對等互連將 Azure Red Hat OpenShift 叢集連線到現有的虛擬網路。 如需詳細資訊，請參閱[將叢集的虛擬網路連線到現有的虛擬網路](tutorial-create-cluster.md#create-the-cluster)。
 
 ## <a name="what-cluster-operations-are-available"></a>有哪些叢集作業可供使用？
 
@@ -55,15 +55,15 @@ ms.locfileid: "82203687"
 
 ## <a name="can-an-admin-manage-users-and-quotas"></a>系統管理員可以管理使用者和配額嗎？
 
-是。 除了存取所有使用者建立的專案之外，Azure Red Hat OpenShift 系統管理員還可以管理使用者和配額。
+可以。 除了存取所有使用者建立的專案之外，Azure Red Hat OpenShift 系統管理員還可以管理使用者和配額。
 
 ## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>我可以將叢集限制為只有特定 Azure AD 的使用者嗎？
 
-是。 您可以藉由設定 Azure AD 應用程式來限制哪些 Azure AD 使用者可以登入叢集。 如需詳細資訊，請參閱[如何：將您的應用程式限制為一組使用者](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
+可以。 您可以藉由設定 Azure AD 應用程式來限制哪些 Azure AD 使用者可以登入叢集。 如需詳細資訊，請參閱[如何：將您的應用程式限制為一組使用者](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
 
 ## <a name="can-i-restrict-users-from-creating-projects"></a>我可以限制使用者建立專案嗎？
 
-是。 以 Azure Red Hat OpenShift 系統管理員身分登入您的叢集，並執行此命令：
+可以。 以 Azure Red Hat OpenShift 系統管理員身分登入您的叢集，並執行此命令：
 
 ```
 oc adm policy \
@@ -75,15 +75,15 @@ oc adm policy \
 
 ## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>叢集可以跨多個 Azure 區域擁有計算節點嗎？
 
-否。 Azure Red Hat OpenShift 叢集中的所有節點都必須來自相同的 Azure 區域。
+不需要。 Azure Red Hat OpenShift 叢集中的所有節點都必須來自相同的 Azure 區域。
 
 ## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>主要和基礎結構節點是否會與 Azure Kubernetes Service （AKS）一起抽象化？
 
-否。 所有資源（包括叢集主機）都是在您的客戶訂用帳戶中執行。 這些類型的資源會放在唯讀的資源群組中。
+不需要。 所有資源（包括叢集主機）都是在您的客戶訂用帳戶中執行。 這些類型的資源會放在唯讀的資源群組中。
 
 ## <a name="is-open-service-broker-for-azure-osba-supported"></a>是否支援 Open Service Broker for Azure （OSBA）？
 
-是。 您可以使用 OSBA 搭配 Azure Red Hat OpenShift。 如需詳細資訊，請參閱[Open Service Broker For Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) 。
+可以。 您可以使用 OSBA 搭配 Azure Red Hat OpenShift。 如需詳細資訊，請參閱[Open Service Broker For Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) 。
 
 ## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>我嘗試對等互連至不同訂用帳戶中的虛擬網路， `Failed to get vnet CIDR`但收到錯誤。
 
@@ -135,7 +135,7 @@ Syslog、docker logs、日記和 dmesg 是由受控服務處理，不會向客�
 
 ## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>ARO 的預設 pod 排程器設定為何？
 
-ARO 會使用 OpenShift 中隨附的預設排程器。 ARO 不支援幾個額外的機制。 如需詳細資訊，請參閱預設排程器[檔](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler)和主要排程器[檔](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v6/data/master/etc/origin/master/scheduler.json)。
+ARO 會使用 OpenShift 中隨附的預設排程器。 ARO 不支援幾個額外的機制。 如需詳細資訊，請參閱預設排程器[檔](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler)和主要排程器[檔](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v16/data/master/etc/origin/master/scheduler.json)。
 
 目前不支援先進/自訂排程。 如需詳細資訊，請參閱[排程檔](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html)。
 

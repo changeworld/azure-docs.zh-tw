@@ -1,6 +1,6 @@
 ---
 title: 以電子郵件驗證的使用者進行自助式註冊-Azure AD |Microsoft Docs
-description: 在 Azure Active Directory （Azure AD）租使用者中使用自助式註冊
+description: 在 Azure Active Directory （Azure AD）組織中使用自助式註冊
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 953837e22cdd3ba8a54d702eac61461739db82d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fedb9375ec7ac7e7c7ac7a3ebf91166f70b6a05b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74027643"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582992"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什麼是 Azure Active Directory 的自助式註冊？
 

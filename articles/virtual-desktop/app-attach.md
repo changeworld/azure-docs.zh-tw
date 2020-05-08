@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 20a82cbd7de4b5678648bac19ab9b59bf557b0ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128328"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612464"
 ---
 # <a name="set-up-msix-app-attach"></a>設定 MSIX 應用程式附加
 
 > [!IMPORTANT]
 > MSIX 應用程式附加目前為公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本主題將逐步引導您瞭解如何在 Windows 虛擬桌面環境中設定 MSIX 應用程式連接。
 
@@ -28,7 +28,7 @@ ms.locfileid: "79128328"
 在您開始之前，您必須先設定 MSIX 應用程式附加：
 
 - 存取 Windows 測試人員入口網站以取得 Windows 10 的版本，並支援 MSIX 應用程式附加 Api。
-- 正常運作的 Windows 虛擬桌面部署。 如需相關資訊，請參閱[在 Windows 虛擬桌面中建立租](tenant-setup-azure-active-directory.md)使用者。
+- 正常運作的 Windows 虛擬桌面部署。 如需相關資訊，請參閱[在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。
 - MSIX 封裝工具
 - Windows 虛擬桌面部署中將儲存 MSIX 套件的網路共用
 

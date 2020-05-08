@@ -5,23 +5,25 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 33d058f028b7032f296ffcf82f0e5fe2c993e6fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127912"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612362"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虛擬桌面環境
 
+>[!IMPORTANT]
+>此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/environment-setup-2019.md)。
+>
+> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 Windows 虛擬桌面是一種服務，可讓使用者輕鬆且安全地存取其虛擬化的桌面和 Remoteapp。 本主題將告訴您更多有關 Windows 虛擬桌面環境的一般結構。
-
-## <a name="tenants"></a>租用戶
-
-Windows 虛擬桌面租使用者是用來管理 Windows 虛擬桌面環境的主要介面。 每個 Windows 虛擬桌面的租使用者都必須與包含將登入環境之使用者的 Azure Active Directory 相關聯。 從 Windows 虛擬桌面租使用者中，您可以開始建立主機集區，以執行使用者的工作負載。
 
 ## <a name="host-pools"></a>主機集區
 
@@ -45,12 +47,12 @@ Windows 虛擬桌面租使用者是用來管理 Windows 虛擬桌面環境的主
 
 若要將資源發佈給使用者，您必須將它們指派給應用程式群組。 將使用者指派給應用程式群組時，請考慮下列事項：
 
-- 無法將使用者指派至相同主機集區中的桌面應用程式群組和 RemoteApp 應用程式群組。
+- 使用者可以同時指派至相同主機集區中的桌面應用程式群組和 RemoteApp 應用程式群組。 不過，使用者只能在每個會話啟動一種類型的應用程式群組。 使用者無法同時在單一會話中啟動這兩種類型的應用程式群組。
 - 使用者可以指派給相同主機集區中的多個應用程式群組，而其摘要會累積這兩個應用程式群組。
 
-## <a name="tenant-groups"></a>租使用者群組
+## <a name="workspaces"></a>工作區
 
-在 Windows 虛擬桌面中，Windows 虛擬桌面租使用者是大部分的安裝和設定發生所在的位置。 Windows 虛擬桌面租使用者包含主機集區、應用程式群組和應用程式群組使用者指派。 不過，在某些情況下，您可能需要一次管理多個 Windows 虛擬桌面的租使用者，特別是當您是雲端服務提供者（CSP）或主控夥伴時。 在這些情況下，您可以使用自訂的 Windows 虛擬桌面租使用者群組，將每個客戶的 Windows 虛擬桌面租使用者，集中管理存取權。 不過，如果您只是管理單一 Windows 虛擬桌面租使用者，則不會套用租使用者群組概念，而且您可以繼續操作及管理存在於預設租使用者群組中的租使用者。
+工作區是 Windows 虛擬桌面中應用程式群組的邏輯群組。 每個 Windows 虛擬桌面應用程式群組都必須與工作區相關聯，使用者才能看到發佈給他們的遠端應用程式和桌上型電腦。  
 
 ## <a name="end-users"></a>使用者
 
@@ -60,9 +62,12 @@ Windows 虛擬桌面租使用者是用來管理 Windows 虛擬桌面環境的主
 
 深入瞭解委派的存取權，以及如何[在 Windows 虛擬桌面的委派存取權中](delegated-access-virtual-desktop.md)將角色指派給使用者。
 
-若要瞭解如何設定您的 Windows 虛擬桌面租使用者，請參閱[在 Windows 虛擬桌面中建立租](tenant-setup-azure-active-directory.md)使用者。
+若要瞭解如何設定您的 Windows 虛擬桌面主機集區，請參閱[使用 Azure 入口網站建立主機](create-host-pools-azure-marketplace.md)集區。
 
 若要瞭解如何連接到 Windows 虛擬桌面，請參閱下列其中一篇文章：
 
-- [從 Windows 10 或 Windows 7 連線](connect-windows-7-and-10.md)
-- [從網頁瀏覽器連線](connect-web.md)
+- [與 Windows 10 或 Windows 7 連接](connect-windows-7-and-10.md)
+- [使用網頁瀏覽器連接](connect-web.md)
+- [與 Android 用戶端連線](connect-android.md)
+- [與 macOS 用戶端連線](connect-macos.md)
+- [與 iOS 用戶端連線](connect-ios.md)

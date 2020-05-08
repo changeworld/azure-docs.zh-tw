@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0c7332a42751b35b6ad8ec3f88afb7bc78cc85e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e028e7a5e7e7b8f747d7a1cfb36c553a8113544
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75445092"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583728"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中的角色型存取控制
 
@@ -61,6 +61,12 @@ Cosmos 資源提供者可以鎖定，以防止任何透過帳戶金鑰（也就�
         }
     }
 }
+```
+如果您匯出現有的 Resource Manager 範本，並使用這個屬性加以更新，它可以完全取代您的範本功能。 因此，如果未包含所有值，則會將它們重設為預設值。 另一種停用金鑰型中繼資料寫入權限的方式，是使用 Azure CLI，如下列命令所示：
+
+```cli
+az cosmosdb update  --name CosmosDBAccountName --resource-group ResourceGroupName  --disable-key-based-metadata-write-access true
+
 ```
 
 ## <a name="next-steps"></a>後續步驟

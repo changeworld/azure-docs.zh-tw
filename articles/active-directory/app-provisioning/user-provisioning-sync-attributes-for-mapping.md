@@ -1,26 +1,21 @@
 ---
-title: 將屬性同步處理至對應的 Azure AD |Microsoft Docs
+title: 將屬性同步處理至 Azure AD 以進行對應
 description: 瞭解如何將內部部署 Active Directory 的屬性同步處理至 Azure AD。 設定 SaaS 應用程式的使用者布建時，請使用目錄擴充功能來新增預設未同步處理的來源屬性。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/13/2019
 ms.author: mimart
-ms.custom: ''
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09d1efaf54bee65bd3274987e68e643f887baade
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b51d74d188f8f1c99f2075000e8fd91e70a81a4
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522266"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593143"
 ---
 # <a name="sync-an-attribute-from-your-on-premises-active-directory-to-azure-ad-for-provisioning-to-an-application"></a>將內部部署 Active Directory 的屬性同步處理至 Azure AD 以布建至應用程式
 

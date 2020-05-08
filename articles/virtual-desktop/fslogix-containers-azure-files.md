@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1dc5d54fa24217c91e14a8f37e092888b2bb6474
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127873"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611971"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 設定檔容器和 Azure 檔案
 
@@ -98,7 +98,7 @@ Windows 虛擬桌面提供客戶所使用 Vm 的大小、類型和計數的完�
 
 使用下列指南來設定 Windows 虛擬桌面環境。
 
-- 若要開始建立您的桌面虛擬化解決方案，請參閱[在 Windows 虛擬桌面中建立租](tenant-setup-azure-active-directory.md)使用者。
+- 若要開始建立您的桌面虛擬化解決方案，請參閱[在 Windows 虛擬桌面中建立租](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)使用者。
 - 若要在 Windows 虛擬桌面租使用者內建立主機集區，請參閱[使用 Azure Marketplace 建立主機集](create-host-pools-azure-marketplace.md)區。
 - 若要在雲端中設定完全受控的檔案共用，請參閱[設定 Azure 檔案儲存體共用](/azure/storage/files/storage-files-active-directory-enable/)。
 - 若要設定 FSLogix 設定檔容器，請參閱[使用檔案共用建立主機集區的設定檔容器](create-host-pools-user-profile.md)。

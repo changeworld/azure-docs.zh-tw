@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 64fe56ff506cf256dd7e317984551949f9ffad06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189359"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592055"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>調整 Azure HDInsight 叢集
 
@@ -74,27 +74,38 @@ Microsoft 提供下列公用程式來調整叢集：
 
 * Apache Storm
 
-    當執行時，您可以順暢地新增或移除資料節點。 不過，在調整作業成功完成後，您必須重新平衡拓撲。
-
-    您可以使用兩種方式來完成重新平衡作業：
+    當執行時，您可以順暢地新增或移除資料節點。 不過，在調整作業成功完成後，您必須重新平衡拓撲。 重新平衡可讓拓撲根據叢集中的新節點數目，重新調整平行處理原則[設定](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。 若要重新平衡執行中的拓撲，請使用下列其中一個選項：
 
   * Storm Web UI
+
+    使用下列步驟來重新平衡使用 Storm UI 的拓撲。
+
+    1. 在`https://CLUSTERNAME.azurehdinsight.net/stormui`您的網頁瀏覽器中`CLUSTERNAME`開啟，其中是您的風暴叢集的名稱。 出現提示時，輸入建立叢集時所指定的 HDInsight 叢集系統管理員 (管理員) 名稱和密碼。
+
+    1. 選取您要重新平衡的拓撲，然後選取 [重新平衡]**** 按鈕。 輸入重新平衡作業執行前的延遲。
+
+        ![HDInsight Storm 調整重新平衡](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
   * 命令列介面 (CLI) 工具
 
-    如需詳細資訊，請參閱[Apache Storm 檔](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)。
+    連接到伺服器並使用下列命令來重新平衡拓撲：
 
-    HDInsight 叢集上有提供 Storm Web UI：
+    ```bash
+     storm rebalance TOPOLOGYNAME
+    ```
 
-    ![HDInsight Storm 調整重新平衡](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    您也可以指定參數來覆寫拓撲原先提供的平行處理原則提示。 例如，下列程式碼會將`mytopology`拓撲重新設為5個背景工作進程，3個執行程式用於藍 spout 元件，以及10個執行程式用於黃色螺栓元件。
 
-    以下是用來重新平衡 Storm 拓撲的範例 CLI 命令：
-
-    ```console
+    ```bash
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
+
+* Kafka
+
+    您應該在調整作業完成後重新平衡磁碟分割複本。 如需詳細資訊，請參閱[使用 HDInsight 上的 Apache Kafka 確保資料的高可用性](./kafka/apache-kafka-high-availability.md)文件。
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>如何安全地向下調整叢集
 
@@ -252,3 +263,8 @@ hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
 ## <a name="next-steps"></a>後續步驟
 
 * [自動調整 Azure HDInsight 叢集規模](hdinsight-autoscale-clusters.md)
+
+如需有關調整 HDInsight 叢集的特定資訊，請參閱：
+
+* [使用 Azure 入口網站管理 HDInsight 中的 Apache Hadoop 叢集](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [使用 Azure CLI 管理 HDInsight 中的 Apache Hadoop 叢集](hdinsight-administer-use-command-line.md#scale-clusters)

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e9f90035816269d2d41781be34d0d8080628b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54bff88e9650240a3703e18d583f603cafeb3022
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431659"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611886"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解串流分析工作監視功能，以及如何監視查詢
 
@@ -37,7 +37,7 @@ Azure 入口網站會呈現可用來監視和疑難排解查詢和作業效能�
 | 函式要求      | 對 Azure Machine Learning 函式發出的呼叫次數 (如果有的話)。 |
 | 輸入還原序列化錯誤       | 無法還原序列化的輸入事件數目。  |
 | 輸入事件位元組      | 「串流分析」工作所接收到的資料量 (以位元組為單位)。 這可以用來驗證傳送到輸入來源的事件。 |
-| 輸入事件           | 從輸入事件還原序列化的記錄數目。 此計數不包括導致還原序列化錯誤的傳入事件。 |
+| 輸入事件           | 從輸入事件還原序列化的記錄數目。 此計數不包括導致還原序列化錯誤的傳入事件。 您可以在內部復原和自我聯結等案例中，串流分析多次內嵌相同的事件。 因此，如果您的作業有簡單的「通過」查詢，建議您不要預期輸入事件和輸出事件計量會進行比對。 |
 | 收到的輸入來源數       | 作業接收的訊息數目。 對於事件中樞，訊息是單一 EventData。 對於 Blob，訊息是單一 Blob。 請注意，輸入來源會在還原序列化之前計算。 如果有還原序列化錯誤，輸入來源可能會大於輸入事件。 否則，它可能會小於或等於輸入事件，因為每個訊息都可以包含多個事件。 |
 | 延遲輸入事件      | 晚於已設定延遲傳入容錯時間抵達的事件。 深入了解 [Azure 串流分析事件的順序考量](stream-analytics-out-of-order-and-late-events.md)。 |
 | 順序錯亂事件    | 所收到順序錯亂的事件數目，這些事件會根據事件順序原則，予以捨棄或指定調整後的時間戳記。 順序錯亂容錯視窗設定的組態可能會造成影響。 |

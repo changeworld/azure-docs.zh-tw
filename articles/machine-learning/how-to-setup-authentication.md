@@ -10,12 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6b2cfa85ea412a5ef8bda47a7ff6e99970ba6b0e
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283533"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611835"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>設定 Azure Machine Learning 資源和工作流程的驗證
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +33,7 @@ ms.locfileid: "79283533"
 
 如需 Azure Machine Learning 內的安全性和驗證的一般總覽，請參閱[概念一文](concept-enterprise-security.md)。
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 * 建立[Azure Machine Learning 工作區](how-to-manage-workspace.md)。
 * [設定您的開發環境](how-to-configure-environment.md)以安裝 Azure Machine Learning SDK，或使用已安裝 SDK 的[Azure Machine Learning 筆記本 VM](concept-azure-machine-learning-architecture.md#compute-instance) 。
@@ -125,7 +126,7 @@ az ad sp show --id your-client-id
 }
 ```
 
-接下來，使用下列命令，將您的服務主體存取權指派給您的 machine learning 工作區。 您將會分別需要您的`-w`工作區名稱，以及其和`-g`參數的資源組名。 針對`--user`參數，使用上一個`objectId`步驟中的值。 `--role`參數可讓您設定服務主體的存取角色，一般而言，您將使用**擁有**者或**參與者**。 兩者都具有現有資源（如計算叢集和資料存放區）的寫入權限，但只有**擁有**者可以布建這些資源。 
+接下來，使用下列命令，將您的服務主體存取權指派給您的 machine learning 工作區。 您將會分別需要您的`-w`工作區名稱，以及其和`-g`參數的資源組名。 針對`--user`參數，使用上一個`objectId`步驟中的值。 `--role`參數可讓您設定服務主體的存取角色，一般而言，您將使用**擁有**者或**參與者**。 兩者都具有現有資源（如計算叢集和資料存放區）的寫入權限，但只有**擁有**者可以布建這些資源。
 
 ```azurecli-interactive
 az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
@@ -148,7 +149,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
 `sp`變數現在會保留您在 SDK 中直接使用的驗證物件。 一般來說，將上述使用的識別碼/秘密儲存在環境變數中是個不錯的主意，如下列程式碼所示。
 
 ```python
-import os 
+import os
 
 sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_id=os.environ['AML_PRINCIPAL_ID'],
@@ -160,7 +161,7 @@ sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
 ```python
 from azureml.core import Workspace
 
-ws = Workspace.get(name="ml-example", 
+ws = Workspace.get(name="ml-example",
                    auth=sp,
                    subscription_id="your-sub-id")
 ws.get_details()
@@ -168,7 +169,7 @@ ws.get_details()
 
 ## <a name="azure-machine-learning-rest-api-auth"></a>Azure Machine Learning REST API auth
 
-在上述步驟中建立的服務主體也可以用來向 Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/)進行驗證。 您會使用 Azure Active Directory 的[用戶端認證授與流程](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)，允許服務對服務呼叫在自動化工作流程中進行無周邊驗證。 範例是以 Python 和 node.js 中的[ADAL 程式庫](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)來執行，但是您也可以使用任何支援 OpenID connect 1.0 的開放原始碼程式庫。 
+在上述步驟中建立的服務主體也可以用來向 Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/)進行驗證。 您會使用 Azure Active Directory 的[用戶端認證授與流程](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)，允許服務對服務呼叫在自動化工作流程中進行無周邊驗證。 範例是以 Python 和 node.js 中的[ADAL 程式庫](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)來執行，但是您也可以使用任何支援 OpenID connect 1.0 的開放原始碼程式庫。
 
 > [!NOTE]
 > MSAL 是比 ADAL 更新的程式庫，但您無法使用 MSAL 的用戶端認證來進行服務對服務驗證，因為它主要是適用于與特定使用者系結互動/UI 驗證的用戶端程式庫。 我們建議使用如下所示的 ADAL，以 REST API 建立自動化工作流程。
@@ -206,7 +207,7 @@ context.acquireTokenWithClientCredentials(
 變數`tokenResponse`是物件，其中包含權杖和相關聯的中繼資料，例如到期時間。 權杖的有效時間為1小時，而且可以重新整理，方法是再次執行相同的呼叫以抓取新的權杖。 以下是範例回應。
 
 ```javascript
-{ 
+{
     tokenType: 'Bearer',
     expiresIn: 3599,
     expiresOn: 2019-12-17T19:15:56.326Z,
@@ -214,13 +215,13 @@ context.acquireTokenWithClientCredentials(
     accessToken: "random-oauth-token",
     isMRRT: true,
     _clientId: 'your-client-id',
-    _authority: 'https://login.microsoftonline.com/your-tenant-id' 
+    _authority: 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
 
 使用`accessToken`屬性來提取驗證權杖。 如需如何使用權杖進行 API 呼叫的範例，請參閱[REST API 檔](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API)。
 
-### <a name="python"></a>Python 
+### <a name="python"></a>Python
 
 使用下列步驟，使用 Python 來產生驗證權杖。 在您的環境中`pip install adal`，執行。 然後，從您`tenantId`在`clientId`上述步驟`clientSecret`中建立的服務主體，使用您的、和，做為下列腳本中適當變數的值。
 
@@ -242,13 +243,13 @@ print(token_response)
 
 ```python
 {
-    'tokenType': 'Bearer', 
-    'expiresIn': 3599, 
-    'expiresOn': '2019-12-17 19:47:15.150205', 
-    'resource': 'https://management.azure.com/', 
-    'accessToken': 'random-oauth-token', 
-    'isMRRT': True, 
-    '_clientId': 'your-client-id', 
+    'tokenType': 'Bearer',
+    'expiresIn': 3599,
+    'expiresOn': '2019-12-17 19:47:15.150205',
+    'resource': 'https://management.azure.com/',
+    'accessToken': 'random-oauth-token',
+    'isMRRT': True,
+    '_clientId': 'your-client-id',
     '_authority': 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
@@ -314,9 +315,9 @@ print(token)
 > [!IMPORTANT]
 > 您必須在權杖的`refresh_by`時間之後要求新的權杖。 如果您需要在 Python SDK 以外重新整理權杖，其中一個選項是使用 REST API 搭配服務主體驗證定期進行`service.get_token()`呼叫，如先前所述。
 >
-> 強烈建議您在與 Azure Kubernetes Service 叢集相同的區域中建立您的 Azure Machine Learning 工作區。 
+> 強烈建議您在與 Azure Kubernetes Service 叢集相同的區域中建立您的 Azure Machine Learning 工作區。
 >
-> 若要使用權杖進行驗證，web 服務會呼叫您的 Azure Machine Learning 工作區建立所在的區域。 如果您的工作區區域無法使用，您將無法提取 web 服務的權杖，即使您的叢集與工作區位於不同的區域也一樣。 結果是，除非您的工作區區域再次可供使用，否則 Azure AD 驗證無法使用。 
+> 若要使用權杖進行驗證，web 服務會呼叫您的 Azure Machine Learning 工作區建立所在的區域。 如果您的工作區區域無法使用，您將無法提取 web 服務的權杖，即使您的叢集與工作區位於不同的區域也一樣。 結果是，除非您的工作區區域再次可供使用，否則 Azure AD 驗證無法使用。
 >
 > 此外，您的叢集區域和工作區區域之間的距離愈大，提取權杖所需的時間就越長。
 

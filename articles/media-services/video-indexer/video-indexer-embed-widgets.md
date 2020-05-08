@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262905"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594843"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在您的應用程式中內嵌影片索引子小工具
 
 本文說明如何在您的應用程式中內嵌影片索引子小工具。 影片索引子支援在您的應用程式中嵌入三種類型的 widget：*認知深入*解析、*播放機*和*編輯器*。
 
-從第2版開始，小工具基底 URL 會包含指定帳戶的區域。 例如，美國西部區域中的帳戶會產生：`https://wus2.videoindexer.ai/embed/insights/...`。
+從第2版開始，小工具基底 URL 會包含指定帳戶的區域。 例如，美國西部區域中的帳戶會產生：`https://www.videoindexer.ai/embed/insights/.../?location=westus2`。
 
 ## <a name="widget-types"></a>小工具類型
 
@@ -29,54 +29,61 @@ ms.locfileid: "81262905"
 
 認知深入解析小工具包含從您的影片索引編製程序中擷取的所有視覺化深入解析。 認知深入解析小工具支援下列選擇性 URL 參數：
 
-|Name|定義|描述|
+|名稱|定義|描述|
 |---|---|---|
 |`widgets` | 以逗號分隔的字串 | 可讓您控制要呈現的見解。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`只呈現人員和關鍵字 UI 深入解析。<br/>可用的選項：人員、animatedCharacters、關鍵字、標籤、情緒、表情、主題、主要畫面格、文字記錄、ocr、喇叭、場景和 namedEntities。|
 |`controls`|以逗號分隔的字串|可讓您控制要呈現的控制項。<br/>範例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download`只呈現搜尋選項和下載按鈕。<br/>可用選項： [搜尋]、[下載]、[預設]、[語言]。|
 |`language`|簡短的語言代碼（語言名稱）|控制 insights 語言。<br/>範例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
-|`locale` | 簡短的語言代碼 | 控制 UI 的語言。 預設值是 `en`。 <br/>範例： `locale=de`.|
+|`locale` | 簡短的語言代碼 | 控制 UI 的語言。 預設值為 `en`。 <br/>範例： `locale=de`.|
 |`tab` | 預設選取的索引標籤 | 控制預設呈現的 [**深入**解析] 索引標籤。 <br/>範例： `tab=timeline`使用已選取的 [**時間軸**] 索引標籤呈現見解。|
+|`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial`應該將用於 [位置] 值。 `trial`這是`location`參數的預設值。| 
 
 ### <a name="player-widget"></a>播放器小工具
 
 您可以使用 [播放程式] 小工具，透過調適型位元速率來串流影片。 播放工具 widget 支援下列選擇性 URL 參數。
 
-|Name|定義|描述|
+|名稱|定義|描述|
 |---|---|---|
 |`t` | 開始的秒數 | 讓玩家從指定的時間點開始播放。<br/> 範例： `t=60`. |
 |`captions` | 語言代碼 | 在 widget 載入時，以指定的語言提取標題，以供 [**標題**] 功能表使用。<br/> 範例： `captions=en-US`. |
 |`showCaptions` | 布林值 | 可讓播放器載入已啟用的標題。<br/> 範例： `showCaptions=true`. |
 |`type`| | 啟動音訊播放機面板（影片部分已移除）。<br/> 範例： `type=audio`. |
-|`autoplay` | 布林值 | 表示播放者是否應該在載入時開始播放影片。 預設值是 `true`。<br/> 範例： `autoplay=false`. |
-|`language`/`locale` | 語言代碼 | 控制播放機語言。 預設值是 `en-US`。<br/>範例： `language=de-DE`.|
+|`autoplay` | 布林值 | 表示播放者是否應該在載入時開始播放影片。 預設值為 `true`。<br/> 範例： `autoplay=false`. |
+|`language`/`locale` | 語言代碼 | 控制播放機語言。 預設值為 `en-US`。<br/>範例： `language=de-DE`.|
+|`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial`應該將用於 [位置] 值。 `trial`這是`location`參數的預設值。| 
 
 ### <a name="editor-widget"></a>編輯器 widget
 
 您可以使用編輯器 widget 來建立新的專案，以及管理影片的深入解析。 編輯器 widget 支援下列選擇性 URL 參數。
 
-|Name|定義|描述|
+|名稱|定義|描述|
 |---|---|---|
-|`accessToken`<sup>*</sup> | 字串 | 提供只在用來內嵌 widget 之帳戶中的影片存取。<br> 編輯器 widget 需要`accessToken`參數。 |
-|`language` | 語言代碼 | 控制播放機語言。 預設值是 `en-US`。<br/>範例： `language=de-DE`. |
-|`locale` | 簡短的語言代碼 | 控制 insights 語言。 預設值是 `en`。<br/>範例： `language=de`. |
+|`accessToken`<sup>*</sup> | String | 提供只在用來內嵌 widget 之帳戶中的影片存取。<br> 編輯器 widget 需要`accessToken`參數。 |
+|`language` | 語言代碼 | 控制播放機語言。 預設值為 `en-US`。<br/>範例： `language=de-DE`. |
+|`locale` | 簡短的語言代碼 | 控制 insights 語言。 預設值為 `en`。<br/>範例： `language=de`. |
+|`location` ||`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial`應該將用於 [位置] 值。 `trial`這是`location` paramete 的預設值。| 
 
 <sup>*</sup>擁有者應該小心`accessToken`提供。
 
-## <a name="embedding-public-content"></a>內嵌公用內容
+## <a name="embedding-videos"></a>內嵌影片
+
+本節討論如何將公開和私人內容內嵌至應用程式。
+
+`location`參數必須包含在內嵌連結中，請參閱[如何取得您的區功能變數名稱稱](regions.md)。 如果您的帳戶處於預覽狀態， `trial`應該將用於 [位置] 值。 `trial`這是`location` paramete 的預設值。 例如： `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 。
+
+> [!IMPORTANT]
+> 共用**播放**程式或**深入**解析 widget 的連結將會包含存取權杖，並將唯讀許可權授與您的帳戶。
+
+### <a name="public-content"></a>公用內容
 
 1. 登入[影片索引子](https://www.videoindexer.ai/)網站。
-2. 選取您想要使用的影片。
-3. 選取顯示在影片底下**</>** 的 [內嵌] 按鈕（）。
-
-    選取 [**內嵌**] 按鈕之後，您可以選取要在應用程式中內嵌的 widget。
-4. 選取您想要的 widget 類型（[**認知深入**解析]、[**播放**程式] 或 [**編輯器**]）。
+1. 選取您想要使用的影片，然後按 [**播放**]。
+1. 選取您想要的 widget 類型（[**認知深入**解析]、[**播放**程式] 或 [**編輯器**]）。
+1. ** &lt;按一下/ [ &gt;內嵌**]。
 5. 複製內嵌程式碼（會出現在 [複製**共用 & 嵌入**] 對話方塊中**的內嵌程式碼**）。
 6. 將程式碼新增至您的應用程式。
 
-> [!NOTE]
-> 如果您在共用影片 Url 時遇到問題，請`location`將參數新增至連結。 參數應該設定為[影片索引子所在的 Azure 區域](regions.md)。 例如： `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial` 。
-
-## <a name="embedding-private-content"></a>內嵌私人內容
+### <a name="private-content"></a>私人內容
 
 若要內嵌私用影片，您必須在 iframe 的`src`屬性中傳遞存取權杖：
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5387daffcd3dd231aef5eade1c896db50947b386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c5a483ff7a5a93a6908538fd237cb4cf2dacec6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484854"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582683"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 中以群組為基礎之授權的 PowerShell 和圖形範例
 
@@ -29,7 +29,7 @@ ms.locfileid: "77484854"
 > 開始執行 Cmdlet 之前，請先確定您已先連線到您的組織，方法`Connect-MsolService`  是執行 Cmdlet。
 
 > [!WARNING]
-> 此程式碼是基於示範目的而提供的範例。 如果您需要在環境中使用它，請考量先進行小規模測試，或在個別的測試租用戶中進行測試。 您可能需要調整程式碼以符合您環境的特定需求。
+> 此程式碼是基於示範目的而提供的範例。 如果您想要在您的環境中使用它，請考慮先在小規模或個別的測試組織中進行測試。 您可能需要調整程式碼以符合您環境的特定需求。
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>檢視指派給群組的產品授權
 
@@ -251,12 +251,12 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>取得整個租用戶中具有授權錯誤的所有使用者
+## <a name="get-all-users-with-license-errors-in-the-entire-organization"></a>取得整個組織中具有授權錯誤的所有使用者
 
 下列指令碼可用來取得具有一或多個群組之授權錯誤的所有使用者。 此指令碼會將每位使用者的每個授權錯誤各列印在一個資料列中，以方便您清楚識別每個錯誤的來源。
 
 > [!NOTE]
-> 此指令碼會列舉租用戶中的所有使用者，因此可能不適合大型租用戶使用。
+> 此腳本會列舉組織中的所有使用者，這對大型組織而言可能不是最理想的。
 
 ```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -364,10 +364,10 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-此指令碼會對租用戶中的每位使用者執行這些函式，使用 SKU 識別碼作為輸入 - 在此範例中我們感興趣的是 Enterprise Mobility + Security** 的授權，它在我們的租用戶中是以識別碼 contoso:EMS** 表示：
+此腳本會使用 SKU 識別碼做為輸入，在組織中的每個使用者上執行這些函式，在此範例中，我們對*Enterprise Mobility + Security*的授權感興趣，在我們的組織中是以 ID *contoso： EMS*來表示：
 
 ```powershell
-#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your tenant
+#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your organization
 $skuId = "contoso:EMS"
 
 #find all users that have the SKU license assigned

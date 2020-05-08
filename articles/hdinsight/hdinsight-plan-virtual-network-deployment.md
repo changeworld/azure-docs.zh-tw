@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/21/2020
-ms.openlocfilehash: d421811c18ac63952432cd853a6928db7c81f3db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182424"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786609"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>為 Azure HDInsight 規劃虛擬網路
 
@@ -44,7 +44,7 @@ ms.locfileid: "82182424"
 
 * 您要將輸入或輸出流量限制/重新導向至 HDInsight 嗎？
 
-    HDInsight 必須具有 Azure 資料中心內特定 IP 位址的無限制通訊。 另外還有數個連接埠必須允許通過防火牆才能進行用戶端通訊。 如需詳細資訊，請參閱[控制網路流量](#networktraffic)一節。
+    HDInsight 必須具有 Azure 資料中心內特定 IP 位址的無限制通訊。 另外還有數個連接埠必須允許通過防火牆才能進行用戶端通訊。 如需詳細資訊，請參閱[控制網路流量](./control-network-traffic.md)。
 
 ## <a name="add-hdinsight-to-an-existing-virtual-network"></a><a id="existingvnet"></a>將 HDInsight 新增至現有虛擬網路
 
@@ -201,57 +201,9 @@ Azure 會針對安裝於虛擬網路中的 Azure 服務提供名稱解析。 這
 
 2. 若要判斷可提供服務的節點和連接埠，請參閱 [Hadoop 服務在 HDInsight 上所使用的連接埠](./hdinsight-hadoop-port-settings-for-services.md)文件。
 
-## <a name="controlling-network-traffic"></a><a id="networktraffic"></a> 控制網路流量
-
-### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>控制 HDInsight 叢集之輸入和輸出流量的技術
-
-Azure 虛擬網路中的網路流量可以使用下列方法進行控制：
-
-* **網路安全性群組** (NSG) 可讓您篩選輸入和輸出網路流量。 如需詳細資訊，請參閱[使用網路安全性群組來篩選網路流量](../virtual-network/security-overview.md)文件。
-
-* **網路虛擬裝置**（NVA）只能與輸出流量搭配使用。 Nva 會複寫防火牆和路由器等裝置的功能。 如需詳細資訊，請參閱[網路設備](https://azure.microsoft.com/solutions/network-appliances)文件。
-
-HDInsight 是受控服務，針對來自 VNET 的傳入和傳出流量，需要不受限制地存取 HDInsight 健全狀況和管理服務。 使用 Nsg 時，您必須確定這些服務仍然可以與 HDInsight 叢集通訊。
-
-![在 Azure 自訂 VNET 中建立的 HDInsight 實體圖表](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
-
-### <a name="hdinsight-with-network-security-groups"></a>具有網路安全性群組的 HDInsight
-
-如果您計畫使用**網路安全性群組**來控制網路流量，請在安裝 HDInsight 之前執行下列動作：
-
-1. 識別您要用於 HDInsight 的 Azure 區域。
-
-2. 識別 HDInsight 針對您的區域所需的服務標記。 如需詳細資訊，請參閱[Azure HDInsight 的網路安全性群組（NSG）服務標記](hdinsight-service-tags.md)。
-
-3. 建立或修改您打算安裝 HDInsight 之子網的網路安全性群組。
-
-    * __網路安全性群組__：允許連接埠 __443__ 上來自 IP 位址的「輸入」____ 流量。 這可確保 HDInsight 管理服務可以從虛擬網路外部連線到叢集。
-
-如需網路安全性群組的詳細資訊，請參閱[網路安全性群組的總覽](../virtual-network/security-overview.md)。
-
-### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>控制來自 HDInsight 叢集的輸出流量
-
-如需控制 HDInsight 叢集輸出流量的詳細資訊，請參閱[設定 Azure HDInsight 叢集的輸出網路流量限制](hdinsight-restrict-outbound-traffic.md)。
-
-#### <a name="forced-tunneling-to-on-premises"></a>強制通道至內部部署
-
-強制通道是一種使用者定義路由設定，其中來自子網路的所有流量都會強制流向特定網路或位置，例如內部部署網路。 HDInsight 不__支援將__流量強制通道傳送至內部部署網路。
-
-## <a name="required-ip-addresses"></a><a id="hdinsight-ip"></a> 所需的 IP 位址
-
-如果您使用網路安全性群組或使用者定義的路由來控制流量，請參閱[HDInsight 管理 IP 位址](hdinsight-management-ip-addresses.md)。
-
-## <a name="required-ports"></a><a id="hdinsight-ports"></a> 所需連接埠
-
-如果您打算使用**防火牆**並從從外部透過特定連接埠存取叢集，則可能需要在您案例所需的連接埠上允許流量。 根據預設，只要上一節所述的 Azure 管理流量允許在埠443上連線到叢集，就不需要任何特殊的埠允許清單。
-
-如需特定服務的連接埠清單，請參閱 [HDInsight 上 Apache Hadoop 服務所使用的連接埠](hdinsight-hadoop-port-settings-for-services.md)文件。
-
-如需虛擬設備防火牆規則的詳細資訊，請參閱[虛擬設備案例](../virtual-network/virtual-network-scenario-udr-gw-nva.md)文件。
-
 ## <a name="load-balancing"></a>負載平衡
 
-當您建立 HDInsight 叢集時，也會建立負載平衡器。 此負載平衡器的類型位於[基本 SKU 層級](../load-balancer/concepts-limitations.md#skus)，其具有特定的條件約束。 其中一個條件約束是，如果您在不同的區域中有兩個虛擬網路，您就無法連線至基本負載平衡器。 如需詳細資訊，請參閱[虛擬網路常見問題：全域 vnet 對等互連的條件約束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
+當您建立 HDInsight 叢集時，也會建立負載平衡器。 此負載平衡器的類型位於[基本 SKU 層級](../load-balancer/skus.md)，其具有特定的條件約束。 其中一個條件約束是，如果您在不同的區域中有兩個虛擬網路，您就無法連線至基本負載平衡器。 如需詳細資訊，請參閱[虛擬網路常見問題：全域 vnet 對等互連的條件約束](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)。
 
 ## <a name="next-steps"></a>後續步驟
 
@@ -260,3 +212,4 @@ HDInsight 是受控服務，針對來自 VNET 的傳入和傳出流量，需要�
 * 如需 Azure 虛擬網路的詳細資訊，請參閱 [Azure 虛擬網路概觀](../virtual-network/virtual-networks-overview.md)。
 * 如需網路安全性群組的詳細資訊，請參閱[網路安全性群組](../virtual-network/security-overview.md)。
 * 如需使用者定義路由的詳細資訊，請參閱[使用者定義的路由和 IP 轉送](../virtual-network/virtual-networks-udr-overview.md)。
+* 如需控制流量的詳細資訊，請參閱[控制網路流量](./control-network-traffic.md)。

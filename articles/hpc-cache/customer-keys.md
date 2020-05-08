@@ -4,14 +4,14 @@ description: 如何使用 Azure Key Vault 搭配 Azure HPC 快取來控制加密
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: f8a8b8dfedd9c4ac0590dc91e5cdced50d2be6ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d10241b8395c33767ffeeb550d9d8060bde3ce3
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195072"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597734"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>針對 Azure HPC 快取使用客戶管理的加密金鑰
 
@@ -20,11 +20,7 @@ ms.locfileid: "82195072"
 > [!NOTE]
 > 儲存在 Azure 中的所有資料（包括在快取磁片上）預設都會使用 Microsoft 管理的金鑰進行待用加密。 如果您想要管理用來加密資料的金鑰，您只需要遵循本文中的步驟。
 
-這項功能僅適用于下列 Azure 區域：
-
-* 美國東部
-* 美國中南部
-* 美國西部 2
+這項功能僅適用于可使用 Azure HPC 快取的部分 Azure 區域。 如需詳細資訊，請參閱[區域可用性](hpc-cache-overview.md#region-availability)清單。
 
 針對 Azure HPC 快取啟用客戶管理的金鑰加密有三個步驟：
 
@@ -71,7 +67,7 @@ ms.locfileid: "82195072"
 如需詳細資訊，請參閱[Azure Key Vault 檔](../key-vault/key-vault-overview.md)。
 
 > [!NOTE]
-> Azure Key Vault 必須使用相同的訂用帳戶，且位於與 Azure HPC 快取相同的區域中。 請使用本文開頭列出的其中一個支援區域。
+> Azure Key Vault 必須使用相同的訂用帳戶，且位於與 Azure HPC 快取相同的區域中。 請確定您選擇的區域[支援客戶管理的金鑰功能](hpc-cache-overview.md#region-availability)。
 
 ## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. 建立已啟用客戶管理金鑰的快取
 

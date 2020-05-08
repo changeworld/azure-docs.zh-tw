@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e55e6d4eb4f52b8a4b64db89691cf087a30ecb73
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79080406"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612311"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>使用雲端中的自動化機器學習來將模型定型
 
@@ -30,7 +30,9 @@ ms.locfileid: "79080406"
 
 ## <a name="how-does-remote-differ-from-local"></a>遠端與本機有何不同？
 
-「[使用自動化機器學習來訓練分類模型](tutorial-auto-train-models.md)」教學課程會教您如何使用本機電腦，透過自動化 ML 來訓練模型。 在本機訓練時的工作流程也適用於遠端目標。 不過，使用遠端計算時，自動化 ML 實驗反覆項目會以非同步方式執行。 此功能可讓您取消特定的反覆項目、監看執行狀態，或繼續處理 Jupyter Notebook 中的其他資料格。 若要從遠端進行定型，請先建立遠端計算目標，例如 AmlCompute。 接著，設定遠端資源，並在該處提交您的程式碼。
+當您使用遠端計算目標時，可使用更多的功能。  如需詳細資訊，請參閱[本機和遠端計算目標](concept-automated-ml.md#local-remote)。
+
+「[使用自動化機器學習來訓練分類模型](tutorial-auto-train-models.md)」教學課程會教您如何使用本機電腦，透過自動化 ML 來訓練模型。 在本機訓練時的工作流程也適用於遠端目標。 若要從遠端進行定型，請先建立遠端計算目標，例如 AmlCompute。 接著，設定遠端資源，並在該處提交您的程式碼。
 
 本文說明在遠端 AmlCompute 目標上執行自動化 ML 實驗所需的額外步驟。 以下程式碼會使用來自教學課程的工作區物件 `ws`。
 

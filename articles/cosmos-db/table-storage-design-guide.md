@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fcae1ed9064d38457ede73c675afb75ce4872fe6
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246470"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611770"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure 資料表儲存體資料表設計指南：可擴充且高效能的資料表
 
@@ -195,12 +195,12 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用更多的分割
 
 | 資料行名稱 | 資料類型 |
 | --- | --- |
-| `PartitionKey`（部門名稱） |字串 |
-| `RowKey`（員工識別碼） |字串 |
-| `FirstName` |字串 |
-| `LastName` |字串 |
+| `PartitionKey`（部門名稱） |String |
+| `RowKey`（員工識別碼） |String |
+| `FirstName` |String |
+| `LastName` |String |
 | `Age` |整數 |
-| `EmailAddress` |字串 |
+| `EmailAddress` |String |
 
 以下是設計資料表儲存體查詢的一些一般指導方針。 下列範例中使用的篩選語法來自于資料表儲存體 REST API。 如需詳細資訊，請參閱[查詢實體](https://msdn.microsoft.com/library/azure/dd179421.aspx)。  
 
@@ -208,7 +208,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用更多的分割
 * 第二個最佳做法是*範圍查詢*。 它會使用`PartitionKey`，並篩選某個範圍的值`RowKey` ，以傳回一個以上的實體。 `PartitionKey`值會識別特定的分割區，而`RowKey`值則會識別該資料分割中的實體子集。 例如： `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'` 。  
 * 第三個最佳做法是資料*分割掃描*。 它會使用`PartitionKey`、和篩選另一個非索引鍵屬性，而且可能會傳回多個實體。 `PartitionKey`值會識別特定的分割區，而屬性值則會針對該資料分割中的實體子集進行選取。 例如： `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'` 。  
 * *資料表掃描*不包含`PartitionKey`，且效率不佳，因為它會搜尋組成資料表的所有分割區，以尋找任何相符的實體。 無論您的篩選器是否使用， `RowKey`它都會執行資料表掃描。 例如： `$filter=LastName eq 'Jones'` 。  
-* 傳回多個實體的 Azure 資料表儲存體查詢會依`PartitionKey` `RowKey`序排序。 若要避免在用戶端中使用實體，請`RowKey`選擇定義最常見排序次序的。 Azure 資料表 API 在 Azure Cosmos DB 中傳回的查詢結果不會依資料分割索引鍵或資料列索引鍵排序。 如需詳細的功能差異清單，請參閱 [Azure Cosmos DB 和 Azure 資料表儲存體中資料表 API 之間的差異](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+* 傳回多個實體的 Azure 資料表儲存體查詢會依`PartitionKey` `RowKey`序排序。 若要避免在用戶端中使用實體，請`RowKey`選擇定義最常見排序次序的。 Azure 資料表 API 在 Azure Cosmos DB 中傳回的查詢結果不會依資料分割索引鍵或資料列索引鍵排序。 如需詳細的功能差異清單，請參閱 [Azure Cosmos DB 和 Azure 資料表儲存體中資料表 API 之間的差異](table-api-faq.md#table-api-vs-table-storage)。
 
 使用 "**or**" 指定以`RowKey`值為基礎的篩選會產生資料分割掃描，而不會被視為範圍查詢。 因此，請避免使用篩選的查詢，例如`$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`：。  
 
@@ -250,7 +250,7 @@ EGT 也會帶來需在您設計中評估的潛在取捨。 使用更多的分割
 資料表儲存體會根據`PartitionKey`和，傳回以遞增順序排序的查詢結果。 `RowKey`
 
 > [!NOTE]
-> Azure 資料表 API 在 Azure Cosmos DB 中傳回的查詢結果不會依資料分割索引鍵或資料列索引鍵排序。 如需詳細的功能差異清單，請參閱 [Azure Cosmos DB 和 Azure 資料表儲存體中資料表 API 之間的差異](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+> Azure 資料表 API 在 Azure Cosmos DB 中傳回的查詢結果不會依資料分割索引鍵或資料列索引鍵排序。 如需詳細的功能差異清單，請參閱 [Azure Cosmos DB 和 Azure 資料表儲存體中資料表 API 之間的差異](table-api-faq.md#table-api-vs-table-storage)。
 
 資料表儲存體中的索引鍵是字串值。 為確保數值正確排序，您應該將它們轉換成固定長度，並以零填補。 例如，如果您用來當做的`RowKey`員工識別碼值是整數值，您應將員工識別碼**123**轉換為**00000123**。 
 
@@ -733,7 +733,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 使用以*n*反向的日期和時間順序排序的`RowKey`值，取出最近新增至資料分割的 n 個實體。  
 
 > [!NOTE]
-> Azure 資料表 API 在 Azure Cosmos DB 中傳回的查詢結果不會依資料分割索引鍵或資料列索引鍵排序。 因此，雖然此模式適用于資料表儲存體，但它不適用於 Azure Cosmos DB。 如需功能差異的詳細清單，請參閱[Azure Cosmos DB 和 Azure 表格儲存體中的資料表 API 之間的差異](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)。
+> Azure 資料表 API 在 Azure Cosmos DB 中傳回的查詢結果不會依資料分割索引鍵或資料列索引鍵排序。 因此，雖然此模式適用于資料表儲存體，但它不適用於 Azure Cosmos DB。 如需功能差異的詳細清單，請參閱[Azure Cosmos DB 和 Azure 表格儲存體中的資料表 API 之間的差異](table-api-faq.md#table-api-vs-table-storage)。
 
 #### <a name="context-and-problem"></a>內容和問題
 常見的需求是要能夠取出最近建立的實體，例如員工提交的最近 10 筆費用請款。 資料表查詢支援`$top`查詢作業，以從集合中傳回前*n*個實體。 沒有對等的查詢作業可傳回集合中的最後*n*個實體。  

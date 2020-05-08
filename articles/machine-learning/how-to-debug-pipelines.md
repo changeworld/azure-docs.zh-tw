@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257200"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594609"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>機器學習管線的偵錯和疑難排解
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -91,8 +91,8 @@ ms.locfileid: "81257200"
 | 程式庫                    | 類型   | 範例                                                          | Destination                                  | 資源                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Azure Machine Learning SDK | 計量 | `run.log(name, val)`                                             | Azure Machine Learning 入口網站 UI             | [如何追蹤實驗](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml. core. 執行類別](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
-| Python 列印/記錄    | Log    | `print(val)`<br>`logging.info(message)`                          | 驅動程式記錄檔，Azure Machine Learning 設計工具 | [如何追蹤實驗](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python 記錄](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
-| OpenCensus Python          | Log    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-追蹤                | [對 Application Insights 中的管線進行偵錯](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python 記錄操作手冊](https://docs.python.org/3/howto/logging-cookbook.html) |
+| Python 列印/記錄    | 記錄檔    | `print(val)`<br>`logging.info(message)`                          | 驅動程式記錄檔，Azure Machine Learning 設計工具 | [如何追蹤實驗](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python 記錄](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| OpenCensus Python          | 記錄檔    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-追蹤                | [對 Application Insights 中的管線進行偵錯](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure 監視器匯出工具](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python 記錄操作手冊](https://docs.python.org/3/howto/logging-cookbook.html) |
 
 #### <a name="logging-options-example"></a>記錄選項範例
 
@@ -128,28 +128,32 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>在 Azure Machine Learning 設計工具中進行調試和疑難排解（預覽）
 
-本節提供如何在設計工具中針對管線進行疑難排解的總覽。
-針對在設計工具中建立的管線，您可以在 [撰寫] 頁面或 [管線執行詳細資料] 頁面中找到**記錄**檔。
+本節提供如何在設計工具中針對管線進行疑難排解的總覽。 針對在設計工具中建立的管線，您可以在 [撰寫] 頁面或 [管線執行詳細資料] 頁面中找到**70_driver_log**檔案。
 
-### <a name="access-logs-from-the-authoring-page"></a>從撰寫頁面存取記錄
+### <a name="get-logs-from-the-authoring-page"></a>從撰寫頁面取得記錄
 
-當您提交管線執行並停留在 [撰寫中] 頁面時，您可以找到為每個模組產生的記錄檔。
+當您提交管線執行並停留在 [撰寫中] 頁面時，您可以在每個模組完成執行時，找到為每個模組產生的記錄檔。
 
-1. 選取撰寫畫布中的任何模組。
+1. 在撰寫畫布中選取已完成執行的模組。
 1. 在模組的右窗格中，移至 [**輸出 + 記錄**] 索引標籤。
-1. 選取記錄檔`70_driver_log.txt`。
+1. 展開右窗格，然後選取 [ **70_driver_log** ]，在瀏覽器中查看檔案。 您也可以在本機下載記錄檔。
 
-    ![撰寫頁面模組記錄](./media/how-to-debug-pipelines/pipelinerun-05.png)
+    ![設計工具中的展開輸出窗格](./media/how-to-debug-pipelines/designer-logs.png)
 
-### <a name="access-logs-from-pipeline-runs"></a>從管線執行存取記錄
+### <a name="get-logs-from-pipeline-runs"></a>從管線執行取得記錄
 
-您也可以在 [管線執行詳細資料] 頁面的 **[管線] 或 [** **實驗**] 區段中，找到特定執行的記錄檔。
+您也可以在 [管線執行詳細資料] 頁面中找到特定執行的記錄檔，這可以在 studio 的 [**管線**] 或 [**實驗**] 區段中找到。
 
 1. 選取在設計工具中建立的管線執行。
-    ![管線執行頁面](./media/how-to-debug-pipelines/pipelinerun-04.png)
-1. 在預覽窗格中選取任何模組。
+
+    ![管線執行頁面](./media/how-to-debug-pipelines/designer-pipelines.png)
+
+1. 在預覽窗格中選取模組。
 1. 在模組的右窗格中，移至 [**輸出 + 記錄**] 索引標籤。
-1. 選取記錄檔`70_driver_log.txt`。
+1. 展開右窗格以在瀏覽器中查看**70_driver_log .txt**檔案，或選取要在本機下載記錄檔的檔案。
+
+> [!IMPORTANT]
+> 若要從 [管線執行詳細資料] 頁面更新管線，您必須將管線執行**複製**到新的管線草稿。 管線執行是管線的快照集。 它類似于記錄檔，而且無法變更。 
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Application Insights 中的 Debug 和疑難排解
 如需以這種方式使用 OpenCensus Python 程式庫的詳細資訊，請參閱此指南： [Application Insights 中的機器學習管線的 Debug 和疑難排解](how-to-debug-pipelines-application-insights.md)
@@ -158,7 +162,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 在某些情況下，您可能需要以互動方式來對 ML 管線中使用的 Python 程式碼進行偵錯工具。 藉由使用 Visual Studio Code （VS Code）和適用於 Visual Studio 的 Python 工具（PTVSD），您可以附加至在定型環境中執行的程式碼。
 
-### <a name="prerequisites"></a>先決條件
+### <a name="prerequisites"></a>Prerequisites
 
 * 設定為使用__Azure 虛擬網路__的__Azure Machine Learning 工作區__。
 * 在管線步驟中使用 Python 腳本的__Azure Machine Learning 管線__。 例如，PythonScriptStep。

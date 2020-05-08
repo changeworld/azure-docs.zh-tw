@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
-ms.custom: seodec18
-ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: d2fe231dce26311268e578a495fb2ba7076651e0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411661"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608025"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>使用 Azure 儲存體總管處理資料
 
 在 Azure 儲存體總管中使用 Azure Cosmos DB 可讓使用者管理 Azure Cosmos DB 實體、操縱資料、更新預存程序及觸發程序，以及其他 Azure 實體 (例如儲存體 Blob 及佇列)。 現在您可以使用同一個工具在同一處管理您不同的 Azure 實體。 目前，Azure 儲存體總管支援對 SQL、MongoDB、Graph 和資料表 API 設定 Cosmos 帳戶。
 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API。 若您還沒有帳戶，您可以根據[Azure Cosmos DB：使用 .NET 及 Azure 入口網站建置 SQL API Web 應用程式](create-sql-api-dotnet.md)中的說明，在 Azure 入口網站中建立帳戶。
 
@@ -30,9 +30,9 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 ## <a name="connect-to-an-azure-subscription"></a>連線到 Azure 訂用帳戶
 
 1. 安裝**Azure 儲存體總管**之後，請按一下左邊的**外掛程式**圖示，如下圖所示：
-       
+
    ![外掛程式圖示](./media/storage-explorer/plug-in-icon.png)
- 
+
 2. 選取 [新增 Azure 帳戶]****，然後按一下 [登入]****。
 
    ![連線到 Azure 訂用帳戶](./media/storage-explorer/connect-to-azure-subscription.png)
@@ -100,27 +100,27 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 * 您也可以將 Azure Cosmos DB 帳戶、資料庫及集合新增至 [快速存取]****。
 * [Search from Here] \(從這裡搜尋)**** 可在選取的路徑下使用關鍵字搜尋。
 
-    ![從這裡搜尋](./media/storage-explorer/search-from-here.png) 
+    ![從這裡搜尋](./media/storage-explorer/search-from-here.png)
 
 ### <a name="database-and-collection-management"></a>資料庫與集合管理
-#### <a name="create-a-database"></a>建立資料庫 
+#### <a name="create-a-database"></a>建立資料庫
 -   以滑鼠右鍵按一下 Azure Cosmos DB 帳戶，選擇 [建立資料庫]****，輸入資料庫名稱，然後按 ** ENTER 鍵**以完成。
-       
-    ![建立資料庫](./media/storage-explorer/create-database.png) 
+
+    ![建立資料庫](./media/storage-explorer/create-database.png)
 
 #### <a name="delete-a-database"></a>刪除資料庫
 - 以滑鼠右鍵按一下資料庫，按一下 [刪除資料庫]****，然後在快顯視窗中按一下 [是]****。 資料庫節點隨即會刪除，而 Azure Cosmos DB 帳戶會自動重新整理。
 
-    ![刪除 database1](./media/storage-explorer/delete-database1.png)  
+    ![刪除 database1](./media/storage-explorer/delete-database1.png)
 
-    ![刪除 database2](./media/storage-explorer/delete-database2.png) 
+    ![刪除 database2](./media/storage-explorer/delete-database2.png)
 
 #### <a name="create-a-collection"></a>建立集合
-1. 以滑鼠右鍵按一下您的資料庫，選擇 [**建立集合**]，然後提供下列資訊（例如**集合識別碼**、**儲存體容量**等）。按一下 **[確定**] 以完成。 
+1. 以滑鼠右鍵按一下您的資料庫，選擇 [**建立集合**]，然後提供下列資訊（例如**集合識別碼**、**儲存體容量**等）。按一下 **[確定**] 以完成。
 
     ![建立 collection1](./media/storage-explorer/create-collection.png)
 
-    ![建立 collection2](./media/storage-explorer/create-collection2.png) 
+    ![建立 collection2](./media/storage-explorer/create-collection2.png)
 
 2. 選取 [無限制]**** 即可指定分割區索引鍵，然後按一下 [確定]**** 以完成。
 
@@ -129,11 +129,11 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
     ![資料分割索引鍵](./media/storage-explorer/partitionkey.png)
 
 #### <a name="delete-a-collection"></a>刪除集合
-- 以滑鼠右鍵按一下集合，按一下 [刪除集合]****，然後在快顯視窗中按一下 [是]****。 
+- 以滑鼠右鍵按一下集合，按一下 [刪除集合]****，然後在快顯視窗中按一下 [是]****。
 
     集合節點隨即刪除，且資料庫會自動重新整理。
 
-    ![刪除集合](./media/storage-explorer/delete-collection.png) 
+    ![刪除集合](./media/storage-explorer/delete-collection.png)
 
 ### <a name="document-management"></a>文件管理
 
@@ -155,8 +155,8 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 ### <a name="graph-management"></a>圖表管理
 
 #### <a name="create-and-modify-vertex"></a>建立及修改頂點
-1. 若要建立新的頂點，請從左側視窗中開啟 [圖表]****，按一下 [新增頂點]**** 並編輯內容，然後按一下 [確定]****。    
-2. 若要修改現有的頂點，按一下右側窗格中的畫筆圖示。   
+1. 若要建立新的頂點，請從左側視窗中開啟 [圖表]****，按一下 [新增頂點]**** 並編輯內容，然後按一下 [確定]****。
+2. 若要修改現有的頂點，按一下右側窗格中的畫筆圖示。
 
     ![圖形](./media/storage-explorer/vertex.png)
 
@@ -193,7 +193,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
     ![資料表查詢](./media/storage-explorer/table-query.png)
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>管理預存程序、觸發程序和 UDF
-* 若要建立預存程序，請在左邊的樹狀目錄中，以滑鼠右鍵按一下 [預存程序]****，選擇 [建立預存程序]****，在左邊輸入名稱，在右邊的視窗中輸入預存程序指令碼，然後按一下 [建立]****。 
+* 若要建立預存程序，請在左邊的樹狀目錄中，以滑鼠右鍵按一下 [預存程序]****，選擇 [建立預存程序]****，在左邊輸入名稱，在右邊的視窗中輸入預存程序指令碼，然後按一下 [建立]****。
 * 您也可以透過按兩下現有的預存程序，進行更新，然後按一下 [更新]**** 以儲存，或按一下 [捨棄]**** 以取消變更，來編輯現有的預存程序。
 
     ![預存程序](./media/storage-explorer/stored-procedure.png)
@@ -248,7 +248,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 ![console](./media/storage-explorer/console.png)
 
-#### <a name="unable-to-see-the-authentication-page"></a>看不到驗證頁面 
+#### <a name="unable-to-see-the-authentication-page"></a>看不到驗證頁面
 
 如果您看不到驗證頁面：
 
@@ -273,7 +273,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 ### <a name="httphttps-proxy-issue"></a>Http/Https Proxy 的問題
 
-在 ASE 中設定 Http/Https Proxy 時，無法在左側樹狀目錄中列出 Azure Cosmos DB 節點。 這是已知問題，並將在下一個版本中修正。 目前您可以使用 Azure 入口網站中的 Azure Cosmos DB 資料總管解決此問題。 
+在 ASE 中設定 Http/Https Proxy 時，無法在左側樹狀目錄中列出 Azure Cosmos DB 節點。 這是已知問題，並將在下一個版本中修正。 目前您可以使用 Azure 入口網站中的 Azure Cosmos DB 資料總管解決此問題。
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>「本機與已連結」節點下的「開發」節點問題
 
@@ -289,7 +289,7 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>展開 Azure Cosmos DB 節點錯誤
 
-當您嘗試展開左側的樹狀節點時，可能會看到下列錯誤。 
+當您嘗試展開左側的樹狀節點時，可能會看到下列錯誤。
 
 ![展開錯誤](./media/storage-explorer/expand-error.png)
 
@@ -306,4 +306,3 @@ Cosmos 帳戶，需具有 SQL API 或適用於 MongoDB 的 Azure Cosmos DB API�
 
 * 請觀看下列影片以了解如何在 Azure 儲存體總管中使用 Azure Cosmos DB：[在 Azure 儲存體總管中使用 Azure Cosmos DB](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be)。
 * 在[開始使用儲存體總管](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)中深入了解儲存體總管並連線更多服務。
-

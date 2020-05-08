@@ -3,12 +3,12 @@ title: 依資源類型的移動作業支援
 description: 列出可移至新資源群組或訂用帳戶的 Azure 資源類型。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45450b21b1cd3236712043629f433c2c5fe20f80
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804787"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900984"
 ---
 # <a name="move-operation-support-for-resources"></a>資源的移動作業支援
 此文章列出 Azure 資源類型是否支援移動作業。 它也會提供移動資源時要考慮之特殊條件的相關資訊。
@@ -1252,7 +1252,10 @@ ms.locfileid: "80804787"
 > | workspaces | 是 | 是 |
 
 > [!IMPORTANT]
-> 請確定移至新的訂用帳戶不會超過訂用帳戶[配額](azure-subscription-service-limits.md#azure-monitor-limits)。
+> 請確定移動到新的訂用帳戶不會超過訂用帳戶[配額](azure-subscription-service-limits.md#azure-monitor-limits)。
+
+> [!IMPORTANT]
+> 無法移動具有連結自動化帳戶的工作區。 開始移動作業之前，請務必將任何自動化帳戶取消連結。   
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1523,6 +1526,7 @@ ms.locfileid: "80804787"
 > | 資源類型 | 資源群組 | 訂用帳戶 |
 > | ------------- | ----------- | ---------- |
 > | instancepools | 否 | 否 |
+> | 位置 | 是 | 是 |
 > | managedinstances | 否 | 否 |
 > | managedinstances/資料庫 | 否 | 否 |
 > | servers | 是 | 是 |

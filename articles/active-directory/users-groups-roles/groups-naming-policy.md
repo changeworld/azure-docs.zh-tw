@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141e83e21db18f21468113fd9927c2bdd2ed176d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9018228ec685d69fb03dfbc23de530e1bb8abb4f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79497887"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582857"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中的 Office 365 群組上強制執行命名原則
 
-若要對使用者所建立或編輯的 Office 365 群組強制執行一致的命名慣例，請在 Azure Active Directory (Azure AD) 中為租用戶設定群組命名原則。 例如，您可以使用命名原則來傳達群組的功能、成員資格、地理區域或群組的建立者。 您也可以使用命名原則將通訊錄中的群組分類。 您可以使用原則來防止群組名稱和別名中使用特定字組。
+若要針對您的使用者所建立或編輯的 Office 365 群組強制執行一致的命名慣例，請在 Azure Active Directory （Azure AD）中為您的組織設定群組命名原則。 例如，您可以使用命名原則來傳達群組的功能、成員資格、地理區域或群組的建立者。 您也可以使用命名原則將通訊錄中的群組分類。 您可以使用原則來防止群組名稱和別名中使用特定字組。
 
 > [!IMPORTANT]
 > 使用 Office 365 群組 Azure AD 命名原則時，您必須擁有但不一定要為一個或多個 Office 365 群組成員的每個唯一使用者指派 Azure Active Directory Premium P1 授權或 Azure AD Basic EDU 授權。
@@ -42,7 +42,7 @@ ms.locfileid: "79497887"
 
 ### <a name="prefix-suffix-naming-policy"></a>前置詞後置詞命名原則
 
-命名慣例結構一般是「前置詞[GroupName]後置詞」。 雖然您可以定義多個前置詞和後置詞，但設定中的 [GroupName] 只能有一個。 前置詞或後置詞可以是固定字串，也可以是使用者屬性，例如 \[Department\] 就會根據建立群組的使用者來替換。 前置詞和後置詞字串合在一起所允許的字元總數是 53 個字元。 
+命名慣例結構一般是「前置詞[GroupName]後置詞」。 雖然您可以定義多個前置詞和後置詞，但設定中的 [GroupName] 只能有一個。 前置詞或後置詞可以是固定字串，也可以是使用者屬性，例如 \[Department\] 就會根據建立群組的使用者來替換。 您的前置詞和後置字元字串（包括組名）的允許字元數總計為53個字元。 
 
 前置詞和後置詞可以包含群組名稱和群組別名所支援的特殊字元。 前置詞或後置詞中不受群組別名支援的字元仍會套用到群組名稱，但會從群組別名中移除。 由於有此限制，群組名稱和群組別名所套用的前置詞和後置詞可能會不同。 
 
@@ -69,7 +69,7 @@ ms.locfileid: "79497887"
 
 ### <a name="roles-and-permissions"></a>角色和權限
 
-若要設定命名原則，需要其中一個下列角色：
+若要設定命名原則，必須具備下列其中一個角色：
 - 全域管理員
 - 群組管理員
 - 使用者管理員
@@ -138,7 +138,7 @@ ms.locfileid: "79497887"
 
    在所開啟的 [登入帳戶]**** 畫面中，輸入系統管理員帳戶和密碼以連線到服務，然後選取 [登入]****。
 
-1. 請遵循[用於進行群組設定的 Azure Active Directory Cmdlet](groups-settings-cmdlets.md) 中的步驟，建立此租用戶的群組設定。
+1. 請遵循 Azure Active Directory Cmdlet 中的步驟來[進行群組設定](groups-settings-cmdlets.md)，以建立此組織的群組設定。
 
 ### <a name="view-the-current-settings"></a>檢視目前的設定
 

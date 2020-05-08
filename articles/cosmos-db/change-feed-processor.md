@@ -1,21 +1,21 @@
 ---
-title: Azure Cosmos DB 中的變更摘要處理器程式庫
-description: 瞭解如何使用 Azure Cosmos DB 變更摘要處理器程式庫來讀取變更摘要，也就是變更摘要處理器的元件
-author: markjbrown
-ms.author: mjbrown
+title: Azure Cosmos DB 中的變更摘要處理器
+description: 瞭解如何使用 Azure Cosmos DB 變更摘要處理器來讀取變更摘要，也就是變更摘要處理器的元件
+author: timsander1
+ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 4/29/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e71b2807595aebeb1f0c8682fde119f4e267e55d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d069df0a095cc0356cd61155dde875a5d92ed18d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273313"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594146"
 ---
-# <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 中的變更摘要處理器 
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 中的變更摘要處理器
 
 變更摘要處理器是[AZURE COSMOS DB SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3)的一部分。 它可簡化讀取變更摘要的程式，並有效地將事件處理散發到多個取用者。
 
@@ -23,13 +23,13 @@ ms.locfileid: "78273313"
 
 ## <a name="components-of-the-change-feed-processor"></a>變更摘要處理器的元件
 
-有四個主要元件可執行變更摘要處理器： 
+有四個主要元件可執行變更摘要處理器：
 
 1. **受監視的容器：** 受監視的容器含有會產生變更摘要的資料。 受監視容器的任何插入和更新都會反映在容器的變更摘要中。
 
-1. **租用容器：** 租用容器會作為狀態儲存體，並協調跨多個背景工作角色處理變更摘要。 租用容器可以與受監視容器或個別帳戶中的相同帳戶儲存。 
+1. **租用容器：** 租用容器會作為狀態儲存體，並協調跨多個背景工作角色處理變更摘要。 租用容器可以與受監視容器或個別帳戶中的相同帳戶儲存。
 
-1. **主機：** 主機是使用變更摘要處理器來接聽變更的應用程式實例。 具有相同租用設定的多個實例可以平行執行，但每個實例應該有不同的**實例名稱**。 
+1. **主機：** 主機是使用變更摘要處理器來接聽變更的應用程式實例。 具有相同租用設定的多個實例可以平行執行，但每個實例應該有不同的**實例名稱**。
 
 1. **委派：** 委派是一種程式碼，定義您的開發人員想要對變更摘要處理器讀取的每一批變更進行哪些動作。 
 
@@ -65,7 +65,11 @@ ms.locfileid: "78273313"
 
 ## <a name="error-handling"></a>錯誤處理
 
-變更摘要處理器具有使用者程式碼錯誤的復原能力。 這表示如果您的委派執行有未處理的例外狀況（步驟 #4），處理該特定批次變更的執行緒將會停止，並會建立新的執行緒。 新的執行緒會檢查哪一個是租用存放區對於該範圍的資料分割索引鍵值而言最新的時間點，然後從該處重新開機，以有效地將相同的變更批次傳送至委派。 此行為會繼續進行，直到您的委派正確地處理變更，而且這是變更摘要處理器至少具有「一次」保證的原因，因為如果委派程式碼擲回，則會重試該批次。
+變更摘要處理器具有使用者程式碼錯誤的復原能力。 這表示如果您的委派執行有未處理的例外狀況（步驟 #4），處理該特定批次變更的執行緒將會停止，並會建立新的執行緒。 新的執行緒會檢查哪一個是租用存放區對於該範圍的資料分割索引鍵值而言最新的時間點，然後從該處重新開機，以有效地將相同的變更批次傳送至委派。 此行為會繼續進行，直到您的委派正確處理變更，而且這是變更摘要處理器至少具有「一次」保證的原因，因為如果委派程式碼擲回例外狀況，則會重試該批次。
+
+若要防止您的變更摘要處理器「停滯」持續重試相同的變更批次，您應該在委派程式碼中新增邏輯，以在例外狀況時將檔寫入寄不出的信件佇列。 這項設計可確保您可以追蹤未處理的變更，同時仍能繼續處理未來的變更。 無效信件佇列可能只是另一個 Cosmos 容器。 確切的資料存放區並不重要，只是保存未處理的變更。
+
+此外，您可以使用變更摘要[估計工具](how-to-use-change-feed-estimator.md)來監視變更摘要處理器實例讀取變更摘要時的進度。 除了監視變更摘要處理器是否「停滯」不斷重試相同的變更批次之外，您也可以瞭解您的變更摘要處理器是否因為可用的資源（如 CPU、記憶體和網路頻寬）而延遲落後。
 
 ## <a name="dynamic-scaling"></a>動態調整
 

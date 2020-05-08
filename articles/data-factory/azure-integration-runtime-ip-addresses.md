@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: b0ba47ff28208bce1a6fa6ec300a261d788167de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3fae34d0bb1aaaa2471f1cc9fd55ef9b4b73dfd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415605"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594282"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP 位址
 
@@ -25,7 +25,7 @@ ms.locfileid: "81415605"
 Azure Integration Runtime 使用的 IP 位址取決於您的 Azure Integration Runtime 所在的區域。 *全部*位於相同區域中的 Azure 整合執行時間會使用相同的 IP 位址範圍。
 
 > [!IMPORTANT]  
-> 資料流程目前不會使用這些 Ip。 
+> 資料流程不支援使用固定的 IP 範圍。
 >
 > 您可以使用這些 IP 範圍來進行資料移動、管線和外部活動執行。 這些 IP 範圍可以用於資料存放區/網路安全性群組（NSG）/防火牆中的允許清單，以從 Azure Integration runtime 進行輸入存取。 
 
@@ -35,7 +35,7 @@ Azure Integration Runtime 使用的 IP 位址取決於您的 Azure Integration R
 
 |                | 區域              | IP 位址                                                 |
 | -------------- | ------------------- | ------------------------------------------------------------ |
-| Asia           | 東亞           | 20.189.104.128/25、 </br>20.189.106.0/26、 </br>13.75.39.112/28 |
+| 亞洲           | 東亞           | 20.189.104.128/25、 </br>20.189.106.0/26、 </br>13.75.39.112/28 |
 | &nbsp;         | 東南亞      | 20.43.128.128/25、 </br>20.43.130.0/26、 </br>40.78.236.176/28 |
 | 澳大利亞      | 澳大利亞東部      | 20.37.193.0/25、</br>20.37.193.128/26、</br>13.70.74.144/28    |
 | &nbsp;         | 澳大利亞東南部 | 20.42.225.0/25、</br>20.42.225.128/26、</br>13.77.53.160/28    |

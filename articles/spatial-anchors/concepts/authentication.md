@@ -8,18 +8,19 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: df27a77c202951a6c789703f12712e75bd8b5906
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: c2800dc361eb274eeef706556e09731da079ccab
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77656962"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611750"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure 空間錨點的驗證和授權
 
 在本節中，我們將討論您可以從您的應用程式或 web 服務向 Azure 空間錨點進行驗證的各種方式，以及您可以在 Azure 目錄（Azure AD）中使用角色型存取控制以控制對空間錨點帳戶之存取的方式。
 
-## <a name="overview"></a>總覽
+## <a name="overview"></a>概觀
 
 ![Azure 空間錨點的驗證總覽](./media/spatial-anchors-authentication-overview.png)
 

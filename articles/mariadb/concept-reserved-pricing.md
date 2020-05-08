@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 9a6bd3cab41c69075f5170a8a3aad4f059d970e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/20/2020
+ms.openlocfilehash: 47ddad70b4764fedefb50b93de2b7f078cf9fd27
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159042"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732898"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>預付以保留容量適用於 MariaDB 的 Azure 資料庫計算資源
 
@@ -19,7 +19,7 @@ ms.locfileid: "80159042"
 
 您不需要將保留指派給特定的適用於 MariaDB 的 Azure 資料庫伺服器。 已執行適用於 MariaDB 的 Azure 資料庫或新部署的，將會自動獲得保留定價的權益。 透過購買保留，您會預付為期一或三年的計算費用。 一旦您購買保留，符合保留屬性的 Azure database for 適用于 mariadb 計算費用將不再以隨用隨付費率計費。 保留專案並不涵蓋與適用于 mariadb 資料庫伺服器相關聯的軟體、網路或儲存體費用。 在保留期限結束時，計費權益會到期，而適用於 MariaDB 的 Azure 資料庫會以隨用隨付價格計費。 保留不會自動更新。 如需定價資訊，請參閱[適用於 MariaDB 的 Azure 資料庫保留容量](https://azure.microsoft.com/pricing/details/mariadb/)供應專案。 </br>
 
-您可以在[Azure 入口網站](https://portal.azure.com/)中購買適用於 MariaDB 的 Azure 資料庫保留容量。 若要購買保留容量：
+您可以在[Azure 入口網站](https://portal.azure.com/)中購買適用於 MariaDB 的 Azure 資料庫保留容量。 保留的付款方式可為[預先付款或每月付款](../cost-management-billing/reservations/monthly-payments-reservations.md)。 若要購買保留容量：
 
 * 您至少必須是一個企業或個別訂用帳戶的擁有者角色，且具有隨用隨付費率。
 * 針對企業訂用帳戶，必須在 [EA 入口網站](https://ea.azure.com/)中啟用**新增保留執行個體**。 或者，如果該設定已停用，則您必須是訂用帳戶上的 EA 系統管理員。

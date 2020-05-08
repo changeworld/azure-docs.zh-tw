@@ -1,28 +1,24 @@
 ---
-title: 在 Azure AD 中自動化 SaaS 應用程式使用者佈建 | Microsoft Docs
+title: Azure AD 中的自動化 SaaS 應用程式使用者布建
 description: 簡介如何使用 Azure AD 自動佈建、解除佈建，以及跨多個協力廠商 SaaS 應用程式持續更新使用者帳戶。
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: mimart
-ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e828fd9c2561007c332db67bfd0b20dda9b845f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvinh, celested
+ms.openlocfilehash: 1e72d885858b543999090a4a0521845d556802fd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79454528"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593109"
 ---
-# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>使用 Azure Active Directory 自動化應用程式的使用者布建和解除布建
+# <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-ad"></a>使用 Azure AD 自動化應用程式的使用者布建和解除布建
 
 在 Azure Active Directory （Azure AD）中，**應用程式**布建一詞指的是在使用者需要存取的雲端（[SaaS](https://azure.microsoft.com/overview/what-is-saas/)）應用程式中自動建立使用者身分識別和角色。 除了建立使用者身分識別以外，自動佈建還包括隨著狀態或角色變更，維護和移除使用者身分識別。 常見的案例包括將 Azure AD 使用者佈建到 [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)等應用程式。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a4210947d771768943775a3e62c2558fa2883bd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a60779fb045aa612a6ba0988c4635752f973f60
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128187"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607396"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>判斷 Windows 虛擬桌面中的使用者連接延遲
 
@@ -29,4 +29,4 @@ Windows 虛擬桌面使用 Azure 流量管理員，它會檢查使用者的 DNS 
 
 - 若要檢查最佳的延遲位置，請參閱[Windows 虛擬桌面 Experience 估計工具工具](https://azure.microsoft.com/services/virtual-desktop/assessment/)。
 - 如需定價方案，請參閱[Windows 虛擬桌面定價](https://azure.microsoft.com/pricing/details/virtual-desktop/)。
-- 若要開始使用您的 Windows 虛擬桌面部署，請參閱[我們的教學](tenant-setup-azure-active-directory.md)課程。
+- 若要開始使用您的 Windows 虛擬桌面部署，請參閱[我們的教學](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)課程。

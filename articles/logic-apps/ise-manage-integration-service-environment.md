@@ -3,15 +3,15 @@ title: 管理 Azure Logic Apps 中的整合服務環境
 description: 檢查網路健康狀態，並管理整合服務環境（ISE）中的邏輯應用程式、連線、自訂連接器和整合帳戶，以進行 Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284196"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598414"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>在 Azure Logic Apps 中管理您的整合服務環境（ISE）
 
@@ -54,6 +54,10 @@ ms.locfileid: "79284196"
    ![查看邏輯應用程式](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
 1. 若要移除您在 ISE 中不再需要的邏輯應用程式，請選取那些邏輯應用程式，然後選取 [**刪除**]。 若要確認您想要刪除，請選取 **[是]**。
+
+> [!NOTE]
+> 如果您刪除並重新建立子邏輯應用程式，您必須重新儲存父系邏輯應用程式。 重新建立的子應用程式將會有不同的中繼資料。
+> 如果您不在重新建立父邏輯應用程式之後重新儲存其子系，您對子邏輯應用程式的呼叫將會失敗，並出現「未經授權」錯誤。 這種行為適用于父子式邏輯應用程式，例如，使用整合帳戶中的成品或呼叫 Azure 函式的專案。
 
 <a name="find-api-connections"></a>
 

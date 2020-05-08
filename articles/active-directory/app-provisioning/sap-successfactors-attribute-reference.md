@@ -1,33 +1,37 @@
 ---
-title: SAP SuccessFactors 屬性參考 |Microsoft Docs
+title: SAP SuccessFactors 屬性參考
 description: 瞭解 SuccessFactors-HR 驅動布建支援來自 SuccessFactors 的屬性
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522351"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593179"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 屬性參考
 
+在本文中，您將會找到下列資訊：
+
+- [支援的 SuccessFactors 實體和屬性](#supported-successfactors-entities-and-attributes)
+- [預設屬性對應](#default-attribute-mapping)
+
 ## <a name="supported-successfactors-entities-and-attributes"></a>支援的 SuccessFactors 實體和屬性
 
-下表會捕捉下列兩個布建應用程式所支援的 SuccessFactors 屬性清單： 
-* [SuccessFactors 以 Active Directory 的使用者布建](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
-* [SuccessFactors 以 Azure AD 的使用者布建](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 
+下表會捕捉下列兩個布建應用程式所支援的 SuccessFactors 屬性清單：
+
+- [SuccessFactors 以 Active Directory 的使用者布建](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
+- [SuccessFactors 以 Azure AD 的使用者布建](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
+
 
 | \# | SuccessFactors 實體                  | SuccessFactors 屬性     | 作業類型 |
 |----|----------------------------------------|------------------------------|----------------|
@@ -111,7 +115,6 @@ ms.locfileid: "77522351"
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | 讀取           |
 | 78 | EmpEmploymentTermination               | latestTerminationDate        | 讀取           |
 
-
 ## <a name="default-attribute-mapping"></a>預設屬性對應
 
 下表提供上列 SuccessFactors 屬性與 AD/Azure AD 屬性之間的預設屬性對應。 在 Azure AD 布建應用程式的 [對應] 分頁中，您可以修改此預設對應，以包含上述清單中的屬性。 
@@ -138,4 +141,3 @@ ms.locfileid: "77522351"
 | 18 | EmpJob\.位置                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
 | 19 | EmpJob\.位置                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | 如果 activeEmploymentsCount = 0，請停用 account\。                                           |
-

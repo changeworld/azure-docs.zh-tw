@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: e2785baab27f5bfc996b57607816062195a19b2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313761"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594129"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front 的常見問題
 
@@ -79,7 +79,7 @@ Azure Front 大門是全域散發的多租使用者服務。 因此，Front 的�
 
 ### <a name="is-http-https-redirection-supported"></a>是否支援 HTTP->HTTPS 重新導向？
 
-是。 事實上，Azure Front 門板支援主機、路徑和查詢字串重新導向，以及 URL 重新導向的一部分。 深入瞭解[URL](front-door-url-redirect.md)重新導向。 
+可以。 事實上，Azure Front 門板支援主機、路徑和查詢字串重新導向，以及 URL 重新導向的一部分。 深入瞭解[URL](front-door-url-redirect.md)重新導向。 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>路由規則的處理順序為何？
 
@@ -91,7 +91,7 @@ Azure Front 大門是全域散發的多租使用者服務。 因此，Front 的�
 
 - 設定後端的 IP 執行 acl，以接受來自 Azure 前端的後端 IP 位址空間和 Azure 基礎結構服務的流量。 請參閱下方的 IP 詳細資料，以執行 acl 您的後端：
  
-    - 如需前端的 IPv4 後端 IP 位址範圍，請參閱[AZURE IP 範圍和服務](https://www.microsoft.com/download/details.aspx?id=56519)標籤中的*AzureFrontDoor*一節，或者您也可以使用[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中的服務標記*AzureFrontDoor*或[Azure 防火牆](https://docs.microsoft.com/azure/firewall/service-tags)。
+    - 如需前端的 IPv4 後端 IP 位址範圍，請參閱[AZURE IP 範圍和服務](https://www.microsoft.com/download/details.aspx?id=56519)標籤中的*AzureFrontDoor*一節，或者您也可以使用[網路安全性群組](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中的服務標記*AzureFrontDoor。*
     - 在服務標籤中涵蓋的前端**IPv6**後端 IP 空間，不會列在 Azure IP 範圍 JSON 檔案中。 如果您要尋找明確的 IPv6 位址範圍，則目前限制為`2a01:111:2050::/44`
     - 透過虛擬化主機 IP 位址的 Azure[基本基礎結構服務](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations)： `168.63.129.16`和`169.254.169.254`
 

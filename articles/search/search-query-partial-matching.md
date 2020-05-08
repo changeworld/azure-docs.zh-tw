@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05ff56c904fc48a1041ad40f00110a8ff0fd01f1
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262871"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592038"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>部分詞彙搜尋和包含特殊字元的模式（萬用字元、RegEx、模式）
 
@@ -24,7 +24,7 @@ ms.locfileid: "81262871"
 解決方案是叫用會保留完整字串的分析器，如有必要，包括空格和特殊字元，讓您可以符合部分詞彙和模式。 針對完整的字串建立額外的欄位，加上使用內容保留分析器，是解決方案的基礎。
 
 > [!TIP]
-> 熟悉 Postman 和 REST Api 嗎？ [下載查詢範例集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples)，以查詢本文中描述的部分詞彙和特殊字元。
+> 熟悉 Postman 和 REST Api 嗎？ [下載查詢範例集合](https://github.com/Azure-Samples/azure-search-postman-samples/)，以查詢本文中描述的部分詞彙和特殊字元。
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>什麼是 Azure 認知搜尋中的部分搜尋
 

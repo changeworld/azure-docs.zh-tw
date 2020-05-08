@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5cb3752e5a74f26936efcbb9dba5cdcda76e01f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d77fc756530115ff828c79a3b444c1152ffe5c5a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113301"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608672"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自動化執行身分帳戶
 
@@ -61,7 +61,7 @@ Azure 傳統執行身分帳戶會執行下列工作。
 
 若要建立或更新執行身分帳戶，您必須擁有特定的權限和使用權限。 Azure Active Directory 中的應用程式系統管理員，以及訂用帳戶中的擁有者可以完成所有工作。 如果您有責任區隔的情況，下表顯示工作、對等的 Cmdlet 及所需許可權的清單：
 
-|工作|Cmdlet  |最低權限  |設定權限的位置|
+|Task|Cmdlet  |最低權限  |設定權限的位置|
 |---|---------|---------|---|
 |建立 Azure AD 應用程式|[新增-AzADApplication](https://docs.microsoft.com/powershell/module/az.resources/new-azadapplication)     | 應用程式開發人員角色<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>家用 > Azure AD > 應用程式註冊 |
 |將認證新增至應用程式。|[新增-AzADAppCredential](https://docs.microsoft.com/powershell/module/az.resources/new-azadappcredential)     | 應用程式系統管理員或全域管理員<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)</br>家用 > Azure AD > 應用程式註冊|
@@ -475,7 +475,7 @@ $roleDefinition | Set-AzRoleDefinition
 * 從參與者角色中移除的執行身分帳戶
 * Azure AD 中的服務主體或應用程式
 
-針對這類設定錯誤的實例，自動化帳戶會偵測到變更，並`Incomplete`在帳戶的 [執行身分帳戶] 屬性窗格上顯示的狀態。
+針對這類設定錯誤的實例，自動化帳戶會偵測到變更，並在帳戶的 [執行身分帳戶] 屬性窗格上顯示 [*不完整*] 狀態。
 
 ![不完整的執行身分帳戶設定狀態](media/manage-runas-account/automation-account-runas-incomplete-config.png)
 
