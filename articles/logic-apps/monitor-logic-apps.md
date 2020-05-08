@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
-ms.date: 01/30/2020
-ms.openlocfilehash: 495877f1c839de2cf3583a37180054c91bd9f139
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: c2a609266a77293a0e3a5cb9c973a6eb3f7f72a9
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76907769"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731997"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>監視執行狀態、查看觸發程式歷程記錄，以及設定 Azure Logic Apps 的警示
 
@@ -19,7 +19,8 @@ ms.locfileid: "76907769"
 
 如需即時事件監控和更豐富的偵錯工具，請使用[Azure 監視器記錄](../azure-monitor/overview.md)來設定邏輯應用程式的診斷記錄。 此 Azure 服務可協助您監視您的雲端和內部部署環境，以便更輕鬆地維護其可用性和效能。 接著，您可以尋找並查看事件，例如觸發程式事件、執行事件和動作事件。 藉由將此資訊儲存在[Azure 監視器記錄](../azure-monitor/platform/data-platform-logs.md)中，您可以建立[記錄查詢](../azure-monitor/log-query/log-query-overview.md)，協助您尋找及分析此資訊。 您也可以將此診斷資料與其他 Azure 服務搭配使用，例如 Azure 儲存體和 Azure 事件中樞。 如需詳細資訊，請參閱[使用 Azure 監視器監視邏輯應用程式](../logic-apps/monitor-logic-apps-log-analytics.md)。
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!NOTE]
+> 如果您的邏輯應用程式在已建立以使用[內部存取端點](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)的[整合服務環境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中執行，您只能*從虛擬網路內部*查看並存取邏輯應用程式執行歷程記錄的輸入和輸出。 請確定您在私人端點和您想要存取其執行歷程記錄的電腦之間具有網路連線能力。 例如，您的用戶端電腦可以存在於 ISE 的虛擬網路內，或位於連線到 ISE 虛擬網路的虛擬網路內部，例如透過對等互連或虛擬私人網路。 如需詳細資訊，請參閱[ISE 端點存取](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access)。 
 
 <a name="review-runs-history"></a>
 

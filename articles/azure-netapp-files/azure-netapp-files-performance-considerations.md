@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 97e3c6212edd2ade4eabb96db3543e9b3b68e2ae
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 4badf550809df6cc63711c47e6e6f5b3690fdfca
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67454135"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691322"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>適用於 Azure NetApp Files 的效能考量
 
@@ -34,8 +34,6 @@ ms.locfileid: "67454135"
 測試中已觀察到的最大經驗輸送量為 4500 MiB/s。  在高階儲存層中，70.31 TiB 的磁片區配額會布建夠高的輸送量限制，以達到此層級的效能。  
 
 如果您考慮指派超過 70.31 TiB 的磁片區配額，則可能會將額外的配額指派給磁片區，以儲存額外的資料。 不過，增加的配額不會導致實際輸送量增加。  
-
-如需其他資訊，請參閱[Azure NetApp Files 的效能基準](azure-netapp-files-performance-benchmarks.md)。
 
 ## <a name="overprovisioning-the-volume-quota"></a>過度布建磁片區配額
 
@@ -64,4 +62,4 @@ ms.locfileid: "67454135"
 ## <a name="next-steps"></a>後續步驟
 
 - [Azure NetApp Files 的服務等級](azure-netapp-files-service-levels.md)
-- [適用於 Azure NetApp Files 的效能基準測試](azure-netapp-files-performance-benchmarks.md)
+- [Linux 的效能評定](performance-benchmarks-linux.md)
