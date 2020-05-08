@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c003af296b10037505e6d6006b6bfc788e641dc3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.openlocfilehash: 474eb4f5247aeb77edce0ebfde1611bf2deef493
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731452"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930398"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 建立主機集區
 
@@ -37,7 +37,7 @@ ms.locfileid: "82731452"
 New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -HostPoolType <Pooled|Personal> -LoadBalancerType <BreadthFirst|DepthFirst|Persistent> -Location <region> -DesktopAppGroupName <appgroupname> 
 ```
 
-此 Cmdlet 會建立主機集區、工作區和桌面應用程式群組。 此外，它會將桌面應用程式群組註冊至工作區。 您只能使用此 Cmdlet 來建立工作區，而不是在此 Cmdlet 中使用現有的工作區。 
+此 Cmdlet 會建立主機集區、工作區和桌面應用程式群組。 此外，它會將桌面應用程式群組註冊至工作區。 您可以使用此 Cmdlet 來建立工作區，或使用現有的工作區。 
 
 執行下一個 Cmdlet 來建立註冊權杖，以授權工作階段主機加入主機集區，並將它儲存到本機電腦上的新檔案。 您可以使用-ExpirationHours 參數指定註冊權杖有效的時間長度。
 

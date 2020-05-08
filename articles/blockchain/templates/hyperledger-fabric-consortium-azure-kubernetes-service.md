@@ -4,12 +4,12 @@ description: 如何在 Azure Kubernetes Service 上部署和設定 Hyperledger F
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 2312c002e5c2e0b813f8acbdc3e3bff597f204d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476435"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980215"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service （AKS）上的 Hyperledger 網狀架構聯盟
 
@@ -42,7 +42,7 @@ ms.locfileid: "79476435"
   - 網狀**架構 ca**：執行網狀架構 ca 的 pod。
 - **于 postgresql**：部署于 postgresql 的實例以維護網狀架構 CA 身分識別。
 
-- **Azure 金鑰保存庫**：部署金鑰保存庫實例，以儲存客戶所提供的網狀架構 CA 認證和根憑證，用於部署範本的重試時，這是為了處理範本的機制。
+- **Azure key vault**：部署金鑰保存庫實例，以儲存客戶所提供的網狀架構 CA 認證和根憑證，以在範本部署重試時用來處理範本的機制。
 - **Azure 受控磁片**： azure 受控磁片適用于總帳和對等節點世界狀態資料庫的持續性存放區。
 - **公用 ip**：為了與叢集互動而部署之 AKS 叢集的公用 ip 端點。
 
@@ -54,7 +54,6 @@ ms.locfileid: "79476435"
 
 - [部署排序者/對等組織](#deploy-the-ordererpeer-organization)
 - [建立聯盟](#build-the-consortium)
-- [執行原生 HLF 作業](#run-native-hlf-operations)
 
 ## <a name="deploy-the-ordererpeer-organization"></a>部署排序者/對等組織
 
@@ -78,7 +77,7 @@ ms.locfileid: "79476435"
     ![Azure Kubernetes Service 範本上的 Hyperledger 網狀架構](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
 5. 輸入下列詳細資料：
-    - **組織名稱**：各種資料平面作業所需的網狀架構組織名稱。 組織名稱在每個部署中必須是唯一的。 
+    - **組織名稱**：各種資料平面作業所需的網狀架構組織名稱。 組織名稱在每個部署中必須是唯一的。
     - 網狀**架構網路元件**：根據您想要設定的區塊鏈網路元件，選擇 [訂購服務] 或 [對等節點]。
     - **節點數目**-以下是兩種類型的節點：
         - 訂購服務-選取要為網路提供容錯能力的節點數目。 只有3、5和7是支援的排序者節點計數。
@@ -116,48 +115,82 @@ ms.locfileid: "79476435"
 
 ## <a name="build-the-consortium"></a>建立聯盟
 
-若要建立區塊鏈聯盟文章部署訂購服務和對等節點，您需要依序執行下列步驟。 **建立您的網路**腳本（byn.sh），協助您設定聯盟、建立通道，以及安裝鏈碼。
+若要建立區塊鏈聯盟文章部署訂購服務和對等節點，您需要依序執行下列步驟。 Azure HLF 腳本（azhlf），可協助您設定聯盟、建立通道和鏈碼作業。
 
 > [!NOTE]
-> 提供的組建您的網路（byn）腳本嚴格用於示範/devtest 案例。 針對生產等級設定，我們建議使用原生 HLF Api。
+> 腳本中有更新，此更新是為了提供更多功能的 Azure HLF 腳本。 如果您想要參考舊的腳本，請[參閱這裡](https://github.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/blob/master/consortiumScripts/README.md)。 此腳本與 Azure Kubernetes Service 範本版本2.0.0 和更新版本上的 Hyperledger 網狀架構相容。 若要檢查部署的版本，請遵循[疑難排解](#troubleshoot)中的步驟。
 
-所有執行 byn 腳本的命令都可以透過 Azure Bash 命令列介面（CLI）來執行。 您可以透過登入 Azure shell web 版本 ![Azure Kubernetes Service 範本上的 Hyperledger 網狀架構](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) 選項，位於 Azure 入口網站的右上角。 在命令提示字元中，輸入 bash，然後輸入以切換至 bash CLI。
+> [!NOTE]
+> 提供的 Azure HLF （azhlf）腳本僅協助示範/DevTest 案例。 此腳本所建立的通道和聯盟具有基本的 HLF 原則，可簡化示範/DevTest 案例。 針對生產環境設定，我們建議您使用原生 HLF Api，依據您的組織合規性需求來更新通道/聯盟 HLF 原則。
+
+
+所有執行 Azure HLF 腳本的命令都可以透過 Azure Bash 命令列來執行。 介面（CLI）。 您可以透過登入 Azure shell web 版本  ![Azure Kubernetes Service 範本上的 Hyperledger 網狀架構](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) 選項，位於 Azure 入口網站的右上角。 在命令提示字元中，輸入 bash，然後輸入以切換至 bash CLI。
 
 如需詳細資訊，請參閱[Azure shell](https://docs.microsoft.com/azure/cloud-shell/overview) 。
 
 ![Azure Kubernetes Service 範本上的 Hyperledger 網狀架構](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
 
-下載 byn.sh 和 fabric-yaml 檔案。
+下圖顯示在排序者組織和對等組織之間建立聯盟的逐步流程。 下列各節會說明執行這些步驟的詳細命令。
+
+![Azure Kubernetes Service 範本上的 Hyperledger 網狀架構](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
+
+針對用戶端應用程式的初始設定，請遵循下列命令： 
+
+1.  [下載用戶端應用程式檔](#download-client-application-files)
+2.  [設定環境變數](#setup-environment-variables)
+3.  [匯入組織連線設定檔、系統管理員使用者和 MSP](#import-organization-connection-profile-admin-user-identity-and-msp)
+
+完成初始設定之後，您可以使用用戶端應用程式來達成下列作業：  
+
+- [通道管理命令](#channel-management-commands)
+- [聯盟管理命令](#consortium-management-commands)
+- [鏈碼管理命令](#chaincode-management-commands)
+
+### <a name="download-client-application-files"></a>下載用戶端應用程式檔
+
+第一個設定是下載用戶端應用程式檔。 執行下列命令以下載所有必要的檔案和套件：
 
 ```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/byn.sh -o byn.sh; chmod 777 byn.sh
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/fabric-admin.yaml -o fabric-admin.yaml
-```
-**在 Azure CLI Bash shell 上設定下列環境變數**：
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/azhlfToolSetup.sh | bash
+cd azhlfTool
+npm install
+npm run setup
 
-設定通道資訊和排序者組織資訊
+```
+這些命令會從公用 GitHub 存放庫複製 Azure HLF 用戶端應用程式程式碼，然後再載入所有相依的 npm 套件。 成功執行命令之後，您可以在目前目錄中看到 node_modules 資料夾。 所有必要的套件都會載入 node_modules 資料夾中。
+
+
+### <a name="setup-environment-variables"></a>設定環境變數
+
+> [!NOTE]
+> 所有環境變數都遵循 Azure 資源命名慣例。
+
+
+**為排序者組織用戶端設定下列環境變數**
+
 
 ```bash
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-ORDERER_AKS_SUBSCRIPTION=<ordererAKSClusterSubscriptionID>
-ORDERER_AKS_RESOURCE_GROUP=<ordererAKSClusterResourceGroup>
-ORDERER_AKS_NAME=<ordererAKSClusterName>
-ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --name $ORDERER_AKS_NAME --subscription $ORDERER_AKS_SUBSCRIPTION -o json | jq .addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName | tr -d '"')
-ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
+ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
+ORDERER_ORG_RESOURCE_GROUP=<ordererOrgResourceGroup>
+ORDERER_ORG_NAME=<ordererOrgName>
+ORDERER_ADMIN_IDENTITY="admin.$ORDERER_ORG_NAME"
 CHANNEL_NAME=<channelName>
 ```
-設定對等組織資訊
+**針對對等組織用戶端設定下列環境變數**
 
 ```bash
-PEER_AKS_RESOURCE_GROUP=<peerAKSClusterResourceGroup>
-PEER_AKS_NAME=<peerAKSClusterName>
-PEER_AKS_SUBSCRIPTION=<peerAKSClusterSubscriptionID>
-#Peer organization name is case-sensitive. Specify exactly the same name, which was provided while creating the Peer AKS Cluster.
-PEER_ORG_NAME=<peerOrganizationName>
+PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
+PEER_ORG_RESOURCE_GROUP=<peerOrgResourceGroup>
+PEER_ORG_NAME=<peerOrgName>
+PEER_ADMIN_IDENTITY="admin.$PEER_ORG_NAME"
+CHANNEL_NAME=<channelName>
 ```
 
-建立一個 Azure 檔案共用，以在對等和排序者組織之間共用各種公開憑證。
+> [!NOTE]
+> 根據聯盟中的對等組織數目，您可能需要重複執行對等命令，並據以設定環境變數。
+
+**設定下列環境變數來設定 azure 儲存體帳戶**
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -165,311 +198,223 @@ STORAGE_RESOURCE_GROUP=<azureFileShareResourceGroup>
 STORAGE_ACCOUNT=<azureStorageAccountName>
 STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
+```
 
+請遵循下列步驟來建立 Azure 儲存體帳戶。 如果您已建立 azure 儲存體帳戶，請略過下列步驟
+
+```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
 az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
+```
+
+請遵循下列步驟，以在 azure 儲存體帳戶中建立檔案共用。 如果您已經建立檔案共用，請略過下列步驟
+
+```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
+```
+
+請遵循下列步驟來產生 Azure 檔案共用連接字串
+
+```bash
+STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
-AZURE_FILE_CONNECTION_STRING="https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN"
-```
-**通道管理命令**
+AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN
 
-移至排序者組織 AKS 叢集和發出命令以建立新的通道
+```
+
+### <a name="import-organization-connection-profile-admin-user-identity-and-msp"></a>匯入組織連線設定檔、系統管理員使用者身分識別和 MSP
+
+請發出下列命令，以從 Azure Kubernetes Cluster 提取組織的連線設定檔、系統管理員使用者身分識別和 MSP，並將這些身分識別儲存在用戶端應用程式本機存放區中，亦即 "azhlfTool/store" 目錄。
+
+針對排序者組織：
 
 ```bash
-SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-./byn.sh createChannel "$CHANNEL_NAME"
+./azhlf adminProfile import fromAzure -o $ORDERER_ORG_NAME -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION
+./azhlf connectionProfile import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME   
+./azhlf msp import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME
 ```
 
-**聯盟管理命令**
-
-在指定的順序中執行下列命令，以在通道和聯盟中加入對等組織。
-
-1. 移至對等組織 AKS 叢集，並上傳其在 Azure 檔案儲存體上的成員服務提供（MSP）。
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh uploadOrgMSP "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-2. 前往排序者組織 AKS 叢集，並在 channel 和聯盟中新增對等組織。
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-    #add peer in consortium
-    ./byn.sh addPeerInConsortium "$PEER_ORG_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    #add peer in channel
-    ./byn.sh addPeerInChannel "$PEER_ORG_NAME" "$CHANNEL_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-3. 回到 [對等組織] 和 [發出命令]，以聯結通道中的對等節點。
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh joinNodesInChannel "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-同樣地，若要在通道中新增更多對等組織，請依據所需的對等組織更新對等 AKS 環境變數，並執行步驟1到3。
-
-**鏈碼管理命令**
-
-執行下列命令以執行鏈碼相關的作業。 這些命令會在示範鏈碼上執行所有作業。 這個示範鏈碼有兩個變數 "a" 和 "b"。 在鏈碼具現化時，"a" 會初始化為1000，而 "b" 會以2000初始化。 在每次叫用鏈碼時，10個單位會從 "a" 傳送到 "b"。 鏈碼上的查詢作業會顯示「a」變數的世界狀態。
-
-執行在對等組織 AKS 叢集上執行的下列命令。
+針對對等組織：
 
 ```bash
-# switch to peer organization AKS cluster. Skip this command if already connected to the required Peer AKS Cluster
-SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-```
-**鏈碼操作命令**
-
-```bash
-PEER_NODE_NAME="peer<peer#>"
-./byn.sh installDemoChaincode "$PEER_NODE_NAME"
-./byn.sh instantiateDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh invokeDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh queryDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME"
+./azhlf adminProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf connectionProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ```
 
-## <a name="run-native-hlf-operations"></a>執行原生 HLF 作業
-
-協助客戶開始在 AKS 上的 HLF 網路上執行 Hyperledger native 命令。 提供的範例應用程式會使用網狀架構 NodeJS SDK 來執行 HLF 作業。 系統會提供命令來建立新的使用者身分識別，並安裝您自己的鏈碼。
-
-### <a name="before-you-begin"></a>開始之前
-
-針對應用程式的初始設定，請遵循下列命令：
-
-- 下載應用程式檔
-- 產生連線設定檔和系統管理員設定檔
-- 匯入管理使用者身分識別
-
-完成初始設定之後，您可以使用 SDK 來達成下列作業：
-
-- 使用者身分識別產生
-- 鏈碼作業
-
-上述命令可以從 Azure Cloud Shell 執行。
-
-### <a name="download-application-files"></a>下載應用程式檔
-
-執行應用程式的第一個設定是下載資料夾中的所有應用程式檔。
-
-**建立應用程式資料夾並在資料夾中輸入**：
-
-```bash
-mkdir app
-cd app
-```
-執行下列命令以下載所有必要的檔案和套件：
-
-```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/application/setup.sh | bash
-```
-此命令需要一些時間來載入所有的封裝。 成功執行命令之後，您會在目前的目錄`node_modules`中看到資料夾。 所有必要的套件都會載入到`node_modules`資料夾中。
-
-### <a name="generate-connection-profile-and-admin-profile"></a>產生連線設定檔和系統管理員設定檔
-
-在`profile` `app`資料夾內建立目錄
-
-```bash
-cd app
-mkdir ./profile
-```
-在 Azure cloud shell 上設定這些環境變數
-
-```bash
-# Organization name whose connection profile is to be generated
-ORGNAME=<orgname>
-# Organization AKS cluster resource group
-AKS_RESOURCE_GROUP=<resourceGroup>
-```
-
-執行下列命令以產生組織的連線設定檔和系統管理員設定檔
-
-```bash
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/gateway/g"| xargs curl > ./profile/$ORGNAME-ccp.json
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/admin/g"| xargs curl > ./profile/$ORGNAME-admin.json
-```
-
-它會在設定檔資料夾中`profile` ，分別使用名稱`<orgname>-ccp.json`和`<orgname>-admin.json`來建立組織的連線設定檔和管理員。
-
-同樣地，為每個排序者和對等組織產生連線設定檔和系統管理員設定檔。
-
-
-### <a name="import-admin-user-identity"></a>匯入管理使用者身分識別
-
-最後一個步驟是在錢包中匯入組織的系統管理員使用者身分識別。
-
-```bash
-npm run importAdmin -- -o <orgName>
-
-```
-上述命令會執行 importAdmin，將系統管理員使用者身分識別匯入錢包。 腳本會從系統管理員設定檔`<orgname>-admin.json`讀取管理身分識別，並將其匯入以錢包執行 HLF 作業。
-
-腳本會使用檔案系統錢包來儲存身分識別。 它會根據連線設定檔中「錢包」欄位所指定的路徑來建立錢包。 根據預設，會使用`<orgname>`初始化「錢包」欄位，這表示會在目前的目錄`<orgname>`中建立名為的資料夾來儲存身分識別。 如果您想要建立其他路徑的錢包，請在連線設定檔中修改「錢包」欄位，再執行註冊管理使用者和任何其他 HLF 作業。
-
-同樣地，為每個組織匯入管理使用者身分識別。
-
-如需命令中傳遞之引數的詳細資訊，請參閱命令說明。
-
-```bash
-npm run importAdmin -- -h
-
-```
-
-### <a name="user-identity-generation"></a>使用者身分識別產生
-
-在指定的順序中執行下列命令，以產生 HLF 組織的新使用者識別。
+### <a name="channel-management-commands"></a>通道管理命令
 
 > [!NOTE]
-> 開始進行使用者身分識別產生步驟之前，請確定應用程式的初始設定已完成。
+> 開始進行任何通道作業之前，請確定已完成用戶端應用程式的初始設定。  
 
-在 azure cloud shell 上設定下列環境變數
+以下是兩個通道管理命令：
+
+1. [建立通道命令](#create-channel-command)
+2. [設定錨點對等命令](#setting-anchor-peers-command)
+
+
+#### <a name="create-channel-command"></a>建立通道命令
+
+從排序者組織用戶端，發出命令以建立新的通道。 此命令將會建立一個通道，其中僅包含排序者組織。  
 
 ```bash
-# Organization name for which user identity is to be generated
-ORGNAME=<orgname>
-# Name of new user identity. Identity will be registered with the Fabric-CA using this name.
-USER_IDENTITY=<username>
-
+./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
 
-註冊並註冊新的使用者
+#### <a name="setting-anchor-peers-command"></a>設定錨點對等命令
+從對等組織用戶端，發出下列命令，以針對指定通道上的對等組織設定錨點對等。
 
-若要註冊並註冊新的使用者，請執行下列執行 registerUser 的命令。 它會將產生的使用者身分識別儲存在錢包中。
+>[!NOTE]
+> 執行此命令之前，請確定已使用聯盟管理命令在通道中新增對等組織。
 
 ```bash
-npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
-
+./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
 ```
 
-> [!NOTE]
-> 系統管理員使用者身分識別是用來發出新使用者的註冊命令。 因此，在執行此命令之前，必須先在錢包中擁有系統管理員使用者身分識別。 否則，此命令將會失敗。
+`<anchorPeersList>`這是要設定為錨點對等節點的空格分隔清單。 例如，
 
-如需命令中傳遞之引數的詳細資訊，請參閱命令說明
+  - 如果`<anchorPeersList>`您只想要將 peer1 節點設定為錨點對等，請設定為 "peer1"。
+  - 如果`<anchorPeersList>`您想要將 peer1 和 peer3 節點設定為錨點對等，請設定為 "peer1" "peer3"。
+
+### <a name="consortium-management-commands"></a>聯盟管理命令
+
+>[!NOTE]
+> 開始進行任何聯盟作業之前，請確定已完成用戶端應用程式的初始設定。  
+
+在指定的順序中執行下列命令，以在通道和聯盟中新增對等組織
+1.  從對等組織用戶端上傳 azure 儲存體上的對等組織 MSP
+
+      ```bash
+      ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
+      ```
+2.  從排序者組織用戶端，從 azure 儲存體下載對等組織的 MSP，然後發出命令以在通道/聯盟中新增對等組織。
+
+      ```bash
+      ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel join -c  $CHANNEL_NAME -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ```
+
+3.  從排序者組織用戶端上傳 azure 儲存體上的排序者連線設定檔，讓對等組織可以使用此連線設定檔連線到排序者節點
+
+      ```bash
+      ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ```
+
+4.  從對等組織用戶端，從 azure 儲存體下載排序者連線設定檔，然後發出命令以在通道中新增對等節點
+
+      ```bash
+      ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel joinPeerNodes -o $PEER_ORG_NAME  -u $PEER_ADMIN_IDENTITY -c $CHANNEL_NAME --ordererOrg $ORDERER_ORG_NAME
+      ```
+
+同樣地，若要在通道中新增更多對等組織，請根據所需的對等組織更新對等環境變數，並執行步驟1到4。
+
+
+### <a name="chaincode-management-commands"></a>鏈碼管理命令
+
+>[!NOTE]
+> 開始進行任何鏈碼作業之前，請確定已完成用戶端應用程式的初始設定。  
+
+**設定下列鏈碼特定環境變數**
 
 ```bash
-npm run registerUser -- -h
-
-```
-
-### <a name="chaincode-operations"></a>鏈碼作業
-
-
-> [!NOTE]
-> 開始進行任何鏈碼作業之前，請確定應用程式的初始設定已完成。
-
-在 Azure Cloud shell 上設定下列鏈碼特定環境變數：
-
-```bash
-# peer organization name where chaincode is to be installed
-ORGNAME=<orgName>
-USER_IDENTITY="admin.$ORGNAME"
-CC_NAME=<chaincodeName>
+# peer organization name where chaincode operation is to be performed
+ORGNAME=<PeerOrgName>
+USER_IDENTITY="admin.$ORGNAME"  
+# If you are using chaincode_example02 then set CC_NAME=“chaincode_example02”
+CC_NAME=<chaincodeName>  
+# If you are using chaincode_example02 then set CC_VERSION=“1” for validation
 CC_VERSION=<chaincodeVersion>
-# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'
-# Default value is 'golang'
-CC_LANG=<chaincodeLanguage>
-# CC_PATH contains the path where your chaincode is place. In case of go chaincode, this path is relative to 'GOPATH'.
-# For example, if your chaincode is present at path '/opt/gopath/src/chaincode/chaincode.go'.
-# Then, set GOPATH to '/opt/gopath' and CC_PATH to 'chaincode'
-CC_PATH=<chaincodePath>
-# 'GOPATH' environment variable. This needs to be set in case of go chaincode only.
-export GOPATH=<goPath>
-# Channel on which chaincode is to be instantiated/invoked/queried
-CHANNEL=<channelName>
-
-````
-
-以下是可執行檔鏈碼作業：
-
-- 安裝鏈碼
-- 具現化鏈碼
-- 叫用鏈碼
-- 查詢鏈碼
-
-### <a name="install-chaincode"></a>安裝鏈碼
-
-執行下列命令以在對等組織上安裝鏈碼。
-
-```bash
-npm run installCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION
-
-```
-它會在環境變數中`ORGNAME`設定的組織的所有對等節點上安裝鏈碼。 如果您的通道中有兩個或多個對等組織，而您想要在所有的節點上安裝鏈碼，請針對每個對等組織分別執行命令。
-
-請遵循下列步驟：
-
-- 將`ORGNAME`設定`<peerOrg1Name>`為， `installCC`併發出命令。
-- 將`ORGNAME`設定`<peerOrg2Name>`為， `installCC`併發出命令。
-
-  針對每個對等組織執行此程式。
-
-如需命令中傳遞之引數的詳細資訊，請參閱命令說明。
-
-```bash
-npm run installCC -- -h
-
+# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'  
+# Default value is 'golang'  
+CC_LANG=<chaincodeLanguage>  
+# CC_PATH contains the path where your chaincode is place.
+# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/chaincode/src/chaincode_example02/go”
+CC_PATH=<chaincodePath>  
+# Channel on which chaincode is to be instantiated/invoked/queried  
+CHANNEL_NAME=<channelName>  
 ```
 
-### <a name="instantiate-chaincode"></a>具現化鏈碼
+以下是可執行檔鏈碼作業：  
 
-執行下列命令，在對等上具現化鏈碼。
+- [安裝鏈碼](#install-chaincode)  
+- [具現化鏈碼](#instantiate-chaincode)  
+- [叫用鏈碼](#invoke-chaincode)
+- [查詢鏈碼](#query-chaincode)
+
+
+### <a name="install-chaincode"></a>安裝鏈碼  
+
+執行下列命令以在對等組織上安裝鏈碼。  
 
 ```bash
-npm run instantiateCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL -f <instantiateFunc> -a <instantiateFuncArgs>
+./azhlf chaincode install -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION  
 
 ```
-將具現化函式名稱和以逗號分隔`<instantiateFunc>`的`<instantiateFuncArgs>`引數清單分別傳入和。 例如，在[fabrcar 鏈碼](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go)中，將鏈碼設定`<instantiateFunc>`為`"Init"` ，並`<instantiateFuncArgs>`將設為空`""`字串。
+它會在 ORGNAME 環境變數中設定的對等組織的所有對等節點上安裝鏈碼。 如果您的通道中有兩個或多個對等組織，而您想要在所有的節點上安裝鏈碼，請針對每個對等組織分別執行此命令。  
+
+請遵循下列步驟：  
+
+1.  將`ORGNAME`和`USER_IDENTITY`設定為每個 peerOrg1 `./azhlf chaincode install`和 issue 命令。  
+2.  將`ORGNAME`和`USER_IDENTITY`設定為每個 peerOrg2 `./azhlf chaincode install`和 issue 命令。  
+
+### <a name="instantiate-chaincode"></a>具現化鏈碼  
+
+從對等用戶端應用程式，執行下列命令以在通道上具現化鏈碼。  
+
+```bash
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+```
+將具現化函數名稱和以`<instantiateFunc>`空格分隔的自`<instantiateFuncArgs>`變數清單分別傳入和。 例如，在 chaincode_example02. go 鏈碼中，將鏈碼設定`<instantiateFunc>`為`init`，並`<instantiateFuncArgs>`將其具現化為 "a" "2000" "b" "1000"。
 
 > [!NOTE]
-> 從通道中的任何一個對等組織執行一次命令。
-> 交易成功提交至排序者後，排序者會將此交易散發給通道中的所有對等組織。 因此，鏈碼會在通道中的所有對等組織的所有對等節點上具現化。
+> 從通道中的任何一個對等組織執行一次命令。 交易成功提交至排序者後，排序者會將此交易散發給通道中的所有對等組織。 因此，鏈碼會在通道中的所有對等組織的所有對等節點上具現化。  
 
-如需命令中傳遞之引數的詳細資訊，請參閱命令說明
+
+### <a name="invoke-chaincode"></a>叫用鏈碼  
+
+從對等組織用戶端，執行下列命令來叫用鏈碼函數：  
 
 ```bash
-npm run instantiateCC -- -h
-
+./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-### <a name="invoke-chaincode"></a>叫用鏈碼
+分別傳遞 invoke 函式名稱和以 `<invokeFunction>`  `<invokeFuncArgs>`空格分隔的引數清單。  繼續進行 chaincode_example02。 go 鏈碼範例，以執行將設定為 `<invokeFunction>`  `invoke` 的叫用 `<invokeFuncArgs>` 作業，並將其設為 "a" "b" "10"。  
 
-執行下列命令來叫用鏈碼函數：
+>[!NOTE]
+> 從通道中的任何一個對等組織執行一次命令。 交易成功提交至排序者後，排序者會將此交易散發給通道中的所有對等組織。 因此，在通道中所有對等組織的所有對等節點上都會更新世界狀態。  
+
+
+### <a name="query-chaincode"></a>查詢鏈碼  
+
+執行下列命令以查詢鏈碼：  
 
 ```bash
-npm run invokeCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <invokeFunc> -a <invokeFuncArgs>
-
+./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
 ```
-分別在和`<invokeFunction>` `<invokeFuncArgs>`中傳遞叫用函式名稱和以逗號分隔的引數清單。 繼續進行 fabcar 鏈碼範例，以叫用將 initLedger 函`<invokeFunction>`式`"initLedger"`設`<invokeFuncArgs>`為`""`和的。
+分別 `<queryFunction>` 在和 `<queryFuncArgs>` 中傳遞查詢函式名稱和以空格分隔的引數清單。 同樣地，將 chaincode_example02 做為參考，以查詢全球狀態中 "a" 的值，並 `<queryFunction>`    `<queryArgs>`設定為 `query` "a"。  
 
-> [!NOTE]
-> 從通道中的任何一個對等組織執行一次命令。
-> 交易成功提交至排序者後，排序者會將此交易散發給通道中的所有對等組織。 因此，在通道中所有對等組織的所有對等節點上都會更新世界狀態。
+## <a name="troubleshoot"></a>疑難排解
 
-如需命令中傳遞之引數的詳細資訊，請參閱命令說明
+**確認正在執行的範本版本**
+
+執行下列命令以尋找範本部署的版本。
+
+根據已部署範本的資源群組，設定下列環境變數。
 
 ```bash
-npm run invokeCC -- -h
 
+SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
+AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
+AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
+AKS_CLUSTER_NAME=<AKSClusterName>
 ```
-
-### <a name="query-chaincode"></a>查詢鏈碼
-
-執行下列命令以查詢鏈碼：
-
+執行下列命令以列印範本版本
 ```bash
-npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <queryFunction> -a <queryFuncArgs>
-
-```
-
-分別傳遞查詢函式名稱和以逗號分隔的`<queryFunction>`引數清單。 `<queryFuncArgs>` 同樣地， `fabcar`將鏈碼做為參考，以查詢全球狀態中的所有車輛`<queryFunction>`設定`"queryAllCars"`為`<queryArgs>`和`""`。
-
-如需命令中傳遞之引數的詳細資訊，請參閱命令說明
-
-```bash
-npm run queryCC -- -h
+SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
+kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```
