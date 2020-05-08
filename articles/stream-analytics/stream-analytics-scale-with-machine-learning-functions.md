@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 5b08625d055063b3804a35a3344ff01c7edb79de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4e2c99274df90d232754c862f3174b5767392cec
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066994"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929038"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>使用 Azure Machine Learning Studio （傳統）功能調整您的串流分析作業
 
@@ -58,7 +58,7 @@ ms.locfileid: "80066994"
 
 您也可以在 Machine Learning web 服務上設定「並行呼叫數上限」。 建議將此參數設定為最大值（目前為200）。
 
-如需此設定的詳細資訊，請參閱 [Machine Learning Web 服務的調整文章](../machine-learning/studio/scaling-webservice.md)。
+如需此設定的詳細資訊，請參閱 [Machine Learning Web 服務的調整文章](../machine-learning/studio/create-endpoint.md)。
 
 ## <a name="example--sentiment-analysis"></a>範例 – 情感分析
 以下範例包含具有情感分析 Machine Learning 函式的串流分析作業，如 [串流分析 Machine Learning 整合教學課程](stream-analytics-machine-learning-integration-tutorial.md)所述。

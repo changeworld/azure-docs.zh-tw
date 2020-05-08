@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2527071aa246b34c103c2a8732d735f459977a47
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
-ms.translationtype: HT
+ms.openlocfilehash: a769b5584abbd6da89ccb6032e5f0c5ac8ea1cb1
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629519"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930517"
 ---
 # <a name="enable-azure-multi-factor-authentication-for-windows-virtual-desktop"></a>啟用 Windows 虛擬桌面的 Azure 多重要素驗證
 
@@ -46,9 +46,12 @@ ms.locfileid: "82629519"
    - 在 [**包含**] 底下，選取 [**選取使用者和群組** > ] [**使用者和群組**] > 選擇 [必要條件] 階段中建立的群組。
    - 選取 [完成]  。
 6. 在 [**雲端應用程式或動作** > **包括**] 底下，選取 [**選取應用程式**]。
-   - 選擇 [ **Windows 虛擬桌面**]，然後依序**選取**[] 和 [**完成**]。
+   - 選擇 [ **Windows 虛擬桌面**（應用程式識別碼9cdead84-a844-4324-93f2-b2e6bb768d07）]，然後選取 []，然後**按一下**[**完成**]。
    
      ![[雲端應用程式] 或 [動作] 頁面的螢幕擷取畫面。 Windows 虛擬桌面和 Windows 虛擬桌面用戶端應用程式會以紅色反白顯示。](media/cloud-apps-enterprise.png)
+
+     >[!NOTE]
+     >若要尋找您要選取之應用程式的應用程式識別碼，請移至 [**企業應用程式**]，然後從 [應用程式類型] 下拉式功能表中選取 [ **Microsoft 應用程式**]。
 
 7. 在 **[存取控制** > **授**與] 底下，選取 **[授與存取權**]、[**需要多重要素驗證**]，然後**選取**。
 8. 在 [**存取控制** > **會話**] 底下，選取 [登**入頻率**]，將值設定為**1** ，並將單位設為**小時**，然後選取 [**選取**]。

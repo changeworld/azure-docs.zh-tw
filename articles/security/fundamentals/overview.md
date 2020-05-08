@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a7957c7cbcfa511ea441d8c7bd4371f56ab87560
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461679"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731690"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性簡介
 ## <a name="overview"></a>總覽
@@ -266,9 +266,9 @@ Microsoft [Azure 流量管理員](../../traffic-manager/traffic-manager-overview
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) 可為您的應用程式提供高可用性和網路效能。 這是 Layer 4 (TCP、UDP) 負載平衡器，可將連入流量分配到負載平衡集中所定義服務的狀況良好執行個體。 Azure Load Balancer 可以設定為：
 
--   對虛擬機器的連入網際網路流量進行負載平衡。 這個組態稱為 [網際網路面向的負載平衡](../../load-balancer/concepts-limitations.md#publicloadbalancer)。
+-   對虛擬機器的連入網際網路流量進行負載平衡。 這種設定稱為「[公用負載平衡](../../load-balancer/components.md#frontend-ip-configurations)」。
 
--   平衡虛擬網路中的虛擬機器之間、雲端服務中的虛擬機器之間，或內部部署電腦與跨單位部署虛擬網路中的虛擬機器之間的流量負載。 這個組態稱為 [內部負載平衡](../../load-balancer/concepts-limitations.md#internalloadbalancer)。
+-   平衡虛擬網路中的虛擬機器之間、雲端服務中的虛擬機器之間，或內部部署電腦與跨單位部署虛擬網路中的虛擬機器之間的流量負載。 這個組態稱為 [內部負載平衡](../../load-balancer/components.md#frontend-ip-configurations)。
 
 - 將外部流量轉送到特定的虛擬機器
 

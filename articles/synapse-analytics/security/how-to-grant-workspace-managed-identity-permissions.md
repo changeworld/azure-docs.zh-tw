@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f519022fffe98c565c3b2d30f6578b9ebb70c57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f0644c25d0047f774fe8f99efa34a33e10d7b2b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428013"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983290"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>將許可權授與工作區受控識別（預覽）
 
-本文會教您如何在 Azure synapse 工作區中將許可權授與受控識別。 接著，許可權會允許存取工作區中的 SQL 集區，並透過 Azure 入口網站來 ADLS gen2 儲存體帳戶。
+本文會教您如何在 Azure synapse 工作區中將許可權授與受控識別。 接著，許可權會允許存取工作區中的 SQL 集區，並透過 Azure 入口網站 ADLS Gen2 儲存體帳戶。
 
 >[!NOTE]
 >本文件的其餘部分會將此工作區受控識別稱為受控識別。
@@ -29,25 +29,25 @@ ms.locfileid: "81428013"
 
 ![SQL 集區的 CONTROL 許可權](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
-## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>授與受控識別許可權給 ADLS gen2 儲存體帳戶
+## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>將受控識別許可權授與 ADLS Gen2 儲存體帳戶
 
-需要有 ADLS gen2 儲存體帳戶，才能建立 Azure Synapse 工作區。 若要在 Azure Synapse 工作區中成功啟動 Spark 集區，Azure Synapse 受控識別需要此儲存體帳戶上的*儲存體 Blob 資料參與者*角色。 Azure Synapse 中的管線協調流程也受益于此角色。
+需要 ADLS Gen2 儲存體帳戶，才能建立 Azure Synapse 工作區。 若要在 Azure Synapse 工作區中成功啟動 Spark 集區，Azure Synapse 受控識別需要此儲存體帳戶上的*儲存體 Blob 資料參與者*角色。 Azure Synapse 中的管線協調流程也受益于此角色。
 
 ### <a name="grant-permissions-to-managed-identity-during-workspace-creation"></a>在工作區建立期間將許可權授與受控識別
 
-當您使用 Azure 入口網站建立 Azure Synapse 工作區之後，Azure Synapse 會嘗試將儲存體 Blob 資料參與者角色授與受控識別。 您可以在 [**基本**] 索引標籤中提供 ADLS gen2 儲存體帳戶的詳細資料。
+當您使用 Azure 入口網站建立 Azure Synapse 工作區之後，Azure Synapse 會嘗試將儲存體 Blob 資料參與者角色授與受控識別。 您會在 [**基本**] 索引標籤中提供 ADLS Gen2 儲存體帳戶詳細資料。
 
 ![工作區建立流程中的 [基本] 索引標籤](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-選擇 [**帳戶名稱**] 和 [**檔案系統名稱**] 中的 ADLS gen2 儲存體帳戶和 filesystem。
+選擇 [**帳戶名稱**] 和 [**檔案系統名稱**] 中的 [ADLS Gen2 儲存體帳戶] 和 [filesystem]。
 
-![提供 ADLS gen2 儲存體帳戶詳細資料](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
+![提供 ADLS Gen2 儲存體帳戶詳細資料](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
-如果工作區建立者也是 ADLS gen2 儲存體帳戶的**擁有**者，則 Azure Synapse 會將*儲存體 Blob 資料參與者*角色指派給受控識別。 您會在您輸入的儲存體帳戶詳細資料下方看到下列訊息。
+如果工作區建立者也是 ADLS Gen2 儲存體帳戶的**擁有**者，則 Azure Synapse 會將*儲存體 Blob 資料參與者*角色指派給受控識別。 您會在您輸入的儲存體帳戶詳細資料下方看到下列訊息。
 
 ![成功的儲存體 Blob 資料參與者指派](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-3.png)
 
-如果工作區建立者不是 ADLS gen2 儲存體帳戶的擁有者，則 Azure Synapse 不會將*儲存體 Blob 資料參與者*角色指派給受控識別。 出現在儲存體帳戶詳細資料下方的訊息會通知工作區建立者，他們沒有足夠的許可權可將*儲存體 Blob 資料參與者*角色授與受控識別。
+如果工作區建立者不是 ADLS Gen2 儲存體帳戶的擁有者，則 Azure Synapse 不會將*儲存體 Blob 資料參與者*角色指派給受控識別。 出現在儲存體帳戶詳細資料下方的訊息會通知工作區建立者，他們沒有足夠的許可權可將*儲存體 Blob 資料參與者*角色授與受控識別。
 
 ![不成功的儲存體 Blob 資料參與者指派](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-4.png)
 
@@ -55,21 +55,21 @@ ms.locfileid: "81428013"
 
 ### <a name="grant-permissions-to-managed-identity-after-workspace-creation"></a>建立工作區之後授與受控識別的許可權
 
-建立工作區期間，如果您未將*儲存體 Blob 資料參與者*指派給受控識別，則 ADLS gen2 儲存體帳戶的**擁有**者會手動將該角色指派給身分識別。 下列步驟將協助您完成手動指派。
+建立工作區期間，如果您未將*儲存體 Blob 資料參與者*指派給受控識別，則 ADLS Gen2 儲存體帳戶的**擁有**者會手動將該角色指派給身分識別。 下列步驟將協助您完成手動指派。
 
-#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>步驟1：流覽至 Azure 入口網站中的 ADLS gen2 儲存體帳戶
+#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>步驟1：在 Azure 入口網站中流覽至 ADLS Gen2 儲存體帳戶
 
-在 Azure 入口網站中，開啟 ADLS gen2 儲存體帳戶，然後從左側導覽中選取 **[總覽**]。 您只需要在容器或檔案系統層級指派*儲存體 Blob 資料參與者*角色。 選取 [容器] ****。  
-![ADLS gen2 儲存體帳戶總覽](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
+在 Azure 入口網站中，開啟 ADLS Gen2 儲存體帳戶，然後從左側導覽中選取 **[總覽**]。 您只需要在容器或檔案系統層級指派*儲存體 Blob 資料參與者*角色。 選取 [容器] ****。  
+![ADLS Gen2 儲存體帳戶總覽](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
 
 #### <a name="step-2-select-the-container"></a>步驟2：選取容器
 
 受控識別應該具有在建立工作區時所提供的容器（檔案系統）的資料存取權。 您可以在 Azure 入口網站中找到此容器或檔案系統。 在 Azure 入口網站中開啟 Azure Synapse 工作區，然後從左側導覽中選取 [**總覽**] 索引標籤。
-![ADLS gen2 儲存體帳戶容器](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-7.png)
+![ADLS Gen2 儲存體帳戶容器](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-7.png)
 
 
 選取該相同的容器或檔案系統，將「*儲存體 Blob 資料參與者*」角色授與受控識別。
-![ADLS gen2 儲存體帳戶容器選取專案](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
+![ADLS Gen2 儲存體帳戶容器選取範圍](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>步驟3：流覽至存取控制
 
@@ -114,7 +114,7 @@ ms.locfileid: "81428013"
 ![驗證角色指派](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-14.png)
 
 您應該會看到受控識別列在 [**儲存體 Blob 資料參與者**] 區段底下，並已指派 [*儲存體 blob 資料參與者*] 角色。 
-![ADLS gen2 儲存體帳戶容器選取專案](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
+![ADLS Gen2 儲存體帳戶容器選取範圍](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
 
 ## <a name="next-steps"></a>後續步驟
 

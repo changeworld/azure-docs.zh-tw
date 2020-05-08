@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314300"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929752"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：使用 Azure Machine Learning 進行模型管理、部署和監視
 
@@ -153,7 +153,7 @@ Azure ML 可讓您使用中繼資料來追蹤所有 ML 資產的端對端審核�
 - [Interpretability](how-to-machine-learning-interpretability.md)可讓您對模型進行說明、符合法規合規性，並瞭解模型如何抵達給定輸入的結果。
 - Azure ML 執行歷程記錄會儲存用來定型模型之程式碼、資料和計算的快照集。
 - Azure ML 模型登錄會捕捉與您的模型相關聯的所有中繼資料（如果其部署狀況良好，則會在部署時進行定型）。
-- [與 Azure 事件方格整合](concept-event-grid-integration.md)，可讓您對 ML 生命週期中的事件採取行動。 例如，模型註冊、部署、資料漂移和定型（執行）事件。
+- [與 Azure 整合](how-to-use-event-grid.md)可讓您對 ML 生命週期中的事件採取行動。 例如，模型註冊、部署、資料漂移和定型（執行）事件。
 
 > [!TIP]
 > 雖然會自動捕捉模型和資料集的某些資訊，但您可以使用__標記__來新增其他資訊。 在您的工作區中尋找已註冊的模型和資料集時，您可以使用標記做為篩選準則。

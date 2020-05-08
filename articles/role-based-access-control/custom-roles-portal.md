@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure 入口網站（預覽）建立或更新 Azure 自訂角色-Azure RBAC
-description: 瞭解如何使用 Azure 入口網站來建立 azure 角色型存取控制（Azure RBAC）的 Azure 自訂角色。 這包括如何列出、建立、更新及刪除自訂角色。
+title: 使用 Azure 入口網站建立或更新 Azure 自訂角色-Azure RBAC
+description: 瞭解如何使用 Azure 入口網站和 Azure 角色型存取控制（Azure RBAC）來建立 Azure 自訂角色。 這包括如何列出、建立、更新及刪除自訂角色。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,25 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2020
+ms.date: 04/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 3204cdf51f3f37588f684f801a811f569b337d13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9ba8fa64a9699917fe73365cb5d9aa0c858cde7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77674866"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734174"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>使用 Azure 入口網站建立或更新 Azure 自訂角色（預覽）
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>使用 Azure 入口網站建立或更新 Azure 自訂角色
 
-> [!IMPORTANT]
-> 使用 Azure 入口網站的 Azure 自訂角色目前處於公開預覽狀態。
-> 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
-> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+如果[Azure 內建角色](built-in-roles.md)不符合您組織的特定需求，您可以建立自己的 Azure 自訂角色。 就像內建角色一樣，您可以將自訂角色指派給訂用帳戶和資源群組範圍中的使用者、群組和服務主體。 自訂角色是存放在 Azure Active Directory (Azure AD) 目錄中，而且可以跨訂用帳戶共用。 每個目錄最多可以有5000個自訂角色。 您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來建立自訂角色。 本文說明如何使用 Azure 入口網站建立自訂角色。
 
-如果[Azure 內建角色](built-in-roles.md)不符合您組織的特定需求，您可以建立自己的 Azure 自訂角色。 就像內建角色一樣，您可以將自訂角色指派給訂用帳戶和資源群組範圍中的使用者、群組和服務主體。 自訂角色是存放在 Azure Active Directory (Azure AD) 目錄中，而且可以跨訂用帳戶共用。 每個目錄最多可以有5000個自訂角色。 您可以使用 Azure 入口網站、Azure PowerShell、Azure CLI 或 REST API 來建立自訂角色。 本文說明如何使用 Azure 入口網站（目前處於預覽狀態）來建立自訂角色。
-
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 
 若要建立自訂角色，您需要：
 
@@ -77,7 +72,7 @@ Azure 有數以千計的許可權，您可以將其包含在您的自訂角色�
 
 1. 在 [Azure 入口網站中，開啟您想要讓自訂角色可供指派的訂用帳戶或資源群組，然後開啟 [**存取控制（IAM）**]。
 
-1. 按一下 [**新增**]，然後按一下 **[新增自訂角色（預覽）**]。
+1. 按一下 [**新增**]，然後按一下 [**新增自訂角色**]。
 
     ![[新增自訂角色] 功能表](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -109,7 +104,7 @@ Azure 有數以千計的許可權，您可以將其包含在您的自訂角色�
     }
     ```
 
-1. 在 JSON 檔案中，指定各種屬性的值。 以下是新增一些值的範例。 如需不同屬性的相關資訊，請參閱[瞭解角色定義](role-definitions.md)。
+1. 在 JSON 檔案中，指定各種屬性的值。 以下是新增一些值的範例。 如需不同屬性的相關資訊，請參閱[瞭解 Azure 角色定義](role-definitions.md)。
 
     ```json
     {
@@ -141,7 +136,7 @@ Azure 有數以千計的許可權，您可以將其包含在您的自訂角色�
     
 1. 在 [Azure 入口網站中，開啟 [**存取控制（IAM）** ] 頁面。
 
-1. 按一下 [**新增**]，然後按一下 **[新增自訂角色（預覽）**]。
+1. 按一下 [**新增**]，然後按一下 [**新增自訂角色**]。
 
     ![[新增自訂角色] 功能表](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -260,7 +255,7 @@ Microsoft.CostManagement/exports/delete
 
 ## <a name="step-5-assignable-scopes"></a>步驟5：可指派的範圍
 
-在 [可指派的**範圍**] 索引標籤上，您可以指定自訂角色可用於指派的位置，例如訂用帳戶或資源群組。 根據您選擇要啟動的方式而定，此索引標籤可能會列出您開啟 [存取控制（IAM）] 頁面的範圍。 不支援將可指派的範圍設定為根範圍（"/"）。 在此預覽中，您無法將管理群組新增為可指派的範圍。
+在 [可指派的**範圍**] 索引標籤上，您可以指定自訂角色可用於指派的位置，例如訂用帳戶或資源群組。 根據您選擇要啟動的方式而定，此索引標籤可能會列出您開啟 [存取控制（IAM）] 頁面的範圍。 不支援將可指派的範圍設定為根範圍（"/"）。 目前，您無法將管理群組新增為可指派的範圍。
 
 1. 按一下 [**新增可指派的範圍**] 以開啟 [新增可指派的範圍] 窗格。
 
@@ -352,6 +347,6 @@ Microsoft.CostManagement/exports/delete
 
 ## <a name="next-steps"></a>後續步驟
 
-- [教學課程：使用 Azure PowerShell 建立自訂角色](tutorial-custom-role-powershell.md)
-- [Azure 中的自訂角色](custom-roles.md)
+- [教學課程：使用 Azure PowerShell 建立 Azure 自訂角色](tutorial-custom-role-powershell.md)
+- [Azure 自訂角色](custom-roles.md)
 - [Azure Resource Manager 資源提供者作業](resource-provider-operations.md)

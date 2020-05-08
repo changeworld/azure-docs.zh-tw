@@ -4,12 +4,12 @@ description: 使用 Azure Application Insights .NET SDK 追蹤自訂作業
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276097"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690852"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 追蹤自訂作業
 
@@ -23,7 +23,7 @@ Azure Application Insights SDK 會自動追蹤相依服務的連入 HTTP 要求�
 - 適用於 Web 應用程式 (執行 ASP.NET) 的 Application Insights 版本 2.4+。
 - Application Insights for ASP.NET Core 版本 2.1+。
 
-## <a name="overview"></a>概觀
+## <a name="overview"></a>總覽
 作業是應用程式執行的邏輯部分。 它具有名稱、開始時間、持續時間、結果和執行的內容，例如使用者名稱、屬性和結果。 如果作業 A 是由作業 B 起始，則作業 B 設為 A 的父代。作業只能有一個父代，但是可以有多個子系作業。 如需有關作業和遙測相互關聯的詳細資訊，請參閱 [Azure Application Insights 遙測相互關聯](correlation.md)。
 
 在 Application Insights.NET SDK 中，作業是由抽象類別 [OperationTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) 及其子系 [RequestTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) 和 [DependencyTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs) 描述。
@@ -38,7 +38,7 @@ Application Insights Wb SDK 會針對在 IIS 管線中執行的 ASP.NET 應用�
 在較高的層級中，工作是建立 `RequestTelemetry` 並且設定已知的屬性。 作業完成之後，您會追蹤遙測。 下列範例示範此工作。
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>Owin 自我裝載應用程式中的 HTTP 要求
-在此範例中，追蹤內容會根據[相互關聯的 HTTP 通訊協定](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)傳播。 您應該預期會收到該處所述的標題。
+在此範例中，追蹤內容會根據[相互關聯的 HTTP 通訊協定](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)傳播。 您應該預期會收到該處所述的標題。
 
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
@@ -117,7 +117,7 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 相互關聯的 HTTP 通訊協定也會宣告 `Correlation-Context` 標題。 不過，為了簡單起見在這裡省略。
 
 ## <a name="queue-instrumentation"></a>佇列檢測
-雖然相互關聯的[W3C 追蹤內容](https://www.w3.org/TR/trace-context/)和[HTTP 通訊協定](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)會透過 HTTP 要求傳遞相互關聯詳細資料，但每個佇列通訊協定都必須定義如何沿著佇列訊息傳遞相同的詳細資料。 有些佇列通訊協定 (例如 AMQP) 允許傳遞其他中繼資料，其他 (例如 Azure 儲存體佇列) 則需要將內容編碼為 	訊息承載。
+雖然相互關聯的[W3C 追蹤內容](https://www.w3.org/TR/trace-context/)和[HTTP 通訊協定](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)會透過 HTTP 要求傳遞相互關聯詳細資料，但每個佇列通訊協定都必須定義如何沿著佇列訊息傳遞相同的詳細資料。 有些佇列通訊協定 (例如 AMQP) 允許傳遞其他中繼資料，其他 (例如 Azure 儲存體佇列) 則需要將內容編碼為 	訊息承載。
 
 > [!NOTE]
 > * **佇列尚不支援跨元件追蹤**使用 HTTP 時，如果您的生產者和取用者將遙測傳送至不同的 Application Insights 資源，交易診斷體驗和應用程式對應會顯示交易和端對端對應。 若為佇列，則尚不支援這種情況。 
@@ -346,7 +346,7 @@ public async Task Process(MessagePayload message)
 
 ### <a name="dependency-types"></a>相依性類型
 
-Application Insights 使用相依性類型來 cusomize UI 體驗。 對於佇列，它會識別下列`DependencyTelemetry`可改善[交易診斷體驗](/azure/azure-monitor/app/transaction-diagnostics)的類型：
+Application Insights 使用相依性類型來自訂 UI 體驗。 對於佇列，它會識別下列`DependencyTelemetry`可改善[交易診斷體驗](/azure/azure-monitor/app/transaction-diagnostics)的類型：
 - `Azure queue`針對 Azure 儲存體佇列
 - `Azure Event Hubs`針對 Azure 事件中樞
 - `Azure Service Bus`針對 Azure 服務匯流排
@@ -482,4 +482,4 @@ public async Task RunAllTasks()
 - 如需 Application Insights 類型和資料模型，請參閱[資料模型](../../azure-monitor/app/data-model.md)。
 - 向 Application Insights 報告自訂[事件和計量](../../azure-monitor/app/api-custom-events-metrics.md)。
 - 請查看內容屬性集合的標準[設定](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)。
-- 查看 [System.Diagnostics.Activity 使用者指南](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)以了解如何使遙測相互關聯。
+- 查看 [System.Diagnostics.Activity 使用者指南](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)以了解如何使遙測相互關聯。

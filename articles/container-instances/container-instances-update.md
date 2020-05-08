@@ -3,16 +3,16 @@ title: 更新容器群組
 description: 了解如何在 Azure 容器執行個體的容器群組中更新執行中的容器。
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: dc10e38aa6be9473f89df6f7fa10a72f63d9ada8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854441"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928715"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>在 Azure 容器執行個體中更新容器
 
-在容器實例的正常作業期間，您可能會發現必須更新[容器群組](container-instances-container-groups.md)中的執行中容器。 例如，您可能想要更新屬性，例如映射版本、DNS 名稱或環境變數，或重新整理應用程式已損毀之容器中的屬性。
+在容器實例的正常作業期間，您可能會發現必須更新[容器群組](./container-instances-container-groups.md)中的執行中容器。 例如，您可能想要更新屬性，例如映射版本、DNS 名稱或環境變數，或重新整理應用程式已損毀之容器中的屬性。
 
 藉由使用至少一個已修改的屬性來重新部署現有的群組，以更新執行中容器群組中的容器。 當您更新容器群組時，群組中所有執行中的容器都會就地重新開機，通常是在相同的基礎容器主機上。
 
@@ -28,7 +28,7 @@ ms.locfileid: "82854441"
 * 使用您先前提供的值來設定其他屬性。 如果您未設定屬性的值，它會還原為其預設值。
 
 > [!TIP]
-> [YAML](container-instances-container-groups.md#deployment)檔案可協助維護容器群組的部署設定，並提供部署已更新群組的起點。 如果您使用不同的方法來建立群組，您可以使用[az container export][az-container-export]將設定匯出至 YAML， 
+> [YAML](./container-instances-container-groups.md#deployment)檔案可協助維護容器群組的部署設定，並提供部署已更新群組的起點。 如果您使用不同的方法來建立群組，您可以使用[az container export][az-container-export]將設定匯出至 YAML， 
 
 ### <a name="example"></a>範例
 
@@ -80,7 +80,7 @@ az container create --resource-group myResourceGroup --name mycontainer \
 
 本文中多次提及**容器群組**。 Azure 容器執行個體中的每個容器都會部署在容器群組中，而容器群組可以包含多個容器。
 
-[Azure Container Instances 中的容器群組](container-instances-container-groups.md)
+[Azure Container Instances 中的容器群組](./container-instances-container-groups.md)
 
 [部署多容器群組](container-instances-multi-container-group.md)
 

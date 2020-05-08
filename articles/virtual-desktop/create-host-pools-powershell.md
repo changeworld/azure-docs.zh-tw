@@ -5,54 +5,71 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b390c0beb20b7557294c18f889a0f41023513e2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: c003af296b10037505e6d6006b6bfc788e641dc3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80246954"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731452"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 建立主機集區
 
-主機集區是 Windows 虛擬桌面租用戶環境中一或多個相同虛擬機器的集合。 每個主機集區都可以包含一個應用程式群組，而使用者可如同在實體桌面上與其互動。
+>[!IMPORTANT]
+>此內容適用于具有 Azure Resource Manager Windows 虛擬桌面物件的春季2020更新。 如果您使用的是 Windows 虛擬桌面不含 Azure Resource Manager 物件的2019版，請參閱[這篇文章](./virtual-desktop-fall-2019/create-host-pools-powershell-2019.md)。
+>
+> Windows 虛擬桌面春季2020更新目前為公開預覽狀態。 此預覽版本是在沒有服務等級協定的情況下提供，不建議針對生產環境工作負載使用。 可能不支援特定功能，或可能已經限制功能。 
+> 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
+主機集區是 Windows 虛擬桌面租用戶環境中一或多個相同虛擬機器的集合。 每個主機集區都可以與多個 RemoteApp 群組、一個桌面應用程式群組，以及多個工作階段主機相關聯。
+
+## <a name="prerequisites"></a>Prerequisites
+
+本文假設您已遵循[設定 PowerShell 模組](powershell-module.md)中的指示。
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>使用您的 PowerShell 用戶端建立主機集區
 
-首先，[下載並匯入 Windows 虛擬桌面的 PowerShell 模組](/powershell/windows-virtual-desktop/overview/)，以在您的 PowerShell 工作階段中使用 (如果您還沒這麼做的話)。
-
-執行下列 Cmdlet 以登入 Windows 虛擬桌面環境
+執行下列 Cmdlet 來登入 Windows 虛擬桌面環境：
 
 ```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+New-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -WorkspaceName <workspacename> -HostPoolType <Pooled|Personal> -LoadBalancerType <BreadthFirst|DepthFirst|Persistent> -Location <region> -DesktopAppGroupName <appgroupname> 
 ```
 
-接下來，執行這個指令程式，在您的 Windows 虛擬桌面租使用者中建立新的主機集區：
-
-```powershell
-New-RdsHostPool -TenantName <tenantname> -Name <hostpoolname>
-```
+此 Cmdlet 會建立主機集區、工作區和桌面應用程式群組。 此外，它會將桌面應用程式群組註冊至工作區。 您只能使用此 Cmdlet 來建立工作區，而不是在此 Cmdlet 中使用現有的工作區。 
 
 執行下一個 Cmdlet 來建立註冊權杖，以授權工作階段主機加入主機集區，並將它儲存到本機電腦上的新檔案。 您可以使用-ExpirationHours 參數指定註冊權杖有效的時間長度。
 
+>[!NOTE]
+>權杖的到期日不能少於一小時，也不能超過一個月。 如果您在該限制外設定 *-ExpirationTime* ，此 Cmdlet 將不會建立權杖。
+
 ```powershell
-New-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname> -ExpirationHours <number of hours> | Select-Object -ExpandProperty Token | Out-File -FilePath <PathToRegFile>
+New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
+```
+
+例如，如果您想要建立在兩個小時內過期的權杖，請執行此 Cmdlet： 
+
+```powershell
+New-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> -ExpirationTime $((get-date).ToUniversalTime().AddHours(2).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) 
 ```
 
 之後，執行這個指令程式可將 Azure Active Directory 使用者新增至主機集區的預設桌面應用程式群組。
 
 ```powershell
-Add-RdsAppGroupUser -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName "Desktop Application Group" -UserPrincipalName <userupn>
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+"-DAG"> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
-**RdsAppGroupUser**指令程式不支援新增安全性群組，而且一次只會將一位使用者新增到應用程式群組。 如果您想要將多個使用者新增至應用程式群組，請使用適當的使用者主體名稱重新執行 Cmdlet。
+執行此下一個 Cmdlet，將 Azure Active Directory 使用者群組新增至主機集區的預設桌面應用程式群組：
+
+```powershell
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <hostpoolname+“-DAG”> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
+```
 
 執行下列 Cmdlet，將註冊權杖匯出至變數，稍後將在向[Windows 虛擬桌面主機集區註冊虛擬機器](#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)中使用。
 
 ```powershell
-$token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hostpoolname>).Token
+$token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostPoolName <hostpoolname> 
 ```
 
 ## <a name="create-virtual-machines-for-the-host-pool"></a>建立主機集區的虛擬機器
@@ -66,7 +83,7 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 - [從非受控映射建立虛擬機器](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-user-image-data-disks)
 
 >[!NOTE]
->如果您要使用 Windows 7 作為主機 OS 來部署虛擬機器，建立和部署程式將會稍有不同。 如需詳細資訊，請參閱[在 Windows 虛擬桌面上部署 Windows 7 虛擬機器](deploy-windows-7-virtual-machine.md)。
+>如果您要使用 Windows 7 作為主機 OS 來部署虛擬機器，建立和部署程式將會稍有不同。 如需詳細資訊，請參閱[在 Windows 虛擬桌面上部署 Windows 7 虛擬機器](./virtual-desktop-fall-2019/deploy-windows-7-virtual-machine.md)。
 
 建立工作階段主機虛擬機器之後，請[將 Windows 授權套用至工作階段主機 VM](./apply-windows-license.md#apply-a-windows-license-to-a-session-host-vm) ，以執行您的 Windows 或 windows Server 虛擬機器，而不需支付另一份授權。 
 
@@ -97,15 +114,13 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
 1. 使用您在建立虛擬機器時提供的認證[連接到虛擬機器](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
 2. 下載並安裝 Windows 虛擬桌面代理程式。
    - 下載[Windows 虛擬桌面代理程式](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrmXv)。
-   - 以滑鼠右鍵按一下下載的安裝程式，選取 [**屬性**]，選取 [**解除封鎖**]，然後選取 **[確定]**。 這可讓您的系統信任安裝程式。
    - 執行安裝程式。 當安裝程式要求您提供註冊權杖時，請輸入您從**RdsRegistrationInfo** Cmdlet 取得的值。
 3. 下載並安裝 Windows 虛擬桌面代理程式開機載入器。
    - 下載[Windows 虛擬桌面代理程式](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH)開機載入器。
-   - 以滑鼠右鍵按一下下載的安裝程式，選取 [**屬性**]，選取 [**解除封鎖**]，然後選取 **[確定]**。 這可讓您的系統信任安裝程式。
    - 執行安裝程式。
 
 >[!IMPORTANT]
->為了保護您在 Azure 中的 Windows 虛擬桌面環境，建議您不要在 VM 上開啟輸入連接埠 3389。 Windows 虛擬桌面不需要開啟輸入連接埠 3389 讓使用者存取主機集區的 VM。 如果您為了要進行疑難排解而必須開啟連接埠 3389，建議您使用 [Just-In-Time VM 存取](../security-center/security-center-just-in-time.md)。
+>為了保護您在 Azure 中的 Windows 虛擬桌面環境，建議您不要在 VM 上開啟輸入連接埠 3389。 Windows 虛擬桌面不需要開啟輸入連接埠 3389 讓使用者存取主機集區的 VM。 如果您為了要進行疑難排解而必須開啟連接埠 3389，建議您使用 [Just-In-Time VM 存取](../security-center/security-center-just-in-time.md)。 我們也建議您不要將 Vm 指派給公用 IP。
 
 ## <a name="next-steps"></a>後續步驟
 

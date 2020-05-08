@@ -4,12 +4,12 @@ description: 摘要說明使用 Azure Site Recovery 對次要區域進行 Azure 
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: raynew
-ms.openlocfilehash: ea0b6763f4438033a8a5a1a4044479fc00f8456c
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 2fc2a32c47991b9b3615417dfb8f50ca3e7c988f
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864567"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983494"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure 區域之間的 Azure VM 嚴重損壞修復支援矩陣
 
@@ -178,7 +178,7 @@ Azure 資源庫映像 - 第三方發行 | 支援 | 只要 VM 在支援的作業�
 自訂映像 - 第三方發行 | 支援 | 只要 VM 在支援的作業系統上執行即支援。
 使用 Site Recovery 移轉 VM | 支援 | 如果使用 Site Recovery 將 VMware VM 或實體機器遷移到 Azure，您需要將機器上執行的舊版行動服務解除安裝，然後重新啟動機器，再複寫到另一個 Azure 區域。
 RBAC 原則 | 不支援 | Vm 上以角色為基礎的存取控制（RBAC）原則不會複寫至目的地區域中的容錯移轉 VM。
-延伸模組 | 不支援 | 延伸模組不會複寫至目的地區域中的容錯移轉 VM。 您必須在容錯移轉之後手動安裝它。
+Extensions | 不支援 | 延伸模組不會複寫至目的地區域中的容錯移轉 VM。 您必須在容錯移轉之後手動安裝它。
 鄰近放置群組 | 不支援 | 位於鄰近位置群組內部的虛擬機器無法使用 Site Recovery 保護。
 
 
@@ -215,9 +215,9 @@ OS 磁碟的大小上限 | 2048 GB | [深入了解](../virtual-machines/windows/
 儲存空間 | 支援 |
 待用加密 (SSE) | 支援 | SSE 是儲存體帳戶上的預設設定。
 待用加密（CMK） | 支援 | 受控磁片支援軟體和 HSM 金鑰
-適用於 Windows OS 的 Azure 磁碟加密 (ADE) | 支援具有受控磁片的 Vm。 | 不支援使用非受控磁片的 Vm。 <br/><br/> 不支援 HSM 保護的金鑰。 |
-適用於 Linux OS 的 Azure 磁碟加密 (ADE) | 支援具有受控磁片的 Vm。 | 不支援使用非受控磁片的 Vm。 <br/><br/> 不支援 HSM 保護的金鑰。 |
-熱新增    | 支援 | 針對使用受控磁片的 Vm，支援為您新增至複寫 Azure VM 的資料磁片啟用複寫。
+適用於 Windows OS 的 Azure 磁碟加密 (ADE) | 支援具有受控磁片的 Vm。 | 不支援使用非受控磁片的 Vm。 <br/><br/> 不支援 HSM 保護的金鑰。 <br/><br/> 不支援在單一磁片上加密個別卷。 |
+適用於 Linux OS 的 Azure 磁碟加密 (ADE) | 支援具有受控磁片的 Vm。 | 不支援使用非受控磁片的 Vm。 <br/><br/> 不支援 HSM 保護的金鑰。 <br/><br/> 不支援在單一磁片上加密個別卷。 |
+熱新增    | 支援 | 針對使用受控磁片的 Vm，支援為您新增至複寫 Azure VM 的資料磁片啟用複寫。 <br/><br/> 一次只有一個磁片可以熱新增至 Azure VM。 不支援平行新增多個磁片。 |
 熱移除磁片    | 不支援 | 如果您移除 VM 上的資料磁片，您必須停用複寫，然後再次為 VM 啟用複寫。
 排除磁碟 | 支援。 您必須使用[PowerShell](azure-to-azure-exclude-disks.md)來設定。 |    預設會排除暫存磁片。
 儲存空間直接存取  | 支援損毀一致復原點。 不支援應用程式一致復原點。 |

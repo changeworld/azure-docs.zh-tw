@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684737"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983596"
 ---
 # <a name="execute-python-script-module"></a>執行 Python 腳本模組
 
@@ -150,6 +150,8 @@ Azure Machine Learning 使用 Python 的 Anaconda 散發，其中包含許多常
 import os
 os.system(f"pip install scikit-misc")
 ```
+> [!NOTE]
+> 如果您的管線包含多個執行 Python 腳本模組，而且需要的套件不在預先安裝清單中，請分別在每個模組中安裝套件。 
 
 ## <a name="upload-files"></a>上傳檔案
 **執行 Python 腳本**支援使用[Azure Machine Learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)上傳檔案。
@@ -218,7 +220,7 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 5. 在 [ **Python 腳本**] 文字方塊中，輸入或貼上有效的 Python 腳本。
 
     > [!NOTE]
-    > 撰寫腳本時請務必小心，並確定沒有任何語法錯誤，例如使用未宣告的物件或未匯入的模組。 此外，也需支付預先安裝模組清單的額外注意事項。 若要匯入未列出的模組，請在您的腳本中安裝對應的套件，例如
+    > 撰寫腳本時請務必小心，並確定沒有任何語法錯誤，例如使用未宣告的物件或未匯入的模組。 也請特別注意預先安裝的模組清單。 若要匯入未列出的模組，請在您的腳本中安裝對應的套件，例如
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")

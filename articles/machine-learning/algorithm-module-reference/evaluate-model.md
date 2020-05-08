@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f69a3f61c288b320399d1b3abfc632c93261c540
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129838"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983358"
 ---
 # <a name="evaluate-model-module"></a>評估模型模組
 
@@ -34,9 +34,13 @@ ms.locfileid: "82129838"
 
 
 ## <a name="how-to-use-evaluate-model"></a>如何使用評估模型
-1. 將[評分模型](./score-model.md)的**評分資料集**輸出連接到**評估模型**的左側輸入埠。 
+1. 將 [[將資料指派給](./assign-data-to-clusters.md)叢集] 的 [[評分模型](./score-model.md)] 或 [結果資料集] 輸出的**計分資料集**輸出連接到 [**評估模型**] 的左側輸入埠。 
+  > [!NOTE] 
+  > 如果使用「選取資料集中的資料行」之類的模組來選取輸入資料集的一部分，請確定實際的標籤資料行（用於定型中）、「評分機率」資料行和「評分標籤」資料行存在，以計算 AUC 之類的計量、二進位分類/異常偵測的精確度。
+  > 實際的標籤資料行「評分標籤」資料行存在，用以計算多類別分類/回歸的計量。
+  > ' 指派 ' 資料行，資料行 ' DistancesToClusterCenter 否。X ' （X 是距心索引，範圍從0，...，距心數目）存在，以計算叢集的計量。
 
-2. 選擇性將第二個模型[的評分](./score-model.md)**資料集**輸出連接到**評估模型**的**右側**輸入。 您可以輕鬆地比較相同資料上兩個不同模型的結果。 這兩個輸入演算法應該是相同的演算法類型。 或者，您可以比較兩個不同的回合使用相同資料、不同參數的分數。
+2. 選擇性將第二個模型之[評分模型](./score-model.md)或結果資料集輸出的**評分資料集**輸出，連接到**評估模型**的**右側**輸入埠。 您可以輕鬆地比較相同資料上兩個不同模型的結果。 這兩個輸入演算法應該是相同的演算法類型。 或者，您可以比較兩個不同的回合使用相同資料、不同參數的分數。
 
     > [!NOTE]
     > 演算法類型指的是 ' Machine Learning 演算法 ' 下的「雙類別分類」、「多類別分類」、「回歸」、「叢集」。 

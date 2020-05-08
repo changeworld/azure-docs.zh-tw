@@ -3,12 +3,12 @@ title: 將資源部署到租使用者
 description: 說明如何在 Azure Resource Manager 範本的租使用者範圍中部署資源。
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: fcdfc5b1c4333a0d7eeec80a09ad85579a1f8b77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a3748c0948238b588a01f7d91780693a2c5bf3a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460257"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930058"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租使用者層級建立資源
 
@@ -19,6 +19,7 @@ ms.locfileid: "79460257"
 您可以在租使用者層級部署下列資源類型：
 
 * [部署](/azure/templates/microsoft.resources/deployments)-適用于部署至管理群組或訂用帳戶的嵌套範本。
+* managementGroups
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
 * [policySetDefinitions](/azure/templates/microsoft.authorization/policysetdefinitions)
@@ -103,13 +104,13 @@ New-AzTenantDeployment `
 * 使用[tenantResourceId （）](template-functions-resource.md#tenantresourceid)函式來取得在租使用者層級部署之資源的資源識別碼。
 
   例如，若要取得原則定義的資源識別碼，請使用：
-  
+
   ```json
   tenantResourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))
   ```
-  
+
   傳回的資源識別碼具有下列格式：
-  
+
   ```json
   /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
   ```

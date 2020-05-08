@@ -2,7 +2,7 @@
 title: Microsoft 身分識別平臺識別碼權杖參考
 description: 瞭解如何使用 Azure AD v1.0 和 Microsoft 身分識別平臺（v2.0）端點所發出的 id_tokens。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 23ff71bf24c3acbce3d27276981739305e1d074a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0d1a5ee3ae56e8b5c4886308624159853c52b52c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309544"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690173"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft 身分識別平臺識別碼權杖
 
@@ -77,7 +77,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`name` | String | `name` 宣告會提供人類看得懂的值，用以識別權杖的主體。 此值不保證是唯一的，它是可變動的，而且設計成僅供顯示之用。 需要`profile`範圍才能接收此宣告。 |
 |`nonce`| String | Nonce 符合對 IDP 的原始 /authorize 要求中包含的參數。 如果不符，您的應用程式應該拒絕權杖。 |
 |`oid` | 字串，GUID | 物件在 Microsoft 身分識別系統中的不可變識別碼，在此案例為使用者帳戶。 此識別碼可跨應用程式唯一識別使用者，同一位使用者登入兩個不同的應用程式會在 `oid` 宣告中收到相同的值。 Microsoft Graph 會傳回這個識別碼做為指定使用者帳戶的 `id` 屬性。 因為`oid`允許多個應用程式將使用者相互關聯`profile` ，所以必須要有範圍才能接收此宣告。 請注意，如果單一使用者存在於多個租使用者中，使用者將會在每個租使用者中包含不同的物件識別碼-它們會被視為不同的帳戶，即使使用者使用相同的認證登入每個帳戶也是一樣。 `oid`宣告是 GUID，無法重複使用。 |
-|`roles`| 字串的陣列 | 已指派給正在登入之使用者的一組角色。 |
+|`roles`| 字串陣列 | 已指派給正在登入之使用者的一組角色。 |
 |`rh` | 不透明字串 |Azure 用來重新驗證權杖的內部宣告。 應該予以忽略。 |
 |`sub` | 字串，GUID | 權杖判斷提示其相關資訊的主體，例如應用程式的使用者。 這個值不可變，而且無法重新指派或重複使用。 主體是成對識別碼，對於特定應用程式識別碼來說，主體是唯一的。 如果單一使用者使用兩個不同的用戶端識別碼登入兩個不同的應用程式，這些應用程式將會收到兩個不同的主體宣告值。 視您的架構和隱私權需求而定，這不一定會需要。 |
 |`tid` | 字串，GUID | 代表使用者是來自哪個 Azure AD 租用戶的 GUID。 就工作和學校帳戶而言，GUID 是使用者所屬組織的不可變租用戶識別碼。 就個人帳戶而言，此值會是 `9188040d-6c67-4c5b-b112-36a304b66dad`。 需要`profile`範圍才能接收此宣告。 |

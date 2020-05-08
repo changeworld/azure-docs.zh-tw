@@ -3,12 +3,13 @@ title: 使用 Azure Active Directory 驗證 Azure Batch 服務
 description: Batch 支援 Azure AD 從 Batch 服務進行驗證。 瞭解如何以兩種方式的其中一種進行驗證。
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: e1f95871788b4b9848ba622da1c8eb0cc83c07aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116174"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608467"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>使用 Active Directory 驗證 Batch 服務解決方案
 
@@ -35,9 +36,9 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD)進行驗
 
 `https://login.microsoftonline.com/<tenant-id>`
 
-> [!NOTE] 
-> 當您使用服務主體進行驗證時，租用戶特定的端點是必要的。 
-> 
+> [!NOTE]
+> 當您使用服務主體進行驗證時，租用戶特定的端點是必要的。
+>
 > 當您使用整合式驗證進行驗證時，租用戶特定的端點是選擇性的，但建議使用。 不過，您也可以使用 Azure AD 的通用端點。 若未提供特定的租用戶，通用端點會提供一般認證蒐集介面。 通用端點為 `https://login.microsoftonline.com/common`。
 >
 >
@@ -126,7 +127,7 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD)進行驗
 1. 在 Batch 帳戶的 [**設定**] 區段中，選取 [**存取控制（IAM）**]。
 1. 選取 [角色指派]**** 索引標籤。
 1. 選取 [**新增角色指派**]。
-1. 從 [角色]**** 下拉式清單中，選擇應用程式的 [參與者]** 或 [讀者]** 角色。 如需這些角色的詳細資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../role-based-access-control/overview.md)。  
+1. 從 [角色]**** 下拉式清單中，選擇應用程式的 [參與者]** 或 [讀者]** 角色。 如需這些角色的詳細資訊，請參閱[在 Azure 入口網站中開始使用角色型存取控制](../role-based-access-control/overview.md)。
 1. 在 [選取]**** 欄位中，輸入應用程式的名稱。 從清單中選取您的應用程式，然後選取 [**儲存**]。
 
 您的應用程式現在應該會以您指派的 RBAC 角色，出現在您的存取控制設定中。
@@ -209,7 +210,7 @@ Azure Batch 支援使用 [Azure Active Directory][aad_about] (Azure AD)進行驗
 本節中的程式碼範例示範如何使用整合式驗證搭配 Azure AD 進行驗證，以及使用服務主體進行驗證。 這些程式碼範例大部分會使用 .NET，但概念類似其他語言。
 
 > [!NOTE]
-> Azure AD 驗證權杖會在一小時後過期。 使用長時間執行 **BatchClient** 物件時，我們建議您在每個要求從 ADAL 擷取權杖，以確保您一律擁有有效的權杖。 
+> Azure AD 驗證權杖會在一小時後過期。 使用長時間執行 **BatchClient** 物件時，我們建議您在每個要求從 ADAL 擷取權杖，以確保您一律擁有有效的權杖。
 >
 >
 > 若要在 .NET 中達到此目的，撰寫可從 Azure AD 中擷取權杖的方法，並傳遞該方法至 **BatchTokenCredentials** 物件做為委派。 每個要求都會對 Batch 服務呼叫委派方法，以確保已提供有效的權杖。 根據預設，ADAL 會快取權杖，因此只在必要時才會從 Azure AD 擷取新的權杖。 如需關於 Azure AD 中的權杖資訊，請參閱 [Azure AD 的驗證案例][aad_auth_scenarios]。
@@ -266,9 +267,9 @@ public static async Task<string> GetAuthenticationTokenAsync()
     var authContext = new AuthenticationContext(AuthorityUri);
 
     // Acquire the authentication token from Azure AD.
-    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri, 
-                                                        ClientId, 
-                                                        new Uri(RedirectUri), 
+    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri,
+                                                        ClientId,
+                                                        new Uri(RedirectUri),
                                                         new PlatformParameters(PromptBehavior.Auto));
 
     return authResult.AccessToken;
@@ -307,7 +308,7 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 private const string AuthorityUri = "https://login.microsoftonline.com/<tenant-id>";
 ```
 
-參考 Batch 服務資源端點：  
+參考 Batch 服務資源端點：
 
 ```csharp
 private const string BatchResourceUri = "https://batch.core.windows.net/";
@@ -372,7 +373,7 @@ from azure.common.credentials import ServicePrincipalCredentials
 TENANT_ID = "<tenant-id>"
 ```
 
-參考 Batch 服務資源端點：  
+參考 Batch 服務資源端點：
 
 ```python
 RESOURCE = "https://batch.core.windows.net/"

@@ -3,7 +3,7 @@ title: OAuth 2.0 裝置程式碼流程 |Azure
 titleSuffix: Microsoft identity platform
 description: 不使用瀏覽器登入使用者。 使用裝置授權授與，建立內嵌和無瀏覽器的驗證流程。
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.date: 11/19/2019
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 42f3ca233597d0fbc31ce656bd856875e873e3c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0677603f02b429c269c0f93ef348b2b1d717a9f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868474"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82689770"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft 身分識別平臺和 OAuth 2.0 裝置授權授與流程
 
@@ -63,12 +63,12 @@ scope=user.read%20openid%20profile
 
 | 參數 | [格式] | 描述 |
 | ---              | --- | --- |
-|`device_code`     | 字串 | 用來在用戶端與授權伺服器之間驗證工作階段的長字串。 用戶端會使用此參數來向授權伺服器要求存取權杖。 |
-|`user_code`       | 字串 | 向使用者顯示的短字串，用來識別次要裝置上的工作階段。|
+|`device_code`     | String | 用來在用戶端與授權伺服器之間驗證工作階段的長字串。 用戶端會使用此參數來向授權伺服器要求存取權杖。 |
+|`user_code`       | String | 向使用者顯示的短字串，用來識別次要裝置上的工作階段。|
 |`verification_uri`| URI | 為了執行登入程序，使用者應使用 `user_code` 查看的 URI。 |
 |`expires_in`      | int | `device_code` 和 `user_code` 到期之前的秒數。 |
 |`interval`        | int | 在輪詢要求之間用戶端應等待的秒數。 |
-| `message`        | 字串 | 人類看得懂的字串，其中包含使用者的指示。 在 `?mkt=xx-XX` 形式的要求中加入 ** 查詢參數**、填寫適當的語言文化代碼，即可進行當地語系化。 |
+| `message`        | String | 人類看得懂的字串，其中包含使用者的指示。 在 `?mkt=xx-XX` 形式的要求中加入 ** 查詢參數**、填寫適當的語言文化代碼，即可進行當地語系化。 |
 
 > [!NOTE]
 > 此時`verification_uri_complete`不會包含或支援 [回應] 欄位。  我們提過這`verification_uri_complete`是因為如果您閱讀[標準](https://tools.ietf.org/html/rfc8628)，就會將其列為裝置程式碼流程標準的選擇性部分。
@@ -125,7 +125,7 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8...
 
 | 參數 | [格式] | 描述 |
 | --------- | ------ | ----------- |
-| `token_type` | 字串| 一律為承載者 (Bearer)。 |
+| `token_type` | String| 一律為承載者 (Bearer)。 |
 | `scope` | 空格分隔的字串 | 如果傳回存取權杖，此參數會列出存取權杖適用的範圍。 |
 | `expires_in`| int | 所含存取權杖到期前的時間 (以秒為單位)。 |
 | `access_token`| 不透明字串 | 已針對要求的[範圍](v2-permissions-and-consent.md)發出。  |

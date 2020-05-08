@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.date: 03/22/2019
-ms.openlocfilehash: 26837337b49d79a26404fd6709b036f6907720f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f0a92b86a2c18863052249d401e70fa36e17a12
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73838846"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930245"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>詢問您可以使用資料回答的問題
 ## <a name="video-3-data-science-for-beginners-series"></a>影片 3：適用於初學者的資料科學系列
@@ -92,4 +92,4 @@ ms.locfileid: "73838846"
 
 ## <a name="next-steps"></a>後續步驟
 * [嘗試使用 Machine Learning Studio 的第一個資料科學實驗（傳統）](create-experiment.md)
-* [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [在 Microsoft Azure 上取得 Machine Learning 簡介](/azure/machine-learning/overview-what-is-azure-ml)

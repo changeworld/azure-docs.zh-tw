@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 1a913e714565ffb99237357e331ef5cf0189c40f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8743aeea6278588da308feb37016b679a4f0509
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204216"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929259"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>從 Azure AI 資源庫中的工作範例建立 Azure Machine Learning Studio （傳統）實驗
 
@@ -60,5 +60,4 @@ ms.locfileid: "79204216"
 
 ## <a name="next-steps"></a>後續步驟
 * [從各種資源匯入資料](import-data.md)
-* [Machine Learning 中的 R 語言所適用的快速入門教學課程](r-quickstart.md)
 * [部署 Machine Learning Web 服務](deploy-a-machine-learning-web-service.md)

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed1c2f14ca5a791743a95cc50e5af0c29c74fefe
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257737"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983307"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 實驗室服務中的教室實驗室 
 本文說明如何建立和刪除教室實驗室。 它也示範如何檢視實驗室帳戶中的所有教室實驗室。 
 
-## <a name="prerequisites"></a>先決條件
+## <a name="prerequisites"></a>Prerequisites
 若要在實驗室帳戶中設定教室實驗室，您必須是實驗室帳戶中 [實驗室建立者]**** 角色的成員。 您用來建立實驗室帳戶的帳戶會自動新增至此角色。 實驗室擁有者可以使用下列文章中的步驟，將其他使用者新增至「實驗室建立者」角色：[將使用者新增至實驗室建立者角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)。
 
 ## <a name="create-a-classroom-lab"></a>建立教室實驗室
@@ -99,14 +99,15 @@ ms.locfileid: "81257737"
 
 ### <a name="vm-sizes"></a>VM 大小  
 
-| Size | 核心 | RAM | 描述 | 
+| 大小 | 核心 | RAM | 描述 | 
 | ---- | ----- | --- | ----------- | 
 | 小型 | 2 | 3.5 GB | 此大小最適合用於命令列、開啟網頁瀏覽器、低流量網頁伺服器、小型至中型資料庫。 |
 | 中 | 4 | 7 GB | 此大小最適合用於關係資料庫、記憶體內部快取和分析 | 
 | 中（嵌套虛擬化） | 4 | 16 GB | 此大小最適合用於關係資料庫、記憶體內部快取及分析。 此大小也支援嵌套虛擬化。 <p>此大小可用於每個學生都需要多個 Vm 的案例。 老師可以使用嵌套虛擬化，在虛擬機器內設定幾個小型的嵌套虛擬機器。 </p> |
-| 大型 | 8 | 32 GB | 此大小最適合需要更快的 Cpu、更佳的本機磁片效能、大型資料庫、大型記憶體快取的應用程式。 此大小也支援嵌套虛擬化 |  
-| 小型 GPU （視覺效果） | 6 | 56 GB | 此大小最適合用於使用 OpenGL 和 DirectX 這類架構的遠端視覺效果、串流、遊戲、編碼。 | 
 | 小型 GPU （計算） | 6 | 56 GB | 此大小最適合用於計算密集型和網路密集型應用程式，例如人工智慧和深度學習應用程式。 | 
+| 小型 GPU （視覺效果） | 6 | 56 GB | 此大小最適合用於使用 OpenGL 和 DirectX 這類架構的遠端視覺效果、串流、遊戲、編碼。 | 
+| 大型 | 8 | 16 GB | 此大小最適合需要更快的 Cpu、更佳的本機磁片效能、大型資料庫、大型記憶體快取的應用程式。 |
+| 大型（嵌套虛擬化） | 8 | 32 GB | 此大小最適合需要更快的 Cpu、更佳的本機磁片效能、大型資料庫、大型記憶體快取的應用程式。 此大小也支援嵌套虛擬化。 |  
 | 中 GPU （視覺效果） | 12 | 112 GB | 此大小最適合用於使用 OpenGL 和 DirectX 這類架構的遠端視覺效果、串流、遊戲、編碼。 | 
 
 > [!NOTE]

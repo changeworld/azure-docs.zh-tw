@@ -1,6 +1,6 @@
 ---
-title: 使用 REST API 建立或更新 Azure 資源的自訂角色
-description: 瞭解如何使用 REST API，為 Azure 資源的角色型存取控制（RBAC）列出、建立、更新或刪除自訂角色。
+title: 使用 REST API 建立或更新 Azure 自訂角色-Azure RBAC
+description: 瞭解如何使用 REST API 和 Azure 角色型存取控制（Azure RBAC）來列出、建立、更新或刪除 Azure 自訂角色。
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,21 +15,21 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fda0400310f46da64322654c42af75521746d679
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0bc96dc9a8e541cfd827ba5f5abe35c13f2d2462
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062198"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734088"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>使用 REST API 建立或更新 Azure 資源的自訂角色
+# <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>使用 REST API 建立或更新 Azure 自訂角色
 
 > [!IMPORTANT]
 > 將管理群組新增至`AssignableScopes`目前為預覽狀態。
 > 此預覽版本是在沒有服務等級協定的情況下提供，不建議用於生產工作負載。 可能不支援特定功能，或可能已經限制功能。
 > 如需詳細資訊，請參閱 [Microsoft Azure 預覽版增補使用條款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-如果[適用于 Azure 資源的內建角色](built-in-roles.md)不符合您組織的特定需求，您可以建立自己的自訂角色。 本文說明如何使用 REST API 列出、建立、更新或刪除自訂角色。
+如果[Azure 內建角色](built-in-roles.md)不符合您組織的特定需求，您可以建立自己的自訂角色。 本文說明如何使用 REST API 列出、建立、更新或刪除自訂角色。
 
 ## <a name="list-custom-roles"></a>列出自訂角色
 
@@ -189,7 +189,7 @@ ms.locfileid: "80062198"
 
 1. 在 `notActions` 屬性中，新增從允許的 `actions` 中排除的作業。
 
-1. 在 `roleName` 和 `description` 屬性中，指定唯一角色名稱和描述。 如需有關屬性的資訊，請參閱[自訂角色](custom-roles.md)。
+1. 在 `roleName` 和 `description` 屬性中，指定唯一角色名稱和描述。 如需有關屬性的詳細資訊，請參閱[Azure 自訂角色](custom-roles.md)。
 
     以下顯示要求本文範例：
 
@@ -340,6 +340,6 @@ ms.locfileid: "80062198"
 
 ## <a name="next-steps"></a>後續步驟
 
-- [適用於 Azure 資源的自訂角色](custom-roles.md)
-- [使用 RBAC 和 REST API 管理對 Azure 資源的存取](role-assignments-rest.md)
+- [Azure 自訂角色](custom-roles.md)
+- [使用 REST API 新增或移除 Azure 角色指派](role-assignments-rest.md)
 - [Azure REST API 參考](/rest/api/azure/)
