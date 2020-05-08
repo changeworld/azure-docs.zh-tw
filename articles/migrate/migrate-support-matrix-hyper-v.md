@@ -3,12 +3,12 @@ title: 支援 Azure Migrate 中的 Hyper-v 評估
 description: 瞭解 Azure Migrate Server 評估的 Hyper-v 評估支援
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 990d5026d9621c144c31635fabac4416eb9d20e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67fabebf805e38a6bca5dda6e691c263ee235219
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538166"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744610"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-v 評估的支援矩陣
 
@@ -54,7 +54,7 @@ Azure Migrate 會使用[Azure Migrate 設備](migrate-appliance.md)來進行探�
 
 - 瞭解 Hyper-v 的[設備需求](migrate-appliance.md#appliance---hyper-v)。
 - 瞭解設備在[公用](migrate-appliance.md#public-cloud-urls)和[政府](migrate-appliance.md#government-cloud-urls)雲端中存取所需的 url。
-- 在 Azure Government 中，您必須使用腳本來部署應用裝置。
+- 在 Azure Government 中，您必須[使用腳本](deploy-appliance-script-government.md)來部署應用裝置。
 
 ## <a name="port-access"></a>埠存取
 
